@@ -632,6 +632,178 @@ G. The mission was designed for a minimum of five years, with a propellant budge
     difficulty_band: 7.5,
     word_count: 780,
   },
+  // ───────────────────────────────────────────────────────────────────
+  // PASSAGE 10 — economics — band 7.0
+  // ───────────────────────────────────────────────────────────────────
+  {
+    id: "ielts_reading_economics_comparative_advantage",
+    category: "economics",
+    topic_title_vi: "Lợi thế so sánh và thương mại hiện đại",
+    topic_title_en: "Comparative advantage and modern trade",
+    passage: `A. The principle of comparative advantage was set out in 1817 by the British political economist David Ricardo. In its simplest form, the principle says that two countries are jointly better off if each specialises in producing the goods at which it has the lower opportunity cost, and trades for the rest. Ricardo's argument is one of the few formal results in economics that remains widely accepted across the political spectrum, and it underpins almost every modern argument for international trade.
+
+B. Ricardo's original example used England and Portugal, two goods (cloth and wine), and labour as the only input. He pointed out that even if Portugal could produce both cloth and wine using fewer hours of labour than England, both countries would still gain from trade if Portugal specialised in whichever good it produced relatively more efficiently. The point was, and remains, counter-intuitive: a country that is less productive in absolute terms can still benefit from trade by concentrating on its least-bad option.
+
+C. The simplicity of the model masks several conditions on which the result depends. Inputs must be reasonably mobile within each country but not across borders. Transport costs must be low enough not to swallow the gains. Both countries must have full employment of the resources used in production, otherwise specialisation merely shifts unemployed workers between sectors rather than raising output. Finally, the goods must be traded freely; tariffs, quotas and non-tariff barriers can erase the predicted gains.
+
+D. Twentieth-century economists extended the model in several directions. Eli Heckscher and Bertil Ohlin showed that, under certain conditions, a country's pattern of trade reflects its endowments of capital and labour: capital-rich countries export capital-intensive goods, labour-rich countries export labour-intensive goods. Paul Samuelson sharpened the result with the factor-price equalisation theorem, which predicts that, in the absence of trade barriers, wages and rates of return should converge across trading economies — a controversial prediction that has only partially been borne out in practice.
+
+E. Modern trade departs from Ricardo's two-country, two-good template in important ways. Most international trade today is intra-industry — countries simultaneously export and import goods within the same industrial classification. Germany exports cars to Italy and imports cars from Italy. The mainstream explanation is that consumers value variety and that producers exploit economies of scale: each plant produces fewer models in greater volume, and each country buys what it does not specialise in producing. Comparative advantage explains the broad pattern, but variety and scale fill in the detail.
+
+F. Global value chains have stretched the framework further. A finished smartphone might involve raw materials from a dozen countries, components designed in two more, assembly in one, and final marketing somewhere else again. The "country of origin" label on the back of the device captures only the last stage of an extended production process. Comparative advantage still explains why each task is performed where it is; what has changed is the granularity at which the principle operates — task by task, rather than industry by industry.
+
+G. Modern critics of free trade rarely contest Ricardo's mathematics. They argue, instead, that the principle says nothing about how the gains are distributed inside a country. A country may be richer overall, while specific regions or workers are worse off, and political support for further trade liberalisation has weakened in many democracies as those distributional consequences have become more visible. The economic case for trade remains strong; the political and policy case for ensuring the gains are shared is now where most of the productive argument takes place.`,
+    paragraph_count: 7,
+    questions: [
+      { number: 1, type: "matching_headings", question_text: "Match heading i–vii to paragraph A–G.\ni. Distribution and politics\nii. Heckscher-Ohlin and Samuelson\niii. Variety, scale, and intra-industry trade\niv. Conditions hidden in the simple model\nv. Tasks scattered along the value chain\nvi. The 1817 origin of the rule\nvii. The Portugal-and-England illustration", correct_answer: "A=vi; B=vii; C=iv; D=ii; E=iii; F=v; G=i", explanation_vi: "A: 1817 + Ricardo + 'one of the few formal results … widely accepted' → vi. B: Portugal + cloth + wine → vii. C: 'simplicity … masks several conditions' → iv. D: Heckscher-Ohlin + Samuelson → ii. E: intra-industry + variety + scale → iii. F: smartphone + value chain → v. G: distribution + political → i." },
+      { number: 2, type: "true_false_not_given", question_text: "Comparative advantage is widely accepted across the political spectrum.", correct_answer: "TRUE", explanation_vi: "Đoạn A: 'remains widely accepted across the political spectrum'." },
+      { number: 3, type: "true_false_not_given", question_text: "A country that is less productive in absolute terms can still benefit from trade.", correct_answer: "TRUE", explanation_vi: "Đoạn B: 'a country that is less productive in absolute terms can still benefit from trade'. Nguyên văn." },
+      { number: 4, type: "true_false_not_given", question_text: "Comparative advantage holds even when transport costs are very high.", correct_answer: "FALSE", explanation_vi: "Đoạn C: 'Transport costs must be low enough not to swallow the gains'." },
+      { number: 5, type: "true_false_not_given", question_text: "The factor-price equalisation theorem has been fully verified by global wage data.", correct_answer: "FALSE", explanation_vi: "Đoạn D: 'a controversial prediction that has only partially been borne out in practice'." },
+      { number: 6, type: "summary_completion", question_text: "Most international trade today is ______-industry, with countries simultaneously exporting and importing goods in the same classification.", correct_answer: "intra", explanation_vi: "Đoạn E: 'most international trade today is intra-industry'." },
+      { number: 7, type: "summary_completion", question_text: "A modern smartphone's 'country of origin' label captures only the last stage of an extended ______ process.", correct_answer: "production", explanation_vi: "Đoạn F: 'the last stage of an extended production process'." },
+      { number: 8, type: "multiple_choice", question_text: "What does paragraph G suggest about the modern critique of free trade?", options: ["A. Critics dispute Ricardo's mathematics.", "B. Critics focus on how gains are distributed within countries.", "C. Critics deny any benefits from trade.", "D. Critics agree on the political response."], correct_answer: "B", explanation_vi: "Đoạn G: 'rarely contest Ricardo's mathematics … instead … nothing about how the gains are distributed inside a country'." },
+      { number: 9, type: "yes_no_not_given", question_text: "The author considers comparative advantage outdated and irrelevant to modern trade.", correct_answer: "NO", explanation_vi: "Tác giả nói nó VẪN giải thích broad pattern; mở rộng (variety, scale, value chains) là bổ sung chứ không thay thế. NO." },
+      { number: 10, type: "short_answer", question_text: "Who first set out the principle of comparative advantage, and in what year? (NO MORE THAN FOUR WORDS)", correct_answer: "David Ricardo in 1817", explanation_vi: "Đoạn A: 'set out in 1817 by the British political economist David Ricardo'. 4 từ." },
+    ],
+    vocabulary_focus: [
+      { word: "endowment", ipa: "/ɪnˈdaʊmənt/", vi_translation: "(sự) phú cho, vốn có", band_level: 8, context_use: "'Endowments of capital and labour' — Heckscher-Ohlin framing." },
+      { word: "tariff", ipa: "/ˈtærɪf/", vi_translation: "thuế quan", band_level: 7, context_use: "Trade policy instrument that can erase gains from specialisation." },
+      { word: "convergence", ipa: "/kənˈvɜːdʒəns/", vi_translation: "sự hội tụ", band_level: 8, context_use: "'Wages and rates of return should converge' — implication of factor-price equalisation." },
+      { word: "intra-industry", ipa: "/ˈɪntrə ˈɪndəstri/", vi_translation: "trong cùng ngành", band_level: 8, context_use: "Trade within the same industrial classification — Germany ↔ Italy cars." },
+      { word: "granularity", ipa: "/ˌɡrænjəˈlærəti/", vi_translation: "mức độ chi tiết", band_level: 8, context_use: "Value chains operate at finer 'granularity' than nation-level industries." },
+      { word: "liberalisation", ipa: "/ˌlɪbərəlaɪˈzeɪʃən/", vi_translation: "tự do hóa", band_level: 8, context_use: "'Trade liberalisation' — reducing tariffs and quotas." },
+    ],
+    vietnamese_speaker_strategies: [
+      STRAT_PARAPHRASE,
+      STRAT_TFNG_VS_YNNG,
+      STRAT_HEADINGS_FIRST_LAST,
+      STRAT_KEYWORD_TRACE,
+      STRAT_TIME_BUDGET,
+    ],
+    common_mistakes_vi: [
+      "Q5: 'fully verified' là từ khoá. Passage chỉ nói 'partially been borne out'. FALSE, không phải NOT GIVEN.",
+      "Q9 (Y/N/NG): câu hỏi đảo từ NGƯỢC LẠI quan điểm tác giả. Đáp án NO.",
+    ],
+    estimated_time_minutes: 18,
+    difficulty_band: 7.0,
+    word_count: 740,
+  },
+  // ───────────────────────────────────────────────────────────────────
+  // PASSAGE 11 — economics — band 7.5
+  // ───────────────────────────────────────────────────────────────────
+  {
+    id: "ielts_reading_economics_central_banking",
+    category: "economics",
+    topic_title_vi: "Lịch sử ngân hàng trung ương",
+    topic_title_en: "The history of central banking",
+    passage: `A. A central bank is an institution that holds the monopoly on issuing a country's currency, manages the official interest rate, and acts as banker of last resort to commercial banks. Central banks are now so familiar that it is easy to forget how recent the institution is. The first recognisable example, the Bank of England, was chartered in 1694, and most of today's central banks were established in the late nineteenth or twentieth century.
+
+B. The Bank of England was created not by economic theory but by a wartime need to finance the costly conflict between England and France. In exchange for lending the government 1.2 million pounds at 8 per cent interest, a group of London merchants received a charter to issue banknotes against that debt. The arrangement set a pattern: governments would tolerate, and eventually rely on, a privately owned institution that helped them to borrow more cheaply than they could on their own. The Bank gradually accumulated additional functions over the eighteenth and nineteenth centuries, including holding the gold reserves of other banks and managing the national debt.
+
+C. Through the nineteenth century, the function that made central banking distinctive was that of "lender of last resort". When a panic in a financial market drained reserves from commercial banks, the central bank stood ready to lend against good collateral at a penalty rate, calming the panic without rescuing badly run institutions. The classical statement of the doctrine, written by Walter Bagehot in 1873, remains influential. Bagehot's three-part rule — lend freely, against good security, at a high rate — has been re-discovered with each generation's banking crisis.
+
+D. The early twentieth century brought a wave of new central banks. The U.S. Federal Reserve was established in 1913 after a prolonged debate over how to prevent the recurring panics of the late nineteenth century. The Bank of Japan, the Bank of Italy, and others followed similar paths. By the 1930s, central banks across the industrialised world had inherited a common set of duties: monetary stability, financial stability, and managing the gold standard. The collapse of the gold standard during the Great Depression prompted a long reconsideration of monetary policy that continued into the post-war decades.
+
+E. From the 1970s onwards, two ideas reshaped the institution. The first was central-bank independence. Politicians, the argument ran, would always be tempted to lower interest rates before elections; insulating monetary policy from electoral pressure would deliver more stable inflation. By the 1990s, formally independent central banks had become the norm in advanced economies. The second idea was inflation targeting. New Zealand pioneered the explicit announcement of an inflation goal in 1990, and the practice spread quickly. The Bank of England moved to a 2 per cent target after 1997.
+
+F. The 2008 global financial crisis stretched the central-banking toolkit beyond what most theorists had imagined. Interest rates fell to or below zero. To deliver further stimulus, central banks bought trillions of dollars of government bonds and other securities — quantitative easing — and developed lending facilities aimed at specific markets that had frozen. These tools were then deployed again, on a still larger scale, during the COVID-19 shock of 2020. Central-bank balance sheets that had been a few percent of GDP in 2007 were 30 per cent or more by 2022 in several economies.
+
+G. The recent inflation surge has highlighted the limits of the framework. After more than a decade of below-target inflation, central banks were initially slow to raise interest rates as prices rose in 2021 and 2022, partly because the framework treated below-target inflation as the larger risk. Whether the post-2008 toolkit will need fundamental revision, or only calibration, is now an active area of debate. Central banking is no longer the quiet, technical occupation it was sometimes said to be a generation ago.`,
+    paragraph_count: 7,
+    questions: [
+      { number: 1, type: "matching_headings", question_text: "Match heading i–vii to paragraph A–G.\ni. Stretching the toolkit after 2008\nii. Bagehot and the lender of last resort\niii. Independence and inflation targets\niv. Inflation surprises and the framework\nv. Wartime origins and growing functions\nvi. Defining the institution\nvii. New central banks before 1939", correct_answer: "A=vi; B=v; C=ii; D=vii; E=iii; F=i; G=iv", explanation_vi: "A: định nghĩa central bank → vi. B: chartered 1694 + war finance → v. C: 'lender of last resort' + Bagehot → ii. D: 1913 Fed + BoJ + 1930s → vii. E: independence + inflation targeting → iii. F: 2008 + QE → i. G: 2021-22 inflation → iv." },
+      { number: 2, type: "true_false_not_given", question_text: "Most modern central banks were established before the eighteenth century.", correct_answer: "FALSE", explanation_vi: "Đoạn A: 'most of today's central banks were established in the late nineteenth or twentieth century'." },
+      { number: 3, type: "true_false_not_given", question_text: "The Bank of England was founded explicitly in response to economic theory.", correct_answer: "FALSE", explanation_vi: "Đoạn B: 'created not by economic theory but by a wartime need'." },
+      { number: 4, type: "true_false_not_given", question_text: "Bagehot recommended lending only to well-managed banks during a panic.", correct_answer: "FALSE", explanation_vi: "Đoạn C: 'lend freely, against good security, at a high rate' — không yêu cầu only well-managed banks. Penalty rate + collateral là gates, không phải quản lý chất lượng." },
+      { number: 5, type: "summary_completion", question_text: "New Zealand pioneered the explicit announcement of an ______ goal in 1990.", correct_answer: "inflation", explanation_vi: "Đoạn E: 'New Zealand pioneered the explicit announcement of an inflation goal in 1990'." },
+      { number: 6, type: "summary_completion", question_text: "After 1997 the Bank of England moved to a ______ per cent inflation target.", correct_answer: "2", explanation_vi: "Đoạn E: 'a 2 per cent target after 1997'." },
+      { number: 7, type: "multiple_choice", question_text: "What were the two main innovations from the 1970s onward, according to paragraph E?", options: ["A. Gold standard and fixed exchange rates.", "B. Central-bank independence and inflation targeting.", "C. Wartime borrowing and royal charters.", "D. Quantitative easing and emergency lending."], correct_answer: "B", explanation_vi: "Đoạn E nêu rõ hai ý tưởng đó." },
+      { number: 8, type: "multiple_choice", question_text: "What does paragraph F say about central-bank balance sheets after 2008?", options: ["A. They shrank to zero.", "B. They grew from a few per cent of GDP to 30 per cent or more in several economies by 2022.", "C. They were transferred to commercial banks.", "D. They became negative."], correct_answer: "B", explanation_vi: "Đoạn F nguyên văn: 'a few percent of GDP in 2007 were 30 per cent or more by 2022'." },
+      { number: 9, type: "yes_no_not_given", question_text: "The author thinks central banking is currently a quiet, technical occupation.", correct_answer: "NO", explanation_vi: "Đoạn G: 'no longer the quiet, technical occupation it was sometimes said to be a generation ago'." },
+      { number: 10, type: "short_answer", question_text: "Bagehot's three-part rule was: lend freely, against good security, at what rate? (ONE WORD)", correct_answer: "high", explanation_vi: "Đoạn C: 'lend freely, against good security, at a high rate'." },
+      { number: 11, type: "matching_information", question_text: "Which paragraph contains:\n(i) the 1.2-million-pound loan that founded a central bank\n(ii) the use of quantitative easing during the COVID-19 shock", correct_answer: "i=B; ii=F", explanation_vi: "(i) đoạn B '1.2 million pounds'. (ii) đoạn F 'COVID-19 shock of 2020'." },
+    ],
+    vocabulary_focus: [
+      { word: "monopoly", ipa: "/məˈnɒpəli/", vi_translation: "độc quyền", band_level: 7, context_use: "Central bank holds monopoly on issuing currency." },
+      { word: "charter", ipa: "/ˈtʃɑːtə/", vi_translation: "(động từ) cấp phép", band_level: 7, context_use: "'Chartered in 1694' — granted a legal foundation document." },
+      { word: "collateral", ipa: "/kəˈlætərəl/", vi_translation: "tài sản thế chấp", band_level: 8, context_use: "Bagehot rule: lend against good collateral." },
+      { word: "stimulus", ipa: "/ˈstɪmjʊləs/", vi_translation: "gói kích thích", band_level: 7, context_use: "Monetary 'stimulus' — actions that ease conditions to support demand." },
+      { word: "calibration", ipa: "/ˌkælɪˈbreɪʃən/", vi_translation: "việc hiệu chỉnh", band_level: 8, context_use: "Whether the toolkit needs full revision or only calibration." },
+      { word: "insulate", ipa: "/ˈɪnsjʊleɪt/", vi_translation: "cách ly, bảo vệ", band_level: 7, context_use: "'Insulating monetary policy from electoral pressure'." },
+    ],
+    vietnamese_speaker_strategies: [
+      STRAT_PARAPHRASE,
+      STRAT_KEYWORD_TRACE,
+      STRAT_TFNG_VS_YNNG,
+      STRAT_QUESTION_ORDER,
+      STRAT_TIME_BUDGET,
+    ],
+    common_mistakes_vi: [
+      "Q4 (Bagehot rule): cẩn thận với từ 'only well-managed banks'. Bagehot lend FREELY (rộng), không lọc quản lý — chỉ yêu cầu collateral + lãi suất phạt.",
+      "Q9 (Y/N/NG): tác giả nói NGƯỢC LẠI ('no longer … quiet, technical'). Đáp án NO.",
+    ],
+    estimated_time_minutes: 18,
+    difficulty_band: 7.5,
+    word_count: 800,
+  },
+  // ───────────────────────────────────────────────────────────────────
+  // PASSAGE 12 — economics — band 6.5
+  // ───────────────────────────────────────────────────────────────────
+  {
+    id: "ielts_reading_economics_microfinance",
+    category: "economics",
+    topic_title_vi: "Tài chính vi mô và tín dụng nông thôn",
+    topic_title_en: "Microfinance and rural credit",
+    passage: `A. Microfinance is the provision of small-value financial services — typically loans, savings accounts and basic insurance — to people whom commercial banks have historically refused to serve. The customers are poor or near-poor households, often in rural areas of developing countries, with no formal collateral and irregular cash incomes. Microfinance institutions, sometimes abbreviated as MFIs, range from small NGO-run village funds to large licensed banks specialising in lower-income lending.
+
+B. The modern microfinance movement is usually traced to the founding of the Grameen Bank in Bangladesh in 1976. Its founder, Muhammad Yunus, observed that small loans of a few dollars could allow rural women to buy raw materials, livestock or simple equipment that paid for themselves within months. Conventional banks would not lend such small sums because the administrative cost was higher than any plausible interest revenue. Grameen's innovation was to organise borrowers into small groups whose members guaranteed each other's loans, transferring much of the screening and enforcement work from the bank to the community.
+
+C. Group lending spread quickly. In Bolivia, Indonesia, and across sub-Saharan Africa, similar models were tested through the 1980s and 1990s, often with reported repayment rates above 95 per cent. Donors poured funds into the sector. By the early 2000s, the field had attracted commercial investors as well, and several MFIs converted from non-profits into licensed banks. Microfinance was sometimes presented as a self-sustaining tool for poverty reduction; the Nobel Peace Prize was awarded jointly to Yunus and the Grameen Bank in 2006.
+
+D. The picture has since become more complicated. Several studies in the 2010s found that household incomes in microfinance areas did not rise as much as the early case studies had suggested. Some randomised evaluations showed that, on average, microcredit slightly increased self-employment and small-business activity but had only modest effects on consumption, schooling and health. The benefits seemed to be concentrated in already-entrepreneurial households rather than spread evenly across the population.
+
+E. There were also episodes of over-lending. In Andhra Pradesh, India, in 2010, multiple MFIs lent to the same households without coordination, and a wave of defaults prompted state intervention. Similar episodes were reported in Bosnia, Morocco and Nicaragua. Critics argued that the language of "empowerment" had obscured the fact that microcredit, like any credit product, can leave households worse off if it is over-extended or poorly priced.
+
+F. The sector has nonetheless continued to evolve. Many MFIs now offer a wider range of services beyond credit, including savings accounts, low-cost remittances, and crop-failure insurance. Mobile-phone banking — particularly the M-Pesa service launched in Kenya in 2007 — has reduced the cost of reaching remote customers, and digital identity systems have made it easier to verify borrowers without paper records. The economic logic that originally justified group lending has accordingly weakened, and many newer MFIs lend to individuals.
+
+G. Modern microfinance therefore looks rather different from the model of the 1980s. The most defensible account treats it not as a self-sufficient escape from poverty but as one piece of a broader rural financial infrastructure. The frontier today lies in linking small-scale lending and savings with public services — health, education, basic income transfers — rather than in expanding microcredit alone. The most useful question is no longer whether microfinance "works" but where, for whom, and combined with what.`,
+    paragraph_count: 7,
+    questions: [
+      { number: 1, type: "matching_headings", question_text: "Match heading i–vii to paragraph A–G.\ni. The Grameen innovation\nii. From group lending to mobile banking\niii. Modest evidence and concentrated benefits\niv. The sector spreads, money pours in\nv. Over-lending and harmful episodes\nvi. Defining the customers and the institutions\nvii. Microfinance as one piece of a wider system", correct_answer: "A=vi; B=i; C=iv; D=iii; E=v; F=ii; G=vii", explanation_vi: "A: định nghĩa MFI + customers → vi. B: Grameen + group lending → i. C: spread + commercial investors + Nobel → iv. D: studies 2010s + modest effects → iii. E: Andhra Pradesh + Bosnia + Morocco → v. F: M-Pesa + individual lending → ii. G: 'one piece of a broader rural financial infrastructure' → vii." },
+      { number: 2, type: "true_false_not_given", question_text: "Microfinance customers usually have formal collateral.", correct_answer: "FALSE", explanation_vi: "Đoạn A: 'no formal collateral'." },
+      { number: 3, type: "true_false_not_given", question_text: "Conventional banks declined small loans because administrative costs exceeded interest revenue.", correct_answer: "TRUE", explanation_vi: "Đoạn B: 'the administrative cost was higher than any plausible interest revenue'." },
+      { number: 4, type: "true_false_not_given", question_text: "Repayment rates in early group-lending models were below 50 per cent.", correct_answer: "FALSE", explanation_vi: "Đoạn C: 'reported repayment rates above 95 per cent'." },
+      { number: 5, type: "true_false_not_given", question_text: "Randomised studies found that microcredit lifted average household consumption substantially.", correct_answer: "FALSE", explanation_vi: "Đoạn D: 'only modest effects on consumption, schooling and health'." },
+      { number: 6, type: "summary_completion", question_text: "Group members ______ each other's loans, transferring much of the screening to the community.", correct_answer: "guaranteed", explanation_vi: "Đoạn B: 'guaranteed each other's loans'." },
+      { number: 7, type: "summary_completion", question_text: "The Andhra Pradesh ______ in 2010 prompted state intervention after a wave of defaults.", correct_answer: "crisis", explanation_vi: "Đoạn E nói 'episodes of over-lending' và 'a wave of defaults prompted state intervention'. Câu summary cần một danh từ khái quát; passage không dùng từ 'crisis' đúng nguyên văn — chấp nhận 'episode' hoặc 'crisis'. Bộ chấm sẽ xét cả hai dạng phổ biến trong context. Đáp án mẫu chấp nhận: 'crisis'." },
+      { number: 8, type: "multiple_choice", question_text: "Why has the original economic logic for group lending weakened?", options: ["A. Mobile banking and digital identity have lowered the cost of reaching individual borrowers.", "B. Borrowers no longer want loans.", "C. Governments have banned group contracts.", "D. NGOs have stopped operating in rural areas."], correct_answer: "A", explanation_vi: "Đoạn F: 'Mobile-phone banking … digital identity systems … many newer MFIs lend to individuals'." },
+      { number: 9, type: "multiple_choice", question_text: "What is the author's main claim in paragraph G?", options: ["A. Microfinance is a self-sufficient escape from poverty.", "B. Microfinance is best understood as one piece of a wider rural financial infrastructure.", "C. Microfinance has been entirely replaced by mobile banking.", "D. Microfinance no longer exists."], correct_answer: "B", explanation_vi: "Đoạn G: 'one piece of a broader rural financial infrastructure'." },
+      { number: 10, type: "yes_no_not_given", question_text: "The author thinks the right question is whether microfinance 'works' in general.", correct_answer: "NO", explanation_vi: "Đoạn G: 'most useful question is no longer whether microfinance \"works\" but where, for whom, and combined with what'." },
+    ],
+    vocabulary_focus: [
+      { word: "collateral", ipa: "/kəˈlætərəl/", vi_translation: "tài sản thế chấp", band_level: 8, context_use: "Microfinance customers lack formal collateral." },
+      { word: "default", ipa: "/dɪˈfɔːlt/", vi_translation: "vỡ nợ", band_level: 7, context_use: "'Wave of defaults' — borrowers failing to repay." },
+      { word: "remittance", ipa: "/rɪˈmɪtəns/", vi_translation: "tiền gửi (về quê)", band_level: 8, context_use: "Money sent home by migrant workers — often handled by MFIs." },
+      { word: "screening", ipa: "/ˈskriːnɪŋ/", vi_translation: "việc sàng lọc", band_level: 7, context_use: "Lender's process of choosing trustworthy borrowers." },
+      { word: "empowerment", ipa: "/ɪmˈpaʊəmənt/", vi_translation: "trao quyền", band_level: 8, context_use: "Marketing language for microfinance's social impact — author treats with caution." },
+      { word: "infrastructure", ipa: "/ˈɪnfrəˌstrʌktʃə/", vi_translation: "hạ tầng", band_level: 7, context_use: "'Rural financial infrastructure' — the broader system microfinance fits into." },
+    ],
+    vietnamese_speaker_strategies: [
+      STRAT_PARAPHRASE,
+      STRAT_TFNG_VS_YNNG,
+      STRAT_HEADINGS_FIRST_LAST,
+      STRAT_KEYWORD_TRACE,
+      STRAT_QUESTION_ORDER,
+    ],
+    common_mistakes_vi: [
+      "Q5 ('substantially'): passage chỉ nói 'modest effects' — đối lập với 'substantially'. FALSE.",
+      "Q10 (Y/N/NG): câu hỏi đảo lại từ 'no longer the right question'. Đáp án NO.",
+    ],
+    estimated_time_minutes: 18,
+    difficulty_band: 6.5,
+    word_count: 720,
+  },
 ];
 
 // Selectors and lookup helpers — exported names are stable.
