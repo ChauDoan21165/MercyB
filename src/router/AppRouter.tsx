@@ -61,6 +61,7 @@ const IELTSSpeakingPage   = lazy(() => import("@/pages/exam-prep/IELTSSpeakingPa
 const IELTSListeningPage  = lazy(() => import("@/pages/exam-prep/IELTSListeningPage"));
 const IELTSReadingPage    = lazy(() => import("@/pages/exam-prep/IELTSReadingPage"));
 const IELTSEstimatorPage  = lazy(() => import("@/pages/exam-prep/IELTSEstimatorPage"));
+const VSTEPSpeakingPage   = lazy(() => import("@/pages/exam-prep/VSTEPSpeakingPage"));
 
 // SEO landing pages — Vietnamese-keyword targeted, public, no auth required.
 const SeoHocTiengAnhChoNguoiVietPage = lazy(() => import("@/pages/seo/HocTiengAnhChoNguoiVietPage"));
@@ -596,6 +597,19 @@ export default function AppRouter() {
               <RequireAuth>
                 <LazyPage><IELTSEstimatorPage /></LazyPage>
               </RequireAuth>
+            }
+          />
+
+          {/* VSTEP (Vietnamese national English exam) Speaking — kept public
+              so the Vietnamese-only moat is visible to anonymous visitors.
+              Practice features (recording, scoring) gate inside the page if
+              they require auth. */}
+          <Route
+            path="/exam/vstep/speaking"
+            element={
+              <LazyPage>
+                <VSTEPSpeakingPage />
+              </LazyPage>
             }
           />
 
