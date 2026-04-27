@@ -62,6 +62,7 @@ import {
   LOW_PHONEME_THRESHOLD,
   getPhonemeHint,
 } from '@/lib/pronunciation/phonemeHints';
+import PhonemePlayButton from '@/components/speech/PhonemePlayButton';
 import { supabase } from '@/lib/supabaseClient';
 import type { StudentMercyMemoryUpdate, LearningSupportMode } from './types';
 import type {
@@ -1420,6 +1421,13 @@ export function MercySpeakTab({
                 {expanded.phonemes.map((ph, phIdx) => {
                   const isLow = ph.score < LOW_PHONEME_THRESHOLD;
                   const hint = isLow ? getPhonemeHint(ph.phoneme) : null;
+                  // Build the phoneme audio script — TTS engines pronounce
+                  // a real word far more reliably than an isolated IPA
+                  // symbol, so we anchor the phoneme inside its example
+                  // word ("the th sound, like in think").
+                  const phonemeAudioText = hint?.example_word
+                    ? `the "${ph.phoneme}" sound, like in ${hint.example_word}`
+                    : `the "${ph.phoneme}" sound`;
                   return (
                     <li key={`${ph.phoneme}-${phIdx}`} className="flex items-start gap-2">
                       <span
@@ -1431,10 +1439,38 @@ export function MercySpeakTab({
                       <span className={`min-w-[34px] shrink-0 text-xs font-bold tabular-nums ${isLow ? 'text-rose-700' : 'text-emerald-700'}`}>
                         {ph.score}
                       </span>
+                      {/* Phoneme play button — speaks the phoneme anchored
+                          in its example word. Only shown when low-scoring
+                          (matches the hint visibility rule). */}
+                      {isLow ? (
+                        <PhonemePlayButton
+                          text={phonemeAudioText}
+                          language="en"
+                          ariaLabel={`Phát âm /${ph.phoneme}/ · Play /${ph.phoneme}/`}
+                          className="mt-[-2px]"
+                        />
+                      ) : null}
                       {hint ? (
                         <span className="text-[12px] leading-snug text-slate-700">
                           <span className="block text-slate-900">{hint.en}</span>
                           <span className="block text-slate-600">{hint.vi}</span>
+                          {hint.example_word ? (
+                            <span className="mt-1 flex flex-wrap items-center gap-1.5 text-[12px] text-slate-700">
+                              <span>
+                                Âm /{ph.phoneme}/ giống trong từ
+                                {' '}
+                                <strong className="font-bold text-slate-900">{hint.example_word}</strong>
+                                {hint.example_word_vi ? (
+                                  <span className="text-slate-500"> ({hint.example_word_vi})</span>
+                                ) : null}
+                              </span>
+                              <PhonemePlayButton
+                                text={hint.example_word}
+                                language="en"
+                                ariaLabel={`Phát âm "${hint.example_word}" · Play "${hint.example_word}"`}
+                              />
+                            </span>
+                          ) : null}
                         </span>
                       ) : null}
                     </li>
