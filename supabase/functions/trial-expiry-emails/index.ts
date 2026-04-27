@@ -1,10 +1,14 @@
 // Step 9 (Monetization) — trial-expiry email funnel.
 //
 // Counter-side to the trial_extension_days column from PR #referral_grant.
-// Runs daily (cron or admin-invoked) and processes a 3-stage email funnel:
-//   D-3 — friendly reminder ("Mercy is excited to teach you")
+// Runs daily (cron or admin-invoked) and processes a 2-stage email funnel:
 //   D-1 — gentle urgency ("trial wraps in 24h")
 //   D+1 — re-engagement ("here's what you missed")
+//
+// The trial is 3 days, so a D-3 stage would fire on signup day and overlap
+// with the welcome email — dropped on purpose. D-1 + D+1 is the right
+// cadence for a 3-day trial: fewer emails per user, lower spam-complaint
+// risk, sharper signal.
 //
 // Two-pass within one invocation:
 //   1. Queue pending rows in `email_sends_log` (skeleton behaviour preserved).
@@ -33,7 +37,6 @@ import {
   type TrialUserRow,
 } from "./categorizeForTrialExpiry.ts";
 
-import dMinus3Template from "./templates/trial-d-3.json" with { type: "json" };
 import dMinus1Template from "./templates/trial-d-1.json" with { type: "json" };
 import dPlus1Template from "./templates/trial-plus-1.json" with { type: "json" };
 
@@ -62,7 +65,6 @@ type TemplateShape = {
 };
 
 const TEMPLATES: Record<string, TemplateShape> = {
-  trial_expiry_d_minus_3: dMinus3Template as TemplateShape,
   trial_expiry_d_minus_1: dMinus1Template as TemplateShape,
   trial_expiry_d_plus_1: dPlus1Template as TemplateShape,
 };
@@ -199,7 +201,6 @@ Deno.serve(async (req) => {
 
     // ── Queue pending rows + capture inserted ids for the send pass ─────
     const queueable: { user: TrialUserRow; campaign: string }[] = [
-      ...buckets.d_minus_3.map((u) => ({ user: u, campaign: TRIAL_STAGE_TO_CAMPAIGN.D_minus_3 })),
       ...buckets.d_minus_1.map((u) => ({ user: u, campaign: TRIAL_STAGE_TO_CAMPAIGN.D_minus_1 })),
       ...buckets.d_plus_1.map((u) => ({ user: u, campaign: TRIAL_STAGE_TO_CAMPAIGN.D_plus_1 })),
     ];
@@ -348,7 +349,6 @@ Deno.serve(async (req) => {
       ok: true,
       scanned: rows.length,
       buckets: {
-        d_minus_3: buckets.d_minus_3.length,
         d_minus_1: buckets.d_minus_1.length,
         d_plus_1: buckets.d_plus_1.length,
       },
