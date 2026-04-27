@@ -826,7 +826,7 @@ export default function AppRouter() {
 
           {/* Community-curated mock interview prompts (A11) — public list,
               auth-gated submission. See migration
-              20260427000003_user_interview_prompts.sql. */}
+              20260534000000_user_interview_prompts.sql. */}
           <Route path="/mock-interview/community"
             element={<LazyPage><CommunityPromptsPage /></LazyPage>}
           />

@@ -22,7 +22,7 @@ const migrationPath = path.resolve(
   "..",
   "supabase",
   "migrations",
-  "20260427000003_user_interview_prompts.sql",
+  "20260534000000_user_interview_prompts.sql",
 );
 
 function readMigration(): string {

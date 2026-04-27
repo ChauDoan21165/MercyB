@@ -1,5 +1,5 @@
 // Shared types + constants for community interview prompts. Mirrors
-// the enums + columns in supabase/migrations/20260427000003_user_interview_prompts.sql.
+// the enums + columns in supabase/migrations/20260534000000_user_interview_prompts.sql.
 
 export type InterviewPromptStatus =
   | "pending"
