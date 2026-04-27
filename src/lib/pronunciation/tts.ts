@@ -14,8 +14,16 @@
 //   - Rate is clamped to [0.1, 2.0] (the spec's allowed range).
 //
 // Out-of-scope: chunking for long utterances (SpeechDrill sentences
-// cap at ~14 words, well under Chrome's ~250-char silent-fail point)
-// and picking premium voices (no ElevenLabs here).
+// cap at ~14 words, well under Chrome's ~250-char silent-fail point).
+//
+// Cloud upgrade: when the elevenlabs_tts feature flag is on AND the
+// English voice is configured, speak() first asks the mercy-tts edge
+// function for a rendered ElevenLabs mp3 and plays it. Any failure —
+// flag off, no API key, daily cap hit, network blip, audio playback
+// rejected — falls through to the browser SpeechSynthesis path below.
+// The fallback path is intentionally untouched.
+
+import { fetchCloudTtsUrl } from "@/lib/mercyVoice";
 
 export type VoiceLang = 'en-US' | 'en-GB' | 'en-AU';
 
@@ -127,6 +135,27 @@ export async function speak(opts: TTSOptions): Promise<void> {
   // Cancel anything currently playing before starting a new utterance.
   // Without this, rapid taps queue up and never play in order on Chrome.
   try { synth.cancel(); } catch { /* ignore */ }
+
+  // Cloud path (best effort). Only attempted at the default rate, since
+  // ElevenLabs has no client-side rate control — slow/long-press taps
+  // still want the browser path so the rate parameter remains honored.
+  if (rate === DEFAULT_RATE) {
+    try {
+      const cloud = await fetchCloudTtsUrl({ text, language: 'en' });
+      if (cloud?.audioUrl) {
+        const audio = new Audio(cloud.audioUrl);
+        await new Promise<void>((resolve, reject) => {
+          audio.onended = () => resolve();
+          audio.onerror = () => reject(new Error('cloud audio playback failed'));
+          audio.play().catch(reject);
+        });
+        return;
+      }
+    } catch (err) {
+      console.warn('[pronunciation/tts] cloud path failed, falling back', err);
+      // fall through to browser TTS below
+    }
+  }
 
   await waitForVoices(synth);
 
