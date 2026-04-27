@@ -151,6 +151,14 @@ const ShareStoryPage         = lazy(() => import("@/pages/stories/ShareStory"));
 const StoryDetailPage        = lazy(() => import("@/pages/stories/StoryDetail"));
 const StoryModerationPage    = lazy(() => import("@/pages/admin/StoryModeration"));
 
+// Teacher review portal (A11) — admin level 5+ reviewer queue +
+// admin level 9+ triage of teacher feedback. Schema:
+// supabase/migrations/20260533000000_teacher_feedback.sql.
+const TeacherReviewQueuePage    = lazy(() => import("@/pages/teacher-portal/ReviewQueue"));
+const TeacherReviewItemPage     = lazy(() => import("@/pages/teacher-portal/ReviewItem"));
+const TeacherFeedbackTriagePage = lazy(() => import("@/pages/admin/TeacherFeedbackTriage"));
+const TeacherRoute              = lazy(() => import("@/components/teacher-portal/TeacherRoute"));
+
 const FamilyPlanPage         = lazy(() => import("@/pages/family/FamilyPlanPage"));
 
 const TOEICIndexPage         = lazy(() => import("@/pages/exam-prep/TOEICIndexPage"));
@@ -1092,6 +1100,24 @@ export default function AppRouter() {
             }
           />
 
+          {/* Teacher review portal (A11) — auth-required + admin level >= 5
+              gate enforced by TeacherRoute. RLS additionally restricts
+              data access at the row level. */}
+          <Route
+            path="/teacher"
+            element={
+              <RequireAuth>
+                <LazyPage><TeacherRoute /></LazyPage>
+              </RequireAuth>
+            }
+          >
+            <Route index element={<LazyPage><TeacherReviewQueuePage /></LazyPage>} />
+            <Route
+              path="review/:itemId"
+              element={<LazyPage><TeacherReviewItemPage /></LazyPage>}
+            />
+          </Route>
+
           {/* Admin routes */}
           <Route path="/admin/*" element={<AdminRoute />}>
             <Route element={<AdminLayoutShell />}>
@@ -1112,6 +1138,7 @@ export default function AppRouter() {
               <Route path="frontend-perf"        element={<LazyPage><FrontendPerformance /></LazyPage>} />
               <Route path="pending-sentences"    element={<LazyPage><PendingSentencesPage /></LazyPage>} />
               <Route path="stories"              element={<LazyPage><StoryModerationPage /></LazyPage>} />
+              <Route path="teacher-feedback"     element={<LazyPage><TeacherFeedbackTriagePage /></LazyPage>} />
               <Route path="room-load-diagnostics" element={<LazyPage><RoomLoadDiagnostics /></LazyPage>} />
               <Route path="*" element={<LazyPage><AdminDashboard /></LazyPage>} />
             </Route>
