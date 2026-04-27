@@ -29,6 +29,7 @@ const AllRooms            = lazy(() => import("@/pages/AllRooms"));
 const Home                = lazy(() => import("@/pages/Home"));
 const Privacy             = lazy(() => import("@/pages/Privacy"));
 const Terms                = lazy(() => import("@/pages/Terms"));
+const ContentAdvisory      = lazy(() => import("@/pages/legal/ContentAdvisory"));
 const Support             = lazy(() => import("@/pages/Support"));
 const AccountPage         = lazy(() => import("@/pages/AccountPage"));
 const PushPreferencesPage = lazy(() => import("@/pages/account/PushPreferences"));
@@ -503,6 +504,10 @@ export default function AppRouter() {
           <Route path="/"        element={<LazyPage><Home /></LazyPage>} />
           <Route path="/privacy" element={<LazyPage><Privacy /></LazyPage>} />
           <Route path="/terms"   element={<LazyPage><Terms /></LazyPage>} />
+          {/* App Store / Play Store paperwork prefers /legal/* paths. Same components. */}
+          <Route path="/legal/privacy" element={<LazyPage><Privacy /></LazyPage>} />
+          <Route path="/legal/terms"   element={<LazyPage><Terms /></LazyPage>} />
+          <Route path="/legal/content-advisory" element={<LazyPage><ContentAdvisory /></LazyPage>} />
           <Route path="/support" element={<LazyPage><Support /></LazyPage>} />
           <Route path="/pricing" element={<LazyPage><Pricing /></LazyPage>} />
           <Route path="/upgrade" element={<LazyPage><Pricing /></LazyPage>} />
