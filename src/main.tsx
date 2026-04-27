@@ -23,6 +23,7 @@ import "@/index.css";
 import { supabase } from "@/lib/supabaseClient";
 import { AuthProvider } from "@/providers/AuthProvider";
 import { initSentry } from "@/lib/monitoring/sentryInit";
+import { initializeWebVitals } from "@/lib/perf/webVitalsTracking";
 
 declare global {
   interface Window {
@@ -45,6 +46,10 @@ try { window.__MB_ENTRY_VERSION__ = MB_ENTRY_VERSION; } catch { /* ignore */ }
 // Sentry — DSN-gated. No-op when VITE_SENTRY_DSN is unset (default today).
 // Called first so the boot IIFEs below are inside the error-capture window.
 initSentry();
+
+// Core Web Vitals collection (LCP/FID/CLS/TTFB/FCP/INP). No-op in tests.
+// Records to web_vitals_events + emits a Sentry breadcrumb per metric.
+initializeWebVitals();
 
 const devLog = (...args: unknown[]) => {
   if (import.meta.env.DEV) console.log(...args);

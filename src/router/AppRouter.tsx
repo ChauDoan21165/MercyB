@@ -179,6 +179,7 @@ const LatencyMonitoring       = lazy(() => import("@/pages/admin/LatencyMonitori
 const SloDashboard            = lazy(() => import("@/pages/admin/SloDashboard"));
 const SloDetail               = lazy(() => import("@/pages/admin/SloDetail"));
 const CostMonitoring          = lazy(() => import("@/pages/admin/CostMonitoring"));
+const FrontendPerformance     = lazy(() => import("@/pages/admin/FrontendPerformance"));
 const RoomLoadDiagnostics     = lazy(() =>
   import("@/components/admin/RoomLoadDiagnostics").then((m) => ({
     default: m.RoomLoadDiagnostics,
@@ -1108,6 +1109,7 @@ export default function AppRouter() {
               <Route path="slo"                  element={<LazyPage><SloDashboard /></LazyPage>} />
               <Route path="slo/:sloId"           element={<LazyPage><SloDetail /></LazyPage>} />
               <Route path="cost-monitoring"      element={<LazyPage><CostMonitoring /></LazyPage>} />
+              <Route path="frontend-perf"        element={<LazyPage><FrontendPerformance /></LazyPage>} />
               <Route path="pending-sentences"    element={<LazyPage><PendingSentencesPage /></LazyPage>} />
               <Route path="stories"              element={<LazyPage><StoryModerationPage /></LazyPage>} />
               <Route path="room-load-diagnostics" element={<LazyPage><RoomLoadDiagnostics /></LazyPage>} />
