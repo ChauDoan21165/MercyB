@@ -14,6 +14,7 @@ import { useUserAccess } from "@/hooks/useUserAccess";
 import { useAuth } from "@/providers/AuthProvider";
 import { useFeatureFlag } from "@/hooks/useFeatureFlag";
 import FocusAreasCard from "@/components/home/FocusAreasCard";
+import TodaysLessonCard from "@/components/home/TodaysLessonCard";
 import LeaderboardCard from "@/components/leaderboard/LeaderboardCard";
 import { StreakBadge } from "@/components/streak/StreakBadge";
 
@@ -534,6 +535,12 @@ export default function Home() {
 
         {/* Main content */}
         <section ref={stageRef} style={{ marginTop: 14, display: "flex", flexDirection: "column", gap: 12 }} aria-label="Homepage choices">
+          {/* Today's 5-minute lesson — top anchor for returning users.
+              Sits above Teacher Mercy so a learner who opens the app
+              with no plan has one obvious next step. Never auto-navigates;
+              the user must tap "Bắt đầu" themselves. */}
+          <TodaysLessonCard isPhone={isPhone} />
+
           {/* Teacher Mercy — hero */}
           {teacherCard}
 
