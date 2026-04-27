@@ -15,6 +15,9 @@ import {
 
 import { Button } from '@/components/ui/button';
 import ShareScoreButton from '@/components/share/ShareScoreButton';
+import WaveformComparison from '@/components/pronunciation/WaveformComparison';
+import { captureWaveform, type Waveform } from '@/lib/pronunciation/audioComparison';
+import { fetchCloudTtsUrl } from '@/lib/mercyVoice';
 import { getPage4LessonByKey } from './kids/kidPage4Data';
 import { getPage5LessonByKey } from './kids/kidPage5Data';
 import { getPage6LessonByKey } from './kids/kidPage6Data';
@@ -643,6 +646,18 @@ export function MercySpeakTab({
   // and not suitable for posting back as multipart.
   const recordedAudioBlobRef = useRef<Blob | null>(null);
 
+  // Waveform-comparison state (lazy: only populated when the user
+  // expands the "So sánh với Mercy" section). The reference cache is
+  // keyed by the practice text so re-expanding a previously-compared
+  // sentence is instant + zero-cost.
+  const [comparisonOpen, setComparisonOpen] = useState(false);
+  const [userWaveform, setUserWaveform] = useState<Waveform | null>(null);
+  const [referenceWaveform, setReferenceWaveform] = useState<Waveform | null>(null);
+  const [referenceAudioUrl, setReferenceAudioUrl] = useState<string | null>(null);
+  const [comparisonLoading, setComparisonLoading] = useState(false);
+  const [comparisonError, setComparisonError] = useState<string | null>(null);
+  const referenceCacheRef = useRef<Map<string, { waveform: Waveform; audioUrl: string }>>(new Map());
+
   // Pre-warmed mic stream + live input-level meter (for "we hear you" feedback)
   const prewarmStreamRef  = useRef<MediaStream | null>(null);
   const audioContextRef   = useRef<AudioContext | null>(null);
@@ -1045,6 +1060,94 @@ export function MercySpeakTab({
     }
   }
 
+  // ── Waveform comparison: lazy load on user expand ───────────────────────
+  // Brief: "Don't auto-generate reference audio (cost) — only on user expand".
+  // First call captures the user blob, fetches Mercy's TTS for `practiceText`,
+  // decodes both. The reference is cached per-sentence so re-expanding is
+  // instant. Resetting `practiceText` invalidates user state (handled in
+  // resetComparisonState).
+  async function openWaveformComparison() {
+    setComparisonOpen(true);
+
+    if (!practiceText) {
+      setComparisonError('Hãy thu âm trước · Record first');
+      return;
+    }
+    const userBlob = recordedAudioBlobRef.current;
+    if (!userBlob) {
+      setComparisonError('Chưa có ghi âm · No recording');
+      return;
+    }
+
+    // Decode user side (cheap; just a Web Audio decode).
+    if (!userWaveform) {
+      try {
+        const wave = await captureWaveform(userBlob);
+        if (wave) setUserWaveform(wave);
+      } catch (err) {
+        console.warn('[MercySpeakTab] user waveform decode failed', err);
+      }
+    }
+
+    // Reference side — check cache, otherwise fetch from cloud TTS.
+    const cached = referenceCacheRef.current.get(practiceText);
+    if (cached) {
+      setReferenceWaveform(cached.waveform);
+      setReferenceAudioUrl(cached.audioUrl);
+      setComparisonError(null);
+      return;
+    }
+
+    setComparisonLoading(true);
+    setComparisonError(null);
+    try {
+      const cloud = await fetchCloudTtsUrl({ text: practiceText, language: 'en' });
+      if (!cloud?.audioUrl) {
+        setComparisonError(
+          'Mercy chưa sẵn sàng tạo giọng so sánh · Mercy reference unavailable',
+        );
+        return;
+      }
+      const refResp = await fetch(cloud.audioUrl);
+      if (!refResp.ok) {
+        setComparisonError('Không tải được giọng Mercy · Mercy audio fetch failed');
+        return;
+      }
+      const refBlob = await refResp.blob();
+      const refWave = await captureWaveform(refBlob);
+      if (!refWave) {
+        setComparisonError(
+          'Không phân tích được giọng Mercy · Mercy audio decode failed',
+        );
+        return;
+      }
+      referenceCacheRef.current.set(practiceText, {
+        waveform: refWave,
+        audioUrl: cloud.audioUrl,
+      });
+      setReferenceWaveform(refWave);
+      setReferenceAudioUrl(cloud.audioUrl);
+    } catch (err) {
+      console.warn('[MercySpeakTab] reference waveform fetch failed', err);
+      setComparisonError(
+        'Có lỗi khi tạo giọng so sánh · Comparison failed',
+      );
+    } finally {
+      setComparisonLoading(false);
+    }
+  }
+
+  function closeWaveformComparison() {
+    setComparisonOpen(false);
+  }
+
+  // Reset only the user side when a new attempt starts (the reference
+  // remains cached because it's keyed by practiceText, not the recording).
+  function resetUserWaveformState() {
+    setUserWaveform(null);
+    setComparisonError(null);
+  }
+
   async function handleSpeak(textOverride?: string) {
     const speechText = cleanText(textOverride) || practiceText;
     if (!speechText || typeof window === 'undefined') return;
@@ -1227,6 +1330,7 @@ export function MercySpeakTab({
     setExpandedWordIdx(null);
     cloudAttemptKeyRef.current = '';
     recordedAudioBlobRef.current = null;
+    resetUserWaveformState();
     stopListening(); stopSpeaking(); stopRecordedAudioPlayback(true);
     if (isRecording) stopRecording();
     revokeRecordedAudioUrl();
@@ -1621,6 +1725,49 @@ export function MercySpeakTab({
               </div>
             ) : null}
           </div>
+
+          {/* Speech-vs-reference waveform overlay (lazy on user expand). */}
+          {transcript && recordedAudioUrl ? (
+            <div className="rounded-[20px] md:rounded-[24px] border border-slate-200 bg-white shadow-sm">
+              {!comparisonOpen ? (
+                <button
+                  type="button"
+                  onClick={() => void openWaveformComparison()}
+                  className="flex w-full items-center justify-between gap-2 px-4 py-3 text-left"
+                >
+                  <span>
+                    <span className="block text-sm font-semibold text-slate-900">
+                      So sánh với Mercy
+                    </span>
+                    <span className="block text-[11px] text-slate-500">
+                      Compare your waveform with Mercy's
+                    </span>
+                  </span>
+                  <span className="text-xs font-semibold text-emerald-700">Mở · Open ▾</span>
+                </button>
+              ) : (
+                <div className="space-y-2 p-3 md:p-4">
+                  <WaveformComparison
+                    user={userWaveform}
+                    reference={referenceWaveform}
+                    userAudioUrl={recordedAudioUrl || null}
+                    referenceAudioUrl={referenceAudioUrl}
+                    loadingReference={comparisonLoading}
+                    error={comparisonError}
+                  />
+                  <div className="flex justify-end">
+                    <button
+                      type="button"
+                      onClick={closeWaveformComparison}
+                      className="text-xs font-semibold text-slate-500 hover:text-slate-800"
+                    >
+                      Đóng · Close
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
+          ) : null}
 
           <div className="rounded-[20px] md:rounded-[24px] border border-white/80 bg-white p-3 md:p-4 shadow-sm">
             <p className="text-xs font-semibold uppercase tracking-wide text-slate-700">{transcriptLabel}</p>
