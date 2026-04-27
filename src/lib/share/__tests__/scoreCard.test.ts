@@ -78,4 +78,28 @@ describe("formatShareHeadline", () => {
   it("treats NaN / non-finite as 0", () => {
     expect(formatShareHeadline(Number.NaN, "en")).toBe("I scored 0/100 on MercyBlade!");
   });
+
+  it("uses the ranked template when a rank is supplied (VN)", () => {
+    expect(formatShareHeadline(94, "vi", 47)).toBe(
+      "Tôi đang hạng #47 tuần này — đạt 94/100!",
+    );
+  });
+
+  it("uses the ranked template when a rank is supplied (EN)", () => {
+    expect(formatShareHeadline(94, "en", 47)).toBe(
+      "I'm #47 this week — scored 94/100!",
+    );
+  });
+
+  it("falls back to the unranked template when rank is null/undefined/0", () => {
+    expect(formatShareHeadline(94, "en", null)).toBe(
+      "I scored 94/100 on MercyBlade!",
+    );
+    expect(formatShareHeadline(94, "en")).toBe(
+      "I scored 94/100 on MercyBlade!",
+    );
+    expect(formatShareHeadline(94, "en", 0)).toBe(
+      "I scored 94/100 on MercyBlade!",
+    );
+  });
 });

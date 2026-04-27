@@ -97,8 +97,23 @@ const HEADLINE_TEMPLATE: Record<ShareHeadlineLang, string> = {
   en: "I scored {score}/100 on MercyBlade!",
 };
 
-export function formatShareHeadline(score: number, lang: ShareHeadlineLang): string {
+const HEADLINE_TEMPLATE_RANKED: Record<ShareHeadlineLang, string> = {
+  vi: "Tôi đang hạng #{rank} tuần này — đạt {score}/100!",
+  en: "I'm #{rank} this week — scored {score}/100!",
+};
+
+export function formatShareHeadline(
+  score: number,
+  lang: ShareHeadlineLang,
+  rank?: number | null,
+): string {
   const safeScore = clampInt(score, 0, 100);
+  if (typeof rank === "number" && Number.isFinite(rank) && rank > 0) {
+    const safeRank = clampInt(rank, 1, 9999);
+    return HEADLINE_TEMPLATE_RANKED[lang]
+      .replace("{rank}", String(safeRank))
+      .replace("{score}", String(safeScore));
+  }
   return HEADLINE_TEMPLATE[lang].replace("{score}", String(safeScore));
 }
 
