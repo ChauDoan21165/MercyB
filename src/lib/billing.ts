@@ -252,11 +252,18 @@ export async function startCheckoutOrOpenPortal(
   }
 
   // ── DUPLICATE SUBSCRIPTION GUARD ──────────────────────────────
-  // Backend returns action:"manage_billing" when user already has
-  // an active/trialing/past_due subscription. Send them to the
+  // Backend returns action:"manage_billing" (or "already_subscribed",
+  // or already_subscribed:true) when the user already has an
+  // active/trialing/past_due Stripe subscription. Send them to the
   // billing portal instead of starting a new checkout session.
+  //
+  // The two action-string forms cover backend response-shape
+  // variation observed across older and newer code paths in
+  // billing-stripe-change-plan; the boolean field is a third
+  // historical signal kept for backwards compatibility.
   if (
     payload?.action === "manage_billing" ||
+    payload?.action === "already_subscribed" ||
     payload?.already_subscribed
   ) {
     return openBillingPortal();
