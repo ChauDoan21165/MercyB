@@ -51,6 +51,26 @@ export default function Privacy() {
         <li>Comply with legal obligations and enforce our terms.</li>
       </ul>
 
+      <h2>2a. Anonymous Sessions</h2>
+      <p>
+        To let visitors try pronunciation scoring without signing up, we
+        may create a temporary anonymous account on first load. These
+        sessions store no personal information — no email, no name —
+        and exist only to authenticate the practice request to our
+        scoring service. Anonymous accounts are deleted automatically
+        after 30 days of inactivity. If you sign up later, your prior
+        practice history is linked to your new account.
+      </p>
+      <p>
+        <strong>Tiếng Việt — Phiên ẩn danh:</strong> Để bạn có thể thử
+        tính năng chấm phát âm mà không cần đăng ký, lần đầu vào trang
+        chúng tôi có thể tạo một tài khoản ẩn danh tạm thời. Phiên này
+        không lưu thông tin cá nhân — không có email, không có tên — và
+        chỉ tồn tại để xác thực yêu cầu chấm phát âm. Tài khoản ẩn danh
+        tự động bị xóa sau 30 ngày không hoạt động. Nếu sau này bạn đăng
+        ký, lịch sử luyện tập trước đó sẽ được gắn vào tài khoản mới.
+      </p>
+
       <h2>3. Payments and Subscriptions</h2>
       <p>
         Payments and subscriptions may be processed by third-party providers
