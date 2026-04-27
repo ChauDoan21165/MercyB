@@ -13,6 +13,7 @@ import { StreakHistoryPanel } from "@/components/streak/StreakHistoryPanel";
 import { ReferralCard } from "@/components/referral/ReferralCard";
 import { ApplyReferralCodeForm } from "@/components/referral/ApplyReferralCodeForm";
 import { WeeklyLeaderboardOptInPanel } from "@/components/leaderboard/WeeklyLeaderboardOptInPanel";
+import { ReferralLeaderboardOptInPanel } from "@/components/leaderboard/ReferralLeaderboardOptInPanel";
 import { exportAttemptsCsv } from "@/lib/analytics/speechProgress";
 
 function formatDateTime(value: string | null | undefined): string {
@@ -751,6 +752,11 @@ export default function AccountPage() {
         {/* ── Public weekly leaderboard opt-in ──────────────────── */}
         <div style={{ marginTop: 18 }}>
           <WeeklyLeaderboardOptInPanel />
+        </div>
+
+        {/* ── Public monthly referral leaderboard opt-in ──────────── */}
+        <div style={{ marginTop: 12 }}>
+          <ReferralLeaderboardOptInPanel />
         </div>
 
         {/* ── Legal + account deletion ─────────────────────────── */}

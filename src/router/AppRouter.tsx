@@ -55,6 +55,7 @@ const SpeechDrillPage      = lazy(() => import("@/pages/SpeechDrillPage"));
 const SpeechHistoryPage    = lazy(() => import("@/pages/speech/SpeechHistoryPage"));
 const ProgressPage         = lazy(() => import("@/pages/Progress"));
 const LeaderboardPage      = lazy(() => import("@/pages/LeaderboardPage"));
+const MonthlyReferralLeaderboard = lazy(() => import("@/pages/leaderboards/MonthlyReferralLeaderboard"));
 const ProfessionsIndexPage = lazy(() => import("@/pages/professions/ProfessionsIndexPage"));
 const NailTechLessonsPage  = lazy(() => import("@/pages/professions/NailTechLessonsPage"));
 const RestaurantLessonsPage = lazy(() => import("@/pages/professions/RestaurantLessonsPage"));
@@ -595,6 +596,11 @@ export default function AppRouter() {
           {/* Public weekly leaderboard — anon-viewable */}
           <Route path="/leaderboard"
             element={<LazyPage><LeaderboardPage /></LazyPage>}
+          />
+
+          {/* Public monthly referral leaderboard — anon-viewable */}
+          <Route path="/leaderboard/referral"
+            element={<LazyPage><MonthlyReferralLeaderboard /></LazyPage>}
           />
 
           {/* Profession packs — vocational English verticals (anon-viewable). */}
