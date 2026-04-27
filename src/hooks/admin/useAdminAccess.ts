@@ -1,7 +1,37 @@
-/**
- * Path: src/hooks/admin/useAdminAccess.ts
- * File: useAdminAccess.ts
- */
+// Path: src/hooks/admin/useAdminAccess.ts
+// File: useAdminAccess.ts
+//
+// Single source of truth for admin access in the frontend.
+//
+// Authoritative read order (matches the SQL truth):
+//   1) RPC public.get_admin_level(_user_id uuid)
+//        - SECURITY DEFINER, reads admin_users.level under
+//          the function's own privileges; bypasses admin_users RLS.
+//        - Defined in migrations 20251209061329 +
+//          20260427010000 (EXECUTE granted to authenticated).
+//   2) Direct SELECT from public.admin_users
+//        - RLS allows the row owner to read their own row when
+//          get_admin_level(auth.uid()) > 0; this still works because
+//          get_admin_level itself bypasses RLS.
+//        - Used only if the RPC is missing or returns null.
+//   3) RPC public.has_role(_user_id, _role)
+//        - Optional supporting check; treated as a boolean hint, not
+//          as a level.
+//
+// Profile rows are read separately purely for the user's email — the
+// `profiles` table has no `is_admin` or `admin_level` columns in this
+// codebase, so reading them was the source of the prior false-zero
+// bug (DB level 9 displayed as 0). Querying non-existent columns in
+// PostgREST returns 42703, which we used to swallow into a default-0
+// permission set.
+//
+// Security posture (unchanged):
+//   - Permissions are derived from a server-issued integer level via
+//     permissionsFromLevel(); no client-side flag is ever trusted as
+//     "isAdmin = true".
+//   - All thresholds (canEditSystem >= 9 etc.) match the SQL gates.
+//   - On any error or anonymous session we fail closed to
+//     defaultPermissions.
 
 import { useCallback, useEffect, useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
@@ -29,12 +59,10 @@ type AdminAccessState = {
   error: string | null;
 };
 
-type ProfileAdminRow = {
-  user_id?: string | null;
+type ProfileEmailRow = {
   id?: string | null;
+  user_id?: string | null;
   email?: string | null;
-  is_admin?: boolean | null;
-  admin_level?: number | null;
 };
 
 const defaultPermissions: AdminPermissions = {
@@ -69,7 +97,8 @@ function permissionsFromLevel(level: number): AdminPermissions {
 }
 
 function normalizeLevel(value: unknown): number {
-  const level = Number(value ?? 0);
+  if (value === null || value === undefined) return 0;
+  const level = Number(value);
   return Number.isFinite(level) ? Math.max(0, level) : 0;
 }
 
@@ -79,78 +108,182 @@ function normalizeText(value: unknown): string | null {
   return trimmed || null;
 }
 
-function isAdminFromProfile(profile: ProfileAdminRow | null): boolean {
-  if (!profile) return false;
-  const level = normalizeLevel(profile.admin_level);
-  return Boolean(profile.is_admin) || level >= 1;
-}
-
 function escapePostgrestValue(value: string): string {
   return value.replace(/,/g, "\\,");
 }
 
-async function fetchAdminProfile(userId: string): Promise<ProfileAdminRow | null> {
-  const typedSupabase = supabase as any;
-  const safeUserId = escapePostgrestValue(userId);
-
-  const { data, error } = await typedSupabase
-    .from("profiles")
-    .select("id, user_id, email, is_admin, admin_level")
-    .or(`user_id.eq.${safeUserId},id.eq.${safeUserId}`)
-    .limit(1)
-    .maybeSingle();
-
-  if (error) throw error;
-  return (data as ProfileAdminRow | null) ?? null;
+function describeError(err: unknown): string {
+  if (!err) return "";
+  if (err instanceof Error) return err.message;
+  if (typeof err === "object" && err !== null) {
+    const m = (err as { message?: unknown }).message;
+    if (typeof m === "string") return m;
+  }
+  return String(err);
 }
 
-async function fetchAdminRoleByRpc(
+/**
+ * Resolve the admin level from the authoritative source.
+ *
+ * Priority:
+ *   1) RPC public.get_admin_level(_user_id) — SECURITY DEFINER, the
+ *      canonical reader of admin_users.level.
+ *   2) Direct SELECT level FROM admin_users WHERE user_id = … —
+ *      backstop in case the RPC EXECUTE grant has drifted in some
+ *      environment (the SECURITY DEFINER read still works for the
+ *      row owner because admin_users RLS allows self-select once
+ *      get_admin_level returns > 0; either way, RLS denies cross-
+ *      user reads).
+ *
+ * Returns null when no signal is available — the caller falls back
+ * to defaultPermissions (level 0).
+ */
+async function fetchAdminLevel(
   userId: string,
-): Promise<{ hasRole: boolean; level: number | null }> {
-  const typedSupabase = supabase as any;
+): Promise<{ level: number | null; sourceError: string | null }> {
+  // Cast: get_admin_level is not in generated types yet (function
+  // pre-dates the last types dump in some environments).
+  const sb = supabase as unknown as {
+    rpc: (
+      name: string,
+      args?: Record<string, unknown>,
+    ) => Promise<{ data: unknown; error: { message?: string } | null }>;
+    from: (table: string) => {
+      select: (cols: string) => {
+        eq: (col: string, val: string) => {
+          maybeSingle: () => Promise<{
+            data: { level?: number | null } | null;
+            error: { message?: string } | null;
+          }>;
+        };
+      };
+    };
+  };
 
-  let hasRole = false;
-  let level: number | null = null;
+  // 1) RPC — primary, SECURITY DEFINER, bypasses admin_users RLS.
+  try {
+    const { data, error } = await sb.rpc("get_admin_level", {
+      _user_id: userId,
+    });
+    if (!error && data !== null && typeof data !== "undefined") {
+      return { level: normalizeLevel(data), sourceError: null };
+    }
+    if (error) {
+      console.warn(
+        "[useAdminAccess] get_admin_level RPC error (falling back):",
+        error.message,
+      );
+    }
+  } catch (err) {
+    console.warn(
+      "[useAdminAccess] get_admin_level RPC threw (falling back):",
+      describeError(err),
+    );
+  }
+
+  // 2) Direct admin_users read — backstop. The row owner can SELECT
+  //    their own row; cross-user reads are still RLS-blocked.
+  try {
+    const { data, error } = await sb
+      .from("admin_users")
+      .select("level")
+      .eq("user_id", escapePostgrestValue(userId))
+      .maybeSingle();
+    if (error) {
+      // 42501 = permission denied; 42P01 = relation does not exist.
+      // Both are "no signal" not "level 0" — return null so the
+      // caller doesn't pretend the user is non-admin when we simply
+      // couldn't read.
+      return { level: null, sourceError: error.message ?? "admin_users read failed" };
+    }
+    if (data && typeof data.level === "number") {
+      return { level: normalizeLevel(data.level), sourceError: null };
+    }
+    // No row at all → user is genuinely not in admin_users → level 0.
+    return { level: 0, sourceError: null };
+  } catch (err) {
+    return { level: null, sourceError: describeError(err) };
+  }
+}
+
+/**
+ * Optional supporting check. Returns true only on an explicit
+ * server-confirmed match. Failures are treated as "unknown" (false)
+ * — never as a positive signal.
+ */
+async function fetchHasAdminRole(userId: string): Promise<boolean> {
+  const sb = supabase as unknown as {
+    rpc: (
+      name: string,
+      args?: Record<string, unknown>,
+    ) => Promise<{ data: unknown; error: { message?: string } | null }>;
+  };
 
   try {
-    const { data, error } = await typedSupabase.rpc("has_role", {
+    const { data, error } = await sb.rpc("has_role", {
       _user_id: userId,
       _role: "admin" as AdminRole,
     });
-
-    if (!error) {
-      hasRole = Boolean(data);
-    }
+    if (error) return false;
+    return Boolean(data);
   } catch {
-    // ignore RPC absence/failure
+    return false;
   }
+}
 
+async function fetchProfileEmail(
+  userId: string,
+): Promise<ProfileEmailRow | null> {
+  const sb = supabase as unknown as {
+    from: (table: string) => {
+      select: (cols: string) => {
+        or: (clause: string) => {
+          limit: (n: number) => {
+            maybeSingle: () => Promise<{
+              data: ProfileEmailRow | null;
+              error: { message?: string } | null;
+            }>;
+          };
+        };
+      };
+    };
+  };
+
+  // The `profiles` table only has the email/identity columns we need.
+  // Match on either `id` or `user_id` since some profile rows index
+  // on the auth.uid() while others index on a separate primary key.
+  const safeUserId = escapePostgrestValue(userId);
   try {
-    const { data, error } = await typedSupabase.rpc("get_admin_level", {
-      _user_id: userId,
-    });
-
-    if (!error && data !== null && typeof data !== "undefined") {
-      level = normalizeLevel(data);
+    const { data, error } = await sb
+      .from("profiles")
+      .select("id, user_id, email")
+      .or(`user_id.eq.${safeUserId},id.eq.${safeUserId}`)
+      .limit(1)
+      .maybeSingle();
+    if (error) {
+      console.warn(
+        "[useAdminAccess] profile email lookup failed:",
+        error.message,
+      );
+      return null;
     }
-  } catch {
-    // ignore RPC absence/failure
+    return data ?? null;
+  } catch (err) {
+    console.warn(
+      "[useAdminAccess] profile email lookup threw:",
+      describeError(err),
+    );
+    return null;
   }
-
-  return { hasRole, level };
 }
 
 /**
  * Single Source of Truth for admin access in the frontend.
  *
- * New priority:
- * 1) Read admin truth directly from `profiles`
- * 2) Use RPCs only as optional fallback/support
- * 3) Never fail closed just because RPCs are missing
- *
- * Why:
- * - Your real admin data already lives in `profiles.is_admin` + `profiles.admin_level`
- * - RPCs may be missing, stale, or depend on a different role system
+ * Returned state never claims "isAdmin: true" without a server-issued
+ * level >= 1. On any error the hook fails closed to level 0 with the
+ * server-side error message exposed via state.error so the
+ * /admin/* "Admin only" screen can show why instead of a silent zero.
  */
 export function useAdminAccess() {
   const [state, setState] = useState<AdminAccessState>({
@@ -183,68 +316,45 @@ export function useAdminAccess() {
         return;
       }
 
-      let profile: ProfileAdminRow | null = null;
-      let profileError: string | null = null;
+      const [{ level, sourceError }, hasRole, profile] = await Promise.all([
+        fetchAdminLevel(user.id),
+        fetchHasAdminRole(user.id),
+        fetchProfileEmail(user.id),
+      ]);
 
-      try {
-        profile = await fetchAdminProfile(user.id);
-      } catch (err: any) {
-        console.error("[useAdminAccess] profile lookup error:", err);
-        profileError = err?.message || "Unable to read admin profile";
-      }
+      const resolvedEmail =
+        normalizeText(user.email) ?? normalizeText(profile?.email);
 
-      const resolvedEmail = normalizeText(user.email) ?? normalizeText(profile?.email);
-
-      if (profile && isAdminFromProfile(profile)) {
-        const level = normalizeLevel(profile.admin_level);
-        const resolvedLevel = level >= 1 ? level : 1;
-
-        setState({
-          loading: false,
-          permissions: permissionsFromLevel(resolvedLevel),
-          userId: user.id,
-          email: resolvedEmail,
-          error: null,
-        });
-        return;
-      }
-
-      let rpc = { hasRole: false, level: null as number | null };
-
-      try {
-        rpc = await fetchAdminRoleByRpc(user.id);
-      } catch (err) {
-        console.error("[useAdminAccess] rpc fallback error:", err);
-      }
-
-      if (rpc.hasRole || (rpc.level ?? 0) >= 1) {
-        const resolvedLevel = Math.max(1, normalizeLevel(rpc.level ?? 1));
-
-        setState({
-          loading: false,
-          permissions: permissionsFromLevel(resolvedLevel),
-          userId: user.id,
-          email: resolvedEmail,
-          error: null,
-        });
-        return;
+      // Decide the effective level:
+      //   - If RPC/admin_users gave us a number, trust it.
+      //   - If both reads failed (level === null), the has_role hint
+      //     is the only positive signal we have; treat as level 1
+      //     (canViewAdmin) so the user isn't silently locked out
+      //     when their level is genuinely >= 1 but reads timed out.
+      //     This is a CONSERVATIVE upgrade — capped at 1 — and only
+      //     fires when has_role explicitly returned true.
+      let effectiveLevel = 0;
+      if (typeof level === "number") {
+        effectiveLevel = level;
+      } else if (hasRole) {
+        effectiveLevel = 1;
       }
 
       setState({
         loading: false,
-        permissions: defaultPermissions,
+        permissions: permissionsFromLevel(effectiveLevel),
         userId: user.id,
         email: resolvedEmail,
-        error: profileError,
+        error: level === null ? sourceError : null,
       });
-    } catch (e: any) {
+    } catch (e) {
       console.error("[useAdminAccess] error:", e);
       setState({
         loading: false,
         permissions: defaultPermissions,
         userId: null,
         email: null,
-        error: e?.message || "Admin check failed",
+        error: describeError(e) || "Admin check failed",
       });
     }
   }, []);
