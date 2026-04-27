@@ -527,6 +527,13 @@ ${stripMarkdownCodeFences(content1).slice(0, 6000)}
 // here so a malformed payload (old client, manual curl) can't crash
 // the system-prompt builder.
 
+type EdgeHeatmapHighlight = {
+  kind: "most_improved" | "plateau" | "needs_work" | "doing_well";
+  phoneme: string;
+  averageScore: number;
+  delta: number | null;
+};
+
 type EdgeProgressContext = {
   attemptsThisWeek: number;
   averageScoreThisWeek: number | null;
@@ -538,6 +545,7 @@ type EdgeProgressContext = {
     | { phoneme: string; averageScore: number }
     | null;
   streak: number;
+  heatmapHighlight: EdgeHeatmapHighlight | null;
 };
 
 function sanitizeProgressContext(raw: unknown): EdgeProgressContext | null {
@@ -547,6 +555,7 @@ function sanitizeProgressContext(raw: unknown): EdgeProgressContext | null {
   if (attempts === null || attempts < 1) return null;
   const mostImproved = sanitizeMostImproved(r.mostImprovedPhoneme);
   const weakest = sanitizeWeakest(r.weakestPhoneme);
+  const heatmapHighlight = sanitizeHeatmapHighlight(r.heatmapHighlight);
   return {
     attemptsThisWeek: attempts,
     averageScoreThisWeek: numberOrNull(r.averageScoreThisWeek),
@@ -554,7 +563,28 @@ function sanitizeProgressContext(raw: unknown): EdgeProgressContext | null {
     mostImprovedPhoneme: mostImproved,
     weakestPhoneme: weakest,
     streak: Math.max(0, numberOrNull(r.streak) ?? 0),
+    heatmapHighlight,
   };
+}
+
+function sanitizeHeatmapHighlight(raw: unknown): EdgeHeatmapHighlight | null {
+  if (!raw || typeof raw !== "object") return null;
+  const r = raw as Record<string, unknown>;
+  const kindRaw = typeof r.kind === "string" ? r.kind : "";
+  const kind: EdgeHeatmapHighlight["kind"] | null =
+    kindRaw === "most_improved" ||
+    kindRaw === "plateau" ||
+    kindRaw === "needs_work" ||
+    kindRaw === "doing_well"
+      ? kindRaw
+      : null;
+  if (!kind) return null;
+  const phoneme = typeof r.phoneme === "string" ? r.phoneme.trim() : "";
+  if (!phoneme) return null;
+  const averageScore = numberOrNull(r.averageScore);
+  if (averageScore === null) return null;
+  const delta = numberOrNull(r.delta);
+  return { kind, phoneme, averageScore, delta };
 }
 
 function sanitizeMostImproved(raw: unknown): EdgeProgressContext["mostImprovedPhoneme"] {
@@ -609,6 +639,22 @@ function formatProgressBlock(ctx: EdgeProgressContext): string {
   }
   if (ctx.streak > 0) {
     lines.push(`- Current streak: ${ctx.streak} days`);
+  }
+  if (ctx.heatmapHighlight) {
+    const h = ctx.heatmapHighlight;
+    const tag =
+      h.kind === "most_improved"
+        ? "30-day improving"
+        : h.kind === "plateau"
+        ? "30-day plateau"
+        : h.kind === "needs_work"
+        ? "30-day low"
+        : "30-day strong";
+    const deltaPart =
+      h.delta !== null ? ` (delta ${h.delta >= 0 ? "+" : ""}${h.delta})` : "";
+    lines.push(
+      `- Heatmap (${tag}): /${h.phoneme}/ at ${h.averageScore}/100${deltaPart}`,
+    );
   }
   return lines.join("\n");
 }
