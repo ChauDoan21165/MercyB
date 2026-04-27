@@ -158,6 +158,8 @@ const AdminSubscriptions      = lazy(() => import("@/pages/admin/AdminSubscripti
 const FeatureFlagsAdmin       = lazy(() => import("@/pages/admin/FeatureFlagsAdmin"));
 const AdminAnalyticsPage      = lazy(() => import("@/pages/admin/AdminAnalyticsPage"));
 const LatencyMonitoring       = lazy(() => import("@/pages/admin/LatencyMonitoring"));
+const SloDashboard            = lazy(() => import("@/pages/admin/SloDashboard"));
+const SloDetail               = lazy(() => import("@/pages/admin/SloDetail"));
 const RoomLoadDiagnostics     = lazy(() =>
   import("@/components/admin/RoomLoadDiagnostics").then((m) => ({
     default: m.RoomLoadDiagnostics,
@@ -1002,6 +1004,8 @@ export default function AppRouter() {
               <Route path="feedback-triage"      element={<LazyPage><FeedbackTriagePage /></LazyPage>} />
               <Route path="analytics"            element={<LazyPage><AdminAnalyticsPage /></LazyPage>} />
               <Route path="latency"              element={<LazyPage><LatencyMonitoring /></LazyPage>} />
+              <Route path="slo"                  element={<LazyPage><SloDashboard /></LazyPage>} />
+              <Route path="slo/:sloId"           element={<LazyPage><SloDetail /></LazyPage>} />
               <Route path="pending-sentences"    element={<LazyPage><PendingSentencesPage /></LazyPage>} />
               <Route path="stories"              element={<LazyPage><StoryModerationPage /></LazyPage>} />
               <Route path="room-load-diagnostics" element={<LazyPage><RoomLoadDiagnostics /></LazyPage>} />
