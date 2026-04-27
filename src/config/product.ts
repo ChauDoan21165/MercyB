@@ -98,6 +98,25 @@ export const PRODUCT_CONFIG = {
   copyright: "© 2026 MercyBlade",
 } as const;
 
+/**
+ * Multi-channel support contact URLs. Vietnamese learners reach us
+ * through Zalo / Facebook Messenger far more than email; the floating
+ * support button (src/components/support/ChatSupportButton.tsx) and the
+ * /support page surface all three.
+ *
+ * Placeholders: zalo + messenger handles below are launch placeholders
+ * Chau will swap for the real OA / Page handles before announce. The
+ * surfaces themselves are wired and will work the moment the URLs are
+ * updated — no code change needed.
+ */
+export const SUPPORT_CHANNELS = {
+  zalo_url: "https://zalo.me/chaudoan",
+  messenger_url: "https://m.me/mercyblade",
+  email: "admin@mercyblade.com",
+} as const;
+
+export type SupportChannels = typeof SUPPORT_CHANNELS;
+
 export type ProductConfig = typeof PRODUCT_CONFIG;
 
 /** Convenience: the canonical product name string literal. */

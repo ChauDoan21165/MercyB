@@ -20,6 +20,7 @@ import AdminLayout from "@/components/admin/AdminLayout";
 import { useAuth } from "@/providers/AuthProvider";
 import { useUserAccess } from "@/hooks/useUserAccess";
 import TrialExpiredScreen from "@/components/TrialExpiredScreen";
+import ChatSupportButton from "@/components/support/ChatSupportButton";
 
 const MB_ROUTER_VERSION = "2026-04-11-app-router-room-alias-hardening";
 
@@ -389,6 +390,11 @@ function AppHeroShell() {
               <Outlet />
             </Suspense>
           </div>
+
+          {/* Floating multi-channel support (Zalo + Messenger + email).
+              Self-suppresses on / and /support; the recording overlay
+              from MercyGuide visually obscures it during a Speak session. */}
+          <ChatSupportButton />
         </>
       )}
     </div>
