@@ -40,6 +40,7 @@
 
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+import { wrapHandler } from "../_shared/sentry.ts";
 import {
   createSupabaseAdminClient,
   getUserFromAuthHeader,
@@ -110,7 +111,7 @@ type AuditStatus =
 
 // ── Server ────────────────────────────────────────────────────────────────
 
-serve(async (req) => {
+serve(wrapHandler("speech-analyze", async (req) => {
   if (req.method === "OPTIONS") {
     return new Response("ok", { headers: corsHeaders });
   }
@@ -362,7 +363,7 @@ serve(async (req) => {
 
     return json({ error: message }, 500);
   }
-});
+}));
 
 // ── JSON / text helpers ──────────────────────────────────────────────────
 
