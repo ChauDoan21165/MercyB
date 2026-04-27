@@ -42,6 +42,8 @@ const TierDetail          = lazy(() => import("@/pages/TierDetail"));
 const LoginPage           = lazy(() => import("@/pages/LoginPage"));
 const ResetPasswordPage   = lazy(() => import("@/pages/ResetPasswordPage"));
 const ConvertAccountPage  = lazy(() => import("@/pages/auth/ConvertAccount"));
+const AcceptInvitePage    = lazy(() => import("@/pages/auth/AcceptInvite"));
+const BulkInvitePage      = lazy(() => import("@/pages/referral/BulkInvite"));
 
 // Email preferences — public /unsubscribe (token-based) + auth-required
 // /account/notifications.
@@ -496,6 +498,14 @@ export default function AppRouter() {
             account). */}
         <Route path="/auth/save-progress"
           element={<LazyPage><ConvertAccountPage /></LazyPage>} />
+
+        {/* Family bulk-invite recipient page — public landing /invite/:token */}
+        <Route path="/invite/:token"
+          element={<LazyPage><AcceptInvitePage /></LazyPage>} />
+
+        {/* Bulk-invite UI for the inviter — auth-required */}
+        <Route path="/referral/invite-family"
+          element={<LazyPage><BulkInvitePage /></LazyPage>} />
 
         {/* /auth redirects preserve query/hash for OAuth callbacks */}
         <Route path="/auth"          element={<AuthRedirect />} />
