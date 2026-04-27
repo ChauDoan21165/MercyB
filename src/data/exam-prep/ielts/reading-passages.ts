@@ -288,6 +288,178 @@ G. The environmental and social costs of this transformation became apparent onl
     difficulty_band: 7.5,
     word_count: 800,
   },
+  // ───────────────────────────────────────────────────────────────────
+  // PASSAGE 4 — geography — band 7.0
+  // ───────────────────────────────────────────────────────────────────
+  {
+    id: "ielts_reading_geography_himalayas",
+    category: "geography",
+    topic_title_vi: "Sự hình thành dãy Himalaya",
+    topic_title_en: "The formation of the Himalayas",
+    passage: `A. The Himalayan mountain range, stretching some 2,400 kilometres along the northern edge of the Indian subcontinent, contains every one of the world's fourteen peaks above eight thousand metres. Its existence is the product of a slow-motion collision between two segments of the Earth's outer shell — the Indian Plate and the Eurasian Plate — that began about 50 million years ago and has not yet ended.
+
+B. The lithosphere, the rigid outer layer of the planet, is broken into roughly a dozen large pieces and many smaller ones. These plates float on the more plastic asthenosphere beneath them, dragged and pushed by slow currents in the Earth's mantle. Where two plates carrying continental crust meet, neither side can sink easily into the mantle, because continental rock is too thick and buoyant. Instead, the leading edges crumple, fold, and stack on top of each other, raising mountains.
+
+C. Before the collision, the Indian Plate was moving northwards across what is now the Indian Ocean at an unusually high speed of around fifteen centimetres per year — fast for a plate. The intervening sea, called the Tethys Ocean, was steadily consumed as its floor was forced downwards into the mantle along the southern margin of Asia, a process geologists term subduction. Sediments scraped from the Tethys floor were piled up against the Asian continent. When India itself finally arrived, the trailing seabed sediments were caught between the two continents and lifted high into the air, which is why fossil sea-shells are routinely found near the summit of Everest.
+
+D. Plate movement has not stopped since the collision. India continues to push into Asia at about five centimetres per year, roughly the rate at which fingernails grow. The pressure is partly absorbed by continued thickening of the crust beneath the Himalayas, but a great deal of it is also transmitted northwards as a chain of basins, plateaus, and fault lines, including the Tibetan Plateau itself. Earthquakes are a frequent expression of this ongoing accommodation. The 2015 Gorkha earthquake in Nepal, magnitude 7.8, was caused by sudden slip along a fault that had been quietly accumulating strain for decades.
+
+E. The mountains erode almost as fast as they rise. Monsoon rainfall, sourced from the Indian Ocean, drains south down the Himalayan front, while seasonal snowmelt feeds the great river systems — the Indus, the Ganges, the Brahmaputra — which carve deep valleys and carry away vast quantities of sediment. The Bay of Bengal contains the world's largest underwater fan of river-borne mud and silt, almost all of it Himalayan in origin. The mountains are therefore best understood not as a stable monument but as a near-equilibrium between uplift and erosion, with the ocean as the final receiver.
+
+F. Climate everywhere downwind of the range is shaped by its bulk. Moist air masses arriving from the south are forced upwards on the Himalayan slopes, cool, and release their moisture as rain or snow on the Indian side; air that does cross the range is dry, producing the rain-shadow deserts of the Tibetan Plateau, Ladakh, and parts of Central Asia. The same uplift process maintains the seasonal monsoon by creating a sharp temperature contrast between heated continental interior and cooler ocean. Without the Himalayas, the agricultural geography of South Asia would be entirely different.
+
+G. Studying a mountain range that is still actively forming requires data over very different scales of time and space. Satellite-based GPS networks now measure plate motion to the millimetre per year. Field geologists map fault outcrops on foot. Sediment cores from the Bay of Bengal record erosion rates over millions of years. Together these methods make the Himalayas one of the best-instrumented natural laboratories in plate tectonics — a place where Earth's deep machinery is still working, in slow motion, in full view.`,
+    paragraph_count: 7,
+    questions: [
+      { number: 1, type: "matching_headings", question_text: "Match heading i–vii to paragraph A–G.\ni. The biggest underwater sediment fan\nii. Why two continents pile up\niii. The race north and the lifted seabed\niv. A still-active laboratory at multiple scales\nv. Length, height, and starting date\nvi. Continued slip and earthquakes\nvii. Monsoon, rain shadow, and agriculture", correct_answer: "A=v; B=ii; C=iii; D=vi; E=i; F=vii; G=iv", explanation_vi: "A: '2,400 km' + '50 million years' → v. B: continental crust 'too thick and buoyant' → ii. C: '15 cm/year' + Tethys + Everest fossils → iii. D: Gorkha + 5 cm/year → vi. E: 'largest underwater fan' → i. F: monsoon + rain shadow + agriculture → vii. G: GPS + sediment cores → iv." },
+      { number: 2, type: "true_false_not_given", question_text: "Continental rock is dense enough to sink easily into the mantle when two plates collide.", correct_answer: "FALSE", explanation_vi: "Đoạn B: 'continental rock is too thick and buoyant' để chìm dễ." },
+      { number: 3, type: "true_false_not_given", question_text: "Sea-fossil shells found near Everest's summit support the idea that an ocean floor was lifted upwards.", correct_answer: "TRUE", explanation_vi: "Đoạn C: 'fossil sea-shells are routinely found near the summit of Everest' chính là bằng chứng cho seabed bị nâng." },
+      { number: 4, type: "true_false_not_given", question_text: "India is still moving north at about five centimetres per year.", correct_answer: "TRUE", explanation_vi: "Đoạn D: 'India continues to push into Asia at about five centimetres per year'." },
+      { number: 5, type: "summary_completion", question_text: "Sediments removed from the Himalayas are deposited in the world's largest ______ fan in the Bay of Bengal.", correct_answer: "underwater", explanation_vi: "Đoạn E: 'world's largest underwater fan'." },
+      { number: 6, type: "summary_completion", question_text: "Air that crosses the range becomes dry, producing the rain-______ deserts of the Tibetan Plateau.", correct_answer: "shadow", explanation_vi: "Đoạn F: 'rain-shadow deserts'." },
+      { number: 7, type: "multiple_choice", question_text: "According to the passage, the Himalayas are best understood as", options: ["A. a stable, finished monument.", "B. a near-equilibrium between uplift and erosion.", "C. a single uplift event from 50 million years ago.", "D. an offshoot of the Tibetan Plateau."], correct_answer: "B", explanation_vi: "Đoạn E: 'best understood not as a stable monument but as a near-equilibrium between uplift and erosion'." },
+      { number: 8, type: "multiple_choice", question_text: "Which combination of methods does paragraph G describe?", options: ["A. Satellite GPS, field geology, sediment cores.", "B. Only laboratory experiments.", "C. Only historical written records.", "D. Only seismic stations on the Tibetan Plateau."], correct_answer: "A", explanation_vi: "Đoạn G liệt kê đủ 3: GPS + foot mapping + sediment cores." },
+      { number: 9, type: "yes_no_not_given", question_text: "The author considers the Himalayas a poor place to test plate-tectonic theory.", correct_answer: "NO", explanation_vi: "Đoạn G: 'one of the best-instrumented natural laboratories'." },
+      { number: 10, type: "short_answer", question_text: "Name the rapidly-consumed ocean that lay between India and Asia. (NO MORE THAN TWO WORDS)", correct_answer: "Tethys Ocean", explanation_vi: "Đoạn C: 'a sea, called the Tethys Ocean'." },
+    ],
+    vocabulary_focus: [
+      { word: "lithosphere", ipa: "/ˈlɪθəsfɪə/", vi_translation: "thạch quyển", band_level: 8, context_use: "The rigid outer layer — the rock that makes up plates." },
+      { word: "subduction", ipa: "/səbˈdʌkʃən/", vi_translation: "sự hút chìm (kiến tạo)", band_level: 8, context_use: "Process where one plate slides under another into the mantle." },
+      { word: "buoyant", ipa: "/ˈbɔɪənt/", vi_translation: "có sức nổi", band_level: 7, context_use: "Continental rock is buoyant — too light to sink." },
+      { word: "accumulate", ipa: "/əˈkjuːmjəleɪt/", vi_translation: "tích lũy", band_level: 7, context_use: "'Accumulating strain' — fault stress builds before sudden release." },
+      { word: "outcrop", ipa: "/ˈaʊtkrɒp/", vi_translation: "lộ ra (đá trên mặt đất)", band_level: 8, context_use: "Section of rock visible at the surface." },
+      { word: "equilibrium", ipa: "/ˌiːkwɪˈlɪbriəm/", vi_translation: "trạng thái cân bằng", band_level: 8, context_use: "'Near-equilibrium between uplift and erosion'." },
+    ],
+    vietnamese_speaker_strategies: [
+      STRAT_KEYWORD_TRACE,
+      STRAT_NOT_GIVEN,
+      STRAT_PARAPHRASE,
+      STRAT_HEADINGS_FIRST_LAST,
+      STRAT_QUESTION_ORDER,
+    ],
+    common_mistakes_vi: [
+      "Q9: 'poor place' = 'không tốt'. Tác giả nói ngược lại — đừng vội YES vì đọc lướt thấy 'natural laboratories'.",
+      "Q10 (Tethys): nhiều bạn viết 'Indian Ocean' vì đoạn C nhắc 'across what is now the Indian Ocean'. Câu hỏi yêu cầu sea NẰM GIỮA — Tethys.",
+    ],
+    estimated_time_minutes: 18,
+    difficulty_band: 7.0,
+    word_count: 750,
+  },
+  // ───────────────────────────────────────────────────────────────────
+  // PASSAGE 5 — geography — band 6.5
+  // ───────────────────────────────────────────────────────────────────
+  {
+    id: "ielts_reading_geography_mekong_delta",
+    category: "geography",
+    topic_title_vi: "Đồng bằng sông Cửu Long và hệ thống phù sa",
+    topic_title_en: "The Mekong Delta and its sediment system",
+    passage: `A. The Mekong Delta in southern Vietnam is one of the world's largest river deltas, covering nearly 40,000 square kilometres of low-lying land where the Mekong River meets the South China Sea. About 17 million people live on it. Its existence depends on a continuous supply of mineral sediment, washed down from the river's upper basin in southern China and the Tibetan Plateau and deposited as silt at the river mouth. Without that supply, the land would slowly sink and the sea would advance.
+
+B. Globally, deltas form when a river loses speed as it enters the sea: the load of sand, silt, and clay that the moving water can carry drops out of suspension and accumulates. The Mekong has been doing this for several million years. The modern delta is a fan-shaped accumulation built since the last ice age, when the sea level rose by more than 100 metres and stabilised at roughly its present height about 6,000 years ago.
+
+C. The river's flow varies sharply with the seasons. About 80 per cent of the annual sediment load arrives during the summer monsoon, when discharge can be ten times the dry-season minimum. In the absence of human modification, much of this water spreads across the floodplain, dropping fresh silt and recharging shallow groundwater. Vietnamese farmers have for generations adapted to this cycle by farming flood-tolerant rice varieties and harvesting fish that breed in the inundated fields.
+
+D. Two large changes are now altering the delta. The first is upstream dam construction. Since the early 2000s, more than ten major dams have been built on the Lancang (the Chinese name for the upper Mekong) and on tributaries in Laos. Dams are designed to hold back water for hydropower; in doing so they also trap sediment. Recent studies estimate that the sediment delivered to the delta has fallen by between 50 and 70 per cent compared with pre-dam levels.
+
+E. The second change is sand mining. Sand from the riverbed is dredged to supply the construction industry, especially for concrete in fast-growing cities. Each cubic metre removed lowers the local riverbed slightly. Over years, this causes the channel to deepen, banks to slump, and seawater to intrude further inland during dry months. Vietnamese government surveys put annual sand removal in the high tens of millions of tonnes — a quantity comparable to the natural sediment supply that the dams are now blocking.
+
+F. The combined result is a delta that is sinking. Subsidence rates of one to four centimetres a year have been measured in many districts, partly natural compaction of soft sediments and partly the consequence of groundwater pumping for agriculture. Sea level, in the meantime, is rising at roughly 0.3 centimetres a year. Where these two figures combine, the land is effectively losing elevation against the sea ten times faster than the global average. Saltwater regularly reaches kilometres further inland than it did a generation ago, and saltwater intrusion now affects rice yields in provinces such as Bến Tre and Sóc Trăng during severe dry seasons.
+
+G. Several adaptation strategies are under discussion. Some studies advocate restoring controlled monsoon flooding to selected areas to deposit fresh sediment. Others propose changing crop choices — replacing dry-season rice with brackish-water aquaculture, for instance — and limiting both groundwater extraction and sand mining. Coordination between Mekong-basin countries through the Mekong River Commission has been part of the conversation since the 1990s, but binding agreements on dam operation and sediment release remain difficult to reach. The delta's long-term future will depend on choices made not only in Vietnam but in five upstream countries as well.`,
+    paragraph_count: 7,
+    questions: [
+      { number: 1, type: "matching_headings", question_text: "Match heading i–vii to paragraph A–G.\ni. Why deltas form\nii. Adaptation under discussion\niii. Land below the rising sea\niv. Where the river feeds the people\nv. The summer-monsoon cycle\nvi. Trapped behind upstream dams\nvii. Sand for the construction industry", correct_answer: "A=iv; B=i; C=v; D=vi; E=vii; F=iii; G=ii", explanation_vi: "A: 17 triệu người sống nhờ phù sa → iv. B: deltas hình thành thế nào → i. C: 'summer monsoon' + farming → v. D: dams + Lancang → vi. E: sand mining → vii. F: subsidence + rising sea → iii. G: 'adaptation strategies' → ii." },
+      { number: 2, type: "true_false_not_given", question_text: "The Mekong Delta has reached its present height roughly six thousand years ago.", correct_answer: "TRUE", explanation_vi: "Đoạn B: 'sea level rose … and stabilised at roughly its present height about 6,000 years ago'." },
+      { number: 3, type: "true_false_not_given", question_text: "Most of the river's annual sediment is delivered during the dry season.", correct_answer: "FALSE", explanation_vi: "Đoạn C: '80 per cent … during the summer monsoon'." },
+      { number: 4, type: "true_false_not_given", question_text: "Vietnamese farmers in the delta traditionally rejected the seasonal floods.", correct_answer: "FALSE", explanation_vi: "Đoạn C: farmers 'adapted to this cycle by farming flood-tolerant rice varieties' — họ thích nghi." },
+      { number: 5, type: "true_false_not_given", question_text: "Recent studies estimate sediment to the delta has dropped by 50–70 per cent.", correct_answer: "TRUE", explanation_vi: "Đoạn D: 'fallen by between 50 and 70 per cent'." },
+      { number: 6, type: "true_false_not_given", question_text: "Sand mining is illegal across the entire Mekong-basin region.", correct_answer: "NOT GIVEN", explanation_vi: "Passage không bàn legality. NOT GIVEN." },
+      { number: 7, type: "summary_completion", question_text: "The delta is losing elevation against the sea about ______ times faster than the global average.", correct_answer: "ten", explanation_vi: "Đoạn F: 'losing elevation against the sea ten times faster'." },
+      { number: 8, type: "summary_completion", question_text: "Saltwater intrusion now affects rice yields in provinces such as Bến Tre and ______.", correct_answer: "Sóc Trăng", explanation_vi: "Đoạn F: 'Bến Tre and Sóc Trăng'." },
+      { number: 9, type: "multiple_choice", question_text: "What does paragraph G suggest about basin-level coordination?", options: ["A. It has produced binding rules on dam operation.", "B. It has been discussed since the 1990s but binding agreements remain difficult.", "C. It is led entirely by Vietnam.", "D. It primarily focuses on tourism."], correct_answer: "B", explanation_vi: "Đoạn G: 'since the 1990s, but binding agreements … remain difficult to reach'." },
+      { number: 10, type: "short_answer", question_text: "What is the dual cause of the local subsidence described in paragraph F? (NO MORE THAN THREE WORDS)", correct_answer: "compaction and pumping", explanation_vi: "Đoạn F: 'natural compaction … and … groundwater pumping'." },
+      { number: 11, type: "yes_no_not_given", question_text: "The author thinks the delta's future is solely a Vietnamese decision.", correct_answer: "NO", explanation_vi: "Đoạn G: 'will depend on choices made not only in Vietnam but in five upstream countries as well'." },
+    ],
+    vocabulary_focus: [
+      { word: "subsidence", ipa: "/səbˈsaɪdəns/", vi_translation: "sự sụt lún", band_level: 8, context_use: "Land sinking — central process in paragraph F." },
+      { word: "discharge", ipa: "/ˈdɪstʃɑːdʒ/", vi_translation: "lưu lượng (sông)", band_level: 7, context_use: "Volume of water flowing per unit time — varies with monsoon." },
+      { word: "tributary", ipa: "/ˈtrɪbjətri/", vi_translation: "nhánh sông", band_level: 7, context_use: "Smaller river feeding the main channel." },
+      { word: "intrusion", ipa: "/ɪnˈtruːʒən/", vi_translation: "sự xâm nhập", band_level: 7, context_use: "'Saltwater intrusion' — sea reaching further inland." },
+      { word: "brackish", ipa: "/ˈbrækɪʃ/", vi_translation: "nước lợ", band_level: 8, context_use: "Mix of salt and fresh — used for adapted aquaculture." },
+      { word: "binding", ipa: "/ˈbaɪndɪŋ/", vi_translation: "có tính ràng buộc (pháp lý)", band_level: 7, context_use: "'Binding agreements' = legally enforceable." },
+    ],
+    vietnamese_speaker_strategies: [
+      STRAT_NOT_GIVEN,
+      STRAT_KEYWORD_TRACE,
+      STRAT_HEADINGS_FIRST_LAST,
+      STRAT_PARAPHRASE,
+      STRAT_TIME_BUDGET,
+    ],
+    common_mistakes_vi: [
+      "Q6 (sand mining illegal): cám dỗ chọn FALSE vì passage có vẻ phê phán hoạt động này — nhưng tính hợp pháp KHÔNG được bàn. NOT GIVEN.",
+      "Q4 ('rejected'): nhiều bạn không kịp đọc 'flood-tolerant rice varieties' và chọn TRUE/NOT GIVEN.",
+    ],
+    estimated_time_minutes: 18,
+    difficulty_band: 6.5,
+    word_count: 700,
+  },
+  // ───────────────────────────────────────────────────────────────────
+  // PASSAGE 6 — geography — band 7.5
+  // ───────────────────────────────────────────────────────────────────
+  {
+    id: "ielts_reading_geography_urban_heat_island",
+    category: "geography",
+    topic_title_vi: "Hiệu ứng đảo nhiệt đô thị",
+    topic_title_en: "Urban heat islands",
+    passage: `A. An urban heat island is a region within a city that is consistently warmer than the surrounding rural area. The temperature difference is usually small at noon — frequently no more than one or two degrees Celsius — but builds rapidly after sunset, reaching its peak a few hours into the night, when the centre of a large city can be five to seven degrees Celsius warmer than the open countryside on the same day. Researchers have documented heat islands in cities of every climate, from London to Phoenix and from Tokyo to Manila.
+
+B. The basic mechanism is straightforward. Buildings, roads and pavements absorb solar radiation during the day and re-radiate it slowly through the night. Their materials — concrete, asphalt, brick — store heat far longer than the soils and vegetation they replaced. At the same time, urban areas have less evaporative cooling: where a forest canopy or a wet field would lose heat as water evaporates from leaves and ground, sealed surfaces shed water as run-off without pulling heat with it. Add waste heat from vehicles, air conditioners, and industrial processes, and the night-time imbalance compounds.
+
+C. Geometry matters as much as material. Tall buildings flanking narrow streets produce what climatologists call urban canyons. During the day, these canyons trap solar radiation between facades; after sunset, they restrict the open sky to a narrow strip directly overhead. Heat radiated upwards from streets and walls bounces between buildings rather than escaping unimpeded into the cold sky. The deeper and narrower a canyon, the slower the night-time cooling.
+
+D. Heat-island intensity is also moderated by wind. A strong breeze can ventilate a city quickly, mixing warmer urban air with cooler air from upwind. On still nights — common in stable summer weather — the absence of wind allows the imbalance to develop fully. This is one reason why heat-wave fatalities are usually concentrated in densely built city centres rather than in surrounding suburbs: not only are central temperatures higher, but the pollution and humidity that worsen heat stress are also poorly dispersed.
+
+E. The public-health consequences are now well documented. During the European heatwave of 2003, large cities reported substantially higher mortality than rural areas at the same temperatures, and a similar pattern was observed in the British heatwaves of 2018 and 2022. The most vulnerable groups are the elderly, those with pre-existing cardiovascular conditions, infants, and outdoor workers. Within cities, the health burden is itself unequally distributed: lower-income districts tend to have less tree canopy, smaller parks, and older housing without air conditioning, all of which raise local heat exposure.
+
+F. A range of mitigations is now being trialled in cities worldwide. Reflective roofing, sometimes called "cool roofs", uses white or light-coloured materials that reflect rather than absorb solar radiation. Green roofs and walls add vegetation directly onto buildings, providing both evaporative cooling and shade. Increased street-tree planting can reduce summer surface temperatures along a corridor by several degrees. So can the choice of permeable rather than impermeable paving, which allows water to evaporate slowly from beneath the pavement instead of rushing into a storm drain.
+
+G. None of these measures by itself solves the heat-island effect, but combinations can substantially lessen it. Singapore, Tokyo, Melbourne and Medellín have all set quantified urban-cooling targets, and early evaluations suggest measurable improvements in the streets where coordinated investments have been made. As climate change pushes many cities into more frequent, more intense heatwaves, the urban heat island has shifted from being treated as a curiosity of urban climatology to being a routine constraint on planning and public-health decisions.`,
+    paragraph_count: 7,
+    questions: [
+      { number: 1, type: "matching_headings", question_text: "Match heading i–vii to paragraph A–G.\ni. Geometry traps the night-time heat\nii. Cooling targets and combined investment\niii. Materials, surfaces, and waste heat\niv. Defining the night-time temperature gap\nv. Reflective roofs, green roofs, and trees\nvi. Health burden and inequality\nvii. Stillness and concentrated risk", correct_answer: "A=iv; B=iii; C=i; D=vii; E=vi; F=v; G=ii", explanation_vi: "A định nghĩa & đo nhiệt độ ban đêm → iv. B vật liệu + waste heat → iii. C 'urban canyons' → i. D 'still nights' + concentrated mortality → vii. E sức khoẻ + bất bình đẳng → vi. F cool roof, green roof, trees, paving → v. G mục tiêu định lượng + đầu tư phối hợp → ii." },
+      { number: 2, type: "true_false_not_given", question_text: "Heat-island temperature differences are usually largest at midday.", correct_answer: "FALSE", explanation_vi: "Đoạn A: 'small at noon' — đỉnh chênh vài giờ sau hoàng hôn." },
+      { number: 3, type: "true_false_not_given", question_text: "Concrete and asphalt store heat for a shorter time than soils and vegetation.", correct_answer: "FALSE", explanation_vi: "Đoạn B: 'store heat far longer than the soils and vegetation they replaced'." },
+      { number: 4, type: "true_false_not_given", question_text: "Strong wind can mix urban and rural air and reduce the heat-island intensity.", correct_answer: "TRUE", explanation_vi: "Đoạn D: 'A strong breeze can ventilate a city quickly, mixing warmer urban air with cooler air from upwind'." },
+      { number: 5, type: "true_false_not_given", question_text: "Heat-wave fatalities are evenly distributed between city centres and suburbs.", correct_answer: "FALSE", explanation_vi: "Đoạn D: 'concentrated in densely built city centres rather than in surrounding suburbs'." },
+      { number: 6, type: "summary_completion", question_text: "Tall buildings along narrow streets create what climatologists call urban ______.", correct_answer: "canyons", explanation_vi: "Đoạn C: 'urban canyons'." },
+      { number: 7, type: "summary_completion", question_text: "Light-coloured roofing that reflects sunlight is sometimes called a 'cool ______'.", correct_answer: "roof", explanation_vi: "Đoạn F: 'reflective roofing, sometimes called \"cool roofs\"'. Số ít vì câu đề dùng 'a'." },
+      { number: 8, type: "multiple_choice", question_text: "Why are lower-income districts more exposed to heat-island effects?", options: ["A. They have more trees and parks.", "B. They have less tree canopy, smaller parks, and older housing.", "C. They have universal air conditioning.", "D. They are mainly outside city centres."], correct_answer: "B", explanation_vi: "Đoạn E liệt kê chính xác — B đúng nguyên văn." },
+      { number: 9, type: "multiple_choice", question_text: "How does paragraph G describe the policy status of the heat-island problem?", options: ["A. Still treated as a curiosity by city planners.", "B. A routine constraint on planning and public-health decisions.", "C. Fully solved in tropical cities.", "D. Applies only to cities in Asia."], correct_answer: "B", explanation_vi: "Đoạn G: 'shifted from being treated as a curiosity … to being a routine constraint'." },
+      { number: 10, type: "matching_information", question_text: "Which paragraph contains:\n(i) the role of evaporation in urban temperature\n(ii) examples of cities that have set numeric cooling targets", correct_answer: "i=B; ii=G", explanation_vi: "(i) đoạn B: 'less evaporative cooling … sealed surfaces shed water as run-off'. (ii) đoạn G: Singapore/Tokyo/Melbourne/Medellín 'quantified urban-cooling targets'." },
+    ],
+    vocabulary_focus: [
+      { word: "radiation", ipa: "/ˌreɪdiˈeɪʃən/", vi_translation: "bức xạ", band_level: 7, context_use: "Solar radiation absorbed by surfaces during the day." },
+      { word: "evaporative", ipa: "/ɪˈvæpərətɪv/", vi_translation: "(thuộc về) bay hơi", band_level: 8, context_use: "'Evaporative cooling' — heat loss through water vaporising." },
+      { word: "ventilate", ipa: "/ˈvɛntɪleɪt/", vi_translation: "thông gió", band_level: 7, context_use: "Wind 'ventilates' a city by exchanging warm and cool air." },
+      { word: "mortality", ipa: "/mɔːˈtæləti/", vi_translation: "tỉ lệ tử vong", band_level: 8, context_use: "Public-health metric — death rate during heatwaves." },
+      { word: "permeable", ipa: "/ˈpɜːmiəbəl/", vi_translation: "thấm được", band_level: 8, context_use: "'Permeable paving' lets water seep through and evaporate." },
+      { word: "mitigation", ipa: "/ˌmɪtɪˈɡeɪʃən/", vi_translation: "biện pháp giảm thiểu", band_level: 7, context_use: "Strategies that reduce, but do not eliminate, the effect." },
+    ],
+    vietnamese_speaker_strategies: [
+      STRAT_TFNG_VS_YNNG,
+      STRAT_PARAPHRASE,
+      STRAT_KEYWORD_TRACE,
+      STRAT_QUESTION_ORDER,
+      STRAT_WORD_LIMIT,
+    ],
+    common_mistakes_vi: [
+      "Q10 (matching information): 'evaporation' không lặp ở đoạn F (cây + permeable paving cũng evaporative). Cẩn thận chọn đoạn B vì nó nói về 'evaporative cooling' rõ nhất.",
+      "Q3: nhiều bạn nhầm 'shorter' và 'longer' khi đọc nhanh. Đáp án FALSE vì passage nói LONGER.",
+    ],
+    estimated_time_minutes: 18,
+    difficulty_band: 7.5,
+    word_count: 760,
+  },
 ];
 
 // Selectors and lookup helpers — exported names are stable.
