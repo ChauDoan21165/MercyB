@@ -22,6 +22,7 @@ import funeralsPack from "./funerals.json";
 import ancestorPack from "./ancestor-veneration.json";
 import phoFoodPack from "./pho-and-food.json";
 import doctorPack from "./doctor-translator.json";
+import dailyLifePack from "./daily-life.json";
 
 // ── Pack identifiers ─────────────────────────────────────────────────────
 
@@ -33,6 +34,7 @@ export const CULTURAL_PACK_IDS = [
   "ancestor-veneration",
   "pho-and-food",
   "doctor-translator",
+  "daily-life",
 ] as const;
 
 export type CulturalPackId = (typeof CULTURAL_PACK_IDS)[number];
@@ -113,6 +115,7 @@ const RAW_PACKS: Record<CulturalPackId, unknown> = {
   "ancestor-veneration": ancestorPack,
   "pho-and-food": phoFoodPack,
   "doctor-translator": doctorPack,
+  "daily-life": dailyLifePack,
 };
 
 export const VN_CULTURAL_PACKS: Readonly<Record<CulturalPackId, CulturalPack>> =

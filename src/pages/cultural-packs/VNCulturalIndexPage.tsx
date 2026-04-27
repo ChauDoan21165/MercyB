@@ -1,7 +1,9 @@
 // src/pages/cultural-packs/VNCulturalIndexPage.tsx
 //
-// Step 10 — /culture/vn entry point. Lists the seven cultural packs.
-// Free-tier feature, no entitlement gating — community building.
+// Step 10 — /culture/vn entry point. Lists the eight cultural packs
+// (the original seven plus the daily-life pack added in the Option-B
+// expansion). Free-tier feature, no entitlement gating — community
+// building.
 
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
