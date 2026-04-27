@@ -1,0 +1,10 @@
+{
+  "campaign": "reengagement_active_then_silent",
+  "bucket": "active_then_silent",
+  "tone": "warm, friendly, low-pressure — acknowledge the gap without measuring it",
+  "subject_vi": "Mercy nhớ bạn — phòng học cũ vẫn đợi",
+  "subject_en": "Mercy misses you — your room is still here",
+  "body_vi": "Chào {{first_name}},\n\nTuần vừa rồi không thấy bạn ghé MercyBlade. Không sao cả — Mercy biết cuộc sống bận, có khi là Tết, có khi là kỳ thi, có khi là việc mới.\n\nMercy chỉ muốn nói: phòng học cũ của bạn vẫn ở nguyên đó. Tiến độ của bạn vẫn được giữ. Khi nào bạn có 5 phút rảnh, hãy thử quay lại nhé — Mercy đã chuẩn bị sẵn vài bài học hợp với trình độ của bạn.\n\nMở MercyBlade: https://mercyblade.com\n\nMercy 💚",
+  "body_en": "Hi {{first_name}},\n\nMercy didn't see you at MercyBlade this week. That's totally OK — life gets busy: Tết, exams, new job, anything.\n\nJust wanted to say your room is still here. Your progress is saved. Whenever you have 5 minutes, come back — Mercy has a few lessons ready that match your level.\n\nOpen MercyBlade: https://mercyblade.com\n\nMercy 💚",
+  "notes": "Free user who went silent for 7+ days but was active in the last 30. Tone: warm, no urgency, no streak language. Tết / exams / new job naming is intentional — those are the actual reasons Vietnamese learners drop off, and naming them shows Mercy understands the user's life. NEVER use 'we miss you' (impersonal); always 'Mercy nhớ bạn' (personal). NO guilt-trip framing."
+}

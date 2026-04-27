@@ -1,0 +1,10 @@
+{
+  "campaign": "reengagement_added_something_new",
+  "bucket": "broadcast",
+  "tone": "newsletter-warm — share what's new, no asks, no urgency",
+  "subject_vi": "Tháng này Mercy thêm gì cho MercyBlade",
+  "subject_en": "What Mercy added to MercyBlade this month",
+  "body_vi": "Chào {{first_name}},\n\nMỗi tháng Mercy gửi một email ngắn kể những thứ mới Mercy thêm vào MercyBlade. Tháng này:\n\n• {{feature_1}}\n• {{feature_2}}\n• {{feature_3}}\n\nNếu thấy hay, ghé thử: https://mercyblade.com\nNếu không, không sao — đợi tháng sau Mercy kể tiếp.\n\nMercy 💚",
+  "body_en": "Hi {{first_name}},\n\nEach month Mercy sends a short email about what's new at MercyBlade. This month:\n\n• {{feature_1}}\n• {{feature_2}}\n• {{feature_3}}\n\nIf any of it sounds useful, drop by: https://mercyblade.com\nIf not, no worries — wait for next month's note.\n\nMercy 💚",
+  "notes": "Monthly broadcast to ALL emailable users (manual trigger only — never on the daily cron). Placeholders {{feature_1..3}} must be filled by the admin invocation; if any are blank, the function should refuse to send. This is the ONE template designed for breadth, not bucket targeting — explicitly NOT a sales email; it's a 'we're still building' signal that doubles as a reactivation nudge. Keep the body under ~150 words."
+}

@@ -1,0 +1,10 @@
+{
+  "campaign": "reengagement_almost_lapsed",
+  "bucket": "almost_lapsed",
+  "tone": "honest, transparent — name the renewal, give the user agency, no guilt",
+  "subject_vi": "Sắp đến ngày gia hạn — Mercy muốn nói thẳng với bạn",
+  "subject_en": "Renewal coming up — Mercy wants to be honest with you",
+  "body_vi": "Chào {{first_name}},\n\nGói của bạn sắp đến ngày gia hạn. Mercy nhận thấy tháng vừa qua bạn dùng MercyBlade khá ít — và Mercy muốn nói thẳng:\n\nNếu bạn không thấy giá trị, hủy gia hạn cũng ổn. Mercy không muốn bạn trả phí cho một thứ không hợp với mình.\n\nNếu bạn vẫn muốn tiếp tục nhưng cần một cú huých để quay lại đều:\n\n• 1 phòng học mỗi ngày, 5 phút thôi — Mercy gợi ý phòng đầu tiên ở đây: https://mercyblade.com\n• Hoặc đặt mục tiêu cụ thể (IELTS 7.0, phỏng vấn tháng 6, vv.) — trả lời email này nói mục tiêu của bạn, Mercy lên lộ trình nhanh nhất.\n\nDù bạn chọn cách nào, Mercy tôn trọng. Cảm ơn bạn đã ủng hộ MercyBlade tháng vừa qua.\n\nMercy 💚",
+  "body_en": "Hi {{first_name}},\n\nYour subscription is up for renewal soon. Mercy noticed you've been at MercyBlade only a little this past month — and Mercy wants to be straight with you:\n\nIf it's not worth it to you, canceling renewal is fine. Mercy doesn't want you paying for something that isn't a fit.\n\nIf you'd like to keep going but need a nudge to come back:\n\n• 1 room per day, 5 minutes is enough — Mercy lined up your first one here: https://mercyblade.com\n• Or set a real goal (IELTS 7.0, interview in June, etc.) — hit reply with your goal and Mercy will route the fastest path.\n\nWhichever way, Mercy respects it. Thank you for supporting MercyBlade this past month.\n\nMercy 💚",
+  "notes": "Paid user 25+ days into period with low engagement (renewal risk). Counter-intuitive but proven: explicitly giving permission to cancel BUILDS trust and reduces involuntary churn-after-charge spam complaints. The reply-with-goal path is the highest-yield re-engagement vector for paying users. NEVER use 'don't lose your progress' — that's loss-aversion guilt, violates outcomes-over-engagement non-negotiable."
+}

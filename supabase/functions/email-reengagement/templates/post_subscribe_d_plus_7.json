@@ -1,0 +1,10 @@
+{
+  "campaign": "reengagement_post_subscribe_d_plus_7",
+  "bucket": "post_subscribe_disengaged",
+  "tone": "concerned without guilt — they're paying, they should be getting value",
+  "subject_vi": "Bạn đang trả phí — Mercy giúp được gì để bạn dùng nhiều hơn?",
+  "subject_en": "You're a paying member — what can Mercy help you use more?",
+  "body_vi": "Chào {{first_name}},\n\nMercy thấy bạn đang là thành viên trả phí, nhưng tuần này chưa ghé MercyBlade. Mercy không muốn bạn trả phí mà không thấy giá trị.\n\nNếu có điều gì cản trở:\n\n• Không biết bắt đầu lại từ đâu? Mercy gợi ý: phòng cuối bạn học là điểm hợp lý để tiếp tục — https://mercyblade.com\n• Nội dung chưa hợp với mục tiêu của bạn (IELTS, công việc, du học)? Trả lời email này, Mercy sẽ chỉ đường nhanh nhất.\n• Đã đạt mục tiêu rồi và không cần học nữa? Mercy chúc mừng — và cũng muốn biết để cải thiện cho người khác.\n\nMercy 💚",
+  "body_en": "Hi {{first_name}},\n\nMercy noticed you're a paying member but haven't been at MercyBlade this week. Mercy doesn't want you paying for something you're not using.\n\nIf something is in the way:\n\n• Not sure where to pick up? Mercy suggests: your last room is a clean place to continue — https://mercyblade.com\n• Content doesn't match your goal (IELTS, work, study abroad)? Hit reply and Mercy will point you the fastest way.\n• Already hit your goal and don't need more lessons? Congrats — and please tell Mercy so future learners get better paths.\n\nMercy 💚",
+  "notes": "Paid user silent 7+ days. Tone: concerned, not desperate. The three-branch structure ('lost? wrong content? graduated?') gives the user an obvious low-cost reply path. NO churn-prevention language ('don't cancel') — that signals weakness. Just ask what's blocking them. Graduating users are not a problem; they're advocates."
+}
