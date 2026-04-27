@@ -36,17 +36,39 @@ describe("streakCopy — exact strings (Chau-approved)", () => {
   it("statusPills match the dictionary", () => {
     expect(statusPills.active).toBe("Active · Đang duy trì");
     expect(statusPills.grace).toBe("Grace period · Còn ân hạn");
-    expect(statusPills.warning).toBe("Almost lost · Sắp mất chuỗi");
+    // Shame-audit fix (reports/streak-shame-audit-2026-04-26.md § F-1):
+    // warning pill renamed away from the "Almost lost / Sắp mất chuỗi"
+    // loss frame to a non-loss frame.
+    expect(statusPills.warning).toBe("Grace day open · Còn ngày ân hạn");
     expect(statusPills.reset).toBe("Reset · Đã reset");
   });
 
+  it("warning pill never volunteers loss-framing words", () => {
+    // Voice guideline: never volunteer 'lost / mất / broken / gãy'
+    // in system-initiated copy. (See docs/voice-guidelines-vn.md.)
+    const w = statusPills.warning.toLowerCase();
+    expect(w).not.toContain("lost");
+    expect(w).not.toContain("mất");
+    expect(w).not.toContain("broken");
+  });
+
   it("graceMessage matches the dictionary", () => {
+    // Shame-audit fix § F-2: rewritten from the "protect your streak"
+    // loss-prevention frame to permission-to-rest framing. The new
+    // copy names tiredness explicitly with "Mệt thì cũng không sao."
     expect(graceMessage.en).toBe(
-      "You have 1 day of grace left. Study anything today to protect your streak!",
+      "You still have a grace day — a few minutes today is enough. If you're tired, that's okay too.",
     );
     expect(graceMessage.vi).toBe(
-      "Bạn còn 1 ngày ân hạn. Học bất kỳ gì hôm nay là giữ được chuỗi ngay!",
+      "Bạn còn ngày ân hạn — học vài phút hôm nay là đủ. Mệt thì cũng không sao.",
     );
+  });
+
+  it("graceMessage carries permission-to-rest framing in VN", () => {
+    // Voice guideline rule 4: the highest-leverage line in the audit
+    // is "Mệt thì cũng không sao." Lock it as a content invariant so
+    // a future copy edit can't quietly drop it.
+    expect(graceMessage.vi).toContain("Mệt thì cũng không sao");
   });
 
   it("emptyState matches the dictionary", () => {

@@ -43,11 +43,17 @@ const cardStyle: React.CSSProperties = {
   textAlign: "left",
 };
 
+// Shame-audit fix (reports/streak-shame-audit-2026-04-26.md § F-5):
+// painting a beginner's own score in alarm-red below 60 reads as a
+// "bad student" report-card signal, especially for VN learners with
+// school-era red-ink associations. Sub-60 now uses neutral slate; the
+// number is still visible, the alarm color is gone. Green stays for
+// genuine wins (≥80); amber kept for the 60-79 progressing band.
 function scoreColor(n: number | null): string {
   if (n === null) return "#94a3b8";
   if (n >= 80) return "#059669";
   if (n >= 60) return "#d97706";
-  return "#dc2626";
+  return "#64748b";
 }
 
 export default function WeeklyProgressWidget() {
@@ -94,15 +100,18 @@ export default function WeeklyProgressWidget() {
 
   const score = data.thisWeek.averageScore;
   const delta = data.scoreDelta;
+  // Shame-audit fix § F-4: a negative weekly delta painted red with a
+  // ↓ arrow reads as "you got worse" — a shame trigger we don't want
+  // for a learner whose score dropped 78 → 75. Arrow stays as the
+  // informational signal; color is neutralized to slate for negatives.
+  // Green is reserved for positive delta only.
   const arrow = delta === null ? "→" : delta > 0 ? "↑" : delta < 0 ? "↓" : "→";
   const arrowColor =
     delta === null
       ? "#64748b"
       : delta > 0
         ? "#059669"
-        : delta < 0
-          ? "#dc2626"
-          : "#64748b";
+        : "#64748b";
 
   return (
     <button
