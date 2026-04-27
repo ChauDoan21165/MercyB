@@ -31,6 +31,7 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useUserAccess } from "@/hooks/useUserAccess";
+import CostSummaryWidget from "@/components/admin/CostSummaryWidget";
 import {
   getAppFromSearch,
   getAppFromStorage,
@@ -679,6 +680,7 @@ export default function AdminDashboard() {
     { title: "Audio Coverage", desc: "Coverage checks for room audio (read-only tools).", href: "/admin/audio-coverage", badge: "READY" },
     { title: "Feature Flags", desc: "Toggle global flags or add users to per-flag cohorts.", href: "/admin/feature-flags", badge: "SAFE" },
     { title: "Analytics", desc: "DAU, feature usage, funnel, and room popularity (Level 9+).", href: "/admin/analytics", badge: "READY" },
+    { title: "Costs / Chi phí", desc: "Daily spend across OpenAI, ElevenLabs, Resend, Azure (Level 9+).", href: "/admin/cost-monitoring", badge: "READY" },
   ];
 
   function go(href?: string) {
@@ -752,6 +754,10 @@ export default function AdminDashboard() {
                   Open Rooms
                 </button>
               </div>
+            </div>
+
+            <div style={{ marginBottom: 14, maxWidth: 320 }}>
+              <CostSummaryWidget />
             </div>
 
             <div style={{ ...card, padding: 14, marginBottom: 14 }}>

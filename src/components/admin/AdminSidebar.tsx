@@ -35,6 +35,7 @@ import {
   Search,
   Flag,
   BarChart3,
+  TrendingDown,
 } from "lucide-react";
 import { NavLink } from "@/components/NavLink";
 
@@ -73,6 +74,7 @@ const billingItems: AdminNavItem[] = [
   { title: "Payments", url: "/admin/payments", icon: DollarSign },
   { title: "Subscriptions", url: "/admin/subscriptions", icon: CreditCard },
   { title: "Access Codes", url: "/admin/access-codes", icon: Gift },
+  { title: "Costs / Chi phí", url: "/admin/cost-monitoring", icon: TrendingDown },
 ];
 
 const toolsItems: AdminNavItem[] = [
