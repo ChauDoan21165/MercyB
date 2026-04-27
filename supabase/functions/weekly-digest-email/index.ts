@@ -30,6 +30,10 @@ import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.49.1";
 import { Resend } from "https://esm.sh/resend@2.0.0";
+import {
+  buildListUnsubscribeHeaders,
+  withFooter,
+} from "../_shared/unsubscribe.ts";
 
 import digestTemplate from "./templates/digest.json" with { type: "json" };
 import {
@@ -96,6 +100,7 @@ type TargetUser = {
   id: string;
   email: string;
   attempts_count: number;
+  email_unsubscribe_token: string | null;
 };
 
 async function loadDigestAggregate(
@@ -132,7 +137,9 @@ async function loadCandidates(
   const weekEnd = addDays(weekStart, 7);
   const { data: profiles, error: profileErr } = await client
     .from("profiles")
-    .select("user_id, email, email_weekly_digest_enabled")
+    .select(
+      "user_id, email, email_weekly_digest_enabled, email_unsubscribe_token",
+    )
     .eq("email_weekly_digest_enabled", true)
     .not("email", "is", null);
   if (profileErr || !profiles) return [];
@@ -171,6 +178,10 @@ async function loadCandidates(
       id: p.user_id as string,
       email: String(p.email),
       attempts_count: attemptCounts.get(p.user_id as string) ?? 0,
+      email_unsubscribe_token:
+        typeof (p as { email_unsubscribe_token?: unknown }).email_unsubscribe_token === "string"
+          ? ((p as { email_unsubscribe_token?: string }).email_unsubscribe_token ?? null)
+          : null,
     }))
     .sort((a, b) => b.attempts_count - a.attempts_count);
 }
@@ -290,14 +301,39 @@ async function runPass(
       continue;
     }
 
+    // Compliance footer + Gmail/Apple one-click headers. Skip the send
+    // if the token is missing rather than emit footer-less mail (CASL).
+    if (!target.email_unsubscribe_token) {
+      failed += 1;
+      await logSend(client, {
+        user_id: target.id,
+        email: target.email,
+        week_key: weekStart,
+        status: "failed",
+        error_message: "missing_unsubscribe_token",
+        provider_message_id: null,
+      });
+      continue;
+    }
+    const baseBody = {
+      text: rendered.body_vi + "\n\n— — —\n\n" + rendered.body_en,
+      html: toEmailHtml(rendered),
+    };
+    const { text: footerText, html: footerHtml } = withFooter(
+      baseBody,
+      target.email_unsubscribe_token,
+    );
+    const headers = buildListUnsubscribeHeaders(target.email_unsubscribe_token);
+
     try {
       const { data, error } = await resend.emails.send({
         from: FROM_ADDRESS,
         to: [target.email],
         replyTo: REPLY_TO,
         subject: rendered.subject,
-        html: toEmailHtml(rendered),
-        text: rendered.body_vi + "\n\n— — —\n\n" + rendered.body_en,
+        html: footerHtml,
+        text: footerText,
+        headers,
       });
 
       if (error) {

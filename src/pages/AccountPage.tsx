@@ -557,6 +557,19 @@ export default function AccountPage() {
                 </button>
               ) : null}
 
+              <button
+                type="button"
+                style={buttonBase}
+                onClick={() => nav("/account/notifications")}
+                aria-label="Notification preferences"
+                data-testid="account-notification-prefs-link"
+              >
+                <BiLabel
+                  en="Notification preferences"
+                  vi="Tùy chọn email"
+                />
+              </button>
+
               {pronunciationFlagEnabled ? (
                 <button
                   type="button"

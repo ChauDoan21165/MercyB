@@ -40,6 +40,11 @@ const TierDetail          = lazy(() => import("@/pages/TierDetail"));
 const LoginPage           = lazy(() => import("@/pages/LoginPage"));
 const ResetPasswordPage   = lazy(() => import("@/pages/ResetPasswordPage"));
 
+// Email preferences — public /unsubscribe (token-based) + auth-required
+// /account/notifications.
+const UnsubscribePage             = lazy(() => import("@/pages/Unsubscribe"));
+const NotificationPreferencesPage = lazy(() => import("@/pages/account/NotificationPreferences"));
+
 const PlacementWelcomePage = lazy(() => import("@/pages/placement/WelcomePage"));
 const PlacementWhoForPage  = lazy(() => import("@/pages/placement/WhoForPage"));
 const PlacementTestPage    = lazy(() => import("@/pages/placement/TestPage"));
@@ -765,6 +770,20 @@ export default function AppRouter() {
                 <LazyPage><AccountPage /></LazyPage>
               </RequireAuth>
             }
+          />
+          {/* Notification preferences — auth-required granular email opt-out. */}
+          <Route path="/account/notifications"
+            element={
+              <RequireAuth>
+                <LazyPage><NotificationPreferencesPage /></LazyPage>
+              </RequireAuth>
+            }
+          />
+          {/* Public token-based one-click unsubscribe. NO auth — the token
+              IS the credential. Linked from every marketing email footer
+              and from the List-Unsubscribe header. */}
+          <Route path="/unsubscribe"
+            element={<LazyPage><UnsubscribePage /></LazyPage>}
           />
           <Route path="/referral"
             element={

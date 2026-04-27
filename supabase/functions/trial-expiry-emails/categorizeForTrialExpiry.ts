@@ -65,6 +65,10 @@ export interface TrialUserRow {
   trial_ends_at: string | null;
   trial_end: string | null;
   trial_extension_days: number | null;
+  /** Per-user opt-out for this email category (default true). */
+  email_trial_expiry_enabled?: boolean | null;
+  /** Required for the unsubscribe footer + List-Unsubscribe header. */
+  email_unsubscribe_token?: string | null;
 }
 
 export type TrialStage =

@@ -36,6 +36,10 @@ import {
   categorizeForTrialExpiry,
   type TrialUserRow,
 } from "./categorizeForTrialExpiry.ts";
+import {
+  buildListUnsubscribeHeaders,
+  withFooter,
+} from "../_shared/unsubscribe.ts";
 
 import dMinus1Template from "./templates/trial-d-1.json" with { type: "json" };
 import dPlus1Template from "./templates/trial-plus-1.json" with { type: "json" };
@@ -186,8 +190,10 @@ Deno.serve(async (req) => {
       // schema accumulation — same fall-through pattern as azure-phoneme/
       // checkTrialAccess). categorizeForTrialExpiry walks them in priority
       // order and falls back to created_at + FREE_TRIAL_DAYS + extension.
+      // email_trial_expiry_enabled + email_unsubscribe_token power the
+      // opt-out gate and the per-message List-Unsubscribe header.
       .select(
-        "id, email, preferred_name, created_at, tier, trial_extension_days, trial_expires_at, trial_ends_at, trial_end",
+        "id, email, preferred_name, created_at, tier, trial_extension_days, trial_expires_at, trial_ends_at, trial_end, email_trial_expiry_enabled, email_unsubscribe_token",
       );
 
     if (profilesError) {
@@ -197,7 +203,28 @@ Deno.serve(async (req) => {
 
     const rows = (profiles ?? []) as TrialUserRow[];
     const now = new Date();
-    const buckets = categorizeForTrialExpiry(rows, now);
+
+    // Honor per-user opt-out BEFORE bucketing. Anyone who turned off
+    // trial-expiry email is removed from the pool; we log the skip so
+    // ops can see the gate is working.
+    let optedOut = 0;
+    const optedInRows = rows.filter((r) => {
+      // Default-true: an unset/null flag means "opted in" (the column
+      // is NOT NULL DEFAULT true post-migration; this is just defensive).
+      if (r.email_trial_expiry_enabled === false) {
+        optedOut += 1;
+        return false;
+      }
+      return true;
+    });
+    if (optedOut > 0) {
+      console.log("[trial-expiry-emails] skipped:user_unsubscribed", {
+        count: optedOut,
+        category: "trial_expiry",
+      });
+    }
+
+    const buckets = categorizeForTrialExpiry(optedInRows, now);
 
     // ── Queue pending rows + capture inserted ids for the send pass ─────
     const queueable: { user: TrialUserRow; campaign: string }[] = [
@@ -272,7 +299,26 @@ Deno.serve(async (req) => {
 
       const firstName = pickFirstName(user);
       const subject = bilingualSubject(template);
-      const { text, html } = bilingualBody(template, firstName);
+      const baseBody = bilingualBody(template, firstName);
+
+      // Compliance + deliverability: every marketing email gets the
+      // bilingual unsubscribe footer and the List-Unsubscribe header.
+      // Token must be present — the migration backfilled all profiles,
+      // and the BEFORE INSERT trigger guarantees future rows have one;
+      // if it's missing, we skip the send rather than emit footer-less
+      // mail that would fail CASL/GDPR.
+      const token = user.email_unsubscribe_token ?? null;
+      if (!token) {
+        const msg = "missing_unsubscribe_token";
+        console.warn("[trial-expiry-emails] skipping send:", { user_id: user.id, msg });
+        await adminClient
+          .from("email_sends_log")
+          .update({ status: "skipped", error_message: msg, sent_at: new Date().toISOString() })
+          .eq("id", id);
+        continue;
+      }
+      const { text, html } = withFooter(baseBody, token);
+      const headers = buildListUnsubscribeHeaders(token);
 
       try {
         const { data: emailData, error: emailError } = await resend.emails.send({
@@ -282,6 +328,7 @@ Deno.serve(async (req) => {
           subject,
           text,
           html,
+          headers,
         });
 
         if (emailError) {
