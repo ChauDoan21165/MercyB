@@ -200,6 +200,63 @@ export async function verifyChallenge(
   }
 }
 
+export type AalLevels = {
+  /** What the session is at right now. Either "aal1" (password only)
+   * or "aal2" (password + TOTP verified). */
+  currentLevel: "aal1" | "aal2" | null;
+  /** What this user could reach if they completed any pending
+   * challenges. If currentLevel < nextLevel a challenge is required. */
+  nextLevel: "aal1" | "aal2" | null;
+};
+
+/**
+ * Returns the current and next assurance levels for the signed-in user.
+ *
+ * Decision logic for the client guard:
+ *   - currentLevel === null: not signed in.
+ *   - currentLevel === nextLevel === "aal1": user has no factors;
+ *     they're as authenticated as they can get. Pass through.
+ *   - currentLevel === nextLevel === "aal2": fully MFA-authed. Pass.
+ *   - currentLevel === "aal1" && nextLevel === "aal2": user has a
+ *     verified factor but the session has not satisfied it yet.
+ *     The client guard MUST redirect to a challenge page.
+ *
+ * This wraps `supabase.auth.mfa.getAuthenticatorAssuranceLevel()`
+ * which reads from the local session JWT — no network round-trip in
+ * the modern SDK.
+ */
+export async function getAal(): Promise<AalLevels> {
+  try {
+    const { data, error } = await supabase.auth.mfa.getAuthenticatorAssuranceLevel();
+    if (error) throw error;
+    return {
+      currentLevel: (data?.currentLevel ?? null) as AalLevels["currentLevel"],
+      nextLevel: (data?.nextLevel ?? null) as AalLevels["nextLevel"],
+    };
+  } catch (err) {
+    captureMfaError("list_factors", err, { context: "getAal" });
+    throw err;
+  }
+}
+
+/**
+ * Convenience predicate used by the route guard. Returns `true` when
+ * the user holds a verified factor but their session is at aal=1 —
+ * meaning we should force them to /auth/challenge before letting them
+ * reach any sensitive route. Falls back to `false` on any error so
+ * a transient SDK hiccup doesn't lock the user out of the app
+ * entirely (the server-side RLS gate from the 20260524 migration is
+ * the actual security boundary; this is the UX layer).
+ */
+export async function needsAal2Upgrade(): Promise<boolean> {
+  try {
+    const { currentLevel, nextLevel } = await getAal();
+    return currentLevel === "aal1" && nextLevel === "aal2";
+  } catch {
+    return false;
+  }
+}
+
 /**
  * Disable MFA. Caller must already have re-authenticated (Supabase
  * enforces aal=2 before unenroll succeeds, so the user must enter a
