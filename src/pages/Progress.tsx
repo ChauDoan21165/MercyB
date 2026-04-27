@@ -164,11 +164,16 @@ const primaryBtn: React.CSSProperties = {
 
 // ── Helpers ───────────────────────────────────────────────────────────
 
+// Shame-audit fix (reports/streak-shame-audit-2026-04-26.md § F-5):
+// matched to WeeklyProgressWidget's scoreColor — sub-60 uses neutral
+// slate, NOT alarm-red. A 55 score for a beginner is normal, not an
+// emergency; painting it red teaches the user that being a beginner
+// is wrong. Number stays visible.
 function scoreColor(n: number | null): string {
   if (n === null) return "#94a3b8";
   if (n >= 80) return "#059669";
   if (n >= 60) return "#d97706";
-  return "#dc2626";
+  return "#64748b";
 }
 
 function formatDeltaPrefix(n: number | null): string {
@@ -514,8 +519,10 @@ export default function ProgressPage() {
 
 function HeroCard({ summary }: { summary: WeeklyProgress }) {
   const delta = summary.scoreDelta;
+  // Shame-audit fix § F-4: matched to WeeklyProgressWidget — negative
+  // delta uses neutral slate, not alarm-red. Green for positive only.
   const deltaColor =
-    delta === null ? "#94a3b8" : delta > 0 ? "#059669" : delta < 0 ? "#dc2626" : "#64748b";
+    delta === null ? "#94a3b8" : delta > 0 ? "#059669" : "#64748b";
   const deltaArrow = delta === null ? "→" : delta > 0 ? "↑" : delta < 0 ? "↓" : "→";
 
   return (
@@ -838,10 +845,16 @@ function BadgesRow({ summary }: { summary: WeeklyProgress }) {
       </div>
 
       <div style={{ ...cardStyle, padding: 16 }}>
+        {/* Shame-audit fix § F-6: the "Still working on" copy is good
+            (growth-mindset framing) but the alarm-red color and the
+            red-50 list-item backgrounds undid the warm wording. The
+            section now reads as a tip card, not a failure card. The
+            per-phoneme score still uses scoreColor for an at-a-glance
+            cue — that's a single number, not a whole card. */}
         <div
           style={{
             ...sectionHeader,
-            color: "#dc2626",
+            color: "#0f172a",
             display: "flex",
             alignItems: "center",
             gap: 6,
@@ -863,7 +876,7 @@ function BadgesRow({ summary }: { summary: WeeklyProgress }) {
                   justifyContent: "space-between",
                   alignItems: "center",
                   padding: "6px 10px",
-                  background: "#fef2f2",
+                  background: "#f8fafc",
                   borderRadius: 8,
                   fontSize: 13,
                 }}

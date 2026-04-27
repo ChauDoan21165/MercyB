@@ -24,6 +24,7 @@ import {
   emptyState,
   graceMessage,
   labels,
+  restPermissionMessage,
   splitBilingual,
   statusPills,
 } from "@/components/streak/streakCopy";
@@ -132,10 +133,15 @@ type StreakStatus = "active" | "in_grace" | "warning" | "reset" | "unknown";
 // Visuals are component-local; labels come from the shared copy dictionary
 // (streakCopy.ts). Keep this map in lock-step with the SQL trigger grace
 // semantics in supabase/migrations/20260425000000_server_side_streaks.sql.
+// Shame-audit fix (reports/streak-shame-audit-2026-04-26.md § F-3):
+// warning state previously used ⚠️ + an alarm-amber background, which
+// reads as "your streak is about to die" — exactly the pressure framing
+// the rest of the copy avoids. Replaced with 🌿 (gentle, alive) and a
+// softer pastel-yellow background. The status semantics are unchanged.
 const STATUS_VISUALS: Record<StreakStatus, { emoji: string; label: { en: string; vi: string }; bg: string; fg: string }> = {
   active:   { emoji: "🔥", label: splitBilingual(statusPills.active),  bg: "#fff7ed", fg: "#9a3412" },
   in_grace: { emoji: "💤", label: splitBilingual(statusPills.grace),   bg: "#fefce8", fg: "#854d0e" },
-  warning:  { emoji: "⚠️", label: splitBilingual(statusPills.warning), bg: "#fef3c7", fg: "#b45309" },
+  warning:  { emoji: "🌿", label: splitBilingual(statusPills.warning), bg: "#fef9c3", fg: "#854d0e" },
   reset:    { emoji: "⏸",  label: splitBilingual(statusPills.reset),   bg: "#f1f5f9", fg: "#475569" },
   unknown:  { emoji: "✨", label: { en: "Streak", vi: "Chuỗi" },       bg: "#f1f5f9", fg: "#475569" },
 };
@@ -329,6 +335,28 @@ export function StreakHistoryPanel({
         {graceMessage.en}
         <span style={noteViStyle}>{graceMessage.vi}</span>
       </p>
+
+      {/* Shame-audit fix § F-8: surface the rest-permission line on
+          warning + reset states so users in those windows see vacation
+          mode as a first-class option, not a hidden tooltip on the
+          home badge. Calmer slate styling so it reads as a sibling
+          tip, not a second warning. */}
+      {(status === "warning" || status === "reset") ? (
+        <p
+          style={{
+            ...noteStyle,
+            background: "#f8fafc",
+            borderColor: "#e2e8f0",
+            color: "#475569",
+          }}
+          data-testid="streak-rest-permission"
+        >
+          {restPermissionMessage.en}
+          <span style={{ ...noteViStyle, color: "#64748b" }}>
+            {restPermissionMessage.vi}
+          </span>
+        </p>
+      ) : null}
     </section>
   );
 }

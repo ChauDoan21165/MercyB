@@ -9,8 +9,13 @@ export const leaderboardCopy = {
     en: "This week's leaders",
     vi: "Bảng xếp hạng tuần này",
   },
+  // Shame-audit fix (reports/streak-shame-audit-2026-04-26.md § F-7):
+  // "Top learners" implicitly creates a "bottom learners" cohort and
+  // missed the original VN-first review (the VN line was already
+  // correct: "cứ luyện đều, vị trí sẽ tới"). EN now matches that
+  // neutral tone — factual board description, no winner/loser frame.
   subtitle: {
-    en: "Top learners, refreshed every Monday.",
+    en: "This week's leaderboard, refreshed every Monday.",
     vi: "Cập nhật mỗi sáng thứ Hai. Cứ luyện đều, vị trí sẽ tới.",
   },
   topListHeader: {

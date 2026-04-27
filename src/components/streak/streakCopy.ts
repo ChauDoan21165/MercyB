@@ -22,13 +22,21 @@ export const labels = {
 export const statusPills = {
   active:  "Active · Đang duy trì",
   grace:   "Grace period · Còn ân hạn",
-  warning: "Almost lost · Sắp mất chuỗi",
+  // Shame-audit fix (PR #...): renamed from "Almost lost / Sắp mất chuỗi"
+  // to a non-loss frame. The grace day is a kindness; the pill should
+  // name the kindness, not the absence of it. See
+  // reports/streak-shame-audit-2026-04-26.md § F-1.
+  warning: "Grace day open · Còn ngày ân hạn",
   reset:   "Reset · Đã reset",
 };
 
 export const graceMessage = {
-  en: "You have 1 day of grace left. Study anything today to protect your streak!",
-  vi: "Bạn còn 1 ngày ân hạn. Học bất kỳ gì hôm nay là giữ được chuỗi ngay!",
+  // Shame-audit fix: the prior "Study anything today to protect your
+  // streak" framing volunteered loss as the motivator. Replaced with
+  // permission-to-rest framing that names tiredness explicitly. See
+  // reports/streak-shame-audit-2026-04-26.md § F-2.
+  en: "You still have a grace day — a few minutes today is enough. If you're tired, that's okay too.",
+  vi: "Bạn còn ngày ân hạn — học vài phút hôm nay là đủ. Mệt thì cũng không sao.",
 };
 
 export const emptyState = {
@@ -56,6 +64,20 @@ export const vacationMessage = {
 export const insuranceMessage = {
   en: "Streak insurance available. Tap to bring your streak back this once.",
   vi: "Bạn có 1 lượt bảo hiểm chuỗi. Nhấn để khôi phục chuỗi — chỉ dùng được một lần trong tháng.",
+};
+
+/**
+ * Shame-audit fix (PR #...): surfaced on warning + reset states inside
+ * StreakHistoryPanel so users in the warning/reset window see the
+ * forgiveness mechanisms (vacation, freeze) instead of only a grace
+ * countdown. Reason: the previous panel only nudged users toward
+ * studying NOW; the rest-permission line names that resting is a
+ * supported, first-class option. See
+ * reports/streak-shame-audit-2026-04-26.md § F-8.
+ */
+export const restPermissionMessage = {
+  en: "Tired? Turn on vacation mode — your streak pauses until you're back.",
+  vi: "Mệt thì có thể bật chế độ nghỉ phép — chuỗi sẽ tạm dừng đến khi bạn quay lại.",
 };
 
 /**

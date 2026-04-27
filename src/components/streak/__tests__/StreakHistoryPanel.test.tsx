@@ -97,8 +97,21 @@ describe("StreakHistoryPanel — status pill (lock-step with SQL trigger)", () =
     setStreak({ lastStudiedDate: "2026-04-21" });
     render(<StreakHistoryPanel />);
     const txt = screen.getByTestId("streak-status-pill").textContent ?? "";
-    expect(txt).toContain("Almost lost");
-    expect(txt).toContain("Sắp mất chuỗi");
+    // Shame-audit fix § F-1: warning pill renamed away from "Almost lost".
+    expect(txt).toContain("Grace day open");
+    expect(txt).toContain("Còn ngày ân hạn");
+  });
+
+  it("WARNING — pill never volunteers loss-framing words", () => {
+    setStreak({ lastStudiedDate: "2026-04-21" });
+    render(<StreakHistoryPanel />);
+    const txt = (screen.getByTestId("streak-status-pill").textContent ?? "").toLowerCase();
+    // Voice guideline (docs/voice-guidelines-vn.md rule 1): the system
+    // never volunteers loss framing. This test locks the warning pill
+    // against regressions that would re-introduce "lost / mất / broken".
+    expect(txt).not.toContain("lost");
+    expect(txt).not.toContain("mất");
+    expect(txt).not.toContain("broken");
   });
 
   it("RESET — studied 3+ days ago (next study won't extend)", () => {
@@ -144,12 +157,15 @@ describe("StreakHistoryPanel — last-studied formatting", () => {
 });
 
 describe("StreakHistoryPanel — grace explanation", () => {
-  it("includes the bilingual grace-window explanation with protect-your-streak CTA", () => {
+  it("includes the bilingual grace-window explanation with permission-to-rest framing", () => {
     render(<StreakHistoryPanel />);
-    expect(screen.getByText(/1 day of grace left/i)).toBeDefined();
-    expect(screen.getByText(/protect your streak/i)).toBeDefined();
-    expect(screen.getByText(/1 ngày ân hạn/i)).toBeDefined();
-    expect(screen.getByText(/giữ được chuỗi/i)).toBeDefined();
+    // Shame-audit fix § F-2: "protect your streak" replaced with the
+    // permission-to-rest version. Both bilingual lines should still
+    // reference the grace day, but the framing is now warm.
+    expect(screen.getByText(/grace day/i)).toBeDefined();
+    expect(screen.getByText(/ngày ân hạn/i)).toBeDefined();
+    // The load-bearing VN line that names tiredness explicitly.
+    expect(screen.getByText(/Mệt thì cũng không sao/)).toBeDefined();
   });
 });
 
