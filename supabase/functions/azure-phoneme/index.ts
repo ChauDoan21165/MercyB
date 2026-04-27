@@ -32,6 +32,8 @@ import {
 
 import {
   handleRequest,
+  localeForAccent,
+  type Accent,
   type AiBudgetResult,
   type AuditParams,
   type Deps,
@@ -49,8 +51,9 @@ const supabase = createClient(supabaseUrl, supabaseServiceRoleKey);
 
 const AZURE_REGION = Deno.env.get("AZURE_SPEECH_REGION") ?? "canadacentral";
 const AZURE_KEY = Deno.env.get("AZURE_SPEECH_KEY") ?? "";
-const AZURE_URL =
-  `https://${AZURE_REGION}.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US&format=detailed`;
+function buildAzureUrl(accent: Accent): string {
+  return `https://${AZURE_REGION}.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=${localeForAccent(accent)}&format=detailed`;
+}
 const GLOBAL_DAILY_CAP_USD = Number(
   Deno.env.get("AZURE_SPEECH_DAILY_CAP_USD") || "25",
 );
@@ -255,7 +258,7 @@ const productionDeps: Deps = {
   audit,
   logAttempt,
   azureKey: AZURE_KEY,
-  azureUrl: AZURE_URL,
+  azureUrlForAccent: buildAzureUrl,
   globalDailyCapUsd: GLOBAL_DAILY_CAP_USD,
   usdToVnd: USD_TO_VND,
 };

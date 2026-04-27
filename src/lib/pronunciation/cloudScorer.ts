@@ -26,6 +26,7 @@ import {
   type WordScore,
   type WordStatus,
 } from "./scorer";
+import type { Accent } from "@/data/pronunciation/multiAccentReferences";
 
 /** Public input shape — matches the Day 2 spec literally. */
 export type CloudScoreInput = {
@@ -54,6 +55,12 @@ export type CloudScoreInput = {
   fetchImpl?: typeof fetch;
   /** Network timeout. Defaults to 12s (cloud edge fn caps at 15s upstream). */
   timeoutMs?: number;
+  /**
+   * Optional pronunciation-training accent. When set, sent to the edge
+   * function which routes Azure to the matching locale (en-US/en-GB/
+   * en-AU/en-CA). Omitting it lets the edge fn default to 'us'.
+   */
+  accent?: Accent;
 };
 
 /** What the edge function's /functions/v1/azure-phoneme returns on success. */
@@ -187,6 +194,9 @@ export async function scoreCloud(input: CloudScoreInput): Promise<ScoreResult> {
   const formData = new FormData();
   formData.append("audio", wavBlob, "recording.wav");
   formData.append("target_text", input.target);
+  if (input.accent) {
+    formData.append("accent", input.accent);
+  }
 
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), timeoutMs);
