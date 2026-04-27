@@ -19,6 +19,10 @@ import {
   decideConversationCostCap,
   resolveCapVndFromEnv,
 } from "./conversationCostCap.ts";
+import {
+  buildRateLimitErrorBody,
+  checkIpRateLimit,
+} from "../_shared/ipRateLimit.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -566,6 +570,46 @@ serve(wrapHandler("ai-chat", async (req) => {
         JSON.stringify({ error: "Invalid auth" }),
         { status: 401, headers: corsHeaders },
       );
+    }
+
+    // ── Per-IP rate limit ────────────────────────────────────────────────
+    // Sits BEFORE trial / suspension / budget checks so abusive callers
+    // never reach the heavier downstream work. Helper fails OPEN on
+    // missing IP / RPC error to protect legitimate traffic. Admin level
+    // >= 9 bypasses entirely (Chau testing).
+    try {
+      const adminLevel = await (async () => {
+        try {
+          const { data, error } = await supabaseAdmin.rpc("get_admin_level", {
+            p_user_id: user.id,
+          });
+          if (error || typeof data !== "number") return 0;
+          return data;
+        } catch {
+          return 0;
+        }
+      })();
+      const ipResult = await checkIpRateLimit(req, {
+        supabase: supabaseAdmin,
+        surface: "ai-chat",
+        isAdminBypass: adminLevel >= 9,
+      });
+      if (!ipResult.allowed) {
+        const retry = ipResult.retryAfterSeconds ?? 60;
+        return new Response(
+          JSON.stringify(buildRateLimitErrorBody(retry)),
+          {
+            status: 429,
+            headers: {
+              ...corsHeaders,
+              "Retry-After": String(retry),
+            },
+          },
+        );
+      }
+    } catch (err) {
+      console.error("[ai-chat] checkIpRateLimit threw:", err);
+      // Fail open.
     }
 
     const { data: profile } = await supabaseAdmin

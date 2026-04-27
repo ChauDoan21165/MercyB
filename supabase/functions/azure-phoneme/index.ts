@@ -20,6 +20,10 @@ import {
 } from "../_shared/security.ts";
 import { rateLimit } from "../_shared/rateLimit.ts";
 import { wrapHandler } from "../_shared/sentry.ts";
+import {
+  buildRateLimitErrorBody,
+  checkIpRateLimit,
+} from "../_shared/ipRateLimit.ts";
 
 import {
   handleRequest,
@@ -180,9 +184,41 @@ function startOfUtcDay(): string {
 
 // ── Wire deps and serve ──────────────────────────────────────────────────
 
+async function resolveAdminLevel(userId: string): Promise<number> {
+  try {
+    const { data, error } = await supabase.rpc("get_admin_level", {
+      p_user_id: userId,
+    });
+    if (error || typeof data !== "number") return 0;
+    return data;
+  } catch {
+    return 0;
+  }
+}
+
 const productionDeps: Deps = {
   getUserFromAuthHeader: (req) => getUserFromAuthHeader(req),
   rateLimit: (key, max, windowMs) => rateLimit(key, max, windowMs),
+  checkIpRateLimit: async (req, userId) => {
+    const adminLevel = await resolveAdminLevel(userId);
+    const result = await checkIpRateLimit(req, {
+      supabase,
+      surface: "azure-phoneme",
+      isAdminBypass: adminLevel >= 9,
+    });
+    if (result.allowed) return { allowed: true };
+    const retry = result.retryAfterSeconds ?? 60;
+    return {
+      allowed: false,
+      response: new Response(JSON.stringify(buildRateLimitErrorBody(retry)), {
+        status: 429,
+        headers: {
+          "Content-Type": "application/json",
+          "Retry-After": String(retry),
+        },
+      }),
+    };
+  },
   fetch: (input, init) => fetch(input, init),
   checkAiBudget,
   fetchUserProfile,

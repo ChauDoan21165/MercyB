@@ -137,6 +137,18 @@ export interface Deps {
   getUserFromAuthHeader: (req: Request) => Promise<{ id: string } | null>;
   /** Throws an Error with message "RATE_LIMIT_EXCEEDED" when the bucket is full. */
   rateLimit: (key: string, max: number, windowMs: number) => Promise<void>;
+  /**
+   * Per-IP rate-limit gate. Second layer above the per-user `rateLimit`
+   * — closes the bypass where a bot cycles anon sessions to reset its
+   * per-user quota. Returns `{ allowed: true }` on pass; on block,
+   * `{ allowed: false, response }` where `response` is the fully-built
+   * 429 the handler must return as-is. Production wires this from
+   * `_shared/ipRateLimit.ts` with admin-level bypass folded in.
+   */
+  checkIpRateLimit: (
+    req: Request,
+    userId: string,
+  ) => Promise<{ allowed: boolean; response?: Response }>;
   /** Network call to Azure. Bound to the same shape as the global fetch. */
   fetch: (input: string, init: RequestInit) => Promise<Response>;
   /** AI-budget reservation RPC. */
@@ -187,6 +199,20 @@ export async function handleRequest(req: Request, deps: Deps): Promise<Response>
     );
   }
   const userId = user.id;
+
+  // 1.5 Per-IP rate limit. Sits ABOVE the per-user rate limit so a bot
+  //     that rotates anonymous sessions can't reset its quota by spawning
+  //     fresh user_ids — the IP cap stays sticky. Helper fails-OPEN on
+  //     missing IP / RPC error; admin level >= 9 bypasses entirely.
+  try {
+    const ipResult = await deps.checkIpRateLimit(req, userId);
+    if (!ipResult.allowed && ipResult.response) {
+      return ipResult.response;
+    }
+  } catch (err) {
+    console.error("checkIpRateLimit threw:", err);
+    // Fail open — never block legitimate traffic on a telemetry blip.
+  }
 
   // 2. Per-user rate limit.
   try {
