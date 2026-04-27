@@ -1,8 +1,9 @@
 // src/pages/professions/ProfessionsIndexPage.tsx — /professions
 //
-// Vocational-English landing. Today: Nail Technician (active).
-// Restaurant + Customer Service are placeholders so the index reads
-// as a coherent product line — each card opens a focused vertical.
+// Vocational-English landing. Today: Nail Technician (active) and
+// Customer Service (active). Restaurant remains a placeholder so the
+// index reads as a coherent product line — each card opens a focused
+// vertical.
 
 import React from "react";
 import { Link } from "react-router-dom";
@@ -52,9 +53,9 @@ const CARDS: Card[] = [
     title_vi: "Tiếng Anh chăm sóc khách",
     title_en: "Customer Service",
     blurb_vi:
-      "Sắp ra mắt — call center, retail, dịch vụ. Trả lời điện thoại, giải quyết khiếu nại, upsell.",
-    href: null,
-    status: "soon",
+      "50 bài: mở cuộc gọi, lắng nghe chủ động, hạ nhiệt khách giận, từ chối khéo, chuyển cuộc gọi, xử lý khiếu nại.",
+    href: "/professions/customer-service",
+    status: "active",
     Icon: Headset,
     accent: "sky",
   },
