@@ -20,10 +20,14 @@
 	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>MercyBlade cần truy cập micro để giúp bạn luyện phát âm tiếng Anh. / MercyBlade needs microphone access to help you practice English pronunciation.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>MercyBlade cần truy cập thư viện ảnh để bạn đính kèm ảnh vào câu chuyện. / MercyBlade needs photo library access so you can attach a photo to your story.</string>
 	<key>NSSpeechRecognitionUsageDescription</key>
 	<string>MercyBlade dùng nhận dạng giọng nói để chấm điểm phát âm cho bạn. / MercyBlade uses speech recognition to score your pronunciation.</string>
 	<key>UILaunchStoryboardName</key>
