@@ -7,6 +7,13 @@ export interface Message {
   type: 'user' | 'assistant' | 'article' | 'english';
   content: string;
   contentVi?: string;
+  /**
+   * Set when this assistant message was generated with progressContext
+   * injected into the system prompt. Drives the small 📊 badge that
+   * teaches users "Mercy can see your progress here" and links to
+   * /progress on tap. Always undefined for user messages.
+   */
+  referencedProgress?: boolean;
 }
 
 export interface EnglishHelperResultItem {

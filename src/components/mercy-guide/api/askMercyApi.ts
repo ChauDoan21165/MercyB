@@ -4,6 +4,7 @@
 
 import { supabase } from '@/lib/supabaseClient';
 import type { GuideAssistantResponse } from '../shared';
+import type { ProgressContext } from '@/lib/mercy/progressContext';
 
 export type MercyApiMode =
   | 'general_guide'
@@ -21,6 +22,14 @@ export interface MercyApiRequest {
   tags?: string[];
   englishLevel?: string | null;
   learningGoal?: string | null;
+  /**
+   * Optional progress snapshot to inject into Mercy's system prompt.
+   * Sent only when the chat layer's progressTriggers logic decides
+   * the moment is right (frustration, self-check, practice ask, low
+   * recent score) AND the cooldown allows. Edge function unconditionally
+   * appends it as STUDENT_PROGRESS:… when present.
+   */
+  progressContext?: ProgressContext | null;
 }
 
 export type MercyApiResponse = {
@@ -38,6 +47,7 @@ export async function askMercyApi({
   tags,
   englishLevel,
   learningGoal,
+  progressContext,
 }: MercyApiRequest): Promise<MercyApiResponse> {
   const { data, error } = await supabase.functions.invoke<GuideAssistantResponse>(
     'guide-assistant',
@@ -57,6 +67,12 @@ export async function askMercyApi({
           learningGoal,
           mercyIntentMode: mode,
         },
+        // Edge fn reads `body.progressContext` and appends a
+        // STUDENT_PROGRESS: block to its system prompt when present.
+        // Always send the field — null is informative ("no signal yet")
+        // so the edge fn doesn't have to disambiguate "absent" vs
+        // "explicitly null" branches.
+        progressContext: progressContext ?? null,
       },
     }
   );

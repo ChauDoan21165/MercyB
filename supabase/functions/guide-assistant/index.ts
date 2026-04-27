@@ -266,6 +266,13 @@ serve(async (req) => {
   const conversationHistory = Array.isArray(body?.conversationHistory) ? body.conversationHistory : [];
   const requestId = String(body?.request_id ?? "") || makeRequestId();
 
+  // Optional progress snapshot from src/lib/mercy/progressContext.
+  // Sent by the chat layer only when the trigger + cooldown allow.
+  // Shape mirrors ProgressContext exactly; we read defensively
+  // because the edge function can't import the client type.
+  const progressContext = sanitizeProgressContext(body?.progressContext);
+  const progressBlock = progressContext ? formatProgressBlock(progressContext) : "";
+
   if (!userMessage) return json({ error: "Missing userMessage" }, 400);
   if (!room_id) return json({ error: "Missing room_id" }, 400);
 
@@ -295,7 +302,7 @@ serve(async (req) => {
     : { type: "default", tierPolicy };
 
   // Minimal system prompt (Edge). Your Next.js route can use the full systemPromptBase.
-  const systemPrompt = [
+  const systemPromptParts: string[] = [
     "You are Mercy Host, a strict, kind teacher.",
     "Always do what the user asked.",
     "If plan.type is pronunciation: return JSON ONLY following the required contract.",
@@ -305,7 +312,34 @@ serve(async (req) => {
     "",
     "STUDENT_CONTEXT:",
     JSON.stringify({ user_id: user.id, vip_rank, tier_depth_policy: tierPolicy }, null, 2),
-  ].join("\n");
+  ];
+
+  if (progressBlock) {
+    // Voice rules + data block. Anchored AFTER the basic context so
+    // the LLM treats progress as a coaching tool, not a header.
+    systemPromptParts.push(
+      "",
+      "PROGRESS_MENTION_RULES:",
+      "- Mention at most ONE progress point per response.",
+      "- Only mention progress when the user expresses doubt, frustration, a win, or asks for a practice recommendation.",
+      "- Reference the data naturally inside a normal sentence — do not read it as a report.",
+      "- Never lecture or use empty motivation phrases. Cite the concrete number.",
+      "- Anchor to the user's recent feeling. Bad: 'Hãy tiếp tục practice nhé.' Good: '/θ/ của bạn lên 25 điểm tuần này — chứng tỏ bạn đang luyện đúng cách.'",
+      "",
+      progressBlock,
+    );
+    // Telemetry: a single line so the next analytics PR can wire it
+    // into the existing Sentry breadcrumb / log stream without a
+    // schema change. Cheap, idempotent, easy to grep.
+    console.log(JSON.stringify({
+      event: "guide_assistant_progress_injected",
+      user_id: user.id,
+      request_id: requestId,
+      attempts_this_week: progressContext?.attemptsThisWeek ?? 0,
+    }));
+  }
+
+  const systemPrompt = systemPromptParts.join("\n");
 
   const openai = new OpenAI({ apiKey: OPENAI_KEY });
 
@@ -485,3 +519,96 @@ ${stripMarkdownCodeFences(content1).slice(0, 6000)}
 
   return json({ request_id: requestId, response: normal.choices?.[0]?.message?.content ?? "" }, 200);
 });
+
+// ── Progress-context helpers ──────────────────────────────────────────────
+//
+// Defensive sanitiser for `body.progressContext` from the client. The
+// client type lives at src/lib/mercy/progressContext.ts; we re-decode
+// here so a malformed payload (old client, manual curl) can't crash
+// the system-prompt builder.
+
+type EdgeProgressContext = {
+  attemptsThisWeek: number;
+  averageScoreThisWeek: number | null;
+  scoreDelta: number | null;
+  mostImprovedPhoneme:
+    | { phoneme: string; previousScore: number; currentScore: number; delta: number }
+    | null;
+  weakestPhoneme:
+    | { phoneme: string; averageScore: number }
+    | null;
+  streak: number;
+};
+
+function sanitizeProgressContext(raw: unknown): EdgeProgressContext | null {
+  if (!raw || typeof raw !== "object") return null;
+  const r = raw as Record<string, unknown>;
+  const attempts = numberOrNull(r.attemptsThisWeek);
+  if (attempts === null || attempts < 1) return null;
+  const mostImproved = sanitizeMostImproved(r.mostImprovedPhoneme);
+  const weakest = sanitizeWeakest(r.weakestPhoneme);
+  return {
+    attemptsThisWeek: attempts,
+    averageScoreThisWeek: numberOrNull(r.averageScoreThisWeek),
+    scoreDelta: numberOrNull(r.scoreDelta),
+    mostImprovedPhoneme: mostImproved,
+    weakestPhoneme: weakest,
+    streak: Math.max(0, numberOrNull(r.streak) ?? 0),
+  };
+}
+
+function sanitizeMostImproved(raw: unknown): EdgeProgressContext["mostImprovedPhoneme"] {
+  if (!raw || typeof raw !== "object") return null;
+  const r = raw as Record<string, unknown>;
+  const phoneme = typeof r.phoneme === "string" ? r.phoneme.trim() : "";
+  if (!phoneme) return null;
+  const prev = numberOrNull(r.previousScore);
+  const cur = numberOrNull(r.currentScore);
+  const delta = numberOrNull(r.delta);
+  if (prev === null || cur === null || delta === null) return null;
+  return { phoneme, previousScore: prev, currentScore: cur, delta };
+}
+
+function sanitizeWeakest(raw: unknown): EdgeProgressContext["weakestPhoneme"] {
+  if (!raw || typeof raw !== "object") return null;
+  const r = raw as Record<string, unknown>;
+  const phoneme = typeof r.phoneme === "string" ? r.phoneme.trim() : "";
+  if (!phoneme) return null;
+  const avg = numberOrNull(r.averageScore);
+  if (avg === null) return null;
+  return { phoneme, averageScore: avg };
+}
+
+function numberOrNull(v: unknown): number | null {
+  if (typeof v !== "number" || !Number.isFinite(v)) return null;
+  return Math.round(v);
+}
+
+function formatProgressBlock(ctx: EdgeProgressContext): string {
+  const lines: string[] = [
+    "STUDENT_PROGRESS:",
+    `- Attempts this week: ${ctx.attemptsThisWeek}`,
+  ];
+  if (ctx.averageScoreThisWeek !== null) {
+    lines.push(`- Average score this week: ${ctx.averageScoreThisWeek}/100`);
+  }
+  if (ctx.scoreDelta !== null) {
+    const sign = ctx.scoreDelta >= 0 ? "+" : "";
+    lines.push(`- Score change vs last week: ${sign}${ctx.scoreDelta}`);
+  }
+  if (ctx.mostImprovedPhoneme) {
+    const m = ctx.mostImprovedPhoneme;
+    lines.push(
+      `- Most improved phoneme: /${m.phoneme}/ went ${m.previousScore} → ${m.currentScore} (+${m.delta})`,
+    );
+  }
+  if (ctx.weakestPhoneme) {
+    lines.push(
+      `- Still working on: /${ctx.weakestPhoneme.phoneme}/ (currently ${ctx.weakestPhoneme.averageScore}/100)`,
+    );
+  }
+  if (ctx.streak > 0) {
+    lines.push(`- Current streak: ${ctx.streak} days`);
+  }
+  return lines.join("\n");
+}

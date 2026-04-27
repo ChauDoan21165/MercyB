@@ -19,6 +19,7 @@
  */
 
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 
 import { askMercyApi } from "@/components/mercy-guide/api/askMercyApi";
 import {
@@ -31,6 +32,14 @@ import {
   getAssistantVietnamese,
   splitBilingualAnswer,
 } from "@/components/mercy-guide/shared";
+import { useAuth } from "@/providers/AuthProvider";
+import { buildProgressContext, type ProgressContext } from "@/lib/mercy/progressContext";
+import {
+  incrementMessageCounter,
+  readMentionState,
+  recordProgressMention,
+  shouldProactivelyMentionProgress,
+} from "@/lib/mercy/progressTriggers";
 
 type ViewLang = "both" | "en" | "vi";
 
@@ -87,6 +96,30 @@ const langToggleStyle: React.CSSProperties = {
   marginTop: 8,
   fontSize: 11,
   color: "rgba(0,0,0,0.55)",
+};
+
+// 📊 badge appears under a Mercy message when its system prompt
+// included STUDENT_PROGRESS data. Tap → /progress dashboard.
+const progressBadgeRowStyle: React.CSSProperties = {
+  display: "flex",
+  justifyContent: "flex-start",
+  marginTop: -8,
+  marginBottom: 12,
+  paddingLeft: 4,
+};
+
+const progressBadgeStyle: React.CSSProperties = {
+  display: "inline-flex",
+  alignItems: "center",
+  gap: 6,
+  padding: "4px 10px",
+  borderRadius: 9999,
+  background: "rgba(99,102,241,0.10)",
+  border: "1px solid rgba(99,102,241,0.20)",
+  color: "rgba(67,56,202,0.85)",
+  fontSize: 11,
+  fontWeight: 700,
+  textDecoration: "none",
 };
 
 const viCopyStyle: React.CSSProperties = {
@@ -187,11 +220,16 @@ function MessageBubble({
 }
 
 export function ConversationThread({ conversationId, onCleared }: ConversationThreadProps) {
+  const { user } = useAuth();
   const [messages, setMessages] = useState<MercyMessage[]>([]);
   const [loading, setLoading] = useState(false);
   const [pending, setPending] = useState(false);
   const [input, setInput] = useState("");
   const [error, setError] = useState<string | null>(null);
+  // Set of mercy-message IDs whose generation included a STUDENT_PROGRESS
+  // injection. Drives the small 📊 badge below those messages. Ephemeral
+  // (lives only as long as the component) — not persisted to the DB.
+  const [progressAwareIds, setProgressAwareIds] = useState<Set<string>>(() => new Set());
   const scrollerRef = useRef<HTMLDivElement | null>(null);
 
   // Load history whenever the active conversation changes.
@@ -239,9 +277,40 @@ export function ConversationThread({ conversationId, onCleared }: ConversationTh
       const userTurn = await appendMessage(conversationId, "user", text);
       setMessages((prev) => [...prev, userTurn]);
 
+      // ── Proactive progress mention gate ─────────────────────────────
+      // Build progressContext only when the user's message + cooldown
+      // suggest the moment is right. Cheap (sessionStorage cache); a
+      // miss costs almost nothing. Hit triggers the edge function to
+      // inject STUDENT_PROGRESS into Mercy's system prompt.
+      let progressContext: ProgressContext | null = null;
+      if (user?.id) {
+        try {
+          const fetched = await buildProgressContext(user.id);
+          if (fetched) {
+            const state = readMentionState(user.id);
+            if (
+              shouldProactivelyMentionProgress({
+                userMessage: text,
+                context: fetched,
+                state,
+              })
+            ) {
+              progressContext = fetched;
+              recordProgressMention(user.id);
+            }
+          }
+          // Always increment — unlocks cooldown after N messages
+          // even if no mention fires.
+          incrementMessageCounter(user.id);
+        } catch (err) {
+          console.warn("[ConversationThread] progress-context gate failed:", err);
+        }
+      }
+
       const { data, error: apiError } = await askMercyApi({
         input: text,
         mode: "general_guide",
+        progressContext,
       });
       if (apiError || !data?.ok || !data?.answer) {
         throw new Error(apiError?.message || data?.error || "Mercy could not respond.");
@@ -253,6 +322,13 @@ export function ConversationThread({ conversationId, onCleared }: ConversationTh
 
       const mercyTurn = await appendMessage(conversationId, "mercy", en, vi);
       setMessages((prev) => [...prev, mercyTurn]);
+      if (progressContext) {
+        setProgressAwareIds((prev) => {
+          const next = new Set(prev);
+          next.add(mercyTurn.id);
+          return next;
+        });
+      }
     } catch (err) {
       setError(err instanceof Error ? err.message : "Something went wrong.");
     } finally {
@@ -326,7 +402,22 @@ export function ConversationThread({ conversationId, onCleared }: ConversationTh
         ) : null}
 
         {messages.map((m) => (
-          <MessageBubble key={m.id} message={m} defaultLang="both" />
+          <React.Fragment key={m.id}>
+            <MessageBubble message={m} defaultLang="both" />
+            {m.role === "mercy" && progressAwareIds.has(m.id) ? (
+              <div style={progressBadgeRowStyle}>
+                <Link
+                  to="/progress"
+                  aria-label="Mercy đã tham khảo tiến độ của bạn — mở /progress · Mercy referenced your progress — open /progress"
+                  title="Mercy đã thấy tiến độ của bạn · Mercy saw your progress"
+                  style={progressBadgeStyle}
+                >
+                  <span aria-hidden style={{ fontSize: 14 }}>📊</span>
+                  <span>Tiến độ · Progress</span>
+                </Link>
+              </div>
+            ) : null}
+          </React.Fragment>
         ))}
 
         {pending ? (

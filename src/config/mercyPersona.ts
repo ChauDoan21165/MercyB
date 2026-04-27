@@ -191,6 +191,23 @@ export const MERCY_PERSONA_CONFIG = {
     hearMercy: "Hear Mercy",
     playing: "Playing...",
   },
+
+  // ── Proactive progress mention rules ────────────────────────────────
+  // Used by the system-prompt builder when the chat layer attaches a
+  // STUDENT_PROGRESS block (see src/lib/mercy/progressContext.ts).
+  // The rules below are appended verbatim to the system prompt above
+  // the data block so the LLM's tone constraints land in one place.
+  // Voice intent: warm coach who happens to know the numbers, not a
+  // metrics dashboard. Mention progress AT MOST once per response.
+  // Never lecture. Never read the whole list back. Pick ONE point that
+  // matches what the user just said.
+  progressMentionRules: [
+    "Mention at most ONE progress point per response.",
+    "Only mention progress when the user expresses doubt, frustration, a win, or asks for a practice recommendation.",
+    "Reference the data naturally inside a normal sentence — do not read it as a report.",
+    "Never lecture or use empty motivation phrases. Cite the concrete number.",
+    "If you mention progress, anchor it to the user's recent feeling. Bad: 'Hãy tiếp tục practice nhé.' Good: '/θ/ của bạn lên 25 điểm tuần này — chứng tỏ bạn đang luyện đúng cách.'",
+  ],
 } as const;
 
 // ── Type narrowing helpers ──────────────────────────────────────────────
