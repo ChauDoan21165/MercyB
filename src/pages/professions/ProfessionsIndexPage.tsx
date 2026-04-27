@@ -1,13 +1,12 @@
 // src/pages/professions/ProfessionsIndexPage.tsx — /professions
 //
-// Vocational-English landing. Today: Nail Technician (active) and
-// Customer Service (active). Restaurant remains a placeholder so the
-// index reads as a coherent product line — each card opens a focused
-// vertical.
+// Vocational-English landing. Today: Nail Technician, Restaurant,
+// Customer Service, and Tech Worker — all active. Each card opens a
+// focused vertical.
 
 import React from "react";
 import { Link } from "react-router-dom";
-import { Sparkles, Utensils, Headset, ArrowRight, Lock } from "lucide-react";
+import { Sparkles, Utensils, Headset, Code2, ArrowRight, Lock } from "lucide-react";
 
 const HERO_VI = "Tiếng Anh nghề nghiệp cho người Việt";
 const HERO_EN = "Vocational English for Vietnamese workers";
@@ -59,6 +58,17 @@ const CARDS: Card[] = [
     Icon: Headset,
     accent: "sky",
   },
+  {
+    slug: "tech-worker",
+    title_vi: "Tiếng Anh dành cho dân tech",
+    title_en: "Tech Worker",
+    blurb_vi:
+      "50 bài: phỏng vấn kỹ thuật, standup, review PR, báo bug, demo, on-call, đàm phán lương, bất đồng nhóm.",
+    href: "/professions/tech-worker",
+    status: "active",
+    Icon: Code2,
+    accent: "indigo",
+  },
 ];
 
 const ACCENT_CLASSES: Record<string, { border: string; bg: string; icon: string }> = {
@@ -76,6 +86,11 @@ const ACCENT_CLASSES: Record<string, { border: string; bg: string; icon: string 
     border: "border-sky-200",
     bg: "bg-gradient-to-br from-sky-50 to-cyan-50",
     icon: "text-sky-600",
+  },
+  indigo: {
+    border: "border-indigo-200",
+    bg: "bg-gradient-to-br from-indigo-50 via-violet-50 to-blue-50",
+    icon: "text-indigo-600",
   },
 };
 
