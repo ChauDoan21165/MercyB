@@ -460,6 +460,178 @@ G. None of these measures by itself solves the heat-island effect, but combinati
     difficulty_band: 7.5,
     word_count: 760,
   },
+  // ───────────────────────────────────────────────────────────────────
+  // PASSAGE 7 — science — band 6.5
+  // ───────────────────────────────────────────────────────────────────
+  {
+    id: "ielts_reading_science_penicillin",
+    category: "science",
+    topic_title_vi: "Phát hiện và phát triển penicillin",
+    topic_title_en: "The discovery and development of penicillin",
+    passage: `A. The story of penicillin is sometimes told as the result of a single moment of luck. Alexander Fleming, a Scottish bacteriologist working at St Mary's Hospital in London, returned to his laboratory in September 1928 and noticed that a Petri dish of staphylococcus bacteria he had left out before going on holiday was contaminated with mould. Around the mould, the bacteria had been killed. Fleming identified the mould as a strain of Penicillium and gave the active substance it produced its now-familiar name.
+
+B. Fleming's discovery alone would not have changed medicine. He could grow only tiny amounts of his unstable substance, and his attempts to publish were met with limited interest in the early 1930s. The transformation of penicillin into a usable drug had to wait until 1939, when a team led by the Australian pathologist Howard Florey at the University of Oxford took up the problem with the support of the Rockefeller Foundation.
+
+C. The Oxford team — which included the German-born biochemist Ernst Chain and the chemist Norman Heatley — solved a chain of practical problems that Fleming alone could not. They cultured the mould on a much larger scale, devising bedpans and bath-tubs as makeshift fermentation vessels when more sophisticated equipment proved unavailable. They isolated the active substance more cleanly. They tested it on infected mice with dramatic success in 1940, and on a single human patient, Albert Alexander, in early 1941. Alexander improved markedly, but the team ran out of supply before treatment could be completed; he relapsed and died.
+
+D. The decisive next step was industrial. Britain in 1941 was at war and had no spare manufacturing capacity. Florey and Heatley flew to the United States, where, with the cooperation of the U.S. Department of Agriculture's research laboratory in Peoria, Illinois, the production yield of the mould was multiplied many-fold. A switch to deep-tank fermentation in industrial vats and the discovery, in a Peoria market, of a higher-yielding mould strain on a cantaloupe melon increased output enormously. By 1943 American firms were producing enough penicillin to treat every Allied serviceman wounded that year, and by 1945 supply was sufficient to meet civilian demand.
+
+E. The clinical impact was immediate. Bacterial pneumonia, which had killed roughly a third of patients hospitalised with it in the early 1940s, became a routinely curable disease. Bloodstream infections following childbirth and surgery, which had crippled hospitals across the world, retreated. Tuberculosis was unaffected, because tubercle bacilli are not sensitive to penicillin, but a separate antibiotic discovered in 1944 — streptomycin — soon filled that gap. Within twenty years, the antibiotic class as a whole had become the most powerful tool in scientific medicine.
+
+F. Fleming, Florey, and Chain were jointly awarded the Nobel Prize in Physiology or Medicine in 1945. Heatley, whose engineering ingenuity made the Oxford fermentations possible, received an honorary doctorate from Oxford in 1990 — the first conferred on a non-medical scientist in the university's history — but never the Nobel itself, partly a function of the Nobel rule limiting any prize to three living recipients.
+
+G. Modern medicine has watched, with concern, the slow erosion of penicillin's effectiveness against bacteria that have evolved resistance. Penicillin-resistant strains of staphylococcus appeared within a decade of widespread use. The development of newer antibiotics has so far kept pace, but the gap is narrowing, and resistance has emerged at one stage or another to almost every drug in clinical use. The opening chapter of antibiotic medicine, in other words, was written between 1928 and 1945; the closing chapter is being written now, and its outcome is not yet known.`,
+    paragraph_count: 7,
+    questions: [
+      { number: 1, type: "matching_headings", question_text: "Match heading i–vii to paragraph A–G.\ni. The chemist, biochemist, and bath-tubs\nii. Industrial scale, melon, and cantaloupe\niii. The September 1928 contamination\niv. The Nobel and a delayed honour\nv. Routine cures and one untouched disease\nvi. Resistance closing in\nvii. From discovery to drug — the missing decade", correct_answer: "A=iii; B=vii; C=i; D=ii; E=v; F=iv; G=vi", explanation_vi: "A: 09/1928, Petri dish, mould → iii. B: 1928→1939, không có drug → vii. C: Chain + Heatley + 'bedpans and bath-tubs' → i. D: Peoria, deep-tank, melon → ii. E: pneumonia, TB → v. F: Nobel + honorary doctorate → iv. G: resistance → vi." },
+      { number: 2, type: "true_false_not_given", question_text: "Fleming personally produced penicillin on a clinically useful scale.", correct_answer: "FALSE", explanation_vi: "Đoạn B: 'tiny amounts of his unstable substance'." },
+      { number: 3, type: "true_false_not_given", question_text: "Albert Alexander recovered fully after his 1941 penicillin treatment.", correct_answer: "FALSE", explanation_vi: "Đoạn C: 'he relapsed and died' khi ngắt thuốc." },
+      { number: 4, type: "true_false_not_given", question_text: "Industrial penicillin production began in Britain due to wartime urgency.", correct_answer: "FALSE", explanation_vi: "Đoạn D: Britain 'had no spare manufacturing capacity'; production scaled up in the U.S." },
+      { number: 5, type: "summary_completion", question_text: "A higher-yielding mould strain was found on a cantaloupe ______ in a Peoria market.", correct_answer: "melon", explanation_vi: "Đoạn D: 'a cantaloupe melon'." },
+      { number: 6, type: "summary_completion", question_text: "An antibiotic discovered in 1944, ______, became effective against tuberculosis.", correct_answer: "streptomycin", explanation_vi: "Đoạn E: 'streptomycin'." },
+      { number: 7, type: "multiple_choice", question_text: "Why did Heatley not receive the Nobel Prize?", options: ["A. He had retired from research.", "B. The Nobel rule limits each prize to three living recipients.", "C. He was not part of the Oxford team.", "D. His work was on streptomycin, not penicillin."], correct_answer: "B", explanation_vi: "Đoạn F: 'partly a function of the Nobel rule limiting any prize to three living recipients'." },
+      { number: 8, type: "yes_no_not_given", question_text: "The author treats penicillin's discovery as the work of a single individual.", correct_answer: "NO", explanation_vi: "Phần còn lại nhấn mạnh team Oxford + Peoria. Tác giả KHÔNG đồng ý với view 'single individual'." },
+      { number: 9, type: "short_answer", question_text: "What proportion of pneumonia patients hospitalised in the early 1940s died before penicillin? (NO MORE THAN THREE WORDS)", correct_answer: "roughly a third", explanation_vi: "Đoạn E: 'killed roughly a third of patients'." },
+      { number: 10, type: "matching_information", question_text: "Which paragraph contains:\n(i) the use of make-shift containers in early production\n(ii) the rule about Nobel-prize recipients", correct_answer: "i=C; ii=F", explanation_vi: "(i) đoạn C 'bedpans and bath-tubs'. (ii) đoạn F về Nobel rule." },
+    ],
+    vocabulary_focus: [
+      { word: "contamination", ipa: "/kənˌtæmɪˈneɪʃən/", vi_translation: "sự nhiễm bẩn", band_level: 7, context_use: "Petri dish was contaminated with airborne mould." },
+      { word: "fermentation", ipa: "/ˌfɜːmənˈteɪʃən/", vi_translation: "sự lên men", band_level: 7, context_use: "Mould grown in tanks — fermentation in industrial vats." },
+      { word: "yield", ipa: "/jiːld/", vi_translation: "sản lượng (thu được)", band_level: 6, context_use: "'Higher-yielding strain' — produces more drug per litre of broth." },
+      { word: "ingenuity", ipa: "/ˌɪndʒəˈnjuːəti/", vi_translation: "sự khéo léo, tài tháo vát", band_level: 8, context_use: "'Engineering ingenuity' — Heatley's skill at improvising equipment." },
+      { word: "erosion", ipa: "/ɪˈrəʊʒən/", vi_translation: "sự bào mòn (nghĩa bóng)", band_level: 8, context_use: "'Slow erosion of penicillin's effectiveness'." },
+      { word: "resistance", ipa: "/rɪˈzɪstəns/", vi_translation: "sự kháng thuốc", band_level: 7, context_use: "Bacterial resistance — central problem of paragraph G." },
+    ],
+    vietnamese_speaker_strategies: [
+      STRAT_TFNG_VS_YNNG,
+      STRAT_NOT_GIVEN,
+      STRAT_KEYWORD_TRACE,
+      STRAT_QUESTION_ORDER,
+      STRAT_HEADINGS_FIRST_LAST,
+    ],
+    common_mistakes_vi: [
+      "Q3 (Alexander): nhiều bạn không đọc kỹ và chọn TRUE vì đoạn nói 'improved markedly'. Câu cuối đoạn C nói rõ 'relapsed and died'.",
+      "Q8 (Y/N/NG): đừng chọn NOT GIVEN. Cấu trúc cả bài thể hiện rõ tác giả KHÔNG đồng ý với view 'single individual'.",
+    ],
+    estimated_time_minutes: 18,
+    difficulty_band: 6.5,
+    word_count: 740,
+  },
+  // ───────────────────────────────────────────────────────────────────
+  // PASSAGE 8 — science — band 7.5
+  // ───────────────────────────────────────────────────────────────────
+  {
+    id: "ielts_reading_science_photosynthesis_yields",
+    category: "science",
+    topic_title_vi: "Quang hợp và năng suất cây trồng",
+    topic_title_en: "Photosynthesis and crop yield",
+    passage: `A. Photosynthesis is the chemical process by which green plants convert carbon dioxide and water into sugars, using light energy captured by chlorophyll molecules in the leaf. Despite billions of years of evolutionary refinement, photosynthesis is in many respects an inefficient process. The maximum theoretical efficiency at which sunlight is converted to chemical energy in a leaf is around 12 per cent for plants such as sugarcane and around 4 per cent for wheat or rice. Real-world field crops achieve only a fraction of these ceilings: most modern agricultural species deliver between 1 and 2 per cent over a full growing season.
+
+B. The reasons for the gap have been mapped in detail. Some sunlight is reflected from the leaf surface or absorbed by pigments other than chlorophyll. A large fraction of the absorbed energy is lost as heat. The most consequential single inefficiency, however, is an enzymatic one. The enzyme that incorporates carbon dioxide into the photosynthetic cycle, known as Rubisco, sometimes binds to oxygen instead of carbon dioxide — a "mistake" that wastes energy and is corrected at additional metabolic cost in a process called photorespiration. Photorespiration is estimated to reduce wheat and rice yields by between 20 and 40 per cent under hot, dry conditions.
+
+C. Some plants have evolved an internal workaround. Maize, sugarcane, sorghum, and many tropical grasses use a variant pathway called C4 photosynthesis, in which carbon dioxide is concentrated near Rubisco before fixation. Under high temperatures and bright sunlight, C4 plants outperform their C3 relatives by 30 to 50 per cent in raw productivity. Rice, wheat and most temperate cereals, however, remain C3, and this is one reason why their yields plateau in increasingly hot growing seasons.
+
+D. Plant biologists have spent two decades trying to engineer the C4 pathway into rice, with the support of the Bill and Melinda Gates Foundation among others. Several of the genes responsible have been identified, and prototype "C4 rice" lines have been produced that show some of the diagnostic anatomy of C4 leaves. Field trials so far have not matched the productivity gain seen in natural C4 species, in part because the trait depends on dozens of coordinated changes across leaf anatomy, biochemistry, and gene regulation.
+
+E. A simpler intervention has come from rerouting the photorespiration pathway itself. In 2019, a research group at the University of Illinois reported a transgenic tobacco line carrying a redesigned bypass that captured most of the energy normally lost during photorespiration. Field trials over two seasons showed yield increases of around 40 per cent. Tobacco is a comparatively easy plant to modify, but the same principle is being tested in soybean, potato and rice. Whether such modifications survive regulatory review and farmer adoption in different national contexts is a separate question.
+
+F. Conventional plant breeding remains the larger source of yield gains in practice. Modern wheat varieties yield between two and three times what wheat yields delivered in the 1950s, almost entirely through the choice of dwarf stems, larger grain heads, and disease-resistant cultivars rather than through any improvement in photosynthetic efficiency itself. The same is broadly true of rice and maize. The implication is that, even before any C4 or bypass success, breeding has been doing a good job of harvesting the existing photosynthetic surplus by directing it into edible grain rather than stem and leaf.
+
+G. Climate change adds urgency. Higher atmospheric carbon dioxide acts as a fertiliser for C3 photosynthesis up to a point, but rising temperatures, more variable rainfall, and increased evaporative demand more than offset the benefit in many regions. Models project flat or falling yields for major staples in low-latitude growing zones over the coming decades, even before considering soil and pest stresses. Whether the next round of yield gains comes from biotechnology, traditional breeding, agronomy, or some combination, photosynthesis itself is no longer assumed to be a fixed constraint.`,
+    paragraph_count: 7,
+    questions: [
+      { number: 1, type: "matching_headings", question_text: "Match heading i–vii to paragraph A–G.\ni. Engineering C4 traits into rice\nii. Climate pressure on yields\niii. Theoretical and real-world ceilings\niv. Photorespiration and Rubisco's mistake\nv. Yield from breeding, not photosynthesis\nvi. C4: a workaround that already exists\nvii. A redesigned bypass with measurable gains", correct_answer: "A=iii; B=iv; C=vi; D=i; E=vii; F=v; G=ii", explanation_vi: "A: max theoretical 12% vs actual 1-2% → iii. B: Rubisco + photorespiration → iv. C: Maize, sugarcane → vi. D: C4 rice prototype → i. E: bypass + transgenic tobacco + 40% → vii. F: dwarf stems, breeding doubled wheat → v. G: climate change → ii." },
+      { number: 2, type: "true_false_not_given", question_text: "Field crops typically operate at less than 5 per cent of theoretical maximum efficiency.", correct_answer: "TRUE", explanation_vi: "Đoạn A: max 12% (sugarcane); 4% (wheat); thực tế 1-2%. 1-2 < 5. TRUE." },
+      { number: 3, type: "true_false_not_given", question_text: "Photorespiration is most damaging in cool, wet conditions.", correct_answer: "FALSE", explanation_vi: "Đoạn B: 'under hot, dry conditions' — ngược lại với 'cool, wet'." },
+      { number: 4, type: "true_false_not_given", question_text: "Rice and wheat are both C4 plants.", correct_answer: "FALSE", explanation_vi: "Đoạn C: 'Rice, wheat … remain C3'." },
+      { number: 5, type: "summary_completion", question_text: "Engineered C4 rice lines have not matched natural C4 productivity because the trait requires dozens of coordinated changes across leaf anatomy, biochemistry, and ______ regulation.", correct_answer: "gene", explanation_vi: "Đoạn D: 'gene regulation'." },
+      { number: 6, type: "summary_completion", question_text: "A 2019 University of Illinois study reported about ______ per cent yield gain in transgenic tobacco.", correct_answer: "40", explanation_vi: "Đoạn E: 'yield increases of around 40 per cent'." },
+      { number: 7, type: "multiple_choice", question_text: "What does paragraph F suggest about the source of recent wheat yield gains?", options: ["A. Improved photosynthetic efficiency.", "B. Dwarf stems, larger grain heads, and disease-resistant cultivars.", "C. C4 engineering.", "D. Reduced photorespiration."], correct_answer: "B", explanation_vi: "Đoạn F: 'almost entirely through the choice of dwarf stems, larger grain heads, and disease-resistant cultivars'." },
+      { number: 8, type: "multiple_choice", question_text: "What is the main argument of paragraph G?", options: ["A. CO₂ fertilisation will fully offset climate harm.", "B. Models project flat or falling yields for major staples in low-latitude zones, despite some CO₂ benefit.", "C. Photosynthesis is now treated as a fixed limit.", "D. Climate change has no impact on grain yields."], correct_answer: "B", explanation_vi: "Đoạn G: 'rising temperatures, more variable rainfall, and increased evaporative demand more than offset the benefit'." },
+      { number: 9, type: "yes_no_not_given", question_text: "The author thinks photosynthetic efficiency is a fixed biological limit.", correct_answer: "NO", explanation_vi: "Câu cuối G: 'photosynthesis itself is no longer assumed to be a fixed constraint'." },
+      { number: 10, type: "short_answer", question_text: "Name the enzyme whose binding error drives photorespiration. (ONE WORD)", correct_answer: "Rubisco", explanation_vi: "Đoạn B nêu rõ tên enzyme: Rubisco." },
+      { number: 11, type: "matching_information", question_text: "Which paragraph contains:\n(i) the proportion of yield reduction caused by photorespiration in hot conditions\n(ii) examples of plant species that already use the C4 pathway", correct_answer: "i=B; ii=C", explanation_vi: "(i) đoạn B '20 and 40 per cent'. (ii) đoạn C 'Maize, sugarcane, sorghum, and many tropical grasses'." },
+    ],
+    vocabulary_focus: [
+      { word: "chlorophyll", ipa: "/ˈklɔːrəfɪl/", vi_translation: "diệp lục", band_level: 7, context_use: "Pigment that captures light energy in green leaves." },
+      { word: "enzymatic", ipa: "/ˌɛnzaɪˈmætɪk/", vi_translation: "(thuộc về) enzyme", band_level: 8, context_use: "'An enzymatic inefficiency' — caused by enzyme behaviour, here Rubisco." },
+      { word: "transgenic", ipa: "/trænzˈdʒɛnɪk/", vi_translation: "biến đổi gen", band_level: 8, context_use: "Tobacco modified by inserting genes from another organism." },
+      { word: "bypass", ipa: "/ˈbaɪpɑːs/", vi_translation: "(con đường) tránh, vòng qua", band_level: 7, context_use: "'Redesigned bypass' for the energy-wasting photorespiration step." },
+      { word: "cultivar", ipa: "/ˈkʌltɪvɑː/", vi_translation: "giống cây trồng (chọn lọc)", band_level: 8, context_use: "Plant variety produced by selective breeding." },
+      { word: "agronomy", ipa: "/əˈɡrɒnəmi/", vi_translation: "nông học", band_level: 8, context_use: "Field-management science — crop rotation, fertiliser use, etc." },
+    ],
+    vietnamese_speaker_strategies: [
+      STRAT_PARAPHRASE,
+      STRAT_KEYWORD_TRACE,
+      STRAT_TFNG_VS_YNNG,
+      STRAT_HEADINGS_FIRST_LAST,
+      STRAT_QUESTION_ORDER,
+    ],
+    common_mistakes_vi: [
+      "Q2 ('5 per cent'): câu hỏi đảo chiều — passage cho 1-2%, hỏi 'less than 5%'. Đúng (TRUE) vì 1-2 < 5. Đừng nhầm với một con số mới.",
+      "Q5 (gene): nhiều bạn viết 'genetic' vì quen tay. Passage dùng cụm chính xác 'gene regulation'.",
+    ],
+    estimated_time_minutes: 18,
+    difficulty_band: 7.5,
+    word_count: 770,
+  },
+  // ───────────────────────────────────────────────────────────────────
+  // PASSAGE 9 — science — band 7.5
+  // ───────────────────────────────────────────────────────────────────
+  {
+    id: "ielts_reading_science_jwst_deep_field",
+    category: "science",
+    topic_title_vi: "James Webb và những bức ảnh trường sâu",
+    topic_title_en: "The James Webb Space Telescope and the deep field",
+    passage: `A. The James Webb Space Telescope, launched in December 2021 and reaching its operational orbit in early 2022, is the largest infrared observatory ever placed in space. Its primary mirror is composed of eighteen hexagonal beryllium segments, coated with a thin layer of gold and folded for launch, then unfolded over several days after deployment. Unlike the Hubble Space Telescope, which orbits a few hundred kilometres above Earth, the Webb observatory is positioned at the second Lagrange point, about 1.5 million kilometres outwards from Earth on the side away from the Sun.
+
+B. Operating in the infrared band, rather than in visible light, was a deliberate choice rather than an engineering accident. Light from the most distant galaxies has been redshifted by the expansion of the universe — what was emitted as ultraviolet or visible light during the early universe arrives at the Webb's instruments as infrared. To resolve faint, redshifted sources, the telescope must itself be cold. A five-layer sunshield the size of a tennis court keeps the optics below 50 kelvin, allowing the instruments to detect very weak infrared signals against an extremely cold sky.
+
+C. The first scientific images, released in July 2022, included a deep-field exposure of a small patch of sky no larger than a grain of sand held at arm's length. In that single field of view, thousands of galaxies are visible, including some so distant that their light left them less than half a billion years after the Big Bang. The deep field demonstrated, in a way the Hubble images of similar exposures did not, just how thoroughly populated the early universe was with already-formed galaxies.
+
+D. Some of those distant galaxies surprised astronomers. Several appeared more massive and more chemically evolved than current models predicted for their age. The dust content of the early universe also seems higher than expected, with dust formed surprisingly quickly after the first generations of stars. Some of these results have been revised or weakened with further data and reprocessing, but several have survived and are pushing astrophysicists to reconsider how rapidly the first galaxies could have grown.
+
+E. The Webb has also returned detailed measurements of planets outside the solar system. As an exoplanet passes in front of its parent star, a small fraction of the star's light filters through the planet's atmosphere on its way to the telescope. The wavelengths absorbed in that brief transit reveal which gases are present. Webb has detected water vapour, carbon dioxide, methane and sulphur compounds in atmospheres ranging from hot gas giants to cooler, smaller worlds. None of the planets observed so far carries the unambiguous chemical fingerprint of life, but the cataloguing has begun.
+
+F. Closer to home, infrared imaging has provided sharper views of objects within our own galaxy. Star-forming regions, which glow brightly in infrared as embryonic stars heat the dust around them, have been resolved at much higher contrast than was possible with previous instruments. Pillars and filaments of cool gas, the nurseries of new stars, can be seen condensing in real time on cosmic timescales. These observations help test theoretical models of how stars and planetary systems form from interstellar clouds.
+
+G. The mission was designed for a minimum of five years, with a propellant budget intended to support up to ten. Early performance has been better than required, and the orbit-correction propellant on board may now last fifteen to twenty years. Beyond engineering, however, the long-term scientific value depends on the queue of competitive observing proposals that determines, every cycle, which questions the telescope is asked. The Webb is not a finished archive but an ongoing instrument, and its most important results have probably not yet been collected.`,
+    paragraph_count: 7,
+    questions: [
+      { number: 1, type: "matching_headings", question_text: "Match heading i–vii to paragraph A–G.\ni. Cool clouds and stellar nurseries\nii. Surprises in the early universe\niii. The unfolded gold mirror at L2\niv. Atmospheric chemistry of distant worlds\nv. Why infrared, and why cold\nvi. Mission lifetime and the proposal queue\nvii. The grain-of-sand deep field", correct_answer: "A=iii; B=v; C=vii; D=ii; E=iv; F=i; G=vi", explanation_vi: "A: hexagonal mirror + L2 → iii. B: redshift, sunshield, 50 K → v. C: 'grain of sand' → vii. D: 'more massive' than expected → ii. E: water vapour, CO2 in exoplanet atmospheres → iv. F: pillars + filaments + nurseries → i. G: '15–20 years' + observing proposals → vi." },
+      { number: 2, type: "true_false_not_given", question_text: "The Webb's primary mirror is made of polished steel.", correct_answer: "FALSE", explanation_vi: "Đoạn A: 'beryllium segments, coated with a thin layer of gold'." },
+      { number: 3, type: "true_false_not_given", question_text: "Operating in the infrared was chosen because of an engineering accident.", correct_answer: "FALSE", explanation_vi: "Đoạn B: 'a deliberate choice rather than an engineering accident'." },
+      { number: 4, type: "true_false_not_given", question_text: "Webb has confirmed unambiguous chemical signatures of life on at least one planet.", correct_answer: "FALSE", explanation_vi: "Đoạn E: 'None of the planets observed so far carries the unambiguous chemical fingerprint of life'." },
+      { number: 5, type: "summary_completion", question_text: "The deep-field exposure covered a patch of sky no larger than a grain of sand held at ______ length.", correct_answer: "arm's", explanation_vi: "Đoạn C: 'a grain of sand held at arm's length'. 'arm's' (with apostrophe) đếm là 1 từ." },
+      { number: 6, type: "summary_completion", question_text: "Webb's instruments are kept below ______ kelvin by a five-layer sunshield.", correct_answer: "50", explanation_vi: "Đoạn B: 'below 50 kelvin'." },
+      { number: 7, type: "multiple_choice", question_text: "Why did some of Webb's earliest observations surprise astronomers?", options: ["A. They showed no galaxies at all.", "B. They showed galaxies more massive and chemically evolved than models predicted.", "C. They proved galaxies do not contain dust.", "D. They confirmed Hubble's findings exactly."], correct_answer: "B", explanation_vi: "Đoạn D: 'more massive and more chemically evolved than current models predicted for their age'." },
+      { number: 8, type: "multiple_choice", question_text: "What is the main point of paragraph G about the mission?", options: ["A. The mission has already exhausted its propellant.", "B. Early performance has extended the projected mission lifetime, and future results depend on the proposal queue.", "C. No more observing proposals will be accepted.", "D. The Webb operates only in optical wavelengths."], correct_answer: "B", explanation_vi: "Đoạn G: '15–20 years' + 'queue of competitive observing proposals'." },
+      { number: 9, type: "yes_no_not_given", question_text: "The author claims Webb's most important results have already been gathered.", correct_answer: "NO", explanation_vi: "Đoạn G: 'most important results have probably not yet been collected'. Tác giả tin còn ở phía trước." },
+      { number: 10, type: "short_answer", question_text: "Name two atmospheric gases Webb has detected on exoplanets. (NO MORE THAN THREE WORDS)", correct_answer: "water and carbon dioxide", explanation_vi: "Đoạn E liệt kê: 'water vapour, carbon dioxide, methane and sulphur compounds'. Bất kỳ 2 chất nào hợp lệ; 'water and carbon dioxide' là cặp ngắn nhất + đúng giới hạn." },
+    ],
+    vocabulary_focus: [
+      { word: "deployment", ipa: "/dɪˈplɔɪmənt/", vi_translation: "việc triển khai", band_level: 7, context_use: "Unfolding the telescope after launch — staged deployment." },
+      { word: "redshift", ipa: "/ˈrɛdʃɪft/", vi_translation: "dịch chuyển đỏ (vũ trụ học)", band_level: 8, context_use: "Stretching of light wavelengths from receding sources." },
+      { word: "exposure", ipa: "/ɪkˈspəʊʒə/", vi_translation: "(ảnh) phơi sáng", band_level: 7, context_use: "Imaging sense — long-duration capture of a faint field." },
+      { word: "exoplanet", ipa: "/ˈɛksəʊˌplænɪt/", vi_translation: "ngoại hành tinh", band_level: 8, context_use: "Planet outside our own solar system." },
+      { word: "filament", ipa: "/ˈfɪləmənt/", vi_translation: "sợi (mảnh, dài)", band_level: 7, context_use: "Filaments of cool gas in star-forming regions." },
+      { word: "propellant", ipa: "/prəˈpɛlənt/", vi_translation: "nhiên liệu đẩy", band_level: 8, context_use: "Used for orbit-correction manoeuvres on the spacecraft." },
+    ],
+    vietnamese_speaker_strategies: [
+      STRAT_KEYWORD_TRACE,
+      STRAT_PARAPHRASE,
+      STRAT_TFNG_VS_YNNG,
+      STRAT_HEADINGS_FIRST_LAST,
+      STRAT_TIME_BUDGET,
+    ],
+    common_mistakes_vi: [
+      "Q5 (arm's length): trong tiếng Anh, 'arm's' là 1 từ (genitive). Câu hỏi giới hạn 1 từ là viết được — nhưng nhiều bạn cố đếm 2 và bỏ apostrophe.",
+      "Q9: 'already been gathered' (đã thu nhặt rồi) — passage nói NGƯỢC LẠI ('not yet been collected'). NO.",
+    ],
+    estimated_time_minutes: 18,
+    difficulty_band: 7.5,
+    word_count: 780,
+  },
 ];
 
 // Selectors and lookup helpers — exported names are stable.
