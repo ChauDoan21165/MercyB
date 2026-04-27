@@ -83,11 +83,6 @@ describe("daysUntilExpiry", () => {
 });
 
 describe("stageFor", () => {
-  it("returns D_minus_3 when ~3 days remain", () => {
-    // created exactly NOW → expires in 3 days, lands in [3.0, 3.5)
-    expect(stageFor(row({ created_at: minusDays(0) }), NOW)).toBe("D_minus_3");
-  });
-
   it("returns D_minus_1 when ~1 day remains", () => {
     // created 2 days ago → expires in 1 day
     expect(stageFor(row({ created_at: minusDays(2) }), NOW)).toBe("D_minus_1");
@@ -96,6 +91,12 @@ describe("stageFor", () => {
   it("returns D_plus_1 when expired ~1 day ago", () => {
     // created 3.75 days ago → expired 0.75 days ago, in (-1.0, -0.5]
     expect(stageFor(row({ created_at: minusDays(3.75) }), NOW)).toBe("D_plus_1");
+  });
+
+  it("returns not_in_window for fresh signups (full trial ahead)", () => {
+    // created exactly NOW → expires in 3 days. The D-3 stage was dropped
+    // (3-day trial overlaps with welcome email), so this is not_in_window.
+    expect(stageFor(row({ created_at: minusDays(0) }), NOW)).toBe("not_in_window");
   });
 
   it("returns not_in_window for users mid-trial (between stages)", () => {
@@ -108,30 +109,31 @@ describe("stageFor", () => {
   });
 
   it("never emails premium users (tier >= 1)", () => {
-    const r = row({ created_at: minusDays(0), tier: 1 });
+    const r = row({ created_at: minusDays(2), tier: 1 });
     expect(stageFor(r, NOW)).toBe("not_in_window");
   });
 
   it("treats tier as a string ('1') the same as the integer (DB types surface tier as string)", () => {
-    const r = row({ created_at: minusDays(0), tier: "1" });
+    const r = row({ created_at: minusDays(2), tier: "1" });
     expect(stageFor(r, NOW)).toBe("not_in_window");
   });
 
   it("treats tier 0 (default trial) as eligible for the funnel", () => {
-    expect(stageFor(row({ created_at: minusDays(0), tier: 0 }), NOW)).toBe(
-      "D_minus_3",
+    expect(stageFor(row({ created_at: minusDays(2), tier: 0 }), NOW)).toBe(
+      "D_minus_1",
     );
   });
 
   it("treats null tier as eligible for the funnel", () => {
-    expect(stageFor(row({ created_at: minusDays(0), tier: null }), NOW)).toBe(
-      "D_minus_3",
+    expect(stageFor(row({ created_at: minusDays(2), tier: null }), NOW)).toBe(
+      "D_minus_1",
     );
   });
 
   it("prefers an explicit trial_expires_at when set", () => {
-    // created 0 days ago would normally yield D-3, but if trial_expires_at
-    // says the trial already ended yesterday, the user should land in D+1.
+    // created 0 days ago would normally yield not_in_window (no D-3 stage),
+    // but if trial_expires_at says the trial already ended yesterday, the
+    // user should land in D+1.
     const r = row({
       created_at: minusDays(0),
       trial_expires_at: minusDays(0.75), // 0.75d in the past
@@ -149,19 +151,13 @@ describe("stageFor", () => {
   });
 
   it("never emails users with no email address", () => {
-    const r = row({ created_at: minusDays(0), email: null });
+    const r = row({ created_at: minusDays(2), email: null });
     expect(stageFor(r, NOW)).toBe("not_in_window");
   });
 
   it("respects trial_extension_days when locating the window", () => {
-    // Without extension: 5 days post-creation = 2 days post-expiry → not_in_window
-    // WITH 4-day extension: 5 days post-creation = 2 days BEFORE expiry → not_in_window
-    // WITH 8-day extension: 5 days post-creation = 6 days BEFORE expiry → not_in_window
-    // WITH 2-day extension: 5 days post-creation = 0 days post-expiry → not in (-1, -0.5] window
-    // Use the case where extension shifts the row INTO D-3:
-    //   created 0 days ago, extension 0 → expires in 3 days → D-3 (already covered)
-    //   created 2 days ago, extension 0 → expires in 1 day → D-1
-    //   created 2 days ago, extension 4 → expires in 5 days → not_in_window (extension lifts user out)
+    // created 2 days ago, extension 0 → expires in 1 day → D_minus_1
+    // created 2 days ago, extension 4 → expires in 5 days → not_in_window
     const noExt = row({ created_at: minusDays(2), trial_extension_days: 0 });
     const withExt = row({ created_at: minusDays(2), trial_extension_days: 4 });
     expect(stageFor(noExt, NOW)).toBe("D_minus_1");
@@ -171,7 +167,6 @@ describe("stageFor", () => {
 
 describe("campaignForStage / TRIAL_STAGE_TO_CAMPAIGN", () => {
   it("maps each stage to the matching email_sends_log campaign string", () => {
-    expect(campaignForStage("D_minus_3")).toBe("trial_expiry_d_minus_3");
     expect(campaignForStage("D_minus_1")).toBe("trial_expiry_d_minus_1");
     expect(campaignForStage("D_plus_1")).toBe("trial_expiry_d_plus_1");
   });
@@ -181,7 +176,7 @@ describe("campaignForStage / TRIAL_STAGE_TO_CAMPAIGN", () => {
   });
 
   it("TRIAL_STAGE_TO_CAMPAIGN is consistent with campaignForStage", () => {
-    for (const stage of ["D_minus_3", "D_minus_1", "D_plus_1"] as const) {
+    for (const stage of ["D_minus_1", "D_plus_1"] as const) {
       expect(TRIAL_STAGE_TO_CAMPAIGN[stage]).toBe(campaignForStage(stage));
     }
   });
@@ -190,19 +185,19 @@ describe("campaignForStage / TRIAL_STAGE_TO_CAMPAIGN", () => {
 describe("categorizeForTrialExpiry", () => {
   it("partitions a mixed batch into the correct buckets", () => {
     const rows: TrialUserRow[] = [
-      row({ id: "u-d3", created_at: minusDays(0) }),
       row({ id: "u-d1", created_at: minusDays(2) }),
       row({ id: "u-plus1", created_at: minusDays(3.75) }),
+      row({ id: "u-fresh", created_at: minusDays(0) }), // not_in_window (D-3 dropped)
       row({ id: "u-mid", created_at: minusDays(1) }), // not_in_window
-      row({ id: "u-prem", created_at: minusDays(0), tier: 1 }),
-      row({ id: "u-no-email", created_at: minusDays(0), email: null }),
+      row({ id: "u-prem", created_at: minusDays(2), tier: 1 }),
+      row({ id: "u-no-email", created_at: minusDays(2), email: null }),
       row({ id: "u-stale", created_at: minusDays(20) }),
     ];
     const result = categorizeForTrialExpiry(rows, NOW);
-    expect(result.d_minus_3.map((r) => r.id)).toEqual(["u-d3"]);
     expect(result.d_minus_1.map((r) => r.id)).toEqual(["u-d1"]);
     expect(result.d_plus_1.map((r) => r.id)).toEqual(["u-plus1"]);
     expect(result.skipped.map((r) => r.id).sort()).toEqual([
+      "u-fresh",
       "u-mid",
       "u-no-email",
       "u-prem",
@@ -212,7 +207,6 @@ describe("categorizeForTrialExpiry", () => {
 
   it("handles an empty input list", () => {
     const result = categorizeForTrialExpiry([], NOW);
-    expect(result.d_minus_3).toEqual([]);
     expect(result.d_minus_1).toEqual([]);
     expect(result.d_plus_1).toEqual([]);
     expect(result.skipped).toEqual([]);

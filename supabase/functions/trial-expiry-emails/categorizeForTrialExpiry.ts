@@ -17,7 +17,6 @@
  *     trial_expires_at  = trial_started_at + trial_length_days
  *
  * Stage assignment, computed against `now`:
- *   D_minus_3   : 3.0 ≤ days_until_expiry < 3.5  (one-day window inside D-3)
  *   D_minus_1   : 1.0 ≤ days_until_expiry < 1.5
  *   D_plus_1    : -1.0 < days_until_expiry ≤ -0.5  (i.e. 0.5–1 day past expiry)
  *   not_in_window: anything else
@@ -25,6 +24,11 @@
  * Why half-day windows: a daily cron only runs once a day, so we want the
  * "today" sample to land cleanly inside one stage and never two. Tightening
  * to exactly 24h lets late/early cron runs still hit the right stage.
+ *
+ * Why no D_minus_3 stage: the trial is 3 days, so D-3 would fire on signup
+ * day and overlap with the welcome email. The 2-stage funnel (D-1 reminder,
+ * D+1 open-door) is the right cadence for a 3-day trial — fewer emails per
+ * user, lower spam-complaint risk.
  *
  * Already-paid users (`tier >= 1`) get `not_in_window` regardless — we
  * never email a paying user about trial expiry. (The previous version
@@ -64,13 +68,11 @@ export interface TrialUserRow {
 }
 
 export type TrialStage =
-  | "D_minus_3"
   | "D_minus_1"
   | "D_plus_1"
   | "not_in_window";
 
 export type TrialCampaign =
-  | "trial_expiry_d_minus_3"
   | "trial_expiry_d_minus_1"
   | "trial_expiry_d_plus_1";
 
@@ -78,7 +80,6 @@ export const TRIAL_STAGE_TO_CAMPAIGN: Record<
   Exclude<TrialStage, "not_in_window">,
   TrialCampaign
 > = {
-  D_minus_3: "trial_expiry_d_minus_3",
   D_minus_1: "trial_expiry_d_minus_1",
   D_plus_1: "trial_expiry_d_plus_1",
 };
@@ -142,7 +143,6 @@ export function stageFor(row: TrialUserRow, now: Date): TrialStage {
   const days = daysUntilExpiry(row, now);
   if (days === null) return "not_in_window";
 
-  if (days >= 3.0 && days < 3.5) return "D_minus_3";
   if (days >= 1.0 && days < 1.5) return "D_minus_1";
   if (days > -1.0 && days <= -0.5) return "D_plus_1";
   return "not_in_window";
@@ -158,7 +158,6 @@ export function campaignForStage(stage: TrialStage): TrialCampaign | null {
 }
 
 export interface CategorizedTrialUsers {
-  d_minus_3: TrialUserRow[];
   d_minus_1: TrialUserRow[];
   d_plus_1: TrialUserRow[];
   skipped: TrialUserRow[];
@@ -169,15 +168,13 @@ export function categorizeForTrialExpiry(
   now: Date,
 ): CategorizedTrialUsers {
   const out: CategorizedTrialUsers = {
-    d_minus_3: [],
     d_minus_1: [],
     d_plus_1: [],
     skipped: [],
   };
   for (const row of rows) {
     const stage = stageFor(row, now);
-    if (stage === "D_minus_3") out.d_minus_3.push(row);
-    else if (stage === "D_minus_1") out.d_minus_1.push(row);
+    if (stage === "D_minus_1") out.d_minus_1.push(row);
     else if (stage === "D_plus_1") out.d_plus_1.push(row);
     else out.skipped.push(row);
   }
