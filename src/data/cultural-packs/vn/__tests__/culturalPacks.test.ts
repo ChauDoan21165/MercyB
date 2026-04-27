@@ -1,6 +1,6 @@
 // src/data/cultural-packs/vn/__tests__/culturalPacks.test.ts
 //
-// Step 10 — locks shape + content invariants for the seven shipped
+// Step 10 — locks shape + content invariants for the eight shipped
 // VN cultural packs. The Zod schema does the heavy lifting on shape;
 // these tests catch regressions on counts, IDs, and the small set of
 // content rules the brief calls out (no streak shaming, no exoticism,
@@ -17,8 +17,8 @@ import {
 } from "../culturalPackSchema";
 
 describe("CULTURAL_PACK_IDS", () => {
-  it("ships exactly 7 packs", () => {
-    expect(CULTURAL_PACK_IDS.length).toBe(7);
+  it("ships exactly 8 packs", () => {
+    expect(CULTURAL_PACK_IDS.length).toBe(8);
   });
 
   it("uses lowercase-kebab IDs only", () => {
@@ -27,7 +27,7 @@ describe("CULTURAL_PACK_IDS", () => {
     }
   });
 
-  it("contains the seven required pack ids from the brief", () => {
+  it("contains the original seven pack ids from the Step 10 brief", () => {
     const required = [
       "tet-lunar-new-year",
       "family-titles",
@@ -40,6 +40,10 @@ describe("CULTURAL_PACK_IDS", () => {
     for (const id of required) {
       expect(CULTURAL_PACK_IDS).toContain(id);
     }
+  });
+
+  it("contains the daily-life pack added in the option-B expansion", () => {
+    expect(CULTURAL_PACK_IDS).toContain("daily-life");
   });
 });
 
@@ -124,6 +128,10 @@ describe("Tone guardrails", () => {
   it("Tết and weddings are 'festive'", () => {
     expect(VN_CULTURAL_PACKS["tet-lunar-new-year"].tone).toBe("festive");
     expect(VN_CULTURAL_PACKS["weddings"].tone).toBe("festive");
+  });
+
+  it("daily-life pack uses 'practical' tone", () => {
+    expect(VN_CULTURAL_PACKS["daily-life"].tone).toBe("practical");
   });
 });
 
