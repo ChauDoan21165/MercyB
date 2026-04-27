@@ -108,6 +108,8 @@ type MercyGuidePanelProps = {
   roomId?: string;
   roomTitle?: string;
   contentEn?: string;
+  /** Pre-fill the Speak-tab practice line. See MercyGuideProps.initialPracticeLine. */
+  initialPracticeLine?: string;
   profile?: unknown;
   troubleWords?: unknown[];
   speakPractice?: unknown;
@@ -887,6 +889,7 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
   roomId,
   roomTitle,
   contentEn,
+  initialPracticeLine,
   profile,
   troubleWords,
   speakPractice,
@@ -1568,6 +1571,7 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
               roomId={roomId}
               roomTitle={roomTitle}
               contentEn={contentEn}
+              initialPracticeLine={initialPracticeLine}
               profile={
                 profile as
                   | {

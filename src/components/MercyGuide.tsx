@@ -311,6 +311,9 @@ export function MercyGuide({
   pathSlug,
   tags,
   contentEn,
+  initialTab,
+  initialPracticeLine,
+  openRequestId,
 }: MercyGuideProps) {
   const { isEnabled } = useMercyGuide();
 
@@ -329,8 +332,18 @@ export function MercyGuide({
 
   const [isOpen, setIsOpen] = useState(false);
   const [activeTab, setActiveTab] = useState<GuideTab>(
-    teacherMode === 'kids' ? 'pronunciation' : 'teacher',
+    initialTab ?? (teacherMode === 'kids' ? 'pronunciation' : 'teacher'),
   );
+
+  // When Home increments openRequestId (Try-one-word card), open the
+  // panel on the requested tab. Bumping the id retriggers this effect
+  // even if initialTab / initialPracticeLine values are unchanged across
+  // repeated clicks.
+  useEffect(() => {
+    if (!openRequestId) return;
+    if (initialTab) setActiveTab(initialTab);
+    setIsOpen(true);
+  }, [openRequestId, initialTab]);
   const [showSettings, setShowSettings] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
 
@@ -1254,6 +1267,7 @@ export function MercyGuide({
             roomId={roomId}
             roomTitle={roomTitle}
             contentEn={contentEn}
+            initialPracticeLine={initialPracticeLine}
             profile={profile}
             suggestions={suggestions}
             yesterdaySummary={yesterdaySummary}
