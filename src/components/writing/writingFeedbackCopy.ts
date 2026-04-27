@@ -87,4 +87,13 @@ export const WRITING_COPY = {
   introNo: { vi: "Chưa có mở bài rõ", en: "No clear intro" },
   conclusionYes: { vi: "Có kết bài", en: "Has conclusion" },
   conclusionNo: { vi: "Chưa có kết bài rõ", en: "No clear conclusion" },
+  /**
+   * Marketing copy for the VN-rubric path. Verifiable claim — does not
+   * say "only app" / "duy nhất". The pattern dictionary in
+   * vn-writing-patterns.ts is the evidence behind the claim.
+   */
+  vnFeedbackBanner: {
+    vi: "Phản hồi viết theo lỗi đặc trưng người Việt — không phải template chung.",
+    en: "Feedback tuned to Vietnamese-learner error patterns — not a generic template.",
+  },
 } as const;
