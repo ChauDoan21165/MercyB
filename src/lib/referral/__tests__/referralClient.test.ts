@@ -197,10 +197,16 @@ describe("getReferralStats", () => {
 
   it("returns zero state when the user has no code", async () => {
     const stats = await getReferralStats("u1");
-    expect(stats).toEqual({ code: null, usesCount: 0, pendingOwnerRewards: 0 });
+    expect(stats).toEqual({
+      code: null,
+      usesCount: 0,
+      pendingOwnerRewards: 0,
+      completedOwnerRewards: 0,
+      totalDaysEarned: 0,
+    });
   });
 
-  it("returns code + uses + pending reward count", async () => {
+  it("returns code + uses + pending + completed + total days", async () => {
     // 1. referral_codes maybeSingle → { code, uses_count }
     const codeMaybeSingle = vi.fn().mockResolvedValue({
       data: { code: "ABC234", uses_count: 3 },
@@ -222,7 +228,14 @@ describe("getReferralStats", () => {
       .mockImplementationOnce(() => ({ select: usesSelect }));
 
     const stats = await getReferralStats("u1");
-    expect(stats).toEqual({ code: "ABC234", usesCount: 3, pendingOwnerRewards: 2 });
+    // 3 total uses, 2 pending → 1 completed → 7 days earned
+    expect(stats).toEqual({
+      code: "ABC234",
+      usesCount: 3,
+      pendingOwnerRewards: 2,
+      completedOwnerRewards: 1,
+      totalDaysEarned: 7,
+    });
     expect(usesEq1).toHaveBeenCalledWith("code", "ABC234");
     expect(usesEq2).toHaveBeenCalledWith("reward_granted_owner", false);
   });

@@ -36,6 +36,18 @@ export type ShareInvocationContext = {
    * to use — it just calls back if provided.
    */
   onTrack?: (event: string, payload: Record<string, unknown>) => void;
+  /**
+   * A9 — optional referral code. When supplied:
+   *   - Web Share API path: shared `url` becomes the referral landing
+   *     URL (`?ref=CODE`) and the caption gains a Vietnamese invite line
+   *     so friends know what they get for clicking.
+   *   - Sharer-URL path: the referral landing URL is shared instead of
+   *     the uploaded image URL. We accept the visual trade-off (the post
+   *     uses the home page's og:image rather than the live score card)
+   *     because a dead `?ref=` is worth more than a tagged image URL —
+   *     Facebook does not parse query strings on raw image links.
+   */
+  referralCode?: string | null;
 };
 
 const EVENT_NAME = "share_score_card_clicked";
@@ -65,6 +77,9 @@ export async function shareScoreToFacebook(
     return { ok: false, reason: "blob_failed", error: msg };
   }
 
+  const referralCode = sanitizeReferralCode(ctx.referralCode);
+  const landingUrl = buildLandingUrl(referralCode);
+
   // ── Path 1: Web Share API with files ─────────────────────────────────
   if (canWebShareWithFiles(blob)) {
     try {
@@ -73,9 +88,9 @@ export async function shareScoreToFacebook(
       });
       await navigator.share({
         title: `MercyBlade · ${Math.round(input.overallScore)}/100`,
-        text: shareCaption(input.overallScore),
+        text: shareCaption(input.overallScore, referralCode, landingUrl),
         files: [file],
-        url: `https://${PRODUCT_CONFIG.domain}`,
+        url: landingUrl,
       });
       return { ok: true, path: "web_share" };
     } catch (err) {
@@ -90,6 +105,18 @@ export async function shareScoreToFacebook(
   }
 
   // ── Path 2: Upload to Supabase Storage → Facebook sharer URL ────────
+  // When a referral code is supplied, prefer sharing the referral
+  // landing URL (so the click drops the friend on `?ref=CODE`). The
+  // home page's og:image acts as the preview. When no code is supplied
+  // we keep the original uploaded-image flow.
+  if (referralCode) {
+    const sharerUrl = buildFacebookSharerUrl(landingUrl);
+    if (typeof window !== "undefined") {
+      window.open(sharerUrl, "_blank", "noopener,noreferrer");
+    }
+    return { ok: true, path: "sharer_url", sharedUrl: landingUrl };
+  }
+
   const upload = await uploadShareCard(blob);
   if (!upload.ok) {
     // Even the URL fallback can't proceed without an image to scrape.
@@ -110,6 +137,29 @@ export async function shareScoreToFacebook(
   return { ok: true, path: "sharer_url", sharedUrl: upload.publicUrl };
 }
 
+// ── Referral helpers (exported for tests) ────────────────────────────────
+
+const REFERRAL_CODE_REGEX = /^[2-9A-HJ-NP-Z]{6}$/;
+
+function sanitizeReferralCode(raw: string | null | undefined): string | null {
+  if (!raw) return null;
+  const norm = raw.trim().toUpperCase();
+  return REFERRAL_CODE_REGEX.test(norm) ? norm : null;
+}
+
+/**
+ * Build the landing URL friends click. With a code: appends `?ref=CODE`
+ * so the auto-apply hook in AuthProvider redeems it on signup. Without:
+ * just the home page.
+ */
+export function buildLandingUrl(code: string | null): string {
+  const base = `https://${PRODUCT_CONFIG.domain}`;
+  if (!code) return base;
+  const url = new URL(base);
+  url.searchParams.set("ref", code);
+  return url.toString();
+}
+
 // ── Helpers (exported for tests) ─────────────────────────────────────────
 
 /** Build the canonical Facebook sharer URL for an image / page URL. */
@@ -117,14 +167,30 @@ export function buildFacebookSharerUrl(url: string): string {
   return `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
 }
 
-/** Caption shown in the OS share sheet alongside the image. */
-export function shareCaption(score: number): string {
+/**
+ * Caption shown in the OS share sheet alongside the image. When a
+ * referral code is provided the caption gains a Vietnamese invite line
+ * so friends understand why they should click — Facebook Vietnamese
+ * users respond better to "you also get something" than to a bare score.
+ */
+export function shareCaption(
+  score: number,
+  referralCode?: string | null,
+  landingUrl?: string,
+): string {
   const safeScore = Math.max(0, Math.min(100, Math.round(score)));
-  return [
+  const lines = [
     `Tôi đạt ${safeScore}/100 trên MercyBlade!`,
     `I scored ${safeScore}/100 on MercyBlade!`,
-    `${PRODUCT_CONFIG.domain}`,
-  ].join("\n");
+  ];
+  if (referralCode && landingUrl) {
+    lines.push(
+      `Đăng ký bằng link này để được thêm 7 ngày miễn phí: ${landingUrl}`,
+    );
+  } else {
+    lines.push(`${PRODUCT_CONFIG.domain}`);
+  }
+  return lines.join("\n");
 }
 
 /**

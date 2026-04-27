@@ -30,6 +30,7 @@ const Privacy             = lazy(() => import("@/pages/Privacy"));
 const Terms                = lazy(() => import("@/pages/Terms"));
 const Support             = lazy(() => import("@/pages/Support"));
 const AccountPage         = lazy(() => import("@/pages/AccountPage"));
+const ReferralPage        = lazy(() => import("@/pages/Referral"));
 const BillingPage         = lazy(() => import("@/pages/Billing"));
 const BillingSuccessPage  = lazy(() => import("@/pages/BillingSuccessPage"));
 const Pricing             = lazy(() => import("../screens/Pricing"));
@@ -656,6 +657,13 @@ export default function AppRouter() {
             element={
               <RequireAuth>
                 <LazyPage><AccountPage /></LazyPage>
+              </RequireAuth>
+            }
+          />
+          <Route path="/referral"
+            element={
+              <RequireAuth>
+                <LazyPage><ReferralPage /></LazyPage>
               </RequireAuth>
             }
           />
