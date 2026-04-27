@@ -49,6 +49,7 @@ import { awardSpeakPoints } from '@/services/pointsService';
 import { resolveRoomAudioUrl } from '@/lib/roomAudioResolver';
 import { deriveWordChips } from './wordChips';
 import { useFeatureFlag } from '@/hooks/useFeatureFlag';
+import { useMercyVoice } from '@/hooks/useMercyVoice';
 import { scoreCloud } from '@/lib/pronunciation/cloudScorer';
 import type { WordScore } from '@/lib/pronunciation/scorer';
 import {
@@ -664,6 +665,7 @@ export function MercySpeakTab({
   const speechWindow = typeof window !== 'undefined' ? (window as BrowserWindowWithSpeechRecognition) : undefined;
   const supportsRecognition    = typeof window !== 'undefined' && Boolean(speechWindow?.SpeechRecognition || speechWindow?.webkitSpeechRecognition);
   const supportsSpeechSynthesis = typeof window !== 'undefined' && typeof window.speechSynthesis !== 'undefined';
+  const mercyVoice = useMercyVoice();
   const supportsMediaRecording  = typeof window !== 'undefined' && typeof navigator !== 'undefined' && Boolean(navigator.mediaDevices?.getUserMedia) && typeof MediaRecorder !== 'undefined';
 
   useEffect(() => { setCustomText(defaultPracticeText); setVariant(initialVariant); }, [defaultPracticeText, initialVariant]);
@@ -937,6 +939,21 @@ export function MercySpeakTab({
     return out.length ? out : [text];
   }
 
+  // Cloud-first wrapper. Tries ElevenLabs (warm Vietnamese-accented voice
+  // when the elevenlabs_tts feature flag is on) and falls back to the
+  // existing browser-TTS path (speakViaTTS below) on any failure.
+  // Speak tab plays the *target English* sentence, so language: 'en'.
+  function speakWithMercy(speechText: string) {
+    if (!speechText) return;
+    void mercyVoice.speak({
+      text: speechText,
+      language: 'en',
+      browserFallback: (t) => speakViaTTS(t),
+      onCloudStart: () => setIsSpeaking(true),
+      onCloudEnd: () => setIsSpeaking(false),
+    });
+  }
+
   function speakViaTTS(speechText: string) {
     if (!speechText || !supportsSpeechSynthesis || typeof window === 'undefined') return;
     const synth = window.speechSynthesis;
@@ -1032,8 +1049,12 @@ export function MercySpeakTab({
       return;
     }
 
-    // Adult mode or word chip: use browser TTS
-    speakViaTTS(speechText);
+    // Adult mode or word chip: try ElevenLabs cloud TTS first (gated by
+    // the elevenlabs_tts feature flag); falls back to browser TTS on any
+    // failure. Kids mode keeps its own pre-recorded mp3 path above and
+    // its existing speakViaTTS fallback (mp3 is already an ElevenLabs
+    // render, so no need to round-trip through the cloud function).
+    speakWithMercy(speechText);
   }
 
   function stopSpeaking() {
