@@ -93,6 +93,7 @@ function makeDeps(overrides: Partial<Deps> = {}): Deps {
   return {
     getUserFromAuthHeader: vi.fn().mockResolvedValue({ id: "user-1" }),
     rateLimit: vi.fn().mockResolvedValue(undefined),
+    checkIpRateLimit: vi.fn().mockResolvedValue({ allowed: true }),
     fetch: vi.fn(),
     checkAiBudget: vi.fn().mockResolvedValue({ allowed: true }),
     fetchUserProfile: vi.fn().mockResolvedValue(activeTrialProfile()),
