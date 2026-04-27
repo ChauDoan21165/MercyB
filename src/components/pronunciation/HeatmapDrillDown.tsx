@@ -7,11 +7,13 @@
 // own visibility (parent decides whether to render us at all).
 
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 import {
   getHeatmapDrillDown,
   type HeatmapDrillDownAttempt,
 } from "@/lib/pronunciation/phonemeHeatmap";
+import { getDrillPackForPhoneme } from "@/data/pronunciation/phoneme-drills";
 import { colorForScore } from "./PhonemeHeatmap";
 
 export type HeatmapDrillDownProps = {
@@ -61,6 +63,12 @@ export function HeatmapDrillDown({
       attempts[0])
     : null;
 
+  // Look up the drill pack covering this phoneme so we can offer a
+  // tight feedback loop: red cell → 5-minute focused practice. Pack
+  // may be null for phonemes we don't yet have hand-curated content
+  // for; in that case we omit the CTA rather than send users to a 404.
+  const pack = getDrillPackForPhoneme(phoneme);
+
   return (
     <div style={panelStyle} role="region" aria-label={`Chi tiết · Day detail · ${day} · /${phoneme}/`}>
       <header style={headerStyle}>
@@ -84,6 +92,25 @@ export function HeatmapDrillDown({
           </button>
         ) : null}
       </header>
+
+      {pack ? (
+        <Link
+          to={`/practice/phoneme/${pack.slug}?src=heatmap`}
+          style={drillCtaStyle}
+          data-testid="heatmap-drill-cta"
+        >
+          <span aria-hidden style={{ fontSize: 16 }}>🎯</span>
+          <span style={{ flex: 1 }}>
+            <span style={drillCtaViStyle}>
+              Luyện {pack.phoneme_ipa} 5 phút
+            </span>
+            <span style={drillCtaEnStyle}>
+              Focused {pack.phoneme_ipa} drill · 5 minutes
+            </span>
+          </span>
+          <span aria-hidden style={{ fontSize: 14 }}>→</span>
+        </Link>
+      ) : null}
 
       {loading ? (
         <div style={emptyStyle}>Đang tải… · Loading…</div>
@@ -284,6 +311,32 @@ const chipStyle: React.CSSProperties = {
   borderRadius: 9999,
   background: "rgba(99,102,241,0.06)",
   border: "1px solid rgba(99,102,241,0.20)",
+};
+
+const drillCtaStyle: React.CSSProperties = {
+  display: "flex",
+  alignItems: "center",
+  gap: 10,
+  padding: "10px 12px",
+  marginBottom: 10,
+  borderRadius: 12,
+  background: "linear-gradient(150deg, #6366F1 0%, #4F46E5 100%)",
+  color: "white",
+  textDecoration: "none",
+  boxShadow: "0 4px 12px rgba(79,70,229,0.20)",
+};
+
+const drillCtaViStyle: React.CSSProperties = {
+  display: "block",
+  fontSize: 13,
+  fontWeight: 800,
+};
+
+const drillCtaEnStyle: React.CSSProperties = {
+  display: "block",
+  fontSize: 11,
+  opacity: 0.85,
+  marginTop: 2,
 };
 
 export default HeatmapDrillDown;
