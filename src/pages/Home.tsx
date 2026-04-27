@@ -16,6 +16,7 @@ import { useFeatureFlag } from "@/hooks/useFeatureFlag";
 import FocusAreasCard from "@/components/home/FocusAreasCard";
 import TodaysLessonCard from "@/components/home/TodaysLessonCard";
 import WeeklyProgressWidget from "@/components/home/WeeklyProgressWidget";
+import StoryPromptCard from "@/components/home/StoryPromptCard";
 import LeaderboardCard from "@/components/leaderboard/LeaderboardCard";
 import { StreakBadge } from "@/components/streak/StreakBadge";
 
@@ -659,6 +660,12 @@ export default function Home() {
               with attempts; hidden otherwise. The widget owns its own
               fetch so Home doesn't auto-load progress data. */}
           <WeeklyProgressWidget />
+
+          {/* Story-share prompt — self-gates on eligibility (paid, 21+
+              days, 50+ attempts, sustained improvement) AND a 30-day
+              cooldown. Renders nothing for users who don't qualify, so
+              the surface stays clean for new + struggling learners. */}
+          <StoryPromptCard />
 
           {/* Teacher Mercy — hero */}
           {teacherCard}

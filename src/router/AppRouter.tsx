@@ -109,6 +109,14 @@ const ContributeSentencePage = lazy(() => import("@/pages/contribute/ContributeS
 const MySubmissionsPage      = lazy(() => import("@/pages/contribute/MySubmissionsPage"));
 const PendingSentencesPage   = lazy(() => import("@/pages/admin/PendingSentencesPage"));
 
+// User testimonial pages — public stories index + auth-required share
+// flow + admin moderation queue. See migration
+// 20260426000000_user_stories.sql for the schema and RLS.
+const StoriesPage            = lazy(() => import("@/pages/Stories"));
+const ShareStoryPage         = lazy(() => import("@/pages/stories/ShareStory"));
+const StoryDetailPage        = lazy(() => import("@/pages/stories/StoryDetail"));
+const StoryModerationPage    = lazy(() => import("@/pages/admin/StoryModeration"));
+
 const FamilyPlanPage         = lazy(() => import("@/pages/family/FamilyPlanPage"));
 
 const TOEICIndexPage         = lazy(() => import("@/pages/exam-prep/TOEICIndexPage"));
@@ -787,6 +795,22 @@ export default function AppRouter() {
             element={<LazyPage><VNCulturalPackPage /></LazyPage>}
           />
 
+          {/* User testimonial collection — public stories index, owner
+              share flow (auth-gated), and per-story detail page. */}
+          <Route path="/stories"
+            element={<LazyPage><StoriesPage /></LazyPage>}
+          />
+          <Route path="/stories/share"
+            element={
+              <RequireAuth>
+                <LazyPage><ShareStoryPage /></LazyPage>
+              </RequireAuth>
+            }
+          />
+          <Route path="/stories/:storyId"
+            element={<LazyPage><StoryDetailPage /></LazyPage>}
+          />
+
           {/* Community: user-generated sentences (Step 6) */}
           <Route path="/contribute"
             element={
@@ -899,6 +923,7 @@ export default function AppRouter() {
               <Route path="feedback-triage"      element={<LazyPage><FeedbackTriagePage /></LazyPage>} />
               <Route path="analytics"            element={<LazyPage><AdminAnalyticsPage /></LazyPage>} />
               <Route path="pending-sentences"    element={<LazyPage><PendingSentencesPage /></LazyPage>} />
+              <Route path="stories"              element={<LazyPage><StoryModerationPage /></LazyPage>} />
               <Route path="room-load-diagnostics" element={<LazyPage><RoomLoadDiagnostics /></LazyPage>} />
               <Route path="*" element={<LazyPage><AdminDashboard /></LazyPage>} />
             </Route>
