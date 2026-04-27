@@ -159,6 +159,12 @@ const TeacherReviewItemPage     = lazy(() => import("@/pages/teacher-portal/Revi
 const TeacherFeedbackTriagePage = lazy(() => import("@/pages/admin/TeacherFeedbackTriage"));
 const TeacherRoute              = lazy(() => import("@/components/teacher-portal/TeacherRoute"));
 
+// Community-curated mock-interview prompts. See migration
+// 20260534000000_user_interview_prompts.sql for the schema and RLS.
+const SubmitInterviewPromptPage  = lazy(() => import("@/pages/interview-prompts/Submit"));
+const CommunityPromptsPage       = lazy(() => import("@/pages/mock-interview/CommunityPrompts"));
+const InterviewPromptsModerationPage = lazy(() => import("@/pages/admin/InterviewPromptsModeration"));
+
 const FamilyPlanPage         = lazy(() => import("@/pages/family/FamilyPlanPage"));
 
 const TOEICIndexPage         = lazy(() => import("@/pages/exam-prep/TOEICIndexPage"));
@@ -818,6 +824,20 @@ export default function AppRouter() {
             }
           />
 
+          {/* Community-curated mock interview prompts (A11) — public list,
+              auth-gated submission. See migration
+              20260427000003_user_interview_prompts.sql. */}
+          <Route path="/mock-interview/community"
+            element={<LazyPage><CommunityPromptsPage /></LazyPage>}
+          />
+          <Route path="/mock-interview/submit-prompt"
+            element={
+              <RequireAuth>
+                <LazyPage><SubmitInterviewPromptPage /></LazyPage>
+              </RequireAuth>
+            }
+          />
+
           {/* Profession packs (Step 10 / VN moat) — auth-gated; per-page paywall gate */}
           <Route path="/pack/nail-tech"
             element={
@@ -1139,6 +1159,7 @@ export default function AppRouter() {
               <Route path="pending-sentences"    element={<LazyPage><PendingSentencesPage /></LazyPage>} />
               <Route path="stories"              element={<LazyPage><StoryModerationPage /></LazyPage>} />
               <Route path="teacher-feedback"     element={<LazyPage><TeacherFeedbackTriagePage /></LazyPage>} />
+              <Route path="interview-prompts"    element={<LazyPage><InterviewPromptsModerationPage /></LazyPage>} />
               <Route path="room-load-diagnostics" element={<LazyPage><RoomLoadDiagnostics /></LazyPage>} />
               <Route path="*" element={<LazyPage><AdminDashboard /></LazyPage>} />
             </Route>
