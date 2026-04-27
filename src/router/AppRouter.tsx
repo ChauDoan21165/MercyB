@@ -48,6 +48,8 @@ const PlacementResultsPage = lazy(() => import("@/pages/placement/ResultsPage"))
 const SpeechDrillPage      = lazy(() => import("@/pages/SpeechDrillPage"));
 const SpeechHistoryPage    = lazy(() => import("@/pages/speech/SpeechHistoryPage"));
 const LeaderboardPage      = lazy(() => import("@/pages/LeaderboardPage"));
+const ProfessionsIndexPage = lazy(() => import("@/pages/professions/ProfessionsIndexPage"));
+const NailTechLessonsPage  = lazy(() => import("@/pages/professions/NailTechLessonsPage"));
 
 // Mercy v2 — multi-turn conversation thread page (auth-required).
 const MercyThreadPage      = lazy(() => import("@/pages/mercy/MercyThreadPage"));
@@ -535,6 +537,14 @@ export default function AppRouter() {
           {/* Public weekly leaderboard — anon-viewable */}
           <Route path="/leaderboard"
             element={<LazyPage><LeaderboardPage /></LazyPage>}
+          />
+
+          {/* Profession packs — vocational English verticals (anon-viewable). */}
+          <Route path="/professions"
+            element={<LazyPage><ProfessionsIndexPage /></LazyPage>}
+          />
+          <Route path="/professions/nail-tech"
+            element={<LazyPage><NailTechLessonsPage /></LazyPage>}
           />
 
           {/* Mercy v2 — multi-turn conversation thread (Step 7) */}
