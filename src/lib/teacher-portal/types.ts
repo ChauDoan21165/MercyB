@@ -1,7 +1,7 @@
 // src/lib/teacher-portal/types.ts
 //
 // Shared TypeScript types for the teacher review portal. Mirror of the
-// Postgres schema in 20260427000002_teacher_feedback.sql.
+// Postgres schema in 20260533000000_teacher_feedback.sql.
 
 export type ContentType =
   | "vstep"

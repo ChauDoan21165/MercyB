@@ -15,11 +15,11 @@ import { describe, expect, it } from "vitest";
 const here = path.dirname(url.fileURLToPath(import.meta.url));
 const migrationFeedbackPath = path.resolve(
   here,
-  "../../../../supabase/migrations/20260427000002_teacher_feedback.sql",
+  "../../../../supabase/migrations/20260533000000_teacher_feedback.sql",
 );
 const migrationRolePath = path.resolve(
   here,
-  "../../../../supabase/migrations/20260427000001_teacher_review_role.sql",
+  "../../../../supabase/migrations/20260532000000_teacher_review_role.sql",
 );
 
 function readMigration(p: string): string {

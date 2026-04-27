@@ -139,7 +139,7 @@ const StoryModerationPage    = lazy(() => import("@/pages/admin/StoryModeration"
 
 // Teacher review portal (A11) — admin level 5+ reviewer queue +
 // admin level 9+ triage of teacher feedback. Schema:
-// supabase/migrations/20260427000002_teacher_feedback.sql.
+// supabase/migrations/20260533000000_teacher_feedback.sql.
 const TeacherReviewQueuePage    = lazy(() => import("@/pages/teacher-portal/ReviewQueue"));
 const TeacherReviewItemPage     = lazy(() => import("@/pages/teacher-portal/ReviewItem"));
 const TeacherFeedbackTriagePage = lazy(() => import("@/pages/admin/TeacherFeedbackTriage"));
