@@ -71,7 +71,7 @@ LANGUAGE plpgsql
 AS $$
 BEGIN
   IF NEW.email_unsubscribe_token IS NULL OR NEW.email_unsubscribe_token = '' THEN
-    NEW.email_unsubscribe_token := encode(gen_random_bytes(24), 'hex');
+    NEW.email_unsubscribe_token := encode(extensions.gen_random_bytes(24), 'hex');
   END IF;
   RETURN NEW;
 END;
@@ -86,7 +86,7 @@ CREATE TRIGGER profiles_set_unsubscribe_token
 -- ── Backfill existing rows ────────────────────────────────────────────
 -- Idempotent: only fills NULLs. Re-running this migration is a no-op.
 UPDATE public.profiles
-   SET email_unsubscribe_token = encode(gen_random_bytes(24), 'hex')
+   SET email_unsubscribe_token = encode(extensions.gen_random_bytes(24), 'hex')
  WHERE email_unsubscribe_token IS NULL;
 
 -- ── RPC: unsubscribe_by_token ─────────────────────────────────────────
