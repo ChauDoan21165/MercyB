@@ -16,6 +16,11 @@ import {
 import { Button } from '@/components/ui/button';
 import ShareScoreButton from '@/components/share/ShareScoreButton';
 import WaveformComparison from '@/components/pronunciation/WaveformComparison';
+import RetakeComparison from '@/components/pronunciation/RetakeComparison';
+import {
+  appendAttempt,
+  type AttemptRecord,
+} from '@/lib/pronunciation/sessionAttempts';
 import { captureWaveform, type Waveform } from '@/lib/pronunciation/audioComparison';
 import { fetchCloudTtsUrl } from '@/lib/mercyVoice';
 import { getPage4LessonByKey } from './kids/kidPage4Data';
@@ -740,6 +745,13 @@ export function MercySpeakTab({
   const [cloudWordScores, setCloudWordScores] = useState<WordScore[]>([]);
   const [expandedWordIdx, setExpandedWordIdx] = useState<number | null>(null);
   const cloudAttemptKeyRef = useRef<string>('');
+
+  // Session-scoped attempt history for the RetakeComparison panel.
+  // Lives only in component state — cleared on practiceText change
+  // (new sentence) and on the comparison panel's manual reset button.
+  // Page-leave clears it via natural unmount. No persistence layer.
+  const [attemptHistory, setAttemptHistory] = useState<AttemptRecord[]>([]);
+  const lastHistoryAppendKeyRef = useRef<string>('');
   useEffect(() => {
     if (!azurePhonemeScoringEnabled) return;
     if (!practiceText) return;
@@ -807,6 +819,59 @@ export function MercySpeakTab({
   // Effective score the rest of the file consumes — cloud takes
   // precedence when present.
   const matchScore = cloudOverrideScore ?? localMatchScore;
+
+  // ── Retake-comparison history ──────────────────────────────────────
+  // Reset whenever the user picks a new sentence (new practiceText).
+  // Per-sentence history wouldn't help here because a sentence change
+  // is the user's "fresh start" signal — nobody comes back and wants
+  // to compare across abandoned sentences.
+  useEffect(() => {
+    setAttemptHistory([]);
+    lastHistoryAppendKeyRef.current = '';
+  }, [practiceText]);
+
+  // Append after each scored attempt. Keyed on the same (text, transcript,
+  // blob.size) tuple the cloud-scoring effect uses, so we only append
+  // once per real attempt regardless of how many re-renders it took to
+  // settle the score (cloud arrives async after local).
+  useEffect(() => {
+    if (!practiceText || !transcript) return;
+    const blob = recordedAudioBlobRef.current;
+    const blobSize = blob?.size ?? 0;
+    const key = `${practiceText}__${transcript}__${blobSize}`;
+    if (lastHistoryAppendKeyRef.current === key) return;
+
+    // If Azure is enabled we want to wait for the cloud result before
+    // recording the attempt so phoneme deltas have data. The cloud
+    // effect updates `cloudWordScores` AND `cloudOverrideScore` together.
+    // When Azure is disabled, append immediately on the local score.
+    const cloudPending = azurePhonemeScoringEnabled && cloudOverrideScore === null;
+    if (cloudPending) return;
+
+    lastHistoryAppendKeyRef.current = key;
+    const phonemes = cloudWordScores.flatMap((w) => w.phonemes ?? []);
+    setAttemptHistory((prev) =>
+      appendAttempt(prev, {
+        timestamp: Date.now(),
+        overallScore: matchScore,
+        phonemes,
+        audioBlob: blob,
+        transcript,
+      }),
+    );
+  }, [
+    practiceText,
+    transcript,
+    matchScore,
+    cloudWordScores,
+    cloudOverrideScore,
+    azurePhonemeScoringEnabled,
+  ]);
+
+  const onResetAttemptHistory = () => {
+    setAttemptHistory([]);
+    lastHistoryAppendKeyRef.current = '';
+  };
   const generatedTroubleWords = useMemo(() => detectTroubleWords(transcript, practiceText), [practiceText, transcript]);
   const displayedTroubleWords = useMemo(() => generatedTroubleWords.length > 0 ? generatedTroubleWords : scopedMemoryTroubleWords, [generatedTroubleWords, scopedMemoryTroubleWords]);
 
@@ -1632,6 +1697,11 @@ export function MercySpeakTab({
 
               {renderPhonemeBreakdownRow()}
 
+              <RetakeComparison
+                history={attemptHistory}
+                onReset={onResetAttemptHistory}
+              />
+
               {/* Restored from commit 48ff1ad0: tap-to-hear word chip row.
                   Kids-friendly cream/peach styling. Browser TTS only. */}
               {wordChips.length > 0 ? (
@@ -1811,6 +1881,11 @@ export function MercySpeakTab({
           </div>
 
           {renderPhonemeBreakdownRow()}
+
+          <RetakeComparison
+            history={attemptHistory}
+            onReset={onResetAttemptHistory}
+          />
 
           {/* Restored from commit 48ff1ad0 — tap-to-hear word chip row,
               extended to adult mode. Refined slate palette to fit the
