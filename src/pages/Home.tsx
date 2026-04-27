@@ -5,7 +5,7 @@
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { BookOpen, ChevronRight, Compass, LibraryBig, Mic } from "lucide-react";
+import { BookOpen, ChevronRight, Compass, GraduationCap, LibraryBig, Mic } from "lucide-react";
 
 import BottomMusicBar from "@/components/audio/BottomMusicBar";
 import { MercyGuide } from "@/components/MercyGuide";
@@ -505,6 +505,77 @@ export default function Home() {
     </button>
   );
 
+  // ── VSTEP exam-prep card (Vietnamese-only moat) ───────────────────────────
+  // VSTEP is required for Vietnamese university graduation and civil
+  // service positions; ~250k test takers/year. Most international
+  // English-prep apps target IELTS/TOEIC and skip VSTEP entirely. This
+  // card surfaces the differentiator on the home page. Red/gold
+  // palette nods to the Vietnamese flag without being literal.
+  const vstepCard = (
+    <button
+      type="button"
+      onClick={() => nav("/exam/vstep/speaking")}
+      aria-label="VSTEP — Vietnamese national English exam prep"
+      style={{ width: "100%", background: "none", border: "none", padding: 0, cursor: "pointer" }}
+    >
+      <div
+        style={{
+          borderRadius: 20,
+          padding: isPhone ? "16px 18px" : "18px 20px",
+          background:
+            "linear-gradient(150deg, rgba(254,242,242,0.96) 0%, rgba(255,251,235,0.96) 100%)",
+          border: "1px solid rgba(185,28,28,0.16)",
+          boxShadow: "0 10px 28px rgba(185,28,28,0.10)",
+          display: "flex",
+          alignItems: "center",
+          gap: 16,
+          textAlign: "left",
+        }}
+      >
+        <div
+          style={{
+            width: 52,
+            height: 52,
+            borderRadius: 9999,
+            background: "linear-gradient(180deg, #DC2626 0%, #B45309 100%)",
+            display: "grid",
+            placeItems: "center",
+            boxShadow: "0 8px 20px rgba(185,28,28,0.22)",
+            flexShrink: 0,
+          }}
+        >
+          <GraduationCap size={24} color="white" />
+        </div>
+
+        <div style={{ minWidth: 0, flex: 1 }}>
+          <div
+            style={{
+              fontSize: isPhone ? z(18) : z(20),
+              fontWeight: 900,
+              color: "rgba(127,29,29,0.94)",
+              letterSpacing: -0.3,
+            }}
+          >
+            VSTEP — Kỳ thi tiếng Anh quốc gia
+          </div>
+          <div style={{ fontSize: z(12), fontWeight: 700, color: "rgba(127,29,29,0.55)", marginTop: 2 }}>
+            Vietnamese Standardized Test of English Proficiency
+          </div>
+          <div style={{ marginTop: 6, fontSize: z(14), fontWeight: 700, color: "rgba(0,0,0,0.62)", lineHeight: 1.45 }}>
+            App học tiếng Anh tập trung riêng vào VSTEP — đúng định dạng Bộ Giáo dục.
+          </div>
+          <div style={{ marginTop: 3, fontSize: z(12), fontWeight: 600, color: "rgba(0,0,0,0.40)", lineHeight: 1.4 }}>
+            B1 + B2 Speaking, 30 chủ đề, mẹo cho người Việt.
+          </div>
+        </div>
+
+        <div style={{ color: "rgba(185,28,28,0.70)", flexShrink: 0 }}>
+          <ChevronRight size={22} />
+        </div>
+      </div>
+    </button>
+  );
+
   return (
     <div style={wrap}>
       {/* Top-right floating streak badge — hidden when streak_current === 0 */}
@@ -554,6 +625,9 @@ export default function Home() {
 
           {/* Placement test — invitation card (always visible; /placement route still gates auth) */}
           {placementCard}
+
+          {/* VSTEP — Vietnamese national exam prep (Vietnamese-only moat) */}
+          {vstepCard}
 
           {/* Focus areas — tertiary (feature-flagged) */}
           <FocusAreasCard />
