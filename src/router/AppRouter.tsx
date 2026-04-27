@@ -145,6 +145,8 @@ const TOEICEstimatorPage     = lazy(() => import("@/pages/exam-prep/TOEICEstimat
 const TOEICPracticePackPage  = lazy(() => import("@/pages/exam-prep/toeic/Practice"));
 const IELTSSpeakingContentPage      = lazy(() => import("@/pages/exam-prep/ielts/Speaking"));
 const IELTSSpeakingTopicPage        = lazy(() => import("@/pages/exam-prep/ielts/SpeakingTopic"));
+const IELTSListeningContentPage     = lazy(() => import("@/pages/exam-prep/ielts/Listening"));
+const IELTSListeningItemPage        = lazy(() => import("@/pages/exam-prep/ielts/ListeningItem"));
 
 const CorporateDashboardPage = lazy(() => import("@/pages/corporate/CorporateDashboardPage"));
 const CreateCorporatePage    = lazy(() => import("@/pages/corporate/CreateCorporatePage"));
@@ -938,6 +940,17 @@ export default function AppRouter() {
           />
           <Route path="/exam-prep/ielts/speaking/:topicId"
             element={<LazyPage><IELTSSpeakingTopicPage /></LazyPage>}
+          />
+
+          {/* IELTS Listening content pack — open marketing surface. 30 items
+              across all 4 sections with VN-listener strategies, vocab, and
+              ElevenLabs-backed audio practice. Premium-gated practice route
+              is /exam/ielts/listening. */}
+          <Route path="/exam-prep/ielts/listening"
+            element={<LazyPage><IELTSListeningContentPage /></LazyPage>}
+          />
+          <Route path="/exam-prep/ielts/listening/:itemId"
+            element={<LazyPage><IELTSListeningItemPage /></LazyPage>}
           />
 
           {/* TOEIC prep (Step 11 — premium-gated; gate is inside the page) */}
