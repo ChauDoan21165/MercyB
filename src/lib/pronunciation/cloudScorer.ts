@@ -117,6 +117,7 @@ function projectCloudToScoreResult(cloud: CloudSuccess): ScoreResult {
     heard: w.heard ?? w.word,
     score: w.score,
     status: w.status as WordStatus,
+    phonemes: Array.isArray(w.phonemes) ? w.phonemes : [],
   }));
   return {
     overallScore: cloud.score,

@@ -37,6 +37,13 @@ export type { PhonemeTip } from './vn-phoneme-map';
 
 export type WordStatus = 'correct' | 'close' | 'wrong' | 'missed';
 
+export type PhonemeScore = {
+  /** Phoneme symbol as Azure returns it — IPA-flavoured / SAPI mix. */
+  phoneme: string;
+  /** 0..100 — Azure AccuracyScore for this phoneme. */
+  score: number;
+};
+
 export type WordScore = {
   /** The target word (or empty string when the recognized token was extra). */
   word: string;
@@ -47,6 +54,12 @@ export type WordScore = {
   status: WordStatus;
   /** Human-readable, EN/VN, shown only when status is not "correct". */
   hint?: { en: string; vi: string };
+  /**
+   * Per-phoneme breakdown when the cloud scorer is the source. Empty /
+   * undefined when the local Needleman-Wunsch fallback ran (it has no
+   * phoneme view).
+   */
+  phonemes?: PhonemeScore[];
 };
 
 export type ScoreFeedback = { en: string; vi: string };

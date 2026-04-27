@@ -49,6 +49,12 @@ import { resolveRoomAudioUrl } from '@/lib/roomAudioResolver';
 import { deriveWordChips } from './wordChips';
 import { useFeatureFlag } from '@/hooks/useFeatureFlag';
 import { scoreCloud } from '@/lib/pronunciation/cloudScorer';
+import type { WordScore } from '@/lib/pronunciation/scorer';
+import {
+  GENERIC_LOW_HINT,
+  LOW_PHONEME_THRESHOLD,
+  getPhonemeHint,
+} from '@/lib/pronunciation/phonemeHints';
 import { supabase } from '@/lib/supabaseClient';
 import type { StudentMercyMemoryUpdate, LearningSupportMode } from './types';
 import type {
@@ -697,6 +703,8 @@ export function MercySpeakTab({
   // we keep `localMatchScore`. Single visible UI shape regardless.
   const { enabled: azurePhonemeScoringEnabled } = useFeatureFlag('azure_phoneme_scoring', false);
   const [cloudOverrideScore, setCloudOverrideScore] = useState<number | null>(null);
+  const [cloudWordScores, setCloudWordScores] = useState<WordScore[]>([]);
+  const [expandedWordIdx, setExpandedWordIdx] = useState<number | null>(null);
   const cloudAttemptKeyRef = useRef<string>('');
   useEffect(() => {
     if (!azurePhonemeScoringEnabled) return;
@@ -728,6 +736,8 @@ export function MercySpeakTab({
         });
         if (cancelled) return;
         setCloudOverrideScore(result.overallScore);
+        setCloudWordScores(result.wordScores);
+        setExpandedWordIdx(null);
       } catch (err) {
         // 401 propagates from cloudScorer; everything else is silently
         // local-fallback so we don't reach this branch in practice.
@@ -1156,6 +1166,8 @@ export function MercySpeakTab({
   function handleResetAttempt() {
     setTranscript(''); setRecognitionError(''); setRecordingError(''); setCopySuccess(false);
     setCloudOverrideScore(null);
+    setCloudWordScores([]);
+    setExpandedWordIdx(null);
     cloudAttemptKeyRef.current = '';
     recordedAudioBlobRef.current = null;
     stopListening(); stopSpeaking(); stopRecordedAudioPlayback(true);
@@ -1173,6 +1185,111 @@ export function MercySpeakTab({
   const canOpenLogic     = Boolean(!isKidsMode && onOpenEnglishLogic);
   const confidenceLabel  = getConfidenceLevel(matchScore).toUpperCase();
   const transcriptLabel  = 'Your transcript';
+
+  // Phoneme tooltip row — surfaces the per-phoneme detail Azure already
+  // returns. Visible only when the cloud scorer answered (local fallback
+  // has no phoneme view). One chip per word with a colour-coded score
+  // badge; tap a chip to expand a phoneme breakdown beneath the row.
+  const renderPhonemeBreakdownRow = () => {
+    const cloudScored = cloudWordScores.filter((w) => w.word.trim().length > 0);
+    if (cloudScored.length === 0) return null;
+    const expanded =
+      expandedWordIdx !== null && expandedWordIdx >= 0 && expandedWordIdx < cloudScored.length
+        ? cloudScored[expandedWordIdx]
+        : null;
+    const chipClassFor = (score: number) => {
+      if (score >= LOW_PHONEME_THRESHOLD) {
+        return 'border-emerald-200 bg-emerald-50 text-emerald-800 hover:bg-emerald-100';
+      }
+      if (score >= 60) {
+        return 'border-amber-200 bg-amber-50 text-amber-800 hover:bg-amber-100';
+      }
+      return 'border-rose-200 bg-rose-50 text-rose-800 hover:bg-rose-100';
+    };
+    const phonemeBadgeClass = (score: number) => {
+      if (score >= LOW_PHONEME_THRESHOLD) return 'bg-emerald-100 text-emerald-800';
+      if (score >= 60) return 'bg-amber-100 text-amber-800';
+      return 'bg-rose-100 text-rose-800';
+    };
+    return (
+      <div className="mt-2 space-y-2">
+        <div className="flex items-center gap-2 overflow-x-auto pb-0.5">
+          <span className="shrink-0 text-[11px] font-semibold uppercase tracking-[0.12em] text-slate-500">
+            Chi tiết · Tap a word
+          </span>
+          {cloudScored.map((w, idx) => {
+            const isOpen = expandedWordIdx === idx;
+            return (
+              <button
+                key={`${w.word}-${idx}`}
+                type="button"
+                onClick={() => setExpandedWordIdx(isOpen ? null : idx)}
+                aria-expanded={isOpen}
+                aria-label={`Show phoneme breakdown for ${w.word}, score ${w.score}`}
+                className={`inline-flex shrink-0 items-center gap-1.5 rounded-full border px-2.5 py-1 text-[11px] font-semibold shadow-sm transition focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-1 ${chipClassFor(w.score)} ${isOpen ? 'ring-2 ring-offset-1 ring-current' : ''}`}
+              >
+                <span>{w.word}</span>
+                <span className="rounded-full bg-white/70 px-1.5 py-px text-[10px] font-bold tabular-nums">
+                  {w.score}
+                </span>
+              </button>
+            );
+          })}
+        </div>
+        {expanded ? (
+          <div className="rounded-2xl border border-slate-200 bg-white/95 p-3 shadow-sm">
+            <div className="mb-2 flex items-baseline justify-between gap-2">
+              <div className="text-sm font-semibold text-slate-900">
+                {expanded.word}{' '}
+                <span className="text-xs font-normal text-slate-500">
+                  ({expanded.score}/100)
+                </span>
+              </div>
+              <button
+                type="button"
+                onClick={() => setExpandedWordIdx(null)}
+                className="text-[11px] font-semibold uppercase tracking-wider text-slate-400 hover:text-slate-700"
+                aria-label="Close phoneme breakdown"
+              >
+                Đóng · Close
+              </button>
+            </div>
+            {expanded.phonemes && expanded.phonemes.length > 0 ? (
+              <ul className="space-y-1.5">
+                {expanded.phonemes.map((ph, phIdx) => {
+                  const isLow = ph.score < LOW_PHONEME_THRESHOLD;
+                  const hint = isLow ? getPhonemeHint(ph.phoneme) : null;
+                  return (
+                    <li key={`${ph.phoneme}-${phIdx}`} className="flex items-start gap-2">
+                      <span
+                        className={`inline-flex min-w-[42px] shrink-0 justify-center rounded-md px-1.5 py-0.5 font-mono text-xs font-bold tabular-nums ${phonemeBadgeClass(ph.score)}`}
+                        aria-label={`Phoneme ${ph.phoneme}, score ${ph.score}`}
+                      >
+                        /{ph.phoneme}/
+                      </span>
+                      <span className={`min-w-[34px] shrink-0 text-xs font-bold tabular-nums ${isLow ? 'text-rose-700' : 'text-emerald-700'}`}>
+                        {ph.score}
+                      </span>
+                      {hint ? (
+                        <span className="text-[12px] leading-snug text-slate-700">
+                          <span className="block text-slate-900">{hint.en}</span>
+                          <span className="block text-slate-600">{hint.vi}</span>
+                        </span>
+                      ) : null}
+                    </li>
+                  );
+                })}
+              </ul>
+            ) : (
+              <p className="text-xs italic text-slate-500">
+                {GENERIC_LOW_HINT.en} · {GENERIC_LOW_HINT.vi}
+              </p>
+            )}
+          </div>
+        ) : null}
+      </div>
+    );
+  };
 
   if (isKidsMode) {
     return (
@@ -1316,6 +1433,8 @@ export function MercySpeakTab({
                 </div>
               </div>
 
+              {renderPhonemeBreakdownRow()}
+
               {/* Restored from commit 48ff1ad0: tap-to-hear word chip row.
                   Kids-friendly cream/peach styling. Browser TTS only. */}
               {wordChips.length > 0 ? (
@@ -1435,6 +1554,8 @@ export function MercySpeakTab({
             <p className="text-xs font-semibold uppercase tracking-wide text-slate-700">{transcriptLabel}</p>
             <p className="mt-2 min-h-[60px] text-sm leading-8 text-slate-950">{transcript || 'Your transcript will appear here after you speak.'}</p>
           </div>
+
+          {renderPhonemeBreakdownRow()}
 
           {/* Restored from commit 48ff1ad0 — tap-to-hear word chip row,
               extended to adult mode. Refined slate palette to fit the
