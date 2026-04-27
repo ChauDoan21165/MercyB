@@ -53,6 +53,7 @@ const PlacementTestPage    = lazy(() => import("@/pages/placement/TestPage"));
 const PlacementResultsPage = lazy(() => import("@/pages/placement/ResultsPage"));
 
 const SpeechDrillPage      = lazy(() => import("@/pages/SpeechDrillPage"));
+const PhonemeDrillPage     = lazy(() => import("@/pages/practice/PhonemeDrillPage"));
 const SpeechHistoryPage    = lazy(() => import("@/pages/speech/SpeechHistoryPage"));
 const ProgressPage         = lazy(() => import("@/pages/Progress"));
 const LeaderboardPage      = lazy(() => import("@/pages/LeaderboardPage"));
@@ -584,6 +585,13 @@ export default function AppRouter() {
                 <LazyPage><SpeechDrillPage /></LazyPage>
               </RequireAuth>
             }
+          />
+
+          {/* Targeted phoneme drill — 5-minute focused practice on
+              one phoneme. Self-gates on pronunciationScoringEnabled
+              and renders an anon CTA when signed out. */}
+          <Route path="/practice/phoneme/:phonemeSlug"
+            element={<LazyPage><PhonemeDrillPage /></LazyPage>}
           />
 
           {/* Speech history — page self-gates on pronunciationScoringEnabled flag */}

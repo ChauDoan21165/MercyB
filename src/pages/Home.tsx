@@ -15,6 +15,7 @@ import { useAuth } from "@/providers/AuthProvider";
 import { useFeatureFlag } from "@/hooks/useFeatureFlag";
 import FocusAreasCard from "@/components/home/FocusAreasCard";
 import PracticeRecommendationCard from "@/components/home/PracticeRecommendationCard";
+import RecommendedDrillCard from "@/components/home/RecommendedDrillCard";
 import TodaysLessonCard from "@/components/home/TodaysLessonCard";
 import WeeklyProgressWidget from "@/components/home/WeeklyProgressWidget";
 import StoryPromptCard from "@/components/home/StoryPromptCard";
@@ -703,6 +704,12 @@ export default function Home() {
               flag is off, the user is anonymous, or no rule fires.
               One recommendation visible at a time. */}
           <PracticeRecommendationCard />
+
+          {/* Targeted phoneme drill — surfaced when a weak phoneme
+              has both signal (5+ attempts) and a hand-curated drill
+              pack. Self-gates on its own feature flag + 24h cooldown
+              keyed off the graduation tracker. */}
+          <RecommendedDrillCard />
 
           {/* Weekly progress widget — only renders for signed-in users
               with attempts; hidden otherwise. The widget owns its own
