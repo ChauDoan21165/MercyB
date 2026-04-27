@@ -1592,7 +1592,7 @@ export function MercySpeakTab({
     return (
       <div className="flex h-full min-h-0 flex-col overflow-hidden bg-gradient-to-br from-[#FFF8F3] via-[#FFFDFC] to-[#F7FAFF]">
         <div className="min-h-0 flex-1 overflow-y-auto overflow-x-hidden px-2 py-2 md:px-3 md:py-3">
-          <div className="flex min-h-full flex-col gap-2 rounded-[28px] border border-white/80 bg-white/92 px-3 pb-3 pt-1.5 shadow-[0_10px_28px_rgba(148,163,184,0.06)] md:px-4 md:pb-4 md:pt-2">
+          <div className="flex min-h-full flex-col gap-1.5 rounded-[28px] border border-white/80 bg-white/92 px-3 pb-3 pt-1 shadow-[0_10px_28px_rgba(148,163,184,0.06)] md:px-4 md:pb-3.5 md:pt-1.5">
             <div className="min-w-0">
               <div className="flex flex-col gap-2">
                 {(() => {
@@ -1604,7 +1604,7 @@ export function MercySpeakTab({
                     !!practiceText && normalize(practiceText) !== normalize(headingLabel);
                   return (
                     <>
-                      <h3 className="text-[1.9rem] font-semibold tracking-tight text-slate-900 md:text-[2.65rem] md:leading-[1.02]">
+                      <h3 className="text-[1.55rem] font-semibold tracking-tight text-slate-900 md:text-[2rem] md:leading-[1.05]">
                         {headingLabel}
                       </h3>
                       {hasDialogue ? (
@@ -1616,7 +1616,7 @@ export function MercySpeakTab({
                           ))}
                         </div>
                       ) : sentenceDiffersFromLabel ? (
-                        <p className="text-[1.05rem] font-medium leading-7 text-slate-700 md:text-[1.35rem] md:leading-8">
+                        <p className="text-[0.95rem] font-medium leading-6 text-slate-700 md:text-[1.1rem] md:leading-7">
                           {practiceText}
                         </p>
                       ) : null}
@@ -1638,7 +1638,7 @@ export function MercySpeakTab({
 `}</style>
             <div
               onClick={() => { playKidsUiSound('good'); triggerKidsImageCelebration('good'); }}
-              className="flex min-h-[260px] w-full cursor-pointer items-center justify-center overflow-hidden rounded-[24px] border border-[#F4DDD1] bg-gradient-to-br from-[#FFF6F0] via-white to-[#F8FBFF] p-0 shadow-[0_8px_18px_rgba(255,138,101,0.06)] md:min-h-[340px]"
+              className="flex min-h-[200px] w-full cursor-pointer items-center justify-center overflow-hidden rounded-[24px] border border-[#F4DDD1] bg-gradient-to-br from-[#FFF6F0] via-white to-[#F8FBFF] p-0 shadow-[0_8px_18px_rgba(255,138,101,0.06)] md:min-h-[240px]"
               style={{
                 animation: kidsImageCelebration
                   ? `mercyKidCelebrate ${kidsImageCelebration === 'wow' ? '900ms' : kidsImageCelebration === 'great' ? '700ms' : '600ms'} cubic-bezier(.34,1.56,.64,1)`
@@ -1770,13 +1770,13 @@ export function MercySpeakTab({
 
   return (
     <div className="flex h-full min-h-0 flex-col overflow-hidden bg-gradient-to-br from-[#FFF8F3] via-[#FFFDFC] to-[#F7FAFF]">
-      <div className="min-h-0 flex-1 overflow-y-auto px-2.5 py-3 md:px-3 md:py-4">
-        <div className="space-y-3">
+      <div className="min-h-0 flex-1 overflow-y-auto px-2.5 py-2 md:px-3 md:py-2.5">
+        <div className="space-y-2.5">
           <textarea
             value={customText}
             onChange={(e) => { setCustomText(e.target.value); setVariant('custom'); }}
             placeholder="Type the sentence you want to practice speaking..."
-            className="min-h-[220px] w-full resize-y rounded-[20px] md:rounded-[26px] border border-[#E5CDB9] bg-gradient-to-br from-[#FFF9F2] to-white p-4 md:p-6 text-base leading-7 md:text-[1.1rem] md:leading-10 text-slate-950 shadow-[inset_0_1px_0_rgba(255,255,255,0.92),0_8px_20px_rgba(255,138,101,0.05)] outline-none transition placeholder:text-slate-600 focus:border-[#EFA98B] focus:ring-2 focus:ring-[#FFD3BF] md:min-h-[304px]"
+            className="min-h-[160px] w-full resize-y rounded-[20px] md:rounded-[26px] border border-[#E5CDB9] bg-gradient-to-br from-[#FFF9F2] to-white p-3.5 md:p-5 text-base leading-7 md:text-[1.05rem] md:leading-9 text-slate-950 shadow-[inset_0_1px_0_rgba(255,255,255,0.92),0_8px_20px_rgba(255,138,101,0.05)] outline-none transition placeholder:text-slate-600 focus:border-[#EFA98B] focus:ring-2 focus:ring-[#FFD3BF] md:min-h-[200px]"
           />
 
           <div className="grid grid-cols-5 gap-2.5">
