@@ -469,6 +469,48 @@ export default function Home() {
     </button>
   );
 
+  // ── TOEIC practice pack invitation card ────────────────────────────────────
+  // Vietnamese corporate market: ~200k TOEIC test-takers/year. Card is
+  // open to anonymous visitors so it doubles as a marketing surface
+  // for the corporate-vertical funnel. Tap → /exam-prep/toeic which
+  // shows the 30-item pack (no auth, no paywall). The premium-gated
+  // timed-practice mode at /exam/toeic is unaffected.
+  const toeicCard = (
+    <button type="button" onClick={() => nav("/exam-prep/toeic")} aria-label="TOEIC practice pack"
+      style={{ width: "100%", background: "none", border: "none", padding: 0, cursor: "pointer" }}>
+      <div style={{
+        borderRadius: 20, padding: isPhone ? "16px 18px" : "18px 20px",
+        background: "linear-gradient(150deg, rgba(238,242,255,0.96) 0%, rgba(243,244,255,0.94) 100%)",
+        border: "1px solid rgba(99,102,241,0.18)",
+        boxShadow: "0 10px 28px rgba(99,102,241,0.10)",
+        display: "flex", alignItems: "center", gap: 16, textAlign: "left",
+      }}>
+        <div style={{ width: 52, height: 52, borderRadius: 9999, background: "linear-gradient(180deg, #818CF8 0%, #6366F1 100%)", display: "grid", placeItems: "center", boxShadow: "0 8px 20px rgba(99,102,241,0.22)", flexShrink: 0 }}>
+          <GraduationCap size={24} color="white" />
+        </div>
+
+        <div style={{ minWidth: 0, flex: 1 }}>
+          <div style={{ fontSize: isPhone ? z(18) : z(20), fontWeight: 900, color: "rgba(55,48,163,0.94)", letterSpacing: -0.3 }}>
+            Luyện TOEIC
+          </div>
+          <div style={{ fontSize: z(12), fontWeight: 700, color: "rgba(67,56,202,0.55)", marginTop: 2 }}>
+            TOEIC practice pack
+          </div>
+          <div style={{ marginTop: 6, fontSize: z(14), fontWeight: 700, color: "rgba(0,0,0,0.62)", lineHeight: 1.45 }}>
+            Luyện TOEIC theo định dạng chính thức. Giải thích bằng tiếng Việt.
+          </div>
+          <div style={{ marginTop: 3, fontSize: z(12), fontWeight: 600, color: "rgba(0,0,0,0.40)", lineHeight: 1.4 }}>
+            30 items, official format, Vietnamese explanations.
+          </div>
+        </div>
+
+        <div style={{ color: "rgba(99,102,241,0.70)", flexShrink: 0 }}>
+          <ChevronRight size={22} />
+        </div>
+      </div>
+    </button>
+  );
+
   // ── Placement test invitation card ─────────────────────────────────────────
   // Visual rhythm: Teacher Mercy → Library → Placement test. Mirrors
   // libraryCard's structure (icon-badge left, EN+VI text, chevron right)
@@ -628,6 +670,10 @@ export default function Home() {
 
           {/* VSTEP — Vietnamese national exam prep (Vietnamese-only moat) */}
           {vstepCard}
+
+          {/* TOEIC practice pack — Vietnamese corporate vertical.
+              Marketing surface for /exam-prep/toeic (open, no paywall). */}
+          {toeicCard}
 
           {/* Focus areas — tertiary (feature-flagged) */}
           <FocusAreasCard />

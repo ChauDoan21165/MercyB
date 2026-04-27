@@ -109,6 +109,7 @@ const FamilyPlanPage         = lazy(() => import("@/pages/family/FamilyPlanPage"
 const TOEICIndexPage         = lazy(() => import("@/pages/exam-prep/TOEICIndexPage"));
 const TOEICPracticePage      = lazy(() => import("@/pages/exam-prep/TOEICPracticePage"));
 const TOEICEstimatorPage     = lazy(() => import("@/pages/exam-prep/TOEICEstimatorPage"));
+const TOEICPracticePackPage  = lazy(() => import("@/pages/exam-prep/toeic/Practice"));
 
 const CorporateDashboardPage = lazy(() => import("@/pages/corporate/CorporateDashboardPage"));
 const CreateCorporatePage    = lazy(() => import("@/pages/corporate/CreateCorporatePage"));
@@ -774,6 +775,15 @@ export default function AppRouter() {
                 <LazyPage><FamilyPlanPage /></LazyPage>
               </RequireAuth>
             }
+          />
+
+          {/* TOEIC practice pack — open marketing surface (no auth, no
+              paywall). 30 original L+R items with VI explanations,
+              filters, and trap warnings. Drives the corporate-vertical
+              monetization funnel; the paywalled timed practice still
+              lives at /exam/toeic. */}
+          <Route path="/exam-prep/toeic"
+            element={<LazyPage><TOEICPracticePackPage /></LazyPage>}
           />
 
           {/* TOEIC prep (Step 11 — premium-gated; gate is inside the page) */}
