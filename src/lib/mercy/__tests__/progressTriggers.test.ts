@@ -34,6 +34,7 @@ function ctx(overrides: Partial<ProgressContext> = {}): ProgressContext {
     },
     weakestPhoneme: { phoneme: "r", averageScore: 55 },
     streak: 3,
+    heatmapHighlight: null,
     builtAt: Date.now(),
     ...overrides,
   };
