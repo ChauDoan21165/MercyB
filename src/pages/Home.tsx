@@ -15,6 +15,7 @@ import { useAuth } from "@/providers/AuthProvider";
 import { useFeatureFlag } from "@/hooks/useFeatureFlag";
 import FocusAreasCard from "@/components/home/FocusAreasCard";
 import TodaysLessonCard from "@/components/home/TodaysLessonCard";
+import WeeklyProgressWidget from "@/components/home/WeeklyProgressWidget";
 import LeaderboardCard from "@/components/leaderboard/LeaderboardCard";
 import { StreakBadge } from "@/components/streak/StreakBadge";
 
@@ -653,6 +654,11 @@ export default function Home() {
               with no plan has one obvious next step. Never auto-navigates;
               the user must tap "Bắt đầu" themselves. */}
           <TodaysLessonCard isPhone={isPhone} />
+
+          {/* Weekly progress widget — only renders for signed-in users
+              with attempts; hidden otherwise. The widget owns its own
+              fetch so Home doesn't auto-load progress data. */}
+          <WeeklyProgressWidget />
 
           {/* Teacher Mercy — hero */}
           {teacherCard}

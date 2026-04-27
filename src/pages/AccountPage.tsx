@@ -13,6 +13,7 @@ import { StreakHistoryPanel } from "@/components/streak/StreakHistoryPanel";
 import { ReferralCard } from "@/components/referral/ReferralCard";
 import { ApplyReferralCodeForm } from "@/components/referral/ApplyReferralCodeForm";
 import { WeeklyLeaderboardOptInPanel } from "@/components/leaderboard/WeeklyLeaderboardOptInPanel";
+import { exportAttemptsCsv } from "@/lib/analytics/speechProgress";
 
 function formatDateTime(value: string | null | undefined): string {
   if (!value) return "—";
@@ -77,6 +78,28 @@ function BiLabel({ en, vi }: { en: string; vi: string }) {
     </span>
   );
 }
+
+async function downloadProgressCsv(
+  onError: (msg: string | null) => void,
+): Promise<void> {
+  onError(null);
+  try {
+    const csv = await exportAttemptsCsv();
+    const blob = new Blob([csv], { type: "text/csv;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `mercyblade-speech-history-${new Date()
+      .toISOString()
+      .slice(0, 10)}.csv`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  } catch (err) {
+    onError(err instanceof Error ? err.message : String(err));
+  }
+}
 // ─────────────────────────────────────────────────────────────────────────────
 
 export default function AccountPage() {
@@ -98,6 +121,7 @@ export default function AccountPage() {
   const [isResettingMemory, setIsResettingMemory]           = useState(false);
   const [resetMemoryError, setResetMemoryError]             = useState<string | null>(null);
   const [resetMemorySuccess, setResetMemorySuccess]         = useState(false);
+  const [downloadError, setDownloadError]                   = useState<string | null>(null);
 
   // Ref-based in-flight guards — prevent duplicate taps even before state updates
   const signingOutRef     = useRef(false);
@@ -531,6 +555,41 @@ export default function AccountPage() {
                     vi="Lịch sử phát âm của tôi"
                   />
                 </button>
+              ) : null}
+
+              {pronunciationFlagEnabled ? (
+                <button
+                  type="button"
+                  style={buttonBase}
+                  onClick={() => nav("/progress")}
+                  aria-label="My progress dashboard"
+                  data-testid="account-progress-link"
+                >
+                  <BiLabel en="My progress" vi="Tiến độ của tôi" />
+                </button>
+              ) : null}
+
+              {pronunciationFlagEnabled ? (
+                <button
+                  type="button"
+                  style={buttonBase}
+                  onClick={() => void downloadProgressCsv(setDownloadError)}
+                  aria-label="Download my progress data"
+                  data-testid="account-progress-download"
+                >
+                  <BiLabel
+                    en="Download my progress data"
+                    vi="Tải dữ liệu tiến độ"
+                  />
+                </button>
+              ) : null}
+              {downloadError ? (
+                <p
+                  role="alert"
+                  style={{ color: "#991b1b", fontSize: 12, margin: 0 }}
+                >
+                  {downloadError}
+                </p>
               ) : null}
 
               <button
