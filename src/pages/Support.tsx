@@ -2,6 +2,9 @@
 
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { Mail, MessageCircle, MessageSquare } from "lucide-react";
+
+import { SUPPORT_CHANNELS } from "@/config/product";
 
 const SUPPORT_EMAIL = "support@mercyblade.com";
 const ADMIN_EMAIL = "admin@mercyblade.com";
@@ -218,6 +221,66 @@ function FaqRow({ item, defaultOpen }: { item: FaqItem; defaultOpen?: boolean })
   );
 }
 
+type ContactChannelCardProps = {
+  href: string;
+  external?: boolean;
+  accent: string;
+  icon: React.ReactNode;
+  title_vi: string;
+  title_en: string;
+};
+
+function ContactChannelCard({
+  href,
+  external,
+  accent,
+  icon,
+  title_vi,
+  title_en,
+}: ContactChannelCardProps) {
+  return (
+    <a
+      href={href}
+      {...(external
+        ? { target: "_blank", rel: "noopener noreferrer" }
+        : null)}
+      style={{
+        display: "flex",
+        alignItems: "center",
+        gap: 12,
+        padding: "12px 14px",
+        borderRadius: 14,
+        border: "1px solid rgba(0,0,0,0.10)",
+        background: "white",
+        textDecoration: "none",
+        color: "inherit",
+      }}
+    >
+      <span
+        style={{
+          width: 40,
+          height: 40,
+          borderRadius: 10,
+          background: accent,
+          display: "grid",
+          placeItems: "center",
+          flexShrink: 0,
+        }}
+      >
+        {icon}
+      </span>
+      <span style={{ flex: 1, minWidth: 0 }}>
+        <span style={{ display: "block", fontSize: 14, fontWeight: 800, color: "#0F172A" }}>
+          {title_vi}
+        </span>
+        <span style={{ display: "block", fontSize: 12, fontWeight: 600, color: "#64748B", marginTop: 1 }}>
+          {title_en}
+        </span>
+      </span>
+    </a>
+  );
+}
+
 export default function Support() {
   return (
     <div
@@ -230,6 +293,54 @@ export default function Support() {
     >
       <h1 style={{ marginBottom: 4 }}>Support</h1>
       <p style={{ marginTop: 0, color: "#94a3b8", fontSize: 14 }}>Hỗ trợ</p>
+
+      <section
+        aria-label="Chat with us / Nhắn tin với Mercy"
+        style={{ marginTop: 18, marginBottom: 28 }}
+      >
+        <h2 style={{ marginBottom: 4, fontSize: 22, fontWeight: 800 }}>
+          Nhắn tin với Mercy
+        </h2>
+        <p style={{ marginTop: 0, color: "#94a3b8", fontSize: 14 }}>
+          Chat with us
+        </p>
+        <p style={{ marginTop: 6, marginBottom: 12, color: "#475569", fontSize: 14 }}>
+          Người Việt thường nhắn nhanh nhất qua Zalo và Messenger. Email cũng được. ·
+          <span style={{ color: "#94a3b8" }}> Vietnamese learners reach us fastest via Zalo or Messenger. Email works too.</span>
+        </p>
+
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+            gap: 12,
+          }}
+        >
+          <ContactChannelCard
+            href={SUPPORT_CHANNELS.zalo_url}
+            external
+            accent="#0068FF"
+            icon={<MessageSquare size={20} color="white" aria-hidden />}
+            title_vi="Zalo"
+            title_en="Nhắn nhanh nhất / Fastest reply"
+          />
+          <ContactChannelCard
+            href={SUPPORT_CHANNELS.messenger_url}
+            external
+            accent="#0084FF"
+            icon={<MessageCircle size={20} color="white" aria-hidden />}
+            title_vi="Facebook Messenger"
+            title_en="Nhắn qua Messenger"
+          />
+          <ContactChannelCard
+            href={`mailto:${SUPPORT_CHANNELS.email}`}
+            accent="#7C3AED"
+            icon={<Mail size={20} color="white" aria-hidden />}
+            title_vi={SUPPORT_CHANNELS.email}
+            title_en="Gửi email / Send email"
+          />
+        </div>
+      </section>
 
       <p>
         We are a small team and we read every email. The fastest way to get
