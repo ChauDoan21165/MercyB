@@ -27,6 +27,7 @@ import React, {
 } from "react";
 import type { Session, User } from "@supabase/supabase-js";
 import { supabase } from "@/lib/supabaseClient";
+import { bootstrapAnonymousSession } from "@/lib/auth/anonymousBootstrap";
 import { isNativePlatform } from "@/lib/platform";
 import {
   migrateLocalStreakOnce,
@@ -303,6 +304,16 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           authListener.subscription.unsubscribe();
         };
         unsubRef.current = localUnsub;
+
+        // Anonymous-auth bootstrap. No-op when (a) a session already
+        // exists, (b) the `anonymous_auth_enabled` feature flag is OFF,
+        // or (c) the call fails. The onAuthStateChange listener above
+        // picks up the new anon session on success — applySession then
+        // filters it via getVerifiedSession (no email_confirmed_at →
+        // session stays null in React state, but the JWT is in
+        // localStorage where cloudScorer.ts can read it).
+        await bootstrapAnonymousSession();
+        if (!mountedRef.current) return;
 
         const { data, error } = await supabase.auth.getSession();
         if (!mountedRef.current) return;
