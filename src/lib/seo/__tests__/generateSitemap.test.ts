@@ -12,6 +12,7 @@ import {
 import { VSTEP_SPEAKING_TOPICS } from "@/data/exam-prep/vstep/speaking-topics";
 import { TOEIC_PRACTICE_ITEMS } from "@/data/exam-prep/toeic/practice-items";
 import { IELTS_WRITING_TOPICS } from "@/data/exam-prep/ielts/writing-topics";
+import { IELTS_READING_PASSAGES } from "@/data/exam-prep/ielts/reading-passages";
 
 describe("buildSitemapUrls", () => {
   const urls = buildSitemapUrls();
@@ -43,14 +44,23 @@ describe("buildSitemapUrls", () => {
     }
   });
 
-  it("emits at least 60 topic URLs (30 VSTEP + 30 TOEIC + 10 IELTS)", () => {
+  it("covers every IELTS Reading passage", () => {
+    for (const passage of IELTS_READING_PASSAGES) {
+      expect(locs).toContain(
+        `https://mercyblade.com/exam-prep/ielts/reading/${passage.id}`,
+      );
+    }
+  });
+
+  it("emits at least 72 topic URLs (30 VSTEP + 30 TOEIC + 10 IELTS Writing + 12 IELTS Reading)", () => {
     const topicLocs = locs.filter(
       (l) =>
         l.includes("/vstep/speaking/") ||
         l.includes("/toeic/practice/") ||
-        l.includes("/ielts/writing/topic/"),
+        l.includes("/ielts/writing/topic/") ||
+        l.includes("/exam-prep/ielts/reading/"),
     );
-    expect(topicLocs.length).toBeGreaterThanOrEqual(60);
+    expect(topicLocs.length).toBeGreaterThanOrEqual(72);
   });
 
   it("has no duplicate locs", () => {

@@ -13,6 +13,7 @@
 import { VSTEP_SPEAKING_TOPICS } from "@/data/exam-prep/vstep/speaking-topics";
 import { TOEIC_PRACTICE_ITEMS } from "@/data/exam-prep/toeic/practice-items";
 import { IELTS_WRITING_TOPICS } from "@/data/exam-prep/ielts/writing-topics";
+import { IELTS_READING_PASSAGES } from "@/data/exam-prep/ielts/reading-passages";
 import { SITE_ORIGIN } from "@/lib/seo/topicSeoMeta";
 
 export type SitemapUrl = {
@@ -52,6 +53,7 @@ const STATIC_URLS: SitemapUrl[] = [
   { loc: `${SITE_ORIGIN}/exam/vstep/speaking`, changefreq: "monthly", priority: "0.85" },
   { loc: `${SITE_ORIGIN}/exam-prep/toeic`, changefreq: "monthly", priority: "0.85" },
   { loc: `${SITE_ORIGIN}/exam/ielts/writing`, changefreq: "monthly", priority: "0.85" },
+  { loc: `${SITE_ORIGIN}/exam-prep/ielts/reading`, changefreq: "monthly", priority: "0.85" },
   { loc: `${SITE_ORIGIN}/pricing`, changefreq: "monthly", priority: "0.7" },
 ];
 
@@ -75,6 +77,13 @@ export function buildSitemapUrls(): SitemapUrl[] {
   for (const topic of IELTS_WRITING_TOPICS) {
     urls.push({
       loc: `${SITE_ORIGIN}/ielts/writing/topic/${topic.id}`,
+      changefreq: "monthly",
+      priority: "0.8",
+    });
+  }
+  for (const passage of IELTS_READING_PASSAGES) {
+    urls.push({
+      loc: `${SITE_ORIGIN}/exam-prep/ielts/reading/${passage.id}`,
       changefreq: "monthly",
       priority: "0.8",
     });

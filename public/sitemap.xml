@@ -46,6 +46,11 @@
     <priority>0.85</priority>
   </url>
   <url>
+    <loc>https://mercyblade.com/exam-prep/ielts/reading</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
     <loc>https://mercyblade.com/pricing</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -397,6 +402,66 @@
   </url>
   <url>
     <loc>https://mercyblade.com/ielts/writing/topic/ai_workforce_displacement</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://mercyblade.com/exam-prep/ielts/reading/ielts_reading_history_cuneiform</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://mercyblade.com/exam-prep/ielts/reading/ielts_reading_history_paper_silk_road</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://mercyblade.com/exam-prep/ielts/reading/ielts_reading_history_steam_engine</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://mercyblade.com/exam-prep/ielts/reading/ielts_reading_geography_himalayas</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://mercyblade.com/exam-prep/ielts/reading/ielts_reading_geography_mekong_delta</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://mercyblade.com/exam-prep/ielts/reading/ielts_reading_geography_urban_heat_island</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://mercyblade.com/exam-prep/ielts/reading/ielts_reading_science_penicillin</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://mercyblade.com/exam-prep/ielts/reading/ielts_reading_science_photosynthesis_yields</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://mercyblade.com/exam-prep/ielts/reading/ielts_reading_science_jwst_deep_field</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://mercyblade.com/exam-prep/ielts/reading/ielts_reading_economics_comparative_advantage</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://mercyblade.com/exam-prep/ielts/reading/ielts_reading_economics_central_banking</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://mercyblade.com/exam-prep/ielts/reading/ielts_reading_economics_microfinance</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

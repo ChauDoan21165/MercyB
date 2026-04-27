@@ -147,6 +147,8 @@ const IELTSSpeakingContentPage      = lazy(() => import("@/pages/exam-prep/ielts
 const IELTSSpeakingTopicPage        = lazy(() => import("@/pages/exam-prep/ielts/SpeakingTopic"));
 const IELTSListeningContentPage     = lazy(() => import("@/pages/exam-prep/ielts/Listening"));
 const IELTSListeningItemPage        = lazy(() => import("@/pages/exam-prep/ielts/ListeningItem"));
+const IELTSReadingContentPage       = lazy(() => import("@/pages/exam-prep/ielts/Reading"));
+const IELTSReadingPassagePage       = lazy(() => import("@/pages/exam-prep/ielts/ReadingPassage"));
 
 const CorporateDashboardPage = lazy(() => import("@/pages/corporate/CorporateDashboardPage"));
 const CreateCorporatePage    = lazy(() => import("@/pages/corporate/CreateCorporatePage"));
@@ -951,6 +953,18 @@ export default function AppRouter() {
           />
           <Route path="/exam-prep/ielts/listening/:itemId"
             element={<LazyPage><IELTSListeningItemPage /></LazyPage>}
+          />
+
+          {/* IELTS Reading content pack — open marketing surface. 12 academic
+              passages across history / geography / science / economics with
+              full IELTS question types, VN-reader strategies, vocab, and
+              band-pro-rated self-grading. Premium-gated practice route is
+              /exam/ielts/reading. */}
+          <Route path="/exam-prep/ielts/reading"
+            element={<LazyPage><IELTSReadingContentPage /></LazyPage>}
+          />
+          <Route path="/exam-prep/ielts/reading/:passageId"
+            element={<LazyPage><IELTSReadingPassagePage /></LazyPage>}
           />
 
           {/* TOEIC prep (Step 11 — premium-gated; gate is inside the page) */}
