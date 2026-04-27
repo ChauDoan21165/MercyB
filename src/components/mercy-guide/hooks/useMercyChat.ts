@@ -19,6 +19,17 @@ import {
   splitBilingualAnswer,
 } from "../shared";
 import { askMercyApi } from "../api/askMercyApi";
+import { useAuth } from "@/providers/AuthProvider";
+import {
+  buildProgressContext,
+  type ProgressContext,
+} from "@/lib/mercy/progressContext";
+import {
+  incrementMessageCounter,
+  readMentionState,
+  recordProgressMention,
+  shouldProactivelyMentionProgress,
+} from "@/lib/mercy/progressTriggers";
 import {
   getPronunciationHelpReply,
   routeMercyMessage,
@@ -74,6 +85,7 @@ export function useMercyChat({
   onRequestSpeakTab,
   onRequestEnglishTab,
 }: UseMercyChatParams) {
+  const { user } = useAuth();
   const [messages, setMessages] = useState<Message[]>([]);
   const [inputValue, setInputValue] = useState("");
   const [isAsking, setIsAsking] = useState(false);
@@ -341,6 +353,38 @@ export function useMercyChat({
 
     let timeoutId: ReturnType<typeof setTimeout> | undefined;
 
+    // ── Proactive progress mention gate ────────────────────────────────
+    // Build progressContext only when the user's message + cooldown
+    // suggest the moment is right. The build is cheap (sessionStorage
+    // cache) so a miss costs almost nothing; a hit triggers the edge
+    // function to inject STUDENT_PROGRESS into Mercy's system prompt.
+    let progressContext: ProgressContext | null = null;
+    let referencedProgress = false;
+    if (user?.id) {
+      try {
+        const fetched = await buildProgressContext(user.id);
+        if (fetched) {
+          const state = readMentionState(user.id);
+          const shouldMention = shouldProactivelyMentionProgress({
+            userMessage: question,
+            context: fetched,
+            state,
+          });
+          if (shouldMention) {
+            progressContext = fetched;
+            referencedProgress = true;
+            recordProgressMention(user.id);
+          }
+        }
+        // Always increment the message counter — it unlocks the
+        // cooldown after N messages even if no mention fired.
+        incrementMessageCounter(user.id);
+      } catch (err) {
+        // Bonus feature; never block a Mercy turn on its plumbing.
+        console.warn("[useMercyChat] progress-context gate failed:", err);
+      }
+    }
+
     try {
       const invokePromise = askMercyApi({
         input: question,
@@ -352,6 +396,7 @@ export function useMercyChat({
         tags,
         englishLevel,
         learningGoal,
+        progressContext,
       });
 
       const timeoutPromise = new Promise<never>((_, reject) => {
@@ -410,6 +455,7 @@ export function useMercyChat({
         type: "assistant",
         content: cleanedAnswer,
         contentVi: fallbackVi,
+        referencedProgress,
       });
 
       lastContextIntentRef.current = routed.intent;
