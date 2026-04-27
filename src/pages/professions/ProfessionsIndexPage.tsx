@@ -41,9 +41,9 @@ const CARDS: Card[] = [
     title_vi: "Tiếng Anh nhà hàng",
     title_en: "Restaurant",
     blurb_vi:
-      "Sắp ra mắt — phục vụ, đầu bếp, quầy thu ngân. Nhận đơn hàng, gọi món, xử lý khách phàn nàn.",
-    href: null,
-    status: "soon",
+      "50 bài: chào khách, gọi nước, menu, dị ứng, phàn nàn, giới thiệu món Việt, thanh toán + tip.",
+    href: "/professions/restaurant",
+    status: "active",
     Icon: Utensils,
     accent: "amber",
   },
