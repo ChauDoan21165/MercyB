@@ -547,6 +547,27 @@ function PracticeItemDetail({ item }: { item: TOEICPracticeItem }) {
           ))}
         </ul>
       </Section>
+
+      {/* Topic-detail page link — gives crawlers an indexable surface
+          for this item beyond the inline expand-only treatment. */}
+      <div style={{ marginTop: 4, textAlign: "right" }}>
+        <Link
+          to={`/toeic/practice/${item.id}`}
+          style={{
+            display: "inline-flex",
+            alignItems: "center",
+            gap: 4,
+            color: "#1e3a8a",
+            fontSize: 13,
+            fontWeight: 700,
+            textDecoration: "none",
+          }}
+          aria-label={`Open TOEIC topic page for ${item.title_en}`}
+        >
+          Đọc chi tiết · Read full guide
+          <ChevronRight size={14} aria-hidden />
+        </Link>
+      </div>
     </div>
   );
 }
