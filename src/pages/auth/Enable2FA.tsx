@@ -30,6 +30,7 @@ import { ArrowLeft, ShieldCheck } from "lucide-react";
 import { useAuth } from "@/providers/AuthProvider";
 import { useUserAccess } from "@/hooks/useUserAccess";
 import { supabase } from "@/lib/supabaseClient";
+import { canUseMfa } from "@/lib/security/mfaEligibility";
 import {
   cancelEnrollment,
   enrollTotp,
@@ -241,8 +242,17 @@ export default function Enable2FA() {
       // against a render-without-user race.
       return;
     }
-    const isPaid = access.hasPremium || access.isHighAdmin;
-    if (!isPaid) {
+
+    // Eligibility check via shared helper. CRITICAL: returns
+    // resolved=false while access.loading is true, so we MUST
+    // wait — this is the bug that bit the 2026-04-27 smoke test.
+    // An admin user (admin_level=10, no subscription row) was being
+    // bounced to "ineligible" before access settled because the
+    // earlier check used hasPremium/isHighAdmin directly while both
+    // were still default-false.
+    const eligibility = canUseMfa(access);
+    if (!eligibility.resolved) return; // wait for access to load
+    if (!eligibility.allowed) {
       setStep("ineligible");
       return;
     }
@@ -270,7 +280,15 @@ export default function Enable2FA() {
     return () => {
       alive = false;
     };
-  }, [authLoading, user, access.hasPremium, access.isHighAdmin, step]);
+  }, [
+    authLoading,
+    user,
+    access.loading,
+    access.isAuthenticated,
+    access.hasPremium,
+    access.isHighAdmin,
+    step,
+  ]);
 
   // Cleanup on unmount: if the user navigates away without verifying,
   // unenroll the unverified factor so it doesn't sit forever in their

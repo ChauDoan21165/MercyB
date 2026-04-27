@@ -30,6 +30,7 @@ import {
   listMfaFactors,
   type MfaFactor,
 } from "@/lib/security/mfaClient";
+import { canUseMfa } from "@/lib/security/mfaEligibility";
 
 /**
  * Fire-and-forget security-email notification. The disable path
@@ -228,7 +229,24 @@ export default function SecuritySettings() {
   // Free-tier users see the upgrade prompt and nothing else.
   // We don't even fetch their factor list (they can't have any), so
   // the gate sits before the loader.
-  const isPaid = access.hasPremium || access.isHighAdmin;
+  //
+  // Eligibility helper covers admin override + paid; both pages share
+  // the same logic so /account/security and /auth/security cannot
+  // disagree (smoke-test bug 2026-04-27).
+  const eligibility = canUseMfa(access);
+
+  // While access is still loading, render nothing rather than briefly
+  // showing the upgrade prompt — the same access-loading flicker that
+  // the smoke-test caught on /auth/security.
+  if (!eligibility.resolved) {
+    return (
+      <div style={wrap}>
+        <div style={column}>
+          <p style={{ color: "#64748b" }}>Đang tải… · Loading…</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div style={wrap}>
@@ -240,7 +258,7 @@ export default function SecuritySettings() {
           </h1>
         </header>
 
-        {!isPaid ? (
+        {!eligibility.allowed ? (
           <MfaUpgradePrompt />
         ) : loadingFactors ? (
           <section style={cardStyle} aria-label="Loading 2FA status">
