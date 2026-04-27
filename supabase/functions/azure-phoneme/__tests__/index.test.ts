@@ -27,6 +27,8 @@ import {
   AZURE_PHONEME_LIMITS,
   clampScore,
   handleRequest,
+  localeForAccent,
+  normaliseAccentInput,
   parseWavHeader,
   projectAzureResponse,
   scoreToStatus,
@@ -101,7 +103,8 @@ function makeDeps(overrides: Partial<Deps> = {}): Deps {
     audit: vi.fn().mockResolvedValue(undefined),
     logAttempt: vi.fn().mockResolvedValue(undefined),
     azureKey: "test-key",
-    azureUrl: "https://test.example.com/azure",
+    azureUrlForAccent: (accent) =>
+      `https://test.example.com/azure?language=${accent}`,
     globalDailyCapUsd: 25,
     usdToVnd: 26000,
     azureTimeoutMs: 50,
@@ -550,5 +553,54 @@ describe("handleRequest — trial gating", () => {
     expect(res.status).toBe(200);
     const body = (await res.json()) as { ok: boolean };
     expect(body.ok).toBe(true);
+  });
+});
+
+describe("accent locale routing", () => {
+  it("localeForAccent maps each accent to its BCP-47 code", () => {
+    expect(localeForAccent("us")).toBe("en-US");
+    expect(localeForAccent("uk")).toBe("en-GB");
+    expect(localeForAccent("au")).toBe("en-AU");
+    expect(localeForAccent("ca")).toBe("en-CA");
+  });
+
+  it("normaliseAccentInput defaults to 'us' for missing / unknown input", () => {
+    expect(normaliseAccentInput(undefined)).toBe("us");
+    expect(normaliseAccentInput(null)).toBe("us");
+    expect(normaliseAccentInput("")).toBe("us");
+    expect(normaliseAccentInput("klingon")).toBe("us");
+    expect(normaliseAccentInput("UK")).toBe("uk");
+    expect(normaliseAccentInput("  au  ")).toBe("au");
+  });
+
+  it("threads the accent into azureUrlForAccent when the form field is present", async () => {
+    const seenUrls: string[] = [];
+    const deps = makeDeps({
+      azureUrlForAccent: (accent) => {
+        const url = `https://test.example.com/azure?language=${accent}`;
+        return url;
+      },
+      fetch: vi.fn().mockImplementation((input: string) => {
+        seenUrls.push(input);
+        return Promise.resolve(azureSuccessResponse());
+      }) as unknown as Deps["fetch"],
+    });
+
+    const formData = new FormData();
+    const blob = new Blob([buildSilentWav(2)], { type: "audio/wav" });
+    formData.append("audio", blob, "test.wav");
+    formData.append("target_text", "I think this is going to work");
+    formData.append("roomId", "room-test");
+    formData.append("lineId", "line-test");
+    formData.append("accent", "uk");
+    const req = new Request("https://test.example.com/azure-phoneme", {
+      method: "POST",
+      body: formData,
+      headers: { Authorization: "Bearer test-jwt" },
+    });
+
+    const res = await handleRequest(req, deps);
+    expect(res.status).toBe(200);
+    expect(seenUrls).toEqual(["https://test.example.com/azure?language=uk"]);
   });
 });

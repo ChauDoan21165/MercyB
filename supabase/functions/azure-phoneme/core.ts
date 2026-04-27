@@ -30,6 +30,35 @@ const RATE_LIMIT_MAX_CALLS = 30;
 const RATE_LIMIT_WINDOW_MS = 60 * 60 * 1000;
 const AZURE_TIMEOUT_MS = 15_000;
 
+// ── Accent → Azure locale mapping ────────────────────────────────────────
+//
+// Mirrors src/data/pronunciation/multiAccentReferences.ts ACCENT_METADATA.
+// Inlined here because core.ts must stay Deno-free (no @ aliases) and the
+// edge function deploys without the src/ tree. Keep these two in sync —
+// dropping a locale here would silently fall back to en-US.
+
+export type Accent = "us" | "uk" | "au" | "ca";
+const ALL_ACCENTS: readonly Accent[] = ["us", "uk", "au", "ca"] as const;
+const ACCENT_LOCALE: Record<Accent, string> = {
+  us: "en-US",
+  uk: "en-GB",
+  au: "en-AU",
+  ca: "en-CA",
+};
+const DEFAULT_ACCENT: Accent = "us";
+
+export function localeForAccent(accent: Accent): string {
+  return ACCENT_LOCALE[accent] ?? ACCENT_LOCALE[DEFAULT_ACCENT];
+}
+
+export function normaliseAccentInput(raw: unknown): Accent {
+  if (typeof raw !== "string") return DEFAULT_ACCENT;
+  const v = raw.trim().toLowerCase();
+  return (ALL_ACCENTS as readonly string[]).includes(v)
+    ? (v as Accent)
+    : DEFAULT_ACCENT;
+}
+
 // ── Types ─────────────────────────────────────────────────────────────────
 
 export type AuditStatus =
@@ -169,8 +198,14 @@ export interface Deps {
   logAttempt: (params: LogAttemptParams) => Promise<void>;
   /** Azure subscription key. Empty string indicates misconfiguration → sentinel. */
   azureKey: string;
-  /** Fully-qualified Azure REST URL (region pre-baked in). */
-  azureUrl: string;
+  /**
+   * Build the fully-qualified Azure REST URL for a given accent. Production
+   * wires this with the region pre-baked in and `?language=<bcp47>` chosen
+   * via `localeForAccent(accent)` (en-US/en-GB/en-AU/en-CA). Accept-Language
+   * is also set on the request below — the URL param drives recognition,
+   * the header is belt-and-braces.
+   */
+  azureUrlForAccent: (accent: Accent) => string;
   /** Hard ceiling in USD/day for Azure spend across all users. */
   globalDailyCapUsd: number;
   /** USD → VND conversion factor for the budget RPC. */
@@ -252,6 +287,10 @@ export async function handleRequest(req: Request, deps: Deps): Promise<Response>
     const roomId = String(formData.get("roomId") ?? "").trim();
     const lineId = String(formData.get("lineId") ?? "").trim();
     const targetText = String(formData.get("target_text") ?? "").trim();
+    // Optional accent ('us'|'uk'|'au'|'ca'). Falls back to 'us' for any
+    // missing / unknown value — matches the migration default and keeps
+    // legacy callers (no accent field) working.
+    const accent = normaliseAccentInput(formData.get("accent"));
 
     if (!(audio instanceof File) && !(audio instanceof Blob)) {
       await deps.audit({
@@ -414,13 +453,14 @@ export async function handleRequest(req: Request, deps: Deps): Promise<Response>
         controller.abort();
       }, deps.azureTimeoutMs ?? AZURE_TIMEOUT_MS);
 
-      const response = await deps.fetch(deps.azureUrl, {
+      const response = await deps.fetch(deps.azureUrlForAccent(accent), {
         method: "POST",
         headers: {
           "Ocp-Apim-Subscription-Key": deps.azureKey,
           "Content-Type": "audio/wav; codecs=audio/pcm; samplerate=16000",
           "Pronunciation-Assessment": headerValue,
           Accept: "application/json",
+          "Accept-Language": localeForAccent(accent),
         },
         body: arrayBuffer,
         signal: controller.signal,
