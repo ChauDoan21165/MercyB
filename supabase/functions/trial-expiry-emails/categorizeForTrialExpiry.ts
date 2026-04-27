@@ -6,10 +6,15 @@
  * module so vitest under Node can exercise it directly.
  *
  * Trial window:
- *   trial_started_at = profiles.created_at
- *   trial_length_days = 3 (FREE_TRIAL_DAYS, mirrors ai-chat edge function)
- *                     + profiles.trial_extension_days (referral grants)
- *   trial_expires_at = trial_started_at + trial_length_days
+ *   trial_expires_at = first non-null of profiles.trial_expires_at,
+ *                      profiles.trial_ends_at, profiles.trial_end
+ *                      (mirrors the fall-through pattern in the
+ *                      azure-phoneme/checkTrialAccess function)
+ *   FALLBACK when none of those columns is set:
+ *     trial_started_at  = profiles.created_at
+ *     trial_length_days = 3 (FREE_TRIAL_DAYS, mirrors ai-chat edge function)
+ *                       + profiles.trial_extension_days (referral grants)
+ *     trial_expires_at  = trial_started_at + trial_length_days
  *
  * Stage assignment, computed against `now`:
  *   D_minus_3   : 3.0 ≤ days_until_expiry < 3.5  (one-day window inside D-3)
@@ -21,8 +26,11 @@
  * "today" sample to land cleanly inside one stage and never two. Tightening
  * to exactly 24h lets late/early cron runs still hit the right stage.
  *
- * Already-paid users (`is_premium = true`) get `not_in_window` regardless —
- * we never email a paying user about trial expiry.
+ * Already-paid users (`tier >= 1`) get `not_in_window` regardless — we
+ * never email a paying user about trial expiry. (The previous version
+ * read `is_premium`; profiles uses `tier` instead — see the schema in
+ * src/integrations/supabase/types.ts and the same gating in
+ * useUserAccess.ts.)
  *
  * No PII leaves this module. Inputs are plain row shapes; outputs are
  * (user, stage) tuples for the wrapper to log.
@@ -36,7 +44,22 @@ export interface TrialUserRow {
   email: string | null;
   preferred_name: string | null;
   created_at: string | null;
-  is_premium: boolean | null;
+  /**
+   * profiles.tier — 0 (or null) means trial / free, >= 1 means paid.
+   * Tier is stored as an integer in the DB; the generated TS types
+   * surface it as `string` because of the historical column type, so
+   * callers may pass either. Use `tierIsPaid` to normalise.
+   */
+  tier: number | string | null;
+  /**
+   * Explicit trial-expiry timestamp columns. If any are set we use the
+   * first non-null in priority order. When all three are null we fall
+   * back to `created_at + FREE_TRIAL_DAYS + trial_extension_days`.
+   * Same fallback ordering as supabase/functions/azure-phoneme.
+   */
+  trial_expires_at: string | null;
+  trial_ends_at: string | null;
+  trial_end: string | null;
   trial_extension_days: number | null;
 }
 
@@ -60,12 +83,37 @@ export const TRIAL_STAGE_TO_CAMPAIGN: Record<
   D_plus_1: "trial_expiry_d_plus_1",
 };
 
+/** True when the row's tier is >= 1 (i.e. paid). */
+export function tierIsPaid(tier: TrialUserRow["tier"]): boolean {
+  if (tier === null || tier === undefined) return false;
+  if (typeof tier === "number") return Number.isFinite(tier) && tier >= 1;
+  const parsed = Number.parseInt(tier, 10);
+  return Number.isFinite(parsed) && parsed >= 1;
+}
+
+/** Parse an ISO timestamp into a Date, or return null on failure. */
+function parseDateMaybe(value: string | null): Date | null {
+  if (!value) return null;
+  const ms = Date.parse(value);
+  return Number.isFinite(ms) ? new Date(ms) : null;
+}
+
 /**
  * Compute the absolute trial-expiry timestamp for a row, or null if the
- * row is malformed (no created_at, NaN parse, etc.). Caller decides what
- * to do with null (typically: skip).
+ * row is malformed (no usable trial column AND no created_at). Caller
+ * decides what to do with null (typically: skip).
  */
 export function trialExpiresAt(row: TrialUserRow): Date | null {
+  // Prefer an explicit trial column when one is set. Walks the same
+  // priority order as the azure-phoneme edge function so the two
+  // surfaces never disagree about when a trial ends.
+  const explicit =
+    parseDateMaybe(row.trial_expires_at) ??
+    parseDateMaybe(row.trial_ends_at) ??
+    parseDateMaybe(row.trial_end);
+  if (explicit) return explicit;
+
+  // Fall back to created_at + free trial + referral extension days.
   if (!row.created_at) return null;
   const created = new Date(row.created_at).getTime();
   if (!Number.isFinite(created)) return null;
@@ -89,7 +137,7 @@ export function daysUntilExpiry(row: TrialUserRow, now: Date): number | null {
  * "not_in_window" — caller doesn't need extra guards.
  */
 export function stageFor(row: TrialUserRow, now: Date): TrialStage {
-  if (row.is_premium === true) return "not_in_window";
+  if (tierIsPaid(row.tier)) return "not_in_window";
   if (!row.email) return "not_in_window";
   const days = daysUntilExpiry(row, now);
   if (days === null) return "not_in_window";
