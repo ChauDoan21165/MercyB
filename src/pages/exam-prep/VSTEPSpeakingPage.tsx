@@ -199,6 +199,27 @@ function TopicDetail({ topic }: { topic: VstepSpeakingTopic }) {
           </div>
         ))}
       </div>
+
+      {/* Topic-detail page link — gives crawlers a fully-rendered, indexable
+          surface for this topic instead of the inline expand-only treatment. */}
+      <div style={{ marginTop: 14, textAlign: "right" }}>
+        <Link
+          to={`/vstep/speaking/${topic.id}`}
+          style={{
+            display: "inline-flex",
+            alignItems: "center",
+            gap: 4,
+            color: "#1e3a8a",
+            fontSize: 13,
+            fontWeight: 700,
+            textDecoration: "none",
+          }}
+          aria-label={`Open VSTEP topic page for ${topic.topic_title_en}`}
+        >
+          Đọc chi tiết · Read full guide
+          <ChevronRight size={14} aria-hidden />
+        </Link>
+      </div>
     </div>
   );
 }

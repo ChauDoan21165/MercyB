@@ -73,6 +73,13 @@ const SeoLoiTiengAnhNguoiVietPage    = lazy(() => import("@/pages/seo/LoiTiengAn
 const SeoPhongVanTiengAnhPage        = lazy(() => import("@/pages/seo/PhongVanTiengAnhPage"));
 const SeoHocTiengAnhMienPhiPage      = lazy(() => import("@/pages/seo/HocTiengAnhMienPhiPage"));
 
+// Per-topic SEO landing pages — Vietnamese-keyword targeted, public.
+// Each one is a self-contained route loaded on demand so the 60+ topic
+// surface stays out of the main bundle.
+const VstepTopicPage                 = lazy(() => import("@/pages/seo/VstepTopicPage"));
+const ToeicTopicPage                 = lazy(() => import("@/pages/seo/ToeicTopicPage"));
+const IeltsTopicPage                 = lazy(() => import("@/pages/seo/IeltsTopicPage"));
+
 // Developer portal — Step 11 public API.
 const DeveloperPortalPage = lazy(() => import("@/pages/dev/DeveloperPortalPage"));
 
@@ -486,6 +493,16 @@ export default function AppRouter() {
             element={<LazyPage><SeoPhongVanTiengAnhPage /></LazyPage>} />
           <Route path="/seo/hoc-tieng-anh-mien-phi"
             element={<LazyPage><SeoHocTiengAnhMienPhiPage /></LazyPage>} />
+
+          {/* Per-topic SEO landing pages — public, no auth, lazy-loaded.
+              Each one is its own SERP entry-point for Vietnamese learners
+              searching for a specific exam topic. */}
+          <Route path="/vstep/speaking/:topicId"
+            element={<LazyPage><VstepTopicPage /></LazyPage>} />
+          <Route path="/toeic/practice/:itemId"
+            element={<LazyPage><ToeicTopicPage /></LazyPage>} />
+          <Route path="/ielts/writing/topic/:topicId"
+            element={<LazyPage><IeltsTopicPage /></LazyPage>} />
 
           {/* Developer portal — Step 11 public API; intentionally public. */}
           <Route path="/dev/api"
