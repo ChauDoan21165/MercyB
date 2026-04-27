@@ -31,6 +31,7 @@ const Privacy             = lazy(() => import("@/pages/Privacy"));
 const Terms                = lazy(() => import("@/pages/Terms"));
 const Support             = lazy(() => import("@/pages/Support"));
 const AccountPage         = lazy(() => import("@/pages/AccountPage"));
+const PushPreferencesPage = lazy(() => import("@/pages/account/PushPreferences"));
 const ReferralPage        = lazy(() => import("@/pages/Referral"));
 const BillingPage         = lazy(() => import("@/pages/Billing"));
 const BillingSuccessPage  = lazy(() => import("@/pages/BillingSuccessPage"));
@@ -796,6 +797,14 @@ export default function AppRouter() {
             element={
               <RequireAuth>
                 <LazyPage><NotificationPreferencesPage /></LazyPage>
+              </RequireAuth>
+            }
+          />
+          {/* Push notification preferences (auth-required) */}
+          <Route path="/account/push-preferences"
+            element={
+              <RequireAuth>
+                <LazyPage><PushPreferencesPage /></LazyPage>
               </RequireAuth>
             }
           />
