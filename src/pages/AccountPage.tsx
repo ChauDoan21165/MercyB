@@ -12,6 +12,7 @@ import { supabase } from "@/lib/supabaseClient";
 import { StreakHistoryPanel } from "@/components/streak/StreakHistoryPanel";
 import { ReferralCard } from "@/components/referral/ReferralCard";
 import { ApplyReferralCodeForm } from "@/components/referral/ApplyReferralCodeForm";
+import { WeeklyLeaderboardOptInPanel } from "@/components/leaderboard/WeeklyLeaderboardOptInPanel";
 
 function formatDateTime(value: string | null | undefined): string {
   if (!value) return "—";
@@ -673,6 +674,11 @@ export default function AccountPage() {
         </div>
         <div style={{ marginTop: 12 }}>
           <ApplyReferralCodeForm userId={user?.id} />
+        </div>
+
+        {/* ── Public weekly leaderboard opt-in ──────────────────── */}
+        <div style={{ marginTop: 18 }}>
+          <WeeklyLeaderboardOptInPanel />
         </div>
 
         {/* ── Legal + account deletion ─────────────────────────── */}

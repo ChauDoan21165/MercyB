@@ -45,6 +45,7 @@ const PlacementResultsPage = lazy(() => import("@/pages/placement/ResultsPage"))
 
 const SpeechDrillPage      = lazy(() => import("@/pages/SpeechDrillPage"));
 const SpeechHistoryPage    = lazy(() => import("@/pages/speech/SpeechHistoryPage"));
+const LeaderboardPage      = lazy(() => import("@/pages/LeaderboardPage"));
 
 // Mercy v2 — multi-turn conversation thread page (auth-required).
 const MercyThreadPage      = lazy(() => import("@/pages/mercy/MercyThreadPage"));
@@ -522,6 +523,11 @@ export default function AppRouter() {
                 <LazyPage><SpeechHistoryPage /></LazyPage>
               </RequireAuth>
             }
+          />
+
+          {/* Public weekly leaderboard — anon-viewable */}
+          <Route path="/leaderboard"
+            element={<LazyPage><LeaderboardPage /></LazyPage>}
           />
 
           {/* Mercy v2 — multi-turn conversation thread (Step 7) */}
