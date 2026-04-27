@@ -47,6 +47,7 @@ const PlacementResultsPage = lazy(() => import("@/pages/placement/ResultsPage"))
 
 const SpeechDrillPage      = lazy(() => import("@/pages/SpeechDrillPage"));
 const SpeechHistoryPage    = lazy(() => import("@/pages/speech/SpeechHistoryPage"));
+const ProgressPage         = lazy(() => import("@/pages/Progress"));
 const LeaderboardPage      = lazy(() => import("@/pages/LeaderboardPage"));
 
 // Mercy v2 — multi-turn conversation thread page (auth-required).
@@ -530,6 +531,12 @@ export default function AppRouter() {
                 <LazyPage><SpeechHistoryPage /></LazyPage>
               </RequireAuth>
             }
+          />
+
+          {/* Progress dashboard — page self-gates on pronunciationScoringEnabled
+              and renders the anon empty state for signed-out callers. */}
+          <Route path="/progress"
+            element={<LazyPage><ProgressPage /></LazyPage>}
           />
 
           {/* Public weekly leaderboard — anon-viewable */}
