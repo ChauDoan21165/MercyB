@@ -14,6 +14,7 @@ import {
 } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
+import ShareScoreButton from '@/components/share/ShareScoreButton';
 import { getPage4LessonByKey } from './kids/kidPage4Data';
 import { getPage5LessonByKey } from './kids/kidPage5Data';
 import { getPage6LessonByKey } from './kids/kidPage6Data';
@@ -1429,6 +1430,21 @@ export function MercySpeakTab({
                 <div className={`h-full rounded-full bg-gradient-to-r transition-all duration-500 ${matchTone.bar}`} style={{ width: `${transcript ? matchScore : 0}%` }} />
               )}
             </div>
+            {/* Facebook share button — renders only when score >= 70.
+                Shipping the local-scorer data path; per-word scores are
+                undefined here so chips render neutral. When the cloud
+                scorer wires through, pass wordScores + provider:'azure'. */}
+            {transcript ? (
+              <div className="mt-3 flex justify-end">
+                <ShareScoreButton
+                  input={{
+                    sentence: practiceText,
+                    overallScore: matchScore,
+                    provider: cloudOverrideScore != null ? "azure" : "local",
+                  }}
+                />
+              </div>
+            ) : null}
           </div>
 
           <div className="rounded-[20px] md:rounded-[24px] border border-white/80 bg-white p-3 md:p-4 shadow-sm">
