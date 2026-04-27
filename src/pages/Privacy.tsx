@@ -131,6 +131,22 @@ export default function Privacy() {
         delete, or request a copy of certain personal information. You may also
         have rights to object to or restrict certain processing.
       </p>
+      <p>
+        You can delete your account at any time from{" "}
+        <strong>Account → Delete my account</strong>. Deletion is immediate and
+        permanent — financial and security records are anonymized rather than
+        deleted, as required by law.
+      </p>
+      <p style={{ fontStyle: "italic", color: "#475569" }}>
+        <strong>Tiếng Việt — Quyền của bạn:</strong> Tùy theo nơi bạn sinh
+        sống, bạn có thể có các quyền truy cập, chỉnh sửa, xóa, hoặc yêu cầu
+        bản sao thông tin cá nhân của mình, cũng như quyền phản đối hoặc
+        hạn chế một số hoạt động xử lý dữ liệu. Bạn có thể xóa tài khoản
+        bất cứ lúc nào trong ứng dụng tại{" "}
+        <strong>Tài khoản → Xóa tài khoản của tôi</strong>. Việc xóa diễn
+        ra ngay lập tức và không thể hoàn tác — hồ sơ tài chính và an ninh
+        sẽ được ẩn danh thay vì xóa, theo yêu cầu của pháp luật.
+      </p>
 
       <h2>7. Children’s Privacy</h2>
       <p>
