@@ -2,23 +2,36 @@
 //
 // Route: /progress — "My Progress / Tiến độ của tôi"
 //
-// Shows speech-history aggregates that aren't visible from a single
-// attempt:
-//   - Hero: "you practiced X this week" + score delta vs last week
-//   - Phoneme bar chart: 32 canonical phonemes ranked by accuracy
-//   - 4-week trend line: weekly average over the last 4 weeks
-//   - Most-improved badges (this week vs last)
-//   - Still-working-on badges (lowest current-week phoneme averages)
-//   - Recent attempts list (last 10)
+// Shows proof of improvement using ONLY data the app already has —
+// nothing is invented, every metric falls back to a calm "—" or hides
+// the whole card when its source is empty.
+//
+// Sections (top → bottom):
+//   1. Stat strip — lessons completed, lifetime speaking attempts,
+//      total XP. From user_room_progress + speech_attempts + user_xp.
+//      Each cell shows "—" when its source has no rows yet.
+//   2. Hero — this-week practice volume + average score + delta.
+//   3. Phoneme accuracy bar chart (32 canonical phonemes).
+//   4. Drill-down 30-day timeline for a tapped phoneme.
+//   5. 4-week trend line.
+//   6. Phoneme "fastest improving" + "still working on" badges.
+//   7. Grammar weak areas (from the rule-recommendation engine) —
+//      hidden when the engine returns nothing.
+//   8. Phoneme heatmap (self-fetching; hidden until 5+ attempts).
+//   9. Recent attempts (last 10).
+//  10. Recommended next lesson (from recommendNextLesson + the
+//      weakness catalog) — hidden when the recommendation has no
+//      linked room.
 //
 // Bilingual VI primary throughout. Feature-flag gated by
 // `pronunciationScoringEnabled` — same gate as /speak and
-// /speech/history. The page LAZY-fetches all data on mount; nothing
-// is auto-fetched on Home (the Home widget owns its own light query).
+// /speech/history.
 //
 // Empty states:
 //   - signed-out      → CTA to sign in
-//   - signed-in, 0 attempts → CTA to /speak
+//   - signed-in, 0 speech attempts AND 0 other progress → CTA to /speak
+//   - any single source missing → that cell / card degrades calmly,
+//     the rest of the page renders normally.
 
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
@@ -37,6 +50,7 @@ import {
 
 import { useAuth } from "@/providers/AuthProvider";
 import { useFeatureFlag } from "@/hooks/useFeatureFlag";
+import { supabase } from "@/lib/supabaseClient";
 import PhonemeHeatmapSection from "@/components/pronunciation/PhonemeHeatmapSection";
 import {
   CANONICAL_PHONEMES,
@@ -51,6 +65,15 @@ import {
   type WeeklyProgress,
   type WeeklyTrendPoint,
 } from "@/lib/analytics/speechProgress";
+import {
+  getTopWeaknesses,
+  recommendNextLesson,
+  type WeaknessRecommendation,
+} from "@/lib/weakness/recommendationEngine";
+import {
+  getWeaknessEntry,
+  type WeaknessEntry,
+} from "@/lib/weakness/weakness-catalog";
 
 // ── Bilingual copy ────────────────────────────────────────────────────
 
@@ -64,6 +87,20 @@ const COPY = {
   thisWeekAvg: { en: "Avg score this week", vi: "Điểm trung bình tuần này" },
   practiceTime: { en: "Practice time", vi: "Thời gian luyện" },
   streakLabel: { en: "Day streak", vi: "Chuỗi ngày" },
+  proofTitle: { en: "Proof of improvement", vi: "Bằng chứng tiến bộ" },
+  lessonsLabel: { en: "Lessons completed", vi: "Bài đã hoàn thành" },
+  speakLabel: { en: "Speaking attempts", vi: "Lượt phát âm" },
+  pointsLabel: { en: "Total points (XP)", vi: "Tổng điểm (XP)" },
+  weakRulesTitle: { en: "Grammar to focus on", vi: "Ngữ pháp cần chú ý" },
+  weakRulesHint: {
+    en: "Top areas where Vietnamese speakers tend to slip — based on your recent attempts.",
+    vi: "Những điểm người Việt mình hay nhầm — dựa trên lượt luyện gần đây của bạn.",
+  },
+  recTitle: { en: "Recommended next lesson", vi: "Bài học gợi ý tiếp theo" },
+  recOpenCta: { en: "Open lesson", vi: "Mở bài học" },
+  recReasonLow: { en: "You've been slipping here recently", vi: "Bạn đang nhầm ở đây gần đây" },
+  recReasonStale: { en: "It's been a while since you practiced this", vi: "Đã lâu bạn chưa luyện điểm này" },
+  recReasonNew: { en: "Suggested for your level", vi: "Gợi ý cho trình độ của bạn" },
   phonemeChartTitle: {
     en: "Phoneme accuracy",
     vi: "Độ chính xác từng âm",
@@ -230,6 +267,112 @@ function buildPhonemeChartRows(
   return rows.sort((a, b) => b.score - a.score);
 }
 
+// ── Stat-strip data loaders ──────────────────────────────────────────
+//
+// Three small queries against existing tables. Each one independently
+// resolves to `null` on any error so a Postgres blip degrades that one
+// cell to "—" instead of failing the whole page.
+
+interface StatStripData {
+  lessonsCompleted: number | null;
+  speakingAttempts: number | null;
+  totalXp: number | null;
+}
+
+async function loadStatStrip(userId: string): Promise<StatStripData> {
+  const [lessons, speak, xp] = await Promise.all([
+    supabase
+      .from("user_room_progress")
+      .select("room_id", { count: "exact", head: true })
+      .eq("user_id", userId)
+      .gte("progress_pct", 100)
+      .then(
+        (res) => (res.error ? null : res.count ?? 0),
+        () => null,
+      ),
+    supabase
+      .from("speech_attempts")
+      .select("id", { count: "exact", head: true })
+      .eq("user_id", userId)
+      .then(
+        (res) => (res.error ? null : res.count ?? 0),
+        () => null,
+      ),
+    supabase
+      .from("user_xp")
+      .select("total_xp")
+      .eq("user_id", userId)
+      .maybeSingle()
+      .then(
+        (res) =>
+          res.error
+            ? null
+            : typeof (res.data as { total_xp?: number | null } | null)?.total_xp === "number"
+              ? Number((res.data as { total_xp: number }).total_xp)
+              : 0,
+        () => null,
+      ),
+  ]);
+  return {
+    lessonsCompleted: lessons,
+    speakingAttempts: speak,
+    totalXp: xp,
+  };
+}
+
+interface NextLessonData {
+  tag: string;
+  entry: WeaknessEntry;
+}
+
+async function loadNextLesson(userId: string): Promise<NextLessonData | null> {
+  try {
+    const tag = await recommendNextLesson(userId);
+    if (!tag) return null;
+    const entry = getWeaknessEntry(tag);
+    if (!entry) return null;
+    return { tag, entry };
+  } catch {
+    return null;
+  }
+}
+
+async function loadGrammarWeakAreas(
+  userId: string,
+): Promise<WeaknessRecommendation[]> {
+  try {
+    const recs = await getTopWeaknesses(userId, 3);
+    // Drop pure cold-start entries — if the user has zero attempts
+    // anywhere, the engine's CEFR-aligned fallback isn't really a
+    // "weak area," it's an introduction. Hide the section in that
+    // case (we don't want to invent weakness signal).
+    return recs.filter((r) => r.errorCount > 0 || r.daysSinceLastAttempt < 30);
+  } catch {
+    return [];
+  }
+}
+
+function formatNumber(n: number | null): string {
+  if (n === null || !Number.isFinite(n)) return "—";
+  return n.toLocaleString();
+}
+
+function reasonCopy(reason: WeaknessRecommendation["reason"]): {
+  vi: string;
+  en: string;
+} {
+  switch (reason) {
+    case "high_error_rate":
+      return COPY.recReasonLow;
+    case "stale_practice":
+      return COPY.recReasonStale;
+    case "cefr_aligned":
+    case "cold_start":
+    default:
+      return COPY.recReasonNew;
+  }
+}
+
 // ── Component ─────────────────────────────────────────────────────────
 
 export default function ProgressPage() {
@@ -247,6 +390,9 @@ export default function ProgressPage() {
     PhonemeTimelinePoint[] | null
   >(null);
   const [selectedPhoneme, setSelectedPhoneme] = useState<string | null>(null);
+  const [stats, setStats] = useState<StatStripData | null>(null);
+  const [nextLesson, setNextLesson] = useState<NextLessonData | null>(null);
+  const [weakAreas, setWeakAreas] = useState<WeaknessRecommendation[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -265,12 +411,18 @@ export default function ProgressPage() {
       getWeeklyProgressSummary(user.id),
       getWeeklyTrend(4),
       getRecentAttempts(10),
+      loadStatStrip(user.id),
+      loadNextLesson(user.id),
+      loadGrammarWeakAreas(user.id),
     ])
-      .then(([weekly, weeklyTrend, recents]) => {
+      .then(([weekly, weeklyTrend, recents, statStrip, nextLessonRow, grammarWeak]) => {
         if (!alive) return;
         setSummary(weekly);
         setTrend(weeklyTrend);
         setRecent(recents);
+        setStats(statStrip);
+        setNextLesson(nextLessonRow);
+        setWeakAreas(grammarWeak);
       })
       .catch((err: unknown) => {
         if (!alive) return;
@@ -392,11 +544,22 @@ export default function ProgressPage() {
     );
   }
 
-  const noAttempts =
+  // The "no data" empty state fires only when the user has zero
+  // speaking attempts AND zero lessons completed AND zero XP. A user
+  // who completed lessons but never spoke still gets the dashboard
+  // (their stat strip + Recommended-next-lesson are useful even
+  // without a phoneme history).
+  const noSpeechAttempts =
     !summary ||
     (summary.thisWeek.attempts === 0 &&
       summary.lastWeek.attempts === 0 &&
       recent.length === 0);
+  const noOtherProgress =
+    !stats ||
+    ((stats.lessonsCompleted ?? 0) === 0 &&
+      (stats.totalXp ?? 0) === 0 &&
+      (stats.speakingAttempts ?? 0) === 0);
+  const noAttempts = noSpeechAttempts && noOtherProgress;
 
   if (noAttempts) {
     return (
@@ -484,6 +647,10 @@ export default function ProgressPage() {
           </div>
         ) : null}
 
+        {/* Proof-of-improvement strip — three counts from existing
+            tables. Each cell shows "—" calmly when its source is empty. */}
+        <ProofOfImprovementCard stats={stats} />
+
         {summary ? <HeroCard summary={summary} /> : null}
 
         {/* Phoneme bar chart */}
@@ -509,18 +676,92 @@ export default function ProgressPage() {
         {/* Most-improved + still-working badges */}
         {summary ? <BadgesRow summary={summary} /> : null}
 
+        {/* Grammar weak areas (from the rule recommendation engine).
+            Hidden when there's no real signal — we never invent
+            weakness data; brief: "use existing data only." */}
+        {weakAreas.length > 0 ? (
+          <GrammarWeakAreasCard
+            recs={weakAreas}
+            onOpen={(tag) => {
+              const entry = getWeaknessEntry(tag);
+              if (entry?.linkedRoomId) {
+                navigate(`/room/${entry.linkedRoomId}`);
+              }
+            }}
+          />
+        ) : null}
+
         {/* Phoneme heatmap — per-day per-phoneme grid + insights.
             Self-fetching; hidden until user has 5+ attempts in window. */}
         <PhonemeHeatmapSection userId={user?.id ?? null} />
 
         {/* Recent attempts */}
         {recent.length > 0 ? <RecentAttemptsCard rows={recent} /> : null}
+
+        {/* Recommended next lesson — last so the user has full
+            context above before deciding what to do next. */}
+        {nextLesson ? (
+          <RecommendedLessonCard
+            data={nextLesson}
+            onOpen={() => {
+              if (nextLesson.entry.linkedRoomId) {
+                navigate(`/room/${nextLesson.entry.linkedRoomId}`);
+              }
+            }}
+          />
+        ) : null}
       </div>
     </div>
   );
 }
 
 // ── Subcomponents ─────────────────────────────────────────────────────
+
+function ProofOfImprovementCard({ stats }: { stats: StatStripData | null }) {
+  // Render the strip even when stats failed entirely — three "—" cells
+  // are calmer than hiding the whole row, and they confirm to the user
+  // that the metric exists, just not for them yet.
+  const data = stats ?? {
+    lessonsCompleted: null,
+    speakingAttempts: null,
+    totalXp: null,
+  };
+  return (
+    <section
+      style={cardStyle}
+      aria-label="Proof of improvement strip"
+      data-testid="progress-stat-strip"
+    >
+      <div style={sectionHeader}>
+        {COPY.proofTitle.vi} · {COPY.proofTitle.en}
+      </div>
+      <div
+        style={{
+          marginTop: 10,
+          display: "grid",
+          gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
+          gap: 10,
+        }}
+      >
+        <MiniStat
+          labelVi={COPY.lessonsLabel.vi}
+          labelEn={COPY.lessonsLabel.en}
+          value={formatNumber(data.lessonsCompleted)}
+        />
+        <MiniStat
+          labelVi={COPY.speakLabel.vi}
+          labelEn={COPY.speakLabel.en}
+          value={formatNumber(data.speakingAttempts)}
+        />
+        <MiniStat
+          labelVi={COPY.pointsLabel.vi}
+          labelEn={COPY.pointsLabel.en}
+          value={formatNumber(data.totalXp)}
+        />
+      </div>
+    </section>
+  );
+}
 
 function HeroCard({ summary }: { summary: WeeklyProgress }) {
   const delta = summary.scoreDelta;
@@ -895,6 +1136,138 @@ function BadgesRow({ summary }: { summary: WeeklyProgress }) {
           </ul>
         )}
       </div>
+    </section>
+  );
+}
+
+function GrammarWeakAreasCard({
+  recs,
+  onOpen,
+}: {
+  recs: WeaknessRecommendation[];
+  onOpen: (tag: string) => void;
+}) {
+  return (
+    <section style={cardStyle} aria-label="Grammar weak areas">
+      <div style={sectionHeader}>
+        🧭 {COPY.weakRulesTitle.vi} · {COPY.weakRulesTitle.en}
+      </div>
+      <p style={{ fontSize: 12, color: "#94a3b8", margin: "4px 0 12px" }}>
+        {COPY.weakRulesHint.vi} · {COPY.weakRulesHint.en}
+      </p>
+      <ul
+        style={{
+          listStyle: "none",
+          padding: 0,
+          margin: 0,
+          display: "flex",
+          flexDirection: "column",
+          gap: 8,
+        }}
+      >
+        {recs.map((rec) => {
+          const entry = getWeaknessEntry(rec.tag);
+          if (!entry) return null;
+          const reason = reasonCopy(rec.reason);
+          const canOpen = entry.linkedRoomId !== null;
+          return (
+            <li
+              key={rec.tag}
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                gap: 4,
+                padding: "10px 12px",
+                background: "#f8fafc",
+                border: "1px solid rgba(0,0,0,0.05)",
+                borderRadius: 12,
+              }}
+            >
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  gap: 10,
+                }}
+              >
+                <strong style={{ fontSize: 13, color: "#0f172a" }}>
+                  {entry.shortLabel.vi}
+                </strong>
+                {canOpen ? (
+                  <button
+                    type="button"
+                    onClick={() => onOpen(rec.tag)}
+                    style={{
+                      background: "white",
+                      color: "#111827",
+                      borderRadius: 9999,
+                      padding: "4px 12px",
+                      fontWeight: 600,
+                      fontSize: 11,
+                      border: "1px solid rgba(0,0,0,0.12)",
+                      cursor: "pointer",
+                    }}
+                  >
+                    {COPY.recOpenCta.vi} · {COPY.recOpenCta.en}
+                  </button>
+                ) : null}
+              </div>
+              <div style={{ fontSize: 11, color: "#64748b", fontStyle: "italic" }}>
+                {entry.shortLabel.en}
+              </div>
+              <div style={{ fontSize: 12, color: "#475569" }}>
+                {reason.vi} · <em>{reason.en}</em>
+              </div>
+            </li>
+          );
+        })}
+      </ul>
+    </section>
+  );
+}
+
+function RecommendedLessonCard({
+  data,
+  onOpen,
+}: {
+  data: NextLessonData;
+  onOpen: () => void;
+}) {
+  const { entry } = data;
+  const canOpen = entry.linkedRoomId !== null;
+  return (
+    <section
+      style={cardStyle}
+      aria-label="Recommended next lesson"
+      data-testid="progress-recommendation"
+    >
+      <div style={sectionHeader}>
+        🎓 {COPY.recTitle.vi} · {COPY.recTitle.en}
+      </div>
+      <div style={{ marginTop: 10, fontSize: 16, fontWeight: 800, color: "#0f172a" }}>
+        {entry.shortLabel.vi}
+      </div>
+      <div style={{ fontSize: 12, color: "#64748b", fontStyle: "italic", marginTop: 2 }}>
+        {entry.shortLabel.en}
+      </div>
+      <p style={{ fontSize: 13, color: "#475569", marginTop: 10, lineHeight: 1.5 }}>
+        {entry.longDescription.vi}
+      </p>
+      <p style={{ fontSize: 12, color: "#94a3b8", marginTop: 6, lineHeight: 1.5 }}>
+        {entry.longDescription.en}
+      </p>
+      {canOpen ? (
+        <div style={{ marginTop: 14 }}>
+          <button type="button" style={primaryBtn} onClick={onOpen}>
+            {COPY.recOpenCta.vi} · {COPY.recOpenCta.en}
+          </button>
+        </div>
+      ) : (
+        <p style={{ fontSize: 12, color: "#94a3b8", marginTop: 8 }}>
+          {COPY.insufficient.vi} · {COPY.insufficient.en}
+        </p>
+      )}
     </section>
   );
 }
