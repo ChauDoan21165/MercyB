@@ -25,6 +25,11 @@
 
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient, SupabaseClient } from "https://esm.sh/@supabase/supabase-js@2";
+import {
+  trackLatency,
+  trackLatencyMs,
+  type LatencyStatus,
+} from "../_shared/latencyTelemetry.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -117,6 +122,10 @@ serve(async (req) => {
     return jsonResponse({ error: "Method not allowed" }, 405);
   }
 
+  const totalStartedAt = performance.now();
+  let totalStatus: LatencyStatus = "success";
+  let cacheHit = false;
+
   try {
     const authHeader = req.headers.get("Authorization");
     if (!authHeader) {
@@ -181,7 +190,15 @@ serve(async (req) => {
       .list("", { search: cachePath, limit: 1 });
     if (existing && existing.some((f) => f.name === cachePath)) {
       const { data: pub } = service.storage.from(CACHE_BUCKET).getPublicUrl(cachePath);
-      return jsonResponse({ audioUrl: pub.publicUrl, cached: true });
+      cacheHit = true;
+      const cachedResp = jsonResponse({ audioUrl: pub.publicUrl, cached: true });
+      trackLatency({
+        operation: "mercy-tts.total",
+        startedAt: totalStartedAt,
+        status: totalStatus,
+        metadata: { cache_hit: true },
+      });
+      return cachedResp;
     }
 
     // Cache miss → enforce daily caps before paying ElevenLabs.
@@ -212,27 +229,57 @@ serve(async (req) => {
       );
     }
 
-    const elResp = await fetch(`${ELEVENLABS_BASE}/${voiceId}`, {
-      method: "POST",
-      headers: {
-        "xi-api-key": apiKey,
-        "Content-Type": "application/json",
-        Accept: "audio/mpeg",
+    const elStartedAt = performance.now();
+    let elStatus: LatencyStatus = "success";
+    let elResp: Response;
+    try {
+      elResp = await fetch(`${ELEVENLABS_BASE}/${voiceId}`, {
+        method: "POST",
+        headers: {
+          "xi-api-key": apiKey,
+          "Content-Type": "application/json",
+          Accept: "audio/mpeg",
+        },
+        body: JSON.stringify({
+          text,
+          model_id: "eleven_multilingual_v2",
+          voice_settings: VOICE_SETTINGS,
+        }),
+      });
+    } catch (err) {
+      elStatus = "error";
+      trackLatencyMs(
+        "mercy-tts.elevenlabs-call",
+        performance.now() - elStartedAt,
+        { status: elStatus },
+      );
+      throw err;
+    }
+    if (!elResp.ok) elStatus = "error";
+    trackLatencyMs(
+      "mercy-tts.elevenlabs-call",
+      performance.now() - elStartedAt,
+      {
+        status: elStatus,
+        metadata: { upstream_status: elResp.status },
       },
-      body: JSON.stringify({
-        text,
-        model_id: "eleven_multilingual_v2",
-        voice_settings: VOICE_SETTINGS,
-      }),
-    });
+    );
 
     if (!elResp.ok) {
       const detail = await elResp.text().catch(() => "");
       console.error("[mercy-tts] ElevenLabs error", elResp.status, detail.slice(0, 200));
-      return jsonResponse(
+      totalStatus = "error";
+      const errResp = jsonResponse(
         { error: "Upstream TTS failed", upstream_status: elResp.status },
         502,
       );
+      trackLatency({
+        operation: "mercy-tts.total",
+        startedAt: totalStartedAt,
+        status: totalStatus,
+        metadata: { cache_hit: false, upstream_status: elResp.status },
+      });
+      return errResp;
     }
 
     const audioBuf = new Uint8Array(await elResp.arrayBuffer());
@@ -262,9 +309,23 @@ serve(async (req) => {
     }
 
     const { data: pub } = service.storage.from(CACHE_BUCKET).getPublicUrl(cachePath);
-    return jsonResponse({ audioUrl: pub.publicUrl, cached: false });
+    const okResp = jsonResponse({ audioUrl: pub.publicUrl, cached: false });
+    trackLatency({
+      operation: "mercy-tts.total",
+      startedAt: totalStartedAt,
+      status: totalStatus,
+      metadata: { cache_hit: cacheHit },
+    });
+    return okResp;
   } catch (err) {
     console.error("[mercy-tts] unexpected error", err);
+    totalStatus = "error";
+    trackLatency({
+      operation: "mercy-tts.total",
+      startedAt: totalStartedAt,
+      status: totalStatus,
+      metadata: { cache_hit: cacheHit },
+    });
     return jsonResponse(
       { error: err instanceof Error ? err.message : "Unknown error" },
       500,
