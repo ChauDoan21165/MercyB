@@ -512,6 +512,47 @@ export default function Home() {
     </button>
   );
 
+  // ── IELTS Speaking content pack ────────────────────────────────────────────
+  // Marketing surface for /exam-prep/ielts/speaking (open, no paywall).
+  // 30 topics across all 3 parts, VN-speaker strategies + vocabulary by
+  // band + band-7/band-5 sample answers. Closes the IELTS revenue funnel
+  // alongside Writing (PR #174), Listening, and Reading sections.
+  const ieltsSpeakingCard = (
+    <button type="button" onClick={() => nav("/exam-prep/ielts/speaking")} aria-label="IELTS Speaking content pack"
+      style={{ width: "100%", background: "none", border: "none", padding: 0, cursor: "pointer" }}>
+      <div style={{
+        borderRadius: 20, padding: isPhone ? "16px 18px" : "18px 20px",
+        background: "linear-gradient(150deg, rgba(236,253,245,0.96) 0%, rgba(240,253,250,0.94) 100%)",
+        border: "1px solid rgba(16,185,129,0.18)",
+        boxShadow: "0 10px 28px rgba(16,185,129,0.10)",
+        display: "flex", alignItems: "center", gap: 16, textAlign: "left",
+      }}>
+        <div style={{ width: 52, height: 52, borderRadius: 9999, background: "linear-gradient(180deg, #34D399 0%, #10B981 100%)", display: "grid", placeItems: "center", boxShadow: "0 8px 20px rgba(16,185,129,0.22)", flexShrink: 0 }}>
+          <GraduationCap size={24} color="white" />
+        </div>
+
+        <div style={{ minWidth: 0, flex: 1 }}>
+          <div style={{ fontSize: isPhone ? z(18) : z(20), fontWeight: 900, color: "rgba(6,95,70,0.94)", letterSpacing: -0.3 }}>
+            IELTS Speaking
+          </div>
+          <div style={{ fontSize: z(12), fontWeight: 700, color: "rgba(15,118,110,0.55)", marginTop: 2 }}>
+            30 topics — Part 1, 2, 3
+          </div>
+          <div style={{ marginTop: 6, fontSize: z(14), fontWeight: 700, color: "rgba(0,0,0,0.62)", lineHeight: 1.45 }}>
+            IELTS Speaking với phản hồi tiếng Việt — biết chính xác band đang ở đâu và làm thế nào để lên.
+          </div>
+          <div style={{ marginTop: 3, fontSize: z(12), fontWeight: 600, color: "rgba(0,0,0,0.40)", lineHeight: 1.4 }}>
+            Vietnamese-language strategies, vocabulary by band, sample answers band 7 + band 5.
+          </div>
+        </div>
+
+        <div style={{ color: "rgba(16,185,129,0.70)", flexShrink: 0 }}>
+          <ChevronRight size={22} />
+        </div>
+      </div>
+    </button>
+  );
+
   // ── Placement test invitation card ─────────────────────────────────────────
   // Visual rhythm: Teacher Mercy → Library → Placement test. Mirrors
   // libraryCard's structure (icon-badge left, EN+VI text, chevron right)
@@ -680,6 +721,11 @@ export default function Home() {
           {/* TOEIC practice pack — Vietnamese corporate vertical.
               Marketing surface for /exam-prep/toeic (open, no paywall). */}
           {toeicCard}
+
+          {/* IELTS Speaking content pack — closes the IELTS funnel alongside
+              Writing/Listening/Reading. Marketing surface for
+              /exam-prep/ielts/speaking (open, no paywall). */}
+          {ieltsSpeakingCard}
 
           {/* Focus areas — tertiary (feature-flagged) */}
           <FocusAreasCard />
