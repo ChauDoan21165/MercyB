@@ -2,6 +2,7 @@
 
 import { serve } from "https://deno.land/std@0.224.0/http/server.ts";
 import { chatJsonWithFailover } from "../_shared/aiProvider.ts";
+import { wrapHandler } from "../_shared/sentry.ts";
 
 type ChatRequest = {
   message?: string;
@@ -114,7 +115,7 @@ Return exactly this JSON shape:
 `.trim();
 }
 
-serve(async (req) => {
+serve(wrapHandler("mercy-guide", async (req) => {
   if (req.method === "OPTIONS") {
     return json({});
   }
@@ -232,4 +233,4 @@ serve(async (req) => {
       confidence: 0.1,
     } satisfies MercyResponse);
   }
-});
+}));

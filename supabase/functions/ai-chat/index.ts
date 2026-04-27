@@ -7,6 +7,7 @@ import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { logAiUsage as logAiUsageEvent } from "../_shared/aiUsage.ts";
 import { streamChatWithFailover } from "../_shared/aiProvider.ts";
+import { wrapHandler } from "../_shared/sentry.ts";
 import {
   EdgeUserFact,
   MAX_FACTS_IN_PROMPT,
@@ -416,7 +417,7 @@ async function loadRoomData(roomId: string): Promise<any | null> {
   }
 }
 
-serve(async (req) => {
+serve(wrapHandler("ai-chat", async (req) => {
   if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
   }
@@ -612,4 +613,4 @@ serve(async (req) => {
       { status: 500, headers: corsHeaders },
     );
   }
-});
+}));
