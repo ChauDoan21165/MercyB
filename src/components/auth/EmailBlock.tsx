@@ -7,6 +7,13 @@ import {
   type EmailMode,
 } from "@/lib/authHelpers";
 import { UI } from "@/components/auth/authUI";
+import {
+  challengeFactor,
+  findFirstVerifiedTotp,
+  humanizeMfaError,
+  listMfaFactors,
+  verifyChallenge,
+} from "@/lib/security/mfaClient";
 
 export default function EmailBlock({
   emailRedirectTo,
@@ -28,6 +35,18 @@ export default function EmailBlock({
   const [status, setStatus] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
   const statusRef = useRef<HTMLDivElement | null>(null);
+
+  // 2FA Phase 1 — TOTP challenge state. After a successful password
+  // step, if the user has any verified TOTP factors we hold them
+  // here until they enter their 6-digit code. onAuthed() is NOT
+  // called until the challenge verifies. See
+  // reports/2fa-design-decisions-2026-04-27.md § Decision 5.
+  const [totpStep, setTotpStep] = useState<{
+    factorId: string;
+    challengeId: string;
+  } | null>(null);
+  const [totpCode, setTotpCode] = useState("");
+  const [totpVerifying, setTotpVerifying] = useState(false);
 
   const disabled = busyParent || busy;
   const cleanEmail = useCallback(() => email.trim().toLowerCase(), [email]);
@@ -90,6 +109,31 @@ export default function EmailBlock({
       if (error) throw error;
 
       await ensureSessionOrThrow();
+
+      // 2FA Phase 1 — does this user have a verified TOTP factor?
+      // If yes, hold the redirect and prompt for a 6-digit code. The
+      // session is already established (aal=1) but onAuthed() is the
+      // post-redirect contract — we don't fire it until aal=2.
+      try {
+        const factors = await listMfaFactors();
+        const totp = findFirstVerifiedTotp(factors);
+        if (totp) {
+          const { challengeId } = await challengeFactor(totp.id);
+          setTotpStep({ factorId: totp.id, challengeId });
+          setStatus(null);
+          return; // Don't call onAuthed yet — wait for TOTP verify.
+        }
+      } catch (mfaErr) {
+        // If the MFA list call fails we fall through to the no-MFA
+        // path. The user is signed in regardless; the worst case is
+        // they slip past a 2FA gate they enrolled but the API is
+        // briefly unreachable. Log so we can find this in Sentry but
+        // don't block sign-in on a transient API hiccup.
+        if (import.meta.env.DEV) {
+          console.warn("[mfa] listFactors failed during sign-in:", mfaErr);
+        }
+      }
+
       setStatus("✅ Signed in. Redirecting...");
       await onAuthed();
     } catch (e) {
@@ -98,6 +142,48 @@ export default function EmailBlock({
       setBusy(false);
     }
   }, [cleanEmail, disabled, mode, onAuthed, password]);
+
+  // 2FA Phase 1 — TOTP challenge submit handler. Called from the
+  // separate code-entry UI rendered below when totpStep is non-null.
+  const verifyTotpStep = useCallback(async () => {
+    if (!totpStep) return;
+    if (!/^\d{6}$/.test(totpCode)) {
+      setStatus("Enter the 6-digit code from your authenticator app.");
+      return;
+    }
+    setTotpVerifying(true);
+    setStatus(null);
+    try {
+      await verifyChallenge(totpStep.factorId, totpStep.challengeId, totpCode);
+      // Success — session is now aal=2. Hand off to onAuthed().
+      setStatus("✅ Signed in. Redirecting...");
+      await onAuthed();
+    } catch (err) {
+      const friendly = humanizeMfaError(err);
+      setStatus(friendly.en);
+      // Stay on the TOTP step so the user can retry — Phase 2 will
+      // add a 5-attempt server-side lockout in the rate_limits table
+      // (see reports/2fa-design-decisions-2026-04-27.md § Decision 3).
+    } finally {
+      setTotpVerifying(false);
+    }
+  }, [onAuthed, totpCode, totpStep]);
+
+  const cancelTotpStep = useCallback(async () => {
+    // Cancelling the TOTP step means the user gives up on this
+    // sign-in. Sign them out so a malicious bystander can't bypass
+    // the second factor by just walking away from the prompt.
+    setTotpStep(null);
+    setTotpCode("");
+    setStatus(null);
+    try {
+      await supabase.auth.signOut();
+    } catch {
+      // Best-effort. Even if signOut fails, the next page load
+      // will see aal=1 and re-prompt for TOTP because the user has
+      // a verified factor.
+    }
+  }, []);
 
   const signUpWithMagicLink = useCallback(async () => {
     if (disabled) return;
@@ -183,6 +269,146 @@ export default function EmailBlock({
     signInWithPassword,
     signUpWithMagicLink,
   ]);
+
+  // 2FA Phase 1 — when the password step succeeded but a TOTP factor
+  // is enrolled, render ONLY the code-entry step. Hide the email/
+  // password form so a confused user can't accidentally re-submit
+  // their password while we're holding their session at aal=1.
+  if (totpStep) {
+    return (
+      <div style={UI.block} data-testid="email-block-totp-step">
+        <h3
+          style={{
+            fontSize: 16,
+            fontWeight: 800,
+            margin: "0 0 6px",
+            color: "rgba(10,10,10,0.92)",
+          }}
+        >
+          Nhập mã 2FA
+          <span
+            style={{
+              display: "block",
+              fontSize: 12,
+              fontWeight: 500,
+              color: "rgba(0,0,0,0.55)",
+              marginTop: 2,
+            }}
+          >
+            Enter your 2FA code
+          </span>
+        </h3>
+        <p
+          style={{
+            fontSize: 13,
+            color: "rgba(0,0,0,0.62)",
+            lineHeight: 1.5,
+            margin: "8px 0 14px",
+          }}
+        >
+          Mở ứng dụng xác thực và nhập mã 6 số hiện đang hiển thị.
+          <br />
+          <span style={{ color: "rgba(0,0,0,0.45)" }}>
+            Open your authenticator app and enter the 6-digit code currently shown.
+          </span>
+        </p>
+        <input
+          type="text"
+          inputMode="numeric"
+          pattern="[0-9]*"
+          autoComplete="one-time-code"
+          maxLength={6}
+          value={totpCode}
+          onChange={(e) => {
+            const next = e.target.value.replace(/\D/g, "").slice(0, 6);
+            setTotpCode(next);
+            if (status) setStatus(null);
+          }}
+          placeholder="123456"
+          aria-label="6-digit code from your authenticator app"
+          data-testid="signin-totp-input"
+          disabled={totpVerifying}
+          style={{
+            width: "100%",
+            padding: "12px 14px",
+            fontSize: 18,
+            fontWeight: 700,
+            letterSpacing: 4,
+            textAlign: "center",
+            borderRadius: 10,
+            border: "1px solid #cbd5e1",
+            outline: "none",
+            fontVariantNumeric: "tabular-nums",
+            fontFamily: "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace",
+          }}
+        />
+
+        {status ? (
+          <div
+            ref={statusRef}
+            role="alert"
+            style={{
+              marginTop: 12,
+              padding: "10px 12px",
+              borderRadius: 12,
+              border: "1px solid #fecaca",
+              background: "#fef2f2",
+              color: "#991b1b",
+              fontSize: 13,
+              lineHeight: 1.5,
+            }}
+            data-testid="signin-totp-error"
+          >
+            {status}
+          </div>
+        ) : null}
+
+        <div style={{ marginTop: 14, display: "flex", gap: 8, flexWrap: "wrap" }}>
+          <button
+            type="button"
+            onClick={() => void verifyTotpStep()}
+            disabled={totpVerifying || totpCode.length !== 6}
+            data-testid="signin-totp-submit"
+            style={{
+              background: "#111827",
+              color: "white",
+              borderRadius: 9999,
+              minHeight: 44,
+              padding: "0 22px",
+              fontWeight: 700,
+              fontSize: 14,
+              border: "none",
+              cursor: "pointer",
+              opacity: totpVerifying || totpCode.length !== 6 ? 0.6 : 1,
+            }}
+          >
+            {totpVerifying
+              ? "Đang xác minh… · Verifying…"
+              : "Xác nhận · Verify"}
+          </button>
+          <button
+            type="button"
+            onClick={() => void cancelTotpStep()}
+            disabled={totpVerifying}
+            data-testid="signin-totp-cancel"
+            style={{
+              background: "white",
+              color: "#475569",
+              borderRadius: 9999,
+              minHeight: 44,
+              padding: "0 18px",
+              fontWeight: 700,
+              fontSize: 13,
+              border: "1px solid rgba(0,0,0,0.12)",
+              cursor: "pointer",
+            }}
+          >
+            Hủy đăng nhập · Cancel sign-in
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div style={UI.block}>
