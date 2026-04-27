@@ -86,6 +86,7 @@ const DeveloperPortalPage = lazy(() => import("@/pages/dev/DeveloperPortalPage")
 
 const BlogIndex = lazy(() => import("@/pages/blog/BlogIndex"));
 const BlogPost  = lazy(() => import("@/pages/blog/BlogPost"));
+const WeeklyDigest = lazy(() => import("@/pages/blog/WeeklyDigest"));
 
 
 const PublicProfilePage   = lazy(() => import("@/pages/profile/PublicProfilePage"));
@@ -476,6 +477,9 @@ export default function AppRouter() {
 
           {/* Public blog */}
           <Route path="/blog"        element={<LazyPage><BlogIndex /></LazyPage>} />
+          {/* A9 — public weekly community digest archive (more specific than /blog/:slug) */}
+          <Route path="/blog/weekly-digest" element={<LazyPage><WeeklyDigest /></LazyPage>} />
+          <Route path="/blog/weekly-digest/:weekStart" element={<LazyPage><WeeklyDigest /></LazyPage>} />
           <Route path="/blog/:slug"  element={<LazyPage><BlogPost /></LazyPage>} />
 
           <Route path="/tiers"   element={<LazyPage><TierIndex /></LazyPage>} />
