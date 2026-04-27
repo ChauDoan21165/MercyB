@@ -13,6 +13,11 @@ import {
   formatUserFactsSection,
   selectTopFacts,
 } from "./factSlotting.ts";
+import {
+  buildCapExceededResponseBody,
+  decideConversationCostCap,
+  resolveCapVndFromEnv,
+} from "./conversationCostCap.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -177,6 +182,8 @@ async function logAiUsageLog(params: {
   outputTokens: number;
   estimatedCostVnd: number;
   meta?: Record<string, unknown>;
+  /** Optional conversation grouping key — read by the cap gate on next turn. */
+  conversationId?: string | null;
 }) {
   try {
     const { error } = await supabaseAdmin
@@ -190,6 +197,7 @@ async function logAiUsageLog(params: {
         output_tokens: params.outputTokens,
         estimated_cost_vnd: params.estimatedCostVnd,
         meta: params.meta ?? {},
+        conversation_id: params.conversationId ?? null,
       });
 
     if (error) {
@@ -197,6 +205,93 @@ async function logAiUsageLog(params: {
     }
   } catch (e) {
     console.warn("Failed to log AI usage:", e);
+  }
+}
+
+// ── A4: per-conversation cost cap ──────────────────────────────────────────
+//
+// On every turn, before we hit OpenAI, sum the cumulative VND already spent
+// on this conversation. When the sum exceeds the cap (default 1200 VND
+// ≈ $0.05 USD, configurable via CONVERSATION_COST_CAP_VND env), return 402
+// with a structured bilingual error. Admin level >= 9 bypasses; the
+// `conversation_cost_cap_enabled` feature flag is the kill switch.
+
+async function loadCostCapEnabledFlag(): Promise<boolean> {
+  try {
+    const { data, error } = await supabaseAdmin
+      .from("feature_flags")
+      .select("is_enabled")
+      .eq("flag_key", "conversation_cost_cap_enabled")
+      .maybeSingle();
+    if (error) {
+      console.warn("[ai-chat] cost-cap flag fetch failed:", error.message);
+      return true; // fail-on (gate active) when we can't read the flag.
+    }
+    if (!data) return true; // missing row → keep the gate on by default.
+    return Boolean((data as { is_enabled?: boolean | null }).is_enabled);
+  } catch (e) {
+    console.warn("[ai-chat] cost-cap flag fetch threw:", e);
+    return true;
+  }
+}
+
+async function getConversationCumulativeCostVnd(
+  userId: string,
+  conversationId: string,
+): Promise<number> {
+  try {
+    const { data, error } = await supabaseAdmin
+      .from("ai_usage_logs")
+      .select("estimated_cost_vnd")
+      .eq("user_id", userId)
+      .eq("conversation_id", conversationId);
+    if (error || !data) {
+      // Fail-open: if we can't read the log, don't block. The next turn
+      // will retry; a sustained read failure is observable in the
+      // edge-function logs.
+      return 0;
+    }
+    let sum = 0;
+    for (const row of data as Array<{ estimated_cost_vnd?: number | string | null }>) {
+      const v = Number(row.estimated_cost_vnd ?? 0);
+      if (Number.isFinite(v)) sum += v;
+    }
+    return sum;
+  } catch {
+    return 0;
+  }
+}
+
+async function isAdminLevel9(userId: string): Promise<boolean> {
+  try {
+    const { data, error } = await supabaseAdmin.rpc("get_admin_level", {
+      _user_id: userId,
+    });
+    if (error) return false;
+    return Number(data ?? 0) >= 9;
+  } catch {
+    return false;
+  }
+}
+
+async function logCostCapHit(params: {
+  userId: string;
+  conversationId: string;
+  observedCostVnd: number;
+  capVnd: number;
+}): Promise<void> {
+  try {
+    await supabaseAdmin.from("audit_logs").insert({
+      type: "ai_chat.conversation_cost_cap_exceeded",
+      user_id: params.userId,
+      metadata: {
+        conversation_id: params.conversationId,
+        observed_cost_vnd: params.observedCostVnd,
+        cap_vnd: params.capVnd,
+      },
+    });
+  } catch (e) {
+    console.warn("[ai-chat] cap-hit audit insert failed:", e);
   }
 }
 
@@ -422,7 +517,13 @@ serve(async (req) => {
   }
 
   try {
-    const { roomId, messages } = await req.json();
+    const reqBody = await req.json();
+    const { roomId, messages } = reqBody;
+    const conversationIdRaw = (reqBody as { conversationId?: unknown })?.conversationId;
+    const conversationId =
+      typeof conversationIdRaw === "string" && conversationIdRaw.trim().length > 0
+        ? conversationIdRaw.trim()
+        : null;
     const authHeader = req.headers.get("authorization");
 
     if (!roomId || !messages || !Array.isArray(messages)) {
@@ -519,6 +620,43 @@ serve(async (req) => {
     - Base guidance on room data.
     - Act as Mercy Blade's advisor.`;
 
+    // ── A4: per-conversation cost cap (hard gate) ──────────────────────
+    // Runs BEFORE the user-level checkAiBudget. The two are different
+    // protection layers: checkAiBudget is daily/monthly per-user; this
+    // is per-conversation. A long thread can hit this without the user
+    // being anywhere near their daily ceiling.
+    if (conversationId) {
+      const [capEnabled, isAdmin, cumulativeCostVnd] = await Promise.all([
+        loadCostCapEnabledFlag(),
+        isAdminLevel9(user.id),
+        getConversationCumulativeCostVnd(user.id, conversationId),
+      ]);
+      const capVnd = resolveCapVndFromEnv(Deno.env.get("CONVERSATION_COST_CAP_VND"));
+      const decision = decideConversationCostCap({
+        conversationId,
+        cumulativeCostVnd,
+        capVnd,
+        capEnabled,
+        isAdmin,
+      });
+      if (decision.kind === "block") {
+        await logCostCapHit({
+          userId: user.id,
+          conversationId,
+          observedCostVnd: decision.observedCostVnd,
+          capVnd: decision.capVnd,
+        });
+        const body = buildCapExceededResponseBody({
+          observedCostVnd: decision.observedCostVnd,
+          capVnd: decision.capVnd,
+        });
+        return new Response(JSON.stringify(body), {
+          status: 402,
+          headers: corsHeaders,
+        });
+      }
+    }
+
     const budget = await checkAiBudget(user.id, 1500);
     if (!budget.allowed) {
       return new Response(
@@ -588,6 +726,7 @@ serve(async (req) => {
           inputTokens: promptTokens,
           outputTokens: completionTokens,
           estimatedCostVnd,
+          conversationId,
         }),
         // Step 7 — bump last_referenced_at on every fact we slotted into
         // this turn's prompt. Heuristic per the brief: mark ALL fetched
