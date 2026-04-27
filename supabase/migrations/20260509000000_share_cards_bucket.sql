@@ -60,7 +60,15 @@ CREATE POLICY "share_cards_owner_delete"
 -- No UPDATE policy on purpose — score cards are immutable. A retake
 -- writes a new file rather than overwriting the old one.
 
-COMMENT ON POLICY "share_cards_public_read" ON storage.objects IS
-  'Allows Facebook OG scraper (anonymous) to fetch share-card PNGs.';
-COMMENT ON POLICY "share_cards_owner_insert" ON storage.objects IS
-  'Authenticated users can upload to <their-uid>/* only. Path enforcement matches uploadShareCard.ts derivePath().';
+-- Policy intent (kept as plain SQL comments because the migration role
+-- doesn't own storage.objects and so can't COMMENT ON POLICY there —
+-- prior version of this file failed at apply time on those statements):
+--
+--   share_cards_public_read   — Allows Facebook OG scraper (anonymous)
+--                               to fetch share-card PNGs.
+--   share_cards_owner_insert  — Authenticated users can upload to
+--                               <their-uid>/* only. Path enforcement
+--                               matches uploadShareCard.ts derivePath().
+--   share_cards_owner_delete  — Owner can delete their own cards;
+--                               supports a future "delete share history"
+--                               UI without a service-role round-trip.
