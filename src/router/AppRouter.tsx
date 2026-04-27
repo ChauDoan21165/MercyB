@@ -92,6 +92,10 @@ const IeltsTopicPage                 = lazy(() => import("@/pages/seo/IeltsTopic
 // Developer portal — Step 11 public API.
 const DeveloperPortalPage = lazy(() => import("@/pages/dev/DeveloperPortalPage"));
 
+// 2FA Phase 1 — paid-tier gated, both routes RequireAuth-wrapped.
+const SecuritySettingsPage = lazy(() => import("@/pages/account/SecuritySettings"));
+const Enable2FAPage = lazy(() => import("@/pages/auth/Enable2FA"));
+
 const BlogIndex = lazy(() => import("@/pages/blog/BlogIndex"));
 const BlogPost  = lazy(() => import("@/pages/blog/BlogPost"));
 const WeeklyDigest = lazy(() => import("@/pages/blog/WeeklyDigest"));
@@ -783,6 +787,22 @@ export default function AppRouter() {
             element={
               <RequireAuth>
                 <LazyPage><NotificationPreferencesPage /></LazyPage>
+              </RequireAuth>
+            }
+          />
+          {/* 2FA Phase 1 — security settings (paid-tier gated inside the page). */}
+          <Route path="/account/security"
+            element={
+              <RequireAuth>
+                <LazyPage><SecuritySettingsPage /></LazyPage>
+              </RequireAuth>
+            }
+          />
+          {/* 2FA enrollment flow — paid-tier gated inside the page. */}
+          <Route path="/auth/security"
+            element={
+              <RequireAuth>
+                <LazyPage><Enable2FAPage /></LazyPage>
               </RequireAuth>
             }
           />
