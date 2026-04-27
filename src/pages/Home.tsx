@@ -5,7 +5,7 @@
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { BookOpen, ChevronRight, Compass, LibraryBig } from "lucide-react";
+import { BookOpen, ChevronRight, Compass, LibraryBig, Mic } from "lucide-react";
 
 import BottomMusicBar from "@/components/audio/BottomMusicBar";
 import { MercyGuide } from "@/components/MercyGuide";
@@ -70,6 +70,12 @@ export default function Home() {
   const [zoomPct, setZoomPct]       = useState<number>(() => readZoomPct());
   const [sharedReady, setSharedReady] = useState(false);
   const [isTeacherMercyOpen, setIsTeacherMercyOpen] = useState<boolean>(() => hasOpenTeacherMercyPanel());
+
+  // Try-one-word request: bumping the counter forces MercyGuide to open
+  // on the requested tab with the requested practice line, even if the
+  // user clicks the card a second time with identical values.
+  const [tryOneWordRequestId, setTryOneWordRequestId] = useState(0);
+  const TRY_ONE_WORD_LINE = "Hello, how are you?";
 
   const stageRef = useRef<HTMLDivElement | null>(null);
 
@@ -212,6 +218,31 @@ export default function Home() {
     nav("/rooms");
   };
 
+  // Open the Mercy bubble's panel via focus + Enter. Used by both the
+  // Teacher Mercy card (auth path) and the Try-one-word card (anon
+  // path). Pure DOM dispatch — no synthetic PointerEvent (those crash
+  // on the bubble's setPointerCapture handler; see commit b0d0153a).
+  const focusAndOpenMercyBubble = () => {
+    if (typeof window === "undefined" || typeof document === "undefined") return;
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    const bubble =
+      document.querySelector<HTMLElement>('[aria-label="Open Mercy Guide"]') ||
+      document.querySelector<HTMLElement>('[aria-label="Open Teacher Mercy for kids"]');
+    if (!bubble) {
+      console.warn("[Home] Teacher Mercy bubble not found; cannot open panel.");
+      return;
+    }
+    bubble.focus();
+    bubble.dispatchEvent(
+      new KeyboardEvent("keydown", { bubbles: true, cancelable: true, key: "Enter" }),
+    );
+  };
+
+  const handleTryOneWord = () => {
+    setTryOneWordRequestId((id) => id + 1);
+    focusAndOpenMercyBubble();
+  };
+
   const handleTeacherMercy = () => {
     if (typeof window === "undefined" || typeof document === "undefined") return;
 
@@ -303,6 +334,103 @@ export default function Home() {
             Đăng nhập để học cùng Mercy →
           </div>
         )}
+        {!access.isAuthenticated && (
+          <span
+            role="link"
+            tabIndex={0}
+            aria-label="Try pronunciation now — no signup needed"
+            onClick={(e) => { e.stopPropagation(); handleTryOneWord(); }}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                e.stopPropagation();
+                handleTryOneWord();
+              }
+            }}
+            style={{
+              display: "inline-block",
+              marginTop: 12,
+              padding: "6px 14px",
+              borderRadius: 9999,
+              border: "1px dashed rgba(14,116,144,0.45)",
+              background: "rgba(207,250,254,0.55)",
+              color: "rgba(8,75,90,0.92)",
+              fontSize: z(12),
+              fontWeight: 800,
+              lineHeight: 1.4,
+              cursor: "pointer",
+              textAlign: "center",
+            }}
+          >
+            <span>Phát âm thử ngay — không cần đăng nhập</span>
+            <br />
+            <span style={{ fontWeight: 600, color: "rgba(8,75,90,0.65)" }}>
+              Try pronunciation now — no signup
+            </span>
+          </span>
+        )}
+      </div>
+    </button>
+  );
+
+  // ── Try one word — no signup (anon-friendly secondary card) ───────────────
+  // Cuts time-to-first-pronunciation-score: opens MercyGuide directly
+  // on the pronunciation tab with a fixed starter line so anonymous
+  // users don't have to pick content first. See A7's onboarding audit
+  // (reports/onboarding-60s-audit-2026-04-26.md).
+  const tryOneWordCard = (
+    <button
+      type="button"
+      onClick={handleTryOneWord}
+      aria-label="Try one word — no signup needed"
+      style={{ width: "100%", background: "none", border: "none", padding: 0, cursor: "pointer" }}
+    >
+      <div
+        style={{
+          borderRadius: 20,
+          padding: isPhone ? "16px 18px" : "18px 20px",
+          background: "linear-gradient(150deg, rgba(224,242,254,0.96) 0%, rgba(236,254,255,0.94) 100%)",
+          border: "1px solid rgba(14,116,144,0.18)",
+          boxShadow: "0 10px 28px rgba(14,116,144,0.10)",
+          display: "flex",
+          alignItems: "center",
+          gap: 16,
+          textAlign: "left",
+        }}
+      >
+        <div
+          style={{
+            width: 52,
+            height: 52,
+            borderRadius: 9999,
+            background: "linear-gradient(180deg, #38BDF8 0%, #0891B2 100%)",
+            display: "grid",
+            placeItems: "center",
+            boxShadow: "0 8px 20px rgba(14,116,144,0.22)",
+            flexShrink: 0,
+          }}
+        >
+          <Mic size={24} color="white" />
+        </div>
+
+        <div style={{ minWidth: 0, flex: 1 }}>
+          <div style={{ fontSize: isPhone ? z(18) : z(20), fontWeight: 900, color: "rgba(8,75,90,0.94)", letterSpacing: -0.3 }}>
+            Try one word — no signup
+          </div>
+          <div style={{ fontSize: z(12), fontWeight: 700, color: "rgba(8,75,90,0.55)", marginTop: 2 }}>
+            Phát âm thử — không cần đăng nhập
+          </div>
+          <div style={{ marginTop: 6, fontSize: z(14), fontWeight: 700, color: "rgba(0,0,0,0.62)", lineHeight: 1.45 }}>
+            Hear how MercyBlade scores your pronunciation in 12 seconds.
+          </div>
+          <div style={{ marginTop: 3, fontSize: z(12), fontWeight: 600, color: "rgba(0,0,0,0.40)", lineHeight: 1.4 }}>
+            Nghe MercyBlade chấm phát âm chỉ trong 12 giây.
+          </div>
+        </div>
+
+        <div style={{ color: "rgba(14,116,144,0.70)", flexShrink: 0 }}>
+          <ChevronRight size={22} />
+        </div>
       </div>
     </button>
   );
@@ -409,6 +537,11 @@ export default function Home() {
           {/* Teacher Mercy — hero */}
           {teacherCard}
 
+          {/* Try one word — no signup. Cuts time-to-first-score for
+              anonymous users; opens MercyGuide on the pronunciation
+              tab with a fixed starter line. */}
+          {tryOneWordCard}
+
           {/* Library — secondary */}
           {libraryCard}
 
@@ -426,7 +559,16 @@ export default function Home() {
         <div style={{ marginTop: isPhone ? 10 : 18 }}>
           {sharedReady ? (
             <React.Fragment key={sharedKey}>
-              {isTeacherMercyAllowed ? <MercyGuide /> : null}
+              {isTeacherMercyAllowed ? (
+                <MercyGuide
+                  // Only inject Try-one-word props after the user has
+                  // clicked the card (id > 0). Pre-click, leave undefined
+                  // so MercyGuide keeps its existing default tab.
+                  initialTab={tryOneWordRequestId > 0 ? "pronunciation" : undefined}
+                  initialPracticeLine={tryOneWordRequestId > 0 ? TRY_ONE_WORD_LINE : undefined}
+                  openRequestId={tryOneWordRequestId}
+                />
+              ) : null}
             </React.Fragment>
           ) : null}
         </div>

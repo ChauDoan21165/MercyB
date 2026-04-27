@@ -96,6 +96,13 @@ type MercySpeakTabProps = {
   preferTapAndRepeat?: boolean;
   teacherLabel?: string | null;
   selectedKidsObjectKey?: string | null;
+  /**
+   * Pre-fill the practice textarea with this line on mount. Used by the
+   * Home "Try one word — no signup" card to land anonymous users on a
+   * ready-to-record sentence ("Hello, how are you?") so they can reach
+   * a pronunciation score in ~12 seconds.
+   */
+  initialPracticeLine?: string;
 };
 
 type PracticeVariant = 'custom' | 'corrected' | 'enhanced' | 'source';
@@ -498,6 +505,7 @@ export function MercySpeakTab({
   preferTapAndRepeat = false,
   teacherLabel,
   selectedKidsObjectKey,
+  initialPracticeLine,
 }: MercySpeakTabProps) {
   void roomId; void roomTitle; void speakPractice; void profile;
   void learningSupportMode; void kidsModeAgeBand; void preferTapAndRepeat; void teacherLabel;
@@ -598,9 +606,14 @@ export function MercySpeakTab({
   const enhancedText  = isKidsMode ? kidsPracticeText : rawEnhancedText;
 
   const defaultPracticeText = useMemo(() => {
+    // Try-one-word path: an explicit initialPracticeLine from Home wins
+    // over any kids/payload/contentEn-derived default. Keeps the rest of
+    // the variant logic intact.
+    const seed = cleanText(initialPracticeLine ?? '');
+    if (seed) return seed;
     if (isKidsMode) return kidsPracticeText;
     return buildFallbackPracticeText(payload, contentEn);
-  }, [contentEn, isKidsMode, kidsPracticeText, payload]);
+  }, [contentEn, initialPracticeLine, isKidsMode, kidsPracticeText, payload]);
 
   const initialVariant: PracticeVariant = isKidsMode ? 'custom' :
     enhancedText ? 'enhanced' : correctedText ? 'corrected' : sourceText ? 'source' : 'custom';
