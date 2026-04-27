@@ -17,6 +17,8 @@ import AppRouter from "@/router/AppRouter";
 import OfflineIndicator from "@/components/offline/OfflineIndicator";
 import ShortcutHelpOverlay from "@/components/keyboard/ShortcutHelpOverlay";
 import GlobalNavigationShortcuts from "@/components/keyboard/GlobalNavigationShortcuts";
+import { ErrorBoundary } from "@/components/ErrorBoundary";
+import { SentryUserBinding } from "@/components/monitoring/SentryUserBinding";
 import "@/index.css";
 import { supabase } from "@/lib/supabaseClient";
 import { AuthProvider } from "@/providers/AuthProvider";
@@ -326,12 +328,15 @@ if (!w.__MB_REACT_ROOT__ || w.__MB_REACT_ROOT_EL__ !== root) {
 }
 
 w.__MB_REACT_ROOT__.render(
-  <BrowserRouter>
-    <AuthProvider>
-      <OfflineIndicator />
-      <GlobalNavigationShortcuts />
-      <ShortcutHelpOverlay />
-      <AppRouter />
-    </AuthProvider>
-  </BrowserRouter>,
+  <ErrorBoundary>
+    <BrowserRouter>
+      <AuthProvider>
+        <SentryUserBinding />
+        <OfflineIndicator />
+        <GlobalNavigationShortcuts />
+        <ShortcutHelpOverlay />
+        <AppRouter />
+      </AuthProvider>
+    </BrowserRouter>
+  </ErrorBoundary>,
 );

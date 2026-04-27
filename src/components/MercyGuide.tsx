@@ -36,6 +36,7 @@ import {
 } from './mercy-guide/mercyGuide.utils';
 import { MERCY_HOST_IMAGE_FALLBACK, MERCY_HOST_IMAGE_SRC } from './mercy-guide/shared';
 import { analyzeGrammarWithApi } from './mercy-guide/tabs/grammar-writing/api';
+import { breadcrumbMercyPanel } from '@/lib/monitoring/breadcrumbs';
 import useMercyMemory from './mercy-guide/hooks/useMercyMemory';
 import type {
   MercyGuideProps,
@@ -725,6 +726,7 @@ export function MercyGuide({
 
   const handleOpenGuideFromBubble = useCallback(() => {
     setIsOpen(true);
+    breadcrumbMercyPanel('open', { source: 'bubble' });
     if (teacherUi.preferPronunciationFirst) {
       setActiveTab('pronunciation');
     }
@@ -732,12 +734,14 @@ export function MercyGuide({
 
   const handleCollapseGuide = useCallback(() => {
     setIsOpen(false);
+    breadcrumbMercyPanel('close', { source: 'collapse' });
   }, []);
 
   const handleCloseGuide = useCallback(() => {
     setIsOpen(false);
     setShowSettings(false);
     setIsFullscreen(false);
+    breadcrumbMercyPanel('close', { source: 'close' });
   }, []);
 
   const handleToggleFullscreen = useCallback(() => {

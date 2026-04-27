@@ -24,7 +24,17 @@ import { stripPII } from "@/lib/security/piiProtection";
 type SentryShape = {
   captureException: (error: unknown, hint?: { extra?: Record<string, unknown> }) => void;
   setUser: (user: { id: string } | null) => void;
+  setTag: (key: string, value: string) => void;
+  addBreadcrumb: (b: {
+    category?: string;
+    message?: string;
+    level?: "info" | "warning" | "error" | "debug";
+    data?: Record<string, unknown>;
+  }) => void;
 };
+
+/** Account tier as exposed to Sentry — never PII, only coarse cohort. */
+export type SentryTier = "anon" | "trial" | "trial_expired" | "free" | "premium" | "admin";
 
 export function captureError(
   error: unknown,
@@ -58,4 +68,42 @@ export function clearUser(): void {
   const sdk = getSentryModule() as SentryShape | null;
   if (!sdk) return;
   sdk.setUser(null);
+}
+
+/**
+ * Set a low-cardinality tag on the current scope. Sentry indexes tags for
+ * search; never put per-request values (URLs, IDs) here — those go in
+ * captureError's `context` extra. Common keys: `tier`, `route`,
+ * `feature_flag.<name>`.
+ *
+ * Values are coerced to strings; null/undefined is a no-op (use a fresh
+ * tag value to overwrite).
+ */
+export function setTag(key: string, value: string | null | undefined): void {
+  if (!isSentryEnabled()) return;
+  if (!key || value == null) return;
+  const sdk = getSentryModule() as SentryShape | null;
+  if (!sdk) return;
+  sdk.setTag(key, String(value));
+}
+
+/**
+ * Add a breadcrumb to the current scope. Sentry attaches the most recent
+ * ~100 breadcrumbs to the next captured event, giving us a ring-buffer
+ * timeline of "what was the user doing right before the crash."
+ *
+ * Use sparingly and never include raw user input — `scrubBreadcrumb` will
+ * still PII-strip strings, but the cleanest path is to pass structured
+ * data (room id, action name) instead of free text.
+ */
+export function addBreadcrumb(input: {
+  category: string;
+  message?: string;
+  level?: "info" | "warning" | "error" | "debug";
+  data?: Record<string, unknown>;
+}): void {
+  if (!isSentryEnabled()) return;
+  const sdk = getSentryModule() as SentryShape | null;
+  if (!sdk) return;
+  sdk.addBreadcrumb(input);
 }

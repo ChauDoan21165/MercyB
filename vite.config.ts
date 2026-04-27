@@ -36,6 +36,7 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { VitePWA } from 'vite-plugin-pwa';
 import { visualizer } from 'rollup-plugin-visualizer';
+import { sentryVitePlugin } from '@sentry/vite-plugin';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { OFFLINE_PRECACHE_LESSONS } from './src/lib/offline/precacheManifest';
@@ -84,6 +85,33 @@ export default defineConfig({
             open: false,
             sourcemap: false,
           }) as never,
+        ]
+      : []),
+
+    // Sentry source-map upload — only active when SENTRY_AUTH_TOKEN +
+    // SENTRY_ORG + SENTRY_PROJECT are present (i.e. real production
+    // builds on Vercel). On laptop builds with no token the plugin is a
+    // no-op, so dev builds never reach out to Sentry. The plugin sets
+    // `build.sourcemap = "hidden"` automatically: source maps are
+    // generated, uploaded, and then NOT referenced by the JS bundle, so
+    // browser DevTools never sees them but Sentry can still de-mangle
+    // stack traces server-side. This satisfies the brief's "DO NOT
+    // include source maps in client bundle" requirement.
+    ...(process.env.SENTRY_AUTH_TOKEN && process.env.SENTRY_ORG && process.env.SENTRY_PROJECT
+      ? [
+          sentryVitePlugin({
+            authToken: process.env.SENTRY_AUTH_TOKEN,
+            org: process.env.SENTRY_ORG,
+            project: process.env.SENTRY_PROJECT,
+            // Inject the build's release id as `import.meta.env.SENTRY_RELEASE`
+            // so client code can tag events with it if we ever want to.
+            telemetry: false,
+            sourcemaps: {
+              // Strip the local filesystem prefix so uploaded paths
+              // align with the deployed bundle's stack frames.
+              filesToDeleteAfterUpload: ['./dist/**/*.map'],
+            },
+          }),
         ]
       : []),
 
@@ -234,7 +262,16 @@ export default defineConfig({
   },
 
   build: {
-    sourcemap: false,
+    // Source maps are generated as "hidden" only when Sentry upload is
+    // configured — this writes .map files to dist for upload, but the
+    // emitted JS bundle has no //# sourceMappingURL= comment, so the
+    // client never fetches them. The plugin then deletes the .map files
+    // after upload (filesToDeleteAfterUpload above). Without the token,
+    // we keep the historical no-sourcemap behavior for laptop builds.
+    sourcemap:
+      process.env.SENTRY_AUTH_TOKEN && process.env.SENTRY_ORG && process.env.SENTRY_PROJECT
+        ? ('hidden' as const)
+        : false,
     rollupOptions: {
       output: {
         manualChunks(id) {

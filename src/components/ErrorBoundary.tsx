@@ -1,6 +1,7 @@
 // src/components/ErrorBoundary.tsx — v2025-12-14-01
 import React from "react";
 import { Link } from "react-router-dom";
+import { captureError } from "@/lib/monitoring/captureException";
 
 function safeStringify(x: unknown) {
   try {
@@ -81,6 +82,21 @@ export class ErrorBoundary extends React.Component<Props, State> {
     console.error("Normalized:", n);
     console.error("Component stack info:", info);
     console.groupEnd();
+
+    // Forward to Sentry. captureError is a no-op when Sentry is disabled,
+    // so this stays safe before Chau provisions a DSN. Wrap non-Error
+    // throws (string, plain object) so Sentry's grouping has something
+    // sensible to fingerprint on.
+    const forwarded = error instanceof Error ? error : new Error(n.message || n.name);
+    captureError(forwarded, {
+      kind: n.kind,
+      name: n.name,
+      // info is { componentStack: string } — keep just the component stack
+      componentStack:
+        info && typeof info === "object" && "componentStack" in info
+          ? String((info as { componentStack?: unknown }).componentStack ?? "")
+          : undefined,
+    });
   }
 
   render() {

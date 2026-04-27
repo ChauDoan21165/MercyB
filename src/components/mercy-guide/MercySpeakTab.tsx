@@ -51,6 +51,8 @@ import { deriveWordChips } from './wordChips';
 import { useFeatureFlag } from '@/hooks/useFeatureFlag';
 import { useMercyVoice } from '@/hooks/useMercyVoice';
 import { scoreCloud } from '@/lib/pronunciation/cloudScorer';
+import { breadcrumbSpeakAttempt } from '@/lib/monitoring/breadcrumbs';
+import { captureError } from '@/lib/monitoring/captureException';
 import type { WordScore } from '@/lib/pronunciation/scorer';
 import {
   GENERIC_LOW_HINT,
@@ -736,6 +738,11 @@ export function MercySpeakTab({
     cloudAttemptKeyRef.current = attemptKey;
 
     let cancelled = false;
+    breadcrumbSpeakAttempt('start', {
+      roomId,
+      targetLength: practiceText.length,
+      cloud: true,
+    });
     void (async () => {
       try {
         const { data: sessionData } = await supabase.auth.getSession();
@@ -754,17 +761,32 @@ export function MercySpeakTab({
         setCloudOverrideScore(result.overallScore);
         setCloudWordScores(result.wordScores);
         setExpandedWordIdx(null);
+        breadcrumbSpeakAttempt('finish', {
+          roomId,
+          score: result.overallScore,
+          cloud: true,
+        });
       } catch (err) {
         // 401 propagates from cloudScorer; everything else is silently
         // local-fallback so we don't reach this branch in practice.
         // Logged but not surfaced — the local score keeps the UI alive.
         if (!cancelled) {
           console.warn('[MercySpeak] cloud scoring error:', err);
+          breadcrumbSpeakAttempt('fallback', {
+            roomId,
+            cloud: true,
+            reason: err instanceof Error ? err.name : 'unknown',
+          });
+          // Surface 401s (auth broken) to Sentry — silent local-fallbacks
+          // are not capture-worthy, but a broken session is.
+          if (err instanceof Error && err.message === 'cloud_scorer_auth_required') {
+            captureError(err, { feature: 'mercy_speak_cloud', roomId });
+          }
         }
       }
     })();
     return () => { cancelled = true; };
-  }, [azurePhonemeScoringEnabled, practiceText, isRecording, isListening]);
+  }, [azurePhonemeScoringEnabled, practiceText, isRecording, isListening, roomId]);
 
   // Effective score the rest of the file consumes — cloud takes
   // precedence when present.

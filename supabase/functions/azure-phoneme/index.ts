@@ -19,6 +19,7 @@ import {
   getUserFromAuthHeader,
 } from "../_shared/security.ts";
 import { rateLimit } from "../_shared/rateLimit.ts";
+import { wrapHandler } from "../_shared/sentry.ts";
 
 import {
   handleRequest,
@@ -194,4 +195,4 @@ const productionDeps: Deps = {
   usdToVnd: USD_TO_VND,
 };
 
-serve((req) => handleRequest(req, productionDeps));
+serve(wrapHandler("azure-phoneme", (req) => handleRequest(req, productionDeps)));
