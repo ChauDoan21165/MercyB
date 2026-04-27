@@ -1,7 +1,8 @@
 // src/pages/professions/ProfessionsIndexPage.tsx — /professions
 //
 // Vocational-English landing. Six active verticals: Nail Technician,
-// Restaurant, Customer Service, Tech Worker, Healthcare, Drivers.
+// Restaurant, Customer Service, Tech Worker, Healthcare, Drivers,
+// Hospitality. Seven verticals total.
 // Each card opens a focused vertical with 50 lessons.
 
 import React from "react";
@@ -13,6 +14,7 @@ import {
   Code2,
   HeartPulse,
   Car,
+  Hotel,
   ArrowRight,
   Lock,
 } from "lucide-react";
@@ -100,6 +102,17 @@ const CARDS: Card[] = [
     Icon: Car,
     accent: "teal",
   },
+  {
+    slug: "hospitality",
+    title_vi: "Tiếng Anh khách sạn",
+    title_en: "Hospitality",
+    blurb_vi:
+      "50 bài: nhận / trả phòng, concierge, dọn phòng, phàn nàn, tiệc, điện thoại, khách quốc tế, văn hoá tip.",
+    href: "/professions/hospitality",
+    status: "active",
+    Icon: Hotel,
+    accent: "violet",
+  },
 ];
 
 const ACCENT_CLASSES: Record<string, { border: string; bg: string; icon: string }> = {
@@ -132,6 +145,11 @@ const ACCENT_CLASSES: Record<string, { border: string; bg: string; icon: string 
     border: "border-teal-200",
     bg: "bg-gradient-to-br from-teal-50 via-cyan-50 to-blue-50",
     icon: "text-teal-600",
+  },
+  violet: {
+    border: "border-violet-200",
+    bg: "bg-gradient-to-br from-violet-50 via-fuchsia-50 to-rose-50",
+    icon: "text-violet-600",
   },
 };
 
