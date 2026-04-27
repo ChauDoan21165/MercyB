@@ -9,10 +9,10 @@ if (keystorePropertiesFile.exists()) {
 }
 
 android {
-    namespace "com.mercyapps.mercyblade"
+    namespace "com.chaudoan.mercyblade"
     compileSdk rootProject.ext.compileSdkVersion
     defaultConfig {
-        applicationId "com.mercyapps.mercyblade"
+        applicationId "com.chaudoan.mercyblade"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 3

@@ -1,4 +1,4 @@
-package com.mercyapps.mercyblade;
+package com.chaudoan.mercyblade;
 
 import com.getcapacitor.BridgeActivity;
 

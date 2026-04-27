@@ -10,6 +10,8 @@ import {
   openBillingPortal,
   startCheckoutOrOpenPortal,
 } from "@/lib/billing";
+import { getPlatform } from "@/lib/platform";
+import { APPLE_MANAGE_SUBSCRIPTIONS_URL } from "@/lib/iap";
 
 type PlanKey = "month" | "year";
 
@@ -237,6 +239,10 @@ async function pollEntitlementAfterBilling(): Promise<Entitlement | null> {
 
 export default function Billing() {
   const navigate = useNavigate();
+
+  // Platform gate — iOS uses Apple IAP via RevenueCat per Apple 3.1.1.
+  // Stripe subscribe / manage buttons must not render on iOS.
+  const isIos = getPlatform() === "ios";
 
   const monthPriceId = resolvePriceId(
     pickEnv("VITE_STRIPE_PRICE_ONE_MONTH", "VITE_STRIPE_PRICE_MONTHLY", "VITE_STRIPE_MONTHLY_PRICE_ID"),
@@ -504,12 +510,31 @@ export default function Billing() {
             <span style={VIETNAMESE_SUB_STYLE}>Cập nhật quyền truy cập</span>
           </button>
 
-          <button type="button" onClick={() => void handleManageBilling()} disabled={manageBusy} style={primaryButton}>
-            {manageBusy ? "Opening…" : "Manage billing"}
-            <span style={{ ...VIETNAMESE_SUB_STYLE, color: "rgba(255,255,255,0.7)" }}>
-              {manageBusy ? "Đang mở cổng thanh toán…" : "Quản lý thanh toán"}
-            </span>
-          </button>
+          {isIos ? (
+            <button
+              type="button"
+              onClick={() => {
+                try {
+                  window.open(APPLE_MANAGE_SUBSCRIPTIONS_URL, "_blank", "noopener,noreferrer");
+                } catch {
+                  window.location.href = APPLE_MANAGE_SUBSCRIPTIONS_URL;
+                }
+              }}
+              style={primaryButton}
+            >
+              Manage in Apple
+              <span style={{ ...VIETNAMESE_SUB_STYLE, color: "rgba(255,255,255,0.7)" }}>
+                Quản lý qua Apple
+              </span>
+            </button>
+          ) : (
+            <button type="button" onClick={() => void handleManageBilling()} disabled={manageBusy} style={primaryButton}>
+              {manageBusy ? "Opening…" : "Manage billing"}
+              <span style={{ ...VIETNAMESE_SUB_STYLE, color: "rgba(255,255,255,0.7)" }}>
+                {manageBusy ? "Đang mở cổng thanh toán…" : "Quản lý thanh toán"}
+              </span>
+            </button>
+          )}
 
           <button type="button" onClick={() => navigate("/pricing")} style={secondaryButton}>
             View plans
@@ -570,64 +595,94 @@ export default function Billing() {
           </div>
         </div>
 
-        {/* Monthly plan */}
-        <div style={card}>
-          <div style={{ fontSize: 11, fontWeight: 800, textTransform: "uppercase", color: "rgba(0,0,0,0.4)", marginBottom: 8 }}>
-            Monthly
-            <span style={VIETNAMESE_SUB_STYLE}>Hàng tháng</span>
+        {/* Monthly plan — hidden on iOS per Apple 3.1.1 (IAP-only) */}
+        {!isIos && (
+          <div style={card}>
+            <div style={{ fontSize: 11, fontWeight: 800, textTransform: "uppercase", color: "rgba(0,0,0,0.4)", marginBottom: 8 }}>
+              Monthly
+              <span style={VIETNAMESE_SUB_STYLE}>Hàng tháng</span>
+            </div>
+
+            <div style={{ fontSize: 26, fontWeight: 900, color: "#111827" }}>200 000 VND</div>
+
+            <div style={{ marginTop: 8, color: "#475569", lineHeight: 1.4, fontSize: 14 }}>
+              Flexible recurring access with monthly billing.
+              <span style={{ ...VIETNAMESE_SUB_STYLE, color: "#94a3b8", fontSize: 12 }}>
+                Truy cập linh hoạt, thanh toán hàng tháng.
+              </span>
+            </div>
+
+            <button
+              type="button"
+              onClick={() => void handlePlan("month")}
+              disabled={loading || manageBusy || busyPlan === "month" || monthIsCurrent}
+              style={{ ...primaryButton, width: "100%", marginTop: 16, opacity: monthIsCurrent ? 0.7 : 1, background: monthIsCurrent ? "#334155" : "#0f172a" }}
+            >
+              {getPlanButtonLabel({ loading, busyPlan, plan: "month", isCurrent: monthIsCurrent, hasActiveAccess, isCanceledLikeStatus: canceledLike })}
+            </button>
           </div>
+        )}
 
-          <div style={{ fontSize: 26, fontWeight: 900, color: "#111827" }}>200 000 VND</div>
+        {/* Yearly plan — hidden on iOS per Apple 3.1.1 (IAP-only) */}
+        {!isIos && (
+          <div style={card}>
+            <div style={{ fontSize: 11, fontWeight: 800, textTransform: "uppercase", color: "rgba(0,0,0,0.4)", marginBottom: 8 }}>
+              Yearly
+              <span style={VIETNAMESE_SUB_STYLE}>Hàng năm</span>
+            </div>
 
-          <div style={{ marginTop: 8, color: "#475569", lineHeight: 1.4, fontSize: 14 }}>
-            Flexible recurring access with monthly billing.
-            <span style={{ ...VIETNAMESE_SUB_STYLE, color: "#94a3b8", fontSize: 12 }}>
-              Truy cập linh hoạt, thanh toán hàng tháng.
-            </span>
+            <div style={{ fontSize: 26, fontWeight: 900, color: "#111827" }}>2 000 000 VND</div>
+
+            <div style={{ marginTop: 8, color: "#475569", lineHeight: 1.4, fontSize: 14 }}>
+              Best long-term value with full premium access all year.
+              <span style={{ ...VIETNAMESE_SUB_STYLE, color: "#94a3b8", fontSize: 12 }}>
+                Giá trị tốt nhất với quyền Premium trọn năm.
+              </span>
+            </div>
+
+            <div style={{ marginTop: 10, fontSize: 12, fontWeight: 800, color: "#065f46", background: "rgba(16,185,129,0.1)", borderRadius: 10, padding: "6px 10px", display: "inline-block" }}>
+              Save 17% • 2 months free
+              <span style={{ display: "block", fontSize: 10, fontWeight: 400, color: "#047857" }}>
+                Tiết kiệm 17% • Tặng 2 tháng
+              </span>
+            </div>
+
+            <button
+              type="button"
+              onClick={() => void handlePlan("year")}
+              disabled={loading || manageBusy || busyPlan === "year" || yearIsCurrent}
+              style={{ ...primaryButton, width: "100%", marginTop: 16, opacity: yearIsCurrent ? 0.7 : 1, background: yearIsCurrent ? "#334155" : "#0f172a" }}
+            >
+              {getPlanButtonLabel({ loading, busyPlan, plan: "year", isCurrent: yearIsCurrent, hasActiveAccess, isCanceledLikeStatus: canceledLike })}
+            </button>
           </div>
+        )}
 
-          <button
-            type="button"
-            onClick={() => void handlePlan("month")}
-            disabled={loading || manageBusy || busyPlan === "month" || monthIsCurrent}
-            style={{ ...primaryButton, width: "100%", marginTop: 16, opacity: monthIsCurrent ? 0.7 : 1, background: monthIsCurrent ? "#334155" : "#0f172a" }}
-          >
-            {getPlanButtonLabel({ loading, busyPlan, plan: "month", isCurrent: monthIsCurrent, hasActiveAccess, isCanceledLikeStatus: canceledLike })}
-          </button>
-        </div>
-
-        {/* Yearly plan */}
-        <div style={card}>
-          <div style={{ fontSize: 11, fontWeight: 800, textTransform: "uppercase", color: "rgba(0,0,0,0.4)", marginBottom: 8 }}>
-            Yearly
-            <span style={VIETNAMESE_SUB_STYLE}>Hàng năm</span>
+        {/* iOS-only — direct users to /pricing where Apple IAP card renders */}
+        {isIos && (
+          <div style={card}>
+            <div style={{ fontSize: 11, fontWeight: 800, textTransform: "uppercase", color: "rgba(0,0,0,0.4)", marginBottom: 8 }}>
+              Subscribe
+              <span style={VIETNAMESE_SUB_STYLE}>Đăng ký</span>
+            </div>
+            <div style={{ marginTop: 8, color: "#475569", lineHeight: 1.5, fontSize: 14 }}>
+              Subscriptions on iOS are billed through your Apple ID.
+              <span style={{ ...VIETNAMESE_SUB_STYLE, color: "#94a3b8", fontSize: 12 }}>
+                Trên iOS, gói đăng ký được thanh toán qua Apple ID.
+              </span>
+            </div>
+            <button
+              type="button"
+              onClick={() => navigate("/pricing")}
+              style={{ ...primaryButton, width: "100%", marginTop: 16 }}
+            >
+              See plans
+              <span style={{ ...VIETNAMESE_SUB_STYLE, color: "rgba(255,255,255,0.7)" }}>
+                Xem các gói
+              </span>
+            </button>
           </div>
-
-          <div style={{ fontSize: 26, fontWeight: 900, color: "#111827" }}>2 000 000 VND</div>
-
-          <div style={{ marginTop: 8, color: "#475569", lineHeight: 1.4, fontSize: 14 }}>
-            Best long-term value with full premium access all year.
-            <span style={{ ...VIETNAMESE_SUB_STYLE, color: "#94a3b8", fontSize: 12 }}>
-              Giá trị tốt nhất với quyền Premium trọn năm.
-            </span>
-          </div>
-
-          <div style={{ marginTop: 10, fontSize: 12, fontWeight: 800, color: "#065f46", background: "rgba(16,185,129,0.1)", borderRadius: 10, padding: "6px 10px", display: "inline-block" }}>
-            Save 17% • 2 months free
-            <span style={{ display: "block", fontSize: 10, fontWeight: 400, color: "#047857" }}>
-              Tiết kiệm 17% • Tặng 2 tháng
-            </span>
-          </div>
-
-          <button
-            type="button"
-            onClick={() => void handlePlan("year")}
-            disabled={loading || manageBusy || busyPlan === "year" || yearIsCurrent}
-            style={{ ...primaryButton, width: "100%", marginTop: 16, opacity: yearIsCurrent ? 0.7 : 1, background: yearIsCurrent ? "#334155" : "#0f172a" }}
-          >
-            {getPlanButtonLabel({ loading, busyPlan, plan: "year", isCurrent: yearIsCurrent, hasActiveAccess, isCanceledLikeStatus: canceledLike })}
-          </button>
-        </div>
+        )}
 
       </div>
     </div>
