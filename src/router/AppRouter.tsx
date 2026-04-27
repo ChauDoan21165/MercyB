@@ -99,6 +99,8 @@ const FeedbackTriagePage   = lazy(() => import("@/pages/admin/FeedbackTriagePage
 
 const InterviewIndex         = lazy(() => import("@/pages/interview/InterviewIndex"));
 const InterviewSessionPage   = lazy(() => import("@/pages/interview/InterviewSessionPage"));
+const MockInterviewIndex     = lazy(() => import("@/pages/mock-interview/MockInterviewIndex"));
+const MockInterviewRoom      = lazy(() => import("@/pages/mock-interview/MockInterviewRoom"));
 const InterviewSummaryPage   = lazy(() => import("@/pages/interview/InterviewSummaryPage"));
 
 const NailTechnicianPage     = lazy(() => import("@/pages/profession-packs/NailTechnicianPage"));
@@ -683,6 +685,22 @@ export default function AppRouter() {
             element={
               <RequireAuth>
                 <LazyPage><InterviewSummaryPage /></LazyPage>
+              </RequireAuth>
+            }
+          />
+
+          {/* Mock interview rooms (A9) — high-stakes professional scenarios; free-tier weekly gate */}
+          <Route path="/mock-interview"
+            element={
+              <RequireAuth>
+                <LazyPage><MockInterviewIndex /></LazyPage>
+              </RequireAuth>
+            }
+          />
+          <Route path="/mock-interview/:scenarioId"
+            element={
+              <RequireAuth>
+                <LazyPage><MockInterviewRoom /></LazyPage>
               </RequireAuth>
             }
           />
