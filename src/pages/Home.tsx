@@ -14,6 +14,7 @@ import { useUserAccess } from "@/hooks/useUserAccess";
 import { useAuth } from "@/providers/AuthProvider";
 import { useFeatureFlag } from "@/hooks/useFeatureFlag";
 import FocusAreasCard from "@/components/home/FocusAreasCard";
+import PracticeRecommendationCard from "@/components/home/PracticeRecommendationCard";
 import TodaysLessonCard from "@/components/home/TodaysLessonCard";
 import WeeklyProgressWidget from "@/components/home/WeeklyProgressWidget";
 import LeaderboardCard from "@/components/leaderboard/LeaderboardCard";
@@ -695,6 +696,12 @@ export default function Home() {
               with no plan has one obvious next step. Never auto-navigates;
               the user must tap "Bắt đầu" themselves. */}
           <TodaysLessonCard isPhone={isPhone} />
+
+          {/* Practice recommendation — Mercy's "what should I practice
+              tonight?" card. Self-fetching, hidden when the feature
+              flag is off, the user is anonymous, or no rule fires.
+              One recommendation visible at a time. */}
+          <PracticeRecommendationCard />
 
           {/* Weekly progress widget — only renders for signed-in users
               with attempts; hidden otherwise. The widget owns its own
