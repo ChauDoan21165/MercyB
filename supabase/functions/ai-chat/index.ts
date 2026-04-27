@@ -9,6 +9,11 @@ import { logAiUsage as logAiUsageEvent } from "../_shared/aiUsage.ts";
 import { streamChatWithFailover } from "../_shared/aiProvider.ts";
 import { wrapHandler } from "../_shared/sentry.ts";
 import {
+  trackLatency,
+  trackLatencyMs,
+  type LatencyStatus,
+} from "../_shared/latencyTelemetry.ts";
+import {
   EdgeUserFact,
   MAX_FACTS_IN_PROMPT,
   formatUserFactsSection,
@@ -521,6 +526,8 @@ serve(wrapHandler("ai-chat", async (req) => {
     return new Response(null, { headers: corsHeaders });
   }
 
+  const totalStartedAt = performance.now();
+  let totalStatus: LatencyStatus = "success";
   try {
     const reqBody = await req.json();
     const { roomId, messages } = reqBody;
@@ -717,6 +724,8 @@ serve(wrapHandler("ai-chat", async (req) => {
     // establishment failure (timeout, 429, 5xx, network) falls over to
     // Gemini and translates Gemini's SSE chunks into OpenAI shape so
     // the client + cost tracker pipeline below work unchanged.
+    const llmStartedAt = performance.now();
+    let llmStatus: LatencyStatus = "success";
     const streamResult = await streamChatWithFailover({
       systemPrompt,
       userMessage: messages[messages.length - 1]?.content ?? "",
@@ -724,6 +733,23 @@ serve(wrapHandler("ai-chat", async (req) => {
       openaiModel: AI_MODEL,
       temperature: 0.4,
       includeUsage: true,
+    }).catch((err) => {
+      llmStatus = "error";
+      trackLatencyMs("ai-chat.llm-call", performance.now() - llmStartedAt, {
+        status: llmStatus,
+      });
+      throw err;
+    });
+
+    if ("ok" in streamResult && streamResult.ok === false) {
+      llmStatus = "error";
+    }
+    trackLatencyMs("ai-chat.llm-call", performance.now() - llmStartedAt, {
+      status: llmStatus,
+      metadata: {
+        provider:
+          "provider" in streamResult ? streamResult.provider : "unknown",
+      },
     });
 
     if ("ok" in streamResult && streamResult.ok === false) {
@@ -783,14 +809,26 @@ serve(wrapHandler("ai-chat", async (req) => {
 
     void backgroundTask;
 
-    return new Response(clientStream, {
+    const response = new Response(clientStream, {
       headers: {
         ...corsHeaders,
         "Content-Type": "text/event-stream",
       },
     });
+    trackLatency({
+      operation: "ai-chat.total",
+      startedAt: totalStartedAt,
+      status: totalStatus,
+    });
+    return response;
   } catch (error) {
     console.error("AI Chat Error:", error);
+    totalStatus = "error";
+    trackLatency({
+      operation: "ai-chat.total",
+      startedAt: totalStartedAt,
+      status: totalStatus,
+    });
     return new Response(
       JSON.stringify({ error: error instanceof Error ? error.message : "Unknown error" }),
       { status: 500, headers: corsHeaders },

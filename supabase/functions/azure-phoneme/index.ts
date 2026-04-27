@@ -24,6 +24,11 @@ import {
   buildRateLimitErrorBody,
   checkIpRateLimit,
 } from "../_shared/ipRateLimit.ts";
+import {
+  trackLatency,
+  trackLatencyMs,
+  type LatencyStatus,
+} from "../_shared/latencyTelemetry.ts";
 
 import {
   handleRequest,
@@ -182,6 +187,30 @@ function startOfUtcDay(): string {
   return d.toISOString();
 }
 
+// Tracked fetch: records the Azure REST call's latency on every request.
+// Wrapping at this level (rather than inside core.ts) keeps the test
+// contract clean — fake `Deps.fetch` in vitest won't trigger telemetry.
+async function trackedAzureFetch(
+  input: string,
+  init: RequestInit,
+): Promise<Response> {
+  const startedAt = performance.now();
+  let status: LatencyStatus = "success";
+  try {
+    const resp = await fetch(input, init);
+    if (!resp.ok) status = "error";
+    return resp;
+  } catch (err) {
+    status =
+      err instanceof Error && err.name === "AbortError" ? "timeout" : "error";
+    throw err;
+  } finally {
+    trackLatencyMs("azure-phoneme.azure-call", performance.now() - startedAt, {
+      status,
+    });
+  }
+}
+
 // ── Wire deps and serve ──────────────────────────────────────────────────
 
 async function resolveAdminLevel(userId: string): Promise<number> {
@@ -219,7 +248,7 @@ const productionDeps: Deps = {
       }),
     };
   },
-  fetch: (input, init) => fetch(input, init),
+  fetch: trackedAzureFetch,
   checkAiBudget,
   fetchUserProfile,
   sumGlobalCostToday,
@@ -231,4 +260,23 @@ const productionDeps: Deps = {
   usdToVnd: USD_TO_VND,
 };
 
-serve(wrapHandler("azure-phoneme", (req) => handleRequest(req, productionDeps)));
+serve(
+  wrapHandler("azure-phoneme", async (req) => {
+    const startedAt = performance.now();
+    let status: LatencyStatus = "success";
+    try {
+      const resp = await handleRequest(req, productionDeps);
+      if (resp.status >= 500) status = "error";
+      return resp;
+    } catch (err) {
+      status = "error";
+      throw err;
+    } finally {
+      trackLatency({
+        operation: "azure-phoneme.total",
+        startedAt,
+        status,
+      });
+    }
+  }),
+);
