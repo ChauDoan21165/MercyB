@@ -39,6 +39,7 @@ const TierIndex           = lazy(() => import("@/pages/TierIndex"));
 const TierDetail          = lazy(() => import("@/pages/TierDetail"));
 const LoginPage           = lazy(() => import("@/pages/LoginPage"));
 const ResetPasswordPage   = lazy(() => import("@/pages/ResetPasswordPage"));
+const ConvertAccountPage  = lazy(() => import("@/pages/auth/ConvertAccount"));
 
 const PlacementWelcomePage = lazy(() => import("@/pages/placement/WelcomePage"));
 const PlacementWhoForPage  = lazy(() => import("@/pages/placement/WhoForPage"));
@@ -464,6 +465,12 @@ export default function AppRouter() {
 
         <Route path="/reset-password"
           element={<LazyPage><ResetPasswordPage /></LazyPage>} />
+
+        {/* Anonymous → permanent account conversion. Auth-required (the
+            page redirects home if the caller is already a permanent
+            account). */}
+        <Route path="/auth/save-progress"
+          element={<LazyPage><ConvertAccountPage /></LazyPage>} />
 
         {/* /auth redirects preserve query/hash for OAuth callbacks */}
         <Route path="/auth"          element={<AuthRedirect />} />
