@@ -63,6 +63,7 @@ const RestaurantLessonsPage = lazy(() => import("@/pages/professions/RestaurantL
 const CustomerServiceLessonsPage = lazy(() => import("@/pages/professions/CustomerServiceLessonsPage"));
 const TechWorkerLessonsPage = lazy(() => import("@/pages/professions/TechWorkerLessonsPage"));
 const HealthcareLessonsPage = lazy(() => import("@/pages/professions/HealthcareLessonsPage"));
+const DriversLessonsPage = lazy(() => import("@/pages/professions/DriversLessonsPage"));
 
 // Mercy v2 — multi-turn conversation thread page (auth-required).
 const MercyThreadPage      = lazy(() => import("@/pages/mercy/MercyThreadPage"));
@@ -628,6 +629,9 @@ export default function AppRouter() {
           />
           <Route path="/professions/healthcare"
             element={<LazyPage><HealthcareLessonsPage /></LazyPage>}
+          />
+          <Route path="/professions/drivers"
+            element={<LazyPage><DriversLessonsPage /></LazyPage>}
           />
 
           {/* Mercy v2 — multi-turn conversation thread (Step 7) */}
