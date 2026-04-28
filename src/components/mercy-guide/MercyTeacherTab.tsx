@@ -1352,30 +1352,29 @@ export function MercyTeacherTab({
 
   return (
     <div className="m-0 flex-1 overflow-hidden">
-      <ScrollArea className="h-full bg-gradient-to-br from-[#FFFAF7] via-[#FDFCFF] to-[#F8FAFF]">
+      <ScrollArea className="h-full bg-slate-50">
         <div className="relative p-3 md:p-4">
-          <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-[radial-gradient(circle_at_top,_rgba(255,138,101,0.08),_rgba(192,132,252,0.04)_45%,_transparent_75%)]" />
           <div className="relative space-y-4">
-            <section className="overflow-hidden rounded-2xl border border-[#FFE4D6] bg-gradient-to-br from-[#FFF8F3] to-white p-4 shadow-[0_8px_24px_rgba(255,138,101,0.08)]">
+            <section className="overflow-hidden rounded-2xl border border-slate-200 bg-white p-4 shadow-[0_2px_10px_rgba(15,23,42,0.04)]">
               <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
                 <div className="min-w-0 flex-1">
                   <div className="flex items-center gap-3">
-                    <div className="rounded-2xl bg-rose-100/90 p-2.5">
+                    <div className="rounded-2xl bg-slate-100 p-2.5">
                       {isLocked ? (
-                        <Lock className="h-5 w-5 text-rose-500" />
+                        <Lock className="h-5 w-5 text-slate-500" />
                       ) : (
-                        <MessageCircleHeart className="h-5 w-5 text-rose-500" />
+                        <MessageCircleHeart className="h-5 w-5 text-slate-700" />
                       )}
                     </div>
 
                     <div className="min-w-0">
                       <h2 className="text-lg md:text-xl font-semibold tracking-tight text-slate-900">
-                        Journey
+                        Teacher Mercy
                       </h2>
                       <p className="mt-1 text-sm leading-6 text-slate-600">
                         {isLocked
-                          ? 'Unlock one place for sentence, focus, and next step.'
-                          : 'One place for your current sentence, focus, and next step.'}
+                          ? 'Unlock your teacher: explain, correct, guide, speak, and the next step.'
+                          : 'Your main helper: explain, correct, guide, speak, and the next step.'}
                       </p>
                     </div>
                   </div>
@@ -1440,7 +1439,7 @@ export function MercyTeacherTab({
                   </div>
                 </div>
 
-                <div className="rounded-2xl border border-amber-100/80 bg-gradient-to-r from-[#FFF8F1] via-white to-[#F8FAFF] p-4 lg:max-w-sm">
+                <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4 lg:max-w-sm">
                   <div className="flex items-start gap-3">
                     <Lightbulb className="mt-0.5 h-4.5 w-4.5 shrink-0 text-amber-500" />
                     <div>
@@ -1449,17 +1448,17 @@ export function MercyTeacherTab({
                       </p>
                       <p className="mt-1 text-sm leading-6 text-slate-700">
                         {isLocked
-                          ? 'Journey keeps the teacher loop together so learning does not reset on every tab.'
+                          ? 'Teacher Mercy keeps your sentence, focus, and next step in one calm place.'
                           : coachingLead}
                       </p>
                       {!isLocked && focusSupport ? (
-                        <p className="mt-1 text-sm leading-6 text-[#D66A4E]">
+                        <p className="mt-1 text-sm leading-6 text-amber-700">
                           {focusSupport}
                         </p>
                       ) : null}
                       <p className="mt-2 text-sm leading-6 text-slate-600">
                         {isLocked
-                          ? 'See the sentence, the pattern, and the next move in one place.'
+                          ? 'See the sentence, the pattern, and the next move together — without resetting.'
                           : quickCoach}
                       </p>
                     </div>

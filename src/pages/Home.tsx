@@ -14,11 +14,9 @@ import { useUserAccess } from "@/hooks/useUserAccess";
 import { useAuth } from "@/providers/AuthProvider";
 import { useFeatureFlag } from "@/hooks/useFeatureFlag";
 import FocusAreasCard from "@/components/home/FocusAreasCard";
-import ListeningSuggestionCard from "@/components/home/ListeningSuggestionCard";
 import PracticeRecommendationCard from "@/components/home/PracticeRecommendationCard";
 import RecommendedDrillCard from "@/components/home/RecommendedDrillCard";
 import TodaysLessonCard from "@/components/home/TodaysLessonCard";
-import VocabularyReviewBadge from "@/components/home/VocabularyReviewBadge";
 import WeeklyProgressWidget from "@/components/home/WeeklyProgressWidget";
 import StoryPromptCard from "@/components/home/StoryPromptCard";
 import LeaderboardCard from "@/components/leaderboard/LeaderboardCard";
@@ -260,11 +258,39 @@ export default function Home() {
       return;
     }
 
-    // Mercy unification: signed-in users land on the single-pane chat by
-    // default. The legacy multi-tab MercyGuide bubble below stays mounted
-    // for users who opt back into 'classic' via the in-chat settings,
-    // and is still independently clickable on its own as a fallback.
-    nav("/mercy/chat");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+
+    // Find the floating Mercy bubble.
+    // Earlier (commit b0d0153a) this code dispatched a synthetic
+    // PointerEvent("pointerdown") to force-open the bubble — but
+    // synthesized PointerEvents have no active pointer, so the
+    // bubble's onPointerDown handler crashed when calling
+    // setPointerCapture(event.pointerId) → NotFoundError caught by
+    // the page-level error boundary. Removing the synthetic dispatch:
+    // focus + Enter keydown alone reliably opens the bubble (matches
+    // the bubble's onKeyDown handler) and never touches pointer state.
+    const bubble =
+      document.querySelector<HTMLElement>('[aria-label="Open Mercy Guide"]') ||
+      document.querySelector<HTMLElement>('[aria-label="Open Teacher Mercy for kids"]');
+
+    if (bubble) {
+      bubble.focus();
+      bubble.dispatchEvent(
+        new KeyboardEvent("keydown", {
+          bubbles: true,
+          cancelable: true,
+          key: "Enter",
+        })
+      );
+    } else {
+      console.warn(
+        "[Home] Teacher Mercy bubble not found; cannot open panel. " +
+        "User may be unauthenticated or trial expired."
+      );
+    }
+
+    // Backwards-compat custom event (no current listener; kept for future).
+    window.dispatchEvent(new CustomEvent("mercy-guide:focus"));
   };
 
   // ── Teacher Mercy hero card ────────────────────────────────────────────────
@@ -665,78 +691,76 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Main content */}
+        {/* Main content — hierarchy:
+              1. Today's Lesson (one obvious next step)
+              2. Teacher Mercy (the hero relationship)
+              3. Progress (returning users see momentum)
+              4. Secondary learning paths (recommendations + entry points + exam prep) */}
         <section ref={stageRef} style={{ marginTop: 14, display: "flex", flexDirection: "column", gap: 12 }} aria-label="Homepage choices">
-          {/* Today's 5-minute lesson — top anchor for returning users.
-              Sits above Teacher Mercy so a learner who opens the app
-              with no plan has one obvious next step. Never auto-navigates;
-              the user must tap "Bắt đầu" themselves. */}
+          {/* ── 1. Today's Lesson ────────────────────────────────────────
+              Top anchor for returning users — never auto-navigates; the
+              user must tap "Bắt đầu" themselves. */}
           <TodaysLessonCard isPhone={isPhone} />
 
-          {/* Continue: Listening — points the user at the next clip in
-              the listening category they were last working through. The
-              card hides itself when the user has no listening progress
-              yet, so first-time visitors don't see an empty prompt. */}
-          <ListeningSuggestionCard />
+          {/* ── 2. Teacher Mercy ─────────────────────────────────────────
+              Hero card. Same handler as before (auth → bubble open;
+              anon → /signin), with the inline anon "Phát âm thử ngay"
+              pill preserved inside the card. */}
+          {teacherCard}
 
-          {/* Vocabulary review badge — shown only when due count > 0.
-              Sits right under TodaysLessonCard so learners with words
-              waiting see the cue before any other recommendation. */}
-          <VocabularyReviewBadge />
-
-          {/* Practice recommendation — Mercy's "what should I practice
-              tonight?" card. Self-fetching, hidden when the feature
-              flag is off, the user is anonymous, or no rule fires.
-              One recommendation visible at a time. */}
-          <PracticeRecommendationCard />
-
-          {/* Targeted phoneme drill — surfaced when a weak phoneme
-              has both signal (5+ attempts) and a hand-curated drill
-              pack. Self-gates on its own feature flag + 24h cooldown
-              keyed off the graduation tracker. */}
-          <RecommendedDrillCard />
-
-          {/* Weekly progress widget — only renders for signed-in users
-              with attempts; hidden otherwise. The widget owns its own
-              fetch so Home doesn't auto-load progress data. */}
+          {/* ── 3. Progress ──────────────────────────────────────────────
+              Weekly progress widget renders only for signed-in users
+              with attempts. The story-share prompt sits adjacent because
+              it's a celebratory progress signal — self-gates on
+              eligibility (paid, 21+ days, 50+ attempts, sustained
+              improvement) AND a 30-day cooldown, so it renders nothing
+              for new or struggling learners. */}
           <WeeklyProgressWidget />
-
-          {/* Story-share prompt — self-gates on eligibility (paid, 21+
-              days, 50+ attempts, sustained improvement) AND a 30-day
-              cooldown. Renders nothing for users who don't qualify, so
-              the surface stays clean for new + struggling learners. */}
           <StoryPromptCard />
 
-          {/* Teacher Mercy — hero */}
-          {teacherCard}
+          {/* ── 4. Secondary learning paths ──────────────────────────────
+              Mercy-flavoured recommendations, alternative entry points,
+              and exam-prep marketing surfaces. Each card self-gates so
+              users who don't qualify see less, not more. */}
+
+          {/* Practice recommendation — Mercy's "what should I practice
+              tonight?" card. Self-fetching, hidden when the feature flag
+              is off, the user is anonymous, or no rule fires. */}
+          <PracticeRecommendationCard />
+
+          {/* Targeted phoneme drill — surfaced when a weak phoneme has
+              both signal (5+ attempts) and a hand-curated drill pack.
+              Self-gates on its own feature flag + 24h cooldown. */}
+          <RecommendedDrillCard />
 
           {/* Try one word — no signup. Cuts time-to-first-score for
               anonymous users; opens MercyGuide on the pronunciation
               tab with a fixed starter line. */}
           {tryOneWordCard}
 
-          {/* Library — secondary */}
+          {/* Library — browse rooms. */}
           {libraryCard}
 
-          {/* Placement test — invitation card (always visible; /placement route still gates auth) */}
+          {/* Placement test — invitation card (always visible; /placement
+              route still gates auth). */}
           {placementCard}
 
-          {/* VSTEP — Vietnamese national exam prep (Vietnamese-only moat) */}
+          {/* VSTEP — Vietnamese national exam prep (Vietnamese-only moat). */}
           {vstepCard}
 
           {/* TOEIC practice pack — Vietnamese corporate vertical.
               Marketing surface for /exam-prep/toeic (open, no paywall). */}
           {toeicCard}
 
-          {/* IELTS Speaking content pack — closes the IELTS funnel alongside
-              Writing/Listening/Reading. Marketing surface for
+          {/* IELTS Speaking content pack — closes the IELTS funnel
+              alongside Writing/Listening/Reading. Marketing surface for
               /exam-prep/ielts/speaking (open, no paywall). */}
           {ieltsSpeakingCard}
 
-          {/* Focus areas — tertiary (feature-flagged) */}
+          {/* Focus areas — tertiary (feature-flagged). */}
           <FocusAreasCard />
 
-          {/* Weekly leaderboard — Step 4 retention card (feature-flagged) */}
+          {/* Weekly leaderboard — retention card (feature-flagged). */}
           {leaderboardEnabled && Boolean(user) && <LeaderboardCard />}
         </section>
 
