@@ -131,7 +131,7 @@
       "tags": [
         "all"
       ],
-      "audio": "conversation_starters_v1_ask_about_day.mp3 conversation_starters_v1_favorite_things.mp3 conversation_starters_v1_ask_feelings.mp3 conversation_starters_v1_what_happened.mp3 conversation_starters_v1_join_conversation.mp3"
+      "audio": null
     }
   ],
   "domain": "Kids",

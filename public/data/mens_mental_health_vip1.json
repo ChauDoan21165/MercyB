@@ -118,7 +118,7 @@
         "all",
         "combined"
       ],
-      "audio": "mmh_vip1_1_en.mp3 mmh_vip1_2_en.mp3 mmh_vip1_3_en.mp3 mmh_vip1_4_en.mp3"
+      "audio": null
     }
   ],
   "domain": "General",

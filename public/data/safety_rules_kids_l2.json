@@ -140,7 +140,7 @@
       "tags": [
         "all"
       ],
-      "audio": "safety_rules_v1_stop.mp3 safety_rules_v1_careful.mp3 safety_rules_v1_slow.mp3 safety_rules_v1_look.mp3 safety_rules_v1_safe.mp3"
+      "audio": null
     }
   ],
   "domain": "Kids",

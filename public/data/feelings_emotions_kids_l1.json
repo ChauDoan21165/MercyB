@@ -151,7 +151,7 @@
         "all",
         "full"
       ],
-      "audio": "feelings_emotions_v1_happy.mp3 feelings_emotions_v1_sad.mp3 feelings_emotions_v1_angry.mp3 feelings_emotions_v1_scared_brave.mp3 feelings_emotions_v1_proud.mp3"
+      "audio": null
     }
   ],
   "domain": "Kids",

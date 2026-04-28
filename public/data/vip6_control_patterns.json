@@ -140,7 +140,7 @@
         "all",
         "combined"
       ],
-      "audio": "vip6_cp_1.mp3 vip6_cp_2.mp3 vip6_cp_3.mp3 vip6_cp_4.mp3 vip6_cp_5.mp3"
+      "audio": null
     }
   ],
   "domain": "General",

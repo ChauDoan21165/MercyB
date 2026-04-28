@@ -141,7 +141,7 @@
         "complete",
         "stress"
       ],
-      "audio": "str_vip2_1_en.mp3 str_vip2_2_en.mp3 str_vip2_3_en.mp3 str_vip2_4_en.mp3"
+      "audio": null
     }
   ],
   "domain": "Mental Health",
