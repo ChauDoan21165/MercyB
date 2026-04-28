@@ -18,6 +18,7 @@ import ListeningSuggestionCard from "@/components/home/ListeningSuggestionCard";
 import PracticeRecommendationCard from "@/components/home/PracticeRecommendationCard";
 import RecommendedDrillCard from "@/components/home/RecommendedDrillCard";
 import TodaysLessonCard from "@/components/home/TodaysLessonCard";
+import VocabularyReviewBadge from "@/components/home/VocabularyReviewBadge";
 import WeeklyProgressWidget from "@/components/home/WeeklyProgressWidget";
 import StoryPromptCard from "@/components/home/StoryPromptCard";
 import LeaderboardCard from "@/components/leaderboard/LeaderboardCard";
@@ -677,6 +678,11 @@ export default function Home() {
               card hides itself when the user has no listening progress
               yet, so first-time visitors don't see an empty prompt. */}
           <ListeningSuggestionCard />
+
+          {/* Vocabulary review badge — shown only when due count > 0.
+              Sits right under TodaysLessonCard so learners with words
+              waiting see the cue before any other recommendation. */}
+          <VocabularyReviewBadge />
 
           {/* Practice recommendation — Mercy's "what should I practice
               tonight?" card. Self-fetching, hidden when the feature
