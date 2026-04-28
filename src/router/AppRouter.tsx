@@ -25,6 +25,7 @@ import ChatSupportButton from "@/components/support/ChatSupportButton";
 // verified MFA factor. Pairs with the RLS gate from migration
 // 20260524 so neither layer is the only line of defense.
 import RequireAal2 from "@/components/auth/RequireAal2";
+import { WebOnlyRoute } from "@/router/WebOnlyRoute";
 
 const MB_ROUTER_VERSION = "2026-04-11-app-router-room-alias-hardening";
 
@@ -1034,26 +1035,33 @@ export default function AppRouter() {
             }
           />
 
-          {/* Gift subscriptions (Step 9) — auth-required for all three */}
+          {/* Gift subscriptions (Step 9) — auth-required for all three.
+              Hidden on iOS native per App Store Guideline 4.0 (external payment). */}
           <Route path="/gift"
             element={
-              <RequireAuth>
-                <LazyPage><PurchaseGiftPage /></LazyPage>
-              </RequireAuth>
+              <WebOnlyRoute>
+                <RequireAuth>
+                  <LazyPage><PurchaseGiftPage /></LazyPage>
+                </RequireAuth>
+              </WebOnlyRoute>
             }
           />
           <Route path="/gift/redeem"
             element={
-              <RequireAuth>
-                <LazyPage><RedeemGiftPage /></LazyPage>
-              </RequireAuth>
+              <WebOnlyRoute>
+                <RequireAuth>
+                  <LazyPage><RedeemGiftPage /></LazyPage>
+                </RequireAuth>
+              </WebOnlyRoute>
             }
           />
           <Route path="/gift/my"
             element={
-              <RequireAuth>
-                <LazyPage><MyGiftsPage /></LazyPage>
-              </RequireAuth>
+              <WebOnlyRoute>
+                <RequireAuth>
+                  <LazyPage><MyGiftsPage /></LazyPage>
+                </RequireAuth>
+              </WebOnlyRoute>
             }
           />
 

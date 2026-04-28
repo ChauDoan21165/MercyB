@@ -182,7 +182,6 @@ export default function PurchaseGiftForm({
 
           <p className="text-xs text-slate-500">
             Beta: chưa thanh toán thật / Beta: not charging real money yet.
-            Stripe checkout coming soon.
           </p>
         </form>
       </CardContent>
