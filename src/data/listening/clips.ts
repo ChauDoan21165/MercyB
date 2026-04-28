@@ -1543,3 +1543,464 @@ CLIPS.push({
     },
   ],
 });
+
+// ─────────────────────────────────────────────────────────────────────
+// CATEGORY: shopping — 4 clips
+// ─────────────────────────────────────────────────────────────────────
+
+CLIPS.push({
+  id: "shopping-ask-sizes",
+  category: "shopping",
+  title_en: "Asking for a different size",
+  title_vi: "Hỏi xin size khác",
+  description_vi:
+    "Khách thử áo, size không vừa, hỏi nhân viên đem size khác. Học cách nói size US và 'fitting room'.",
+  duration_seconds: 40,
+  accent: "us",
+  difficulty: "beginner",
+  transcript: [
+    {
+      speaker: "Customer",
+      text_en:
+        "Excuse me, do you have this in a medium? The small is a little tight.",
+      text_vi:
+        "Xin lỗi, bạn có cái này size M không? Size S hơi chật.",
+    },
+    {
+      speaker: "Associate",
+      text_en:
+        "Let me check the back. Can I get you the medium and the large just in case?",
+      text_vi:
+        "Để tôi vào kho xem. Tôi đem cả M và L luôn cho chắc nhé?",
+    },
+    {
+      speaker: "Customer",
+      text_en:
+        "That would be great, thanks. I will be in the fitting room.",
+      text_vi:
+        "Vậy thì hay quá, cảm ơn. Tôi sẽ ở trong phòng thử đồ.",
+    },
+  ],
+  vocabulary_keys: ["medium", "tight", "fitting room"],
+  comprehension_questions: [
+    {
+      question_vi: "Khách phàn nàn gì về size S?",
+      options: ["Quá rộng", "Hơi chật", "Sai màu"],
+      correct_index: 1,
+      explanation_vi: "'A little tight' — hơi chật.",
+    },
+    {
+      question_vi: "Nhân viên định mang ra mấy size?",
+      options: ["Chỉ M", "Cả M và L", "Cả S, M, L"],
+      correct_index: 1,
+      explanation_vi:
+        "'The medium and the large just in case' — cả M và L cho chắc.",
+    },
+  ],
+});
+
+CLIPS.push({
+  id: "shopping-return-policy",
+  category: "shopping",
+  title_en: "Asking about the return policy",
+  title_vi: "Hỏi chính sách trả hàng",
+  description_vi:
+    "Khách hỏi cửa hàng có cho trả hàng không, có cần hóa đơn không. Học gift receipt, store credit, within 30 days.",
+  duration_seconds: 55,
+  accent: "us",
+  difficulty: "intermediate",
+  transcript: [
+    {
+      speaker: "Customer",
+      text_en: "What is the return policy if it does not fit her?",
+      text_vi: "Chính sách trả hàng thế nào nếu cô ấy không vừa?",
+    },
+    {
+      speaker: "Cashier",
+      text_en:
+        "You can return within thirty days with the receipt for a full refund. Without the receipt, it is store credit only.",
+      text_vi:
+        "Bạn có thể trả trong 30 ngày kèm hóa đơn để hoàn tiền đầy đủ. Không có hóa đơn thì chỉ đổi sang store credit.",
+    },
+    {
+      speaker: "Customer",
+      text_en:
+        "Could I get a gift receipt for her? She will not need to see the price.",
+      text_vi:
+        "Cho tôi xin gift receipt được không? Cô ấy sẽ không thấy giá.",
+    },
+    {
+      speaker: "Cashier",
+      text_en: "Of course. I will print one with no price on it.",
+      text_vi: "Vâng. Tôi sẽ in một cái không có giá.",
+    },
+  ],
+  vocabulary_keys: ["return policy", "gift receipt", "store credit"],
+  comprehension_questions: [
+    {
+      question_vi: "Không có hóa đơn thì sao?",
+      options: [
+        "Không trả được",
+        "Chỉ đổi store credit",
+        "Hoàn tiền mặt giảm 50%",
+      ],
+      correct_index: 1,
+      explanation_vi:
+        "'Without the receipt, it is store credit only' — không có hóa đơn thì chỉ được store credit.",
+    },
+    {
+      question_vi: "Gift receipt khác hóa đơn thường ở điểm gì?",
+      options: [
+        "Không in giá",
+        "Hết hạn nhanh hơn",
+        "Chỉ dùng vào dịp Giáng sinh",
+      ],
+      correct_index: 0,
+      explanation_vi:
+        "Gift receipt là phiên bản đặc biệt không in giá, để người nhận quà có thể đổi/trả nhưng không biết giá.",
+    },
+  ],
+});
+
+CLIPS.push({
+  id: "shopping-find-items",
+  category: "shopping",
+  title_en: "Asking where to find an item",
+  title_vi: "Hỏi nơi tìm món hàng",
+  description_vi:
+    "Khách hỏi nhân viên Aussie nơi để mì spaghetti. Học aisle, past the deli, no worries.",
+  duration_seconds: 45,
+  accent: "au",
+  difficulty: "intermediate",
+  transcript: [
+    {
+      speaker: "Customer",
+      text_en: "Hi, do you know where the spaghetti is?",
+      text_vi: "Chào, bạn biết mì spaghetti ở đâu không?",
+    },
+    {
+      speaker: "Staff",
+      text_en:
+        "Yeah, aisle four. Past the deli, on the right-hand side, second shelf down.",
+      text_vi:
+        "Có. Lối số 4. Đi qua quầy đồ nguội, bên phải, kệ thứ hai từ trên xuống.",
+    },
+    {
+      speaker: "Customer",
+      text_en: "Got it, thanks. Is there a wholemeal version?",
+      text_vi: "Hiểu rồi, cảm ơn. Có loại nguyên cám không?",
+    },
+    {
+      speaker: "Staff",
+      text_en:
+        "Should be on the same shelf, blue packet. No worries if not, give us a shout.",
+      text_vi:
+        "Chắc cùng kệ đó, gói màu xanh dương. Không thấy thì gọi mình nhé.",
+    },
+  ],
+  vocabulary_keys: ["aisle", "past the deli", "no worries"],
+  comprehension_questions: [
+    {
+      question_vi: "Mì spaghetti ở đâu?",
+      options: [
+        "Lối 1 cạnh quầy thịt",
+        "Lối 4, sau quầy đồ nguội, bên phải",
+        "Lối 7 trong tủ đông",
+      ],
+      correct_index: 1,
+      explanation_vi:
+        "'Aisle four. Past the deli, on the right-hand side' — lối 4, qua quầy deli, bên phải.",
+    },
+    {
+      question_vi: "'No worries' nghĩa là gì?",
+      options: ["Khẩn cấp", "Không sao / không vấn đề", "Im lặng"],
+      correct_index: 1,
+      explanation_vi:
+        "'No worries' rất phổ biến ở Úc, nghĩa là 'không sao, đừng lo'. Tương đương 'no problem'.",
+    },
+  ],
+});
+
+CLIPS.push({
+  id: "shopping-checkout",
+  category: "shopping",
+  title_en: "Checking out with a discount code",
+  title_vi: "Thanh toán với mã giảm giá",
+  description_vi:
+    "Khách quên mã giảm giá email, hỏi nhân viên có thể tra cứu được không. Tình huống nâng cao: apply, lookup, price-match.",
+  duration_seconds: 60,
+  accent: "us",
+  difficulty: "advanced",
+  transcript: [
+    {
+      speaker: "Cashier",
+      text_en:
+        "Your total comes to one hundred and forty-seven thirty-eight.",
+      text_vi: "Tổng của bạn là 147.38 đô.",
+    },
+    {
+      speaker: "Customer",
+      text_en:
+        "I had a fifteen percent off email, but I cannot find it. Can you look it up by my account?",
+      text_vi:
+        "Tôi có một email giảm 15% nhưng tìm không ra. Anh tra theo tài khoản giúp được không?",
+    },
+    {
+      speaker: "Cashier",
+      text_en:
+        "Yeah, I can pull it up. Can I get the email on your loyalty account?",
+      text_vi:
+        "Vâng, tôi tra được. Cho tôi email gắn với tài khoản loyalty?",
+    },
+    {
+      speaker: "Customer",
+      text_en: "linh dot tran at gmail dot com.",
+      text_vi: "linh chấm tran a còng gmail chấm com.",
+    },
+    {
+      speaker: "Cashier",
+      text_en:
+        "Got it. Code applied. New total is one hundred and twenty-five eighteen. Also, this jacket is on sale tomorrow — do you want me to do a price-match adjustment now?",
+      text_vi:
+        "Được rồi. Đã áp mã. Tổng mới là 125.18 đô. Áo khoác này ngày mai bán giảm giá — anh có muốn tôi áp luôn giá đó cho anh không?",
+    },
+  ],
+  vocabulary_keys: ["apply", "look it up", "price-match"],
+  comprehension_questions: [
+    {
+      question_vi: "Sau khi áp mã, tổng tiền giảm bao nhiêu?",
+      options: [
+        "Còn 147.38 — không đổi",
+        "Còn 125.18 — giảm 22.20",
+        "Còn 100.00",
+      ],
+      correct_index: 1,
+      explanation_vi:
+        "Trước: 147.38. Sau khi áp 15%: 125.18. Giảm khoảng 22.20.",
+    },
+    {
+      question_vi: "Nhân viên đề xuất gì thêm?",
+      options: [
+        "Mua thêm 1 áo nữa",
+        "Áp giá khuyến mãi của ngày mai (price-match)",
+        "Đăng ký thẻ tín dụng cửa hàng",
+      ],
+      correct_index: 1,
+      explanation_vi:
+        "Price-match adjustment: nhiều cửa hàng Mỹ cho phép khách mua hôm nay với giá khuyến mãi sẽ có trong vài ngày tới.",
+    },
+  ],
+});
+
+// ─────────────────────────────────────────────────────────────────────
+// CATEGORY: transportation — 3 clips
+// ─────────────────────────────────────────────────────────────────────
+
+CLIPS.push({
+  id: "transport-uber-pickup",
+  category: "transportation",
+  title_en: "Confirming an Uber pickup",
+  title_vi: "Xác nhận điểm đón Uber",
+  description_vi:
+    "Tài xế gọi xác nhận khách đứng đúng chỗ vì sân bay đông người. Học pulling up, curbside, flag me down.",
+  duration_seconds: 45,
+  accent: "us",
+  difficulty: "intermediate",
+  transcript: [
+    {
+      speaker: "Driver",
+      text_en:
+        "Hey, this is your Uber driver. I am pulling up to terminal two now. Where exactly are you standing?",
+      text_vi:
+        "Chào, tôi là tài Uber của bạn. Đang vào terminal 2. Bạn đang đứng chính xác ở đâu?",
+    },
+    {
+      speaker: "Passenger",
+      text_en:
+        "I am at the curbside, between door three and door four. White suitcase, blue jacket.",
+      text_vi:
+        "Tôi ở lề đường, giữa cửa số 3 và 4. Vali trắng, áo khoác xanh dương.",
+    },
+    {
+      speaker: "Driver",
+      text_en:
+        "Got it. I am in a silver Toyota Camry, license plate eight bravo charlie one two three. Just flag me down when you see me.",
+      text_vi:
+        "Hiểu rồi. Toyota Camry màu bạc, biển 8BC123. Cứ vẫy tay khi thấy tôi nhé.",
+    },
+  ],
+  vocabulary_keys: ["pulling up", "curbside", "flag me down"],
+  comprehension_questions: [
+    {
+      question_vi: "Khách đang đứng ở đâu?",
+      options: ["Cửa số 1", "Lề đường giữa cửa 3 và 4", "Bãi đậu xe"],
+      correct_index: 1,
+      explanation_vi:
+        "'Curbside, between door three and door four' — lề đường (curbside) giữa cửa 3 và 4.",
+    },
+    {
+      question_vi: "'Flag me down' nghĩa là gì?",
+      options: [
+        "Hạ cờ",
+        "Vẫy tay ra hiệu để tài xế thấy",
+        "Đặt xe khác",
+      ],
+      correct_index: 1,
+      explanation_vi:
+        "'Flag down' — vẫy tay để xe thấy mình. Idiom phổ biến với taxi và rideshare.",
+    },
+  ],
+});
+
+CLIPS.push({
+  id: "transport-driver-help",
+  category: "transportation",
+  title_en: "Asking the driver to turn around",
+  title_vi: "Nhờ tài xế quay lại",
+  description_vi:
+    "Khách quên ví trên xe và gọi lại tài xế. Giọng Canada. Tình huống nâng cao, học turn around, pull over, minor detour.",
+  duration_seconds: 50,
+  accent: "ca",
+  difficulty: "advanced",
+  transcript: [
+    {
+      speaker: "Passenger",
+      text_en:
+        "Hey, I think I left my wallet in your back seat. Any chance you could turn around?",
+      text_vi:
+        "Chào, hình như tôi để quên ví ở ghế sau. Anh có thể quay lại được không?",
+    },
+    {
+      speaker: "Driver",
+      text_en:
+        "Hold on, let me pull over and check. Yeah, I got a black wallet here on the floor. Can you wait fifteen minutes? I am happy to do a minor detour.",
+      text_vi:
+        "Đợi tôi tấp vào lề kiểm tra đã. Có một cái ví đen dưới sàn. Bạn đợi 15 phút được không? Tôi sẵn sàng đi vòng lại.",
+    },
+    {
+      speaker: "Passenger",
+      text_en:
+        "Yes, that works. Please bring it to the lobby of the Hilton Bayshore. I will pay for the extra time on the app.",
+      text_vi:
+        "Vâng, được. Anh đem đến sảnh khách sạn Hilton Bayshore giùm. Tôi sẽ trả thêm phí qua app.",
+    },
+  ],
+  vocabulary_keys: ["turn around", "pull over", "minor detour"],
+  comprehension_questions: [
+    {
+      question_vi: "Khách để quên gì?",
+      options: ["Điện thoại", "Ví", "Hộ chiếu"],
+      correct_index: 1,
+      explanation_vi:
+        "'I think I left my wallet' — quên ví. Tài xế xác nhận tìm thấy 'a black wallet'.",
+    },
+    {
+      question_vi: "Khách trả thêm tiền cho việc tài xế quay lại bằng cách nào?",
+      options: [
+        "Trả tiền mặt",
+        "Qua app Uber/Lyft với tip thêm",
+        "Không trả gì",
+      ],
+      correct_index: 1,
+      explanation_vi:
+        "'I will pay for the extra time on the app' — trả qua app, là cách chuẩn để bù tiền cho tài xế trong rideshare.",
+    },
+  ],
+});
+
+CLIPS.push({
+  id: "transport-airport-checkin",
+  category: "transportation",
+  title_en: "Airport check-in with extra baggage",
+  title_vi: "Check-in sân bay với hành lý dư",
+  description_vi:
+    "Khách check-in chuyến bay quốc tế, vali quá ký phải đóng phí. Giọng Anh-Anh. Nâng cao, học overweight, rebalance, carry-on.",
+  duration_seconds: 70,
+  accent: "uk",
+  difficulty: "advanced",
+  transcript: [
+    {
+      speaker: "Agent",
+      text_en: "Good morning. Passport and booking reference, please?",
+      text_vi: "Chào buổi sáng. Cho tôi xin hộ chiếu và mã đặt vé.",
+    },
+    {
+      speaker: "Passenger",
+      text_en:
+        "Here you are. Two checked bags, both under fifty pounds I hope.",
+      text_vi:
+        "Đây ạ. Hai vali ký gửi, hy vọng dưới 50 pound (23kg) cả hai.",
+    },
+    {
+      speaker: "Agent",
+      text_en:
+        "First one is fine — twenty-two kilos. The second one is overweight — twenty-eight. There is a fee of one hundred pounds for that, or you can rebalance them.",
+      text_vi:
+        "Cái đầu ổn — 22kg. Cái thứ hai quá ký — 28kg. Phí 100 bảng cho vali đó, hoặc bạn có thể chia lại đồ cho cân.",
+    },
+    {
+      speaker: "Passenger",
+      text_en:
+        "Let me move some things to my carry-on. Can I do that here?",
+      text_vi:
+        "Để tôi chuyển bớt đồ sang vali xách tay. Tôi làm ngay đây được chứ?",
+    },
+    {
+      speaker: "Agent",
+      text_en:
+        "Of course. Step to the side. When you are ready I will reweigh. Your gate is twenty-three, boarding starts at nine forty.",
+      text_vi:
+        "Vâng. Bạn đứng sang một bên. Khi nào sẵn sàng tôi cân lại. Cửa lên máy bay là cửa 23, bắt đầu cho lên lúc 9 giờ 40.",
+    },
+  ],
+  vocabulary_keys: ["overweight", "rebalance", "carry-on"],
+  comprehension_questions: [
+    {
+      question_vi: "Vali nào bị quá ký?",
+      options: ["Vali thứ nhất, 22kg", "Vali thứ hai, 28kg", "Cả hai"],
+      correct_index: 1,
+      explanation_vi:
+        "Vali 1: 22kg (ổn). Vali 2: 28kg (quá ký). Giới hạn ký gửi quốc tế thường là 23kg.",
+    },
+    {
+      question_vi: "Khách chọn cách xử lý nào?",
+      options: [
+        "Trả 100 bảng phí quá ký",
+        "Chuyển đồ sang vali xách tay (carry-on) để cân lại",
+        "Bỏ bớt đồ ở sân bay",
+      ],
+      correct_index: 1,
+      explanation_vi:
+        "'Move some things to my carry-on' — chuyển sang vali xách tay. Cách phổ biến để tránh phí quá ký.",
+    },
+  ],
+});
+
+// ─────────────────────────────────────────────────────────────────────
+// Selectors and lookup helpers — exported names are stable.
+// ─────────────────────────────────────────────────────────────────────
+
+export const LISTENING_CLIPS: ListeningClip[] = CLIPS;
+
+export const LISTENING_BY_CATEGORY: Record<ListeningCategory, ListeningClip[]> = {
+  restaurant:         LISTENING_CLIPS.filter((c) => c.category === "restaurant"),
+  doctor:             LISTENING_CLIPS.filter((c) => c.category === "doctor"),
+  "customer-service": LISTENING_CLIPS.filter((c) => c.category === "customer-service"),
+  "job-interview":    LISTENING_CLIPS.filter((c) => c.category === "job-interview"),
+  casual:             LISTENING_CLIPS.filter((c) => c.category === "casual"),
+  shopping:           LISTENING_CLIPS.filter((c) => c.category === "shopping"),
+  transportation:     LISTENING_CLIPS.filter((c) => c.category === "transportation"),
+};
+
+export function getListeningClipById(id: string): ListeningClip | undefined {
+  return LISTENING_CLIPS.find((c) => c.id === id);
+}
+
+/** Suggest the next clip in the same category that the user has not completed. */
+export function suggestNextInCategory(
+  category: ListeningCategory,
+  completedIds: ReadonlySet<string>,
+): ListeningClip | undefined {
+  const pool = LISTENING_BY_CATEGORY[category] ?? [];
+  return pool.find((c) => !completedIds.has(c.id));
+}
