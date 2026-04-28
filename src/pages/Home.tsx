@@ -14,6 +14,7 @@ import { useUserAccess } from "@/hooks/useUserAccess";
 import { useAuth } from "@/providers/AuthProvider";
 import { useFeatureFlag } from "@/hooks/useFeatureFlag";
 import { supabase } from "@/lib/supabaseClient";
+import DailyChallengeCard from "@/components/home/DailyChallengeCard";
 import FocusAreasCard from "@/components/home/FocusAreasCard";
 import PracticeRecommendationCard from "@/components/home/PracticeRecommendationCard";
 import RecommendedDrillCard from "@/components/home/RecommendedDrillCard";
@@ -728,6 +729,12 @@ export default function Home() {
               3. Progress (returning users see momentum)
               4. Secondary learning paths (recommendations + entry points + exam prep) */}
         <section ref={stageRef} style={{ marginTop: 14, display: "flex", flexDirection: "column", gap: 12 }} aria-label="Homepage choices">
+          {/* Daily pronunciation challenge — sits at the very top
+              when active. Self-gates on the daily_challenge_enabled
+              feature flag and hides itself once the user has a
+              completion for today. */}
+          <DailyChallengeCard isPhone={isPhone} />
+
           {/* ── 1. Today's Lesson ────────────────────────────────────────
               Top anchor for returning users — never auto-navigates; the
               user must tap "Bắt đầu" themselves. */}

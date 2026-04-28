@@ -66,6 +66,8 @@ const PhonemeDrillPage     = lazy(() => import("@/pages/practice/PhonemeDrillPag
 const VocabularyLibraryPage = lazy(() => import("@/pages/vocabulary/Library"));
 const VocabularyReviewPage = lazy(() => import("@/pages/vocabulary/ReviewSession"));
 const SpeechHistoryPage    = lazy(() => import("@/pages/speech/SpeechHistoryPage"));
+const DailyChallengePage   = lazy(() => import("@/pages/challenges/DailyChallengePage"));
+const ChallengeHistoryPage = lazy(() => import("@/pages/challenges/ChallengeHistoryPage"));
 const ProgressPage         = lazy(() => import("@/pages/Progress"));
 const ListeningLibraryPage = lazy(() => import("@/pages/listening/Library"));
 const ListeningClipPage    = lazy(() => import("@/pages/listening/ClipPlayer"));
@@ -696,6 +698,20 @@ export default function AppRouter() {
             element={
               <RequireAuth>
                 <LazyPage><VocabularyReviewPage /></LazyPage>
+              </RequireAuth>
+            }
+          />
+
+          {/* Daily pronunciation challenge — anon-viewable; the page
+              renders a sign-in nudge instead of the recorder when
+              the visitor is not authenticated. */}
+          <Route path="/challenge"
+            element={<LazyPage><DailyChallengePage /></LazyPage>}
+          />
+          <Route path="/challenge/history"
+            element={
+              <RequireAuth>
+                <LazyPage><ChallengeHistoryPage /></LazyPage>
               </RequireAuth>
             }
           />
