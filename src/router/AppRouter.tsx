@@ -114,6 +114,9 @@ const DeveloperPortalPage = lazy(() => import("@/pages/dev/DeveloperPortalPage")
 const SecuritySettingsPage = lazy(() => import("@/pages/account/SecuritySettings"));
 const Enable2FAPage = lazy(() => import("@/pages/auth/Enable2FA"));
 const Aal2ChallengePage = lazy(() => import("@/pages/auth/Aal2Challenge"));
+// 2FA Phase 2 — recovery flow (lost phone). Public route; password
+// is verified before the backup-code is checked.
+const RecoverWith2FAPage = lazy(() => import("@/pages/auth/RecoverWith2FA"));
 
 const BlogIndex = lazy(() => import("@/pages/blog/BlogIndex"));
 const BlogPost  = lazy(() => import("@/pages/blog/BlogPost"));
@@ -925,6 +928,13 @@ export default function AppRouter() {
                 <LazyPage><Aal2ChallengePage /></LazyPage>
               </RequireAuth>
             }
+          />
+          {/* 2FA Phase 2 — recovery flow (lost phone). Public route;
+              the page itself does signInWithPassword + backup-code
+              verify in sequence. NO RequireAuth wrapper because users
+              landing here are NOT signed in yet. */}
+          <Route path="/auth/recover"
+            element={<LazyPage><RecoverWith2FAPage /></LazyPage>}
           />
           {/* Push notification preferences (auth-required) */}
           <Route path="/account/push-preferences"

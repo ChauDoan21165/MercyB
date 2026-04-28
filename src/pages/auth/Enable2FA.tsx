@@ -34,6 +34,7 @@ import { canUseMfa } from "@/lib/security/mfaEligibility";
 import {
   cancelEnrollment,
   enrollTotp,
+  generateBackupCodes,
   humanizeMfaError,
   verifyEnrollment,
   type EnrollResult,
@@ -226,6 +227,11 @@ export default function Enable2FA() {
   const [code, setCode] = useState("");
   const [errorBilingual, setErrorBilingual] =
     useState<{ en: string; vi: string } | null>(null);
+  // Phase 2 — plaintext backup codes shown ONCE on the success
+  // screen. Empty array if generation failed (the user can still
+  // generate later from /account/security).
+  const [backupCodes, setBackupCodes] = useState<string[]>([]);
+  const [backupCodesError, setBackupCodesError] = useState<string | null>(null);
 
   // Track which factor we created so we can clean it up on unmount
   // (see the abort effect at the bottom of this component). A ref so
@@ -326,6 +332,21 @@ export default function Enable2FA() {
       // the verified factor.
       pendingFactorIdRef.current = null;
       void notifySecurityEmail("security_2fa_enabled");
+
+      // Phase 2 — generate 8 backup codes immediately. Verification
+      // just minted an aal=2 JWT (Supabase advances assurance on
+      // verifyEnrollment success), so the generate edge function's
+      // aal=2 gate is satisfied. The codes are returned ONCE and
+      // displayed on the success screen.
+      try {
+        const result = await generateBackupCodes();
+        setBackupCodes(result.codes);
+      } catch (genErr) {
+        // Non-fatal — user can generate from /account/security later.
+        const msg = genErr instanceof Error ? genErr.message : String(genErr);
+        setBackupCodesError(msg);
+      }
+
       setStep("done");
     } catch (err) {
       setErrorBilingual(humanizeMfaError(err));
@@ -407,17 +428,107 @@ export default function Enable2FA() {
             <p style={bodyViStyle}>
               Your account is now protected by 2FA. The next time you sign in, you'll enter a 6-digit code from your authenticator after your password.
             </p>
-            <p
-              style={{
-                ...bodyViStyle,
-                marginTop: 10,
-                color: "rgba(0,0,0,0.40)",
-              }}
-            >
-              Phase 2 (mã dự phòng / backup codes) đang được phát triển — sắp tới bạn sẽ có 8 mã dùng một lần phòng khi mất điện thoại.
-              <br />
-              Phase 2 (backup codes) is in progress — you'll soon have 8 single-use codes for the case where you lose your phone.
-            </p>
+
+            {/* Phase 2 — backup codes display. Shown ONCE; once the
+                user navigates away the only path to recover (lost
+                phone) is one of these codes. We make this prominent
+                with a yellow card + explicit save-warning copy. */}
+            {backupCodes.length > 0 ? (
+              <div
+                style={{
+                  marginTop: 18,
+                  padding: 16,
+                  borderRadius: 14,
+                  border: "1px solid #fde68a",
+                  background: "#fffbeb",
+                }}
+                data-testid="mfa-enroll-backup-codes"
+              >
+                <strong style={{ color: "#92400e", fontSize: 15 }}>
+                  Lưu 8 mã dự phòng này NGAY · Save these 8 backup codes NOW
+                </strong>
+                <p style={{ marginTop: 6, fontSize: 13, color: "#78350f", lineHeight: 1.5 }}>
+                  Mỗi mã chỉ dùng được một lần. Nếu mất điện thoại, một trong 8 mã này là cách duy nhất để khôi phục tài khoản.
+                </p>
+                <p style={{ marginTop: 4, fontSize: 12, color: "#92400e", lineHeight: 1.5 }}>
+                  Each code is single-use. If you lose your phone, one of these 8 codes is the only way to recover your account. They will NOT be shown again.
+                </p>
+                <ul
+                  style={{
+                    marginTop: 12,
+                    listStyle: "none",
+                    padding: 0,
+                    display: "grid",
+                    gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
+                    gap: 8,
+                  }}
+                >
+                  {backupCodes.map((c) => (
+                    <li
+                      key={c}
+                      style={{
+                        fontFamily: "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace",
+                        fontSize: 14,
+                        fontWeight: 700,
+                        letterSpacing: 1,
+                        padding: "8px 10px",
+                        background: "white",
+                        border: "1px solid #fde68a",
+                        borderRadius: 8,
+                        textAlign: "center",
+                        color: "#0f172a",
+                      }}
+                    >
+                      {c}
+                    </li>
+                  ))}
+                </ul>
+                <button
+                  type="button"
+                  onClick={() => {
+                    const text =
+                      "MercyBlade 2FA Backup Codes — store securely:\n\n" +
+                      backupCodes.join("\n");
+                    void navigator.clipboard?.writeText(text).catch(() => undefined);
+                  }}
+                  style={{
+                    marginTop: 12,
+                    background: "white",
+                    color: "#92400e",
+                    borderRadius: 9999,
+                    minHeight: 36,
+                    padding: "0 16px",
+                    fontWeight: 700,
+                    fontSize: 13,
+                    border: "1px solid #fde68a",
+                    cursor: "pointer",
+                  }}
+                  data-testid="mfa-enroll-copy-codes"
+                >
+                  Sao chép · Copy all
+                </button>
+              </div>
+            ) : backupCodesError ? (
+              <div
+                style={{
+                  marginTop: 14,
+                  padding: 12,
+                  borderRadius: 12,
+                  border: "1px solid #fecaca",
+                  background: "#fef2f2",
+                  color: "#991b1b",
+                  fontSize: 13,
+                  lineHeight: 1.5,
+                }}
+              >
+                Không tạo được mã dự phòng tự động. Vào trang Bảo mật để tạo thủ công.
+                <br />
+                <span style={{ fontSize: 12, color: "#7f1d1d" }}>
+                  Couldn't generate backup codes automatically. Visit Security settings to generate them manually.
+                </span>
+              </div>
+            ) : null}
+
             <div
               style={{
                 marginTop: 18,

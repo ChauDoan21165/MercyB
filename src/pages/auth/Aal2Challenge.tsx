@@ -26,9 +26,12 @@ import { useAuth } from "@/providers/AuthProvider";
 import { supabase } from "@/lib/supabaseClient";
 import {
   challengeFactor,
+  checkMfaLockout,
   findFirstVerifiedTotp,
   humanizeMfaError,
   listMfaFactors,
+  reportTotpFailure,
+  reportTotpSuccess,
   verifyChallenge,
 } from "@/lib/security/mfaClient";
 
@@ -159,6 +162,11 @@ export default function Aal2Challenge() {
   const [errorBilingual, setErrorBilingual] =
     useState<{ en: string; vi: string } | null>(null);
   const [setupError, setSetupError] = useState<string | null>(null);
+  // Phase 2 — lockout state. Populated from the rate-limit
+  // coordinator's `check` action on mount. When locked, we still
+  // render the form so the user sees the countdown, but submit is
+  // disabled.
+  const [lockoutUntil, setLockoutUntil] = useState<string | null>(null);
 
   const next = safeNext(searchParams);
 
@@ -184,6 +192,18 @@ export default function Aal2Challenge() {
         if (!alive) return;
         setFactorId(challenge.factorId);
         setChallengeId(challenge.challengeId);
+
+        // Phase 2 — check lockout state. If currently locked, the
+        // form is rendered disabled with the lockout-until timestamp.
+        try {
+          const lockoutState = await checkMfaLockout();
+          if (alive && lockoutState.locked_out && lockoutState.lockout_until) {
+            setLockoutUntil(lockoutState.lockout_until);
+          }
+        } catch {
+          // Lockout check is non-fatal — let the user attempt verify.
+          // The server-side TOTP rate limiter is still the floor.
+        }
       } catch (err) {
         if (!alive) return;
         const msg =
@@ -198,6 +218,11 @@ export default function Aal2Challenge() {
 
   const onSubmit = useCallback(async () => {
     if (!factorId || !challengeId) return;
+    if (lockoutUntil) {
+      // Form should already be disabled at this point, but guard
+      // against client-side state divergence.
+      return;
+    }
     if (!/^\d{6}$/.test(code)) {
       setErrorBilingual({
         en: "Enter the 6-digit code from your authenticator app.",
@@ -209,15 +234,28 @@ export default function Aal2Challenge() {
     setErrorBilingual(null);
     try {
       await verifyChallenge(factorId, challengeId, code);
+      // Phase 2 — cooperative success report. Clears the lockout
+      // counter so the user starts fresh on the next sign-in.
+      void reportTotpSuccess().catch(() => undefined);
       // Session JWT now carries aal=aal2. Bounce to the originally
       // requested path. `replace` so the back button doesn't drop the
       // user back on the challenge page.
       navigate(next, { replace: true });
     } catch (err) {
+      // Phase 2 — cooperative failure report. May trigger a server-
+      // side lockout after 5 failures in 15 min.
+      try {
+        const failure = await reportTotpFailure();
+        if (failure.lockout_triggered && failure.lockout_until) {
+          setLockoutUntil(failure.lockout_until);
+        }
+      } catch {
+        /* non-fatal */
+      }
       setErrorBilingual(humanizeMfaError(err));
       setBusy(false);
     }
-  }, [factorId, challengeId, code, navigate, next]);
+  }, [factorId, challengeId, code, navigate, next, lockoutUntil]);
 
   // Cancel = sign out. Otherwise the dangling aal=1 session sits in
   // localStorage and a malicious bystander could resume the bypass
@@ -322,12 +360,45 @@ export default function Aal2Challenge() {
             placeholder="123456"
             aria-label="6-digit code from your authenticator app"
             data-testid="aal2-challenge-input"
-            disabled={busy}
+            disabled={busy || Boolean(lockoutUntil)}
             autoFocus
             style={{ ...codeInputStyle, marginTop: 16 }}
           />
 
-          {errorBilingual ? (
+          {/* Phase 2 — lockout banner. Shown when the user has hit
+              5 failed attempts in 15 min; submit is disabled until
+              the lockout window passes. The countdown is approximate
+              client-side (we just display the timestamp). */}
+          {lockoutUntil ? (
+            <div
+              role="alert"
+              style={{
+                ...errorBox,
+                background: "#fff7ed",
+                borderColor: "#fed7aa",
+                color: "#9a3412",
+              }}
+              data-testid="aal2-challenge-locked"
+            >
+              Tài khoản tạm khoá vì nhập sai 2FA quá nhiều lần. Thử lại sau{" "}
+              {new Date(lockoutUntil).toLocaleTimeString()}.
+              <span
+                style={{
+                  display: "block",
+                  marginTop: 2,
+                  fontSize: 12,
+                  color: "#7c2d12",
+                }}
+              >
+                Account temporarily locked due to too many failed attempts. Try again after{" "}
+                {new Date(lockoutUntil).toLocaleTimeString()}. (You can also{" "}
+                <a href="/auth/recover" style={{ color: "#0369a1", fontWeight: 700 }}>
+                  recover with a backup code
+                </a>
+                .)
+              </span>
+            </div>
+          ) : errorBilingual ? (
             <div role="alert" style={errorBox} data-testid="aal2-challenge-error">
               {errorBilingual.en}
               <span
@@ -358,7 +429,7 @@ export default function Aal2Challenge() {
                 opacity: busy || code.length !== 6 ? 0.6 : 1,
               }}
               onClick={() => void onSubmit()}
-              disabled={busy || code.length !== 6 || !challengeId}
+              disabled={busy || code.length !== 6 || !challengeId || Boolean(lockoutUntil)}
               data-testid="aal2-challenge-submit"
             >
               {busy
@@ -384,18 +455,35 @@ export default function Aal2Challenge() {
               lineHeight: 1.5,
             }}
           >
-            Mất quyền truy cập ứng dụng xác thực? Liên hệ
+            Mất điện thoại? Bạn có thể{" "}
             <a
-              href="mailto:admin@mercyblade.com"
-              style={{ color: "#0369a1", marginLeft: 4, fontWeight: 700 }}
+              href="/auth/recover"
+              style={{ color: "#0369a1", fontWeight: 700 }}
+              data-testid="aal2-challenge-recover-link"
             >
-              admin@mercyblade.com
-            </a>{" "}
-            để được hỗ trợ.
+              khôi phục bằng mã dự phòng
+            </a>
+            {" "}— cần email + mật khẩu + một trong 8 mã đã lưu khi bật 2FA.
             <br />
             <span style={{ color: "rgba(0,0,0,0.40)" }}>
-              Lost access to your authenticator? Contact admin@mercyblade.com for
-              help. (Phase 2 will ship one-time backup codes.)
+              Lost your phone? You can{" "}
+              <a
+                href="/auth/recover"
+                style={{ color: "#0369a1", fontWeight: 700 }}
+              >
+                recover with a backup code
+              </a>{" "}
+              — needs email + password + one of the 8 codes you saved.
+            </span>
+            <br />
+            <span style={{ color: "rgba(0,0,0,0.40)" }}>
+              Lost the codes too?{" "}
+              <a
+                href="mailto:admin@mercyblade.com"
+                style={{ color: "#0369a1" }}
+              >
+                admin@mercyblade.com
+              </a>
             </span>
           </p>
         </section>

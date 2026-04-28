@@ -25,9 +25,11 @@ import { supabase } from "@/lib/supabaseClient";
 import {
   disableTotpFactor,
   findFirstVerifiedTotp,
+  getBackupCodeStatus,
   hasVerifiedTotpFactor,
   humanizeMfaError,
   listMfaFactors,
+  regenerateBackupCodes,
   type MfaFactor,
 } from "@/lib/security/mfaClient";
 import { canUseMfa } from "@/lib/security/mfaEligibility";
@@ -160,6 +162,10 @@ export default function SecuritySettings() {
   const [errorBilingual, setErrorBilingual] =
     useState<{ en: string; vi: string } | null>(null);
 
+  // Phase 2 — backup-code status + just-regenerated codes (shown ONCE).
+  const [backupUnusedCount, setBackupUnusedCount] = useState<number | null>(null);
+  const [regeneratedCodes, setRegeneratedCodes] = useState<string[]>([]);
+
   // Initial load — fetch factor list once we have a session.
   useEffect(() => {
     if (authLoading || !user) {
@@ -182,6 +188,29 @@ export default function SecuritySettings() {
       alive = false;
     };
   }, [authLoading, user]);
+
+  // Phase 2 — fetch backup-code count whenever we have a verified
+  // factor. Skipped during loading to avoid the same access-loading
+  // race the eligibility-helper PR (PR #214) fixed.
+  useEffect(() => {
+    if (loadingFactors) return;
+    if (!hasVerifiedTotpFactor(factors)) {
+      setBackupUnusedCount(null);
+      return;
+    }
+    let alive = true;
+    getBackupCodeStatus()
+      .then((res) => {
+        if (alive) setBackupUnusedCount(res.unused_count);
+      })
+      .catch(() => {
+        // Non-fatal — UI just shows "—" instead of a count.
+        if (alive) setBackupUnusedCount(null);
+      });
+    return () => {
+      alive = false;
+    };
+  }, [factors, loadingFactors]);
 
   const refreshFactors = useCallback(async () => {
     try {
@@ -210,6 +239,31 @@ export default function SecuritySettings() {
       setBusy(false);
     }
   }, [factors, refreshFactors]);
+
+  // Phase 2 — regenerate backup codes. Requires aal=2; the route
+  // guard already ensures the user is at aal=2 by the time they
+  // reach this page (RequireAal2 forces the challenge upstream).
+  const onRegenerateBackupCodes = useCallback(async () => {
+    setBusy(true);
+    setErrorBilingual(null);
+    try {
+      const result = await regenerateBackupCodes();
+      setRegeneratedCodes(result.codes);
+      setBackupUnusedCount(result.codes.length);
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : String(err);
+      if (msg === "aal2_required") {
+        setErrorBilingual({
+          en: "Please verify your 2FA code first to confirm this change.",
+          vi: "Vui lòng nhập mã 2FA để xác nhận thay đổi này.",
+        });
+      } else {
+        setErrorBilingual(humanizeMfaError(err));
+      }
+    } finally {
+      setBusy(false);
+    }
+  }, []);
 
   // ── Render gates ───────────────────────────────────────────────────
 
@@ -401,6 +455,180 @@ export default function SecuritySettings() {
             ) : null}
           </section>
         )}
+
+        {/* Phase 2 — backup codes section. Only shown when MFA is
+            enabled. The page is RequireAal2-gated so the user is
+            at aal=2 by the time they see this. */}
+        {eligibility.allowed && enabled ? (
+          <section
+            style={cardStyle}
+            aria-label="Backup codes"
+            data-testid="mfa-backup-codes-card"
+          >
+            <h2
+              style={{
+                fontSize: 18,
+                fontWeight: 800,
+                letterSpacing: -0.2,
+                margin: 0,
+                color: "rgba(10,10,10,0.92)",
+              }}
+            >
+              Mã dự phòng
+              <span
+                style={{
+                  display: "block",
+                  fontSize: 12,
+                  fontWeight: 500,
+                  color: "rgba(0,0,0,0.55)",
+                  marginTop: 2,
+                }}
+              >
+                Backup codes
+              </span>
+            </h2>
+
+            <p
+              style={{
+                marginTop: 12,
+                fontSize: 14,
+                color: "rgba(0,0,0,0.72)",
+                lineHeight: 1.55,
+              }}
+            >
+              {backupUnusedCount === null
+                ? "—"
+                : `${backupUnusedCount} / 8 mã chưa dùng. Nếu mất điện thoại, dùng một mã ở /auth/recover để khôi phục.`}
+            </p>
+            <p
+              style={{
+                marginTop: 4,
+                fontSize: 12,
+                color: "rgba(0,0,0,0.50)",
+                lineHeight: 1.5,
+              }}
+            >
+              {backupUnusedCount === null
+                ? "Status unavailable."
+                : `${backupUnusedCount} / 8 unused codes. If you lose your phone, use one at /auth/recover.`}
+            </p>
+
+            {regeneratedCodes.length > 0 ? (
+              <div
+                style={{
+                  marginTop: 14,
+                  padding: 14,
+                  borderRadius: 12,
+                  border: "1px solid #fde68a",
+                  background: "#fffbeb",
+                }}
+                data-testid="mfa-backup-codes-regenerated"
+              >
+                <strong style={{ color: "#92400e", fontSize: 14 }}>
+                  Lưu 8 mã mới NGAY · Save these 8 new codes NOW
+                </strong>
+                <p style={{ marginTop: 4, fontSize: 12, color: "#78350f", lineHeight: 1.45 }}>
+                  Mã cũ đã bị huỷ. Mã mới chỉ hiện một lần — sao chép hoặc lưu cẩn thận.
+                  <br />
+                  <span style={{ color: "#92400e" }}>
+                    Old codes are invalidated. New codes show ONCE — copy or save them carefully.
+                  </span>
+                </p>
+                <ul
+                  style={{
+                    marginTop: 10,
+                    listStyle: "none",
+                    padding: 0,
+                    display: "grid",
+                    gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
+                    gap: 6,
+                  }}
+                >
+                  {regeneratedCodes.map((c) => (
+                    <li
+                      key={c}
+                      style={{
+                        fontFamily: "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace",
+                        fontSize: 13,
+                        fontWeight: 700,
+                        letterSpacing: 1,
+                        padding: "6px 8px",
+                        background: "white",
+                        border: "1px solid #fde68a",
+                        borderRadius: 6,
+                        textAlign: "center",
+                        color: "#0f172a",
+                      }}
+                    >
+                      {c}
+                    </li>
+                  ))}
+                </ul>
+                <button
+                  type="button"
+                  onClick={() => {
+                    const text =
+                      "MercyBlade 2FA Backup Codes — store securely:\n\n" +
+                      regeneratedCodes.join("\n");
+                    void navigator.clipboard?.writeText(text).catch(() => undefined);
+                  }}
+                  style={{
+                    marginTop: 10,
+                    background: "white",
+                    color: "#92400e",
+                    borderRadius: 9999,
+                    minHeight: 32,
+                    padding: "0 12px",
+                    fontWeight: 700,
+                    fontSize: 12,
+                    border: "1px solid #fde68a",
+                    cursor: "pointer",
+                  }}
+                  data-testid="mfa-backup-codes-copy"
+                >
+                  Sao chép · Copy all
+                </button>
+              </div>
+            ) : null}
+
+            <div style={{ marginTop: 14, display: "flex", gap: 10, flexWrap: "wrap" }}>
+              <button
+                type="button"
+                style={{
+                  background: "white",
+                  color: "#0f172a",
+                  borderRadius: 9999,
+                  minHeight: 40,
+                  padding: "0 18px",
+                  fontWeight: 700,
+                  fontSize: 13,
+                  border: "1px solid rgba(0,0,0,0.12)",
+                  cursor: "pointer",
+                }}
+                onClick={() => void onRegenerateBackupCodes()}
+                disabled={busy}
+                data-testid="mfa-backup-codes-regenerate"
+              >
+                {busy ? "Đang tạo… · Generating…" : "Tạo mã mới · Regenerate codes"}
+              </button>
+            </div>
+
+            <p
+              style={{
+                marginTop: 10,
+                fontSize: 11,
+                color: "rgba(0,0,0,0.45)",
+                lineHeight: 1.4,
+              }}
+            >
+              Tạo mới sẽ huỷ toàn bộ 8 mã cũ. Chỉ làm khi bạn đã dùng vài mã hoặc nghi ngờ chúng bị lộ.
+              <br />
+              <span style={{ color: "rgba(0,0,0,0.40)" }}>
+                Regenerating invalidates all 8 prior codes. Only do this after using some, or if you suspect a leak.
+              </span>
+            </p>
+          </section>
+        ) : null}
       </div>
     </div>
   );

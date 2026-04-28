@@ -20,7 +20,7 @@ import { describe, expect, it } from "vitest";
 
 const migrationPath = path.resolve(
   process.cwd(),
-  "supabase/migrations/20260426000000_user_stories.sql",
+  "supabase/migrations/20260523000000_user_stories.sql",
 );
 
 function readMigration(): string {

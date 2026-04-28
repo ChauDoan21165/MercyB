@@ -144,55 +144,86 @@ export default function Tiers() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-        {tierCounts.map((row) => {
-          const tier = row.tier;
+      <SectionHeader vi="Tiếng Anh hằng ngày" en="Daily English" />
+      <TierGrid rows={tierCounts.filter((r) => !String(r.tier).startsWith("kids_"))} />
 
-          const label =
-            tier === "unknown"
-              ? "Unknown / Chưa rõ"
-              : TIER_ID_TO_LABEL[tier];
+      <SectionHeader vi="Tiếng Anh cho trẻ em" en="Kids English" />
+      <TierGrid rows={tierCounts.filter((r) => String(r.tier).startsWith("kids_"))} />
 
-          const href =
-            tier === "unknown"
-              ? "/tiers/unknown"
-              : `/tiers/${tier}`;
+      <SectionHeader vi="Luyện thi" en="Exams (VSTEP · TOEIC · IELTS)" />
+      <p className="mb-4 text-xs text-zinc-500">Sắp ra mắt · Coming soon.</p>
 
-          return (
-            <Link
-              key={tier}
-              to={href}
-              className={cn(
-                "rounded-xl border bg-white px-4 py-3 hover:shadow-sm transition",
-                "flex items-center justify-between"
-              )}
-            >
-              <div className="flex items-center gap-2">
-                <span
-                  className={cn(
-                    "inline-flex items-center gap-2 rounded-full px-3 py-1 text-sm font-medium",
-                    TIER_COLORS[tier] || TIER_COLORS.level0
-                  )}
-                >
-                  <span className="inline-block h-2.5 w-2.5 rounded-full bg-zinc-500" />
-                  <span>
-                    {tier === "unknown" ? "Unknown" : tier.toUpperCase()}
-                  </span>
-                </span>
-                <span className="text-sm text-zinc-700">{label}</span>
-              </div>
-
-              <span className="inline-flex items-center rounded-full border px-3 py-1 text-sm font-semibold text-zinc-800">
-                {row.count}
-              </span>
-            </Link>
-          );
-        })}
-      </div>
+      <SectionHeader vi="Luyện nói" en="Speaking practice" />
+      <p className="mb-4 text-xs text-zinc-500">Sắp ra mắt · Coming soon.</p>
 
       <div className="mt-4 text-xs text-zinc-500">
         Source: getAllRooms() (runtime room loader). Unknown is shown explicitly.
       </div>
+    </div>
+  );
+}
+
+// Section header — small visual divider above each tier group. Pure
+// presentation; no logic.
+function SectionHeader({ vi, en }: { vi: string; en: string }) {
+  return (
+    <div className="mt-6 mb-2 first:mt-0">
+      <h2 className="text-sm font-semibold text-zinc-900">{vi}</h2>
+      <p className="text-xs text-zinc-500">{en}</p>
+    </div>
+  );
+}
+
+// Renders one section's tier rows in the same layout the page used
+// before — only difference vs. the original is that the array is a
+// pre-filtered slice of tierCounts instead of the full list.
+function TierGrid({ rows }: { rows: TierRow[] }) {
+  if (rows.length === 0) return null;
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-2">
+      {rows.map((row) => {
+        const tier = row.tier;
+
+        const label =
+          tier === "unknown"
+            ? "Unknown / Chưa rõ"
+            : TIER_ID_TO_LABEL[tier];
+
+        const href =
+          tier === "unknown"
+            ? "/tiers/unknown"
+            : `/tiers/${tier}`;
+
+        return (
+          <Link
+            key={tier}
+            to={href}
+            className={cn(
+              "rounded-xl border bg-white px-4 py-3 hover:shadow-sm transition",
+              "flex items-center justify-between"
+            )}
+          >
+            <div className="flex items-center gap-2">
+              <span
+                className={cn(
+                  "inline-flex items-center gap-2 rounded-full px-3 py-1 text-sm font-medium",
+                  TIER_COLORS[tier] || TIER_COLORS.level0
+                )}
+              >
+                <span className="inline-block h-2.5 w-2.5 rounded-full bg-zinc-500" />
+                <span>
+                  {tier === "unknown" ? "Unknown" : tier.toUpperCase()}
+                </span>
+              </span>
+              <span className="text-sm text-zinc-700">{label}</span>
+            </div>
+
+            <span className="inline-flex items-center rounded-full border px-3 py-1 text-sm font-semibold text-zinc-800">
+              {row.count}
+            </span>
+          </Link>
+        );
+      })}
     </div>
   );
 }
