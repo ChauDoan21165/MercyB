@@ -13,6 +13,7 @@ import { FeedbackBar } from "@/components/FeedbackBar";
 import { useUserAccess } from "@/hooks/useUserAccess";
 import { useAuth } from "@/providers/AuthProvider";
 import { useFeatureFlag } from "@/hooks/useFeatureFlag";
+import { supabase } from "@/lib/supabaseClient";
 import FocusAreasCard from "@/components/home/FocusAreasCard";
 import PracticeRecommendationCard from "@/components/home/PracticeRecommendationCard";
 import RecommendedDrillCard from "@/components/home/RecommendedDrillCard";
@@ -130,6 +131,36 @@ export default function Home() {
       (closeButton || collapseButton)?.click();
     }
   }, [access.isAuthenticated, access.loading, access.isTrialExpired]);
+
+  // Onboarding gate (PR feat/onboarding-rebuild). New-cohort users
+  // (created on or after 2026-04-27) who have not completed or
+  // skipped the goal-capture flow get redirected to /onboarding on
+  // first visit. Legacy users — created earlier — are unaffected:
+  // their onboarded_at stays NULL and this date filter lets them
+  // pass through. Single self-fetch; failures never block Home.
+  useEffect(() => {
+    if (!access.isAuthenticated || access.loading || !user?.id) return;
+    let cancelled = false;
+    const ONBOARDING_COHORT_CUTOFF = "2026-04-27T00:00:00Z";
+    void (async () => {
+      try {
+        const { data, error } = await supabase
+          .from("profiles")
+          .select("onboarded_at, created_at")
+          .eq("id", user.id)
+          .maybeSingle();
+        if (cancelled || error || !data) return;
+        const row = data as { onboarded_at: string | null; created_at: string | null };
+        if (row.onboarded_at) return;
+        if (!row.created_at) return;
+        if (row.created_at < ONBOARDING_COHORT_CUTOFF) return;
+        nav("/onboarding", { replace: true });
+      } catch {
+        // ignore — never block Home on onboarding gate failure
+      }
+    })();
+    return () => { cancelled = true; };
+  }, [access.isAuthenticated, access.loading, nav, user?.id]);
 
   const isDesktopTop      = viewportWidth >= 960;
   const isPhone           = viewportWidth < 640;

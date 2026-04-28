@@ -48,6 +48,7 @@ const LoginPage           = lazy(() => import("@/pages/LoginPage"));
 const ResetPasswordPage   = lazy(() => import("@/pages/ResetPasswordPage"));
 const ConvertAccountPage  = lazy(() => import("@/pages/auth/ConvertAccount"));
 const AcceptInvitePage    = lazy(() => import("@/pages/auth/AcceptInvite"));
+const OnboardingPage      = lazy(() => import("@/pages/onboarding/OnboardingPage"));
 const BulkInvitePage      = lazy(() => import("@/pages/referral/BulkInvite"));
 
 // Email preferences — public /unsubscribe (token-based) + auth-required
@@ -554,6 +555,18 @@ export default function AppRouter() {
         <Route path="/auth/callback" element={<AuthRedirect />} />
 
         <Route element={<AppHeroShell />}>
+          {/* Onboarding — auth-required goal-capture flow. Unlike Home,
+              this route does NOT pass through the onboarding gate, so
+              new users can complete or skip it without redirect loops. */}
+          <Route
+            path="/onboarding"
+            element={
+              <RequireAuth>
+                <LazyPage><OnboardingPage /></LazyPage>
+              </RequireAuth>
+            }
+          />
+
           {/* Public pages */}
           <Route path="/"        element={<LazyPage><Home /></LazyPage>} />
           <Route path="/privacy" element={<LazyPage><Privacy /></LazyPage>} />
