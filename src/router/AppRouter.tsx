@@ -78,6 +78,8 @@ const HospitalityLessonsPage = lazy(() => import("@/pages/professions/Hospitalit
 const MercyThreadPage      = lazy(() => import("@/pages/mercy/MercyThreadPage"));
 
 const WritingFeedbackPage  = lazy(() => import("@/pages/writing/WritingFeedbackPage"));
+const WritingPracticePage  = lazy(() => import("@/pages/writing/WritingPracticePage"));
+const WritingPracticeSessionPage = lazy(() => import("@/pages/writing/WritingPracticeSessionPage"));
 
 // IELTS prep mode (Step 11 — premium-gated; gate enforced per-page).
 const IELTSIndexPage      = lazy(() => import("@/pages/exam-prep/IELTSIndexPage"));
@@ -703,6 +705,14 @@ export default function AppRouter() {
                 <LazyPage><WritingFeedbackPage /></LazyPage>
               </RequireAuth>
             }
+          />
+
+          {/* Real-life writing practice (40 prompts × AI feedback). */}
+          <Route path="/writing"
+            element={<LazyPage><WritingPracticePage /></LazyPage>}
+          />
+          <Route path="/writing/:promptId"
+            element={<LazyPage><WritingPracticeSessionPage /></LazyPage>}
           />
 
           {/* IELTS prep (Step 11) — auth-required; premium gate is in-page. */}
