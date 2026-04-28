@@ -308,3 +308,157 @@ export function humanizeMfaError(err: unknown): { en: string; vi: string } {
     vi: "Có lỗi xảy ra. Vui lòng thử lại.",
   };
 }
+
+// ─── Phase 2: backup codes + lockout coordinator ──────────────────────
+
+/**
+ * Result of a backup-code generate/regenerate. The plaintext codes
+ * are shown ONCE; once the user navigates away the only path to
+ * recover is to regenerate (which invalidates these).
+ */
+export type BackupCodesResult = {
+  codes: string[];
+  generation_id: string;
+};
+
+function getSupabaseUrl(): string {
+  return String(import.meta.env.VITE_SUPABASE_URL ?? "").replace(/\/$/, "");
+}
+
+async function callMfaBackupCodes<T>(body: Record<string, unknown>): Promise<T> {
+  const { data: sessionData } = await supabase.auth.getSession();
+  const jwt = sessionData?.session?.access_token;
+  if (!jwt) throw new Error("not_signed_in");
+
+  const baseUrl = getSupabaseUrl();
+  if (!baseUrl) throw new Error("supabase_url_missing");
+
+  const res = await fetch(`${baseUrl}/functions/v1/mfa-backup-codes`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${jwt}`,
+    },
+    body: JSON.stringify(body),
+  });
+
+  const json = await res.json().catch(() => ({}));
+  if (!res.ok) {
+    // Throw an Error whose message is the server-provided code so
+    // humanizeMfaError can route it.
+    const err = new Error(
+      typeof json?.error === "string" ? json.error : `http_${res.status}`,
+    );
+    (err as Error & { details?: unknown }).details = json;
+    throw err;
+  }
+  return json as T;
+}
+
+async function callMfaRateLimit<T>(action: "check" | "record_failure" | "record_success"): Promise<T> {
+  const { data: sessionData } = await supabase.auth.getSession();
+  const jwt = sessionData?.session?.access_token;
+  if (!jwt) throw new Error("not_signed_in");
+
+  const baseUrl = getSupabaseUrl();
+  if (!baseUrl) throw new Error("supabase_url_missing");
+
+  const res = await fetch(`${baseUrl}/functions/v1/mfa-challenge-rate-limit`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${jwt}`,
+    },
+    body: JSON.stringify({ action }),
+  });
+
+  const json = await res.json().catch(() => ({}));
+  if (!res.ok) {
+    const err = new Error(
+      typeof json?.error === "string" ? json.error : `http_${res.status}`,
+    );
+    (err as Error & { details?: unknown }).details = json;
+    throw err;
+  }
+  return json as T;
+}
+
+/**
+ * Generate 8 backup codes for the first time. Requires aal=2.
+ * Returns plaintext codes ONCE — they cannot be re-displayed.
+ *
+ * Throws "backup_codes_already_exist" if the user already has unused
+ * codes; call regenerateBackupCodes() to replace them instead.
+ */
+export async function generateBackupCodes(): Promise<BackupCodesResult> {
+  return await callMfaBackupCodes<BackupCodesResult>({ action: "generate" });
+}
+
+/**
+ * Replace all existing backup codes with 8 fresh ones. Requires aal=2
+ * (user must have entered TOTP recently). Old codes are atomically
+ * marked used before the new ones are inserted.
+ */
+export async function regenerateBackupCodes(): Promise<BackupCodesResult> {
+  return await callMfaBackupCodes<BackupCodesResult>({ action: "regenerate" });
+}
+
+/**
+ * Verify a backup code as part of the recovery flow at /auth/recover.
+ * On match the server unenrolls the user's verified TOTP factor so
+ * the (already aal=1) session passes the require_aal2_when_factor_present
+ * RLS gate. The user is then prompted to re-enroll MFA.
+ *
+ * Caller MUST already have a valid signed-in session — the recovery
+ * page calls supabase.auth.signInWithPassword first.
+ */
+export async function verifyBackupCode(code: string): Promise<{ ok: true; mfa_disabled: boolean }> {
+  return await callMfaBackupCodes<{ ok: true; mfa_disabled: boolean }>({
+    action: "verify",
+    code,
+  });
+}
+
+/** Status query for the /account/security UI: returns count of unused codes. */
+export async function getBackupCodeStatus(): Promise<{
+  unused_count: number;
+  total: number;
+}> {
+  return await callMfaBackupCodes<{ unused_count: number; total: number }>({
+    action: "status",
+  });
+}
+
+// ─── Lockout coordinator ──────────────────────────────────────────────
+
+export type LockoutCheckResult = {
+  locked_out: boolean;
+  lockout_until?: string;
+  remaining?: number;
+};
+
+export type LockoutFailureResult = {
+  lockout_triggered: boolean;
+  lockout_until?: string;
+  attempts: number;
+  already_locked?: boolean;
+};
+
+/** Check current lockout state for the signed-in user. Returns
+ * `{ locked_out: false, remaining }` when not locked, or
+ * `{ locked_out: true, lockout_until }` when locked. */
+export async function checkMfaLockout(): Promise<LockoutCheckResult> {
+  return await callMfaRateLimit<LockoutCheckResult>("check");
+}
+
+/** Report a failed TOTP verify so the lockout counter increments.
+ * Cooperative — see mfa-challenge-rate-limit/index.ts for the threat
+ * model rationale. */
+export async function reportTotpFailure(): Promise<LockoutFailureResult> {
+  return await callMfaRateLimit<LockoutFailureResult>("record_failure");
+}
+
+/** Report a successful TOTP verify so the counter is cleared. */
+export async function reportTotpSuccess(): Promise<{ ok: true }> {
+  return await callMfaRateLimit<{ ok: true }>("record_success");
+}
