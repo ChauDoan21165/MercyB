@@ -77,6 +77,11 @@ const HospitalityLessonsPage = lazy(() => import("@/pages/professions/Hospitalit
 // Mercy v2 — multi-turn conversation thread page (auth-required).
 const MercyThreadPage      = lazy(() => import("@/pages/mercy/MercyThreadPage"));
 
+// Mercy unified chat — single-pane chat that replaces the multi-tab
+// drawer for users on the new default ('unified'). Legacy MercyGuide
+// drawer is preserved on Home for the 'classic' opt-out.
+const MercyUnifiedPage     = lazy(() => import("@/pages/mercy/MercyUnifiedPage"));
+
 const WritingFeedbackPage  = lazy(() => import("@/pages/writing/WritingFeedbackPage"));
 
 // IELTS prep mode (Step 11 — premium-gated; gate enforced per-page).
@@ -694,6 +699,12 @@ export default function AppRouter() {
                 <LazyPage><MercyThreadPage /></LazyPage>
               </RequireAuth>
             }
+          />
+
+          {/* Mercy unified chat — single-pane chat replacement for the
+              multi-tab drawer (default for new users). */}
+          <Route path="/mercy/chat"
+            element={<LazyPage><MercyUnifiedPage /></LazyPage>}
           />
 
           {/* Writing feedback (Step 7 / AI Teacher v2 — rule-based MVP) */}

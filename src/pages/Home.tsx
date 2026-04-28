@@ -258,39 +258,11 @@ export default function Home() {
       return;
     }
 
-    window.scrollTo({ top: 0, behavior: "smooth" });
-
-    // Find the floating Mercy bubble.
-    // Earlier (commit b0d0153a) this code dispatched a synthetic
-    // PointerEvent("pointerdown") to force-open the bubble — but
-    // synthesized PointerEvents have no active pointer, so the
-    // bubble's onPointerDown handler crashed when calling
-    // setPointerCapture(event.pointerId) → NotFoundError caught by
-    // the page-level error boundary. Removing the synthetic dispatch:
-    // focus + Enter keydown alone reliably opens the bubble (matches
-    // the bubble's onKeyDown handler) and never touches pointer state.
-    const bubble =
-      document.querySelector<HTMLElement>('[aria-label="Open Mercy Guide"]') ||
-      document.querySelector<HTMLElement>('[aria-label="Open Teacher Mercy for kids"]');
-
-    if (bubble) {
-      bubble.focus();
-      bubble.dispatchEvent(
-        new KeyboardEvent("keydown", {
-          bubbles: true,
-          cancelable: true,
-          key: "Enter",
-        })
-      );
-    } else {
-      console.warn(
-        "[Home] Teacher Mercy bubble not found; cannot open panel. " +
-        "User may be unauthenticated or trial expired."
-      );
-    }
-
-    // Backwards-compat custom event (no current listener; kept for future).
-    window.dispatchEvent(new CustomEvent("mercy-guide:focus"));
+    // Mercy unification: signed-in users land on the single-pane chat by
+    // default. The legacy multi-tab MercyGuide bubble below stays mounted
+    // for users who opt back into 'classic' via the in-chat settings,
+    // and is still independently clickable on its own as a fallback.
+    nav("/mercy/chat");
   };
 
   // ── Teacher Mercy hero card ────────────────────────────────────────────────
