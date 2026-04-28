@@ -47,7 +47,14 @@ const FROM_ADDRESS = "MercyBlade Security <admin@mercyblade.com>";
 const RATE_LIMIT_MAX_CALLS = 10;
 const RATE_LIMIT_WINDOW_MS = 60 * 60 * 1000; // 1 hour
 
-type SecurityEmailKind = "security_2fa_enabled" | "security_2fa_disabled";
+type SecurityEmailKind =
+  | "security_2fa_enabled"
+  | "security_2fa_disabled"
+  // Phase 2 additions
+  | "backup_codes_generated"
+  | "backup_codes_regenerated"
+  | "backup_code_used"
+  | "lockout_triggered";
 
 interface RequestBody {
   kind?: string;
@@ -75,7 +82,14 @@ async function getUserFromAuthHeader(req: Request) {
 }
 
 function isValidKind(value: unknown): value is SecurityEmailKind {
-  return value === "security_2fa_enabled" || value === "security_2fa_disabled";
+  return (
+    value === "security_2fa_enabled" ||
+    value === "security_2fa_disabled" ||
+    value === "backup_codes_generated" ||
+    value === "backup_codes_regenerated" ||
+    value === "backup_code_used" ||
+    value === "lockout_triggered"
+  );
 }
 
 interface Template {
@@ -112,31 +126,147 @@ function buildTemplate(kind: SecurityEmailKind): Template {
     };
   }
 
-  // security_2fa_disabled
+  if (kind === "security_2fa_disabled") {
+    return {
+      subject: "MercyBlade — 2FA đã được tắt / 2FA disabled",
+      textBody: [
+        "Xin chào,",
+        "",
+        "Xác thực hai bước (2FA) trên tài khoản MercyBlade của bạn vừa được tắt.",
+        "Từ giờ, đăng nhập sẽ chỉ cần email và mật khẩu.",
+        "",
+        "NẾU KHÔNG PHẢI BẠN tắt 2FA, tài khoản của bạn có thể đang bị xâm nhập:",
+        "  1. Đổi mật khẩu ngay tại mercyblade.com",
+        "  2. Bật lại 2FA",
+        "  3. Liên hệ admin@mercyblade.com để được hỗ trợ",
+        "",
+        "—",
+        "",
+        "Hello,",
+        "",
+        "Two-factor authentication (2FA) on your MercyBlade account has just been disabled.",
+        "From now on, sign-in will only require email and password.",
+        "",
+        "IF YOU DID NOT DO THIS, your account may be compromised:",
+        "  1. Change your password immediately at mercyblade.com",
+        "  2. Re-enable 2FA",
+        "  3. Contact admin@mercyblade.com for help",
+        "",
+        "— MercyBlade Security",
+      ].join("\n"),
+    };
+  }
+
+  // ─── Phase 2 templates ────────────────────────────────────────────
+
+  if (kind === "backup_codes_generated") {
+    return {
+      subject: "MercyBlade — Mã dự phòng 2FA đã được tạo / Backup codes generated",
+      textBody: [
+        "Xin chào,",
+        "",
+        "Bạn vừa tạo 8 mã dự phòng cho 2FA trên tài khoản MercyBlade.",
+        "Mỗi mã chỉ dùng được một lần — hãy lưu cẩn thận, ngoài ứng dụng xác thực của bạn.",
+        "",
+        "Nếu không phải bạn thực hiện thao tác này, đổi mật khẩu ngay và liên hệ admin@mercyblade.com.",
+        "",
+        "—",
+        "",
+        "Hello,",
+        "",
+        "Eight backup codes for 2FA were just generated on your MercyBlade account.",
+        "Each code is single-use — store them somewhere safe, separate from your authenticator app.",
+        "",
+        "If you did not do this, change your password immediately and contact admin@mercyblade.com.",
+        "",
+        "— MercyBlade Security",
+      ].join("\n"),
+    };
+  }
+
+  if (kind === "backup_codes_regenerated") {
+    return {
+      subject: "MercyBlade — Mã dự phòng 2FA đã được tạo lại / Backup codes regenerated",
+      textBody: [
+        "Xin chào,",
+        "",
+        "Toàn bộ mã dự phòng 2FA cũ trên tài khoản MercyBlade đã bị huỷ và 8 mã mới đã được tạo.",
+        "Các mã cũ giờ không dùng được nữa.",
+        "",
+        "Nếu không phải bạn thực hiện thao tác này, đổi mật khẩu ngay và liên hệ admin@mercyblade.com.",
+        "",
+        "—",
+        "",
+        "Hello,",
+        "",
+        "All previous backup codes on your MercyBlade account have been invalidated and 8 fresh codes generated.",
+        "Old codes no longer work.",
+        "",
+        "If you did not do this, change your password immediately and contact admin@mercyblade.com.",
+        "",
+        "— MercyBlade Security",
+      ].join("\n"),
+    };
+  }
+
+  if (kind === "backup_code_used") {
+    return {
+      subject: "MercyBlade — Mã dự phòng vừa được sử dụng / Backup code used",
+      textBody: [
+        "Xin chào,",
+        "",
+        "Một mã dự phòng vừa được dùng để khôi phục quyền truy cập tài khoản MercyBlade của bạn.",
+        "Để bảo vệ tài khoản, 2FA đã được TẠM TẮT — mã 6 số từ ứng dụng xác thực sẽ không còn cần thiết",
+        "cho đến khi bạn bật lại 2FA tại trang Bảo mật.",
+        "",
+        "NẾU KHÔNG PHẢI BẠN khôi phục:",
+        "  1. Đổi mật khẩu ngay tại mercyblade.com",
+        "  2. Bật lại 2FA và tạo mã dự phòng mới",
+        "  3. Liên hệ admin@mercyblade.com",
+        "",
+        "—",
+        "",
+        "Hello,",
+        "",
+        "A backup code was just used to recover access to your MercyBlade account.",
+        "For your safety, 2FA has been TEMPORARILY DISABLED — your authenticator app will not be required",
+        "until you re-enable 2FA from the Security page.",
+        "",
+        "IF YOU DID NOT DO THIS:",
+        "  1. Change your password immediately at mercyblade.com",
+        "  2. Re-enable 2FA and generate fresh backup codes",
+        "  3. Contact admin@mercyblade.com",
+        "",
+        "— MercyBlade Security",
+      ].join("\n"),
+    };
+  }
+
+  // lockout_triggered
   return {
-    subject: "MercyBlade — 2FA đã được tắt / 2FA disabled",
+    subject: "MercyBlade — Tài khoản tạm khoá do nhập sai 2FA / Account temporarily locked",
     textBody: [
       "Xin chào,",
       "",
-      "Xác thực hai bước (2FA) trên tài khoản MercyBlade của bạn vừa được tắt.",
-      "Từ giờ, đăng nhập sẽ chỉ cần email và mật khẩu.",
+      "Tài khoản MercyBlade của bạn vừa bị tạm khoá vì nhập sai mã 2FA quá nhiều lần (5 lần trong 15 phút).",
+      "Khoá sẽ tự động mở sau 30 phút.",
       "",
-      "NẾU KHÔNG PHẢI BẠN tắt 2FA, tài khoản của bạn có thể đang bị xâm nhập:",
-      "  1. Đổi mật khẩu ngay tại mercyblade.com",
-      "  2. Bật lại 2FA",
-      "  3. Liên hệ admin@mercyblade.com để được hỗ trợ",
+      "NẾU KHÔNG PHẢI BẠN cố gắng đăng nhập, ai đó có thể đang biết mật khẩu của bạn:",
+      "  1. Đổi mật khẩu ngay tại mercyblade.com (sau khi khoá hết hạn)",
+      "  2. Kiểm tra danh sách thiết bị đã đăng nhập",
+      "  3. Liên hệ admin@mercyblade.com nếu nghi ngờ",
       "",
       "—",
       "",
       "Hello,",
       "",
-      "Two-factor authentication (2FA) on your MercyBlade account has just been disabled.",
-      "From now on, sign-in will only require email and password.",
+      "Your MercyBlade account has been temporarily locked due to too many failed 2FA attempts (5 in 15 minutes).",
+      "The lock will lift automatically after 30 minutes.",
       "",
-      "IF YOU DID NOT DO THIS, your account may be compromised:",
-      "  1. Change your password immediately at mercyblade.com",
-      "  2. Re-enable 2FA",
-      "  3. Contact admin@mercyblade.com for help",
+      "IF THIS WASN'T YOU, someone may know your password:",
+      "  1. Change your password immediately at mercyblade.com (after the lock lifts)",
+      "  2. Review your active sessions",
+      "  3. Contact admin@mercyblade.com if anything looks wrong",
       "",
       "— MercyBlade Security",
     ].join("\n"),
