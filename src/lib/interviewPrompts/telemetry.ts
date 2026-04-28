@@ -14,7 +14,10 @@ type InterviewPromptEvent =
   | "prompt_submitted"
   | "prompt_approved"
   | "prompt_voted"
-  | "community_prompts_used_in_room";
+  | "community_prompts_used_in_room"
+  | "community_prompt_fallback"
+  | "mock_interview_started"
+  | "mock_interview_completed";
 
 function isBrowser(): boolean {
   return typeof window !== "undefined";
@@ -81,4 +84,47 @@ export function trackCommunityPromptsUsedInRoom(payload: {
   total_count: number;
 }): void {
   emit("community_prompts_used_in_room", payload);
+}
+
+/**
+ * Fired when getPromptsForInterview either receives 0 rows or fewer
+ * than requested. Helps us see how thin the community cohort is per
+ * profession and decide when to lift the flag.
+ */
+export function trackCommunityPromptFallback(payload: {
+  profession: string;
+  reason: "no_community_rows" | "underflow" | "supabase_error";
+  requested: number;
+  received: number;
+}): void {
+  emit("community_prompt_fallback", payload);
+}
+
+/**
+ * Fired when the user clicks "start interview". useCommunity reflects
+ * whether the pre-flight panel was on; ratio is 0..100 (the slider
+ * value the user committed to).
+ */
+export function trackInterviewStarted(payload: {
+  profession: string;
+  scenarioId: string;
+  useCommunity: boolean;
+  communityRatio: number;
+}): void {
+  emit("mock_interview_started", payload);
+}
+
+/**
+ * Fired when the user reaches the summary panel. communityCount lets
+ * us correlate "did mixing actually happen?" with completion rate.
+ */
+export function trackInterviewCompleted(payload: {
+  profession: string;
+  scenarioId: string;
+  useCommunity: boolean;
+  communityRatio: number;
+  completedPromptCount: number;
+  communityPromptsShown: number;
+}): void {
+  emit("mock_interview_completed", payload);
 }
