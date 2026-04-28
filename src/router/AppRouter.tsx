@@ -63,6 +63,8 @@ const SpeechDrillPage      = lazy(() => import("@/pages/SpeechDrillPage"));
 const PhonemeDrillPage     = lazy(() => import("@/pages/practice/PhonemeDrillPage"));
 const SpeechHistoryPage    = lazy(() => import("@/pages/speech/SpeechHistoryPage"));
 const ProgressPage         = lazy(() => import("@/pages/Progress"));
+const ListeningLibraryPage = lazy(() => import("@/pages/listening/Library"));
+const ListeningClipPage    = lazy(() => import("@/pages/listening/ClipPlayer"));
 const LeaderboardPage      = lazy(() => import("@/pages/LeaderboardPage"));
 const MonthlyReferralLeaderboard = lazy(() => import("@/pages/leaderboards/MonthlyReferralLeaderboard"));
 const ProfessionsIndexPage = lazy(() => import("@/pages/professions/ProfessionsIndexPage"));
@@ -644,6 +646,24 @@ export default function AppRouter() {
               and renders an anon CTA when signed out. */}
           <Route path="/practice/phoneme/:phonemeSlug"
             element={<LazyPage><PhonemeDrillPage /></LazyPage>}
+          />
+
+          {/* Real-world listening library — auth-required. Index +
+              per-clip player. Audio_url backfilled by a separate TTS
+              job; UI degrades to transcript-only when null. */}
+          <Route path="/listening"
+            element={
+              <RequireAuth>
+                <LazyPage><ListeningLibraryPage /></LazyPage>
+              </RequireAuth>
+            }
+          />
+          <Route path="/listening/:clipId"
+            element={
+              <RequireAuth>
+                <LazyPage><ListeningClipPage /></LazyPage>
+              </RequireAuth>
+            }
           />
 
           {/* Speech history — page self-gates on pronunciationScoringEnabled flag */}
