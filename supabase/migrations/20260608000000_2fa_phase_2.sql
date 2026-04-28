@@ -46,36 +46,29 @@ CREATE INDEX IF NOT EXISTS mfa_backup_codes_generation_idx
 
 ALTER TABLE public.mfa_backup_codes ENABLE ROW LEVEL SECURITY;
 
--- Owner can SELECT their own rows (to read used_at status for the UI),
--- but cannot INSERT/UPDATE/DELETE — those are service-role-only via
--- the edge functions. We deliberately don't expose code_hash through
--- views because reading the hash is useless to the client and adds
--- attack surface. See the SELECT policy below — we filter columns
--- via a view instead.
-CREATE POLICY "mfa_backup_codes_owner_read"
-  ON public.mfa_backup_codes
-  FOR SELECT
-  TO authenticated
-  USING (user_id = auth.uid());
-
--- No INSERT/UPDATE/DELETE policies → only service role can mutate.
--- The edge functions hold the service-role key.
-
--- ─────────────────────────────────────────────────────────────────────
--- 1b. View hiding the code_hash column from client-side queries.
--- The owner can read their backup-code STATUS via this view (id,
--- created_at, used_at, generation_id) without ever seeing the hash.
--- ─────────────────────────────────────────────────────────────────────
-CREATE OR REPLACE VIEW public.mfa_backup_codes_status AS
-  SELECT
-    id,
-    user_id,
-    used_at,
-    created_at,
-    generation_id
-  FROM public.mfa_backup_codes;
-
-GRANT SELECT ON public.mfa_backup_codes_status TO authenticated;
+-- ⚠ CRITICAL: clients MUST NOT read the code_hash column. PostgreSQL
+-- RLS filters rows but NOT columns; if we leave the default Supabase
+-- "GRANT ALL TO authenticated" in place and add a row-level SELECT
+-- policy, an authenticated client can do
+--   GET /rest/v1/mfa_backup_codes?select=*
+-- and pull their own bcrypt hashes for offline cracking. With the
+-- compact 31-char alphabet and 8-char codes, the bcrypt-cost-10
+-- protection is materially weakened by GPU bcrypt cracking against
+-- a captured/leaked JWT.
+--
+-- Mitigation: REVOKE everything from anon/authenticated and add NO
+-- permissive policies. Status reads for the UI go through:
+--   - public.mfa_backup_code_unused_count() (SECURITY DEFINER, below)
+--   - the mfa-backup-codes edge function (action: 'status')
+-- Both expose ONLY the unused-count, never the hash.
+--
+-- The edge functions use the service-role key (which bypasses RLS)
+-- for the mutating paths.
+--
+-- This block of REVOKEs MUST stay in place. If a future migration
+-- adds a SELECT policy here, the cracker-via-JWT-leak finding from
+-- the security review re-opens.
+REVOKE ALL ON public.mfa_backup_codes FROM PUBLIC, anon, authenticated;
 
 -- ─────────────────────────────────────────────────────────────────────
 -- 2. Lockouts table
@@ -101,6 +94,12 @@ ALTER TABLE public.mfa_lockouts ENABLE ROW LEVEL SECURITY;
 -- they can't probe whether other users are locked out, and the only
 -- way the UI learns about a lockout is via the 429 response from
 -- mfa-challenge-rate-limit.
+--
+-- Belt-and-braces: also REVOKE base-table grants. Same reasoning as
+-- mfa_backup_codes above — RLS-without-policy already blocks the
+-- client, but REVOKE makes the protection obvious to future readers
+-- and protects against accidental policy additions in later migrations.
+REVOKE ALL ON public.mfa_lockouts FROM PUBLIC, anon, authenticated;
 
 -- ─────────────────────────────────────────────────────────────────────
 -- 3. Helpers
