@@ -28,6 +28,7 @@ import {
   progressFor,
   readGraduationState,
 } from "@/lib/pronunciation/drillGraduation";
+import { breadcrumbRecommendation } from "@/lib/monitoring/breadcrumbs";
 
 const COOLDOWN_MS = 24 * 60 * 60 * 1000;
 const MIN_ATTEMPTS = 5;
@@ -44,6 +45,7 @@ export default function RecommendedDrillCard() {
 
   useEffect(() => {
     if (!enabled || !user?.id) {
+      if (!enabled) breadcrumbRecommendation("home_drill", "flag_off");
       setPick(null);
       setLoading(false);
       return;
@@ -55,9 +57,21 @@ export default function RecommendedDrillCard() {
         if (cancelled) return;
         const result = pickRecommendation(user.id, summary.weakest);
         setPick(result);
+        if (result) {
+          breadcrumbRecommendation("home_drill", "served", {
+            recommendation_type: "phoneme_drill",
+            recommendation_id: `phoneme_drill:${result.pack.slug}`,
+            signal: "weak_phoneme",
+          });
+        } else {
+          breadcrumbRecommendation("home_drill", "no_signal");
+        }
       })
-      .catch(() => {
+      .catch((err) => {
         if (cancelled) return;
+        breadcrumbRecommendation("home_drill", "error", {
+          reason: err instanceof Error ? err.message.slice(0, 80) : "unknown",
+        });
         setPick(null);
       })
       .finally(() => {

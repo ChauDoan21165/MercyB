@@ -31,6 +31,7 @@ import {
   type StreamingFinalResult,
   type StreamingPartialResult,
 } from "./streamingScorer";
+import { breadcrumbStreamingPronunciation } from "@/lib/monitoring/breadcrumbs";
 
 export type StreamingHookArgs = {
   /** Master switch — usually wired to the `pronunciation_streaming_enabled` flag. */
@@ -154,18 +155,23 @@ export function useStreamingPronunciation(
       if (!args.enabled) {
         const reason = "disabled";
         setFallback({ reason });
+        breadcrumbStreamingPronunciation("fallback", { reason });
         return { kind: "fallback", reason };
       }
       if (!startArgs.authToken) {
         const reason = "no_token";
         setFallback({ reason });
+        breadcrumbStreamingPronunciation("fallback", { reason });
         return { kind: "fallback", reason };
       }
       if (typeof window === "undefined" || typeof AudioContext === "undefined") {
         const reason = "no_audio_context";
         setFallback({ reason });
+        breadcrumbStreamingPronunciation("fallback", { reason });
         return { kind: "fallback", reason };
       }
+
+      breadcrumbStreamingPronunciation("start");
 
       // Open the streaming session BEFORE the AudioContext so we can
       // bail out early on a connect timeout without tearing audio down.
@@ -176,6 +182,7 @@ export function useStreamingPronunciation(
       });
       if (stream.kind === "fallback") {
         setFallback({ reason: stream.reason });
+        breadcrumbStreamingPronunciation("fallback", { reason: stream.reason });
         return { kind: "fallback", reason: stream.reason };
       }
 

@@ -22,6 +22,7 @@ import {
   recordRecommendationShown,
   type Recommendation,
 } from "@/lib/mercy/practiceRecommendations";
+import { breadcrumbRecommendation } from "@/lib/monitoring/breadcrumbs";
 
 export default function PracticeRecommendationCard() {
   const { user } = useAuth();
@@ -34,6 +35,7 @@ export default function PracticeRecommendationCard() {
 
   useEffect(() => {
     if (!enabled || !user?.id) {
+      if (!enabled) breadcrumbRecommendation("home_practice", "flag_off");
       setRec(null);
       setLoading(false);
       return;
@@ -44,10 +46,21 @@ export default function PracticeRecommendationCard() {
       .then((next) => {
         if (cancelled) return;
         setRec(next);
-        if (next && user.id) recordRecommendationShown(user.id, next);
+        if (next && user.id) {
+          recordRecommendationShown(user.id, next);
+          breadcrumbRecommendation("home_practice", "served", {
+            recommendation_type: next.type,
+            recommendation_id: next.id,
+          });
+        } else {
+          breadcrumbRecommendation("home_practice", "no_signal");
+        }
       })
-      .catch(() => {
+      .catch((err) => {
         if (cancelled) return;
+        breadcrumbRecommendation("home_practice", "error", {
+          reason: err instanceof Error ? err.message.slice(0, 80) : "unknown",
+        });
         setRec(null);
       })
       .finally(() => {
