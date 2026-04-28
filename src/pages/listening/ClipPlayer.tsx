@@ -18,6 +18,7 @@ import { Link, Navigate, useParams } from "react-router-dom";
 import { ChevronLeft, Eye, EyeOff, Pause, Play, RotateCcw } from "lucide-react";
 
 import { useAuth } from "@/providers/AuthProvider";
+import { supabase } from "@/lib/supabaseClient";
 import {
   getListeningClipById,
   suggestNextInCategory,
@@ -107,6 +108,31 @@ export default function ClipPlayer(): React.ReactElement {
   const [submitted, setSubmitted] = useState(false);
   const [saveError, setSaveError] = useState<string | null>(null);
   const [nextClip, setNextClip] = useState<ListeningClip | null>(null);
+
+  const [audioUrl, setAudioUrl] = useState<string | null>(null);
+  const [audioLoading, setAudioLoading] = useState(true);
+
+  useEffect(() => {
+    if (!clipId) return;
+    let alive = true;
+    setAudioLoading(true);
+    void supabase
+      .from("listening_clips")
+      .select("audio_url")
+      .eq("id", clipId)
+      .maybeSingle()
+      .then(({ data, error }) => {
+        if (!alive) return;
+        if (error) {
+          console.warn("[ClipPlayer] audio_url fetch failed", error);
+        }
+        setAudioUrl(data?.audio_url ?? null);
+        setAudioLoading(false);
+      });
+    return () => {
+      alive = false;
+    };
+  }, [clipId]);
 
   // Once submitted, find the suggested next clip in the same category.
   useEffect(() => {
@@ -244,36 +270,39 @@ export default function ClipPlayer(): React.ReactElement {
         {/* Audio (or pending notice) */}
         <section style={cardStyle} aria-label="Audio player">
           <div style={sectionTitle}>Audio</div>
-          {/* Audio URL is intentionally absent in the seed pack — TTS
-              backfill populates it later. We render the controls but
-              keep them disabled until the source exists. */}
+          {/* audio_url is fetched from listening_clips on mount. While
+              null (TTS job hasn't backfilled yet) we render a notice
+              and keep the controls disabled. */}
           <audio
             ref={audioRef}
             preload="none"
+            src={audioUrl ?? undefined}
             onEnded={() => setIsPlaying(false)}
             data-testid="listening-audio"
           />
-          <p
-            style={{
-              fontSize: 12,
-              background: "#fffbeb",
-              border: "1px solid #fde68a",
-              borderRadius: 8,
-              padding: "8px 10px",
-              color: "#78350f",
-              margin: "8px 0",
-            }}
-            data-testid="listening-audio-pending"
-          >
-            🎧 Audio đang được chuẩn bị · Audio is being prepared. Đọc kịch bản
-            bên dưới trong khi chờ.
-          </p>
+          {!audioLoading && !audioUrl ? (
+            <p
+              style={{
+                fontSize: 12,
+                background: "#fffbeb",
+                border: "1px solid #fde68a",
+                borderRadius: 8,
+                padding: "8px 10px",
+                color: "#78350f",
+                margin: "8px 0",
+              }}
+              data-testid="listening-audio-pending"
+            >
+              🎧 Audio đang được chuẩn bị · Audio is being prepared. Đọc kịch bản
+              bên dưới trong khi chờ.
+            </p>
+          ) : null}
 
           <div style={{ display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap" }}>
             <button
               type="button"
               onClick={isPlaying ? handlePause : handlePlay}
-              disabled
+              disabled={!audioUrl}
               data-testid="listening-play-pause"
               style={{
                 display: "inline-flex",
@@ -286,8 +315,8 @@ export default function ClipPlayer(): React.ReactElement {
                 color: "white",
                 fontSize: 13,
                 fontWeight: 700,
-                cursor: "not-allowed",
-                opacity: 0.6,
+                cursor: audioUrl ? "pointer" : "not-allowed",
+                opacity: audioUrl ? 1 : 0.6,
               }}
             >
               {isPlaying ? <Pause size={14} aria-hidden /> : <Play size={14} aria-hidden />}
@@ -296,7 +325,7 @@ export default function ClipPlayer(): React.ReactElement {
             <button
               type="button"
               onClick={handleReplay}
-              disabled
+              disabled={!audioUrl}
               data-testid="listening-replay"
               style={{
                 display: "inline-flex",
@@ -309,8 +338,8 @@ export default function ClipPlayer(): React.ReactElement {
                 color: "#1f2937",
                 fontSize: 13,
                 fontWeight: 700,
-                cursor: "not-allowed",
-                opacity: 0.6,
+                cursor: audioUrl ? "pointer" : "not-allowed",
+                opacity: audioUrl ? 1 : 0.6,
               }}
             >
               <RotateCcw size={14} aria-hidden />
