@@ -11,7 +11,7 @@
 --     `pick_todays_challenge`.
 --
 -- Privacy posture:
---   - daily_challenges: PUBLIC SELECT (content is not sensitive).
+--   - pronunciation_challenges: PUBLIC SELECT (content is not sensitive).
 --   - user_challenge_completion: per-user RLS — each row is owned by
 --     `user_id = auth.uid()`. Service role bypasses for admin reports.
 --
@@ -28,11 +28,11 @@
 --   DROP FUNCTION IF EXISTS public.touch_streak_on_challenge();
 --   DROP FUNCTION IF EXISTS public.pick_todays_challenge(uuid);
 --   DROP TABLE IF EXISTS public.user_challenge_completion;
---   DROP TABLE IF EXISTS public.daily_challenges;
+--   DROP TABLE IF EXISTS public.pronunciation_challenges;
 
--- ── daily_challenges ────────────────────────────────────────────────
+-- ── pronunciation_challenges ────────────────────────────────────────────────
 
-CREATE TABLE IF NOT EXISTS public.daily_challenges (
+CREATE TABLE IF NOT EXISTS public.pronunciation_challenges (
   id text PRIMARY KEY,
   type text NOT NULL,
   content_en text NOT NULL,
@@ -45,19 +45,19 @@ CREATE TABLE IF NOT EXISTS public.daily_challenges (
   CHECK (length(content_en) > 0)
 );
 
-COMMENT ON TABLE public.daily_challenges IS
+COMMENT ON TABLE public.pronunciation_challenges IS
   'Daily pronunciation challenges. 60 entries seeded by migration 20260607. PUBLIC SELECT.';
 
-CREATE INDEX IF NOT EXISTS daily_challenges_type_idx
-  ON public.daily_challenges (type);
-CREATE INDEX IF NOT EXISTS daily_challenges_phonemes_idx
-  ON public.daily_challenges USING gin (target_phonemes);
+CREATE INDEX IF NOT EXISTS pronunciation_challenges_type_idx
+  ON public.pronunciation_challenges (type);
+CREATE INDEX IF NOT EXISTS pronunciation_challenges_phonemes_idx
+  ON public.pronunciation_challenges USING gin (target_phonemes);
 
-ALTER TABLE public.daily_challenges ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.pronunciation_challenges ENABLE ROW LEVEL SECURITY;
 
-DROP POLICY IF EXISTS daily_challenges_select_all ON public.daily_challenges;
-CREATE POLICY daily_challenges_select_all
-  ON public.daily_challenges
+DROP POLICY IF EXISTS pronunciation_challenges_select_all ON public.pronunciation_challenges;
+CREATE POLICY pronunciation_challenges_select_all
+  ON public.pronunciation_challenges
   FOR SELECT
   TO authenticated, anon
   USING (true);
@@ -67,7 +67,7 @@ CREATE POLICY daily_challenges_select_all
 CREATE TABLE IF NOT EXISTS public.user_challenge_completion (
   id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
   user_id uuid NOT NULL REFERENCES auth.users (id) ON DELETE CASCADE,
-  challenge_id text NOT NULL REFERENCES public.daily_challenges (id),
+  challenge_id text NOT NULL REFERENCES public.pronunciation_challenges (id),
   completed_at timestamptz NOT NULL DEFAULT now(),
   -- Local YYYY-MM-DD for the user's calendar day. Lets us enforce
   -- "one challenge per local day" without recomputing zones at read.
@@ -119,7 +119,7 @@ CREATE POLICY user_challenge_completion_update_own
 -- Returns one row matching the user's weakest phoneme (from the
 -- last 30 days of speech_attempts), or a deterministic rotation seed
 -- if the user has no usable signal. The function is SECURITY DEFINER
--- so it can read across both speech_attempts and daily_challenges
+-- so it can read across both speech_attempts and pronunciation_challenges
 -- under one query, while gating the result to the calling user via
 -- the function argument.
 --
@@ -165,7 +165,7 @@ BEGIN
     RETURN QUERY
     SELECT c.id, c.type, c.content_en, c.content_vi_explanation,
            c.target_phonemes, c.difficulty
-      FROM public.daily_challenges c
+      FROM public.pronunciation_challenges c
       WHERE c.id = v_completed_id;
     RETURN;
   END IF;
@@ -195,7 +195,7 @@ BEGIN
       ) weak
       WHERE phoneme IN (
         SELECT DISTINCT lower(unnest(target_phonemes))
-          FROM public.daily_challenges
+          FROM public.pronunciation_challenges
       )
       ORDER BY avg_score ASC, n DESC
       LIMIT 1;
@@ -209,7 +209,7 @@ BEGIN
   --    the corpus only has one match.
   IF v_weakest_phoneme IS NOT NULL THEN
     SELECT count(*) INTO v_count
-      FROM public.daily_challenges c
+      FROM public.pronunciation_challenges c
       WHERE v_weakest_phoneme = ANY (lower(c.target_phonemes::text)::text[])
          OR v_weakest_phoneme = ANY (c.target_phonemes);
 
@@ -220,7 +220,7 @@ BEGIN
       RETURN QUERY
       SELECT c.id, c.type, c.content_en, c.content_vi_explanation,
              c.target_phonemes, c.difficulty
-        FROM public.daily_challenges c
+        FROM public.pronunciation_challenges c
         WHERE v_weakest_phoneme = ANY (lower(c.target_phonemes::text)::text[])
            OR v_weakest_phoneme = ANY (c.target_phonemes)
         ORDER BY c.id
@@ -231,7 +231,7 @@ BEGIN
   END IF;
 
   -- 4. Fallback: deterministic rotation across the full corpus.
-  SELECT count(*) INTO v_count FROM public.daily_challenges;
+  SELECT count(*) INTO v_count FROM public.pronunciation_challenges;
 
   IF v_count = 0 THEN
     RETURN; -- empty corpus, nothing to surface
@@ -243,7 +243,7 @@ BEGIN
   RETURN QUERY
   SELECT c.id, c.type, c.content_en, c.content_vi_explanation,
          c.target_phonemes, c.difficulty
-    FROM public.daily_challenges c
+    FROM public.pronunciation_challenges c
     ORDER BY c.id
     OFFSET v_offset
     LIMIT 1;
@@ -304,7 +304,7 @@ CREATE TRIGGER daily_challenge_streak_trigger
 -- ON CONFLICT DO UPDATE so re-running the migration in dev never
 -- diverges the seed from the canonical TS file.
 
-INSERT INTO public.daily_challenges
+INSERT INTO public.pronunciation_challenges
   (id, type, content_en, content_vi_explanation, target_phonemes, difficulty)
 VALUES
   -- ── 20 classic tongue twisters ────────────────────────────────────
