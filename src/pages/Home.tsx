@@ -23,6 +23,7 @@ import WeeklyProgressWidget from "@/components/home/WeeklyProgressWidget";
 import StoryPromptCard from "@/components/home/StoryPromptCard";
 import LeaderboardCard from "@/components/leaderboard/LeaderboardCard";
 import { StreakBadge } from "@/components/streak/StreakBadge";
+import { XPBadge } from "@/components/xp/XPBadge";
 
 const PAGE_MAX = 980;
 const LS_ZOOM  = "mb.ui.zoom";
@@ -709,6 +710,7 @@ export default function Home() {
         aria-label="Study streak quick view"
       >
         <StreakBadge />
+        <XPBadge />
       </div>
 
       <div style={frame}>

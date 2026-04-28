@@ -37,6 +37,10 @@ const Terms                = lazy(() => import("@/pages/Terms"));
 const ContentAdvisory      = lazy(() => import("@/pages/legal/ContentAdvisory"));
 const Support             = lazy(() => import("@/pages/Support"));
 const AccountPage         = lazy(() => import("@/pages/AccountPage"));
+const XPHistoryPage       = lazy(() => import("@/pages/xp/XPHistoryPage"));
+const LevelUpModal        = lazy(() =>
+  import("@/components/xp/LevelUpModal").then((m) => ({ default: m.LevelUpModal })),
+);
 const PushPreferencesPage = lazy(() => import("@/pages/account/PushPreferences"));
 const ReferralPage        = lazy(() => import("@/pages/Referral"));
 const BillingPage         = lazy(() => import("@/pages/Billing"));
@@ -530,6 +534,13 @@ export default function AppRouter() {
     <>
       <RouterBeacon />
 
+      {/* A9 — global level-up celebration. Listens for the XP-awarded
+          event and pops once per (user, level). Lazy so it doesn't
+          inflate the initial bundle. */}
+      <Suspense fallback={null}>
+        <LevelUpModal />
+      </Suspense>
+
       <Routes>
         {/* Public auth routes */}
         <Route path="/signin" element={<LazyPage><LoginPage /></LazyPage>} />
@@ -961,6 +972,14 @@ export default function AppRouter() {
                 <RequireAal2>
                   <LazyPage><AccountPage /></LazyPage>
                 </RequireAal2>
+              </RequireAuth>
+            }
+          />
+          {/* A9 — XP history + level progress (auth-required). */}
+          <Route path="/xp"
+            element={
+              <RequireAuth>
+                <LazyPage><XPHistoryPage /></LazyPage>
               </RequireAuth>
             }
           />
