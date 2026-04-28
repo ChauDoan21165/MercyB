@@ -37,6 +37,7 @@ import {
 
 import { useAuth } from "@/providers/AuthProvider";
 import { useFeatureFlag } from "@/hooks/useFeatureFlag";
+import { XPBadge } from "@/components/xp/XPBadge";
 import PhonemeHeatmapSection from "@/components/pronunciation/PhonemeHeatmapSection";
 import {
   CANONICAL_PHONEMES,
@@ -449,6 +450,7 @@ export default function ProgressPage() {
           <h1 style={heading}>
             {COPY.pageTitle.vi} · {COPY.pageTitle.en}
           </h1>
+          <XPBadge />
           <button
             type="button"
             onClick={() => void onDownloadCsv()}
