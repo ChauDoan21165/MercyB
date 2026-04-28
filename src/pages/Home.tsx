@@ -14,6 +14,7 @@ import { useUserAccess } from "@/hooks/useUserAccess";
 import { useAuth } from "@/providers/AuthProvider";
 import { useFeatureFlag } from "@/hooks/useFeatureFlag";
 import FocusAreasCard from "@/components/home/FocusAreasCard";
+import ListeningSuggestionCard from "@/components/home/ListeningSuggestionCard";
 import PracticeRecommendationCard from "@/components/home/PracticeRecommendationCard";
 import RecommendedDrillCard from "@/components/home/RecommendedDrillCard";
 import TodaysLessonCard from "@/components/home/TodaysLessonCard";
@@ -698,6 +699,12 @@ export default function Home() {
               with no plan has one obvious next step. Never auto-navigates;
               the user must tap "Bắt đầu" themselves. */}
           <TodaysLessonCard isPhone={isPhone} />
+
+          {/* Continue: Listening — points the user at the next clip in
+              the listening category they were last working through. The
+              card hides itself when the user has no listening progress
+              yet, so first-time visitors don't see an empty prompt. */}
+          <ListeningSuggestionCard />
 
           {/* Practice recommendation — Mercy's "what should I practice
               tonight?" card. Self-fetching, hidden when the feature

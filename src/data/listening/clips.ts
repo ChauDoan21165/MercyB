@@ -209,8 +209,8 @@ CLIPS.push({
     },
     {
       speaker: "Customer",
-      text_en: "Two, please. And we'll be paying with separate cards.",
-      text_vi: "Tách ra nhé. Và mỗi người dùng một thẻ riêng.",
+      text_en: "Two, please. We'll split the bill — separate cards.",
+      text_vi: "Tách ra nhé. Mỗi người dùng một thẻ riêng.",
     },
   ],
   vocabulary_keys: ["check", "split", "separate cards"],
@@ -1004,7 +1004,7 @@ CLIPS.push({
         "Chúng tôi ngồi lại và xem dữ liệu. Module cũ có 3 bug đang mở sẽ chặn việc thêm chức năng mới. Tôi đưa lý lẽ rằng tái cấu trúc sẽ tiết kiệm cả tuần debug. Cô ấy đồng ý, và chúng tôi giao đúng hạn.",
     },
   ],
-  vocabulary_keys: ["disagreement", "make the case", "shipped on time"],
+  vocabulary_keys: ["disagreement", "made the case", "shipped on time"],
   comprehension_questions: [
     {
       question_vi: "Bất đồng giữa hai đồng nghiệp về điều gì?",
@@ -1765,7 +1765,7 @@ CLIPS.push({
         "Được rồi. Đã áp mã. Tổng mới là 125.18 đô. Áo khoác này ngày mai bán giảm giá — anh có muốn tôi áp luôn giá đó cho anh không?",
     },
   ],
-  vocabulary_keys: ["apply", "look it up", "price-match"],
+  vocabulary_keys: ["applied", "look it up", "price-match"],
   comprehension_questions: [
     {
       question_vi: "Sau khi áp mã, tổng tiền giảm bao nhiêu?",
