@@ -16,6 +16,14 @@
 // The output length equals the number of slots from the hardcoded set —
 // we don't grow the interview just because the user enabled community
 // mode. Community items consumed = round(ratio * total).
+//
+// Phase 2 (PR #218) adds getPromptsForInterview() at the bottom of this
+// file — the I/O wrapper that loads community rows from Supabase, mixes
+// them with caller-provided hardcoded prompts via the helpers above, and
+// returns a typed InterviewSessionPrompt[] with attribution metadata.
+
+import { trackCommunityPromptFallback } from "./telemetry";
+import type { InterviewPromptProfession } from "./types";
 
 export interface MixedPromptResult<T> {
   items: T[];
@@ -161,3 +169,192 @@ export function mixPromptsWithFallback<T>(
   );
   return { items: merged, fallback: false };
 }
+
+// ──────────────────────────────────────────────────────────────────────
+// Phase 2 — getPromptsForInterview()
+//
+// I/O wrapper. Pulls top-voted approved community prompts from
+// `user_interview_prompts`, joins to `profiles.display_name` for
+// attribution (suppressed when the submitter chose anonymity), then
+// mixes with caller-supplied hardcoded prompts via mixPrompts above.
+//
+// On Supabase error or empty community result, falls back to
+// all-hardcoded silently. The interview must never break because
+// community is unreachable.
+// ──────────────────────────────────────────────────────────────────────
+
+export interface InterviewSessionPrompt {
+  source: "hardcoded" | "community";
+  text: string;
+  /** Optional Vietnamese translation surfaced by the room when present. */
+  textVi?: string;
+  /** Only set when source === 'community'. */
+  communityPromptId?: string;
+  /** null = "Anonymous" (either the submitter opted in to anonymity, or
+   *  the join couldn't resolve a name). */
+  submitterDisplayName?: string | null;
+  /** e.g. "Hỏi tại Wells Fargo, San Jose, 2024-11" */
+  context?: string | null;
+}
+
+export interface HardcodedPromptInput {
+  text: string;
+  textVi?: string;
+}
+
+export interface GetPromptsParams {
+  profession: InterviewPromptProfession;
+  hardcodedPrompts: ReadonlyArray<HardcodedPromptInput>;
+  hardcodedCount: number;
+  communityCount: number;
+  seed?: number;
+}
+
+/**
+ * Internal shape of the joined Supabase row. Kept narrow — we only
+ * read the columns the UI needs.
+ */
+interface CommunityPromptRow {
+  id: string;
+  question_text_en: string;
+  question_text_vi: string | null;
+  context: string | null;
+  submitter_anonymous: boolean;
+  upvotes_count: number;
+  published_at: string | null;
+  profiles?: { display_name: string | null } | null;
+}
+
+function rowToCommunityPrompt(row: CommunityPromptRow): InterviewSessionPrompt {
+  const submitterDisplayName = row.submitter_anonymous
+    ? null
+    : row.profiles?.display_name ?? null;
+  return {
+    source: "community",
+    text: row.question_text_en,
+    textVi: row.question_text_vi ?? undefined,
+    communityPromptId: row.id,
+    submitterDisplayName,
+    context: row.context,
+  };
+}
+
+function hardcodedToSessionPrompt(
+  h: HardcodedPromptInput,
+): InterviewSessionPrompt {
+  return {
+    source: "hardcoded",
+    text: h.text,
+    textVi: h.textVi,
+  };
+}
+
+/**
+ * Load community prompts for a profession, mix with the caller's
+ * hardcoded deck, return a unified ordered list. Always returns
+ * hardcodedCount + communityCount items (or fewer if hardcoded is
+ * shorter); on error, returns all-hardcoded.
+ */
+export async function getPromptsForInterview(
+  params: GetPromptsParams,
+): Promise<InterviewSessionPrompt[]> {
+  const {
+    profession,
+    hardcodedPrompts,
+    hardcodedCount,
+    communityCount,
+    seed,
+  } = params;
+
+  const totalSlots = hardcodedCount + communityCount;
+  const allHardcoded = hardcodedPrompts
+    .slice(0, totalSlots)
+    .map(hardcodedToSessionPrompt);
+
+  if (communityCount <= 0) {
+    return allHardcoded;
+  }
+
+  // Fetch top-voted published community prompts for this profession.
+  // The join string mirrors PostgREST: profiles!user_interview_prompts_submitter_user_id_fkey
+  // would be the explicit form; the alias below relies on the FK being
+  // unambiguous, which it is for this table.
+  //
+  // Lazy import so the pure mixer above stays free of Supabase deps;
+  // pure-mixer tests don't need to mock the client.
+  let rows: CommunityPromptRow[] = [];
+  try {
+    const { supabase } = await import("@/lib/supabaseClient");
+    const { data, error } = await supabase
+      .from("user_interview_prompts")
+      .select(
+        "id, question_text_en, question_text_vi, context, submitter_anonymous, upvotes_count, published_at, profiles:submitter_user_id(display_name)",
+      )
+      .eq("status", "published")
+      .eq("profession", profession)
+      .order("upvotes_count", { ascending: false })
+      .order("published_at", { ascending: false })
+      .limit(communityCount);
+    if (error) {
+      // Silent fallback — interview must keep working.
+      // eslint-disable-next-line no-console
+      console.warn(
+        "[getPromptsForInterview] supabase error, falling back to hardcoded",
+        error.message,
+      );
+      return allHardcoded;
+    }
+    rows = (data ?? []) as unknown as CommunityPromptRow[];
+  } catch (err) {
+    // eslint-disable-next-line no-console
+    console.warn(
+      "[getPromptsForInterview] supabase threw, falling back to hardcoded",
+      err,
+    );
+    return allHardcoded;
+  }
+
+  if (rows.length === 0) {
+    trackCommunityPromptFallback({
+      profession,
+      reason: "no_community_rows",
+      requested: communityCount,
+      received: 0,
+    });
+    return allHardcoded;
+  }
+
+  // Underflow case — community returned fewer rows than requested.
+  // Pad missing slots from hardcoded so the interview length is
+  // preserved. We log via telemetry so we know the cohort is thin.
+  if (rows.length < communityCount) {
+    trackCommunityPromptFallback({
+      profession,
+      reason: "underflow",
+      requested: communityCount,
+      received: rows.length,
+    });
+  }
+
+  const communityPrompts =
+    seed != null
+      ? shuffleSeeded(rows.map(rowToCommunityPrompt), seed)
+      : rows.map(rowToCommunityPrompt);
+
+  // Pad hardcoded slots to fill the gap if community underflowed.
+  const hardcodedSlots = hardcodedCount + (communityCount - communityPrompts.length);
+  const hardcodedSession = hardcodedPrompts
+    .slice(0, hardcodedSlots)
+    .map(hardcodedToSessionPrompt);
+
+  if (communityPrompts.length === 0) return hardcodedSession;
+  if (hardcodedSession.length === 0) return communityPrompts;
+
+  return roundRobinMerge(
+    communityPrompts,
+    hardcodedSession,
+    communityPrompts.length,
+    hardcodedSession.length,
+  );
+}
+
