@@ -156,10 +156,14 @@ export function useEntitlements() {
     }
   }, []); // stable — reads user/authLoading via refs
 
-  // Re-fetch when user identity or auth loading state changes
+  // Re-fetch when user identity or auth loading state changes.
+  // Key on user?.id (primitive) — using `user` re-fires on every Supabase
+  // auth event (TOKEN_REFRESHED, USER_UPDATED) because the session/user
+  // reference changes even when the logical identity is unchanged,
+  // causing pending me-entitlement calls to stack up across consumers.
   useEffect(() => {
     void refreshEntitlements();
-  }, [user, authLoading, refreshEntitlements]);
+  }, [user?.id, authLoading, refreshEntitlements]);
 
   const features = useMemo(
     () => (data?.features ?? {}) as Record<string, unknown>,

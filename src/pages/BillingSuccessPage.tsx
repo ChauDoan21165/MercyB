@@ -64,7 +64,7 @@ export default function BillingSuccessPage() {
     return () => {
       cancelled = true;
     };
-  }, [user, refreshEntitlements]);
+  }, [user?.id, refreshEntitlements]);
 
   const isPremium = useMemo(() => ent?.is_premium === true, [ent]);
 
