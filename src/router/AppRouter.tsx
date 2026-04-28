@@ -61,6 +61,8 @@ const PlacementResultsPage = lazy(() => import("@/pages/placement/ResultsPage"))
 
 const SpeechDrillPage      = lazy(() => import("@/pages/SpeechDrillPage"));
 const PhonemeDrillPage     = lazy(() => import("@/pages/practice/PhonemeDrillPage"));
+const VocabularyLibraryPage = lazy(() => import("@/pages/vocabulary/Library"));
+const VocabularyReviewPage = lazy(() => import("@/pages/vocabulary/ReviewSession"));
 const SpeechHistoryPage    = lazy(() => import("@/pages/speech/SpeechHistoryPage"));
 const ProgressPage         = lazy(() => import("@/pages/Progress"));
 const ListeningLibraryPage = lazy(() => import("@/pages/listening/Library"));
@@ -662,6 +664,24 @@ export default function AppRouter() {
             element={
               <RequireAuth>
                 <LazyPage><ListeningClipPage /></LazyPage>
+              </RequireAuth>
+            }
+          />
+
+          {/* Vocabulary SRS — library + daily review session.
+              Both auth-required; pages self-render an anon CTA when
+              the user lands here without a session. */}
+          <Route path="/vocabulary"
+            element={
+              <RequireAuth>
+                <LazyPage><VocabularyLibraryPage /></LazyPage>
+              </RequireAuth>
+            }
+          />
+          <Route path="/vocabulary/review"
+            element={
+              <RequireAuth>
+                <LazyPage><VocabularyReviewPage /></LazyPage>
               </RequireAuth>
             }
           />
