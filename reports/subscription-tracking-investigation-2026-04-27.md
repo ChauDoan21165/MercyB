@@ -1,8 +1,122 @@
 # Subscription tracking — investigation
 
 **Author:** A5
-**Date:** 2026-04-27
-**Status:** REPORT ONLY. No code changes, no migration applied, no PR opened. Awaiting Chau's review before patching.
+**Date:** 2026-04-27 (revised 2026-04-28 with prod findings)
+**Status:** Migration drafted at `supabase/migrations/20260611000000_subscription_tracking_sync.sql`. **NOT applied** — draft PR for SQL review. Awaiting Chau's green light before any apply.
+
+## Revision log — 2026-04-28
+
+Three production findings from Chau changed the design:
+
+1. **`app_tier_ranks` is empty** (0 rows). The original Direction-B sketch read mapping from this table; with the table empty, no consumer had real mapping data. **Resolved**: this migration *seeds* `app_tier_ranks` with all 4 known tiers. The trigger reads from it; falls back to the Free tier on missing product_id (fail-closed). Production has only 1 live Stripe product today, but the seed is complete for future products.
+
+2. **3 orphan rows in `user_subscriptions`** with NULL `profiles.email`:
+   - `5b0e03c8-1d12-45dd-a1cf-27a229583cb5` — Free, 2026-01-02
+   - `42a24883-3f9d-4398-9985-e9ae0a38e7a1` — One Year, 2026-02-23
+   - `fbbbd84d-dcc3-47b3-843f-f57d17fcf8c3` — One Month, 2026-02-27
+
+   **Diagnosis**: `user_subscriptions.user_id` is declared `UUID NOT NULL` but the original migration did **NOT** add a FK to `auth.users` (or any CASCADE) — search confirms no FK definition. So when the matching `auth.users` / `profiles` row was deleted, these `user_subscriptions` rows were stranded. Most likely source: legacy `TestPurchasePanel.tsx` test inserts (which DOES write to `user_subscriptions`), or pre-FK manual seed rows from before this code path existed.
+
+   **Decision**: do **NOT** delete in this migration. The backfill is non-destructive — orphan rows have no matching `subscriptions` source row, so the backfill `INSERT … SELECT FROM subscriptions` skips them automatically. Cleanup is a separate decision (see "Open follow-ups" below).
+
+3. **Confirmed Stripe product mapping** — single live product today:
+   - `prod_UAfnlqhxFFLDE0` → `One Month` (`tier_id=3d5a977c-4fde-4afc-99a4-4b37c3555839`), 7 active subscribers, monthly @ 200,000 VND.
+
+   **Resolved**: the migration's `app_tier_ranks` seed uses this exact mapping. Other tiers seeded with `pending_*` placeholder product_keys so the row is complete for future Stripe products without colliding when the real product_id is wired.
+
+Tier IDs from `public.subscription_tiers` (per Chau's verified prod query):
+
+| `tier_id` | name |
+|---|---|
+| `3d5a977c-4fde-4afc-99a4-4b37c3555839` | One Month |
+| `a2863250-1798-443e-b1d3-d20e3db06281` | One Year |
+| `abc81cdf-da87-4912-a294-277449745c10` | Legacy VIP 3 |
+| `e50f166d-c3dd-41b8-bdb4-c0a8ca58b35d` | Free |
+
+## Specific design questions answered
+
+### How is `vip_rank` determined per tier without `app_tier_ranks` populated?
+
+**Answer**: this migration *seeds* `app_tier_ranks` so it stops being empty. The trigger reads from it as the canonical source. Seed values:
+
+| `product_key` | `tier_id` | `vip_rank` | Notes |
+|---|---|---|---|
+| `free` | `e50f166d-…` | 1 | Default fallback when no Stripe sub |
+| `prod_UAfnlqhxFFLDE0` | `3d5a977c-…` | 2 | Live: 7 subscribers (Finding #3) |
+| `pending_one_year` | `a2863250-…` | 3 | Placeholder; rewrite product_key when yearly Stripe product ships |
+| `legacy_vip3` | `abc81cdf-…` | 4 | Pre-Stripe internal; not a real Stripe product |
+
+The trigger ALSO writes `vip_rank` directly to `profiles.vip_rank` (the column actually read by `preResponseIntelligence.ts:279` and `mercy_weekly_cron`). Without that, populating `app_tier_ranks` alone wouldn't fix the read path.
+
+Alternative considered + rejected: read `vip_rank` from `subscription_tiers.display_order`. Display_order is layout intent (UI ordering), not a stable rank — couples billing semantics to a UI field.
+
+### Do the 3 orphan rows need cleanup before or alongside backfill?
+
+**Neither.** The backfill is non-destructive: it `INSERT INTO user_subscriptions … SELECT FROM subscriptions` on `ON CONFLICT (user_id) DO UPDATE`. The 3 orphan user_ids have NO matching row in `public.subscriptions`, so the SELECT side returns nothing for them and nothing changes.
+
+After this migration:
+- `user_subscriptions` will have **3 orphans + N=7 mirrored Stripe subs = 10 rows** (assuming all 7 Stripe subscribers are unique users).
+- Admins will see the 7 paying users correctly tiered.
+- The 3 orphans will still appear with no email (because `profiles.email` is NULL — they're already orphan today).
+
+Cleanup recommendation (separate decision, NOT in this migration):
+
+```sql
+-- Audit query — run before deciding to delete:
+SELECT us.user_id, us.tier_id, t.name as tier, us.status, us.created_at,
+       (SELECT email FROM auth.users WHERE id = us.user_id) AS auth_email,
+       (SELECT email FROM public.profiles WHERE id = us.user_id) AS profile_email,
+       EXISTS (SELECT 1 FROM public.subscriptions s WHERE s.user_id = us.user_id) AS has_unified_row
+  FROM public.user_subscriptions us
+  LEFT JOIN public.subscription_tiers t ON t.id = us.tier_id
+ WHERE us.user_id IN (
+   '5b0e03c8-1d12-45dd-a1cf-27a229583cb5',
+   '42a24883-3f9d-4398-9985-e9ae0a38e7a1',
+   'fbbbd84d-dcc3-47b3-843f-f57d17fcf8c3'
+ );
+
+-- If `auth_email IS NULL AND has_unified_row = false` for all 3,
+-- they're truly stranded and safe to delete:
+-- DELETE FROM public.user_subscriptions WHERE user_id IN ( … );
+```
+
+### Idempotency of the backfill
+
+Every step is safe to re-run:
+
+| Step | Idempotency mechanism |
+|---|---|
+| `app_tier_ranks` seed | `ON CONFLICT (product_key) DO UPDATE SET tier_id = EXCLUDED.tier_id, vip_rank = EXCLUDED.vip_rank` |
+| Backfill INSERT | `ON CONFLICT (user_id) DO UPDATE` matches the existing UNIQUE(user_id) on `user_subscriptions` |
+| Trigger function | `CREATE OR REPLACE FUNCTION` |
+| Trigger registration | `DROP TRIGGER IF EXISTS …; CREATE TRIGGER` |
+| `profiles.vip_rank` backfill | `UPDATE … SET …` — same row, same value on re-run |
+| Recovery RPC | Same `ON CONFLICT (user_id) DO UPDATE` |
+
+Re-running the entire migration is a no-op after first apply; no duplicate rows, no version drift.
+
+### Trigger fires on INSERT only or INSERT OR UPDATE?
+
+**INSERT OR UPDATE**, scoped to the relevant columns:
+
+```sql
+AFTER INSERT OR UPDATE OF
+  status,
+  current_period_start,
+  current_period_end,
+  product_id,
+  provider_subscription_id,
+  provider_customer_id
+ON public.subscriptions
+```
+
+Reasoning:
+
+- **INSERT-only would miss status changes.** Stripe sends `customer.subscription.updated` events when a sub goes `active → past_due → canceled`. Those land on the existing `subscriptions` row as UPDATEs, not INSERTs. INSERT-only would leave the legacy row stuck at the original status.
+- **UPDATE-without-OF would over-fire.** Webhook handlers can write `raw_payload` updates for audit purposes without changing entitlement. Limiting to the OF columns means raw-payload-only writes don't fire the legacy sync.
+- **Provider-id columns are in the OF list** because if a Stripe customer/subscription identity changes (rare, but possible after a Stripe customer merge), the legacy mirror needs to follow.
+
+---
 
 ## TL;DR
 
