@@ -649,9 +649,15 @@ function pickAudioList(entry: any): string[] {
     if (typeof v === "string") {
       const s = v.trim();
       if (!s) return;
+      // Poison guard: if upstream stringified an object via String(obj),
+      // we get "[object Object]". Splitting on space below would produce
+      // two garbage tokens ("[object", "Object]") and render duplicate
+      // dead bars. Drop these strings entirely.
+      if (s.includes("[object")) return;
 
       const parts = s.includes(" ") ? s.split(/\s+/g) : s.includes(",") ? s.split(",") : [s];
       for (const p of parts) {
+        if (p.includes("[object")) continue;
         const key = toAudioKey(p);
         if (key) out.push(key);
       }
