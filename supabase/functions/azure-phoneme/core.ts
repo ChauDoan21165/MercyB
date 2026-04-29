@@ -457,6 +457,25 @@ export async function handleRequest(req: Request, deps: Deps): Promise<Response>
       // lines in MercySpeakTab routinely end with periods, so strip
       // trailing terminal punctuation + whitespace before sending.
       const referenceText = targetText.replace(/[\s.?!,;:]+$/, "");
+
+      // Azure also 400s on empty / whitespace-only ReferenceText.
+      // Catch this before the network call so we don't waste an
+      // Azure quota on a guaranteed-fail and we get a precise audit
+      // reason instead of a generic 400.
+      if (referenceText.length === 0) {
+        await deps.audit({
+          userId,
+          status: "invalid_audio",
+          audioSeconds,
+          openaiCostUsd: costUsd,
+          errorMsg: `empty_reference_text:original_len=${targetText.length}`,
+        });
+        console.error(
+          `[azure-phoneme] Reference text empty after punctuation strip — input was '${truncate(targetText, 60)}'`,
+        );
+        return sentinel("azure_payload_failed");
+      }
+
       const config = {
         ReferenceText: referenceText,
         GradingSystem: "HundredMark",
@@ -495,22 +514,51 @@ export async function handleRequest(req: Request, deps: Deps): Promise<Response>
         // Categorise HTTP failures so the client can distinguish
         // ops issues (auth) from input issues (payload) from server
         // hiccups. The audit-log message keeps the precise status
-        // code so we can grep speech_analysis_logs.
-        auditMsg = `azure_${response.status}`;
+        // code AND the response body so we can grep
+        // speech_analysis_logs and see WHY Azure rejected the call,
+        // not just that it did.
+        let azureBodyText = "";
+        try {
+          azureBodyText = await response.text();
+        } catch {
+          // Body may already be consumed or the connection may have
+          // closed mid-read; record the truncation reason and move on.
+          azureBodyText = "<body_read_failed>";
+        }
+        const bodyDigest = truncate(
+          azureBodyText.replace(/\s+/g, " ").trim(),
+          280,
+        );
+        auditMsg = `azure_${response.status}:${bodyDigest}`;
+        // Diagnostic context — request shape that Azure rejected.
+        // Helps spot reference-text encoding / audio-size issues.
+        const requestContext = {
+          status: response.status,
+          referenceTextLength: referenceText.length,
+          referenceTextSample: truncate(referenceText, 80),
+          audioBytes: arrayBuffer.byteLength,
+          audioSeconds: Number(audioSeconds.toFixed(2)),
+          accent,
+          locale: localeForAccent(accent),
+          configHeaderBase64UrlLength: headerValue.length,
+        };
         if (response.status === 401 || response.status === 403) {
           sentinelReason = "azure_auth_failed";
           console.error(
-            `[azure-phoneme] Azure auth rejected: HTTP ${response.status}`,
+            `[azure-phoneme] Azure auth rejected: HTTP ${response.status}. Body: ${bodyDigest}`,
+            requestContext,
           );
         } else if (response.status === 400) {
           sentinelReason = "azure_payload_failed";
           console.error(
-            `[azure-phoneme] Azure rejected payload: HTTP 400`,
+            `[azure-phoneme] Azure rejected payload: HTTP 400. Body: ${bodyDigest}`,
+            requestContext,
           );
         } else {
           sentinelReason = "azure_error";
           console.error(
-            `[azure-phoneme] Azure server error: HTTP ${response.status}`,
+            `[azure-phoneme] Azure server error: HTTP ${response.status}. Body: ${bodyDigest}`,
+            requestContext,
           );
         }
       } else {
