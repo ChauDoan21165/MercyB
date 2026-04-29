@@ -187,7 +187,7 @@ export default function Certificate({
           background: "linear-gradient(180deg, #fffdf6 0%, #fef3c7 100%)",
           border: "6px solid #92400e",
           boxShadow: "0 12px 32px rgba(124, 45, 18, 0.18)",
-          padding: "5% 7%",
+          padding: "4.5% 6%",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
@@ -196,6 +196,8 @@ export default function Certificate({
             "system-ui, -apple-system, Segoe UI, Helvetica, Arial, sans-serif",
           color: "#1f2937",
           position: "relative",
+          containerType: "inline-size",
+          textRendering: "optimizeLegibility",
         }}
       >
         <div
@@ -209,23 +211,36 @@ export default function Certificate({
         />
 
         <header style={{ textAlign: "center" }}>
-          <div style={{ fontSize: "clamp(20px, 2.6vw, 30px)", fontWeight: 700, color: "#7c2d12" }}>
+          <div
+            style={{
+              fontSize: "clamp(18px, 3.2cqw, 30px)",
+              fontWeight: 700,
+              color: "#7c2d12",
+              letterSpacing: "-0.01em",
+            }}
+          >
             MercyBlade
           </div>
-          <div style={{ fontSize: "clamp(12px, 1.4vw, 16px)", color: "#9a3412", marginTop: 4 }}>
+          <div
+            style={{
+              fontSize: "clamp(11px, 1.7cqw, 16px)",
+              color: "#9a3412",
+              marginTop: "0.4em",
+            }}
+          >
             Học tiếng Anh dành cho người Việt
           </div>
         </header>
 
-        <div style={{ textAlign: "center", lineHeight: 1.25 }}>
+        <div style={{ textAlign: "center", lineHeight: 1.3, width: "100%" }}>
           {showEn && (
             <div
               style={{
-                fontSize: "clamp(13px, 1.6vw, 18px)",
+                fontSize: "clamp(11px, 1.9cqw, 17px)",
                 color: "#475569",
-                letterSpacing: "0.18em",
+                letterSpacing: "0.22em",
                 textTransform: "uppercase",
-                fontWeight: 500,
+                fontWeight: 600,
               }}
             >
               {COPY.topLabel.en}
@@ -234,24 +249,26 @@ export default function Certificate({
           {showVi && (
             <div
               style={{
-                fontSize: "clamp(12px, 1.5vw, 16px)",
+                fontSize: "clamp(11px, 1.7cqw, 15px)",
                 color: "#64748b",
-                marginTop: 4,
+                marginTop: "0.3em",
                 fontWeight: 400,
+                letterSpacing: "0.04em",
               }}
             >
               {COPY.topLabel.vi}
             </div>
           )}
 
-          <div style={{ marginTop: "1.6%" }}>
+          <div style={{ marginTop: "1.6em" }}>
             {showEn && (
               <div
                 style={{
-                  fontSize: "clamp(22px, 3.6vw, 40px)",
+                  fontSize: "clamp(20px, 4.2cqw, 38px)",
                   fontWeight: 800,
                   color: "#1f2937",
-                  lineHeight: 1.1,
+                  lineHeight: 1.18,
+                  letterSpacing: "-0.012em",
                 }}
               >
                 {COPY.title.en}
@@ -260,10 +277,11 @@ export default function Certificate({
             {showVi && (
               <div
                 style={{
-                  fontSize: "clamp(16px, 2.4vw, 24px)",
+                  fontSize: "clamp(15px, 2.7cqw, 23px)",
                   fontWeight: 600,
                   color: "#374151",
-                  marginTop: 4,
+                  marginTop: "0.25em",
+                  letterSpacing: "-0.005em",
                 }}
               >
                 {COPY.title.vi}
@@ -271,14 +289,18 @@ export default function Certificate({
             )}
           </div>
 
-          <div style={{ marginTop: "2%" }}>
+          <div style={{ marginTop: "1.4em" }}>
             <div
               style={{
                 fontFamily: "Georgia, 'Times New Roman', serif",
-                fontSize: "clamp(28px, 5vw, 56px)",
+                fontSize: "clamp(28px, 6.2cqw, 58px)",
                 fontWeight: 700,
                 color: "#7c2d12",
-                lineHeight: 1.05,
+                lineHeight: 1.18,
+                letterSpacing: "-0.005em",
+                padding: "0 4%",
+                wordBreak: "break-word",
+                overflowWrap: "anywhere",
               }}
             >
               {recipientName}
@@ -286,20 +308,21 @@ export default function Certificate({
             <div
               aria-hidden
               style={{
-                width: "min(560px, 70%)",
+                width: "min(420px, 56%)",
                 height: 1,
-                margin: "10px auto 0",
+                margin: "0.5em auto 0",
                 background: "rgba(146, 64, 14, 0.55)",
               }}
             />
           </div>
 
-          <div style={{ marginTop: "1.6%" }}>
+          <div style={{ marginTop: "1.4em" }}>
             {showEn && (
               <div
                 style={{
-                  fontSize: "clamp(13px, 1.5vw, 17px)",
+                  fontSize: "clamp(12px, 1.8cqw, 16px)",
                   color: "#64748b",
+                  fontStyle: "italic",
                 }}
               >
                 {COPY.subtitle.en}
@@ -308,22 +331,24 @@ export default function Certificate({
             {showVi && (
               <div
                 style={{
-                  fontSize: "clamp(12px, 1.4vw, 15px)",
+                  fontSize: "clamp(11px, 1.6cqw, 14px)",
                   color: "#94a3b8",
-                  marginTop: 2,
+                  marginTop: "0.2em",
+                  fontStyle: "italic",
                 }}
               >
                 {COPY.subtitle.vi}
               </div>
             )}
 
-            <div style={{ marginTop: "1.2%" }}>
+            <div style={{ marginTop: "0.7em" }}>
               {showEn && (
                 <div
                   style={{
-                    fontSize: "clamp(16px, 2.2vw, 22px)",
+                    fontSize: "clamp(15px, 2.6cqw, 22px)",
                     fontWeight: 600,
                     color: "#1f2937",
+                    letterSpacing: "-0.005em",
                   }}
                 >
                   {displayNameEn}
@@ -332,10 +357,10 @@ export default function Certificate({
               {showVi && (
                 <div
                   style={{
-                    fontSize: "clamp(14px, 1.9vw, 19px)",
+                    fontSize: "clamp(13px, 2.1cqw, 19px)",
                     fontWeight: 500,
                     color: "#475569",
-                    marginTop: 2,
+                    marginTop: "0.15em",
                   }}
                 >
                   {displayNameVi}
@@ -348,19 +373,20 @@ export default function Certificate({
         <footer
           style={{
             display: "grid",
-            gridTemplateColumns: "1fr 1fr 1fr",
+            gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
             width: "100%",
             alignItems: "end",
-            gap: 12,
-            fontSize: "clamp(10px, 1.2vw, 13px)",
+            gap: "1.2em",
+            fontSize: "clamp(10px, 1.45cqw, 13px)",
             color: "#475569",
+            lineHeight: 1.4,
           }}
         >
-          <div style={{ textAlign: "left" }}>
-            <div style={{ fontWeight: 500 }}>
+          <div style={{ textAlign: "left", overflowWrap: "anywhere" }}>
+            <div style={{ fontWeight: 500, opacity: 0.85 }}>
               {COPY.issued.en} · {COPY.issued.vi}
             </div>
-            <div style={{ color: "#1f2937", fontWeight: 600, marginTop: 2 }}>
+            <div style={{ color: "#1f2937", fontWeight: 600, marginTop: "0.25em" }}>
               {issuedAtFormatted}
             </div>
           </div>
@@ -369,31 +395,39 @@ export default function Certificate({
             <div
               aria-hidden
               style={{
-                width: "min(280px, 80%)",
+                width: "min(220px, 78%)",
                 height: 1,
-                margin: "0 auto 8px",
+                margin: "0 auto 0.5em",
                 background: "rgba(71, 85, 105, 0.45)",
               }}
             />
-            <div style={{ fontWeight: 500 }}>{TEACHER_SIGNATURE}</div>
+            <div style={{ fontWeight: 600, color: "#1f2937" }}>{TEACHER_SIGNATURE}</div>
           </div>
 
-          <div style={{ textAlign: "right" }}>
-            <div style={{ fontWeight: 500 }}>
+          <div style={{ textAlign: "right", overflowWrap: "anywhere" }}>
+            <div style={{ fontWeight: 500, opacity: 0.85 }}>
               {COPY.verify.en} · {COPY.verify.vi}
             </div>
             <div
               style={{
                 color: "#1f2937",
                 fontWeight: 600,
-                marginTop: 2,
+                marginTop: "0.25em",
                 fontFamily: "ui-monospace, SFMono-Regular, Menlo, monospace",
-                wordBreak: "break-all",
+                fontSize: "0.95em",
+                overflowWrap: "anywhere",
               }}
             >
               {certificateCode}
             </div>
-            <div style={{ color: "#7c2d12", marginTop: 2, wordBreak: "break-all" }}>
+            <div
+              style={{
+                color: "#7c2d12",
+                marginTop: "0.2em",
+                overflowWrap: "anywhere",
+                fontSize: "0.85em",
+              }}
+            >
               {verifyUrl}
             </div>
           </div>
