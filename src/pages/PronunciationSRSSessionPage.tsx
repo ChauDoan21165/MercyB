@@ -1,42 +1,70 @@
 // src/pages/PronunciationSRSSessionPage.tsx — /pronunciation/srs
 //
-// Drives a session loop over a queue of pronunciation prompts using
-// PronunciationSRSCard. Mock queue for now (no backend / RPC yet).
+// Drives a session loop over the pronunciation_srs_items due queue
+// using PronunciationSRSCard. Queue rows come from Supabase (RLS-scoped
+// to the current user). Each successful attempt is recorded via the
+// record_pronunciation_attempt RPC.
 //
 // Flow
-// 1. Show one card at a time, keyed by index so each prompt starts
+// 1. Resolve the pronunciation_srs_enabled feature flag. OFF → show
+//    unavailable state. Loading → render nothing.
+// 2. Fetch due rows for the current user (next_review_at <= now,
+//    ordered oldest-due-first, limit 20). If no user is available
+//    (dev / harness), fall back to MOCK_QUEUE so the page is testable
+//    without auth.
+// 3. Show one card at a time, keyed by row id so each prompt starts
 //    in the card's "idle" phase.
-// 2. On the card's onContinue (only fires after status === "ok"),
-//    push the result and advance the index.
-// 3. scoring-failed branch is handled inside the card (Thử lại resets
-//    to idle without firing onContinue), so failures never advance.
-// 4. When the queue is exhausted, render a summary: average overall
+// 4. On the card's onContinue (only fires after status === "ok"),
+//    call record_pronunciation_attempt and advance the index.
+//    scoring-failed never reaches onContinue (the card's Thử lại
+//    resets it locally), and an explicit guard here re-enforces that.
+// 5. When the queue is exhausted, render a summary: average overall
 //    score + aggregated weak phonemes ranked by frequency.
 //
-// Backend touch surface: none. The card calls A2's scorePronunciation
-// internally; this page never imports supabase / fetch / RPC.
-//
 // CHAU ↓↓↓ COPY FROM HERE
-// — A4 Pronunciation SRS session page wired against PronunciationSRSCard.
+// — A4 Pronunciation SRS session page wired against pronunciation_srs_items
+//   + record_pronunciation_attempt RPC.
 
 import * as React from "react";
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 
 import { PronunciationSRSCard } from "@/components/pronunciation/PronunciationSRSCard";
 import {
   VIETNAMESE_L1_PHONEME_TARGETS,
   type PronunciationResult,
 } from "@/lib/pronunciation/scoringEngine";
+import { supabase } from "@/lib/supabaseClient";
+import { useAuth } from "@/providers/AuthProvider";
+import { useFeatureFlag } from "@/hooks/useFeatureFlag";
 
 interface QueueItem {
+  readonly id: string | null;
   readonly referenceText: string;
+  readonly targetPhonemes: string;
+  readonly vocabSrsId: string | null;
+}
+
+interface PronunciationSrsDueRow {
+  id: string;
+  target_phrase: string;
+  target_phonemes: string | null;
+  vocab_srs_id: string | null;
+  next_review_at: string;
 }
 
 const MOCK_QUEUE: ReadonlyArray<QueueItem> = [
-  { referenceText: "I think the answer is three." },
-  { referenceText: "She sells sea shells." },
-  { referenceText: "Very well done." },
+  { id: null, referenceText: "I think the answer is three.", targetPhonemes: "", vocabSrsId: null },
+  { id: null, referenceText: "She sells sea shells.",        targetPhonemes: "", vocabSrsId: null },
+  { id: null, referenceText: "Very well done.",              targetPhonemes: "", vocabSrsId: null },
 ];
+
+/** Engine emits 0..100; the RPC's pronunciation_score column is 0..1.
+ *  Pass through values that already sit in [0, 1] in case the engine
+ *  contract changes upstream. */
+function toUnitScore(score: number | null): number {
+  if (score == null || Number.isNaN(score)) return 0;
+  return score > 1 ? score / 100 : score;
+}
 
 const PHONEME_LABEL_BY_SYMBOL: ReadonlyMap<string, string> = new Map(
   VIETNAMESE_L1_PHONEME_TARGETS.map((t) => [t.phoneme, t.label]),
@@ -74,21 +102,109 @@ function averageScore(results: ReadonlyArray<PronunciationResult>): number | nul
   return Math.round(sum / scores.length);
 }
 
-export default function PronunciationSRSSessionPage(): React.ReactElement {
+export default function PronunciationSRSSessionPage(): React.ReactElement | null {
+  const { user, isLoading: authLoading } = useAuth();
+  const { enabled: flagEnabled, loading: flagLoading } = useFeatureFlag(
+    "pronunciation_srs_enabled",
+  );
+
   const [index, setIndex] = useState(0);
   const [results, setResults] = useState<PronunciationResult[]>([]);
+  const [queue, setQueue] = useState<ReadonlyArray<QueueItem> | null>(null);
+  const [queueError, setQueueError] = useState<string | null>(null);
 
-  const queue = MOCK_QUEUE;
-  const total = queue.length;
-  const finished = index >= total;
-  const current = finished ? null : queue[index];
+  // Load due queue once the flag is on and we know the auth state.
+  // Anonymous / no-session callers fall back to MOCK_QUEUE so the page
+  // remains testable without auth (RequireAuth wraps the route in
+  // production, so this branch only fires in dev/harness contexts).
+  useEffect(() => {
+    if (flagLoading || authLoading) return;
+    if (!flagEnabled) return;
 
-  const handleContinue = useCallback((result: PronunciationResult) => {
-    // Card only invokes onContinue on status === "ok". scoring-failed
-    // is handled inside the card (Thử lại stays on the same prompt).
-    setResults((prev) => [...prev, result]);
-    setIndex((prev) => prev + 1);
-  }, []);
+    if (!user) {
+      setQueue(MOCK_QUEUE);
+      return;
+    }
+
+    let cancelled = false;
+    (async () => {
+      try {
+        const { data, error } = await supabase
+          .from("pronunciation_srs_items")
+          .select("id, target_phrase, target_phonemes, vocab_srs_id, next_review_at")
+          .lte("next_review_at" as never, new Date().toISOString())
+          .order("next_review_at" as never, { ascending: true })
+          .limit(20);
+        if (cancelled) return;
+        if (error) {
+          setQueueError(error.message);
+          setQueue([]);
+          return;
+        }
+        const rows = (data ?? []) as PronunciationSrsDueRow[];
+        setQueue(
+          rows.map((r) => ({
+            id: r.id,
+            referenceText: r.target_phrase,
+            targetPhonemes: r.target_phonemes ?? "",
+            vocabSrsId: r.vocab_srs_id,
+          })),
+        );
+      } catch (err) {
+        if (cancelled) return;
+        setQueueError(err instanceof Error ? err.message : String(err));
+        setQueue([]);
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [flagLoading, flagEnabled, authLoading, user]);
+
+  const total = queue?.length ?? 0;
+  const finished = queue != null && index >= total;
+  const current = !finished && queue ? queue[index] : null;
+
+  const handleContinue = useCallback(
+    async (result: PronunciationResult) => {
+      // Belt-and-suspenders: the card already withholds onContinue on
+      // scoring-failed, but per the integration contract we never
+      // record a failed attempt and never advance.
+      if (result.status !== "ok") return;
+
+      const item = current;
+      if (item && user) {
+        try {
+          const { error } = await supabase.rpc("record_pronunciation_attempt", {
+            p_user_id: user.id,
+            p_target_phrase: item.referenceText,
+            p_target_phonemes: item.targetPhonemes,
+            p_pronunciation_score: toUnitScore(result.overallScore),
+            p_phoneme_scores: result.phonemeScores,
+            p_overall_score: result.overallScore,
+            p_vocab_srs_id: item.vocabSrsId,
+          });
+          if (error && import.meta.env.DEV) {
+            console.warn(
+              "[PronunciationSRSSessionPage] record_pronunciation_attempt failed",
+              error,
+            );
+          }
+        } catch (err) {
+          if (import.meta.env.DEV) {
+            console.warn(
+              "[PronunciationSRSSessionPage] record_pronunciation_attempt threw",
+              err,
+            );
+          }
+        }
+      }
+
+      setResults((prev) => [...prev, result]);
+      setIndex((prev) => prev + 1);
+    },
+    [current, user],
+  );
 
   const handleRestart = useCallback(() => {
     setResults([]);
@@ -97,6 +213,63 @@ export default function PronunciationSRSSessionPage(): React.ReactElement {
 
   const avg = useMemo(() => averageScore(results), [results]);
   const weak = useMemo(() => aggregateWeakPhonemes(results), [results]);
+
+  // ── Early-return branches (all hooks must be declared above) ───────────
+  if (flagLoading || authLoading) return null;
+
+  if (!flagEnabled) {
+    return (
+      <div
+        data-testid="pronunciation-srs-unavailable"
+        style={{
+          maxWidth: 560,
+          margin: "0 auto",
+          padding: "24px 16px 48px",
+          color: "#0f172a",
+        }}
+      >
+        <p style={{ margin: 0, fontSize: 14, lineHeight: 1.5 }}>
+          Tính năng này chưa mở cho tài khoản của bạn.
+          <br />
+          <span style={{ color: "#475569", fontSize: 13 }}>
+            Pronunciation SRS isn't available yet on your account.
+          </span>
+        </p>
+      </div>
+    );
+  }
+
+  if (queue == null) return null;
+
+  // Empty due queue takes precedence over the summary path so a fresh
+  // visit with nothing due lands on the "all caught up" empty state
+  // instead of a 0/0 session summary.
+  if (queue.length === 0 && results.length === 0) {
+    return (
+      <div
+        data-testid="pronunciation-srs-empty"
+        style={{
+          maxWidth: 560,
+          margin: "0 auto",
+          padding: "24px 16px 48px",
+          color: "#0f172a",
+        }}
+      >
+        <p style={{ margin: 0, fontSize: 16, fontWeight: 600, lineHeight: 1.4 }}>
+          Bạn đã luyện xong hôm nay
+          <br />
+          <span style={{ color: "#475569", fontSize: 13, fontWeight: 400 }}>
+            All caught up for today.
+          </span>
+        </p>
+        {queueError && import.meta.env.DEV ? (
+          <p style={{ marginTop: 12, fontSize: 12, color: "#991b1b" }}>
+            queue load error (dev only): {queueError}
+          </p>
+        ) : null}
+      </div>
+    );
+  }
 
   return (
     <div
