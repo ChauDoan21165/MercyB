@@ -8,26 +8,16 @@
       "maxDuration": 30
     }
   },
-  "routes": [
+  "redirects": [
     {
-      "src": "/api/mercy/grammar",
-      "dest": "/api/mercy/grammar.ts"
-    },
-    {
-      "src": "/api/tts",
-      "dest": "/api/tts.ts"
-    },
-    {
-      "src": "/about/chau",
-      "status": 302,
-      "headers": { "Location": "/" }
-    },
-    {
-      "handle": "filesystem"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/index.html"
+      "source": "/about/chau",
+      "destination": "/",
+      "statusCode": 302
     }
+  ],
+  "rewrites": [
+    { "source": "/api/tts", "destination": "/api/tts" },
+    { "source": "/api/mercy/grammar", "destination": "/api/mercy/grammar" },
+    { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
