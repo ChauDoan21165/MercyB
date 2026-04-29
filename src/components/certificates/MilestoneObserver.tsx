@@ -104,9 +104,11 @@ export function MilestoneObserver(): null {
         for (const r of results) {
           if (!r.ok || !r.certificate) continue;
           earnedRef.current.add(r.certificate.certificate_type);
-          if (!r.duplicate) {
-            publishCertificateEarned({ certificate: r.certificate });
-          }
+          // Toast suppression for retroactive grants is handled inside
+          // CertificateToast via metadata.backfilled. The DB enforces
+          // (user_id, cert_type, milestone_value) idempotency, so every
+          // successful response is safe to publish.
+          publishCertificateEarned({ certificate: r.certificate });
         }
       });
     };

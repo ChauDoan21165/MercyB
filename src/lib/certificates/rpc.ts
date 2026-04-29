@@ -1,67 +1,80 @@
 // src/lib/certificates/rpc.ts
 //
-// MOCK RPC layer for Progress Certificates. A1 will replace these with
-// real Supabase calls (`issue_certificate`, `list_user_certificates`,
-// `verify_certificate`). The function signatures here match what the
-// real RPCs are expected to accept/return so the call sites stay stable
-// across the swap.
+// Real Supabase RPC layer for Progress Certificates. Replaces the
+// localStorage mock that previously stood in here. Verification is still
+// owned by A2 (mockVerifyCertificate.ts → verify_certificate RPC); this
+// module exports issue + list only.
 //
-// Storage: per-user list under localStorage key
-//   `mb:certificates:v1:<userId>`
-// Lost on logout / clearStorage. That's intentional for the mock phase.
+// Backend contract (prod, verified read-only on 2026-04-29):
+//   issue_certificate(p_user_id uuid, p_cert_type text,
+//                     p_milestone_value int, p_metadata jsonb)
+//     → returns row { id, user_id, cert_type, milestone_value,
+//                     certificate_code, metadata, issued_at }.
+//     Idempotent on (user_id, cert_type, milestone_value): returns the
+//     pre-existing row instead of creating a duplicate.
+//
+//   get_user_certificates(p_user_id uuid)
+//     → returns rows joined with the type catalog: { id, certificate_code,
+//       cert_type, milestone_value, issued_at, display_name_en,
+//       display_name_vi }. Self-checked inside the function — caller's
+//       JWT must match p_user_id (or be admin).
+//
+// Failure mode: RPC errors return `{ ok: false, error: msg }` without
+// throwing and without falling back to a local mock. Call sites
+// (MilestoneObserver, CertificatesGalleryPage) already treat ok=false /
+// empty list as a no-op, so the UI degrades silently.
 
+import { supabase } from "@/lib/supabaseClient";
 import type { CertificateType, EarnedCertificate } from "./types";
 
-const STORAGE_PREFIX = "mb:certificates:v1:";
-
-function storageKey(userId: string): string {
-  return `${STORAGE_PREFIX}${userId}`;
+interface IssueRpcRow {
+  id: string;
+  user_id: string;
+  cert_type: string;
+  milestone_value: number;
+  certificate_code: string;
+  metadata: Record<string, unknown> | null;
+  issued_at: string;
 }
 
-function safeParse(raw: string | null): EarnedCertificate[] {
-  if (!raw) return [];
-  try {
-    const parsed = JSON.parse(raw);
-    return Array.isArray(parsed) ? (parsed as EarnedCertificate[]) : [];
-  } catch {
-    return [];
-  }
+interface ListRpcRow {
+  id: string;
+  certificate_code: string;
+  cert_type: string;
+  milestone_value: number;
+  issued_at: string;
+  display_name_en?: string;
+  display_name_vi?: string;
 }
 
-function readAll(userId: string): EarnedCertificate[] {
-  if (typeof window === "undefined" || !window.localStorage) return [];
-  return safeParse(window.localStorage.getItem(storageKey(userId)));
+/** Pull the trailing integer out of a CertificateType ("xp_100" → 100). */
+function milestoneValueOf(certType: CertificateType): number {
+  const m = /_(\d+)$/.exec(certType);
+  return m ? Number(m[1]) : 0;
 }
 
-function writeAll(userId: string, list: EarnedCertificate[]): void {
-  if (typeof window === "undefined" || !window.localStorage) return;
-  try {
-    window.localStorage.setItem(storageKey(userId), JSON.stringify(list));
-  } catch {
-    // Storage quota / private mode — best effort.
-  }
+function issueRowToEarned(row: IssueRpcRow): EarnedCertificate {
+  return {
+    id: row.id,
+    user_id: row.user_id,
+    certificate_type: row.cert_type as CertificateType,
+    earned_at: row.issued_at,
+    certificate_code: row.certificate_code,
+    metadata: row.metadata ?? {},
+  };
 }
 
-function randomCode(): string {
-  const alphabet = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
-  let out = "";
-  const bytes = new Uint8Array(10);
-  if (typeof crypto !== "undefined" && crypto.getRandomValues) {
-    crypto.getRandomValues(bytes);
-  } else {
-    for (let i = 0; i < bytes.length; i++) bytes[i] = Math.floor(Math.random() * 256);
-  }
-  for (let i = 0; i < bytes.length; i++) {
-    out += alphabet[bytes[i] % alphabet.length];
-  }
-  return out;
-}
-
-function randomId(): string {
-  if (typeof crypto !== "undefined" && "randomUUID" in crypto) {
-    return crypto.randomUUID();
-  }
-  return `mock-${Date.now()}-${Math.random().toString(36).slice(2, 10)}`;
+function listRowToEarned(row: ListRpcRow, userId: string): EarnedCertificate {
+  return {
+    id: row.id,
+    user_id: userId,
+    certificate_type: row.cert_type as CertificateType,
+    earned_at: row.issued_at,
+    certificate_code: row.certificate_code,
+    // get_user_certificates doesn't return metadata; UI labels come from
+    // the local catalog. Keep the field present so the type stays stable.
+    metadata: {},
+  };
 }
 
 export interface IssueCertificateInput {
@@ -72,49 +85,59 @@ export interface IssueCertificateInput {
 
 export interface IssueCertificateResult {
   ok: boolean;
-  /** True when the user already had this type and we returned the
-   *  existing row instead of creating a new one. */
-  duplicate: boolean;
   certificate: EarnedCertificate | null;
   error?: string;
 }
 
-/** Mock issue. Idempotent on (user_id, certificate_type). */
 export async function issueCertificate(
   input: IssueCertificateInput,
 ): Promise<IssueCertificateResult> {
   if (!input.user_id || !input.certificate_type) {
-    return { ok: false, duplicate: false, certificate: null, error: "invalid_input" };
+    return { ok: false, certificate: null, error: "invalid_input" };
   }
 
-  const list = readAll(input.user_id);
-  const existing = list.find(
-    (c) => c.certificate_type === input.certificate_type,
-  );
-  if (existing) {
-    return { ok: true, duplicate: true, certificate: existing };
+  const { data, error } = await supabase.rpc("issue_certificate", {
+    p_user_id: input.user_id,
+    p_cert_type: input.certificate_type,
+    p_milestone_value: milestoneValueOf(input.certificate_type),
+    p_metadata: input.metadata ?? {},
+  });
+
+  if (error) {
+    console.warn("[certificates/rpc] issue_certificate failed", error);
+    return { ok: false, certificate: null, error: error.message };
   }
 
-  const cert: EarnedCertificate = {
-    id: randomId(),
-    user_id: input.user_id,
-    certificate_type: input.certificate_type,
-    earned_at: new Date().toISOString(),
-    certificate_code: randomCode(),
-    metadata: { ...(input.metadata ?? {}) },
-  };
-  list.push(cert);
-  writeAll(input.user_id, list);
-  return { ok: true, duplicate: false, certificate: cert };
+  const row = (Array.isArray(data) ? data[0] : data) as IssueRpcRow | null;
+  if (!row || !row.id || !row.certificate_code) {
+    return { ok: false, certificate: null, error: "empty_response" };
+  }
+
+  // Idempotency is enforced by the DB UNIQUE constraint on
+  // (user_id, cert_type, milestone_value); the RPC always returns a
+  // valid row. Toast suppression for retroactive grants is handled
+  // downstream via metadata.backfilled === true (CertificateToast.tsx).
+  return { ok: true, certificate: issueRowToEarned(row) };
 }
 
-/** Mock list. Returns earned certs ordered newest-first. */
 export async function listEarnedCertificates(
   userId: string,
 ): Promise<EarnedCertificate[]> {
   if (!userId) return [];
-  const list = readAll(userId);
-  return [...list].sort((a, b) => b.earned_at.localeCompare(a.earned_at));
+
+  const { data, error } = await supabase.rpc("get_user_certificates", {
+    p_user_id: userId,
+  });
+
+  if (error) {
+    console.warn("[certificates/rpc] get_user_certificates failed", error);
+    return [];
+  }
+
+  const rows = (Array.isArray(data) ? data : []) as ListRpcRow[];
+  return rows
+    .map((row) => listRowToEarned(row, userId))
+    .sort((a, b) => b.earned_at.localeCompare(a.earned_at));
 }
 
 // NOTE: Verification is owned by A2 (mockVerifyCertificate.ts → real
