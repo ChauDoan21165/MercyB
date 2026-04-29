@@ -298,28 +298,38 @@ function adaptCloudResult(
     .filter((s) => s.length > 0)
     .join(" ");
 
-  // Validity gate — only return status:"ok" when every signal is
-  // usable. Any failure here demotes the attempt to "scoring-failed"
-  // so a literal 0 / empty payload can never render as a real score.
-  // The transcription is preserved through the failure path when it
-  // contains usable letter content, so callers can show the learner
-  // "we heard X but couldn't score it" instead of dropping the audio
-  // recognition entirely.
+  // Validity gate — only return status:"ok" when phoneme evidence is
+  // usable. The gate prioritises phoneme data over transcription
+  // quality (Azure occasionally returns full per-phoneme assessments
+  // without surfacing a usable transcription string). A literal 0 /
+  // truly-empty payload still demotes to "scoring-failed" so it never
+  // renders as a real score.
   const candidate = {
     overallScore: cloud.overallScore,
     phonemeScores,
     transcription,
   };
   const trust = isTrustedPronunciationResult(candidate);
+
   if (!trust.trusted) {
+    // TEMPORARY DIAGNOSTIC LOGGING — reliability bug (Apr 29 2026):
+    // /pronunciation/srs was repeatedly producing scoring-failed for
+    // good attempts. Log the full cloud payload + derived candidate
+    // so we can see exactly which signal is missing in production.
+    // Remove once the failure mode is fully understood.
     if (import.meta.env.DEV) {
       console.warn(
         `[scoringEngine] downgraded cloud ok→scoring-failed: ${trust.reason}`,
         {
           overallScore: cloud.overallScore,
-          phonemeCount: phonemeScores.length,
+          phonemeScoresCount: phonemeScores.length,
+          phonemeScoresPreview: phonemeScores.slice(0, 8),
+          confidenceValues: phonemeScores.map((p) => p.confidence),
+          rawScoresValues: phonemeScores.map((p) => p.score),
+          transcription,
           transcriptionLength: transcription.length,
-          transcriptionPreview: transcription.slice(0, 60),
+          rawWordScoresCount: cloud.wordScores.length,
+          rawWordScoresPreview: cloud.wordScores.slice(0, 5),
         },
       );
     }
@@ -327,6 +337,21 @@ function adaptCloudResult(
       referenceText,
       audioBlob,
       hasUsableTranscriptionContent(transcription) ? transcription : "",
+    );
+  }
+
+  // TEMPORARY DIAGNOSTIC LOGGING — paired with the failure-path warn
+  // above so we can correlate good vs bad attempts in production.
+  // Remove once the reliability bug is closed.
+  if (import.meta.env.DEV) {
+    console.info(
+      "[scoringEngine] cloud trusted",
+      {
+        overallScore: cloud.overallScore,
+        phonemeScoresCount: phonemeScores.length,
+        weakPhonemes,
+        transcriptionLength: transcription.length,
+      },
     );
   }
 
@@ -345,18 +370,22 @@ function adaptCloudResult(
  * Decides whether a cloud-derived candidate result can be trusted
  * enough to surface as `status: "ok"` to the SRS scheduler / UI.
  *
- * Returns `{ trusted: true }` only when EVERY rule passes:
- *   - overallScore is a finite, > 0 number
- *   - phonemeScores is non-empty
- *   - transcription has usable letter content (not pure punctuation /
- *     digits / noise) and is at least
- *     TRUSTED_MIN_TRANSCRIPTION_LENGTH chars after trim
- *   - at least one phoneme has score > 0 OR confidence >=
- *     TRUSTED_MIN_PHONEME_CONFIDENCE — ensures we have at least one
- *     usable evidence point even if the overall score is low
+ * Trust rules — phoneme-evidence-first:
+ *   1. overallScore is a finite, > 0 number
+ *   2. phonemeScores is non-empty
+ *   3. EITHER at least one phoneme has score > 0 OR confidence >=
+ *      TRUSTED_MIN_PHONEME_CONFIDENCE  — phoneme evidence wins.
+ *      In that case transcription is informational only (Azure
+ *      sometimes returns full per-phoneme assessments without a
+ *      usable transcription string, and we should not throw away
+ *      a real score over that).
+ *   4. If no phoneme passes the evidence threshold, we fail trust —
+ *      a transcription alone isn't enough for SRS, which keys off
+ *      individual phonemes.
  *
- * Otherwise returns `{ trusted: false, reason }`. The `reason` string
- * is dev-only diagnostics — callers should NOT key UI off it.
+ * Returns `{ trusted: true }` when rules pass. Otherwise
+ * `{ trusted: false, reason }`. The `reason` string is dev-only
+ * diagnostics — callers MUST NOT key UI off it.
  */
 export function isTrustedPronunciationResult(
   candidate: {
@@ -379,23 +408,34 @@ export function isTrustedPronunciationResult(
   if (phonemeScores.length === 0) {
     return { trusted: false, reason: "phonemeScores is empty" };
   }
-  if (!hasUsableTranscriptionContent(transcription)) {
-    return {
-      trusted: false,
-      reason: "transcription empty, too short, or pure noise/punctuation",
-    };
-  }
+
   const hasUsableEvidence = phonemeScores.some(
     (p) => p.score > 0 || p.confidence >= TRUSTED_MIN_PHONEME_CONFIDENCE,
   );
-  if (!hasUsableEvidence) {
-    return {
-      trusted: false,
-      reason: `no phoneme with score>0 or confidence>=${TRUSTED_MIN_PHONEME_CONFIDENCE}`,
-    };
+
+  // Phoneme evidence wins — trust the assessment even when the
+  // provider didn't surface a usable transcription string.
+  if (hasUsableEvidence) {
+    return { trusted: true };
   }
 
-  return { trusted: true };
+  // No phoneme evidence. Differentiate the failure reason for
+  // diagnostics, but the outcome is the same: scoring-failed.
+  const transcriptionUsable = hasUsableTranscriptionContent(transcription);
+  if (!transcriptionUsable) {
+    return {
+      trusted: false,
+      reason:
+        "no usable phoneme evidence AND no usable transcription " +
+        "(empty / too short / pure noise)",
+    };
+  }
+  return {
+    trusted: false,
+    reason:
+      `transcription present but no phoneme has score>0 or ` +
+      `confidence>=${TRUSTED_MIN_PHONEME_CONFIDENCE}`,
+  };
 }
 
 function hasUsableTranscriptionContent(s: string): boolean {
