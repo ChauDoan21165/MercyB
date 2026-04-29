@@ -5,12 +5,15 @@
 // Resolver remains the ONLY source of truth.
 
 import { PUBLIC_ROOM_MANIFEST } from "@/lib/roomManifest";
+import { isOnline } from "@/lib/offline/offlineDetector";
+import { getRoom } from "@/lib/offline/offlineDb";
 
 export type RoomJsonResolverErrorKind =
   | "not_found"
   | "json_invalid"
   | "network"
-  | "server";
+  | "server"
+  | "offline_unavailable";
 
 function stripJsonSuffix(s: string): string {
   // Remove ONLY a trailing ".json" (case-insensitive)
@@ -60,6 +63,99 @@ export function normalizeRoomIdForCanonicalFile(input: string): string {
   return canonicalizeRoomId(input);
 }
 
+/**
+ * Normalize an offline pack to the same room shape RoomRenderer consumes
+ * online. A1's downloadRoomPack stores a RoomPackJson envelope:
+ *
+ *   { roomId, title, room, entries, keywords, audioUrls, downloadedAt }
+ *
+ * `pack.room` is the original room JSON. RoomRenderer derives keyword
+ * chips from `room.keywords_en/vi` (top-level) AND from per-entry
+ * `keywords_en/vi`. The online flow always has BOTH because the JSON
+ * file ships both. When offline, we must guarantee the same: if the
+ * envelope's stored `room` happens to be missing the top-level keyword
+ * arrays — which can happen for older packs or DB-driven rooms whose
+ * keywords live only per-entry — synthesize them from the entries so
+ * RoomRenderer's `resolveKeywords` fallback chain has a hit.
+ *
+ * Returns null when the stored value isn't usable.
+ */
+export function normalizeOfflineRoom(stored: unknown): Record<string, unknown> | null {
+  if (!stored || typeof stored !== "object") return null;
+  const pack = stored as Record<string, unknown>;
+
+  // Envelope vs flat: prefer pack.room when present.
+  const inner = pack.room;
+  const baseSource =
+    inner && typeof inner === "object" ? (inner as Record<string, unknown>) : pack;
+
+  // Shallow-clone so we don't mutate the IDB snapshot (structuredClone
+  // already returned a copy, but stay defensive — RoomRenderer's
+  // pre-processors may mutate in place).
+  const room: Record<string, unknown> = { ...baseSource };
+
+  // Backfill entries from the envelope if the inner room lost them.
+  const innerEntries = Array.isArray(room.entries) ? (room.entries as unknown[]) : [];
+  if (innerEntries.length === 0) {
+    const envEntries = Array.isArray(pack.entries) ? (pack.entries as unknown[]) : [];
+    if (envEntries.length > 0) {
+      room.entries = envEntries;
+    }
+  }
+
+  // Backfill room-level keywords_en/vi from entry-level keyword arrays
+  // when the room itself doesn't carry them. Mirrors the online
+  // experience where RoomRenderer's `resolveKeywords` reads top-level
+  // arrays — without this backfill, offline rooms whose chips would
+  // otherwise come from DB rows render with no chips at all.
+  const hasKwEn =
+    Array.isArray(room.keywords_en) && (room.keywords_en as unknown[]).length > 0;
+  const hasKwVi =
+    Array.isArray(room.keywords_vi) && (room.keywords_vi as unknown[]).length > 0;
+
+  if (!hasKwEn || !hasKwVi) {
+    const collected = collectEntryKeywords(
+      Array.isArray(room.entries) ? (room.entries as unknown[]) : [],
+    );
+    if (!hasKwEn && collected.en.length > 0) {
+      room.keywords_en = collected.en;
+    }
+    if (!hasKwVi && collected.vi.length > 0) {
+      room.keywords_vi = collected.vi;
+    }
+  }
+
+  return room;
+}
+
+function collectEntryKeywords(entries: unknown[]): { en: string[]; vi: string[] } {
+  const en: string[] = [];
+  const vi: string[] = [];
+  const seenEn = new Set<string>();
+  const seenVi = new Set<string>();
+
+  for (const e of entries) {
+    if (!e || typeof e !== "object") continue;
+    const obj = e as Record<string, unknown>;
+    const enArr = Array.isArray(obj.keywords_en) ? (obj.keywords_en as unknown[]) : [];
+    for (const v of enArr) {
+      const s = typeof v === "string" ? v.trim() : "";
+      if (!s || seenEn.has(s)) continue;
+      seenEn.add(s);
+      en.push(s);
+    }
+    const viArr = Array.isArray(obj.keywords_vi) ? (obj.keywords_vi as unknown[]) : [];
+    for (const v of viArr) {
+      const s = typeof v === "string" ? v.trim() : "";
+      if (!s || seenVi.has(s)) continue;
+      seenVi.add(s);
+      vi.push(s);
+    }
+  }
+
+  return { en, vi };
+}
+
 export function resolveRoomJsonPath(roomIdRaw: string): string {
   const id = canonicalizeRoomId(roomIdRaw);
 
@@ -75,6 +171,25 @@ export function resolveRoomJsonPath(roomIdRaw: string): string {
 
 export async function loadRoomJson(roomIdRaw: string): Promise<any> {
   const id = canonicalizeRoomId(roomIdRaw);
+
+  // Offline branch (Offline Lite v1, A3): when navigator reports offline,
+  // try the IDB pack A1 wrote on download. Hit → return the room JSON
+  // normalized to the same shape RoomRenderer consumes online. Miss →
+  // throw with kind "offline_unavailable" so ChatHub can render
+  // <OfflineUnavailable> instead of the generic error page.
+  if (!isOnline()) {
+    try {
+      const cached = await getRoom(id);
+      const normalized = normalizeOfflineRoom(cached?.json);
+      if (normalized) return normalized;
+    } catch {
+      // IDB unavailable / blocked → fall through to OFFLINE_UNAVAILABLE
+    }
+    const err = new Error("OFFLINE_UNAVAILABLE");
+    (err as any).kind = "offline_unavailable" satisfies RoomJsonResolverErrorKind;
+    throw err;
+  }
+
   const manifestPath = resolveRoomJsonPath(id);
 
   // Always fetch from root ("/data/..."), never relative ("data/...")

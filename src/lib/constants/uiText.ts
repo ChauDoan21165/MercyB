@@ -60,6 +60,7 @@ export const ERROR_MESSAGES = {
     networkError: 'Connection issue. Please check your internet.',
     serverError: 'Something went wrong. Please try again later.',
     audioLoadFailed: 'Audio could not be loaded.',
+    offlineUnavailable: 'This room is not available offline. Open it once while online to download it.',
     generic: 'There seems to be an issue.',
   },
   vi: {
@@ -70,6 +71,7 @@ export const ERROR_MESSAGES = {
     networkError: 'Lỗi kết nối. Vui lòng kiểm tra internet.',
     serverError: 'Có lỗi xảy ra. Vui lòng thử lại sau.',
     audioLoadFailed: 'Không thể tải âm thanh.',
+    offlineUnavailable: 'Phòng này chưa tải về để dùng ngoại tuyến. Hãy mở phòng một lần khi có mạng để tải về.',
     generic: 'Có vấn đề xảy ra.',
   },
 } as const;
@@ -217,6 +219,9 @@ export function getErrorMessage(
       return messages.serverError;
     case 'audio_load_failed':
       return messages.audioLoadFailed;
+    case 'offline_unavailable':
+    case 'OFFLINE_UNAVAILABLE':
+      return messages.offlineUnavailable;
     default:
       return messages.generic;
   }

@@ -34,6 +34,8 @@ import { getErrorMessage } from "@/lib/constants/uiText";
 import { normalizeTierOrUndefined } from "@/lib/constants/tiers";
 
 import RoomRenderer from "@/components/room/RoomRenderer";
+import { DownloadRoomButton } from "@/components/room/DownloadRoomButton";
+import OfflineUnavailable from "@/components/offline/OfflineUnavailable";
 import { getEffectiveRoomSpec, type RoomSpec } from "@/lib/roomSpecification";
 
 import BottomMusicBar from "@/components/audio/BottomMusicBar";
@@ -418,7 +420,14 @@ export default function ChatHub() {
           </div>
         ) : null}
 
-        {state === "error" ? (
+        {state === "error" && errorKind === "offline_unavailable" ? (
+          <OfflineUnavailable
+            roomId={roomId ?? null}
+            onBack={() => void handleBack()}
+          />
+        ) : null}
+
+        {state === "error" && errorKind !== "offline_unavailable" ? (
           <div className="rounded-2xl border border-black/10 bg-white/80 p-6 shadow-sm">
             <div className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">
               Room error
@@ -461,6 +470,15 @@ export default function ChatHub() {
             ) : null}
 
             <div className={showArrival ? "hidden" : "block"}>
+              {room && roomId ? (
+                <div className="mb-3 flex justify-end">
+                  <DownloadRoomButton
+                    roomId={roomId}
+                    room={room}
+                    title={roomTitle || undefined}
+                  />
+                </div>
+              ) : null}
               <div data-mb-room-zoom="1">
                 {room && (
                   <RoomRenderer
