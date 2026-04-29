@@ -10,7 +10,6 @@
 
 import * as React from "react";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 
 import { useFeatureFlag } from "@/hooks/useFeatureFlag";
 import {
@@ -129,8 +128,15 @@ function CertificateToastCard({
         >
           {meta?.label_en ?? "Certificate earned"}
         </p>
-        <Link
-          to="/certificates"
+        {/* Plain <a> — this component mounts globally on every route,
+            including public ones like /cert/:code. Using a Router <Link>
+            here couples the toast to NavigationContext; if anything
+            upstream renders the toast even briefly outside Router context
+            (Suspense fallback edge cases, hydration mismatches), the
+            destructure of `basename` from useContext crashes the page.
+            Plain anchor is safer and the visual behavior is identical. */}
+        <a
+          href="/certificates"
           style={{
             display: "inline-block",
             marginTop: 6,
@@ -140,7 +146,7 @@ function CertificateToastCard({
           }}
         >
           Xem bộ sưu tập
-        </Link>
+        </a>
       </div>
     </div>
   );
