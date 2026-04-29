@@ -18,7 +18,6 @@ import DailyChallengeCard from "@/components/home/DailyChallengeCard";
 import FocusAreasCard from "@/components/home/FocusAreasCard";
 import PracticeRecommendationCard from "@/components/home/PracticeRecommendationCard";
 import RecommendedDrillCard from "@/components/home/RecommendedDrillCard";
-import TodaysLessonCard from "@/components/home/TodaysLessonCard";
 import WeeklyProgressWidget from "@/components/home/WeeklyProgressWidget";
 import StoryPromptCard from "@/components/home/StoryPromptCard";
 import LeaderboardCard from "@/components/leaderboard/LeaderboardCard";
@@ -736,11 +735,6 @@ export default function Home() {
               feature flag and hides itself once the user has a
               completion for today. */}
           <DailyChallengeCard isPhone={isPhone} />
-
-          {/* ── 1. Today's Lesson ────────────────────────────────────────
-              Top anchor for returning users — never auto-navigates; the
-              user must tap "Bắt đầu" themselves. */}
-          <TodaysLessonCard isPhone={isPhone} />
 
           {/* ── 2. Teacher Mercy ─────────────────────────────────────────
               Hero card. Same handler as before (auth → bubble open;
