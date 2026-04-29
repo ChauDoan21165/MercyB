@@ -118,8 +118,31 @@ export type SentinelReason =
   | "global_daily_cap_reached"
   | "azure_no_match"
   | "azure_timeout"
+  /** Generic Azure failure — kept as catch-all for unexpected paths
+   *  (the outer try/catch + Azure 5xx). Specific sub-categories below
+   *  exist so the client can distinguish recoverable / actionable
+   *  failures (auth/payload/env/network) from genuine server errors. */
   | "azure_error"
-  | "audio_decode_error";
+  | "audio_decode_error"
+  /** AZURE_SPEECH_KEY env var is missing or empty. Ops issue —
+   *  redeploy with the secret set. Client should surface this as
+   *  "scoring temporarily unavailable" and not retry locally. */
+  | "azure_missing_env"
+  /** Azure rejected our subscription key (HTTP 401 / 403). Either
+   *  the key is wrong or has been revoked. Same UX as missing_env
+   *  from the learner's perspective, but distinct in logs / metrics. */
+  | "azure_auth_failed"
+  /** Azure returned HTTP 400 or a non-Success RecognitionStatus that
+   *  isn't NoMatch (BadRequest, InvalidArgument, etc.). Means the
+   *  audio / config / reference text was malformed. */
+  | "azure_payload_failed"
+  /** Network / DNS / TLS failure reaching Azure (fetch threw, not a
+   *  timeout). Distinct from azure_timeout so we can monitor these
+   *  separately. */
+  | "azure_network_failed"
+  /** Azure HTTP 200 but the JSON body failed to parse or was missing
+   *  required fields. Indicates a contract drift on Azure's side. */
+  | "azure_response_invalid";
 
 export type UserProfileRow = {
   trial_expires_at: string | null;
@@ -412,7 +435,7 @@ export async function handleRequest(req: Request, deps: Deps): Promise<Response>
     const costUsd = computeCostUsd(audioSeconds);
 
     if (!deps.azureKey) {
-      console.error("AZURE_SPEECH_KEY is missing");
+      console.error("[azure-phoneme] AZURE_SPEECH_KEY env var is missing");
       await deps.audit({
         userId,
         status: "whisper_error",
@@ -420,12 +443,13 @@ export async function handleRequest(req: Request, deps: Deps): Promise<Response>
         openaiCostUsd: costUsd,
         errorMsg: "azure_key_missing",
       });
-      return sentinel("azure_error");
+      return sentinel("azure_missing_env");
     }
 
     // 6. Call Azure with timeout.
     let azureBody: AzureResponse | null = null;
-    let azureError: string | null = null;
+    let sentinelReason: SentinelReason | null = null;
+    let auditMsg: string | null = null;
     let timedOut = false;
     try {
       // Azure rejects ReferenceText that ends with punctuation
@@ -468,32 +492,66 @@ export async function handleRequest(req: Request, deps: Deps): Promise<Response>
       clearTimeout(timer);
 
       if (!response.ok) {
-        azureError = `azure_${response.status}`;
+        // Categorise HTTP failures so the client can distinguish
+        // ops issues (auth) from input issues (payload) from server
+        // hiccups. The audit-log message keeps the precise status
+        // code so we can grep speech_analysis_logs.
+        auditMsg = `azure_${response.status}`;
+        if (response.status === 401 || response.status === 403) {
+          sentinelReason = "azure_auth_failed";
+          console.error(
+            `[azure-phoneme] Azure auth rejected: HTTP ${response.status}`,
+          );
+        } else if (response.status === 400) {
+          sentinelReason = "azure_payload_failed";
+          console.error(
+            `[azure-phoneme] Azure rejected payload: HTTP 400`,
+          );
+        } else {
+          sentinelReason = "azure_error";
+          console.error(
+            `[azure-phoneme] Azure server error: HTTP ${response.status}`,
+          );
+        }
       } else {
-        azureBody = (await response.json()) as AzureResponse;
+        try {
+          azureBody = (await response.json()) as AzureResponse;
+        } catch (parseErr) {
+          sentinelReason = "azure_response_invalid";
+          auditMsg =
+            parseErr instanceof Error
+              ? `azure_json_parse:${truncate(parseErr.message, 80)}`
+              : "azure_json_parse";
+          console.error(
+            "[azure-phoneme] Azure 200 but JSON parse failed:",
+            auditMsg,
+          );
+        }
       }
     } catch (err) {
-      if (timedOut) {
-        azureError = "azure_timeout";
-      } else if (err instanceof Error && err.name === "AbortError") {
-        azureError = "azure_timeout";
+      if (timedOut || (err instanceof Error && err.name === "AbortError")) {
+        sentinelReason = "azure_timeout";
+        auditMsg = "azure_timeout";
+        console.error("[azure-phoneme] Azure call timed out");
       } else {
-        azureError =
+        sentinelReason = "azure_network_failed";
+        auditMsg =
           err instanceof Error
             ? `azure_throw:${truncate(err.message, 100)}`
             : "azure_throw";
+        console.error("[azure-phoneme] Network failure reaching Azure:", auditMsg);
       }
     }
 
-    if (azureError) {
+    if (sentinelReason) {
       await deps.audit({
         userId,
         status: "whisper_error",
         audioSeconds,
         openaiCostUsd: costUsd,
-        errorMsg: azureError,
+        errorMsg: auditMsg ?? sentinelReason,
       });
-      return sentinel(azureError === "azure_timeout" ? "azure_timeout" : "azure_error");
+      return sentinel(sentinelReason);
     }
 
     if (!azureBody || azureBody.RecognitionStatus !== "Success") {
@@ -505,9 +563,14 @@ export async function handleRequest(req: Request, deps: Deps): Promise<Response>
         openaiCostUsd: costUsd,
         errorMsg: `azure_status:${status}`,
       });
-      return sentinel(
-        status === "NoMatch" ? "azure_no_match" : "azure_error",
+      // NoMatch = silence / unintelligible audio. Anything else
+      // (BadRequest, InvalidArgument, etc.) means we sent a
+      // malformed request, not a learner audio problem.
+      if (status === "NoMatch") return sentinel("azure_no_match");
+      console.error(
+        `[azure-phoneme] Azure RecognitionStatus=${status} (treating as payload failure)`,
       );
+      return sentinel("azure_payload_failed");
     }
 
     // 7. Project Azure response → unified shape.
