@@ -13,6 +13,7 @@ import * as React from "react";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "@/providers/AuthProvider";
+import { useFeatureFlag } from "@/hooks/useFeatureFlag";
 
 import { listEarnedCertificates } from "@/lib/certificates/rpc";
 import {
@@ -41,12 +42,24 @@ function formatDate(iso: string): string {
   }
 }
 
-export function CertificatesGalleryPage(): React.ReactElement {
+const CERTIFICATES_FLAG_KEY = "certificates_enabled";
+
+export function CertificatesGalleryPage(): React.ReactElement | null {
+  const { enabled: flagEnabled, loading: flagLoading } = useFeatureFlag(
+    CERTIFICATES_FLAG_KEY,
+    false,
+  );
   const { user } = useAuth();
   const userId = user?.id ?? null;
 
   const [earned, setEarned] = useState<EarnedCertificate[]>([]);
   const [loading, setLoading] = useState(true);
+
+  // While the flag is still resolving, render nothing — avoids the
+  // flash where the gallery briefly appears (or briefly shows the
+  // disabled state) before the real value lands.
+  if (flagLoading) return null;
+  if (!flagEnabled) return <CertificatesUnavailable />;
 
   useEffect(() => {
     if (!userId) {
@@ -117,6 +130,52 @@ export function CertificatesGalleryPage(): React.ReactElement {
       )}
 
       <WhatYouCanEarn earnedTypes={earnedTypes} />
+    </div>
+  );
+}
+
+function CertificatesUnavailable(): React.ReactElement {
+  return (
+    <div
+      data-testid="certificates-unavailable"
+      style={{
+        maxWidth: 560,
+        margin: "0 auto",
+        padding: "24px 16px",
+        color: "#0f172a",
+        textAlign: "center",
+      }}
+    >
+      <p
+        style={{
+          margin: 0,
+          fontSize: 16,
+          fontWeight: 600,
+          color: "#0f172a",
+        }}
+      >
+        Tính năng chưa khả dụng
+      </p>
+      <p
+        style={{
+          margin: "6px 0 14px",
+          fontSize: 13,
+          color: "#64748b",
+          lineHeight: 1.5,
+        }}
+      >
+        Progress certificates aren't available yet.
+      </p>
+      <Link
+        to="/"
+        style={{
+          fontSize: 13,
+          color: "#0f172a",
+          textDecoration: "underline",
+        }}
+      >
+        ← Về trang chính
+      </Link>
     </div>
   );
 }
