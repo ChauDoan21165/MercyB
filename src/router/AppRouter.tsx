@@ -108,6 +108,8 @@ const WritingFeedbackPage  = lazy(() => import("@/pages/writing/WritingFeedbackP
 const WritingPracticePage  = lazy(() => import("@/pages/writing/WritingPracticePage"));
 const WritingPracticeSessionPage = lazy(() => import("@/pages/writing/WritingPracticeSessionPage"));
 
+const RoleplayPage = lazy(() => import("@/pages/RoleplayPage"));
+
 // IELTS prep mode (Step 11 — premium-gated; gate enforced per-page).
 const IELTSIndexPage      = lazy(() => import("@/pages/exam-prep/IELTSIndexPage"));
 const IELTSWritingPage    = lazy(() => import("@/pages/exam-prep/IELTSWritingPage"));
@@ -843,6 +845,8 @@ export default function AppRouter() {
           <Route path="/writing/:promptId"
             element={<LazyPage><WritingPracticeSessionPage /></LazyPage>}
           />
+
+          <Route path="/roleplay" element={<LazyPage><RoleplayPage /></LazyPage>} />
 
           {/* IELTS prep (Step 11) — auth-required; premium gate is in-page. */}
           <Route path="/exam/ielts"

@@ -1769,6 +1769,13 @@ export const roomDataMap = {
     "tier": "vip3",
     "hasData": true
   },
+  "matchmaker_traits": {
+    "id": "matchmaker_traits",
+    "title_en": "matchmaker_traits",
+    "title_vi": "matchmaker_traits",
+    "tier": "free",
+    "hasData": true
+  },
   "math_words_kids_l2": {
     "id": "math_words_kids_l2",
     "title_en": "Math Words for Kids",
@@ -2991,6 +2998,13 @@ export const roomDataMap = {
     "id": "universe_with_us_free",
     "title_en": "Universe With US",
     "title_vi": "Vũ Trụ Ở Cùng Chúng Ta",
+    "tier": "free",
+    "hasData": true
+  },
+  "user_profile_dashboard": {
+    "id": "user_profile_dashboard",
+    "title_en": "user_profile_dashboard",
+    "title_vi": "Phòng Mercy Blade về quản lý hồ sơ người dùng và bảng điều khiển học tập",
     "tier": "free",
     "hasData": true
   },

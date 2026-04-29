@@ -3,12 +3,19 @@
   "functions": {
     "api/mercy/grammar.ts": {
       "maxDuration": 30
+    },
+    "api/tts.ts": {
+      "maxDuration": 30
     }
   },
   "routes": [
     {
       "src": "/api/mercy/grammar",
       "dest": "/api/mercy/grammar.ts"
+    },
+    {
+      "src": "/api/tts",
+      "dest": "/api/tts.ts"
     },
     {
       "src": "/about/chau",

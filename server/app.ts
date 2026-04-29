@@ -8,6 +8,7 @@ import cors from 'cors';
 import mercyMemoryRoutes from './routes/mercyMemoryRoutes';
 import { registerHealthRoutes } from './routes/health';
 import { registerGrammarRoutes } from './routes/grammar';
+import { registerTtsRoutes } from './routes/tts';
 
 export function createApp() {
   const app = express();
@@ -20,6 +21,7 @@ export function createApp() {
 
   registerHealthRoutes(app);
   registerGrammarRoutes(app);
+  registerTtsRoutes(app);
 
   return app;
 }

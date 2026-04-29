@@ -8,6 +8,7 @@ import express from 'express';
 import cors from 'cors';
 import OpenAI from 'openai';
 import mercyMemoryRoutes from './routes/mercyMemoryRoutes';
+import { registerTtsRoutes } from './routes/tts';
 
 const app = express();
 
@@ -16,6 +17,9 @@ app.use(express.json());
 
 app.use(mercyMemoryRoutes);
 console.log('✅ mercyMemoryRoutes mounted');
+
+registerTtsRoutes(app);
+console.log('✅ TTS route mounted at POST /api/tts');
 
 type GrammarRequestBody = {
   text?: unknown;
