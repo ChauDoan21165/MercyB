@@ -55,14 +55,13 @@ export function CertificatesGalleryPage(): React.ReactElement | null {
   const [earned, setEarned] = useState<EarnedCertificate[]>([]);
   const [loading, setLoading] = useState(true);
 
-  // While the flag is still resolving, render nothing — avoids the
-  // flash where the gallery briefly appears (or briefly shows the
-  // disabled state) before the real value lands.
-  if (flagLoading) return null;
-  if (!flagEnabled) return <CertificatesUnavailable />;
-
+  // Rules of Hooks: every hook below must run on every render. The early
+  // returns for flagLoading / !flagEnabled live AFTER this block — moving
+  // them above caused the hook count to shift between renders, which
+  // produced cryptic React errors (e.g. "Cannot destructure 'basename'
+  // of useContext as it is null") when the flag flipped on after mount.
   useEffect(() => {
-    if (!userId) {
+    if (!flagEnabled || !userId) {
       setLoading(false);
       return;
     }
@@ -82,12 +81,16 @@ export function CertificatesGalleryPage(): React.ReactElement | null {
     return () => {
       alive = false;
     };
-  }, [userId]);
+  }, [flagEnabled, userId]);
 
   const earnedTypes = useMemo(
     () => new Set(earned.map((c) => c.certificate_type)),
     [earned],
   );
+
+  // Conditional renders happen AFTER all hooks above to keep hook order stable.
+  if (flagLoading) return null;
+  if (!flagEnabled) return <CertificatesUnavailable />;
 
   return (
     <div
