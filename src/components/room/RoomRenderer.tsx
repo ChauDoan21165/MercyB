@@ -354,6 +354,16 @@ function pickOneKeywordPairForEntry(
   return null;
 }
 
+function extractAudioString(v: unknown): string {
+  if (v == null) return "";
+  if (typeof v === "string") return v.trim();
+  if (typeof v === "object") {
+    const o = v as Record<string, unknown>;
+    return String(o.en ?? o.vi ?? o.src ?? o.url ?? "").trim();
+  }
+  return "";
+}
+
 function pickRepeatTargetFromEntry(entry: any): { text_en: string; text_vi: string; audio_url: string } {
   const en =
     String(entry?.text_en ?? entry?.content_en ?? entry?.content?.en ?? entry?.copy?.en ?? entry?.en ?? "").trim() ||
@@ -361,8 +371,17 @@ function pickRepeatTargetFromEntry(entry: any): { text_en: string; text_vi: stri
   const vi =
     String(entry?.text_vi ?? entry?.content_vi ?? entry?.content?.vi ?? entry?.copy?.vi ?? entry?.vi ?? "").trim() ||
     "";
+  // Audio fields can arrive as plain strings OR as `{ en, vi, src, url }`
+  // shapes from room JSON. Stringifying an object yields "[object Object]",
+  // which downstream splits on the space into two garbage tokens — the
+  // duplicate-bar bug. Extract a real string per field instead.
   const audio =
-    String(entry?.audio_url ?? entry?.audio_en ?? entry?.audio ?? entry?.audioEn ?? entry?.audioEN ?? "").trim() || "";
+    extractAudioString(entry?.audio_url) ||
+    extractAudioString(entry?.audio_en) ||
+    extractAudioString(entry?.audio) ||
+    extractAudioString(entry?.audioEn) ||
+    extractAudioString(entry?.audioEN) ||
+    "";
   return { text_en: en, text_vi: vi, audio_url: audio };
 }
 

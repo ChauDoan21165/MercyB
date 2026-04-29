@@ -14,7 +14,7 @@
  * /speak and this modal will pick it up automatically.
  */
 
-import React, { useCallback, useMemo, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { Mic } from "lucide-react";
 
 import {
@@ -31,6 +31,49 @@ import {
   SpeechDrillSession,
   type SessionSentence,
 } from "@/components/speech/SpeechDrillSession";
+
+/**
+ * Local error boundary for the pronunciation modal body. Catches render
+ * errors thrown by SpeechDrillSession or its children so they can't bubble
+ * to the global error boundary in main.tsx (which would mount a fatal
+ * overlay). Shows a friendly bilingual fallback instead.
+ */
+class PracticeErrorBoundary extends React.Component<
+  { children: React.ReactNode },
+  { hasError: boolean }
+> {
+  state = { hasError: false };
+  static getDerivedStateFromError() {
+    return { hasError: true };
+  }
+  componentDidCatch(err: unknown) {
+    // eslint-disable-next-line no-console
+    console.warn("[RoomPronunciationPractice] caught render error", err);
+  }
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div
+          style={{
+            padding: "20px 8px",
+            textAlign: "center",
+            fontSize: 14,
+            fontWeight: 600,
+            color: "#92400e",
+            lineHeight: 1.6,
+          }}
+        >
+          Pronunciation not available right now.
+          <br />
+          <span style={{ fontSize: 12, fontWeight: 500, opacity: 0.85 }}>
+            Phát âm tạm thời không khả dụng. Vui lòng thử lại sau.
+          </span>
+        </div>
+      );
+    }
+    return this.props.children;
+  }
+}
 
 export type RoomPronunciationPracticeProps = {
   roomId: string;
@@ -60,6 +103,13 @@ const buttonStyle: React.CSSProperties = {
   cursor: "pointer",
   lineHeight: 1.2,
   whiteSpace: "nowrap",
+  // Defensive: surrounding room CSS sometimes creates stacking contexts
+  // (mb-zoomWrap uses CSS transforms) that can let a sibling/overlay
+  // swallow clicks. Force this button onto its own layer with
+  // pointer-events explicitly enabled so clicks always reach it.
+  position: "relative",
+  zIndex: 1,
+  pointerEvents: "auto",
 };
 
 const buttonStyleHover: React.CSSProperties = {
@@ -95,7 +145,12 @@ export function RoomPronunciationPractice({
     }));
   }, [keywordsEn]);
 
-  const handleOpen = useCallback(() => {
+  const handleOpen = useCallback((e?: React.MouseEvent) => {
+    // Defensive: stop the click from bubbling to any ancestor handler.
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
     setCompleted(0);
     setOpen(true);
     trackEvent("room_pronunciation_practice_opened", {
@@ -115,6 +170,30 @@ export function RoomPronunciationPractice({
     },
     [roomId, completed],
   );
+
+  // While the modal is open, intercept any unhandled promise rejection
+  // before it reaches main.tsx's global handler. The global handler treats
+  // chunk-load-shaped messages as a signal to schedule
+  // window.location.reload() after ~900ms — which is what was producing the
+  // "click → page washes white → reload" symptom when SpeechDrillSession's
+  // mount path or downstream Supabase call rejected.
+  // Capture-phase + stopImmediatePropagation ensures we run before, and
+  // block, the global bubble-phase listener on the same window.
+  useEffect(() => {
+    if (!open) return;
+    const onRejection = (e: PromiseRejectionEvent) => {
+      // eslint-disable-next-line no-console
+      console.warn(
+        "[RoomPronunciationPractice] swallowed unhandled rejection while modal open:",
+        e.reason,
+      );
+      e.preventDefault();
+      e.stopImmediatePropagation();
+    };
+    window.addEventListener("unhandledrejection", onRejection, true);
+    return () =>
+      window.removeEventListener("unhandledrejection", onRejection, true);
+  }, [open]);
 
   // Hide entirely when flag off, when feature-flag check is mid-flight,
   // or when the room has no keywords to practise.
@@ -152,10 +231,12 @@ export function RoomPronunciationPractice({
             </DialogDescription>
           </DialogHeader>
 
-          <SpeechDrillSession
-            sentences={sentences}
-            onComplete={(n) => setCompleted(n)}
-          />
+          <PracticeErrorBoundary>
+            <SpeechDrillSession
+              sentences={sentences}
+              onComplete={(n) => setCompleted(n)}
+            />
+          </PracticeErrorBoundary>
         </DialogContent>
       </Dialog>
     </>
