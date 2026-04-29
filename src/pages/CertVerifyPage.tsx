@@ -10,10 +10,15 @@
 // public-verification): we display a neutral "MercyBlade Learner"
 // label on the verify page.
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import { Copy, Share2 } from "lucide-react";
 import Certificate from "@/components/certificates/Certificate";
+import SeoMeta from "@/components/seo/SeoMeta";
+import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/lib/supabaseClient";
+
+const OG_IMAGE = "https://mercyblade.com/og/seo-default.png";
 
 type CertificateRecord = {
   recipientName: string;
@@ -264,8 +269,89 @@ function VerifiedPanel({
   code: string;
   certificate: CertificateRecord;
 }): React.ReactElement {
+  const { toast } = useToast();
+
+  const verifyUrl = useMemo(() => {
+    const origin =
+      typeof window !== "undefined"
+        ? window.location.origin
+        : "https://mercyblade.com";
+    return `${origin}/cert/${code}`;
+  }, [code]);
+
+  const seoTitle = `${certificate.displayNameEn} · MercyBlade Certificate`;
+  const seoDescription = `Chứng nhận ${certificate.displayNameVi} do MercyBlade cấp · Verified MercyBlade credential: ${certificate.displayNameEn}.`;
+
+  const canNativeShare = useMemo<boolean>(() => {
+    if (typeof navigator === "undefined") return false;
+    if (!("share" in navigator)) return false;
+    if (typeof navigator.canShare !== "function") return true;
+    try {
+      return navigator.canShare({ url: verifyUrl, title: seoTitle });
+    } catch {
+      return false;
+    }
+  }, [verifyUrl, seoTitle]);
+
+  async function handleCopyLink(): Promise<void> {
+    try {
+      if (typeof navigator !== "undefined" && navigator.clipboard) {
+        await navigator.clipboard.writeText(verifyUrl);
+        toast({
+          title: "Đã sao chép liên kết",
+          description: "Verification link copied to clipboard.",
+        });
+        return;
+      }
+    } catch {
+      // fall through to legacy fallback
+    }
+    // Legacy fallback for older mobile browsers — uses a hidden textarea.
+    try {
+      const ta = document.createElement("textarea");
+      ta.value = verifyUrl;
+      ta.setAttribute("readonly", "");
+      ta.style.position = "fixed";
+      ta.style.opacity = "0";
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand("copy");
+      document.body.removeChild(ta);
+      toast({
+        title: "Đã sao chép liên kết",
+        description: "Verification link copied to clipboard.",
+      });
+    } catch {
+      toast({
+        title: "Không thể sao chép tự động",
+        description: "Please long-press the URL above to copy it manually.",
+      });
+    }
+  }
+
+  async function handleNativeShare(): Promise<void> {
+    if (typeof navigator === "undefined" || !("share" in navigator)) return;
+    try {
+      await navigator.share({
+        title: seoTitle,
+        text: `Tôi vừa nhận chứng nhận ${certificate.displayNameVi} từ MercyBlade. / I just earned a ${certificate.displayNameEn} certificate on MercyBlade.`,
+        url: verifyUrl,
+      });
+    } catch {
+      // User cancelled the share sheet — no-op.
+    }
+  }
+
   return (
     <div>
+      <SeoMeta
+        title={seoTitle}
+        description={seoDescription}
+        canonical={verifyUrl}
+        ogImage={OG_IMAGE}
+        lang="vi"
+      />
+
       <div
         style={{
           display: "inline-flex",
@@ -290,6 +376,103 @@ function VerifiedPanel({
         </code>
       </p>
 
+      {/* Share verification link — primary growth surface */}
+      <section
+        aria-labelledby="cert-share-heading"
+        style={{
+          marginTop: 18,
+          padding: 16,
+          borderRadius: 12,
+          background: "#fffbeb",
+          border: "1px solid #fde68a",
+        }}
+      >
+        <h2
+          id="cert-share-heading"
+          style={{
+            margin: 0,
+            fontSize: 15,
+            fontWeight: 700,
+            color: "#7c2d12",
+          }}
+        >
+          Chia sẻ liên kết xác minh · Share verification link
+        </h2>
+        <p style={{ margin: "4px 0 12px", fontSize: 13, color: "#78350f" }}>
+          Bất kỳ ai mở liên kết này cũng thấy chứng nhận đã được xác minh.
+          Anyone who opens this link sees the same verified certificate.
+        </p>
+        <div
+          style={{
+            display: "flex",
+            gap: 8,
+            flexWrap: "wrap",
+            alignItems: "stretch",
+          }}
+        >
+          <input
+            type="text"
+            value={verifyUrl}
+            readOnly
+            onFocus={(e) => e.currentTarget.select()}
+            aria-label="Verification link"
+            style={{
+              flex: "1 1 240px",
+              minWidth: 0,
+              padding: "8px 10px",
+              fontSize: 13,
+              fontFamily: "ui-monospace, SFMono-Regular, Menlo, monospace",
+              border: "1px solid #fcd34d",
+              borderRadius: 8,
+              background: "white",
+              color: "#1f2937",
+            }}
+          />
+          <button
+            type="button"
+            onClick={() => void handleCopyLink()}
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 6,
+              padding: "8px 14px",
+              borderRadius: 8,
+              border: "none",
+              background: "#92400e",
+              color: "white",
+              fontSize: 13,
+              fontWeight: 700,
+              cursor: "pointer",
+              whiteSpace: "nowrap",
+            }}
+          >
+            <Copy size={14} aria-hidden /> Sao chép · Copy
+          </button>
+          {canNativeShare && (
+            <button
+              type="button"
+              onClick={() => void handleNativeShare()}
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 6,
+                padding: "8px 14px",
+                borderRadius: 8,
+                border: "1px solid #92400e",
+                background: "white",
+                color: "#92400e",
+                fontSize: 13,
+                fontWeight: 700,
+                cursor: "pointer",
+                whiteSpace: "nowrap",
+              }}
+            >
+              <Share2 size={14} aria-hidden /> Chia sẻ · Share
+            </button>
+          )}
+        </div>
+      </section>
+
       <div style={{ marginTop: 18 }}>
         <Certificate
           recipientName={certificate.recipientName}
@@ -301,6 +484,58 @@ function VerifiedPanel({
           language="bilingual"
         />
       </div>
+
+      {/* Growth loop — encourage visitors to start their own journey */}
+      <aside
+        style={{
+          marginTop: 24,
+          padding: 18,
+          borderRadius: 12,
+          background:
+            "linear-gradient(135deg, #fef3c7 0%, #fde68a 100%)",
+          border: "1px solid #fcd34d",
+          textAlign: "center",
+        }}
+      >
+        <p
+          style={{
+            margin: 0,
+            fontSize: 16,
+            fontWeight: 700,
+            color: "#7c2d12",
+          }}
+        >
+          Bạn cũng muốn nhận chứng nhận như vậy?
+        </p>
+        <p
+          style={{
+            margin: "4px 0 12px",
+            fontSize: 14,
+            color: "#78350f",
+          }}
+        >
+          Học cùng Teacher Mercy — miễn phí cho người Việt.
+          <br />
+          Earn your own MercyBlade certificate. Free to start.
+        </p>
+        <Link
+          to="/"
+          style={{
+            display: "inline-flex",
+            alignItems: "center",
+            gap: 6,
+            padding: "10px 18px",
+            borderRadius: 999,
+            background: "#92400e",
+            color: "white",
+            fontWeight: 700,
+            fontSize: 14,
+            textDecoration: "none",
+          }}
+        >
+          Bắt đầu học · Start learning →
+        </Link>
+      </aside>
     </div>
   );
 }
