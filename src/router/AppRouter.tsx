@@ -76,6 +76,7 @@ const PlacementResultsPage = lazy(() => import("@/pages/placement/ResultsPage"))
 
 const SpeechDrillPage      = lazy(() => import("@/pages/SpeechDrillPage"));
 const PhonemeDrillPage     = lazy(() => import("@/pages/practice/PhonemeDrillPage"));
+const PronunciationSRSSessionPage = lazy(() => import("@/pages/PronunciationSRSSessionPage"));
 const VocabularyLibraryPage = lazy(() => import("@/pages/vocabulary/Library"));
 const VocabularyReviewPage = lazy(() => import("@/pages/vocabulary/ReviewSession"));
 const SpeechHistoryPage    = lazy(() => import("@/pages/speech/SpeechHistoryPage"));
@@ -696,6 +697,18 @@ export default function AppRouter() {
               and renders an anon CTA when signed out. */}
           <Route path="/practice/phoneme/:phonemeSlug"
             element={<LazyPage><PhonemeDrillPage /></LazyPage>}
+          />
+
+          {/* Pronunciation SRS session (A4) — mock queue today; the
+              `pronunciation_srs_enabled` flag will gate inside the
+              page once the SRS RPCs land. Auth-required because the
+              card calls A2's scorePronunciation, which needs a JWT. */}
+          <Route path="/pronunciation/srs"
+            element={
+              <RequireAuth>
+                <LazyPage><PronunciationSRSSessionPage /></LazyPage>
+              </RequireAuth>
+            }
           />
 
           {/* Real-world listening library — auth-required. Index +
