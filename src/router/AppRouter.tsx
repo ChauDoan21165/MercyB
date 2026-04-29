@@ -45,6 +45,7 @@ const PushPreferencesPage = lazy(() => import("@/pages/account/PushPreferences")
 const ReferralPage        = lazy(() => import("@/pages/Referral"));
 const BillingPage         = lazy(() => import("@/pages/Billing"));
 const BillingSuccessPage  = lazy(() => import("@/pages/BillingSuccessPage"));
+const CertVerifyPage      = lazy(() => import("@/pages/CertVerifyPage"));
 const Pricing             = lazy(() => import("../screens/Pricing"));
 const TierIndex           = lazy(() => import("@/pages/TierIndex"));
 const TierDetail          = lazy(() => import("@/pages/TierDetail"));
@@ -599,6 +600,9 @@ export default function AppRouter() {
           <Route path="/blog/weekly-digest" element={<LazyPage><WeeklyDigest /></LazyPage>} />
           <Route path="/blog/weekly-digest/:weekStart" element={<LazyPage><WeeklyDigest /></LazyPage>} />
           <Route path="/blog/:slug"  element={<LazyPage><BlogPost /></LazyPage>} />
+
+          {/* Public certificate verification — no auth required */}
+          <Route path="/cert/:code" element={<LazyPage><CertVerifyPage /></LazyPage>} />
 
           <Route path="/tiers"   element={<LazyPage><TierIndex /></LazyPage>} />
           <Route path="/tiers/:tierId" element={<LazyPage><TierDetail /></LazyPage>} />
