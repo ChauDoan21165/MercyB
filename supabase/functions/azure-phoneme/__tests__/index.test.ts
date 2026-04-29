@@ -347,6 +347,74 @@ describe("handleRequest — Azure timeout", () => {
   });
 });
 
+describe("handleRequest — Azure HTTP 400 body capture", () => {
+  it("includes Azure 400 response body in audit error_msg, prefixed with azure_400:", async () => {
+    // Simulates a real Azure rejection — the kind of opaque message
+    // we couldn't see before because we only logged the status code.
+    const azureBodyText =
+      '{"RecognitionStatus":"InvalidArgument","Message":"ReferenceText length must be > 0"}';
+    const deps = makeDeps({
+      fetch: vi.fn().mockResolvedValue(
+        new Response(azureBodyText, {
+          status: 400,
+          headers: { "Content-Type": "application/json" },
+        }),
+      ),
+    });
+    const req = makeRequest(buildSilentWav(2));
+    const res = await handleRequest(req, deps);
+
+    // Sentinel response — UI shows retry, never a fake 0.
+    expect(res.status).toBe(200);
+    const body = (await res.json()) as {
+      ok: boolean;
+      use_local: boolean;
+      reason: string;
+    };
+    expect(body.ok).toBe(false);
+    expect(body.use_local).toBe(true);
+    expect(body.reason).toBe("azure_payload_failed");
+
+    // The actual contract: speech_analysis_logs.error_msg must
+    // contain the Azure rejection reason, not just the status code.
+    const auditCall = (deps.audit as ReturnType<typeof vi.fn>).mock.calls.find(
+      (call) =>
+        typeof (call[0] as { errorMsg?: string }).errorMsg === "string" &&
+        (call[0] as { errorMsg?: string }).errorMsg!.startsWith("azure_400:"),
+    );
+    expect(auditCall).toBeDefined();
+    const errorMsg = (auditCall![0] as { errorMsg: string }).errorMsg;
+    // Body must be appended after the colon — not just `azure_400`.
+    expect(errorMsg.length).toBeGreaterThan("azure_400:".length);
+    // The Azure complaint must appear verbatim in the digest.
+    expect(errorMsg).toContain("ReferenceText length must be > 0");
+    // Must NOT be the bare status string we used to log.
+    expect(errorMsg).not.toBe("azure_400");
+  });
+
+  it("digest is capped at 300 chars after the prefix on very long Azure bodies", async () => {
+    const longBody = "Azure error: " + "x".repeat(2000);
+    const deps = makeDeps({
+      fetch: vi.fn().mockResolvedValue(
+        new Response(longBody, { status: 400 }),
+      ),
+    });
+    const req = makeRequest(buildSilentWav(2));
+    await handleRequest(req, deps);
+
+    const auditCall = (deps.audit as ReturnType<typeof vi.fn>).mock.calls.find(
+      (call) =>
+        typeof (call[0] as { errorMsg?: string }).errorMsg === "string" &&
+        (call[0] as { errorMsg?: string }).errorMsg!.startsWith("azure_400:"),
+    );
+    expect(auditCall).toBeDefined();
+    const errorMsg = (auditCall![0] as { errorMsg: string }).errorMsg;
+    // Prefix `azure_400:` (10 chars) + at most 300 chars of digest.
+    expect(errorMsg.length).toBeLessThanOrEqual(10 + 300 + 1); // +1 for safety
+    expect(errorMsg.startsWith("azure_400:")).toBe(true);
+  });
+});
+
 // ── Pure-helper tests ─────────────────────────────────────────────────────
 
 describe("parseWavHeader", () => {

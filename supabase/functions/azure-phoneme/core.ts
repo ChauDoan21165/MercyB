@@ -517,6 +517,12 @@ export async function handleRequest(req: Request, deps: Deps): Promise<Response>
         // code AND the response body so we can grep
         // speech_analysis_logs and see WHY Azure rejected the call,
         // not just that it did.
+        // Read Azure's response body BEFORE returning so the actual
+        // rejection reason (e.g. "ReferenceText length must be > 0",
+        // "InvalidAudioFormat", "Pronunciation-Assessment header
+        // is invalid") lands in audit + console logs. This block
+        // runs for EVERY non-OK status, including 400, before any
+        // sentinel is emitted.
         let azureBodyText = "";
         try {
           azureBodyText = await response.text();
@@ -525,9 +531,11 @@ export async function handleRequest(req: Request, deps: Deps): Promise<Response>
           // closed mid-read; record the truncation reason and move on.
           azureBodyText = "<body_read_failed>";
         }
+        // Audit digest: 300 chars max, whitespace collapsed. Lands in
+        // speech_analysis_logs.error_msg as `azure_<status>:<digest>`.
         const bodyDigest = truncate(
           azureBodyText.replace(/\s+/g, " ").trim(),
-          280,
+          300,
         );
         auditMsg = `azure_${response.status}:${bodyDigest}`;
         // Diagnostic context — request shape that Azure rejected.
@@ -542,24 +550,23 @@ export async function handleRequest(req: Request, deps: Deps): Promise<Response>
           locale: localeForAccent(accent),
           configHeaderBase64UrlLength: headerValue.length,
         };
+        // Always log the FULL untruncated body to Supabase function
+        // logs alongside the digest. The digest hits 300 chars; the
+        // raw body may be longer (Azure error pages with stack traces).
+        console.error(
+          `[azure-phoneme] Azure rejected request: HTTP ${response.status}. Full body:`,
+          azureBodyText,
+        );
+        console.error(
+          "[azure-phoneme] Request context:",
+          requestContext,
+        );
         if (response.status === 401 || response.status === 403) {
           sentinelReason = "azure_auth_failed";
-          console.error(
-            `[azure-phoneme] Azure auth rejected: HTTP ${response.status}. Body: ${bodyDigest}`,
-            requestContext,
-          );
         } else if (response.status === 400) {
           sentinelReason = "azure_payload_failed";
-          console.error(
-            `[azure-phoneme] Azure rejected payload: HTTP 400. Body: ${bodyDigest}`,
-            requestContext,
-          );
         } else {
           sentinelReason = "azure_error";
-          console.error(
-            `[azure-phoneme] Azure server error: HTTP ${response.status}. Body: ${bodyDigest}`,
-            requestContext,
-          );
         }
       } else {
         try {
