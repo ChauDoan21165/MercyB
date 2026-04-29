@@ -87,7 +87,6 @@ import { addStudyLogEntry } from "@/services/studyLog";
 import { awardPoints } from "@/services/pointsService";
 import { trackRoomEntry, updateRoomProgress } from "@/services/roomProgress";
 import { trackKeyword, trackRoomVisit } from "@/services/userBehavior";
-import { RoomPronunciationPractice } from "@/components/room/RoomPronunciationPractice";
 
 import { prettifyRoomIdEN, isBadAutoTitle } from "@/components/room/roomIdUtils";
 import { fetchRoomEntriesDb, coerceRoomEntryRowToEntry } from "@/components/room/roomEntriesDb";
@@ -1667,13 +1666,6 @@ export default function RoomRenderer({
                 </div>
               ) : null}
 
-              {effectiveRoomId ? (
-                <RoomPronunciationPractice
-                  roomId={effectiveRoomId}
-                  keywordsEn={kw.en}
-                  keywordsVi={kw.vi}
-                />
-              ) : null}
             </section>
 
             {(essay.en || essay.vi) && (

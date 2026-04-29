@@ -116,13 +116,41 @@ export default defineConfig({
       : []),
 
     VitePWA({
-      registerType: 'autoUpdate',
+      // Offline Lite v2 — `prompt` mode means the new SW does NOT
+      // skipWaiting / clientsClaim on its own. Active tabs keep using
+      // the old SW (and the old cached chunks) until the user does a
+      // full reload. This is the "no aggressive auto-refresh, no
+      // breaking current users mid-session" rule from the v2 brief.
+      registerType: 'prompt',
       includeAssets: [
         'icons/icon-192.png',
         'icons/icon-512.png',
         'icons/icon-maskable-512.png',
       ],
       workbox: {
+        // Offline Lite v2 — when the browser does an SPA navigation
+        // (e.g. user refreshes /room/foo while offline), serve the
+        // cached index.html so the app shell boots and the in-app
+        // router + roomJsonResolver offline branch can take over.
+        // Without this, an offline refresh of a deep URL hits the
+        // network and falls through to the Chrome dino.
+        navigateFallback: 'index.html',
+        // Make sure live API endpoints don't get the SPA shell when
+        // hit as a navigation; they should fail loudly so callers
+        // see the network error rather than HTML where they expected
+        // JSON. Cross-origin (supabase.co) requests aren't navigations
+        // and don't need to be denylisted here.
+        navigateFallbackDenylist: [
+          /^\/api\//,
+          /^\/functions\/v1\//,
+          /\/storage\/v1\//,
+        ],
+        // Belt-and-suspenders: keep the new SW from snatching control
+        // away from active tabs. Default with `registerType: 'prompt'`,
+        // but spelled out so a future change to registerType doesn't
+        // silently flip the update behavior.
+        skipWaiting: false,
+        clientsClaim: false,
         // Step 8 — pre-cache the core 50 room JSON files so first-time
         // offline visitors can still open a familiar lesson. Audio files
         // are intentionally NOT precached (size budget); they ride the
@@ -180,18 +208,14 @@ export default defineConfig({
               cacheableResponse: { statuses: [0, 200] },
             },
           },
-          {
-            // Step 8 — API responses. Network-first with a 5s timeout so users
-            // on flaky connections still see the cached body, valid for 7 days.
-            urlPattern: /\/api\/.*/,
-            handler: 'NetworkFirst',
-            options: {
-              cacheName: 'api',
-              networkTimeoutSeconds: 5,
-              expiration: { maxEntries: 200, maxAgeSeconds: 60 * 60 * 24 * 7 },
-              cacheableResponse: { statuses: [0, 200] },
-            },
-          },
+          // Offline Lite v2 — the previous `/api/.*` NetworkFirst rule
+          // was removed here. AI chat (e.g. /api/mercy/grammar) and
+          // any other dynamic API responses must NOT be cached:
+          // - they're personalized / non-idempotent
+          // - serving a stale chat reply offline would mislead the
+          //   learner about what Teacher Mercy "said"
+          // If a specific /api/* endpoint ever needs offline tolerance,
+          // add it back as a narrowly-scoped rule, not a catch-all.
           {
             // Step 8 — lesson content (room JSON + auxiliary lesson assets).
             // Stale-while-revalidate so the page paints instantly from cache

@@ -7,7 +7,10 @@
 // - ✅ Keep fatal overlay for real crashes — stack traces in DEV only.
 // - ✅ Keep AuthProvider wrap.
 // - ✅ Keep React.StrictMode OFF.
-// - ✅ Keep service worker registration disabled while debugging stale-cache issues.
+// - ✅ Service worker is now registered (Offline Lite v2). Manual
+//      registration of /sw.js, prod-only, gentle update mode
+//      (skipWaiting:false, clientsClaim:false). See registerPwaServiceWorker
+//      below and vite.config.ts workbox block.
 
 import React from "react";
 import ReactDOM from "react-dom/client";
@@ -288,7 +291,28 @@ function scheduleOneTimeChunkReload(): boolean {
 })();
 
 (function registerPwaServiceWorker() {
-  // intentionally disabled
+  // Offline Lite v2 — register the Workbox-built /sw.js so a refresh
+  // while offline serves the cached app shell (navigateFallback in
+  // vite.config.ts) instead of the Chrome dino, and runtime-cached
+  // assets (room JSON, audio, kids/music) are usable cold.
+  //
+  // Manual registration on purpose: we do NOT pull in the
+  // virtual:pwa-register helper, because the SW is configured with
+  // skipWaiting:false / clientsClaim:false. New deploys land as a
+  // waiting SW; the user picks up the new version on their next full
+  // reload, not mid-session. The chunk-recovery code above already
+  // handles the stale-chunk case if that timing is wrong.
+  //
+  // Skipped in dev so HMR + the grammar-server proxy aren't intercepted.
+  try {
+    if (!import.meta.env.PROD) return;
+    if (typeof navigator === "undefined" || !("serviceWorker" in navigator)) return;
+    window.addEventListener("load", () => {
+      navigator.serviceWorker
+        .register("/sw.js")
+        .catch((err) => devLog("[MB SW] register failed", err));
+    });
+  } catch { /* never block boot on SW registration */ }
 })();
 
 (function exposeSupabaseForDebug() {
