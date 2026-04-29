@@ -14,6 +14,7 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "@/providers/AuthProvider";
 import { useFeatureFlag } from "@/hooks/useFeatureFlag";
+import { useEntitlements } from "@/lib/useEntitlements";
 
 import { listEarnedCertificates } from "@/lib/certificates/rpc";
 import {
@@ -51,6 +52,10 @@ export function CertificatesGalleryPage(): React.ReactElement | null {
   );
   const { user } = useAuth();
   const userId = user?.id ?? null;
+  // Entitlements drive the soft premium nudge below. Hook lives above
+  // the conditional returns so hook order stays stable across renders
+  // (Rules of Hooks — same lesson PR #243 already pinned for this file).
+  const { ent: entitlement, loading: entLoading } = useEntitlements();
 
   const [earned, setEarned] = useState<EarnedCertificate[]>([]);
   const [loading, setLoading] = useState(true);
@@ -131,6 +136,15 @@ export function CertificatesGalleryPage(): React.ReactElement | null {
       ) : (
         <EarnedGrid earned={earned} />
       )}
+
+      {/* Premium nudge — only shown after the user has felt the value
+          (≥1 earned cert), and only to non-premium accounts after the
+          entitlement load resolves so it doesn't flash for paid users. */}
+      {!entLoading &&
+        entitlement?.is_premium !== true &&
+        earned.length > 0 ? (
+        <PremiumNudge />
+      ) : null}
 
       <WhatYouCanEarn earnedTypes={earnedTypes} />
     </div>
@@ -346,6 +360,97 @@ function EarnedCard({
         </button>
       </div>
     </article>
+  );
+}
+
+/**
+ * Soft premium nudge — value-clear, non-blocking. The caller already
+ * gates on:
+ *   (1) entitlements have loaded
+ *   (2) user is not premium
+ *   (3) user has earned at least one certificate
+ * so this component itself is render-only — no flag/auth checks here.
+ *
+ * Tone rules:
+ *   - calm, supportive ("help Mercy keep growing"), never pushy
+ *   - concrete future value (more tracks, deeper progression)
+ *   - explicit reassurance that earned certs are not affected
+ *   - no FOMO, no "limited time", no streak shaming
+ */
+function PremiumNudge(): React.ReactElement {
+  return (
+    <aside
+      data-testid="certificates-premium-nudge"
+      aria-label="MercyBlade Premium"
+      style={{
+        marginTop: 24,
+        padding: "16px 18px",
+        borderRadius: 16,
+        border: "1px solid #bae6fd",
+        borderLeft: "4px solid #0ea5e9",
+        background: "#f0f9ff",
+        display: "flex",
+        flexDirection: "column",
+        gap: 8,
+      }}
+    >
+      <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+        <span aria-hidden style={{ fontSize: 18, lineHeight: 1 }}>
+          ✨
+        </span>
+        <p
+          style={{
+            margin: 0,
+            fontSize: 15,
+            fontWeight: 700,
+            color: "#0c4a6e",
+          }}
+        >
+          Hỗ trợ Mercy phát triển
+        </p>
+      </div>
+
+      <p
+        style={{
+          margin: 0,
+          fontSize: 13,
+          color: "#0f172a",
+          lineHeight: 1.55,
+        }}
+      >
+        Bản Premium giúp Mercy mở thêm các chặng học sâu hơn và nhiều
+        chứng chỉ mới — đồng thời giữ nguyên những gì bạn đã đạt được.
+      </p>
+      <p
+        style={{
+          margin: 0,
+          fontSize: 12,
+          color: "#475569",
+          lineHeight: 1.5,
+        }}
+      >
+        Premium funds new certificate tracks and deeper progression.
+        Everything you've already earned stays yours.
+      </p>
+
+      <Link
+        to="/pricing"
+        style={{
+          alignSelf: "flex-start",
+          marginTop: 4,
+          fontSize: 13,
+          fontWeight: 600,
+          color: "#0c4a6e",
+          textDecoration: "none",
+          padding: "8px 14px",
+          borderRadius: 9999,
+          background: "#ffffff",
+          border: "1px solid #bae6fd",
+        }}
+      >
+        Tìm hiểu Premium · Learn more →
+      </Link>
+    </aside>
   );
 }
 
