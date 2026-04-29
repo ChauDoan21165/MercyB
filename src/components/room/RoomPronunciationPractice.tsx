@@ -8,22 +8,20 @@
  * Gated by the same DB feature flag as /speak (`pronunciationScoringEnabled`).
  * When OFF: the button does not render — the room renders exactly as today.
  *
+ * Plain fixed-position overlay instead of Radix Dialog.
+ * Radix DialogContent does not paint inside this room page's stacking
+ * context (likely mb-zoomWrap transform). Plain overlay with explicit
+ * z-index escapes the issue. See PR #258 / launch day debug session.
+ *
  * Scope of this PR: button + modal + OPEN/CLOSE analytics only. Per-attempt
  * persistence to `speech_attempts` is Wave 2 Step 3's track and lands in a
  * separate PR — SpeechDrill will grow an onAttempt seam there and both
  * /speak and this modal will pick it up automatically.
  */
 
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import React, { useCallback, useEffect, useId, useMemo, useRef, useState } from "react";
 import { Mic } from "lucide-react";
 
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
 import { useFeatureFlag } from "@/hooks/useFeatureFlag";
 import { keywordsToSentences } from "@/lib/speech/keywordToSentence";
 import { trackEvent } from "@/lib/analytics";
@@ -31,49 +29,6 @@ import {
   SpeechDrillSession,
   type SessionSentence,
 } from "@/components/speech/SpeechDrillSession";
-
-/**
- * Local error boundary for the pronunciation modal body. Catches render
- * errors thrown by SpeechDrillSession or its children so they can't bubble
- * to the global error boundary in main.tsx (which would mount a fatal
- * overlay). Shows a friendly bilingual fallback instead.
- */
-class PracticeErrorBoundary extends React.Component<
-  { children: React.ReactNode },
-  { hasError: boolean }
-> {
-  state = { hasError: false };
-  static getDerivedStateFromError() {
-    return { hasError: true };
-  }
-  componentDidCatch(err: unknown) {
-    // eslint-disable-next-line no-console
-    console.warn("[RoomPronunciationPractice] caught render error", err);
-  }
-  render() {
-    if (this.state.hasError) {
-      return (
-        <div
-          style={{
-            padding: "20px 8px",
-            textAlign: "center",
-            fontSize: 14,
-            fontWeight: 600,
-            color: "#92400e",
-            lineHeight: 1.6,
-          }}
-        >
-          Pronunciation not available right now.
-          <br />
-          <span style={{ fontSize: 12, fontWeight: 500, opacity: 0.85 }}>
-            Phát âm tạm thời không khả dụng. Vui lòng thử lại sau.
-          </span>
-        </div>
-      );
-    }
-    return this.props.children;
-  }
-}
 
 export type RoomPronunciationPracticeProps = {
   roomId: string;
@@ -103,13 +58,6 @@ const buttonStyle: React.CSSProperties = {
   cursor: "pointer",
   lineHeight: 1.2,
   whiteSpace: "nowrap",
-  // Defensive: surrounding room CSS sometimes creates stacking contexts
-  // (mb-zoomWrap uses CSS transforms) that can let a sibling/overlay
-  // swallow clicks. Force this button onto its own layer with
-  // pointer-events explicitly enabled so clicks always reach it.
-  position: "relative",
-  zIndex: 1,
-  pointerEvents: "auto",
 };
 
 const buttonStyleHover: React.CSSProperties = {
@@ -136,6 +84,10 @@ export function RoomPronunciationPractice({
   const [completed, setCompleted] = useState(0);
   const [hovered, setHovered] = useState(false);
 
+  const titleId = useId();
+  const triggerRef = useRef<HTMLButtonElement | null>(null);
+  const closeRef = useRef<HTMLButtonElement | null>(null);
+
   // Build the carrier-sentence list once per render of the button. Cheap.
   const sentences = useMemo<SessionSentence[]>(() => {
     return keywordsToSentences(keywordsEn).map((carrier) => ({
@@ -145,12 +97,9 @@ export function RoomPronunciationPractice({
     }));
   }, [keywordsEn]);
 
-  const handleOpen = useCallback((e?: React.MouseEvent) => {
-    // Defensive: stop the click from bubbling to any ancestor handler.
-    if (e) {
-      e.preventDefault();
-      e.stopPropagation();
-    }
+  const isEmpty = sentences.length === 0;
+
+  const handleOpen = useCallback(() => {
     setCompleted(0);
     setOpen(true);
     trackEvent("room_pronunciation_practice_opened", {
@@ -159,51 +108,50 @@ export function RoomPronunciationPractice({
     });
   }, [roomId, sentences.length]);
 
-  const handleClose = useCallback(
-    (nextOpen: boolean) => {
-      if (nextOpen) return;
-      setOpen(false);
-      trackEvent("room_pronunciation_practice_closed", {
-        room_id: roomId,
-        sentences_completed: completed,
-      });
-    },
-    [roomId, completed],
-  );
+  const handleClose = useCallback(() => {
+    setOpen(false);
+    trackEvent("room_pronunciation_practice_closed", {
+      room_id: roomId,
+      sentences_completed: completed,
+    });
+  }, [roomId, completed]);
 
-  // While the modal is open, intercept any unhandled promise rejection
-  // before it reaches main.tsx's global handler. The global handler treats
-  // chunk-load-shaped messages as a signal to schedule
-  // window.location.reload() after ~900ms — which is what was producing the
-  // "click → page washes white → reload" symptom when SpeechDrillSession's
-  // mount path or downstream Supabase call rejected.
-  // Capture-phase + stopImmediatePropagation ensures we run before, and
-  // block, the global bubble-phase listener on the same window.
+  // While the modal is open: lock body scroll, focus the close button,
+  // listen for Escape. On close/unmount: restore scroll, return focus
+  // to the trigger button. All cleanup is paired so nothing leaks if
+  // the component unmounts while the modal is still open.
   useEffect(() => {
     if (!open) return;
-    const onRejection = (e: PromiseRejectionEvent) => {
-      // eslint-disable-next-line no-console
-      console.warn(
-        "[RoomPronunciationPractice] swallowed unhandled rejection while modal open:",
-        e.reason,
-      );
-      e.preventDefault();
-      e.stopImmediatePropagation();
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const focusTimer = window.setTimeout(() => {
+      closeRef.current?.focus();
+    }, 0);
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") handleClose();
     };
-    window.addEventListener("unhandledrejection", onRejection, true);
-    return () =>
-      window.removeEventListener("unhandledrejection", onRejection, true);
-  }, [open]);
+    document.addEventListener("keydown", onKey);
+    return () => {
+      window.clearTimeout(focusTimer);
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = previousOverflow;
+      // Return focus to the trigger after the modal closes.
+      triggerRef.current?.focus();
+    };
+  }, [open, handleClose]);
 
-  // Hide entirely when flag off, when feature-flag check is mid-flight,
-  // or when the room has no keywords to practise.
+  // Hide entirely when flag off or feature-flag check is mid-flight.
+  // Note: we deliberately NO LONGER short-circuit on empty sentences.
+  // When the room's keyword fetch is loading or has 403'd, premium
+  // users still see the button — clicking opens the modal with a
+  // bilingual "loading or unavailable" fallback inside the body.
   if (loading) return null;
   if (!enabled) return null;
-  if (sentences.length === 0) return null;
 
   return (
     <>
       <button
+        ref={triggerRef}
         type="button"
         style={hovered ? { ...buttonStyle, ...buttonStyleHover } : buttonStyle}
         onClick={handleOpen}
@@ -218,27 +166,109 @@ export function RoomPronunciationPractice({
         <span style={labelVi}>Luyện phát âm</span>
       </button>
 
-      <Dialog open={open} onOpenChange={handleClose}>
-        <DialogContent
-          style={{ maxWidth: 560 }}
+      {open ? (
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby={titleId}
+          onClick={(e) => {
+            if (e.target === e.currentTarget) handleClose();
+          }}
+          style={{
+            position: "fixed",
+            inset: 0,
+            background: "rgba(0,0,0,0.55)",
+            zIndex: 2147483000,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            padding: 16,
+          }}
           data-testid="room-pronunciation-practice-modal"
         >
-          <DialogHeader>
-            <DialogTitle>Practice pronunciation</DialogTitle>
-            <DialogDescription>
-              Luyện phát âm — {sentences.length} từ khoá / keyword
-              {sentences.length === 1 ? "" : "s"}
-            </DialogDescription>
-          </DialogHeader>
+          <div
+            onClick={(e) => e.stopPropagation()}
+            style={{
+              background: "#fff",
+              padding: 24,
+              borderRadius: 16,
+              maxWidth: 560,
+              width: "100%",
+              maxHeight: "90vh",
+              overflow: "auto",
+              boxShadow: "0 20px 60px rgba(0,0,0,0.25)",
+            }}
+          >
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                marginBottom: 12,
+                gap: 12,
+              }}
+            >
+              <div>
+                <h2
+                  id={titleId}
+                  style={{ margin: 0, fontSize: 18, fontWeight: 800 }}
+                >
+                  Practice pronunciation
+                </h2>
+                <div style={{ fontSize: 13, color: "#475569", marginTop: 2 }}>
+                  Luyện phát âm
+                  {!isEmpty
+                    ? ` — ${sentences.length} từ khoá / keyword${sentences.length === 1 ? "" : "s"}`
+                    : null}
+                </div>
+              </div>
+              <button
+                ref={closeRef}
+                type="button"
+                onClick={handleClose}
+                aria-label="Close"
+                style={{
+                  width: 32,
+                  height: 32,
+                  borderRadius: 999,
+                  border: "1px solid #e2e8f0",
+                  background: "#fff",
+                  cursor: "pointer",
+                  fontSize: 18,
+                  lineHeight: 1,
+                }}
+              >
+                ×
+              </button>
+            </div>
 
-          <PracticeErrorBoundary>
-            <SpeechDrillSession
-              sentences={sentences}
-              onComplete={(n) => setCompleted(n)}
-            />
-          </PracticeErrorBoundary>
-        </DialogContent>
-      </Dialog>
+            {isEmpty ? (
+              <div
+                data-testid="room-pronunciation-practice-empty"
+                style={{
+                  padding: "20px 8px",
+                  textAlign: "center",
+                  fontSize: 14,
+                  fontWeight: 600,
+                  color: "#92400e",
+                  lineHeight: 1.6,
+                }}
+              >
+                Pronunciation content is loading or unavailable.
+                <br />
+                <span style={{ fontSize: 12, fontWeight: 500, opacity: 0.85 }}>
+                  Nội dung phát âm đang tải hoặc không khả dụng.
+                </span>
+              </div>
+            ) : (
+              <SpeechDrillSession
+                sentences={sentences}
+                onComplete={(n) => setCompleted(n)}
+              />
+            )}
+          </div>
+        </div>
+      ) : null}
     </>
   );
 }
