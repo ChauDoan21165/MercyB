@@ -3,7 +3,7 @@
  * File: AppRouter.tsx
  */
 
-import React, { Suspense, lazy, useEffect } from "react";
+import React, { Suspense, lazy, useEffect, useRef } from "react";
 import {
   Routes,
   Route,
@@ -258,12 +258,27 @@ function RequireAuth({ children }: { children: React.ReactNode }) {
   const { user, isLoading } = useAuth();
   const location = useLocation();
 
-  if (isLoading) {
-    // Auth is resolving — render nothing to avoid a flash of the protected page
-    return null;
+  // Cache the last RESOLVED auth state. Without this, a brief
+  // isLoading flip during a Supabase token refresh (which fires on tab
+  // focus via the auth client's internal visibility handler) would
+  // unmount the entire protected subtree, throw away local component
+  // state (e.g. open modals), and force a full re-fetch storm on the
+  // way back. With the cache, loading flips are non-disruptive: we
+  // keep showing the previously-resolved view until the refresh
+  // settles, and only swap if the resolved value actually changed.
+  const hasResolvedRef = useRef(false);
+  const lastUserRef = useRef<typeof user>(null);
+  if (!isLoading) {
+    hasResolvedRef.current = true;
+    lastUserRef.current = user;
   }
 
-  if (!user) {
+  // First boot, never resolved — render nothing to avoid a flash.
+  if (!hasResolvedRef.current) return null;
+
+  const effectiveUser = isLoading ? lastUserRef.current : user;
+
+  if (!effectiveUser) {
     const next = encodeURIComponent(
       `${location.pathname}${location.search}${location.hash}`,
     );
@@ -296,8 +311,23 @@ function RequireAuthForRoom({ children }: { children: React.ReactNode }) {
  */
 function RequireTrialActive({ children }: { children: React.ReactNode }) {
   const { isTrialExpired, isLoading } = useUserAccess();
-  if (isLoading) return null;
-  if (isTrialExpired) return <TrialExpiredScreen />;
+
+  // Same caching pattern as RequireAuth — useUserAccess flips its own
+  // isLoading whenever auth flips (see hooks/useUserAccess.ts), so this
+  // guard would otherwise also unmount the room subtree on every tab
+  // focus / token refresh. Cache the last-resolved expiry state so
+  // loading flips don't tear the tree down.
+  const hasResolvedRef = useRef(false);
+  const lastExpiredRef = useRef(false);
+  if (!isLoading) {
+    hasResolvedRef.current = true;
+    lastExpiredRef.current = isTrialExpired;
+  }
+
+  if (!hasResolvedRef.current) return null;
+
+  const effectiveExpired = isLoading ? lastExpiredRef.current : isTrialExpired;
+  if (effectiveExpired) return <TrialExpiredScreen />;
   return <>{children}</>;
 }
 
