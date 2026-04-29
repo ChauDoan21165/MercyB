@@ -114,6 +114,20 @@ export interface PronunciationResult {
  *  scale) so it composes with `PhonemeScore.confidence` directly. */
 const WEAK_CONFIDENCE_THRESHOLD = 0.6;
 
+/** Validity gates for cloud results — Azure occasionally returns
+ *  `ok: true` with a degenerate payload (overallScore 0, no phoneme
+ *  evidence, empty transcript, or pure-noise transcription) on poor-
+ *  audio attempts. `isTrustedPronunciationResult` enforces every gate
+ *  so a "0" never reaches the UI as a real score. Until we explicitly
+ *  support true-zero scoring, 0 means scoring failure. */
+const TRUSTED_MIN_TRANSCRIPTION_LENGTH = 2;
+const TRUSTED_MIN_PHONEME_CONFIDENCE = 0.5;
+/** Letter-class regex used by `hasUsableTranscriptionContent` to reject
+ *  pure-punctuation / pure-digit / pure-whitespace transcriptions. The
+ *  range covers ASCII Latin + Latin-1 Supplement + Latin Extended-A/B
+ *  + Latin Extended Additional (Vietnamese diacritics). */
+const LETTER_CLASS_RE = /[A-Za-zÀ-ɏḀ-ỿ]/;
+
 /** Phonemes that Vietnamese L1 speakers most often mispronounce in
  *  English, with a short coaching label. Sourced from the existing
  *  `vn-phoneme-map.ts` problem-pair tables (TH→T, R↔L) plus the
@@ -220,7 +234,12 @@ export async function scorePronunciation(
   }
 
   if (!userJwt) {
-    return buildStubResult(referenceText, audioBlob, expectedPhonemes);
+    if (import.meta.env.DEV) {
+      console.warn(
+        "[scoringEngine] no JWT — anonymous user, returning scoring-failed",
+      );
+    }
+    return buildStubResult(referenceText, audioBlob);
   }
 
   // 2. Cloud scoring — wrap the existing Azure path.
@@ -233,9 +252,9 @@ export async function scorePronunciation(
     return adaptCloudResult(cloud, referenceText, audioBlob);
   } catch (err) {
     if (import.meta.env.DEV) {
-      console.warn("[scoringEngine] cloud scoring failed, returning stub:", err);
+      console.warn("[scoringEngine] cloud scoring threw, returning scoring-failed:", err);
     }
-    return buildStubResult(referenceText, audioBlob, expectedPhonemes);
+    return buildStubResult(referenceText, audioBlob);
   }
 }
 
@@ -279,6 +298,38 @@ function adaptCloudResult(
     .filter((s) => s.length > 0)
     .join(" ");
 
+  // Validity gate — only return status:"ok" when every signal is
+  // usable. Any failure here demotes the attempt to "scoring-failed"
+  // so a literal 0 / empty payload can never render as a real score.
+  // The transcription is preserved through the failure path when it
+  // contains usable letter content, so callers can show the learner
+  // "we heard X but couldn't score it" instead of dropping the audio
+  // recognition entirely.
+  const candidate = {
+    overallScore: cloud.overallScore,
+    phonemeScores,
+    transcription,
+  };
+  const trust = isTrustedPronunciationResult(candidate);
+  if (!trust.trusted) {
+    if (import.meta.env.DEV) {
+      console.warn(
+        `[scoringEngine] downgraded cloud ok→scoring-failed: ${trust.reason}`,
+        {
+          overallScore: cloud.overallScore,
+          phonemeCount: phonemeScores.length,
+          transcriptionLength: transcription.length,
+          transcriptionPreview: transcription.slice(0, 60),
+        },
+      );
+    }
+    return buildStubResult(
+      referenceText,
+      audioBlob,
+      hasUsableTranscriptionContent(transcription) ? transcription : "",
+    );
+  }
+
   return {
     status: "ok",
     overallScore: cloud.overallScore,
@@ -290,20 +341,92 @@ function adaptCloudResult(
   };
 }
 
+/**
+ * Decides whether a cloud-derived candidate result can be trusted
+ * enough to surface as `status: "ok"` to the SRS scheduler / UI.
+ *
+ * Returns `{ trusted: true }` only when EVERY rule passes:
+ *   - overallScore is a finite, > 0 number
+ *   - phonemeScores is non-empty
+ *   - transcription has usable letter content (not pure punctuation /
+ *     digits / noise) and is at least
+ *     TRUSTED_MIN_TRANSCRIPTION_LENGTH chars after trim
+ *   - at least one phoneme has score > 0 OR confidence >=
+ *     TRUSTED_MIN_PHONEME_CONFIDENCE — ensures we have at least one
+ *     usable evidence point even if the overall score is low
+ *
+ * Otherwise returns `{ trusted: false, reason }`. The `reason` string
+ * is dev-only diagnostics — callers should NOT key UI off it.
+ */
+export function isTrustedPronunciationResult(
+  candidate: {
+    overallScore: number | null | undefined;
+    phonemeScores: PhonemeScore[];
+    transcription: string;
+  },
+): { trusted: true } | { trusted: false; reason: string } {
+  const { overallScore, phonemeScores, transcription } = candidate;
+
+  if (overallScore == null) {
+    return { trusted: false, reason: "overallScore is null/undefined" };
+  }
+  if (!Number.isFinite(overallScore)) {
+    return { trusted: false, reason: "overallScore is not finite" };
+  }
+  if (overallScore <= 0) {
+    return { trusted: false, reason: "overallScore <= 0" };
+  }
+  if (phonemeScores.length === 0) {
+    return { trusted: false, reason: "phonemeScores is empty" };
+  }
+  if (!hasUsableTranscriptionContent(transcription)) {
+    return {
+      trusted: false,
+      reason: "transcription empty, too short, or pure noise/punctuation",
+    };
+  }
+  const hasUsableEvidence = phonemeScores.some(
+    (p) => p.score > 0 || p.confidence >= TRUSTED_MIN_PHONEME_CONFIDENCE,
+  );
+  if (!hasUsableEvidence) {
+    return {
+      trusted: false,
+      reason: `no phoneme with score>0 or confidence>=${TRUSTED_MIN_PHONEME_CONFIDENCE}`,
+    };
+  }
+
+  return { trusted: true };
+}
+
+function hasUsableTranscriptionContent(s: string): boolean {
+  const trimmed = s.trim();
+  if (trimmed.length < TRUSTED_MIN_TRANSCRIPTION_LENGTH) return false;
+  // Reject strings whose entire content is punctuation / digits /
+  // whitespace — Azure occasionally returns "..." or "—" on poor-audio.
+  if (!LETTER_CLASS_RE.test(trimmed)) return false;
+  return true;
+}
+
+/**
+ * Build the failure-shape result. Always sets status:"scoring-failed",
+ * overallScore:null, and empty arrays. Optionally preserves a partial
+ * transcription so the caller can surface "we heard X but couldn't
+ * score it" UX. The caller is responsible for only passing
+ * transcriptions that already pass `hasUsableTranscriptionContent` —
+ * we trust the input here so this stays a small, side-effect-free
+ * helper.
+ */
 function buildStubResult(
   referenceText: string,
   audioBlob: Blob,
-  // expectedPhonemes is intentionally unused on the stub path: the
-  // caller asked for an honest "scoring-failed" signal and a 0-score
-  // skeleton would be indistinguishable from a real bad attempt.
-  _expectedPhonemes: readonly string[] | undefined,
+  preservedTranscription: string = "",
 ): PronunciationResult {
   return {
     status: "scoring-failed",
     overallScore: null,
     phonemeScores: [],
     weakPhonemes: [],
-    transcription: "",
+    transcription: preservedTranscription,
     referenceText,
     audioBlob,
   };
