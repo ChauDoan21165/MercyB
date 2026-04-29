@@ -304,6 +304,41 @@ describe("handleRequest — Azure happy path", () => {
   });
 });
 
+describe("handleRequest — Pronunciation-Assessment header format", () => {
+  it("sends STANDARD base64 (not base64url) per Microsoft REST API contract", async () => {
+    // Microsoft's official REST docs for Pronunciation Assessment use
+    // standard base64 (`echo … | base64 | tr -d '\n'`). When this code
+    // previously sent base64url ("-"/"_"/no padding), Azure's gateway
+    // returned HTTP 400 with the bare string `"Bad request"` — see
+    // PR #259 for the full diagnosis. This test locks the contract so
+    // a future refactor can't reintroduce base64url.
+    let capturedHeaderValue: string | null = null;
+    const fetchSpy = vi.fn().mockImplementation((_url: string, init: RequestInit) => {
+      const headers = init.headers as Record<string, string>;
+      capturedHeaderValue = headers["Pronunciation-Assessment"];
+      return Promise.resolve(azureSuccessResponse());
+    });
+    const deps = makeDeps({ fetch: fetchSpy });
+    const req = makeRequest(buildSilentWav(2));
+    await handleRequest(req, deps);
+
+    expect(fetchSpy).toHaveBeenCalled();
+    expect(capturedHeaderValue).toBeTruthy();
+    // Standard base64 alphabet only — base64url substitutions ("-"/"_")
+    // would indicate a regression to the old format that Azure 400s on.
+    expect(capturedHeaderValue).not.toMatch(/[-_]/);
+    // Standard base64 alphabet (A-Z, a-z, 0-9, +, /, =).
+    expect(capturedHeaderValue).toMatch(/^[A-Za-z0-9+/=]+$/);
+    // Header decodes back to the expected JSON config.
+    const decodedJson = atob(capturedHeaderValue!);
+    const config = JSON.parse(decodedJson) as Record<string, unknown>;
+    expect(config.ReferenceText).toBe("I think this is going to work");
+    expect(config.GradingSystem).toBe("HundredMark");
+    expect(config.Granularity).toBe("Phoneme");
+    expect(config.EnableMiscue).toBe(true);
+  });
+});
+
 describe("handleRequest — Azure timeout", () => {
   it("returns 200 sentinel use_local:true when fetch aborts past the timeout", async () => {
     const deps = makeDeps({

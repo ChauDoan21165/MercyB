@@ -482,21 +482,27 @@ export async function handleRequest(req: Request, deps: Deps): Promise<Response>
         Granularity: "Phoneme",
         EnableMiscue: true,
       };
-      // Azure's Pronunciation-Assessment header requires base64url
-      // (RFC 4648 §5): no padding, "-" for "+", "_" for "/". Plain btoa()
-      // produces standard base64 which Azure silently rejects, falling
-      // back to vanilla speech recognition (every score = 0).
-      const headerValue = btoa(JSON.stringify(config))
-        .replace(/\+/g, "-")
-        .replace(/\//g, "_")
-        .replace(/=+$/, "");
+      // Azure's Pronunciation-Assessment header is STANDARD base64
+      // per Microsoft's official REST API docs:
+      //   https://learn.microsoft.com/en-us/azure/ai-services/speech-service/how-to-pronunciation-assessment?pivots=programming-language-rest
+      // The official curl example is `echo -n '{...}' | base64 | tr -d '\n'`
+      // which produces base64 with `+`, `/`, and `=` padding intact.
+      //
+      // History: this code previously stripped padding and converted
+      // to base64url ("-"/"_"/no-pad). Azure responded with HTTP 400
+      // "Bad request" (gateway-level rejection — body was the literal
+      // string `"Bad request"` with no JSON detail). Reverted to
+      // plain btoa() to match the documented contract. See PR #259.
+      const configJson = JSON.stringify(config);
+      const headerValue = btoa(configJson);
+      const azureUrl = deps.azureUrlForAccent(accent);
       const controller = new AbortController();
       const timer = setTimeout(() => {
         timedOut = true;
         controller.abort();
       }, deps.azureTimeoutMs ?? AZURE_TIMEOUT_MS);
 
-      const response = await deps.fetch(deps.azureUrlForAccent(accent), {
+      const response = await deps.fetch(azureUrl, {
         method: "POST",
         headers: {
           "Ocp-Apim-Subscription-Key": deps.azureKey,
@@ -530,17 +536,40 @@ export async function handleRequest(req: Request, deps: Deps): Promise<Response>
           280,
         );
         auditMsg = `azure_${response.status}:${bodyDigest}`;
-        // Diagnostic context — request shape that Azure rejected.
-        // Helps spot reference-text encoding / audio-size issues.
+        // Diagnostic context — full outbound request shape so any
+        // future Azure rejection can be localized in one round trip
+        // without redeploying logging. Auth keys are NEVER logged;
+        // only header NAMES, the URL, decoded config JSON, and
+        // base64 flavour markers.
         const requestContext = {
           status: response.status,
+          azureUrl,
+          azureRegionFromUrl: azureUrl.match(/^https:\/\/([^.]+)\./)?.[1] ?? "unknown",
+          headerNames: [
+            "Ocp-Apim-Subscription-Key",
+            "Content-Type",
+            "Pronunciation-Assessment",
+            "Accept",
+            "Accept-Language",
+          ],
+          contentType: "audio/wav; codecs=audio/pcm; samplerate=16000",
+          acceptLanguage: localeForAccent(accent),
           referenceTextLength: referenceText.length,
           referenceTextSample: truncate(referenceText, 80),
           audioBytes: arrayBuffer.byteLength,
           audioSeconds: Number(audioSeconds.toFixed(2)),
           accent,
           locale: localeForAccent(accent),
-          configHeaderBase64UrlLength: headerValue.length,
+          configHeaderLength: headerValue.length,
+          // base64 flavour markers — true if any URL-safe substitution
+          // characters appear in the header. With the standard-base64
+          // contract these MUST both be false.
+          configHeaderUsesBase64UrlChars:
+            headerValue.includes("-") || headerValue.includes("_"),
+          configHeaderHasPadding: headerValue.endsWith("="),
+          // Decoded config so we can confirm Azure is seeing what we
+          // intended (truncated to 200 chars to keep logs tidy).
+          decodedPronunciationAssessment: truncate(configJson, 200),
         };
         if (response.status === 401 || response.status === 403) {
           sentinelReason = "azure_auth_failed";
