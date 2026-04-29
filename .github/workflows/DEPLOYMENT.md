@@ -148,6 +148,90 @@ These are set automatically by Lovable Cloud.
 4. **Close PRs when done** to clean up preview deployments
 5. **Monitor build times** and optimize if needed
 
+## Edge Functions — Verified Deploy Procedure
+
+The `supabase-functions.yml` GitHub Actions workflow deploys only
+`mercy_weekly_cron` and has been failing for 100+ runs (no
+`SUPABASE_ACCESS_TOKEN` repo secret). Until that's fixed, all other
+edge functions deploy **manually** from a developer machine — and
+the safety bar there is to confirm twice that the bundle you want
+is the bundle you shipped.
+
+Two stale-deploy cycles in PRs #257 and #258 (azure-phoneme code
+merged to main but the manual deploy was run from a working tree
+that didn't pull latest) cost real time. The procedure below adds
+~10 seconds per deploy and makes that class of mistake impossible.
+
+### Five-step procedure
+
+```bash
+# 1. Sync local main — NEVER deploy from a stale tree.
+git checkout main && git pull
+
+# 2. Confirm the change is actually in your local source.
+#    Pick a string unique to the PR's diff (a new function name,
+#    a new comment, a new constant). If grep returns 0 lines,
+#    you didn't pull or you're on the wrong branch.
+grep <marker> supabase/functions/<name>/core.ts
+
+# 3. Deploy.
+supabase functions deploy <name> --project-ref <ref>
+
+# 4. Re-download the live bundle. (Use a scratch dir, NOT your repo.)
+mkdir -p /tmp/verify-deploy && cd /tmp/verify-deploy
+supabase link --project-ref <ref>
+supabase functions download <name>
+
+# 5. Confirm the same marker appears in the deployed bundle.
+#    If grep returns 0 lines, the deploy didn't ship your change —
+#    investigate before announcing the deploy as complete.
+grep <marker> supabase/functions/<name>/core.ts
+```
+
+Step 5 is the one that prevented PR #258 → PR #259 from being a
+third stale-deploy cycle. **Never skip it on a manual deploy.**
+
+### Worked example — PR #259
+
+PR #259 fixed the Azure Pronunciation Assessment 400 by replacing
+base64url with standard base64 in the `Pronunciation-Assessment`
+header. The PR added a new constant `configHeaderUsesBase64UrlChars`
+in the failure-path log — that's the marker.
+
+```bash
+git checkout main && git pull
+grep configHeaderUsesBase64UrlChars supabase/functions/azure-phoneme/core.ts
+# → matches one line; PR #259 is in local source.
+
+supabase functions deploy azure-phoneme --project-ref buemdfxyhxunzpgdoqin
+# → "Deployed Function azure-phoneme on project ..."
+
+mkdir -p /tmp/verify-deploy && cd /tmp/verify-deploy
+supabase link --project-ref buemdfxyhxunzpgdoqin
+supabase functions download azure-phoneme
+grep configHeaderUsesBase64UrlChars supabase/functions/azure-phoneme/core.ts
+# → matches one line; PR #259 is also live.
+```
+
+If the second `grep` had returned nothing, the deploy was stale and
+the next /pronunciation/srs attempt would still 400 — exactly the
+loop PR #258 hit before this procedure existed.
+
+### Picking a good marker
+
+A marker is "any string unique to your PR's diff." The best ones
+are stable across rebases:
+
+- a new exported function name
+- a new constant name (`UPPER_SNAKE_CASE`)
+- a new sentinel reason value (`"azure_payload_failed"`)
+- a comment line that names the PR (`PR #259`) — handy for cross-
+  referencing back to the change history
+
+Avoid markers that legitimately exist elsewhere in the file (e.g.
+common keywords). When in doubt, `git diff main...HEAD <file>` and
+pick a string from the green-prefix lines.
+
 ## Additional Resources
 
 - [Netlify Deploy Documentation](https://docs.netlify.com/site-deploys/overview/)
