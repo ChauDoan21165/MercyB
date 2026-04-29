@@ -462,11 +462,13 @@ export default function ChatHub() {
 
             <div className={showArrival ? "hidden" : "block"}>
               <div data-mb-room-zoom="1">
-                <RoomRenderer
-                  room={room}
-                  roomId={roomId}
-                  roomSpec={roomSpec || undefined}
-                />
+                {room && (
+                  <RoomRenderer
+                    room={room}
+                    roomId={roomId}
+                    roomSpec={roomSpec || undefined}
+                  />
+                )}
               </div>
             </div>
           </div>

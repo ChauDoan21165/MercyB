@@ -726,6 +726,23 @@ const ROOM_CSS_TIDY = `
 }
 `;
 
+function RoomSkeleton() {
+  return (
+    <section
+      className="mb-card p-3 md:p-6 mb-5"
+      data-room-box="4-skeleton"
+      aria-hidden="true"
+    >
+      <div className="animate-pulse space-y-3">
+        <div className="h-4 w-1/3 rounded bg-black/10" />
+        <div className="h-4 w-2/3 rounded bg-black/10" />
+        <div className="h-32 w-full rounded bg-black/10" />
+        <div className="h-4 w-1/2 rounded bg-black/10" />
+      </div>
+    </section>
+  );
+}
+
 export default function RoomRenderer({
   room,
   roomId,
@@ -898,6 +915,15 @@ export default function RoomRenderer({
   const [dbRows, setDbRows] = useState<any[] | null>(null);
   const [dbLoading, setDbLoading] = useState(false);
   const [dbError, setDbError] = useState<string | null>(null);
+
+  // Staged hydration: skeleton paints first, heavy content swaps in on the
+  // next tick. Title row + keyword chips + Practice button render
+  // immediately regardless — only Box 4 (ActiveEntry / status) is gated.
+  const [isRoomReady, setIsRoomReady] = useState(false);
+  useEffect(() => {
+    const t = setTimeout(() => setIsRoomReady(true), 100);
+    return () => clearTimeout(t);
+  }, []);
 
   useEffect(() => {
     let cancelled = false;
@@ -1656,6 +1682,7 @@ export default function RoomRenderer({
               </div>
             )}
 
+            {!isRoomReady ? <RoomSkeleton /> : (
             <section ref={box4Ref} className="mb-card p-1 md:p-6 mb-5 mb-box4" data-room-box="4">
               <div className="mb-zoomWrap">
                 {isLocked ? (
@@ -1722,6 +1749,7 @@ export default function RoomRenderer({
                 )}
               </div>
             </section>
+            )}
 
             <div style={{ marginTop: "auto" }} data-room-box="5">
               <div className="mb-card p-3 md:p-4">
