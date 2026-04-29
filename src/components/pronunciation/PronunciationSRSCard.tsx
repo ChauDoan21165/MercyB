@@ -372,10 +372,16 @@ function PhaseBody({
             lineHeight: 1.5,
           }}
         >
-          Không chấm điểm được. Mạng có thể đang chậm — hãy thử lại.
+          Mercy chưa nghe rõ. Hãy nói lại chậm và rõ hơn.
           <br />
           <span style={{ color: "#475569", fontSize: 13 }}>
-            Couldn't score this attempt. Please try again.
+            Mercy couldn't hear clearly. Please try again slowly and clearly.
+          </span>
+          <br />
+          <span style={{ color: "#64748b", fontSize: 12 }}>
+            Đưa micro gần hơn và nói hết câu.
+            <br />
+            Move closer to the mic and say the full sentence.
           </span>
         </p>
         <PrimaryButton
