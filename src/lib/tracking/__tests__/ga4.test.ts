@@ -69,7 +69,8 @@ describe("GA4 — track helpers no-op until initialized", () => {
     gaPurchase(50, "USD");
     const dataLayer = window.dataLayer ?? [];
     const purchase = dataLayer.find(
-      (entry) => Array.isArray(entry) && entry[0] === "event" && entry[1] === "purchase",
+      (entry): entry is unknown[] =>
+        Array.isArray(entry) && entry[0] === "event" && entry[1] === "purchase",
     );
     expect(purchase).toBeTruthy();
     expect(purchase?.[2]).toEqual({ value: 50, currency: "USD" });

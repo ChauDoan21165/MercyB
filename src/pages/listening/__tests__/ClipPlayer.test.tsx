@@ -38,7 +38,18 @@ vi.mock("@/providers/AuthProvider", () => ({
 vi.mock("@/lib/supabaseClient", () => ({
   supabase: {
     auth: { getUser: () => Promise.resolve({ data: { user: null } }) },
-    from: () => ({ select: () => ({}) }),
+    // ClipPlayer's audio_url effect chains
+    // .from(...).select(...).eq(...).maybeSingle() — return a no-row
+    // result so the test doesn't depend on a real audio_url being
+    // wired up. The component falls back to "audio pending" UX,
+    // which is exactly what these tests want to assert against.
+    from: () => ({
+      select: () => ({
+        eq: () => ({
+          maybeSingle: () => Promise.resolve({ data: null, error: null }),
+        }),
+      }),
+    }),
     rpc: () => Promise.resolve({ data: null, error: null }),
   },
 }));
@@ -74,9 +85,13 @@ describe("ClipPlayer", () => {
     expect(screen.getByText(SAMPLE_CLIP.title_en)).toBeTruthy();
   });
 
-  it("shows the audio-pending notice when no audio_url is wired", () => {
+  it("shows the audio-pending notice when no audio_url is wired", async () => {
     renderAt(`/listening/${SAMPLE_CLIP.id}`);
-    expect(screen.getByTestId("listening-audio-pending")).toBeTruthy();
+    // The pending notice renders after the audio_url effect settles
+    // (audioLoading flips false → no audioUrl → notice shown). The
+    // mocked supabase chain resolves asynchronously, so use findByTestId
+    // to await the post-effect commit instead of asserting synchronously.
+    expect(await screen.findByTestId("listening-audio-pending")).toBeTruthy();
   });
 
   it("hides the transcript by default and reveals it on toggle", async () => {

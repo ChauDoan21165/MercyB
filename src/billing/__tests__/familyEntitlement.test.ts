@@ -52,7 +52,7 @@ describe("isFamilyMember", () => {
 
   it("returns false when membership is inactive", async () => {
     const deps = {
-      getFamilyMembership: vi.fn<[], Promise<FamilyMembership>>().mockResolvedValue({
+      getFamilyMembership: vi.fn<() => Promise<FamilyMembership>>().mockResolvedValue({
         family_plan_id: "p1",
         owner_user_id: "owner",
         active: false,
@@ -63,7 +63,7 @@ describe("isFamilyMember", () => {
 
   it("returns false when caller is the owner (no self-membership flow)", async () => {
     const deps = {
-      getFamilyMembership: vi.fn<[], Promise<FamilyMembership>>().mockResolvedValue({
+      getFamilyMembership: vi.fn<() => Promise<FamilyMembership>>().mockResolvedValue({
         family_plan_id: "p1",
         owner_user_id: "owner",
         active: true,
@@ -74,7 +74,7 @@ describe("isFamilyMember", () => {
 
   it("returns true when caller is an active non-owner member", async () => {
     const deps = {
-      getFamilyMembership: vi.fn<[], Promise<FamilyMembership>>().mockResolvedValue({
+      getFamilyMembership: vi.fn<() => Promise<FamilyMembership>>().mockResolvedValue({
         family_plan_id: "p1",
         owner_user_id: "owner",
         active: true,

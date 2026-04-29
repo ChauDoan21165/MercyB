@@ -109,9 +109,11 @@ describe("inviteMember", () => {
   });
 
   it("inserts an invite with a generated 8-char code", async () => {
-    const insertSpy = vi.fn(function (this: any) {
-      return this;
-    });
+    const insertSpy = vi.fn<(row: Record<string, unknown>) => unknown>(
+      function (this: any) {
+        return this;
+      },
+    );
     const c = chain({
       data: {
         id: "i1",
@@ -136,9 +138,11 @@ describe("inviteMember", () => {
   });
 
   it("normalizes empty/whitespace email to null", async () => {
-    const insertSpy = vi.fn(function (this: any) {
-      return this;
-    });
+    const insertSpy = vi.fn<(row: Record<string, unknown>) => unknown>(
+      function (this: any) {
+        return this;
+      },
+    );
     const c = chain({
       data: { id: "i1", family_plan_id: "p1", invite_code: "ABCDEFGH" },
       error: null,

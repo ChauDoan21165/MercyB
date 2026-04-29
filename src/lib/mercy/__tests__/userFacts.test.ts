@@ -276,9 +276,11 @@ describe("markFactReferenced", () => {
   });
 
   it("issues an update with last_referenced_at = now-ish", async () => {
-    const updateSpy = vi.fn(function (this: any) {
-      return this;
-    });
+    const updateSpy = vi.fn<(row: Record<string, unknown>) => unknown>(
+      function (this: any) {
+        return this;
+      },
+    );
     const c = chain({ data: null, error: null });
     c.update = updateSpy;
     supabaseMock.from.mockReturnValueOnce(c);

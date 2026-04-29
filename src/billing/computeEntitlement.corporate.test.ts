@@ -14,8 +14,8 @@ import {
 } from "./computeEntitlement";
 
 type MockReturns = {
-  seats?: { data: unknown; error: unknown };
-  accounts?: { data: unknown; error: unknown };
+  seats?: { data: unknown; error: { message: string } | null };
+  accounts?: { data: unknown; error: { message: string } | null };
 };
 
 function buildSupabase(returns: MockReturns): CorporateEntitlementSupabase {

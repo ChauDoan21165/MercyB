@@ -20,9 +20,14 @@ const __dirname = dirname(__filename);
 
 // Resolve relative to this test file, NOT process.cwd, so the test runs
 // the same whether vitest is invoked from repo root or a sub-directory.
+// Migration was renamed from 20260427000000 → 20260524000000 during
+// the merge ordering shuffle when other referral migrations landed
+// first. Same SQL content, just a later timestamp prefix. Point at
+// the real filename so this contract test can keep enforcing the
+// RLS policies + column shape.
 const SQL_PATH = resolve(
   __dirname,
-  "../../../../supabase/migrations/20260427000000_referral_leaderboard.sql",
+  "../../../../supabase/migrations/20260524000000_referral_leaderboard.sql",
 );
 
 const SQL = readFileSync(SQL_PATH, "utf8");
