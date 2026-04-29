@@ -11,6 +11,7 @@ import PowerUserSection from "@/components/account/PowerUserSection";
 import { supabase } from "@/lib/supabaseClient";
 import { StreakHistoryPanel } from "@/components/streak/StreakHistoryPanel";
 import { ReferralCard } from "@/components/referral/ReferralCard";
+import { CertificatesAccountEntry } from "@/components/certificates/CertificatesAccountEntry";
 import { ApplyReferralCodeForm } from "@/components/referral/ApplyReferralCodeForm";
 import { WeeklyLeaderboardOptInPanel } from "@/components/leaderboard/WeeklyLeaderboardOptInPanel";
 import { ReferralLeaderboardOptInPanel } from "@/components/leaderboard/ReferralLeaderboardOptInPanel";
@@ -740,6 +741,9 @@ export default function AccountPage() {
         <div style={{ marginTop: 18 }}>
           <StreakHistoryPanel />
         </div>
+
+        {/* ── A3 — Progress certificates entry (gated by flag) ─── */}
+        <CertificatesAccountEntry />
 
         {/* ── Referral (Step 5 Marketing) ──────────────────────── */}
         <div style={{ marginTop: 18 }}>

@@ -41,6 +41,14 @@ const XPHistoryPage       = lazy(() => import("@/pages/xp/XPHistoryPage"));
 const LevelUpModal        = lazy(() =>
   import("@/components/xp/LevelUpModal").then((m) => ({ default: m.LevelUpModal })),
 );
+// A3 — Progress Certificates (gated by `certificates_enabled` flag).
+const MilestoneObserver   = lazy(() =>
+  import("@/components/certificates/MilestoneObserver").then((m) => ({ default: m.MilestoneObserver })),
+);
+const CertificateToast    = lazy(() =>
+  import("@/components/certificates/CertificateToast").then((m) => ({ default: m.CertificateToast })),
+);
+const CertificatesGalleryPage = lazy(() => import("@/pages/certificates/CertificatesGalleryPage"));
 const PushPreferencesPage = lazy(() => import("@/pages/account/PushPreferences"));
 const ReferralPage        = lazy(() => import("@/pages/Referral"));
 const BillingPage         = lazy(() => import("@/pages/Billing"));
@@ -542,6 +550,15 @@ export default function AppRouter() {
         <LevelUpModal />
       </Suspense>
 
+      {/* A3 — milestone observer + certificate toast. Both gate
+          themselves on the `certificates_enabled` feature flag and
+          render nothing until it's ON, so the off-state cost is
+          basically zero. */}
+      <Suspense fallback={null}>
+        <MilestoneObserver />
+        <CertificateToast />
+      </Suspense>
+
       <Routes>
         {/* Public auth routes */}
         <Route path="/signin" element={<LazyPage><LoginPage /></LazyPage>} />
@@ -984,6 +1001,19 @@ export default function AppRouter() {
             element={
               <RequireAuth>
                 <LazyPage><XPHistoryPage /></LazyPage>
+              </RequireAuth>
+            }
+          />
+          {/* A3 — Progress certificates gallery (auth-required). The
+              `certificates_enabled` flag gates the *entry points*
+              (nav links, toast, observer); rendering this URL
+              directly when the flag is off is harmless because the
+              page only ever reads from the certificates RPC and
+              shows an empty state. */}
+          <Route path="/certificates"
+            element={
+              <RequireAuth>
+                <LazyPage><CertificatesGalleryPage /></LazyPage>
               </RequireAuth>
             }
           />
