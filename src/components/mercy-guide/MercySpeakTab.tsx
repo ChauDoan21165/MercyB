@@ -635,6 +635,7 @@ export function MercySpeakTab({
   const [variant, setVariant]         = useState<PracticeVariant>(initialVariant);
   const [customText, setCustomText]   = useState(defaultPracticeText);
   const [copySuccess, setCopySuccess] = useState(false);
+  const [mercySpeakWarning, setMercySpeakWarning] = useState('');
   const [transcript, setTranscript]   = useState('');
   const [recognitionError, setRecognitionError] = useState('');
   const [isListening, setIsListening] = useState(false);
@@ -1230,6 +1231,31 @@ export function MercySpeakTab({
   async function handleSpeak(textOverride?: string) {
     const speechText = cleanText(textOverride) || practiceText;
     if (!speechText || typeof window === 'undefined') return;
+
+    // Adult guard: don't let Mercy read raw user-typed custom text aloud,
+    // because TTS can model bad grammar. Word-chip taps (textOverride set)
+    // and corrected / enhanced text are still allowed; recording is unaffected.
+    const isUnsafeCustom =
+      !isKidsMode &&
+      !textOverride &&
+      variant === 'custom' &&
+      customText.trim().length > 0 &&
+      !correctedText &&
+      !enhancedText;
+    if (isUnsafeCustom) {
+      const trimmed = customText.trim();
+      const suggestion = /\bbuy\b/i.test(trimmed)
+        ? trimmed.replace(/\bbuy\b/gi, (m) => (m[0] === m[0].toUpperCase() ? 'Bought' : 'bought'))
+        : null;
+      setMercySpeakWarning(
+        suggestion
+          ? `This sentence needs a small fix. Try: ‘${suggestion}’`
+          : 'Mercy needs to check this sentence before reading it.'
+      );
+      return;
+    }
+    setMercySpeakWarning('');
+
     stopRecordedAudioPlayback(true);
 
     // Kids mode: try pre-recorded ElevenLabs mp3 first (now served from Supabase for
@@ -1425,7 +1451,7 @@ export function MercySpeakTab({
   }
 
   function handleResetAttempt() {
-    setTranscript(''); setRecognitionError(''); setRecordingError(''); setCopySuccess(false);
+    setTranscript(''); setRecognitionError(''); setRecordingError(''); setCopySuccess(false); setMercySpeakWarning('');
     setCloudOverrideScore(null);
     setCloudWordScores([]);
     setExpandedWordIdx(null);
@@ -1774,7 +1800,7 @@ export function MercySpeakTab({
         <div className="space-y-2.5">
           <textarea
             value={customText}
-            onChange={(e) => { setCustomText(e.target.value); setVariant('custom'); }}
+            onChange={(e) => { setCustomText(e.target.value); setVariant('custom'); setMercySpeakWarning(''); }}
             placeholder="Type the sentence you want to practice speaking..."
             className="min-h-[160px] w-full resize-y rounded-[20px] md:rounded-[26px] border border-[#E5CDB9] bg-gradient-to-br from-[#FFF9F2] to-white p-3.5 md:p-5 text-base leading-7 md:text-[1.05rem] md:leading-9 text-slate-950 shadow-[inset_0_1px_0_rgba(255,255,255,0.92),0_8px_20px_rgba(255,138,101,0.05)] outline-none transition placeholder:text-slate-600 focus:border-[#EFA98B] focus:ring-2 focus:ring-[#FFD3BF] md:min-h-[200px]"
           />
@@ -1824,6 +1850,7 @@ export function MercySpeakTab({
             </Button>
           </div>
 
+          {mercySpeakWarning ? <div className="rounded-xl border border-amber-200 bg-amber-50 p-3 text-sm text-amber-800"><div className="flex items-start gap-2"><AlertCircle className="mt-0.5 h-4 w-4 shrink-0" /><p>{mercySpeakWarning}</p></div></div> : null}
           {!supportsRecognition ? <div className="rounded-xl border border-amber-200 bg-amber-50 p-3 text-sm text-amber-800"><div className="flex items-start gap-2"><AlertCircle className="mt-0.5 h-4 w-4 shrink-0" /><p>This browser does not expose speech recognition here. Audio playback still works.</p></div></div> : null}
           {!supportsMediaRecording ? <div className="rounded-xl border border-amber-200 bg-amber-50 p-3 text-sm text-amber-800"><div className="flex items-start gap-2"><AlertCircle className="mt-0.5 h-4 w-4 shrink-0" /><p>This browser does not support in-page voice recording here.</p></div></div> : null}
           {recognitionError ? <div className="rounded-xl border border-amber-200 bg-amber-50 p-3 text-sm text-amber-800"><div className="flex items-start gap-2"><AlertCircle className="mt-0.5 h-4 w-4 shrink-0" /><p>{recognitionError}</p></div></div> : null}
@@ -1866,6 +1893,47 @@ export function MercySpeakTab({
               </div>
             ) : null}
           </div>
+
+          {/* Mercy's human-style reaction. Adult-only (this branch is already
+              the adult render path). Renders only after a transcript exists.
+              Reads from existing values — no new state, no scoring changes. */}
+          {transcript ? (() => {
+            void practiceText;
+            const shortUserLine =
+              transcript.length > 60
+                ? transcript.slice(0, 60).trim() + '…'
+                : transcript;
+            const looksRunOn =
+              transcript.length > 40 &&
+              !/[.!?]/.test(transcript);
+            const canQuoteUser = matchScore >= 80 && !looksRunOn;
+            const reaction = matchScore >= 85
+              ? (looksRunOn
+                  ? `I understood you clearly, but it sounds a bit long or unnatural. Try breaking it into two sentences.`
+                  : canQuoteUser
+                    ? `I understood you clearly when you said “${shortUserLine}”. This sounds natural. Nice job.`
+                    : `I understood you clearly. This sounds natural. Nice job.`)
+              : matchScore >= 60
+                ? (canQuoteUser
+                    ? `I understood you when you said “${shortUserLine}”, but it sounds a little unnatural. Try the sentence again slowly.`
+                    : `I understood you, but it sounds a little unnatural. Try the sentence again slowly.`)
+                : `I had trouble understanding some parts. Let’s try again together.`;
+            const focusWords = displayedTroubleWords.slice(0, 3);
+            return (
+              <div className="rounded-[20px] md:rounded-[24px] border border-[#CFE8EA] bg-gradient-to-br from-[#F1FBFC] to-white p-3 md:p-4 shadow-sm">
+                <div className="flex items-baseline justify-between gap-3">
+                  <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[#0A6673]">Mercy says</p>
+                  <span className="text-[11px] font-semibold uppercase tracking-wide text-slate-500">{confidenceLabel}</span>
+                </div>
+                <p className="mt-1.5 text-sm leading-6 text-slate-900 md:text-[0.95rem] md:leading-7">{reaction}</p>
+                {focusWords.length > 0 ? (
+                  <p className="mt-1.5 text-sm leading-6 text-slate-700">
+                    <span className="font-semibold text-slate-900">Focus on:</span>{' '}{focusWords.join(', ')}.
+                  </p>
+                ) : null}
+              </div>
+            );
+          })() : null}
 
           {/* Real-time streaming feedback (PR feat/pronunciation-streaming).
               Renders only while a stream is active OR has produced a partial
