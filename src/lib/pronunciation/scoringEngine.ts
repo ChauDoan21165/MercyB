@@ -234,11 +234,6 @@ export async function scorePronunciation(
   }
 
   if (!userJwt) {
-    if (import.meta.env.DEV) {
-      console.warn(
-        "[scoringEngine] no JWT — anonymous user, returning scoring-failed",
-      );
-    }
     return buildStubResult(referenceText, audioBlob);
   }
 
@@ -250,10 +245,7 @@ export async function scorePronunciation(
       userJwt,
     });
     return adaptCloudResult(cloud, referenceText, audioBlob);
-  } catch (err) {
-    if (import.meta.env.DEV) {
-      console.warn("[scoringEngine] cloud scoring threw, returning scoring-failed:", err);
-    }
+  } catch {
     return buildStubResult(referenceText, audioBlob);
   }
 }
@@ -312,46 +304,10 @@ function adaptCloudResult(
   const trust = isTrustedPronunciationResult(candidate);
 
   if (!trust.trusted) {
-    // TEMPORARY DIAGNOSTIC LOGGING — reliability bug (Apr 29 2026):
-    // /pronunciation/srs was repeatedly producing scoring-failed for
-    // good attempts. Log the full cloud payload + derived candidate
-    // so we can see exactly which signal is missing in production.
-    // Remove once the failure mode is fully understood.
-    if (import.meta.env.DEV) {
-      console.warn(
-        `[scoringEngine] downgraded cloud ok→scoring-failed: ${trust.reason}`,
-        {
-          overallScore: cloud.overallScore,
-          phonemeScoresCount: phonemeScores.length,
-          phonemeScoresPreview: phonemeScores.slice(0, 8),
-          confidenceValues: phonemeScores.map((p) => p.confidence),
-          rawScoresValues: phonemeScores.map((p) => p.score),
-          transcription,
-          transcriptionLength: transcription.length,
-          rawWordScoresCount: cloud.wordScores.length,
-          rawWordScoresPreview: cloud.wordScores.slice(0, 5),
-        },
-      );
-    }
     return buildStubResult(
       referenceText,
       audioBlob,
       hasUsableTranscriptionContent(transcription) ? transcription : "",
-    );
-  }
-
-  // TEMPORARY DIAGNOSTIC LOGGING — paired with the failure-path warn
-  // above so we can correlate good vs bad attempts in production.
-  // Remove once the reliability bug is closed.
-  if (import.meta.env.DEV) {
-    console.info(
-      "[scoringEngine] cloud trusted",
-      {
-        overallScore: cloud.overallScore,
-        phonemeScoresCount: phonemeScores.length,
-        weakPhonemes,
-        transcriptionLength: transcription.length,
-      },
     );
   }
 
