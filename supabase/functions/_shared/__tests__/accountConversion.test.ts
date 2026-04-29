@@ -53,9 +53,9 @@ describe("validateEmail", () => {
   it("rejects empty / whitespace / non-string", () => {
     expect(validateEmail("")).toBe("empty");
     expect(validateEmail("   ")).toBe("empty");
-    // @ts-expect-error — runtime guard
+    // @ts-expect-error — runtime guard rejects null at runtime
     expect(validateEmail(null)).toBe("empty");
-    // @ts-expect-error
+    // @ts-expect-error — runtime guard rejects non-string number
     expect(validateEmail(42)).toBe("empty");
   });
 
@@ -83,7 +83,7 @@ describe("validatePassword", () => {
 
   it("rejects empty", () => {
     expect(validatePassword("")).toBe("empty");
-    // @ts-expect-error
+    // @ts-expect-error — runtime guard rejects null at runtime
     expect(validatePassword(null)).toBe("empty");
   });
 

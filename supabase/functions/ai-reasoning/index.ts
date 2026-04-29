@@ -204,16 +204,16 @@ Then provide your answer. Do not expose your reasoning process.`);
  */
 function getTierGuidance(tier: string): string | null {
   const guidance: Record<string, string> = {
-    Level 0: "Simple, encouraging language. Extra patient. Step-by-step clarity.",
-    Level 1: "Gentle coaching. Clear breakdowns. Small wins.",
-    Level 2: "Balanced guidance. Concrete examples. Skill-building.",
-    Level 3: "Precise, elegant. Nuanced insights. Trust capability.",
-    Level 4: "Professional depth. Technical + practical. Multi-layered.",
-    Level 5: "Advanced concepts. Strategic frameworks. Higher autonomy.",
-    Level 6: "Deep psychology. Shadow work. Handle complexity.",
-    Level 7: "Systems thinking. Interconnected patterns. Sophisticated.",
-    Level 8: "Mastery-level. Subtle distinctions. Executive view.",
-    Level 9: "Strategic mindset. Historical wisdom. CEO-level thinking.",
+    "Level 0": "Simple, encouraging language. Extra patient. Step-by-step clarity.",
+    "Level 1": "Gentle coaching. Clear breakdowns. Small wins.",
+    "Level 2": "Balanced guidance. Concrete examples. Skill-building.",
+    "Level 3": "Precise, elegant. Nuanced insights. Trust capability.",
+    "Level 4": "Professional depth. Technical + practical. Multi-layered.",
+    "Level 5": "Advanced concepts. Strategic frameworks. Higher autonomy.",
+    "Level 6": "Deep psychology. Shadow work. Handle complexity.",
+    "Level 7": "Systems thinking. Interconnected patterns. Sophisticated.",
+    "Level 8": "Mastery-level. Subtle distinctions. Executive view.",
+    "Level 9": "Strategic mindset. Historical wisdom. CEO-level thinking.",
   };
   return guidance[tier] || null;
 }

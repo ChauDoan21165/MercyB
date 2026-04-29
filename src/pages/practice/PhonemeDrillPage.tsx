@@ -192,7 +192,7 @@ export default function PhonemeDrillPage() {
       delta: ba.delta,
     });
     setGraduationCard(justGraduated);
-  }, [pack, index, scores, sessionId, user?.id]);
+  }, [pack, index, scores, sessionId, user]);
 
   const onTryAgain = useCallback(() => {
     if (!pack) return;
@@ -216,7 +216,7 @@ export default function PhonemeDrillPage() {
     state.byPhoneme[pack.slug] = markCelebrationShown(progressFor(state, pack.slug));
     writeGraduationState(user.id, state);
     setGraduationCard(false);
-  }, [user?.id, pack]);
+  }, [user, pack]);
 
   if (!pack) {
     return <UnknownSlugView slug={phonemeSlug} onBack={() => nav("/progress")} />;

@@ -26,7 +26,7 @@ export default function PublicRoadmapPage() {
     setItems(list);
     setMyVotes(votes);
     setLoading(false);
-  }, [user?.id]);
+  }, [user]);
 
   useEffect(() => {
     void reload();

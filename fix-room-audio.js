@@ -131,7 +131,7 @@ function tokenize(s) {
   return s
     .toLowerCase()
     .replace(/\.mp3$/i, '')
-    .replace(/[_\-]+/g, ' ')
+    .replace(/[_-]+/g, ' ')
     .split(/\s+/)
     .filter(Boolean);
 }

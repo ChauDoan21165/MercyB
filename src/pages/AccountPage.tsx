@@ -298,7 +298,7 @@ export default function AccountPage() {
     } finally {
       setIsResettingMemory(false);
     }
-  }, [isResettingMemory, user?.id]);
+  }, [isResettingMemory, user]);
 
   const handleDeleteAccount = useCallback(async (): Promise<void> => {
     if (isDeleting) return;

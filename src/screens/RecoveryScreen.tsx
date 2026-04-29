@@ -238,8 +238,7 @@ export default function RecoveryScreen({ route, navigation }: Props) {
       missingSkills: canonicalMissingSkills,
     }) as MercyMessage;
   }, [
-    params?.userId,
-    params?.levelId,
+    params,
     canonicalMastery,
     sessionScore0to100,
     avgAccuracy0to1,

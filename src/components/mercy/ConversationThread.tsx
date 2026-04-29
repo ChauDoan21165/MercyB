@@ -474,7 +474,7 @@ export function ConversationThread({ conversationId, onCleared }: ConversationTh
     } finally {
       setPending(false);
     }
-  }, [conversationId, input, pending, user?.id]);
+  }, [conversationId, input, pending, user]);
 
   const handleClear = useCallback(async () => {
     if (!conversationId) return;

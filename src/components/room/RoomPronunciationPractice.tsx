@@ -88,14 +88,21 @@ export function RoomPronunciationPractice({
   const triggerRef = useRef<HTMLButtonElement | null>(null);
   const closeRef = useRef<HTMLButtonElement | null>(null);
 
+  // Trim + drop empty/whitespace-only entries up front. Empty input must
+  // not render the button at all (gated below, after all hooks).
+  const safeKeywords = useMemo(
+    () => keywordsEn.map((k) => String(k ?? "").trim()).filter(Boolean),
+    [keywordsEn],
+  );
+
   // Build the carrier-sentence list once per render of the button. Cheap.
   const sentences = useMemo<SessionSentence[]>(() => {
-    return keywordsToSentences(keywordsEn).map((carrier) => ({
+    return keywordsToSentences(safeKeywords).map((carrier) => ({
       target_en: carrier.target_en,
       target_vi: carrier.target_vi,
       meta: { keyword: carrier.keyword },
     }));
-  }, [keywordsEn]);
+  }, [safeKeywords]);
 
   const isEmpty = sentences.length === 0;
 
@@ -140,13 +147,11 @@ export function RoomPronunciationPractice({
     };
   }, [open, handleClose]);
 
-  // Hide entirely when flag off or feature-flag check is mid-flight.
-  // Note: we deliberately NO LONGER short-circuit on empty sentences.
-  // When the room's keyword fetch is loading or has 403'd, premium
-  // users still see the button — clicking opens the modal with a
-  // bilingual "loading or unavailable" fallback inside the body.
+  // Hide entirely when flag off / feature-flag check is mid-flight, or
+  // when the room has no usable keywords (empty array or whitespace-only).
   if (loading) return null;
   if (!enabled) return null;
+  if (safeKeywords.length === 0) return null;
 
   return (
     <>

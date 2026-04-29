@@ -124,11 +124,7 @@ async function generateWithRetry(client, clip) {
     console.warn(`Retrying ${clip.id} after error: ${firstError.message}`);
     await sleep(1500);
 
-    try {
-      return await generateAudio(client, clip);
-    } catch (secondError) {
-      throw secondError;
-    }
+    return await generateAudio(client, clip);
   }
 }
 

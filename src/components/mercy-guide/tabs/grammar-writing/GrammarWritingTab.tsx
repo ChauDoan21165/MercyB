@@ -637,7 +637,7 @@ export function GrammarWritingTab({
     if (wordCount <= 12) return 'sentence';
     if (wordCount <= 60) return 'paragraph';
     return 'essay';
-  }, [result?.writingMode, draft]);
+  }, [result, draft]);
 
   const supportHint = useMemo(
     () => buildSupportHint(learningSupportMode),

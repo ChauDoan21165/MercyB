@@ -137,6 +137,7 @@ describe("L1_VN_EXPLANATIONS — voice invariants", () => {
     (tag) => {
       const e = L1_VN_EXPLANATIONS[tag].explanation_vi;
       // Any non-ASCII char → almost certainly Vietnamese diacritic.
+      // eslint-disable-next-line no-control-regex -- intentional ASCII-range check
       expect(/[^\x00-\x7F]/.test(e)).toBe(true);
     },
   );
