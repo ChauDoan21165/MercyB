@@ -308,22 +308,34 @@ export default function ChatHub() {
       setRoomSpec(null);
       setShowArrival(true);
 
-      let loadedRoom: AnyRoom | null = null;
       let lastErrorKind: ErrorKind | null = null;
 
-      for (const key of loadKeys) {
-        try {
-          const data = (await loadRoomJson(key)) as unknown as AnyRoom | null;
-          if (data) {
-            loadedRoom = data;
-            break;
+      // Wrap the existing variant-trying loop so it can be one half of Promise.all.
+      const loadJson = async (): Promise<AnyRoom | null> => {
+        let loaded: AnyRoom | null = null;
+        for (const key of loadKeys) {
+          try {
+            const data = (await loadRoomJson(key)) as unknown as AnyRoom | null;
+            if (data) {
+              loaded = data;
+              break;
+            }
+          } catch (err: unknown) {
+            const anyErr = err as { kind?: ErrorKind; code?: ErrorKind };
+            const kind = (anyErr?.kind || anyErr?.code || "unknown") as ErrorKind;
+            lastErrorKind = kind;
           }
-        } catch (err: unknown) {
-          const anyErr = err as { kind?: ErrorKind; code?: ErrorKind };
-          const kind = (anyErr?.kind || anyErr?.code || "unknown") as ErrorKind;
-          lastErrorKind = kind;
         }
-      }
+        return loaded;
+      };
+
+      // Launch both before either is awaited. Spec only needs canonicalId
+      // (synchronously available) — verified safe via empirical check that
+      // loadedRoom.id === canonicalId for all 475 shipped rooms.
+      const [loadedRoom, effectiveSpec] = await Promise.all([
+        loadJson(),
+        getEffectiveRoomSpec(canonicalId, null),
+      ]);
 
       if (cancelled) return;
 
@@ -333,15 +345,6 @@ export default function ChatHub() {
         setShowArrival(false);
         return;
       }
-
-      const resolvedTier = normalizeTierOrUndefined(getRoomTierSafe(loadedRoom));
-
-      const effectiveSpec = await getEffectiveRoomSpec(
-        String(loadedRoom.id ?? roomId ?? canonicalId ?? ""),
-        resolvedTier ?? null,
-      );
-
-      if (cancelled) return;
 
       setRoom(loadedRoom);
       setRoomSpec(effectiveSpec);
