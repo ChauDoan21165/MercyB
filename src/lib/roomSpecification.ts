@@ -132,92 +132,53 @@ export async function getEffectiveRoomSpec(
   // If roomId is missing, still return defaults (app-wide behavior)
   if (!rid) return { ...DEFAULT_ROOM_SPEC };
 
-  // Fetch assignments possibly relevant to this room
-  // We query broadly then resolve priority in code to avoid schema brittleness.
-  const { data: assignments, error: aErr } = await supabase
-    .from("room_specification_assignments")
-    .select("*");
+  // Fetch assignments with three parallel filtered queries (room > tier > app).
+  // Server-side filtering on (scope, target_id) avoids pulling the whole table.
+  const [roomRes, tierRes, appRes] = await Promise.all([
+    supabase
+      .from("room_specification_assignments")
+      .select("specification_id")
+      .eq("scope", "room")
+      .eq("target_id", rid)
+      .maybeSingle(),
+    t
+      ? supabase
+          .from("room_specification_assignments")
+          .select("specification_id")
+          .eq("scope", "tier")
+          .eq("target_id", t)
+          .maybeSingle()
+      : Promise.resolve({ data: null, error: null }),
+    supabase
+      .from("room_specification_assignments")
+      .select("specification_id")
+      .eq("scope", "app")
+      .maybeSingle(),
+  ]);
 
-  if (aErr) {
-    // Fail open: return defaults rather than breaking room rendering
-    console.warn("[roomSpec] assignments query failed:", aErr.message);
+  if (roomRes.error || tierRes.error || appRes.error) {
+    const msg =
+      roomRes.error?.message ||
+      tierRes.error?.message ||
+      appRes.error?.message ||
+      "unknown";
+    console.warn("[roomSpec] assignments query failed:", msg);
     return { ...DEFAULT_ROOM_SPEC };
   }
 
-  const rows = Array.isArray(assignments) ? assignments : [];
-
-  // Determine which assignments match room/tier/app
-  const matches: Array<{ scope: Scope; specId: string }> = [];
-
-  for (const row of rows) {
-    const scope = normalizeScope(
-      firstDefined(row.scope, row.target_scope, row.applies_to, row.level)
-    );
-    if (!scope) continue;
-
-    // Allow various column names for target identifiers
-    const targetRoomId = firstDefined(
-      row.room_id,
-      row.roomId,
-      row.target_room_id,
-      row.targetRoomId,
-      row.target_id,
-      row.targetId
-    );
-
-    const targetTier = firstDefined(
-      row.tier,
-      row.tier_id,
-      row.tierId,
-      row.target_tier,
-      row.targetTier
-    );
-
-    const isMatch =
-      scope === "room"
-        ? String(targetRoomId || "").trim() === rid
-        : scope === "tier"
-        ? t && String(targetTier || "").trim().toLowerCase() === t
-        : scope === "app";
-
-    if (!isMatch) continue;
-
-    // Spec id (many schemas store it as spec_id or room_specification_id)
-    const specId = firstDefined(
-      row.spec_id,
-      row.specId,
-      row.room_specification_id,
-      row.roomSpecificationId,
-      row.specification_id,
-      row.specificationId,
-      row.room_spec_id,
-      row.roomSpecId,
-      row.target_spec_id,
-      row.targetSpecId
-    );
-
-    if (!specId) continue;
-
-    matches.push({ scope, specId: String(specId) });
-  }
-
-  // If nothing assigned, defaults apply
-  if (matches.length === 0) return { ...DEFAULT_ROOM_SPEC };
-
-  // Priority: room > tier > app
-  const best =
-    matches.find((m) => m.scope === "room") ||
-    matches.find((m) => m.scope === "tier") ||
-    matches.find((m) => m.scope === "app") ||
+  const specId =
+    roomRes.data?.specification_id ??
+    tierRes.data?.specification_id ??
+    appRes.data?.specification_id ??
     null;
 
-  if (!best) return { ...DEFAULT_ROOM_SPEC };
+  if (!specId) return { ...DEFAULT_ROOM_SPEC };
 
   // Fetch spec record
   const { data: specRow, error: sErr } = await supabase
     .from("room_specifications")
     .select("*")
-    .eq("id", best.specId)
+    .eq("id", specId)
     .maybeSingle();
 
   if (sErr) {
@@ -259,7 +220,7 @@ export async function getEffectiveRoomSpec(
   );
 
   return {
-    id: String(specRow.id ?? best.specId),
+    id: String(specRow.id ?? specId),
     use_color_theme,
     nav_mode,
     title_align,
