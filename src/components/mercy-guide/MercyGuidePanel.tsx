@@ -1166,7 +1166,7 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
 
     return {
       sourceText,
-      correctedText: correctedText || enhancedText || sourceText,
+      correctedText: correctedText || undefined,
       enhancedText: enhancedText || undefined,
     };
   }, [

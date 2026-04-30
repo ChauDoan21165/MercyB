@@ -254,6 +254,6 @@ export type AnalyzeGrammarInput = {
 
 export type PronunciationLaunchPayload = {
   sourceText: string;
-  correctedText: string;
+  correctedText?: string;
   enhancedText?: string;
 };

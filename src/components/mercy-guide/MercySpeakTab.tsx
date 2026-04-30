@@ -85,7 +85,7 @@ type SpeechRecognitionLike = BaseSpeechRecognitionLike & {
 
 type PronunciationLaunchPayload = {
   sourceText: string;
-  correctedText: string;
+  correctedText?: string;
   enhancedText?: string;
 };
 
@@ -1229,7 +1229,8 @@ export function MercySpeakTab({
   }
 
   async function handleSpeak(textOverride?: string) {
-    const speechText = cleanText(textOverride) || practiceText;
+    const speechText =
+      cleanText(textOverride) || enhancedText || correctedText || practiceText;
     if (!speechText || typeof window === 'undefined') return;
 
     // Adult guard: don't let Mercy read raw user-typed custom text aloud,
@@ -1240,8 +1241,8 @@ export function MercySpeakTab({
       !textOverride &&
       variant === 'custom' &&
       customText.trim().length > 0 &&
-      !correctedText &&
-      !enhancedText;
+      cleanText(customText) !== correctedText &&
+      cleanText(customText) !== enhancedText;
     if (isUnsafeCustom) {
       const trimmed = customText.trim();
       const suggestion = /\bbuy\b/i.test(trimmed)

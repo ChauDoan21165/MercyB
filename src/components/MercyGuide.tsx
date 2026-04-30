@@ -1023,7 +1023,7 @@ export function MercyGuide({
 
     setPendingPronunciationPayload({
       sourceText,
-      correctedText: correctedText || enhancedText || sourceText,
+      correctedText: correctedText || undefined,
       enhancedText: enhancedText || undefined,
     });
 

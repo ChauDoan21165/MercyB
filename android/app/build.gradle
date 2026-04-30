@@ -1,3 +1,5 @@
+// Path: android/app/build.gradle
+
 apply plugin: 'com.android.application'
 
 // Load release-signing credentials from android/keystore.properties (gitignored).
@@ -9,18 +11,18 @@ if (keystorePropertiesFile.exists()) {
 }
 
 android {
-    namespace "com.chaudoan.mercyblade"
+    namespace "com.mercyapps.mercyblade"
     compileSdk rootProject.ext.compileSdkVersion
     defaultConfig {
-        applicationId "com.chaudoan.mercyblade"
+        applicationId "com.mercyapps.mercyblade"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 3
-        versionName "1.0.1"
+        versionCode 12
+        versionName "1.0.2"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         aaptOptions {
-             // Files and dirs to omit from the packaged assets dir, modified to accommodate modern web apps.
-             // Default: https://android.googlesource.com/platform/frameworks/base/+/282e181b58cf72b6ca770dc7ca5f91f135444502/tools/aapt/AaptAssets.cpp#61
+            // Files and dirs to omit from the packaged assets dir, modified to accommodate modern web apps.
+            // Default: https://android.googlesource.com/platform/frameworks/base/+/282e181b58cf72b6ca770dc7ca5f91f135444502/tools/aapt/AaptAssets.cpp#61
             ignoreAssetsPattern '!.svn:!.git:!.ds_store:!*.scc:.*:!CVS:!thumbs.db:!picasa.ini:!*~'
         }
     }
@@ -65,8 +67,8 @@ dependencies {
 configurations.all {
     resolutionStrategy.eachDependency { details ->
         if (details.requested.group == 'org.jetbrains.kotlin' &&
-            (details.requested.name == 'kotlin-stdlib-jdk7' ||
-             details.requested.name == 'kotlin-stdlib-jdk8')) {
+                (details.requested.name == 'kotlin-stdlib-jdk7' ||
+                        details.requested.name == 'kotlin-stdlib-jdk8')) {
             details.useTarget("org.jetbrains.kotlin:kotlin-stdlib:${details.requested.version}")
         }
         // Pin androidx.browser to a version compatible with compileSdk 35 /
@@ -76,7 +78,7 @@ configurations.all {
         // API-compatible for our use case (opening external URLs via
         // CustomTabsIntent).
         if (details.requested.group == 'androidx.browser' &&
-            details.requested.name == 'browser') {
+                details.requested.name == 'browser') {
             details.useVersion('1.8.0')
             details.because('compileSdk 35 / AGP 8.7.2 cannot satisfy browser:1.9.0 requirements')
         }

@@ -782,6 +782,8 @@ export default function RoomRenderer({
     typeof window !== "undefined" ? window.matchMedia("(max-width: 640px)").matches : false
   );
   useEffect(() => {
+    // DEBUG-PERF
+    console.log("[room-perf]", "t3:RoomRenderer-firstEffect", performance.now() - ((window as any).__mbRoomPerfT0 || 0)); // DEBUG-PERF
     if (typeof window === "undefined") return;
     const narrowMq = window.matchMedia("(max-width: 860px)");
     const phoneMq = window.matchMedia("(max-width: 640px)");
@@ -955,6 +957,8 @@ export default function RoomRenderer({
       setDbRows(rows);
       setDbError(error);
       setDbLoading(false);
+      // DEBUG-PERF
+      console.log("[room-perf]", "t4:fetchRoomEntriesDb-resolved", performance.now() - ((window as any).__mbRoomPerfT0 || 0), "rows=", rows.length); // DEBUG-PERF
     }
 
     void load();
@@ -1207,6 +1211,8 @@ export default function RoomRenderer({
           return;
         }
         const url = await resolveAudioUrl(raw);
+        // DEBUG-PERF (only fires when an entry is active — i.e. user clicked a keyword)
+        console.log("[room-perf]", "t5:audio-signed", performance.now() - ((window as any).__mbRoomPerfT0 || 0)); // DEBUG-PERF
         if (alive) setActiveAudioUrl(url);
       } catch {
         if (alive) setActiveAudioUrl("");
@@ -1307,6 +1313,8 @@ export default function RoomRenderer({
         rows.reverse();
         setChatRows(rows);
         setChatLoading(false);
+        // DEBUG-PERF
+        console.log("[room-perf]", "t7:chat-loaded", performance.now() - ((window as any).__mbRoomPerfT0 || 0), "rows=", rows.length); // DEBUG-PERF
         setTimeout(() => scrollToBottomIfSticky(), 0);
       } catch (e: any) {
         setChatRows([]);
@@ -1343,7 +1351,10 @@ export default function RoomRenderer({
       },
     );
 
-    void channel.subscribe();
+    void channel.subscribe(() => {
+      // DEBUG-PERF — fires once the realtime subscribe ack comes back
+      console.log("[room-perf]", "t6:realtime-subscribed", performance.now() - ((window as any).__mbRoomPerfT0 || 0)); // DEBUG-PERF
+    });
     return () => {
       try {
         supabase.removeChannel(channel);

@@ -292,6 +292,10 @@ export default function ChatHub() {
     let timer: ReturnType<typeof setTimeout> | null = null;
 
     async function run() {
+      // DEBUG-PERF: stash t0 on window so RoomRenderer effects share the same origin.
+      (window as any).__mbRoomPerfT0 = performance.now(); // DEBUG-PERF
+      console.log("[room-perf]", "t0:effect-start", 0, "roomId=", roomId); // DEBUG-PERF
+
       if (!roomId) {
         if (cancelled) return;
         setState("error");
@@ -337,6 +341,9 @@ export default function ChatHub() {
         getEffectiveRoomSpec(canonicalId, null),
       ]);
 
+      // DEBUG-PERF
+      console.log("[room-perf]", "t1:promise.all-resolved", performance.now() - (window as any).__mbRoomPerfT0); // DEBUG-PERF
+
       if (cancelled) return;
 
       if (!loadedRoom) {
@@ -349,6 +356,8 @@ export default function ChatHub() {
       setRoom(loadedRoom);
       setRoomSpec(effectiveSpec);
       setState("ready");
+      // DEBUG-PERF
+      console.log("[room-perf]", "t2:setState-ready", performance.now() - (window as any).__mbRoomPerfT0); // DEBUG-PERF
 
       try {
         const persistedId =

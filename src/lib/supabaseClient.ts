@@ -109,6 +109,27 @@ if (!rawSupabaseUrl || !rawSupabaseAnonKey) {
   );
 }
 
+// Capacitor injects `window.Capacitor` at runtime in the native shell. Detect
+// without importing `@capacitor/core` so this module stays test-safe (the
+// vitest jsdom env can't resolve that package). On native we swap supabase-js's
+// default `navigator.locks` coordinator for a no-op: WKWebView's lock impl
+// stalls under cold-boot contention and surfaces "Lock was stolen / Lock broken"
+// AbortErrors. Single-tab native context means cross-tab coordination — the
+// only thing the real lock provides — isn't needed. On web we leave the default
+// untouched so multi-tab refresh stays coordinated.
+const isNativeShell =
+  typeof window !== "undefined" &&
+  Boolean(
+    (window as { Capacitor?: { isNativePlatform?: () => boolean } }).Capacitor
+      ?.isNativePlatform?.(),
+  );
+
+const noopAuthLock = <R,>(
+  _name: string,
+  _acquireTimeout: number,
+  fn: () => Promise<R>,
+): Promise<R> => fn();
+
 export const supabase: SupabaseClient = createClient(
   supabaseUrl,
   supabaseAnonKey,
@@ -120,6 +141,7 @@ export const supabase: SupabaseClient = createClient(
       storageKey,
       storage,
       flowType: "pkce",
+      ...(isNativeShell ? { lock: noopAuthLock } : {}),
     },
   },
 );
