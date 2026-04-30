@@ -47,7 +47,7 @@ type AnyRoom = Record<string, unknown>;
 
 const PAGE_MAX = 980;
 const LS_LAST_ROOM = "mb.lastRoomId";
-const ARRIVAL_DELAY_MS = 1600;
+const ARRIVAL_DELAY_MS = 0;
 
 /* ----------------------------------------------------- */
 /* helpers                                               */
