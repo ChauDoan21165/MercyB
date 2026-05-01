@@ -1438,7 +1438,7 @@ export function MercySpeakTab({
         stopActiveStream();
       };
       mediaRecorderRef.current = recorder;
-      recorder.start();
+      recorder.start(250);
       setIsRecording(true);
     } catch { setRecordingError('Microphone access was blocked or unavailable.'); setIsRecording(false); stopActiveStream(); }
   }
