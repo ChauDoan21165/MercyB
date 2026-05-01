@@ -1227,7 +1227,9 @@ export function MercyTeacherTab({
     if (teacherMemorySummary.length > 0) {
       const focusItem = teacherMemorySummary.find((item) => item.type === 'focus');
       const focusLabel = cleanText(focusItem?.label);
-      if (focusLabel) return `Current focus: ${focusLabel}.`;
+      // focusLabel already includes the "Current focus: …" prefix (built in
+      // useMercyMemory). Returning it as-is avoids the duplicated prefix bug.
+      if (focusLabel) return focusLabel;
     }
 
     if (focusText) return `Current focus: ${focusText}.`;
