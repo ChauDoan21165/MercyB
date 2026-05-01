@@ -722,6 +722,12 @@ export default function Home() {
           <div style={subline}>
             English for real <span style={{ color: "rgba(13,148,136,0.92)" }}>life</span>.
           </div>
+          <div style={{ marginTop: 6, fontSize: z(13), fontWeight: 600, color: "rgba(0,0,0,0.48)", lineHeight: 1.4 }}>
+            New here? Try the 12-second pronunciation test below.
+          </div>
+          <div style={{ marginTop: 2, fontSize: z(12), fontWeight: 500, color: "rgba(0,0,0,0.40)", lineHeight: 1.4 }}>
+            Mới đến? Thử bài kiểm tra phát âm 12 giây bên dưới.
+          </div>
         </section>
 
         {/* Main content — hierarchy:
@@ -741,6 +747,11 @@ export default function Home() {
               anon → /signin), with the inline anon "Phát âm thử ngay"
               pill preserved inside the card. */}
           {teacherCard}
+
+          {/* Try one word — no signup. Lowest-friction first action,
+              promoted to sit immediately under the hero so brand-new
+              visitors have one obvious starting point. */}
+          {tryOneWordCard}
 
           {/* ── 3. Progress ──────────────────────────────────────────────
               Weekly progress widget renders only for signed-in users
@@ -767,10 +778,12 @@ export default function Home() {
               Self-gates on its own feature flag + 24h cooldown. */}
           <RecommendedDrillCard />
 
-          {/* Try one word — no signup. Cuts time-to-first-score for
-              anonymous users; opens MercyGuide on the pronunciation
-              tab with a fixed starter line. */}
-          {tryOneWordCard}
+          {/* Section label — visually groups the secondary entry points
+              (Library + exam-prep) under one header so the eye knows
+              everything below is "more options," not the main action. */}
+          <div style={{ marginTop: 6, fontSize: z(11), fontWeight: 700, letterSpacing: 0.8, textTransform: "uppercase", color: "rgba(0,0,0,0.42)" }}>
+            Explore more · Khám phá thêm
+          </div>
 
           {/* Library — browse rooms. */}
           {libraryCard}
