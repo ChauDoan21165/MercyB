@@ -759,7 +759,7 @@ function TeacherModePicker({
       ref={rootRef}
       className={`relative z-40 ${
         compact
-          ? 'shrink-0 w-fit'
+          ? 'flex-1 min-w-0 max-w-[72px] shrink'
           : 'w-full md:w-[260px]'
       }`}
     >
