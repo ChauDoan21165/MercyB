@@ -15,6 +15,10 @@ import {
   type ConvertEmailResult,
 } from "@/lib/auth/conversion";
 import { buildLossAversionMessage } from "@/lib/auth/conversionTriggers";
+import {
+  isNativeAuthPlatform,
+  signInWithNativeOAuth,
+} from "@/lib/nativeOAuth";
 
 interface AnonSnapshot {
   practiceCount: number;
@@ -151,6 +155,22 @@ export default function ConvertAccount(): React.ReactElement {
       );
     } catch {
       // ignore
+    }
+    // Native shells (iOS/Android Capacitor) MUST route OAuth through
+    // SFSafariViewController via @capacitor/browser — Google blocks
+    // OAuth inside WKWebView with "disallowed_useragent" (403). The
+    // shared signInWithNativeOAuth helper opens the system browser and
+    // returns via the registered deep-link scheme.
+    if (isNativeAuthPlatform()) {
+      try {
+        await signInWithNativeOAuth({ provider });
+      } catch {
+        setError({
+          vi: "Không khởi động được đăng nhập. Vui lòng thử lại.",
+          en: "Could not start sign-in. Please try again.",
+        });
+      }
+      return;
     }
     const { error: oauthError } = await supabase.auth.signInWithOAuth({
       provider,
