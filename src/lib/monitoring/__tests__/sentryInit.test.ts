@@ -1,11 +1,19 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
 
-// Mock the Sentry SDK so init / setUser / captureException never run for
-// real. We re-import per test to read the spy back.
+// Mock the Sentry SDKs so init / setUser / captureException never run for
+// real. We re-import per test to read the spy back. Note that vitest sets
+// MODE='test', which makes initSentry() return before the dynamic imports
+// fire — these mocks exist as belt-and-braces in case that guard regresses.
 vi.mock("@sentry/react", () => ({
   init: vi.fn(),
   setUser: vi.fn(),
   captureException: vi.fn(),
+}));
+vi.mock("@sentry/capacitor", () => ({
+  init: vi.fn(),
+  setUser: vi.fn(),
+  captureException: vi.fn(),
+  setTag: vi.fn(),
 }));
 
 import * as Sentry from "@sentry/react";
@@ -158,6 +166,55 @@ describe("scrubEvent — PII stripping", () => {
     });
     expect(event?.breadcrumbs).toHaveLength(1);
     expect(event?.breadcrumbs?.[0].category).toBe("navigation");
+  });
+
+  it("strips JWT access tokens from event.message", () => {
+    const fakeJwt =
+      "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyLTEifQ.abc123-_def";
+    const event = scrubEvent({ message: `auth failed with ${fakeJwt}` });
+    expect(event?.message).not.toContain("eyJ");
+    expect(event?.message).toContain("[JWT_REDACTED]");
+  });
+
+  it("strips Bearer tokens from event.message", () => {
+    const event = scrubEvent({
+      message: "Authorization: Bearer abcdef.GHIJKL-1234567890",
+    });
+    expect(event?.message).not.toContain("abcdef.GHIJKL");
+    expect(event?.message).toContain("Bearer [TOKEN_REDACTED]");
+  });
+
+  it("strips Stripe customer IDs from exception values", () => {
+    const event = scrubEvent({
+      exception: {
+        values: [
+          { value: "Stripe error for cus_PqR1234XYZabc", type: "Error" },
+        ],
+      },
+    });
+    expect(event?.exception?.values?.[0].value).not.toContain("cus_PqR");
+    expect(event?.exception?.values?.[0].value).toContain("[STRIPE_CUS_REDACTED]");
+  });
+
+  it("strips Supabase service-role key from event.message", () => {
+    const event = scrubEvent({
+      message: "SUPABASE_SERVICE_ROLE_KEY=eyJhbgci.fake.payload was missing",
+    });
+    expect(event?.message).not.toContain("eyJhbgci");
+    expect(event?.message).toContain("[SERVICE_KEY_REDACTED]");
+  });
+
+  it("strips Capacitor audio blob URLs from breadcrumb messages", () => {
+    const event = scrubEvent({
+      breadcrumbs: [
+        {
+          category: "fetch",
+          message: "decode failed for blob:capacitor://localhost/abc-123-def",
+        },
+      ],
+    });
+    expect(event?.breadcrumbs?.[0].message).not.toContain("blob:capacitor://");
+    expect(event?.breadcrumbs?.[0].message).toContain("[AUDIO_BLOB_REDACTED]");
   });
 });
 

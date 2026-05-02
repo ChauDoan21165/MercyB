@@ -5,10 +5,30 @@
  */
 
 /**
- * Strip PII from error messages and logs
+ * Strip PII from error messages and logs.
+ *
+ * Order matters: JWT/Bearer/service-key patterns are stripped BEFORE
+ * the UUID rule so a JWT body containing UUID-shaped substrings doesn't
+ * leak. Stripe `cus_` runs early for the same reason.
  */
 export function stripPII(message: string): string {
   return message
+    // JWTs (always start with "eyJ" base64 header). Match before any ID
+    // rule so UUID-looking substrings inside the token don't leak.
+    .replace(/\beyJ[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+/g, "[JWT_REDACTED]")
+    // Authorization: Bearer <token>
+    .replace(/\bBearer\s+[A-Za-z0-9._\-=]+/gi, "Bearer [TOKEN_REDACTED]")
+    // Supabase service-role key markers (the literal env-var name OR a
+    // serialized "service_role:" prefix sometimes seen in error contexts).
+    .replace(/SUPABASE_SERVICE_ROLE_KEY\s*[:=]\s*\S+/g, "SUPABASE_SERVICE_ROLE_KEY=[SERVICE_KEY_REDACTED]")
+    .replace(/\bservice_role\s*[:=]\s*[A-Za-z0-9._\-]+/gi, "service_role=[SERVICE_KEY_REDACTED]")
+    // Stripe customer / subscription / payment-intent IDs.
+    .replace(/\bcus_[A-Za-z0-9]+/g, "[STRIPE_CUS_REDACTED]")
+    // Audio blob refs leaked into error messages on iOS WebKit.
+    .replace(/\bblob:capacitor:\/\/[A-Za-z0-9./?#:_-]+/g, "[AUDIO_BLOB_REDACTED]")
+    .replace(/\bblob:https?:\/\/[A-Za-z0-9./?#:_-]+/g, "[AUDIO_BLOB_REDACTED]")
+    .replace(/\bdata:audio\/(?:webm|mp4|ogg|aac|wav|mpeg)[^"\s)]+/gi, "[AUDIO_DATA_REDACTED]")
+    // Original rules.
     .replace(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g, "[EMAIL_REDACTED]")
     .replace(/\b\d{3}[-.]?\d{3}[-.]?\d{4}\b/g, "[PHONE_REDACTED]")
     .replace(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/gi, "[ID_REDACTED]")

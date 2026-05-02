@@ -1,16 +1,25 @@
 /**
- * Sentry initialization (Step 8 / Performance — error monitoring skeleton).
+ * Sentry initialization (Capacitor SDK wrap — web + iOS + Android).
  *
  * Activation model:
  *   - VITE_SENTRY_DSN is the single switch. Empty string ⇒ full no-op:
- *     - the @sentry/react module is NEVER imported (dynamic import is
- *       gated behind the DSN check), so Vite splits it into its own
- *       chunk that simply isn't fetched in the no-DSN deployment.
+ *     - the @sentry/capacitor + @sentry/react modules are NEVER imported
+ *       (dynamic imports are gated behind the DSN check), so Vite splits
+ *       them into their own chunks that simply aren't fetched in the
+ *       no-DSN deployment.
  *     - captureError / tagWithUser / clearUser become no-ops via
  *       isSentryEnabled().
  *   - During tests (vitest sets import.meta.env.MODE === 'test') we
  *     hard-skip init even if a DSN is somehow present, so suites stay
  *     deterministic and never ship breadcrumbs to a real Sentry project.
+ *
+ * Why @sentry/capacitor (not @sentry/react alone):
+ *   The Capacitor SDK wraps the React SDK and adds native crash reporting
+ *   on iOS (Swift/Obj-C) and Android (Java/Kotlin). On web it degrades to
+ *   the React SDK behavior. One project, one DSN, three platforms.
+ *
+ *   Capacitor.getPlatform() is read at runtime and surfaced as a tag so
+ *   the Sentry dashboard can filter web vs ios vs android.
  *
  * Privacy posture (deliberate defaults):
  *   - Sentry.setUser only ever carries `{ id }` — no email, no username,
@@ -21,8 +30,9 @@
  *   - beforeBreadcrumb (`scrubBreadcrumb`) drops `ui.input` breadcrumbs
  *     entirely — they capture raw text typed by the user, which is the
  *     single highest-risk source of PII leakage.
- *   - replaysSessionSampleRate = 0 (no continuous session recording).
- *     replaysOnErrorSampleRate = 0.1 (10% of error sessions get a replay).
+ *   - Session Replay is currently OFF on all platforms. If we re-enable it
+ *     for web, wire it via SentryReact.replayIntegration() — the Capacitor
+ *     SDK options surface doesn't expose replay sample rates directly.
  *
  * Activation requires Chau's daytime DSN setup — see
  * reports/a6-sentry-runbook.md.
@@ -74,29 +84,64 @@ export function initSentry(): void {
     import.meta.env.VITE_APP_ENV ?? import.meta.env.MODE ?? "development",
   ).trim();
   const isProd = env === "production" || env === "prod";
+  // Vercel injects VERCEL_GIT_COMMIT_SHA at build time; vite.config.ts
+  // re-exports it as VITE_VERCEL_GIT_COMMIT_SHA via `define`. Empty in
+  // local builds → undefined release (Sentry's auto-detect default).
+  const release =
+    String(import.meta.env.VITE_VERCEL_GIT_COMMIT_SHA ?? "").trim() || undefined;
 
-  void import("@sentry/react")
-    .then((Sentry) => {
-      Sentry.init({
-        dsn,
-        environment: env,
-        tracesSampleRate: isProd ? 0.1 : 1.0,
-        replaysSessionSampleRate: 0.0,
-        replaysOnErrorSampleRate: 0.1,
-        beforeSend(event) {
-          // scrubEvent mutates the event in place; return Sentry's own
-          // typed object so the SDK's strict ErrorEvent type is preserved.
-          scrubEvent(event as unknown as SentryEventLike);
-          return event;
+  void Promise.all([
+    import("@sentry/capacitor"),
+    import("@sentry/react"),
+  ])
+    .then(([SentryCap, SentryReact]) => {
+      SentryCap.init(
+        {
+          dsn,
+          release,
+          environment: env,
+          tracesSampleRate: isProd ? 0.1 : 1.0,
+          // Replay is web-only (and not in CapacitorOptions surface). If
+          // we ever want session-replay on web, wire it as a React-side
+          // integration via the sibling init below — keep it off by
+          // default so we don't double-bill on native crashes.
+          beforeSend(event) {
+            // scrubEvent mutates the event in place; return Sentry's own
+            // typed object so the SDK's strict ErrorEvent type is preserved.
+            scrubEvent(event as unknown as SentryEventLike);
+            return event;
+          },
+          beforeBreadcrumb(breadcrumb) {
+            const result = scrubBreadcrumb(breadcrumb as unknown as SentryBreadcrumbLike);
+            return result === null ? null : breadcrumb;
+          },
         },
-        beforeBreadcrumb(breadcrumb) {
-          const result = scrubBreadcrumb(breadcrumb as unknown as SentryBreadcrumbLike);
-          return result === null ? null : breadcrumb;
-        },
-      });
-      sentryModule = Sentry;
+        // Sibling init — Capacitor SDK wraps the React SDK on web and
+        // delegates native error capture to its Cocoa / Android plugins.
+        SentryReact.init,
+      );
+
+      // Tag every event with the runtime platform so the dashboard can
+      // filter web vs ios vs android. We avoid a static import of
+      // @capacitor/core here because vitest's jsdom env can't resolve
+      // it; @sentry/capacitor itself depends on it transitively, so
+      // checking window.Capacitor at runtime is sufficient and safe.
+      let platform: string = "web";
+      try {
+        const w = window as { Capacitor?: { getPlatform?: () => string } };
+        platform = w.Capacitor?.getPlatform?.() ?? "web";
+      } catch {
+        platform = "web";
+      }
+      try {
+        SentryCap.setTag("platform", platform);
+      } catch {
+        // never block init on a tag write
+      }
+
+      sentryModule = SentryCap;
       dsnConfigured = true;
-      console.info(`[sentry] initialized (env=${env})`);
+      console.info(`[sentry] initialized (env=${env}, platform=${platform})`);
     })
     .catch((err) => {
       // A dynamic-import failure (offline first load, server hiccup) must

@@ -262,6 +262,16 @@ export default defineConfig({
     }),
   ],
 
+  // Inline Vercel's deploy SHA so the runtime Sentry init can tag every event
+  // with a release. Vercel sets VERCEL_GIT_COMMIT_SHA on production builds;
+  // local builds without it inline an empty string and Sentry falls back to
+  // its own release detection (none, in our case).
+  define: {
+    'import.meta.env.VITE_VERCEL_GIT_COMMIT_SHA': JSON.stringify(
+      process.env.VERCEL_GIT_COMMIT_SHA ?? '',
+    ),
+  },
+
   resolve: {
     dedupe: ['react', 'react-dom', 'react-router', 'react-router-dom'],
     alias: {
