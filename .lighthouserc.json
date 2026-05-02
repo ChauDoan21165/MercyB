@@ -2,13 +2,7 @@
   "ci": {
     "collect": {
       "numberOfRuns": 3,
-      "startServerCommand": "npm run preview",
-      "url": [
-        "http://localhost:4173/",
-        "http://localhost:4173/vip/vip1",
-        "http://localhost:4173/room/women_health_free",
-        "http://localhost:4173/admin"
-      ],
+      "staticDistDir": "./dist",
       "settings": {
         "preset": "desktop",
         "throttling": {
