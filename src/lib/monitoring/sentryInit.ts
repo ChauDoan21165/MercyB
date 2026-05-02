@@ -1,22 +1,27 @@
 /**
- * Sentry initialization (Capacitor SDK wrap — web + iOS + Android).
+ * Sentry initialization (Capacitor SDK on native — @sentry/react on web).
  *
  * Activation model:
  *   - VITE_SENTRY_DSN is the single switch. Empty string ⇒ full no-op:
- *     - the @sentry/capacitor + @sentry/react modules are NEVER imported
- *       (dynamic imports are gated behind the DSN check), so Vite splits
- *       them into their own chunks that simply aren't fetched in the
- *       no-DSN deployment.
+ *     - the Sentry SDK modules are NEVER imported (dynamic imports are
+ *       gated behind the DSN check), so Vite splits them into their own
+ *       chunks that simply aren't fetched in the no-DSN deployment.
  *     - captureError / tagWithUser / clearUser become no-ops via
  *       isSentryEnabled().
  *   - During tests (vitest sets import.meta.env.MODE === 'test') we
  *     hard-skip init even if a DSN is somehow present, so suites stay
  *     deterministic and never ship breadcrumbs to a real Sentry project.
  *
- * Why @sentry/capacitor (not @sentry/react alone):
- *   The Capacitor SDK wraps the React SDK and adds native crash reporting
- *   on iOS (Swift/Obj-C) and Android (Java/Kotlin). On web it degrades to
- *   the React SDK behavior. One project, one DSN, three platforms.
+ * Platform fork:
+ *   The @sentry/capacitor SDK calls NATIVE.initNativeSdk() before binding
+ *   a browser client. Inside a real Capacitor shell that promise resolves
+ *   immediately and originalInit() runs. In a plain web browser there is
+ *   no Capacitor bridge, so the native init promise can hang and
+ *   originalInit() is never called — leaving the SDK with no client and
+ *   silently dropping every captureException(). To avoid that, on web we
+ *   call @sentry/react's init directly and skip the Capacitor wrapper
+ *   entirely. On iOS/Android (where Capacitor.isNativePlatform() === true)
+ *   we keep the wrapped form so native crash reporting still works.
  *
  *   Capacitor.getPlatform() is read at runtime and surfaced as a tag so
  *   the Sentry dashboard can filter web vs ios vs android.
@@ -30,12 +35,7 @@
  *   - beforeBreadcrumb (`scrubBreadcrumb`) drops `ui.input` breadcrumbs
  *     entirely — they capture raw text typed by the user, which is the
  *     single highest-risk source of PII leakage.
- *   - Session Replay is currently OFF on all platforms. If we re-enable it
- *     for web, wire it via SentryReact.replayIntegration() — the Capacitor
- *     SDK options surface doesn't expose replay sample rates directly.
- *
- * Activation requires Chau's daytime DSN setup — see
- * reports/a6-sentry-runbook.md.
+ *   - Session Replay is currently OFF on all platforms.
  */
 
 import { stripPII } from "@/lib/security/piiProtection";
@@ -68,7 +68,7 @@ export function initSentry(): void {
   // Build-time check: Vite inlines import.meta.env.VITE_SENTRY_DSN as a
   // literal string at build time. With an empty DSN (today's default),
   // this becomes `if (!"")` → always-true → the dynamic import below is
-  // unreachable, so Vite tree-shakes @sentry/react out of the bundle
+  // unreachable, so Vite tree-shakes the Sentry SDKs out of the bundle
   // entirely. With a DSN set at build time, the import survives and
   // ships as a separate chunk.
   if (!import.meta.env.VITE_SENTRY_DSN) {
@@ -90,64 +90,85 @@ export function initSentry(): void {
   const release =
     String(import.meta.env.VITE_VERCEL_GIT_COMMIT_SHA ?? "").trim() || undefined;
 
-  void Promise.all([
-    import("@sentry/capacitor"),
-    import("@sentry/react"),
-  ])
-    .then(([SentryCap, SentryReact]) => {
-      SentryCap.init(
-        {
-          dsn,
-          release,
-          environment: env,
-          tracesSampleRate: isProd ? 0.1 : 1.0,
-          // Replay is web-only (and not in CapacitorOptions surface). If
-          // we ever want session-replay on web, wire it as a React-side
-          // integration via the sibling init below — keep it off by
-          // default so we don't double-bill on native crashes.
-          beforeSend(event) {
-            // scrubEvent mutates the event in place; return Sentry's own
-            // typed object so the SDK's strict ErrorEvent type is preserved.
-            scrubEvent(event as unknown as SentryEventLike);
-            return event;
-          },
-          beforeBreadcrumb(breadcrumb) {
-            const result = scrubBreadcrumb(breadcrumb as unknown as SentryBreadcrumbLike);
-            return result === null ? null : breadcrumb;
-          },
+  void (async () => {
+    try {
+      // Check if we're actually running inside a Capacitor native shell.
+      // In a plain web browser this returns false (or Capacitor is
+      // undefined), and we route to @sentry/react directly.
+      const isNativeCapacitor = (() => {
+        try {
+          const w = window as { Capacitor?: { isNativePlatform?: () => boolean } };
+          return w.Capacitor?.isNativePlatform?.() === true;
+        } catch {
+          return false;
+        }
+      })();
+
+      const sharedOptions = {
+        dsn,
+        release,
+        environment: env,
+        tracesSampleRate: isProd ? 0.1 : 1.0,
+        beforeSend(event: unknown) {
+          const scrubbed = scrubEvent(event as SentryEventLike);
+          return scrubbed === null ? null : event;
         },
-        // Sibling init — Capacitor SDK wraps the React SDK on web and
-        // delegates native error capture to its Cocoa / Android plugins.
-        SentryReact.init,
-      );
+        beforeBreadcrumb(breadcrumb: unknown) {
+          const result = scrubBreadcrumb(breadcrumb as SentryBreadcrumbLike);
+          return result === null ? null : breadcrumb;
+        },
+      };
 
-      // Tag every event with the runtime platform so the dashboard can
-      // filter web vs ios vs android. We avoid a static import of
-      // @capacitor/core here because vitest's jsdom env can't resolve
-      // it; @sentry/capacitor itself depends on it transitively, so
-      // checking window.Capacitor at runtime is sufficient and safe.
-      let platform: string = "web";
-      try {
-        const w = window as { Capacitor?: { getPlatform?: () => string } };
-        platform = w.Capacitor?.getPlatform?.() ?? "web";
-      } catch {
-        platform = "web";
-      }
-      try {
-        SentryCap.setTag("platform", platform);
-      } catch {
-        // never block init on a tag write
+      let platform = "web";
+
+      if (isNativeCapacitor) {
+        const [SentryCap, SentryReact] = await Promise.all([
+          import("@sentry/capacitor"),
+          import("@sentry/react"),
+        ]);
+        SentryCap.init(
+          sharedOptions as Parameters<typeof SentryCap.init>[0],
+          SentryReact.init,
+        );
+        sentryModule = SentryCap;
+        try {
+          const w = window as { Capacitor?: { getPlatform?: () => string } };
+          platform = w.Capacitor?.getPlatform?.() ?? "native";
+        } catch {
+          platform = "native";
+        }
+        try {
+          SentryCap.setTag("platform", platform);
+        } catch {
+          // never block init on a tag write
+        }
+      } else {
+        // Web: skip the Capacitor wrapper entirely; its sdkInit awaits a
+        // native bridge promise that doesn't resolve outside a Capacitor
+        // shell, leaving no browser client bound.
+        const SentryReact = await import("@sentry/react");
+        SentryReact.init(
+          sharedOptions as Parameters<typeof SentryReact.init>[0],
+        );
+        sentryModule = SentryReact;
+        try {
+          SentryReact.setTag("platform", "web");
+        } catch {
+          // never block init on a tag write
+        }
       }
 
-      sentryModule = SentryCap;
       dsnConfigured = true;
       console.info(`[sentry] initialized (env=${env}, platform=${platform})`);
-    })
-    .catch((err) => {
+    } catch (err) {
       // A dynamic-import failure (offline first load, server hiccup) must
       // not break the app. Log and continue with Sentry disabled.
-      console.warn("[sentry] dynamic import failed; monitoring disabled this session", err);
-    });
+      console.warn(
+        "[sentry] dynamic import failed; monitoring disabled this session",
+        err,
+      );
+    }
+  })();
 }
 
 // ── PII scrubbers (exported for unit tests) ─────────────────────────────
