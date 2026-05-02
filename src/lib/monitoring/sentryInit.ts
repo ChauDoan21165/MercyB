@@ -103,8 +103,21 @@ export function initSentry(): void {
         environment: env,
         tracesSampleRate: isProd ? 0.1 : 1.0,
         beforeSend(event: unknown) {
-          const scrubbed = scrubEvent(event as SentryEventLike);
-          return scrubbed === null ? null : event;
+          const e = event as SentryEventLike;
+          // 1. Strip PII from message / exception / breadcrumbs / request.
+          const scrubbed = scrubEvent(e);
+          if (scrubbed === null) return null;
+          // 2. Drop external-script noise (FB/IG/Zalo IAB injection,
+          //    browser-extension stacks, third-party SDK CDNs). These
+          //    crashes don't originate in our code and we can't fix them.
+          if (looksLikeExternalNoise(scrubbed)) return null;
+          // 3. Enrich with classification + context tags so the Sentry
+          //    UI can sort and alert on what actually matters. Also
+          //    sets event.level + event.fingerprint based on priority.
+          //    No release-based dropping — we tag current_release and
+          //    let Sentry's server-side rules decide what to filter.
+          enrichEventTags(scrubbed);
+          return event;
         },
         beforeBreadcrumb(breadcrumb: unknown) {
           const result = scrubBreadcrumb(breadcrumb as SentryBreadcrumbLike);
@@ -178,8 +191,18 @@ type SentryEventLike = {
   message?: string;
   user?: { id?: string | number; email?: string; username?: string; ip_address?: string };
   request?: { data?: unknown; query_string?: string; cookies?: unknown };
-  exception?: { values?: Array<{ value?: string; type?: string }> };
+  exception?: {
+    values?: Array<{
+      value?: string;
+      type?: string;
+      stacktrace?: { frames?: Array<{ filename?: string }> };
+    }>;
+  };
   breadcrumbs?: Array<SentryBreadcrumbLike>;
+  tags?: Record<string, string>;
+  release?: string;
+  level?: string;
+  fingerprint?: string[];
 };
 
 type SentryBreadcrumbLike = {
@@ -247,6 +270,183 @@ export function scrubBreadcrumb<B extends SentryBreadcrumbLike>(breadcrumb: B): 
   }
 
   return breadcrumb;
+}
+
+// ── Classification + tagging (exported for unit tests) ─────────────────
+
+// Build-time release SHA. Compared against event.release so we can tag
+// whether the event originated in the bundle we're currently running.
+// Empty in local builds — in that case we tag current_release="unknown".
+const BUILD_RELEASE = String(import.meta.env.VITE_VERCEL_GIT_COMMIT_SHA ?? "").trim();
+
+// Stack-frame URL patterns that mark events as "not our code". Anything
+// that matches in the message, exception value, exception stack-frame
+// filename, or request query string causes beforeSend to drop the event.
+// Keep this list conservative — we'd rather under-filter than swallow a
+// real bug. Add a new entry only when you've seen the substring in
+// repeated noise issues.
+const NOISE_PATTERNS: RegExp[] = [
+  /iabjs:\/\//i,                       // Facebook / Instagram / Zalo in-app browser JS injection
+  /chrome-extension:\/\//i,            // Chrome extensions (uBlock, password managers, etc.)
+  /moz-extension:\/\//i,               // Firefox extensions
+  /safari-(web-)?extension:\/\//i,     // Safari extensions
+  /connect\.facebook\.net/i,           // Facebook Pixel SDK
+  /googletagmanager\.com/i,            // Google Tag Manager
+];
+
+function collectNoiseHaystacks(event: SentryEventLike): string[] {
+  const out: string[] = [];
+  if (typeof event.message === "string") out.push(event.message);
+  if (event.exception?.values) {
+    for (const v of event.exception.values) {
+      if (typeof v.value === "string") out.push(v.value);
+      const frames = v.stacktrace?.frames ?? [];
+      for (const f of frames) {
+        if (typeof f.filename === "string") out.push(f.filename);
+      }
+    }
+  }
+  if (typeof event.request?.query_string === "string") {
+    out.push(event.request.query_string);
+  }
+  return out;
+}
+
+export function looksLikeExternalNoise(event: SentryEventLike): boolean {
+  const haystacks = collectNoiseHaystacks(event);
+  return haystacks.some((s) => NOISE_PATTERNS.some((re) => re.test(s)));
+}
+
+export type FeatureArea = "auth" | "billing" | "room" | "mercy" | "audio" | "other";
+export type Priority = "P1" | "P3";
+
+function classifyByPath(pathname: string): FeatureArea | null {
+  if (/^\/(signin|signup|signout|login|auth|reset-password|convert|accept-invite|invite)/i.test(pathname)) return "auth";
+  if (/^\/(billing|pricing|upgrade|checkout)/i.test(pathname)) return "billing";
+  if (/^\/room\//i.test(pathname)) return "room";
+  return null;
+}
+
+function classifyByContent(haystacks: string[]): FeatureArea | null {
+  const blob = haystacks.join(" ").toLowerCase();
+  if (blob.includes("speechsynthesis") || blob.includes("mediaerror") || blob.includes("audiocontext")) return "audio";
+  if (blob.includes("mercy") || blob.includes("grammar") || /\bteacher\b/.test(blob)) return "mercy";
+  if (blob.includes("supabase") && blob.includes("auth")) return "auth";
+  if (blob.includes("stripe") || blob.includes("subscription") || /\bbilling\b/.test(blob)) return "billing";
+  if (blob.includes("room") && (blob.includes("load") || blob.includes("open"))) return "room";
+  return null;
+}
+
+// P1 = core feature break (auth/billing/room/mercy/audio).
+// P3 = anything else app-internal. P2 (repeat-frequency) can't be
+// computed client-side; let Sentry's server aggregation promote
+// P3 → P2 via alert rules.
+function priorityFor(area: FeatureArea): Priority {
+  return area === "other" ? "P3" : "P1";
+}
+
+function safePathname(): string {
+  try {
+    return typeof window !== "undefined" ? window.location.pathname : "";
+  } catch {
+    return "";
+  }
+}
+
+function safeIsOnline(): boolean | undefined {
+  try {
+    return typeof navigator !== "undefined" ? navigator.onLine : undefined;
+  } catch {
+    return undefined;
+  }
+}
+
+function safeIsPwa(): boolean | undefined {
+  try {
+    if (typeof window === "undefined" || typeof window.matchMedia !== "function") return undefined;
+    return window.matchMedia("(display-mode: standalone)").matches;
+  } catch {
+    return undefined;
+  }
+}
+
+function parseRoomId(pathname: string): string | undefined {
+  const m = /^\/room\/([a-zA-Z0-9_.-]+)/.exec(pathname);
+  return m ? m[1] : undefined;
+}
+
+// Build a stable, PII-free shape of the error message for fingerprint
+// grouping. Strips numbers / hex hashes / UUIDs / quoted literals / URLs
+// so different instances of the "same kind of error" group together.
+// Conservative: NO roomId, NO query strings, NO URL paths, NO user data.
+// Returns an empty string if no exception value or message is available.
+function normalizeMessage(event: SentryEventLike): string {
+  const raw =
+    event.exception?.values?.[0]?.value ??
+    (typeof event.message === "string" ? event.message : "") ??
+    "";
+  if (!raw) return "";
+  let s = String(raw);
+  s = s.replace(/https?:\/\/\S+/gi, "<url>");
+  s = s.replace(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/gi, "<uuid>");
+  s = s.replace(/\b[0-9a-f]{16,}\b/gi, "<hash>");
+  s = s.replace(/\b\d+\b/g, "<n>");
+  s = s.replace(/(['"])(?:\\.|(?!\1).)*\1/g, "<str>");
+  s = s.replace(/\s+/g, " ").trim();
+  return s.length > 120 ? s.slice(0, 120) : s;
+}
+
+export function enrichEventTags(event: SentryEventLike): void {
+  event.tags = event.tags ?? {};
+  const tags = event.tags;
+
+  const route = safePathname();
+  if (route) tags.route = route;
+
+  const haystacks = collectNoiseHaystacks(event);
+  const area: FeatureArea =
+    classifyByPath(route) ?? classifyByContent(haystacks) ?? "other";
+  tags.featureArea = area;
+  tags.priority = priorityFor(area);
+
+  const roomId = parseRoomId(route);
+  if (roomId) tags.roomId = roomId;
+
+  // is_anon — captureException only ever sets `user.id`. Missing id ⇒
+  // not signed in. (No PII risk: this is a boolean, not the id itself.)
+  tags.is_anon = event.user?.id ? "no" : "yes";
+
+  const online = safeIsOnline();
+  if (typeof online === "boolean") tags.online = online ? "yes" : "no";
+
+  const pwa = safeIsPwa();
+  if (typeof pwa === "boolean") tags.pwa = pwa ? "yes" : "no";
+
+  // Release awareness — tag whether the event came from the bundle
+  // we're currently running. "yes" requires both a known build SHA and
+  // a matching event.release. Anything else is "unknown" — never "no",
+  // because we're not certain enough to drop or downrank these events
+  // and we don't want to hide real bugs.
+  if (typeof event.release === "string" && event.release.length > 0) {
+    tags.current_release =
+      BUILD_RELEASE && event.release === BUILD_RELEASE ? "yes" : "unknown";
+  }
+
+  // Level mapping — P1 (core-feature break) → "error" (Sentry's default
+  // for unhandled exceptions, but we set it explicitly so Sentry-side
+  // alert rules can filter on level). P3 (non-core) → "warning" so it
+  // doesn't drown out P1 signal in the Issues feed. P2 is intentionally
+  // not produced client-side — let Sentry alert rules promote frequent
+  // P3 issues server-side.
+  event.level = tags.priority === "P1" ? "error" : "warning";
+
+  // Fingerprint grouping — namespace everything from MercyBlade under a
+  // shared root so our errors form their own grouping tree, then split
+  // by featureArea + a PII-stripped error shape. Same-kind errors
+  // group; user-specific data (roomId, query strings, IDs, URLs, quoted
+  // literals) is stripped out by normalizeMessage so we don't fan out
+  // into one Sentry issue per user.
+  event.fingerprint = ["mercyblade", area, normalizeMessage(event)];
 }
 
 // ── Test-only helpers ────────────────────────────────────────────────────

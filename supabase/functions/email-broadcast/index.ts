@@ -20,7 +20,7 @@ const corsHeaders = {
 
 // Email configuration - matches send-redeem-email exactly
 const EMAIL_CONFIG = {
-  from: "Mercy Blade <onboarding@resend.dev>",
+  from: "Mercy Blade <admin@mercyblade.com>",
   bcc: "cd12536@gmail.com",
   siteUrl: "https://mercyblade.com",
 };

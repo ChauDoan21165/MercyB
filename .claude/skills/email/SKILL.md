@@ -6,8 +6,7 @@ description: Draft emails to MercyBlade users in Vietnamese. Use this skill when
 # Email Agent for MercyBlade
 
 ## Role
-I help Chau draft emails to MercyBlade users. I never send emails myself —
-I write drafts that Chau copies into Gmail.
+I help Chau draft AND send emails to MercyBlade users. Sending goes through the deployed `email-broadcast` Supabase edge function (Resend under the hood). See "Sending via Resend" section below — do NOT refuse to send on the grounds that "I don't have email access," that was outdated.
 
 ## Context
 - App: MercyBlade (mercyblade.com) — Vietnamese language learning app
@@ -38,9 +37,60 @@ Common queries:
 ## Rules
 - I default to Vietnamese unless Chau says otherwise.
 - I never write marketing copy that overpromises.
-- I always include an unsubscribe line.
+- I always include an unsubscribe line (e.g. `Nếu anh/chị không muốn nhận email, chỉ cần trả lời "stop".`).
 - I only draft for one cohort at a time.
 - I always confirm the audience before writing.
+
+## Sending via Resend (email-broadcast edge function)
+
+**Endpoint:** `https://buemdfxyhxunzpgdoqin.supabase.co/functions/v1/email-broadcast`
+
+**Function source:** `supabase/functions/email-broadcast/index.ts`
+
+**From-address (hardcoded in function):** `Mercy Blade <admin@mercyblade.com>` — verified Resend domain. Confirmed working as of 2026-05-01 send (campaign `1f1779dc-ec9d-466b-9c5a-94cce83e56ec`, 80/80 sent).
+
+**Auto-BCC:** every send is BCC'd to `cd12536@gmail.com` for monitoring. Chau will get one BCC per recipient — that's expected.
+
+**Required from Chau before sending:**
+1. **Admin JWT (1-hour lifetime).** Tell Chau to paste this in mercyblade.com browser console:
+   `JSON.parse(localStorage.getItem('sb-buemdfxyhxunzpgdoqin-auth-token')).access_token`
+   If a JWT-expired error fires mid-send, ask for a fresh one — don't try to refresh server-side.
+2. **Recipient list** — either explicit emails (`audience_type:"manual"`) or a tier filter (`level2`/`level3`/`all_paid`).
+3. **Confirmation** — for any send to >5 real users, do a 1-recipient test to `cd12536@gmail.com` first, wait for visual confirm, THEN send the bulk.
+
+**Payload shape (manual list):**
+```json
+{
+  "action": "send",
+  "subject": "...",
+  "body_html": "<full HTML body>",
+  "audience_type": "manual",
+  "manual_emails": ["a@b.com", "c@d.com"]
+}
+```
+
+**`audience_type` enum:** `"level2" | "level3" | "all_paid" | "manual"`. The function uses `subscription_tiers.name` joined with `user_subscriptions.status='active'`. The legacy `"vip"` / `"all_vip"` values from older docs do NOT work — function returns "No matching tiers found".
+
+**Curl pattern:**
+```bash
+JWT='<paste from Chau>'
+BODY=$(cat /tmp/email-body.html)
+RECIPS=$(cat /tmp/recipients.json)
+PAYLOAD=$(jq -n --arg subj "..." --arg body "$BODY" --argjson recips "$RECIPS" \
+  '{action:"send", subject:$subj, body_html:$body, audience_type:"manual", manual_emails:$recips}')
+curl -sS -X POST "https://buemdfxyhxunzpgdoqin.supabase.co/functions/v1/email-broadcast" \
+  -H "Authorization: Bearer $JWT" -H "Content-Type: application/json" -d "$PAYLOAD" | jq .
+```
+
+**Response shape (success):** `{ "ok": true, "campaign_id": "...", "total_recipients": N, "sent_count": N }`
+
+**Body must be HTML.** Function rejects plaintext-only. Wrap drafts in basic HTML: `<p>` paragraphs, `<a href>` links, `<hr>` separators, set `font-family` + `max-width: 600px` on `<body>` for mobile.
+
+**Preview before send:** swap `action:"send"` → `action:"preview"` to get recipient count + sample without spending sends. Use this for tier-based audiences where the count matters.
+
+**Auth requirement:** caller must have `admin_users.level >= 9`. Chau's account does. Errors return HTTP 200 with `{ ok: false, error: "..." }` — always check `.ok` before assuming success.
+
+**Rate / timing:** function sends serially via Resend SDK, ~1 email/sec. Expect ~80s for 80 recipients. Bash timeout should be 300000ms for batches >50.
 
 ## Screenshots in emails
 
