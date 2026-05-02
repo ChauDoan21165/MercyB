@@ -62,47 +62,40 @@ export function initSentry(): void {
   initialized = true;
 
   // Vitest sets MODE='test'. Belt-and-braces guard so tests never wire up
-  // the real SDK even if a DSN slips into the test env.
+  // the real SDK even if a DSN slips into the test env. Kept BEFORE the
+  // async IIFE so test runs never trigger the dynamic SDK import either.
   if (import.meta.env.MODE === "test") return;
-
-  // Build-time check: Vite inlines import.meta.env.VITE_SENTRY_DSN as a
-  // literal string at build time. With an empty DSN (today's default),
-  // this becomes `if (!"")` → always-true → the dynamic import below is
-  // unreachable, so Vite tree-shakes the Sentry SDKs out of the bundle
-  // entirely. With a DSN set at build time, the import survives and
-  // ships as a separate chunk.
-  if (!import.meta.env.VITE_SENTRY_DSN) {
-    if (!disabledReasonLogged) {
-      console.info("[sentry] disabled — VITE_SENTRY_DSN not set");
-      disabledReasonLogged = true;
-    }
-    return;
-  }
-
-  const dsn = String(import.meta.env.VITE_SENTRY_DSN).trim();
-  const env = String(
-    import.meta.env.VITE_APP_ENV ?? import.meta.env.MODE ?? "development",
-  ).trim();
-  const isProd = env === "production" || env === "prod";
-  // Vercel injects VERCEL_GIT_COMMIT_SHA at build time; vite.config.ts
-  // re-exports it as VITE_VERCEL_GIT_COMMIT_SHA via `define`. Empty in
-  // local builds → undefined release (Sentry's auto-detect default).
-  const release =
-    String(import.meta.env.VITE_VERCEL_GIT_COMMIT_SHA ?? "").trim() || undefined;
 
   void (async () => {
     try {
-      // Check if we're actually running inside a Capacitor native shell.
-      // In a plain web browser this returns false (or Capacitor is
-      // undefined), and we route to @sentry/react directly.
-      const isNativeCapacitor = (() => {
-        try {
-          const w = window as { Capacitor?: { isNativePlatform?: () => boolean } };
-          return w.Capacitor?.isNativePlatform?.() === true;
-        } catch {
-          return false;
+      // Load the SDK FIRST, before any DSN check. This is load-bearing:
+      // putting `await import("@sentry/react")` ahead of the DSN guard
+      // forces Rollup to keep the @sentry/react chunk in the production
+      // bundle even when Vite inlines VITE_SENTRY_DSN as an empty literal
+      // at build time. Do NOT move the DSN check above this line — that
+      // re-introduces the dead-strip failure mode that wiped Sentry
+      // runtime out of prior production deploys.
+      const SentryReact = await import("@sentry/react");
+
+      const dsn = String(import.meta.env.VITE_SENTRY_DSN ?? "").trim();
+      if (!dsn) {
+        if (!disabledReasonLogged) {
+          console.warn("[sentry] missing or empty DSN");
+          disabledReasonLogged = true;
         }
-      })();
+        return;
+      }
+
+      const env = String(
+        import.meta.env.VITE_APP_ENV ?? import.meta.env.MODE ?? "development",
+      ).trim();
+      const isProd = env === "production" || env === "prod";
+      // Vercel injects VERCEL_GIT_COMMIT_SHA at build time; vite.config.ts
+      // re-exports it as VITE_VERCEL_GIT_COMMIT_SHA via `define`. Empty in
+      // local builds → undefined release (Sentry's auto-detect default).
+      const release =
+        String(import.meta.env.VITE_VERCEL_GIT_COMMIT_SHA ?? "").trim() ||
+        undefined;
 
       const sharedOptions = {
         dsn,
@@ -119,13 +112,22 @@ export function initSentry(): void {
         },
       };
 
+      // Check if we're actually running inside a Capacitor native shell.
+      // In a plain web browser this returns false (or Capacitor is
+      // undefined), and we route to @sentry/react directly.
+      const isNativeCapacitor = (() => {
+        try {
+          const w = window as { Capacitor?: { isNativePlatform?: () => boolean } };
+          return w.Capacitor?.isNativePlatform?.() === true;
+        } catch {
+          return false;
+        }
+      })();
+
       let platform = "web";
 
       if (isNativeCapacitor) {
-        const [SentryCap, SentryReact] = await Promise.all([
-          import("@sentry/capacitor"),
-          import("@sentry/react"),
-        ]);
+        const SentryCap = await import("@sentry/capacitor");
         SentryCap.init(
           sharedOptions as Parameters<typeof SentryCap.init>[0],
           SentryReact.init,
@@ -146,7 +148,6 @@ export function initSentry(): void {
         // Web: skip the Capacitor wrapper entirely; its sdkInit awaits a
         // native bridge promise that doesn't resolve outside a Capacitor
         // shell, leaving no browser client bound.
-        const SentryReact = await import("@sentry/react");
         SentryReact.init(
           sharedOptions as Parameters<typeof SentryReact.init>[0],
         );
