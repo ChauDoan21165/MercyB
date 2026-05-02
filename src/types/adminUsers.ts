@@ -55,3 +55,24 @@ export type AdminUsersChartPoint = {
   name: string;
   value: number;
 };
+
+// User-first row, returned by the admin-list-registered-users edge
+// function. Sourced from auth.users (NOT profiles) so signups missing a
+// profile row (failed trigger, anonymous, legacy) still appear.
+export type RegisteredUserSubscriptionStatus =
+  | "active"
+  | "trialing"
+  | "free"
+  | "unknown";
+
+export type RegisteredUserRow = {
+  id: string;
+  email: string | null;
+  createdAt: string;
+  lastSignInAt: string | null;
+  provider: string | null;
+  hasProfile: boolean;
+  isAdmin: boolean;
+  subscriptionStatus: RegisteredUserSubscriptionStatus;
+  currentPeriodEnd: string | null;
+};

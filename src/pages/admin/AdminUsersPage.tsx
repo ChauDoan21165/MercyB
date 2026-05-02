@@ -16,6 +16,8 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
+import { useAdminRegisteredUsers } from "@/hooks/admin/useAdminRegisteredUsers";
+import type { RegisteredUserSubscriptionStatus } from "@/types/adminUsers";
 
 type DashboardRow = {
   subscription_id: string;
@@ -184,6 +186,24 @@ function formatMoney(amount: number, currency = "USD"): string {
     }).format(amount);
   } catch {
     return `${currency.toUpperCase()} ${Math.round(amount)}`;
+  }
+}
+
+// Small pill colour map for the Registered tab. Reuses the same palette
+// language as the Subscribers tab badges without coupling to that file.
+function subscriptionPillStyle(
+  status: RegisteredUserSubscriptionStatus,
+): { bg: string; fg: string } {
+  switch (status) {
+    case "active":
+      return { bg: "rgba(236,253,245,0.95)", fg: "rgba(6,95,70,0.94)" };
+    case "trialing":
+      return { bg: "rgba(254,243,199,0.95)", fg: "rgba(120,53,15,0.95)" };
+    case "free":
+      return { bg: "rgba(241,245,249,0.95)", fg: "rgba(51,65,85,0.92)" };
+    case "unknown":
+    default:
+      return { bg: "rgba(254,242,242,0.95)", fg: "rgba(127,29,29,0.92)" };
   }
 }
 
@@ -677,7 +697,12 @@ export default function AdminUsersPage() {
   const [kpis, setKpis] = useState<KpiRow>(EMPTY_KPIS);
 
   const [allProfiles, setAllProfiles] = useState<Array<{id: string; email: string; tier: string; created_at: string | null}>>([]);
-  const [activeTab, setActiveTabLocal] = useState<'subscribers' | 'all_users'>('subscribers');
+  const [activeTab, setActiveTabLocal] = useState<'subscribers' | 'all_users' | 'registered'>('subscribers');
+
+  // User-first list (auth.users via admin-list-registered-users edge fn).
+  // Lazy: the hook fires its initial load on mount, but the heavy table
+  // only renders when the Registered tab is active.
+  const registered = useAdminRegisteredUsers();
   const requestIdRef = useRef(0);
 
   const load = async () => {
@@ -1251,8 +1276,8 @@ export default function AdminUsersPage() {
         </div>
 
         {/* Tab switcher */}
-        <div style={{ marginTop: 18, display: 'flex', gap: 10 }}>
-          {(['subscribers', 'all_users'] as const).map(tab => (
+        <div style={{ marginTop: 18, display: 'flex', gap: 10, flexWrap: 'wrap' }}>
+          {(['subscribers', 'all_users', 'registered'] as const).map(tab => (
             <button key={tab} type="button"
               onClick={() => setActiveTabLocal(tab)}
               style={{
@@ -1261,7 +1286,11 @@ export default function AdminUsersPage() {
                 background: activeTab === tab ? 'black' : 'white',
                 color: activeTab === tab ? 'white' : 'rgba(0,0,0,0.72)',
               }}>
-              {tab === 'subscribers' ? `💳 Subscribers (${rows.length})` : `👥 All Users (${allProfiles.length})`}
+              {tab === 'subscribers'
+                ? `💳 Subscribers (${rows.length})`
+                : tab === 'all_users'
+                  ? `👥 All Users (${allProfiles.length})`
+                  : `📋 Registered (${registered.users.length})`}
             </button>
           ))}
         </div>
@@ -1306,6 +1335,92 @@ export default function AdminUsersPage() {
                   ))}
                 </tbody>
               </table>
+            </div>
+          </div>
+        )}
+
+        {activeTab === 'registered' && (
+          <div style={{ marginTop: 18, borderRadius: 20, border: '1px solid rgba(0,0,0,0.08)', background: 'white', padding: 16, boxShadow: '0 10px 24px rgba(0,0,0,0.04)' }}>
+            <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', gap: 12, flexWrap: 'wrap' }}>
+              <div>
+                <h2 style={{ margin: '0 0 4px', fontSize: 22, fontWeight: 900 }}>Registered Users</h2>
+                <p style={{ margin: 0, fontSize: 13, color: 'rgba(0,0,0,0.55)' }}>
+                  Source: <code style={{ background: 'rgba(0,0,0,0.04)', padding: '1px 6px', borderRadius: 4 }}>auth.users</code> via <code style={{ background: 'rgba(0,0,0,0.04)', padding: '1px 6px', borderRadius: 4 }}>admin-list-registered-users</code> edge fn — includes signups missing a profile row.
+                </p>
+              </div>
+              <div style={{ display: 'flex', gap: 8 }}>
+                <button type="button" onClick={() => registered.refresh()} disabled={registered.loading}
+                  style={{ padding: '8px 14px', borderRadius: 999, border: '1px solid rgba(0,0,0,0.10)', background: 'white', fontSize: 13, fontWeight: 700, cursor: registered.loading ? 'wait' : 'pointer', opacity: registered.loading ? 0.6 : 1 }}>
+                  {registered.loading ? 'Loading…' : '↻ Refresh'}
+                </button>
+              </div>
+            </div>
+
+            {registered.error ? (
+              <div style={{ marginTop: 14, padding: '10px 14px', borderRadius: 12, background: 'rgba(254,226,226,0.55)', border: '1px solid rgba(220,38,38,0.25)', color: 'rgba(127,29,29,0.92)', fontSize: 13 }}>
+                {registered.error}
+              </div>
+            ) : null}
+
+            <div style={{ marginTop: 14, overflowX: 'auto', borderRadius: 14, border: '1px solid rgba(0,0,0,0.08)' }}>
+              <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: 760 }}>
+                <thead>
+                  <tr>
+                    {['Email', 'Subscription', 'Profile', 'Provider', 'Joined', 'Last sign-in'].map(h => (
+                      <th key={h} style={{ padding: '10px 12px', textAlign: 'left', fontSize: 12, fontWeight: 900, letterSpacing: 0.5, textTransform: 'uppercase', color: 'rgba(0,0,0,0.48)', background: 'rgba(247,249,252,0.98)', borderBottom: '1px solid rgba(0,0,0,0.08)' }}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {registered.users.length === 0 && !registered.loading ? (
+                    <tr><td colSpan={6} style={{ padding: '20px 12px', textAlign: 'center', color: 'rgba(0,0,0,0.45)', fontSize: 13 }}>No registered users on this page.</td></tr>
+                  ) : null}
+                  {registered.users.map(u => {
+                    const subStyle = subscriptionPillStyle(u.subscriptionStatus);
+                    const profilePill = u.hasProfile
+                      ? { bg: 'rgba(236,253,245,0.95)', fg: 'rgba(6,95,70,0.94)', label: 'yes' }
+                      : { bg: 'rgba(254,242,242,0.95)', fg: 'rgba(127,29,29,0.92)', label: 'missing' };
+                    return (
+                      <tr key={u.id} style={{ borderBottom: '1px solid rgba(0,0,0,0.06)' }}>
+                        <td style={{ padding: '10px 12px', fontSize: 14 }}>
+                          {u.email || <span style={{ color: 'rgba(127,29,29,0.85)', fontStyle: 'italic' }}>unknown</span>}
+                          {u.isAdmin ? <span style={{ marginLeft: 8, padding: '2px 8px', borderRadius: 999, fontSize: 11, fontWeight: 900, background: 'rgba(254,243,199,0.95)', color: 'rgba(120,53,15,0.95)' }}>admin</span> : null}
+                        </td>
+                        <td style={{ padding: '10px 12px', fontSize: 13 }}>
+                          <span style={{ padding: '4px 10px', borderRadius: 999, fontSize: 12, fontWeight: 900, background: subStyle.bg, color: subStyle.fg, border: '1px solid rgba(0,0,0,0.06)' }}>
+                            {u.subscriptionStatus}
+                          </span>
+                          {u.currentPeriodEnd ? <div style={{ marginTop: 4, fontSize: 11, color: 'rgba(0,0,0,0.45)' }}>until {new Date(u.currentPeriodEnd).toLocaleDateString()}</div> : null}
+                        </td>
+                        <td style={{ padding: '10px 12px', fontSize: 13 }}>
+                          <span style={{ padding: '4px 10px', borderRadius: 999, fontSize: 12, fontWeight: 900, background: profilePill.bg, color: profilePill.fg }}>
+                            {profilePill.label}
+                          </span>
+                        </td>
+                        <td style={{ padding: '10px 12px', fontSize: 13, color: 'rgba(0,0,0,0.62)' }}>{u.provider || '—'}</td>
+                        <td style={{ padding: '10px 12px', fontSize: 13, color: 'rgba(0,0,0,0.55)' }}>{u.createdAt ? new Date(u.createdAt).toLocaleDateString() : '—'}</td>
+                        <td style={{ padding: '10px 12px', fontSize: 13, color: 'rgba(0,0,0,0.55)' }}>{u.lastSignInAt ? new Date(u.lastSignInAt).toLocaleDateString() : '—'}</td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+
+            <div style={{ marginTop: 14, display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12, flexWrap: 'wrap' }}>
+              <div style={{ fontSize: 12, color: 'rgba(0,0,0,0.55)' }}>
+                Page {registered.page} · {registered.users.length} rows
+              </div>
+              <div style={{ display: 'flex', gap: 8 }}>
+                <button type="button" onClick={() => registered.goToPage(registered.page - 1)} disabled={registered.loading || registered.page <= 1}
+                  style={{ padding: '8px 14px', borderRadius: 999, border: '1px solid rgba(0,0,0,0.10)', background: 'white', fontSize: 13, fontWeight: 700, cursor: registered.loading || registered.page <= 1 ? 'not-allowed' : 'pointer', opacity: registered.loading || registered.page <= 1 ? 0.5 : 1 }}>
+                  ← Prev
+                </button>
+                <button type="button" onClick={() => registered.goToPage(registered.page + 1)} disabled={registered.loading || !registered.hasMore}
+                  style={{ padding: '8px 14px', borderRadius: 999, border: '1px solid rgba(0,0,0,0.10)', background: 'white', fontSize: 13, fontWeight: 700, cursor: registered.loading || !registered.hasMore ? 'not-allowed' : 'pointer', opacity: registered.loading || !registered.hasMore ? 0.5 : 1 }}>
+                  Next →
+                </button>
+              </div>
             </div>
           </div>
         )}
