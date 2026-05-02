@@ -17,7 +17,12 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          # Node 20+ required: azure-phoneme tests use multipart Request.formData()
+          # which Node 18's experimental undici can't parse reliably under Vitest.
+          # See supabase/functions/azure-phoneme/__tests__/index.test.ts header.
+          # Other workflows (test.yml, mutation-testing.yml, audio-auto-repair.yml)
+          # already use 20 — this brings vitest.yml in line.
+          node-version: '20'
           cache: 'npm'
       
       - name: Install dependencies
