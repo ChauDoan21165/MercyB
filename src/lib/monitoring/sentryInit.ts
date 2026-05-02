@@ -396,6 +396,42 @@ function normalizeMessage(event: SentryEventLike): string {
   return s.length > 120 ? s.slice(0, 120) : s;
 }
 
+// Diagnose the rough cause from featureArea + message content. Tag
+// values stay short and readable so Sentry's filter UI can group on
+// them. No long text or stack traces — the raw event already ships
+// those. Cross-area "offline_cache_or_indexeddb" is checked first
+// because cache / SW failures can surface on any route.
+function rootCauseHint(area: FeatureArea, haystacks: string[]): string {
+  const blob = haystacks.join(" ").toLowerCase();
+  if (/(\bcache\b|indexeddb|service worker|\bsw\.js\b)/i.test(blob)) {
+    return "offline_cache_or_indexeddb";
+  }
+  if (area === "auth" && /supabase|jwt|\bsession\b/i.test(blob)) return "auth_session_or_rls";
+  if (area === "billing" && /stripe|subscription|checkout/i.test(blob)) return "stripe_or_subscription";
+  if (area === "room" && /(\bload\b|\bopen\b|not found)/i.test(blob)) return "room_load_or_registry";
+  if (area === "mercy" && /teacher|grammar|openai/i.test(blob)) return "teacher_ai_or_api";
+  if (area === "audio" && /mediaerror|audiocontext|speechsynthesis/i.test(blob)) return "audio_playback_or_browser";
+  return "unknown";
+}
+
+// Coarse user-impact tag. Reads window.__MB_USER_TIER__ when an
+// upstream provider has stashed it (writer lives outside this file's
+// scope — typically AuthProvider on tier change). Falls back to
+// "anon" when no user.id is present, "unknown" otherwise. Never
+// includes email / name / id / subscription object — only the bucket.
+function safeUserImpact(event: SentryEventLike): "paid" | "trial" | "anon" | "unknown" {
+  try {
+    if (typeof window !== "undefined") {
+      const w = window as { __MB_USER_TIER__?: unknown };
+      const t = w.__MB_USER_TIER__;
+      if (t === "paid" || t === "trial" || t === "anon") return t;
+    }
+  } catch {
+    /* ignore */
+  }
+  return event.user?.id ? "unknown" : "anon";
+}
+
 export function enrichEventTags(event: SentryEventLike): void {
   event.tags = event.tags ?? {};
   const tags = event.tags;
@@ -408,6 +444,12 @@ export function enrichEventTags(event: SentryEventLike): void {
     classifyByPath(route) ?? classifyByContent(haystacks) ?? "other";
   tags.featureArea = area;
   tags.priority = priorityFor(area);
+  tags.rootCauseHint = rootCauseHint(area, haystacks);
+
+  // Dashboard marker — this code path runs only after noise filtering,
+  // so every event reaching enrichEventTags is "real". Sentry filter:
+  // `dashboard:real_problems` shows just MercyBlade-originating issues.
+  tags.dashboard = "real_problems";
 
   const roomId = parseRoomId(route);
   if (roomId) tags.roomId = roomId;
@@ -415,6 +457,11 @@ export function enrichEventTags(event: SentryEventLike): void {
   // is_anon — captureException only ever sets `user.id`. Missing id ⇒
   // not signed in. (No PII risk: this is a boolean, not the id itself.)
   tags.is_anon = event.user?.id ? "no" : "yes";
+
+  // userImpact — coarse paid/trial/anon/unknown bucket so Sentry can
+  // sort issues by who's affected. No PII (email/name/id/subscription
+  // object) — only the bucket label.
+  tags.userImpact = safeUserImpact(event);
 
   const online = safeIsOnline();
   if (typeof online === "boolean") tags.online = online ? "yes" : "no";
