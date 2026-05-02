@@ -109,19 +109,36 @@ function validateEntryCount(count) {
   return { valid: true };
 }
 
-function validateEntryAudio(entry, index) {
+function validateEntryAudio(entry, index, room) {
   if (!config.requireAudio) return { valid: true };
-  
+
   // CANONICAL: entry.audio (string filename)
   // LEGACY: audio_en, audioEn (same as roomJsonResolver.ts)
-  const hasAudio = entry.audio || entry.audio_en || entry.audioEn;
-  if (!hasAudio) {
-    return {
-      valid: false,
-      message: `Entry ${index + 1} missing audio field (required in ${config.mode} mode)`
-    };
-  }
-  return { valid: true };
+  const hasEntryAudio = entry.audio || entry.audio_en || entry.audioEn;
+  if (hasEntryAudio) return { valid: true };
+
+  // EXPLICIT OPT-OUT: author wrote `audio: null` (or "") to signal that
+  // this entry intentionally has no audio (e.g. text-only kids lesson
+  // entries). hasOwnProperty distinguishes this from a missing field.
+  const isExplicitOptOut =
+    Object.prototype.hasOwnProperty.call(entry, "audio") &&
+    (entry.audio === null || entry.audio === "");
+  if (isExplicitOptOut) return { valid: true };
+
+  // ROOM-LEVEL AUDIO: single-entry song / anthem rooms put one mp3 at
+  // room.content.audio (or room.audio / room.intro_audio) and use the
+  // entry only for lyrics. Treat any room-level audio as covering all
+  // entries.
+  const hasRoomAudio =
+    Boolean(room?.content?.audio) ||
+    Boolean(room?.audio) ||
+    Boolean(room?.intro_audio);
+  if (hasRoomAudio) return { valid: true };
+
+  return {
+    valid: false,
+    message: `Entry ${index + 1} missing audio field (required in ${config.mode} mode)`
+  };
 }
 
 function validateEntryBilingualCopy(entry, index) {
@@ -179,8 +196,10 @@ function validateRoomJson(data, roomId, filename) {
       throw new Error(`Entry ${index + 1} missing identifier (slug/artifact_id/id)`);
     }
 
-    // Check audio - CANONICAL: entry.audio (string filename)
-    const audioResult = validateEntryAudio(entry, index);
+    // Check audio - CANONICAL: entry.audio (string filename). Pass the
+    // full room so the validator can recognize room-level audio (song /
+    // anthem rooms) and explicit `audio: null` opt-outs.
+    const audioResult = validateEntryAudio(entry, index, data);
     if (!audioResult.valid) {
       throw new Error(audioResult.message);
     }
