@@ -1,11 +1,12 @@
+import type { ReactElement } from "react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 
 import { ErrorBoundary } from "../ErrorBoundary";
 
-function Bomb() {
+const Bomb = (): ReactElement => {
   throw new Error("kaboom");
-}
+};
 
 describe("<ErrorBoundary />", () => {
   // Suppress the noisy React "uncaught render error" console output that
