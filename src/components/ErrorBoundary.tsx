@@ -1,6 +1,5 @@
-// src/components/ErrorBoundary.tsx — v2025-12-14-01
+// src/components/ErrorBoundary.tsx — v2026-05-01-01
 import React from "react";
-import { Link } from "react-router-dom";
 import { captureError } from "@/lib/monitoring/captureException";
 
 function safeStringify(x: unknown) {
@@ -149,17 +148,19 @@ export class ErrorBoundary extends React.Component<Props, State> {
               Try Again
             </button>
 
-            <Link
+            {/* Plain anchor — ErrorBoundary mounts above BrowserRouter,
+                so react-router-dom's Link would crash the fallback with
+                "Cannot destructure property 'basename' from null". */}
+            <a
               className="px-4 py-2 rounded-lg border border-slate-500"
-              to="/"
-              onClick={() => this.setState({ hasError: false, err: undefined })}
+              href="/"
             >
               Go Home
-            </Link>
+            </a>
           </div>
 
           <p className="text-xs text-slate-400">
-            ErrorBoundary version: v2025-12-14-01
+            ErrorBoundary version: v2026-05-01-01
           </p>
         </div>
       </div>
