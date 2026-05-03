@@ -138,3 +138,16 @@ Store Connect exactly:
 The RevenueCat entitlement identifier is `"MercyBlade Pro"`. If renamed
 in the RevenueCat dashboard, update `IAP_ENTITLEMENT_ID` in both
 `src/lib/iap.ts` and the webhook handler.
+
+---
+
+## Language Modules
+
+MercyBlade supports the following language modules:
+
+- **English** (existing)
+- **French** (A1-A2)
+- **German** (A1-A2)
+- **Japanese** (JLPT N5)
+- **Chinese** (HSK 1)
+- **Korean** (TOPIK 1)
