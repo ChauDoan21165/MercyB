@@ -12,6 +12,7 @@ import {
   Minimize2,
   BookOpenText,
   PenSquare,
+  Globe,
   Lock,
   Crown,
   Check,
@@ -26,6 +27,7 @@ import MercyTeacherTab from './MercyTeacherTab';
 import MercySpeakTab from './MercySpeakTab';
 import { GrammarWritingTab } from './tabs/grammar-writing/GrammarWritingTab';
 import EnglishLogicTab from './tabs/EnglishLogicTab';
+import LanguageLessonsTab from './tabs/LanguageLessonsTab';
 
 import type {
   GrammarApiResponse,
@@ -38,7 +40,7 @@ import type {
   LearningSupportMode,
 } from './types';
 
-type MercyTabType = 'teacher' | 'grammar' | 'pronunciation' | 'logic';
+type MercyTabType = 'teacher' | 'grammar' | 'pronunciation' | 'logic' | 'french' | 'german';
 type TeacherMode = 'adult' | 'kids';
 type KidsPageId =
   | 'page1'
@@ -278,6 +280,8 @@ function normalizeTab(value: string | undefined): MercyTabType {
     case 'grammar':
     case 'pronunciation':
     case 'logic':
+    case 'french':
+    case 'german':
       return value;
     case 'english':
       return 'logic';
@@ -576,6 +580,18 @@ function getTabAccent(tabId: MercyTabType) {
         active:
           'border-[#DDD6FE] bg-gradient-to-r from-[#F6F3FF] to-[#FCFBFF] text-[#7C3AED] shadow-[0_10px_22px_rgba(139,92,246,0.12)]',
         icon: 'text-[#8B5CF6]',
+      };
+    case 'french':
+      return {
+        active:
+          'border-[#BFDBFE] bg-gradient-to-r from-[#EFF6FF] to-[#F7FBFF] text-[#1D4ED8] shadow-[0_10px_22px_rgba(37,99,235,0.12)]',
+        icon: 'text-[#3B82F6]',
+      };
+    case 'german':
+      return {
+        active:
+          'border-[#FECACA] bg-gradient-to-r from-[#FEF2F2] to-[#FFF7ED] text-[#DC2626] shadow-[0_10px_22px_rgba(220,38,38,0.12)]',
+        icon: 'text-[#EF4444]',
       };
     default:
       return {
@@ -1047,6 +1063,18 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
         enabled:
           accessFeatures.hasMercyLogic && !hideLogicTab && !kidsModeActive,
       },
+      {
+        id: 'french',
+        label: 'French',
+        icon: Globe,
+        enabled: !kidsModeActive,
+      },
+      {
+        id: 'german',
+        label: 'German',
+        icon: Globe,
+        enabled: !kidsModeActive,
+      },
     ];
 
     return baseTabs.filter((tab) => visibleTabs.includes(tab.id));
@@ -1083,6 +1111,10 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
             !hideLogicTab &&
             !kidsModeActive
           );
+        case 'french':
+          return !kidsModeActive;
+        case 'german':
+          return !kidsModeActive;
         default:
           return false;
       }
@@ -1656,6 +1688,14 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
               }
               onUnlock={kidsModeActive ? undefined : goToPricing}
             />
+          ) : null}
+
+          {activeTab === 'french' && !kidsModeActive ? (
+            <LanguageLessonsTab language="french" />
+          ) : null}
+
+          {activeTab === 'german' && !kidsModeActive ? (
+            <LanguageLessonsTab language="german" />
           ) : null}
         </div>
       </div>
