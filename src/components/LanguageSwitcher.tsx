@@ -5,6 +5,7 @@ import {
   useLanguageProgress,
   EUROPEAN_LANGUAGES,
   ASIAN_LANGUAGES,
+  TOTAL_LESSONS_PER_LANGUAGE,
   type LearningLanguage,
 } from "@/store/languageProgress";
 
@@ -33,7 +34,8 @@ function categoryLabelVi(category: "european" | "asian"): string {
 
 export default function LanguageSwitcher() {
   const nav = useNavigate();
-  const { selectedLanguage, progress, selectLanguage } = useLanguageProgress();
+  const { selectedLanguage, selectLanguage, getCompletedCount, getProgressPercent } =
+    useLanguageProgress();
 
   const handleCardClick = (id: LearningLanguage) => {
     selectLanguage(id);
@@ -97,7 +99,8 @@ export default function LanguageSwitcher() {
           }}
         >
           {languages.map((lang) => {
-            const pct = progress[lang.id] ?? 0;
+            const completed = getCompletedCount(lang.id);
+            const pct = getProgressPercent(lang.id);
             const isSelected = selectedLanguage === lang.id;
 
             return (
@@ -105,7 +108,7 @@ export default function LanguageSwitcher() {
                 key={lang.id}
                 type="button"
                 onClick={() => handleCardClick(lang.id)}
-                aria-label={`${lang.name} — ${lang.nameVi} — ${pct}%`}
+                aria-label={`${lang.name} — ${lang.nameVi} — ${completed}/${TOTAL_LESSONS_PER_LANGUAGE} lessons`}
                 aria-pressed={isSelected}
                 style={{
                   display: "flex",
@@ -179,7 +182,7 @@ export default function LanguageSwitcher() {
                         textTransform: "uppercase",
                       }}
                     >
-                      Progress
+                      Lessons
                     </span>
                     <span
                       style={{
@@ -188,7 +191,7 @@ export default function LanguageSwitcher() {
                         color: barColor(lang.id),
                       }}
                     >
-                      {pct}%
+                      {completed}/{TOTAL_LESSONS_PER_LANGUAGE}
                     </span>
                   </div>
                   <div
