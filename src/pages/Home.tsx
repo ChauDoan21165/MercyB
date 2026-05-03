@@ -805,16 +805,16 @@ export default function Home() {
               /exam-prep/ielts/speaking (open, no paywall). */}
           {ieltsSpeakingCard}
 
-          {/* Language switcher — European + Asian language cards.
-              Placed below Explore More so core learning paths are
-              surfaced before supplementary languages. */}
-          <LanguageSwitcher />
-
           {/* Focus areas — tertiary (feature-flagged). */}
           <FocusAreasCard />
 
           {/* Weekly leaderboard — retention card (feature-flagged). */}
           {leaderboardEnabled && Boolean(user) && <LeaderboardCard />}
+
+          {/* Language switcher — European + Asian language cards.
+              At the very bottom so core learning paths are surfaced
+              before supplementary languages. */}
+          <LanguageSwitcher />
         </section>
 
         {/* Floating bubbles */}
