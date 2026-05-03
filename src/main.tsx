@@ -17,6 +17,7 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 
 import AppRouter from "@/router/AppRouter";
+import { LanguageProgressProvider } from "@/store/languageProgress";
 import OfflineIndicator from "@/components/offline/OfflineIndicator";
 import ShortcutHelpOverlay from "@/components/keyboard/ShortcutHelpOverlay";
 import GlobalNavigationShortcuts from "@/components/keyboard/GlobalNavigationShortcuts";
@@ -385,7 +386,9 @@ w.__MB_REACT_ROOT__.render(
         <OfflineIndicator />
         <GlobalNavigationShortcuts />
         <ShortcutHelpOverlay />
-        <AppRouter />
+        <LanguageProgressProvider>
+          <AppRouter />
+        </LanguageProgressProvider>
       </AuthProvider>
     </BrowserRouter>
   </ErrorBoundary>,

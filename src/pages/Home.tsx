@@ -23,6 +23,7 @@ import StoryPromptCard from "@/components/home/StoryPromptCard";
 import LeaderboardCard from "@/components/leaderboard/LeaderboardCard";
 import { StreakBadge } from "@/components/streak/StreakBadge";
 import { XPBadge } from "@/components/xp/XPBadge";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 const PAGE_MAX = 980;
 const LS_ZOOM  = "mb.ui.zoom";
@@ -778,10 +779,15 @@ export default function Home() {
               Self-gates on its own feature flag + 24h cooldown. */}
           <RecommendedDrillCard />
 
+          {/* Language switcher — learning language selection with progress.
+              Surfaces the multi-language product surface on the home page
+              so users see they can learn more than English. */}
+          <LanguageSwitcher />
+
           {/* Section label — visually groups the secondary entry points
               (Library + exam-prep) under one header so the eye knows
               everything below is "more options," not the main action. */}
-          <div style={{ marginTop: 6, fontSize: z(11), fontWeight: 700, letterSpacing: 0.8, textTransform: "uppercase", color: "rgba(0,0,0,0.42)" }}>
+          <div style={{ marginTop: 14, fontSize: z(11), fontWeight: 700, letterSpacing: 0.8, textTransform: "uppercase", color: "rgba(0,0,0,0.42)" }}>
             Explore more · Khám phá thêm
           </div>
 
