@@ -96,6 +96,12 @@ const HealthcareLessonsPage = lazy(() => import("@/pages/professions/HealthcareL
 const DriversLessonsPage = lazy(() => import("@/pages/professions/DriversLessonsPage"));
 const HospitalityLessonsPage = lazy(() => import("@/pages/professions/HospitalityLessonsPage"));
 
+// Language learning verticals
+const LanguagesIndexPage   = lazy(() => import("@/pages/languages/LanguagesIndexPage"));
+const FrenchLessonsPage    = lazy(() => import("@/pages/languages/FrenchLessonsPage"));
+const GermanLessonsPage    = lazy(() => import("@/pages/languages/GermanLessonsPage"));
+const LanguageLessonsPage  = lazy(() => import("@/pages/languages/LanguageLessonsPage"));
+
 // Mercy v2 — multi-turn conversation thread page (auth-required).
 const MercyThreadPage      = lazy(() => import("@/pages/mercy/MercyThreadPage"));
 
@@ -843,6 +849,27 @@ export default function AppRouter() {
           <Route path="/professions/hospitality"
             element={<LazyPage><HospitalityLessonsPage /></LazyPage>}
           />
+
+          {/* Language learning verticals */}
+          <Route path="/languages"
+            element={<LazyPage><LanguagesIndexPage /></LazyPage>}
+          />
+          <Route path="/languages/french"
+            element={<LazyPage><FrenchLessonsPage /></LazyPage>}
+          />
+          <Route path="/languages/german"
+            element={<LazyPage><GermanLessonsPage /></LazyPage>}
+          />
+          <Route path="/languages/chinese"
+            element={<LazyPage><LanguageLessonsPage /></LazyPage>}
+          />
+          <Route path="/languages/japanese"
+            element={<LazyPage><LanguageLessonsPage /></LazyPage>}
+          />
+          <Route path="/languages/korean"
+            element={<LazyPage><LanguageLessonsPage /></LazyPage>}
+          />
+
 
           {/* Mercy v2 — multi-turn conversation thread (Step 7) */}
           <Route path="/mercy"
