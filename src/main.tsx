@@ -30,6 +30,25 @@ if (!String.prototype.at) {
   };
 }
 
+// TypedArrays (Uint8Array, Float32Array, etc.) also lack .at() on the same browsers.
+// Per-constructor assignment so each typed-array type gets the polyfill.
+if (typeof Uint8Array !== "undefined" && !(Uint8Array.prototype as any).at) {
+  const _at = Array.prototype.at;
+  for (const Ctor of [
+    Int8Array,
+    Uint8Array,
+    Uint8ClampedArray,
+    Int16Array,
+    Uint16Array,
+    Int32Array,
+    Uint32Array,
+    Float32Array,
+    Float64Array,
+  ]) {
+    try { (Ctor.prototype as any).at = _at; } catch { /* ignore */ }
+  }
+}
+
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
