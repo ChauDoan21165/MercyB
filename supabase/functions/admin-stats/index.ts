@@ -10,7 +10,7 @@
  * - Handle CORS for localhost + production
  * - Require Authorization Bearer token
  * - Verify user
- * - (Optional) enforce admin role
+ * - Enforce admin role
  * - Return deterministic JSON shape
  */
 
@@ -34,23 +34,48 @@ function json(data: unknown, status = 200, extraHeaders: Record<string, string> 
 }
 
 function corsHeaders(origin: string | null) {
-  // Allow localhost + your deployed domains.
-  // Keep this permissive during dev; tighten later.
   const o = origin ?? "*";
   return {
     "Access-Control-Allow-Origin": o,
     "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
     "Access-Control-Allow-Methods": "POST, OPTIONS",
     "Access-Control-Allow-Credentials": "true",
-    "Vary": "Origin",
+    Vary: "Origin",
   };
 }
 
 function getBearerToken(req: Request): string | null {
   const h = req.headers.get("authorization") || req.headers.get("Authorization");
   if (!h) return null;
+
   const m = h.match(/^Bearer\s+(.+)$/i);
   return m?.[1] ?? null;
+}
+
+async function countRegisteredAuthUsers(admin: ReturnType<typeof createClient>): Promise<number> {
+  const perPage = 1000;
+  let page = 1;
+  let total = 0;
+
+  while (true) {
+    const { data, error } = await admin.auth.admin.listUsers({
+      page,
+      perPage,
+    });
+
+    if (error) {
+      throw new Error(`auth users count failed: ${error.message}`);
+    }
+
+    const users = data?.users ?? [];
+    total += users.length;
+
+    if (users.length < perPage) break;
+
+    page += 1;
+  }
+
+  return total;
 }
 
 Deno.serve(async (req) => {
@@ -82,18 +107,10 @@ Deno.serve(async (req) => {
       return json({ ok: false, error: "Missing authorization header" }, 401, CORS);
     }
 
-    // Admin (service-role) client to verify user + read DB
     const admin = createClient(supabaseUrl, serviceRole, {
       auth: { persistSession: false },
-      global: {
-        headers: {
-          // Pass through the user's JWT so auth.getUser(token) works
-          Authorization: `Bearer ${token}`,
-        },
-      },
     });
 
-    // 1) Verify user
     const { data: userData, error: userErr } = await admin.auth.getUser(token);
     if (userErr || !userData?.user) {
       return json({ ok: false, error: "Unauthorized (invalid session)" }, 401, CORS);
@@ -101,8 +118,6 @@ Deno.serve(async (req) => {
 
     const userId = userData.user.id;
 
-    // 2) OPTIONAL: enforce admin role (choose ONE style and keep it consistent)
-    // If you don't have these columns yet, comment this block out for now.
     const { data: profile, error: profileErr } = await admin
       .from("profiles")
       .select("id, role, is_admin")
@@ -110,7 +125,6 @@ Deno.serve(async (req) => {
       .maybeSingle();
 
     if (profileErr) {
-      // If profiles table doesn't exist or schema mismatch, return explicit error
       return json(
         { ok: false, error: `profiles lookup failed: ${profileErr.message}` },
         403,
@@ -123,29 +137,14 @@ Deno.serve(async (req) => {
       return json({ ok: false, error: "Forbidden (not admin)" }, 403, CORS);
     }
 
-    // 3) Stats (minimal placeholders; replace as your schema stabilizes)
-    // Total Users: easiest via auth admin API is not exposed here reliably without extra calls,
-    // so we use profiles count as MVP.
-    const { count: totalUsers, error: usersErr } = await admin
-      .from("profiles")
-      .select("*", { count: "exact", head: true });
+    const totalUsers = await countRegisteredAuthUsers(admin);
 
-    if (usersErr) {
-      return json({ ok: false, error: `profiles count failed: ${usersErr.message}` }, 500, CORS);
-    }
-
-    // Active Today: if you have activity table, swap this out.
     const activeToday = 0;
-
-    // Total Rooms: use your generated manifest length on client usually,
-    // but if you have a rooms table, count here.
     const totalRooms = 0;
-
-    // Revenue: placeholder until payments table exists
     const revenueMonth = 0;
 
     const stats: Stats = {
-      totalUsers: Number(totalUsers ?? 0),
+      totalUsers,
       activeToday,
       totalRooms,
       revenueMonth,

@@ -292,6 +292,8 @@ const NOISE_PATTERNS: RegExp[] = [
   /safari-(web-)?extension:\/\//i,     // Safari extensions
   /connect\.facebook\.net/i,           // Facebook Pixel SDK
   /googletagmanager\.com/i,            // Google Tag Manager
+  /zaloJSV/i,                          // Zalo in-app browser SDK injection (zaloJSV2 ReferenceError)
+  /zalojsv/i,                          // (lowercase variant, belt-and-suspenders)
 ];
 
 function collectNoiseHaystacks(event: SentryEventLike): string[] {
@@ -315,6 +317,13 @@ function collectNoiseHaystacks(event: SentryEventLike): string[] {
 export function looksLikeExternalNoise(event: SentryEventLike): boolean {
   const haystacks = collectNoiseHaystacks(event);
   return haystacks.some((s) => NOISE_PATTERNS.some((re) => re.test(s)));
+}
+
+
+/** Quick string check against noise patterns — for use in global error handlers
+ *  that don't have a structured Sentry event yet. */
+export function stringLooksLikeExternalNoise(s: string): boolean {
+  return NOISE_PATTERNS.some((re) => re.test(s));
 }
 
 export type FeatureArea = "auth" | "billing" | "room" | "mercy" | "audio" | "other";

@@ -96,19 +96,31 @@ export async function handleDeepLink(url: string): Promise<Session | null> {
   const accessToken = params.get("access_token");
   const refreshToken = params.get("refresh_token");
 
-  if (!accessToken || !refreshToken) {
-    return null;
+  // Google/Facebook return tokens in the fragment; Apple returns a ?code=
+  // query parameter that must be exchanged for a session. Handle both.
+  if (accessToken && refreshToken) {
+    const { data, error } = await supabase.auth.setSession({
+      access_token: accessToken,
+      refresh_token: refreshToken,
+    });
+
+    await safeCloseBrowser();
+
+    if (error) throw error;
+    return data.session ?? null;
   }
 
-  const { data, error } = await supabase.auth.setSession({
-    access_token: accessToken,
-    refresh_token: refreshToken,
-  });
+  const code = params.get("code");
+  if (code) {
+    const { data, error } = await supabase.auth.exchangeCodeForSession(code);
 
-  await safeCloseBrowser();
+    await safeCloseBrowser();
 
-  if (error) throw error;
-  return data.session ?? null;
+    if (error) throw error;
+    return data.session ?? null;
+  }
+
+  return null;
 }
 
 /**

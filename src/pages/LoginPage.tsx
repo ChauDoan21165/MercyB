@@ -1,4 +1,4 @@
-// src/pages/LoginPage.tsx
+// Path: src/pages/LoginPage.tsx
 
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -258,10 +258,10 @@ export default function LoginPage() {
   }, [IS_DEV, nav, safeReturnPath]);
 
   useEffect(() => {
-    if (hasSession && safeReturnPath && !oauthSearchError) {
+    if (hasSession && sessionBooted && !oauthSearchError) {
       void routeAfterAuth();
     }
-  }, [hasSession, oauthSearchError, routeAfterAuth, safeReturnPath]);
+  }, [hasSession, oauthSearchError, routeAfterAuth, sessionBooted]);
 
   useEffect(() => {
     if (readSearchFlag(search, "logged_out")) {

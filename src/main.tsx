@@ -25,7 +25,7 @@ import { SentryUserBinding } from "@/components/monitoring/SentryUserBinding";
 import "@/index.css";
 import { supabase } from "@/lib/supabaseClient";
 import { AuthProvider } from "@/providers/AuthProvider";
-import { initSentry } from "@/lib/monitoring/sentryInit";
+import { initSentry, stringLooksLikeExternalNoise } from "@/lib/monitoring/sentryInit";
 import { initializeWebVitals } from "@/lib/perf/webVitalsTracking";
 
 declare global {
@@ -246,6 +246,16 @@ function scheduleOneTimeChunkReload(): boolean {
 
   window.addEventListener("error", (e: ErrorEvent) => {
     if (window.__MB_FATAL_OVERLAY_SHOWN__) return;
+    // Suppress fatal overlay for external injection noise (Zalo IAB,
+    // browser extensions, third-party trackers). These errors don't
+    // originate in our code and we can't fix them — showing a fatal
+    // overlay to the user would be misleading and disruptive.
+    const errorHaystack = [
+      e.message || "",
+      e.filename || "",
+      e.error ? asErrorMessage(e.error) : "",
+    ].join(" ");
+    if (stringLooksLikeExternalNoise(errorHaystack)) return;
     handleGlobalFatal("[MB FATAL] window.error", e.error ?? e.message);
   });
 
