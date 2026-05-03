@@ -779,11 +779,6 @@ export default function Home() {
               Self-gates on its own feature flag + 24h cooldown. */}
           <RecommendedDrillCard />
 
-          {/* Language switcher — learning language selection with progress.
-              Surfaces the multi-language product surface on the home page
-              so users see they can learn more than English. */}
-          <LanguageSwitcher />
-
           {/* Section label — visually groups the secondary entry points
               (Library + exam-prep) under one header so the eye knows
               everything below is "more options," not the main action. */}
@@ -809,6 +804,11 @@ export default function Home() {
               alongside Writing/Listening/Reading. Marketing surface for
               /exam-prep/ielts/speaking (open, no paywall). */}
           {ieltsSpeakingCard}
+
+          {/* Language switcher — European + Asian language cards.
+              Placed below Explore More so core learning paths are
+              surfaced before supplementary languages. */}
+          <LanguageSwitcher />
 
           {/* Focus areas — tertiary (feature-flagged). */}
           <FocusAreasCard />
