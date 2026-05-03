@@ -1,0 +1,83 @@
+name: Sentry Auto-Fix
+
+on:
+  schedule:
+    # Run every 30 minutes
+    - cron: '*/30 * * * *'
+  workflow_dispatch:  # Allow manual trigger
+
+jobs:
+  auto-fix:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Fetch Sentry errors
+        env:
+          SENTRY_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+          SENTRY_ORG: mercy-blade
+          SENTRY_PROJECT: mercyblade-web
+        run: |
+          curl -H "Authorization: Bearer $SENTRY_TOKEN" \
+            "https://sentry.io/api/0/projects/$SENTRY_ORG/$SENTRY_PROJECT/issues/?query=is:unresolved" \
+            > sentry_errors.json
+          
+          echo "Errors found:"
+          cat sentry_errors.json | jq '. | length'
+
+      - name: Check for .at() error
+        run: |
+          if grep -q "at is not a function" sentry_errors.json; then
+            echo "AT_ERROR_FOUND=true" >> $GITHUB_ENV
+          fi
+
+      - name: Apply .at() polyfill fix
+        if: env.AT_ERROR_FOUND == 'true'
+        run: |
+          # Check if polyfill already exists
+          if ! grep -q "Array.prototype.at" src/main.tsx; then
+            echo "// Polyfill for old browsers" >> src/main.tsx.tmp
+            echo "if (!Array.prototype.at) {" >> src/main.tsx.tmp
+            echo "  Array.prototype.at = function(index) {" >> src/main.tsx.tmp
+            echo "    if (index < 0) index = this.length + index;" >> src/main.tsx.tmp
+            echo "    return this[index];" >> src/main.tsx.tmp
+            echo "  };" >> src/main.tsx.tmp
+            echo "}" >> src/main.tsx.tmp
+            echo "if (!String.prototype.at) {" >> src/main.tsx.tmp
+            echo "  String.prototype.at = function(index) {" >> src/main.tsx.tmp
+            echo "    if (index < 0) index = this.length + index;" >> src/main.tsx.tmp
+            echo "    return this[index];" >> src/main.tsx.tmp
+            echo "  };" >> src/main.tsx.tmp
+            echo "}" >> src/main.tsx.tmp
+            echo "" >> src/main.tsx.tmp
+            cat src/main.tsx >> src/main.tsx.tmp
+            mv src/main.tsx.tmp src/main.tsx
+          fi
+
+      - name: Run build
+        if: env.AT_ERROR_FOUND == 'true'
+        run: |
+          npm install
+          npm run build
+
+      - name: Create Pull Request
+        if: env.AT_ERROR_FOUND == 'true'
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "fix: auto-add .at() polyfill for old browsers"
+          title: "Auto-Fix: Add .at() polyfill"
+          body: |
+            Sentry detected error: `at is not a function` in old Chrome browsers.
+            
+            This PR adds the polyfill automatically.
+            
+            Fixes: Sentry error #482cf69c
+          branch: auto-fix/sentry-at-polyfill
+          base: main
