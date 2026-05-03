@@ -30,9 +30,123 @@ function categoryLabelVi(category: "european" | "asian"): string {
   return category === "european" ? "Châu Âu" : "Châu Á";
 }
 
-// ── component ───────────────────────────────────────────────────────────────
+// ── LanguageSwitcher — English section only ────────────────────────────────
 
 export default function LanguageSwitcher() {
+  const nav = useNavigate();
+
+  return (
+    <div
+      aria-label="Language switcher"
+      style={{
+        borderRadius: 20,
+        padding: "16px 14px 8px",
+        background:
+          "linear-gradient(150deg, rgba(248,250,252,0.96) 0%, rgba(250,251,253,0.94) 100%)",
+        border: "1px solid rgba(0,0,0,0.06)",
+        boxShadow: "0 8px 24px rgba(0,0,0,0.04)",
+      }}
+    >
+      {/* Header */}
+      <div style={{ marginBottom: 12, display: "flex", alignItems: "baseline", gap: 6 }}>
+        <span
+          style={{
+            fontSize: 15,
+            fontWeight: 900,
+            color: "rgba(0,0,0,0.88)",
+            letterSpacing: -0.3,
+          }}
+        >
+          Learning languages
+        </span>
+        <span
+          style={{
+            fontSize: 12,
+            fontWeight: 700,
+            color: "rgba(0,0,0,0.40)",
+          }}
+        >
+          Ngôn ngữ đang học
+        </span>
+      </div>
+
+      {/* English section — primary, prominent */}
+      <section aria-label="English" style={{ marginBottom: 0 }}>
+        <div
+          onClick={() => nav("/rooms")}
+          role="button"
+          tabIndex={0}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" || e.key === " ") {
+              e.preventDefault();
+              nav("/rooms");
+            }
+          }}
+          aria-label="English — Tiếng Anh — your primary language"
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: 10,
+            padding: "14px 16px",
+            borderRadius: 16,
+            border: "2px solid #14B8A6",
+            background: "linear-gradient(135deg, rgba(20,184,166,0.08), rgba(13,148,136,0.04))",
+            boxShadow: "0 4px 16px rgba(20,184,166,0.12)",
+            cursor: "pointer",
+            textAlign: "left",
+            width: "100%",
+          }}
+        >
+          <span style={{ fontSize: 26, lineHeight: 1 }}>🇬🇧</span>
+          <div style={{ minWidth: 0, flex: 1 }}>
+            <div
+              style={{
+                fontSize: 16,
+                fontWeight: 900,
+                color: "rgba(0,0,0,0.88)",
+                letterSpacing: -0.2,
+                lineHeight: 1.2,
+              }}
+            >
+              English
+            </div>
+            <div
+              style={{
+                fontSize: 11,
+                fontWeight: 600,
+                color: "rgba(0,0,0,0.42)",
+                lineHeight: 1.2,
+              }}
+            >
+              Tiếng Anh
+            </div>
+          </div>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: 4,
+              padding: "8px 14px",
+              borderRadius: 10,
+              background: "#14B8A6",
+              color: "#FFFFFF",
+              fontSize: 13,
+              fontWeight: 800,
+              letterSpacing: 0.2,
+            }}
+          >
+            Continue
+            <ChevronRight size={14} />
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+// ── LanguageCategoryCards — European + Asian language cards ─────────────────
+
+export function LanguageCategoryCards() {
   const nav = useNavigate();
   const { selectedLanguage, selectLanguage, getCompletedCount, getProgressPercent } =
     useLanguageProgress();
@@ -256,110 +370,16 @@ export default function LanguageSwitcher() {
 
   return (
     <div
-      aria-label="Language switcher"
+      aria-label="Language categories"
       style={{
         borderRadius: 20,
-        padding: "16px 14px 8px",
+        padding: "8px 14px 8px",
         background:
           "linear-gradient(150deg, rgba(248,250,252,0.96) 0%, rgba(250,251,253,0.94) 100%)",
         border: "1px solid rgba(0,0,0,0.06)",
         boxShadow: "0 8px 24px rgba(0,0,0,0.04)",
       }}
     >
-      {/* Header */}
-      <div style={{ marginBottom: 12, display: "flex", alignItems: "baseline", gap: 6 }}>
-        <span
-          style={{
-            fontSize: 15,
-            fontWeight: 900,
-            color: "rgba(0,0,0,0.88)",
-            letterSpacing: -0.3,
-          }}
-        >
-          Learning languages
-        </span>
-        <span
-          style={{
-            fontSize: 12,
-            fontWeight: 700,
-            color: "rgba(0,0,0,0.40)",
-          }}
-        >
-          Ngôn ngữ đang học
-        </span>
-      </div>
-
-      {/* English section — primary, prominent */}
-      <section aria-label="English" style={{ marginBottom: 12 }}>
-        <div
-          onClick={() => nav("/rooms")}
-          role="button"
-          tabIndex={0}
-          onKeyDown={(e) => {
-            if (e.key === "Enter" || e.key === " ") {
-              e.preventDefault();
-              nav("/rooms");
-            }
-          }}
-          aria-label="English — Tiếng Anh — your primary language"
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: 10,
-            padding: "14px 16px",
-            borderRadius: 16,
-            border: "2px solid #14B8A6",
-            background: "linear-gradient(135deg, rgba(20,184,166,0.08), rgba(13,148,136,0.04))",
-            boxShadow: "0 4px 16px rgba(20,184,166,0.12)",
-            cursor: "pointer",
-            textAlign: "left",
-            width: "100%",
-          }}
-        >
-          <span style={{ fontSize: 26, lineHeight: 1 }}>🇬🇧</span>
-          <div style={{ minWidth: 0, flex: 1 }}>
-            <div
-              style={{
-                fontSize: 16,
-                fontWeight: 900,
-                color: "rgba(0,0,0,0.88)",
-                letterSpacing: -0.2,
-                lineHeight: 1.2,
-              }}
-            >
-              English
-            </div>
-            <div
-              style={{
-                fontSize: 11,
-                fontWeight: 600,
-                color: "rgba(0,0,0,0.42)",
-                lineHeight: 1.2,
-              }}
-            >
-              Tiếng Anh
-            </div>
-          </div>
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: 4,
-              padding: "8px 14px",
-              borderRadius: 10,
-              background: "#14B8A6",
-              color: "#FFFFFF",
-              fontSize: 13,
-              fontWeight: 800,
-              letterSpacing: 0.2,
-            }}
-          >
-            Continue
-            <ChevronRight size={14} />
-          </div>
-        </div>
-      </section>
-
       {renderCategory("European", categoryLabelVi("european"), EUROPEAN_LANGUAGES)}
       {renderCategory("Asian", categoryLabelVi("asian"), ASIAN_LANGUAGES)}
     </div>

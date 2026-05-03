@@ -23,7 +23,7 @@ import StoryPromptCard from "@/components/home/StoryPromptCard";
 import LeaderboardCard from "@/components/leaderboard/LeaderboardCard";
 import { StreakBadge } from "@/components/streak/StreakBadge";
 import { XPBadge } from "@/components/xp/XPBadge";
-import LanguageSwitcher from "@/components/LanguageSwitcher";
+import LanguageSwitcher, { LanguageCategoryCards } from "@/components/LanguageSwitcher";
 
 const PAGE_MAX = 980;
 const LS_ZOOM  = "mb.ui.zoom";
@@ -779,9 +779,7 @@ export default function Home() {
               Self-gates on its own feature flag + 24h cooldown. */}
           <RecommendedDrillCard />
 
-          {/* Language switcher — learning language selection with progress.
-              Surfaces the multi-language product surface on the home page
-              so users see they can learn more than English. */}
+          {/* Language switcher — English section at top */}
           <LanguageSwitcher />
 
           {/* Section label — visually groups the secondary entry points
@@ -809,6 +807,9 @@ export default function Home() {
               alongside Writing/Listening/Reading. Marketing surface for
               /exam-prep/ielts/speaking (open, no paywall). */}
           {ieltsSpeakingCard}
+
+          {/* European + Asian language learning cards */}
+          <LanguageCategoryCards />
 
           {/* Focus areas — tertiary (feature-flagged). */}
           <FocusAreasCard />
