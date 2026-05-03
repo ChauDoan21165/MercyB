@@ -12,6 +12,24 @@
 //      (skipWaiting:false, clientsClaim:false). See registerPwaServiceWorker
 //      below and vite.config.ts workbox block.
 
+// ── Polyfills for older browsers (Chrome 79, iOS 12) ──────────────────────
+// Array.prototype.at() and String.prototype.at() shipped in Chrome 92 / ES2022.
+// Some users on low-end Android devices run Chrome 79 which lacks .at().
+// Adding minimal polyfills to prevent "TypeError: this.o.at is not a function".
+if (!Array.prototype.at) {
+  Array.prototype.at = function (index: number) {
+    const i = index < 0 ? this.length + index : index;
+    return this[i];
+  };
+}
+
+if (!String.prototype.at) {
+  String.prototype.at = function (index: number) {
+    const i = index < 0 ? this.length + index : index;
+    return this[i];
+  };
+}
+
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
