@@ -1,0 +1,436 @@
+// src/languages/chinese/vocabulary.ts
+//
+// 50-word Mandarin Chinese starter vocabulary for Vietnamese learners.
+// Hand-crafted — each word is chosen from HSK 1-2 and practical daily
+// contexts for Vietnamese speakers learning Chinese. Simplified
+// characters + pinyin + Vietnamese gloss + tone marks.
+//
+// Shape: { hanzi, pinyin, en, vi, pos, tone_notes? }
+
+export type ChineseWord = {
+  hanzi: string;
+  pinyin: string;
+  en: string;
+  vi: string;
+  pos: "noun" | "verb" | "adjective" | "adverb" | "pronoun" | "measure" | "phrase";
+  tone_notes?: string;
+};
+
+const CHINESE_VOCABULARY: ChineseWord[] = [
+  // === Pronouns ===
+  {
+    hanzi: "我",
+    pinyin: "wǒ",
+    en: "I / me",
+    vi: "tôi",
+    pos: "pronoun",
+    tone_notes: "Thanh 3 (thấp-xuống-lên). Giống dấu hỏi tiếng Việt.",
+  },
+  {
+    hanzi: "你",
+    pinyin: "nǐ",
+    en: "you",
+    vi: "bạn",
+    pos: "pronoun",
+    tone_notes: "Thanh 3. Tránh dùng 您 (nín, kính ngữ) khi không cần — nghe xa cách.",
+  },
+  {
+    hanzi: "他",
+    pinyin: "tā",
+    en: "he / him",
+    vi: "anh ấy",
+    pos: "pronoun",
+    tone_notes: "Thanh 1 (cao, ngang). Giống thanh ngang tiếng Việt.",
+  },
+  {
+    hanzi: "她",
+    pinyin: "tā",
+    en: "she / her",
+    vi: "cô ấy",
+    pos: "pronoun",
+    tone_notes: "Đồng âm với 他 — phân biệt bằng mặt chữ (bộ nữ 女).",
+  },
+  {
+    hanzi: "我们",
+    pinyin: "wǒmen",
+    en: "we / us",
+    vi: "chúng tôi",
+    pos: "pronoun",
+    tone_notes: "们 (men) là hậu tố số nhiều, thanh nhẹ (neutral tone).",
+  },
+
+  // === Greetings & basics ===
+  {
+    hanzi: "你好",
+    pinyin: "nǐ hǎo",
+    en: "Hello",
+    vi: "Xin chào",
+    pos: "phrase",
+    tone_notes: "nǐ (3) + hǎo (3) → nǐ đọc thành thanh 2 (ní hǎo) — quy tắc biến thanh.",
+  },
+  {
+    hanzi: "谢谢",
+    pinyin: "xièxie",
+    en: "Thank you",
+    vi: "Cảm ơn",
+    pos: "phrase",
+    tone_notes: "xiè (4, xuống mạnh). Âm 'x' gần 'x' tiếng Việt nhưng đầu lưỡi sát răng hơn.",
+  },
+  {
+    hanzi: "对不起",
+    pinyin: "duìbuqǐ",
+    en: "Sorry",
+    vi: "Xin lỗi",
+    pos: "phrase",
+    tone_notes: "bu đọc thanh nhẹ. qǐ thanh 3 — âm 'q' gần 'ch' nhưng mặt lưỡi chạm vòm.",
+  },
+  {
+    hanzi: "再见",
+    pinyin: "zàijiàn",
+    en: "Goodbye",
+    vi: "Tạm biệt",
+    pos: "phrase",
+    tone_notes: "zài (4) + jiàn (4). Âm 'z' giống 'ch' không bật hơi; 'j' gần 'ch' mềm.",
+  },
+  {
+    hanzi: "名字",
+    pinyin: "míngzi",
+    en: "name",
+    vi: "tên",
+    pos: "noun",
+    tone_notes: "míng (2, lên). zi đọc thanh nhẹ.",
+  },
+
+  // === Verbs ===
+  {
+    hanzi: "是",
+    pinyin: "shì",
+    en: "to be (is/am/are)",
+    vi: "là",
+    pos: "verb",
+    tone_notes: "Thanh 4 (xuống mạnh). Âm 'sh' cong lưỡi — đầu lưỡi chạm vòm trên.",
+  },
+  {
+    hanzi: "有",
+    pinyin: "yǒu",
+    en: "to have / there is",
+    vi: "có",
+    pos: "verb",
+    tone_notes: "Thanh 3. Phủ định luôn là 没有 (méiyǒu), không bao giờ dùng 不有 (bùyǒu).",
+  },
+  {
+    hanzi: "吃",
+    pinyin: "chī",
+    en: "to eat",
+    vi: "ăn",
+    pos: "verb",
+    tone_notes: "Thanh 1. Âm 'ch' bật hơi — giống 'tr' tiếng Việt nhưng bật hơi mạnh.",
+  },
+  {
+    hanzi: "喝",
+    pinyin: "hē",
+    en: "to drink",
+    vi: "uống",
+    pos: "verb",
+    tone_notes: "Thanh 1. Âm 'h' giống 'h' tiếng Việt nhưng từ họng sâu hơn.",
+  },
+  {
+    hanzi: "去",
+    pinyin: "qù",
+    en: "to go",
+    vi: "đi",
+    pos: "verb",
+    tone_notes: "Thanh 4. Âm 'q' mặt lưỡi chạm vòm, gần 'ch' mềm.",
+  },
+  {
+    hanzi: "来",
+    pinyin: "lái",
+    en: "to come",
+    vi: "đến",
+    pos: "verb",
+    tone_notes: "Thanh 2 (lên). 来 và 去 thường đi cặp: 回来 (huílai — quay lại), 回去 (huíqu — quay đi).",
+  },
+  {
+    hanzi: "看",
+    pinyin: "kàn",
+    en: "to see / to watch / to read",
+    vi: "nhìn / xem / đọc",
+    pos: "verb",
+    tone_notes: "Thanh 4. Dùng cho xem TV (看电视), đọc sách (看书), và gặp ai đó (看朋友).",
+  },
+  {
+    hanzi: "说",
+    pinyin: "shuō",
+    en: "to speak / to say",
+    vi: "nói",
+    pos: "verb",
+    tone_notes: "Thanh 1. Âm 'sh' cong lưỡi. VN hay phát âm thành 'suô' — sai.",
+  },
+  {
+    hanzi: "买",
+    pinyin: "mǎi",
+    en: "to buy",
+    vi: "mua",
+    pos: "verb",
+    tone_notes: "Thanh 3. Phân biệt với 卖 (mài — bán, thanh 4). Cặp mua-bán cực dễ nhầm.",
+  },
+  {
+    hanzi: "做",
+    pinyin: "zuò",
+    en: "to do / to make",
+    vi: "làm",
+    pos: "verb",
+    tone_notes: "Thanh 4. Âm 'z' không bật hơi — gần 'ch' nhưng nhẹ hơn.",
+  },
+
+  // === Food & drink ===
+  {
+    hanzi: "水",
+    pinyin: "shuǐ",
+    en: "water",
+    vi: "nước",
+    pos: "noun",
+    tone_notes: "Thanh 3. 'sh' cong lưỡi + 'ui'. VN hay đọc 'suỷ' — sai.",
+  },
+  {
+    hanzi: "饭",
+    pinyin: "fàn",
+    en: "rice / meal / food",
+    vi: "cơm / bữa ăn",
+    pos: "noun",
+    tone_notes: "Thanh 4. 'f' giống 'ph' tiếng Việt.",
+  },
+  {
+    hanzi: "茶",
+    pinyin: "chá",
+    en: "tea",
+    vi: "trà",
+    pos: "noun",
+    tone_notes: "Thanh 2. Âm 'ch' bật hơi mạnh, khác 'tr' tiếng Việt.",
+  },
+  {
+    hanzi: "菜",
+    pinyin: "cài",
+    en: "vegetable / dish / cuisine",
+    vi: "rau / món ăn",
+    pos: "noun",
+    tone_notes: "Thanh 4. Âm 'c' không bật hơi (aspirated). Để tay trước miệng — không được có hơi.",
+  },
+  {
+    hanzi: "肉",
+    pinyin: "ròu",
+    en: "meat",
+    vi: "thịt",
+    pos: "noun",
+    tone_notes: "Thanh 4. Âm 'r' cong lưỡi, khác 'r' tiếng Việt.",
+  },
+  {
+    hanzi: "面",
+    pinyin: "miàn",
+    en: "noodles / flour",
+    vi: "mì / bột mì",
+    pos: "noun",
+    tone_notes: "Thanh 4. 面条 (miàntiáo) = sợi mì.",
+  },
+
+  // === Numbers ===
+  {
+    hanzi: "一",
+    pinyin: "yī",
+    en: "one",
+    vi: "một",
+    pos: "noun",
+    tone_notes: "Thanh 1 khi đứng riêng. Biến thanh: yī → yí (trước thanh 4), yì (trước 1/2/3).",
+  },
+  {
+    hanzi: "二",
+    pinyin: "èr",
+    en: "two",
+    vi: "hai",
+    pos: "noun",
+    tone_notes: "Thanh 4. Âm 'er' cong lưỡi về sau — VN cực khó phát âm đúng.",
+  },
+  {
+    hanzi: "三",
+    pinyin: "sān",
+    en: "three",
+    vi: "ba",
+    pos: "noun",
+    tone_notes: "Thanh 1.",
+  },
+  {
+    hanzi: "四",
+    pinyin: "sì",
+    en: "four",
+    vi: "bốn",
+    pos: "noun",
+    tone_notes: "Thanh 4. Âm 's' không bật hơi, đầu lưỡi sau răng trên.",
+  },
+  {
+    hanzi: "五",
+    pinyin: "wǔ",
+    en: "five",
+    vi: "năm",
+    pos: "noun",
+    tone_notes: "Thanh 3. 'w' giống 'u' nửa phụ âm.",
+  },
+  {
+    hanzi: "六",
+    pinyin: "liù",
+    en: "six",
+    vi: "sáu",
+    pos: "noun",
+    tone_notes: "Thanh 4.",
+  },
+  {
+    hanzi: "七",
+    pinyin: "qī",
+    en: "seven",
+    vi: "bảy",
+    pos: "noun",
+    tone_notes: "Thanh 1. 'q' mặt lưỡi chạm vòm.",
+  },
+  {
+    hanzi: "八",
+    pinyin: "bā",
+    en: "eight",
+    vi: "tám",
+    pos: "noun",
+    tone_notes: "Thanh 1. 'b' không bật hơi — giống 'p' Việt Nam hơn 'b'.",
+  },
+  {
+    hanzi: "九",
+    pinyin: "jiǔ",
+    en: "nine",
+    vi: "chín",
+    pos: "noun",
+    tone_notes: "Thanh 3. Âm 'j' mặt lưỡi chạm vòm, gần 'ch' mềm không bật hơi.",
+  },
+  {
+    hanzi: "十",
+    pinyin: "shí",
+    en: "ten",
+    vi: "mười",
+    pos: "noun",
+    tone_notes: "Thanh 2. 'sh' cong lưỡi.",
+  },
+
+  // === Places & objects ===
+  {
+    hanzi: "家",
+    pinyin: "jiā",
+    en: "home / family",
+    vi: "nhà / gia đình",
+    pos: "noun",
+    tone_notes: "Thanh 1.",
+  },
+  {
+    hanzi: "学校",
+    pinyin: "xuéxiào",
+    en: "school",
+    vi: "trường học",
+    pos: "noun",
+    tone_notes: "xué (2) + xiào (4). Âm 'x' gần 'x' tiếng Việt, đầu lưỡi đằng sau răng dưới.",
+  },
+  {
+    hanzi: "医院",
+    pinyin: "yīyuàn",
+    en: "hospital",
+    vi: "bệnh viện",
+    pos: "noun",
+    tone_notes: "yī (1) + yuàn (4). Âm 'y' giống 'i', 'ü' làm tròn môi.",
+  },
+  {
+    hanzi: "钱",
+    pinyin: "qián",
+    en: "money",
+    vi: "tiền",
+    pos: "noun",
+    tone_notes: "Thanh 2.",
+  },
+
+  // === Adjectives ===
+  {
+    hanzi: "好",
+    pinyin: "hǎo",
+    en: "good",
+    vi: "tốt / hay",
+    pos: "adjective",
+    tone_notes: "Thanh 3.",
+  },
+  {
+    hanzi: "大",
+    pinyin: "dà",
+    en: "big",
+    vi: "to / lớn",
+    pos: "adjective",
+    tone_notes: "Thanh 4. 'd' không bật hơi — gần 't' tiếng Việt hơn 'đ'.",
+  },
+  {
+    hanzi: "小",
+    pinyin: "xiǎo",
+    en: "small",
+    vi: "nhỏ",
+    pos: "adjective",
+    tone_notes: "Thanh 3. 'x' gần 'x' Việt, nhưng lưỡi thấp hơn.",
+  },
+  {
+    hanzi: "多",
+    pinyin: "duō",
+    en: "many / much / more than",
+    vi: "nhiều",
+    pos: "adjective",
+    tone_notes: "Thanh 1.",
+  },
+  {
+    hanzi: "少",
+    pinyin: "shǎo",
+    en: "few / little",
+    vi: "ít",
+    pos: "adjective",
+    tone_notes: "Thanh 3. 'sh' cong lưỡi.",
+  },
+  {
+    hanzi: "贵",
+    pinyin: "guì",
+    en: "expensive",
+    vi: "đắt",
+    pos: "adjective",
+    tone_notes: "Thanh 4. 'g' không bật hơi.",
+  },
+  // === Daily life ===
+  {
+    hanzi: "今天",
+    pinyin: "jīntiān",
+    en: "today",
+    vi: "hôm nay",
+    pos: "noun",
+    tone_notes: "jīn (1) + tiān (1).",
+  },
+  {
+    hanzi: "明天",
+    pinyin: "míngtiān",
+    en: "tomorrow",
+    vi: "ngày mai",
+    pos: "noun",
+    tone_notes: "míng (2) + tiān (1).",
+  },
+  {
+    hanzi: "昨天",
+    pinyin: "zuótiān",
+    en: "yesterday",
+    vi: "hôm qua",
+    pos: "noun",
+    tone_notes: "zuó (2) + tiān (1).",
+  },
+  {
+    hanzi: "现在",
+    pinyin: "xiànzài",
+    en: "now",
+    vi: "bây giờ",
+    pos: "adverb",
+    tone_notes: "xiàn (4) + zài (4). Hai thanh 4 liền — lưu ý nhịp.",
+  },
+];
+
+export default CHINESE_VOCABULARY;
