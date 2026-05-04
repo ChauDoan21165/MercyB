@@ -21,6 +21,7 @@ import { useAuth } from "@/providers/AuthProvider";
 import { useUserAccess } from "@/hooks/useUserAccess";
 import TrialExpiredScreen from "@/components/TrialExpiredScreen";
 import ChatSupportButton from "@/components/support/ChatSupportButton";
+import { FeedbackBar } from "@/components/FeedbackBar";
 // 2FA Phase 1 — route guard that forces aal=2 when the user has a
 // verified MFA factor. Pairs with the RLS gate from migration
 // 20260524 so neither layer is the only line of defense.
@@ -1415,8 +1416,9 @@ export default function AppRouter() {
           ) : null}
 
           <Route path="*" element={<NotFound />} />
-        </Route>
-      </Routes>
+      </Route>
+    </Routes>
+    <FeedbackBar />
     </>
   );
 }

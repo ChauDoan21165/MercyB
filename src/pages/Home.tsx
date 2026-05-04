@@ -9,7 +9,6 @@ import { BookOpen, ChevronRight, Compass, GraduationCap, LibraryBig, Mic } from 
 
 import BottomMusicBar from "@/components/audio/BottomMusicBar";
 import { MercyGuide } from "@/components/MercyGuide";
-import { FeedbackBar } from "@/components/FeedbackBar";
 import { useUserAccess } from "@/hooks/useUserAccess";
 import { useAuth } from "@/providers/AuthProvider";
 import { useFeatureFlag } from "@/hooks/useFeatureFlag";
@@ -834,10 +833,6 @@ export default function Home() {
             </React.Fragment>
           ) : null}
         </div>
-      </div>
-
-      <div style={{ position: "fixed", left: 16, bottom: `calc(${isPhone ? 44 : 52}px + env(safe-area-inset-bottom, 0px))`, zIndex: 81, pointerEvents: "auto" }}>
-        <FeedbackBar />
       </div>
 
       <div style={{ position: "fixed", left: 0, right: 0, bottom: `calc(${isPhone ? 8 : 10}px + env(safe-area-inset-bottom, 0px))`, zIndex: 80, padding: "0 16px", pointerEvents: "none" }} aria-label="Bottom music dock">
