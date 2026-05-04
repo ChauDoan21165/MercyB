@@ -48,7 +48,7 @@ export function FeedbackBar() {
           position: "fixed",
           left: 16,
           bottom: `calc(16px + env(safe-area-inset-bottom, 0px))`,
-          zIndex: 50,
+          zIndex: 9999,
           height: 34,
           padding: "0 14px",
           borderRadius: 9999,
