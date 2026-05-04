@@ -394,1181 +394,1177 @@ export const lessons = [
       { japanese: "窓を開けてください。", english: "Please open the window." },
       { japanese: "今、勉強しています。", english: "I am studying now." }
     ]
-  },
-{
-    "id": 21,
-    "title": "Making phone calls (でんわをかける)",
-    "level": "intermediate",
-    "vocabulary": [
-      { "japanese": "でんわ", "english": "telephone", "vietnamese": "điện thoại" },
-      { "japanese": "でんわばんごう", "english": "phone number", "vietnamese": "số điện thoại" },
-      { "japanese": "かけなおす", "english": "to call again", "vietnamese": "gọi lại" },
-      { "japanese": "りゅうご", "english": "answering machine/message", "vietnamese": "thư thoại" },
-      { "japanese": "しょうしょうおまちください", "english": "please hold on", "vietnamese": "xin vui lòng chờ một chút" },
-      { "japanese": "せきにんしゃ", "english": "person in charge", "vietnamese": "người phụ trách" },
-      { "japanese": "でんわをきる", "english": "to hang up", "vietnamese": "gác máy" },
-      { "japanese": "でんわをかける", "english": "to make a phone call", "vietnamese": "gọi điện thoại" },
-      { "japanese": "まちがえる", "english": "to make a mistake", "vietnamese": "nhầm lẫn" },
-      { "japanese": "でんわちょう", "english": "telephone directory", "vietnamese": "danh bạ điện thoại" }
-    ],
-    "grammar": [
-      { "point": "～ていただけますか", "explanation": "Polite request form: 'Could you please do ~ for me?' Used in phone conversations to ask someone to do something politely." },
-      { "point": "～と申します", "explanation": "Humble form of '～と言います' (I am called ~). Used on the phone when introducing yourself." }
-    ],
-    "examples": [
-      { "japanese": "すみません、もう一度お願いできますか。", "english": "Excuse me, could you say that again?", "vietnamese": "Xin lỗi, bạn có thể nói lại một lần nữa được không?" },
-      { "japanese": "田中と申しますが、山田さんはいらっしゃいますか。", "english": "My name is Tanaka. Is Mr. Yamada available?", "vietnamese": "Tôi là Tanaka. Anh Yamada có ở đó không ạ?" },
-      { "japanese": "少々お待ちください。", "english": "Please hold on a moment.", "vietnamese": "Xin vui lòng chờ một chút." },
-      { "japanese": "電車の中なので、後でかけなおします。", "english": "I'm on the train, so I'll call you back later.", "vietnamese": "Tôi đang ở trên tàu, nên tôi sẽ gọi lại sau." },
-      { "japanese": "間違えました、すみません。", "english": "I made a mistake, I'm sorry.", "vietnamese": "Tôi đã nhầm, xin lỗi." }
-    ],
-    "dialogue": [
-      { "speaker": "A", "japanese": "もしもし、田中ですが、山田さんをお願いします。", "english": "Hello, this is Tanaka. May I speak to Mr. Yamada?" },
-      { "speaker": "B", "japanese": "少々お待ちください。代わります。", "english": "Please hold on. I'll put you through." },
-      { "speaker": "A", "japanese": "ありがとうございます。", "english": "Thank you." },
-      { "speaker": "B", "japanese": "申し訳ございません、ただいま席を外しております。", "english": "I'm sorry, he's not at his desk right now." }
-    ],
-    "exercises": [
-      "Fill-blank: もしもし、____と申しますが、鈴木さんはいらっしゃいますか。",
-      "Matching: Match the Japanese phrases: 1. 代わります 2. 席を外す a. to be away from desk b. to put through",
-      "Translation: Translate 'Could you please call me back?' into Japanese."
-    ]
-  },
-  {
-    "id": 22,
-    "title": "Writing emails (メールをかく)",
-    "level": "intermediate",
-    "vocabulary": [
-      { "japanese": "メール", "english": "email", "vietnamese": "thư điện tử" },
-      { "japanese": "けんめい", "english": "subject line", "vietnamese": "tiêu đề" },
-      { "japanese": "さくせいする", "english": "to compose", "vietnamese": "soạn thảo" },
-      { "japanese": "そうしんする", "english": "to send", "vietnamese": "gửi" },
-      { "japanese": "じゅしんする", "english": "to receive", "vietnamese": "nhận" },
-      { "japanese": "へんしん", "english": "reply", "vietnamese": "hồi âm" },
-      { "japanese": "てんぷファイル", "english": "attached file", "vietnamese": "tệp đính kèm" },
-      { "japanese": "かくにん", "english": "confirmation", "vietnamese": "xác nhận" },
-      { "japanese": "おそれいりますが", "english": "I'm sorry to trouble you, but", "vietnamese": "xin lỗi vì đã làm phiền" },
-      { "japanese": "よろしくおねがいします", "english": "best regards / thank you in advance", "vietnamese": "xin cảm ơn / mong được giúp đỡ" }
-    ],
-    "grammar": [
-      { "point": "～させていただきます", "explanation": "Humble expression meaning 'I will humbly do ~'. Used in formal emails to politely announce an action." },
-      { "point": "～ております", "explanation": "Polite continuous form of '～ている'. Used in formal writing to describe ongoing states." }
-    ],
-    "examples": [
-      { "japanese": "件名：会議の日程について", "english": "Subject: Regarding the meeting schedule", "vietnamese": "Tiêu đề: Về lịch họp" },
-      { "japanese": "先日はお世話になりました。", "english": "Thank you for your help the other day.", "vietnamese": "Cảm ơn sự giúp đỡ của bạn hôm trước." },
-      { "japanese": "資料を添付させていただきます。", "english": "I am enclosing the document.", "vietnamese": "Tôi xin gửi kèm tài liệu." },
-      { "japanese": "ご確認のほど、よろしくお願いいたします。", "english": "I would appreciate your confirmation.", "vietnamese": "Kính mong quý vị xác nhận." },
-      { "japanese": "以上、よろしくお願い申し上げます。", "english": "That is all. Best regards.", "vietnamese": "Trên đây là nội dung, trân trọng cảm ơn." }
-    ],
-    "dialogue": [
-      { "speaker": "A", "japanese": "メールが届きましたか。", "english": "Did you receive my email?" },
-      { "speaker": "B", "japanese": "はい、さっき確認しました。件名が分かりやすかったです。", "english": "Yes, I just checked it. The subject line was clear." },
-      { "speaker": "A", "japanese": "添付ファイルは見られましたか。", "english": "Could you see the attached file?" },
-      { "speaker": "B", "japanese": "はい、大丈夫でした。ありがとうございます。", "english": "Yes, it was fine. Thank you." }
-    ],
-    "exercises": [
-      "Fill-blank: 件名：来週の____について（日程）",
-      "Matching: Match the email sections: 1. 宛先 2. 件名 3. 本文 a. body b. recipient c. subject",
-      "Translation: Translate 'I will send you the report by tomorrow.' into Japanese."
-    ]
-  },
-  {
-    "id": 23,
-    "title": "At the bank (ぎんこうで)",
-    "level": "intermediate",
-    "vocabulary": [
-      { "japanese": "ぎんこう", "english": "bank", "vietnamese": "ngân hàng" },
-      { "japanese": "こうざ", "english": "account", "vietnamese": "tài khoản" },
-      { "japanese": "こうざをひらく", "english": "to open an account", "vietnamese": "mở tài khoản" },
-      { "japanese": "おろす", "english": "to withdraw (money)", "vietnamese": "rút tiền" },
-      { "japanese": "あずける", "english": "to deposit (money)", "vietnamese": "gửi tiền" },
-      { "japanese": "つうちょう", "english": "bankbook", "vietnamese": "sổ ngân hàng" },
-      { "japanese": "キャッシュカード", "english": "cash card", "vietnamese": "thẻ ATM" },
-      { "japanese": "りそく", "english": "interest", "vietnamese": "lãi suất" },
-      { "japanese": "てすうりょう", "english": "fee / commission", "vietnamese": "phí giao dịch" },
-      { "japanese": "そうだんする", "english": "to consult / discuss", "vietnamese": "tư vấn" }
-    ],
-    "grammar": [
-      { "point": "～たいのですが", "explanation": "Expression of desire: 'I want to do ~'. Commonly used at a bank to state your purpose politely." },
-      { "point": "～ていただけますか", "explanation": "Polite request: 'Could you please do ~ for me?' Used to ask the bank staff for service." }
-    ],
-    "examples": [
-      { "japanese": "口座を開きたいのですが。", "english": "I'd like to open an account.", "vietnamese": "Tôi muốn mở một tài khoản." },
-      { "japanese": "お金を下ろしたいです。", "english": "I want to withdraw money.", "vietnamese": "Tôi muốn rút tiền." },
-      { "japanese": "キャッシュカードを作りたいのですが。", "english": "I'd like to get a cash card.", "vietnamese": "Tôi muốn làm thẻ ATM." },
-      { "japanese": "通帳をなくしました。再発行できますか。", "english": "I lost my bankbook. Can you reissue it?", "vietnamese": "Tôi bị mất sổ ngân hàng. Có thể cấp lại được không?" },
-      { "japanese": "手数料はいくらですか。", "english": "How much is the fee?", "vietnamese": "Phí giao dịch là bao nhiêu?" }
-    ],
-    "dialogue": [
-      { "speaker": "A", "japanese": "すみません、口座を開きたいのですが。", "english": "Excuse me, I'd like to open an account." },
-      { "speaker": "B", "japanese": "かしこまりました。身分証明書をお持ちですか。", "english": "Certainly. Do you have ID?" },
-      { "speaker": "A", "japanese": "はい、パスポートです。", "english": "Yes, here is my passport." },
-      { "speaker": "B", "japanese": "ありがとうございます。少々お待ちください。", "english": "Thank you. Please wait a moment." }
-    ],
-    "exercises": [
-      "Fill-blank: お金を____たいのですが（あずける）。",
-      "Matching: Match bank terms: 1. 利息 2. 手数料 3. 残高 a. balance b. interest c. fee",
-      "Translation: Translate 'I want to transfer money to another account.' into Japanese."
-    ]
-  },
-  {
-    "id": 24,
-    "title": "At the post office (ゆうびんきょくで)",
-    "level": "intermediate",
-    "vocabulary": [
-      { "japanese": "ゆうびんきょく", "english": "post office", "vietnamese": "bưu điện" },
-      { "japanese": "きって", "english": "stamp", "vietnamese": "tem" },
-      { "japanese": "はがき", "english": "postcard", "vietnamese": "bưu thiếp" },
-      { "japanese": "こづつみ", "english": "parcel", "vietnamese": "bưu kiện" },
-      { "japanese": "かきとめ", "english": "registered mail", "vietnamese": "thư bảo đảm" },
-      { "japanese": "ゆうそうりょう", "english": "postage", "vietnamese": "cước phí" },
-      { "japanese": "くにつき", "english": "by airmail", "vietnamese": "gửi hàng không" },
-      { "japanese": "ふなづみ", "english": "by sea mail", "vietnamese": "gửi đường biển" },
-      { "japanese": "おもさ", "english": "weight", "vietnamese": "trọng lượng" },
-      { "japanese": "おくる", "english": "to send", "vietnamese": "gửi" }
-    ],
-    "grammar": [
-      { "point": "～でお願いします", "explanation": "'Please do it by ~'. Used to specify the method (airmail, registered, etc.) when sending mail." },
-      { "point": "～はいくらですか", "explanation": "'How much is ~?' Useful for asking postage or the price of stamps/postcards." }
-    ],
-    "examples": [
-      { "japanese": "この手紙を航空便でお願いします。", "english": "Please send this letter by airmail.", "vietnamese": "Làm ơn gửi bức thư này bằng đường hàng không." },
-      { "japanese": "小包をアメリカに送りたいです。", "english": "I want to send a parcel to the USA.", "vietnamese": "Tôi muốn gửi một bưu kiện sang Mỹ." },
-      { "japanese": "切手を5枚ください。", "english": "Please give me five stamps.", "vietnamese": "Làm ơn cho tôi 5 con tem." },
-      { "japanese": "書留にすると料金はいくらですか。", "english": "How much is it if I send it registered?", "vietnamese": "Nếu gửi bảo đảm thì phí là bao nhiêu?" },
-      { "japanese": "重さを測ってもらえますか。", "english": "Can you weigh it for me?", "vietnamese": "Bạn có thể cân nó giúp tôi được không?" }
-    ],
-    "dialogue": [
-      { "speaker": "A", "japanese": "すみません、この小包をベトナムに送りたいです。", "english": "Excuse me, I want to send this parcel to Vietnam." },
-      { "speaker": "B", "japanese": "航空便と船便がありますが、どちらになさいますか。", "english": "We have airmail and sea mail. Which would you like?" },
-      { "speaker": "A", "japanese": "航空便でお願いします。料金はいくらですか。", "english": "Airmail, please. How much is it?" },
-      { "speaker": "B", "japanese": "1500円です。こちらに宛先をご記入ください。", "english": "It's 1500 yen. Please write the address here." }
-    ],
-    "exercises": [
-      "Fill-blank: この手紙を____便でお願いします（ふな）。",
-      "Matching: Match mail types: 1. 速達 2. 書留 3. 普通 a. regular b. express c. registered",
-      "Translation: Translate 'I need to buy stamps for a postcard.' into Japanese."
-    ]
-  },
-  {
-    "id": 25,
-    "title": "Renting an apartment (アパートをかりる)",
-    "level": "intermediate",
-    "vocabulary": [
-      { "japanese": "アパート", "english": "apartment", "vietnamese": "căn hộ" },
-      { "japanese": "やちん", "english": "rent", "vietnamese": "tiền thuê nhà" },
-      { "japanese": "まんしょん", "english": "condominium / mansion", "vietnamese": "chung cư cao cấp" },
-      { "japanese": "しききん", "english": "deposit (key money)", "vietnamese": "tiền đặt cọc" },
-      { "japanese": "れいきん", "english": "gratuity money (non-refundable)", "vietnamese": "tiền cảm ơn (không hoàn lại)" },
-      { "japanese": "かいやく", "english": "cancellation of contract", "vietnamese": "hủy hợp đồng" },
-      { "japanese": "ふろ", "english": "bath", "vietnamese": "phòng tắm" },
-      { "japanese": "だんぼう", "english": "heating", "vietnamese": "hệ thống sưởi" },
-      { "japanese": "いんかん", "english": "personal seal / stamp", "vietnamese": "con dấu cá nhân" },
-      { "japanese": "ほしょうにん", "english": "guarantor", "vietnamese": "người bảo lãnh" }
-    ],
-    "grammar": [
-      { "point": "～たいのですが", "explanation": "'I would like to ~'. Used to express desire when beginning the rental process." },
-      { "point": "～なければならない", "explanation": "'Must do ~'. Used to talk about necessary procedures such as contract signing or paying deposit." }
-    ],
-    "examples": [
-      { "japanese": "アパートを借りたいのですが。", "english": "I'd like to rent an apartment.", "vietnamese": "Tôi muốn thuê một căn hộ." },
-      { "japanese": "家賃はいくらですか。", "english": "How much is the rent?", "vietnamese": "Tiền thuê nhà là bao nhiêu?" },
-      { "japanese": "敷金と礼金が必要ですか。", "english": "Are deposit and key money required?", "vietnamese": "Có cần tiền đặt cọc và tiền cảm ơn không?" },
-      { "japanese": "保証人がいなければなりません。", "english": "You must have a guarantor.", "vietnamese": "Bạn phải có người bảo lãnh." },
-      { "japanese": "契約は日本語でいいですか。", "english": "Is the contract in Japanese okay?", "vietnamese": "Hợp đồng bằng tiếng Nhật có được không?" }
-    ],
-    "dialogue": [
-      { "speaker": "A", "japanese": "アパートを探しているんですが、空き室はありますか。", "english": "I'm looking for an apartment. Do you have any vacancies?" },
-      { "speaker": "B", "japanese": "はい、いくつかあります。予算はどのくらいですか。", "english": "Yes, there are several. What's your budget?" },
-      { "speaker": "A", "japanese": "6万円以下でお願いします。", "english": "Under 60,000 yen, please." },
-      { "speaker": "B", "japanese": "こちらは5万8千円です。駅から徒歩5分です。", "english": "This one is 58,000 yen. It's a 5-minute walk from the station." }
-    ],
-    "exercises": [
-      "Fill-blank: このアパートは____が高いですか（家賃）。",
-      "Matching: Match rental terms: 1. 敷金 2. 礼金 3. 仲介手数料 a. agency fee b. deposit c. gratuity",
-      "Translation: Translate 'I want to see the apartment first.' into Japanese."
-    ]
-  },
-  {
-    "id": 26,
-    "title": "Complaints and returns (クレームとへんぴん)",
-    "level": "intermediate",
-    "vocabulary": [
-      { "japanese": "クレーム", "english": "complaint", "vietnamese": "khiếu nại" },
-      { "japanese": "へんぴん", "english": "return (product)", "vietnamese": "trả hàng" },
-      { "japanese": "こうかん", "english": "exchange", "vietnamese": "đổi hàng" },
-      { "japanese": "しょうひん", "english": "product / merchandise", "vietnamese": "hàng hóa" },
-      { "japanese": "きず", "english": "scratch / damage", "vietnamese": "vết xước" },
-      { "japanese": "ふりょうひん", "english": "defective product", "vietnamese": "hàng lỗi" },
-      { "japanese": "レシート", "english": "receipt", "vietnamese": "hóa đơn" },
-      { "japanese": "ほしょうきかん", "english": "warranty period", "vietnamese": "thời hạn bảo hành" },
-      { "japanese": "とりかえる", "english": "to replace", "vietnamese": "thay thế" },
-      { "japanese": "あやまる", "english": "to apologize", "vietnamese": "xin lỗi" }
-    ],
-    "grammar": [
-      { "point": "～ていただけませんか", "explanation": "Polite negative question: 'Could you not do ~?' or here more often 'Could you please do ~ for me?' Used to make requests in complaint situations." },
-      { "point": "～てしまう", "explanation": "Expresses completion or regret. Used to say an action happened unfortunately, e.g., 'I ended up breaking it.'" }
-    ],
-    "examples": [
-      { "japanese": "この商品、壊れています。交換していただけませんか。", "english": "This product is broken. Could you exchange it?", "vietnamese": "Sản phẩm này bị hỏng. Bạn có thể đổi cho tôi được không?" },
-      { "japanese": "レシートをなくしてしまったんですが。", "english": "I lost the receipt, unfortunately.", "vietnamese": "Tôi đã làm mất hóa đơn mất rồi." },
-      { "japanese": "傷があったので返品したいです。", "english": "There is a scratch, so I want to return it.", "vietnamese": "Có vết xước, nên tôi muốn trả hàng." },
-      { "japanese": "保証期間中ですから無料で修理できます。", "english": "It's within the warranty period, so it can be repaired for free.", "vietnamese": "Vì còn trong thời hạn bảo hành nên có thể sửa miễn phí." },
-      { "japanese": "大変申し訳ございません。すぐに新しいものとお取り替えします。", "english": "We are very sorry. We will replace it with a new one immediately.", "vietnamese": "Chúng tôi rất xin lỗi. Sẽ thay ngay bằng cái mới." }
-    ],
-    "dialogue": [
-      { "speaker": "A", "japanese": "すみません、先週買ったパソコンが動かないんです。", "english": "Excuse me, the computer I bought last week doesn't work." },
-      { "speaker": "B", "japanese": "それは大変ですね。レシートはお持ちですか。", "english": "That's terrible. Do you have the receipt?" },
-      { "speaker": "A", "japanese": "はい、あります。交換できますか。", "english": "Yes, I do. Can you exchange it?" },
-      { "speaker": "B", "japanese": "保証期間内ですので、無料で交換いたします。", "english": "It's within the warranty, so we will exchange it free of charge." }
-    ],
-    "exercises": [
-      "Fill-blank: この商品は____です。返品したいです（不良品）。",
-      "Matching: Match complaint actions: 1. 返品 2. 交換 3. 修理 a. repair b. return c. exchange",
-      "Translation: Translate 'I accidentally broke the glass. Can I get a refund?' into Japanese."
-    ]
-  },
-  {
-    "id": 27,
-    "title": "Giving directions (みちあんない)",
-    "level": "intermediate",
-    "vocabulary": [
-      { "japanese": "みちあんない", "english": "giving directions", "vietnamese": "chỉ đường" },
-      { "japanese": "まっすぐ", "english": "straight", "vietnamese": "thẳng" },
-      { "japanese": "まがる", "english": "to turn", "vietnamese": "rẽ" },
-      { "japanese": "こうさてん", "english": "intersection / crossing", "vietnamese": "ngã tư" },
-      { "japanese": "しんごう", "english": "traffic light", "vietnamese": "đèn giao thông" },
-      { "japanese": "かど", "english": "corner", "vietnamese": "góc phố" },
-      { "japanese": "めじるし", "english": "landmark", "vietnamese": "điểm mốc" },
-      { "japanese": "あるく", "english": "to walk", "vietnamese": "đi bộ" },
-      { "japanese": "～ちゅう", "english": "on the way / on ~ street", "vietnamese": "trên đường ~" },
-      { "japanese": "つく", "english": "to arrive", "vietnamese": "đến" }
-    ],
-    "grammar": [
-      { "point": "～と～の間", "explanation": "'Between ~ and ~'. Used to describe location between two landmarks, e.g., 'between the station and the bank'." },
-      { "point": "～を～てください", "explanation": "Polite command: 'Please do ~'. Used to give step-by-step directions." }
-    ],
-    "examples": [
-      { "japanese": "まっすぐ行って、二つ目の信号を右に曲がってください。", "english": "Go straight, and turn right at the second traffic light.", "vietnamese": "Đi thẳng, rẽ phải ở đèn giao thông thứ hai." },
-      { "japanese": "この道をまっすぐ行くと、左に郵便局があります。", "english": "If you go straight down this street, there is a post office on the left.", "vietnamese": "Đi thẳng đường này, bạn sẽ thấy bưu điện bên trái." },
-      { "japanese": "交差点を渡ってください。", "english": "Please cross the intersection.", "vietnamese": "Hãy băng qua ngã tư." },
-      { "japanese": "駅と銀行の間にあります。", "english": "It's between the station and the bank.", "vietnamese": "Nó nằm giữa ga và ngân hàng." },
-      { "japanese": "あの青いビルが目印です。", "english": "That blue building is the landmark.", "vietnamese": "Tòa nhà màu xanh đó là điểm mốc." }
-    ],
-    "dialogue": [
-      { "speaker": "A", "japanese": "すみません、この近くにコンビニはありますか。", "english": "Excuse me, is there a convenience store near here?" },
-      { "speaker": "B", "japanese": "ええと、この道をまっすぐ行って、最初の角を右に曲がってください。", "english": "Well, go straight down this road and turn right at the first corner." },
-      { "speaker": "A", "japanese": "右に曲がってからどのくらいですか。", "english": "How far after turning right?" },
-      { "speaker": "B", "japanese": "50メートルほど行くと、右手にあります。", "english": "After about 50 meters, it will be on your right." }
-    ],
-    "exercises": [
-      "Fill-blank: 次の____を左に曲がってください（交差点）。",
-      "Matching: Match direction phrases: 1. まっすぐ 2. 曲がる 3. 渡る a. to cross b. straight c. to turn",
-      "Translation: Translate 'Turn left at the second corner.' into Japanese."
-    ]
-  },
-  {
-    "id": 28,
-    "title": "Discussing news (ニュースをはなす)",
-    "level": "intermediate",
-    "vocabulary": [
-      { "japanese": "ニュース", "english": "news", "vietnamese": "tin tức" },
-      { "japanese": "じけん", "english": "incident / accident", "vietnamese": "sự việc" },
-      { "japanese": "さいがい", "english": "disaster", "vietnamese": "thảm họa" },
-      { "japanese": "せいじ", "english": "politics", "vietnamese": "chính trị" },
-      { "japanese": "けいざい", "english": "economy", "vietnamese": "kinh tế" },
-      { "japanese": "いけん", "english": "opinion", "vietnamese": "ý kiến" },
-      { "japanese": "はんだんする", "english": "to judge / decide", "vietnamese": "đánh giá" },
-      { "japanese": "えいきょう", "english": "influence / effect", "vietnamese": "ảnh hưởng" },
-      { "japanese": "ぎろんする", "english": "to discuss / debate", "vietnamese": "thảo luận" },
-      { "japanese": "しんぽ", "english": "progress / improvement", "vietnamese": "tiến bộ" }
-    ],
-    "grammar": [
-      { "point": "～によると", "explanation": "'According to ~'. Used to cite sources when discussing news. E.g., 'ニュースによると' (according to the news)." },
-      { "point": "～はずだ", "explanation": "'It should be ~ / I expect that ~ '. Used to express expectation based on information." }
-    ],
-    "examples": [
-      { "japanese": "ニュースによると、明日雨が降るそうです。", "english": "According to the news, it will rain tomorrow.", "vietnamese": "Theo tin tức, ngày mai trời sẽ mưa." },
-      { "japanese": "この事件についてどう思いますか。", "english": "What do you think about this incident?", "vietnamese": "Bạn nghĩ gì về sự việc này?" },
-      { "japanese": "経済は少しずつ良くなっているはずです。", "english": "The economy should be improving little by little.", "vietnamese": "Kinh tế lẽ ra đang dần tốt lên." },
-      { "japanese": "政治のニュースは難しいです。", "english": "Political news is difficult.", "vietnamese": "Tin tức chính trị thì khó." },
-      { "japanese": "あなたの意見を聞かせてください。", "english": "Please tell me your opinion.", "vietnamese": "Hãy cho tôi biết ý kiến của bạn." }
-    ],
-    "dialogue": [
-      { "speaker": "A", "japanese": "今日のニュースを見ましたか。", "english": "Did you watch the news today?" },
-      { "speaker": "B", "japanese": "はい、大きな地震があったそうですね。", "english": "Yes, I heard there was a big earthquake." },
-      { "speaker": "A", "japanese": "とても怖かったです。ベトナムではあまり地震がないので驚きました。", "english": "It was very scary. I was surprised because there aren't many earthquakes in Vietnam." },
-      { "speaker": "B", "japanese": "日本は地震が多いので、準備が大切ですね。", "english": "Japan has many earthquakes, so preparation is important." }
-    ],
-    "exercises": [
-      "Fill-blank: _____によると、台風が近づいているそうです（ニュース）。",
-      "Matching: Match news categories: 1. 政治 2. 経済 3. 天気 a. economy b. politics c. weather",
-      "Translation: Translate 'According to the newspaper, the election results were surprising.' into Japanese."
-    ]
-  },
-  {
-    "id": 29,
-    "title": "Cultural differences (ぶんかのちがい)",
-    "level": "intermediate",
-    "vocabulary": [
-      { "japanese": "ぶんか", "english": "culture", "vietnamese": "văn hóa" },
-      { "japanese": "ちがい", "english": "difference", "vietnamese": "sự khác biệt" },
-      { "japanese": "しゅうかん", "english": "custom / habit", "vietnamese": "phong tục" },
-      { "japanese": "マナー", "english": "manners", "vietnamese": "phép lịch sự" },
-      { "japanese": "あいさつ", "english": "greeting", "vietnamese": "lời chào" },
-      { "japanese": "げんかん", "english": "entrance / genkan", "vietnamese": "hành lang / cửa ra vào" },
-      { "japanese": "くつをぬぐ", "english": "to take off shoes", "vietnamese": "cởi giày" },
-      { "japanese": "めうえ", "english": "superior / older person", "vietnamese": "người trên" },
-      { "japanese": "けいご", "english": "honorific language", "vietnamese": "kính ngữ" },
-      { "japanese": "てきとう", "english": "appropriate / suitable", "vietnamese": "phù hợp" }
-    ],
-    "grammar": [
-      { "point": "～と違う", "explanation": "'Different from ~'. Used to compare Japanese customs with the learner's own culture." },
-      { "point": "～なければならない", "explanation": "'Must do ~'. Used to explain cultural obligations, e.g., 'you must take off shoes'." }
-    ],
-    "examples": [
-      { "japanese": "日本では家に入る前に靴を脱がなければなりません。", "english": "In Japan, you must take off your shoes before entering a house.", "vietnamese": "Ở Nhật, trước khi vào nhà bạn phải cởi giày." },
-      { "japanese": "ベトナムと日本の文化はとても違います。", "english": "Vietnamese and Japanese cultures are very different.", "vietnamese": "Văn hóa Việt Nam và Nhật Bản rất khác nhau." },
-      { "japanese": "目上の人には敬語を使うのがマナーです。", "english": "It is good manners to use keigo with superiors.", "vietnamese": "Đối với người trên thì dùng kính ngữ là phép lịch sự." },
-      { "japanese": "お辞儀をするのが日本の習慣です。", "english": "Bowing is a Japanese custom.", "vietnamese": "Cúi chào là phong tục của Nhật Bản." },
-      { "japanese": "食事の前に「いただきます」と言います。", "english": "We say 'Itadakimasu' before eating.", "vietnamese": "Trước bữa ăn chúng tôi nói 'Itadakimasu'." }
-    ],
-    "dialogue": [
-      { "speaker": "A", "japanese": "日本で一番驚いた文化の違いは何ですか。", "english": "What cultural difference surprised you the most in Japan?" },
-      { "speaker": "B", "japanese": "靴を脱ぐ習慣です。ベトナムでは外でも家でも靴を履いていますから。", "english": "The custom of taking off shoes. In Vietnam, we wear shoes both outside and inside." },
-      { "speaker": "A", "japanese": "それは確かに違いますね。それに、お辞儀もよくしますね。", "english": "That's certainly different. Also, you bow a lot." },
-      { "speaker": "B", "japanese": "そうですね。だんだん慣れてきました。", "english": "Yes. I'm gradually getting used to it." }
-    ],
-    "exercises": [
-      "Fill-blank: 日本では＿＿を脱ぐのが習慣です（靴）。",
-      "Matching: Match Japanese customs: 1. お辞儀 2. 靴を脱ぐ 3. 「いただきます」 a. take off shoes b. bow c. say before meal",
-      "Translation: Translate 'In Vietnam, we usually greet by shaking hands.' into Japanese."
-    ]
-  },
-  {
-    "id": 30,
-    "title": "Job interviews (めんせつ)",
-    "level": "intermediate",
-    "vocabulary": [
-      { "japanese": "めんせつ", "english": "job interview", "vietnamese": "phỏng vấn xin việc" },
-      { "japanese": "しゅうしょく", "english": "job hunting / employment", "vietnamese": "tìm việc" },
-      { "japanese": "りれきしょ", "english": "resume / CV", "vietnamese": "sơ yếu lý lịch" },
-      { "japanese": "しょくけい", "english": "job type / occupation", "vietnamese": "loại công việc" },
-      { "japanese": "じこしょうかい", "english": "self-introduction", "vietnamese": "tự giới thiệu" },
-      { "japanese": "ちから", "english": "ability / strength", "vietnamese": "khả năng" },
-      { "japanese": "けいけん", "english": "experience", "vietnamese": "kinh nghiệm" },
-      { "japanese": "じゅんび", "english": "preparation", "vietnamese": "chuẩn bị" },
-      { "japanese": "しつもん", "english": "question", "vietnamese": "câu hỏi" },
-      { "japanese": "にゅうしゃ", "english": "joining a company", "vietnamese": "vào công ty" }
-    ],
-    "grammar": [
-      { "point": "～を活かす", "explanation": "'To make use of ~'. Used in interviews to talk about how you will apply your skills or experience." },
-      { "point": "～になれるように", "explanation": "'In order to become ~'. Used to express goals or aspirations in an interview context." }
-    ],
-    "examples": [
-      { "japanese": "自己紹介をお願いします。", "english": "Please introduce yourself.", "vietnamese": "Xin hãy tự giới thiệu." },
-      { "japanese": "私は大学で経済を勉強しました。", "english": "I studied economics at university.", "vietnamese": "Tôi đã học kinh tế ở đại học." },
-      { "japanese": "前の仕事で得た経験を活かしたいです。", "english": "I want to make use of the experience I gained in my previous job.", "vietnamese": "Tôi muốn vận dụng kinh nghiệm có được từ công việc trước." },
-      { "japanese": "御社の一員になれるように頑張ります。", "english": "I will do my best to become a member of your company.", "vietnamese": "Tôi sẽ cố gắng để trở thành thành viên của quý công ty." },
-      { "japanese": "志望動機を教えてください。", "english": "Please tell me your motivation for applying.", "vietnamese": "Hãy cho tôi biết động lực ứng tuyển của bạn." }
-    ],
-    "dialogue": [
-      { "speaker": "A", "japanese": "それでは、自己紹介をお願いします。", "english": "Then, please introduce yourself." },
-      { "speaker": "B", "japanese": "はい。私はベトナム人のトゥと申します。日本で3年働いていました。", "english": "Yes. My name is Tu, I'm Vietnamese. I worked in Japan for three years." },
-      { "speaker": "A", "japanese": "なぜ当社を志望したのですか。", "english": "Why did you apply to our company?" },
-      { "speaker": "B", "japanese": "御社の国際的な事業に魅力を感じました。私の語学力を活かしたいです。", "english": "I was attracted by your company's international business. I want to use my language skills." }
-    ],
-    "exercises": [
-      "Fill-blank: ＿＿を活かして働きたいです（経験）。",
-      "Matching: Match interview terms: 1. 志望動機 2. 自己PR 3. 逆質問 a. self-promotion b. motivation c. question to interviewer",
-      "Translation: Translate 'I will prepare well for the interview.' into Japanese."
-    ]
-  },
-  {
-    "id": 31,
-    "title": "Business meetings (かいぎ)",
-    "level": "intermediate",
-    "vocabulary": [
-      { "japanese": "かいぎ", "english": "meeting", "vietnamese": "cuộc họp" },
-      { "japanese": "ぎじろく", "english": "minutes", "vietnamese": "biên bản" },
-      { "japanese": "しりょう", "english": "materials", "vietnamese": "tài liệu" },
-      { "japanese": "ぎだい", "english": "agenda", "vietnamese": "chương trình nghị sự" },
-      { "japanese": "さんかする", "english": "to participate", "vietnamese": "tham gia" },
-      { "japanese": "ていあんする", "english": "to propose", "vietnamese": "đề xuất" },
-      { "japanese": "ごういする", "english": "to agree", "vietnamese": "đồng ý" },
-      { "japanese": "はっせきする", "english": "to speak up", "vietnamese": "phát biểu" },
-      { "japanese": "しかい", "english": "chairperson", "vietnamese": "chủ tọa" },
-      { "japanese": "けつろん", "english": "conclusion", "vietnamese": "kết luận" }
-    ],
-    "grammar": [
-      { "point": "～なければならない", "explanation": "Must do something; used to express obligation in a formal context." },
-      { "point": "～たほうがいい", "explanation": "Should do something; giving advice or recommendation." }
-    ],
-    "examples": [
-      { "japanese": "かいぎにさんかしなければなりません。", "english": "I must participate in the meeting.", "vietnamese": "Tôi phải tham gia cuộc họp." },
-      { "japanese": "しりょうをじゅんびしたほうがいいです。", "english": "You should prepare the materials.", "vietnamese": "Bạn nên chuẩn bị tài liệu." },
-      { "japanese": "ぎじろくをとるのはだれですか。", "english": "Who takes the minutes?", "vietnamese": "Ai ghi biên bản?" },
-      { "japanese": "ぎだいについてていあんします。", "english": "I will propose an agenda item.", "vietnamese": "Tôi sẽ đề xuất một mục chương trình." },
-      { "japanese": "けつろんにごういしました。", "english": "We agreed on the conclusion.", "vietnamese": "Chúng tôi đã đồng ý về kết luận." }
-    ],
-    "dialogue": [
-      { "speaker": "A", "japanese": "こんかいのかいぎのぎだいはなんですか。", "english": "What is the agenda for this meeting?" },
-      { "speaker": "B", "japanese": "あたらしいプロジェクトのけいかくについてです。", "english": "It's about the plan for the new project." },
-      { "speaker": "A", "japanese": "わたしはパートナーシップのていあんをしたいです。", "english": "I would like to propose a partnership." },
-      { "speaker": "B", "japanese": "わかりました。ぎじろくにのせておきます。", "english": "Understood. I will include it in the minutes." }
-    ],
-    "exercises": [
-      "Fill-blank: かいぎに（　）しなければなりません。（さんかする）",
-      "Matching: Match the Japanese words with their Vietnamese meanings: ぎじろく, ていあんする, ごういする",
-      "Translation: Translate 'You should prepare the agenda before the meeting.' into Japanese."
-    ]
-  },
-  {
-    "id": 32,
-    "title": "Giving presentations (プレゼンテーション)",
-    "level": "intermediate",
-    "vocabulary": [
-      { "japanese": "プレゼンテーション", "english": "presentation", "vietnamese": "bài thuyết trình" },
-      { "japanese": "スライド", "english": "slide", "vietnamese": "slide" },
-      { "japanese": "せつめいする", "english": "to explain", "vietnamese": "giải thích" },
-      { "japanese": "しつもん", "english": "question", "vietnamese": "câu hỏi" },
-      { "japanese": "しちょう", "english": "audience", "vietnamese": "khán giả" },
-      { "japanese": "ポイント", "english": "point / key point", "vietnamese": "điểm chính" },
-      { "japanese": "グラフ", "english": "graph", "vietnamese": "biểu đồ" },
-      { "japanese": "データ", "english": "data", "vietnamese": "dữ liệu" },
-      { "japanese": "はっぴょうする", "english": "to present", "vietnamese": "trình bày" },
-      { "japanese": "まとめる", "english": "to summarize", "vietnamese": "tóm tắt" }
-    ],
-    "grammar": [
-      { "point": "～について", "explanation": "About something; used to indicate the topic." },
-      { "point": "～ことになる", "explanation": "It has been decided that / it turns out that." }
-    ],
-    "examples": [
-      { "japanese": "しんせいひんについてプレゼンします。", "english": "I will present about the new product.", "vietnamese": "Tôi sẽ thuyết trình về sản phẩm mới." },
-      { "japanese": "グラフをつかってデータをせつめいします。", "english": "I will explain the data using a graph.", "vietnamese": "Tôi sẽ giải thích dữ liệu bằng biểu đồ." },
-      { "japanese": "さいごにポイントをまとめることになります。", "english": "Finally, I will summarize the key points.", "vietnamese": "Cuối cùng, tôi sẽ tóm tắt các điểm chính." },
-      { "japanese": "しつもんがあるひとはてをあげてください。", "english": "If you have questions, please raise your hand.", "vietnamese": "Ai có câu hỏi hãy giơ tay." },
-      { "japanese": "しちょうのげんごうはよかったです。", "english": "The audience's reaction was good.", "vietnamese": "Phản ứng của khán giả tốt." }
-    ],
-    "dialogue": [
-      { "speaker": "A", "japanese": "つぎのじゅんびはできていますか。", "english": "Are you ready for the next step?" },
-      { "speaker": "B", "japanese": "はい、スライドはもうできました。", "english": "Yes, the slides are already done." },
-      { "speaker": "A", "japanese": "では、データのぶぶんをもうすこしくわしくせつめいしてください。", "english": "Then, please explain the data part a little more in detail." },
-      { "speaker": "B", "japanese": "わかりました。かならずしつもんにもこたえます。", "english": "Understood. I will definitely answer questions too." }
-    ],
-    "exercises": [
-      "Fill-blank: しんせいひん（　）プレゼンテーションをします。（について）",
-      "Matching: Match the Japanese with Vietnamese: スライド, せつめいする, まとめる",
-      "Translation: Translate 'Please summarize the key points at the end.' into Japanese."
-    ]
-  },
-  {
-    "id": 33,
-    "title": "Negotiating (こうしょう)",
-    "level": "intermediate",
-    "vocabulary": [
-      { "japanese": "こうしょう", "english": "negotiation", "vietnamese": "đàm phán" },
-      { "japanese": "じょうけん", "english": "condition / term", "vietnamese": "điều kiện" },
-      { "japanese": "ていあん", "english": "proposal", "vietnamese": "đề xuất" },
-      { "japanese": "せいとう", "english": "fair / legitimate", "vietnamese": "công bằng" },
-      { "japanese": "ゆずる", "english": "to concede", "vietnamese": "nhượng bộ" },
-      { "japanese": "ごうりてき", "english": "reasonable", "vietnamese": "hợp lý" },
-      { "japanese": "だんかい", "english": "stage / phase", "vietnamese": "giai đoạn" },
-      { "japanese": "こうしょうだん", "english": "negotiation table", "vietnamese": "bàn đàm phán" },
-      { "japanese": "まんぞくする", "english": "to be satisfied", "vietnamese": "hài lòng" },
-      { "japanese": "ごういをみる", "english": "to reach an agreement", "vietnamese": "đạt được thỏa thuận" }
-    ],
-    "grammar": [
-      { "point": "～なければならない", "explanation": "Must do something (necessity)." },
-      { "point": "～てもいい", "explanation": "May do something (permission)." }
-    ],
-    "examples": [
-      { "japanese": "こうしょうではおたがいにゆずらなければならないこともあります。", "english": "In negotiations, sometimes both sides must concede.", "vietnamese": "Trong đàm phán, đôi khi cả hai bên phải nhượng bộ." },
-      { "japanese": "このじょうけんはごうりてきですか。", "english": "Is this condition reasonable?", "vietnamese": "Điều kiện này có hợp lý không?" },
-      { "japanese": "もうすこしかんがえてもいいですか。", "english": "May I think about it a little more?", "vietnamese": "Tôi có thể suy nghĩ thêm một chút không?" },
-      { "japanese": "つぎのだんかいにすすめましょう。", "english": "Let's move to the next stage.", "vietnamese": "Hãy chuyển sang giai đoạn tiếp theo." },
-      { "japanese": "わたしたちはこのていあんでまんぞくしています。", "english": "We are satisfied with this proposal.", "vietnamese": "Chúng tôi hài lòng với đề xuất này." }
-    ],
-    "dialogue": [
-      { "speaker": "A", "japanese": "はじめにわたしたちのていあんをせつめいします。", "english": "First, I will explain our proposal." },
-      { "speaker": "B", "japanese": "はい、でもかぶんのじょうけんについてぎもんがあります。", "english": "Yes, but I have a question about the price condition." },
-      { "speaker": "A", "japanese": "かぶんについてはもうすこしごうりてきにできます。", "english": "We can make the price a little more reasonable." },
-      { "speaker": "B", "japanese": "では、それでこうしょうをつづけましょう。", "english": "Then, let's continue the negotiation with that." }
-    ],
-    "exercises": [
-      "Fill-blank: このじょうけんは（　）ですか。（ごうりてき）",
-      "Matching: Match Japanese with Vietnamese: ゆずる, こうしょう, ごういをみる",
-      "Translation: Translate 'May we think about your proposal until next week?' into Japanese."
-    ]
-  },
-  {
-    "id": 34,
-    "title": "Social media (SNS)",
-    "level": "intermediate",
-    "vocabulary": [
-      { "japanese": "SNS（ソーシャルネットワーキングサービス）", "english": "social media", "vietnamese": "mạng xã hội" },
-      { "japanese": "とうこうする", "english": "to post", "vietnamese": "đăng bài" },
-      { "japanese": "フォローする", "english": "to follow", "vietnamese": "theo dõi" },
-      { "japanese": "いいね", "english": "like", "vietnamese": "thích" },
-      { "japanese": "コメントする", "english": "to comment", "vietnamese": "bình luận" },
-      { "japanese": "シェアする", "english": "to share", "vietnamese": "chia sẻ" },
-      { "japanese": "プロフィール", "english": "profile", "vietnamese": "hồ sơ" },
-      { "japanese": "プライバシー", "english": "privacy", "vietnamese": "riêng tư" },
-      { "japanese": "ネットいじめ", "english": "cyberbullying", "vietnamese": "bắt nạt trên mạng" },
-      { "japanese": "インフルエンサー", "english": "influencer", "vietnamese": "người có ảnh hưởng" }
-    ],
-    "grammar": [
-      { "point": "～すぎる", "explanation": "Too much / excessive; attached to stem of verbs or adjectives." },
-      { "point": "～たほうがいい", "explanation": "Should do something; advice or recommendation." }
-    ],
-    "examples": [
-      { "japanese": "SNSにしゃしんをとうこうしすぎないほうがいいです。", "english": "You shouldn't post too many photos on social media.", "vietnamese": "Bạn không nên đăng quá nhiều ảnh lên mạng xã hội." },
-      { "japanese": "フォローしているインフルエンサーがいいねをくれました。", "english": "The influencer I follow gave me a like.", "vietnamese": "Người có ảnh hưởng mà tôi theo dõi đã thích bài của tôi." },
-      { "japanese": "プライバシーせっていをかくにんしたほうがいいです。", "english": "You should check your privacy settings.", "vietnamese": "Bạn nên kiểm tra cài đặt riêng tư." },
-      { "japanese": "ネットいじめはこくさいできなもんだいです。", "english": "Cyberbullying is an international problem.", "vietnamese": "Bắt nạt trên mạng là vấn đề quốc tế." },
-      { "japanese": "コメントをかきすぎると、あとにのこりますよ。", "english": "If you write too many comments, they remain afterward.", "vietnamese": "Nếu bạn viết quá nhiều bình luận, chúng sẽ còn lại sau đó." }
-    ],
-    "dialogue": [
-      { "speaker": "A", "japanese": "SNSになにをとうこうしましたか。", "english": "What did you post on social media?" },
-      { "speaker": "B", "japanese": "きょうのりょこうのしゃしんをシェアしました。", "english": "I shared photos from today's trip." },
-      { "speaker": "A", "japanese": "いいねがたくさんきていますね。", "english": "You're getting many likes." },
-      { "speaker": "B", "japanese": "でも、プライバシーにきをつけないと。", "english": "But I have to be careful about privacy." }
-    ],
-    "exercises": [
-      "Fill-blank: SNSにしゃしんを（　）しないでください。（とうこう）",
-      "Matching: Match Japanese with Vietnamese: フォローする, コメントする, ネットいじめ",
-      "Translation: Translate 'You should not share too much personal information on social media.' into Japanese."
-    ]
-  },
-  {
-    "id": 35,
-    "title": "Environmental issues (かんきょうもんだい)",
-    "level": "intermediate",
-    "vocabulary": [
-      { "japanese": "かんきょうもんだい", "english": "environmental issues", "vietnamese": "vấn đề môi trường" },
-      { "japanese": "ちきゅうおんだんか", "english": "global warming", "vietnamese": "sự nóng lên toàn cầu" },
-      { "japanese": "はいきぶつ", "english": "waste", "vietnamese": "chất thải" },
-      { "japanese": "リサイクル", "english": "recycling", "vietnamese": "tái chế" },
-      { "japanese": "エコ", "english": "eco-friendly", "vietnamese": "thân thiện với môi trường" },
-      { "japanese": "でんき", "english": "electricity", "vietnamese": "điện" },
-      { "japanese": "しょうエネルギー", "english": "energy saving", "vietnamese": "tiết kiệm năng lượng" },
-      { "japanese": "しんりん", "english": "forest", "vietnamese": "rừng" },
-      { "japanese": "せいたいけい", "english": "ecosystem", "vietnamese": "hệ sinh thái" },
-      { "japanese": "ほぜんする", "english": "to preserve", "vietnamese": "bảo tồn" }
-    ],
-    "grammar": [
-      { "point": "～ために", "explanation": "For the sake of / in order to; shows purpose." },
-      { "point": "～なければならない", "explanation": "Must do something (obligation)." }
-    ],
-    "examples": [
-      { "japanese": "かんきょうのためにリサイクルしなければなりません。", "english": "We must recycle for the environment.", "vietnamese": "Chúng ta phải tái chế vì môi trường." },
-      { "japanese": "でんきをけすのはエコのためにいいです。", "english": "Turning off electricity is good for being eco-friendly.", "vietnamese": "Tắt điện là tốt cho môi trường." },
-      { "japanese": "しんりんをほぜんするために、きをうえましょう。", "english": "Let's plant trees to preserve forests.", "vietnamese": "Hãy trồng cây để bảo tồn rừng." },
-      { "japanese": "はいきぶつをへらすことがたいせつです。", "english": "Reducing waste is important.", "vietnamese": "Giảm chất thải là quan trọng." },
-      { "japanese": "ちきゅうおんだんかはせいたいけいにおおきなえいきょうをあたえます。", "english": "Global warming has a big impact on ecosystems.", "vietnamese": "Sự nóng lên toàn cầu có tác động lớn đến hệ sinh thái." }
-    ],
-    "dialogue": [
-      { "speaker": "A", "japanese": "さいきんエコかつどうにさんかしていますか。", "english": "Have you been participating in eco-activities recently?" },
-      { "speaker": "B", "japanese": "はい、リサイクルセンターでボランティアをしています。", "english": "Yes, I volunteer at a recycling center." },
-      { "speaker": "A", "japanese": "いいですね。じぶんでもかんきょうのためにできることがありますね。", "english": "That's nice. There are things we can do ourselves for the environment." },
-      { "speaker": "B", "japanese": "そうですね。まずはしょうエネルギーからはじめましょう。", "english": "That's right. Let's start with energy saving first." }
-    ],
-    "exercises": [
-      "Fill-blank: かんきょう（　）リサイクルをします。（ために）",
-      "Matching: Match Japanese with Vietnamese: はいきぶつ, ほぜんする, せいたいけい",
-      "Translation: Translate 'We must preserve forests for future generations.' into Japanese."
-    ]
-  },
-  {
-    "id": 36,
-    "title": "Expressing opinions (いけんをのべる)",
-    "level": "intermediate",
-    "vocabulary": [
-      { "japanese": "いけん", "english": "opinion", "vietnamese": "ý kiến" },
-      { "japanese": "のべる", "english": "to express / to state", "vietnamese": "bày tỏ" },
-      { "japanese": "はんたいする", "english": "to oppose", "vietnamese": "phản đối" },
-      { "japanese": "さんせいする", "english": "to agree", "vietnamese": "đồng ý" },
-      { "japanese": "りゆう", "english": "reason", "vietnamese": "lý do" },
-      { "japanese": "てん", "english": "point", "vietnamese": "điểm" },
-      { "japanese": "しじする", "english": "to support", "vietnamese": "ủng hộ" },
-      { "japanese": "けんかい", "english": "viewpoint / standpoint", "vietnamese": "quan điểm" },
-      { "japanese": "ぎろん", "english": "argument / discussion", "vietnamese": "tranh luận" },
-      { "japanese": "まとめる", "english": "to summarize", "vietnamese": "tóm tắt" }
-    ],
-    "grammar": [
-      { "point": "～とおもう", "explanation": "I think that...; used to express personal opinion." },
-      { "point": "～については", "explanation": "Regarding / concerning...; used to introduce a topic." }
-    ],
-    "examples": [
-      { "japanese": "わたしはこのけいかくにさんせいだとおもいます。", "english": "I think I agree with this plan.", "vietnamese": "Tôi nghĩ tôi đồng ý với kế hoạch này." },
-      { "japanese": "かんきょうもんだいについては、こうどうがひつようだとおもいます。", "english": "Regarding environmental issues, I think action is necessary.", "vietnamese": "Về vấn đề môi trường, tôi nghĩ hành động là cần thiết." },
-      { "japanese": "はんたいするりゆうをのべてください。", "english": "Please state the reason for opposing.", "vietnamese": "Hãy nêu lý do phản đối." },
-      { "japanese": "わたしのけんかいからは、もうすこしじかんがかかります。", "english": "From my viewpoint, it will take a little more time.", "vietnamese": "Từ quan điểm của tôi, sẽ mất thêm một chút thời gian." },
-      { "japanese": "ぎろんのあとでけんかいをまとめましょう。", "english": "After the argument, let's summarize the viewpoints.", "vietnamese": "Sau khi tranh luận, hãy tóm tắt các quan điểm." }
-    ],
-    "dialogue": [
-      { "speaker": "A", "japanese": "このていあんについてどうおもいますか。", "english": "What do you think about this proposal?" },
-      { "speaker": "B", "japanese": "わたしはさんせいです。でも、いいくつかてんをくわえたほうがいいとおもいます。", "english": "I agree. But I think a few points should be added." },
-      { "speaker": "A", "japanese": "どんなてんですか。", "english": "What points?" },
-      { "speaker": "B", "japanese": "せいさんコストについてもはなすべきだとおもいます。", "english": "I think we should also talk about production costs." }
-    ],
-    "exercises": [
-      "Fill-blank: わたしはこのけいかくに（　）だとおもいます。（はんたい）",
-      "Matching: Match Japanese with Vietnamese: のべる, しじする, けんかい",
-      "Translation: Translate 'I think we should support this viewpoint.' into Japanese."
-    ]
-  },
-  {
-    "id": 37,
-    "title": "Making suggestions (ていあんする)",
-    "level": "intermediate",
-    "vocabulary": [
-      { "japanese": "ていあんする", "english": "to suggest / propose", "vietnamese": "đề xuất" },
-      { "japanese": "かんがえる", "english": "to think / consider", "vietnamese": "suy nghĩ" },
-      { "japanese": "べつの", "english": "another / different", "vietnamese": "khác" },
-      { "japanese": "ほうほう", "english": "method / way", "vietnamese": "phương pháp" },
-      { "japanese": "こうかてき", "english": "effective", "vietnamese": "hiệu quả" },
-      { "japanese": "シミュレーション", "english": "simulation", "vietnamese": "mô phỏng" },
-      { "japanese": "じつげんする", "english": "to realize / achieve", "vietnamese": "thực hiện" },
-      { "japanese": "オプション", "english": "option", "vietnamese": "lựa chọn" },
-      { "japanese": "ひかくする", "english": "to compare", "vietnamese": "so sánh" },
-      { "japanese": "さいようする", "english": "to adopt", "vietnamese": "áp dụng" }
-    ],
-    "grammar": [
-      { "point": "～てみる", "explanation": "To try doing something; suggests trying an action." },
-      { "point": "～たほうがいい", "explanation": "Should do something; giving advice indirectly." }
-    ],
-    "examples": [
-      { "japanese": "このほうほうをためしてみてください。", "english": "Please try this method.", "vietnamese": "Hãy thử phương pháp này." },
-      { "japanese": "ほかのオプションとひかくしたほうがいいとおもいます。", "english": "I think you should compare with other options.", "vietnamese": "Tôi nghĩ bạn nên so sánh với các lựa chọn khác." },
-      { "japanese": "シミュレーションをやってみましょう。", "english": "Let's try doing a simulation.", "vietnamese": "Hãy thử làm mô phỏng." },
-      { "japanese": "このていあんはこうかてきだとおもいます。", "english": "I think this suggestion is effective.", "vietnamese": "Tôi nghĩ đề xuất này hiệu quả." },
-      { "japanese": "あたらしいせいどをさいようしてみてはどうですか。", "english": "How about trying to adopt a new system?", "vietnamese": "Thử áp dụng hệ thống mới thì sao?" }
-    ],
-    "dialogue": [
-      { "speaker": "A", "japanese": "かいぎのじかんをみじかくするほうほうはないですか。", "english": "Isn't there a way to shorten meeting time?" },
-      { "speaker": "B", "japanese": "ぎだいをせんもんごとにわけて、へやをわけてみてはどうですか。", "english": "How about dividing the agenda by specialty and using separate rooms?" },
-      { "speaker": "A", "japanese": "それはいいアイデアですね。やってみます。", "english": "That's a good idea. I'll try it." },
-      { "speaker": "B", "japanese": "まずはテストとしてすこしずつじつげんしてみましょう。", "english": "Let's first try implementing it little by little as a test." }
-    ],
-    "exercises": [
-      "Fill-blank: このせいひんを（　）みてください。（つかう）",
-      "Matching: Match Japanese with Vietnamese: ていあんする, ほうほう, さいようする",
-      "Translation: Translate 'Why don't you try comparing the two options?' into Japanese."
-    ]
-  },
-  {
-    "id": 38,
-    "title": "Apologizing and excuses (しゃざいとわけ)",
-    "level": "intermediate",
-    "vocabulary": [
-      { "japanese": "しゃざいする", "english": "to apologize", "vietnamese": "xin lỗi" },
-      { "japanese": "わけ", "english": "excuse / reason", "vietnamese": "lý do / cái cớ" },
-      { "japanese": "あやまる", "english": "to apologize (casual)", "vietnamese": "xin lỗi" },
-      { "japanese": "ゆるす", "english": "to forgive", "vietnamese": "tha thứ" },
-      { "japanese": "しつれいする", "english": "to be rude", "vietnamese": "thô lỗ" },
-      { "japanese": "ごめいわくをかける", "english": "to cause trouble", "vietnamese": "gây phiền hà" },
-      { "japanese": "てちがい", "english": "mistake / error", "vietnamese": "sai sót" },
-      { "japanese": "わけをせつめいする", "english": "to explain the reason", "vietnamese": "giải thích lý do" },
-      { "japanese": "しょうじき", "english": "honest", "vietnamese": "thành thật" },
-      { "japanese": "つぐないをする", "english": "to make amends", "vietnamese": "đền bù" }
-    ],
-    "grammar": [
-      { "point": "～てすみません", "explanation": "I'm sorry for...; apologizing for an action." },
-      { "point": "～という意味", "explanation": "Meaning that...; used to explain the meaning of a word or reason." }
-    ],
-    "examples": [
-      { "japanese": "おくれてすみません。", "english": "I'm sorry for being late.", "vietnamese": "Xin lỗi vì đã đến muộn." },
-      { "japanese": "てちがいをしてごめいわくをかけてすみません。", "english": "I'm sorry for causing trouble by making a mistake.", "vietnamese": "Xin lỗi vì đã gây phiền hà do sai sót." },
-      { "japanese": "これはしつれいという意味ですか。", "english": "Does this mean 'rude'?", "vietnamese": "Điều này có nghĩa là thô lỗ không?" },
-      { "japanese": "しょうじきにわけをせつめいしたほうがいいです。", "english": "You should honestly explain the reason.", "vietnamese": "Bạn nên thành thật giải thích lý do." },
-      { "japanese": "つぐないをするつもりです。ゆるしてください。", "english": "I intend to make amends. Please forgive me.", "vietnamese": "Tôi định sẽ đền bù. Hãy tha thứ cho tôi." }
-    ],
-    "dialogue": [
-      { "speaker": "A", "japanese": "きのうのしごとでミスをしてしまいました。", "english": "I made a mistake at work yesterday." },
-      { "speaker": "B", "japanese": "それはいけませんね。わけをきかせてください。", "english": "That's not good. Please tell me the reason." },
-      { "speaker": "A", "japanese": "データのチェックをわすれたためです。もうしわけありません。", "english": "It's because I forgot to check the data. I'm very sorry." },
-      { "speaker": "B", "japanese": "わかりました。こんどからきをつけてください。", "english": "I understand. Please be careful from now on." }
-    ],
-    "exercises": [
-      "Fill-blank: おくれて（　）。（すみません）",
-      "Matching: Match Japanese with Vietnamese: しゃざいする, ゆるす, つぐないをする",
-      "Translation: Translate 'I apologize for the mistake. I will be more careful.' into Japanese."
-    ]
-  },
-  {
-    "id": 39,
-    "title": "Giving advice (アドバイスをする)",
-    "level": "intermediate",
-    "vocabulary": [
-      { "japanese": "アドバイス", "english": "advice", "vietnamese": "lời khuyên" },
-      { "japanese": "はげます", "english": "to encourage", "vietnamese": "khích lệ" },
-      { "japanese": "きをつける", "english": "to be careful", "vietnamese": "cẩn thận" },
-      { "japanese": "ちゅういする", "english": "to warn", "vietnamese": "cảnh báo" },
-      { "japanese": "べんきょうになる", "english": "to be instructive / educational", "vietnamese": "bổ ích" },
-      { "japanese": "さんこうにする", "english": "to refer to / use as reference", "vietnamese": "tham khảo" },
-      { "japanese": "そっくり", "english": "exactly like / whole", "vietnamese": "giống hệt" },
-      { "japanese": "かんがえなおす", "english": "to reconsider", "vietnamese": "xem xét lại" },
-      { "japanese": "はんだんする", "english": "to judge", "vietnamese": "đánh giá" },
-      { "japanese": "せいこうする", "english": "to succeed", "vietnamese": "thành công" }
-    ],
-    "grammar": [
-      { "point": "～たほうがいい", "explanation": "Should do something; giving advice." },
-      { "point": "～ないほうがいい", "explanation": "Should not do something; advising against." }
-    ],
-    "examples": [
-      { "japanese": "もうすこしれんしゅうしたほうがいいですよ。", "english": "You should practice a little more.", "vietnamese": "Bạn nên luyện tập thêm một chút." },
-      { "japanese": "むりをしないほうがいいです。", "english": "You shouldn't overdo it.", "vietnamese": "Bạn không nên làm quá sức." },
-      { "japanese": "このほんはべんきょうになりますよ。", "english": "This book will be instructive.", "vietnamese": "Cuốn sách này rất bổ ích đấy." },
-      { "japanese": "じぶんではんだんしないで、せんもんかにきいたほうがいいです。", "english": "You should ask a specialist rather than judging yourself.", "vietnamese": "Bạn nên hỏi chuyên gia thay vì tự đánh giá." },
-      { "japanese": "せいこうしたいなら、かんがえなおしたほうがいいかもしれません。", "english": "If you want to succeed, you might want to reconsider.", "vietnamese": "Nếu muốn thành công, bạn có thể nên xem xét lại." }
-    ],
-    "dialogue": [
-      { "speaker": "A", "japanese": "にほんごのべんきょうでつまづいています。アドバイスをください。", "english": "I'm stuck in Japanese study. Please give me advice." },
-      { "speaker": "B", "japanese": "まいにちちょっとずつでもれんしゅうしたほうがいいですよ。", "english": "You should practice a little every day." },
-      { "speaker": "A", "japanese": "でも、もっとはやくできるほうほうはありませんか。", "english": "But isn't there a way to do it faster?" },
-      { "speaker": "B", "japanese": "むりをしないほうがいいです。じっくりやればしぜんにじょうたつします。", "english": "You shouldn't overdo it. If you do it steadily, you'll improve naturally." }
-    ],
-    "exercises": [
-      "Fill-blank: むりを（　）ほうがいいです。（しない）",
-      "Matching: Match Japanese with Vietnamese: はげます, ちゅういする, さんこうにする",
-      "Translation: Translate 'You should refer to this website for more information.' into Japanese."
-    ]
-  },
-  {
-    "id": 40,
-    "title": "Describing experiences (けいけんをのべる)",
-    "level": "intermediate",
-    "vocabulary": [
-      { "japanese": "けいけん", "english": "experience", "vietnamese": "kinh nghiệm" },
-      { "japanese": "のべる", "english": "to describe / to state", "vietnamese": "miêu tả" },
-      { "japanese": "かつどう", "english": "activity", "vietnamese": "hoạt động" },
-      { "japanese": "わすれられない", "english": "unforgettable", "vietnamese": "không thể quên" },
-      { "japanese": "はじめて", "english": "first time", "vietnamese": "lần đầu" },
-      { "japanese": "おどろく", "english": "to be surprised", "vietnamese": "ngạc nhiên" },
-      { "japanese": "かんどうする", "english": "to be moved / impressed", "vietnamese": "xúc động" },
-      { "japanese": "たいけんする", "english": "to experience", "vietnamese": "trải nghiệm" },
-      { "japanese": "くりかえす", "english": "to repeat", "vietnamese": "lặp lại" },
-      { "japanese": "きおく", "english": "memory", "vietnamese": "ký ức" }
-    ],
-    "grammar": [
-      { "point": "～たことがある", "explanation": "Have done something before; expresses past experience." },
-      { "point": "～たり～たりする", "explanation": "Doing various things; listing actions." }
-    ],
-    "examples": [
-      { "japanese": "ふじさんにのぼったことがあります。", "english": "I have climbed Mount Fuji before.", "vietnamese": "Tôi đã từng leo núi Phú Sĩ." },
-      { "japanese": "りょこうでたべたり、みたり、たくさんたいけんしました。", "english": "During the trip, I experienced many things like eating and seeing.", "vietnamese": "Trong chuyến đi, tôi đã trải nghiệm nhiều thứ như ăn uống, ngắm cảnh." },
-      { "japanese": "はじめてすしをたべたとき、とてもおどろきました。", "english": "When I ate sushi for the first time, I was very surprised.", "vietnamese": "Khi lần đầu ăn sushi, tôi rất ngạc nhiên." },
-      { "japanese": "そのけいけんはわすれられないきおくになりました。", "english": "That experience became an unforgettable memory.", "vietnamese": "Trải nghiệm đó đã trở thành ký ức không thể quên." },
-      { "japanese": "かれのスピーチにかんどうしました。", "english": "I was moved by his speech.", "vietnamese": "Tôi đã xúc động trước bài phát biểu của anh ấy." }
-    ],
-    "dialogue": [
-      { "speaker": "A", "japanese": "にほんでいちばんかんどうしたけいけんはなんですか。", "english": "What is the most impressive experience you had in Japan?" },
-      { "speaker": "B", "japanese": "おまつりにさんかしたことです。", "english": "It's having participated in a festival." },
-      { "speaker": "A", "japanese": "それはいいけいけんですね。なにをしましたか。", "english": "That's a good experience. What did you do?" },
-      { "speaker": "B", "japanese": "みこしをかついだり、おどったりしました。", "english": "I carried a mikoshi and danced." }
-    ],
-    "exercises": [
-      "Fill-blank: にほんで（　）ことがありますか。（すしをたべる）",
-      "Matching: Match Japanese with Vietnamese: けいけん, かんどうする, わすれられない",
-      "Translation: Translate 'I have never experienced such a beautiful sunset.' into Japanese."
-    ]
-  },
-  {
-    "id": 41,
-    "title": "Comparing options (オプションをくらべる)",
-    "level": "upper-intermediate",
-    "vocabulary": [
-      { "japanese": "比較する", "english": "to compare", "vietnamese": "so sánh" },
-      { "japanese": "選択肢", "english": "option/choice", "vietnamese": "lựa chọn" },
-      { "japanese": "利点", "english": "advantage", "vietnamese": "lợi điểm" },
-      { "japanese": "欠点", "english": "disadvantage", "vietnamese": "nhược điểm" },
-      { "japanese": "〜より", "english": "than", "vietnamese": "hơn" },
-      { "japanese": "〜ほど", "english": "as ~ as (with negation)", "vietnamese": "bằng (dạng phủ định)" },
-      { "japanese": "どちらも", "english": "both", "vietnamese": "cả hai" },
-      { "japanese": "結局", "english": "after all", "vietnamese": "cuối cùng" },
-      { "japanese": "決める", "english": "to decide", "vietnamese": "quyết định" },
-      { "japanese": "迷う", "english": "to be undecided", "vietnamese": "phân vân" }
-    ],
-    "grammar": [
-      { "point": "AはBより〜", "explanation": "Used to compare that A is more ~ than B." },
-      { "point": "AとBとどちらが〜か", "explanation": "Asking which one (A or B) is more ~." },
-      { "point": "AはBほど〜ない", "explanation": "Used to say A is not as ~ as B." }
-    ],
-    "examples": [
-      { "japanese": "飛行機は電車より速いです。", "english": "Airplanes are faster than trains.", "vietnamese": "Máy bay nhanh hơn tàu điện." },
-      { "japanese": "東京と大阪とどちらが大きいですか。", "english": "Which is bigger, Tokyo or Osaka?", "vietnamese": "Tokyo và Osaka, cái nào lớn hơn?" },
-      { "japanese": "このカフェはあのカフェほど静かじゃない。", "english": "This cafe is not as quiet as that cafe.", "vietnamese": "Quán cà phê này không yên tĩnh bằng quán kia." },
-      { "japanese": "どちらもいい選択肢ですね。", "english": "Both are good options.", "vietnamese": "Cả hai đều là lựa chọn tốt." },
-      { "japanese": "結局、新幹線に決めました。", "english": "After all, I decided on the Shinkansen.", "vietnamese": "Cuối cùng tôi đã quyết định đi tàu cao tốc." }
-    ],
-    "dialogue": [
-      { "speaker": "A", "japanese": "A社とB社のプラン、どちらがいいと思う？", "english": "Which plan do you think is better, company A or company B?" },
-      { "speaker": "B", "japanese": "値段はA社のほうが安いけど、サービスはB社のほうが充実しているよ。", "english": "Company A is cheaper, but company B has more comprehensive service." },
-      { "speaker": "A", "japanese": "じゃあ、どちらを選ぶ？", "english": "Then which one will you choose?" },
-      { "speaker": "B", "japanese": "迷うけど、長期的に見ればB社のほうがいいかな。", "english": "I'm undecided, but looking long-term, company B might be better." }
-    ],
-    "exercises": [
-      "Fill-blank: 車は自転車（ ）速い。（より／ほど）",
-      "Matching: Match each comparison expression (より, ほど〜ない, どちら) with its English equivalent.",
-      "Translation: Translate 'This smartphone is not as expensive as that one' into Japanese."
-    ]
-  },
-  {
-    "id": 42,
-    "title": "Hypothetical situations (かていのばあい)",
-    "level": "upper-intermediate",
-    "vocabulary": [
-      { "japanese": "もし", "english": "if", "vietnamese": "nếu" },
-      { "japanese": "〜たら", "english": "if (conditional)", "vietnamese": "nếu (thì)" },
-      { "japanese": "〜ば", "english": "if (conditional)", "vietnamese": "nếu (mà)" },
-      { "japanese": "〜なら", "english": "if (topic/condition)", "vietnamese": "nếu (về)" },
-      { "japanese": "可能性", "english": "possibility", "vietnamese": "khả năng" },
-      { "japanese": "仮定", "english": "assumption/hypothesis", "vietnamese": "giả định" },
-      { "japanese": "現実的", "english": "realistic", "vietnamese": "thực tế" },
-      { "japanese": "想像する", "english": "to imagine", "vietnamese": "tưởng tượng" },
-      { "japanese": "もしもの場合", "english": "in case of emergency", "vietnamese": "trường hợp khẩn cấp" },
-      { "japanese": "現実には", "english": "in reality", "vietnamese": "trong thực tế" }
-    ],
-    "grammar": [
-      { "point": "〜たら", "explanation": "Conditional form: if (after verb た form). Used for hypothetical or future conditions." },
-      { "point": "〜ば", "explanation": "Conditional form: if (after verb ば form, adjective stem + ければ). Emphasizes result." },
-      { "point": "〜なら", "explanation": "Conditional: if it is the case that. Often used to give advice based on a hypothetical." }
-    ],
-    "examples": [
-      { "japanese": "もしお金があったら、世界旅行をしたい。", "english": "If I had money, I would like to travel the world.", "vietnamese": "Nếu có tiền, tôi muốn đi du lịch vòng quanh thế giới." },
-      { "japanese": "雨が降れば、試合は中止になります。", "english": "If it rains, the match will be canceled.", "vietnamese": "Nếu mưa, trận đấu sẽ bị hủy." },
-      { "japanese": "日本に行くなら、まず京都を訪ねてください。", "english": "If you go to Japan, please visit Kyoto first.", "vietnamese": "Nếu đi Nhật, hãy ghé thăm Kyoto trước." },
-      { "japanese": "もっと勉強すれば、合格できたのに。", "english": "If I had studied more, I could have passed.", "vietnamese": "Nếu học chăm hơn, tôi đã có thể đỗ." },
-      { "japanese": "もしもの場合に備えて、保険に入っておこう。", "english": "Let's get insurance just in case of emergency.", "vietnamese": "Hãy mua bảo hiểm để phòng trường hợp khẩn cấp." }
-    ],
-    "dialogue": [
-      { "speaker": "A", "japanese": "もし宝くじに当たったら、どうする？", "english": "If you won the lottery, what would you do?" },
-      { "speaker": "B", "japanese": "まずは家を買って、それから世界一周旅行に行くよ。", "english": "First I'd buy a house, then go on a round-the-world trip." },
-      { "speaker": "A", "japanese": "現実的じゃないけど、想像するのは楽しいね。", "english": "It's not realistic, but it's fun to imagine." },
-      { "speaker": "B", "japanese": "そうだね。でも、もし本当に当たったらどうするか考えておくのも大事だよ。", "english": "Yeah. But it's also important to think about what you'd do if you really won." }
-    ],
-    "exercises": [
-      "Fill-blank: 明日天気が（ ）、散歩に行こう。（よかったら／よければ）",
-      "Matching: Match each conditional (たら, ば, なら) with its most common usage scenario.",
-      "Translation: Translate 'If I were you, I would not do that' into Japanese."
-    ]
-  },
-  {
-    "id": 43,
-    "title": "Reporting speech (でんごん・いんよう)",
-    "level": "upper-intermediate",
-    "vocabulary": [
-      { "japanese": "伝言", "english": "message", "vietnamese": "lời nhắn" },
-      { "japanese": "引用する", "english": "to quote", "vietnamese": "trích dẫn" },
-      { "japanese": "〜と言う", "english": "to say that", "vietnamese": "nói rằng" },
-      { "japanese": "〜と伝える", "english": "to convey that", "vietnamese": "truyền đạt rằng" },
-      { "japanese": "〜そうだ(伝聞)", "english": "I hear that; it is said that", "vietnamese": "nghe nói rằng" },
-      { "japanese": "〜とのことだ", "english": "I hear that (formal)", "vietnamese": "nghe nói rằng (trang trọng)" },
-      { "japanese": "直接話法", "english": "direct speech", "vietnamese": "lời nói trực tiếp" },
-      { "japanese": "間接話法", "english": "indirect speech", "vietnamese": "lời nói gián tiếp" },
-      { "japanese": "要約する", "english": "to summarize", "vietnamese": "tóm tắt" },
-      { "japanese": "そのまま", "english": "as is; exactly", "vietnamese": "nguyên văn" }
-    ],
-    "grammar": [
-      { "point": "〜と言う / 〜と伝える", "explanation": "Used to report what someone said. と言う is neutral, と伝える implies passing on a message." },
-      { "point": "〜そうだ (伝聞)", "explanation": "Attached to the plain form of a verb/adjective to indicate hearsay (I heard that…)." },
-      { "point": "〜とのことだ", "explanation": "More formal hearsay expression, often used in announcements or reports." }
-    ],
-    "examples": [
-      { "japanese": "彼は「明日来ます」と言いました。", "english": "He said, 'I will come tomorrow.' (direct)", "vietnamese": "Anh ấy nói 'Ngày mai tôi sẽ đến'." },
-      { "japanese": "彼は明日来ると言いました。", "english": "He said he would come tomorrow. (indirect)", "vietnamese": "Anh ấy nói rằng ngày mai sẽ đến." },
-      { "japanese": "田中さんから伝言です。今日は遅くなると伝えてください。", "english": "There is a message from Tanaka. Please tell him that he will be late today.", "vietnamese": "Có tin nhắn từ Tanaka. Hãy nhắn rằng hôm nay anh ấy sẽ đến muộn." },
-      { "japanese": "天気予報によると、明日は雨だそうです。", "english": "According to the weather forecast, it will rain tomorrow.", "vietnamese": "Theo dự báo thời tiết, ngày mai trời sẽ mưa." },
-      { "japanese": "社長は来週の会議は延期とのことです。", "english": "I hear that the president said the meeting next week will be postponed.", "vietnamese": "Tôi nghe nói chủ tịch nói cuộc họp tuần sau sẽ bị hoãn." }
-    ],
-    "dialogue": [
-      { "speaker": "A", "japanese": "山田先生は何とおっしゃっていましたか。", "english": "What did Mr. Yamada say?" },
-      { "speaker": "B", "japanese": "明日の授業は休みだと伝えてくださいとのことです。", "english": "He said to tell everyone that tomorrow's class is off." },
-      { "speaker": "A", "japanese": "わかりました。学生たちに連絡します。", "english": "Understood. I'll contact the students." },
-      { "speaker": "B", "japanese": "あと、レポートの締め切りは来週の金曜日だそうです。", "english": "Also, I hear the report deadline is next Friday." }
-    ],
-    "exercises": [
-      "Fill-blank: 彼女は「私はベトナム人です」（ ）言った。（と／そう）",
-      "Matching: Match each reporting verb (と言う, と伝える, そうだ) with its nuance.",
-      "Translation: Translate 'I heard that the restaurant is very popular' into Japanese using そうだ."
-    ]
-  },
-  {
-    "id": 44,
-    "title": "Passive voice (うけみ)",
-    "level": "upper-intermediate",
-    "vocabulary": [
-      { "japanese": "受身形", "english": "passive form", "vietnamese": "thể bị động" },
-      { "japanese": "作られる", "english": "to be made", "vietnamese": "được làm" },
-      { "japanese": "書かれる", "english": "to be written", "vietnamese": "được viết" },
-      { "japanese": "食べられる", "english": "to be eaten", "vietnamese": "bị ăn" },
-      { "japanese": "盗まれる", "english": "to be stolen", "vietnamese": "bị đánh cắp" },
-      { "japanese": "～によって", "english": "by (agent in passive)", "vietnamese": "bởi" },
-      { "japanese": "被害", "english": "damage/harm", "vietnamese": "thiệt hại" },
-      { "japanese": "恩恵", "english": "benefit", "vietnamese": "ân huệ" },
-      { "japanese": "迷惑", "english": "trouble/nuisance", "vietnamese": "phiền phức" },
-      { "japanese": "気づかれる", "english": "to be noticed", "vietnamese": "bị phát hiện" }
-    ],
-    "grammar": [
-      { "point": "受身形 (Group I U→A+れる, Group II る→られる, Group III する→される, 来る→来られる)", "explanation": "Conjugation to form passive voice. The agent is often marked with に or によって." },
-      { "point": "受け身の意味と用法", "explanation": "Used when the subject is acted upon. Can express direct passive (e.g., 食べられる) or indirect passive (suffering passive, e.g., 雨に降られる)." }
-    ],
-    "examples": [
-      { "japanese": "このケーキは母によって作られました。", "english": "This cake was made by my mother.", "vietnamese": "Cái bánh này được làm bởi mẹ tôi." },
-      { "japanese": "財布が盗まれました。", "english": "My wallet was stolen.", "vietnamese": "Ví của tôi đã bị đánh cắp." },
-      { "japanese": "彼はみんなに好かれています。", "english": "He is liked by everyone.", "vietnamese": "Anh ấy được mọi người yêu quý." },
-      { "japanese": "友達に約束を忘れられてしまった。", "english": "I was let down by my friend forgetting the promise. (indirect passive)", "vietnamese": "Tôi đã bị bạn quên lời hẹn." },
-      { "japanese": "この本は世界中で読まれている。", "english": "This book is read all over the world.", "vietnamese": "Cuốn sách này được đọc trên khắp thế giới." }
-    ],
-    "dialogue": [
-      { "speaker": "A", "japanese": "あれ？自転車がない！", "english": "Huh? My bike is gone!" },
-      { "speaker": "B", "japanese": "どうしたの？", "english": "What happened?" },
-      { "speaker": "A", "japanese": "盗まれたみたい。昨日駐輪場に置いたのに。", "english": "It looks like it was stolen. I parked it in the bicycle parking lot yesterday." },
-      { "speaker": "B", "japanese": "それは大変だね。警察に届けたほうがいいよ。", "english": "That's terrible. You should report it to the police." }
-    ],
-    "exercises": [
-      "Fill-blank: そのニュースは多くの人（ ）知られています。（に／を）",
-      "Matching: Match each passive verb (作られる, 書かれる, 盗まれる) with its base form.",
-      "Translation: Translate 'The window was broken by the child' into Japanese."
-    ]
-  },
-  {
-    "id": 45,
-    "title": "Relative clauses (かんけいせつ)",
-    "level": "upper-intermediate",
-    "vocabulary": [
-      { "japanese": "関係節", "english": "relative clause", "vietnamese": "mệnh đề quan hệ" },
-      { "japanese": "〜人", "english": "person who ~", "vietnamese": "người mà" },
-      { "japanese": "〜もの", "english": "thing that ~", "vietnamese": "thứ mà" },
-      { "japanese": "〜ところ", "english": "place where ~", "vietnamese": "nơi mà" },
-      { "japanese": "修飾する", "english": "to modify", "vietnamese": "bổ nghĩa" },
-      { "japanese": "主語", "english": "subject", "vietnamese": "chủ ngữ" },
-      { "japanese": "目的語", "english": "object", "vietnamese": "tân ngữ" },
-      { "japanese": "動詞の連体形", "english": "attributive form of verb", "vietnamese": "dạng thuộc từ của động từ" },
-      { "japanese": "関係代名詞なし", "english": "no relative pronoun", "vietnamese": "không có đại từ quan hệ" },
-      { "japanese": "複雑な文", "english": "complex sentence", "vietnamese": "câu phức" }
-    ],
-    "grammar": [
-      { "point": "動詞・い形容詞・な形容詞の連体形＋名詞", "explanation": "In Japanese, relative clauses precede the noun they modify. No relative pronouns used. The verb takes plain form (present/past, affirmative/negative) directly before the noun." },
-      { "point": "名詞を修飾する節", "explanation": "The relative clause can be used with any noun. The noun can be the subject, object, or other element of the clause." }
-    ],
-    "examples": [
-      { "japanese": "昨日買った本はとても面白いです。", "english": "The book I bought yesterday is very interesting.", "vietnamese": "Cuốn sách tôi đã mua hôm qua rất thú vị." },
-      { "japanese": "日本語を勉強している人は友達です。", "english": "The person who is studying Japanese is my friend.", "vietnamese": "Người đang học tiếng Nhật là bạn tôi." },
-      { "japanese": "ここは有名な寺があるところです。", "english": "This is the place where there is a famous temple.", "vietnamese": "Đây là nơi có ngôi chùa nổi tiếng." },
-      { "japanese": "背が高い女の人が田中さんです。", "english": "The woman who is tall is Ms. Tanaka.", "vietnamese": "Người phụ nữ cao là cô Tanaka." },
-      { "japanese": "私が作った料理を食べてください。", "english": "Please eat the dish (that) I made.", "vietnamese": "Hãy ăn món tôi đã nấu." }
-    ],
-    "dialogue": [
-      { "speaker": "A", "japanese": "先週行ったレストラン、覚えてる？", "english": "Do you remember the restaurant we went to last week?" },
-      { "speaker": "B", "japanese": "うん、あのラーメンがすごくおいしかった店でしょう？", "english": "Yeah, the one where the ramen was really delicious, right?" },
-      { "speaker": "A", "japanese": "そう。あそこにもう一度行かない？", "english": "That's right. Want to go there again?" },
-      { "speaker": "B", "japanese": "いいね。でも今日は別の店を探してみよう。", "english": "Sounds good. But today let's try looking for a different place." }
-    ],
-    "exercises": [
-      "Fill-blank: （ ）人が田中さんですか。（本を読んでいる／本を読んでいる人）",
-      "Matching: Match each Japanese relative clause with the correct meaning.",
-      "Translation: Translate 'The movie that I watched last night was scary' into Japanese."
-    ]
-  },
-  {
-    "id": 46,
-    "title": "Conditional sentences (じょうけんぶん)",
-    "level": "upper-intermediate",
-    "vocabulary": [
-      { "japanese": "条件文", "english": "conditional sentence", "vietnamese": "câu điều kiện" },
-      { "japanese": "〜と", "english": "if/when (inevitable result)", "vietnamese": "nếu/thì (kết quả tất yếu)" },
-      { "japanese": "〜たら", "english": "if (after action/state)", "vietnamese": "nếu (sau hành động)" },
-      { "japanese": "〜ば", "english": "if (general condition)", "vietnamese": "nếu (điều kiện chung)" },
-      { "japanese": "〜なら", "english": "if (topic condition)", "vietnamese": "nếu (về chủ đề)" },
-      { "japanese": "条件", "english": "condition", "vietnamese": "điều kiện" },
-      { "japanese": "結果", "english": "result", "vietnamese": "kết quả" },
-      { "japanese": "仮定条件", "english": "hypothetical condition", "vietnamese": "điều kiện giả định" },
-      { "japanese": "確定条件", "english": "certain condition", "vietnamese": "điều kiện chắc chắn" },
-      { "japanese": "逆接", "english": "adversative/contrast", "vietnamese": "tương phản" }
-    ],
-    "grammar": [
-      { "point": "〜と", "explanation": "Used when the result is natural or inevitable. Cannot be used with volitional, request, etc." },
-      { "point": "〜たら", "explanation": "Versatile conditional; can be used for hypothetical, future, or past conditions. Can express result with volition." },
-      { "point": "〜ば", "explanation": "Focuses on the condition itself; often used for general truths, advice, or potential." },
-      { "point": "〜なら", "explanation": "Used when the condition is already established or assumed; often for giving advice." }
-    ],
-    "examples": [
-      { "japanese": "春になると、桜が咲きます。", "english": "When spring comes, cherry blossoms bloom.", "vietnamese": "Khi mùa xuân đến, hoa anh đào nở." },
-      { "japanese": "お金があったら、何を買いますか。", "english": "If you had money, what would you buy?", "vietnamese": "Nếu có tiền, bạn sẽ mua gì?" },
-      { "japanese": "安ければ、買います。", "english": "If it's cheap, I'll buy it.", "vietnamese": "Nếu rẻ, tôi sẽ mua." },
-      { "japanese": "日本に行くなら、富士山を見てください。", "english": "If you go to Japan, please see Mt. Fuji.", "vietnamese": "Nếu đi Nhật, hãy xem núi Phú Sĩ." },
-      { "japanese": "雨が降ったら、試合は中止です。", "english": "If it rains, the game will be canceled.", "vietnamese": "Nếu mưa, trận đấu sẽ bị hủy." }
-    ],
-    "dialogue": [
-      { "speaker": "A", "japanese": "明日ハイキングに行くけど、もし雨が降ったらどうする？", "english": "We're going hiking tomorrow, but what if it rains?" },
-      { "speaker": "B", "japanese": "雨なら、博物館に行こうよ。", "english": "If it rains, let's go to the museum." },
-      { "speaker": "A", "japanese": "いいね。天気予報を見てみよう。", "english": "Good idea. Let's check the weather forecast." },
-      { "speaker": "B", "japanese": "晴れれば最高だけどね。", "english": "It would be best if it's sunny, though." }
-    ],
-    "exercises": [
-      "Fill-blank: 時間が（ ）、手伝ってください。（あれば／あったら）",
-      "Matching: Match each conditional form (と, たら, ば, なら) with its most appropriate sentence context.",
-      "Translation: Translate 'If you study hard, you will pass the exam' into Japanese using ば."
-    ]
-  },
-  {
-    "id": 47,
-    "title": "Idiomatic expressions (かんようく)",
-    "level": "upper-intermediate",
-    "vocabulary": [
-      { "japanese": "慣用句", "english": "idiom", "vietnamese": "thành ngữ" },
-      { "japanese": "足を引っ張る", "english": "to hold someone back", "vietnamese": "kéo chân ai (cản trở)" },
-      { "japanese": "顔が広い", "english": "to have many connections", "vietnamese": "có nhiều mối quan hệ" },
-      { "japanese": "口が重い", "english": "to be taciturn", "vietnamese": "ít nói" },
-      { "japanese": "目が高い", "english": "to have good taste", "vietnamese": "có con mắt tinh tường" },
-      { "japanese": "手が離せない", "english": "to be tied up (unavailable)", "vietnamese": "bận không rảnh" },
-      { "japanese": "耳が痛い", "english": "harsh to hear (but true)", "vietnamese": "chói tai (nhưng đúng)" },
-      { "japanese": "頭が切れる", "english": "to be sharp-minded", "vietnamese": "đầu óc sắc sảo" },
-      { "japanese": "腹が立つ", "english": "to get angry", "vietnamese": "tức giận" },
-      { "japanese": "気が利く", "english": "to be considerate/smart", "vietnamese": "tinh tế, chu đáo" }
-    ],
-    "grammar": [
-      { "point": "Body part + が +  adjective/verb idioms", "explanation": "Many Japanese idioms use body parts (足, 顔, 口, 目, etc.) followed by が and an adjective or verb. They express personality, emotions, or situations." },
-      { "point": "Idioms with 腹 (はら)", "explanation": "腹が立つ (angry), 腹が決まる (decide), etc. These are common in daily speech." }
-    ],
-    "examples": [
-      { "japanese": "彼はいつも足を引っ張るようなことばかりする。", "english": "He always does things that hold others back.", "vietnamese": "Anh ta lúc nào cũng làm những việc cản trở người khác." },
-      { "japanese": "田中さんは顔が広いから、いろいろな情報が入ってくる。", "english": "Tanaka has many connections, so he gets all kinds of information.", "vietnamese": "Anh Tanaka có nhiều quan hệ nên nhận được nhiều thông tin." },
-      { "japanese": "彼女は口が重いけど、信頼できる人だ。", "english": "She is taciturn but trustworthy.", "vietnamese": "Cô ấy ít nói nhưng là người đáng tin." },
-      { "japanese": "この店のセンスはさすがだね。君は目が高いね。", "english": "This store's taste is indeed good. You have good taste.", "vietnamese": "Gu của cửa hàng này đúng là tốt. Bạn có con mắt tinh tường." },
-      { "japanese": "今手が離せないので、後で連絡します。", "english": "I'm tied up right now, so I'll contact you later.", "vietnamese": "Bây giờ tôi đang bận, nên sẽ liên lạc sau." }
-    ],
-    "dialogue": [
-      { "speaker": "A", "japanese": "新しい部長、どう思う？", "english": "What do you think of the new department head?" },
-      { "speaker": "B", "japanese": "頭が切れるし、気が利く人だね。でも、たまに耳が痛いことを言うよ。", "english": "He's sharp-minded and considerate. But sometimes he says things that are hard to hear." },
-      { "speaker": "A", "japanese": "それはいいことじゃない？成長できるから。", "english": "Isn't that good? Because you can grow." },
-      { "speaker": "B", "japanese": "そうだけど、腹が立つ時もあるよ。", "english": "That's true, but sometimes I get angry." }
-    ],
-    "exercises": [
-      "Fill-blank: 彼女は（ ）が広いから、パーティーにたくさん人が来た。（顔／手）",
-      "Matching: Match each idiom (足を引っ張る, 口が重い, 目が高い, 頭が切れる) with its meaning.",
-      "Translation: Translate 'I can't leave now because I'm tied up with work' into Japanese using an appropriate idiom."
-    ]
-  },
-  {
-    "id": 48,
-    "title": "Slang and colloquial (スラングとこうご)",
-    "level": "upper-intermediate",
-    "vocabulary": [
-      { "japanese": "スラング", "english": "slang", "vietnamese": "tiếng lóng" },
-      { "japanese": "めっちゃ", "english": "very (Kansai dialect, used nationwide)", "vietnamese": "rất, siêu" },
-      { "japanese": "やばい", "english": "awesome/terrible (slang)", "vietnamese": "ngầu/tệ hại" },
-      { "japanese": "ウケる", "english": "hilarious (slang)", "vietnamese": "buồn cười" },
-      { "japanese": "ガチ", "english": "serious (slang)", "vietnamese": "thật sự, nghiêm túc" },
-      { "japanese": "マジ", "english": "really? (slang)", "vietnamese": "thật á?" },
-      { "japanese": "超（ちょう）", "english": "super (colloquial)", "vietnamese": "siêu" },
-      { "japanese": "だるい", "english": "troublesome/lazy (slang)", "vietnamese": "mệt mỏi, lười" },
-      { "japanese": "きもい", "english": "gross/disgusting (slang)", "vietnamese": "ghê" },
-      { "japanese": "うざい", "english": "annoying (slang)", "vietnamese": "phiền phức" }
-    ],
-    "grammar": [
-      { "point": "Colloquial contractions", "explanation": "In casual speech, full forms are often shortened (e.g., ている→てる, でしょう→でしょ, のか→の). Slang words replace standard adjectives." },
-      { "point": "引用の「って」", "explanation": "In casual speech, と is often replaced by って to indicate what someone said (e.g., 彼は行くって言ってた)." }
-    ],
-    "examples": [
-      { "japanese": "このラーメン、めっちゃうまい！", "english": "This ramen is super delicious!", "vietnamese": "Mì ramen này siêu ngon!" },
-      { "japanese": "昨日の映画、やばかったよ。", "english": "Yesterday's movie was awesome (or terrible depending on context).", "vietnamese": "Bộ phim hôm qua tuyệt vời/tệ quá." },
-      { "japanese": "あのジョーク、ウケる！", "english": "That joke is hilarious!", "vietnamese": "Câu đùa đó buồn cười quá!" },
-      { "japanese": "マジで？それは信じられない。", "english": "Really? That's unbelievable.", "vietnamese": "Thật á? Không thể tin được." },
-      { "japanese": "彼の話はだるいから聞きたくない。", "english": "His talk is troublesome, I don't want to listen.", "vietnamese": "Câu chuyện của anh ấy mệt mỏi, tôi không muốn nghe." }
-    ],
-    "dialogue": [
-      { "speaker": "A", "japanese": "昨日のライブ、超最高だった！", "english": "Yesterday's live show was super amazing!" },
-      { "speaker": "B", "japanese": "マジで？行けばよかった！", "english": "Really? I should have gone!" },
-      { "speaker": "A", "japanese": "うん、でも最後の曲はちょっときもかったかも。", "english": "Yeah, but the last song might have been a bit gross." },
-      { "speaker": "B", "japanese": "えー、何それ。ウケる。", "english": "Huh, what's that? Hilarious." }
-    ],
-    "exercises": [
-      "Fill-blank: 今日の宿題、量が（ ）多い。（めっちゃ／だるい）",
-      "Matching: Match each slang word (やばい, ウケる, ガチ, うざい) with its appropriate usage scenario.",
-      "Translation: Translate 'He's seriously annoying' into Japanese using slang."
-    ]
-  },
-  {
-    "id": 49,
-    "title": "Debating skills (ディベート)",
-    "level": "upper-intermediate",
-    "vocabulary": [
-      { "japanese": "ディベート", "english": "debate", "vietnamese": "tranh luận" },
-      { "japanese": "賛成", "english": "agreement", "vietnamese": "đồng ý" },
-      { "japanese": "反対", "english": "opposition", "vietnamese": "phản đối" },
-      { "japanese": "主張する", "english": "to assert", "vietnamese": "khẳng định" },
-      { "japanese": "論点", "english": "point of argument", "vietnamese": "luận điểm" },
-      { "japanese": "証拠", "english": "evidence", "vietnamese": "bằng chứng" },
-      { "japanese": "反論する", "english": "to rebut", "vietnamese": "phản biện" },
-      { "japanese": "譲歩する", "english": "to concede", "vietnamese": "nhượng bộ" },
-      { "japanese": "要約する", "english": "to summarize", "vietnamese": "tóm tắt" },
-      { "japanese": "結論", "english": "conclusion", "vietnamese": "kết luận" }
-    ],
-    "grammar": [
-      { "point": "〜という観点から", "explanation": "From the perspective of ~. Useful when presenting a side of an argument." },
-      { "point": "〜にもかかわらず", "explanation": "In spite of ~. Used to introduce a counterargument." },
-      { "point": "〜というわけではない", "explanation": "It's not that ~. Used to clarify or soften a statement." }
-    ],
-    "examples": [
-      { "japanese": "経済的な観点から言えば、この政策は有効です。", "english": "From an economic perspective, this policy is effective.", "vietnamese": "Từ góc độ kinh tế, chính sách này có hiệu quả." },
-      { "japanese": "反対意見もありますが、私の主張は変わりません。", "english": "There are opposing opinions, but my assertion remains unchanged.", "vietnamese": "Có ý kiến phản đối, nhưng tôi vẫn giữ quan điểm." },
-      { "japanese": "環境への影響が大きいにもかかわらず、その計画は進められています。", "english": "In spite of the large environmental impact, the plan is proceeding.", "vietnamese": "Mặc dù có tác động lớn đến môi trường, kế hoạch vẫn được tiến hành." },
-      { "japanese": "すべての人が賛成しているというわけではありません。", "english": "It's not that everyone agrees.", "vietnamese": "Không phải tất cả mọi người đều đồng ý." },
-      { "japanese": "結論として、私はこの提案に賛成します。", "english": "In conclusion, I agree with this proposal.", "vietnamese": "Kết luận, tôi đồng ý với đề xuất này." }
-    ],
-    "dialogue": [
-      { "speaker": "A", "japanese": "では、最初に賛成側の意見をお願いします。", "english": "Then, first let's hear from the affirmative side." },
-      { "speaker": "B", "japanese": "私はマスク着用の義務化に賛成です。その理由は、感染リスクを減らせるからです。", "english": "I am in favor of mandatory mask-wearing because it reduces the risk of infection." },
-      { "speaker": "A", "japanese": "反対側、反論はありますか。", "english": "Opposition, do you have a rebuttal?" },
-      { "speaker": "B", "japanese": "はい。自由の制限になるという観点から反対します。また、証拠も不十分です。", "english": "Yes. From the perspective of restricting freedom, I oppose it. Also, the evidence is insufficient." }
-    ],
-    "exercises": [
-      "Fill-blank: 環境保護の（ ）から、この法案は重要だ。（観点／結論）",
-      "Matching: Match each debate phrase (賛成する, 反論する, 譲歩する, 要約する) with its meaning.",
-      "Translation: Translate 'There are pros and cons, but I think the pros outweigh the cons' into Japanese."
-    ]
-  },
-  {
-    "id": 50,
-    "title": "Final comprehensive review (そうごうふくしゅう)",
-    "level": "upper-intermediate",
-    "vocabulary": [
-      { "japanese": "総合", "english": "comprehensive", "vietnamese": "tổng hợp" },
-      { "japanese": "復習", "english": "review", "vietnamese": "ôn tập" },
-      { "japanese": "応用", "english": "application", "vietnamese": "ứng dụng" },
-      { "japanese": "まとめる", "english": "to summarize", "vietnamese": "tổng kết" },
-      { "japanese": "弱点", "english": "weak point", "vietnamese": "điểm yếu" },
-      { "japanese": "強化する", "english": "to strengthen", "vietnamese": "củng cố" },
-      { "japanese": "実践", "english": "practice", "vietnamese": "thực hành" },
-      { "japanese": "テスト", "english": "test", "vietnamese": "bài kiểm tra" },
-      { "japanese": "達成感", "english": "sense of achievement", "vietnamese": "cảm giác hoàn thành" },
-      { "japanese": "次のステップ", "english": "next step", "vietnamese": "bước tiếp theo" }
-    ],
-    "grammar": [
-      { "point": "復習と応用", "explanation": "This lesson reviews key grammar points from lessons 41-49: comparisons, hypotheticals, reported speech, passive, relative clauses, conditionals, idioms, slang, and debating expressions. Practice using them in context." },
-      { "point": "自由会話と作文", "explanation": "Learners should create sentences and short paragraphs using a mix of structures. Focus on accuracy and natural flow." }
-    ],
-    "examples": [
-      { "japanese": "もし時間があったら、日本語の勉強をもっとしたいです。でも、現実にはなかなか時間が取れません。", "english": "If I had time, I would like to study Japanese more. But in reality, I can't easily find time.", "vietnamese": "Nếu có thời gian, tôi muốn học tiếng Nhật nhiều hơn. Nhưng thực tế khó có thời gian." },
-      { "japanese": "彼が言っていたことは、必ずしも正しいというわけではない。", "english": "What he said is not necessarily correct.", "vietnamese": "Điều anh ấy nói không nhất thiết đúng." },
-      { "japanese": "この問題は難しいけれど、君ならできると信じている。", "english": "This problem is difficult, but I believe you can do it.", "vietnamese": "Bài toán này khó, nhưng tôi tin bạn làm được." },
-      { "japanese": "あの店のラーメン、めちゃくちゃおいしいって友達が言ってた。", "english": "My friend said that ramen at that shop is super delicious.", "vietnamese": "Bạn tôi nói mì ramen ở quán đó siêu ngon." },
-      { "japanese": "結論として、この計画には賛成できません。理由はいくつかあります。", "english": "In conclusion, I cannot agree with this plan. There are several reasons.", "vietnamese": "Kết luận, tôi không thể đồng ý với kế hoạch này. Có một vài lý do." }
-    ],
-    "dialogue": [
-      { "speaker": "A", "japanese": "今学期の日本語の授業、どうだった？", "english": "How was this semester's Japanese class?" },
-      { "speaker": "B", "japanese": "とても勉強になったよ。特に関係節と条件文がしっかり理解できた。", "english": "I learned a lot. Especially I could understand relative clauses and conditional sentences well." },
-      { "speaker": "A", "japanese": "じゃあ、次のレベルに進む準備はできてるね。", "english": "Then you're ready to move to the next level." },
-      { "speaker": "B", "japanese": "うん、でもまだ弱点もあるから、復習を続けたい。", "english": "Yeah, but I still have weak points, so I want to keep reviewing." }
-    ],
-    "exercises": [
-      "Fill-blank: 彼女は日本語が上手だ（ ）聞いた。（そう／と）",
-      "Matching: Match each sentence pattern from previous lessons (comparison, passive, conditional, idiom) with its example.",
-      "Translation: Translate a short paragraph: 'Although I was busy, I went to the party because my friend said he would be there. If I hadn't gone, I would have missed a great time.' into Japanese, using at least two different conditionals and reported speech."
-    ]
   }
+,
+{
+  id: 21,
+  title: "Making Phone Calls",
+  level: "intermediate",
+  vocabulary: [
+    { japanese: "もしもし", english: "hello (on phone)" },
+    { japanese: "電話番号", english: "phone number" },
+    { japanese: "電話をかける", english: "to make a phone call" },
+    { japanese: "電話に出る", english: "to answer the phone" },
+    { japanese: "切る", english: "to hang up" },
+    { japanese: "伝言", english: "message" },
+    { japanese: "折り返し", english: "call back" },
+    { japanese: "話し中", english: "busy (line)" },
+    { japanese: "留守番電話", english: "answering machine" },
+    { japanese: "間違い電話", english: "wrong number" }
+  ],
+  grammar: [
+    { point: "～てもいいですか", explanation: "May I...? Polite request form." },
+    { point: "～んですが", explanation: "Used to softly introduce a request or reason." }
+  ],
+  examples: [
+    { japanese: "田中さんはいらっしゃいますか。", english: "Is Mr./Ms. Tanaka there?" },
+    { japanese: "山田と申しますが、田中さんをお願いします。", english: "My name is Yamada, may I speak to Tanaka?" },
+    { japanese: "すみません、今電話に出られません。", english: "Sorry, I can't answer the phone right now." },
+    { japanese: "折り返しお電話いただけますか。", english: "Could you call me back?" },
+    { japanese: "伝言をお願いできますか。", english: "Can I leave a message?" }
+  ],
+  dialogue: {
+    speakerA: { japanese: "はい、田中です。", english: "Yes, this is Tanaka." },
+    speakerB: { japanese: "もしもし、山田ですが。", english: "Hello, this is Yamada." },
+    speakerA: { japanese: "あ、山田さん、こんにちは。", english: "Oh, Yamada-san, hello." },
+    speakerB: { japanese: "明日の会議について話したいんですが。", english: "I wanted to talk about tomorrow's meeting." }
+  },
+  exercises: [
+    { type: "fill-blank", question: "もしもし、田中さんは___か。", answer: "いらっしゃいます" },
+    { type: "matching", pairs: [{ japanese: "電話をかける", english: "to make a phone call" }, { japanese: "電話に出る", english: "to answer the phone" }], instruction: "Match the Japanese phrases with their English meanings" },
+    { type: "translation", vietnamese: "Xin chào, tôi có thể nói chuyện với anh Tanaka được không?", japanese: "もしもし、田中さんと話してもいいですか。" }
+  ]
+},
+{
+  id: 22,
+  title: "Writing Emails",
+  level: "intermediate",
+  vocabulary: [
+    { japanese: "メール", english: "email" },
+    { japanese: "件名", english: "subject line" },
+    { japanese: "本文", english: "body (of email)" },
+    { japanese: "送信する", english: "to send" },
+    { japanese: "受信する", english: "to receive" },
+    { japanese: "返信する", english: "to reply" },
+    { japanese: "添付ファイル", english: "attachment" },
+    { japanese: "宛先", english: "recipient" },
+    { japanese: "CC", english: "CC (carbon copy)" },
+    { japanese: "拝啓", english: "Dear (formal opening)" }
+  ],
+  grammar: [
+    { point: "～ていただけますか", explanation: "Could you please...? Very polite request." },
+    { point: "～させていただきます", explanation: "Humble form meaning 'allow me to...'." }
+  ],
+  examples: [
+    { japanese: "件名：来週の打ち合わせについて", english: "Subject: Regarding next week's meeting" },
+    { japanese: "お世話になっております。", english: "Thank you for your continued support (standard opening)." },
+    { japanese: "資料を添付いたしました。", english: "I have attached the documents." },
+    { japanese: "ご確認のほど、よろしくお願いいたします。", english: "Please review it. (formal request)" },
+    { japanese: "以上、よろしくお願い申し上げます。", english: "That is all, thank you. (formal closing)" }
+  ],
+  dialogue: {
+    speakerA: { japanese: "添付ファイルが開けません。", english: "I can't open the attachment." },
+    speakerB: { japanese: "申し訳ありません。PDF形式で再送します。", english: "I'm sorry. I'll resend it as a PDF." },
+    speakerA: { japanese: "ありがとうございます。確認します。", english: "Thank you. I'll check it." },
+    speakerB: { japanese: "何か問題があれば、またご連絡ください。", english: "If you have any issues, please let me know." }
+  },
+  exercises: [
+    { type: "fill-blank", question: "___、田中でございます。", answer: "お世話になっております" },
+    { type: "matching", pairs: [{ japanese: "件名", english: "subject" }, { japanese: "添付", english: "attachment" }], instruction: "Match the Japanese email terms with English" },
+    { type: "translation", vietnamese: "Tôi đã gửi email cho bạn. Bạn đã nhận được chưa?", japanese: "メールを送りました。受信されましたか。" }
+  ]
+},
+{
+  id: 23,
+  title: "At the Bank",
+  level: "intermediate",
+  vocabulary: [
+    { japanese: "銀行", english: "bank" },
+    { japanese: "口座", english: "account" },
+    { japanese: "預ける", english: "to deposit" },
+    { japanese: "引き出す", english: "to withdraw" },
+    { japanese: "振り込み", english: "bank transfer" },
+    { japanese: "残高", english: "balance" },
+    { japanese: "通帳", english: "bank book" },
+    { japanese: "キャッシュカード", english: "cash card" },
+    { japanese: "窓口", english: "teller window" },
+    { japanese: "手数料", english: "fee" }
+  ],
+  grammar: [
+    { point: "～たいんですけど", explanation: "I'd like to... (soft request pattern)." },
+    { point: "～ていただけませんか", explanation: "Could you do... for me? Polite request." }
+  ],
+  examples: [
+    { japanese: "口座を開きたいんですが。", english: "I'd like to open an account." },
+    { japanese: "お金を預けたいです。", english: "I want to deposit money." },
+    { japanese: "残高を確認してください。", english: "Please check the balance." },
+    { japanese: "振り込みをお願いします。", english: "I'd like to make a transfer." },
+    { japanese: "キャッシュカードをなくしました。", english: "I lost my cash card." }
+  ],
+  dialogue: {
+    speakerA: { japanese: "すみません、口座を開きたいんですが。", english: "Excuse me, I'd like to open an account." },
+    speakerB: { japanese: "かしこまりました。こちらに必要事項をご記入ください。", english: "Certainly. Please fill in the necessary information here." },
+    speakerA: { japanese: "はい。身分証明書は必要ですか。", english: "Yes. Do I need identification?" },
+    speakerB: { japanese: "パスポートか運転免許証をお願いします。", english: "Your passport or driver's license, please." }
+  },
+  exercises: [
+    { type: "fill-blank", question: "口座を___たいんですが。", answer: "開き" },
+    { type: "matching", pairs: [{ japanese: "預ける", english: "to deposit" }, { japanese: "引き出す", english: "to withdraw" }], instruction: "Match the Japanese verbs with their meanings" },
+    { type: "translation", vietnamese: "Tôi muốn chuyển khoản đến ngân hàng này.", japanese: "この銀行に振り込みたいです。" }
+  ]
+},
+{
+  id: 24,
+  title: "At the Post Office",
+  level: "intermediate",
+  vocabulary: [
+    { japanese: "郵便局", english: "post office" },
+    { japanese: "切手", english: "stamp" },
+    { japanese: "はがき", english: "postcard" },
+    { japanese: "速達", english: "express mail" },
+    { japanese: "書留", english: "registered mail" },
+    { japanese: "小包", english: "parcel" },
+    { japanese: "航空便", english: "airmail" },
+    { japanese: "船便", english: "surface mail" },
+    { japanese: "送料", english: "shipping fee" },
+    { japanese: "追跡", english: "tracking" }
+  ],
+  grammar: [
+    { point: "～ていただけますか", explanation: "Polite request: 'Could you...?'" },
+    { point: "～でお願いします", explanation: "I'd like it by... (method)." }
+  ],
+  examples: [
+    { japanese: "この手紙を航空便で送りたいです。", english: "I want to send this letter by airmail." },
+    { japanese: "切手を五枚ください。", english: "Please give me five stamps." },
+    { japanese: "小包を海外に送りたいんですが。", english: "I'd like to send a parcel overseas." },
+    { japanese: "書留にしてください。", english: "Please make it registered mail." },
+    { japanese: "追跡番号を教えてください。", english: "Please tell me the tracking number." }
+  ],
+  dialogue: {
+    speakerA: { japanese: "すみません、この小包をベトナムに送りたいです。", english: "Excuse me, I'd like to send this parcel to Vietnam." },
+    speakerB: { japanese: "航空便と船便がありますが、どちらになさいますか。", english: "We have airmail and surface mail. Which would you like?" },
+    speakerA: { japanese: "航空便でお願いします。いくらですか。", english: "Airmail, please. How much is it?" },
+    speakerB: { japanese: "二千五百円です。", english: "It's 2,500 yen." }
+  },
+  exercises: [
+    { type: "fill-blank", question: "この手紙を___で送りたいです。", answer: "航空便" },
+    { type: "matching", pairs: [{ japanese: "速達", english: "express mail" }, { japanese: "書留", english: "registered mail" }], instruction: "Match the Japanese mail services with English" },
+    { type: "translation", vietnamese: "Tôi muốn mua vài con tem để gửi bưu thiếp.", japanese: "はがきを送るための切手を何枚か買いたいです。" }
+  ]
+},
+{
+  id: 25,
+  title: "Renting an Apartment",
+  level: "intermediate",
+  vocabulary: [
+    { japanese: "アパート", english: "apartment" },
+    { japanese: "賃貸", english: "rental" },
+    { japanese: "家賃", english: "rent" },
+    { japanese: "敷金", english: "deposit" },
+    { japanese: "礼金", english: "key money" },
+    { japanese: "契約", english: "contract" },
+    { japanese: "保証人", english: "guarantor" },
+    { japanese: "間取り", english: "floor plan" },
+    { japanese: "駅から徒歩", english: "walk from station" },
+    { japanese: "更新料", english: "renewal fee" }
+  ],
+  grammar: [
+    { point: "～たいんですが", explanation: "I'd like to... (polite request)." },
+    { point: "～なければならない", explanation: "must / have to" }
+  ],
+  examples: [
+    { japanese: "駅から徒歩五分以内のアパートを探しています。", english: "I'm looking for an apartment within a 5-minute walk from the station." },
+    { japanese: "家賃はいくらですか。", english: "How much is the rent?" },
+    { japanese: "敷金と礼金はそれぞれ一か月分です。", english: "Deposit and key money are each one month's rent." },
+    { japanese: "保証人が必要ですか。", english: "Is a guarantor necessary?" },
+    { japanese: "契約期間は二年です。", english: "The contract period is two years." }
+  ],
+  dialogue: {
+    speakerA: { japanese: "このアパートの家賃はいくらですか。", english: "How much is the rent for this apartment?" },
+    speakerB: { japanese: "月額八万円です。敷金と礼金が別にかかります。", english: "80,000 yen per month. Deposit and key money are separate." },
+    speakerA: { japanese: "敷金はいくらですか。", english: "How much is the deposit?" },
+    speakerB: { japanese: "家賃一か月分です。", english: "It's one month's rent." }
+  },
+  exercises: [
+    { type: "fill-blank", question: "保証人が___。", answer: "必要です" },
+    { type: "matching", pairs: [{ japanese: "敷金", english: "deposit" }, { japanese: "礼金", english: "key money" }], instruction: "Match the Japanese rental terms" },
+    { type: "translation", vietnamese: "Tôi muốn tìm một căn hộ gần nhà ga.", japanese: "駅の近くのアパートを探したいです。" }
+  ]
+},
+{
+  id: 26,
+  title: "Complaints and Returns",
+  level: "intermediate",
+  vocabulary: [
+    { japanese: "苦情", english: "complaint" },
+    { japanese: "返品", english: "return (product)" },
+    { japanese: "交換", english: "exchange" },
+    { japanese: "不良品", english: "defective product" },
+    { japanese: "レシート", english: "receipt" },
+    { japanese: "返金", english: "refund" },
+    { japanese: "対応", english: "response / handling" },
+    { japanese: "申し訳ありません", english: "I'm very sorry" },
+    { japanese: "確認する", english: "to check" },
+    { japanese: "交換していただけますか", english: "Could you exchange it?" }
+  ],
+  grammar: [
+    { point: "～ていただけますか", explanation: "Could you...? Polite request." },
+    { point: "～てしまいました", explanation: "I accidentally did (regretful)." }
+  ],
+  examples: [
+    { japanese: "この商品は不良品です。", english: "This product is defective." },
+    { japanese: "レシートをなくしてしまいました。", english: "I lost the receipt." },
+    { japanese: "返金していただけますか。", english: "Could you give me a refund?" },
+    { japanese: "交換してもらえますか。", english: "Can I exchange it?" },
+    { japanese: "大変申し訳ございません。すぐに対応いたします。", english: "We apologize sincerely. We'll handle it immediately." }
+  ],
+  dialogue: {
+    speakerA: { japanese: "すみません、昨日買ったこのシャツ、サイズが合わないんですが。", english: "Excuse me, this shirt I bought yesterday doesn't fit." },
+    speakerB: { japanese: "レシートはお持ちですか。", english: "Do you have the receipt?" },
+    speakerA: { japanese: "はい、これです。交換できますか。", english: "Yes, here it is. Can I exchange it?" },
+    speakerB: { japanese: "かしこまりました。お好きなサイズと交換いたします。", english: "Certainly. We'll exchange it for your preferred size." }
+  },
+  exercises: [
+    { type: "fill-blank", question: "この製品は___です。", answer: "不良品" },
+    { type: "matching", pairs: [{ japanese: "返品", english: "return" }, { japanese: "交換", english: "exchange" }], instruction: "Match the Japanese words with English" },
+    { type: "translation", vietnamese: "Tôi muốn trả lại cái áo này vì nó bị lỗi.", japanese: "このシャツは不良品なので返品したいです。" }
+  ]
+},
+{
+  id: 27,
+  title: "Giving Detailed Directions",
+  level: "intermediate",
+  vocabulary: [
+    { japanese: "交差点", english: "intersection" },
+    { japanese: "信号", english: "traffic light" },
+    { japanese: "曲がる", english: "to turn" },
+    { japanese: "まっすぐ", english: "straight" },
+    { japanese: "～つ目の", english: "the (number)th" },
+    { japanese: "角", english: "corner" },
+    { japanese: "看板", english: "signboard" },
+    { japanese: "目印", english: "landmark" },
+    { japanese: "徒歩", english: "on foot" },
+    { japanese: "～分", english: "minutes" }
+  ],
+  grammar: [
+    { point: "～と（条件）", explanation: "If you do ~, then... (conditional)" },
+    { point: "～てから", explanation: "After doing ~" }
+  ],
+  examples: [
+    { japanese: "次の信号を右に曲がってください。", english: "Please turn right at the next traffic light." },
+    { japanese: "まっすぐ行って、三つ目の角を左です。", english: "Go straight and it's the third corner on the left." },
+    { japanese: "駅を出て、右に行くと銀行があります。", english: "After leaving the station, go right and there's a bank." },
+    { japanese: "この道をまっすぐ五分歩いてください。", english: "Walk straight on this road for five minutes." },
+    { japanese: "コンビニが目印です。その隣です。", english: "The convenience store is the landmark. It's next to it." }
+  ],
+  dialogue: {
+    speakerA: { japanese: "すみません、駅への道を教えてください。", english: "Excuse me, could you tell me the way to the station?" },
+    speakerB: { japanese: "この道をまっすぐ行って、最初の交差点を左に曲がってください。", english: "Go straight on this road and turn left at the first intersection." },
+    speakerA: { japanese: "左ですね。どのくらいかかりますか。", english: "Left, right? How long does it take?" },
+    speakerB: { japanese: "徒歩で十分くらいです。", english: "About ten minutes on foot." }
+  },
+  exercises: [
+    { type: "fill-blank", question: "次の___を右に曲がってください。", answer: "信号" },
+    { type: "matching", pairs: [{ japanese: "曲がる", english: "to turn" }, { japanese: "まっすぐ", english: "straight" }], instruction: "Match the Japanese direction words" },
+    { type: "translation", vietnamese: "Đi thẳng và rẽ trái ở ngã tư thứ hai.", japanese: "まっすぐ行って、二つ目の交差点を左に曲がってください。" }
+  ]
+},
+{
+  id: 28,
+  title: "Discussing News",
+  level: "intermediate",
+  vocabulary: [
+    { japanese: "ニュース", english: "news" },
+    { japanese: "記事", english: "article" },
+    { japanese: "見出し", english: "headline" },
+    { japanese: "話題", english: "topic" },
+    { japanese: "政治", english: "politics" },
+    { japanese: "経済", english: "economy" },
+    { japanese: "事件", english: "incident" },
+    { japanese: "報道", english: "reporting" },
+    { japanese: "影響", english: "influence" },
+    { japanese: "意見", english: "opinion" }
+  ],
+  grammar: [
+    { point: "～によると", explanation: "According to ~" },
+    { point: "～らしい", explanation: "It seems that ~ (hearsay/evidential)" }
+  ],
+  examples: [
+    { japanese: "ニュースによると、明日は雨らしいです。", english: "According to the news, it seems it will rain tomorrow." },
+    { japanese: "この事件についてどう思いますか。", english: "What do you think about this incident?" },
+    { japanese: "経済のニュースはあまり詳しくないです。", english: "I'm not very familiar with economic news." },
+    { japanese: "今日の見出しを見ましたか。", english: "Did you see today's headlines?" },
+    { japanese: "その話題はとても重要だと思います。", english: "I think that topic is very important." }
+  ],
+  dialogue: {
+    speakerA: { japanese: "今日のニュースを見ましたか。大きな地震があったそうです。", english: "Did you see today's news? There was a big earthquake, apparently." },
+    speakerB: { japanese: "えっ、本当ですか。どこですか。", english: "What? Really? Where?" },
+    speakerA: { japanese: "北海道らしいです。", english: "It seems it was in Hokkaido." },
+    speakerB: { japanese: "それは大変ですね。被害は大きくないといいですが。", english: "That's terrible. I hope the damage isn't severe." }
+  },
+  exercises: [
+    { type: "fill-blank", question: "ニュース___、明日は雪が降るそうです。", answer: "によると" },
+    { type: "matching", pairs: [{ japanese: "見出し", english: "headline" }, { japanese: "記事", english: "article" }], instruction: "Match the Japanese news vocabulary" },
+    { type: "translation", vietnamese: "Theo tin tức, ngày mai sẽ có mưa lớn.", japanese: "ニュースによると、明日大雨が降るそうです。" }
+  ]
+},
+{
+  id: 29,
+  title: "Cultural Differences",
+  level: "intermediate",
+  vocabulary: [
+    { japanese: "文化", english: "culture" },
+    { japanese: "習慣", english: "custom" },
+    { japanese: "違い", english: "difference" },
+    { japanese: "マナー", english: "manners" },
+    { japanese: "礼儀", english: "etiquette" },
+    { japanese: "交流", english: "exchange" },
+    { japanese: "理解する", english: "to understand" },
+    { japanese: "驚く", english: "to be surprised" },
+    { japanese: "失礼", english: "rude" },
+    { japanese: "適応する", english: "to adapt" }
+  ],
+  grammar: [
+    { point: "～と比べて", explanation: "Compared to ~" },
+    { point: "～というのは", explanation: "Speaking of ~, (explanation)" }
+  ],
+  examples: [
+    { japanese: "日本とベトナムでは習慣が違います。", english: "Customs differ between Japan and Vietnam." },
+    { japanese: "初めての時はとても驚きました。", english: "I was very surprised the first time." },
+    { japanese: "靴を脱ぐ習慣は日本の文化です。", english: "The custom of taking off shoes is Japanese culture." },
+    { japanese: "ベトナムと比べて、日本は時間に厳しいです。", english: "Compared to Vietnam, Japan is strict about time." },
+    { japanese: "異文化を理解するのは大切です。", english: "Understanding different cultures is important." }
+  ],
+  dialogue: {
+    speakerA: { japanese: "日本では、電車の中で電話をしないんですね。", english: "In Japan, you don't make phone calls on the train, right?" },
+    speakerB: { japanese: "そうです。マナーとして静かにするのが普通です。", english: "Yes, it's common to be quiet as a manner." },
+    speakerA: { japanese: "ベトナムではよく電話をします。それが普通です。", english: "In Vietnam, we often make calls. It's normal." },
+    speakerB: { japanese: "文化の違いですね。面白いです。", english: "That's a cultural difference. Interesting." }
+  },
+  exercises: [
+    { type: "fill-blank", question: "日本とベトナムでは___が違います。", answer: "習慣" },
+    { type: "matching", pairs: [{ japanese: "マナー", english: "manners" }, { japanese: "礼儀", english: "etiquette" }], instruction: "Match the Japanese words with English" },
+    { type: "translation", vietnamese: "So với Việt Nam, Nhật Bản có nhiều quy tắc hơn.", japanese: "ベトナムと比べて、日本はルールが多いです。" }
+  ]
+},
+{
+  id: 30,
+  title: "Job Interviews",
+  level: "intermediate",
+  vocabulary: [
+    { japanese: "面接", english: "interview" },
+    { japanese: "志望動機", english: "motivation for applying" },
+    { japanese: "自己紹介", english: "self-introduction" },
+    { japanese: "長所", english: "strength" },
+    { japanese: "短所", english: "weakness" },
+    { japanese: "経験", english: "experience" },
+    { japanese: "資格", english: "qualification" },
+    { japanese: "採用", english: "hiring" },
+    { japanese: "応募する", english: "to apply" },
+    { japanese: "履歴書", english: "resume" }
+  ],
+  grammar: [
+    { point: "～させていただきます", explanation: "Humble form: 'I will do (for you)'." },
+    { point: "～ていただけませんか", explanation: "Could you please...? (polite request in interview context)" }
+  ],
+  examples: [
+    { japanese: "私の長所は責任感が強いことです。", english: "My strength is a strong sense of responsibility." },
+    { japanese: "志望動機を教えてください。", english: "Please tell me your motivation for applying." },
+    { japanese: "この業界での経験は一年です。", english: "I have one year of experience in this industry." },
+    { japanese: "どうぞよろしくお願いいたします。", english: "I look forward to working with you. (humble)" },
+    { japanese: "短所は、細かいところに気を使いすぎることです。", english: "My weakness is paying too much attention to details." }
+  ],
+  dialogue: {
+    speakerA: { japanese: "自己紹介をお願いします。", english: "Please introduce yourself." },
+    speakerB: { japanese: "はい、私はベトナムから参りましたチャンと申します。", english: "Yes, I'm Tran from Vietnam." },
+    speakerA: { japanese: "なぜこの会社を志望したのですか。", english: "Why did you apply to this company?" },
+    speakerB: { japanese: "御社のグローバルな事業に魅力を感じました。", english: "I was attracted to your company's global business." }
+  },
+  exercises: [
+    { type: "fill-blank", question: "私の___は責任感が強いことです。", answer: "長所" },
+    { type: "matching", pairs: [{ japanese: "志望動機", english: "motivation" }, { japanese: "履歴書", english: "resume" }], instruction: "Match the Japanese interview terms" },
+    { type: "translation", vietnamese: "Tôi muốn giới thiệu bản thân. Tôi tốt nghiệp đại học năm ngoái.", japanese: "自己紹介させていただきます。去年大学を卒業しました。" }
+  ]
+},
+{
+  id: 31,
+  title: "Business Meetings",
+  level: "intermediate",
+  vocabulary: [
+    { japanese: "会議", english: "meeting" },
+    { japanese: "議題", english: "agenda" },
+    { japanese: "進行", english: "facilitation" },
+    { japanese: "発言", english: "speaking / remark" },
+    { japanese: "賛成", english: "agree" },
+    { japanese: "反対", english: "oppose" },
+    { japanese: "意見", english: "opinion" },
+    { japanese: "決める", english: "to decide" },
+    { japanese: "確認する", english: "to confirm" },
+    { japanese: "資料", english: "documents" }
+  ],
+  grammar: [
+    { point: "～たほうがいい", explanation: "It's better to ~ (suggestion)" },
+    { point: "～べきだ", explanation: "Should / ought to (obligation)" }
+  ],
+  examples: [
+    { japanese: "議題について意見があります。", english: "I have an opinion about the agenda." },
+    { japanese: "私はその提案に賛成です。", english: "I agree with that proposal." },
+    { japanese: "もう一度確認したほうがいいと思います。", english: "I think we should check once more." },
+    { japanese: "会議は三時からです。", english: "The meeting is from 3 o'clock." },
+    { japanese: "次の議題に移りましょう。", english: "Let's move on to the next agenda item." }
+  ],
+  dialogue: {
+    speakerA: { japanese: "今日の議題は来月のプロジェクトについてです。", english: "Today's agenda is about next month's project." },
+    speakerB: { japanese: "はい、まずスケジュールを確認しましょう。", english: "Yes, let's first confirm the schedule." },
+    speakerA: { japanese: "それでは、資料の二ページをご覧ください。", english: "Then, please look at page 2 of the handout." },
+    speakerB: { japanese: "この計画は少し無理があると思います。", english: "I think this plan is a bit unrealistic." }
+  },
+  exercises: [
+    { type: "fill-blank", question: "私はその提案に___です。", answer: "賛成" },
+    { type: "matching", pairs: [{ japanese: "議題", english: "agenda" }, { japanese: "資料", english: "handout" }], instruction: "Match the Japanese meeting vocabulary" },
+    { type: "translation", vietnamese: "Tôi nghĩ chúng ta nên thảo luận vấn đề này trước.", japanese: "この問題を先に議論したほうがいいと思います。" }
+  ]
+},
+{
+  id: 32,
+  title: "Giving Presentations",
+  level: "intermediate",
+  vocabulary: [
+    { japanese: "プレゼンテーション", english: "presentation" },
+    { japanese: "スライド", english: "slide" },
+    { japanese: "グラフ", english: "graph" },
+    { japanese: "データ", english: "data" },
+    { japanese: "説明する", english: "to explain" },
+    { japanese: "質問", english: "question" },
+    { japanese: "要約する", english: "to summarize" },
+    { japanese: "導入", english: "introduction" },
+    { japanese: "結論", english: "conclusion" },
+    { japanese: "強調する", english: "to emphasize" }
+  ],
+  grammar: [
+    { point: "～について", explanation: "Regarding / about ~" },
+    { point: "～のです（説明）", explanation: "Used for explanation / emphasis." }
+  ],
+  examples: [
+    { japanese: "本日は市場動向について発表します。", english: "Today I will present about market trends." },
+    { japanese: "次のスライドをご覧ください。", english: "Please look at the next slide." },
+    { japanese: "このグラフは売上の推移を示しています。", english: "This graph shows the sales trend." },
+    { japanese: "質問がありますか。", english: "Are there any questions?" },
+    { japanese: "結論として、この戦略は有効です。", english: "In conclusion, this strategy is effective." }
+  ],
+  dialogue: {
+    speakerA: { japanese: "本日はお忙しい中お集まりいただきありがとうございます。", english: "Thank you for taking time to gather today." },
+    speakerB: { japanese: "最初に自己紹介をお願いします。", english: "Please start with a self-introduction." },
+    speakerA: { japanese: "はい、私は営業部の田中と申します。本日は新製品についてご説明します。", english: "Yes, I'm Tanaka from Sales. Today I'll explain about the new product." },
+    speakerB: { japanese: "それでは、お願いします。", english: "Then, please go ahead." }
+  },
+  exercises: [
+    { type: "fill-blank", question: "次の___をご覧ください。", answer: "スライド" },
+    { type: "matching", pairs: [{ japanese: "グラフ", english: "graph" }, { japanese: "データ", english: "data" }], instruction: "Match the Japanese presentation terms" },
+    { type: "translation", vietnamese: "Tôi sẽ giải thích về chiến lược tiếp thị mới.", japanese: "新しいマーケティング戦略について説明します。" }
+  ]
+},
+{
+  id: 33,
+  title: "Negotiating",
+  level: "intermediate",
+  vocabulary: [
+    { japanese: "交渉", english: "negotiation" },
+    { japanese: "条件", english: "condition" },
+    { japanese: "妥協", english: "compromise" },
+    { japanese: "譲歩", english: "concession" },
+    { japanese: "提案", english: "proposal" },
+    { japanese: "合意", english: "agreement" },
+    { japanese: "値引き", english: "discount" },
+    { japanese: "期限", english: "deadline" },
+    { japanese: "見積もり", english: "quotation" },
+    { japanese: "契約", english: "contract" }
+  ],
+  grammar: [
+    { point: "～なければならない", explanation: "must / have to" },
+    { point: "～てほしい", explanation: "I want you to ~" }
+  ],
+  examples: [
+    { japanese: "もう少し値引きしていただけませんか。", english: "Could you give us a little more discount?" },
+    { japanese: "この条件では合意できません。", english: "We cannot agree on these conditions." },
+    { japanese: "お互いに譲歩する必要があります。", english: "We need to make mutual concessions." },
+    { japanese: "この提案はいかがですか。", english: "How about this proposal?" },
+    { japanese: "契約の期限は来週です。", english: "The contract deadline is next week." }
+  ],
+  dialogue: {
+    speakerA: { japanese: "この価格では厳しいです。もう少し安くできませんか。", english: "This price is difficult. Can you make it a bit cheaper?" },
+    speakerB: { japanese: "そうですね…では、一割引きなら可能です。", english: "Let's see... Well, I can offer a 10% discount." },
+    speakerA: { japanese: "一割引きではまだ厳しいです。二割はいかがですか。", english: "10% is still tough. How about 20%?" },
+    speakerB: { japanese: "二割は難しいです。一割五分でどうでしょうか。", english: "20% is difficult. How about 15%?" }
+  },
+  exercises: [
+    { type: "fill-blank", question: "この___では合意できません。", answer: "条件" },
+    { type: "matching", pairs: [{ japanese: "妥協", english: "compromise" }, { japanese: "譲歩", english: "concession" }], instruction: "Match the Japanese negotiation terms" },
+    { type: "translation", vietnamese: "Chúng tôi muốn yêu cầu giảm giá thêm.", japanese: "さらなる値引きをお願いしたいです。" }
+  ]
+},
+{
+  id: 34,
+  title: "Social Media",
+  level: "intermediate",
+  vocabulary: [
+    { japanese: "SNS", english: "social media" },
+    { japanese: "投稿する", english: "to post" },
+    { japanese: "フォローする", english: "to follow" },
+    { japanese: "いいね", english: "like" },
+    { japanese: "シェア", english: "share" },
+    { japanese: "コメント", english: "comment" },
+    { japanese: "プロフィール", english: "profile" },
+    { japanese: "ハッシュタグ", english: "hashtag" },
+    { japanese: "拡散", english: "spread / viral" },
+    { japanese: "プライバシー", english: "privacy" }
+  ],
+  grammar: [
+    { point: "～たらどう？", explanation: "How about if ~? (casual suggestion)" },
+    { point: "～みたいな", explanation: "Like / similar to (casual)" }
+  ],
+  examples: [
+    { japanese: "今日の写真をインスタに投稿しました。", english: "I posted today's photo on Instagram." },
+    { japanese: "その投稿にいいねを押しました。", english: "I liked that post." },
+    { japanese: "ハッシュタグをつけると見つけやすいです。", english: "Adding hashtags makes it easier to find." },
+    { japanese: "SNSで拡散されたニュースを見ました。", english: "I saw news that went viral on social media." },
+    { japanese: "プライバシー設定を確認したほうがいいよ。", english: "You should check your privacy settings." }
+  ],
+  dialogue: {
+    speakerA: { japanese: "今朝、面白いツイートを見たよ。", english: "I saw an interesting tweet this morning." },
+    speakerB: { japanese: "どんな内容？シェアしてくれる？", english: "What was it about? Can you share it?" },
+    speakerA: { japanese: "いいよ。このリンクを送るね。", english: "Sure. I'll send you the link." },
+    speakerB: { japanese: "ありがとう。後で見てみる。", english: "Thanks. I'll check it out later." }
+  },
+  exercises: [
+    { type: "fill-blank", question: "その投稿に___を押しました。", answer: "いいね" },
+    { type: "matching", pairs: [{ japanese: "フォロー", english: "follow" }, { japanese: "拡散", english: "viral" }], instruction: "Match the Japanese social media terms" },
+    { type: "translation", vietnamese: "Bạn có thể gửi cho tôi đường dẫn đến bài viết đó không?", japanese: "その投稿のリンクを送っていただけますか。" }
+  ]
+},
+{
+  id: 35,
+  title: "Environmental Issues",
+  level: "intermediate",
+  vocabulary: [
+    { japanese: "環境", english: "environment" },
+    { japanese: "問題", english: "issue" },
+    { japanese: "温暖化", english: "global warming" },
+    { japanese: "リサイクル", english: "recycling" },
+    { japanese: "省エネ", english: "energy saving" },
+    { japanese: "ごみ", english: "garbage" },
+    { japanese: "汚染", english: "pollution" },
+    { japanese: "再生可能エネルギー", english: "renewable energy" },
+    { japanese: "自然", english: "nature" },
+    { japanese: "保護する", english: "to protect" }
+  ],
+  grammar: [
+    { point: "～なければならない", explanation: "must / have to (obligation)" },
+    { point: "～べきだ", explanation: "should (moral obligation)" }
+  ],
+  examples: [
+    { japanese: "環境問題について話し合いましょう。", english: "Let's discuss environmental issues." },
+    { japanese: "温暖化を防ぐために何ができますか。", english: "What can we do to prevent global warming?" },
+    { japanese: "リサイクルをもっと積極的にするべきです。", english: "We should recycle more actively." },
+    { japanese: "省エネ製品を使うことは重要です。", english: "Using energy-saving products is important." },
+    { japanese: "自然を保護しなければなりません。", english: "We must protect nature." }
+  ],
+  dialogue: {
+    speakerA: { japanese: "最近、環境問題に関心がありますか。", english: "Are you interested in environmental issues lately?" },
+    speakerB: { japanese: "はい、特にプラスチックごみの問題について勉強しています。", english: "Yes, I'm studying the plastic waste problem." },
+    speakerA: { japanese: "私もエコバッグを使うようにしています。", english: "I also try to use eco-bags." },
+    speakerB: { japanese: "それはいいですね。みんなで取り組むべきです。", english: "That's great. We should all work on it." }
+  },
+  exercises: [
+    { type: "fill-blank", question: "___を防ぐために何ができますか。", answer: "温暖化" },
+    { type: "matching", pairs: [{ japanese: "リサイクル", english: "recycling" }, { japanese: "省エネ", english: "energy saving" }], instruction: "Match the Japanese environment terms" },
+    { type: "translation", vietnamese: "Chúng ta cần bảo vệ môi trường cho thế hệ tương lai.", japanese: "将来の世代のために環境を保護しなければなりません。" }
+  ]
+},
+{
+  id: 36,
+  title: "Expressing Opinions",
+  level: "advanced",
+  vocabulary: [
+    { japanese: "意見", english: "opinion" },
+    { japanese: "主張する", english: "to assert" },
+    { japanese: "反論する", english: "to counterargue" },
+    { japanese: "賛成", english: "agreement" },
+    { japanese: "反対", english: "opposition" },
+    { japanese: "根拠", english: "evidence" },
+    { japanese: "観点", english: "perspective" },
+    { japanese: "論点", english: "point of discussion" },
+    { japanese: "明確にする", english: "to clarify" },
+    { japanese: "納得する", english: "to be convinced" }
+  ],
+  grammar: [
+    { point: "～という観点から", explanation: "From the perspective of ~" },
+    { point: "～とは言えない", explanation: "Cannot say that ~ (negating a claim)" }
+  ],
+  examples: [
+    { japanese: "私の意見を述べさせていただきます。", english: "Allow me to state my opinion." },
+    { japanese: "その主張には根拠があるとは言えません。", english: "Cannot say that claim has evidence." },
+    { japanese: "経済の観点から見ると、この政策は有効です。", english: "From an economic perspective, this policy is effective." },
+    { japanese: "私はその意見に反対です。", english: "I oppose that opinion." },
+    { japanese: "もう一度説明していただければ納得します。", english: "If you explain again, I'll be convinced." }
+  ],
+  dialogue: {
+    speakerA: { japanese: "教育費を無料にするべきだと思います。", english: "I think education should be free." },
+    speakerB: { japanese: "その意見には一部賛成ですが、財源の問題があります。", english: "I partly agree, but there's the issue of funding." },
+    speakerA: { japanese: "税金を増やせば解決できるのでは？", english: "Couldn't we solve it by raising taxes?" },
+    speakerB: { japanese: "しかし、国民の負担も考慮すべきです。", english: "But we should also consider the burden on citizens." }
+  },
+  exercises: [
+    { type: "fill-blank", question: "その___には根拠がありません。", answer: "主張" },
+    { type: "matching", pairs: [{ japanese: "論点", english: "point of discussion" }, { japanese: "根拠", english: "evidence" }], instruction: "Match the Japanese discussion terms" },
+    { type: "translation", vietnamese: "Theo quan điểm của tôi, vấn đề này cần được xem xét lại.", japanese: "私の観点からすると、この問題は再検討すべきです。" }
+  ]
+},
+{
+  id: 37,
+  title: "Making Suggestions",
+  level: "advanced",
+  vocabulary: [
+    { japanese: "提案する", english: "to suggest" },
+    { japanese: "勧める", english: "to recommend" },
+    { japanese: "選択肢", english: "option" },
+    { japanese: "代替案", english: "alternative" },
+    { japanese: "考慮する", english: "to consider" },
+    { japanese: "採用する", english: "to adopt" },
+    { japanese: "メリット", english: "merit" },
+    { japanese: "デメリット", english: "demerit" },
+    { japanese: "優先順位", english: "priority" },
+    { japanese: "試す", english: "to try" }
+  ],
+  grammar: [
+    { point: "～てはいかがですか", explanation: "How about ~? (polite suggestion)" },
+    { point: "～たほうがいい", explanation: "It would be better to ~" }
+  ],
+  examples: [
+    { japanese: "新しいシステムを導入してはいかがですか。", english: "How about introducing a new system?" },
+    { japanese: "まずは小規模で試したほうがいいでしょう。", english: "It would be better to try it on a small scale first." },
+    { japanese: "代替案として、オンライン会議を提案します。", english: "As an alternative, I propose an online meeting." },
+    { japanese: "このプランにはいくつかのメリットがあります。", english: "This plan has several merits." },
+    { japanese: "優先順位を決める必要があります。", english: "We need to set priorities." }
+  ],
+  dialogue: {
+    speakerA: { japanese: "来月のイベント、どうしますか。", english: "What shall we do about next month's event?" },
+    speakerB: { japanese: "屋外でバーベキューをしてはいかがですか。", english: "How about having a BBQ outdoors?" },
+    speakerA: { japanese: "いいアイデアですね。でも天気が心配です。", english: "Good idea. But I'm worried about the weather." },
+    speakerB: { japanese: "では、室内と室外の両方のプランを準備しましょう。", english: "Then, let's prepare both indoor and outdoor plans." }
+  },
+  exercises: [
+    { type: "fill-blank", question: "新しい方法を___してはいかがですか。", answer: "試し" },
+    { type: "matching", pairs: [{ japanese: "提案", english: "proposal" }, { japanese: "勧める", english: "recommend" }], instruction: "Match the Japanese suggestion verbs" },
+    { type: "translation", vietnamese: "Tôi đề nghị chúng ta nên họp vào thứ Sáu.", japanese: "金曜日に会議をすることを提案します。" }
+  ]
+},
+{
+  id: 38,
+  title: "Apologizing and Making Excuses",
+  level: "advanced",
+  vocabulary: [
+    { japanese: "謝る", english: "to apologize" },
+    { japanese: "お詫び", english: "apology (formal)" },
+    { japanese: "申し訳ない", english: "I'm sorry (strong)" },
+    { japanese: "言い訳", english: "excuse" },
+    { japanese: "理由", english: "reason" },
+    { japanese: "不注意", english: "carelessness" },
+    { japanese: "誤解", english: "misunderstanding" },
+    { japanese: "謝罪する", english: "to apologize (formal)" },
+    { japanese: "許す", english: "to forgive" },
+    { japanese: "反省する", english: "to reflect / regret" }
+  ],
+  grammar: [
+    { point: "～てしまいました", explanation: "I accidentally did (regret)" },
+    { point: "～せいで", explanation: "because of ~ (blame)" }
+  ],
+  examples: [
+    { japanese: "大変申し訳ございません。私の不注意でした。", english: "I am very sorry. It was my carelessness." },
+    { japanese: "約束を忘れてしまいました。", english: "I accidentally forgot the appointment." },
+    { japanese: "電車の遅れのせいで遅刻しました。", english: "I was late because of the train delay." },
+    { japanese: "言い訳をするつもりはありません。", english: "I don't intend to make excuses." },
+    { japanese: "どうかお許しください。", english: "Please forgive me." }
+  ],
+  dialogue: {
+    speakerA: { japanese: "すみません、約束の時間に遅れてしまいました。", english: "I'm sorry, I was late for our appointment." },
+    speakerB: { japanese: "どうしたんですか。", english: "What happened?" },
+    speakerA: { japanese: "電車が止まってしまって。本当に申し訳ありません。", english: "The train stopped. I am truly sorry." },
+    speakerB: { japanese: "次回から気をつけてくださいね。", english: "Please be careful next time." }
+  },
+  exercises: [
+    { type: "fill-blank", question: "私の___でミスをしました。", answer: "不注意" },
+    { type: "matching", pairs: [{ japanese: "謝罪", english: "apology" }, { japanese: "言い訳", english: "excuse" }], instruction: "Match the Japanese apology terms" },
+    { type: "translation", vietnamese: "Tôi xin lỗi vì đã làm vỡ cốc của bạn. Đó là do sơ suất của tôi.", japanese: "コップを割ってしまい申し訳ありません。私の不注意でした。" }
+  ]
+},
+{
+  id: 39,
+  title: "Giving Advice",
+  level: "advanced",
+  vocabulary: [
+    { japanese: "アドバイス", english: "advice" },
+    { japanese: "勧める", english: "to recommend" },
+    { japanese: "忠告", english: "warning / admonition" },
+    { japanese: "提案", english: "proposal" },
+    { japanese: "助言", english: "suggestion" },
+    { japanese: "役立つ", english: "useful" },
+    { japanese: "経験談", english: "story of experience" },
+    { japanese: "対策", english: "countermeasure" },
+    { japanese: "～したらどうですか", english: "How about doing ~?" },
+    { japanese: "～たほうがいい", english: "You'd better ~" }
+  ],
+  grammar: [
+    { point: "～といいですよ", explanation: "It would be good if you ~ (advice)" },
+    { point: "～したほうがいい", explanation: "You should ~ (stronger advice)" }
+  ],
+  examples: [
+    { japanese: "早めに予約したほうがいいですよ。", english: "You should make a reservation early." },
+    { japanese: "日本語の勉強にはアニメを見るといいですよ。", english: "For studying Japanese, it's good to watch anime." },
+    { japanese: "一度専門家に相談してみてはいかがですか。", english: "How about consulting an expert?" },
+    { japanese: "私の経験から言うと、無理をしないことです。", english: "From my experience, don't overdo it." },
+    { japanese: "もっと休息を取ることをお勧めします。", english: "I recommend taking more rest." }
+  ],
+  dialogue: {
+    speakerA: { japanese: "最近仕事が忙しくて疲れています。", english: "I've been busy with work lately and I'm tired." },
+    speakerB: { japanese: "それは大変ですね。休暇を取ったらどうですか。", english: "That's tough. How about taking a vacation?" },
+    speakerA: { japanese: "でも仕事が溜まっていて…", english: "But work is piling up..." },
+    speakerB: { japanese: "一度リセットすることも大事ですよ。", english: "It's also important to reset once in a while." }
+  },
+  exercises: [
+    { type: "fill-blank", question: "もっと休息を___ことをお勧めします。", answer: "取る" },
+    { type: "matching", pairs: [{ japanese: "忠告", english: "warning" }, { japanese: "助言", english: "advice" }], instruction: "Match the Japanese advice terms" },
+    { type: "translation", vietnamese: "Tôi khuyên bạn nên học tiếng Nhật mỗi ngày một chút.", japanese: "毎日少しずつ日本語を勉強したほうがいいですよ。" }
+  ]
+},
+{
+  id: 40,
+  title: "Describing Experiences",
+  level: "advanced",
+  vocabulary: [
+    { japanese: "経験", english: "experience" },
+    { japanese: "体験", english: "hands-on experience" },
+    { japanese: "印象", english: "impression" },
+    { japanese: "感動する", english: "to be moved" },
+    { japanese: "記憶", english: "memory" },
+    { japanese: "思い出", english: "recollection" },
+    { japanese: "詳細", english: "details" },
+    { japanese: "語る", english: "to tell / narrate" },
+    { japanese: "振り返る", english: "to look back" },
+    { japanese: "貴重", english: "valuable" }
+  ],
+  grammar: [
+    { point: "～たことがある", explanation: "have done ~ (experience)" },
+    { point: "～時（とき）", explanation: "when / during the time of ~" }
+  ],
+  examples: [
+    { japanese: "富士山に登ったことがありますか。", english: "Have you ever climbed Mt. Fuji?" },
+    { japanese: "去年、日本に留学した時のことを話します。", english: "I'll talk about when I studied in Japan last year." },
+    { japanese: "その経験は私にとって貴重なものでした。", english: "That experience was valuable to me." },
+    { japanese: "初めての海外旅行はとても感動的でした。", english: "My first overseas trip was very moving." },
+    { japanese: "子どもの頃の記憶をよく覚えています。", english: "I remember my childhood memories well." }
+  ],
+  dialogue: {
+    speakerA: { japanese: "日本に行ったことがありますか。", english: "Have you ever been to Japan?" },
+    speakerB: { japanese: "はい、二年前に旅行しました。", english: "Yes, I traveled there two years ago." },
+    speakerA: { japanese: "どこが一番印象に残っていますか。", english: "What left the strongest impression?" },
+    speakerB: { japanese: "京都の寺院がとても美しかったです。", english: "The temples in Kyoto were very beautiful." }
+  },
+  exercises: [
+    { type: "fill-blank", question: "その___は私にとって貴重でした。", answer: "経験" },
+    { type: "matching", pairs: [{ japanese: "思い出", english: "memory" }, { japanese: "感動", english: "being moved" }], instruction: "Match the Japanese experience-related words" },
+    { type: "translation", vietnamese: "Tôi chưa bao giờ ăn sushi ở Nhật Bản.", japanese: "日本でお寿司を食べたことがありません。" }
+  ]
+},
+{
+  id: 41,
+  title: "Comparing Options",
+  level: "advanced",
+  vocabulary: [
+    { japanese: "比較する", english: "to compare" },
+    { japanese: "選択", english: "choice" },
+    { japanese: "違い", english: "difference" },
+    { japanese: "共通点", english: "common point" },
+    { japanese: "優れている", english: "superior" },
+    { japanese: "劣る", english: "inferior" },
+    { japanese: "同様に", english: "similarly" },
+    { japanese: "一方で", english: "on the other hand" },
+    { japanese: "どちらかと言えば", english: "if I had to choose" },
+    { japanese: "対比", english: "contrast" }
+  ],
+  grammar: [
+    { point: "～より～のほうが", explanation: "Compared to A, B is more ~" },
+    { point: "～に比べて", explanation: "Compared to ~" }
+  ],
+  examples: [
+    { japanese: "電車よりバスのほうが安いです。", english: "The bus is cheaper than the train." },
+    { japanese: "A社とB社を比べてみましょう。", english: "Let's compare Company A and Company B." },
+    { japanese: "両者には多くの共通点があります。", english: "Both have many common points." },
+    { japanese: "品質ではA社が優れていますが、価格ではB社が劣ります。", english: "Company A is superior in quality, but Company B is inferior in price." },
+    { japanese: "どちらかと言えば、私は都市より田舎が好きです。", english: "If I had to choose, I prefer the countryside over the city." }
+  ],
+  dialogue: {
+    speakerA: { japanese: "この二つのスマホ、どちらがいいと思う？", english: "These two smartphones, which one do you think is better?" },
+    speakerB: { japanese: "カメラの性能ではこちらのほうが優れているよ。", english: "In terms of camera performance, this one is superior." },
+    speakerA: { japanese: "でもバッテリーはあっちのほうが長持ちするね。", english: "But the battery lasts longer on that one." },
+    speakerB: { japanese: "そうだね。用途によって選ぶといいね。", english: "Yeah. It's good to choose based on usage." }
+  },
+  exercises: [
+    { type: "fill-blank", question: "電車___バスのほうが安いです。", answer: "より" },
+    { type: "matching", pairs: [{ japanese: "比較", english: "comparison" }, { japanese: "対比", english: "contrast" }], instruction: "Match the Japanese comparison terms" },
+    { type: "translation", vietnamese: "So với xe đạp, xe máy nhanh hơn nhưng đắt hơn.", japanese: "自転車に比べて、バイクのほうが速いですが高いです。" }
+  ]
+},
+{
+  id: 42,
+  title: "Hypothetical Situations",
+  level: "advanced",
+  vocabulary: [
+    { japanese: "仮定", english: "assumption" },
+    { japanese: "もし", english: "if" },
+    { japanese: "条件", english: "condition" },
+    { japanese: "可能性", english: "possibility" },
+    { japanese: "～たら", english: "if (conditional)" },
+    { japanese: "～ば", english: "if (conditional)" },
+    { japanese: "～なら", english: "if (conditional)" },
+    { japanese: "現実的", english: "realistic" },
+    { japanese: "想像する", english: "to imagine" },
+    { japanese: "願望", english: "desire" }
+  ],
+  grammar: [
+    { point: "～たら、～のに", explanation: "If ~, then ~ (counterfactual wish)" },
+    { point: "～ばいいのに", explanation: "I wish ~ would happen (if only)" }
+  ],
+  examples: [
+    { japanese: "もし宝くじが当たったら、世界旅行をしたいです。", english: "If I won the lottery, I'd want to travel the world." },
+    { japanese: "もっと時間があれば、もっと勉強できるのに。", english: "If I had more time, I could study more." },
+    { japanese: "雨が降らなければ、ピクニックに行けたのに。", english: "If it hadn't rained, we could have gone on a picnic." },
+    { japanese: "日本語がもっと上手なら、日本人と友達になれるのに。", english: "If I were better at Japanese, I could make friends with Japanese people." },
+    { japanese: "彼が来ればいいのに。", english: "I wish he would come." }
+  ],
+  dialogue: {
+    speakerA: { japanese: "もし一億円あったら、何をする？", english: "If you had 100 million yen, what would you do?" },
+    speakerB: { japanese: "家を買って、世界旅行に行くかな。", english: "Maybe buy a house and travel the world." },
+    speakerA: { japanese: "私は投資をして、将来のために使いたい。", english: "I'd invest and use it for the future." },
+    speakerB: { japanese: "現実的だね。でも夢を見るのは楽しいね。", english: "You're realistic. But it's fun to dream." }
+  },
+  exercises: [
+    { type: "fill-blank", question: "もし時間が___、手伝ってあげられるのに。", answer: "あれば" },
+    { type: "matching", pairs: [{ japanese: "仮定", english: "assumption" }, { japanese: "可能性", english: "possibility" }], instruction: "Match the Japanese hypothetical terms" },
+    { type: "translation", vietnamese: "Nếu tôi biết sớm hơn, tôi đã có thể giúp bạn.", japanese: "もっと早く知っていれば、あなたを助けられたのに。" }
+  ]
+},
+{
+  id: 43,
+  title: "Reporting Speech",
+  level: "advanced",
+  vocabulary: [
+    { japanese: "伝聞", english: "hearsay" },
+    { japanese: "引用", english: "quotation" },
+    { japanese: "～そうだ", english: "I heard that ~" },
+    { japanese: "～と言う", english: "say that ~" },
+    { japanese: "～と聞く", english: "hear that ~" },
+    { japanese: "～と述べる", english: "state that ~" },
+    { japanese: "～と説明する", english: "explain that ~" },
+    { japanese: "～と報告する", english: "report that ~" },
+    { japanese: "要約", english: "summary" },
+    { japanese: "直接話法", english: "direct speech" }
+  ],
+  grammar: [
+    { point: "～と言っている", explanation: "He/she says that ~ (reporting)" },
+    { point: "～とのことだ", explanation: "I understand that ~ (hearsay, formal)" }
+  ],
+  examples: [
+    { japanese: "彼は明日来ると言っていました。", english: "He said he would come tomorrow." },
+    { japanese: "田中さんは来月結婚するそうです。", english: "I heard that Tanaka-san is getting married next month." },
+    { japanese: "社長は新しいプロジェクトを始めると発表しました。", english: "The president announced that he would start a new project." },
+    { japanese: "天気予報によると、明日は雨とのことです。", english: "According to the weather forecast, it will rain tomorrow." },
+    { japanese: "彼女は「今日は忙しい」と言いました。", english: "She said, 'I'm busy today.'" }
+  ],
+  dialogue: {
+    speakerA: { japanese: "山田さんが転職するって知ってる？", english: "Did you know Yamada-san is changing jobs?" },
+    speakerB: { japanese: "えっ、本当？誰から聞いたの？", english: "What? Really? Who told you?" },
+    speakerA: { japanese: "本人から直接聞いたんだ。来月から新しい会社だって。", english: "I heard it directly from him. He said he'll start at a new company next month." },
+    speakerB: { japanese: "そうなんだ。ビックリした。", english: "I see. I'm surprised." }
+  },
+  exercises: [
+    { type: "fill-blank", question: "彼は今日は休むと___。", answer: "言っていました" },
+    { type: "matching", pairs: [{ japanese: "伝聞", english: "hearsay" }, { japanese: "引用", english: "quotation" }], instruction: "Match the Japanese reporting terms" },
+    { type: "translation", vietnamese: "Cô ấy nói rằng cô ấy sẽ đến muộn.", japanese: "彼女は遅れると言っていました。" }
+  ]
+},
+{
+  id: 44,
+  title: "Passive Voice",
+  level: "advanced",
+  vocabulary: [
+    { japanese: "受身形", english: "passive voice" },
+    { japanese: "作られる", english: "is made" },
+    { japanese: "書かれる", english: "is written" },
+    { japanese: "食べられる", english: "is eaten" },
+    { japanese: "呼ばれる", english: "is called" },
+    { japanese: "使われる", english: "is used" },
+    { japanese: "建てられる", english: "is built" },
+    { japanese: "知られる", english: "is known" },
+    { japanese: "見られる", english: "is seen" },
+    { japanese: "考えられる", english: "is considered" }
+  ],
+  grammar: [
+    { point: "～（ら）れる", explanation: "Passive form (infinitive) – ru-verbs add られる, u-verbs change to ～れる" },
+    { point: "～によって", explanation: "by (agent marker in passive)" }
+  ],
+  examples: [
+    { japanese: "この寺は何世紀に建てられましたか。", english: "In what century was this temple built?" },
+    { japanese: "日本のアニメは世界中で見られています。", english: "Japanese anime is watched all over the world." },
+    { japanese: "この言葉はあまり使われません。", english: "This word is not used much." },
+    { japanese: "その本は多くの人に読まれています。", english: "That book is read by many people." },
+    { japanese: "彼はクラスで一番賢いと考えられています。", english: "He is considered the smartest in the class." }
+  ],
+  dialogue: {
+    speakerA: { japanese: "このお寺はいつ建てられたんですか。", english: "When was this temple built?" },
+    speakerB: { japanese: "八世紀に建てられたと言われています。", english: "It is said to have been built in the 8th century." },
+    speakerA: { japanese: "へえ、そんなに古いんですね。", english: "Wow, that old, huh." },
+    speakerB: { japanese: "はい、国の重要文化財に指定されています。", english: "Yes, it is designated as an Important Cultural Property." }
+  },
+  exercises: [
+    { type: "fill-blank", question: "この映画は多くの人に___。", answer: "見られています" },
+    { type: "matching", pairs: [{ japanese: "作られる", english: "is made" }, { japanese: "使われる", english: "is used" }], instruction: "Match the Japanese passive forms" },
+    { type: "translation", vietnamese: "Bức tranh này được vẽ bởi một họa sĩ nổi tiếng.", japanese: "この絵は有名な画家によって描かれました。" }
+  ]
+},
+{
+  id: 45,
+  title: "Relative Clauses",
+  level: "advanced",
+  vocabulary: [
+    { japanese: "連体修飾節", english: "relative clause" },
+    { japanese: "～がいる", english: "there is ~" },
+    { japanese: "～という", english: "called/named ~" },
+    { japanese: "場所", english: "place" },
+    { japanese: "人", english: "person" },
+    { japanese: "物", english: "thing" },
+    { japanese: "こと", english: "event" },
+    { japanese: "～をしている", english: "wearing / doing ~" },
+    { japanese: "～だった", english: "was ~" },
+    { japanese: "～な", english: "attribute (na-adj)" }
+  ],
+  grammar: [
+    { point: "Noun + が/を/に + Verb + Noun (relative clause)", explanation: "A clause modifying a noun directly before it." },
+    { point: "～ている + Noun", explanation: "Present continuous or state as modifier." }
+  ],
+  examples: [
+    { japanese: "昨日食べたラーメンはとても美味しかった。", english: "The ramen I ate yesterday was very delicious." },
+    { japanese: "あそこに立っている人は田中さんです。", english: "The person standing over there is Tanaka-san." },
+    { japanese: "私が買いたい本はどこですか。", english: "Where is the book I want to buy?" },
+    { japanese: "これは日本語の勉強に使うテキストです。", english: "This is the textbook used for studying Japanese." },
+    { japanese: "彼女が作ったケーキを食べました。", english: "I ate the cake she made." }
+  ],
+  dialogue: {
+    speakerA: { japanese: "あの赤いコートを着ている人は誰？", english: "Who is that person wearing the red coat?" },
+    speakerB: { japanese: "ああ、彼女は私の高校の同級生です。", english: "Oh, she is my high school classmate." },
+    speakerA: { japanese: "そうなんだ。彼女が話していた内容は面白かった？", english: "I see. Was the content she was talking about interesting?" },
+    speakerB: { japanese: "うん、旅行の話だったよ。", english: "Yeah, it was about travel." }
+  },
+  exercises: [
+    { type: "fill-blank", question: "昨日___映画はとても感動的でした。", answer: "見た" },
+    { type: "matching", pairs: [{ japanese: "連体修飾節", english: "relative clause" }, { japanese: "先行詞", english: "antecedent" }], instruction: "Match the Japanese grammar terms" },
+    { type: "translation", vietnamese: "Người đang đọc sách kia là giáo viên của tôi.", japanese: "本を読んでいる人は私の先生です。" }
+  ]
+},
+{
+  id: 46,
+  title: "Conditional Sentences",
+  level: "advanced",
+  vocabulary: [
+    { japanese: "条件文", english: "conditional sentence" },
+    { japanese: "～ば", english: "if (conditional -ba form)" },
+    { japanese: "～たら", english: "if (conditional -tara)" },
+    { japanese: "～なら", english: "if (conditional -nara)" },
+    { japanese: "～と", english: "when / if (natural consequence)" },
+    { japanese: "仮定", english: "hypothesis" },
+    { japanese: "結果", english: "result" },
+    { japanese: "現実", english: "reality" },
+    { japanese: "非現実", english: "unreal" },
+    { japanese: "逆説", english: "paradox" }
+  ],
+  grammar: [
+    { point: "～ば、～", explanation: "If (general condition) – ば form" },
+    { point: "～たら、～", explanation: "If/When (specific condition) – たら form" },
+    { point: "～なら、～", explanation: "If (topic condition) – なら form" }
+  ],
+  examples: [
+    { japanese: "春になれば、桜が咲きます。", english: "If spring comes, cherry blossoms bloom." },
+    { japanese: "東京に行ったら、スカイツリーに登りたい。", english: "If I go to Tokyo, I want to climb the Sky Tree." },
+    { japanese: "勉強するなら、図書館のほうがいいです。", english: "If you study, the library is better." },
+    { japanese: "このスイッチを押すと、ドアが開きます。", english: "If you press this switch, the door opens." },
+    { japanese: "来週時間があったら、映画を見に行きませんか。", english: "If you have time next week, shall we go see a movie?" }
+  ],
+  dialogue: {
+    speakerA: { japanese: "もし雨が降ったら、ピクニックは中止？", english: "If it rains, will the picnic be canceled?" },
+    speakerB: { japanese: "そうですね。雨なら屋内でゲームをしましょう。", english: "Well, if it rains, let's play indoor games." },
+    speakerA: { japanese: "晴れたら、何をする？", english: "If it's sunny, what will we do?" },
+    speakerB: { japanese: "バーベキューをしようよ。", english: "Let's have a barbecue." }
+  },
+  exercises: [
+    { type: "fill-blank", question: "時間が___、手伝ってください。", answer: "あれば" },
+    { type: "matching", pairs: [{ japanese: "～ば", english: "if (general)" }, { japanese: "～たら", english: "if (specific)" }], instruction: "Match the Japanese conditional forms with their usage" },
+    { type: "translation", vietnamese: "Nếu tôi giàu, tôi sẽ mua một ngôi nhà lớn.", japanese: "お金持ちなら、大きな家を買います。" }
+  ]
+},
+{
+  id: 47,
+  title: "Idiomatic Expressions",
+  level: "advanced",
+  vocabulary: [
+    { japanese: "慣用句", english: "idiomatic expression" },
+    { japanese: "猫の手も借りたい", english: "very busy (lit. want even a cat's paw)" },
+    { japanese: "猿も木から落ちる", english: "even experts make mistakes" },
+    { japanese: "花より団子", english: "substance over style" },
+    { japanese: "泣きっ面に蜂", english: "adding insult to injury" },
+    { japanese: "石橋を叩いて渡る", english: "to be extremely cautious" },
+    { japanese: "口が滑る", english: "to slip of the tongue" },
+    { japanese: "足を引っ張る", english: "to hold someone back" },
+    { japanese: "肩を持つ", english: "to take sides" },
+    { japanese: "手を焼く", english: "to have trouble dealing with" }
+  ],
+  grammar: [
+    { point: "～という意味", explanation: "It means ~ (explaining meaning)" },
+    { point: "～で表す", explanation: "to express as ~" }
+  ],
+  examples: [
+    { japanese: "今、猫の手も借りたいほど忙しい。", english: "I'm so busy I could use a cat's paw." },
+    { japanese: "彼もあんなミスをするなんて、猿も木から落ちるね。", english: "Even he makes a mistake like that – even monkeys fall from trees." },
+    { japanese: "値段より味のほうが大事だよ。花より団子だ。", english: "Taste is more important than price – substance over style." },
+    { japanese: "事故った上に財布をなくした。泣きっ面に蜂だ。", english: "I had an accident and lost my wallet – adding insult to injury." },
+    { japanese: "彼はいつも石橋を叩いて渡るタイプだ。", english: "He's the type to tap the stone bridge before crossing – very cautious." }
+  ],
+  dialogue: {
+    speakerA: { japanese: "試験に落ちてしまった。しかも彼女に振られた。", english: "I failed the exam. And my girlfriend dumped me." },
+    speakerB: { japanese: "泣きっ面に蜂だね。でも次があるさ。", english: "Adding insult to injury. But there will be a next time." },
+    speakerA: { japanese: "そう言ってもらえると助かるよ。", english: "It helps to hear you say that." },
+    speakerB: { japanese: "頑張って！石橋を叩いて渡るくらい慎重にね。", english: "Do your best! Be as cautious as tapping the stone bridge." }
+  },
+  exercises: [
+    { type: "fill-blank", question: "彼はいつも___。とても慎重な人だ。", answer: "石橋を叩いて渡る" },
+    { type: "matching", pairs: [{ japanese: "猫の手も借りたい", english: "very busy" }, { japanese: "猿も木から落ちる", english: "even experts make mistakes" }], instruction: "Match the Japanese idioms with their meanings" },
+    { type: "translation", vietnamese: "Anh ấy rất cẩn thận, giống như 'dò đá trước khi qua cầu' vậy.", japanese: "彼はとても慎重で、石橋を叩いて渡るような人です。" }
+  ]
+},
+{
+  id: 48,
+  title: "Slang and Colloquial",
+  level: "advanced",
+  vocabulary: [
+    { japanese: "やばい", english: "awesome/bad (slang)" },
+    { japanese: "めっちゃ", english: "very (slang)" },
+    { japanese: "超", english: "super ~" },
+    { japanese: "マジで", english: "seriously/for real" },
+    { japanese: "すげえ", english: "amazing (slang)" },
+    { japanese: "うざい", english: "annoying" },
+    { japanese: "きもい", english: "gross/creepy" },
+    { japanese: "だるい", english: "tiresome/lazy" },
+    { japanese: "～じゃん", english: "isn't it? (colloquial)" },
+    { japanese: "～てる", english: "contraction of ている" }
+  ],
+  grammar: [
+    { point: "省略形", explanation: "Contractions in casual speech: してる→してる, てしまう→ちゃう, etc." },
+    { point: "終助詞", explanation: "Sentence-ending particles like ね、よ、さ、etc., used for nuance." }
+  ],
+  examples: [
+    { japanese: "このラーメン、めっちゃ美味しい！", english: "This ramen is super delicious!" },
+    { japanese: "マジで？信じられない。", english: "Seriously? I can't believe it." },
+    { japanese: "あの映画、やばかったよ。", english: "That movie was awesome / terrible. (context)" },
+    { japanese: "宿題が多すぎてだるい。", english: "Too much homework, so tiresome." },
+    { japanese: "今日、学校行ってないの？ – 行ってるよ。", english: "You didn't go to school today? – I did go." }
+  ],
+  dialogue: {
+    speakerA: { japanese: "昨日のライブ、すげえ楽しかった！", english: "Yesterday's live concert was super fun!" },
+    speakerB: { japanese: "え、マジ？行けばよかった。", english: "What, seriously? I wish I had gone." },
+    speakerA: { japanese: "めっちゃ盛り上がったよ。次は一緒に行こう！", english: "It was super lively. Let's go together next time!" },
+    speakerB: { japanese: "いいね。絶対行く！", english: "Sounds good. I'll definitely go!" }
+  },
+  exercises: [
+    { type: "fill-blank", question: "このゲーム、___面白い！", answer: "めっちゃ" },
+    { type: "matching", pairs: [{ japanese: "やばい", english: "awesome/bad" }, { japanese: "うざい", english: "annoying" }], instruction: "Match the Japanese slang with their meanings" },
+    { type: "translation", vietnamese: "Cái này thật tuyệt vời! (slang)", japanese: "これ、超やばい！" }
+  ]
+},
+{
+  id: 49,
+  title: "Debating Skills",
+  level: "advanced",
+  vocabulary: [
+    { japanese: "討論", english: "debate" },
+    { japanese: "論点", english: "argument point" },
+    { japanese: "主張", english: "claim" },
+    { japanese: "反論", english: "rebuttal" },
+    { japanese: "立証", english: "proof" },
+    { japanese: "データ", english: "data" },
+    { japanese: "論理的", english: "logical" },
+    { japanese: "感情論", english: "emotional argument" },
+    { japanese: "妥協点", english: "common ground" },
+    { japanese: "結論", english: "conclusion" }
+  ],
+  grammar: [
+    { point: "～という理由で", explanation: "For the reason that ~" },
+    { point: "～にもかかわらず", explanation: "Despite ~ / although" }
+  ],
+  examples: [
+    { japanese: "第一に、コスト削減の観点から反対します。", english: "First, I oppose from a cost reduction perspective." },
+    { japanese: "その主張にはデータの裏付けがありません。", english: "That claim has no data support." },
+    { japanese: "感情論ではなく、論理的に話しましょう。", english: "Let's speak logically, not emotionally." },
+    { japanese: "多くの反対意見にもかかわらず、この法案は可決されました。", english: "Despite much opposition, the bill was passed." },
+    { japanese: "両者の妥協点を探すべきです。", english: "We should find common ground between both sides." }
+  ],
+  dialogue: {
+    speakerA: { japanese: "私はリモートワークを推進すべきだと思います。", english: "I think we should promote remote work." },
+    speakerB: { japanese: "しかし、チームのコミュニケーションが難しくなります。", english: "But team communication becomes difficult." },
+    speakerA: { japanese: "オンラインツールを使えば解決できます。", english: "We can solve it with online tools." },
+    speakerB: { japanese: "確かにそうですが、対面のメリットも無視できません。", english: "That's true, but we can't ignore the benefits of face-to-face." }
+  },
+  exercises: [
+    { type: "fill-blank", question: "その___には根拠がありません。", answer: "主張" },
+    { type: "matching", pairs: [{ japanese: "反論", english: "rebuttal" }, { japanese: "妥協点", english: "common ground" }], instruction: "Match the Japanese debate terms" },
+    { type: "translation", vietnamese: "Mặc dù có nhiều khó khăn, chúng ta vẫn phải tiếp tục.", japanese: "多くの困難にもかかわらず、続けなければなりません。" }
+  ]
+},
+{
+  id: 50,
+  title: "Final Comprehensive Review",
+  level: "advanced",
+  vocabulary: [
+    { japanese: "復習", english: "review" },
+    { japanese: "総合", english: "comprehensive" },
+    { japanese: "応用", english: "application" },
+    { japanese: "まとめる", english: "to summarize" },
+    { japanese: "確認", english: "confirmation" },
+    { japanese: "達成", english: "achievement" },
+    { japanese: "成長", english: "growth" },
+    { japanese: "目標", english: "goal" },
+    { japanese: "挑戦", english: "challenge" },
+    { japanese: "継続", english: "continuation" }
+  ],
+  grammar: [
+    { point: "～を振り返って", explanation: "Looking back at ~" },
+    { point: "～てきた", explanation: "Has been doing ~ up to now" }
+  ],
+  examples: [
+    { japanese: "この一年間、日本語の勉強を続けてきました。", english: "I have continued studying Japanese this past year." },
+    { japanese: "学んだことを実際の会話で使えるようになりました。", english: "I can now use what I learned in real conversations." },
+    { japanese: "今までの復習をして、理解を深めましょう。", english: "Let's review what we've covered and deepen our understanding." },
+    { japanese: "新しい目標を立てて、さらに上を目指しましょう。", english: "Set new goals and aim even higher." },
+    { japanese: "日本語を学ぶ旅はまだ続きます。頑張りましょう！", english: "The journey of learning Japanese continues. Let's do our best!" }
+  ],
+  dialogue: {
+    speakerA: { japanese: "このコースが終わりましたね。お疲れさまでした。", english: "This course is over. You've worked hard." },
+    speakerB: { japanese: "ありがとうございます。本当にたくさんのことを学びました。", english: "Thank you. I really learned a lot." },
+    speakerA: { japanese: "これからも日本語の勉強を続けますか。", english: "Will you continue studying Japanese from now on?" },
+    speakerB: { japanese: "はい、もっと上達できるように頑張ります！", english: "Yes, I'll do my best to improve even more!" }
+  },
+  exercises: [
+    { type: "fill-blank", question: "今までの復習をして、___を深めましょう。", answer: "理解" },
+    { type: "matching", pairs: [{ japanese: "達成", english: "achievement" }, { japanese: "挑戦", english: "challenge" }], instruction: "Match the Japanese review terms" },
+    { type: "translation", vietnamese: "Tôi đã học tiếng Nhật được ba năm. Nhìn lại, tôi đã tiến bộ rất nhiều.", japanese: "日本語を三年間勉強してきました。振り返ると、とても上達しました。" }
+  ]
+}
 ];
