@@ -239,31 +239,7 @@ function LessonTile({ lesson }: LessonTileProps) {
                       </li>
                     );
                   }
-
-                  // Lessons 21-50 shape: flat fields (question, vietnamese, instruction, etc.)
-                  return (
-                    <li key={ei} className="text-xs text-slate-700">
-                      <span className="font-semibold">
-                        {ei + 1}. {labelVi}:
-                      </span>
-                      <span> {ex.question || ex.vietnamese || ex.instruction || ""}</span>
-                      {ex.answer && (
-                        <span className="block text-[10px] text-green-600 mt-0.5">
-                          → {ex.answer}
-                        </span>
-                      )}
-                      {ex.french && (
-                        <span className="block text-[10px] text-green-600 mt-0.5">
-                          → {ex.french}
-                        </span>
-                      )}
-                      {ex.pairs && (
-                        <span className="block text-[10px] text-green-600 mt-0.5">
-                          → {ex.pairs.map((p: string[]) => p.join(" - ")).join(", ")}
-                        </span>
-                      )}
-                    </li>
-                  );
+                  return null;
                 })}
               </ol>
             </div>
