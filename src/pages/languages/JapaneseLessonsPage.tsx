@@ -118,7 +118,7 @@ function LessonTile({ lesson }: { lesson: any }) {
               #{lesson.id}
             </span>
             <p className="text-sm font-medium text-slate-900">
-              {lesson.title}
+              {lesson.title_vi || lesson.title}
             </p>
             {lesson.level && (
               <span

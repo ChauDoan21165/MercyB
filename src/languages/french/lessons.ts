@@ -1710,8 +1710,6 @@ const EXPRESSIONS: FrenchLesson[] = [
     dialogue:[{speaker:"A",text:"Raconte-moi ton voyage au Vietnam !",en:"Tell me about your Vietnam trip!"},{speaker:"B",text:"C'était incroyable ! Hanoï, Hoi An, HCM-Ville.",en:"Incredible! Hanoi, Hoi An, HCMC."},{speaker:"A",text:"Qu'est-ce qui t'a le plus marqué ?",en:"What impressed you most?"},{speaker:"B",text:"La nourriture ! Le phở est inoubliable.",en:"The food! Pho is unforgettable."}],
     exercises:[{type:"fill-blank",question:"J'ai passé un mois ___ Vietnam.",answer:"au"},{type:"matching",pairs:[["raconter","kể"],["inoubliable","khó quên"],["découvrir","khám phá"]],instruction:"Nối từ với nghĩa"},{type:"translation",vietnamese:"Tôi không quên lần đầu đến Paris.",french:"Je n'oublierai jamais la première fois à Paris."}]},
 ];
-
-export 
 // ── ADVANCED_GRAMMAR ──
 const ADVANCED_GRAMMAR: FrenchLesson[] = [
   {id:"french_grammar_compare",category:"advanced_grammar",title_vi:"So sánh trong tiếng Pháp",title_en:"Comparisons in French",
