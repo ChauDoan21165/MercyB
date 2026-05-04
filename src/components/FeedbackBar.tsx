@@ -3,32 +3,54 @@
 import { useState } from "react";
 import { Send, X } from "lucide-react";
 import { supabase } from "@/lib/supabaseClient";
+import { useAuth } from "@/providers/AuthProvider";
+import { useToast } from "@/hooks/use-toast";
 
 export function FeedbackBar() {
+  const { user } = useAuth();
+  const { toast } = useToast();
   const [open, setOpen]       = useState(false);
   const [text, setText]       = useState("");
   const [sending, setSending] = useState(false);
   const [sent, setSent]       = useState(false);
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
+
+  // Anonymous users don't see the feedback button. RLS now requires
+  // auth.uid() = user_id on insert; rendering for guests would only
+  // produce silent failures.
+  if (!user) return null;
 
   const handleSubmit = async () => {
     const trimmed = text.trim();
     if (!trimmed || sending) return;
     setSending(true);
-    try {
-      const { data: { user } } = await supabase.auth.getUser();
-      await supabase.from("feedback").insert({
-        user_id: user?.id ?? null,
-        message: trimmed,
-        status: "new",
-        priority: "normal",
-        category: "general",
+    setErrorMsg(null);
+
+    const { error } = await supabase.from("feedback").insert({
+      user_id: user.id,
+      message: trimmed,
+      status: "new",
+      priority: "normal",
+      category: "general",
+    });
+
+    if (error) {
+      if (import.meta.env.DEV) console.warn("[feedback] insert failed:", error);
+      const friendly = "Có lỗi khi gửi báo cáo. Vui lòng thử lại.";
+      setErrorMsg(friendly);
+      toast({
+        title: "Gửi không thành công",
+        description: friendly,
+        variant: "destructive",
       });
-      setText("");
-      setSent(true);
-      setTimeout(() => { setSent(false); setOpen(false); }, 2000);
-    } catch { /* silent */ } finally {
       setSending(false);
+      return;
     }
+
+    setText("");
+    setSent(true);
+    setSending(false);
+    setTimeout(() => { setSent(false); setOpen(false); }, 2000);
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
@@ -141,6 +163,10 @@ export function FeedbackBar() {
             {sent ? (
               <div style={{ fontSize: 13, fontWeight: 700, color: "rgba(131,24,67,0.84)" }}>
                 🌹 Thank you! / Cảm ơn bạn!
+              </div>
+            ) : errorMsg ? (
+              <div style={{ fontSize: 12, fontWeight: 700, color: "rgba(180,40,40,0.92)" }}>
+                ⚠️ {errorMsg}
               </div>
             ) : (
               <div style={{ fontSize: 11, color: "rgba(0,0,0,0.36)" }}>Ctrl+Enter to send</div>
