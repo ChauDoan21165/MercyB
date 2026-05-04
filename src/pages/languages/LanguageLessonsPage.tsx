@@ -312,7 +312,7 @@ function LessonTile({
                     {ko && s.romanized ? s.romanized : (s.pinyin ?? s.romaji ?? s.romanized ?? "")}
                   </div>
                   <div className="text-xs font-medium text-slate-700 mt-0.5">
-                    {s.en ?? s.meaning ?? ""}
+                    {s.en ?? ""}
                   </div>
                   <div className="text-xs text-slate-500 mt-0.5">
                     {s.vi ?? ""}
