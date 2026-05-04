@@ -29,7 +29,9 @@ export type GermanCategoryId =
   | "travel"
   | "emotions"
   | "past_tense"
-  | "future_plans";
+  | "future_plans"
+  | "workplace"
+  | "life_admin";
 
 export type GermanCategoryMeta = {
   id: GermanCategoryId;
@@ -59,6 +61,8 @@ export const GERMAN_CATEGORIES: ReadonlyArray<GermanCategoryMeta> = [
   { id: "emotions", title_vi: "Cảm xúc", title_en: "Emotions", expected_count: 1 },
   { id: "past_tense", title_vi: "Thì quá khứ", title_en: "Past tense", expected_count: 1 },
   { id: "future_plans", title_vi: "Kế hoạch tương lai", title_en: "Future plans", expected_count: 1 },
+  { id: "workplace", title_vi: "Công sở", title_en: "Workplace", expected_count: 5 },
+  { id: "life_admin", title_vi: "Thủ tục hành chính", title_en: "Administrative tasks", expected_count: 5 },
 ];
 
 export type LessonSentence = {
@@ -1272,6 +1276,896 @@ const FUTURE_PLANS: GermanLesson[] = [
   },
 ];
 
+// ── 21–25. Workplace ────────────────────────────────────────────────────
+
+const WORKPLACE: GermanLesson[] = [
+  {
+    id: "german_office_basics",
+    category: "workplace",
+    title_vi: "Văn phòng cơ bản",
+    title_en: "Office basics",
+    sentences: [
+      {
+        en: "Ich arbeite in einem Büro im Stadtzentrum.",
+        vi: "Tôi làm việc ở văn phòng trung tâm thành phố.",
+        pronunciation_focus: ["Büro → BUY-rô — 'ü' tròn môi", "Stadt → SHTÁT", "ch → khờ nhẹ"],
+      },
+      {
+        en: "Mein Schreibtisch ist neben dem Fenster.",
+        vi: "Bàn làm việc của tôi cạnh cửa sổ.",
+        pronunciation_focus: ["Schreibtisch → SHRAI-bờ-tish", "ei → ai", "Fenster → PHEN-stờ"],
+      },
+      {
+        en: "Ich beginne um neun Uhr und gehe um siebzehn Uhr nach Hause.",
+        vi: "Tôi bắt đầu lúc 9 giờ và về nhà lúc 17 giờ.",
+        pronunciation_focus: ["beginne → bờ-GHIN-nờ", "neun → nóin", "siebzehn → ZÍP-tsên"],
+      },
+      {
+        en: "Wir haben jeden Montag eine Besprechung.",
+        vi: "Chúng tôi có cuộc họp vào mỗi thứ Hai.",
+        pronunciation_focus: ["jeden → IÊ-đần", "Montag → MÔN-tác", "Besprechung → bờ-SHPRÊ-khung"],
+      },
+      {
+        en: "Mein Kollege hilft mir oft mit dem Computer.",
+        vi: "Đồng nghiệp giúp tôi nhiều với máy tính.",
+        pronunciation_focus: ["Kollege → cô-LÊ-gờ", "hilft → HIN-phờ", "Computer → côm-PIU-tờ"],
+      },
+    ],
+    cultural_notes_vi:
+      "Văn phòng Đức coi trọng đúng giờ tuyệt đối. Đến trễ 5 phút đã bị coi là thiếu chuyên nghiệp. Người Đức gõ cửa trước khi vào phòng đồng nghiệp, kể cả khi cửa mở. Xưng hô: dùng 'Sie' (ngài/bà) với đồng nghiệp mới và sếp cho đến khi được mời chuyển sang 'du'.",
+    tip_advice_vi:
+      "Học giống danh từ cùng với từ vựng — der/die/das luôn đi kèm. 'der Chef' (sếp nam) vs 'die Chefin' (sếp nữ) — tiếng Đức phân giới tính nghề nghiệp rõ ràng. Khi không chắc giới tính, dùng dạng nam như mặc định.",
+    vocabulary: [
+      { word: "das Büro", en: "office", vi: "văn phòng", pos: "noun (n)", pronunciation_vi: "đát BUY-rô — 'ü' tròn môi" },
+      { word: "der Schreibtisch", en: "desk", vi: "bàn làm việc", pos: "noun (m)", pronunciation_vi: "đe-a SHRAI-bờ-tish" },
+      { word: "der Computer", en: "computer", vi: "máy tính", pos: "noun (m)", pronunciation_vi: "đe-a côm-PIU-tờ" },
+      { word: "der Kollege", en: "colleague (m)", vi: "đồng nghiệp nam", pos: "noun (m)", pronunciation_vi: "đe-a cô-LÊ-gờ" },
+      { word: "die Kollegin", en: "colleague (f)", vi: "đồng nghiệp nữ", pos: "noun (f)", pronunciation_vi: "đi cô-LÊ-ghin" },
+      { word: "die Besprechung", en: "meeting", vi: "cuộc họp", pos: "noun (f)", pronunciation_vi: "đi bờ-SHPRÊ-khung" },
+      { word: "der Chef", en: "boss (m)", vi: "sếp nam", pos: "noun (m)", pronunciation_vi: "đe-a SHEPH" },
+      { word: "die Chefin", en: "boss (f)", vi: "sếp nữ", pos: "noun (f)", pronunciation_vi: "đi SHE-phin" },
+      { word: "arbeiten", en: "to work", vi: "làm việc", pos: "verb", pronunciation_vi: "A-bai-tần" },
+      { word: "anfangen", en: "to start", vi: "bắt đầu", pos: "verb (separable)", pronunciation_vi: "AN-phan-gần" },
+    ],
+    dialogue: [
+      { speaker: "A", text: "Wo arbeitest du?", vi: "Bạn làm việc ở đâu?" },
+      { speaker: "B", text: "Ich arbeite in einem kleinen Büro in Berlin.", vi: "Tôi làm việc ở một văn phòng nhỏ ở Berlin." },
+      { speaker: "A", text: "Wann beginnst du?", vi: "Bạn bắt đầu lúc mấy giờ?" },
+      { speaker: "B", text: "Um neun Uhr. Wir haben jeden Tag eine kurze Besprechung.", vi: "Lúc 9 giờ. Chúng tôi họp ngắn mỗi ngày." },
+    ],
+    exercises: [
+      {
+        type: "fill_blank",
+        instruction_vi: "Điền từ về văn phòng:",
+        pronunciation_focus: ["chú ý giống danh từ"],
+        items: [
+          { prompt: "Mein _____ ist groß und hell. (văn phòng)", answer: "Büro" },
+          { prompt: "Der _____ ist sehr nett. (sếp nam)", answer: "Chef" },
+          { prompt: "Wir haben eine _____. (cuộc họp)", answer: "Besprechung" },
+        ],
+      },
+      {
+        type: "matching",
+        instruction_vi: "Nối từ tiếng Đức với nghĩa tiếng Việt:",
+        pronunciation_focus: [],
+        items: [
+          { prompt: "der Schreibtisch", answer: "bàn làm việc" },
+          { prompt: "die Kollegin", answer: "đồng nghiệp nữ" },
+          { prompt: "arbeiten", answer: "làm việc" },
+          { prompt: "anfangen", answer: "bắt đầu" },
+        ],
+      },
+      {
+        type: "translation",
+        instruction_vi: "Dịch sang tiếng Đức:",
+        pronunciation_focus: [],
+        items: [
+          { prompt: "Tôi làm việc trong văn phòng.", answer: "Ich arbeite im Büro." },
+          { prompt: "Sếp của tôi rất tốt.", answer: "Mein Chef ist sehr nett." },
+          { prompt: "Chúng tôi có cuộc họp.", answer: "Wir haben eine Besprechung." },
+        ],
+      },
+    ],
+  },
+  {
+    id: "german_email_phone",
+    category: "workplace",
+    title_vi: "Email và điện thoại",
+    title_en: "Email and phone",
+    sentences: [
+      {
+        en: "Ich schreibe Ihnen wegen unseres Termins.",
+        vi: "Tôi viết cho bạn về cuộc hẹn của chúng ta.",
+        pronunciation_focus: ["schreibe → SHRAI-bờ", "Ihnen → I-nần — 'Sie' lịch sự", "Termins → TE-mins"],
+      },
+      {
+        en: "Mit freundlichen Grüßen, Anna Müller.",
+        vi: "Trân trọng, Anna Müller.",
+        pronunciation_focus: ["freundlichen → PHROIN-lị-khần", "Grüßen → GRUY-sần — 'ß' = ss", "ü → uy tròn"],
+      },
+      {
+        en: "Können Sie mich bitte zurückrufen?",
+        vi: "Bạn có thể gọi lại cho tôi được không?",
+        pronunciation_focus: ["Können → KƠN-nần — 'ö' tròn", "zurückrufen → tsu-RUYC-ru-phần", "ü → uy"],
+      },
+      {
+        en: "Ich rufe später noch einmal an.",
+        vi: "Tôi sẽ gọi lại lần nữa sau.",
+        pronunciation_focus: ["rufe → RU-phờ", "später → SHPÊ-tờ", "anrufen tách ra: rufe ... an"],
+      },
+      {
+        en: "Bitte senden Sie mir die Datei per Email.",
+        vi: "Xin gửi file cho tôi qua email.",
+        pronunciation_focus: ["senden → ZEN-đần", "Datei → đa-TAI", "Email → Ê-mây — đọc gần như tiếng Anh"],
+      },
+    ],
+    cultural_notes_vi:
+      "Email công việc Đức rất trang trọng. Mở đầu bằng 'Sehr geehrte/r' (kính gửi) cho người chưa quen, 'Liebe/r' (thân mến) cho đồng nghiệp. Kết thúc luôn dùng 'Mit freundlichen Grüßen' (trân trọng) — cụm này gần như bắt buộc. Người Đức trả lời email trong giờ làm việc, hiếm khi cuối tuần.",
+    tip_advice_vi:
+      "Động từ tách (separable verbs) như 'anrufen', 'zurückrufen' khi chia: 'Ich rufe an', 'Sie ruft zurück' — phần 'an'/'zurück' nhảy ra cuối câu. Đây là đặc điểm độc đáo của tiếng Đức, cần luyện nhiều.",
+    vocabulary: [
+      { word: "die Email", en: "email", vi: "email", pos: "noun (f)", pronunciation_vi: "đi Ê-mây" },
+      { word: "das Telefon", en: "telephone", vi: "điện thoại", pos: "noun (n)", pronunciation_vi: "đát tê-lê-PHÔN" },
+      { word: "der Termin", en: "appointment", vi: "cuộc hẹn", pos: "noun (m)", pronunciation_vi: "đe-a TE-min" },
+      { word: "die Datei", en: "file", vi: "file/tệp", pos: "noun (f)", pronunciation_vi: "đi đa-TAI" },
+      { word: "die Nachricht", en: "message", vi: "tin nhắn", pos: "noun (f)", pronunciation_vi: "đi NÁC-rịt" },
+      { word: "schreiben", en: "to write", vi: "viết", pos: "verb", pronunciation_vi: "SHRAI-bần" },
+      { word: "anrufen", en: "to call", vi: "gọi điện", pos: "verb (separable)", pronunciation_vi: "AN-ru-phần" },
+      { word: "zurückrufen", en: "to call back", vi: "gọi lại", pos: "verb (separable)", pronunciation_vi: "tsu-RUYC-ru-phần" },
+      { word: "senden", en: "to send", vi: "gửi", pos: "verb", pronunciation_vi: "ZEN-đần" },
+      { word: "antworten", en: "to reply", vi: "trả lời", pos: "verb", pronunciation_vi: "ANT-vo-tần" },
+    ],
+    dialogue: [
+      { speaker: "A", text: "Guten Tag, hier ist Anna Schmidt. Kann ich bitte mit Herrn Müller sprechen?", vi: "Xin chào, đây là Anna Schmidt. Tôi có thể nói chuyện với ông Müller được không?" },
+      { speaker: "B", text: "Einen Moment bitte. Er ist gerade nicht da.", vi: "Xin chờ một lát. Ông ấy không có ở đây ngay bây giờ." },
+      { speaker: "A", text: "Können Sie ihm bitte sagen, dass ich angerufen habe?", vi: "Xin nói với ông ấy là tôi đã gọi được không?" },
+      { speaker: "B", text: "Natürlich. Ich gebe ihm Ihre Nachricht.", vi: "Tất nhiên. Tôi sẽ chuyển tin nhắn của bạn." },
+    ],
+    exercises: [
+      {
+        type: "fill_blank",
+        instruction_vi: "Điền động từ phù hợp:",
+        pronunciation_focus: ["động từ tách (separable verbs)"],
+        items: [
+          { prompt: "Ich _____ Ihnen eine Email. (gửi)", answer: "sende" },
+          { prompt: "Können Sie mich _____? (gọi lại)", answer: "zurückrufen" },
+          { prompt: "Ich _____ später noch einmal _____. (gọi điện)", answer: "rufe ... an" },
+        ],
+      },
+      {
+        type: "matching",
+        instruction_vi: "Nối từ tiếng Đức với nghĩa tiếng Việt:",
+        pronunciation_focus: [],
+        items: [
+          { prompt: "die Datei", answer: "file/tệp" },
+          { prompt: "der Termin", answer: "cuộc hẹn" },
+          { prompt: "antworten", answer: "trả lời" },
+          { prompt: "Mit freundlichen Grüßen", answer: "trân trọng" },
+        ],
+      },
+      {
+        type: "translation",
+        instruction_vi: "Dịch sang tiếng Đức:",
+        pronunciation_focus: [],
+        items: [
+          { prompt: "Tôi viết email cho bạn.", answer: "Ich schreibe Ihnen eine Email." },
+          { prompt: "Xin gọi lại cho tôi.", answer: "Bitte rufen Sie mich zurück." },
+          { prompt: "Ông ấy không có ở đây.", answer: "Er ist nicht da." },
+        ],
+      },
+    ],
+  },
+  {
+    id: "german_meetings",
+    category: "workplace",
+    title_vi: "Họp hành",
+    title_en: "Meetings",
+    sentences: [
+      {
+        en: "Die Besprechung beginnt um zehn Uhr.",
+        vi: "Cuộc họp bắt đầu lúc 10 giờ.",
+        pronunciation_focus: ["Besprechung → bờ-SHPRÊ-khung", "beginnt → bờ-GHINT", "zehn → tsên"],
+      },
+      {
+        en: "Ich möchte einen Punkt hinzufügen.",
+        vi: "Tôi muốn thêm một điểm.",
+        pronunciation_focus: ["möchte → MƠỊC-tờ — 'ö' tròn ngắn", "Punkt → PUNG-kt", "hinzufügen → HIN-tsu-phuy-gần"],
+      },
+      {
+        en: "Sind alle einverstanden?",
+        vi: "Tất cả có đồng ý không?",
+        pronunciation_focus: ["alle → A-lờ", "einverstanden → AIN-phờ-shtan-đần", "ei → ai"],
+      },
+      {
+        en: "Wir müssen eine Entscheidung treffen.",
+        vi: "Chúng ta cần đưa ra quyết định.",
+        pronunciation_focus: ["müssen → MUYS-sần — 'ü' tròn", "Entscheidung → ent-SHAI-đung", "treffen → TRE-phần"],
+      },
+      {
+        en: "Die Sitzung ist beendet. Vielen Dank.",
+        vi: "Cuộc họp kết thúc. Cám ơn rất nhiều.",
+        pronunciation_focus: ["Sitzung → ZÍT-tsung", "beendet → bờ-ÊN-đết", "Vielen Dank → PHÍ-lần đank"],
+      },
+    ],
+    cultural_notes_vi:
+      "Họp hành ở Đức luôn có chương trình (Tagesordnung) gửi trước. Mọi người chuẩn bị kỹ và phát biểu thẳng vào vấn đề — không vòng vo. Bất đồng ý kiến được coi là bình thường và lành mạnh, không phải xung đột cá nhân. Ghi biên bản (Protokoll) là chuẩn mực.",
+    tip_advice_vi:
+      "'Ich bin einverstanden' (tôi đồng ý) lịch sự hơn 'Ja'. Trong họp công việc, dùng cách diễn đạt formal: 'Ich möchte vorschlagen' (tôi muốn đề xuất) thay vì 'Ich will' (tôi muốn). Tránh 'will' trong văn cảnh formal — nghe ra mệnh lệnh.",
+    vocabulary: [
+      { word: "die Sitzung", en: "session/meeting", vi: "phiên họp", pos: "noun (f)", pronunciation_vi: "đi ZÍT-tsung" },
+      { word: "die Tagesordnung", en: "agenda", vi: "chương trình họp", pos: "noun (f)", pronunciation_vi: "đi TÁ-gờs-ót-nung" },
+      { word: "der Vorschlag", en: "suggestion", vi: "đề xuất", pos: "noun (m)", pronunciation_vi: "đe-a PHÔ-shlác" },
+      { word: "die Entscheidung", en: "decision", vi: "quyết định", pos: "noun (f)", pronunciation_vi: "đi ent-SHAI-đung" },
+      { word: "die Frage", en: "question", vi: "câu hỏi", pos: "noun (f)", pronunciation_vi: "đi PHRA-gờ" },
+      { word: "diskutieren", en: "to discuss", vi: "thảo luận", pos: "verb", pronunciation_vi: "đi-scu-TI-rần" },
+      { word: "vorschlagen", en: "to suggest", vi: "đề xuất", pos: "verb (separable)", pronunciation_vi: "PHÔ-shla-gần" },
+      { word: "zustimmen", en: "to agree", vi: "đồng ý", pos: "verb (separable)", pronunciation_vi: "TSU-shtim-mần" },
+      { word: "ablehnen", en: "to reject", vi: "từ chối", pos: "verb (separable)", pronunciation_vi: "AP-lê-nần" },
+      { word: "einverstanden", en: "agreed", vi: "đồng ý", pos: "adjective", pronunciation_vi: "AIN-phờ-shtan-đần" },
+    ],
+    dialogue: [
+      { speaker: "A", text: "Ich schlage vor, dass wir das Projekt im Mai starten.", vi: "Tôi đề xuất bắt đầu dự án vào tháng 5." },
+      { speaker: "B", text: "Das ist zu früh. Können wir bis Juni warten?", vi: "Sớm quá. Chúng ta có thể đợi đến tháng 6 không?" },
+      { speaker: "A", text: "Gut, dann beginnen wir am ersten Juni.", vi: "Được, vậy chúng ta bắt đầu ngày 1 tháng 6." },
+      { speaker: "B", text: "Einverstanden. Ich notiere das.", vi: "Đồng ý. Tôi sẽ ghi lại." },
+    ],
+    exercises: [
+      {
+        type: "fill_blank",
+        instruction_vi: "Điền từ vựng họp hành:",
+        pronunciation_focus: [],
+        items: [
+          { prompt: "Wir müssen eine _____ treffen. (quyết định)", answer: "Entscheidung" },
+          { prompt: "Ich habe einen _____. (đề xuất)", answer: "Vorschlag" },
+          { prompt: "Sind alle _____? (đồng ý)", answer: "einverstanden" },
+        ],
+      },
+      {
+        type: "matching",
+        instruction_vi: "Nối động từ với nghĩa:",
+        pronunciation_focus: [],
+        items: [
+          { prompt: "diskutieren", answer: "thảo luận" },
+          { prompt: "zustimmen", answer: "đồng ý" },
+          { prompt: "ablehnen", answer: "từ chối" },
+          { prompt: "vorschlagen", answer: "đề xuất" },
+        ],
+      },
+      {
+        type: "translation",
+        instruction_vi: "Dịch sang tiếng Đức:",
+        pronunciation_focus: [],
+        items: [
+          { prompt: "Cuộc họp bắt đầu lúc 10 giờ.", answer: "Die Besprechung beginnt um zehn Uhr." },
+          { prompt: "Tôi đồng ý.", answer: "Ich bin einverstanden." },
+          { prompt: "Cám ơn rất nhiều.", answer: "Vielen Dank." },
+        ],
+      },
+    ],
+  },
+  {
+    id: "german_job_interview",
+    category: "workplace",
+    title_vi: "Phỏng vấn xin việc",
+    title_en: "Job interview",
+    sentences: [
+      {
+        en: "Ich interessiere mich für die Stelle als Ingenieur.",
+        vi: "Tôi quan tâm đến vị trí kỹ sư.",
+        pronunciation_focus: ["interessiere → in-tê-RES-si-rờ", "Stelle → SHTE-lờ", "Ingenieur → in-djê-NIƠA"],
+      },
+      {
+        en: "Ich habe fünf Jahre Berufserfahrung.",
+        vi: "Tôi có 5 năm kinh nghiệm làm việc.",
+        pronunciation_focus: ["fünf → PHUYNF — 'ü' tròn", "Jahre → IÁ-rờ", "Berufserfahrung → bờ-RUPHS-ê-pha-rung"],
+      },
+      {
+        en: "Meine Stärken sind Teamarbeit und Pünktlichkeit.",
+        vi: "Điểm mạnh của tôi là làm việc nhóm và đúng giờ.",
+        pronunciation_focus: ["Stärken → SHTE-kần — 'ä' = e", "Teamarbeit → TIM-a-bait", "Pünktlichkeit → PUYNG-lị-khait"],
+      },
+      {
+        en: "Wann kann ich anfangen?",
+        vi: "Khi nào tôi có thể bắt đầu?",
+        pronunciation_focus: ["Wann → vAN", "anfangen → AN-phan-gần", "động từ tách"],
+      },
+      {
+        en: "Vielen Dank für das Gespräch.",
+        vi: "Cám ơn vì cuộc trò chuyện.",
+        pronunciation_focus: ["Vielen → PHÍ-lần", "Gespräch → gơ-SHPREỊC — 'ä' = e", "Dank → đank"],
+      },
+    ],
+    cultural_notes_vi:
+      "Người Đức trong phỏng vấn coi trọng sự thật trên hết. Đừng phóng đại kinh nghiệm hay kỹ năng — họ sẽ kiểm tra. Câu hỏi 'Stärken und Schwächen' (điểm mạnh, điểm yếu) gần như chắc chắn xuất hiện. Trả lời điểm yếu phải thật, kèm cách bạn đang khắc phục.",
+    tip_advice_vi:
+      "Tiếng Đức formal trong phỏng vấn: dùng 'Sie' (ngài/bà), không bao giờ 'du'. Bắt tay khi vào và ra. Đến trước 5-10 phút (không sớm hơn). 'Ich freue mich auf Ihre Rückmeldung' (tôi mong nhận được phản hồi) là câu kết thúc lịch sự.",
+    vocabulary: [
+      { word: "die Stelle", en: "position/job", vi: "vị trí công việc", pos: "noun (f)", pronunciation_vi: "đi SHTE-lờ" },
+      { word: "der Beruf", en: "profession", vi: "nghề nghiệp", pos: "noun (m)", pronunciation_vi: "đe-a bờ-RUPH" },
+      { word: "die Erfahrung", en: "experience", vi: "kinh nghiệm", pos: "noun (f)", pronunciation_vi: "đi ê-PHA-rung" },
+      { word: "die Stärke", en: "strength", vi: "điểm mạnh", pos: "noun (f)", pronunciation_vi: "đi SHTE-cờ" },
+      { word: "die Schwäche", en: "weakness", vi: "điểm yếu", pos: "noun (f)", pronunciation_vi: "đi SHVE-khờ" },
+      { word: "der Lebenslauf", en: "CV/resume", vi: "sơ yếu lý lịch", pos: "noun (m)", pronunciation_vi: "đe-a LÊ-bần-lao-phờ" },
+      { word: "die Bewerbung", en: "application", vi: "đơn xin việc", pos: "noun (f)", pronunciation_vi: "đi bờ-VEA-bung" },
+      { word: "das Gespräch", en: "conversation/interview", vi: "buổi trò chuyện/phỏng vấn", pos: "noun (n)", pronunciation_vi: "đát gơ-SHPREỊC" },
+      { word: "sich bewerben", en: "to apply", vi: "ứng tuyển", pos: "reflexive verb", pronunciation_vi: "zịc bờ-VEA-bần" },
+      { word: "anfangen", en: "to start", vi: "bắt đầu", pos: "verb (separable)", pronunciation_vi: "AN-phan-gần" },
+    ],
+    dialogue: [
+      { speaker: "A", text: "Erzählen Sie mir bitte etwas über sich.", vi: "Xin kể cho tôi đôi điều về bạn." },
+      { speaker: "B", text: "Ich heiße Linh und komme aus Vietnam. Ich bin Software-Entwicklerin.", vi: "Tôi tên Linh, đến từ Việt Nam. Tôi là lập trình viên phần mềm." },
+      { speaker: "A", text: "Warum wollen Sie bei uns arbeiten?", vi: "Tại sao bạn muốn làm việc với chúng tôi?" },
+      { speaker: "B", text: "Ihr Unternehmen ist innovativ und ich möchte mich weiterentwickeln.", vi: "Công ty của bạn rất sáng tạo và tôi muốn phát triển bản thân thêm." },
+    ],
+    exercises: [
+      {
+        type: "fill_blank",
+        instruction_vi: "Điền từ về phỏng vấn:",
+        pronunciation_focus: [],
+        items: [
+          { prompt: "Ich habe drei Jahre _____. (kinh nghiệm)", answer: "Erfahrung" },
+          { prompt: "Meine _____ ist Pünktlichkeit. (điểm mạnh)", answer: "Stärke" },
+          { prompt: "Ich interessiere mich für die _____. (vị trí)", answer: "Stelle" },
+        ],
+      },
+      {
+        type: "matching",
+        instruction_vi: "Nối từ với nghĩa:",
+        pronunciation_focus: [],
+        items: [
+          { prompt: "der Lebenslauf", answer: "sơ yếu lý lịch" },
+          { prompt: "die Bewerbung", answer: "đơn xin việc" },
+          { prompt: "der Beruf", answer: "nghề nghiệp" },
+          { prompt: "sich bewerben", answer: "ứng tuyển" },
+        ],
+      },
+      {
+        type: "translation",
+        instruction_vi: "Dịch sang tiếng Đức:",
+        pronunciation_focus: [],
+        items: [
+          { prompt: "Tôi có 5 năm kinh nghiệm.", answer: "Ich habe fünf Jahre Erfahrung." },
+          { prompt: "Khi nào tôi có thể bắt đầu?", answer: "Wann kann ich anfangen?" },
+          { prompt: "Cám ơn vì cuộc phỏng vấn.", answer: "Vielen Dank für das Gespräch." },
+        ],
+      },
+    ],
+  },
+  {
+    id: "german_workplace_problems",
+    category: "workplace",
+    title_vi: "Vấn đề công sở",
+    title_en: "Workplace problems",
+    sentences: [
+      {
+        en: "Ich habe heute viel zu tun.",
+        vi: "Hôm nay tôi có nhiều việc phải làm.",
+        pronunciation_focus: ["heute → HÔI-tờ", "viel → PHÍN", "zu tun → tsu TUN"],
+      },
+      {
+        en: "Der Drucker funktioniert nicht.",
+        vi: "Máy in không hoạt động.",
+        pronunciation_focus: ["Drucker → ĐRUC-cờ", "funktioniert → phung-tsi-Ô-nịt", "nicht → nịt"],
+      },
+      {
+        en: "Ich kann den Termin leider nicht halten.",
+        vi: "Tiếc là tôi không thể giữ cuộc hẹn.",
+        pronunciation_focus: ["leider → LAI-đờ", "Termin → TE-min", "halten → HAN-tần"],
+      },
+      {
+        en: "Können Sie mir mit diesem Problem helfen?",
+        vi: "Bạn có thể giúp tôi với vấn đề này không?",
+        pronunciation_focus: ["Können → KƠN-nần", "Problem → prô-BLÊM", "helfen → HEN-phần"],
+      },
+      {
+        en: "Tut mir leid, ich habe einen Fehler gemacht.",
+        vi: "Xin lỗi, tôi đã mắc lỗi.",
+        pronunciation_focus: ["Tut mir leid → TÚT mia LAI", "Fehler → PHÊ-lờ", "gemacht → gơ-MÁCT"],
+      },
+    ],
+    cultural_notes_vi:
+      "Người Đức công sở nói thẳng vấn đề — không vòng vo. Mắc lỗi, hãy thừa nhận sớm và đề xuất cách khắc phục: 'Ich habe einen Fehler gemacht. Wie kann ich es korrigieren?' (Tôi đã mắc lỗi. Tôi có thể sửa thế nào?). Che giấu lỗi bị coi là tệ hơn lỗi gốc.",
+    tip_advice_vi:
+      "'Tut mir leid' (xin lỗi) cho lỗi nhỏ hàng ngày. 'Es tut mir sehr leid' (rất xin lỗi) cho lỗi nghiêm trọng. Với cấp trên hoặc tình huống formal, dùng 'Ich entschuldige mich' (tôi xin lỗi). Đừng dùng 'Sorry' — người Đức coi đó là không nghiêm túc.",
+    vocabulary: [
+      { word: "das Problem", en: "problem", vi: "vấn đề", pos: "noun (n)", pronunciation_vi: "đát prô-BLÊM" },
+      { word: "der Fehler", en: "mistake", vi: "lỗi", pos: "noun (m)", pronunciation_vi: "đe-a PHÊ-lờ" },
+      { word: "der Stress", en: "stress", vi: "căng thẳng", pos: "noun (m)", pronunciation_vi: "đe-a SHTRES" },
+      { word: "die Verspätung", en: "delay", vi: "trễ giờ", pos: "noun (f)", pronunciation_vi: "đi phê-SHPÊ-tung" },
+      { word: "die Frist", en: "deadline", vi: "hạn chót", pos: "noun (f)", pronunciation_vi: "đi PHRIST" },
+      { word: "helfen", en: "to help", vi: "giúp đỡ", pos: "verb", pronunciation_vi: "HEN-phần" },
+      { word: "funktionieren", en: "to function", vi: "hoạt động", pos: "verb", pronunciation_vi: "phung-tsi-Ô-ni-rần" },
+      { word: "reparieren", en: "to repair", vi: "sửa chữa", pos: "verb", pronunciation_vi: "rê-pa-RI-rần" },
+      { word: "krank", en: "sick", vi: "ốm", pos: "adjective", pronunciation_vi: "krank" },
+      { word: "müde", en: "tired", vi: "mệt", pos: "adjective", pronunciation_vi: "MUY-đờ — 'ü' tròn" },
+    ],
+    dialogue: [
+      { speaker: "A", text: "Was ist los? Du siehst müde aus.", vi: "Có chuyện gì? Bạn trông mệt mỏi." },
+      { speaker: "B", text: "Ich habe heute zu viel zu tun und der Drucker funktioniert nicht.", vi: "Hôm nay tôi có quá nhiều việc và máy in không hoạt động." },
+      { speaker: "A", text: "Soll ich dir helfen?", vi: "Tôi giúp bạn nhé?" },
+      { speaker: "B", text: "Ja bitte, das wäre toll.", vi: "Vâng, được vậy thì tuyệt." },
+    ],
+    exercises: [
+      {
+        type: "fill_blank",
+        instruction_vi: "Điền từ về vấn đề:",
+        pronunciation_focus: [],
+        items: [
+          { prompt: "Ich habe einen _____ gemacht. (lỗi)", answer: "Fehler" },
+          { prompt: "Der Drucker _____ nicht. (hoạt động)", answer: "funktioniert" },
+          { prompt: "Tut mir _____. (xin lỗi)", answer: "leid" },
+        ],
+      },
+      {
+        type: "matching",
+        instruction_vi: "Nối từ với nghĩa:",
+        pronunciation_focus: [],
+        items: [
+          { prompt: "die Frist", answer: "hạn chót" },
+          { prompt: "krank", answer: "ốm" },
+          { prompt: "müde", answer: "mệt" },
+          { prompt: "helfen", answer: "giúp đỡ" },
+        ],
+      },
+      {
+        type: "translation",
+        instruction_vi: "Dịch sang tiếng Đức:",
+        pronunciation_focus: [],
+        items: [
+          { prompt: "Tôi có quá nhiều việc.", answer: "Ich habe zu viel zu tun." },
+          { prompt: "Bạn có thể giúp tôi không?", answer: "Können Sie mir helfen?" },
+          { prompt: "Tôi đã mắc lỗi.", answer: "Ich habe einen Fehler gemacht." },
+        ],
+      },
+    ],
+  },
+];
+
+// ── 26–30. Life admin ───────────────────────────────────────────────────
+
+const LIFE_ADMIN: GermanLesson[] = [
+  {
+    id: "german_bank",
+    category: "life_admin",
+    title_vi: "Ngân hàng",
+    title_en: "Bank",
+    sentences: [
+      {
+        en: "Ich möchte ein Konto eröffnen.",
+        vi: "Tôi muốn mở tài khoản.",
+        pronunciation_focus: ["möchte → MƠỊC-tờ", "Konto → CÔN-tô", "eröffnen → ê-RƠPH-nần — 'ö' tròn"],
+      },
+      {
+        en: "Wo ist der nächste Geldautomat?",
+        vi: "Máy ATM gần nhất ở đâu?",
+        pronunciation_focus: ["nächste → NEỊC-stờ", "Geldautomat → GHEN-au-tô-mát", "ä → e"],
+      },
+      {
+        en: "Ich brauche einen Termin mit dem Berater.",
+        vi: "Tôi cần hẹn với nhân viên tư vấn.",
+        pronunciation_focus: ["brauche → BRAO-khờ", "Termin → TE-min", "Berater → bờ-RA-tờ"],
+      },
+      {
+        en: "Können Sie mir bitte fünfzig Euro wechseln?",
+        vi: "Xin đổi giúp tôi 50 euro?",
+        pronunciation_focus: ["fünfzig → PHUYNF-tsịc — 'ü' tròn", "wechseln → VEK-zần", "ch → khờ nhẹ"],
+      },
+      {
+        en: "Mein Geld ist auf dem Sparkonto.",
+        vi: "Tiền của tôi ở tài khoản tiết kiệm.",
+        pronunciation_focus: ["Geld → GHEN-t", "Sparkonto → SHPÁ-côn-tô", "auf dem → ao-phờ đêm"],
+      },
+    ],
+    cultural_notes_vi:
+      "Đức vẫn dùng nhiều tiền mặt hơn các nước phát triển khác — nhiều quán cafe, tiệm bánh chỉ nhận tiền mặt (Bargeld). Mở tài khoản ngân hàng cần Ausweis (giấy tờ tuỳ thân) và Anmeldung (đăng ký cư trú). EC-Karte (thẻ ghi nợ) phổ biến hơn thẻ tín dụng.",
+    tip_advice_vi:
+      "Số tiền lớn nói theo cấu trúc Đức: 'fünfzig Euro' (50 euro), 'hundert Euro' (100 euro). Số 21 trở lên đảo: 'einundzwanzig' (1 và 20 = 21). Quen với cách đảo này khi đọc số tiền sẽ giúp bạn tự tin hơn.",
+    vocabulary: [
+      { word: "die Bank", en: "bank", vi: "ngân hàng", pos: "noun (f)", pronunciation_vi: "đi BANK" },
+      { word: "das Konto", en: "account", vi: "tài khoản", pos: "noun (n)", pronunciation_vi: "đát CÔN-tô" },
+      { word: "das Geld", en: "money", vi: "tiền", pos: "noun (n)", pronunciation_vi: "đát GHEN-t" },
+      { word: "der Geldautomat", en: "ATM", vi: "máy ATM", pos: "noun (m)", pronunciation_vi: "đe-a GHEN-au-tô-mát" },
+      { word: "die Karte", en: "card", vi: "thẻ", pos: "noun (f)", pronunciation_vi: "đi CÁ-tờ" },
+      { word: "die Überweisung", en: "transfer", vi: "chuyển khoản", pos: "noun (f)", pronunciation_vi: "đi UY-bờ-vai-zung" },
+      { word: "der Berater", en: "advisor", vi: "nhân viên tư vấn", pos: "noun (m)", pronunciation_vi: "đe-a bờ-RA-tờ" },
+      { word: "eröffnen", en: "to open", vi: "mở", pos: "verb (separable)", pronunciation_vi: "ê-RƠPH-nần" },
+      { word: "wechseln", en: "to exchange", vi: "đổi", pos: "verb", pronunciation_vi: "VEK-zần" },
+      { word: "abheben", en: "to withdraw", vi: "rút (tiền)", pos: "verb (separable)", pronunciation_vi: "AP-hê-bần" },
+    ],
+    dialogue: [
+      { speaker: "A", text: "Guten Tag, ich möchte ein Konto eröffnen.", vi: "Xin chào, tôi muốn mở tài khoản." },
+      { speaker: "B", text: "Gerne. Haben Sie Ihren Ausweis dabei?", vi: "Vâng. Bạn có mang giấy tờ tuỳ thân không?" },
+      { speaker: "A", text: "Ja, hier ist mein Reisepass.", vi: "Có, đây là hộ chiếu của tôi." },
+      { speaker: "B", text: "Danke. Bitte füllen Sie dieses Formular aus.", vi: "Cám ơn. Xin điền vào mẫu này." },
+    ],
+    exercises: [
+      {
+        type: "fill_blank",
+        instruction_vi: "Điền từ ngân hàng:",
+        pronunciation_focus: [],
+        items: [
+          { prompt: "Ich möchte ein _____ eröffnen. (tài khoản)", answer: "Konto" },
+          { prompt: "Wo ist der _____? (máy ATM)", answer: "Geldautomat" },
+          { prompt: "Ich brauche einen _____. (cuộc hẹn)", answer: "Termin" },
+        ],
+      },
+      {
+        type: "matching",
+        instruction_vi: "Nối từ với nghĩa:",
+        pronunciation_focus: [],
+        items: [
+          { prompt: "die Karte", answer: "thẻ" },
+          { prompt: "die Überweisung", answer: "chuyển khoản" },
+          { prompt: "abheben", answer: "rút tiền" },
+          { prompt: "wechseln", answer: "đổi" },
+        ],
+      },
+      {
+        type: "translation",
+        instruction_vi: "Dịch sang tiếng Đức:",
+        pronunciation_focus: [],
+        items: [
+          { prompt: "Tôi muốn rút 100 euro.", answer: "Ich möchte hundert Euro abheben." },
+          { prompt: "Đây là thẻ của tôi.", answer: "Hier ist meine Karte." },
+          { prompt: "Tôi cần đổi tiền.", answer: "Ich muss Geld wechseln." },
+        ],
+      },
+    ],
+  },
+  {
+    id: "german_post_office",
+    category: "life_admin",
+    title_vi: "Bưu điện",
+    title_en: "Post office",
+    sentences: [
+      {
+        en: "Ich möchte dieses Paket nach Vietnam schicken.",
+        vi: "Tôi muốn gửi gói này đi Việt Nam.",
+        pronunciation_focus: ["Paket → pa-KÊT", "Vietnam → VI-ết-nam", "schicken → SHIK-kần"],
+      },
+      {
+        en: "Wie viel kostet es?",
+        vi: "Cái này giá bao nhiêu?",
+        pronunciation_focus: ["Wie → VI", "kostet → CÔS-tết", "es → es"],
+      },
+      {
+        en: "Ich brauche fünf Briefmarken.",
+        vi: "Tôi cần 5 con tem.",
+        pronunciation_focus: ["fünf → PHUYNF", "Briefmarken → BRÍPH-mác-cần", "ie → i dài"],
+      },
+      {
+        en: "Wann kommt das Paket an?",
+        vi: "Khi nào gói hàng đến nơi?",
+        pronunciation_focus: ["Wann → vAN", "ankommen tách: kommt ... an", "Paket → pa-KÊT"],
+      },
+      {
+        en: "Per Luftpost dauert es eine Woche.",
+        vi: "Gửi máy bay mất 1 tuần.",
+        pronunciation_focus: ["Luftpost → LUPHT-pôst", "dauert → ĐAO-ợt", "Woche → VÔ-khờ"],
+      },
+    ],
+    cultural_notes_vi:
+      "Deutsche Post (DHL) là dịch vụ bưu chính chính ở Đức. Gửi quốc tế cần khai báo hải quan (Zollerklärung) cho gói hàng. Bưu điện Đức đóng cửa Chủ nhật và đóng sớm thứ Bảy. Nhiều bưu điện nhỏ nằm trong hiệu sách hoặc cửa hàng tạp hóa.",
+    tip_advice_vi:
+      "'Per Luftpost' (đường máy bay) nhanh nhưng đắt. 'Standard' rẻ hơn nhưng chậm 2-4 tuần đi châu Á. Khi điền địa chỉ Đức: tên đường + số nhà cùng dòng, mã bưu điện 5 số đứng trước tên thành phố ('10115 Berlin').",
+    vocabulary: [
+      { word: "die Post", en: "post office/mail", vi: "bưu điện/thư từ", pos: "noun (f)", pronunciation_vi: "đi PÔST" },
+      { word: "das Paket", en: "package", vi: "gói hàng", pos: "noun (n)", pronunciation_vi: "đát pa-KÊT" },
+      { word: "der Brief", en: "letter", vi: "thư", pos: "noun (m)", pronunciation_vi: "đe-a BRÍPH" },
+      { word: "die Briefmarke", en: "stamp", vi: "tem", pos: "noun (f)", pronunciation_vi: "đi BRÍPH-mác-cờ" },
+      { word: "die Adresse", en: "address", vi: "địa chỉ", pos: "noun (f)", pronunciation_vi: "đi a-ĐRES-sờ" },
+      { word: "der Absender", en: "sender", vi: "người gửi", pos: "noun (m)", pronunciation_vi: "đe-a AP-zen-đờ" },
+      { word: "der Empfänger", en: "recipient", vi: "người nhận", pos: "noun (m)", pronunciation_vi: "đe-a em-PHEN-gờ" },
+      { word: "schicken", en: "to send", vi: "gửi", pos: "verb", pronunciation_vi: "SHIK-kần" },
+      { word: "ankommen", en: "to arrive", vi: "đến nơi", pos: "verb (separable)", pronunciation_vi: "AN-côm-mần" },
+      { word: "wiegen", en: "to weigh", vi: "cân", pos: "verb", pronunciation_vi: "VI-gần" },
+    ],
+    dialogue: [
+      { speaker: "A", text: "Ich möchte diesen Brief nach Vietnam schicken.", vi: "Tôi muốn gửi thư này đi Việt Nam." },
+      { speaker: "B", text: "Per Luftpost oder Standard?", vi: "Gửi máy bay hay tiêu chuẩn?" },
+      { speaker: "A", text: "Per Luftpost bitte. Wie lange dauert das?", vi: "Máy bay nhé. Mất bao lâu?" },
+      { speaker: "B", text: "Etwa eine Woche. Das macht drei Euro fünfzig.", vi: "Khoảng 1 tuần. Tổng cộng 3 euro 50." },
+    ],
+    exercises: [
+      {
+        type: "fill_blank",
+        instruction_vi: "Điền từ bưu điện:",
+        pronunciation_focus: [],
+        items: [
+          { prompt: "Ich brauche eine _____. (con tem)", answer: "Briefmarke" },
+          { prompt: "Wann kommt das _____ an? (gói hàng)", answer: "Paket" },
+          { prompt: "Wie ist die _____? (địa chỉ)", answer: "Adresse" },
+        ],
+      },
+      {
+        type: "matching",
+        instruction_vi: "Nối từ với nghĩa:",
+        pronunciation_focus: [],
+        items: [
+          { prompt: "der Brief", answer: "thư" },
+          { prompt: "der Absender", answer: "người gửi" },
+          { prompt: "der Empfänger", answer: "người nhận" },
+          { prompt: "schicken", answer: "gửi" },
+        ],
+      },
+      {
+        type: "translation",
+        instruction_vi: "Dịch sang tiếng Đức:",
+        pronunciation_focus: [],
+        items: [
+          { prompt: "Cái này giá bao nhiêu?", answer: "Wie viel kostet es?" },
+          { prompt: "Tôi cần 5 con tem.", answer: "Ich brauche fünf Briefmarken." },
+          { prompt: "Mất khoảng 1 tuần.", answer: "Es dauert etwa eine Woche." },
+        ],
+      },
+    ],
+  },
+  {
+    id: "german_doctor_visit",
+    category: "life_admin",
+    title_vi: "Đi khám bác sĩ",
+    title_en: "Doctor visit",
+    sentences: [
+      {
+        en: "Ich habe einen Termin um zehn Uhr.",
+        vi: "Tôi có cuộc hẹn lúc 10 giờ.",
+        pronunciation_focus: ["Termin → TE-min", "zehn → tsên", "Uhr → UA"],
+      },
+      {
+        en: "Mein Hals tut weh.",
+        vi: "Cổ họng tôi đau.",
+        pronunciation_focus: ["Hals → HALS", "tut → TÚT", "weh → VÊ"],
+      },
+      {
+        en: "Ich habe seit drei Tagen Fieber.",
+        vi: "Tôi sốt 3 ngày rồi.",
+        pronunciation_focus: ["seit → ZAIT", "drei → ĐRAI", "Fieber → PHÍ-bờ"],
+      },
+      {
+        en: "Können Sie mir ein Rezept geben?",
+        vi: "Bạn có thể cho tôi đơn thuốc không?",
+        pronunciation_focus: ["Können → KƠN-nần", "Rezept → rê-TSEPT", "geben → GHÊ-bần"],
+      },
+      {
+        en: "Ich brauche eine Krankmeldung.",
+        vi: "Tôi cần giấy nghỉ ốm.",
+        pronunciation_focus: ["Krankmeldung → CRANG-men-đung", "brauche → BRAO-khờ", "ng → cuối lưỡi"],
+      },
+    ],
+    cultural_notes_vi:
+      "Đi khám ở Đức cần Versichertenkarte (thẻ bảo hiểm y tế) — luôn mang theo. Đặt Termin (hẹn) trước, đến đợi không hẹn (Sprechstunde) chỉ khi khẩn cấp. Krankmeldung (giấy nghỉ ốm) bắt buộc nếu ốm hơn 3 ngày — chủ lao động yêu cầu. Hausarzt (bác sĩ gia đình) là người đầu tiên bạn liên hệ, họ sẽ giới thiệu chuyên khoa nếu cần.",
+    tip_advice_vi:
+      "'Tut weh' (đau) đi với phần cơ thể: 'Mein Kopf tut weh' (đầu đau), 'Mein Bauch tut weh' (bụng đau). 'Schmerzen' (cơn đau) đi với danh từ ghép: 'Halsschmerzen' (đau họng), 'Kopfschmerzen' (đau đầu). Cả hai cấu trúc đều dùng được.",
+    vocabulary: [
+      { word: "der Arzt", en: "doctor (m)", vi: "bác sĩ nam", pos: "noun (m)", pronunciation_vi: "đe-a A-tst" },
+      { word: "die Ärztin", en: "doctor (f)", vi: "bác sĩ nữ", pos: "noun (f)", pronunciation_vi: "đi E-tstin — 'ä' = e" },
+      { word: "die Praxis", en: "doctor's office", vi: "phòng khám", pos: "noun (f)", pronunciation_vi: "đi PRA-xis" },
+      { word: "das Rezept", en: "prescription", vi: "đơn thuốc", pos: "noun (n)", pronunciation_vi: "đát rê-TSEPT" },
+      { word: "die Schmerzen", en: "pain", vi: "cơn đau", pos: "noun (pl)", pronunciation_vi: "đi SHMEA-tsần" },
+      { word: "das Fieber", en: "fever", vi: "sốt", pos: "noun (n)", pronunciation_vi: "đát PHÍ-bờ" },
+      { word: "die Krankmeldung", en: "sick note", vi: "giấy nghỉ ốm", pos: "noun (f)", pronunciation_vi: "đi CRANG-men-đung" },
+      { word: "untersuchen", en: "to examine", vi: "khám", pos: "verb", pronunciation_vi: "un-tờ-ZU-khần" },
+      { word: "wehtun", en: "to hurt", vi: "đau", pos: "verb (separable)", pronunciation_vi: "VÊ-tun" },
+      { word: "krank", en: "sick", vi: "ốm", pos: "adjective", pronunciation_vi: "CRANK" },
+    ],
+    dialogue: [
+      { speaker: "A", text: "Was kann ich für Sie tun?", vi: "Tôi có thể giúp gì cho bạn?" },
+      { speaker: "B", text: "Ich habe seit zwei Tagen Halsschmerzen und Fieber.", vi: "Tôi đau họng và sốt 2 ngày rồi." },
+      { speaker: "A", text: "Lassen Sie mich Sie untersuchen. Öffnen Sie bitte den Mund.", vi: "Để tôi khám. Xin há miệng ra." },
+      { speaker: "B", text: "Brauche ich Antibiotika?", vi: "Tôi có cần thuốc kháng sinh không?" },
+    ],
+    exercises: [
+      {
+        type: "fill_blank",
+        instruction_vi: "Điền từ về sức khoẻ:",
+        pronunciation_focus: [],
+        items: [
+          { prompt: "Ich habe _____. (sốt)", answer: "Fieber" },
+          { prompt: "Mein Kopf tut _____. (đau)", answer: "weh" },
+          { prompt: "Ich brauche ein _____. (đơn thuốc)", answer: "Rezept" },
+        ],
+      },
+      {
+        type: "matching",
+        instruction_vi: "Nối từ với nghĩa:",
+        pronunciation_focus: [],
+        items: [
+          { prompt: "der Arzt", answer: "bác sĩ nam" },
+          { prompt: "die Praxis", answer: "phòng khám" },
+          { prompt: "krank", answer: "ốm" },
+          { prompt: "die Krankmeldung", answer: "giấy nghỉ ốm" },
+        ],
+      },
+      {
+        type: "translation",
+        instruction_vi: "Dịch sang tiếng Đức:",
+        pronunciation_focus: [],
+        items: [
+          { prompt: "Tôi có cuộc hẹn lúc 10 giờ.", answer: "Ich habe einen Termin um zehn Uhr." },
+          { prompt: "Cổ họng tôi đau.", answer: "Mein Hals tut weh." },
+          { prompt: "Tôi cần giấy nghỉ ốm.", answer: "Ich brauche eine Krankmeldung." },
+        ],
+      },
+    ],
+  },
+  {
+    id: "german_pharmacy",
+    category: "life_admin",
+    title_vi: "Hiệu thuốc",
+    title_en: "Pharmacy",
+    sentences: [
+      {
+        en: "Haben Sie etwas gegen Kopfschmerzen?",
+        vi: "Bạn có thuốc gì cho đau đầu không?",
+        pronunciation_focus: ["gegen → GHÊ-gần", "Kopfschmerzen → CỐP-shmea-tsần", "ch → khờ"],
+      },
+      {
+        en: "Diese Tabletten nehmen Sie dreimal täglich.",
+        vi: "Uống thuốc viên này 3 lần mỗi ngày.",
+        pronunciation_focus: ["Tabletten → ta-BLET-tần", "dreimal → ĐRAI-mal", "täglich → TEỊC-lị — 'ä' = e"],
+      },
+      {
+        en: "Ist das Medikament rezeptpflichtig?",
+        vi: "Thuốc này có cần đơn không?",
+        pronunciation_focus: ["Medikament → mê-đi-ka-MENT", "rezeptpflichtig → rê-TSEPT-phlị-tịc", "pf → kết hợp p+ph"],
+      },
+      {
+        en: "Ich brauche etwas für Husten.",
+        vi: "Tôi cần thuốc trị ho.",
+        pronunciation_focus: ["brauche → BRAO-khờ", "etwas → ET-vas", "Husten → HÚS-tần"],
+      },
+      {
+        en: "Bitte lesen Sie die Packungsbeilage.",
+        vi: "Xin đọc hướng dẫn sử dụng.",
+        pronunciation_focus: ["lesen → LÊ-zần", "Packungsbeilage → PA-cungs-bai-la-gờ", "ei → ai"],
+      },
+    ],
+    cultural_notes_vi:
+      "Apotheke (hiệu thuốc) ở Đức tách biệt với drogerie (cửa hàng đồ vệ sinh cá nhân như dm, Rossmann). Thuốc kê đơn và nhiều thuốc thông thường (kể cả paracetamol, ibuprofen) chỉ bán ở Apotheke. Apotheke đóng cửa Chủ nhật, nhưng luôn có 'Notdienst' (hiệu thuốc trực) — danh sách dán ngoài cửa hoặc tra trên app.",
+    tip_advice_vi:
+      "Người Đức thường hỏi dược sĩ tư vấn trước khi mua thuốc — họ là chuyên gia và sẽ giới thiệu thuốc phù hợp. 'Haben Sie etwas gegen ___?' (Bạn có thuốc gì cho ___?) là câu mở đầu chuẩn. Đừng ngại hỏi liều lượng và tác dụng phụ.",
+    vocabulary: [
+      { word: "die Apotheke", en: "pharmacy", vi: "hiệu thuốc", pos: "noun (f)", pronunciation_vi: "đi a-pô-TÊ-cờ" },
+      { word: "das Medikament", en: "medicine", vi: "thuốc", pos: "noun (n)", pronunciation_vi: "đát mê-đi-ka-MENT" },
+      { word: "die Tablette", en: "tablet/pill", vi: "thuốc viên", pos: "noun (f)", pronunciation_vi: "đi ta-BLET-tờ" },
+      { word: "der Hustensaft", en: "cough syrup", vi: "siro ho", pos: "noun (m)", pronunciation_vi: "đe-a HÚS-tần-zaph-tờ" },
+      { word: "die Salbe", en: "ointment", vi: "thuốc mỡ", pos: "noun (f)", pronunciation_vi: "đi ZAN-bờ" },
+      { word: "die Kopfschmerzen", en: "headache", vi: "đau đầu", pos: "noun (pl)", pronunciation_vi: "đi CỐP-shmea-tsần" },
+      { word: "der Husten", en: "cough", vi: "ho", pos: "noun (m)", pronunciation_vi: "đe-a HÚS-tần" },
+      { word: "die Erkältung", en: "cold", vi: "cảm lạnh", pos: "noun (f)", pronunciation_vi: "đi ê-CEL-tung" },
+      { word: "nehmen", en: "to take", vi: "uống/dùng", pos: "verb", pronunciation_vi: "NÊ-mần" },
+      { word: "rezeptpflichtig", en: "prescription required", vi: "cần đơn", pos: "adjective", pronunciation_vi: "rê-TSEPT-phlị-tịc" },
+    ],
+    dialogue: [
+      { speaker: "A", text: "Guten Tag, was kann ich für Sie tun?", vi: "Xin chào, tôi giúp gì được cho bạn?" },
+      { speaker: "B", text: "Ich habe Kopfschmerzen. Haben Sie etwas dagegen?", vi: "Tôi đau đầu. Có thuốc gì cho không?" },
+      { speaker: "A", text: "Diese Tabletten helfen gut. Nehmen Sie eine Tablette alle vier Stunden.", vi: "Thuốc viên này tốt lắm. Uống 1 viên mỗi 4 tiếng." },
+      { speaker: "B", text: "Danke. Wie viel kostet das?", vi: "Cám ơn. Giá bao nhiêu?" },
+    ],
+    exercises: [
+      {
+        type: "fill_blank",
+        instruction_vi: "Điền từ về thuốc:",
+        pronunciation_focus: [],
+        items: [
+          { prompt: "Ich habe _____. (đau đầu)", answer: "Kopfschmerzen" },
+          { prompt: "Diese _____ nehmen Sie zweimal täglich. (thuốc viên)", answer: "Tabletten" },
+          { prompt: "Ist das _____? (cần đơn)", answer: "rezeptpflichtig" },
+        ],
+      },
+      {
+        type: "matching",
+        instruction_vi: "Nối từ với nghĩa:",
+        pronunciation_focus: [],
+        items: [
+          { prompt: "die Apotheke", answer: "hiệu thuốc" },
+          { prompt: "der Hustensaft", answer: "siro ho" },
+          { prompt: "die Erkältung", answer: "cảm lạnh" },
+          { prompt: "die Salbe", answer: "thuốc mỡ" },
+        ],
+      },
+      {
+        type: "translation",
+        instruction_vi: "Dịch sang tiếng Đức:",
+        pronunciation_focus: [],
+        items: [
+          { prompt: "Tôi cần thuốc trị ho.", answer: "Ich brauche etwas für Husten." },
+          { prompt: "Uống 3 lần mỗi ngày.", answer: "Nehmen Sie es dreimal täglich." },
+          { prompt: "Tôi bị cảm lạnh.", answer: "Ich habe eine Erkältung." },
+        ],
+      },
+    ],
+  },
+  {
+    id: "german_appointments",
+    category: "life_admin",
+    title_vi: "Đặt lịch hẹn",
+    title_en: "Making appointments",
+    sentences: [
+      {
+        en: "Ich möchte einen Termin vereinbaren.",
+        vi: "Tôi muốn đặt cuộc hẹn.",
+        pronunciation_focus: ["Termin → TE-min", "vereinbaren → phờ-AIN-ba-rần", "ei → ai"],
+      },
+      {
+        en: "Haben Sie nächste Woche Zeit?",
+        vi: "Tuần sau bạn có thời gian không?",
+        pronunciation_focus: ["nächste → NEỊC-stờ — 'ä' = e", "Woche → VÔ-khờ", "Zeit → TSAIT"],
+      },
+      {
+        en: "Geht es am Mittwoch um vierzehn Uhr?",
+        vi: "Thứ Tư lúc 14 giờ được không?",
+        pronunciation_focus: ["Mittwoch → MÍT-vô-khờ", "vierzehn → PHÍA-tsên", "Uhr → UA"],
+      },
+      {
+        en: "Leider muss ich den Termin verschieben.",
+        vi: "Tiếc là tôi phải dời cuộc hẹn.",
+        pronunciation_focus: ["Leider → LAI-đờ", "muss → mUS", "verschieben → phờ-SHÍ-bần"],
+      },
+      {
+        en: "Bitte bestätigen Sie den Termin per Email.",
+        vi: "Xin xác nhận cuộc hẹn qua email.",
+        pronunciation_focus: ["bestätigen → bờ-SHTEỊ-ti-gần — 'ä' = e", "Email → Ê-mây", "per → pe-a"],
+      },
+    ],
+    cultural_notes_vi:
+      "Người Đức đặt hẹn cho mọi thứ — bác sĩ, ngân hàng, gặp bạn bè, thậm chí thăm nhà. Đến trễ dù chỉ 5 phút bị coi là thiếu tôn trọng. Nếu cần huỷ, hãy báo càng sớm càng tốt — tối thiểu 24h trước. Một số phòng khám tính phí 'Ausfallhonorar' nếu huỷ trễ.",
+    tip_advice_vi:
+      "Hỏi về thời gian: 'Geht es am ___?' (Có được không vào ___?) lịch sự hơn 'Können wir am ___?'. Trả lời 'Das passt' (phù hợp) hoặc 'Das passt mir nicht' (không phù hợp với tôi). Thứ trong tuần: Montag, Dienstag, Mittwoch, Donnerstag, Freitag, Samstag, Sonntag.",
+    vocabulary: [
+      { word: "der Termin", en: "appointment", vi: "cuộc hẹn", pos: "noun (m)", pronunciation_vi: "đe-a TE-min" },
+      { word: "die Uhrzeit", en: "time of day", vi: "giờ", pos: "noun (f)", pronunciation_vi: "đi UA-tsait" },
+      { word: "das Datum", en: "date", vi: "ngày", pos: "noun (n)", pronunciation_vi: "đát ĐA-tum" },
+      { word: "die Woche", en: "week", vi: "tuần", pos: "noun (f)", pronunciation_vi: "đi VÔ-khờ" },
+      { word: "vereinbaren", en: "to arrange", vi: "đặt/sắp xếp", pos: "verb", pronunciation_vi: "phờ-AIN-ba-rần" },
+      { word: "verschieben", en: "to postpone", vi: "dời lại", pos: "verb", pronunciation_vi: "phờ-SHÍ-bần" },
+      { word: "absagen", en: "to cancel", vi: "huỷ", pos: "verb (separable)", pronunciation_vi: "AP-za-gần" },
+      { word: "bestätigen", en: "to confirm", vi: "xác nhận", pos: "verb", pronunciation_vi: "bờ-SHTEỊ-ti-gần" },
+      { word: "passen", en: "to fit/suit", vi: "phù hợp", pos: "verb", pronunciation_vi: "PA-sần" },
+      { word: "frei", en: "free/available", vi: "rảnh", pos: "adjective", pronunciation_vi: "PHRAI" },
+    ],
+    dialogue: [
+      { speaker: "A", text: "Guten Tag, ich möchte einen Termin vereinbaren.", vi: "Xin chào, tôi muốn đặt cuộc hẹn." },
+      { speaker: "B", text: "Wann passt es Ihnen?", vi: "Khi nào tiện cho bạn?" },
+      { speaker: "A", text: "Geht es am Donnerstag um fünfzehn Uhr?", vi: "Thứ Năm lúc 15 giờ được không?" },
+      { speaker: "B", text: "Ja, das passt. Ich bestätige den Termin per Email.", vi: "Vâng, được. Tôi sẽ xác nhận qua email." },
+    ],
+    exercises: [
+      {
+        type: "fill_blank",
+        instruction_vi: "Điền từ về cuộc hẹn:",
+        pronunciation_focus: [],
+        items: [
+          { prompt: "Ich möchte einen _____ vereinbaren. (cuộc hẹn)", answer: "Termin" },
+          { prompt: "Haben Sie nächste _____ Zeit? (tuần)", answer: "Woche" },
+          { prompt: "Ich muss den Termin _____. (dời lại)", answer: "verschieben" },
+        ],
+      },
+      {
+        type: "matching",
+        instruction_vi: "Nối từ với nghĩa:",
+        pronunciation_focus: [],
+        items: [
+          { prompt: "vereinbaren", answer: "đặt/sắp xếp" },
+          { prompt: "absagen", answer: "huỷ" },
+          { prompt: "bestätigen", answer: "xác nhận" },
+          { prompt: "frei", answer: "rảnh" },
+        ],
+      },
+      {
+        type: "translation",
+        instruction_vi: "Dịch sang tiếng Đức:",
+        pronunciation_focus: [],
+        items: [
+          { prompt: "Tuần sau bạn có thời gian không?", answer: "Haben Sie nächste Woche Zeit?" },
+          { prompt: "Tôi phải huỷ cuộc hẹn.", answer: "Ich muss den Termin absagen." },
+          { prompt: "Thứ Tư lúc 14 giờ được không?", answer: "Geht es am Mittwoch um vierzehn Uhr?" },
+        ],
+      },
+    ],
+  },
+];
+
 // ── Aggregate export ────────────────────────────────────────────────────
 
 export const GERMAN_LESSONS: ReadonlyArray<GermanLesson> = [
@@ -1295,6 +2189,8 @@ export const GERMAN_LESSONS: ReadonlyArray<GermanLesson> = [
   ...EMOTIONS,
   ...PAST_TENSE,
   ...FUTURE_PLANS,
+  ...WORKPLACE,
+  ...LIFE_ADMIN,
 ];
 
 export function getLessonsByCategory(
