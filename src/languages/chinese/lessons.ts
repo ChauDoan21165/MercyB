@@ -8,14 +8,35 @@ export const lessons = [
       { chinese: "你好", pinyin: "nǐ hǎo", english: "Hello" },
       { chinese: "早上好", pinyin: "zǎo shang hǎo", english: "Good morning" },
       { chinese: "再见", pinyin: "zài jiàn", english: "Goodbye" },
-      { chinese: "谢谢", pinyin: "xiè xiè", english: "Thank you" }
+      { chinese: "谢谢", pinyin: "xiè xiè", english: "Thank you" },
+      { chinese: "对不起", pinyin: "duì bu qǐ", english: "Sorry" },
+      { chinese: "没关系", pinyin: "méi guān xì", english: "It's okay" },
+      { chinese: "请问", pinyin: "qǐng wèn", english: "Excuse me / May I ask" },
+      { chinese: "欢迎", pinyin: "huān yíng", english: "Welcome" },
+      { chinese: "晚安", pinyin: "wǎn ān", english: "Good night" },
+      { chinese: "回头见", pinyin: "huí tóu jiàn", english: "See you later" }
     ],
 
-    sentence: {
-      chinese: "你好吗？",
-      pinyin: "nǐ hǎo ma?",
-      english: "How are you?"
-    }
+    sentences: [
+      { chinese: "你好吗？", pinyin: "nǐ hǎo ma?", english: "How are you?" },
+      { chinese: "我很好，谢谢。", pinyin: "wǒ hěn hǎo, xiè xiè.", english: "I'm fine, thank you." },
+      { chinese: "早上好，今天天气不错。", pinyin: "zǎo shang hǎo, jīn tiān tiān qì bù cuò.", english: "Good morning, the weather is nice today." },
+      { chinese: "再见，明天见。", pinyin: "zài jiàn, míng tiān jiàn.", english: "Goodbye, see you tomorrow." },
+      { chinese: "欢迎来到中国！", pinyin: "huān yíng lái dào zhōng guó!", english: "Welcome to China!" }
+    ],
+
+    dialogue: [
+      { speaker: "A", chinese: "你好！你是新来的同学吗？", pinyin: "nǐ hǎo! nǐ shì xīn lái de tóng xué ma?", english: "Hello! Are you a new student?" },
+      { speaker: "B", chinese: "是的，我叫小王。很高兴认识你。", pinyin: "shì de, wǒ jiào xiǎo wáng. hěn gāo xìng rèn shí nǐ.", english: "Yes, my name is Xiao Wang. Nice to meet you." },
+      { speaker: "A", chinese: "我也很高兴认识你。欢迎来到我们班。", pinyin: "wǒ yě hěn gāo xìng rèn shí nǐ. huān yíng lái dào wǒ men bān.", english: "Nice to meet you too. Welcome to our class." },
+      { speaker: "B", chinese: "谢谢！希望我们能成为好朋友。", pinyin: "xiè xiè! xī wàng wǒ men néng chéng wéi hǎo péng yǒu.", english: "Thank you! I hope we can become good friends." }
+    ],
+
+    exercises: [
+      { type: "fill-blank", question: "___好，我是老师。", answer: "你" },
+      { type: "matching", pairs: [{ chinese: "再见", pinyin: "zài jiàn", english: "goodbye" }, { chinese: "谢谢", pinyin: "xiè xiè", english: "thank you" }], instruction: "Match Chinese with English" },
+      { type: "translation", vietnamese: "Chào buổi sáng, bạn khỏe không?", chinese: "早上好，你好吗？", pinyin: "zǎo shang hǎo, nǐ hǎo ma?" }
+    ],
   },
   {
     id: 2,
@@ -27,14 +48,34 @@ export const lessons = [
       { chinese: "二", pinyin: "èr", english: "two" },
       { chinese: "三", pinyin: "sān", english: "three" },
       { chinese: "四", pinyin: "sì", english: "four" },
-      { chinese: "五", pinyin: "wǔ", english: "five" }
+      { chinese: "五", pinyin: "wǔ", english: "five" },
+      { chinese: "六", pinyin: "liù", english: "six" },
+      { chinese: "七", pinyin: "qī", english: "seven" },
+      { chinese: "八", pinyin: "bā", english: "eight" },
+      { chinese: "九", pinyin: "jiǔ", english: "nine" },
+      { chinese: "十", pinyin: "shí", english: "ten" }
     ],
 
-    sentence: {
-      chinese: "我有三个苹果。",
-      pinyin: "wǒ yǒu sān gè píng guǒ.",
-      english: "I have three apples."
-    }
+    sentences: [
+      { chinese: "我有三个苹果。", pinyin: "wǒ yǒu sān gè píng guǒ.", english: "I have three apples." },
+      { chinese: "今天是五月二号。", pinyin: "jīn tiān shì wǔ yuè èr hào.", english: "Today is May 2nd." },
+      { chinese: "这个多少钱？十块钱。", pinyin: "zhè gè duō shao qián? shí kuài qián.", english: "How much is this? Ten yuan." },
+      { chinese: "我们班有八个学生。", pinyin: "wǒ men bān yǒu bā gè xué shēng.", english: "Our class has eight students." },
+      { chinese: "请给我五杯水。", pinyin: "qǐng gěi wǒ wǔ bēi shuǐ.", english: "Please give me five glasses of water." }
+    ],
+
+    dialogue: [
+      { speaker: "A", chinese: "你家有几口人？", pinyin: "nǐ jiā yǒu jǐ kǒu rén?", english: "How many people are in your family?" },
+      { speaker: "B", chinese: "我家有四口人。爸爸、妈妈、哥哥和我。", pinyin: "wǒ jiā yǒu sì kǒu rén. bà ba, mā ma, gē ge hé wǒ.", english: "There are four people. Dad, mom, older brother and me." },
+      { speaker: "A", chinese: "你哥哥多大？", pinyin: "nǐ gē ge duō dà?", english: "How old is your brother?" },
+      { speaker: "B", chinese: "他二十五岁。", pinyin: "tā èr shí wǔ suì.", english: "He is twenty-five years old." }
+    ],
+
+    exercises: [
+      { type: "fill-blank", question: "我买了___本书。", answer: "三" },
+      { type: "matching", pairs: [{ chinese: "七", pinyin: "qī", english: "seven" }, { chinese: "九", pinyin: "jiǔ", english: "nine" }], instruction: "Match the number with English" },
+      { type: "translation", vietnamese: "Có tám quyển sách trên bàn.", chinese: "桌子上有八本书。", pinyin: "zhuō zi shàng yǒu bā běn shū." }
+    ],
   },
   {
     id: 3,
@@ -42,17 +83,38 @@ export const lessons = [
     pinyin: "jiā rén",
     topic: "Family",
     vocab: [
-      { chinese: "爸爸", pinyin: "bà ba", english: "dad" },
-      { chinese: "妈妈", pinyin: "mā ma", english: "mom" },
+      { chinese: "妈妈", pinyin: "mā ma", english: "mother" },
+      { chinese: "爸爸", pinyin: "bà ba", english: "father" },
       { chinese: "哥哥", pinyin: "gē ge", english: "older brother" },
-      { chinese: "姐姐", pinyin: "jiě jie", english: "older sister" }
+      { chinese: "姐姐", pinyin: "jiě jie", english: "older sister" },
+      { chinese: "弟弟", pinyin: "dì di", english: "younger brother" },
+      { chinese: "妹妹", pinyin: "mèi mei", english: "younger sister" },
+      { chinese: "爷爷", pinyin: "yé ye", english: "grandfather" },
+      { chinese: "奶奶", pinyin: "nǎi nai", english: "grandmother" },
+      { chinese: "儿子", pinyin: "ér zi", english: "son" },
+      { chinese: "女儿", pinyin: "nǚ ér", english: "daughter" }
     ],
 
-    sentence: {
-      chinese: "我妈妈很漂亮。",
-      pinyin: "wǒ mā ma hěn piào liang.",
-      english: "My mom is beautiful."
-    }
+    sentences: [
+      { chinese: "我爸爸是医生。", pinyin: "wǒ bà ba shì yī shēng.", english: "My father is a doctor." },
+      { chinese: "我妈妈做的饭很好吃。", pinyin: "wǒ mā ma zuò de fàn hěn hǎo chī.", english: "The food my mother makes is delicious." },
+      { chinese: "我有一个哥哥和一个妹妹。", pinyin: "wǒ yǒu yī gè gē ge hé yī gè mèi mei.", english: "I have one older brother and one younger sister." },
+      { chinese: "爷爷和奶奶住在老家。", pinyin: "yé ye hé nǎi nai zhù zài lǎo jiā.", english: "Grandpa and grandma live in the hometown." },
+      { chinese: "我女儿今年五岁了。", pinyin: "wǒ nǚ ér jīn nián wǔ suì le.", english: "My daughter is five years old this year." }
+    ],
+
+    dialogue: [
+      { speaker: "A", chinese: "这是你家人的照片吗？", pinyin: "zhè shì nǐ jiā rén de zhào piàn ma?", english: "Is this a photo of your family?" },
+      { speaker: "B", chinese: "是的。这是我爸爸和妈妈。", pinyin: "shì de. zhè shì wǒ bà ba hé mā ma.", english: "Yes. These are my father and mother." },
+      { speaker: "A", chinese: "你姐姐看起来很像你妈妈。", pinyin: "nǐ jiě jie kàn qǐ lái hěn xiàng nǐ mā ma.", english: "Your older sister looks a lot like your mother." },
+      { speaker: "B", chinese: "大家都这么说。", pinyin: "dà jiā dōu zhè me shuō.", english: "Everyone says that." }
+    ],
+
+    exercises: [
+      { type: "fill-blank", question: "我___做饭很好吃。", answer: "妈妈" },
+      { type: "matching", pairs: [{ chinese: "哥哥", pinyin: "gē ge", english: "older brother" }, { chinese: "妹妹", pinyin: "mèi mei", english: "younger sister" }], instruction: "Match family terms with English" },
+      { type: "translation", vietnamese: "Gia đình tôi có năm người.", chinese: "我的家有五口人。", pinyin: "wǒ de jiā yǒu wǔ kǒu rén." }
+    ],
   },
   {
     id: 4,
@@ -63,14 +125,35 @@ export const lessons = [
       { chinese: "红色", pinyin: "hóng sè", english: "red" },
       { chinese: "蓝色", pinyin: "lán sè", english: "blue" },
       { chinese: "绿色", pinyin: "lǜ sè", english: "green" },
-      { chinese: "白色", pinyin: "bái sè", english: "white" }
+      { chinese: "黄色", pinyin: "huáng sè", english: "yellow" },
+      { chinese: "白色", pinyin: "bái sè", english: "white" },
+      { chinese: "黑色", pinyin: "hēi sè", english: "black" },
+      { chinese: "紫色", pinyin: "zǐ sè", english: "purple" },
+      { chinese: "橙色", pinyin: "chéng sè", english: "orange" },
+      { chinese: "粉色", pinyin: "fěn sè", english: "pink" },
+      { chinese: "灰色", pinyin: "huī sè", english: "gray" }
     ],
 
-    sentence: {
-      chinese: "我喜欢蓝色。",
-      pinyin: "wǒ xǐ huān lán sè.",
-      english: "I like blue."
-    }
+    sentences: [
+      { chinese: "我喜欢红色的花。", pinyin: "wǒ xǐ huān hóng sè de huā.", english: "I like red flowers." },
+      { chinese: "天空是蓝色的。", pinyin: "tiān kōng shì lán sè de.", english: "The sky is blue." },
+      { chinese: "她穿了一件白色的裙子。", pinyin: "tā chuān le yī jiàn bái sè de qún zi.", english: "She wore a white dress." },
+      { chinese: "这件黑色的外套很好看。", pinyin: "zhè jiàn hēi sè de wài tào hěn hǎo kàn.", english: "This black coat looks very nice." },
+      { chinese: "春天有很多绿色的植物。", pinyin: "chūn tiān yǒu hěn duō lǜ sè de zhí wù.", english: "There are many green plants in spring." }
+    ],
+
+    dialogue: [
+      { speaker: "A", chinese: "你喜欢什么颜色？", pinyin: "nǐ xǐ huān shén me yán sè?", english: "What color do you like?" },
+      { speaker: "B", chinese: "我最喜欢蓝色，像大海的颜色。", pinyin: "wǒ zuì xǐ huān lán sè, xiàng dà hǎi de yán sè.", english: "I like blue the most, like the color of the ocean." },
+      { speaker: "A", chinese: "我也喜欢蓝色。你讨厌什么颜色？", pinyin: "wǒ yě xǐ huān lán sè. nǐ tǎo yàn shén me yán sè?", english: "I also like blue. What color do you dislike?" },
+      { speaker: "B", chinese: "我不太喜欢灰色，看起来太闷了。", pinyin: "wǒ bù tài xǐ huān huī sè, kàn qǐ lái tài mèn le.", english: "I don't really like gray, it looks too dull." }
+    ],
+
+    exercises: [
+      { type: "fill-blank", question: "苹果是___色的。", answer: "红" },
+      { type: "matching", pairs: [{ chinese: "黄色", pinyin: "huáng sè", english: "yellow" }, { chinese: "绿色", pinyin: "lǜ sè", english: "green" }], instruction: "Match the color with English" },
+      { type: "translation", vietnamese: "Tôi muốn mua một chiếc áo màu đen.", chinese: "我想买一件黑色的衣服。", pinyin: "wǒ xiǎng mǎi yī jiàn hēi sè de yī fu." }
+    ],
   },
   {
     id: 5,
@@ -80,15 +163,36 @@ export const lessons = [
     vocab: [
       { chinese: "米饭", pinyin: "mǐ fàn", english: "rice" },
       { chinese: "面条", pinyin: "miàn tiáo", english: "noodles" },
+      { chinese: "饺子", pinyin: "jiǎo zi", english: "dumplings" },
+      { chinese: "面包", pinyin: "miàn bāo", english: "bread" },
       { chinese: "鸡肉", pinyin: "jī ròu", english: "chicken" },
-      { chinese: "鱼", pinyin: "yú", english: "fish" }
+      { chinese: "牛肉", pinyin: "niú ròu", english: "beef" },
+      { chinese: "鱼", pinyin: "yú", english: "fish" },
+      { chinese: "蔬菜", pinyin: "shū cài", english: "vegetables" },
+      { chinese: "水果", pinyin: "shuǐ guǒ", english: "fruit" },
+      { chinese: "蛋糕", pinyin: "dàn gāo", english: "cake" }
     ],
 
-    sentence: {
-      chinese: "我要吃米饭。",
-      pinyin: "wǒ yào chī mǐ fàn.",
-      english: "I want to eat rice."
-    }
+    sentences: [
+      { chinese: "我喜欢吃中国菜。", pinyin: "wǒ xǐ huān chī zhōng guó cài.", english: "I like eating Chinese food." },
+      { chinese: "饺子是我最喜欢的食物。", pinyin: "jiǎo zi shì wǒ zuì xǐ huān de shí wù.", english: "Dumplings are my favorite food." },
+      { chinese: "今天中午我吃了面条。", pinyin: "jīn tiān zhōng wǔ wǒ chī le miàn tiáo.", english: "I ate noodles for lunch today." },
+      { chinese: "多吃蔬菜对身体好。", pinyin: "duō chī shū cài duì shēn tǐ hǎo.", english: "Eating more vegetables is good for your health." },
+      { chinese: "妈妈做的鱼很好吃。", pinyin: "mā ma zuò de yú hěn hǎo chī.", english: "The fish mom makes is delicious." }
+    ],
+
+    dialogue: [
+      { speaker: "A", chinese: "你饿了吗？我们去吃饭吧。", pinyin: "nǐ è le ma? wǒ men qù chī fàn ba.", english: "Are you hungry? Let's go eat." },
+      { speaker: "B", chinese: "好啊，你想吃什么？", pinyin: "hǎo a, nǐ xiǎng chī shén me?", english: "Sure, what do you want to eat?" },
+      { speaker: "A", chinese: "我想吃饺子，附近有一家不错的饺子馆。", pinyin: "wǒ xiǎng chī jiǎo zi, fù jìn yǒu yī jiā bù cuò de jiǎo zi guǎn.", english: "I want dumplings. There's a good dumpling restaurant nearby." },
+      { speaker: "B", chinese: "太好了，我也很久没吃饺子了。", pinyin: "tài hǎo le, wǒ yě hěn jiǔ méi chī jiǎo zi le.", english: "Great, I haven't had dumplings in a long time either." }
+    ],
+
+    exercises: [
+      { type: "fill-blank", question: "中国人喜欢吃___。", answer: "米饭" },
+      { type: "matching", pairs: [{ chinese: "鸡肉", pinyin: "jī ròu", english: "chicken" }, { chinese: "蔬菜", pinyin: "shū cài", english: "vegetables" }], instruction: "Match the food with English" },
+      { type: "translation", vietnamese: "Tôi thích ăn bánh bao Trung Quốc.", chinese: "我喜欢吃中国饺子。", pinyin: "wǒ xǐ huān chī zhōng guó jiǎo zi." }
+    ],
   },
   {
     id: 6,
@@ -99,14 +203,35 @@ export const lessons = [
       { chinese: "水", pinyin: "shuǐ", english: "water" },
       { chinese: "茶", pinyin: "chá", english: "tea" },
       { chinese: "咖啡", pinyin: "kā fēi", english: "coffee" },
-      { chinese: "牛奶", pinyin: "niú nǎi", english: "milk" }
+      { chinese: "牛奶", pinyin: "niú nǎi", english: "milk" },
+      { chinese: "果汁", pinyin: "guǒ zhī", english: "fruit juice" },
+      { chinese: "啤酒", pinyin: "pí jiǔ", english: "beer" },
+      { chinese: "可乐", pinyin: "kě lè", english: "cola" },
+      { chinese: "豆浆", pinyin: "dòu jiāng", english: "soy milk" },
+      { chinese: "红酒", pinyin: "hóng jiǔ", english: "red wine" },
+      { chinese: "热水", pinyin: "rè shuǐ", english: "hot water" }
     ],
 
-    sentence: {
-      chinese: "请给我一杯水。",
-      pinyin: "qǐng gěi wǒ yī bēi shuǐ.",
-      english: "Please give me a glass of water."
-    }
+    sentences: [
+      { chinese: "请给我一杯水。", pinyin: "qǐng gěi wǒ yī bēi shuǐ.", english: "Please give me a glass of water." },
+      { chinese: "中国人喜欢喝绿茶。", pinyin: "zhōng guó rén xǐ huān hē lǜ chá.", english: "Chinese people like to drink green tea." },
+      { chinese: "我每天早上喝一杯咖啡。", pinyin: "wǒ měi tiān zǎo shang hē yī bēi kā fēi.", english: "I drink a cup of coffee every morning." },
+      { chinese: "小孩子应该多喝牛奶。", pinyin: "xiǎo hái zi yīng gāi duō hē niú nǎi.", english: "Children should drink more milk." },
+      { chinese: "果汁比可乐更健康。", pinyin: "guǒ zhī bǐ kě lè gèng jiàn kāng.", english: "Fruit juice is healthier than cola." }
+    ],
+
+    dialogue: [
+      { speaker: "A", chinese: "你想喝点什么？茶还是咖啡？", pinyin: "nǐ xiǎng hē diǎn shén me? chá hái shì kā fēi?", english: "What would you like to drink? Tea or coffee?" },
+      { speaker: "B", chinese: "我喝茶吧，有绿茶吗？", pinyin: "wǒ hē chá ba, yǒu lǜ chá ma?", english: "I'll have tea. Do you have green tea?" },
+      { speaker: "A", chinese: "有，中国的绿茶很有名。", pinyin: "yǒu, zhōng guó de lǜ chá hěn yǒu míng.", english: "Yes, Chinese green tea is very famous." },
+      { speaker: "B", chinese: "谢谢，请给我一杯。", pinyin: "xiè xiè, qǐng gěi wǒ yī bēi.", english: "Thank you, please give me a cup." }
+    ],
+
+    exercises: [
+      { type: "fill-blank", question: "早上我喜欢喝___。", answer: "咖啡" },
+      { type: "matching", pairs: [{ chinese: "茶", pinyin: "chá", english: "tea" }, { chinese: "牛奶", pinyin: "niú nǎi", english: "milk" }], instruction: "Match the drink with English" },
+      { type: "translation", vietnamese: "Cho tôi một cốc nước.", chinese: "请给我一杯水。", pinyin: "qǐng gěi wǒ yī bēi shuǐ." }
+    ],
   },
   {
     id: 7,
@@ -117,14 +242,35 @@ export const lessons = [
       { chinese: "星期一", pinyin: "xīng qī yī", english: "Monday" },
       { chinese: "星期二", pinyin: "xīng qī èr", english: "Tuesday" },
       { chinese: "星期三", pinyin: "xīng qī sān", english: "Wednesday" },
-      { chinese: "星期天", pinyin: "xīng qī tiān", english: "Sunday" }
+      { chinese: "星期四", pinyin: "xīng qī sì", english: "Thursday" },
+      { chinese: "星期五", pinyin: "xīng qī wǔ", english: "Friday" },
+      { chinese: "星期六", pinyin: "xīng qī liù", english: "Saturday" },
+      { chinese: "星期天", pinyin: "xīng qī tiān", english: "Sunday" },
+      { chinese: "周末", pinyin: "zhōu mò", english: "weekend" },
+      { chinese: "今天", pinyin: "jīn tiān", english: "today" },
+      { chinese: "明天", pinyin: "míng tiān", english: "tomorrow" }
     ],
 
-    sentence: {
-      chinese: "今天是星期一。",
-      pinyin: "jīn tiān shì xīng qī yī.",
-      english: "Today is Monday."
-    }
+    sentences: [
+      { chinese: "今天是星期一。", pinyin: "jīn tiān shì xīng qī yī.", english: "Today is Monday." },
+      { chinese: "我星期五有中文课。", pinyin: "wǒ xīng qī wǔ yǒu zhōng wén kè.", english: "I have Chinese class on Friday." },
+      { chinese: "周末你要做什么？", pinyin: "zhōu mò nǐ yào zuò shén me?", english: "What are you going to do this weekend?" },
+      { chinese: "星期三见！", pinyin: "xīng qī sān jiàn!", english: "See you on Wednesday!" },
+      { chinese: "我星期四和星期五都很忙。", pinyin: "wǒ xīng qī sì hé xīng qī wǔ dōu hěn máng.", english: "I'm busy on Thursday and Friday." }
+    ],
+
+    dialogue: [
+      { speaker: "A", chinese: "今天星期几？", pinyin: "jīn tiān xīng qī jǐ?", english: "What day is it today?" },
+      { speaker: "B", chinese: "今天是星期五。", pinyin: "jīn tiān shì xīng qī wǔ.", english: "Today is Friday." },
+      { speaker: "A", chinese: "太好了，明天就是周末了！", pinyin: "tài hǎo le, míng tiān jiù shì zhōu mò le!", english: "Great, tomorrow is the weekend!" },
+      { speaker: "B", chinese: "是啊，这个周末你有什么计划？", pinyin: "shì a, zhè gè zhōu mò nǐ yǒu shén me jì huà?", english: "Yeah, what plans do you have this weekend?" }
+    ],
+
+    exercises: [
+      { type: "fill-blank", question: "___是星期日。", answer: "明天" },
+      { type: "matching", pairs: [{ chinese: "星期一", pinyin: "xīng qī yī", english: "Monday" }, { chinese: "周末", pinyin: "zhōu mò", english: "weekend" }], instruction: "Match the day with English" },
+      { type: "translation", vietnamese: "Thứ Ba tôi có lớp học tiếng Anh.", chinese: "星期二我有英语课。", pinyin: "xīng qī èr wǒ yǒu yīng yǔ kè." }
+    ],
   },
   {
     id: 8,
@@ -135,14 +281,35 @@ export const lessons = [
       { chinese: "一月", pinyin: "yī yuè", english: "January" },
       { chinese: "二月", pinyin: "èr yuè", english: "February" },
       { chinese: "三月", pinyin: "sān yuè", english: "March" },
-      { chinese: "十二月", pinyin: "shí èr yuè", english: "December" }
+      { chinese: "四月", pinyin: "sì yuè", english: "April" },
+      { chinese: "五月", pinyin: "wǔ yuè", english: "May" },
+      { chinese: "六月", pinyin: "liù yuè", english: "June" },
+      { chinese: "七月", pinyin: "qī yuè", english: "July" },
+      { chinese: "八月", pinyin: "bā yuè", english: "August" },
+      { chinese: "九月", pinyin: "jiǔ yuè", english: "September" },
+      { chinese: "十月", pinyin: "shí yuè", english: "October" }
     ],
 
-    sentence: {
-      chinese: "我的生日在一月。",
-      pinyin: "wǒ de shēng rì zài yī yuè.",
-      english: "My birthday is in January."
-    }
+    sentences: [
+      { chinese: "我的生日在五月。", pinyin: "wǒ de shēng rì zài wǔ yuè.", english: "My birthday is in May." },
+      { chinese: "中国的新年在一月或二月。", pinyin: "zhōng guó de xīn nián zài yī yuè huò èr yuè.", english: "Chinese New Year is in January or February." },
+      { chinese: "八月的天气很热。", pinyin: "bā yuè de tiān qì hěn rè.", english: "The weather in August is very hot." },
+      { chinese: "学校九月开学。", pinyin: "xué xiào jiǔ yuè kāi xué.", english: "School starts in September." },
+      { chinese: "十月一日是中国的国庆节。", pinyin: "shí yuè yī rì shì zhōng guó de guó qìng jié.", english: "October 1st is China's National Day." }
+    ],
+
+    dialogue: [
+      { speaker: "A", chinese: "你的生日是几月几号？", pinyin: "nǐ de shēng rì shì jǐ yuè jǐ hào?", english: "When is your birthday?" },
+      { speaker: "B", chinese: "我的生日是三月十五号。", pinyin: "wǒ de shēng rì shì sān yuè shí wǔ hào.", english: "My birthday is March 15th." },
+      { speaker: "A", chinese: "那很快就要到了！", pinyin: "nà hěn kuài jiù yào dào le!", english: "Then it's coming soon!" },
+      { speaker: "B", chinese: "是啊，到时候我们一起吃饭吧。", pinyin: "shì a, dào shí hou wǒ men yī qǐ chī fàn ba.", english: "Yes, let's have a meal together then." }
+    ],
+
+    exercises: [
+      { type: "fill-blank", question: "春节在一月___二月。", answer: "或" },
+      { type: "matching", pairs: [{ chinese: "六月", pinyin: "liù yuè", english: "June" }, { chinese: "十二月", pinyin: "shí èr yuè", english: "December" }], instruction: "Match the month with English" },
+      { type: "translation", vietnamese: "Sinh nhật của bạn là tháng mấy?", chinese: "你的生日是几月？", pinyin: "nǐ de shēng rì shì jǐ yuè?" }
+    ],
   },
   {
     id: 9,
@@ -151,16 +318,37 @@ export const lessons = [
     topic: "Weather",
     vocab: [
       { chinese: "晴天", pinyin: "qíng tiān", english: "sunny" },
-      { chinese: "下雨", pinyin: "xià yǔ", english: "rainy" },
-      { chinese: "下雪", pinyin: "xià xuě", english: "snowy" },
-      { chinese: "多云", pinyin: "duō yún", english: "cloudy" }
+      { chinese: "阴天", pinyin: "yīn tiān", english: "cloudy" },
+      { chinese: "下雨", pinyin: "xià yǔ", english: "rain" },
+      { chinese: "下雪", pinyin: "xià xuě", english: "snow" },
+      { chinese: "刮风", pinyin: "guā fēng", english: "windy" },
+      { chinese: "温度", pinyin: "wēn dù", english: "temperature" },
+      { chinese: "冷", pinyin: "lěng", english: "cold" },
+      { chinese: "热", pinyin: "rè", english: "hot" },
+      { chinese: "凉快", pinyin: "liáng kuai", english: "cool" },
+      { chinese: "暖和", pinyin: "nuǎn huo", english: "warm" }
     ],
 
-    sentence: {
-      chinese: "今天天气很好。",
-      pinyin: "jīn tiān tiān qì hěn hǎo.",
-      english: "The weather is nice today."
-    }
+    sentences: [
+      { chinese: "今天天气很好。", pinyin: "jīn tiān tiān qì hěn hǎo.", english: "The weather is very good today." },
+      { chinese: "明天可能会下雨。", pinyin: "míng tiān kě néng huì xià yǔ.", english: "It might rain tomorrow." },
+      { chinese: "北京的冬天很冷。", pinyin: "běi jīng de dōng tiān hěn lěng.", english: "Beijing's winter is very cold." },
+      { chinese: "夏天太热了，我不喜欢。", pinyin: "xià tiān tài rè le, wǒ bù xǐ huān.", english: "Summer is too hot, I don't like it." },
+      { chinese: "外面的温度是多少？", pinyin: "wài miàn de wēn dù shì duō shao?", english: "What's the temperature outside?" }
+    ],
+
+    dialogue: [
+      { speaker: "A", chinese: "你看天气预报了吗？明天天气怎么样？", pinyin: "nǐ kàn tiān qì yù bào le ma? míng tiān tiān qì zěn me yàng?", english: "Did you check the weather forecast? How's the weather tomorrow?" },
+      { speaker: "B", chinese: "明天是晴天，但有点冷。", pinyin: "míng tiān shì qíng tiān, dàn yǒu diǎn lěng.", english: "Tomorrow will be sunny but a bit cold." },
+      { speaker: "A", chinese: "那我多穿一件衣服。", pinyin: "nà wǒ duō chuān yī jiàn yī fu.", english: "Then I'll wear an extra layer." },
+      { speaker: "B", chinese: "对，最高温度只有十度。", pinyin: "duì, zuì gāo wēn dù zhǐ yǒu shí dù.", english: "Right, the high is only 10 degrees." }
+    ],
+
+    exercises: [
+      { type: "fill-blank", question: "今天___了。", answer: "下雨" },
+      { type: "matching", pairs: [{ chinese: "晴天", pinyin: "qíng tiān", english: "sunny" }, { chinese: "下雪", pinyin: "xià xuě", english: "snow" }], instruction: "Match the weather term with English" },
+      { type: "translation", vietnamese: "Ngày mai trời sẽ lạnh.", chinese: "明天会很冷。", pinyin: "míng tiān huì hěn lěng." }
+    ],
   },
   {
     id: 10,
@@ -171,14 +359,35 @@ export const lessons = [
       { chinese: "猫", pinyin: "māo", english: "cat" },
       { chinese: "狗", pinyin: "gǒu", english: "dog" },
       { chinese: "鸟", pinyin: "niǎo", english: "bird" },
-      { chinese: "鱼", pinyin: "yú", english: "fish" }
+      { chinese: "鱼", pinyin: "yú", english: "fish" },
+      { chinese: "马", pinyin: "mǎ", english: "horse" },
+      { chinese: "牛", pinyin: "niú", english: "cow" },
+      { chinese: "羊", pinyin: "yáng", english: "sheep" },
+      { chinese: "鸡", pinyin: "jī", english: "chicken" },
+      { chinese: "兔子", pinyin: "tù zi", english: "rabbit" },
+      { chinese: "熊猫", pinyin: "xióng māo", english: "panda" }
     ],
 
-    sentence: {
-      chinese: "我喜欢猫。",
-      pinyin: "wǒ xǐ huān māo.",
-      english: "I like cats."
-    }
+    sentences: [
+      { chinese: "我有一只可爱的小猫。", pinyin: "wǒ yǒu yī zhī kě ài de xiǎo māo.", english: "I have a cute little cat." },
+      { chinese: "狗是人类最好的朋友。", pinyin: "gǒu shì rén lèi zuì hǎo de péng yǒu.", english: "Dogs are humans' best friends." },
+      { chinese: "熊猫是中国的国宝。", pinyin: "xióng māo shì zhōng guó de guó bǎo.", english: "Pandas are China's national treasure." },
+      { chinese: "马跑得很快。", pinyin: "mǎ pǎo de hěn kuài.", english: "Horses run very fast." },
+      { chinese: "我喜欢去动物园看动物。", pinyin: "wǒ xǐ huān qù dòng wù yuán kàn dòng wù.", english: "I like going to the zoo to see animals." }
+    ],
+
+    dialogue: [
+      { speaker: "A", chinese: "你喜欢什么动物？", pinyin: "nǐ xǐ huān shén me dòng wù?", english: "What animals do you like?" },
+      { speaker: "B", chinese: "我最喜欢狗，它们非常可爱。", pinyin: "wǒ zuì xǐ huān gǒu, tā men fēi cháng kě ài.", english: "I like dogs the most, they are very cute." },
+      { speaker: "A", chinese: "你有养宠物吗？", pinyin: "nǐ yǒu yǎng chǒng wù ma?", english: "Do you have any pets?" },
+      { speaker: "B", chinese: "有，我养了一只兔子。", pinyin: "yǒu, wǒ yǎng le yī zhī tù zi.", english: "Yes, I have a rabbit." }
+    ],
+
+    exercises: [
+      { type: "fill-blank", question: "___是中国的国宝。", answer: "熊猫" },
+      { type: "matching", pairs: [{ chinese: "猫", pinyin: "māo", english: "cat" }, { chinese: "马", pinyin: "mǎ", english: "horse" }], instruction: "Match the animal with English" },
+      { type: "translation", vietnamese: "Tôi có một con chó màu đen.", chinese: "我有一只黑色的狗。", pinyin: "wǒ yǒu yī zhī hēi sè de gǒu." }
+    ],
   },
   {
     id: 11,
@@ -187,16 +396,37 @@ export const lessons = [
     topic: "Body Parts",
     vocab: [
       { chinese: "头", pinyin: "tóu", english: "head" },
-      { chinese: "眼睛", pinyin: "yǎn jīng", english: "eyes" },
+      { chinese: "眼睛", pinyin: "yǎn jing", english: "eye" },
       { chinese: "鼻子", pinyin: "bí zi", english: "nose" },
-      { chinese: "嘴巴", pinyin: "zuǐ ba", english: "mouth" }
+      { chinese: "嘴巴", pinyin: "zuǐ ba", english: "mouth" },
+      { chinese: "耳朵", pinyin: "ěr duo", english: "ear" },
+      { chinese: "手", pinyin: "shǒu", english: "hand" },
+      { chinese: "脚", pinyin: "jiǎo", english: "foot" },
+      { chinese: "腿", pinyin: "tuǐ", english: "leg" },
+      { chinese: "肩膀", pinyin: "jiān bǎng", english: "shoulder" },
+      { chinese: "肚子", pinyin: "dù zi", english: "stomach" }
     ],
 
-    sentence: {
-      chinese: "我的眼睛很大。",
-      pinyin: "wǒ de yǎn jīng hěn dà.",
-      english: "My eyes are big."
-    }
+    sentences: [
+      { chinese: "她的眼睛很漂亮。", pinyin: "tā de yǎn jing hěn piào liang.", english: "Her eyes are very beautiful." },
+      { chinese: "我头疼，想休息一下。", pinyin: "wǒ tóu téng, xiǎng xiū xi yī xià.", english: "I have a headache, I want to rest." },
+      { chinese: "请用手吃饭在中国是正常的。", pinyin: "qǐng yòng shǒu chī fàn zài zhōng guó shì zhèng cháng de.", english: "Eating with hands is normal in China." },
+      { chinese: "跑步对腿很有好处。", pinyin: "pǎo bù duì tuǐ hěn yǒu hǎo chù.", english: "Running is good for your legs." },
+      { chinese: "他说的话我听不懂，可能是耳朵有问题。", pinyin: "tā shuō de huà wǒ tīng bù dǒng, kě néng shì ěr duo yǒu wèn tí.", english: "I can't understand what he says, maybe there's something wrong with my ears." }
+    ],
+
+    dialogue: [
+      { speaker: "A", chinese: "你怎么了？看起来不舒服。", pinyin: "nǐ zěn me le? kàn qǐ lái bù shū fu.", english: "What's wrong? You look uncomfortable." },
+      { speaker: "B", chinese: "我肚子疼，可能是吃坏了东西。", pinyin: "wǒ dù zi téng, kě néng shì chī huài le dōng xi.", english: "My stomach hurts, maybe I ate something bad." },
+      { speaker: "A", chinese: "要不要去医院看看？", pinyin: "yào bù yào qù yī yuàn kàn kàn?", english: "Should we go to the hospital?" },
+      { speaker: "B", chinese: "不用，休息一下应该就没事了。", pinyin: "bù yòng, xiū xi yī xià yīng gāi jiù méi shì le.", english: "No need, I should be fine after resting." }
+    ],
+
+    exercises: [
+      { type: "fill-blank", question: "我___疼，想睡觉。", answer: "头" },
+      { type: "matching", pairs: [{ chinese: "眼睛", pinyin: "yǎn jing", english: "eye" }, { chinese: "脚", pinyin: "jiǎo", english: "foot" }], instruction: "Match body part with English" },
+      { type: "translation", vietnamese: "Tai của tôi bị đau.", chinese: "我的耳朵疼。", pinyin: "wǒ de ěr duo téng." }
+    ],
   },
   {
     id: 12,
@@ -206,15 +436,36 @@ export const lessons = [
     vocab: [
       { chinese: "左边", pinyin: "zuǒ biān", english: "left" },
       { chinese: "右边", pinyin: "yòu biān", english: "right" },
-      { chinese: "前面", pinyin: "qián miàn", english: "front" },
-      { chinese: "后面", pinyin: "hòu miàn", english: "back" }
+      { chinese: "前面", pinyin: "qián miàn", english: "front / ahead" },
+      { chinese: "后面", pinyin: "hòu miàn", english: "behind" },
+      { chinese: "旁边", pinyin: "páng biān", english: "beside" },
+      { chinese: "北", pinyin: "běi", english: "north" },
+      { chinese: "南", pinyin: "nán", english: "south" },
+      { chinese: "东", pinyin: "dōng", english: "east" },
+      { chinese: "西", pinyin: "xī", english: "west" },
+      { chinese: "中间", pinyin: "zhōng jiān", english: "middle / center" }
     ],
 
-    sentence: {
-      chinese: "银行在前面。",
-      pinyin: "yín háng zài qián miàn.",
-      english: "The bank is ahead."
-    }
+    sentences: [
+      { chinese: "邮局在银行的左边。", pinyin: "yóu jú zài yín háng de zuǒ biān.", english: "The post office is to the left of the bank." },
+      { chinese: "一直往前走，不要转弯。", pinyin: "yī zhí wǎng qián zǒu, bù yào zhuǎn wān.", english: "Go straight ahead, don't turn." },
+      { chinese: "学校在超市旁边。", pinyin: "xué xiào zài chāo shì páng biān.", english: "The school is next to the supermarket." },
+      { chinese: "北京在河北的北边。", pinyin: "běi jīng zài hé běi de běi biān.", english: "Beijing is north of Hebei." },
+      { chinese: "我的家在市中心中间。", pinyin: "wǒ de jiā zài shì zhōng xīn zhōng jiān.", english: "My home is in the center of the city." }
+    ],
+
+    dialogue: [
+      { speaker: "A", chinese: "请问，最近的医院怎么走？", pinyin: "qǐng wèn, zuì jìn de yī yuàn zěn me zǒu?", english: "Excuse me, how do I get to the nearest hospital?" },
+      { speaker: "B", chinese: "往前走两个路口，然后右转。", pinyin: "wǎng qián zǒu liǎng gè lù kǒu, rán hòu yòu zhuǎn.", english: "Go forward two blocks, then turn right." },
+      { speaker: "A", chinese: "离这里远吗？", pinyin: "lí zhè lǐ yuǎn ma?", english: "Is it far from here?" },
+      { speaker: "B", chinese: "不远，走路大概五分钟。", pinyin: "bù yuǎn, zǒu lù dà gài wǔ fēn zhōng.", english: "Not far, about a five-minute walk." }
+    ],
+
+    exercises: [
+      { type: "fill-blank", question: "学校在超市的___。", answer: "旁边" },
+      { type: "matching", pairs: [{ chinese: "左边", pinyin: "zuǒ biān", english: "left" }, { chinese: "前面", pinyin: "qián miàn", english: "front" }], instruction: "Match the direction with English" },
+      { type: "translation", vietnamese: "Rẽ phải ở ngã tư tiếp theo.", chinese: "在下一个路口右转。", pinyin: "zài xià yī gè lù kǒu yòu zhuǎn." }
+    ],
   },
   {
     id: 13,
@@ -222,17 +473,38 @@ export const lessons = [
     pinyin: "shí jiān",
     topic: "Time",
     vocab: [
+      { chinese: "点", pinyin: "diǎn", english: "o'clock" },
+      { chinese: "分", pinyin: "fēn", english: "minute" },
+      { chinese: "小时", pinyin: "xiǎo shí", english: "hour" },
+      { chinese: "早上", pinyin: "zǎo shang", english: "morning" },
+      { chinese: "中午", pinyin: "zhōng wǔ", english: "noon" },
+      { chinese: "下午", pinyin: "xià wǔ", english: "afternoon" },
+      { chinese: "晚上", pinyin: "wǎn shang", english: "evening" },
       { chinese: "现在", pinyin: "xiàn zài", english: "now" },
-      { chinese: "今天", pinyin: "jīn tiān", english: "today" },
-      { chinese: "明天", pinyin: "míng tiān", english: "tomorrow" },
-      { chinese: "昨天", pinyin: "zuó tiān", english: "yesterday" }
+      { chinese: "时间", pinyin: "shí jiān", english: "time" },
+      { chinese: "半", pinyin: "bàn", english: "half" }
     ],
 
-    sentence: {
-      chinese: "现在几点？",
-      pinyin: "xiàn zài jǐ diǎn?",
-      english: "What time is it now?"
-    }
+    sentences: [
+      { chinese: "现在几点了？", pinyin: "xiàn zài jǐ diǎn le?", english: "What time is it now?" },
+      { chinese: "现在是下午三点十五分。", pinyin: "xiàn zài shì xià wǔ sān diǎn shí wǔ fēn.", english: "It's 3:15 PM now." },
+      { chinese: "我每天早上七点起床。", pinyin: "wǒ měi tiān zǎo shang qī diǎn qǐ chuáng.", english: "I get up at 7 AM every day." },
+      { chinese: "会议是几点开始？", pinyin: "huì yì shì jǐ diǎn kāi shǐ?", english: "What time does the meeting start?" },
+      { chinese: "我们有一个小时的休息时间。", pinyin: "wǒ men yǒu yī gè xiǎo shí de xiū xi shí jiān.", english: "We have one hour of rest time." }
+    ],
+
+    dialogue: [
+      { speaker: "A", chinese: "我们几点见面？", pinyin: "wǒ men jǐ diǎn jiàn miàn?", english: "What time shall we meet?" },
+      { speaker: "B", chinese: "下午两点半怎么样？", pinyin: "xià wǔ liǎng diǎn bàn zěn me yàng?", english: "How about 2:30 PM?" },
+      { speaker: "A", chinese: "可以。在哪里见面？", pinyin: "kě yǐ. zài nǎ lǐ jiàn miàn?", english: "That works. Where shall we meet?" },
+      { speaker: "B", chinese: "在图书馆门口，不见不散。", pinyin: "zài tú shū guǎn mén kǒu, bù jiàn bù sàn.", english: "At the library entrance, don't leave until we meet." }
+    ],
+
+    exercises: [
+      { type: "fill-blank", question: "现在是___八点。", answer: "早上" },
+      { type: "matching", pairs: [{ chinese: "下午", pinyin: "xià wǔ", english: "afternoon" }, { chinese: "晚上", pinyin: "wǎn shang", english: "evening" }], instruction: "Match the time of day with English" },
+      { type: "translation", vietnamese: "Bây giờ là mấy giờ?", chinese: "现在几点了？", pinyin: "xiàn zài jǐ diǎn le?" }
+    ],
   },
   {
     id: 14,
@@ -240,17 +512,38 @@ export const lessons = [
     pinyin: "ài hào",
     topic: "Hobbies",
     vocab: [
-      { chinese: "游泳", pinyin: "yóu yǒng", english: "swimming" },
-      { chinese: "跑步", pinyin: "pǎo bù", english: "running" },
-      { chinese: "唱歌", pinyin: "chàng gē", english: "singing" },
-      { chinese: "读书", pinyin: "dú shū", english: "reading" }
+      { chinese: "看书", pinyin: "kàn shū", english: "read books" },
+      { chinese: "听音乐", pinyin: "tīng yīn yuè", english: "listen to music" },
+      { chinese: "游泳", pinyin: "yóu yǒng", english: "swim" },
+      { chinese: "跑步", pinyin: "pǎo bù", english: "run / jog" },
+      { chinese: "画画", pinyin: "huà huà", english: "draw / paint" },
+      { chinese: "唱歌", pinyin: "chàng gē", english: "sing" },
+      { chinese: "跳舞", pinyin: "tiào wǔ", english: "dance" },
+      { chinese: "摄影", pinyin: "shè yǐng", english: "photography" },
+      { chinese: "做饭", pinyin: "zuò fàn", english: "cook" },
+      { chinese: "旅行", pinyin: "lǚ xíng", english: "travel" }
     ],
 
-    sentence: {
-      chinese: "我喜欢游泳。",
-      pinyin: "wǒ xǐ huān yóu yǒng.",
-      english: "I like swimming."
-    }
+    sentences: [
+      { chinese: "我的爱好是看书。", pinyin: "wǒ de ài hào shì kàn shū.", english: "My hobby is reading books." },
+      { chinese: "周末我喜欢去游泳。", pinyin: "zhōu mò wǒ xǐ huān qù yóu yǒng.", english: "On weekends I like to go swimming." },
+      { chinese: "她唱歌唱得很好听。", pinyin: "tā chàng gē chàng de hěn hǎo tīng.", english: "She sings very beautifully." },
+      { chinese: "我最近在学习跳舞。", pinyin: "wǒ zuì jìn zài xué xí tiào wǔ.", english: "I am learning to dance recently." },
+      { chinese: "旅行是我最喜欢的活动。", pinyin: "lǚ xíng shì wǒ zuì xǐ huān de huó dòng.", english: "Travel is my favorite activity." }
+    ],
+
+    dialogue: [
+      { speaker: "A", chinese: "你平时有什么爱好？", pinyin: "nǐ píng shí yǒu shén me ài hào?", english: "What hobbies do you have?" },
+      { speaker: "B", chinese: "我喜欢听音乐和跑步。你呢？", pinyin: "wǒ xǐ huān tīng yīn yuè hé pǎo bù. nǐ ne?", english: "I like listening to music and running. What about you?" },
+      { speaker: "A", chinese: "我喜欢摄影，特别是拍风景。", pinyin: "wǒ xǐ huān shè yǐng, tè bié shì pāi fēng jǐng.", english: "I like photography, especially taking pictures of landscapes." },
+      { speaker: "B", chinese: "那我们周末可以一起去拍照。", pinyin: "nà wǒ men zhōu mò kě yǐ yī qǐ qù pāi zhào.", english: "Then we can go take photos together this weekend." }
+    ],
+
+    exercises: [
+      { type: "fill-blank", question: "我的爱好是___书。", answer: "看" },
+      { type: "matching", pairs: [{ chinese: "唱歌", pinyin: "chàng gē", english: "sing" }, { chinese: "旅行", pinyin: "lǚ xíng", english: "travel" }], instruction: "Match the hobby with English" },
+      { type: "translation", vietnamese: "Cuối tuần bạn thích làm gì?", chinese: "周末你喜欢做什么？", pinyin: "zhōu mò nǐ xǐ huān zuò shén me?" }
+    ],
   },
   {
     id: 15,
@@ -258,17 +551,38 @@ export const lessons = [
     pinyin: "xué xiào",
     topic: "School",
     vocab: [
+      { chinese: "学校", pinyin: "xué xiào", english: "school" },
       { chinese: "老师", pinyin: "lǎo shī", english: "teacher" },
       { chinese: "学生", pinyin: "xué shēng", english: "student" },
       { chinese: "教室", pinyin: "jiào shì", english: "classroom" },
-      { chinese: "书", pinyin: "shū", english: "book" }
+      { chinese: "课本", pinyin: "kè běn", english: "textbook" },
+      { chinese: "作业", pinyin: "zuò yè", english: "homework" },
+      { chinese: "考试", pinyin: "kǎo shì", english: "exam" },
+      { chinese: "成绩", pinyin: "chéng jì", english: "grade / score" },
+      { chinese: "学期", pinyin: "xué qī", english: "semester" },
+      { chinese: "毕业", pinyin: "bì yè", english: "graduate" }
     ],
 
-    sentence: {
-      chinese: "老师很好。",
-      pinyin: "lǎo shī hěn hǎo.",
-      english: "The teacher is very good."
-    }
+    sentences: [
+      { chinese: "我在北京大学学习。", pinyin: "wǒ zài běi jīng dà xué xué xí.", english: "I study at Peking University." },
+      { chinese: "我们的老师很严格。", pinyin: "wǒ men de lǎo shī hěn yán gé.", english: "Our teacher is very strict." },
+      { chinese: "今天的作业做完了吗？", pinyin: "jīn tiān de zuò yè zuò wán le ma?", english: "Have you finished today's homework?" },
+      { chinese: "下个星期有考试。", pinyin: "xià gè xīng qī yǒu kǎo shì.", english: "There is an exam next week." },
+      { chinese: "我希望这学期的成绩能更好。", pinyin: "wǒ xī wàng zhè xué qī de chéng jì néng gèng hǎo.", english: "I hope my grades will be better this semester." }
+    ],
+
+    dialogue: [
+      { speaker: "A", chinese: "你在哪个学校读书？", pinyin: "nǐ zài nǎ gè xué xiào dú shū?", english: "Which school do you study at?" },
+      { speaker: "B", chinese: "我在上海大学学习中文。", pinyin: "wǒ zài shàng hǎi dà xué xué xí zhōng wén.", english: "I study Chinese at Shanghai University." },
+      { speaker: "A", chinese: "中文难吗？", pinyin: "zhōng wén nán ma?", english: "Is Chinese difficult?" },
+      { speaker: "B", chinese: "有点难，但是很有意思。", pinyin: "yǒu diǎn nán, dàn shì hěn yǒu yì si.", english: "A bit difficult, but very interesting." }
+    ],
+
+    exercises: [
+      { type: "fill-blank", question: "你的___做完了吗？", answer: "作业" },
+      { type: "matching", pairs: [{ chinese: "老师", pinyin: "lǎo shī", english: "teacher" }, { chinese: "考试", pinyin: "kǎo shì", english: "exam" }], instruction: "Match the school term with English" },
+      { type: "translation", vietnamese: "Tôi là sinh viên đại học.", chinese: "我是大学生。", pinyin: "wǒ shì dà xué shēng." }
+    ],
   },
   {
     id: 16,
@@ -278,15 +592,36 @@ export const lessons = [
     vocab: [
       { chinese: "飞机", pinyin: "fēi jī", english: "airplane" },
       { chinese: "火车", pinyin: "huǒ chē", english: "train" },
+      { chinese: "汽车", pinyin: "qì chē", english: "car" },
+      { chinese: "机场", pinyin: "jī chǎng", english: "airport" },
+      { chinese: "车站", pinyin: "chē zhàn", english: "station" },
       { chinese: "酒店", pinyin: "jiǔ diàn", english: "hotel" },
-      { chinese: "地图", pinyin: "dì tú", english: "map" }
+      { chinese: "签证", pinyin: "qiān zhèng", english: "visa" },
+      { chinese: "护照", pinyin: "hù zhào", english: "passport" },
+      { chinese: "地图", pinyin: "dì tú", english: "map" },
+      { chinese: "行李", pinyin: "xíng li", english: "luggage" }
     ],
 
-    sentence: {
-      chinese: "我要坐飞机去北京。",
-      pinyin: "wǒ yào zuò fēi jī qù běi jīng.",
-      english: "I want to fly to Beijing."
-    }
+    sentences: [
+      { chinese: "我坐飞机去北京。", pinyin: "wǒ zuò fēi jī qù běi jīng.", english: "I'm flying to Beijing." },
+      { chinese: "机场离这里远吗？", pinyin: "jī chǎng lí zhè lǐ yuǎn ma?", english: "Is the airport far from here?" },
+      { chinese: "我已经订好了酒店。", pinyin: "wǒ yǐ jīng dìng hǎo le jiǔ diàn.", english: "I have already booked a hotel." },
+      { chinese: "请出示你的护照和签证。", pinyin: "qǐng chū shì nǐ de hù zhào hé qiān zhèng.", english: "Please show your passport and visa." },
+      { chinese: "我的行李很重。", pinyin: "wǒ de xíng li hěn zhòng.", english: "My luggage is very heavy." }
+    ],
+
+    dialogue: [
+      { speaker: "A", chinese: "你假期打算去哪里？", pinyin: "nǐ jià qī dǎ suàn qù nǎ lǐ?", english: "Where are you planning to go for the holiday?" },
+      { speaker: "B", chinese: "我打算去西安旅行。", pinyin: "wǒ dǎ suàn qù xī ān lǚ xíng.", english: "I plan to travel to Xi'an." },
+      { speaker: "A", chinese: "你怎么去？坐飞机还是火车？", pinyin: "nǐ zěn me qù? zuò fēi jī hái shì huǒ chē?", english: "How will you go? By plane or train?" },
+      { speaker: "B", chinese: "坐高铁，只要四个小时。", pinyin: "zuò gāo tiě, zhǐ yào sì gè xiǎo shí.", english: "By high-speed rail, it only takes four hours." }
+    ],
+
+    exercises: [
+      { type: "fill-blank", question: "我___火车去上海。", answer: "坐" },
+      { type: "matching", pairs: [{ chinese: "飞机", pinyin: "fēi jī", english: "airplane" }, { chinese: "护照", pinyin: "hù zhào", english: "passport" }], instruction: "Match the travel term with English" },
+      { type: "translation", vietnamese: "Khách sạn của tôi ở trung tâm thành phố.", chinese: "我的酒店在市中心。", pinyin: "wǒ de jiǔ diàn zài shì zhōng xīn." }
+    ],
   },
   {
     id: 17,
@@ -294,17 +629,38 @@ export const lessons = [
     pinyin: "gòu wù",
     topic: "Shopping",
     vocab: [
-      { chinese: "商店", pinyin: "shāng diàn", english: "store" },
-      { chinese: "价格", pinyin: "jià gé", english: "price" },
+      { chinese: "买", pinyin: "mǎi", english: "buy" },
+      { chinese: "卖", pinyin: "mài", english: "sell" },
+      { chinese: "多少钱", pinyin: "duō shao qián", english: "how much money" },
       { chinese: "便宜", pinyin: "pián yi", english: "cheap" },
-      { chinese: "贵", pinyin: "guì", english: "expensive" }
+      { chinese: "贵", pinyin: "guì", english: "expensive" },
+      { chinese: "打折", pinyin: "dǎ zhé", english: "discount" },
+      { chinese: "超市", pinyin: "chāo shì", english: "supermarket" },
+      { chinese: "商场", pinyin: "shāng chǎng", english: "shopping mall" },
+      { chinese: "试穿", pinyin: "shì chuān", english: "try on (clothes)" },
+      { chinese: "退货", pinyin: "tuì huò", english: "return goods" }
     ],
 
-    sentence: {
-      chinese: "这个太贵了。",
-      pinyin: "zhè gè tài guì le.",
-      english: "This is too expensive."
-    }
+    sentences: [
+      { chinese: "这件衣服多少钱？", pinyin: "zhè jiàn yī fu duō shao qián?", english: "How much is this piece of clothing?" },
+      { chinese: "太贵了，能便宜一点吗？", pinyin: "tài guì le, néng pián yi yī diǎn ma?", english: "Too expensive, can it be a bit cheaper?" },
+      { chinese: "今天商场有打折活动。", pinyin: "jīn tiān shāng chǎng yǒu dǎ zhé huó dòng.", english: "The mall has a discount event today." },
+      { chinese: "我可以试穿一下吗？", pinyin: "wǒ kě yǐ shì chuān yī xià ma?", english: "Can I try it on?" },
+      { chinese: "这个超市的蔬菜很新鲜。", pinyin: "zhè gè chāo shì de shū cài hěn xīn xiān.", english: "The vegetables in this supermarket are very fresh." }
+    ],
+
+    dialogue: [
+      { speaker: "A", chinese: "你好，这种苹果怎么卖？", pinyin: "nǐ hǎo, zhè zhǒng píng guǒ zěn me mài?", english: "Hello, how much do these apples cost?" },
+      { speaker: "B", chinese: "十元一斤。", pinyin: "shí yuán yī jīn.", english: "Ten yuan per jin." },
+      { speaker: "A", chinese: "能便宜一点吗？", pinyin: "néng pián yi yī diǎn ma?", english: "Can it be a little cheaper?" },
+      { speaker: "B", chinese: "如果你买两斤，可以九元一斤。", pinyin: "rú guǒ nǐ mǎi liǎng jīn, kě yǐ jiǔ yuán yī jīn.", english: "If you buy two jin, it can be nine yuan per jin." }
+    ],
+
+    exercises: [
+      { type: "fill-blank", question: "这个包太___了，我不买了。", answer: "贵" },
+      { type: "matching", pairs: [{ chinese: "买", pinyin: "mǎi", english: "buy" }, { chinese: "便宜", pinyin: "pián yi", english: "cheap" }], instruction: "Match the shopping term with English" },
+      { type: "translation", vietnamese: "Cái này giá bao nhiêu?", chinese: "这个多少钱？", pinyin: "zhè gè duō shao qián?" }
+    ],
   },
   {
     id: 18,
@@ -312,17 +668,38 @@ export const lessons = [
     pinyin: "qíng xù",
     topic: "Emotions",
     vocab: [
-      { chinese: "高兴", pinyin: "gāo xìng", english: "happy" },
+      { chinese: "开心", pinyin: "kāi xīn", english: "happy" },
       { chinese: "难过", pinyin: "nán guò", english: "sad" },
       { chinese: "生气", pinyin: "shēng qì", english: "angry" },
-      { chinese: "害怕", pinyin: "hài pà", english: "scared" }
+      { chinese: "害怕", pinyin: "hài pà", english: "afraid" },
+      { chinese: "担心", pinyin: "dān xīn", english: "worried" },
+      { chinese: "紧张", pinyin: "jǐn zhāng", english: "nervous" },
+      { chinese: "兴奋", pinyin: "xīng fèn", english: "excited" },
+      { chinese: "感动", pinyin: "gǎn dòng", english: "touched / moved" },
+      { chinese: "无聊", pinyin: "wú liáo", english: "bored" },
+      { chinese: "满意", pinyin: "mǎn yì", english: "satisfied" }
     ],
 
-    sentence: {
-      chinese: "我很高兴。",
-      pinyin: "wǒ hěn gāo xìng.",
-      english: "I am very happy."
-    }
+    sentences: [
+      { chinese: "我今天很开心。", pinyin: "wǒ jīn tiān hěn kāi xīn.", english: "I am very happy today." },
+      { chinese: "你为什么看起来这么难过？", pinyin: "nǐ wèi shén me kàn qǐ lái zhè me nán guò?", english: "Why do you look so sad?" },
+      { chinese: "别生气，他只是在开玩笑。", pinyin: "bié shēng qì, tā zhǐ shì zài kāi wán xiào.", english: "Don't be angry, he's just joking." },
+      { chinese: "考试之前我总是很紧张。", pinyin: "kǎo shì zhī qián wǒ zǒng shì hěn jǐn zhāng.", english: "I'm always nervous before exams." },
+      { chinese: "收到你的信我很感动。", pinyin: "shōu dào nǐ de xìn wǒ hěn gǎn dòng.", english: "I was very touched to receive your letter." }
+    ],
+
+    dialogue: [
+      { speaker: "A", chinese: "你看起来不太开心，怎么了？", pinyin: "nǐ kàn qǐ lái bù tài kāi xīn, zěn me le?", english: "You don't look very happy. What's wrong?" },
+      { speaker: "B", chinese: "我考试没考好，有点难过。", pinyin: "wǒ kǎo shì méi kǎo hǎo, yǒu diǎn nán guò.", english: "I didn't do well on the exam. I'm a bit sad." },
+      { speaker: "A", chinese: "别担心，下次一定会更好。", pinyin: "bié dān xīn, xià cì yī dìng huì gèng hǎo.", english: "Don't worry, next time will definitely be better." },
+      { speaker: "B", chinese: "谢谢你安慰我。", pinyin: "xiè xiè nǐ ān wèi wǒ.", english: "Thank you for comforting me." }
+    ],
+
+    exercises: [
+      { type: "fill-blank", question: "收到礼物我很___。", answer: "开心" },
+      { type: "matching", pairs: [{ chinese: "生气", pinyin: "shēng qì", english: "angry" }, { chinese: "紧张", pinyin: "jǐn zhāng", english: "nervous" }], instruction: "Match the emotion with English" },
+      { type: "translation", vietnamese: "Tôi rất vui khi gặp bạn.", chinese: "见到你我很开心。", pinyin: "jiàn dào nǐ wǒ hěn kāi xīn." }
+    ],
   },
   {
     id: 19,
@@ -331,16 +708,37 @@ export const lessons = [
     topic: "Daily Routine",
     vocab: [
       { chinese: "起床", pinyin: "qǐ chuáng", english: "get up" },
+      { chinese: "刷牙", pinyin: "shuā yá", english: "brush teeth" },
+      { chinese: "洗澡", pinyin: "xǐ zǎo", english: "take a shower" },
       { chinese: "吃早饭", pinyin: "chī zǎo fàn", english: "eat breakfast" },
       { chinese: "上班", pinyin: "shàng bān", english: "go to work" },
-      { chinese: "睡觉", pinyin: "shuì jiào", english: "sleep" }
+      { chinese: "下班", pinyin: "xià bān", english: "get off work" },
+      { chinese: "睡觉", pinyin: "shuì jiào", english: "sleep" },
+      { chinese: "锻炼", pinyin: "duàn liàn", english: "exercise" },
+      { chinese: "看电视", pinyin: "kàn diàn shì", english: "watch TV" },
+      { chinese: "上网", pinyin: "shàng wǎng", english: "go online" }
     ],
 
-    sentence: {
-      chinese: "我每天早上七点起床。",
-      pinyin: "wǒ měi tiān zǎo shang qī diǎn qǐ chuáng.",
-      english: "I get up at 7 every morning."
-    }
+    sentences: [
+      { chinese: "我每天六点半起床。", pinyin: "wǒ měi tiān liù diǎn bàn qǐ chuáng.", english: "I get up at 6:30 every day." },
+      { chinese: "吃完早饭后我去上班。", pinyin: "chī wán zǎo fàn hòu wǒ qù shàng bān.", english: "After eating breakfast I go to work." },
+      { chinese: "下班后我喜欢去锻炼。", pinyin: "xià bān hòu wǒ xǐ huān qù duàn liàn.", english: "After work I like to exercise." },
+      { chinese: "晚上我一般十一点睡觉。", pinyin: "wǎn shang wǒ yī bān shí yī diǎn shuì jiào.", english: "At night I usually sleep at 11." },
+      { chinese: "周末我会多睡一会儿。", pinyin: "zhōu mò wǒ huì duō shuì yī huǐ er.", english: "On weekends I sleep in a bit." }
+    ],
+
+    dialogue: [
+      { speaker: "A", chinese: "你每天几点起床？", pinyin: "nǐ měi tiān jǐ diǎn qǐ chuáng?", english: "What time do you get up every day?" },
+      { speaker: "B", chinese: "我六点起床，你呢？", pinyin: "wǒ liù diǎn qǐ chuáng, nǐ ne?", english: "I get up at six. What about you?" },
+      { speaker: "A", chinese: "我七点起床。你起得真早。", pinyin: "wǒ qī diǎn qǐ chuáng. nǐ qǐ de zhēn zǎo.", english: "I get up at seven. You get up so early." },
+      { speaker: "B", chinese: "是啊，我要先锻炼再吃早饭。", pinyin: "shì a, wǒ yào xiān duàn liàn zài chī zǎo fàn.", english: "Yeah, I exercise first then have breakfast." }
+    ],
+
+    exercises: [
+      { type: "fill-blank", question: "早上我___早饭。", answer: "吃" },
+      { type: "matching", pairs: [{ chinese: "起床", pinyin: "qǐ chuáng", english: "get up" }, { chinese: "睡觉", pinyin: "shuì jiào", english: "sleep" }], instruction: "Match the daily activity with English" },
+      { type: "translation", vietnamese: "Tôi đi làm lúc 8 giờ.", chinese: "我八点去上班。", pinyin: "wǒ bā diǎn qù shàng bān." }
+    ],
   },
   {
     id: 20,
@@ -350,17 +748,37 @@ export const lessons = [
     vocab: [
       { chinese: "吃", pinyin: "chī", english: "eat" },
       { chinese: "喝", pinyin: "hē", english: "drink" },
-      { chinese: "看", pinyin: "kàn", english: "see / look" },
-      { chinese: "听", pinyin: "tīng", english: "listen" }
+      { chinese: "看", pinyin: "kàn", english: "see / look / watch" },
+      { chinese: "听", pinyin: "tīng", english: "listen" },
+      { chinese: "说", pinyin: "shuō", english: "speak / say" },
+      { chinese: "读", pinyin: "dú", english: "read" },
+      { chinese: "写", pinyin: "xiě", english: "write" },
+      { chinese: "走", pinyin: "zǒu", english: "walk / go" },
+      { chinese: "做", pinyin: "zuò", english: "do / make" },
+      { chinese: "想", pinyin: "xiǎng", english: "think / want" }
     ],
 
-    sentence: {
-      chinese: "我看电影。",
-      pinyin: "wǒ kàn diàn yǐng.",
-      english: "I watch a movie."
-    }
-  }
-,
+    sentences: [
+      { chinese: "我们去看电影吧。", pinyin: "wǒ men qù kàn diàn yǐng ba.", english: "Let's go watch a movie." },
+      { chinese: "你喜欢吃什么？", pinyin: "nǐ xǐ huān chī shén me?", english: "What do you like to eat?" },
+      { chinese: "她在写作业。", pinyin: "tā zài xiě zuò yè.", english: "She is doing homework." },
+      { chinese: "你在听什么歌？", pinyin: "nǐ zài tīng shén me gē?", english: "What song are you listening to?" },
+      { chinese: "我想学习中文。", pinyin: "wǒ xiǎng xué xí zhōng wén.", english: "I want to learn Chinese." }
+    ],
+
+    dialogue: [
+      { speaker: "A", chinese: "你在做什么？", pinyin: "nǐ zài zuò shén me?", english: "What are you doing?" },
+      { speaker: "B", chinese: "我在看书。你喜欢看书吗？", pinyin: "wǒ zài kàn shū. nǐ xǐ huān kàn shū ma?", english: "I'm reading a book. Do you like reading?" },
+      { speaker: "A", chinese: "喜欢，但我更喜欢看电影。", pinyin: "xǐ huān, dàn wǒ gèng xǐ huān kàn diàn yǐng.", english: "Yes, but I prefer watching movies." },
+      { speaker: "B", chinese: "那我们周末一起看电影吧。", pinyin: "nà wǒ men zhōu mò yī qǐ kàn diàn yǐng ba.", english: "Then let's watch a movie together this weekend." }
+    ],
+
+    exercises: [
+      { type: "fill-blank", question: "我想___一杯水。", answer: "喝" },
+      { type: "matching", pairs: [{ chinese: "说", pinyin: "shuō", english: "speak" }, { chinese: "写", pinyin: "xiě", english: "write" }], instruction: "Match the verb with English" },
+      { type: "translation", vietnamese: "Tôi muốn học tiếng Trung.", chinese: "我想学习中文。", pinyin: "wǒ xiǎng xué xí zhōng wén." }
+    ],
+  },
   {
     id: 21,
     title: "打电话",

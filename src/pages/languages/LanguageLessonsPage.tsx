@@ -115,7 +115,7 @@ function LessonList({ lang, accent }: { lang: string; accent: string }) {
     if (!loader) return;
     loader()
       .then((mod) => {
-        if (!cancelled) setLessonsModule(mod.default ?? []);
+        if (!cancelled) setLessonsModule(mod.default ?? mod.lessons ?? []);
       })
       .catch((err) => {
         if (!cancelled) setError(String(err));
@@ -181,7 +181,7 @@ function LessonTile({
         </div>
         <div className="min-w-0 flex-1">
           <div className="text-sm font-bold text-slate-900">
-            {lesson.title_vi ?? lesson.title_en ?? `Lesson ${index + 1}`}
+            {lesson.title ?? lesson.title_vi ?? lesson.title_en ?? `Lesson ${index + 1}`}
           </div>
           <div className="text-xs font-medium text-slate-500 mt-0.5">
             {lesson.title_en ?? ""}
@@ -232,6 +232,86 @@ function LessonTile({
               </li>
             ))}
           </ul>
+
+          {/* Vocabulary */}
+          {lesson.vocab && Array.isArray(lesson.vocab) && lesson.vocab.length > 0 && (
+            <div className="mt-3 rounded-lg border border-slate-200 bg-slate-50/60 p-3">
+              <p className="inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wide text-slate-500">
+                <Sparkles className="h-3 w-3" />
+                Từ vựng · Vocabulary
+              </p>
+              <div className="mt-2 grid grid-cols-2 gap-1">
+                {lesson.vocab.map((v: any, vi: number) => (
+                  <div key={vi} className="text-xs text-slate-700">
+                    <span className="font-semibold">{v.chinese}</span>
+                    <span className="text-slate-400 ml-1">{v.pinyin}</span>
+                    <span className="text-slate-500 ml-2">{v.english}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Dialogue */}
+          {lesson.dialogue && Array.isArray(lesson.dialogue) && lesson.dialogue.length > 0 && (
+            <div className="mt-3 rounded-lg border border-slate-200 bg-white p-3">
+              <p className="inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wide text-slate-500 mb-2">
+                <Sparkles className="h-3 w-3" />
+                Hội thoại · Dialogue
+              </p>
+              {lesson.dialogue.map((d: any, di: number) => (
+                <div key={di} className="text-xs mb-1.5">
+                  <span className="font-bold" style={{ color: accent }}>{d.speaker}:</span>{" "}
+                  <span className="text-slate-900 font-medium">{d.chinese}</span>
+                  <span className="text-slate-400 ml-1">({d.pinyin})</span>
+                  <div className="text-slate-500 ml-5">{d.english}</div>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {/* Exercises */}
+          {lesson.exercises && Array.isArray(lesson.exercises) && lesson.exercises.length > 0 && (
+            <div className="mt-3 rounded-lg border border-amber-100 bg-amber-50/60 p-3">
+              <p className="inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wide text-amber-700 mb-2">
+                <Lightbulb className="h-3 w-3" />
+                Bài tập · Exercises
+              </p>
+              <ol className="space-y-2">
+                {lesson.exercises.map((ex: any, ei: number) => (
+                  <li key={ei} className="text-xs">
+                    {ex.type === "fill-blank" && (
+                      <div>
+                        <span className="text-slate-500">Fill-blank: </span>
+                        <span className="text-slate-700">{ex.question}</span>
+                        <span className="text-green-600 font-semibold ml-2">→ {ex.answer}</span>
+                      </div>
+                    )}
+                    {ex.type === "translation" && (
+                      <div>
+                        <span className="text-slate-500">Translate: </span>
+                        <span className="text-slate-700 italic">"{ex.vietnamese}"</span>
+                        <span className="text-green-600 font-semibold ml-2">→ {ex.chinese}</span>
+                        <span className="text-slate-400 ml-1">({ex.pinyin})</span>
+                      </div>
+                    )}
+                    {ex.type === "matching" && (
+                      <div>
+                        <span className="text-slate-500">Match: {ex.instruction} </span>
+                        <span className="text-slate-700">
+                          {ex.pairs?.map((p: any, pi: number) => (
+                            <span key={pi} className="mr-3">
+                              {p.chinese}={p.english}
+                            </span>
+                          ))}
+                        </span>
+                      </div>
+                    )}
+                  </li>
+                ))}
+              </ol>
+            </div>
+          )}
         </div>
       )}
     </div>
