@@ -1,1310 +1,252 @@
-// src/languages/french/lessons.ts
-//
-// 20 French lessons for Vietnamese learners (5 intro + 15 topic-based).
-// Each lesson: vocabulary, example sentences, dialogue, exercises, and
-// pronunciation focus written for Vietnamese speakers.
-//
-// Shape mirrors the profession-pack content.ts pattern so the page UI
-// stays consistent across verticals.
-//
-// Hand-crafted; no AI-generated filler.
-
-export type FrenchCategoryId =
-  | "greetings"
-  | "numbers"
-  | "common_phrases"
-  | "basic_grammar"
-  | "food"
-  | "family"
-  | "daily_routine"
-  | "weather"
-  | "time"
-  | "colors"
-  | "clothes"
-  | "transportation"
-  | "house"
-  | "hobbies"
-  | "health"
-  | "work"
-  | "travel"
-  | "emotions"
-  | "past_tense"
-  | "future_plans";
-
-export type FrenchCategoryMeta = {
-  id: FrenchCategoryId;
-  title_vi: string;
-  title_en: string;
-  expected_count: number;
-};
-
-export const FRENCH_CATEGORIES: ReadonlyArray<FrenchCategoryMeta> = [
-  { id: "greetings", title_vi: "Chào hỏi và giới thiệu", title_en: "Greetings and introductions", expected_count: 1 },
-  { id: "numbers", title_vi: "Số đếm", title_en: "Numbers", expected_count: 1 },
-  { id: "common_phrases", title_vi: "Câu giao tiếp thông dụng", title_en: "Common phrases", expected_count: 1 },
-  { id: "basic_grammar", title_vi: "Ngữ pháp cơ bản", title_en: "Basic grammar", expected_count: 1 },
-  { id: "food", title_vi: "Ẩm thực và gọi món", title_en: "Food and ordering", expected_count: 1 },
-  { id: "family", title_vi: "Gia đình", title_en: "Family", expected_count: 1 },
-  { id: "daily_routine", title_vi: "Sinh hoạt hàng ngày", title_en: "Daily routine", expected_count: 1 },
-  { id: "weather", title_vi: "Thời tiết", title_en: "Weather", expected_count: 1 },
-  { id: "time", title_vi: "Thời gian", title_en: "Time", expected_count: 1 },
-  { id: "colors", title_vi: "Màu sắc", title_en: "Colors", expected_count: 1 },
-  { id: "clothes", title_vi: "Quần áo", title_en: "Clothes", expected_count: 1 },
-  { id: "transportation", title_vi: "Giao thông", title_en: "Transportation", expected_count: 1 },
-  { id: "house", title_vi: "Nhà cửa", title_en: "House", expected_count: 1 },
-  { id: "hobbies", title_vi: "Sở thích", title_en: "Hobbies", expected_count: 1 },
-  { id: "health", title_vi: "Sức khỏe", title_en: "Health", expected_count: 1 },
-  { id: "work", title_vi: "Công việc", title_en: "Work", expected_count: 1 },
-  { id: "travel", title_vi: "Du lịch", title_en: "Travel", expected_count: 1 },
-  { id: "emotions", title_vi: "Cảm xúc", title_en: "Emotions", expected_count: 1 },
-  { id: "past_tense", title_vi: "Thì quá khứ", title_en: "Past tense", expected_count: 1 },
-  { id: "future_plans", title_vi: "Kế hoạch tương lai", title_en: "Future plans", expected_count: 1 },
-];
-
-export type LessonSentence = {
-  en: string;
-  vi: string;
-  pronunciation_focus: string[];
-};
-
-export type VocabEntry = {
-  word: string;
-  en: string;
-  vi: string;
-  pos: string;
-  pronunciation_vi: string;
-};
-
-export type DialogueLine = {
-  speaker: string;
-  text: string;
-  vi: string;
-};
-
-export type ExerciseItem = {
-  prompt: string;
-  answer: string;
-  options?: string[];
-};
-
-export type Exercise = {
-  type: "fill_blank" | "matching" | "translation";
-  instruction_vi: string;
-  pronunciation_focus: string[];
-  items: ExerciseItem[];
-};
-
-export type FrenchLesson = {
-  id: string;
-  category: FrenchCategoryId;
-  title_vi: string;
-  title_en: string;
-  sentences: LessonSentence[];
-  cultural_notes_vi: string;
-  tip_advice_vi: string;
-  vocabulary?: VocabEntry[];
-  dialogue?: DialogueLine[];
-  exercises?: Exercise[];
-};
-
-// ── 1. Greetings ────────────────────────────────────────────────────────
-
-const GREETINGS: FrenchLesson[] = [
+export const lessons = [
   {
-    id: "french_greetings_intro",
-    category: "greetings",
-    title_vi: "Chào hỏi cơ bản",
-    title_en: "Basic greetings",
-    sentences: [
-      { en: "Bonjour, je m'appelle Marie.", vi: "Xin chào, tôi tên là Marie.", pronunciation_focus: ["nasal on", "nasal in", "silent -e", "elle → èl"] },
-      { en: "Enchanté de faire votre connaissance.", vi: "Rất vui được làm quen với bạn.", pronunciation_focus: ["nasal en", "nasal an", "é → ê", "silent -re"] },
-      { en: "Comment allez-vous aujourd'hui ?", vi: "Hôm nay bạn khỏe không?", pronunciation_focus: ["nasal ent", "ez → ê", "u → uy", "hui → u-i"] },
-      { en: "Je vais bien, merci. Et vous ?", vi: "Tôi khỏe, cảm ơn. Còn bạn?", pronunciation_focus: ["nasal en", "silent -s", "er → ê"] },
-      { en: "Au revoir et bonne journée !", vi: "Tạm biệt và chúc một ngày tốt lành!", pronunciation_focus: ["au → ô", "oi → oa", "ou → u", "ée → ê"] },
-    ],
-    cultural_notes_vi: "Người Pháp chào bằng 'bonjour' suốt cả ngày đến tầm 6 giờ tối mới chuyển sang 'bonsoir'. Dùng 'salut' với bạn bè thân, không dùng với người lớn tuổi hay lần đầu gặp. 'Enchanté' (nam) / 'Enchantée' (nữ) là câu lịch sự chuẩn khi gặp lần đầu.",
-    tip_advice_vi: "Khi gặp người Pháp, luôn nói 'bonjour' TRƯỚC khi hỏi bất cứ điều gì — kể cả hỏi đường. Vào tiệm bánh mà không chào 'bonjour' là bị coi là bất lịch sự. Tập phát âm âm mũi (bonjour, enchanté, bien) — đó là điểm yếu nhất của người Việt học tiếng Pháp.",
+    id: 1,
+    title: "Chào hỏi - Greetings",
+    content: "Bonjour (Xin chào) / Salut (Chào) / Comment allez-vous? (Bạn khỏe không?) / Très bien, merci (Rất tốt, cảm ơn) / Au revoir (Tạm biệt)."
   },
-];
-
-// ── 2. Numbers ──────────────────────────────────────────────────────────
-
-const NUMBERS: FrenchLesson[] = [
   {
-    id: "french_numbers_1_20",
-    category: "numbers",
-    title_vi: "Số đếm 1 đến 20",
-    title_en: "Numbers 1 to 20",
-    sentences: [
-      { en: "Un, deux, trois — un café, s'il vous plaît.", vi: "Một, hai, ba — một ly cà phê, làm ơn.", pronunciation_focus: ["nasal un", "eu → ơ", "oi → oa", "silent -s"] },
-      { en: "Quatre, cinq, six croissants.", vi: "Bốn, năm, sáu cái bánh croissant.", pronunciation_focus: ["quatre → kat", "nasal in", "x → s", "silent -nts"] },
-      { en: "Sept, huit, neuf euros.", vi: "Bảy, tám, chín euro.", pronunciation_focus: ["sept → set", "h muet", "eu → ơ", "f final"] },
-      { en: "Dix, onze, douze personnes.", vi: "Mười, mười một, mười hai người.", pronunciation_focus: ["dix → dis", "nasal on", "ou → u", "silent -s"] },
-      { en: "Treize, quatorze, quinze, seize.", vi: "Mười ba, mười bốn, mười năm, mười sáu.", pronunciation_focus: ["ei → e", "ze → d", "in → ang nasal"] },
-    ],
-    cultural_notes_vi: "Số Pháp 70-99 nổi tiếng phức tạp: 70 = soixante-dix (60+10), 80 = quatre-vingts (4x20), 90 = quatre-vingt-dix (4x20+10). Người Bỉ và Thụy Sĩ dùng 'septante', 'huitante', 'nonante' đơn giản hơn — nhưng người Pháp thì không.",
-    tip_advice_vi: "Khi trả tiền ở Pháp, đừng chỉ giơ thẻ — hãy nói số tiền bằng tiếng Pháp. Người Pháp đánh giá cao nỗ lực nói tiếng Pháp, dù chỉ là đọc số.",
+    id: 2,
+    title: "Số đếm 1-10 - Numbers 1-10",
+    content: "Un (1), Deux (2), Trois (3), Quatre (4), Cinq (5), Six (6), Sept (7), Huit (8), Neuf (9), Dix (10)."
   },
-];
-
-// ── 3. Common Phrases ───────────────────────────────────────────────────
-
-const COMMON_PHRASES: FrenchLesson[] = [
   {
-    id: "french_common_travel",
-    category: "common_phrases",
-    title_vi: "Câu du lịch thiết yếu",
-    title_en: "Essential travel phrases",
-    sentences: [
-      { en: "Où sont les toilettes, s'il vous plaît ?", vi: "Nhà vệ sinh ở đâu ạ?", pronunciation_focus: ["où → u", "nasal on", "oi → oa", "silent -es"] },
-      { en: "Combien ça coûte ?", vi: "Cái này giá bao nhiêu?", pronunciation_focus: ["nasal en", "ou → u", "û → u", "silent -e"] },
-      { en: "Je voudrais un billet pour Paris.", vi: "Tôi muốn mua một vé đi Paris.", pronunciation_focus: ["ou → u", "ai → e", "silent -t", "r uvulaire"] },
-      { en: "Parlez-vous anglais ?", vi: "Bạn có nói tiếng Anh không?", pronunciation_focus: ["ez → ê", "ou → u", "nasal an", "silent -s"] },
-      { en: "Je ne comprends pas. Pouvez-vous répéter ?", vi: "Tôi không hiểu. Bạn nói lại được không?", pronunciation_focus: ["nasal en", "nasal on", "ez → ê", "é → ê"] },
-    ],
-    cultural_notes_vi: "Ở Pháp, hỏi 'Parlez-vous anglais?' TRƯỚC khi nói tiếng Anh là phép lịch sự tối thiểu. Nếu bạn nhảy thẳng vào tiếng Anh, nhiều người Pháp sẽ giả vờ không hiểu. 'Je voudrais' lịch sự hơn 'Je veux' (nghe như ra lệnh).",
-    tip_advice_vi: "Học thuộc 5 câu này trước khi đi Pháp. Người Pháp sẽ nói tiếng Anh với bạn nếu bạn thể hiện đã cố gắng nói tiếng Pháp trước.",
+    id: 3,
+    title: "Màu sắc - Colors",
+    content: "Rouge (đỏ), Bleu (xanh dương), Vert (xanh lá), Jaune (vàng), Noir (đen), Blanc (trắng), Orange (cam), Rose (hồng)."
   },
-];
-
-// ── 4. Basic Grammar ────────────────────────────────────────────────────
-
-const BASIC_GRAMMAR: FrenchLesson[] = [
   {
-    id: "french_grammar_gender",
-    category: "basic_grammar",
-    title_vi: "Giống đực và giống cái",
-    title_en: "Masculine and feminine gender",
-    sentences: [
-      { en: "Le garçon est petit. La fille est petite.", vi: "Cậu bé thì nhỏ. Cô bé thì nhỏ.", pronunciation_focus: ["le → lơ", "la → la", "nasal on", "silent -t", "e muet"] },
-      { en: "Un bon café. Une bonne baguette.", vi: "Một ly cà phê ngon. Một ổ bánh mì ngon.", pronunciation_focus: ["nasal un", "nasal on", "bon → bon nasal", "bonne → bon"] },
-      { en: "Le chat noir. La voiture rouge.", vi: "Con mèo đen. Chiếc xe hơi đỏ.", pronunciation_focus: ["le / la distinction", "oi → oa", "ou → u", "r uvulaire"] },
-      { en: "Mon ami, mon amie — same sound!", vi: "Bạn trai tôi, bạn gái tôi — nghe giống nhau!", pronunciation_focus: ["nasal on", "mon → mon nasal", "amie → a-mi", "liaison mon‿ami"] },
-      { en: "Les enfants sont gentils.", vi: "Lũ trẻ thì ngoan.", pronunciation_focus: ["les → lê", "nasal en", "nasal on", "gentils → jan-ti"] },
-    ],
-    cultural_notes_vi: "Tiếng Pháp chia mọi danh từ thành giống đực (le/un) hoặc giống cái (la/une). Không có quy tắc tuyệt đối — phải học thuộc từng từ. Mẹo: từ kết thúc bằng -tion, -sion, -té thường là giống cái. Từ kết thúc bằng -age, -ment thường là giống đực.",
-    tip_advice_vi: "Đừng sợ sai giống đực/cái — người Pháp vẫn hiểu bạn. Tập thói quen học mỗi danh từ KÈM mạo từ: không học 'pain' mà học 'LE pain'.",
+    id: 4,
+    title: "Các ngày trong tuần - Days of the week",
+    content: "Lundi (Thứ Hai), Mardi (Thứ Ba), Mercredi (Thứ Tư), Jeudi (Thứ Năm), Vendredi (Thứ Sáu), Samedi (Thứ Bảy), Dimanche (Chủ Nhật)."
   },
-];
-
-// ── 5. Food ─────────────────────────────────────────────────────────────
-
-const FOOD_LEGACY: FrenchLesson[] = [
   {
-    id: "french_food_ordering",
-    category: "food",
-    title_vi: "Gọi món ăn",
-    title_en: "Ordering food",
-    sentences: [
-      { en: "Je voudrais un croque-monsieur, s'il vous plaît.", vi: "Cho tôi một cái croque-monsieur ạ.", pronunciation_focus: ["ou → u", "ai → e", "nasal un", "silent -t"] },
-      { en: "Et une baguette, pas trop cuite.", vi: "Và một ổ bánh mì, đừng nướng quá kỹ.", pronunciation_focus: ["u → u pur", "baguette → ba-get", "ui → u-i", "silent -e"] },
-      { en: "Qu'est-ce que vous recommandez ?", vi: "Bạn gợi ý món gì?", pronunciation_focus: ["qu'est → k", "e muet", "ez → ê", "silent -z"] },
-      { en: "L'addition, s'il vous plaît.", vi: "Cho xin hóa đơn ạ.", pronunciation_focus: ["l'addition → la-di-sion", "silent -n", "ai → e"] },
-      { en: "C'était délicieux ! Merci beaucoup.", vi: "Ngon tuyệt! Cảm ơn nhiều.", pronunciation_focus: ["é → ê", "eu → ơ", "ou → u", "silent -p"] },
-    ],
-    cultural_notes_vi: "Ở nhà hàng Pháp, đừng gọi 'garçon' để gọi bồi bàn — ngày nay bị coi là thô lỗ. Tiền tip đã bao gồm trong giá ('service compris'). Đừng gọi hóa đơn khi chưa ăn xong — người Pháp coi bữa ăn là thời gian thư giãn.",
-    tip_advice_vi: "Khi vào tiệm bánh, chào 'bonjour' rồi chỉ tay vào bánh và nói 'je voudrais ça'. Từ 'délicieux' làm người Pháp cười — dùng nó nhiều vào.",
+    id: 5,
+    title: "Các tháng - Months",
+    content: "Janvier (Tháng 1), Février (Tháng 2), Mars (Tháng 3), Avril (Tháng 4), Mai (Tháng 5), Juin (Tháng 6), Juillet (Tháng 7), Août (Tháng 8), Septembre (Tháng 9), Octobre (Tháng 10), Novembre (Tháng 11), Décembre (Tháng 12)."
   },
-];
-
-// ── 6. Family ───────────────────────────────────────────────────────────
-
-const FAMILY: FrenchLesson[] = [
   {
-    id: "french_family_intro",
-    category: "family",
-    title_vi: "Giới thiệu gia đình",
-    title_en: "Introducing family",
-    sentences: [
-      { en: "Voici ma mère, mon père et ma sœur.", vi: "Đây là mẹ, bố và em gái tôi.", pronunciation_focus: ["mère → me-r", "père → pe-r", "sœur → sơr", "r uvulaire"] },
-      { en: "J'ai deux frères et une sœur.", vi: "Tôi có hai anh em trai và một chị em gái.", pronunciation_focus: ["j'ai → dê", "deux → đơ", "frères → phre-r", "sœur → sơr"] },
-      { en: "Mes grands-parents habitent à la campagne.", vi: "Ông bà tôi sống ở nông thôn.", pronunciation_focus: ["grands-parents → grăn-pa-răn", "habitent → a-bít", "nasal an"] },
-      { en: "Mon oncle est médecin, ma tante est professeure.", vi: "Chú tôi là bác sĩ, cô tôi là giáo viên.", pronunciation_focus: ["oncle → ong-klơ", "tante → tăngt", "médecin → mét-xăng"] },
-      { en: "Nous sommes une grande famille de six personnes.", vi: "Chúng tôi là một gia đình lớn sáu người.", pronunciation_focus: ["nous → nu", "sommes → xom", "grande → grăngđ", "famille → pha-miy"] },
-    ],
-    cultural_notes_vi: "Gia đình Pháp thường nhỏ (1-3 con). Ông bà thường sống riêng, không ở chung 3 thế hệ như Việt Nam. Ngày Chủ Nhật là 'jour de famille' — cả nhà ăn trưa cùng nhau, có thể kéo dài 3-4 tiếng.",
-    tip_advice_vi: "Khi giới thiệu gia đình với người Pháp, nói 'voici' (đây là) thay vì 'c'est'. Đừng dịch 'anh/chị/em' sang tiếng Pháp — dùng 'frère' hoặc 'sœur' và thêm 'grand/petit' cho hơn/kém tuổi.",
-    vocabulary: [
-      { word: "la mère", en: "mother", vi: "mẹ", pos: "noun (f)", pronunciation_vi: "la ME-rờ — 'è' đọc 'e' mở" },
-      { word: "le père", en: "father", vi: "bố", pos: "noun (m)", pronunciation_vi: "lơ PE-rờ — 'è' đọc 'e' mở" },
-      { word: "le frère", en: "brother", vi: "anh/em trai", pos: "noun (m)", pronunciation_vi: "lơ PHRE-rờ — 'fr' đọc 'phr'" },
-      { word: "la sœur", en: "sister", vi: "chị/em gái", pos: "noun (f)", pronunciation_vi: "la XƠR — 'œu' đọc 'ơ'" },
-      { word: "le fils", en: "son", vi: "con trai", pos: "noun (m)", pronunciation_vi: "lơ PHÍT — 'l' đọc nhẹ, 's' cuối KHÔNG đọc" },
-      { word: "la fille", en: "daughter", vi: "con gái", pos: "noun (f)", pronunciation_vi: "la PHIY — 'ill' đọc 'iy'" },
-      { word: "le mari", en: "husband", vi: "chồng", pos: "noun (m)", pronunciation_vi: "lơ ma-RI — 'a' ngắn, nhấn cuối" },
-      { word: "la femme", en: "wife", vi: "vợ", pos: "noun (f)", pronunciation_vi: "la PHAM — 'e' đọc 'a', 'm' mím môi" },
-      { word: "les grands-parents", en: "grandparents", vi: "ông bà", pos: "noun (m pl)", pronunciation_vi: "lê grăn pa-RĂN — 'an' âm mũi, 's' cuối KHÔNG đọc" },
-      { word: "l'enfant", en: "child", vi: "đứa trẻ", pos: "noun (m/f)", pronunciation_vi: "loong-PHĂN — 'en' âm mũi, 't' KHÔNG đọc" },
-    ],
-    dialogue: [
-      { speaker: "A", text: "Tu as des frères et sœurs ?", vi: "Bạn có anh chị em không?" },
-      { speaker: "B", text: "Oui, j'ai une grande sœur et un petit frère.", vi: "Có, tôi có một chị gái và một em trai." },
-      { speaker: "A", text: "Ils habitent où ?", vi: "Họ sống ở đâu?" },
-      { speaker: "B", text: "Ma sœur est à Lyon, mon frère habite encore avec mes parents.", vi: "Chị tôi ở Lyon, em trai tôi vẫn ở với bố mẹ." },
-    ],
-    exercises: [
-      {
-        type: "fill_blank",
-        instruction_vi: "Điền từ đúng vào chỗ trống (mère / père / frère / sœur):",
-        pronunciation_focus: ["è → e mở", "r uvulaire"],
-        items: [
-          { prompt: "Ma ___ s'appelle Marie.", answer: "mère", options: ["mère", "père", "frère", "sœur"] },
-          { prompt: "Mon ___ travaille à Paris.", answer: "père", options: ["mère", "père", "sœur", "fils"] },
-          { prompt: "J'ai un ___ qui s'appelle Paul.", answer: "frère", options: ["mère", "fille", "frère", "sœur"] },
-        ],
-      },
-      {
-        type: "matching",
-        instruction_vi: "Nối từ tiếng Pháp với nghĩa tiếng Việt:",
-        pronunciation_focus: ["famille → pha-miy"],
-        items: [
-          { prompt: "le mari", answer: "chồng" },
-          { prompt: "la femme", answer: "vợ" },
-          { prompt: "l'enfant", answer: "đứa trẻ" },
-          { prompt: "les grands-parents", answer: "ông bà" },
-        ],
-      },
-      {
-        type: "translation",
-        instruction_vi: "Dịch sang tiếng Pháp:",
-        pronunciation_focus: ["possessifs mon/ma/mes"],
-        items: [
-          { prompt: "Mẹ tôi là giáo viên.", answer: "Ma mère est professeure." },
-          { prompt: "Tôi có hai anh trai.", answer: "J'ai deux frères." },
-          { prompt: "Ông bà tôi sống ở Hà Nội.", answer: "Mes grands-parents habitent à Hanoï." },
-        ],
-      },
-    ],
+    id: 6,
+    title: "Thành viên gia đình - Family members",
+    content: "La mère (mẹ), Le père (bố), La sœur (chị/em gái), Le frère (anh/em trai), La grand-mère (bà), Le grand-père (ông), La tante (cô/dì), L'oncle (chú/bác)."
   },
-];
-
-// ── 7. Daily Routine ────────────────────────────────────────────────────
-
-const DAILY_ROUTINE: FrenchLesson[] = [
   {
-    id: "french_daily_routine",
-    category: "daily_routine",
-    title_vi: "Sinh hoạt hàng ngày",
-    title_en: "Daily routine",
-    sentences: [
-      { en: "Je me réveille à six heures du matin.", vi: "Tôi thức dậy lúc sáu giờ sáng.", pronunciation_focus: ["je → dơ", "réveille → rê-vay", "six → xít", "heures → ơr"] },
-      { en: "Je prends mon petit-déjeuner à sept heures.", vi: "Tôi ăn sáng lúc bảy giờ.", pronunciation_focus: ["prends → prăn", "petit → pơ-ti", "déjeuner → đê-dơ-nê"] },
-      { en: "Je me brosse les dents après le repas.", vi: "Tôi đánh răng sau bữa ăn.", pronunciation_focus: ["brosse → brot", "dents → đăn", "après → a-pre"] },
-      { en: "Je vais au travail à huit heures.", vi: "Tôi đi làm lúc tám giờ.", pronunciation_focus: ["vais → ve", "au → ô", "travail → tra-vay", "huit → u-ít"] },
-      { en: "Je me couche vers onze heures du soir.", vi: "Tôi đi ngủ khoảng mười một giờ tối.", pronunciation_focus: ["couche → cút-s", "vers → ve-r", "onze → ongz", "soir → xoa"] },
-    ],
-    cultural_notes_vi: "Người Pháp thường ăn sáng nhẹ: bánh mì bơ hoặc croissant + cà phê. Bữa trưa (déjeuner) là bữa chính, thường kéo dài 1-2 tiếng từ 12h-14h. Bữa tối (dîner) ăn muộn, sau 19h30. Các cửa hàng thường đóng cửa 12h-14h để nghỉ trưa.",
-    tip_advice_vi: "Học nhanh các động từ phản thân (se réveiller, se laver, se coucher) là chìa khóa để nói về sinh hoạt hàng ngày. Tập nói trước gương một ngày mẫu: 'Je me réveille... je me lave... je prends...'",
-    vocabulary: [
-      { word: "se réveiller", en: "to wake up", vi: "thức dậy", pos: "verb", pronunciation_vi: "xơ rê-vê-YÊ — 'ill' đọc 'y'" },
-      { word: "se lever", en: "to get up", vi: "ra khỏi giường", pos: "verb", pronunciation_vi: "xơ lơ-VÊ — 'er' đọc 'ê'" },
-      { word: "se laver", en: "to wash oneself", vi: "rửa mặt / tắm", pos: "verb", pronunciation_vi: "xơ la-VÊ — 'a' ngắn" },
-      { word: "s'habiller", en: "to get dressed", vi: "mặc quần áo", pos: "verb", pronunciation_vi: "xa-bi-YÊ — 'h' KHÔNG đọc, 'ill' đọc 'y'" },
-      { word: "prendre", en: "to take", vi: "lấy / ăn / uống", pos: "verb", pronunciation_vi: "PRĂN-đrơ — 'en' âm mũi" },
-      { word: "le petit-déjeuner", en: "breakfast", vi: "bữa sáng", pos: "noun (m)", pronunciation_vi: "pơ-ti đê-dơ-NÊ" },
-      { word: "le déjeuner", en: "lunch", vi: "bữa trưa", pos: "noun (m)", pronunciation_vi: "đê-dơ-NÊ — nhấn cuối" },
-      { word: "le dîner", en: "dinner", vi: "bữa tối", pos: "noun (m)", pronunciation_vi: "đi-NÊ — 'î' đọc 'i' dài" },
-      { word: "se coucher", en: "to go to bed", vi: "đi ngủ", pos: "verb", pronunciation_vi: "xơ cu-SÊ — 'ou' đọc 'u'" },
-      { word: "travailler", en: "to work", vi: "làm việc", pos: "verb", pronunciation_vi: "tra-va-YÊ — 'ill' đọc 'y'" },
-    ],
-    dialogue: [
-      { speaker: "A", text: "À quelle heure tu te lèves le matin ?", vi: "Sáng bạn dậy lúc mấy giờ?" },
-      { speaker: "B", text: "Je me lève à six heures et demie.", vi: "Tôi dậy lúc sáu rưỡi." },
-      { speaker: "A", text: "Et tu prends le petit-déjeuner ?", vi: "Bạn có ăn sáng không?" },
-      { speaker: "B", text: "Oui, un café et une tartine, puis je pars au travail.", vi: "Có, cà phê và bánh mì bơ, rồi tôi đi làm." },
-    ],
-    exercises: [
-      {
-        type: "fill_blank",
-        instruction_vi: "Điền động từ phản thân đúng:",
-        pronunciation_focus: ["se réveiller", "se lever"],
-        items: [
-          { prompt: "Je ___ ___ à sept heures. (thức dậy)", answer: "me réveille" },
-          { prompt: "Elle ___ ___ après le repas. (đi ngủ)", answer: "se couche" },
-          { prompt: "Nous ___ ___ avant de partir. (mặc quần áo)", answer: "nous habillons" },
-        ],
-      },
-      {
-        type: "matching",
-        instruction_vi: "Nối hoạt động với thời gian:",
-        pronunciation_focus: ["heures → ơr"],
-        items: [
-          { prompt: "se réveiller", answer: "6h00" },
-          { prompt: "prendre le petit-déjeuner", answer: "7h00" },
-          { prompt: "aller au travail", answer: "8h00" },
-          { prompt: "se coucher", answer: "23h00" },
-        ],
-      },
-      {
-        type: "translation",
-        instruction_vi: "Dịch sang tiếng Pháp:",
-        pronunciation_focus: ["verbes pronominaux"],
-        items: [
-          { prompt: "Tôi thức dậy lúc 6 giờ.", answer: "Je me réveille à six heures." },
-          { prompt: "Cô ấy đi ngủ lúc 10 giờ tối.", answer: "Elle se couche à dix heures du soir." },
-          { prompt: "Chúng tôi ăn trưa lúc 12 giờ.", answer: "Nous déjeunons à midi." },
-        ],
-      },
-    ],
+    id: 7,
+    title: "Động từ thường dùng - Common verbs",
+    content: "Être (thì/là), Avoir (có), Aller (đi), Faire (làm), Dire (nói), Pouvoir (có thể), Vouloir (muốn), Savoir (biết)."
   },
-];
-
-// ── 8. Weather ──────────────────────────────────────────────────────────
-
-const WEATHER: FrenchLesson[] = [
   {
-    id: "french_weather",
-    category: "weather",
-    title_vi: "Thời tiết và các mùa",
-    title_en: "Weather and seasons",
-    sentences: [
-      { en: "Quel temps fait-il aujourd'hui ?", vi: "Thời tiết hôm nay thế nào?", pronunciation_focus: ["quel → ken", "temps → tăm", "il → in", "hui → u-i"] },
-      { en: "Il fait beau et il y a du soleil.", vi: "Trời đẹp và có nắng.", pronunciation_focus: ["beau → bô", "soleil → xô-lay", "il y a → in-li-a"] },
-      { en: "Il pleut beaucoup en automne.", vi: "Mùa thu mưa nhiều.", pronunciation_focus: ["pleut → plơ", "beaucoup → bô-cu", "automne → ô-tôn"] },
-      { en: "En été, il fait très chaud, parfois 35 degrés.", vi: "Mùa hè, trời rất nóng, có khi 35 độ.", pronunciation_focus: ["été → ê-tê", "très → tre", "chaud → sô", "degrés → đơ-grê"] },
-      { en: "En hiver, il neige dans les montagnes.", vi: "Mùa đông, có tuyết ở trên núi.", pronunciation_focus: ["hiver → i-ve-r", "neige → ne-d", "montagnes → mon-tan-nhơ"] },
-    ],
-    cultural_notes_vi: "Người Pháp thường mở đầu câu chuyện bằng thời tiết — câu 'Quel temps!' (Thời tiết gì thế này!) là câu cửa miệng. Mùa hè ở Paris có thể rất nóng (35-40°C), và nhiều nhà không có điều hòa. Mùa đông ở miền Bắc nước Pháp lạnh và ẩm.",
-    tip_advice_vi: "Học cấu trúc 'Il fait + tính từ' (trời...): Il fait beau / chaud / froid / gris (xám xịt) / doux (dễ chịu). Và 'Il y a + du/de la/des': du soleil (nắng), du vent (gió), des nuages (mây).",
-    vocabulary: [
-      { word: "le soleil", en: "sun", vi: "mặt trời / nắng", pos: "noun (m)", pronunciation_vi: "lơ xô-LAY — 'ei' đọc 'ê'" },
-      { word: "la pluie", en: "rain", vi: "mưa", pos: "noun (f)", pronunciation_vi: "la PLUY — 'ui' đọc 'uy', 'e' cuối KHÔNG đọc" },
-      { word: "le vent", en: "wind", vi: "gió", pos: "noun (m)", pronunciation_vi: "lơ VĂN — 'en' âm mũi, 't' KHÔNG đọc" },
-      { word: "la neige", en: "snow", vi: "tuyết", pos: "noun (f)", pronunciation_vi: "la NE-D — 'ei' đọc 'ê', 'ge' đọc 'd' mềm" },
-      { word: "le nuage", en: "cloud", vi: "mây", pos: "noun (m)", pronunciation_vi: "lơ NU-A-D — 'u' đọc 'uy'" },
-      { word: "chaud", en: "hot", vi: "nóng", pos: "adjective", pronunciation_vi: "SÔ — 'au' đọc 'ô', 'd' KHÔNG đọc" },
-      { word: "froid", en: "cold", vi: "lạnh", pos: "adjective", pronunciation_vi: "PHROA — 'oi' đọc 'oa', 'd' KHÔNG đọc" },
-      { word: "le printemps", en: "spring", vi: "mùa xuân", pos: "noun (m)", pronunciation_vi: "lơ PRANG-TĂM — 'in' âm mũi, 's' KHÔNG đọc" },
-      { word: "l'été", en: "summer", vi: "mùa hè", pos: "noun (m)", pronunciation_vi: "lê-TÊ — 'é' đọc 'ê' dài" },
-      { word: "l'hiver", en: "winter", vi: "mùa đông", pos: "noun (m)", pronunciation_vi: "li-VE-R — 'h' KHÔNG đọc" },
-    ],
-    dialogue: [
-      { speaker: "A", text: "Il fait quel temps chez toi ?", vi: "Thời tiết chỗ bạn thế nào?" },
-      { speaker: "B", text: "Il pleut depuis ce matin. Et toi ?", vi: "Mưa từ sáng. Còn bạn?" },
-      { speaker: "A", text: "Ici, il fait beau, grand soleil !", vi: "Ở đây trời đẹp, nắng to!" },
-      { speaker: "B", text: "Tu as de la chance ! Moi, j'en ai marre de la pluie.", vi: "Bạn may mắn thật! Tôi chán mưa lắm rồi." },
-    ],
-    exercises: [
-      {
-        type: "fill_blank",
-        instruction_vi: "Điền từ về thời tiết:",
-        pronunciation_focus: ["il fait", "il y a"],
-        items: [
-          { prompt: "Il ___ beau aujourd'hui.", answer: "fait" },
-          { prompt: "Il y a du ___ (nắng).", answer: "soleil" },
-          { prompt: "En hiver, il ___ (tuyết rơi).", answer: "neige" },
-        ],
-      },
-      {
-        type: "matching",
-        instruction_vi: "Nối mùa với thời tiết:",
-        pronunciation_focus: ["saisons"],
-        items: [
-          { prompt: "le printemps", answer: "doux, il pleut parfois" },
-          { prompt: "l'été", answer: "chaud, soleil" },
-          { prompt: "l'automne", answer: "vent, pluie" },
-          { prompt: "l'hiver", answer: "froid, neige" },
-        ],
-      },
-      {
-        type: "translation",
-        instruction_vi: "Dịch sang tiếng Pháp:",
-        pronunciation_focus: ["quel temps", "il fait"],
-        items: [
-          { prompt: "Hôm nay trời lạnh.", answer: "Il fait froid aujourd'hui." },
-          { prompt: "Trời đang mưa.", answer: "Il pleut." },
-          { prompt: "Mùa hè có nắng.", answer: "En été, il y a du soleil." },
-        ],
-      },
-    ],
+    id: 8,
+    title: "Giới thiệu bản thân - Introduce yourself",
+    content: "Je m'appelle [tên] (Tôi tên là...) / J'ai [tuổi] ans (Tôi ... tuổi) / Je viens du Vietnam (Tôi đến từ Việt Nam) / Je suis étudiant(e) (Tôi là sinh viên)."
   },
-];
-
-// ── 9. Time ─────────────────────────────────────────────────────────────
-
-const TIME: FrenchLesson[] = [
   {
-    id: "french_time",
-    category: "time",
-    title_vi: "Nói giờ và ngày tháng",
-    title_en: "Telling time and dates",
-    sentences: [
-      { en: "Quelle heure est-il ? Il est trois heures et quart.", vi: "Mấy giờ rồi? Ba giờ mười lăm.", pronunciation_focus: ["quelle → ken", "heure → ơr", "trois → thoa", "quart → ka-r"] },
-      { en: "Le rendez-vous est à dix heures et demie.", vi: "Cuộc hẹn lúc mười giờ rưỡi.", pronunciation_focus: ["rendez-vous → răn-đê-vu", "dix → đít", "demie → đơ-mi"] },
-      { en: "On est quel jour aujourd'hui ? On est lundi.", vi: "Hôm nay là thứ mấy? Hôm nay thứ Hai.", pronunciation_focus: ["quel → ken", "jour → dua", "lundi → lăng-đi"] },
-      { en: "Mon anniversaire est le quinze mars.", vi: "Sinh nhật tôi là ngày 15 tháng Ba.", pronunciation_focus: ["anniversaire → a-ni-ve-xe-r", "quinze → kăngz", "mars → ma-r"] },
-      { en: "Le magasin ouvre à neuf heures du matin.", vi: "Cửa hàng mở cửa lúc chín giờ sáng.", pronunciation_focus: ["magasin → ma-ga-zăng", "ouvre → u-vrơ", "neuf → nớph", "matin → ma-tăng"] },
-    ],
-    cultural_notes_vi: "Người Pháp dùng đồng hồ 24h trong lịch trình chính thức: '14h' thay vì '2h chiều'. Ngày viết là ngày/tháng/năm (DD/MM). Thứ Hai là ngày đầu tuần. Hầu hết cửa hàng đóng cửa Chủ Nhật, trừ siêu thị buổi sáng và tiệm bánh.",
-    tip_advice_vi: "Học cách nói giờ dạng 12h trước: 'Il est ... heures'. Sau đó tập dạng 24h. Cụm 'et quart' (15 phút), 'et demie' (30 phút), 'moins le quart' (kém 15) là ba cụm phổ biến nhất khi nói giờ.",
-    vocabulary: [
-      { word: "l'heure", en: "hour / time", vi: "giờ", pos: "noun (f)", pronunciation_vi: "LƠR — 'h' KHÔNG đọc, 'eu' đọc 'ơ'" },
-      { word: "la minute", en: "minute", vi: "phút", pos: "noun (f)", pronunciation_vi: "la mi-NUYT — 'u' đọc 'uy'" },
-      { word: "la seconde", en: "second", vi: "giây", pos: "noun (f)", pronunciation_vi: "la xơ-GÔNGĐ — 'on' âm mũi" },
-      { word: "lundi", en: "Monday", vi: "thứ Hai", pos: "noun (m)", pronunciation_vi: "lăng-ĐI — 'un' âm mũi" },
-      { word: "mardi", en: "Tuesday", vi: "thứ Ba", pos: "noun (m)", pronunciation_vi: "ma-ĐI" },
-      { word: "mercredi", en: "Wednesday", vi: "thứ Tư", pos: "noun (m)", pronunciation_vi: "me-crơ-ĐI — 'er' đọc 'e'" },
-      { word: "janvier", en: "January", vi: "tháng Một", pos: "noun (m)", pronunciation_vi: "dăng-VIÊ — 'an' âm mũi" },
-      { word: "aujourd'hui", en: "today", vi: "hôm nay", pos: "adverb", pronunciation_vi: "ô-dua-ĐUY — nhấn 'duy'" },
-      { word: "demain", en: "tomorrow", vi: "ngày mai", pos: "adverb", pronunciation_vi: "đơ-MANG — 'ain' âm mũi" },
-      { word: "hier", en: "yesterday", vi: "hôm qua", pos: "adverb", pronunciation_vi: "Y-E — 'h' KHÔNG đọc, 'ier' đọc 'iê'" },
-    ],
-    dialogue: [
-      { speaker: "A", text: "Quelle heure est-il ?", vi: "Mấy giờ rồi?" },
-      { speaker: "B", text: "Il est midi moins cinq.", vi: "Mười hai giờ kém năm." },
-      { speaker: "A", text: "Déjà ?! J'ai un rendez-vous à midi et quart.", vi: "Rồi á?! Tôi có hẹn lúc 12h15." },
-      { speaker: "B", text: "Dépêche-toi alors !", vi: "Vậy thì nhanh lên đi!" },
-    ],
-    exercises: [
-      {
-        type: "fill_blank",
-        instruction_vi: "Điền giờ đúng:",
-        pronunciation_focus: ["heures"],
-        items: [
-          { prompt: "Il est ___ heures. (8h00)", answer: "huit" },
-          { prompt: "Il est midi ___ quart. (12h15)", answer: "et" },
-          { prompt: "Il est dix heures ___ (10h30).", answer: "et demie" },
-        ],
-      },
-      {
-        type: "matching",
-        instruction_vi: "Nối ngày tiếng Pháp với tiếng Việt:",
-        pronunciation_focus: ["jours de la semaine"],
-        items: [
-          { prompt: "lundi", answer: "thứ Hai" },
-          { prompt: "vendredi", answer: "thứ Sáu" },
-          { prompt: "dimanche", answer: "Chủ Nhật" },
-          { prompt: "samedi", answer: "thứ Bảy" },
-        ],
-      },
-      {
-        type: "translation",
-        instruction_vi: "Dịch sang tiếng Pháp:",
-        pronunciation_focus: ["quelle heure"],
-        items: [
-          { prompt: "Hôm nay là thứ mấy?", answer: "Quel jour sommes-nous aujourd'hui ?" },
-          { prompt: "Sinh nhật tôi là ngày 5 tháng 7.", answer: "Mon anniversaire est le cinq juillet." },
-          { prompt: "Bây giờ là 9 giờ sáng.", answer: "Il est neuf heures du matin." },
-        ],
-      },
-    ],
+    id: 9,
+    title: "Hỏi đường - Asking for directions",
+    content: "Où est la gare? (Nhà ga ở đâu?) / Tournez à droite (Rẽ phải) / Tournez à gauche (Rẽ trái) / Tout droit (Đi thẳng) / C'est loin? (Có xa không?)"
   },
-];
-
-// ── 10. Colors ──────────────────────────────────────────────────────────
-
-const COLORS: FrenchLesson[] = [
   {
-    id: "french_colors",
-    category: "colors",
-    title_vi: "Màu sắc cơ bản",
-    title_en: "Basic colors",
-    sentences: [
-      { en: "De quelle couleur est ta voiture ?", vi: "Xe của bạn màu gì?", pronunciation_focus: ["quelle → ken", "couleur → cu-lơr", "voiture → voa-tuy-r"] },
-      { en: "Ma voiture est rouge. La tienne ?", vi: "Xe tôi màu đỏ. Của bạn thì sao?", pronunciation_focus: ["rouge → ru-d", "tienne → ti-en", "silent -e"] },
-      { en: "J'adore le bleu clair, surtout en été.", vi: "Tôi rất thích xanh nhạt, nhất là mùa hè.", pronunciation_focus: ["j'adore → da-đo-r", "bleu → blơ", "clair → cle-r"] },
-      { en: "Tu préfères le vert ou le jaune ?", vi: "Bạn thích xanh lá hay vàng hơn?", pronunciation_focus: ["préfères → prê-fe-r", "vert → ve-r", "jaune → dôn"] },
-      { en: "Le noir et le blanc, c'est classique.", vi: "Đen và trắng, lúc nào cũng hợp.", pronunciation_focus: ["noir → noa", "blanc → blăng", "classique → cla-xíc"] },
-    ],
-    cultural_notes_vi: "Trong tiếng Pháp, tính từ màu sắc đứng SAU danh từ và phải hợp giống/số: 'une robe blanche' (một cái váy trắng) khác 'un mur blanc' (một bức tường trắng). Màu sắc kết hợp (bleu marine, vert pomme) không đổi giống.",
-    tip_advice_vi: "Học 6 màu cơ bản trước (rouge, bleu, vert, jaune, noir, blanc). Sau đó học quy tắc: thêm -e cho giống cái, thêm -s cho số nhiều. 'Marron' (nâu) và 'orange' (cam) không đổi — là ngoại lệ quan trọng.",
-    vocabulary: [
-      { word: "rouge", en: "red", vi: "đỏ", pos: "adjective", pronunciation_vi: "RU-D — 'ou' đọc 'u', 'ge' đọc 'd' mềm" },
-      { word: "bleu", en: "blue", vi: "xanh dương", pos: "adjective", pronunciation_vi: "BLƠ — 'eu' đọc 'ơ', giống 'bleh' nhưng tròn môi" },
-      { word: "vert", en: "green", vi: "xanh lá", pos: "adjective", pronunciation_vi: "VE-R — 'e' đọc 'e' mở, 't' KHÔNG đọc" },
-      { word: "jaune", en: "yellow", vi: "vàng", pos: "adjective", pronunciation_vi: "DÔN — 'au' đọc 'ô', 'ne' cuối KHÔNG đọc rõ" },
-      { word: "noir", en: "black", vi: "đen", pos: "adjective", pronunciation_vi: "NOA — 'oi' đọc 'oa', 'r' cuối nhẹ" },
-      { word: "blanc", en: "white", vi: "trắng", pos: "adjective", pronunciation_vi: "BLĂNG — 'an' âm mũi, 'c' KHÔNG đọc" },
-      { word: "rose", en: "pink", vi: "hồng", pos: "adjective", pronunciation_vi: "RÔ-D — 'o' đọc 'ô', 'se' đọc 'd' nhẹ" },
-      { word: "gris", en: "grey", vi: "xám", pos: "adjective", pronunciation_vi: "GRI — 'i' đọc 'i', 's' KHÔNG đọc" },
-      { word: "marron", en: "brown", vi: "nâu", pos: "adjective", pronunciation_vi: "ma-RÔNG — 'on' âm mũi, KHÔNG đổi giống" },
-      { word: "violet", en: "purple", vi: "tím", pos: "adjective", pronunciation_vi: "vi-ô-LE — 't' KHÔNG đọc" },
-    ],
-    dialogue: [
-      { speaker: "A", text: "Tu aimes ma nouvelle robe ?", vi: "Bạn thích váy mới của tôi không?" },
-      { speaker: "B", text: "Oui, elle est très jolie ! Elle est de quelle couleur, bleu marine ?", vi: "Có, đẹp lắm! Màu gì thế, xanh navy à?" },
-      { speaker: "A", text: "Non, c'est du violet foncé.", vi: "Không, là tím đậm." },
-      { speaker: "B", text: "Ça te va très bien.", vi: "Hợp với bạn lắm." },
-    ],
-    exercises: [
-      {
-        type: "fill_blank",
-        instruction_vi: "Điền màu sắc đúng (hợp giống nếu cần):",
-        pronunciation_focus: ["accord des couleurs"],
-        items: [
-          { prompt: "La voiture est ___. (đỏ)", answer: "rouge" },
-          { prompt: "Le ciel est ___. (xanh)", answer: "bleu" },
-          { prompt: "La neige est ___. (trắng - giống cái)", answer: "blanche" },
-        ],
-      },
-      {
-        type: "matching",
-        instruction_vi: "Nối màu tiếng Pháp với nghĩa:",
-        pronunciation_focus: ["couleurs"],
-        items: [
-          { prompt: "jaune", answer: "vàng" },
-          { prompt: "noir", answer: "đen" },
-          { prompt: "rose", answer: "hồng" },
-          { prompt: "gris", answer: "xám" },
-        ],
-      },
-      {
-        type: "translation",
-        instruction_vi: "Dịch sang tiếng Pháp:",
-        pronunciation_focus: ["de quelle couleur"],
-        items: [
-          { prompt: "Cái áo này màu gì?", answer: "De quelle couleur est cette chemise ?" },
-          { prompt: "Tôi thích màu xanh lá.", answer: "J'aime le vert." },
-          { prompt: "Con mèo đen đang ngủ.", answer: "Le chat noir dort." },
-        ],
-      },
-    ],
+    id: 10,
+    title: "Gọi món - Ordering food",
+    content: "Je voudrais... (Tôi muốn...) / L'addition, s'il vous plaît (Xin hóa đơn) / Un café (Một cà phê) / Un verre d'eau (Một ly nước) / C'est délicieux! (Ngon quá!)"
   },
-];
-
-// ── 11. Clothes ─────────────────────────────────────────────────────────
-
-const CLOTHES: FrenchLesson[] = [
   {
-    id: "french_clothes",
-    category: "clothes",
-    title_vi: "Quần áo và mua sắm",
-    title_en: "Clothes and shopping",
-    sentences: [
-      { en: "Je cherche une chemise blanche, taille M.", vi: "Tôi đang tìm áo sơ mi trắng, cỡ M.", pronunciation_focus: ["cherche → se-r-s", "chemise → sơ-miz", "taille → tay"] },
-      { en: "Où sont les cabines d'essayage ?", vi: "Phòng thử đồ ở đâu ạ?", pronunciation_focus: ["où → u", "cabines → ca-bín", "essayage → ê-xê-ya-d"] },
-      { en: "Ce pantalon est trop serré. Avez-vous une taille plus grande ?", vi: "Quần này chật quá. Có cỡ to hơn không ạ?", pronunciation_focus: ["pantalon → păng-ta-lông", "serré → xê-rê", "grande → grăngđ"] },
-      { en: "Combien coûte cette robe ?", vi: "Cái váy này giá bao nhiêu?", pronunciation_focus: ["combien → coong-bi-ăng", "coûte → cút", "robe → róp"] },
-      { en: "Je prends le pull gris et l'écharpe.", vi: "Tôi lấy áo len xám và cái khăn.", pronunciation_focus: ["prends → prăn", "pull → puyn", "écharpe → ê-sác-p"] },
-    ],
-    cultural_notes_vi: "Ở Pháp, nhân viên bán hàng thường không theo bạn trong cửa hàng — họ để bạn tự do xem. Nếu cần giúp, bạn phải chủ động hỏi. Các đợt giảm giá lớn (les soldes) diễn ra tháng 1 và tháng 7, kéo dài 4-6 tuần. Cỡ quần áo Pháp nhỏ hơn Mỹ khoảng 1-2 size.",
-    tip_advice_vi: "Luôn học từ 'taille' (cỡ/size). Các cụm quan trọng: 'trop grand/petit' (quá to/nhỏ), 'ça me va' (vừa với tôi), 'je peux essayer ?' (tôi thử được không?). Khi vào tiệm, chào 'bonjour' với nhân viên rồi mới xem hàng.",
-    vocabulary: [
-      { word: "la chemise", en: "shirt", vi: "áo sơ mi", pos: "noun (f)", pronunciation_vi: "la sơ-MIZ — 'e' cuối KHÔNG đọc" },
-      { word: "le pantalon", en: "pants", vi: "quần dài", pos: "noun (m)", pronunciation_vi: "lơ păng-ta-LÔNG — 'an' âm mũi" },
-      { word: "la robe", en: "dress", vi: "váy đầm", pos: "noun (f)", pronunciation_vi: "la RÓP — 'o' đọc 'ô' ngắn" },
-      { word: "le manteau", en: "coat", vi: "áo khoác", pos: "noun (m)", pronunciation_vi: "lơ măng-TÔ — 'eau' đọc 'ô'" },
-      { word: "les chaussures", en: "shoes", vi: "giày", pos: "noun (f pl)", pronunciation_vi: "lê sô-SUYR — 'au' đọc 'ô'" },
-      { word: "le pull", en: "sweater", vi: "áo len", pos: "noun (m)", pronunciation_vi: "lơ PUYL — 'u' đọc 'uy'" },
-      { word: "l'écharpe", en: "scarf", vi: "khăn quàng", pos: "noun (f)", pronunciation_vi: "lê-SÁC-P — 'é' đọc 'ê'" },
-      { word: "le chapeau", en: "hat", vi: "mũ", pos: "noun (m)", pronunciation_vi: "lơ sa-PÔ — 'eau' đọc 'ô'" },
-      { word: "la jupe", en: "skirt", vi: "chân váy", pos: "noun (f)", pronunciation_vi: "la DUYP — 'j' đọc 'd' mềm, 'u' đọc 'uy'" },
-      { word: "essayer", en: "to try on", vi: "thử đồ", pos: "verb", pronunciation_vi: "ê-xê-YÊ — 'ay' đọc 'ê', 'er' đọc 'ê'" },
-    ],
-    dialogue: [
-      { speaker: "A", text: "Bonjour, je peux vous aider ?", vi: "Chào chị, tôi giúp gì được ạ?" },
-      { speaker: "B", text: "Oui, je cherche une veste pour l'automne.", vi: "Vâng, tôi đang tìm áo khoác cho mùa thu." },
-      { speaker: "A", text: "Quelle taille faites-vous ?", vi: "Chị mặc cỡ nào ạ?" },
-      { speaker: "B", text: "Du 38, je pense. Vous avez du noir ?", vi: "Cỡ 38 tôi nghĩ. Có màu đen không ạ?" },
-    ],
-    exercises: [
-      {
-        type: "fill_blank",
-        instruction_vi: "Điền từ chỉ quần áo:",
-        pronunciation_focus: ["vêtements"],
-        items: [
-          { prompt: "Je porte un ___ (quần dài) noir.", answer: "pantalon" },
-          { prompt: "Elle met une ___ (váy) rouge.", answer: "robe" },
-          { prompt: "Où sont mes ___ (giày)?", answer: "chaussures" },
-        ],
-      },
-      {
-        type: "matching",
-        instruction_vi: "Nối đồ vật với bộ phận cơ thể:",
-        pronunciation_focus: ["accessoires"],
-        items: [
-          { prompt: "le chapeau", answer: "đầu" },
-          { prompt: "l'écharpe", answer: "cổ" },
-          { prompt: "les chaussures", answer: "chân" },
-          { prompt: "les gants", answer: "tay" },
-        ],
-      },
-      {
-        type: "translation",
-        instruction_vi: "Dịch sang tiếng Pháp:",
-        pronunciation_focus: ["je cherche"],
-        items: [
-          { prompt: "Bao nhiêu tiền cái áo này?", answer: "Combien coûte cette chemise ?" },
-          { prompt: "Tôi muốn thử cái váy này.", answer: "Je voudrais essayer cette robe." },
-          { prompt: "Có cỡ to hơn không?", answer: "Avez-vous une taille plus grande ?" },
-        ],
-      },
-    ],
+    id: 11,
+    title: "Thời tiết - Weather",
+    content: "Il fait beau (Trời đẹp) / Il pleut (Trời mưa) / Il fait froid (Trời lạnh) / Il fait chaud (Trời nóng) / Quel temps fait-il? (Thời tiết thế nào?)"
   },
-];
-
-// ── 12. Transportation ──────────────────────────────────────────────────
-
-const TRANSPORTATION: FrenchLesson[] = [
   {
-    id: "french_transportation",
-    category: "transportation",
-    title_vi: "Giao thông và đi lại",
-    title_en: "Transportation and getting around",
-    sentences: [
-      { en: "Où est la station de métro la plus proche ?", vi: "Ga tàu điện ngầm gần nhất ở đâu?", pronunciation_focus: ["station → xta-xi-ông", "métro → mê-trô", "proche → prót-s"] },
-      { en: "Je voudrais un ticket aller-retour pour Lyon.", vi: "Tôi muốn mua vé khứ hồi đi Lyon.", pronunciation_focus: ["ticket → ti-ke", "aller-retour → a-lê-rơ-tua", "Lyon → li-ông"] },
-      { en: "Le bus numéro 42 s'arrête ici.", vi: "Xe buýt số 42 dừng ở đây.", pronunciation_focus: ["bus → buyt", "numéro → nuy-mê-rô", "arrête → a-rét"] },
-      { en: "À quelle heure part le prochain train ?", vi: "Chuyến tàu tiếp theo chạy lúc mấy giờ?", pronunciation_focus: ["quelle → ken", "part → pa-r", "prochain → prô-săng"] },
-      { en: "Est-ce que ce taxi est libre ?", vi: "Taxi này có trống không ạ?", pronunciation_focus: ["est-ce que → ét-xkơ", "taxi → tăc-xi", "libre → líp-rờ"] },
-    ],
-    cultural_notes_vi: "Tàu điện ngầm Paris (métro) có 16 tuyến, rất dày đặc. Mua vé 'carnet' 10 vé rẻ hơn mua lẻ. Xe buýt cần bấm nút 'arrêt demandé' để xuống. TGV (tàu cao tốc) nối các thành phố lớn, nên đặt vé trước trên sncf-connect.com. Taxi ở Paris đắt và khó bắt ngoài đường.",
-    tip_advice_vi: "Các câu quan trọng: 'un ticket, s'il vous plaît' (một vé), 'c'est direct ?' (có đi thẳng không?), 'je descends à la prochaine' (tôi xuống trạm tới). Học số tuyến metro/bus bằng tiếng Pháp — tài xế Pháp nói số rất nhanh.",
-    vocabulary: [
-      { word: "le métro", en: "subway", vi: "tàu điện ngầm", pos: "noun (m)", pronunciation_vi: "lơ mê-TRÔ — 'é' đọc 'ê'" },
-      { word: "le bus", en: "bus", vi: "xe buýt", pos: "noun (m)", pronunciation_vi: "lơ BUYT — 'u' đọc 'uy', 's' KHÔNG đọc" },
-      { word: "le train", en: "train", vi: "tàu hỏa", pos: "noun (m)", pronunciation_vi: "lơ TRANG — 'ain' âm mũi" },
-      { word: "la gare", en: "train station", vi: "ga tàu", pos: "noun (f)", pronunciation_vi: "la GA — 'e' cuối KHÔNG đọc" },
-      { word: "le billet", en: "ticket", vi: "vé", pos: "noun (m)", pronunciation_vi: "lơ bi-YÊ — 'ill' đọc 'y'" },
-      { word: "la voiture", en: "car", vi: "xe hơi", pos: "noun (f)", pronunciation_vi: "la voa-TUYR — 'oi' đọc 'oa'" },
-      { word: "l'avion", en: "airplane", vi: "máy bay", pos: "noun (m)", pronunciation_vi: "la-VI-ÔNG — 'a' ngắn, 'on' âm mũi" },
-      { word: "le vélo", en: "bicycle", vi: "xe đạp", pos: "noun (m)", pronunciation_vi: "lơ vê-LÔ — 'é' đọc 'ê'" },
-      { word: "à pied", en: "on foot", vi: "đi bộ", pos: "phrase", pronunciation_vi: "a PIÊ — 'd' KHÔNG đọc" },
-      { word: "l'arrêt", en: "stop (bus/tram)", vi: "trạm dừng", pos: "noun (m)", pronunciation_vi: "la-RÊ — 'ê' dài" },
-    ],
-    dialogue: [
-      { speaker: "A", text: "Excusez-moi, pour aller à la Tour Eiffel ?", vi: "Xin lỗi, đi Tháp Eiffel thế nào ạ?" },
-      { speaker: "B", text: "Prenez le métro ligne 6, direction Charles de Gaulle-Étoile.", vi: "Bạn đi metro tuyến 6, hướng Charles de Gaulle-Étoile." },
-      { speaker: "A", text: "Je descends à quelle station ?", vi: "Tôi xuống ga nào ạ?" },
-      { speaker: "B", text: "Bir-Hakeim. C'est direct, environ quinze minutes.", vi: "Bir-Hakeim. Đi thẳng, khoảng 15 phút." },
-    ],
-    exercises: [
-      {
-        type: "fill_blank",
-        instruction_vi: "Điền từ chỉ phương tiện:",
-        pronunciation_focus: ["transports"],
-        items: [
-          { prompt: "Je prends le ___ pour aller au travail. (tàu điện ngầm)", answer: "métro" },
-          { prompt: "L'___ décolle à 14h. (máy bay)", answer: "avion" },
-          { prompt: "Je vais au travail ___ (đi bộ).", answer: "à pied" },
-        ],
-      },
-      {
-        type: "matching",
-        instruction_vi: "Nối phương tiện với địa điểm:",
-        pronunciation_focus: ["où"],
-        items: [
-          { prompt: "le train", answer: "la gare" },
-          { prompt: "l'avion", answer: "l'aéroport" },
-          { prompt: "le bus", answer: "l'arrêt de bus" },
-          { prompt: "le métro", answer: "la station" },
-        ],
-      },
-      {
-        type: "translation",
-        instruction_vi: "Dịch sang tiếng Pháp:",
-        pronunciation_focus: ["transports"],
-        items: [
-          { prompt: "Ga tàu gần nhất ở đâu?", answer: "Où est la gare la plus proche ?" },
-          { prompt: "Tôi muốn một vé đi Paris.", answer: "Je voudrais un billet pour Paris." },
-          { prompt: "Xe buýt số mấy đi trung tâm?", answer: "Quel bus va au centre-ville ?" },
-        ],
-      },
-    ],
+    id: 12,
+    title: "Giờ giấc - Time",
+    content: "Quelle heure est-il? (Mấy giờ rồi?) / Il est une heure (1 giờ) / Il est deux heures (2 giờ) / Il est midi (12 giờ trưa) / Il est minuit (12 giờ đêm)."
   },
-];
-
-// ── 13. House ───────────────────────────────────────────────────────────
-
-const HOUSE: FrenchLesson[] = [
   {
-    id: "french_house",
-    category: "house",
-    title_vi: "Nhà cửa và phòng ốc",
-    title_en: "House and rooms",
-    sentences: [
-      { en: "J'habite dans un appartement au troisième étage.", vi: "Tôi sống trong một căn hộ ở tầng ba.", pronunciation_focus: ["j'habite → da-bít", "appartement → a-pa-rtơ-măn", "troisième → troa-di-em"] },
-      { en: "La cuisine est à gauche, la salle de bain à droite.", vi: "Bếp ở bên trái, phòng tắm ở bên phải.", pronunciation_focus: ["cuisine → quy-din", "gauche → gô-s", "salle → san", "droite → đoát"] },
-      { en: "Il y a une grande fenêtre dans le salon.", vi: "Có một cửa sổ lớn trong phòng khách.", pronunciation_focus: ["grande → grăngđ", "fenêtre → phơ-né-trơ", "salon → xa-lông"] },
-      { en: "La chambre donne sur le jardin.", vi: "Phòng ngủ nhìn ra vườn.", pronunciation_focus: ["chambre → săm-brơ", "donne → đon", "jardin → da-đăng"] },
-      { en: "Le loyer coûte 800 euros par mois.", vi: "Tiền thuê nhà 800 euro một tháng.", pronunciation_focus: ["loyer → loa-yê", "coûte → cút", "euros → ơ-rô", "mois → moa"] },
-    ],
-    cultural_notes_vi: "Người Pháp thích sống trong căn hộ hơn nhà riêng, đặc biệt ở thành phố. 'Appartement' thường được mô tả bằng số phòng: 'un trois-pièces' = căn hộ 3 phòng (không tính bếp và tắm). Tầng trệt gọi là 'rez-de-chaussée', tầng 1 là lên 1 cầu thang. Nhà vệ sinh và phòng tắm thường tách riêng ở Pháp.",
-    tip_advice_vi: "Khi mô tả nhà, dùng 'il y a' (có) + danh từ. Khác biệt quan trọng: 'la salle de bain' (phòng tắm có bồn tắm) ≠ 'la salle d'eau' (phòng tắm chỉ có vòi sen). 'Les toilettes' luôn là danh từ số nhiều giống cái.",
-    vocabulary: [
-      { word: "la maison", en: "house", vi: "nhà", pos: "noun (f)", pronunciation_vi: "la me-DÔNG — 'ai' đọc 'ê', 'on' âm mũi" },
-      { word: "l'appartement", en: "apartment", vi: "căn hộ", pos: "noun (m)", pronunciation_vi: "la-pa-rơ-tơ-MĂN — 'en' âm mũi" },
-      { word: "la chambre", en: "bedroom", vi: "phòng ngủ", pos: "noun (f)", pronunciation_vi: "la SĂM-brơ — 'am' âm mũi" },
-      { word: "la cuisine", en: "kitchen", vi: "nhà bếp", pos: "noun (f)", pronunciation_vi: "la quy-DIN — 'ui' đọc 'uy'" },
-      { word: "le salon", en: "living room", vi: "phòng khách", pos: "noun (m)", pronunciation_vi: "lơ xa-LÔNG — 'on' âm mũi" },
-      { word: "la salle de bain", en: "bathroom", vi: "phòng tắm", pos: "noun (f)", pronunciation_vi: "la san-đơ-BANG — 'ain' âm mũi" },
-      { word: "la fenêtre", en: "window", vi: "cửa sổ", pos: "noun (f)", pronunciation_vi: "la phơ-NÉ-trơ — 'ê' dài" },
-      { word: "la porte", en: "door", vi: "cửa", pos: "noun (f)", pronunciation_vi: "la PO-R-T — 'r' nhẹ, 'te' KHÔNG đọc rõ" },
-      { word: "le jardin", en: "garden", vi: "vườn", pos: "noun (m)", pronunciation_vi: "lơ da-ĐANG — 'in' âm mũi" },
-      { word: "l'étage", en: "floor / storey", vi: "tầng", pos: "noun (m)", pronunciation_vi: "lê-TA-D — 'é' đọc 'ê', 'ge' đọc 'd' mềm" },
-    ],
-    dialogue: [
-      { speaker: "A", text: "Tu habites dans quel type de logement ?", vi: "Bạn sống ở loại nhà nào?" },
-      { speaker: "B", text: "Un appartement avec deux chambres, au deuxième étage.", vi: "Căn hộ hai phòng ngủ, tầng hai." },
-      { speaker: "A", text: "Il y a un balcon ?", vi: "Có ban công không?" },
-      { speaker: "B", text: "Oui, un petit balcon qui donne sur la rue.", vi: "Có, một ban công nhỏ nhìn ra phố." },
-    ],
-    exercises: [
-      {
-        type: "fill_blank",
-        instruction_vi: "Điền tên phòng:",
-        pronunciation_focus: ["pièces de la maison"],
-        items: [
-          { prompt: "Je dors dans la ___.", answer: "chambre" },
-          { prompt: "On mange dans la ___.", answer: "cuisine" },
-          { prompt: "Je prends une douche dans la ___.", answer: "salle de bain" },
-        ],
-      },
-      {
-        type: "matching",
-        instruction_vi: "Nối phòng với đồ đạc:",
-        pronunciation_focus: ["meubles"],
-        items: [
-          { prompt: "la chambre", answer: "un lit (giường)" },
-          { prompt: "la cuisine", answer: "un four (lò nướng)" },
-          { prompt: "le salon", answer: "un canapé (ghế sofa)" },
-          { prompt: "la salle de bain", answer: "une douche (vòi sen)" },
-        ],
-      },
-      {
-        type: "translation",
-        instruction_vi: "Dịch sang tiếng Pháp:",
-        pronunciation_focus: ["logement"],
-        items: [
-          { prompt: "Tôi sống trong một căn hộ nhỏ.", answer: "J'habite dans un petit appartement." },
-          { prompt: "Có một cửa sổ lớn trong phòng khách.", answer: "Il y a une grande fenêtre dans le salon." },
-          { prompt: "Phòng ngủ của tôi ở tầng hai.", answer: "Ma chambre est au deuxième étage." },
-        ],
-      },
-    ],
+    id: 13,
+    title: "Ngày tháng - Dates",
+    content: "Quelle est la date aujourd'hui? (Hôm nay là ngày mấy?) / Aujourd'hui c'est le [ngày] [tháng] [năm] (Hôm nay là ngày...) / Hier (Hôm qua) / Demain (Ngày mai)."
   },
-];
-
-// ── 14. Hobbies ─────────────────────────────────────────────────────────
-
-const HOBBIES: FrenchLesson[] = [
   {
-    id: "french_hobbies",
-    category: "hobbies",
-    title_vi: "Sở thích và hoạt động",
-    title_en: "Hobbies and activities",
-    sentences: [
-      { en: "Qu'est-ce que tu aimes faire pendant ton temps libre ?", vi: "Bạn thích làm gì lúc rảnh?", pronunciation_focus: ["qu'est-ce que → két-xkơ", "aimes → em", "temps → tăm", "libre → líp-r"] },
-      { en: "J'adore lire des romans et écouter de la musique.", vi: "Tôi rất thích đọc tiểu thuyết và nghe nhạc.", pronunciation_focus: ["j'adore → da-đo-r", "lire → li-r", "musique → muy-díc"] },
-      { en: "Je joue au foot tous les samedis avec mes amis.", vi: "Tôi chơi bóng đá thứ Bảy hàng tuần với bạn.", pronunciation_focus: ["joue → du", "foot → phút", "samedis → xam-đi"] },
-      { en: "Elle fait de la peinture et de la photo.", vi: "Cô ấy vẽ tranh và chụp ảnh.", pronunciation_focus: ["peinture → pang-tuy-r", "photo → phô-tô"] },
-      { en: "Nous aimons voyager et découvrir de nouveaux endroits.", vi: "Chúng tôi thích du lịch và khám phá nơi mới.", pronunciation_focus: ["voyager → voa-ya-dê", "découvrir → đê-cu-vri-r", "nouveaux → nu-vô"] },
-    ],
-    cultural_notes_vi: "Người Pháp rất coi trọng thời gian rảnh (loisirs). Các sở thích phổ biến: đọc sách, xem phim, đi bảo tàng, nấu ăn, chơi thể thao. 'Faire du sport' là cụm chung cho chơi thể thao. 'Jouer à + môn thể thao' (bóng đá, tennis) và 'faire de + hoạt động' (bơi, trượt tuyết, yoga).",
-    tip_advice_vi: "Phân biệt 'jouer à' (chơi môn thể thao/trò chơi) và 'jouer de' (chơi nhạc cụ): 'je joue au tennis' nhưng 'je joue du piano'. Học 5-6 động từ sở thích (aimer, adorer, détester, préférer) để mô tả gu của mình.",
-    vocabulary: [
-      { word: "lire", en: "to read", vi: "đọc", pos: "verb", pronunciation_vi: "LI-R — 'i' dài, 're' đọc nhẹ" },
-      { word: "la musique", en: "music", vi: "âm nhạc", pos: "noun (f)", pronunciation_vi: "la muy-DÍC — 'u' đọc 'uy'" },
-      { word: "le sport", en: "sport", vi: "thể thao", pos: "noun (m)", pronunciation_vi: "lơ XPO-R — 'r' nhẹ, 't' KHÔNG đọc" },
-      { word: "le cinéma", en: "cinema / movies", vi: "rạp chiếu phim", pos: "noun (m)", pronunciation_vi: "lơ xi-nê-MA — 'é' đọc 'ê'" },
-      { word: "le voyage", en: "travel / trip", vi: "chuyến du lịch", pos: "noun (m)", pronunciation_vi: "lơ voa-YA-D — 'ge' đọc 'd' mềm" },
-      { word: "la cuisine (activité)", en: "cooking", vi: "nấu ăn", pos: "noun (f)", pronunciation_vi: "la quy-DIN" },
-      { word: "la peinture", en: "painting", vi: "vẽ tranh", pos: "noun (f)", pronunciation_vi: "la pang-TUY-R — 'ein' âm mũi" },
-      { word: "la danse", en: "dancing", vi: "nhảy múa", pos: "noun (f)", pronunciation_vi: "la ĐĂNG-X — 'an' âm mũi" },
-      { word: "la randonnée", en: "hiking", vi: "đi bộ đường dài", pos: "noun (f)", pronunciation_vi: "la răn-đô-NÊ — 'an' âm mũi, 'nn' đọc kép" },
-      { word: "jouer", en: "to play", vi: "chơi", pos: "verb", pronunciation_vi: "DU-Ê — 'j' đọc 'd' mềm, 'er' đọc 'ê'" },
-    ],
-    dialogue: [
-      { speaker: "A", text: "Tu fais quoi le week-end ?", vi: "Cuối tuần bạn làm gì?" },
-      { speaker: "B", text: "Souvent je fais du vélo ou je lis un bon livre.", vi: "Thường thì tôi đạp xe hoặc đọc sách." },
-      { speaker: "A", text: "Moi, je joue au tennis le samedi matin.", vi: "Tôi thì chơi tennis sáng thứ Bảy." },
-      { speaker: "B", text: "On pourrait jouer ensemble un jour !", vi: "Có hôm nào chơi cùng đi!" },
-    ],
-    exercises: [
-      {
-        type: "fill_blank",
-        instruction_vi: "Điền giới từ đúng (à / de):",
-        pronunciation_focus: ["jouer à / de"],
-        items: [
-          { prompt: "Je joue ___ foot.", answer: "au", options: ["au", "du"] },
-          { prompt: "Elle joue ___ piano.", answer: "du", options: ["au", "du"] },
-          { prompt: "Nous jouons ___ tennis.", answer: "au", options: ["au", "du"] },
-        ],
-      },
-      {
-        type: "matching",
-        instruction_vi: "Nối động từ với sở thích:",
-        pronunciation_focus: ["loisirs"],
-        items: [
-          { prompt: "lire", answer: "un roman" },
-          { prompt: "regarder", answer: "un film" },
-          { prompt: "écouter", answer: "de la musique" },
-          { prompt: "faire", answer: "du sport" },
-        ],
-      },
-      {
-        type: "translation",
-        instruction_vi: "Dịch sang tiếng Pháp:",
-        pronunciation_focus: ["loisirs"],
-        items: [
-          { prompt: "Tôi thích đọc sách và nghe nhạc.", answer: "J'aime lire et écouter de la musique." },
-          { prompt: "Bạn có chơi thể thao không?", answer: "Tu fais du sport ?" },
-          { prompt: "Cuối tuần tôi thường đi bộ đường dài.", answer: "Le week-end, je fais souvent de la randonnée." },
-        ],
-      },
-    ],
+    id: 14,
+    title: "Mua sắm - Shopping",
+    content: "Combien ça coûte? (Cái này bao nhiêu?) / C'est trop cher (Đắt quá) / Avez-vous une taille plus grande? (Có size lớn hơn không?) / Je paie par carte (Tôi trả bằng thẻ)."
   },
-];
-
-// ── 15. Health ──────────────────────────────────────────────────────────
-
-const HEALTH: FrenchLesson[] = [
   {
-    id: "french_health",
-    category: "health",
-    title_vi: "Sức khỏe và cơ thể",
-    title_en: "Health and the body",
-    sentences: [
-      { en: "Je ne me sens pas bien. J'ai mal à la tête.", vi: "Tôi thấy không khỏe. Tôi bị đau đầu.", pronunciation_focus: ["sens → săn", "mal → man", "tête → tét"] },
-      { en: "Où avez-vous mal ? J'ai mal au ventre.", vi: "Bạn đau ở đâu? Tôi đau bụng.", pronunciation_focus: ["où → u", "avez → a-vê", "ventre → văng-trơ"] },
-      { en: "Je dois prendre un rendez-vous chez le médecin.", vi: "Tôi cần đặt lịch hẹn bác sĩ.", pronunciation_focus: ["dois → đoa", "rendez-vous → răn-đê-vu", "médecin → mét-xăng"] },
-      { en: "Il faut boire beaucoup d'eau quand il fait chaud.", vi: "Cần uống nhiều nước khi trời nóng.", pronunciation_focus: ["il faut → in phô", "boire → boa-r", "beaucoup → bô-cu"] },
-      { en: "Je suis fatigué, je n'ai pas bien dormi.", vi: "Tôi mệt, tôi ngủ không ngon.", pronunciation_focus: ["fatigué → fa-ti-ghê", "dormi → đoa-mi", "bien → bi-ăng"] },
-    ],
-    cultural_notes_vi: "Hệ thống y tế Pháp được đánh giá tốt nhất thế giới. Mọi người có 'carte vitale' (thẻ bảo hiểm y tế). Khi đi khám, bạn trả tiền trước rồi được hoàn lại sau. Nhà thuốc (pharmacie) có đèn chữ thập xanh bên ngoài, mở cửa cả Chủ Nhật theo lịch luân phiên.",
-    tip_advice_vi: "Cấu trúc quan trọng: 'avoir mal à + bộ phận cơ thể' (bị đau...). 'J'ai mal à la tête / au ventre / au dos / aux dents'. Đừng dịch 'I have a headache' thành 'J'ai un mal de tête' — nói 'J'ai mal à la tête' tự nhiên hơn.",
-    vocabulary: [
-      { word: "la tête", en: "head", vi: "đầu", pos: "noun (f)", pronunciation_vi: "la TÉT — 'ê' dài, 'e' cuối KHÔNG đọc" },
-      { word: "le ventre", en: "stomach", vi: "bụng", pos: "noun (m)", pronunciation_vi: "lơ VĂNG-trờ — 'en' âm mũi" },
-      { word: "le dos", en: "back", vi: "lưng", pos: "noun (m)", pronunciation_vi: "lơ ĐÔ — 's' KHÔNG đọc" },
-      { word: "le bras", en: "arm", vi: "cánh tay", pos: "noun (m)", pronunciation_vi: "lơ BRA — 's' KHÔNG đọc" },
-      { word: "la jambe", en: "leg", vi: "chân", pos: "noun (f)", pronunciation_vi: "la DĂNG-B — 'am' âm mũi" },
-      { word: "le médecin", en: "doctor", vi: "bác sĩ", pos: "noun (m)", pronunciation_vi: "lơ MÉT-XĂNG — 'é' đọc 'ê', 'in' âm mũi" },
-      { word: "la pharmacie", en: "pharmacy", vi: "nhà thuốc", pos: "noun (f)", pronunciation_vi: "la pha-ma-XI — 'ph' đọc 'ph'" },
-      { word: "le médicament", en: "medicine", vi: "thuốc", pos: "noun (m)", pronunciation_vi: "lơ mê-đi-ca-MĂN — 'en' âm mũi" },
-      { word: "malade", en: "sick", vi: "ốm / bệnh", pos: "adjective", pronunciation_vi: "ma-LÁT — 'a' ngắn, 'de' KHÔNG đọc rõ" },
-      { word: "la fièvre", en: "fever", vi: "sốt", pos: "noun (f)", pronunciation_vi: "la PHI-E-V-RỜ — 'è' đọc 'e' mở" },
-    ],
-    dialogue: [
-      { speaker: "A", text: "Bonjour docteur, je ne me sens pas bien.", vi: "Chào bác sĩ, tôi thấy không khỏe." },
-      { speaker: "B", text: "Qu'est-ce qui ne va pas ?", vi: "Bị sao thế?" },
-      { speaker: "A", text: "J'ai mal à la gorge et j'ai de la fièvre.", vi: "Tôi đau họng và bị sốt." },
-      { speaker: "B", text: "Ouvrez la bouche, je vais regarder.", vi: "Há miệng ra, tôi xem nào." },
-    ],
-    exercises: [
-      {
-        type: "fill_blank",
-        instruction_vi: "Điền bộ phận cơ thể:",
-        pronunciation_focus: ["avoir mal à"],
-        items: [
-          { prompt: "J'ai mal à la ___. (đầu)", answer: "tête" },
-          { prompt: "Il a mal au ___. (bụng)", answer: "ventre" },
-          { prompt: "Elle a mal au ___. (lưng)", answer: "dos" },
-        ],
-      },
-      {
-        type: "matching",
-        instruction_vi: "Nối triệu chứng với lời khuyên:",
-        pronunciation_focus: ["santé"],
-        items: [
-          { prompt: "J'ai mal à la tête.", answer: "Prenez un cachet." },
-          { prompt: "J'ai de la fièvre.", answer: "Reposez-vous." },
-          { prompt: "J'ai mal aux dents.", answer: "Allez chez le dentiste." },
-          { prompt: "Je suis fatigué.", answer: "Dormez plus." },
-        ],
-      },
-      {
-        type: "translation",
-        instruction_vi: "Dịch sang tiếng Pháp:",
-        pronunciation_focus: ["avoir mal"],
-        items: [
-          { prompt: "Tôi bị đau bụng.", answer: "J'ai mal au ventre." },
-          { prompt: "Bạn có bị sốt không?", answer: "Vous avez de la fièvre ?" },
-          { prompt: "Tôi cần đi khám bác sĩ.", answer: "Je dois voir un médecin." },
-        ],
-      },
-    ],
+    id: 15,
+    title: "Phương tiện giao thông - Transportation",
+    content: "Le bus (xe buýt), Le train (tàu hỏa), Le métro (tàu điện ngầm), Le taxi (taxi), L'avion (máy bay), Le vélo (xe đạp)."
   },
-];
-
-// ── 16. Work ────────────────────────────────────────────────────────────
-
-const WORK: FrenchLesson[] = [
   {
-    id: "french_work",
-    category: "work",
-    title_vi: "Công việc và nghề nghiệp",
-    title_en: "Work and professions",
-    sentences: [
-      { en: "Qu'est-ce que vous faites dans la vie ?", vi: "Bạn làm nghề gì?", pronunciation_focus: ["qu'est-ce que → két-xkơ", "faites → phét", "vie → vi"] },
-      { en: "Je suis ingénieur dans une entreprise à Paris.", vi: "Tôi là kỹ sư trong một công ty ở Paris.", pronunciation_focus: ["ingénieur → anh-dê-ni-ơr", "entreprise → ăng-trờ-priz"] },
-      { en: "Je travaille à plein temps, du lundi au vendredi.", vi: "Tôi làm toàn thời gian, từ thứ Hai đến thứ Sáu.", pronunciation_focus: ["travaille → tra-vay", "plein → plang", "temps → tăm"] },
-      { en: "Mon travail est intéressant mais parfois stressant.", vi: "Công việc của tôi thú vị nhưng đôi khi căng thẳng.", pronunciation_focus: ["intéressant → anh-tê-rê-xăng", "stressant → xtrê-xăng"] },
-      { en: "Je cherche un emploi dans le marketing.", vi: "Tôi đang tìm việc trong ngành marketing.", pronunciation_focus: ["cherche → se-r-s", "emploi → ăng-ploa", "marketing → ma-r-kờ-ting"] },
-    ],
-    cultural_notes_vi: "Tuần làm việc ở Pháp là 35 giờ theo luật. Nghỉ phép có lương tối thiểu 5 tuần/năm. Người Pháp không nói về lương khi mới gặp — đó là chủ đề riêng tư. Phỏng vấn xin việc ở Pháp thường có 'lettre de motivation' (thư xin việc) bắt buộc kèm CV.",
-    tip_advice_vi: "Phân biệt 'un métier' (nghề) và 'un travail' (công việc cụ thể). Khi giới thiệu nghề, nói 'Je suis + nghề' (không có mạo từ): 'Je suis médecin'. Nếu là nữ, một số nghề thêm -e: 'Je suis avocate' (nữ luật sư).",
-    vocabulary: [
-      { word: "le travail", en: "work / job", vi: "công việc", pos: "noun (m)", pronunciation_vi: "lơ tra-VAY — 'ail' đọc 'ay'" },
-      { word: "le métier", en: "profession / trade", vi: "nghề", pos: "noun (m)", pronunciation_vi: "lơ mê-TIÊ — 'é' đọc 'ê'" },
-      { word: "l'entreprise", en: "company", vi: "công ty", pos: "noun (f)", pronunciation_vi: "lăng-trờ-PRIZ — 'en' âm mũi" },
-      { word: "le bureau", en: "office", vi: "văn phòng", pos: "noun (m)", pronunciation_vi: "lơ buy-RÔ — 'u' đọc 'uy'" },
-      { word: "le collègue", en: "colleague", vi: "đồng nghiệp", pos: "noun (m/f)", pronunciation_vi: "lơ co-LÉG — 'è' đọc 'e' mở" },
-      { word: "le salaire", en: "salary", vi: "lương", pos: "noun (m)", pronunciation_vi: "lơ xa-LE-R — 'ai' đọc 'ê'" },
-      { word: "l'entretien", en: "interview", vi: "phỏng vấn", pos: "noun (m)", pronunciation_vi: "lăng-trờ-TI-ĂNG — 'ien' âm mũi" },
-      { word: "le CV", en: "resume / CV", vi: "sơ yếu lý lịch", pos: "noun (m)", pronunciation_vi: "lơ xê-VÊ — đọc như tiếng Anh" },
-      { word: "à plein temps", en: "full-time", vi: "toàn thời gian", pos: "adverb", pronunciation_vi: "a plang TĂM" },
-      { word: "embaucher", en: "to hire", vi: "tuyển dụng", pos: "verb", pronunciation_vi: "ăm-bô-SÊ — 'au' đọc 'ô'" },
-    ],
-    dialogue: [
-      { speaker: "A", text: "Alors, tu fais quoi comme travail ?", vi: "Thế, bạn làm công việc gì?" },
-      { speaker: "B", text: "Je suis comptable dans une boîte à Lyon.", vi: "Tôi là kế toán ở một công ty ở Lyon." },
-      { speaker: "A", text: "Ça te plaît ?", vi: "Bạn thích không?" },
-      { speaker: "B", text: "Oui, l'équipe est sympa et le boulot est varié.", vi: "Có, đồng nghiệp vui vẻ và công việc đa dạng." },
-    ],
-    exercises: [
-      {
-        type: "fill_blank",
-        instruction_vi: "Điền nghề nghiệp:",
-        pronunciation_focus: ["métiers"],
-        items: [
-          { prompt: "Elle est ___ (giáo viên - nữ).", answer: "professeure" },
-          { prompt: "Il est ___ (kỹ sư).", answer: "ingénieur" },
-          { prompt: "Je suis ___ (bác sĩ).", answer: "médecin" },
-        ],
-      },
-      {
-        type: "matching",
-        instruction_vi: "Nối nghề với nơi làm việc:",
-        pronunciation_focus: ["professions"],
-        items: [
-          { prompt: "le médecin", answer: "l'hôpital" },
-          { prompt: "le professeur", answer: "l'école" },
-          { prompt: "le cuisinier", answer: "le restaurant" },
-          { prompt: "l'ingénieur", answer: "le bureau" },
-        ],
-      },
-      {
-        type: "translation",
-        instruction_vi: "Dịch sang tiếng Pháp:",
-        pronunciation_focus: ["travail"],
-        items: [
-          { prompt: "Bạn làm nghề gì?", answer: "Qu'est-ce que vous faites dans la vie ?" },
-          { prompt: "Tôi làm toàn thời gian.", answer: "Je travaille à plein temps." },
-          { prompt: "Tôi đang tìm việc.", answer: "Je cherche un emploi." },
-        ],
-      },
-    ],
+    id: 16,
+    title: "Cảm xúc - Feelings",
+    content: "Je suis heureux/heureuse (Tôi hạnh phúc) / Je suis triste (Tôi buồn) / J'ai peur (Tôi sợ) / Je suis fatigué(e) (Tôi mệt) / Je suis en colère (Tôi giận)."
   },
-];
-
-// ── 17. Travel ──────────────────────────────────────────────────────────
-
-const TRAVEL: FrenchLesson[] = [
   {
-    id: "french_travel",
-    category: "travel",
-    title_vi: "Du lịch và khách sạn",
-    title_en: "Travel and hotels",
-    sentences: [
-      { en: "Je voudrais réserver une chambre pour deux nuits.", vi: "Tôi muốn đặt một phòng cho hai đêm.", pronunciation_focus: ["réserver → rê-de-r-vê", "chambre → săm-brơ", "nuits → nuy"] },
-      { en: "Avez-vous une chambre avec vue sur la mer ?", vi: "Có phòng nhìn ra biển không ạ?", pronunciation_focus: ["avez → a-vê", "vue → vuy", "mer → me-r"] },
-      { en: "Où est l'aéroport ? C'est loin d'ici ?", vi: "Sân bay ở đâu? Có xa đây không?", pronunciation_focus: ["aéroport → a-ê-rô-po-r", "loin → loang", "ici → i-xi"] },
-      { en: "Je voudrais louer une voiture pour une semaine.", vi: "Tôi muốn thuê xe hơi một tuần.", pronunciation_focus: ["louer → lu-ê", "voiture → voa-tuy-r", "semaine → sờ-men"] },
-      { en: "Pouvez-vous me recommander un bon restaurant ?", vi: "Bạn giới thiệu cho tôi nhà hàng ngon được không?", pronunciation_focus: ["recommander → rơ-co-măng-đê", "restaurant → ré-xtô-răng"] },
-    ],
-    cultural_notes_vi: "Pháp là nước đón nhiều khách du lịch nhất thế giới (>80 triệu/năm). Khách sạn Pháp phân hạng sao (1-5 étoiles), nhưng nhà nghỉ B&B (chambres d'hôtes) cũng rất phổ biến. Khi vào nhà hàng, đợi được chỉ bàn — không tự ý ngồi. Ở nhiều nơi, bạn phải yêu cầu hóa đơn, nhà hàng sẽ không tự động mang ra.",
-    tip_advice_vi: "Học cách đặt phòng qua điện thoại: nói rõ ngày đến (arrivée), ngày đi (départ), số người, loại giường (un grand lit = giường đôi, deux lits simples = hai giường đơn). Hỏi giá 'petit-déjeuner inclus ?' (có gồm bữa sáng không?) vì nhiều khách sạn tính riêng.",
-    vocabulary: [
-      { word: "l'hôtel", en: "hotel", vi: "khách sạn", pos: "noun (m)", pronunciation_vi: "lô-TEN — 'ô' dài, 'l' cuối đọc nhẹ" },
-      { word: "la chambre", en: "room", vi: "phòng", pos: "noun (f)", pronunciation_vi: "la SĂM-brơ — 'am' âm mũi" },
-      { word: "la réservation", en: "reservation", vi: "đặt chỗ", pos: "noun (f)", pronunciation_vi: "la rê-de-r-va-XI-ÔNG" },
-      { word: "l'aéroport", en: "airport", vi: "sân bay", pos: "noun (m)", pronunciation_vi: "la-ê-rô-PO-R — 'r' cuối nhẹ" },
-      { word: "le passeport", en: "passport", vi: "hộ chiếu", pos: "noun (m)", pronunciation_vi: "lơ pát-xơ-PO-R" },
-      { word: "la valise", en: "suitcase", vi: "va li", pos: "noun (f)", pronunciation_vi: "la va-LIZ — 'i' đọc 'i', 'se' đọc 'z'" },
-      { word: "le plan", en: "map", vi: "bản đồ", pos: "noun (m)", pronunciation_vi: "lơ PLĂN — 'an' âm mũi" },
-      { word: "la plage", en: "beach", vi: "bãi biển", pos: "noun (f)", pronunciation_vi: "la PLA-D — 'ge' đọc 'd' mềm" },
-      { word: "le musée", en: "museum", vi: "bảo tàng", pos: "noun (m)", pronunciation_vi: "lơ muy-DÊ — 'u' đọc 'uy', 'é' đọc 'ê'" },
-      { word: "visiter", en: "to visit", vi: "tham quan", pos: "verb", pronunciation_vi: "vi-di-TÊ — 'er' đọc 'ê'" },
-    ],
-    dialogue: [
-      { speaker: "A", text: "Bonjour, vous avez une chambre de libre ?", vi: "Chào anh, có phòng trống không ạ?" },
-      { speaker: "B", text: "Oui, pour combien de nuits ?", vi: "Có, cho mấy đêm ạ?" },
-      { speaker: "A", text: "Deux nuits, avec petit-déjeuner si possible.", vi: "Hai đêm, có bữa sáng nếu được." },
-      { speaker: "B", text: "Très bien, je vous fais une chambre avec vue sur le parc.", vi: "Rất tốt, tôi sắp phòng nhìn ra công viên cho anh." },
-    ],
-    exercises: [
-      {
-        type: "fill_blank",
-        instruction_vi: "Điền từ du lịch:",
-        pronunciation_focus: ["voyage"],
-        items: [
-          { prompt: "Je voudrais ___ une chambre. (đặt)", answer: "réserver" },
-          { prompt: "Où est l'___ ? (sân bay)", answer: "aéroport" },
-          { prompt: "Avez-vous un ___ de la ville ? (bản đồ)", answer: "plan" },
-        ],
-      },
-      {
-        type: "matching",
-        instruction_vi: "Nối địa điểm với hoạt động:",
-        pronunciation_focus: ["tourisme"],
-        items: [
-          { prompt: "le musée", answer: "regarder des tableaux" },
-          { prompt: "la plage", answer: "nager" },
-          { prompt: "le restaurant", answer: "manger" },
-          { prompt: "la gare", answer: "prendre le train" },
-        ],
-      },
-      {
-        type: "translation",
-        instruction_vi: "Dịch sang tiếng Pháp:",
-        pronunciation_focus: ["hôtel"],
-        items: [
-          { prompt: "Tôi muốn đặt phòng khách sạn.", answer: "Je voudrais réserver une chambre d'hôtel." },
-          { prompt: "Bao nhiêu tiền một đêm?", answer: "C'est combien par nuit ?" },
-          { prompt: "Sân bay ở đâu?", answer: "Où est l'aéroport ?" },
-        ],
-      },
-    ],
+    id: 17,
+    title: "Bộ phận cơ thể - Body parts",
+    content: "La tête (đầu), Les yeux (mắt), Le nez (mũi), La bouche (miệng), Les bras (cánh tay), Les jambes (chân), Les mains (tay)."
   },
-];
-
-// ── 18. Emotions ────────────────────────────────────────────────────────
-
-const EMOTIONS: FrenchLesson[] = [
   {
-    id: "french_emotions",
-    category: "emotions",
-    title_vi: "Cảm xúc và tâm trạng",
-    title_en: "Emotions and feelings",
-    sentences: [
-      { en: "Comment tu te sens aujourd'hui ?", vi: "Hôm nay bạn cảm thấy thế nào?", pronunciation_focus: ["comment → co-măng", "sens → săn", "aujourd'hui → ô-dua-đuy"] },
-      { en: "Je suis très content parce qu'il fait beau.", vi: "Tôi rất vui vì trời đẹp.", pronunciation_focus: ["content → công-tăng", "parce que → pa-rx-kơ", "beau → bô"] },
-      { en: "Elle est triste à cause du mauvais temps.", vi: "Cô ấy buồn vì thời tiết xấu.", pronunciation_focus: ["triste → trí-xt", "cause → cô-d", "mauvais → mô-ve"] },
-      { en: "Je suis stressé avant mon examen.", vi: "Tôi căng thẳng trước kỳ thi.", pronunciation_focus: ["stressé → xtrê-xê", "avant → a-văng", "examen → ég-da-măng"] },
-      { en: "Ne t'inquiète pas, tout va bien se passer.", vi: "Đừng lo, mọi chuyện sẽ ổn thôi.", pronunciation_focus: ["inquiète → anh-ki-ét", "tout → tu", "passer → pa-xê"] },
-    ],
-    cultural_notes_vi: "Người Pháp thể hiện cảm xúc khá trực tiếp — họ không ngại nói 'je suis triste' hay 'je suis en colère'. Hôn má (la bise) là cách chào hỏi hàng ngày, kể cả giữa nam giới. Người Pháp hay phàn nàn (râler) — đó gần như là môn thể thao quốc gia, không nhất thiết nghĩa là họ thực sự khó chịu.",
-    tip_advice_vi: "Phân biệt 'être + tính từ' (trạng thái tạm thời: 'je suis fatigué') với 'être + danh từ' (bản chất: 'je suis une personne calme'). Học cặp cảm xúc đối lập: content/triste (vui/buồn), calme/énervé (bình tĩnh/bực), enthousiaste/déçu (hào hứng/thất vọng).",
-    vocabulary: [
-      { word: "content(e)", en: "happy / glad", vi: "vui", pos: "adjective", pronunciation_vi: "công-TĂNG(T) — 'en' âm mũi, thêm 't' cho nữ" },
-      { word: "triste", en: "sad", vi: "buồn", pos: "adjective", pronunciation_vi: "TRÍT-XT — 'i' ngắn, 'e' cuối KHÔNG đọc" },
-      { word: "en colère", en: "angry", vi: "tức giận", pos: "adjective", pronunciation_vi: "ăng co-LE-R — 'è' đọc 'e' mở" },
-      { word: "fatigué(e)", en: "tired", vi: "mệt", pos: "adjective", pronunciation_vi: "pha-ti-GHÊ — 'é' đọc 'ê'" },
-      { word: "stressé(e)", en: "stressed", vi: "căng thẳng", pos: "adjective", pronunciation_vi: "xtrê-XÊ" },
-      { word: "inquiet / inquiète", en: "worried", vi: "lo lắng", pos: "adjective", pronunciation_vi: "anh-KIÊ / anh-KI-ÉT" },
-      { word: "surpris(e)", en: "surprised", vi: "ngạc nhiên", pos: "adjective", pronunciation_vi: "xuy-rơ-PRI(Z) — 'u' đọc 'uy'" },
-      { word: "déçu(e)", en: "disappointed", vi: "thất vọng", pos: "adjective", pronunciation_vi: "đê-SUY — 'é' đọc 'ê', 'ç' đọc 'x'" },
-      { word: "calme", en: "calm", vi: "bình tĩnh", pos: "adjective", pronunciation_vi: "CAN-M — 'al' đọc 'an', 'e' KHÔNG đọc" },
-      { word: "amoureux / amoureuse", en: "in love", vi: "đang yêu", pos: "adjective", pronunciation_vi: "a-mu-RƠ / a-mu-RƠ-Z — 'ou' đọc 'u'" },
-    ],
-    dialogue: [
-      { speaker: "A", text: "Tu as l'air fatigué, ça va ?", vi: "Trông bạn mệt thế, ổn không?" },
-      { speaker: "B", text: "Oui, j'ai mal dormi. Je suis un peu stressé par le boulot.", vi: "Ừ, tôi ngủ không ngon. Hơi căng thẳng vì công việc." },
-      { speaker: "A", text: "Je comprends. Si tu veux en parler, je suis là.", vi: "Tôi hiểu. Nếu muốn nói chuyện, tôi ở đây." },
-      { speaker: "B", text: "Merci, c'est gentil. Ça va aller.", vi: "Cảm ơn, tốt bụng quá. Sẽ ổn thôi." },
-    ],
-    exercises: [
-      {
-        type: "fill_blank",
-        instruction_vi: "Điền cảm xúc phù hợp:",
-        pronunciation_focus: ["émotions"],
-        items: [
-          { prompt: "Il a gagné, il est très ___. (vui)", answer: "content" },
-          { prompt: "Elle a perdu son chat, elle est ___. (buồn)", answer: "triste" },
-          { prompt: "Je n'ai pas dormi, je suis ___. (mệt)", answer: "fatigué" },
-        ],
-      },
-      {
-        type: "matching",
-        instruction_vi: "Nối cảm xúc với tình huống:",
-        pronunciation_focus: ["sentiments"],
-        items: [
-          { prompt: "content", answer: "recevoir un cadeau" },
-          { prompt: "en colère", answer: "quelqu'un est en retard" },
-          { prompt: "surpris", answer: "une fête inattendue" },
-          { prompt: "inquiet", answer: "un examen demain" },
-        ],
-      },
-      {
-        type: "translation",
-        instruction_vi: "Dịch sang tiếng Pháp:",
-        pronunciation_focus: ["être + adjectif"],
-        items: [
-          { prompt: "Hôm nay tôi rất vui.", answer: "Aujourd'hui, je suis très content(e)." },
-          { prompt: "Cô ấy đang lo lắng.", answer: "Elle est inquiète." },
-          { prompt: "Đừng giận, không sao đâu.", answer: "Ne sois pas en colère, ce n'est rien." },
-        ],
-      },
-    ],
+    id: 18,
+    title: "Sở thích - Hobbies",
+    content: "J'aime lire (Tôi thích đọc sách) / Je nage (Tôi bơi) / Je joue au football (Tôi chơi bóng đá) / Je dessine (Tôi vẽ) / Quels sont tes loisirs? (Sở thích của bạn là gì?)"
   },
-];
-
-// ── 19. Past Tense ─────────────────────────────────────────────────────
-
-const PAST_TENSE: FrenchLesson[] = [
   {
-    id: "french_past_tense",
-    category: "past_tense",
-    title_vi: "Thì quá khứ (passé composé)",
-    title_en: "Past tense (passé composé)",
-    sentences: [
-      { en: "Hier, j'ai mangé au restaurant avec des amis.", vi: "Hôm qua tôi đã ăn ở nhà hàng với bạn.", pronunciation_focus: ["hier → y-e", "mangé → măng-dê", "au → ô"] },
-      { en: "Qu'est-ce que tu as fait le week-end dernier ?", vi: "Cuối tuần trước bạn đã làm gì?", pronunciation_focus: ["qu'est-ce que → két-xkơ", "fait → phe", "dernier → đe-r-niê"] },
-      { en: "Nous sommes allés au cinéma et nous avons vu un bon film.", vi: "Chúng tôi đã đi xem phim và xem một bộ phim hay.", pronunciation_focus: ["allés → a-lê", "cinéma → xi-nê-ma", "vu → vuy"] },
-      { en: "Elle est née en 1995 à Marseille.", vi: "Cô ấy sinh năm 1995 ở Marseille.", pronunciation_focus: ["née → nê", "Marseille → ma-xây"] },
-      { en: "J'ai déjà visité Paris, mais je n'ai pas encore vu Lyon.", vi: "Tôi đã từng thăm Paris nhưng chưa thấy Lyon.", pronunciation_focus: ["déjà → đê-da", "visité → vi-di-tê", "encore → ăng-co-r"] },
-    ],
-    cultural_notes_vi: "Tiếng Pháp có hai thì quá khứ chính: 'passé composé' (hành động đã hoàn thành) và 'imparfait' (mô tả / thói quen trong quá khứ). Trong hội thoại hàng ngày, 'passé composé' được dùng nhiều nhất. Hầu hết động từ dùng 'avoir' làm trợ động từ; khoảng 17 động từ dùng 'être' (đi, đến, sinh, chết, ở lại, lên, xuống...).",
-    tip_advice_vi: "Công thức passé composé: (avoir/être hiện tại) + (quá khứ phân từ). Mẹo nhớ động từ 'être': DR MRS VANDERTRAMP (Devenir, Revenir, Monter, Rester, Sortir, Venir, Aller, Naître, Descendre, Entrer, Rentrer, Tomber, Retourner, Arriver, Mourir, Partir). Với 'être', quá khứ phân từ phải hợp giống số với chủ ngữ: 'elle est allée' (thêm -e cho nữ).",
-    vocabulary: [
-      { word: "hier", en: "yesterday", vi: "hôm qua", pos: "adverb", pronunciation_vi: "Y-E — 'h' KHÔNG đọc, 'ier' đọc 'iê'" },
-      { word: "avant-hier", en: "the day before yesterday", vi: "hôm kia", pos: "adverb", pronunciation_vi: "a-văng-ti-E — 'h' KHÔNG đọc" },
-      { word: "la semaine dernière", en: "last week", vi: "tuần trước", pos: "phrase", pronunciation_vi: "la sờ-men đe-r-NI-E-R" },
-      { word: "déjà", en: "already", vi: "đã... rồi", pos: "adverb", pronunciation_vi: "đê-DA — 'é' đọc 'ê'" },
-      { word: "jamais", en: "never", vi: "chưa bao giờ", pos: "adverb", pronunciation_vi: "da-ME — 'ai' đọc 'ê', 's' KHÔNG đọc" },
-      { word: "allé(e)", en: "went (past participle)", vi: "đã đi", pos: "verb (pp)", pronunciation_vi: "a-LÊ — nhấn cuối" },
-      { word: "fait", en: "did / made (pp)", vi: "đã làm", pos: "verb (pp)", pronunciation_vi: "PHE — 'ai' đọc 'ê', 't' KHÔNG đọc" },
-      { word: "vu(e)", en: "saw (pp)", vi: "đã thấy", pos: "verb (pp)", pronunciation_vi: "VUY — 'u' đọc 'uy'" },
-      { word: "pris(e)", en: "took (pp)", vi: "đã lấy", pos: "verb (pp)", pronunciation_vi: "PRI(Z) — thêm 'z' cho giống cái" },
-      { word: "né(e)", en: "born (pp)", vi: "đã sinh ra", pos: "verb (pp)", pronunciation_vi: "NÊ — 'é' đọc 'ê'" },
-    ],
-    dialogue: [
-      { speaker: "A", text: "Tu as passé un bon week-end ?", vi: "Cuối tuần bạn vui không?" },
-      { speaker: "B", text: "Oui, super ! Je suis allé à la mer avec ma famille.", vi: "Có, tuyệt lắm! Tôi đã đi biển với gia đình." },
-      { speaker: "A", text: "Vous avez nagé ?", vi: "Các bạn có bơi không?" },
-      { speaker: "B", text: "Oui, on a nagé et on a mangé des fruits de mer.", vi: "Có, tụi tôi đã bơi và ăn hải sản." },
-    ],
-    exercises: [
-      {
-        type: "fill_blank",
-        instruction_vi: "Điền trợ động từ đúng (avoir / être):",
-        pronunciation_focus: ["passé composé"],
-        items: [
-          { prompt: "J'___ mangé une pizza. (avoir)", answer: "ai" },
-          { prompt: "Elle ___ allée au marché. (être)", answer: "est" },
-          { prompt: "Nous ___ pris le train. (avoir)", answer: "avons" },
-        ],
-      },
-      {
-        type: "matching",
-        instruction_vi: "Nối nguyên mẫu với quá khứ phân từ:",
-        pronunciation_focus: ["participes passés"],
-        items: [
-          { prompt: "manger", answer: "mangé" },
-          { prompt: "aller", answer: "allé" },
-          { prompt: "voir", answer: "vu" },
-          { prompt: "prendre", answer: "pris" },
-        ],
-      },
-      {
-        type: "translation",
-        instruction_vi: "Dịch sang tiếng Pháp (dùng passé composé):",
-        pronunciation_focus: ["passé composé"],
-        items: [
-          { prompt: "Hôm qua tôi đã đi Paris.", answer: "Hier, je suis allé(e) à Paris." },
-          { prompt: "Cô ấy đã ăn bánh mì.", answer: "Elle a mangé une baguette." },
-          { prompt: "Chúng tôi đã xem bộ phim đó.", answer: "Nous avons vu ce film." },
-        ],
-      },
-    ],
+    id: 19,
+    title: "Nghề nghiệp - Professions",
+    content: "Médecin (bác sĩ), Enseignant(e) (giáo viên), Ingénieur (kỹ sư), Étudiant(e) (sinh viên), Commerçant(e) (thương nhân), Artiste (nghệ sĩ)."
   },
-];
-
-// ── 20. Future Plans ────────────────────────────────────────────────────
-
-const FUTURE_PLANS: FrenchLesson[] = [
   {
-    id: "french_future_plans",
-    category: "future_plans",
-    title_vi: "Kế hoạch tương lai (futur proche)",
-    title_en: "Future plans (near future)",
-    sentences: [
-      { en: "Qu'est-ce que tu vas faire ce soir ?", vi: "Tối nay bạn sẽ làm gì?", pronunciation_focus: ["qu'est-ce que → két-xkơ", "vas → va", "faire → phe-r", "soir → xoa"] },
-      { en: "Je vais regarder un film et me reposer.", vi: "Tôi sẽ xem phim và nghỉ ngơi.", pronunciation_focus: ["vais → ve", "regarder → rơ-ga-đê", "reposer → rơ-pô-dê"] },
-      { en: "L'année prochaine, nous allons déménager à Lyon.", vi: "Năm tới, chúng tôi sẽ chuyển nhà tới Lyon.", pronunciation_focus: ["prochaine → prô-sen", "déménager → đê-mê-na-dê"] },
-      { en: "Je vais étudier le français plus sérieusement.", vi: "Tôi sẽ học tiếng Pháp nghiêm túc hơn.", pronunciation_focus: ["étudier → ê-tuy-đi-ê", "sérieusement → xê-ri-ơ-do-măng"] },
-      { en: "Tu vas partir en vacances quand ?", vi: "Bạn sẽ đi nghỉ mát khi nào?", pronunciation_focus: ["partir → pa-ti-r", "vacances → va-căng-x", "quand → kăng"] },
-    ],
-    cultural_notes_vi: "Người Pháp thường dùng 'futur proche' (aller + nguyên mẫu) thay vì 'futur simple' trong hội thoại hàng ngày. Đó là cấu trúc dễ học nhất để nói về tương lai gần. 'Futur simple' (je parlerai, tu finiras...) dùng trong văn viết và kế hoạch xa hơn. Người Pháp lên kế hoạch nghỉ hè (grandes vacances) từ rất sớm — thường đặt từ tháng 1-2 cho tháng 7-8.",
-    tip_advice_vi: "Công thức futur proche cực đơn giản: 'aller' (chia theo chủ ngữ) + động từ nguyên mẫu. Je vais + manger = tôi sẽ ăn. Không cần học cách chia mới cho động từ chính! Dùng cho mọi kế hoạch ngắn hạn: 'je vais...', 'tu vas...', 'on va...'",
-    vocabulary: [
-      { word: "ce soir", en: "tonight", vi: "tối nay", pos: "adverb", pronunciation_vi: "xơ XOA — 'oi' đọc 'oa'" },
-      { word: "demain", en: "tomorrow", vi: "ngày mai", pos: "adverb", pronunciation_vi: "đơ-MANG — 'ain' âm mũi" },
-      { word: "la semaine prochaine", en: "next week", vi: "tuần tới", pos: "phrase", pronunciation_vi: "la sờ-men prô-SEN" },
-      { word: "l'année prochaine", en: "next year", vi: "năm tới", pos: "phrase", pronunciation_vi: "la-nê prô-SEN" },
-      { word: "bientôt", en: "soon", vi: "sớm", pos: "adverb", pronunciation_vi: "bi-ăng-TÔ — 'ien' âm mũi" },
-      { word: "plus tard", en: "later", vi: "sau / lát nữa", pos: "adverb", pronunciation_vi: "pluy TA-R — 's' KHÔNG đọc" },
-      { word: "déménager", en: "to move (house)", vi: "chuyển nhà", pos: "verb", pronunciation_vi: "đê-mê-na-DÊ — 'é' đọc 'ê'" },
-      { word: "étudier", en: "to study", vi: "học", pos: "verb", pronunciation_vi: "ê-tuy-ĐI-Ê — 'u' đọc 'uy'" },
-      { word: "apprendre", en: "to learn", vi: "học / học được", pos: "verb", pronunciation_vi: "a-PRĂNG-đrơ — 'en' âm mũi" },
-      { word: "économiser", en: "to save (money)", vi: "tiết kiệm", pos: "verb", pronunciation_vi: "ê-cô-nô-mi-DÊ" },
-    ],
-    dialogue: [
-      { speaker: "A", text: "Tu as des projets pour les vacances ?", vi: "Bạn có kế hoạch gì cho kỳ nghỉ không?" },
-      { speaker: "B", text: "Oui, je vais partir au Vietnam !", vi: "Có, tôi sẽ đi Việt Nam!" },
-      { speaker: "A", text: "Super ! Tu vas rester combien de temps ?", vi: "Tuyệt! Bạn sẽ ở bao lâu?" },
-      { speaker: "B", text: "Je vais y passer trois semaines, je suis trop impatient !", vi: "Tôi sẽ ở đó ba tuần, nóng lòng quá!" },
-    ],
-    exercises: [
-      {
-        type: "fill_blank",
-        instruction_vi: "Điền dạng đúng của 'aller':",
-        pronunciation_focus: ["futur proche"],
-        items: [
-          { prompt: "Je ___ manger une pizza. (sẽ ăn)", answer: "vais" },
-          { prompt: "Tu ___ étudier ce soir ? (sẽ học)", answer: "vas" },
-          { prompt: "Nous ___ partir demain. (sẽ đi)", answer: "allons" },
-        ],
-      },
-      {
-        type: "matching",
-        instruction_vi: "Nối câu hỏi với câu trả lời:",
-        pronunciation_focus: ["projets"],
-        items: [
-          { prompt: "Tu vas faire quoi ce soir ?", answer: "Je vais me reposer." },
-          { prompt: "Vous allez où en vacances ?", answer: "Nous allons à la mer." },
-          { prompt: "Elle va étudier quoi ?", answer: "Elle va étudier la médecine." },
-          { prompt: "Quand est-ce que tu vas déménager ?", answer: "Je vais déménager l'année prochaine." },
-        ],
-      },
-      {
-        type: "translation",
-        instruction_vi: "Dịch sang tiếng Pháp (dùng futur proche):",
-        pronunciation_focus: ["aller + infinitif"],
-        items: [
-          { prompt: "Tối nay tôi sẽ xem phim.", answer: "Ce soir, je vais regarder un film." },
-          { prompt: "Năm tới họ sẽ đi Pháp.", answer: "L'année prochaine, ils vont partir en France." },
-          { prompt: "Bạn sẽ học tiếng Pháp chứ?", answer: "Tu vas apprendre le français ?" },
-        ],
-      },
-    ],
+    id: 20,
+    title: "Cụm từ khẩn cấp - Emergency phrases",
+    content: "Au secours! (Cứu tôi!) / Appelez une ambulance! (Gọi xe cứu thương!) / Je suis perdu(e) (Tôi bị lạc) / Aidez-moi, s'il vous plaît (Làm ơn giúp tôi) / Où est l'hôpital? (Bệnh viện ở đâu?)"
   },
-];
-
-// ── Aggregate export ────────────────────────────────────────────────────
-
-export const FRENCH_LESSONS: ReadonlyArray<FrenchLesson> = [
-  ...GREETINGS,
-  ...NUMBERS,
-  ...COMMON_PHRASES,
-  ...BASIC_GRAMMAR,
-  ...FOOD_LEGACY,
-  ...FAMILY,
-  ...DAILY_ROUTINE,
-  ...WEATHER,
-  ...TIME,
-  ...COLORS,
-  ...CLOTHES,
-  ...TRANSPORTATION,
-  ...HOUSE,
-  ...HOBBIES,
-  ...HEALTH,
-  ...WORK,
-  ...TRAVEL,
-  ...EMOTIONS,
-  ...PAST_TENSE,
-  ...FUTURE_PLANS,
-];
-
-export function getLessonsByCategory(
-  category: FrenchCategoryId,
-): FrenchLesson[] {
-  return FRENCH_LESSONS.filter((l) => l.category === category);
+{
+    "id": 21,
+    "title": "Passer un appel téléphonique",
+    "content": "Vocabulaire:\ndécrocher (nhấc máy) [de-kro-shay]\ncomposer le numéro (quay số) [kom-po-zay luh noo-may-ro]\nsonner (đổ chuông) [so-nay]\nraccrocher (cúp máy) [ra-kro-shay]\nun répondeur (máy trả lời tự động) [uh ray-pon-deuhr]\nla tonalité (âm báo) [la to-na-lee-tay]\nun appel (cuộc gọi) [uh na-pel]\nla ligne (đường dây) [la leen-yuh]\npatienter (chờ đợi) [pa-syen-tay]\nlaisser un message (để lại lời nhắn) [le-say uh may-sazh]\n\nExemples:\nJe vais décrocher le téléphone. (Tôi sẽ nhấc máy.)\nTu peux composer son numéro ? (Bạn có thể quay số của anh ấy không?)\nLe téléphone sonne, qui est-ce ? (Điện thoại đang đổ chuông, ai vậy?)\nN'oublie pas de raccrocher après. (Đừng quên cúp máy sau đó nhé.)\nLaissez un message après le bip sonore. (Vui lòng để lại lời nhắn sau tiếng bíp.)\n\nDialogue:\n- A: Allô, bonjour. Puis-je parler à Madame Dupont ? (A lô, xin chào. Tôi có thể nói chuyện với bà Dupont không?)\n- B: Un instant, je vous la passe. (Một chút, tôi chuyển máy cho bà.)\n- A: Merci, j'attends. (Cảm ơn, tôi chờ.)\n- B: Désolée, la ligne est occupée. Voulez-vous rappeler ? (Xin lỗi, đường dây đang bận. Bạn có muốn gọi lại không?)\n\nExercices:\n1. Fill-blank: \"Avant de parler, il faut _______ le numéro.\"\n2. Matching: Associez les verbes aux définitions : décrocher / raccrocher / sonner.\n3. Translation: \"Please hold the line, I will transfer you.\""
+  },
+  {
+    "id": 22,
+    "title": "Écrire des emails",
+    "content": "Vocabulaire:\nun email (thư điện tử) [uh ne-mayl]\nun objet (chủ đề) [uh nob-zhay]\nun destinataire (người nhận) [uh day-stee-nay-tuhr]\nun expéditeur (người gửi) [uh nek-spay-dee-tuhr]\nla pièce jointe (tệp đính kèm) [la pyes jwant]\njoindre (đính kèm) [jwand-ruh]\nle courriel (thư điện tử) [luh koo-ryel]\nrédiger (soạn thảo) [ray-dee-zhay]\nle corps du message (nội dung thư) [luh kor du may-sazh]\nenvoyer (gửi) [ahn-vway-yay]\n\nExemples:\nJ'ai reçu un email de mon collègue. (Tôi đã nhận được một email từ đồng nghiệp.)\nN'oublie pas de joindre le fichier PDF. (Đừng quên đính kèm tệp PDF.)\nQuel est l'objet de votre message ? (Chủ đề của thư bạn là gì?)\nJe vais rédiger une réponse ce soir. (Tôi sẽ soạn thảo câu trả lời tối nay.)\nVeuillez envoyer le courriel à tous les participants. (Vui lòng gửi email đến tất cả những người tham gia.)\n\nDialogue:\n- A: Salut, tu peux m'aider à rédiger un email professionnel ? (Chào, bạn có thể giúp tôi soạn một email chuyên nghiệp không?)\n- B: Bien sûr. Quel est l'objet ? (Tất nhiên. Chủ đề là gì?)\n- A: C'est pour une candidature. Je dois joindre mon CV. (Đó là cho một đơn xin việc. Tôi phải đính kèm CV.)\n- B: D'accord, commence par 'Objet : Candidature au poste de...' (Được rồi, hãy bắt đầu bằng 'Chủ đề: Ứng tuyển vị trí...')\n\nExercices:\n1. Fill-blank: \"Avant d'envoyer, vérifiez bien le _______ du destinataire.\"\n2. Matching: Associez les mots : objet / destinataire / pièce jointe / expéditeur.\n3. Translation: \"Please find attached the document you requested.\""
+  },
+  {
+    "id": 23,
+    "title": "À la banque",
+    "content": "Vocabulaire:\nun compte bancaire (tài khoản ngân hàng) [uh kohnt bahn-kayr]\nun guichet (quầy giao dịch) [uh ghee-shay]\nun retrait (rút tiền) [uh ruh-tray]\nun dépôt (nộp tiền) [uh day-po]\nun chèque (séc) [uh shek]\nun relevé de compte (sao kê tài khoản) [uh ruh-luh-vay duh kohnt]\nun virement (chuyển khoản) [uh veer-mahn]\nle solde (số dư) [luh sold]\nun prêt (khoản vay) [uh pray]\nle taux d'intérêt (lãi suất) [luh toh dan-tay-ray]\n\nExemples:\nJe voudrais ouvrir un compte bancaire. (Tôi muốn mở một tài khoản ngân hàng.)\nPouvez-vous faire un retrait de 200 euros ? (Bạn có thể rút 200 euro không?)\nJ'ai besoin de mon relevé de compte. (Tôi cần sao kê tài khoản.)\nLe virement sera effectué demain. (Việc chuyển khoản sẽ được thực hiện vào ngày mai.)\nQuel est le taux d'intérêt pour un prêt immobilier ? (Lãi suất cho vay mua nhà là bao nhiêu?)\n\nDialogue:\n- A: Bonjour, je souhaite effectuer un dépôt. (Xin chào, tôi muốn nộp tiền.)\n- B: Oui, madame. Quel montant ? (Vâng, thưa bà. Số tiền là bao nhiêu?)\n- A: 500 euros en espèces. (500 euro tiền mặt.)\n- B: Très bien. Voici votre reçu. (Tốt lắm. Đây là biên nhận của bà.)\n\nExercices:\n1. Fill-blank: \"Pour retirer de l'argent, vous devez vous rendre au _______.\"\n2. Matching: Associez les mots : un compte / un retrait / un virement / le solde.\n3. Translation: \"I would like to check my account balance.\""
+  },
+  {
+    "id": 24,
+    "title": "À la poste",
+    "content": "Vocabulaire:\nun timbre (tem) [uh tan-bruh]\nune enveloppe (phong bì) [oon ahn-vuh-lop]\nun colis (bưu kiện) [uh koh-lee]\nla poste (bưu điện) [la post]\nun courrier (thư tín) [uh koo-ryay]\nun facteur (người đưa thư) [uh fak-tuhr]\nun recommandé (thư bảo đảm) [uh ruh-koh-mahn-day]\nle poids (trọng lượng) [luh pwah]\naffranchir (dán tem) [a-frahn-sheer]\nun bureau de poste (bưu cục) [uh byoo-ro duh post]\n\nExemples:\nJ'ai besoin d'acheter des timbres. (Tôi cần mua tem.)\nVous pouvez envoyer ce colis en recommandé ? (Bạn có thể gửi bưu kiện này dạng bảo đảm không?)\nLe facteur passe tous les matins. (Người đưa thư đi qua mỗi sáng.)\nN'oubliez pas d'affranchir l'enveloppe. (Đừng quên dán tem lên phong bì.)\nQuel est le poids de votre courrier ? (Trọng lượng thư của bạn là bao nhiêu?)\n\nDialogue:\n- A: Bonjour, je voudrais envoyer une lettre au Vietnam. (Xin chào, tôi muốn gửi một bức thư đến Việt Nam.)\n- B: En voie aérienne ou maritime ? (Đường hàng không hay đường biển?)\n- A: Aérienne, s'il vous plaît. (Đường hàng không, làm ơn.)\n- B: D'accord. Voici le timbre à 1,30 euro. (Được rồi. Đây là tem 1,30 euro.)\n\nExercices:\n1. Fill-blank: \"Pour envoyer une lettre, il faut mettre un _______ sur l'enveloppe.\"\n2. Matching: Associez : un timbre / un colis / un recommandé / la poste.\n3. Translation: \"I would like to send this package by express mail.\""
+  },
+  {
+    "id": 25,
+    "title": "Louer un appartement",
+    "content": "Vocabulaire:\nun appartement (căn hộ) [uh na-par-tuh-mahn]\nun bail (hợp đồng thuê) [uh by]\nun locataire (người thuê) [uh lo-ka-tuhr]\nun propriétaire (chủ nhà) [uh pro-pree-yay-tuhr]\nle loyer (tiền thuê) [luh lwa-yay]\nles charges (phí dịch vụ) [lay sharzh]\nla caution (tiền đặt cọc) [la ko-syon]\nun agence immobilière (công ty bất động sản) [uh na-zhahnss ee-mo-bee-lyayr]\nune pièce (phòng) [oon pyes]\nle préavis (thời gian báo trước) [luh pray-ah-vee]\n\nExemples:\nJe cherche un appartement à louer à Paris. (Tôi đang tìm căn hộ cho thuê ở Paris.)\nLe loyer est de 800 euros par mois, charges comprises. (Tiền thuê là 800 euro mỗi tháng, đã bao gồm phí dịch vụ.)\nIl faut verser une caution de deux mois. (Cần phải đặt cọc hai tháng.)\nLe propriétaire a signé le bail. (Chủ nhà đã ký hợp đồng thuê.)\nQuel est le préavis pour quitter l'appartement ? (Thời gian báo trước để rời căn hộ là bao lâu?)\n\nDialogue:\n- A: Bonjour, je suis intéressé par l'appartement que vous louez. (Xin chào, tôi quan tâm đến căn hộ ông cho thuê.)\n- B: Parfait. C'est un deux-pièces au troisième étage. (Tuyệt vời. Đó là căn hai phòng ở tầng ba.)\n- A: Quel est le loyer mensuel ? (Tiền thuê hàng tháng là bao nhiêu?)\n- B: 650 euros, charges non comprises. (650 euro, chưa bao gồm phí dịch vụ.)\n\nExercices:\n1. Fill-blank: \"Avant d'emménager, le locataire doit signer le _______.\"\n2. Matching: Associez les termes : loyer / caution / préavis / propriétaire.\n3. Translation: \"The apartment is available from the first of next month.\""
+  },
+  {
+    "id": 26,
+    "title": "Réclamations et retours",
+    "content": "Vocabulaire:\nune réclamation (khiếu nại) [oon ray-kla-mah-syon]\nun retour (trả hàng) [uh ruh-toor]\nun remboursement (hoàn tiền) [uh rahn-boor-suh-mahn]\nun échange (đổi hàng) [uh nay-zhahnzh]\nun défaut (lỗi) [uh day-fo]\nle service client (dịch vụ khách hàng) [luh sayr-vees klee-ahn]\nle ticket de caisse (hóa đơn) [luh tee-kay duh kes]\nla garantie (bảo hành) [la ga-rahn-tee]\nun produit défectueux (sản phẩm lỗi) [uh pro-dwee day-fek-tuh-uh]\nun remboursement intégral (hoàn tiền toàn bộ) [uh rahn-boor-suh-mahn an-tay-gral]\n\nExemples:\nJe voudrais faire une réclamation concernant ce produit. (Tôi muốn khiếu nại về sản phẩm này.)\nPouvez-vous procéder au remboursement ? (Bạn có thể tiến hành hoàn tiền không?)\nL'article a un défaut, je souhaite un échange. (Món hàng có lỗi, tôi muốn đổi.)\nConservez le ticket de caisse pour le retour. (Giữ lại hóa đơn để trả hàng.)\nLa garantie est valable deux ans. (Bảo hành có hiệu lực hai năm.)\n\nDialogue:\n- A: Bonjour, j'ai acheté ce téléphone hier mais il ne s'allume pas. (Xin chào, tôi đã mua chiếc điện thoại này hôm qua nhưng nó không bật lên được.)\n- B: Je suis désolé. Avez-vous le ticket de caisse ? (Tôi xin lỗi. Bạn có hóa đơn không?)\n- A: Oui, le voici. (Có, đây ạ.)\n- B: Nous pouvons soit le réparer, soit vous rembourser. (Chúng tôi có thể sửa nó hoặc hoàn tiền cho bạn.)\n\nExercices:\n1. Fill-blank: \"Pour retourner un article, il faut présenter le _______.\"\n2. Matching: Associez : une réclamation / un échange / un remboursement / un défaut.\n3. Translation: \"The product is defective; I want a full refund.\""
+  },
+  {
+    "id": 27,
+    "title": "Donner des directions",
+    "content": "Vocabulaire:\ntout droit (đi thẳng) [too drwah]\nà gauche (bên trái) [a gohsh]\nà droite (bên phải) [a drwaht]\nle carrefour (ngã tư) [luh ka-ruh-foor]\nle feu rouge (đèn đỏ) [luh fuh roozh]\nle rond-point (vòng xoay) [luh rohn-pwan]\nle panneau (biển báo) [luh pa-no]\nle trottoir (vỉa hè) [luh tro-twar]\ntraverser (băng qua) [tra-vayr-say]\nle coin (góc phố) [luh kwan]\n\nExemples:\nAllez tout droit jusqu'au feu rouge. (Hãy đi thẳng đến đèn đỏ.)\nTournez à gauche au carrefour. (Rẽ trái ở ngã tư.)\nLe supermarché se trouve au coin de la rue. (Siêu thị nằm ở góc phố.)\nTraversez la rue et continuez tout droit. (Băng qua đường và tiếp tục đi thẳng.)\nVous verrez un grand panneau bleu. (Bạn sẽ thấy một biển báo màu xanh lớn.)\n\nDialogue:\n- A: Excusez-moi, pour aller à la gare, s'il vous plaît ? (Xin lỗi, để đến ga tàu thì đi thế nào ạ?)\n- B: Prenez cette rue, puis tournez à droite au rond-point. (Đi theo đường này, sau đó rẽ phải ở vòng xoay.)\n- A: C'est loin ? (Có xa không?)\n- B: Non, à cinq minutes à pied. (Không, chỉ năm phút đi bộ.)\n\nExercices:\n1. Fill-blank: \"Pour aller au musée, vous devez _______ à gauche au premier feu.\"\n2. Matching: Associez les directions : tout droit / à gauche / à droite / traverser.\n3. Translation: \"Go straight ahead and then turn right at the traffic lights.\""
+  },
+  {
+    "id": 28,
+    "title": "Discuter des actualités",
+    "content": "Vocabulaire:\nune actualité (tin tức thời sự) [oon nak-tua-lee-tay]\nun événement (sự kiện) [uh nay-vay-nahn]\nun journal (tờ báo) [uh zhoor-nal]\nun article (bài báo) [uh nar-teekl]\nun journaliste (nhà báo) [uh zhoor-na-leest]\nune information (thông tin) [oon an-for-ma-syon]\nle gouvernement (chính phủ) [luh goo-vayr-nuh-mahn]\nune élection (cuộc bầu cử) [oon ay-lek-syon]\nla politique (chính trị) [la po-lee-teek]\nles médias (phương tiện truyền thông) [lay may-dyah]\n\nExemples:\nAs-tu suivi l'actualité aujourd'hui ? (Bạn có theo dõi tin tức hôm nay không?)\nL'événement est très important pour le pays. (Sự kiện này rất quan trọng đối với đất nước.)\nJ'ai lu un article intéressant dans le journal. (Tôi đã đọc một bài báo thú vị trên báo.)\nLes journalistes enquêtent sur cette affaire. (Các nhà báo đang điều tra vụ việc này.)\nLes élections auront lieu le mois prochain. (Cuộc bầu cử sẽ diễn ra vào tháng sau.)\n\nDialogue:\n- A: Tu as entendu parler des manifestations ? (Bạn có nghe nói về các cuộc biểu tình không?)\n- B: Oui, j'ai vu ça aux informations. (Có, tôi đã thấy điều đó trên bản tin.)\n- A: C'est un sujet qui divise l'opinion. (Đó là một chủ đề gây chia rẽ dư luận.)\n- B: Je pense qu'il faut écouter les deux côtés. (Tôi nghĩ cần lắng nghe cả hai phía.)\n\nExercices:\n1. Fill-blank: \"Pour être informé, il faut regarder les _______ tous les jours.\"\n2. Matching: Associez : un événement / un journaliste / une élection / les médias.\n3. Translation: \"What is the latest news about the election?\""
+  },
+  {
+    "id": 29,
+    "title": "Différences culturelles",
+    "content": "Vocabulaire:\nla culture (văn hóa) [la kool-tuhr]\nles coutumes (phong tục) [lay koo-tum]\nla politesse (phép lịch sự) [la po-lee-tes]\nles habitudes (thói quen) [lay za-bee-tud]\nle comportement (hành vi) [luh kohn-por-tuh-mahn]\nle repas (bữa ăn) [luh ruh-pah]\nle salut (lời chào) [luh sa-lu]\nle geste (cử chỉ) [luh zhest]\nla ponctualité (sự đúng giờ) [la pohnk-tua-lee-tay]\nles valeurs (giá trị) [lay va-luhr]\n\nExemples:\nEn France, la politesse est très importante. (Ở Pháp, phép lịch sự rất quan trọng.)\nLes habitudes alimentaires varient d'un pays à l'autre. (Thói quen ăn uống khác nhau giữa các nước.)\nIl faut faire la bise pour dire bonjour. (Cần hôn má để chào hỏi.)\nLa ponctualité n'est pas toujours respectée dans certaines cultures. (Sự đúng giờ không phải lúc nào cũng được tôn trọng trong một số nền văn hóa.)\nLes valeurs familiales sont fortes dans de nombreux pays. (Giá trị gia đình mạnh mẽ ở nhiều quốc gia.)\n\nDialogue:\n- A: Au Vietnam, on se serre la main ou on s'incline ? (Ở Việt Nam, người ta bắt tay hay cúi chào?)\n- B: On se serre la main généralement, mais on s'incline souvent pour les personnes âgées. (Thường thì bắt tay, nhưng thường cúi chào với người lớn tuổi.)\n- A: Intéressant. En France, on fait la bise entre amis. (Thú vị. Ở Pháp, bạn bè hôn má nhau.)\n- B: Oui, c'est une belle différence culturelle. (Vâng, đó là một khác biệt văn hóa đẹp.)\n\nExercices:\n1. Fill-blank: \"Dans certaines cultures, on évite de montrer la plante des _______ (pieds).\"\n2. Matching: Associez : la politesse / les coutumes / la ponctualité / le repas.\n3. Translation: \"In my culture, it is common to take off shoes before entering a home.\""
+  },
+  {
+    "id": 30,
+    "title": "Entretiens d'embauche",
+    "content": "Vocabulaire:\nun entretien (buổi phỏng vấn) [uh nahn-truh-tyen]\nun recruteur (người tuyển dụng) [uh ruh-kroo-tuhr]\nun candidat (ứng viên) [uh kahn-dee-da]\nle CV (sơ yếu lý lịch) [luh say-vay]\nla lettre de motivation (thư xin việc) [la let-ruh duh mo-tee-va-syon]\nles compétences (kỹ năng) [lay kohn-pay-tahnss]\nl'expérience (kinh nghiệm) [lek-spay-ryahnss]\nle poste (vị trí) [luh post]\nles qualités (phẩm chất) [lay ka-lee-tay]\nles défauts (điểm yếu) [lay day-fo]\n\nExemples:\nJ'ai un entretien d'embauche demain matin. (Tôi có buổi phỏng vấn xin việc vào sáng mai.)\nLe recruteur m'a posé des questions sur mes compétences. (Người tuyển dụng đã hỏi tôi về kỹ năng.)\nN'oubliez pas d'apporter votre CV et votre lettre de motivation. (Đừng quên mang theo CV và thư xin việc.)\nParlez de votre expérience professionnelle. (Hãy nói về kinh nghiệm làm việc của bạn.)\nQualités et défauts : soyez honnête. (Điểm mạnh và điểm yếu: hãy thành thật.)\n\nDialogue:\n- A: Bonjour, je suis le recruteur. Parlez-moi de vous. (Xin chào, tôi là người tuyển dụng. Hãy nói về bạn.)\n- B: Bonjour, je suis diplômé en marketing et j'ai trois ans d'expérience. (Xin chào, tôi tốt nghiệp ngành marketing và có ba năm kinh nghiệm.)\n- A: Quelles sont vos principales qualités ? (Những phẩm chất chính của bạn là gì?)\n- B: Je suis organisé, ponctuel et j'aime travailler en équipe. (Tôi có tổ chức, đúng giờ và thích làm việc nhóm.)\n\nExercices:\n1. Fill-blank: \"Avant l'entretien, préparez votre _______ et votre lettre de motivation.\"\n2. Matching: Associez : le recruteur / le candidat / les compétences / l'expérience.\n3. Translation: \"I am flexible and can work under pressure.\""
+  },
+{
+  id: 31,
+  title: "Réunions d'affaires",
+  content: "Vocabulaire:\nordre du jour (chương trình nghị sự) [ɔʁdʁ dy ʒuʁ]\nparticipant (người tham dự) [paʁtisipɑ̃]\nprojet (dự án) [pʁɔʒɛ]\npoint (điểm, mục) [pwɛ̃]\ndécision (quyết định) [desizjɔ̃]\ncompte rendu (biên bản) [kɔ̃t ʁɑ̃dy]\nobjectif (mục tiêu) [ɔbjɛktif]\ndélai (thời hạn) [delɛ]\nintervenant (diễn giả) [ɛ̃tɛʁvənɑ̃]\nordre du jour (chương trình nghị sự) [ɔʁdʁ dy ʒuʁ]\n\nExemples:\nNous allons commencer la réunion par le premier point. (Chúng ta sẽ bắt đầu cuộc họp với mục đầu tiên.)\nQui prendra les notes aujourd'hui ? (Ai sẽ ghi chép hôm nay?)\nLe projet doit être livré avant le délai fixé. (Dự án phải được bàn giao trước thời hạn đã định.)\nPouvez-vous envoyer le compte rendu à tous les participants ? (Anh/chị có thể gửi biên bản cho tất cả người tham dự không?)\nL'objectif de cette réunion est de finaliser le budget. (Mục tiêu của cuộc họp này là hoàn thiện ngân sách.)\n\nDialogue:\n- A: Bonjour à tous, passons au point 3 de l'ordre du jour. (Chào mọi người, chúng ta chuyển sang mục 3 của chương trình nghị sự.)\n- B: D'accord, j'ai une mise à jour sur le projet marketing. (Được rồi, tôi có một cập nhật về dự án marketing.)\n- A: Parfait, pouvez-vous nous donner les grandes lignes ? (Tuyệt vời, anh/chị có thể cho chúng tôi biết những nét chính không?)\n- B: Bien sûr, nous avons avancé sur le budget et les délais. (Tất nhiên, chúng tôi đã tiến triển về ngân sách và thời hạn.)\n\nExercices:\n1. Fill-blank: Le _______ (compte rendu / projet) de la réunion sera envoyé par email.\n2. Matching: associez chaque mot à sa définition : 1. ordre du jour a) personne qui participe ; 2. participant b) document résumant la réunion ; 3. compte rendu c) liste des sujets à discuter.\n3. Translation: The deadline for the project is next Friday. (Traduisez en français.)"
+},
+{
+  id: 32,
+  title: "Faire des présentations",
+  content: "Vocabulaire:\npréparation (sự chuẩn bị) [pʁepaʁasjɔ̃]\ndiapositive (slide) [djapozitiv]\npublic (khán giả) [pyblik]\ncontenu (nội dung) [kɔ̃təny]\nconférencier (diễn giả) [kɔ̃feʁɑ̃sje]\nintroduction (phần giới thiệu) [ɛ̃tʁodyksjɔ̃]\nconclusion (kết luận) [kɔ̃klyzjɔ̃]\ngraphique (biểu đồ) [ɡʁafik]\ndonnées (dữ liệu) [dɔne]\nquestion (câu hỏi) [kɛstjɔ̃]\n\nExemples:\nPermettez-moi de me présenter avant de commencer. (Cho phép tôi tự giới thiệu trước khi bắt đầu.)\nJe vais structurer ma présentation en trois parties. (Tôi sẽ cấu trúc bài thuyết trình của mình thành ba phần.)\nCe graphique montre l'évolution des ventes. (Biểu đồ này cho thấy sự tiến triển của doanh số.)\nY a-t-il des questions à la fin ? (Có câu hỏi nào ở cuối không?)\nJe vous remercie de votre attention. (Cảm ơn sự chú ý của quý vị.)\n\nDialogue:\n- A: Bonjour, je suis ravi de vous présenter notre nouveau projet. (Xin chào, tôi rất vui được trình bày dự án mới của chúng tôi.)\n- B: Pouvez-vous commencer par les objectifs ? (Anh có thể bắt đầu bằng các mục tiêu không?)\n- A: Bien sûr. Tout d'abord, voici le contexte. (Tất nhiên. Trước hết, đây là bối cảnh.)\n- B: Très clair, continuez. (Rất rõ ràng, tiếp tục đi.)\n\nExercices:\n1. Fill-blank: La _______ (conclusion / introduction) doit résumer les points clés.\n2. Matching: associez : 1. diapositive a) personne qui présente ; 2. public b) support visuel ; 3. conférencier c) auditoire.\n3. Translation: I need to prepare my slides for the presentation. (Traduisez en français.)"
+},
+{
+  id: 33,
+  title: "Négocier",
+  content: "Vocabulaire:\ncompromis (sự thỏa hiệp) [kɔ̃pʁɔmi]\nproposition (đề xuất) [pʁɔpozisjɔ̃]\ncontre-offre (lời đề nghị phản hồi) [kɔ̃tʁ ɔfʁ]\nconcession (nhượng bộ) [kɔ̃sesjɔ̃]\naccord (thỏa thuận) [akɔʁ]\ndésaccord (bất đồng) [dezakɔʁ]\ncondition (điều kiện) [kɔ̃disjɔ̃]\npriorité (ưu tiên) [pʁijɔʁite]\nargument (lý lẽ) [aʁɡymɑ̃]\nmarge (biên độ, lợi nhuận) [maʁʒ]\n\nExemples:\nNous devons trouver un compromis acceptable pour les deux parties. (Chúng ta phải tìm một sự thỏa hiệp chấp nhận được cho cả hai bên.)\nVotre contre-offre est trop élevée pour nous. (Lời đề nghị phản hồi của anh quá cao đối với chúng tôi.)\nSi vous réduisez le prix, nous augmenterons la commande. (Nếu anh giảm giá, chúng tôi sẽ tăng đơn hàng.)\nJe suis d'accord sur le principe, mais pas sur les conditions. (Tôi đồng ý về nguyên tắc, nhưng không đồng ý về các điều kiện.)\nPouvons-nous discuter de la marge bénéficiaire ? (Chúng ta có thể thảo luận về biên lợi nhuận không?)\n\nDialogue:\n- A: Votre prix initial est trop élevé. Pouvez-vous faire une concession ? (Giá ban đầu của anh quá cao. Anh có thể nhượng bộ không?)\n- B: Nous pouvons baisser de 5% si vous commandez au moins 100 unités. (Chúng tôi có thể giảm 5% nếu anh đặt ít nhất 100 đơn vị.)\n- A: C'est un bon début, mais j'aimerais 10% de réduction. (Đó là khởi đầu tốt, nhưng tôi muốn giảm 10%.)\n- B: 7% maximum, c'est notre dernier mot. (Tối đa 7%, đó là lời cuối cùng của chúng tôi.)\n\nExercices:\n1. Fill-blank: Pour parvenir à un ______ (accord / désaccord), il faut parfois faire des concessions.\n2. Matching: 1. compromis a) proposition en réponse ; 2. contre-offre b) solution mutuellement acceptable ; 3. concession c) renoncement partiel.\n3. Translation: We need to negotiate the terms of the contract. (Traduisez en français.)"
+},
+{
+  id: 34,
+  title: "Réseaux sociaux",
+  content: "Vocabulaire:\npublication (bài đăng) [pyblikasjɔ̃]\nabonné (người theo dõi) [abɔne]\nlike (lượt thích) [lajk]\npartager (chia sẻ) [paʁtaʒe]\ncommentaire (bình luận) [kɔmɑ̃tɛʁ]\nhashtag (thẻ) [aʃtaɡ]\nfil d'actualité (bảng tin) [fil daktɥalite]\nprofil (hồ sơ) [pʁɔfil]\nmessage privé (tin nhắn riêng) [mesaʒ pʁive]\ninfluenceur (người có ảnh hưởng) [ɛ̃flyɑ̃sœʁ]\n\nExemples:\nJ'ai partagé ta publication sur mon fil d'actualité. (Tôi đã chia sẻ bài đăng của bạn lên bảng tin của tôi.)\nCet influenceur a beaucoup d'abonnés. (Người có ảnh hưởng này có rất nhiều người theo dõi.)\nPense à utiliser des hashtags pertinents. (Nhớ sử dụng các thẻ phù hợp.)\nJ'ai reçu un message privé de la part du service client. (Tôi đã nhận được một tin nhắn riêng từ bộ phận dịch vụ khách hàng.)\nLes commentaires sous la photo sont très positifs. (Các bình luận dưới bức ảnh rất tích cực.)\n\nDialogue:\n- A: As-tu vu le post de l'entreprise sur LinkedIn ? (Bạn đã xem bài đăng của công ty trên LinkedIn chưa?)\n- B: Oui, je l'ai aimé et partagé. (Rồi, tôi đã thích và chia sẻ nó.)\n- A: Parfait, ça augmente notre visibilité. (Tuyệt vời, điều đó tăng tầm nhìn của chúng ta.)\n- B: N'oublie pas d'ajouter des hashtags. (Đừng quên thêm các thẻ.)\n\nExercices:\n1. Fill-blank: Pour toucher plus de monde, utilise des _______ (hashtags / likes) populaires.\n2. Matching: 1. abonné a) contenu publié ; 2. publication b) personne qui suit ; 3. commentaire c) réaction écrite.\n3. Translation: I don't like to share personal information on social media. (Traduisez en français.)"
+},
+{
+  id: 35,
+  title: "Problèmes environnementaux",
+  content: "Vocabulaire:\nréchauffement climatique (sự nóng lên toàn cầu) [ʁeʃofmɑ̃ klimatik]\nénergie renouvelable (năng lượng tái tạo) [eneʁʒi ʁənuvlabl]\npollution (ô nhiễm) [pɔlysjɔ̃]\ndéchet (rác thải) [deʃɛ]\nrecyclage (tái chế) [ʁəsiklaʒ]\nbiodiversité (đa dạng sinh học) [bjo diveʁsite]\nécosystème (hệ sinh thái) [ekɔsistɛm]\ndéforestation (phá rừng) [defɔʁɛstasjɔ̃]\nempreinte carbone (dấu chân carbon) [ɑ̃pʁɛ̃t kaʁbɔn]\ndurable (bền vững) [dyʁabl]\n\nExemples:\nLe réchauffement climatique est un problème majeur. (Sự nóng lên toàn cầu là một vấn đề lớn.)\nIl faut favoriser les énergies renouvelables. (Cần ưu tiên các năng lượng tái tạo.)\nNous devons réduire notre empreinte carbone. (Chúng ta phải giảm dấu chân carbon của mình.)\nLe recyclage permet de limiter les déchets. (Tái chế giúp hạn chế rác thải.)\nLa déforestation menace la biodiversité. (Phá rừng đe dọa đa dạng sinh học.)\n\nDialogue:\n- A: Que penses-tu de la pollution plastique dans les océans ? (Bạn nghĩ gì về ô nhiễm nhựa trong đại dương?)\n- B: C'est alarmant. Il faut agir rapidement. (Thật đáng báo động. Cần hành động nhanh chóng.)\n- A: Je suis d'accord. Réduire l'usage du plastique est essentiel. (Tôi đồng ý. Giảm sử dụng nhựa là thiết yếu.)\n- B: Et promouvoir le recyclage et les alternatives durables. (Và thúc đẩy tái chế và các giải pháp thay thế bền vững.)\n\nExercices:\n1. Fill-blank: L'_______ (empreinte carbone / écosystème) mesure l'impact sur le climat.\n2. Matching: 1. recyclage a) transformation des déchets ; 2. pollution b) altération de l'environnement ; 3. durable c) qui peut durer dans le temps.\n3. Translation: We must protect the environment for future generations. (Traduisez en français.)"
+},
+{
+  id: 36,
+  title: "Exprimer des opinions",
+  content: "Vocabulaire:\nà mon avis (theo ý kiến của tôi) [a mɔn avi]\nselon moi (theo tôi) [səlɔ̃ mwa]\nje pense que (tôi nghĩ rằng) [ʒə pɑ̃s kə]\nje crois que (tôi tin rằng) [ʒə kʁwa kə]\npersonnellement (cá nhân tôi) [pɛʁsɔnɛlmɑ̃]\nje suis d'avis que (tôi đồng ý rằng) [ʒə sɥi davi kə]\nil me semble que (đối với tôi dường như) [il mə sɑ̃bl kə]\nje trouve que (tôi thấy rằng) [ʒə tʁuv kə]\nà mon sens (theo quan điểm của tôi) [a mɔ̃ sɑ̃s]\nje dirais que (tôi sẽ nói rằng) [ʒə diʁɛ kə]\n\nExemples:\nÀ mon avis, cette décision est risquée. (Theo ý kiến của tôi, quyết định này là rủi ro.)\nPersonnellement, je préfère travailler en équipe. (Cá nhân tôi, tôi thích làm việc nhóm hơn.)\nJe pense que le projet devrait être reporté. (Tôi nghĩ rằng dự án nên được hoãn lại.)\nIl me semble que vous avez oublié un point important. (Đối với tôi dường như anh đã quên một điểm quan trọng.)\nJe trouve que cette solution est la meilleure. (Tôi thấy giải pháp này là tốt nhất.)\n\nDialogue:\n- A: Que penses-tu de la nouvelle politique de l'entreprise ? (Bạn nghĩ gì về chính sách mới của công ty?)\n- B: Personnellement, je trouve qu'elle est trop stricte. (Cá nhân tôi thấy nó quá nghiêm ngặt.)\n- A: À mon avis, c'est nécessaire pour améliorer la productivité. (Theo ý kiến của tôi, nó cần thiết để cải thiện năng suất.)\n- B: Je ne suis pas d'accord. Il faudrait l'assouplir. (Tôi không đồng ý. Nên nới lỏng nó.)\n\nExercices:\n1. Fill-blank: ______ (Selon moi / Personnellement) dit-on pour exprimer un point de vue personnel.\n2. Matching: 1. je crois que a) opinion modeste ; 2. à mon avis b) opinion forte ; 3. il me semble que c) opinion hésitante.\n3. Translation: In my opinion, this is the best solution. (Traduisez en français.)"
+},
+{
+  id: 37,
+  title: "Faire des suggestions",
+  content: "Vocabulaire:\nproposer (đề xuất) [pʁɔpoze]\nrecommander (khuyên, giới thiệu) [ʁəkɔmɑ̃de]\nsuggérer (gợi ý) [syɡʒeʁe]\npourquoi ne pas...? (tại sao không...?) [puʁkwa nə pa]\net si on...? (vậy nếu chúng ta...?) [e si ɔ̃]\nje suggère que (tôi gợi ý rằng) [ʒə syɡʒɛʁ kə]\nil serait bon de (sẽ tốt nếu) [il səʁɛ bɔ̃ də]\none pourrait (chúng ta có thể) [ɔn puʁɛ]\nje propose de (tôi đề xuất) [ʒə pʁɔpoz də]\nune idée (một ý tưởng) [yn ide]\n\nExemples:\nJe propose de commencer par une réunion de briefing. (Tôi đề xuất bắt đầu bằng một cuộc họp giao ban.)\nPourquoi ne pas organiser un atelier ? (Tại sao không tổ chức một buổi hội thảo?)\nEt si on essayait une nouvelle méthode ? (Vậy nếu chúng ta thử một phương pháp mới thì sao?)\nJe suggère que nous invitions un expert. (Tôi gợi ý rằng chúng ta mời một chuyên gia.)\nIl serait bon de préparer un plan B. (Sẽ tốt nếu chuẩn bị một kế hoạch B.)\n\nDialogue:\n- A: Nous avons un problème de délais. Que proposes-tu ? (Chúng ta có vấn đề về thời hạn. Bạn đề xuất gì?)\n- B: Et si on déléguait certaines tâches ? (Vậy nếu chúng ta ủy thác một số nhiệm vụ?)\n- A: Bonne idée. Je propose de contacter un freelance. (Ý kiến hay. Tôi đề xuất liên hệ một freelancer.)\n- B: D'accord, et on pourrait aussi revoir le planning. (Đồng ý, và chúng ta cũng có thể xem lại lịch trình.)\n\nExercices:\n1. Fill-blank: _______ (Pourquoi ne pas / Il serait bon de) + infinitif pour faire une suggestion.\n2. Matching: 1. proposer a) donner une idée ; 2. recommander b) conseiller fortement ; 3. suggérer c) avancer une option.\n3. Translation: I suggest we take a break. (Traduisez en français.)"
+},
+{
+  id: 38,
+  title: "S'excuser et donner des excuses",
+  content: "Vocabulaire:\ns'excuser (xin lỗi) [sɛkskyze]\npardon (xin lỗi) [paʁdɔ̃]\nexcusez-moi (xin lỗi tôi) [ɛkskyze mwa]\nje suis désolé(e) (tôi xin lỗi) [ʒə sɥi dezɔle]\nje vous demande pardon (tôi xin anh/chị tha lỗi) [ʒə vu dəmɑ̃d paʁdɔ̃]\nce n'est pas de ma faute (đó không phải lỗi của tôi) [sə nɛ pa də ma fot]\nil y a eu un malentendu (đã có sự hiểu lầm) [il ja y œ̃ malɑ̃tɑ̃dy]\nje regrette (tôi rất tiếc) [ʒə ʁəɡʁɛt]\nveiller à (chú ý để) [veje a]\nfaire attention (chú ý) [fɛʁ atɑ̃sjɔ̃]\n\nExemples:\nJe suis désolé pour le retard. (Tôi xin lỗi vì sự chậm trễ.)\nExcusez-moi, je n'ai pas reçu votre email. (Xin lỗi, tôi đã không nhận được email của anh.)\nJe vous demande pardon pour cette erreur. (Tôi xin anh/chị tha lỗi cho lỗi này.)\nCe n'est pas de ma faute, le système était en panne. (Đó không phải lỗi của tôi, hệ thống đã bị hỏng.)\nJe regrette de ne pas avoir pu venir à la réunion. (Tôi rất tiếc đã không thể đến cuộc họp.)\n\nDialogue:\n- A: Je suis désolé d'être en retard, le trafic était terrible. (Tôi xin lỗi vì đến muộn, giao thông thật tệ.)\n- B: Ce n'est pas grave, mais veillez à être à l'heure la prochaine fois. (Không sao, nhưng lần sau hãy chú ý đến đúng giờ.)\n- A: Oui, je ferai attention. Merci de votre compréhension. (Vâng, tôi sẽ chú ý. Cảm ơn sự thông cảm của anh.)\n- B: D'accord, commençons la réunion. (Được rồi, chúng ta bắt đầu cuộc họp.)\n\nExercices:\n1. Fill-blank: Pour s'excuser formellement, on dit : _______ (Je suis désolé / Pardon) ou _______ (Je vous demande pardon / Ce n'est pas de ma faute).\n2. Matching: 1. s'excuser a) présenter des regrets ; 2. excuse b) raison donnée ; 3. pardonner c) ne pas en vouloir.\n3. Translation: I apologize for the inconvenience. (Traduisez en français.)"
+},
+{
+  id: 39,
+  title: "Donner des conseils",
+  content: "Vocabulaire:\nconseiller (khuyên) [kɔ̃seje]\nrecommander (giới thiệu, khuyên) [ʁəkɔmɑ̃de]\nje te conseille de (tôi khuyên bạn nên) [ʒə tə kɔ̃sɛj də]\nil faudrait (cần) [il fodʁɛ]\nvous devriez (anh/chị nên) [vu dəvʁje]\nà ta place (ở vị trí của bạn) [a ta plas]\nle mieux serait (tốt nhất là) [lə mjø səʁɛ]\nun bon conseil (một lời khuyên tốt) [œ̃ bɔ̃ kɔ̃sɛj]\nsuivre un conseil (theo lời khuyên) [sɥivʁ œ̃ kɔ̃sɛj]\ndéconseiller (không khuyên) [dekɔ̃seje]\n\nExemples:\nJe te conseille de prendre des notes pendant la réunion. (Tôi khuyên bạn nên ghi chép trong cuộc họp.)\nÀ ta place, j'accepterais cette offre. (Ở vị trí của bạn, tôi sẽ chấp nhận lời đề nghị này.)\nVous devriez consulter un spécialiste. (Anh nên tham khảo ý kiến chuyên gia.)\nLe mieux serait de préparer un dossier complet. (Tốt nhất là chuẩn bị một hồ sơ đầy đủ.)\nJe déconseille de prendre une décision trop vite. (Tôi không khuyên bạn đưa ra quyết định quá nhanh.)\n\nDialogue:\n- A: J'hésite à postuler pour ce poste. (Tôi đang phân vân có nên nộp đơn cho vị trí này không.)\n- B: À ta place, je le ferais. Le salaire est attractif. (Ở vị trí của bạn, tôi sẽ làm. Lương hấp dẫn.)\n- A: Oui, mais les horaires sont flexibles, c'est un bon point. (Vâng, nhưng giờ làm linh hoạt, đó là điểm tốt.)\n- B: Alors je te conseille de postuler. (Vậy tôi khuyên bạn nên nộp đơn.)\n\nExercices:\n1. Fill-blank: _______ (Vous devriez / À ta place) s'utilise pour un conseil à une personne que l'on vouvoie.\n2. Matching: 1. conseiller a) dire ce qu'il faut faire ; 2. recommander b) appuyer une suggestion ; 3. déconseiller c) dire de ne pas faire.\n3. Translation: I advise you to be careful. (Traduisez en français.)"
+},
+{
+  id: 40,
+  title: "Décrire des expériences",
+  content: "Vocabulaire:\nexpérience (kinh nghiệm) [ɛkspeʁjɑ̃s]\nvivre (trải qua) [vivʁ]\nressentir (cảm nhận) [ʁəsɑ̃tiʁ]\nse souvenir (nhớ lại) [sə suvniʁ]\nincroyable (không thể tin được) [ɛ̃kʁwajabl]\ninoubliable (không thể quên) [inublijabl]\néprouvant (gian nan, thử thách) [epʁuvɑ̃]\narricher (làm giàu) [aʁiʃe]\ntirer des leçons (rút ra bài học) [tiʁe de le sɔ̃]\nse rappeler (nhớ lại) [sə ʁaple]\n\nExemples:\nJ'ai vécu une expérience incroyable lors de mon voyage au Vietnam. (Tôi đã trải qua một trải nghiệm không thể tin được trong chuyến đi đến Việt Nam.)\nJe me souviens de ce moment inoubliable. (Tôi nhớ khoảnh khắc khó quên đó.)\nCette mission était très éprouvante mais enrichissante. (Nhiệm vụ này rất gian nan nhưng bổ ích.)\nJ'ai tiré des leçons importantes de cet échec. (Tôi đã rút ra những bài học quan trọng từ thất bại này.)\nSe rappeler les détails de cette réunion est difficile. (Nhớ lại chi tiết của cuộc họp đó thật khó.)\n\nDialogue:\n- A: Raconte-moi ton expérience à l'étranger. (Hãy kể cho tôi nghe về trải nghiệm của bạn ở nước ngoài.)\n- B: C'était génial ! J'ai rencontré des gens formidables. (Thật tuyệt vời! Tôi đã gặp những người tuyệt vời.)\n- A: Qu'as-tu ressenti en découvrant une nouvelle culture ? (Bạn đã cảm thấy thế nào khi khám phá một nền văn hóa mới?)\n- B: Un peu perdu au début, mais très vite à l'aise. (Hơi lạc lõng lúc đầu, nhưng rất nhanh đã thoải mái.)\n\nExercices:\n1. Fill-blank: Une expérience _______ (inoubliable / éprouvante) reste gravée dans la mémoire.\n2. Matching: 1. vivre a) avoir un souvenir ; 2. se souvenir b) traverser une situation ; 3. ressentir c) éprouver une émotion.\n3. Translation: I have never had such a wonderful experience. (Traduisez en français.)"
+},
+{
+  "id": 41,
+  "title": "Comparer des options",
+  "content": "Vocabulaire:\n1. comparer (so sánh) [kɔ̃.pa.ʁe]\n2. option (lựa chọn) [ɔp.sjɔ̃]\n3. préférable (ưa thích hơn) [pʁe.fe.ʁabl]\n4. avantage (lợi thế) [a.vɑ̃.taʒ]\n5. inconvénient (bất lợi) [ɛ̃.kɔ̃.ve.njɑ̃]\n6. similaire (tương tự) [si.mi.lɛʁ]\n7. différent (khác nhau) [di.fe.ʁɑ̃]\n8. supérieur (cao hơn) [sy.pe.ʁjœʁ]\n9. inférieur (thấp hơn) [ɛ̃.fe.ʁjœʁ]\n10. équivalent (tương đương) [e.ki.va.lɑ̃]\n\nExemples:\n1. Cette option est plus avantageuse que l'autre. (Lựa chọn này có lợi hơn lựa chọn kia.)\n2. Le prix est inférieur, mais la qualité est supérieure. (Giá thấp hơn nhưng chất lượng cao hơn.)\n3. Il faut comparer les avantages et les inconvénients avant de décider. (Cần so sánh ưu và nhược điểm trước khi quyết định.)\n4. Ces deux modèles sont équivalents en termes de performance. (Hai mẫu này tương đương về hiệu suất.)\n5. Je préfère la solution la plus économique. (Tôi thích giải pháp kinh tế nhất.)\n\nDialogue:\n- A: Entre l'appartement en ville et la maison en banlieue, qu'est-ce qui est préférable ? (Giữa căn hộ ở thành phố và ngôi nhà ở ngoại ô, cái nào tốt hơn?)\n- B: L'appartement est plus pratique pour le travail, mais la maison offre plus d'espace. (Căn hộ tiện hơn cho công việc, nhưng ngôi nhà rộng rãi hơn.)\n- A: Oui, mais le loyer en ville est beaucoup plus élevé. (Đúng, nhưng tiền thuê nhà ở thành phố cao hơn nhiều.)\n- B: Alors il faut peser le pour et le contre. (Vậy thì phải cân nhắc ưu và nhược điểm.)\n\nExercices:\n1. Fill-blank: Cette voiture est plus _______ que la mienne. (chère / cher)\n2. Matching: Reliez les mots à leur synonyme : 1. supérieur - a. meilleur ; 2. inférieur - b. pire ; 3. équivalent - c. égal.\n3. Translation: Dịch sang tiếng Việt : 'Comparer les options est essentiel avant d'acheter.'"
+},
+{
+  "id": 42,
+  "title": "Situations hypothétiques",
+  "content": "Vocabulaire:\n1. hypothétique (giả định) [i.pɔ.te.tik]\n2. si (nếu) [si]\n3. condition (điều kiện) [kɔ̃.di.sjɔ̃]\n4. imaginer (tưởng tượng) [i.ma.ʒi.ne]\n5. possible (có thể) [pɔ.sibl]\n6. improbable (không chắc) [ɛ̃.pʁɔ.babl]\n7. aurait (sẽ có - conditional) [o.ʁɛ]\n8. pourrait (có thể - conditional) [pu.ʁɛ]\n9. souhaiter (mong muốn) [swɛ.te]\n10. rêve (giấc mơ) [ʁɛv]\n\nExemples:\n1. Si j'avais plus d'argent, je voyagerais autour du monde. (Nếu tôi có nhiều tiền hơn, tôi sẽ đi du lịch vòng quanh thế giới.)\n2. Il serait plus heureux s'il changeait de travail. (Anh ấy sẽ hạnh phúc hơn nếu đổi việc.)\n3. Dans une situation hypothétique, que ferais-tu ? (Trong một tình huống giả định, bạn sẽ làm gì?)\n4. Nous pourrions partir en vacances si nous avions le temps. (Chúng tôi có thể đi nghỉ nếu có thời gian.)\n5. J'aimerais que ce soit vrai. (Tôi ước điều đó là đúng.)\n\nDialogue:\n- A: Si tu gagnais au loto, que ferais-tu ? (Nếu bạn trúng số, bạn sẽ làm gì?)\n- B: J'achèterais une maison à la campagne. (Tôi sẽ mua một ngôi nhà ở nông thôn.)\n- A: Et si tu perdais tout ? (Còn nếu bạn mất hết thì sao?)\n- B: Ce serait un désastre, mais je recommencerais. (Đó sẽ là một thảm họa, nhưng tôi sẽ bắt đầu lại.)\n\nExercices:\n1. Fill-blank: Si je _______ (avoir) plus de temps, je t'______ (aider).\n2. Matching: Associez les phrases hypothétiques : 1. Si je pouvais - a. je le ferais ; 2. Si j'avais su - b. je serais venu ; 3. Si tu veux - c. viens avec moi.\n3. Translation: Dịch sang tiếng Việt : 'Dans une situation hypothétique, il faudrait réfléchir avant d'agir.'"
+},
+{
+  "id": 43,
+  "title": "Discours rapporté",
+  "content": "Vocabulaire:\n1. discours rapporté (lời nói gián tiếp) [dis.kuʁ ʁa.pɔʁ.te]\n2. dire (nói) [diʁ]\n3. que (rằng) [kə]\n4. rapporteur (người thuật lại) [ʁa.pɔʁ.tœʁ]\n5. affirmer (khẳng định) [a.fiʁ.me]\n6. nier (phủ nhận) [nje]\n7. demander (hỏi) [də.mɑ̃.de]\n8. si (liệu rằng) [si]\n9. déclarer (tuyên bố) [de.kla.ʁe]\n10. paroles (lời nói) [pa.ʁɔl]\n\nExemples:\n1. Il a dit qu'il viendrait demain. (Anh ấy nói rằng anh ấy sẽ đến vào ngày mai.)\n2. Elle a demandé si j'avais fini mon travail. (Cô ấy hỏi liệu tôi đã hoàn thành công việc chưa.)\n3. Ils ont affirmé que la réunion était annulée. (Họ khẳng định cuộc họp đã bị hủy.)\n4. Le professeur a déclaré que l'examen serait difficile. (Giáo viên tuyên bố rằng kỳ thi sẽ khó.)\n5. Pierre m'a dit : « Je suis fatigué. » -> Pierre m'a dit qu'il était fatigué. (Pierre nói với tôi rằng anh ấy mệt.)\n\nDialogue:\n- A: Qu'est-ce qu'il a dit exactement ? (Anh ấy đã nói chính xác điều gì?)\n- B: Il a dit qu'il partait en vacances la semaine prochaine. (Anh ấy nói rằng anh ấy sẽ đi nghỉ vào tuần sau.)\n- A: Et elle, qu'a-t-elle répondu ? (Còn cô ấy, cô ấy trả lời thế nào?)\n- B: Elle a répondu qu'elle ne pouvait pas l'accompagner. (Cô ấy trả lời rằng cô ấy không thể đi cùng.)\n\nExercices:\n1. Fill-blank: Il a dit qu'il _______ (être) malade.\n2. Matching: Transformez au discours rapporté : 1. « Je viens demain. » -> a. Il a dit qu'il... ; 2. « As-tu fini ? » -> b. Il a demandé si... ; 3. « Ne pars pas ! » -> c. Il a ordonné de...\n3. Translation: Dịch sang tiếng Việt : 'Elle a affirmé que le projet était terminé.'"
+},
+{
+  "id": 44,
+  "title": "La voix passive",
+  "content": "Vocabulaire:\n1. voix passive (thể bị động) [vwa pa.siv]\n2. actif (chủ động) [ak.tif]\n3. être (được) [ɛtʁ]\n4. par (bởi) [paʁ]\n5. sujet (chủ ngữ) [sy.ʒɛ]\n6. verbe (động từ) [vɛʁb]\n7. complément d'agent (bổ ngữ tác nhân) [kɔ̃.ple.mɑ̃ da.ʒɑ̃]\n8. transformer (biến đổi) [tʁɑ̃s.fɔʁ.me]\n9. construction (cấu trúc) [kɔ̃s.tʁyk.sjɔ̃]\n10. passif impersonnel (bị động vô nhân xưng) [pa.sif ɛ̃.pɛʁ.sɔ.nɛl]\n\nExemples:\n1. La lettre a été envoyée par Marie. (Bức thư đã được gửi bởi Marie.)\n2. Le gâteau est mangé par les enfants. (Cái bánh đang được ăn bởi bọn trẻ.)\n3. Cette maison a été construite en 1990. (Ngôi nhà này được xây vào năm 1990.)\n4. Les règles doivent être respectées. (Các quy tắc phải được tuân thủ.)\n5. Il est interdit de fumer ici. (Cấm hút thuốc ở đây - thể bị động vô nhân xưng.)\n\nDialogue:\n- A: Qui a peint ce tableau ? (Ai vẽ bức tranh này?)\n- B: Il a été peint par un artiste célèbre. (Nó được vẽ bởi một nghệ sĩ nổi tiếng.)\n- A: Et cette sculpture ? (Còn tác phẩm điêu khắc này?)\n- B: Elle a été réalisée par une jeune sculpteure. (Nó được thực hiện bởi một nhà điêu khắc trẻ.)\n\nExercices:\n1. Fill-blank: Le livre _______ (lire) par beaucoup de gens.\n2. Matching: Transformez de l'actif au passif : 1. Le chien mange la viande. -> a. La viande est mangée par le chien ; 2. Les ouvriers construisent la route. -> b. La route est construite par les ouvriers ; 3. Marie a peint le portrait. -> c. Le portrait a été peint par Marie.\n3. Translation: Dịch sang tiếng Việt : 'Les fenêtres ont été nettoyées par le service d'entretien.'"
+},
+{
+  "id": 45,
+  "title": "Les propositions relatives",
+  "content": "Vocabulaire:\n1. proposition relative (mệnh đề quan hệ) [pʁɔ.po.zi.sjɔ̃ ʁə.la.tiv]\n2. pronom relatif (đại từ quan hệ) [pʁɔ.nɔ̃ ʁə.la.tif]\n3. qui (người mà) [ki]\n4. que (mà) [kə]\n5. dont (mà - sở hữu) [dɔ̃]\n6. lequel (cái mà) [lə.kɛl]\n7. où (nơi mà) [u]\n8. antécédent (tiền ngữ) [ɑ̃.te.se.dɑ̃]\n9. explicative (giải thích) [ɛk.spli.ka.tiv]\n10. déterminative (xác định) [de.tɛʁ.mi.na.tiv]\n\nExemples:\n1. L'homme qui parle est mon frère. (Người đàn ông đang nói là anh trai tôi.)\n2. Le livre que tu lis est intéressant. (Cuốn sách mà bạn đang đọc rất thú vị.)\n3. C'est un ami dont je te parlais. (Đó là một người bạn mà tôi đã nói với bạn.)\n4. La ville où je suis né est belle. (Thành phố nơi tôi sinh ra rất đẹp.)\n5. Voici la maison dans laquelle j'ai grandi. (Đây là ngôi nhà mà tôi đã lớn lên.)\n\nDialogue:\n- A: Connais-tu l'étudiant qui a gagné le concours ? (Bạn có biết sinh viên đã thắng cuộc thi không?)\n- B: Oui, c'est celui dont le père est professeur. (Có, đó là người mà cha làm giáo sư.)\n- A: Et la fille que tu as rencontrée hier ? (Còn cô gái bạn gặp hôm qua?)\n- B: Elle habite dans une maison qui a un grand jardin. (Cô ấy sống trong một ngôi nhà có vườn lớn.)\n\nExercices:\n1. Fill-blank: C'est le film _______ j'ai vu hier.\n2. Matching: Choisissez le bon pronom : 1. La personne ... parle - a. qui ; 2. Le livre ... tu as acheté - b. que ; 3. L'ami ... je te parle - c. dont.\n3. Translation: Dịch sang tiếng Việt : 'Le musée où nous sommes allés était magnifique.'"
+},
+{
+  "id": 46,
+  "title": "Les phrases conditionnelles",
+  "content": "Vocabulaire:\n1. conditionnel (điều kiện) [kɔ̃.di.sjɔ.nɛl]\n2. si + présent (nếu + hiện tại) [si pʁe.zɑ̃]\n3. futur simple (tương lai đơn) [fy.tyʁ sɛ̃pl]\n4. imparfait (chưa hoàn thành) [ɛ̃.paʁ.fɛ]\n5. conditionnel présent (điều kiện hiện tại) [kɔ̃.di.sjɔ.nɛl pʁe.zɑ̃]\n6. plus-que-parfait (quá khứ hoàn thành) [plys.kə.paʁ.fɛ]\n7. conditionnel passé (điều kiện quá khứ) [kɔ̃.di.sjɔ.nɛl pa.se]\n8. hypothèse (giả thuyết) [i.pɔ.tɛz]\n9. réalisation (thực hiện) [ʁe.a.li.za.sjɔ̃]\n10. conséquence (hậu quả) [kɔ̃.se.kɑ̃s]\n\nExemples:\n1. Si tu étudies, tu réussiras. (Nếu bạn học, bạn sẽ thành công - loại 1.)\n2. Si j'avais de l'argent, j'achèterais une maison. (Nếu tôi có tiền, tôi sẽ mua một ngôi nhà - loại 2.)\n3. Si j'avais su, je serais venu. (Nếu tôi biết, tôi đã đến - loại 3.)\n4. Il viendrait s'il avait le temps. (Anh ấy sẽ đến nếu có thời gian.)\n5. Si tu veux, nous pourrions aller au cinéma. (Nếu bạn muốn, chúng ta có thể đi xem phim.)\n\nDialogue:\n- A: Si tu pouvais voyager, où irais-tu ? (Nếu bạn có thể đi du lịch, bạn sẽ đi đâu?)\n- B: J'irais au Japon. (Tôi sẽ đi Nhật Bản.)\n- A: Et si tu avais plus d'argent, que ferais-tu ? (Và nếu bạn có nhiều tiền hơn, bạn sẽ làm gì?)\n- B: Je ferais le tour du monde. (Tôi sẽ đi vòng quanh thế giới.)\n\nExercices:\n1. Fill-blank: Si j'_______ (avoir) du temps, je t'______ (aider).\n2. Matching: Associez les types : 1. Si présent + futur - a. Type 2 ; 2. Si imparfait + conditionnel présent - b. Type 1 ; 3. Si plus-que-parfait + conditionnel passé - c. Type 3.\n3. Translation: Dịch sang tiếng Việt : 'Si elle m'avait invité, je serais allé à la fête.'"
+},
+{
+  "id": 47,
+  "title": "Expressions idiomatiques",
+  "content": "Vocabulaire:\n1. expression idiomatique (thành ngữ) [ɛk.spʁɛ.sjɔ̃ i.djɔ.ma.tik]\n2. coûter les yeux de la tête (đắt cắt cổ) [ku.te le.z‿jø də la tɛt]\n3. avoir le cafard (buồn chán) [a.vwaʁ lə ka.faʁ]\n4. poser un lapin (hẹn mà không đến) [po.ze ɛ̃ la.pɛ̃]\n5. tomber dans les pommes (ngất xỉu) [tɔ̃.be dɑ̃ le pɔm]\n6. mettre de l'eau dans son vin (dịu đi) [mɛtʁ də lo dɑ̃ sɔ̃ vɛ̃]\n7. faire la grasse matinée (ngủ nướng) [fɛʁ la ɡʁas ma.ti.ne]\n8. être dans le même bateau (cùng cảnh ngộ) [ɛtʁ dɑ̃ lə mɛm ba.to]\n9. donner sa langue au chat (chịu thua) [dɔ.ne sa lɑ̃ɡ o ʃa]\n10. en avoir plein le dos (chán ngấy) [ɑ̃.n‿a.vwaʁ plɛ̃ lə do]\n\nExemples:\n1. Cette robe coûte les yeux de la tête. (Cái váy này đắt cắt cổ.)\n2. Depuis qu'il est parti, elle a le cafard. (Từ khi anh ấy đi, cô ấy buồn chán.)\n3. Il m'a posé un lapin, je l'ai attendu une heure. (Anh ấy hẹn mà không đến, tôi đợi anh ấy một tiếng.)\n4. Après la mauvaise nouvelle, elle est tombée dans les pommes. (Sau tin xấu, cô ấy ngất xỉu.)\n5. Il faut mettre de l'eau dans son vin et accepter les compromis. (Cần phải dịu đi và chấp nhận thỏa hiệp.)\n\nDialogue:\n- A: Pourquoi es-tu fatigué ? (Sao bạn mệt vậy?)\n- B: J'ai fait la grasse matinée, mais je n'arrive pas à me réveiller. (Tôi ngủ nướng, nhưng không thể tỉnh táo.)\n- A: Allez, on est dans le même bateau, il faut travailler. (Thôi nào, chúng ta cùng cảnh ngộ, phải làm việc thôi.)\n- B: J'en ai plein le dos de ce projet. (Tôi chán ngấy dự án này rồi.)\n\nExercices:\n1. Fill-blank: Il m'a _______ , je l'ai attendu deux heures. (posé un lapin / donné sa langue au chat)\n2. Matching: Associez les expressions à leur sens : 1. Coûter les yeux de la tête - a. être très cher ; 2. Avoir le cafard - b. être triste ; 3. Tomber dans les pommes - c. s'évanouir.\n3. Translation: Dịch sang tiếng Việt : 'Ne donne pas ta langue au chat, continue à chercher.'"
+},
+{
+  "id": 48,
+  "title": "Argot et langage familier",
+  "content": "Vocabulaire:\n1. argot (tiếng lóng) [aʁ.ɡo]\n2. dingo (điên khùng) [dɛ̃.ɡo]\n3. flic (cảnh sát) [flik]\n4. bosser (làm việc) [bɔ.se]\n5. bouffer (ăn) [bu.fe]\n6. pognon (tiền) [pɔ.ɲɔ̃]\n7. mec (gã, chàng) [mɛk]\n8. nana (cô nàng) [na.na]\n9. choper (bắt, lấy) [ʃɔ.pe]\n10. se barrer (chuồn, đi) [sə ba.ʁe]\n\nExemples:\n1. Ce mec est complètement dingo. (Gã đó hoàn toàn điên.)\n2. Je bosse depuis huit heures du matin. (Tôi làm việc từ tám giờ sáng.)\n3. On va bouffer au resto ? (Chúng ta sẽ ăn ở nhà hàng chứ?)\n4. Il a chopé une amende pour excès de vitesse. (Anh ấy bị phạt vì vượt quá tốc độ.)\n5. Il s'est barré sans payer. (Anh ấy chuồn mất không trả tiền.)\n\nDialogue:\n- A: T'as du pognon ? (Bạn có tiền không?)\n- B: Non, je suis fauché. (Không, tôi cháy túi.)\n- A: Alors on va se barrer d'ici, y a des flics. (Vậy thì chúng ta chuồn khỏi đây, có cảnh sát.)\n- B: D'accord, on bouffe ailleurs. (Được, chúng ta ăn ở chỗ khác.)\n\nExercices:\n1. Fill-blank: Arrête de _______ , tu vas te faire mal. (choper / bosser)\n2. Matching: Remplacez le mot familier par le mot standard : 1. bouffer - a. manger ; 2. flic - b. policier ; 3. mec - c. homme.\n3. Translation: Dịch sang tiếng Việt (familier) : 'Ce nana a chopé un super taf.'"
+},
+{
+  "id": 49,
+  "title": "Compétences de débat",
+  "content": "Vocabulaire:\n1. débat (tranh luận) [de.ba]\n2. argument (lý lẽ) [aʁ.ɡy.mɑ̃]\n3. contre-argument (phản biện) [kɔ̃tʁ aʁ.ɡy.mɑ̃]\n4. convaincre (thuyết phục) [kɔ̃.vɛ̃kʁ]\n5. réfuter (bác bỏ) [ʁe.fy.te]\n6. opinion (ý kiến) [ɔ.pi.njɔ̃]\n7. point de vue (quan điểm) [pwɛ̃ də vy]\n8. modérateur (người điều phối) [mɔ.de.ʁa.tœʁ]\n9. conclusion (kết luận) [kɔ̃.kly.zjɔ̃]\n10. compromis (thỏa hiệp) [kɔ̃.pʁɔ.mi]\n\nExemples:\n1. Selon mon point de vue, l'éducation est prioritaire. (Theo quan điểm của tôi, giáo dục là ưu tiên.)\n2. Je réfute cet argument car les données sont fausses. (Tôi bác bỏ lý lẽ đó vì dữ liệu sai.)\n3. Pour convaincre, il faut des preuves solides. (Để thuyết phục, cần có bằng chứng vững chắc.)\n4. Le modérateur a donné la parole à chacun. (Người điều phối đã cho mỗi người phát biểu.)\n5. Après le débat, ils ont trouvé un compromis. (Sau cuộc tranh luận, họ đã tìm ra thỏa hiệp.)\n\nDialogue:\n- A: Je pense que la technologie nuit aux relations humaines. (Tôi nghĩ công nghệ gây hại cho quan hệ con người.)\n- B: Je ne suis pas d'accord. Elle permet de rester connectés. (Tôi không đồng ý. Nó cho phép giữ kết nối.)\n- A: Oui, mais elle réduit les interactions en face-à-face. (Đúng, nhưng nó làm giảm tương tác trực tiếp.)\n- B: Peut-être, mais on peut aussi l'utiliser pour organiser des rencontres. (Có thể, nhưng ta cũng có thể dùng nó để tổ chức các cuộc gặp.)\n\nExercices:\n1. Fill-blank: Il faut _______ les arguments de l'adversaire. (réfuter / convaincre)\n2. Matching: Reliez chaque terme à sa définition : 1. Débat - a. échange d'idées ; 2. Compromis - b. solution mutuelle ; 3. Modérateur - c. régulateur.\n3. Translation: Dịch sang tiếng Việt : 'Il est important de savoir écouter les autres opinions lors d'un débat.'"
+},
+{
+  "id": 50,
+  "title": "Révision générale finale",
+  "content": "Vocabulaire:\n1. révision (ôn tập) [ʁe.vi.zjɔ̃]\n2. bilan (tổng kết) [bi.lɑ̃]\n3. grammaire (ngữ pháp) [ɡʁa.mɛʁ]\n4. conjugaison (chia động từ) [kɔ̃.ʒy.ɡɛ.zɔ̃]\n5. vocabulaire (từ vựng) [vɔ.ka.by.lɛʁ]\n6. expression (diễn đạt) [ɛk.spʁɛ.sjɔ̃]\n7. compréhension (hiểu) [kɔ̃.pʁe.ɑ̃.sjɔ̃]\n8. exercice (bài tập) [ɛɡ.zɛʁ.sis]\n9. progrès (tiến bộ) [pʁɔ.ɡʁɛ]\n10. confiance (tự tin) [kɔ̃.fjɑ̃s]\n\nExemples:\n1. Cette révision couvre tous les points importants. (Bài ôn tập này bao gồm tất cả các điểm quan trọng.)\n2. J'ai besoin de revoir la conjugaison des verbes irréguliers. (Tôi cần xem lại cách chia động từ bất quy tắc.)\n3. Le bilan de l'année est positif. (Tổng kết năm học rất tích cực.)\n4. Il faut pratiquer les expressions pour les mémoriser. (Cần thực hành các diễn đạt để ghi nhớ.)\n5. Avec ce cours, j'ai gagné en confiance. (Với khóa học này, tôi đã tự tin hơn.)\n\nDialogue:\n- A: Prêt pour l'examen final ? (Sẵn sàng cho kỳ thi cuối chưa?)\n- B: Pas vraiment, il y a trop de choses à réviser. (Chưa thực sự, có quá nhiều thứ phải ôn.)\n- A: Concentre-toi sur les points faibles que tu as notés. (Tập trung vào điểm yếu mà bạn đã ghi lại.)\n- B: Oui, et je vais refaire les exercices de grammaire. (Vâng, và tôi sẽ làm lại các bài tập ngữ pháp.)\n\nExercices:\n1. Fill-blank: Pour réussir l'examen, il faut _______ régulièrement. (réviser / ignorer)\n2. Matching: Reliez les sujets de révision aux leçons : 1. Comparer des options - a. Leçon 41 ; 2. Discours rapporté - b. Leçon 43 ; 3. Phrases conditionnelles - c. Leçon 46.\n3. Translation: Dịch sang tiếng Việt : 'La révision générale permet de consolider les connaissances acquises.'"
 }
-
-export function getLessonById(id: string): FrenchLesson | undefined {
-  return FRENCH_LESSONS.find((l) => l.id === id);
-}
-
-export default FRENCH_LESSONS;
+];
