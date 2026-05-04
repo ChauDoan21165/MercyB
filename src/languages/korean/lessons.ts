@@ -165,12 +165,12 @@ export const lessons = [
       { hangul: "메시지를 남겨 주시겠어요?", meaning: "Could you leave a message?" },
       { hangul: "통화 중이에요.", meaning: "The line is busy." }
     ],
-    dialogue: {
-      speakerA: { hangul: "여보세요, 김민수 씨 계세요?", meaning: "Hello, is Minsu Kim there?" },
-      speakerB: { hangul: "제가 김민순데요. 누구세요?", meaning: "This is Minsu Kim. Who is this?" },
-      speakerA: { hangul: "저는 박지영이에요.", meaning: "This is Jiyoung Park." },
-      speakerB: { hangul: "아, 지영 씨! 무슨 일이세요?", meaning: "Ah, Jiyoung! What can I do for you?" }
-    },
+    dialogue: [
+      { speaker: "A", hangul: "여보세요, 김민수 씨 계세요?", meaning: "Hello, is Minsu Kim there?" },
+      { speaker: "B", hangul: "제가 김민순데요. 누구세요?", meaning: "This is Minsu Kim. Who is this?" },
+      { speaker: "A", hangul: "저는 박지영이에요.", meaning: "This is Jiyoung Park." },
+      { speaker: "B", hangul: "아, 지영 씨! 무슨 일이세요?", meaning: "Ah, Jiyoung! What can I do for you?" },
+    ],
     exercises: [
       { type: "fill-blank", question: "여보세요, 김 선생님 ___?", answer: "계세요" },
       { type: "matching", pairs: [{ hangul: "전화를 걸다", meaning: "to make a call" }, { hangul: "전화를 받다", meaning: "to answer the phone" }], instruction: "Match Korean with English" },
@@ -202,12 +202,12 @@ export const lessons = [
       { hangul: "제목을 다시 쓰겠습니다.", meaning: "I will rewrite the subject." },
       { hangul: "감사합니다. 좋은 하루 보내세요.", meaning: "Thank you. Have a nice day." }
     ],
-    dialogue: {
-      speakerA: { hangul: "안녕하세요, 이메일 보냈어요?", meaning: "Hello, did you send the email?" },
-      speakerB: { hangul: "네, 방금 보냈어요. 첨부 파일도 넣었어요.", meaning: "Yes, I just sent it. I also attached a file." },
-      speakerA: { hangul: "확인해 볼게요. 감사합니다.", meaning: "I'll check it. Thank you." },
-      speakerB: { hangul: "네, 수고하세요.", meaning: "Okay, take care." }
-    },
+    dialogue: [
+      { speaker: "A", hangul: "안녕하세요, 이메일 보냈어요?", meaning: "Hello, did you send the email?" },
+      { speaker: "B", hangul: "네, 방금 보냈어요. 첨부 파일도 넣었어요.", meaning: "Yes, I just sent it. I also attached a file." },
+      { speaker: "A", hangul: "확인해 볼게요. 감사합니다.", meaning: "I'll check it. Thank you." },
+      { speaker: "B", hangul: "네, 수고하세요.", meaning: "Okay, take care." },
+    ],
     exercises: [
       { type: "fill-blank", question: "이메일을 ___습니다.", answer: "보냈" },
       { type: "matching", pairs: [{ hangul: "보내다", meaning: "to send" }, { hangul: "받다", meaning: "to receive" }], instruction: "Match Korean with English" },
