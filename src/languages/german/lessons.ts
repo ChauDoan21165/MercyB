@@ -31,7 +31,9 @@ export type GermanCategoryId =
   | "past_tense"
   | "future_plans"
   | "workplace"
-  | "life_admin";
+  | "life_admin"
+  | "society"
+  | "expressions";
 
 export type GermanCategoryMeta = {
   id: GermanCategoryId;
@@ -63,6 +65,8 @@ export const GERMAN_CATEGORIES: ReadonlyArray<GermanCategoryMeta> = [
   { id: "future_plans", title_vi: "Kế hoạch tương lai", title_en: "Future plans", expected_count: 1 },
   { id: "workplace", title_vi: "Công sở", title_en: "Workplace", expected_count: 5 },
   { id: "life_admin", title_vi: "Thủ tục hành chính", title_en: "Administrative tasks", expected_count: 5 },
+  { id: "society", title_vi: "Xã hội", title_en: "Society", expected_count: 5 },
+  { id: "expressions", title_vi: "Biểu đạt", title_en: "Expressions", expected_count: 5 },
 ];
 
 export type LessonSentence = {
@@ -2166,6 +2170,896 @@ const LIFE_ADMIN: GermanLesson[] = [
   },
 ];
 
+// ── 31–35. Society ──────────────────────────────────────────────────────
+
+const SOCIETY: GermanLesson[] = [
+  {
+    id: "german_shopping",
+    category: "society",
+    title_vi: "Mua sắm",
+    title_en: "Shopping",
+    sentences: [
+      {
+        en: "Wo finde ich die Milch?",
+        vi: "Sữa ở đâu vậy?",
+        pronunciation_focus: ["finde → PHIN-đờ", "Milch → MỊN-khờ — 'ch' nhẹ", "wo → vô"],
+      },
+      {
+        en: "Was kostet ein Kilo Tomaten?",
+        vi: "Một cân cà chua giá bao nhiêu?",
+        pronunciation_focus: ["kostet → CÔS-tết", "Kilo → KI-lô", "Tomaten → tô-MA-tần"],
+      },
+      {
+        en: "Ich nehme zwei Stück, bitte.",
+        vi: "Cho tôi 2 cái.",
+        pronunciation_focus: ["nehme → NÊ-mờ", "zwei → tsvai", "Stück → SHTUYC — 'ü' tròn"],
+      },
+      {
+        en: "Haben Sie das in einer anderen Größe?",
+        vi: "Bạn có cái này cỡ khác không?",
+        pronunciation_focus: ["anderen → AN-đe-rần", "Größe → GRƠY-sờ — 'ö' tròn, 'ß' = ss", "ei → ai"],
+      },
+      {
+        en: "Ich zahle mit Karte.",
+        vi: "Tôi trả bằng thẻ.",
+        pronunciation_focus: ["zahle → TSA-lờ", "mit → MÍT", "Karte → CÁ-tờ"],
+      },
+    ],
+    cultural_notes_vi:
+      "Siêu thị Đức (Aldi, Lidl, Edeka, Rewe) đóng cửa Chủ nhật theo luật. Người mua tự đóng gói hàng vào túi mang theo — túi nilon mất phí và bị xã hội phản đối. Pfand (đặt cọc) trên chai nước, bia: trả lại chai để lấy lại tiền cọc. Nhân viên thu ngân quét hàng nhanh — hãy chuẩn bị túi sẵn.",
+    tip_advice_vi:
+      "'Was kostet ___?' (giá bao nhiêu) là câu chuẩn. 'Wie viel kostet ___?' cũng dùng được, hơi formal hơn. Số lượng đi với đơn vị: 'ein Kilo Äpfel' (1 cân táo), 'eine Flasche Wasser' (1 chai nước), 'ein Stück Brot' (1 miếng bánh mì) — không có 's' số nhiều như tiếng Anh.",
+    vocabulary: [
+      { word: "der Supermarkt", en: "supermarket", vi: "siêu thị", pos: "noun (m)", pronunciation_vi: "đe-a ZÚ-pờ-mác-kt" },
+      { word: "der Markt", en: "market", vi: "chợ", pos: "noun (m)", pronunciation_vi: "đe-a MÁC-kt" },
+      { word: "die Kasse", en: "checkout", vi: "quầy thu ngân", pos: "noun (f)", pronunciation_vi: "đi CA-sờ" },
+      { word: "die Tüte", en: "bag", vi: "túi", pos: "noun (f)", pronunciation_vi: "đi TUY-tờ — 'ü' tròn" },
+      { word: "das Angebot", en: "offer/sale", vi: "khuyến mãi", pos: "noun (n)", pronunciation_vi: "đát AN-gờ-bốt" },
+      { word: "der Rabatt", en: "discount", vi: "giảm giá", pos: "noun (m)", pronunciation_vi: "đe-a ra-BÁT" },
+      { word: "die Größe", en: "size", vi: "cỡ", pos: "noun (f)", pronunciation_vi: "đi GRƠY-sờ" },
+      { word: "kaufen", en: "to buy", vi: "mua", pos: "verb", pronunciation_vi: "CAO-phần" },
+      { word: "zahlen", en: "to pay", vi: "trả tiền", pos: "verb", pronunciation_vi: "TSA-lần" },
+      { word: "billig", en: "cheap", vi: "rẻ", pos: "adjective", pronunciation_vi: "BÍ-lị-khờ" },
+    ],
+    dialogue: [
+      { speaker: "A", text: "Entschuldigung, wo finde ich Brot?", vi: "Xin lỗi, bánh mì ở đâu?" },
+      { speaker: "B", text: "Im Gang drei, neben dem Käse.", vi: "Lối đi số 3, cạnh phô mai." },
+      { speaker: "A", text: "Vielen Dank. Was kostet das Brot?", vi: "Cám ơn. Bánh mì giá bao nhiêu?" },
+      { speaker: "B", text: "Zwei Euro fünfzig. Im Angebot heute.", vi: "2 euro 50. Hôm nay khuyến mãi." },
+    ],
+    exercises: [
+      {
+        type: "fill_blank",
+        instruction_vi: "Điền từ về mua sắm:",
+        pronunciation_focus: [],
+        items: [
+          { prompt: "Was _____ das? (giá bao nhiêu)", answer: "kostet" },
+          { prompt: "Ich _____ mit Karte. (trả tiền)", answer: "zahle" },
+          { prompt: "Haben Sie das in einer anderen _____? (cỡ)", answer: "Größe" },
+        ],
+      },
+      {
+        type: "matching",
+        instruction_vi: "Nối từ với nghĩa:",
+        pronunciation_focus: [],
+        items: [
+          { prompt: "der Supermarkt", answer: "siêu thị" },
+          { prompt: "die Kasse", answer: "quầy thu ngân" },
+          { prompt: "der Rabatt", answer: "giảm giá" },
+          { prompt: "billig", answer: "rẻ" },
+        ],
+      },
+      {
+        type: "translation",
+        instruction_vi: "Dịch sang tiếng Đức:",
+        pronunciation_focus: [],
+        items: [
+          { prompt: "Một cân cà chua giá bao nhiêu?", answer: "Was kostet ein Kilo Tomaten?" },
+          { prompt: "Tôi trả bằng thẻ.", answer: "Ich zahle mit Karte." },
+          { prompt: "Hôm nay có khuyến mãi không?", answer: "Gibt es heute ein Angebot?" },
+        ],
+      },
+    ],
+  },
+  {
+    id: "german_directions",
+    category: "society",
+    title_vi: "Hỏi đường",
+    title_en: "Asking directions",
+    sentences: [
+      {
+        en: "Entschuldigung, wo ist der Bahnhof?",
+        vi: "Xin lỗi, ga tàu ở đâu?",
+        pronunciation_focus: ["Entschuldigung → ent-SHUN-đi-gung", "Bahnhof → BA-nờ-hôph", "wo → vô"],
+      },
+      {
+        en: "Gehen Sie geradeaus und dann links.",
+        vi: "Đi thẳng rồi rẽ trái.",
+        pronunciation_focus: ["geradeaus → gờ-RA-đờ-ao-s", "dann → đan", "links → LINGKS"],
+      },
+      {
+        en: "Es ist etwa fünf Minuten zu Fuß.",
+        vi: "Khoảng 5 phút đi bộ.",
+        pronunciation_focus: ["etwa → ET-va", "fünf → PHUYNF", "zu Fuß → tsu PHUYS — 'ß' = ss"],
+      },
+      {
+        en: "Ist das weit von hier?",
+        vi: "Có xa đây không?",
+        pronunciation_focus: ["weit → vAIT", "hier → HÍA", "ist → ÍST"],
+      },
+      {
+        en: "Gibt es hier eine U-Bahn-Station?",
+        vi: "Có ga tàu điện ngầm gần đây không?",
+        pronunciation_focus: ["Gibt es → GHÍPT-es", "U-Bahn → U-ba-nờ", "Station → SHTA-tsi-ôn"],
+      },
+    ],
+    cultural_notes_vi:
+      "Người Đức thường rất sẵn lòng chỉ đường và giải thích kỹ. Đừng ngạc nhiên nếu họ rút điện thoại tra Google Maps cùng bạn. Ở các thành phố lớn (Berlin, München, Hamburg), tiếng Anh được dùng nhiều — nhưng cố gắng mở đầu bằng 'Entschuldigung, sprechen Sie Englisch?' (Xin lỗi, bạn có nói tiếng Anh không?) là phép lịch sự.",
+    tip_advice_vi:
+      "'Wie komme ich zu/zum/zur ___?' (Đến ___ đường nào?) — giới từ 'zu' kết hợp giống danh từ: 'zum' (zu+dem) cho der/das, 'zur' (zu+der) cho die. Ví dụ: 'zum Bahnhof' (der), 'zur Bank' (die), 'zum Hotel' (das). Học cấu trúc này một lần là dùng được mãi.",
+    vocabulary: [
+      { word: "der Bahnhof", en: "train station", vi: "ga tàu", pos: "noun (m)", pronunciation_vi: "đe-a BA-nờ-hôph" },
+      { word: "die U-Bahn", en: "subway", vi: "tàu điện ngầm", pos: "noun (f)", pronunciation_vi: "đi U-ba-nờ" },
+      { word: "die Bushaltestelle", en: "bus stop", vi: "trạm xe buýt", pos: "noun (f)", pronunciation_vi: "đi BÚS-han-tờ-shte-lờ" },
+      { word: "die Straße", en: "street", vi: "đường", pos: "noun (f)", pronunciation_vi: "đi SHTRA-sờ — 'ß' = ss" },
+      { word: "die Kreuzung", en: "intersection", vi: "ngã tư", pos: "noun (f)", pronunciation_vi: "đi CROI-tsung" },
+      { word: "die Ampel", en: "traffic light", vi: "đèn giao thông", pos: "noun (f)", pronunciation_vi: "đi AM-pần" },
+      { word: "geradeaus", en: "straight ahead", vi: "đi thẳng", pos: "adverb", pronunciation_vi: "gờ-RA-đờ-ao-s" },
+      { word: "links", en: "left", vi: "trái", pos: "adverb", pronunciation_vi: "LINGKS" },
+      { word: "rechts", en: "right", vi: "phải", pos: "adverb", pronunciation_vi: "RẾC-tờs" },
+      { word: "weit", en: "far", vi: "xa", pos: "adjective", pronunciation_vi: "vAIT" },
+    ],
+    dialogue: [
+      { speaker: "A", text: "Entschuldigung, wie komme ich zum Museum?", vi: "Xin lỗi, đến bảo tàng đường nào?" },
+      { speaker: "B", text: "Gehen Sie geradeaus bis zur Ampel, dann rechts.", vi: "Đi thẳng đến đèn giao thông, rồi rẽ phải." },
+      { speaker: "A", text: "Ist es weit?", vi: "Có xa không?" },
+      { speaker: "B", text: "Nein, nur zehn Minuten zu Fuß.", vi: "Không, chỉ 10 phút đi bộ." },
+    ],
+    exercises: [
+      {
+        type: "fill_blank",
+        instruction_vi: "Điền từ về phương hướng:",
+        pronunciation_focus: [],
+        items: [
+          { prompt: "Gehen Sie _____. (đi thẳng)", answer: "geradeaus" },
+          { prompt: "Dann nach _____. (trái)", answer: "links" },
+          { prompt: "Wo ist der _____? (ga tàu)", answer: "Bahnhof" },
+        ],
+      },
+      {
+        type: "matching",
+        instruction_vi: "Nối từ với nghĩa:",
+        pronunciation_focus: [],
+        items: [
+          { prompt: "die Kreuzung", answer: "ngã tư" },
+          { prompt: "die Ampel", answer: "đèn giao thông" },
+          { prompt: "die U-Bahn", answer: "tàu điện ngầm" },
+          { prompt: "weit", answer: "xa" },
+        ],
+      },
+      {
+        type: "translation",
+        instruction_vi: "Dịch sang tiếng Đức:",
+        pronunciation_focus: [],
+        items: [
+          { prompt: "Có xa đây không?", answer: "Ist das weit von hier?" },
+          { prompt: "Khoảng 5 phút đi bộ.", answer: "Etwa fünf Minuten zu Fuß." },
+          { prompt: "Đi thẳng rồi rẽ phải.", answer: "Gehen Sie geradeaus und dann rechts." },
+        ],
+      },
+    ],
+  },
+  {
+    id: "german_restaurant",
+    category: "society",
+    title_vi: "Nhà hàng",
+    title_en: "Restaurant",
+    sentences: [
+      {
+        en: "Ich hätte gern die Speisekarte, bitte.",
+        vi: "Cho tôi xem thực đơn.",
+        pronunciation_focus: ["hätte → HE-tờ — 'ä' = e", "gern → GHEAN", "Speisekarte → SHPAI-zờ-cá-tờ"],
+      },
+      {
+        en: "Was können Sie empfehlen?",
+        vi: "Bạn có thể giới thiệu món gì không?",
+        pronunciation_focus: ["können → KƠN-nần — 'ö' tròn", "empfehlen → em-PHÊ-lần", "pf → kết hợp"],
+      },
+      {
+        en: "Ich nehme das Schnitzel mit Pommes.",
+        vi: "Cho tôi món schnitzel với khoai tây chiên.",
+        pronunciation_focus: ["nehme → NÊ-mờ", "Schnitzel → SHNÍT-tsần", "Pommes → PÔM-mes"],
+      },
+      {
+        en: "Die Rechnung, bitte.",
+        vi: "Cho tôi xin hóa đơn.",
+        pronunciation_focus: ["Rechnung → RẾC-nung", "ch → khờ", "bitte → BÍ-tờ"],
+      },
+      {
+        en: "Stimmt so. Vielen Dank.",
+        vi: "Khỏi thối lại. Cám ơn.",
+        pronunciation_focus: ["Stimmt so → SHTÍMT zô", "Vielen → PHÍ-lần", "Dank → ĐANK"],
+      },
+    ],
+    cultural_notes_vi:
+      "Tiền boa ở Đức không bắt buộc nhưng phổ biến — khoảng 5-10% là chuẩn. Nói số tiền tổng cộng thay vì để boa trên bàn: 'Stimmt so' (khỏi thối lại) hoặc nói 'Macht 25 Euro' nếu hóa đơn 22.50 — phục vụ giữ phần chênh. Người Đức chia hóa đơn thường xuyên: 'Getrennt zahlen' (trả riêng) là cụm nên biết.",
+    tip_advice_vi:
+      "'Ich hätte gern' (cho tôi) lịch sự hơn 'Ich will' (tôi muốn). Trong nhà hàng formal, dùng 'hätte gern' luôn. 'Ich nehme' (tôi gọi/lấy) cũng tự nhiên cho việc gọi món. Tránh 'Ich möchte essen' (tôi muốn ăn) — quá cứng.",
+    vocabulary: [
+      { word: "das Restaurant", en: "restaurant", vi: "nhà hàng", pos: "noun (n)", pronunciation_vi: "đát rếs-tô-RANG" },
+      { word: "die Speisekarte", en: "menu", vi: "thực đơn", pos: "noun (f)", pronunciation_vi: "đi SHPAI-zờ-cá-tờ" },
+      { word: "die Vorspeise", en: "appetizer", vi: "khai vị", pos: "noun (f)", pronunciation_vi: "đi PHÔ-shpai-zờ" },
+      { word: "das Hauptgericht", en: "main course", vi: "món chính", pos: "noun (n)", pronunciation_vi: "đát HAOPT-gờ-rịt" },
+      { word: "der Nachtisch", en: "dessert", vi: "tráng miệng", pos: "noun (m)", pronunciation_vi: "đe-a NÁC-tish" },
+      { word: "die Rechnung", en: "bill", vi: "hóa đơn", pos: "noun (f)", pronunciation_vi: "đi RẾC-nung" },
+      { word: "das Trinkgeld", en: "tip", vi: "tiền boa", pos: "noun (n)", pronunciation_vi: "đát TRINK-ghen-t" },
+      { word: "bestellen", en: "to order", vi: "gọi món", pos: "verb", pronunciation_vi: "bờ-SHTE-lần" },
+      { word: "empfehlen", en: "to recommend", vi: "giới thiệu", pos: "verb", pronunciation_vi: "em-PHÊ-lần" },
+      { word: "lecker", en: "delicious", vi: "ngon", pos: "adjective", pronunciation_vi: "LẾC-cờ" },
+    ],
+    dialogue: [
+      { speaker: "A", text: "Guten Abend. Haben Sie reserviert?", vi: "Chào buổi tối. Bạn có đặt bàn không?" },
+      { speaker: "B", text: "Ja, auf den Namen Müller, für zwei Personen.", vi: "Có, tên Müller, 2 người." },
+      { speaker: "A", text: "Folgen Sie mir bitte. Hier ist Ihr Tisch.", vi: "Mời theo tôi. Đây là bàn của bạn." },
+      { speaker: "B", text: "Danke. Können wir die Speisekarte sehen?", vi: "Cám ơn. Cho chúng tôi xem thực đơn được không?" },
+    ],
+    exercises: [
+      {
+        type: "fill_blank",
+        instruction_vi: "Điền từ về nhà hàng:",
+        pronunciation_focus: [],
+        items: [
+          { prompt: "Die _____, bitte. (hóa đơn)", answer: "Rechnung" },
+          { prompt: "Ich _____ das Schnitzel. (gọi món - dùng 'nehme')", answer: "nehme" },
+          { prompt: "Was können Sie _____? (giới thiệu)", answer: "empfehlen" },
+        ],
+      },
+      {
+        type: "matching",
+        instruction_vi: "Nối từ với nghĩa:",
+        pronunciation_focus: [],
+        items: [
+          { prompt: "die Vorspeise", answer: "khai vị" },
+          { prompt: "der Nachtisch", answer: "tráng miệng" },
+          { prompt: "das Trinkgeld", answer: "tiền boa" },
+          { prompt: "lecker", answer: "ngon" },
+        ],
+      },
+      {
+        type: "translation",
+        instruction_vi: "Dịch sang tiếng Đức:",
+        pronunciation_focus: [],
+        items: [
+          { prompt: "Cho tôi xem thực đơn.", answer: "Die Speisekarte, bitte." },
+          { prompt: "Bạn có thể giới thiệu món gì không?", answer: "Was können Sie empfehlen?" },
+          { prompt: "Cho tôi xin hóa đơn.", answer: "Die Rechnung, bitte." },
+        ],
+      },
+    ],
+  },
+  {
+    id: "german_holidays",
+    category: "society",
+    title_vi: "Lễ hội và ngày lễ",
+    title_en: "Holidays and festivals",
+    sentences: [
+      {
+        en: "Frohe Weihnachten und ein gutes neues Jahr!",
+        vi: "Giáng sinh vui vẻ và năm mới tốt lành!",
+        pronunciation_focus: ["Frohe → PHRÔ-ờ", "Weihnachten → vAI-nắc-tần", "neues → NÔI-ợs"],
+      },
+      {
+        en: "Wir feiern Silvester mit Freunden.",
+        vi: "Chúng tôi đón giao thừa với bạn bè.",
+        pronunciation_focus: ["feiern → PHAI-ợn", "Silvester → zin-VES-tờ", "Freunden → PHROIN-đần"],
+      },
+      {
+        en: "Ostern ist im Frühling.",
+        vi: "Lễ Phục sinh vào mùa xuân.",
+        pronunciation_focus: ["Ostern → ÔS-tần", "Frühling → PHRUY-ling — 'ü' tròn", "ng → cuối lưỡi"],
+      },
+      {
+        en: "Heute ist mein Geburtstag.",
+        vi: "Hôm nay là sinh nhật tôi.",
+        pronunciation_focus: ["Heute → HÔI-tờ", "Geburtstag → gờ-BÚA-stác", "mein → main"],
+      },
+      {
+        en: "Herzlichen Glückwunsch!",
+        vi: "Chúc mừng!",
+        pronunciation_focus: ["Herzlichen → HẾT-tslị-khần", "Glückwunsch → GLUYC-vunsh — 'ü' tròn", "ch → khờ"],
+      },
+    ],
+    cultural_notes_vi:
+      "Weihnachten (Giáng sinh) ở Đức là ngày 24/12 — lễ chính vào tối Heiligabend, không phải 25/12 như Mỹ. Cả gia đình tụ họp, ăn ngỗng quay hoặc cá chép. 1/5 (Tag der Arbeit) và 3/10 (Tag der Deutschen Einheit - ngày thống nhất) là ngày lễ quốc gia bắt buộc. Sinh nhật: KHÔNG chúc trước ngày — người Đức coi đó là xui xẻo.",
+    tip_advice_vi:
+      "'Frohe ___' (vui vẻ) cho lễ hội: Frohe Weihnachten, Frohe Ostern. 'Herzlichen Glückwunsch' (chúc mừng) cho sinh nhật, kết hôn, thành công. 'Alles Gute' (mọi điều tốt) là cách chúc đa năng. Đừng dịch literal 'Happy Birthday' thành 'Glücklichen Geburtstag' — không tự nhiên.",
+    vocabulary: [
+      { word: "Weihnachten", en: "Christmas", vi: "Giáng sinh", pos: "noun (n)", pronunciation_vi: "vAI-nắc-tần" },
+      { word: "Silvester", en: "New Year's Eve", vi: "đêm giao thừa", pos: "noun (m)", pronunciation_vi: "zin-VES-tờ" },
+      { word: "Ostern", en: "Easter", vi: "Phục sinh", pos: "noun (n)", pronunciation_vi: "ÔS-tần" },
+      { word: "der Geburtstag", en: "birthday", vi: "sinh nhật", pos: "noun (m)", pronunciation_vi: "đe-a gờ-BÚA-stác" },
+      { word: "die Hochzeit", en: "wedding", vi: "đám cưới", pos: "noun (f)", pronunciation_vi: "đi HÔC-tsait" },
+      { word: "der Feiertag", en: "holiday", vi: "ngày lễ", pos: "noun (m)", pronunciation_vi: "đe-a PHAI-ợ-tác" },
+      { word: "das Geschenk", en: "gift", vi: "quà", pos: "noun (n)", pronunciation_vi: "đát gờ-SHENG-k" },
+      { word: "feiern", en: "to celebrate", vi: "ăn mừng", pos: "verb", pronunciation_vi: "PHAI-ợn" },
+      { word: "schenken", en: "to give (a gift)", vi: "tặng", pos: "verb", pronunciation_vi: "SHENG-kần" },
+      { word: "gratulieren", en: "to congratulate", vi: "chúc mừng", pos: "verb", pronunciation_vi: "gra-tu-LI-rần" },
+    ],
+    dialogue: [
+      { speaker: "A", text: "Was machst du an Weihnachten?", vi: "Giáng sinh bạn làm gì?" },
+      { speaker: "B", text: "Ich besuche meine Familie. Wir essen zusammen.", vi: "Tôi về thăm gia đình. Chúng tôi ăn cùng nhau." },
+      { speaker: "A", text: "Schön! Bekommst du viele Geschenke?", vi: "Hay quá! Bạn nhận được nhiều quà không?" },
+      { speaker: "B", text: "Ja, und ich schenke auch viel.", vi: "Có, và tôi cũng tặng nhiều." },
+    ],
+    exercises: [
+      {
+        type: "fill_blank",
+        instruction_vi: "Điền từ về ngày lễ:",
+        pronunciation_focus: [],
+        items: [
+          { prompt: "Frohe _____! (Giáng sinh)", answer: "Weihnachten" },
+          { prompt: "Heute ist mein _____. (sinh nhật)", answer: "Geburtstag" },
+          { prompt: "Wir _____ zusammen. (ăn mừng)", answer: "feiern" },
+        ],
+      },
+      {
+        type: "matching",
+        instruction_vi: "Nối từ với nghĩa:",
+        pronunciation_focus: [],
+        items: [
+          { prompt: "Silvester", answer: "đêm giao thừa" },
+          { prompt: "die Hochzeit", answer: "đám cưới" },
+          { prompt: "das Geschenk", answer: "quà" },
+          { prompt: "schenken", answer: "tặng" },
+        ],
+      },
+      {
+        type: "translation",
+        instruction_vi: "Dịch sang tiếng Đức:",
+        pronunciation_focus: [],
+        items: [
+          { prompt: "Chúc mừng!", answer: "Herzlichen Glückwunsch!" },
+          { prompt: "Hôm nay là sinh nhật tôi.", answer: "Heute ist mein Geburtstag." },
+          { prompt: "Lễ Phục sinh vào mùa xuân.", answer: "Ostern ist im Frühling." },
+        ],
+      },
+    ],
+  },
+  {
+    id: "german_environment",
+    category: "society",
+    title_vi: "Môi trường",
+    title_en: "Environment",
+    sentences: [
+      {
+        en: "Wir müssen die Umwelt schützen.",
+        vi: "Chúng ta phải bảo vệ môi trường.",
+        pronunciation_focus: ["müssen → MUYS-sần — 'ü' tròn", "Umwelt → UM-vẹn-t", "schützen → SHUYT-tsần"],
+      },
+      {
+        en: "Ich fahre mit dem Fahrrad zur Arbeit.",
+        vi: "Tôi đạp xe đi làm.",
+        pronunciation_focus: ["fahre → PHA-rờ", "Fahrrad → PHA-rát", "Arbeit → A-bait"],
+      },
+      {
+        en: "Plastik ist schlecht für die Natur.",
+        vi: "Nhựa có hại cho thiên nhiên.",
+        pronunciation_focus: ["Plastik → PLA-stic", "schlecht → SHLẾT", "Natur → na-TÚA"],
+      },
+      {
+        en: "Wir trennen den Müll zu Hause.",
+        vi: "Chúng tôi phân loại rác ở nhà.",
+        pronunciation_focus: ["trennen → TRE-nần", "Müll → MUYN — 'ü' tròn", "Hause → HAO-zờ"],
+      },
+      {
+        en: "Klimawandel ist ein großes Problem.",
+        vi: "Biến đổi khí hậu là vấn đề lớn.",
+        pronunciation_focus: ["Klimawandel → KLI-ma-van-đần", "großes → GRÔ-sờs — 'ß' = ss", "Problem → prô-BLÊM"],
+      },
+    ],
+    cultural_notes_vi:
+      "Đức là một trong những nước nghiêm túc nhất về phân loại rác. Có nhiều thùng rác: gelb (vàng — nhựa, kim loại), blau (xanh dương — giấy), grün/braun (xanh lá/nâu — rác hữu cơ), schwarz/grau (đen/xám — rác còn lại). Sai loại có thể bị phạt. Pfand (tiền cọc chai) trên chai nhựa, lon, chai thủy tinh — trả về siêu thị để lấy tiền lại.",
+    tip_advice_vi:
+      "Đề tài môi trường (Umwelt) và biến đổi khí hậu (Klimawandel) rất phổ biến trong hội thoại tiếng Đức hàng ngày. Nắm 5-10 từ chủ đề này giúp bạn tham gia các cuộc trò chuyện ở café, công sở. Người Đức trẻ (đặc biệt trên 30 tuổi) coi đây là vấn đề thời sự.",
+    vocabulary: [
+      { word: "die Umwelt", en: "environment", vi: "môi trường", pos: "noun (f)", pronunciation_vi: "đi UM-vẹn-t" },
+      { word: "die Natur", en: "nature", vi: "thiên nhiên", pos: "noun (f)", pronunciation_vi: "đi na-TÚA" },
+      { word: "der Müll", en: "garbage", vi: "rác", pos: "noun (m)", pronunciation_vi: "đe-a MUYN" },
+      { word: "das Plastik", en: "plastic", vi: "nhựa", pos: "noun (n)", pronunciation_vi: "đát PLA-stic" },
+      { word: "der Klimawandel", en: "climate change", vi: "biến đổi khí hậu", pos: "noun (m)", pronunciation_vi: "đe-a KLI-ma-van-đần" },
+      { word: "das Recycling", en: "recycling", vi: "tái chế", pos: "noun (n)", pronunciation_vi: "đát rê-XAI-cling" },
+      { word: "die Energie", en: "energy", vi: "năng lượng", pos: "noun (f)", pronunciation_vi: "đi ê-nê-GHI" },
+      { word: "schützen", en: "to protect", vi: "bảo vệ", pos: "verb", pronunciation_vi: "SHUYT-tsần" },
+      { word: "trennen", en: "to separate", vi: "phân loại", pos: "verb", pronunciation_vi: "TRE-nần" },
+      { word: "umweltfreundlich", en: "eco-friendly", vi: "thân thiện môi trường", pos: "adjective", pronunciation_vi: "UM-vẹn-t-phroin-lị" },
+    ],
+    dialogue: [
+      { speaker: "A", text: "Fährst du oft mit dem Auto?", vi: "Bạn có hay lái xe ô tô không?" },
+      { speaker: "B", text: "Nein, ich nehme meistens das Fahrrad oder die Bahn.", vi: "Không, tôi thường đạp xe hoặc đi tàu." },
+      { speaker: "A", text: "Das ist gut für die Umwelt.", vi: "Vậy tốt cho môi trường." },
+      { speaker: "B", text: "Ja, und auch billiger als Benzin.", vi: "Vâng, và rẻ hơn xăng nữa." },
+    ],
+    exercises: [
+      {
+        type: "fill_blank",
+        instruction_vi: "Điền từ về môi trường:",
+        pronunciation_focus: [],
+        items: [
+          { prompt: "Wir müssen die _____ schützen. (môi trường)", answer: "Umwelt" },
+          { prompt: "Wir _____ den Müll. (phân loại)", answer: "trennen" },
+          { prompt: "_____ ist ein großes Problem. (biến đổi khí hậu)", answer: "Klimawandel" },
+        ],
+      },
+      {
+        type: "matching",
+        instruction_vi: "Nối từ với nghĩa:",
+        pronunciation_focus: [],
+        items: [
+          { prompt: "die Natur", answer: "thiên nhiên" },
+          { prompt: "das Recycling", answer: "tái chế" },
+          { prompt: "die Energie", answer: "năng lượng" },
+          { prompt: "umweltfreundlich", answer: "thân thiện môi trường" },
+        ],
+      },
+      {
+        type: "translation",
+        instruction_vi: "Dịch sang tiếng Đức:",
+        pronunciation_focus: [],
+        items: [
+          { prompt: "Tôi đạp xe đi làm.", answer: "Ich fahre mit dem Fahrrad zur Arbeit." },
+          { prompt: "Nhựa có hại cho thiên nhiên.", answer: "Plastik ist schlecht für die Natur." },
+          { prompt: "Chúng ta phải bảo vệ môi trường.", answer: "Wir müssen die Umwelt schützen." },
+        ],
+      },
+    ],
+  },
+];
+
+// ── 36–40. Expressions ──────────────────────────────────────────────────
+
+const EXPRESSIONS: GermanLesson[] = [
+  {
+    id: "german_polite_phrases",
+    category: "expressions",
+    title_vi: "Câu lịch sự",
+    title_en: "Polite phrases",
+    sentences: [
+      {
+        en: "Könnten Sie mir bitte helfen?",
+        vi: "Bạn có thể giúp tôi được không?",
+        pronunciation_focus: ["Könnten → KƠN-tần — 'ö' tròn, dạng lịch sự (Konjunktiv II)", "helfen → HEN-phần", "bitte → BÍ-tờ"],
+      },
+      {
+        en: "Würden Sie mir das erklären?",
+        vi: "Bạn giải thích cho tôi được không?",
+        pronunciation_focus: ["Würden → VUYR-đần — 'ü' tròn, dạng lịch sự", "erklären → e-KLEỊ-rần — 'ä' = e", "ei → ai"],
+      },
+      {
+        en: "Entschuldigen Sie die Störung.",
+        vi: "Xin lỗi đã làm phiền.",
+        pronunciation_focus: ["Entschuldigen → ent-SHUN-đi-gần", "Störung → SHTƠ-rung — 'ö' tròn", "ng → cuối lưỡi"],
+      },
+      {
+        en: "Vielen Dank für Ihre Hilfe.",
+        vi: "Cám ơn rất nhiều vì sự giúp đỡ.",
+        pronunciation_focus: ["Vielen → PHÍ-lần", "Ihre → I-rờ — 'Sie' lịch sự", "Hilfe → HIN-phờ"],
+      },
+      {
+        en: "Es wäre nett, wenn Sie...",
+        vi: "Sẽ tốt nếu bạn...",
+        pronunciation_focus: ["wäre → VEỊ-rờ — 'ä' = e, Konjunktiv II", "nett → NẾT", "wenn → vEN"],
+      },
+    ],
+    cultural_notes_vi:
+      "Tiếng Đức có thang lịch sự rõ ràng. Mức 1: 'Ich will' (tôi muốn — thẳng thắn, dùng với bạn bè). Mức 2: 'Ich möchte' (tôi muốn — lịch sự, an toàn). Mức 3: 'Ich hätte gern' (tôi muốn có — formal, lịch sự). Mức 4: 'Könnten/Würden Sie...' (Konjunktiv II — rất lịch sự). Trong tình huống chính thức (cửa hàng, văn phòng), dùng mức 3-4.",
+    tip_advice_vi:
+      "Konjunktiv II (dạng giả định) tạo bằng 'könnte' (có thể), 'würde' (sẽ), 'hätte' (có), 'wäre' (là). Cấu trúc 'Könnten/Würden Sie + động từ?' cực lịch sự. Trộn 'bitte' (xin) vào câu càng tốt: 'Könnten Sie bitte ___?'",
+    vocabulary: [
+      { word: "bitte", en: "please", vi: "xin/làm ơn", pos: "particle", pronunciation_vi: "BÍ-tờ" },
+      { word: "danke", en: "thanks", vi: "cám ơn", pos: "particle", pronunciation_vi: "ĐANG-kờ" },
+      { word: "Entschuldigung", en: "excuse me/sorry", vi: "xin lỗi", pos: "noun (f)", pronunciation_vi: "ent-SHUN-đi-gung" },
+      { word: "Verzeihung", en: "pardon", vi: "xin tha lỗi", pos: "noun (f)", pronunciation_vi: "phờ-TSAI-ung" },
+      { word: "die Störung", en: "disturbance", vi: "sự làm phiền", pos: "noun (f)", pronunciation_vi: "đi SHTƠ-rung" },
+      { word: "die Hilfe", en: "help", vi: "sự giúp đỡ", pos: "noun (f)", pronunciation_vi: "đi HIN-phờ" },
+      { word: "der Gefallen", en: "favor", vi: "ân huệ", pos: "noun (m)", pronunciation_vi: "đe-a gờ-PHA-lần" },
+      { word: "höflich", en: "polite", vi: "lịch sự", pos: "adjective", pronunciation_vi: "HƠPH-lị" },
+      { word: "freundlich", en: "kind/friendly", vi: "thân thiện", pos: "adjective", pronunciation_vi: "PHROIN-lị" },
+      { word: "nett", en: "nice", vi: "tốt/dễ thương", pos: "adjective", pronunciation_vi: "NẾT" },
+    ],
+    dialogue: [
+      { speaker: "A", text: "Entschuldigen Sie, könnten Sie mir helfen?", vi: "Xin lỗi, bạn giúp tôi được không?" },
+      { speaker: "B", text: "Natürlich. Was kann ich für Sie tun?", vi: "Tất nhiên. Tôi giúp gì cho bạn?" },
+      { speaker: "A", text: "Ich suche die Post. Würden Sie mir den Weg zeigen?", vi: "Tôi tìm bưu điện. Bạn chỉ đường giúp được không?" },
+      { speaker: "B", text: "Gerne. Gehen Sie geradeaus, dann links.", vi: "Vui lòng. Đi thẳng, rồi rẽ trái." },
+    ],
+    exercises: [
+      {
+        type: "fill_blank",
+        instruction_vi: "Điền từ lịch sự:",
+        pronunciation_focus: [],
+        items: [
+          { prompt: "_____ Sie mir helfen? (Bạn có thể... lịch sự)", answer: "Könnten" },
+          { prompt: "Vielen _____ für Ihre Hilfe. (cám ơn)", answer: "Dank" },
+          { prompt: "_____ Sie die Störung. (xin lỗi)", answer: "Entschuldigen" },
+        ],
+      },
+      {
+        type: "matching",
+        instruction_vi: "Nối từ với nghĩa:",
+        pronunciation_focus: [],
+        items: [
+          { prompt: "Entschuldigung", answer: "xin lỗi" },
+          { prompt: "die Hilfe", answer: "sự giúp đỡ" },
+          { prompt: "höflich", answer: "lịch sự" },
+          { prompt: "freundlich", answer: "thân thiện" },
+        ],
+      },
+      {
+        type: "translation",
+        instruction_vi: "Dịch sang tiếng Đức:",
+        pronunciation_focus: [],
+        items: [
+          { prompt: "Bạn có thể giúp tôi được không?", answer: "Könnten Sie mir bitte helfen?" },
+          { prompt: "Cám ơn rất nhiều.", answer: "Vielen Dank." },
+          { prompt: "Xin lỗi đã làm phiền.", answer: "Entschuldigen Sie die Störung." },
+        ],
+      },
+    ],
+  },
+  {
+    id: "german_agreeing_disagreeing",
+    category: "expressions",
+    title_vi: "Đồng ý và phản đối",
+    title_en: "Agreeing and disagreeing",
+    sentences: [
+      {
+        en: "Da bin ich ganz Ihrer Meinung.",
+        vi: "Tôi hoàn toàn đồng ý với bạn.",
+        pronunciation_focus: ["ganz → GAN-ts", "Ihrer → I-rờ — 'Sie' lịch sự", "Meinung → MAI-nung"],
+      },
+      {
+        en: "Das sehe ich anders.",
+        vi: "Tôi nhìn vấn đề khác.",
+        pronunciation_focus: ["sehe → ZÊ-ờ", "anders → AN-đợs", "ich → ịt"],
+      },
+      {
+        en: "Ich stimme dir zu.",
+        vi: "Tôi đồng ý với bạn.",
+        pronunciation_focus: ["stimme → SHTÍM-mờ", "zu → tsu — động từ tách 'zustimmen'", "dir → đia"],
+      },
+      {
+        en: "Tut mir leid, ich bin nicht einverstanden.",
+        vi: "Tiếc là tôi không đồng ý.",
+        pronunciation_focus: ["leid → LAI-t", "nicht → NỊT", "einverstanden → AIN-phờ-shtan-đần"],
+      },
+      {
+        en: "Das stimmt. / Das stimmt nicht.",
+        vi: "Đúng vậy. / Không đúng.",
+        pronunciation_focus: ["stimmt → SHTÍMT", "nicht → NỊT", "Das → đás"],
+      },
+    ],
+    cultural_notes_vi:
+      "Người Đức quý sự thẳng thắn — không đồng ý không phải là thô lỗ, mà là tôn trọng người đối diện đủ để nói thật. 'Das sehe ich anders' (tôi nhìn khác) là cách phản đối lịch sự nhưng rõ ràng. Tránh né tránh hoặc lấp lửng — người Đức coi đó là không trung thực hơn là lịch sự.",
+    tip_advice_vi:
+      "Đồng ý mạnh: 'Genau!' (Đúng!), 'Auf jeden Fall!' (Chắc chắn!), 'Da hast du recht' (Bạn nói đúng). Đồng ý nhẹ: 'Mag sein' (Có thể), 'Ja, vielleicht' (Vâng, có thể). Phản đối nhẹ: 'Ich bin mir nicht sicher' (Tôi không chắc). Phản đối mạnh: 'Das stimmt nicht' (Không đúng).",
+    vocabulary: [
+      { word: "die Meinung", en: "opinion", vi: "ý kiến", pos: "noun (f)", pronunciation_vi: "đi MAI-nung" },
+      { word: "der Unterschied", en: "difference", vi: "sự khác biệt", pos: "noun (m)", pronunciation_vi: "đe-a UN-tờ-shi-t" },
+      { word: "die Wahrheit", en: "truth", vi: "sự thật", pos: "noun (f)", pronunciation_vi: "đi VA-hait" },
+      { word: "zustimmen", en: "to agree", vi: "đồng ý", pos: "verb (separable)", pronunciation_vi: "TSU-shtim-mần" },
+      { word: "ablehnen", en: "to reject", vi: "từ chối", pos: "verb (separable)", pronunciation_vi: "AP-lê-nần" },
+      { word: "widersprechen", en: "to contradict", vi: "phản đối", pos: "verb", pronunciation_vi: "vi-đờ-SHPRÊ-khần" },
+      { word: "richtig", en: "correct", vi: "đúng", pos: "adjective", pronunciation_vi: "RỊT-tị" },
+      { word: "falsch", en: "wrong", vi: "sai", pos: "adjective", pronunciation_vi: "PHALSH" },
+      { word: "vielleicht", en: "perhaps", vi: "có thể", pos: "adverb", pronunciation_vi: "phi-LAIT" },
+      { word: "natürlich", en: "of course", vi: "tất nhiên", pos: "adverb", pronunciation_vi: "na-TUYR-lị" },
+    ],
+    dialogue: [
+      { speaker: "A", text: "Ich finde, Berlin ist die schönste Stadt in Deutschland.", vi: "Tôi thấy Berlin là thành phố đẹp nhất Đức." },
+      { speaker: "B", text: "Da bin ich anderer Meinung. München ist schöner.", vi: "Tôi nghĩ khác. München đẹp hơn." },
+      { speaker: "A", text: "Wirklich? Warum?", vi: "Thật à? Tại sao?" },
+      { speaker: "B", text: "Wegen der Berge und der Natur.", vi: "Vì có núi và thiên nhiên." },
+    ],
+    exercises: [
+      {
+        type: "fill_blank",
+        instruction_vi: "Điền từ phù hợp:",
+        pronunciation_focus: [],
+        items: [
+          { prompt: "Ich _____ dir _____. (đồng ý)", answer: "stimme ... zu" },
+          { prompt: "Das ist _____. (đúng)", answer: "richtig" },
+          { prompt: "Ich bin nicht _____. (đồng ý)", answer: "einverstanden" },
+        ],
+      },
+      {
+        type: "matching",
+        instruction_vi: "Nối từ với nghĩa:",
+        pronunciation_focus: [],
+        items: [
+          { prompt: "die Meinung", answer: "ý kiến" },
+          { prompt: "vielleicht", answer: "có thể" },
+          { prompt: "natürlich", answer: "tất nhiên" },
+          { prompt: "widersprechen", answer: "phản đối" },
+        ],
+      },
+      {
+        type: "translation",
+        instruction_vi: "Dịch sang tiếng Đức:",
+        pronunciation_focus: [],
+        items: [
+          { prompt: "Tôi hoàn toàn đồng ý.", answer: "Da bin ich ganz Ihrer Meinung." },
+          { prompt: "Tôi nhìn vấn đề khác.", answer: "Das sehe ich anders." },
+          { prompt: "Đúng vậy.", answer: "Das stimmt." },
+        ],
+      },
+    ],
+  },
+  {
+    id: "german_emotions_expressions",
+    category: "expressions",
+    title_vi: "Diễn đạt cảm xúc",
+    title_en: "Expressing emotions",
+    sentences: [
+      {
+        en: "Ich freue mich auf das Wochenende.",
+        vi: "Tôi mong chờ cuối tuần.",
+        pronunciation_focus: ["freue mich → PHROI-ờ mịt", "auf → ao-phờ", "Wochenende → VÔ-khần-ên-đờ"],
+      },
+      {
+        en: "Das macht mir Spaß.",
+        vi: "Cái này tôi thích.",
+        pronunciation_focus: ["macht → MÁCT", "mir → mia", "Spaß → SHPAS — 'ß' = ss"],
+      },
+      {
+        en: "Ich bin enttäuscht.",
+        vi: "Tôi thất vọng.",
+        pronunciation_focus: ["enttäuscht → ent-TÔISHT — 'äu' = oi", "bin → bin", "ent → ent"],
+      },
+      {
+        en: "Es tut mir wirklich leid.",
+        vi: "Tôi thực sự rất tiếc.",
+        pronunciation_focus: ["wirklich → VIA-lị-khờ", "leid → LAI-t", "es → ês"],
+      },
+      {
+        en: "Ich habe Angst vor der Prüfung.",
+        vi: "Tôi sợ kỳ thi.",
+        pronunciation_focus: ["Angst → ANGST", "vor → phô", "Prüfung → PRUY-phung — 'ü' tròn"],
+      },
+    ],
+    cultural_notes_vi:
+      "Người Đức không phô trương cảm xúc trong giao tiếp công cộng như người Mỹ. 'Wie geht's?' (Khoẻ không?) câu hỏi xã giao thường được trả lời bằng 'Gut, danke' (Tốt, cám ơn) ngay cả khi không thực sự tốt. Chia sẻ cảm xúc sâu hơn với bạn thân hoặc gia đình. 'Es tut mir leid' (xin lỗi/tiếc) khi nghe tin xấu — nói thẳng, không vòng vo.",
+    tip_advice_vi:
+      "Động từ phản thân (reflexive verbs) như 'sich freuen', 'sich ärgern' luôn đi với 'mich/dich/sich'. 'Ich freue MICH' (tôi vui), 'Du ärgerst DICH' (bạn bực). Đây là đặc điểm khác tiếng Anh — học cùng từ vựng, đừng quên 'mich/dich'.",
+    vocabulary: [
+      { word: "die Freude", en: "joy", vi: "niềm vui", pos: "noun (f)", pronunciation_vi: "đi PHROI-đờ" },
+      { word: "die Angst", en: "fear", vi: "nỗi sợ", pos: "noun (f)", pronunciation_vi: "đi ANGST" },
+      { word: "die Liebe", en: "love", vi: "tình yêu", pos: "noun (f)", pronunciation_vi: "đi LI-bờ" },
+      { word: "die Sorge", en: "worry", vi: "lo lắng", pos: "noun (f)", pronunciation_vi: "đi ZÔ-gờ" },
+      { word: "der Spaß", en: "fun", vi: "niềm vui/sự thích", pos: "noun (m)", pronunciation_vi: "đe-a SHPAS" },
+      { word: "sich freuen", en: "to be happy", vi: "vui mừng", pos: "reflexive verb", pronunciation_vi: "zịc PHROI-ần" },
+      { word: "sich ärgern", en: "to be annoyed", vi: "bực mình", pos: "reflexive verb", pronunciation_vi: "zịc Ế-gần — 'ä' = e" },
+      { word: "weinen", en: "to cry", vi: "khóc", pos: "verb", pronunciation_vi: "VAI-nần" },
+      { word: "lachen", en: "to laugh", vi: "cười", pos: "verb", pronunciation_vi: "LA-khần" },
+      { word: "enttäuscht", en: "disappointed", vi: "thất vọng", pos: "adjective", pronunciation_vi: "ent-TÔISHT" },
+    ],
+    dialogue: [
+      { speaker: "A", text: "Wie geht es dir? Du siehst traurig aus.", vi: "Bạn sao rồi? Trông buồn quá." },
+      { speaker: "B", text: "Ich habe meine Prüfung nicht bestanden.", vi: "Tôi không qua kỳ thi." },
+      { speaker: "A", text: "Das tut mir leid. Aber du kannst es nochmal versuchen.", vi: "Tôi rất tiếc. Nhưng bạn có thể thử lại." },
+      { speaker: "B", text: "Du hast recht. Ich gebe nicht auf.", vi: "Bạn nói đúng. Tôi sẽ không bỏ cuộc." },
+    ],
+    exercises: [
+      {
+        type: "fill_blank",
+        instruction_vi: "Điền từ cảm xúc:",
+        pronunciation_focus: [],
+        items: [
+          { prompt: "Das macht mir _____. (niềm vui/sự thích)", answer: "Spaß" },
+          { prompt: "Ich habe _____ vor der Prüfung. (nỗi sợ)", answer: "Angst" },
+          { prompt: "Ich bin _____. (thất vọng)", answer: "enttäuscht" },
+        ],
+      },
+      {
+        type: "matching",
+        instruction_vi: "Nối từ với nghĩa:",
+        pronunciation_focus: [],
+        items: [
+          { prompt: "die Liebe", answer: "tình yêu" },
+          { prompt: "die Sorge", answer: "lo lắng" },
+          { prompt: "weinen", answer: "khóc" },
+          { prompt: "lachen", answer: "cười" },
+        ],
+      },
+      {
+        type: "translation",
+        instruction_vi: "Dịch sang tiếng Đức:",
+        pronunciation_focus: [],
+        items: [
+          { prompt: "Tôi mong chờ cuối tuần.", answer: "Ich freue mich auf das Wochenende." },
+          { prompt: "Tôi thực sự rất tiếc.", answer: "Es tut mir wirklich leid." },
+          { prompt: "Cái này tôi thích.", answer: "Das macht mir Spaß." },
+        ],
+      },
+    ],
+  },
+  {
+    id: "german_phone_calls",
+    category: "expressions",
+    title_vi: "Gọi điện thoại",
+    title_en: "Phone calls",
+    sentences: [
+      {
+        en: "Hallo, hier ist Anna Schmidt.",
+        vi: "Alô, đây là Anna Schmidt.",
+        pronunciation_focus: ["Hallo → HA-lô", "hier → HÍA", "ist → ÍST"],
+      },
+      {
+        en: "Kann ich bitte mit Herrn Müller sprechen?",
+        vi: "Tôi có thể nói chuyện với ông Müller được không?",
+        pronunciation_focus: ["Herrn → HE-an", "Müller → MUYL-lờ — 'ü' tròn", "sprechen → SHPRÊ-khần"],
+      },
+      {
+        en: "Einen Moment bitte, ich verbinde Sie.",
+        vi: "Xin chờ một lát, tôi nối máy.",
+        pronunciation_focus: ["Einen → AI-nần", "Moment → mô-MENT", "verbinde → phờ-BÍN-đờ"],
+      },
+      {
+        en: "Er ist gerade nicht da. Soll er zurückrufen?",
+        vi: "Ông ấy đang không có. Có cần gọi lại không?",
+        pronunciation_focus: ["gerade → gờ-RA-đờ", "Soll → ZÔN", "zurückrufen → tsu-RUYC-ru-phần"],
+      },
+      {
+        en: "Auf Wiederhören.",
+        vi: "Tạm biệt (qua điện thoại).",
+        pronunciation_focus: ["Auf → ao-phờ", "Wieder → VÍ-đợ", "hören → HƠ-rần — 'ö' tròn"],
+      },
+    ],
+    cultural_notes_vi:
+      "Người Đức trả lời điện thoại khác phương Tây khác — họ tự xưng tên ngay: 'Schmidt' hoặc 'Hier ist Schmidt'. Không nói 'Hallo' đơn giản như Mỹ. Khi gọi đến công ty: nói tên mình + lý do gọi trong câu mở đầu. 'Auf Wiederhören' (tạm biệt qua điện thoại) khác 'Auf Wiedersehen' (tạm biệt mặt đối mặt) — đừng nhầm.",
+    tip_advice_vi:
+      "Số điện thoại Đức đọc theo cặp: 030 12345678 → 'null-drei-null, eins-zwei, drei-vier, fünf-sechs, sieben-acht'. Hoặc đọc cặp: 'zwölf, vierunddreißig, sechsundfünfzig, achtundsiebzig'. Khi không nghe rõ: 'Können Sie das wiederholen?' (bạn lặp lại được không?) hoặc 'Buchstabieren Sie das, bitte' (xin đánh vần).",
+    vocabulary: [
+      { word: "das Telefon", en: "telephone", vi: "điện thoại", pos: "noun (n)", pronunciation_vi: "đát tê-lê-PHÔN" },
+      { word: "das Handy", en: "mobile phone", vi: "điện thoại di động", pos: "noun (n)", pronunciation_vi: "đát HEN-đi" },
+      { word: "der Anruf", en: "phone call", vi: "cuộc gọi", pos: "noun (m)", pronunciation_vi: "đe-a AN-ruph" },
+      { word: "die Nummer", en: "number", vi: "số", pos: "noun (f)", pronunciation_vi: "đi NÚM-mờ" },
+      { word: "die Mailbox", en: "voicemail", vi: "hộp thư thoại", pos: "noun (f)", pronunciation_vi: "đi MÊN-bốc-x" },
+      { word: "anrufen", en: "to call", vi: "gọi điện", pos: "verb (separable)", pronunciation_vi: "AN-ru-phần" },
+      { word: "verbinden", en: "to connect", vi: "nối máy", pos: "verb", pronunciation_vi: "phờ-BÍN-đần" },
+      { word: "auflegen", en: "to hang up", vi: "gác máy", pos: "verb (separable)", pronunciation_vi: "AOPH-lê-gần" },
+      { word: "klingeln", en: "to ring", vi: "đổ chuông", pos: "verb", pronunciation_vi: "CLING-ần" },
+      { word: "besetzt", en: "busy", vi: "đang bận", pos: "adjective", pronunciation_vi: "bờ-ZẾT-st" },
+    ],
+    dialogue: [
+      { speaker: "A", text: "Guten Tag, Praxis Dr. Weber. Wie kann ich Ihnen helfen?", vi: "Xin chào, phòng khám bác sĩ Weber. Tôi giúp gì cho bạn?" },
+      { speaker: "B", text: "Hallo, ich möchte einen Termin vereinbaren.", vi: "Alô, tôi muốn đặt cuộc hẹn." },
+      { speaker: "A", text: "Geht es nächste Woche Donnerstag um zehn Uhr?", vi: "Thứ Năm tuần sau lúc 10 giờ được không?" },
+      { speaker: "B", text: "Ja, das passt. Vielen Dank. Auf Wiederhören.", vi: "Vâng, được. Cám ơn. Tạm biệt." },
+    ],
+    exercises: [
+      {
+        type: "fill_blank",
+        instruction_vi: "Điền từ về điện thoại:",
+        pronunciation_focus: [],
+        items: [
+          { prompt: "Hallo, _____ ist Anna. (đây)", answer: "hier" },
+          { prompt: "Einen Moment, ich _____ Sie. (nối máy)", answer: "verbinde" },
+          { prompt: "Auf _____. (tạm biệt qua điện thoại)", answer: "Wiederhören" },
+        ],
+      },
+      {
+        type: "matching",
+        instruction_vi: "Nối từ với nghĩa:",
+        pronunciation_focus: [],
+        items: [
+          { prompt: "der Anruf", answer: "cuộc gọi" },
+          { prompt: "die Mailbox", answer: "hộp thư thoại" },
+          { prompt: "auflegen", answer: "gác máy" },
+          { prompt: "besetzt", answer: "đang bận" },
+        ],
+      },
+      {
+        type: "translation",
+        instruction_vi: "Dịch sang tiếng Đức:",
+        pronunciation_focus: [],
+        items: [
+          { prompt: "Tôi có thể nói chuyện với ông Müller không?", answer: "Kann ich mit Herrn Müller sprechen?" },
+          { prompt: "Ông ấy đang không có.", answer: "Er ist gerade nicht da." },
+          { prompt: "Tạm biệt (qua điện thoại).", answer: "Auf Wiederhören." },
+        ],
+      },
+    ],
+  },
+  {
+    id: "german_small_talk",
+    category: "expressions",
+    title_vi: "Trò chuyện xã giao",
+    title_en: "Small talk",
+    sentences: [
+      {
+        en: "Schönes Wetter heute, nicht wahr?",
+        vi: "Hôm nay thời tiết đẹp nhỉ?",
+        pronunciation_focus: ["Schönes → SHƠ-nợs — 'ö' tròn", "Wetter → VẾT-tờ", "wahr → vA"],
+      },
+      {
+        en: "Wie war Ihr Wochenende?",
+        vi: "Cuối tuần của bạn thế nào?",
+        pronunciation_focus: ["war → vA", "Ihr → ÍA — 'Sie' lịch sự", "Wochenende → VÔ-khần-ên-đờ"],
+      },
+      {
+        en: "Ich war im Urlaub in Spanien.",
+        vi: "Tôi đi nghỉ ở Tây Ban Nha.",
+        pronunciation_focus: ["Urlaub → ÚA-lao-phờ", "Spanien → SHPA-ni-ần", "war → vA"],
+      },
+      {
+        en: "Was machen Sie beruflich?",
+        vi: "Bạn làm nghề gì?",
+        pronunciation_focus: ["machen → MA-khần", "beruflich → bờ-RUPH-lị-khờ", "Sie → ZI"],
+      },
+      {
+        en: "Es war schön, Sie kennenzulernen.",
+        vi: "Rất vui được gặp bạn.",
+        pronunciation_focus: ["schön → SHƠN — 'ö' tròn", "kennenzulernen → KE-nần-tsu-le-nần", "động từ tách"],
+      },
+    ],
+    cultural_notes_vi:
+      "Small talk Đức không sâu rộng như Mỹ. Chủ đề an toàn: thời tiết, ngày lễ vừa qua, kế hoạch cuối tuần, nghề nghiệp. TRÁNH: lương, chính trị (ngoại trừ với bạn thân), tôn giáo, tuổi (đặc biệt với phụ nữ). Người Đức không cần lấp khoảng lặng bằng nói chuyện — im lặng là bình thường.",
+    tip_advice_vi:
+      "'Nicht wahr?' (phải không?) cuối câu là cách mời hồi đáp lịch sự. Hỏi nghề: 'Was machen Sie beruflich?' formal hơn 'Was sind Sie von Beruf?'. Thì quá khứ small talk dùng Perfekt: 'Ich habe ___ gemacht/gesehen/gegessen' — đây là hình thức đơn giản nhất cho tiếng nói hàng ngày.",
+    vocabulary: [
+      { word: "das Wetter", en: "weather", vi: "thời tiết", pos: "noun (n)", pronunciation_vi: "đát VẾT-tờ" },
+      { word: "das Wochenende", en: "weekend", vi: "cuối tuần", pos: "noun (n)", pronunciation_vi: "đát VÔ-khần-ên-đờ" },
+      { word: "der Urlaub", en: "vacation", vi: "kỳ nghỉ", pos: "noun (m)", pronunciation_vi: "đe-a ÚA-lao-phờ" },
+      { word: "das Hobby", en: "hobby", vi: "sở thích", pos: "noun (n)", pronunciation_vi: "đát HÔ-bi" },
+      { word: "die Familie", en: "family", vi: "gia đình", pos: "noun (f)", pronunciation_vi: "đi pha-MI-li-ờ" },
+      { word: "kennenlernen", en: "to get to know", vi: "làm quen", pos: "verb (separable)", pronunciation_vi: "KE-nần-le-nần" },
+      { word: "erzählen", en: "to tell", vi: "kể", pos: "verb", pronunciation_vi: "ê-TSEỊ-lần — 'ä' = e" },
+      { word: "fragen", en: "to ask", vi: "hỏi", pos: "verb", pronunciation_vi: "PHRA-gần" },
+      { word: "interessant", en: "interesting", vi: "thú vị", pos: "adjective", pronunciation_vi: "in-tê-rê-SANT" },
+      { word: "langweilig", en: "boring", vi: "chán", pos: "adjective", pronunciation_vi: "LANG-vai-lị" },
+    ],
+    dialogue: [
+      { speaker: "A", text: "Schönes Wetter heute!", vi: "Hôm nay thời tiết đẹp!" },
+      { speaker: "B", text: "Ja, endlich Sonne. Was haben Sie am Wochenende gemacht?", vi: "Vâng, cuối cùng cũng có nắng. Cuối tuần bạn làm gì?" },
+      { speaker: "A", text: "Ich war wandern. Und Sie?", vi: "Tôi đi leo núi. Còn bạn?" },
+      { speaker: "B", text: "Ich war zu Hause und habe ein Buch gelesen.", vi: "Tôi ở nhà và đọc sách." },
+    ],
+    exercises: [
+      {
+        type: "fill_blank",
+        instruction_vi: "Điền từ trò chuyện:",
+        pronunciation_focus: [],
+        items: [
+          { prompt: "Schönes _____ heute. (thời tiết)", answer: "Wetter" },
+          { prompt: "Wie war Ihr _____? (cuối tuần)", answer: "Wochenende" },
+          { prompt: "Was machen Sie _____? (nghề nghiệp)", answer: "beruflich" },
+        ],
+      },
+      {
+        type: "matching",
+        instruction_vi: "Nối từ với nghĩa:",
+        pronunciation_focus: [],
+        items: [
+          { prompt: "der Urlaub", answer: "kỳ nghỉ" },
+          { prompt: "das Hobby", answer: "sở thích" },
+          { prompt: "interessant", answer: "thú vị" },
+          { prompt: "kennenlernen", answer: "làm quen" },
+        ],
+      },
+      {
+        type: "translation",
+        instruction_vi: "Dịch sang tiếng Đức:",
+        pronunciation_focus: [],
+        items: [
+          { prompt: "Hôm nay thời tiết đẹp.", answer: "Schönes Wetter heute." },
+          { prompt: "Tôi đi nghỉ ở Tây Ban Nha.", answer: "Ich war im Urlaub in Spanien." },
+          { prompt: "Rất vui được gặp bạn.", answer: "Es war schön, Sie kennenzulernen." },
+        ],
+      },
+    ],
+  },
+];
+
 // ── Aggregate export ────────────────────────────────────────────────────
 
 export const GERMAN_LESSONS: ReadonlyArray<GermanLesson> = [
@@ -2191,6 +3085,8 @@ export const GERMAN_LESSONS: ReadonlyArray<GermanLesson> = [
   ...FUTURE_PLANS,
   ...WORKPLACE,
   ...LIFE_ADMIN,
+  ...SOCIETY,
+  ...EXPRESSIONS,
 ];
 
 export function getLessonsByCategory(
