@@ -73,6 +73,9 @@ export default function LanguageLessonsPage() {
           {meta.heroVi}
         </h1>
         <p className="mt-1 text-sm font-medium text-slate-600">{meta.heroEn}</p>
+        <p className="mt-2 text-sm font-bold" style={{ color: meta.accent }}>
+          50 bài · 50 lessons
+        </p>
         <p className="mt-3 text-xs text-slate-500">
           <Link
             to="/languages"
@@ -108,6 +111,7 @@ export default function LanguageLessonsPage() {
 function LessonList({ lang, accent }: { lang: string; accent: string }) {
   const [LessonsModule, setLessonsModule] = React.useState<any>(null);
   const [error, setError] = React.useState<string | null>(null);
+  const isChinese = lang === "chinese";
 
   React.useEffect(() => {
     let cancelled = false;
@@ -137,6 +141,20 @@ function LessonList({ lang, accent }: { lang: string; accent: string }) {
 
   const lessons: any[] = Array.isArray(LessonsModule) ? LessonsModule : [];
 
+  if (isChinese) {
+    const beginner = lessons.filter((l: any) => l.id <= 20);
+    const intermediate = lessons.filter((l: any) => l.id > 20 && l.id <= 35);
+    const advanced = lessons.filter((l: any) => l.id > 35 && l.id <= 50);
+
+    return (
+      <div className="space-y-6">
+        <LevelSection label="Beginner" labelVi="Cơ bản" lessons={beginner} accent={accent} idRange="1–20" />
+        <LevelSection label="Intermediate" labelVi="Trung cấp" lessons={intermediate} accent={accent} idRange="21–35" />
+        <LevelSection label="Advanced" labelVi="Nâng cao" lessons={advanced} accent={accent} idRange="36–50" />
+      </div>
+    );
+  }
+
   return (
     <div className="space-y-3">
       {lessons.map((lesson: any, i: number) => (
@@ -145,9 +163,41 @@ function LessonList({ lang, accent }: { lang: string; accent: string }) {
           lesson={lesson}
           index={i}
           accent={accent}
+          lang={lang}
         />
       ))}
     </div>
+  );
+}
+
+function LevelSection({
+  label, labelVi, lessons, accent, idRange,
+}: {
+  label: string; labelVi: string; lessons: any[]; accent: string; idRange: string;
+}) {
+  if (lessons.length === 0) return null;
+  return (
+    <section>
+      <div className="flex items-center gap-2 mb-2">
+        <div className="w-1 h-5 rounded-full" style={{ background: accent }} />
+        <span className="text-sm font-extrabold tracking-wide" style={{ color: accent }}>
+          {label}
+        </span>
+        <span className="text-xs font-semibold text-slate-400">{labelVi}</span>
+        <span className="text-xs text-slate-400 ml-auto">{idRange} · {lessons.length} bài</span>
+      </div>
+      <div className="space-y-2">
+        {lessons.map((lesson: any, i: number) => (
+          <LessonTile
+            key={lesson.id ?? i}
+            lesson={lesson}
+            index={lesson.id - 1}
+            accent={accent}
+            lang="chinese"
+          />
+        ))}
+      </div>
+    </section>
   );
 }
 
@@ -155,10 +205,12 @@ function LessonTile({
   lesson,
   index,
   accent,
+  lang,
 }: {
   lesson: any;
   index: number;
   accent: string;
+  lang: string;
 }) {
   const [open, setOpen] = React.useState(false);
   const sentences: any[] = Array.isArray(lesson.sentences) ? lesson.sentences : [];
@@ -184,7 +236,10 @@ function LessonTile({
             {lesson.title ?? lesson.title_vi ?? lesson.title_en ?? `Lesson ${index + 1}`}
           </div>
           <div className="text-xs font-medium text-slate-500 mt-0.5">
-            {lesson.title_en ?? ""}
+            {lang === "chinese"
+              ? `${lesson.topic ?? ""} · ${lesson.vocab?.length ?? 0} từ`
+              : (lesson.title_en ?? "")
+            }
           </div>
         </div>
         <div className="flex-shrink-0 text-slate-400">
