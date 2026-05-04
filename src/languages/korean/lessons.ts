@@ -1,4 +1,59 @@
-export const lessons = [
+// Type definitions for Korean lesson data
+// Mirrors the schema used by lessons 1-20; lessons 21-50 should be backfilled to match.
+
+export type KoreanVocabEntry = {
+  hangul: string;
+  meaning: string;
+};
+
+export type KoreanSentence = {
+  korean: string;
+  romanized: string;
+  en: string;
+  vi: string;
+};
+
+export type KoreanDialogueLine = {
+  speaker: string;
+  hangul: string;
+  meaning: string;
+};
+
+export type KoreanExerciseFillBlank = {
+  type: "fill-blank";
+  question: string;
+  answer: string;
+};
+
+export type KoreanExerciseMatching = {
+  type: "matching";
+  pairs: { hangul: string; meaning: string }[];
+  instruction: string;
+};
+
+export type KoreanExerciseTranslation = {
+  type: "translation";
+  vietnamese: string;
+  hangul: string;
+};
+
+export type KoreanExercise =
+  | KoreanExerciseFillBlank
+  | KoreanExerciseMatching
+  | KoreanExerciseTranslation;
+
+export type KoreanLesson = {
+  id: number;
+  title_vi: string;
+  title_en: string;
+  intro_vi: string;
+  vocabulary: KoreanVocabEntry[];
+  sentences: KoreanSentence[];
+  dialogue: KoreanDialogueLine[];
+  exercises: KoreanExercise[];
+};
+
+export const lessons: KoreanLesson[] = [
   {
     id: 1, title_vi: "Nguyên âm cơ bản", title_en: "Basic Vowels",
     intro_vi: "10 nguyên âm cơ bản trong Hangul. Đây là nền tảng của chữ viết tiếng Hàn.",
@@ -143,9 +198,9 @@ export const lessons = [
 ,
   {
     id: 21,
-    title_vi: "Making Phone Calls",
+    title_vi: "Gọi điện thoại",
     title_en: "Making Phone Calls",
-    intro_vi: "Learn essential phone expressions in Korean. Use 여보세요 for hello on phone.",
+    intro_vi: "Học cách diễn đạt khi gọi điện thoại bằng tiếng Hàn. Dùng 여보세요 để chào khi nghe điện.",
     vocabulary: [{ hangul: "전화", meaning: "telephone" },
       { hangul: "전화를 걸다", meaning: "to make a call" },
       { hangul: "전화를 받다", meaning: "to answer the phone" },
@@ -156,11 +211,13 @@ export const lessons = [
       { hangul: "다시 전화하다", meaning: "to call again" },
       { hangul: "메시지를 남기다", meaning: "to leave a message" },
       { hangul: "통화 중", meaning: "busy (phone)" }],
-    sentences: [{ korean: "여보세요, 거기 김 선생님 계세요?", meaning: "Hello, is Mr. Kim there?" },
-      { korean: "잠시만 기다리세요.", meaning: "Please wait a moment." },
-      { korean: "다시 전화할게요.", meaning: "I'll call again." },
-      { korean: "메시지를 남겨 주시겠어요?", meaning: "Could you leave a message?" },
-      { korean: "통화 중이에요.", meaning: "The line is busy." }],
+    sentences: [
+      { korean: "여보세요, 거기 김 선생님 계세요?", romanized: "Yeoboseyo, geogi gim seonsaengnim gyeseyo?", en: "Hello, is Mr. Kim there?", vi: "Alô, có ông Kim ở đó không?" },
+      { korean: "잠시만 기다리세요.", romanized: "Jamsiman gidariseyo.", en: "Please wait a moment.", vi: "Xin chờ một lát." },
+      { korean: "다시 전화할게요.", romanized: "Dasi jeonhwahalgeyo.", en: "I'll call again.", vi: "Tôi sẽ gọi lại." },
+      { korean: "메시지를 남겨 주시겠어요?", romanized: "Mesijireul namgyeo jusigesseoyo?", en: "Could you leave a message?", vi: "Bạn có thể nhắn lại được không?" },
+      { korean: "통화 중이에요.", romanized: "Tonghwa jungieyo.", en: "The line is busy.", vi: "Đường dây đang bận." }
+    ],
     dialogue: [{ speaker: "A", hangul: "여보세요, 김민수 씨 계세요?", meaning: "Hello, is Minsu Kim there?" },
       { speaker: "B", hangul: "제가 김민순데요. 누구세요?", meaning: "This is Minsu Kim. Who is this?" },
       { speaker: "A", hangul: "저는 박지영이에요.", meaning: "This is Jiyoung Park." },
@@ -172,9 +229,9 @@ export const lessons = [
   },
   {
     id: 22,
-    title_vi: "Writing Emails",
+    title_vi: "Viết email",
     title_en: "Writing Emails",
-    intro_vi: "Learn formal and informal email expressions. Use 안녕하세요 for greeting and 감사합니다 for thanks.",
+    intro_vi: "Học các cách diễn đạt email trang trọng và thân mật. Dùng 안녕하세요 để chào và 감사합니다 để cảm ơn.",
     vocabulary: [{ hangul: "이메일", meaning: "email" },
       { hangul: "보내다", meaning: "to send" },
       { hangul: "받다", meaning: "to receive" },
@@ -185,11 +242,13 @@ export const lessons = [
       { hangul: "확인하다", meaning: "to confirm" },
       { hangul: "감사합니다", meaning: "thank you" },
       { hangul: "안녕하세요", meaning: "hello (formal)" }],
-    sentences: [{ korean: "안녕하세요, 김 선생님께 이메일 드립니다.", meaning: "Hello, I am sending an email to Mr. Kim." },
-      { korean: "첨부 파일을 확인해 주세요.", meaning: "Please check the attached file." },
-      { korean: "회신 부탁드립니다.", meaning: "I look forward to your reply." },
-      { korean: "제목을 다시 쓰겠습니다.", meaning: "I will rewrite the subject." },
-      { korean: "감사합니다. 좋은 하루 보내세요.", meaning: "Thank you. Have a nice day." }],
+    sentences: [
+      { korean: "안녕하세요, 김 선생님께 이메일 드립니다.", romanized: "Annyeonghaseyo, gim seonsaengnimkke imeil deurimnida.", en: "Hello, I am sending an email to Mr. Kim.", vi: "Xin chào, tôi viết email gửi thầy Kim." },
+      { korean: "첨부 파일을 확인해 주세요.", romanized: "Cheombu paireul hwaginhae juseyo.", en: "Please check the attached file.", vi: "Xin vui lòng kiểm tra tệp đính kèm." },
+      { korean: "회신 부탁드립니다.", romanized: "Hoesin butakdeurimnida.", en: "I look forward to your reply.", vi: "Mong nhận được phản hồi của bạn." },
+      { korean: "제목을 다시 쓰겠습니다.", romanized: "Jemogeul dasi sseugetseumnida.", en: "I will rewrite the subject.", vi: "Tôi sẽ viết lại tiêu đề." },
+      { korean: "감사합니다. 좋은 하루 보내세요.", romanized: "Gamsahamnida. joeun haru bonaeseyo.", en: "Thank you. Have a nice day.", vi: "Cảm ơn. Chúc một ngày tốt lành." }
+    ],
     dialogue: [{ speaker: "A", hangul: "안녕하세요, 이메일 보냈어요?", meaning: "Hello, did you send the email?" },
       { speaker: "B", hangul: "네, 방금 보냈어요. 첨부 파일도 넣었어요.", meaning: "Yes, I just sent it. I also attached a file." },
       { speaker: "A", hangul: "확인해 볼게요. 감사합니다.", meaning: "I'll check it. Thank you." },
@@ -201,9 +260,9 @@ export const lessons = [
   },
   {
     id: 23,
-    title_vi: "At the Bank",
+    title_vi: "Ở ngân hàng",
     title_en: "At the Bank",
-    intro_vi: "Useful phrases for banking transactions. Use 통장 for bankbook and 계좌 for account.",
+    intro_vi: "Các câu hữu ích cho giao dịch ngân hàng. Dùng 통장 cho sổ ngân hàng và 계좌 cho tài khoản.",
     vocabulary: [{ hangul: "은행", meaning: "bank" },
       { hangul: "계좌", meaning: "account" },
       { hangul: "통장", meaning: "bankbook" },
@@ -214,11 +273,13 @@ export const lessons = [
       { hangul: "비밀번호", meaning: "password" },
       { hangul: "통화", meaning: "currency" },
       { hangul: "수수료", meaning: "fee" }],
-    sentences: [{ korean: "계좌를 개설하고 싶습니다.", meaning: "I would like to open an account." },
-      { korean: "입금하려고 합니다.", meaning: "I want to make a deposit." },
-      { korean: "송금 수수료는 얼마인가요?", meaning: "How much is the transfer fee?" },
-      { korean: "비밀번호를 변경하고 싶어요.", meaning: "I want to change my password." },
-      { korean: "통장 정리를 부탁합니다.", meaning: "Please update my bankbook." }],
+    sentences: [
+      { korean: "계좌를 개설하고 싶습니다.", romanized: "Gyejwareul gaeseolhago sipseumnida.", en: "I would like to open an account.", vi: "Tôi muốn mở tài khoản." },
+      { korean: "입금하려고 합니다.", romanized: "Ipgeumharyeogo hamnida.", en: "I want to make a deposit.", vi: "Tôi muốn gửi tiền." },
+      { korean: "송금 수수료는 얼마인가요?", romanized: "Songgeum susuryoneun eolmaingayo?", en: "How much is the transfer fee?", vi: "Phí chuyển khoản là bao nhiêu?" },
+      { korean: "비밀번호를 변경하고 싶어요.", romanized: "Bimilbeonhoreul byeongyeonghago sipeoyo.", en: "I want to change my password.", vi: "Tôi muốn đổi mật khẩu." },
+      { korean: "통장 정리를 부탁합니다.", romanized: "Tongjang jeongrireul butakhamnida.", en: "Please update my bankbook.", vi: "Xin cập nhật sổ ngân hàng." }
+    ],
     dialogue: [{ speaker: "A", hangul: "안녕하세요, 계좌를 개설하고 싶습니다.", meaning: "Hello, I'd like to open an account." },
       { speaker: "B", hangul: "네, 신분증이 필요합니다.", meaning: "Yes, you need an ID." },
       { speaker: "A", hangul: "여기 있습니다.", meaning: "Here it is." },
@@ -230,9 +291,9 @@ export const lessons = [
   },
   {
     id: 24,
-    title_vi: "At the Post Office",
+    title_vi: "Ở bưu điện",
     title_en: "At the Post Office",
-    intro_vi: "Common phrases for mailing letters and packages. Use 우표 for stamp and 소포 for parcel.",
+    intro_vi: "Câu thông dụng để gửi thư và bưu kiện. Dùng 우표 cho tem và 소포 cho bưu kiện.",
     vocabulary: [{ hangul: "우체국", meaning: "post office" },
       { hangul: "우표", meaning: "stamp" },
       { hangul: "편지", meaning: "letter" },
@@ -243,11 +304,13 @@ export const lessons = [
       { hangul: "보내는 사람", meaning: "sender" },
       { hangul: "주소", meaning: "address" },
       { hangul: "우편 번호", meaning: "postal code" }],
-    sentences: [{ korean: "이 편지를 한국으로 보내고 싶어요.", meaning: "I want to send this letter to Korea." },
-      { korean: "소포를 부치려면 얼마인가요?", meaning: "How much is it to send a parcel?" },
-      { korean: "등기로 보내 주세요.", meaning: "Please send it by registered mail." },
-      { korean: "우표를 어디서 살 수 있나요?", meaning: "Where can I buy stamps?" },
-      { korean: "주소를 여기에 적어 주세요.", meaning: "Please write the address here." }],
+    sentences: [
+      { korean: "이 편지를 한국으로 보내고 싶어요.", romanized: "I pyeonjireul hangugeuro bonaego sipeoyo.", en: "I want to send this letter to Korea.", vi: "Tôi muốn gửi lá thư này đến Hàn Quốc." },
+      { korean: "소포를 부치려면 얼마인가요?", romanized: "Soporeul buchiryeomyeon eolmaingayo?", en: "How much is it to send a parcel?", vi: "Gửi bưu kiện giá bao nhiêu?" },
+      { korean: "등기로 보내 주세요.", romanized: "Deunggiro bonae juseyo.", en: "Please send it by registered mail.", vi: "Xin gửi bằng thư bảo đảm." },
+      { korean: "우표를 어디서 살 수 있나요?", romanized: "Upyoreul eodiseo sal su itnayo?", en: "Where can I buy stamps?", vi: "Tôi có thể mua tem ở đâu?" },
+      { korean: "주소를 여기에 적어 주세요.", romanized: "Jusoreul yeogie jeogeo juseyo.", en: "Please write the address here.", vi: "Xin viết địa chỉ ở đây." }
+    ],
     dialogue: [{ speaker: "A", hangul: "이 소포를 베트남으로 보내고 싶어요.", meaning: "I want to send this parcel to Vietnam." },
       { speaker: "B", hangul: "네, 내용물은 무엇인가요?", meaning: "Yes, what is the contents?" },
       { speaker: "A", hangul: "옷과 책입니다.", meaning: "Clothes and books." },
@@ -259,9 +322,9 @@ export const lessons = [
   },
   {
     id: 25,
-    title_vi: "Renting an Apartment",
+    title_vi: "Thuê căn hộ",
     title_en: "Renting an Apartment",
-    intro_vi: "Vocabulary for apartment rental. Use 보증금 for deposit and 월세 for monthly rent.",
+    intro_vi: "Từ vựng thuê căn hộ. Dùng 보증금 cho tiền đặt cọc và 월세 cho tiền thuê hàng tháng.",
     vocabulary: [{ hangul: "아파트", meaning: "apartment" },
       { hangul: "임대", meaning: "rental" },
       { hangul: "보증금", meaning: "deposit" },
@@ -272,11 +335,13 @@ export const lessons = [
       { hangul: "화장실", meaning: "bathroom" },
       { hangul: "주차장", meaning: "parking lot" },
       { hangul: "관리비", meaning: "management fee" }],
-    sentences: [{ korean: "아파트를 구하고 있습니다.", meaning: "I am looking for an apartment." },
-      { korean: "보증금은 얼마인가요?", meaning: "How much is the deposit?" },
-      { korean: "월세가 너무 비싸요.", meaning: "The monthly rent is too expensive." },
-      { korean: "계약 기간은 1년입니다.", meaning: "The contract period is one year." },
-      { korean: "관리비가 포함되어 있나요?", meaning: "Is the management fee included?" }],
+    sentences: [
+      { korean: "아파트를 구하고 있습니다.", romanized: "Apateureul guhago itseumnida.", en: "I am looking for an apartment.", vi: "Tôi đang tìm căn hộ." },
+      { korean: "보증금은 얼마인가요?", romanized: "Bojeunggeumeun eolmaingayo?", en: "How much is the deposit?", vi: "Tiền đặt cọc bao nhiêu?" },
+      { korean: "월세가 너무 비싸요.", romanized: "Wolsega neomu bissayo.", en: "The monthly rent is too expensive.", vi: "Tiền thuê hàng tháng đắt quá." },
+      { korean: "계약 기간은 1년입니다.", romanized: "Gyeyak giganeun 1nyeonimnida.", en: "The contract period is one year.", vi: "Thời hạn hợp đồng là 1 năm." },
+      { korean: "관리비가 포함되어 있나요?", romanized: "Gwanribiga pohamdoeeo itnayo?", en: "Is the management fee included?", vi: "Phí quản lý đã bao gồm chưa?" }
+    ],
     dialogue: [{ speaker: "A", hangul: "이 아파트를 보여 주시겠어요?", meaning: "Could you show me this apartment?" },
       { speaker: "B", hangul: "네, 여기 있습니다. 방이 두 개예요.", meaning: "Yes, here it is. It has two rooms." },
       { speaker: "A", hangul: "부엌이 크네요. 마음에 들어요.", meaning: "The kitchen is big. I like it." },
@@ -288,9 +353,9 @@ export const lessons = [
   },
   {
     id: 26,
-    title_vi: "Complaints and Returns",
+    title_vi: "Khiếu nại và trả hàng",
     title_en: "Complaints and Returns",
-    intro_vi: "Expressions for complaining and returning items. Use 불만 for complaint and 반품 for return.",
+    intro_vi: "Cách diễn đạt khiếu nại và trả hàng. Dùng 불만 cho khiếu nại và 반품 cho trả hàng.",
     vocabulary: [{ hangul: "불만", meaning: "complaint" },
       { hangul: "반품", meaning: "return" },
       { hangul: "교환", meaning: "exchange" },
@@ -301,11 +366,13 @@ export const lessons = [
       { hangul: "불편하다", meaning: "to be uncomfortable" },
       { hangul: "제품", meaning: "product" },
       { hangul: "주문", meaning: "order" }],
-    sentences: [{ korean: "이 제품에 하자가 있습니다.", meaning: "This product has a defect." },
-      { korean: "반품하고 싶습니다.", meaning: "I want to return it." },
-      { korean: "영수증이 없으면 환불이 어렵습니다.", meaning: "Without a receipt, a refund is difficult." },
-      { korean: "다른 제품으로 교환해 주세요.", meaning: "Please exchange it for another product." },
-      { korean: "고객 센터에 전화해 보세요.", meaning: "Try calling customer service." }],
+    sentences: [
+      { korean: "이 제품에 하자가 있습니다.", romanized: "I jepume hajaga itseumnida.", en: "This product has a defect.", vi: "Sản phẩm này có lỗi." },
+      { korean: "반품하고 싶습니다.", romanized: "Banpumhago sipseumnida.", en: "I want to return it.", vi: "Tôi muốn trả lại." },
+      { korean: "영수증이 없으면 환불이 어렵습니다.", romanized: "Yeongsujeungi eopseumyeon hwanburi eoryeopseumnida.", en: "Without a receipt, a refund is difficult.", vi: "Không có hóa đơn thì khó hoàn tiền." },
+      { korean: "다른 제품으로 교환해 주세요.", romanized: "Dareun jepumeuro gyohwanhae juseyo.", en: "Please exchange it for another product.", vi: "Xin đổi sang sản phẩm khác." },
+      { korean: "고객 센터에 전화해 보세요.", romanized: "Gogaek senteoe jeonhwahae boseyo.", en: "Try calling customer service.", vi: "Hãy gọi tổng đài chăm sóc khách hàng." }
+    ],
     dialogue: [{ speaker: "A", hangul: "이 옷에 구멍이 났어요. 반품하고 싶어요.", meaning: "This clothing has a hole. I want to return it." },
       { speaker: "B", hangul: "영수증 있으세요?", meaning: "Do you have the receipt?" },
       { speaker: "A", hangul: "네, 여기 있어요.", meaning: "Yes, here it is." },
@@ -317,9 +384,9 @@ export const lessons = [
   },
   {
     id: 27,
-    title_vi: "Giving Detailed Directions",
+    title_vi: "Chỉ đường chi tiết",
     title_en: "Giving Detailed Directions",
-    intro_vi: "Use directional phrases like 직진 for straight, 왼쪽 for left, 오른쪽 for right.",
+    intro_vi: "Dùng từ chỉ phương hướng như 직진 đi thẳng, 왼쪽 trái, 오른쪽 phải.",
     vocabulary: [{ hangul: "직진", meaning: "straight ahead" },
       { hangul: "왼쪽", meaning: "left" },
       { hangul: "오른쪽", meaning: "right" },
@@ -330,11 +397,13 @@ export const lessons = [
       { hangul: "걸어서", meaning: "on foot" },
       { hangul: "버스 정류장", meaning: "bus stop" },
       { hangul: "지하철 역", meaning: "subway station" }],
-    sentences: [{ korean: "직진하다가 사거리에서 왼쪽으로 가세요.", meaning: "Go straight and turn left at the intersection." },
-      { korean: "신호등을 건너면 은행이 보여요.", meaning: "After crossing the traffic light, you'll see the bank." },
-      { korean: "버스 정류장은 건너편에 있어요.", meaning: "The bus stop is on the opposite side." },
-      { korean: "여기서 지하철 역까지 걸어서 10분이에요.", meaning: "It's a 10-minute walk from here to the subway station." },
-      { korean: "모퉁이를 돌면 편의점이 있어요.", meaning: "Around the corner, there is a convenience store." }],
+    sentences: [
+      { korean: "직진하다가 사거리에서 왼쪽으로 가세요.", romanized: "Jikjinhadaga sageorieseo oenjjogeuro gaseyo.", en: "Go straight and turn left at the intersection.", vi: "Đi thẳng rồi rẽ trái ở ngã tư." },
+      { korean: "신호등을 건너면 은행이 보여요.", romanized: "Sinhodeungeul geonneomyeon eunhaengi boyeoyo.", en: "After crossing the traffic light, you'll see the bank.", vi: "Qua đèn giao thông là thấy ngân hàng." },
+      { korean: "버스 정류장은 건너편에 있어요.", romanized: "Beoseu jeongryujangeun geonneopyeone isseoyo.", en: "The bus stop is on the opposite side.", vi: "Trạm xe buýt ở phía đối diện." },
+      { korean: "여기서 지하철 역까지 걸어서 10분이에요.", romanized: "Yeogiseo jihacheol yeokkkaji georeoseo 10bunieyo.", en: "It's a 10-minute walk from here to the subway station.", vi: "Từ đây đến ga tàu điện ngầm đi bộ 10 phút." },
+      { korean: "모퉁이를 돌면 편의점이 있어요.", romanized: "Motungireul dolmyeon pyeonuijeomi isseoyo.", en: "Around the corner, there is a convenience store.", vi: "Rẽ qua góc đường có cửa hàng tiện lợi." }
+    ],
     dialogue: [{ speaker: "A", hangul: "실례합니다, 시청에 어떻게 가나요?", meaning: "Excuse me, how do I get to City Hall?" },
       { speaker: "B", hangul: "직진하시다가 두 번째 사거리에서 오른쪽으로 가세요.", meaning: "Go straight and turn right at the second intersection." },
       { speaker: "A", hangul: "네, 감사합니다. 걸어서 얼마나 걸리나요?", meaning: "Okay, thank you. How long does it take on foot?" },
@@ -346,9 +415,9 @@ export const lessons = [
   },
   {
     id: 28,
-    title_vi: "Discussing News",
+    title_vi: "Thảo luận tin tức",
     title_en: "Discussing News",
-    intro_vi: "Use 뉴스 for news and 토론 for discussion. Learn to express opinions on current events.",
+    intro_vi: "Dùng 뉴스 cho tin tức và 토론 cho thảo luận. Học cách nêu ý kiến về sự kiện thời sự.",
     vocabulary: [{ hangul: "뉴스", meaning: "news" },
       { hangul: "토론하다", meaning: "to discuss" },
       { hangul: "기사", meaning: "article" },
@@ -359,11 +428,13 @@ export const lessons = [
       { hangul: "사실", meaning: "fact" },
       { hangul: "거짓", meaning: "lie / false" },
       { hangul: "분석", meaning: "analysis" }],
-    sentences: [{ korean: "오늘 뉴스에서 뭘 봤어요?", meaning: "What did you see on the news today?" },
-      { korean: "그 기사에 동의하세요?", meaning: "Do you agree with that article?" },
-      { korean: "저는 그 의견에 반대합니다.", meaning: "I oppose that opinion." },
-      { korean: "그 사건은 아직 사실이 확인되지 않았어요.", meaning: "That incident hasn't been confirmed as fact yet." },
-      { korean: "뉴스 분석이 매우 흥미로웠어요.", meaning: "The news analysis was very interesting." }],
+    sentences: [
+      { korean: "오늘 뉴스에서 뭘 봤어요?", romanized: "Oneul nyuseueseo mwol bwasseoyo?", en: "What did you see on the news today?", vi: "Hôm nay bạn xem tin gì?" },
+      { korean: "그 기사에 동의하세요?", romanized: "Geu gisae donguihaseyo?", en: "Do you agree with that article?", vi: "Bạn có đồng ý với bài báo đó không?" },
+      { korean: "저는 그 의견에 반대합니다.", romanized: "Jeoneun geu uigyeone bandaehamnida.", en: "I oppose that opinion.", vi: "Tôi phản đối ý kiến đó." },
+      { korean: "그 사건은 아직 사실이 확인되지 않았어요.", romanized: "Geu sageoneun ajik sasiri hwagindoeji anasseoyo.", en: "That incident hasn't been confirmed as fact yet.", vi: "Sự việc đó vẫn chưa được xác nhận là thật." },
+      { korean: "뉴스 분석이 매우 흥미로웠어요.", romanized: "Nyuseu bunseogi maeu heungmirowosseoyo.", en: "The news analysis was very interesting.", vi: "Bài phân tích tin tức rất thú vị." }
+    ],
     dialogue: [{ speaker: "A", hangul: "어제 뉴스 봤어요? 경제 관련 기사가 있었어요.", meaning: "Did you watch the news yesterday? There was an article about the economy." },
       { speaker: "B", hangul: "네, 봤어요. 하지만 그 분석에 동의하지 않아요.", meaning: "Yes, I saw it. But I don't agree with that analysis." },
       { speaker: "A", hangul: "왜요? 저는 꽤 타당하다고 생각했는데요.", meaning: "Why? I thought it was quite reasonable." },
@@ -375,9 +446,9 @@ export const lessons = [
   },
   {
     id: 29,
-    title_vi: "Cultural Differences",
+    title_vi: "Khác biệt văn hóa",
     title_en: "Cultural Differences",
-    intro_vi: "Discuss cultural norms and differences. Use 문화 for culture and 차이 for difference.",
+    intro_vi: "Thảo luận chuẩn mực và sự khác biệt văn hóa. Dùng 문화 cho văn hóa và 차이 cho khác biệt.",
     vocabulary: [{ hangul: "문화", meaning: "culture" },
       { hangul: "차이", meaning: "difference" },
       { hangul: "관습", meaning: "custom" },
@@ -388,11 +459,13 @@ export const lessons = [
       { hangul: "금기", meaning: "taboo" },
       { hangul: "이해하다", meaning: "to understand" },
       { hangul: "존중하다", meaning: "to respect" }],
-    sentences: [{ korean: "한국과 베트남의 문화 차이가 있어요.", meaning: "There are cultural differences between Korea and Vietnam." },
-      { korean: "한국에서는 인사할 때 고개를 숙여요.", meaning: "In Korea, you bow when greeting." },
-      { korean: "선물을 받을 때 두 손으로 받는 게 예의예요.", meaning: "It is polite to receive a gift with both hands." },
-      { korean: "식사 중에 코를 푸는 것은 금기예요.", meaning: "Blowing your nose during a meal is taboo." },
-      { korean: "서로의 문화를 존중하는 것이 중요해요.", meaning: "It's important to respect each other's culture." }],
+    sentences: [
+      { korean: "한국과 베트남의 문화 차이가 있어요.", romanized: "Hangukgwa beteunamui munhwa chaiga isseoyo.", en: "There are cultural differences between Korea and Vietnam.", vi: "Có sự khác biệt văn hóa giữa Hàn Quốc và Việt Nam." },
+      { korean: "한국에서는 인사할 때 고개를 숙여요.", romanized: "Hangugeseoneun insahal ttae gogaereul sugyeoyo.", en: "In Korea, you bow when greeting.", vi: "Ở Hàn Quốc, người ta cúi đầu khi chào." },
+      { korean: "선물을 받을 때 두 손으로 받는 게 예의예요.", romanized: "Seonmureul badeul ttae du soneuro batneun ge yeuiyeyo.", en: "It is polite to receive a gift with both hands.", vi: "Nhận quà bằng hai tay là lịch sự." },
+      { korean: "식사 중에 코를 푸는 것은 금기예요.", romanized: "Siksa junge koreul puneun geoseun geumgiyeyo.", en: "Blowing your nose during a meal is taboo.", vi: "Hỉ mũi trong bữa ăn là điều cấm kỵ." },
+      { korean: "서로의 문화를 존중하는 것이 중요해요.", romanized: "Seoroui munhwareul jonjunghaneun geosi jungyohaeyo.", en: "It's important to respect each other's culture.", vi: "Tôn trọng văn hóa của nhau là điều quan trọng." }
+    ],
     dialogue: [{ speaker: "A", hangul: "한국에서 처음으로 명절을 보냈어요.", meaning: "I spent my first holiday in Korea." },
       { speaker: "B", hangul: "어땠어요? 다른 점이 많았죠?", meaning: "How was it? There were many differences, right?" },
       { speaker: "A", hangul: "네, 특히 음식과 인사 방식이 달랐어요.", meaning: "Yes, especially the food and greeting style were different." },
@@ -404,9 +477,9 @@ export const lessons = [
   },
   {
     id: 30,
-    title_vi: "Job Interviews",
+    title_vi: "Phỏng vấn xin việc",
     title_en: "Job Interviews",
-    intro_vi: "Key phrases for job interviews. Use 자기소개 for self-introduction and 지원하다 for apply.",
+    intro_vi: "Câu quan trọng khi phỏng vấn xin việc. Dùng 자기소개 cho tự giới thiệu và 지원하다 cho ứng tuyển.",
     vocabulary: [{ hangul: "면접", meaning: "interview" },
       { hangul: "지원하다", meaning: "to apply" },
       { hangul: "자기소개", meaning: "self-introduction" },
@@ -417,11 +490,13 @@ export const lessons = [
       { hangul: "목표", meaning: "goal" },
       { hangul: "직무", meaning: "job duty" },
       { hangul: "합격", meaning: "pass / acceptance" }],
-    sentences: [{ korean: "먼저 자기소개를 해 주세요.", meaning: "Please introduce yourself first." },
-      { korean: "제 강점은 커뮤니케이션 능력입니다.", meaning: "My strength is communication skills." },
-      { korean: "이전 경력에 대해 말씀해 주세요.", meaning: "Please tell me about your previous experience." },
-      { korean: "왜 이 회사에 지원하셨나요?", meaning: "Why did you apply to this company?" },
-      { korean: "앞으로의 목표가 무엇인가요?", meaning: "What are your future goals?" }],
+    sentences: [
+      { korean: "먼저 자기소개를 해 주세요.", romanized: "Meonjeo jagisogaereul hae juseyo.", en: "Please introduce yourself first.", vi: "Trước hết hãy tự giới thiệu." },
+      { korean: "제 강점은 커뮤니케이션 능력입니다.", romanized: "Je gangjeomeun keomyunikeisyeon neungryeogimnida.", en: "My strength is communication skills.", vi: "Điểm mạnh của tôi là khả năng giao tiếp." },
+      { korean: "이전 경력에 대해 말씀해 주세요.", romanized: "Ijeon gyeongryeoge daehae malsseumhae juseyo.", en: "Please tell me about your previous experience.", vi: "Hãy nói về kinh nghiệm trước đây." },
+      { korean: "왜 이 회사에 지원하셨나요?", romanized: "Wae i hoesae jiwonhasyeotnayo?", en: "Why did you apply to this company?", vi: "Tại sao bạn ứng tuyển vào công ty này?" },
+      { korean: "앞으로의 목표가 무엇인가요?", romanized: "Apeuroui mokpyoga mueosingayo?", en: "What are your future goals?", vi: "Mục tiêu tương lai của bạn là gì?" }
+    ],
     dialogue: [{ speaker: "A", hangul: "안녕하세요. 면접관입니다. 편하게 앉으세요.", meaning: "Hello. I am the interviewer. Please have a seat." },
       { speaker: "B", hangul: "감사합니다. 저는 김지수라고 합니다.", meaning: "Thank you. My name is Jisoo Kim." },
       { speaker: "A", hangul: "지수 씨, 자기소개 부탁드립니다.", meaning: "Jisoo, please introduce yourself." },
@@ -433,9 +508,9 @@ export const lessons = [
   },
   {
     id: 31,
-    title_vi: "Business Meetings",
+    title_vi: "Họp công việc",
     title_en: "Business Meetings",
-    intro_vi: "Formal meeting expressions. Use 회의 for meeting and 의견을 내다 to give opinion.",
+    intro_vi: "Cách diễn đạt trong họp trang trọng. Dùng 회의 cho cuộc họp và 의견을 내다 để nêu ý kiến.",
     vocabulary: [{ hangul: "회의", meaning: "meeting" },
       { hangul: "의제", meaning: "agenda" },
       { hangul: "발표", meaning: "presentation" },
@@ -446,11 +521,13 @@ export const lessons = [
       { hangul: "진행하다", meaning: "to proceed" },
       { hangul: "마감", meaning: "deadline" },
       { hangul: "회의록", meaning: "meeting minutes" }],
-    sentences: [{ korean: "회의를 시작하겠습니다.", meaning: "Let's start the meeting." },
-      { korean: "오늘 의제는 무엇인가요?", meaning: "What is today's agenda?" },
-      { korean: "다음 프로젝트에 대해 토의합시다.", meaning: "Let's discuss the next project." },
-      { korean: "결정은 다음 주까지 미루겠습니다.", meaning: "We will postpone the decision until next week." },
-      { korean: "회의록을 이메일로 보내 드리겠습니다.", meaning: "I will send you the meeting minutes by email." }],
+    sentences: [
+      { korean: "회의를 시작하겠습니다.", romanized: "Hoeuireul sijakhagetseumnida.", en: "Let's start the meeting.", vi: "Bắt đầu cuộc họp." },
+      { korean: "오늘 의제는 무엇인가요?", romanized: "Oneul uijeneun mueosingayo?", en: "What is today's agenda?", vi: "Chương trình hôm nay là gì?" },
+      { korean: "다음 프로젝트에 대해 토의합시다.", romanized: "Daeum peurojekteue daehae touihapsida.", en: "Let's discuss the next project.", vi: "Hãy thảo luận dự án tiếp theo." },
+      { korean: "결정은 다음 주까지 미루겠습니다.", romanized: "Gyeoljeongeun daeum jukkaji mirugetseumnida.", en: "We will postpone the decision until next week.", vi: "Quyết định sẽ hoãn đến tuần sau." },
+      { korean: "회의록을 이메일로 보내 드리겠습니다.", romanized: "Hoeuirogeul imeilro bonae deurigetseumnida.", en: "I will send you the meeting minutes by email.", vi: "Tôi sẽ gửi biên bản họp qua email." }
+    ],
     dialogue: [{ speaker: "A", hangul: "모두 모였으니 회의를 시작하겠습니다.", meaning: "Since everyone is here, let's start the meeting." },
       { speaker: "B", hangul: "네, 먼저 지난주 진행 상황을 보고하겠습니다.", meaning: "Yes, first I will report on last week's progress." },
       { speaker: "A", hangul: "수고하셨습니다. 다음 의제로 넘어갑시다.", meaning: "Good work. Let's move to the next agenda." },
@@ -462,9 +539,9 @@ export const lessons = [
   },
   {
     id: 32,
-    title_vi: "Giving Presentations",
+    title_vi: "Thuyết trình",
     title_en: "Giving Presentations",
-    intro_vi: "Presentation phrases. Use 발표 for presentation and 자료 for materials.",
+    intro_vi: "Cách diễn đạt khi thuyết trình. Dùng 발표 cho thuyết trình và 자료 cho tài liệu.",
     vocabulary: [{ hangul: "발표", meaning: "presentation" },
       { hangul: "자료", meaning: "materials" },
       { hangul: "슬라이드", meaning: "slide" },
@@ -475,11 +552,13 @@ export const lessons = [
       { hangul: "준비하다", meaning: "to prepare" },
       { hangul: "설명하다", meaning: "to explain" },
       { hangul: "마무리하다", meaning: "to conclude" }],
-    sentences: [{ korean: "오늘 발표 주제는 시장 분석입니다.", meaning: "Today's presentation topic is market analysis." },
-      { korean: "다음 슬라이드를 봐 주세요.", meaning: "Please look at the next slide." },
-      { korean: "간단히 요약하겠습니다.", meaning: "I will give a brief summary." },
-      { korean: "질문이 있으시면 언제든지 해 주세요.", meaning: "If you have questions, please feel free to ask anytime." },
-      { korean: "발표를 마치겠습니다. 감사합니다.", meaning: "I will conclude the presentation. Thank you." }],
+    sentences: [
+      { korean: "오늘 발표 주제는 시장 분석입니다.", romanized: "Oneul balpyo jujeneun sijang bunseogimnida.", en: "Today's presentation topic is market analysis.", vi: "Chủ đề thuyết trình hôm nay là phân tích thị trường." },
+      { korean: "다음 슬라이드를 봐 주세요.", romanized: "Daeum seulraideureul bwa juseyo.", en: "Please look at the next slide.", vi: "Xin xem slide tiếp theo." },
+      { korean: "간단히 요약하겠습니다.", romanized: "Gandanhi yoyakhagetseumnida.", en: "I will give a brief summary.", vi: "Tôi sẽ tóm tắt ngắn gọn." },
+      { korean: "질문이 있으시면 언제든지 해 주세요.", romanized: "Jilmuni isseusimyeon eonjedeunji hae juseyo.", en: "If you have questions, please feel free to ask anytime.", vi: "Có câu hỏi xin cứ tự nhiên." },
+      { korean: "발표를 마치겠습니다. 감사합니다.", romanized: "Balpyoreul machigetseumnida. gamsahamnida.", en: "I will conclude the presentation. Thank you.", vi: "Tôi xin kết thúc bài thuyết trình. Cảm ơn." }
+    ],
     dialogue: [{ speaker: "A", hangul: "안녕하세요, 오늘 발표를 시작하겠습니다.", meaning: "Hello, I will begin today's presentation." },
       { speaker: "B", hangul: "주제가 무엇인가요?", meaning: "What is the topic?" },
       { speaker: "A", hangul: "신제품 출시 전략에 관한 것입니다.", meaning: "It is about the new product launch strategy." },
@@ -491,9 +570,9 @@ export const lessons = [
   },
   {
     id: 33,
-    title_vi: "Negotiating",
+    title_vi: "Đàm phán",
     title_en: "Negotiating",
-    intro_vi: "Negotiation vocabulary. Use 협상 for negotiation and 조건 for condition.",
+    intro_vi: "Từ vựng đàm phán. Dùng 협상 cho đàm phán và 조건 cho điều kiện.",
     vocabulary: [{ hangul: "협상", meaning: "negotiation" },
       { hangul: "조건", meaning: "condition" },
       { hangul: "제안", meaning: "proposal" },
@@ -504,11 +583,13 @@ export const lessons = [
       { hangul: "양보하다", meaning: "to concede" },
       { hangul: "이익", meaning: "profit" },
       { hangul: "마감일", meaning: "deadline" }],
-    sentences: [{ korean: "협상을 시작합시다.", meaning: "Let's start the negotiation." },
-      { korean: "조건을 조금 완화해 주실 수 있나요?", meaning: "Could you ease the conditions a little?" },
-      { korean: "우리는 10% 할인을 제안합니다.", meaning: "We propose a 10% discount." },
-      { korean: "서로 타협점을 찾아야 합니다.", meaning: "We need to find a compromise." },
-      { korean: "계약서에 서명하기 전에 검토하겠습니다.", meaning: "I will review the contract before signing." }],
+    sentences: [
+      { korean: "협상을 시작합시다.", romanized: "Hyeopsangeul sijakhapsida.", en: "Let's start the negotiation.", vi: "Hãy bắt đầu đàm phán." },
+      { korean: "조건을 조금 완화해 주실 수 있나요?", romanized: "Jogeoneul jogeum wanhwahae jusil su itnayo?", en: "Could you ease the conditions a little?", vi: "Bạn có thể nới lỏng điều kiện một chút không?" },
+      { korean: "우리는 10% 할인을 제안합니다.", romanized: "Urineun 10% harineul jeanhamnida.", en: "We propose a 10% discount.", vi: "Chúng tôi đề xuất giảm giá 10%." },
+      { korean: "서로 타협점을 찾아야 합니다.", romanized: "Seoro tahyeopjeomeul chajaya hamnida.", en: "We need to find a compromise.", vi: "Chúng ta cần tìm điểm thỏa hiệp." },
+      { korean: "계약서에 서명하기 전에 검토하겠습니다.", romanized: "Gyeyakseoe seomyeonghagi jeone geomtohagetseumnida.", en: "I will review the contract before signing.", vi: "Tôi sẽ xem xét hợp đồng trước khi ký." }
+    ],
     dialogue: [{ speaker: "A", hangul: "가격을 낮출 수 있을까요?", meaning: "Can you lower the price?" },
       { speaker: "B", hangul: "최대 5%까지 할인이 가능합니다.", meaning: "A maximum of 5% discount is possible." },
       { speaker: "A", hangul: "그럼 10% 할인은 어려운가요?", meaning: "Then is 10% discount difficult?" },
@@ -520,9 +601,9 @@ export const lessons = [
   },
   {
     id: 34,
-    title_vi: "Social Media",
+    title_vi: "Mạng xã hội",
     title_en: "Social Media",
-    intro_vi: "Social media terms. Use 소셜 미디어 for social media and 팔로우 for follow.",
+    intro_vi: "Thuật ngữ mạng xã hội. Dùng 소셜 미디어 cho mạng xã hội và 팔로우 cho theo dõi.",
     vocabulary: [{ hangul: "소셜 미디어", meaning: "social media" },
       { hangul: "팔로우", meaning: "follow" },
       { hangul: "좋아요", meaning: "like" },
@@ -533,11 +614,13 @@ export const lessons = [
       { hangul: "해시태그", meaning: "hashtag" },
       { hangul: "인스타그램", meaning: "Instagram" },
       { hangul: "트위터", meaning: "Twitter" }],
-    sentences: [{ korean: "소셜 미디어에서 자주 활동하세요?", meaning: "Do you often use social media?" },
-      { korean: "제 게시물에 좋아요를 눌러 주세요.", meaning: "Please like my post." },
-      { korean: "댓글을 달아 주셔서 감사합니다.", meaning: "Thank you for leaving a comment." },
-      { korean: "이 사진을 공유하고 싶어요.", meaning: "I want to share this photo." },
-      { korean: "해시태그를 사용하면 검색이 쉬워요.", meaning: "Using hashtags makes searching easier." }],
+    sentences: [
+      { korean: "소셜 미디어에서 자주 활동하세요?", romanized: "Sosyeol midieoeseo jaju hwaldonghaseyo?", en: "Do you often use social media?", vi: "Bạn có hay dùng mạng xã hội không?" },
+      { korean: "제 게시물에 좋아요를 눌러 주세요.", romanized: "Je gesimure joayoreul nulreo juseyo.", en: "Please like my post.", vi: "Xin nhấn like cho bài đăng của tôi." },
+      { korean: "댓글을 달아 주셔서 감사합니다.", romanized: "Daetgeureul dara jusyeoseo gamsahamnida.", en: "Thank you for leaving a comment.", vi: "Cảm ơn bạn đã bình luận." },
+      { korean: "이 사진을 공유하고 싶어요.", romanized: "I sajineul gongyuhago sipeoyo.", en: "I want to share this photo.", vi: "Tôi muốn chia sẻ bức ảnh này." },
+      { korean: "해시태그를 사용하면 검색이 쉬워요.", romanized: "Haesitaegeureul sayonghamyeon geomsaegi swiwoyo.", en: "Using hashtags makes searching easier.", vi: "Dùng hashtag thì tìm kiếm dễ hơn." }
+    ],
     dialogue: [{ speaker: "A", hangul: "인스타그램 계정이 있어요?", meaning: "Do you have an Instagram account?" },
       { speaker: "B", hangul: "네, 있어요. 당신을 팔로우할게요.", meaning: "Yes, I do. I'll follow you." },
       { speaker: "A", hangul: "감사합니다. 저도 팔로우할게요.", meaning: "Thank you. I'll follow you too." },
@@ -549,9 +632,9 @@ export const lessons = [
   },
   {
     id: 35,
-    title_vi: "Environmental Issues",
+    title_vi: "Vấn đề môi trường",
     title_en: "Environmental Issues",
-    intro_vi: "Environmental vocabulary. Use 환경 for environment and 문제 for issue.",
+    intro_vi: "Từ vựng môi trường. Dùng 환경 cho môi trường và 문제 cho vấn đề.",
     vocabulary: [{ hangul: "환경", meaning: "environment" },
       { hangul: "문제", meaning: "problem" },
       { hangul: "오염", meaning: "pollution" },
@@ -562,11 +645,13 @@ export const lessons = [
       { hangul: "탄소 배출", meaning: "carbon emission" },
       { hangul: "자연 보호", meaning: "nature protection" },
       { hangul: "생태계", meaning: "ecosystem" }],
-    sentences: [{ korean: "환경 오염이 심각해지고 있어요.", meaning: "Environmental pollution is becoming serious." },
-      { korean: "재활용을 생활화해야 합니다.", meaning: "We should make recycling a habit." },
-      { korean: "지구 온난화를 막기 위해 노력합시다.", meaning: "Let's try to prevent global warming." },
-      { korean: "탄소 배출을 줄이는 것이 중요해요.", meaning: "Reducing carbon emissions is important." },
-      { korean: "자연을 보호하는 일에 동참해 주세요.", meaning: "Please join in protecting nature." }],
+    sentences: [
+      { korean: "환경 오염이 심각해지고 있어요.", romanized: "Hwangyeong oyeomi simgakhaejigo isseoyo.", en: "Environmental pollution is becoming serious.", vi: "Ô nhiễm môi trường đang trở nên nghiêm trọng." },
+      { korean: "재활용을 생활화해야 합니다.", romanized: "Jaehwaryongeul saenghwalhwahaeya hamnida.", en: "We should make recycling a habit.", vi: "Chúng ta phải biến tái chế thành thói quen." },
+      { korean: "지구 온난화를 막기 위해 노력합시다.", romanized: "Jigu onnanhwareul makgi wihae noryeokhapsida.", en: "Let's try to prevent global warming.", vi: "Hãy cùng nhau ngăn chặn nóng lên toàn cầu." },
+      { korean: "탄소 배출을 줄이는 것이 중요해요.", romanized: "Tanso baechureul jurineun geosi jungyohaeyo.", en: "Reducing carbon emissions is important.", vi: "Giảm khí thải carbon là điều quan trọng." },
+      { korean: "자연을 보호하는 일에 동참해 주세요.", romanized: "Jayeoneul bohohaneun ire dongchamhae juseyo.", en: "Please join in protecting nature.", vi: "Xin hãy cùng tham gia bảo vệ thiên nhiên." }
+    ],
     dialogue: [{ speaker: "A", hangul: "요즘 환경 문제에 관심이 많아졌어요.", meaning: "I've become more interested in environmental issues these days." },
       { speaker: "B", hangul: "저도요. 특히 플라스틱 사용을 줄이려고 해요.", meaning: "Me too. Especially I try to reduce plastic use." },
       { speaker: "A", hangul: "재활용도 열심히 하고 있어요.", meaning: "I'm also doing recycling diligently." },
@@ -578,9 +663,9 @@ export const lessons = [
   },
   {
     id: 36,
-    title_vi: "Expressing Opinions",
+    title_vi: "Bày tỏ ý kiến",
     title_en: "Expressing Opinions",
-    intro_vi: "Use 의견 for opinion and 표현 for expression. Learn to state and defend your views.",
+    intro_vi: "Dùng 의견 cho ý kiến và 표현 cho cách diễn đạt. Học cách nêu và bảo vệ quan điểm.",
     vocabulary: [{ hangul: "의견", meaning: "opinion" },
       { hangul: "생각", meaning: "thought" },
       { hangul: "주장", meaning: "claim / argument" },
@@ -591,11 +676,13 @@ export const lessons = [
       { hangul: "논리", meaning: "logic" },
       { hangul: "확신", meaning: "conviction" },
       { hangul: "의문", meaning: "doubt" }],
-    sentences: [{ korean: "제 의견을 말씀드리겠습니다.", meaning: "I will express my opinion." },
-      { korean: "저는 그 주장에 동의하지 않습니다.", meaning: "I do not agree with that claim." },
-      { korean: "다른 관점에서 생각해 볼 필요가 있어요.", meaning: "We need to think from a different perspective." },
-      { korean: "그 근거가 충분하다고 생각하나요?", meaning: "Do you think that evidence is sufficient?" },
-      { korean: "저는 확신이 서지 않아요.", meaning: "I am not convinced." }],
+    sentences: [
+      { korean: "제 의견을 말씀드리겠습니다.", romanized: "Je uigyeoneul malsseumdeurigetseumnida.", en: "I will express my opinion.", vi: "Tôi xin nêu ý kiến của mình." },
+      { korean: "저는 그 주장에 동의하지 않습니다.", romanized: "Jeoneun geu jujange donguihaji ansseumnida.", en: "I do not agree with that claim.", vi: "Tôi không đồng ý với lập luận đó." },
+      { korean: "다른 관점에서 생각해 볼 필요가 있어요.", romanized: "Dareun gwanjeomeseo saenggakhae bol piryoga isseoyo.", en: "We need to think from a different perspective.", vi: "Cần suy nghĩ từ một góc nhìn khác." },
+      { korean: "그 근거가 충분하다고 생각하나요?", romanized: "Geu geungeoga chungbunhadago saenggakhanayo?", en: "Do you think that evidence is sufficient?", vi: "Bạn có nghĩ căn cứ đó là đủ không?" },
+      { korean: "저는 확신이 서지 않아요.", romanized: "Jeoneun hwaksini seoji anayo.", en: "I am not convinced.", vi: "Tôi không chắc chắn lắm." }
+    ],
     dialogue: [{ speaker: "A", hangul: "새 정책에 대해 어떻게 생각하세요?", meaning: "What do you think about the new policy?" },
       { speaker: "B", hangul: "저는 찬성합니다. 효과적일 거예요.", meaning: "I agree. It will be effective." },
       { speaker: "A", hangul: "그런데 비용이 너무 많이 들지 않을까요?", meaning: "But won't it cost too much?" },
@@ -607,9 +694,9 @@ export const lessons = [
   },
   {
     id: 37,
-    title_vi: "Making Suggestions",
+    title_vi: "Đưa ra gợi ý",
     title_en: "Making Suggestions",
-    intro_vi: "Use 제안 for suggestion. Use -는 게 어때요? for making suggestions.",
+    intro_vi: "Dùng 제안 cho gợi ý. Dùng -는 게 어때요? để gợi ý.",
     vocabulary: [{ hangul: "제안", meaning: "suggestion" },
       { hangul: "추천", meaning: "recommendation" },
       { hangul: "대안", meaning: "alternative" },
@@ -620,11 +707,13 @@ export const lessons = [
       { hangul: "계획", meaning: "plan" },
       { hangul: "실행", meaning: "execution" },
       { hangul: "고려하다", meaning: "to consider" }],
-    sentences: [{ korean: "같이 영화 보는 게 어때요?", meaning: "How about watching a movie together?" },
-      { korean: "제안이 있으신 분?", meaning: "Anyone have a suggestion?" },
-      { korean: "이 대안을 고려해 보세요.", meaning: "Please consider this alternative." },
-      { korean: "제가 추천하는 곳이 있어요.", meaning: "I have a recommendation." },
-      { korean: "우선 계획을 세우는 게 좋겠어요.", meaning: "I think it would be good to make a plan first." }],
+    sentences: [
+      { korean: "같이 영화 보는 게 어때요?", romanized: "Gati yeonghwa boneun ge eottaeyo?", en: "How about watching a movie together?", vi: "Cùng đi xem phim nhé?" },
+      { korean: "제안이 있으신 분?", romanized: "Jeani isseusin bun?", en: "Anyone have a suggestion?", vi: "Có ai có gợi ý không?" },
+      { korean: "이 대안을 고려해 보세요.", romanized: "I daeaneul goryeohae boseyo.", en: "Please consider this alternative.", vi: "Hãy cân nhắc phương án này." },
+      { korean: "제가 추천하는 곳이 있어요.", romanized: "Jega chucheonhaneun gosi isseoyo.", en: "I have a recommendation.", vi: "Tôi có một địa điểm muốn giới thiệu." },
+      { korean: "우선 계획을 세우는 게 좋겠어요.", romanized: "Useon gyehoegeul seuneun ge jokesseoyo.", en: "I think it would be good to make a plan first.", vi: "Tốt nhất nên lập kế hoạch trước." }
+    ],
     dialogue: [{ speaker: "A", hangul: "이번 주말에 뭐 할까요?", meaning: "What shall we do this weekend?" },
       { speaker: "B", hangul: "등산 가는 게 어때요?", meaning: "How about going hiking?" },
       { speaker: "A", hangul: "좋아요! 어디로 갈까요?", meaning: "Good idea! Where shall we go?" },
@@ -636,9 +725,9 @@ export const lessons = [
   },
   {
     id: 38,
-    title_vi: "Apologizing and Making Excuses",
+    title_vi: "Xin lỗi và biện hộ",
     title_en: "Apologizing and Making Excuses",
-    intro_vi: "Use 사과 for apology and 변명 for excuse. Learn polite apology forms.",
+    intro_vi: "Dùng 사과 cho xin lỗi và 변명 cho biện hộ. Học các cách xin lỗi lịch sự.",
     vocabulary: [{ hangul: "사과", meaning: "apology" },
       { hangul: "변명", meaning: "excuse" },
       { hangul: "죄송합니다", meaning: "I'm sorry" },
@@ -649,11 +738,13 @@ export const lessons = [
       { hangul: "다행이다", meaning: "to be relieved" },
       { hangul: "약속", meaning: "promise" },
       { hangul: "재발", meaning: "recurrence" }],
-    sentences: [{ korean: "정말 죄송합니다.", meaning: "I am really sorry." },
-      { korean: "제 실수였어요. 용서해 주세요.", meaning: "It was my mistake. Please forgive me." },
-      { korean: "늦은 이유를 설명해 주세요.", meaning: "Please explain the reason for being late." },
-      { korean: "다시는 그러지 않겠습니다.", meaning: "I won't do that again." },
-      { korean: "이해해 주셔서 감사합니다.", meaning: "Thank you for understanding." }],
+    sentences: [
+      { korean: "정말 죄송합니다.", romanized: "Jeongmal joesonghamnida.", en: "I am really sorry.", vi: "Tôi thực sự xin lỗi." },
+      { korean: "제 실수였어요. 용서해 주세요.", romanized: "Je silsuyeosseoyo. yongseohae juseyo.", en: "It was my mistake. Please forgive me.", vi: "Đó là lỗi của tôi. Xin tha lỗi." },
+      { korean: "늦은 이유를 설명해 주세요.", romanized: "Neujeun iyureul seolmyeonghae juseyo.", en: "Please explain the reason for being late.", vi: "Xin giải thích lý do đến trễ." },
+      { korean: "다시는 그러지 않겠습니다.", romanized: "Dasineun geureoji anketseumnida.", en: "I won't do that again.", vi: "Tôi sẽ không tái phạm." },
+      { korean: "이해해 주셔서 감사합니다.", romanized: "Ihaehae jusyeoseo gamsahamnida.", en: "Thank you for understanding.", vi: "Cảm ơn bạn đã thông cảm." }
+    ],
     dialogue: [{ speaker: "A", hangul: "어제 약속에 늦어서 정말 미안해요.", meaning: "I'm really sorry for being late to the appointment yesterday." },
       { speaker: "B", hangul: "괜찮아요. 무슨 일이 있었어요?", meaning: "It's okay. What happened?" },
       { speaker: "A", hangul: "교통이 많이 막혔어요.", meaning: "There was heavy traffic." },
@@ -665,9 +756,9 @@ export const lessons = [
   },
   {
     id: 39,
-    title_vi: "Giving Advice",
+    title_vi: "Đưa ra lời khuyên",
     title_en: "Giving Advice",
-    intro_vi: "Use 조언 for advice. Use -는 것이 좋다 for giving recommendations.",
+    intro_vi: "Dùng 조언 cho lời khuyên. Dùng -는 것이 좋다 để khuyên nhủ.",
     vocabulary: [{ hangul: "조언", meaning: "advice" },
       { hangul: "충고", meaning: "counsel" },
       { hangul: "추천하다", meaning: "to recommend" },
@@ -678,11 +769,13 @@ export const lessons = [
       { hangul: "기회", meaning: "opportunity" },
       { hangul: "실패", meaning: "failure" },
       { hangul: "성공", meaning: "success" }],
-    sentences: [{ korean: "제 조언을 들어 보세요.", meaning: "Listen to my advice." },
-      { korean: "그 일을 먼저 처리하는 것이 좋아요.", meaning: "It's better to handle that task first." },
-      { korean: "실패를 두려워하지 마세요.", meaning: "Don't be afraid of failure." },
-      { korean: "기회가 올 때 잡으세요.", meaning: "Seize the opportunity when it comes." },
-      { korean: "충고를 명심하겠습니다.", meaning: "I will keep your advice in mind." }],
+    sentences: [
+      { korean: "제 조언을 들어 보세요.", romanized: "Je joeoneul deureo boseyo.", en: "Listen to my advice.", vi: "Hãy nghe lời khuyên của tôi." },
+      { korean: "그 일을 먼저 처리하는 것이 좋아요.", romanized: "Geu ireul meonjeo cheorihaneun geosi joayo.", en: "It's better to handle that task first.", vi: "Nên xử lý việc đó trước." },
+      { korean: "실패를 두려워하지 마세요.", romanized: "Silpaereul duryeowohaji maseyo.", en: "Don't be afraid of failure.", vi: "Đừng sợ thất bại." },
+      { korean: "기회가 올 때 잡으세요.", romanized: "Gihoega ol ttae jabeuseyo.", en: "Seize the opportunity when it comes.", vi: "Hãy nắm bắt cơ hội khi đến." },
+      { korean: "충고를 명심하겠습니다.", romanized: "Chunggoreul myeongsimhagetseumnida.", en: "I will keep your advice in mind.", vi: "Tôi sẽ ghi nhớ lời khuyên." }
+    ],
     dialogue: [{ speaker: "A", hangul: "한국어 공부가 어려워요. 조언 좀 해 주세요.", meaning: "Studying Korean is difficult. Please give me some advice." },
       { speaker: "B", hangul: "매일 조금씩 꾸준히 공부하는 게 좋아요.", meaning: "It's good to study a little bit every day consistently." },
       { speaker: "A", hangul: "듣기 실력을 어떻게 늘릴까요?", meaning: "How can I improve my listening skills?" },
@@ -694,9 +787,9 @@ export const lessons = [
   },
   {
     id: 40,
-    title_vi: "Describing Experiences",
+    title_vi: "Kể trải nghiệm",
     title_en: "Describing Experiences",
-    intro_vi: "Use 경험 for experience. Use -아/어 보다 for having tried something.",
+    intro_vi: "Dùng 경험 cho trải nghiệm. Dùng -아/어 보다 cho việc đã từng làm.",
     vocabulary: [{ hangul: "경험", meaning: "experience" },
       { hangul: "여행", meaning: "trip" },
       { hangul: "체험", meaning: "hands-on experience" },
@@ -707,11 +800,13 @@ export const lessons = [
       { hangul: "인상적이다", meaning: "impressive" },
       { hangul: "처음", meaning: "first time" },
       { hangul: "느끼다", meaning: "to feel" }],
-    sentences: [{ korean: "한국에 처음 왔을 때가 기억나요.", meaning: "I remember the first time I came to Korea." },
-      { korean: "김치를 처음 먹어 봤어요.", meaning: "I tried kimchi for the first time." },
-      { korean: "그 경험은 정말 인상적이었어요.", meaning: "That experience was really impressive." },
-      { korean: "여행하면서 많은 것을 배웠어요.", meaning: "I learned a lot while traveling." },
-      { korean: "새로운 도전을 즐기는 편이에요.", meaning: "I tend to enjoy new challenges." }],
+    sentences: [
+      { korean: "한국에 처음 왔을 때가 기억나요.", romanized: "Hanguge cheoeum wasseul ttaega gieoknayo.", en: "I remember the first time I came to Korea.", vi: "Tôi nhớ lần đầu đến Hàn Quốc." },
+      { korean: "김치를 처음 먹어 봤어요.", romanized: "Gimchireul cheoeum meogeo bwasseoyo.", en: "I tried kimchi for the first time.", vi: "Tôi đã thử ăn kimchi lần đầu." },
+      { korean: "그 경험은 정말 인상적이었어요.", romanized: "Geu gyeongheomeun jeongmal insangjeogieosseoyo.", en: "That experience was really impressive.", vi: "Trải nghiệm đó thực sự ấn tượng." },
+      { korean: "여행하면서 많은 것을 배웠어요.", romanized: "Yeohaenghamyeonseo maneun geoseul baewosseoyo.", en: "I learned a lot while traveling.", vi: "Tôi học được nhiều điều khi đi du lịch." },
+      { korean: "새로운 도전을 즐기는 편이에요.", romanized: "Saeroun dojeoneul jeulgineun pyeonieyo.", en: "I tend to enjoy new challenges.", vi: "Tôi thích đón nhận thử thách mới." }
+    ],
     dialogue: [{ speaker: "A", hangul: "제주도에 가 본 적 있어요?", meaning: "Have you ever been to Jeju Island?" },
       { speaker: "B", hangul: "네, 작년에 다녀왔어요. 정말 아름다웠어요.", meaning: "Yes, I went last year. It was really beautiful." },
       { speaker: "A", hangul: "무엇이 가장 기억에 남나요?", meaning: "What is most memorable?" },
@@ -723,9 +818,9 @@ export const lessons = [
   },
   {
     id: 41,
-    title_vi: "Comparing Options",
+    title_vi: "So sánh các lựa chọn",
     title_en: "Comparing Options",
-    intro_vi: "Use 비교 for comparison. Use -보다 더 for 'more than'.",
+    intro_vi: "Dùng 비교 cho so sánh. Dùng -보다 더 cho 'hơn'.",
     vocabulary: [{ hangul: "비교", meaning: "comparison" },
       { hangul: "옵션", meaning: "option" },
       { hangul: "선택", meaning: "choice" },
@@ -736,11 +831,13 @@ export const lessons = [
       { hangul: "저렴하다", meaning: "cheap" },
       { hangul: "비싸다", meaning: "expensive" },
       { hangul: "효율적", meaning: "efficient" }],
-    sentences: [{ korean: "이 옵션과 저 옵션을 비교해 보세요.", meaning: "Compare this option and that option." },
-      { korean: "이 제품이 더 저렴하지만 품질은 비슷해요.", meaning: "This product is cheaper, but quality is similar." },
-      { korean: "장점과 단점을 따져 봐야 해요.", meaning: "We need to weigh the pros and cons." },
-      { korean: "어느 것이 더 효율적이라고 생각하세요?", meaning: "Which one do you think is more efficient?" },
-      { korean: "비교 결과가 흥미로웠어요.", meaning: "The comparison result was interesting." }],
+    sentences: [
+      { korean: "이 옵션과 저 옵션을 비교해 보세요.", romanized: "I opsyeongwa jeo opsyeoneul bigyohae boseyo.", en: "Compare this option and that option.", vi: "Hãy so sánh phương án này với phương án kia." },
+      { korean: "이 제품이 더 저렴하지만 품질은 비슷해요.", romanized: "I jepumi deo jeoryeomhajiman pumjireun biseuthaeyo.", en: "This product is cheaper, but quality is similar.", vi: "Sản phẩm này rẻ hơn nhưng chất lượng tương tự." },
+      { korean: "장점과 단점을 따져 봐야 해요.", romanized: "Jangjeomgwa danjeomeul ttajyeo bwaya haeyo.", en: "We need to weigh the pros and cons.", vi: "Cần cân nhắc ưu và nhược điểm." },
+      { korean: "어느 것이 더 효율적이라고 생각하세요?", romanized: "Eoneu geosi deo hyoyuljeogirago saenggakhaseyo?", en: "Which one do you think is more efficient?", vi: "Bạn nghĩ cái nào hiệu quả hơn?" },
+      { korean: "비교 결과가 흥미로웠어요.", romanized: "Bigyo gyeolgwaga heungmirowosseoyo.", en: "The comparison result was interesting.", vi: "Kết quả so sánh rất thú vị." }
+    ],
     dialogue: [{ speaker: "A", hangul: "이 핸드폰과 저 핸드폰 중에 뭐가 더 좋아요?", meaning: "Between this phone and that phone, which is better?" },
       { speaker: "B", hangul: "이쪽이 카메라가 더 좋지만 배터리는 짧아요.", meaning: "This one has a better camera but shorter battery." },
       { speaker: "A", hangul: "가격은 비슷한가요?", meaning: "Are the prices similar?" },
@@ -752,9 +849,9 @@ export const lessons = [
   },
   {
     id: 42,
-    title_vi: "Hypothetical Situations",
+    title_vi: "Tình huống giả định",
     title_en: "Hypothetical Situations",
-    intro_vi: "Use 가상 for hypothetical. Use -면 -을 텐데 for conditional hypotheticals.",
+    intro_vi: "Dùng 가상 cho giả định. Dùng -면 -을 텐데 cho giả định có điều kiện.",
     vocabulary: [{ hangul: "가상", meaning: "hypothetical" },
       { hangul: "상황", meaning: "situation" },
       { hangul: "만약", meaning: "if" },
@@ -765,11 +862,13 @@ export const lessons = [
       { hangul: "꿈", meaning: "dream" },
       { hangul: "소원", meaning: "wish" },
       { hangul: "행동", meaning: "action" }],
-    sentences: [{ korean: "만약 내가 백만장자라면 무엇을 할까?", meaning: "If I were a millionaire, what would I do?" },
-      { korean: "그 상황이 현실이라면 어쩌겠어요?", meaning: "If that situation were real, what would you do?" },
-      { korean: "가상의 시나리오를 생각해 봅시다.", meaning: "Let's think of a hypothetical scenario." },
-      { korean: "소원이 이루어진다면 가장 먼저 뭘 하고 싶어요?", meaning: "If your wish came true, what would you want to do first?" },
-      { korean: "꿈을 쫓는 것이 중요해요.", meaning: "It's important to chase your dreams." }],
+    sentences: [
+      { korean: "만약 내가 백만장자라면 무엇을 할까?", romanized: "Manyak naega baekmanjangjaramyeon mueoseul halkka?", en: "If I were a millionaire, what would I do?", vi: "Nếu tôi là triệu phú, tôi sẽ làm gì?" },
+      { korean: "그 상황이 현실이라면 어쩌겠어요?", romanized: "Geu sanghwangi hyeonsiriramyeon eojjeogesseoyo?", en: "If that situation were real, what would you do?", vi: "Nếu tình huống đó là thật, bạn sẽ làm gì?" },
+      { korean: "가상의 시나리오를 생각해 봅시다.", romanized: "Gasangui sinarioreul saenggakhae bopsida.", en: "Let's think of a hypothetical scenario.", vi: "Hãy nghĩ về một kịch bản giả định." },
+      { korean: "소원이 이루어진다면 가장 먼저 뭘 하고 싶어요?", romanized: "Sowoni irueojindamyeon gajang meonjeo mwol hago sipeoyo?", en: "If your wish came true, what would you want to do first?", vi: "Nếu điều ước thành sự thật, bạn muốn làm gì đầu tiên?" },
+      { korean: "꿈을 쫓는 것이 중요해요.", romanized: "Kkumeul jjotneun geosi jungyohaeyo.", en: "It's important to chase your dreams.", vi: "Theo đuổi ước mơ là điều quan trọng." }
+    ],
     dialogue: [{ speaker: "A", hangul: "만약 시간을 되돌릴 수 있다면 뭘 하고 싶어요?", meaning: "If you could turn back time, what would you want to do?" },
       { speaker: "B", hangul: "더 열심히 공부할 거예요.", meaning: "I would study harder." },
       { speaker: "A", hangul: "저도요. 후회되는 일이 있어요.", meaning: "Me too. I have some regrets." },
@@ -781,9 +880,9 @@ export const lessons = [
   },
   {
     id: 43,
-    title_vi: "Reporting Speech",
+    title_vi: "Tường thuật lời nói",
     title_en: "Reporting Speech",
-    intro_vi: "Use 전달 화법 for reported speech. Learn -다고 하다 and -라고 하다 patterns.",
+    intro_vi: "Dùng 전달 화법 cho lời nói tường thuật. Học các mẫu -다고 하다 và -라고 하다.",
     vocabulary: [{ hangul: "전달", meaning: "report / delivery" },
       { hangul: "화법", meaning: "speech style" },
       { hangul: "인용", meaning: "quotation" },
@@ -794,11 +893,13 @@ export const lessons = [
       { hangul: "묻다", meaning: "to ask" },
       { hangul: "대답하다", meaning: "to answer" },
       { hangul: "전하다", meaning: "to convey" }],
-    sentences: [{ korean: "그가 내일 올 거라고 했어요.", meaning: "He said he would come tomorrow." },
-      { korean: "그녀는 자기는 배고프지 않다고 말했어요.", meaning: "She said she was not hungry." },
-      { korean: "선생님께서 숙제를 내일까지 하라고 하셨어요.", meaning: "The teacher told us to do the homework by tomorrow." },
-      { korean: "그가 뭐라고 했어요?", meaning: "What did he say?" },
-      { korean: "그 소식을 친구에게 전했어요.", meaning: "I conveyed the news to my friend." }],
+    sentences: [
+      { korean: "그가 내일 올 거라고 했어요.", romanized: "Geuga naeil ol georago haesseoyo.", en: "He said he would come tomorrow.", vi: "Anh ấy nói sẽ đến vào ngày mai." },
+      { korean: "그녀는 자기는 배고프지 않다고 말했어요.", romanized: "Geunyeoneun jagineun baegopeuji antago malhaesseoyo.", en: "She said she was not hungry.", vi: "Cô ấy nói rằng cô ấy không đói." },
+      { korean: "선생님께서 숙제를 내일까지 하라고 하셨어요.", romanized: "Seonsaengnimkkeseo sukjereul naeilkkaji harago hasyeosseoyo.", en: "The teacher told us to do the homework by tomorrow.", vi: "Thầy bảo phải làm bài tập đến ngày mai." },
+      { korean: "그가 뭐라고 했어요?", romanized: "Geuga mworago haesseoyo?", en: "What did he say?", vi: "Anh ấy đã nói gì?" },
+      { korean: "그 소식을 친구에게 전했어요.", romanized: "Geu sosigeul chinguege jeonhaesseoyo.", en: "I conveyed the news to my friend.", vi: "Tôi đã chuyển tin đó cho bạn." }
+    ],
     dialogue: [{ speaker: "A", hangul: "민수가 뭐라고 했어요?", meaning: "What did Minsu say?" },
       { speaker: "B", hangul: "내일 시간이 안 된다고 했어요.", meaning: "He said he doesn't have time tomorrow." },
       { speaker: "A", hangul: "그럼 모레는 괜찮다고 물어봐 주세요.", meaning: "Then please ask if the day after tomorrow is okay." },
@@ -810,9 +911,9 @@ export const lessons = [
   },
   {
     id: 44,
-    title_vi: "Passive Voice",
+    title_vi: "Câu bị động",
     title_en: "Passive Voice",
-    intro_vi: "Use 수동태 for passive voice. Learn passive verb endings like -이/히/리/기-.",
+    intro_vi: "Dùng 수동태 cho câu bị động. Học các đuôi bị động như -이/히/리/기-.",
     vocabulary: [{ hangul: "수동태", meaning: "passive voice" },
       { hangul: "능동태", meaning: "active voice" },
       { hangul: "동사", meaning: "verb" },
@@ -823,11 +924,13 @@ export const lessons = [
       { hangul: "닫히다", meaning: "to be closed" },
       { hangul: "만들어지다", meaning: "to be made" },
       { hangul: "알려지다", meaning: "to be known" }],
-    sentences: [{ korean: "이 문은 아침 9시에 열립니다.", meaning: "This door is opened at 9 AM." },
-      { korean: "한국어가 세계에서 많이 쓰이고 있어요.", meaning: "Korean is being used a lot in the world." },
-      { korean: "그 소식은 금방 알려졌어요.", meaning: "That news was quickly known." },
-      { korean: "이 빵은 밀가루로 만들어져요.", meaning: "This bread is made from flour." },
-      { korean: "창문이 닫혀 있어요.", meaning: "The window is closed." }],
+    sentences: [
+      { korean: "이 문은 아침 9시에 열립니다.", romanized: "I muneun achim 9sie yeolrimnida.", en: "This door is opened at 9 AM.", vi: "Cánh cửa này được mở lúc 9 giờ sáng." },
+      { korean: "한국어가 세계에서 많이 쓰이고 있어요.", romanized: "Hangugeoga segyeeseo mani sseuigo isseoyo.", en: "Korean is being used a lot in the world.", vi: "Tiếng Hàn đang được sử dụng nhiều trên thế giới." },
+      { korean: "그 소식은 금방 알려졌어요.", romanized: "Geu sosigeun geumbang alryeojyeosseoyo.", en: "That news was quickly known.", vi: "Tin đó nhanh chóng được biết đến." },
+      { korean: "이 빵은 밀가루로 만들어져요.", romanized: "I ppangeun milgaruro mandeureojyeoyo.", en: "This bread is made from flour.", vi: "Bánh mì này được làm từ bột mì." },
+      { korean: "창문이 닫혀 있어요.", romanized: "Changmuni dathyeo isseoyo.", en: "The window is closed.", vi: "Cửa sổ đang đóng." }
+    ],
     dialogue: [{ speaker: "A", hangul: "이 건물은 언제 지어졌어요?", meaning: "When was this building built?" },
       { speaker: "B", hangul: "10년 전에 지어졌어요.", meaning: "It was built 10 years ago." },
       { speaker: "A", hangul: "누구에 의해 설계되었나요?", meaning: "By whom was it designed?" },
@@ -839,9 +942,9 @@ export const lessons = [
   },
   {
     id: 45,
-    title_vi: "Relative Clauses",
+    title_vi: "Mệnh đề quan hệ",
     title_en: "Relative Clauses",
-    intro_vi: "Use 관형사절 for relative clauses. Learn -는, -은, -을 for modifying nouns.",
+    intro_vi: "Dùng 관형사절 cho mệnh đề quan hệ. Học -는, -은, -을 để bổ nghĩa danh từ.",
     vocabulary: [{ hangul: "관형사절", meaning: "relative clause" },
       { hangul: "수식", meaning: "modification" },
       { hangul: "명사", meaning: "noun" },
@@ -852,11 +955,13 @@ export const lessons = [
       { hangul: "미래", meaning: "future tense" },
       { hangul: "연결", meaning: "connection" },
       { hangul: "관계", meaning: "relation" }],
-    sentences: [{ korean: "제가 산 책이 재미있어요.", meaning: "The book that I bought is interesting." },
-      { korean: "한국어를 배우는 사람이 많아요.", meaning: "There are many people who learn Korean." },
-      { korean: "어제 만난 친구가 전화했어요.", meaning: "The friend I met yesterday called." },
-      { korean: "먹을 음식을 준비할게요.", meaning: "I will prepare food to eat." },
-      { korean: "그가 쓴 편지를 읽었어요.", meaning: "I read the letter that he wrote." }],
+    sentences: [
+      { korean: "제가 산 책이 재미있어요.", romanized: "Jega san chaegi jaemiisseoyo.", en: "The book that I bought is interesting.", vi: "Quyển sách tôi mua rất hay." },
+      { korean: "한국어를 배우는 사람이 많아요.", romanized: "Hangugeoreul baeuneun sarami manayo.", en: "There are many people who learn Korean.", vi: "Có nhiều người học tiếng Hàn." },
+      { korean: "어제 만난 친구가 전화했어요.", romanized: "Eoje mannan chinguga jeonhwahaesseoyo.", en: "The friend I met yesterday called.", vi: "Người bạn tôi gặp hôm qua đã gọi điện." },
+      { korean: "먹을 음식을 준비할게요.", romanized: "Meogeul eumsigeul junbihalgeyo.", en: "I will prepare food to eat.", vi: "Tôi sẽ chuẩn bị thức ăn để ăn." },
+      { korean: "그가 쓴 편지를 읽었어요.", romanized: "Geuga sseun pyeonjireul ilgeosseoyo.", en: "I read the letter that he wrote.", vi: "Tôi đọc lá thư anh ấy viết." }
+    ],
     dialogue: [{ speaker: "A", hangul: "어제 산 치마가 마음에 들어요?", meaning: "Do you like the skirt you bought yesterday?" },
       { speaker: "B", hangul: "네, 그런데 좀 작아요.", meaning: "Yes, but it's a bit small." },
       { speaker: "A", hangul: "다른 색으로 교환할 수 있어요.", meaning: "You can exchange it for another color." },
@@ -868,9 +973,9 @@ export const lessons = [
   },
   {
     id: 46,
-    title_vi: "Conditional Sentences",
+    title_vi: "Câu điều kiện",
     title_en: "Conditional Sentences",
-    intro_vi: "Use 조건문 for conditional sentences. Learn -면 and -으면 patterns.",
+    intro_vi: "Dùng 조건문 cho câu điều kiện. Học các mẫu -면 và -으면.",
     vocabulary: [{ hangul: "조건", meaning: "condition" },
       { hangul: "가정", meaning: "assumption" },
       { hangul: "결과", meaning: "result" },
@@ -881,11 +986,13 @@ export const lessons = [
       { hangul: "그러면", meaning: "then" },
       { hangul: "아니면", meaning: "otherwise" },
       { hangul: "때문에", meaning: "because" }],
-    sentences: [{ korean: "비가 오면 집에 있을 거예요.", meaning: "If it rains, I will stay home." },
-      { korean: "시간이 있으면 같이 가자.", meaning: "If you have time, let's go together." },
-      { korean: "열심히 공부하면 합격할 수 있어요.", meaning: "If you study hard, you can pass." },
-      { korean: "돈이 많으면 여행을 갈 텐데.", meaning: "If I had a lot of money, I would travel." },
-      { korean: "늦으면 먼저 가도 돼요.", meaning: "If you are late, you can go ahead." }],
+    sentences: [
+      { korean: "비가 오면 집에 있을 거예요.", romanized: "Biga omyeon jibe isseul geoyeyo.", en: "If it rains, I will stay home.", vi: "Nếu trời mưa, tôi sẽ ở nhà." },
+      { korean: "시간이 있으면 같이 가자.", romanized: "Sigani isseumyeon gati gaja.", en: "If you have time, let's go together.", vi: "Nếu bạn có thời gian, hãy cùng đi." },
+      { korean: "열심히 공부하면 합격할 수 있어요.", romanized: "Yeolsimhi gongbuhamyeon hapgyeokhal su isseoyo.", en: "If you study hard, you can pass.", vi: "Nếu học chăm chỉ, bạn sẽ đỗ." },
+      { korean: "돈이 많으면 여행을 갈 텐데.", romanized: "Doni maneumyeon yeohaengeul gal tende.", en: "If I had a lot of money, I would travel.", vi: "Nếu có nhiều tiền, tôi sẽ đi du lịch." },
+      { korean: "늦으면 먼저 가도 돼요.", romanized: "Neujeumyeon meonjeo gado dwaeyo.", en: "If you are late, you can go ahead.", vi: "Nếu trễ thì cứ đi trước cũng được." }
+    ],
     dialogue: [{ speaker: "A", hangul: "내일 날씨가 좋으면 소풍 갈까요?", meaning: "If the weather is nice tomorrow, shall we go on a picnic?" },
       { speaker: "B", hangul: "좋아요. 그런데 비가 오면 어쩌죠?", meaning: "Good. But what if it rains?" },
       { speaker: "A", hangul: "그러면 영화관에 가요.", meaning: "Then let's go to the cinema." },
@@ -897,9 +1004,9 @@ export const lessons = [
   },
   {
     id: 47,
-    title_vi: "Idiomatic Expressions",
+    title_vi: "Thành ngữ",
     title_en: "Idiomatic Expressions",
-    intro_vi: "Use 관용 표현 for idioms. Learn common Korean idioms.",
+    intro_vi: "Dùng 관용 표현 cho thành ngữ. Học các thành ngữ Hàn Quốc thông dụng.",
     vocabulary: [{ hangul: "관용 표현", meaning: "idiomatic expression" },
       { hangul: "속담", meaning: "proverb" },
       { hangul: "뜻", meaning: "meaning" },
@@ -910,11 +1017,13 @@ export const lessons = [
       { hangul: "손이 크다", meaning: "to be generous (lit. hand is big)" },
       { hangul: "고생 끝에 낙이 온다", meaning: "after hardship comes happiness" },
       { hangul: "시작이 반이다", meaning: "well begun is half done" }],
-    sentences: [{ korean: "그 사람은 눈이 높아서 쉽게 사귀지 않아요.", meaning: "He has high standards so he doesn't date easily." },
-      { korean: "아기가 입이 짧아서 걱정이에요.", meaning: "I'm worried because the baby eats very little." },
-      { korean: "그녀는 발이 넓어서 아는 사람이 많아요.", meaning: "She has many connections and knows many people." },
-      { korean: "할머니는 손이 크셔서 항상 많이 주세요.", meaning: "Grandma is generous and always gives a lot." },
-      { korean: "힘들지만 고생 끝에 낙이 온다고 했어요.", meaning: "It's hard, but they say after hardship comes happiness." }],
+    sentences: [
+      { korean: "그 사람은 눈이 높아서 쉽게 사귀지 않아요.", romanized: "Geu sarameun nuni nopaseo swipge sagwiji anayo.", en: "He has high standards so he doesn't date easily.", vi: "Người đó kén chọn nên không dễ kết bạn." },
+      { korean: "아기가 입이 짧아서 걱정이에요.", romanized: "Agiga ibi jjalbaseo geokjeongieyo.", en: "I'm worried because the baby eats very little.", vi: "Tôi lo vì em bé ăn ít quá." },
+      { korean: "그녀는 발이 넓어서 아는 사람이 많아요.", romanized: "Geunyeoneun bari neolbeoseo aneun sarami manayo.", en: "She has many connections and knows many people.", vi: "Cô ấy quen biết rộng nên có nhiều bạn bè." },
+      { korean: "할머니는 손이 크셔서 항상 많이 주세요.", romanized: "Halmeonineun soni keusyeoseo hangsang mani juseyo.", en: "Grandma is generous and always gives a lot.", vi: "Bà tôi rộng rãi nên luôn cho rất nhiều." },
+      { korean: "힘들지만 고생 끝에 낙이 온다고 했어요.", romanized: "Himdeuljiman gosaeng kkeute nagi ondago haesseoyo.", en: "It's hard, but they say after hardship comes happiness.", vi: "Vất vả nhưng người ta nói khổ tận cam lai." }
+    ],
     dialogue: [{ speaker: "A", hangul: "시험 준비가 너무 힘들어요.", meaning: "Preparing for the exam is so hard." },
       { speaker: "B", hangul: "시작이 반이잖아요. 이미 절반은 한 거예요.", meaning: "Well begun is half done. You've already done half." },
       { speaker: "A", hangul: "맞아요. 포기하지 말아야겠어요.", meaning: "That's right. I shouldn't give up." },
@@ -926,9 +1035,9 @@ export const lessons = [
   },
   {
     id: 48,
-    title_vi: "Slang and Colloquial",
+    title_vi: "Tiếng lóng và khẩu ngữ",
     title_en: "Slang and Colloquial",
-    intro_vi: "Learn Korean slang and casual speech. Use 속어 for slang and 구어체 for colloquial style.",
+    intro_vi: "Học tiếng lóng và khẩu ngữ Hàn Quốc. Dùng 속어 cho tiếng lóng và 구어체 cho khẩu ngữ.",
     vocabulary: [{ hangul: "속어", meaning: "slang" },
       { hangul: "구어체", meaning: "colloquial style" },
       { hangul: "대박", meaning: "awesome / jackpot" },
@@ -939,11 +1048,13 @@ export const lessons = [
       { hangul: "꿀잼", meaning: "so fun" },
       { hangul: "노잼", meaning: "boring" },
       { hangul: "안녕", meaning: "hi (informal)" }],
-    sentences: [{ korean: "와, 대박! 이거 진짜 좋다.", meaning: "Wow, awesome! This is really good." },
-      { korean: "헐, 그거 완전 꿀잼이야!", meaning: "Whoa, that's so fun!" },
-      { korean: "이 음식 존맛이야.", meaning: "This food is so delicious." },
-      { korean: "오늘 수업 노잼이었어.", meaning: "Today's class was boring." },
-      { korean: "그 영화 짱이야. 꼭 봐.", meaning: "That movie is the best. You must watch it." }],
+    sentences: [
+      { korean: "와, 대박! 이거 진짜 좋다.", romanized: "Wa, daebak! igeo jinjja jota.", en: "Wow, awesome! This is really good.", vi: "Wow, đỉnh quá! Cái này thực sự tuyệt." },
+      { korean: "헐, 그거 완전 꿀잼이야!", romanized: "Heol, geugeo wanjeon kkuljaemiya!", en: "Whoa, that's so fun!", vi: "Trời, vui khủng khiếp luôn!" },
+      { korean: "이 음식 존맛이야.", romanized: "I eumsik jonmasiya.", en: "This food is so delicious.", vi: "Món này ngon kinh khủng." },
+      { korean: "오늘 수업 노잼이었어.", romanized: "Oneul sueop nojaemieosseo.", en: "Today's class was boring.", vi: "Tiết học hôm nay chán òm." },
+      { korean: "그 영화 짱이야. 꼭 봐.", romanized: "Geu yeonghwa jjangiya. kkok bwa.", en: "That movie is the best. You must watch it.", vi: "Phim đó đỉnh lắm. Nhất định phải xem." }
+    ],
     dialogue: [{ speaker: "A", hangul: "어제 놀이동산 갔어? 어땠어?", meaning: "Did you go to the amusement park yesterday? How was it?" },
       { speaker: "B", hangul: "대박! 완전 꿀잼이었어.", meaning: "Awesome! It was so fun." },
       { speaker: "A", hangul: "진짜? 나도 가고 싶다.", meaning: "Really? I want to go too." },
@@ -955,9 +1066,9 @@ export const lessons = [
   },
   {
     id: 49,
-    title_vi: "Debating Skills",
+    title_vi: "Kỹ năng tranh luận",
     title_en: "Debating Skills",
-    intro_vi: "Use 토론 for debate. Learn to argue persuasively and counter arguments.",
+    intro_vi: "Dùng 토론 cho tranh luận. Học cách lập luận thuyết phục và phản bác.",
     vocabulary: [{ hangul: "토론", meaning: "debate" },
       { hangul: "논쟁", meaning: "argument" },
       { hangul: "주제", meaning: "topic" },
@@ -968,11 +1079,13 @@ export const lessons = [
       { hangul: "청중", meaning: "audience" },
       { hangul: "판사", meaning: "judge" },
       { hangul: "승리", meaning: "victory" }],
-    sentences: [{ korean: "오늘 토론 주제는 '원격 수업의 장단점'입니다.", meaning: "Today's debate topic is 'Pros and cons of online classes'." },
-      { korean: "제 반론을 말씀드리겠습니다.", meaning: "I will present my counterargument." },
-      { korean: "그 주장을 뒷받침할 증거가 있나요?", meaning: "Is there evidence to support that claim?" },
-      { korean: "논리가 타당하지 않습니다.", meaning: "The logic is not valid." },
-      { korean: "청중을 설득하는 것이 중요해요.", meaning: "Persuading the audience is important." }],
+    sentences: [
+      { korean: "오늘 토론 주제는 '원격 수업의 장단점'입니다.", romanized: "Oneul toron jujeneun 'wongyeok sueobui jangdanjeom'imnida.", en: "Today's debate topic is 'Pros and cons of online classes'.", vi: "Chủ đề tranh luận hôm nay là 'Ưu nhược điểm của lớp học từ xa'." },
+      { korean: "제 반론을 말씀드리겠습니다.", romanized: "Je banroneul malsseumdeurigetseumnida.", en: "I will present my counterargument.", vi: "Tôi xin trình bày phản biện." },
+      { korean: "그 주장을 뒷받침할 증거가 있나요?", romanized: "Geu jujangeul dwitbatchimhal jeunggeoga itnayo?", en: "Is there evidence to support that claim?", vi: "Có bằng chứng nào hỗ trợ lập luận đó không?" },
+      { korean: "논리가 타당하지 않습니다.", romanized: "Nonriga tadanghaji ansseumnida.", en: "The logic is not valid.", vi: "Logic không hợp lý." },
+      { korean: "청중을 설득하는 것이 중요해요.", romanized: "Cheongjungeul seoldeukhaneun geosi jungyohaeyo.", en: "Persuading the audience is important.", vi: "Thuyết phục khán giả là điều quan trọng." }
+    ],
     dialogue: [{ speaker: "A", hangul: "저는 원격 수업이 더 효율적이라고 생각합니다.", meaning: "I think online classes are more efficient." },
       { speaker: "B", hangul: "하지만 집중하기 어렵다는 문제가 있어요.", meaning: "But there is the problem of difficulty concentrating." },
       { speaker: "A", hangul: "그건 개인의 차이라고 봅니다.", meaning: "I see that as an individual difference." },
@@ -984,9 +1097,9 @@ export const lessons = [
   },
   {
     id: 50,
-    title_vi: "Final Comprehensive Review",
+    title_vi: "Ôn tập tổng hợp cuối khóa",
     title_en: "Final Comprehensive Review",
-    intro_vi: "Review all major grammar and vocabulary from lessons 21-49. Practice integrated skills.",
+    intro_vi: "Ôn tập toàn bộ ngữ pháp và từ vựng từ bài 21-49. Luyện tập kỹ năng tổng hợp.",
     vocabulary: [{ hangul: "종합", meaning: "comprehensive" },
       { hangul: "복습", meaning: "review" },
       { hangul: "확인", meaning: "check" },
@@ -997,11 +1110,13 @@ export const lessons = [
       { hangul: "자신감", meaning: "confidence" },
       { hangul: "목표", meaning: "goal" },
       { hangul: "달성", meaning: "achievement" }],
-    sentences: [{ korean: "오늘은 지금까지 배운 내용을 총정리하겠습니다.", meaning: "Today we will summarize everything learned so far." },
-      { korean: "이 표현을 사용해서 문장을 만들어 보세요.", meaning: "Try making a sentence using this expression." },
-      { korean: "틀린 부분을 다시 확인해 보세요.", meaning: "Please check the incorrect parts again." },
-      { korean: "실전에서 자신 있게 사용할 수 있을 거예요.", meaning: "You will be able to use it confidently in real situations." },
-      { korean: "목표를 달성하기 위해 계속 노력합시다.", meaning: "Let's keep working to achieve our goals." }],
+    sentences: [
+      { korean: "오늘은 지금까지 배운 내용을 총정리하겠습니다.", romanized: "Oneureun jigeumkkaji baeun naeyongeul chongjeongrihagetseumnida.", en: "Today we will summarize everything learned so far.", vi: "Hôm nay chúng ta sẽ tổng kết tất cả nội dung đã học." },
+      { korean: "이 표현을 사용해서 문장을 만들어 보세요.", romanized: "I pyohyeoneul sayonghaeseo munjangeul mandeureo boseyo.", en: "Try making a sentence using this expression.", vi: "Hãy thử đặt câu sử dụng cách diễn đạt này." },
+      { korean: "틀린 부분을 다시 확인해 보세요.", romanized: "Teulrin bubuneul dasi hwaginhae boseyo.", en: "Please check the incorrect parts again.", vi: "Xin kiểm tra lại phần sai." },
+      { korean: "실전에서 자신 있게 사용할 수 있을 거예요.", romanized: "Siljeoneseo jasin itge sayonghal su isseul geoyeyo.", en: "You will be able to use it confidently in real situations.", vi: "Bạn sẽ có thể tự tin sử dụng trong tình huống thực tế." },
+      { korean: "목표를 달성하기 위해 계속 노력합시다.", romanized: "Mokpyoreul dalseonghagi wihae gyesok noryeokhapsida.", en: "Let's keep working to achieve our goals.", vi: "Hãy cùng nỗ lực để đạt được mục tiêu." }
+    ],
     dialogue: [{ speaker: "A", hangul: "드디어 마지막 수업이네요. 많이 배웠어요.", meaning: "Finally the last lesson. I learned a lot." },
       { speaker: "B", hangul: "맞아요. 이제 한국어로 대화하는 게 더 편해졌어요.", meaning: "Right. Now it's more comfortable to converse in Korean." },
       { speaker: "A", hangul: "앞으로도 꾸준히 공부할 거예요.", meaning: "I will continue to study steadily." },
