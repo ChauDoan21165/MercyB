@@ -106,9 +106,12 @@ export type Exercise = {
   items: ExerciseItem[];
 };
 
+export type GermanCefrLevel = "A1" | "A2" | "B1" | "B2" | "C1" | "C2";
+
 export type GermanLesson = {
   id: string;
   category: GermanCategoryId;
+  level: GermanCefrLevel;
   title_vi: string;
   title_en: string;
   sentences: LessonSentence[];
@@ -124,6 +127,7 @@ export type GermanLesson = {
 const GREETINGS: GermanLesson[] = [
   {
     id: "german_greetings_intro",
+    level: "A1",
     category: "greetings",
     title_vi: "Chào hỏi cơ bản",
     title_en: "Basic greetings",
@@ -144,6 +148,7 @@ const GREETINGS: GermanLesson[] = [
 const NUMBERS: GermanLesson[] = [
   {
     id: "german_numbers_1_20",
+    level: "A1",
     category: "numbers",
     title_vi: "Số đếm 1 đến 20",
     title_en: "Numbers 1 to 20",
@@ -164,6 +169,7 @@ const NUMBERS: GermanLesson[] = [
 const COMMON_PHRASES: GermanLesson[] = [
   {
     id: "german_common_travel",
+    level: "A1",
     category: "common_phrases",
     title_vi: "Câu du lịch thiết yếu",
     title_en: "Essential travel phrases",
@@ -184,6 +190,7 @@ const COMMON_PHRASES: GermanLesson[] = [
 const CASES_INTRO: GermanLesson[] = [
   {
     id: "german_cases_nom_acc",
+    level: "A1",
     category: "cases_intro",
     title_vi: "Cách 1 (chủ ngữ) và cách 4 (tân ngữ trực tiếp)",
     title_en: "Nominative and accusative case",
@@ -204,6 +211,7 @@ const CASES_INTRO: GermanLesson[] = [
 const FOOD_LEGACY: GermanLesson[] = [
   {
     id: "german_food_ordering",
+    level: "A1",
     category: "food",
     title_vi: "Gọi món ăn",
     title_en: "Ordering food",
@@ -224,6 +232,7 @@ const FOOD_LEGACY: GermanLesson[] = [
 const FAMILY: GermanLesson[] = [
   {
     id: "german_family_intro",
+    level: "A1",
     category: "family",
     title_vi: "Giới thiệu gia đình",
     title_en: "Introducing family",
@@ -295,6 +304,7 @@ const FAMILY: GermanLesson[] = [
 const DAILY_ROUTINE: GermanLesson[] = [
   {
     id: "german_daily_routine",
+    level: "A1",
     category: "daily_routine",
     title_vi: "Sinh hoạt hàng ngày",
     title_en: "Daily routine",
@@ -366,6 +376,7 @@ const DAILY_ROUTINE: GermanLesson[] = [
 const WEATHER: GermanLesson[] = [
   {
     id: "german_weather",
+    level: "A1",
     category: "weather",
     title_vi: "Thời tiết và các mùa",
     title_en: "Weather and seasons",
@@ -437,6 +448,7 @@ const WEATHER: GermanLesson[] = [
 const TIME: GermanLesson[] = [
   {
     id: "german_time",
+    level: "A1",
     category: "time",
     title_vi: "Nói giờ và ngày tháng",
     title_en: "Telling time and dates",
@@ -508,6 +520,7 @@ const TIME: GermanLesson[] = [
 const COLORS: GermanLesson[] = [
   {
     id: "german_colors",
+    level: "A1",
     category: "colors",
     title_vi: "Màu sắc cơ bản",
     title_en: "Basic colors",
@@ -579,6 +592,7 @@ const COLORS: GermanLesson[] = [
 const CLOTHES: GermanLesson[] = [
   {
     id: "german_clothes",
+    level: "A1",
     category: "clothes",
     title_vi: "Quần áo và mua sắm",
     title_en: "Clothes and shopping",
@@ -650,6 +664,7 @@ const CLOTHES: GermanLesson[] = [
 const TRANSPORTATION: GermanLesson[] = [
   {
     id: "german_transportation",
+    level: "A1",
     category: "transportation",
     title_vi: "Giao thông và đi lại",
     title_en: "Transportation and getting around",
@@ -721,6 +736,7 @@ const TRANSPORTATION: GermanLesson[] = [
 const HOUSE: GermanLesson[] = [
   {
     id: "german_house",
+    level: "A1",
     category: "house",
     title_vi: "Nhà cửa và phòng ốc",
     title_en: "House and rooms",
@@ -792,6 +808,7 @@ const HOUSE: GermanLesson[] = [
 const HOBBIES: GermanLesson[] = [
   {
     id: "german_hobbies",
+    level: "A1",
     category: "hobbies",
     title_vi: "Sở thích và hoạt động",
     title_en: "Hobbies and activities",
@@ -863,6 +880,7 @@ const HOBBIES: GermanLesson[] = [
 const HEALTH: GermanLesson[] = [
   {
     id: "german_health",
+    level: "A1",
     category: "health",
     title_vi: "Sức khỏe và cơ thể",
     title_en: "Health and the body",
@@ -934,6 +952,7 @@ const HEALTH: GermanLesson[] = [
 const WORK: GermanLesson[] = [
   {
     id: "german_work",
+    level: "A1",
     category: "work",
     title_vi: "Công việc và nghề nghiệp",
     title_en: "Work and professions",
@@ -1005,6 +1024,7 @@ const WORK: GermanLesson[] = [
 const TRAVEL: GermanLesson[] = [
   {
     id: "german_travel",
+    level: "A1",
     category: "travel",
     title_vi: "Du lịch và khách sạn",
     title_en: "Travel and hotels",
@@ -1076,6 +1096,7 @@ const TRAVEL: GermanLesson[] = [
 const EMOTIONS: GermanLesson[] = [
   {
     id: "german_emotions",
+    level: "A1",
     category: "emotions",
     title_vi: "Cảm xúc và tâm trạng",
     title_en: "Emotions and feelings",
@@ -1147,6 +1168,7 @@ const EMOTIONS: GermanLesson[] = [
 const PAST_TENSE: GermanLesson[] = [
   {
     id: "german_past_tense",
+    level: "A1",
     category: "past_tense",
     title_vi: "Thì quá khứ (Perfekt)",
     title_en: "Past tense (Perfekt)",
@@ -1218,6 +1240,7 @@ const PAST_TENSE: GermanLesson[] = [
 const FUTURE_PLANS: GermanLesson[] = [
   {
     id: "german_future_plans",
+    level: "A1",
     category: "future_plans",
     title_vi: "Kế hoạch tương lai",
     title_en: "Future plans",
@@ -1289,6 +1312,7 @@ const FUTURE_PLANS: GermanLesson[] = [
 const WORKPLACE: GermanLesson[] = [
   {
     id: "german_office_basics",
+    level: "A2",
     category: "workplace",
     title_vi: "Văn phòng cơ bản",
     title_en: "Office basics",
@@ -1377,6 +1401,7 @@ const WORKPLACE: GermanLesson[] = [
   },
   {
     id: "german_email_phone",
+    level: "A2",
     category: "workplace",
     title_vi: "Email và điện thoại",
     title_en: "Email and phone",
@@ -1465,6 +1490,7 @@ const WORKPLACE: GermanLesson[] = [
   },
   {
     id: "german_meetings",
+    level: "A2",
     category: "workplace",
     title_vi: "Họp hành",
     title_en: "Meetings",
@@ -1553,6 +1579,7 @@ const WORKPLACE: GermanLesson[] = [
   },
   {
     id: "german_job_interview",
+    level: "A2",
     category: "workplace",
     title_vi: "Phỏng vấn xin việc",
     title_en: "Job interview",
@@ -1641,6 +1668,7 @@ const WORKPLACE: GermanLesson[] = [
   },
   {
     id: "german_workplace_problems",
+    level: "A2",
     category: "workplace",
     title_vi: "Vấn đề công sở",
     title_en: "Workplace problems",
@@ -1734,6 +1762,7 @@ const WORKPLACE: GermanLesson[] = [
 const LIFE_ADMIN: GermanLesson[] = [
   {
     id: "german_bank",
+    level: "A2",
     category: "life_admin",
     title_vi: "Ngân hàng",
     title_en: "Bank",
@@ -1822,6 +1851,7 @@ const LIFE_ADMIN: GermanLesson[] = [
   },
   {
     id: "german_post_office",
+    level: "A2",
     category: "life_admin",
     title_vi: "Bưu điện",
     title_en: "Post office",
@@ -1910,6 +1940,7 @@ const LIFE_ADMIN: GermanLesson[] = [
   },
   {
     id: "german_doctor_visit",
+    level: "A2",
     category: "life_admin",
     title_vi: "Đi khám bác sĩ",
     title_en: "Doctor visit",
@@ -1998,6 +2029,7 @@ const LIFE_ADMIN: GermanLesson[] = [
   },
   {
     id: "german_pharmacy",
+    level: "A2",
     category: "life_admin",
     title_vi: "Hiệu thuốc",
     title_en: "Pharmacy",
@@ -2086,6 +2118,7 @@ const LIFE_ADMIN: GermanLesson[] = [
   },
   {
     id: "german_appointments",
+    level: "A2",
     category: "life_admin",
     title_vi: "Đặt lịch hẹn",
     title_en: "Making appointments",
@@ -2179,6 +2212,7 @@ const LIFE_ADMIN: GermanLesson[] = [
 const SOCIETY: GermanLesson[] = [
   {
     id: "german_shopping",
+    level: "B1",
     category: "society",
     title_vi: "Mua sắm",
     title_en: "Shopping",
@@ -2267,6 +2301,7 @@ const SOCIETY: GermanLesson[] = [
   },
   {
     id: "german_directions",
+    level: "B1",
     category: "society",
     title_vi: "Hỏi đường",
     title_en: "Asking directions",
@@ -2355,6 +2390,7 @@ const SOCIETY: GermanLesson[] = [
   },
   {
     id: "german_restaurant",
+    level: "B1",
     category: "society",
     title_vi: "Nhà hàng",
     title_en: "Restaurant",
@@ -2443,6 +2479,7 @@ const SOCIETY: GermanLesson[] = [
   },
   {
     id: "german_holidays",
+    level: "B1",
     category: "society",
     title_vi: "Lễ hội và ngày lễ",
     title_en: "Holidays and festivals",
@@ -2531,6 +2568,7 @@ const SOCIETY: GermanLesson[] = [
   },
   {
     id: "german_environment",
+    level: "B1",
     category: "society",
     title_vi: "Môi trường",
     title_en: "Environment",
@@ -2624,6 +2662,7 @@ const SOCIETY: GermanLesson[] = [
 const EXPRESSIONS: GermanLesson[] = [
   {
     id: "german_polite_phrases",
+    level: "B1",
     category: "expressions",
     title_vi: "Câu lịch sự",
     title_en: "Polite phrases",
@@ -2712,6 +2751,7 @@ const EXPRESSIONS: GermanLesson[] = [
   },
   {
     id: "german_agreeing_disagreeing",
+    level: "B1",
     category: "expressions",
     title_vi: "Đồng ý và phản đối",
     title_en: "Agreeing and disagreeing",
@@ -2800,6 +2840,7 @@ const EXPRESSIONS: GermanLesson[] = [
   },
   {
     id: "german_emotions_expressions",
+    level: "B1",
     category: "expressions",
     title_vi: "Diễn đạt cảm xúc",
     title_en: "Expressing emotions",
@@ -2888,6 +2929,7 @@ const EXPRESSIONS: GermanLesson[] = [
   },
   {
     id: "german_phone_calls",
+    level: "B1",
     category: "expressions",
     title_vi: "Gọi điện thoại",
     title_en: "Phone calls",
@@ -2976,6 +3018,7 @@ const EXPRESSIONS: GermanLesson[] = [
   },
   {
     id: "german_small_talk",
+    level: "B1",
     category: "expressions",
     title_vi: "Trò chuyện xã giao",
     title_en: "Small talk",
@@ -3069,6 +3112,7 @@ const EXPRESSIONS: GermanLesson[] = [
 const ADVANCED_GRAMMAR: GermanLesson[] = [
   {
     id: "german_separable_verbs",
+    level: "B1",
     category: "advanced_grammar",
     title_vi: "Động từ tách (Trennbare Verben)",
     title_en: "Separable verbs",
@@ -3157,6 +3201,7 @@ const ADVANCED_GRAMMAR: GermanLesson[] = [
   },
   {
     id: "german_perfekt_tense",
+    level: "B1",
     category: "advanced_grammar",
     title_vi: "Thì hoàn thành (Perfekt)",
     title_en: "Perfekt tense",
@@ -3245,6 +3290,7 @@ const ADVANCED_GRAMMAR: GermanLesson[] = [
   },
   {
     id: "german_modal_verbs",
+    level: "B1",
     category: "advanced_grammar",
     title_vi: "Động từ khuyết thiếu",
     title_en: "Modal verbs",
@@ -3333,6 +3379,7 @@ const ADVANCED_GRAMMAR: GermanLesson[] = [
   },
   {
     id: "german_subordinate_clauses",
+    level: "B1",
     category: "advanced_grammar",
     title_vi: "Câu phụ (Nebensätze)",
     title_en: "Subordinate clauses",
@@ -3421,6 +3468,7 @@ const ADVANCED_GRAMMAR: GermanLesson[] = [
   },
   {
     id: "german_passive_voice",
+    level: "B1",
     category: "advanced_grammar",
     title_vi: "Câu bị động (Passiv)",
     title_en: "Passive voice",
@@ -3514,6 +3562,7 @@ const ADVANCED_GRAMMAR: GermanLesson[] = [
 const FLUENCY: GermanLesson[] = [
   {
     id: "german_filler_words",
+    level: "B2",
     category: "fluency",
     title_vi: "Từ đệm tự nhiên",
     title_en: "Modal particles and fillers",
@@ -3602,6 +3651,7 @@ const FLUENCY: GermanLesson[] = [
   },
   {
     id: "german_connectors",
+    level: "B2",
     category: "fluency",
     title_vi: "Từ nối câu",
     title_en: "Sentence connectors",
@@ -3690,6 +3740,7 @@ const FLUENCY: GermanLesson[] = [
   },
   {
     id: "german_register_formal",
+    level: "B2",
     category: "fluency",
     title_vi: "Lịch sự và thân mật",
     title_en: "Formal and informal register",
@@ -3778,6 +3829,7 @@ const FLUENCY: GermanLesson[] = [
   },
   {
     id: "german_idioms",
+    level: "B2",
     category: "fluency",
     title_vi: "Thành ngữ thông dụng",
     title_en: "Common idioms",
@@ -3866,6 +3918,7 @@ const FLUENCY: GermanLesson[] = [
   },
   {
     id: "german_natural_speech",
+    level: "B2",
     category: "fluency",
     title_vi: "Nói tự nhiên",
     title_en: "Natural everyday speech",

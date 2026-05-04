@@ -111,16 +111,21 @@ export default function LanguageLessonsPage() {
   );
 }
 
+// CEFR-aligned id ranges. Data files now carry an explicit `level` field per lesson;
+// this map is kept as a fallback for the existing range-based renderer until the
+// shared renderer extraction (Phase 0 Task 5) switches to reading lesson.level directly.
 const LEVELS: Record<string, { label: string; start: number; end: number }[]> = {
   korean: [
-    { label: "Sơ cấp · Beginner", start: 1, end: 20 },
-    { label: "Trung cấp · Intermediate", start: 21, end: 40 },
-    { label: "Cao cấp · Advanced", start: 41, end: 50 },
+    { label: "A1 · Sơ cấp", start: 1, end: 15 },
+    { label: "A2 · Cơ bản", start: 16, end: 30 },
+    { label: "B1 · Trung cấp", start: 31, end: 45 },
+    { label: "B2 · Trung cao", start: 46, end: 50 },
   ],
   chinese: [
-    { label: "Sơ cấp · Beginner", start: 1, end: 20 },
-    { label: "Trung cấp · Intermediate", start: 21, end: 35 },
-    { label: "Cao cấp · Advanced", start: 36, end: 50 },
+    { label: "A1 · Sơ cấp", start: 1, end: 15 },
+    { label: "A2 · Cơ bản", start: 16, end: 30 },
+    { label: "B1 · Trung cấp", start: 31, end: 45 },
+    { label: "B2 · Trung cao", start: 46, end: 50 },
   ],
 };
 

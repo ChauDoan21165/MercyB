@@ -53,7 +53,7 @@ const CARDS: Card[] = [
     title_en: "Chinese",
     flag: "🇨🇳",
     blurb_vi:
-      "50 bài: bính âm, chữ Hán cơ bản, câu giao tiếp, ngữ pháp, văn hoá Trung Quốc — chia theo ba cấp độ.",
+      "50 bài: bính âm, chữ Hán cơ bản, câu giao tiếp, ngữ pháp, văn hoá Trung Quốc — A1 → B2.",
     href: "/languages/chinese",
     accent: "crimson",
   },
@@ -63,7 +63,7 @@ const CARDS: Card[] = [
     title_en: "Japanese",
     flag: "🇯🇵",
     blurb_vi:
-      "50 bài: hiragana, katakana, mẫu câu cơ bản, kính ngữ, văn hoá Nhật — chia theo ba cấp độ.",
+      "50 bài: hiragana, katakana, mẫu câu cơ bản, kính ngữ, văn hoá Nhật — A1 → B2.",
     href: "/languages/japanese",
     accent: "amber",
   },
@@ -73,7 +73,7 @@ const CARDS: Card[] = [
     title_en: "Korean",
     flag: "🇰🇷",
     blurb_vi:
-      "50 bài: hangul, ngữ pháp nền tảng, câu giao tiếp, văn hoá Hàn Quốc — chia theo ba cấp độ.",
+      "50 bài: hangul, ngữ pháp nền tảng, câu giao tiếp, văn hoá Hàn Quốc — A1 → B2.",
     href: "/languages/korean",
     accent: "violet",
   },

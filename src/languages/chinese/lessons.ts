@@ -44,8 +44,11 @@ export type ChineseExercise =
   | ChineseExerciseMatching
   | ChineseExerciseTranslation;
 
+export type ChineseCefrLevel = "A1" | "A2" | "B1" | "B2" | "C1" | "C2";
+
 export type ChineseLesson = {
   id: number;
+  level: ChineseCefrLevel;
   title: string;
   pinyin: string;
   topic: string;
@@ -58,6 +61,7 @@ export type ChineseLesson = {
 export const lessons: ChineseLesson[] = [
   {
     id: 1,
+level: "A1",
     title: "你好",
     pinyin: "nǐ hǎo",
     topic: "Greetings",
@@ -97,6 +101,7 @@ export const lessons: ChineseLesson[] = [
   },
   {
     id: 2,
+level: "A1",
     title: "数字",
     pinyin: "shù zì",
     topic: "Numbers 1-10",
@@ -136,6 +141,7 @@ export const lessons: ChineseLesson[] = [
   },
   {
     id: 3,
+level: "A1",
     title: "家人",
     pinyin: "jiā rén",
     topic: "Family",
@@ -175,6 +181,7 @@ export const lessons: ChineseLesson[] = [
   },
   {
     id: 4,
+level: "A1",
     title: "颜色",
     pinyin: "yán sè",
     topic: "Colors",
@@ -214,6 +221,7 @@ export const lessons: ChineseLesson[] = [
   },
   {
     id: 5,
+level: "A1",
     title: "食物",
     pinyin: "shí wù",
     topic: "Food",
@@ -253,6 +261,7 @@ export const lessons: ChineseLesson[] = [
   },
   {
     id: 6,
+level: "A1",
     title: "饮料",
     pinyin: "yǐn liào",
     topic: "Drinks",
@@ -292,6 +301,7 @@ export const lessons: ChineseLesson[] = [
   },
   {
     id: 7,
+level: "A1",
     title: "星期",
     pinyin: "xīng qī",
     topic: "Days of the Week",
@@ -331,6 +341,7 @@ export const lessons: ChineseLesson[] = [
   },
   {
     id: 8,
+level: "A1",
     title: "月份",
     pinyin: "yuè fèn",
     topic: "Months",
@@ -370,6 +381,7 @@ export const lessons: ChineseLesson[] = [
   },
   {
     id: 9,
+level: "A1",
     title: "天气",
     pinyin: "tiān qì",
     topic: "Weather",
@@ -409,6 +421,7 @@ export const lessons: ChineseLesson[] = [
   },
   {
     id: 10,
+level: "A1",
     title: "动物",
     pinyin: "dòng wù",
     topic: "Animals",
@@ -448,6 +461,7 @@ export const lessons: ChineseLesson[] = [
   },
   {
     id: 11,
+level: "A1",
     title: "身体",
     pinyin: "shēn tǐ",
     topic: "Body Parts",
@@ -487,6 +501,7 @@ export const lessons: ChineseLesson[] = [
   },
   {
     id: 12,
+level: "A1",
     title: "方向",
     pinyin: "fāng xiàng",
     topic: "Directions",
@@ -526,6 +541,7 @@ export const lessons: ChineseLesson[] = [
   },
   {
     id: 13,
+level: "A1",
     title: "时间",
     pinyin: "shí jiān",
     topic: "Time",
@@ -565,6 +581,7 @@ export const lessons: ChineseLesson[] = [
   },
   {
     id: 14,
+level: "A1",
     title: "爱好",
     pinyin: "ài hào",
     topic: "Hobbies",
@@ -604,6 +621,7 @@ export const lessons: ChineseLesson[] = [
   },
   {
     id: 15,
+level: "A1",
     title: "学校",
     pinyin: "xué xiào",
     topic: "School",
@@ -643,6 +661,7 @@ export const lessons: ChineseLesson[] = [
   },
   {
     id: 16,
+level: "A2",
     title: "旅行",
     pinyin: "lǚ xíng",
     topic: "Travel",
@@ -682,6 +701,7 @@ export const lessons: ChineseLesson[] = [
   },
   {
     id: 17,
+level: "A2",
     title: "购物",
     pinyin: "gòu wù",
     topic: "Shopping",
@@ -721,6 +741,7 @@ export const lessons: ChineseLesson[] = [
   },
   {
     id: 18,
+level: "A2",
     title: "情绪",
     pinyin: "qíng xù",
     topic: "Emotions",
@@ -760,6 +781,7 @@ export const lessons: ChineseLesson[] = [
   },
   {
     id: 19,
+level: "A2",
     title: "日常",
     pinyin: "rì cháng",
     topic: "Daily Routine",
@@ -799,6 +821,7 @@ export const lessons: ChineseLesson[] = [
   },
   {
     id: 20,
+level: "A2",
     title: "动词",
     pinyin: "dòng cí",
     topic: "Simple Verbs",
@@ -838,6 +861,7 @@ export const lessons: ChineseLesson[] = [
   },
   {
     id: 21,
+level: "A2",
     title: "打电话",
     pinyin: "dǎ diàn huà",
     topic: "Making Phone Calls",
@@ -878,6 +902,7 @@ export const lessons: ChineseLesson[] = [
   },
   {
     id: 22,
+level: "A2",
     title: "写邮件",
     pinyin: "xiě yóu jiàn",
     topic: "Writing Emails",
@@ -918,6 +943,7 @@ export const lessons: ChineseLesson[] = [
   },
   {
     id: 23,
+level: "A2",
     title: "在银行",
     pinyin: "zài yín háng",
     topic: "At the Bank",
@@ -958,6 +984,7 @@ export const lessons: ChineseLesson[] = [
   },
   {
     id: 24,
+level: "A2",
     title: "在邮局",
     pinyin: "zài yóu jú",
     topic: "At the Post Office",
@@ -998,6 +1025,7 @@ export const lessons: ChineseLesson[] = [
   },
   {
     id: 25,
+level: "A2",
     title: "租房子",
     pinyin: "zū fáng zi",
     topic: "Renting an Apartment",
@@ -1038,6 +1066,7 @@ export const lessons: ChineseLesson[] = [
   },
   {
     id: 26,
+level: "A2",
     title: "投诉与退货",
     pinyin: "tóu sù yǔ tuì huò",
     topic: "Complaints and Returns",
@@ -1078,6 +1107,7 @@ export const lessons: ChineseLesson[] = [
   },
   {
     id: 27,
+level: "A2",
     title: "详细指路",
     pinyin: "xiáng xì zhǐ lù",
     topic: "Giving Detailed Directions",
@@ -1118,6 +1148,7 @@ export const lessons: ChineseLesson[] = [
   },
   {
     id: 28,
+level: "A2",
     title: "讨论新闻",
     pinyin: "tǎo lùn xīn wén",
     topic: "Discussing News",
@@ -1158,6 +1189,7 @@ export const lessons: ChineseLesson[] = [
   },
   {
     id: 29,
+level: "A2",
     title: "文化差异",
     pinyin: "wén huà chā yì",
     topic: "Cultural Differences",
@@ -1198,6 +1230,7 @@ export const lessons: ChineseLesson[] = [
   },
   {
     id: 30,
+level: "A2",
     title: "面试",
     pinyin: "miàn shì",
     topic: "Job Interviews",
@@ -1238,6 +1271,7 @@ export const lessons: ChineseLesson[] = [
   },
   {
     id: 31,
+level: "B1",
     title: "商务会议",
     pinyin: "shāng wù huì yì",
     topic: "Business Meetings",
@@ -1278,6 +1312,7 @@ export const lessons: ChineseLesson[] = [
   },
   {
     id: 32,
+level: "B1",
     title: "做演讲",
     pinyin: "zuò yǎn jiǎng",
     topic: "Giving Presentations",
@@ -1318,6 +1353,7 @@ export const lessons: ChineseLesson[] = [
   },
   {
     id: 33,
+level: "B1",
     title: "谈判",
     pinyin: "tán pàn",
     topic: "Negotiating",
@@ -1358,6 +1394,7 @@ export const lessons: ChineseLesson[] = [
   },
   {
     id: 34,
+level: "B1",
     title: "社交媒体",
     pinyin: "shè jiāo méi tǐ",
     topic: "Social Media",
@@ -1398,6 +1435,7 @@ export const lessons: ChineseLesson[] = [
   },
   {
     id: 35,
+level: "B1",
     title: "环境问题",
     pinyin: "huán jìng wèn tí",
     topic: "Environmental Issues",
@@ -1438,6 +1476,7 @@ export const lessons: ChineseLesson[] = [
   },
   {
     id: 36,
+level: "B1",
     title: "表达观点",
     pinyin: "biǎo dá guān diǎn",
     topic: "Expressing Opinions",
@@ -1478,6 +1517,7 @@ export const lessons: ChineseLesson[] = [
   },
   {
     id: 37,
+level: "B1",
     title: "提出建议",
     pinyin: "tí chū jiàn yì",
     topic: "Making Suggestions",
@@ -1518,6 +1558,7 @@ export const lessons: ChineseLesson[] = [
   },
   {
     id: 38,
+level: "B1",
     title: "道歉与借口",
     pinyin: "dào qiàn yǔ jiè kǒu",
     topic: "Apologizing and Making Excuses",
@@ -1558,6 +1599,7 @@ export const lessons: ChineseLesson[] = [
   },
   {
     id: 39,
+level: "B1",
     title: "给建议",
     pinyin: "gěi jiàn yì",
     topic: "Giving Advice",
@@ -1598,6 +1640,7 @@ export const lessons: ChineseLesson[] = [
   },
   {
     id: 40,
+level: "B1",
     title: "描述经历",
     pinyin: "miáo shù jīng lì",
     topic: "Describing Experiences",
@@ -1638,6 +1681,7 @@ export const lessons: ChineseLesson[] = [
   },
   {
     id: 41,
+level: "B1",
     title: "比较选择",
     pinyin: "bǐ jiào xuǎn zé",
     topic: "Comparing Options",
@@ -1678,6 +1722,7 @@ export const lessons: ChineseLesson[] = [
   },
   {
     id: 42,
+level: "B1",
     title: "假设情况",
     pinyin: "jiǎ shè qíng kuàng",
     topic: "Hypothetical Situations",
@@ -1718,6 +1763,7 @@ export const lessons: ChineseLesson[] = [
   },
   {
     id: 43,
+level: "B1",
     title: "转述",
     pinyin: "zhuǎn shù",
     topic: "Reporting Speech",
@@ -1758,6 +1804,7 @@ export const lessons: ChineseLesson[] = [
   },
   {
     id: 44,
+level: "B1",
     title: "被动语态",
     pinyin: "bèi dòng yǔ tài",
     topic: "Passive Voice",
@@ -1798,6 +1845,7 @@ export const lessons: ChineseLesson[] = [
   },
   {
     id: 45,
+level: "B1",
     title: "定语从句",
     pinyin: "dìng yǔ cóng jù",
     topic: "Relative Clauses",
@@ -1838,6 +1886,7 @@ export const lessons: ChineseLesson[] = [
   },
   {
     id: 46,
+level: "B2",
     title: "条件句",
     pinyin: "tiáo jiàn jù",
     topic: "Conditional Sentences",
@@ -1878,6 +1927,7 @@ export const lessons: ChineseLesson[] = [
   },
   {
     id: 47,
+level: "B2",
     title: "成语俗语",
     pinyin: "chéng yǔ sú yǔ",
     topic: "Idiomatic Expressions",
@@ -1918,6 +1968,7 @@ export const lessons: ChineseLesson[] = [
   },
   {
     id: 48,
+level: "B2",
     title: "俚语口语",
     pinyin: "lǐ yǔ kǒu yǔ",
     topic: "Slang and Colloquial",
@@ -1958,6 +2009,7 @@ export const lessons: ChineseLesson[] = [
   },
   {
     id: 49,
+level: "B2",
     title: "辩论技巧",
     pinyin: "biàn lùn jì qiǎo",
     topic: "Debating Skills",
@@ -1998,6 +2050,7 @@ export const lessons: ChineseLesson[] = [
   },
   {
     id: 50,
+level: "B2",
     title: "总复习",
     pinyin: "zǒng fù xí",
     topic: "Final Comprehensive Review",

@@ -21,19 +21,26 @@ const HERO_EN =
   "Japanese for Vietnamese learners — from hiragana to conversation.";
 
 const LEVEL_COLORS: Record<string, string> = {
-  beginner: "bg-emerald-100 text-emerald-700",
-  intermediate: "bg-amber-100 text-amber-700",
-  advanced: "bg-rose-100 text-rose-700",
+  A1: "bg-emerald-100 text-emerald-700",
+  A2: "bg-sky-100 text-sky-700",
+  B1: "bg-amber-100 text-amber-700",
+  B2: "bg-rose-100 text-rose-700",
+  C1: "bg-purple-100 text-purple-700",
+  C2: "bg-slate-200 text-slate-800",
 };
 
 const LEVEL_LABELS: Record<string, string> = {
-  beginner: "Sơ cấp",
-  intermediate: "Trung cấp",
-  advanced: "Cao cấp",
+  A1: "A1 · Sơ cấp",
+  A2: "A2 · Cơ bản",
+  B1: "B1 · Trung cấp",
+  B2: "B2 · Trung cao",
+  C1: "C1 · Cao cấp",
+  C2: "C2 · Thuần thục",
 };
 
 export default function JapaneseLessonsPage() {
-  const levels = ["beginner", "intermediate", "advanced"];
+  // Only iterate active CEFR levels (no Japanese lesson is currently C1/C2).
+  const levels = ["A1", "A2", "B1", "B2"];
   const grouped = levels.map((level) => ({
     level,
     lessons: JAPANESE_LESSONS.filter((l: any) => l.level === level),
@@ -54,7 +61,7 @@ export default function JapaneseLessonsPage() {
           Việt hiểu. Có bài tập, hội thoại thực tế, và mẹo ghi nhớ.
         </p>
         <p className="mt-3 text-xs text-slate-500">
-          {JAPANESE_LESSONS.length} bài · 3 cấp độ · hội thoại thực tế
+          {JAPANESE_LESSONS.length} bài · A1 → B2 · hội thoại thực tế
         </p>
         <p className="mt-1 text-xs text-slate-500">
           <Link
