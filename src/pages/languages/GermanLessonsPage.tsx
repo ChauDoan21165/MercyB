@@ -43,7 +43,7 @@ export default function GermanLessonsPage() {
           Phát âm viết riêng cho người Việt. Umlaut (ü, ö), 'ch' ich-Laut, giống danh từ — giải thích theo cách người Việt hiểu.
         </p>
         <p className="mt-3 text-xs text-slate-500">
-          50 bài · 26 chủ đề · từ cơ bản đến B2
+          50 bài · 26 chủ đề · A1 → B2
         </p>
         <p className="mt-1 text-xs text-slate-500">
           <Link

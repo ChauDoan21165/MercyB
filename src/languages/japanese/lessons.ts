@@ -1,8 +1,69 @@
-export const lessons = [
+// Type definitions for Japanese lesson data.
+// Lessons 1-20 have vocabulary + grammar + examples only.
+// Lessons 21-50 add dialogue + exercises.
+
+export type JapaneseCefrLevel = "A1" | "A2" | "B1" | "B2" | "C1" | "C2";
+
+export type JapaneseVocabEntry = {
+  japanese: string;
+  english: string;
+};
+
+export type JapaneseGrammarPoint = {
+  point: string;
+  explanation: string;
+};
+
+export type JapaneseExample = {
+  japanese: string;
+  english: string;
+};
+
+export type JapaneseDialogueLine = {
+  speaker: string;
+  japanese: string;
+  english: string;
+};
+
+export type JapaneseExerciseFillBlank = {
+  type: "fill-blank";
+  question: string;
+  answer: string;
+};
+
+export type JapaneseExerciseMatching = {
+  type: "matching";
+  pairs: { japanese: string; english: string }[];
+  instruction: string;
+};
+
+export type JapaneseExerciseTranslation = {
+  type: "translation";
+  vietnamese: string;
+  japanese: string;
+};
+
+export type JapaneseExercise =
+  | JapaneseExerciseFillBlank
+  | JapaneseExerciseMatching
+  | JapaneseExerciseTranslation;
+
+export type JapaneseLesson = {
+  id: number;
+  title: string;
+  level: JapaneseCefrLevel;
+  vocabulary: JapaneseVocabEntry[];
+  grammar: JapaneseGrammarPoint[];
+  examples: JapaneseExample[];
+  dialogue?: JapaneseDialogueLine[];
+  exercises?: JapaneseExercise[];
+};
+
+export const lessons: JapaneseLesson[] = [
   {
     id: 1,
     title: "Hiragana Introduction",
-    level: "beginner",
+    level: "A1",
     vocabulary: [
       { japanese: "あ", english: "a" },
       { japanese: "い", english: "i" },
@@ -24,7 +85,7 @@ export const lessons = [
   {
     id: 2,
     title: "Katakana Introduction",
-    level: "beginner",
+    level: "A1",
     vocabulary: [
       { japanese: "カ", english: "ka" },
       { japanese: "キ", english: "ki" },
@@ -46,7 +107,7 @@ export const lessons = [
   {
     id: 3,
     title: "Basic Greetings",
-    level: "beginner",
+    level: "A1",
     vocabulary: [
       { japanese: "こんにちは", english: "hello / good afternoon" },
       { japanese: "おはようございます", english: "good morning" },
@@ -67,7 +128,7 @@ export const lessons = [
   {
     id: 4,
     title: "Self Introduction",
-    level: "beginner",
+    level: "A1",
     vocabulary: [
       { japanese: "わたし", english: "I" },
       { japanese: "名前 (なまえ)", english: "name" },
@@ -87,7 +148,7 @@ export const lessons = [
   {
     id: 5,
     title: "Numbers 1–10",
-    level: "beginner",
+    level: "A1",
     vocabulary: [
       { japanese: "いち", english: "1" },
       { japanese: "に", english: "2" },
@@ -113,7 +174,7 @@ export const lessons = [
   {
     id: 6,
     title: "Counting Objects",
-    level: "beginner",
+    level: "A1",
     vocabulary: [
       { japanese: "一つ (ひとつ)", english: "one (general counter)" },
       { japanese: "二つ (ふたつ)", english: "two" },
@@ -134,7 +195,7 @@ export const lessons = [
   {
     id: 7,
     title: "Days of the Week",
-    level: "beginner",
+    level: "A1",
     vocabulary: [
       { japanese: "月曜日 (げつようび)", english: "Monday" },
       { japanese: "火曜日 (かようび)", english: "Tuesday" },
@@ -157,7 +218,7 @@ export const lessons = [
   {
     id: 8,
     title: "Months of the Year",
-    level: "beginner",
+    level: "A1",
     vocabulary: [
       { japanese: "一月 (いちがつ)", english: "January" },
       { japanese: "二月 (にがつ)", english: "February" },
@@ -185,7 +246,7 @@ export const lessons = [
   {
     id: 9,
     title: "Telling Time",
-    level: "beginner",
+    level: "A1",
     vocabulary: [
       { japanese: "時 (じ)", english: "hour / o'clock" },
       { japanese: "分 (ふん / ぷん)", english: "minute" },
@@ -205,7 +266,7 @@ export const lessons = [
   {
     id: 10,
     title: "Asking for Directions",
-    level: "beginner",
+    level: "A1",
     vocabulary: [
       { japanese: "どこ", english: "where" },
       { japanese: "駅 (えき)", english: "station" },
@@ -227,7 +288,7 @@ export const lessons = [
   {
     id: 11,
     title: "Ordering Food",
-    level: "beginner",
+    level: "A1",
     vocabulary: [
       { japanese: "メニュー", english: "menu" },
       { japanese: "注文 (ちゅうもん)", english: "order" },
@@ -249,7 +310,7 @@ export const lessons = [
   {
     id: 12,
     title: "Shopping Phrases",
-    level: "beginner",
+    level: "A1",
     vocabulary: [
       { japanese: "いくら", english: "how much" },
       { japanese: "高い (たかい)", english: "expensive / high" },
@@ -270,7 +331,7 @@ export const lessons = [
   {
     id: 13,
     title: "Family Members",
-    level: "beginner",
+    level: "A1",
     vocabulary: [
       { japanese: "お父さん (おとうさん)", english: "father" },
       { japanese: "お母さん (おかあさん)", english: "mother" },
@@ -292,7 +353,7 @@ export const lessons = [
   {
     id: 14,
     title: "Colors",
-    level: "beginner",
+    level: "A1",
     vocabulary: [
       { japanese: "赤 (あか)", english: "red" },
       { japanese: "青 (あお)", english: "blue" },
@@ -314,7 +375,7 @@ export const lessons = [
   {
     id: 15,
     title: "I-Adjectives (Present Tense)",
-    level: "beginner",
+    level: "A1",
     vocabulary: [
       { japanese: "大きい (おおきい)", english: "big" },
       { japanese: "小さい (ちいさい)", english: "small" },
@@ -335,7 +396,7 @@ export const lessons = [
   {
     id: 16,
     title: "Na-Adjectives (Present Tense)",
-    level: "beginner",
+    level: "A2",
     vocabulary: [
       { japanese: "静か (しずか)", english: "quiet" },
       { japanese: "賑やか (にぎやか)", english: "lively" },
@@ -355,7 +416,7 @@ export const lessons = [
   {
     id: 17,
     title: "Verbs: Present Tense (Masu-form)",
-    level: "beginner",
+    level: "A2",
     vocabulary: [
       { japanese: "食べます (たべます)", english: "eat" },
       { japanese: "飲みます (のみます)", english: "drink" },
@@ -376,7 +437,7 @@ export const lessons = [
   {
     id: 18,
     title: "Verbs: Past Tense (Masu-form)",
-    level: "beginner",
+    level: "A2",
     vocabulary: [
       { japanese: "食べました (たべました)", english: "ate" },
       { japanese: "飲みました (のみました)", english: "drank" },
@@ -397,7 +458,7 @@ export const lessons = [
   {
     id: 19,
     title: "Particles: は, が, を",
-    level: "beginner",
+    level: "A2",
     vocabulary: [
       { japanese: "は (wa)", english: "topic marker" },
       { japanese: "が (ga)", english: "subject marker" },
@@ -417,7 +478,7 @@ export const lessons = [
   {
     id: 20,
     title: "Te-Form Basics",
-    level: "beginner",
+    level: "A2",
     vocabulary: [
       { japanese: "食べて (たべて)", english: "eating / please eat" },
       { japanese: "飲んで (のんで)", english: "drinking / please drink" },
@@ -439,7 +500,7 @@ export const lessons = [
 {
   id: 21,
   title: "Making Phone Calls",
-  level: "intermediate",
+  level: "A2",
   vocabulary: [
     { japanese: "もしもし", english: "hello (on phone)" },
     { japanese: "電話番号", english: "phone number" },
@@ -483,7 +544,7 @@ export const lessons = [
 {
   id: 22,
   title: "Writing Emails",
-  level: "intermediate",
+  level: "A2",
   vocabulary: [
     { japanese: "メール", english: "email" },
     { japanese: "件名", english: "subject line" },
@@ -527,7 +588,7 @@ export const lessons = [
 {
   id: 23,
   title: "At the Bank",
-  level: "intermediate",
+  level: "A2",
   vocabulary: [
     { japanese: "銀行", english: "bank" },
     { japanese: "口座", english: "account" },
@@ -571,7 +632,7 @@ export const lessons = [
 {
   id: 24,
   title: "At the Post Office",
-  level: "intermediate",
+  level: "A2",
   vocabulary: [
     { japanese: "郵便局", english: "post office" },
     { japanese: "切手", english: "stamp" },
@@ -615,7 +676,7 @@ export const lessons = [
 {
   id: 25,
   title: "Renting an Apartment",
-  level: "intermediate",
+  level: "A2",
   vocabulary: [
     { japanese: "アパート", english: "apartment" },
     { japanese: "賃貸", english: "rental" },
@@ -659,7 +720,7 @@ export const lessons = [
 {
   id: 26,
   title: "Complaints and Returns",
-  level: "intermediate",
+  level: "A2",
   vocabulary: [
     { japanese: "苦情", english: "complaint" },
     { japanese: "返品", english: "return (product)" },
@@ -703,7 +764,7 @@ export const lessons = [
 {
   id: 27,
   title: "Giving Detailed Directions",
-  level: "intermediate",
+  level: "A2",
   vocabulary: [
     { japanese: "交差点", english: "intersection" },
     { japanese: "信号", english: "traffic light" },
@@ -747,7 +808,7 @@ export const lessons = [
 {
   id: 28,
   title: "Discussing News",
-  level: "intermediate",
+  level: "A2",
   vocabulary: [
     { japanese: "ニュース", english: "news" },
     { japanese: "記事", english: "article" },
@@ -791,7 +852,7 @@ export const lessons = [
 {
   id: 29,
   title: "Cultural Differences",
-  level: "intermediate",
+  level: "A2",
   vocabulary: [
     { japanese: "文化", english: "culture" },
     { japanese: "習慣", english: "custom" },
@@ -835,7 +896,7 @@ export const lessons = [
 {
   id: 30,
   title: "Job Interviews",
-  level: "intermediate",
+  level: "A2",
   vocabulary: [
     { japanese: "面接", english: "interview" },
     { japanese: "志望動機", english: "motivation for applying" },
@@ -879,7 +940,7 @@ export const lessons = [
 {
   id: 31,
   title: "Business Meetings",
-  level: "intermediate",
+  level: "B1",
   vocabulary: [
     { japanese: "会議", english: "meeting" },
     { japanese: "議題", english: "agenda" },
@@ -923,7 +984,7 @@ export const lessons = [
 {
   id: 32,
   title: "Giving Presentations",
-  level: "intermediate",
+  level: "B1",
   vocabulary: [
     { japanese: "プレゼンテーション", english: "presentation" },
     { japanese: "スライド", english: "slide" },
@@ -967,7 +1028,7 @@ export const lessons = [
 {
   id: 33,
   title: "Negotiating",
-  level: "intermediate",
+  level: "B1",
   vocabulary: [
     { japanese: "交渉", english: "negotiation" },
     { japanese: "条件", english: "condition" },
@@ -1011,7 +1072,7 @@ export const lessons = [
 {
   id: 34,
   title: "Social Media",
-  level: "intermediate",
+  level: "B1",
   vocabulary: [
     { japanese: "SNS", english: "social media" },
     { japanese: "投稿する", english: "to post" },
@@ -1055,7 +1116,7 @@ export const lessons = [
 {
   id: 35,
   title: "Environmental Issues",
-  level: "intermediate",
+  level: "B1",
   vocabulary: [
     { japanese: "環境", english: "environment" },
     { japanese: "問題", english: "issue" },
@@ -1099,7 +1160,7 @@ export const lessons = [
 {
   id: 36,
   title: "Expressing Opinions",
-  level: "advanced",
+  level: "B1",
   vocabulary: [
     { japanese: "意見", english: "opinion" },
     { japanese: "主張する", english: "to assert" },
@@ -1143,7 +1204,7 @@ export const lessons = [
 {
   id: 37,
   title: "Making Suggestions",
-  level: "advanced",
+  level: "B1",
   vocabulary: [
     { japanese: "提案する", english: "to suggest" },
     { japanese: "勧める", english: "to recommend" },
@@ -1187,7 +1248,7 @@ export const lessons = [
 {
   id: 38,
   title: "Apologizing and Making Excuses",
-  level: "advanced",
+  level: "B1",
   vocabulary: [
     { japanese: "謝る", english: "to apologize" },
     { japanese: "お詫び", english: "apology (formal)" },
@@ -1231,7 +1292,7 @@ export const lessons = [
 {
   id: 39,
   title: "Giving Advice",
-  level: "advanced",
+  level: "B1",
   vocabulary: [
     { japanese: "アドバイス", english: "advice" },
     { japanese: "勧める", english: "to recommend" },
@@ -1275,7 +1336,7 @@ export const lessons = [
 {
   id: 40,
   title: "Describing Experiences",
-  level: "advanced",
+  level: "B1",
   vocabulary: [
     { japanese: "経験", english: "experience" },
     { japanese: "体験", english: "hands-on experience" },
@@ -1319,7 +1380,7 @@ export const lessons = [
 {
   id: 41,
   title: "Comparing Options",
-  level: "advanced",
+  level: "B1",
   vocabulary: [
     { japanese: "比較する", english: "to compare" },
     { japanese: "選択", english: "choice" },
@@ -1363,7 +1424,7 @@ export const lessons = [
 {
   id: 42,
   title: "Hypothetical Situations",
-  level: "advanced",
+  level: "B1",
   vocabulary: [
     { japanese: "仮定", english: "assumption" },
     { japanese: "もし", english: "if" },
@@ -1407,7 +1468,7 @@ export const lessons = [
 {
   id: 43,
   title: "Reporting Speech",
-  level: "advanced",
+  level: "B1",
   vocabulary: [
     { japanese: "伝聞", english: "hearsay" },
     { japanese: "引用", english: "quotation" },
@@ -1451,7 +1512,7 @@ export const lessons = [
 {
   id: 44,
   title: "Passive Voice",
-  level: "advanced",
+  level: "B1",
   vocabulary: [
     { japanese: "受身形", english: "passive voice" },
     { japanese: "作られる", english: "is made" },
@@ -1495,7 +1556,7 @@ export const lessons = [
 {
   id: 45,
   title: "Relative Clauses",
-  level: "advanced",
+  level: "B1",
   vocabulary: [
     { japanese: "連体修飾節", english: "relative clause" },
     { japanese: "～がいる", english: "there is ~" },
@@ -1539,7 +1600,7 @@ export const lessons = [
 {
   id: 46,
   title: "Conditional Sentences",
-  level: "advanced",
+  level: "B2",
   vocabulary: [
     { japanese: "条件文", english: "conditional sentence" },
     { japanese: "～ば", english: "if (conditional -ba form)" },
@@ -1584,7 +1645,7 @@ export const lessons = [
 {
   id: 47,
   title: "Idiomatic Expressions",
-  level: "advanced",
+  level: "B2",
   vocabulary: [
     { japanese: "慣用句", english: "idiomatic expression" },
     { japanese: "猫の手も借りたい", english: "very busy (lit. want even a cat's paw)" },
@@ -1628,7 +1689,7 @@ export const lessons = [
 {
   id: 48,
   title: "Slang and Colloquial",
-  level: "advanced",
+  level: "B2",
   vocabulary: [
     { japanese: "やばい", english: "awesome/bad (slang)" },
     { japanese: "めっちゃ", english: "very (slang)" },
@@ -1672,7 +1733,7 @@ export const lessons = [
 {
   id: 49,
   title: "Debating Skills",
-  level: "advanced",
+  level: "B2",
   vocabulary: [
     { japanese: "討論", english: "debate" },
     { japanese: "論点", english: "argument point" },
@@ -1716,7 +1777,7 @@ export const lessons = [
 {
   id: 50,
   title: "Final Comprehensive Review",
-  level: "advanced",
+  level: "B2",
   vocabulary: [
     { japanese: "復習", english: "review" },
     { japanese: "総合", english: "comprehensive" },

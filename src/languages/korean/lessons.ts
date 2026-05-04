@@ -42,8 +42,11 @@ export type KoreanExercise =
   | KoreanExerciseMatching
   | KoreanExerciseTranslation;
 
+export type KoreanCefrLevel = "A1" | "A2" | "B1" | "B2" | "C1" | "C2";
+
 export type KoreanLesson = {
   id: number;
+  level: KoreanCefrLevel;
   title_vi: string;
   title_en: string;
   intro_vi: string;
@@ -55,140 +58,140 @@ export type KoreanLesson = {
 
 export const lessons: KoreanLesson[] = [
   {
-    id: 1, title_vi: "Nguyên âm cơ bản", title_en: "Basic Vowels",
+    id: 1, level: "A1", title_vi: "Nguyên âm cơ bản", title_en: "Basic Vowels",
     intro_vi: "10 nguyên âm cơ bản trong Hangul. Đây là nền tảng của chữ viết tiếng Hàn.",
     vocabulary: [{hangul:"ㅏ",meaning:"a"},{hangul:"ㅑ",meaning:"ya"},{hangul:"ㅓ",meaning:"eo (ơ)"},{hangul:"ㅕ",meaning:"yeo"},{hangul:"ㅗ",meaning:"o (ô)"},{hangul:"ㅛ",meaning:"yo"},{hangul:"ㅜ",meaning:"u"},{hangul:"ㅠ",meaning:"yu"},{hangul:"ㅡ",meaning:"eu (ư)"},{hangul:"ㅣ",meaning:"i"}],
     sentences: [{korean:"아",romanized:"a",en:"a",vi:"Nguyên âm 'a'"},{korean:"야",romanized:"ya",en:"ya",vi:"Nguyên âm 'ya'"},{korean:"어",romanized:"eo",en:"eo",vi:"Nguyên âm 'eo'"},{korean:"오",romanized:"o",en:"o",vi:"Nguyên âm 'ô'"},{korean:"우",romanized:"u",en:"u",vi:"Nguyên âm 'u'"}],
     dialogue: [{speaker:"A",hangul:"이게 뭐예요?",meaning:"What is this?"},{speaker:"B",hangul:"그건 '아'예요.",meaning:"That is 'a'."},{speaker:"A",hangul:"아, 알겠어요.",meaning:"Ah, I understand."},{speaker:"B",hangul:"네, 잘했어요!",meaning:"Yes, well done!"}],
     exercises: [{type:"fill-blank",question:"Nguyên âm giống 'ơ' là ___",answer:"ㅓ"},{type:"matching",pairs:[{hangul:"ㅏ",meaning:"a"},{hangul:"ㅗ",meaning:"o"}],instruction:"Ghép nguyên âm"},{type:"translation",vietnamese:"Nguyên âm 'i' là gì?",hangul:"ㅣ"}]
   },{
-    id: 2, title_vi: "Phụ âm cơ bản", title_en: "Basic Consonants",
+    id: 2, level: "A1", title_vi: "Phụ âm cơ bản", title_en: "Basic Consonants",
     intro_vi: "14 phụ âm cơ bản trong Hangul. Cách phát âm thay đổi tùy vị trí.",
     vocabulary: [{hangul:"ㄱ",meaning:"g/k"},{hangul:"ㄴ",meaning:"n"},{hangul:"ㄷ",meaning:"d/t"},{hangul:"ㄹ",meaning:"r/l"},{hangul:"ㅁ",meaning:"m"},{hangul:"ㅂ",meaning:"b/p"},{hangul:"ㅅ",meaning:"s"},{hangul:"ㅇ",meaning:"ng/null"},{hangul:"ㅈ",meaning:"j"},{hangul:"ㅎ",meaning:"h"}],
     sentences: [{korean:"가",romanized:"ga",en:"ga",vi:"Âm tiết 'ga'"},{korean:"나",romanized:"na",en:"na",vi:"Âm tiết 'na'"},{korean:"다",romanized:"da",en:"da",vi:"Âm tiết 'da'"},{korean:"마",romanized:"ma",en:"ma",vi:"Âm tiết 'ma'"},{korean:"바",romanized:"ba",en:"ba",vi:"Âm tiết 'ba'"}],
     dialogue: [{speaker:"A",hangul:"이건 무슨 글자예요?",meaning:"What letter?"},{speaker:"B",hangul:"'ㄱ'이에요.",meaning:"It's ㄱ."},{speaker:"A",hangul:"어려워요.",meaning:"It's hard."},{speaker:"B",hangul:"괜찮아요. 연습하면 돼요.",meaning:"Practice makes perfect."}],
     exercises: [{type:"fill-blank",question:"Phụ âm giống 'n' là ___",answer:"ㄴ"},{type:"matching",pairs:[{hangul:"ㄱ",meaning:"g/k"},{hangul:"ㅁ",meaning:"m"}],instruction:"Ghép phụ âm"},{type:"translation",vietnamese:"Phụ âm 'h' là gì?",hangul:"ㅎ"}]
   },{
-    id: 3, title_vi: "Khối âm tiết", title_en: "Syllable Blocks",
+    id: 3, level: "A1", title_vi: "Khối âm tiết", title_en: "Syllable Blocks",
     intro_vi: "Mỗi âm tiết = phụ âm + nguyên âm. ㅇ là âm câm khi đứng đầu.",
     vocabulary: [{hangul:"가",meaning:"ga"},{hangul:"나",meaning:"na"},{hangul:"다",meaning:"da"},{hangul:"라",meaning:"ra"},{hangul:"마",meaning:"ma"},{hangul:"바",meaning:"ba"},{hangul:"사",meaning:"sa"},{hangul:"아",meaning:"a"},{hangul:"자",meaning:"ja"},{hangul:"하",meaning:"ha"}],
     sentences: [{korean:"가가 가요.",romanized:"Gaga gayo.",en:"Ga is going.",vi:"Ga đang đi."},{korean:"아기가 자요.",romanized:"Agiga jayo.",en:"Baby is sleeping.",vi:"Em bé đang ngủ."},{korean:"바다가 파래요.",romanized:"Badaga paraeyo.",en:"The sea is blue.",vi:"Biển màu xanh."},{korean:"사자가 자요.",romanized:"Sajaga jayo.",en:"Lion sleeps.",vi:"Sư tử ngủ."},{korean:"나가 가요.",romanized:"Naga gayo.",en:"Going out.",vi:"Đi ra ngoài."}],
     dialogue: [{speaker:"A",hangul:"이 글자 읽을 수 있어요?",meaning:"Can you read this?"},{speaker:"B",hangul:"네, '가'예요.",meaning:"Yes, it's 'ga'."},{speaker:"A",hangul:"잘했어요!",meaning:"Well done!"},{speaker:"B",hangul:"감사합니다!",meaning:"Thank you!"}],
     exercises: [{type:"fill-blank",question:"'사자' là ___",answer:"sư tử"},{type:"matching",pairs:[{hangul:"바다",meaning:"biển"},{hangul:"아기",meaning:"em bé"}],instruction:"Ghép từ"},{type:"translation",vietnamese:"Con sư tử",hangul:"사자"}]
   },{
-    id: 4, title_vi: "Phụ âm đôi", title_en: "Double Consonants",
+    id: 4, level: "A1", title_vi: "Phụ âm đôi", title_en: "Double Consonants",
     intro_vi: "5 phụ âm căng (fortis): ㄲㄸㅃㅆㅉ. Phát âm mạnh và căng hơn.",
     vocabulary: [{hangul:"ㄲ",meaning:"kk"},{hangul:"ㄸ",meaning:"tt"},{hangul:"ㅃ",meaning:"pp"},{hangul:"ㅆ",meaning:"ss"},{hangul:"ㅉ",meaning:"jj"},{hangul:"까",meaning:"kka"},{hangul:"따",meaning:"tta"},{hangul:"빠",meaning:"ppa"},{hangul:"싸",meaning:"ssa"},{hangul:"짜",meaning:"jja"}],
     sentences: [{korean:"까만색이에요.",romanized:"Kkamansaegieyo.",en:"It's black.",vi:"Nó màu đen."},{korean:"따뜻해요.",romanized:"Ttatteushaeyo.",en:"It's warm.",vi:"Nó ấm áp."},{korean:"빨리 가요.",romanized:"Ppalli gayo.",en:"Go quickly.",vi:"Đi nhanh."},{korean:"싸요.",romanized:"Ssayo.",en:"It's cheap.",vi:"Nó rẻ."},{korean:"짜요.",romanized:"Jjayo.",en:"It's salty.",vi:"Nó mặn."}],
     dialogue: [{speaker:"A",hangul:"이거 비싸요?",meaning:"Is it expensive?"},{speaker:"B",hangul:"아니요, 싸요.",meaning:"No, it's cheap."},{speaker:"A",hangul:"빨리 사세요!",meaning:"Buy it fast!"},{speaker:"B",hangul:"네, 살게요.",meaning:"Yes, I'll buy it."}],
     exercises: [{type:"fill-blank",question:"'Rẻ' là ___",answer:"싸요"},{type:"matching",pairs:[{hangul:"빨리",meaning:"nhanh"},{hangul:"따뜻해요",meaning:"ấm áp"}],instruction:"Ghép từ"},{type:"translation",vietnamese:"Nó màu đen.",hangul:"까만색이에요."}]
   },{
-    id: 5, title_vi: "Nguyên âm ghép", title_en: "Compound Vowels",
+    id: 5, level: "A1", title_vi: "Nguyên âm ghép", title_en: "Compound Vowels",
     intro_vi: "11 nguyên âm ghép: ㅐㅒㅔㅖㅘㅙㅚㅝㅞㅟㅢ.",
     vocabulary: [{hangul:"ㅐ",meaning:"ae"},{hangul:"ㅔ",meaning:"e"},{hangul:"ㅘ",meaning:"wa"},{hangul:"ㅙ",meaning:"wae"},{hangul:"ㅚ",meaning:"oe"},{hangul:"ㅝ",meaning:"wo"},{hangul:"ㅞ",meaning:"we"},{hangul:"ㅟ",meaning:"wi"},{hangul:"ㅢ",meaning:"ui"},{hangul:"ㅒ",meaning:"yae"}],
     sentences: [{korean:"왜 왔어요?",romanized:"Wae wasseoyo?",en:"Why did you come?",vi:"Sao bạn đến?"},{korean:"괜찮아요.",romanized:"Gwaenchanayo.",en:"It's okay.",vi:"Không sao."},{korean:"뭐 해요?",romanized:"Mwo haeyo?",en:"What are you doing?",vi:"Bạn làm gì?"},{korean:"돼요.",romanized:"Dwaeyo.",en:"It's fine.",vi:"Được."},{korean:"쉬워요.",romanized:"Swiwoyo.",en:"It's easy.",vi:"Dễ."}],
     dialogue: [{speaker:"A",hangul:"한국어 어때요?",meaning:"How's Korean?"},{speaker:"B",hangul:"쉬워요!",meaning:"Easy!"},{speaker:"A",hangul:"정말요?",meaning:"Really?"},{speaker:"B",hangul:"네, 한글은 배우기 쉬워요.",meaning:"Yes, Hangul is easy."}],
     exercises: [{type:"fill-blank",question:"'Không sao' là ___",answer:"괜찮아요"},{type:"matching",pairs:[{hangul:"왜",meaning:"tại sao"},{hangul:"뭐",meaning:"cái gì"}],instruction:"Ghép từ hỏi"},{type:"translation",vietnamese:"Nó dễ.",hangul:"쉬워요."}]
   },{
-    id: 6, title_vi: "Phụ âm cuối (받침)", title_en: "Final Consonants",
+    id: 6, level: "A1", title_vi: "Phụ âm cuối (받침)", title_en: "Final Consonants",
     intro_vi: "받침 là phụ âm cuối âm tiết. Chỉ 7 âm được phát âm ở vị trí cuối.",
     vocabulary: [{hangul:"받침",meaning:"phụ âm cuối"},{hangul:"각",meaning:"gak"},{hangul:"간",meaning:"gan"},{hangul:"갈",meaning:"gal"},{hangul:"감",meaning:"gam"},{hangul:"갑",meaning:"gap"},{hangul:"갓",meaning:"gat"},{hangul:"강",meaning:"gang"},{hangul:"값",meaning:"gap (giá)"},{hangul:"같",meaning:"gat"}],
     sentences: [{korean:"한국 사람이에요.",romanized:"Hanguk saramieyo.",en:"I am Korean.",vi:"Tôi là người Hàn."},{korean:"밥을 먹어요.",romanized:"Babeul meogeoyo.",en:"I eat rice.",vi:"Tôi ăn cơm."},{korean:"책을 읽어요.",romanized:"Chaekeul ilgeoyo.",en:"I read a book.",vi:"Tôi đọc sách."},{korean:"꽃이 예뻐요.",romanized:"Kkochi yeppeoyo.",en:"The flower is pretty.",vi:"Hoa đẹp."},{korean:"산에 가요.",romanized:"Sane gayo.",en:"I go to the mountain.",vi:"Tôi đi lên núi."}],
     dialogue: [{speaker:"A",hangul:"어디 가요?",meaning:"Where?"},{speaker:"B",hangul:"산에 가요.",meaning:"To the mountain."},{speaker:"A",hangul:"누구랑?",meaning:"With whom?"},{speaker:"B",hangul:"친구랑 같이.",meaning:"With a friend."}],
     exercises: [{type:"fill-blank",question:"'Tôi ăn cơm': 밥을 ___",answer:"먹어요"},{type:"matching",pairs:[{hangul:"책",meaning:"sách"},{hangul:"산",meaning:"núi"}],instruction:"Ghép từ"},{type:"translation",vietnamese:"Tôi là người Hàn.",hangul:"한국 사람이에요."}]
   },{
-    id: 7, title_vi: "Phụ âm cuối kép", title_en: "Complex Final Consonants",
+    id: 7, level: "A1", title_vi: "Phụ âm cuối kép", title_en: "Complex Final Consonants",
     intro_vi: "Âm tiết có 2 phụ âm cuối. Khi đứng một mình chỉ phát âm phụ âm bên trái.",
     vocabulary: [{hangul:"ㄳ",meaning:"gs→ㄱ"},{hangul:"ㄵ",meaning:"nj→ㄴ"},{hangul:"ㄺ",meaning:"lg→ㄱ"},{hangul:"ㄻ",meaning:"lm→ㅁ"},{hangul:"ㄼ",meaning:"lb→ㄹ"},{hangul:"ㄽ",meaning:"ls→ㄹ"},{hangul:"ㄾ",meaning:"lt→ㄹ"},{hangul:"ㅀ",meaning:"lh→ㄹ"},{hangul:"ㅄ",meaning:"bs→ㅂ"},{hangul:"ㄿ",meaning:"lp→ㅂ"}],
     sentences: [{korean:"닭을 먹어요.",romanized:"Dalgeul meogeoyo.",en:"I eat chicken.",vi:"Tôi ăn gà."},{korean:"앉으세요.",romanized:"Anjeuseyo.",en:"Please sit.",vi:"Mời ngồi."},{korean:"값이 비싸요.",romanized:"Gapsi bissayo.",en:"The price is high.",vi:"Giá đắt."},{korean:"넓어요.",romanized:"Neolbeoyo.",en:"It's wide.",vi:"Nó rộng."},{korean:"읊어요.",romanized:"Eulpeoyo.",en:"I recite.",vi:"Tôi ngâm thơ."}],
     dialogue: [{speaker:"A",hangul:"여기 앉으세요.",meaning:"Sit here."},{speaker:"B",hangul:"감사합니다.",meaning:"Thanks."},{speaker:"A",hangul:"뭐 드실래요?",meaning:"What to eat?"},{speaker:"B",hangul:"닭 먹을래요.",meaning:"I'll have chicken."}],
     exercises: [{type:"fill-blank",question:"'Mời ngồi': ___",answer:"앉으세요"},{type:"matching",pairs:[{hangul:"값",meaning:"giá"},{hangul:"닭",meaning:"gà"}],instruction:"Ghép từ"},{type:"translation",vietnamese:"Nó rộng.",hangul:"넓어요."}]
   },{
-    id: 8, title_vi: "Chào hỏi", title_en: "Greetings",
+    id: 8, level: "A1", title_vi: "Chào hỏi", title_en: "Greetings",
     intro_vi: "Các câu chào hỏi cơ bản. 안녕하세요 là cách chào lịch sự phổ biến nhất.",
     vocabulary: [{hangul:"안녕하세요",meaning:"Xin chào"},{hangul:"감사합니다",meaning:"Cảm ơn"},{hangul:"네",meaning:"Vâng"},{hangul:"아니요",meaning:"Không"},{hangul:"안녕히 가세요",meaning:"Tạm biệt (người đi)"},{hangul:"안녕히 계세요",meaning:"Tạm biệt (người ở)"},{hangul:"죄송합니다",meaning:"Xin lỗi"},{hangul:"괜찮아요",meaning:"Không sao"},{hangul:"반갑습니다",meaning:"Rất vui gặp"},{hangul:"또 만나요",meaning:"Hẹn gặp lại"}],
     sentences: [{korean:"안녕하세요, 처음 뵙겠습니다.",romanized:"Annyeonghaseyo, cheoeum boepgesseumnida.",en:"Hello, nice to meet you.",vi:"Xin chào, rất vui gặp bạn."},{korean:"감사합니다.",romanized:"Gamsahamnida.",en:"Thank you.",vi:"Cảm ơn."},{korean:"안녕히 가세요.",romanized:"Annyeonghi gaseyo.",en:"Goodbye (to one leaving).",vi:"Tạm biệt."},{korean:"죄송합니다.",romanized:"Joesonghamnida.",en:"I'm sorry.",vi:"Xin lỗi."},{korean:"또 만나요.",romanized:"Tto mannayo.",en:"See you again.",vi:"Hẹn gặp lại."}],
     dialogue: [{speaker:"A",hangul:"안녕하세요! 저는 민수예요.",meaning:"Hello! I'm Minsu."},{speaker:"B",hangul:"안녕하세요, 지영이에요. 반갑습니다.",meaning:"Hi, I'm Jiyoung. Nice to meet you."},{speaker:"A",hangul:"지금 어디 가세요?",meaning:"Where are you going?"},{speaker:"B",hangul:"집에 가요. 안녕히 계세요!",meaning:"Going home. Bye!"}],
     exercises: [{type:"fill-blank",question:"'Xin chào' là ___",answer:"안녕하세요"},{type:"matching",pairs:[{hangul:"감사합니다",meaning:"cảm ơn"},{hangul:"죄송합니다",meaning:"xin lỗi"}],instruction:"Ghép câu"},{type:"translation",vietnamese:"Tạm biệt, hẹn gặp lại.",hangul:"안녕히 가세요. 또 만나요."}]
   },{
-    id: 9, title_vi: "Tự giới thiệu", title_en: "Self-Introduction",
+    id: 9, level: "A1", title_vi: "Tự giới thiệu", title_en: "Self-Introduction",
     intro_vi: "Cách giới thiệu bản thân. Dùng 저는 (tôi - khiêm tốn) trong tình huống trang trọng.",
     vocabulary: [{hangul:"저",meaning:"tôi (khiêm tốn)"},{hangul:"이름",meaning:"tên"},{hangul:"입니다",meaning:"là"},{hangul:"학생",meaning:"học sinh"},{hangul:"선생님",meaning:"thầy/cô"},{hangul:"회사원",meaning:"nhân viên"},{hangul:"한국 사람",meaning:"người Hàn"},{hangul:"베트남 사람",meaning:"người Việt"},{hangul:"에서 왔어요",meaning:"đến từ"},{hangul:"살",meaning:"tuổi"}],
     sentences: [{korean:"저는 마이클입니다.",romanized:"Jeoneun Maikeurimnida.",en:"I am Michael.",vi:"Tôi là Michael."},{korean:"저는 베트남 사람이에요.",romanized:"Jeoneun Beteunam saramieyo.",en:"I'm Vietnamese.",vi:"Tôi là người Việt."},{korean:"저는 학생입니다.",romanized:"Jeoneun haksaengimnida.",en:"I'm a student.",vi:"Tôi là học sinh."},{korean:"저는 스무 살이에요.",romanized:"Jeoneun seumu sarieyo.",en:"I'm 20.",vi:"Tôi 20 tuổi."},{korean:"하노이에서 왔어요.",romanized:"Hanoieseo wasseoyo.",en:"I'm from Hanoi.",vi:"Tôi từ Hà Nội."}],
     dialogue: [{speaker:"A",hangul:"이름이 뭐예요?",meaning:"Your name?"},{speaker:"B",hangul:"저는 투안입니다.",meaning:"I'm Tuan."},{speaker:"A",hangul:"어디에서 오셨어요?",meaning:"Where from?"},{speaker:"B",hangul:"베트남에서 왔어요.",meaning:"From Vietnam."}],
     exercises: [{type:"fill-blank",question:"'Tôi là học sinh': 저는 ___",answer:"학생입니다"},{type:"matching",pairs:[{hangul:"회사원",meaning:"nhân viên"},{hangul:"학생",meaning:"học sinh"}],instruction:"Ghép nghề"},{type:"translation",vietnamese:"Tôi từ Việt Nam.",hangul:"베트남에서 왔어요."}]
   },{
-    id: 10, title_vi: "Số đếm 1-10", title_en: "Numbers 1-10",
+    id: 10, level: "A1", title_vi: "Số đếm 1-10", title_en: "Numbers 1-10",
     intro_vi: "Số thuần Hàn dùng đếm đồ vật, tuổi, giờ. Số Hán-Hàn dùng cho ngày tháng, tiền.",
     vocabulary: [{hangul:"하나",meaning:"1"},{hangul:"둘",meaning:"2"},{hangul:"셋",meaning:"3"},{hangul:"넷",meaning:"4"},{hangul:"다섯",meaning:"5"},{hangul:"여섯",meaning:"6"},{hangul:"일곱",meaning:"7"},{hangul:"여덟",meaning:"8"},{hangul:"아홉",meaning:"9"},{hangul:"열",meaning:"10"}],
     sentences: [{korean:"사과 하나 주세요.",romanized:"Sagwa hana juseyo.",en:"One apple please.",vi:"Cho một quả táo."},{korean:"스물다섯 살이에요.",romanized:"Seumuldaseot sarieyo.",en:"I'm 25.",vi:"Tôi 25 tuổi."},{korean:"커피 두 잔 주세요.",romanized:"Keopi du jan juseyo.",en:"Two coffees.",vi:"Hai ly cà phê."},{korean:"책 세 권 있어요.",romanized:"Chaek se gwon isseoyo.",en:"I have 3 books.",vi:"Có 3 quyển sách."},{korean:"한 시에 만나요.",romanized:"Han sie mannayo.",en:"Meet at 1.",vi:"Gặp lúc 1 giờ."}],
     dialogue: [{speaker:"A",hangul:"몇 살이에요?",meaning:"How old?"},{speaker:"B",hangul:"스물셋 살이에요.",meaning:"23."},{speaker:"A",hangul:"커피 몇 잔?",meaning:"How many coffees?"},{speaker:"B",hangul:"두 잔 주세요.",meaning:"Two please."}],
     exercises: [{type:"fill-blank",question:"Số 5 thuần Hàn: ___",answer:"다섯"},{type:"matching",pairs:[{hangul:"하나",meaning:"1"},{hangul:"열",meaning:"10"}],instruction:"Ghép số"},{type:"translation",vietnamese:"Cho 3 quyển sách.",hangul:"책 세 권 주세요."}]
   },{
-    id: 11, title_vi: "Ngày trong tuần", title_en: "Days of the Week",
+    id: 11, level: "A1", title_vi: "Ngày trong tuần", title_en: "Days of the Week",
     intro_vi: "Tên ngày bắt đầu bằng thiên thể: 월(trăng), 화(lửa), 수(nước), 목(gỗ), 금(vàng), 토(đất), 일(mặt trời).",
     vocabulary: [{hangul:"월요일",meaning:"Thứ Hai"},{hangul:"화요일",meaning:"Thứ Ba"},{hangul:"수요일",meaning:"Thứ Tư"},{hangul:"목요일",meaning:"Thứ Năm"},{hangul:"금요일",meaning:"Thứ Sáu"},{hangul:"토요일",meaning:"Thứ Bảy"},{hangul:"일요일",meaning:"Chủ Nhật"},{hangul:"주말",meaning:"cuối tuần"},{hangul:"오늘",meaning:"hôm nay"},{hangul:"내일",meaning:"ngày mai"}],
     sentences: [{korean:"오늘은 월요일이에요.",romanized:"Oneureun woryoilieyo.",en:"Today is Monday.",vi:"Hôm nay thứ Hai."},{korean:"금요일에 영화 볼 거예요.",romanized:"Geumyoire bol geoyeyo.",en:"Watching a movie Friday.",vi:"Thứ Sáu xem phim."},{korean:"주말에 뭐 해요?",romanized:"Jumare mwo haeyo?",en:"What on weekend?",vi:"Cuối tuần làm gì?"},{korean:"내일 수요일이에요.",romanized:"Naeil suyoilieyo.",en:"Tomorrow is Wed.",vi:"Mai thứ Tư."},{korean:"일요일에 교회에 가요.",romanized:"Iryoire gyohoee gayo.",en:"Church on Sunday.",vi:"CN đi nhà thờ."}],
     dialogue: [{speaker:"A",hangul:"오늘 무슨 요일?",meaning:"What day?"},{speaker:"B",hangul:"금요일이에요!",meaning:"Friday!"},{speaker:"A",hangul:"주말에 뭐 해요?",meaning:"Weekend plans?"},{speaker:"B",hangul:"쇼핑 갈 거예요.",meaning:"Shopping."}],
     exercises: [{type:"fill-blank",question:"'Thứ Hai' là ___",answer:"월요일"},{type:"matching",pairs:[{hangul:"주말",meaning:"cuối tuần"},{hangul:"오늘",meaning:"hôm nay"}],instruction:"Ghép từ"},{type:"translation",vietnamese:"Hôm nay thứ Sáu.",hangul:"오늘은 금요일이에요."}]
   },{
-    id: 12, title_vi: "Động từ cơ bản", title_en: "Basic Verbs",
+    id: 12, level: "A1", title_vi: "Động từ cơ bản", title_en: "Basic Verbs",
     intro_vi: "Động từ kết thúc bằng -다 ở dạng từ điển. Bỏ -다 để chia.",
     vocabulary: [{hangul:"하다",meaning:"làm"},{hangul:"가다",meaning:"đi"},{hangul:"오다",meaning:"đến"},{hangul:"먹다",meaning:"ăn"},{hangul:"마시다",meaning:"uống"},{hangul:"보다",meaning:"xem"},{hangul:"듣다",meaning:"nghe"},{hangul:"읽다",meaning:"đọc"},{hangul:"쓰다",meaning:"viết"},{hangul:"자다",meaning:"ngủ"}],
     sentences: [{korean:"밥을 먹어요.",romanized:"Babeul meogeoyo.",en:"I eat rice.",vi:"Tôi ăn cơm."},{korean:"물을 마셔요.",romanized:"Mureul masyeoyo.",en:"I drink water.",vi:"Tôi uống nước."},{korean:"학교에 가요.",romanized:"Hakgyoe gayo.",en:"I go to school.",vi:"Tôi đi học."},{korean:"책을 읽어요.",romanized:"Chaekeul ilgeoyo.",en:"I read a book.",vi:"Tôi đọc sách."},{korean:"음악을 들어요.",romanized:"Eumageul deureoyo.",en:"I listen to music.",vi:"Tôi nghe nhạc."}],
     dialogue: [{speaker:"A",hangul:"뭐 해요?",meaning:"What doing?"},{speaker:"B",hangul:"책 읽어요.",meaning:"Reading."},{speaker:"A",hangul:"무슨 책?",meaning:"What book?"},{speaker:"B",hangul:"한국어 책.",meaning:"Korean book."}],
     exercises: [{type:"fill-blank",question:"'Tôi ăn cơm': 밥을 ___",answer:"먹어요"},{type:"matching",pairs:[{hangul:"마시다",meaning:"uống"},{hangul:"자다",meaning:"ngủ"}],instruction:"Ghép động từ"},{type:"translation",vietnamese:"Tôi đi học.",hangul:"학교에 가요."}]
   },{
-    id: 13, title_vi: "Chia thì hiện tại", title_en: "Present Tense",
+    id: 13, level: "A1", title_vi: "Chia thì hiện tại", title_en: "Present Tense",
     intro_vi: "Thêm -아요/-어요/-해요 vào gốc động từ. Quy tắc phụ thuộc nguyên âm cuối.",
     vocabulary: [{hangul:"가요",meaning:"đi"},{hangul:"와요",meaning:"đến"},{hangul:"먹어요",meaning:"ăn"},{hangul:"해요",meaning:"làm"},{hangul:"봐요",meaning:"xem"},{hangul:"들어요",meaning:"nghe"},{hangul:"읽어요",meaning:"đọc"},{hangul:"마셔요",meaning:"uống"},{hangul:"써요",meaning:"viết"},{hangul:"자요",meaning:"ngủ"}],
     sentences: [{korean:"매일 커피 마셔요.",romanized:"Maeil keopi masyeoyo.",en:"I drink coffee daily.",vi:"Ngày nào cũng uống cà phê."},{korean:"주말에 친구 만나요.",romanized:"Jumare chingu mannayo.",en:"Meet friends on weekends.",vi:"Cuối tuần gặp bạn."},{korean:"한국어 공부해요.",romanized:"Hangukeo gongbuhaeyo.",en:"I study Korean.",vi:"Tôi học tiếng Hàn."},{korean:"TV 봐요.",romanized:"TV bwayo.",en:"I watch TV.",vi:"Tôi xem TV."},{korean:"일찍 자요.",romanized:"Iljjik jayo.",en:"I sleep early.",vi:"Tôi ngủ sớm."}],
     dialogue: [{speaker:"A",hangul:"취미가 뭐예요?",meaning:"Hobby?"},{speaker:"B",hangul:"한국어 공부해요.",meaning:"Studying Korean."},{speaker:"A",hangul:"매일 해요?",meaning:"Every day?"},{speaker:"B",hangul:"네, 한 시간씩.",meaning:"Yes, 1 hour."}],
     exercises: [{type:"fill-blank",question:"'Tôi học tiếng Hàn': 한국어 ___",answer:"공부해요"},{type:"matching",pairs:[{hangul:"가요",meaning:"đi"},{hangul:"먹어요",meaning:"ăn"}],instruction:"Ghép dạng chia"},{type:"translation",vietnamese:"Tôi xem TV.",hangul:"TV 봐요."}]
   },{
-    id: 14, title_vi: "Tiểu từ 은/는 và 이/가", title_en: "Topic & Subject Particles",
+    id: 14, level: "A1", title_vi: "Tiểu từ 은/는 và 이/가", title_en: "Topic & Subject Particles",
     intro_vi: "은/는 = chủ đề câu. 이/가 = chủ ngữ. Sự khác biệt quan trọng trong tiếng Hàn.",
     vocabulary: [{hangul:"은/는",meaning:"tiểu từ chủ đề"},{hangul:"이/가",meaning:"tiểu từ chủ ngữ"},{hangul:"저는",meaning:"tôi (chủ đề)"},{hangul:"제가",meaning:"tôi (chủ ngữ)"},{hangul:"이것은",meaning:"cái này (CĐ)"},{hangul:"이것이",meaning:"cái này (CN)"},{hangul:"날씨가",meaning:"thời tiết (CN)"},{hangul:"한국어는",meaning:"tiếng Hàn (CĐ)"},{hangul:"오늘은",meaning:"hôm nay (CĐ)"},{hangul:"친구가",meaning:"bạn (CN)"}],
     sentences: [{korean:"저는 학생이에요.",romanized:"Jeoneun haksaengieyo.",en:"I'm a student.",vi:"Tôi là học sinh."},{korean:"날씨가 좋아요.",romanized:"Nalssiga joayo.",en:"The weather is good.",vi:"Thời tiết đẹp."},{korean:"오늘은 금요일이에요.",romanized:"Oneureun geumyoilieyo.",en:"Today is Friday.",vi:"Hôm nay thứ Sáu."},{korean:"친구가 왔어요.",romanized:"Chinguga wasseoyo.",en:"A friend came.",vi:"Bạn đến."},{korean:"한국어는 재미있어요.",romanized:"Hangukeoneun jaemiisseoyo.",en:"Korean is fun.",vi:"Tiếng Hàn thú vị."}],
     dialogue: [{speaker:"A",hangul:"오늘 날씨 어때요?",meaning:"Weather today?"},{speaker:"B",hangul:"날씨가 정말 좋아요.",meaning:"Really nice."},{speaker:"A",hangul:"공원에 갈까요?",meaning:"Park?"},{speaker:"B",hangul:"네, 좋아요!",meaning:"Yes!"}],
     exercises: [{type:"fill-blank",question:"저___ 학생이에요.",answer:"는"},{type:"matching",pairs:[{hangul:"날씨가 좋아요",meaning:"Đẹp trời"},{hangul:"한국어는 재미있어요",meaning:"Tiếng Hàn thú vị"}],instruction:"Ghép câu"},{type:"translation",vietnamese:"Hôm nay đẹp trời.",hangul:"오늘은 날씨가 좋아요."}]
   },{
-    id: 15, title_vi: "Tính từ thông dụng", title_en: "Common Adjectives",
+    id: 15, level: "A1", title_vi: "Tính từ thông dụng", title_en: "Common Adjectives",
     intro_vi: "Tính từ chia như động từ. 크다 → 커요 (lớn, hiện tại).",
     vocabulary: [{hangul:"크다",meaning:"to/lớn"},{hangul:"작다",meaning:"nhỏ"},{hangul:"좋다",meaning:"tốt/thích"},{hangul:"나쁘다",meaning:"xấu/tệ"},{hangul:"맛있다",meaning:"ngon"},{hangul:"맛없다",meaning:"dở"},{hangul:"예쁘다",meaning:"đẹp"},{hangul:"길다",meaning:"dài"},{hangul:"짧다",meaning:"ngắn"},{hangul:"빠르다",meaning:"nhanh"}],
     sentences: [{korean:"이 집은 커요.",romanized:"I jibeun keoyo.",en:"This house is big.",vi:"Nhà này to."},{korean:"김치가 맛있어요.",romanized:"Gimchiga masisseoyo.",en:"Kimchi is delicious.",vi:"Kimchi ngon."},{korean:"그 옷이 예뻐요.",romanized:"Geu osi yeppeoyo.",en:"Those clothes are pretty.",vi:"Áo đó đẹp."},{korean:"오늘 기분 좋아요.",romanized:"Oneul gibun joayo.",en:"I feel good.",vi:"Tâm trạng tốt."},{korean:"이 길은 짧아요.",romanized:"I gireun jjalbayo.",en:"This road is short.",vi:"Đường này ngắn."}],
     dialogue: [{speaker:"A",hangul:"이 음식 어때요?",meaning:"How's the food?"},{speaker:"B",hangul:"정말 맛있어요!",meaning:"Delicious!"},{speaker:"A",hangul:"다행이에요. 더 드세요!",meaning:"Glad! Eat more!"},{speaker:"B",hangul:"감사합니다!",meaning:"Thanks!"}],
     exercises: [{type:"fill-blank",question:"'Kimchi ngon': 김치가 ___",answer:"맛있어요"},{type:"matching",pairs:[{hangul:"예쁘다",meaning:"đẹp"},{hangul:"빠르다",meaning:"nhanh"}],instruction:"Ghép tính từ"},{type:"translation",vietnamese:"Nhà đó rất to.",hangul:"그 집은 아주 커요."}]
   },{
-    id: 16, title_vi: "Từ chỉ vị trí", title_en: "Location Words",
+    id: 16, level: "A2", title_vi: "Từ chỉ vị trí", title_en: "Location Words",
     intro_vi: "여기(đây), 거기(đó), 저기(kia) phân biệt theo khoảng cách.",
     vocabulary: [{hangul:"여기",meaning:"đây"},{hangul:"거기",meaning:"đó"},{hangul:"저기",meaning:"kia"},{hangul:"어디",meaning:"đâu"},{hangul:"앞",meaning:"trước"},{hangul:"뒤",meaning:"sau"},{hangul:"왼쪽",meaning:"trái"},{hangul:"오른쪽",meaning:"phải"},{hangul:"위",meaning:"trên"},{hangul:"아래",meaning:"dưới"}],
     sentences: [{korean:"여기 앉으세요.",romanized:"Yeogi anjeuseyo.",en:"Sit here.",vi:"Ngồi đây."},{korean:"은행이 저기에 있어요.",romanized:"Eunhaengi jeogie isseoyo.",en:"Bank over there.",vi:"Ngân hàng đằng kia."},{korean:"학교는 왼쪽에 있어요.",romanized:"Hakgyoneun oenjjoge isseoyo.",en:"School on the left.",vi:"Trường bên trái."},{korean:"책상 위에 있어요.",romanized:"Chaeksang wie isseoyo.",en:"On the desk.",vi:"Trên bàn."},{korean:"화장실이 어디예요?",romanized:"Hwajangsiri eodieyo?",en:"Where's bathroom?",vi:"WC ở đâu?"}],
     dialogue: [{speaker:"A",hangul:"화장실 어디예요?",meaning:"Bathroom?"},{speaker:"B",hangul:"저기 오른쪽.",meaning:"Over there, right."},{speaker:"A",hangul:"감사합니다!",meaning:"Thanks!"},{speaker:"B",hangul:"네, 천천히.",meaning:"Take your time."}],
     exercises: [{type:"fill-blank",question:"'WC ở đâu?': 화장실이 ___?",answer:"어디예요"},{type:"matching",pairs:[{hangul:"여기",meaning:"đây"},{hangul:"저기",meaning:"kia"}],instruction:"Ghép vị trí"},{type:"translation",vietnamese:"Ngân hàng đằng kia.",hangul:"은행이 저기에 있어요."}]
   },{
-    id: 17, title_vi: "Từ để hỏi", title_en: "Question Words",
+    id: 17, level: "A2", title_vi: "Từ để hỏi", title_en: "Question Words",
     intro_vi: "뭐(cái gì), 누구(ai), 언제(khi nào), 어디(đâu), 왜(sao), 어떻게(thế nào).",
     vocabulary: [{hangul:"뭐/무엇",meaning:"cái gì"},{hangul:"누구",meaning:"ai"},{hangul:"언제",meaning:"khi nào"},{hangul:"어디",meaning:"ở đâu"},{hangul:"왜",meaning:"tại sao"},{hangul:"어떻게",meaning:"như thế nào"},{hangul:"얼마",meaning:"bao nhiêu"},{hangul:"몇",meaning:"mấy"},{hangul:"어떤",meaning:"loại nào"},{hangul:"무슨",meaning:"gì (+danh từ)"}],
     sentences: [{korean:"이름이 뭐예요?",romanized:"Ireumi mwoyeyo?",en:"Your name?",vi:"Tên bạn?"},{korean:"언제 한국에 왔어요?",romanized:"Eonje hanguge wasseoyo?",en:"When to Korea?",vi:"Đến Hàn khi nào?"},{korean:"왜 한국어 배워요?",romanized:"Wae hangukeo baewoyo?",en:"Why learn Korean?",vi:"Sao học tiếng Hàn?"},{korean:"이거 얼마예요?",romanized:"Igeo eolmayeyo?",en:"How much?",vi:"Bao nhiêu?"},{korean:"어떻게 가요?",romanized:"Eotteoke gayo?",en:"How to go?",vi:"Đi thế nào?"}],
     dialogue: [{speaker:"A",hangul:"한국어 왜 배워요?",meaning:"Why Korean?"},{speaker:"B",hangul:"드라마 좋아해서요.",meaning:"Love dramas."},{speaker:"A",hangul:"어떤 드라마?",meaning:"Which dramas?"},{speaker:"B",hangul:"로맨스 드라마!",meaning:"Romance!"}],
     exercises: [{type:"fill-blank",question:"'Tên bạn?': 이름이 ___?",answer:"뭐예요"},{type:"matching",pairs:[{hangul:"언제",meaning:"khi nào"},{hangul:"왜",meaning:"tại sao"}],instruction:"Ghép từ hỏi"},{type:"translation",vietnamese:"Bao nhiêu tiền?",hangul:"얼마예요?"}]
   },{
-    id: 18, title_vi: "Câu phủ định", title_en: "Negative Sentences",
+    id: 18, level: "A2", title_vi: "Câu phủ định", title_en: "Negative Sentences",
     intro_vi: "안 + động từ = không. 못 = không thể. 있다 → 없다 (không có).",
     vocabulary: [{hangul:"안",meaning:"không"},{hangul:"못",meaning:"không thể"},{hangul:"없다",meaning:"không có"},{hangul:"안 가요",meaning:"không đi"},{hangul:"안 먹어요",meaning:"không ăn"},{hangul:"안 해요",meaning:"không làm"},{hangul:"못 가요",meaning:"không thể đi"},{hangul:"못 먹어요",meaning:"không thể ăn"},{hangul:"없어요",meaning:"không có"},{hangul:"아니에요",meaning:"không phải"}],
     sentences: [{korean:"고기를 안 먹어요.",romanized:"Gogireul an meogeoyo.",en:"I don't eat meat.",vi:"Tôi không ăn thịt."},{korean:"오늘 학교에 못 가요.",romanized:"Oneul hakgyoe mot gayo.",en:"Can't go to school.",vi:"Không thể đi học."},{korean:"시간이 없어요.",romanized:"Sigani eopseoyo.",en:"No time.",vi:"Không có thời gian."},{korean:"그건 아니에요.",romanized:"Geugeon anieyo.",en:"That's not it.",vi:"Không phải."},{korean:"커피 안 마셔요.",romanized:"Keopi an masyeoyo.",en:"I don't drink coffee.",vi:"Không uống cà phê."}],
     dialogue: [{speaker:"A",hangul:"고기 드세요?",meaning:"Eat meat?"},{speaker:"B",hangul:"아니요, 안 먹어요.",meaning:"No, I don't."},{speaker:"A",hangul:"왜요?",meaning:"Why?"},{speaker:"B",hangul:"채식주의자예요.",meaning:"Vegetarian."}],
     exercises: [{type:"fill-blank",question:"'Không ăn thịt': 고기를 ___ 먹어요.",answer:"안"},{type:"matching",pairs:[{hangul:"못 가요",meaning:"không thể đi"},{hangul:"없어요",meaning:"không có"}],instruction:"Ghép phủ định"},{type:"translation",vietnamese:"Không có thời gian.",hangul:"시간이 없어요."}]
   },{
-    id: 19, title_vi: "Thì quá khứ", title_en: "Past Tense",
+    id: 19, level: "A2", title_vi: "Thì quá khứ", title_en: "Past Tense",
     intro_vi: "Thêm -았/었/했어요 vào gốc động từ. Quy tắc phụ thuộc nguyên âm cuối.",
     vocabulary: [{hangul:"갔어요",meaning:"đã đi"},{hangul:"먹었어요",meaning:"đã ăn"},{hangul:"했어요",meaning:"đã làm"},{hangul:"봤어요",meaning:"đã xem"},{hangul:"왔어요",meaning:"đã đến"},{hangul:"좋았어요",meaning:"đã tốt"},{hangul:"읽었어요",meaning:"đã đọc"},{hangul:"들었어요",meaning:"đã nghe"},{hangul:"만났어요",meaning:"đã gặp"},{hangul:"샀어요",meaning:"đã mua"}],
     sentences: [{korean:"어제 영화 봤어요.",romanized:"Eoje yeonghwa bwasseoyo.",en:"Watched movie yesterday.",vi:"Hôm qua xem phim."},{korean:"지난 주에 한국에 갔어요.",romanized:"Jinan ju hanguge gasseoyo.",en:"Went to Korea last week.",vi:"Tuần trước đi Hàn."},{korean:"아침에 밥 먹었어요.",romanized:"Achime bap meogeosseoyo.",en:"Ate rice morning.",vi:"Sáng ăn cơm."},{korean:"어제 친구 만났어요.",romanized:"Eoje chingu mannasseoyo.",en:"Met friend yesterday.",vi:"Hôm qua gặp bạn."},{korean:"새 폰 샀어요.",romanized:"Sae pon sasseoyo.",en:"Bought new phone.",vi:"Mua điện thoại mới."}],
     dialogue: [{speaker:"A",hangul:"주말에 뭐 했어요?",meaning:"Weekend?"},{speaker:"B",hangul:"영화 봤어요.",meaning:"Watched movie."},{speaker:"A",hangul:"재미있었어요?",meaning:"Fun?"},{speaker:"B",hangul:"네, 아주!",meaning:"Yes, very!"}],
     exercises: [{type:"fill-blank",question:"'Đã xem phim': 영화 ___",answer:"봤어요"},{type:"matching",pairs:[{hangul:"갔어요",meaning:"đã đi"},{hangul:"먹었어요",meaning:"đã ăn"}],instruction:"Ghép quá khứ"},{type:"translation",vietnamese:"Hôm qua gặp bạn.",hangul:"어제 친구 만났어요."}]
   },{
-    id: 20, title_vi: "Kính ngữ với -시-", title_en: "Honorifics",
+    id: 20, level: "A2", title_vi: "Kính ngữ với -시-", title_en: "Honorifics",
     intro_vi: "Chèn -시- vào sau gốc động từ để tôn trọng chủ ngữ. Rất quan trọng trong văn hóa Hàn.",
     vocabulary: [{hangul:"가세요",meaning:"đi (kính)"},{hangul:"하세요",meaning:"làm (kính)"},{hangul:"계세요",meaning:"ở (kính)"},{hangul:"드세요",meaning:"ăn (kính)"},{hangul:"주무세요",meaning:"ngủ (kính)"},{hangul:"보세요",meaning:"xem (kính)"},{hangul:"읽으세요",meaning:"đọc (kính)"},{hangul:"말씀하세요",meaning:"nói (kính)"},{hangul:"선생님",meaning:"thầy/cô"},{hangul:"분",meaning:"người (kính)"}],
     sentences: [{korean:"선생님이 오셨어요.",romanized:"Seonsaengnimi osyeosseoyo.",en:"Teacher came.",vi:"Thầy đến."},{korean:"어머니가 집에 계세요.",romanized:"Eomeoniga jibe gyeseyo.",en:"Mother is home.",vi:"Mẹ ở nhà."},{korean:"할아버지가 신문 읽으세요.",romanized:"Harabeojiga sinmun ilgeuseyo.",en:"Grandpa reads paper.",vi:"Ông đọc báo."},{korean:"사장님이 말씀하세요.",romanized:"Sajangnimi malsseumhaseyo.",en:"Boss speaks.",vi:"Giám đốc nói."},{korean:"진지 드세요.",romanized:"Jinji deuseyo.",en:"Please eat (honorific).",vi:"Mời dùng bữa."}],
@@ -198,6 +201,7 @@ export const lessons: KoreanLesson[] = [
 ,
   {
     id: 21,
+level: "A2",
     title_vi: "Gọi điện thoại",
     title_en: "Making Phone Calls",
     intro_vi: "Học cách diễn đạt khi gọi điện thoại bằng tiếng Hàn. Dùng 여보세요 để chào khi nghe điện.",
@@ -229,6 +233,7 @@ export const lessons: KoreanLesson[] = [
   },
   {
     id: 22,
+level: "A2",
     title_vi: "Viết email",
     title_en: "Writing Emails",
     intro_vi: "Học các cách diễn đạt email trang trọng và thân mật. Dùng 안녕하세요 để chào và 감사합니다 để cảm ơn.",
@@ -260,6 +265,7 @@ export const lessons: KoreanLesson[] = [
   },
   {
     id: 23,
+level: "A2",
     title_vi: "Ở ngân hàng",
     title_en: "At the Bank",
     intro_vi: "Các câu hữu ích cho giao dịch ngân hàng. Dùng 통장 cho sổ ngân hàng và 계좌 cho tài khoản.",
@@ -291,6 +297,7 @@ export const lessons: KoreanLesson[] = [
   },
   {
     id: 24,
+level: "A2",
     title_vi: "Ở bưu điện",
     title_en: "At the Post Office",
     intro_vi: "Câu thông dụng để gửi thư và bưu kiện. Dùng 우표 cho tem và 소포 cho bưu kiện.",
@@ -322,6 +329,7 @@ export const lessons: KoreanLesson[] = [
   },
   {
     id: 25,
+level: "A2",
     title_vi: "Thuê căn hộ",
     title_en: "Renting an Apartment",
     intro_vi: "Từ vựng thuê căn hộ. Dùng 보증금 cho tiền đặt cọc và 월세 cho tiền thuê hàng tháng.",
@@ -353,6 +361,7 @@ export const lessons: KoreanLesson[] = [
   },
   {
     id: 26,
+level: "A2",
     title_vi: "Khiếu nại và trả hàng",
     title_en: "Complaints and Returns",
     intro_vi: "Cách diễn đạt khiếu nại và trả hàng. Dùng 불만 cho khiếu nại và 반품 cho trả hàng.",
@@ -384,6 +393,7 @@ export const lessons: KoreanLesson[] = [
   },
   {
     id: 27,
+level: "A2",
     title_vi: "Chỉ đường chi tiết",
     title_en: "Giving Detailed Directions",
     intro_vi: "Dùng từ chỉ phương hướng như 직진 đi thẳng, 왼쪽 trái, 오른쪽 phải.",
@@ -415,6 +425,7 @@ export const lessons: KoreanLesson[] = [
   },
   {
     id: 28,
+level: "A2",
     title_vi: "Thảo luận tin tức",
     title_en: "Discussing News",
     intro_vi: "Dùng 뉴스 cho tin tức và 토론 cho thảo luận. Học cách nêu ý kiến về sự kiện thời sự.",
@@ -446,6 +457,7 @@ export const lessons: KoreanLesson[] = [
   },
   {
     id: 29,
+level: "A2",
     title_vi: "Khác biệt văn hóa",
     title_en: "Cultural Differences",
     intro_vi: "Thảo luận chuẩn mực và sự khác biệt văn hóa. Dùng 문화 cho văn hóa và 차이 cho khác biệt.",
@@ -477,6 +489,7 @@ export const lessons: KoreanLesson[] = [
   },
   {
     id: 30,
+level: "A2",
     title_vi: "Phỏng vấn xin việc",
     title_en: "Job Interviews",
     intro_vi: "Câu quan trọng khi phỏng vấn xin việc. Dùng 자기소개 cho tự giới thiệu và 지원하다 cho ứng tuyển.",
@@ -508,6 +521,7 @@ export const lessons: KoreanLesson[] = [
   },
   {
     id: 31,
+level: "B1",
     title_vi: "Họp công việc",
     title_en: "Business Meetings",
     intro_vi: "Cách diễn đạt trong họp trang trọng. Dùng 회의 cho cuộc họp và 의견을 내다 để nêu ý kiến.",
@@ -539,6 +553,7 @@ export const lessons: KoreanLesson[] = [
   },
   {
     id: 32,
+level: "B1",
     title_vi: "Thuyết trình",
     title_en: "Giving Presentations",
     intro_vi: "Cách diễn đạt khi thuyết trình. Dùng 발표 cho thuyết trình và 자료 cho tài liệu.",
@@ -570,6 +585,7 @@ export const lessons: KoreanLesson[] = [
   },
   {
     id: 33,
+level: "B1",
     title_vi: "Đàm phán",
     title_en: "Negotiating",
     intro_vi: "Từ vựng đàm phán. Dùng 협상 cho đàm phán và 조건 cho điều kiện.",
@@ -601,6 +617,7 @@ export const lessons: KoreanLesson[] = [
   },
   {
     id: 34,
+level: "B1",
     title_vi: "Mạng xã hội",
     title_en: "Social Media",
     intro_vi: "Thuật ngữ mạng xã hội. Dùng 소셜 미디어 cho mạng xã hội và 팔로우 cho theo dõi.",
@@ -632,6 +649,7 @@ export const lessons: KoreanLesson[] = [
   },
   {
     id: 35,
+level: "B1",
     title_vi: "Vấn đề môi trường",
     title_en: "Environmental Issues",
     intro_vi: "Từ vựng môi trường. Dùng 환경 cho môi trường và 문제 cho vấn đề.",
@@ -663,6 +681,7 @@ export const lessons: KoreanLesson[] = [
   },
   {
     id: 36,
+level: "B1",
     title_vi: "Bày tỏ ý kiến",
     title_en: "Expressing Opinions",
     intro_vi: "Dùng 의견 cho ý kiến và 표현 cho cách diễn đạt. Học cách nêu và bảo vệ quan điểm.",
@@ -694,6 +713,7 @@ export const lessons: KoreanLesson[] = [
   },
   {
     id: 37,
+level: "B1",
     title_vi: "Đưa ra gợi ý",
     title_en: "Making Suggestions",
     intro_vi: "Dùng 제안 cho gợi ý. Dùng -는 게 어때요? để gợi ý.",
@@ -725,6 +745,7 @@ export const lessons: KoreanLesson[] = [
   },
   {
     id: 38,
+level: "B1",
     title_vi: "Xin lỗi và biện hộ",
     title_en: "Apologizing and Making Excuses",
     intro_vi: "Dùng 사과 cho xin lỗi và 변명 cho biện hộ. Học các cách xin lỗi lịch sự.",
@@ -756,6 +777,7 @@ export const lessons: KoreanLesson[] = [
   },
   {
     id: 39,
+level: "B1",
     title_vi: "Đưa ra lời khuyên",
     title_en: "Giving Advice",
     intro_vi: "Dùng 조언 cho lời khuyên. Dùng -는 것이 좋다 để khuyên nhủ.",
@@ -787,6 +809,7 @@ export const lessons: KoreanLesson[] = [
   },
   {
     id: 40,
+level: "B1",
     title_vi: "Kể trải nghiệm",
     title_en: "Describing Experiences",
     intro_vi: "Dùng 경험 cho trải nghiệm. Dùng -아/어 보다 cho việc đã từng làm.",
@@ -818,6 +841,7 @@ export const lessons: KoreanLesson[] = [
   },
   {
     id: 41,
+level: "B1",
     title_vi: "So sánh các lựa chọn",
     title_en: "Comparing Options",
     intro_vi: "Dùng 비교 cho so sánh. Dùng -보다 더 cho 'hơn'.",
@@ -849,6 +873,7 @@ export const lessons: KoreanLesson[] = [
   },
   {
     id: 42,
+level: "B1",
     title_vi: "Tình huống giả định",
     title_en: "Hypothetical Situations",
     intro_vi: "Dùng 가상 cho giả định. Dùng -면 -을 텐데 cho giả định có điều kiện.",
@@ -880,6 +905,7 @@ export const lessons: KoreanLesson[] = [
   },
   {
     id: 43,
+level: "B1",
     title_vi: "Tường thuật lời nói",
     title_en: "Reporting Speech",
     intro_vi: "Dùng 전달 화법 cho lời nói tường thuật. Học các mẫu -다고 하다 và -라고 하다.",
@@ -911,6 +937,7 @@ export const lessons: KoreanLesson[] = [
   },
   {
     id: 44,
+level: "B1",
     title_vi: "Câu bị động",
     title_en: "Passive Voice",
     intro_vi: "Dùng 수동태 cho câu bị động. Học các đuôi bị động như -이/히/리/기-.",
@@ -942,6 +969,7 @@ export const lessons: KoreanLesson[] = [
   },
   {
     id: 45,
+level: "B1",
     title_vi: "Mệnh đề quan hệ",
     title_en: "Relative Clauses",
     intro_vi: "Dùng 관형사절 cho mệnh đề quan hệ. Học -는, -은, -을 để bổ nghĩa danh từ.",
@@ -973,6 +1001,7 @@ export const lessons: KoreanLesson[] = [
   },
   {
     id: 46,
+level: "B2",
     title_vi: "Câu điều kiện",
     title_en: "Conditional Sentences",
     intro_vi: "Dùng 조건문 cho câu điều kiện. Học các mẫu -면 và -으면.",
@@ -1004,6 +1033,7 @@ export const lessons: KoreanLesson[] = [
   },
   {
     id: 47,
+level: "B2",
     title_vi: "Thành ngữ",
     title_en: "Idiomatic Expressions",
     intro_vi: "Dùng 관용 표현 cho thành ngữ. Học các thành ngữ Hàn Quốc thông dụng.",
@@ -1035,6 +1065,7 @@ export const lessons: KoreanLesson[] = [
   },
   {
     id: 48,
+level: "B2",
     title_vi: "Tiếng lóng và khẩu ngữ",
     title_en: "Slang and Colloquial",
     intro_vi: "Học tiếng lóng và khẩu ngữ Hàn Quốc. Dùng 속어 cho tiếng lóng và 구어체 cho khẩu ngữ.",
@@ -1066,6 +1097,7 @@ export const lessons: KoreanLesson[] = [
   },
   {
     id: 49,
+level: "B2",
     title_vi: "Kỹ năng tranh luận",
     title_en: "Debating Skills",
     intro_vi: "Dùng 토론 cho tranh luận. Học cách lập luận thuyết phục và phản bác.",
@@ -1097,6 +1129,7 @@ export const lessons: KoreanLesson[] = [
   },
   {
     id: 50,
+level: "B2",
     title_vi: "Ôn tập tổng hợp cuối khóa",
     title_en: "Final Comprehensive Review",
     intro_vi: "Ôn tập toàn bộ ngữ pháp và từ vựng từ bài 21-49. Luyện tập kỹ năng tổng hợp.",
