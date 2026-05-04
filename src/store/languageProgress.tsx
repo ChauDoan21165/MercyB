@@ -1,3 +1,28 @@
+// src/store/languageProgress.tsx
+//
+// Progress tracking for the 5 bonus language modules (French, German,
+// Japanese, Chinese, Korean). The full system is wired up — localStorage
+// persistence, validation, cross-tab sync, the CompletedMap data
+// structure — but no UI calls toggleLesson or isLessonCompleted yet, so
+// in production every progress bar reads 0/50.
+//
+// Two things to know before wiring up a "Mark complete" button:
+//
+//   1. toggleLesson(lang, lessonId: number) requires numeric IDs.
+//      Chinese/Japanese/Korean lessons use numeric ids (1..50). French
+//      and German use string ids (e.g. "french_greetings_intro"). Adding
+//      the button to French/German pages without first deciding how to
+//      map string ids to the 1..50 range will silently fail.
+//
+//   2. The progress is not synced to a backend — it's localStorage only.
+//      A user who clears storage or switches devices loses their progress.
+//      Fine for v1; replace with Supabase row-per-user-per-language when
+//      account-tied progress matters.
+//
+// Until the UI button ships, getCompletedCount and getProgressPercent
+// will always return 0 / 0%, and the progress bars in LanguageSwitcher
+// will show empty.
+
 import {
   createContext,
   useContext,
