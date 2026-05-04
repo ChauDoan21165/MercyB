@@ -181,11 +181,15 @@ function LessonTile({ lesson }: LessonTileProps) {
                 Hội thoại
               </p>
               <div className="mt-2 space-y-2">
-                {lesson.dialogue.map((d, di) => (
+                {lesson.dialogue.map((d: any, di: number) => (
                   <div key={di} className="text-xs">
                     <span className="font-bold text-purple-700">{d.speaker}:</span>
                     <span className="text-slate-700"> {d.text}</span>
-                    <span className="block text-[10px] text-slate-400 ml-4">{d.en}</span>
+                    {(d.vi || d.en) && (
+                      <span className="block text-[10px] text-slate-400 ml-4">
+                        {d.vi ?? d.en}
+                      </span>
+                    )}
                   </div>
                 ))}
               </div>
@@ -199,15 +203,67 @@ function LessonTile({ lesson }: LessonTileProps) {
                 Bài tập
               </p>
               <ol className="mt-2 space-y-2">
-                {lesson.exercises.map((ex, ei) => (
-                  <li key={ei} className="text-xs text-slate-700">
-                    <span className="font-semibold">{ei + 1}. {ex.type === "fill-blank" ? "Điền vào chỗ trống" : ex.type === "matching" ? "Nối" : "Dịch"}:</span>
-                    <span> {ex.question || ex.vietnamese || ex.instruction || ""}</span>
-                    {ex.answer && <span className="block text-[10px] text-green-600 mt-0.5">→ {ex.answer}</span>}
-                    {ex.french && <span className="block text-[10px] text-green-600 mt-0.5">→ {ex.french}</span>}
-                    {ex.pairs && <span className="block text-[10px] text-green-600 mt-0.5">→ {ex.pairs.map((p: string[]) => p.join(" - ")).join(", ")}</span>}
-                  </li>
-                ))}
+                {lesson.exercises.map((ex: any, ei: number) => {
+                  // Normalize exercise type: lessons 1-20 use "fill_blank" (underscore),
+                  // lessons 21-50 use "fill-blank" (hyphen). Treat both the same.
+                  const exType = (ex.type || "").replace("_", "-");
+                  const labelVi =
+                    exType === "fill-blank" ? "Điền vào chỗ trống" :
+                    exType === "matching" ? "Nối" :
+                    exType === "translation" ? "Dịch" :
+                    "Bài tập";
+
+                  // Lessons 1-20 shape: { instruction_vi, items: [{ prompt, answer, options? }] }
+                  if (Array.isArray(ex.items)) {
+                    return (
+                      <li key={ei} className="text-xs text-slate-700">
+                        <div className="font-semibold">
+                          {ei + 1}. {labelVi}
+                        </div>
+                        {ex.instruction_vi && (
+                          <div className="text-slate-600 mt-0.5">{ex.instruction_vi}</div>
+                        )}
+                        <ul className="mt-1 ml-3 space-y-1 list-disc list-inside">
+                          {ex.items.map((it: any, ii: number) => (
+                            <li key={ii}>
+                              <span className="text-slate-700">{it.prompt}</span>
+                              {it.answer && (
+                                <span className="text-[10px] text-green-600 ml-1">
+                                  → {it.answer}
+                                </span>
+                              )}
+                            </li>
+                          ))}
+                        </ul>
+                      </li>
+                    );
+                  }
+
+                  // Lessons 21-50 shape: flat fields (question, vietnamese, instruction, etc.)
+                  return (
+                    <li key={ei} className="text-xs text-slate-700">
+                      <span className="font-semibold">
+                        {ei + 1}. {labelVi}:
+                      </span>
+                      <span> {ex.question || ex.vietnamese || ex.instruction || ""}</span>
+                      {ex.answer && (
+                        <span className="block text-[10px] text-green-600 mt-0.5">
+                          → {ex.answer}
+                        </span>
+                      )}
+                      {ex.french && (
+                        <span className="block text-[10px] text-green-600 mt-0.5">
+                          → {ex.french}
+                        </span>
+                      )}
+                      {ex.pairs && (
+                        <span className="block text-[10px] text-green-600 mt-0.5">
+                          → {ex.pairs.map((p: string[]) => p.join(" - ")).join(", ")}
+                        </span>
+                      )}
+                    </li>
+                  );
+                })}
               </ol>
             </div>
           )}
