@@ -408,7 +408,11 @@ function AppHeroShell() {
 
   const shell: React.CSSProperties = {
     minHeight: "100vh", width: "100%", position: "relative",
-    zIndex: 999999, pointerEvents: "auto",
+    // No zIndex — removing the stacking-context promotion lets shadcn
+    // dialogs/toasts/popovers (z-50, z-100, portaled to body) layer
+    // correctly above page content. The sticky band keeps its own
+    // zIndex below to protect the navigation strip from page overlays.
+    pointerEvents: "auto",
     overflowX: "hidden",
   };
 
