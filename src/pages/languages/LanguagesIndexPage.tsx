@@ -1,7 +1,7 @@
 // src/pages/languages/LanguagesIndexPage.tsx — /languages
 //
 // Index page for language learning verticals. Lists available
-// languages (French, German) with links to their lesson pages.
+// languages with links to their lesson pages.
 // Pattern mirrors ProfessionsIndexPage.
 
 import React from "react";
@@ -23,7 +23,7 @@ type Card = {
   flag: string;
   blurb_vi: string;
   href: string;
-  accent: "blue" | "red";
+  accent: "blue" | "red" | "crimson" | "amber" | "violet";
 };
 
 const CARDS: Card[] = [
@@ -47,6 +47,36 @@ const CARDS: Card[] = [
     href: "/languages/german",
     accent: "red",
   },
+  {
+    slug: "chinese",
+    title_vi: "Tiếng Trung",
+    title_en: "Chinese",
+    flag: "🇨🇳",
+    blurb_vi:
+      "50 bài: bính âm, chữ Hán cơ bản, câu giao tiếp, ngữ pháp, văn hoá Trung Quốc — chia theo ba cấp độ.",
+    href: "/languages/chinese",
+    accent: "crimson",
+  },
+  {
+    slug: "japanese",
+    title_vi: "Tiếng Nhật",
+    title_en: "Japanese",
+    flag: "🇯🇵",
+    blurb_vi:
+      "50 bài: hiragana, katakana, mẫu câu cơ bản, kính ngữ, văn hoá Nhật — chia theo ba cấp độ.",
+    href: "/languages/japanese",
+    accent: "amber",
+  },
+  {
+    slug: "korean",
+    title_vi: "Tiếng Hàn",
+    title_en: "Korean",
+    flag: "🇰🇷",
+    blurb_vi:
+      "50 bài: hangul, ngữ pháp nền tảng, câu giao tiếp, văn hoá Hàn Quốc — chia theo ba cấp độ.",
+    href: "/languages/korean",
+    accent: "violet",
+  },
 ];
 
 const ACCENT_CLASSES: Record<string, { border: string; bg: string; icon: string }> = {
@@ -59,6 +89,21 @@ const ACCENT_CLASSES: Record<string, { border: string; bg: string; icon: string 
     border: "border-red-200",
     bg: "bg-gradient-to-br from-red-50 via-rose-50 to-amber-50",
     icon: "text-red-600",
+  },
+  crimson: {
+    border: "border-red-300",
+    bg: "bg-gradient-to-br from-red-50 via-rose-50 to-pink-50",
+    icon: "text-red-700",
+  },
+  amber: {
+    border: "border-amber-200",
+    bg: "bg-gradient-to-br from-amber-50 via-yellow-50 to-orange-50",
+    icon: "text-amber-600",
+  },
+  violet: {
+    border: "border-violet-200",
+    bg: "bg-gradient-to-br from-violet-50 via-purple-50 to-fuchsia-50",
+    icon: "text-violet-600",
   },
 };
 
