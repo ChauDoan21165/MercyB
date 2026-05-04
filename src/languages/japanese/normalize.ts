@@ -1,0 +1,104 @@
+// src/languages/japanese/normalize.ts
+//
+// Converts JapaneseLesson → NormalizedLesson for the shared <LessonRenderer>.
+// Japanese uses 'examples' instead of 'sentences' on the lesson; this is
+// collapsed into NormalizedLesson.sentences.
+//
+// JapaneseLesson has only a single `title: string` field (no separate vi/en
+// in the data), so title.vi and title.en both fall back to lesson.title.
+// The renderer or page can choose to deduplicate when both halves match.
+//
+// Inline type definitions are duplicated here for now; PR-C will replace
+// them with imports from '@/components/languages/LessonRenderer.types'
+// once A1's canonical types file lands.
+
+import type { JapaneseLesson, JapaneseExercise } from "./lessons";
+
+// ────────────────────────────────────────────────────────────────────────
+// Inline contract — TODO(PR-C): replace with import from
+// '@/components/languages/LessonRenderer.types'
+// ────────────────────────────────────────────────────────────────────────
+
+type CefrLevel = "A1" | "A2" | "B1" | "B2" | "C1" | "C2";
+
+type NormalizedExercise =
+  | { kind: "fill-blank"; question: string; answer: string }
+  | { kind: "matching"; instruction?: string; pairs: Array<{ a: string; b: string }> }
+  | { kind: "translation"; vi: string; native: string; romanization?: string };
+
+type NormalizedLesson = {
+  id: number;
+  level: CefrLevel;
+  title: { vi: string; en: string; native?: string; romanization?: string };
+  intro?: string;
+  sentences: Array<{
+    native: string;
+    romanization?: string;
+    en?: string;
+    vi?: string;
+    pronunciationFocus?: string[];
+    note?: string;
+  }>;
+  vocabulary?: Array<{
+    native: string;
+    romanization?: string;
+    en?: string;
+    vi?: string;
+    phonetic?: string;
+  }>;
+  dialogue?: Array<{
+    speaker: string;
+    native: string;
+    romanization?: string;
+    en?: string;
+    vi?: string;
+  }>;
+  exercises?: NormalizedExercise[];
+  culturalNotesVi?: string;
+  tipAdviceVi?: string;
+  grammar?: Array<{ point: string; explanation: string }>;
+};
+
+// ────────────────────────────────────────────────────────────────────────
+
+export function normalizeJapaneseLesson(
+  lesson: JapaneseLesson,
+  id?: number,
+): NormalizedLesson {
+  return {
+    id: id ?? lesson.id,
+    level: lesson.level,
+    // Japanese data has only one `title` field; both halves fall back to it.
+    title: { vi: lesson.title, en: lesson.title },
+    sentences: lesson.examples.map((e) => ({
+      native: e.japanese,
+      en: e.english,
+    })),
+    vocabulary: lesson.vocabulary.map((v) => ({
+      native: v.japanese,
+      en: v.english,
+    })),
+    dialogue: lesson.dialogue?.map((d) => ({
+      speaker: d.speaker,
+      native: d.japanese,
+      en: d.english,
+    })),
+    exercises: lesson.exercises?.map(normalizeJapaneseExercise),
+    grammar: lesson.grammar,
+  };
+}
+
+function normalizeJapaneseExercise(ex: JapaneseExercise): NormalizedExercise {
+  switch (ex.type) {
+    case "fill-blank":
+      return { kind: "fill-blank", question: ex.question, answer: ex.answer };
+    case "matching":
+      return {
+        kind: "matching",
+        instruction: ex.instruction,
+        pairs: ex.pairs.map((p) => ({ a: p.japanese, b: p.english })),
+      };
+    case "translation":
+      return { kind: "translation", vi: ex.vietnamese, native: ex.japanese };
+  }
+}
