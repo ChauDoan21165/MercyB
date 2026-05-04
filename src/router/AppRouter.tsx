@@ -860,13 +860,7 @@ export default function AppRouter() {
           <Route path="/languages/german"
             element={<LazyPage><GermanLessonsPage /></LazyPage>}
           />
-          <Route path="/languages/chinese"
-            element={<LazyPage><LanguageLessonsPage /></LazyPage>}
-          />
-          <Route path="/languages/japanese"
-            element={<LazyPage><LanguageLessonsPage /></LazyPage>}
-          />
-          <Route path="/languages/korean"
+          <Route path="/languages/:lang"
             element={<LazyPage><LanguageLessonsPage /></LazyPage>}
           />
 

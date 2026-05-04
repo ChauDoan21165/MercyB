@@ -7,12 +7,12 @@
 - Main path: /Users/admin/mercyB
 
 ## Completed Features
-- ✅ English language module (5 lessons, 50 vocab)
-- ✅ French language module (5 lessons, 50 vocab)
-- ✅ German language module (5 lessons, 50 vocab)
-- ✅ Japanese language module (5 lessons, 50 vocab)
-- ✅ Chinese language module (5 lessons, 50 vocab)
-- ✅ Korean language module (5 lessons, 50 vocab)
+- ✅ English language module (50 vocab, integrated via English roadmap)
+- ✅ French language module (50 lessons)
+- ✅ German language module (50 lessons)
+- ✅ Japanese language module (50 lessons)
+- ✅ Chinese language module (50 lessons)
+- ✅ Korean language module (50 lessons)
 - ✅ LanguageSwitcher UI (2-column grid, European/Asian categories)
 - ✅ Language progress store (React Context, localStorage)
 - ✅ Integrated into Home.tsx and main.tsx
@@ -136,11 +136,11 @@ After C1, C2, or C3 reports "done", C4 must verify:
 If anything is wrong, tell them to fix it before accepting "done".
 
 ## Last Updated
-May 3, 2026 - C3 completed and pushed LanguageSwitcher + progress store. Commit hash: 5f9a1df4
+May 3, 2026 - C3 completed and pushed LanguageSwitcher + progress store. Updated to 50 lessons per language. Fixed French/German pages, routing, and LanguageSwitcher progress display.
 
 ## Recently Added (C4 - May 3, 2026)
 - ✅ README.md updated with Language Modules section
-- ✅ LESSONS.md created (6 languages, 5 lessons, 50 vocab each)
+- ✅ LESSONS.md created (6 languages, 50 lessons each)
 - ✅ AGENT_MEMORY.md updated
 
 ## Bugs Fixed (May 3, 2026)

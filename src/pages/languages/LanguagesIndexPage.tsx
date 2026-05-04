@@ -33,7 +33,7 @@ const CARDS: Card[] = [
     title_en: "French",
     flag: "🇫🇷",
     blurb_vi:
-      "5 bài: chào hỏi, số đếm, câu giao tiếp, ngữ pháp cơ bản (giống đực/cái), ẩm thực và gọi món.",
+      "50 bài: chào hỏi, số đếm, câu giao tiếp, ngữ pháp, ẩm thực, thành ngữ, tranh luận và hơn thế nữa.",
     href: "/languages/french",
     accent: "blue",
   },
@@ -43,7 +43,7 @@ const CARDS: Card[] = [
     title_en: "German",
     flag: "🇩🇪",
     blurb_vi:
-      "5 bài: chào hỏi, số đếm, câu giao tiếp, giới thiệu cách 1 và cách 4, ẩm thực và gọi món.",
+      "50 bài: chào hỏi, số đếm, câu giao tiếp, cách (cases), ẩm thực, thành ngữ, tranh luận và hơn thế nữa.",
     href: "/languages/german",
     accent: "red",
   },

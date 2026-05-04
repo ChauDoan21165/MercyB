@@ -10,7 +10,7 @@ import {
 
 export type LearningLanguage = "french" | "german" | "japanese" | "chinese" | "korean";
 
-export const TOTAL_LESSONS_PER_LANGUAGE = 20;
+export const TOTAL_LESSONS_PER_LANGUAGE = 50;
 
 export interface LanguageMeta {
   id: LearningLanguage;
