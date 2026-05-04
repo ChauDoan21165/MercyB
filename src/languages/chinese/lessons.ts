@@ -1,4 +1,61 @@
-export const lessons = [
+// Type definitions for Chinese lesson data
+// Mirrors the schema used by all 50 lessons; types derived from existing data.
+
+export type ChineseVocabEntry = {
+  chinese: string;
+  pinyin: string;
+  english: string;
+};
+
+export type ChineseSentence = {
+  chinese: string;
+  pinyin: string;
+  english: string;
+};
+
+export type ChineseDialogueLine = {
+  speaker: string;
+  chinese: string;
+  pinyin: string;
+  english: string;
+};
+
+export type ChineseExerciseFillBlank = {
+  type: "fill-blank";
+  question: string;
+  answer: string;
+};
+
+export type ChineseExerciseMatching = {
+  type: "matching";
+  pairs: ChineseVocabEntry[];
+  instruction: string;
+};
+
+export type ChineseExerciseTranslation = {
+  type: "translation";
+  vietnamese: string;
+  chinese: string;
+  pinyin: string;
+};
+
+export type ChineseExercise =
+  | ChineseExerciseFillBlank
+  | ChineseExerciseMatching
+  | ChineseExerciseTranslation;
+
+export type ChineseLesson = {
+  id: number;
+  title: string;
+  pinyin: string;
+  topic: string;
+  vocab: ChineseVocabEntry[];
+  sentences: ChineseSentence[];
+  dialogue: ChineseDialogueLine[];
+  exercises: ChineseExercise[];
+};
+
+export const lessons: ChineseLesson[] = [
   {
     id: 1,
     title: "你好",
