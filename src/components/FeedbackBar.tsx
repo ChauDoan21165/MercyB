@@ -39,7 +39,10 @@ export function FeedbackBar() {
   return (
     <>
       {/* Floating pill button — owns its own fixed positioning so it
-          floats correctly wherever this component is mounted. */}
+          floats correctly wherever this component is mounted.
+          Bottom offset clears BottomMusicBar (36px tall, anchored at
+          viewport bottom — see .mb-bar in audio/BottomMusicBar.tsx).
+          36px bar height + 16px gap + iOS safe-area inset. */}
       <button
         type="button"
         onClick={() => setOpen(true)}
@@ -47,7 +50,7 @@ export function FeedbackBar() {
         style={{
           position: "fixed",
           left: 16,
-          bottom: `calc(16px + env(safe-area-inset-bottom, 0px))`,
+          bottom: `calc(36px + 16px + env(safe-area-inset-bottom, 0px))`,
           zIndex: 9999,
           height: 34,
           padding: "0 14px",
