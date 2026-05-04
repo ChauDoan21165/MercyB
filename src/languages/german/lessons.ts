@@ -33,7 +33,9 @@ export type GermanCategoryId =
   | "workplace"
   | "life_admin"
   | "society"
-  | "expressions";
+  | "expressions"
+  | "advanced_grammar"
+  | "fluency";
 
 export type GermanCategoryMeta = {
   id: GermanCategoryId;
@@ -67,6 +69,8 @@ export const GERMAN_CATEGORIES: ReadonlyArray<GermanCategoryMeta> = [
   { id: "life_admin", title_vi: "Thủ tục hành chính", title_en: "Administrative tasks", expected_count: 5 },
   { id: "society", title_vi: "Xã hội", title_en: "Society", expected_count: 5 },
   { id: "expressions", title_vi: "Biểu đạt", title_en: "Expressions", expected_count: 5 },
+  { id: "advanced_grammar", title_vi: "Ngữ pháp nâng cao", title_en: "Advanced grammar", expected_count: 5 },
+  { id: "fluency", title_vi: "Nói trôi chảy", title_en: "Fluency", expected_count: 5 },
 ];
 
 export type LessonSentence = {
@@ -3060,6 +3064,896 @@ const EXPRESSIONS: GermanLesson[] = [
   },
 ];
 
+// ── 41–45. Advanced grammar ─────────────────────────────────────────────
+
+const ADVANCED_GRAMMAR: GermanLesson[] = [
+  {
+    id: "german_separable_verbs",
+    category: "advanced_grammar",
+    title_vi: "Động từ tách (Trennbare Verben)",
+    title_en: "Separable verbs",
+    sentences: [
+      {
+        en: "Ich stehe um sieben Uhr auf.",
+        vi: "Tôi dậy lúc 7 giờ.",
+        pronunciation_focus: ["stehe → SHTÊ-ờ", "auf → ao-phờ — phần tách nhảy ra cuối", "động từ aufstehen"],
+      },
+      {
+        en: "Wann fängt der Film an?",
+        vi: "Khi nào phim bắt đầu?",
+        pronunciation_focus: ["fängt → PHENG-t — 'ä' = e", "an → an — phần tách", "động từ anfangen"],
+      },
+      {
+        en: "Ich rufe dich morgen an.",
+        vi: "Tôi sẽ gọi bạn ngày mai.",
+        pronunciation_focus: ["rufe → RU-phờ", "an → an — phần tách cuối câu", "morgen → MO-gần"],
+      },
+      {
+        en: "Sie zieht ihren Mantel aus.",
+        vi: "Cô ấy cởi áo khoác ra.",
+        pronunciation_focus: ["zieht → TSÍT", "aus → ao-s — phần tách", "Mantel → MAN-tần"],
+      },
+      {
+        en: "Wir kommen am Sonntag zurück.",
+        vi: "Chúng tôi quay về Chủ nhật.",
+        pronunciation_focus: ["kommen → CÔM-mần", "zurück → tsu-RUYC — phần tách", "Sonntag → ZÔN-tác"],
+      },
+    ],
+    cultural_notes_vi:
+      "Động từ tách là đặc trưng tiếng Đức không có tương đương trong nhiều ngôn ngữ khác. Ví dụ: 'aufstehen' (thức dậy) gồm 'auf' + 'stehen'. Khi chia ở thì hiện tại, phần 'auf' nhảy ra cuối câu: 'Ich stehe ... auf'. Nhấn trọng âm rơi vào phần tách: AUF-stehen, AN-rufen, MIT-kommen.",
+    tip_advice_vi:
+      "Cách học: nhớ động từ kèm phần tách như một đơn vị. Khi viết câu, đặt động từ chính ở vị trí thứ 2 và 'đẩy' phần tách ra cuối: 'Ich [STELLE]² den Wecker [AN]ᶜᵘᵒ̂ⁱ' (Tôi đặt báo thức). Trong câu phụ (với 'weil', 'dass'), động từ ghép lại nguyên: 'weil ich aufstehe' (vì tôi thức dậy).",
+    vocabulary: [
+      { word: "aufstehen", en: "to get up", vi: "thức dậy", pos: "verb (separable: auf-)", pronunciation_vi: "AO-phờ-shtê-ần" },
+      { word: "anfangen", en: "to start", vi: "bắt đầu", pos: "verb (separable: an-)", pronunciation_vi: "AN-phan-gần" },
+      { word: "anrufen", en: "to call", vi: "gọi điện", pos: "verb (separable: an-)", pronunciation_vi: "AN-ru-phần" },
+      { word: "ausziehen", en: "to take off", vi: "cởi ra", pos: "verb (separable: aus-)", pronunciation_vi: "AO-s-tsi-hần" },
+      { word: "anziehen", en: "to put on", vi: "mặc vào", pos: "verb (separable: an-)", pronunciation_vi: "AN-tsi-hần" },
+      { word: "zurückkommen", en: "to come back", vi: "quay về", pos: "verb (separable: zurück-)", pronunciation_vi: "tsu-RUYC-côm-mần" },
+      { word: "einkaufen", en: "to shop", vi: "đi mua sắm", pos: "verb (separable: ein-)", pronunciation_vi: "AIN-cao-phần" },
+      { word: "mitkommen", en: "to come along", vi: "đi cùng", pos: "verb (separable: mit-)", pronunciation_vi: "MÍT-côm-mần" },
+      { word: "vorbereiten", en: "to prepare", vi: "chuẩn bị", pos: "verb (separable: vor-)", pronunciation_vi: "PHÔ-bờ-rai-tần" },
+      { word: "aufhören", en: "to stop", vi: "dừng lại", pos: "verb (separable: auf-)", pronunciation_vi: "AO-phờ-hơ-rần" },
+    ],
+    dialogue: [
+      { speaker: "A", text: "Wann stehst du normalerweise auf?", vi: "Bạn thường thức dậy lúc nào?" },
+      { speaker: "B", text: "Ich stehe um sechs Uhr auf. Und du?", vi: "Tôi dậy lúc 6 giờ. Còn bạn?" },
+      { speaker: "A", text: "Ich kaufe dann ein und fange um neun mit der Arbeit an.", vi: "Tôi đi mua sắm rồi bắt đầu làm việc lúc 9 giờ." },
+      { speaker: "B", text: "Rufst du mich später an?", vi: "Bạn gọi tôi sau nhé?" },
+    ],
+    exercises: [
+      {
+        type: "fill_blank",
+        instruction_vi: "Chia động từ tách (phần tách nhảy ra cuối):",
+        pronunciation_focus: ["động từ tách"],
+        items: [
+          { prompt: "Ich _____ um sieben Uhr _____. (aufstehen — thức dậy)", answer: "stehe ... auf" },
+          { prompt: "Sie _____ ihn morgen _____. (anrufen — gọi)", answer: "ruft ... an" },
+          { prompt: "Wir _____ um acht _____. (anfangen — bắt đầu)", answer: "fangen ... an" },
+        ],
+      },
+      {
+        type: "matching",
+        instruction_vi: "Nối động từ tách với nghĩa:",
+        pronunciation_focus: [],
+        items: [
+          { prompt: "aufstehen", answer: "thức dậy" },
+          { prompt: "einkaufen", answer: "đi mua sắm" },
+          { prompt: "mitkommen", answer: "đi cùng" },
+          { prompt: "aufhören", answer: "dừng lại" },
+        ],
+      },
+      {
+        type: "translation",
+        instruction_vi: "Dịch sang tiếng Đức (chú ý động từ tách):",
+        pronunciation_focus: [],
+        items: [
+          { prompt: "Tôi dậy lúc 7 giờ.", answer: "Ich stehe um sieben Uhr auf." },
+          { prompt: "Khi nào phim bắt đầu?", answer: "Wann fängt der Film an?" },
+          { prompt: "Tôi sẽ gọi bạn ngày mai.", answer: "Ich rufe dich morgen an." },
+        ],
+      },
+    ],
+  },
+  {
+    id: "german_perfekt_tense",
+    category: "advanced_grammar",
+    title_vi: "Thì hoàn thành (Perfekt)",
+    title_en: "Perfekt tense",
+    sentences: [
+      {
+        en: "Ich habe gestern Pizza gegessen.",
+        vi: "Hôm qua tôi đã ăn pizza.",
+        pronunciation_focus: ["habe → HA-bờ", "gegessen → gờ-GHÊ-sần", "cấu trúc: haben + Partizip II"],
+      },
+      {
+        en: "Sie ist nach Berlin gefahren.",
+        vi: "Cô ấy đã đi Berlin.",
+        pronunciation_focus: ["ist → ÍST — động từ chuyển động dùng 'sein'", "gefahren → gờ-PHA-rần", "ist + Partizip II"],
+      },
+      {
+        en: "Wir haben den Film schon gesehen.",
+        vi: "Chúng tôi đã xem phim đó rồi.",
+        pronunciation_focus: ["haben → HA-bần", "gesehen → gờ-ZÊ-ần", "schon → SHÔN"],
+      },
+      {
+        en: "Hast du gut geschlafen?",
+        vi: "Bạn ngủ ngon không?",
+        pronunciation_focus: ["Hast → HASTỜ", "geschlafen → gờ-SHLA-phần", "câu hỏi: động từ ở đầu"],
+      },
+      {
+        en: "Er ist um zehn Uhr angekommen.",
+        vi: "Anh ấy đến lúc 10 giờ.",
+        pronunciation_focus: ["ist → ÍST", "angekommen → AN-gờ-côm-mần — Partizip II của ankommen", "động từ tách + Perfekt"],
+      },
+    ],
+    cultural_notes_vi:
+      "Người Đức nói chuyện hàng ngày dùng Perfekt cho thì quá khứ, không phải Präteritum (trừ động từ 'sein', 'haben', 'wissen' và động từ khuyết thiếu). 'Ich habe gegessen' tự nhiên hơn 'Ich aß' trong nói chuyện. Präteritum chủ yếu dùng trong văn viết, sách báo, kể chuyện. Học Perfekt là ưu tiên cho giao tiếp.",
+    tip_advice_vi:
+      "Quy tắc trợ động từ: dùng 'sein' (là) cho động từ chuyển động (gehen, fahren, kommen, fliegen) và động từ thay đổi trạng thái (sterben - chết, einschlafen - ngủ thiếp). Dùng 'haben' (có) cho phần lớn còn lại. Khi không chắc, dùng 'haben' — sai 90% trường hợp ít hơn 'sein'.",
+    vocabulary: [
+      { word: "haben", en: "to have (auxiliary)", vi: "có (trợ động từ)", pos: "verb (auxiliary)", pronunciation_vi: "HA-bần" },
+      { word: "sein", en: "to be (auxiliary)", vi: "là (trợ động từ)", pos: "verb (auxiliary)", pronunciation_vi: "ZAIN" },
+      { word: "gegessen", en: "eaten", vi: "đã ăn (P2)", pos: "Partizip II", pronunciation_vi: "gờ-GHÊ-sần" },
+      { word: "getrunken", en: "drunk", vi: "đã uống (P2)", pos: "Partizip II", pronunciation_vi: "gờ-TRUNG-kần" },
+      { word: "gegangen", en: "went", vi: "đã đi (P2)", pos: "Partizip II", pronunciation_vi: "gờ-GANG-ần" },
+      { word: "gefahren", en: "drove/went", vi: "đã đi (xe)", pos: "Partizip II", pronunciation_vi: "gờ-PHA-rần" },
+      { word: "gesehen", en: "seen", vi: "đã thấy (P2)", pos: "Partizip II", pronunciation_vi: "gờ-ZÊ-ần" },
+      { word: "geschlafen", en: "slept", vi: "đã ngủ (P2)", pos: "Partizip II", pronunciation_vi: "gờ-SHLA-phần" },
+      { word: "gekommen", en: "came", vi: "đã đến (P2)", pos: "Partizip II", pronunciation_vi: "gờ-CÔM-mần" },
+      { word: "gemacht", en: "did/made", vi: "đã làm (P2)", pos: "Partizip II", pronunciation_vi: "gờ-MÁCT" },
+    ],
+    dialogue: [
+      { speaker: "A", text: "Was hast du am Wochenende gemacht?", vi: "Cuối tuần bạn đã làm gì?" },
+      { speaker: "B", text: "Ich bin nach München gefahren und habe Freunde besucht.", vi: "Tôi đi München và thăm bạn bè." },
+      { speaker: "A", text: "Schön! Habt ihr etwas Besonderes gemacht?", vi: "Hay quá! Các bạn có làm gì đặc biệt không?" },
+      { speaker: "B", text: "Wir haben ein Konzert besucht und sehr gut gegessen.", vi: "Chúng tôi đi xem hoà nhạc và ăn rất ngon." },
+    ],
+    exercises: [
+      {
+        type: "fill_blank",
+        instruction_vi: "Điền trợ động từ haben hoặc sein:",
+        pronunciation_focus: ["sein cho động từ chuyển động/thay đổi trạng thái, haben cho phần lớn còn lại"],
+        items: [
+          { prompt: "Ich _____ Pizza gegessen. (haben/sein)", answer: "habe" },
+          { prompt: "Sie _____ nach Berlin gefahren. (haben/sein)", answer: "ist" },
+          { prompt: "Wir _____ den Film gesehen. (haben/sein)", answer: "haben" },
+        ],
+      },
+      {
+        type: "matching",
+        instruction_vi: "Nối Partizip II với nghĩa:",
+        pronunciation_focus: [],
+        items: [
+          { prompt: "gegessen", answer: "đã ăn" },
+          { prompt: "getrunken", answer: "đã uống" },
+          { prompt: "gefahren", answer: "đã đi (xe)" },
+          { prompt: "geschlafen", answer: "đã ngủ" },
+        ],
+      },
+      {
+        type: "translation",
+        instruction_vi: "Dịch sang tiếng Đức (dùng Perfekt):",
+        pronunciation_focus: [],
+        items: [
+          { prompt: "Hôm qua tôi đã ăn pizza.", answer: "Ich habe gestern Pizza gegessen." },
+          { prompt: "Cô ấy đã đi Berlin.", answer: "Sie ist nach Berlin gefahren." },
+          { prompt: "Bạn ngủ ngon không?", answer: "Hast du gut geschlafen?" },
+        ],
+      },
+    ],
+  },
+  {
+    id: "german_modal_verbs",
+    category: "advanced_grammar",
+    title_vi: "Động từ khuyết thiếu",
+    title_en: "Modal verbs",
+    sentences: [
+      {
+        en: "Ich kann Deutsch sprechen.",
+        vi: "Tôi có thể nói tiếng Đức.",
+        pronunciation_focus: ["kann → can", "Deutsch → ĐÔIT-shờ", "sprechen → SHPRÊ-khần"],
+      },
+      {
+        en: "Du musst die Hausaufgaben machen.",
+        vi: "Bạn phải làm bài tập về nhà.",
+        pronunciation_focus: ["musst → mUST", "Hausaufgaben → HAO-s-ao-phờ-ga-bần", "machen → MA-khần"],
+      },
+      {
+        en: "Wir wollen ins Kino gehen.",
+        vi: "Chúng tôi muốn đi xem phim.",
+        pronunciation_focus: ["wollen → VÔ-lần", "Kino → KI-nô", "gehen → GHÊ-ần"],
+      },
+      {
+        en: "Sie soll heute kommen.",
+        vi: "Cô ấy được kỳ vọng đến hôm nay.",
+        pronunciation_focus: ["soll → ZÔN", "heute → HÔI-tờ", "kommen → CÔM-mần"],
+      },
+      {
+        en: "Darf ich hier rauchen?",
+        vi: "Tôi được phép hút thuốc ở đây không?",
+        pronunciation_focus: ["Darf → ĐÁPH-ờ", "hier → HÍA", "rauchen → RAO-khần"],
+      },
+    ],
+    cultural_notes_vi:
+      "Phân biệt 'müssen' (phải - bắt buộc) vs 'sollen' (nên - được kỳ vọng): 'Ich muss arbeiten' (tôi phải đi làm - bắt buộc); 'Ich soll arbeiten' (tôi nên đi làm - ai đó nói tôi nên). 'Dürfen' (được phép) khác 'können' (có thể): 'Kann ich hier parken?' (Tôi có thể đỗ xe ở đây không? - kỹ thuật) vs 'Darf ich hier parken?' (Tôi được phép đỗ xe ở đây không? - về luật).",
+    tip_advice_vi:
+      "Cấu trúc: Modal + động từ chính ở dạng nguyên (Infinitiv) ở cuối câu. 'Ich [KANN]² gut Deutsch [SPRECHEN]ᶜᵘᵒ̂ⁱ' (Tôi nói tiếng Đức tốt). Động từ chính KHÔNG chia, chỉ modal chia. Đây là quy tắc ổn định cho mọi modal.",
+    vocabulary: [
+      { word: "können", en: "can/be able to", vi: "có thể", pos: "modal verb", pronunciation_vi: "KƠN-nần — 'ö' tròn" },
+      { word: "müssen", en: "must/have to", vi: "phải", pos: "modal verb", pronunciation_vi: "MUYS-sần — 'ü' tròn" },
+      { word: "wollen", en: "want to", vi: "muốn", pos: "modal verb", pronunciation_vi: "VÔ-lần" },
+      { word: "sollen", en: "should/be supposed to", vi: "nên/được kỳ vọng", pos: "modal verb", pronunciation_vi: "ZÔ-lần" },
+      { word: "dürfen", en: "may/be allowed", vi: "được phép", pos: "modal verb", pronunciation_vi: "ĐUYR-phần — 'ü' tròn" },
+      { word: "möchten", en: "would like to", vi: "muốn (lịch sự)", pos: "modal verb (Konj II)", pronunciation_vi: "MƠỊC-tần — 'ö' tròn" },
+      { word: "die Hausaufgabe", en: "homework", vi: "bài tập về nhà", pos: "noun (f)", pronunciation_vi: "đi HAO-s-ao-phờ-ga-bờ" },
+      { word: "rauchen", en: "to smoke", vi: "hút thuốc", pos: "verb", pronunciation_vi: "RAO-khần" },
+      { word: "die Erlaubnis", en: "permission", vi: "sự cho phép", pos: "noun (f)", pronunciation_vi: "đi ê-LAO-pnis" },
+      { word: "die Pflicht", en: "duty", vi: "nghĩa vụ", pos: "noun (f)", pronunciation_vi: "đi PHLỊT-ờ" },
+    ],
+    dialogue: [
+      { speaker: "A", text: "Kannst du mir helfen?", vi: "Bạn giúp tôi được không?" },
+      { speaker: "B", text: "Ja, aber ich muss zuerst meine Arbeit fertig machen.", vi: "Vâng, nhưng tôi phải làm xong việc trước đã." },
+      { speaker: "A", text: "Wann darf ich dich anrufen?", vi: "Khi nào tôi có thể gọi bạn?" },
+      { speaker: "B", text: "Ab fünf Uhr. Dann will ich gerne mit dir reden.", vi: "Từ 5 giờ. Lúc đó tôi sẽ vui vẻ nói chuyện với bạn." },
+    ],
+    exercises: [
+      {
+        type: "fill_blank",
+        instruction_vi: "Chia động từ khuyết thiếu:",
+        pronunciation_focus: ["chú ý: ngôi 'ich' và 'er/sie' không có đuôi -e/-t cho modals"],
+        items: [
+          { prompt: "Ich _____ Deutsch sprechen. (können — có thể)", answer: "kann" },
+          { prompt: "Du _____ die Hausaufgaben machen. (müssen — phải)", answer: "musst" },
+          { prompt: "Wir _____ ins Kino gehen. (wollen — muốn)", answer: "wollen" },
+        ],
+      },
+      {
+        type: "matching",
+        instruction_vi: "Nối modal với nghĩa:",
+        pronunciation_focus: [],
+        items: [
+          { prompt: "können", answer: "có thể" },
+          { prompt: "müssen", answer: "phải" },
+          { prompt: "dürfen", answer: "được phép" },
+          { prompt: "möchten", answer: "muốn (lịch sự)" },
+        ],
+      },
+      {
+        type: "translation",
+        instruction_vi: "Dịch sang tiếng Đức:",
+        pronunciation_focus: [],
+        items: [
+          { prompt: "Tôi có thể nói tiếng Đức.", answer: "Ich kann Deutsch sprechen." },
+          { prompt: "Bạn phải làm bài tập về nhà.", answer: "Du musst die Hausaufgaben machen." },
+          { prompt: "Tôi được phép hút thuốc ở đây không?", answer: "Darf ich hier rauchen?" },
+        ],
+      },
+    ],
+  },
+  {
+    id: "german_subordinate_clauses",
+    category: "advanced_grammar",
+    title_vi: "Câu phụ (Nebensätze)",
+    title_en: "Subordinate clauses",
+    sentences: [
+      {
+        en: "Ich weiß, dass du Recht hast.",
+        vi: "Tôi biết bạn nói đúng.",
+        pronunciation_focus: ["weiß → vAIS — 'ß' = ss", "dass → đás — liên từ", "động từ ở cuối câu phụ"],
+      },
+      {
+        en: "Ich gehe nicht, weil ich krank bin.",
+        vi: "Tôi không đi vì tôi ốm.",
+        pronunciation_focus: ["weil → vAIN", "krank → CRANK", "bin → bin — động từ ở cuối"],
+      },
+      {
+        en: "Wenn es regnet, bleibe ich zu Hause.",
+        vi: "Nếu trời mưa, tôi ở nhà.",
+        pronunciation_focus: ["Wenn → vEN", "regnet → RÊK-nết", "bleibe → BLAI-bờ"],
+      },
+      {
+        en: "Sie fragt, ob ich kommen kann.",
+        vi: "Cô ấy hỏi liệu tôi có thể đến không.",
+        pronunciation_focus: ["fragt → PHRÁCT", "ob → ốp — liệu/có không", "kann → can — modal ở cuối"],
+      },
+      {
+        en: "Obwohl es kalt ist, gehe ich spazieren.",
+        vi: "Mặc dù trời lạnh, tôi vẫn đi dạo.",
+        pronunciation_focus: ["Obwohl → ốp-VÔN", "kalt → CANT", "spazieren → shpa-TSI-rần"],
+      },
+    ],
+    cultural_notes_vi:
+      "Câu phụ (Nebensätze) là điểm khó nhưng quan trọng nhất tiếng Đức ở mức B1. Quy tắc bất di bất dịch: trong câu phụ, ĐỘNG TỪ ĐỨNG CUỐI. 'Ich denke, dass er kommt' (Tôi nghĩ rằng anh ấy đến) — 'kommt' ở cuối, không phải 'dass kommt er'. Khi câu phụ đứng trước, động từ chính của câu chính nhảy lên ngay sau dấu phẩy: 'Wenn es regnet, [BLEIBE] ich' (Nếu mưa, tôi ở lại).",
+    tip_advice_vi:
+      "Cách nhớ: 'weil' (bởi vì) đẩy động từ ra cuối, 'denn' (bởi vì - liên từ đẳng lập) KHÔNG đẩy. So sánh: 'Ich gehe nicht, weil ich krank BIN' (động từ cuối) vs 'Ich gehe nicht, denn ich BIN krank' (động từ vị trí 2). Cả hai cùng nghĩa, nhưng cấu trúc khác. Học 'weil' trước, 'denn' sau.",
+    vocabulary: [
+      { word: "dass", en: "that (conjunction)", vi: "rằng", pos: "conjunction", pronunciation_vi: "đás" },
+      { word: "weil", en: "because", vi: "bởi vì", pos: "conjunction", pronunciation_vi: "vAIN" },
+      { word: "wenn", en: "when/if", vi: "khi/nếu", pos: "conjunction", pronunciation_vi: "vEN" },
+      { word: "ob", en: "whether/if", vi: "liệu/có không", pos: "conjunction", pronunciation_vi: "ốp" },
+      { word: "obwohl", en: "although", vi: "mặc dù", pos: "conjunction", pronunciation_vi: "ốp-VÔN" },
+      { word: "damit", en: "so that", vi: "để mà", pos: "conjunction", pronunciation_vi: "đa-MÍT" },
+      { word: "während", en: "while", vi: "trong khi", pos: "conjunction", pronunciation_vi: "VEỊ-rần — 'ä' = e" },
+      { word: "bevor", en: "before", vi: "trước khi", pos: "conjunction", pronunciation_vi: "bờ-PHÔ" },
+      { word: "nachdem", en: "after", vi: "sau khi", pos: "conjunction", pronunciation_vi: "nắc-ĐÊM" },
+      { word: "der Grund", en: "reason", vi: "lý do", pos: "noun (m)", pronunciation_vi: "đe-a GRUN-t" },
+    ],
+    dialogue: [
+      { speaker: "A", text: "Warum kommst du nicht zur Party?", vi: "Tại sao bạn không đến tiệc?" },
+      { speaker: "B", text: "Weil ich morgen früh arbeiten muss.", vi: "Vì tôi phải đi làm sớm sáng mai." },
+      { speaker: "A", text: "Schade. Wenn du Zeit hast, ruf mich später an.", vi: "Tiếc quá. Nếu bạn có thời gian, gọi tôi sau nhé." },
+      { speaker: "B", text: "Mache ich. Obwohl es spät wird, melde ich mich.", vi: "Tôi sẽ gọi. Mặc dù sẽ muộn, tôi sẽ liên lạc." },
+    ],
+    exercises: [
+      {
+        type: "fill_blank",
+        instruction_vi: "Điền liên từ phụ thuộc (động từ nhảy ra cuối):",
+        pronunciation_focus: ["động từ luôn ở cuối câu phụ"],
+        items: [
+          { prompt: "Ich gehe nicht, _____ ich krank bin. (vì)", answer: "weil" },
+          { prompt: "Ich weiß, _____ du Recht hast. (rằng)", answer: "dass" },
+          { prompt: "_____ es regnet, bleibe ich zu Hause. (nếu)", answer: "Wenn" },
+        ],
+      },
+      {
+        type: "matching",
+        instruction_vi: "Nối liên từ với nghĩa:",
+        pronunciation_focus: [],
+        items: [
+          { prompt: "obwohl", answer: "mặc dù" },
+          { prompt: "damit", answer: "để mà" },
+          { prompt: "während", answer: "trong khi" },
+          { prompt: "bevor", answer: "trước khi" },
+        ],
+      },
+      {
+        type: "translation",
+        instruction_vi: "Dịch sang tiếng Đức (chú ý vị trí động từ):",
+        pronunciation_focus: [],
+        items: [
+          { prompt: "Tôi biết bạn nói đúng.", answer: "Ich weiß, dass du Recht hast." },
+          { prompt: "Tôi không đi vì tôi ốm.", answer: "Ich gehe nicht, weil ich krank bin." },
+          { prompt: "Nếu trời mưa, tôi ở nhà.", answer: "Wenn es regnet, bleibe ich zu Hause." },
+        ],
+      },
+    ],
+  },
+  {
+    id: "german_passive_voice",
+    category: "advanced_grammar",
+    title_vi: "Câu bị động (Passiv)",
+    title_en: "Passive voice",
+    sentences: [
+      {
+        en: "Das Haus wird gebaut.",
+        vi: "Ngôi nhà đang được xây.",
+        pronunciation_focus: ["wird → vIA-t", "gebaut → gờ-BAO-t — Partizip II", "cấu trúc: werden + P2"],
+      },
+      {
+        en: "Hier wird Deutsch gesprochen.",
+        vi: "Ở đây nói tiếng Đức.",
+        pronunciation_focus: ["wird → vIA-t", "gesprochen → gờ-SHPRÔ-khần", "Hier → HÍA"],
+      },
+      {
+        en: "Das Buch wurde 1990 geschrieben.",
+        vi: "Quyển sách được viết năm 1990.",
+        pronunciation_focus: ["wurde → VÚA-đờ — Präteritum của werden", "geschrieben → gờ-SHRI-bần", "Passiv quá khứ"],
+      },
+      {
+        en: "Der Brief muss heute geschickt werden.",
+        vi: "Lá thư phải được gửi hôm nay.",
+        pronunciation_focus: ["muss → mUS — modal", "geschickt → gờ-SHÍCT", "werden → VEA-đần — vị trí cuối"],
+      },
+      {
+        en: "Die Tür wird vom Wind geöffnet.",
+        vi: "Cửa được gió mở.",
+        pronunciation_focus: ["wird → vIA-t", "vom → phôm — von dem", "geöffnet → gờ-ƠPH-nết"],
+      },
+    ],
+    cultural_notes_vi:
+      "Câu bị động (Passiv) trong tiếng Đức rất phổ biến trong văn viết, hợp đồng, hướng dẫn, tin tức. Trong nói chuyện hàng ngày, người Đức cũng dùng Passiv khi tác nhân không quan trọng: 'Das Auto wird repariert' (Xe đang được sửa) — không quan trọng ai sửa. Cấu trúc 'man + động từ chủ động' đôi khi thay được Passiv: 'Man spricht hier Deutsch' = 'Hier wird Deutsch gesprochen'.",
+    tip_advice_vi:
+      "Cấu trúc Passiv hiện tại: werden (chia) + Partizip II (cuối). Quá khứ: wurde + P2. Tương lai: wird + P2 + werden (vị trí cuối). Không nên dùng Passiv quá nhiều trong nói chuyện — nghe quá formal/máy móc. Trong giao tiếp, dùng câu chủ động hoặc 'man'.",
+    vocabulary: [
+      { word: "werden", en: "to become / passive auxiliary", vi: "trở thành / trợ động từ bị động", pos: "verb", pronunciation_vi: "VEA-đần" },
+      { word: "wurde", en: "became (Präteritum)", vi: "đã (Präteritum của werden)", pos: "verb form", pronunciation_vi: "VÚA-đờ" },
+      { word: "von", en: "by (passive agent)", vi: "bởi (chỉ tác nhân)", pos: "preposition", pronunciation_vi: "phôn" },
+      { word: "gebaut", en: "built", vi: "đã xây (P2)", pos: "Partizip II", pronunciation_vi: "gờ-BAO-t" },
+      { word: "geschrieben", en: "written", vi: "đã viết (P2)", pos: "Partizip II", pronunciation_vi: "gờ-SHRI-bần" },
+      { word: "geschickt", en: "sent", vi: "đã gửi (P2)", pos: "Partizip II", pronunciation_vi: "gờ-SHÍCT" },
+      { word: "geöffnet", en: "opened", vi: "đã mở (P2)", pos: "Partizip II", pronunciation_vi: "gờ-ƠPH-nết" },
+      { word: "gesprochen", en: "spoken", vi: "đã nói (P2)", pos: "Partizip II", pronunciation_vi: "gờ-SHPRÔ-khần" },
+      { word: "die Sprache", en: "language", vi: "ngôn ngữ", pos: "noun (f)", pronunciation_vi: "đi SHPRA-khờ" },
+      { word: "der Wind", en: "wind", vi: "gió", pos: "noun (m)", pronunciation_vi: "đe-a vIN-t" },
+    ],
+    dialogue: [
+      { speaker: "A", text: "Wann wird das Projekt fertig?", vi: "Khi nào dự án xong?" },
+      { speaker: "B", text: "Es wird nächste Woche abgeschlossen.", vi: "Sẽ được hoàn thành tuần sau." },
+      { speaker: "A", text: "Und wer macht die Präsentation?", vi: "Và ai làm bài thuyết trình?" },
+      { speaker: "B", text: "Die Präsentation wird von Anna gemacht.", vi: "Bài thuyết trình sẽ được Anna làm." },
+    ],
+    exercises: [
+      {
+        type: "fill_blank",
+        instruction_vi: "Điền dạng bị động (werden + Partizip II):",
+        pronunciation_focus: ["cấu trúc: werden chia + Partizip II ở cuối"],
+        items: [
+          { prompt: "Das Haus _____ gebaut. (đang được xây)", answer: "wird" },
+          { prompt: "Hier _____ Deutsch gesprochen. (được nói)", answer: "wird" },
+          { prompt: "Das Buch _____ 1990 geschrieben. (đã được viết - Präteritum)", answer: "wurde" },
+        ],
+      },
+      {
+        type: "matching",
+        instruction_vi: "Nối Partizip II với nghĩa:",
+        pronunciation_focus: [],
+        items: [
+          { prompt: "gebaut", answer: "đã xây" },
+          { prompt: "geschrieben", answer: "đã viết" },
+          { prompt: "gesprochen", answer: "đã nói" },
+          { prompt: "geöffnet", answer: "đã mở" },
+        ],
+      },
+      {
+        type: "translation",
+        instruction_vi: "Dịch sang tiếng Đức (dùng câu bị động):",
+        pronunciation_focus: [],
+        items: [
+          { prompt: "Ngôi nhà đang được xây.", answer: "Das Haus wird gebaut." },
+          { prompt: "Ở đây nói tiếng Đức.", answer: "Hier wird Deutsch gesprochen." },
+          { prompt: "Lá thư phải được gửi hôm nay.", answer: "Der Brief muss heute geschickt werden." },
+        ],
+      },
+    ],
+  },
+];
+
+// ── 46–50. Fluency ──────────────────────────────────────────────────────
+
+const FLUENCY: GermanLesson[] = [
+  {
+    id: "german_filler_words",
+    category: "fluency",
+    title_vi: "Từ đệm tự nhiên",
+    title_en: "Modal particles and fillers",
+    sentences: [
+      {
+        en: "Komm doch mal mit!",
+        vi: "Đi cùng tôi đi mà!",
+        pronunciation_focus: ["doch → đốc — particle nhấn mạnh", "mal → man — particle nhẹ", "mit → mít"],
+      },
+      {
+        en: "Das ist ja interessant!",
+        vi: "Cái này thú vị thật!",
+        pronunciation_focus: ["ja → IÁ — particle thể hiện ngạc nhiên", "interessant → in-tê-rê-SANT", "trọng âm trên 'ja'"],
+      },
+      {
+        en: "Was machst du denn da?",
+        vi: "Cậu đang làm gì vậy?",
+        pronunciation_focus: ["denn → đEN — particle thể hiện tò mò", "machst → MÁCST", "denn không phải 'thì'"],
+      },
+      {
+        en: "Das war eben so.",
+        vi: "Chỉ là như vậy thôi.",
+        pronunciation_focus: ["eben → Ê-bần — particle resignation", "so → zô", "trọng âm trên 'eben'"],
+      },
+      {
+        en: "Wo sind denn meine Schlüssel?",
+        vi: "Chìa khóa của tôi đâu rồi nhỉ?",
+        pronunciation_focus: ["denn → đEN — particle ngạc nhiên/tò mò", "Schlüssel → SHLUYS-sần — 'ü' tròn", "câu hỏi"],
+      },
+    ],
+    cultural_notes_vi:
+      "Particles (Modalpartikeln) là yếu tố làm tiếng Đức nói nghe tự nhiên hay máy móc. Sách giáo khoa hiếm khi dạy chúng vì khó định nghĩa. Một câu không có particle nghe đúng nhưng cứng. Người Đức dùng particles như gia vị: 'doch', 'mal', 'ja', 'denn' xuất hiện liên tục trong giao tiếp hàng ngày. Học chúng = nâng từ A2 cứng lên B1 tự nhiên.",
+    tip_advice_vi:
+      "Cách học: lắng nghe người Đức nói (podcast, phim) và để ý particles. Bắt đầu bắt chước với 3 cái dễ nhất: 'mal' (làm nhẹ), 'denn' (tò mò trong câu hỏi), 'doch' (khẩn thiết). Đừng ép dùng tất cả cùng lúc — sai chỗ sẽ nghe lạ. Một particle đúng chỗ tốt hơn ba particles sai.",
+    vocabulary: [
+      { word: "doch", en: "but/yet/do (modal particle)", vi: "mà/đi (particle)", pos: "modal particle", pronunciation_vi: "đốc" },
+      { word: "mal", en: "just (softener)", vi: "thử/đi (particle nhẹ)", pos: "modal particle", pronunciation_vi: "man" },
+      { word: "ja", en: "yes/of course (emphasis)", vi: "thật/nhỉ (nhấn mạnh)", pos: "modal particle", pronunciation_vi: "IÁ" },
+      { word: "denn", en: "then/so (curiosity)", vi: "vậy/nhỉ (tò mò)", pos: "modal particle", pronunciation_vi: "đEN" },
+      { word: "eben", en: "just/exactly (resignation)", vi: "chỉ/thôi (chấp nhận)", pos: "modal particle", pronunciation_vi: "Ê-bần" },
+      { word: "halt", en: "just (resignation, casual)", vi: "thì cứ (chấp nhận, casual)", pos: "modal particle", pronunciation_vi: "HALT" },
+      { word: "wohl", en: "probably/well (uncertainty)", vi: "có lẽ (không chắc)", pos: "modal particle", pronunciation_vi: "VÔN" },
+      { word: "schon", en: "already (emphasis)", vi: "rồi/cũng (nhấn)", pos: "modal particle", pronunciation_vi: "SHÔN" },
+      { word: "etwa", en: "perhaps/about", vi: "khoảng/có lẽ", pos: "modal particle", pronunciation_vi: "ET-va" },
+      { word: "ruhig", en: "calmly/feel free to", vi: "cứ yên tâm", pos: "adverb", pronunciation_vi: "RU-ị" },
+    ],
+    dialogue: [
+      { speaker: "A", text: "Hast du den Film gesehen?", vi: "Bạn xem phim đó chưa?" },
+      { speaker: "B", text: "Den hab ich doch schon gesehen, weißt du nicht mehr?", vi: "Tôi xem rồi mà, bạn không nhớ à?" },
+      { speaker: "A", text: "Ach ja, stimmt. War der denn gut?", vi: "À đúng rồi. Vậy phim hay không?" },
+      { speaker: "B", text: "Ja, ganz gut. Schau ihn dir mal an!", vi: "Có, khá hay. Bạn cứ thử xem đi!" },
+    ],
+    exercises: [
+      {
+        type: "fill_blank",
+        instruction_vi: "Điền particle phù hợp (doch/mal/ja/denn/eben):",
+        pronunciation_focus: ["particles không có nghĩa từ điển - thêm sắc thái cảm xúc"],
+        items: [
+          { prompt: "Komm _____ mit! (rủ rê - khẩn thiết)", answer: "doch" },
+          { prompt: "Das ist _____ interessant! (ngạc nhiên)", answer: "ja" },
+          { prompt: "Was machst du _____ da? (tò mò)", answer: "denn" },
+        ],
+      },
+      {
+        type: "matching",
+        instruction_vi: "Nối particle với chức năng:",
+        pronunciation_focus: [],
+        items: [
+          { prompt: "doch", answer: "nhấn mạnh/khẩn thiết" },
+          { prompt: "mal", answer: "làm nhẹ câu/đề nghị" },
+          { prompt: "denn", answer: "tò mò trong câu hỏi" },
+          { prompt: "eben", answer: "chấp nhận/là vậy" },
+        ],
+      },
+      {
+        type: "translation",
+        instruction_vi: "Dịch sang tiếng Đức (dùng particle phù hợp):",
+        pronunciation_focus: [],
+        items: [
+          { prompt: "Đi cùng tôi đi mà!", answer: "Komm doch mal mit!" },
+          { prompt: "Cái này thú vị thật!", answer: "Das ist ja interessant!" },
+          { prompt: "Cậu đang làm gì vậy?", answer: "Was machst du denn da?" },
+        ],
+      },
+    ],
+  },
+  {
+    id: "german_connectors",
+    category: "fluency",
+    title_vi: "Từ nối câu",
+    title_en: "Sentence connectors",
+    sentences: [
+      {
+        en: "Erstens, ich habe keine Zeit. Zweitens, ich bin müde.",
+        vi: "Thứ nhất, tôi không có thời gian. Thứ hai, tôi mệt.",
+        pronunciation_focus: ["Erstens → ÊA-stần", "Zweitens → TSVAI-tần", "müde → MUY-đờ — 'ü' tròn"],
+      },
+      {
+        en: "Trotzdem komme ich mit.",
+        vi: "Tuy vậy tôi vẫn đi cùng.",
+        pronunciation_focus: ["Trotzdem → TRÔTS-đêm", "komme → CÔM-mờ", "mit → mít — động từ tách"],
+      },
+      {
+        en: "Außerdem ist es zu teuer.",
+        vi: "Ngoài ra còn quá đắt.",
+        pronunciation_focus: ["Außerdem → AO-sờ-đêm — 'ß' = ss", "teuer → TÔI-ợ", "ist → ÍST"],
+      },
+      {
+        en: "Einerseits ja, andererseits nein.",
+        vi: "Một mặt thì có, mặt khác thì không.",
+        pronunciation_focus: ["Einerseits → AI-nợ-zait-s", "andererseits → AN-đe-rợ-zait-s", "ja/nein → IÁ/NAIN"],
+      },
+      {
+        en: "Schließlich haben wir uns geeinigt.",
+        vi: "Cuối cùng chúng tôi đã thống nhất.",
+        pronunciation_focus: ["Schließlich → SHLÍS-lị-khờ", "geeinigt → gờ-AI-nịt", "uns → uns"],
+      },
+    ],
+    cultural_notes_vi:
+      "Từ nối (Konnektoren) là dấu hiệu rõ nhất của tiếng Đức trôi chảy. Người mới học nói rời rạc: 'Ich gehe. Ich bin müde.' (Tôi đi. Tôi mệt.). Người trôi chảy nói: 'Ich gehe, obwohl ich müde bin' (Tôi đi mặc dù mệt). Trong văn viết và bài thuyết trình, dùng erstens/zweitens/schließlich để cấu trúc rõ — người Đức rất quý sự logic này.",
+    tip_advice_vi:
+      "Sau từ nối như 'trotzdem', 'außerdem', 'deshalb' (đứng đầu câu chính, KHÔNG phải Nebensätze), động từ ở vị trí 2: 'Trotzdem [KOMME] ich mit'. Khác với 'obwohl' (Nebensatz, động từ cuối): 'Obwohl ich müde [BIN], komme ich'. Phân biệt 2 loại này quan trọng cho B1.",
+    vocabulary: [
+      { word: "erstens", en: "firstly", vi: "thứ nhất", pos: "adverb", pronunciation_vi: "ÊA-stần" },
+      { word: "zweitens", en: "secondly", vi: "thứ hai", pos: "adverb", pronunciation_vi: "TSVAI-tần" },
+      { word: "außerdem", en: "moreover", vi: "ngoài ra", pos: "adverb", pronunciation_vi: "AO-sờ-đêm" },
+      { word: "trotzdem", en: "nevertheless", vi: "tuy vậy", pos: "adverb", pronunciation_vi: "TRÔTS-đêm" },
+      { word: "deshalb", en: "therefore", vi: "do đó", pos: "adverb", pronunciation_vi: "ĐES-hanp" },
+      { word: "einerseits", en: "on one hand", vi: "một mặt", pos: "adverb", pronunciation_vi: "AI-nợ-zait-s" },
+      { word: "andererseits", en: "on the other hand", vi: "mặt khác", pos: "adverb", pronunciation_vi: "AN-đe-rợ-zait-s" },
+      { word: "schließlich", en: "finally", vi: "cuối cùng", pos: "adverb", pronunciation_vi: "SHLÍS-lị" },
+      { word: "zum Beispiel", en: "for example", vi: "ví dụ", pos: "phrase", pronunciation_vi: "tsum BAI-shpi-án" },
+      { word: "nämlich", en: "namely", vi: "tức là/vì", pos: "adverb", pronunciation_vi: "NEỊM-lị — 'ä' = e" },
+    ],
+    dialogue: [
+      { speaker: "A", text: "Sollen wir morgen wandern gehen?", vi: "Mai chúng ta đi leo núi nhé?" },
+      { speaker: "B", text: "Einerseits gerne, andererseits soll es regnen.", vi: "Một mặt thì rất muốn, mặt khác có vẻ trời sẽ mưa." },
+      { speaker: "A", text: "Trotzdem könnten wir es versuchen.", vi: "Tuy vậy chúng ta có thể thử." },
+      { speaker: "B", text: "Gut, schließlich brauchen wir frische Luft.", vi: "Được, cuối cùng chúng ta cũng cần không khí trong lành." },
+    ],
+    exercises: [
+      {
+        type: "fill_blank",
+        instruction_vi: "Điền từ nối phù hợp:",
+        pronunciation_focus: [],
+        items: [
+          { prompt: "_____ ja, _____ nein. (một mặt... mặt khác)", answer: "Einerseits ... andererseits" },
+          { prompt: "_____ haben wir uns geeinigt. (cuối cùng)", answer: "Schließlich" },
+          { prompt: "_____ ist es zu teuer. (ngoài ra)", answer: "Außerdem" },
+        ],
+      },
+      {
+        type: "matching",
+        instruction_vi: "Nối từ nối với nghĩa:",
+        pronunciation_focus: [],
+        items: [
+          { prompt: "trotzdem", answer: "tuy vậy" },
+          { prompt: "deshalb", answer: "do đó" },
+          { prompt: "zum Beispiel", answer: "ví dụ" },
+          { prompt: "nämlich", answer: "tức là/vì" },
+        ],
+      },
+      {
+        type: "translation",
+        instruction_vi: "Dịch sang tiếng Đức:",
+        pronunciation_focus: [],
+        items: [
+          { prompt: "Tuy vậy tôi vẫn đi cùng.", answer: "Trotzdem komme ich mit." },
+          { prompt: "Cuối cùng chúng tôi đã thống nhất.", answer: "Schließlich haben wir uns geeinigt." },
+          { prompt: "Một mặt thì có, mặt khác thì không.", answer: "Einerseits ja, andererseits nein." },
+        ],
+      },
+    ],
+  },
+  {
+    id: "german_register_formal",
+    category: "fluency",
+    title_vi: "Lịch sự và thân mật",
+    title_en: "Formal and informal register",
+    sentences: [
+      {
+        en: "Sehr geehrter Herr Schmidt, vielen Dank für Ihre Email.",
+        vi: "Kính gửi ông Schmidt, cám ơn email của ông.",
+        pronunciation_focus: ["Sehr geehrter → ZÊA gờ-Ê-tờ", "vielen → PHÍ-lần", "Email → Ê-mây"],
+      },
+      {
+        en: "Hallo Anna, danke für die Mail!",
+        vi: "Chào Anna, cám ơn email!",
+        pronunciation_focus: ["Hallo → HA-lô — informal", "danke → ĐANG-kờ", "Mail → mêu"],
+      },
+      {
+        en: "Mit freundlichen Grüßen, Klaus Müller.",
+        vi: "Trân trọng, Klaus Müller.",
+        pronunciation_focus: ["freundlichen → PHROIN-lị-khần", "Grüßen → GRUY-sần", "ß → ss"],
+      },
+      {
+        en: "Liebe Grüße, Klaus.",
+        vi: "Thân mến, Klaus.",
+        pronunciation_focus: ["Liebe → LI-bờ", "Grüße → GRUY-sờ — 'ü' tròn", "informal"],
+      },
+      {
+        en: "Ich würde mich freuen, von Ihnen zu hören.",
+        vi: "Tôi sẽ rất vui được nghe phản hồi từ ông/bà.",
+        pronunciation_focus: ["würde → VUYR-đờ — Konjunktiv II lịch sự", "freuen → PHROI-ần", "Ihnen → I-nần"],
+      },
+    ],
+    cultural_notes_vi:
+      "Tiếng Đức có hai mức xưng hô: 'Sie' (lịch sự, không quen) và 'du' (thân, gia đình/bạn bè). Người mới quen luôn dùng 'Sie' cho đến khi được mời 'duzen' (chuyển sang du). Đề nghị duzen thường đến từ người lớn tuổi, cấp trên, phụ nữ trong tình huống xã hội. Ở công sở Đức truyền thống dùng 'Sie' lâu, nhưng startup/công nghệ duzen ngay từ đầu. Trong nhà thờ, phòng tập, một số sport club: tự động duzen.",
+    tip_advice_vi:
+      "Email công việc bắt đầu 'Sehr geehrter Herr/Sehr geehrte Frau' và kết 'Mit freundlichen Grüßen' — gần như bất di bất dịch. Email thân: 'Hallo' / 'Hi' đầu, 'Liebe Grüße' / 'Viele Grüße' / 'LG' kết. Khi không chắc, dùng formal — không bao giờ phản tác dụng.",
+    vocabulary: [
+      { word: "Sehr geehrter Herr", en: "Dear Mr (formal)", vi: "Kính gửi ông", pos: "phrase (formal)", pronunciation_vi: "ZÊA gờ-Ê-tờ HE" },
+      { word: "Sehr geehrte Frau", en: "Dear Ms (formal)", vi: "Kính gửi bà", pos: "phrase (formal)", pronunciation_vi: "ZÊA gờ-Ê-tờ PHRAO" },
+      { word: "Liebe/Lieber", en: "Dear (warm)", vi: "Thân mến", pos: "phrase (warm)", pronunciation_vi: "LI-bờ" },
+      { word: "Mit freundlichen Grüßen", en: "Best regards (formal)", vi: "Trân trọng", pos: "phrase (formal)", pronunciation_vi: "MÍT PHROIN-lị-khần GRUY-sần" },
+      { word: "Liebe Grüße", en: "Warm regards (informal)", vi: "Thân mến", pos: "phrase (informal)", pronunciation_vi: "LI-bờ GRUY-sờ" },
+      { word: "Sie", en: "you (formal)", vi: "ngài/bà (lịch sự)", pos: "pronoun (formal)", pronunciation_vi: "ZI" },
+      { word: "du", en: "you (informal)", vi: "bạn (thân)", pos: "pronoun (informal)", pronunciation_vi: "đu" },
+      { word: "ihr", en: "you (plural informal)", vi: "các bạn", pos: "pronoun", pronunciation_vi: "ÍA" },
+      { word: "duzen", en: "to address as 'du'", vi: "xưng 'du'", pos: "verb", pronunciation_vi: "ĐÚ-tsần" },
+      { word: "siezen", en: "to address as 'Sie'", vi: "xưng 'Sie'", pos: "verb", pronunciation_vi: "ZI-tsần" },
+    ],
+    dialogue: [
+      { speaker: "A", text: "Sollen wir uns duzen?", vi: "Chúng ta xưng 'du' với nhau nhé?" },
+      { speaker: "B", text: "Gerne! Ich bin Klaus.", vi: "Vui lòng! Tôi là Klaus." },
+      { speaker: "A", text: "Schön, Klaus. Ich bin Anna.", vi: "Hay quá, Klaus. Tôi là Anna." },
+      { speaker: "B", text: "Freut mich, Anna!", vi: "Rất vui được gặp, Anna!" },
+    ],
+    exercises: [
+      {
+        type: "fill_blank",
+        instruction_vi: "Chọn từ formal hay informal:",
+        pronunciation_focus: [],
+        items: [
+          { prompt: "Email công ty: '_____ Herr Schmidt' (lịch sự)", answer: "Sehr geehrter" },
+          { prompt: "Email bạn bè: '_____ Anna' (thân mật)", answer: "Liebe" },
+          { prompt: "Kết thúc formal: 'Mit _____ Grüßen' (lịch sự)", answer: "freundlichen" },
+        ],
+      },
+      {
+        type: "matching",
+        instruction_vi: "Nối cách xưng hô với mức độ:",
+        pronunciation_focus: [],
+        items: [
+          { prompt: "Sie", answer: "lịch sự (ngài/bà)" },
+          { prompt: "du", answer: "thân mật (bạn)" },
+          { prompt: "Sehr geehrter", answer: "rất lịch sự (kính gửi)" },
+          { prompt: "Liebe Grüße", answer: "thân mật (thân mến)" },
+        ],
+      },
+      {
+        type: "translation",
+        instruction_vi: "Dịch sang tiếng Đức:",
+        pronunciation_focus: [],
+        items: [
+          { prompt: "Kính gửi ông Schmidt.", answer: "Sehr geehrter Herr Schmidt." },
+          { prompt: "Trân trọng, Klaus.", answer: "Mit freundlichen Grüßen, Klaus." },
+          { prompt: "Chúng ta xưng 'du' nhé?", answer: "Sollen wir uns duzen?" },
+        ],
+      },
+    ],
+  },
+  {
+    id: "german_idioms",
+    category: "fluency",
+    title_vi: "Thành ngữ thông dụng",
+    title_en: "Common idioms",
+    sentences: [
+      {
+        en: "Daumen drücken!",
+        vi: "Chúc may mắn! (nắm ngón cái)",
+        pronunciation_focus: ["Daumen → ĐAO-mần", "drücken → ĐRUYC-kần — 'ü' tròn", "thành ngữ"],
+      },
+      {
+        en: "Das ist nicht mein Bier.",
+        vi: "Đó không phải việc của tôi. (lit: không phải bia của tôi)",
+        pronunciation_focus: ["nicht → NỊT", "Bier → BÍA", "thành ngữ"],
+      },
+      {
+        en: "Tomaten auf den Augen haben.",
+        vi: "Không thấy điều rõ ràng. (lit: có cà chua trên mắt)",
+        pronunciation_focus: ["Tomaten → tô-MA-tần", "Augen → AO-gần", "trên mắt → mù tịt"],
+      },
+      {
+        en: "Da liegt der Hund begraben.",
+        vi: "Đó là cốt lõi vấn đề. (lit: con chó được chôn ở đó)",
+        pronunciation_focus: ["liegt → LIK-t", "Hund → HUNT", "begraben → bờ-GRA-bần"],
+      },
+      {
+        en: "Ich verstehe nur Bahnhof.",
+        vi: "Tôi không hiểu gì cả. (lit: tôi chỉ hiểu nhà ga)",
+        pronunciation_focus: ["verstehe → phờ-SHTÊ-ờ", "nur → NÚA", "Bahnhof → BA-nờ-hôph"],
+      },
+    ],
+    cultural_notes_vi:
+      "Thành ngữ Đức (Redewendungen) có lịch sử dài, nhiều cái rất hình ảnh. 'Schwein haben' (có heo - may mắn) đến từ thời trung cổ khi tặng heo là tặng may mắn. 'Tomaten auf den Augen' (cà chua trên mắt) là cách hài hước nói ai đó không thấy điều rõ ràng. Học thành ngữ là chìa khóa hòa nhập văn hóa — nhưng dùng ít, đúng chỗ. Dùng quá nhiều nghe lố.",
+    tip_advice_vi:
+      "Bắt đầu với 5-10 thành ngữ phổ biến nhất: 'Daumen drücken', 'Schwein haben', 'auf der Nase liegen' (nằm dài/bệnh), 'die Nase voll haben' (chán ngấy). Đừng dịch literal sang tiếng Việt khi nói tiếng Đức — sẽ rất buồn cười. Học cụm cố định, dùng nguyên cụm.",
+    vocabulary: [
+      { word: "der Daumen", en: "thumb", vi: "ngón cái", pos: "noun (m)", pronunciation_vi: "đe-a ĐAO-mần" },
+      { word: "drücken", en: "to press", vi: "ấn/nắm", pos: "verb", pronunciation_vi: "ĐRUYC-kần" },
+      { word: "das Glück", en: "luck", vi: "may mắn", pos: "noun (n)", pronunciation_vi: "đát GLUYC — 'ü' tròn" },
+      { word: "der Hund", en: "dog", vi: "con chó", pos: "noun (m)", pronunciation_vi: "đe-a HUNT" },
+      { word: "begraben", en: "buried", vi: "chôn", pos: "verb (P2)", pronunciation_vi: "bờ-GRA-bần" },
+      { word: "Bahnhof verstehen", en: "to not understand", vi: "không hiểu gì", pos: "idiom", pronunciation_vi: "BA-nờ-hôph phờ-SHTÊ-ần" },
+      { word: "Schwein haben", en: "to be lucky", vi: "may mắn", pos: "idiom", pronunciation_vi: "SHvain HA-bần" },
+      { word: "der Knoten", en: "knot", vi: "nút thắt", pos: "noun (m)", pronunciation_vi: "đe-a KNÔ-tần" },
+      { word: "platzen", en: "to burst", vi: "vỡ ra", pos: "verb", pronunciation_vi: "PLA-tsần" },
+      { word: "die Nase", en: "nose", vi: "mũi", pos: "noun (f)", pronunciation_vi: "đi NA-zờ" },
+    ],
+    dialogue: [
+      { speaker: "A", text: "Morgen habe ich eine wichtige Prüfung.", vi: "Mai tôi có kỳ thi quan trọng." },
+      { speaker: "B", text: "Ich drücke dir die Daumen!", vi: "Tôi chúc bạn may mắn!" },
+      { speaker: "A", text: "Danke. Ich verstehe das Thema noch nicht ganz.", vi: "Cám ơn. Tôi chưa hiểu hoàn toàn đề bài." },
+      { speaker: "B", text: "Keine Sorge, du wirst Schwein haben!", vi: "Không lo, bạn sẽ may mắn thôi!" },
+    ],
+    exercises: [
+      {
+        type: "fill_blank",
+        instruction_vi: "Điền thành ngữ:",
+        pronunciation_focus: [],
+        items: [
+          { prompt: "Ich drücke dir die _____! (chúc may mắn - ngón cái)", answer: "Daumen" },
+          { prompt: "Das ist nicht mein _____. (không phải việc của tôi)", answer: "Bier" },
+          { prompt: "Ich verstehe nur _____. (không hiểu gì - nhà ga)", answer: "Bahnhof" },
+        ],
+      },
+      {
+        type: "matching",
+        instruction_vi: "Nối thành ngữ với nghĩa:",
+        pronunciation_focus: [],
+        items: [
+          { prompt: "Daumen drücken", answer: "chúc may mắn" },
+          { prompt: "Schwein haben", answer: "may mắn (bất ngờ)" },
+          { prompt: "Tomaten auf den Augen", answer: "không thấy điều rõ" },
+          { prompt: "Bahnhof verstehen", answer: "không hiểu gì" },
+        ],
+      },
+      {
+        type: "translation",
+        instruction_vi: "Dịch sang tiếng Đức (dùng thành ngữ):",
+        pronunciation_focus: [],
+        items: [
+          { prompt: "Chúc may mắn!", answer: "Daumen drücken!" },
+          { prompt: "Tôi không hiểu gì cả.", answer: "Ich verstehe nur Bahnhof." },
+          { prompt: "Đó không phải việc của tôi.", answer: "Das ist nicht mein Bier." },
+        ],
+      },
+    ],
+  },
+  {
+    id: "german_natural_speech",
+    category: "fluency",
+    title_vi: "Nói tự nhiên",
+    title_en: "Natural everyday speech",
+    sentences: [
+      {
+        en: "Ach so! Jetzt verstehe ich.",
+        vi: "À ra vậy! Giờ tôi hiểu rồi.",
+        pronunciation_focus: ["Ach so → ÁC zô — phản ứng hiểu ra", "jetzt → IẾT-st", "verstehe → phờ-SHTÊ-ờ"],
+      },
+      {
+        en: "Naja, das ist halt so.",
+        vi: "Thì... cứ vậy thôi.",
+        pronunciation_focus: ["Naja → NA-ia — chần chừ", "halt → HALT — particle resignation", "so → zô"],
+      },
+      {
+        en: "Mensch, das ist wirklich super!",
+        vi: "Trời, cái này thật tuyệt!",
+        pronunciation_focus: ["Mensch → MENSH — exclamation", "wirklich → VIA-lị", "super → ZÚ-pờ"],
+      },
+      {
+        en: "Echt? Das wusste ich nicht.",
+        vi: "Thật à? Tôi không biết.",
+        pronunciation_focus: ["Echt → ẾT — informal cho 'wirklich'", "wusste → VÚS-tờ", "nicht → NỊT"],
+      },
+      {
+        en: "Egal, machen wir's einfach.",
+        vi: "Kệ, làm cứ làm thôi.",
+        pronunciation_focus: ["Egal → ê-GAN", "machen wir's → MA-khần vias — viết tắt 'wir es'", "einfach → AIN-pháct"],
+      },
+    ],
+    cultural_notes_vi:
+      "Sự khác biệt giữa người học tiếng Đức và người Đức bản xứ thường nằm ở những từ nhỏ này: 'Ach so', 'Naja', 'Mensch', 'Echt', 'Genau'. Người Đức dùng 'Genau' (chính xác) liên tục để xác nhận đối phương — một cuộc đối thoại Đức 5 phút có thể có 10 'Genau'. 'Mensch' (literally 'người') là exclamation trung tính, không tục. 'Ach so!' là phản ứng khi vừa hiểu ra điều gì đó — dùng đúng chỗ rất tự nhiên.",
+    tip_advice_vi:
+      "Cách luyện: xem phim Đức (Tatort, Dark trên Netflix), podcast (Slow German cho người mới), YouTube (Easy German). Để ý từ nhỏ và bắt chước. Đừng dịch tiếng Việt sang tiếng Đức — học cụm 'Ach so', 'Mensch', 'Genau' như đơn vị, dùng đúng tình huống. Dần dần, tiếng Đức sẽ nghe tự nhiên hơn rất nhiều.",
+    vocabulary: [
+      { word: "Ach so!", en: "Oh I see!", vi: "À ra vậy!", pos: "exclamation", pronunciation_vi: "ÁC zô" },
+      { word: "Naja", en: "well...", vi: "thì...", pos: "filler", pronunciation_vi: "NA-ia" },
+      { word: "Mensch!", en: "Man! / Wow!", vi: "Trời!", pos: "exclamation", pronunciation_vi: "MENSH" },
+      { word: "Echt?", en: "Really?", vi: "Thật à?", pos: "exclamation (informal)", pronunciation_vi: "ẾT" },
+      { word: "Egal", en: "doesn't matter", vi: "kệ/không sao", pos: "adjective/adverb", pronunciation_vi: "ê-GAN" },
+      { word: "klar", en: "clear/of course", vi: "rõ rồi/tất nhiên", pos: "adjective", pronunciation_vi: "KLA" },
+      { word: "okay", en: "okay", vi: "được/ok", pos: "adverb", pronunciation_vi: "ô-KÊ" },
+      { word: "genau", en: "exactly", vi: "chính xác", pos: "adverb", pronunciation_vi: "gờ-NAO" },
+      { word: "stimmt", en: "right/true", vi: "đúng vậy", pos: "verb form", pronunciation_vi: "SHTÍMT" },
+      { word: "wirklich", en: "really", vi: "thật sự", pos: "adverb", pronunciation_vi: "VIA-lị" },
+    ],
+    dialogue: [
+      { speaker: "A", text: "Hast du gehört? Anna heiratet nächsten Monat.", vi: "Bạn nghe chưa? Anna kết hôn tháng sau." },
+      { speaker: "B", text: "Echt? Mensch, das ist ja toll!", vi: "Thật à? Trời, hay quá!" },
+      { speaker: "A", text: "Genau. Sie ist total glücklich.", vi: "Chính xác. Cô ấy hạnh phúc lắm." },
+      { speaker: "B", text: "Ach so! Ich dachte, sie wollte noch warten.", vi: "À ra vậy! Tôi tưởng cô ấy muốn đợi." },
+    ],
+    exercises: [
+      {
+        type: "fill_blank",
+        instruction_vi: "Điền từ tự nhiên:",
+        pronunciation_focus: [],
+        items: [
+          { prompt: "_____ ! Jetzt verstehe ich. (À ra vậy)", answer: "Ach so" },
+          { prompt: "_____ ? Das wusste ich nicht. (Thật à - informal)", answer: "Echt" },
+          { prompt: "_____ , machen wir's einfach. (Kệ)", answer: "Egal" },
+        ],
+      },
+      {
+        type: "matching",
+        instruction_vi: "Nối từ với nghĩa:",
+        pronunciation_focus: [],
+        items: [
+          { prompt: "klar", answer: "rõ rồi/tất nhiên" },
+          { prompt: "genau", answer: "chính xác" },
+          { prompt: "stimmt", answer: "đúng vậy" },
+          { prompt: "Mensch!", answer: "Trời!" },
+        ],
+      },
+      {
+        type: "translation",
+        instruction_vi: "Dịch sang tiếng Đức (giọng tự nhiên):",
+        pronunciation_focus: [],
+        items: [
+          { prompt: "À ra vậy! Giờ tôi hiểu.", answer: "Ach so! Jetzt verstehe ich." },
+          { prompt: "Thật à? Tôi không biết.", answer: "Echt? Das wusste ich nicht." },
+          { prompt: "Trời, cái này thật tuyệt!", answer: "Mensch, das ist wirklich super!" },
+        ],
+      },
+    ],
+  },
+];
+
 // ── Aggregate export ────────────────────────────────────────────────────
 
 export const GERMAN_LESSONS: ReadonlyArray<GermanLesson> = [
@@ -3087,6 +3981,8 @@ export const GERMAN_LESSONS: ReadonlyArray<GermanLesson> = [
   ...LIFE_ADMIN,
   ...SOCIETY,
   ...EXPRESSIONS,
+  ...ADVANCED_GRAMMAR,
+  ...FLUENCY,
 ];
 
 export function getLessonsByCategory(
