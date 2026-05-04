@@ -1,133 +1,163 @@
 // src/pages/languages/FrenchLessonsPage.tsx — /languages/french
 //
-// Landing page for the French language module. Shows all 50 lessons
-// with expandable tiles for vocabulary, examples, dialogue, and exercises.
+// Landing page for the French language module. 5 lessons across 5
+// categories, each rendered as a tile that expands to show sentences,
+// pronunciation focus, cultural notes, and tip advice.
+//
+// Pattern mirrors NailTechLessonsPage for UI consistency.
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import {
   Sparkles,
   Lightbulb,
+  Volume2,
   ChevronDown,
   ChevronUp,
 } from "lucide-react";
+import {
+  FRENCH_CATEGORIES,
+  getLessonsByCategory,
+  type FrenchCategoryMeta,
+  type FrenchLesson,
+} from "@/languages/french/lessons";
 
 const HERO_VI =
-  "Tiếng Pháp cho người Việt — từ chào hỏi đến tranh luận nâng cao.";
+  "Tiếng Pháp cho người Việt — từ chào hỏi đến gọi món ăn.";
 const HERO_EN =
-  "French for Vietnamese learners — 50 lessons from bonjour to debating.";
-
-interface FrenchLesson {
-  id: number;
-  title: string;
-  content?: string;
-}
+  "French for Vietnamese learners — from bonjour to l'addition.";
 
 export default function FrenchLessonsPage() {
-  const [lessons, setLessons] = useState<FrenchLesson[] | null>(null);
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    let cancelled = false;
-    import("@/languages/french/lessons")
-      .then((mod) => {
-        if (!cancelled) setLessons(mod.lessons ?? mod.default ?? []);
-      })
-      .catch((err) => {
-        if (!cancelled) setError(String(err));
-      });
-    return () => { cancelled = true; };
-  }, []);
-
-  if (error) {
-    return (
-      <div className="mx-auto w-full max-w-3xl px-4 py-12 text-center">
-        <p className="text-red-600 text-sm">Could not load lessons: {error}</p>
-        <Link to="/languages" className="mt-3 inline-block text-sm font-medium text-blue-700 underline">
-          Back to languages
-        </Link>
-      </div>
-    );
-  }
-
-  if (!lessons) {
-    return (
-      <div className="mx-auto w-full max-w-3xl px-4 py-6">
-        <div className="space-y-3">
-          {[1, 2, 3, 4, 5].map((n) => (
-            <div key={n} className="rounded-xl border border-slate-200 bg-white p-5 animate-pulse">
-              <div className="h-5 w-3/4 rounded bg-slate-200" />
-              <div className="mt-2 h-4 w-full rounded bg-slate-100" />
-            </div>
-          ))}
-        </div>
-      </div>
-    );
-  }
-
   return (
     <div className="mx-auto w-full max-w-3xl px-4 py-6">
       <header className="mb-6 rounded-2xl border border-blue-200 bg-gradient-to-br from-blue-50 via-indigo-50 to-sky-50 p-5">
         <p className="text-xs font-semibold uppercase tracking-wider text-blue-600">
-          🇫🇷 Tiếng Pháp · French
+          Tiếng Pháp · French
         </p>
         <h1 className="mt-1 text-2xl font-bold text-slate-900 leading-tight">
           {HERO_VI}
         </h1>
         <p className="mt-1 text-sm font-medium text-slate-600">{HERO_EN}</p>
+        <p className="mt-3 text-sm text-slate-700 leading-relaxed">
+          Phát âm viết riêng cho người Việt. Âm mũi, âm câm, liaison — giải thích theo cách người Việt hiểu.
+        </p>
         <p className="mt-3 text-xs text-slate-500">
-          {lessons.length} bài · phát âm thực tế cho người Việt
+          5 bài · 5 chủ đề · phát âm thực tế
         </p>
         <p className="mt-1 text-xs text-slate-500">
-          <Link to="/languages" className="font-medium text-blue-700 underline">
-            ← All languages / Xem ngôn ngữ khác
+          <Link
+            to="/languages"
+            className="font-medium text-blue-700 underline"
+          >
+            Xem ngôn ngữ khác / View other languages
           </Link>
         </p>
       </header>
 
-      <div className="space-y-3">
-        {lessons.map((lesson, i) => (
-          <LessonTile key={lesson.id} lesson={lesson} index={i} />
+      <div className="space-y-5">
+        {FRENCH_CATEGORIES.map((cat) => (
+          <CategorySection key={cat.id} category={cat} />
         ))}
       </div>
     </div>
   );
 }
 
-function LessonTile({ lesson, index }: { lesson: FrenchLesson; index: number }) {
-  const [open, setOpen] = useState(false);
+interface CategorySectionProps {
+  category: FrenchCategoryMeta;
+}
 
+function CategorySection({ category }: CategorySectionProps) {
+  const lessons = getLessonsByCategory(category.id);
   return (
-    <div className="rounded-xl border border-slate-200 bg-white overflow-hidden">
+    <section>
+      <header className="mb-2 flex items-baseline justify-between">
+        <h2 className="text-base font-semibold text-slate-900">
+          {category.title_vi}
+        </h2>
+        <span className="text-xs text-slate-500">
+          {category.title_en} · {lessons.length} bài
+        </span>
+      </header>
+      <ol className="space-y-2">
+        {lessons.map((lesson) => (
+          <li key={lesson.id}>
+            <LessonTile lesson={lesson} />
+          </li>
+        ))}
+      </ol>
+    </section>
+  );
+}
+
+interface LessonTileProps {
+  lesson: FrenchLesson;
+}
+
+function LessonTile({ lesson }: LessonTileProps) {
+  const [open, setOpen] = useState(false);
+  return (
+    <article className="overflow-hidden rounded-xl border border-slate-200 bg-white">
       <button
         type="button"
-        onClick={() => setOpen(!open)}
-        className="w-full flex items-center gap-3 p-4 text-left hover:bg-slate-50 transition-colors"
+        onClick={() => setOpen((prev) => !prev)}
+        aria-expanded={open}
+        className="flex w-full items-center justify-between gap-3 px-4 py-3 text-left transition hover:bg-slate-50"
       >
-        <div className="flex-shrink-0 w-8 h-8 rounded-full grid place-items-center text-sm font-bold text-white bg-blue-600">
-          {lesson.id}
-        </div>
         <div className="min-w-0 flex-1">
-          <div className="text-sm font-bold text-slate-900">
-            {lesson.title}
-          </div>
+          <p className="text-sm font-medium text-slate-900">
+            {lesson.title_vi}
+          </p>
+          <p className="text-xs text-slate-500">{lesson.title_en}</p>
         </div>
-        <div className="flex-shrink-0 text-slate-400">
-          {open ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
-        </div>
+        {open ? (
+          <ChevronUp className="h-4 w-4 shrink-0 text-slate-400" />
+        ) : (
+          <ChevronDown className="h-4 w-4 shrink-0 text-slate-400" />
+        )}
       </button>
 
       {open && (
-        <div className="px-4 pb-4 border-t border-slate-100">
-          {lesson.content && (
-            <div className="mt-3 p-3 rounded-lg bg-slate-50">
-              <pre className="text-xs text-slate-700 whitespace-pre-wrap font-sans leading-relaxed">
-                {lesson.content}
-              </pre>
-            </div>
-          )}
+        <div className="border-t border-slate-100 bg-slate-50/60 px-4 py-3 space-y-3">
+          <ol className="space-y-2">
+            {lesson.sentences.map((s, i) => (
+              <li
+                key={i}
+                className="rounded-lg border border-slate-200 bg-white p-3"
+              >
+                <p className="text-sm font-medium text-slate-900">{s.en}</p>
+                <p className="mt-1 text-xs text-slate-600">{s.vi}</p>
+                {s.pronunciation_focus.length > 0 && (
+                  <p className="mt-1.5 inline-flex items-center gap-1 text-[11px] text-blue-700">
+                    <Volume2 className="h-3 w-3" />
+                    {s.pronunciation_focus.join(" · ")}
+                  </p>
+                )}
+              </li>
+            ))}
+          </ol>
+
+          <div className="rounded-lg border border-blue-100 bg-blue-50/60 p-3">
+            <p className="inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wide text-blue-700">
+              <Sparkles className="h-3 w-3" />
+              Văn hoá Pháp
+            </p>
+            <p className="mt-1 text-xs leading-relaxed text-slate-700">
+              {lesson.cultural_notes_vi}
+            </p>
+          </div>
+
+          <div className="rounded-lg border border-amber-100 bg-amber-50/60 p-3">
+            <p className="inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wide text-amber-700">
+              <Lightbulb className="h-3 w-3" />
+              Mẹo học
+            </p>
+            <p className="mt-1 text-xs leading-relaxed text-slate-700">
+              {lesson.tip_advice_vi}
+            </p>
+          </div>
         </div>
       )}
-    </div>
+    </article>
   );
 }

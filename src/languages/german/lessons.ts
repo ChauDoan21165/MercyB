@@ -1307,4 +1307,6 @@ export function getLessonById(id: string): GermanLesson | undefined {
   return GERMAN_LESSONS.find((l) => l.id === id);
 }
 
+export const lessons = GERMAN_LESSONS;
 export default GERMAN_LESSONS;
+

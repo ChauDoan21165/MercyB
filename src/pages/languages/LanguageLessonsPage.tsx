@@ -115,7 +115,7 @@ function LessonList({ lang, accent }: { lang: string; accent: string }) {
     if (!loader) return;
     loader()
       .then((mod) => {
-        if (!cancelled) setLessonsModule(mod.default ?? mod.lessons ?? []);
+        if (!cancelled) setLessonsModule(mod.default ?? []);
       })
       .catch((err) => {
         if (!cancelled) setError(String(err));

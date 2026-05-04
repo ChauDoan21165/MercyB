@@ -105,6 +105,7 @@ export type FrenchLesson = {
   vocabulary?: VocabEntry[];
   dialogue?: DialogueLine[];
   exercises?: Exercise[];
+  content?: string;
 };
 
 // ── 1. Greetings ────────────────────────────────────────────────────────
@@ -1307,4 +1308,6 @@ export function getLessonById(id: string): FrenchLesson | undefined {
   return FRENCH_LESSONS.find((l) => l.id === id);
 }
 
+export const lessons = FRENCH_LESSONS;
 export default FRENCH_LESSONS;
+
