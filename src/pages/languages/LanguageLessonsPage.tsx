@@ -76,6 +76,9 @@ export default function LanguageLessonsPage() {
           {meta.heroVi}
         </h1>
         <p className="mt-1 text-sm font-medium text-slate-600">{meta.heroEn}</p>
+        <p className="mt-2 text-sm font-bold" style={{ color: meta.accent }}>
+          50 bài · 50 lessons
+        </p>
         <p className="mt-3 text-xs text-slate-500">
           <Link
             to="/languages"
@@ -114,6 +117,11 @@ const LEVELS: Record<string, { label: string; start: number; end: number }[]> = 
     { label: "Trung cấp · Intermediate", start: 21, end: 40 },
     { label: "Cao cấp · Advanced", start: 41, end: 50 },
   ],
+  chinese: [
+    { label: "Sơ cấp · Beginner", start: 1, end: 20 },
+    { label: "Trung cấp · Intermediate", start: 21, end: 35 },
+    { label: "Cao cấp · Advanced", start: 36, end: 50 },
+  ],
 };
 
 function LessonList({ lang, accent }: { lang: string; accent: string }) {
@@ -150,7 +158,7 @@ function LessonList({ lang, accent }: { lang: string; accent: string }) {
   const levels = LEVELS[lang] ?? [];
 
   if (levels.length === 0) {
-    // No level grouping — flat list (for Chinese, Japanese)
+    // No level grouping — flat list (for Japanese, though Japanese has its own dedicated page)
     return (
       <div className="space-y-3">
         {lessons.map((lesson: any, i: number) => (
@@ -214,7 +222,10 @@ function LessonTile({
   const [open, setOpen] = React.useState(false);
   const ko = isKorean(lang);
   const sentences: any[] = Array.isArray(lesson.sentences) ? lesson.sentences : [];
-  const vocab: any[] = Array.isArray(lesson.vocabulary) ? lesson.vocabulary : [];
+  // Accept either lesson.vocabulary (new schema) or lesson.vocab (legacy Chinese schema)
+  const vocab: any[] = Array.isArray(lesson.vocabulary)
+    ? lesson.vocabulary
+    : (Array.isArray(lesson.vocab) ? lesson.vocab : []);
   const dialogue: any[] = Array.isArray(lesson.dialogue) ? lesson.dialogue : [];
   const exercises: any[] = Array.isArray(lesson.exercises) ? lesson.exercises : [];
   const vocabCount = vocab.length;
