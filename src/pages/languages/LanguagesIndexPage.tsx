@@ -43,7 +43,7 @@ const CARDS: Card[] = [
     title_en: "German",
     flag: "🇩🇪",
     blurb_vi:
-      "50 bài: chào hỏi, số đếm, câu giao tiếp, cách (cases), ẩm thực, thành ngữ, tranh luận và hơn thế nữa.",
+      "20 bài: chào hỏi, số đếm, câu giao tiếp, cách (cases), ẩm thực, gia đình, thời gian, du lịch và hơn thế nữa.",
     href: "/languages/german",
     accent: "red",
   },
