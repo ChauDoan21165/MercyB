@@ -60,6 +60,8 @@ import ShortcutHelpOverlay from "@/components/keyboard/ShortcutHelpOverlay";
 import GlobalNavigationShortcuts from "@/components/keyboard/GlobalNavigationShortcuts";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 import { SentryUserBinding } from "@/components/monitoring/SentryUserBinding";
+import { Toaster } from "@/components/ui/toaster";
+import { AccessibleToaster } from "@/components/a11y/AccessibleToast";
 import "@/index.css";
 import { supabase } from "@/lib/supabaseClient";
 import { AuthProvider } from "@/providers/AuthProvider";
@@ -423,6 +425,8 @@ w.__MB_REACT_ROOT__.render(
         <OfflineIndicator />
         <GlobalNavigationShortcuts />
         <ShortcutHelpOverlay />
+        <Toaster />
+        <AccessibleToaster />
         <LanguageProgressProvider>
           <AppRouter />
         </LanguageProgressProvider>
