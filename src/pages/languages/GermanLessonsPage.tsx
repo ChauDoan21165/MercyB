@@ -1,8 +1,9 @@
 // src/pages/languages/GermanLessonsPage.tsx — /languages/german
 //
-// Landing page for the German language module. 5 lessons across 5
+// Landing page for the German language module. 50 lessons across 26
 // categories, each rendered as a tile that expands to show sentences,
-// pronunciation focus, cultural notes, and tip advice.
+// pronunciation focus, cultural notes, tip advice, vocabulary,
+// dialogue, and exercises.
 //
 // Pattern mirrors NailTechLessonsPage for UI consistency.
 
@@ -42,7 +43,7 @@ export default function GermanLessonsPage() {
           Phát âm viết riêng cho người Việt. Umlaut (ü, ö), 'ch' ich-Laut, giống danh từ — giải thích theo cách người Việt hiểu.
         </p>
         <p className="mt-3 text-xs text-slate-500">
-          20 bài · phát âm thực tế
+          50 bài · 26 chủ đề · từ cơ bản đến B2
         </p>
         <p className="mt-1 text-xs text-slate-500">
           <Link
@@ -156,6 +157,118 @@ function LessonTile({ lesson }: LessonTileProps) {
               {lesson.tip_advice_vi}
             </p>
           </div>
+          {lesson.vocabulary && lesson.vocabulary.length > 0 && (
+            <div className="rounded-lg border border-green-100 bg-green-50/60 p-3">
+              <p className="inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wide text-green-700">
+                <Sparkles className="h-3 w-3" />
+                Từ vựng ({lesson.vocabulary.length} từ)
+              </p>
+              <div className="mt-2 grid grid-cols-2 gap-1">
+                {lesson.vocabulary.map((v, vi) => (
+                  <div key={vi} className="text-xs">
+                    <span className="font-semibold text-slate-800">{v.word}</span>
+                    <span className="text-slate-500"> — {v.vi}</span>
+                    <span className="block text-[10px] text-slate-400">{v.pronunciation_vi}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {lesson.dialogue && lesson.dialogue.length > 0 && (
+            <div className="rounded-lg border border-purple-100 bg-purple-50/60 p-3">
+              <p className="inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wide text-purple-700">
+                <Sparkles className="h-3 w-3" />
+                Hội thoại
+              </p>
+              <div className="mt-2 space-y-2">
+                {lesson.dialogue.map((d: any, di: number) => (
+                  <div key={di} className="text-xs">
+                    <span className="font-bold text-purple-700">{d.speaker}:</span>
+                    <span className="text-slate-700"> {d.text}</span>
+                    {(d.vi || d.en) && (
+                      <span className="block text-[10px] text-slate-400 ml-4">
+                        {d.vi ?? d.en}
+                      </span>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {lesson.exercises && lesson.exercises.length > 0 && (
+            <div className="rounded-lg border border-orange-100 bg-orange-50/60 p-3">
+              <p className="inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wide text-orange-700">
+                <Lightbulb className="h-3 w-3" />
+                Bài tập
+              </p>
+              <ol className="mt-2 space-y-2">
+                {lesson.exercises.map((ex: any, ei: number) => {
+                  // Normalize exercise type: lessons 1-20 use "fill_blank" (underscore),
+                  // lessons 21-50 use "fill-blank" (hyphen). Treat both the same.
+                  const exType = (ex.type || "").replace("_", "-");
+                  const labelVi =
+                    exType === "fill-blank" ? "Điền vào chỗ trống" :
+                    exType === "matching" ? "Nối" :
+                    exType === "translation" ? "Dịch" :
+                    "Bài tập";
+
+                  // Lessons 1-20 shape: { instruction_vi, items: [{ prompt, answer, options? }] }
+                  if (Array.isArray(ex.items)) {
+                    return (
+                      <li key={ei} className="text-xs text-slate-700">
+                        <div className="font-semibold">
+                          {ei + 1}. {labelVi}
+                        </div>
+                        {ex.instruction_vi && (
+                          <div className="text-slate-600 mt-0.5">{ex.instruction_vi}</div>
+                        )}
+                        <ul className="mt-1 ml-3 space-y-1 list-disc list-inside">
+                          {ex.items.map((it: any, ii: number) => (
+                            <li key={ii}>
+                              <span className="text-slate-700">{it.prompt}</span>
+                              {it.answer && (
+                                <span className="text-[10px] text-green-600 ml-1">
+                                  → {it.answer}
+                                </span>
+                              )}
+                            </li>
+                          ))}
+                        </ul>
+                      </li>
+                    );
+                  }
+
+                  // Lessons 21-50 shape: flat fields (question, vietnamese, instruction, etc.)
+                  return (
+                    <li key={ei} className="text-xs text-slate-700">
+                      <span className="font-semibold">
+                        {ei + 1}. {labelVi}:
+                      </span>
+                      <span> {ex.question || ex.vietnamese || ex.instruction || ""}</span>
+                      {ex.answer && (
+                        <span className="block text-[10px] text-green-600 mt-0.5">
+                          → {ex.answer}
+                        </span>
+                      )}
+                      {ex.french && (
+                        <span className="block text-[10px] text-green-600 mt-0.5">
+                          → {ex.french}
+                        </span>
+                      )}
+                      {ex.pairs && (
+                        <span className="block text-[10px] text-green-600 mt-0.5">
+                          → {ex.pairs.map((p: string[]) => p.join(" - ")).join(", ")}
+                        </span>
+                      )}
+                    </li>
+                  );
+                })}
+              </ol>
+            </div>
+          )}
+
         </div>
       )}
     </article>
