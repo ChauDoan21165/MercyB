@@ -1,6 +1,6 @@
 // src/pages/languages/FrenchLessonsPage.tsx — /languages/french
 //
-// Landing page for the French language module. 5 lessons across 5
+// Landing page for the French language module. 50 lessons across 26
 // categories, each rendered as a tile that expands to show sentences,
 // pronunciation focus, cultural notes, and tip advice.
 //
@@ -42,7 +42,7 @@ export default function FrenchLessonsPage() {
           Phát âm viết riêng cho người Việt. Âm mũi, âm câm, liaison — giải thích theo cách người Việt hiểu.
         </p>
         <p className="mt-3 text-xs text-slate-500">
-          5 bài · 5 chủ đề · phát âm thực tế
+          50 bài · 26 chủ đề · từ cơ bản đến B2
         </p>
         <p className="mt-1 text-xs text-slate-500">
           <Link
@@ -156,6 +156,62 @@ function LessonTile({ lesson }: LessonTileProps) {
               {lesson.tip_advice_vi}
             </p>
           </div>
+          {lesson.vocabulary && lesson.vocabulary.length > 0 && (
+            <div className="rounded-lg border border-green-100 bg-green-50/60 p-3">
+              <p className="inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wide text-green-700">
+                <Sparkles className="h-3 w-3" />
+                Từ vựng ({lesson.vocabulary.length} từ)
+              </p>
+              <div className="mt-2 grid grid-cols-2 gap-1">
+                {lesson.vocabulary.map((v, vi) => (
+                  <div key={vi} className="text-xs">
+                    <span className="font-semibold text-slate-800">{v.word}</span>
+                    <span className="text-slate-500"> — {v.vi}</span>
+                    <span className="block text-[10px] text-slate-400">{v.pronunciation_vi}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {lesson.dialogue && lesson.dialogue.length > 0 && (
+            <div className="rounded-lg border border-purple-100 bg-purple-50/60 p-3">
+              <p className="inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wide text-purple-700">
+                <Sparkles className="h-3 w-3" />
+                Hội thoại
+              </p>
+              <div className="mt-2 space-y-2">
+                {lesson.dialogue.map((d, di) => (
+                  <div key={di} className="text-xs">
+                    <span className="font-bold text-purple-700">{d.speaker}:</span>
+                    <span className="text-slate-700"> {d.text}</span>
+                    <span className="block text-[10px] text-slate-400 ml-4">{d.en}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {lesson.exercises && lesson.exercises.length > 0 && (
+            <div className="rounded-lg border border-orange-100 bg-orange-50/60 p-3">
+              <p className="inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wide text-orange-700">
+                <Lightbulb className="h-3 w-3" />
+                Bài tập
+              </p>
+              <ol className="mt-2 space-y-2">
+                {lesson.exercises.map((ex, ei) => (
+                  <li key={ei} className="text-xs text-slate-700">
+                    <span className="font-semibold">{ei + 1}. {ex.type === "fill-blank" ? "Điền vào chỗ trống" : ex.type === "matching" ? "Nối" : "Dịch"}:</span>
+                    <span> {ex.question || ex.vietnamese || ex.instruction || ""}</span>
+                    {ex.answer && <span className="block text-[10px] text-green-600 mt-0.5">→ {ex.answer}</span>}
+                    {ex.french && <span className="block text-[10px] text-green-600 mt-0.5">→ {ex.french}</span>}
+                    {ex.pairs && <span className="block text-[10px] text-green-600 mt-0.5">→ {ex.pairs.map((p: string[]) => p.join(" - ")).join(", ")}</span>}
+                  </li>
+                ))}
+              </ol>
+            </div>
+          )}
+
         </div>
       )}
     </article>
