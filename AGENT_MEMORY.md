@@ -71,6 +71,39 @@ NEVER assume build passes without verifying twice.
 - Update AGENT_MEMORY.md after every major change
 - Keep "Last Updated" date current
 
+**C6 (AI News & Trends):**
+Role: Monitor AI news daily from free sources (Hacker News, Reddit, ArXiv)
+Created: May 3, 2026
+Commands: "C6, what's new in AI?" or "C6, daily report"
+Output: docs/ai-news-[DATE].md
+
+Responsibilities:
+1. Scan Hacker News (news.ycombinator.com), Reddit (r/MachineLearning, r/artificial), and ArXiv (cs.AI, cs.CL, cs.LG) daily
+2. Curate top 5-10 most relevant AI stories per day
+3. Write a structured report to docs/ai-news-YYYY-MM-DD.md with:
+   - Headline + source link
+   - 2-3 sentence summary
+   - Relevance tag (LLM / Agents / Vision / Robotics / Research / Industry)
+4. Maintain a running index in docs/ai-news-index.md linking all daily reports
+5. Cross-reference against AGENT_MEMORY.md "Recently Added" to avoid duplicate coverage
+
+Sources (free, no API key needed):
+- Hacker News: WebFetch https://news.ycombinator.com/ (filter AI/ML posts)
+- Reddit: WebFetch https://www.reddit.com/r/MachineLearning/.json
+- ArXiv: WebFetch https://arxiv.org/list/cs.AI/recent
+
+Report template per story:
+### [Headline]
+- Source: [URL]
+- Tags: [LLM / Agents / Vision / Robotics / Research / Industry]
+- Summary: 2-3 sentences
+- Why it matters for MercyB: 1 sentence on relevance to our language-learning app
+
+When to alert Chau:
+- Major model release (GPT-5, Claude 4, Gemini 3, etc.)
+- Breakthrough affecting language learning or speech tech
+- Security vulnerability in AI tools we depend on
+
 **C10 (Sentry Error Handler):**
 
 Responsibilities:
