@@ -1,11 +1,10 @@
 import React from "react";
 import { Link, useParams } from "react-router-dom";
-import { Sparkles, Lightbulb, ChevronDown, ChevronUp } from "lucide-react";
+import { Sparkles, Lightbulb, ChevronDown, ChevronUp, BookOpen, MessageCircle, PenLine } from "lucide-react";
 
-// Lazy imports for each language's lesson module
 const lessonLoaders: Record<
   string,
-  () => Promise<{ default: any[] }>
+  () => Promise<{ default?: any[]; lessons?: any[] }>
 > = {
   chinese: () => import("@/languages/chinese/lessons"),
   japanese: () => import("@/languages/japanese/lessons"),
@@ -33,11 +32,15 @@ const META: Record<string, { flag: string; nameVi: string; nameEn: string; heroV
     flag: "🇰🇷",
     nameVi: "Tiếng Hàn",
     nameEn: "Korean",
-    heroVi: "Tiếng Hàn cho người Việt — từ hangul đến ngữ pháp nền tảng.",
-    heroEn: "Korean for Vietnamese learners — from hangul to foundational grammar.",
+    heroVi: "Tiếng Hàn cho người Việt — 50 bài từ hangul đến ngữ pháp nền tảng.",
+    heroEn: "Korean for Vietnamese learners — 50 lessons from hangul to foundational grammar.",
     accent: "#8B5CF6",
   },
 };
+
+function isKorean(lang: string) {
+  return lang === "korean";
+}
 
 export default function LanguageLessonsPage() {
   const { lang } = useParams<{ lang: string }>();
@@ -73,9 +76,6 @@ export default function LanguageLessonsPage() {
           {meta.heroVi}
         </h1>
         <p className="mt-1 text-sm font-medium text-slate-600">{meta.heroEn}</p>
-        <p className="mt-2 text-sm font-bold" style={{ color: meta.accent }}>
-          50 bài · 50 lessons
-        </p>
         <p className="mt-3 text-xs text-slate-500">
           <Link
             to="/languages"
@@ -108,10 +108,17 @@ export default function LanguageLessonsPage() {
   );
 }
 
+const LEVELS: Record<string, { label: string; start: number; end: number }[]> = {
+  korean: [
+    { label: "Sơ cấp · Beginner", start: 1, end: 20 },
+    { label: "Trung cấp · Intermediate", start: 21, end: 40 },
+    { label: "Cao cấp · Advanced", start: 41, end: 50 },
+  ],
+};
+
 function LessonList({ lang, accent }: { lang: string; accent: string }) {
   const [LessonsModule, setLessonsModule] = React.useState<any>(null);
   const [error, setError] = React.useState<string | null>(null);
-  const isChinese = lang === "chinese";
 
   React.useEffect(() => {
     let cancelled = false;
@@ -140,64 +147,56 @@ function LessonList({ lang, accent }: { lang: string; accent: string }) {
   if (!LessonsModule) return null;
 
   const lessons: any[] = Array.isArray(LessonsModule) ? LessonsModule : [];
+  const levels = LEVELS[lang] ?? [];
 
-  if (isChinese) {
-    const beginner = lessons.filter((l: any) => l.id <= 20);
-    const intermediate = lessons.filter((l: any) => l.id > 20 && l.id <= 35);
-    const advanced = lessons.filter((l: any) => l.id > 35 && l.id <= 50);
-
+  if (levels.length === 0) {
+    // No level grouping — flat list (for Chinese, Japanese)
     return (
-      <div className="space-y-6">
-        <LevelSection label="Beginner" labelVi="Cơ bản" lessons={beginner} accent={accent} idRange="1–20" />
-        <LevelSection label="Intermediate" labelVi="Trung cấp" lessons={intermediate} accent={accent} idRange="21–35" />
-        <LevelSection label="Advanced" labelVi="Nâng cao" lessons={advanced} accent={accent} idRange="36–50" />
-      </div>
-    );
-  }
-
-  return (
-    <div className="space-y-3">
-      {lessons.map((lesson: any, i: number) => (
-        <LessonTile
-          key={lesson.id ?? i}
-          lesson={lesson}
-          index={i}
-          accent={accent}
-          lang={lang}
-        />
-      ))}
-    </div>
-  );
-}
-
-function LevelSection({
-  label, labelVi, lessons, accent, idRange,
-}: {
-  label: string; labelVi: string; lessons: any[]; accent: string; idRange: string;
-}) {
-  if (lessons.length === 0) return null;
-  return (
-    <section>
-      <div className="flex items-center gap-2 mb-2">
-        <div className="w-1 h-5 rounded-full" style={{ background: accent }} />
-        <span className="text-sm font-extrabold tracking-wide" style={{ color: accent }}>
-          {label}
-        </span>
-        <span className="text-xs font-semibold text-slate-400">{labelVi}</span>
-        <span className="text-xs text-slate-400 ml-auto">{idRange} · {lessons.length} bài</span>
-      </div>
-      <div className="space-y-2">
+      <div className="space-y-3">
         {lessons.map((lesson: any, i: number) => (
           <LessonTile
             key={lesson.id ?? i}
             lesson={lesson}
-            index={lesson.id - 1}
+            index={i}
             accent={accent}
-            lang="chinese"
+            lang={lang}
           />
         ))}
       </div>
-    </section>
+    );
+  }
+
+  // Grouped by level
+  return (
+    <div className="space-y-6">
+      {levels.map((level) => {
+        const group = lessons.filter(
+          (l: any) => l.id >= level.start && l.id <= level.end
+        );
+        if (group.length === 0) return null;
+        return (
+          <div key={level.label}>
+            <h2
+              className="mb-3 text-sm font-bold uppercase tracking-wide"
+              style={{ color: accent }}
+            >
+              {level.label} — {group.length} bài
+            </h2>
+            <div className="space-y-3">
+              {group.map((lesson: any, i: number) => (
+                <LessonTile
+                  key={lesson.id ?? i}
+                  lesson={lesson}
+                  index={lesson.id - 1}
+                  accent={accent}
+                  lang={lang}
+                />
+              ))}
+            </div>
+          </div>
+        );
+      })}
+    </div>
   );
 }
 
@@ -213,7 +212,15 @@ function LessonTile({
   lang: string;
 }) {
   const [open, setOpen] = React.useState(false);
+  const ko = isKorean(lang);
   const sentences: any[] = Array.isArray(lesson.sentences) ? lesson.sentences : [];
+  const vocab: any[] = Array.isArray(lesson.vocabulary) ? lesson.vocabulary : [];
+  const dialogue: any[] = Array.isArray(lesson.dialogue) ? lesson.dialogue : [];
+  const exercises: any[] = Array.isArray(lesson.exercises) ? lesson.exercises : [];
+  const vocabCount = vocab.length;
+  const sentCount = sentences.length;
+  const dialCount = dialogue.length;
+  const exerCount = exercises.length;
 
   return (
     <div
@@ -233,13 +240,33 @@ function LessonTile({
         </div>
         <div className="min-w-0 flex-1">
           <div className="text-sm font-bold text-slate-900">
-            {lesson.title ?? lesson.title_vi ?? lesson.title_en ?? `Lesson ${index + 1}`}
+            {lesson.title_vi ?? lesson.title_en ?? lesson.title ?? `Lesson ${index + 1}`}
           </div>
           <div className="text-xs font-medium text-slate-500 mt-0.5">
-            {lang === "chinese"
-              ? `${lesson.topic ?? ""} · ${lesson.vocab?.length ?? 0} từ`
-              : (lesson.title_en ?? "")
-            }
+            {lesson.title_en ?? ""}
+          </div>
+          {/* Stats row */}
+          <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mt-1.5 text-xs text-slate-400">
+            {vocabCount > 0 && (
+              <span className="inline-flex items-center gap-1">
+                <BookOpen size={10} /> {vocabCount} từ vựng
+              </span>
+            )}
+            {sentCount > 0 && (
+              <span className="inline-flex items-center gap-1">
+                <MessageCircle size={10} /> {sentCount} câu
+              </span>
+            )}
+            {dialCount > 0 && (
+              <span className="inline-flex items-center gap-1">
+                <span className="text-[10px]">💬</span> {dialCount} hội thoại
+              </span>
+            )}
+            {exerCount > 0 && (
+              <span className="inline-flex items-center gap-1">
+                <PenLine size={10} /> {exerCount} bài tập
+              </span>
+            )}
           </div>
         </div>
         <div className="flex-shrink-0 text-slate-400">
@@ -258,6 +285,7 @@ function LessonTile({
             </div>
           )}
 
+          {/* Sentences */}
           <ul className="space-y-2">
             {sentences.map((s: any, si: number) => (
               <li
@@ -267,10 +295,10 @@ function LessonTile({
                 <Sparkles size={14} className="text-slate-400 flex-shrink-0 mt-0.5" />
                 <div className="min-w-0">
                   <div className="text-sm font-bold text-slate-900">
-                    {s.chinese ?? s.japanese ?? s.korean ?? ""}
+                    {ko && s.korean ? s.korean : (s.chinese ?? s.japanese ?? s.korean ?? "")}
                   </div>
                   <div className="text-xs text-slate-500 mt-0.5">
-                    {s.pinyin ?? s.romaji ?? s.romanized ?? ""}
+                    {ko && s.romanized ? s.romanized : (s.pinyin ?? s.romaji ?? s.romanized ?? "")}
                   </div>
                   <div className="text-xs font-medium text-slate-700 mt-0.5">
                     {s.en ?? ""}
@@ -289,18 +317,27 @@ function LessonTile({
           </ul>
 
           {/* Vocabulary */}
-          {lesson.vocab && Array.isArray(lesson.vocab) && lesson.vocab.length > 0 && (
+          {vocab.length > 0 && (
             <div className="mt-3 rounded-lg border border-slate-200 bg-slate-50/60 p-3">
               <p className="inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wide text-slate-500">
-                <Sparkles className="h-3 w-3" />
+                <BookOpen className="h-3 w-3" />
                 Từ vựng · Vocabulary
               </p>
               <div className="mt-2 grid grid-cols-2 gap-1">
-                {lesson.vocab.map((v: any, vi: number) => (
+                {vocab.map((v: any, vi: number) => (
                   <div key={vi} className="text-xs text-slate-700">
-                    <span className="font-semibold">{v.chinese}</span>
-                    <span className="text-slate-400 ml-1">{v.pinyin}</span>
-                    <span className="text-slate-500 ml-2">{v.english}</span>
+                    {ko ? (
+                      <>
+                        <span className="font-semibold">{v.hangul}</span>
+                        <span className="text-slate-400 ml-2">{v.meaning}</span>
+                      </>
+                    ) : (
+                      <>
+                        <span className="font-semibold">{v.chinese}</span>
+                        <span className="text-slate-400 ml-1">{v.pinyin}</span>
+                        <span className="text-slate-500 ml-2">{v.english}</span>
+                      </>
+                    )}
                   </div>
                 ))}
               </div>
@@ -308,55 +345,70 @@ function LessonTile({
           )}
 
           {/* Dialogue */}
-          {lesson.dialogue && Array.isArray(lesson.dialogue) && lesson.dialogue.length > 0 && (
+          {dialogue.length > 0 && (
             <div className="mt-3 rounded-lg border border-slate-200 bg-white p-3">
               <p className="inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wide text-slate-500 mb-2">
-                <Sparkles className="h-3 w-3" />
+                <MessageCircle className="h-3 w-3" />
                 Hội thoại · Dialogue
               </p>
-              {lesson.dialogue.map((d: any, di: number) => (
+              {dialogue.map((d: any, di: number) => (
                 <div key={di} className="text-xs mb-1.5">
                   <span className="font-bold" style={{ color: accent }}>{d.speaker}:</span>{" "}
-                  <span className="text-slate-900 font-medium">{d.chinese}</span>
-                  <span className="text-slate-400 ml-1">({d.pinyin})</span>
-                  <div className="text-slate-500 ml-5">{d.english}</div>
+                  {ko ? (
+                    <>
+                      <span className="text-slate-900 font-medium">{d.hangul}</span>
+                      <div className="text-slate-500 ml-5">{d.meaning}</div>
+                    </>
+                  ) : (
+                    <>
+                      <span className="text-slate-900 font-medium">{d.chinese}</span>
+                      <span className="text-slate-400 ml-1">({d.pinyin})</span>
+                      <div className="text-slate-500 ml-5">{d.english}</div>
+                    </>
+                  )}
                 </div>
               ))}
             </div>
           )}
 
           {/* Exercises */}
-          {lesson.exercises && Array.isArray(lesson.exercises) && lesson.exercises.length > 0 && (
+          {exercises.length > 0 && (
             <div className="mt-3 rounded-lg border border-amber-100 bg-amber-50/60 p-3">
               <p className="inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wide text-amber-700 mb-2">
-                <Lightbulb className="h-3 w-3" />
+                <PenLine className="h-3 w-3" />
                 Bài tập · Exercises
               </p>
               <ol className="space-y-2">
-                {lesson.exercises.map((ex: any, ei: number) => (
+                {exercises.map((ex: any, ei: number) => (
                   <li key={ei} className="text-xs">
                     {ex.type === "fill-blank" && (
                       <div>
-                        <span className="text-slate-500">Fill-blank: </span>
+                        <span className="text-slate-500">Điền vào chỗ trống: </span>
                         <span className="text-slate-700">{ex.question}</span>
                         <span className="text-green-600 font-semibold ml-2">→ {ex.answer}</span>
                       </div>
                     )}
                     {ex.type === "translation" && (
                       <div>
-                        <span className="text-slate-500">Translate: </span>
+                        <span className="text-slate-500">Dịch: </span>
                         <span className="text-slate-700 italic">"{ex.vietnamese}"</span>
-                        <span className="text-green-600 font-semibold ml-2">→ {ex.chinese}</span>
-                        <span className="text-slate-400 ml-1">({ex.pinyin})</span>
+                        <span className="text-green-600 font-semibold ml-2">
+                          → {ko ? ex.hangul : ex.chinese}
+                        </span>
+                        {!ko && ex.pinyin && (
+                          <span className="text-slate-400 ml-1">({ex.pinyin})</span>
+                        )}
                       </div>
                     )}
                     {ex.type === "matching" && (
                       <div>
-                        <span className="text-slate-500">Match: {ex.instruction} </span>
+                        <span className="text-slate-500">Ghép: {ex.instruction} </span>
                         <span className="text-slate-700">
                           {ex.pairs?.map((p: any, pi: number) => (
                             <span key={pi} className="mr-3">
-                              {p.chinese}={p.english}
+                              {ko
+                                ? `${p.hangul}=${p.meaning}`
+                                : `${p.chinese}=${p.english}`}
                             </span>
                           ))}
                         </span>
