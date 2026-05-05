@@ -98,6 +98,13 @@ export type Exercise = Record<string, any>;
 
 export type FrenchCefrLevel = "A1" | "A2" | "B1" | "B2" | "C1" | "C2";
 
+export type IdiomGloss = {
+  idiom: string;
+  literal: string;
+  meaning: string;
+  example: string;
+};
+
 export type FrenchLesson = {
   id: string;
   category: FrenchCategoryId;
@@ -111,6 +118,12 @@ export type FrenchLesson = {
   dialogue?: DialogueLine[];
   exercises?: Exercise[];
   content?: string;
+  // B2-specific optional fields (Phase 2 conversation-focused lessons).
+  // All optional — existing A1/A2/B1 lessons typecheck unchanged.
+  dialogue_long?: DialogueLine[];
+  roleplay_prompts?: string[];
+  register_notes?: string;
+  idiom_glosses?: IdiomGloss[];
 };
 
 // ── 1. Greetings ────────────────────────────────────────────────────────
