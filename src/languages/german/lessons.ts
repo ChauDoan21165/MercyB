@@ -120,6 +120,11 @@ export type GermanLesson = {
   vocabulary?: VocabEntry[];
   dialogue?: DialogueLine[];
   exercises?: Exercise[];
+  // B2 calibration fields — optional passthrough; consumed by normalizer + renderer
+  dialogue_long?: DialogueLine[];
+  roleplay_prompts?: string[];
+  register_notes?: string;
+  idiom_glosses?: { idiom: string; literal: string; meaning: string; example: string }[];
 };
 
 // ── 1. Greetings ────────────────────────────────────────────────────────
@@ -4001,6 +4006,107 @@ const FLUENCY: GermanLesson[] = [
           { prompt: "À ra vậy! Giờ tôi hiểu.", answer: "Ach so! Jetzt verstehe ich." },
           { prompt: "Thật à? Tôi không biết.", answer: "Echt? Das wusste ich nicht." },
           { prompt: "Trời, cái này thật tuyệt!", answer: "Mensch, das ist wirklich super!" },
+        ],
+      },
+    ],
+  },
+  {
+    id: "german_workplace_conflict_chef",
+    level: "B2",
+    category: "fluency",
+    title_vi: "Konfliktgespräch mit Chef — nói chuyện khó với sếp",
+    title_en: "Workplace conflict conversation with boss",
+    sentences: [
+      { en: "Frau Becker, ich hätte gern einen kurzen Termin mit Ihnen.", vi: "Chị Becker, tôi muốn xin một cuộc gặp ngắn với chị.", pronunciation_focus: ["hätte → HÉT-tờ — Konjunktiv II lịch sự", "Termin → TE-MIN", "Ihnen → I-nần — viết hoa = formal"] },
+      { en: "Ich habe in den letzten drei Monaten 60 Überstunden gemacht.", vi: "Trong ba tháng qua tôi đã làm 60 giờ làm thêm.", pronunciation_focus: ["Überstunden → UY-bờ-shtun-đần", "ü → uy tròn môi", "gemacht → gờ-MÁCH-t"] },
+      { en: "Die aktuelle Arbeitsbelastung ist auf Dauer nicht tragbar.", vi: "Khối lượng công việc hiện tại không thể chịu được lâu dài.", pronunciation_focus: ["Arbeitsbelastung → A-baits-bờ-LAS-tung", "Dauer → ĐAO-ờ", "tragbar → TRÁK-ba"] },
+      { en: "Ich möchte Klartext reden, bevor es eskaliert.", vi: "Tôi muốn nói thẳng trước khi vấn đề leo thang.", pronunciation_focus: ["möchte → MƠCH-tờ — 'ö' tròn môi", "Klartext → KLA-tếc-t", "eskaliert → es-ka-LÍA-t"] },
+      { en: "Können wir die Prioritäten gemeinsam neu festlegen?", vi: "Chúng ta có thể cùng nhau sắp xếp lại thứ tự ưu tiên không?", pronunciation_focus: ["Prioritäten → pri-o-ri-TÊ-tần", "gemeinsam → gờ-MAIN-zam", "festlegen → PHEST-lê-gần"] },
+    ],
+    cultural_notes_vi: "Văn hóa công sở Đức cực kỳ trực tiếp — 'Klartext' (nói thẳng) là giá trị, không phải thiếu lịch sự. Khác hẳn Việt Nam: người Đức kỳ vọng nhân viên tự nói ra vấn đề CHỦ ĐỘNG, không 'đợi sếp tự nhận thấy'. Im lặng = đồng ý. Nếu bạn quá tải mà không nói, sếp Đức sẽ cho rằng bạn đang ổn. Khi xin gặp sếp về vấn đề khó: (1) đặt lịch trước qua email/Outlook — không đột nhập phòng; (2) chuẩn bị số liệu cụ thể (giờ overtime, deadline); (3) đề xuất giải pháp, không chỉ phàn nàn; (4) giữ giọng bình tĩnh, factual, không cảm xúc.",
+    tip_advice_vi: "Cấu trúc cuộc nói chuyện: (1) Vào đề lịch sự với Konjunktiv II: 'Ich hätte gern einen kurzen Termin'. (2) Nêu sự kiện trước, cảm xúc sau: '60 Überstunden in 3 Monaten' chứ không 'Tôi mệt quá'. (3) Dùng 'Ich-Botschaften': 'Ich brauche...', 'Mir ist wichtig...' — không trách 'Sie geben zu viel'. (4) Đề xuất giải pháp cụ thể: pausieren, delegieren, neu priorisieren. (5) Câu chốt: 'Ich möchte Klartext reden' — báo hiệu sắp nói thật, người Đức tôn trọng. Tránh 'Es tut mir leid, aber...' — yếu thế quá. Người Đức không cần xin lỗi vì nói sự thật.",
+    vocabulary: [
+      { word: "die Arbeitsbelastung", en: "workload", vi: "khối lượng công việc", pos: "noun (f)", pronunciation_vi: "đi A-baits-bờ-LAS-tung" },
+      { word: "die Überstunde", en: "overtime hour", vi: "giờ làm thêm", pos: "noun (f)", pronunciation_vi: "đi UY-bờ-shtun-đờ — 'ü' tròn" },
+      { word: "tragbar", en: "bearable", vi: "chịu được, bền vững", pos: "adjective", pronunciation_vi: "TRÁK-ba" },
+      { word: "ansprechen", en: "to bring up", vi: "nói ra, đề cập", pos: "verb (sep)", pronunciation_vi: "AN-shprê-khần" },
+      { word: "die Priorität", en: "priority", vi: "ưu tiên", pos: "noun (f)", pronunciation_vi: "đi pri-o-ri-TÊT" },
+      { word: "pausieren", en: "to pause", vi: "tạm dừng", pos: "verb", pronunciation_vi: "pao-ZÍA-ần" },
+      { word: "delegieren", en: "to delegate", vi: "ủy quyền, giao phó", pos: "verb", pronunciation_vi: "đê-lê-GÍA-ần" },
+      { word: "der Termin", en: "appointment", vi: "cuộc hẹn", pos: "noun (m)", pronunciation_vi: "đe-a TE-MIN" },
+      { word: "die Erschöpfung", en: "exhaustion", vi: "kiệt sức", pos: "noun (f)", pronunciation_vi: "đi e-SHƠP-phung — 'ö' tròn" },
+      { word: "sich abgrenzen", en: "to set boundaries", vi: "đặt ranh giới", pos: "verb (refl)", pronunciation_vi: "zịch ÁP-grên-tsần" },
+    ],
+    dialogue: [
+      { speaker: "Linh", text: "Frau Becker, könnten wir kurz sprechen? Es geht um meine Arbeitsbelastung.", vi: "Chị Becker, chúng ta nói chuyện một chút được không? Là về khối lượng công việc của tôi." },
+      { speaker: "Becker", text: "Ja, gerne. Was gibt's?", vi: "Vâng, mời. Có chuyện gì?" },
+      { speaker: "Linh", text: "Ich möchte Klartext reden: drei Projekte parallel sind nicht tragbar.", vi: "Tôi muốn nói thẳng: ba dự án song song không thể chịu được." },
+      { speaker: "Becker", text: "Verstanden. Was schlagen Sie vor?", vi: "Tôi hiểu. Chị đề xuất gì?" },
+    ],
+    dialogue_long: [
+      { speaker: "Linh", text: "Frau Becker, könnten wir kurz sprechen? Es geht um meine Arbeitsbelastung.", vi: "Chị Becker, chúng ta có thể nói chuyện một chút không? Là về khối lượng công việc của tôi." },
+      { speaker: "Becker", text: "Ja, gerne. Setzen Sie sich. Was gibt's?", vi: "Vâng, mời ngồi. Có chuyện gì?" },
+      { speaker: "Linh", text: "Ich möchte Klartext reden: in den letzten drei Monaten habe ich 60 Überstunden gemacht.", vi: "Tôi muốn nói thẳng: ba tháng qua tôi đã làm 60 giờ làm thêm." },
+      { speaker: "Becker", text: "Das war mir nicht bewusst. Haben Sie konkrete Zahlen?", vi: "Tôi không biết điều đó. Chị có số liệu cụ thể không?" },
+      { speaker: "Linh", text: "Ja, ich habe alles vorbereitet. Hier ist die Übersicht.", vi: "Vâng, tôi đã chuẩn bị sẵn. Đây là bản tổng hợp." },
+      { speaker: "Becker", text: "Verstehe. Was schlagen Sie vor?", vi: "Tôi hiểu. Chị đề xuất gì?" },
+      { speaker: "Linh", text: "Drei Projekte parallel sind nicht tragbar. Ich brauche eine klare Priorisierung.", vi: "Ba dự án song song không thể chịu được. Tôi cần ưu tiên rõ ràng." },
+      { speaker: "Becker", text: "Welche Projekte meinen Sie konkret?", vi: "Cụ thể là dự án nào?" },
+      { speaker: "Linh", text: "Das Müller-Projekt, die Marketing-Kampagne und die Datenbank-Migration.", vi: "Dự án Müller, chiến dịch marketing và migration cơ sở dữ liệu." },
+      { speaker: "Becker", text: "Die Migration hat oberste Priorität. Können wir das Müller-Projekt pausieren?", vi: "Migration là ưu tiên cao nhất. Chúng ta có thể tạm dừng dự án Müller không?" },
+      { speaker: "Linh", text: "Pausieren ja — aber Herr Müller erwartet Ergebnisse bis Monatsende.", vi: "Dừng được, nhưng anh Müller chờ kết quả đến cuối tháng." },
+      { speaker: "Becker", text: "Mit Herrn Müller spreche ich heute Nachmittag. Das übernehme ich.", vi: "Tôi sẽ nói chuyện với anh Müller chiều nay. Để tôi xử lý." },
+      { speaker: "Linh", text: "Danke. Und die Marketing-Kampagne?", vi: "Cảm ơn chị. Còn chiến dịch marketing?" },
+      { speaker: "Becker", text: "Teile davon delegieren wir an Tom. Sind Sie damit einverstanden?", vi: "Một phần chúng ta giao cho Tom. Chị có đồng ý không?" },
+      { speaker: "Linh", text: "Ja, das wäre sehr hilfreich. Eine letzte Sache: ich nehme nächste Woche zwei Tage Urlaub.", vi: "Vâng, sẽ rất hữu ích. Một việc cuối: tuần sau tôi nghỉ phép hai ngày." },
+      { speaker: "Becker", text: "Selbstverständlich. Ihre Gesundheit geht vor. Tragen Sie es im Kalender ein.", vi: "Tất nhiên. Sức khỏe của chị quan trọng nhất. Chị hãy đánh dấu trong lịch." },
+      { speaker: "Linh", text: "Vielen Dank für das offene Gespräch, Frau Becker.", vi: "Cảm ơn chị đã trò chuyện cởi mở, chị Becker." },
+      { speaker: "Becker", text: "Danke, dass Sie das angesprochen haben. Beim nächsten Mal — bitte früher.", vi: "Cảm ơn chị đã nói ra. Lần sau — xin nói sớm hơn." },
+    ],
+    roleplay_prompts: [
+      "Bạn đã làm 50 giờ làm thêm trong 2 tháng và bị từ chối nghỉ phép. Hãy đặt lịch họp với sếp (dùng Sie), nêu sự kiện cụ thể, và đề xuất 2 giải pháp. Giữ giọng bình tĩnh, factual.",
+      "Sếp giao thêm dự án thứ tư trong khi bạn đang quá tải với 3 cái đang dở. Hãy từ chối lịch sự bằng tiếng Đức công sở — dùng Konjunktiv II ('ich könnte', 'ich würde') và đề xuất ai trong team có thể nhận thay.",
+      "Đồng nghiệp Đức (đã 'du') hỏi sao bạn trông kiệt sức. Hãy dùng thành ngữ 'die Nase voll haben' để than vãn ngắn — sau đó hỏi ý kiến: nên nói chuyện với sếp như thế nào.",
+    ],
+    register_notes: "Toàn bộ cuộc nói chuyện này dùng 'Sie' (lịch sự), không 'du'. Lý do: (1) đây là buổi nói chuyện chính thức về xung đột — không phải lúc duzen; (2) công ty truyền thống Đức (luật, ngân hàng, bảo hiểm, công ty gia đình) mặc định 'Sie' với cấp trên kể cả khi đã làm chung nhiều năm; (3) trong tình huống căng thẳng, 'Sie' giúp giữ khoảng cách lý trí, tránh cảm xúc lan vào.\n\nKhác Pháp: 'vous' Pháp có thể lỏng — đồng nghiệp Pháp nhanh chóng 'tu' sau vài tháng. Đức nghiêm hơn nhiều. Startup, agency, IT trẻ thường 'du' từ ngày đầu, nhưng phần lớn ngành khác giữ 'Sie' lâu. Quy tắc vàng cho người Việt: theo dõi sếp dùng gì với bạn — nếu sếp 'Sie', bạn 'Sie'. Đề nghị chuyển 'du' luôn đến từ người cao hơn (cấp trên, lớn tuổi) — bạn KHÔNG được đề nghị trước với cấp trên.\n\nTín hiệu cần chú ý: nếu bạn và sếp đã 'du' từ lâu, nhưng trong cuộc họp về vấn đề nghiêm trọng sếp đột ngột chuyển lại 'Sie' — đây là báo hiệu 'đây là chuyện công việc, không phải bạn bè'. Hiểu được tín hiệu này tránh hiểu lầm. Ngược lại, nếu cuộc họp căng thẳng và sếp vẫn 'du', tức là sếp coi bạn như đồng minh, không phải đối thủ.",
+    idiom_glosses: [
+      { idiom: "die Nase voll haben", literal: "có cái mũi đầy", meaning: "chán ngấy, hết chịu nổi", example: "Ich habe die Nase voll von diesen ständigen Überstunden." },
+      { idiom: "Klartext reden", literal: "nói chữ rõ ràng", meaning: "nói thẳng, không vòng vo", example: "Ich möchte Klartext reden: das geht so nicht weiter." },
+      { idiom: "kein Blatt vor den Mund nehmen", literal: "không cầm chiếc lá trước miệng", meaning: "nói thẳng, không che giấu", example: "Frau Becker nimmt kein Blatt vor den Mund — das schätze ich." },
+      { idiom: "das Maß ist voll", literal: "cái đong đã đầy", meaning: "đã đến giới hạn, giọt nước tràn ly", example: "Nach diesem Vorfall ist das Maß voll. Es muss sich etwas ändern." },
+    ],
+    exercises: [
+      {
+        type: "fill_blank",
+        instruction_vi: "Điền từ phù hợp cho cuộc nói chuyện công sở:",
+        pronunciation_focus: ["Konjunktiv II", "Sie-Form"],
+        items: [
+          { prompt: "Ich _____ gern einen Termin mit Ihnen. (Konjunktiv II của 'haben')", answer: "hätte" },
+          { prompt: "Die Arbeitsbelastung ist nicht _____. (chịu được lâu dài)", answer: "tragbar" },
+          { prompt: "Ich möchte das offen _____. (nói ra)", answer: "ansprechen" },
+          { prompt: "Können wir die _____ neu festlegen? (ưu tiên)", answer: "Prioritäten" },
+        ],
+      },
+      {
+        type: "matching",
+        instruction_vi: "Nối câu Đức với chức năng giao tiếp:",
+        pronunciation_focus: [],
+        items: [
+          { prompt: "Ich möchte Klartext reden.", answer: "Báo hiệu sắp nói thật" },
+          { prompt: "Was schlagen Sie vor?", answer: "Mời đề xuất giải pháp" },
+          { prompt: "Das übernehme ich.", answer: "Sếp nhận trách nhiệm" },
+          { prompt: "Ihre Gesundheit geht vor.", answer: "Ưu tiên sức khỏe nhân viên" },
+        ],
+      },
+      {
+        type: "translation",
+        instruction_vi: "Dịch sang tiếng Đức công sở (giữ formal Sie-Form):",
+        pronunciation_focus: ["Sie-Form", "Konjunktiv II"],
+        items: [
+          { prompt: "Tôi muốn nói thẳng về khối lượng công việc.", answer: "Ich möchte Klartext über die Arbeitsbelastung reden." },
+          { prompt: "Chúng ta có thể sắp xếp lại thứ tự ưu tiên không?", answer: "Können wir die Prioritäten neu festlegen?" },
+          { prompt: "Tôi đề xuất tạm dừng dự án Müller.", answer: "Ich schlage vor, das Müller-Projekt zu pausieren." },
+          { prompt: "Cảm ơn chị đã trò chuyện cởi mở.", answer: "Vielen Dank für das offene Gespräch." },
         ],
       },
     ],
