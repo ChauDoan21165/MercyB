@@ -3702,6 +3702,237 @@ export const lessons: JapaneseLesson[] = [
     ] },
     { type: "translation", vietnamese: "Em xin được kiểm tra — về điểm này, có thể là em hiểu sai.", japanese: "確認させていただけますでしょうか。私の理解が間違っているかもしれません。" }
   ]
+},
+,
+{
+  id: 75,
+  title: "Hospital visit (病院/救急外来)",
+  title_vi: "Khám bệnh tại bệnh viện (病院/救急外来)",
+  title_en: "Hospital visit (病院/救急外来)",
+  category: "fluency",
+  level: "B2",
+  vocabulary: [
+    { japanese: "病院 (びょういん)", english: "hospital" },
+    { japanese: "救急外来 (きゅうきゅうがいらい)", english: "emergency outpatient ward" },
+    { japanese: "診察 (しんさつ)", english: "medical examination" },
+    { japanese: "症状 (しょうじょう)", english: "symptoms" },
+    { japanese: "保険証 (ほけんしょう)", english: "insurance card" },
+    { japanese: "処方箋 (しょほうせん)", english: "prescription" },
+    { japanese: "薬 (くすり)", english: "medicine" },
+    { japanese: "アレルギー", english: "allergy" },
+    { japanese: "発熱 (はつねつ)", english: "fever" },
+    { japanese: "問診票 (もんしんひょう)", english: "medical questionnaire (filled before exam)" }
+  ],
+  examples: [
+    { japanese: "昨日から発熱と頭痛がございます。", english: "I have had fever and headache since yesterday." },
+    { japanese: "保険証はこちらでございます。", english: "Here is my insurance card." },
+    { japanese: "薬のアレルギーはペニシリンでございます。", english: "My medicine allergy is penicillin." },
+    { japanese: "処方箋はどちらの薬局でいただけますでしょうか。", english: "At which pharmacy can I get the prescription filled?" },
+    { japanese: "ご診察、誠にありがとうございました。", english: "Thank you sincerely for the examination." }
+  ],
+  dialogue: [
+    { speaker: "受付", japanese: "保険証をお願いします。今日はどうされましたか。", english: "Insurance card, please. What brings you here today?" },
+    { speaker: "チャウ", japanese: "昨日から発熱と頭痛がございまして、診察をお願いしたく参りました。", english: "Since yesterday I have fever and headache, so I came for examination." },
+    { speaker: "受付", japanese: "問診票にご記入ください。受付番号は二十三番です。", english: "Please fill out the questionnaire. Your number is 23." },
+    { speaker: "チャウ", japanese: "承知いたしました。ありがとうございます。", english: "Understood. Thank you." }
+  ],
+  dialogue_long: [
+    { speaker: "受付", japanese: "こんにちは、初めての方でしょうか。", english: "Hello, is this your first visit?" },
+    { speaker: "チャウ", japanese: "はい、初めてでございます。実は昨日の夜から発熱がございまして、本日診察をお願いしたく参りました。", english: "Yes, my first visit. Actually, I've had fever since last night, so I came today for examination." },
+    { speaker: "受付", japanese: "わかりました。保険証はお持ちですか。", english: "Understood. Do you have your insurance card?" },
+    { speaker: "チャウ", japanese: "はい、こちらでございます。在留カードもお見せいたします。", english: "Yes, here it is. I'll also show my residence card." },
+    { speaker: "受付", japanese: "ありがとうございます。それでは、こちらの問診票にご記入ください。日本語でご記入が難しい場合、英語版もございます。", english: "Thank you. Then please fill out this questionnaire. If Japanese is difficult, we have an English version." },
+    { speaker: "チャウ", japanese: "ありがとうございます。日本語版で挑戦してみますが、わからない箇所は英語版を参考にさせていただきます。", english: "Thank you. I'll try the Japanese version but reference the English one for what I don't understand." },
+    { speaker: "受付", japanese: "結構です。書き終わったら、待合室でお待ちください。お名前を呼ばれましたら、第二診察室へお越しください。", english: "Fine. After filling out, wait in the waiting area. When your name is called, please come to Exam Room 2." },
+    { speaker: "看護師", japanese: "グエン・ティ・チャウさん、第二診察室へどうぞ。", english: "Ms. Nguyen Thi Chau, Exam Room 2 please." },
+    { speaker: "医師", japanese: "こんにちは、内科医の田中です。今日はどうされましたか。", english: "Hello, I'm Dr. Tanaka from internal medicine. What's the issue today?" },
+    { speaker: "チャウ", japanese: "昨日の夜九時頃から、急に三十八度の発熱と頭痛がございます。喉も少し痛みます。食欲はありますが、寒気がいたします。", english: "Around 9pm last night, I suddenly got 38-degree fever and headache. My throat also hurts a bit. I have appetite but feel chills." },
+    { speaker: "医師", japanese: "なるほど、典型的な風邪の症状ですね。インフルエンザの可能性もありますので、念のため検査いたします。", english: "I see, typical cold symptoms. There's also flu possibility, so I'll test just in case." },
+    { speaker: "チャウ", japanese: "承知いたしました。検査の結果、インフルエンザの場合、何日くらい仕事を休む必要がございますでしょうか。", english: "Understood. If the test shows flu, about how many days do I need to rest from work?" },
+    { speaker: "医師", japanese: "インフルエンザの場合、発症から五日間、かつ解熱後二日間は出勤を控えていただくのが一般的です。診断書もお出しできます。", english: "For flu, generally rest 5 days from onset, plus 2 days after fever subsides. I can issue a medical certificate." },
+    { speaker: "チャウ", japanese: "ありがとうございます。診断書をいただけますと、会社に提出するのに大変助かります。", english: "Thank you. A medical certificate would help a lot for submitting to my company." },
+    { speaker: "医師", japanese: "では、検査いたします。鼻に綿棒を入れますが、少し違和感があるかもしれません。", english: "Then let's test. I'll insert a swab in your nose; you may feel some discomfort." },
+    { speaker: "チャウ", japanese: "はい、お願いいたします。", english: "Yes, please proceed." },
+    { speaker: "医師", japanese: "(検査後)結果はインフルエンザA型で陽性です。タミフルを五日分処方いたします。アレルギーはございますか。", english: "(after test) Result: positive for influenza A. I'll prescribe Tamiflu for 5 days. Any allergies?" },
+    { speaker: "チャウ", japanese: "ペニシリンにアレルギーがございます。それ以外はございません。", english: "I have a penicillin allergy. Nothing else." },
+    { speaker: "医師", japanese: "タミフルはペニシリン系ではないので、問題ございません。十分な水分と休養をお取りください。お大事に。", english: "Tamiflu is not penicillin-based, so no issue. Please get plenty of fluids and rest. Take care." },
+    { speaker: "チャウ", japanese: "ご丁寧な診察、誠にありがとうございました。失礼いたします。", english: "Thank you sincerely for the careful examination. Excusing myself." }
+  ],
+  roleplay_prompts: [
+    "Đóng vai chính bạn lần đầu đến bệnh viện ở Tokyo. Hãy mở đầu với reception — cụm hajimete de gozaimasu cộng cụ thể symptoms từ khi nào, đâu đau. KHÔNG dùng casual sukoshi guai ga warui (hơi không khỏe) — Nhật cần specific timeline và body parts.",
+    "Bác sĩ hỏi alergi. Bạn có dị ứng penicillin nhưng không nhớ tiếng Nhật của penicillin. Hãy KHÔNG fake — dùng cụm peniciilin to iu kusuri ni areriguii ga gozaimasu (em dị ứng với thuốc tên penicillin) cộng spell ra nếu bác sĩ ask. Nhật accept English drug names.",
+    "Bạn cần 診断書 (medical certificate) cho công ty Nhật vì phải nghỉ 5 ngày. Hãy request explicitly — KHÔNG ngại — diagnostic certificate là routine ở Nhật. Cụm: shindansho wo o-negai shitaku zonjimasu, kaisha ni teishutsu suru hitsuyou ga gozaimasu node."
+  ],
+  register_notes: "Hospital ở Nhật uses teineigo cao (desu/masu+) cho tất cả interactions. Bốn patterns đặc biệt: (1) SYMPTOM REPORTING: dùng -ga gozaimasu thay -ga arimasu cho bệnh: hatsunetsu to zutsuu ga gozaimasu (em có sốt và đau đầu). 'Gozaimasu' show humility với bác sĩ. Cụm timeline cụ thể: kinou no yoru kuji-goro kara (từ 9 giờ tối qua), KHÔNG vague kinou kara (từ hôm qua). (2) DESCRIBE PAIN PRECISELY: Nhật cần specifics về pain location + intensity. nodo (cổ họng), atama (đầu), onaka (bụng), mune (ngực). Intensity: sukoshi (nhẹ), kanari (đáng kể), hidoi (nặng). Type: zukinzukin (đập đập), kirikiri (nhói). (3) MEDICAL HISTORY: dùng bigieni-teki na byouki (chronic disease), genzai fukuyou-chuu no kusuri (current medications). Cẩn thận: dị ứng = areriguii (アレルギー), KHÔNG dị ứng = areriguii wa gozaimasen. (4) FOLLOW DOCTOR'S DIRECTION: khi bác sĩ ask move/breathe/etc, dùng hai (yes) cộng tuân theo. KHÔNG ask why during procedure — wait until end. Câu cuối khi rời: o-daiji ni (take care — bác sĩ Nhật) — bạn đáp: arigatou gozaimashita. Shitsurei itashimasu. // TODO native review — tamifuru (タミフル) brand name vs generic oseltamivir; some hospitals dùng generic name now post-2023; medical certificate có thể là 診断書 hoặc 病気証明書 tùy hospital.",
+  idiom_glosses: [
+    { idiom: "お大事に", literal: "Hãy giữ gìn (sức khỏe)", meaning: "Take care of yourself — câu chuẩn bác sĩ/nurse nói khi bạn rời. Không phải idiom truyền thống nhưng là cụm cố định trong medical context. Bạn KHÔNG nói lại 'o-daiji ni' với bác sĩ (out of place); đáp arigatou gozaimashita.", example: "十分な水分と休養をお取りください。お大事に。" },
+    { idiom: "備えあれば憂いなし", literal: "Có chuẩn bị thì không lo", meaning: "Better safe than sorry — phù hợp khi bác sĩ test cho cả flu khi bạn nghĩ là common cold. Frame test like preparedness, không over-treatment.", example: "備えあれば憂いなし、念のため検査いたしましょう。" },
+    { idiom: "病は気から", literal: "Bệnh phát từ tinh thần", meaning: "Stress affects health — gốc Nhật cổ. Phù hợp khi nói về work stress contributing to illness. Bác sĩ Nhật accept như factor.", example: "病は気からと申します。最近、お仕事のストレスが多かったかもしれません。" },
+    { idiom: "急がば回れ", literal: "Vội thì đi vòng", meaning: "Vội vã hỏng việc — phù hợp khi bạn muốn rush back to work nhưng bác sĩ recommend rest 5 ngày. Take rest properly để phục hồi đầy đủ.", example: "急がば回れ、しっかり休んで早く治すよう心がけます。" }
+  ],
+  cultural_notes_vi: "Bệnh viện Nhật khác phương Tây ở 6 điểm. (1) INSURANCE EVERYTHING: bắt buộc 国民健康保険 (national health insurance) hoặc 社会保険 (employer insurance) trước khi đến. Nếu là tourist, mang travel insurance. KHÔNG có insurance = pay 100 phần trăm cash (often 30,000-50,000 yen cho consultation). (2) APPOINTMENT VS WALK-IN: bệnh viện lớn (大学病院) cần referral từ clinic nhỏ. Walk-in tại 大学病院 không có referral charge thêm 5,000 yen 'selection fee'. Cách tốt: đến clinic nhỏ (クリニック) trước, get referral nếu cần specialist. (3) LANGUAGE BARRIER: ít bác sĩ Nhật fluent English. Mang theo translation app, hoặc đến bệnh viện International (Tokyo: St. Luke's, Akasaka International Clinic) where staff English-speaking. Một số ward có volunteer interpreters — gọi trước hỏi. (4) PRESCRIPTION SEPARATE: Nhật tách medical exam và pharmacy. Bác sĩ khám, prescribe trên paper 処方箋. Bạn cầm processhei đến 薬局 (drugstore với green cross sign) — usually within walk distance. Pharmacy hơn 100m từ hospital là norm. (5) WAIT TIME: bệnh viện công thường wait 1-2 giờ. Mang sách/laptop, không có WiFi reliable ở nhiều hospital. Lunch break 12-13 không khám — schedule around. (6) PAYMENT: cuối visit, đến 会計 (cashier) pay. Card OK ở major hospital, cash-only ở clinic nhỏ. Mang đủ 5,000-15,000 yen cash cho first visit. Khác biệt với VN: ở VN bạn chọn bác sĩ specific trước; ở Nhật, được assigned theo schedule. Ở VN có thể tip extra cho tốt hơn; ở Nhật, KHÔNG tip — illegal trong medical context, đẳng cấp insult bác sĩ. Mẹo cuối: học 5 từ medical key thuộc lòng trước khi đi: 痛い (đau), 熱 (sốt), 咳 (ho), 吐き気 (buồn nôn), 頭痛 (đau đầu). Pattern symptom + ga arimasu là reliable. Cho emergency: 119 cho ambulance, English available 24/7. Không hesitate to call — Nhật ambulance free at point of service.",
+  tip_advice_vi: "Trước khi sang Nhật long-term: đăng ký 国民健康保険 tại city hall (市役所) trong 14 ngày kể từ khi nhận residence card. Bring residence card và pay first month fee (3,000-15,000 yen tùy income). Insurance card sẽ mailed trong 1-2 tuần. Trong waiting period, KHÔNG có insurance, nếu khẩn cấp pay full upfront và claim back sau khi insurance issued. Nếu là tourist, mua travel insurance trước departure (NEVER skip — Japan medical đắt, simple ER visit có thể 300,000+ yen without insurance). Khi đến hospital: arrive 30 phút sớm cho first visit. Bring: insurance card, residence card or passport, list current medications (write on paper, English OK), allergy list. Reception sẽ ask làm 問診票 (medical questionnaire) — 2-3 trang covering: chief complaint, duration, severity, previous illnesses, family history, current meds. Fill carefully — bác sĩ uses this. Nếu Japanese khó, ask English version (most major hospitals have). Trong cuộc khám: KHÔNG remove clothing unless asked — Nhật minimize physical exposure. Bác sĩ dùng stethoscope qua áo OK. Nếu cần thoroughly check, bác sĩ sẽ provide gown. KHÔNG joke about symptoms (Nhật medical context taken seriously). Symptoms exaggeration thua underplay. Sau exam, bác sĩ sẽ explain diagnosis. Nếu không hiểu, ask: kakunin sasete itadakemasu deshou ka cộng repeat back (em xác nhận lại — XX bị YY, đúng không?). Bác sĩ Nhật appreciate verification step. Khi nhận processhei, mang đến 薬局 IMMEDIATELY (valid 4 ngày only). Pharmacy sẽ ask thêm questions about dosage timing, food restrictions. Đáp truthful. Sau pay, nhận medicine + 薬剤情報提供書 (drug info sheet) — keep cho future reference. Common follow-up: nếu được prescribed antibiotic, finish FULL course (Nhật strict about this), không stop khi feel better. Sau visit, nếu cần medical certificate cho work, ask trước khi rời: shindansho wo o-negai shitaku zonjimasu (em xin diagnostic certificate). 1,000-3,000 yen extra. Nếu emergency outside hospital hours: 119 ambulance hoặc 救急外来 (24h ER) at major hospitals. Không hesitate. Nếu mental health crisis: TELL Lifeline Tokyo English support (03-5774-0992), miễn phí.",
+  exercises: [
+    { type: "fill-blank", question: "昨日から発熱と頭痛が___ます。", answer: "ござい" },
+    { type: "matching", instruction: "Ghép symptom với cụm reporting đúng.", pairs: [
+      { japanese: "発熱があります", english: "có sốt" },
+      { japanese: "喉が痛みます", english: "đau cổ họng" },
+      { japanese: "吐き気がします", english: "buồn nôn" },
+      { japanese: "寒気がいたします", english: "lạnh / rùng mình (formal)" }
+    ] },
+    { type: "translation", vietnamese: "Em dị ứng với penicillin. Ngoài ra không có dị ứng nào khác.", japanese: "ペニシリンにアレルギーがございます。それ以外はございません。" }
+  ]
+},
+{
+  id: 76,
+  title: "Hotel/ryokan complaint — room defect, requesting room change",
+  title_vi: "Khiếu nại khách sạn/ryokan — phòng có sự cố, xin đổi phòng",
+  title_en: "Hotel/ryokan complaint — room defect, requesting room change",
+  category: "fluency",
+  level: "B2",
+  vocabulary: [
+    { japanese: "ホテル", english: "hotel (Western style)" },
+    { japanese: "旅館 (りょかん)", english: "ryokan (traditional Japanese inn)" },
+    { japanese: "フロント", english: "front desk" },
+    { japanese: "客室 (きゃくしつ)", english: "guest room" },
+    { japanese: "故障 (こしょう)", english: "malfunction / broken" },
+    { japanese: "不具合 (ふぐあい)", english: "defect / problem (general)" },
+    { japanese: "お部屋の変更 (おへやのへんこう)", english: "room change" },
+    { japanese: "騒音 (そうおん)", english: "noise" },
+    { japanese: "エアコン", english: "air conditioner" },
+    { japanese: "浴室 (よくしつ)", english: "bathroom" }
+  ],
+  examples: [
+    { japanese: "お部屋のエアコンが故障しているようでございます。", english: "The room's air conditioner seems to be broken." },
+    { japanese: "可能でしたら、お部屋の変更をお願いしたく存じます。", english: "If possible, I would humbly like to request a room change." },
+    { japanese: "上の階からの騒音で、なかなか眠れません。", english: "Due to noise from the floor above, I can't sleep well." },
+    { japanese: "ご対応いただけますと幸いでございます。", english: "I would be grateful for your handling." },
+    { japanese: "お忙しいところ、申し訳ございません。", english: "I apologize for troubling you when you're busy." }
+  ],
+  dialogue: [
+    { speaker: "チャウ", japanese: "失礼いたします。三〇五号室のグエンと申します。お部屋について、ご相談がございます。", english: "Excuse me. I'm Nguyen from room 305. I have a request about my room." },
+    { speaker: "フロント", japanese: "はい、グエン様、どうされましたか。", english: "Yes, Ms. Nguyen, what's the issue?" },
+    { speaker: "チャウ", japanese: "エアコンが故障しているようでして、室温が下がりません。", english: "The air conditioner seems broken; the temperature isn't dropping." },
+    { speaker: "フロント", japanese: "それは申し訳ございません。すぐに技術スタッフをお部屋に派遣いたします。", english: "I'm so sorry. I'll send technical staff to your room immediately." }
+  ],
+  dialogue_long: [
+    { speaker: "チャウ", japanese: "失礼いたします。三〇五号室のグエン・ティ・チャウと申します。お部屋についてご相談がございまして、フロントへ参りました。", english: "Excuse me. I'm Nguyen Thi Chau from room 305. I have a matter about my room, so I came to the front desk." },
+    { speaker: "フロント", japanese: "グエン様、いつもご利用いただきありがとうございます。どのようなことでしょうか。", english: "Ms. Nguyen, thank you for your continued patronage. What's the matter?" },
+    { speaker: "チャウ", japanese: "二点ございます。一点目、エアコンが故障しているようでして、設定を二十二度にしても室温が下がりません。今夜は外が三十度を超えると伺いまして、少し心配でございます。", english: "Two points. First, the AC seems broken — I set it to 22 degrees but the room temperature won't drop. I heard tonight will be over 30 outside, so I'm a bit worried." },
+    { speaker: "フロント", japanese: "それは大変申し訳ございません。もう一点はいかがでしょうか。", english: "I'm so sorry. And the other point?" },
+    { speaker: "チャウ", japanese: "二点目、上の階からの足音と話し声が大きく、昨夜あまり眠れませんでした。本日も同じようでしたら、明日の業務に差し支えがあるかと心配しております。", english: "Second, footsteps and voices from the floor above are loud — I couldn't sleep much last night. If tonight is similar, I'm worried it'll affect tomorrow's work." },
+    { speaker: "フロント", japanese: "二件とも承知いたしました。エアコンに関しましては、今すぐ技術スタッフを派遣して点検いたします。修理が難しい場合、お部屋の変更も検討いたします。", english: "Understood on both. For the AC, I'll send technical staff immediately. If repair is difficult, we'll consider a room change." },
+    { speaker: "チャウ", japanese: "ありがとうございます。お部屋の変更も可能でしたら、ぜひご検討いただきたく存じます。", english: "Thank you. If room change is possible, please consider it." },
+    { speaker: "フロント", japanese: "本日のお部屋状況を確認いたします。少々お待ちください。", english: "Let me check today's room availability. One moment please." },
+    { speaker: "フロント", japanese: "お待たせいたしました。同じカテゴリーで、最上階のお部屋が空いてございます。最上階ですと、上階からの騒音はございません。エアコンも別系統でございますので、両方の問題が解決できるかと存じます。", english: "Sorry to keep you waiting. A same-category room on the top floor is available. Top floor means no noise from above. AC is separate system, so both issues can be resolved." },
+    { speaker: "チャウ", japanese: "それは大変ありがたいご提案でございます。お部屋の変更にかかる料金はいかがでしょうか。", english: "That's a wonderful suggestion. Is there any fee for the room change?" },
+    { speaker: "フロント", japanese: "今回は当ホテル側の不具合によるご移動ですので、追加料金は一切いただきません。お荷物の移動も、当方のスタッフが対応させていただきます。", english: "Since this move is due to our hotel's defect, no additional charge. Our staff will handle moving your luggage." },
+    { speaker: "チャウ", japanese: "ご丁寧なご対応、誠にありがとうございます。今、お部屋に荷物がございますので、一度戻ってから移動の手続きをお願いしてもよろしいでしょうか。", english: "Thank you sincerely for the courteous handling. My luggage is in the room now; may I return briefly before the move?" },
+    { speaker: "フロント", japanese: "もちろんでございます。お部屋にお戻りいただき、十分ほどでフロントへお越しください。新しいお部屋へご案内させていただきます。", english: "Of course. Please return to your room, then come to the front desk in about 10 minutes. We'll guide you to the new room." },
+    { speaker: "チャウ", japanese: "誠にありがとうございました。お忙しいところお手数をおかけいたしまして、申し訳ございませんでした。", english: "Thank you sincerely. I apologize for the trouble during your busy time." },
+    { speaker: "フロント", japanese: "とんでもございません。お客様にご不便をおかけしたのは当ホテルの責任です。雨降って地固まると申しますが、本日のご対応を機に、より良いサービスをお届けできるよう努めてまいります。", english: "Not at all. It's our hotel's responsibility for inconveniencing you. As they say after rain the ground hardens — we'll strive to deliver better service through today's handling." },
+    { speaker: "チャウ", japanese: "ご丁寧にありがとうございます。それでは、十分後にお伺いいたします。", english: "Thank you for your courtesy. Then I'll come back in 10 minutes." }
+  ],
+  roleplay_prompts: [
+    "Đóng vai chính bạn ở khách sạn Tokyo, AC phòng hỏng. Hãy đến reception KHÔNG complain hostile — frame as 'consult' (go-soudan). Dùng cụm o-heya ni tsuite go-soudan ga gozaimasu (em có việc xin tham vấn về phòng). Nhật staff response tốt với polite frame.",
+    "Hotel staff đề xuất technical fix nhưng bạn muốn đổi phòng. Hãy KHÔNG ép — request softly với kanou deshitara, o-heya no henkou mo go-kentou itadakitaku zonjimasu (nếu có thể, em xin được xem xét đổi phòng). Cho staff option để decide.",
+    "Khách sạn đề xuất phòng thay thế nhưng có thêm phí 5,000 yen vì upgrade category. Hãy thương lượng — KHÔNG demand phải free. Cụm: kanou deshitara, dou itta gokentou itadakemasu deshou ka (nếu có thể, xin được xem xét) cộng đề xuất compromise (downgrade category để no fee)."
+  ],
+  register_notes: "Khiếu nại tại hotel Nhật cần frame as 'consultation' (go-soudan), không 'complaint' (kujo). Bốn patterns: (1) MỞ ĐẦU MỀM: o-heya ni tsuite go-soudan ga gozaimasu (em có việc xin tham vấn về phòng) — frame như cooperative problem-solving, không adversarial. KHÔNG dùng kujo wo iitai (muốn complain) — quá direct. (2) STATE FACTS, NOT FEELINGS: KHÔNG urusai desu (ồn quá!) — dùng ue no kai kara no oto-oto to hanashi-goe ga ookiku, nakanaka nemuremasen deshita (tiếng bước chân và nói chuyện từ tầng trên to, em không ngủ được). Specific facts trên emotional reaction. (3) PROPOSE SOLUTION: KHÔNG để hotel decide alone. Dùng kanou deshitara, o-heya no henkou wo o-negai shitaku zonjimasu (nếu có thể, em xin đổi phòng). Show bạn thinking constructively. (4) CỬA SAU CHO HOTEL FACE: nếu hotel admit fault, KHÔNG over-celebrate. Dùng cụm o-tesuu wo o-kake itashimashite, moushiwake gozaimasen (em đã làm phiền, xin lỗi) — even when hotel is at fault. Maintain mutual respect. // TODO native review — fugu-ai (不具合) phrasing — alternative koshou (故障) more specific to mechanical break vs vague problem; neighborhood noise complaint may need 騒音問題 phrasing tùy intensity.",
+  idiom_glosses: [
+    { idiom: "雨降って地固まる", literal: "Mưa rơi đất rắn lại", meaning: "Sau khó khăn, mọi thứ vững hơn — phù hợp khi staff respond well to complaint, frame interaction như growth opportunity for hotel.", example: "雨降って地固まると申しますが、本日のご対応を機に、より良いサービスをお届けできるよう努めてまいります。" },
+    { idiom: "急がば回れ", literal: "Vội thì đi vòng", meaning: "Vội vã hỏng việc — phù hợp khi đề xuất hotel take time để properly fix issue thay vì band-aid solution.", example: "急がば回れで、しっかり原因を確認いただけますと幸いでございます。" },
+    { idiom: "おもてなし", literal: "Hospitality", meaning: "Khái niệm hospitality Nhật — proactive guest care. Khi staff handle complaint well, dùng để complement: omotenashi no kokoro ga kanjirаremashita (em cảm nhận được tinh thần omotenashi).", example: "本日のご対応に、おもてなしの心が感じられました。" },
+    { idiom: "お互い様", literal: "Cả hai bên cùng vậy", meaning: "Mutual — phù hợp khi defuse tension. Frame complaint như shared interest (hotel muốn satisfied customer, you muốn good stay) — KHÔNG zero-sum.", example: "お客様もホテルも満足する形が一番ですね。お互い様で解決策を考えましょう。" }
+  ],
+  cultural_notes_vi: "Khiếu nại hotel ở Nhật khác phương Tây ở 5 điểm. (1) FRAME MATTERS: complaint trong VN có thể direct, ở Nhật MUST frame như 'consultation' (go-soudan). Cùng content nhưng cách trình bày quyết định kết quả. Direct complaint = staff defensive = no flexibility. Soft consult = staff find creative solution. (2) DOCUMENT WITH PHOTOS: nếu có visible defect (mold, broken lamp, dirty bathroom), chụp ảnh trước. Khi present, dùng kochira no shashin wo go-ran kudasai (mời xem ảnh). Photo evidence prevents he-said-she-said. (3) NEVER YELL: bất kể frustrated, KHÔNG raise voice. Một lần shout = mất hết good will + có thể bị politely asked to leave. Maintain calm dignified tone. Nếu thực sự upset, đi back đến phòng cool down 10 phút trước khi đến reception. (4) ESCALATION PATH: nếu front desk staff không resolve, ask to speak with 支配人 (manager). Cụm: shihainin san to o-hanashi sasete itadakemasu deshou ka. KHÔNG escalate via TripAdvisor/social media trước — Nhật xem public shaming as ultimate insult, will ruin relationship and reputation hotel needs. Internal resolution first, public review only if internal fails completely. (5) COMPENSATION EXPECTATION: trong VN, complaint thường = expect refund. Ở Nhật, primary expectation là PROBLEM SOLVED, not compensation. Một số hotels offer voluntary discount/upgrade as goodwill, KHÔNG demand. Refund đầy đủ chỉ khi service không delivered (room not available). Khác biệt với VN: ở VN có thể leverage 1-star Google review threat; ở Nhật, threat-based negotiation = enemy created. Cooperative-frame negotiation = ally created. Long term, second visit có discount + better room nếu first complaint handled cooperatively. Mẹo: ryokan (traditional inn) khác hotel ở point: ryokan owner thường family business, complaint = personal hurt to family. Be EXTRA gentle. Frame như feedback to help them improve, không complaint. Họ sẽ go above-and-beyond để fix.",
+  tip_advice_vi: "Trước khi check-in: research hotel reviews (TripAdvisor, Google) để biết common issues (noise, AC, parking). Book through reputable platform (Booking.com, JR-East travel) — họ có support if hotel không respond. Lưu booking confirmation + cancellation policy on phone. Khi check-in: ask about Wi-Fi password, breakfast time, checkout time. Brief inspection room ngay khi enter — kiểm tra: AC works (set 20°C, đợi 5 phút), bath water hot, all lights working, no smell. Nếu có issue, return reception WITHIN 30 PHÚT — sau đó harder để claim it was pre-existing. Khi complaint: bring room key + booking confirmation to reception. Stand to one side (not center) — cho other guests check-in space. Speak softly, polite. Show evidence (phone photo, video). Listen to staff propose solution before pushing your own. Nếu propose room change, ask if same category (no upgrade fee). Nếu they offer upgrade, ask if free hoặc additional charge. Decide based on budget. Nếu issue not fixable, ask compensation forms: free breakfast tomorrow, discount on extension, lounge access, late checkout. Nhật hotel thường có discretion để offer one of these. KHÔNG demand cash refund unless service completely failed. Khi room changed: walk with staff to new room, brief inspection, accept key, rời cũ key with staff. Confirm Wi-Fi password if changed. Move luggage yourself or accept staff help (bellhop service). Sau visit: gửi feedback survey if hotel sends. Honest but constructive — rate based on resolution quality, not initial issue. Nếu issue handled WELL, mention staff name positively. This goes in their HR file, helps them. Nếu issue handled poorly: detailed feedback to hotel directly first (allow 7 days response). Only if no response, post review. Always factual, không emotional. Nếu hotel chain (Marriott, Hyatt, JR Hotel), have option to escalate to corporate via app — they take seriously. Mẹo cuối: ryokan complaints handled differently. Ryokan often family-owned, owner's grandmother might be the okami (proprietress). Be EXTRA gentle, frame as 'helping us improve', not complaint. Return next year as repeat guest = significant goodwill investment.",
+  exercises: [
+    { type: "fill-blank", question: "お部屋のエアコンが___しているようでございます。", answer: "故障" },
+    { type: "matching", instruction: "Ghép cụm với function.", pairs: [
+      { japanese: "ご相談がございます", english: "frame complaint mềm như tham vấn" },
+      { japanese: "お部屋の変更", english: "đề xuất giải pháp đổi phòng" },
+      { japanese: "ご対応いただけますと幸いでございます", english: "kết thúc request lịch sự" },
+      { japanese: "お手数をおかけいたします", english: "xin lỗi đã làm phiền dù không phải lỗi mình" }
+    ] },
+    { type: "translation", vietnamese: "Nếu có thể, em xin được xem xét đổi phòng.", japanese: "可能でしたら、お部屋の変更をご検討いただきたく存じます。" }
+  ]
+},
+{
+  id: 77,
+  title: "Lost luggage — ANA/JAL counter claim",
+  title_vi: "Mất hành lý — khiếu nại tại quầy ANA/JAL",
+  title_en: "Lost luggage — ANA/JAL counter claim",
+  category: "fluency",
+  level: "B2",
+  vocabulary: [
+    { japanese: "手荷物 (てにもつ)", english: "carry-on / hand luggage" },
+    { japanese: "預け荷物 (あずけにもつ)", english: "checked luggage" },
+    { japanese: "荷物紛失 (にもつふんしつ)", english: "luggage loss" },
+    { japanese: "ロスト・バゲージ・カウンター", english: "lost baggage counter" },
+    { japanese: "便名 (びんめい)", english: "flight number" },
+    { japanese: "出発地 (しゅっぱつち)", english: "departure point" },
+    { japanese: "経由地 (けいゆち)", english: "transit point" },
+    { japanese: "受取証 (うけとりしょう)", english: "receipt (luggage tag stub)" },
+    { japanese: "賠償 (ばいしょう)", english: "compensation" },
+    { japanese: "配送 (はいそう)", english: "delivery (sending lost luggage to your address)" }
+  ],
+  examples: [
+    { japanese: "預け荷物が見つからないようでして、こちらに参りました。", english: "My checked luggage seems missing, so I came here." },
+    { japanese: "便名はANA二〇八便、ハノイ発成田着でございます。", english: "Flight is ANA 208, Hanoi to Narita." },
+    { japanese: "受取証はこちらでございます。", english: "Here is my luggage tag stub." },
+    { japanese: "ホテルへの配送をお願いできますでしょうか。", english: "Could you arrange delivery to my hotel?" },
+    { japanese: "緊急で必要な物の購入費用も、賠償の対象になりますでしょうか。", english: "Are emergency purchases also covered by compensation?" }
+  ],
+  dialogue: [
+    { speaker: "チャウ", japanese: "失礼いたします。預け荷物が見つからず、こちらにお伺いしました。", english: "Excuse me. My checked luggage isn't found, so I came here." },
+    { speaker: "ANAスタッフ", japanese: "それは大変申し訳ございません。便名と受取証をお見せいただけますか。", english: "I'm so sorry. May I see your flight number and luggage stub?" },
+    { speaker: "チャウ", japanese: "ANA二〇八便、ハノイ発成田着でございます。受取証はこちらです。", english: "ANA 208, Hanoi to Narita. Stub is here." },
+    { speaker: "ANAスタッフ", japanese: "確認いたします。少々お待ちください。", english: "Let me check. One moment please." }
+  ],
+  dialogue_long: [
+    { speaker: "チャウ", japanese: "失礼いたします。先ほど成田に着いたのですが、預け荷物が一つ、ベルトコンベアに出てこないようでして、こちらにお伺いしました。", english: "Excuse me. I just arrived at Narita, but one of my checked bags didn't come on the conveyor, so I came here." },
+    { speaker: "ANAスタッフ", japanese: "それは大変申し訳ございません。お客様、まずは便名と出発地を教えていただけますか。", english: "I'm so sorry. First, could you tell me the flight number and departure point?" },
+    { speaker: "チャウ", japanese: "ANA二〇八便、本日朝七時ハノイ発、十三時三十分成田着でございます。", english: "ANA 208, departed Hanoi at 7am today, arrived Narita at 1:30pm." },
+    { speaker: "ANAスタッフ", japanese: "ありがとうございます。受取証をお見せいただけますか。", english: "Thank you. May I see your luggage stub?" },
+    { speaker: "チャウ", japanese: "はい、こちらでございます。ハノイ空港でいただきました。", english: "Yes, here. I received it at Hanoi airport." },
+    { speaker: "ANAスタッフ", japanese: "拝見いたします。すぐにシステムで荷物の位置を確認いたします。", english: "Let me see. I'll immediately check the bag's location in the system." },
+    { speaker: "ANAスタッフ", japanese: "確認したところ、お荷物はハノイ空港でロードされず、まだ現地にあることがわかりました。次のANA二一二便で本日二十時四十分成田着で到着予定でございます。", english: "Upon checking, your bag wasn't loaded at Hanoi and is still there. It's expected on the next flight ANA 212, arriving Narita at 8:40pm today." },
+    { speaker: "チャウ", japanese: "そうでございましたか。承知いたしました。ホテルにチェックインしてしまっているので、空港まで取りに戻るのは難しいのですが、配送のお願いはできますでしょうか。", english: "I see, understood. I've already checked into my hotel, so returning to the airport is difficult — can I request delivery?" },
+    { speaker: "ANAスタッフ", japanese: "もちろんでございます。お荷物が到着次第、ホテルへの無料配送を手配いたします。配送はおおよそ二十一時から二十三時の間に到着いたします。お受け取りいただける時間でしょうか。", english: "Of course. Once the bag arrives, we'll arrange free delivery to your hotel. Delivery between approximately 9pm and 11pm. Will you be available?" },
+    { speaker: "チャウ", japanese: "はい、ホテルでお待ちいたします。ホテルの住所と部屋番号をお伝えいたします。", english: "Yes, I'll wait at the hotel. Let me give you the hotel address and room number." },
+    { speaker: "ANAスタッフ", japanese: "ありがとうございます。それから、お荷物が到着するまでの間、緊急で必要な日用品(歯ブラシ、下着、洗面用具など)を購入される場合、レシートを保管していただければ、後日賠償の対象となります。", english: "Thank you. Also, while waiting for the bag, if you purchase essentials (toothbrush, underwear, toiletries), keep receipts — they'll be eligible for compensation later." },
+    { speaker: "チャウ", japanese: "それは大変ありがたいです。賠償の上限額はおいくらでございますか。", english: "That's very helpful. What's the compensation limit?" },
+    { speaker: "ANAスタッフ", japanese: "緊急購入品は一日五千円相当までが目安でございます。詳細は後日メールでお送りする申請書にてご確認ください。", english: "Emergency purchases up to about 5,000 yen per day. Details will be in the application form we'll email you later." },
+    { speaker: "チャウ", japanese: "承知いたしました。本当に助かります。配送先のホテル住所とお電話番号、こちらに記入してもよろしいでしょうか。", english: "Understood. Truly helpful. May I write the hotel address and phone here?" },
+    { speaker: "ANAスタッフ", japanese: "はい、こちらの用紙にご記入ください。記入後、控えをお渡しいたします。配送の追跡番号もお送りいたしますので、進捗をご確認いただけます。", english: "Yes, please fill out this form. After completing, I'll give you a copy. I'll also send a tracking number to monitor progress." },
+    { speaker: "チャウ", japanese: "ご丁寧なご対応、誠にありがとうございました。雨降って地固まると申しますが、本日のご対応で、ANAへの信頼がさらに深まりました。", english: "Thank you sincerely for the courteous handling. As they say after rain the ground hardens — today's handling deepened my trust in ANA further." },
+    { speaker: "ANAスタッフ", japanese: "ご寛容なお言葉、誠にありがとうございます。ご不便をおかけして本当に申し訳ございませんでした。お荷物が無事に到着するよう、責任を持って手配いたします。", english: "Thank you sincerely for your magnanimous words. I'm truly sorry for the inconvenience. I'll handle this responsibly to ensure your bag arrives safely." }
+  ],
+  roleplay_prompts: [
+    "Đóng vai chính bạn vừa đến Narita, bag không xuất hiện trên belt. Hãy đến lost baggage counter — KHÔNG panic. Cụm: azuke nimotsu ga mitsukarazu, kochira ni ukagaimashita (em không tìm thấy hành lý ký gửi, nên đến đây). Bring receipt stub sẵn sàng.",
+    "Staff ANA xin lỗi nhiều lần. Hãy KHÔNG over-reassure (sounds dismissive of their apology). Dùng cụm go-teinei na go-taiou, arigatou gozaimasu (cảm ơn xử lý chu đáo) một lần đủ. Họ appreciate acknowledgment of their effort.",
+    "Sau khi staff offer free delivery + compensation cho emergency purchases, bạn hỏi thêm về possible compensation cho stress / delay. Hãy KHÔNG escalate to demand — Nhật airline không offer cash for emotional damages. Accept what offered gracefully."
+  ],
+  register_notes: "Lost luggage counter của ANA/JAL trained for keigo cao. Bốn patterns: (1) MỞ ĐẦU CALM: KHÔNG panic, KHÔNG demand. Frame như 'investigation' (kakunin): azuke nimotsu ga mitsukarazu, kochira ni ukagaimashita. Staff response cao hơn với calm guests. (2) PROVIDE FACTS UPFRONT: flight number, departure, arrival time, receipt stub — all on first sentence if possible. Save staff investigation time = faster resolution. (3) ACCEPT APOLOGY GRACEFULLY: Nhật airline staff được train apologize EVEN khi không phải lỗi của họ specifically. KHÔNG over-reassure (daijoubu desu repeated = dismissive). Nói arigatou gozaimasu cộng move to next step. (4) ASK ABOUT COMPENSATION POLITELY: KHÔNG demand money. Frame như verification: bishou no joukensaikou wa ikaga deshou ka (em xin hỏi về compensation criteria). Nhật airline có set policies — staff sẽ explain. Dùng amount limits (5,000 yen/day for emergencies) như reasonable expectation, KHÔNG try to inflate. // TODO native review — bishou (賠償) phrasing — alternative o-mimai-kin (お見舞金) softer for goodwill payment vs hard compensation; tùy airline policy.",
+  idiom_glosses: [
+    { idiom: "雨降って地固まる", literal: "Mưa rơi đất rắn lại", meaning: "Sau khó khăn, mọi thứ vững hơn — phù hợp khi airline handle issue well, frame như trust-deepening moment.", example: "雨降って地固まると申しますが、本日のご対応で、ANAへの信頼がさらに深まりました。" },
+    { idiom: "備えあれば憂いなし", literal: "Có chuẩn bị thì không lo", meaning: "Better safe than sorry — phù hợp khi nói về việc luôn pack essentials in carry-on (toothbrush, change of clothes) phòng khi bag thất lạc.", example: "備えあれば憂いなし、貴重品と必需品は手荷物に入れておくべきでございました。" },
+    { idiom: "急がば回れ", literal: "Vội thì đi vòng", meaning: "Vội vã hỏng việc — phù hợp khi staff cần thời gian xử lý paperwork. Đừng rush họ. Quality processing > speed.", example: "急がば回れで、慎重に手続きをお願いいたします。" },
+    { idiom: "ご縁", literal: "Mối duyên", meaning: "Duyên / fated connection — Nhật concept. Phù hợp khi airline goes above expectations to help. Express gratitude khái niệm tinh tế.", example: "本日のご縁、感謝申し上げます。" }
+  ],
+  cultural_notes_vi: "Lost luggage ở Nhật khác phương Tây ở 5 điểm. (1) RECOVERY RATE HIGH: airline Nhật có recovery rate >95 phần trăm trong 24-48 giờ. KHÔNG panic — usually flights connecting Asia, bag chỉ on next flight. (2) FREE DELIVERY: ANA/JAL/Skymark đều offer free delivery to hotel/home. KHÔNG cần tự đi airport pick up. Delivery thường within 12 giờ sau bag arrival. (3) COMPENSATION POLICY: emergency purchases (toothbrush, underwear, toiletries) covered up to 5,000-10,000 yen/day. Lưu mọi receipt. Submit qua email form trong 7 ngày. Reimbursement bằng bank transfer trong 2-4 tuần. (4) ESCALATION: nếu bag MISSING (not delayed) — sau 21 ngày declared lost. Compensation cho contents up to ~$1,500 USD per bag (Montreal Convention) cho international flights. Domestic Japan: lower limits. Mua additional insurance trước flight nếu carry valuable items. (5) DOCUMENTATION: lưu mọi paperwork (claim form, tracking number, email receipts). Nếu cần escalate tới corporate, paper trail là evidence. Khác biệt với VN/phương Tây: ở phương Tây, demand compensation aggressive là normal; ở Nhật, polite request gets MORE — staff has discretion to offer extras (extra meal voucher, lounge access, free upgrade) for cooperative customers. Threat-based negotiation = staff stick to minimum. (6) FOLLOW UP: nếu bag arrives damaged (not just delayed), report DAMAGE within 24 hours of delivery — sau đó claim might be denied. Bring damaged item to airline office hoặc photograph and email với reference number. Mẹo: nếu travel often, register frequent flyer programs (ANA Mileage Club, JAL Mileage Bank) — status members get priority handling, faster resolution, sometimes auto-compensation. Pre-emptive: pack 1 day's clothes + toiletries + medications + valuables in CARRY-ON. Check-in only what you can survive without 24-48 hours.",
+  tip_advice_vi: "Trước khi fly: photograph contents of checked bag (insurance evidence). Take photo of luggage tag stub + receipt right after check-in (in case stub lost). Pack carry-on với 24-48 hour survival kit: 1 set clothes, underwear (2-3 pieces), toothbrush, toothpaste, deodorant, prescription meds, valuables (laptop, camera, jewelry, important documents). Khi đến Narita, đợi ALL bags from your flight on belt (some bags come last). Nếu bag không xuất hiện sau 30 phút từ khi belt starts: đến lost baggage counter (signs say "Lost & Found" hoặc "手荷物カウンター"). Bring receipt stub. Khi staff process: verify EVERY detail of contact info — phone (with country code), email, hotel address (English + Japanese version nếu có), check-in date and check-out date. Mistake here = bag delivered to wrong place = 24 hour delay. Get tracking number + claim reference in writing (paper or screenshot). Save in 2 places (email + phone notes). Khi rời airport: keep receipts of EVERY emergency purchase — tax invoice (領収書) preferred over generic receipt. Eligible items: clothes, toiletries, basic electronics. NOT eligible: sightseeing tickets, restaurant meals (unless replacing mealtime missed due to delay). Limit ~5,000 yen/day for first 2 days. Khi bag arrive: check contents IMMEDIATELY — verify nothing missing, nothing damaged. Take photo if anything off. Sign delivery slip CAREFULLY — signature confirms receipt OK. Nếu damage: refuse signing or write "received with visible damage" trên slip. Sau 24 giờ from delivery, hard to claim damage. Submit compensation form within 7 ngày — most airlines have email PDF form. Attach receipts + tracking numbers. Patience: 2-4 tuần for processing. Nếu no response after 4 tuần, escalate via airline corporate (ANA: 0570-029-555, JAL: 0570-025-031). Không hesitate — Nhật airline take complaints seriously. Long-term: consider "Apple AirTag" trong checked bag — cost 5,000 yen, can locate bag in real-time. Nhật airline accept this practice. Mẹo cuối: nếu flight is round-trip and outbound bag delayed, return flight handling MIGHT include extra accommodation. Worth asking ground staff about return flight implications. Document everything.",
+  exercises: [
+    { type: "fill-blank", question: "預け荷物が見つから___、こちらに参りました。", answer: "ず" },
+    { type: "matching", instruction: "Ghép cụm với function.", pairs: [
+      { japanese: "受取証", english: "stub vé tag — bằng chứng bag đã được check-in" },
+      { japanese: "便名", english: "số hiệu chuyến bay (e.g. ANA208)" },
+      { japanese: "配送", english: "giao hàng đến hotel/nhà sau khi tìm thấy" },
+      { japanese: "賠償", english: "bồi thường cho emergency purchases" }
+    ] },
+    { type: "translation", vietnamese: "Khi mua đồ khẩn cấp, có thể giữ hóa đơn để được bồi thường không?", japanese: "緊急で必要な物の購入費用も、賠償の対象になりますでしょうか。" }
+  ]
 }
 ];
 export default lessons;
