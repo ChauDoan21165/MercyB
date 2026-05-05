@@ -50,6 +50,29 @@ export type ChineseExercise =
 
 export type ChineseCefrLevel = "A1" | "A2" | "B1" | "B2" | "C1" | "C2";
 
+// Category meta — parallels FRENCH_CATEGORIES / GERMAN_CATEGORIES shape.
+// Categories listed here are the ones currently used in the lesson data
+// (study_career = Cat 1 Học tập & Nghề nghiệp, cultural_communication =
+// Cat 2 Giao tiếp Văn hóa, fluency = B2 calibration sample). New B2
+// rounds add to this list as they ship.
+export type ChineseCategoryId =
+  | "study_career"
+  | "cultural_communication"
+  | "fluency";
+
+export type ChineseCategoryMeta = {
+  id: ChineseCategoryId;
+  title_vi: string;
+  title_en: string;
+  expected_count: number;
+};
+
+export const CHINESE_CATEGORIES: ReadonlyArray<ChineseCategoryMeta> = [
+  { id: "study_career", title_vi: "Học tập & Nghề nghiệp", title_en: "Study & Career", expected_count: 10 },
+  { id: "cultural_communication", title_vi: "Giao tiếp Văn hóa", title_en: "Cultural Communication", expected_count: 10 },
+  { id: "fluency", title_vi: "Lưu loát", title_en: "Fluency", expected_count: 5 },
+];
+
 export type IdiomGloss = {
   idiom: string;
   literal: string;
@@ -87,7 +110,7 @@ export type ChineseLesson = {
   idiom_glosses?: IdiomGloss[];
   // Forward-compatible fields for the cross-language B2 template.
   // Legacy `title` / `topic` remain authoritative until the renderer reads these.
-  category?: string;
+  category?: ChineseCategoryId;
   title_vi?: string;
   title_en?: string;
 };
@@ -4716,4 +4739,18 @@ level: "B2",
     ]
   }
 ];
+
+// Aliases + helpers parallel to FRENCH_LESSONS / GERMAN_LESSONS API.
+export const CHINESE_LESSONS: ReadonlyArray<ChineseLesson> = lessons;
+
+export function getLessonsByCategory(
+  category: ChineseCategoryId,
+): ChineseLesson[] {
+  return CHINESE_LESSONS.filter((l) => l.category === category);
+}
+
+export function getLessonById(id: number): ChineseLesson | undefined {
+  return CHINESE_LESSONS.find((l) => l.id === id);
+}
+
 export default lessons;
