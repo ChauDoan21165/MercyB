@@ -58,6 +58,7 @@ export type ChineseCefrLevel = "A1" | "A2" | "B1" | "B2" | "C1" | "C2";
 export type ChineseCategoryId =
   | "study_career"
   | "cultural_communication"
+  | "travel_mobility"
   | "fluency";
 
 export type ChineseCategoryMeta = {
@@ -70,6 +71,7 @@ export type ChineseCategoryMeta = {
 export const CHINESE_CATEGORIES: ReadonlyArray<ChineseCategoryMeta> = [
   { id: "study_career", title_vi: "Học tập & Nghề nghiệp", title_en: "Study & Career", expected_count: 10 },
   { id: "cultural_communication", title_vi: "Giao tiếp Văn hóa", title_en: "Cultural Communication", expected_count: 10 },
+  { id: "travel_mobility", title_vi: "Du lịch & Di chuyển", title_en: "Travel & Mobility", expected_count: 10 },
   { id: "fluency", title_vi: "Lưu loát", title_en: "Fluency", expected_count: 5 },
 ];
 
@@ -4735,6 +4737,414 @@ level: "B2",
         vietnamese: "Em nhớ nhà thì nói với mình, mình đi cùng em ăn món Trung. Mình là bạn rồi, không cần khách sáo.",
         chinese: "你想家了告诉我, 我陪你吃中国菜。我们是朋友, 不需要客套。",
         pinyin: "Nǐ xiǎng jiā le gào su wǒ, wǒ péi nǐ chī zhōng guó cài. Wǒ men shì péng you, bù xū yào kè tao."
+      }
+    ]
+  },
+  {
+    id: 72,
+    level: "B2",
+    category: "travel_mobility",
+    title: "在北京机场过海关",
+    pinyin: "zài běi jīng jī chǎng guò hǎi guān",
+    topic: "Immigration at Beijing/Shanghai/Guangzhou airport",
+    title_vi: "Qua hải quan tại sân bay Bắc Kinh",
+    title_en: "Going through immigration at a Chinese airport",
+    sentences: [
+      {
+        chinese: "您好, 这是我的护照和签证。",
+        pinyin: "Nín hǎo, zhè shì wǒ de hùzhào hé qiānzhèng.",
+        english: "Hello, here is my passport and visa.",
+        vi: "Chào anh/chị, đây là hộ chiếu và visa của em.",
+        pronunciation_focus: ["护照 → hùzhào (hộ chiếu)", "签证 → qiānzhèng (visa)", "您好 → nín hǎo (chào formal)", "这是 → zhè shì"]
+      },
+      {
+        chinese: "我来中国出差, 待五天。",
+        pinyin: "Wǒ lái Zhōngguó chū chāi, dāi wǔ tiān.",
+        english: "I'm in China on business, staying five days.",
+        vi: "Em đến Trung Quốc công tác, ở năm ngày.",
+        pronunciation_focus: ["出差 → chū chāi (đi công tác)", "待 → dāi (ở lại)", "五天 → wǔ tiān (năm ngày)", "中国 → Zhōngguó"]
+      },
+      {
+        chinese: "我住在北京国贸的诺富特酒店。",
+        pinyin: "Wǒ zhù zài Běijīng Guómào de Nuòfùtè jiǔdiàn.",
+        english: "I'm staying at the Novotel hotel in Beijing Guomao.",
+        vi: "Em ở khách sạn Novotel khu Quốc Mậu, Bắc Kinh.",
+        pronunciation_focus: ["住在 → zhù zài (ở tại)", "国贸 → Guómào (Quốc Mậu — khu thương mại quốc tế)", "酒店 → jiǔdiàn (khách sạn)", "诺富特 → Nuòfùtè (Novotel)"]
+      },
+      {
+        chinese: "返程机票是下周一上午的, 我可以给您看。",
+        pinyin: "Fǎnchéng jīpiào shì xiàzhōu yī shàngwǔ de, wǒ kěyǐ gěi nín kàn.",
+        english: "My return flight is next Monday morning — I can show you.",
+        vi: "Vé về là sáng thứ Hai tuần sau, em có thể đưa anh/chị xem.",
+        pronunciation_focus: ["返程 → fǎnchéng (lượt về)", "机票 → jīpiào (vé máy bay)", "下周一 → xiàzhōu yī (thứ Hai tuần sau)", "上午 → shàngwǔ (buổi sáng)"]
+      },
+      {
+        chinese: "请问行李我去哪里取?",
+        pinyin: "Qǐngwèn xíngli wǒ qù nǎlǐ qǔ?",
+        english: "Excuse me, where do I pick up my luggage?",
+        vi: "Cho em hỏi em lấy hành lý ở đâu?",
+        pronunciation_focus: ["请问 → qǐngwèn (cho phép em hỏi)", "行李 → xíngli (hành lý)", "取 → qǔ (lấy)", "哪里 → nǎlǐ"]
+      }
+    ],
+    vocab: [
+      { chinese: "海关", pinyin: "hǎi guān", english: "customs", vi: "hải quan" },
+      { chinese: "护照", pinyin: "hù zhào", english: "passport", vi: "hộ chiếu" },
+      { chinese: "签证", pinyin: "qiān zhèng", english: "visa", vi: "thị thực / visa" },
+      { chinese: "入境卡", pinyin: "rù jìng kǎ", english: "arrival card", vi: "tờ khai nhập cảnh" },
+      { chinese: "出差", pinyin: "chū chāi", english: "business trip", vi: "đi công tác" },
+      { chinese: "返程机票", pinyin: "fǎn chéng jī piào", english: "return ticket", vi: "vé khứ hồi" },
+      { chinese: "停留时间", pinyin: "tíng liú shí jiān", english: "length of stay", vi: "thời gian lưu trú" },
+      { chinese: "盖章", pinyin: "gài zhāng", english: "to stamp", vi: "đóng dấu" },
+      { chinese: "申报", pinyin: "shēn bào", english: "to declare", vi: "khai báo" },
+      { chinese: "提取行李", pinyin: "tí qǔ xíng li", english: "claim baggage", vi: "lấy hành lý" }
+    ],
+    dialogue: [
+      { speaker: "海关人员", chinese: "您好, 请把护照和入境卡给我。", pinyin: "Nín hǎo, qǐng bǎ hùzhào hé rùjìngkǎ gěi wǒ.", english: "Hello, please hand me your passport and arrival card.", vi: "Chào anh, xin đưa em hộ chiếu và tờ khai nhập cảnh." },
+      { speaker: "阮", chinese: "好的, 给您。", pinyin: "Hǎo de, gěi nín.", english: "Sure, here you go.", vi: "Vâng, em đưa anh." },
+      { speaker: "海关人员", chinese: "您来中国做什么?", pinyin: "Nín lái Zhōngguó zuò shénme?", english: "What's the purpose of your visit to China?", vi: "Anh đến Trung Quốc làm gì?" },
+      { speaker: "阮", chinese: "我来出差, 待五天。", pinyin: "Wǒ lái chū chāi, dāi wǔ tiān.", english: "Business trip, five days.", vi: "Em đi công tác, ở năm ngày." }
+    ],
+    dialogue_long: [
+      { speaker: "海关人员", chinese: "您好, 把护照、入境卡和签证一起给我。", pinyin: "Nín hǎo, bǎ hùzhào, rùjìngkǎ hé qiānzhèng yīqǐ gěi wǒ.", english: "Hello, please give me your passport, arrival card, and visa together.", vi: "Chào anh, đưa em hộ chiếu, tờ khai nhập cảnh và visa cùng lúc." },
+      { speaker: "阮", chinese: "都在这里, 您看。", pinyin: "Dōu zài zhèlǐ, nín kàn.", english: "All here, please check.", vi: "Đều ở đây, anh xem ạ." },
+      { speaker: "海关人员", chinese: "您是越南国籍, 第一次来中国吗?", pinyin: "Nín shì Yuènán guójí, dì yī cì lái Zhōngguó ma?", english: "Vietnamese nationality — first time in China?", vi: "Anh quốc tịch Việt Nam, lần đầu đến Trung Quốc à?" },
+      { speaker: "阮", chinese: "不是, 这是我第三次。前两次是去上海。", pinyin: "Bù shì, zhè shì wǒ dì sān cì. Qián liǎng cì shì qù Shànghǎi.", english: "No, this is my third time. Previous two were to Shanghai.", vi: "Không phải, đây là lần thứ ba. Hai lần trước em đi Thượng Hải." },
+      { speaker: "海关人员", chinese: "这次来做什么?", pinyin: "Zhè cì lái zuò shénme?", english: "What's the purpose this time?", vi: "Lần này đến làm gì?" },
+      { speaker: "阮", chinese: "出差, 跟北京的供应商谈合作。我们公司是越南的科技公司。", pinyin: "Chū chāi, gēn Běijīng de gōngyìngshāng tán hézuò. Wǒmen gōngsī shì Yuènán de kējì gōngsī.", english: "Business — meeting suppliers in Beijing to discuss cooperation. Our company is a Vietnamese tech firm.", vi: "Đi công tác, gặp nhà cung cấp Bắc Kinh thảo luận hợp tác. Công ty em là công ty công nghệ Việt Nam." },
+      { speaker: "海关人员", chinese: "停留多长时间?", pinyin: "Tíngliú duō cháng shíjiān?", english: "How long is your stay?", vi: "Lưu trú bao lâu?" },
+      { speaker: "阮", chinese: "五天, 周一返程。", pinyin: "Wǔ tiān, zhōu yī fǎnchéng.", english: "Five days, returning Monday.", vi: "Năm ngày, thứ Hai về." },
+      { speaker: "海关人员", chinese: "返程机票方便看一下吗?", pinyin: "Fǎnchéng jīpiào fāngbiàn kàn yīxià ma?", english: "Could I see your return ticket?", vi: "Tiện cho em xem vé về không?" },
+      { speaker: "阮", chinese: "在我手机里, 我打开给您看。", pinyin: "Zài wǒ shǒujī lǐ, wǒ dǎkāi gěi nín kàn.", english: "On my phone — let me open it.", vi: "Trong điện thoại em, em mở ra cho anh xem." },
+      { speaker: "海关人员", chinese: "好的, 看到了。住宿地址是哪里?", pinyin: "Hǎo de, kàndào le. Zhùsù dìzhǐ shì nǎlǐ?", english: "Okay, I see it. What's your hotel address?", vi: "Được rồi, em thấy rồi. Địa chỉ nơi ở là đâu?" },
+      { speaker: "阮", chinese: "国贸的诺富特酒店, 已经订好了, 入境卡上填了。", pinyin: "Guómào de Nuòfùtè jiǔdiàn, yǐjīng dìnghǎo le, rùjìngkǎ shàng tián le.", english: "Novotel in Guomao, already booked, written on the arrival card.", vi: "Novotel ở Quốc Mậu, đã đặt rồi, ghi trong tờ khai nhập cảnh rồi." },
+      { speaker: "海关人员", chinese: "看一下镜头, 拍照。", pinyin: "Kàn yīxià jìngtóu, pāizhào.", english: "Look at the camera, photo time.", vi: "Nhìn vào camera, chụp ảnh." },
+      { speaker: "阮", chinese: "好的。", pinyin: "Hǎo de.", english: "Sure.", vi: "Vâng." },
+      { speaker: "海关人员", chinese: "好了, 给您盖章。提取行李往这边走, 出口在右手边。", pinyin: "Hǎo le, gěi nín gài zhāng. Tíqǔ xíngli wǎng zhè biān zǒu, chūkǒu zài yòushǒu biān.", english: "Done, stamped. Baggage claim is this way, exit on the right.", vi: "Xong, đóng dấu cho anh. Lấy hành lý đi lối này, lối ra bên phải." },
+      { speaker: "阮", chinese: "谢谢您, 辛苦了。", pinyin: "Xièxie nín, xīnkǔ le.", english: "Thank you, you're working hard.", vi: "Cảm ơn anh, vất vả rồi." }
+    ],
+    roleplay_prompts: [
+      "Đóng vai khách Việt qua hải quan Bắc Kinh lần đầu. Tình huống bị hỏi nhiều câu vì hộ chiếu trắng (chưa từng đi đâu). Hãy bình tĩnh trả lời 5 câu hỏi cơ bản: mục đích, thời gian, nơi ở, vé về, công ty. Trả lời ngắn gọn, rõ ràng, không nói thêm chi tiết không cần thiết.",
+      "Cán bộ hải quan hỏi 'tại sao lần này ở lâu hơn lần trước'. Hãy giải thích đơn giản: dự án mới, nhiều cuộc họp. Đưa lịch họp trên điện thoại nếu được hỏi. Tránh đi vào chi tiết quá nhiều.",
+      "Bạn quên điền tờ khai nhập cảnh trên máy bay. Hãy xin lỗi cán bộ + xin một tờ + điền nhanh tại quầy. Dùng cụm '不好意思, 我能现在填一下吗?' (xin lỗi, em điền bây giờ được không?)."
+    ],
+    register_notes: "Hải quan Trung Quốc đại lục dùng register formal trung tính — 您 với khách, ngắn gọn không thân mật. Bạn cũng dùng 您 với cán bộ. KHÔNG dùng 你 với cán bộ hải quan dù họ trẻ.\n\nCác cụm chuẩn:\n- '您好, 这是我的护照' (chào anh/chị, đây là hộ chiếu của em)\n- '我来出差/旅游/学习' (em đi công tác/du lịch/học)\n- '待X天/X周/X个月' (ở X ngày/tuần/tháng)\n- '住在X酒店' (ở khách sạn X)\n- '请问行李去哪里取?' (xin hỏi lấy hành lý ở đâu?)\n\nKhi cán bộ yêu cầu: 'Có thể xem...' (方便看一下吗?) → đáp '好的, 给您' (vâng, em đưa anh) hoặc '在我手机里, 我打开给您看' (trong điện thoại em, em mở cho anh xem).\n\nKhi cán bộ chụp ảnh: '看一下镜头' (nhìn vào camera) → đứng yên, không cười rộng. Tóc không che mặt. Kính có thể tháo nếu được yêu cầu.\n\nTránh: (a) Nói tiếng Anh trừ khi cán bộ chuyển sang tiếng Anh trước; (b) Giấu thông tin (giả vờ không hiểu); (c) Đùa cợt — hải quan toàn cầu không khoan dung kiểu này; (d) Mở điện thoại xem nội dung khác khi đang xếp hàng.",
+    idiom_glosses: [
+      {
+        idiom: "通行无阻",
+        literal: "đi không bị cản (tōng xíng wú zǔ)",
+        meaning: "Đi qua thuận lợi, không gặp trở ngại — dùng để miêu tả việc qua hải quan/cửa khẩu suôn sẻ. 'Hộ chiếu của em qua hải quan thông hành vô trở.'",
+        example: "我的护照过海关通行无阻。"
+      },
+      {
+        idiom: "一帆风顺",
+        literal: "một cánh buồm thuận gió (yī fán fēng shùn)",
+        meaning: "Mọi việc thuận lợi từ đầu đến cuối — chúc người khởi hành. Cụm cao cấp dùng để chúc bạn bè trước chuyến công tác.",
+        example: "祝您这次出差一帆风顺。"
+      },
+      {
+        idiom: "有备无患",
+        literal: "có chuẩn bị thì không lo (yǒu bèi wú huàn)",
+        meaning: "Có chuẩn bị thì không gặp rắc rối — chuẩn bị giấy tờ kỹ trước khi qua hải quan. Cụm dùng để giải thích tại sao bạn mang đầy đủ giấy tờ phụ.",
+        example: "我把所有文件都带上, 有备无患。"
+      },
+      {
+        idiom: "万无一失",
+        literal: "vạn việc không thất (wàn wú yī shī)",
+        meaning: "Hoàn toàn chắc chắn không có sai sót — chuẩn bị rất kỹ. Cụm dùng khi muốn diễn đạt 'em đã kiểm tra mọi thứ rồi'. Mạnh hơn 有备无患.",
+        example: "出行前我检查三遍, 万无一失。"
+      }
+    ],
+    cultural_notes_vi: "Hải quan Trung Quốc đại lục có quy trình chặt chẽ — không khó nhưng có vài điểm khác Việt Nam: (1) ĐIỀN TỜ KHAI NHẬP CẢNH (入境卡) trên máy bay, không phải tại sân bay. Tiếp viên phát trước hạ cánh 30-60 phút. Điền BẰNG CHỮ IN HOA + tiếng Anh, KHÔNG tiếng Việt. Nếu quên, có quầy điền tại sân bay (miễn phí). (2) KIỂM TRA SINH TRẮC HỌC: chụp ảnh + lấy vân tay (10 ngón) lần đầu nhập cảnh. Lần 2 trở đi chỉ cần ảnh. Quá trình 2-3 phút. (3) QUYỀN HÀNH LÝ: thường 1 vali xách tay + 1 ký gửi. Nếu mang đồ ăn (mắm, nem, lạp xưởng), khai báo — phần lớn bị tịch thu (Trung Quốc cấm sản phẩm thịt sống/ướp). Trà, cà phê, bánh khô = OK. (4) HỆ THỐNG XANH/ĐỎ: 'Nothing to declare' (绿色通道) hoặc 'Goods to declare' (红色通道). Nếu mang >5,000 USD tiền mặt, máy ảnh DSLR đắt tiền, đồng hồ Rolex — đi đỏ. Đi xanh khi có hàng cấm = phạt nặng. (5) CHỜ ĐỢI: cao điểm (15-22h) có thể chờ 30-90 phút. Có quầy 'Foreign passports' (外国人护照) riêng, thường ngắn hơn quầy Trung Quốc. (6) WIFI SÂN BAY: bắt buộc xác thực bằng số điện thoại + CMND/hộ chiếu. KHÔNG dùng wifi free để xử lý việc nhạy cảm — dùng 4G data Việt Nam (roaming) hoặc mua eSIM Trung Quốc trước khi đi.\n\nVề nhập cảnh khu vực đặc biệt: Hong Kong/Macau dùng giấy thông hành riêng (港澳通行证) cho công dân TQ; người Việt qua bằng hộ chiếu + visa riêng. Đại lục → Hong Kong vẫn phải qua hải quan như nhập nước khác. Đừng nhầm.\n\nVề thời gian visa: visa du lịch Trung Quốc thường 30 ngày, lưu trú đơn lẻ ≤30 ngày, hiệu lực 90 ngày từ ngày cấp. Quá hạn = phạt 500 tệ/ngày + có thể bị từ chối nhập cảnh lần sau.",
+    tip_advice_vi: "(1) CHUẨN BỊ giấy tờ trong túi áo trước hạ cánh: hộ chiếu, visa, vé về (in giấy hoặc trong điện thoại), địa chỉ khách sạn (in giấy backup). KHÔNG để trong vali ký gửi — không có thì không qua được hải quan. (2) ĐIỀN TỜ KHAI NHẬP CẢNH cẩn thận trên máy bay: tên VIẾT HOA giống hộ chiếu, ngày tháng theo format DD/MM/YYYY, địa chỉ khách sạn ĐẦY ĐỦ (số nhà, đường, quận, thành phố). Sai = phải làm lại tại sân bay = mất thời gian. (3) BÌNH TĨNH khi bị hỏi nhiều câu — không phải lúc nào cũng có nghĩa là có vấn đề. Cán bộ hải quan có quyền hỏi tự do. Trả lời đúng, ngắn, không thêm thông tin. (4) KHÔNG MANG đồ ăn động vật (lạp xưởng, jerky, mắm tép, nem chua) — bị tịch thu chắc chắn. Cà phê, trà, bánh khô, trái cây sấy = OK. Nếu nghi ngờ, KHAI BÁO. (5) ĐỔI TIỀN trước hoặc tại sân bay (tỷ giá kém ~3-5%) hoặc dùng Alipay/WeChat Pay (cần kết nối với thẻ ngân hàng quốc tế từ trước). KHÔNG mang quá 5,000 USD tiền mặt mà không khai báo. (6) MUA SIM hoặc bật ROAMING: đại lục Trung Quốc chặn Google, Facebook, WhatsApp — dùng VPN nếu cần (nhưng VPN ở đại lục là khu vực xám, dùng thận trọng). Wifi sân bay free cần xác thực bằng số ĐT/hộ chiếu — chấp nhận được. (7) KHI BỊ KÉO RA QUẦY PHỤ (二次检查 — kiểm tra lần hai): không phải dấu hiệu xấu. Cán bộ kiểm tra ngẫu nhiên hoặc do hệ thống flag. Bình tĩnh, hợp tác, mở vali nếu được yêu cầu. Quá trình 5-15 phút. KHÔNG quay phim/chụp ảnh.",
+    exercises: [
+      { type: "fill-blank", question: "您好, 这是我的护照和 ___ 。", answer: "签证" },
+      {
+        type: "matching",
+        instruction: "Ghép cụm tiếng Trung hải quan với nghĩa tiếng Việt.",
+        pairs: [
+          { chinese: "海关", pinyin: "hǎi guān", english: "hải quan" },
+          { chinese: "入境卡", pinyin: "rù jìng kǎ", english: "tờ khai nhập cảnh" },
+          { chinese: "盖章", pinyin: "gài zhāng", english: "đóng dấu" },
+          { chinese: "提取行李", pinyin: "tí qǔ xíng li", english: "lấy hành lý" }
+        ]
+      },
+      {
+        type: "translation",
+        vietnamese: "Em đến Trung Quốc công tác, ở năm ngày, ở khách sạn Novotel. Vé về là sáng thứ Hai tuần sau.",
+        chinese: "我来中国出差, 待五天, 住在诺富特酒店。返程机票是下周一上午的。",
+        pinyin: "Wǒ lái zhōng guó chū chāi, dāi wǔ tiān, zhù zài nuò fù tè jiǔ diàn. Fǎn chéng jī piào shì xià zhōu yī shàng wǔ de."
+      }
+    ]
+  },
+  {
+    id: 73,
+    level: "B2",
+    category: "travel_mobility",
+    title: "护照丢了 — 在越南驻华使馆补办",
+    pinyin: "hù zhào diū le — zài yuè nán zhù huá shǐ guǎn bǔ bàn",
+    topic: "Lost passport — replacement at Vietnamese embassy in Beijing",
+    title_vi: "Mất hộ chiếu — làm lại tại Đại sứ quán Việt Nam ở Bắc Kinh",
+    title_en: "Lost passport — replacement at Vietnamese embassy in Beijing",
+    sentences: [
+      {
+        chinese: "您好, 我的护照丢了, 想申请补办。",
+        pinyin: "Nín hǎo, wǒ de hùzhào diū le, xiǎng shēnqǐng bǔbàn.",
+        english: "Hello, I've lost my passport — I'd like to apply for a replacement.",
+        vi: "Em chào anh/chị, hộ chiếu của em bị mất, em muốn xin làm lại.",
+        pronunciation_focus: ["丢 → diū (mất / đánh rơi)", "补办 → bǔbàn (làm lại / cấp lại)", "申请 → shēnqǐng (xin)", "护照 → hùzhào"]
+      },
+      {
+        chinese: "我已经在派出所报案了, 这是报案回执。",
+        pinyin: "Wǒ yǐjīng zài pàichūsuǒ bào'àn le, zhè shì bào'àn huízhí.",
+        english: "I already filed a police report — here's the receipt.",
+        vi: "Em đã trình báo công an rồi, đây là biên nhận.",
+        pronunciation_focus: ["派出所 → pàichūsuǒ (đồn công an khu vực)", "报案 → bào'àn (trình báo)", "回执 → huízhí (biên nhận)", "已经 → yǐjīng"]
+      },
+      {
+        chinese: "我有护照复印件和身份证电子版。",
+        pinyin: "Wǒ yǒu hùzhào fùyìnjiàn hé shēnfènzhèng diànzǐ bǎn.",
+        english: "I have a copy of the passport and a digital copy of my ID.",
+        vi: "Em có bản sao hộ chiếu và bản số CMND.",
+        pronunciation_focus: ["复印件 → fùyìnjiàn (bản sao chụp)", "身份证 → shēnfènzhèng (CMND)", "电子版 → diànzǐ bǎn (bản điện tử)", "有 → yǒu"]
+      },
+      {
+        chinese: "请问补办需要多久? 我的航班是后天的。",
+        pinyin: "Qǐngwèn bǔbàn xūyào duō jiǔ? Wǒ de hángbān shì hòutiān de.",
+        english: "How long does the replacement take? My flight is in two days.",
+        vi: "Cho em hỏi cấp lại mất bao lâu? Vé bay của em hai ngày nữa.",
+        pronunciation_focus: ["多久 → duō jiǔ (bao lâu)", "航班 → hángbān (chuyến bay)", "后天 → hòutiān (kia / hai ngày sau)", "需要 → xūyào"]
+      },
+      {
+        chinese: "如果来不及, 是否可以申请临时旅行证件?",
+        pinyin: "Rúguǒ láibují, shìfǒu kěyǐ shēnqǐng línshí lǚxíng zhèngjiàn?",
+        english: "If there's no time, can I apply for an emergency travel document?",
+        vi: "Nếu không kịp, em có thể xin giấy thông hành khẩn cấp được không?",
+        pronunciation_focus: ["来不及 → láibují (không kịp)", "临时 → línshí (tạm thời)", "旅行证件 → lǚxíng zhèngjiàn (giấy đi đường)", "是否 → shìfǒu (có thể)"]
+      }
+    ],
+    vocab: [
+      { chinese: "丢失", pinyin: "diū shī", english: "to lose (item)", vi: "mất (đồ)" },
+      { chinese: "补办", pinyin: "bǔ bàn", english: "to reissue / replace", vi: "cấp lại" },
+      { chinese: "使馆", pinyin: "shǐ guǎn", english: "embassy", vi: "đại sứ quán" },
+      { chinese: "领事处", pinyin: "lǐng shì chù", english: "consular section", vi: "phòng lãnh sự" },
+      { chinese: "报案回执", pinyin: "bào àn huí zhí", english: "police report receipt", vi: "biên nhận trình báo" },
+      { chinese: "临时旅行证", pinyin: "lín shí lǚ xíng zhèng", english: "emergency travel document", vi: "giấy thông hành tạm thời" },
+      { chinese: "复印件", pinyin: "fù yìn jiàn", english: "photocopy", vi: "bản sao chụp" },
+      { chinese: "证件照", pinyin: "zhèng jiàn zhào", english: "ID photo", vi: "ảnh thẻ" },
+      { chinese: "费用", pinyin: "fèi yòng", english: "fee", vi: "phí" },
+      { chinese: "受理", pinyin: "shòu lǐ", english: "to accept (application)", vi: "tiếp nhận" }
+    ],
+    dialogue: [
+      { speaker: "阮", chinese: "您好, 我的越南护照丢了, 需要补办。", pinyin: "Nín hǎo, wǒ de Yuènán hùzhào diū le, xūyào bǔbàn.", english: "Hello, I lost my Vietnamese passport, I need a replacement.", vi: "Chào anh/chị, hộ chiếu Việt Nam của em bị mất, em cần làm lại." },
+      { speaker: "工作人员", chinese: "请提供报案回执、护照复印件和两张证件照。", pinyin: "Qǐng tígōng bào'àn huízhí, hùzhào fùyìnjiàn hé liǎng zhāng zhèngjiànzhào.", english: "Please provide the police report receipt, passport copy, and two ID photos.", vi: "Xin cung cấp biên nhận trình báo, bản sao hộ chiếu và hai ảnh thẻ." },
+      { speaker: "阮", chinese: "都准备好了。补办需要多长时间?", pinyin: "Dōu zhǔnbèi hǎo le. Bǔbàn xūyào duō cháng shíjiān?", english: "All ready. How long for the replacement?", vi: "Em đã chuẩn bị hết. Cấp lại mất bao lâu?" },
+      { speaker: "工作人员", chinese: "正常需要七到十个工作日。如果紧急, 可以申请临时旅行证, 三个工作日。", pinyin: "Zhèngcháng xūyào qī dào shí gè gōngzuò rì. Rúguǒ jǐnjí, kěyǐ shēnqǐng línshí lǚxíng zhèng, sān gè gōngzuò rì.", english: "Normally 7-10 business days. If urgent, you can apply for emergency travel doc, 3 business days.", vi: "Bình thường 7-10 ngày làm việc. Nếu khẩn, có thể xin giấy thông hành tạm 3 ngày." }
+    ],
+    dialogue_long: [
+      { speaker: "阮", chinese: "您好, 我是越南公民, 在北京出差时护照丢了。", pinyin: "Nín hǎo, wǒ shì Yuènán gōngmín, zài Běijīng chū chāi shí hùzhào diū le.", english: "Hello, I'm a Vietnamese citizen — I lost my passport during a business trip in Beijing.", vi: "Chào anh, em là công dân Việt Nam, mất hộ chiếu khi đi công tác ở Bắc Kinh." },
+      { speaker: "工作人员", chinese: "什么时候发现丢的?", pinyin: "Shénme shíhou fāxiàn diū de?", english: "When did you discover it was lost?", vi: "Khi nào em phát hiện bị mất?" },
+      { speaker: "阮", chinese: "昨天晚上回酒店时发现的。我立刻去附近派出所报案了。", pinyin: "Zuótiān wǎnshàng huí jiǔdiàn shí fāxiàn de. Wǒ lìkè qù fùjìn pàichūsuǒ bào'àn le.", english: "Last night when returning to the hotel. I went to the nearest police station immediately.", vi: "Tối qua khi về khách sạn. Em đã đến đồn công an gần đó trình báo ngay." },
+      { speaker: "工作人员", chinese: "好, 报案回执给我看一下。", pinyin: "Hǎo, bào'àn huízhí gěi wǒ kàn yīxià.", english: "Good, show me the police report receipt.", vi: "Được, em đưa biên nhận trình báo cho anh xem." },
+      { speaker: "阮", chinese: "在这里。还有我护照的复印件、身份证电子版、和两张证件照。", pinyin: "Zài zhèlǐ. Hái yǒu wǒ hùzhào de fùyìnjiàn, shēnfènzhèng diànzǐ bǎn, hé liǎng zhāng zhèngjiànzhào.", english: "Here. Plus a passport copy, digital ID copy, and two ID photos.", vi: "Đây ạ. Còn có bản sao hộ chiếu, bản số CMND, và hai ảnh thẻ." },
+      { speaker: "工作人员", chinese: "您准备得很周到。请填这张申请表, 我看一下。", pinyin: "Nín zhǔnbèi de hěn zhōudào. Qǐng tián zhè zhāng shēnqǐng biǎo, wǒ kàn yīxià.", english: "You're well-prepared. Please fill this application form, let me check.", vi: "Em chuẩn bị rất chu đáo. Xin điền đơn này, em xem qua." },
+      { speaker: "阮", chinese: "请问补办大概需要多久?", pinyin: "Qǐngwèn bǔbàn dàgài xūyào duō jiǔ?", english: "How long does the replacement take?", vi: "Cho em hỏi cấp lại khoảng bao lâu?" },
+      { speaker: "工作人员", chinese: "标准是七到十个工作日, 因为新护照需要从越南本国寄过来。", pinyin: "Biāozhǔn shì qī dào shí gè gōngzuò rì, yīnwèi xīn hùzhào xūyào cóng Yuènán běnguó jì guòlái.", english: "Standard is 7-10 business days, because the new passport ships from Vietnam.", vi: "Tiêu chuẩn 7-10 ngày làm việc, vì hộ chiếu mới phải gửi từ Việt Nam sang." },
+      { speaker: "阮", chinese: "可是我后天就要回越南了, 来不及。能否申请临时旅行证件?", pinyin: "Kěshì wǒ hòutiān jiù yào huí Yuènán le, láibují. Néngfǒu shēnqǐng línshí lǚxíng zhèngjiàn?", english: "But my flight back to Vietnam is in two days — won't make it. Can I apply for an emergency travel document?", vi: "Nhưng hai ngày nữa em đã về Việt Nam rồi, không kịp. Em có thể xin giấy thông hành tạm không?" },
+      { speaker: "工作人员", chinese: "可以。临时旅行证件三个工作日就能拿到, 但只能用于回越南, 不能用于其他国家。费用一千二百人民币。", pinyin: "Kěyǐ. Línshí lǚxíng zhèngjiàn sān gè gōngzuò rì jiù néng ná dào, dàn zhǐ néng yòng yú huí Yuènán, bù néng yòng yú qítā guójiā. Fèiyòng yīqiān èrbǎi rénmínbì.", english: "Yes. Emergency travel doc takes 3 business days, but only valid for return to Vietnam, not other countries. Fee is 1,200 RMB.", vi: "Được. Giấy thông hành tạm 3 ngày là có, nhưng chỉ dùng để về Việt Nam, không dùng đi nước khác. Phí 1,200 nhân dân tệ." },
+      { speaker: "阮", chinese: "够用了, 我只需要回越南。后天上午能取吗?", pinyin: "Gòu yòng le, wǒ zhǐ xūyào huí Yuènán. Hòutiān shàngwǔ néng qǔ ma?", english: "That's enough — I only need to get back. Can I pick up the day after tomorrow morning?", vi: "Đủ rồi, em chỉ cần về Việt Nam. Sáng kia có thể lấy được không?" },
+      { speaker: "工作人员", chinese: "今天受理, 后天下午两点以后就能取。建议您改签机票, 改成下午或者晚上的航班。", pinyin: "Jīntiān shòulǐ, hòutiān xiàwǔ liǎng diǎn yǐhòu jiù néng qǔ. Jiànyì nín gǎiqiān jīpiào, gǎi chéng xiàwǔ huòzhě wǎnshàng de hángbān.", english: "Accepted today, picked up after 2pm day after tomorrow. Recommend changing your flight to afternoon or evening.", vi: "Hôm nay tiếp nhận, kia 2 giờ chiều sau là lấy được. Khuyên anh đổi vé sang chuyến chiều hoặc tối." },
+      { speaker: "阮", chinese: "好的, 我马上改签。这是费用, 怎么交?", pinyin: "Hǎo de, wǒ mǎshàng gǎiqiān. Zhè shì fèiyòng, zěnme jiāo?", english: "Okay, I'll change the flight now. Here's the fee — how do I pay?", vi: "Vâng, em đổi ngay. Đây là phí, em nộp thế nào?" },
+      { speaker: "工作人员", chinese: "现金或微信支付都可以。微信扫这个码。", pinyin: "Xiànjīn huò wēixìn zhīfù dōu kěyǐ. Wēixìn sǎo zhège mǎ.", english: "Cash or WeChat Pay both work. Scan this QR code for WeChat.", vi: "Tiền mặt hoặc WeChat Pay đều được. Quét mã này cho WeChat." },
+      { speaker: "阮", chinese: "用微信。扫好了, 谢谢您的帮助!", pinyin: "Yòng wēixìn. Sǎo hǎo le, xièxie nín de bāngzhù!", english: "WeChat. Scanned, thank you for your help!", vi: "Em dùng WeChat. Quét xong, cảm ơn anh đã giúp!" },
+      { speaker: "工作人员", chinese: "不客气。后天下午带这张收据来取证件。一路平安。", pinyin: "Bù kèqì. Hòutiān xiàwǔ dài zhè zhāng shōujù lái qǔ zhèngjiàn. Yī lù píng'ān.", english: "You're welcome. Bring this receipt the day after tomorrow afternoon to collect your document. Safe travels.", vi: "Không có gì. Chiều kia mang biên nhận này đến lấy giấy tờ. Đi đường bình an." }
+    ],
+    roleplay_prompts: [
+      "Bạn vừa phát hiện ví và hộ chiếu bị mất tại nhà ga Bắc Kinh. Hãy diễn tập 3 bước trong 10 phút đầu: (a) gọi khách sạn xem có để lại không, (b) gọi đại sứ quán Việt Nam (010-65325410) báo trước, (c) đi đồn công an gần nhất trình báo. Dùng cụm '我护照丢了, 请帮帮我' với từng nơi.",
+      "Tại đại sứ quán, bạn quên không mang ảnh thẻ. Hãy hỏi cán bộ có thể chụp tại chỗ không (一些使馆有自助拍照机) — nếu không thì đi đâu chụp gần đó (附近哪里能拍证件照?). Dùng cụm 'sorry, em quên... có cách nào không?'.",
+      "Bạn không có đủ tiền nộp phí 1,200 tệ (chỉ còn 800). Hãy đề xuất giải pháp: nộp 800 trước + chuyển thêm 400 từ tài khoản Việt Nam qua chuyển khoản quốc tế. Hỏi rõ deadline."
+    ],
+    register_notes: "Đại sứ quán Việt Nam tại Bắc Kinh có cán bộ nói tiếng Việt — bạn có thể nói tiếng Việt hoàn toàn. NHƯNG nếu bạn đi nhánh tiếng Trung (do hết người tiếng Việt, hoặc đi văn phòng địa phương), dùng register formal: 您 với cán bộ, ngắn gọn rõ ràng.\n\nCác cụm chuẩn cho trường hợp khẩn:\n- '我护照丢了' (hộ chiếu của em bị mất) — câu mở chuẩn\n- '我已经报案了' (em đã trình báo rồi)\n- '请问补办需要多久' (xin hỏi cấp lại mất bao lâu)\n- '能否申请临时旅行证件' (có thể xin giấy thông hành tạm không)\n- '我后天就要回国' (kia em đã phải về nước)\n\nKhi nói chuyện với công an Trung Quốc trước đó (派出所): cũng dùng 您, kể sự việc theo trật tự thời gian (mất khi nào, ở đâu, làm gì). KHÔNG đoán mò ai lấy. KHÔNG buộc tội người cụ thể không có bằng chứng.\n\nTránh: (a) Khóc lóc tại đại sứ quán — không đẩy nhanh quá trình; (b) Đòi hỏi 'làm hộ em ngay' — quá trình có quy định; (c) Hối lộ — phạm luật cả hai phía; (d) Đăng status mạng xã hội kiểu 'mất hộ chiếu, đang ở Trung Quốc, ai giúp' — kẻ xấu sẽ lợi dụng.",
+    idiom_glosses: [
+      {
+        idiom: "雪上加霜",
+        literal: "tuyết trên thêm sương (xuě shàng jiā shuāng)",
+        meaning: "Tuyết phủ lại thêm sương — họa vô đơn chí, chuyện xấu chồng chất. Cụm dùng khi mô tả tình huống đã tệ lại càng tệ hơn (mất hộ chiếu + sắp hết visa). Tránh lạm dụng — chỉ dùng khi thực sự nghiêm trọng.",
+        example: "本来要赶飞机, 又下大雨, 真是雪上加霜。"
+      },
+      {
+        idiom: "急中生智",
+        literal: "trong khẩn cấp sinh trí (jí zhōng shēng zhì)",
+        meaning: "Trong tình huống khẩn nảy ra ý hay — phản ứng sáng suốt khi gấp gáp. Cụm dùng để khen người xử lý khôn ngoan trong khẩn cấp: 'em đã 急中生智 đi báo công an ngay.'",
+        example: "我急中生智, 立刻打电话给酒店。"
+      },
+      {
+        idiom: "化险为夷",
+        literal: "biến nguy thành an (huà xiǎn wéi yí)",
+        meaning: "Biến nguy hiểm thành an toàn — vượt qua khủng hoảng thành công. Cụm dùng để cảm ơn người đã giúp giải quyết tình huống khẩn: 'cảm ơn anh đã giúp em 化险为夷'.",
+        example: "幸亏您帮忙, 才能化险为夷。"
+      },
+      {
+        idiom: "有惊无险",
+        literal: "có sợ nhưng không nguy (yǒu jīng wú xiǎn)",
+        meaning: "Hết hồn nhưng không sao — sự việc kết thúc an toàn dù lúc đầu đáng sợ. Cụm an ủi cuối khi mọi việc đã xong: 'lần này 有惊无险, em rút kinh nghiệm rồi.'",
+        example: "护照虽然丢了, 但及时补办, 有惊无险。"
+      }
+    ],
+    cultural_notes_vi: "Mất hộ chiếu ở Trung Quốc là tình huống có quy trình rõ — không dễ chịu nhưng giải quyết được trong 3-10 ngày. Bốn nguyên tắc cốt lõi: (1) BÁO CÔNG AN TRƯỚC khi đến đại sứ quán. Đại sứ quán Việt Nam YÊU CẦU biên nhận trình báo (报案回执) — không có = không tiếp nhận đơn. Đến 派出所 khu vực bạn mất (không phải khu khác), kể chi tiết, lấy giấy in dấu đỏ. Quá trình 30-60 phút, miễn phí. (2) GỌI ĐẠI SỨ QUÁN trước khi đến — số 010-65325410 (Bắc Kinh) hoặc Tổng lãnh sự quán TP HCM (021-) ở Thượng Hải. Họ sẽ tư vấn ngày giờ đến, giấy tờ cần. KHÔNG đến không hẹn — có thể phải đợi 2-3 giờ. (3) GIẤY TỜ MANG: (a) biên nhận trình báo; (b) bản sao hộ chiếu (chụp trước khi đi từ Việt Nam — bài học vàng); (c) bản số/sao CMND; (d) 2 ảnh thẻ 4x6 nền trắng (chụp tại studio gần đại sứ quán nếu không có); (e) đơn xin (lấy tại đại sứ quán hoặc download trước); (f) tiền mặt hoặc WeChat Pay (1,200 tệ cho giấy thông hành tạm). (4) HAI LOẠI GIẤY: 'hộ chiếu mới' (7-10 ngày, in từ Việt Nam) hoặc 'giấy thông hành tạm thời' (3 ngày, chỉ về Việt Nam, không đi nước khác). Nếu bay về Việt Nam trực tiếp, giấy thông hành tạm là đủ.\n\nVề bảo hiểm du lịch: nếu bạn có bảo hiểm du lịch (Bảo Việt, BSH, MIC), nó CHI TRẢ phí cấp lại hộ chiếu (~1,200 tệ) + chi phí thay đổi vé bay + thêm đêm khách sạn. Liên hệ hotline ngay sau khi báo công an. Yêu cầu mọi biên nhận (trình báo, đại sứ quán, vé bay đổi, khách sạn) — gửi cho bảo hiểm khi về Việt Nam.\n\nVề lần sau khi đi Trung Quốc: chụp ảnh hộ chiếu + visa LƯU CLOUD (Google Drive, iCloud) — không chỉ trong điện thoại. Mất điện thoại = mất luôn ảnh. Email cho bản thân = backup tốt nhất. In giấy 1 bản để trong vali ký gửi (riêng khỏi hộ chiếu chính).\n\nVề việc đi lại trong Trung Quốc khi không có hộ chiếu: KHÔNG bay nội địa được. KHÔNG mua vé tàu cao tốc được. KHÔNG check-in khách sạn được (cần đăng ký với công an). Nếu cần ở thêm, ở khách sạn nhỏ chấp nhận giấy báo công an (一些客栈) — chuẩn bị tiền mặt vì chuyển khoản cũng cần ID.",
+    tip_advice_vi: "(1) PHÒNG HỘ CHIẾU MẤT từ Việt Nam: chụp ảnh hộ chiếu + visa, lưu Google Drive + email cho bản thân + photocopy 2 bản để 1 trong vali ký gửi. Bài học vàng: 80% người mất hộ chiếu mất luôn cách giải quyết nhanh vì không có bản sao. (2) MẤT TẠI KHÁCH SẠN/TAXI/QUÁN ĂN: gọi ngay khách sạn/công ty taxi. 60% trường hợp nhân viên dọn dẹp nhặt được. Để lại số ĐT VN (kèm mã +84). (3) MẤT TẠI ĐÔNG NGƯỜI (chợ, ga, sân bay): xác suất tìm lại thấp. Đi thẳng đồn công an gần nhất, không lãng phí thời gian. (4) ĐỒN CÔNG AN: tìm 派出所 trên Baidu Maps, đến cửa, nói '我护照丢了, 来报案' (hộ chiếu em mất, đến trình báo). Cán bộ sẽ hướng dẫn điền form. KHÔNG đoán/buộc tội ai. KHÔNG nói 'có thể nhân viên khách sạn lấy' nếu không có bằng chứng. (5) CHỜ ĐẠI SỨ QUÁN: thường thứ 2-thứ 6, 8:30-11:30 sáng. Đến SỚM 30 phút, mang theo 2 ảnh thẻ + đầy đủ giấy tờ. Nếu thiếu, có studio chụp ảnh thẻ ngay gần đại sứ quán Việt Nam (Bắc Kinh — Triều Dương quận, Sanlitun phía Đông). (6) ĐỔI VÉ BAY: gọi hãng bay (Vietnam Airlines: 028-3823-2320, Vietjet: 1900-1886) trước khi đến đại sứ quán. Đổi vé thường mất 100-300 USD phí thay đổi + chênh lệch giá. Bảo hiểm du lịch trả phần này. (7) KHI VỀ VIỆT NAM: với giấy thông hành tạm, vào nhập cảnh quầy 'Vietnam citizens'. Cán bộ Việt Nam sẽ giữ giấy này. Sau 30 ngày, đi cảnh sát quận làm hộ chiếu mới (1.500.000 VND, 7-14 ngày). Báo cảnh sát cũ tại Việt Nam về việc mất hộ chiếu (nếu chưa).",
+    exercises: [
+      { type: "fill-blank", question: "我已经在派出所 ___ 了, 这是回执。", answer: "报案" },
+      {
+        type: "matching",
+        instruction: "Ghép cụm tiếng Trung mất hộ chiếu với nghĩa tiếng Việt.",
+        pairs: [
+          { chinese: "补办", pinyin: "bǔ bàn", english: "cấp lại" },
+          { chinese: "使馆", pinyin: "shǐ guǎn", english: "đại sứ quán" },
+          { chinese: "报案回执", pinyin: "bào àn huí zhí", english: "biên nhận trình báo" },
+          { chinese: "临时旅行证", pinyin: "lín shí lǚ xíng zhèng", english: "giấy thông hành tạm" }
+        ]
+      },
+      {
+        type: "translation",
+        vietnamese: "Hộ chiếu của em bị mất, em đã trình báo công an. Em hai ngày nữa phải về Việt Nam, có thể xin giấy thông hành tạm không?",
+        chinese: "我的护照丢了, 已经报案了。我后天要回越南, 能否申请临时旅行证件?",
+        pinyin: "Wǒ de hù zhào diū le, yǐ jīng bào àn le. Wǒ hòu tiān yào huí Yuè nán, néng fǒu shēn qǐng lín shí lǚ xíng zhèng jiàn?"
+      }
+    ]
+  },
+  {
+    id: 74,
+    level: "B2",
+    category: "travel_mobility",
+    title: "改签高铁车票 — 处理手续费",
+    pinyin: "gǎi qiān gāo tiě chē piào — chǔ lǐ shǒu xù fèi",
+    topic: "Booking change — high-speed rail, fee dispute",
+    title_vi: "Đổi vé tàu cao tốc — xử lý phí thủ tục",
+    title_en: "Booking change — high-speed rail, fee dispute",
+    sentences: [
+      {
+        chinese: "您好, 我想改签明天上海到北京的高铁。",
+        pinyin: "Nín hǎo, wǒ xiǎng gǎiqiān míngtiān Shànghǎi dào Běijīng de gāotiě.",
+        english: "Hello, I'd like to change my Shanghai-Beijing high-speed rail ticket for tomorrow.",
+        vi: "Em chào anh/chị, em muốn đổi vé tàu cao tốc Thượng Hải đi Bắc Kinh ngày mai.",
+        pronunciation_focus: ["改签 → gǎiqiān (đổi chuyến)", "高铁 → gāotiě (tàu cao tốc)", "上海到北京 → Shànghǎi dào Běijīng", "明天 → míngtiān"]
+      },
+      {
+        chinese: "原本是早上九点的, 想改成下午三点。",
+        pinyin: "Yuánběn shì zǎoshang jiǔ diǎn de, xiǎng gǎi chéng xiàwǔ sān diǎn.",
+        english: "Originally 9 AM, I want to change it to 3 PM.",
+        vi: "Vé gốc là 9 giờ sáng, em muốn đổi sang 3 giờ chiều.",
+        pronunciation_focus: ["原本 → yuánběn (vốn dĩ / nguyên gốc)", "九点 → jiǔ diǎn (9 giờ)", "下午三点 → xiàwǔ sān diǎn (3 giờ chiều)", "改成 → gǎi chéng (đổi thành)"]
+      },
+      {
+        chinese: "请问改签需要多少手续费?",
+        pinyin: "Qǐngwèn gǎiqiān xūyào duōshao shǒuxùfèi?",
+        english: "How much is the change fee?",
+        vi: "Cho em hỏi đổi chuyến mất bao nhiêu phí thủ tục?",
+        pronunciation_focus: ["手续费 → shǒuxùfèi (phí thủ tục)", "多少 → duōshao (bao nhiêu)", "请问 → qǐngwèn", "改签 → gǎiqiān"]
+      },
+      {
+        chinese: "差额我用微信支付。",
+        pinyin: "Chā'é wǒ yòng wēixìn zhīfù.",
+        english: "I'll pay the difference via WeChat.",
+        vi: "Phần chênh lệch em trả qua WeChat.",
+        pronunciation_focus: ["差额 → chā'é (phần chênh lệch)", "微信支付 → wēixìn zhīfù (WeChat Pay)", "用 → yòng (dùng)", "支付 → zhīfù"]
+      },
+      {
+        chinese: "改签后的电子票发到我手机就行。",
+        pinyin: "Gǎiqiān hòu de diànzǐ piào fā dào wǒ shǒujī jiùxíng.",
+        english: "Send the e-ticket to my phone after the change.",
+        vi: "Vé điện tử sau khi đổi gửi vào điện thoại em là được.",
+        pronunciation_focus: ["电子票 → diànzǐ piào (vé điện tử)", "发 → fā (gửi)", "手机 → shǒujī (điện thoại)", "就行 → jiùxíng (là được)"]
+      }
+    ],
+    vocab: [
+      { chinese: "高铁", pinyin: "gāo tiě", english: "high-speed rail", vi: "tàu cao tốc" },
+      { chinese: "改签", pinyin: "gǎi qiān", english: "to change ticket", vi: "đổi chuyến" },
+      { chinese: "退票", pinyin: "tuì piào", english: "to refund ticket", vi: "trả vé / hoàn vé" },
+      { chinese: "手续费", pinyin: "shǒu xù fèi", english: "service fee", vi: "phí thủ tục" },
+      { chinese: "差额", pinyin: "chā é", english: "difference (in price)", vi: "phần chênh lệch" },
+      { chinese: "出发时间", pinyin: "chū fā shí jiān", english: "departure time", vi: "giờ khởi hành" },
+      { chinese: "车次", pinyin: "chē cì", english: "train number", vi: "số chuyến tàu" },
+      { chinese: "二等座", pinyin: "èr děng zuò", english: "second-class seat", vi: "ghế hạng 2" },
+      { chinese: "电子票", pinyin: "diàn zǐ piào", english: "e-ticket", vi: "vé điện tử" },
+      { chinese: "12306", pinyin: "yāo èr sān líng liù", english: "12306 (China Railway app)", vi: "12306 (app đường sắt TQ)" }
+    ],
+    dialogue: [
+      { speaker: "阮", chinese: "您好, 我想改签车票。", pinyin: "Nín hǎo, wǒ xiǎng gǎiqiān chē piào.", english: "Hello, I'd like to change my ticket.", vi: "Chào anh, em muốn đổi vé." },
+      { speaker: "工作人员", chinese: "把身份证或护照给我, 报一下原车次。", pinyin: "Bǎ shēnfènzhèng huò hùzhào gěi wǒ, bào yīxià yuán chēcì.", english: "Hand me your ID or passport, and tell me the original train number.", vi: "Đưa em CMND hoặc hộ chiếu, đọc số chuyến gốc đi." },
+      { speaker: "阮", chinese: "G2, 明天上午九点上海虹桥到北京南。我想改成下午三点的。", pinyin: "G èr, míngtiān shàngwǔ jiǔ diǎn Shànghǎi Hóngqiáo dào Běijīng nán. Wǒ xiǎng gǎi chéng xiàwǔ sān diǎn de.", english: "G2, tomorrow 9 AM Shanghai Hongqiao to Beijing South. Want to change to 3 PM.", vi: "G2, mai 9 giờ sáng Thượng Hải Hồng Kiều đi Bắc Kinh Nam. Em muốn đổi sang chiều 3 giờ." },
+      { speaker: "工作人员", chinese: "可以, 改签到G14, 三点零五。差额二十块, 不收手续费。", pinyin: "Kěyǐ, gǎiqiān dào G shísì, sān diǎn líng wǔ. Chā'é èrshí kuài, bù shōu shǒuxùfèi.", english: "Sure, change to G14, 3:05. 20 RMB difference, no service fee.", vi: "Được, đổi sang G14, 3 giờ 05. Chênh lệch 20 tệ, không thu phí thủ tục." }
+    ],
+    dialogue_long: [
+      { speaker: "阮", chinese: "您好, 我想改签车票。原本买的是G2, 明天上海到北京。", pinyin: "Nín hǎo, wǒ xiǎng gǎiqiān chē piào. Yuánběn mǎi de shì G èr, míngtiān Shànghǎi dào Běijīng.", english: "Hello, I'd like to change my ticket. Originally G2, Shanghai to Beijing tomorrow.", vi: "Chào anh, em muốn đổi vé. Vé gốc là G2, mai từ Thượng Hải đi Bắc Kinh." },
+      { speaker: "工作人员", chinese: "好的, 把身份证或护照给我。", pinyin: "Hǎo de, bǎ shēnfènzhèng huò hùzhào gěi wǒ.", english: "Sure, give me your ID or passport.", vi: "Được, đưa em CMND hoặc hộ chiếu." },
+      { speaker: "阮", chinese: "我是越南国籍, 用护照。", pinyin: "Wǒ shì Yuènán guójí, yòng hùzhào.", english: "I'm Vietnamese, using passport.", vi: "Em quốc tịch Việt Nam, dùng hộ chiếu." },
+      { speaker: "工作人员", chinese: "可以。您想改到几点的车次?", pinyin: "Kěyǐ. Nín xiǎng gǎi dào jǐ diǎn de chēcì?", english: "Okay. What time train do you want to change to?", vi: "Được. Anh muốn đổi sang chuyến mấy giờ?" },
+      { speaker: "阮", chinese: "下午三点左右, 因为上午有会议。", pinyin: "Xiàwǔ sān diǎn zuǒyòu, yīnwèi shàngwǔ yǒu huìyì.", english: "Around 3 PM, because I have a meeting in the morning.", vi: "Khoảng 3 giờ chiều, vì sáng em có cuộc họp." },
+      { speaker: "工作人员", chinese: "我查一下。下午三点零五有G14, 还有座位。三点二十有G18。", pinyin: "Wǒ chá yīxià. Xiàwǔ sān diǎn líng wǔ yǒu G shísì, hái yǒu zuòwèi. Sān diǎn èrshí yǒu G shíbā.", english: "Let me check. 3:05 PM has G14, seats available. 3:20 has G18.", vi: "Em tra cứu. 3 giờ 05 có G14, còn ghế. 3 giờ 20 có G18." },
+      { speaker: "阮", chinese: "G14好。还是二等座吗?", pinyin: "G shísì hǎo. Háishi èrděng zuò ma?", english: "G14 is good. Still second-class seat?", vi: "G14 được. Vẫn là ghế hạng 2 chứ?" },
+      { speaker: "工作人员", chinese: "二等座G14比G2贵二十块, 因为是周五高峰。改签手续费按规定收车票价的5%。", pinyin: "Èrděng zuò G shísì bǐ G èr guì èrshí kuài, yīnwèi shì zhōu wǔ gāofēng. Gǎiqiān shǒuxùfèi àn guīdìng shōu chēpiào jià de bǎi fēn zhī wǔ.", english: "G14 second-class is 20 RMB more than G2 because it's Friday peak. Change fee is 5% of ticket price by regulation.", vi: "Ghế hạng 2 G14 đắt hơn G2 20 tệ vì là cao điểm thứ Sáu. Phí đổi theo quy định 5% giá vé." },
+      { speaker: "阮", chinese: "请问总共多少钱? 我的G2车票是553块。", pinyin: "Qǐngwèn zǒnggòng duōshao qián? Wǒ de G èr chēpiào shì wǔbǎi wǔshí sān kuài.", english: "How much total? My G2 was 553 RMB.", vi: "Cho em hỏi tổng cộng bao nhiêu? Vé G2 của em 553 tệ." },
+      { speaker: "工作人员", chinese: "差额20块加手续费27块6, 一共47块6。您看可以吗?", pinyin: "Chā'é èrshí kuài jiā shǒuxùfèi èrshí qī kuài liù, yīgòng sìshí qī kuài liù. Nín kàn kěyǐ ma?", english: "20 difference plus 27.6 service fee, total 47.6. Acceptable?", vi: "Chênh lệch 20 tệ cộng phí 27.6 tệ, tổng 47.6 tệ. Anh thấy được không?" },
+      { speaker: "阮", chinese: "等等, 手续费是不是有点高? 我看12306 app上显示开车前24小时之前改签免手续费。", pinyin: "Děngdeng, shǒuxùfèi shì bù shì yǒudiǎn gāo? Wǒ kàn 12306 app shàng xiǎnshì kāichē qián èrshí sì xiǎoshí zhīqián gǎiqiān miǎn shǒuxùfèi.", english: "Wait, isn't the fee a bit high? I saw on 12306 app that changes more than 24 hours before departure are fee-free.", vi: "Khoan, phí có hơi cao không? Em xem app 12306 ghi đổi trước 24 giờ là miễn phí thủ tục." },
+      { speaker: "工作人员", chinese: "您说得对, 让我重新查一下。... 哦, 您是对的, 现在还有27个小时, 可以免手续费。只收差额20块。", pinyin: "Nín shuō de duì, ràng wǒ chóngxīn chá yīxià. ... Ò, nín shì duì de, xiànzài hái yǒu èrshí qī gè xiǎoshí, kěyǐ miǎn shǒuxùfèi. Zhǐ shōu chā'é èrshí kuài.", english: "You're right, let me recheck. ... Yes, you're correct — still 27 hours away, no service fee. Only 20 RMB difference.", vi: "Anh nói đúng, để em xem lại. ... À, anh đúng rồi, còn 27 giờ nữa, được miễn phí thủ tục. Chỉ thu 20 tệ chênh lệch." },
+      { speaker: "阮", chinese: "好的, 谢谢您的帮助。微信支付吗?", pinyin: "Hǎo de, xièxie nín de bāngzhù. Wēixìn zhīfù ma?", english: "Great, thank you for your help. WeChat Pay?", vi: "Vâng, cảm ơn anh đã giúp. Trả qua WeChat?" },
+      { speaker: "工作人员", chinese: "可以。扫这个码就行。", pinyin: "Kěyǐ. Sǎo zhège mǎ jiùxíng.", english: "Yes, scan this QR.", vi: "Được. Quét mã này là xong." },
+      { speaker: "阮", chinese: "扫好了, 谢谢!", pinyin: "Sǎo hǎo le, xièxie!", english: "Scanned, thanks!", vi: "Quét rồi, cảm ơn!" },
+      { speaker: "工作人员", chinese: "新电子票发到您手机上了。明天G14, 下午三点零五, 七号车厢三B座。一路顺风。", pinyin: "Xīn diànzǐ piào fā dào nín shǒujī shàng le. Míngtiān G shísì, xiàwǔ sān diǎn líng wǔ, qī hào chēxiāng sān B zuò. Yī lù shùnfēng.", english: "New e-ticket sent to your phone. Tomorrow G14, 3:05 PM, car 7, seat 3B. Safe travels.", vi: "Vé điện tử mới đã gửi vào điện thoại. Mai G14, 3 giờ 05, toa 7, ghế 3B. Chúc đi đường thuận buồm." }
+    ],
+    roleplay_prompts: [
+      "Bạn cần đổi vé G42 Quảng Châu - Thượng Hải từ thứ Năm sang thứ Sáu. Quầy nói phải trả phí 50% vì còn 20 giờ. Hãy hỏi rõ + đề xuất hủy vé cũ + mua mới (có thể rẻ hơn không?). Dùng cụm '退票重新买可以吗?'",
+      "Đổi vé hạng 1 (一等座) sang hạng 2 (二等座) để rẻ hơn. Hãy hỏi quầy có hoàn lại tiền chênh lệch không. Quầy có thể nói 'không, chỉ trừ vào vé mới' — chấp nhận và hỏi rõ tổng số tiền cuối.",
+      "Quầy đề nghị đổi sang chuyến tàu thường (普速) thay vì cao tốc (高铁) để rẻ hơn 200 tệ nhưng mất 8 giờ thay vì 4 giờ. Hãy cân nhắc: thời gian vs tiền — quyết định và giải thích lựa chọn của bạn."
+    ],
+    register_notes: "Đổi vé tàu cao tốc Trung Quốc tại quầy là môi trường formal nhanh — cán bộ bận, khách xếp hàng dài, nói nhanh và súc tích. Dùng 您 với cán bộ, ngắn gọn.\n\nCác cụm chuẩn:\n- '我想改签车票' (em muốn đổi vé)\n- '原车次是X, 改成Y' (chuyến gốc là X, đổi sang Y)\n- '请问手续费是多少?' (xin hỏi phí thủ tục bao nhiêu)\n- '差额我用微信支付' (chênh lệch em trả WeChat)\n- '电子票发到我手机' (vé điện tử gửi vào điện thoại)\n\nKhi tranh chấp phí (như trong dialogue): KHÔNG cãi nhau. Dùng cụm '请问...' (xin hỏi) và viện dẫn quy định rõ ràng. Quy định 12306: trên 24 giờ trước khởi hành = miễn phí; 0-24 giờ = 5% giá vé; sau khởi hành 30 phút = không đổi được, chỉ hoàn 1 phần.\n\nKhi cán bộ làm sai (tính phí khi không đáng): nói '让我看一下12306 app' (để em xem trên app) — chứng minh bằng quy định in công khai. Cán bộ thường sẽ nhận lỗi và sửa.\n\nTránh: (a) Tranh cãi cảm xúc — cán bộ có quyền từ chối phục vụ; (b) Yêu cầu 'nói chuyện với sếp' — chỉ làm cho dài thêm; (c) Tự ý xếp hàng đầu — bị nhân viên từ chối; (d) Đe dọa khiếu nại — không hữu ích, có hệ thống khiếu nại chính thức nếu thực sự sai.",
+    idiom_glosses: [
+      {
+        idiom: "一分一毫",
+        literal: "một phân một hào (yī fēn yī háo)",
+        meaning: "Từng đồng từng xu — chính xác đến từng đơn vị nhỏ. Dùng khi cẩn thận tính tiền, không bỏ qua chi tiết phí. 'Em muốn rõ ràng từng đồng từng xu, đừng bị tính nhầm.'",
+        example: "请把费用算清楚, 一分一毫都要明白。"
+      },
+      {
+        idiom: "斤斤计较",
+        literal: "tính đếm từng cân (jīn jīn jì jiào)",
+        meaning: "So đo tính toán quá kỹ — thường mang ý hơi tiêu cực. Tránh tự nhận cụm này: 'em không 斤斤计较, chỉ muốn hiểu rõ phí.' Đối phương dùng cụm này về bạn = họ đang phòng thủ.",
+        example: "我不是斤斤计较, 只是想搞清楚费用结构。"
+      },
+      {
+        idiom: "明明白白",
+        literal: "rõ ràng minh bạch (míng míng bái bái)",
+        meaning: "Rõ ràng minh bạch — yêu cầu thông tin hoàn toàn rõ ràng. 'Em muốn 明明白白biết phí thủ tục bao nhiêu.' Cụm chuẩn khi yêu cầu giải thích kỹ.",
+        example: "我希望您把规定明明白白地告诉我。"
+      },
+      {
+        idiom: "公事公办",
+        literal: "việc công làm theo công (gōng shì gōng bàn)",
+        meaning: "Việc công xử lý theo quy định công — không thiên vị, không du di. Cán bộ dùng cụm này để giải thích vì sao họ tuân thủ quy định: 'em xin lỗi, nhưng 公事公办, anh phải trả phí'. Tôn trọng — đừng đối đầu.",
+        example: "不好意思, 公事公办, 我必须按规定收费。"
+      }
+    ],
+    cultural_notes_vi: "Hệ thống đường sắt Trung Quốc (中国铁路 / 12306) là một trong những hệ thống tàu cao tốc lớn nhất và hiệu quả nhất thế giới. Năm điều người Việt cần biết: (1) APP 12306 là chính thức và miễn phí — tải, đăng ký bằng hộ chiếu (KHÔNG cần CMND Trung Quốc nếu là khách nước ngoài). Tất cả thao tác đặt vé/đổi vé/hoàn vé đều có thể qua app, không cần ra quầy. App có tiếng Anh nhưng giới hạn — học cụm tiếng Trung sẽ giúp nhiều. (2) QUY ĐỊNH ĐỔI VÉ (改签 — gǎiqiān): trên 24 giờ trước khởi hành = miễn phí thủ tục; 8-24 giờ = 5% giá vé; <8 giờ và trước khởi hành = 10%; sau khởi hành = không đổi được. Nếu bị cán bộ tính phí sai (như trong dialogue), kiểm tra app và viện dẫn — họ sẽ sửa. (3) HẠNG GHẾ: 商务座 (thương vụ — đắt nhất, ghế ngả 180°), 一等座 (hạng 1, 4 ghế/hàng), 二等座 (hạng 2, 5 ghế/hàng — phổ biến nhất, đủ thoải mái), 无座 (đứng — chỉ cho chuyến ngắn <2 giờ). Du lịch business: hạng 2 đủ; cao cấp đi hạng 1. (4) GA TÀU LỚN: Bắc Kinh có Bắc Kinh Nam (cao tốc đi Thượng Hải), Bắc Kinh Đông (đi Đông Bắc), Bắc Kinh Tây (đi Tây Nam). Thượng Hải có Hồng Kiều (cao tốc, gần sân bay nội địa), Thượng Hải Nam (truyền thống). Quảng Châu có Quảng Châu Nam (cao tốc — KHÔNG nhầm với 'Quảng Châu' truyền thống). Đến NHẦM ga = lỡ tàu. (5) CHECK-IN: vé điện tử dùng hộ chiếu để check-in tại máy tự động. Nếu máy không nhận hộ chiếu nước ngoài, đến quầy '人工窗口' (quầy nhân viên). Đến SỚM 30 phút (an ninh sân bay-style), 1 giờ nếu mua vé hạng 'thương vụ' tại VIP lounge.\n\nVề chậm/hủy chuyến: tàu cao tốc Trung Quốc có tỉ lệ đúng giờ ~95%. Chậm <30 phút = không bồi thường. Chậm >30 phút hoặc hủy = hoàn tiền 100% qua app. KHÔNG cần đến quầy.\n\nVề thanh toán: Alipay/WeChat Pay là chính. Tiền mặt được chấp nhận tại quầy nhưng không phải máy tự động. Visa/Mastercard quốc tế ĐÔI KHI nhận tại quầy (cán bộ phải kiểm tra) — KHÔNG đáng tin. Bài học vàng: kết nối thẻ ngân hàng quốc tế (HSBC, Citibank, Stripe) với Alipay/WeChat trước khi đến Trung Quốc.",
+    tip_advice_vi: "(1) ĐẶT VÉ TỪ APP 12306, không qua đại lý du lịch (giá +20-50%). App có giao diện tiếng Anh và tiếng Trung — chuyển đổi qua menu. Đặt 7-15 ngày trước cao điểm (Tết, Tuần Vàng tháng 10). Vé thương vụ luôn còn, hạng 1/2 hết nhanh. (2) HỘ CHIẾU = ID số 1: nhập số hộ chiếu khi đăng ký 12306. Vé in tên + số hộ chiếu. Đến ga, dùng hộ chiếu quét tại cổng — KHÔNG cần in vé giấy. Mất hộ chiếu = không đi tàu được. (3) ĐỔI/HOÀN VÉ qua APP nhanh hơn quầy: vào 'My Orders' → chọn vé → 'Change'/'Refund'. Hệ thống tự động tính phí theo thời gian. Tiền hoàn lại 7-14 ngày qua phương thức thanh toán cũ. (4) TÌM CHUYẾN TÀU: tìm theo 'Departure city' và 'Arrival city' — ví dụ 'Beijing' → Bắc Kinh Nam (BJN), KHÔNG phải Bắc Kinh chung chung. App hiện tất cả ga + giá. Chọn chuyến nhanh nhất (G ký hiệu = cao tốc, D = nhanh, T/K/Z = chậm). (5) NẾU APP KHÔNG VÀO ĐƯỢC khi ở Trung Quốc đại lục: VPN có thể giúp, hoặc dùng số ĐT Trung Quốc (cần ID Trung Quốc đăng ký SIM). Backup: đến quầy 12306 tại các ga lớn — luôn mở 24/7. Quầy 'foreign passport' thường ngắn hàng. (6) CHẬM/HỦY: kiểm tra app 30 phút trước giờ khởi hành. Nếu chậm >30 phút, có quyền hoàn vé miễn phí + đổi sang chuyến khác. Bồi thường thực tế chỉ ~10% giá vé qua coupon — không nhiều. (7) TRÊN TÀU: nước nóng miễn phí, đồ ăn nhẹ ~30-50 tệ/hộp (đắt + bình thường), wifi không có hoặc rất chậm. Mang theo: tai nghe, sạc dự phòng, snack từ siêu thị. Toilet: phương Tây kiểu (西式) ở toa nào cũng có 1, kiểu Trung Quốc (蹲坑) phổ biến hơn — chuẩn bị tâm lý.",
+    exercises: [
+      { type: "fill-blank", question: "我想改签明天的高铁, 请问 ___ 是多少?", answer: "手续费" },
+      {
+        type: "matching",
+        instruction: "Ghép cụm tiếng Trung tàu cao tốc với nghĩa tiếng Việt.",
+        pairs: [
+          { chinese: "高铁", pinyin: "gāo tiě", english: "tàu cao tốc" },
+          { chinese: "改签", pinyin: "gǎi qiān", english: "đổi chuyến" },
+          { chinese: "二等座", pinyin: "èr děng zuò", english: "ghế hạng 2" },
+          { chinese: "电子票", pinyin: "diàn zǐ piào", english: "vé điện tử" }
+        ]
+      },
+      {
+        type: "translation",
+        vietnamese: "Em muốn đổi chuyến tàu cao tốc sang chiều, phí thủ tục bao nhiêu? Phần chênh lệch em trả qua WeChat.",
+        chinese: "我想把高铁改签到下午, 手续费多少? 差额我用微信支付。",
+        pinyin: "Wǒ xiǎng bǎ gāo tiě gǎi qiān dào xià wǔ, shǒu xù fèi duō shao? Chā é wǒ yòng wēi xìn zhī fù."
       }
     ]
   }
