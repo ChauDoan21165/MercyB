@@ -104,6 +104,10 @@ export function normalizeJapaneseLesson(
     })),
     exercises: lesson.exercises?.map(normalizeJapaneseExercise),
     grammar: lesson.grammar,
+    // cultural_notes_vi / tip_advice_vi are not yet on JapaneseLesson; passthrough via cast.
+    // A5's B2 Japanese sample lessons surface these fields at the top level (matching A3's French template).
+    culturalNotesVi: (lesson as any).cultural_notes_vi,
+    tipAdviceVi: (lesson as any).tip_advice_vi,
     dialogueLong: (lesson as any).dialogue_long?.map((line: any) => ({
       speaker: line.speaker,
       native: line.japanese,
