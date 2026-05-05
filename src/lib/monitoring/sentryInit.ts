@@ -294,6 +294,9 @@ const NOISE_PATTERNS: RegExp[] = [
   /googletagmanager\.com/i,            // Google Tag Manager
   /zaloJSV/i,                          // Zalo in-app browser SDK injection (zaloJSV2 ReferenceError)
   /zalojsv/i,                          // (lowercase variant, belt-and-suspenders)
+  /webkit\.messageHandlers/i,          // FB/IG IAB injects scripts that call their native bridge;
+                                       // outside the host app window.webkit is undefined and the
+                                       // dereference throws TypeError. Not our code, not fixable.
 ];
 
 function collectNoiseHaystacks(event: SentryEventLike): string[] {
