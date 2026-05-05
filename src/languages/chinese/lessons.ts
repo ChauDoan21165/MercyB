@@ -5552,6 +5552,556 @@ level: "B2",
         pinyin: "Wǒ de xíng li shì hēi sè yìng ké xiāng, èr shí bā cùn. Néng sòng dào wǒ jiǔ diàn ma?"
       }
     ]
+  },
+  {
+    id: 78,
+    level: "B2",
+    category: "travel_mobility",
+    title: "派出所报案 — 钱包被偷",
+    pinyin: "pài chū suǒ bào àn — qián bāo bèi tōu",
+    topic: "Police report — wallet stolen, insurance claim receipt",
+    title_vi: "Báo công an khu vực — ví bị trộm, lấy biên nhận bảo hiểm",
+    title_en: "Police report — stolen wallet, getting receipt for insurance",
+    sentences: [
+      {
+        chinese: "您好, 我的钱包被偷了, 想报案。",
+        pinyin: "Nín hǎo, wǒ de qiánbāo bèi tōu le, xiǎng bào'àn.",
+        english: "Hello, my wallet was stolen — I want to file a report.",
+        vi: "Em chào anh/chị, ví của em bị trộm, em muốn trình báo.",
+        pronunciation_focus: ["钱包 → qiánbāo (ví tiền)", "被偷 → bèi tōu (bị trộm — passive)", "报案 → bào'àn (trình báo)", "您好 → nín hǎo"]
+      },
+      {
+        chinese: "今天上午在王府井购物时发现钱包不见了。",
+        pinyin: "Jīntiān shàngwǔ zài Wángfǔjǐng gòuwù shí fāxiàn qiánbāo bù jiàn le.",
+        english: "This morning at Wangfujing while shopping, I noticed my wallet was missing.",
+        vi: "Sáng nay khi mua sắm ở Vương Phủ Tỉnh em phát hiện ví không còn.",
+        pronunciation_focus: ["王府井 → Wángfǔjǐng (phố mua sắm Bắc Kinh)", "购物 → gòuwù (mua sắm)", "发现 → fāxiàn (phát hiện)", "不见了 → bù jiàn le (không còn)"]
+      },
+      {
+        chinese: "里面有信用卡、身份证复印件和大概两千块人民币。",
+        pinyin: "Lǐmiàn yǒu xìnyòngkǎ, shēnfènzhèng fùyìnjiàn hé dàgài liǎngqiān kuài rénmínbì.",
+        english: "Inside: credit card, ID photocopy, and about 2,000 RMB.",
+        vi: "Trong đó có thẻ tín dụng, bản sao CMND và khoảng 2,000 nhân dân tệ.",
+        pronunciation_focus: ["信用卡 → xìnyòngkǎ (thẻ tín dụng)", "身份证复印件 → shēnfènzhèng fùyìnjiàn (bản sao CMND)", "两千块 → liǎngqiān kuài (2,000 tệ)", "里面 → lǐmiàn (bên trong)"]
+      },
+      {
+        chinese: "麻烦您出一份报案回执, 我要交保险公司。",
+        pinyin: "Máfan nín chū yī fèn bào'àn huízhí, wǒ yào jiāo bǎoxiǎn gōngsī.",
+        english: "Please issue a police report receipt — I need it for my insurance.",
+        vi: "Phiền anh/chị xuất biên nhận trình báo, em cần nộp công ty bảo hiểm.",
+        pronunciation_focus: ["报案回执 → bào'àn huízhí (biên nhận trình báo — chứng từ chính)", "保险公司 → bǎoxiǎn gōngsī (công ty bảo hiểm)", "出 → chū (xuất / cấp)", "麻烦您 → máfan nín"]
+      },
+      {
+        chinese: "我已经联系信用卡公司挂失了, 现在主要需要回执理赔。",
+        pinyin: "Wǒ yǐjīng liánxì xìnyòngkǎ gōngsī guàshī le, xiànzài zhǔyào xūyào huízhí lǐpéi.",
+        english: "I already called my credit card company to freeze it — mainly need the receipt for the claim.",
+        vi: "Em đã gọi công ty thẻ báo khóa rồi, chủ yếu cần biên nhận để claim bảo hiểm.",
+        pronunciation_focus: ["挂失 → guàshī (báo mất / khóa thẻ)", "联系 → liánxì (liên hệ)", "理赔 → lǐpéi (yêu cầu bồi thường)", "已经 → yǐjīng"]
+      }
+    ],
+    vocab: [
+      { chinese: "派出所", pinyin: "pài chū suǒ", english: "local police station", vi: "đồn công an khu vực" },
+      { chinese: "报案", pinyin: "bào àn", english: "to file a police report", vi: "trình báo" },
+      { chinese: "回执", pinyin: "huí zhí", english: "receipt", vi: "biên nhận" },
+      { chinese: "钱包", pinyin: "qián bāo", english: "wallet", vi: "ví tiền" },
+      { chinese: "被偷", pinyin: "bèi tōu", english: "to be stolen", vi: "bị trộm" },
+      { chinese: "丢失", pinyin: "diū shī", english: "to lose", vi: "bị mất" },
+      { chinese: "挂失", pinyin: "guà shī", english: "to report (card) lost / freeze", vi: "báo mất / khóa" },
+      { chinese: "信用卡", pinyin: "xìn yòng kǎ", english: "credit card", vi: "thẻ tín dụng" },
+      { chinese: "身份证", pinyin: "shēn fèn zhèng", english: "ID card", vi: "CMND" },
+      { chinese: "理赔", pinyin: "lǐ péi", english: "insurance claim", vi: "yêu cầu bồi thường" }
+    ],
+    dialogue: [
+      { speaker: "阮", chinese: "您好, 我钱包被偷了, 想报案。", pinyin: "Nín hǎo, wǒ qiánbāo bèi tōu le, xiǎng bào'àn.", english: "Hello, my wallet was stolen, want to report.", vi: "Chào anh, ví em bị trộm, em muốn trình báo." },
+      { speaker: "民警", chinese: "请把护照给我。在哪里被偷的?", pinyin: "Qǐng bǎ hùzhào gěi wǒ. Zài nǎlǐ bèi tōu de?", english: "Give me your passport. Where was it stolen?", vi: "Đưa em hộ chiếu. Bị trộm ở đâu?" },
+      { speaker: "阮", chinese: "今天上午在王府井, 大概十一点左右。", pinyin: "Jīntiān shàngwǔ zài Wángfǔjǐng, dàgài shíyī diǎn zuǒyòu.", english: "This morning at Wangfujing, around 11 AM.", vi: "Sáng nay ở Vương Phủ Tỉnh, khoảng 11 giờ." },
+      { speaker: "民警", chinese: "请填这张表, 我办手续。完事我给您出回执。", pinyin: "Qǐng tián zhè zhāng biǎo, wǒ bàn shǒuxù. Wánshì wǒ gěi nín chū huízhí.", english: "Fill this form, I'll process. I'll issue the receipt when done.", vi: "Xin điền đơn này, em làm thủ tục. Xong em sẽ xuất biên nhận." }
+    ],
+    dialogue_long: [
+      { speaker: "阮", chinese: "您好, 我钱包被偷了, 想报案。", pinyin: "Nín hǎo, wǒ qiánbāo bèi tōu le, xiǎng bào'àn.", english: "Hello, my wallet was stolen, want to file a report.", vi: "Chào anh, ví em bị trộm, em muốn trình báo." },
+      { speaker: "民警", chinese: "您好, 请坐。先把护照给我登记一下。", pinyin: "Nín hǎo, qǐng zuò. Xiān bǎ hùzhào gěi wǒ dēngjì yīxià.", english: "Hello, please sit. Hand me your passport for registration.", vi: "Chào anh, mời ngồi. Trước hết đưa hộ chiếu em đăng ký." },
+      { speaker: "阮", chinese: "好的, 这是我的护照。", pinyin: "Hǎo de, zhè shì wǒ de hùzhào.", english: "Sure, here's my passport.", vi: "Vâng, đây là hộ chiếu của em." },
+      { speaker: "民警", chinese: "您是越南国籍, 来旅游的吗?", pinyin: "Nín shì Yuènán guójí, lái lǚyóu de ma?", english: "Vietnamese national, here for tourism?", vi: "Anh quốc tịch Việt Nam, đến du lịch à?" },
+      { speaker: "阮", chinese: "出差, 待一周。", pinyin: "Chū chāi, dāi yī zhōu.", english: "Business trip, one week.", vi: "Đi công tác, ở một tuần." },
+      { speaker: "民警", chinese: "什么时候发现钱包不见的?", pinyin: "Shénme shíhou fāxiàn qiánbāo bù jiàn de?", english: "When did you notice the wallet missing?", vi: "Khi nào em phát hiện ví không còn?" },
+      { speaker: "阮", chinese: "今天上午十一点左右, 我在王府井大街购物, 想付钱时摸口袋发现钱包不见了。", pinyin: "Jīntiān shàngwǔ shíyī diǎn zuǒyòu, wǒ zài Wángfǔjǐng dàjiē gòuwù, xiǎng fùqián shí mō kǒudài fāxiàn qiánbāo bù jiàn le.", english: "Around 11 AM today, shopping on Wangfujing Street — when I went to pay, felt my pocket and the wallet was gone.", vi: "Khoảng 11 giờ sáng nay, em mua sắm ở phố Vương Phủ Tỉnh, khi định trả tiền sờ túi thì ví không còn." },
+      { speaker: "民警", chinese: "钱包是放在哪个口袋的?", pinyin: "Qiánbāo shì fàng zài nǎ gè kǒudài de?", english: "Which pocket was the wallet in?", vi: "Ví em để ở túi nào?" },
+      { speaker: "阮", chinese: "外套右边的口袋。早上吃早饭时还在, 因为我付过钱。", pinyin: "Wàitào yòubiān de kǒudài. Zǎoshang chī zǎofàn shí hái zài, yīnwèi wǒ fù guò qián.", english: "Right outer pocket of jacket. Was there at breakfast — I paid with it then.", vi: "Túi bên phải của áo khoác. Sáng ăn sáng vẫn còn, vì em đã dùng để trả tiền." },
+      { speaker: "民警", chinese: "里面有什么物品和现金?", pinyin: "Lǐmiàn yǒu shénme wùpǐn hé xiànjīn?", english: "What items and cash were inside?", vi: "Trong đó có vật phẩm gì và tiền mặt bao nhiêu?" },
+      { speaker: "阮", chinese: "现金大概两千人民币, 还有一张越南信用卡 (Sacombank Visa), 一张身份证复印件, 和几张名片。", pinyin: "Xiànjīn dàgài liǎngqiān rénmínbì, hái yǒu yī zhāng Yuènán xìnyòngkǎ (Sacombank Visa), yī zhāng shēnfènzhèng fùyìnjiàn, hé jǐ zhāng míngpiàn.", english: "About 2,000 RMB cash, one Vietnamese credit card (Sacombank Visa), an ID photocopy, and a few business cards.", vi: "Tiền mặt khoảng 2,000 nhân dân tệ, một thẻ tín dụng Việt Nam (Sacombank Visa), một bản sao CMND, và vài danh thiếp." },
+      { speaker: "民警", chinese: "信用卡挂失了吗?", pinyin: "Xìnyòngkǎ guàshī le ma?", english: "Have you reported the card frozen?", vi: "Thẻ tín dụng đã báo khóa chưa?" },
+      { speaker: "阮", chinese: "挂失了, 一发现就立刻打电话给银行。还没有异常消费。", pinyin: "Guàshī le, yī fāxiàn jiù lìkè dǎ diànhuà gěi yínháng. Hái méiyǒu yìcháng xiāofèi.", english: "Yes, called the bank immediately when I noticed. No suspicious charges yet.", vi: "Đã báo, em gọi ngay khi phát hiện. Chưa có giao dịch lạ." },
+      { speaker: "民警", chinese: "好。请填这张报案登记表, 把刚才的信息再写一遍。然后我给您出报案回执。", pinyin: "Hǎo. Qǐng tián zhè zhāng bào'àn dēngjì biǎo, bǎ gāngcái de xìnxī zài xiě yī biàn. Ránhòu wǒ gěi nín chū bào'àn huízhí.", english: "Good. Fill this report registration form, rewrite the info. Then I'll issue the police report receipt.", vi: "Được. Xin điền đơn đăng ký trình báo này, viết lại các thông tin vừa rồi. Sau đó em sẽ xuất biên nhận." },
+      { speaker: "阮", chinese: "请问回执上有什么内容? 我要交越南的旅游保险公司。", pinyin: "Qǐngwèn huízhí shàng yǒu shénme nèiróng? Wǒ yào jiāo Yuènán de lǚyóu bǎoxiǎn gōngsī.", english: "What's on the receipt? I'll submit to my Vietnamese travel insurance company.", vi: "Cho em hỏi trong biên nhận có nội dung gì? Em phải nộp công ty bảo hiểm du lịch Việt Nam." },
+      { speaker: "民警", chinese: "回执上有报案编号、报案时间、被盗物品清单、报案地点和我的章。这是中国警方的正规凭证, 越南保险公司应该认可。", pinyin: "Huízhí shàng yǒu bào'àn biānhào, bào'àn shíjiān, bèi dào wùpǐn qīngdān, bào'àn dìdiǎn hé wǒ de zhāng. Zhè shì Zhōngguó jǐngfāng de zhèngguī píngzhèng, Yuènán bǎoxiǎn gōngsī yīnggāi rènkě.", english: "Receipt has report number, time, list of stolen items, location, and my official stamp. This is an official Chinese document — Vietnamese insurance should accept it.", vi: "Biên nhận có mã hồ sơ, thời gian báo, danh mục đồ bị mất, địa điểm và con dấu của em. Đây là chứng từ chính quy của công an Trung Quốc, công ty bảo hiểm Việt Nam nên chấp nhận." },
+      { speaker: "阮", chinese: "如果保险公司需要更多信息, 能给您打电话核实吗?", pinyin: "Rúguǒ bǎoxiǎn gōngsī xūyào gèng duō xìnxī, néng gěi nín dǎ diànhuà héshí ma?", english: "If insurance needs more info, can they call you to verify?", vi: "Nếu công ty bảo hiểm cần thêm thông tin, có thể gọi anh xác nhận không?" },
+      { speaker: "民警", chinese: "可以, 派出所的电话在回执上印着。如果他们需要英文翻译, 可以让他们直接联系您本国的领事馆。", pinyin: "Kěyǐ, pàichūsuǒ de diànhuà zài huízhí shàng yìn zhe. Rúguǒ tāmen xūyào yīngwén fānyì, kěyǐ ràng tāmen zhíjiē liánxì nín běnguó de lǐngshìguǎn.", english: "Yes, station phone is printed on receipt. If they need English translation, they can contact your country's consulate.", vi: "Được, số ĐT của đồn in trên biên nhận. Nếu họ cần dịch tiếng Anh, có thể liên hệ thẳng lãnh sự quán Việt Nam." },
+      { speaker: "阮", chinese: "明白了, 谢谢您的帮助。", pinyin: "Míngbái le, xièxie nín de bāngzhù.", english: "Understood, thank you.", vi: "Em hiểu rồi, cảm ơn anh đã giúp." },
+      { speaker: "民警", chinese: "不客气。出门在外注意保管好财物, 钱包尽量分开放在不同口袋, 别都放一起。", pinyin: "Bù kèqì. Chū mén zài wài zhùyì bǎoguǎn hǎo cáiwù, qiánbāo jǐnliàng fēnkāi fàng zài bùtóng kǒudài, bié dōu fàng yīqǐ.", english: "You're welcome. When traveling, keep valuables safe — split items into different pockets, don't keep everything together.", vi: "Không có gì. Đi xa chú ý bảo quản tài sản, ví nên chia ra các túi khác nhau, đừng để tất cả một chỗ." }
+    ],
+    roleplay_prompts: [
+      "Bạn bị mất túi xách (không phải bị trộm — bạn quên trong taxi). Hãy báo công an và xin biên nhận. Lưu ý: 'mất' (丢失) khác 'bị trộm' (被偷) — chọn từ chính xác. Cụm '我把包忘在出租车上了'.",
+      "Công an hỏi 'bạn có nhớ số xe taxi không?'. Bạn không nhớ — nhưng có biên nhận DiDi/taxi qua app. Hãy mở app + đọc số chuyến + đọc tên tài xế cho công an. Đề nghị họ liên hệ với DiDi để tìm tài xế.",
+      "Sau khi báo, công an gọi lại 1 ngày sau nói 'tài xế tìm thấy ví, đến đồn lấy'. Hãy đến + xác nhận đồ + ký giấy nhận lại + cảm ơn công an + xin gặp tài xế để cảm ơn (有时候民警会安排) + tip nhỏ cho tài xế."
+    ],
+    register_notes: "Báo công an khu vực (派出所 — pàichūsuǒ) ở Trung Quốc là quy trình chuẩn, KHÔNG có gì đáng sợ cho khách du lịch khi báo mất đồ. Bạn dùng 您 với cán bộ công an (民警 — mínjǐng).\n\nNguyên tắc tone:\n- Trình bày SỰ KIỆN khách quan: khi nào, ở đâu, làm gì\n- KHÔNG đoán/buộc tội cụ thể (\"chắc chắn nhân viên A lấy\")\n- Mô tả đồ MẤT chi tiết: loại, số tiền, đặc điểm nhận diện\n- Yêu cầu CHỨNG TỪ rõ: '请出报案回执' / '请给我一份回执'\n\nPhân biệt từ vựng:\n- 丢失 (diūshī) = bị mất (do quên/rơi) — không có người gây ra\n- 被偷 (bèi tōu) = bị trộm (có người trộm) — passive, có thủ phạm\n- 抢劫 (qiǎngjié) = bị cướp (dùng vũ lực) — chỉ dùng khi thực sự bị cướp\n\nDùng đúng từ rất quan trọng — báo nhầm '抢劫' khi chỉ là móc túi sẽ kích hoạt quy trình cao hơn (cảnh sát hình sự, có thể giữ bạn lâu hơn).\n\nCác cụm chuẩn:\n- '我钱包被偷了' (ví em bị trộm)\n- '我X东西丢了' (em bị mất X — không có người gây)\n- '请出报案回执' (xin xuất biên nhận)\n- '回执是给保险公司的' (biên nhận là để cho công ty bảo hiểm)\n- '我已经挂失信用卡了' (em đã báo khóa thẻ rồi)\n\nTránh: (a) Chen vào quá nhiều cảm xúc — 'oh tôi quá đau khổ'; (b) Yêu cầu công an 'bắt thủ phạm' — cảnh sát có quy trình riêng; (c) Đăng status mạng xã hội ngay — kẻ trộm có thể theo dõi; (d) Đe dọa kiện — không hữu ích, có thể làm phức tạp.",
+    idiom_glosses: [
+      {
+        idiom: "防不胜防",
+        literal: "phòng không kịp phòng (fáng bù shèng fáng)",
+        meaning: "Phòng không xuể — kẻ xấu khôn ngoan, dù cẩn thận cũng có thể bị. Cụm dùng để miêu tả tình huống bị móc túi tinh vi: '我已经很小心了, 但小偷防不胜防'.",
+        example: "我已经很小心了, 但小偷防不胜防。"
+      },
+      {
+        idiom: "小心驶得万年船",
+        literal: "cẩn thận lái thuyền vạn năm (xiǎo xīn shǐ de wàn nián chuán)",
+        meaning: "Cẩn thận thì tàu chạy được vạn năm — cẩn thận là biện pháp tốt nhất. Cụm khuyên cẩn thận trong tương lai: 'sau lần này, em sẽ 小心驶得万年船'.",
+        example: "出门在外, 小心驶得万年船。"
+      },
+      {
+        idiom: "破财消灾",
+        literal: "phá của tan họa (pò cái xiāo zāi)",
+        meaning: "Mất tiền tránh được tai họa — an ủi người vừa mất tiền. Cụm cán bộ/người dân dùng để xoa dịu: 'mất tiền chứ không bị thương, 破财消灾, được rồi'. Tránh tự dùng — sẽ bị coi là tự an ủi giả.",
+        example: "幸好只丢了钱包, 没受伤, 破财消灾。"
+      },
+      {
+        idiom: "失而复得",
+        literal: "mất rồi tìm được (shī ér fù dé)",
+        meaning: "Mất rồi tìm lại — vui mừng vì lấy lại được vật. Cụm dùng khi công an báo tìm được ví: '钱包失而复得, 太感谢了!'.",
+        example: "钱包失而复得, 太感谢警察了。"
+      }
+    ],
+    cultural_notes_vi: "派出所 (pàichūsuǒ) là đồn công an khu vực (cơ sở) — đơn vị nhỏ nhất trong hệ thống công an Trung Quốc. Mỗi quận/phường có 1-2 派出所. Đây là nơi xử lý: báo mất đồ, đăng ký tạm trú, làm hộ khẩu, hòa giải tranh chấp dân sự nhỏ. KHÔNG phải nơi xử lý hình sự nặng (việc đó của 公安局 — gōng'ānjú, cấp quận).\n\nBốn điều người Việt cần biết khi đến 派出所:\n\n(1) TÌM 派出所 GẦN NHẤT: Baidu Maps gõ '派出所' hoặc hỏi nhân viên khách sạn/lễ tân. Mở 24/7. Vào cửa, nói '我要报案' (em muốn trình báo). Nhân viên hướng dẫn quầy + lấy số.\n\n(2) GIẤY TỜ MANG: hộ chiếu (BẮT BUỘC), bản sao hộ chiếu (tốt), số visa, địa chỉ khách sạn. Nếu mất hộ chiếu, mang biên nhận của khách sạn (酒店登记单) — họ có copy hộ chiếu của bạn.\n\n(3) THỜI GIAN xử lý: báo mất ví/điện thoại = 30-60 phút từ khi vào đồn. Mất hộ chiếu = 1-2 giờ (cần thêm thông tin). Đông người vào cuối tuần — đến giờ làm việc thường (10-16h thứ 2-thứ 6) là nhanh nhất.\n\n(4) BIÊN NHẬN (报案回执 — bào'àn huízhí): bản giấy in dấu đỏ, có mã hồ sơ + thời gian + nội dung + tên cán bộ + số ĐT đồn. Quan trọng cho: bảo hiểm du lịch (claim), đại sứ quán (làm hộ chiếu mới nếu hộ chiếu mất), thẻ tín dụng (chứng minh không phải bạn dùng).\n\nVề ngôn ngữ tại đồn: cán bộ công an Trung Quốc đại lục PHẦN LỚN không nói tiếng Anh. Nếu bạn không thành thạo tiếng Trung: (a) gọi cán bộ tiếng Việt của đại sứ quán Việt Nam (010-65325410) để dịch qua điện thoại; (b) dùng app Google Translate offline (online thường không có VPN ở đại lục); (c) gọi trợ lý tiếng Trung từ khách sạn hoặc bạn Trung Quốc.\n\nVề tâm lý: KHÔNG sợ. Cán bộ công an phục vụ khách du lịch = công việc thường ngày của họ. Họ không có thẩm quyền/lý do gây khó cho bạn. Quy trình chuẩn, mất 30-60 phút, ra về với biên nhận. Đừng để câu chuyện 'cảnh sát Trung Quốc đáng sợ' từ phim ảnh ảnh hưởng — đó là hư cấu, không phải thực tế tại 派出所.\n\nVề tip/tiền: KHÔNG đưa tiền cho cán bộ công an. Đây là phạm pháp cả hai phía. Cảm ơn bằng lời + cúi đầu nhẹ + ra về là đủ.\n\nVề camera giám sát: CCTV phổ biến tại đồn. Đừng quay phim cán bộ — vi phạm quy định. Bạn có thể yêu cầu xem camera khu vực bị mất đồ (王府井 có CCTV mọi phố) — cán bộ sẽ giúp tra nếu mất đồ giá trị cao.\n\nVề mối liên hệ với bảo hiểm Việt Nam: Bảo Việt, Bảo Minh, MIC, BSH chấp nhận biên nhận từ 派出所 Trung Quốc. KHÔNG cần dịch tiếng Việt. Khi nộp về Việt Nam, kèm: (a) biên nhận gốc; (b) ảnh chụp biên nhận; (c) bản sao hộ chiếu; (d) chi tiết thiệt hại + chứng từ (nếu có hóa đơn mua đồ).",
+    tip_advice_vi: "(1) PHÒNG TỪ TRƯỚC: chia tiền + thẻ + ID thành 2-3 nơi (ví, túi áo, xách tay, trong khách sạn). Không bao giờ để TẤT CẢ trong một ví. Mất 1 ví = mất 1 phần, không phải tất cả. (2) CHỤP ẢNH ID + THẺ + HỘ CHIẾU lưu cloud TRƯỚC khi đi. Mất bản gốc = vẫn có cách chứng minh danh tính. (3) GHI NHỚ SỐ HOTLINE QUAN TRỌNG: số khẩn cảnh sát 110 (báo trộm cướp), 122 (giao thông), 119 (cứu hỏa), 120 (cứu thương). Số ĐT đại sứ quán Việt Nam Bắc Kinh: 010-65325410. Lưu trong điện thoại + giấy backup. (4) BÁO TRỘM TRONG VÒNG 24 GIỜ: bảo hiểm du lịch yêu cầu báo công an trong 24 giờ kể từ khi mất. Quá hạn = từ chối claim. Đến đồn ngay sau khi: (a) xác nhận thực sự mất, (b) khóa thẻ tín dụng. (5) ĐẾN ĐỒN GẦN NHẤT, không phải đồn nơi mất. Cán bộ ở đồn nào cũng làm được biên nhận. Nếu bạn ở khách sạn, hỏi lễ tân hoặc Baidu Maps để tìm. (6) KHÓA THẺ TÍN DỤNG TRƯỚC KHI ĐẾN ĐỒN: gọi hotline 24/7 của ngân hàng Việt Nam (Vietcombank: 1900-545413, Sacombank: 1900-555588, etc.) — đa số đều có hotline quốc tế miễn phí qua app banking. Khóa thẻ TRƯỚC khi báo công an = khi cán bộ hỏi 'thẻ đã khóa chưa' bạn nói 'rồi'. (7) NẾU CẢM THẤY KHÔNG AN TOÀN: yêu cầu phiên dịch chính thức qua đại sứ quán Việt Nam — họ có dịch vụ này miễn phí. Gọi hotline lãnh sự Việt Nam: 010-65325410 (Bắc Kinh) hoặc 021-62288811 (Thượng Hải). Nói rõ: 'em đang ở đồn công an X, muốn xin phiên dịch tiếng Việt'. Họ sẽ điều phối hoặc cung cấp dịch viên qua điện thoại.",
+    exercises: [
+      { type: "fill-blank", question: "您好, 我的钱包 ___ 了, 想报案。", answer: "被偷" },
+      {
+        type: "matching",
+        instruction: "Ghép cụm tiếng Trung báo công an với nghĩa tiếng Việt.",
+        pairs: [
+          { chinese: "派出所", pinyin: "pài chū suǒ", english: "đồn công an khu vực" },
+          { chinese: "报案回执", pinyin: "bào àn huí zhí", english: "biên nhận trình báo" },
+          { chinese: "挂失", pinyin: "guà shī", english: "báo mất / khóa thẻ" },
+          { chinese: "理赔", pinyin: "lǐ péi", english: "yêu cầu bồi thường" }
+        ]
+      },
+      {
+        type: "translation",
+        vietnamese: "Em chào anh, ví của em bị trộm, em muốn trình báo. Phiền anh xuất biên nhận, em phải nộp công ty bảo hiểm.",
+        chinese: "您好, 我的钱包被偷了, 想报案。麻烦您出一份报案回执, 我要交保险公司。",
+        pinyin: "Nín hǎo, wǒ de qián bāo bèi tōu le, xiǎng bào àn. Má fan nín chū yī fèn bào àn huí zhí, wǒ yào jiāo bǎo xiǎn gōng sī."
+      }
+    ]
+  },
+  {
+    id: 79,
+    level: "B2",
+    category: "travel_mobility",
+    title: "问路 — 正式 (您) 与非正式 (你)",
+    pinyin: "wèn lù — zhèng shì (nín) yǔ fēi zhèng shì (nǐ)",
+    topic: "Asking directions — formal (您) vs informal (你)",
+    title_vi: "Hỏi đường — formal (您) và informal (你)",
+    title_en: "Asking directions — formal (您) vs informal (你)",
+    sentences: [
+      {
+        chinese: "您好, 请问故宫怎么走?",
+        pinyin: "Nín hǎo, qǐngwèn Gùgōng zěnme zǒu?",
+        english: "Hello (formal), how do I get to the Forbidden City?",
+        vi: "Em chào anh/chị, cho em hỏi đến Cố Cung đi thế nào?",
+        pronunciation_focus: ["您好 → nín hǎo (formal)", "请问 → qǐngwèn (xin hỏi formal)", "怎么走 → zěnme zǒu (đi thế nào)", "故宫 → Gùgōng (Cố Cung)"]
+      },
+      {
+        chinese: "嗨, 你知道这个地铁站在哪里吗?",
+        pinyin: "Hāi, nǐ zhīdào zhège dìtiě zhàn zài nǎlǐ ma?",
+        english: "Hey (informal), do you know where this metro station is?",
+        vi: "Ê, bạn có biết ga tàu điện ngầm này ở đâu không?",
+        pronunciation_focus: ["嗨 → hāi (informal hello)", "你知道 → nǐ zhīdào (informal you)", "地铁站 → dìtiě zhàn (ga tàu điện ngầm)", "在哪里 → zài nǎlǐ"]
+      },
+      {
+        chinese: "往前走两百米, 然后右转就到了。",
+        pinyin: "Wǎng qián zǒu liǎngbǎi mǐ, ránhòu yòu zhuǎn jiù dào le.",
+        english: "Go forward 200 meters, then turn right — you'll be there.",
+        vi: "Đi thẳng 200 mét, sau đó rẽ phải là đến.",
+        pronunciation_focus: ["往前走 → wǎng qián zǒu (đi thẳng)", "两百米 → liǎngbǎi mǐ (200 mét)", "右转 → yòu zhuǎn (rẽ phải)", "然后 → ránhòu"]
+      },
+      {
+        chinese: "在十字路口左转, 看到一家肯德基就到了。",
+        pinyin: "Zài shízì lùkǒu zuǒ zhuǎn, kàn dào yī jiā Kěndéjī jiù dào le.",
+        english: "Turn left at the intersection — when you see a KFC, you're there.",
+        vi: "Đến ngã tư rẽ trái, thấy KFC là đến.",
+        pronunciation_focus: ["十字路口 → shízì lùkǒu (ngã tư)", "左转 → zuǒ zhuǎn (rẽ trái)", "肯德基 → Kěndéjī (KFC)", "就到了 → jiù dào le (là đến)"]
+      },
+      {
+        chinese: "走路的话大概十五分钟, 打车五块钱。",
+        pinyin: "Zǒulù de huà dàgài shíwǔ fēnzhōng, dǎchē wǔ kuài qián.",
+        english: "Walking takes about 15 minutes, taxi is 5 RMB.",
+        vi: "Đi bộ khoảng 15 phút, đi taxi 5 tệ.",
+        pronunciation_focus: ["走路 → zǒulù (đi bộ)", "十五分钟 → shíwǔ fēnzhōng (15 phút)", "打车 → dǎchē (đi taxi)", "五块钱 → wǔ kuài qián (5 tệ)"]
+      }
+    ],
+    vocab: [
+      { chinese: "请问", pinyin: "qǐng wèn", english: "may I ask (formal)", vi: "cho em hỏi" },
+      { chinese: "怎么走", pinyin: "zěn me zǒu", english: "how to get there", vi: "đi thế nào" },
+      { chinese: "往前", pinyin: "wǎng qián", english: "forward / straight", vi: "thẳng" },
+      { chinese: "右转", pinyin: "yòu zhuǎn", english: "turn right", vi: "rẽ phải" },
+      { chinese: "左转", pinyin: "zuǒ zhuǎn", english: "turn left", vi: "rẽ trái" },
+      { chinese: "十字路口", pinyin: "shí zì lù kǒu", english: "intersection", vi: "ngã tư" },
+      { chinese: "红绿灯", pinyin: "hóng lǜ dēng", english: "traffic light", vi: "đèn giao thông" },
+      { chinese: "地铁", pinyin: "dì tiě", english: "subway", vi: "tàu điện ngầm" },
+      { chinese: "公交车", pinyin: "gōng jiāo chē", english: "public bus", vi: "xe buýt" },
+      { chinese: "出口", pinyin: "chū kǒu", english: "exit", vi: "lối ra" }
+    ],
+    dialogue: [
+      { speaker: "阮", chinese: "您好, 请问王府井大街怎么走?", pinyin: "Nín hǎo, qǐngwèn Wángfǔjǐng dàjiē zěnme zǒu?", english: "Hello, how do I get to Wangfujing Street?", vi: "Em chào anh/chị, đến phố Vương Phủ Tỉnh đi thế nào?" },
+      { speaker: "路人", chinese: "往前走, 第二个十字路口右转, 走五百米就到了。", pinyin: "Wǎng qián zǒu, dì èr gè shízì lùkǒu yòu zhuǎn, zǒu wǔbǎi mǐ jiù dào le.", english: "Go forward, second intersection turn right, walk 500 meters.", vi: "Đi thẳng, ngã tư thứ hai rẽ phải, đi 500 mét là đến." },
+      { speaker: "阮", chinese: "走路远不远?", pinyin: "Zǒulù yuǎn bù yuǎn?", english: "Far on foot?", vi: "Đi bộ có xa không?" },
+      { speaker: "路人", chinese: "不远, 大概十分钟。", pinyin: "Bù yuǎn, dàgài shí fēnzhōng.", english: "Not far, about 10 minutes.", vi: "Không xa, khoảng 10 phút." }
+    ],
+    dialogue_long: [
+      { speaker: "阮 (formal — to elder)", chinese: "您好, 请问北京站怎么走?", pinyin: "Nín hǎo, qǐngwèn Běijīng zhàn zěnme zǒu?", english: "Hello (formal), how do I get to Beijing station?", vi: "Em chào bác, cho em hỏi ga Bắc Kinh đi thế nào?" },
+      { speaker: "老人", chinese: "您是要坐火车吗?", pinyin: "Nín shì yào zuò huǒchē ma?", english: "Are you taking the train?", vi: "Anh đi tàu hỏa à?" },
+      { speaker: "阮", chinese: "对, 高铁去上海。", pinyin: "Duì, gāotiě qù Shànghǎi.", english: "Yes, high-speed rail to Shanghai.", vi: "Vâng, tàu cao tốc đi Thượng Hải." },
+      { speaker: "老人", chinese: "高铁要去北京南站, 不是北京站。地铁四号线、十四号线都到。从这里走过去要四十分钟, 太远了, 您坐地铁吧。", pinyin: "Gāotiě yào qù Běijīng nán zhàn, bù shì Běijīng zhàn. Dìtiě sì hào xiàn, shísì hào xiàn dōu dào. Cóng zhèlǐ zǒu guòqù yào sìshí fēnzhōng, tài yuǎn le, nín zuò dìtiě ba.", english: "High-speed rail goes from Beijing South, not Beijing station. Subway lines 4 or 14 reach there. From here it's 40 min walk — too far, take the subway.", vi: "Tàu cao tốc phải đến ga Bắc Kinh Nam, không phải ga Bắc Kinh. Tuyến 4 hoặc 14 tàu điện ngầm đều đến. Từ đây đi bộ 40 phút, xa quá, anh đi tàu điện ngầm đi." },
+      { speaker: "阮", chinese: "原来不是同一个站, 谢谢您提醒! 最近的地铁站在哪?", pinyin: "Yuánlái bù shì tóng yī gè zhàn, xièxie nín tíxǐng! Zuìjìn de dìtiě zhàn zài nǎ?", english: "Oh they're different stations, thanks for the heads up! Where's the nearest subway?", vi: "Hóa ra không phải cùng ga, cảm ơn bác đã nhắc! Ga tàu điện ngầm gần nhất ở đâu?" },
+      { speaker: "老人", chinese: "往前走两百米, 在十字路口右转, 走一百米就看到地铁标志, 那是建国门站, 一号线, 转十号线就能到北京南站。", pinyin: "Wǎng qián zǒu liǎngbǎi mǐ, zài shízì lùkǒu yòu zhuǎn, zǒu yībǎi mǐ jiù kàn dào dìtiě biāozhì, nà shì Jiànguómén zhàn, yī hào xiàn, zhuǎn shí hào xiàn jiù néng dào Běijīng nán zhàn.", english: "Go forward 200m, turn right at intersection, 100m more you'll see subway sign — Jianguomen station, line 1, transfer to line 10 to Beijing South.", vi: "Đi thẳng 200 mét, đến ngã tư rẽ phải, đi tiếp 100 mét sẽ thấy biển tàu điện ngầm — ga Kiến Quốc Môn, tuyến 1, chuyển tuyến 10 là đến ga Bắc Kinh Nam." },
+      { speaker: "阮", chinese: "太详细了, 太感谢您了!", pinyin: "Tài xiángxì le, tài gǎnxiè nín le!", english: "So detailed, thank you so much!", vi: "Quá chi tiết, em cảm ơn bác nhiều!" },
+      { speaker: "老人", chinese: "不客气, 路上小心。", pinyin: "Bù kèqì, lùshàng xiǎoxīn.", english: "You're welcome, be careful on the way.", vi: "Không có gì, đi đường cẩn thận." },
+      { speaker: "—", chinese: "(SAU ĐÓ — gặp bạn cùng tuổi)", pinyin: "(later — to peer)", english: "(later — to peer)", vi: "(sau đó — gặp bạn cùng tuổi)" },
+      { speaker: "阮 (informal — to peer)", chinese: "嗨, 你好, 你知道建国门地铁站怎么走吗?", pinyin: "Hāi, nǐ hǎo, nǐ zhīdào Jiànguómén dìtiě zhàn zěnme zǒu ma?", english: "Hey, hi, know how to get to Jianguomen station?", vi: "Ê, chào bạn, bạn có biết đi ga Kiến Quốc Môn thế nào không?" },
+      { speaker: "年轻人", chinese: "知道啊, 就在前面右转, 走两分钟。", pinyin: "Zhīdào a, jiù zài qiánmiàn yòu zhuǎn, zǒu liǎng fēnzhōng.", english: "Yeah, just turn right ahead, 2 min walk.", vi: "Biết chứ, ngay phía trước rẽ phải, đi 2 phút." },
+      { speaker: "阮", chinese: "好的, 谢了!", pinyin: "Hǎo de, xiè le!", english: "Got it, thanks!", vi: "Được, cảm ơn!" },
+      { speaker: "年轻人", chinese: "你是越南人?口音听得出来。", pinyin: "Nǐ shì Yuènán rén? Kǒuyīn tīng de chū lái.", english: "Vietnamese? I can hear the accent.", vi: "Bạn là người Việt à? Giọng nghe được." },
+      { speaker: "阮", chinese: "对啊, 你好厉害, 一下就听出来了!", pinyin: "Duì a, nǐ hǎo lìhai, yīxià jiù tīng chūlái le!", english: "Yeah, you're sharp — caught it right away!", vi: "Đúng rồi, bạn giỏi quá, nghe ra ngay!" },
+      { speaker: "年轻人", chinese: "我大学有越南同学。你在北京玩还是工作?", pinyin: "Wǒ dàxué yǒu Yuènán tóngxué. Nǐ zài Běijīng wán háishi gōngzuò?", english: "I had Vietnamese classmates in college. You travelling or working in Beijing?", vi: "Đại học mình có bạn người Việt. Bạn đến Bắc Kinh chơi hay làm việc?" },
+      { speaker: "阮", chinese: "出差, 待几天。你呢?", pinyin: "Chū chāi, dāi jǐ tiān. Nǐ ne?", english: "Business, few days. You?", vi: "Đi công tác, ở vài ngày. Bạn thì sao?" },
+      { speaker: "年轻人", chinese: "我在这边工作。微信加一下吧, 万一你需要帮忙。", pinyin: "Wǒ zài zhè biān gōngzuò. Wēixìn jiā yīxià ba, wànyī nǐ xūyào bāngmáng.", english: "I work around here. Let's add WeChat in case you need help.", vi: "Mình làm việc ở đây. Kết bạn WeChat đi, lỡ bạn cần giúp." },
+      { speaker: "阮", chinese: "好啊, 太感谢了!", pinyin: "Hǎo a, tài gǎnxiè le!", english: "Sure, thanks a lot!", vi: "Được, cảm ơn nhiều!" }
+    ],
+    roleplay_prompts: [
+      "Bạn cần hỏi đường đến bệnh viện gần nhất. Đường lớn, nhiều người. Hãy chọn người có vẻ ngoài sống lâu trong khu vực (cô bán hàng, bác bảo vệ — người trẻ với điện thoại có thể không biết). Dùng formal '您'. Mở đầu '不好意思打扰您一下'.",
+      "Bạn lạc trên núi (Núi Hương Sơn, Núi Vũ Đang) khi leo bộ. Gặp đoàn leo trẻ tuổi. Hãy hỏi đường về ga cáp treo bằng tone informal '你' — tạo không khí thân thiện. Hỏi luôn xem họ có app bản đồ offline không (高德/Baidu Maps).",
+      "Bạn đến quán cà phê gặp đối tác business nhưng quán nằm trong hẻm phức tạp. Gọi đối tác qua WeChat call hỏi đường. Đối tác = ngang cấp, công việc = formal nhẹ. Dùng cụm '不好意思, 我有点找不到地方' (xin lỗi em hơi không tìm thấy chỗ)."
+    ],
+    register_notes: "Hỏi đường ở Trung Quốc là cơ hội thực hành register quan trọng nhất. Quy tắc:\n\n您 (formal) — DÙNG khi:\n- Người lớn tuổi (≥35-40 tuổi)\n- Bảo vệ, nhân viên, công an, lái xe\n- Người mặc đồng phục\n- Người có vẻ ngoài uy tín (vest, già)\n- Khi không chắc tuổi đối phương\n\n你 (informal) — DÙNG khi:\n- Người trẻ rõ ràng (sinh viên, dưới 30)\n- Bạn bè/đồng nghiệp ngang cấp\n- Trẻ em\n- Trên app/online (kể cả với người lớn tuổi không gặp mặt)\n\nMở đầu chuẩn:\n- Formal: '您好, 请问...怎么走?' / '不好意思打扰您一下, 请问...'\n- Informal: '嗨' / '你好, 请问...' / '不好意思, 你知道...吗?'\n\nCảm ơn:\n- Formal: '太感谢您了' / '谢谢您'\n- Informal: '谢了' / '好的, 谢谢' / '太感谢了'\n\nTỪ KHÓA HƯỚNG dẫn:\n- 往前走 (đi thẳng) / 往左走 (đi trái) / 往右走 (đi phải)\n- 第一个/第二个十字路口 (ngã tư thứ 1/2)\n- 红绿灯 (đèn giao thông) — landmark phổ biến\n- X米 (X mét) / X分钟 (X phút)\n- 走路 (đi bộ) / 打车 (taxi) / 坐地铁 (tàu ngầm) / 坐公交 (xe buýt)\n- 看到X就到了 (thấy X là đến) — landmark cuối\n\nKhi không hiểu: '不好意思, 您能再说一遍吗?' (xin lỗi, anh/chị nói lại được không?). KHÔNG gật đầu giả vờ hiểu — sẽ đi sai đường.\n\nTránh: (a) Hỏi quá nhiều người liên tiếp — chọn 1 người tin cậy; (b) Hỏi khi đang lạc xa — quay lại điểm gần nhất biết; (c) Tin Google Maps/Waze 100% tại Trung Quốc — bị block, dùng Baidu Maps (百度地图) hoặc 高德地图 (Gaode Maps) thay thế.",
+    idiom_glosses: [
+      {
+        idiom: "明察秋毫",
+        literal: "minh sát thu hào (míng chá qiū háo)",
+        meaning: "Quan sát rõ từng sợi lông mùa thu — quan sát tinh tường, nhận xét chính xác. Cụm khen người chỉ đường giỏi, biết landmark cụ thể: 'cô ấy 明察秋毫, chỉ đường rất chi tiết'.",
+        example: "这位大爷明察秋毫, 把路线说得清清楚楚。"
+      },
+      {
+        idiom: "迷路",
+        literal: "mê lộ (mí lù)",
+        meaning: "Lạc đường — khái niệm cơ bản. KHÔNG phải idiom 4 chữ nhưng cần biết. Dùng: '我迷路了, 请问...'.",
+        example: "我迷路了, 请问最近的地铁站在哪?"
+      },
+      {
+        idiom: "条条大路通罗马",
+        literal: "muôn đường đến La Mã (tiáo tiáo dà lù tōng Luó Mǎ)",
+        meaning: "Mọi con đường đều đến La Mã — nhiều cách đến cùng đích. Cụm dùng để nói có nhiều phương án di chuyển: 'đến chỗ đó có 3 cách, 条条大路通罗马'. Đùa nhẹ với người chỉ đường thân thiện.",
+        example: "去王府井有好多路, 条条大路通罗马。"
+      },
+      {
+        idiom: "举手之劳",
+        literal: "việc của một cánh tay (jǔ shǒu zhī láo)",
+        meaning: "Việc rất nhỏ — không đáng cảm ơn. Cụm người chỉ đường dùng để khiêm tốn từ chối lời cảm ơn của bạn: '没什么, 举手之劳'. Đáp lại '太谢谢您了' của bạn.",
+        example: "不用谢, 举手之劳而已。"
+      }
+    ],
+    cultural_notes_vi: "Hỏi đường ở Trung Quốc là một trong những hành động thân thiện nhất. Người Trung Quốc thường rất nhiệt tình giúp đỡ người lạ — nhiều khi họ dẫn bạn đến tận nơi thay vì chỉ giải thích.\n\nNăm điều người Việt cần biết:\n\n(1) NGƯỜI HÀ NỘI/HỒ CHÍ MINH có thể quen chỉ đường ngắn gọn ('đi thẳng, rẽ phải, đến nhà cao'). Người Trung Quốc thường chỉ CHI TIẾT HƠN — kèm landmark, số mét, thời gian. Đừng cảm thấy bị 'over-helped' — đó là phong cách thân thiện chuẩn.\n\n(2) CHỌN NGƯỜI HỎI: bảo vệ tòa nhà (保安) > nhân viên cửa hàng (店员) > người trung niên đi bộ > người trẻ với điện thoại > tài xế xe đạp/xe máy đang chạy. Tránh: người mặc đồng phục công an (họ bận, có quy trình) trừ khi thực sự cần.\n\n(3) NGÔN NGỮ: nếu ở thành phố lớn (Bắc Kinh, Thượng Hải, Quảng Châu, Thâm Quyến, Hàng Châu), người trẻ nói tiếng Anh cơ bản. Người trung niên + ở thành phố nhỏ = chỉ tiếng Trung. Học 10 cụm cứng + dùng Baidu Maps để showing tên địa điểm bằng hanzi.\n\n(4) APP BẢN ĐỒ: tại đại lục, Google Maps bị BLOCK. Baidu Maps (百度地图) và Gaode Maps (高德地图) là hai app chính. TẢI TRƯỚC khi đến Trung Quốc — App Store ở đại lục có thể không cho download Google products. Cài tiếng Anh ở Settings để dễ dùng.\n\n(5) TÊN ĐỊA ĐIỂM bằng PINYIN có thể không được hiểu rõ. Ví dụ: 'Wangfujing' nói chậm có thể được hiểu, nhưng 'Tiananmen' phát âm sai (không có '天安门') = người Trung không nhận ra. Tốt nhất: dùng app translate cho đối phương xem hanzi, hoặc thuộc tone marks chính xác.\n\nVề an toàn: Trung Quốc đại lục thành phố lớn AN TOÀN cho khách du lịch. CCTV phổ biến, đường lớn đèn sáng. Đi bộ ban đêm (đến 23h) ở Bắc Kinh/Thượng Hải = OK. Sau 1h sáng, đi taxi/DiDi an toàn hơn.\n\nVề con số đường: 米 (mét) là đơn vị chính. 'Một nửa cây số' = '500米', không '0.5公里'. Chỉ đường: '一直走' (đi thẳng), '往北/南/东/西' (về Bắc/Nam/Đông/Tây — người TQ rất giỏi định hướng theo phương) hoặc '往那边走' kèm tay chỉ.\n\nVề help-and-receive: nếu ai đó dẫn bạn 5-10 phút đến tận nơi, đề nghị tip nhỏ (10-20 tệ) cho 'time'. Họ sẽ thường từ chối — chấp nhận 1-2 lần từ chối là chân thành. Nếu họ thực sự lấy = giúp họ tiền cà phê. Nếu họ thực sự từ chối = cảm ơn lớn + ghi nhớ. Người Trung Quốc đại lục KHÔNG có văn hóa tip mạnh như phương Tây.",
+    tip_advice_vi: "(1) TẢI BAIDU MAPS hoặc GAODE MAPS trước khi đi Trung Quốc. Cả hai có offline mode — tải bản đồ thành phố bạn sẽ đến (Bắc Kinh, Thượng Hải) ~500MB mỗi cái. Không cần VPN/internet để xem đường. (2) HỌC THUỘC 10 cụm chỉ đường: 怎么走, 往前走, 左/右转, 十字路口, 红绿灯, 走路, 打车, 地铁, 公交, 米/分钟. Đủ cho 90% tình huống. (3) KHI HỎI, dùng cấu trúc 4 phần: chào (您好) + xin lỗi (打扰一下) + xin hỏi (请问) + đích đến cụ thể (X怎么走?). Người Trung sẽ trả lời rõ ràng và đầy đủ. (4) CHỤP ẢNH BIỂN HIỆU lưu vào điện thoại — Hanzi của khách sạn, văn phòng, nhà hàng. Khi lạc, đưa biển hiệu cho người chỉ đường > đọc tên bằng pinyin. Ảnh = chính xác 100%. (5) DÙNG WECHAT TRANSLATE: trong WeChat có chức năng dịch nhắn tin. Người Trung gõ tiếng Trung, bạn xem dịch tiếng Anh/Việt. Dùng khi không chắc về cụm dài. (6) TIP DI CHUYỂN: tàu điện ngầm Bắc Kinh/Thượng Hải/Quảng Châu = 3-7 tệ/lần, có WeChat/Alipay payment. KHÔNG cần xếp hàng mua thẻ — quẹt mã QR ở cửa. Bus = 1-2 tệ. Taxi = 14 tệ khởi điểm + 2.3/km. DiDi (滴滴) = app gọi xe, có English mode. (7) NẾU LẠC NGHIÊM TRỌNG: đến cảnh sát giao thông (交警), bảo vệ tòa nhà (保安), hoặc cửa hàng tiện lợi (便利店 — 7-Eleven, FamilyMart, Lawson). Nhân viên thường nói tiếng Anh cơ bản và quen giúp người lạ. KHÔNG dừng giữa đường lớn — di chuyển vào lề/vỉa hè trước khi mở app/hỏi.",
+    exercises: [
+      { type: "fill-blank", question: "您好, ___ 故宫怎么走?", answer: "请问" },
+      {
+        type: "matching",
+        instruction: "Ghép cụm tiếng Trung chỉ đường với nghĩa tiếng Việt.",
+        pairs: [
+          { chinese: "往前走", pinyin: "wǎng qián zǒu", english: "đi thẳng" },
+          { chinese: "右转", pinyin: "yòu zhuǎn", english: "rẽ phải" },
+          { chinese: "十字路口", pinyin: "shí zì lù kǒu", english: "ngã tư" },
+          { chinese: "地铁", pinyin: "dì tiě", english: "tàu điện ngầm" }
+        ]
+      },
+      {
+        type: "translation",
+        vietnamese: "Em chào bác, cho em hỏi đến ga Bắc Kinh Nam đi thế nào? Đi bộ có xa không?",
+        chinese: "您好, 请问北京南站怎么走? 走路远不远?",
+        pinyin: "Nín hǎo, qǐng wèn Běi jīng nán zhàn zěn me zǒu? Zǒu lù yuǎn bù yuǎn?"
+      }
+    ]
+  },
+  {
+    id: 80,
+    level: "B2",
+    category: "travel_mobility",
+    title: "餐厅投诉 — 上错菜, 账单错误",
+    pinyin: "cān tīng tóu sù — shàng cuò cài, zhàng dān cuò wù",
+    topic: "Restaurant complaint — wrong order, billing error",
+    title_vi: "Khiếu nại nhà hàng — sai món, sai hóa đơn",
+    title_en: "Restaurant complaint — wrong order, billing error",
+    sentences: [
+      {
+        chinese: "您好, 这道菜不是我点的, 我点的是宫保鸡丁。",
+        pinyin: "Nín hǎo, zhè dào cài bù shì wǒ diǎn de, wǒ diǎn de shì gōngbǎo jīdīng.",
+        english: "Hello, this isn't what I ordered — I ordered Kung Pao Chicken.",
+        vi: "Em chào anh/chị, món này không phải món em gọi, em gọi gà Kung Pao.",
+        pronunciation_focus: ["这道菜 → zhè dào cài (món này)", "点 → diǎn (gọi món)", "宫保鸡丁 → gōngbǎo jīdīng (Kung Pao gà)", "不是 → bù shì"]
+      },
+      {
+        chinese: "麻烦您帮我换一下, 这个我没点。",
+        pinyin: "Máfan nín bāng wǒ huàn yīxià, zhège wǒ méi diǎn.",
+        english: "Please change it for me — I didn't order this.",
+        vi: "Phiền anh/chị đổi cho em, cái này em không gọi.",
+        pronunciation_focus: ["换 → huàn (đổi)", "麻烦您 → máfan nín (formal request)", "没点 → méi diǎn (không gọi)", "帮我 → bāng wǒ"]
+      },
+      {
+        chinese: "请问账单是不是算错了? 我没点这个酒。",
+        pinyin: "Qǐngwèn zhàngdān shì bù shì suàn cuò le? Wǒ méi diǎn zhège jiǔ.",
+        english: "Excuse me, is the bill miscalculated? I didn't order this drink.",
+        vi: "Cho em hỏi hóa đơn có tính nhầm không? Em không gọi rượu này.",
+        pronunciation_focus: ["账单 → zhàngdān (hóa đơn)", "算错 → suàn cuò (tính nhầm)", "酒 → jiǔ (rượu)", "请问 → qǐngwèn"]
+      },
+      {
+        chinese: "我们一共四个人, 但账单上写五个人的服务费。",
+        pinyin: "Wǒmen yīgòng sì gè rén, dàn zhàngdān shàng xiě wǔ gè rén de fúwùfèi.",
+        english: "We're four people total, but the bill shows service fee for five.",
+        vi: "Bọn em tổng 4 người, nhưng hóa đơn ghi phí dịch vụ 5 người.",
+        pronunciation_focus: ["一共 → yīgòng (tổng cộng)", "四个人 → sì gè rén (4 người)", "服务费 → fúwùfèi (phí dịch vụ)", "账单 → zhàngdān"]
+      },
+      {
+        chinese: "麻烦您重新打一份正确的账单, 谢谢。",
+        pinyin: "Máfan nín chóngxīn dǎ yī fèn zhèngquè de zhàngdān, xièxie.",
+        english: "Please print a corrected bill, thank you.",
+        vi: "Phiền anh/chị in lại hóa đơn đúng, cảm ơn.",
+        pronunciation_focus: ["重新 → chóngxīn (lại từ đầu)", "打 → dǎ (in)", "正确 → zhèngquè (đúng)", "麻烦您 → máfan nín"]
+      }
+    ],
+    vocab: [
+      { chinese: "点菜", pinyin: "diǎn cài", english: "to order food", vi: "gọi món" },
+      { chinese: "上菜", pinyin: "shàng cài", english: "to serve food", vi: "lên món" },
+      { chinese: "上错菜", pinyin: "shàng cuò cài", english: "wrong dish served", vi: "sai món" },
+      { chinese: "账单", pinyin: "zhàng dān", english: "bill", vi: "hóa đơn" },
+      { chinese: "结账", pinyin: "jié zhàng", english: "to settle bill", vi: "thanh toán" },
+      { chinese: "服务费", pinyin: "fú wù fèi", english: "service charge", vi: "phí dịch vụ" },
+      { chinese: "退菜", pinyin: "tuì cài", english: "to return dish", vi: "trả món" },
+      { chinese: "重新打", pinyin: "chóng xīn dǎ", english: "reprint", vi: "in lại" },
+      { chinese: "服务员", pinyin: "fú wù yuán", english: "waiter / server", vi: "phục vụ" },
+      { chinese: "菜单", pinyin: "cài dān", english: "menu", vi: "thực đơn" }
+    ],
+    dialogue: [
+      { speaker: "阮", chinese: "服务员, 这道菜不是我点的。", pinyin: "Fúwùyuán, zhè dào cài bù shì wǒ diǎn de.", english: "Server, this isn't what I ordered.", vi: "Anh ơi, món này không phải món em gọi." },
+      { speaker: "服务员", chinese: "您点的是哪道?", pinyin: "Nín diǎn de shì nǎ dào?", english: "What did you order?", vi: "Anh gọi món gì?" },
+      { speaker: "阮", chinese: "宫保鸡丁。这道是辣子鸡。", pinyin: "Gōngbǎo jīdīng. Zhè dào shì làzi jī.", english: "Kung Pao Chicken. This is Spicy Chicken.", vi: "Gà Kung Pao. Cái này là gà cay khô." },
+      { speaker: "服务员", chinese: "实在抱歉, 我马上换。", pinyin: "Shízài bàoqiàn, wǒ mǎshàng huàn.", english: "Sincerely sorry, I'll change it right away.", vi: "Thực sự xin lỗi anh, em đổi ngay." }
+    ],
+    dialogue_long: [
+      { speaker: "阮", chinese: "服务员, 不好意思, 这道菜不是我点的。", pinyin: "Fúwùyuán, bù hǎoyìsi, zhè dào cài bù shì wǒ diǎn de.", english: "Server, sorry, this isn't what I ordered.", vi: "Anh ơi, xin lỗi, món này không phải món em gọi." },
+      { speaker: "服务员", chinese: "您看一下点菜单, 您点的是什么?", pinyin: "Nín kàn yīxià diǎncài dān, nín diǎn de shì shénme?", english: "Look at the order list, what did you order?", vi: "Anh xem giấy ghi món, anh gọi gì?" },
+      { speaker: "阮", chinese: "我点的是15号宫保鸡丁。这道是辣子鸡, 是18号。", pinyin: "Wǒ diǎn de shì shíwǔ hào gōngbǎo jīdīng. Zhè dào shì làzi jī, shì shíbā hào.", english: "I ordered #15 Kung Pao Chicken. This is Spicy Chicken, #18.", vi: "Em gọi số 15 gà Kung Pao. Cái này là gà cay khô, số 18." },
+      { speaker: "服务员", chinese: "实在抱歉, 我们厨房上错菜了。我马上换。这道辣子鸡您要不要先吃, 还是退掉?", pinyin: "Shízài bàoqiàn, wǒmen chúfáng shàng cuò cài le. Wǒ mǎshàng huàn. Zhè dào làzi jī nín yào bù yào xiān chī, háishi tuì diào?", english: "Sincerely sorry, our kitchen sent the wrong dish. I'll change it. Do you want to eat this Spicy Chicken first, or return it?", vi: "Thực sự xin lỗi, bếp lên nhầm món. Em đổi ngay. Món gà cay khô này anh có muốn ăn trước không, hay trả lại?" },
+      { speaker: "阮", chinese: "退掉吧, 我吃不了那么辣的。", pinyin: "Tuì diào ba, wǒ chī bù liǎo nàme là de.", english: "Return it, I can't handle that spicy.", vi: "Trả lại đi, em không ăn cay được vậy." },
+      { speaker: "服务员", chinese: "好的, 我去厨房, 大概十分钟上宫保鸡丁。", pinyin: "Hǎo de, wǒ qù chúfáng, dàgài shí fēnzhōng shàng gōngbǎo jīdīng.", english: "Okay, I'll go to kitchen, Kung Pao Chicken in about 10 min.", vi: "Vâng, em xuống bếp, khoảng 10 phút sẽ lên gà Kung Pao." },
+      { speaker: "阮", chinese: "(SAU 10 PHÚT) 谢谢, 这次对了。等下结账时记得别算辣子鸡的钱。", pinyin: "(10 fēnzhōng hòu) Xièxie, zhè cì duì le. Děng xià jiézhàng shí jìde bié suàn làzi jī de qián.", english: "(10 min later) Thanks, this is correct. When checking out, remember not to charge for Spicy Chicken.", vi: "(10 phút sau) Cảm ơn, cái này đúng rồi. Lát thanh toán nhớ đừng tính tiền gà cay khô." },
+      { speaker: "服务员", chinese: "放心, 我已经在系统里取消了。", pinyin: "Fàngxīn, wǒ yǐjīng zài xìtǒng lǐ qǔxiāo le.", english: "Don't worry, I already canceled it in the system.", vi: "Anh yên tâm, em đã hủy trong hệ thống rồi." },
+      { speaker: "阮", chinese: "(吃完, 结账) 服务员, 麻烦结账。", pinyin: "(chī wán, jiézhàng) Fúwùyuán, máfan jiézhàng.", english: "(after eating, checking out) Server, please bill us.", vi: "(ăn xong, thanh toán) Anh ơi, phiền anh thanh toán." },
+      { speaker: "服务员", chinese: "好的, 给您账单。", pinyin: "Hǎo de, gěi nín zhàngdān.", english: "Sure, here's the bill.", vi: "Được, đưa anh hóa đơn." },
+      { speaker: "阮", chinese: "等等, 这上面写了一瓶啤酒, 我们没点啤酒。", pinyin: "Děngdeng, zhè shàngmiàn xiě le yī píng píjiǔ, wǒmen méi diǎn píjiǔ.", english: "Wait, this lists one beer, we didn't order beer.", vi: "Khoan, trên này ghi một chai bia, bọn em không gọi bia." },
+      { speaker: "服务员", chinese: "哦? 让我看一下。... 真的, 系统里串单了, 这是隔壁桌的啤酒。我马上修改。", pinyin: "Ò? Ràng wǒ kàn yīxià. ... Zhēn de, xìtǒng lǐ chuàn dān le, zhè shì gébì zhuō de píjiǔ. Wǒ mǎshàng xiūgǎi.", english: "Oh? Let me check. ... Really, the system mixed up — this is the next table's beer. I'll fix it now.", vi: "Ơ? Để em xem. ... Thật, hệ thống đã trộn — đây là bia của bàn bên. Em sửa ngay." },
+      { speaker: "阮", chinese: "另外, 我们一共四个人, 但服务费按五个人收的。", pinyin: "Lìngwài, wǒmen yīgòng sì gè rén, dàn fúwùfèi àn wǔ gè rén shōu de.", english: "Also, we're 4 people, but service charge is for 5.", vi: "Ngoài ra, bọn em 4 người nhưng phí dịch vụ tính 5 người." },
+      { speaker: "服务员", chinese: "我重新打一份。... 现在是: 四道菜加米饭, 共380块, 服务费10%是38块, 总共418块。您看对吗?", pinyin: "Wǒ chóngxīn dǎ yī fèn. ... Xiànzài shì: sì dào cài jiā mǐfàn, gòng sānbǎi bāshí kuài, fúwùfèi bǎi fēn zhī shí shì sānshí bā kuài, zǒnggòng sìbǎi yīshí bā kuài. Nín kàn duì ma?", english: "I'll reprint. ... Now: 4 dishes + rice, 380 RMB, service 10% = 38, total 418. Correct?", vi: "Em in lại. ... Bây giờ: 4 món + cơm, 380 tệ, phí dịch vụ 10% = 38 tệ, tổng 418 tệ. Anh thấy đúng không?" },
+      { speaker: "阮", chinese: "对了, 微信付。", pinyin: "Duì le, wēixìn fù.", english: "Correct, WeChat Pay.", vi: "Đúng rồi, em trả WeChat." },
+      { speaker: "服务员", chinese: "扫这个码就行。今天让您不开心了, 真不好意思。", pinyin: "Sǎo zhège mǎ jiùxíng. Jīntiān ràng nín bù kāixīn le, zhēn bù hǎoyìsi.", english: "Scan this code. Sorry to spoil your day.", vi: "Quét mã này là xong. Hôm nay làm anh không vui, thật xin lỗi." },
+      { speaker: "阮", chinese: "没关系, 处理得很及时。下次再来。", pinyin: "Méi guānxi, chǔlǐ de hěn jíshí. Xià cì zài lái.", english: "It's okay, handled promptly. We'll be back.", vi: "Không sao, anh xử lý kịp thời. Lần sau bọn em quay lại." }
+    ],
+    roleplay_prompts: [
+      "Bạn gọi món 'tôm rang muối' (椒盐虾) nhưng lên 'tôm sốt cà chua' (番茄虾). Hãy báo phục vụ + yêu cầu đổi + nếu bếp đang đông không thể đổi nhanh, đề xuất hủy món + hoàn tiền (退掉, 不收钱).",
+      "Hóa đơn ghi sai số người (4 → 6) → phí dịch vụ tăng 50%. Hãy chỉ ra lỗi cụ thể + yêu cầu in lại + kiểm tra cẩn thận lần này. Cụm '请重新打一份正确的账单, 我会再核对一遍'.",
+      "Phục vụ tính nhầm thẻ giảm giá 20% (chỉ áp dụng cho thành viên VIP, bạn không phải thành viên). Hãy chân thực: nói với phục vụ rằng bạn không phải VIP, đừng giả vờ. Trả đúng giá. Đây là test trung thực — quan trọng cho danh tiếng cá nhân."
+    ],
+    register_notes: "Khiếu nại nhà hàng Trung Quốc: tone formal nhưng nhanh, không leo thang. Phục vụ Trung Quốc thường thiếu tự chủ — lỗi của bếp/hệ thống không phải của họ. Đối xử nhẹ nhàng = họ giúp bạn nhiều hơn.\n\nCác cụm chuẩn:\n- '这道菜不是我点的' (món này không phải món em gọi)\n- '麻烦您帮我换一下' (phiền anh đổi cho em)\n- '请问账单是不是算错了?' (hóa đơn có tính nhầm không)\n- '我没点这个' (em không gọi cái này)\n- '麻烦重新打一份正确的账单' (phiền in lại hóa đơn đúng)\n\nKhi nhà hàng sai, họ thường:\n- Xin lỗi: '实在抱歉' (thực sự xin lỗi)\n- Đề xuất giải pháp: '我马上换' (em đổi ngay) / '退掉吧' (trả lại nhé)\n- Bonus: free món tráng miệng, giảm % bill, phiếu lần sau\n\nKHÔNG đòi miễn phí toàn bộ bữa ăn vì 1 món sai — quá lớn. Hợp lý: hủy món sai + hoàn tiền món đó + có thể bonus tráng miệng nhỏ.\n\nVề tip: Trung Quốc đại lục KHÔNG có văn hóa tip. Phí dịch vụ (10%) đã include. Nếu bạn để tip mặt bằng (như Mỹ), phục vụ có thể trả lại — họ nghĩ bạn quên tiền thừa.\n\nTránh: (a) La mắng phục vụ trước mặt khách khác — gây mất mặt cho họ, không hữu ích; (b) Đe dọa review xấu — chỉ dùng khi nhà hàng từ chối sửa lỗi rõ ràng; (c) Quay phim phục vụ trừ khi đã yêu cầu nhiều lần không xử lý.",
+    idiom_glosses: [
+      {
+        idiom: "实事求是",
+        literal: "thực sự cầu thị (shí shì qiú shì)",
+        meaning: "Sự việc đúng như sự việc — báo cáo chân thực, không phóng đại. Cụm dùng để giải thích vì sao bạn báo lỗi cụ thể: 'em 实事求是, không tính nhầm phí.'",
+        example: "我实事求是地告诉您, 这道菜真的不是我点的。"
+      },
+      {
+        idiom: "明明白白",
+        literal: "rõ ràng minh bạch (míng míng bái bái)",
+        meaning: "Rõ ràng, minh bạch — yêu cầu thông tin đầy đủ. 'Em muốn 明明白白biết hóa đơn tính sao.' Cụm chuẩn khi yêu cầu kiểm tra hóa đơn.",
+        example: "我希望您把账单算得明明白白。"
+      },
+      {
+        idiom: "得理饶人",
+        literal: "được lý nhường người (dé lǐ ráo rén)",
+        meaning: "Có lý vẫn nhường người — không lợi dụng khi đối phương sai. Phẩm chất quân tử: dù bạn đúng (nhà hàng sai), không leo thang, vẫn lịch sự. Đối lập với 'kicking when down'.",
+        example: "他们错了, 但我得理饶人, 不会闹大。"
+      },
+      {
+        idiom: "皆大欢喜",
+        literal: "đều cùng vui (jiē dà huān xǐ)",
+        meaning: "Mọi người đều vui — kết quả khiến mọi bên hài lòng. Cụm dùng khi vấn đề được giải quyết: 'họ đổi món, hoàn tiền, 皆大欢喜'. Tích cực để kết thúc khiếu nại.",
+        example: "服务员处理得很好, 皆大欢喜。"
+      }
+    ],
+    cultural_notes_vi: "Văn hóa nhà hàng Trung Quốc đại lục có những đặc thù mà người Việt nên biết:\n\n(1) GỌI MÓN: phục vụ thường đứng tại bàn chờ. Bạn xem menu, gọi tên/số món rõ ràng (vì âm thanh nhà hàng ồn). Nếu không chắc tên, chỉ vào ảnh menu. Số người = số món + 1 (rule of thumb). Quá nhiều = lãng phí + đắt; quá ít = không đủ ăn.\n\n(2) ĐỒ ĂN GIA ĐÌNH: khác phương Tây (mỗi người 1 đĩa), Trung Quốc dùng đĩa chung — cả bàn chia sẻ. Lazy Susan (转盘 — zhuànpán) ở giữa bàn tròn. Xoay theo chiều kim đồng hồ. Người ăn lấy bằng đũa của mình từ đĩa chung — KHÔNG dùng đũa cá nhân chấm vào nước chấm chung (dùng 公筷 — đũa công cộng).\n\n(3) MENU: thường có ảnh + giá + tên hanzi + (đôi khi) tiếng Anh dịch. Nhà hàng cao cấp có menu tiếng Anh. Nhà hàng địa phương = chỉ tiếng Trung. Dùng app dịch để xem nguyên liệu (đặc biệt nếu bạn dị ứng).\n\n(4) PHÍ DỊCH VỤ (服务费): 10-15% là chuẩn ở nhà hàng formal/khách sạn. Nhà hàng địa phương thường KHÔNG có phí dịch vụ. Hóa đơn ghi rõ 'service charge X%'. Đây không phải tip — phục vụ vẫn nhận lương, không trông chờ thêm.\n\n(5) THANH TOÁN: WeChat Pay/Alipay là chính (95% nhà hàng nhận). Tiền mặt OK. Visa/Mastercard CHỈ ở chuỗi quốc tế (Hilton, Marriott) hoặc nhà hàng cao cấp (>500 tệ/người). Không nên dựa vào credit card.\n\n(6) HÓA ĐƠN HỢP LỆ (发票 — fāpiào): hóa đơn có dấu đỏ + mã số thuế. Yêu cầu '我要发票' khi cần báo cáo phí công tác. Có thể request 1 ngày sau qua WeChat của nhà hàng.\n\nVề lỗi: nhà hàng Trung Quốc THƯỜNG XUYÊN có lỗi nhỏ (sai món, tính nhầm) vì hệ thống thủ công + giấy tờ tay tại quầy. KHÔNG phải lừa đảo — chỉ là sơ suất. Bình tĩnh chỉ ra, họ sẽ sửa nhanh. Nếu họ từ chối sửa lỗi rõ ràng = vấn đề lớn hơn (gọi 12315 — hotline bảo vệ người tiêu dùng).\n\nVề review: Dianping (大众点评) là Yelp Trung Quốc — review nhiều người đọc. Nhà hàng cực sợ rating <3.5 sao. Đây là leverage MẠNH cho khiếu nại lớn — nhưng chỉ dùng khi đã yêu cầu nhiều lần không sửa.\n\nVề người Việt và món Trung: Trung Quốc có nhiều món rất CAY (Tứ Xuyên 四川, Hồ Nam 湖南) hoặc rất NỒNG (Sơn Đông 山东). Nhiều người Việt không quen — báo trước với phục vụ '不要太辣' (đừng cay quá) hoặc '少油' (ít dầu). Họ sẽ điều chỉnh.\n\nVề kiêng kỵ thực phẩm: nếu Hồi giáo/Halal — tìm nhà hàng có biển '清真' (Halal). Nếu chay — '素食' (chay) hoặc '我吃素' (em ăn chay). Người Việt nói 'ăn chay' = vegetarian; người Trung phân '全素' (vegan, không trứng/sữa) và '蛋奶素' (lacto-ovo). Hỏi rõ.",
+    tip_advice_vi: "(1) ĐỌC REVIEW TRƯỚC khi chọn nhà hàng — Dianping (大众点评), Meituan (美团), Trip.com cho khách quốc tế. Tránh nhà hàng có >10% review nói 'sai món' hoặc 'tính nhầm'. Mức 4.0+/5 là an toàn. (2) GỌI MÓN BẰNG SỐ + TÊN: '我要15号宫保鸡丁' (em gọi số 15 gà Kung Pao). Phục vụ ghi cả 2 — khó nhầm hơn. (3) GIỮ GIẤY GHI MÓN (点菜单): phục vụ đưa cho bạn xem trước khi vào bếp. Kiểm tra: đúng số người, đúng món, đúng số lượng. Nếu có sai, sửa NGAY tại bàn — KHÔNG đợi món lên. (4) ẢNH MÀN HÌNH HÓA ĐƠN trước khi thanh toán: chụp ảnh hóa đơn giấy/màn hình. Bằng chứng nếu có tranh chấp sau. (5) KIỂM TRA TỪNG MỤC trên hóa đơn: số món, đơn giá, số lượng, phí dịch vụ. Tổng cộng dùng máy tính trên điện thoại. Sai > 5 tệ = báo. Sai < 5 tệ = bỏ qua (không đáng thời gian). (6) KHIẾU NẠI KHÉO: cấu trúc 3 bước — chỉ ra lỗi (1 câu), yêu cầu sửa (1 câu), kết thúc cảm ơn (1 câu). Không kéo dài 5 phút. (7) NẾU KHÔNG XỬ LÝ: gọi quản lý (经理 — jīnglǐ). Nếu vẫn không, gọi 12315 (hotline bảo vệ người tiêu dùng — miễn phí, có người nói tiếng Anh ở thành phố lớn). Đây là leverage cuối cùng, không lạm dụng.",
+    exercises: [
+      { type: "fill-blank", question: "您好, 这道菜不是我 ___ 的。", answer: "点" },
+      {
+        type: "matching",
+        instruction: "Ghép cụm tiếng Trung khiếu nại nhà hàng với nghĩa tiếng Việt.",
+        pairs: [
+          { chinese: "上错菜", pinyin: "shàng cuò cài", english: "sai món" },
+          { chinese: "账单", pinyin: "zhàng dān", english: "hóa đơn" },
+          { chinese: "服务费", pinyin: "fú wù fèi", english: "phí dịch vụ" },
+          { chinese: "重新打", pinyin: "chóng xīn dǎ", english: "in lại" }
+        ]
+      },
+      {
+        type: "translation",
+        vietnamese: "Bọn em 4 người, nhưng phí dịch vụ tính 5 người. Phiền anh in lại hóa đơn đúng.",
+        chinese: "我们一共四个人, 但服务费按五个人收。麻烦您重新打一份正确的账单。",
+        pinyin: "Wǒ men yī gòng sì gè rén, dàn fú wù fèi àn wǔ gè rén shōu. Má fan nín chóng xīn dǎ yī fèn zhèng què de zhàng dān."
+      }
+    ]
+  },
+  {
+    id: 81,
+    level: "B2",
+    category: "travel_mobility",
+    title: "出租车/滴滴 — 路线和车费争议",
+    pinyin: "chū zū chē / dī dī — lù xiàn hé chē fèi zhēng yì",
+    topic: "Taxi/DiDi dispute — wrong route, fare disagreement",
+    title_vi: "Taxi/DiDi — tranh chấp đường đi và giá vé",
+    title_en: "Taxi/DiDi dispute — wrong route, fare disagreement",
+    sentences: [
+      {
+        chinese: "师傅, 您能走快点吗? 不要绕路。",
+        pinyin: "Shīfu, nín néng zǒu kuài diǎn ma? Bù yào rào lù.",
+        english: "Driver, can you go faster? Don't take the long way.",
+        vi: "Anh tài xế, anh có thể đi nhanh hơn không? Đừng đi vòng.",
+        pronunciation_focus: ["师傅 → shīfu (xưng hô tài xế / thợ)", "走快点 → zǒu kuài diǎn (đi nhanh hơn)", "绕路 → rào lù (đi vòng)", "不要 → bù yào"]
+      },
+      {
+        chinese: "请走最短路线, 我赶时间。",
+        pinyin: "Qǐng zǒu zuì duǎn lùxiàn, wǒ gǎn shíjiān.",
+        english: "Please take the shortest route, I'm in a hurry.",
+        vi: "Xin đi đường ngắn nhất, em đang vội.",
+        pronunciation_focus: ["最短路线 → zuì duǎn lùxiàn (đường ngắn nhất)", "赶时间 → gǎn shíjiān (vội)", "请走 → qǐng zǒu", "请 → qǐng"]
+      },
+      {
+        chinese: "刚才在地图上看了, 直走只要十五分钟。",
+        pinyin: "Gāngcái zài dìtú shàng kàn le, zhí zǒu zhǐ yào shíwǔ fēnzhōng.",
+        english: "I just checked the map — straight is only 15 minutes.",
+        vi: "Em vừa xem bản đồ, đi thẳng chỉ 15 phút.",
+        pronunciation_focus: ["地图 → dìtú (bản đồ)", "直走 → zhí zǒu (đi thẳng)", "十五分钟 → shíwǔ fēnzhōng (15 phút)", "刚才 → gāngcái"]
+      },
+      {
+        chinese: "请问为什么滴滴显示30块, 您要40块?",
+        pinyin: "Qǐngwèn wèishéme dīdī xiǎnshì sānshí kuài, nín yào sìshí kuài?",
+        english: "Why does DiDi show 30 RMB but you want 40?",
+        vi: "Cho em hỏi tại sao DiDi hiển thị 30 tệ, anh đòi 40 tệ?",
+        pronunciation_focus: ["显示 → xiǎnshì (hiển thị)", "滴滴 → dīdī (DiDi app)", "30块 → sānshí kuài (30 tệ)", "为什么 → wèishéme"]
+      },
+      {
+        chinese: "我按app上的金额付, 不付额外的。",
+        pinyin: "Wǒ àn app shàng de jīn'é fù, bù fù éwài de.",
+        english: "I'll pay the app amount, not extra.",
+        vi: "Em trả theo số tiền trên app, không trả thêm.",
+        pronunciation_focus: ["按 → àn (theo)", "金额 → jīn'é (số tiền)", "额外 → éwài (thêm / extra)", "不付 → bù fù"]
+      }
+    ],
+    vocab: [
+      { chinese: "出租车", pinyin: "chū zū chē", english: "taxi", vi: "taxi" },
+      { chinese: "滴滴", pinyin: "dī dī", english: "DiDi (ride app)", vi: "DiDi (app gọi xe)" },
+      { chinese: "师傅", pinyin: "shī fu", english: "driver (informal)", vi: "tài xế / thợ (xưng hô)" },
+      { chinese: "路线", pinyin: "lù xiàn", english: "route", vi: "tuyến đường" },
+      { chinese: "绕路", pinyin: "rào lù", english: "to take a detour", vi: "đi vòng" },
+      { chinese: "起步价", pinyin: "qǐ bù jià", english: "starting fare", vi: "giá khởi điểm" },
+      { chinese: "车费", pinyin: "chē fèi", english: "fare", vi: "tiền xe" },
+      { chinese: "打表", pinyin: "dǎ biǎo", english: "use the meter", vi: "bật đồng hồ" },
+      { chinese: "投诉", pinyin: "tóu sù", english: "to complain", vi: "khiếu nại" },
+      { chinese: "电子发票", pinyin: "diàn zǐ fā piào", english: "e-invoice", vi: "hóa đơn điện tử" }
+    ],
+    dialogue: [
+      { speaker: "阮", chinese: "师傅, 去王府井, 走最近的路。", pinyin: "Shīfu, qù Wángfǔjǐng, zǒu zuì jìn de lù.", english: "Driver, to Wangfujing, take the shortest way.", vi: "Anh ơi, đến Vương Phủ Tỉnh, đi đường gần nhất." },
+      { speaker: "司机", chinese: "好, 走二环吧, 不堵。", pinyin: "Hǎo, zǒu èr huán ba, bù dǔ.", english: "Sure, take 2nd ring road, no traffic.", vi: "Được, đi vành đai 2 nhé, không kẹt." },
+      { speaker: "阮", chinese: "好的。打表了吗?", pinyin: "Hǎo de. Dǎ biǎo le ma?", english: "Okay. Meter on?", vi: "Vâng. Bật đồng hồ chưa?" },
+      { speaker: "司机", chinese: "打了, 起步价14块。", pinyin: "Dǎ le, qǐbùjià shísì kuài.", english: "Yes, start 14 RMB.", vi: "Bật rồi, khởi điểm 14 tệ." }
+    ],
+    dialogue_long: [
+      { speaker: "阮", chinese: "师傅, 您好, 去机场T3航站楼。", pinyin: "Shīfu, nín hǎo, qù jīchǎng T sān hángzhànlóu.", english: "Driver, hello, to airport Terminal 3.", vi: "Anh tài xế, chào anh, đến nhà ga T3 sân bay." },
+      { speaker: "司机", chinese: "好, 三环转机场高速。", pinyin: "Hǎo, sān huán zhuǎn jīchǎng gāosù.", english: "Okay, 3rd ring road then airport expressway.", vi: "Được, vành đai 3 rồi cao tốc sân bay." },
+      { speaker: "阮", chinese: "我用滴滴叫的车, 显示估价85块。", pinyin: "Wǒ yòng dīdī jiào de chē, xiǎnshì gūjià bāshí wǔ kuài.", english: "I called via DiDi, estimated 85 RMB.", vi: "Em gọi bằng DiDi, ước tính 85 tệ." },
+      { speaker: "司机", chinese: "估价是估价, 实际多少要看路况。今天有点堵, 可能要95-100。", pinyin: "Gūjià shì gūjià, shíjì duōshao yào kàn lùkuàng. Jīntiān yǒudiǎn dǔ, kěnéng yào jiǔshí wǔ dào yībǎi.", english: "Estimate is estimate, actual depends on traffic. A bit congested today — maybe 95-100.", vi: "Ước tính là ước tính, thực tế tùy giao thông. Hôm nay hơi kẹt, có thể 95-100 tệ." },
+      { speaker: "阮", chinese: "好, 我看导航。... 师傅, 我看高德地图显示直走机场高速最近, 您怎么走五环? 这样多十公里。", pinyin: "Hǎo, wǒ kàn dǎoháng. ... Shīfu, wǒ kàn Gāodé dìtú xiǎnshì zhí zǒu jīchǎng gāosù zuì jìn, nín zěnme zǒu wǔ huán? Zhèyàng duō shí gōnglǐ.", english: "Okay, I'll check navigation. ... Driver, Gaode Maps shows airport expressway is shortest, why are you on 5th ring? That's 10km extra.", vi: "Được, em xem dẫn đường. ... Anh ơi, em xem Gaode Maps thấy cao tốc sân bay gần nhất, sao anh đi vành đai 5? Đi vậy thêm 10km." },
+      { speaker: "司机", chinese: "三环今天有事故, 我故意绕一下。", pinyin: "Sān huán jīntiān yǒu shìgù, wǒ gùyì rào yīxià.", english: "3rd ring has an accident today, I'm detouring on purpose.", vi: "Vành đai 3 hôm nay có tai nạn, em cố ý đi vòng." },
+      { speaker: "阮", chinese: "我看Gaode地图上, 三环目前是绿色的, 没堵车。能不能调整一下?", pinyin: "Wǒ kàn Gāodé dìtú shàng, sān huán mùqián shì lǜsè de, méi dǔ chē. Néng bù néng tiáozhěng yīxià?", english: "On Gaode, 3rd ring is green now, no traffic. Can you adjust?", vi: "Em xem Gaode, vành đai 3 hiện màu xanh, không kẹt. Có thể điều chỉnh không?" },
+      { speaker: "司机", chinese: "(沉默几秒) 好吧, 下个出口我转回去。但车费可能因为这段绕路要多算几块。", pinyin: "(chénmò jǐ miǎo) Hǎo ba, xià gè chūkǒu wǒ zhuǎn huíqù. Dàn chēfèi kěnéng yīnwèi zhè duàn rào lù yào duō suàn jǐ kuài.", english: "(pause) Okay, next exit I'll turn back. But fare might be a few yuan more because of this detour.", vi: "(im lặng vài giây) Được, lối ra tiếp theo em quay lại. Nhưng giá có thể đắt thêm vài tệ vì đoạn vòng này." },
+      { speaker: "阮", chinese: "师傅, 这段绕路不是我要的。如果按app计费, 您应该按估价范围付, 不能因为您绕路让我多付。", pinyin: "Shīfu, zhè duàn rào lù bù shì wǒ yào de. Rúguǒ àn app jìfèi, nín yīnggāi àn gūjià fànwéi fù, bù néng yīnwèi nín rào lù ràng wǒ duō fù.", english: "Driver, this detour isn't on me. Per app billing, you should charge within estimate, can't make me pay extra for your detour.", vi: "Anh ơi, đoạn vòng này không phải em yêu cầu. Theo tính phí của app, anh phải tính trong phạm vi ước tính, không thể vì anh đi vòng mà em phải trả thêm." },
+      { speaker: "司机", chinese: "(到了机场) 一共112块。", pinyin: "(dào le jīchǎng) Yīgòng yībǎi yī shí èr kuài.", english: "(arrives) Total 112 RMB.", vi: "(đến sân bay) Tổng cộng 112 tệ." },
+      { speaker: "阮", chinese: "app显示估价是85, 实际跑了20.5公里, 应该是90块。我按90付。如果您有异议, 我向滴滴投诉, 让平台仲裁。", pinyin: "App xiǎnshì gūjià shì bāshí wǔ, shíjì pǎo le èrshí diǎn wǔ gōnglǐ, yīnggāi shì jiǔshí kuài. Wǒ àn jiǔshí fù. Rúguǒ nín yǒu yìyì, wǒ xiàng dīdī tóusù, ràng píngtái zhòngcái.", english: "App shows estimate 85, actual 20.5km, should be 90. I'll pay 90. If you disagree, I'll complain to DiDi for arbitration.", vi: "App hiển thị ước tính 85, thực tế chạy 20.5km, đáng lẽ 90 tệ. Em trả 90. Nếu anh không đồng ý, em sẽ khiếu nại DiDi để platform phân xử." },
+      { speaker: "司机", chinese: "(犹豫) 好吧, 90就90, 用app结账吧。", pinyin: "(yóuyù) Hǎo ba, jiǔshí jiù jiǔshí, yòng app jiézhàng ba.", english: "(hesitates) Fine, 90 it is, settle via app.", vi: "(do dự) Được, 90 thì 90, thanh toán qua app đi." },
+      { speaker: "阮", chinese: "app上自动结算, 我已经付了。请发电子发票到我邮箱。", pinyin: "App shàng zìdòng jiésuàn, wǒ yǐjīng fù le. Qǐng fā diànzǐ fāpiào dào wǒ yóuxiāng.", english: "App auto-settled, already paid. Please send e-invoice to my email.", vi: "App tự động thanh toán, em đã trả. Xin gửi hóa đơn điện tử vào email em." },
+      { speaker: "司机", chinese: "电子发票app里直接申请就行, 我这边没控制权。", pinyin: "Diànzǐ fāpiào app lǐ zhíjiē shēnqǐng jiùxíng, wǒ zhèbiān méi kòngzhì quán.", english: "Apply for e-invoice in app directly — I have no control.", vi: "Hóa đơn điện tử anh xin trên app trực tiếp, em không có quyền điều khiển." },
+      { speaker: "阮", chinese: "好, 谢谢。", pinyin: "Hǎo, xièxie.", english: "Okay, thanks.", vi: "Được, cảm ơn." }
+    ],
+    roleplay_prompts: [
+      "Tài xế DiDi đến đón nhưng nhìn thấy bạn là người nước ngoài + có nhiều vali → từ chối chở. Hãy bình tĩnh: hỏi rõ lý do + nếu không có lý do hợp lệ, báo qua app (Cancel by driver, with photo of license plate). DiDi sẽ phạt tài xế + cấp xe khác miễn phí.",
+      "Đi taxi truyền thống (không qua app), lên xe quên kiểm tra đồng hồ. Đi 5 phút thấy đồng hồ chưa bật. Hãy yêu cầu ngay: '师傅, 您还没打表' (anh chưa bật đồng hồ). Nếu tài xế nói 'fixed price 100', xuống xe ngay tại đèn đỏ + báo 12328 (hotline taxi).",
+      "Đến nơi, tài xế nói 'tôi không nhận WeChat Pay, chỉ tiền mặt'. Bạn không có tiền mặt. Hãy đề xuất: (a) đến cây ATM gần đó rút tiền, (b) tài xế chở đến bạn rút rồi quay lại, (c) gọi DiDi support. KHÔNG để tài xế giữ điện thoại/đồ làm 'cọc'."
+    ],
+    register_notes: "Xưng hô tài xế ở Trung Quốc: '师傅' (shīfu — thợ/sư phụ) là chuẩn nhất, không có 师傅 trong tiếng Việt nhưng tương tự 'anh ơi'. Dùng 您 với 师傅, không dùng 你.\n\nDiDi (滴滴出行) là Uber/Grab của Trung Quốc — app chính thức, an toàn, có English mode. KHÔNG dùng taxi đường phố trừ khi cần thiết — dễ bị overcharge.\n\nCác cụm chuẩn:\n- '师傅, 去X' (anh ơi, đi X) — câu mở chuẩn\n- '走最近的路' (đi đường gần nhất)\n- '不要绕路' (đừng đi vòng)\n- '打表了吗?' (bật đồng hồ chưa?)\n- '车费多少?' (giá xe bao nhiêu?)\n- '我用app结账' (em thanh toán qua app)\n- '请发电子发票' (xin gửi hóa đơn điện tử)\n\nKhi tranh chấp:\n- Trên app DiDi: bằng chứng có sẵn (lộ trình, ước tính, GPS) — quay sang DiDi support, KHÔNG cãi với tài xế\n- Taxi truyền thống: bằng chứng yếu hơn — chụp ảnh biển số, ghi nhớ tên tài xế (trên giấy phép treo dashboard), gọi 12328 (hotline taxi quốc gia)\n\nCảm ơn:\n- Tới nơi: '谢谢师傅' (cảm ơn anh tài xế)\n- Cuối hành trình: '一路顺利' (đi thuận lợi — formal) / '辛苦了' (vất vả rồi)\n\nTránh: (a) Trả tiền mặt cho DiDi — app tự thanh toán; (b) Đưa đầy đủ địa chỉ chi tiết bằng tiếng Anh — dùng app set destination; (c) Lên xe không bật biển số đúng app — kiểm tra biển số khớp DiDi trước khi vào.",
+    idiom_glosses: [
+      {
+        idiom: "无奸不商",
+        literal: "không gian không thương (wú jiān bù shāng)",
+        meaning: "Người buôn không gian thì không kiếm được — câu đùa cũ ngầm chỉ thương nhân hay láu cá. Người Trung Quốc dùng để cảnh báo: '坐出租车要小心, 无奸不商'. Dùng cảnh giác, không phải tự miêu tả.",
+        example: "出租车师傅有时候无奸不商, 我们要小心。"
+      },
+      {
+        idiom: "条理清楚",
+        literal: "có thứ tự rõ ràng (tiáo lǐ qīng chu)",
+        meaning: "Có logic rõ ràng — yêu cầu trình bày có thứ tự. Cụm dùng khi tranh chấp: 'em sẽ nói 条理清楚 lý do'. Tránh nói cảm xúc lung tung.",
+        example: "您条理清楚地说出您的理由。"
+      },
+      {
+        idiom: "据理力争",
+        literal: "dựa lý tranh giành (jù lǐ lì zhēng)",
+        meaning: "Dựa vào lý lẽ tranh đấu — đứng vững trên lập trường có lý. Cụm tích cực, dùng khi bạn đứng đúng nhưng nhẹ nhàng: 'em 据理力争, không phải gây gổ'.",
+        example: "我据理力争, 不付额外的钱。"
+      },
+      {
+        idiom: "得不偿失",
+        literal: "được không bù mất (dé bù cháng shī)",
+        meaning: "Lợi ích không bù được mất mát — không đáng. Cụm dùng để phân tích: 'cãi nhau với tài xế 5 tệ là 得不偿失'. Cảnh báo bản thân khi muốn leo thang vì việc nhỏ.",
+        example: "为五块钱跟司机大吵, 得不偿失。"
+      }
+    ],
+    cultural_notes_vi: "Hệ thống di chuyển ở Trung Quốc đại lục có hai loại chính:\n\n(1) DIDI (滴滴出行): app gọi xe lớn nhất Trung Quốc — 600+ triệu user, có English mode. Tải miễn phí trên App Store. Đăng ký bằng số ĐT Trung Quốc HOẶC số quốc tế (cần OTP). Kết nối với Alipay/WeChat Pay HOẶC thẻ Visa/Mastercard quốc tế. Loại xe: 快车 (Express, rẻ nhất, sedan), 优享 (Comfort, sedan tốt hơn), 专车 (Premier, BMW/Mercedes), 拼车 (Carpool, share, rẻ nhất). Đi sân bay 50-150 tệ tùy thành phố.\n\n(2) TAXI ĐƯỜNG PHỐ: ở mọi thành phố. Vẫy tay là dừng. Khởi điểm 10-14 tệ + 2.3 tệ/km. KHÔNG cần app, nhưng:\n- Dễ bị từ chối nếu là người nước ngoài (số ít tài xế ngại communication)\n- Đôi khi đồng hồ 'bị hỏng' = bịa giá\n- Khó chứng minh khiếu nại\nKhuyến nghị: dùng DiDi 90% lúc, taxi đường phố chỉ khi không có DiDi (ngõ nhỏ, mưa to, app sập).\n\nVề bằng chứng: DiDi giữ FULL log: lộ trình GPS, ước tính giá, thời gian đón/trả, đánh giá tài xế. Khi khiếu nại qua app, DiDi nhìn vào log + xử lý 24-48 giờ. Bồi thường có thể là: hoàn tiền, voucher, phạt tài xế (giảm rating của họ — họ rất sợ điều này).\n\nVề ngôn ngữ tài xế: 90% tài xế Trung Quốc đại lục KHÔNG nói tiếng Anh. App DiDi có:\n- Translation function trong chat\n- Voice messages (gửi voice tiếng Anh, app dịch sang tiếng Trung cho tài xế nghe)\n- Pre-set messages: 'Where are you?', 'Please come faster', 'I'm here'\n\nVề an toàn: DiDi sau 'vụ Yueyue 2018' đã tăng cường security: tài xế phải verify danh tính + face recognition trước mỗi shift; có nút SOS trong app gọi 110; có tính năng share GPS với người thân real-time. Đêm khuya 23:00-05:00 có 'safety mode' — chỉ tài xế có rating cao được nhận khách.\n\nVề tip/phụ thu: KHÔNG có tip ở đại lục. Đôi khi tài xế hỏi tip 'làm tròn' (10 tệ → 15 tệ) — đặc biệt với khách nước ngoài. Lịch sự từ chối: '不用了, 谢谢' (không cần, cảm ơn). Nếu tài xế giúp đặc biệt (mang vali, đợi bạn rút tiền), cho 10-20 tệ là phù hợp.\n\nVề khiếu nại: nếu tranh chấp với tài xế:\n- DiDi: phần khiếu nại trong app, thường giải quyết 24h\n- Taxi truyền thống: gọi 12328 (transportation hotline) — có người tiếng Anh ở thành phố lớn\n- Cuối cùng: 110 (cảnh sát) — chỉ khi tài xế có hành vi nguy hiểm hoặc đe dọa\n\nVề thời gian cao điểm: Bắc Kinh + Thượng Hải kẹt khủng khiếp 7-9h sáng, 17-19h tối. Tránh đặt xe khi đó — chuyển sang tàu điện ngầm hoặc đặt sớm hơn.",
+    tip_advice_vi: "(1) TẢI DIDI TRƯỚC KHI ĐẾN TQ: cần số ĐT để OTP. Số quốc tế OK nhưng OTP từ Trung Quốc không phải lúc nào cũng đến. Tốt nhất: đăng ký với số ĐT Việt Nam khi bạn đang ở VN, sau khi cài đặt thành công thì bay qua. (2) KẾT NỐI THẺ: Visa/Mastercard quốc tế hoạt động trên DiDi (sau 2023). Setup trong app trước khi đi. KHÔNG dựa vào WeChat Pay nếu chưa có ID Trung Quốc — link thẻ quốc tế đã ổn định hơn. (3) KIỂM TRA BIỂN SỐ trước khi lên xe: app hiển thị biển số tài xế. Khớp với biển số xe thực = OK. Không khớp = HỦY ngay (Cancel + report). Có người giả vờ là DiDi để chở khách nước ngoài. (4) ĐÔ THỊ LỚN HƠN không cần dùng tiếng Trung nhiều: chỉ destination trên app, tài xế dùng GPS. Bạn chỉ cần nói '到了, 谢谢' (đến rồi, cảm ơn). 5 phút trên đường, không bắt buộc nói chuyện. (5) BẢN ĐỒ DỰ PHÒNG: Gaode Maps (高德) hoặc Baidu Maps (百度) — kiểm tra route + giá ước tính TRƯỚC khi đặt xe. Nếu DiDi báo giá quá cao (>50% Gaode estimate) = giờ cao điểm hoặc weather surcharge. Cân nhắc chờ. (6) AN TOÀN CÁ NHÂN: chia GPS với bạn/đồng nghiệp qua DiDi 'Share Trip'. Đến nơi rồi bấm 'I've arrived' để app biết bạn an toàn. Nếu tài xế đi sai đường nhiều >5 phút = SOS button có sẵn (gọi 110 + báo DiDi). (7) GIỮ HÓA ĐƠN ĐIỆN TỬ: trong app DiDi → Trips → trip cụ thể → Get Invoice. Email tự động sau 1-7 ngày. Đối với báo cáo công tác: cần fapiao chính quy với tax ID — thiết lập trong app trước khi đặt xe.",
+    exercises: [
+      { type: "fill-blank", question: "师傅, 请走 ___ 路线, 不要绕路。", answer: "最短" },
+      {
+        type: "matching",
+        instruction: "Ghép cụm tiếng Trung taxi/DiDi với nghĩa tiếng Việt.",
+        pairs: [
+          { chinese: "师傅", pinyin: "shī fu", english: "tài xế (xưng hô)" },
+          { chinese: "绕路", pinyin: "rào lù", english: "đi vòng" },
+          { chinese: "打表", pinyin: "dǎ biǎo", english: "bật đồng hồ" },
+          { chinese: "电子发票", pinyin: "diàn zǐ fā piào", english: "hóa đơn điện tử" }
+        ]
+      },
+      {
+        type: "translation",
+        vietnamese: "Anh tài xế, em xem bản đồ thấy đường thẳng chỉ 15 phút, sao anh đi vòng? Em trả theo số tiền trên app, không trả thêm.",
+        chinese: "师傅, 我看地图直走只要十五分钟, 您怎么绕路? 我按app上的金额付, 不付额外的。",
+        pinyin: "Shī fu, wǒ kàn dì tú zhí zǒu zhǐ yào shí wǔ fēn zhōng, nín zěn me rào lù? Wǒ àn app shàng de jīn é fù, bù fù é wài de."
+      }
+    ]
   }
 ];
 
