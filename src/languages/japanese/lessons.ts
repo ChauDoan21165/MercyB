@@ -3474,6 +3474,767 @@ export const lessons: JapaneseLesson[] = [
     ] },
     { type: "translation", vietnamese: "Em nói thẳng nhé, anh có thể chia sẻ tâm sự thật với em được không.", japanese: "ざっくばらんに、本音でお話しできると嬉しいです。" }
   ]
+},
+{
+  id: 72,
+  title: "Immigration officer at Narita/Haneda",
+  title_vi: "Cán bộ nhập cảnh tại Narita/Haneda",
+  title_en: "Immigration officer at Narita/Haneda",
+  category: "fluency",
+  level: "B2",
+  vocabulary: [
+    { japanese: "入国審査 (にゅうこくしんさ)", english: "immigration inspection" },
+    { japanese: "入国カード (にゅうこくカード)", english: "landing card / disembarkation card" },
+    { japanese: "滞在目的 (たいざいもくてき)", english: "purpose of stay" },
+    { japanese: "滞在期間 (たいざいきかん)", english: "duration of stay" },
+    { japanese: "滞在先 (たいざいさき)", english: "place of stay (hotel/host address)" },
+    { japanese: "観光 (かんこう)", english: "tourism / sightseeing" },
+    { japanese: "商用 (しょうよう)", english: "business purpose" },
+    { japanese: "短期滞在 (たんきたいざい)", english: "short-term stay (90-day visa-free)" },
+    { japanese: "旅券 (りょけん)", english: "passport (formal — used by officials)" },
+    { japanese: "復路便 (ふくろびん)", english: "return flight (proof of departure)" }
+  ],
+  examples: [
+    { japanese: "ベトナムから観光で参りました。", english: "I came from Vietnam for tourism." },
+    { japanese: "滞在期間は二週間でございます。", english: "My stay duration is two weeks." },
+    { japanese: "滞在先は東京の新宿京王プラザホテルでございます。", english: "My place of stay is the Keio Plaza Hotel in Shinjuku, Tokyo." },
+    { japanese: "復路便のチケットも持参しております。", english: "I also have my return-flight ticket with me." },
+    { japanese: "ご確認のほど、よろしくお願いいたします。", english: "I respectfully ask for your verification." }
+  ],
+  dialogue: [
+    { speaker: "審査官", japanese: "パスポートと入国カードをお願いします。滞在の目的は?", english: "Passport and landing card, please. Purpose of stay?" },
+    { speaker: "チャウ", japanese: "観光で参りました。二週間の滞在予定でございます。", english: "I came for tourism. Planning a two-week stay." },
+    { speaker: "審査官", japanese: "宿泊先はどちらですか。", english: "Where are you staying?" },
+    { speaker: "チャウ", japanese: "新宿の京王プラザホテルでございます。", english: "Keio Plaza Hotel in Shinjuku." }
+  ],
+  dialogue_long: [
+    { speaker: "審査官", japanese: "次の方、どうぞ。パスポートと入国カードをお願いします。", english: "Next person, please. Passport and landing card, please." },
+    { speaker: "チャウ", japanese: "はい、こちらでございます。よろしくお願いいたします。", english: "Yes, here you are. Thank you in advance." },
+    { speaker: "審査官", japanese: "ベトナムからですね。滞在の目的は何ですか。", english: "From Vietnam. What's the purpose of your stay?" },
+    { speaker: "チャウ", japanese: "観光でございます。京都と大阪も訪れる予定です。", english: "Tourism. I plan to visit Kyoto and Osaka too." },
+    { speaker: "審査官", japanese: "滞在期間はどれくらいですか。", english: "How long is your stay?" },
+    { speaker: "チャウ", japanese: "二週間でございます。三月五日に帰国予定でございます。", english: "Two weeks. I plan to return home on March 5." },
+    { speaker: "審査官", japanese: "復路便のチケットはお持ちですか。", english: "Do you have your return ticket?" },
+    { speaker: "チャウ", japanese: "はい、こちらに印刷したものを持参しております。お見せいたします。", english: "Yes, I have a printed copy here. Let me show you." },
+    { speaker: "審査官", japanese: "ありがとうございます。宿泊先のご住所は入国カードに書かれているとおりですか。", english: "Thank you. Is the lodging address as written on the landing card?" },
+    { speaker: "チャウ", japanese: "はい、新宿の京王プラザホテルでございます。予約確認書もお見せできます。", english: "Yes, Keio Plaza Hotel in Shinjuku. I can show the booking confirmation." },
+    { speaker: "審査官", japanese: "結構です。日本へのご訪問は初めてですか。", english: "That's fine. Is this your first visit to Japan?" },
+    { speaker: "チャウ", japanese: "はい、初めてでございます。", english: "Yes, my first time." },
+    { speaker: "審査官", japanese: "それでは、指紋と顔写真をお願いします。両人差し指をスキャナーに置いてください。", english: "Then please give fingerprints and face photo. Place both index fingers on the scanner." },
+    { speaker: "チャウ", japanese: "はい、承知いたしました。", english: "Yes, understood." },
+    { speaker: "審査官", japanese: "正面のカメラを見てください。はい、結構です。", english: "Look at the camera in front. Yes, fine." },
+    { speaker: "審査官", japanese: "九十日間の短期滞在で許可します。良いご旅行を。", english: "Approved for 90-day short-term stay. Have a good trip." },
+    { speaker: "チャウ", japanese: "誠にありがとうございます。失礼いたします。", english: "Thank you sincerely. Excusing myself." }
+  ],
+  roleplay_prompts: [
+    "Đóng vai chính bạn vừa xuống máy bay tại Narita lần đầu. Hãy diễn tập phần trả lời 5 câu hỏi chuẩn của 入国審査官: (1) mục đích, (2) thời gian ở, (3) nơi ở, (4) vé về, (5) lần đầu/lần thứ mấy. Mỗi câu trả lời 5-10 giây, dùng kenjougo (de gozaimasu, mairimashita).",
+    "Cán bộ hỏi câu khó: anata no shokugyou wa nan desu ka (nghề của bạn?). Bạn là sinh viên VN du lịch — KHÔNG nói daigakusei desu (sinh viên đại học) cộc lốc; dùng cụm gakusei de, genzai betonamu kokka daigaku ni zaiseki shite orimasu (em đang học tại ĐH Quốc gia VN).",
+    "Cán bộ thấy nghi ngờ vì bạn không có hotel booking confirmation in giấy (chỉ có trên điện thoại). Hãy xin phép xem trên điện thoại — dùng cụm sumahō ni hokan shite orimasu, gokakunin itadaite mo yoroshii deshou ka (em lưu trên điện thoại, xin được cho xem). KHÔNG panic; KHÔNG offer tiền."
+  ],
+  register_notes: "Cán bộ nhập cảnh tại Narita/Haneda mong khách trả lời CỤ THỂ và NGẮN GỌN trong keigo. Bốn patterns bắt buộc: (1) DÙNG -mairimashita THAY -kimashita: kankou de mairimashita (em đến vì du lịch — kenjougo của 来る). Đây là dấu hiệu bạn hiểu register; cán bộ Nhật chú ý ngay. (2) DÙNG -de gozaimasu THAY -desu: ni-shuukan de gozaimasu thay vì ni-shuukan desu. Hơi formal nhưng phù hợp situation. (3) NÓI ĐỊA CHỈ ĐẦY ĐỦ: KHÔNG nói shinjuku no hoteru (khách sạn ở Shinjuku) — quá vague. Nói cụ thể: Shinjuku no Keio Plaza Hotel de gozaimasu. Cán bộ cần verify với landing card. (4) ANSWER ONLY WHAT'S ASKED: KHÔNG over-explain. Nếu họ hỏi mục đích, trả lời mục đích thôi — đừng kể luôn lịch trình. Nhật trọng efficiency trong officer interactions. Câu mở đầu chuẩn khi đến counter: yoroshiku onegai itashimasu (đặt landing card xuống). Câu kết thúc khi qua: arigatou gozaimashita. Shitsurei itashimasu (cảm ơn, em xin phép). // TODO native review — fukurobin (復路便) phrasing — alternative kikoku-bin (帰国便) more common in spoken contexts; passport-ese vs ticket-ese.",
+  idiom_glosses: [
+    { idiom: "一期一会", literal: "Một đời một lần gặp", meaning: "Mỗi cuộc gặp duy nhất — gốc trà đạo. Tại immigration, không dùng trực tiếp với cán bộ (out of place), nhưng là tinh thần khi đến Nhật lần đầu — mỗi tương tác đều đáng trân trọng.", example: "初めての日本訪問、一期一会の気持ちで臨ませていただきます。" },
+    { idiom: "郷に入っては郷に従え", literal: "Vào làng nào theo làng đó", meaning: "When in Rome, do as Romans do — gốc Nhật cổ. Tinh thần khi qua immigration: theo procedure Nhật, không phàn nàn waiting time, không tranh cãi questions.", example: "郷に入っては郷に従え、入国審査の手続きにきちんと従います。" },
+    { idiom: "急がば回れ", literal: "Vội thì đi vòng", meaning: "Vội vã hỏng việc — phù hợp khi cán bộ hỏi nhiều câu, đừng rush trả lời. Nhật cảnh giác với traveler trả lời quá nhanh (= scripted, suspicious).", example: "急がば回れ、慎重に質問にお答えいたします。" },
+    { idiom: "備えあれば憂いなし", literal: "Có chuẩn bị thì không lo", meaning: "Better safe than sorry — gốc Trung Quốc cổ. Phù hợp khi mang đầy đủ giấy tờ (passport, return ticket, hotel booking, cash). Cán bộ thấy bạn có document = bạn được trust.", example: "備えあれば憂いなしで、必要な書類はすべて持参しております。" }
+  ],
+  cultural_notes_vi: "Nhập cảnh Narita/Haneda khác phương Tây ở 5 điểm. (1) THỜI GIAN: peak hours (sáng 6-9, chiều 14-17) có thể chờ 60-90 phút. KHÔNG complain với cán bộ về wait time — bị xem là disrespect. Pre-fill landing card trên máy bay (tiếp viên đưa form 30 phút trước landing) để khi xuống máy bay đi thẳng đến lane. (2) BIẾT LANE NÀO: foreign passport có 2 lanes — automated gate (nếu là registered traveler) và manual counter. Lần đầu Nhật, dùng manual. Đứng sau line màu vàng, đợi cán bộ vẫy tay. KHÔNG đi tới counter trước khi được vẫy. (3) DOCUMENT ORDER: chuẩn bị TRƯỚC khi đến counter: passport mở ở photo page, landing card on top, return ticket in giấy ở dưới. Đưa cùng lúc bằng HAI TAY (Nhật quan sát chi tiết này). KHÔNG đưa từng tờ một. (4) PHONE: KHÔNG dùng phone tại counter (không nghe nhạc, không chụp ảnh, không quay). Nếu họ ask phone access (rare), unlock và đưa face-up. KHÔNG resist. (5) FINGERPRINT cộng PHOTO: bắt buộc mọi visitor 16+ kể từ 2007. Đặt cả hai ngón trỏ ĐỒNG THỜI lên scanner — không tuần tự. Nhìn camera ngang tầm mắt, KHÔNG mỉm cười (passport-style). Khác biệt với VN: ở VN immigration thường formal nhưng cán bộ có thể chat nhỏ; ở Nhật, immigration là pure procedure — không small talk, không cảm xúc. Nếu họ ask câu phụ (sao đến Nhật, có biết người Nhật không), trả lời ngắn POSITIVE — kể về interest in văn hóa, food, anime. KHÔNG nói lý do tiêu cực (avoid VN food, escape weather). Một câu trả lời thân thiện kéo dài 5 giây, không 30 giây.",
+  tip_advice_vi: "Trên máy bay, fill landing card với BÚT MỰC TỐI (đen/xanh). KHÔNG bút chì. Viết bằng kanji nếu biết, nếu không thì romaji ALL CAPS. Trường name phải KHỚP PASSPORT chính xác — Nguyen Thi Chau (không Chau Nguyen, không Nguyễn Thị Châu với dấu). Nghề nghiệp: ngắn gọn (Engineer / Student / Teacher), KHÔNG dài (Software Engineer specialized in AI tại Toyota). Address tại Nhật: ĐẦY ĐỦ với postal code. Mang theo bản in confirmation booking hotel (KHÔNG chỉ trên phone). Tiền mặt: chứng minh có ít nhất 50,000 yen cho 2 tuần (ATM card cũng OK nếu được hỏi). Khi đến counter, đứng SỰA THẲNG, eye contact 70 phần trăm, mỉm cười nhẹ. Đặt passport mở trên counter, KHÔNG đưa thẳng vào tay cán bộ trừ khi họ với tay nhận. Nói passport-clear Japanese — clear consonants, slow pace. Nếu cán bộ nói tiếng Anh, OK theo English; nếu họ nói Nhật, ráng theo Nhật. KHÔNG mix Anh-Nhật trong cùng câu. Sau khi qua, immediate next step là baggage claim (đi theo signs 手荷物受取所). KHÔNG đứng quá gần immigration counter (security sensitive area). Nếu bạn bị secondary screening (cán bộ vẫy bạn vào phòng phụ), KHÔNG panic — bring tất cả documents, trả lời các câu hỏi tiếp theo, average wait 15-30 phút. Mang theo tên + số điện thoại liên lạc tại VN trong vali (in trên giấy) — phòng bag thất lạc. Mẹo cuối: thẻ MyJPass (đăng ký trước khi đi) cho phép thông qua automated gate nhanh hơn 50 phần trăm — register online tại Japan immigration site tuần trước departure.",
+  exercises: [
+    { type: "fill-blank", question: "ベトナムから観光で___ました。", answer: "参り" },
+    { type: "matching", instruction: "Ghép cụm với situation tại immigration.", pairs: [
+      { japanese: "観光で参りました", english: "trả lời purpose: tourism" },
+      { japanese: "二週間でございます", english: "trả lời stay duration" },
+      { japanese: "復路便を持参しております", english: "show return ticket proactively" },
+      { japanese: "短期滞在で許可します", english: "officer's approval phrase (nghe và confirm)" }
+    ] },
+    { type: "translation", vietnamese: "Em đến từ Việt Nam để du lịch. Thời gian ở là hai tuần.", japanese: "ベトナムから観光で参りました。滞在期間は二週間でございます。" }
+  ]
+},
+{
+  id: 73,
+  title: "Lost passport — replacement at Vietnamese embassy in Tokyo",
+  title_vi: "Mất hộ chiếu — xin cấp lại tại đại sứ quán Việt Nam tại Tokyo",
+  title_en: "Lost passport — replacement at Vietnamese embassy in Tokyo",
+  category: "fluency",
+  level: "B2",
+  vocabulary: [
+    { japanese: "紛失 (ふんしつ)", english: "loss (of object)" },
+    { japanese: "紛失届 (ふんしつとどけ)", english: "lost-item report (filed at police)" },
+    { japanese: "再発行 (さいはっこう)", english: "re-issuance" },
+    { japanese: "大使館 (たいしかん)", english: "embassy" },
+    { japanese: "領事部 (りょうじぶ)", english: "consular section" },
+    { japanese: "申請 (しんせい)", english: "application" },
+    { japanese: "緊急 (きんきゅう)", english: "emergency" },
+    { japanese: "本人確認 (ほんにんかくにん)", english: "identity verification" },
+    { japanese: "渡航書 (とこうしょ)", english: "emergency travel document (interim)" },
+    { japanese: "手数料 (てすうりょう)", english: "processing fee" }
+  ],
+  examples: [
+    { japanese: "パスポートを紛失してしまいました。再発行をお願いしたく存じます。", english: "I have lost my passport. I would humbly like to request re-issuance." },
+    { japanese: "昨日、警察に紛失届を提出してまいりました。", english: "Yesterday I submitted a lost-item report at the police station." },
+    { japanese: "緊急で帰国する必要があり、渡航書も必要かと存じます。", english: "I need to return home urgently, so I believe an emergency travel document is also needed." },
+    { japanese: "手数料はおいくらでございますでしょうか。", english: "How much is the processing fee?" },
+    { japanese: "ご対応いただき、誠にありがとうございます。", english: "Thank you sincerely for handling this." }
+  ],
+  dialogue: [
+    { speaker: "領事館スタッフ", japanese: "ベトナム大使館領事部です。どのようなご用件でしょうか。", english: "Vietnamese Embassy Consular Section. How may I help?" },
+    { speaker: "チャウ", japanese: "パスポートを紛失してしまい、再発行をお願いしたく参りました。", english: "I lost my passport and have come to request re-issuance." },
+    { speaker: "領事館スタッフ", japanese: "警察での紛失届はお済みですか。", english: "Have you completed the lost-item report at the police?" },
+    { speaker: "チャウ", japanese: "はい、昨日、新宿警察署で済ませてまいりました。", english: "Yes, I completed it yesterday at Shinjuku Police Station." }
+  ],
+  dialogue_long: [
+    { speaker: "チャウ", japanese: "失礼いたします。グエン・ティ・チャウと申します。本日はパスポートの紛失の件でお伺いしました。", english: "Excuse me. I am Nguyen Thi Chau. I came today regarding a lost passport." },
+    { speaker: "領事館スタッフ", japanese: "それは大変でしたね。落ち着いてお話を聞かせてください。いつ、どこで紛失されたかご存知ですか。", english: "That must have been difficult. Please calmly tell me about it. Do you know when and where you lost it?" },
+    { speaker: "チャウ", japanese: "一昨日の夜、新宿駅近くのレストランで食事をした際、その後で気づきました。気づいた時にはすでに見つかりませんでした。", english: "The night before last at a restaurant near Shinjuku Station; I noticed afterward. When I noticed, I couldn't find it anymore." },
+    { speaker: "領事館スタッフ", japanese: "わかりました。再発行のお手続きを始める前に、二点確認させていただきます。一点目、警察での紛失届はお済みですか。", english: "Understood. Before starting re-issuance, two confirmations. First, have you completed the police lost-item report?" },
+    { speaker: "チャウ", japanese: "はい、昨日、新宿警察署で紛失届を提出いたしました。受理番号もこちらに控えております。", english: "Yes, yesterday I submitted the report at Shinjuku Police. I have the receipt number here." },
+    { speaker: "領事館スタッフ", japanese: "結構です。二点目、本人確認のため、何か身分証明書をお持ちですか。運転免許証、保険証、または以前のパスポートのコピーなどございますか。", english: "Good. Second, for identity verification, do you have any ID? Driver's license, insurance card, or a copy of your old passport?" },
+    { speaker: "チャウ", japanese: "ベトナムの身分証明書(CMND)とパスポートのコピーを携帯のメールに保存してございます。お見せできます。", english: "I have a Vietnamese ID card (CMND) and a passport copy saved in my phone email. I can show you." },
+    { speaker: "領事館スタッフ", japanese: "それで結構です。プリントアウトもこちらでできますので。それから、写真は六枚必要です。背景白、四・五センチ × 三・五センチ。近くに証明写真機ございますか。", english: "That's fine. We can print out here. Also, six photos needed. White background, 4.5cm × 3.5cm. Do you know a photo booth nearby?" },
+    { speaker: "チャウ", japanese: "申し訳ございません、近くの場所がわかりません。教えていただけますでしょうか。", english: "I'm sorry, I don't know a nearby place. Could you tell me?" },
+    { speaker: "領事館スタッフ", japanese: "大使館を出て右へ二百メートル、コンビニ横に証明写真機がございます。十分程度で六枚ご用意できます。", english: "Out of the embassy, 200m to the right, there's a photo booth next to the convenience store. About 10 minutes for 6 photos." },
+    { speaker: "チャウ", japanese: "ありがとうございます。手続きにかかる期間と手数料はいかがでしょうか。", english: "Thank you. How long does the process take, and what's the fee?" },
+    { speaker: "領事館スタッフ", japanese: "通常は十営業日程度、料金は約二千円相当です。お急ぎの場合、緊急渡航書を発行することも可能です。緊急渡航書は当日発行で、一回限りの帰国専用となります。", english: "Normally about 10 business days; fee around 2000 yen equivalent. If urgent, we can issue an emergency travel document — same-day, single-use for return only." },
+    { speaker: "チャウ", japanese: "実は来週の水曜日に帰国予定でございます。緊急渡航書をお願いしたく存じます。", english: "Actually I plan to return next Wednesday. I would humbly like the emergency travel document." },
+    { speaker: "領事館スタッフ", japanese: "わかりました。それでは、写真撮影と申請書記入をお願いいたします。書類が整い次第、本日中にお渡しできるよう手配いたします。", english: "Understood. Then please take photos and fill out the application. Once documents are ready, I'll arrange to give it to you today." },
+    { speaker: "チャウ", japanese: "誠にありがとうございます。本当に助かります。雨降って地固まると申しますが、今回の経験を教訓にいたします。", english: "Thank you sincerely. You're truly helping me. As they say after rain the ground hardens — I'll take this as a lesson." },
+    { speaker: "領事館スタッフ", japanese: "良いお考えですね。次回は、パスポートのコピーを別の場所に保管されることをお勧めします。", english: "Good thinking. Next time, I recommend keeping a passport copy in a separate location." },
+    { speaker: "チャウ", japanese: "肝に銘じます。重ねて、ご丁寧なご対応をいただき、誠にありがとうございました。失礼いたします。", english: "I'll engrave it in my heart. Again, thank you sincerely for your courteous handling. Excusing myself." }
+  ],
+  roleplay_prompts: [
+    "Đóng vai chính bạn vừa đến đại sứ quán VN tại Tokyo (Akasaka). Hãy mở đầu cuộc nói chuyện với staff tiếng Nhật — KHÔNG dùng tiếng Việt vì staff cũng có thể là người Nhật. Dùng cụm pasupooto wo funshitsu shite shimaimashite, saihakkou wo onegai itashitaku mairimashita.",
+    "Staff hỏi bạn đã có 紛失届 chưa. Bạn CHƯA đi cảnh sát. Hãy KHÔNG nói dối — thừa nhận chưa làm và xin hướng dẫn. Dùng cụm mada irashitemashita ga, dochira no keisatsusho ni ireba yoroshii deshou ka (em chưa làm, xin hỏi nên đến đồn cảnh sát nào).",
+    "Bạn cần 緊急渡航書 (emergency travel document) vì bay về VN trong 3 ngày. Hãy giải thích urgency MÀ KHÔNG panic, MÀ KHÔNG demand. Dùng cụm makoto ni katte na onegai de gozaimasu ga (em xin lỗi vì yêu cầu đột ngột) cộng giải thích lý do."
+  ],
+  register_notes: "Tại đại sứ quán VN ở Tokyo, register tùy staff bạn gặp. Staff Việt: có thể tiếng Việt. Staff Nhật (consular section thường có): tiếng Nhật trang trọng. An toàn: bắt đầu bằng tiếng Nhật, switch sang Việt nếu staff đáp Việt. Bốn patterns đặc biệt: (1) MỞ ĐẦU KHIÊM TỐN: KHÔNG vào reception nói pasupooto kudasai (give me passport — kiểu demand). Dùng pasupooto wo funshitsu shite shimaimashite, saihakkou wo onegai itashitaku mairimashita (em đã lỡ làm mất hộ chiếu, em xin được nhờ cấp lại). 'Shimatte' = lỡ làm — show ownership. (2) ADMIT WHEN YOU DON'T KNOW: nếu chưa làm 紛失届 hoặc thiếu giấy tờ, KHÔNG bịa. Dùng moushiwake gozaimasen, mada XX wo shite orimasen (xin lỗi, em chưa làm XX). Honesty earns trust hơn fake competency. (3) URGENCY VS DEMAND: nếu cần 緊急渡航書, FRAME ở dạng request, không demand. Cụm: makoto ni katte na onegai de gozaimasu ga, raishuu suiyoubi ni kikoku no yotei de gozaimashite (em xin lỗi vì yêu cầu đột ngột, em định bay về thứ tư tuần sau). KHÔNG isoide kudasai (please hurry — sounds bossy). (4) GRATITUDE THROUGHOUT: cảm ơn nhiều lần — khi nhận hướng dẫn, khi nhận paperwork, cuối cuộc nói. Đặc biệt câu cuối: kasanete, go-teinei na go-taiou wo itadaki, makoto ni arigatou gozaimashita. Staff đại sứ quán xử lý nhiều cases khó — gratitude làm họ remember bạn trong positive light. // TODO native review — sai-hakkou (再発行) phrasing — alternative re-shinsei (再申請) hơi khác nghĩa nhưng đôi khi staff dùng; emergency document có thể là 渡航書 hoặc 緊急パスポート tùy thời điểm.",
+  idiom_glosses: [
+    { idiom: "雨降って地固まる", literal: "Mưa rơi đất rắn lại", meaning: "Sau mưa to, đất chặt hơn — sau khó khăn, mọi thứ vững hơn. Phù hợp khi mất passport — frame incident as growth opportunity, không là drama.", example: "雨降って地固まると申します。今回の経験を教訓にいたします。" },
+    { idiom: "備えあれば憂いなし", literal: "Có chuẩn bị thì không lo", meaning: "Better safe than sorry. Phù hợp cho lesson learned — luôn có copy passport ở chỗ khác (cloud, suitcase, friend).", example: "今後は備えあれば憂いなしで、コピーを別の場所にも保管いたします。" },
+    { idiom: "肝に銘じる", literal: "Khắc sâu vào gan", meaning: "Khắc cốt ghi tâm. Câu chuẩn để đáp lời khuyên của staff về việc giữ giấy tờ trong tương lai.", example: "ご助言を肝に銘じ、二度と紛失しないよう注意いたします。" },
+    { idiom: "七転び八起き", literal: "Bảy lần ngã, tám lần đứng dậy", meaning: "Kiên cường — ngã bao nhiêu cũng đứng dậy thêm một lần. Phù hợp cho mindset khi xử lý emergency abroad — không panic, methodical recovery.", example: "七転び八起きの精神で、落ち着いて手続きを進めてまいります。" }
+  ],
+  cultural_notes_vi: "Mất passport ở Nhật là crisis cá nhân nhưng có procedure rõ ràng. 6 bước theo thứ tự PHẢI đúng. (1) RETRACE: trong 24 giờ đầu, gọi mọi nơi đã đến (hotel reception, restaurant, tàu lost-and-found). Tỉ lệ recovery ở Nhật cao bất thường — Nhật trả lại đồ bị mất với rate 80 phần trăm trong Tokyo (theo Tokyo Metropolitan Police 2023 data). (2) POLICE 紛失届: trong 48 giờ, đến đồn cảnh sát gần nhất (KHÔNG cần đến nơi mất). Mang theo bất kỳ ID nào (CMND, passport copy trên phone, driver's license). Staff sẽ điền form, đưa số receipt — KHÔNG mất phí. KHÔNG bỏ qua bước này — đại sứ quán YÊU CẦU receipt này. (3) EMBASSY APPOINTMENT: gọi đại sứ quán VN trước (số: 03-3466-3311). Có thể cần appointment, hoặc walk-in tùy ngày. Hours: 9-12, 14-17 thứ 2-6. Đóng cửa ngày lễ Nhật cộng VN. (4) BRING DOCUMENTS: passport copy (digital OK), CMND copy, 6 photos chuẩn 4.5x3.5cm white background, application form (lấy tại embassy hoặc download trước), tiền mặt fee. (5) WAIT TIME: passport mới: 10 ngày làm việc. Emergency travel document (TPHS — thông phận hồi sang): same-day hoặc 1-2 ngày, một lần dùng cho return only, không re-enter Japan. Phải có vé về VN đã booked để qualify. (6) RETURN TO VN: với TPHS, immigration VN có thể ask thêm questions tại sân bay — bring police report receipt + embassy issuance letter. Khác biệt với phương Tây: ở Nhật, passport là sacred — mất passport không bị xem như fault của bạn (Nhật biết phải mất rất lâu để phục hồi). Police và embassy đối xử professional, không judgment. Nhưng ở VN, một số cán bộ có thể stigmatize. Mang đủ documents để minimize friction. Mẹo cuối: nếu mất tại tourist area (Asakusa, Akihabara, Shibuya), có lost-and-found dedicated cho tourists — Tokyo Metropolitan Police Lost Property Center (Iidabashi station). Online database tra cứu các đồ đã turn-in trong 30 ngày qua.",
+  tip_advice_vi: "Trước khi sang Nhật, làm 4 việc. (1) Photocopy passport (color, 2 bản): 1 ở vali, 1 gửi về email cá nhân + email gia đình. (2) Cài app embassy — Đại sứ quán VN tại Tokyo có app đăng ký công dân (mocard) để embassy biết bạn đang ở Nhật. (3) Save số khẩn cấp trong phone: 03-3466-3311 (embassy), 110 (police), 119 (ambulance). (4) Lưu PDF của passport trên Google Drive / iCloud — KHÔNG chỉ trên phone (mất phone = mất tất cả). Khi đến Nhật, ngày đầu register WiFi và confirm có thể access cloud từ Nhật. Trong sinh hoạt hằng ngày, KHÔNG mang passport gốc trừ khi bắt buộc (đi tỉnh, đổi tiền lớn). Chỉ mang RESIDENCE CARD nếu là long-term, hoặc copy passport nếu là tourist. Để passport gốc trong hotel safe. Khi giao tiếp với cảnh sát hoặc embassy, chuẩn bị 4 thông tin: tên đầy đủ (theo passport), DOB, passport number cũ (từ copy), VN address. Mang theo bút (Nhật rất nhiều bureaucracy đòi viết — máy không phổ biến). Khi điền form Nhật, viết SLOWLY và CLEARLY. Tên family name viết HẾT BẰNG katakana hoặc romaji ALL CAPS. Address VN dịch sang romaji theo đúng hành chính (Quận → Quan, không District). Sau khi nhận passport mới hoặc TPHS, trong 24 giờ chụp ảnh và lưu cloud. Nếu được TPHS, planar bay về NGAY trong validity window (thường 1-2 tuần). KHÔNG plan transit qua nước thứ ba — TPHS chỉ valid VN-Japan direct. Nếu transit Korea/HK, có thể bị stuck — confirm với airline trước. Sau khi về VN, làm passport mới chính thức tại Cục Quản lý xuất nhập cảnh (P. An Đông, P.A08, Bộ Công An) — TPHS chỉ là interim. Trong tương lai, lesson rút ra: luôn có 2 bản passport copy ở 2 nơi khác nhau. Cost của lesson: 2000 yen + 2 ngày stress + có thể phải pay rebooking fee airline.",
+  exercises: [
+    { type: "fill-blank", question: "パスポートを紛失してしまい、___をお願いしたく存じます。", answer: "再発行" },
+    { type: "matching", instruction: "Ghép thuật ngữ với function.", pairs: [
+      { japanese: "紛失届", english: "đơn báo mất tại đồn cảnh sát" },
+      { japanese: "再発行", english: "cấp lại passport (10 ngày)" },
+      { japanese: "渡航書", english: "giấy thông hành khẩn cấp (same-day, 1 lần dùng)" },
+      { japanese: "本人確認", english: "xác minh nhân thân (CMND, passport copy)" }
+    ] },
+    { type: "translation", vietnamese: "Em đã làm đơn báo mất tại đồn cảnh sát Shinjuku hôm qua.", japanese: "昨日、新宿警察署で紛失届を提出してまいりました。" }
+  ]
+},
+{
+  id: 74,
+  title: "Booking change — Shinkansen/JR ticket change and fee dispute",
+  title_vi: "Đổi vé — đổi vé Shinkansen/JR và tranh chấp phí",
+  title_en: "Booking change — Shinkansen/JR ticket change and fee dispute",
+  category: "fluency",
+  level: "B2",
+  vocabulary: [
+    { japanese: "切符 (きっぷ)", english: "ticket" },
+    { japanese: "変更 (へんこう)", english: "change / modification" },
+    { japanese: "払い戻し (はらいもどし)", english: "refund" },
+    { japanese: "手数料 (てすうりょう)", english: "processing fee" },
+    { japanese: "指定席 (していせき)", english: "reserved seat" },
+    { japanese: "自由席 (じゆうせき)", english: "non-reserved seat" },
+    { japanese: "新幹線 (しんかんせん)", english: "bullet train" },
+    { japanese: "みどりの窓口 (みどりのまどぐち)", english: "JR ticket office (Green Window)" },
+    { japanese: "発車 (はっしゃ)", english: "departure (of train)" },
+    { japanese: "ご利用 (ごりよう)", english: "your use (sonkeigo for using a service)" }
+  ],
+  examples: [
+    { japanese: "新幹線の切符を変更したく、お伺いいたしました。", english: "I came to change a Shinkansen ticket." },
+    { japanese: "明日の十時発を、明後日の十四時発に変更できますでしょうか。", english: "Can I change tomorrow's 10am departure to the day after at 2pm?" },
+    { japanese: "変更手数料はおいくらでございますか。", english: "How much is the change fee?" },
+    { japanese: "発車前であれば、無料での変更は可能でしょうか。", english: "If before departure, is free change possible?" },
+    { japanese: "ご対応いただき、ありがとうございました。", english: "Thank you for handling this." }
+  ],
+  dialogue: [
+    { speaker: "チャウ", japanese: "すみません、新幹線の切符を変更したいのですが。", english: "Excuse me, I'd like to change a Shinkansen ticket." },
+    { speaker: "駅員", japanese: "切符を拝見します。元の予約はいつのですか。", english: "Let me see the ticket. When was the original booking?" },
+    { speaker: "チャウ", japanese: "明日の朝十時、東京発、京都行きでございます。", english: "Tomorrow morning 10am, from Tokyo to Kyoto." },
+    { speaker: "駅員", japanese: "明後日に変更ですね。少々お待ちください。", english: "Change to the day after, then. One moment please." }
+  ],
+  dialogue_long: [
+    { speaker: "チャウ", japanese: "失礼いたします。新幹線の切符の変更をお願いしたく、伺いました。", english: "Excuse me. I came to request a Shinkansen ticket change." },
+    { speaker: "駅員", japanese: "はい、切符を拝見します。どちらの便をどう変更ご希望ですか。", english: "Yes, let me see the ticket. Which booking, how do you want to change?" },
+    { speaker: "チャウ", japanese: "明日の朝十時、東京発、京都行きの指定席です。これを明後日の十四時発に変更したく存じます。", english: "Tomorrow morning 10am, Tokyo to Kyoto, reserved seat. I'd like to change to the day after at 2pm." },
+    { speaker: "駅員", japanese: "わかりました。お調べいたします。少々お待ちください。", english: "Understood. Let me check. One moment." },
+    { speaker: "駅員", japanese: "明後日の十四時発、空席ございます。ただし、変更には手数料が発生いたします。", english: "Day after at 2pm, there's availability. However, there's a change fee." },
+    { speaker: "チャウ", japanese: "手数料はおいくらでしょうか。", english: "How much is the fee?" },
+    { speaker: "駅員", japanese: "発車二日前ですと、三十パーセントです。お切符の額が一万二千円ですので、三千六百円となります。", english: "Two days before departure, 30 percent. Your ticket is 12,000 yen, so 3,600 yen." },
+    { speaker: "チャウ", japanese: "三千六百円ですか。少しお伺いしたいのですが、ホームページでは「乗車前ならいつでも一度は無料変更可能」と書いてございました。確認させていただけますでしょうか。", english: "3,600 yen? I'd like to ask — the website says one free change anytime before boarding. Could we verify?" },
+    { speaker: "駅員", japanese: "ああ、それは「えきねっと」予約の場合ですね。お切符が紙の場合は、規定が異なります。発車一日前から手数料が発生いたします。", english: "Ah, that's for Eki-net online reservations. For paper tickets, rules differ. Fee applies starting one day before departure." },
+    { speaker: "チャウ", japanese: "なるほど、規定の違いですね。承知いたしました。ただ、一点確認させていただきたいのですが、二日前は「発車一日前」に該当するのでしょうか。", english: "I see, different rules. Understood. But one clarification — is two days before considered 'one day before' departure?" },
+    { speaker: "駅員", japanese: "申し訳ございません、確認させていただきます。お時間をいただいてもよろしいでしょうか。", english: "I apologize, let me check. May I take a moment?" },
+    { speaker: "駅員", japanese: "お待たせいたしました。確認したところ、紙切符は「発車前日まで」が無料変更期間でございました。本日は変更日の前日にあたりますので、無料変更が可能でございます。先ほどの説明は誤りでした、申し訳ございません。", english: "Sorry to keep you waiting. Upon checking, paper tickets allow free change 'up to the day before departure.' Today is the day before the departure date, so free change is possible. My earlier explanation was wrong. I apologize." },
+    { speaker: "チャウ", japanese: "ご丁寧に確認いただき、ありがとうございます。それでは、無料での変更でお願いいたします。", english: "Thank you for verifying carefully. Then please make the free change." },
+    { speaker: "駅員", japanese: "承知いたしました。新しいお切符を発行いたします。明後日十四時発、東京発京都行き、指定席となります。お席は十二号車三A席でよろしいでしょうか。", english: "Understood. I'll issue a new ticket. Day after, 2pm, Tokyo to Kyoto, reserved seat. Is car 12, seat 3A acceptable?" },
+    { speaker: "チャウ", japanese: "結構でございます。ありがとうございます。", english: "Yes, that's fine. Thank you." },
+    { speaker: "駅員", japanese: "こちらが新しいお切符でございます。古い切符は破棄させていただきます。当日、十分前にホームへお越しください。", english: "Here is your new ticket. I'll dispose of the old one. Please arrive at the platform 10 minutes before on the day." },
+    { speaker: "チャウ", japanese: "誠にありがとうございました。先ほどの確認で正しい情報をいただけて、本当に助かりました。失礼いたします。", english: "Thank you sincerely. Getting accurate info from your verification really helped. Excusing myself." }
+  ],
+  roleplay_prompts: [
+    "Đóng vai chính bạn tại みどりの窓口. Hãy mở đầu request đổi vé — KHÔNG phàn nàn về giá ngay. Dùng cụm shinkansen no kippu wo henkou itashitaku, ukagaimashita và đợi staff hỏi từng câu thay vì over-explain.",
+    "Staff nói phí 30 phần trăm nhưng bạn nhớ thấy quy định khác trên website. Hãy KHÔNG cãi thẳng — dùng cụm hommepe-ji ni wa XX to kakarete orimashita ga, kakunin sasete itadakemasu deshou ka (website ghi XX, xin được kiểm tra). Nhật accept polite challenge nếu có evidence cụ thể.",
+    "Staff nhận sai và xin lỗi. Bạn đã chờ thêm 10 phút. Hãy phản hồi khen ngợi sự cẩn thận — go-teinei ni kakunin itadaki, arigatou gozaimasu. KHÔNG say it's no problem (tonde mo nai) qua nhanh — Nhật appreciate khi acknowledge effort của staff."
+  ],
+  register_notes: "Tại みどりの窓口 (JR Green Window), staff được train về Q&A với customer trong keigo cao. Bạn match register họ. Năm patterns: (1) MỞ ĐẦU: kippu no henkou wo onegai shitaku, ukagaimashita (em đến nhờ đổi vé). 'Ukagaimashita' (đã đến — kenjougo) — hơn shaa khi nói 'kimashita'. (2) PARSE STAFF SPEED: staff nói nhanh khi list rules (rules là scripted speech). KHÔNG ngại xin lặp: osore irimasu ga, mou ichido o-negai dekimasu deshou ka. Nhật staff KHÔNG annoyed bởi this — họ scripted phải nói lại. (3) POLITE CHALLENGE WITH EVIDENCE: nếu staff sai (rare nhưng happens), KHÔNG cãi thẳng. Frame như 'em có thể nhầm, xin được verify': watashi no rikai ga matchigatte iru ka mo shiremasen ga, hommepe-ji ni wa XX to kakarete orimashita (em có thể hiểu sai, nhưng website ghi XX). Show evidence nếu có (screenshot trên phone). (4) ACCEPT CORRECTION GRACEFULLY: nếu họ correct lỗi (như dialogue trên), KHÔNG over-celebrate. Cụm: go-teinei ni kakunin itadaki, arigatou gozaimasu (cảm ơn sự xác minh cẩn thận). Maintain dignity for staff. (5) NEVER ARGUE OVER FEE: nếu fee đúng nhưng đắt, KHÔNG argue. Pay hoặc không đổi. Nhật staff không có authority discount. Trying to negotiate fee = make staff lose face = bad reputation. // TODO native review — eki-net (えきねっと) phrasing — tên service JR online; spelling capitalize hay không tùy context, paper ticket vs e-ticket rules thay đổi sau 2024 reform.",
+  idiom_glosses: [
+    { idiom: "急がば回れ", literal: "Vội thì đi vòng", meaning: "Vội vã hỏng việc — phù hợp khi đổi vé. Đừng rush, hỏi staff verify rules trước khi pay fee.", example: "急がば回れと申します。手数料を支払う前に、念のため確認させていただきます。" },
+    { idiom: "石橋を叩いて渡る", literal: "Gõ cầu đá rồi mới qua", meaning: "Cẩn thận tối đa — verify trước khi commit. Phù hợp khi staff quote fee mà bạn nghi ngờ.", example: "石橋を叩いて渡るで、手数料の規定を再度確認させていただけますでしょうか。" },
+    { idiom: "三人寄れば文殊の知恵", literal: "Ba người tụ lại có trí tuệ Văn Thù", meaning: "Trí tuệ tập thể — phù hợp khi staff cần consult với supervisor về một edge case rule.", example: "三人寄れば文殊の知恵で、上司に確認していただいてもよろしいでしょうか。" },
+    { idiom: "一期一会", literal: "Một đời một lần gặp", meaning: "Mỗi cuộc gặp duy nhất — phù hợp cuối cuộc nói khi cảm ơn staff đã xử lý cẩn thận. Frame customer-service interaction như meaningful, không transactional.", example: "本日のご対応、一期一会と感じております。誠にありがとうございました。" }
+  ],
+  cultural_notes_vi: "JR ticket change ở Nhật có 5 đặc điểm khác phương Tây. (1) RULES VARY BY CHANNEL: vé giấy mua tại みどりの窓口 vs vé Eki-net online vs vé qua agency có rules KHÁC nhau. Eki-net thường nhẹ nhất (nhiều free changes), agency strict nhất. Khi mua vé, hỏi rõ về change/refund rules. (2) FEE STRUCTURE: tiêu chuẩn 30 phần trăm nếu trong 2 ngày trước departure. Free trước đó. Nhưng có exception: ngày trước departure cũng có thể free cho một số ticket types. STAFF có thể không know mọi exception — đừng ngại verify. (3) CASH PRICING: nhiều JR offices vẫn cash-only cho refunds. Mang đủ tiền mặt phòng khi cần pay fee. Card OK cho new ticket nhưng refund thường cash. (4) TIMING SENSITIVITY: nếu vé là cùng ngày departure, change rules khác — có thể paid full nếu không có vé thay thế trong cùng category. Đến office EARLY (ít nhất 30 phút trước departure ban đầu) để có flexibility. (5) GUI DI RULES: nếu vé là return-trip combo, change một chiều có thể affect chiều kia. Hỏi staff verify total impact trước khi confirm. Khác biệt với VN: ở VN ticket change thường flexible negotiate, có thể beg staff giảm fee; ở Nhật, fee là hard rule, không negotiable. Argue về fee = mất face cho staff = bị nhớ negative. Nhưng ASKING TO VERIFY rule là OK — staff Japanese rất hỗ trợ với verification request, sometimes find exception cho bạn. Mẹo: Eki-net registration tại nhà trước trip cho phép online changes (no office visit) cho most tickets. Free first change online. App download trước departure save thời gian. Nếu missed train completely (departure passed), KHÔNG bao giờ refund — chỉ option là buy mới ticket. Đến office trong 30 phút sau missed time có thể qualify cho 'late change' với một số fee thay vì buy mới — phụ thuộc staff discretion.",
+  tip_advice_vi: "Khi đổi vé Shinkansen, làm 3 việc trước khi đến window. (1) CHỤP MÀN HÌNH RULE từ JR website (English version đầy đủ enough). Đặc biệt section về free-change deadline. Nếu có discrepancy, show staff. (2) BIẾT TICKET TYPE: là Hayabusa, Hikari, Kodama, Nozomi? Reserved hay non-reserved? Single hay round-trip? Mỗi type có rules khác. Nhìn ticket carefully trước. (3) HAVE BOTH OPTIONS: chuẩn bị plan A (preferred new time) và plan B (acceptable alternative) — vì plan A có thể full. Khi đến window: stand in line at green-line marker, đợi staff vẫy. Không vượt line. Đặt ticket on counter face-up, KHÔNG đưa vào tay staff. Câu mở đầu: kippu no henkou wo onegai shimasu cộng đề xuất new time. Để staff process — usually 2-3 phút. Trong khi chờ, KHÔNG hỏi câu khác (làm staff distract). Nếu staff quote fee, viết number xuống trên scrap paper (mang theo) — tránh hiểu sai. Nếu fee có vẻ wrong, dùng cụm verify (xem register notes). KHÔNG raise voice, KHÔNG fold arms (defensive). Stand calm, eye contact 60 phần trăm. Nếu staff confirm fee đúng, decision: pay hoặc cancel. Nếu pay: cash-only sometimes. Nếu cancel and walk away: politely thank staff, không express frustration. Sau khi nhận new ticket, IMMEDIATELY check: ngày, giờ, train number, car/seat, station. Nếu sai gì, return ngay (cùng staff, cùng line) — sau khi rời window, fix khó hơn. Trên platform: arrive 10 phút trước, find car number on platform marker (vẽ trên ground). Đợi behind yellow line. Khi train arrive, đứng bên cạnh door, để passengers xuống trước, rồi step in. Không rush. Mẹo cuối: download JR Pass app nếu có pass — track changes, see real-time delays, find alternative trains nếu missed. Eki-net account (free register) gives 5 phần trăm discount + free first change online.",
+  exercises: [
+    { type: "fill-blank", question: "ホームページでは「乗車前ならいつでも一度は無料変更可能」と書かれて___ました。", answer: "おり" },
+    { type: "matching", instruction: "Ghép thuật ngữ JR với meaning.", pairs: [
+      { japanese: "指定席", english: "ghế đặt trước (booked seat)" },
+      { japanese: "自由席", english: "ghế tự do (first-come basis)" },
+      { japanese: "みどりの窓口", english: "JR ticket office in person" },
+      { japanese: "えきねっと", english: "JR online booking system (Eki-net)" }
+    ] },
+    { type: "translation", vietnamese: "Em xin được kiểm tra — về điểm này, có thể là em hiểu sai.", japanese: "確認させていただけますでしょうか。私の理解が間違っているかもしれません。" }
+  ]
+},
+{
+  id: 75,
+  title: "Hospital visit (病院/救急外来)",
+  title_vi: "Khám bệnh tại bệnh viện (病院/救急外来)",
+  title_en: "Hospital visit (病院/救急外来)",
+  category: "fluency",
+  level: "B2",
+  vocabulary: [
+    { japanese: "病院 (びょういん)", english: "hospital" },
+    { japanese: "救急外来 (きゅうきゅうがいらい)", english: "emergency outpatient ward" },
+    { japanese: "診察 (しんさつ)", english: "medical examination" },
+    { japanese: "症状 (しょうじょう)", english: "symptoms" },
+    { japanese: "保険証 (ほけんしょう)", english: "insurance card" },
+    { japanese: "処方箋 (しょほうせん)", english: "prescription" },
+    { japanese: "薬 (くすり)", english: "medicine" },
+    { japanese: "アレルギー", english: "allergy" },
+    { japanese: "発熱 (はつねつ)", english: "fever" },
+    { japanese: "問診票 (もんしんひょう)", english: "medical questionnaire (filled before exam)" }
+  ],
+  examples: [
+    { japanese: "昨日から発熱と頭痛がございます。", english: "I have had fever and headache since yesterday." },
+    { japanese: "保険証はこちらでございます。", english: "Here is my insurance card." },
+    { japanese: "薬のアレルギーはペニシリンでございます。", english: "My medicine allergy is penicillin." },
+    { japanese: "処方箋はどちらの薬局でいただけますでしょうか。", english: "At which pharmacy can I get the prescription filled?" },
+    { japanese: "ご診察、誠にありがとうございました。", english: "Thank you sincerely for the examination." }
+  ],
+  dialogue: [
+    { speaker: "受付", japanese: "保険証をお願いします。今日はどうされましたか。", english: "Insurance card, please. What brings you here today?" },
+    { speaker: "チャウ", japanese: "昨日から発熱と頭痛がございまして、診察をお願いしたく参りました。", english: "Since yesterday I have fever and headache, so I came for examination." },
+    { speaker: "受付", japanese: "問診票にご記入ください。受付番号は二十三番です。", english: "Please fill out the questionnaire. Your number is 23." },
+    { speaker: "チャウ", japanese: "承知いたしました。ありがとうございます。", english: "Understood. Thank you." }
+  ],
+  dialogue_long: [
+    { speaker: "受付", japanese: "こんにちは、初めての方でしょうか。", english: "Hello, is this your first visit?" },
+    { speaker: "チャウ", japanese: "はい、初めてでございます。実は昨日の夜から発熱がございまして、本日診察をお願いしたく参りました。", english: "Yes, my first visit. Actually, I've had fever since last night, so I came today for examination." },
+    { speaker: "受付", japanese: "わかりました。保険証はお持ちですか。", english: "Understood. Do you have your insurance card?" },
+    { speaker: "チャウ", japanese: "はい、こちらでございます。在留カードもお見せいたします。", english: "Yes, here it is. I'll also show my residence card." },
+    { speaker: "受付", japanese: "ありがとうございます。それでは、こちらの問診票にご記入ください。日本語でご記入が難しい場合、英語版もございます。", english: "Thank you. Then please fill out this questionnaire. If Japanese is difficult, we have an English version." },
+    { speaker: "チャウ", japanese: "ありがとうございます。日本語版で挑戦してみますが、わからない箇所は英語版を参考にさせていただきます。", english: "Thank you. I'll try the Japanese version but reference the English one for what I don't understand." },
+    { speaker: "受付", japanese: "結構です。書き終わったら、待合室でお待ちください。お名前を呼ばれましたら、第二診察室へお越しください。", english: "Fine. After filling out, wait in the waiting area. When your name is called, please come to Exam Room 2." },
+    { speaker: "看護師", japanese: "グエン・ティ・チャウさん、第二診察室へどうぞ。", english: "Ms. Nguyen Thi Chau, Exam Room 2 please." },
+    { speaker: "医師", japanese: "こんにちは、内科医の田中です。今日はどうされましたか。", english: "Hello, I'm Dr. Tanaka from internal medicine. What's the issue today?" },
+    { speaker: "チャウ", japanese: "昨日の夜九時頃から、急に三十八度の発熱と頭痛がございます。喉も少し痛みます。食欲はありますが、寒気がいたします。", english: "Around 9pm last night, I suddenly got 38-degree fever and headache. My throat also hurts a bit. I have appetite but feel chills." },
+    { speaker: "医師", japanese: "なるほど、典型的な風邪の症状ですね。インフルエンザの可能性もありますので、念のため検査いたします。", english: "I see, typical cold symptoms. There's also flu possibility, so I'll test just in case." },
+    { speaker: "チャウ", japanese: "承知いたしました。検査の結果、インフルエンザの場合、何日くらい仕事を休む必要がございますでしょうか。", english: "Understood. If the test shows flu, about how many days do I need to rest from work?" },
+    { speaker: "医師", japanese: "インフルエンザの場合、発症から五日間、かつ解熱後二日間は出勤を控えていただくのが一般的です。診断書もお出しできます。", english: "For flu, generally rest 5 days from onset, plus 2 days after fever subsides. I can issue a medical certificate." },
+    { speaker: "チャウ", japanese: "ありがとうございます。診断書をいただけますと、会社に提出するのに大変助かります。", english: "Thank you. A medical certificate would help a lot for submitting to my company." },
+    { speaker: "医師", japanese: "では、検査いたします。鼻に綿棒を入れますが、少し違和感があるかもしれません。", english: "Then let's test. I'll insert a swab in your nose; you may feel some discomfort." },
+    { speaker: "チャウ", japanese: "はい、お願いいたします。", english: "Yes, please proceed." },
+    { speaker: "医師", japanese: "(検査後)結果はインフルエンザA型で陽性です。タミフルを五日分処方いたします。アレルギーはございますか。", english: "(after test) Result: positive for influenza A. I'll prescribe Tamiflu for 5 days. Any allergies?" },
+    { speaker: "チャウ", japanese: "ペニシリンにアレルギーがございます。それ以外はございません。", english: "I have a penicillin allergy. Nothing else." },
+    { speaker: "医師", japanese: "タミフルはペニシリン系ではないので、問題ございません。十分な水分と休養をお取りください。お大事に。", english: "Tamiflu is not penicillin-based, so no issue. Please get plenty of fluids and rest. Take care." },
+    { speaker: "チャウ", japanese: "ご丁寧な診察、誠にありがとうございました。失礼いたします。", english: "Thank you sincerely for the careful examination. Excusing myself." }
+  ],
+  roleplay_prompts: [
+    "Đóng vai chính bạn lần đầu đến bệnh viện ở Tokyo. Hãy mở đầu với reception — cụm hajimete de gozaimasu cộng cụ thể symptoms từ khi nào, đâu đau. KHÔNG dùng casual sukoshi guai ga warui (hơi không khỏe) — Nhật cần specific timeline và body parts.",
+    "Bác sĩ hỏi alergi. Bạn có dị ứng penicillin nhưng không nhớ tiếng Nhật của penicillin. Hãy KHÔNG fake — dùng cụm peniciilin to iu kusuri ni areriguii ga gozaimasu (em dị ứng với thuốc tên penicillin) cộng spell ra nếu bác sĩ ask. Nhật accept English drug names.",
+    "Bạn cần 診断書 (medical certificate) cho công ty Nhật vì phải nghỉ 5 ngày. Hãy request explicitly — KHÔNG ngại — diagnostic certificate là routine ở Nhật. Cụm: shindansho wo o-negai shitaku zonjimasu, kaisha ni teishutsu suru hitsuyou ga gozaimasu node."
+  ],
+  register_notes: "Hospital ở Nhật uses teineigo cao (desu/masu+) cho tất cả interactions. Bốn patterns đặc biệt: (1) SYMPTOM REPORTING: dùng -ga gozaimasu thay -ga arimasu cho bệnh: hatsunetsu to zutsuu ga gozaimasu (em có sốt và đau đầu). 'Gozaimasu' show humility với bác sĩ. Cụm timeline cụ thể: kinou no yoru kuji-goro kara (từ 9 giờ tối qua), KHÔNG vague kinou kara (từ hôm qua). (2) DESCRIBE PAIN PRECISELY: Nhật cần specifics về pain location + intensity. nodo (cổ họng), atama (đầu), onaka (bụng), mune (ngực). Intensity: sukoshi (nhẹ), kanari (đáng kể), hidoi (nặng). Type: zukinzukin (đập đập), kirikiri (nhói). (3) MEDICAL HISTORY: dùng bigieni-teki na byouki (chronic disease), genzai fukuyou-chuu no kusuri (current medications). Cẩn thận: dị ứng = areriguii (アレルギー), KHÔNG dị ứng = areriguii wa gozaimasen. (4) FOLLOW DOCTOR'S DIRECTION: khi bác sĩ ask move/breathe/etc, dùng hai (yes) cộng tuân theo. KHÔNG ask why during procedure — wait until end. Câu cuối khi rời: o-daiji ni (take care — bác sĩ Nhật) — bạn đáp: arigatou gozaimashita. Shitsurei itashimasu. // TODO native review — tamifuru (タミフル) brand name vs generic oseltamivir; some hospitals dùng generic name now post-2023; medical certificate có thể là 診断書 hoặc 病気証明書 tùy hospital.",
+  idiom_glosses: [
+    { idiom: "お大事に", literal: "Hãy giữ gìn (sức khỏe)", meaning: "Take care of yourself — câu chuẩn bác sĩ/nurse nói khi bạn rời. Không phải idiom truyền thống nhưng là cụm cố định trong medical context. Bạn KHÔNG nói lại 'o-daiji ni' với bác sĩ (out of place); đáp arigatou gozaimashita.", example: "十分な水分と休養をお取りください。お大事に。" },
+    { idiom: "備えあれば憂いなし", literal: "Có chuẩn bị thì không lo", meaning: "Better safe than sorry — phù hợp khi bác sĩ test cho cả flu khi bạn nghĩ là common cold. Frame test like preparedness, không over-treatment.", example: "備えあれば憂いなし、念のため検査いたしましょう。" },
+    { idiom: "病は気から", literal: "Bệnh phát từ tinh thần", meaning: "Stress affects health — gốc Nhật cổ. Phù hợp khi nói về work stress contributing to illness. Bác sĩ Nhật accept như factor.", example: "病は気からと申します。最近、お仕事のストレスが多かったかもしれません。" },
+    { idiom: "急がば回れ", literal: "Vội thì đi vòng", meaning: "Vội vã hỏng việc — phù hợp khi bạn muốn rush back to work nhưng bác sĩ recommend rest 5 ngày. Take rest properly để phục hồi đầy đủ.", example: "急がば回れ、しっかり休んで早く治すよう心がけます。" }
+  ],
+  cultural_notes_vi: "Bệnh viện Nhật khác phương Tây ở 6 điểm. (1) INSURANCE EVERYTHING: bắt buộc 国民健康保険 (national health insurance) hoặc 社会保険 (employer insurance) trước khi đến. Nếu là tourist, mang travel insurance. KHÔNG có insurance = pay 100 phần trăm cash (often 30,000-50,000 yen cho consultation). (2) APPOINTMENT VS WALK-IN: bệnh viện lớn (大学病院) cần referral từ clinic nhỏ. Walk-in tại 大学病院 không có referral charge thêm 5,000 yen 'selection fee'. Cách tốt: đến clinic nhỏ (クリニック) trước, get referral nếu cần specialist. (3) LANGUAGE BARRIER: ít bác sĩ Nhật fluent English. Mang theo translation app, hoặc đến bệnh viện International (Tokyo: St. Luke's, Akasaka International Clinic) where staff English-speaking. Một số ward có volunteer interpreters — gọi trước hỏi. (4) PRESCRIPTION SEPARATE: Nhật tách medical exam và pharmacy. Bác sĩ khám, prescribe trên paper 処方箋. Bạn cầm processhei đến 薬局 (drugstore với green cross sign) — usually within walk distance. Pharmacy hơn 100m từ hospital là norm. (5) WAIT TIME: bệnh viện công thường wait 1-2 giờ. Mang sách/laptop, không có WiFi reliable ở nhiều hospital. Lunch break 12-13 không khám — schedule around. (6) PAYMENT: cuối visit, đến 会計 (cashier) pay. Card OK ở major hospital, cash-only ở clinic nhỏ. Mang đủ 5,000-15,000 yen cash cho first visit. Khác biệt với VN: ở VN bạn chọn bác sĩ specific trước; ở Nhật, được assigned theo schedule. Ở VN có thể tip extra cho tốt hơn; ở Nhật, KHÔNG tip — illegal trong medical context, đẳng cấp insult bác sĩ. Mẹo cuối: học 5 từ medical key thuộc lòng trước khi đi: 痛い (đau), 熱 (sốt), 咳 (ho), 吐き気 (buồn nôn), 頭痛 (đau đầu). Pattern symptom + ga arimasu là reliable. Cho emergency: 119 cho ambulance, English available 24/7. Không hesitate to call — Nhật ambulance free at point of service.",
+  tip_advice_vi: "Trước khi sang Nhật long-term: đăng ký 国民健康保険 tại city hall (市役所) trong 14 ngày kể từ khi nhận residence card. Bring residence card và pay first month fee (3,000-15,000 yen tùy income). Insurance card sẽ mailed trong 1-2 tuần. Trong waiting period, KHÔNG có insurance, nếu khẩn cấp pay full upfront và claim back sau khi insurance issued. Nếu là tourist, mua travel insurance trước departure (NEVER skip — Japan medical đắt, simple ER visit có thể 300,000+ yen without insurance). Khi đến hospital: arrive 30 phút sớm cho first visit. Bring: insurance card, residence card or passport, list current medications (write on paper, English OK), allergy list. Reception sẽ ask làm 問診票 (medical questionnaire) — 2-3 trang covering: chief complaint, duration, severity, previous illnesses, family history, current meds. Fill carefully — bác sĩ uses this. Nếu Japanese khó, ask English version (most major hospitals have). Trong cuộc khám: KHÔNG remove clothing unless asked — Nhật minimize physical exposure. Bác sĩ dùng stethoscope qua áo OK. Nếu cần thoroughly check, bác sĩ sẽ provide gown. KHÔNG joke about symptoms (Nhật medical context taken seriously). Symptoms exaggeration thua underplay. Sau exam, bác sĩ sẽ explain diagnosis. Nếu không hiểu, ask: kakunin sasete itadakemasu deshou ka cộng repeat back (em xác nhận lại — XX bị YY, đúng không?). Bác sĩ Nhật appreciate verification step. Khi nhận processhei, mang đến 薬局 IMMEDIATELY (valid 4 ngày only). Pharmacy sẽ ask thêm questions about dosage timing, food restrictions. Đáp truthful. Sau pay, nhận medicine + 薬剤情報提供書 (drug info sheet) — keep cho future reference. Common follow-up: nếu được prescribed antibiotic, finish FULL course (Nhật strict about this), không stop khi feel better. Sau visit, nếu cần medical certificate cho work, ask trước khi rời: shindansho wo o-negai shitaku zonjimasu (em xin diagnostic certificate). 1,000-3,000 yen extra. Nếu emergency outside hospital hours: 119 ambulance hoặc 救急外来 (24h ER) at major hospitals. Không hesitate. Nếu mental health crisis: TELL Lifeline Tokyo English support (03-5774-0992), miễn phí.",
+  exercises: [
+    { type: "fill-blank", question: "昨日から発熱と頭痛が___ます。", answer: "ござい" },
+    { type: "matching", instruction: "Ghép symptom với cụm reporting đúng.", pairs: [
+      { japanese: "発熱があります", english: "có sốt" },
+      { japanese: "喉が痛みます", english: "đau cổ họng" },
+      { japanese: "吐き気がします", english: "buồn nôn" },
+      { japanese: "寒気がいたします", english: "lạnh / rùng mình (formal)" }
+    ] },
+    { type: "translation", vietnamese: "Em dị ứng với penicillin. Ngoài ra không có dị ứng nào khác.", japanese: "ペニシリンにアレルギーがございます。それ以外はございません。" }
+  ]
+},
+{
+  id: 76,
+  title: "Hotel/ryokan complaint — room defect, requesting room change",
+  title_vi: "Khiếu nại khách sạn/ryokan — phòng có sự cố, xin đổi phòng",
+  title_en: "Hotel/ryokan complaint — room defect, requesting room change",
+  category: "fluency",
+  level: "B2",
+  vocabulary: [
+    { japanese: "ホテル", english: "hotel (Western style)" },
+    { japanese: "旅館 (りょかん)", english: "ryokan (traditional Japanese inn)" },
+    { japanese: "フロント", english: "front desk" },
+    { japanese: "客室 (きゃくしつ)", english: "guest room" },
+    { japanese: "故障 (こしょう)", english: "malfunction / broken" },
+    { japanese: "不具合 (ふぐあい)", english: "defect / problem (general)" },
+    { japanese: "お部屋の変更 (おへやのへんこう)", english: "room change" },
+    { japanese: "騒音 (そうおん)", english: "noise" },
+    { japanese: "エアコン", english: "air conditioner" },
+    { japanese: "浴室 (よくしつ)", english: "bathroom" }
+  ],
+  examples: [
+    { japanese: "お部屋のエアコンが故障しているようでございます。", english: "The room's air conditioner seems to be broken." },
+    { japanese: "可能でしたら、お部屋の変更をお願いしたく存じます。", english: "If possible, I would humbly like to request a room change." },
+    { japanese: "上の階からの騒音で、なかなか眠れません。", english: "Due to noise from the floor above, I can't sleep well." },
+    { japanese: "ご対応いただけますと幸いでございます。", english: "I would be grateful for your handling." },
+    { japanese: "お忙しいところ、申し訳ございません。", english: "I apologize for troubling you when you're busy." }
+  ],
+  dialogue: [
+    { speaker: "チャウ", japanese: "失礼いたします。三〇五号室のグエンと申します。お部屋について、ご相談がございます。", english: "Excuse me. I'm Nguyen from room 305. I have a request about my room." },
+    { speaker: "フロント", japanese: "はい、グエン様、どうされましたか。", english: "Yes, Ms. Nguyen, what's the issue?" },
+    { speaker: "チャウ", japanese: "エアコンが故障しているようでして、室温が下がりません。", english: "The air conditioner seems broken; the temperature isn't dropping." },
+    { speaker: "フロント", japanese: "それは申し訳ございません。すぐに技術スタッフをお部屋に派遣いたします。", english: "I'm so sorry. I'll send technical staff to your room immediately." }
+  ],
+  dialogue_long: [
+    { speaker: "チャウ", japanese: "失礼いたします。三〇五号室のグエン・ティ・チャウと申します。お部屋についてご相談がございまして、フロントへ参りました。", english: "Excuse me. I'm Nguyen Thi Chau from room 305. I have a matter about my room, so I came to the front desk." },
+    { speaker: "フロント", japanese: "グエン様、いつもご利用いただきありがとうございます。どのようなことでしょうか。", english: "Ms. Nguyen, thank you for your continued patronage. What's the matter?" },
+    { speaker: "チャウ", japanese: "二点ございます。一点目、エアコンが故障しているようでして、設定を二十二度にしても室温が下がりません。今夜は外が三十度を超えると伺いまして、少し心配でございます。", english: "Two points. First, the AC seems broken — I set it to 22 degrees but the room temperature won't drop. I heard tonight will be over 30 outside, so I'm a bit worried." },
+    { speaker: "フロント", japanese: "それは大変申し訳ございません。もう一点はいかがでしょうか。", english: "I'm so sorry. And the other point?" },
+    { speaker: "チャウ", japanese: "二点目、上の階からの足音と話し声が大きく、昨夜あまり眠れませんでした。本日も同じようでしたら、明日の業務に差し支えがあるかと心配しております。", english: "Second, footsteps and voices from the floor above are loud — I couldn't sleep much last night. If tonight is similar, I'm worried it'll affect tomorrow's work." },
+    { speaker: "フロント", japanese: "二件とも承知いたしました。エアコンに関しましては、今すぐ技術スタッフを派遣して点検いたします。修理が難しい場合、お部屋の変更も検討いたします。", english: "Understood on both. For the AC, I'll send technical staff immediately. If repair is difficult, we'll consider a room change." },
+    { speaker: "チャウ", japanese: "ありがとうございます。お部屋の変更も可能でしたら、ぜひご検討いただきたく存じます。", english: "Thank you. If room change is possible, please consider it." },
+    { speaker: "フロント", japanese: "本日のお部屋状況を確認いたします。少々お待ちください。", english: "Let me check today's room availability. One moment please." },
+    { speaker: "フロント", japanese: "お待たせいたしました。同じカテゴリーで、最上階のお部屋が空いてございます。最上階ですと、上階からの騒音はございません。エアコンも別系統でございますので、両方の問題が解決できるかと存じます。", english: "Sorry to keep you waiting. A same-category room on the top floor is available. Top floor means no noise from above. AC is separate system, so both issues can be resolved." },
+    { speaker: "チャウ", japanese: "それは大変ありがたいご提案でございます。お部屋の変更にかかる料金はいかがでしょうか。", english: "That's a wonderful suggestion. Is there any fee for the room change?" },
+    { speaker: "フロント", japanese: "今回は当ホテル側の不具合によるご移動ですので、追加料金は一切いただきません。お荷物の移動も、当方のスタッフが対応させていただきます。", english: "Since this move is due to our hotel's defect, no additional charge. Our staff will handle moving your luggage." },
+    { speaker: "チャウ", japanese: "ご丁寧なご対応、誠にありがとうございます。今、お部屋に荷物がございますので、一度戻ってから移動の手続きをお願いしてもよろしいでしょうか。", english: "Thank you sincerely for the courteous handling. My luggage is in the room now; may I return briefly before the move?" },
+    { speaker: "フロント", japanese: "もちろんでございます。お部屋にお戻りいただき、十分ほどでフロントへお越しください。新しいお部屋へご案内させていただきます。", english: "Of course. Please return to your room, then come to the front desk in about 10 minutes. We'll guide you to the new room." },
+    { speaker: "チャウ", japanese: "誠にありがとうございました。お忙しいところお手数をおかけいたしまして、申し訳ございませんでした。", english: "Thank you sincerely. I apologize for the trouble during your busy time." },
+    { speaker: "フロント", japanese: "とんでもございません。お客様にご不便をおかけしたのは当ホテルの責任です。雨降って地固まると申しますが、本日のご対応を機に、より良いサービスをお届けできるよう努めてまいります。", english: "Not at all. It's our hotel's responsibility for inconveniencing you. As they say after rain the ground hardens — we'll strive to deliver better service through today's handling." },
+    { speaker: "チャウ", japanese: "ご丁寧にありがとうございます。それでは、十分後にお伺いいたします。", english: "Thank you for your courtesy. Then I'll come back in 10 minutes." }
+  ],
+  roleplay_prompts: [
+    "Đóng vai chính bạn ở khách sạn Tokyo, AC phòng hỏng. Hãy đến reception KHÔNG complain hostile — frame as 'consult' (go-soudan). Dùng cụm o-heya ni tsuite go-soudan ga gozaimasu (em có việc xin tham vấn về phòng). Nhật staff response tốt với polite frame.",
+    "Hotel staff đề xuất technical fix nhưng bạn muốn đổi phòng. Hãy KHÔNG ép — request softly với kanou deshitara, o-heya no henkou mo go-kentou itadakitaku zonjimasu (nếu có thể, em xin được xem xét đổi phòng). Cho staff option để decide.",
+    "Khách sạn đề xuất phòng thay thế nhưng có thêm phí 5,000 yen vì upgrade category. Hãy thương lượng — KHÔNG demand phải free. Cụm: kanou deshitara, dou itta gokentou itadakemasu deshou ka (nếu có thể, xin được xem xét) cộng đề xuất compromise (downgrade category để no fee)."
+  ],
+  register_notes: "Khiếu nại tại hotel Nhật cần frame as 'consultation' (go-soudan), không 'complaint' (kujo). Bốn patterns: (1) MỞ ĐẦU MỀM: o-heya ni tsuite go-soudan ga gozaimasu (em có việc xin tham vấn về phòng) — frame như cooperative problem-solving, không adversarial. KHÔNG dùng kujo wo iitai (muốn complain) — quá direct. (2) STATE FACTS, NOT FEELINGS: KHÔNG urusai desu (ồn quá!) — dùng ue no kai kara no oto-oto to hanashi-goe ga ookiku, nakanaka nemuremasen deshita (tiếng bước chân và nói chuyện từ tầng trên to, em không ngủ được). Specific facts trên emotional reaction. (3) PROPOSE SOLUTION: KHÔNG để hotel decide alone. Dùng kanou deshitara, o-heya no henkou wo o-negai shitaku zonjimasu (nếu có thể, em xin đổi phòng). Show bạn thinking constructively. (4) CỬA SAU CHO HOTEL FACE: nếu hotel admit fault, KHÔNG over-celebrate. Dùng cụm o-tesuu wo o-kake itashimashite, moushiwake gozaimasen (em đã làm phiền, xin lỗi) — even when hotel is at fault. Maintain mutual respect. // TODO native review — fugu-ai (不具合) phrasing — alternative koshou (故障) more specific to mechanical break vs vague problem; neighborhood noise complaint may need 騒音問題 phrasing tùy intensity.",
+  idiom_glosses: [
+    { idiom: "雨降って地固まる", literal: "Mưa rơi đất rắn lại", meaning: "Sau khó khăn, mọi thứ vững hơn — phù hợp khi staff respond well to complaint, frame interaction như growth opportunity for hotel.", example: "雨降って地固まると申しますが、本日のご対応を機に、より良いサービスをお届けできるよう努めてまいります。" },
+    { idiom: "急がば回れ", literal: "Vội thì đi vòng", meaning: "Vội vã hỏng việc — phù hợp khi đề xuất hotel take time để properly fix issue thay vì band-aid solution.", example: "急がば回れで、しっかり原因を確認いただけますと幸いでございます。" },
+    { idiom: "おもてなし", literal: "Hospitality", meaning: "Khái niệm hospitality Nhật — proactive guest care. Khi staff handle complaint well, dùng để complement: omotenashi no kokoro ga kanjirаremashita (em cảm nhận được tinh thần omotenashi).", example: "本日のご対応に、おもてなしの心が感じられました。" },
+    { idiom: "お互い様", literal: "Cả hai bên cùng vậy", meaning: "Mutual — phù hợp khi defuse tension. Frame complaint như shared interest (hotel muốn satisfied customer, you muốn good stay) — KHÔNG zero-sum.", example: "お客様もホテルも満足する形が一番ですね。お互い様で解決策を考えましょう。" }
+  ],
+  cultural_notes_vi: "Khiếu nại hotel ở Nhật khác phương Tây ở 5 điểm. (1) FRAME MATTERS: complaint trong VN có thể direct, ở Nhật MUST frame như 'consultation' (go-soudan). Cùng content nhưng cách trình bày quyết định kết quả. Direct complaint = staff defensive = no flexibility. Soft consult = staff find creative solution. (2) DOCUMENT WITH PHOTOS: nếu có visible defect (mold, broken lamp, dirty bathroom), chụp ảnh trước. Khi present, dùng kochira no shashin wo go-ran kudasai (mời xem ảnh). Photo evidence prevents he-said-she-said. (3) NEVER YELL: bất kể frustrated, KHÔNG raise voice. Một lần shout = mất hết good will + có thể bị politely asked to leave. Maintain calm dignified tone. Nếu thực sự upset, đi back đến phòng cool down 10 phút trước khi đến reception. (4) ESCALATION PATH: nếu front desk staff không resolve, ask to speak with 支配人 (manager). Cụm: shihainin san to o-hanashi sasete itadakemasu deshou ka. KHÔNG escalate via TripAdvisor/social media trước — Nhật xem public shaming as ultimate insult, will ruin relationship and reputation hotel needs. Internal resolution first, public review only if internal fails completely. (5) COMPENSATION EXPECTATION: trong VN, complaint thường = expect refund. Ở Nhật, primary expectation là PROBLEM SOLVED, not compensation. Một số hotels offer voluntary discount/upgrade as goodwill, KHÔNG demand. Refund đầy đủ chỉ khi service không delivered (room not available). Khác biệt với VN: ở VN có thể leverage 1-star Google review threat; ở Nhật, threat-based negotiation = enemy created. Cooperative-frame negotiation = ally created. Long term, second visit có discount + better room nếu first complaint handled cooperatively. Mẹo: ryokan (traditional inn) khác hotel ở point: ryokan owner thường family business, complaint = personal hurt to family. Be EXTRA gentle. Frame như feedback to help them improve, không complaint. Họ sẽ go above-and-beyond để fix.",
+  tip_advice_vi: "Trước khi check-in: research hotel reviews (TripAdvisor, Google) để biết common issues (noise, AC, parking). Book through reputable platform (Booking.com, JR-East travel) — họ có support if hotel không respond. Lưu booking confirmation + cancellation policy on phone. Khi check-in: ask about Wi-Fi password, breakfast time, checkout time. Brief inspection room ngay khi enter — kiểm tra: AC works (set 20°C, đợi 5 phút), bath water hot, all lights working, no smell. Nếu có issue, return reception WITHIN 30 PHÚT — sau đó harder để claim it was pre-existing. Khi complaint: bring room key + booking confirmation to reception. Stand to one side (not center) — cho other guests check-in space. Speak softly, polite. Show evidence (phone photo, video). Listen to staff propose solution before pushing your own. Nếu propose room change, ask if same category (no upgrade fee). Nếu they offer upgrade, ask if free hoặc additional charge. Decide based on budget. Nếu issue not fixable, ask compensation forms: free breakfast tomorrow, discount on extension, lounge access, late checkout. Nhật hotel thường có discretion để offer one of these. KHÔNG demand cash refund unless service completely failed. Khi room changed: walk with staff to new room, brief inspection, accept key, rời cũ key with staff. Confirm Wi-Fi password if changed. Move luggage yourself or accept staff help (bellhop service). Sau visit: gửi feedback survey if hotel sends. Honest but constructive — rate based on resolution quality, not initial issue. Nếu issue handled WELL, mention staff name positively. This goes in their HR file, helps them. Nếu issue handled poorly: detailed feedback to hotel directly first (allow 7 days response). Only if no response, post review. Always factual, không emotional. Nếu hotel chain (Marriott, Hyatt, JR Hotel), have option to escalate to corporate via app — they take seriously. Mẹo cuối: ryokan complaints handled differently. Ryokan often family-owned, owner's grandmother might be the okami (proprietress). Be EXTRA gentle, frame as 'helping us improve', not complaint. Return next year as repeat guest = significant goodwill investment.",
+  exercises: [
+    { type: "fill-blank", question: "お部屋のエアコンが___しているようでございます。", answer: "故障" },
+    { type: "matching", instruction: "Ghép cụm với function.", pairs: [
+      { japanese: "ご相談がございます", english: "frame complaint mềm như tham vấn" },
+      { japanese: "お部屋の変更", english: "đề xuất giải pháp đổi phòng" },
+      { japanese: "ご対応いただけますと幸いでございます", english: "kết thúc request lịch sự" },
+      { japanese: "お手数をおかけいたします", english: "xin lỗi đã làm phiền dù không phải lỗi mình" }
+    ] },
+    { type: "translation", vietnamese: "Nếu có thể, em xin được xem xét đổi phòng.", japanese: "可能でしたら、お部屋の変更をご検討いただきたく存じます。" }
+  ]
+},
+{
+  id: 77,
+  title: "Lost luggage — ANA/JAL counter claim",
+  title_vi: "Mất hành lý — khiếu nại tại quầy ANA/JAL",
+  title_en: "Lost luggage — ANA/JAL counter claim",
+  category: "fluency",
+  level: "B2",
+  vocabulary: [
+    { japanese: "手荷物 (てにもつ)", english: "carry-on / hand luggage" },
+    { japanese: "預け荷物 (あずけにもつ)", english: "checked luggage" },
+    { japanese: "荷物紛失 (にもつふんしつ)", english: "luggage loss" },
+    { japanese: "ロスト・バゲージ・カウンター", english: "lost baggage counter" },
+    { japanese: "便名 (びんめい)", english: "flight number" },
+    { japanese: "出発地 (しゅっぱつち)", english: "departure point" },
+    { japanese: "経由地 (けいゆち)", english: "transit point" },
+    { japanese: "受取証 (うけとりしょう)", english: "receipt (luggage tag stub)" },
+    { japanese: "賠償 (ばいしょう)", english: "compensation" },
+    { japanese: "配送 (はいそう)", english: "delivery (sending lost luggage to your address)" }
+  ],
+  examples: [
+    { japanese: "預け荷物が見つからないようでして、こちらに参りました。", english: "My checked luggage seems missing, so I came here." },
+    { japanese: "便名はANA二〇八便、ハノイ発成田着でございます。", english: "Flight is ANA 208, Hanoi to Narita." },
+    { japanese: "受取証はこちらでございます。", english: "Here is my luggage tag stub." },
+    { japanese: "ホテルへの配送をお願いできますでしょうか。", english: "Could you arrange delivery to my hotel?" },
+    { japanese: "緊急で必要な物の購入費用も、賠償の対象になりますでしょうか。", english: "Are emergency purchases also covered by compensation?" }
+  ],
+  dialogue: [
+    { speaker: "チャウ", japanese: "失礼いたします。預け荷物が見つからず、こちらにお伺いしました。", english: "Excuse me. My checked luggage isn't found, so I came here." },
+    { speaker: "ANAスタッフ", japanese: "それは大変申し訳ございません。便名と受取証をお見せいただけますか。", english: "I'm so sorry. May I see your flight number and luggage stub?" },
+    { speaker: "チャウ", japanese: "ANA二〇八便、ハノイ発成田着でございます。受取証はこちらです。", english: "ANA 208, Hanoi to Narita. Stub is here." },
+    { speaker: "ANAスタッフ", japanese: "確認いたします。少々お待ちください。", english: "Let me check. One moment please." }
+  ],
+  dialogue_long: [
+    { speaker: "チャウ", japanese: "失礼いたします。先ほど成田に着いたのですが、預け荷物が一つ、ベルトコンベアに出てこないようでして、こちらにお伺いしました。", english: "Excuse me. I just arrived at Narita, but one of my checked bags didn't come on the conveyor, so I came here." },
+    { speaker: "ANAスタッフ", japanese: "それは大変申し訳ございません。お客様、まずは便名と出発地を教えていただけますか。", english: "I'm so sorry. First, could you tell me the flight number and departure point?" },
+    { speaker: "チャウ", japanese: "ANA二〇八便、本日朝七時ハノイ発、十三時三十分成田着でございます。", english: "ANA 208, departed Hanoi at 7am today, arrived Narita at 1:30pm." },
+    { speaker: "ANAスタッフ", japanese: "ありがとうございます。受取証をお見せいただけますか。", english: "Thank you. May I see your luggage stub?" },
+    { speaker: "チャウ", japanese: "はい、こちらでございます。ハノイ空港でいただきました。", english: "Yes, here. I received it at Hanoi airport." },
+    { speaker: "ANAスタッフ", japanese: "拝見いたします。すぐにシステムで荷物の位置を確認いたします。", english: "Let me see. I'll immediately check the bag's location in the system." },
+    { speaker: "ANAスタッフ", japanese: "確認したところ、お荷物はハノイ空港でロードされず、まだ現地にあることがわかりました。次のANA二一二便で本日二十時四十分成田着で到着予定でございます。", english: "Upon checking, your bag wasn't loaded at Hanoi and is still there. It's expected on the next flight ANA 212, arriving Narita at 8:40pm today." },
+    { speaker: "チャウ", japanese: "そうでございましたか。承知いたしました。ホテルにチェックインしてしまっているので、空港まで取りに戻るのは難しいのですが、配送のお願いはできますでしょうか。", english: "I see, understood. I've already checked into my hotel, so returning to the airport is difficult — can I request delivery?" },
+    { speaker: "ANAスタッフ", japanese: "もちろんでございます。お荷物が到着次第、ホテルへの無料配送を手配いたします。配送はおおよそ二十一時から二十三時の間に到着いたします。お受け取りいただける時間でしょうか。", english: "Of course. Once the bag arrives, we'll arrange free delivery to your hotel. Delivery between approximately 9pm and 11pm. Will you be available?" },
+    { speaker: "チャウ", japanese: "はい、ホテルでお待ちいたします。ホテルの住所と部屋番号をお伝えいたします。", english: "Yes, I'll wait at the hotel. Let me give you the hotel address and room number." },
+    { speaker: "ANAスタッフ", japanese: "ありがとうございます。それから、お荷物が到着するまでの間、緊急で必要な日用品(歯ブラシ、下着、洗面用具など)を購入される場合、レシートを保管していただければ、後日賠償の対象となります。", english: "Thank you. Also, while waiting for the bag, if you purchase essentials (toothbrush, underwear, toiletries), keep receipts — they'll be eligible for compensation later." },
+    { speaker: "チャウ", japanese: "それは大変ありがたいです。賠償の上限額はおいくらでございますか。", english: "That's very helpful. What's the compensation limit?" },
+    { speaker: "ANAスタッフ", japanese: "緊急購入品は一日五千円相当までが目安でございます。詳細は後日メールでお送りする申請書にてご確認ください。", english: "Emergency purchases up to about 5,000 yen per day. Details will be in the application form we'll email you later." },
+    { speaker: "チャウ", japanese: "承知いたしました。本当に助かります。配送先のホテル住所とお電話番号、こちらに記入してもよろしいでしょうか。", english: "Understood. Truly helpful. May I write the hotel address and phone here?" },
+    { speaker: "ANAスタッフ", japanese: "はい、こちらの用紙にご記入ください。記入後、控えをお渡しいたします。配送の追跡番号もお送りいたしますので、進捗をご確認いただけます。", english: "Yes, please fill out this form. After completing, I'll give you a copy. I'll also send a tracking number to monitor progress." },
+    { speaker: "チャウ", japanese: "ご丁寧なご対応、誠にありがとうございました。雨降って地固まると申しますが、本日のご対応で、ANAへの信頼がさらに深まりました。", english: "Thank you sincerely for the courteous handling. As they say after rain the ground hardens — today's handling deepened my trust in ANA further." },
+    { speaker: "ANAスタッフ", japanese: "ご寛容なお言葉、誠にありがとうございます。ご不便をおかけして本当に申し訳ございませんでした。お荷物が無事に到着するよう、責任を持って手配いたします。", english: "Thank you sincerely for your magnanimous words. I'm truly sorry for the inconvenience. I'll handle this responsibly to ensure your bag arrives safely." }
+  ],
+  roleplay_prompts: [
+    "Đóng vai chính bạn vừa đến Narita, bag không xuất hiện trên belt. Hãy đến lost baggage counter — KHÔNG panic. Cụm: azuke nimotsu ga mitsukarazu, kochira ni ukagaimashita (em không tìm thấy hành lý ký gửi, nên đến đây). Bring receipt stub sẵn sàng.",
+    "Staff ANA xin lỗi nhiều lần. Hãy KHÔNG over-reassure (sounds dismissive of their apology). Dùng cụm go-teinei na go-taiou, arigatou gozaimasu (cảm ơn xử lý chu đáo) một lần đủ. Họ appreciate acknowledgment of their effort.",
+    "Sau khi staff offer free delivery + compensation cho emergency purchases, bạn hỏi thêm về possible compensation cho stress / delay. Hãy KHÔNG escalate to demand — Nhật airline không offer cash for emotional damages. Accept what offered gracefully."
+  ],
+  register_notes: "Lost luggage counter của ANA/JAL trained for keigo cao. Bốn patterns: (1) MỞ ĐẦU CALM: KHÔNG panic, KHÔNG demand. Frame như 'investigation' (kakunin): azuke nimotsu ga mitsukarazu, kochira ni ukagaimashita. Staff response cao hơn với calm guests. (2) PROVIDE FACTS UPFRONT: flight number, departure, arrival time, receipt stub — all on first sentence if possible. Save staff investigation time = faster resolution. (3) ACCEPT APOLOGY GRACEFULLY: Nhật airline staff được train apologize EVEN khi không phải lỗi của họ specifically. KHÔNG over-reassure (daijoubu desu repeated = dismissive). Nói arigatou gozaimasu cộng move to next step. (4) ASK ABOUT COMPENSATION POLITELY: KHÔNG demand money. Frame như verification: bishou no joukensaikou wa ikaga deshou ka (em xin hỏi về compensation criteria). Nhật airline có set policies — staff sẽ explain. Dùng amount limits (5,000 yen/day for emergencies) như reasonable expectation, KHÔNG try to inflate. // TODO native review — bishou (賠償) phrasing — alternative o-mimai-kin (お見舞金) softer for goodwill payment vs hard compensation; tùy airline policy.",
+  idiom_glosses: [
+    { idiom: "雨降って地固まる", literal: "Mưa rơi đất rắn lại", meaning: "Sau khó khăn, mọi thứ vững hơn — phù hợp khi airline handle issue well, frame như trust-deepening moment.", example: "雨降って地固まると申しますが、本日のご対応で、ANAへの信頼がさらに深まりました。" },
+    { idiom: "備えあれば憂いなし", literal: "Có chuẩn bị thì không lo", meaning: "Better safe than sorry — phù hợp khi nói về việc luôn pack essentials in carry-on (toothbrush, change of clothes) phòng khi bag thất lạc.", example: "備えあれば憂いなし、貴重品と必需品は手荷物に入れておくべきでございました。" },
+    { idiom: "急がば回れ", literal: "Vội thì đi vòng", meaning: "Vội vã hỏng việc — phù hợp khi staff cần thời gian xử lý paperwork. Đừng rush họ. Quality processing > speed.", example: "急がば回れで、慎重に手続きをお願いいたします。" },
+    { idiom: "ご縁", literal: "Mối duyên", meaning: "Duyên / fated connection — Nhật concept. Phù hợp khi airline goes above expectations to help. Express gratitude khái niệm tinh tế.", example: "本日のご縁、感謝申し上げます。" }
+  ],
+  cultural_notes_vi: "Lost luggage ở Nhật khác phương Tây ở 5 điểm. (1) RECOVERY RATE HIGH: airline Nhật có recovery rate >95 phần trăm trong 24-48 giờ. KHÔNG panic — usually flights connecting Asia, bag chỉ on next flight. (2) FREE DELIVERY: ANA/JAL/Skymark đều offer free delivery to hotel/home. KHÔNG cần tự đi airport pick up. Delivery thường within 12 giờ sau bag arrival. (3) COMPENSATION POLICY: emergency purchases (toothbrush, underwear, toiletries) covered up to 5,000-10,000 yen/day. Lưu mọi receipt. Submit qua email form trong 7 ngày. Reimbursement bằng bank transfer trong 2-4 tuần. (4) ESCALATION: nếu bag MISSING (not delayed) — sau 21 ngày declared lost. Compensation cho contents up to ~$1,500 USD per bag (Montreal Convention) cho international flights. Domestic Japan: lower limits. Mua additional insurance trước flight nếu carry valuable items. (5) DOCUMENTATION: lưu mọi paperwork (claim form, tracking number, email receipts). Nếu cần escalate tới corporate, paper trail là evidence. Khác biệt với VN/phương Tây: ở phương Tây, demand compensation aggressive là normal; ở Nhật, polite request gets MORE — staff has discretion to offer extras (extra meal voucher, lounge access, free upgrade) for cooperative customers. Threat-based negotiation = staff stick to minimum. (6) FOLLOW UP: nếu bag arrives damaged (not just delayed), report DAMAGE within 24 hours of delivery — sau đó claim might be denied. Bring damaged item to airline office hoặc photograph and email với reference number. Mẹo: nếu travel often, register frequent flyer programs (ANA Mileage Club, JAL Mileage Bank) — status members get priority handling, faster resolution, sometimes auto-compensation. Pre-emptive: pack 1 day's clothes + toiletries + medications + valuables in CARRY-ON. Check-in only what you can survive without 24-48 hours.",
+  tip_advice_vi: "Trước khi fly: photograph contents of checked bag (insurance evidence). Take photo of luggage tag stub + receipt right after check-in (in case stub lost). Pack carry-on với 24-48 hour survival kit: 1 set clothes, underwear (2-3 pieces), toothbrush, toothpaste, deodorant, prescription meds, valuables (laptop, camera, jewelry, important documents). Khi đến Narita, đợi ALL bags from your flight on belt (some bags come last). Nếu bag không xuất hiện sau 30 phút từ khi belt starts: đến lost baggage counter (signs say 'Lost & Found' hoặc '手荷物カウンター'). Bring receipt stub. Khi staff process: verify EVERY detail of contact info — phone (with country code), email, hotel address (English + Japanese version nếu có), check-in date and check-out date. Mistake here = bag delivered to wrong place = 24 hour delay. Get tracking number + claim reference in writing (paper or screenshot). Save in 2 places (email + phone notes). Khi rời airport: keep receipts of EVERY emergency purchase — tax invoice (領収書) preferred over generic receipt. Eligible items: clothes, toiletries, basic electronics. NOT eligible: sightseeing tickets, restaurant meals (unless replacing mealtime missed due to delay). Limit ~5,000 yen/day for first 2 days. Khi bag arrive: check contents IMMEDIATELY — verify nothing missing, nothing damaged. Take photo if anything off. Sign delivery slip CAREFULLY — signature confirms receipt OK. Nếu damage: refuse signing or write 'received with visible damage' trên slip. Sau 24 giờ from delivery, hard to claim damage. Submit compensation form within 7 ngày — most airlines have email PDF form. Attach receipts + tracking numbers. Patience: 2-4 tuần for processing. Nếu no response after 4 tuần, escalate via airline corporate (ANA: 0570-029-555, JAL: 0570-025-031). Không hesitate — Nhật airline take complaints seriously. Long-term: consider 'Apple AirTag' trong checked bag — cost 5,000 yen, can locate bag in real-time. Nhật airline accept this practice. Mẹo cuối: nếu flight is round-trip and outbound bag delayed, return flight handling MIGHT include extra accommodation. Worth asking ground staff about return flight implications. Document everything.",
+  exercises: [
+    { type: "fill-blank", question: "預け荷物が見つから___、こちらに参りました。", answer: "ず" },
+    { type: "matching", instruction: "Ghép cụm với function.", pairs: [
+      { japanese: "受取証", english: "stub vé tag — bằng chứng bag đã được check-in" },
+      { japanese: "便名", english: "số hiệu chuyến bay (e.g. ANA208)" },
+      { japanese: "配送", english: "giao hàng đến hotel/nhà sau khi tìm thấy" },
+      { japanese: "賠償", english: "bồi thường cho emergency purchases" }
+    ] },
+    { type: "translation", vietnamese: "Khi mua đồ khẩn cấp, có thể giữ hóa đơn để được bồi thường không?", japanese: "緊急で必要な物の購入費用も、賠償の対象になりますでしょうか。" }
+  ]
+},
+{
+  id: 78,
+  title: "Police report (交番/警察署) — wallet/phone stolen, formal report (盗難届)",
+  title_vi: "Báo cảnh sát (交番/警察署) — bị trộm ví/điện thoại, lập biên bản (盗難届)",
+  title_en: "Police report (交番/警察署) — wallet/phone stolen, formal report (盗難届)",
+  category: "fluency",
+  level: "B2",
+  vocabulary: [
+    { japanese: "交番 (こうばん)", english: "neighborhood police box" },
+    { japanese: "警察署 (けいさつしょ)", english: "police station (full)" },
+    { japanese: "盗難 (とうなん)", english: "theft" },
+    { japanese: "盗難届 (とうなんとどけ)", english: "theft report" },
+    { japanese: "被害届 (ひがいとどけ)", english: "victim report (formal)" },
+    { japanese: "事情聴取 (じじょうちょうしゅ)", english: "questioning / statement-taking" },
+    { japanese: "現金 (げんきん)", english: "cash" },
+    { japanese: "クレジットカード", english: "credit card" },
+    { japanese: "受理番号 (じゅりばんごう)", english: "case receipt number" },
+    { japanese: "防犯カメラ (ぼうはんカメラ)", english: "security camera" }
+  ],
+  examples: [
+    { japanese: "財布を盗まれてしまいまして、盗難届を提出したく参りました。", english: "I had my wallet stolen, so I came to file a theft report." },
+    { japanese: "盗難に気づいたのは、本日午後三時頃でございます。", english: "I noticed the theft around 3pm today." },
+    { japanese: "クレジットカード会社にはすでに連絡し、停止しております。", english: "I have already contacted the credit card company and frozen the cards." },
+    { japanese: "受理番号をいただけますでしょうか。保険申請に必要でございます。", english: "May I receive a case receipt number? It's needed for insurance claim." },
+    { japanese: "ご対応、誠にありがとうございました。", english: "Thank you sincerely for handling this." }
+  ],
+  dialogue: [
+    { speaker: "警察官", japanese: "こんにちは、何かありましたか。", english: "Hello, is something wrong?" },
+    { speaker: "チャウ", japanese: "失礼いたします。財布を盗まれてしまいまして、盗難届を出したく参りました。", english: "Excuse me. My wallet was stolen, so I came to file a theft report." },
+    { speaker: "警察官", japanese: "それは大変でしたね。中へどうぞ。落ち着いてお話を聞かせてください。", english: "That's terrible. Please come in. Calmly tell me what happened." },
+    { speaker: "チャウ", japanese: "ありがとうございます。", english: "Thank you." }
+  ],
+  dialogue_long: [
+    { speaker: "チャウ", japanese: "失礼いたします。盗難の件で参りました。財布を盗まれたようでして、被害届を出したく存じます。", english: "Excuse me. I came regarding theft. My wallet seems to have been stolen, and I'd like to file a victim report." },
+    { speaker: "警察官", japanese: "わかりました。中へどうぞ。お名前と国籍を教えていただけますか。", english: "Understood. Please come in. May I have your name and nationality?" },
+    { speaker: "チャウ", japanese: "グエン・ティ・チャウと申します。ベトナム国籍でございます。在留カードもお見せいたします。", english: "I am Nguyen Thi Chau, Vietnamese national. I'll also show my residence card." },
+    { speaker: "警察官", japanese: "ありがとうございます。それでは、いつ、どこで、どのような状況で盗難に気づかれましたか。詳しくお話しください。", english: "Thank you. Then please tell me in detail when, where, and how you noticed the theft." },
+    { speaker: "チャウ", japanese: "本日午後一時頃、新宿駅東口の喫茶店「ドトールコーヒー」で食事をいたしました。財布をテーブルに置いて、お手洗いに席を立ちました。約五分後に戻りましたら、財布がなくなっておりました。", english: "Around 1pm today, I ate at Doutor Coffee at Shinjuku Station east exit. I left my wallet on the table and went to the restroom. About 5 minutes later when I returned, the wallet was gone." },
+    { speaker: "警察官", japanese: "なるほど。財布の中身は、現金やカードなど、何が入っておりましたか。", english: "I see. What was inside the wallet — cash, cards, etc.?" },
+    { speaker: "チャウ", japanese: "現金約三万円、クレジットカード二枚(VisaとMastercard)、運転免許証、それからベトナムの身分証明書(CMND)でございます。", english: "Approximately 30,000 yen cash, 2 credit cards (Visa and Mastercard), driver's license, and Vietnamese ID card (CMND)." },
+    { speaker: "警察官", japanese: "クレジットカード会社へのご連絡はお済みですか。", english: "Have you contacted the credit card companies?" },
+    { speaker: "チャウ", japanese: "はい、十四時頃に両社へ電話し、カードの利用停止をお願いいたしました。受付番号も控えてございます。", english: "Yes, I called both companies around 2pm and froze the cards. I have the case numbers." },
+    { speaker: "警察官", japanese: "それは適切な対応でした。喫茶店の防犯カメラを確認することは可能ですか。", english: "That was the appropriate response. Is checking the cafe's security camera possible?" },
+    { speaker: "チャウ", japanese: "店員さんに尋ねたところ、本社に確認が必要とのことでした。警察からのご連絡があれば対応するそうでございます。", english: "When I asked the staff, they said they need to check with HQ. They said they'd respond if police contact them." },
+    { speaker: "警察官", japanese: "わかりました。本件につきましては、防犯カメラの確認、周辺の聞き込みを進めてまいります。被害届を提出いたしますので、こちらの用紙にご記入ください。日本語でのご記入が難しい場合、私が代筆いたしますので、お話しください。", english: "Understood. For this case, I'll proceed with camera review and interviews. I'll file the victim report. Please fill out this form. If Japanese is difficult, I can write for you — just tell me." },
+    { speaker: "チャウ", japanese: "ありがとうございます。基本情報は日本語で書けますが、状況説明は代筆をお願いしたく存じます。", english: "Thank you. Basic info I can write in Japanese, but for the situation description, please write for me." },
+    { speaker: "警察官", japanese: "承知いたしました。ところで、ご保険の関係で受理番号が必要でございますか。", english: "Understood. By the way, do you need a case receipt number for insurance?" },
+    { speaker: "チャウ", japanese: "はい、海外旅行保険の請求に必要でございます。お願いできますでしょうか。", english: "Yes, needed for travel insurance claim. May I have one?" },
+    { speaker: "警察官", japanese: "もちろんでございます。手続きが完了次第、受理番号入りの控えをお渡しいたします。本件、見つかる可能性がゼロではございませんので、進展がありましたら登録いただいた電話番号にご連絡いたします。", english: "Of course. Once processing is complete, I'll give you a copy with the case number. There's some chance of recovery; if there's progress, I'll call the phone number you registered." },
+    { speaker: "チャウ", japanese: "誠にありがとうございます。お忙しいところ、お手数をおかけいたしまして申し訳ございませんでした。", english: "Thank you sincerely. Sorry for the trouble during your busy time." },
+    { speaker: "警察官", japanese: "とんでもございません。ベトナムから来られた方が日本で安心して過ごせるよう、警察として責任を持って対応いたします。これからもお気をつけてお過ごしください。", english: "Not at all. We police take responsibility for ensuring visitors from Vietnam can stay safely in Japan. Please continue to take care." }
+  ],
+  roleplay_prompts: [
+    "Đóng vai chính bạn vào koban (police box) ở Shinjuku báo bị mất ví. Hãy KHÔNG vào nói cụt ngủn 'wallet stolen' tiếng Anh — open với cụm tiếng Nhật shitsurei itashimasu cộng tounan no ken de mairimashita. Cảnh sát nhận thấy effort = treat seriously.",
+    "Cảnh sát hỏi chi tiết — bao nhiêu tiền, thẻ gì, mất ở đâu. Hãy give SPECIFIC info: số tiền (xấp xỉ OK), tên brand of card, tên cụ thể địa điểm (Doutor Coffee Shinjuku east exit, KHÔNG vague 'gần Shinjuku'). Specifics = cảnh sát có thể action.",
+    "Cảnh sát đề xuất bạn fill form bằng tiếng Nhật. Bạn không tự tin viết đầy đủ. Hãy KHÔNG fake — admit và xin assistance: kihon jouhou wa nihongo de kakemasu ga, joukyou setsumei wa daihitsu wo o-negai shitaku zonjimasu. Cảnh sát Nhật được trained help foreigners."
+  ],
+  register_notes: "Tại 交番 (koban) hoặc 警察署 (police station), register là teineigo cao plus kenjougo cho hành động của mình. Cảnh sát Nhật uses keigo formal ngay cả với citizens — bạn match. Bốn patterns: (1) MỞ ĐẦU: shitsurei itashimasu cộng tounan no ken de mairimashita (em đến vì việc bị trộm). KHÔNG hung hốt rush in. (2) PROVIDE ID FIRST: trước khi cảnh sát ask, offer residence card hoặc passport. zairyuu kado wo o-mise itashimasu (em xin trình thẻ cư trú). Show cooperative attitude. (3) PRECISE FACTS: timeline (bao nhiêu giờ, đâu cụ thể), monetary value (estimate OK), card details (brand + last 4 digits if known). Vague answers waste time. (4) ACCEPT POLICE PACE: Nhật police thorough, cuộc nói có thể 30-60 phút cho theft report. KHÔNG rush police. Bring water + phone charger nếu bạn jet-lagged. Câu cuối: kasanete, go-teinei na go-taiou wo itadaki, makoto ni arigatou gozaimashita. Cảnh sát Nhật appreciate gratitude từ foreigners — có thể lead to extra effort recovering items. // TODO native review — daihitsu (代筆) phrasing — alternative tasukete itadaku (xin được giúp đỡ) hơi soft hơn but less specific; daihitsu là legal/admin term Nhật accept.",
+  idiom_glosses: [
+    { idiom: "備えあれば憂いなし", literal: "Có chuẩn bị thì không lo", meaning: "Better safe than sorry — phù hợp lesson sau theft: split tiền/cards giữa 2 wallets, photo cards trước khi đi.", example: "備えあれば憂いなし、今後はカードと現金を分けて持ち歩きます。" },
+    { idiom: "雨降って地固まる", literal: "Mưa rơi đất rắn lại", meaning: "Sau khó khăn, mọi thứ vững hơn — phù hợp khi police handle case professionally, frame như growth experience.", example: "雨降って地固まると申します。今回の経験を教訓にいたします。" },
+    { idiom: "渡る世間に鬼はなし", literal: "Đi qua thế gian không gặp quỷ", meaning: "Trên đời này luôn có người tốt sẵn sàng giúp đỡ. Phù hợp khi cảm ơn cảnh sát cho thorough help.", example: "渡る世間に鬼はなしと申しますが、警察の方の親切に感謝しております。" },
+    { idiom: "一期一会", literal: "Một đời một lần gặp", meaning: "Mỗi cuộc gặp duy nhất — police interaction này có thể là one-time, nhưng matter của trust với Japanese institutions.", example: "本日のご対応を一期一会と感じております。" }
+  ],
+  cultural_notes_vi: "Báo cảnh sát ở Nhật khác phương Tây ở 6 điểm. (1) RECOVERY RATE HIGH: Nhật theft recovery rate ~60-80 phần trăm trong Tokyo (theo Tokyo Metropolitan Police 2023). Cảnh sát Nhật actively investigate even small thefts (lost iPhone, wallet). KHÔNG dismiss your case as too small. (2) KOBAN CULTURE: 交番 (neighborhood police box) handles initial report. Maps online show locations — most train stations have one nearby. KHÔNG drive to main precinct first; koban first. Koban officer may escalate to precinct if needed. (3) PAPERWORK MATTERS: cảnh sát Nhật love documentation. 被害届 (victim report) tạo case number, kích hoạt investigation. KHÔNG skip này — không paperwork = no investigation. Bring time để fill out properly. (4) NO BRIBES, NO TIPS: KHÔNG offer money to officers — illegal Nhật, will offend severely. Nhật police strict on integrity. Thank you words enough. (5) FOLLOW UP: cảnh sát call bạn nếu có progress (recovery, suspect identified). Trong 30 ngày, nếu no update, OK to call koban back asking. Cụm: senjitsu no tounan no ken, sono go ikaga deshou ka (về vụ trộm hôm trước, sau đó như thế nào). (6) INSURANCE PROCESS: travel insurance / homeowner insurance VN cần Japanese police case number. Receipt với 受理番号 là proof. Email scan đến insurance company within 30 days for claim. Khác biệt với VN: ở VN có thể bribe officer nhanh hơn; ở Nhật, KHÔNG. Honest cooperation = thorough investigation. Cảnh sát Nhật accept rằng foreigners có language barrier — họ patience với English/Vietnamese mixed in. Mẹo: nếu phone stolen, register 'Find My iPhone' trước khi đi Nhật. Police sẽ check device tracking trong investigation. AirTag in wallet (popular trend) — police accept this evidence. iPhone screen lock + bio-metric prevents thieves access.",
+  tip_advice_vi: "Phòng ngừa: KHÔNG để wallet/phone trên bàn quán cafe khi đi vệ sinh. Nhật có theft rate thấp, nhưng tourist areas (Shinjuku, Akihabara, Asakusa) là target. Cẩn thận tại izakaya (sake bar) — busy, dim, drinking → easy target. Split tiền: 70 phần trăm trong wallet chính, 30 phần trăm trong second wallet/money belt. Photograph mọi cards trước trip (lưu trên cloud). Khi happens: STAY CALM. Trong 1 giờ đầu, làm 4 việc: (1) Trace lại — quay lại location cuối cùng nhìn thấy. Hỏi staff/witnesses. (2) Call credit card companies (Visa: 0120-991-666 24/7 Nhật; Mastercard: 0034-811-005). Freeze cards immediately. (3) Đến gần koban (Google Maps: 'koban') với mọi documents bạn có (passport, residence card). (4) Document timeline trên phone (when, where, what was inside). Khi tại koban: greeting tiếng Nhật, present residence card, briefly state issue, wait for officer to lead. Officer sẽ ask details — answer specifically. Nếu language barrier, dùng Google Translate (ok ở Nhật police), hoặc ask if interpreter available (some kobans have phone interpreters). Process takes 30-90 phút. Sau khi nhận 受理番号: photograph receipt (paper receipt may fade). Save digital copies on cloud. Email một copy cho mình để có timestamped record. Within 7 ngày: contact insurance company với case number. Most need: police receipt, list of items lost, estimated values, original purchase receipts if available. VN travel insurance thường cover 5-10 triệu VND for cash + cards lost. Card replacement: VN bank issue replacement card, mailed to VN address (3-7 ngày). Trong Japan, có thể use ATM với passport at Seven Bank, Japan Post Bank for emergency cash withdrawal up to ~50,000 yen với international card. Long-term lessons: AirTag in wallet (cost 5,000 yen). Apple Watch with Walking Wake. Money belt under clothes for cash + cards in tourist areas. Photograph EVERY card (front + back) before trip. Mẹo cuối: nếu có time before flight back, follow-up call police — 30 phần trăm chance items recovered, especially if tourist forgot wallet (not actual theft) at restaurant.",
+  exercises: [
+    { type: "fill-blank", question: "財布を盗まれてしまいまして、盗難届を___たく参りました。", answer: "提出し" },
+    { type: "matching", instruction: "Ghép thuật ngữ với function.", pairs: [
+      { japanese: "交番", english: "police box (mỗi neighborhood có 1)" },
+      { japanese: "被害届", english: "victim report (kích hoạt investigation)" },
+      { japanese: "受理番号", english: "case number (cần cho insurance)" },
+      { japanese: "代筆", english: "officer help write form for foreigner" }
+    ] },
+    { type: "translation", vietnamese: "Em xin được số case để gửi cho công ty bảo hiểm.", japanese: "受理番号をいただけますでしょうか。保険申請に必要でございます。" }
+  ]
+},
+{
+  id: 79,
+  title: "Asking directions — keigo (formal stranger) vs casual (peer)",
+  title_vi: "Hỏi đường — keigo (người lạ formal) vs casual (đồng trang lứa)",
+  title_en: "Asking directions — keigo (formal stranger) vs casual (peer)",
+  category: "fluency",
+  level: "B2",
+  vocabulary: [
+    { japanese: "道 (みち)", english: "road / way / directions" },
+    { japanese: "方向 (ほうこう)", english: "direction" },
+    { japanese: "目的地 (もくてきち)", english: "destination" },
+    { japanese: "右 (みぎ)", english: "right" },
+    { japanese: "左 (ひだり)", english: "left" },
+    { japanese: "まっすぐ", english: "straight ahead" },
+    { japanese: "信号 (しんごう)", english: "traffic light" },
+    { japanese: "交差点 (こうさてん)", english: "intersection" },
+    { japanese: "駅 (えき)", english: "station" },
+    { japanese: "出口 (でぐち)", english: "exit" }
+  ],
+  examples: [
+    { japanese: "失礼ですが、新宿駅の東口はどちらでしょうか。", english: "Excuse me, which way is Shinjuku Station's east exit?" },
+    { japanese: "この近くに、コンビニはございますでしょうか。", english: "Is there a convenience store near here?" },
+    { japanese: "二つ目の信号を右に曲がってください。", english: "Please turn right at the second traffic light." },
+    { japanese: "歩いて十分くらいかかります。", english: "It takes about 10 minutes on foot." },
+    { japanese: "ご親切に、ありがとうございました。", english: "Thank you for your kindness." }
+  ],
+  dialogue: [
+    { speaker: "チャウ", japanese: "(formal — older stranger) すみません、新宿駅の東口はどちらでしょうか。", english: "Excuse me, which way is Shinjuku Station's east exit?" },
+    { speaker: "高齢者", japanese: "東口ですね。この道をまっすぐ二百メートル、信号を右に曲がってください。", english: "East exit. This street straight 200m, turn right at the traffic light." },
+    { speaker: "チャウ", japanese: "ありがとうございます。歩いてどのくらいでしょうか。", english: "Thank you. About how long walking?" },
+    { speaker: "高齢者", japanese: "五分程度ですよ。", english: "About 5 minutes." }
+  ],
+  dialogue_long: [
+    { speaker: "チャウ", japanese: "(formal — middle-aged businessman) 失礼いたします、お忙しいところ恐れ入りますが、東京タワーの方向を教えていただけますでしょうか。", english: "Excuse me, sorry to bother you when busy, but could you tell me the direction to Tokyo Tower?" },
+    { speaker: "サラリーマン", japanese: "東京タワーですか。今、神谷町駅にいらっしゃいますね。地上に出て、桜田通りを北に向かってまっすぐ歩いてください。", english: "Tokyo Tower? You're at Kamiyacho Station now. Go up to street level and walk straight north along Sakurada-dori." },
+    { speaker: "チャウ", japanese: "桜田通りはどちらの方向でございますでしょうか。", english: "Which direction is Sakurada-dori?" },
+    { speaker: "サラリーマン", japanese: "ええと、こちらの出口を出ますと、目の前の大通りでございます。北はあちらの方向、コンビニのある側です。約十分歩きますと、東京タワーが右手に見えてまいります。", english: "Um, when you exit here, the big street right in front is it. North is that way, the side with the convenience store. About 10 minutes walking, Tokyo Tower comes into view on your right." },
+    { speaker: "チャウ", japanese: "途中、目印になるものはございますか。", english: "Are there any landmarks along the way?" },
+    { speaker: "サラリーマン", japanese: "そうですね。最初の交差点に「飯倉」という看板がございます。そこをまっすぐ進んでいただきますと、坂道になりまして、登りきったところに東京タワーがございます。", english: "Yes. At the first intersection there's a sign 'Iikura.' Going straight there, you'll come to a slope; at the top is Tokyo Tower." },
+    { speaker: "チャウ", japanese: "ご丁寧にありがとうございます。最後に確認させていただきたいのですが、現在地から徒歩で約十分、桜田通り北方向、飯倉交差点を通過、坂道を登る、で間違いございませんか。", english: "Thank you kindly. Lastly, let me confirm — from current location, about 10 minutes on foot, north along Sakurada-dori, passing Iikura intersection, climb the slope. Is that correct?" },
+    { speaker: "サラリーマン", japanese: "完璧です。気をつけて行ってきてくださいね。", english: "Perfect. Take care going." },
+    { speaker: "チャウ", japanese: "誠にありがとうございました。失礼いたします。", english: "Thank you sincerely. Excusing myself." },
+    { speaker: "チャウ", japanese: "(later, casual — young student same age) すみません、ちょっと聞いてもいいですか。秋葉原のメイド喫茶ってどっちにあるか分かりますか。", english: "(later, casual — young student same age) Sorry, can I ask something? Do you know which way the maid cafes in Akihabara are?" },
+    { speaker: "学生", japanese: "メイド喫茶?中央通りの方ですよ。電気街口を出て、右に行くとすぐ見つかります。", english: "Maid cafes? Toward Chuo-dori. Exit from Electric Town exit, go right, you'll find them right away." },
+    { speaker: "チャウ", japanese: "ありがとうございます。複数あるんですか?", english: "Thanks. Are there multiple?" },
+    { speaker: "学生", japanese: "もう、めっちゃありますよ。@ほーむカフェが有名で、初めてなら一番おすすめ。", english: "Tons. @Home Cafe is famous, best for first-timers." },
+    { speaker: "チャウ", japanese: "そうなんですね、行ってみます!ありがとうございます。", english: "Oh really, I'll check it out! Thank you." },
+    { speaker: "学生", japanese: "楽しんできてくださいね!", english: "Have fun!" },
+    { speaker: "チャウ", japanese: "(internal note) 同じ「道を聞く」でも、相手によって言葉遣いが全然違う。", english: "(internal note) Even for the same 'asking directions,' speech differs entirely depending on partner." }
+  ],
+  roleplay_prompts: [
+    "Đóng vai chính bạn ở Shibuya Station — bị lạc, cần hỏi 50-something businessman đang đi vội. Hãy mở đầu với cụm formal: shitsurei itashimasu, o-isogashii tokoro osore irimasu ga (em xin lỗi đã làm phiền lúc anh bận). Đây là correct register cho stranger formal.",
+    "Ở Akihabara, bạn hỏi student cùng tuổi (20-30 tuổi) đường đến quán cafe. Hãy switch sang casual: sumimasen, chotto kiite mo ii desu ka (xin lỗi, hỏi chút được không?). KHÔNG dùng kenjougo (sasete itadaku) với peer — sounds quá formal, awkward.",
+    "Sau khi nhận hướng dẫn phức tạp 5-step, hãy XÁC NHẬN bằng cách lặp lại đầy đủ. Nhật appreciate verification step. Cụm: saigo ni kakunin sasete itadakitai no desu ga (cuối cùng em xin được xác nhận) cộng repeat instructions back theo trình tự."
+  ],
+  register_notes: "Hỏi đường ở Nhật REQUIRES register matching to person + situation. Năm patterns: (1) ELDERLY/BUSINESSMAN/AUTHORITY: cao keigo. shitsurei itashimasu cộng o-tazune shitai no desu ga (em xin được hỏi). KHÔNG dùng casual sumimasen với người 50+. (2) PEER (20-30 tuổi student/casual worker): mid-formal. sumimasen, chotto ii desu ka cộng casual question. KHÔNG cao keigo (sounds patronizing). (3) STAFF (station, store, koban): mid-formal teineigo. shitsurei shimasu cộng question với desu/masu. Staff được trained respond keigo back. (4) RESPONSE LANGUAGE: match speed của họ. Nếu họ slow + careful, response slow + verify. Nếu họ rapid + casual, you keep up. (5) THANK YOU LEVEL: cao formal: makoto ni arigatou gozaimashita (cúi 30 độ). Mid: arigatou gozaimasu. Casual: arigatou. KHÔNG mixing — cao greeting + casual thanks = inconsistent = awkward. Một thực tập: trước khi hỏi, observe person 5 giây — judge their register based on age, dress, body language. Errors common: dùng quá formal với peer (sounds robotic), dùng casual với elderly (sounds disrespectful). // TODO native review — chotto kiite mo ii desu ka phrasing — alternative chotto sumimasen lighter but less specific to question framing; regional differences (Kansai dialect uses ii ya naa instead).",
+  idiom_glosses: [
+    { idiom: "渡る世間に鬼はなし", literal: "Đi qua thế gian không gặp quỷ", meaning: "Trên đời này luôn có người tốt sẵn sàng giúp đỡ. Phù hợp khi cảm ơn stranger giúp đỡ chu đáo.", example: "渡る世間に鬼はなしと申しますが、皆様のご親切に感謝しております。" },
+    { idiom: "急がば回れ", literal: "Vội thì đi vòng", meaning: "Vội vã hỏng việc — phù hợp khi xác minh đường đi cẩn thận trước khi rush.", example: "急がば回れで、念のため確認させていただきます。" },
+    { idiom: "ご縁", literal: "Mối duyên", meaning: "Duyên / fated connection — Nhật concept. Stranger interaction casual nhưng có ý nghĩa nhỏ. Express gratitude tinh tế.", example: "本日のご縁に感謝申し上げます。" },
+    { idiom: "備えあれば憂いなし", literal: "Có chuẩn bị thì không lo", meaning: "Better safe than sorry — phù hợp với tình huống cẩn thận hỏi đường thay vì lạc tiếp.", example: "備えあれば憂いなし、念のため道を聞いてから行きます。" }
+  ],
+  cultural_notes_vi: "Hỏi đường ở Nhật khác phương Tây ở 5 điểm. (1) NHẬT GENUINELY HELP: stranger Nhật help with directions ở rate cao bất thường — including walking 5-10 phút với bạn nếu directions phức tạp. KHÔNG ngại nhận help. (2) BODY LANGUAGE: khi hỏi, cúi nhẹ 15 độ + eye contact. KHÔNG approach quá close (Nhật personal space lớn ~1m). Stand to side, không in front blocking path. (3) ASKING WHERE: dùng 'doko' cho location, 'dochira' (formal) cho direction. dochira polite hơn doko khi hỏi stranger. (4) MAP FAILURE: nếu show map trên phone, hold phone steady, không thrust into their face. Họ sẽ point trên map nếu helpful, không point in air. (5) WHEN GRATEFUL: nếu họ went out of way (walked you to destination), mua small gift cho họ as thank-you là lovely gesture (drink from konbini), nhưng KHÔNG offer money. Insulting. Khác biệt với VN: ở VN có thể stop random person at intersection với 'Em ơi, X ở đâu?' rồi tiếp tục di chuyển. Ở Nhật, full stop, full attention, full keigo (or appropriate register). Mẹo: railway staff (driver style, blue uniform) at major stations là experts on directions to anywhere. Always reliable. Ở koban, officer có map, sẽ print directions cho bạn nếu cần. Free service. Long-term: học 5 phrases thuộc lòng cho tourist mode: shitsurei desu ga (excuse me), kono chizu de docchi desu ka (which way on this map?), hidari/migi/massugu (left/right/straight), arigatou gozaimasu, gomennasai (sorry — universal apology nếu mistake). Five phrases cover 90 phần trăm interactions.",
+  tip_advice_vi: "Trước khi hỏi: try Google Maps first (works ở Nhật). Save offline maps for areas without good signal. Lưu địa chỉ destination both Romaji + Japanese (kanji + hiragana) trên phone. Khi cần ask: choose target carefully. Best targets: middle-aged businesswoman (50 phần trăm Eng OK), railway staff (highest reliability), shop staff (helpful but less English). Worst: rushing salaryman (will give brief answer, not detailed). Approach: walk closer, NOT calling from across street. Sebagai approach, slight bow. Câu mở thuộc lòng: shitsurei itashimasu, o-tazune shitai no desu ga. Show map on phone or paper. Point to destination. Nếu họ explain quickly, ask politely: mou ichido onegai dekimasen ka (could you say once more?). KHÔNG embarrassed — Nhật accept this. Nếu directions complex: ask them to write trên paper. Most carry pen. Cụm: ki ni nara nai n desu kedo, kono kami ni kaite itadakemasu ka (sorry, could you write on this paper?). Sau khi nhận directions: VERIFY by repeating back. Nếu họ correct mistake, OK. Mistake at this step better than wrong walk 20 phút. Cụm: kakunin sasete itadakitai no desu ga, X de Y de Z de yoroshii desu ka. Cuối cùng, thank LIBERALLY: makoto ni arigatou gozaimashita cộng cúi 20 độ. Nếu họ helped extensively (walked với bạn), express thêm: o-tesuu wo o-kake itashimashite, sumimasen deshita (em đã làm phiền, xin lỗi). Nhật response well to gratitude. Common scenarios: (1) Train station: staff at fare gates always helpful. (2) Tourist info booth: at major stations, English available, free maps. (3) Police box: 24/7 available, will look up address in their book. (4) Convenience store: staff have local knowledge, will point. (5) Restaurant during off-peak: server helpful if not busy. Long-term: learn local landmarks (大手町 - Otemachi, 渋谷 - Shibuya, 浅草 - Asakusa). Naming destination với Japanese name = response 50 phần trăm faster than English version. Mẹo cuối: download Hyperdia app (free) — Japanese train guide includes walking directions to/from stations.",
+  exercises: [
+    { type: "fill-blank", question: "失礼ですが、新宿駅の東口は___でしょうか。", answer: "どちら" },
+    { type: "matching", instruction: "Ghép register với situation.", pairs: [
+      { japanese: "失礼いたします、お尋ねしたい", english: "stranger formal (elderly, businessman, authority)" },
+      { japanese: "すみません、ちょっと", english: "peer casual (student, same-age)" },
+      { japanese: "失礼します、お伺いしますが", english: "staff (station, store, police)" },
+      { japanese: "あの〜", english: "very casual (close friend — không dùng cho stranger)" }
+    ] },
+    { type: "translation", vietnamese: "Em xin được xác nhận lại cuối cùng — đường đó đúng không?", japanese: "最後に確認させていただきたいのですが、その道で間違いございませんか。" }
+  ]
+},
+{
+  id: 80,
+  title: "Restaurant complaint — wrong order, billing error",
+  title_vi: "Khiếu nại nhà hàng — gọi sai món, sai hóa đơn",
+  title_en: "Restaurant complaint — wrong order, billing error",
+  category: "fluency",
+  level: "B2",
+  vocabulary: [
+    { japanese: "注文 (ちゅうもん)", english: "order" },
+    { japanese: "違う (ちがう)", english: "to differ / be wrong" },
+    { japanese: "確認 (かくにん)", english: "confirmation / verification" },
+    { japanese: "お会計 (おかいけい)", english: "bill / check" },
+    { japanese: "間違い (まちがい)", english: "mistake / error" },
+    { japanese: "領収書 (りょうしゅうしょ)", english: "receipt (formal — for tax/expense)" },
+    { japanese: "メニュー", english: "menu" },
+    { japanese: "店員 (てんいん)", english: "store/restaurant staff" },
+    { japanese: "サービス料 (サービスりょう)", english: "service charge" },
+    { japanese: "再確認 (さいかくにん)", english: "re-verification" }
+  ],
+  examples: [
+    { japanese: "失礼ですが、注文した料理と少し違うようでして、ご確認いただけますでしょうか。", english: "Excuse me, the dish seems slightly different from what I ordered — could you please verify?" },
+    { japanese: "お会計に間違いがあるかもしれません。再度ご確認をお願いいたします。", english: "There might be an error on the bill. Please verify again." },
+    { japanese: "メニュー表に書かれていた価格と少し異なるようでございます。", english: "It seems slightly different from the price on the menu." },
+    { japanese: "領収書をいただけますでしょうか。", english: "May I have a receipt?" },
+    { japanese: "ご対応、ありがとうございました。", english: "Thank you for handling this." }
+  ],
+  dialogue: [
+    { speaker: "チャウ", japanese: "すみません、ちょっとお伺いしたいのですが、こちらの料理、注文と違うように見えるのですが。", english: "Excuse me, I'd like to ask — this dish seems different from what I ordered." },
+    { speaker: "店員", japanese: "申し訳ございません、ご注文を確認させていただきます。", english: "I apologize, let me verify your order." },
+    { speaker: "チャウ", japanese: "私はチキンカツを注文したと思うのですが、こちらは豚カツのようでして。", english: "I think I ordered chicken katsu, but this looks like pork katsu." },
+    { speaker: "店員", japanese: "大変申し訳ございません、すぐに作り直してまいります。", english: "I'm so sorry, I'll remake it immediately." }
+  ],
+  dialogue_long: [
+    { speaker: "チャウ", japanese: "すみません、ちょっとよろしいでしょうか。", english: "Excuse me, could I get your attention?" },
+    { speaker: "店員", japanese: "はい、何かございましたか。", english: "Yes, was something the matter?" },
+    { speaker: "チャウ", japanese: "こちらの料理、私が注文した料理と少し違うように思いまして、ご確認いただけますでしょうか。", english: "This dish seems slightly different from what I ordered — could you please verify?" },
+    { speaker: "店員", japanese: "失礼いたします。注文票を確認いたします。少々お待ちください。", english: "Excuse me. Let me check the order slip. One moment please." },
+    { speaker: "チャウ", japanese: "私はメニューの「特製チキンカツ定食」を注文したと思うのですが、こちらは豚カツに見えます。", english: "I think I ordered the special chicken katsu set from the menu, but this looks like pork katsu." },
+    { speaker: "店員", japanese: "確認したところ、お客様のおっしゃる通り、チキンカツのご注文でした。当店の手違いで、豚カツをお持ちしてしまいまして、誠に申し訳ございません。", english: "Upon checking, you're correct — it was a chicken katsu order. We mistakenly brought pork katsu — I'm truly sorry." },
+    { speaker: "チャウ", japanese: "ご確認いただき、ありがとうございます。それでは、チキンカツに作り直していただけますでしょうか。", english: "Thank you for verifying. Then could you remake it as chicken katsu?" },
+    { speaker: "店員", japanese: "もちろんでございます。すぐに調理場に伝えてまいります。お時間は約十分かかりますが、よろしいでしょうか。", english: "Of course. I'll tell the kitchen right away. It'll take about 10 minutes — is that OK?" },
+    { speaker: "チャウ", japanese: "はい、結構でございます。お忙しいところ、お手数をおかけいたしまして申し訳ございません。", english: "Yes, that's fine. I'm sorry for the trouble during your busy time." },
+    { speaker: "店員", japanese: "とんでもございません。当店のミスでございます。お待ちいただいているお時間に、サービスでドリンクをお持ちしてもよろしいでしょうか。", english: "Not at all, our mistake. While you wait, may I bring you a complimentary drink?" },
+    { speaker: "チャウ", japanese: "ご親切にありがとうございます。それでは、お言葉に甘えてオレンジジュースをいただきたく存じます。", english: "Thank you for your kindness. I'll take you up on that — orange juice please." },
+    { speaker: "店員", japanese: "(後ほど、お会計の際) お会計はチキンカツ定食一名様、千二百円でございます。", english: "(later, at billing) Bill is one chicken katsu set, 1,200 yen." },
+    { speaker: "チャウ", japanese: "失礼ですが、メニューに千百円と表示されていたかと思うのですが。", english: "Excuse me, I think the menu showed 1,100 yen." },
+    { speaker: "店員", japanese: "確認いたします。少々お待ちください。", english: "Let me verify. One moment." },
+    { speaker: "店員", japanese: "おっしゃる通り、メニューは千百円でございました。本日メニュー改定の前後でして、システムが更新されておらず、千二百円が表示されておりました。お客様のおっしゃる千百円が正しい価格でございます。重ねて申し訳ございません。", english: "You're right, menu showed 1,100 yen. We had a menu revision today; the system wasn't updated and showed 1,200 yen. The 1,100 yen you mentioned is the correct price. Again I apologize." },
+    { speaker: "チャウ", japanese: "ご確認、ありがとうございます。それでは、千百円でお願いいたします。それから、領収書もいただけますでしょうか。", english: "Thank you for verifying. Then 1,100 yen please. Also, may I have a receipt?" },
+    { speaker: "店員", japanese: "もちろんでございます。本日は二度もご迷惑をおかけしてしまいまして、誠に申し訳ございませんでした。次回ご来店時にお使いいただけるサービス券もお渡しいたしますので、何卒ご活用いただければと存じます。", english: "Of course. We caused you trouble twice today — I'm truly sorry. I'll also give you a service voucher for your next visit; please use it." },
+    { speaker: "チャウ", japanese: "ご丁寧なご対応、誠にありがとうございました。お料理も美味しくいただきました。また伺わせていただきます。", english: "Thank you sincerely for the courteous handling. The food was delicious. I'll come again." }
+  ],
+  roleplay_prompts: [
+    "Đóng vai chính bạn ở quán cơm Tokyo, được mang nhầm món. Hãy POLITELY raise issue — KHÔNG immediately demand new dish. Cụm: chotto, kakunin shite itadakemasu deshou ka (xin được xác minh chút). Frame như 'maybe tôi nhầm', không 'restaurant sai'.",
+    "Staff xác nhận bạn đúng và xin lỗi lần thứ ba. Hãy KHÔNG over-reassure (tonde mo nai = dismissive). Một lần response polite đủ: o-isogashii tokoro o-tesuu wo o-kake shite, koehrazu sumimasen. Maintain dignity for staff.",
+    "Khi check bill, có sai 100 yen (charge nhiều hơn). Hãy KHÔNG ignore vì small amount — Nhật appreciate accuracy. Cụm: shitsurei desu ga, mainyu hyou ni hyaku-en hikui kakaku ga hyouji sarete imashita ga, kakunin itadakemasu deshou ka (xin lỗi nhưng menu show giá thấp hơn 100 yen, xác minh được không?)."
+  ],
+  register_notes: "Restaurant complaint Nhật khác hotel/business — staff is service-tier, register hơi nhẹ hơn. Bốn patterns: (1) FRAME AS QUESTION: KHÔNG declare error. Frame như 'I might be wrong, can we check'. Cụm: chigatte iru you na ki ga shimasu (em cảm thấy có thể khác). Soft frame = staff không defensive. (2) THANK FOR VERIFICATION: ngay cả khi staff confirms YOUR error (you ordered wrong), thank verification: kakunin itadaki, arigatou gozaimasu. KHÔNG complain that they took time. (3) ACCEPT APOLOGY GRACEFULLY: staff Nhật apologize MULTIPLE TIMES. Một lần response đủ. tonde mo gozaimasen cộng smile. Đừng repeat 'no problem' nhiều lần — staff feel awkward. (4) LEAVE GOOD: nếu staff offer goodwill (drink free, voucher), accept GRACEFULLY. Decline = insult. Cụm: o-kotoba ni amaeて, dou itashimashite (xin nhận lời mời). Future visits welcomed. // TODO native review — saidai-kau (再確認) phrasing — alternative kakunin wo o-negai shimasu mềm hơn for verification request; mainyu kaitei (menu revision) is restaurant-specific timing.",
+  idiom_glosses: [
+    { idiom: "雨降って地固まる", literal: "Mưa rơi đất rắn lại", meaning: "Sau khó khăn, mọi thứ vững hơn — phù hợp khi restaurant handle complaint with grace, frame interaction như relationship-building.", example: "雨降って地固まると申しますが、本日のご対応で、より良いお店だと感じました。" },
+    { idiom: "お互い様", literal: "Cả hai bên cùng vậy", meaning: "Mutual — khi cả 2 bên có thể nhầm. Frame restaurant complaint không adversarial.", example: "お互い様、人間ですから誰でも間違えます。" },
+    { idiom: "急がば回れ", literal: "Vội thì đi vòng", meaning: "Vội vã hỏng việc — phù hợp khi cho restaurant time để fix without rush.", example: "急がば回れ、慎重にご確認いただいて構いません。" },
+    { idiom: "おもてなし", literal: "Hospitality", meaning: "Khái niệm hospitality Nhật — proactive customer care. Khi staff offer drink free as goodwill, đó là omotenashi spirit.", example: "おもてなしの心、ありがとうございます。" }
+  ],
+  cultural_notes_vi: "Restaurant complaint Nhật khác phương Tây ở 5 điểm. (1) STAFF EMPOWERMENT: server Nhật có authority decide rebuild dish, offer free drinks, voucher. KHÔNG cần escalate to manager cho most issues. Họ resolve in seconds. (2) FACE-SAVING: complaint resolved primary trong cùng cuộc nói. KHÔNG public spectacle. Restaurant won't shame you, you don't shame them. Mutual respect throughout. (3) NO TIPPING: KHÔNG tip extra để 'make up' for trouble. Staff không expect — illegal in many establishments. Thank you words enough. Service charge (10 phần trăm) at high-end restaurants automatic, không additional. (4) APOLOGY DEPTH: server xin lỗi multiple times for any mistake — including if YOU ordered wrong. Don't be confused — họ taking responsibility for any confusion. Accept once đủ. (5) GOODWILL OFFERS: nhiều restaurant offer voucher/free drink for next visit khi mistake happens. Decline = insult. Accept với gratitude — và do return. Restaurant remember repeat customers. Khác biệt với VN: ở VN restaurant complaint có thể loud/public if not resolved; ở Nhật, soft and resolved trong cuộc nói đầu. Một quiet polite request ở Nhật = same outcome như loud demand ở VN, with much better feeling for both sides. Mẹo: payment phương thức Nhật thường: cash hoặc card, KHÔNG cash + card splits. Một số izakaya ngừng cards entirely — bring cash backup. Receipt 領収書 critical for business expense — nếu ko có, ask shouhi-zei (consumption tax) breakdown explicitly. Check bill carefully BEFORE pay — một số khá strict about no refunds after pay. Nếu chần chừ, ask kakunin sasete itadakitai (xin được verify) trước khi commit.",
+  tip_advice_vi: "Khi vào restaurant: confirm seat/reservation. Wait staff bring menu. Nếu có English menu, ask: ego no menyuu mo arimasu ka. Nhiều quán có. Khi order: speak slowly và clearly, point at menu nếu cần. Confirm key items: dorinku wa nan ni nasaimasu ka (drink choice?). Asparagus or piclkles? Spice level? KHÔNG assume — ask. Khi food arrives: BRIEF check before eating. Right dish? Right portions? Nếu wrong, raise issue NGAY (within 1-2 phút of arrival, before eating much). Easier to remake then. Nếu eaten significant portion before noticing wrong: still raise but accept partial resolution (some restaurants charge partial, especially if eaten>50 phần trăm). Khi raising issue: catch waiter's attention — KHÔNG snap fingers, KHÔNG yell. Light eye contact + raise hand slightly. Server come over within 30 giây. Frame issue softly: chotto, kakunin shite itadakemasu deshou ka (could we verify a bit). Show item, explain difference. Nếu có receipt of order, point. Nếu staff confirm error: thank them, accept their solution. Most will offer remake (10 phút wait) + free drink. Accept gracefully. Nếu staff insist YOU were wrong: nếu unsure, accept và pay. Nếu sure, calmly explain again. KHÔNG escalate to shouting. Nếu still disputed, ask for manager: tencho-san to o-hanashi sasete itadakitai (would like to speak with store manager). Tencho can override decision. Bill check: BEFORE payment, calculate roughly từ menu. Common errors: wrong item count, wrong price, missing discount. If error found, raise politely as in dialogue. Verify menu price, show on phone if needed. Nếu paid và later realize error: return within 30 phút if possible. Sau khi rời, harder to claim. Always keep receipt! Long-term: regular customer benefits in Japan are real. Visit same restaurant 3-5 times within month, staff begin remember you, give better service, sometimes free dish. Friendship economy. Mẹo cuối: nếu allergic / restriction (vegetarian, no pork, gluten-free), TELL UPFRONT before ordering. Cụm: peniciilin ni areriguii ga arimasu (penicillin allergy) hoặc niku wa tabemasen (I don't eat meat). Nhật chefs accommodate when informed early; surprise mid-meal hard to fix.",
+  exercises: [
+    { type: "fill-blank", question: "注文した料理と少し違うようでして、ご___いただけますでしょうか。", answer: "確認" },
+    { type: "matching", instruction: "Ghép cụm với function.", pairs: [
+      { japanese: "確認させていただきたい", english: "frame complaint as verification (mềm)" },
+      { japanese: "メニュー表に書かれていた", english: "reference menu evidence cho bill dispute" },
+      { japanese: "作り直してまいります", english: "staff response: will remake dish" },
+      { japanese: "サービス券", english: "voucher restaurant offer như goodwill" }
+    ] },
+    { type: "translation", vietnamese: "Trên menu hiển thị giá là 1100 yen, xin được kiểm tra lại.", japanese: "メニュー表に千百円と表示されておりましたが、再度ご確認いただけますでしょうか。" }
+  ]
+},
+{
+  id: 81,
+  title: "Taxi dispute — wrong route, fare disagreement",
+  title_vi: "Tranh chấp taxi — đi sai đường, không đồng ý giá cước",
+  title_en: "Taxi dispute — wrong route, fare disagreement",
+  category: "fluency",
+  level: "B2",
+  vocabulary: [
+    { japanese: "タクシー", english: "taxi" },
+    { japanese: "運転手 (うんてんしゅ)", english: "driver" },
+    { japanese: "目的地 (もくてきち)", english: "destination" },
+    { japanese: "経路 (けいろ)", english: "route" },
+    { japanese: "回り道 (まわりみち)", english: "detour / longer route" },
+    { japanese: "メーター", english: "meter (taxi fare meter)" },
+    { japanese: "料金 (りょうきん)", english: "fare" },
+    { japanese: "領収書 (りょうしゅうしょ)", english: "receipt" },
+    { japanese: "苦情 (くじょう)", english: "complaint (formal)" },
+    { japanese: "タクシーセンター", english: "taxi industry oversight center" }
+  ],
+  examples: [
+    { japanese: "失礼ですが、この経路は少し遠回りではないでしょうか。", english: "Excuse me, isn't this route a bit of a detour?" },
+    { japanese: "通常の料金とは少し異なるように思いますが、確認させていただけますでしょうか。", english: "It seems slightly different from the usual fare — could we verify?" },
+    { japanese: "領収書をいただきたく存じます。", english: "I'd humbly like a receipt." },
+    { japanese: "タクシーセンターに問い合わせをさせていただきます。", english: "I'll inquire with the taxi center." },
+    { japanese: "ご対応、よろしくお願いいたします。", english: "I respectfully ask for your handling." }
+  ],
+  dialogue: [
+    { speaker: "チャウ", japanese: "すみません、運転手さん、この経路は通常より少し遠回りのように思うのですが。", english: "Excuse me, driver, this route seems a bit longer than usual." },
+    { speaker: "運転手", japanese: "渋滞を避けるため、こちらの経路を選びました。", english: "To avoid traffic, I chose this route." },
+    { speaker: "チャウ", japanese: "なるほど。料金は通常と同じくらいでしょうか。", english: "I see. Is the fare similar to normal?" },
+    { speaker: "運転手", japanese: "メーター通りでございます。", english: "As per the meter." }
+  ],
+  dialogue_long: [
+    { speaker: "チャウ", japanese: "(車内、目的地まで残り十分) すみません、運転手さん、ちょっと伺ってもよろしいでしょうか。", english: "(in car, 10 min from destination) Excuse me, driver, may I ask something?" },
+    { speaker: "運転手", japanese: "はい、何でしょうか。", english: "Yes, what is it?" },
+    { speaker: "チャウ", japanese: "今の経路ですが、グーグルマップで確認しましたところ、通常の経路より少し遠回りになっているようでして、ご確認いただけますでしょうか。", english: "Regarding the current route — when I checked Google Maps, it seems a bit longer than usual. Could we verify?" },
+    { speaker: "運転手", japanese: "ええ、これは私の判断で選んだ経路です。今、首都高に渋滞がありまして、こちらの方が早く着くと思いまして。", english: "Yes, this is the route I chose. There's traffic on the expressway, and I thought this would arrive faster." },
+    { speaker: "チャウ", japanese: "そうでございましたか。承知いたしました。お聞きしたいのですが、通常の料金よりどのくらい上がりますでしょうか。", english: "I see, understood. I'd like to ask — about how much more than the usual fare?" },
+    { speaker: "運転手", japanese: "正直に申し上げますと、約三百円程度多くなる可能性がございます。ただし、所要時間は十分以上短くなるかと存じます。", english: "Honestly, about 300 yen possibly more. However, travel time should be more than 10 minutes shorter." },
+    { speaker: "チャウ", japanese: "ありがとうございます。次回からは、最初に経路をご相談いただけますと、ありがたく存じます。", english: "Thank you. Going forward, if you could consult on the route at the start, I'd appreciate it." },
+    { speaker: "運転手", japanese: "おっしゃる通りでございます。私の配慮不足でした。お客様にご相談する前に判断してしまいました。申し訳ございません。", english: "You're right. My consideration was lacking. I made the decision without consulting you. I apologize." },
+    { speaker: "チャウ", japanese: "(目的地着、料金二千八百円) ありがとうございます。料金の内訳を確認させていただいてもよろしいでしょうか。", english: "(arrived at destination, fare 2,800 yen) Thank you. May I verify the fare breakdown?" },
+    { speaker: "運転手", japanese: "はい、メーター料金は二千八百円です。深夜料金二割増しの時間帯ではないので、純粋にメーター通りでございます。", english: "Yes, meter fare is 2,800 yen. Not late-night surcharge time, so purely as meter." },
+    { speaker: "チャウ", japanese: "通常の料金は二千五百円程度と伺っていたのですが、今回は遠回りの経路ですので、その差額三百円分は私が負担すべきとは思えません。如何でございましょうか。", english: "I heard the usual fare is around 2,500 yen, and since this was a detour route, I don't think I should bear the 300 yen difference. What do you think?" },
+    { speaker: "運転手", japanese: "おっしゃる通りでございます。今回、私の判断ミスでお客様にご負担をおかけしてしまいました。差額三百円は私が負担いたしますので、二千五百円でお願いいたします。領収書もお出しいたします。", english: "You're right. My judgment error caused you a burden. I'll cover the 300 yen difference; please pay 2,500 yen. I'll issue a receipt as well." },
+    { speaker: "チャウ", japanese: "ご対応、誠にありがとうございます。今回の経験を機に、次回はより良いサービスをお願いできるかと存じます。", english: "Thank you sincerely for the handling. With this experience, I trust next time will have better service." },
+    { speaker: "運転手", japanese: "雨降って地固まるとも申します。お客様のご指摘で、自分の業務を見直す機会になりました。今後ともよろしくお願いいたします。", english: "As they say after rain the ground hardens. Your feedback gave me a chance to review my work. Looking forward to next time." },
+    { speaker: "チャウ", japanese: "こちらこそ、ご丁寧な対応に感謝申し上げます。失礼いたします。", english: "On the contrary, I appreciate your courteous handling. Excusing myself." }
+  ],
+  roleplay_prompts: [
+    "Trên xe taxi Nhật, bạn nhận thấy driver đi đường vòng. Hãy KHÔNG accuse — frame như 'verify together'. Cụm: kakunin sasete itadakemasen deshou ka cộng show Google Maps trên phone. Driver có thể có lý do hợp lý (avoid construction, traffic).",
+    "Driver giải thích lý do detour nhưng bạn vẫn nghĩ extra fare unfair. Hãy negotiate firm-but-polite: KHÔNG demand discount, frame như shared concern. Cụm: sashitsukae nakereba, sagaku no go-soudan wo sasete itadakitaku zonjimasu (nếu không phiền, em xin tham vấn về chênh lệch).",
+    "Driver xin lỗi và agree to absorb 300 yen difference. Hãy accept gracefully — KHÔNG over-thank (sounds patronizing) hoặc rush. Cụm: go-taiou, makoto ni arigatou gozaimasu cộng nhận change cộng nhận receipt. Maintain mutual respect."
+  ],
+  register_notes: "Taxi dispute Nhật khác hotel/restaurant ở 1 critical point: driver KHÔNG là service-tier như waiter — họ là independent professional. Register: firm-but-polite, KHÔNG over-deferential. Bốn patterns: (1) RAISE ISSUE EARLY: nếu thấy detour, raise WITHIN 5 phút of noticing — KHÔNG wait until destination. Mid-route fix possible, post-arrival hard. (2) FRAME AS COLLABORATION: kakunin sasete itadakemasen deshou ka (xin được kiểm tra). Show evidence (Google Maps). KHÔNG accuse. Driver might have legit reason. (3) NEGOTIATE LIKE EQUALS: KHÔNG ask discount kiểu pleading — request fair settlement: o-kyaku-sama no go-futan ni naru bun wa, watakushi ga futanru beki dato omoimasu (em nghĩ phần burden của khách thì khách không nên trả). Frame logic, không emotion. (4) TAXI CENTER ESCALATION: nếu driver refuse fairness, mention タクシーセンター (Taxi Center) — Tokyo Hire-Taxi Association. Driver lose license sau multiple complaints. Mention this politely, không threaten. // TODO native review — sagaku (差額) phrasing — alternative kingaku no chigai (different amount) more casual; some passengers prefer mawa-michi-bun (detour-portion) to specify what's disputed.",
+  idiom_glosses: [
+    { idiom: "雨降って地固まる", literal: "Mưa rơi đất rắn lại", meaning: "Sau khó khăn, mọi thứ vững hơn — phù hợp khi driver accept feedback gracefully, frame như learning opportunity for them.", example: "雨降って地固まると申します。今回の経験で、より良いサービスができるようになります。" },
+    { idiom: "急がば回れ", literal: "Vội thì đi vòng", meaning: "Vội vã hỏng việc — ironic context: driver chose detour to be 'faster', nhưng confused customer. Lesson: communicate first.", example: "急がば回れ、最初に経路をご相談いただければ、お互い明確でした。" },
+    { idiom: "お互い様", literal: "Cả hai bên cùng vậy", meaning: "Mutual — frame dispute như shared learning. Both passenger and driver có expectations về clear comms.", example: "お互い様で、コミュニケーションが大切でございます。" },
+    { idiom: "備えあれば憂いなし", literal: "Có chuẩn bị thì không lo", meaning: "Better safe than sorry — phù hợp lesson sau dispute: confirm route + price BEFORE departure.", example: "備えあれば憂いなし、次回は乗車前に経路と料金を確認いたします。" }
+  ],
+  cultural_notes_vi: "Taxi disputes Nhật khác phương Tây ở 5 điểm. (1) METER LAW: Tokyo taxi must use meter except long-distance fixed routes. KHÔNG meter = illegal. Always confirm meter at start: meeta de o-negai shimasu (please use meter). (2) BASIC ROUTE EXPECTATION: driver expected to take 'reasonable shortest route'. Detour OK only if (a) traffic genuine, (b) construction, (c) PASSENGER ASKED. Without reason, detour = bad service possible refund. (3) RECEIPT MANDATORY: 領収書 (receipt) required when asked. Driver MUST provide. Save it — number on receipt is taxi company ID for complaints. (4) TAXI CENTER OVERSIGHT: Tokyo Hire-Taxi Association investigates complaints. Driver fault after 3-5 complaints can lose license. Companies discipline drivers based on complaints. (5) NIGHT SURCHARGE: 22:00-05:00 = 20 phần trăm extra. Built into meter. Confirm time on receipt — discrepancy = error. Khác biệt với VN: ở VN taxi có thể negotiate fare freely; ở Nhật, meter là law. KHÔNG offer cash discount — driver may decline if it violates meter. Negotiate trên LEGITIMATE grounds (detour, error) chỉ. Mẹo: airport taxi có flat rate options (Narita-Tokyo: ~24,000 yen flat). Confirm flat OR meter at start. Train là cheaper for solo travel. Foreigners often defaulted to taxi — train often better. Long-term: app-based taxi (GO, S.RIDE) eliminate route disputes — fare estimated upfront, route shown trên app. Pay digital, automatic receipt. Recommend over street-hail taxi for foreigners. Mẹo cuối: dù dispute resolved positively, gửi feedback to taxi company qua online form (most major companies — Nihon Kotsu, Daiwa Taxi). Companies use feedback for driver training. Constructive feedback > revenge.",
+  tip_advice_vi: "Trước boarding: take photo of taxi ID number (in front, license plate). Nếu app-based, screenshot booking. Confirm destination với driver: tên cụ thể + address. Nếu hotel name, OK. Nếu obscure address, write/show kanji on phone. Confirm meter usage: meeta de o-negai shimasu. Watch driver hit meter button. Nếu driver hesitate or quote flat rate (no meter), DECLINE và pick another taxi. During ride: monitor route on Google Maps periodically (every 5 phút). Nếu detour suspected, photo current location + planned route on phone. Khi raise issue: do it CALMLY. Driver mid-driving không want argue, but easier to discuss now than at destination. Cụm: kakunin sasete itadakemasen deshou ka cộng show map. Listen to explanation. Nếu legit (construction, traffic), OK accept. Nếu vague hoặc evasive, note for end-of-ride. Khi arrived: BEFORE pay, verify total: meter reading correct, no surcharge surprises. Nếu dispute total: state clearly your view, listen to driver. Most drivers Nhật resolve fairly. Nếu refuse to budge: PAY full amount (KHÔNG escalate at scene), get receipt, take photo of taxi info. Sau exit: file complaint với taxi company within 24 giờ. Required info: receipt, photo, time of ride, departure/destination, dispute description. Most companies have online form (English available cho major like Nihon Kotsu). Within 7-14 ngày, company contact bạn với resolution. Often partial refund for legit complaint. Tokyo Taxi Center (タクシーセンター) escalation if company unresponsive: 03-3648-0300, English support available. They mediate, can fine driver. Long-term: register Japan Taxi app (free) — eliminates most disputes via fixed-route fare estimation. Receipts auto-generated. Driver rating system pushes better service. Mẹo nhỏ: Japanese taxi drivers thường older (50-65), conservative, value respect. Một quick polite greeting (yoroshiku onegai shimasu) at boarding + thank-you (arigatou gozaimashita) at exit go a long way. Even with dispute, maintain dignity. Aggressive customer creates aggressive driver. Calm professional customer creates calm professional driver. Default to calm.",
+  exercises: [
+    { type: "fill-blank", question: "失礼ですが、この経路は少し___ではないでしょうか。", answer: "遠回り" },
+    { type: "matching", instruction: "Ghép cụm với function.", pairs: [
+      { japanese: "メーターでお願いします", english: "request meter usage at boarding" },
+      { japanese: "回り道", english: "detour route (longer than usual)" },
+      { japanese: "差額", english: "fare difference (dispute amount)" },
+      { japanese: "タクシーセンター", english: "taxi industry oversight (escalation)" }
+    ] },
+    { type: "translation", vietnamese: "Phần chênh lệch do đi đường vòng, em không nên trả.", japanese: "遠回りの経路ですので、その差額分は私が負担すべきとは思えません。" }
+  ]
 }
 ];
 export default lessons;
