@@ -26,6 +26,13 @@ type NormalizedExercise =
   | { kind: "matching"; instruction?: string; pairs: Array<{ a: string; b: string }> }
   | { kind: "translation"; vi: string; native: string; romanization?: string };
 
+type NormalizedIdiomGloss = {
+  idiom: string;
+  literal: string;
+  meaning: string;
+  example: string;
+};
+
 type NormalizedLesson = {
   id: number;
   level: CefrLevel;
@@ -57,6 +64,18 @@ type NormalizedLesson = {
   culturalNotesVi?: string;
   tipAdviceVi?: string;
   grammar?: Array<{ point: string; explanation: string }>;
+  // B2 fields — forward-compatible passthrough; raw data does not yet have these.
+  // Cast access via (lesson as any) until the per-language Lesson types pick them up.
+  dialogueLong?: Array<{
+    speaker: string;
+    native: string;
+    romanization?: string;
+    en?: string;
+    vi?: string;
+  }>;
+  roleplayPrompts?: string[];
+  registerNotes?: string;
+  idiomGlosses?: NormalizedIdiomGloss[];
 };
 
 // ────────────────────────────────────────────────────────────────────────
@@ -85,6 +104,20 @@ export function normalizeJapaneseLesson(
     })),
     exercises: lesson.exercises?.map(normalizeJapaneseExercise),
     grammar: lesson.grammar,
+    dialogueLong: (lesson as any).dialogue_long?.map((line: any) => ({
+      speaker: line.speaker,
+      native: line.japanese,
+      en: line.english,
+      vi: line.vi,
+    })),
+    roleplayPrompts: (lesson as any).roleplay_prompts,
+    registerNotes: (lesson as any).register_notes,
+    idiomGlosses: (lesson as any).idiom_glosses?.map((g: any) => ({
+      idiom: g.idiom,
+      literal: g.literal,
+      meaning: g.meaning,
+      example: g.example,
+    })),
   };
 }
 
