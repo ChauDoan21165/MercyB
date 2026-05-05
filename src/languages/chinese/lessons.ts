@@ -3626,6 +3626,1094 @@ level: "B2",
         pinyin: "Wǒ de yán jiū xìng qù jí zhōng zài Yuè nán yǔ-zhōng wén kuà yǔ yán qiān yí xué xí. Wǒ huì yǐ qiè ér bù shě de jīng shén, zài zhè tiáo xué shù dào lù shàng yī yǐ guàn zhī."
       }
     ]
+  },
+  {
+    id: 62,
+    level: "B2",
+    category: "cultural_communication",
+    title: "中国老板来越南视察",
+    pinyin: "zhōng guó lǎo bǎn lái yuè nán shì chá",
+    topic: "Chinese boss visits Vietnam office",
+    title_vi: "Sếp Trung Quốc đến thăm văn phòng Việt Nam",
+    title_en: "Chinese boss visits Vietnam office",
+    sentences: [
+      {
+        chinese: "李总, 您一路辛苦了, 欢迎您来河内。",
+        pinyin: "Lǐ zǒng, nín yī lù xīnkǔ le, huānyíng nín lái Hénèi.",
+        english: "Director Li, you've had a long journey — welcome to Hanoi.",
+        vi: "Tổng Lý, anh đi đường vất vả rồi, hoan nghênh anh đến Hà Nội.",
+        pronunciation_focus: ["李总 → Lǐ zǒng (họ + 总 — chức danh tổng giám đốc)", "一路辛苦 → yī lù xīnkǔ (cụm chuẩn đón khách đi xa)", "欢迎 → huānyíng (hoan nghênh)", "河内 → Hénèi"]
+      },
+      {
+        chinese: "我已经为您安排了酒店, 离办公室步行五分钟。",
+        pinyin: "Wǒ yǐjīng wèi nín ānpái le jiǔdiàn, lí bàngōngshì bùxíng wǔ fēnzhōng.",
+        english: "I've already arranged a hotel for you, five minutes' walk from the office.",
+        vi: "Em đã sắp xếp khách sạn cho anh, cách văn phòng đi bộ năm phút.",
+        pronunciation_focus: ["安排 → ānpái (sắp xếp)", "酒店 → jiǔdiàn (khách sạn — formal hơn 旅馆)", "步行 → bùxíng (đi bộ)", "办公室 → bàngōngshì"]
+      },
+      {
+        chinese: "今天晚上我们订了一家越南菜馆, 让您体验地道的越南菜。",
+        pinyin: "Jīntiān wǎnshàng wǒmen dìng le yī jiā Yuènán cài guǎn, ràng nín tǐyàn dìdao de Yuènán cài.",
+        english: "Tonight we've booked a Vietnamese restaurant for you to experience authentic Vietnamese cuisine.",
+        vi: "Tối nay bọn em đã đặt một nhà hàng Việt để anh trải nghiệm món ăn Việt chính gốc.",
+        pronunciation_focus: ["地道 → dìdao (chính gốc/đúng kiểu)", "体验 → tǐyàn (trải nghiệm)", "菜馆 → cài guǎn (nhà hàng)", "今天晚上 → jīntiān wǎnshàng"]
+      },
+      {
+        chinese: "如果您有什么需要, 随时联系我, 我手机不关机。",
+        pinyin: "Rúguǒ nín yǒu shénme xūyào, suíshí liánxì wǒ, wǒ shǒujī bù guānjī.",
+        english: "If you need anything, contact me anytime — my phone stays on.",
+        vi: "Nếu anh cần gì, cứ liên hệ em bất cứ lúc nào, điện thoại em không tắt máy.",
+        pronunciation_focus: ["随时 → suíshí (bất cứ lúc nào)", "联系 → liánxì (liên hệ)", "手机 → shǒujī (điện thoại)", "关机 → guānjī (tắt máy)"]
+      },
+      {
+        chinese: "希望您这次访问越南办公室一切顺利, 宾至如归。",
+        pinyin: "Xīwàng nín zhè cì fǎngwèn Yuènán bàngōngshì yīqiè shùnlì, bīn zhì rú guī.",
+        english: "I hope your visit to the Vietnam office goes smoothly and you feel at home.",
+        vi: "Mong chuyến thăm văn phòng Việt Nam của anh thuận lợi mọi mặt, như ở nhà.",
+        pronunciation_focus: ["访问 → fǎngwèn (thăm/viếng)", "宾至如归 → bīn zhì rú guī (idiom 4 chữ: khách đến như về nhà)", "顺利 → shùnlì (thuận lợi)", "一切 → yīqiè"]
+      }
+    ],
+    vocab: [
+      { chinese: "视察", pinyin: "shì chá", english: "to inspect (formal visit)", vi: "thị sát / thăm kiểm tra" },
+      { chinese: "接待", pinyin: "jiē dài", english: "to receive (guests)", vi: "tiếp đón" },
+      { chinese: "一路辛苦", pinyin: "yī lù xīn kǔ", english: "long journey (greeting)", vi: "vất vả đường xa" },
+      { chinese: "酒店", pinyin: "jiǔ diàn", english: "hotel", vi: "khách sạn" },
+      { chinese: "行程", pinyin: "xíng chéng", english: "itinerary", vi: "lịch trình" },
+      { chinese: "陪同", pinyin: "péi tóng", english: "to accompany", vi: "tháp tùng" },
+      { chinese: "翻译", pinyin: "fān yì", english: "translator / to translate", vi: "phiên dịch" },
+      { chinese: "宾至如归", pinyin: "bīn zhì rú guī", english: "guests feel at home (4-char idiom)", vi: "khách đến như về nhà" },
+      { chinese: "入乡随俗", pinyin: "rù xiāng suí sú", english: "when in Rome (4-char idiom)", vi: "nhập gia tùy tục" },
+      { chinese: "远来是客", pinyin: "yuǎn lái shì kè", english: "those who come from afar are guests", vi: "khách phương xa là khách quý" }
+    ],
+    dialogue: [
+      { speaker: "黎", chinese: "李总, 欢迎您来河内! 一路辛苦了。", pinyin: "Lǐ zǒng, huānyíng nín lái Hénèi! Yī lù xīnkǔ le.", english: "Director Li, welcome to Hanoi! Long journey, huh.", vi: "Tổng Lý, hoan nghênh anh đến Hà Nội! Đi đường vất vả rồi." },
+      { speaker: "李总", chinese: "谢谢小黎, 终于到了。河内比我想象中还要热闹。", pinyin: "Xièxie Xiǎo Lí, zhōngyú dào le. Hénèi bǐ wǒ xiǎngxiàng zhōng hái yào rènao.", english: "Thanks Little Le, finally here. Hanoi is even livelier than I imagined.", vi: "Cảm ơn Tiểu Lê, cuối cùng đến rồi. Hà Nội còn náo nhiệt hơn anh tưởng." },
+      { speaker: "黎", chinese: "您先到酒店休息, 行李我让司机送过去。", pinyin: "Nín xiān dào jiǔdiàn xiūxi, xínglǐ wǒ ràng sījī sòng guòqù.", english: "Please rest at the hotel first; I'll have the driver bring your luggage.", vi: "Anh đến khách sạn nghỉ trước, hành lý em bảo lái xe đưa qua." },
+      { speaker: "李总", chinese: "好, 谢谢你的安排。今晚的安排是什么?", pinyin: "Hǎo, xièxie nǐ de ānpái. Jīn wǎn de ānpái shì shénme?", english: "Good, thanks for arranging. What's planned for tonight?", vi: "Được, cảm ơn em đã sắp xếp. Tối nay có chương trình gì?" }
+    ],
+    dialogue_long: [
+      { speaker: "黎", chinese: "李总! 这边请, 我已经在出口等您了。一路辛苦了!", pinyin: "Lǐ zǒng! Zhè biān qǐng, wǒ yǐjīng zài chūkǒu děng nín le. Yī lù xīnkǔ le!", english: "Director Li! This way please, I've been waiting at the exit. Long journey!", vi: "Tổng Lý! Mời anh đi lối này, em đã đợi anh ở lối ra. Đi đường vất vả rồi!" },
+      { speaker: "李总", chinese: "小黎, 有劳你来接机。河内的天气比我想象中凉爽。", pinyin: "Xiǎo Lí, yǒuláo nǐ lái jiējī. Hénèi de tiānqì bǐ wǒ xiǎngxiàng zhōng liángshuǎng.", english: "Little Le, sorry to trouble you to pick me up. Hanoi's weather is cooler than I imagined.", vi: "Tiểu Lê, làm phiền em ra đón. Thời tiết Hà Nội mát hơn anh tưởng." },
+      { speaker: "黎", chinese: "现在是十一月, 河内已经入秋了, 气温二十多度。司机已经在停车场等我们。", pinyin: "Xiànzài shì shíyī yuè, Hénèi yǐjīng rùqiū le, qìwēn èrshí duō dù. Sījī yǐjīng zài tíngchēchǎng děng wǒmen.", english: "It's November now, Hanoi has entered autumn, around 20-something degrees. Driver's already waiting at the parking lot.", vi: "Tháng 11 rồi, Hà Nội đã vào thu, nhiệt độ hơn 20 độ. Lái xe đã đợi mình ở bãi đậu." },
+      { speaker: "李总", chinese: "好的。这次我打算待五天, 重点看一下我们越南办公室的运营。", pinyin: "Hǎo de. Zhè cì wǒ dǎsuàn dāi wǔ tiān, zhòngdiǎn kàn yīxià wǒmen Yuènán bàngōngshì de yùnyíng.", english: "Good. This time I plan to stay five days, focusing on our Vietnam office operations.", vi: "Được. Lần này anh định ở năm ngày, trọng tâm xem vận hành văn phòng Việt Nam." },
+      { speaker: "黎", chinese: "我已经把行程发到您微信。明天上午十点办公室开欢迎会, 下午跟客户见面。", pinyin: "Wǒ yǐjīng bǎ xíngchéng fā dào nín wēixìn. Míngtiān shàngwǔ shí diǎn bàngōngshì kāi huānyíng huì, xiàwǔ gēn kèhù jiànmiàn.", english: "I've sent the itinerary to your WeChat. Tomorrow 10am welcome meeting at the office, afternoon meet clients.", vi: "Em đã gửi lịch trình vào WeChat của anh. Mai 10 giờ sáng họp chào mừng tại văn phòng, chiều gặp khách hàng." },
+      { speaker: "李总", chinese: "客户是哪几位?", pinyin: "Kèhù shì nǎ jǐ wèi?", english: "Which clients?", vi: "Khách hàng là những vị nào?" },
+      { speaker: "黎", chinese: "Vingroup的范总和VNPay的陈总。两位都很期待和您见面。", pinyin: "Vingroup de Fàn zǒng hé VNPay de Chén zǒng. Liǎng wèi dōu hěn qídài hé nín jiànmiàn.", english: "Director Pham of Vingroup and Director Tran of VNPay. Both are looking forward to meeting you.", vi: "Tổng Phạm của Vingroup và Tổng Trần của VNPay. Cả hai đều rất mong gặp anh." },
+      { speaker: "李总", chinese: "好。今天晚上是否有安排?", pinyin: "Hǎo. Jīntiān wǎnshàng shìfǒu yǒu ānpái?", english: "Good. Anything planned for tonight?", vi: "Được. Tối nay có lịch không?" },
+      { speaker: "黎", chinese: "今晚我们订了一家正宗的越南河粉店, 让您体验地道的越南菜。如果您累了, 我们也可以改去酒店餐厅。", pinyin: "Jīn wǎn wǒmen dìng le yī jiā zhèngzōng de Yuènán héfěn diàn, ràng nín tǐyàn dìdao de Yuènán cài. Rúguǒ nín lèi le, wǒmen yě kěyǐ gǎi qù jiǔdiàn cāntīng.", english: "Tonight we've booked an authentic pho restaurant for you to experience real Vietnamese food. If you're tired, we can switch to the hotel restaurant.", vi: "Tối nay bọn em đã đặt quán phở Việt chính gốc để anh trải nghiệm món Việt thật. Nếu anh mệt, có thể đổi sang nhà hàng khách sạn." },
+      { speaker: "李总", chinese: "不累不累, 河粉听起来不错! 中国人来越南就要吃越南河粉嘛。入乡随俗。", pinyin: "Bù lèi bù lèi, héfěn tīng qǐlái bùcuò! Zhōngguó rén lái Yuènán jiùyào chī Yuènán héfěn ma. Rù xiāng suí sú.", english: "Not tired at all, pho sounds great! Chinese coming to Vietnam should eat Vietnamese pho. When in Rome.", vi: "Không mệt, không mệt, phở nghe hay đấy! Người Trung đến Việt Nam phải ăn phở Việt chứ. Nhập gia tùy tục mà." },
+      { speaker: "黎", chinese: "您说得对。河粉是越南最有名的菜, 您一定要尝。喝点鱼露和柠檬水, 越南人就是这样吃的。", pinyin: "Nín shuō de duì. Héfěn shì Yuènán zuì yǒumíng de cài, nín yīdìng yào cháng. Hē diǎn yúlù hé níngméng shuǐ, Yuènán rén jiùshì zhèyàng chī de.", english: "You're right. Pho is Vietnam's most famous dish — you must try it. With fish sauce and lime juice, that's how Vietnamese eat it.", vi: "Anh nói đúng. Phở là món nổi tiếng nhất Việt Nam, anh phải nếm. Thêm chút nước mắm và nước chanh, người Việt ăn thế đấy." },
+      { speaker: "李总", chinese: "鱼露? 我听说过, 第一次尝试。希望我胃口能适应。", pinyin: "Yúlù? Wǒ tīngshuō guò, dì yī cì chángshì. Xīwàng wǒ wèikǒu néng shìyìng.", english: "Fish sauce? I've heard of it, first time trying. Hope my stomach can adapt.", vi: "Nước mắm? Anh nghe rồi, lần đầu thử. Hy vọng dạ dày anh thích nghi được." },
+      { speaker: "黎", chinese: "您放心, 我会让餐厅做得清淡一些。如果不习惯, 我们再点别的。", pinyin: "Nín fàngxīn, wǒ huì ràng cāntīng zuò de qīngdàn yīxiē. Rúguǒ bù xíguàn, wǒmen zài diǎn biéde.", english: "Don't worry, I'll have the restaurant make it lighter. If you can't adapt, we'll order something else.", vi: "Anh yên tâm, em sẽ bảo nhà hàng làm nhẹ hơn. Nếu không quen, mình gọi món khác." },
+      { speaker: "李总", chinese: "你想得真周到。明天看完办公室之后, 后天能否安排我们一起去看看Vingroup的VinFast工厂?", pinyin: "Nǐ xiǎng de zhēn zhōudào. Míngtiān kàn wán bàngōngshì zhīhòu, hòutiān néng fǒu ānpái wǒmen yīqǐ qù kànkàn Vingroup de VinFast gōngchǎng?", english: "You think of everything. After tomorrow's office visit, can we arrange to see Vingroup's VinFast factory the day after?", vi: "Em chu đáo thật. Sau khi xem văn phòng mai, ngày kia có thể sắp xếp mình cùng đi xem nhà máy VinFast của Vingroup không?" },
+      { speaker: "黎", chinese: "我已经联系范总了, 后天上午九点参观工厂, 中午范总请我们吃饭。", pinyin: "Wǒ yǐjīng liánxì Fàn zǒng le, hòutiān shàngwǔ jiǔ diǎn cānguān gōngchǎng, zhōngwǔ Fàn zǒng qǐng wǒmen chīfàn.", english: "I've already contacted Director Pham — day after tomorrow 9am tour the factory, noon Director Pham hosts us for lunch.", vi: "Em đã liên hệ Tổng Phạm rồi, ngày kia 9 giờ sáng tham quan nhà máy, trưa Tổng Phạm mời mình ăn cơm." },
+      { speaker: "李总", chinese: "太好了, 你提前都安排好了。我这次访问肯定会很顺利。希望宾至如归吧!", pinyin: "Tài hǎo le, nǐ tíqián dōu ānpái hǎo le. Wǒ zhè cì fǎngwèn kěndìng huì hěn shùnlì. Xīwàng bīn zhì rú guī ba!", english: "Excellent, you've arranged everything in advance. This visit will definitely go smoothly. Hope to feel at home!", vi: "Tuyệt quá, em đã sắp xếp xong từ trước. Chuyến thăm này chắc chắn thuận lợi. Mong được như ở nhà!" }
+    ],
+    roleplay_prompts: [
+      "Đóng vai bạn — quản lý văn phòng Việt Nam — đón sếp Trung Quốc tại sân bay. Hãy chuẩn bị câu mở đầu '一路辛苦了', tự nhận đồ cho khách, đề xuất lịch trình 5 phút đầu (xe → khách sạn → nghỉ → tối ăn). Tránh câu hỏi mệt mỏi như 'mệt không' — sếp sẽ luôn nói 'không mệt'.",
+      "Sếp Trung Quốc bất ngờ muốn đi xem 'phố cổ' (Old Quarter) thay vì lịch họp ban đầu. Hãy điều chỉnh khéo: xác nhận yêu cầu + dời lịch họp (gọi báo bên kia) + đi cùng + giải thích lịch sử Hà Nội đơn giản. Tránh nói 'không thể' — luôn 'để em sắp xếp'.",
+      "Trên đường về khách sạn, sếp hỏi 'Việt Nam có giống Trung Quốc không?'. Đây là câu hỏi tế nhị. Hãy trả lời cân bằng: thừa nhận điểm chung văn hóa + đề cao đặc sắc Việt Nam + tránh so sánh hơn-kém. Dùng cụm '同根同源, 各有千秋'."
+    ],
+    register_notes: "Đón sếp/khách Trung Quốc đến Việt Nam có register đặc biệt — formal nhưng ấm áp, cấp dưới đón cấp trên. 您 toàn bộ với sếp, kể cả nếu thân quen. Cách gọi: '李总' (Lý zǒng — họ + chức danh) là chuẩn nhất; nếu sếp trẻ và đề nghị, có thể '小李' (chỉ khi sếp tự đề nghị) — nhưng sinh viên/nhân viên Việt Nam tốt nhất giữ '总'.\n\nCác cụm chuẩn đón khách: '一路辛苦了' (yī lù xīnkǔ le — đi đường vất vả) — câu đầu tiên BẮT BUỘC, không được bỏ qua, kể cả khách bay 2 tiếng; '欢迎您来X' (huānyíng nín lái X — hoan nghênh anh đến X); '我已经为您安排了...' (wǒ yǐjīng wèi nín ānpái le... — em đã sắp xếp cho anh...); '宾至如归' (bīn zhì rú guī — khách đến như về nhà — câu cuối lý tưởng); '入乡随俗' (rù xiāng suí sú — nhập gia tùy tục — khi giới thiệu món/phong tục Việt).\n\nKhi đề xuất chương trình: KHÔNG dùng '你想做什么' (anh muốn làm gì — quá đẩy việc cho khách). Dùng '我已经为您安排了X, 您看可以吗?' (em đã sắp xếp X cho anh, anh thấy được không?). Sếp Trung Quốc thích chủ nhà chủ động đề xuất, không thích phải tự lên lịch.\n\nKhi sếp yêu cầu thay đổi: KHÔNG '不行, 已经安排好了' (không được, đã sắp xếp rồi). Dùng '没问题, 我马上调整' (không vấn đề, em điều chỉnh ngay). Linh hoạt là phẩm chất số 1 của host Trung Quốc.\n\nTránh: (a) Hỏi 'mệt không' — gây áp lực vô ích; (b) Để khách tự xách hành lý — phản cảm; (c) Quên đặt nước trong xe — chi tiết nhỏ tạo ấn tượng lớn.",
+    idiom_glosses: [
+      {
+        idiom: "宾至如归",
+        literal: "khách đến như về nhà (bīn zhì rú guī)",
+        meaning: "Khách cảm thấy như đang ở nhà của mình — sự tiếp đãi chu đáo nhất. Cụm chuẩn để host kết thúc lời chào hoặc cam kết: '希望您宾至如归'. Đây là tiêu chuẩn vàng của tiếp khách Trung Quốc.",
+        example: "希望您这次访问宾至如归。"
+      },
+      {
+        idiom: "入乡随俗",
+        literal: "vào làng theo lệ (rù xiāng suí sú)",
+        meaning: "Đến đâu theo phong tục đó — nhập gia tùy tục. Sếp Trung Quốc dùng khi sẵn sàng thử món/phong tục Việt. Bạn dùng khi giới thiệu phong tục Việt Nam: '在越南我们这样做, 入乡随俗嘛'.",
+        example: "中国人来越南就要吃越南河粉, 入乡随俗。"
+      },
+      {
+        idiom: "远来是客",
+        literal: "đến từ xa là khách (yuǎn lái shì kè)",
+        meaning: "Người đến từ xa đều là khách quý — phải tiếp đãi tận tình. Triết lý gốc của tiếp khách Trung Quốc/Việt Nam. Dùng khi giải thích vì sao bạn dành nhiều thời gian/nguồn lực cho khách.",
+        example: "远来是客, 您怎么也得让我们好好招待。"
+      },
+      {
+        idiom: "主随客便",
+        literal: "chủ tùy theo khách (zhǔ suí kè biàn)",
+        meaning: "Chủ nhà tùy theo ý khách — linh hoạt theo mong muốn của khách. Dùng khi đưa ra lựa chọn cho khách: '主随客便, 您喜欢吃什么我们就吃什么'. Đối lập với 'chủ áp đặt khách'.",
+        example: "主随客便, 您想去哪里我们就去哪里。"
+      }
+    ],
+    cultural_notes_vi: "Tiếp đón sếp/khách Trung Quốc đến Việt Nam là 'bài kiểm tra' đầu tiên về năng lực quan hệ của bạn trong mắt sếp. Văn hóa hospitality Trung Quốc khác Việt Nam ở năm điểm: (1) HOST CHỦ ĐỘNG, không hỏi khách. Khách Trung Quốc đến Việt Nam mong bạn lên lịch sẵn sàng (giờ ăn, nơi ăn, di chuyển, mua sắm) — không mong họ tự quyết định. Khác Mỹ (nơi 'free time' là điều tốt), Trung Quốc 'free time' = chủ nhà thiếu chuẩn bị. (2) Tần suất check-in cao: gọi/nhắn mỗi sáng để xác nhận lịch, mỗi tối hỏi 'hôm nay thế nào'. Sếp Trung Quốc cảm thấy được quan tâm khi bạn check-in nhiều, không bị làm phiền. (3) Mời ăn trưa + tối là CHUẨN — khác phương Tây (chỉ một bữa). 5 ngày ở Việt Nam = 10 bữa ăn cùng host. Lên kế hoạch trước: bữa pho, bữa bún chả, bữa hải sản, bữa Trung-Việt fusion. (4) Quà chia tay từ phía host (không phải khách): chuẩn bị quà nhỏ đặc sản Việt (cà phê G7, bánh đậu xanh, lụa Vạn Phúc) để gửi sếp khi tạm biệt. Tổng giá trị 200-500 nhân dân tệ là phù hợp. (5) Sau khi sếp về Trung Quốc, nhắn WeChat trong 24 giờ: '李总, 您一路平安到家了吗?' — đây là 'closing the loop' chuẩn quan hệ Trung Quốc.\n\nKhác biệt Việt-Trung trong tiếp khách: ở Việt Nam, host có thể 'thân mật' với khách (dùng 'em', 'anh' nhanh chóng); ở Trung Quốc 'thân mật' phải có quá trình. Đừng vội xưng hô thân với sếp Trung Quốc dù họ tỏ ra dễ tính.\n\nVề lịch trình: sếp Trung Quốc đến công tác thường có nhịp điệu '工作 + 应酬 + 放松' (làm việc + xã giao + thư giãn) — cứ 60% công việc, 30% xã giao (ăn uống), 10% thư giãn (mua sắm/tham quan). Đừng nhồi 100% công việc — sếp sẽ mệt và khó chịu.",
+    tip_advice_vi: "(1) ĐÓN tại sân bay — không bao giờ để sếp tự bắt taxi. Đứng ngay tại lối ra arrivals với bảng tên hoặc gọi điện hướng dẫn. Sếp Trung Quốc đặc biệt nhớ chi tiết này. (2) Chuẩn bị 'welcome kit' trong xe: chai nước khoáng, khăn lạnh, kẹo nhỏ, sạc dự phòng. Đây là chi tiết rất ít người Việt làm — gây ấn tượng mạnh. (3) Đặt khách sạn TRƯỚC, gửi check-in confirmation cho sếp qua WeChat 1 ngày trước. KHÔNG để sếp phải hỏi 'tôi ở khách sạn nào'. Khách sạn 4-5 sao gần văn phòng + có dịch vụ tiếng Trung là lý tưởng. (4) Bữa ăn đầu tiên: chọn món Việt có vị nhẹ (phở, bún chả, gỏi cuốn) — KHÔNG mắm tôm/bún đậu (mùi mạnh, sếp Trung Quốc khó chịu lần đầu). Lần 2-3 mới giới thiệu món mạnh hơn. (5) Trong các bữa ăn: ngồi cùng phía với sếp (không đối diện qua bàn lớn), dịch món ăn cho sếp, gọi đồ uống thay sếp (nước trà nóng là an toàn). (6) Tránh chủ đề tế nhị trong bữa ăn: chính trị (Việt-Trung-Mỹ), lịch sử (1979, Hoàng Sa, Trường Sa), tôn giáo. Nếu sếp khơi mào, chuyển chủ đề bằng '这个比较复杂, 我们改天聊'. Tập trung vào: ẩm thực, du lịch, công việc, gia đình (nếu sếp chia sẻ trước). (7) Sau khi sếp về, 24 giờ sau gửi WeChat: '李总, 您一路平安回到中国了吗? 这次访问越南办公室辛苦了!' — kèm 1 ảnh đẹp đã chụp. Đây là follow-up vàng.",
+    exercises: [
+      { type: "fill-blank", question: "李总, 您一路 ___ 了, 欢迎您来河内。", answer: "辛苦" },
+      {
+        type: "matching",
+        instruction: "Ghép cụm tiếng Trung tiếp khách với nghĩa tiếng Việt.",
+        pairs: [
+          { chinese: "一路辛苦", pinyin: "yī lù xīn kǔ", english: "vất vả đường xa (đón khách)" },
+          { chinese: "宾至如归", pinyin: "bīn zhì rú guī", english: "khách đến như về nhà" },
+          { chinese: "入乡随俗", pinyin: "rù xiāng suí sú", english: "nhập gia tùy tục" },
+          { chinese: "陪同", pinyin: "péi tóng", english: "tháp tùng" }
+        ]
+      },
+      {
+        type: "translation",
+        vietnamese: "Anh đi đường vất vả rồi, hoan nghênh anh đến Hà Nội. Em đã sắp xếp khách sạn cho anh, mong anh ở Việt Nam như ở nhà.",
+        chinese: "您一路辛苦了, 欢迎您来河内。我已经为您安排了酒店, 希望您在越南宾至如归。",
+        pinyin: "Nín yī lù xīn kǔ le, huān yíng nín lái Hé nèi. Wǒ yǐ jīng wèi nín ān pái le jiǔ diàn, xī wàng nín zài Yuè nán bīn zhì rú guī."
+      }
+    ]
+  },
+  {
+    id: 63,
+    level: "B2",
+    category: "cultural_communication",
+    title: "在越南接待中国客户",
+    pinyin: "zài yuè nán jiē dài zhōng guó kè hù",
+    topic: "Hosting Chinese business client in Vietnam",
+    title_vi: "Tiếp khách hàng Trung Quốc tại Việt Nam",
+    title_en: "Hosting a Chinese business client in Vietnam",
+    sentences: [
+      {
+        chinese: "王总, 非常感谢您选择我们公司作为合作伙伴。",
+        pinyin: "Wáng zǒng, fēicháng gǎnxiè nín xuǎnzé wǒmen gōngsī zuòwéi hézuò huǒbàn.",
+        english: "Director Wang, thank you so much for choosing our company as your partner.",
+        vi: "Tổng Vương, em vô cùng cảm ơn anh đã chọn công ty chúng em làm đối tác.",
+        pronunciation_focus: ["合作伙伴 → hézuò huǒbàn (đối tác)", "选择 → xuǎnzé (chọn)", "作为 → zuòwéi (làm/với tư cách)", "感谢 → gǎnxiè"]
+      },
+      {
+        chinese: "今天我们安排参观工厂, 然后晚上在海鲜餐厅一起用餐。",
+        pinyin: "Jīntiān wǒmen ānpái cānguān gōngchǎng, ránhòu wǎnshàng zài hǎixiān cāntīng yīqǐ yòngcān.",
+        english: "Today we've arranged a factory tour, then dinner at a seafood restaurant tonight.",
+        vi: "Hôm nay bọn em sắp xếp tham quan nhà máy, sau đó tối ăn cùng ở nhà hàng hải sản.",
+        pronunciation_focus: ["参观 → cānguān (tham quan)", "工厂 → gōngchǎng (nhà máy)", "海鲜 → hǎixiān (hải sản)", "用餐 → yòngcān (dùng bữa — formal)"]
+      },
+      {
+        chinese: "希望这次合作能让双方都受益, 互利共赢。",
+        pinyin: "Xīwàng zhè cì hézuò néng ràng shuāngfāng dōu shòuyì, hùlì gòngyíng.",
+        english: "Hope this cooperation benefits both sides — mutual benefit, win-win.",
+        vi: "Mong hợp tác này hai bên cùng có lợi.",
+        pronunciation_focus: ["双方 → shuāngfāng (hai bên)", "受益 → shòuyì (được lợi)", "互利共赢 → hùlì gòngyíng (đôi bên cùng có lợi)", "合作 → hézuò"]
+      },
+      {
+        chinese: "如果您对我们的产品有任何意见, 请直接告诉我们。",
+        pinyin: "Rúguǒ nín duì wǒmen de chǎnpǐn yǒu rènhé yìjiàn, qǐng zhíjiē gàosu wǒmen.",
+        english: "If you have any feedback on our products, please tell us directly.",
+        vi: "Nếu anh có ý kiến nào về sản phẩm của bọn em, xin nói thẳng với bọn em.",
+        pronunciation_focus: ["产品 → chǎnpǐn (sản phẩm)", "意见 → yìjiàn (ý kiến)", "直接 → zhíjiē (trực tiếp)", "告诉 → gàosu"]
+      },
+      {
+        chinese: "礼尚往来, 下次您来河内, 一定让我做东。",
+        pinyin: "Lǐ shàng wǎng lái, xià cì nín lái Hénèi, yīdìng ràng wǒ zuò dōng.",
+        english: "Courtesy demands reciprocity — next time you come to Hanoi, please let me host.",
+        vi: "Có qua có lại, lần sau anh đến Hà Nội, nhất định để em làm chủ.",
+        pronunciation_focus: ["礼尚往来 → lǐ shàng wǎng lái (idiom: có qua có lại)", "做东 → zuò dōng (làm chủ — đãi khách)", "下次 → xià cì (lần sau)", "一定 → yīdìng"]
+      }
+    ],
+    vocab: [
+      { chinese: "客户", pinyin: "kè hù", english: "client", vi: "khách hàng" },
+      { chinese: "合作伙伴", pinyin: "hé zuò huǒ bàn", english: "business partner", vi: "đối tác" },
+      { chinese: "做东", pinyin: "zuò dōng", english: "to host (a meal)", vi: "làm chủ tiệc / mời" },
+      { chinese: "招待", pinyin: "zhāo dài", english: "to receive / entertain", vi: "tiếp đãi" },
+      { chinese: "签合同", pinyin: "qiān hé tóng", english: "to sign contract", vi: "ký hợp đồng" },
+      { chinese: "互利共赢", pinyin: "hù lì gòng yíng", english: "win-win", vi: "đôi bên cùng có lợi" },
+      { chinese: "礼尚往来", pinyin: "lǐ shàng wǎng lái", english: "courtesy demands reciprocity", vi: "có qua có lại" },
+      { chinese: "投桃报李", pinyin: "tóu táo bào lǐ", english: "give peach, return plum (mutual gift)", vi: "ném đào nhận mận — đáp lễ" },
+      { chinese: "一视同仁", pinyin: "yī shì tóng rén", english: "treat equally", vi: "đối xử công bằng như nhau" },
+      { chinese: "和气生财", pinyin: "hé qì shēng cái", english: "harmony brings wealth", vi: "hòa khí sinh tài" }
+    ],
+    dialogue: [
+      { speaker: "黎", chinese: "王总, 欢迎您来胡志明市! 这是我们的工厂入口。", pinyin: "Wáng zǒng, huānyíng nín lái Húzhìmíng shì! Zhè shì wǒmen de gōngchǎng rùkǒu.", english: "Director Wang, welcome to Ho Chi Minh City! This is our factory entrance.", vi: "Tổng Vương, hoan nghênh anh đến TP HCM! Đây là cổng nhà máy của bọn em." },
+      { speaker: "王总", chinese: "工厂规模比我想的大。员工有多少人?", pinyin: "Gōngchǎng guīmó bǐ wǒ xiǎng de dà. Yuángōng yǒu duōshao rén?", english: "Factory's bigger than I thought. How many employees?", vi: "Nhà máy quy mô lớn hơn tôi tưởng. Có bao nhiêu nhân viên?" },
+      { speaker: "黎", chinese: "目前八百人, 三班轮替。我们的产品质量符合中国国标。", pinyin: "Mùqián bā bǎi rén, sān bān lúntì. Wǒmen de chǎnpǐn zhìliàng fúhé Zhōngguó guóbiāo.", english: "Currently 800, three rotating shifts. Our product quality meets Chinese national standards.", vi: "Hiện 800 người, ba ca luân phiên. Chất lượng sản phẩm bọn em đạt tiêu chuẩn quốc gia Trung Quốc." },
+      { speaker: "王总", chinese: "好, 我们边走边看。", pinyin: "Hǎo, wǒmen biān zǒu biān kàn.", english: "Good, let's walk and look.", vi: "Được, mình vừa đi vừa xem." }
+    ],
+    dialogue_long: [
+      { speaker: "黎", chinese: "王总, 欢迎您来胡志明市! 我是黎文海, 总经理。这是我的名片, 请多多指教。", pinyin: "Wáng zǒng, huānyíng nín lái Húzhìmíng shì! Wǒ shì Lí Wénhǎi, zǒng jīnglǐ. Zhè shì wǒ de míngpiàn, qǐng duōduō zhǐjiào.", english: "Director Wang, welcome to Ho Chi Minh City! I'm Le Van Hai, General Manager. Here's my card, please favor me with guidance.", vi: "Tổng Vương, hoan nghênh anh đến TP HCM! Em là Lê Văn Hải, tổng giám đốc. Đây là danh thiếp của em, xin được chỉ giáo." },
+      { speaker: "王总", chinese: "黎总, 久仰大名。这是我的名片。一路下来路上还顺利吧?", pinyin: "Lí zǒng, jiǔ yǎng dà míng. Zhè shì wǒ de míngpiàn. Yī lù xiàlái lùshàng hái shùnlì ba?", english: "Director Le, long admired your name. Here's my card. Was the ride smooth?", vi: "Tổng Lê, lâu nay đã ngưỡng mộ. Đây là danh thiếp tôi. Đường đi có thuận không?" },
+      { speaker: "黎", chinese: "很顺利, 谢谢。先请您参观工厂, 然后我们会议室谈合作细节。", pinyin: "Hěn shùnlì, xièxie. Xiān qǐng nín cānguān gōngchǎng, ránhòu wǒmen huìyìshì tán hézuò xìjié.", english: "Very smooth, thanks. Please tour the factory first, then we'll discuss cooperation details in the meeting room.", vi: "Rất thuận lợi, cảm ơn anh. Mời anh tham quan nhà máy trước, sau đó mình thảo luận chi tiết hợp tác ở phòng họp." },
+      { speaker: "王总", chinese: "好。你们工厂主要做什么产品?", pinyin: "Hǎo. Nǐmen gōngchǎng zhǔyào zuò shénme chǎnpǐn?", english: "Good. What main products does your factory make?", vi: "Được. Nhà máy chủ yếu sản xuất sản phẩm gì?" },
+      { speaker: "黎", chinese: "我们做电子元件, 主要供应华为、小米和VinSmart。月产能两百万件。", pinyin: "Wǒmen zuò diànzǐ yuánjiàn, zhǔyào gōngyìng Huáwèi, Xiǎomǐ hé VinSmart. Yuè chǎnnéng èr bǎi wàn jiàn.", english: "We make electronic components, mainly supplying Huawei, Xiaomi and VinSmart. Monthly capacity 2 million units.", vi: "Bọn em làm linh kiện điện tử, chủ yếu cung cấp cho Huawei, Xiaomi và VinSmart. Sản lượng tháng 2 triệu chiếc." },
+      { speaker: "王总", chinese: "两百万不少。质量怎么控制?", pinyin: "Liǎng bǎi wàn bù shǎo. Zhìliàng zěnme kòngzhì?", english: "2 million is not small. How do you control quality?", vi: "2 triệu không ít. Chất lượng kiểm soát thế nào?" },
+      { speaker: "黎", chinese: "三道质检: 来料、生产中、成品。我们有ISO 9001认证, 不良率控制在万分之三以下。", pinyin: "Sān dào zhìjiǎn: láiliào, shēngchǎn zhōng, chéngpǐn. Wǒmen yǒu ISO 9001 rènzhèng, bùliáng lǜ kòngzhì zài wàn fēn zhī sān yǐxià.", english: "Three QC stages: incoming materials, in-process, finished goods. We have ISO 9001 certification, defect rate under 0.03%.", vi: "Ba tầng kiểm chất: nguyên liệu nhập, đang sản xuất, thành phẩm. Bọn em có chứng nhận ISO 9001, tỷ lệ lỗi dưới 0.03%." },
+      { speaker: "王总", chinese: "数据不错。价格比中国大陆有优势吗?", pinyin: "Shùjù bùcuò. Jiàgé bǐ Zhōngguó dàlù yǒu yōushì ma?", english: "Numbers are decent. Price advantage over mainland China?", vi: "Số liệu ổn. Giá có lợi thế so với Trung Quốc đại lục không?" },
+      { speaker: "黎", chinese: "总成本比中国大陆低15-20%, 主要是人工和电费。运输到深圳七天到。", pinyin: "Zǒng chéngběn bǐ Zhōngguó dàlù dī bǎi fēn zhī shíwǔ dào èrshí, zhǔyào shì réngōng hé diànfèi. Yùnshū dào Shēnzhèn qī tiān dào.", english: "Total cost 15-20% lower than mainland China, mainly labor and electricity. Shipping to Shenzhen takes 7 days.", vi: "Tổng chi phí thấp hơn Trung Quốc đại lục 15-20%, chủ yếu nhân công và tiền điện. Vận chuyển đến Thâm Quyến 7 ngày." },
+      { speaker: "王总", chinese: "我看你们的样品做得很精细。如果我们合作, 起订量是多少?", pinyin: "Wǒ kàn nǐmen de yàngpǐn zuò de hěn jīngxì. Rúguǒ wǒmen hézuò, qǐdìng liàng shì duōshao?", english: "Your samples look refined. If we cooperate, what's the minimum order quantity?", vi: "Tôi thấy mẫu của em làm rất tinh tế. Nếu mình hợp tác, lượng đặt tối thiểu là bao nhiêu?" },
+      { speaker: "黎", chinese: "标准件起订五万, 定制件起订十万。如果年度合作, 价格还可以谈。", pinyin: "Biāozhǔn jiàn qǐdìng wǔ wàn, dìngzhì jiàn qǐdìng shí wàn. Rúguǒ niándù hézuò, jiàgé hái kěyǐ tán.", english: "Standard parts MOQ 50,000, custom parts MOQ 100,000. For yearly partnerships, prices are negotiable.", vi: "Linh kiện tiêu chuẩn MOQ 50 nghìn, đặt riêng MOQ 100 nghìn. Nếu hợp tác hàng năm, giá có thể thương lượng." },
+      { speaker: "王总", chinese: "那样好。我们今年预计要十五万, 明年可能翻倍。", pinyin: "Nàyàng hǎo. Wǒmen jīnnián yùjì yào shíwǔ wàn, míngnián kěnéng fān bèi.", english: "Good. We estimate 150,000 this year, possibly double next year.", vi: "Vậy tốt. Năm nay bọn tôi dự kiến cần 150 nghìn, năm sau có thể gấp đôi." },
+      { speaker: "黎", chinese: "数量很可观, 我们一定全力配合。互利共赢, 长期合作。今晚我请您吃越南海鲜?", pinyin: "Shùliàng hěn kěguān, wǒmen yīdìng quánlì pèihé. Hùlì gòngyíng, chángqī hézuò. Jīn wǎn wǒ qǐng nín chī Yuènán hǎixiān?", english: "Quantity is significant, we'll fully cooperate. Win-win, long-term partnership. Tonight I'll treat you to Vietnamese seafood?", vi: "Số lượng đáng kể, bọn em sẽ phối hợp toàn lực. Đôi bên cùng có lợi, hợp tác dài hạn. Tối em mời anh ăn hải sản Việt Nam?" },
+      { speaker: "王总", chinese: "太破费了, 我自己买单也行。", pinyin: "Tài pòfèi le, wǒ zìjǐ mǎidān yě xíng.", english: "That's too much trouble, I can pay myself.", vi: "Tốn kém quá, tôi tự trả cũng được." },
+      { speaker: "黎", chinese: "您客气了。您远来是客, 这次我做东。礼尚往来, 下次我去深圳, 您请我就好。", pinyin: "Nín kèqì le. Nín yuǎn lái shì kè, zhè cì wǒ zuò dōng. Lǐ shàng wǎng lái, xià cì wǒ qù Shēnzhèn, nín qǐng wǒ jiù hǎo.", english: "You're being too polite. You're a guest from afar — this time I host. Reciprocity — next time I go to Shenzhen, you treat me.", vi: "Anh khách sáo quá. Khách phương xa là khách quý, lần này em làm chủ. Có qua có lại, lần sau em đến Thâm Quyến, anh mời em là được." },
+      { speaker: "王总", chinese: "好, 那就恭敬不如从命。和你们合作我很有信心, 和气生财嘛。", pinyin: "Hǎo, nà jiù gōngjìng bùrú cóngmìng. Hé nǐmen hézuò wǒ hěn yǒu xìnxīn, héqì shēngcái ma.", english: "Alright, then I'd rather follow your wishes than refuse. I'm confident in cooperating with you — harmony brings wealth.", vi: "Được, vậy cung kính không bằng tuân lệnh. Hợp tác với các em tôi rất tự tin — hòa khí sinh tài mà." }
+    ],
+    roleplay_prompts: [
+      "Đóng vai chủ nhà máy Việt Nam đón khách hàng tiềm năng từ Trung Quốc đến tham quan. Hãy mở đầu bằng tour 5 phút (cổng → khu sản xuất → QC → mẫu sản phẩm → phòng họp), trong đó nhấn mạnh 3 điểm bán hàng (chất lượng, giá, thời gian). Tránh kể quá nhiều — để khách hỏi.",
+      "Khách Trung Quốc thắc mắc về 'tại sao Việt Nam rẻ hơn Trung Quốc'. Hãy giải thích chân thực (nhân công, điện, thuế) — KHÔNG so sánh hơn-kém với Trung Quốc, KHÔNG động chạm chính sách. Dùng tone 'lợi thế bổ sung' chứ không 'thay thế'.",
+      "Cuối cuộc gặp, khách đề nghị giảm giá 10%. Hãy thương lượng chuyên nghiệp: thừa nhận đề nghị, giải thích cấu trúc giá, đề xuất 'gói deal' (giá + thời gian thanh toán + khối lượng). Kết bằng cụm '互利共赢' — không 'thắng-thua'."
+    ],
+    register_notes: "Tiếp khách hàng Trung Quốc khác tiếp sếp ở chỗ: bạn là HOST nhưng cũng là BÊN ĐANG THUYẾT PHỤC. Phải cân bằng giữa 'phục vụ chu đáo' và 'thể hiện năng lực'. 您 toàn bộ với khách, kể cả khách trẻ.\n\nCác cụm chuẩn cho hosting business client:\n- Mở đầu: '王总, 久仰大名' (lâu ngưỡng mộ — dùng khi đã biết về họ); '欢迎您莅临' (huānyíng nín lìlín — hoan nghênh anh đến — formal hơn 来)\n- Khi nói về sản phẩm: dùng số liệu cụ thể, không adjective trống. '不良率万分之三' tốt hơn '质量很好'\n- Khi mời ăn: '今晚我做东' (tối em làm chủ); KHÔNG '我请客' (tôi mời) — quá generic. '做东' formal hơn\n- Khi khách từ chối lễ phép: dùng '远来是客' + '礼尚往来' để thuyết phục\n- Khi đề xuất hợp tác: '希望我们能互利共赢, 长期合作' (mong đôi bên cùng có lợi, hợp tác dài hạn)\n\nQuy tắc 关系 (quan hệ): hợp tác lần đầu đầu tư mạnh vào quan hệ — 1 ngày work + 2 bữa ăn + 1 tour văn hóa. Sau lần 1, quan hệ đã established, có thể giảm 'entertainment overhead'. Đừng tiết kiệm ở lần đầu.\n\nTránh: (a) Gọi khách hàng bằng 'em' (em Vương) — quá thân; (b) Hỏi về lương cá nhân của khách — vô lễ; (c) So sánh trực tiếp với đối thủ Trung Quốc khác ('chúng tôi rẻ hơn X công ty') — bị coi là không đẳng cấp.",
+    idiom_glosses: [
+      {
+        idiom: "礼尚往来",
+        literal: "lễ là sự qua lại (lǐ shàng wǎng lái)",
+        meaning: "Có qua có lại — quy tắc đáp lễ trong văn hóa Trung Quốc/Việt Nam. Khi bạn đãi khách, lần sau khách phải đãi bạn. Cụm dùng để thuyết phục khách đồng ý cho bạn host: '礼尚往来嘛, 这次我做东'.",
+        example: "礼尚往来嘛, 下次您来河内一定要让我做东。"
+      },
+      {
+        idiom: "投桃报李",
+        literal: "ném đào nhận mận (tóu táo bào lǐ)",
+        meaning: "Trao tặng đào nhận lại mận — quà đáp quà, giúp đỡ đáp giúp đỡ. Cụm cổ điển hơn 礼尚往来, dùng trong context formal. Phù hợp khi nói về mối quan hệ hợp tác lâu dài.",
+        example: "我们做生意, 讲究投桃报李。"
+      },
+      {
+        idiom: "和气生财",
+        literal: "hòa khí sinh tài (hé qì shēng cái)",
+        meaning: "Hòa khí sinh ra của cải — quan hệ tốt là cơ sở của làm ăn. Triết lý kinh doanh Trung Quốc cổ điển. Khách Trung Quốc dùng để thể hiện thiện chí: 'cùng nhau hòa khí, tiền sẽ đến'.",
+        example: "和气生财, 我们慢慢谈, 不着急。"
+      },
+      {
+        idiom: "一视同仁",
+        literal: "một mắt nhìn cùng người (yī shì tóng rén)",
+        meaning: "Đối xử công bằng như nhau — không phân biệt khách lớn nhỏ, gần xa. Cụm cam kết phong cách phục vụ: '我们对所有客户一视同仁, 您是我们的VIP'. Dùng để xây niềm tin.",
+        example: "我们对所有客户一视同仁。"
+      }
+    ],
+    cultural_notes_vi: "Tiếp khách hàng Trung Quốc tại Việt Nam khác tiếp khách Mỹ/Âu ở năm điểm cốt lõi: (1) 'Quan hệ' (关系) đến TRƯỚC 'business' (生意). Người Trung Quốc thích biết người trước khi biết hợp đồng — họ đầu tư 30-40% thời gian gặp gỡ vào ăn uống/giao lưu, không phải vì lãng phí mà vì xây nền tảng tin cậy. Khác Mỹ (presentation → numbers → contract trong 2 giờ), Trung Quốc cần 2 ngày + 3 bữa ăn để 'cảm nhận' đối tác. (2) 'Mặt' (面子) đan xen: bạn cho mặt khách (đặt khách sạn 5 sao, tour VIP, quà có giá trị), khách trả lại bằng cách quyết định nhanh hoặc giới thiệu thêm khách. KHÔNG cho mặt = không nhận hợp đồng. (3) Bữa ăn QUAN TRỌNG hơn họp văn phòng. Hợp đồng thực sự được 'đàm phán' qua bữa cơm tối với rượu — không phải qua PowerPoint sáng. Đừng tiếc tiền cho bữa ăn. (4) Quyết định cuối cùng KHÔNG được đưa ra trong cuộc gặp đầu tiên. Khách Trung Quốc cần 'tham khảo nội bộ' (内部商量) sau chuyến thăm. Đừng ép quyết định ngay tại Việt Nam — cho khách 1-2 tuần. (5) Sau chuyến thăm, follow-up trong 24h bằng tin nhắn cá nhân (không email): 'Tổng Vương, anh đã về Trung Quốc bình an chứ?' + ảnh đẹp đã chụp. Đây là dấu hiệu bạn coi trọng quan hệ.\n\nVề thanh toán bữa ăn: chiến đấu trả tiền (抢着买单) là phong tục — bạn và khách sẽ giả vờ tranh nhau trả. Người 'thắng' là host. Khi khách giả vờ đòi trả, bạn dùng '远来是客' + 'này lần em mời, lần sau anh đến Trung Quốc anh mời'. Đừng để khách thực sự trả — coi như host thua.\n\nQuà hợp tác lần đầu: từ phía host (Việt Nam) khoảng 500-2000 nhân dân tệ — đặc sản Việt cao cấp (cà phê Trung Nguyên, lụa Vạn Phúc, tranh Đông Hồ). Khách thường mang quà từ Trung Quốc (trà cao cấp, rượu Mao Đài) — đáp lại bằng quà tương đương giá trị. Quá đắt = nhận hối lộ; quá rẻ = không tôn trọng.",
+    tip_advice_vi: "(1) GẶP TRƯỚC khi gửi báo giá. Lần đầu hợp tác, KHÔNG gửi quote qua email — mời khách đến Việt Nam hoặc bạn đi Trung Quốc, gặp mặt + tour + ăn cơm + mới thảo luận giá. Email-only deals với khách Trung Quốc thường không thành công. (2) Chuẩn bị 'pitch package' chuyên nghiệp: brochure tiếng Trung (KHÔNG dùng Google Translate — thuê dịch chuyên nghiệp), video sản phẩm 2 phút, mẫu sản phẩm thật, 3 case study khách hàng cũ. (3) Trong tour nhà máy, mời khách CHẠM vào sản phẩm, ngửi nguyên liệu, xem QC test. Sense experience > slide deck. Khách Trung Quốc đặc biệt tin 'thấy tận mắt'. (4) Tránh 4 chủ đề trong tất cả mọi cuộc trò chuyện: chính trị Việt-Trung-Mỹ, lịch sử (1979 border war, Hoàng Sa), tôn giáo, vấn đề người Hoa ở Việt Nam. Nếu khách khơi mào, chuyển khéo bằng '这是个复杂的话题, 我们改天慢慢聊'. (5) Mời 1 phiên dịch chuyên nghiệp cho cuộc thảo luận quan trọng — kể cả nếu bạn HSK 6. Hiểu sai 1 từ chuyên môn (vd: '不良率' nhầm '良率') có thể mất hợp đồng. Phiên dịch chuyên nghiệp 1.5-2 triệu/ngày, đầu tư đáng. (6) Sau cuộc gặp, gửi 'meeting summary' chi tiết qua email TRONG 24h: tóm tắt nội dung, action items, deadline, người chịu trách nhiệm. Đây là chuẩn business Trung Quốc — không gửi = bị coi là thiếu chuyên nghiệp. (7) Cập nhật quan hệ định kỳ: Tết Trung Quốc, Tết Trung Thu, đầu năm mới gửi tin chúc kèm ảnh (không chỉ text). 'Quan hệ' không phải 1 lần đầu tư mà là 'maintain' liên tục.",
+    exercises: [
+      { type: "fill-blank", question: "希望我们的合作能 ___ , 长期发展。", answer: "互利共赢" },
+      {
+        type: "matching",
+        instruction: "Ghép cụm tiếng Trung tiếp khách hàng với nghĩa tiếng Việt.",
+        pairs: [
+          { chinese: "做东", pinyin: "zuò dōng", english: "làm chủ tiệc / mời ăn" },
+          { chinese: "礼尚往来", pinyin: "lǐ shàng wǎng lái", english: "có qua có lại" },
+          { chinese: "和气生财", pinyin: "hé qì shēng cái", english: "hòa khí sinh tài" },
+          { chinese: "一视同仁", pinyin: "yī shì tóng rén", english: "đối xử công bằng" }
+        ]
+      },
+      {
+        type: "translation",
+        vietnamese: "Cảm ơn anh đã chọn công ty bọn em. Mong hợp tác đôi bên cùng có lợi, lâu dài. Tối nay em làm chủ.",
+        chinese: "感谢您选择我们公司。希望我们的合作能互利共赢, 长期发展。今晚我做东。",
+        pinyin: "Gǎn xiè nín xuǎn zé wǒ men gōng sī. Xī wàng wǒ men de hé zuò néng hù lì gòng yíng, cháng qī fā zhǎn. Jīn wǎn wǒ zuò dōng."
+      }
+    ]
+  },
+  {
+    id: 64,
+    level: "B2",
+    category: "cultural_communication",
+    title: "向中国同事介绍越南文化",
+    pinyin: "xiàng zhōng guó tóng shì jiè shào yuè nán wén huà",
+    topic: "Explaining Vietnamese culture to Chinese colleague",
+    title_vi: "Giới thiệu văn hóa Việt Nam cho đồng nghiệp Trung Quốc",
+    title_en: "Explaining Vietnamese culture to a Chinese colleague",
+    sentences: [
+      {
+        chinese: "越南文化和中国文化既有相似之处, 也有自己的特色。",
+        pinyin: "Yuènán wénhuà hé Zhōngguó wénhuà jì yǒu xiāngsì zhī chù, yě yǒu zìjǐ de tèsè.",
+        english: "Vietnamese and Chinese cultures have similarities and also unique features.",
+        vi: "Văn hóa Việt Nam và Trung Quốc vừa có điểm tương đồng, vừa có nét riêng.",
+        pronunciation_focus: ["相似之处 → xiāngsì zhī chù (chỗ tương đồng)", "特色 → tèsè (nét đặc sắc)", "既...也... → jì... yě... (vừa... vừa...)", "文化 → wénhuà (văn hóa)"]
+      },
+      {
+        chinese: "我们都重视家庭、教育和孝道, 这是同根同源的儒家文化。",
+        pinyin: "Wǒmen dōu zhòngshì jiātíng, jiàoyù hé xiàodào, zhè shì tóng gēn tóng yuán de Rújiā wénhuà.",
+        english: "We both value family, education, and filial piety — this is shared-roots Confucian culture.",
+        vi: "Cả hai đều coi trọng gia đình, giáo dục và đạo hiếu — đây là văn hóa Nho gia cùng nguồn cùng cội.",
+        pronunciation_focus: ["重视 → zhòngshì (coi trọng)", "孝道 → xiàodào (đạo hiếu)", "同根同源 → tóng gēn tóng yuán (cùng gốc cùng nguồn)", "儒家 → Rújiā (Nho gia)"]
+      },
+      {
+        chinese: "但越南也有独特的元素, 比如奥黛、河粉、和咖啡文化。",
+        pinyin: "Dàn Yuènán yě yǒu dútè de yuánsù, bǐrú àodài, héfěn, hé kāfēi wénhuà.",
+        english: "But Vietnam also has unique elements, like ao dai, pho, and coffee culture.",
+        vi: "Nhưng Việt Nam cũng có những yếu tố riêng, ví dụ áo dài, phở, và văn hóa cà phê.",
+        pronunciation_focus: ["独特 → dútè (độc đáo)", "元素 → yuánsù (yếu tố)", "奥黛 → àodài (áo dài)", "河粉 → héfěn (phở)"]
+      },
+      {
+        chinese: "越南受过法国殖民, 所以建筑和饮食有法式风情。",
+        pinyin: "Yuènán shòu guò Fǎguó zhímín, suǒyǐ jiànzhù hé yǐnshí yǒu Fǎshì fēngqíng.",
+        english: "Vietnam was once colonized by France, so the architecture and cuisine have French flavor.",
+        vi: "Việt Nam từng là thuộc địa Pháp, nên kiến trúc và ẩm thực mang phong vị Pháp.",
+        pronunciation_focus: ["殖民 → zhímín (thực dân/colonization)", "建筑 → jiànzhù (kiến trúc)", "饮食 → yǐnshí (ẩm thực)", "风情 → fēngqíng (phong vị)"]
+      },
+      {
+        chinese: "求同存异, 尊重差异, 我们才能更好地交流。",
+        pinyin: "Qiú tóng cún yì, zūnzhòng chāyì, wǒmen cáinéng gèng hǎo de jiāoliú.",
+        english: "Seek common ground while preserving differences — we can communicate better.",
+        vi: "Cầu đồng tồn dị, tôn trọng khác biệt, mình mới giao lưu tốt được.",
+        pronunciation_focus: ["求同存异 → qiú tóng cún yì (idiom: cầu đồng tồn dị)", "尊重 → zūnzhòng (tôn trọng)", "差异 → chāyì (khác biệt)", "交流 → jiāoliú (giao lưu)"]
+      }
+    ],
+    vocab: [
+      { chinese: "文化", pinyin: "wén huà", english: "culture", vi: "văn hóa" },
+      { chinese: "传统", pinyin: "chuán tǒng", english: "tradition", vi: "truyền thống" },
+      { chinese: "儒家", pinyin: "rú jiā", english: "Confucianism", vi: "Nho gia" },
+      { chinese: "孝道", pinyin: "xiào dào", english: "filial piety", vi: "đạo hiếu" },
+      { chinese: "奥黛", pinyin: "ào dài", english: "ao dai (Vietnamese dress)", vi: "áo dài" },
+      { chinese: "殖民", pinyin: "zhí mín", english: "colonization", vi: "thực dân" },
+      { chinese: "同根同源", pinyin: "tóng gēn tóng yuán", english: "shared roots", vi: "cùng gốc cùng nguồn" },
+      { chinese: "求同存异", pinyin: "qiú tóng cún yì", english: "seek common ground while preserving differences", vi: "cầu đồng tồn dị" },
+      { chinese: "各有千秋", pinyin: "gè yǒu qiān qiū", english: "each has its merits", vi: "mỗi bên có nét riêng" },
+      { chinese: "海内存知己", pinyin: "hǎi nèi cún zhī jǐ", english: "true friends span seas (Wang Bo's verse)", vi: "trong bốn biển có tri kỷ" }
+    ],
+    dialogue: [
+      { speaker: "李同事", chinese: "小阮, 越南和中国文化是不是很像?", pinyin: "Xiǎo Ruǎn, Yuènán hé Zhōngguó wénhuà shì bù shì hěn xiàng?", english: "Little Nguyen, are Vietnamese and Chinese cultures very similar?", vi: "Tiểu Nguyễn, văn hóa Việt và Trung có giống nhau không?" },
+      { speaker: "阮", chinese: "有同有异。我们都过春节, 都用筷子。", pinyin: "Yǒu tóng yǒu yì. Wǒmen dōu guò Chūnjié, dōu yòng kuàizi.", english: "Some same, some different. We both celebrate Spring Festival, both use chopsticks.", vi: "Vừa giống vừa khác. Mình đều ăn Tết, đều dùng đũa." },
+      { speaker: "李同事", chinese: "差异在哪里?", pinyin: "Chāyì zài nǎlǐ?", english: "Where are the differences?", vi: "Khác biệt ở đâu?" },
+      { speaker: "阮", chinese: "我们说越南语, 不是汉语; 文字用拉丁字母, 不是汉字。还有法式咖啡和奥黛。", pinyin: "Wǒmen shuō Yuènányǔ, bù shì Hànyǔ; wénzì yòng Lādīng zìmǔ, bù shì Hànzì. Hái yǒu Fǎshì kāfēi hé àodài.", english: "We speak Vietnamese, not Chinese; we use Latin script, not Chinese characters. Plus French coffee and ao dai.", vi: "Bọn em nói tiếng Việt, không phải tiếng Trung; chữ viết là chữ La-tinh, không phải Hán tự. Còn cà phê Pháp và áo dài." }
+    ],
+    dialogue_long: [
+      { speaker: "李同事", chinese: "小阮, 你们越南人来中国上班, 我们经常觉得你们很容易适应, 是不是文化太像了?", pinyin: "Xiǎo Ruǎn, nǐmen Yuènán rén lái Zhōngguó shàngbān, wǒmen jīngcháng juéde nǐmen hěn róngyì shìyìng, shì bù shì wénhuà tài xiàng le?", english: "Little Nguyen, when you Vietnamese come to China to work, we often feel you adapt easily — is it because the cultures are too similar?", vi: "Tiểu Nguyễn, người Việt sang Trung Quốc làm việc, bọn anh thường thấy các em thích nghi rất dễ, có phải vì văn hóa quá giống không?" },
+      { speaker: "阮", chinese: "确实有相似之处。我们都受儒家文化影响, 都过春节, 都重视家庭和教育。", pinyin: "Quèshí yǒu xiāngsì zhī chù. Wǒmen dōu shòu Rújiā wénhuà yǐngxiǎng, dōu guò Chūnjié, dōu zhòngshì jiātíng hé jiàoyù.", english: "There are indeed similarities. We're both influenced by Confucianism, both celebrate Spring Festival, both value family and education.", vi: "Đúng là có điểm tương đồng. Bọn em đều chịu ảnh hưởng văn hóa Nho gia, đều ăn Tết, đều coi trọng gia đình và giáo dục." },
+      { speaker: "李同事", chinese: "那历史上越南是不是中国的一部分?", pinyin: "Nà lìshǐ shàng Yuènán shì bù shì Zhōngguó de yī bùfèn?", english: "Was Vietnam historically part of China?", vi: "Vậy trong lịch sử Việt Nam có phải một phần của Trung Quốc không?" },
+      { speaker: "阮", chinese: "这个问题比较复杂。古代越南和中国有很多交流, 但越南一直保持自己的语言和身份。我们说越南语, 不是汉语。", pinyin: "Zhège wèntí bǐjiào fùzá. Gǔdài Yuènán hé Zhōngguó yǒu hěn duō jiāoliú, dàn Yuènán yīzhí bǎochí zìjǐ de yǔyán hé shēnfèn. Wǒmen shuō Yuènányǔ, bù shì Hànyǔ.", english: "That's complex. Ancient Vietnam and China had much interaction, but Vietnam always kept its own language and identity. We speak Vietnamese, not Chinese.", vi: "Câu này khá phức tạp. Việt Nam và Trung Quốc cổ đại giao lưu nhiều, nhưng Việt Nam luôn giữ ngôn ngữ và bản sắc riêng. Bọn em nói tiếng Việt, không phải tiếng Trung." },
+      { speaker: "李同事", chinese: "我注意到你们文字是拉丁字母。", pinyin: "Wǒ zhùyì dào nǐmen wénzì shì Lādīng zìmǔ.", english: "I noticed your script is Latin alphabet.", vi: "Anh để ý chữ viết của các em là chữ La-tinh." },
+      { speaker: "阮", chinese: "对, 这是法国殖民时期推广的, 叫'国语字'。原来我们用汉字和'喃字' (一种自创汉字), 但现在主要用拉丁字母。", pinyin: "Duì, zhè shì Fǎguó zhímín shíqī tuīguǎng de, jiào 'Guóyǔ zì'. Yuánlái wǒmen yòng Hànzì hé 'Nán zì' (yī zhǒng zìchuàng Hànzì), dàn xiànzài zhǔyào yòng Lādīng zìmǔ.", english: "Yes, this was promoted during French colonial period, called 'Quoc Ngu'. Originally we used Chinese characters and 'Chu Nom' (self-invented Chinese-style characters), but now mainly Latin alphabet.", vi: "Đúng, đây là chữ được phổ biến trong thời thực dân Pháp, gọi là 'Quốc ngữ'. Trước đây bọn em dùng Hán tự và 'chữ Nôm' (tự sáng tạo từ Hán tự), nhưng giờ chủ yếu dùng chữ La-tinh." },
+      { speaker: "李同事", chinese: "原来如此。所以越南有点像东南亚和东亚的混合。", pinyin: "Yuánlái rúcǐ. Suǒyǐ Yuènán yǒudiǎn xiàng Dōngnányà hé Dōngyà de hùnhé.", english: "I see. So Vietnam is a bit like a mix of Southeast Asia and East Asia.", vi: "Thì ra thế. Vậy Việt Nam giống như sự pha trộn giữa Đông Nam Á và Đông Á." },
+      { speaker: "阮", chinese: "可以这么说。地理上属于东南亚, 文化上有东亚根源, 加上一些法国元素。比如我们的咖啡文化就是法国带来的。", pinyin: "Kěyǐ zhème shuō. Dìlǐ shàng shǔyú Dōngnányà, wénhuà shàng yǒu Dōngyà gēnyuán, jiā shàng yīxiē Fǎguó yuánsù. Bǐrú wǒmen de kāfēi wénhuà jiùshì Fǎguó dài lái de.", english: "You could say so. Geographically Southeast Asia, culturally East Asian roots, plus some French elements. Our coffee culture, for example, was brought by the French.", vi: "Có thể nói vậy. Về địa lý thuộc Đông Nam Á, về văn hóa có gốc Đông Á, thêm một số yếu tố Pháp. Ví dụ văn hóa cà phê của bọn em là do Pháp mang đến." },
+      { speaker: "李同事", chinese: "越南人都喜欢喝咖啡? 我以为茶才是亚洲传统。", pinyin: "Yuènán rén dōu xǐhuan hē kāfēi? Wǒ yǐwéi chá cái shì Yàzhōu chuántǒng.", english: "All Vietnamese love coffee? I thought tea was Asian tradition.", vi: "Người Việt đều thích cà phê? Anh tưởng trà mới là truyền thống châu Á." },
+      { speaker: "阮", chinese: "我们茶咖都喜欢。但越南是世界第二大咖啡出口国, 仅次于巴西。河内的'蛋咖啡'和'酸奶咖啡'是当地特色。", pinyin: "Wǒmen chá kā dōu xǐhuan. Dàn Yuènán shì shìjiè dì èr dà kāfēi chūkǒu guó, jǐn cì yú Bāxī. Hénèi de 'dàn kāfēi' hé 'suānnǎi kāfēi' shì dāngdì tèsè.", english: "We love both tea and coffee. But Vietnam is the world's second-largest coffee exporter, after Brazil. Hanoi's 'egg coffee' and 'yogurt coffee' are local specialties.", vi: "Bọn em đều thích cả trà và cà phê. Nhưng Việt Nam là nước xuất khẩu cà phê lớn thứ hai thế giới, chỉ sau Brazil. Cà phê trứng và sữa chua của Hà Nội là đặc sản." },
+      { speaker: "李同事", chinese: "蛋咖啡? 听起来奇特。下次我去河内一定要尝。", pinyin: "Dàn kāfēi? Tīng qǐlái qítè. Xià cì wǒ qù Hénèi yīdìng yào cháng.", english: "Egg coffee? Sounds peculiar. Next time I go to Hanoi I must try.", vi: "Cà phê trứng? Nghe lạ đấy. Lần sau anh đến Hà Nội nhất định phải thử." },
+      { speaker: "阮", chinese: "好啊! 还有奥黛, 我们的传统服装。和中国旗袍很像但又不一样。", pinyin: "Hǎo a! Hái yǒu àodài, wǒmen de chuántǒng fúzhuāng. Hé Zhōngguó qípáo hěn xiàng dàn yòu bù yīyàng.", english: "Sure! Also ao dai, our traditional dress. Similar to Chinese qipao but different.", vi: "Vâng! Còn áo dài, trang phục truyền thống của bọn em. Giống xường xám Trung Quốc nhưng cũng khác." },
+      { speaker: "李同事", chinese: "怎么不一样?", pinyin: "Zěnme bù yīyàng?", english: "How different?", vi: "Khác thế nào?" },
+      { speaker: "阮", chinese: "奥黛上身紧, 下身是宽松的长裤; 旗袍是连体裙。颜色和图案上越南偏柔和, 中国偏鲜艳。", pinyin: "Àodài shàngshēn jǐn, xiàshēn shì kuānsōng de chángkù; qípáo shì liántǐ qún. Yánsè hé tú'àn shàng Yuènán piān róuhé, Zhōngguó piān xiānyàn.", english: "Ao dai has a tight top with loose long pants; qipao is a one-piece dress. Vietnam tends to soft colors and patterns, China tends to bright.", vi: "Áo dài thân trên ôm, dưới là quần dài rộng; xường xám là váy liền. Màu và hoa văn Việt Nam thiên về dịu, Trung Quốc thiên về rực rỡ." },
+      { speaker: "李同事", chinese: "听你这么一介绍, 越南文化真是各有千秋。", pinyin: "Tīng nǐ zhème yī jièshào, Yuènán wénhuà zhēn shì gè yǒu qiān qiū.", english: "After your introduction, Vietnamese culture really has its own merits.", vi: "Nghe em giới thiệu thế này, văn hóa Việt Nam thực sự có nét riêng." },
+      { speaker: "阮", chinese: "求同存异, 我们都是亚洲文化的孩子。海内存知己, 天涯若比邻。", pinyin: "Qiú tóng cún yì, wǒmen dōu shì Yàzhōu wénhuà de háizi. Hǎi nèi cún zhī jǐ, tiānyá ruò bǐlín.", english: "Seek common ground while preserving differences — we're all children of Asian culture. True friends span seas, distant horizons feel close.", vi: "Cầu đồng tồn dị, mình đều là con của văn hóa châu Á. Trong bốn biển có tri kỷ, chân trời như cận kề." }
+    ],
+    roleplay_prompts: [
+      "Đồng nghiệp Trung Quốc hỏi 'tại sao Việt Nam viết bằng chữ La-tinh, không phải Hán tự'. Hãy giải thích lịch sử ngắn gọn (chữ Nôm → Quốc ngữ → Pháp phổ biến) — KHÔNG bình luận chính trị, chỉ nêu sự việc. Dùng tone học thuật, không cảm xúc.",
+      "Đồng nghiệp Trung Quốc bảo 'Việt Nam là phiên bản nhỏ của Trung Quốc'. Đây là câu thiếu nhạy cảm. Hãy đáp lại không xúc phạm: thừa nhận điểm chung văn hóa + làm rõ tính độc lập của Việt Nam. Dùng cụm '同根同源, 各有千秋'.",
+      "Đồng nghiệp Trung Quốc muốn học 5 từ tiếng Việt cơ bản. Hãy chọn 5 từ thực tế: 'xin chào' (chào), 'cảm ơn' (cảm ơn), 'ngon' (ngon), 'đắt' (đắt), 'rẻ' (rẻ). Giải thích pinyin tương đương + ngữ cảnh dùng. Đây là khoảnh khắc xây quan hệ — đầu tư thời gian."
+    ],
+    register_notes: "Giải thích văn hóa Việt Nam cho đồng nghiệp Trung Quốc là môi trường ASYMMETRIC — bạn là người Việt giải thích về Việt Nam cho người Trung. Phải cân bằng giữa 'tự hào dân tộc' và 'không đối đầu'. 你 với đồng nghiệp ngang cấp; 您 nếu họ lớn tuổi.\n\nKhi đồng nghiệp Trung hỏi câu nhạy cảm (lịch sử, chính trị), KHÔNG trả lời thẳng theo cảm xúc. Dùng cấu trúc 'thừa nhận thông tin + làm rõ + chuyển hướng':\n- '这个问题比较复杂' (câu này khá phức tạp) — thừa nhận\n- '历史上...但现在...' (lịch sử là... nhưng hiện tại...) — đặt sự việc trong ngữ cảnh\n- '我们还是聊文化的具体方面吧' (mình vẫn nói về khía cạnh cụ thể của văn hóa nhé) — chuyển hướng\n\nCác cụm cân bằng văn hóa:\n- '同根同源' (tóng gēn tóng yuán) — cùng gốc cùng nguồn (thừa nhận điểm chung)\n- '各有千秋' (gè yǒu qiān qiū) — mỗi bên có nét riêng (khẳng định khác biệt)\n- '求同存异' (qiú tóng cún yì) — cầu đồng tồn dị (cách tiếp cận đúng)\n- '海内存知己, 天涯若比邻' — câu thơ Vương Bột, dùng cuối cuộc trò chuyện văn hóa\n\nTránh tuyệt đối: (a) So sánh hơn-kém ('Việt Nam tốt hơn Trung Quốc ở X') — kể cả nếu đúng; (b) Đề cập 1979 border war, Hoàng Sa, Trường Sa — chuyển chủ đề ngay; (c) Chế giễu phát âm tiếng Trung của đồng nghiệp; (d) Phủ nhận hoàn toàn ảnh hưởng Trung Quốc đến Việt Nam — không chân thực và mất thiện cảm.",
+    idiom_glosses: [
+      {
+        idiom: "同根同源",
+        literal: "cùng gốc cùng nguồn (tóng gēn tóng yuán)",
+        meaning: "Cùng gốc, cùng nguồn — chia sẻ nguồn gốc văn hóa/lịch sử. Cụm trung tính dùng để thừa nhận chia sẻ văn hóa Việt-Trung mà không nói 'một quốc gia'. Mở đường cho thảo luận tôn trọng.",
+        example: "我们都受儒家影响, 同根同源。"
+      },
+      {
+        idiom: "求同存异",
+        literal: "cầu đồng tồn dị (qiú tóng cún yì)",
+        meaning: "Cầu cái chung, giữ cái khác — tìm điểm chung nhưng tôn trọng khác biệt. Cụm chuẩn ngoại giao Trung Quốc, áp dụng tuyệt vời cho giao tiếp Việt-Trung. Tránh xung đột vô ích.",
+        example: "求同存异, 才能更好地交流。"
+      },
+      {
+        idiom: "各有千秋",
+        literal: "mỗi bên có ngàn thu (gè yǒu qiān qiū)",
+        meaning: "Mỗi bên có nét riêng đáng giá — không ai hơn ai. Cụm bình đẳng, dùng để khẳng định Việt Nam và Trung Quốc đều có giá trị riêng. Đối lập với 'so sánh hơn kém'.",
+        example: "中越文化各有千秋, 都很精彩。"
+      },
+      {
+        idiom: "海内存知己, 天涯若比邻",
+        literal: "trong bốn biển có tri kỷ, chân trời như cận kề (Vương Bột)",
+        meaning: "Câu thơ nổi tiếng của Vương Bột (đời Đường): nếu trên đời có tri kỷ, dù xa cũng như gần. Dùng để kết nối tình bạn Việt-Trung. Cao cấp về văn hóa — sẽ gây ấn tượng mạnh nếu dùng đúng.",
+        example: "海内存知己, 天涯若比邻 — 越中朋友永远不分离。"
+      }
+    ],
+    cultural_notes_vi: "Giao tiếp văn hóa Việt-Trung là khu vực 'đẹp đẽ nhưng nhạy cảm'. Hai nước có 2000+ năm lịch sử giao thoa, cùng nền tảng Nho gia, cùng Tết âm lịch, cùng dùng đũa, cùng coi trọng học vấn và đạo hiếu — tỉ lệ tương đồng văn hóa cao hơn bất kỳ cặp nước nào khác. NHƯNG cũng có lịch sử xung đột (Bắc thuộc 1000 năm, 1979 border war, tranh chấp biển), nên giao tiếp văn hóa cần 'maturity' — không lảng tránh nhưng không khơi mào.\n\nKhi đồng nghiệp Trung Quốc hỏi câu nhạy cảm, có 4 cách phản ứng tốt: (1) Thừa nhận sự thật khách quan: 'lịch sử có giai đoạn X, sau đó Y' — không phán xét. (2) Chuyển sang khía cạnh tích cực: 'nhưng hiện nay quan hệ kinh tế rất tốt'. (3) Đề xuất chủ đề thay thế: 'mình nói về ẩm thực hai nước thì hay hơn'. (4) Dùng cụm 'đây là chủ đề phức tạp, mình từ từ nói sau' — để dành cho lúc thân hơn.\n\nVề 'điểm chung an toàn' nên khai thác: ẩm thực (cả hai có món tương tự — phở/lamian, bún/miến), Tết âm lịch (cùng ngày, cùng phong tục lì xì), đạo hiếu (giống nhau 90%), trà/cà phê, võ thuật (Việt Nam có Vovinam, Trung có wushu). Đây là 'safe zones' để bonding.\n\n'Điểm chung tránh': lịch sử cổ đại (Bắc thuộc), 1979, biển đảo, vấn đề Đài Loan, Tân Cương/Tây Tạng. Người Việt thông minh KHÔNG nêu quan điểm về vấn đề nội bộ Trung Quốc — không phải sợ, mà vì không phải việc của mình.\n\nVề ảnh hưởng Pháp: đề cập tự nhiên (kiến trúc Hà Nội, cà phê, bánh mì), KHÔNG so sánh thuộc địa Pháp với Bắc thuộc Trung Quốc — đó là so sánh sai và sẽ tạo căng thẳng. Pháp = colonial; Trung Quốc cổ đại = phức tạp hơn (vừa colonial vừa cultural exchange).\n\nMột mẹo cuối: học 5-10 cụm tiếng Trung về văn hóa (儒家, 孝道, 同根同源, 求同存异) — khi bạn dùng đúng cụm này, đồng nghiệp Trung sẽ cảm thấy bạn 'thông hiểu' văn hóa của họ và tôn trọng bạn hơn.",
+    tip_advice_vi: "(1) Chuẩn bị '5 facts về Việt Nam' để giới thiệu khi được hỏi: (a) dân số 100 triệu, (b) 54 dân tộc, (c) thủ đô Hà Nội 1000 năm, (d) 3000km bờ biển, (e) xuất khẩu cà phê thứ 2 thế giới. Số liệu cụ thể > adjective trống. (2) Mang theo 'cultural ambassador kit': bưu thiếp Hà Nội/Vịnh Hạ Long, mẫu cà phê G7, ảnh áo dài, bản nhạc dân ca. Chia sẻ tự nhiên trong cuộc nói chuyện, không bài bản. (3) KHI ĐƯỢC HỎI câu nhạy cảm (1979, biển đảo), đáp '这个问题比较复杂, 不同人有不同观点。我们还是聊文化吧' (câu này phức tạp, nhiều người có quan điểm khác. Mình nói văn hóa thôi nhé). Lịch sự + chuyển hướng. (4) Dạy đồng nghiệp 5-10 từ tiếng Việt cơ bản: chào, cảm ơn, ngon, đắt, rẻ, một, hai, ba — đây là cử chỉ thân thiện, mọi người đều thích. Chấp nhận họ phát âm sai, không cười. (5) Khi đồng nghiệp Trung Quốc đến Việt Nam, dẫn họ đến: phở (an toàn), cà phê trứng (đặc sản), Văn Miếu (chia sẻ Khổng Tử). Tránh: bún đậu mắm tôm (mùi mạnh lần đầu), nhà thờ (tôn giáo nhạy cảm). (6) Trên WeChat Moments của bạn, đăng ảnh văn hóa Việt Nam với caption tiếng Trung — đây là cách thụ động giáo dục đồng nghiệp. Họ sẽ học được nhiều mà bạn không cần giảng. (7) Cụm văn học 'mạnh': '海内存知己, 天涯若比邻' (Vương Bột) — dùng khi kết thúc cuộc nói chuyện văn hóa hay/sau khi cùng ăn cơm. Đồng nghiệp Trung Quốc sẽ ấn tượng mạnh vì bạn biết thơ Đường — văn hóa của họ.",
+    exercises: [
+      { type: "fill-blank", question: "中越文化 ___ , 都很精彩。", answer: "各有千秋" },
+      {
+        type: "matching",
+        instruction: "Ghép cụm tiếng Trung văn hóa với nghĩa tiếng Việt.",
+        pairs: [
+          { chinese: "孝道", pinyin: "xiào dào", english: "đạo hiếu" },
+          { chinese: "奥黛", pinyin: "ào dài", english: "áo dài (Việt Nam)" },
+          { chinese: "同根同源", pinyin: "tóng gēn tóng yuán", english: "cùng gốc cùng nguồn" },
+          { chinese: "求同存异", pinyin: "qiú tóng cún yì", english: "cầu đồng tồn dị" }
+        ]
+      },
+      {
+        type: "translation",
+        vietnamese: "Văn hóa Việt và Trung cùng gốc Nho gia, nhưng mỗi bên có nét riêng. Cầu đồng tồn dị, tôn trọng khác biệt là cách giao lưu tốt nhất.",
+        chinese: "中越文化同根同源, 但各有千秋。求同存异, 尊重差异是最好的交流方式。",
+        pinyin: "Zhōng yuè wén huà tóng gēn tóng yuán, dàn gè yǒu qiān qiū. Qiú tóng cún yì, zūn zhòng chā yì shì zuì hǎo de jiāo liú fāng shì."
+      }
+    ]
+  },
+  {
+    id: 65,
+    level: "B2",
+    category: "cultural_communication",
+    title: "中越商务礼仪的差异",
+    pinyin: "zhōng yuè shāng wù lǐ yí de chā yì",
+    topic: "Chinese-Vietnamese business etiquette differences",
+    title_vi: "Khác biệt lễ nghi kinh doanh Việt-Trung",
+    title_en: "Chinese-Vietnamese business etiquette differences",
+    sentences: [
+      {
+        chinese: "在中国谈生意, 面子比合同还重要。",
+        pinyin: "Zài Zhōngguó tán shēngyi, miànzi bǐ hétong hái zhòngyào.",
+        english: "In Chinese business, face is even more important than the contract.",
+        vi: "Trong làm ăn Trung Quốc, thể diện còn quan trọng hơn hợp đồng.",
+        pronunciation_focus: ["面子 → miànzi (thể diện)", "合同 → hétong (hợp đồng)", "谈生意 → tán shēngyi (đàm phán làm ăn)", "重要 → zhòngyào (quan trọng)"]
+      },
+      {
+        chinese: "饭桌上谈成的生意比会议室里的还多。",
+        pinyin: "Fànzhuō shàng tán chéng de shēngyi bǐ huìyìshì lǐ de hái duō.",
+        english: "More deals are closed at the dinner table than in the meeting room.",
+        vi: "Việc làm ăn chốt được trên bàn ăn còn nhiều hơn trong phòng họp.",
+        pronunciation_focus: ["饭桌 → fànzhuō (bàn ăn)", "谈成 → tán chéng (đàm phán thành)", "会议室 → huìyìshì (phòng họp)", "生意 → shēngyi"]
+      },
+      {
+        chinese: "礼物要双数, 不要送钟表 (送终的谐音)。",
+        pinyin: "Lǐwù yào shuāngshù, bù yào sòng zhōngbiǎo (sòng zhōng de xiéyīn).",
+        english: "Gifts should be in pairs; never give clocks (sounds like 'attending a funeral').",
+        vi: "Quà phải là số chẵn, đừng tặng đồng hồ (đồng âm với 'tiễn đưa').",
+        pronunciation_focus: ["双数 → shuāngshù (số chẵn)", "钟表 → zhōngbiǎo (đồng hồ)", "送终 → sòng zhōng (tiễn đưa người chết)", "谐音 → xiéyīn (đồng âm)"]
+      },
+      {
+        chinese: "敬酒时, 杯子要比对方的低, 表示尊重。",
+        pinyin: "Jìngjiǔ shí, bēizi yào bǐ duìfāng de dī, biǎoshì zūnzhòng.",
+        english: "When toasting, your glass should be lower than the other person's to show respect.",
+        vi: "Khi mời rượu, ly phải thấp hơn ly đối phương, thể hiện sự tôn trọng.",
+        pronunciation_focus: ["敬酒 → jìngjiǔ (mời rượu)", "杯子 → bēizi (ly/cốc)", "对方 → duìfāng (đối phương)", "尊重 → zūnzhòng"]
+      },
+      {
+        chinese: "礼多人不怪, 多一点客套不会错。",
+        pinyin: "Lǐ duō rén bù guài, duō yīdiǎn kètào bù huì cuò.",
+        english: "Excess courtesy bothers no one — extra politeness never hurts.",
+        vi: "Lễ nhiều người không trách, lịch sự thêm chút không sai.",
+        pronunciation_focus: ["礼多人不怪 → lǐ duō rén bù guài (idiom)", "客套 → kètào (lịch sự xã giao)", "不会错 → bù huì cuò (không sai)", "礼 → lǐ (lễ)"]
+      }
+    ],
+    vocab: [
+      { chinese: "礼仪", pinyin: "lǐ yí", english: "etiquette", vi: "lễ nghi" },
+      { chinese: "面子", pinyin: "miàn zi", english: "face / dignity", vi: "thể diện" },
+      { chinese: "关系", pinyin: "guān xi", english: "relationship", vi: "quan hệ" },
+      { chinese: "敬酒", pinyin: "jìng jiǔ", english: "to propose a toast", vi: "mời rượu" },
+      { chinese: "送礼", pinyin: "sòng lǐ", english: "to give a gift", vi: "tặng quà" },
+      { chinese: "饭局", pinyin: "fàn jú", english: "dinner gathering (business)", vi: "tiệc ăn cơm (xã giao)" },
+      { chinese: "客套", pinyin: "kè tào", english: "polite formality", vi: "khách sáo" },
+      { chinese: "面子工程", pinyin: "miàn zi gōng chéng", english: "face project (showy)", vi: "công trình giữ thể diện" },
+      { chinese: "礼多人不怪", pinyin: "lǐ duō rén bù guài", english: "excess courtesy bothers no one", vi: "lễ nhiều người không trách" },
+      { chinese: "入境问禁", pinyin: "rù jìng wèn jìn", english: "ask about taboos when entering", vi: "vào cõi hỏi cấm kỵ" }
+    ],
+    dialogue: [
+      { speaker: "阮", chinese: "陈先生, 中国和越南的商务礼仪差别大吗?", pinyin: "Chén xiānsheng, Zhōngguó hé Yuènán de shāngwù lǐyí chābié dà ma?", english: "Mr. Chen, are Chinese and Vietnamese business etiquettes very different?", vi: "Anh Trần, lễ nghi kinh doanh Trung-Việt khác nhiều không?" },
+      { speaker: "陈先生", chinese: "整体相似, 但细节差很多。比如我们更重视饭局。", pinyin: "Zhěngtǐ xiāngsì, dàn xìjié chā hěn duō. Bǐrú wǒmen gèng zhòngshì fànjú.", english: "Overall similar, but details differ a lot. We value dinner gatherings more.", vi: "Tổng thể giống, nhưng chi tiết khác nhiều. Ví dụ bọn anh coi trọng tiệc ăn cơm hơn." },
+      { speaker: "阮", chinese: "送礼有什么讲究?", pinyin: "Sòng lǐ yǒu shénme jiǎngjiu?", english: "Any rules for gift-giving?", vi: "Tặng quà có lưu ý gì không?" },
+      { speaker: "陈先生", chinese: "记住三忌: 不送钟、不送伞、不送鞋。这些都有不吉利的谐音。", pinyin: "Jìzhù sān jì: bù sòng zhōng, bù sòng sǎn, bù sòng xié. Zhèxiē dōu yǒu bù jílì de xiéyīn.", english: "Remember three taboos: no clocks, no umbrellas, no shoes. All have unlucky sound-alikes.", vi: "Nhớ ba điều cấm: không tặng đồng hồ, không tặng ô, không tặng giày. Tất cả đều đồng âm xui xẻo." }
+    ],
+    dialogue_long: [
+      { speaker: "阮", chinese: "陈先生, 我下个月要去深圳谈合作, 想请教您一些中国商务礼仪。", pinyin: "Chén xiānsheng, wǒ xià gè yuè yào qù Shēnzhèn tán hézuò, xiǎng qǐngjiào nín yīxiē Zhōngguó shāngwù lǐyí.", english: "Mr. Chen, next month I'll go to Shenzhen for business — I'd like to learn some Chinese business etiquette from you.", vi: "Anh Trần, tháng sau em đi Thâm Quyến đàm phán hợp tác, em muốn xin ý kiến anh về lễ nghi kinh doanh Trung Quốc." },
+      { speaker: "陈先生", chinese: "好啊, 我跟你说几个最重要的。第一, 名片要双手递, 文字朝向对方。", pinyin: "Hǎo a, wǒ gēn nǐ shuō jǐ gè zuì zhòngyào de. Dì yī, míngpiàn yào shuāngshǒu dì, wénzì cháo xiàng duìfāng.", english: "Sure, let me share the most important ones. First, business cards must be passed with both hands, text facing the recipient.", vi: "Được, anh nói em vài điều quan trọng nhất. Thứ nhất, danh thiếp phải đưa bằng hai tay, chữ hướng về người nhận." },
+      { speaker: "阮", chinese: "和越南差不多。还有什么?", pinyin: "Hé Yuènán chàbuduō. Hái yǒu shénme?", english: "Similar to Vietnam. What else?", vi: "Giống Việt Nam. Còn gì nữa?" },
+      { speaker: "陈先生", chinese: "第二, 座位有讲究。主位是面对门的位置, 留给最重要的人。客人坐主位旁边, 不是对面。", pinyin: "Dì èr, zuòwèi yǒu jiǎngjiu. Zhǔ wèi shì miànduì mén de wèizhì, liú gěi zuì zhòngyào de rén. Kèrén zuò zhǔ wèi pángbiān, bù shì duìmiàn.", english: "Second, seating matters. The main seat faces the door, reserved for the most important person. Guests sit next to the main seat, not opposite.", vi: "Thứ hai, vị trí ngồi có quy tắc. Vị trí chính là chỗ đối diện cửa, dành cho người quan trọng nhất. Khách ngồi cạnh vị trí chính, không phải đối diện." },
+      { speaker: "阮", chinese: "原来如此。送礼呢?", pinyin: "Yuánlái rúcǐ. Sòng lǐ ne?", english: "I see. What about gifts?", vi: "Thì ra thế. Còn quà thì sao?" },
+      { speaker: "陈先生", chinese: "送礼最容易出错。三忌: 不送钟 (送终), 不送伞 (散), 不送鞋 (邪)。数量要双数, 不要四 (死)。", pinyin: "Sòng lǐ zuì róngyì chūcuò. Sān jì: bù sòng zhōng (sòng zhōng), bù sòng sǎn (sàn), bù sòng xié (xié). Shùliàng yào shuāngshù, bù yào sì (sǐ).", english: "Gifts are easiest to mess up. Three taboos: no clocks (sounds like funeral), no umbrellas (sounds like 'separate'), no shoes (sounds like 'evil'). Quantity should be even, not four (sounds like 'death').", vi: "Tặng quà dễ sai nhất. Ba kỵ: không đồng hồ (送终 tiễn), không ô (散 chia tách), không giày (邪 tà). Số lượng phải chẵn, đừng tặng 4 (死 chết)." },
+      { speaker: "阮", chinese: "那送什么合适?", pinyin: "Nà sòng shénme héshì?", english: "Then what's appropriate?", vi: "Vậy tặng gì hợp?" },
+      { speaker: "陈先生", chinese: "茶、酒、特产都可以。重点不是贵, 是有心。包装要好, 颜色避免白色和黑色 (丧礼颜色)。", pinyin: "Chá, jiǔ, tèchǎn dōu kěyǐ. Zhòngdiǎn bù shì guì, shì yǒu xīn. Bāozhuāng yào hǎo, yánsè bìmiǎn báisè hé hēisè (sānglǐ yánsè).", english: "Tea, wine, local specialties — all fine. Key isn't expensive, it's thoughtful. Packaging matters; avoid white and black (funeral colors).", vi: "Trà, rượu, đặc sản đều được. Trọng tâm không phải đắt mà là có tâm. Bao bì phải đẹp, tránh trắng và đen (màu tang lễ)." },
+      { speaker: "阮", chinese: "敬酒呢? 我听说很复杂。", pinyin: "Jìngjiǔ ne? Wǒ tīngshuō hěn fùzá.", english: "What about toasting? I heard it's complicated.", vi: "Còn mời rượu? Em nghe phức tạp lắm." },
+      { speaker: "陈先生", chinese: "敬酒规矩多。第一, 给领导敬酒时, 你的杯子要比他的低, 表示尊重。第二, 一干而尽是诚意, 但不能逼别人喝。第三, 主人先敬, 然后按地位顺时针。", pinyin: "Jìngjiǔ guījǔ duō. Dì yī, gěi lǐngdǎo jìngjiǔ shí, nǐ de bēizi yào bǐ tā de dī, biǎoshì zūnzhòng. Dì èr, yī gān ér jìn shì chéngyì, dàn bùnéng bī biérén hē. Dì sān, zhǔrén xiān jìng, ránhòu àn dìwèi shùn shízhēn.", english: "Many toasting rules. First, when toasting a senior, your glass should be lower than his — shows respect. Second, draining the cup shows sincerity, but don't force others. Third, the host toasts first, then by rank clockwise.", vi: "Quy tắc mời rượu nhiều. Thứ nhất, khi mời sếp, ly em phải thấp hơn ly anh ấy, thể hiện tôn trọng. Thứ hai, cạn ly là chân thành, nhưng không ép người khác uống. Thứ ba, chủ nhà mời trước, sau đó theo cấp bậc thuận chiều kim đồng hồ." },
+      { speaker: "阮", chinese: "如果我不能喝酒呢?", pinyin: "Rúguǒ wǒ bùnéng hē jiǔ ne?", english: "What if I can't drink alcohol?", vi: "Nếu em không uống rượu thì sao?" },
+      { speaker: "陈先生", chinese: "可以用茶或饮料代替, 说'我开车' 或 '我吃药' 都行。但你要主动敬酒, 表示尊重。不喝可以, 不敬不行。", pinyin: "Kěyǐ yòng chá huò yǐnliào dàitì, shuō 'wǒ kāichē' huò 'wǒ chī yào' dōu xíng. Dàn nǐ yào zhǔdòng jìngjiǔ, biǎoshì zūnzhòng. Bù hē kěyǐ, bù jìng bùxíng.", english: "You can use tea or juice as substitute, say 'I'm driving' or 'I'm on medication' — both work. But you must proactively toast to show respect. Not drinking is fine; not toasting isn't.", vi: "Có thể thay bằng trà hoặc nước, nói 'em lái xe' hoặc 'em đang uống thuốc' đều được. Nhưng em phải chủ động mời rượu, thể hiện tôn trọng. Không uống được, không mời thì không được." },
+      { speaker: "阮", chinese: "原来面子工程这么细致。还有什么禁忌?", pinyin: "Yuánlái miànzi gōngchéng zhème xìzhì. Hái yǒu shénme jìnjì?", english: "So 'face project' is this detailed. Any other taboos?", vi: "Hóa ra chuyện thể diện chi tiết thế. Còn cấm kỵ gì nữa?" },
+      { speaker: "陈先生", chinese: "不要在饭桌上谈太具体的合同细节, 那是 '杀风景'。先建立关系, 合同细节回会议室再谈。还有一点: 礼多人不怪, 你客套一点, 不会错。", pinyin: "Bù yào zài fànzhuō shàng tán tài jùtǐ de hétong xìjié, nà shì 'shā fēngjǐng'. Xiān jiànlì guānxi, hétong xìjié huí huìyìshì zài tán. Hái yǒu yī diǎn: lǐ duō rén bù guài, nǐ kètào yīdiǎn, bù huì cuò.", english: "Don't discuss contract specifics at the dinner table — that's 'killing the mood'. First build relationship, contract details back in meeting room. One more: excess courtesy bothers no one — being extra polite never hurts.", vi: "Đừng nói chi tiết hợp đồng cụ thể trên bàn ăn, đó là 'phá vibe'. Trước tiên xây quan hệ, chi tiết hợp đồng quay lại phòng họp mới nói. Một điều nữa: lễ nhiều người không trách, em lịch sự hơn một chút, không sai." },
+      { speaker: "阮", chinese: "陈先生, 您今天教我的真是太宝贵了。", pinyin: "Chén xiānsheng, nín jīntiān jiāo wǒ de zhēn shì tài bǎoguì le.", english: "Mr. Chen, what you taught me today is truly precious.", vi: "Anh Trần, những điều anh dạy em hôm nay thật quý báu." },
+      { speaker: "陈先生", chinese: "客气了。入境问禁, 你下次去深圳一定会顺利的。", pinyin: "Kèqì le. Rù jìng wèn jìn, nǐ xià cì qù Shēnzhèn yīdìng huì shùnlì de.", english: "Don't mention it. 'Ask about taboos when entering' — your Shenzhen trip will definitely go well.", vi: "Khách sáo quá. Vào cõi hỏi cấm kỵ, lần đi Thâm Quyến tới của em chắc chắn sẽ thuận lợi." }
+    ],
+    roleplay_prompts: [
+      "Bạn lần đầu đến Trung Quốc đàm phán, được mời ăn tối với 6 người Trung Quốc trong đó có Tổng Giám đốc. Hãy diễn tập 30 giây đầu: chào hỏi, trao danh thiếp đúng cách, tìm vị trí ngồi (đợi chủ nhà sắp xếp, không tự ngồi vào ghế chính).",
+      "Sếp Trung Quốc mời rượu Mao Đài (rượu mạnh) nhưng bạn không uống được. Hãy từ chối khéo: dùng lý do hợp lý ('em đang dùng kháng sinh'), nhưng vẫn nâng ly nước trà mời lại để giữ thể diện. KHÔNG để sếp cảm thấy bạn từ chối thiện chí.",
+      "Bạn muốn tặng quà cho đối tác Trung Quốc nhân dịp ký hợp đồng. Hãy chọn quà phù hợp (cà phê G7 hộp 2 gói + lụa Vạn Phúc 2 cuốn) và soạn vài câu trao quà: '小小心意, 不成敬意, 请您笑纳' — câu khiêm tốn chuẩn."
+    ],
+    register_notes: "Lễ nghi kinh doanh Trung Quốc đặc biệt 'dày' so với Việt Nam — nhiều quy tắc nhỏ chi tiết. Người Việt thường quen với phong cách 'thân thiện, nhanh chóng', người Trung quen với 'chu đáo, có thứ tự'. Bạn phải chuyển sang chế độ Trung khi làm việc với họ.\n\n您 toàn bộ trong context business, kể cả với người ngang cấp lần đầu gặp. Chỉ chuyển sang 你 khi đã thực sự thân (nhiều bữa ăn, đã đi tour cùng nhau).\n\nCác cụm chuẩn lễ nghi:\n- Trao quà: '小小心意, 不成敬意, 请您笑纳' (chút lòng nhỏ, chưa xứng kính trọng, xin anh nhận cười)\n- Nhận quà: '您太客气了, 让您破费了' (anh khách sáo quá, làm anh tốn kém)\n- Mời rượu: '我先干为敬' (em uống cạn trước để tỏ kính); 'jingyige' (敬一个 — kính một ly)\n- Khi không uống được: '我开车不能喝, 以茶代酒' (em lái xe không uống được, dùng trà thay rượu)\n- Cảm ơn host: '让您破费了, 下次我做东' (làm anh tốn kém, lần sau em làm chủ)\n\nTránh tuyệt đối: (a) Tặng đồng hồ, ô, giày, dao, khăn tay (đều có ý xui); (b) Quà số 4 (tử = chết); (c) Bao bì trắng/đen (tang); (d) Tặng quà quá đắt (>1000 nhân dân tệ ở lần đầu = bị nghi hối lộ); (e) Nói số tiền trên quà ('cái này 500 tệ thôi') — vô lễ.",
+    idiom_glosses: [
+      {
+        idiom: "礼多人不怪",
+        literal: "lễ nhiều người không trách (lǐ duō rén bù guài)",
+        meaning: "Quá lễ độ không ai trách — thà thừa lịch sự còn hơn thiếu. Triết lý dùng cho người mới học etiquette: khi không chắc, chọn cách lịch sự nhất. Sếp Trung Quốc rất thích người tuân theo nguyên tắc này.",
+        example: "礼多人不怪, 客套一点没坏处。"
+      },
+      {
+        idiom: "入境问禁",
+        literal: "vào cõi hỏi cấm (rù jìng wèn jìn)",
+        meaning: "Vào nơi nào nên hỏi điều cấm kỵ ở đó — chủ động tìm hiểu phong tục địa phương trước khi hành động. Cụm khuyến khích sự chuẩn bị, đặc biệt khi đến môi trường mới (Trung Quốc, công ty mới).",
+        example: "入境问禁, 我提前问了同事很多礼仪。"
+      },
+      {
+        idiom: "面子工程",
+        literal: "công trình thể diện (miàn zi gōng chéng)",
+        meaning: "Việc làm vì thể diện — đầu tư vào hình thức để giữ hoặc tạo thể diện. Thường mang nghĩa hơi tiêu cực ('phô trương'), nhưng trong context business là điều cần thiết. Dùng để miêu tả các nghi thức đãi khách trang trọng.",
+        example: "中国商务里, 面子工程是必不可少的。"
+      },
+      {
+        idiom: "客随主便",
+        literal: "khách theo chủ tiện (kè suí zhǔ biàn)",
+        meaning: "Khách tùy theo sự sắp xếp của chủ nhà — không tự đặt yêu cầu. Phẩm chất khách lý tưởng: linh hoạt, không khó tính. Khi bạn là khách ở Trung Quốc, đây là phương châm an toàn.",
+        example: "我客随主便, 您安排什么我都行。"
+      }
+    ],
+    cultural_notes_vi: "Lễ nghi kinh doanh Trung Quốc đại lục là 'lớp học' phức tạp nhất mà người Việt phải học khi làm ăn xuyên biên giới. Sáu khu vực dễ sai nhất: (1) DANH THIẾP — hai tay đưa, mặt chữ hướng đối phương, kèm 'qǐng duōduō zhǐjiào'. Nhận xong PHẢI đọc kỹ 5-10 giây, có thể bình luận ('哦, 您是负责...'), sau đó đặt trên bàn TRƯỚC MẶT (không cất ngay). Cất ngay = không tôn trọng. (2) VỊ TRÍ NGỒI — vị trí 'đầu bàn' (主位) đối diện cửa, dành cho người quan trọng nhất (host hoặc khách VIP). Khách quý ngồi BÊN PHẢI host, không đối diện. Người trẻ/cấp thấp ngồi gần cửa (để tiện đi lấy đồ). KHÔNG bao giờ tự chọn vị trí — đợi host sắp xếp. (3) GỌI MÓN — host gọi món, khách KHÔNG nên gọi (kể cả nếu host hỏi). Nếu host nhất định mời gọi, gọi 1 món rẻ tiền nhất. Số món bằng số người + 1 (8 người = 9 món, kèm 1 món súp + 1 món tráng miệng). Đặt mức giá phải xứng tầm khách — quá rẻ làm mất thể diện chính mình. (4) ĐŨA — KHÔNG cắm thẳng vào bát cơm (giống nhang thắp trong tang); KHÔNG để chéo nhau (xui); KHÔNG dùng đũa để chỉ vào người (vô lễ). KHÔNG xoay đĩa Lazy Susan ngược chiều kim đồng hồ. (5) RƯỢU — host mời ly đầu, sau đó cấp dưới đi mời từng cấp trên một. Mời rượu = tay phải cầm ly, tay trái đỡ đáy ly, ly thấp hơn ly đối phương. '我先干为敬' (em cạn trước để tỏ kính) — câu mở chuẩn. Nếu uống Mao Đài hoặc Erguotou (rượu mạnh), mỗi shot 30-50ml. (6) THANH TOÁN — chiến đấu trả tiền là phong tục. Bạn và host sẽ giả vờ tranh nhau. Người 'thắng' là host. Khách không bao giờ thực sự được trả — chỉ giả vờ.\n\nVề face: 'cho mặt' và 'mất mặt' chi phối tất cả. Cho mặt = công nhận giá trị/chức vụ của đối phương trước người khác (gọi đúng chức danh, dành chỗ ngồi tốt, mời rượu trước, khen công khai). Mất mặt = chỉ trích trước mặt người khác, từ chối thẳng đề xuất, để thấy điểm yếu trước số đông.\n\nVề quà: ngân sách lần đầu 200-500 nhân dân tệ; lần thứ 2-3 lên 500-1000; quan hệ thân 1000-2000. Đắt hơn = nghi hối lộ, ảnh hưởng quan hệ. Đặc sản Việt Nam (cà phê G7, lụa, tranh Đông Hồ) là an toàn vì 'lạ' với người Trung.",
+    tip_advice_vi: "(1) HỌC THUỘC 10 cụm cứng trước khi đi Trung Quốc: '一路辛苦了', '请多多指教', '我先干为敬', '小小心意请您笑纳', '让您破费了', '客随主便', '入乡随俗', '礼多人不怪', '宾至如归', '后会有期'. Dùng đúng cụm = ấn tượng formal mạnh. (2) Mang theo 'gift kit' Việt Nam: 5-6 hộp quà nhỏ-vừa-lớn để chuẩn bị các tình huống. Gói sẵn bằng giấy đỏ (màu may mắn Trung Quốc), TUYỆT ĐỐI không trắng/đen. (3) Trước cuộc gặp, nghiên cứu cấp bậc của TẤT CẢ người sẽ tham dự + chức danh chính xác. Gọi sai chức danh ('Phó Tổng' thành 'Tổng', hay ngược lại) là lỗi nặng. Giấy ghi chú trong sổ tay là OK. (4) Đến SỚM 10-15 phút cho mọi cuộc hẹn. Trễ = thiếu tôn trọng nghiêm trọng (kể cả 5 phút). Nếu kẹt xe, gọi báo TRƯỚC khi trễ, không sau. (5) Trong bữa ăn, ĂN CHẬM, theo nhịp host. KHÔNG hết đồ trên đĩa của mình (nghĩa là chủ nhà chưa cho đủ). Cứ để lại 10-15% thức ăn = chủ nhà đãi đủ. KHÔNG xin thêm cơm khi sếp chưa xin. (6) Sau bữa ăn, gửi tin WeChat trong 24h: '王总, 昨晚的招待让我深受感动, 谢谢您的盛情' (cảm động vì sự đãi đằng tối qua, cảm ơn anh tận tình). Cụm '盛情' (shèngqíng — thịnh tình) là chuẩn formal. (7) Học thuộc 5 'gift taboos' (đồng hồ, ô, giày, dao, khăn tay) và 3 'số xui' (4, 14, 44). Dán bên trong wallet làm cheat sheet — KHÔNG để bị bắt gặp tặng nhầm.",
+    exercises: [
+      { type: "fill-blank", question: "礼多人不怪, 客套一点 ___ 错。", answer: "不会" },
+      {
+        type: "matching",
+        instruction: "Ghép cụm tiếng Trung lễ nghi với nghĩa tiếng Việt.",
+        pairs: [
+          { chinese: "面子", pinyin: "miàn zi", english: "thể diện" },
+          { chinese: "敬酒", pinyin: "jìng jiǔ", english: "mời rượu" },
+          { chinese: "入境问禁", pinyin: "rù jìng wèn jìn", english: "vào cõi hỏi cấm kỵ" },
+          { chinese: "客随主便", pinyin: "kè suí zhǔ biàn", english: "khách tùy chủ" }
+        ]
+      },
+      {
+        type: "translation",
+        vietnamese: "Trong làm ăn Trung Quốc, thể diện và quan hệ quan trọng hơn hợp đồng. Vào cõi hỏi cấm kỵ, em sẽ học hỏi trước khi đi.",
+        chinese: "在中国做生意, 面子和关系比合同重要。入境问禁, 我会先了解再去。",
+        pinyin: "Zài zhōng guó zuò shēng yi, miàn zi hé guān xi bǐ hé tong zhòng yào. Rù jìng wèn jìn, wǒ huì xiān liǎo jiě zài qù."
+      }
+    ]
+  },
+  {
+    id: 66,
+    level: "B2",
+    category: "cultural_communication",
+    title: "为文化误解道歉",
+    pinyin: "wèi wén huà wù jiě dào qiàn",
+    topic: "Apologizing for cultural misunderstanding",
+    title_vi: "Xin lỗi vì hiểu lầm văn hóa",
+    title_en: "Apologizing for a cultural misunderstanding",
+    sentences: [
+      {
+        chinese: "王总, 昨天的事我深感抱歉, 是我考虑不周。",
+        pinyin: "Wáng zǒng, zuótiān de shì wǒ shēn gǎn bàoqiàn, shì wǒ kǎolǜ bù zhōu.",
+        english: "Director Wang, I deeply apologize about yesterday — I didn't consider thoroughly.",
+        vi: "Tổng Vương, em xin lỗi sâu sắc về việc hôm qua, do em chưa suy nghĩ chu toàn.",
+        pronunciation_focus: ["深感抱歉 → shēn gǎn bàoqiàn (xin lỗi sâu sắc)", "考虑不周 → kǎolǜ bù zhōu (suy nghĩ chưa chu toàn)", "昨天 → zuótiān", "事 → shì"]
+      },
+      {
+        chinese: "我不知道送钟在中国是大忌讳, 没有恶意, 请您见谅。",
+        pinyin: "Wǒ bù zhīdào sòng zhōng zài Zhōngguó shì dà jìhuì, méiyǒu èyì, qǐng nín jiànliàng.",
+        english: "I didn't know giving a clock is a big taboo in China — no malice, please forgive me.",
+        vi: "Em không biết tặng đồng hồ là điều đại kỵ ở Trung Quốc, em không có ý xấu, xin anh thông cảm.",
+        pronunciation_focus: ["忌讳 → jìhuì (điều cấm kỵ)", "恶意 → èyì (ý xấu)", "见谅 → jiànliàng (thông cảm — formal)", "送钟 → sòng zhōng"]
+      },
+      {
+        chinese: "知错就改, 我以后会更加用心了解贵国文化。",
+        pinyin: "Zhī cuò jiù gǎi, wǒ yǐhòu huì gèngjiā yòngxīn liǎojiě guì guó wénhuà.",
+        english: "Knowing the mistake, I'll change — from now on I'll more carefully learn about your country's culture.",
+        vi: "Biết sai sửa ngay, em sau này sẽ chú tâm hơn để tìm hiểu văn hóa quý quốc.",
+        pronunciation_focus: ["知错就改 → zhī cuò jiù gǎi (idiom)", "用心 → yòngxīn (chú tâm)", "贵国 → guì guó (quý quốc — formal)", "了解 → liǎojiě"]
+      },
+      {
+        chinese: "希望这件事不会影响我们的合作关系。",
+        pinyin: "Xīwàng zhè jiàn shì bù huì yǐngxiǎng wǒmen de hézuò guānxi.",
+        english: "I hope this incident won't affect our cooperation.",
+        vi: "Mong việc này không ảnh hưởng đến quan hệ hợp tác của chúng ta.",
+        pronunciation_focus: ["影响 → yǐngxiǎng (ảnh hưởng)", "合作关系 → hézuò guānxi (quan hệ hợp tác)", "希望 → xīwàng", "事 → shì"]
+      },
+      {
+        chinese: "化干戈为玉帛, 让我用诚意补救。",
+        pinyin: "Huà gāngē wéi yùbó, ràng wǒ yòng chéngyì bǔjiù.",
+        english: "Turn weapons into jade and silk — let me make amends with sincerity.",
+        vi: "Hóa can qua thành ngọc lụa, để em dùng chân thành chuộc lại.",
+        pronunciation_focus: ["化干戈为玉帛 → huà gāngē wéi yùbó (idiom: hóa giải xung đột)", "诚意 → chéngyì (chân thành)", "补救 → bǔjiù (chuộc lại)", "让 → ràng"]
+      }
+    ],
+    vocab: [
+      { chinese: "误解", pinyin: "wù jiě", english: "misunderstanding", vi: "hiểu lầm" },
+      { chinese: "道歉", pinyin: "dào qiàn", english: "to apologize", vi: "xin lỗi" },
+      { chinese: "深感抱歉", pinyin: "shēn gǎn bào qiàn", english: "deeply apologize", vi: "xin lỗi sâu sắc" },
+      { chinese: "考虑不周", pinyin: "kǎo lǜ bù zhōu", english: "didn't consider thoroughly", vi: "suy nghĩ chưa chu toàn" },
+      { chinese: "忌讳", pinyin: "jì huì", english: "taboo", vi: "điều cấm kỵ" },
+      { chinese: "见谅", pinyin: "jiàn liàng", english: "please forgive (formal)", vi: "thông cảm" },
+      { chinese: "知错就改", pinyin: "zhī cuò jiù gǎi", english: "know the mistake and change", vi: "biết sai sửa ngay" },
+      { chinese: "将心比心", pinyin: "jiāng xīn bǐ xīn", english: "put heart against heart (empathy)", vi: "lấy lòng đo lòng" },
+      { chinese: "化干戈为玉帛", pinyin: "huà gān gē wéi yù bó", english: "turn weapons into peace", vi: "hóa can qua thành ngọc lụa" },
+      { chinese: "赔礼道歉", pinyin: "péi lǐ dào qiàn", english: "make formal apology", vi: "tạ lỗi xin lỗi" }
+    ],
+    dialogue: [
+      { speaker: "黎", chinese: "王总, 昨天我送您的礼物, 请您先别拆。", pinyin: "Wáng zǒng, zuótiān wǒ sòng nín de lǐwù, qǐng nín xiān bié chāi.", english: "Director Wang, the gift I gave you yesterday — please don't open it yet.", vi: "Tổng Vương, quà em tặng anh hôm qua, xin anh khoan mở." },
+      { speaker: "王总", chinese: "怎么了?", pinyin: "Zěnme le?", english: "What's the matter?", vi: "Có chuyện gì?" },
+      { speaker: "黎", chinese: "那是个钟表, 我不知道在中国是忌讳。我深感抱歉。", pinyin: "Nà shì gè zhōngbiǎo, wǒ bù zhīdào zài Zhōngguó shì jìhuì. Wǒ shēn gǎn bàoqiàn.", english: "It's a clock — I didn't know it's taboo in China. I deeply apologize.", vi: "Đó là đồng hồ, em không biết ở Trung Quốc là điều kỵ. Em xin lỗi sâu sắc." },
+      { speaker: "王总", chinese: "没关系, 你不知道情有可原。我们换个礼物就行。", pinyin: "Méi guānxi, nǐ bù zhīdào qíng yǒu kě yuán. Wǒmen huàn gè lǐwù jiù xíng.", english: "It's fine, your not knowing is understandable. Let's just exchange the gift.", vi: "Không sao, em không biết là có lý do. Mình đổi quà khác là được." }
+    ],
+    dialogue_long: [
+      { speaker: "黎", chinese: "王总, 您好。我想跟您当面道歉。", pinyin: "Wáng zǒng, nín hǎo. Wǒ xiǎng gēn nín dāngmiàn dàoqiàn.", english: "Director Wang, hello. I'd like to apologize to you in person.", vi: "Tổng Vương, em chào anh. Em muốn xin lỗi anh trực tiếp." },
+      { speaker: "王总", chinese: "怎么了, 小黎? 这么严肃。", pinyin: "Zěnme le, Xiǎo Lí? Zhème yánsù.", english: "What's wrong, Little Le? So serious.", vi: "Có chuyện gì vậy Tiểu Lê? Nghiêm trọng thế." },
+      { speaker: "黎", chinese: "昨天的会议, 我直接当着所有人说您的方案有问题。事后我才意识到, 这在中国文化里是给您'丢面子'。", pinyin: "Zuótiān de huìyì, wǒ zhíjiē dāng zhe suǒyǒu rén shuō nín de fāng'àn yǒu wèntí. Shìhòu wǒ cái yìshí dào, zhè zài Zhōngguó wénhuà lǐ shì gěi nín 'diū miànzi'.", english: "Yesterday's meeting, I directly said your proposal had problems in front of everyone. Only afterward did I realize this caused you to 'lose face' in Chinese culture.", vi: "Cuộc họp hôm qua, em trực tiếp nói trước mặt mọi người rằng phương án của anh có vấn đề. Sau đó em mới nhận ra, trong văn hóa Trung Quốc đây là làm anh 'mất mặt'." },
+      { speaker: "王总", chinese: "嗯, 你这样说我老实告诉你, 我当时是不太舒服。但你没意识到也情有可原。", pinyin: "Èn, nǐ zhèyàng shuō wǒ lǎoshi gàosu nǐ, wǒ dāngshí shì bù tài shūfu. Dàn nǐ méi yìshí dào yě qíng yǒu kě yuán.", english: "Hmm, since you ask, honestly I wasn't comfortable at that moment. But your not realizing is understandable.", vi: "Ừm, em hỏi vậy thì tôi thật thà nói, lúc đó tôi cũng không thoải mái. Nhưng em không nhận ra cũng có lý do." },
+      { speaker: "黎", chinese: "我深感抱歉, 是我考虑不周。在越南我们直接讨论问题是常态, 但我应该入境问禁。", pinyin: "Wǒ shēn gǎn bàoqiàn, shì wǒ kǎolǜ bù zhōu. Zài Yuènán wǒmen zhíjiē tǎolùn wèntí shì chángtài, dàn wǒ yīnggāi rù jìng wèn jìn.", english: "I deeply apologize, didn't think it through. In Vietnam directly discussing problems is normal, but I should have asked about local taboos.", vi: "Em xin lỗi sâu sắc, em chưa suy nghĩ chu toàn. Ở Việt Nam thảo luận thẳng vấn đề là bình thường, nhưng em nên 'vào cõi hỏi cấm kỵ'." },
+      { speaker: "王总", chinese: "你能这么想就很好。文化差异本来就需要时间适应。", pinyin: "Nǐ néng zhème xiǎng jiù hěn hǎo. Wénhuà chāyì běnlái jiù xūyào shíjiān shìyìng.", english: "Your thinking this way is good. Cultural differences naturally need time to adapt.", vi: "Em nghĩ thế là tốt rồi. Khác biệt văn hóa vốn cần thời gian thích nghi." },
+      { speaker: "黎", chinese: "下次开会, 如果我对您的方案有不同意见, 我会先私下跟您讨论, 不再当众提。", pinyin: "Xià cì kāihuì, rúguǒ wǒ duì nín de fāng'àn yǒu bùtóng yìjiàn, wǒ huì xiān sīxià gēn nín tǎolùn, bù zài dāngzhòng tí.", english: "Next meeting, if I have different opinions on your proposal, I'll discuss with you privately first, not raise them publicly.", vi: "Cuộc họp tới, nếu em có ý kiến khác về phương án của anh, em sẽ thảo luận riêng với anh trước, không nêu trước mọi người nữa." },
+      { speaker: "王总", chinese: "对, 这就是对的方式。我们中国人讲究 '内外有别', 内部讨论再公开决定。", pinyin: "Duì, zhè jiùshì duì de fāngshì. Wǒmen Zhōngguó rén jiǎngjiu 'nèiwài yǒu bié', nèibù tǎolùn zài gōngkāi juédìng.", english: "Yes, that's the right way. We Chinese value 'distinguish inside from outside' — discuss internally then publicly decide.", vi: "Đúng, đó mới là cách đúng. Người Trung Quốc bọn anh coi trọng 'nội ngoại có biệt' — thảo luận nội bộ rồi công khai quyết định." },
+      { speaker: "黎", chinese: "我明白了。我也想用诚意补救。我准备了一份小礼物, 也想请您和团队共进晚餐, 让我重新表达诚意。", pinyin: "Wǒ míngbái le. Wǒ yě xiǎng yòng chéngyì bǔjiù. Wǒ zhǔnbèi le yī fèn xiǎo lǐwù, yě xiǎng qǐng nín hé tuánduì gòng jìn wǎncān, ràng wǒ chóngxīn biǎodá chéngyì.", english: "I understand. I'd like to make amends with sincerity. I've prepared a small gift, and would like to invite you and the team to dinner — let me re-express my sincerity.", vi: "Em hiểu rồi. Em cũng muốn dùng chân thành chuộc lại. Em đã chuẩn bị một món quà nhỏ, và mong mời anh và team ăn tối, để em thể hiện lại sự chân thành." },
+      { speaker: "王总", chinese: "你不用这么客气。一次小误会不必这么认真。", pinyin: "Nǐ bùyòng zhème kèqì. Yī cì xiǎo wùhuì bù bì zhème rènzhēn.", english: "You don't need to be so formal. One small misunderstanding doesn't need this much seriousness.", vi: "Em không cần khách sáo thế. Một hiểu lầm nhỏ không cần nghiêm trọng vậy." },
+      { speaker: "黎", chinese: "知错就改是基本。化干戈为玉帛, 我希望我们的合作能更顺畅。", pinyin: "Zhī cuò jiù gǎi shì jīběn. Huà gāngē wéi yùbó, wǒ xīwàng wǒmen de hézuò néng gèng shùnchàng.", english: "Knowing mistake and changing is basic. Turn weapons into peace — I hope our cooperation can be smoother.", vi: "Biết sai sửa ngay là căn bản. Hóa can qua thành ngọc lụa, em mong hợp tác mình thuận lợi hơn." },
+      { speaker: "王总", chinese: "你这态度让我刮目相看。年轻人能这样反思就很难得。", pinyin: "Nǐ zhè tàidu ràng wǒ guāmù xiāngkàn. Niánqīng rén néng zhèyàng fǎnsī jiù hěn nándé.", english: "Your attitude makes me see you in a new light. Young people who can self-reflect like this are rare.", vi: "Thái độ của em khiến tôi nhìn em khác đi. Người trẻ biết phản tư như vậy là hiếm." },
+      { speaker: "黎", chinese: "您过奖了。将心比心, 如果是我被人当众批评, 我也会不舒服。", pinyin: "Nín guòjiǎng le. Jiāng xīn bǐ xīn, rúguǒ shì wǒ bèi rén dāngzhòng pīpíng, wǒ yě huì bù shūfu.", english: "You flatter me. Heart compared to heart — if I were publicly criticized, I'd also feel bad.", vi: "Anh quá khen. Lấy lòng đo lòng, nếu em bị phê bình trước mọi người, em cũng sẽ không thoải mái." },
+      { speaker: "王总", chinese: "这事就翻篇了。明晚我准时到, 团队一起去。", pinyin: "Zhè shì jiù fān piān le. Míng wǎn wǒ zhǔnshí dào, tuánduì yīqǐ qù.", english: "This matter is closed. Tomorrow night I'll arrive on time, team will go together.", vi: "Việc này coi như khép lại. Tối mai tôi sẽ đến đúng giờ, cả team cùng đi." },
+      { speaker: "黎", chinese: "太好了, 谢谢王总的宽容。", pinyin: "Tài hǎo le, xièxie Wáng zǒng de kuānróng.", english: "Wonderful, thank you Director Wang for your tolerance.", vi: "Tuyệt quá, cảm ơn anh Vương đã rộng lòng." },
+      { speaker: "王总", chinese: "客气什么。一来二去, 我们就成朋友了。", pinyin: "Kèqì shénme. Yī lái èr qù, wǒmen jiù chéng péngyou le.", english: "Don't mention it. Back and forth, we become friends.", vi: "Khách sáo gì. Qua lại vài lần, mình sẽ thành bạn." }
+    ],
+    roleplay_prompts: [
+      "Bạn vô tình tặng đồng hồ cho khách Trung Quốc làm quà ký hợp đồng. Sau khi biết là điều kỵ, hãy gặp gỡ xin lỗi: thừa nhận lỗi không che giấu, giải thích bạn không có ý xấu, đề xuất đổi quà khác. Dùng cụm '深感抱歉' và '考虑不周'.",
+      "Trong buổi tiệc, bạn quên không cụng ly với sếp Trung Quốc cấp cao nhất, gây 'mất mặt'. Sáng hôm sau, gọi cho thư ký sếp xin sắp xếp gặp riêng để xin lỗi. Dùng cụm '将心比心' và '化干戈为玉帛'.",
+      "Đồng nghiệp Trung Quốc kể với bạn rằng bạn đã cho họ 'mất mặt' khi sửa lỗi tiếng Trung của họ trước mặt sếp. Bạn không cố ý nhưng đã sai. Hãy xin lỗi: thừa nhận lỗi cụ thể + cam kết thay đổi (sửa lỗi riêng tư) + đề xuất bù đắp (mời ăn trưa)."
+    ],
+    register_notes: "Xin lỗi qua văn hóa là tình huống nhạy cảm — phải vừa formal đủ để show respect, vừa chân thành để đối phương cảm nhận. Người Trung Quốc đặc biệt nhạy với tone xin lỗi: quá nhẹ = không thật lòng; quá nặng = giả tạo.\n\nThang formal của xin lỗi (từ nhẹ đến nặng):\n- '不好意思' (bù hǎoyìsi) — nhẹ, dùng cho lỗi nhỏ hàng ngày\n- '对不起' (duìbuqǐ) — chuẩn, đủ cho lỗi vừa\n- '抱歉' (bàoqiàn) — formal hơn, cho lỗi business\n- '深感抱歉' (shēn gǎn bàoqiàn) — sâu sắc, cho lỗi gây hậu quả\n- '诚挚地道歉' (chéngzhì de dàoqiàn) — chân thành xin lỗi, cho lỗi nghiêm trọng\n- '负荆请罪' (fù jīng qǐng zuì) — vác cành gai xin tội (cổ điển, chỉ dùng văn nói formal hoặc viết)\n\nCác cụm chuẩn:\n- '我深感抱歉, 是我考虑不周' (xin lỗi sâu sắc, do em chưa chu toàn) — xin lỗi + nhận trách nhiệm\n- '请您见谅' (xin anh thông cảm) — xin được tha thứ\n- '知错就改, 以后不会再犯' (biết sai sửa, sau không tái phạm) — cam kết\n- '我希望这件事不会影响我们的关系' (mong việc này không ảnh hưởng quan hệ) — đặt vấn đề lên bàn\n- '让我用行动补救' (để em dùng hành động chuộc lại) — đề xuất bù đắp cụ thể\n\nTránh: (a) Excuse quá nhiều ('vì A vì B vì C') — bị coi là không thật lòng; (b) 'Tôi không có ý đó' (我没那个意思) — phòng thủ thay vì nhận lỗi; (c) Xin lỗi qua tin nhắn cho lỗi nghiêm trọng — phải gặp trực tiếp.",
+    idiom_glosses: [
+      {
+        idiom: "知错就改",
+        literal: "biết sai liền sửa (zhī cuò jiù gǎi)",
+        meaning: "Biết sai sửa ngay — phẩm chất quân tử, không che giấu lỗi. Cụm cam kết khi xin lỗi: thừa nhận + cam kết thay đổi. Người Trung Quốc đánh giá rất cao thái độ này.",
+        example: "知错就改是基本道德。"
+      },
+      {
+        idiom: "将心比心",
+        literal: "lấy lòng đo lòng (jiāng xīn bǐ xīn)",
+        meaning: "Lấy tâm mình đo tâm người — đặt mình vào vị trí người khác. Cụm thể hiện đồng cảm khi xin lỗi: 'nếu em là anh, em cũng sẽ buồn'. Tăng tính chân thành.",
+        example: "将心比心, 我能理解您的感受。"
+      },
+      {
+        idiom: "化干戈为玉帛",
+        literal: "hóa can qua thành ngọc lụa (huà gān gē wéi yù bó)",
+        meaning: "Biến vũ khí (干戈 — giáo mác) thành quà tặng (玉帛 — ngọc lụa) — chuyển xung đột thành hòa bình. Cụm cao cấp dùng khi muốn 'lật trang' sau xung đột. Văn vẻ — gây ấn tượng mạnh.",
+        example: "希望我们能化干戈为玉帛, 重新合作。"
+      },
+      {
+        idiom: "赔礼道歉",
+        literal: "đền lễ xin lỗi (péi lǐ dào qiàn)",
+        meaning: "Tạ lỗi xin lỗi — xin lỗi formal kèm hành động bù đắp. Mạnh hơn '道歉' đơn lẻ. Dùng khi lỗi nghiêm trọng cần 'compensation' (quà, mời ăn, dịch vụ).",
+        example: "我专程来赔礼道歉, 请您原谅。"
+      }
+    ],
+    cultural_notes_vi: "Xin lỗi qua văn hóa Việt-Trung khác biệt sâu sắc: ở Việt Nam, 'xin lỗi' thường nhanh và nhẹ ('xin lỗi nhé'); ở Trung Quốc, xin lỗi formal là sự kiện QUAN TRỌNG, đòi hỏi nghi thức. Sáu nguyên tắc: (1) GẶP TRỰC TIẾP khi lỗi nghiêm trọng (làm mất mặt, vi phạm taboo lớn). Tin nhắn/email = nửa hiệu lực. Gọi điện tốt hơn tin nhắn nhưng vẫn kém gặp mặt. (2) XIN LỖI RIÊNG nếu lỗi gây mất mặt công khai. KHÔNG xin lỗi trước nhiều người — đó là tự gây thêm mất mặt cho cả hai bên. (3) THỜI ĐIỂM xin lỗi: trong 24-48 giờ sau lỗi. Quá sớm (1-2 giờ) = chưa kịp suy nghĩ thấu đáo, có vẻ phản xạ. Quá muộn (>3 ngày) = đã quên, không quan tâm. 'Sweet spot' là sáng hôm sau. (4) CẤU TRÚC chuẩn: (a) thừa nhận lỗi cụ thể; (b) giải thích nguyên nhân (không bào chữa); (c) thừa nhận hậu quả; (d) cam kết thay đổi; (e) đề xuất bù đắp cụ thể. Thiếu bước nào = không đủ chân thành. (5) 'BÙ ĐẮP' (补救) phải có hành động cụ thể: mời ăn, tặng quà phù hợp, làm việc gì đó cho đối phương. Lời xin lỗi mà không có action = lời rỗng. (6) Sau khi nhận tha thứ, KHÔNG nhắc lại lỗi đó nữa. Người Trung Quốc đã 'lật trang' — bạn cũng phải lật. Nhắc lại = dằn vặt + làm họ khó chịu.\n\nMột số 'lỗi văn hóa' phổ biến của người Việt khi làm với người Trung: tặng đồng hồ/ô/giày (taboo), phê bình công khai (làm mất mặt), gọi sếp bằng nickname trẻ trung (thiếu tôn trọng), từ chối rượu thẳng thừng (không cho mặt host), không trả lời WeChat trong nhiều giờ (xem nhẹ quan hệ), mặc áo trắng/đen tới tiệc (màu tang), tặng quà số 4 (xui).\n\nVề 'face' và xin lỗi: lỗi làm 'mất mặt' (丢面子) là lỗi nặng nhất trong văn hóa Trung Quốc — nặng hơn lỗi tiền/thời gian. Nếu bạn vô tình làm sếp/đối tác mất mặt trước người khác, xin lỗi RIÊNG + bồi thường bằng cách cho họ MẶT lại trong dịp tiếp theo (khen công khai, mời nói trước đoàn, đặt họ ở vị trí trang trọng).\n\nVề tha thứ: người Trung Quốc thường nói 'không sao' (没关系) ngay cả khi vẫn còn buồn — đây là phép lịch sự, không phải tha thứ thật. Quan sát hành vi tiếp theo: họ vẫn mời bạn ăn, vẫn invite bạn vào dự án = đã tha thứ thật. Họ né tránh, không trả lời tin nhắn = chưa tha thứ, cần xin lỗi sâu hơn.",
+    tip_advice_vi: "(1) ĐỪNG xin lỗi quá nhanh trên WeChat ngay sau lỗi — bị coi là phản xạ thiếu suy nghĩ. Đợi 12-24 giờ, gọi điện hoặc gặp trực tiếp. (2) Chuẩn bị 4 phần cho lời xin lỗi: thừa nhận cụ thể (lỗi gì) + nguyên nhân (không bào chữa) + cam kết thay đổi + đề xuất bù đắp. Mỗi phần 1-2 câu, tổng 4-8 câu. (3) Ngôn ngữ thân thể: cúi đầu nhẹ khi xin lỗi (15-30 độ), nhìn vào mắt, KHÔNG cười. Nụ cười tự nhiên của người Việt có thể bị hiểu lầm là không nghiêm túc. (4) Nếu lỗi liên quan đến tiền/business loss, phải có 'compensation' cụ thể: trả lại tiền, làm thêm dịch vụ miễn phí, giảm giá lần sau. Lời xin lỗi không + bù đắp = không đủ. (5) KHÔNG kể với người khác về lỗi của bạn (kể cả bạn bè) trước khi đối phương đã tha thứ. Người Trung Quốc rất ghét chuyện riêng bị lan truyền. (6) Sau khi nhận tha thứ, gửi tin WeChat trong 24-48h: '王总, 您的宽容让我深受感动。我会记住这次教训, 以后绝不再犯' (sự rộng lòng của anh khiến em xúc động. Em sẽ ghi nhớ bài học, sẽ không tái phạm). Đóng vòng tròn quan trọng. (7) Tránh '过度补救' (overcompensation) — tặng quà đắt sau khi xin lỗi sẽ bị coi là 'mua chuộc'. Quà nên ngang giá trị thông thường (200-500 tệ), tập trung vào sự chu đáo (đặc sản Việt, thư tay, ảnh cá nhân) thay vì giá tiền.",
+    exercises: [
+      { type: "fill-blank", question: "知错就改, 我以后会更加 ___ 了解贵国文化。", answer: "用心" },
+      {
+        type: "matching",
+        instruction: "Ghép cụm tiếng Trung xin lỗi với nghĩa tiếng Việt.",
+        pairs: [
+          { chinese: "深感抱歉", pinyin: "shēn gǎn bào qiàn", english: "xin lỗi sâu sắc" },
+          { chinese: "考虑不周", pinyin: "kǎo lǜ bù zhōu", english: "suy nghĩ chưa chu toàn" },
+          { chinese: "知错就改", pinyin: "zhī cuò jiù gǎi", english: "biết sai sửa ngay" },
+          { chinese: "化干戈为玉帛", pinyin: "huà gān gē wéi yù bó", english: "hóa can qua thành ngọc lụa" }
+        ]
+      },
+      {
+        type: "translation",
+        vietnamese: "Em xin lỗi sâu sắc vì việc hôm qua, do em chưa suy nghĩ chu toàn. Em không có ý xấu, xin anh thông cảm.",
+        chinese: "我为昨天的事深感抱歉, 是我考虑不周。我没有恶意, 请您见谅。",
+        pinyin: "Wǒ wèi zuó tiān de shì shēn gǎn bào qiàn, shì wǒ kǎo lǜ bù zhōu. Wǒ méi yǒu è yì, qǐng nín jiàn liàng."
+      }
+    ]
+  },
+  {
+    id: 68,
+    level: "B2",
+    category: "cultural_communication",
+    title: "宴请中国客人",
+    pinyin: "yàn qǐng zhōng guó kè rén",
+    topic: "Banquet etiquette with Chinese guests",
+    title_vi: "Đãi tiệc khách Trung Quốc",
+    title_en: "Banquet etiquette with Chinese guests",
+    sentences: [
+      {
+        chinese: "王总, 这是您的座位, 主位面对门, 我坐您旁边。",
+        pinyin: "Wáng zǒng, zhè shì nín de zuòwèi, zhǔ wèi miàn duì mén, wǒ zuò nín pángbiān.",
+        english: "Director Wang, this is your seat — main seat faces the door, I'll sit beside you.",
+        vi: "Tổng Vương, đây là chỗ của anh, vị trí chính đối diện cửa, em ngồi bên cạnh anh.",
+        pronunciation_focus: ["主位 → zhǔ wèi (vị trí chính)", "面对门 → miàn duì mén (đối diện cửa)", "座位 → zuòwèi (chỗ ngồi)", "旁边 → pángbiān"]
+      },
+      {
+        chinese: "我先敬您一杯, 感谢您一直以来对我们公司的支持。",
+        pinyin: "Wǒ xiān jìng nín yī bēi, gǎnxiè nín yīzhí yǐlái duì wǒmen gōngsī de zhīchí.",
+        english: "Let me first toast you, thanking you for your continued support of our company.",
+        vi: "Em mời anh ly đầu, cảm ơn anh đã luôn ủng hộ công ty bọn em.",
+        pronunciation_focus: ["敬您一杯 → jìng nín yī bēi (mời anh một ly)", "一直以来 → yīzhí yǐlái (từ trước đến nay)", "支持 → zhīchí (ủng hộ)", "感谢 → gǎnxiè"]
+      },
+      {
+        chinese: "我先干为敬, 请您随意。",
+        pinyin: "Wǒ xiān gān wéi jìng, qǐng nín suíyì.",
+        english: "I'll drink up first to show respect — you drink as you wish.",
+        vi: "Em cạn trước để tỏ kính, mời anh tùy ý.",
+        pronunciation_focus: ["干 → gān (cạn ly)", "为敬 → wéi jìng (làm cho kính)", "随意 → suíyì (tùy ý)", "请您 → qǐng nín"]
+      },
+      {
+        chinese: "这是越南特色菜, 河粉、春卷、和鱼露酱, 您尝尝。",
+        pinyin: "Zhè shì Yuènán tèsè cài, héfěn, chūnjuǎn, hé yúlù jiàng, nín chángchang.",
+        english: "These are Vietnamese specialties — pho, spring rolls, and fish sauce. Please try.",
+        vi: "Đây là món đặc sản Việt Nam — phở, nem rán, và nước mắm, mời anh nếm thử.",
+        pronunciation_focus: ["特色菜 → tèsè cài (món đặc sản)", "河粉 → héfěn (phở)", "春卷 → chūnjuǎn (nem rán)", "鱼露 → yúlù (nước mắm)"]
+      },
+      {
+        chinese: "推杯换盏间, 朋友的情谊就建立起来了。",
+        pinyin: "Tuī bēi huàn zhǎn jiān, péngyou de qíngyì jiù jiànlì qǐlái le.",
+        english: "Through toasts and cups exchanged, friendship is built.",
+        vi: "Trong những lúc nâng ly đổi chén, tình bạn được xây dựng.",
+        pronunciation_focus: ["推杯换盏 → tuī bēi huàn zhǎn (idiom: nâng ly đổi chén)", "情谊 → qíngyì (tình nghĩa)", "建立 → jiànlì (xây dựng)", "朋友 → péngyou"]
+      }
+    ],
+    vocab: [
+      { chinese: "宴请", pinyin: "yàn qǐng", english: "to invite to a banquet", vi: "đãi tiệc" },
+      { chinese: "主位", pinyin: "zhǔ wèi", english: "main seat", vi: "vị trí chính" },
+      { chinese: "敬酒", pinyin: "jìng jiǔ", english: "to propose a toast", vi: "mời rượu" },
+      { chinese: "干杯", pinyin: "gān bēi", english: "cheers / bottoms up", vi: "cạn ly" },
+      { chinese: "随意", pinyin: "suí yì", english: "as you wish", vi: "tùy ý" },
+      { chinese: "特色菜", pinyin: "tè sè cài", english: "specialty dish", vi: "món đặc sản" },
+      { chinese: "买单", pinyin: "mǎi dān", english: "to pay the bill", vi: "thanh toán" },
+      { chinese: "推杯换盏", pinyin: "tuī bēi huàn zhǎn", english: "exchange toasts", vi: "nâng ly đổi chén" },
+      { chinese: "觥筹交错", pinyin: "gōng chóu jiāo cuò", english: "cups and chopsticks intermingled (lively banquet)", vi: "chén đũa giao thoa (tiệc náo nhiệt)" },
+      { chinese: "一干而尽", pinyin: "yī gān ér jìn", english: "drain in one go", vi: "cạn một hơi" }
+    ],
+    dialogue: [
+      { speaker: "黎", chinese: "王总, 请这边坐, 这是主位。", pinyin: "Wáng zǒng, qǐng zhè biān zuò, zhè shì zhǔ wèi.", english: "Director Wang, please sit here — this is the main seat.", vi: "Tổng Vương, mời anh ngồi bên này, đây là vị trí chính." },
+      { speaker: "王总", chinese: "我坐主位不合适吧?", pinyin: "Wǒ zuò zhǔ wèi bù héshì ba?", english: "Me at the main seat isn't appropriate, right?", vi: "Tôi ngồi vị trí chính không phù hợp đâu nhỉ?" },
+      { speaker: "黎", chinese: "您是远道而来的贵客, 主位非您莫属。我先敬您一杯。", pinyin: "Nín shì yuǎndào ér lái de guìkè, zhǔ wèi fēi nín mò shǔ. Wǒ xiān jìng nín yī bēi.", english: "You're a distinguished guest from afar — the main seat is yours by right. Let me toast you first.", vi: "Anh là khách quý phương xa, vị trí chính không thể không phải anh. Em mời anh ly đầu." },
+      { speaker: "王总", chinese: "好, 干杯! 中越友谊!", pinyin: "Hǎo, gānbēi! Zhōng-yuè yǒuyì!", english: "Good, cheers! China-Vietnam friendship!", vi: "Được, cạn ly! Tình hữu nghị Việt-Trung!" }
+    ],
+    dialogue_long: [
+      { speaker: "黎", chinese: "王总, 张总, 各位, 欢迎来到这家越南最有名的海鲜餐厅! 王总, 您是我们今晚的主宾, 请坐主位。", pinyin: "Wáng zǒng, Zhāng zǒng, gè wèi, huānyíng lái dào zhè jiā Yuènán zuì yǒumíng de hǎixiān cāntīng! Wáng zǒng, nín shì wǒmen jīn wǎn de zhǔ bīn, qǐng zuò zhǔ wèi.", english: "Director Wang, Director Zhang, everyone, welcome to Vietnam's most famous seafood restaurant! Director Wang, you're our main guest tonight — please take the main seat.", vi: "Tổng Vương, Tổng Trương, các vị, hoan nghênh đến nhà hàng hải sản nổi tiếng nhất Việt Nam! Tổng Vương, anh là khách chính tối nay, mời anh ngồi vị trí chính." },
+      { speaker: "王总", chinese: "黎总, 您太客气了。", pinyin: "Lí zǒng, nín tài kèqì le.", english: "Director Le, you're too polite.", vi: "Tổng Lê, anh khách sáo quá." },
+      { speaker: "黎", chinese: "应该的。这边是张总的位置, 这边是李总。我陪坐在王总旁边, 方便给您介绍菜。", pinyin: "Yīnggāi de. Zhè biān shì Zhāng zǒng de wèizhì, zhè biān shì Lǐ zǒng. Wǒ péi zuò zài Wáng zǒng pángbiān, fāngbiàn gěi nín jièshào cài.", english: "It's proper. This side is Director Zhang's seat, this side Director Li. I'll sit next to Director Wang, convenient to introduce the dishes.", vi: "Phải vậy chứ. Bên này là chỗ Tổng Trương, bên này Tổng Lý. Em ngồi cạnh Tổng Vương, tiện giới thiệu món." },
+      { speaker: "黎", chinese: "今天我点了越南最经典的菜: 牛肉河粉、春卷、烤虾、和椰汁鸡。请大家慢慢享用!", pinyin: "Jīntiān wǒ diǎn le Yuènán zuì jīngdiǎn de cài: niúròu héfěn, chūnjuǎn, kǎo xiā, hé yēzhī jī. Qǐng dàjiā mànman xiǎngyòng!", english: "Today I ordered Vietnam's most classic dishes: beef pho, spring rolls, grilled shrimp, and coconut chicken. Please enjoy slowly!", vi: "Hôm nay em đã gọi những món Việt kinh điển nhất: phở bò, nem rán, tôm nướng, và gà nấu nước cốt dừa. Mời các vị từ từ thưởng thức!" },
+      { speaker: "王总", chinese: "看起来真丰盛! 黎总, 您破费了。", pinyin: "Kàn qǐlái zhēn fēngshèng! Lí zǒng, nín pòfèi le.", english: "Looks really sumptuous! Director Le, you've spent too much.", vi: "Trông thật thịnh soạn! Tổng Lê, anh tốn kém rồi." },
+      { speaker: "黎", chinese: "您远道而来, 应该的。我先敬您一杯, 感谢您和团队对我们公司的长期支持! 我先干为敬。", pinyin: "Nín yuǎndào ér lái, yīnggāi de. Wǒ xiān jìng nín yī bēi, gǎnxiè nín hé tuánduì duì wǒmen gōngsī de chángqī zhīchí! Wǒ xiān gān wéi jìng.", english: "You came from afar, it's only right. Let me toast you first, thanking you and your team for long-term support of our company! I'll drain mine first to show respect.", vi: "Anh đến từ xa, là phải vậy. Em mời anh ly đầu, cảm ơn anh và team đã ủng hộ công ty bọn em lâu dài! Em cạn trước để tỏ kính." },
+      { speaker: "王总", chinese: "黎总太客气了。我也回敬您一杯, 祝合作长长久久, 互利共赢!", pinyin: "Lí zǒng tài kèqì le. Wǒ yě huí jìng nín yī bēi, zhù hézuò cháng cháng jiǔ jiǔ, hùlì gòngyíng!", english: "Director Le, too polite. I'll toast you back — wishing long-lasting cooperation, win-win!", vi: "Tổng Lê khách sáo quá. Tôi cũng mời lại anh ly nữa, chúc hợp tác dài lâu, đôi bên cùng có lợi!" },
+      { speaker: "黎", chinese: "干杯! 王总, 您尝尝这个春卷, 这是河内特色的, 蘸鱼露最好吃。", pinyin: "Gānbēi! Wáng zǒng, nín chángchang zhège chūnjuǎn, zhè shì Hénèi tèsè de, zhàn yúlù zuì hǎochī.", english: "Cheers! Director Wang, try this spring roll — Hanoi specialty, dipping in fish sauce is best.", vi: "Cạn ly! Tổng Vương, anh nếm cái nem này, đặc sản Hà Nội, chấm nước mắm ngon nhất." },
+      { speaker: "王总", chinese: "鱼露? 我有点不敢吃, 听说味道很冲。", pinyin: "Yúlù? Wǒ yǒudiǎn bù gǎn chī, tīngshuō wèidao hěn chōng.", english: "Fish sauce? I'm a bit hesitant, heard the taste is strong.", vi: "Nước mắm? Tôi hơi không dám ăn, nghe nói vị mạnh lắm." },
+      { speaker: "黎", chinese: "您试一小口, 不喜欢就不吃。我特地让餐厅做了清淡版的鱼露, 加了酸甜的味道。", pinyin: "Nín shì yī xiǎo kǒu, bù xǐhuan jiù bù chī. Wǒ tèdì ràng cāntīng zuò le qīngdàn bǎn de yúlù, jiā le suāntián de wèidao.", english: "Try a small bite, don't eat if you don't like. I specifically asked the restaurant for a light version of fish sauce, with sweet-sour flavor.", vi: "Anh thử một miếng nhỏ, không thích thì thôi. Em đã đặc biệt bảo nhà hàng làm phiên bản nhẹ của nước mắm, thêm vị chua ngọt." },
+      { speaker: "王总", chinese: "好... 嗯! 比想象中好吃很多! 你这个心思真细致。", pinyin: "Hǎo... èn! Bǐ xiǎngxiàng zhōng hǎochī hěn duō! Nǐ zhège xīnsi zhēn xìzhì.", english: "Okay... Mmm! Better than I imagined! Your thoughtfulness is really detailed.", vi: "Được... mmm! Ngon hơn tôi tưởng nhiều! Em chu đáo thật." },
+      { speaker: "张总", chinese: "黎总确实是好东道主。我也敬您一杯, 谢谢今晚的招待!", pinyin: "Lí zǒng quèshí shì hǎo dōngdào zhǔ. Wǒ yě jìng nín yī bēi, xièxie jīn wǎn de zhāodài!", english: "Director Le is truly a good host. I'll toast you too, thanks for tonight's hospitality!", vi: "Tổng Lê quả thực là chủ nhà tốt. Tôi cũng mời anh ly nữa, cảm ơn sự tiếp đãi tối nay!" },
+      { speaker: "黎", chinese: "客气客气! 我陪张总一杯。来, 干!", pinyin: "Kèqi kèqi! Wǒ péi Zhāng zǒng yī bēi. Lái, gān!", english: "Don't be so polite! I'll match Director Zhang's toast. Come, cheers!", vi: "Khách sáo quá! Em cùng Tổng Trương một ly. Nào, cạn!" },
+      { speaker: "王总", chinese: "黎总, 您这酒量真不错。", pinyin: "Lí zǒng, nín zhè jiǔliàng zhēn bùcuò.", english: "Director Le, your tolerance is really good.", vi: "Tổng Lê, tửu lượng anh thật khá." },
+      { speaker: "黎", chinese: "陪两位喝, 我哪有不尽心的道理。推杯换盏间, 朋友的情谊就深了。来, 我再敬大家最后一杯!", pinyin: "Péi liǎng wèi hē, wǒ nǎ yǒu bù jìnxīn de dàolǐ. Tuī bēi huàn zhǎn jiān, péngyou de qíngyì jiù shēn le. Lái, wǒ zài jìng dàjiā zuìhòu yī bēi!", english: "Drinking with you two, how can I not give my all? Through toasts and cups exchanged, friendship deepens. Come, let me toast everyone one last time!", vi: "Tiếp hai anh uống, em sao có thể không tận tâm. Trong nâng ly đổi chén, tình bạn sâu thêm. Nào, em mời mọi người ly cuối!" },
+      { speaker: "王总", chinese: "干! 中越友谊万岁!", pinyin: "Gān! Zhōng-yuè yǒuyì wànsuì!", english: "Cheers! China-Vietnam friendship forever!", vi: "Cạn! Tình hữu nghị Việt-Trung vạn tuế!" }
+    ],
+    roleplay_prompts: [
+      "Bạn host bữa tối với 4 khách Trung Quốc tại nhà hàng cao cấp Hà Nội. Hãy diễn tập phần đầu: dẫn khách vào, sắp xếp chỗ ngồi (chỉ rõ ai ngồi đâu), gọi món đầu tiên (giới thiệu 1-2 món Việt cho khách + để khách chọn 1 món). Tránh hỏi 'gọi gì' chung chung — chủ động đề xuất.",
+      "Khách Trung Quốc cấp cao mời bạn uống Mao Đài (rượu trắng cay). Bạn không quen rượu mạnh nhưng phải tỏ thiện chí. Hãy nâng ly cùng (一干而尽 không bắt buộc), uống 1/3 thay vì cạn, dùng cụm '我酒量有限, 但心意一样'. Sau đó mời lại bằng nước trà hoặc bia nhẹ.",
+      "Cuối bữa, khách Trung Quốc đòi trả tiền (chiến đấu trả tiền). Hãy 'chiến' để giữ thể diện host: cương quyết nhận hóa đơn, dùng cụm '远来是客, 这次我做东', đề xuất 'lần sau anh đến Trung Quốc anh mời em'. Tránh để khách thực sự trả — host thua = mất mặt."
+    ],
+    register_notes: "Bữa tiệc business Trung Quốc là sự kiện 'làm ăn dưới dạng ăn'. Mọi quyết định lớn xảy ra ở đây, không phải phòng họp. Phải xử lý cả ngôn ngữ + nghi thức cùng lúc.\n\nCác cụm chuẩn cho host:\n- Dẫn vào ghế: '王总, 这是您的座位, 主位面对门'\n- Mời ăn: '请大家慢慢享用'; '尝尝这个特色菜'\n- Mời rượu lần đầu: '我先敬您一杯, 感谢您...'; '我先干为敬, 请您随意'\n- Đáp lại khi khách mời: '客气客气, 我陪您一杯'\n- Khi khách khen: '哪里哪里, 您过奖了'\n- Cạn ly cuối: '最后一杯, 祝合作圆满成功'\n\nCác cụm chuẩn cho khách:\n- Nhận chỗ chính: '不好意思打扰您们了, 我坐这里合适吗?'\n- Mời lại host: '我也回敬黎总一杯'\n- Khi không uống được: '我酒量有限, 以茶代酒'\n- Khi từ chối nhẹ: '心意我领了, 我自己量力'\n- Cảm ơn cuối: '今晚让黎总破费了, 改天我做东'\n\nQuy tắc rượu chi tiết:\n- 干 (gān) = cạn 100%; 随意 (suíyì) = tùy ý uống; 浅尝 (qiǎncháng) = nếm chút thôi\n- Khi mời sếp/khách quý: ly mình thấp hơn ly họ 2-3cm\n- Mời rượu phải KÈM lý do (cảm ơn, chúc, kỷ niệm) — không mời 'cho có'\n- Một lượt mời: chủ → khách quý → cấp cao → cấp thấp; sau đó khách quý mời lại\n- 一干而尽 chỉ dùng cho ly đầu hoặc ly đặc biệt; không cạn ly mọi lúc\n\nTránh: (a) Mời chéo bàn (mời người ngồi đối diện, qua mặt người bên cạnh); (b) Đổ rượu vào ly đầy của người khác; (c) Để ly mình rỗng quá lâu (mỗi 5-10 phút có lượt mời mới); (d) Đứng dậy đi vệ sinh trong khi sếp đang nói; (e) Bật điện thoại liên tục.",
+    idiom_glosses: [
+      {
+        idiom: "推杯换盏",
+        literal: "đẩy ly đổi chén (tuī bēi huàn zhǎn)",
+        meaning: "Nâng ly và đổi chén — biểu tượng của bữa tiệc náo nhiệt, mời rượu qua lại. Cụm dùng để mô tả tình bạn xây qua bữa rượu: 'trong nâng ly đổi chén, tình bạn nảy sinh'. Văn vẻ — nâng tầm phát biểu.",
+        example: "推杯换盏间, 朋友的情谊就深了。"
+      },
+      {
+        idiom: "觥筹交错",
+        literal: "chén đũa giao thoa (gōng chóu jiāo cuò)",
+        meaning: "Chén rượu (觥) và thẻ thưởng rượu (筹) giao thoa — tiệc rượu náo nhiệt, vui vẻ. Cụm cao cấp hơn 推杯换盏, dùng trong context formal hoặc văn học để mô tả không khí tiệc.",
+        example: "今晚觥筹交错, 大家都很尽兴。"
+      },
+      {
+        idiom: "一干而尽",
+        literal: "một cạn hết (yī gān ér jìn)",
+        meaning: "Cạn một hơi — uống cạn ly trong một ngụm. Thể hiện thiện chí cao nhất. Tuy nhiên ở Trung Quốc đại lục hiện nay không bắt buộc với khách nước ngoài — bạn có thể uống tùy lượng.",
+        example: "我先一干而尽, 请您随意。"
+      },
+      {
+        idiom: "客随主便",
+        literal: "khách tùy chủ tiện (kè suí zhǔ biàn)",
+        meaning: "Khách tùy theo sự sắp xếp của chủ — không tự ý đặt yêu cầu. Phẩm chất khách lý tưởng. Khi bạn là khách Trung Quốc tại nhà người Việt, dùng cụm này thể hiện sự khiêm tốn.",
+        example: "我客随主便, 您安排什么我都喜欢。"
+      }
+    ],
+    cultural_notes_vi: "Bữa tiệc Trung Quốc là môi trường nhiều quy tắc nhất bạn sẽ gặp. Bảy nguyên tắc cốt lõi: (1) VỊ TRÍ NGỒI: chủ nhà ngồi đối diện cửa (giúp ai vào cũng nhìn thấy chủ); khách quý nhất ngồi BÊN PHẢI chủ nhà; thứ tự cấp bậc giảm dần đi xuống vòng tròn theo chiều kim đồng hồ. Cấp thấp nhất ngồi gần cửa (để tiện đi lấy đồ, gọi nhân viên). (2) GỌI MÓN: chủ nhà gọi 100% trong lần đầu. Số món = số người + 1 (8 người = 9 món, kèm súp + tráng miệng). Có cá nguyên con (鱼 ngụ ý 余 = dư dả), gà nguyên con (鸡 ngụ ý 吉 = may mắn), súp cuối bữa (chuẩn bị xong cho 'kết'). (3) ĐŨA: nâng đũa khi chủ nhà đã nâng; KHÔNG cắm đũa thẳng vào cơm; KHÔNG để chéo nhau; KHÔNG dùng đũa chỉ vào người. Đặt đũa ngang trên giá đũa khi nghỉ. (4) RƯỢU: chủ nhà mời ly đầu (开场); cạn 100% ly đầu = thể hiện thiện chí cao nhất. Sau đó cấp dưới đi mời cấp trên từng người một; cấp trên có thể uống ít hơn (随意). Mỗi lượt mời PHẢI có lý do (cảm ơn, chúc, kỷ niệm) — mời 'cho có' bị coi là thiếu chân thành. (5) THANH TOÁN: chiến đấu trả tiền là phong tục — chủ và khách giả vờ tranh nhau. Người 'thắng' = chủ. Cách 'chiến' đúng: gọi nhân viên TRƯỚC khi khách kịp đứng dậy, đưa thẻ riêng, KHÔNG để khách thấy hóa đơn. Tip: 5-10% là chuẩn (Trung Quốc đại lục thấp hơn phương Tây). (6) RỜI BÀN: khách quý đứng dậy trước, các người khác theo sau. KHÔNG đứng dậy giữa bữa khi sếp đang phát biểu. (7) FOLLOW-UP: gửi tin WeChat trong 24h cảm ơn cụ thể: '王总, 昨晚的招待让我深受感动, 谢谢您的盛情'.\n\nVề rượu Mao Đài (茅台): rượu trắng cay 53% cồn, biểu tượng rượu Trung Quốc. Một shot 30-50ml, uống cạn. Nếu bạn không quen: (a) ăn nhiều trước khi uống (cơm, mỡ); (b) uống nước trà giữa các shot; (c) thừa nhận 'em không quen rượu mạnh' từ đầu và xin được uống ít — thật thà tốt hơn say. KHÔNG say tại bữa business — mất uy tín mãi.\n\nVề khách nữ: ở Trung Quốc đại lục hiện nay phụ nữ uống rượu cũng được chấp nhận, nhưng có thể từ chối lịch sự bằng '我酒量不好' hoặc 'with茶代酒' — không bị áp lực như Hàn Quốc/Nhật.\n\nKhác Việt Nam: ở Việt Nam, bữa nhậu thường thoải mái, mọi người tự rót rượu cho mình. Ở Trung Quốc, không bao giờ tự rót — luôn rót cho người bên cạnh, họ rót lại cho bạn. Rót cho mình = thiếu tinh tế.",
+    tip_advice_vi: "(1) ĐẶT BÀN trước 1 tuần — phòng riêng (包间) không chung sảnh. Phòng riêng = thể diện cho khách + tiện thảo luận business. Đặt bàn tròn (圆桌) thay vì vuông — mọi người ngồi bình đẳng. (2) CHUẨN BỊ menu trước với restaurant manager: 8-10 món cho 6-8 người, đa dạng (rau, thịt, hải sản, súp, tráng miệng), 1-2 món Việt đặc sản (phở/nem) và 1-2 món gần phong cách Trung (gà nướng, cá hấp). Tránh món 'lạ' (mắm tôm, lươn). (3) MUA RƯỢU phù hợp: khách Trung Quốc cấp cao = Mao Đài (đắt nhưng đáng); cấp trung = rượu Trung Quốc khác (五粮液, 国窖); người không thích rượu mạnh = bia hoặc rượu vang. Đừng tiếc tiền rượu — đây là phần đầu tư quan trọng nhất. (4) CHUẨN BỊ 5-7 toast/lý do cụ thể trước: cảm ơn, chúc sức khỏe, chúc hợp tác, kỷ niệm gặp gỡ, chúc gia đình khách, chúc thành công dự án, chúc về Trung Quốc bình an. Mỗi lý do dùng 1 lần, không lặp. (5) NGỒI BÊN PHẢI khách chính (vị trí 'tay phải' của chủ) — vai trò 'phó host' giúp giới thiệu món, mời rượu, dịch tiếng. KHÔNG để khách phải hỏi 'cái này là gì'. (6) Trong bữa, dành ~70% thời gian cho personal/cultural topics (gia đình, du lịch, ẩm thực, văn hóa), ~30% cho business — đảo ngược tỉ lệ là sai văn hóa Trung Quốc. (7) SAU bữa, đưa khách về khách sạn (kể cả nếu họ tự đi được). Nếu khách say, sắp xếp bữa sáng nhẹ ngày hôm sau (cháo, bánh bao) — đây là chi tiết khách quý nhớ lâu.",
+    exercises: [
+      { type: "fill-blank", question: "我先 ___ 为敬, 请您随意。", answer: "干" },
+      {
+        type: "matching",
+        instruction: "Ghép cụm tiếng Trung tiệc rượu với nghĩa tiếng Việt.",
+        pairs: [
+          { chinese: "主位", pinyin: "zhǔ wèi", english: "vị trí chính (đối diện cửa)" },
+          { chinese: "敬酒", pinyin: "jìng jiǔ", english: "mời rượu" },
+          { chinese: "推杯换盏", pinyin: "tuī bēi huàn zhǎn", english: "nâng ly đổi chén" },
+          { chinese: "买单", pinyin: "mǎi dān", english: "thanh toán" }
+        ]
+      },
+      {
+        type: "translation",
+        vietnamese: "Tổng Vương, em mời anh ly đầu, cảm ơn anh đã ủng hộ công ty bọn em. Em cạn trước để tỏ kính, mời anh tùy ý.",
+        chinese: "王总, 我先敬您一杯, 感谢您对我们公司的支持。我先干为敬, 请您随意。",
+        pinyin: "Wáng zǒng, wǒ xiān jìng nín yī bēi, gǎn xiè nín duì wǒ men gōng sī de zhī chí. Wǒ xiān gān wéi jìng, qǐng nín suí yì."
+      }
+    ]
+  },
+  {
+    id: 69,
+    level: "B2",
+    category: "cultural_communication",
+    title: "向中国朋友介绍越南春节",
+    pinyin: "xiàng zhōng guó péng you jiè shào yuè nán chūn jié",
+    topic: "Explaining Vietnamese Tết to Chinese friends",
+    title_vi: "Giới thiệu Tết Việt Nam cho bạn Trung Quốc",
+    title_en: "Explaining Vietnamese Lunar New Year to Chinese friends",
+    sentences: [
+      {
+        chinese: "我们越南人也过春节, 我们叫'Tết Nguyên Đán'。",
+        pinyin: "Wǒmen Yuènán rén yě guò Chūnjié, wǒmen jiào 'Tết Nguyên Đán'.",
+        english: "We Vietnamese also celebrate Spring Festival — we call it 'Tết Nguyên Đán'.",
+        vi: "Người Việt bọn em cũng ăn Tết, chúng em gọi là 'Tết Nguyên Đán'.",
+        pronunciation_focus: ["春节 → Chūnjié (Tết / Spring Festival)", "我们 → wǒmen (chúng tôi)", "越南人 → Yuènán rén (người Việt Nam)", "Tết → âm gốc tiếng Việt"]
+      },
+      {
+        chinese: "中越春节同一天, 因为我们都用农历。",
+        pinyin: "Zhōng-yuè Chūnjié tóng yī tiān, yīnwèi wǒmen dōu yòng nónglì.",
+        english: "Chinese and Vietnamese Spring Festivals are on the same day, because we both use the lunar calendar.",
+        vi: "Tết Việt và Tết Trung cùng một ngày, vì cả hai đều dùng âm lịch.",
+        pronunciation_focus: ["同一天 → tóng yī tiān (cùng một ngày)", "农历 → nónglì (âm lịch)", "因为 → yīnwèi (vì)", "都 → dōu (đều)"]
+      },
+      {
+        chinese: "我们的传统食物是粽子, 但和中国粽子不一样, 我们的是方形的。",
+        pinyin: "Wǒmen de chuántǒng shíwù shì zòngzi, dàn hé Zhōngguó zòngzi bù yīyàng, wǒmen de shì fāngxíng de.",
+        english: "Our traditional food is banh chung — different from Chinese zongzi, ours is square-shaped.",
+        vi: "Món truyền thống của bọn em là bánh chưng, khác bánh ú Trung Quốc, bánh em hình vuông.",
+        pronunciation_focus: ["传统食物 → chuántǒng shíwù (món truyền thống)", "粽子 → zòngzi (bánh ú/bánh chưng)", "方形 → fāngxíng (hình vuông)", "不一样 → bù yīyàng (không giống)"]
+      },
+      {
+        chinese: "越南北方装饰桃花, 南方装饰梅花, 中国是红灯笼。",
+        pinyin: "Yuènán běifāng zhuāngshì táohuā, nánfāng zhuāngshì méihuā, Zhōngguó shì hóng dēnglong.",
+        english: "Northern Vietnam decorates with peach blossoms, southern with apricot blossoms, China uses red lanterns.",
+        vi: "Miền Bắc Việt Nam trang trí hoa đào, miền Nam hoa mai, Trung Quốc thì đèn lồng đỏ.",
+        pronunciation_focus: ["北方 → běifāng (miền Bắc)", "桃花 → táohuā (hoa đào)", "梅花 → méihuā (hoa mai)", "红灯笼 → hóng dēnglong (đèn lồng đỏ)"]
+      },
+      {
+        chinese: "新年快乐! 阖家团圆, 万事如意!",
+        pinyin: "Xīnnián kuàilè! Hé jiā tuányuán, wànshì rúyì!",
+        english: "Happy New Year! Family reunion, all wishes come true!",
+        vi: "Chúc mừng năm mới! Gia đình đoàn tụ, vạn sự như ý!",
+        pronunciation_focus: ["新年快乐 → xīnnián kuàilè (chúc mừng năm mới)", "阖家团圆 → hé jiā tuányuán (cả nhà đoàn tụ)", "万事如意 → wànshì rúyì (vạn sự như ý)", "阖 → hé (cả/toàn bộ)"]
+      }
+    ],
+    vocab: [
+      { chinese: "春节", pinyin: "chūn jié", english: "Spring Festival / Lunar New Year", vi: "Tết Nguyên Đán" },
+      { chinese: "农历", pinyin: "nóng lì", english: "lunar calendar", vi: "âm lịch" },
+      { chinese: "粽子", pinyin: "zòng zi", english: "zongzi (rice cake)", vi: "bánh ú / bánh chưng" },
+      { chinese: "压岁钱", pinyin: "yā suì qián", english: "lucky money (Chinese)", vi: "tiền lì xì" },
+      { chinese: "红包", pinyin: "hóng bāo", english: "red envelope", vi: "phong bao đỏ" },
+      { chinese: "桃花", pinyin: "táo huā", english: "peach blossom", vi: "hoa đào" },
+      { chinese: "梅花", pinyin: "méi huā", english: "apricot blossom", vi: "hoa mai" },
+      { chinese: "阖家团圆", pinyin: "hé jiā tuán yuán", english: "whole family reunion", vi: "cả nhà đoàn tụ" },
+      { chinese: "万象更新", pinyin: "wàn xiàng gēng xīn", english: "all things renewed", vi: "vạn vật đổi mới" },
+      { chinese: "辞旧迎新", pinyin: "cí jiù yíng xīn", english: "bid farewell to old, welcome new", vi: "tiễn cũ đón mới" }
+    ],
+    dialogue: [
+      { speaker: "王朋友", chinese: "你们越南也过春节吗?", pinyin: "Nǐmen Yuènán yě guò Chūnjié ma?", english: "Vietnam also celebrates Spring Festival?", vi: "Việt Nam cũng ăn Tết à?" },
+      { speaker: "阮", chinese: "我们叫'Tết', 和中国春节同一天。", pinyin: "Wǒmen jiào 'Tết', hé Zhōngguó Chūnjié tóng yī tiān.", english: "We call it 'Tết' — same day as Chinese Spring Festival.", vi: "Bọn em gọi là 'Tết', cùng ngày với Tết Trung Quốc." },
+      { speaker: "王朋友", chinese: "你们也吃饺子和粽子吗?", pinyin: "Nǐmen yě chī jiǎozi hé zòngzi ma?", english: "Do you also eat dumplings and zongzi?", vi: "Các em cũng ăn sủi cảo và bánh ú không?" },
+      { speaker: "阮", chinese: "饺子不吃, 但有越南粽子'bánh chưng', 是方形的, 用糯米和绿豆做。", pinyin: "Jiǎozi bù chī, dàn yǒu Yuènán zòngzi 'bánh chưng', shì fāngxíng de, yòng nuòmǐ hé lǜdòu zuò.", english: "Don't eat dumplings, but have Vietnamese zongzi 'banh chung' — square, made with sticky rice and mung bean.", vi: "Sủi cảo thì không, nhưng có bánh chưng Việt Nam — vuông, làm từ gạo nếp và đậu xanh." }
+    ],
+    dialogue_long: [
+      { speaker: "王朋友", chinese: "小阮, 春节快到了。你们越南春节和中国春节有什么不一样吗?", pinyin: "Xiǎo Ruǎn, Chūnjié kuài dào le. Nǐmen Yuènán Chūnjié hé Zhōngguó Chūnjié yǒu shénme bù yīyàng ma?", english: "Little Nguyen, Spring Festival is coming. Anything different between Vietnamese and Chinese Spring Festivals?", vi: "Tiểu Nguyễn, Tết sắp đến rồi. Tết Việt và Tết Trung có gì khác nhau không?" },
+      { speaker: "阮", chinese: "有相似也有不同。我们都是同一天过年, 因为都用农历。这点完全一样。", pinyin: "Yǒu xiāngsì yě yǒu bùtóng. Wǒmen dōu shì tóng yī tiān guònián, yīnwèi dōu yòng nónglì. Zhè diǎn wánquán yīyàng.", english: "Some similar, some different. We celebrate on the same day, both use lunar calendar — this is totally the same.", vi: "Có giống có khác. Mình đều đón Tết cùng ngày, vì cả hai dùng âm lịch — điểm này hoàn toàn giống." },
+      { speaker: "王朋友", chinese: "那不一样的呢?", pinyin: "Nà bù yīyàng de ne?", english: "What's different?", vi: "Còn cái khác?" },
+      { speaker: "阮", chinese: "首先是食物。中国有饺子、年糕、汤圆。越南有 'bánh chưng' (方粽)、'bánh tét' (圆粽)、和 'thịt kho tàu' (红烧肉)。", pinyin: "Shǒuxiān shì shíwù. Zhōngguó yǒu jiǎozi, niángāo, tāngyuán. Yuènán yǒu 'bánh chưng' (fāng zòng), 'bánh tét' (yuán zòng), hé 'thịt kho tàu' (hóngshāo ròu).", english: "First, food. China has dumplings, sticky rice cake, glutinous rice balls. Vietnam has banh chung (square zongzi), banh tet (round zongzi), and braised pork.", vi: "Đầu tiên là món ăn. Trung Quốc có sủi cảo, bánh tổ, chè trôi nước. Việt Nam có bánh chưng (bánh ú vuông), bánh tét (bánh ú tròn), và thịt kho tàu." },
+      { speaker: "王朋友", chinese: "方粽? 我们的粽子都是三角形的。", pinyin: "Fāng zòng? Wǒmen de zòngzi dōu shì sānjiǎo xíng de.", english: "Square zongzi? Ours are all triangular.", vi: "Bánh ú vuông? Bánh ú bọn anh đều hình tam giác." },
+      { speaker: "阮", chinese: "对, 越南方粽源自传说: 古时候, 王子用方形代表大地, 圆形代表天。所以bánh chưng是方的, bánh dày是圆的。", pinyin: "Duì, Yuènán fāng zòng yuán zì chuánshuō: gǔ shíhou, wángzǐ yòng fāngxíng dàibiǎo dàdì, yuánxíng dàibiǎo tiān. Suǒyǐ bánh chưng shì fāng de, bánh dày shì yuán de.", english: "Yes, Vietnamese square zongzi comes from a legend: ancient times, a prince used square to represent earth, round to represent sky. So banh chung is square, banh day is round.", vi: "Đúng, bánh chưng Việt Nam có nguồn gốc từ truyền thuyết: thời cổ, hoàng tử dùng hình vuông tượng trưng đất, hình tròn tượng trưng trời. Nên bánh chưng vuông, bánh dày tròn." },
+      { speaker: "王朋友", chinese: "原来如此。装饰呢? 我们家里都贴红色对联和'福'字。", pinyin: "Yuánlái rúcǐ. Zhuāngshì ne? Wǒmen jiā lǐ dōu tiē hóngsè duìlián hé 'fú' zì.", english: "I see. Decorations? We put up red couplets and the character 'fu' (fortune).", vi: "Thì ra thế. Trang trí thì sao? Nhà bọn anh đều dán câu đối đỏ và chữ 'phúc'." },
+      { speaker: "阮", chinese: "我们也贴对联! 但越南一定要有花。北方人买桃花 (粉红色), 南方人买梅花 (黄色)。家里没有花, 不算过年。", pinyin: "Wǒmen yě tiē duìlián! Dàn Yuènán yīdìng yào yǒu huā. Běifāng rén mǎi táohuā (fěnhóng sè), nánfāng rén mǎi méihuā (huángsè). Jiā lǐ méiyǒu huā, bù suàn guònián.", english: "We also put up couplets! But Vietnam must have flowers. Northerners buy peach blossoms (pink), southerners buy yellow apricot. No flowers at home means no Spring Festival.", vi: "Bọn em cũng dán câu đối! Nhưng Việt Nam phải có hoa. Người miền Bắc mua hoa đào (hồng), miền Nam mua hoa mai (vàng). Nhà không có hoa coi như chưa Tết." },
+      { speaker: "王朋友", chinese: "有意思。压岁钱呢?", pinyin: "Yǒu yìsi. Yāsuìqián ne?", english: "Interesting. What about lucky money?", vi: "Hay đấy. Còn tiền lì xì?" },
+      { speaker: "阮", chinese: "我们叫'lì xì', 这两个字其实就是中文的'利市'。装在红包里 (越南叫 bao lì xì), 大人给孩子。和中国一样!", pinyin: "Wǒmen jiào 'lì xì', zhè liǎng gè zì qíshí jiùshì zhōngwén de 'lìshì'. Zhuāng zài hóngbāo lǐ (Yuènán jiào bao lì xì), dàrén gěi háizi. Hé Zhōngguó yīyàng!", english: "We call it 'lì xì' — these two words are actually Chinese 'lìshì'. Put in red envelope (Vietnamese: bao lì xì), adults give to children. Same as China!", vi: "Bọn em gọi là 'lì xì', hai chữ này thực ra là từ Hán 'lợi thị'. Đựng trong bao đỏ (tiếng Việt: bao lì xì), người lớn cho trẻ con. Giống Trung Quốc!" },
+      { speaker: "王朋友", chinese: "字一样, 太有意思了! 那你们也守岁吗?", pinyin: "Zì yīyàng, tài yǒu yìsi le! Nà nǐmen yě shǒusuì ma?", english: "Same characters, so interesting! Do you also stay up to welcome the new year?", vi: "Chữ giống nhau, thú vị quá! Vậy các em cũng thức đêm đón giao thừa không?" },
+      { speaker: "阮", chinese: "守岁! 我们叫 'giao thừa', 也是熬夜到凌晨。然后第一个进家的人, 我们叫 'xông đất' (踩地), 这个人会给家里带来一年运气。", pinyin: "Shǒusuì! Wǒmen jiào 'giao thừa', yěshì áoyè dào língchén. Ránhòu dì yī gè jìn jiā de rén, wǒmen jiào 'xông đất' (cǎi dì), zhège rén huì gěi jiā lǐ dài lái yī nián yùnqi.", english: "Yes! We call it 'giao thừa', also stay up till early morning. Then the first person to enter the house, we call 'xông đất' (stepping on the ground) — this person brings the year's luck.", vi: "Thức giao thừa! Bọn em gọi là 'giao thừa', cũng thức đến sáng sớm. Sau đó người đầu tiên vào nhà, gọi là 'xông đất' — người này sẽ mang vận may cả năm cho nhà." },
+      { speaker: "王朋友", chinese: "有讲究! 中国也有 '开门红' 的概念, 但没有具体的人。", pinyin: "Yǒu jiǎngjiu! Zhōngguó yě yǒu 'kāi mén hóng' de gàiniàn, dàn méiyǒu jùtǐ de rén.", english: "Has rules! China also has the concept of 'opening door red' (auspicious start), but no specific person.", vi: "Có quy tắc! Trung Quốc cũng có khái niệm 'khai môn hồng' (mở cửa đỏ — khởi đầu tốt), nhưng không có người cụ thể." },
+      { speaker: "阮", chinese: "还有一个有趣的: 越南春节看年龄就大一岁, 不管你的生日是哪一天。中国也是这样吧?", pinyin: "Hái yǒu yī gè yǒuqù de: Yuènán Chūnjié kàn niánlíng jiù dà yī suì, bùguǎn nǐ de shēngrì shì nǎ yī tiān. Zhōngguó yě shì zhèyàng ba?", english: "One more interesting: in Vietnam, on Spring Festival you turn one year older, regardless of birthday. Same in China?", vi: "Còn một điều thú vị: ở Việt Nam Tết là tăng một tuổi, bất kể sinh nhật ngày nào. Trung Quốc cũng thế à?" },
+      { speaker: "王朋友", chinese: "中国传统也是, 但现在年轻人多用阳历生日算年龄了。", pinyin: "Zhōngguó chuántǒng yěshì, dàn xiànzài niánqīng rén duō yòng yánglì shēngrì suàn niánlíng le.", english: "Chinese tradition too, but now young people mostly use Gregorian birthday for age.", vi: "Truyền thống Trung Quốc cũng vậy, nhưng giờ người trẻ chủ yếu dùng sinh nhật dương lịch tính tuổi." },
+      { speaker: "阮", chinese: "看来我们同根同源, 又各有千秋。今年春节欢迎你来河内做客! 阖家团圆, 万象更新!", pinyin: "Kàn lái wǒmen tóng gēn tóng yuán, yòu gè yǒu qiān qiū. Jīnnián Chūnjié huānyíng nǐ lái Hénèi zuòkè! Hé jiā tuányuán, wànxiàng gēng xīn!", english: "Looks like we share roots, yet each have unique merits. This Spring Festival, welcome to visit me in Hanoi! Family reunion, all things renewed!", vi: "Có vẻ mình cùng gốc cùng nguồn, lại mỗi bên có nét riêng. Tết năm nay hoan nghênh anh đến Hà Nội chơi! Cả nhà đoàn tụ, vạn vật đổi mới!" }
+    ],
+    roleplay_prompts: [
+      "Đồng nghiệp Trung Quốc hỏi 'Việt Nam ăn món gì vào Tết'. Hãy giới thiệu 5 món chính: bánh chưng, thịt kho tàu, dưa món, giò chả, mứt — kèm pinyin tương đương và mô tả ngắn. Tránh nói 'giống Trung Quốc' — mỗi món có lịch sử riêng.",
+      "Bạn được mời ăn Tết với gia đình bạn Trung Quốc tại Bắc Kinh. Hãy chuẩn bị quà phù hợp (cà phê G7, bánh chưng đông lạnh, lụa Vạn Phúc), câu chúc Tết tiếng Trung ('恭喜发财, 万事如意'), và phong bao lì xì cho trẻ con (50-100 tệ trong bao đỏ).",
+      "Đồng nghiệp Trung Quốc bảo 'Tết Việt là copy của Tết Trung Quốc'. Đây là câu thiếu nhạy cảm. Hãy đáp: thừa nhận chia sẻ nguồn gốc Đông Á + nhấn mạnh đặc thù Việt Nam (bánh chưng vuông, hoa đào/mai, xông đất). Dùng cụm '同根同源, 各有千秋'."
+    ],
+    register_notes: "Giải thích Tết với người Trung Quốc là 'safe topic' — không nhạy cảm chính trị nhưng vẫn cần khéo léo về văn hóa. 你 (nǐ) trong context bạn bè / đồng nghiệp ngang cấp; 您 nếu lớn tuổi.\n\nCác câu chúc Tết chuẩn (Trung-Việt cùng dùng):\n- '新年快乐' (xīnnián kuàilè) — chúc mừng năm mới\n- '恭喜发财' (gōngxǐ fācái) — chúc phát tài (rất Trung Quốc, ít dùng ở miền Bắc Việt Nam)\n- '万事如意' (wànshì rúyì) — vạn sự như ý\n- '阖家团圆' (hé jiā tuányuán) — cả nhà đoàn tụ\n- '身体健康' (shēntǐ jiànkāng) — sức khỏe dồi dào\n- '心想事成' (xīnxiǎng shìchéng) — tâm nghĩ việc thành\n- '万象更新' (wànxiàng gēngxīn) — vạn vật đổi mới\n- '辞旧迎新' (cíjiù yíngxīn) — tiễn cũ đón mới\n\nKhi giới thiệu món Việt: dùng cấu trúc 'tên Việt + cách viết Hán-Việt + giải thích':\n- '我们叫 bánh chưng (粽子的方形版本), 用糯米、猪肉、绿豆做的'\n- '北方有桃花 (粉红色), 南方有梅花 (黄色)'\n\nKhi gặp khái niệm Việt KHÔNG có ở Trung Quốc (xông đất, mâm ngũ quả): giải thích bằng analogy + dịch chữ — KHÔNG bịa từ Hán không tồn tại.\n\nTránh: (a) Nói 'Tết Việt giống Tết Trung 100%' — sai và xúc phạm; (b) So sánh hơn-kém; (c) Đưa quan điểm chính trị (ai 'tổ tiên' của ai); (d) Tự dịch tên Hán từ tiếng Việt sang nếu không chắc — nhờ chuyên gia.",
+    idiom_glosses: [
+      {
+        idiom: "阖家团圆",
+        literal: "cả nhà đoàn tụ (hé jiā tuán yuán)",
+        meaning: "Cả gia đình đoàn tụ — ý nghĩa cốt lõi của Tết. Cụm chuẩn dùng để chúc trong dịp Xuân: '阖家团圆, 幸福安康'. Mạnh hơn '一家团圆' đơn giản. Phù hợp với cả văn hóa Việt và Trung.",
+        example: "祝您阖家团圆, 万事如意。"
+      },
+      {
+        idiom: "万象更新",
+        literal: "vạn vật đổi mới (wàn xiàng gēng xīn)",
+        meaning: "Vạn vật được làm mới — biểu tượng đầu năm mới. Cụm dùng trong câu chúc/diễn văn Tết, đặc biệt khi muốn diễn đạt cảm giác 'reset' đầu năm. Cao cấp hơn 'happy new year'.",
+        example: "新春到来, 万象更新。"
+      },
+      {
+        idiom: "辞旧迎新",
+        literal: "tiễn cũ đón mới (cí jiù yíng xīn)",
+        meaning: "Tiễn năm cũ, đón năm mới — biểu tượng chuyển giao thời gian. Cụm dùng trong đêm giao thừa hoặc đầu năm: '辞旧迎新, 万事如意'. Thể hiện tinh thần 'để lại điều xấu, đón điều tốt'.",
+        example: "辞旧迎新, 一切重新开始。"
+      },
+      {
+        idiom: "福寿安康",
+        literal: "phúc thọ an khang (fú shòu ān kāng)",
+        meaning: "Phúc lộc, sống lâu, bình an, khỏe mạnh — bộ chúc 4 chữ kinh điển. Đặc biệt phù hợp khi chúc người lớn tuổi (ông bà, sếp lớn). Mạnh và sâu sắc hơn '身体健康' đơn lẻ.",
+        example: "祝您福寿安康, 永远幸福。"
+      }
+    ],
+    cultural_notes_vi: "Tết Việt-Trung là 'điểm chung lớn nhất' giữa hai nước — cùng ngày, cùng âm lịch, cùng nhiều phong tục cốt lõi (đoàn tụ gia đình, lì xì, hoa, dọn nhà). Đây là chủ đề an toàn và phong phú để xây quan hệ. Năm điểm khác biệt then chốt người Việt nên biết khi giải thích cho bạn Trung Quốc:\n\n(1) BÁNH CHƯNG vs. JIAOZI: ở Trung Quốc, sủi cảo (饺子) là món chính đêm 30. Việt Nam KHÔNG ăn sủi cảo Tết — bánh chưng (vuông, gói lá dong) và bánh tét (tròn, gói lá chuối) là món chính. Nguồn gốc bánh chưng từ truyền thuyết Lang Liêu thời Hùng Vương — câu chuyện độc đáo Việt Nam, KHÔNG có ở Trung Quốc.\n\n(2) HOA: Việt Nam BẮT BUỘC có hoa đào (miền Bắc) hoặc hoa mai (miền Nam) — không có hoa = không phải Tết. Trung Quốc thiên về câu đối đỏ, đèn lồng, và hoa thủy tiên (水仙). Khi giới thiệu, chỉ ra rằng hoa đào/mai là TÂM ĐIỂM Tết Việt, trong khi với Trung Quốc đó là phụ.\n\n(3) MÀU SẮC: Trung Quốc gần như chỉ dùng đỏ. Việt Nam dùng đỏ (lì xì, câu đối) NHƯNG cũng vàng (mâm ngũ quả, hoa mai), hồng (hoa đào). Đa dạng màu sắc hơn.\n\n(4) XÔNG ĐẤT (踩地): khái niệm độc đáo Việt Nam — người ĐẦU TIÊN bước vào nhà sau giao thừa được tin sẽ mang vận may cả năm. Gia đình thường chọn người 'tốt vận' (tuổi hợp, làm ăn thuận, gia đình êm ấm) đến xông đất. Trung Quốc không có nghi thức này — chỉ có '开门红' (mở cửa đỏ) khái niệm chung.\n\n(5) MÂM NGŨ QUẢ: 5 loại quả trên bàn thờ tổ tiên, mang ý nghĩa 'đủ đầy'. Miền Nam có công thức 'cầu sung dừa đủ xoài' (cầu — sung — dừa — đủ — xoài → 'cầu cho được sung túc, vừa đủ, xài [tiền]'). Trung Quốc không có concept tương đương — chỉ có 'thờ tổ tiên' chung.\n\nVề từ vựng SHARED: nhiều từ Tết Việt là Hán-Việt từ Trung Quốc — 'lì xì' (利市), 'tân niên' (新年), 'phúc' (福), 'lộc' (禄), 'thọ' (寿), 'tổ tiên' (祖先), 'gia đình' (家庭). Khi nói chuyện với người Trung, chỉ ra điều này = họ sẽ ngạc nhiên thú vị.\n\nVề tuổi: cả Việt Nam và Trung Quốc cổ truyền tăng tuổi vào ngày Tết (không phải sinh nhật). Việt Nam dùng 'tuổi mụ' = tuổi sinh + 1 từ ngày Tết đầu tiên. Hệ thống này đang dần thay bằng tuổi dương, nhưng người lớn tuổi vẫn dùng. Khi giới thiệu, đề cập 'âm lịch tuổi' để bạn Trung Quốc hiểu — họ có khái niệm '虚岁' (hư tuổi) tương tự.\n\nVề kiêng kỵ Tết (chia sẻ Việt-Trung): mùng 1 KHÔNG quét nhà (quét đi vận may), KHÔNG cắt tóc, KHÔNG cho vay tiền, KHÔNG nói chuyện xui (đám tang, bệnh tật). Bạn Trung Quốc cũng theo những kiêng này — bonding point.",
+    tip_advice_vi: "(1) HỌC THUỘC 8 câu chúc Tết bằng tiếng Trung trước Tết: '新年快乐', '恭喜发财', '万事如意', '阖家团圆', '身体健康', '心想事成', '万象更新', '福寿安康'. Khi gặp bạn Trung Quốc, dùng đúng cụm theo đối tượng (người lớn tuổi: 福寿安康; bạn ngang cấp: 万事如意; trẻ con: 学业进步). (2) Nếu mời bạn Trung Quốc ăn Tết tại Việt Nam, chuẩn bị TRƯỚC: đặt vé máy bay sớm (Tết là cao điểm), book khách sạn 4-5 sao, lên menu chứa cả món Việt và món Trung quen thuộc (cá, gà nguyên con). Bạn Trung lần đầu ăn bánh chưng có thể lúng túng — chuẩn bị vài món 'quen' để dự phòng. (3) Quà cho bạn Trung Quốc dịp Tết: bánh chưng tươi (đông lạnh chân không, gửi máy bay), mứt Tết (mứt sen, mứt gừng), cà phê Trung Nguyên premium, lụa Vạn Phúc. Tổng giá trị 500-1500 nhân dân tệ. (4) Khi gửi tin chúc Tết qua WeChat, GỬI VỚI ẢNH/EMOJI — không chỉ text. Ảnh hoa đào, lì xì, gia đình ăn Tết. Tin chúc kèm hình ảnh nhân lên hiệu ứng cảm xúc. (5) Lì xì cho bạn Trung Quốc/Trẻ Trung Quốc: dùng phong bao đỏ (NÀY mua trước được ở Hà Nội), số tiền 50, 88, 100, 168, 188 (số có 8 — phát tài). TRÁNH 4, 14, 44, 444 (tử). (6) Trong các năm tiếp theo, gửi tin chúc Tết cho TỪNG quan hệ Trung Quốc bạn có — không chỉ tin nhắn nhóm. Mỗi tin riêng + tên người nhận = thể hiện sự quan tâm cá nhân. Tốn 30 phút nhưng giá trị xây quan hệ lớn. (7) Sau Tết, gửi 'cảm ơn lì xì' nếu bạn nhận từ ai — '谢谢您的红包, 我会把红包里的钱用来 [investment / book / family treat]' — đây là cử chỉ chu đáo ít người Việt làm.",
+    exercises: [
+      { type: "fill-blank", question: "新年快乐! ___ 团圆, 万事如意!", answer: "阖家" },
+      {
+        type: "matching",
+        instruction: "Ghép cụm tiếng Trung Tết với nghĩa tiếng Việt.",
+        pairs: [
+          { chinese: "春节", pinyin: "chūn jié", english: "Tết Nguyên Đán" },
+          { chinese: "压岁钱", pinyin: "yā suì qián", english: "tiền lì xì" },
+          { chinese: "桃花", pinyin: "táo huā", english: "hoa đào" },
+          { chinese: "辞旧迎新", pinyin: "cí jiù yíng xīn", english: "tiễn cũ đón mới" }
+        ]
+      },
+      {
+        type: "translation",
+        vietnamese: "Tết Việt và Tết Trung cùng một ngày, vì cả hai đều dùng âm lịch. Nhưng Việt Nam có bánh chưng vuông và hoa đào, khác Trung Quốc.",
+        chinese: "中越春节同一天, 因为我们都用农历。但越南有方形的粽子和桃花, 和中国不一样。",
+        pinyin: "Zhōng yuè chūn jié tóng yī tiān, yīn wèi wǒ men dōu yòng nóng lì. Dàn yuè nán yǒu fāng xíng de zòng zi hé táo huā, hé zhōng guó bù yī yàng."
+      }
+    ]
+  },
+  {
+    id: 71,
+    level: "B2",
+    category: "cultural_communication",
+    title: "和在越中国朋友建立友谊",
+    pinyin: "hé zài yuè zhōng guó péng you jiàn lì yǒu yì",
+    topic: "Building friendship with Chinese friends in Vietnam",
+    title_vi: "Xây dựng tình bạn với người Trung Quốc tại Việt Nam",
+    title_en: "Building friendship with Chinese friends in Vietnam",
+    sentences: [
+      {
+        chinese: "你来越南这么久了, 周末有什么打算? 一起去咖啡店吧!",
+        pinyin: "Nǐ lái Yuènán zhème jiǔ le, zhōumò yǒu shénme dǎsuàn? Yīqǐ qù kāfēi diàn ba!",
+        english: "You've been in Vietnam for a while — any plans this weekend? Let's go to a cafe!",
+        vi: "Em đến Việt Nam lâu rồi nhỉ, cuối tuần có dự định gì không? Mình đi quán cà phê đi!",
+        pronunciation_focus: ["这么久 → zhème jiǔ (lâu thế)", "周末 → zhōumò (cuối tuần)", "打算 → dǎsuàn (dự định)", "咖啡店 → kāfēi diàn (quán cà phê)"]
+      },
+      {
+        chinese: "我们之间不需要客套, 以诚相待就好。",
+        pinyin: "Wǒmen zhī jiān bù xūyào kètào, yǐ chéng xiāng dài jiù hǎo.",
+        english: "Between us no need for formalities — treating each other sincerely is enough.",
+        vi: "Giữa mình không cần khách sáo, lấy chân thành đối đãi là đủ.",
+        pronunciation_focus: ["客套 → kètào (khách sáo)", "以诚相待 → yǐ chéng xiāng dài (đối đãi chân thành)", "之间 → zhī jiān (giữa)", "需要 → xūyào"]
+      },
+      {
+        chinese: "你想家了告诉我, 我陪你吃中国菜, 找点家的味道。",
+        pinyin: "Nǐ xiǎng jiā le gàosu wǒ, wǒ péi nǐ chī Zhōngguó cài, zhǎo diǎn jiā de wèidao.",
+        english: "If you miss home, tell me — I'll go with you for Chinese food, find some taste of home.",
+        vi: "Em nhớ nhà thì nói với mình, mình đi cùng em ăn món Trung, tìm chút hương vị quê.",
+        pronunciation_focus: ["想家 → xiǎng jiā (nhớ nhà)", "陪 → péi (đi cùng)", "中国菜 → Zhōngguó cài (món Trung)", "家的味道 → jiā de wèidao"]
+      },
+      {
+        chinese: "下次回中国, 我去找你玩, 你做我的导游!",
+        pinyin: "Xià cì huí Zhōngguó, wǒ qù zhǎo nǐ wán, nǐ zuò wǒ de dǎoyóu!",
+        english: "Next time you go back to China, I'll come visit — you be my tour guide!",
+        vi: "Lần sau em về Trung Quốc, mình sang chơi, em làm hướng dẫn viên cho mình!",
+        pronunciation_focus: ["下次 → xià cì (lần sau)", "找你玩 → zhǎo nǐ wán (sang chơi)", "导游 → dǎoyóu (hướng dẫn viên)", "做 → zuò"]
+      },
+      {
+        chinese: "肝胆相照, 海内存知己 — 我们就是这样的朋友。",
+        pinyin: "Gān dǎn xiāng zhào, hǎi nèi cún zhī jǐ — wǒmen jiùshì zhèyàng de péngyou.",
+        english: "Heart-to-heart, true friends span seas — that's the kind of friends we are.",
+        vi: "Gan ruột soi nhau, trong bốn biển có tri kỷ — mình là kiểu bạn như thế.",
+        pronunciation_focus: ["肝胆相照 → gān dǎn xiāng zhào (idiom)", "海内存知己 → hǎi nèi cún zhī jǐ (Vương Bột)", "朋友 → péngyou (bạn)", "我们 → wǒmen"]
+      }
+    ],
+    vocab: [
+      { chinese: "朋友", pinyin: "péng you", english: "friend", vi: "bạn" },
+      { chinese: "友谊", pinyin: "yǒu yì", english: "friendship", vi: "tình bạn" },
+      { chinese: "想家", pinyin: "xiǎng jiā", english: "to miss home", vi: "nhớ nhà" },
+      { chinese: "陪伴", pinyin: "péi bàn", english: "to accompany", vi: "ở bên" },
+      { chinese: "聚会", pinyin: "jù huì", english: "gathering", vi: "tụ họp" },
+      { chinese: "知心", pinyin: "zhī xīn", english: "intimate / close-hearted", vi: "tri tâm" },
+      { chinese: "以诚相待", pinyin: "yǐ chéng xiāng dài", english: "treat with sincerity", vi: "đối đãi chân thành" },
+      { chinese: "肝胆相照", pinyin: "gān dǎn xiāng zhào", english: "heart-to-heart, deep trust", vi: "gan ruột soi nhau" },
+      { chinese: "患难见真情", pinyin: "huàn nàn jiàn zhēn qíng", english: "hardship reveals true feelings", vi: "hoạn nạn thấy chân tình" },
+      { chinese: "海内存知己", pinyin: "hǎi nèi cún zhī jǐ", english: "true friends span seas (Wang Bo)", vi: "trong bốn biển có tri kỷ" }
+    ],
+    dialogue: [
+      { speaker: "阮", chinese: "小李, 你来河内多久了?", pinyin: "Xiǎo Lǐ, nǐ lái Hénèi duō jiǔ le?", english: "Little Li, how long have you been in Hanoi?", vi: "Tiểu Lý, em đến Hà Nội bao lâu rồi?" },
+      { speaker: "李", chinese: "三个月了。下班后不知道去哪里, 有点孤单。", pinyin: "Sān gè yuè le. Xiàbān hòu bù zhīdào qù nǎlǐ, yǒudiǎn gūdān.", english: "Three months. Don't know where to go after work, a bit lonely.", vi: "Ba tháng rồi. Tan ca không biết đi đâu, hơi cô đơn." },
+      { speaker: "阮", chinese: "周末跟我去咖啡店吧! 河内有好多有意思的小店。", pinyin: "Zhōumò gēn wǒ qù kāfēi diàn ba! Hénèi yǒu hǎo duō yǒu yìsi de xiǎo diàn.", english: "Come with me to cafes this weekend! Hanoi has lots of interesting small shops.", vi: "Cuối tuần đi quán cà phê với mình đi! Hà Nội nhiều quán nhỏ thú vị lắm." },
+      { speaker: "李", chinese: "真的吗? 太好了, 谢谢你!", pinyin: "Zhēn de ma? Tài hǎo le, xièxie nǐ!", english: "Really? Wonderful, thank you!", vi: "Thật à? Tuyệt quá, cảm ơn anh!" }
+    ],
+    dialogue_long: [
+      { speaker: "阮", chinese: "小李, 周五下班一起去吃饭吗? 我知道一家很正宗的四川火锅店, 你肯定喜欢。", pinyin: "Xiǎo Lǐ, zhōuwǔ xiàbān yīqǐ qù chīfàn ma? Wǒ zhīdào yī jiā hěn zhèngzōng de Sìchuān huǒguō diàn, nǐ kěndìng xǐhuan.", english: "Little Li, want to grab dinner Friday after work? I know an authentic Sichuan hotpot place, you'll love it.", vi: "Tiểu Lý, thứ Sáu tan ca đi ăn cùng nhau không? Mình biết một quán lẩu Tứ Xuyên chính gốc, em chắc chắn thích." },
+      { speaker: "李", chinese: "四川火锅?! 在河内? 太想念家乡的味道了!", pinyin: "Sìchuān huǒguō?! Zài Hénèi? Tài xiǎngniàn jiāxiāng de wèidao le!", english: "Sichuan hotpot?! In Hanoi? I miss home's flavor so much!", vi: "Lẩu Tứ Xuyên?! Ở Hà Nội? Em nhớ vị quê quá rồi!" },
+      { speaker: "阮", chinese: "我特意找的, 就为了有一天带你去。我猜你来越南三个月, 一定开始想家。", pinyin: "Wǒ tèyì zhǎo de, jiù wèile yǒu yī tiān dài nǐ qù. Wǒ cāi nǐ lái Yuènán sān gè yuè, yīdìng kāishǐ xiǎng jiā.", english: "I deliberately looked for it, just so one day I could take you. I guessed after three months in Vietnam, you'd start missing home.", vi: "Mình tìm có chủ ý, để một ngày dẫn em đi. Mình đoán em đến Việt Nam ba tháng, chắc bắt đầu nhớ nhà." },
+      { speaker: "李", chinese: "你太贴心了。我妈每周和我视频, 但听到她的声音我反而更想家。", pinyin: "Nǐ tài tiēxīn le. Wǒ mā měi zhōu hé wǒ shìpín, dàn tīng dào tā de shēngyīn wǒ fǎn'ér gèng xiǎng jiā.", english: "You're so thoughtful. My mom videos me every week, but hearing her voice makes me miss home more.", vi: "Anh chu đáo thật. Mẹ em mỗi tuần gọi video, nhưng nghe giọng mẹ em lại nhớ nhà hơn." },
+      { speaker: "阮", chinese: "我懂这种感觉。我大学时去胡志明市读书, 也是这样, 想妈妈想得睡不着。", pinyin: "Wǒ dǒng zhè zhǒng gǎnjué. Wǒ dàxué shí qù Húzhìmíng shì dúshū, yěshì zhèyàng, xiǎng māma xiǎng de shuì bù zháo.", english: "I understand. When I went to Ho Chi Minh City for college, same thing — missing mom to the point of insomnia.", vi: "Mình hiểu cảm giác này. Hồi đại học mình vào TP HCM học, cũng vậy, nhớ mẹ đến mất ngủ." },
+      { speaker: "李", chinese: "原来你也经历过。", pinyin: "Yuánlái nǐ yě jīnglì guò.", english: "So you've experienced it too.", vi: "Thì ra anh cũng đã trải qua." },
+      { speaker: "阮", chinese: "这就是为什么我想多陪你。我们之间不用客套, 以诚相待就好。你想家了, 想吃中国菜, 想说中文, 都告诉我。", pinyin: "Zhè jiùshì wèishéme wǒ xiǎng duō péi nǐ. Wǒmen zhī jiān bù yòng kètào, yǐ chéng xiāng dài jiù hǎo. Nǐ xiǎng jiā le, xiǎng chī Zhōngguó cài, xiǎng shuō zhōngwén, dōu gàosu wǒ.", english: "That's why I want to spend more time with you. Between us no need for formalities — sincerity is enough. If you miss home, want Chinese food, want to speak Mandarin, tell me.", vi: "Đó là lý do mình muốn ở bên em nhiều hơn. Giữa mình không cần khách sáo, lấy chân thành đối đãi là đủ. Em nhớ nhà, muốn ăn món Trung, muốn nói tiếng Trung, cứ nói với mình." },
+      { speaker: "李", chinese: "阮哥, 我太感动了。我在公司虽然工作顺利, 但下班后真的没人说话。", pinyin: "Ruǎn gē, wǒ tài gǎndòng le. Wǒ zài gōngsī suīrán gōngzuò shùnlì, dàn xiàbān hòu zhēn de méi rén shuōhuà.", english: "Brother Nguyen, I'm touched. At company, work goes well, but after hours really nobody to talk to.", vi: "Anh Nguyễn, em xúc động quá. Ở công ty công việc thuận lợi, nhưng tan ca thực sự không ai để nói chuyện." },
+      { speaker: "阮", chinese: "以后有我。我家在河内还剑湖旁边, 你随时可以过来吃饭。我妈做的越南菜也很好吃, 让你尝尝。", pinyin: "Yǐhòu yǒu wǒ. Wǒ jiā zài Hénèi Huánjiàn hú pángbiān, nǐ suíshí kěyǐ guòlái chīfàn. Wǒ mā zuò de Yuènán cài yě hěn hǎochī, ràng nǐ chángchang.", english: "From now on, you have me. My home's by Hoan Kiem Lake — come over for dinner anytime. My mom's Vietnamese cooking is great, let you try.", vi: "Sau này có mình. Nhà mình ở cạnh hồ Hoàn Kiếm, em có thể qua ăn cơm bất cứ lúc nào. Mẹ mình nấu món Việt cũng ngon, cho em nếm thử." },
+      { speaker: "李", chinese: "我会有点不好意思打扰阮叔阿姨。", pinyin: "Wǒ huì yǒudiǎn bù hǎoyìsi dǎrǎo Ruǎn shū āyí.", english: "I'd feel a bit shy bothering Uncle and Aunt Nguyen.", vi: "Em sẽ hơi ngại làm phiền cô chú Nguyễn." },
+      { speaker: "阮", chinese: "不会! 我妈最喜欢有客人。我们越南家庭跟中国一样, 来的都是客人, 多人吃饭才热闹。", pinyin: "Bù huì! Wǒ mā zuì xǐhuan yǒu kèrén. Wǒmen Yuènán jiātíng gēn Zhōngguó yīyàng, lái de dōu shì kèrén, duō rén chīfàn cái rènao.", english: "No way! My mom loves having guests. Vietnamese families are like Chinese — everyone who comes is a guest, more people at dinner is more lively.", vi: "Không đâu! Mẹ mình thích nhất là có khách. Gia đình Việt giống Trung — đến đều là khách, nhiều người ăn cơm mới vui." },
+      { speaker: "李", chinese: "下次我回中国, 一定带礼物来。", pinyin: "Xià cì wǒ huí Zhōngguó, yīdìng dài lǐwù lái.", english: "Next time I go back to China, I'll definitely bring gifts.", vi: "Lần sau em về Trung Quốc, nhất định mang quà sang." },
+      { speaker: "阮", chinese: "礼物不用太破费, 你心意我们就感动了。倒是, 你下次回成都的话, 我能去看你吗? 我一直想吃正宗的麻婆豆腐和辣火锅。", pinyin: "Lǐwù bùyòng tài pòfèi, nǐ xīnyì wǒmen jiù gǎndòng le. Dào shi, nǐ xià cì huí Chéngdū de huà, wǒ néng qù kàn nǐ ma? Wǒ yīzhí xiǎng chī zhèngzōng de mápó dòufu hé là huǒguō.", english: "No need for expensive gifts — your sincerity touches us. Actually, when you go back to Chengdu next, can I visit? I've always wanted authentic mapo tofu and spicy hotpot.", vi: "Quà không cần tốn kém, tấm lòng em đã cảm động rồi. Thực ra, lần sau em về Thành Đô, mình sang chơi được không? Mình vẫn muốn ăn mapo đậu hũ và lẩu cay chính gốc." },
+      { speaker: "李", chinese: "当然可以! 我做你的导游, 带你吃遍成都所有有名的小吃。", pinyin: "Dāngrán kěyǐ! Wǒ zuò nǐ de dǎoyóu, dài nǐ chī biàn Chéngdū suǒyǒu yǒumíng de xiǎochī.", english: "Of course! I'll be your tour guide, take you to taste all famous Chengdu street food.", vi: "Đương nhiên được! Em làm hướng dẫn viên cho anh, dẫn anh ăn hết món đặc sản Thành Đô." },
+      { speaker: "阮", chinese: "肝胆相照! 海内存知己, 天涯若比邻 — 我们就是这样的朋友。", pinyin: "Gān dǎn xiāng zhào! Hǎi nèi cún zhī jǐ, tiānyá ruò bǐ lín — wǒmen jiùshì zhèyàng de péngyou.", english: "Heart-to-heart! True friends span seas, distant horizons feel close — that's the kind of friends we are.", vi: "Gan ruột soi nhau! Trong bốn biển có tri kỷ, chân trời như cận kề — mình là kiểu bạn như thế." },
+      { speaker: "李", chinese: "阮哥, 我太幸运能在越南遇到你。", pinyin: "Ruǎn gē, wǒ tài xìngyùn néng zài Yuènán yù dào nǐ.", english: "Brother Nguyen, I'm so lucky to meet you in Vietnam.", vi: "Anh Nguyễn, em may mắn quá khi gặp anh ở Việt Nam." }
+    ],
+    roleplay_prompts: [
+      "Đồng nghiệp Trung Quốc mới sang Việt Nam 1 tháng, có vẻ cô đơn cuối tuần. Hãy chủ động kết nối: hẹn họ cuối tuần đi cà phê + đề xuất 'Hà Nội tour' (phố cổ, Văn Miếu, hồ Tây). Dùng 你 (thân mật), không 您 — vì đây là context xây tình bạn.",
+      "Bạn Trung Quốc đang ốm và nằm bệnh viện ở Việt Nam, không có người nhà. Hãy chăm sóc: đến thăm + mang đồ ăn nhẹ (cháo, súp gà) + ngồi nói chuyện 30 phút + để lại số WeChat 24/7. Dùng cụm '患难见真情' khi gặp.",
+      "Sau 1 năm ở Việt Nam, bạn Trung Quốc về nước. Hãy tổ chức tiệc chia tay: chọn nhà hàng yêu thích của họ + mời 4-5 đồng nghiệp/bạn chung + chuẩn bị quà kỷ niệm (album ảnh, áo dài, video) + viết tay một lá thư bằng tiếng Trung. Tránh khóc lóc — chia tay vui vẻ + hứa 'next time in China'."
+    ],
+    register_notes: "Tình bạn Việt-Trung là môi trường register linh hoạt — ban đầu formal (您), sau khi thân chuyển sang 你. Khi đã thực sự thân, có thể dùng nickname (小李, 阮哥). Quá trình chuyển từ 您 sang 你 là dấu hiệu thân thiết — đối phương đề xuất là tôn trọng; bạn tự đổi sang 你 quá sớm là vô lễ.\n\nThang thân thiết qua xưng hô:\n- 您 + họ + chức danh (王经理) = mới gặp / business\n- 您 + họ (王先生) = formal nhưng đã quen\n- 你 + họ + 哥/姐 (王哥, 王姐) = thân thiện, ngang cấp\n- 小 + họ (小王) = thân, có chút bề trên\n- Nickname (王王, 小李子) = rất thân, gia đình\n\nCác cụm xây tình bạn:\n- 'Có gì cứ nói với mình' = '有什么事跟我说'\n- 'Mình ở đây vì em' = '我在这里陪你'\n- 'Đừng khách sáo' = '别客气'\n- 'Mình là bạn rồi' = '我们都是朋友了'\n- 'Có việc gì cần giúp gọi mình' = '有事需要帮忙就给我打电话'\n\nKhi mời về nhà: 'Chiều nay rảnh không? Đến nhà mình ăn cơm' = '下午有空吗? 来我家吃饭'. Mời về nhà = bước thân thiết quan trọng trong văn hóa Á Đông.\n\nTránh: (a) Trao đổi quá nhiều quà giá trị cao — bạn thật không cần ấn tượng nhau bằng tiền; (b) Hứa quá nhiều ('mình sẽ dẫn em đi khắp Việt Nam') rồi không thực hiện; (c) Ép bạn Trung Quốc làm điều họ không thoải mái (ăn món lạ, đi chỗ ồn); (d) Để lộ chuyện riêng của bạn qua Wechat group.",
+    idiom_glosses: [
+      {
+        idiom: "以诚相待",
+        literal: "lấy chân thành đối đãi (yǐ chéng xiāng dài)",
+        meaning: "Đối đãi với nhau bằng sự chân thành — không giả tạo, không tính toán. Triết lý cốt lõi của tình bạn Đông Á. Cụm thể hiện cam kết tình bạn không có hidden agenda.",
+        example: "我们之间以诚相待, 不需要客套。"
+      },
+      {
+        idiom: "肝胆相照",
+        literal: "gan mật soi nhau (gān dǎn xiāng zhào)",
+        meaning: "Lộ gan ruột cho nhau thấy — tin cậy sâu sắc, không giấu giếm. Cụm rất mạnh, dành cho bạn thân nhất. Tránh dùng cho mới quen — sẽ bị coi là cường điệu.",
+        example: "我们是肝胆相照的好朋友。"
+      },
+      {
+        idiom: "患难见真情",
+        literal: "hoạn nạn thấy chân tình (huàn nàn jiàn zhēn qíng)",
+        meaning: "Khi gặp khó khăn mới thấy ai là bạn thật — sự thử thách của tình bạn. Cụm dùng khi đã giúp nhau qua khó khăn cụ thể. Mạnh và chân thực — thể hiện tình bạn đã được kiểm chứng.",
+        example: "你这次帮我度过难关, 真是患难见真情。"
+      },
+      {
+        idiom: "海内存知己, 天涯若比邻",
+        literal: "trong bốn biển có tri kỷ, chân trời như cận kề (Vương Bột)",
+        meaning: "Câu thơ Vương Bột — nếu có tri kỷ, dù xa cũng gần. Cụm cao cấp dùng cho tình bạn vượt khoảng cách. Đặc biệt phù hợp khi bạn về nước hoặc bạn đi xa — khẳng định khoảng cách không chia rẽ.",
+        example: "你回中国了, 但海内存知己, 我们永远是朋友。"
+      }
+    ],
+    cultural_notes_vi: "Xây tình bạn với người Trung Quốc tại Việt Nam là cơ hội đặc biệt — họ rời quê hương đến đất khách, cần kết nối, và bạn có lợi thế là 'native + có nền văn hóa gần'. Năm giai đoạn xây tình bạn:\n\nGIAI ĐOẠN 1 (1-3 tháng): SOCIAL EXCHANGE.\n- Mời đi cà phê / ăn trưa\n- Nói chuyện công việc + interests + thành phố\n- Trao đổi WeChat\n- Test compatibility cá nhân\nKey skill: be friendly without overstepping. Đừng hỏi quá personal (tiền lương, tình yêu, chính trị).\n\nGIAI ĐOẠN 2 (3-6 tháng): SHARED EXPERIENCES.\n- Cuối tuần đi chơi cùng (Văn Miếu, Hạ Long, Sapa)\n- Mời về nhà ăn cơm (BƯỚC LỚN — gặp gia đình)\n- Cùng đi nhậu/karaoke\n- Bắt đầu kể chuyện riêng (gia đình, ước mơ)\nKey skill: mời về nhà là bước quan trọng — đảm bảo gia đình bạn welcoming, không hỏi câu khó (lương, tuổi kết hôn).\n\nGIAI ĐOẠN 3 (6-12 tháng): TRUST BUILDING.\n- Giúp họ trong khó khăn (đi bệnh viện, dịch giấy tờ, thuê nhà)\n- Họ giúp bạn (việc, dạy tiếng Trung, kết nối với người Trung khác)\n- Chia sẻ tâm sự cá nhân\n- Tham dự sự kiện quan trọng (sinh nhật, kỷ niệm)\nKey skill: 'patience over performance' — không ép thân thiết, để tự nhiên phát triển.\n\nGIAI ĐOẠN 4 (1-2 năm): LIFE INTEGRATION.\n- Bạn của họ thành bạn của bạn\n- Gia đình hai bên biết nhau qua kể chuyện\n- Kế hoạch dài hạn cùng nhau (du lịch chung, business cooperation)\n- Không cần lý do để gặp\nKey skill: maintain individuality — giữ identity riêng của mình.\n\nGIAI ĐOẠN 5 (2+ năm): LIFELONG FRIENDSHIP.\n- Họ về Trung Quốc, bạn ở Việt Nam, vẫn liên lạc\n- Thăm nhau qua biên giới\n- Hỗ trợ lẫn nhau career/family decisions\n- 'Knowing each other beyond words'\nKey skill: 'invest without expecting return' — tình bạn cấp độ này không có ROI, chỉ có meaning.\n\nVề khác biệt cá nhân: không phải mọi người Trung Quốc đều giống nhau. Người miền Bắc (Bắc Kinh, Hắc Long Giang) có xu hướng formal hơn; miền Nam (Quảng Đông, Phúc Kiến) thân thiện hơn; miền Tây (Tứ Xuyên, Vân Nam) cởi mở và bộc trực; người Thượng Hải sophisticated. Đọc đối phương cẩn thận, đừng generalize.\n\nVề người Trung Quốc Hoa Kiều ở Việt Nam (Chợ Lớn, Q.5 HCMC): họ là 'người Việt gốc Hoa', đã ở Việt Nam nhiều thế hệ. Ngôn ngữ chính có thể là tiếng Việt, tiếng Quảng Đông, không phải Mandarin. Khi kết bạn với họ, chuẩn bị tinh thần khác với 'người Trung mới sang'.\n\nVề tình bạn cross-gender: bạn bè khác giới ở Trung Quốc đại lục được chấp nhận, nhưng vẫn có giới hạn (tránh đi đêm muộn 1-1, tránh tuyên bố 'good friend' công khai khi cả hai đã có gia đình). Xử lý tinh tế.",
+    tip_advice_vi: "(1) ĐẦU TƯ THỜI GIAN, không tiền. Tình bạn thật xây qua giờ chất lượng (đi cà phê, đi bộ, nói chuyện) hơn qua tiền (tặng quà đắt, mời nhà hàng sang). (2) CHỦ ĐỘNG mời. Người Trung Quốc mới sang Việt Nam thường e ngại mời người Việt — cảm thấy là 'imposing'. Bạn chủ động = giải tỏa căng thẳng đó. Mỗi tuần 1 lần mời cà phê / ăn trưa cuối tuần đầu tiên. (3) HỌC 5-10 cụm tiếng Trung casual để dùng hàng ngày: '走吧' (đi nào), '加油' (cố lên), '没事' (không sao), '谢了' (cảm ơn nhé), '哥们' (anh em — male only). Sử dụng tự nhiên trong WeChat = thể hiện thân thiết. (4) GIỚI THIỆU bạn Trung Quốc của bạn cho NHÓM bạn Việt của bạn. Họ cần expand network. Mở 1 bữa nhậu nhóm, mix 50% Việt + 50% Trung Quốc — bonding rất mạnh. (5) NHỚ những ngày quan trọng: sinh nhật, ngày họ chuyển đến Việt Nam, ngày họ về Trung Quốc thăm nhà. Gửi tin chúc / quà nhỏ. Mỗi 'kỷ niệm' bạn nhớ = 1 điểm gắn kết sâu. (6) GIẢI THÍCH Việt Nam một cách tự nhiên trong các cuộc đi chơi. Đến phố cổ, kể về lịch sử Hà Nội. Đến hồ Hoàn Kiếm, kể chuyện rùa thần. KHÔNG bài bản, mà như story-telling cá nhân. (7) KHI HỌ VỀ NƯỚC, không 'kết thúc' mối quan hệ. Gửi tin WeChat đều đặn (1 tuần 1 lần), gửi ảnh đời sống, mời họ quay lại Việt Nam, lên kế hoạch sang Trung Quốc thăm họ. Tình bạn lifelong = 'long-distance maintenance' liên tục.",
+    exercises: [
+      { type: "fill-blank", question: "我们之间不需要客套, ___ 就好。", answer: "以诚相待" },
+      {
+        type: "matching",
+        instruction: "Ghép cụm tiếng Trung tình bạn với nghĩa tiếng Việt.",
+        pairs: [
+          { chinese: "想家", pinyin: "xiǎng jiā", english: "nhớ nhà" },
+          { chinese: "以诚相待", pinyin: "yǐ chéng xiāng dài", english: "đối đãi chân thành" },
+          { chinese: "肝胆相照", pinyin: "gān dǎn xiāng zhào", english: "gan ruột soi nhau" },
+          { chinese: "海内存知己", pinyin: "hǎi nèi cún zhī jǐ", english: "trong bốn biển có tri kỷ" }
+        ]
+      },
+      {
+        type: "translation",
+        vietnamese: "Em nhớ nhà thì nói với mình, mình đi cùng em ăn món Trung. Mình là bạn rồi, không cần khách sáo.",
+        chinese: "你想家了告诉我, 我陪你吃中国菜。我们是朋友, 不需要客套。",
+        pinyin: "Nǐ xiǎng jiā le gào su wǒ, wǒ péi nǐ chī zhōng guó cài. Wǒ men shì péng you, bù xū yào kè tao."
+      }
+    ]
   }
 ];
 export default lessons;
