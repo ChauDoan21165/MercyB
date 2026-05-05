@@ -46,6 +46,23 @@ export type ChineseExercise =
 
 export type ChineseCefrLevel = "A1" | "A2" | "B1" | "B2" | "C1" | "C2";
 
+export type IdiomGloss = {
+  idiom: string;
+  literal: string;
+  meaning: string;
+  example: string;
+};
+
+// B2-specific dialogue line — adds Vietnamese gloss to the existing
+// {speaker, chinese, pinyin, english} shape used by lessons 1-50.
+export type ChineseB2DialogueLine = {
+  speaker: string;
+  chinese: string;
+  pinyin: string;
+  english: string;
+  vi?: string;
+};
+
 export type ChineseLesson = {
   id: number;
   level: ChineseCefrLevel;
@@ -56,6 +73,14 @@ export type ChineseLesson = {
   sentences: ChineseSentence[];
   dialogue: ChineseDialogueLine[];
   exercises: ChineseExercise[];
+  // B2-specific optional fields (Phase 2 conversation-focused lessons).
+  // All optional — existing A1/A2/B1 lessons typecheck unchanged.
+  cultural_notes_vi?: string;
+  tip_advice_vi?: string;
+  dialogue_long?: ChineseB2DialogueLine[];
+  roleplay_prompts?: string[];
+  register_notes?: string;
+  idiom_glosses?: IdiomGloss[];
 };
 
 export const lessons: ChineseLesson[] = [
