@@ -5147,6 +5147,411 @@ level: "B2",
         pinyin: "Wǒ xiǎng bǎ gāo tiě gǎi qiān dào xià wǔ, shǒu xù fèi duō shao? Chā é wǒ yòng wēi xìn zhī fù."
       }
     ]
+  },
+  {
+    id: 75,
+    level: "B2",
+    category: "travel_mobility",
+    title: "在中国医院看急诊",
+    pinyin: "zài zhōng guó yī yuàn kàn jí zhěn",
+    topic: "Hospital emergency visit — symptoms, insurance, prescription",
+    title_vi: "Khám cấp cứu tại bệnh viện Trung Quốc",
+    title_en: "Emergency hospital visit in China",
+    sentences: [
+      {
+        chinese: "您好, 我从昨天晚上开始肚子很疼, 还发烧。",
+        pinyin: "Nín hǎo, wǒ cóng zuótiān wǎnshàng kāishǐ dùzi hěn téng, hái fāshāo.",
+        english: "Hello, since last night my stomach hurts a lot and I have a fever.",
+        vi: "Em chào bác sĩ, từ tối qua em đau bụng nhiều, lại bị sốt.",
+        pronunciation_focus: ["肚子 → dùzi (bụng)", "疼 → téng (đau)", "发烧 → fāshāo (sốt)", "昨天晚上 → zuótiān wǎnshàng"]
+      },
+      {
+        chinese: "我大概吃错了什么, 一直拉肚子。",
+        pinyin: "Wǒ dàgài chī cuò le shénme, yīzhí lā dùzi.",
+        english: "I probably ate something wrong — I keep having diarrhea.",
+        vi: "Chắc em ăn nhầm gì đó, em bị tiêu chảy liên tục.",
+        pronunciation_focus: ["吃错 → chī cuò (ăn nhầm)", "拉肚子 → lā dùzi (tiêu chảy)", "一直 → yīzhí (liên tục)", "大概 → dàgài (chắc)"]
+      },
+      {
+        chinese: "我有越南的旅游保险, 可以报销吗?",
+        pinyin: "Wǒ yǒu Yuènán de lǚyóu bǎoxiǎn, kěyǐ bàoxiāo ma?",
+        english: "I have Vietnamese travel insurance — can I claim reimbursement?",
+        vi: "Em có bảo hiểm du lịch Việt Nam, có thể yêu cầu hoàn tiền không?",
+        pronunciation_focus: ["旅游保险 → lǚyóu bǎoxiǎn (bảo hiểm du lịch)", "报销 → bàoxiāo (hoàn tiền / báo cáo chi phí)", "越南 → Yuènán", "可以 → kěyǐ"]
+      },
+      {
+        chinese: "请问医生, 我需要吃什么药?",
+        pinyin: "Qǐngwèn yīshēng, wǒ xūyào chī shénme yào?",
+        english: "Doctor, what medicine do I need to take?",
+        vi: "Cho em hỏi bác sĩ, em cần uống thuốc gì?",
+        pronunciation_focus: ["医生 → yīshēng (bác sĩ)", "吃药 → chī yào (uống thuốc — TQ dùng 吃, không phải 喝)", "需要 → xūyào", "请问 → qǐngwèn"]
+      },
+      {
+        chinese: "麻烦您把发票和处方都给我, 我要交保险公司。",
+        pinyin: "Máfan nín bǎ fāpiào hé chǔfāng dōu gěi wǒ, wǒ yào jiāo bǎoxiǎn gōngsī.",
+        english: "Please give me the invoice and prescription — I need to submit to my insurance.",
+        vi: "Phiền bác sĩ đưa em hóa đơn và đơn thuốc, em phải nộp cho công ty bảo hiểm.",
+        pronunciation_focus: ["发票 → fāpiào (hóa đơn — quan trọng cho bảo hiểm)", "处方 → chǔfāng (đơn thuốc)", "保险公司 → bǎoxiǎn gōngsī (công ty bảo hiểm)", "麻烦您 → máfan nín"]
+      }
+    ],
+    vocab: [
+      { chinese: "急诊", pinyin: "jí zhěn", english: "emergency room", vi: "phòng cấp cứu" },
+      { chinese: "挂号", pinyin: "guà hào", english: "register (at hospital)", vi: "đăng ký khám" },
+      { chinese: "症状", pinyin: "zhèng zhuàng", english: "symptom", vi: "triệu chứng" },
+      { chinese: "发烧", pinyin: "fā shāo", english: "to have a fever", vi: "sốt" },
+      { chinese: "拉肚子", pinyin: "lā dù zi", english: "diarrhea", vi: "tiêu chảy" },
+      { chinese: "处方", pinyin: "chǔ fāng", english: "prescription", vi: "đơn thuốc" },
+      { chinese: "发票", pinyin: "fā piào", english: "invoice / receipt", vi: "hóa đơn" },
+      { chinese: "旅游保险", pinyin: "lǚ yóu bǎo xiǎn", english: "travel insurance", vi: "bảo hiểm du lịch" },
+      { chinese: "报销", pinyin: "bào xiāo", english: "reimburse / claim", vi: "hoàn tiền / báo phí" },
+      { chinese: "化验单", pinyin: "huà yàn dān", english: "lab test report", vi: "kết quả xét nghiệm" }
+    ],
+    dialogue: [
+      { speaker: "护士", chinese: "您好, 哪里不舒服?", pinyin: "Nín hǎo, nǎlǐ bù shūfu?", english: "Hello, what's wrong?", vi: "Chào anh, anh thấy đau ở đâu?" },
+      { speaker: "阮", chinese: "肚子疼, 还发烧。", pinyin: "Dùzi téng, hái fāshāo.", english: "Stomach hurts, also have a fever.", vi: "Đau bụng, lại sốt nữa." },
+      { speaker: "护士", chinese: "请到二楼急诊挂号, 把护照给我。", pinyin: "Qǐng dào èr lóu jí zhěn guà hào, bǎ hùzhào gěi wǒ.", english: "Go to the second floor for ER registration, give me your passport.", vi: "Lên tầng 2 đăng ký cấp cứu, đưa em hộ chiếu." },
+      { speaker: "阮", chinese: "好的, 给您。", pinyin: "Hǎo de, gěi nín.", english: "Sure, here.", vi: "Vâng, đưa anh." }
+    ],
+    dialogue_long: [
+      { speaker: "阮", chinese: "您好, 我是越南游客, 肚子很疼, 想看急诊。", pinyin: "Nín hǎo, wǒ shì Yuènán yóukè, dùzi hěn téng, xiǎng kàn jí zhěn.", english: "Hello, I'm a Vietnamese tourist, my stomach hurts a lot, want to see ER.", vi: "Chào chị, em là du khách Việt Nam, đau bụng nhiều, muốn khám cấp cứu." },
+      { speaker: "护士", chinese: "请把护照给我, 先挂号。挂号费是15块。", pinyin: "Qǐng bǎ hùzhào gěi wǒ, xiān guàhào. Guàhào fèi shì shíwǔ kuài.", english: "Give me your passport, register first. Registration fee is 15 RMB.", vi: "Đưa em hộ chiếu, đăng ký trước. Phí đăng ký 15 tệ." },
+      { speaker: "阮", chinese: "微信可以付吗?", pinyin: "Wēixìn kěyǐ fù ma?", english: "Can I pay with WeChat?", vi: "Trả qua WeChat được không?" },
+      { speaker: "护士", chinese: "可以, 扫这个码。挂号好了, 您去三号诊室找王医生。", pinyin: "Kěyǐ, sǎo zhège mǎ. Guàhào hǎo le, nín qù sān hào zhěnshì zhǎo Wáng yīshēng.", english: "Yes, scan this code. Registered — go to consultation room 3, see Dr. Wang.", vi: "Được, quét mã này. Đã đăng ký, anh sang phòng khám số 3, gặp bác sĩ Vương." },
+      { speaker: "王医生", chinese: "您好, 哪里不舒服? 从什么时候开始的?", pinyin: "Nín hǎo, nǎlǐ bù shūfu? Cóng shénme shíhou kāishǐ de?", english: "Hello, what's wrong? When did it start?", vi: "Chào anh, đau ở đâu? Bắt đầu từ khi nào?" },
+      { speaker: "阮", chinese: "肚子疼, 从昨天晚上开始。还发烧, 一直拉肚子。我大概吃错了什么。", pinyin: "Dùzi téng, cóng zuótiān wǎnshàng kāishǐ. Hái fāshāo, yīzhí lā dùzi. Wǒ dàgài chī cuò le shénme.", english: "Stomach hurts since last night. Also fever, constant diarrhea. I probably ate something wrong.", vi: "Đau bụng từ tối qua. Lại sốt, tiêu chảy liên tục. Chắc em ăn nhầm gì đó." },
+      { speaker: "王医生", chinese: "昨天晚上吃了什么?", pinyin: "Zuótiān wǎnshàng chī le shénme?", english: "What did you eat last night?", vi: "Tối qua anh ăn gì?" },
+      { speaker: "阮", chinese: "在夜市吃了海鲜串和啤酒。", pinyin: "Zài yèshì chī le hǎixiān chuàn hé píjiǔ.", english: "Seafood skewers and beer at the night market.", vi: "Em ăn xiên hải sản và uống bia ở chợ đêm." },
+      { speaker: "王医生", chinese: "可能是急性肠胃炎。我先量体温, 您张嘴, 让我看看喉咙。", pinyin: "Kěnéng shì jí xìng cháng wèi yán. Wǒ xiān liáng tǐwēn, nín zhāngzuǐ, ràng wǒ kànkan hóulóng.", english: "Likely acute gastroenteritis. Let me take your temperature first, open mouth, let me check throat.", vi: "Có thể là viêm dạ dày ruột cấp. Em đo thân nhiệt trước, anh há miệng, em xem cổ họng." },
+      { speaker: "阮", chinese: "好的。", pinyin: "Hǎo de.", english: "Okay.", vi: "Vâng." },
+      { speaker: "王医生", chinese: "体温三十八度三, 喉咙稍微发红。我开点药, 您吃两天, 多喝水。如果两天后没好, 必须做血常规和大便检查。", pinyin: "Tǐwēn sānshí bā dù sān, hóulóng shāowēi fā hóng. Wǒ kāi diǎn yào, nín chī liǎng tiān, duō hē shuǐ. Rúguǒ liǎng tiān hòu méi hǎo, bìxū zuò xuè chángguī hé dàbiàn jiǎnchá.", english: "Temperature 38.3, throat slightly red. I'll prescribe medicine, take for two days, drink lots of water. If not better in two days, need blood test and stool test.", vi: "Thân nhiệt 38.3, cổ họng hơi đỏ. Bác sĩ kê thuốc, anh uống 2 ngày, uống nhiều nước. Nếu 2 ngày không đỡ, phải xét nghiệm máu và phân." },
+      { speaker: "阮", chinese: "好的。请问医生, 我有越南旅游保险, 可以报销吗?", pinyin: "Hǎo de. Qǐngwèn yīshēng, wǒ yǒu Yuènán lǚyóu bǎoxiǎn, kěyǐ bàoxiāo ma?", english: "Okay. Doctor, I have Vietnamese travel insurance — can I claim?", vi: "Vâng. Cho em hỏi bác sĩ, em có bảo hiểm du lịch Việt Nam, có thể được hoàn không?" },
+      { speaker: "王医生", chinese: "您先付费, 我给您开正规发票和处方单, 还有诊断书。回越南交保险公司就能报销。", pinyin: "Nín xiān fùfèi, wǒ gěi nín kāi zhèngguī fāpiào hé chǔfāng dān, hái yǒu zhěnduàn shū. Huí Yuènán jiāo bǎoxiǎn gōngsī jiù néng bàoxiāo.", english: "You pay first, I'll give you proper invoice, prescription, and diagnosis letter. Submit to insurance back in Vietnam to claim.", vi: "Anh trả phí trước, em sẽ kê hóa đơn chính quy, đơn thuốc, và giấy chẩn đoán. Về Việt Nam nộp công ty bảo hiểm là hoàn được." },
+      { speaker: "阮", chinese: "总共多少钱?", pinyin: "Zǒnggòng duōshao qián?", english: "How much total?", vi: "Tổng cộng bao nhiêu?" },
+      { speaker: "王医生", chinese: "诊费80块, 药费150块, 一共230块。去一楼药房取药, 收据保留好。", pinyin: "Zhěnfèi bāshí kuài, yàofèi yībǎi wǔshí kuài, yīgòng èrbǎi sānshí kuài. Qù yī lóu yàofáng qǔ yào, shōujù bǎoliú hǎo.", english: "Consultation 80, medicine 150, total 230 RMB. Pick up medicine at first-floor pharmacy, keep the receipt.", vi: "Phí khám 80 tệ, thuốc 150 tệ, tổng 230 tệ. Lấy thuốc ở phòng dược tầng 1, giữ kỹ biên nhận." },
+      { speaker: "阮", chinese: "谢谢医生。", pinyin: "Xièxie yīshēng.", english: "Thank you doctor.", vi: "Cảm ơn bác sĩ." },
+      { speaker: "王医生", chinese: "好好休息, 注意饮食。如果情况严重, 立刻回来。", pinyin: "Hǎohǎo xiūxi, zhùyì yǐnshí. Rúguǒ qíngkuàng yánzhòng, lìkè huílái.", english: "Rest well, watch your diet. If it gets serious, come back immediately.", vi: "Nghỉ ngơi cho tốt, chú ý ăn uống. Nếu nặng hơn, quay lại ngay." }
+    ],
+    roleplay_prompts: [
+      "Bạn bị đau đầu kèm sốt nhẹ 2 ngày, nghi cảm cúm. Hãy đến khám: mô tả triệu chứng (sốt, đau đầu, mệt), bác sĩ hỏi về tiền sử (có dị ứng thuốc không, có đang uống thuốc gì), bạn yêu cầu hóa đơn để báo bảo hiểm. Dùng cụm '我有过敏史' hoặc '没有过敏史' (có/không có dị ứng).",
+      "Bạn bị bong gân chân khi đi bộ. Đến phòng cấp cứu, mô tả vị trí + mức độ đau. Bác sĩ chỉ định chụp X-quang. Hãy hỏi giá X-quang trước khi đồng ý + xin hóa đơn riêng cho mỗi mục (khám, X-quang, thuốc, băng) để bảo hiểm dễ xử lý.",
+      "Bạn cần thuốc kê đơn (kháng sinh) nhưng không nhớ tên thuốc bằng tiếng Trung. Hãy mô tả công dụng cho dược sĩ ('thuốc cho viêm họng', '消炎药' = thuốc kháng viêm). Hỏi về cách uống + tác dụng phụ + có thể uống cùng thuốc giảm đau không."
+    ],
+    register_notes: "Bệnh viện Trung Quốc dùng register chuyên môn nhanh — bác sĩ bận, nói nhanh, không nhiều giải thích. Bạn dùng 您 với bác sĩ và nurse, ngắn gọn rõ ràng.\n\nCác cụm chuẩn mô tả triệu chứng:\n- '我X疼' (em đau X) — dùng '疼' (téng) chứ KHÔNG '痛' (tòng) trong khẩu ngữ. 头疼 (đau đầu), 肚子疼 (đau bụng), 嗓子疼 (đau họng)\n- '从X时候开始' (từ X bắt đầu) — '昨天晚上', '今天早上', '三天前'\n- '一直X' (liên tục X) — 一直拉肚子 (tiêu chảy liên tục), 一直发烧 (sốt liên tục)\n- '我大概X' (em chắc là X) — đoán nguyên nhân nhẹ nhàng\n- '我有过敏史' / '我对X过敏' (em dị ứng X)\n\nCác cụm formal cho hóa đơn/bảo hiểm:\n- '麻烦您把发票给我' (phiền bác sĩ đưa em hóa đơn)\n- '我需要诊断书报保险' (em cần giấy chẩn đoán để báo bảo hiểm)\n- '请开正规发票' (xin kê hóa đơn chính quy — chứ không phải bill thông thường)\n\nQuy trình bệnh viện công Trung Quốc: 挂号 (đăng ký) → 候诊 (chờ khám) → 看医生 (gặp bác sĩ) → 付费 (thanh toán) → 取药 (lấy thuốc). Mỗi bước riêng quầy, có thể chờ 30-60 phút mỗi bước.\n\nTránh: (a) Tự dịch tên thuốc Việt Nam ('panadol' thì OK, '甲砜霉素' khó); (b) Đòi hỏi 'thuốc tốt nhất' — bác sĩ kê theo phác đồ, không phải theo đòi hỏi; (c) Quay phim/livestream trong bệnh viện — vi phạm quy định bảo mật.",
+    idiom_glosses: [
+      {
+        idiom: "对症下药",
+        literal: "đối chứng hạ thuốc (duì zhèng xià yào)",
+        meaning: "Đúng bệnh kê thuốc — chẩn đoán đúng và điều trị đúng. Cụm khen bác sĩ giỏi: '王医生对症下药, 一吃就好.' Cũng dùng nghĩa rộng (giải pháp đúng cho vấn đề đúng).",
+        example: "好医生会对症下药, 不会乱开药。"
+      },
+      {
+        idiom: "病急乱投医",
+        literal: "bệnh gấp loạn tìm thầy (bìng jí luàn tóu yī)",
+        meaning: "Bệnh nặng tìm thầy bừa — quýnh quáng làm điều không suy nghĩ. Cụm cảnh báo: 'em đừng 病急乱投医, hãy đến bệnh viện công uy tín'. Tránh nói về mình — sẽ tự miêu tả là không sáng suốt.",
+        example: "别病急乱投医, 找正规医院最重要。"
+      },
+      {
+        idiom: "防患未然",
+        literal: "phòng họa khi chưa xảy ra (fáng huàn wèi rán)",
+        meaning: "Phòng bệnh hơn chữa bệnh — chuẩn bị trước rủi ro. Cụm dùng để giải thích vì sao bạn mua bảo hiểm du lịch trước khi đi: '我提前买了旅游保险, 防患未然'.",
+        example: "出国前买保险, 防患未然。"
+      },
+      {
+        idiom: "因病施治",
+        literal: "theo bệnh chữa trị (yīn bìng shī zhì)",
+        meaning: "Tùy bệnh mà chữa — điều trị cá nhân hóa. Cụm dùng khi bác sĩ giải thích phác đồ điều trị cho bạn: 'mình 因病施治, không phải kê đại'. Khi bạn nghe bác sĩ nói cụm này = họ đang cẩn thận, tin được.",
+        example: "我们医院讲究因病施治。"
+      }
+    ],
+    cultural_notes_vi: "Bệnh viện Trung Quốc đại lục có hệ thống ba cấp: 三甲医院 (sān jiǎ — top, đại học, đa khoa) > 二甲医院 (sān èr — tỉnh/thành phố) > 社区医院 (community clinic). Du khách nên đi 三甲 hoặc 二甲, không đi clinic nhỏ. Năm điều người Việt cần biết:\n\n(1) PHÒNG CẤP CỨU (急诊) mở 24/7. Đăng ký bằng hộ chiếu — KHÔNG cần CMND Trung Quốc. Phí đăng ký 10-30 tệ. Phí khám 50-200 tệ tùy bệnh viện. Phí thuốc/xét nghiệm tính riêng. Tổng cho ca thường 150-500 tệ.\n\n(2) THANH TOÁN: chấp nhận tiền mặt, WeChat Pay, Alipay. Visa quốc tế CHỈ ở bệnh viện quốc tế (国际医院 — đắt 3-5x). Bảo hiểm sức khỏe Trung Quốc của người dân = bạn không có. Bảo hiểm du lịch Việt Nam = TRẢ TRƯỚC tại bệnh viện, hoàn lại sau khi về Việt Nam.\n\n(3) GIẤY TỜ CẦN GIỮ cho bảo hiểm: (a) hóa đơn chính quy (正规发票 — có dấu đỏ); (b) đơn thuốc (处方); (c) giấy chẩn đoán (诊断书); (d) báo cáo xét nghiệm (化验单/检查报告). Yêu cầu BẢN GIẤY, không phải PDF — bảo hiểm Việt Nam có thể không nhận PDF.\n\n(4) THUỐC: chia hai loại — 西药 (thuốc Tây, kháng sinh, giảm đau, hạ sốt) và 中药 (thuốc bắc, viên/gói thảo dược). Du khách thường được kê thuốc Tây trừ khi yêu cầu. Bác sĩ Trung Quốc đôi khi kê CẢ HAI cùng lúc — đây là phong cách 'tích hợp', không phải lỗi. Nếu bạn không tin thuốc bắc, lịch sự nói '我只要西药就行' (em chỉ cần thuốc Tây là được).\n\n(5) BỆNH VIỆN QUỐC TẾ TẠI TQ (đại lục): Bắc Kinh — Beijing United Family (北京和睦家); Thượng Hải — Shanghai United Family (上海和睦家); Quảng Châu — Guangzhou United Family. Đắt 3-10x bệnh viện công, nhưng có bác sĩ nói tiếng Anh, không phải xếp hàng, môi trường giống quốc tế. Bảo hiểm du lịch cao cấp (Allianz, AXA) có thể chi trả trực tiếp ở đây không cần chờ. Bảo hiểm Việt Nam thường không.\n\nVề số khẩn cấp: 120 (救护车 — xe cứu thương). Cuộc gọi miễn phí. Tổng đài có người nói tiếng Anh ở thành phố lớn. Mô tả: tên bạn, vị trí (đường + tên cửa hàng/landmark), triệu chứng. Xe đến 10-30 phút tùy giao thông. Phí xe cứu thương 50-300 tệ tùy quãng đường, trả tại bệnh viện.\n\nVề bệnh truyền nhiễm/COVID-style: nếu bạn có triệu chứng hô hấp + sốt cao, một số bệnh viện sẽ đưa vào phòng riêng (发热门诊 — fātrè ménzhěn). Bình tĩnh hợp tác — quy trình tiêu chuẩn. KHÔNG bình luận chính trị về quy trình.",
+    tip_advice_vi: "(1) MUA BẢO HIỂM DU LỊCH TRƯỚC khi đi — có loại 200,000-500,000 VND/tuần, chi trả ~50,000 USD chi phí y tế. Đọc kỹ điều khoản: tự xử lý/trả trước → hoàn lại (cash advance) hay cấp trực tiếp (direct billing). Direct billing đắt hơn nhưng tiện hơn ở Trung Quốc. (2) TẢI APP GOOGLE TRANSLATE OFFLINE tiếng Trung-tiếng Việt trước khi đi. Trong bệnh viện Trung Quốc, mạng có thể chậm + không VPN, app translation online không chạy. Mode offline tải xuống 100MB, dùng được cho từ vựng y tế cơ bản. (3) HỌC THUỘC 10 cụm cơ bản trước khi đi: 我X疼 (em đau X), 我发烧 (em sốt), 拉肚子 (tiêu chảy), 头晕 (chóng mặt), 想吐 (buồn nôn), 有过敏史 (có dị ứng), 麻烦您 (phiền anh/chị), 发票 (hóa đơn), 处方 (đơn thuốc), 诊断书 (giấy chẩn đoán). (4) KHI BỊ ỐM, ĐI BỆNH VIỆN SỚM, không chờ. Du khách thường chần chừ vì sợ tốn tiền — kết quả là bệnh nặng hơn = chi phí cao hơn 5-10x. (5) NẾU BỊ ỐM NGHIÊM TRỌNG (đau ngực, khó thở, chấn thương đầu): GỌI 120 NGAY, không bắt taxi. Xe cứu thương có thiết bị + đưa vào ER ưu tiên. (6) GIỮ ĐƠN THUỐC + HÓA ĐƠN trong túi nhựa riêng. Bệnh viện in giấy mỏng dễ rách/ướt. Chụp ảnh backup cloud ngay sau khi nhận. (7) KHI BÁC SĨ KÊ ĐƠN BẰNG TIẾNG TRUNG, dùng app dịch để hiểu tên thuốc + cách uống. Hỏi rõ: '一天吃几次?' (uống mấy lần/ngày), '饭前还是饭后?' (trước hay sau ăn), '需要吃几天?' (uống mấy ngày).",
+    exercises: [
+      { type: "fill-blank", question: "我从昨天晚上开始 ___ 疼, 还发烧。", answer: "肚子" },
+      {
+        type: "matching",
+        instruction: "Ghép cụm tiếng Trung y tế với nghĩa tiếng Việt.",
+        pairs: [
+          { chinese: "急诊", pinyin: "jí zhěn", english: "phòng cấp cứu" },
+          { chinese: "处方", pinyin: "chǔ fāng", english: "đơn thuốc" },
+          { chinese: "发票", pinyin: "fā piào", english: "hóa đơn" },
+          { chinese: "报销", pinyin: "bào xiāo", english: "hoàn tiền (bảo hiểm)" }
+        ]
+      },
+      {
+        type: "translation",
+        vietnamese: "Em đau bụng từ tối qua, lại sốt và tiêu chảy. Em có bảo hiểm du lịch, xin bác sĩ hóa đơn và đơn thuốc.",
+        chinese: "我从昨天晚上开始肚子疼, 还发烧拉肚子。我有旅游保险, 请医生开发票和处方。",
+        pinyin: "Wǒ cóng zuó tiān wǎn shàng kāi shǐ dù zi téng, hái fā shāo lā dù zi. Wǒ yǒu lǚ yóu bǎo xiǎn, qǐng yī shēng kāi fā piào hé chǔ fāng."
+      }
+    ]
+  },
+  {
+    id: 76,
+    level: "B2",
+    category: "travel_mobility",
+    title: "酒店投诉 — 房间问题, 要求换房",
+    pinyin: "jiǔ diàn tóu sù — fáng jiān wèn tí, yāo qiú huàn fáng",
+    topic: "Hotel complaint — room defect, requesting room change",
+    title_vi: "Khiếu nại khách sạn — phòng có vấn đề, yêu cầu đổi phòng",
+    title_en: "Hotel complaint — room defect, requesting room change",
+    sentences: [
+      {
+        chinese: "您好, 我想反映一下我房间的问题。",
+        pinyin: "Nín hǎo, wǒ xiǎng fǎnyìng yīxià wǒ fángjiān de wèntí.",
+        english: "Hello, I'd like to report a problem with my room.",
+        vi: "Em chào anh/chị, em muốn phản ánh vấn đề phòng của em.",
+        pronunciation_focus: ["反映 → fǎnyìng (phản ánh / báo cáo)", "房间 → fángjiān (phòng)", "问题 → wèntí (vấn đề)", "您好 → nín hǎo"]
+      },
+      {
+        chinese: "我住的是805房, 空调一直不冷, 还有声音。",
+        pinyin: "Wǒ zhù de shì bā líng wǔ fáng, kōngtiáo yīzhí bù lěng, hái yǒu shēngyīn.",
+        english: "I'm in room 805 — the AC isn't cooling and makes noise.",
+        vi: "Em ở phòng 805, điều hòa không lạnh, lại có tiếng kêu.",
+        pronunciation_focus: ["805房 → bā líng wǔ fáng (số phòng đọc rời)", "空调 → kōngtiáo (điều hòa)", "不冷 → bù lěng (không lạnh)", "声音 → shēngyīn (tiếng kêu)"]
+      },
+      {
+        chinese: "热水也时有时无, 洗澡很不方便。",
+        pinyin: "Rèshuǐ yě shí yǒu shí wú, xǐzǎo hěn bù fāngbiàn.",
+        english: "The hot water also comes and goes — very inconvenient for showering.",
+        vi: "Nước nóng cũng lúc có lúc không, tắm rất bất tiện.",
+        pronunciation_focus: ["热水 → rèshuǐ (nước nóng)", "时有时无 → shí yǒu shí wú (lúc có lúc không)", "洗澡 → xǐzǎo (tắm)", "不方便 → bù fāngbiàn"]
+      },
+      {
+        chinese: "请问能不能给我换一个房间?",
+        pinyin: "Qǐngwèn néng bù néng gěi wǒ huàn yī gè fángjiān?",
+        english: "Can you change me to another room?",
+        vi: "Cho em hỏi có thể đổi cho em phòng khác không?",
+        pronunciation_focus: ["换房间 → huàn fángjiān (đổi phòng)", "能不能 → néng bù néng (có thể không)", "请问 → qǐngwèn", "给我 → gěi wǒ"]
+      },
+      {
+        chinese: "如果不能换, 是否可以退一晚的房费?",
+        pinyin: "Rúguǒ bù néng huàn, shìfǒu kěyǐ tuì yī wǎn de fángfèi?",
+        english: "If you can't change, can you refund one night's fee?",
+        vi: "Nếu không đổi được, có thể hoàn em một đêm tiền phòng không?",
+        pronunciation_focus: ["退房费 → tuì fángfèi (hoàn tiền phòng)", "一晚 → yī wǎn (một đêm)", "是否 → shìfǒu (có thể)", "如果 → rúguǒ"]
+      }
+    ],
+    vocab: [
+      { chinese: "投诉", pinyin: "tóu sù", english: "to complain (formal)", vi: "khiếu nại" },
+      { chinese: "反映", pinyin: "fǎn yìng", english: "to report (issue)", vi: "phản ánh" },
+      { chinese: "前台", pinyin: "qián tái", english: "front desk", vi: "lễ tân" },
+      { chinese: "房间", pinyin: "fáng jiān", english: "room", vi: "phòng" },
+      { chinese: "空调", pinyin: "kōng tiáo", english: "air conditioning", vi: "điều hòa" },
+      { chinese: "热水", pinyin: "rè shuǐ", english: "hot water", vi: "nước nóng" },
+      { chinese: "换房", pinyin: "huàn fáng", english: "change room", vi: "đổi phòng" },
+      { chinese: "升级", pinyin: "shēng jí", english: "to upgrade", vi: "nâng hạng" },
+      { chinese: "房费", pinyin: "fáng fèi", english: "room fee", vi: "tiền phòng" },
+      { chinese: "补偿", pinyin: "bǔ cháng", english: "compensation", vi: "đền bù" }
+    ],
+    dialogue: [
+      { speaker: "阮", chinese: "您好, 我想反映805房的问题。", pinyin: "Nín hǎo, wǒ xiǎng fǎnyìng bā líng wǔ fáng de wèntí.", english: "Hello, I want to report an issue with room 805.", vi: "Chào chị, em muốn phản ánh vấn đề phòng 805." },
+      { speaker: "前台", chinese: "请说, 是什么问题?", pinyin: "Qǐng shuō, shì shénme wèntí?", english: "Go ahead, what's the problem?", vi: "Mời anh nói, vấn đề gì?" },
+      { speaker: "阮", chinese: "空调不冷, 还有热水时有时无。", pinyin: "Kōngtiáo bù lěng, hái yǒu rèshuǐ shí yǒu shí wú.", english: "AC doesn't cool, hot water also intermittent.", vi: "Điều hòa không lạnh, nước nóng lúc có lúc không." },
+      { speaker: "前台", chinese: "实在抱歉, 我马上派工程部来检查, 或者给您换一间。", pinyin: "Shízài bàoqiàn, wǒ mǎshàng pài gōngchéng bù lái jiǎnchá, huòzhě gěi nín huàn yī jiān.", english: "Sincerely sorry, I'll send maintenance immediately, or change your room.", vi: "Thực sự xin lỗi, em sẽ phái phòng kỹ thuật đến kiểm tra ngay, hoặc đổi phòng cho anh." }
+    ],
+    dialogue_long: [
+      { speaker: "阮", chinese: "您好, 我是805房的客人, 我想跟您反映几个问题。", pinyin: "Nín hǎo, wǒ shì bā líng wǔ fáng de kèrén, wǒ xiǎng gēn nín fǎnyìng jǐ gè wèntí.", english: "Hello, I'm the guest in room 805 — I want to report a few issues.", vi: "Chào chị, em là khách phòng 805, em muốn phản ánh vài vấn đề." },
+      { speaker: "前台", chinese: "好的, 您说。", pinyin: "Hǎo de, nín shuō.", english: "Sure, please tell me.", vi: "Vâng, anh nói đi." },
+      { speaker: "阮", chinese: "第一, 空调声音很大, 我昨天晚上一夜没睡好。第二, 空调好像不太冷, 房间温度二十六度都降不下来。第三, 热水时有时无, 早上洗澡洗到一半就没热水了。", pinyin: "Dì yī, kōngtiáo shēngyīn hěn dà, wǒ zuótiān wǎnshàng yī yè méi shuì hǎo. Dì èr, kōngtiáo hǎoxiàng bù tài lěng, fángjiān wēndù èrshí liù dù dōu jiàng bù xiàlái. Dì sān, rèshuǐ shí yǒu shí wú, zǎoshang xǐzǎo xǐ dào yībàn jiù méi rèshuǐ le.", english: "First, AC is very loud, I couldn't sleep last night. Second, AC doesn't cool well, room won't drop below 26°C. Third, hot water comes and goes — this morning shower stopped halfway.", vi: "Thứ nhất, điều hòa kêu to, tối qua em không ngủ được cả đêm. Thứ hai, điều hòa hình như không lạnh, nhiệt độ phòng 26 độ không xuống được. Thứ ba, nước nóng lúc có lúc không, sáng tắm nửa chừng thì hết." },
+      { speaker: "前台", chinese: "实在非常抱歉, 您住了几晚了?", pinyin: "Shízài fēicháng bàoqiàn, nín zhù le jǐ wǎn le?", english: "Truly sorry — how many nights have you stayed?", vi: "Thực sự xin lỗi anh, anh đã ở mấy đêm rồi?" },
+      { speaker: "阮", chinese: "今天是第二晚, 还要住三晚。", pinyin: "Jīntiān shì dì èr wǎn, hái yào zhù sān wǎn.", english: "Tonight is the second night, three more to go.", vi: "Hôm nay là đêm thứ hai, còn ba đêm nữa." },
+      { speaker: "前台", chinese: "我马上给您换房。我们有同价位的909房空着, 是高层, 安静一些。或者升一级到豪华房, 一晚补差价100元也行。", pinyin: "Wǒ mǎshàng gěi nín huàn fáng. Wǒmen yǒu tóng jiàwèi de jiǔ líng jiǔ fáng kòng zhe, shì gāo céng, ānjìng yīxiē. Huòzhě shēng yī jí dào háohuá fáng, yī wǎn bǔ chājià yībǎi yuán yě xíng.", english: "I'll change your room right away. We have 909 same price, higher floor, quieter. Or upgrade to deluxe, 100 RMB extra per night.", vi: "Em sẽ đổi phòng cho anh ngay. Có phòng 909 cùng giá, tầng cao, yên tĩnh hơn. Hoặc nâng hạng lên phòng deluxe, mỗi đêm bù chênh lệch 100 tệ." },
+      { speaker: "阮", chinese: "909就行, 我不需要升级。但昨天晚上没睡好, 是不是可以补偿?", pinyin: "Jiǔ líng jiǔ jiùxíng, wǒ bù xūyào shēngjí. Dàn zuótiān wǎnshàng méi shuì hǎo, shì bù shì kěyǐ bǔcháng?", english: "909 is fine, no upgrade needed. But last night I couldn't sleep — any compensation?", vi: "909 được rồi, em không cần nâng hạng. Nhưng tối qua em không ngủ được, có thể đền bù không?" },
+      { speaker: "前台", chinese: "可以理解。我跟经理沟通, 给您减一晚房费, 总共减350块, 直接退到您信用卡。", pinyin: "Kěyǐ lǐjiě. Wǒ gēn jīnglǐ gōutōng, gěi nín jiǎn yī wǎn fángfèi, zǒnggòng jiǎn sānbǎi wǔshí kuài, zhíjiē tuì dào nín xìnyòngkǎ.", english: "Understood. I'll talk to the manager — refund one night's fee, total 350 RMB, back to your credit card.", vi: "Em hiểu. Em sẽ nói với quản lý, hoàn anh một đêm tiền phòng, tổng 350 tệ, trả thẳng về thẻ tín dụng." },
+      { speaker: "阮", chinese: "好, 谢谢您的处理。请问什么时候能换房?", pinyin: "Hǎo, xièxie nín de chǔlǐ. Qǐngwèn shénme shíhou néng huàn fáng?", english: "Good, thanks for handling. When can I change rooms?", vi: "Vâng, cảm ơn anh đã xử lý. Cho em hỏi khi nào có thể đổi phòng?" },
+      { speaker: "前台", chinese: "马上。我让行李员二十分钟后来您805房帮您搬行李。新房间钥匙在这里。", pinyin: "Mǎshàng. Wǒ ràng xínglǐyuán èrshí fēnzhōng hòu lái nín bā líng wǔ fáng bāng nín bān xíngli. Xīn fángjiān yàoshi zài zhèlǐ.", english: "Right away. I'll send a bellhop to your 805 in 20 minutes to help with luggage. Here's the new room key.", vi: "Ngay lập tức. Em sẽ phái nhân viên hành lý đến phòng 805 trong 20 phút giúp chuyển đồ. Chìa khóa phòng mới đây." },
+      { speaker: "阮", chinese: "谢谢, 太感谢您了。", pinyin: "Xièxie, tài gǎnxiè nín le.", english: "Thank you, really appreciate it.", vi: "Cảm ơn, em rất biết ơn chị." },
+      { speaker: "前台", chinese: "应该的, 给您带来不便, 是我们的责任。希望您接下来住得愉快。", pinyin: "Yīnggāi de, gěi nín dài lái bù biàn, shì wǒmen de zérèn. Xīwàng nín jiē xiàlái zhù de yúkuài.", english: "It's our responsibility — sorry for the inconvenience. Hope your remaining stay is pleasant.", vi: "Đáng lẽ vậy, gây bất tiện cho anh là trách nhiệm của bọn em. Mong anh ở những ngày tới được vui." }
+    ],
+    roleplay_prompts: [
+      "Phòng bạn có mùi thuốc lá nặng (KHÔNG phải khói cháy). Hãy yêu cầu đổi phòng. Chuẩn bị 2 phương án: (a) đổi phòng same-tier, (b) nếu hết phòng same-tier, được upgrade miễn phí. KHÔNG đe dọa review xấu — đề xuất hợp lý hơn.",
+      "Wifi trong phòng không kết nối được, ảnh hưởng cuộc họp công việc. Hãy báo lễ tân + xin password backup + nếu không sửa được trong 30 phút, xin chuyển sang phòng có wifi mạnh. Cụm '我有重要会议' (em có cuộc họp quan trọng).",
+      "Tiếng ồn xây dựng từ bên ngoài bắt đầu 7am sáng, làm bạn không ngủ được. Hãy xin lễ tân: (a) đóng cửa sổ + máy lạnh chế độ ngủ, (b) đổi phòng phía khác tòa nhà, (c) xin late checkout 2pm thay vì 12pm để bù lại."
+    ],
+    register_notes: "Khiếu nại khách sạn ở Trung Quốc: dùng register formal nhưng không leo thang. Nhân viên lễ tân có quyền đổi phòng, miễn phí dịch vụ, trừ tiền phòng — nhưng không có quyền đại diện công ty trừ những việc lớn. Cách tiếp cận:\n\nLAYER 1 — MÔ TẢ vấn đề khách quan:\n- '空调不冷' (điều hòa không lạnh)\n- '热水时有时无' (nước nóng lúc có lúc không)\n- '隔壁太吵' (phòng bên cạnh ồn)\n- '床有问题' (giường có vấn đề)\n\nLAYER 2 — TÁC ĐỘNG cụ thể:\n- '我一夜没睡好' (em không ngủ cả đêm)\n- '影响我明天的工作' (ảnh hưởng công việc ngày mai)\n- '洗澡洗到一半' (tắm nửa chừng)\n\nLAYER 3 — ĐỀ XUẤT giải pháp:\n- '能不能给我换一个房间?' (đổi phòng được không)\n- '是否可以退一晚的房费?' (hoàn một đêm phòng được không)\n- '能不能升级一下?' (nâng hạng được không)\n\nLAYER 4 — CHẤP NHẬN:\n- '好, 谢谢您的处理' (vâng, cảm ơn anh đã xử lý)\n- '太感谢您了' (cảm ơn anh nhiều)\n\nTránh: (a) Đe dọa review xấu trên Trip.com/Booking trừ khi thực sự không xử lý được — bị coi là vũ khí, làm phức tạp; (b) Nói 'tôi muốn nói chuyện với manager' ngay từ đầu — leo thang quá sớm; (c) Quay phim lễ tân trừ khi đã yêu cầu nhiều lần không xử lý.",
+    idiom_glosses: [
+      {
+        idiom: "宾至如归",
+        literal: "khách đến như về nhà (bīn zhì rú guī)",
+        meaning: "Khách cảm thấy như ở nhà — chuẩn mực dịch vụ khách sạn. Cụm khách hàng dùng để gợi nhắc tiêu chuẩn: '我以为住您们酒店会宾至如归, 但...' (em tưởng ở khách sạn bọn anh sẽ như ở nhà, nhưng...). Mở đầu khiếu nại lịch sự.",
+        example: "酒店的服务理念是宾至如归。"
+      },
+      {
+        idiom: "将心比心",
+        literal: "lấy lòng đo lòng (jiāng xīn bǐ xīn)",
+        meaning: "Đặt mình vào vị trí khách — đồng cảm. Cụm dùng để xin lễ tân thấu hiểu: '将心比心, 您也想睡好觉吧?' (đặt mình vào vị trí em, anh/chị cũng muốn ngủ ngon chứ?). Tránh đối đầu — chuyển sang đồng cảm.",
+        example: "将心比心, 我相信您能理解我的感受。"
+      },
+      {
+        idiom: "息事宁人",
+        literal: "dập việc làm yên người (xī shì níng rén)",
+        meaning: "Dập tắt vấn đề để mọi người yên ổn — giải quyết khiếu nại nhanh chóng. Cụm dùng để gợi ý lễ tân giải quyết nhanh: 'mình 息事宁人, đừng để cao trào'.",
+        example: "我希望我们能息事宁人, 把问题解决了。"
+      },
+      {
+        idiom: "妥善处理",
+        literal: "thỏa đáng xử lý (tuǒ shàn chǔ lǐ)",
+        meaning: "Xử lý chu đáo, hợp lý — yêu cầu nhân viên giải quyết đầy đủ. Cụm formal dùng khi yêu cầu manager xử lý: '请您妥善处理这件事'. Tăng tính nghiêm túc của yêu cầu.",
+        example: "希望您能妥善处理我的投诉。"
+      }
+    ],
+    cultural_notes_vi: "Khiếu nại khách sạn ở Trung Quốc đại lục có khung văn hóa và pháp lý khác Việt Nam: (1) NHÂN VIÊN LỄ TÂN có thẩm quyền giải quyết phần lớn vấn đề — đổi phòng, nâng hạng miễn phí, giảm 1-2 đêm tiền phòng. KHÔNG cần gọi manager cho việc nhỏ. Manager chỉ cần khi: yêu cầu hoàn toàn bộ tiền, từ chối thanh toán cuối kỳ, sự cố nghiêm trọng (cháy, mất trộm, xâm phạm). (2) SỰ THỰC TIỄN > SỰ XIN LỖI: khác phương Tây (nơi 'I'm sorry' đủ để xoa dịu), khách sạn Trung Quốc giải quyết bằng HÀNH ĐỘNG (đổi phòng, hoàn tiền, quà). Đừng đòi xin lỗi long-winded — đòi giải pháp cụ thể. (3) BẰNG CHỨNG: chụp ảnh/quay video vấn đề (điều hòa không chạy, vết bẩn, hư hỏng) NGAY khi phát hiện. Gửi cho lễ tân qua WeChat — họ sẽ chuyển sếp xử lý nhanh hơn. KHÔNG đăng ngay lên Weibo/Trip.com — giữ làm leverage. (4) TIÊU CHUẨN BỒI THƯỜNG ngầm hiểu (không có luật cứng): vấn đề nhỏ (thiếu khăn, đèn cháy) = sửa trong 30 phút, không bồi thường; vấn đề trung bình (nước nóng, wifi) = đổi phòng + giảm 1 đêm; vấn đề nặng (sức khỏe, an toàn, thuốc lá nặng) = đổi phòng + giảm 50-100% tổng kỳ ở. Tự hỏi 'mức bồi thường hợp lý' trước khi yêu cầu — đừng đòi quá. (5) HỆ THỐNG REVIEW: Trung Quốc dùng Ctrip (携程), Trip.com (international), Meituan (美团 — local). Người dân + khách quốc tế đọc nhiều. Khách sạn lo review xấu lan ra > lo nhân viên 1 ngày. Đe dọa review xấu = vũ khí mạnh nhưng KHÔNG nên dùng đầu tiên — chỉ khi đã yêu cầu hợp lý mà bị từ chối.\n\nVề ăn cắp/mất đồ: nếu nghi nhân viên dọn dẹp lấy đồ, KHÔNG buộc tội trực tiếp. Báo lễ tân: 'tôi không tìm thấy X, có thể trong quá trình dọn phòng đã bị di chuyển?' (我找不到X, 是否在打扫时移动了?). Khách sạn sẽ kiểm tra camera + hỏi nhân viên. Nếu tìm được, OK. Nếu không, có thể yêu cầu xem báo cáo + làm bản kiểm điểm. Mất đồ giá trị (>500 USD) = báo công an + đại sứ quán.\n\nVề tiền cọc (押金 — yājīn): khách sạn Trung Quốc thường thu cọc 200-500 tệ tiền mặt hoặc giữ trên thẻ khi check-in. Hoàn lại trừ phí khi check-out (kiểm tra phòng 5-10 phút). Đừng quên đòi lại — nhân viên đôi khi 'quên'.",
+    tip_advice_vi: "(1) ĐỌC REVIEW TRƯỚC khi đặt — Trip.com, Booking.com có review khách quốc tế. Tránh khách sạn có >10% review nói 'noisy' hoặc 'AC broken'. Mức 4.0+/5 là an toàn. (2) ĐẶT QUA APP CHÍNH THỨC (Trip.com, Booking.com, Agoda) thay vì đại lý du lịch — có policy hoàn tiền/đổi phòng rõ ràng + customer support 24/7 bằng tiếng Anh. (3) KIỂM TRA PHÒNG NGAY khi check-in: bật điều hòa, mở vòi nước nóng (chờ 1 phút), kiểm tra wifi (kết nối + tốc độ), kiểm tra ổ cắm điện, kiểm tra cửa khóa. Tìm vấn đề trong 5-10 phút đầu — báo lễ tân ngay. Báo SAU đêm đầu = bị nghi 'làm tiền'. (4) CHỤP ẢNH VẤN ĐỀ kèm timestamp: dùng app camera mặc định, đảm bảo metadata có ngày giờ. Gửi qua WeChat cho lễ tân (chứng cứ + tốc độ phản hồi nhanh hơn). (5) KHIẾU NẠI KHÉO LÉO, không leo thang. Cấu trúc: mô tả vấn đề (1 câu) → tác động (1 câu) → đề xuất (1 câu). Ví dụ: 'điều hòa không chạy, đêm qua em không ngủ được, có thể đổi phòng không?'. Đừng kéo dài 5 phút mô tả. (6) KHI ĐƯỢC GIẢI QUYẾT, NÓI CẢM ƠN cụ thể: '太感谢您了, 您处理得很专业' (cảm ơn chị nhiều, chị xử lý chuyên nghiệp). Để lại tip 20-50 tệ cho nhân viên giúp đỡ — không bắt buộc nhưng được đánh giá cao. (7) NẾU KHÔNG XỬ LÝ ĐƯỢC: viết review trung thực + có ảnh trên Trip.com/Booking.com (NOT Weibo viral). Giữ tone factual, không cảm xúc — review mạnh nhất là 'fact-based'. Khách sạn có thể liên hệ lại offer hoàn tiền 1 phần để xin xóa/sửa review. Đó là leverage — dùng cẩn thận.",
+    exercises: [
+      { type: "fill-blank", question: "您好, 我想 ___ 一下我房间的问题。", answer: "反映" },
+      {
+        type: "matching",
+        instruction: "Ghép cụm tiếng Trung khách sạn với nghĩa tiếng Việt.",
+        pairs: [
+          { chinese: "前台", pinyin: "qián tái", english: "lễ tân" },
+          { chinese: "换房", pinyin: "huàn fáng", english: "đổi phòng" },
+          { chinese: "升级", pinyin: "shēng jí", english: "nâng hạng" },
+          { chinese: "补偿", pinyin: "bǔ cháng", english: "đền bù" }
+        ]
+      },
+      {
+        type: "translation",
+        vietnamese: "Em ở phòng 805, điều hòa không lạnh, nước nóng lúc có lúc không. Cho em hỏi có thể đổi cho em phòng khác không?",
+        chinese: "我住805房, 空调不冷, 热水时有时无。请问能不能给我换一个房间?",
+        pinyin: "Wǒ zhù bā líng wǔ fáng, kōng tiáo bù lěng, rè shuǐ shí yǒu shí wú. Qǐng wèn néng bù néng gěi wǒ huàn yī gè fáng jiān?"
+      }
+    ]
+  },
+  {
+    id: 77,
+    level: "B2",
+    category: "travel_mobility",
+    title: "行李丢了 — 在航空公司柜台报失",
+    pinyin: "xíng li diū le — zài háng kōng gōng sī guì tái bào shī",
+    topic: "Lost luggage — China Southern/Eastern/Air China counter claim",
+    title_vi: "Mất hành lý — báo mất tại quầy hãng bay Trung Quốc",
+    title_en: "Lost luggage — claiming at Chinese airline counter",
+    sentences: [
+      {
+        chinese: "您好, 我的行李没出来, 想报失。",
+        pinyin: "Nín hǎo, wǒ de xíngli méi chūlái, xiǎng bào shī.",
+        english: "Hello, my luggage didn't come out — I want to report it.",
+        vi: "Em chào anh/chị, hành lý của em không ra, em muốn báo mất.",
+        pronunciation_focus: ["行李 → xíngli (hành lý)", "没出来 → méi chūlái (không ra)", "报失 → bào shī (báo mất)", "您好 → nín hǎo"]
+      },
+      {
+        chinese: "我从胡志明市飞过来, 转机昆明, 这是登机牌。",
+        pinyin: "Wǒ cóng Húzhìmíng shì fēi guòlái, zhuǎnjī Kūnmíng, zhè shì dēngjī pái.",
+        english: "I flew from Ho Chi Minh City via Kunming — here's my boarding pass.",
+        vi: "Em bay từ TP HCM đến, transit ở Côn Minh, đây là thẻ lên máy bay.",
+        pronunciation_focus: ["胡志明市 → Húzhìmíng shì (TP HCM)", "转机 → zhuǎnjī (transit)", "昆明 → Kūnmíng", "登机牌 → dēngjī pái (thẻ lên máy bay)"]
+      },
+      {
+        chinese: "这是行李托运凭条, 编号在这里。",
+        pinyin: "Zhè shì xíngli tuōyùn píngtiáo, biānhào zài zhèlǐ.",
+        english: "This is the baggage claim tag, the number is here.",
+        vi: "Đây là cùi hành lý ký gửi, mã số ở đây.",
+        pronunciation_focus: ["托运凭条 → tuōyùn píngtiáo (cùi hành lý)", "编号 → biānhào (mã số)", "在这里 → zài zhèlǐ", "行李 → xíngli"]
+      },
+      {
+        chinese: "行李是黑色硬壳箱, 28寸, 上面有越南国旗贴纸。",
+        pinyin: "Xíngli shì hēisè yìngké xiāng, èrshí bā cùn, shàngmiàn yǒu Yuènán guóqí tiēzhǐ.",
+        english: "Black hard-shell case, 28-inch, with a Vietnamese flag sticker.",
+        vi: "Hành lý vali đen vỏ cứng, 28 inch, có sticker cờ Việt Nam.",
+        pronunciation_focus: ["黑色 → hēisè (đen)", "硬壳箱 → yìngké xiāng (vali vỏ cứng)", "28寸 → èrshí bā cùn (28 inch)", "贴纸 → tiēzhǐ (sticker)"]
+      },
+      {
+        chinese: "请问行李找到后, 你们能送到我酒店吗?",
+        pinyin: "Qǐngwèn xíngli zhǎodào hòu, nǐmen néng sòng dào wǒ jiǔdiàn ma?",
+        english: "Once found, can you deliver it to my hotel?",
+        vi: "Cho em hỏi khi tìm thấy hành lý, bên anh có thể gửi đến khách sạn em không?",
+        pronunciation_focus: ["送到 → sòng dào (gửi đến)", "酒店 → jiǔdiàn (khách sạn)", "找到 → zhǎodào (tìm thấy)", "请问 → qǐngwèn"]
+      }
+    ],
+    vocab: [
+      { chinese: "行李", pinyin: "xíng li", english: "luggage", vi: "hành lý" },
+      { chinese: "托运", pinyin: "tuō yùn", english: "to check in (luggage)", vi: "ký gửi" },
+      { chinese: "凭条", pinyin: "píng tiáo", english: "claim tag / receipt", vi: "cùi hành lý" },
+      { chinese: "报失", pinyin: "bào shī", english: "to report lost", vi: "báo mất" },
+      { chinese: "登机牌", pinyin: "dēng jī pái", english: "boarding pass", vi: "thẻ lên máy bay" },
+      { chinese: "转机", pinyin: "zhuǎn jī", english: "to transit", vi: "transit / quá cảnh" },
+      { chinese: "硬壳箱", pinyin: "yìng ké xiāng", english: "hard-shell case", vi: "vali vỏ cứng" },
+      { chinese: "理赔", pinyin: "lǐ péi", english: "to file insurance claim", vi: "yêu cầu bồi thường" },
+      { chinese: "联系电话", pinyin: "lián xì diàn huà", english: "contact phone", vi: "số điện thoại liên hệ" },
+      { chinese: "送货上门", pinyin: "sòng huò shàng mén", english: "deliver to door", vi: "giao hàng tận nơi" }
+    ],
+    dialogue: [
+      { speaker: "阮", chinese: "您好, 我的行李没出来。", pinyin: "Nín hǎo, wǒ de xíngli méi chūlái.", english: "Hello, my luggage didn't come out.", vi: "Chào chị, hành lý của em không ra." },
+      { speaker: "工作人员", chinese: "把登机牌和托运凭条给我。", pinyin: "Bǎ dēngjī pái hé tuōyùn píngtiáo gěi wǒ.", english: "Give me your boarding pass and claim tag.", vi: "Đưa em thẻ lên máy bay và cùi hành lý." },
+      { speaker: "阮", chinese: "在这里。", pinyin: "Zài zhèlǐ.", english: "Here.", vi: "Đây ạ." },
+      { speaker: "工作人员", chinese: "我登记一下, 请描述行李的样子。", pinyin: "Wǒ dēngjì yīxià, qǐng miáoshù xíngli de yàngzi.", english: "Let me register, please describe the luggage.", vi: "Em đăng ký, xin mô tả hình dáng hành lý." }
+    ],
+    dialogue_long: [
+      { speaker: "阮", chinese: "您好, 我刚下飞机, 行李带没有我的箱子。", pinyin: "Nín hǎo, wǒ gāng xià fēijī, xíngli dài méiyǒu wǒ de xiāngzi.", english: "Hello, I just got off the plane, my bag isn't on the carousel.", vi: "Chào chị, em vừa xuống máy bay, băng chuyền không có vali của em." },
+      { speaker: "工作人员", chinese: "您是哪个航班?", pinyin: "Nín shì nǎ gè hángbān?", english: "Which flight?", vi: "Anh đi chuyến nào?" },
+      { speaker: "阮", chinese: "南航CZ8459, 从胡志明市经昆明到北京。", pinyin: "Nán Háng CZ bāsìwǔjiǔ, cóng Húzhìmíng shì jīng Kūnmíng dào Běijīng.", english: "China Southern CZ8459, Ho Chi Minh - Kunming - Beijing.", vi: "Phương Hàng CZ8459, từ TP HCM qua Côn Minh đến Bắc Kinh." },
+      { speaker: "工作人员", chinese: "把登机牌、护照和托运凭条都给我。", pinyin: "Bǎ dēngjī pái, hùzhào hé tuōyùn píngtiáo dōu gěi wǒ.", english: "Give me boarding pass, passport, and baggage claim tag.", vi: "Đưa em thẻ lên máy bay, hộ chiếu, và cùi hành lý." },
+      { speaker: "阮", chinese: "都在这里。托运凭条编号 cz8459-vn-007。", pinyin: "Dōu zài zhèlǐ. Tuōyùn píngtiáo biānhào CZ-bāsìwǔjiǔ-VN-líng líng qī.", english: "All here. Tag number CZ8459-VN-007.", vi: "Đều đây. Mã cùi CZ8459-VN-007." },
+      { speaker: "工作人员", chinese: "我查一下系统。... 看到了, 您的行李在昆明转机时漏装了, 现在还在昆明机场。下一班飞机晚上八点到, 大概九点能取。", pinyin: "Wǒ chá yīxià xìtǒng. ... Kàndào le, nín de xíngli zài Kūnmíng zhuǎnjī shí lòu zhuāng le, xiànzài hái zài Kūnmíng jīchǎng. Xià yī bān fēijī wǎnshàng bā diǎn dào, dàgài jiǔ diǎn néng qǔ.", english: "Let me check the system. ... Found it — your bag missed the transfer in Kunming, still at Kunming airport. Next flight arrives 8 PM, can pick up around 9 PM.", vi: "Em tra hệ thống. ... Thấy rồi, hành lý anh bị sót khi transit ở Côn Minh, hiện vẫn ở sân bay Côn Minh. Chuyến tiếp theo đến 8 giờ tối, khoảng 9 giờ là lấy được." },
+      { speaker: "阮", chinese: "今晚我已经预订了酒店, 不方便再来机场。能送到酒店吗?", pinyin: "Jīn wǎn wǒ yǐjīng yùdìng le jiǔdiàn, bù fāngbiàn zài lái jīchǎng. Néng sòng dào jiǔdiàn ma?", english: "Tonight I'm at the hotel, not convenient to come back. Can you deliver to the hotel?", vi: "Tối nay em đã đặt khách sạn, không tiện đến sân bay lại. Có thể gửi đến khách sạn không?" },
+      { speaker: "工作人员", chinese: "可以, 我们有送货上门服务, 在北京市区免费, 通常第二天上午到。请填这张单子: 酒店地址、房号、联系电话、和行李描述。", pinyin: "Kěyǐ, wǒmen yǒu sòng huò shàng mén fúwù, zài Běijīng shìqū miǎnfèi, tōngcháng dì èr tiān shàngwǔ dào. Qǐng tián zhè zhāng dānzi: jiǔdiàn dìzhǐ, fángháo, liánxì diànhuà, hé xíngli miáoshù.", english: "Yes, we have door delivery, free within Beijing city, usually arrives next morning. Please fill: hotel address, room number, phone, and luggage description.", vi: "Được, bọn em có dịch vụ giao tận nơi, trong nội thành Bắc Kinh miễn phí, thường sáng hôm sau đến. Xin điền: địa chỉ khách sạn, số phòng, số ĐT, và mô tả hành lý." },
+      { speaker: "阮", chinese: "好。行李是黑色硬壳箱, 28寸, 美旅牌, 上面贴了越南国旗的小贴纸。重大概23公斤。", pinyin: "Hǎo. Xíngli shì hēisè yìngké xiāng, èrshí bā cùn, Měilǚ pái, shàngmiàn tiē le Yuènán guóqí de xiǎo tiēzhǐ. Zhòng dàgài èrshí sān gōngjīn.", english: "Okay. Black hard-shell case, 28-inch, American Tourister brand, with a small Vietnamese flag sticker. About 23kg.", vi: "Vâng. Hành lý vali đen vỏ cứng, 28 inch, hiệu American Tourister, có dán sticker nhỏ cờ Việt Nam. Khoảng 23kg." },
+      { speaker: "工作人员", chinese: "里面贵重物品有吗? 比如电脑、相机、首饰?", pinyin: "Lǐmiàn guìzhòng wùpǐn yǒu ma? Bǐrú diànnǎo, xiàngjī, shǒushì?", english: "Any valuables inside? Like laptop, camera, jewelry?", vi: "Bên trong có đồ giá trị không? Ví dụ máy tính, máy ảnh, trang sức?" },
+      { speaker: "阮", chinese: "没有电脑相机, 都在我手提里。里面是衣服、洗漱用品、和一些礼物 (越南咖啡和巧克力)。", pinyin: "Méiyǒu diànnǎo xiàngjī, dōu zài wǒ shǒutí lǐ. Lǐmiàn shì yīfu, xǐshù yòngpǐn, hé yīxiē lǐwù (Yuènán kāfēi hé qiǎokèlì).", english: "No laptop or camera, all in my carry-on. Inside is clothes, toiletries, and some gifts (Vietnamese coffee and chocolate).", vi: "Không có máy tính máy ảnh, đều trong xách tay. Bên trong là quần áo, đồ vệ sinh, và một ít quà (cà phê Việt Nam và sô-cô-la)." },
+      { speaker: "工作人员", chinese: "好。这是您的报失单复印件, 单号写好了。如果明天上午十点之前没收到, 直接打这个电话, 会有专人跟进。", pinyin: "Hǎo. Zhè shì nín de bào shī dān fùyìnjiàn, dānhào xiě hǎo le. Rúguǒ míngtiān shàngwǔ shí diǎn zhīqián méi shōu dào, zhíjiē dǎ zhège diànhuà, huì yǒu zhuānrén gēnjìn.", english: "Okay. Here's your lost report copy, case number written. If not received by 10 AM tomorrow, call this number — a dedicated person will follow up.", vi: "Được. Đây là bản sao báo mất, mã hồ sơ đã ghi. Nếu trước 10 giờ sáng mai chưa nhận được, gọi thẳng số này, sẽ có người theo dõi riêng." },
+      { speaker: "阮", chinese: "如果行李不见了, 怎么赔?", pinyin: "Rúguǒ xíngli bù jiàn le, zěnme péi?", english: "If the bag is permanently lost, what's the compensation?", vi: "Nếu hành lý mất luôn thì đền bù thế nào?" },
+      { speaker: "工作人员", chinese: "按国际航班规定, 每公斤最多赔偿20美元, 总额不超过1131美元。建议您先看看有没有旅游保险, 通常保险赔得更多。", pinyin: "Àn guójì hángbān guīdìng, měi gōngjīn zuì duō péicháng èrshí měiyuán, zǒng'é bù chāoguò yīqiān yībǎi sānshí yī měiyuán. Jiànyì nín xiān kànkan yǒu méiyǒu lǚyóu bǎoxiǎn, tōngcháng bǎoxiǎn péi de gèng duō.", english: "Per international flight rules, max $20 USD per kg, total no more than $1,131 USD. Recommend checking your travel insurance — usually pays more.", vi: "Theo quy định hãng bay quốc tế, tối đa 20 USD/kg, tổng không quá 1,131 USD. Khuyên anh kiểm tra bảo hiểm du lịch trước, thường bảo hiểm đền nhiều hơn." },
+      { speaker: "阮", chinese: "明白了, 谢谢您。希望明天就能拿到行李。", pinyin: "Míngbái le, xièxie nín. Xīwàng míngtiān jiù néng ná dào xíngli.", english: "Understood, thank you. Hope to get my bag tomorrow.", vi: "Em hiểu rồi, cảm ơn anh. Mong mai là nhận được hành lý." },
+      { speaker: "工作人员", chinese: "您先注意保管登机牌和报失单, 收到行李时签字就行。给您带来不便, 实在抱歉。", pinyin: "Nín xiān zhùyì bǎoguǎn dēngjī pái hé bào shī dān, shōu dào xíngli shí qiān zì jiùxíng. Gěi nín dài lái bù biàn, shízài bàoqiàn.", english: "Keep boarding pass and lost report safe, sign when you receive the bag. Apologies for the inconvenience.", vi: "Anh giữ kỹ thẻ lên máy bay và biên nhận báo mất, khi nhận hành lý ký tên là xong. Gây bất tiện cho anh, thực sự xin lỗi." }
+    ],
+    roleplay_prompts: [
+      "Hành lý của bạn đến nhưng vali bị MÓP (móp lớn ở góc) hoặc khóa bị PHÁ. Hãy báo ngay tại sân bay (KHÔNG đi về rồi mới quay lại — sẽ khó claim). Yêu cầu: bản báo cáo + ảnh chụp vali bị hư + giấy bồi thường (PIR — Property Irregularity Report).",
+      "Hai ngày sau khi báo mất, vali vẫn chưa đến. Hãy gọi số hotline + viết email follow-up. Yêu cầu: cập nhật vị trí cụ thể + thời gian giao dự kiến + nếu chậm hơn 5 ngày, claim bồi thường tạm thời cho đồ thay thế (quần áo, đồ vệ sinh) — bảo hiểm thường chi 100-300 USD.",
+      "Vali tìm thấy nhưng MẤT đồ bên trong (sô-cô-la quà tặng, một bộ quần áo). Hãy báo: kê chi tiết đồ mất + giá trị ước tính + xin claim bảo hiểm. KHÔNG buộc tội ai. Cụm '我清点行李后, 发现X件物品不见了'."
+    ],
+    register_notes: "Quầy báo mất hành lý ở sân bay Trung Quốc dùng register formal nhanh. Mỗi quầy phục vụ 1-2 phút mỗi khách trong giờ cao điểm. Bạn dùng 您 với cán bộ.\n\nCác cụm chuẩn:\n- '我的行李没出来' (hành lý em không ra)\n- '我从X飞过来, 转机Y' (em bay từ X, transit Y)\n- '行李是X颜色, X寸的, 上面有X' (hành lý màu X, X inch, có X)\n- '里面有什么?' (bên trong có gì) → '没有贵重物品' (không có đồ giá trị) hoặc liệt kê cụ thể\n- '能送到酒店吗?' (gửi đến khách sạn được không)\n- '什么时候能拿到?' (khi nào có thể nhận)\n- '如果丢了, 怎么赔?' (nếu mất luôn, đền thế nào)\n\nMÔ TẢ HÀNH LÝ: tone trung tính + chi tiết. Cấu trúc: màu sắc + chất liệu (硬壳/软壳 = vỏ cứng/mềm) + kích cỡ (24/26/28寸) + nhãn hiệu (Samsonite, American Tourister, RIMOWA) + đặc điểm nhận dạng (sticker, dây đeo, nhãn tên). Càng chi tiết = càng dễ tìm.\n\nMÔ TẢ ĐỒ TRONG: liệt kê đại khái + giá trị ước tính. KHÔNG nói 'có máy ảnh' nếu thực sự không có (xếp loại 'gian lận bảo hiểm'). Đồ giá trị thực sự (laptop, máy ảnh, trang sức) → đáng lẽ MANG TRONG XÁCH TAY, không ký gửi. Nếu đã ký gửi và mất, bồi thường rất hạn chế ($20/kg).\n\nTránh: (a) Đe dọa kiện hãng — chuyển sang tone hợp tác; (b) Khóc lóc tại quầy — không tăng tốc xử lý; (c) Nói tiếng Anh trừ khi nhân viên chuyển sang tiếng Anh trước; (d) Đăng status mạng xã hội 'mất hành lý X hãng' — xử lý private trước.",
+    idiom_glosses: [
+      {
+        idiom: "失而复得",
+        literal: "mất rồi tìm lại được (shī ér fù dé)",
+        meaning: "Mất rồi tìm lại — vui mừng vì lấy lại được vật. Cụm dùng khi vali về sau 1-2 ngày: '行李失而复得, 太好了!'. Tăng tính cảm xúc trong câu cảm ơn.",
+        example: "我的行李失而复得, 真是万幸。"
+      },
+      {
+        idiom: "万无一失",
+        literal: "vạn vô một thất (wàn wú yī shī)",
+        meaning: "Hoàn toàn chắc chắn không có sai sót. Cụm dùng để yêu cầu hệ thống cẩn thận: '请您万无一失地处理我的行李, 别再丢了'. Cũng dùng để cam kết khi đã sửa lỗi.",
+        example: "下次我会万无一失, 不会再让行李丢了。"
+      },
+      {
+        idiom: "亡羊补牢",
+        literal: "mất dê sửa chuồng (wáng yáng bǔ láo)",
+        meaning: "Mất dê rồi mới sửa chuồng — sửa sai sau khi đã sai, vẫn còn kịp. Cụm dùng để giải thích vì sao bạn mua bảo hiểm sau khi từng bị mất hành lý: 'tuy 亡羊补牢, nhưng vẫn còn kịp'.",
+        example: "我从那次以后买了行李保险, 算是亡羊补牢。"
+      },
+      {
+        idiom: "心急如焚",
+        literal: "lòng nóng như đốt (xīn jí rú fén)",
+        meaning: "Lòng nóng như cháy — quá lo lắng, sốt ruột. Cụm cảm xúc dùng để mô tả cảm giác chờ hành lý: '我现在心急如焚, 行李里有重要文件'. Tăng độ khẩn của yêu cầu mà không la mắng.",
+        example: "行李里有重要资料, 我心急如焚。"
+      }
+    ],
+    cultural_notes_vi: "Mất hành lý là tình huống phổ biến với chuyến bay quốc tế có transit (transfer). Năm điều người Việt cần biết khi bay Trung Quốc:\n\n(1) HÃNG BAY TRUNG QUỐC: Air China (国航 — CA), China Eastern (东航 — MU), China Southern (南航 — CZ), Hainan Airlines (海航 — HU). Tất cả đều có bộ phận hành lý mất 24/7 tại sân bay lớn. Tỉ lệ mất hành lý: 0.5-1% chuyến quốc tế (trung bình toàn cầu). Phần lớn tìm được trong 24-48 giờ.\n\n(2) NGUYÊN NHÂN PHỔ BIẾN: (a) Transit time quá ngắn (<60 phút) — vali không kịp chuyển; (b) Tag bị rách/dán không đúng tại điểm xuất phát; (c) Sót tại băng chuyền — quá đông, nhân viên không kịp xếp; (d) Nhầm với hành lý khác — ai đó lấy nhầm vali tương tự. CHỤP ẢNH VALI trước khi check-in = bằng chứng nhận diện tốt nhất.\n\n(3) BÁO NGAY TẠI SÂN BAY, không đi về. Quầy 'Lost & Found' (失物招领) hoặc 'Baggage Service' (行李服务) — tìm trên bản đồ sân bay. Giấy báo mất (Property Irregularity Report — PIR) PHẢI làm tại sân bay. Sau khi rời = không thể claim.\n\n(4) BỒI THƯỜNG: theo công ước Montreal (Trung Quốc tham gia): tối đa 1,131 SDR (~$1,500 USD) cho cả vali + đồ bên trong. Hãng bay sẽ yêu cầu hóa đơn/biên nhận để chứng minh giá trị — KHÔNG có hóa đơn = đền theo trọng lượng ($20/kg). Đồ giá trị (laptop, đồ trang sức) — KHÔNG ký gửi, mang xách tay. Nếu đã ký gửi = không được đền đầy đủ.\n\n(5) BẢO HIỂM DU LỊCH thường đền nhiều hơn hãng bay: cho phép kê cả vali + đồ + thiệt hại tinh thần (gọi 'inconvenience compensation'). Sau khi báo PIR tại sân bay, gửi mọi giấy tờ + biên nhận sang công ty bảo hiểm. Bảo Việt, Bảo Minh, MIC, BSH thường đền 5-15 triệu VND cho ca lost luggage.\n\nVề việc 'tip' để được ưu tiên: KHÔNG ở Trung Quốc đại lục. Hệ thống có quy trình + camera giám sát. Tip = phản tác dụng, có thể bị báo cáo. Ở Đông Nam Á (Việt Nam, Thái Lan, Indonesia) có thể tip để xử lý nhanh, nhưng KHÔNG ở Trung Quốc.\n\nVề ngôn ngữ: nhân viên hãng bay Trung Quốc tại sân bay quốc tế thường nói tiếng Anh cơ bản. Nếu bạn không thành thạo tiếng Trung, dùng tiếng Anh — họ chấp nhận. Cụm cứu nguy: 'My luggage didn't arrive, I want to file a report' / 'I need a delayed baggage report'.\n\nVề thời gian: đa số vali bị sót transit về trong 24 giờ qua chuyến tiếp theo. 1-3 ngày = có thể nhân viên đang tìm trong hệ thống. >5 ngày = cần follow up gắt và có khả năng mất luôn. Sau 21 ngày không tìm được = tuyên bố 'hành lý mất' (lost luggage), bắt đầu quá trình bồi thường.",
+    tip_advice_vi: "(1) CHỤP ẢNH VALI + ĐỒ BÊN TRONG trước khi check-in: cảnh tổng thể vali + nhãn hiệu + nội dung khi mở ra. Lưu cloud (Google Drive, iCloud). Bằng chứng vàng cho hãng + bảo hiểm. (2) TAG RIÊNG: dán nhãn tên + số ĐT (kèm mã +84) + email cá nhân + tên khách sạn đến BÊN NGOÀI vali. Bên trong cũng để 1 tờ giấy trùng thông tin (phòng trường hợp tag ngoài rách). (3) ĐỒ GIÁ TRỊ → XÁCH TAY: laptop, máy ảnh, kim hoàn, thuốc kê đơn, thiết bị điện tử, hộ chiếu/giấy tờ — KHÔNG ký gửi. Bảo hiểm hãng bay không đền đủ. (4) CHỌN CHUYẾN BAY có TRANSIT TỐI THIỂU 90 PHÚT cho hành lý transfer. Dưới 60 phút = rủi ro cao. Đặc biệt qua sân bay lớn (Bắc Kinh PEK, Thượng Hải PVG, Quảng Châu CAN) cần thêm thời gian. (5) BÁO NGAY TẠI SÂN BAY khi không thấy vali — KHÔNG đợi 1 giờ ở băng chuyền. Sau 30 phút mà chưa ra = đến quầy ngay. Xếp hàng có thể 30-60 phút khi nhiều người cùng báo. (6) GIỮ MỌI GIẤY TỜ trong túi ziplock: thẻ lên máy bay, cùi hành lý, giấy báo mất (PIR), tên + số ĐT nhân viên xử lý. Mất 1 tờ = quá trình claim chậm 1 tuần. (7) NẾU PHẢI MUA ĐỒ THAY THẾ (khi vali chưa đến sau 24 giờ): mua TỐI THIỂU cần thiết (1 bộ quần áo, đồ vệ sinh, sạc điện thoại — tổng 100-200 USD). Giữ HÓA ĐƠN — bảo hiểm sẽ hoàn lại khi nộp. KHÔNG mua hàng hiệu/đồ đắt — bảo hiểm chỉ trả 'reasonable replacement cost', không nâng cấp.",
+    exercises: [
+      { type: "fill-blank", question: "您好, 我的行李没出来, 想 ___ 。", answer: "报失" },
+      {
+        type: "matching",
+        instruction: "Ghép cụm tiếng Trung mất hành lý với nghĩa tiếng Việt.",
+        pairs: [
+          { chinese: "托运凭条", pinyin: "tuō yùn píng tiáo", english: "cùi hành lý" },
+          { chinese: "登机牌", pinyin: "dēng jī pái", english: "thẻ lên máy bay" },
+          { chinese: "送货上门", pinyin: "sòng huò shàng mén", english: "giao tận nơi" },
+          { chinese: "理赔", pinyin: "lǐ péi", english: "yêu cầu bồi thường" }
+        ]
+      },
+      {
+        type: "translation",
+        vietnamese: "Hành lý em là vali đen vỏ cứng, 28 inch. Có thể giao đến khách sạn em không?",
+        chinese: "我的行李是黑色硬壳箱, 28寸。能送到我酒店吗?",
+        pinyin: "Wǒ de xíng li shì hēi sè yìng ké xiāng, èr shí bā cùn. Néng sòng dào wǒ jiǔ diàn ma?"
+      }
+    ]
   }
 ];
 
