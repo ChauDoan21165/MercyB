@@ -1182,5 +1182,152 @@ level: "B2",
       { type: "matching", pairs: [{ hangul: "복습", meaning: "review" }, { hangul: "평가", meaning: "evaluation" }],
  instruction: "Match Korean with English" },
       { type: "translation", vietnamese: "Tôi sẽ tiếp tục học tiếng Hàn một cách đều đặn.", hangul: "앞으로도 꾸준히 한국어를 공부할 거예요." }]
+  },
+  {
+    id: 51,
+    level: "B2",
+    title_vi: "Báo nghỉ việc với sếp",
+    title_en: "Telling your boss you're resigning",
+    intro_vi:
+      "Cuộc trò chuyện cao điểm áp lực với sếp Hàn Quốc khi báo nghỉ việc. Toàn bộ phải dùng 하십시오체 (cấp kính ngữ cao nhất). Tập trung vào câu mở đầu, lý do tích cực, và cam kết bàn giao chu đáo — ba yếu tố quyết định bạn ra đi 'đẹp' hay 'xấu'.",
+
+    vocabulary: [
+      { hangul: "사직", meaning: "resignation" },
+      { hangul: "사직서", meaning: "resignation letter" },
+      { hangul: "퇴사", meaning: "leaving the company" },
+      { hangul: "인수인계", meaning: "handover (of work)" },
+      { hangul: "결정", meaning: "decision" },
+      { hangul: "진심으로", meaning: "sincerely / from the heart" },
+      { hangul: "새로운 도전", meaning: "new challenge" },
+      { hangul: "마지막 근무일", meaning: "last working day" },
+      { hangul: "양해", meaning: "understanding (asking for)" },
+      { hangul: "후임자", meaning: "successor / replacement" },
+    ],
+
+    sentences: [
+      {
+        korean: "부장님, 잠시 시간 괜찮으십니까?",
+        romanized: "Bujangnim, jamsi sigan gwaenchanseusimnikka?",
+        en: "Director, do you have a moment?",
+        vi: "Sếp, sếp có chút thời gian không ạ?",
+      },
+      {
+        korean: "오랜 고민 끝에 사직하기로 결정했습니다.",
+        romanized: "Oraen gomin kkeute sajikhagiro gyeoljeonghaesseumnida.",
+        en: "After long consideration, I have decided to resign.",
+        vi: "Sau thời gian dài cân nhắc, tôi đã quyết định nghỉ việc.",
+      },
+      {
+        korean: "새로운 도전을 시작하기 위해 떠나려고 합니다.",
+        romanized: "Saeroun dojeoneul sijakhagi wihae tteonaryeogo hamnida.",
+        en: "I am leaving to begin a new challenge.",
+        vi: "Tôi sẽ rời đi để bắt đầu một thử thách mới.",
+      },
+      {
+        korean: "인수인계는 철저히 하겠습니다.",
+        romanized: "Insuingyeneun cheoljeohi hagetseumnida.",
+        en: "I will do the handover thoroughly.",
+        vi: "Tôi sẽ bàn giao công việc thật chu đáo.",
+      },
+      {
+        korean: "그동안 정말 감사드립니다.",
+        romanized: "Geudongan jeongmal gamsadeurimnida.",
+        en: "Thank you sincerely for all this time.",
+        vi: "Suốt thời gian qua tôi thực sự rất biết ơn.",
+      },
+    ],
+
+    dialogue: [
+      { speaker: "A", hangul: "부장님, 잠시 시간 괜찮으십니까? 드릴 말씀이 있어서요.", meaning: "Director, do you have a moment? I have something to tell you." },
+      { speaker: "B", hangul: "네, 들어오세요. 무슨 일이세요?", meaning: "Yes, come in. What is it?" },
+      { speaker: "A", hangul: "죄송합니다만, 사직 의사를 전해 드리고자 합니다.", meaning: "I'm sorry to say, but I would like to inform you of my intent to resign." },
+      { speaker: "B", hangul: "갑작스럽군요. 자세히 이야기 좀 해 주세요.", meaning: "That's sudden. Please tell me more in detail." },
+    ],
+
+    dialogue_long: [
+      { speaker: "A", hangul: "부장님, 잠시 시간 괜찮으십니까? 드릴 말씀이 있어서요.", meaning: "Director, do you have a moment? I have something to tell you.", vi: "Sếp, sếp có chút thời gian không ạ? Tôi có chuyện muốn thưa." },
+      { speaker: "B", hangul: "네, 들어오세요. 무슨 일이세요?", meaning: "Yes, come in. What is it?", vi: "Vâng, mời vào. Có chuyện gì vậy?" },
+      { speaker: "A", hangul: "부장님, 죄송합니다만 사직 의사를 전해 드리고자 합니다.", meaning: "Director, I'm sorry to say, but I would like to inform you of my intent to resign.", vi: "Sếp, tôi xin lỗi nhưng tôi muốn báo cáo ý định nghỉ việc của mình." },
+      { speaker: "B", hangul: "사직이요? 갑작스럽네요. 무슨 일이 있으신가요?", meaning: "Resignation? That's sudden. Is something the matter?", vi: "Nghỉ việc à? Đột ngột quá. Có chuyện gì thế?" },
+      { speaker: "A", hangul: "오랫동안 고민한 끝에 새로운 도전을 시작하기로 결정했습니다.", meaning: "After long consideration, I've decided to begin a new challenge.", vi: "Sau thời gian dài suy nghĩ, tôi đã quyết định bắt đầu một thử thách mới." },
+      { speaker: "B", hangul: "어디로 옮기시는 거예요?", meaning: "Where are you moving to?", vi: "Anh chuyển sang đâu vậy?" },
+      { speaker: "A", hangul: "외국계 회사로 이직하게 되었습니다. 오랫동안 꿈꿔 왔던 분야입니다.", meaning: "I'll be moving to a multinational company. It's a field I've dreamt of for a long time.", vi: "Tôi sẽ chuyển sang công ty đa quốc gia. Đó là lĩnh vực tôi mơ ước từ lâu." },
+      { speaker: "B", hangul: "음, 그렇군요. 언제까지 근무하실 예정이세요?", meaning: "Hmm, I see. Until when do you plan to work?", vi: "Ừm, ra vậy. Anh dự định làm đến khi nào?" },
+      { speaker: "A", hangul: "다음 달 30일까지 근무하면 어떨까 생각하고 있습니다.", meaning: "I'm thinking of working until the 30th of next month.", vi: "Tôi đang nghĩ làm đến ngày 30 tháng sau." },
+      { speaker: "B", hangul: "그럼 한 달 정도 시간이 있는 거네요. 인수인계는 어떻게 하실 건가요?", meaning: "So we have about a month then. How will you handle the handover?", vi: "Vậy có khoảng một tháng. Anh sẽ bàn giao thế nào?" },
+      { speaker: "A", hangul: "후임자가 정해지면 철저하게 인수인계 자료를 만들고, 직접 가르쳐 드리겠습니다.", meaning: "Once a successor is chosen, I'll prepare thorough handover materials and train them personally.", vi: "Khi có người kế nhiệm, tôi sẽ chuẩn bị tài liệu bàn giao kỹ lưỡng và đích thân hướng dẫn." },
+      { speaker: "B", hangul: "알겠어요. 회사 입장에서는 아쉽지만 더 좋은 기회가 있다면 응원해야죠.", meaning: "Understood. From the company's view it's a pity, but if there's a better opportunity, we should support you.", vi: "Tôi hiểu. Từ góc độ công ty thì tiếc, nhưng nếu có cơ hội tốt hơn thì phải ủng hộ chứ." },
+      { speaker: "A", hangul: "진심으로 감사드립니다. 그동안 정말 많이 배웠습니다.", meaning: "I sincerely thank you. I've truly learned a lot during this time.", vi: "Tôi thực sự biết ơn. Suốt thời gian qua tôi đã học được rất nhiều." },
+      { speaker: "B", hangul: "우리 회사에서 보낸 시간이 도움이 되었기를 바랍니다.", meaning: "I hope the time you spent at our company has been helpful.", vi: "Hy vọng thời gian ở công ty đã có ích cho anh." },
+      { speaker: "A", hangul: "정말 큰 도움이 되었습니다. 사직서는 오늘 중으로 제출하겠습니다.", meaning: "It was truly very helpful. I'll submit my resignation letter sometime today.", vi: "Đã giúp tôi rất nhiều. Tôi sẽ nộp đơn xin nghỉ trong hôm nay." },
+      { speaker: "B", hangul: "좋아요. 떠나기 전까지 마지막까지 잘 부탁드립니다.", meaning: "Good. Please give your best until your last day.", vi: "Tốt. Xin nhờ anh cố gắng đến ngày cuối cùng." },
+      { speaker: "A", hangul: "네, 끝까지 최선을 다하겠습니다.", meaning: "Yes, I'll do my best until the end.", vi: "Vâng, tôi sẽ cố hết sức đến phút cuối." },
+      { speaker: "B", hangul: "그럼, 우리 좋은 모습으로 헤어집시다.", meaning: "Well then, let's part on good terms.", vi: "Vậy thì, chúng ta hãy chia tay trong êm đẹp nhé." },
+    ],
+
+    roleplay_prompts: [
+      "Đóng vai bạn — nhân viên Việt Nam tại Hàn Quốc — đang gặp 부장님 (giám đốc bộ phận) lần đầu để báo nghỉ việc. Hãy diễn tập câu mở đầu lịch sự, lý do tích cực, và đề xuất thời gian bàn giao 1 tháng. Toàn bộ dùng 하십시오체.",
+      "Bạn vừa nhận lời mời từ một công ty Mỹ với mức lương gấp đôi. Hãy diễn tập cách trình bày lý do với sếp Hàn Quốc mà KHÔNG nhắc đến lương — chỉ nói về 'cơ hội phát triển' (성장 기회) và 'thử thách mới' (새로운 도전) để không khiến sếp 'mất mặt' (체면).",
+      "Sau khi bạn báo nghỉ, sếp đề nghị tăng lương 15% và promotion để giữ bạn lại (역제안 — counter-offer). Hãy diễn tập cách lịch sự nhưng kiên định từ chối, dùng cụm 'oh thân tâm đã quyết định rồi' (마음을 굳혔습니다) mà vẫn giữ được mối quan hệ tốt sau khi rời đi.",
+    ],
+
+    register_notes:
+      "Tiếng Hàn có 6 cấp kính ngữ. Khi báo nghỉ việc cho sếp, BẮT BUỘC dùng 하십시오체 (cấp deferential cao nhất, đuôi -습니다/-ㅂ니다) trong toàn bộ cuộc trò chuyện. Ví dụ: '사직하겠습니다' chứ KHÔNG phải '사직해요' (해요체 — vẫn lịch sự nhưng thân mật, không phù hợp tình huống nghiêm trọng). Đừng bao giờ gọi sếp bằng 'X 씨' (anh/chị X — quá thân) — phải gọi bằng chức danh kèm 님: 부장님 (giám đốc bộ phận), 팀장님 (trưởng nhóm), 사장님 (tổng giám đốc). Khi cảm ơn cuối cuộc trò chuyện, dùng '감사드립니다' (kính hơn) thay vì '감사합니다' (vẫn được nhưng nhẹ hơn). Sai cấp kính ngữ ở tình huống này có thể bị xem là thiếu chuyên nghiệp và phá hỏng quan hệ về lâu dài — cộng đồng ngành Hàn liên kết chặt, tiếng xấu lan nhanh.",
+
+    idiom_glosses: [
+      {
+        idiom: "발을 빼다",
+        literal: "rút chân ra",
+        meaning: "rút lui khỏi mối quan hệ hoặc cam kết, đặc biệt khi đã tham gia sâu",
+        example: "그 프로젝트에서 발을 뺄 때가 됐다고 생각합니다.",
+      },
+      {
+        idiom: "마음을 굳히다",
+        literal: "làm cứng tâm trí",
+        meaning: "kiên định / đã quyết tâm — dùng khi từ chối lời mời ở lại",
+        example: "오랜 고민 끝에 마음을 굳혔습니다.",
+      },
+      {
+        idiom: "끝맺음을 잘하다",
+        literal: "kết thúc tốt",
+        meaning: "rời đi trong êm đẹp, không 'đốt cầu', giữ thể diện",
+        example: "끝맺음을 잘해야 다음 기회가 옵니다.",
+      },
+      {
+        idiom: "퇴직금을 챙기다",
+        literal: "thu xếp tiền trợ cấp thôi việc",
+        meaning: "lo liệu các quyền lợi khi nghỉ — colloquial, không nên nói thẳng với sếp",
+        example: "퇴직금을 챙기는 것도 잊지 마세요.",
+      },
+    ],
+
+    cultural_notes_vi:
+      "Văn hóa nghỉ việc ở Hàn Quốc đặt trọng tâm vào 체면 (thể diện) và quan hệ cấp bậc. Năm nguyên tắc cốt lõi: (1) Báo trước 1 tháng là chuẩn — gấp hơn (2 tuần) bị coi là vô trách nhiệm. (2) Nói trực tiếp với sếp TRƯỚC khi báo HR — nếu HR biết trước, sếp 'mất mặt' và cảm thấy bị qua mặt. (3) Lý do nên là 'tích cực' (cơ hội mới, học hành, gia đình) thay vì 'tiêu cực' (chê công ty, lương thấp). Người Hàn quý trọng người không 'đốt cầu'. (4) 인수인계 (bàn giao) PHẢI làm chu đáo — đào tạo người kế nhiệm sơ sài là tự phá hủy danh tiếng cá nhân ở ngành Hàn (vốn nhỏ và liên kết chặt). (5) Quà chia tay không bắt buộc nhưng phổ biến: tặng team hộp bánh hoặc trái cây vào ngày làm cuối là cử chỉ đẹp đáng nhớ.",
+
+    tip_advice_vi:
+      "Câu mở đầu là quyết định nhất. Đừng đi thẳng vào '사직하겠습니다' — quá đột ngột với người Hàn. Mở bằng câu báo trước có chuyện quan trọng: '부장님, 잠시 시간 괜찮으십니까? 드릴 말씀이 있어서요.' (Sếp, có chút thời gian không ạ? Tôi có chuyện muốn thưa.) — cho sếp 30 giây chuẩn bị tâm lý. Sau khi báo, KHÔNG giải thích chi tiết về công ty mới (lương, phúc lợi) — sẽ bị xem như khoe khoang. Chỉ cần '새로운 도전' (thử thách mới) hoặc '오랜 고민 끝에 결정했습니다' (sau cân nhắc lâu đã quyết định) là đủ. Cuối cùng, KHÔNG nói '발 빼다' về việc rời công ty trong lúc trò chuyện với sếp — nghe quá colloquial; chỉ dùng khi tâm sự với bạn ngoài giờ.",
+
+    exercises: [
+      {
+        type: "fill-blank",
+        question: "부장님께 사직 의사를 ___ 드리고자 합니다.",
+        answer: "전해",
+      },
+      {
+        type: "matching",
+        pairs: [
+          { hangul: "발을 빼다", meaning: "rút lui khỏi cam kết" },
+          { hangul: "마음을 굳히다", meaning: "kiên định / đã quyết" },
+          { hangul: "끝맺음을 잘하다", meaning: "rời đi trong êm đẹp" },
+          { hangul: "인수인계", meaning: "bàn giao công việc" },
+        ],
+        instruction: "Nối thành ngữ Hàn với nghĩa tiếng Việt",
+      },
+      {
+        type: "translation",
+        vietnamese: "Sau thời gian dài cân nhắc, tôi đã quyết định rời công ty.",
+        hangul: "오랜 고민 끝에 회사를 떠나기로 결정했습니다.",
+      },
+    ],
   }
 ];

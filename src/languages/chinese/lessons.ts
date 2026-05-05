@@ -5,12 +5,15 @@ export type ChineseVocabEntry = {
   chinese: string;
   pinyin: string;
   english: string;
+  vi?: string;
 };
 
 export type ChineseSentence = {
   chinese: string;
   pinyin: string;
   english: string;
+  vi?: string;
+  pronunciation_focus?: string[];
 };
 
 export type ChineseDialogueLine = {
@@ -18,6 +21,7 @@ export type ChineseDialogueLine = {
   chinese: string;
   pinyin: string;
   english: string;
+  vi?: string;
 };
 
 export type ChineseExerciseFillBlank = {
@@ -81,6 +85,11 @@ export type ChineseLesson = {
   roleplay_prompts?: string[];
   register_notes?: string;
   idiom_glosses?: IdiomGloss[];
+  // Forward-compatible fields for the cross-language B2 template.
+  // Legacy `title` / `topic` remain authoritative until the renderer reads these.
+  category?: string;
+  title_vi?: string;
+  title_en?: string;
 };
 
 export const lessons: ChineseLesson[] = [
@@ -2113,6 +2122,144 @@ level: "B2",
  instruction: "Match the Chinese with English" },
       { type: "translation", vietnamese: "Chúc bạn học tiếng Trung thành công!", chinese: "祝你学习中文成功！", pinyin: "zhù nǐ xué xí zhōng wén chéng gōng!" }
     ],
+  },
+  {
+    id: 51,
+    level: "B2",
+    category: "fluency",
+    title: "请假回越南探亲",
+    pinyin: "qǐng jià huí yuè nán tàn qīn",
+    topic: "Requesting leave to visit family in Vietnam",
+    title_vi: "Xin nghỉ phép về Việt Nam thăm gia đình",
+    title_en: "Requesting extended leave to visit family in Vietnam",
+    sentences: [
+      {
+        chinese: "王经理, 我有件私事想向您汇报。",
+        pinyin: "Wáng jīnglǐ, wǒ yǒu jiàn sī shì xiǎng xiàng nín huìbào.",
+        english: "Manager Wang, I have a personal matter I'd like to report to you.",
+        vi: "Anh Vương, em có việc riêng muốn báo cáo với anh.",
+        pronunciation_focus: ["您 → nín thanh 2 (KHÔNG phải nǐ)", "汇报 → huìbào (formal: 'báo cáo cấp trên')", "私事 → sī shì (việc riêng)", "经理 → jīnglǐ (chức danh, đứng sau họ)"]
+      },
+      {
+        chinese: "我母亲身体出了状况, 需要我回越南陪她一段时间。",
+        pinyin: "Wǒ mǔqīn shēntǐ chū le zhuàngkuàng, xūyào wǒ huí yuè nán péi tā yīduàn shíjiān.",
+        english: "My mother has had a health issue; I need to return to Vietnam to be with her for a while.",
+        vi: "Mẹ em có vấn đề sức khỏe, em cần về Việt Nam ở cạnh bà một thời gian.",
+        pronunciation_focus: ["出了状况 → chū le zhuàngkuàng (cụm cố định: 'có chuyện/vấn đề xảy ra')", "陪 → péi thanh 2 (đi cùng/chăm sóc)", "一段时间 → yīduàn shíjiān (một quãng thời gian — vague intentionally)", "母亲 → mǔqīn (formal hơn 妈妈)"]
+      },
+      {
+        chinese: "请问可以请三到四周的事假吗? 我愿意以无薪形式办理。",
+        pinyin: "Qǐng wèn kěyǐ qǐng sān dào sì zhōu de shì jià ma? Wǒ yuànyì yǐ wú xīn xíngshì bànlǐ.",
+        english: "May I request 3-4 weeks personal leave? I'm willing to take it as unpaid.",
+        vi: "Em có thể xin nghỉ phép 3 đến 4 tuần được không? Em sẵn sàng làm theo hình thức không lương.",
+        pronunciation_focus: ["事假 → shì jià (việc riêng — KHÔNG phải 病假 bìng jià là nghỉ ốm)", "无薪 → wú xīn (không lương)", "形式 → xíngshì (hình thức/cách thức)", "办理 → bànlǐ (xử lý chính thức qua thủ tục)"]
+      },
+      {
+        chinese: "我会提前安排好工作交接, 确保不影响项目进度。",
+        pinyin: "Wǒ huì tíqián ānpái hǎo gōngzuò jiāojiē, quèbǎo bù yǐngxiǎng xiàngmù jìndù.",
+        english: "I'll arrange the work handover in advance to ensure project progress isn't affected.",
+        vi: "Em sẽ sắp xếp bàn giao công việc trước, đảm bảo không ảnh hưởng tiến độ dự án.",
+        pronunciation_focus: ["提前 → tíqián thanh 2-2 (sớm hơn dự định)", "工作交接 → gōngzuò jiāojiē (bàn giao công việc — cụm chuẩn)", "项目进度 → xiàngmù jìndù (tiến độ dự án)", "确保 → quèbǎo (đảm bảo — formal)"]
+      },
+      {
+        chinese: "给您和团队添麻烦了, 实在是情非得已。",
+        pinyin: "Gěi nín hé tuánduì tiān máfan le, shízài shì qíng fēi dé yǐ.",
+        english: "Sorry to cause trouble for you and the team — circumstances really force my hand.",
+        vi: "Em đã gây phiền hà cho anh và cả team, thật sự là bất đắc dĩ.",
+        pronunciation_focus: ["添麻烦 → tiān máfan thanh 1-2-2 (gây phiền — cụm lễ phép)", "情非得已 → qíng fēi dé yǐ (idiom 4 chữ: bất đắc dĩ)", "实在 → shízài (thật sự, thành thật)", "团队 → tuánduì (team/đội)"]
+      }
+    ],
+    vocab: [
+      { chinese: "请假", pinyin: "qǐng jià", english: "to request leave", vi: "xin nghỉ phép" },
+      { chinese: "探亲", pinyin: "tàn qīn", english: "visit family (especially distant relatives)", vi: "về thăm gia đình" },
+      { chinese: "事假", pinyin: "shì jià", english: "personal leave (vs sick leave 病假)", vi: "nghỉ phép việc riêng" },
+      { chinese: "无薪假", pinyin: "wú xīn jià", english: "unpaid leave", vi: "nghỉ không lương" },
+      { chinese: "家事", pinyin: "jiā shì", english: "family matter", vi: "chuyện gia đình" },
+      { chinese: "体谅", pinyin: "tǐ liàng", english: "to understand sympathetically", vi: "thông cảm" },
+      { chinese: "添麻烦", pinyin: "tiān má fan", english: "to cause trouble (set polite phrase)", vi: "gây phiền hà" },
+      { chinese: "工作交接", pinyin: "gōng zuò jiāo jiē", english: "work handover", vi: "bàn giao công việc" },
+      { chinese: "远程协助", pinyin: "yuǎn chéng xié zhù", english: "remote assistance", vi: "hỗ trợ từ xa" },
+      { chinese: "情非得已", pinyin: "qíng fēi dé yǐ", english: "circumstances force one's hand (4-char idiom)", vi: "bất đắc dĩ" }
+    ],
+    dialogue: [
+      { speaker: "Linh", chinese: "王经理, 我有件私事想跟您商量一下。", pinyin: "Wáng jīnglǐ, wǒ yǒu jiàn sī shì xiǎng gēn nín shāngliang yīxià.", english: "Manager Wang, I have a personal matter I'd like to discuss with you.", vi: "Anh Vương, em có việc riêng muốn thảo luận với anh." },
+      { speaker: "王经理", chinese: "你说, 没事。是工作上的还是私事?", pinyin: "Nǐ shuō, méi shì. Shì gōngzuò shàng de háishì sī shì?", english: "Go ahead. Is it about work or a personal matter?", vi: "Em nói đi, không sao. Là chuyện công việc hay việc riêng?" },
+      { speaker: "Linh", chinese: "是私事。我母亲身体不太好, 我想请假回越南陪她。", pinyin: "Shì sī shì. Wǒ mǔqīn shēntǐ bù tài hǎo, wǒ xiǎng qǐng jià huí yuè nán péi tā.", english: "It's personal. My mother isn't well; I'd like to take leave to return to Vietnam to be with her.", vi: "Là việc riêng. Mẹ em sức khỏe không tốt, em muốn xin nghỉ phép về Việt Nam ở cạnh bà." },
+      { speaker: "王经理", chinese: "这是大事, 应该的。你尽快把工作交接安排好就行。", pinyin: "Zhè shì dà shì, yīnggāi de. Nǐ jǐnkuài bǎ gōngzuò jiāojiē ānpái hǎo jiù xíng.", english: "This is important — of course. Just arrange the handover as quickly as possible.", vi: "Đây là chuyện quan trọng, đương nhiên rồi. Em sắp xếp bàn giao công việc càng sớm càng tốt là được." }
+    ],
+    dialogue_long: [
+      { speaker: "Linh", chinese: "王经理, 您现在方便吗? 我有件私事想向您汇报。", pinyin: "Wáng jīnglǐ, nín xiànzài fāngbiàn ma? Wǒ yǒu jiàn sī shì xiǎng xiàng nín huìbào.", english: "Manager Wang, is now a convenient time? I have a personal matter I'd like to report to you.", vi: "Anh Vương, bây giờ anh có rảnh không? Em có việc riêng muốn báo cáo với anh." },
+      { speaker: "王经理", chinese: "你说, 我现在有时间。坐下吧。", pinyin: "Nǐ shuō, wǒ xiànzài yǒu shíjiān. Zuò xià ba.", english: "Go ahead, I have time now. Have a seat.", vi: "Em nói đi, bây giờ anh có thời gian. Em ngồi đi." },
+      { speaker: "Linh", chinese: "是这样的, 我母亲在越南突然病了, 需要做手术。我想请假回去陪她一段时间。", pinyin: "Shì zhèyàng de, wǒ mǔqīn zài yuè nán tūrán bìng le, xūyào zuò shǒushù. Wǒ xiǎng qǐng jià huí qù péi tā yīduàn shíjiān.", english: "It's like this — my mother in Vietnam has fallen ill suddenly and needs surgery. I'd like to take leave to return and be with her for a while.", vi: "Là thế này, mẹ em ở Việt Nam đột nhiên bị bệnh, cần phẫu thuật. Em muốn xin nghỉ phép về ở cạnh bà một thời gian." },
+      { speaker: "王经理", chinese: "啊, 这事大了。严重吗? 是急诊还是?", pinyin: "À, zhè shì dà le. Yánzhòng ma? Shì jízhěn háishì?", english: "Ah, this is serious. Is it grave? Is it an emergency?", vi: "À, chuyện này lớn rồi. Nghiêm trọng không? Là cấp cứu hay?" },
+      { speaker: "Linh", chinese: "不算急诊, 但是医生建议家人陪护。我哥姐都不在国内, 只能我回去。", pinyin: "Bù suàn jízhěn, dànshì yīshēng jiànyì jiārén péi hù. Wǒ gē jiě dōu bù zài guónèi, zhǐ néng wǒ huí qù.", english: "Not exactly emergency, but the doctor recommends family caregivers. My older brother and sister aren't in the country, so it has to be me.", vi: "Không tính cấp cứu, nhưng bác sĩ khuyến nghị có người nhà chăm. Anh chị em không ai ở Việt Nam, chỉ có em về được." },
+      { speaker: "王经理", chinese: "我明白。那你打算请多久?", pinyin: "Wǒ míngbái. Nà nǐ dǎsuàn qǐng duō jiǔ?", english: "I understand. So how long are you planning to take?", vi: "Anh hiểu rồi. Vậy em định nghỉ bao lâu?" },
+      { speaker: "Linh", chinese: "我想请三到四周, 以无薪形式办理。如果您觉得太长, 三周也可以。", pinyin: "Wǒ xiǎng qǐng sān dào sì zhōu, yǐ wú xīn xíngshì bànlǐ. Rúguǒ nín juéde tài cháng, sān zhōu yě kěyǐ.", english: "I'd like to take 3-4 weeks, processed as unpaid. If you think it's too long, 3 weeks is also fine.", vi: "Em muốn xin 3 đến 4 tuần, làm theo hình thức không lương. Nếu anh thấy quá dài, 3 tuần cũng được." },
+      { speaker: "王经理", chinese: "三周到四周... 这段时间正好是Q4冲刺, 项目进度比较紧。", pinyin: "Sān zhōu dào sì zhōu... zhè duàn shíjiān zhènghǎo shì Q4 chōngcì, xiàngmù jìndù bǐjiào jǐn.", english: "3 to 4 weeks... this period happens to be the Q4 sprint, project schedules are quite tight.", vi: "3 đến 4 tuần... khoảng thời gian này đúng là Q4 nước rút, tiến độ dự án khá gấp." },
+      { speaker: "Linh", chinese: "我完全理解您的顾虑。我已经想好了交接方案: 张明可以接手日常运营, 我把所有文档整理好, 留下详细操作手册。", pinyin: "Wǒ wánquán lǐjiě nín de gùlǜ. Wǒ yǐjīng xiǎng hǎo le jiāojiē fāng'àn: Zhāng Míng kěyǐ jiēshǒu rìcháng yùnyíng, wǒ bǎ suǒyǒu wéndàng zhěnglǐ hǎo, liú xià xiángxì cāozuò shǒucè.", english: "I completely understand your concerns. I've already planned the handover: Zhang Ming can take over daily operations; I'll organize all the documents and leave a detailed operations manual.", vi: "Em hoàn toàn hiểu mối lo của anh. Em đã nghĩ xong phương án bàn giao: Trương Minh có thể tiếp quản vận hành hàng ngày, em sẽ chuẩn bị tất cả tài liệu và để lại sổ tay vận hành chi tiết." },
+      { speaker: "王经理", chinese: "张明经验够吗? 万一有突发情况呢?", pinyin: "Zhāng Míng jīngyàn gòu ma? Wànyī yǒu tūfā qíngkuàng ne?", english: "Is Zhang Ming experienced enough? What if something unexpected comes up?", vi: "Trương Minh kinh nghiệm có đủ không? Lỡ có tình huống đột xuất thì sao?" },
+      { speaker: "Linh", chinese: "我可以每天晚上越南时间花一小时远程协助, 紧急情况可以微信联系。我会提前把所有关键节点的负责人都安排好。", pinyin: "Wǒ kěyǐ měi tiān wǎnshàng yuè nán shíjiān huā yī xiǎoshí yuǎnchéng xiézhù, jǐnjí qíngkuàng kěyǐ wēixìn liánxì. Wǒ huì tíqián bǎ suǒyǒu guānjiàn jiédiǎn de fùzérén dōu ānpái hǎo.", english: "I can spend an hour each evening (Vietnam time) on remote assistance; for emergencies, WeChat is fine. I'll arrange responsible owners for every critical milestone in advance.", vi: "Em có thể dành mỗi tối giờ Việt Nam một tiếng để hỗ trợ từ xa, trường hợp khẩn có thể liên hệ WeChat. Em sẽ sắp xếp trước người phụ trách cho mọi mốc quan trọng." },
+      { speaker: "王经理", chinese: "这样啊。那我们这样, 你请三周, 然后看情况, 如果家里没问题就准时回来。", pinyin: "Zhèyàng a. Nà wǒmen zhèyàng, nǐ qǐng sān zhōu, ránhòu kàn qíngkuàng, rúguǒ jiā lǐ méi wèntí jiù zhǔnshí huílái.", english: "I see. Let's do this — you take 3 weeks, then we'll see; if things at home are okay, you come back on time.", vi: "Vậy à. Mình làm thế này: em nghỉ 3 tuần, sau đó xem tình hình, nếu nhà ổn thì quay lại đúng hẹn." },
+      { speaker: "Linh", chinese: "好的, 三周可以。非常感谢您的体谅。", pinyin: "Hǎo de, sān zhōu kěyǐ. Fēicháng gǎnxiè nín de tǐliàng.", english: "Okay, 3 weeks works. Thank you so much for your understanding.", vi: "Được, 3 tuần được. Em rất cảm ơn anh đã thông cảm." },
+      { speaker: "王经理", chinese: "客气了。家里事情大于天, 这个谁都能理解。你打算什么时候出发?", pinyin: "Kèqì le. Jiā lǐ shìqíng dà yú tiān, zhège shéi dōu néng lǐjiě. Nǐ dǎsuàn shénme shíhou chūfā?", english: "Don't mention it. Family matters are above all else — anyone can understand that. When are you planning to leave?", vi: "Khách sáo quá. Chuyện gia đình lớn hơn trời, ai cũng hiểu. Em định khi nào đi?" },
+      { speaker: "Linh", chinese: "我希望能下周一出发。这周我把所有事情交接清楚。", pinyin: "Wǒ xīwàng néng xià zhōu yī chūfā. Zhè zhōu wǒ bǎ suǒyǒu shìqíng jiāojiē qīngchu.", english: "I hope to leave next Monday. This week I'll get everything handed over clearly.", vi: "Em mong có thể đi vào thứ Hai tuần sau. Tuần này em sẽ bàn giao mọi việc rõ ràng." },
+      { speaker: "王经理", chinese: "行。那这周我们安排一次团队会议, 你给大家说明一下情况, 然后细化交接方案。回来以后, 你给我一份完整的总结报告。", pinyin: "Xíng. Nà zhè zhōu wǒmen ānpái yī cì tuánduì huìyì, nǐ gěi dàjiā shuōmíng yīxià qíngkuàng, ránhòu xìhuà jiāojiē fāng'àn. Huí lái yǐhòu, nǐ gěi wǒ yī fèn wánzhěng de zǒngjié bàogào.", english: "Alright. So this week we'll schedule a team meeting where you explain the situation and finalize the handover plan. After you return, give me a complete summary report.", vi: "Được. Vậy tuần này mình sắp xếp một cuộc họp team, em giải thích tình hình cho mọi người, rồi chi tiết hóa kế hoạch bàn giao. Sau khi về, em đưa anh một báo cáo tổng kết đầy đủ." },
+      { speaker: "Linh", chinese: "没问题, 我一定办妥。给您和团队添麻烦了, 实在是情非得已。", pinyin: "Méi wèntí, wǒ yīdìng bàn tuǒ. Gěi nín hé tuánduì tiān máfan le, shízài shì qíng fēi dé yǐ.", english: "No problem, I'll definitely handle it properly. Sorry for causing trouble to you and the team — it's really circumstances forcing my hand.", vi: "Không vấn đề gì, em chắc chắn sẽ làm chu đáo. Đã gây phiền hà cho anh và cả team, thật sự là bất đắc dĩ." },
+      { speaker: "王经理", chinese: "别这么说。家家有本难念的经, 大家互相理解就好。你回去好好照顾母亲, 工作的事不用太担心。", pinyin: "Bié zhème shuō. Jiā jiā yǒu běn nán niàn de jīng, dàjiā hùxiāng lǐjiě jiù hǎo. Nǐ huí qù hǎohǎo zhàogù mǔqīn, gōngzuò de shì bù yòng tài dānxīn.", english: "Don't say that. Every family has its own hard sutra to chant — as long as we all understand each other, that's enough. Go back and take good care of your mother; don't worry too much about work.", vi: "Đừng nói thế. Nhà nào chẳng có chuyện khó riêng, mọi người hiểu nhau là được. Em về chăm sóc mẹ cho tốt, chuyện công việc không cần lo nhiều." }
+    ],
+    roleplay_prompts: [
+      "Sếp ban đầu từ chối thẳng vì đang Q4 và một dự án lớn đến hạn cuối tháng. Hãy thuyết phục bằng cách dùng cụm 情非得已, mô tả tình huống gia đình cụ thể (đủ để hiểu nhưng không quá riêng tư), và đưa ra kế hoạch bàn giao chi tiết — tên người tiếp quản, ngày bắt đầu/kết thúc, cách hỗ trợ từ xa, kênh liên lạc khẩn.",
+      "Sếp đề nghị tăng tiền thưởng cuối năm để bạn ở lại không nghỉ. Hãy từ chối khéo léo bằng cụm '您的好意我心领了, 但是这件事我必须回去' — vẫn giữ thiện cảm, không làm sếp cảm thấy đề nghị bị đập thẳng. Nếu phù hợp, dùng 网开一面 để xin sếp châm chước. Không kéo cuộc đàm phán quá 3 lượt.",
+      "Bạn đã về Việt Nam được 1 tuần thì sếp gọi WeChat hỏi liệu có thể quay lại sớm hơn 1 tuần được không vì có sự cố khẩn ở dự án. Hãy quyết định CÓ/KHÔNG và phản hồi bằng tiếng Trung công sở — bao gồm lý do nếu từ chối + đề xuất giải pháp thay thế (remote, ai có thể xử lý), hoặc kế hoạch quay lại nếu đồng ý."
+    ],
+    register_notes: "Trong tiếng Trung công sở, sự lựa chọn 您 (nín — kính ngữ 'ngài/anh chị/quý vị') vs 你 (nǐ — 'bạn/anh/em') là hành động đầu tiên báo hiệu cấp bậc và sự tôn trọng. Trong cuộc nói chuyện này, Linh dùng 您 với 王经理 từ đầu đến cuối — không một lần nào rớt xuống 你. Đây là quy tắc bắt buộc khi nói với sếp, đặc biệt sếp lớn tuổi hoặc trong cuộc gặp chính thức. Khác Pháp/Đức (nơi 'vous'/'Sie' có thể chuyển sang 'tu'/'du' sau thời gian thân quen), người Trung Quốc nói chung KHÔNG bao giờ chuyển từ 您 xuống 你 với cấp trên trong môi trường công sở — kể cả sau nhiều năm làm việc cùng. Nếu sếp Trung Quốc bảo 'cứ gọi tôi là Lão Trương' (你叫我老张就行) — đó là dấu hiệu đặc biệt về sự gần gũi cá nhân, nhưng đa số trường hợp vẫn nên giữ kính ngữ trong các cuộc nói chuyện chính thức.\n\nNgược lại, sếp dùng 你 với nhân viên — đó là chuẩn mực, không phải thiếu tôn trọng. Trong dialogue_long bạn sẽ thấy 王经理 nói '你说' (anh nói đi), '你打算请多久' — đây là 你 cấp trên dùng với cấp dưới, không có ý hạ thấp. Đừng cảm thấy bị xúc phạm.\n\nKhái niệm 面子 (miànzi — 'thể diện') chi phối toàn bộ cuộc nói chuyện này. Có hai mặt:\n\n(1) '给面子' (gěi miànzi — cho thể diện) — bạn phải để sếp có không gian đồng ý mà không cảm thấy bị ép. Đó là lý do mở đầu bằng '我有件私事想向您汇报' thay vì nói thẳng '我要请假'. Cụm 汇报 (báo cáo) hạ vai bạn xuống và nâng sếp lên (sếp có quyền quyết định, không bị bắt đáp ứng).\n\n(2) '丢面子' (diū miànzi — mất thể diện) — tránh để sếp mất mặt trước team. Nếu sếp đã đồng ý cho 3 tuần và bạn xin thêm, đừng đòi hỏi qua email cc cả phòng — phải gặp riêng. Nếu sếp pushback, đừng cãi lý — chuyển sang 商量 (thảo luận, đàm phán nhẹ) bằng cụm '您看这样行不行...' (anh xem thế này có được không).\n\nTuyệt đối tránh: (a) Nói thẳng '我必须' (tôi phải) — nghe như tối hậu thư; thay bằng '我希望能...' hoặc '您看可不可以...'; (b) Đề cập số ngày/yêu cầu trước khi giải thích lý do — sếp Trung Quốc xử lý theo trật tự bối cảnh→cảm xúc→đề xuất, đảo ngược trật tự này bị coi là transactional, lạnh lùng; (c) Pháp/Đức không có cấu trúc 面子 tương đương — đừng copy mẫu Pháp ('je souhaiterais aborder') hoặc Đức ('ich möchte Klartext reden') sang Trung. Trung Quốc cần MỀM HƠN nhiều, gián tiếp hơn nhiều — Pháp trực tiếp được đọc là confident; Trung Quốc trực tiếp được đọc là vô lễ.",
+    idiom_glosses: [
+      {
+        idiom: "情非得已",
+        literal: "tình cảnh không có đường nào khác (qíng fēi dé yǐ)",
+        meaning: "Bất đắc dĩ — hoàn cảnh ép buộc, không phải do mình chọn. Dùng để xin lỗi khi mình phải làm điều gây phiền hà cho người khác mà nguyên nhân nằm ngoài tầm kiểm soát của mình. Cụm này chuyển trách nhiệm từ 'lựa chọn cá nhân' sang 'hoàn cảnh' — một cách lịch sự để xin sự thông cảm. Đây là cụm CHÌA KHÓA cho mọi cuộc xin nghỉ/xin phá lệ trong tiếng Trung công sở.",
+        example: "给您和团队添麻烦了, 实在是情非得已。"
+      },
+      {
+        idiom: "家家有本难念的经",
+        literal: "nhà nào cũng có một quyển kinh khó tụng (jiā jiā yǒu běn nán niàn de jīng)",
+        meaning: "Mỗi gia đình đều có vấn đề riêng, không ai được miễn nỗi khổ. Sếp dùng cụm này khi muốn báo hiệu sự thông cảm và đồng cảm: 'anh hiểu, ai cũng có việc nhà'. Đây là cách sếp Trung Quốc thể hiện humanity mà không phá vỡ formality của môi trường công sở. Khi sếp nói cụm này với bạn, đó là tín hiệu đèn xanh — cuộc đàm phán đã kết thúc thuận lợi.",
+        example: "别这么说。家家有本难念的经, 大家互相理解就好。"
+      },
+      {
+        idiom: "网开一面",
+        literal: "mở một mặt của lưới — để con vật chạy thoát (wǎng kāi yī miàn)",
+        meaning: "Châm chước, mở đường — bỏ qua một quy tắc/phá lệ cho ai đó trong hoàn cảnh đặc biệt. Đây là cụm bạn DÙNG khi xin sếp thể tất, hoặc cụm sếp DÙNG khi đồng ý phá lệ cho bạn. Nguồn gốc: vua Thành Tang thời Thương ra lệnh chỉ giăng lưới ba phía thay vì bốn phía để chim thú có đường thoát — biểu trưng cho lòng nhân từ.",
+        example: "这次情况特殊, 还请王经理网开一面, 让我多请一周。"
+      },
+      {
+        idiom: "推心置腹",
+        literal: "đẩy tim vào bụng người khác (tuī xīn zhì fù)",
+        meaning: "Nói chuyện chân thành, mở lòng — không giấu giếm, không vòng vo. Dùng khi cuộc nói chuyện đã đến độ tin tưởng đủ để bộc lộ thật. Trong context xin nghỉ, sếp có thể dùng cụm này để mời bạn nói thật ('我们推心置腹地谈一谈' — chúng ta nói chân thành nhé). Khác 腹を割って話す (Nhật) ở chỗ này NHẸ HƠN, ít kịch tính hơn — chỉ là báo hiệu 'nói thật đi, tôi nghe'.",
+        example: "既然你都说了, 那我们就推心置腹地谈一谈。"
+      }
+    ],
+    cultural_notes_vi: "Văn hóa công sở Trung Quốc xem việc về quê chăm gia đình là một trong những lý do chính đáng nhất để xin nghỉ — bắt nguồn từ giá trị 孝道 (xiàodào — đạo hiếu). Khi bạn nói '母亲身体不太好' (mẹ tôi sức khỏe không tốt), gần như mọi sếp Trung Quốc thế hệ trước sẽ hiểu và chấp nhận, vì văn hóa Khổng giáo đặt nghĩa vụ với cha mẹ trên hầu hết các nghĩa vụ khác — bao gồm công việc. Khác biệt với Việt Nam: ở Việt Nam, lý do 'gia đình' cũng được chấp nhận nhưng thường gắn với 'lễ tết' hoặc 'đám cưới'; ở Trung Quốc, 'thăm bệnh cha mẹ' được trọng vọng đặc biệt và gần như không bị chất vấn lý do.\n\nTuy nhiên, KHÔNG có nghĩa là dễ dãi — người Trung Quốc vẫn sẽ đo 'thể diện' (面子) qua cách bạn xử lý quá trình. Sáu quy tắc:\n\n(1) Báo càng SỚM càng tốt — 越早越好 (yuè zǎo yuè hǎo). Báo trước 1-2 ngày là xúc phạm trầm trọng; báo trước 2-3 tuần là chuẩn; báo trước 1 tháng là lý tưởng. Báo qua tin nhắn WeChat sẽ bị coi là không trang trọng — phải gọi điện hoặc gặp trực tiếp, sau đó mới gửi văn bản chính thức qua hệ thống HR.\n\n(2) Đừng giải thích quá nhiều chi tiết riêng tư. Sếp Trung Quốc tôn trọng 'có chuyện riêng' hơn là biết tỉ mỉ. Nói '母亲身体出了状况, 需要照顾' là đủ — không cần kể bệnh gì, ai chăm, chi tiết bác sĩ. Quá nhiều chi tiết = nghi ngờ lý do thật.\n\n(3) PHẢI có kế hoạch bàn giao TRƯỚC khi xin nghỉ — không thể vừa xin vừa hỏi 'ai sẽ làm thay em'. Đó là trách nhiệm của bạn, không phải sếp. Đề xuất tên cụ thể, có hướng dẫn chi tiết, cam kết hỗ trợ từ xa = cách duy nhất để sếp đồng ý mà không mất thể diện.\n\n(4) Luôn bao gồm cụm '添麻烦了' (tiān máfan le — gây phiền hà) — đây không phải xin lỗi mà là dấu hiệu lễ phép tiêu chuẩn. Thiếu nó sẽ bị coi là vô tâm, không biết điều.\n\n(5) Sau khi quay lại, BẮT BUỘC mang quà nhỏ (土特产 tǔtèchǎn — đặc sản quê hương) cho team — đó là 礼尚往来 (lǐ shàng wǎng lái — qua lại có lễ). Không cần đắt tiền, chỉ cần biểu trưng. Bỏ qua bước này sẽ bị nhớ rất lâu trong văn hóa workplace Trung Quốc.\n\n(6) Tuần đầu sau khi quay lại, viết một báo cáo tóm tắt cho sếp — không cần dài, chỉ cần 'tôi đã quay lại, mọi thứ ổn, cảm ơn anh đã cho phép' + cập nhật về việc tiếp quản các dự án. Đây là đóng vòng tròn giao tiếp.\n\nKhác biệt cơ bản với Pháp/Đức/Việt:\n- Pháp: xin nghỉ là quyền hợp đồng (entitled time off) → đàm phán dựa trên dữ liệu;\n- Đức: xin nghỉ là quá trình formal có quy tắc → tuân thủ luật và process;\n- Việt Nam: xin nghỉ là chuyện cá nhân giữa nhân viên và sếp → tương đối linh hoạt;\n- Trung Quốc: xin nghỉ là một sự BAN ƠN từ sếp → cần đáp lại bằng 'thể diện' (làm tròn trách nhiệm trước/sau, mang quà, viết báo cáo).\n\nHiểu khung này sẽ giúp người Việt làm việc ở Trung Quốc tránh hai cái bẫy phổ biến: (1) cứng nhắc theo phong cách Pháp/Đức ('đây là quyền của tôi') — bị coi là vô lễ; (2) quá linh hoạt theo phong cách Việt ('em báo gấp lát ạ') — bị coi là thiếu chuyên nghiệp.",
+    tip_advice_vi: "(1) Mở đầu KHÔNG nói thẳng '请假'. Bắt đầu bằng '王经理, 我有件私事想向您汇报' hoặc '您现在方便吗? 我想跟您商量一下' — cho sếp không gian chuẩn bị tâm lý. Cụm 商量 (shāngliang — thảo luận) làm nhẹ tone hơn 请示 (qǐngshì — xin chỉ thị); cụm 汇报 (huìbào — báo cáo) hạ vai bạn xuống, nâng sếp lên.\n\n(2) Nói lý do TRƯỚC, yêu cầu SAU. Người Trung Quốc xử lý theo trật tự: bối cảnh → cảm xúc → đề xuất. Nói thẳng 'tôi cần nghỉ 3 tuần' trước khi giải thích lý do sẽ bị coi là transactional, lạnh lùng. Trật tự đúng: '母亲身体出了状况' → '需要我回去陪她' → '想请三到四周事假'.\n\n(3) Khi sếp pushback (gần như chắc chắn sẽ có, ít nhất một lần), đừng phản pháo bằng '我必须'. Dùng '我也很为难, 但是情非得已' (tôi cũng khó xử nhưng bất đắc dĩ) — báo hiệu bạn cũng cảm nhận vấn đề về phía sếp, và mượn cụm 情非得已 để chuyển trách nhiệm sang hoàn cảnh, không phải lựa chọn cá nhân. Sếp sẽ thấy bạn không bướng bỉnh.\n\n(4) Đề xuất luôn cụ thể: tên người tiếp quản, ngày bắt đầu/kết thúc, kế hoạch hỗ trợ từ xa, cách liên lạc khẩn cấp. Sếp Trung Quốc đánh giá cao sự CHỦ ĐỘNG hơn sự tuân lệnh. Đừng chỉ phàn nàn rồi đợi sếp giải quyết — sẽ bị coi là không có năng lực.\n\n(5) Đáp ứng cảm xúc của sếp. Nếu sếp lo lắng về dự án, nói '我理解您的顾虑' (em hiểu mối quan tâm của anh, wǒ lǐjiě nín de gùlǜ). Nếu sếp tỏ ra thông cảm, nói '感谢您的体谅' (cảm ơn anh đã thấu hiểu, gǎnxiè nín de tǐliàng). Lờ đi cảm xúc của sếp = bị coi là không nhạy cảm — một điểm trừ lớn trong văn hóa Trung Quốc.\n\n(6) Câu chốt PHẢI là cảm ơn — không phải '好的, 那就这样' (OK, vậy quyết định thế) mà là '非常感谢您的支持, 我会做好交接' (rất cảm ơn sự ủng hộ của anh, em sẽ bàn giao tốt). Đóng vòng tròn bằng cảm xúc tích cực.\n\n(7) Mẹo phát âm cuối cho người Việt: 您 (nín, thanh 2 — đi lên) khác 你 (nǐ, thanh 3 — xuống rồi lên). Sai thanh điệu sẽ làm rớt formal register ngay. Tập đọc to '您好' '您看' '您觉得' nhiều lần trước cuộc gặp. Cụm 4 chữ idiom 情非得已 cũng cần luyện thanh điệu (qíng-fēi-dé-yǐ = 2-1-2-3) — đọc sai sẽ bị nghe nhầm hoặc không hiểu.",
+    exercises: [
+      { type: "fill-blank", question: "给您和团队添麻烦了, 实在是 ___ 。", answer: "情非得已" },
+      {
+        type: "matching",
+        instruction: "Ghép cụm tiếng Trung công sở với nghĩa tiếng Việt phù hợp khi xin nghỉ phép.",
+        pairs: [
+          { chinese: "请假", pinyin: "qǐng jià", english: "xin nghỉ phép" },
+          { chinese: "情非得已", pinyin: "qíng fēi dé yǐ", english: "bất đắc dĩ — hoàn cảnh ép buộc" },
+          { chinese: "网开一面", pinyin: "wǎng kāi yī miàn", english: "châm chước, mở đường, phá lệ" },
+          { chinese: "添麻烦", pinyin: "tiān má fan", english: "gây phiền hà (cụm lễ phép)" }
+        ]
+      },
+      {
+        type: "translation",
+        vietnamese: "Em xin nghỉ phép 3 tuần về Việt Nam thăm gia đình. Em sẽ bàn giao công việc chu đáo trước khi đi, và hỗ trợ từ xa khi cần.",
+        chinese: "我想请三周事假回越南探亲。我会在出发前把工作交接好, 需要的时候可以远程协助。",
+        pinyin: "Wǒ xiǎng qǐng sān zhōu shì jià huí yuè nán tàn qīn. Wǒ huì zài chū fā qián bǎ gōng zuò jiāo jiē hǎo, xū yào de shí hou kě yǐ yuǎn chéng xié zhù."
+      }
+    ]
   }
 ];
 export default lessons;
