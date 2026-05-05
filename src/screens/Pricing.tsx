@@ -22,7 +22,6 @@ import {
   MONTHLY_PRICE_VND,
   YEARLY_PRICE_VND,
 } from "@/lib/pricing/displayPrices";
-import { LifetimeTierCard } from "@/components/pricing/LifetimeTierCard";
 import PaywallExperiment from "@/components/pricing/PaywallExperiment";
 import { useAuth } from "@/providers/AuthProvider";
 
@@ -879,16 +878,6 @@ export default function Pricing() {
           plans.map(renderCard)
         )}
       </div>
-
-      {/* ── Lifetime tier (Step 9 — intent capture, not a live offer) ── */}
-      {!isIos && (
-        <div style={{ marginTop: 18 }}>
-          <LifetimeTierCard
-            userId={user?.id ?? null}
-            defaultEmail={user?.email ?? undefined}
-          />
-        </div>
-      )}
 
       <p style={{ marginTop: 16, fontSize: 13, color: "#64748b", lineHeight: 1.6 }}>
         {isIos
