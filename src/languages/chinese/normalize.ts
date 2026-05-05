@@ -113,6 +113,8 @@ export function normalizeChineseLesson(
       en: d.english,
     })),
     exercises: lesson.exercises.map(normalizeChineseExercise),
+    culturalNotesVi: (lesson as any).cultural_notes_vi,
+    tipAdviceVi: (lesson as any).tip_advice_vi,
     dialogueLong: (lesson as any).dialogue_long?.map((line: any) => ({
       speaker: line.speaker,
       native: line.chinese,

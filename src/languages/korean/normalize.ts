@@ -106,6 +106,8 @@ export function normalizeKoreanLesson(
       vi: d.meaning,
     })),
     exercises: lesson.exercises.map(normalizeKoreanExercise),
+    culturalNotesVi: (lesson as any).cultural_notes_vi,
+    tipAdviceVi: (lesson as any).tip_advice_vi,
     dialogueLong: (lesson as any).dialogue_long?.map((line: any) => ({
       speaker: line.speaker,
       native: line.korean,
