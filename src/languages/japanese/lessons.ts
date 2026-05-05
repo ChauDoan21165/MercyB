@@ -2699,6 +2699,781 @@ export const lessons: JapaneseLesson[] = [
     ] },
     { type: "translation", vietnamese: "Em quan tâm đến công nghệ xử lý nước nhiễm mặn ở Đông Nam Á.", japanese: "東南アジアにおける塩害水の浄化技術に関心を持っております。" }
   ]
+},
+{
+  id: 62,
+  title: "Meeting your Japanese boss when they visit Vietnam",
+  title_vi: "Đón sếp Nhật sang thăm Việt Nam",
+  title_en: "Meeting your Japanese boss when they visit Vietnam",
+  category: "fluency",
+  level: "B2",
+  vocabulary: [
+    { japanese: "ご出張 (ごしゅっちょう)", english: "business trip (sonkeigo — for boss's trip)" },
+    { japanese: "遠路はるばる (えんろはるばる)", english: "from far away (set greeting for long-distance arrival)" },
+    { japanese: "お疲れ様でございます", english: "thank you for your effort (max-formal greeting at arrival)" },
+    { japanese: "現地スタッフ (げんちスタッフ)", english: "local (Vietnamese) staff" },
+    { japanese: "視察 (しさつ)", english: "inspection / observation (formal factory visit)" },
+    { japanese: "工場見学 (こうじょうけんがく)", english: "factory tour" },
+    { japanese: "ご案内 (ごあんない)", english: "guidance / showing around (sonkeigo)" },
+    { japanese: "時差ぼけ (じさぼけ)", english: "jet lag" },
+    { japanese: "現地時間 (げんちじかん)", english: "local time (Vietnam)" },
+    { japanese: "おもてなし", english: "hospitality (Japanese-specific concept of guest care)" }
+  ],
+  examples: [
+    { japanese: "山田部長、遠路はるばるベトナムまでお越しいただき、誠にありがとうございます。", english: "Manager Yamada, thank you sincerely for coming all the way to Vietnam from afar." },
+    { japanese: "長旅でお疲れのことと存じます。お荷物はこちらでお預かりいたします。", english: "I imagine you must be tired from the long journey. We will take care of your luggage here." },
+    { japanese: "本日のスケジュールにつきまして、ホテルでご説明させていただきます。", english: "Regarding today's schedule, I will explain at the hotel." },
+    { japanese: "ベトナム滞在中、何か不便がございましたら、いつでもお申し付けください。", english: "During your stay in Vietnam, if anything is inconvenient, please let me know any time." },
+    { japanese: "現地スタッフ一同、心よりお迎え申し上げます。", english: "All of us local staff sincerely welcome you." }
+  ],
+  dialogue: [
+    { speaker: "チャウ", japanese: "山田部長、お疲れ様でございます。遠路はるばるありがとうございます。", english: "Manager Yamada, thank you for your effort. Thank you for coming from afar." },
+    { speaker: "山田部長", japanese: "グエンさん、お迎えありがとうございます。空港まで来てくださって。", english: "Nguyen-san, thank you for the welcome. Coming all the way to the airport." },
+    { speaker: "チャウ", japanese: "とんでもございません。お車をご用意しております。こちらへどうぞ。", english: "Not at all. We have a car prepared. This way please." },
+    { speaker: "山田部長", japanese: "ホーチミンは初めてなので、楽しみにしています。", english: "It's my first time in Ho Chi Minh, so I'm looking forward to it." }
+  ],
+  dialogue_long: [
+    { speaker: "チャウ", japanese: "(到着ロビーで)山田部長、こちらでございます。お疲れ様でございます。", english: "(at arrivals lobby) Manager Yamada, over here. Thank you for your effort." },
+    { speaker: "山田部長", japanese: "ああ、グエンさん。お迎えありがとうございます。空港まで来ていただいて、申し訳ない。", english: "Ah, Nguyen-san. Thank you for the welcome. I'm sorry you came all the way to the airport." },
+    { speaker: "チャウ", japanese: "とんでもございません。遠路はるばるベトナムまでお越しいただき、誠にありがとうございます。フライトはいかがでしたか。", english: "Not at all. Thank you sincerely for coming all the way to Vietnam from afar. How was the flight?" },
+    { speaker: "山田部長", japanese: "六時間でしたから、思ったより早く着きました。少し時差ぼけがありますが、大丈夫です。", english: "It was six hours, so I arrived faster than expected. I have a bit of jet lag, but I'm fine." },
+    { speaker: "チャウ", japanese: "それは何よりでございます。お荷物はこちらでお預かりいたします。お車をご用意しておりますので、こちらへどうぞ。", english: "That's a relief. We will take your luggage here. We have a car ready; this way please." },
+    { speaker: "山田部長", japanese: "ありがとうございます。ホテルまでどのくらいかかりますか。", english: "Thank you. How long to the hotel?" },
+    { speaker: "チャウ", japanese: "通常ですと四十分程度でございますが、現在夕方のラッシュアワーに入りますので、一時間ほど見ていただければと存じます。", english: "Normally about forty minutes, but we are entering rush hour now, so please allow about an hour." },
+    { speaker: "山田部長", japanese: "なるほど、ベトナムのバイクは噂で聞いています。すごい数だそうですね。", english: "I see — I've heard the rumors about Vietnam's motorbikes. They say there's a huge number." },
+    { speaker: "チャウ", japanese: "はい、車窓からご覧いただけるかと存じます。ホーチミンらしい光景の一つでございます。途中、サイゴン川もご覧いただけます。", english: "Yes, you'll be able to see them from the window. It's one of the iconic scenes of Ho Chi Minh. You'll also see the Saigon River along the way." },
+    { speaker: "山田部長", japanese: "それは楽しみです。明日の予定はどうなっていますか。", english: "I'm looking forward to that. What's the schedule for tomorrow?" },
+    { speaker: "チャウ", japanese: "明日は午前九時にホテルにお迎えに上がります。十時から工場視察、十二時から現地スタッフとの昼食、午後は経営会議の予定でございます。詳細はホテルチェックイン後、改めてご説明させていただきます。", english: "Tomorrow I will pick you up at the hotel at 9am. Factory inspection from 10, lunch with local staff from 12, management meeting in the afternoon. I'll explain in detail after hotel check-in." },
+    { speaker: "山田部長", japanese: "わかりました。今日は早めに休んだほうが良さそうですね。", english: "Understood. It seems I'd better rest early today." },
+    { speaker: "チャウ", japanese: "ぜひそうなさってください。ホテルのレストランは二十二時まで開いております。お食事に関しまして、何かご希望はございますでしょうか。", english: "Please do. The hotel restaurant is open until 10pm. Regarding meals, do you have any preferences?" },
+    { speaker: "山田部長", japanese: "今日は軽く済ませたいので、ルームサービスにします。明日からベトナム料理を楽しみにしています。", english: "I'd like something light today, so room service. Looking forward to Vietnamese food from tomorrow." },
+    { speaker: "チャウ", japanese: "承知いたしました。明日のランチでフォーをご用意しております。きっとお口に合うかと存じます。", english: "Understood. We have prepared pho for tomorrow's lunch. I believe it will suit your palate." },
+    { speaker: "山田部長", japanese: "ありがとうございます。一期一会の気持ちで、ベトナム滞在を大切にしたいと思います。", english: "Thank you. I want to value this Vietnam stay with the spirit of ichigo-ichie." },
+    { speaker: "チャウ", japanese: "現地スタッフ一同、心よりお迎えしております。何か不便がございましたら、いつでもお申し付けください。", english: "All of our local staff welcome you sincerely. If anything is inconvenient, please tell me any time." },
+    { speaker: "山田部長", japanese: "頼りにしています。三日間、よろしくお願いします。", english: "I'm counting on you. Three days — looking forward to it." }
+  ],
+  roleplay_prompts: [
+    "Đóng vai chính bạn đón sếp Nhật ở sân bay Tân Sơn Nhất. Hãy mở đầu cuộc gặp với cụm o-tsukaresama de gozaimasu cộng enro harubaru. Cảm ơn sếp đã đến, hỏi về flight, đề xuất lấy hành lý. Tone: kenjougo cho hành động của mình, sonkeigo cho hành động của sếp.",
+    "Sếp Nhật than phiền về tiếng ồn xe máy ngoài đường. Hãy phản hồi MÀ KHÔNG biện hộ — thừa nhận, giải thích context văn hóa ngắn gọn (đây là đặc trưng HCM), đề xuất tuyến đường ít kẹt. KHÔNG nói VN tốt hơn nơi khác. Dùng cụm shitsurei wo o-kake shi, moushiwake gozaimasen.",
+    "Cuối ngày, sếp hỏi muốn ăn tối ở đâu. Đề xuất nhà hàng Nhật chuẩn HCM (như Sushi Hokkaido, Hokkien) MÀ không áp đặt — đề xuất 2 lựa chọn (Nhật / Việt) và để sếp chọn. Dùng o-kosomi ni o-makase itashimasu (em xin để theo ý thích của sếp)."
+  ],
+  register_notes: "Khi VN là host và sếp Nhật là khách, register có 4 đặc trưng. (1) BẢO QUẢN KEIGO MẶC DÙ Ở NHÀ MÌNH — VN là host nhưng sếp vẫn là sếp. KHÔNG nới keigo vì lý do địa lý. Cụm chuẩn arrival: o-tsukaresama de gozaimasu (cảm ơn sếp đã nỗ lực). (2) CỤM ĐÓN TIẾP CỐ ĐỊNH: enro harubaru o-koshi itadaki, makoto ni arigatou gozaimasu (cảm ơn sếp đã đến từ xa). enro harubaru là cụm cố định cho khách đến từ nước khác — bỏ cụm này bằng chào không đầy đủ. (3) KHIÊM TỐN VỀ BẢN THÂN VÀ ĐẤT NƯỚC: KHÔNG khoe HCM/VN. Khi sếp khen, dùng osore irimasu (em không xứng) hoặc tonde mo gozaimasen (không có gì). Khi sếp than phiền, KHÔNG biện hộ — thừa nhận và đề xuất giải pháp. (4) CỤM CHỦ ĐỘNG SERVICE: nani-ka go-fuben ga gozaimashitara, itsudemo o-mooshitsuke kudasai (nếu có gì bất tiện, xin sếp cứ bảo) — câu nên nói LẶP LẠI mỗi 2-3 giờ trong cuộc thăm. Cụm hỏi nhu cầu: o-kosomi wa go-zaimasu deshou ka (sếp có sở thích gì không?). // TODO: native review — enro harubaru phrasing for short flights (6h Tokyo-HCM); some prefer just toui michinori for shorter distances.",
+  idiom_glosses: [
+    { idiom: "一期一会", literal: "Một đời một lần gặp", meaning: "Mỗi cuộc gặp là duy nhất — gốc trà đạo Sen no Rikyu. Khi sếp Nhật đến VN lần đầu, dùng cụm này để bày tỏ sự trân trọng cuộc thăm.", example: "山田部長のベトナムご訪問を一期一会の機会と捉え、誠心誠意ご対応させていただきます。" },
+    { idiom: "おもてなし", literal: "Hospitality (lòng tiếp khách kiểu Nhật)", meaning: "Khái niệm hospitality đặc trưng Nhật — chăm lo cho khách không cần nói ra (proactive hospitality). VN khi host nên bày tỏ omotenashi spirit dù khái niệm gốc Nhật.", example: "ベトナム流のおもてなしの心で、山田部長をお迎えいたします。" },
+    { idiom: "遠路はるばる", literal: "Đường xa lê thê", meaning: "Cụm cố định chào khách đến từ xa — không phải idiom truyền thống nhưng là chuẩn mực bắt buộc khi đón khách international. Bỏ qua bằng thiếu lễ.", example: "遠路はるばるベトナムまでお越しいただき、誠にありがとうございます。" },
+    { idiom: "袖振り合うも他生の縁", literal: "Tay áo chạm nhau cũng là duyên kiếp khác", meaning: "Mỗi cuộc gặp dù nhỏ cũng là duyên — gốc Phật giáo. Trong context business, dùng để diễn tả tâm trạng cảm kích khi sếp đến thăm.", example: "袖振り合うも他生の縁と申しますが、ベトナムでお会いできること、大変光栄に存じます。" }
+  ],
+  cultural_notes_vi: "Đón sếp Nhật ở VN khác đón đối tác phương Tây ở năm điểm. (1) ĐẾN SÂN BAY: BẮT BUỘC. Dù sếp tự đặt khách sạn, dù sếp nói không cần, VN host phải đến sân bay đón. KHÔNG cử taxi đi đón — phải MẶT BẠN ở cửa ra. Đứng ở cửa ra với bảng tên tiếng Nhật (romaji không đủ). Cúi 30 độ khi gặp. (2) KÉO HÀNH LÝ: BẮT BUỘC offer kéo hành lý. Sếp sẽ từ chối lần đầu — vẫn đề xuất lần thứ hai mạnh hơn. Sau lần thứ hai, nếu vẫn từ chối, cầm 1 cái nhỏ thôi (laptop bag). KHÔNG để sếp tự kéo nhiều hành lý. (3) THỜI GIAN BIỂU IN SẴN: chuẩn bị schedule song ngữ (Nhật-Anh) với thời gian cộng địa điểm cộng tên người gặp. Đưa cho sếp khi vào xe. Sếp Nhật thích biết trước MỌI thứ — surprise bằng stress. (4) KHÔNG ĐỀ XUẤT QUÁ NHIỀU LỰA CHỌN cho ăn: hỏi 2 lựa chọn (Nhật / Việt) thì đủ. Hỏi 5 lựa chọn bằng không quyết định bằng stress cho sếp jetlag. Default an toàn: ngày 1 bằng Nhật (sếp jetlag), ngày 2 bằng VN. (5) GIẤY VIỆC PHẢI IN: KHÔNG show iPad/laptop slides ở quán cafe — nhiều sếp Nhật vẫn thích giấy. In schedule, factory map, attendance list. Khác biệt với VN: ở VN host thường welcoming bằng food và alcohol; ở Nhật, host welcoming bằng PROCESS và ATTENTION TO DETAIL. Hỏi sếp cảm thấy thế nào mỗi vài giờ là tốt; im lặng và assume sếp ổn là không tốt. Ngày cuối, BẮT BUỘC tiễn ra sân bay — ngay cả khi sếp tự gọi taxi được. Tiễn ra sân bay là dấu cuối của omotenashi.",
+  tip_advice_vi: "Một tuần trước khi sếp đến: gửi email xác nhận lịch trình cộng thời tiết HCM (sếp Nhật sẽ chuẩn bị quần áo theo) cộng visa requirement (Nhật được miễn 15 ngày, không cần xin visa nhưng phải có hộ chiếu 6 tháng) cộng emergency contact (số WhatsApp của bạn). Ngày sếp đến: đến sân bay TRƯỚC 30 phút khi flight land (kiểm tra flight status real-time). Đứng ở cửa ra với bảng tên tiếng Nhật in to. Khi gặp, cúi 30 độ TRƯỚC khi nói. Câu mở thuộc lòng: o-tsukaresama de gozaimasu. Nguyen de gozaimasu. Enro harubaru, makoto ni arigatou gozaimasu (sếp đã nỗ lực, em là Nguyen, cảm ơn sếp đã đến từ xa). Trong xe: KHÔNG nói chuyện công việc (sếp jetlag). Hỏi flight, hỏi family, hỏi sở thích (golf, sake brand). Luôn có nước lạnh và khăn ướt sẵn. Đến hotel: PHẢI giúp check-in (đem hộ chiếu cho receptionist), kiểm tra phòng (giường king/twin theo confirm), chỉ wifi password, restaurant hours. Trao welcome kit chứa: schedule song ngữ, danh thiếp tất cả người sẽ gặp, bản đồ HCM với điểm đặc biệt được đánh dấu, một món quà nhỏ chào mừng (cà phê G7 hoặc bánh phồng tôm — không quá đắt, không quá rẻ — 200K-500K VND). Trước khi rời sếp ngày đầu: xác nhận giờ đón sáng mai cộng cách liên lạc. Mỗi sáng trước cuộc đón, gọi reception phòng sếp trước 30 phút (kakunin — xác nhận sếp đã thức). KHÔNG gõ cửa phòng sếp trừ emergency. Mẹo cuối: chuẩn bị plan B cho mỗi điểm — nếu nhà hàng đóng cửa, nếu kẹt xe, nếu sếp ốm đột ngột (biết clinic Nhật ở HCM: Family Medical Practice, FV Hospital). Sếp sẽ không bao giờ biết bạn có plan B — đó là omotenashi đỉnh.",
+  exercises: [
+    { type: "fill-blank", question: "山田部長、___はるばるベトナムまでお越しいただき、誠にありがとうございます。", answer: "遠路" },
+    { type: "matching", instruction: "Ghép cụm Nhật host với tình huống.", pairs: [
+      { japanese: "お疲れ様でございます", english: "chào sếp khi vừa gặp ở sân bay (cảm ơn sự nỗ lực)" },
+      { japanese: "お預かりいたします", english: "đề xuất giữ hành lý cho sếp (kenjougo)" },
+      { japanese: "お申し付けください", english: "mời sếp cứ yêu cầu nếu cần (sonkeigo)" },
+      { japanese: "ご案内させていただきます", english: "xin được dẫn sếp đi (kenjougo)" }
+    ] },
+    { type: "translation", vietnamese: "Trong thời gian sếp ở Việt Nam, nếu có gì bất tiện, xin sếp cứ bảo em.", japanese: "ベトナム滞在中、何か不便がございましたら、いつでもお申し付けください。" }
+  ]
+},
+{
+  id: 63,
+  title: "Hosting a Japanese business client in Vietnam",
+  title_vi: "Tiếp khách kinh doanh Nhật tại Việt Nam",
+  title_en: "Hosting a Japanese business client in Vietnam",
+  category: "fluency",
+  level: "B2",
+  vocabulary: [
+    { japanese: "お客様 (おきゃくさま)", english: "client / customer (sacred concept in JP business)" },
+    { japanese: "ご訪問 (ごほうもん)", english: "visit (sonkeigo for client's visit)" },
+    { japanese: "工場見学 (こうじょうけんがく)", english: "factory tour" },
+    { japanese: "生産ライン (せいさんライン)", english: "production line" },
+    { japanese: "品質管理 (ひんしつかんり)", english: "quality control" },
+    { japanese: "お土産 (おみやげ)", english: "souvenir / gift (mandatory for visitors)" },
+    { japanese: "ご贔屓に (ごひいきに)", english: "favor / patronage (used in business closing)" },
+    { japanese: "懇親 (こんしん)", english: "friendly relations / informal bonding" },
+    { japanese: "乾杯 (かんぱい)", english: "cheers / toast (drinking culture)" },
+    { japanese: "お見送り (おみおくり)", english: "seeing someone off (here: literal — to airport)" }
+  ],
+  examples: [
+    { japanese: "本日は弊社工場へお越しいただき、誠にありがとうございます。", english: "Thank you sincerely for coming to our factory today." },
+    { japanese: "まずは生産ラインをご案内させていただきます。", english: "First, I will guide you through the production line." },
+    { japanese: "ご質問がございましたら、いつでもお申し付けください。", english: "If you have any questions, please ask at any time." },
+    { japanese: "夕方は懇親会をご用意しております。お時間が許せばご参加いただけますと幸いです。", english: "We have prepared a social dinner for the evening. We would be grateful if your schedule allows you to join." },
+    { japanese: "今後とも変わらぬご贔屓のほど、何卒よろしくお願い申し上げます。", english: "We respectfully ask for your continued patronage." }
+  ],
+  dialogue: [
+    { speaker: "チャウ", japanese: "佐藤様、本日は弊社工場へお越しいただき、誠にありがとうございます。", english: "Mr. Sato, thank you sincerely for coming to our factory today." },
+    { speaker: "佐藤", japanese: "こちらこそ、お時間を頂戴し、ありがとうございます。", english: "On the contrary, thank you for the time." },
+    { speaker: "チャウ", japanese: "まずは応接室で会社概要をご説明させていただいた後、生産ラインをご案内いたします。", english: "First we'll explain company overview in the reception room, then guide you through the production line." },
+    { speaker: "佐藤", japanese: "よろしくお願いします。", english: "Thank you, looking forward to it." }
+  ],
+  dialogue_long: [
+    { speaker: "チャウ", japanese: "佐藤様、お疲れ様でございます。本日は遠方からお越しいただき、誠にありがとうございます。", english: "Mr. Sato, thank you for your effort. Thank you sincerely for coming from afar today." },
+    { speaker: "佐藤", japanese: "グエンさん、こちらこそお招きいただき、ありがとうございます。", english: "Nguyen-san, on the contrary, thank you for inviting me." },
+    { speaker: "チャウ", japanese: "本日のスケジュールでございますが、まず応接室で会社概要のご説明、その後工場の生産ラインをご案内、お昼は社員食堂で軽くお召し上がりいただき、午後は品質管理部門との打ち合わせ、夕方は懇親会の予定でございます。", english: "Today's schedule — first company overview in the reception room, then factory production-line tour, lunch lightly at the staff cafeteria, afternoon meeting with quality control, social dinner in the evening." },
+    { speaker: "佐藤", japanese: "充実したスケジュールですね。よろしくお願いします。", english: "Quite a full schedule. Thank you, looking forward to it." },
+    { speaker: "チャウ", japanese: "(応接室で)弊社は二〇〇五年にホーチミンに設立され、現在従業員は三百名でございます。御社向けの部品は、第二ラインで生産しております。", english: "(in reception room) Our company was established in Ho Chi Minh in 2005; we currently have 300 employees. Parts for your company are produced on Line 2." },
+    { speaker: "佐藤", japanese: "なるほど。第二ラインの稼働率はいかがですか。", english: "I see. How is the utilization rate of Line 2?" },
+    { speaker: "チャウ", japanese: "現在は八十五パーセントの稼働率でございます。御社からのご注文増加に対応するため、来月からシフトを増やす予定でございます。", english: "Currently 85 percent utilization. To handle the increase in orders from your company, we plan to add a shift from next month." },
+    { speaker: "佐藤", japanese: "それは心強いですね。実際のラインを拝見させていただけますか。", english: "That's reassuring. May I see the actual line?" },
+    { speaker: "チャウ", japanese: "もちろんでございます。安全のため、ヘルメットと安全靴をご着用いただきますので、こちらでお着替えくださいませ。", english: "Of course. For safety, please wear a helmet and safety shoes; please change here." },
+    { speaker: "佐藤", japanese: "(ライン視察後)印象的でしたね。特に5S活動が徹底されている点に感心しました。", english: "(after line tour) Impressive. I was particularly struck by how thoroughly 5S is implemented." },
+    { speaker: "チャウ", japanese: "恐れ入ります。月一回の改善発表会を行っており、現場の意見を反映させております。一期一会の精神で、お一人お一人のお客様に最高の品質をお届けしたく存じます。", english: "I am humbled. We hold monthly improvement-presentation meetings, reflecting the floor's opinions. With the spirit of ichigo-ichie, we humbly wish to deliver the highest quality to each and every client." },
+    { speaker: "佐藤", japanese: "良い言葉ですね。お客様は神様、というあの精神に通じるところがあります。", english: "Beautiful words. It connects to that spirit of the customer is god." },
+    { speaker: "チャウ", japanese: "光栄でございます。お昼は社員食堂で、ベトナム料理と和食、両方ご用意しております。", english: "I am honored. For lunch at the cafeteria, we have prepared both Vietnamese food and Japanese food." },
+    { speaker: "佐藤", japanese: "気を遣っていただいて。せっかくですから、ベトナム料理をいただきます。", english: "Thank you for the consideration. Since I'm here, I'll have Vietnamese food." },
+    { speaker: "チャウ", japanese: "ありがとうございます。フォーがおすすめでございます。夜の懇親会は、川沿いのレストランをご予約しております。サイゴン川の夜景もお楽しみいただけるかと存じます。", english: "Thank you. We recommend pho. For the evening social, we've reserved a restaurant by the river. You'll be able to enjoy the night view of the Saigon River." },
+    { speaker: "佐藤", japanese: "それは素敵ですね。今日は本当に充実した一日になりそうです。", english: "How lovely. Today is going to be a truly fulfilling day." },
+    { speaker: "チャウ", japanese: "こちらこそ、ご贔屓に感謝申し上げます。お帰りの際は、些細ではございますが、お土産をご用意しております。", english: "On the contrary, thank you for your patronage. For your departure, we have prepared a small souvenir." },
+    { speaker: "佐藤", japanese: "お気遣いありがとうございます。今後とも、変わらずよろしくお願いいたします。", english: "Thank you for the kind thought. Looking forward to continued partnership." }
+  ],
+  roleplay_prompts: [
+    "Đóng vai chính bạn dẫn khách Nhật đi factory tour. Hãy giới thiệu line sản xuất bằng tiếng Nhật B2 — tên line, sản phẩm, capacity, quality control. Khi khách hỏi câu kỹ thuật, KHÔNG giả vờ biết — dùng kakunin shite mairimasu (em xin xác nhận và quay lại trả lời).",
+    "Bữa tối, khách Nhật đề xuất uống sake nhưng bạn không uống được. Hãy từ chối khéo trong văn hóa Nhật — KHÔNG nói thẳng iie. Dùng o-sake wa yowai mono desu kara, jusu de kanpai sasete itadaite mo yoroshii deshou ka (em rượu yếu, xin được cụng ly bằng nước trái cây).",
+    "Cuối ngày, đưa khách ra sân bay tiễn về Nhật. Hãy nói lời tạm biệt với cụm honjitsu wa makoto ni arigatou gozaimashita cộng lời chúc chuyến bay an toàn cộng cụm closing kongo to mo, kawaranu go-hiiki no hodo, nanitozo yoroshiku onegai moushiagemasu (xin được hoan nghênh sự ưu ái không đổi của khách trong tương lai)."
+  ],
+  register_notes: "Khi tiếp khách Nhật business, register cao hơn cả khi tiếp sếp — vì khách bằng REVENUE bằng trên cả hierarchy nội bộ. Năm patterns: (1) GỌI KHÁCH BẰNG TÊN cộng sama, KHÔNG san. Lặp tên trong câu chuyện: sato-sama no go-iken wo o-kikase itadakemasu deshou ka. Nhắc tên bằng thể hiện tôn trọng cá nhân. (2) DÙNG ONSHA cho công ty khách trong lúc nói (heisha cho công ty mình). Nhầm bằng lỗi cấp 0. (3) CỤM CỐ ĐỊNH KẾT THÚC: kongo to mo, kawaranu go-hiiki no hodo, nanitozo yoroshiku onegai moushiagemasu (xin được hoan nghênh sự ưu ái không đổi trong tương lai) — go-hiiki là từ business cổ điển không thể bỏ. Bỏ qua bằng quan hệ business kết thúc. (4) APOLOGY PATTERNS đặc biệt cho khách: dù không có lỗi cụ thể, dùng o-tesuu wo o-kake itashimashite, makoto ni moushiwake gozaimasen (em đã làm phiền khách, xin lỗi). Đây là apologize cho situation, không phải fault. (5) ĐỀ XUẤT KHÔNG ÉP: dùng moshi go-tsugou ga yoroshikereba (nếu thuận tiện) hoặc go-jikan ga yurusebe (nếu thời gian cho phép) — báo hiệu bạn không ép. Nhật ghét feeling phải làm gì. // TODO: native review — okyakusama wa kamisama desu phrasing — câu cũ của Mihohashi Haruo (1960s), một số người Nhật trẻ thấy outdated; nên dùng cẩn thận, có thể dùng okyakusama wo daiichi ni thay thế.",
+  idiom_glosses: [
+    { idiom: "お客様は神様です", literal: "Khách là thần linh", meaning: "Khách hàng quan trọng nhất — gốc câu hát của Mihohashi Haruo 1960s. Đã thành phương châm business Nhật. Trong context này, có thể nhắc đến nhưng KHÔNG nên áp đặt vì một số người Nhật trẻ đã chuyển sang thấy câu này outdated.", example: "お客様は神様という精神で、最高の品質をお届けいたします。" },
+    { idiom: "一期一会", literal: "Một đời một lần gặp", meaning: "Mỗi cuộc gặp duy nhất — gốc trà đạo. Áp dụng vào business client interaction: mỗi đơn hàng, mỗi cuộc gặp với khách hàng quan trọng đều phải dồn 100 phần trăm.", example: "一期一会の精神で、お一人お一人のお客様に最高のサービスをお届けしたく存じます。" },
+    { idiom: "ご贔屓に", literal: "Sự ưu ái / favoritism", meaning: "Cụm business cố điển — biểu thị mong muốn khách hàng tiếp tục ủng hộ. Từ thời Edo, gốc kabuki theater. Cụm chuẩn closing trong mọi business interaction.", example: "今後とも変わらぬご贔屓のほど、何卒よろしくお願い申し上げます。" },
+    { idiom: "袖振り合うも他生の縁", literal: "Tay áo chạm nhau cũng là duyên kiếp khác", meaning: "Mỗi mqh, dù bắt đầu nhỏ, đều là karma. Dùng khi muốn nâng tầm relationship business từ transaction lên kết nối có ý nghĩa.", example: "袖振り合うも他生の縁と申します。今回のお取引を、ぜひ長いお付き合いに発展させていただきたく存じます。" }
+  ],
+  cultural_notes_vi: "Tiếp khách business Nhật ở VN khác tiếp khách Tây ở 6 điểm. (1) THỜI GIAN: đến SỚM 15 phút (không 5, không 30) ở nơi gặp đầu. Khi đón ở sân bay/khách sạn, đứng ở vị trí đầu của cửa ra. KHÔNG ngồi cafe gần đó vừa đợi vừa chờ — phải ĐỨNG eye-contact với cửa ra. (2) FACTORY TOUR: in trước briefing 2 trang (tiếng Nhật) gồm: lịch sử công ty, sản phẩm, vai trò khách trong business, các số liệu. Đưa vào tay khách lúc bắt đầu, KHÔNG đợi khách hỏi. Đeo helmet và safety shoes — đưa khách thật đẹp (mới, sạch). Trên line, giải thích bằng cách CHỈ TRỰC TIẾP, không qua bảng — Nhật trọng evidence visible. (3) BỮA TRƯA: KHÔNG dẫn khách Nhật đến quán đường phố ngày đầu — dù bạn nghĩ ngon. Dẫn nhà hàng có air-conditioning, menu tiếng Anh/Nhật, vệ sinh rõ ràng. Nếu khách CHỦ ĐỘNG xin đi quán đường phố từ ngày 2, OK — nhưng ngày 1 không bao giờ. (4) ALCOHOL: bữa tối có rượu là tiêu chuẩn. KHÔNG tự rót rượu cho mình — luôn rót cho khách trước, để khách rót lại. Cụm khi rót: o-tsugi shimasu. Cụm khi nhận: itadakimasu. Cụng ly: kanpai (KHÔNG chichin chichin). Nếu bạn không uống rượu được, từ chối lần đầu được — lần thứ hai từ chối nếu khách insist sẽ awkward. Cách out: jusu de kanpai sasete itadakimasu (xin được cụng ly bằng nước trái cây). (5) GIFT: cuối visit đưa o-miyage (souvenir). Không quá đắt (300K-1M VND), không cá nhân hóa quá (không có tên khách khắc lên). Lựa chọn an toàn: cà phê G7, đặc sản địa phương đóng hộp đẹp, lụa Bao Loc. Đưa với hai tay, nói tsumaranai mono desu ga (đây là món không đáng kể). (6) SEEING OFF: BẮT BUỘC tiễn ra sân bay ngày cuối. Đưa đến counter check-in, đợi đến khi khách qua security, THẬM CHÍ vẫy tay từ kính. Nhật để ý chi tiết này — tiễn nửa chừng bằng quan hệ nửa chừng. Khác biệt với VN: ở VN khách đến hôm nay đi tomorrow là OK; ở Nhật, mỗi cuộc thăm là ichigo-ichie moment đáng đầu tư cao nhất. Một khách hài lòng bằng đơn đặt hàng kéo dài 10 năm. Tỷ suất ROI của omotenashi với khách Nhật cao nhất trong tất cả nationalities.",
+  tip_advice_vi: "Trước khi khách đến, gửi email xác nhận chi tiết: (1) flight info (số flight, giờ đáp), (2) hotel (đã book chưa, ai pay), (3) lịch trình giờ-by-giờ song ngữ, (4) thời tiết HCM, (5) emergency contact. Nếu khách lần đầu đến HCM, gửi thêm: bản đồ HCM, thông tin về SIM card / wifi, currency exchange. Một ngày trước, gửi reminder kèm mong gặp khách. Ngày khách đến: PHẢI có business cards (in mới, song ngữ Nhật-Anh) sẵn sàng. Mỗi cuộc giới thiệu, đưa card hai tay với chữ hướng về khách. Trong factory tour, đeo BADGE rõ tên cộng chức vụ tiếng Nhật cho khách dễ nhớ. Lunch với khách: ngồi BẠN bên trái khách (vị trí kohai), khách ngồi vị trí kamiza (vinh dự). Nếu khách nhìn bối rối khi vào nhà hàng, đề xuất ngồi cụ thể: kochira no o-seki ni o-kake kudasai. Order thức ăn: gọi thức ăn DỄ ĂN cho khách (không quá cay, không quá mới). Nếu khách Nhật lần đầu ăn pho, hỏi WHO suggest (chỉ cách ăn — bỏ rau húng, vắt chanh, không bỏ ớt nhiều). Khi chụp ảnh kỷ niệm, KHÔNG đứng giữa khách và sếp công ty mình — vị trí of bạn là cuối hoặc bên cạnh. Phía Nhật rất chú ý photo composition — nó sẽ được đưa vào company newsletter. Cuối visit, kiểm tra hotel checkout, mua o-miyage (chuẩn bị từ trước tốt hơn mua ngày cuối), đưa khách qua security ở sân bay với tâm lý chu đáo. Trong vòng 24 giờ sau khách về, gửi email cảm ơn (tiếng Nhật) với tóm tắt 3 điểm thảo luận chính cộng cam kết theo dõi specific items cộng đính kèm photo collage cuộc thăm. Email này bằng tài liệu lưu trong file của khách bằng quyết định liệu năm sau khách có quay lại không.",
+  exercises: [
+    { type: "fill-blank", question: "今後とも変わらぬご___のほど、何卒よろしくお願い申し上げます。", answer: "贔屓" },
+    { type: "matching", instruction: "Ghép tình huống với cụm cho đúng.", pairs: [
+      { japanese: "tsumaranai mono desu ga", english: "đưa quà cuối visit (đây là món không đáng kể)" },
+      { japanese: "go-jikan ga yurusebe", english: "đề xuất activity (nếu thời gian cho phép)" },
+      { japanese: "o-tesuu wo o-kake shite", english: "xin lỗi proactive (đã làm phiền khách)" },
+      { japanese: "go-hiiki no hodo", english: "kết thúc business meeting (xin sự ưu ái)" }
+    ] },
+    { type: "translation", vietnamese: "Nếu khách có câu hỏi gì, xin cứ bảo em bất cứ lúc nào.", japanese: "ご質問がございましたら、いつでもお申し付けください。" }
+  ]
+},
+{
+  id: 64,
+  title: "Explaining Vietnamese culture to a Japanese colleague",
+  title_vi: "Giải thích văn hóa Việt Nam với đồng nghiệp Nhật",
+  title_en: "Explaining Vietnamese culture to a Japanese colleague",
+  category: "fluency",
+  level: "B2",
+  vocabulary: [
+    { japanese: "文化の違い (ぶんかのちがい)", english: "cultural difference" },
+    { japanese: "なるほど", english: "I see / makes sense (key listener-feedback word)" },
+    { japanese: "そうなんですね", english: "is that so (acknowledging cultural info)" },
+    { japanese: "意外と (いがいと)", english: "unexpectedly / contrary to expectation" },
+    { japanese: "実は (じつは)", english: "actually / in truth (signals interesting fact)" },
+    { japanese: "家族中心 (かぞくちゅうしん)", english: "family-centered (Vietnamese cultural trait)" },
+    { japanese: "バイク文化 (バイクぶんか)", english: "motorbike culture" },
+    { japanese: "カフェ文化 (カフェぶんか)", english: "café culture" },
+    { japanese: "気さく (きさく)", english: "friendly / approachable (positive trait)" },
+    { japanese: "おおらか", english: "easy-going / relaxed (often used for Vietnamese vs Japanese)" }
+  ],
+  examples: [
+    { japanese: "ベトナムでは、家族で集まることがとても大切なんです。", english: "In Vietnam, gathering as a family is very important." },
+    { japanese: "コーヒー文化は、フランスの影響で発展しました。", english: "Coffee culture developed under French influence." },
+    { japanese: "バイクは「足」というより、生活の一部です。", english: "Motorbikes are less like feet and more part of daily life." },
+    { japanese: "日本の方からよく「忙しそう」と言われますが、実はリラックスしている時間も多いです。", english: "Japanese people often say we look busy, but actually we have a lot of relaxed time too." },
+    { japanese: "もしご興味があれば、今度ローカルの市場へご案内しますよ。", english: "If you're interested, next time I'll show you a local market." }
+  ],
+  dialogue: [
+    { speaker: "田中さん", japanese: "ベトナムのバイク、本当に多いですね。皆さん、危なくないんですか。", english: "Vietnam has so many motorbikes. Aren't they dangerous?" },
+    { speaker: "チャウ", japanese: "慣れですね。実は、私たちにとってバイクは生活の一部なんです。", english: "It's habit. Actually, motorbikes are part of life for us." },
+    { speaker: "田中さん", japanese: "なるほど。一家に何台くらいあるんですか。", english: "I see. About how many per household?" },
+    { speaker: "チャウ", japanese: "都市部だと、家族一人に一台が普通ですね。", english: "In cities, one per family member is normal." }
+  ],
+  dialogue_long: [
+    { speaker: "田中さん", japanese: "グエンさん、ベトナムに来てもう一週間ですが、いろいろ不思議なことがあって。教えてもらえますか。", english: "Nguyen-san, I've been in Vietnam a week now, and there are lots of curious things. Could you tell me about them?" },
+    { speaker: "チャウ", japanese: "はい、もちろんです。何でも聞いてください。", english: "Yes, of course. Ask me anything." },
+    { speaker: "田中さん", japanese: "まず、バイクの数。日本人にとっては衝撃です。一家に何台くらいあるんですか。", english: "First, the number of motorbikes. It's shocking for Japanese. How many per household?" },
+    { speaker: "チャウ", japanese: "都市部ですと、家族一人に一台が普通です。地方ですと、一家に二、三台で共有することもあります。", english: "In urban areas, one per family member is normal. In rural areas, two or three per household, shared." },
+    { speaker: "田中さん", japanese: "ええ、すごい数ですね。ヘルメットは皆さん被っていますね。", english: "Wow, that's a huge number. Everyone wears helmets, I see." },
+    { speaker: "チャウ", japanese: "二〇〇七年から法律で義務化されました。それまでは少なかったんですが、罰金がかなり高くて。実は、子供のヘルメットも今年から義務化されたんです。", english: "It became legally mandatory in 2007. Before that, few wore them, but the fine is quite high. Actually, helmets for children also became mandatory this year." },
+    { speaker: "田中さん", japanese: "そうなんですね。次に、コーヒー。すごく濃いですよね。日本のコーヒーと全然違います。", english: "Is that so. Next, the coffee. It's very strong, isn't it? Completely different from Japanese coffee." },
+    { speaker: "チャウ", japanese: "ベトナムコーヒーはフランスの影響で、ロブスタ豆を使うんです。日本やヨーロッパでよく飲まれるアラビカ豆より、苦みとコクが強いです。コンデンスミルクと合わせるのが定番なんですが、田中さん、お試しになりましたか。", english: "Vietnamese coffee uses Robusta beans, due to French influence. It has stronger bitterness and body than Arabica, which Japan and Europe typically drink. Mixing with condensed milk is the standard — Tanaka-san, have you tried it?" },
+    { speaker: "田中さん", japanese: "はい、二日目に。あれは美味しかったです。それから、家族で集まる文化。日曜日に大家族で食事する場面をよく見ます。", english: "Yes, on day two. It was delicious. Also, the gathering culture — I often see large families eating together on Sundays." },
+    { speaker: "チャウ", japanese: "ベトナムでは、家族中心の文化なんです。日本ですと核家族化が進んでいると伺いますが、ベトナムは三世代同居も珍しくありません。日曜日は祖父母を訪ねるのが普通です。", english: "In Vietnam, the culture is family-centered. I hear Japan has progressed toward nuclear families, but in Vietnam three-generation living is not unusual. Visiting grandparents on Sunday is normal." },
+    { speaker: "田中さん", japanese: "それは羨ましいですね。日本では、年に数回しか会えない家族も多いです。", english: "That's enviable. In Japan, many families only meet a few times a year." },
+    { speaker: "チャウ", japanese: "実は、お互いに学ぶところがあると思います。日本の方は時間の使い方が上手で、効率的。ベトナム人は、おおらかで人との時間を大切にします。両方とも良い面があります。", english: "Actually, I think we have things to learn from each other. Japanese are good at using time and being efficient. Vietnamese are easy-going and value time with people. Both sides have merits." },
+    { speaker: "田中さん", japanese: "おおらか、いい言葉ですね。ベトナムの方は本当に気さくで、街で道を聞いても親切に教えてくれます。", english: "Easy-going — beautiful word. Vietnamese people are truly friendly; even when I ask directions on the street, they explain kindly." },
+    { speaker: "チャウ", japanese: "ありがとうございます。そう言っていただけると嬉しいです。もし興味があれば、今週末、ローカルの市場へご案内しますよ。日本のスーパーと全然違いますから、面白いと思います。", english: "Thank you. I'm glad to hear that. If you're interested, this weekend I'll guide you to a local market. It's completely different from Japanese supermarkets, so I think it'll be interesting." },
+    { speaker: "田中さん", japanese: "ぜひお願いします。文化の違いを体験するのが、海外赴任の醍醐味ですから。", english: "Please, by all means. Experiencing cultural differences is the joy of overseas postings." },
+    { speaker: "チャウ", japanese: "では、土曜日の朝にホテルにお迎えに上がります。早朝のほうが涼しくて、品揃えも豊富ですから。", english: "Then I'll pick you up at the hotel Saturday morning. Mornings are cooler, and selection is richer." },
+    { speaker: "田中さん", japanese: "ありがとう、楽しみにしています。", english: "Thanks, looking forward to it." },
+    { speaker: "チャウ", japanese: "こちらこそ。一期一会の精神で、ベトナム滞在を一緒に楽しみましょう。", english: "On the contrary. With the spirit of ichigo-ichie, let's enjoy your Vietnam stay together." }
+  ],
+  roleplay_prompts: [
+    "Đồng nghiệp Nhật hỏi vì sao đi xe máy ở VN nhiều người không đội mũ bảo hiểm cho trẻ em. Hãy trả lời TRUNG THỰC — không bịa, không bào chữa. Dùng cụm jitsu wa, kotoshi kara giteki ni narimashita và giải thích context lịch sử. Tone: cởi mở, cảm ơn câu hỏi.",
+    "Đồng nghiệp Nhật khen người VN luôn có thời gian cho gia đình. Hãy phản hồi cân bằng — đừng over-claim, đừng under-claim. Dùng cụm o-machigai mo aru ka to zonjimasu ga (có thể có misunderstanding) và đưa nuance — không phải VN nào cũng thế.",
+    "Đồng nghiệp Nhật hỏi sao trên đường VN nhiều người dắt em bé không đội mũ bằng xe máy. Đây là câu KHÓ — VN có vấn đề thật. KHÔNG bào chữa. Hãy thừa nhận, giải thích context, đề xuất câu chuyện bạn cá nhân làm gì khác."
+  ],
+  register_notes: "Nói chuyện với đồng nghiệp Nhật về văn hóa VN, register tùy mức quen: ban đầu desu/masu, sau khi quen có thể giảm xuống casual nhưng vẫn polite. Bốn patterns đặc biệt: (1) AIZUCHI (đáp lời) — Nhật expect bạn đáp naruhodo, sou nan desu ne, hee liên tục khi nghe. KHÔNG im lặng nghe — Nhật sẽ tưởng bạn không đồng ý hoặc không hiểu. Đáp mỗi 5-10 giây. (2) JITSU WA (thực ra) — câu mở đầu chuẩn khi bạn đưa thông tin cultural mới: jitsu wa, betonamu de wa (thực ra ở VN). Báo hiệu có điều thú vị bạn không biết. (3) HAI BÊN ĐỀU CÓ ĐIỂM TỐT: KHÔNG nói VN tốt hơn hoặc Nhật tốt hơn — luôn dùng oogami ni manabu tokoro ga aru to omoimasu (hai bên đều có chỗ học của nhau). Đây là chuẩn xã giao Nhật — comparison không kẻ thắng kẻ thua. (4) GIẢI THÍCH BẰNG NUMBER cộng REASON: Nhật ưa fact-based. KHÔNG người Việt thân thiện (vague), nói theo khảo sát X năm 2023, 75 phần trăm người VN sẵn sàng giúp người lạ (specific). Khi không có data, dùng watashi no shuukan dewa (theo cảm quan của em). // TODO: native review — bunka chuushin (family-centered) phrasing; some sources prefer kazoku juushi (family-emphasizing) which is closer to Japanese collocation.",
+  idiom_glosses: [
+    { idiom: "以心伝心", literal: "Lòng truyền lòng", meaning: "Thông hiểu không cần nói — gốc Phật giáo Zen. Đây là ESSENCE của giao tiếp Nhật. Khác với VN explicit. Dùng cụm này để giải thích RIÊNG cho VN học giao tiếp Nhật: hiểu Nhật cần đọc ngầm.", example: "日本では以心伝心という考えがあり、言葉にしないことも多いです。ベトナムは逆に、はっきり言うのが普通ですね。" },
+    { idiom: "郷に入っては郷に従え", literal: "Vào làng nào theo làng đó", meaning: "When in Rome, do as Romans do — gốc cổ Nhật. Phù hợp khi giải thích cho đồng nghiệp Nhật rằng họ ở VN nên thử làm theo VN cách.", example: "郷に入っては郷に従えと申しますので、ぜひベトナムのカフェ文化を体験してみてください。" },
+    { idiom: "お互い様", literal: "Bên kia cũng vậy / cùng nhau", meaning: "Cả hai bên đều vậy — biểu thị sự tương đối, không có ai trên ai. Cụm cốt lõi của giao tiếp Nhật khi tránh comparison thắng/thua.", example: "日本もベトナムも、文化の違いはお互い様。学び合いながら理解を深めたいです。" },
+    { idiom: "百聞は一見に如かず", literal: "Trăm nghe không bằng một thấy", meaning: "Tự thấy tốt hơn nghe — phù hợp khi mời đồng nghiệp Nhật trải nghiệm thực tế (đi chợ, ăn quán đường phố) thay vì chỉ giải thích.", example: "百聞は一見に如かずと申します。今度ぜひローカルの市場へご案内させていただきます。" }
+  ],
+  cultural_notes_vi: "Khi giải thích văn hóa VN cho người Nhật, có 5 traps cần tránh. (1) ĐỪNG over-explain — người Nhật ngại làm bạn nói nhiều. Mỗi câu hỏi của họ, trả lời CỤ THỂ trong 30-60 giây, đợi aizuchi của họ, rồi nói tiếp nếu họ muốn nghe nữa. Độc thoại 5 phút bằng họ thoải mái nhưng đầu họ overload. (2) ĐỪNG so sánh thắng/thua — KHÔNG VN có thiên nhiên đẹp hơn Nhật hoặc Nhật giàu hơn VN. Dùng oogami ni manabu (mỗi bên có chỗ học) hoặc context nuance: betonamu wa kotonatte imashite (VN khác đi một cách). (3) ĐỪNG giấu vấn đề — Nhật rất nhạy với spin. Nếu họ hỏi về tham nhũng, ô nhiễm, traffic deaths — KHÔNG bào chữa, KHÔNG nói VN cũng có chỗ tốt. Thừa nhận, giải thích context, kể bạn cá nhân làm gì khác. Honesty về vấn đề thực bằng bạn được respect. (4) ĐỪNG dùng quá nhiều VN words không giải thích — dù đồng nghiệp Nhật học VN có thể khá, đừng dùng pho, banh mi, ao dai mà không gloss. Cụm chuẩn: pho to iu betonamu no men ryouri (mì pho — món mì VN). (5) BÀN VỀ POLITICS, RELIGION, MISTAKES OF VN: tránh trừ khi họ chủ động hỏi. Nếu họ hỏi về chiến tranh VN, hãy trả lời ngắn gọn FACTUAL, KHÔNG cảm xúc. Nhật rất careful với các topic nhạy cảm. Mẹo cuối: VN host có UNIQUE ADVANTAGE — đồng nghiệp Nhật ở VN cô đơn (không tiếng Nhật xung quanh, không gia đình ở đây), bạn là người mở cửa văn hóa của họ. Đây là long-term relationship cơ hội — nếu xử lý tốt, đồng nghiệp Nhật sẽ là cầu nối của bạn vào Nhật trong 10-20 năm tới. Đầu tư.",
+  tip_advice_vi: "Khi đồng nghiệp Nhật hỏi câu về VN, ĐỪNG trả lời ngay. Đợi 1-2 giây (Nhật trọng pause), rồi sou desu ne (đúng nhỉ) trước khi đi vào nội dung. Đây là tín hiệu bạn ĐANG CÂN NHẮC — Nhật ghét answer too fast (sounds prepared/scripted). Dùng cấu trúc 3-tầng: (1) acknowledge: jitsu wa, sore wa yoku kikareru shitsumon desu (thực ra đây là câu hỏi thường được hỏi); (2) explain: 1-2 câu cụ thể với data nếu có; (3) invite: moshi go-kyoumi ga arereba, jissai ni go-annai shimasu (nếu thích, em đưa đi xem thực tế). Đề xuất experience together tốt hơn explanation alone — Nhật trọng trải nghiệm trực tiếp. Khi đề xuất activity, ĐỪNG ép — moshi go-tsugou ga yoroshikereba (nếu thuận tiện) là chuẩn. Cho đồng nghiệp Nhật cơ hội iya, kondo (lần khác) một cách lịch sự. KHÔNG ép họ ăn quán đường phố nếu họ ngại — sức khỏe quan trọng. Default an toàn: cafe có air-con, cuối tuần đi chợ, bánh mì làm tại nhà bạn (nếu họ accept invitation về home). Khi nói về VN, dùng watashi-tachi (chúng tôi) chứ không betonamu-jin (người Việt nói chung) — gần gũi và humble hơn. Sau cuộc nói chuyện văn hóa kéo dài 1-2 giờ, đồng nghiệp Nhật sẽ mệt mental — đề xuất nghỉ với o-tsukaresama deshita. Dochira-ka issho ni o-cha demo dou desu ka (mệt rồi, đi uống trà nhé). Đó là cú hích nhẹ thay đổi tone từ cultural lecture sang friendship. Long term: đồng nghiệp Nhật sẽ tin bạn là cultural bridge của họ — họ sẽ mời bạn về Nhật, giới thiệu bạn với boss của họ, viết letter cho bạn nếu cần. Mqh này có ROI cao nhất trong cả career.",
+  exercises: [
+    { type: "fill-blank", question: "実は、ベトナムでは家族___の文化なんです。", answer: "中心" },
+    { type: "matching", instruction: "Ghép aizuchi (đáp lời) với tình huống.", pairs: [
+      { japanese: "なるほど", english: "đáp khi người ta giải thích logic / lý do" },
+      { japanese: "そうなんですね", english: "đáp khi nhận được info mới (bất ngờ nhẹ)" },
+      { japanese: "へえ", english: "đáp khi rất bất ngờ (informal hơn)" },
+      { japanese: "確かに", english: "đáp khi đồng ý mạnh (đúng vậy)" }
+    ] },
+    { type: "translation", vietnamese: "Người Nhật và người Việt đều có những điểm hay. Mình học hỏi lẫn nhau.", japanese: "日本とベトナムはお互い様、両方とも学ぶところがたくさんあります。" }
+  ]
+},
+{
+  id: 65,
+  title: "Business etiquette differences (sempai/kohai, meishi, group decisions)",
+  title_vi: "Sự khác biệt trong lễ tiết business (sempai/kohai, meishi, ra quyết định nhóm)",
+  title_en: "Business etiquette differences (sempai/kohai, meishi, group decisions)",
+  category: "fluency",
+  level: "B2",
+  vocabulary: [
+    { japanese: "先輩・後輩 (せんぱい・こうはい)", english: "senior / junior (hierarchical pair)" },
+    { japanese: "礼儀 (れいぎ)", english: "etiquette / manners" },
+    { japanese: "上下関係 (じょうげかんけい)", english: "vertical (hierarchical) relationship" },
+    { japanese: "稟議 (りんぎ)", english: "ringi — bottom-up document-circulation decision" },
+    { japanese: "根回し (ねまわし)", english: "groundwork / pre-consensus building" },
+    { japanese: "和を以て貴しとなす", english: "harmony is to be valued (Prince Shotoku, 604 AD)" },
+    { japanese: "集団主義 (しゅうだんしゅぎ)", english: "collectivism" },
+    { japanese: "個人主義 (こじんしゅぎ)", english: "individualism" },
+    { japanese: "意思決定 (いしけってい)", english: "decision-making" },
+    { japanese: "合意形成 (ごういけいせい)", english: "consensus-building" }
+  ],
+  examples: [
+    { japanese: "日本の会社では、上下関係がとても重視されます。", english: "In Japanese companies, hierarchical relationships are highly valued." },
+    { japanese: "「先輩」というのは、年齢ではなく入社年で決まります。", english: "Sempai is determined not by age but by year of joining." },
+    { japanese: "意思決定は、根回しを経てから会議で確認するのが一般的です。", english: "Decision-making generally goes through nemawashi before being confirmed in meetings." },
+    { japanese: "ベトナムでは、もう少しフラットなのではないでしょうか。", english: "In Vietnam, isn't it a bit more flat?" },
+    { japanese: "和を以て貴しとなすという考えが、日本のチームワークの基盤です。", english: "The idea of valuing harmony is the foundation of Japanese teamwork." }
+  ],
+  dialogue: [
+    { speaker: "ベトナム同僚", japanese: "なんで日本の会議って、決まる前に皆もう答え知ってるの?", english: "Why do Japanese meetings have everyone already knowing the answer before deciding?" },
+    { speaker: "チャウ", japanese: "それが「根回し」って文化なんです。会議は確認の場で、決定の場じゃないんですよ。", english: "That's the nemawashi culture. Meetings are for confirmation, not decision." },
+    { speaker: "ベトナム同僚", japanese: "じゃあ、いつ本当に話し合うの?", english: "Then when do they really discuss?" },
+    { speaker: "チャウ", japanese: "会議の前に、一対一で。これが一番重要なステップ。", english: "Before the meeting, one-on-one. That's the most important step." }
+  ],
+  dialogue_long: [
+    { speaker: "ベトナム同僚 (ハー)", japanese: "チャウさん、日本人の同僚と仕事して三ヶ月だけど、まだ分からないことがあって。", english: "Chau-san, I've worked with Japanese colleagues for three months and there are still things I don't understand." },
+    { speaker: "チャウ", japanese: "何でも聞いて。私も最初すごく戸惑ったから。", english: "Ask anything. I was very confused at first too." },
+    { speaker: "ハー", japanese: "「先輩」って言葉。年齢上の人を呼ぶの?それとも会社で長い人?", english: "The word sempai. Is it for older people? Or those who've been at the company longer?" },
+    { speaker: "チャウ", japanese: "会社では、入社年で決まる。例えば、二十五歳の田中さんは、入社三年目。三十歳のグエンさんは、入社一年目。この場合、田中さんが先輩、グエンさんが後輩。", english: "At companies, it's by year of joining. For example, 25-year-old Tanaka is in their 3rd year. 30-year-old Nguyen is in their 1st year. In this case, Tanaka is sempai, Nguyen is kohai." },
+    { speaker: "ハー", japanese: "え、年齢関係ないの?ベトナムだと年齢順なのに。", english: "Eh, age doesn't matter? In Vietnam it's by age." },
+    { speaker: "チャウ", japanese: "そう、ここがベトナム人にとって一番混乱するところ。年齢じゃなくて「会社の年功」なの。だから、年下の先輩に敬語使わないといけない。", english: "Yes, that's the most confusing part for Vietnamese. It's not age, but company seniority. So you have to use keigo with younger sempai." },
+    { speaker: "ハー", japanese: "なるほど。次に「根回し」。会議で決まることが、なぜか会議前に決まってる感じがする。", english: "I see. Next, nemawashi. It feels like things decided in meetings are somehow already decided before the meeting." },
+    { speaker: "チャウ", japanese: "いい観察!まさにそれ。日本では、会議は「決定の場」じゃなくて「確認の場」なの。本当の議論は、会議の前に一対一で行われる。これを「根回し」って呼ぶ。", english: "Good observation! Exactly that. In Japan, meetings are not for deciding but for confirming. Real discussion happens one-on-one before the meeting. This is called nemawashi." },
+    { speaker: "ハー", japanese: "じゃあ、会議で反対意見を言ったら?", english: "Then what if you voice opposing opinions in the meeting?" },
+    { speaker: "チャウ", japanese: "それは大失敗。和を乱すと見られる。「和を以て貴しとなす」という考えが基盤だから、会議で和を壊すのはタブー。反対なら、根回しの段階で個別に伝える。", english: "That's a big failure. You'd be seen as disturbing harmony. The idea of harmony is to be valued is the foundation, so breaking harmony at meetings is taboo. If you disagree, communicate individually during the nemawashi stage." },
+    { speaker: "ハー", japanese: "じゃあ、本当に意見が違ったらどうするの?", english: "Then what if you genuinely disagree?" },
+    { speaker: "チャウ", japanese: "個別に「私としては別の見方もあるかと存じます」って伝える。直接「反対です」じゃなくて、「もう一つの視点」として提案。和を保ちながら、内容は伝える。", english: "Tell them individually: I believe there is also another viewpoint. Not directly I disagree, but propose another perspective. Maintain harmony while conveying content." },
+    { speaker: "ハー", japanese: "難しいなあ。ベトナム人は普段、もっとはっきり言うから。", english: "That's hard. Vietnamese normally speak more directly." },
+    { speaker: "チャウ", japanese: "そう、ベトナムでは「集団主義」と言いつつも、個人の意見をはっきり言うことは普通。日本は「集団主義」が深いから、個人意見を抑える文化がある。慣れるのに半年は必要。", english: "Yes, in Vietnam we say collectivism but stating personal opinions clearly is normal. In Japan, collectivism runs deeper, so there's a culture of suppressing personal opinions. It takes about half a year to get used to." },
+    { speaker: "ハー", japanese: "もう一個聞いていい?名刺交換。すごい大げさに見えるけど、本当に必要なの?", english: "One more — meishi exchange. It looks really exaggerated, but is it really necessary?" },
+    { speaker: "チャウ", japanese: "ものすごく必要。名刺は「第二の自分」って言われる。両手で渡す、両手で受け取る、ポケットに入れない、書き込まない。これだけで「日本の礼儀を理解している人」と見られる。逆に、これができないと第一印象で大きく損する。", english: "Crucially necessary. The card is called your second self. Give with both hands, receive with both hands, don't put in pocket, don't write on it. Just doing this gets you seen as someone who understands Japanese etiquette. Conversely, failing to do this hurts first impressions a lot." },
+    { speaker: "ハー", japanese: "覚えることたくさんあるねえ。", english: "There's a lot to remember." },
+    { speaker: "チャウ", japanese: "全部覚えなくていい。最低限「先輩を立てる」「会議の前に根回しする」「名刺は両手で」、この三つだけで日本の同僚から信頼される。一期一会の精神で、毎日の細かい所作に気を配る、それが鍵。", english: "You don't need to remember everything. Just the minimum — respect sempai, do nemawashi before meetings, meishi with both hands — these three alone earn trust from Japanese colleagues. With the spirit of ichigo-ichie, paying attention to small daily gestures is the key." }
+  ],
+  roleplay_prompts: [
+    "Đồng nghiệp Nhật trẻ hơn (input 5 năm ở công ty cũ trước khi join lại) là sempai của bạn. Hãy diễn tả cách giao tiếp với họ — keigo đầy đủ MÀ KHÔNG awkward. Dùng cụm o-tsukaresama desu cộng XX-senpai trong câu chuyện. KHÔNG dùng san với sempai.",
+    "Bạn không đồng ý với plan dự án nhưng đang trong meeting công khai. Hãy KHÔNG phản đối trực tiếp. Sau meeting, đến chỗ leader lúc đi cafe, dùng cụm betsu no mikata mo aru ka to zonjimasu (em nghĩ có cách nhìn khác) để truyền message. Mô tả cách thực hiện nemawashi này.",
+    "Đồng nghiệp Nhật mới trẻ (kohai) hỏi bạn — sempai — về cách làm việc. Hãy trả lời với register sempai (KHÔNG kenjougo, dùng casual desu/masu hoặc thậm chí da/dearu cho tương tác này). Cảm ơn họ vì câu hỏi nhưng không quá khúm núm — bạn là sempai, role là dạy dỗ với sự tự tin."
+  ],
+  register_notes: "Khi giải thích business etiquette Nhật cho người VN, register có 3 layers. (1) NÓI VỀ VĂN HÓA NHẬT: dùng desu/masu chuẩn, KHÔNG kenjougo (vì đồng nghiệp VN, không phải cấp trên). Khi nhắc đến hành vi của người Nhật, dùng dạng người ta general: nihon-jin wa XX shimasu hoặc XX no bunka ga arimasu. (2) NÓI VỀ SEMPAI/KOHAI: khi mình nói chuyện với sempai cụ thể, register chuyển sang keigo nhẹ (desu/masu thấp nhất, sometimes kenjougo cho hành động của mình). KHÔNG sonkeigo cho sempai trong giao tiếp hàng ngày — chỉ dành cho buchou/kachou level. Cụm gọi: XX-sempai (KHÔNG XX-san). (3) NÓI VỀ RINGI/NEMAWASHI: dùng thuật ngữ Nhật KHÔNG dịch sang VN. ringi nghĩa là circulating decision document, nemawashi là pre-consensus, nemu (gốc của nemawashi) là rễ — biểu tượng đào rễ xung quanh cây trước khi di chuyển nó. Đồng nghiệp VN có thể không hiểu — giải thích bằng analogy như đào rễ trước khi trồng cây sang chỗ khác — chuẩn bị soil/đường (one-on-one chats) trước khi formal decision (transplant). // TODO: native review — ringi vs ringi-sho phrasing; ringi là quy trình, ringi-sho là document — đồng nghiệp VN nên biết phân biệt.",
+  idiom_glosses: [
+    { idiom: "和を以て貴しとなす", literal: "Lấy hòa làm quý", meaning: "Hòa hợp là điều cao quý nhất — gốc Hiến pháp 17 điều của Hoàng Thái tử Shotoku năm 604. Nguyên tắc nền tảng cho consensus-building Nhật. Trong meeting, harmony trên opinion clarity.", example: "和を以て貴しとなすという考えが、日本のチームワークの基盤です。" },
+    { idiom: "出る杭は打たれる", literal: "Cọc nhô ra sẽ bị đóng xuống", meaning: "Người nổi bật sẽ bị đè xuống — văn hóa không khuyến khích cá nhân nổi trội. Khác với VN nơi cá nhân được khuyến khích thể hiện. Hiểu cụm này bằng hiểu vì sao Nhật ngại phát biểu trong meeting.", example: "出る杭は打たれる文化ですから、会議で目立つ反対意見は避けられがちです。" },
+    { idiom: "以心伝心", literal: "Lòng truyền lòng", meaning: "Hiểu nhau không cần lời — gốc Phật giáo Zen. Trong business Nhật, sếp mong nhân viên đọc tâm — không phải mọi thứ phải nói ra. Điểm khó nhất với người VN.", example: "日本では以心伝心で察する文化があり、言葉にしないことも多いです。ベトナム人にとって、これが一番の壁かもしれません。" },
+    { idiom: "石の上にも三年", literal: "Trên đá cũng phải ba năm", meaning: "Kiên trì sẽ được đền đáp — phù hợp khi nói về việc làm quen với business etiquette Nhật cần ít nhất 3 năm để thấm.", example: "日本の礼儀に慣れるには、石の上にも三年と言うように、時間が必要です。" }
+  ],
+  cultural_notes_vi: "Sự khác biệt sâu sắc nhất giữa business VN và Nhật KHÔNG phải ở keigo (đó chỉ là bề mặt) — mà ở 4 cấu trúc xã hội đằng sau. (1) HIERARCHY THEO 入社年 (NHẬP CÔNG NIÊN): Nhật rank theo NĂM JOIN công ty, không theo tuổi/title/skill. Một người 25 tuổi vào công ty trước 5 năm có thể là sempai của một người 35 tuổi mới vào. Người VN khó accept — ở VN tuổi tác là tiêu chí số 1. Quy tắc thực hành: trong meeting, hỏi XX-san wa nyuusha sannen-me desu yo ne (anh là năm thứ 3 đúng không?) — biết hierarchy ngay. (2) RINGI (稟議) DECISION-MAKING: ở Nhật, decision đi BOTTOM-UP qua document gọi là ringi-sho. Mỗi level circle, đóng dấu (印鑑/hanko), thêm comment, gửi up. Đến khi tới CEO, đã có 8-15 dấu. Quyết định không một-mình. Khác với VN nơi sếp quyết định và push xuống. Quy tắc thực hành: KHÔNG đề xuất gì big trong meeting — viết ringi-sho gửi qua chain. Chuẩn bị, đợi 2-3 tuần. (3) NEMAWASHI (根回し) PRE-CONSENSUS: trước khi ringi-sho gửi, người đề xuất phải đi GẶP TỪNG người trong chain riêng (cafe break, lunch, sau giờ làm) để giải thích, lấy ý kiến, điều chỉnh. Đến khi document ringi đến mỗi người, họ ALREADY agree. Đây là 80 phần trăm communication thực sự — meeting chỉ là 20 phần trăm. Người VN miss point này, gọi nemawashi là gossip hoặc lobbying — sai. Đó là DUE PROCESS. (4) WA (和) HARMONY trên TRUTH: Nhật ưu tiên không gây xáo trộn nhóm trên việc nói thật. Nếu một plan có lỗ hổng nhưng team đã đồng ý, KHÔNG nên public expose lỗ hổng. Approach đúng: gặp riêng leader, dùng cụm betsu no mikata mo aru ka to zonjimasu (có cách nhìn khác). Leader sau đó re-do nemawashi nếu thấy concern hợp lý. Người VN đặt truth trên harmony — cấu trúc xã hội phương Đông hơi khác hẳn nhau ở điểm này. Khi giải thích cho đồng nghiệp VN: nói rằng đây không phải Nhật giấu vấn đề — mà là Nhật xử lý vấn đề qua kênh không công khai để bảo vệ social bond. Khác cấu trúc, không phải khác đạo đức. Mẹo cuối: VN đang ở giai đoạn corporatize theo Nhật/Hàn (chaebol-style hierarchy), nhiều công ty large-scale ở VN (Vingroup, Viettel, FPT) đã adopt một phần Nhật-style. Hiểu Nhật etiquette bằng competitive advantage cho career VN trong 10 năm tới.",
+  tip_advice_vi: "Khi đồng nghiệp VN mới hỏi về business etiquette Nhật, ĐỪNG over-explain. Dạy họ 3 quy tắc thực hành cơ bản: (1) Sempai/kohai theo nyuusha-nen (năm join), không theo tuổi. Trước cuộc gặp Nhật, hỏi HR ai là ai. (2) Trước meeting quan trọng, đi gặp riêng từng key person — nemawashi. Không phải gossip, đây là due process. (3) Meishi: hai tay. Đọc to. Để bàn. Cất vào case. Đừng ghi lên. Đừng bỏ túi quần. Ba quy tắc này, thực hiện đúng bằng 80 phần trăm Japanese trust. Còn 20 phần trăm là chi tiết khác (ngồi đúng vị trí, rót rượu đúng cách, tiễn ra cửa đúng), nhưng không cần dạy ngay — học theo quan sát. Mẹo riêng cho đồng nghiệp VN: nói tiếng Nhật KHÔNG phải skill quan trọng nhất — sempai-kohai awareness và nemawashi mindset là quan trọng hơn. Người VN tiếng Nhật N1 mà không hiểu nemawashi vẫn fail. Người VN tiếng Nhật N3 mà thực hiện nemawashi đúng được thăng chức. Khi đồng nghiệp VN sai (ví dụ phát biểu phản đối trong meeting), KHÔNG sửa họ trong meeting (sẽ làm họ mất mặt) — sau meeting đến cafe nói riêng. Một mistake cultural không quá nghiêm trọng nếu được fix nhanh. Một mistake không được fix 6 tháng sẽ thành reputation. Long term: nếu bạn hiểu Nhật etiquette tốt, mentor đồng nghiệp VN trẻ — đây là giá trị bạn không thể outsource. Trong 5 năm, bạn trở thành cultural bridge của team — vai trò này có salary premium 20-30 phần trăm so với cùng level.",
+  exercises: [
+    { type: "fill-blank", question: "和を以て___となすという考えが、日本のチームワークの基盤です。", answer: "貴し" },
+    { type: "matching", instruction: "Ghép thuật ngữ Nhật với khái niệm tương ứng.", pairs: [
+      { japanese: "先輩", english: "người vào công ty trước (không liên quan tuổi)" },
+      { japanese: "稟議", english: "document circulation cho decision (bottom-up)" },
+      { japanese: "根回し", english: "nói riêng từng người trước meeting (pre-consensus)" },
+      { japanese: "和", english: "hài hòa nhóm — giá trị cao hơn truth công khai" }
+    ] },
+    { type: "translation", vietnamese: "Trong công ty Nhật, sempai được quyết định bằng năm vào công ty, không phải tuổi.", japanese: "日本の会社では、先輩は入社年で決まり、年齢ではありません。" }
+  ]
+},
+{
+  id: 66,
+  title: "Apologizing for a cultural misunderstanding",
+  title_vi: "Xin lỗi vì hiểu lầm văn hóa",
+  title_en: "Apologizing for a cultural misunderstanding",
+  category: "fluency",
+  level: "B2",
+  vocabulary: [
+    { japanese: "申し訳ございません", english: "I am very sorry (kenjougo of すみません — for serious situations)" },
+    { japanese: "認識不足 (にんしきぶそく)", english: "lack of awareness (admitting one's own gap)" },
+    { japanese: "配慮 (はいりょ)", english: "consideration / thoughtfulness" },
+    { japanese: "失礼 (しつれい)", english: "rudeness / impoliteness" },
+    { japanese: "ご無礼 (ごぶれい)", english: "rudeness (formal — used by self about own action)" },
+    { japanese: "心よりお詫び申し上げます", english: "I sincerely apologize from the heart (highest apology register)" },
+    { japanese: "二度とこのようなことがないよう", english: "so that this never happens again (pledge phrase)" },
+    { japanese: "深く反省 (ふかくはんせい)", english: "deeply self-reflect" },
+    { japanese: "弁解 (べんかい)", english: "excuse / justification (avoid in apology)" },
+    { japanese: "再発防止 (さいはつぼうし)", english: "prevention of recurrence" }
+  ],
+  examples: [
+    { japanese: "先日の件、私の認識不足により、ご無礼を働いてしまいました。誠に申し訳ございませんでした。", english: "Regarding the matter the other day, due to my lack of awareness, I committed rudeness. I am truly sorry." },
+    { japanese: "弁解の余地もございません。心よりお詫び申し上げます。", english: "There is no room for excuse. I sincerely apologize from the heart." },
+    { japanese: "二度とこのようなことがないよう、深く反省しております。", english: "I am deeply reflecting so that this never happens again." },
+    { japanese: "今後は、文化の違いについてさらに学ばせていただきます。", english: "Going forward, I will study cultural differences further." },
+    { japanese: "ご寛容なご対応をいただき、重ねて感謝申し上げます。", english: "Thank you again for your magnanimous response." }
+  ],
+  dialogue: [
+    { speaker: "チャウ", japanese: "山田部長、先日の食事会の件で、お詫びに参りました。", english: "Manager Yamada, I have come to apologize regarding the dinner the other day." },
+    { speaker: "山田部長", japanese: "ああ、グエンさん。座ってください。", english: "Ah, Nguyen-san. Please sit." },
+    { speaker: "チャウ", japanese: "私の文化に対する認識不足で、ご無礼を働いてしまいました。", english: "Due to my lack of cultural awareness, I committed rudeness." },
+    { speaker: "山田部長", japanese: "気にしすぎですよ。学びの過程ですから。", english: "You're worrying too much. It's part of learning." }
+  ],
+  dialogue_long: [
+    { speaker: "チャウ", japanese: "山田部長、お時間を頂戴し、誠にありがとうございます。本日は先日の食事会の件で、お詫びに伺いました。", english: "Manager Yamada, thank you sincerely for the time. Today I have come to apologize regarding the dinner the other day." },
+    { speaker: "山田部長", japanese: "あの件ですか。座ってください。気になっていたなら、なおさらでしょう。", english: "That matter? Please sit. If it's been on your mind, all the more reason." },
+    { speaker: "チャウ", japanese: "はい。先日の田中部長との会食で、私から先にお酒を注いでしまいました。後で先輩から、日本では目上の方からお酒を注いでいただくのが礼儀だと教えていただき、私の認識不足を痛感いたしました。", english: "Yes. At the dinner with Manager Tanaka the other day, I poured sake first. Later my sempai taught me that in Japan, etiquette is to receive sake from the senior first; I deeply realized my lack of awareness." },
+    { speaker: "山田部長", japanese: "なるほど。それで気になっていたんですね。", english: "I see. So that's been bothering you." },
+    { speaker: "チャウ", japanese: "弁解の余地もございません。田中部長に対しまして、大変なご無礼を働いてしまいました。心よりお詫び申し上げます。", english: "There is no room for excuse. I committed serious rudeness toward Manager Tanaka. I sincerely apologize from the heart." },
+    { speaker: "山田部長", japanese: "顔を上げてください。あなたの誠意は十分伝わっています。", english: "Please raise your head. Your sincerity is fully conveyed." },
+    { speaker: "チャウ", japanese: "誠にありがとうございます。今後は、日本の食事マナー全般について、さらに学ばせていただきます。具体的には、来週から日本人の同僚と一緒に毎週金曜日に食事会に参加させていただくことを、ご相談したく存じます。", english: "Thank you sincerely. Going forward, I will study Japanese dining manners generally. Specifically, I would humbly like to consult about joining a dinner gathering with Japanese colleagues every Friday from next week." },
+    { speaker: "山田部長", japanese: "良い心がけですね。ただ、一つお伝えしたいのは、文化を学ぶことは大切だけれど、過剰に自分を責めないこと。私たち日本人も、ベトナムで知らずに失礼をしているかもしれません。お互い様です。", english: "A good attitude. But one thing I want to convey — learning culture is important, but don't blame yourself excessively. We Japanese also probably commit rudeness in Vietnam without knowing. It's mutual." },
+    { speaker: "チャウ", japanese: "そのお言葉、深く心に刻みます。ただ、今回の件につきましては、田中部長にも改めてお詫びの言葉をお伝えしたく存じますが、いかがでしょうか。", english: "I will deeply engrave those words. However, regarding this matter, I would like to convey my apologies to Manager Tanaka again — what do you think?" },
+    { speaker: "山田部長", japanese: "それはご丁寧に。田中部長は明日からまたベトナムに来ますから、その時に直接お話しすると良いでしょう。私から田中部長にも、あなたが気にしていたことは伝えておきます。", english: "How polite of you. Manager Tanaka comes back to Vietnam from tomorrow, so it'd be good to speak directly then. I will also tell Manager Tanaka that you've been thinking about it." },
+    { speaker: "チャウ", japanese: "誠にありがとうございます。明日、田中部長がいらっしゃいましたら、改めてお詫びいたします。再発防止のため、文化マナー研修にも自主的に参加させていただきます。", english: "Thank you sincerely. When Manager Tanaka arrives tomorrow, I will apologize again. For prevention of recurrence, I will voluntarily attend cultural-manner training." },
+    { speaker: "山田部長", japanese: "そこまでしなくても、と言いたいところですが、あなたの真摯な姿勢は素晴らしい。一つだけ。お酒を注ぐ時の順番は文化の違いです。失敗ではなく、学びの機会と捉えてください。", english: "I'd say you don't need to go that far, but your sincere attitude is wonderful. Just one thing — the order for pouring sake is a cultural difference. Take it not as a failure but as a learning opportunity." },
+    { speaker: "チャウ", japanese: "ご寛容なお言葉、誠にありがとうございます。過ちては改むるに憚ること勿れと申しますので、しっかりと改善してまいります。", english: "Thank you sincerely for your magnanimous words. As they say do not hesitate to correct your mistakes, I will improve solidly." },
+    { speaker: "山田部長", japanese: "良い言葉を知っていますね。じゃあ、明日、田中部長と一緒に三人で昼食でもどうですか。一区切りつけましょう。", english: "You know good phrases. Then how about lunch together tomorrow with Manager Tanaka, the three of us? Let's bring this to a close." },
+    { speaker: "チャウ", japanese: "誠にありがとうございます。お招きに与れますこと、心より光栄に存じます。", english: "Thank you sincerely. I am sincerely honored to be invited." },
+    { speaker: "山田部長", japanese: "では、明日の十二時に。気をつけて帰ってくださいね。", english: "Then tomorrow at noon. Take care going home." },
+    { speaker: "チャウ", japanese: "本日は貴重なお時間を頂戴し、誠にありがとうございました。重ねて、お詫び申し上げます。失礼いたします。", english: "Thank you sincerely for your valuable time today. I again offer my apologies. Excusing myself." }
+  ],
+  roleplay_prompts: [
+    "Bạn vô tình gọi sếp Nhật bằng san thay vì buchou trước mặt khách hàng. Sếp im lặng nhưng bạn biết là awkward. Hãy đến phòng sếp xin lỗi NGAY trong ngày — KHÔNG đợi tuần sau. Dùng cụm watashi no ninshiki busoku ni yori, go-burei wo hatarakimashite cộng moushiwake gozaimasen deshita.",
+    "Tại bữa tối với khách Nhật, bạn cắt ngang đối tác cấp cao của họ giữa câu (theo phản xạ VN). Sếp Nhật báo cho bạn sau bữa ăn. Hãy chuẩn bị apology cho cuộc gặp NGÀY MAI với khách — bao gồm: thừa nhận lỗi cụ thể, không bào chữa, đề xuất cách ngừa, đề xuất action remedial.",
+    "Bạn từ chối invitation đến nhà đồng nghiệp Nhật vào dịp Obon (rất quan trọng) vì lý do bận. Đồng nghiệp im lặng đột ngột sau đó. Hãy tiếp cận lại — gửi handwritten note xin lỗi, giải thích bạn không hiểu Obon là gia đình tụ họp đặc biệt, đề xuất gặp dịp khác. Tone: deep, không quá long-winded."
+  ],
+  register_notes: "Apology Nhật KHÔNG giống western I'm sorry, my bad. Bốn cấu trúc bắt buộc: (1) MOUSHIWAKE GOZAIMASEN cho lỗi nhẹ, MOUSHIWAKE GOZAIMASEN DESHITA cho lỗi quá khứ, KOKORO YORI O-WABI MOUSHIAGEMASU cho lỗi nghiêm trọng. KHÔNG dùng sumimasen cho cultural mistake — quá nhẹ. (2) THỪA NHẬN ROOT CAUSE: watashi no ninshiki busoku ni yori (do em thiếu nhận thức), watashi no fuiki ni yori (do em không cẩn thận) — cụ thể về NGUYÊN NHÂN từ phía mình. KHÔNG dùng culture barrier / misunderstanding — bị xem là đổ lỗi cho khái niệm. (3) NO EXCUSES: BENKAI NO YOCHI MO GOZAIMASEN (không có chỗ biện hộ). Sau cụm này, KHÔNG được giải thích tại vì. Apology Nhật là pure ownership, không kèm context. (4) PLEDGE cộng ACTION: nidoto kono youna koto ga nai you, fukaku hansei shite orimasu (em sâu sắc tự kiểm để chuyện này không lặp lại) cộng cụ thể action: saihatsu boushi no tame, XX itashimasu (để ngừa tái phát, em sẽ làm XX). KHÔNG vague pledge — phải có bước concrete. Ngoài ra 4 điều TRÁNH: (a) KHÔNG nói tôi tưởng là (sounds like blaming the other for not clarifying); (b) KHÔNG cười nhẹ trong câu chuyện apology (cười bằng không serious); (c) KHÔNG nhìn xuống đất quá lâu (eye contact intermittent là chuẩn); (d) KHÔNG say thank you khi họ accept apology — say jouken yorishihai itashimasu (em xin được tiếp tục cố gắng thêm). // TODO: native review — ninshiki busoku phrasing — cụm chuẩn business; alternative haien ga itarazu (lack of consideration) cũng dùng được, hơi formal hơn.",
+  idiom_glosses: [
+    { idiom: "過ちては改むるに憚ること勿れ", literal: "Đã lỗi thì đừng ngại sửa", meaning: "Khi sai thì đừng ngại sửa — gốc Luận Ngữ Khổng Tử. Cụm cao cấp dùng khi cam kết cải thiện sau apology. Show bạn có literacy classical — Nhật rất trọng.", example: "過ちては改むるに憚ること勿れと申しますので、しっかりと改善してまいります。" },
+    { idiom: "弁解の余地もございません", literal: "Không có chỗ để biện hộ", meaning: "Cụm cố định trong apology Nhật — biểu thị bạn không có ý bào chữa. Cụm này đẩy weight của apology lên cao — phải dùng cẩn thận, không dùng cho lỗi nhỏ.", example: "弁解の余地もございません。心よりお詫び申し上げます。" },
+    { idiom: "深く反省", literal: "Sâu sắc tự kiểm", meaning: "Pledge phrase — biểu thị bạn đã reflect deeply. Khác với I'm sorry phương Tây ở chỗ Nhật mong actual reflection process, không chỉ verbal apology.", example: "二度とこのようなことがないよう、深く反省しております。" },
+    { idiom: "石の上にも三年", literal: "Trên đá cũng phải ba năm", meaning: "Kiên trì cải thiện sẽ được đền đáp — phù hợp khi đề xuất quá trình learn cultural manner kéo dài. Show bạn understand đây là long process, không phải one-time fix.", example: "石の上にも三年と申します。日本のマナーを身につけるには時間が必要だと存じます。" }
+  ],
+  cultural_notes_vi: "Apology Nhật khác phương Tây ở 6 tầng cấu trúc. (1) APOLOGY VÌ SITUATION TỒN TẠI, KHÔNG PHẢI VÌ FAULT. Người Nhật xin lỗi vì tôi đã làm cho bạn khó xử — kể cả khi không có lỗi cụ thể. Câu chuẩn: o-tesuu wo o-kake shimashite (em đã làm phiền), go-meiwaku wo o-kake shimashite (em đã gây phiền). Người VN nghe apology không có lỗi thấy lạ — nhưng đây là proactive apology văn hóa Nhật. (2) APOLOGY DEPTH MATCHES CRIME WEIGHT. Lỗi nhẹ: sumimasen. Lỗi vừa: moushiwake gozaimasen. Lỗi nặng: kokoro yori o-wabi moushiagemasu. Lỗi đặc biệt nghiêm trọng (ảnh hưởng business): saiken (sau khi xác minh) cộng dogeza (quỳ xuống — chỉ trong context xấu nhất). Dùng sai level bằng tệ hơn không xin lỗi. (3) IN-PERSON KHÔNG EMAIL. Apology nghiêm trọng PHẢI in-person. Nếu khoảng cách xa, gọi điện trước, sau đó in-person khi có thể. KHÔNG email/text apology cho lỗi nghiêm trọng — bị xem là cowardice. Bằng chứng bạn sẵn sàng đối mặt bằng serious apology. (4) NO PUBLIC SPECTACLE. Apology in-person nhưng PRIVATE. Đến phòng sếp riêng, KHÔNG xin lỗi giữa văn phòng. Public apology bằng làm sếp mất mặt vì phải xử lý tình huống công khai. (5) ACCEPTANCE BY OTHER PARTY bằng OBLIGATION FOR YOU. Sau khi sếp/đối tác nhận apology, bạn phải show change. Nếu lặp lại lỗi cũ trong 6 tháng, apology lần đầu bị xem như insincere — relationship damaged permanent. Vì vậy, đừng apologize cho điều bạn không sẵn sàng cải thiện. (6) THIRD-PARTY APOLOGY chain. Đôi khi apology phải đi qua sếp của bạn xin lỗi sếp của họ — không xin lỗi trực tiếp peer-to-peer. Đây là face-saving protocol. Hỏi sếp trước về cách correct. Khác biệt với VN: ở VN apology thường ngắn, casual, đi kèm explanation tại vì; ở Nhật apology dài, formal, KHÔNG kèm explanation. Apology là về ownership, không về context. Mẹo cuối: nếu là VN host và làm sai với khách Nhật, KHÔNG đợi đến cuối ngày để xin lỗi — xin lỗi ngay khi nhận ra (nếu trong cùng phòng) hoặc đến phòng họ trong 1-2 giờ. Nhật trọng tốc độ phản ứng — slow apology bằng không nghiêm túc. Một apology kịp thời và chân thành có thể turn incident thành positive memory of integrity — paradox của văn hóa Nhật.",
+  tip_advice_vi: "Khi nhận ra mình làm sai cultural, làm 4 bước trong cùng ngày. (1) ASSESS WEIGHT trong 30 phút: lỗi nhẹ (gọi sai title), vừa (cắt ngang sếp), nặng (làm khách mất mặt trước sếp họ). Mỗi level register khác. KHÔNG over-apologize cho lỗi nhẹ (sounds dramatic). KHÔNG under-apologize cho lỗi nặng (sounds dismissive). (2) CONSULT SEMPAI: tìm sempai Nhật / VN-experienced trong công ty, kể tình huống, hỏi cách correct. Đây không phải gossip — đây là due diligence trước khi apologize. (3) PREPARE SPEECH: viết speech ra giấy, đọc thành tiếng. Phải có 4 yếu tố: cụ thể về lỗi, thừa nhận root cause TỪ PHÍA MÌNH, no excuses, pledge action. Speech khoảng 60-90 giây — không quá dài (sounds like manipulation), không quá ngắn (sounds dismissive). (4) DELIVER IN-PERSON: đến phòng sếp/đồng nghiệp, gõ cửa 3 lần, hỏi shoushou o-jikan, yoroshii deshou ka. Đứng cạnh ghế, không ngồi cho đến khi được mời. Cúi 30 độ trước khi nói. Speech với tốc độ chậm hơn bình thường 20 phần trăm — show bạn đã suy nghĩ. Eye contact 70 phần trăm thời gian (nhìn xuống quá lâu bằng không sincerity, nhìn thẳng quá nhiều bằng aggressive). Sau speech, đợi response. KHÔNG fill silence. Người Nhật cần 5-10 giây để absorb. Khi họ accept, dùng cụm jouken yorishihai itashimasu cộng cúi 30 độ lần nữa khi rời. Sau apology, theo dõi 7 ngày: thay đổi behavior MUST visible. Sau 1 tháng, gặp riêng họ thank you cho patience and guidance (đây là follow-up apology — thấp hơn nhưng quan trọng). Sau 3 tháng, lỗi đó chính thức closed nếu không tái phát. Mẹo cuối: KHÔNG giấu mistake hoping nó pass — Nhật rất nhạy với pattern. Nếu họ nhận ra bạn đang giấu, trust drop sâu hơn cả lỗi gốc. Proactive apology gain trust; reactive defense lose trust. Long-term, một apology xử lý tốt bằng relationship deeper than no incident at all. Nghịch lý Nhật.",
+  exercises: [
+    { type: "fill-blank", question: "弁解の余地も___ません。心よりお詫び申し上げます。", answer: "ござい" },
+    { type: "matching", instruction: "Ghép apology level với situation.", pairs: [
+      { japanese: "すみません", english: "lỗi nhẹ (đụng nhẹ, đến muộn 5 phút)" },
+      { japanese: "申し訳ございません", english: "lỗi vừa (sai email recipient, miss small deadline)" },
+      { japanese: "心よりお詫び申し上げます", english: "lỗi nặng (làm khách mất mặt, miss big deadline)" },
+      { japanese: "弁解の余地もございません", english: "tự nhận trách nhiệm hoàn toàn (lỗi nghiêm trọng, không có phía nào khác để chia)" }
+    ] },
+    { type: "translation", vietnamese: "Do em thiếu nhận thức về văn hóa, em đã làm điều thất lễ. Em xin chân thành xin lỗi.", japanese: "私の文化に対する認識不足により、ご無礼を働いてしまいました。心よりお詫び申し上げます。" }
+  ]
+},
+{
+  id: 67,
+  title: "Conversation at an international conference (Vietnam delegate)",
+  title_vi: "Trao đổi tại hội nghị quốc tế (đại diện Việt Nam)",
+  title_en: "Conversation at an international conference (Vietnam delegate)",
+  category: "fluency",
+  level: "B2",
+  vocabulary: [
+    { japanese: "国際会議 (こくさいかいぎ)", english: "international conference" },
+    { japanese: "代表 (だいひょう)", english: "representative / delegate" },
+    { japanese: "発表 (はっぴょう)", english: "presentation" },
+    { japanese: "質疑応答 (しつぎおうとう)", english: "Q&A session" },
+    { japanese: "ご清聴 (ごせいちょう)", english: "your kind attention (closing presentation phrase)" },
+    { japanese: "登壇 (とうだん)", english: "taking the stage / standing at podium" },
+    { japanese: "セッション", english: "session" },
+    { japanese: "パネリスト", english: "panelist" },
+    { japanese: "懇親会 (こんしんかい)", english: "social mixer / networking reception" },
+    { japanese: "切磋琢磨 (せっさたくま)", english: "mutual diligent improvement (idiom for academic/professional exchange)" }
+  ],
+  examples: [
+    { japanese: "ベトナム代表団のグエン・ティ・チャウと申します。本日は登壇の機会をいただき、誠にありがとうございます。", english: "I am Nguyen Thi Chau from the Vietnam delegation. Thank you sincerely for the opportunity to take the stage today." },
+    { japanese: "本発表では、ベトナムにおける環境工学の最新動向についてご報告いたします。", english: "In this presentation, I will report on the latest trends in environmental engineering in Vietnam." },
+    { japanese: "ご質問がございましたら、後ほど質疑応答の時間にお願いいたします。", english: "If you have questions, please save them for the Q&A session." },
+    { japanese: "ご清聴、誠にありがとうございました。", english: "Thank you sincerely for your kind attention." },
+    { japanese: "懇親会で、ぜひ皆様と切磋琢磨できる機会を持ちたく存じます。", english: "At the social, I humbly wish to have the opportunity to mutually improve with everyone." }
+  ],
+  dialogue: [
+    { speaker: "司会", japanese: "次の発表者は、ベトナムからお越しのグエン・ティ・チャウさんです。", english: "Our next presenter is Ms. Nguyen Thi Chau, who has come from Vietnam." },
+    { speaker: "チャウ", japanese: "ご紹介ありがとうございます。本日はよろしくお願いいたします。", english: "Thank you for the introduction. I look forward to today." },
+    { speaker: "司会", japanese: "では、十五分間でお願いします。", english: "Then please proceed for fifteen minutes." },
+    { speaker: "チャウ", japanese: "承知いたしました。それでは、始めさせていただきます。", english: "Understood. Then I will begin." }
+  ],
+  dialogue_long: [
+    { speaker: "司会", japanese: "皆様、本日はお集まりいただき、ありがとうございます。次のセッションは、東南アジア環境工学の最新動向。最初の発表者は、ベトナム代表団のグエン・ティ・チャウさんです。グエンさんはハノイ工科大学を卒業され、現在トヨタベトナムで品質管理に従事されています。それでは、グエンさん、お願いいたします。", english: "Everyone, thank you for gathering today. The next session is Latest Trends in Southeast Asian Environmental Engineering. Our first presenter is Ms. Nguyen Thi Chau from the Vietnam delegation. Ms. Nguyen graduated from Hanoi University of Science and Technology and currently works in quality control at Toyota Vietnam. Then, Ms. Nguyen, please." },
+    { speaker: "チャウ", japanese: "ご紹介、誠にありがとうございます。皆様、こんにちは。ベトナム代表団のグエン・ティ・チャウと申します。本日は登壇の機会をいただき、心より光栄に存じます。", english: "Thank you sincerely for the introduction. Hello everyone. I am Nguyen Thi Chau from the Vietnam delegation. I am sincerely honored to have the opportunity to take the stage today." },
+    { speaker: "チャウ", japanese: "本発表では、ベトナム、特にメコンデルタにおける塩害対策の現状と、日本の技術を応用した実証実験の中間報告をいたします。発表は十五分、その後五分間の質疑応答を予定しております。", english: "In this presentation, I will report on the current state of salinization countermeasures in Vietnam, particularly the Mekong Delta, and an interim report on field experiments applying Japanese technology. The presentation is 15 minutes, with 5 minutes of Q&A planned after." },
+    { speaker: "チャウ", japanese: "(発表後)以上が私からの報告でございます。ご清聴、誠にありがとうございました。", english: "(after presentation) That concludes my report. Thank you sincerely for your kind attention." },
+    { speaker: "司会", japanese: "ありがとうございました。それでは、質疑応答の時間に移ります。ご質問のある方は、挙手をお願いいたします。", english: "Thank you. Now we move to the Q&A session. Those with questions, please raise your hand." },
+    { speaker: "質問者A", japanese: "京都大学の中村と申します。興味深いご発表、ありがとうございました。膜分離技術の長期安定性について、現地特有の課題はございますか。", english: "I am Nakamura from Kyoto University. Thank you for the interesting presentation. Regarding long-term stability of membrane separation, are there challenges specific to the local environment?" },
+    { speaker: "チャウ", japanese: "ご質問、ありがとうございます。三点ございます。一つ目、年間温度差が日本の二倍以上あるため、膜の熱劣化が早いこと。二つ目、雨季の濁度変動が激しく、前処理が重要であること。三つ目、メンテナンス人材の育成が課題であることでございます。", english: "Thank you for the question. Three points. First, annual temperature swings are over twice Japan's, so thermal degradation of membranes is faster. Second, turbidity variation in rainy season is severe, so pre-treatment is important. Third, training maintenance personnel is a challenge." },
+    { speaker: "質問者A", japanese: "なるほど。三つ目について、もう少し詳しくお聞かせください。", english: "I see. On the third point, could you tell me a bit more?" },
+    { speaker: "チャウ", japanese: "現地の技術者は、膜技術の基礎研修は受けておりますが、長期運用における異常検知のスキルが不足しております。日本の専門家を招いた一週間の集中研修を年二回実施しておりますが、より体系的な育成プログラムが必要だと考えております。もしよろしければ、後ほど懇親会でも詳しくお話しさせていただきたく存じます。", english: "Local engineers have received basic training in membrane technology, but they lack skills in anomaly detection during long-term operation. We hold one-week intensive training with Japanese experts twice a year, but a more systematic development program is needed. If you don't mind, I would humbly like to discuss in more detail at the social later." },
+    { speaker: "質問者A", japanese: "ぜひ、お話しさせてください。私の研究室では、まさにそのような遠隔モニタリングシステムを開発中ですから。", english: "Please, by all means. My lab is developing exactly such a remote monitoring system." },
+    { speaker: "チャウ", japanese: "それは大変興味深いお話でございます。一期一会の機会と捉え、ぜひお時間を頂戴させていただきたく存じます。", english: "That's a fascinating topic. Taking it as an ichigo-ichie opportunity, I humbly wish to receive your time." },
+    { speaker: "質問者B", japanese: "東京大学の佐藤と申します。実証実験のスケジュールはどのようになっておりますか。", english: "I am Sato from the University of Tokyo. What is the schedule for the field experiments?" },
+    { speaker: "チャウ", japanese: "二〇二六年四月から二〇二八年三月までの二年間で、三段階に分けて実施いたします。第一段階は装置設置と初期データ収集、第二段階は乾季・雨季双方での運用検証、第三段階は地元住民を含めた持続可能性評価でございます。", english: "Two years from April 2026 to March 2028, divided into three stages. Stage 1: installation and initial data collection. Stage 2: operation verification in both dry and rainy seasons. Stage 3: sustainability evaluation including local residents." },
+    { speaker: "司会", japanese: "残念ながら、お時間となりました。続きは懇親会でお願いいたします。グエンさん、素晴らしい発表をありがとうございました。", english: "Unfortunately, we are out of time. Continue at the social. Ms. Nguyen, thank you for the wonderful presentation." },
+    { speaker: "チャウ", japanese: "皆様、貴重なご質問をいただき、誠にありがとうございました。切磋琢磨の場としての本会議に参加できましたこと、心より感謝申し上げます。後ほど、懇親会でお会いできますことを楽しみにしております。", english: "Everyone, thank you sincerely for the valuable questions. I am sincerely grateful to have participated in this conference as a venue for mutual improvement. I look forward to meeting at the social later." }
+  ],
+  roleplay_prompts: [
+    "Đóng vai chính bạn lên bục presentation lần đầu trước 200 người Nhật. Hãy mở đầu speech với 90 giây tự giới thiệu — tên, đoàn, lý do tham dự conference. Dùng cụm honjitsu wa toudan no kikai wo itadaki, kokoro yori kouei ni zonjimasu (em vô cùng vinh dự được phát biểu hôm nay).",
+    "Trong Q&A, một người hỏi câu khó mà bạn không biết câu trả lời cụ thể. KHÔNG fake. Dùng cụm makoto ni moushiwake gozaimasen, sono ten ni tsuite wa, mochi-kaette kakunin sasete itadakimasu (em xin lỗi, em sẽ về xác nhận và liên lạc lại). Đề xuất follow up qua email với business card exchange.",
+    "Sau presentation, một giáo sư top university tiếp cận và đề xuất collaboration. Hãy phản hồi NGHIÊM TÚC nhưng không over-commit ngay tại event — dùng cụm zehi maemuki ni go-soudan sasete itadaite mo yoroshii deshou ka cộng đề xuất gặp follow up tại research lab khi có thể."
+  ],
+  register_notes: "International conference register là public formal — khác business 1-on-1 ở 4 điểm. (1) GREETING TO AUDIENCE: minasama, konnichi wa hoặc minasama, hajimemashite tùy lần đầu hay lặp. KHÔNG dùng yorosiku onegaishimasu mở đầu — câu này là kết thúc, không phải mở. (2) SELF-INTRO IN-FORMAL: KHÔNG dùng kenjougo nặng kiểu watakushi — dùng watashi (formal trung). watakushi reserved cho ceremonial occasions kiểu sokui (enthronement). Public conference dùng watashi đủ. (3) PRESENTATION OPENING-CLOSING CỐ ĐỊNH: mở: honjitsu wa toudan no kikai wo itadaki, kokoro yori kouei ni zonjimasu (vô cùng vinh dự). Đóng: ijou ga watashi kara no houkoku de gozaimasu. Go-seichou, makoto ni arigatou gozaimashita (kết thúc báo cáo, cảm ơn quý vị đã lắng nghe). go-seichou (kính nghe) là từ formal cho audience listening — KHÔNG dùng kiku no koto. (4) Q&A REGISTER: trả lời câu hỏi: go-shitsumon, arigatou gozaimasu cộng câu trả lời. KHÔNG bắt đầu trả lời trước khi xác nhận hiểu câu hỏi. Nếu không nghe rõ: osore irimasu ga, mou ichido go-shitsumon wo o-ukagai shite mo yoroshii deshou ka. Nếu không biết: mochi-kaette kakunin sasete itadakimasu cộng đề xuất follow up. KHÔNG bịa câu trả lời — Nhật đánh giá honesty trên seemingly-knowing. // TODO: native review — sessa-takuma usage in modern academic conference; classical phrase, có thể outdated cho younger academic generations; alternative kenkyuu kouryuu more modern.",
+  idiom_glosses: [
+    { idiom: "切磋琢磨", literal: "Cắt giũa, mài giũa", meaning: "Cùng nhau cải thiện qua tương tác — gốc Kinh Thi (Trung Quốc cổ). Cụm chuẩn cho academic exchange. Khi networking ở conference, dùng để bày tỏ tinh thần học hỏi lẫn nhau, không cạnh tranh.", example: "懇親会で、ぜひ皆様と切磋琢磨できる機会を持ちたく存じます。" },
+    { idiom: "一期一会", literal: "Một đời một lần gặp", meaning: "Mỗi cuộc gặp duy nhất — trong conference context, ý nghĩa là cuộc gặp này đặc biệt — researchers từ nhiều nước về cùng một phòng, có thể không lặp. Dùng để add depth vào networking conversation.", example: "国際会議は一期一会の場でございますので、皆様とのご縁を大切にしたく存じます。" },
+    { idiom: "ご清聴", literal: "Nghe trong sự thanh nhã", meaning: "Cụm formal cho sự lắng nghe của quý vị — dùng kết thúc presentation. KHÔNG dùng okiki itadaite arigatou (quá casual). Bỏ qua bằng kết thúc thiếu lễ.", example: "ご清聴、誠にありがとうございました。" },
+    { idiom: "三人寄れば文殊の知恵", literal: "Ba người tụ lại có trí tuệ Văn Thù", meaning: "Trí tuệ tập thể — khi networking, dùng để gợi ý collaborative research. Bày tỏ rằng một mình bạn không giải pháp được, cần collaboration.", example: "三人寄れば文殊の知恵と申します。日越共同研究の可能性を探ってまいりたく存じます。" }
+  ],
+  cultural_notes_vi: "International conference Nhật khác phương Tây ở 6 điểm. (1) THỜI GIAN: cực kỳ chính xác. Slot 15 phút bằng 15 phút, không 16. Người vượt thời gian bị thấy rất tệ. Mang theo timer đặt trên bục, nhìn liên tục. Slide cuối nên là thank you slide để có thể wrap nhanh nếu hết giờ. (2) SLIDE DESIGN: Nhật ưa minimalist — KHÔNG slide với 10 bullet points và images. Mỗi slide 1 ý chính, max 30 chữ. Background trắng, font sans-serif. Animation tối thiểu — KHÔNG slide-in effects, KHÔNG sound effects (làm Nhật khó chịu). (3) Q&A ETIQUETTE: người hỏi thường giới thiệu mình trước (tên cộng university), sau đó hỏi. Bạn cảm ơn câu hỏi trước khi trả lời. Trả lời CỤ THỂ — Nhật ghét vague answers. Nếu không biết, nói thật cộng đề xuất follow up. (4) NETWORKING SAU PRESENTATION: tại konshinkai (mixer), người ta tiếp cận presenter để complement và networking. Bạn cần có business cards (50 cộng) và elevator pitch 30 giây về nghiên cứu. Khi nhận card từ giáo sư top university, treat như sacred — đọc to tên, lưu cẩn thận. (5) DRESS CODE: business formal. Vest đen/navy, áo trắng, giày da. Nữ buộc tóc, makeup nhẹ. KHÔNG dress local (áo dài) trừ khi conference yêu cầu cultural showcase. (6) PHOTO/SOCIAL MEDIA: trước khi chụp ảnh, hỏi permission (shashin wo tora-sete itadaite mo yoroshii deshou ka). KHÔNG post photo lên LinkedIn/Twitter mà không hỏi. Conference thường có official photographer — wait for their photos để post. Khác biệt với VN: ở VN conference thường relaxed, có thể đến muộn 5 phút, presenter có thể chuẩn bị tại chỗ; ở Nhật, mỗi giây trên stage được đo lường kỹ. Investment vào conference Nhật trả ROI dài hạn — một presentation tốt có thể mở 5-10 collaboration opportunity trong 5 năm. Mẹo: chuẩn bị 3 killer slides — slide có insight unique sẽ được people nhắc đến trong networking. Một insight unique trên một presentation hoàn hảo nhưng generic.",
+  tip_advice_vi: "Trước conference 1 tháng: nộp abstract chính xác (1 trang Nhật cộng 1 trang Anh), check biographical info trên program (sai tên bằng thảm họa), confirm travel cộng hotel. Trước conference 1 tuần: rehearse presentation 5 lần, đo thời gian từng slide. Mục tiêu: 13 phút (để có 2 phút buffer). In handout — copy slide black-and-white in cứng cho 50 người (phòng khi audience thiếu in trước). Mang USB drive backup cho slides (không trust internet). Ngày conference: đến venue 1 giờ trước session của bạn. Test laptop tại bục với staff. Confirm microphone, projector working. Walk on stage trước 1 lần để feel space. Trong presentation: nói CHẬM HƠN bình thường 15 phần trăm — Nhật cần thời gian xử lý English/Japanese accent. Eye contact: chia phòng làm 3 zone (trái, giữa, phải), mỗi zone 1/3 thời gian. KHÔNG đọc từ slide — chỉ glance. Sau session, ở quanh stage 5 phút để người tiếp cận hỏi/networking — KHÔNG rời ngay. Tại konshinkai (social): mang 50 business cards, target gặp 10 people quality (không 30 people superficial). Mỗi cuộc nói 5-7 phút, exchange card, write 1 note ở mặt sau card về cuộc nói. Sau conference 24 giờ: gửi email cảm ơn cho mỗi người bạn exchange card (10 emails). Email format: cảm ơn cuộc gặp tại conference (tên cộng ngày), nhắc 1 điểm cụ thể họ nói, đề xuất follow up. Cá nhân hóa MỖI email — KHÔNG copy-paste. Email này biến card từ inert paper thành active connection. Long-term: lưu connection trên LinkedIn (chỉ sau email cảm ơn), gửi New Year card hand-written tháng 1 mỗi năm. Conference Nhật là long game — connection 5 năm sau có thể giới thiệu bạn vào lab top, vào job MNC. Đầu tư presentation quality và networking discipline.",
+  exercises: [
+    { type: "fill-blank", question: "ご___、誠にありがとうございました。", answer: "清聴" },
+    { type: "matching", instruction: "Ghép cụm conference với tình huống.", pairs: [
+      { japanese: "ご紹介ありがとうございます", english: "đáp lại MC giới thiệu mình lên bục" },
+      { japanese: "ご清聴ありがとうございました", english: "kết thúc presentation (cảm ơn lắng nghe)" },
+      { japanese: "ご質問ありがとうございます", english: "mở đầu trả lời câu hỏi từ audience" },
+      { japanese: "切磋琢磨", english: "tinh thần học hỏi lẫn nhau (đặc biệt cho academic networking)" }
+    ] },
+    { type: "translation", vietnamese: "Em xin lỗi, về điểm đó, em sẽ về xác nhận và liên lạc lại.", japanese: "誠に申し訳ございません、その点につきましては、持ち帰って確認させていただきます。" }
+  ]
+},
+{
+  id: 68,
+  title: "Dinner with a Japanese guest discussing food and customs",
+  title_vi: "Bữa tối với khách Nhật bàn về ẩm thực và phong tục",
+  title_en: "Dinner with a Japanese guest discussing food and customs",
+  category: "fluency",
+  level: "B2",
+  vocabulary: [
+    { japanese: "お食事 (おしょくじ)", english: "meal (sonkeigo of meshi)" },
+    { japanese: "いただきます", english: "I humbly receive (said before eating — ritual)" },
+    { japanese: "ごちそうさまでした", english: "thanks for the feast (said after eating)" },
+    { japanese: "お口に合う (おくちにあう)", english: "to suit one's palate (asking if guest likes food)" },
+    { japanese: "辛い (からい)", english: "spicy" },
+    { japanese: "薄味 (うすあじ)", english: "lightly seasoned (Japanese preference)" },
+    { japanese: "濃い味 (こいあじ)", english: "strongly seasoned" },
+    { japanese: "お酒 (おさけ)", english: "alcoholic beverage / sake" },
+    { japanese: "苦手 (にがて)", english: "not good with / can't handle (used to politely decline food/drink)" },
+    { japanese: "同じ釜の飯 (おなじかまのめし)", english: "rice from the same pot (idiom: bonding through shared meals)" }
+  ],
+  examples: [
+    { japanese: "お口に合うかどうか分かりませんが、ぜひ召し上がってみてください。", english: "I'm not sure if it suits your palate, but please try it." },
+    { japanese: "ベトナム料理は、ハーブを多く使うのが特徴でございます。", english: "Vietnamese cuisine is characterized by abundant use of herbs." },
+    { japanese: "辛さは、お好みで調整いただけます。", english: "Spice level can be adjusted to your preference." },
+    { japanese: "お酒、いかがですか。お注ぎいたします。", english: "How about a drink? Let me pour for you." },
+    { japanese: "同じ釜の飯を食う仲、と申しますが、本日のお食事を通じて、より親しくなれましたら幸いでございます。", english: "As they say eating from the same pot, I would be glad if today's meal brings us closer." }
+  ],
+  dialogue: [
+    { speaker: "山田部長", japanese: "わあ、これは綺麗な料理ですね。何という料理ですか。", english: "Wow, this is a beautiful dish. What is it called?" },
+    { speaker: "チャウ", japanese: "これは「生春巻き」、ベトナム語で「ゴイ・クオン」と申します。エビと豚肉、野菜を米紙で巻いたものでございます。", english: "This is summer roll — goi cuon in Vietnamese. Shrimp, pork, and vegetables wrapped in rice paper." },
+    { speaker: "山田部長", japanese: "ヘルシーで美味しそうですね。タレは何ですか。", english: "Healthy and delicious-looking. What's the sauce?" },
+    { speaker: "チャウ", japanese: "ピーナッツソースでございます。お口に合えばよろしいのですが。", english: "Peanut sauce. I hope it suits your palate." }
+  ],
+  dialogue_long: [
+    { speaker: "チャウ", japanese: "山田部長、お席はこちらでございます。サイゴン川が見える窓側のお席をご用意いたしました。", english: "Manager Yamada, your seat is here. We've prepared a window seat overlooking the Saigon River." },
+    { speaker: "山田部長", japanese: "わあ、素敵な眺めですね。気を遣っていただいて。", english: "Wow, lovely view. Thank you for the consideration." },
+    { speaker: "チャウ", japanese: "本日は本場のベトナム料理をお楽しみいただきたく存じます。お酒は何になさいますか。ベトナムビール、フランスワイン、それとも日本酒もご用意がございます。", english: "Today I hope you enjoy authentic Vietnamese cuisine. What will you have to drink? We have Vietnamese beer, French wine, and Japanese sake too." },
+    { speaker: "山田部長", japanese: "せっかくですから、ベトナムビールを。ベトナムらしい銘柄はありますか。", english: "Since I'm here, Vietnamese beer. Is there a Vietnamese brand?" },
+    { speaker: "チャウ", japanese: "「サイゴンビール」と「333(バーバーバー)」が有名でございます。サイゴンビールは少し甘め、333は辛口でございます。", english: "Saigon Beer and 333 (ba-ba-ba) are famous. Saigon Beer is a bit sweet, 333 is dry." },
+    { speaker: "山田部長", japanese: "じゃあ、サイゴンビールで。グエンさんは?", english: "Then Saigon Beer. And you?" },
+    { speaker: "チャウ", japanese: "私もご一緒させていただきます。乾杯の前に、お一つお注ぎいたします。", english: "I'll have the same. Before the toast, let me pour for you." },
+    { speaker: "山田部長", japanese: "(乾杯)それでは、グエンさん、本日もありがとうございました。乾杯。", english: "(toast) Then, Nguyen-san, thank you for today. Cheers." },
+    { speaker: "チャウ", japanese: "乾杯。お料理を順番にお持ちいたします。まずは前菜の生春巻き、続きまして、フォーボー、そして主菜にバインセオをご用意しております。", english: "Cheers. The food will come in order. First, summer rolls as appetizer; then, beef pho; for the main, banh xeo." },
+    { speaker: "山田部長", japanese: "バインセオって何ですか。", english: "What's banh xeo?" },
+    { speaker: "チャウ", japanese: "ベトナム風お好み焼きと申しますか、米粉で作った薄いクレープに、エビと豚肉、もやしを包んだ料理でございます。レタスに巻いて、ヌクマムというお魚のソースでお召し上がりいただきます。", english: "It's like a Vietnamese okonomiyaki — a thin crepe made of rice flour, with shrimp, pork, and bean sprouts inside. Wrapped in lettuce and eaten with nuoc mam, a fish sauce." },
+    { speaker: "山田部長", japanese: "面白そうですね。日本のお好み焼きと違うんですね。", english: "Sounds interesting. Different from Japanese okonomiyaki." },
+    { speaker: "チャウ", japanese: "全く違うのですが、似た発想がございます。日本では「お互い様」と申しますが、ベトナムでも「同じ釜の飯」のような考えがございまして、家族で大皿を分け合って食べることが多いです。", english: "Completely different, but similar thinking exists. In Japan you say oogami (mutual), and in Vietnam there's a similar idea of eating from the same pot — often sharing large plates as family." },
+    { speaker: "山田部長", japanese: "なるほど。日本では一人前ずつ盛りつけることが多いですが、シェアして食べると会話も弾みそうですね。ところで、辛さはどのくらいですか。私、辛いのは少し苦手で。", english: "I see. In Japan we often serve individual portions, but sharing must liven up conversation. By the way, how spicy? I'm not great with spicy." },
+    { speaker: "チャウ", japanese: "ご安心ください。事前にシェフに、辛さは控えめにとお伝えしております。テーブルのチリソースで、お好みで調整いただけます。", english: "Please don't worry. I told the chef in advance to keep spice mild. You can adjust with chili sauce on the table to your taste." },
+    { speaker: "山田部長", japanese: "それは助かります。ところで、ヌクマム、独特の香りですね。", english: "That helps. By the way, nuoc mam has a unique aroma." },
+    { speaker: "チャウ", japanese: "発酵させた魚から作るので、最初は匂いに驚かれる方が多いです。日本の魚醤、しょっつるに似ていると言われます。鼻ではなく口で味わっていただくと、奥深い旨味がございます。", english: "Made from fermented fish, so many are surprised by the smell at first. People say it's similar to Japanese shottsuru fish sauce. If you taste with your mouth instead of nose, there's deep umami." },
+    { speaker: "山田部長", japanese: "なるほど、しょっつるの仲間ですね。それなら日本人の口にも合いますね。", english: "I see, related to shottsuru. Then it'll suit Japanese palates." },
+    { speaker: "チャウ", japanese: "はい、多くの日本の方が、二度目以降は好きになられます。一期一会のお食事でございますから、ぜひお楽しみいただきたく存じます。", english: "Yes, many Japanese come to love it after the second time. This is an ichigo-ichie meal, so please enjoy it." },
+    { speaker: "山田部長", japanese: "ありがとう、グエンさん。今日のおもてなし、本当に嬉しいです。", english: "Thank you, Nguyen-san. Today's hospitality is truly delightful." },
+    { speaker: "チャウ", japanese: "こちらこそ、お時間を共にできること、心より光栄に存じます。同じ釜の飯を食う仲、これからも長くお付き合いいただければ幸いでございます。", english: "On the contrary, I am sincerely honored to share this time. As fellows of the same rice pot, I would be grateful for our continued long association." }
+  ],
+  roleplay_prompts: [
+    "Khách Nhật đang ngại không dám thử nuoc mam vì mùi mạnh. Hãy giải thích nguồn gốc của nuoc mam (lên men cá), kết nối với shottsuru (Nhật fish sauce), đề xuất cách thử (taste với miệng không phải mũi). KHÔNG ép họ ăn — kanou deshitara cộng o-shimi ni narareru kata mo irasshaimasu yo.",
+    "Khách Nhật từ chối uống thêm rượu (đã uống 2 ly). Hãy KHÔNG ép thêm — văn hóa Nhật chấp nhận từ chối lần đầu. Đề xuất alternative: trà, nước hoa quả. Dùng cụm o-cha demo o-mochi shimashou ka cộng đảm bảo họ feel comfortable.",
+    "Khách Nhật hỏi tại sao VN ăn family-style (chung đĩa) thay vì individual portions. Hãy giải thích từ góc cultural — connection và gia đình ở VN, nuôi dưỡng qua bữa ăn chung. Dùng cụm onaji kama no meshi và contrast với JP individual portion mà KHÔNG so sánh thắng/thua."
+  ],
+  register_notes: "Bữa tối với khách Nhật, register hơi thấp hơn meeting (vì food relaxes mood) NHƯNG vẫn keigo nếu khách là sếp/business client. Ba điểm điều chỉnh: (1) DRINK ETIQUETTE: rót cho khách trước, để khách rót cho mình. KHÔNG tự rót. Khi nhận, cầm cốc bằng hai tay, hơi cúi đầu. Câu khi rót: o-tsugi shimasu hoặc dou-zo. Câu khi nhận: itadakimasu cộng cảm ơn. Toast: kanpai (KHÔNG chichin). (2) FOOD INTRODUCTION: giới thiệu món với 3 phần: (a) tên Nhật / Anh, (b) tên VN, (c) ingredients chính cộng cách ăn. Cụm: kochira wa XX (tên Nhật) — betonamu de wa YY to moushimasu (tên VN). Mỗi món max 30 giây giới thiệu — KHÔNG lecture food history (nhàm). (3) SPICE/INGREDIENT WARNING: trước khi món đến, warn nếu spicy/funky: kochira no ryouri wa, sukoshi karame de gozaimasu (món này hơi cay). Đề xuất tự tune. KHÔNG để khách shock. Cụm khi khách ngại: muri ni mesh-iagaranakute, daijoubu de gozaimasu (không cần ép, không sao). Nói cụm này cho khách feel comfortable từ chối — Nhật ngại từ chối, bạn pre-empt cho họ. Khi khách thử và thích, dùng o-kuchi ni atte saiwai de gozaimasu (vui vì hợp khẩu vị). Khi khách thử nhưng không thích, KHÔNG hỏi tại sao — chuyển topic: betsu no ryouri mo go-junbi shite orimasu node, dochira ka o-meshi-agari kudasai (có món khác, mời thử). // TODO: native review — onaji kama no meshi cụm hơi formal/old, nhiều người Nhật trẻ không dùng; có thể thay bằng oogami sama hoặc shoku-taku wo kakomu nakama mềm mại hơn.",
+  idiom_glosses: [
+    { idiom: "同じ釜の飯を食う", literal: "Ăn cơm cùng nồi", meaning: "Cùng ăn cơm cùng nồi bằng chia sẻ cuộc sống thân mật bằng bạn bè/đồng đội thân thiết. Cụm thường dùng giữa đồng nghiệp lâu năm hoặc samurai cùng đoàn. Trong context VN-JP dinner, dùng để bày tỏ mong muốn deepen relationship.", example: "同じ釜の飯を食う仲、これからも長くお付き合いいただければ幸いでございます。" },
+    { idiom: "腹を割って話す", literal: "Mổ bụng ra mà nói chuyện", meaning: "Nói chuyện thẳng thắn, không che giấu — thường xảy ra sau vài ly rượu. Trong dinner culture Nhật, đây là moment chuyển từ formal sang real conversation. Bạn không khởi xướng — đợi khách Nhật.", example: "お酒も入りましたから、腹を割ってお話ししましょうか。" },
+    { idiom: "酒は百薬の長", literal: "Rượu là vị thuốc đầu trong trăm vị thuốc", meaning: "Rượu uống vừa phải là tốt cho sức khỏe — gốc Hán cổ. Cụm classical dùng để justify uống rượu xã giao. KHÔNG dùng để encourage uống nhiều.", example: "酒は百薬の長と申しますが、お一杯だけでもいかがでしょうか。" },
+    { idiom: "一期一会", literal: "Một đời một lần gặp", meaning: "Mỗi cuộc gặp duy nhất — gốc trà đạo. Trong dinner context, dùng để nâng tầm bữa ăn từ meal lên memorable shared experience. Phù hợp khi cảm ơn end of dinner.", example: "本日のお食事は一期一会の機会でございます。心より光栄に存じます。" }
+  ],
+  cultural_notes_vi: "Dinner với khách Nhật khác Western dinner ở 7 điểm. (1) SEAT POSITIONING: khách ngồi vị trí KAMIZA (vị trí xa cửa, có view tốt nhất). Bạn ngồi vị trí SHIMOZA (gần cửa, để dễ ra ngoài giao thiệp với staff). KHÔNG để khách phải tự chọn ghế. (2) BIA TRƯỚC SAKE: nguyên tắc japanese dinner: bia là first drink (toripiizu — beer first), sau đó switch sang rượu (sake/wine). Hỏi khách first drink: toriaezu nan ni sasete itadakimashou ka. (3) FOOD ORDERING: bạn order cho cả bàn — KHÔNG để khách tự order (lúng túng với menu VN). Hỏi preference (thịt, hải sản, vegetarian, allergy) trước khi đến nhà hàng, order based on info. (4) CHOPSTICK ETIQUETTE: KHÔNG cắm đũa vào cơm thẳng đứng (như nghi lễ tang). KHÔNG chuyền thức ăn từ đũa sang đũa (cũng nghi lễ tang). KHÔNG chỉ trỏ bằng đũa. KHÔNG đặt đũa ngang trên cốc/đĩa khi nói chuyện — đặt trên hashioki (gác đũa). Người Nhật để ý chi tiết này. (5) NUOC MAM CONCERN: nhiều người Nhật ngại fish sauce vì mùi. Pre-empt warn về mùi, kết nối với shottsuru (fish sauce JP), đề xuất thử cách taste với miệng (không mũi). KHÔNG offer cho khách dạng riêng — bring small dish bạn dùng minh họa. (6) LEFTOVERS: ở VN để leftover là OK; ở Nhật hơi waste. Nếu khách không ăn hết, KHÔNG hỏi tại sao — assume họ no. Order lượng vừa đủ (3-4 món cho 2 người), không over-order. (7) PAYMENT: bạn (host) trả ALL. KHÔNG split bill. Khi khách offer trả, từ chối lịch sự nhiều lần (3 lần): douzo, watashitachi no obanrou de gozaimasu (đây là trách nhiệm của em phía bên này). Sau lần thứ 3, khách sẽ accept. (8) TIMING: dinner Nhật lý tưởng 90-120 phút — KHÔNG kéo dài 3-4 giờ. Sau khi món chính xong, đề xuất dessert/coffee. Sau dessert, signal end với o-saki ni shitsurei sasete itadaite mo yoroshii deshou ka. Cuối bữa, gọi taxi cho khách về hotel — KHÔNG để khách tự đi. Khác biệt với VN: ở VN dinner là bonding, có thể kéo dài nhiều giờ với uống nhiều; ở Nhật, dinner là structured event với quy tắc. Khi khách Nhật thoải mái và muốn nijikai (afterparty), bạn host nijikai (bar/karaoke). Đây là moment quan hệ thực sự sâu thêm.",
+  tip_advice_vi: "Trước dinner: confirm dietary restrictions (allergy, vegetarian, religious — Nhật có thể có kosher Buddhist không ăn thịt). Reserve table window-side với view tốt. Order omakase style với chef trước — pre-set 5 courses tránh khách lúng túng menu. Mua sake/whisky thật tốt (1-2M VND) cho dinner — show value to guest. Ngày dinner: đến nhà hàng 15 phút trước khách. Confirm bàn, kiểm tra menu, gặp chef (giải thích spice level cho khách Nhật). Đặt menu English/Japanese trên bàn (in trước nếu nhà hàng không có). Khi khách arrive, đứng dậy chào, hai tay chỉ ghế kamiza. Order drinks ngay — toriaezu beer là default an toàn. Khi khách ngồi xuống, giới thiệu menu trong 30 giây mỗi món — biết tên Nhật/Anh/VN, ingredients chính, cách ăn. Trong bữa: rót drink khi cốc khách dưới 1/3 đầy. Eat slowly — match speed with khách (KHÔNG ăn nhanh hơn). Conversation 70 phần trăm về non-business (food, travel, family) ở khúc đầu, 30 phần trăm business cuối bữa nếu khách bring up. KHÔNG bring up business sensitive trong bữa — Nhật xem food sacred, không nên mix với khó khăn business. Cuối bữa: order dessert cộng tea (không coffee — sleep disruption cho khách jetlag). Khi check arrive, tự ký tên BẰNG cách lén lúc khách vào toilet — KHÔNG drama tranh trả tiền. Sau dinner: walk khách ra cửa, đợi taxi, mở cửa taxi cho khách. Vẫy tay đến khi taxi khuất tầm nhìn (kakubetsu no aisatsu - chuẩn mực Nhật). Trong vòng 30 phút, gửi tin nhắn ngắn: honjitsu wa makoto ni arigatou gozaimashita. O-yasumi nasaimase. Mai ngày, gửi email cảm ơn formal hơn với 1 reference đến cuộc nói chuyện cụ thể trong bữa. Long-term: ghi note về preference của khách (khẩu vị, dị ứng, brand bia thích) — lần sau khách đến VN, replicate experience ở level cao hơn. Memory of preferences bằng highest form of omotenashi.",
+  exercises: [
+    { type: "fill-blank", question: "お口に___かどうか分かりませんが、ぜひ召し上がってみてください。", answer: "合う" },
+    { type: "matching", instruction: "Ghép cụm dinner với tình huống.", pairs: [
+      { japanese: "お注ぎいたします", english: "đề xuất rót đồ uống cho khách (host's role)" },
+      { japanese: "お口に合う", english: "hỏi/diễn tả thức ăn có hợp khẩu vị không" },
+      { japanese: "苦手", english: "khách diễn tả không thích/không hợp món gì" },
+      { japanese: "同じ釜の飯", english: "biểu thị bonding qua bữa ăn chung (idiom)" }
+    ] },
+    { type: "translation", vietnamese: "Em đã nói trước với đầu bếp giảm độ cay rồi. Anh có thể tự điều chỉnh bằng nước sốt ớt trên bàn.", japanese: "事前にシェフに、辛さは控えめにとお伝えしております。テーブルのチリソースで、お好みで調整いただけます。" }
+  ]
+},
+{
+  id: 69,
+  title: "Explaining Tết to a Japanese person",
+  title_vi: "Giải thích Tết với người Nhật",
+  title_en: "Explaining Tết to a Japanese person",
+  category: "fluency",
+  level: "B2",
+  vocabulary: [
+    { japanese: "旧正月 (きゅうしょうがつ)", english: "Lunar New Year (the term Japanese use for Tết)" },
+    { japanese: "ベトナム正月 (ベトナムしょうがつ)", english: "Vietnamese New Year (alternative term)" },
+    { japanese: "お年玉 (おとしだま)", english: "New Year money gift (Japan's equivalent of li xi)" },
+    { japanese: "親戚 (しんせき)", english: "relatives" },
+    { japanese: "一族 (いちぞく)", english: "extended family / clan" },
+    { japanese: "祖先 (そせん)", english: "ancestors" },
+    { japanese: "供える (そなえる)", english: "to offer (food/incense to ancestors)" },
+    { japanese: "初詣 (はつもうで)", english: "first shrine visit of the year (Japanese parallel)" },
+    { japanese: "縁起 (えんぎ)", english: "auspiciousness / luck-omen" },
+    { japanese: "新年 (しんねん)", english: "new year" }
+  ],
+  examples: [
+    { japanese: "ベトナムのテトは、日本のお正月とお盆を合わせたような大きなお祭りでございます。", english: "Vietnam's Tet is a major festival like Japan's New Year and Obon combined." },
+    { japanese: "旧暦に従いますので、毎年一月下旬から二月中旬の間に変わります。", english: "It follows the lunar calendar, so it shifts annually between late January and mid-February." },
+    { japanese: "家族・親戚で集まり、祖先にお供えをするのが中心でございます。", english: "Gathering with family and relatives and making offerings to ancestors is the core." },
+    { japanese: "「リーシー」と呼ばれるお年玉のような風習もございます。", english: "There's also a custom like otoshidama called li xi." },
+    { japanese: "もしご興味があれば、来年のテトに、ベトナム人のご家庭にお招きすることもできますよ。", english: "If you're interested, next Tet, I could invite you to a Vietnamese household." }
+  ],
+  dialogue: [
+    { speaker: "田中さん", japanese: "ベトナムの「テト」って、いつですか。", english: "When is Vietnam's Tet?" },
+    { speaker: "チャウ", japanese: "旧暦の一月一日でございます。今年は二月十日でした。", english: "The 1st of the lunar new year. This year it was February 10." },
+    { speaker: "田中さん", japanese: "中国のお正月と一緒ですね。", english: "Same as Chinese New Year, then." },
+    { speaker: "チャウ", japanese: "はい、暦は同じですが、過ごし方には違いがございます。", english: "Yes, same calendar, but different ways of celebrating." }
+  ],
+  dialogue_long: [
+    { speaker: "田中さん", japanese: "グエンさん、来週から会社が一週間休みって聞いて、びっくりしました。テト、ですよね。", english: "Nguyen-san, I heard the company is closed for a week from next week — surprised. It's Tet, right?" },
+    { speaker: "チャウ", japanese: "はい、テトでございます。日本の方には一週間が長く感じられるかもしれませんが、ベトナムでは一年で一番大切なお祭りなんです。", english: "Yes, Tet. A week may feel long for Japanese, but in Vietnam it's the most important festival of the year." },
+    { speaker: "田中さん", japanese: "中国のお正月と同じ日ですよね。具体的に、何をするんですか。", english: "Same date as Chinese New Year, right? Specifically, what do you do?" },
+    { speaker: "チャウ", japanese: "はい、暦は中国と同じです。ただ、過ごし方には違いがございます。ベトナムのテトは、家族と祖先を中心とした行事でございます。日本のお正月とお盆を合わせたようなイメージかもしれません。", english: "Yes, same calendar as China. But the way of spending it differs. Vietnam's Tet is centered on family and ancestors. Maybe like combining Japan's New Year with Obon." },
+    { speaker: "田中さん", japanese: "なるほど、お盆も含むんですね。具体的に、家族で何をするんですか。", english: "I see, includes Obon too. Concretely, what does the family do?" },
+    { speaker: "チャウ", japanese: "テトの前日は大晦日のように、家族全員が実家に集まります。多くの場合、都会で働く子供たちが田舎の親元に戻ります。これを「帰省」と日本語で言いますね。", english: "The day before Tet is like New Year's Eve — the whole family gathers at the parental home. In many cases, children working in cities return to parents in the countryside. This is kisei in Japanese." },
+    { speaker: "田中さん", japanese: "日本のお盆や正月の帰省ラッシュと同じですね。新幹線とか飛行機が混雑するんでしょうね。", english: "Same as Japan's Obon or New Year homecoming rush. Trains and planes must be crowded." },
+    { speaker: "チャウ", japanese: "全くその通りでございます。テトの一週間前から空港、バスターミナルが大混雑です。航空券は半年前から予約しないと取れません。", english: "Exactly. From a week before Tet, airports and bus terminals are extremely crowded. You need to book flights half a year in advance or you can't get them." },
+    { speaker: "田中さん", japanese: "それで、家族が集まったら、何をするんですか。", english: "So once family gathers, what do you do?" },
+    { speaker: "チャウ", japanese: "三つの中心的な活動がございます。一つ目、お墓参りと祖先への供物。家系の祭壇に、果物、お花、お線香、そして「バインチュン」というもち米のお餅をお供えします。", english: "Three central activities. First, grave visits and offerings to ancestors. We place fruits, flowers, incense, and banh chung — sticky-rice cakes — on the family altar." },
+    { speaker: "田中さん", japanese: "バインチュン、緑色の四角いお餅ですよね。スーパーで見ました。", english: "Banh chung — green square cakes? I saw them in the supermarket." },
+    { speaker: "チャウ", japanese: "はい、バナナの葉で包んでありますので、緑色になります。中には豚肉と緑豆が入っております。テトに必ず食べる伝統のお菓子でございます。", english: "Yes, wrapped in banana leaves so they're green. Pork and mung beans inside. A traditional food eaten without fail at Tet." },
+    { speaker: "田中さん", japanese: "なるほど、食文化も大切なんですね。あと二つの活動は?", english: "I see, food culture matters too. And the other two activities?" },
+    { speaker: "チャウ", japanese: "二つ目は、年配の方への挨拶回り。子供は祖父母、両親、おじおばに挨拶し、健康と長寿を祝います。日本の「お正月のお年玉」と似た「リーシー」という風習がございまして、年配の方が子供に赤い封筒に入れたお金を渡します。", english: "Second, greetings to elders. Children visit grandparents, parents, uncles and aunts, wishing them health and longevity. There's a custom called li xi, similar to Japan's otoshidama — elders give children money in red envelopes." },
+    { speaker: "田中さん", japanese: "お年玉と同じですね。金額もだいたい決まっているんですか。", english: "Same as otoshidama. Are amounts roughly fixed too?" },
+    { speaker: "チャウ", japanese: "新札を入れることが大切でございます。古いお札はテトに使いません。金額は子供の年齢と関係性によりますが、一万ドンから百万ドン、日本円ですと数十円から数千円程度です。", english: "Putting in new bills is important. Old bills aren't used for Tet. The amount depends on the child's age and relationship — from 10,000 dong to 1 million dong, roughly tens to thousands of yen." },
+    { speaker: "田中さん", japanese: "三つ目は?", english: "And the third?" },
+    { speaker: "チャウ", japanese: "三つ目は、初日のお客様を迎える「初客」の習慣でございます。新年最初に家に入る人によって、その家の一年の運勢が決まると信じられております。ですから、縁起の良い人物、健康で成功している人を初客に招くのが習慣でございます。", english: "Third is the first guest custom. It's believed the first person to enter the house in the new year determines the household's fortune for the year. So inviting an auspicious person — healthy, successful — as first guest is the custom." },
+    { speaker: "田中さん", japanese: "面白い習慣ですね。日本の「初詣」と少し似ているかもしれません。新年の運勢を祈るところが。", english: "Interesting custom. Maybe a bit like Japan's hatsumode — praying for new year's fortune." },
+    { speaker: "チャウ", japanese: "全くその通りでございます。文化は違っても、新年に運勢を願う気持ちは共通でございますね。もしご興味があれば、来年のテトに、私の家にお招きしますよ。本物のバインチュンを母が作っていますので、ぜひ召し上がっていただきたいです。", english: "Exactly. Even with cultural differences, the wish for fortune at new year is shared. If you're interested, next Tet I'll invite you to my home. My mother makes real banh chung — I'd like you to try it." },
+    { speaker: "田中さん", japanese: "本当ですか。それは光栄です。ぜひお願いします。", english: "Really? That's an honor. Please." },
+    { speaker: "チャウ", japanese: "袖振り合うも他生の縁と申します。来年のテトに、ぜひ。", english: "As they say, even a brushed sleeve is a karmic bond. Definitely next Tet." }
+  ],
+  roleplay_prompts: [
+    "Đồng nghiệp Nhật hỏi Tết có phải là Chinese New Year không. Hãy trả lời TINH TẾ — KHÔNG nói không phải Trung Quốc (defensive), KHÔNG nói giống Trung Quốc (loss of identity). Dùng cụm koyomi wa onaji desu ga, sugoshi-kata wa kotonatte orimasu (lịch giống nhau, nhưng cách sống khác nhau) và giải thích 1-2 nét đặc trưng VN.",
+    "Đồng nghiệp Nhật xin nghỉ làm để celebrate Tet với bạn (không phải kì nghỉ chính thức, đó là tuần làm việc của bạn). Hãy giải thích politely — Tết là FAMILY-only event, không invite outsiders trong những ngày đầu tiên (kiêng người lạ). Đề xuất gặp họ ngày thứ 5-6 sau Tết (an toàn để invite).",
+    "Sếp Nhật hỏi Có nên gửi New Year card cho đối tác VN dịp Tết không. Trả lời: KHÔNG dịp 1/1 (vì VN dùng lịch âm), DỊP Tết âm là tốt nhưng phải gửi VN card với hình hoa mai/hoa đào, không phải nengajou Nhật. Đề xuất pre-translate message tiếng VN."
+  ],
+  register_notes: "Khi giải thích Tết cho người Nhật, register lựa cẩn thận — đây là cultural identity moment. Bốn patterns: (1) PARALLEL HÓA QUA JP CONCEPT: nói Tết là kết hợp oshougatsu cộng obon giúp người Nhật understand. KHÔNG explain abstract — họ cần concrete reference. Cụm chuẩn: nihon no oshougatsu to obon wo awaseta you na (giống combine New Year và Obon). (2) DIFFERENTIATE FROM CHINESE: nhiều người Nhật assume Tết bằng Chinese New Year. Dùng cụm koyomi wa chuugoku to onaji desu ga, sugoshi-kata wa kotonatte orimasu (lịch giống Trung Quốc nhưng cách sống khác nhau). Sau đó nêu 1-2 đặc trưng VN cụ thể: bánh chưng, lì xì, thờ cúng tổ tiên, hoa mai/hoa đào. KHÔNG defensive nationalism — chỉ neutral facts. (3) TERMINOLOGY: dùng katakana テト (Tet) cho từ riêng. KHÔNG dịch sang kyuushougatsu trừ khi cần generalize. Bánh chưng giữ là バインチュン. Lì xì giữ là リーシー. Đây là vocabulary loanwords — Nhật thích chuẩn xác trong dịch tên riêng. (4) INVITATION ETIQUETTE: nếu mời đồng nghiệp Nhật về nhà dịp Tết, KHÔNG mời 3 ngày đầu (mồng 1-3, family-only). Mời từ mồng 5-6 hoặc sau khi hết Tết. Cụm: moshi go-kyoumi ga oari deshitara, raishuu no testo no ato hambun ni nara, watakushi no jitaku ni o-shoutai shitai to zonjimasu (nếu thích, nửa sau Tết em xin được mời về nhà). // TODO: native review — banh chung phonetic in katakana — チュン vs チョン both used; banh chong is older transliteration; banh chung mới hơn nhưng katakana không có nasal vowel chuẩn.",
+  idiom_glosses: [
+    { idiom: "一年の計は元旦にあり", literal: "Kế hoạch một năm bắt đầu ở ngày đầu năm", meaning: "Plan cho cả năm đặt vào New Year — gốc Trung Quốc cổ. Áp dụng cả ở Nhật và VN. Cụm chuẩn dùng để giải thích vì sao Tết quan trọng — không chỉ celebration mà là planning moment.", example: "一年の計は元旦にあり、と申します。テトは家族と一年の計画を立てる大切な時間でございます。" },
+    { idiom: "初心忘るべからず", literal: "Đừng quên tâm ban đầu", meaning: "Đừng quên động lực ban đầu — gốc Zeami. Phù hợp khi nói về tâm trạng đón Tết — refresh tinh thần, nhớ về root values.", example: "テトの時期は、初心忘るべからずの気持ちで、一年を振り返る機会でございます。" },
+    { idiom: "縁起がいい", literal: "May mắn / điềm tốt", meaning: "Auspicious — không phải idiom mà là khái niệm cốt lõi của Tết và Nhật New Year. Mọi quyết định Tết (first guest, first food, first activity) liên quan đến engi.", example: "新年最初に家に入る人は、縁起がいい人物を選ぶのが習慣でございます。" },
+    { idiom: "袖振り合うも他生の縁", literal: "Tay áo chạm nhau cũng là duyên kiếp khác", meaning: "Mỗi mqh dù nhỏ đều là karma. Phù hợp khi mời đồng nghiệp Nhật về nhà dịp Tết — bày tỏ rằng cuộc gặp này không tình cờ.", example: "袖振り合うも他生の縁と申します。来年のテトに、ぜひお越しいただきたく存じます。" }
+  ],
+  cultural_notes_vi: "Khi giải thích Tết cho người Nhật, có 6 điểm tinh tế. (1) TÊN GỌI TET: trong tiếng Nhật, dùng テト (katakana, từ riêng) hoặc ベトナム正月. Tránh kyuushougatsu vì từ này chung cho Lunar New Year (China, Korea). VN identity yêu cầu name-specific. (2) THỜI GIAN: VN có 7-9 ngày nghỉ chính thức (cộng cuối tuần). Dài gấp 2-3 lần oshougatsu Nhật (3 ngày). Nhiều khách Nhật shock vì office shut down — báo trước MỘT THÁNG về schedule, đề xuất họ schedule no-meeting period. (3) GIA ĐÌNH bằng CORE: Tết là family time, không networking. Đồng nghiệp Nhật mong VN colleague invite — nhưng QUY TẮC: không invite 3 ngày đầu (kiêng người lạ vào nhà). Ngày 4-6 OK invite. Cuối Tết bayer (mồng 7-10) là thời điểm tốt cho casual hangout với colleagues. (4) FOOD: bánh chưng (bắc) hoặc bánh tét (nam) là central. Khi invite Nhật về nhà, luôn serve bánh chưng. Giải thích cách ăn (cắt thành miếng vuông, ăn với dưa hành, có thể chấm nước mắm). KHÔNG ép họ ăn nhiều — họ rice culture nhưng glutinous rice với pork cộng mung bean nhiều cho 1 người Nhật. (5) LÌ XÌ: nếu khách Nhật ngẫu nhiên có mặt khi cha mẹ bạn give lì xì cho trẻ con, đừng để khách Nhật ngại. Giải thích custom trước. KHÔNG để khách Nhật cảm thấy obligated phải lì xì lại — đây là trad VN, họ là khách. (6) HOA MAI / HOA ĐÀO: nếu nhà có cây mai/đào, giới thiệu — đây là biểu tượng Tết. Mai (vàng) ở Nam, đào (hồng) ở Bắc. Khác biệt với JP sakura (hoa anh đào không liên quan New Year). Mỗi cây mua chợ Tết tốn 500K-2M VND, bạn có thể giải thích economics nếu khách hỏi. Khác biệt với JP New Year: oshougatsu Nhật là 1/1 (lịch dương), Tết VN âm lịch. Nhật có hatsumode (đi đền/chùa); VN có thờ cúng TỔ TIÊN at home altar. Nhật có osechi ryouri (lunch box of preserved food); VN có bữa ăn lớn home-cooked. Nhật có otoshidama trong phong bì trắng/nhỏ; VN có lì xì trong phong bì đỏ to. Mỗi country có own rhythm — KHÔNG so sánh thắng/thua. Mẹo: nếu invite được Nhật về nhà dịp Tết, đó là MOMENT relationship transform from colleague to family friend. ROI 10-năm.",
+  tip_advice_vi: "Trước Tết 1 tháng, gửi email cho đồng nghiệp Nhật báo schedule: Vietnam will be closed from (ngày bắt đầu) to (ngày kết thúc). I will be unreachable for (ngày) for family obligations. Please send urgent matters before (ngày trước Tết). After Tet, I will reply within 48 hours. Email này không phải courtesy — mandatory. Nhật cần plan around bạn. Trong tuần Tết: KHÔNG check email công việc trừ emergency. Nhật respect switch off khi family time. Nếu bạn check email và reply nhanh, Nhật sẽ assume bạn rảnh — tiếp theo họ expect 24/7. Sau Tết, ngày đầu trở lại văn phòng: chào mỗi colleague Nhật bằng cụm akemashite omedetou gozaimasu. Honnen mo douzo yoroshiku onegai itashimasu (chúc mừng năm mới, năm nay cũng nhờ anh chị). Đem một ít bánh chưng/mứt Tết chia cho team — symbol of share new year energy. Nếu invite đồng nghiệp Nhật về nhà dịp Tết, làm 4 việc trước. (1) Brief gia đình: who is coming, không nói tiếng Nhật, what they will eat (allergy?). Brief khách: dress code (smart casual), no shoes inside, sit on floor at altar may be required (depends home). (2) Gift exchange protocol: bạn đưa gift trước cho khách (lì xì symbolic 50K VND in red envelope) — Nhật không expect, surprise positive. Khách có thể bring omiyage (sweets/fruit) — accept với hai tay, bày lên bàn. (3) Tour the altar: dẫn khách đến altar, giải thích offerings (banh chung, fruit, incense), invite họ nhang (light incense) — Nhật familiar với this from butsudan. (4) Photo: chụp ảnh GIA ĐÌNH với khách Nhật (KHÔNG selfie). Photo này quan trọng: sẽ được khách share với family Nhật, become memory. In ra 1 copy đưa khách trước họ về Nhật. Cuối ngày, walk khách ra cửa, đưa hộp bánh chưng/mứt nhỏ cho họ mang về. Cụm: o-miyage to shite, dou-zo (xin tặng làm souvenir). Long-term: sau Tết bao gồm khách Nhật, relationship sẽ deeper than 100 hours of work meetings. Nhật report về Tết experience cho colleagues của họ ở Tokyo — bạn become cultural ambassador VN trong network của họ. Mọi connection sau đó qua bạn.",
+  exercises: [
+    { type: "fill-blank", question: "ベトナムのテトは、日本のお正月とお盆を___たような大きなお祭りでございます。", answer: "合わせ" },
+    { type: "matching", instruction: "Ghép thuật ngữ Tết với khái niệm tương ứng trong văn hóa Nhật.", pairs: [
+      { japanese: "テト", english: "Tết — name riêng (katakana, không nên dịch kyuushougatsu)" },
+      { japanese: "リーシー", english: "lì xì — phong bì đỏ tiền (parallel to otoshidama)" },
+      { japanese: "バインチュン", english: "bánh chưng — bánh nếp gói lá chuối, có thịt và đậu xanh" },
+      { japanese: "初客", english: "first guest — vị khách đầu năm quyết định vận may cả năm" }
+    ] },
+    { type: "translation", vietnamese: "Lịch giống Trung Quốc, nhưng cách đón Tết của Việt Nam khác.", japanese: "暦は中国と同じですが、ベトナムのテトの過ごし方は違います。" }
+  ]
+},
+{
+  id: 70,
+  title: "Difficult cross-cultural conversation",
+  title_vi: "Cuộc hội thoại khó về văn hóa",
+  title_en: "Difficult cross-cultural conversation",
+  category: "fluency",
+  level: "B2",
+  vocabulary: [
+    { japanese: "誤解 (ごかい)", english: "misunderstanding" },
+    { japanese: "齟齬 (そご)", english: "discrepancy / misalignment (formal)" },
+    { japanese: "認識の違い (にんしきのちがい)", english: "difference in perception" },
+    { japanese: "立場 (たちば)", english: "standpoint / position" },
+    { japanese: "歩み寄る (あゆみよる)", english: "to meet halfway / approach each other" },
+    { japanese: "落ち着いて (おちついて)", english: "calmly (defusing tense moment)" },
+    { japanese: "一旦 (いったん)", english: "momentarily / for a moment (used in pause-and-reset)" },
+    { japanese: "腹を割って (はらをわって)", english: "openly / without holding back (idiom-derived)" },
+    { japanese: "建設的 (けんせつてき)", english: "constructive" },
+    { japanese: "柔軟に (じゅうなんに)", english: "flexibly" }
+  ],
+  examples: [
+    { japanese: "山田部長、今のお話、私の認識と少し違うように感じました。一旦整理させていただいてもよろしいでしょうか。", english: "Manager Yamada, the conversation just now feels slightly different from my perception. May I take a moment to organize it?" },
+    { japanese: "決して反対する意図ではございません。立場の違いから生じる認識の差かと存じます。", english: "I have no intention of opposing. I believe it's a perceptual gap arising from different standpoints." },
+    { japanese: "建設的にお話を進めるため、それぞれの立場を確認させていただけますでしょうか。", english: "To move the discussion constructively, may we confirm each side's standpoint?" },
+    { japanese: "柔軟にお互いに歩み寄ることで、最善の道が見えてくるかと存じます。", english: "I believe by flexibly meeting halfway, we will see the best path." },
+    { japanese: "腹を割ってお話しいただいたこと、心より感謝申し上げます。", english: "I sincerely thank you for speaking openly with me." }
+  ],
+  dialogue: [
+    { speaker: "山田部長", japanese: "グエンさん、率直に言って、先週の対応に問題があったと感じています。", english: "Nguyen-san, frankly, I feel there was a problem with last week's handling." },
+    { speaker: "チャウ", japanese: "ご指摘、ありがとうございます。具体的にどの点でございましょうか。", english: "Thank you for the feedback. Specifically which point?" },
+    { speaker: "山田部長", japanese: "顧客への返信が遅すぎました。", english: "The reply to the client was too late." },
+    { speaker: "チャウ", japanese: "なるほど。一旦整理させていただいて、状況をご説明してもよろしいでしょうか。", english: "I see. May I take a moment to organize and explain the situation?" }
+  ],
+  dialogue_long: [
+    { speaker: "山田部長", japanese: "グエンさん、率直に言って、先週の佐藤商事への対応に問題があったと感じています。少しお時間いいですか。", english: "Nguyen-san, frankly, I feel there was a problem with last week's handling of Sato Trading. Do you have a moment?" },
+    { speaker: "チャウ", japanese: "もちろんでございます。お話を伺います。", english: "Of course. I'll listen." },
+    { speaker: "山田部長", japanese: "顧客からの問い合わせに、返信が三日遅れた件です。佐藤商事は当社の重要顧客ですから、対応の遅れはあってはならないと考えています。", english: "The matter of the three-day delay in replying to a client inquiry. Sato Trading is a key client; delays should never happen." },
+    { speaker: "チャウ", japanese: "ご指摘、誠にありがとうございます。一旦、私の立場から状況を整理させていただいてもよろしいでしょうか。決して反対する意図ではございません。", english: "Thank you for the feedback. May I take a moment to organize the situation from my position? I have no intention of opposing." },
+    { speaker: "山田部長", japanese: "もちろん、お聞きしますよ。", english: "Of course, I'll listen." },
+    { speaker: "チャウ", japanese: "問い合わせは火曜日に届きました。内容が技術的に複雑でしたので、技術部に確認を依頼いたしました。技術部からの回答が金曜日となりましたので、私からの返信もそのタイミングになった次第でございます。", english: "The inquiry arrived Tuesday. As the content was technically complex, I asked the technical department for confirmation. Their answer came Friday, so my reply was on that timing." },
+    { speaker: "山田部長", japanese: "なるほど、内部で確認していたのですね。それは私が知らなかった情報です。", english: "I see, you were confirming internally. That's information I didn't know." },
+    { speaker: "チャウ", japanese: "誠に申し訳ございません。途中で経過のご報告を差し上げるべきでした。「途中経過のご連絡」という配慮が足りなかったことは、私の認識不足でございました。", english: "I am truly sorry. I should have given an interim progress report. The consideration of interim communication was insufficient — that was my lack of awareness." },
+    { speaker: "山田部長", japanese: "なるほど、それは貴重な気づきです。日本の顧客は、回答そのものよりも「対応している様子が見える」ことを重視します。", english: "I see, that's a valuable realization. Japanese clients value visible signs of being attended to more than the answer itself." },
+    { speaker: "チャウ", japanese: "心に刻みます。今後は、複雑な案件については、二日以内に「現在確認中、回答は金曜日になる予定」という途中経過を必ずお送りいたします。", english: "I will engrave this on my heart. From now on, for complex matters, I will always send interim progress within two days — currently verifying, answer expected Friday." },
+    { speaker: "山田部長", japanese: "それで十分です。あと一つ。今回、佐藤商事から電話で苦情が入りました。私が直接対応しましたが、グエンさんからも改めて謝罪のお電話をしていただけませんか。", english: "That's enough. One more thing — this time Sato Trading complained by phone. I handled it directly, but could you call to apologize separately?" },
+    { speaker: "チャウ", japanese: "もちろんでございます。本日中にお電話いたします。お電話の前に、何をどのようにお伝えすべきか、ご助言を頂戴できますでしょうか。", english: "Of course. I will call today. Before the call, may I receive your advice on what to convey and how?" },
+    { speaker: "山田部長", japanese: "良い姿勢です。三つお伝えしてください。一、対応が遅れたことへの率直な謝罪。二、原因の説明。ただし、技術部のせいにしないこと。三、再発防止策。具体的に、二日以内の途中報告ルールを設けたとお伝えください。", english: "Good attitude. Convey three things. One, frank apology for the delay. Two, cause explanation — but don't blame the technical department. Three, prevention measures. Specifically, tell them you've set a rule of interim reports within two days." },
+    { speaker: "チャウ", japanese: "承知いたしました。柔軟に建設的にお話ができるよう、心がけます。本件は私の認識不足から生じたものでございますので、責任を持って対応いたします。", english: "Understood. I will keep in mind to converse flexibly and constructively. This matter arose from my lack of awareness, so I will handle it with full responsibility." },
+    { speaker: "山田部長", japanese: "ありがとう、グエンさん。腹を割ってお話しできて良かったです。文化の違いから生じる認識の差は、こうして話し合うしかありません。お互い様です。", english: "Thank you, Nguyen-san. I'm glad we spoke openly. Perceptual gaps from cultural differences can only be solved by talking like this. It's mutual." },
+    { speaker: "チャウ", japanese: "山田部長、ご寛容なご対応、誠にありがとうございます。今回の経験を糧に、より建設的な業務運営を目指してまいります。", english: "Manager Yamada, thank you for your magnanimous handling. Using this experience as nourishment, I will aim for more constructive operations." }
+  ],
+  roleplay_prompts: [
+    "Sếp Nhật chỉ trích bạn ngay trước team. Bạn cảm thấy bị mất mặt nhưng KHÔNG ngắt lời sếp. Sau meeting, đề nghị gặp riêng — dùng cụm shoushou o-jikan, yoroshii deshou ka cộng nói riêng tâm tư. Đề xuất in private next time MÀ KHÔNG sound critical.",
+    "Khách Nhật nhận hàng VN chậm 1 tuần. Họ gọi điện angry. Hãy KHÔNG defensive, KHÔNG đổ lỗi (logistics, weather). Dùng cụm watashi no kanrifuyuki ni yori (do em quản lý không tới) cộng take ownership cộng đề xuất concrete remedy (overnight ship cộng 5 phần trăm discount).",
+    "Đồng nghiệp Nhật nói chào hỏi của VN không đủ formal. Bạn cảm thấy đây là cultural superiority. Hãy phản hồi MÀ KHÔNG tranh cãi — dùng cụm go-shisa, arigatou gozaimasu. Issho ni manabasete itadakimasu (cảm ơn ý kiến, em sẽ cùng học) cộng nhẹ nhàng đề xuất reverse: cũng có VN customs Nhật có thể học."
+  ],
+  register_notes: "Khi xảy ra cuộc hội thoại khó với người Nhật, register cao hơn bình thường để DEFUSE tension. Năm patterns: (1) PAUSE-RESET CỤM: khi cảm thấy tension building, dùng ittan, seiri sasete itadaite mo yoroshii deshou ka (xin được tạm dừng tổ chức lại) hoặc shoushou, ochitsuite kangaesasete itadakemasu deshou ka (xin được suy nghĩ bình tĩnh chút). Cụm này signal bạn không emotional react — gain time. (2) DISTINGUISH POSITION FROM PERSON: dùng tachiba no chigai kara shoujiru ninshiki no sa (sự khác biệt nhận thức xuất phát từ vị trí khác nhau). Cụm này tách opinion khỏi person — không phải personal attack. (3) ACKNOWLEDGE BEFORE COUNTER: KHÔNG bắt đầu phản hồi với demo (nhưng) hay shikashi (tuy nhiên) — dùng go-shiteki, arigatou gozaimasu (cảm ơn feedback) trước, rồi mới explain. Acknowledge first bằng lower defenses. (4) SOFT COUNTER: thay vì I don't agree, dùng watashi no ninshiki to sukoshi kotonatte iru you ni kanjimashita (em cảm thấy hơi khác với nhận thức của em) — hơn nhẹ. Hoặc betsu no mikata mo aru ka to zonjimasu (cũng có cách nhìn khác). (5) CLOSE WITH GRATITUDE: cuối cuộc nói (kể cả khi không reach agreement), dùng harawhotekitagi to o-hanashi sasete itadaki, kokoro yori kansha shimasu (cảm ơn đã được nói chuyện thẳng thắn). Cụm này frame cuộc nói khó như positive bonding moment — Nhật rất appreciated. // TODO: native review — sogo phrasing hơi formal/old; alternative ninshiki no zure (lệch nhận thức) modern hơn cho casual office.",
+  idiom_glosses: [
+    { idiom: "腹を割って話す", literal: "Mổ bụng ra mà nói chuyện", meaning: "Nói chuyện thẳng thắn, không che giấu — gốc samurai era. Trong cuộc nói khó, bạn KHÔNG khởi xướng (audacious cho non-Japanese), nhưng có thể dùng để cảm ơn khi sếp Nhật khởi xướng: hara wo watte o-hanashi itadaki, arigatou gozaimasu.", example: "腹を割ってお話しできて良かったです。これからも建設的に進められます。" },
+    { idiom: "歩み寄る", literal: "Tiến bước gặp nhau", meaning: "Meet halfway — không phải idiom mà là verb phổ biến. Cụm chuẩn cho conflict resolution Nhật. Dùng để frame disagreement không phải win-lose mà là cùng tiến.", example: "柔軟にお互いに歩み寄ることで、最善の道が見えてくるかと存じます。" },
+    { idiom: "雨降って地固まる", literal: "Mưa rơi đất rắn lại", meaning: "Sau mưa to, đất chặt hơn — sau khó khăn, mọi thứ vững hơn. Phù hợp cuối cuộc nói khó để frame disagreement như growth opportunity.", example: "雨降って地固まると申します。今回のお話を経て、より良い関係になれると確信しております。" },
+    { idiom: "和をもって尊しとなす", literal: "Lấy hòa làm quý", meaning: "Hòa hợp là cao quý — gốc Hiến pháp 17 điều của Hoàng Thái tử Shotoku. Trong cuộc nói khó, dùng để remind về shared value, không phải để stop conversation mà để frame nó.", example: "和をもって尊しとなすという考えを大切に、お話を進めさせていただきます。" }
+  ],
+  cultural_notes_vi: "Cuộc hội thoại khó với người Nhật có cấu trúc khác phương Tây ở 6 điểm. (1) NEVER PUBLIC: Nhật disagreement không bao giờ ở public. Nếu sếp Nhật chỉ trích bạn trước team, không phải vì họ thiếu tế nhị — là vì họ đã FAIL nemawashi trước đó. Bạn không nên fight back công khai — chỉ acknowledge ngắn, rồi đề xuất gặp riêng để discuss thêm (hai te koso, kochira wa ato hodo go-soudan ni mairitai zonjimasu). (2) INDIRECT BEFORE DIRECT: Nhật thường indirect trước. Nếu sếp nói chotto muzukashii desu ne (hơi khó nhỉ), đó KHÔNG phải mild concern — đó là strong NO. Học đọc indirectness. Cụm Nhật indirect bằng no: muzukashii (khó), kentou itashimasu (em sẽ xem xét — không actually làm), kangae sasete kudasai (xin để em suy nghĩ — soft no). (3) NO RAISED VOICE: Nhật không raise voice trong disagreement. Nếu họ raise voice, đã là EXTREMELY upset — beyond fixable. Nếu bạn raise voice trước, relationship damaged 100 phần trăm. Học breathe trước phản hồi. (4) APOLOGIZE FIRST, EXPLAIN SECOND: bất kể context, apology đầu (kể cả khi bạn nghĩ không sai). Sau apology, mới explain. Cụm: makoto ni moushiwake gozaimasen. Ittan, jouhou wo seiri sasete itadakemasu deshou ka cộng explanation. KHÔNG explain trước apology — sounds defensive. (5) THIRD-PARTY MEDIATION: nếu disagreement không resolve direct, dùng third-party (sếp chung, HR, sempai). Đây không phải escalation — đây là face-saving protocol. Cụm: moshi yoroshikereba, XX-buchou nimo dou-zo jouhou wo o-tsutae itadaite, sangawa de seiri sasete itadakitaku zonjimasu (nếu được, xin báo sếp XX cùng dàn xếp 3 bên). (6) RECOVERY POST-CONFLICT: sau cuộc nói khó, KHÔNG act như nothing happened (sounds dismissive) và KHÔNG over-apologize lặp đi lặp lại (sounds insincere). Dùng pattern dignified continuity — gặp họ next day, chào normal, dần dần mention 1 lần kế thừa lesson learned. Cụm: senjitsu no o-hanashi, kokoro ni kizamasete itadaki, jissen ni utsushite orimasu (lời nói hôm trước em đã khắc ghi và đang thực hiện). Khác biệt với VN: ở VN disagreement có thể loud, public, immediate; ở Nhật, mọi thing là private, indirect, slow. KHÔNG phải Nhật avoid conflict — họ resolve conflict qua kênh khác. Hiểu khác biệt này bằng bạn không bị mất points trong cuộc nói khó. Long-term: một cuộc nói khó được handled tốt bằng relationship deeper than no-conflict. Trust by fire.",
+  tip_advice_vi: "Khi vào cuộc nói khó với người Nhật, làm 4 bước. (1) PREPARE EMOTIONAL: trước cuộc nói, breathe 4-7-8 (inhale 4, hold 7, exhale 8) 3 lần. Mục tiêu: không emotional reactivity. Nhật detect emotion trong giọng nói rất nhạy. (2) ENTER WITH SEAT POSITION: nếu là cuộc nói riêng ở phòng sếp, bạn ngồi shimoza (gần cửa). Nếu họ chỉ định ghế khác, ngồi đó. KHÔNG đứng — đứng bằng aggressive. (3) USE PHRASE TEMPLATE: 4-step template: (a) acknowledgment — gokujo arigatou gozaimasu cộng go-shiteki, ari-mashite kansha shimasu; (b) clarification — ittan, watashi no ninshiki wo seiri sasete itadakitaku zonjimasu cộng give your side calmly; (c) ownership — moshi watashi no fuiki ni yoru bubun ga aremashitara, makoto ni moushiwake gozaimasen cộng take part-ownership even if not 100 phần trăm fault; (d) resolution — saigai boushi to shite, kongo wa XX itashimasu cộng concrete action. Mỗi step 30-60 giây. Total 2-4 phút. KHÔNG over 5 phút (sounds defensive). (4) END WITH GRATITUDE: cụm chuẩn close: harawhotekitagi to o-hanashi sasete itadaki, kokoro yori kansha shimasu. Kongo to mo go-shidou no hodo, nanitozo yoroshiku onegai itashimasu (cảm ơn cuộc nói thẳng thắn, mong tiếp tục được chỉ dẫn). Sau cuộc nói: trong 24 giờ, gửi email tóm tắt 3 điểm key cộng cam kết action cộng thank you. Email này đóng vai trò RECORD — đảm bảo không mis-remember. Sau 1 tuần, gửi update progress on action items (kể cả nhỏ). Sau 1 tháng, cuộc nói coi như closed nếu action visible. KHÔNG nhắc lại issue trong meeting hay public — đó là dead matter unless họ bring up. Mẹo cuối: nếu cuộc nói khó với Nhật KHÔNG resolve được, đừng escalate ngay. Để 1-2 tuần (Nhật cần thời gian process), rồi gặp lại với perspective mới. Time is friend trong Japanese conflict resolution. Người VN hay impatient — học patient với Nhật. Một relationship survive cuộc nói khó bằng relationship đã passed real test bằng trust deeper than 5 năm casual interaction.",
+  exercises: [
+    { type: "fill-blank", question: "決して反対する意図ではございません。立場の___から生じる認識の差かと存じます。", answer: "違い" },
+    { type: "matching", instruction: "Ghép cụm Nhật indirect với meaning thực.", pairs: [
+      { japanese: "ちょっと難しいですね", english: "no (mềm — nhưng quyết định)" },
+      { japanese: "検討いたします", english: "no (không thực sự sẽ xem xét)" },
+      { japanese: "考えさせてください", english: "soft no (xin chút thời gian — nhưng không yes)" },
+      { japanese: "前向きに検討します", english: "yes có khả năng (positive sign)" }
+    ] },
+    { type: "translation", vietnamese: "Em xin lỗi, em xin được tổ chức lại nhận thức của em trước đã. Tuyệt đối không có ý phản đối.", japanese: "誠に申し訳ございません、一旦、私の認識を整理させていただきたく存じます。決して反対する意図ではございません。" }
+  ]
+},
+{
+  id: 71,
+  title: "Building friendship with a Japanese person in Vietnam",
+  title_vi: "Xây dựng tình bạn với người Nhật ở Việt Nam",
+  title_en: "Building friendship with a Japanese person in Vietnam",
+  category: "fluency",
+  level: "B2",
+  vocabulary: [
+    { japanese: "慣れる (なれる)", english: "to get used to (key word for cultural adaptation)" },
+    { japanese: "親しくなる (したしくなる)", english: "to grow close" },
+    { japanese: "気が合う (きがあう)", english: "to click / to be on the same wavelength" },
+    { japanese: "本音 (ほんね)", english: "true feelings (vs. tatemae — public face)" },
+    { japanese: "建前 (たてまえ)", english: "public-face / surface position" },
+    { japanese: "心を開く (こころをひらく)", english: "to open one's heart" },
+    { japanese: "気を遣わない (きをつかわない)", english: "to not be on guard / be at ease" },
+    { japanese: "ざっくばらん", english: "frank / unreserved (positive informal trait)" },
+    { japanese: "誘う (さそう)", english: "to invite (key for friendship escalation)" },
+    { japanese: "馴染む (なじむ)", english: "to settle in / become familiar" }
+  ],
+  examples: [
+    { japanese: "田中さん、もしよかったら、今度の週末、一緒にコーヒーでもいかがですか。", english: "Tanaka-san, if you'd like, how about coffee together next weekend?" },
+    { japanese: "ベトナム生活、もう三ヶ月ですね。少し慣れましたか。", english: "Three months in Vietnam already, isn't it. Have you settled in a bit?" },
+    { japanese: "気を遣わなくて大丈夫ですよ。普段着でいいですから。", english: "No need to be on guard. Casual clothes are fine." },
+    { japanese: "ざっくばらんに、本音でお話しできると嬉しいです。", english: "I'd be glad if we could speak frankly, with our real feelings." },
+    { japanese: "雨降って地固まると言いますし、今回の出来事を経て、もっと親しくなれた気がします。", english: "As they say after rain, the ground hardens — I feel we've grown closer through this." }
+  ],
+  dialogue: [
+    { speaker: "チャウ", japanese: "田中さん、明日の夜、もしお時間あれば、一緒にビールでもどうですか。", english: "Tanaka-san, if you have time tomorrow night, how about a beer together?" },
+    { speaker: "田中さん", japanese: "ぜひ。実は誘ってもらえると嬉しいなと思っていました。", english: "Sure. Actually I was hoping for an invitation." },
+    { speaker: "チャウ", japanese: "良かったです。じゃあ、19時にロビーで。", english: "Glad. Then 7pm at the lobby." },
+    { speaker: "田中さん", japanese: "楽しみにしています。", english: "Looking forward to it." }
+  ],
+  dialogue_long: [
+    { speaker: "チャウ", japanese: "田中さん、お疲れ様です。ベトナム生活、もう三ヶ月ですね。少しは慣れましたか。", english: "Tanaka-san, thanks for your work. Three months in Vietnam already. Have you settled a bit?" },
+    { speaker: "田中さん", japanese: "おかげさまで、少しずつ。最初の一ヶ月は本当に大変でしたが、最近は通勤路のバイクの数も気にならなくなってきました。", english: "Thanks to your help, little by little. The first month was really tough, but lately even the motorbikes on the commute don't bother me." },
+    { speaker: "チャウ", japanese: "それは何よりです。実は、もしお時間あれば、明日の夜、一緒にビールでもどうかと思いまして。仕事の話じゃなくて、雑談ですけど。", english: "That's the best. Actually, if you have time, I was wondering about a beer tomorrow night. Not work talk — just chatting." },
+    { speaker: "田中さん", japanese: "ぜひぜひ。実は、こちらから誘いたかったんですが、なかなかタイミングがなくて。グエンさんからお声かけしてもらえて嬉しいです。", english: "Definitely. Actually I wanted to invite you, but couldn't find the timing. I'm glad you reached out." },
+    { speaker: "チャウ", japanese: "ありがとうございます。良いお店があるんですよ。グエン・フエ通りの近くで、川沿いのテラス席がある居酒屋風のところです。日本人の方も時々いらっしゃいます。", english: "Thank you. There's a great place — near Nguyen Hue Street, with riverside terrace seating, izakaya-style. Japanese people sometimes come there too." },
+    { speaker: "田中さん", japanese: "それは楽しみですね。ドレスコードはありますか。", english: "Looking forward to it. Any dress code?" },
+    { speaker: "チャウ", japanese: "全然気を遣わなくて大丈夫ですよ。普段着でいいですから。Tシャツでもいいくらいカジュアルなお店です。", english: "No need to worry at all. Casual clothes are fine. Casual enough that even a T-shirt is OK." },
+    { speaker: "田中さん", japanese: "助かります。仕事の後にスーツのままだと、堅苦しいなと思っていたので。", english: "That helps. I was worried about being stiff in a suit after work." },
+    { speaker: "チャウ", japanese: "(翌日、お店で)じゃあ、改めて、ベトナム生活お疲れ様です。乾杯。", english: "(the next day, at the shop) Well then, again, thanks for your effort with Vietnam life. Cheers." },
+    { speaker: "田中さん", japanese: "乾杯。仕事から離れて飲むのは久しぶりです。", english: "Cheers. It's been a while since I drank away from work." },
+    { speaker: "チャウ", japanese: "実は、田中さん、ベトナムに来た時、何が一番びっくりしましたか。本音を聞かせていただけたら嬉しいです。", english: "Actually, Tanaka-san, when you came to Vietnam, what surprised you most? I'd love to hear your real feelings." },
+    { speaker: "田中さん", japanese: "本音で言うと、人との距離の近さですね。日本だと、隣の席の人にも一週間挨拶しないことも普通ですが、ベトナムは初日から「お昼一緒に行きましょう」って誘ってくれた。最初は戸惑いましたが、今は感謝しています。", english: "Honestly, the closeness between people. In Japan, not greeting your neighbor at work for a week is normal. But in Vietnam, from day one, people invited me to lunch together. I was confused at first, but now I'm grateful." },
+    { speaker: "チャウ", japanese: "ベトナム人にとっては自然なことですが、日本の方には驚きでしょうね。逆に、私が日本人の同僚と接する時、戸惑うことがあります。日本では「気を遣う」ことが多いので、何が本音なのかわかりにくくて。", english: "It's natural for Vietnamese, but must be surprising for Japanese. Conversely, when I interact with Japanese colleagues, I get confused too. Japanese consider others a lot, so it's hard to tell what's real feeling." },
+    { speaker: "田中さん", japanese: "あ、それはよく言われます。「本音と建前」の文化ですから。仕事では建前、プライベートでは本音、っていう使い分けが日本人にはあって。", english: "Ah, that's often said. It's the real-feeling and surface culture. At work tatemae, in private honne — Japanese have that distinction." },
+    { speaker: "チャウ", japanese: "なるほど、そういうことだったんですね。だから、こうしてお酒の場でリラックスして話すと、田中さんも少し変わって見えます。会社では「いつも丁寧」なのに、今は「ざっくばらん」って感じで。", english: "I see, that's what it was. So when we relax over drinks like this, you also seem a bit different, Tanaka-san. At the company you're always polite, but now you feel frank." },
+    { speaker: "田中さん", japanese: "そうなんです。日本の会社員は、お酒の場が「本音の場」なんですよ。「飲みニケーション」って言葉があるくらい、お酒で本音を語り合うのが伝統です。", english: "That's right. For Japanese workers, the drinking place is the real-feeling place. There's even a word nominication — talking real feelings through drinks is tradition." },
+    { speaker: "チャウ", japanese: "「飲みニケーション」、面白い言葉ですね。ベトナム人も飲み会は好きですけど、日本ほど「本音を語り合う場」っていう特別な意味はないかもしれません。むしろ、仕事中でも本音を言うことが多いですね。", english: "Nominication — fun word. Vietnamese also like drinking gatherings, but maybe not with the special meaning of real-feelings venue as in Japan. Rather, we often say real feelings even during work." },
+    { speaker: "田中さん", japanese: "それが羨ましいなと思うこともあります。日本のシステムは効率的だけど、心が疲れることもあって。", english: "I sometimes envy that. Japan's system is efficient, but it's also mentally tiring." },
+    { speaker: "チャウ", japanese: "お互い様ですね。私もベトナムのおおらかさで日本の同僚に「時間にルーズ」って思われることもあります。両方の良さを学べたら一番ですね。", english: "It's mutual. Sometimes Japanese colleagues think I'm time-loose due to Vietnamese easy-going-ness. The best is to learn from both." },
+    { speaker: "田中さん", japanese: "本当にそうですね。今日は本音で話せて良かったです。今後ともよろしくお願いします。", english: "Truly. Glad we spoke honestly today. Looking forward to continued friendship." },
+    { speaker: "チャウ", japanese: "こちらこそ。雨降って地固まると申しますが、こうやって少しずつお互いを理解できていくのが、本当の友情だと思います。次は、私の家にもお招きしますね。母のフォーは絶品ですから。", english: "Likewise. As they say after rain, the ground hardens — gradually understanding each other like this is real friendship. Next time, I'll invite you to my home. My mother's pho is exquisite." },
+    { speaker: "田中さん", japanese: "それは嬉しいです。楽しみにしています。", english: "That's wonderful. I look forward to it." }
+  ],
+  roleplay_prompts: [
+    "Đồng nghiệp Nhật ở VN 6 tháng. Bạn muốn invite về nhà ăn cơm nhưng họ ngại quá. Hãy invite trong 3 đợt — mỗi đợt nhẹ hơn đợt trước: (1) lần đầu casual cafe (an toàn nhất); (2) lần hai bữa trưa quán quen; (3) lần ba bữa tối ở nhà. Mỗi lần đợi 2-3 tuần giữa, dùng dou-zo go-muri no nai han'i de (xin trong phạm vi không phiền).",
+    "Tại quán bia, đồng nghiệp Nhật bắt đầu kể problem cá nhân (mqh xa với gia đình ở Nhật, lonely). Bạn nhận ra đây là honne moment hiếm. Hãy KHÔNG đẩy advice, KHÔNG dramatize. Chỉ aizuchi (sou desu ka, naruhodo, taihen deshita ne), uống chậm, để họ talk. Cuối: bày tỏ trân trọng cuộc nói chuyện.",
+    "Sau 6 tháng friendship, đồng nghiệp Nhật gửi tin nhắn about to leave Vietnam, transfer back Tokyo. Hãy phản hồi — KHÔNG dramatic, KHÔNG cliché. Đề xuất last meal cùng (ở quán đầu tiên cả hai đến), gift một món có ý nghĩa cá nhân (album ảnh chung, không vật chất). Long-term: hứa giữ contact via Tết card hand-written."
+  ],
+  register_notes: "Friendship với Nhật cần register switching, không như casual VN friend. Năm phases: (1) PHASE 1 (TUẦN 1-4): chỉ desu/masu polite. KHÔNG joke. KHÔNG personal questions. Chỉ shared work topics. Bắt đầu với Tanaka-san, otsukaresama desu mỗi sáng, nhưng KHÔNG more. Phase này test cultural literacy của bạn. (2) PHASE 2 (THÁNG 2-3): vẫn desu/masu nhưng có thể small talk: weather, food, weekend. Đề xuất lunch invitation đầu tiên — bữa trưa, không bữa tối. Cụm: moshi yoroshikereba, kondo issho ni o-hiru demo dou desu ka. Light dose. (3) PHASE 3 (THÁNG 4-6): có thể casual desu/masu (drop thiêu), share more personal (family, hobbies). Đề xuất bia evening — bia là bonding ritual ở Nhật. Phase này họ sẽ test bạn — kể câu thoại nhẹ về Japan/VN, xem reaction. (4) PHASE 4 (THÁNG 7-12): có thể plain form (da/dearu) trong CASUAL conversation, nhưng SWITCH back desu/masu khi sếp/khách hiện diện. Giai đoạn này họ share honne. Bạn có thể kể về VN problem (traffic, corruption) — không spin. (5) PHASE 5 (NĂM 2 cộng): true friendship. Casual constantly. Gọi nhau bằng tên (KHÔNG san giữa close friends sau 1 năm cộng — tùy individual). Có thể tease nhẹ. Có thể không reply tin nhắn 1 tuần mà không hard feelings. KHÔNG rush phases. Người VN hay rush — invite về nhà tuần 2 bằng scare họ. Học chờ. Mẹo: dùng cụm noni-kee-shon (nominication — drinking communication) khi thân hơn Phase 3 — show bạn understand cultural concept. Cụm honne wo kikasete itadaite, arigatou (cảm ơn vì share honne) sau khi họ open up. Đây là validation họ trust bạn. // TODO: native review — nominication phrasing — modern slang, 1990s gốc; some senior Japanese (60 cộng) think outdated; safer alternative is just nomi-kai (drinking party).",
+  idiom_glosses: [
+    { idiom: "雨降って地固まる", literal: "Mưa rơi đất rắn lại", meaning: "Sau khó khăn, mọi thứ vững hơn — rain compacts the soil. Phù hợp khi friendship deepen sau initial misunderstanding hoặc cuộc nói khó. Cụm này frame conflict not as problem but as relationship-strengthener.", example: "雨降って地固まると申します。今回の出来事を経て、もっと親しくなれた気がします。" },
+    { idiom: "三度目の正直", literal: "Lần thứ ba mới thật", meaning: "Third time's the charm — gốc Nhật cổ. Phù hợp khi invite Nhật bạn nhiều lần (hai lần đầu họ từ chối, lần thứ ba accept). Đừng give up sau 1-2 từ chối.", example: "三度目の正直と言いますが、今回こそご自宅にお招きしたく存じます。" },
+    { idiom: "以心伝心", literal: "Lòng truyền lòng", meaning: "Hiểu nhau không cần lời — gốc Phật giáo Zen. Trong friendship matured, dùng để bày tỏ sự thông hiểu sâu. Bạn nhận ra một silent moment hai người cùng nghĩ same thing.", example: "もう何年も一緒に仕事してきましたから、ほとんど以心伝心ですね。" },
+    { idiom: "馴染みの店", literal: "Quán quen / quán mình thường lui tới", meaning: "Familiar shop — biểu thị mqh long-term với một place. Dùng khi friendship has our regular spot. Show shared history.", example: "ここはもう馴染みの店ですね。マスターも私たちの顔を覚えてくれて。" }
+  ],
+  cultural_notes_vi: "Friendship với Nhật ở VN khác friendship với Tây hoặc với Việt khác ở 7 điểm. (1) THỜI GIAN: trung bình 1 năm để reach Phase 4 (true honne sharing). KHÔNG phải Nhật slow — họ careful. Người VN hay quick (1 tháng đã best friend). Học chờ. (2) GROUP BEFORE INDIVIDUAL: ban đầu invite Nhật vào group hangout (3-4 người), không 1-on-1. Group là safer cho Nhật. Sau 2-3 group sessions, Nhật sẽ tự gợi ý 1-on-1. (3) ALCOHOL AS BRIDGE: nominication (nomi-cation bằng drinking communication) là chuẩn ở Nhật. Trong VN, có thể adapt — bia tươi quán địa phương là default. KHÔNG tự rót cho mình, luôn rót cho bạn trước. Khi say lightly, Nhật sẽ open up — đây là expected, không weakness. (4) HONNE/TATEMAE: bạn nghe nhiều về 2 layer này, nhưng thực ra ở friendship phase Nhật vẫn dùng. Khác là honne layer được unlock dần. Ban đầu họ chỉ tatemae (polite, professional, agree với bạn). Sau drinks, một số honne lộ. Sau 1 năm, full honne — bao gồm complaint về Japan, lonely abroad, marriage troubles. Bạn KHÔNG advice — chỉ listen và acknowledge. (5) GIFT GIVING: chuẩn mực Nhật là khi visit nhà, mang temiyage (gift). Khi đi du lịch, mang omiyage cho friends. Bạn cũng adopt — VN customs: mang trái cây hoặc bánh tươi khi visit. KHÔNG đắt — symbolic value matter. (6) PHYSICAL CONTACT: KHÔNG hug, KHÔNG kiss má, KHÔNG vai. Nhật personal space lớn hơn VN. Maximum: handshake (chỉ first meeting), bow. Sau nhiều năm có thể light pat on shoulder cho male-male — male-female còn cẩn thận hơn. (7) SOCIAL MEDIA: Nhật ít share trên FB/Instagram. Đừng tag họ photo nếu họ không hỏi. LINE messages OK 1-on-1, nhưng KHÔNG group chat random. Email vẫn là kênh business primary cho Japanese của thế hệ 30 cộng. Khác biệt với VN: ở VN friendship all in or all out — share mọi thứ, hangout nhiều, post FB. Ở Nhật, friendship vô hạn về depth nhưng có boundaries rất rõ về time/space/sharing. Mẹo cuối: nếu friendship survive khi bạn của Nhật transfer về Tokyo — kept up qua Tết card, occasional visit khi họ về VN, qua Christmas/New Year LINE — đây là LIFETIME friendship. Người VN có thể có nhiều friends; người Nhật có ít friends nhưng deeply lasting. Quality on quantity. Một người Nhật bạn keep 10 năm bằng giá trị bằng 50 acquaintances bình thường.",
+  tip_advice_vi: "Phase 1 (Tháng 1): mỗi sáng chào colleague Nhật bằng Tanaka-san, otsukaresama desu đứng dậy nhẹ. Eye contact 2 giây. KHÔNG more. Mỗi tuần làm 1 việc small để help họ (chỉ vị trí ATM, dịch sign tiếng Việt, gợi ý quán). KHÔNG ép cuộc nói chuyện. Phase 2 (Tháng 2-3): khi họ đã accept presence của bạn, đề xuất ăn trưa. Cụm: moshi yoroshikereba, kondo issho ni hiru-meshi demo dou desu ka. Đề xuất quán có air-con, menu English/Nhật, vệ sinh rõ ràng (KHÔNG quán đường phố ngày đầu). Bữa trưa 60 phút max. Trong bữa, hỏi về work life ở Japan, family ở Tokyo, hobby. KHÔNG dùng ngôn ngữ thân tình quá sớm. Phase 3 (Tháng 4-6): đề xuất after-work drink. Cụm: kondo no kin-youbi no yoru, biiru demo ikaga desu ka. Quán riverside hoặc rooftop với view. 1-2 cốc bia. Match speed của họ. Trong drink, share honest opinion về VN-Japan differences. KHÔNG defend VN khi họ critical light. Listen first. Nếu họ start sharing personal, just aizuchi — sou desu ka, naruhodo, taihen deshita ne. KHÔNG offer advice unless asked. Phase 4 (Tháng 7-12): invite về nhà bạn cho bữa tối với gia đình. Brief gia đình: who is coming, basic Japanese phrases (irasshaimase, ohashi, gochisousama deshita), no pressure to entertain. Mẹ bạn nấu món signature (pho, banh xeo). Khoảng 2-3 giờ. Cuối, đưa o-miyage (mứt Tết, cà phê G7). Phase 5 (Năm 2 cộng): friendship has its rhythm. Có lúc weekly drinks, có lúc 2 tháng không gặp — both OK. Không pressure. Khi họ transfer về Tokyo: tổ chức farewell dinner (nhỏ, intimate, ở quán đầu tiên cả hai đến). Tặng album ảnh chung (in cứng — Nhật trọng physical). Trao đổi LINE/email. Hứa Tết card hand-written hàng năm. KHÔNG hứa lớn (visit Tokyo year). Long-term: gửi Tết card mỗi năm tháng 1 — 3 dòng update về life. 5 năm, 10 năm sau, khi bạn cần Job ở Tokyo, họ là đầu tiên introduce. Khi họ về VN visit family, bạn là đầu tiên họ liên lạc. Friendship Nhật ít maintenance work nhưng cao value when activated. Đầu tư patience.",
+  exercises: [
+    { type: "fill-blank", question: "気を___なくて大丈夫ですよ。普段着でいいですから。", answer: "遣わ" },
+    { type: "matching", instruction: "Ghép phase friendship với behavior phù hợp.", pairs: [
+      { japanese: "Phase 1 (Tháng 1)", english: "morning greeting only, no extra; help small things silently" },
+      { japanese: "Phase 2 (Tháng 2-3)", english: "lunch invitation, group setting safer than 1-on-1" },
+      { japanese: "Phase 3 (Tháng 4-6)", english: "evening drinks; honne can begin to surface" },
+      { japanese: "Phase 4 (Tháng 7-12)", english: "invite home for family dinner; deep trust phase" }
+    ] },
+    { type: "translation", vietnamese: "Em nói thẳng nhé, anh có thể chia sẻ tâm sự thật với em được không.", japanese: "ざっくばらんに、本音でお話しできると嬉しいです。" }
+  ]
 }
 ];
 export default lessons;
