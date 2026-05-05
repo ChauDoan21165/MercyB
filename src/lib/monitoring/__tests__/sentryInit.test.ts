@@ -22,6 +22,7 @@ import {
   scrubEvent,
   scrubBreadcrumb,
   isSentryEnabled,
+  looksLikeExternalNoise,
   __resetForTest,
 } from "../sentryInit";
 import {
@@ -249,5 +250,117 @@ describe("scrubBreadcrumb", () => {
       message: "to /rooms",
     });
     expect(b).toEqual({ category: "navigation", message: "to /rooms" });
+  });
+});
+
+// ── External-script noise filter ─────────────────────────────────────────
+// Locks every NOISE_PATTERNS entry so future edits can't silently break the
+// drop list. Each entry is a separate it() so a regression names exactly
+// which pattern broke. A negative case at the end asserts a normal
+// MercyBlade-shaped error is NOT filtered.
+describe("looksLikeExternalNoise — IAB / extension / SDK CDN drop list", () => {
+  // Helper: build a minimal SentryEventLike with the given exception value.
+  // Mirrors the shape collectNoiseHaystacks() walks in production.
+  function eventWithExceptionValue(value: string) {
+    return { exception: { values: [{ value }] } };
+  }
+
+  // Helper: build an event whose stack frame filename carries the noise
+  // marker (some IAB injections only show up in filenames, not messages).
+  function eventWithFrameFilename(filename: string) {
+    return {
+      exception: {
+        values: [
+          { value: "TypeError: x", stacktrace: { frames: [{ filename }] } },
+        ],
+      },
+    };
+  }
+
+  it("drops Facebook / Instagram / Zalo IAB injection (iabjs://)", () => {
+    expect(looksLikeExternalNoise(
+      eventWithFrameFilename("iabjs://script.js"),
+    )).toBe(true);
+  });
+
+  it("drops Chrome extension stacks", () => {
+    expect(looksLikeExternalNoise(
+      eventWithFrameFilename("chrome-extension://abc123/content.js"),
+    )).toBe(true);
+  });
+
+  it("drops Firefox extension stacks", () => {
+    expect(looksLikeExternalNoise(
+      eventWithFrameFilename("moz-extension://uuid/content.js"),
+    )).toBe(true);
+  });
+
+  it("drops Safari extension stacks (both safari-extension and safari-web-extension)", () => {
+    expect(looksLikeExternalNoise(
+      eventWithFrameFilename("safari-extension://abc/content.js"),
+    )).toBe(true);
+    expect(looksLikeExternalNoise(
+      eventWithFrameFilename("safari-web-extension://abc/content.js"),
+    )).toBe(true);
+  });
+
+  it("drops Facebook Pixel SDK noise (connect.facebook.net)", () => {
+    expect(looksLikeExternalNoise(
+      eventWithFrameFilename("https://connect.facebook.net/en_US/fbevents.js"),
+    )).toBe(true);
+  });
+
+  it("drops Google Tag Manager noise (googletagmanager.com)", () => {
+    expect(looksLikeExternalNoise(
+      eventWithFrameFilename("https://www.googletagmanager.com/gtm.js?id=GTM-X"),
+    )).toBe(true);
+  });
+
+  it("drops Zalo IAB injection — ReferenceError zaloJSV2", () => {
+    expect(looksLikeExternalNoise(
+      eventWithExceptionValue("Can't find variable: zaloJSV2"),
+    )).toBe(true);
+  });
+
+  it("drops Zalo IAB injection — lowercase zalojsv variant", () => {
+    expect(looksLikeExternalNoise(
+      eventWithExceptionValue("ReferenceError: zalojsv is not defined"),
+    )).toBe(true);
+  });
+
+  it("drops FB/IG IAB webkit.messageHandlers TypeError (the new pattern)", () => {
+    // The exact wording from the iOS Safari / Facebook IAB report.
+    expect(looksLikeExternalNoise(
+      eventWithExceptionValue(
+        "undefined is not an object (evaluating 'window.webkit.messageHandlers')",
+      ),
+    )).toBe(true);
+    // Variant without the `window.` prefix (some injections build the
+    // identifier dynamically and the prefix doesn't appear in the
+    // serialized error).
+    expect(looksLikeExternalNoise(
+      eventWithExceptionValue(
+        "TypeError: undefined is not an object (evaluating 'webkit.messageHandlers.bridge')",
+      ),
+    )).toBe(true);
+  });
+
+  it("does NOT drop a normal MercyBlade-shaped error", () => {
+    // Sanity check — a legit error from our own code must pass the filter.
+    expect(looksLikeExternalNoise({
+      message: "Failed to load room kids/abc",
+      exception: {
+        values: [
+          {
+            value: "Error: room not found",
+            stacktrace: {
+              frames: [
+                { filename: "https://mercyblade.com/assets/RoomLoader-XYZ.js" },
+              ],
+            },
+          },
+        ],
+      },
+    })).toBe(false);
   });
 });
