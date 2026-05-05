@@ -48,39 +48,27 @@ export type JapaneseExercise =
   | JapaneseExerciseMatching
   | JapaneseExerciseTranslation;
 
-export type IdiomGloss = {
-  idiom: string;
-  literal: string;
-  meaning: string;
-  example: string;
-};
-
-// B2-specific dialogue line — adds Vietnamese gloss to the existing
-// {speaker, japanese, english} shape used by lessons 21-50.
-export type JapaneseB2DialogueLine = {
-  speaker: string;
-  japanese: string;
-  vi?: string;
-  english?: string;
-};
-
 export type JapaneseLesson = {
   id: number;
   title: string;
+  // Optional bilingual title fields (added for B2 calibration samples)
+  title_vi?: string;
+  title_en?: string;
+  category?: string;
   level: JapaneseCefrLevel;
   vocabulary: JapaneseVocabEntry[];
-  grammar: JapaneseGrammarPoint[];
+  // Grammar is present on lessons 1-50 but optional on B2 calibration samples
+  grammar?: JapaneseGrammarPoint[];
   examples: JapaneseExample[];
   dialogue?: JapaneseDialogueLine[];
   exercises?: JapaneseExercise[];
-  // B2-specific optional fields (Phase 2 conversation-focused lessons).
-  // All optional — existing A1/A2/B1 lessons typecheck unchanged.
   cultural_notes_vi?: string;
   tip_advice_vi?: string;
-  dialogue_long?: JapaneseB2DialogueLine[];
+  // B2 calibration fields — optional passthrough; consumed by normalizer + renderer
+  dialogue_long?: JapaneseDialogueLine[];
   roleplay_prompts?: string[];
   register_notes?: string;
-  idiom_glosses?: IdiomGloss[];
+  idiom_glosses?: { idiom: string; literal: string; meaning: string; example: string }[];
 };
 
 export const lessons: JapaneseLesson[] = [
@@ -1841,6 +1829,103 @@ export const lessons: JapaneseLesson[] = [
  instruction: "Match the Japanese review terms" },
     { type: "translation", vietnamese: "Tôi đã học tiếng Nhật được ba năm. Nhìn lại, tôi đã tiến bộ rất nhiều.", japanese: "日本語を三年間勉強してきました。振り返ると、とても上達しました。" }
   ],
+},
+{
+  id: 51,
+  title: "Telling your boss you're resigning",
+  title_vi: "Nói với sếp về việc xin nghỉ việc",
+  title_en: "Telling your boss you're resigning",
+  category: "fluency",
+  level: "B2",
+  examples: [
+    { japanese: "お忙しいところ恐れ入りますが、少しお時間をいただけませんでしょうか。", english: "I'm sorry to interrupt when you're busy — could I please have a moment of your time?" },
+    { japanese: "退職のことで、ご相談させていただきたく存じます。", english: "I would humbly like to consult with you regarding my resignation." },
+    { japanese: "三年間、本当にお世話になりました。", english: "For three years, I have truly been in your care. (set farewell phrase)" },
+    { japanese: "後任の方への引き継ぎは責任を持って行います。", english: "I will take full responsibility for the handover to my successor." },
+    { japanese: "皆様にご迷惑をおかけしますことを、深くお詫び申し上げます。", english: "I deeply apologize for the inconvenience this causes everyone." }
+  ],
+  vocabulary: [
+    { japanese: "退職 (たいしょく)", english: "resignation / leaving a job" },
+    { japanese: "退職届 (たいしょくとどけ)", english: "letter of resignation (handwritten, paper)" },
+    { japanese: "お世話になりました", english: "thank you for your kindness (set farewell to colleagues / managers)" },
+    { japanese: "申し訳ございません", english: "I am very sorry (kenjougo of すみません)" },
+    { japanese: "引き継ぎ (ひきつぎ)", english: "handover / transition of duties" },
+    { japanese: "後任 (こうにん)", english: "successor / replacement hire" },
+    { japanese: "慰留 (いりゅう)", english: "persuasion to stay; the boss's counter-offer" },
+    { japanese: "最終出勤日 (さいしゅうしゅっきんび)", english: "last working day" },
+    { japanese: "～させていただきます", english: "humbly do — kenjougo construction for one's own action" },
+    { japanese: "～ていただけませんでしょうか", english: "could I possibly ~? (maximum-polite request form)" }
+  ],
+  dialogue: [
+    { speaker: "チャウ", japanese: "田中部長、退職のことで、ご相談させていただきたく存じます。", english: "Manager Tanaka, I would humbly like to consult with you regarding my resignation." },
+    { speaker: "田中部長", japanese: "退職ですか。差し支えなければ、理由を聞かせてもらえますか。", english: "Resignation? If you don't mind, may I hear the reason?" },
+    { speaker: "チャウ", japanese: "家族の事情で、ベトナムに戻ることになりました。", english: "Due to family circumstances, I've decided to return to Vietnam." },
+    { speaker: "田中部長", japanese: "わかりました。立つ鳥跡を濁さず、引き継ぎを丁寧にお願いします。", english: "Understood. Please leave things in good order — handle the handover carefully." }
+  ],
+  dialogue_long: [
+    { speaker: "チャウ", japanese: "田中部長、お忙しいところ恐れ入ります。少しお時間をいただけませんでしょうか。", english: "Manager Tanaka, I'm sorry to bother you when you're busy. Could I please have a moment of your time?" },
+    { speaker: "田中部長", japanese: "ああ、チャウさん、どうしました。座ってください。", english: "Ah, Chau-san, what is it? Please have a seat." },
+    { speaker: "チャウ", japanese: "実は、退職のことで、ご相談させていただきたく存じます。", english: "Actually, I would humbly like to consult with you regarding my resignation." },
+    { speaker: "田中部長", japanese: "退職ですか。それは突然ですね。差し支えなければ、理由を聞かせてもらえますか。", english: "Resignation? That's sudden. If you don't mind, may I hear the reason?" },
+    { speaker: "チャウ", japanese: "はい。家族の事情で、ベトナムに戻ることになりました。", english: "Yes. Due to family circumstances, I've decided to return to Vietnam." },
+    { speaker: "田中部長", japanese: "ご家族のためですか。決心は固いんですか。", english: "For your family? Is your decision firm?" },
+    { speaker: "チャウ", japanese: "申し訳ございません。何度も考えましたが、これが最善だと思っております。", english: "I'm very sorry. I've thought about it many times, but I believe this is the best choice." },
+    { speaker: "田中部長", japanese: "うちの会社で何か問題でも？腹を割って話してください。", english: "Is there some problem at our company? Please speak with complete honesty." },
+    { speaker: "チャウ", japanese: "いえ、皆様には本当にお世話になりました。会社への不満ではございません。", english: "No, everyone has been so kind to me. This is not from any dissatisfaction with the company." },
+    { speaker: "田中部長", japanese: "そうですか。給与や待遇の見直しも検討できますが、それでも難しいですか。", english: "I see. We could review your salary or working conditions. Even so, is it difficult?" },
+    { speaker: "チャウ", japanese: "お気持ちはありがたく頂戴いたしますが、この件は譲ることができません。", english: "I gratefully accept your kindness, but on this matter I cannot bend." },
+    { speaker: "田中部長", japanese: "わかりました。残念ですが、ご家族のことは尊重します。最終出勤日はいつをお考えですか。", english: "Understood. It's regrettable, but I respect your family situation. When are you thinking of as your last working day?" },
+    { speaker: "チャウ", japanese: "二か月後を希望しております。引き継ぎ期間として十分かと存じます。", english: "I would like it to be two months from now. I believe that's enough time for the handover." },
+    { speaker: "田中部長", japanese: "そうですね。後任の選定と教育に必要な時間です。立つ鳥跡を濁さず、丁寧にお願いします。", english: "Yes, that's the time needed to select and train a successor. Please leave things clean — don't muddy the water as you go." },
+    { speaker: "チャウ", japanese: "もちろんでございます。三年間お世話になりました。石の上にも三年と申しますが、本当にいい経験をさせていただきました。", english: "Of course. You've taken care of me for three years. As they say, persistence pays off — it has truly been a wonderful experience for me." },
+    { speaker: "田中部長", japanese: "こちらこそ、よく頑張ってくれました。退職届は来週までに人事部へ提出してください。", english: "On the contrary — you've worked very hard. Please submit your resignation letter to HR by next week." },
+    { speaker: "チャウ", japanese: "承知いたしました。重ねてお礼申し上げます。", english: "Understood. Thank you again, sincerely." },
+    { speaker: "田中部長", japanese: "送別会も計画しましょう。最後まで気持ちよく送り出したいですからね。", english: "Let's plan a farewell party too. I want to send you off properly, right to the end." }
+  ],
+  roleplay_prompts: [
+    "Đóng vai chính bạn xin nghỉ việc để về Việt Nam chăm sóc bố mẹ già. Sếp Nhật hỏi lý do — hãy giải thích lịch sự, dùng kenjougo (申し上げる, 存じる, させていただく). Mở đầu PHẢI bằng cụm xin thời gian, không nói thẳng 'tôi nghỉ'.",
+    "Sếp đề nghị tăng lương 20% và đổi phòng ban để giữ bạn lại (慰留). Hãy từ chối khéo léo trong 3 lượt nói, vẫn giữ thiện cảm — dùng cụm 'お気持ちはありがたく頂戴いたしますが、この件は譲ることができません'. Không để cuộc thương lượng kéo dài quá 3 lượt.",
+    "Bạn muốn nghỉ trong 1 tháng, sếp xin 3 tháng để tìm người thay thế. Thương lượng và đi đến thỏa thuận 2 tháng. Kết thúc bằng cam kết 'tatsu tori ato wo nigosazu' — bàn giao sạch sẽ, viết tài liệu hướng dẫn, đào tạo người kế nhiệm."
+  ],
+  register_notes: "Tiếng Nhật có ba tầng kính ngữ (敬語 keigo) — trong cuộc nói chuyện xin nghỉ này BẮT BUỘC dùng cả ba, và lẫn lộn sẽ làm hỏng cuộc nói chuyện trước cả khi nội dung được lắng nghe. (1) Teineigo (丁寧語) là dạng lịch sự cơ bản — kết câu bằng です/ます. Đây là sàn tối thiểu khi nói với sếp, không bao giờ tụt xuống plain form. (2) Sonkeigo (尊敬語) là dạng tôn kính dùng cho HÀNH ĐỘNG CỦA SẾP — nâng người nghe lên: いらっしゃる (đến/có mặt), おっしゃる (nói), ご検討ください (xin xem xét), なさる (làm). KHÔNG dùng sonkeigo cho hành động của chính mình — đó là tự đề cao, rất khiếm nhã. (3) Kenjougo (謙譲語) là dạng khiêm nhường dùng cho HÀNH ĐỘNG CỦA MÌNH — hạ mình xuống: 申し上げる (thưa/nói), 伺う (đến/hỏi), させていただく (xin được làm), 存じる (biết/nghĩ), 頂戴いたす (xin nhận). KHÔNG dùng kenjougo cho sếp — đó là hạ thấp người nghe. Nguyên tắc: teineigo làm nền, sonkeigo phủ lên hành động của sếp, kenjougo phủ lên hành động của mình. Khi xin nghỉ việc, cụm chuẩn 'させていただきたく存じます' là kenjougo bậc cao — gộp させていただく (xin được) với 存じる (nghĩ/biết khiêm nhường) — sếp Nhật mong đợi cụm này từ một nhân viên có ý thức trách nhiệm. Cụm 'お時間をいただけませんでしょうか' chồng ba lớp lịch sự (いただける + ません + でしょうか) để báo hiệu bạn biết mình đang làm phiền — đây là cách mở đầu chuẩn cho mọi cuộc nói chuyện khó.",
+  idiom_glosses: [
+    {
+      idiom: "腹を割って話す",
+      literal: "Mổ bụng ra mà nói chuyện",
+      meaning: "Nói chuyện thẳng thắn, không che giấu, để mọi suy nghĩ thật lên bàn. Trong cuộc xin nghỉ, sếp dùng cụm này khi mời bạn nói thật lý do — không dùng để mở lời mà dùng để PHẢN ỨNG khi cảm thấy bạn đang giấu điều gì.",
+      example: "うちの会社で何か問題でも？腹を割って話してください。"
+    },
+    {
+      idiom: "石の上にも三年",
+      literal: "Trên hòn đá cũng phải ba năm",
+      meaning: "Kiên trì sẽ được đền đáp — ngồi trên đá lạnh ba năm thì đá cũng ấm. Dùng để thừa nhận quãng thời gian khó khăn nhưng có ý nghĩa, phù hợp khi nói lời cảm ơn về thời gian làm việc đã qua.",
+      example: "三年間お世話になりました。石の上にも三年と申しますが、本当にいい経験をさせていただきました。"
+    },
+    {
+      idiom: "立つ鳥跡を濁さず",
+      literal: "Con chim bay đi không làm đục nước phía sau",
+      meaning: "Khi rời đi phải để lại mọi thứ sạch sẽ, gọn gàng — không để rắc rối cho người ở lại. Đây là chuẩn mực đạo đức Nhật khi nghỉ việc: bàn giao đầy đủ, viết tài liệu, không nói xấu công ty, kết thúc êm đẹp. Sếp dùng cụm này để nhắc bạn về kỳ vọng văn hóa.",
+      example: "立つ鳥跡を濁さず、丁寧に引き継ぎをお願いします。"
+    },
+    {
+      idiom: "後足で砂をかける",
+      literal: "Hất cát bằng chân sau",
+      meaning: "Rời đi trong sự bất hòa, vong ơn — như con vật hất cát vào người vừa cho ăn. Đây là điều CẦN TRÁNH khi nghỉ việc: đừng nói xấu công ty cũ, đừng cãi nhau, đừng kéo đồng nghiệp đi theo mình. Giới làm việc Nhật rất nhỏ — tiếng xấu sẽ theo bạn cả đời nghề.",
+      example: "辞めるときは後足で砂をかけるようなことをしてはいけない。"
+    }
+  ],
+  cultural_notes_vi: "Người Nhật xem việc xin nghỉ là sự kiện trang trọng, KHÔNG phải giao dịch. Khác hẳn Việt Nam (nơi có thể nhắn tin báo sếp, nói qua điện thoại, hoặc báo trước 2 tuần), ở Nhật bạn PHẢI tuân thủ bảy quy tắc: (1) Xin một cuộc gặp riêng — không nói trong giờ họp, không nói khi sếp đang vội. Mở đầu bằng 'お忙しいところ恐れ入りますが、少しお時間をいただけませんでしょうか'. (2) Báo TRỰC TIẾP cho sếp TRƯỚC tiên, không báo đồng nghiệp trước. Nếu lộ ra ngoài qua người khác sẽ bị coi là phản bội niềm tin và làm sếp mất mặt. (3) Đưa thời gian bàn giao 2-3 tháng. Đưa 2 tuần như ở Việt Nam là KHÔNG ĐỦ — sẽ bị nhớ lâu trong nghề và ảnh hưởng đến reference cho công việc tiếp theo. (4) Nộp 退職届 (đơn xin nghỉ) bằng giấy, viết tay, đưa cho phòng nhân sự — không gửi email. Định dạng có sẵn, dùng từ chuẩn '一身上の都合により' (vì lý do cá nhân). (5) Cuộc nói chuyện đầu tiên KHÔNG được nói thẳng 'tôi nghỉ việc' — phải mở bằng cụm xin tham vấn ('ご相談させていただきたく…') để sếp có không gian phản hồi. Đây là 根回し (nemawashi) — chuẩn bị tâm lý cho người nghe trước khi đưa quyết định chính. (6) Nếu sếp đề nghị tăng lương để giữ bạn lại (慰留 iryuu), từ chối phải khéo: cảm ơn nhưng giữ vững quyết định, KHÔNG để cuộc thương lượng kéo dài qua nhiều buổi vì sẽ bị coi là mặc cả. Một lần từ chối là đủ; ba lần là quá. (7) Sau khi xin nghỉ, vẫn phải giữ thái độ chuyên nghiệp 100% đến ngày cuối. Nếu lười biếng tuần cuối, hoặc rút lui khỏi dự án, danh tiếng sẽ theo bạn cả đời — giới làm việc Nhật rất nhỏ, người ta sẽ hỏi tham khảo. Quy tắc 立つ鳥跡を濁さず áp dụng nghiêm ngặt. Khác biệt văn hóa lớn nhất với Việt Nam: ở VN nghỉ việc là chuyện cá nhân; ở Nhật nó là sự kiện ảnh hưởng đến cả nhóm, và cách bạn xử lý nó là báo cáo cuối cùng về tư cách của bạn.",
+  tip_advice_vi: "Câu mở đầu KHÔNG được nói 'tôi muốn nghỉ việc'. Bắt đầu bằng 'お忙しいところ恐れ入りますが、少しお時間をいただけませんでしょうか' (Xin lỗi đã làm phiền lúc anh bận, em có thể xin một chút thời gian không?) — sau khi sếp đồng ý mới nói chuyện chính. Khi nói lý do, dùng '家族の事情' (lý do gia đình) hoặc 'キャリアの方向性' (định hướng nghề nghiệp) — đây là hai lý do được CHẤP NHẬN và không cần giải thích sâu. KHÔNG nói lý do tiêu cực về công ty (lương thấp, sếp khó chịu, đồng nghiệp xấu) dù có đúng — sẽ bị coi là vong ơn và làm khó cho người giới thiệu sau này. Khi từ chối lời đề nghị giữ lại, không nói 'いいえ' thẳng — dùng 'お気持ちはありがたく頂戴いたしますが、この件は譲ることができません' (Em xin trân trọng cảm ơn tấm lòng, nhưng việc này em không thể nhượng bộ). Câu PHẢI nói trong cuộc gặp: 'お世話になりました' (em đã được anh chị giúp đỡ rất nhiều) — nó là câu cảm ơn chính thức trong văn hóa Nhật, thiếu nó sẽ bị coi là vô lễ. Mẹo cuối cho người Việt: tập đọc to cụm 'させていただきたく存じます' và 'いただけませんでしょうか' nhiều lần trước cuộc gặp — phát âm sai một chữ trong cụm kính ngữ là rất dễ và sẽ phá hỏng ấn tượng trang trọng cần có.",
+  exercises: [
+    { type: "fill-blank", question: "退職のことで、ご相談___たく存じます。", answer: "させていただき" },
+    { type: "matching", instruction: "Ghép mỗi tầng kính ngữ hoặc thành ngữ với ý nghĩa của nó.", pairs: [
+      { japanese: "尊敬語", english: "tôn kính — nâng hành động của người nghe lên" },
+      { japanese: "謙譲語", english: "khiêm nhường — hạ hành động của mình xuống" },
+      { japanese: "丁寧語", english: "lịch sự cơ bản — dạng です/ます" },
+      { japanese: "立つ鳥跡を濁さず", english: "rời đi sạch sẽ, không để lại rắc rối" }
+    ] },
+    { type: "translation", vietnamese: "Vì lý do gia đình, em xin được thôi việc. Ba năm qua em thực sự được anh chị giúp đỡ rất nhiều.", japanese: "家族の事情により、退職させていただきたく存じます。三年間、本当にお世話になりました。" }
+  ]
 }
 ];
 export default lessons;
