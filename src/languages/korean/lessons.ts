@@ -1268,7 +1268,7 @@ level: "B2",
     roleplay_prompts: [
       "Đóng vai bạn — nhân viên Việt Nam tại Hàn Quốc — đang gặp 부장님 (giám đốc bộ phận) lần đầu để báo nghỉ việc. Hãy diễn tập câu mở đầu lịch sự, lý do tích cực, và đề xuất thời gian bàn giao 1 tháng. Toàn bộ dùng 하십시오체.",
       "Bạn vừa nhận lời mời từ một công ty Mỹ với mức lương gấp đôi. Hãy diễn tập cách trình bày lý do với sếp Hàn Quốc mà KHÔNG nhắc đến lương — chỉ nói về 'cơ hội phát triển' (성장 기회) và 'thử thách mới' (새로운 도전) để không khiến sếp 'mất mặt' (체면).",
-      "Sau khi bạn báo nghỉ, sếp đề nghị tăng lương 15% và promotion để giữ bạn lại (역제안 — counter-offer). Hãy diễn tập cách lịch sự nhưng kiên định từ chối, dùng cụm 'oh thân tâm đã quyết định rồi' (마음을 굳혔습니다) mà vẫn giữ được mối quan hệ tốt sau khi rời đi.",
+      "Sau khi bạn báo nghỉ, sếp đề nghị tăng lương 15% và promotion để giữ bạn lại (역제안 — counter-offer). Hãy diễn tập cách lịch sự nhưng kiên định từ chối, dùng cụm 'ồ thân tâm đã quyết định rồi' (마음을 굳혔습니다) mà vẫn giữ được mối quan hệ tốt sau khi rời đi.",
     ],
 
     register_notes:
