@@ -48,6 +48,22 @@ export type JapaneseExercise =
   | JapaneseExerciseMatching
   | JapaneseExerciseTranslation;
 
+export type IdiomGloss = {
+  idiom: string;
+  literal: string;
+  meaning: string;
+  example: string;
+};
+
+// B2-specific dialogue line — adds Vietnamese gloss to the existing
+// {speaker, japanese, english} shape used by lessons 21-50.
+export type JapaneseB2DialogueLine = {
+  speaker: string;
+  japanese: string;
+  vi?: string;
+  english?: string;
+};
+
 export type JapaneseLesson = {
   id: number;
   title: string;
@@ -57,6 +73,14 @@ export type JapaneseLesson = {
   examples: JapaneseExample[];
   dialogue?: JapaneseDialogueLine[];
   exercises?: JapaneseExercise[];
+  // B2-specific optional fields (Phase 2 conversation-focused lessons).
+  // All optional — existing A1/A2/B1 lessons typecheck unchanged.
+  cultural_notes_vi?: string;
+  tip_advice_vi?: string;
+  dialogue_long?: JapaneseB2DialogueLine[];
+  roleplay_prompts?: string[];
+  register_notes?: string;
+  idiom_glosses?: IdiomGloss[];
 };
 
 export const lessons: JapaneseLesson[] = [
