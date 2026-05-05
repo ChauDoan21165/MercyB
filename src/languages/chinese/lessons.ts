@@ -2260,6 +2260,1372 @@ level: "B2",
         pinyin: "Wǒ xiǎng qǐng sān zhōu shì jià huí yuè nán tàn qīn. Wǒ huì zài chū fā qián bǎ gōng zuò jiāo jiē hǎo, xū yào de shí hou kě yǐ yuǎn chéng xié zhù."
       }
     ]
+  },
+  {
+    id: 52,
+    level: "B2",
+    category: "study_career",
+    title: "在中国公司的面试",
+    pinyin: "zài zhōng guó gōng sī de miàn shì",
+    topic: "Job interview at a Chinese company",
+    title_vi: "Phỏng vấn xin việc tại công ty Trung Quốc",
+    title_en: "Job interview at a Chinese company",
+    sentences: [
+      {
+        chinese: "您好, 我是来面试软件工程师职位的阮文海。",
+        pinyin: "Nín hǎo, wǒ shì lái miànshì ruǎnjiàn gōngchéngshī zhíwèi de Ruǎn Wénhǎi.",
+        english: "Hello, I am Nguyen Van Hai, here to interview for the software engineer position.",
+        vi: "Em chào anh/chị, em là Nguyễn Văn Hải, đến phỏng vấn vị trí kỹ sư phần mềm.",
+        pronunciation_focus: ["您好 → nín hǎo (KHÔNG nǐ hǎo trong môi trường formal)", "面试 → miànshì (phỏng vấn — KHÔNG 面谈 miàntán)", "职位 → zhíwèi (vị trí — KHÔNG 工作 gōngzuò)", "软件 → ruǎnjiàn (mainland; Đài Loan dùng 軟體)"]
+      },
+      {
+        chinese: "感谢贵公司给我这次面试的机会。",
+        pinyin: "Gǎnxiè guì gōngsī gěi wǒ zhè cì miànshì de jīhuì.",
+        english: "Thank you for giving me this interview opportunity.",
+        vi: "Cảm ơn quý công ty đã cho em cơ hội phỏng vấn này.",
+        pronunciation_focus: ["贵公司 → guì gōngsī (cụm formal: 'quý công ty')", "感谢 → gǎnxiè (formal hơn 谢谢 xièxie)", "机会 → jīhuì thanh 1-4", "这次 → zhè cì (lần này)"]
+      },
+      {
+        chinese: "我之前在河内的越南分公司实习了一年。",
+        pinyin: "Wǒ zhīqián zài Hénèi de Yuènán fēn gōngsī shíxí le yī nián.",
+        english: "I previously interned for a year at the Vietnam branch in Hanoi.",
+        vi: "Trước đây em đã thực tập một năm tại chi nhánh Việt Nam ở Hà Nội.",
+        pronunciation_focus: ["分公司 → fēn gōngsī (chi nhánh)", "实习 → shíxí (thực tập)", "之前 → zhīqián (trước đây)", "河内 → Hénèi (Hà Nội)"]
+      },
+      {
+        chinese: "我希望能为公司的越南市场贡献自己的力量。",
+        pinyin: "Wǒ xīwàng néng wèi gōngsī de Yuènán shìchǎng gòngxiàn zìjǐ de lìliàng.",
+        english: "I hope to contribute my efforts to the company's Vietnam market.",
+        vi: "Em hy vọng có thể đóng góp công sức cho thị trường Việt Nam của công ty.",
+        pronunciation_focus: ["贡献 → gòngxiàn (đóng góp — formal)", "市场 → shìchǎng (thị trường)", "力量 → lìliàng (sức lực)", "希望 → xīwàng (hy vọng)"]
+      },
+      {
+        chinese: "如果有幸加入贵公司, 我会全力以赴。",
+        pinyin: "Rúguǒ yǒu xìng jiārù guì gōngsī, wǒ huì quánlì yǐ fù.",
+        english: "If I have the honor of joining your company, I will give my all.",
+        vi: "Nếu may mắn được gia nhập quý công ty, em sẽ dốc toàn lực.",
+        pronunciation_focus: ["有幸 → yǒu xìng (có vinh hạnh — formal)", "加入 → jiārù (gia nhập)", "全力以赴 → quánlì yǐ fù (idiom 4 chữ: dốc toàn lực)", "贵公司 → guì gōngsī"]
+      }
+    ],
+    vocab: [
+      { chinese: "面试", pinyin: "miàn shì", english: "job interview", vi: "phỏng vấn xin việc" },
+      { chinese: "简历", pinyin: "jiǎn lì", english: "resume / CV", vi: "sơ yếu lý lịch / CV" },
+      { chinese: "应聘", pinyin: "yìng pìn", english: "to apply for a job", vi: "ứng tuyển" },
+      { chinese: "招聘", pinyin: "zhāo pìn", english: "to recruit", vi: "tuyển dụng" },
+      { chinese: "职位", pinyin: "zhí wèi", english: "position / role", vi: "vị trí công việc" },
+      { chinese: "薪资", pinyin: "xīn zī", english: "salary (formal)", vi: "lương (trang trọng)" },
+      { chinese: "试用期", pinyin: "shì yòng qī", english: "probation period", vi: "thời gian thử việc" },
+      { chinese: "全力以赴", pinyin: "quán lì yǐ fù", english: "give one's all (4-char idiom)", vi: "dốc toàn lực" },
+      { chinese: "团队合作", pinyin: "tuán duì hé zuò", english: "teamwork", vi: "làm việc nhóm" },
+      { chinese: "贡献", pinyin: "gòng xiàn", english: "to contribute (formal)", vi: "đóng góp" }
+    ],
+    dialogue: [
+      { speaker: "HR", chinese: "请先做一下自我介绍。", pinyin: "Qǐng xiān zuò yīxià zìwǒ jièshào.", english: "Please give a brief self-introduction first.", vi: "Trước tiên xin em tự giới thiệu một chút." },
+      { speaker: "阮文海", chinese: "您好, 我叫阮文海, 越南河内人, 河内国家大学计算机系毕业。", pinyin: "Nín hǎo, wǒ jiào Ruǎn Wénhǎi, Yuènán Hénèi rén, Hénèi Guójiā Dàxué jìsuànjī xì bìyè.", english: "Hello, my name is Nguyen Van Hai, from Hanoi, Vietnam, graduated from the computer science department of Vietnam National University, Hanoi.", vi: "Em chào anh/chị, em tên là Nguyễn Văn Hải, người Hà Nội Việt Nam, tốt nghiệp khoa Công nghệ Thông tin Đại học Quốc gia Hà Nội." },
+      { speaker: "HR", chinese: "你的中文是怎么学的?", pinyin: "Nǐ de zhōngwén shì zěnme xué de?", english: "How did you learn Chinese?", vi: "Tiếng Trung của em học bằng cách nào?" },
+      { speaker: "阮文海", chinese: "我从大学一年级开始自学, 后来在孔子学院系统学习了三年。", pinyin: "Wǒ cóng dàxué yī niánjí kāishǐ zìxué, hòulái zài Kǒngzǐ Xuéyuàn xìtǒng xuéxí le sān nián.", english: "I started self-studying from my freshman year, and later studied systematically at the Confucius Institute for three years.", vi: "Em tự học từ năm nhất đại học, sau đó học bài bản tại Học viện Khổng Tử ba năm." }
+    ],
+    dialogue_long: [
+      { speaker: "HR", chinese: "您好, 阮先生, 请坐。先做一下自我介绍吧。", pinyin: "Nín hǎo, Ruǎn xiānsheng, qǐng zuò. Xiān zuò yīxià zìwǒ jièshào ba.", english: "Hello, Mr. Nguyen, please have a seat. Let's start with a self-introduction.", vi: "Chào anh Nguyễn, mời ngồi. Trước tiên anh tự giới thiệu một chút nhé." },
+      { speaker: "阮文海", chinese: "您好, 我叫阮文海, 今年二十六岁, 河内国家大学计算机系毕业, 目前在越南一家科技公司做后端开发。", pinyin: "Nín hǎo, wǒ jiào Ruǎn Wénhǎi, jīnnián èrshíliù suì, Hénèi Guójiā Dàxué jìsuànjī xì bìyè, mùqián zài Yuènán yī jiā kējì gōngsī zuò hòuduān kāifā.", english: "Hello, my name is Nguyen Van Hai, 26 this year, graduated from the computer science department of Vietnam National University, Hanoi, currently working as a backend developer at a Vietnamese tech company.", vi: "Em chào anh/chị, em tên là Nguyễn Văn Hải, năm nay 26 tuổi, tốt nghiệp khoa CNTT Đại học Quốc gia Hà Nội, hiện đang làm lập trình viên backend tại một công ty công nghệ Việt Nam." },
+      { speaker: "HR", chinese: "你为什么想加入我们公司?", pinyin: "Nǐ wèishénme xiǎng jiārù wǒmen gōngsī?", english: "Why do you want to join our company?", vi: "Sao em muốn vào công ty chúng tôi?" },
+      { speaker: "阮文海", chinese: "贵公司在东南亚的影响力很大, 而且越南市场正在快速发展。我希望能成为连接两国技术团队的桥梁。", pinyin: "Guì gōngsī zài Dōngnányà de yǐngxiǎnglì hěn dà, érqiě Yuènán shìchǎng zhèngzài kuàisù fāzhǎn. Wǒ xīwàng néng chéngwéi liánjiē liǎng guó jìshù tuánduì de qiáoliáng.", english: "Your company has great influence in Southeast Asia, and the Vietnam market is developing rapidly. I hope to become a bridge connecting the tech teams of both countries.", vi: "Quý công ty có ảnh hưởng lớn ở Đông Nam Á, và thị trường Việt Nam đang phát triển nhanh. Em mong có thể trở thành cây cầu nối hai đội ngũ kỹ thuật của hai nước." },
+      { speaker: "HR", chinese: "你的中文水平怎么样? 能用中文开会吗?", pinyin: "Nǐ de zhōngwén shuǐpíng zěnmeyàng? Néng yòng zhōngwén kāihuì ma?", english: "How is your Chinese level? Can you conduct meetings in Chinese?", vi: "Trình độ tiếng Trung của em thế nào? Có thể họp bằng tiếng Trung được không?" },
+      { speaker: "阮文海", chinese: "HSK六级, 日常交流和技术讨论都没问题。需要的时候我也可以做中越翻译。", pinyin: "HSK liù jí, rìcháng jiāoliú hé jìshù tǎolùn dōu méi wèntí. Xūyào de shíhou wǒ yě kěyǐ zuò zhōng-yuè fānyì.", english: "HSK 6, daily communication and technical discussions are no problem. If needed, I can also do Chinese-Vietnamese translation.", vi: "HSK 6, giao tiếp hàng ngày và thảo luận kỹ thuật đều không vấn đề. Khi cần em cũng có thể phiên dịch Trung-Việt." },
+      { speaker: "HR", chinese: "你之前的项目中, 最有挑战性的是哪一个?", pinyin: "Nǐ zhīqián de xiàngmù zhōng, zuì yǒu tiǎozhàn xìng de shì nǎ yī gè?", english: "Among your previous projects, which was the most challenging?", vi: "Trong các dự án trước đây, dự án nào thử thách nhất?" },
+      { speaker: "阮文海", chinese: "去年我负责重构一个支付系统, 日交易量五十万。当时压力很大, 但最后成功上线, 性能提升了三倍。", pinyin: "Qùnián wǒ fùzé chónggòu yī gè zhīfù xìtǒng, rì jiāoyì liàng wǔshí wàn. Dāngshí yālì hěn dà, dàn zuìhòu chénggōng shàngxiàn, xìngnéng tíshēng le sān bèi.", english: "Last year I led the refactor of a payment system handling 500,000 daily transactions. The pressure was high, but it launched successfully and performance improved threefold.", vi: "Năm ngoái em phụ trách tái cấu trúc một hệ thống thanh toán, 500 nghìn giao dịch mỗi ngày. Lúc đó áp lực lớn, nhưng cuối cùng triển khai thành công, hiệu năng tăng gấp ba." },
+      { speaker: "HR", chinese: "你期望的薪资是多少?", pinyin: "Nǐ qīwàng de xīnzī shì duōshao?", english: "What is your expected salary?", vi: "Mức lương mong muốn của em là bao nhiêu?" },
+      { speaker: "阮文海", chinese: "根据我的经验和市场行情, 我希望税前月薪在两万五到三万人民币之间。当然, 这也要看贵公司的整体福利。", pinyin: "Gēnjù wǒ de jīngyàn hé shìchǎng hángqíng, wǒ xīwàng shuì qián yuèxīn zài liǎng wàn wǔ dào sān wàn rénmínbì zhījiān. Dāngrán, zhè yě yào kàn guì gōngsī de zhěngtǐ fúlì.", english: "Based on my experience and market rates, I hope for a pre-tax monthly salary between 25,000 and 30,000 RMB. Of course, this also depends on your overall benefits.", vi: "Dựa trên kinh nghiệm và mặt bằng thị trường, em mong lương trước thuế từ 25 nghìn đến 30 nghìn nhân dân tệ một tháng. Tất nhiên, còn tùy phúc lợi tổng thể của quý công ty." },
+      { speaker: "HR", chinese: "你能接受出差吗? 比如每个月去深圳总部一周。", pinyin: "Nǐ néng jiēshòu chūchāi ma? Bǐrú měi gè yuè qù Shēnzhèn zǒngbù yī zhōu.", english: "Can you accept business travel? For example, going to Shenzhen headquarters for a week each month.", vi: "Em có thể chấp nhận đi công tác không? Ví dụ mỗi tháng sang trụ sở Thâm Quyến một tuần." },
+      { speaker: "阮文海", chinese: "完全可以接受。出差对我来说也是学习的机会, 可以更好地了解总部的技术体系。", pinyin: "Wánquán kěyǐ jiēshòu. Chūchāi duì wǒ lái shuō yěshì xuéxí de jīhuì, kěyǐ gèng hǎo de liǎojiě zǒngbù de jìshù tǐxì.", english: "Completely acceptable. Business travel is also a learning opportunity for me, allowing me to better understand the headquarters' technical system.", vi: "Hoàn toàn chấp nhận được. Đối với em, đi công tác cũng là cơ hội học hỏi, giúp hiểu rõ hơn hệ thống kỹ thuật của trụ sở chính." },
+      { speaker: "HR", chinese: "你对我们公司还有什么想了解的?", pinyin: "Nǐ duì wǒmen gōngsī hái yǒu shénme xiǎng liǎojiě de?", english: "Is there anything else you'd like to know about our company?", vi: "Em còn muốn tìm hiểu gì về công ty chúng tôi không?" },
+      { speaker: "阮文海", chinese: "我想了解一下团队的技术栈和未来一年的产品规划, 以便我做好准备。", pinyin: "Wǒ xiǎng liǎojiě yīxià tuánduì de jìshù zhàn hé wèilái yī nián de chǎnpǐn guīhuà, yǐbiàn wǒ zuòhǎo zhǔnbèi.", english: "I'd like to know about the team's tech stack and product roadmap for the coming year, so I can prepare well.", vi: "Em muốn tìm hiểu công nghệ của team và lộ trình sản phẩm năm tới, để em chuẩn bị tốt." },
+      { speaker: "HR", chinese: "好问题。我们后端用Go和Java, 前端是React。明年重点是越南和印尼市场的本地化。", pinyin: "Hǎo wèntí. Wǒmen hòuduān yòng Go hé Java, qiánduān shì React. Míngnián zhòngdiǎn shì Yuènán hé Yìnní shìchǎng de běndìhuà.", english: "Good question. Our backend uses Go and Java, frontend is React. Next year's focus is localization for Vietnam and Indonesia markets.", vi: "Câu hỏi hay. Backend chúng tôi dùng Go và Java, frontend là React. Trọng tâm năm tới là bản địa hóa cho thị trường Việt Nam và Indonesia." },
+      { speaker: "阮文海", chinese: "正好我有Go的经验, 而且越南本地化是我最擅长的方向。如果有幸加入, 我会全力以赴。", pinyin: "Zhènghǎo wǒ yǒu Go de jīngyàn, érqiě Yuènán běndìhuà shì wǒ zuì shàncháng de fāngxiàng. Rúguǒ yǒu xìng jiārù, wǒ huì quánlì yǐ fù.", english: "I happen to have Go experience, and Vietnam localization is my strongest area. If I have the honor of joining, I will give my all.", vi: "Vừa hay em có kinh nghiệm Go, và bản địa hóa Việt Nam là thế mạnh nhất của em. Nếu may mắn được gia nhập, em sẽ dốc toàn lực." },
+      { speaker: "HR", chinese: "好的, 谢谢您今天的时间。我们一周内会给您答复。", pinyin: "Hǎo de, xièxie nín jīntiān de shíjiān. Wǒmen yī zhōu nèi huì gěi nín dáfù.", english: "Alright, thank you for your time today. We'll get back to you within a week.", vi: "Được rồi, cảm ơn anh đã dành thời gian hôm nay. Chúng tôi sẽ phản hồi anh trong vòng một tuần." }
+    ],
+    roleplay_prompts: [
+      "Đóng vai một ứng viên Việt Nam có 2 năm kinh nghiệm trả lời câu hỏi 'tại sao em rời công ty hiện tại'. KHÔNG nói xấu công ty cũ. Dùng cụm '寻求更大的发展空间' (tìm kiếm không gian phát triển lớn hơn) hoặc '希望挑战自己' (mong thử thách bản thân) — chuyển frame từ 'rời đi' sang 'hướng tới'.",
+      "Phỏng vấn viên hỏi 'em có điểm yếu gì'. Trả lời chân thành nhưng khôn khéo — chọn một điểm yếu kèm cách bạn đang khắc phục. Tránh hai lỗi phổ biến: (1) 'em không có điểm yếu' (vô lễ), (2) liệt kê điểm yếu nghiêm trọng (mất cơ hội).",
+      "Cuối phỏng vấn, HR đề nghị mức lương thấp hơn 20% so với kỳ vọng của bạn. Hãy thương lượng khéo léo bằng cách dùng cụm '我希望能在贵公司长期发展' để cho thấy bạn không chỉ đòi tiền, sau đó đưa ra dữ liệu thị trường cụ thể. Không kéo thương lượng quá 2 lượt."
+    ],
+    register_notes: "Phỏng vấn xin việc tại công ty Trung Quốc đòi hỏi 您 (nín) liên tục từ ứng viên đến HR/sếp tương lai — không bao giờ rớt xuống 你 dù HR có thể trẻ hơn bạn. Cụm gọi 贵公司 (guì gōngsī — quý công ty) là chuẩn formal, KHÔNG dùng 你们公司 (nǐmen gōngsī — công ty các bạn). Khi nói về mình, KHÔNG dùng 我们越南人 (chúng tôi người Việt Nam) — quá generalize; dùng 'tôi cá nhân' (我个人) hoặc đơn giản 我.\n\nCác cụm formal bắt buộc: 自我介绍 (zìwǒ jièshào — tự giới thiệu, KHÔNG 介绍我自己), 期望薪资 (qīwàng xīnzī — lương kỳ vọng, KHÔNG 想要多少钱), 出差 (chūchāi — đi công tác, KHÔNG 去外地). Khi cảm ơn cuối phỏng vấn, dùng '感谢您今天的时间' chứ KHÔNG '谢谢' đơn lẻ.\n\nTránh tuyệt đối: (a) Hỏi về nghỉ phép/lương cụ thể trong vòng phỏng vấn đầu — chỉ thảo luận khi HR đưa offer; (b) Dùng tiếng Anh chen vào (code-switching) — bị coi là khoe hoặc thiếu tự tin với tiếng Trung; (c) Tự khen quá đà bằng cụm 我最厉害 — dùng 我比较擅长 hoặc 我有一定经验 thay thế.",
+    idiom_glosses: [
+      {
+        idiom: "全力以赴",
+        literal: "đem hết sức mạnh xông tới (quán lì yǐ fù)",
+        meaning: "Dốc toàn lực — cam kết làm hết khả năng. Cụm chuẩn ứng viên dùng cuối phỏng vấn để thể hiện cam kết. Mạnh hơn 努力工作 nhưng không cường điệu.",
+        example: "如果有幸加入贵公司, 我会全力以赴。"
+      },
+      {
+        idiom: "学有所长",
+        literal: "học có chỗ sở trường (xué yǒu suǒ cháng)",
+        meaning: "Học có chuyên môn — mỗi người có thế mạnh riêng. Dùng khi nói về kỹ năng đặc thù: '我学有所长, 在Go语言开发方面比较突出'.",
+        example: "我学有所长, 在Go语言开发方面比较突出。"
+      },
+      {
+        idiom: "谦虚谨慎",
+        literal: "khiêm tốn cẩn trọng (qiān xū jǐn shèn)",
+        meaning: "Khiêm tốn và thận trọng — tự đặc tả phong cách làm việc lý tưởng cho ứng viên Trung Quốc. Đối lập với phong cách 'self-promotion' phương Tây. Dùng nó để miêu tả mình mà không bị coi là yếu đuối.",
+        example: "我做事比较谦虚谨慎, 喜欢先听后说。"
+      },
+      {
+        idiom: "知人善任",
+        literal: "biết người khéo dùng (zhī rén shàn rèn)",
+        meaning: "Biết người và biết dùng người — phẩm chất khen sếp. Dùng khi nói về sếp cũ một cách tích cực: '我之前的领导知人善任, 教会了我很多'. Tránh tự khen mình bằng cụm này.",
+        example: "我之前的领导知人善任, 教会了我很多。"
+      }
+    ],
+    cultural_notes_vi: "Văn hóa phỏng vấn Trung Quốc khác biệt với Việt Nam ở bốn điểm chính: (1) Cấu trúc câu trả lời PHẢI có tổ chức 3 phần (tổng — phân tích — tổng) chứ không phải kể tự nhiên. Nói '我有三点想分享' (em có ba điểm muốn chia sẻ) trước khi liệt kê = ấn tượng tích cực; nói lan man = bị coi là thiếu logic. (2) Tự giới thiệu phải bao gồm: tên, tuổi, quê, học vấn, kinh nghiệm — theo trật tự đó, không đảo. Người Việt thường bỏ tuổi/quê — ở Trung Quốc đây là information cần có. (3) Nói về sếp cũ tuyệt đối tích cực, dù bạn rời vì sếp tệ — 我之前的领导教会了我很多. Nói xấu sếp cũ = tự đóng cửa với mọi sếp tương lai (giới HR Trung Quốc rất nhỏ và liên kết). (4) Trả lời câu hỏi về điểm yếu — phải có thật nhưng không nghiêm trọng, kèm cách bạn đang khắc phục. Mẫu chuẩn: '我有时候过于追求完美, 现在在学习更好地分配时间' (đôi khi em theo đuổi sự hoàn hảo quá mức, giờ em đang học cách phân bổ thời gian tốt hơn).\n\nVề 关系 (guānxi): nếu công ty này có nhân viên Việt Nam khác giới thiệu bạn, đừng giấu — đề cập tự nhiên sẽ tăng độ tin cậy. Trong văn hóa Trung Quốc, 'nội bộ giới thiệu' (内推 nèituī) là kênh tuyển dụng quan trọng nhất, không phải '走后门' (đi cửa sau) như nhiều người Việt lầm tưởng.",
+    tip_advice_vi: "(1) Đến SỚM 15 phút, không sớm hơn (sếp chưa sẵn sàng tiếp), không muộn (mất điểm tức thì). (2) Trang phục: nam mặc sơ mi cài cúc + quần tây, nữ mặc váy công sở hoặc sơ mi + chân váy/quần. KHÔNG đeo túi xách hàng hiệu lộ liễu — văn hóa làm việc Trung Quốc đại lục đánh giá cao 'low-key'. (3) Bắt tay nhẹ — không quá mạnh kiểu Mỹ. Nữ ứng viên có thể không đưa tay trước; chờ HR chìa tay. (4) Khi HR mời ngồi, nói 谢谢 và ngồi nhẹ nhàng. Đừng tự rót nước cho mình — đợi HR mời. (5) Trả lời câu hỏi: dùng cấu trúc '首先...其次...最后...' (đầu tiên... tiếp theo... cuối cùng...) — sếp Trung Quốc cực thích cấu trúc rõ ràng này. (6) Khi không hiểu câu hỏi, KHÔNG đoán mò. Nói '不好意思, 您能再解释一下吗?' (xin lỗi, anh có thể giải thích lại không?) — chứng tỏ bạn cẩn thận, không phải yếu kém. (7) Cuối phỏng vấn, đứng dậy bắt tay (nếu HR đứng), cúi đầu nhẹ, nói '谢谢您今天的时间, 期待您的好消息'. Gửi email cảm ơn trong 24 giờ tiếp theo bằng tiếng Trung — đây là điểm cộng lớn vì rất ít ứng viên Trung Quốc làm bước này.",
+    exercises: [
+      { type: "fill-blank", question: "如果有幸加入贵公司, 我会 ___ 。", answer: "全力以赴" },
+      {
+        type: "matching",
+        instruction: "Ghép cụm tiếng Trung phỏng vấn với nghĩa tiếng Việt.",
+        pairs: [
+          { chinese: "贵公司", pinyin: "guì gōngsī", english: "quý công ty (formal)" },
+          { chinese: "试用期", pinyin: "shì yòng qī", english: "thời gian thử việc" },
+          { chinese: "全力以赴", pinyin: "quán lì yǐ fù", english: "dốc toàn lực" },
+          { chinese: "期望薪资", pinyin: "qī wàng xīn zī", english: "lương kỳ vọng" }
+        ]
+      },
+      {
+        type: "translation",
+        vietnamese: "Cảm ơn quý công ty đã cho em cơ hội phỏng vấn. Nếu may mắn được gia nhập, em sẽ dốc toàn lực vì sự phát triển của công ty.",
+        chinese: "感谢贵公司给我面试的机会。如果有幸加入, 我会为公司的发展全力以赴。",
+        pinyin: "Gǎn xiè guì gōng sī gěi wǒ miàn shì de jī huì. Rú guǒ yǒu xìng jiā rù, wǒ huì wèi gōng sī de fā zhǎn quán lì yǐ fù."
+      }
+    ]
+  },
+  {
+    id: 53,
+    level: "B2",
+    category: "study_career",
+    title: "中国政府奖学金面试",
+    pinyin: "zhōng guó zhèng fǔ jiǎng xué jīn miàn shì",
+    topic: "CSC scholarship interview",
+    title_vi: "Phỏng vấn học bổng Chính phủ Trung Quốc (CSC)",
+    title_en: "Chinese Government (CSC) Scholarship interview",
+    sentences: [
+      {
+        chinese: "尊敬的各位老师, 您们好。",
+        pinyin: "Zūnjìng de gè wèi lǎoshī, nínmen hǎo.",
+        english: "Respected teachers, hello to all of you.",
+        vi: "Kính thưa các thầy cô, em xin chào các thầy cô.",
+        pronunciation_focus: ["尊敬的 → zūnjìng de (kính thưa — formal academic)", "各位 → gè wèi (mỗi vị — formal số nhiều)", "您们 → nínmen (số nhiều của 您, dùng formal)", "老师 → lǎoshī (giáo viên / thầy cô)"]
+      },
+      {
+        chinese: "我申请的是清华大学计算机科学硕士项目。",
+        pinyin: "Wǒ shēnqǐng de shì Qīnghuá Dàxué jìsuànjī kēxué shuòshì xiàngmù.",
+        english: "I am applying for the Master's program in Computer Science at Tsinghua University.",
+        vi: "Em ứng tuyển chương trình Thạc sĩ Khoa học Máy tính của Đại học Thanh Hoa.",
+        pronunciation_focus: ["申请 → shēnqǐng (xin/ứng tuyển)", "硕士 → shuòshì (thạc sĩ)", "清华 → Qīnghuá (Thanh Hoa)", "项目 → xiàngmù (chương trình; mainland; Đài Loan dùng 專案)"]
+      },
+      {
+        chinese: "我的研究方向是人工智能在越南语处理上的应用。",
+        pinyin: "Wǒ de yánjiū fāngxiàng shì réngōng zhìnéng zài Yuènányǔ chǔlǐ shàng de yìngyòng.",
+        english: "My research direction is the application of AI in Vietnamese language processing.",
+        vi: "Hướng nghiên cứu của em là ứng dụng trí tuệ nhân tạo trong xử lý tiếng Việt.",
+        pronunciation_focus: ["研究方向 → yánjiū fāngxiàng (hướng nghiên cứu)", "人工智能 → réngōng zhìnéng (AI)", "越南语 → Yuènányǔ (tiếng Việt)", "应用 → yìngyòng (ứng dụng)"]
+      },
+      {
+        chinese: "毕业后我希望回越南, 把所学应用到本国的科技发展中。",
+        pinyin: "Bìyè hòu wǒ xīwàng huí Yuènán, bǎ suǒ xué yìngyòng dào běnguó de kējì fāzhǎn zhōng.",
+        english: "After graduation, I hope to return to Vietnam and apply what I've learned to my country's tech development.",
+        vi: "Sau khi tốt nghiệp em mong trở về Việt Nam, đem những gì học được áp dụng vào sự phát triển khoa học công nghệ của đất nước.",
+        pronunciation_focus: ["所学 → suǒ xué (những gì đã học — formal)", "本国 → běn guó (nước nhà — formal)", "科技 → kējì (khoa học công nghệ)", "毕业 → bìyè (tốt nghiệp)"]
+      },
+      {
+        chinese: "请各位老师给我这个学习的机会, 我一定不会辜负厚望。",
+        pinyin: "Qǐng gè wèi lǎoshī gěi wǒ zhège xuéxí de jīhuì, wǒ yīdìng bù huì gūfù hòuwàng.",
+        english: "Please give me this opportunity to study, and I will not disappoint your high expectations.",
+        vi: "Xin các thầy cô cho em cơ hội học tập này, em nhất định sẽ không phụ kỳ vọng.",
+        pronunciation_focus: ["辜负 → gūfù (phụ lòng — formal)", "厚望 → hòuwàng (kỳ vọng cao — formal)", "学习 → xuéxí (học tập)", "机会 → jīhuì (cơ hội)"]
+      }
+    ],
+    vocab: [
+      { chinese: "奖学金", pinyin: "jiǎng xué jīn", english: "scholarship", vi: "học bổng" },
+      { chinese: "申请", pinyin: "shēn qǐng", english: "to apply", vi: "ứng tuyển / xin" },
+      { chinese: "硕士", pinyin: "shuò shì", english: "Master's degree", vi: "thạc sĩ" },
+      { chinese: "博士", pinyin: "bó shì", english: "PhD / Doctorate", vi: "tiến sĩ" },
+      { chinese: "研究方向", pinyin: "yán jiū fāng xiàng", english: "research direction", vi: "hướng nghiên cứu" },
+      { chinese: "导师", pinyin: "dǎo shī", english: "academic supervisor", vi: "giáo sư hướng dẫn" },
+      { chinese: "厚望", pinyin: "hòu wàng", english: "high expectations (formal)", vi: "kỳ vọng cao" },
+      { chinese: "辜负", pinyin: "gū fù", english: "to fail / disappoint expectations", vi: "phụ lòng" },
+      { chinese: "学术", pinyin: "xué shù", english: "academic", vi: "học thuật" },
+      { chinese: "鹏程万里", pinyin: "péng chéng wàn lǐ", english: "great future ahead (4-char idiom)", vi: "tiền đồ rộng mở" }
+    ],
+    dialogue: [
+      { speaker: "评审", chinese: "请简要介绍一下您的学术背景。", pinyin: "Qǐng jiǎnyào jièshào yīxià nín de xuéshù bèijǐng.", english: "Please briefly introduce your academic background.", vi: "Xin em giới thiệu ngắn gọn về nền tảng học thuật." },
+      { speaker: "陈氏梅", chinese: "我本科就读于河内国家大学, 主修计算机科学, GPA是3.85/4.0。", pinyin: "Wǒ běnkē jiùdú yú Hénèi Guójiā Dàxué, zhǔ xiū jìsuànjī kēxué, GPA shì sān diǎn bā wǔ bǐ sì diǎn líng.", english: "I did my undergraduate at Vietnam National University, Hanoi, majoring in Computer Science with a GPA of 3.85/4.0.", vi: "Em học đại học tại Đại học Quốc gia Hà Nội, chuyên ngành Khoa học Máy tính, GPA 3.85/4.0." },
+      { speaker: "评审", chinese: "为什么选择中国, 而不是其他国家?", pinyin: "Wèishénme xuǎnzé Zhōngguó, ér bù shì qítā guójiā?", english: "Why China instead of other countries?", vi: "Sao lại chọn Trung Quốc thay vì các nước khác?" },
+      { speaker: "陈氏梅", chinese: "中国在AI领域发展最快, 而且越中两国关系密切, 我希望成为友谊的桥梁。", pinyin: "Zhōngguó zài AI lǐngyù fāzhǎn zuì kuài, érqiě Yuè-Zhōng liǎng guó guānxi mìqiè, wǒ xīwàng chéngwéi yǒuyì de qiáoliáng.", english: "China leads in AI development, and Vietnam-China relations are close. I hope to be a bridge of friendship.", vi: "Trung Quốc dẫn đầu phát triển AI, và quan hệ Việt-Trung rất gần gũi. Em mong làm cầu nối hữu nghị." }
+    ],
+    dialogue_long: [
+      { speaker: "评审", chinese: "陈同学, 您好。请先用中文做一个三分钟的自我介绍。", pinyin: "Chén tóngxué, nín hǎo. Qǐng xiān yòng zhōngwén zuò yī gè sān fēnzhōng de zìwǒ jièshào.", english: "Hello, Chen. Please give a three-minute self-introduction in Chinese first.", vi: "Chào em Trần. Trước tiên em hãy tự giới thiệu trong ba phút bằng tiếng Trung." },
+      { speaker: "陈氏梅", chinese: "尊敬的各位老师, 您们好。我叫陈氏梅, 来自越南河内, 河内国家大学计算机科学专业本科毕业。", pinyin: "Zūnjìng de gè wèi lǎoshī, nínmen hǎo. Wǒ jiào Chén Shìméi, láizì Yuènán Hénèi, Hénèi Guójiā Dàxué jìsuànjī kēxué zhuānyè běnkē bìyè.", english: "Respected teachers, hello. My name is Tran Thi Mai, from Hanoi, Vietnam, undergraduate graduate of Computer Science at Vietnam National University, Hanoi.", vi: "Kính thưa các thầy cô, em chào các thầy cô. Em tên là Trần Thị Mai, đến từ Hà Nội Việt Nam, tốt nghiệp đại học chuyên ngành Khoa học Máy tính tại Đại học Quốc gia Hà Nội." },
+      { speaker: "评审", chinese: "您的本科成绩怎么样? 有发表过论文吗?", pinyin: "Nín de běnkē chéngjì zěnmeyàng? Yǒu fābiǎo guò lùnwén ma?", english: "How were your undergraduate grades? Have you published any papers?", vi: "Thành tích đại học của em thế nào? Đã có công bố bài báo nào chưa?" },
+      { speaker: "陈氏梅", chinese: "GPA是3.85, 专业前5%。我有一篇关于越南语自然语言处理的论文发表在ACL Workshop。", pinyin: "GPA shì sān diǎn bā wǔ, zhuānyè qián bǎi fēn zhī wǔ. Wǒ yǒu yī piān guānyú Yuènányǔ zìrán yǔyán chǔlǐ de lùnwén fābiǎo zài ACL Workshop.", english: "GPA 3.85, top 5% of my major. I have a paper on Vietnamese NLP published at an ACL Workshop.", vi: "GPA là 3.85, top 5% chuyên ngành. Em có một bài báo về xử lý ngôn ngữ tự nhiên tiếng Việt đăng tại ACL Workshop." },
+      { speaker: "评审", chinese: "您为什么选择清华大学的这个项目?", pinyin: "Nín wèishénme xuǎnzé Qīnghuá Dàxué de zhège xiàngmù?", english: "Why did you choose this Tsinghua program?", vi: "Sao em chọn chương trình này của Thanh Hoa?" },
+      { speaker: "陈氏梅", chinese: "清华的孙茂松教授在低资源语言NLP领域是国际权威, 这正是我未来想深入的方向。", pinyin: "Qīnghuá de Sūn Màosōng jiàoshòu zài dī zīyuán yǔyán NLP lǐngyù shì guójì quánwēi, zhè zhèngshì wǒ wèilái xiǎng shēnrù de fāngxiàng.", english: "Tsinghua's Professor Sun Maosong is an international authority in low-resource language NLP, exactly the area I want to pursue.", vi: "Giáo sư Tôn Mậu Tùng của Thanh Hoa là chuyên gia quốc tế trong NLP ngôn ngữ ít tài nguyên, chính là hướng em muốn đi sâu." },
+      { speaker: "评审", chinese: "如果获得奖学金, 您打算研究什么具体课题?", pinyin: "Rúguǒ huòdé jiǎngxuéjīn, nín dǎsuàn yánjiū shénme jùtǐ kètí?", english: "If you receive the scholarship, what specific topic do you plan to research?", vi: "Nếu được học bổng, em định nghiên cứu chủ đề cụ thể nào?" },
+      { speaker: "陈氏梅", chinese: "我想研究越南语-中文双向机器翻译, 重点解决越南语声调和汉字之间的对应问题。", pinyin: "Wǒ xiǎng yánjiū Yuènányǔ-zhōngwén shuāng xiàng jīqì fānyì, zhòngdiǎn jiějué Yuènányǔ shēngdiào hé hànzì zhī jiān de duìyìng wèntí.", english: "I want to research Vietnamese-Chinese bidirectional machine translation, focusing on solving the correspondence between Vietnamese tones and Chinese characters.", vi: "Em muốn nghiên cứu dịch máy song ngữ Việt-Trung hai chiều, tập trung giải quyết tương ứng giữa thanh điệu tiếng Việt và Hán tự." },
+      { speaker: "评审", chinese: "这个题目很有意义。您毕业以后有什么计划?", pinyin: "Zhège tímù hěn yǒu yìyì. Nín bìyè yǐhòu yǒu shénme jìhuà?", english: "That topic is meaningful. What are your plans after graduation?", vi: "Đề tài rất có ý nghĩa. Sau tốt nghiệp em có kế hoạch gì?" },
+      { speaker: "陈氏梅", chinese: "我会回越南, 继续在越南国家大学做研究, 并将中越两国的学术合作推向更深层次。", pinyin: "Wǒ huì huí Yuènán, jìxù zài Yuènán Guójiā Dàxué zuò yánjiū, bìng jiāng Zhōng-Yuè liǎng guó de xuéshù hézuò tuī xiàng gèng shēn céngcì.", english: "I will return to Vietnam to continue research at Vietnam National University and push China-Vietnam academic cooperation deeper.", vi: "Em sẽ về Việt Nam, tiếp tục nghiên cứu tại Đại học Quốc gia Việt Nam, và đẩy hợp tác học thuật Việt-Trung lên tầm cao hơn." },
+      { speaker: "评审", chinese: "您的中文是怎么学的? 现在水平如何?", pinyin: "Nín de zhōngwén shì zěnme xué de? Xiànzài shuǐpíng rúhé?", english: "How did you learn Chinese? What's your current level?", vi: "Tiếng Trung em học bằng cách nào? Trình độ hiện tại ra sao?" },
+      { speaker: "陈氏梅", chinese: "从大二开始在孔子学院学了四年, 暑假参加过厦门大学的语言项目。HSK六级, 280分。", pinyin: "Cóng dà èr kāishǐ zài Kǒngzǐ Xuéyuàn xué le sì nián, shǔjià cānjiā guò Xiàmén Dàxué de yǔyán xiàngmù. HSK liù jí, èr bǎi bā shí fēn.", english: "From my second year at university I studied four years at the Confucius Institute, and joined Xiamen University's language program in summer. HSK 6, score 280.", vi: "Từ năm hai em bắt đầu học bốn năm tại Học viện Khổng Tử, hè tham gia chương trình ngôn ngữ tại Đại học Hạ Môn. HSK 6, 280 điểm." },
+      { speaker: "评审", chinese: "您对中国文化最感兴趣的是什么?", pinyin: "Nín duì Zhōngguó wénhuà zuì gǎn xìngqù de shì shénme?", english: "What aspect of Chinese culture interests you most?", vi: "Văn hóa Trung Quốc, em quan tâm nhất điều gì?" },
+      { speaker: "陈氏梅", chinese: "汉字的演变, 特别是繁体到简体的过程。这背后是语言学和社会学的有趣交汇。", pinyin: "Hànzì de yǎnbiàn, tèbié shì fántǐ dào jiǎntǐ de guòchéng. Zhè bèihòu shì yǔyánxué hé shèhuìxué de yǒuqù jiāohuì.", english: "The evolution of Chinese characters, especially traditional to simplified. Behind it is a fascinating intersection of linguistics and sociology.", vi: "Sự diễn biến của Hán tự, đặc biệt là quá trình từ phồn thể sang giản thể. Đằng sau nó là sự giao thoa thú vị giữa ngôn ngữ học và xã hội học." },
+      { speaker: "评审", chinese: "好, 最后一个问题。如果未获得奖学金, 您会怎么办?", pinyin: "Hǎo, zuìhòu yī gè wèntí. Rúguǒ wèi huòdé jiǎngxuéjīn, nín huì zěnme bàn?", english: "Good, last question. If you don't receive the scholarship, what will you do?", vi: "Tốt, câu hỏi cuối. Nếu không nhận được học bổng, em sẽ làm gì?" },
+      { speaker: "陈氏梅", chinese: "我会继续提升自己, 明年再申请。我对中国学习的决心不会因为一次结果而改变。", pinyin: "Wǒ huì jìxù tíshēng zìjǐ, míngnián zài shēnqǐng. Wǒ duì Zhōngguó xuéxí de juéxīn bù huì yīnwèi yī cì jiéguǒ ér gǎibiàn.", english: "I will continue improving and apply again next year. My determination to study in China won't change because of one outcome.", vi: "Em sẽ tiếp tục nâng cao bản thân, năm sau ứng tuyển lại. Quyết tâm học ở Trung Quốc của em không thay đổi vì một lần kết quả." },
+      { speaker: "评审", chinese: "好的, 谢谢您的回答。我们会在两周内通知结果。", pinyin: "Hǎo de, xièxie nín de huídá. Wǒmen huì zài liǎng zhōu nèi tōngzhī jiéguǒ.", english: "Alright, thank you for your answers. We will notify you of the results within two weeks.", vi: "Được rồi, cảm ơn em đã trả lời. Chúng tôi sẽ thông báo kết quả trong hai tuần." }
+    ],
+    roleplay_prompts: [
+      "Đóng vai bạn — sinh viên Việt Nam ứng tuyển CSC — đối diện ban giám khảo gồm 3 giáo sư Trung Quốc. Hãy tự giới thiệu trong 3 phút theo cấu trúc 'tổng-phân-tổng': mở đầu bằng tóm tắt, kể chi tiết học vấn + nghiên cứu, kết thúc bằng cam kết về Trung Quốc và đóng góp cho Việt Nam.",
+      "Giám khảo hỏi 'tại sao chọn ngành này' nhưng bạn cảm thấy câu trả lời chuẩn bị sẵn không phù hợp với mạch hội thoại. Hãy điều chỉnh, kết nối với câu hỏi cụ thể của giám khảo, dùng cụm '让我重新阐述' (để em diễn đạt lại) — tránh đọc thuộc lòng cứng nhắc.",
+      "Cuối phỏng vấn, giám khảo hỏi 'em có câu hỏi gì không'. Hãy chuẩn bị 2 câu hỏi chất lượng: một về chương trình học cụ thể (lab nào, supervisor có sẵn không), một về đời sống sinh viên Việt Nam tại trường. Tránh hỏi về visa, tiền sinh hoạt — đó là việc của 留学服务中心."
+    ],
+    register_notes: "Phỏng vấn học bổng CSC dùng register academic-formal cao nhất — cao hơn cả phỏng vấn xin việc. Cụm mở đầu bắt buộc '尊敬的各位老师, 您们好' (kính thưa các thầy cô, chào các thầy cô) — KHÔNG '老师们好' đơn lẻ. Khi nhắc đến mình, dùng 我 hoặc tên đầy đủ kiểu '陈氏梅' (Trần Thị Mai), KHÔNG dùng nickname tiếng Anh.\n\nGọi giáo sư bằng họ + 教授 (jiàoshòu — giáo sư): '王教授', '李教授'. Nếu không biết tên, gọi '老师'. KHÔNG gọi '先生/女士' (sir/madam) — quá generic. Khi nhắc đến trường, dùng tên đầy đủ trong lần đầu '清华大学', sau đó có thể '清华' nhưng KHÔNG '清华大' (cắt sai).\n\nCác cụm formal academic: 学术背景 (xuéshù bèijǐng — nền tảng học thuật), 研究方向 (yánjiū fāngxiàng — hướng nghiên cứu), 发表论文 (fābiǎo lùnwén — công bố bài báo), 厚望 (hòuwàng — kỳ vọng cao), 不会辜负 (bù huì gūfù — không phụ lòng). Câu kết bắt buộc có '请各位老师...' và 'cam kết tương lai'.",
+    idiom_glosses: [
+      {
+        idiom: "鹏程万里",
+        literal: "đường chim bằng vạn dặm (péng chéng wàn lǐ)",
+        meaning: "Tiền đồ rộng mở — tương lai xa và lớn. Cụm chuẩn để diễn tả khát vọng học thuật của ứng viên: '希望能在贵校鹏程万里'. Nguồn gốc: Trang Tử kể về chim bằng bay vạn dặm về phương nam.",
+        example: "希望能在贵校的支持下鹏程万里。"
+      },
+      {
+        idiom: "勤能补拙",
+        literal: "cần cù bù đắp được sự vụng về (qín néng bǔ zhuō)",
+        meaning: "Chăm chỉ bù được sự kém cỏi. Cụm khiêm tốn lý tưởng cho phỏng vấn — thừa nhận có hạn chế nhưng cam kết bù bằng nỗ lực. Tránh dùng cụm này nếu bạn đang khoe điểm cao.",
+        example: "我相信勤能补拙, 一定可以跟上课程。"
+      },
+      {
+        idiom: "精益求精",
+        literal: "tinh đã tinh còn đòi tinh hơn (jīng yì qiú jīng)",
+        meaning: "Không ngừng cầu toàn — luôn muốn cải thiện hơn nữa. Cụm dùng khi nói về thái độ làm việc/nghiên cứu: '我对自己的研究始终精益求精'. Đặc biệt phù hợp ngữ cảnh academic.",
+        example: "我对自己的研究始终精益求精。"
+      },
+      {
+        idiom: "学海无涯",
+        literal: "biển học không bờ (xué hǎi wú yá)",
+        meaning: "Sự học không có giới hạn — biển kiến thức mênh mông. Cụm khiêm tốn dùng cuối phỏng vấn để thể hiện thái độ học hỏi liên tục: '学海无涯, 我会一直努力'.",
+        example: "学海无涯, 我会一直努力下去。"
+      }
+    ],
+    cultural_notes_vi: "Phỏng vấn CSC khác biệt với phỏng vấn xin việc ở ba điểm cốt lõi: (1) Trọng tâm là 'cam kết về Trung Quốc' và 'đóng góp cho Việt Nam' — KHÔNG phải năng lực cá nhân. Giám khảo CSC là cán bộ ngoại giao + giáo sư, họ đánh giá 'bạn có phải đại sứ tốt cho quan hệ Việt-Trung không'. Câu trả lời quan trọng nhất: 毕业后我会回越南做什么. Nói 'em muốn ở lại Trung Quốc làm việc' = mất học bổng ngay (CSC yêu cầu về nước). (2) Phải biết một thứ về 'Trung Quốc cụ thể' ngoài chương trình học — văn hóa, lịch sử, một thành phố, một tác giả. Cho thấy bạn quan tâm Trung Quốc, không chỉ học bổng. (3) Tuyệt đối tránh đề cập 'tôi không có tiền học' — CSC là quan hệ đối ngoại, không phải từ thiện. Lý do nên là 'cơ hội học tập với các giáo sư hàng đầu', KHÔNG 'không có tiền'.\n\nVề 关系 với giáo sư trước: nếu bạn đã liên lạc email với supervisor tiềm năng và có hồi đáp tích cực, hãy đề cập trong phỏng vấn — '我已经和孙教授通过邮件交流, 他对我的题目很感兴趣' (em đã trao đổi qua email với GS Tôn, ông ấy quan tâm đề tài của em). Đây là điểm cộng lớn.\n\nGiám khảo có thể test khả năng tiếng Trung bằng câu hỏi bất ngờ về tin tức, ẩm thực, lịch sử Trung Quốc. Chuẩn bị trước 5-10 câu trả lời ngắn về văn hóa Trung Quốc bạn yêu thích — '我喜欢苏轼的诗', '我对长城的历史感兴趣'.",
+    tip_advice_vi: "(1) MẶC chỉnh tề, đứng đắn, không mặc áo in sao Việt Nam (cờ, anh hùng dân tộc) — giám khảo có thể không quen, gây phản ứng ngược. Sơ mi trắng + chân váy đen / quần tây đen là an toàn. (2) Mang theo bản in CV bằng tiếng Trung và tiếng Anh, kẹp file gọn gàng — giám khảo có thể yêu cầu. Bản tiếng Trung dùng tên Hán tự (Trần Thị Mai → 陈氏梅), KHÔNG để pinyin. (3) Mở đầu '尊敬的各位老师, 您们好' kèm cúi đầu nhẹ. Đây là chi tiết nhỏ nhưng tạo ấn tượng formal academic. (4) Khi không biết câu trả lời, KHÔNG bịa. Nói '这个问题我之前没有深入思考过, 但我可以从X的角度尝试回答' (câu này em chưa suy nghĩ sâu, nhưng em có thể thử trả lời từ góc độ X). Sự thật + thử nghiệm > bịa. (5) Câu hỏi 'tại sao Trung Quốc, không phải Mỹ/Anh/Úc' — chuẩn bị KỸ. Trả lời sai là CSC sẽ nghĩ Trung Quốc là 'lựa chọn dự phòng'. Mẫu: '中国在AI领域发展最快, 而且越中文化相近, 我适应得更快'. (6) Sau phỏng vấn, gửi thư cảm ơn bằng tiếng Trung tới ban tổ chức trong 24 giờ — đây là cử chỉ rất ít người Việt làm, gây ấn tượng tốt. (7) Mẹo phát âm: '尊敬的' (zūnjìng de) — z là âm khô như 'tz' không phải 'z' tiếng Anh; '清华' Qīnghuá thanh 1-2 (cao bằng-lên), tránh đọc thanh 1-1 thành tên không đúng.",
+    exercises: [
+      { type: "fill-blank", question: "请各位老师给我学习的机会, 我一定不会 ___ 厚望。", answer: "辜负" },
+      {
+        type: "matching",
+        instruction: "Ghép cụm tiếng Trung học bổng với nghĩa tiếng Việt.",
+        pairs: [
+          { chinese: "硕士", pinyin: "shuò shì", english: "thạc sĩ" },
+          { chinese: "导师", pinyin: "dǎo shī", english: "giáo sư hướng dẫn" },
+          { chinese: "鹏程万里", pinyin: "péng chéng wàn lǐ", english: "tiền đồ rộng mở" },
+          { chinese: "学海无涯", pinyin: "xué hǎi wú yá", english: "biển học không bờ" }
+        ]
+      },
+      {
+        type: "translation",
+        vietnamese: "Sau khi tốt nghiệp em sẽ về Việt Nam, áp dụng kiến thức để thúc đẩy hợp tác học thuật Việt-Trung.",
+        chinese: "毕业后我会回越南, 应用所学推动中越学术合作。",
+        pinyin: "Bì yè hòu wǒ huì huí Yuè nán, yìng yòng suǒ xué tuī dòng zhōng yuè xué shù hé zuò."
+      }
+    ]
+  },
+  {
+    id: 54,
+    level: "B2",
+    category: "study_career",
+    title: "和导师讨论毕业论文选题",
+    pinyin: "hé dǎo shī tǎo lùn bì yè lùn wén xuǎn tí",
+    topic: "Thesis topic discussion with supervisor",
+    title_vi: "Thảo luận đề tài luận văn tốt nghiệp với giáo sư hướng dẫn",
+    title_en: "Discussing graduation thesis topic with supervisor",
+    sentences: [
+      {
+        chinese: "王教授, 我想跟您讨论一下我的毕业论文选题。",
+        pinyin: "Wáng jiàoshòu, wǒ xiǎng gēn nín tǎolùn yīxià wǒ de bìyè lùnwén xuǎntí.",
+        english: "Professor Wang, I'd like to discuss my graduation thesis topic with you.",
+        vi: "Giáo sư Vương, em muốn thảo luận với thầy về đề tài luận văn tốt nghiệp của em.",
+        pronunciation_focus: ["教授 → jiàoshòu (giáo sư — họ + chức danh)", "讨论 → tǎolùn (thảo luận)", "选题 → xuǎntí (chọn đề tài)", "毕业论文 → bìyè lùnwén (luận văn tốt nghiệp)"]
+      },
+      {
+        chinese: "我目前考虑了三个方向, 想听听您的意见。",
+        pinyin: "Wǒ mùqián kǎolǜ le sān gè fāngxiàng, xiǎng tīngting nín de yìjiàn.",
+        english: "I'm currently considering three directions and want to hear your opinion.",
+        vi: "Hiện em đang cân nhắc ba hướng, muốn nghe ý kiến của thầy.",
+        pronunciation_focus: ["考虑 → kǎolǜ (cân nhắc)", "方向 → fāngxiàng (hướng đi)", "意见 → yìjiàn (ý kiến)", "目前 → mùqián (hiện tại)"]
+      },
+      {
+        chinese: "第一个方向是越南语NLP, 第二个是中越机器翻译, 第三个是低资源语言模型。",
+        pinyin: "Dì yī gè fāngxiàng shì Yuènányǔ NLP, dì èr gè shì zhōng-yuè jīqì fānyì, dì sān gè shì dī zīyuán yǔyán móxíng.",
+        english: "The first direction is Vietnamese NLP, second is Chinese-Vietnamese machine translation, third is low-resource language models.",
+        vi: "Hướng thứ nhất là NLP tiếng Việt, thứ hai là dịch máy Trung-Việt, thứ ba là mô hình ngôn ngữ ít tài nguyên.",
+        pronunciation_focus: ["NLP → cụm âm tiếng Anh giữ nguyên", "机器翻译 → jīqì fānyì (dịch máy)", "低资源 → dī zīyuán (ít tài nguyên)", "模型 → móxíng (mô hình)"]
+      },
+      {
+        chinese: "您觉得哪个方向更有研究价值, 也更适合我的背景?",
+        pinyin: "Nín juéde nǎ gè fāngxiàng gèng yǒu yánjiū jiàzhí, yě gèng shìhé wǒ de bèijǐng?",
+        english: "Which direction do you think has more research value and suits my background better?",
+        vi: "Thầy thấy hướng nào có giá trị nghiên cứu hơn, và phù hợp với nền tảng của em hơn?",
+        pronunciation_focus: ["研究价值 → yánjiū jiàzhí (giá trị nghiên cứu)", "适合 → shìhé (phù hợp)", "背景 → bèijǐng (nền tảng)", "您觉得 → nín juéde"]
+      },
+      {
+        chinese: "我会根据您的建议进一步缩小范围, 然后开始写开题报告。",
+        pinyin: "Wǒ huì gēnjù nín de jiànyì jìnyībù suōxiǎo fànwéi, ránhòu kāishǐ xiě kāití bàogào.",
+        english: "I'll further narrow the scope based on your suggestions, then start writing the proposal.",
+        vi: "Em sẽ thu hẹp phạm vi theo gợi ý của thầy, sau đó bắt đầu viết đề cương.",
+        pronunciation_focus: ["建议 → jiànyì (gợi ý / kiến nghị)", "缩小范围 → suōxiǎo fànwéi (thu hẹp phạm vi)", "开题报告 → kāití bàogào (đề cương / proposal)", "进一步 → jìnyībù (đi thêm bước nữa)"]
+      }
+    ],
+    vocab: [
+      { chinese: "毕业论文", pinyin: "bì yè lùn wén", english: "graduation thesis", vi: "luận văn tốt nghiệp" },
+      { chinese: "选题", pinyin: "xuǎn tí", english: "topic selection", vi: "chọn đề tài" },
+      { chinese: "开题报告", pinyin: "kāi tí bào gào", english: "research proposal", vi: "đề cương nghiên cứu" },
+      { chinese: "导师", pinyin: "dǎo shī", english: "supervisor / advisor", vi: "giáo sư hướng dẫn" },
+      { chinese: "文献综述", pinyin: "wén xiàn zōng shù", english: "literature review", vi: "tổng quan tài liệu" },
+      { chinese: "研究方法", pinyin: "yán jiū fāng fǎ", english: "research methodology", vi: "phương pháp nghiên cứu" },
+      { chinese: "实验数据", pinyin: "shí yàn shù jù", english: "experimental data", vi: "dữ liệu thí nghiệm" },
+      { chinese: "答辩", pinyin: "dá biàn", english: "thesis defense", vi: "bảo vệ luận văn" },
+      { chinese: "有的放矢", pinyin: "yǒu dì fàng shǐ", english: "have a clear target (4-char idiom)", vi: "có mục tiêu rõ ràng" },
+      { chinese: "集思广益", pinyin: "jí sī guǎng yì", english: "draw on collective wisdom", vi: "tập hợp ý kiến rộng rãi" }
+    ],
+    dialogue: [
+      { speaker: "梅", chinese: "王教授, 您现在方便讨论一下我的论文吗?", pinyin: "Wáng jiàoshòu, nín xiànzài fāngbiàn tǎolùn yīxià wǒ de lùnwén ma?", english: "Professor Wang, is now a good time to discuss my thesis?", vi: "Giáo sư Vương, bây giờ thầy có tiện thảo luận về luận văn của em không?" },
+      { speaker: "王教授", chinese: "可以, 你说说现在的进展。", pinyin: "Kěyǐ, nǐ shuōshuo xiànzài de jìnzhǎn.", english: "Yes, tell me about the current progress.", vi: "Được, em nói tiến độ hiện tại đi." },
+      { speaker: "梅", chinese: "我看了二十多篇论文, 觉得越南语NLP方向最有意思。", pinyin: "Wǒ kàn le èrshí duō piān lùnwén, juéde Yuènányǔ NLP fāngxiàng zuì yǒu yìsi.", english: "I read over twenty papers and think the Vietnamese NLP direction is most interesting.", vi: "Em đã đọc hơn hai mươi bài, thấy hướng NLP tiếng Việt thú vị nhất." },
+      { speaker: "王教授", chinese: "那范围还是太大, 需要再具体一些。", pinyin: "Nà fànwéi háishì tài dà, xūyào zài jùtǐ yīxiē.", english: "That's still too broad — needs to be more specific.", vi: "Vậy phạm vi vẫn quá rộng, cần cụ thể hơn nữa." }
+    ],
+    dialogue_long: [
+      { speaker: "梅", chinese: "王教授, 您好。这是您让我一周前准备的三个选题方向, 我整理成PPT了。", pinyin: "Wáng jiàoshòu, nín hǎo. Zhè shì nín ràng wǒ yī zhōu qián zhǔnbèi de sān gè xuǎntí fāngxiàng, wǒ zhěnglǐ chéng PPT le.", english: "Hello Professor Wang. These are the three topic directions you asked me to prepare a week ago — I've organized them into a PPT.", vi: "Chào thầy Vương. Đây là ba hướng đề tài thầy bảo em chuẩn bị tuần trước, em đã làm thành PPT." },
+      { speaker: "王教授", chinese: "好, 你简要说一下每个的核心问题。", pinyin: "Hǎo, nǐ jiǎnyào shuō yīxià měi gè de héxīn wèntí.", english: "Good, briefly state the core question of each.", vi: "Được, em nói ngắn gọn câu hỏi cốt lõi của từng hướng đi." },
+      { speaker: "梅", chinese: "第一个: 越南语命名实体识别在医学领域的应用。第二个: 中越机器翻译中文化词的处理。第三个: 低资源越南方言的语音识别。", pinyin: "Dì yī gè: Yuènányǔ mìngmíng shítǐ shíbié zài yīxué lǐngyù de yìngyòng. Dì èr gè: Zhōng-yuè jīqì fānyì zhōng wénhuà cí de chǔlǐ. Dì sān gè: Dī zīyuán Yuènán fāngyán de yǔyīn shíbié.", english: "First: Vietnamese named entity recognition in medical domain. Second: handling cultural terms in Chinese-Vietnamese MT. Third: speech recognition for low-resource Vietnamese dialects.", vi: "Một: Nhận diện thực thể tên trong lĩnh vực y học tiếng Việt. Hai: Xử lý từ văn hóa trong dịch máy Trung-Việt. Ba: Nhận diện giọng nói các phương ngữ Việt ít tài nguyên." },
+      { speaker: "王教授", chinese: "这三个题目都不错, 但难度差别很大。你自己最看好哪个?", pinyin: "Zhè sān gè tímù dōu bùcuò, dàn nándù chābié hěn dà. Nǐ zìjǐ zuì kànhǎo nǎ gè?", english: "All three are decent, but the difficulty varies greatly. Which do you favor yourself?", vi: "Cả ba đều ổn, nhưng độ khó chênh lệch lớn. Em tự thấy thích nhất hướng nào?" },
+      { speaker: "梅", chinese: "我比较倾向第二个, 因为我有越南文化背景, 数据收集也比较容易。", pinyin: "Wǒ bǐjiào qīngxiàng dì èr gè, yīnwèi wǒ yǒu Yuènán wénhuà bèijǐng, shùjù shōují yě bǐjiào róngyì.", english: "I lean toward the second, because I have Vietnamese cultural background and data collection would be easier.", vi: "Em nghiêng về hướng hai, vì em có nền văn hóa Việt Nam, thu thập dữ liệu cũng dễ hơn." },
+      { speaker: "王教授", chinese: "选题要有的放矢。文化词处理这个方向, 最近三年有哪些代表性论文?", pinyin: "Xuǎntí yào yǒu dì fàng shǐ. Wénhuà cí chǔlǐ zhège fāngxiàng, zuìjìn sān nián yǒu nǎxiē dàibiǎo xìng lùnwén?", english: "Topic selection must have a clear target. What are the representative papers on cultural term processing in the past three years?", vi: "Chọn đề tài phải có mục tiêu rõ. Hướng xử lý từ văn hóa, ba năm gần đây có những bài báo tiêu biểu nào?" },
+      { speaker: "梅", chinese: "ACL 2023有一篇关于中日文化词翻译的, 还有清华去年的一篇用大语言模型做文化适配。", pinyin: "ACL 2023 yǒu yī piān guānyú zhōng-rì wénhuà cí fānyì de, hái yǒu Qīnghuá qùnián de yī piān yòng dà yǔyán móxíng zuò wénhuà shìpèi.", english: "ACL 2023 has one on Chinese-Japanese cultural term translation, plus Tsinghua's last year used LLMs for cultural adaptation.", vi: "ACL 2023 có một bài về dịch từ văn hóa Trung-Nhật, và Thanh Hoa năm ngoái có bài dùng mô hình ngôn ngữ lớn để thích ứng văn hóa." },
+      { speaker: "王教授", chinese: "好, 那你的创新点在哪里? 别人没做过的是什么?", pinyin: "Hǎo, nà nǐ de chuàngxīn diǎn zài nǎlǐ? Biérén méi zuò guò de shì shénme?", english: "Good. So where is your innovation? What has nobody done before?", vi: "Được, vậy điểm sáng tạo của em ở đâu? Cái mà người khác chưa làm là gì?" },
+      { speaker: "梅", chinese: "中越文化词在汉源词上有特殊重叠, 但词义已经分化。这个对比维度还没有专门的研究。", pinyin: "Zhōng-yuè wénhuà cí zài hàn yuán cí shàng yǒu tèshū chóngdié, dàn cíyì yǐjīng fēnhuà. Zhège duìbǐ wéidù hái méiyǒu zhuānmén de yánjiū.", english: "Chinese-Vietnamese cultural terms have special overlap on Sino-origin words, but meanings have diverged. This contrast dimension hasn't been specifically researched.", vi: "Từ văn hóa Trung-Việt có chồng chéo đặc biệt ở từ Hán gốc, nhưng nghĩa đã phân hóa. Chiều đối chiếu này chưa có nghiên cứu chuyên sâu." },
+      { speaker: "王教授", chinese: "这个角度很有意思, 也有学术价值。你打算怎么收集数据?", pinyin: "Zhège jiǎodù hěn yǒu yìsi, yě yǒu xuéshù jiàzhí. Nǐ dǎsuàn zěnme shōují shùjù?", english: "That angle is interesting and has academic value. How do you plan to collect data?", vi: "Góc nhìn này rất thú vị và có giá trị học thuật. Em định thu thập dữ liệu thế nào?" },
+      { speaker: "梅", chinese: "我打算从越南文学经典和中文古文中各选一千个文化词, 人工标注语义对应关系。", pinyin: "Wǒ dǎsuàn cóng Yuènán wénxué jīngdiǎn hé zhōngwén gǔwén zhōng gè xuǎn yīqiān gè wénhuà cí, réngōng biāozhù yǔyì duìyìng guānxi.", english: "I plan to select a thousand cultural terms each from Vietnamese literary classics and Chinese classical texts, manually annotating semantic correspondence.", vi: "Em định chọn 1000 từ văn hóa từ kinh điển văn học Việt và 1000 từ cổ văn Trung, gắn nhãn tương ứng ngữ nghĩa thủ công." },
+      { speaker: "王教授", chinese: "人工标注一千对会很辛苦, 你最好集思广益, 找两三个同学一起。", pinyin: "Réngōng biāozhù yīqiān duì huì hěn xīnkǔ, nǐ zuìhǎo jí sī guǎng yì, zhǎo liǎng sān gè tóngxué yīqǐ.", english: "Manual annotation of a thousand pairs will be exhausting — better to draw on collective wisdom and find two or three classmates to help.", vi: "Gắn nhãn 1000 cặp thủ công sẽ rất mệt, em nên tập hợp ý kiến rộng rãi, tìm hai ba bạn cùng làm." },
+      { speaker: "梅", chinese: "好的, 我会和阮同学还有黄同学商量。他们都对越南文学感兴趣。", pinyin: "Hǎo de, wǒ huì hé Ruǎn tóngxué hái yǒu Huáng tóngxué shāngliang. Tāmen dōu duì Yuènán wénxué gǎn xìngqù.", english: "Okay, I'll discuss with classmate Nguyen and classmate Hoang. Both are interested in Vietnamese literature.", vi: "Vâng, em sẽ thảo luận với bạn Nguyễn và bạn Hoàng. Cả hai đều quan tâm văn học Việt." },
+      { speaker: "王教授", chinese: "另外, 你这周内把开题报告大纲发给我, 我看完一起讨论。", pinyin: "Lìngwài, nǐ zhè zhōu nèi bǎ kāití bàogào dàgāng fā gěi wǒ, wǒ kàn wán yīqǐ tǎolùn.", english: "Also, send me the proposal outline within this week, I'll read it and we'll discuss.", vi: "Ngoài ra, em gửi em đề cương trong tuần này, thầy đọc xong sẽ thảo luận cùng." },
+      { speaker: "梅", chinese: "好, 我周五前一定发给您。请问大纲需要包括哪些部分?", pinyin: "Hǎo, wǒ zhōuwǔ qián yīdìng fā gěi nín. Qǐng wèn dàgāng xūyào bāokuò nǎxiē bùfèn?", english: "Okay, I'll send it before Friday. May I ask which sections the outline should include?", vi: "Vâng, em chắc chắn gửi trước thứ Sáu. Cho em hỏi đề cương cần bao gồm phần nào?" },
+      { speaker: "王教授", chinese: "至少要有: 研究背景、文献综述、研究问题、方法、预期成果、时间计划。每部分一页就够。", pinyin: "Zhìshǎo yào yǒu: yánjiū bèijǐng, wénxiàn zōngshù, yánjiū wèntí, fāngfǎ, yùqī chéngguǒ, shíjiān jìhuà. Měi bùfèn yī yè jiù gòu.", english: "At minimum: background, literature review, research questions, methodology, expected outcomes, timeline. One page per section is enough.", vi: "Ít nhất phải có: nền tảng nghiên cứu, tổng quan tài liệu, câu hỏi nghiên cứu, phương pháp, kết quả dự kiến, kế hoạch thời gian. Mỗi phần một trang là đủ." },
+      { speaker: "梅", chinese: "明白了, 谢谢您的指导。我会认真准备。", pinyin: "Míngbái le, xièxie nín de zhǐdǎo. Wǒ huì rènzhēn zhǔnbèi.", english: "Understood, thank you for your guidance. I'll prepare carefully.", vi: "Em hiểu rồi, cảm ơn thầy đã chỉ bảo. Em sẽ chuẩn bị nghiêm túc." }
+    ],
+    roleplay_prompts: [
+      "Đóng vai sinh viên trình bày đề tài luận văn với giáo sư khó tính. Giáo sư bác bỏ hai trong ba hướng. Hãy không phòng thủ, lắng nghe lý do, và đề xuất điều chỉnh hướng còn lại theo gợi ý của giáo sư — dùng cụm '我会按照您的建议调整' và '让我重新想想'.",
+      "Giáo sư hỏi 'điểm sáng tạo của em ở đâu' nhưng bạn chưa thực sự rõ. Đừng nói dối. Dùng cụm '这正是我想跟您讨论的地方' (đây chính là điểm em muốn thảo luận với thầy) — chuyển từ phòng thủ sang hỏi thẳng. Giáo sư Trung Quốc đánh giá cao sinh viên dám thừa nhận chưa biết.",
+      "Bạn đã viết đề cương nhưng cảm thấy phương pháp chưa đủ mạnh. Hẹn gặp giáo sư để xin ý kiến. Hãy đóng vai chuẩn bị câu mở đầu, mô tả vấn đề cụ thể (KHÔNG nói 'em không biết phải làm gì'), và 2-3 phương án bạn đã nghĩ tới. Giáo sư đánh giá cao sinh viên đến với câu hỏi cụ thể, không đến với khoảng trống."
+    ],
+    register_notes: "Đối thoại với giáo sư hướng dẫn giữ register 您 toàn bộ — kể cả nếu thầy có đề nghị 'cứ gọi tôi là Lão Vương' (老王 — colloquial), bạn vẫn giữ '王教授' trong các cuộc trao đổi học thuật chính thức. Sinh viên Trung Quốc có thể chuyển sang 'Lão sư' khi thân hơn, nhưng sinh viên nước ngoài nên giữ formal lâu hơn — vì văn hóa khác nên giáo sư mong bạn giữ khoảng cách lễ độ.\n\nCác cụm formal academic bắt buộc: 请教 (qǐngjiào — xin được thỉnh giáo, dùng khi hỏi câu khó), 不吝赐教 (bù lìn cì jiào — xin thầy không tiếc lời chỉ bảo, dùng cuối email/đầu cuộc gặp formal), 您的建议 (nín de jiànyì — gợi ý của thầy, KHÔNG '你的意见'), 进一步 (jìnyībù — đi thêm bước nữa).\n\nKhi không đồng ý với giáo sư: KHÔNG dùng '我不同意' thẳng. Dùng '我有一些不同的想法, 请您看看是否合理' (em có vài suy nghĩ khác, xin thầy xem có hợp lý không) — chuyển từ đối đầu sang xin ý kiến. Giáo sư Trung Quốc đánh giá cao sinh viên có chính kiến nhưng biết cách thể hiện nhẹ nhàng.\n\nTránh: (a) Đem theo điện thoại đặt trên bàn — bị coi là không tôn trọng; (b) Cắt lời khi thầy đang giải thích; (c) Trả lời 'em không biết' trống không — luôn kèm '让我去查一下再回复您'.",
+    idiom_glosses: [
+      {
+        idiom: "有的放矢",
+        literal: "có đích thì bắn tên (yǒu dì fàng shǐ)",
+        meaning: "Có mục tiêu rõ ràng — không bắn tên vu vơ. Cụm chuẩn giáo sư dùng để khuyên sinh viên thu hẹp đề tài: '选题要有的放矢, 不能太宽泛'. Khi nghe thầy nói cụm này = đề tài bạn còn quá rộng, cần cụ thể hơn.",
+        example: "选题要有的放矢, 不能太宽泛。"
+      },
+      {
+        idiom: "集思广益",
+        literal: "tập hợp tư duy, làm rộng lợi ích (jí sī guǎng yì)",
+        meaning: "Tập hợp ý kiến rộng rãi để có lợi ích lớn — làm việc nhóm, không một mình. Giáo sư khuyên sinh viên không tự ôm đề tài quá lớn: 'một mình làm sẽ chậm, hãy tìm bạn cùng nhau'.",
+        example: "你最好集思广益, 找两三个同学一起做。"
+      },
+      {
+        idiom: "推陈出新",
+        literal: "đẩy cũ ra, đưa mới vào (tuī chén chū xīn)",
+        meaning: "Loại bỏ cái cũ, đưa cái mới — tinh thần đổi mới trong nghiên cứu. Giáo sư Trung Quốc đặc biệt thích sinh viên làm được điều này: kế thừa nhưng có sáng tạo. Cụm dùng khi mô tả contribution của thesis.",
+        example: "好的研究要在前人基础上推陈出新。"
+      },
+      {
+        idiom: "锲而不舍",
+        literal: "khắc mà không bỏ (qiè ér bù shě)",
+        meaning: "Kiên trì không bỏ cuộc — khắc đá không ngừng. Cụm dùng để miêu tả thái độ làm thesis. Khi giáo sư nói '希望你锲而不舍' = thầy đang động viên bạn kiên trì qua khó khăn.",
+        example: "做研究最重要的是锲而不舍。"
+      }
+    ],
+    cultural_notes_vi: "Quan hệ giáo sư-học trò ở Trung Quốc đặc biệt hơn ở Việt Nam — không chỉ là quan hệ học thuật mà gần như quan hệ 'sư phụ-đệ tử'. Bốn nguyên tắc cốt lõi: (1) Giáo sư sẽ theo dõi bạn ngay cả sau khi tốt nghiệp — viết thư giới thiệu, kết nối công việc, mời về hội thảo. Vì vậy đầu tư vào quan hệ này = đầu tư dài hạn. (2) KHÔNG đổi giáo sư hướng dẫn giữa chừng trừ khi cực kỳ nghiêm trọng — bị coi là 'phản bội' (背叛 bèipàn). Nếu thực sự không hợp, phải làm qua trưởng khoa, không tự đi tìm thầy khác. (3) Thầy có thể yêu cầu bạn phụ việc cá nhân (mua sách, đặt vé hội thảo) — đây không phải lạm dụng mà là cách kiểm tra 'người có biết điều không'. Hợp tác = được dạy nhiều hơn. Từ chối thẳng = mất cơ hội. (4) Quà tặng đầu năm/tết Trung Thu — không bắt buộc nhưng được đánh giá cao. Quà nhỏ từ Việt Nam (cà phê, lụa) = lý tưởng. Đắt tiền = phản tác dụng (bị nghi hối lộ).\n\nVề thesis: chủ đề nghiên cứu thường là 'nửa của thầy, nửa của trò'. Thầy gợi ý hướng lớn (vì nó liên quan đến project quốc gia / quỹ nghiên cứu của thầy), bạn cụ thể hóa. Đừng đến cuộc gặp đầu với 'em đã quyết tâm làm X' — cứng quá. Nói 'em đang cân nhắc 3 hướng, muốn nghe thầy' = thầy có không gian định hình.\n\nNếu thesis của bạn tham gia project quốc gia của thầy, dữ liệu/code có thể cần ký NDA — KHÔNG được đăng GitHub public. Hỏi rõ trước khi làm, đừng giả định standard quốc tế.",
+    tip_advice_vi: "(1) Hẹn gặp giáo sư qua email TRANG TRỌNG, không qua WeChat trừ khi thầy đã cho phép. Tiêu đề: '关于毕业论文选题的请教 — 学生陈氏梅' (về việc xin thỉnh giáo đề tài luận văn — sinh viên Trần Thị Mai). (2) Đến đúng giờ — nếu trễ phút nào, gửi tin nhắn xin lỗi ngay. Đến SỚM 5-10 phút, đợi trước văn phòng. (3) Mang theo vở ghi chép VÀ thiết bị ghi âm (xin phép trước nếu dùng). Thầy nói nhanh, có nhiều cụm chuyên môn — không kịp ghi sẽ mất thông tin. (4) Đầu cuộc gặp, mở bằng câu cảm ơn cụ thể: '感谢您上次给我的反馈, 我已经按照您的建议修改了' (cảm ơn phản hồi lần trước của thầy, em đã sửa theo gợi ý). Đừng vào thẳng vấn đề mới — thầy sẽ cảm thấy mình chỉ là công cụ. (5) Khi không hiểu, KHÔNG gật đầu giả vờ. Hỏi '不好意思, 您能再说一遍吗?' hoặc '让我确认一下我的理解'. Giáo sư Trung Quốc tôn trọng sinh viên hỏi lại hơn là sinh viên giả vờ hiểu rồi sai. (6) Cuối cuộc gặp, tóm tắt 3 việc cần làm tiếp: '我接下来会做ABC, 下周X前向您汇报'. Đây là dấu hiệu chuyên nghiệp đặc biệt mạnh. (7) Sau cuộc gặp, gửi email tóm tắt trong 24h: nội dung thảo luận, action items, deadline. Tiêu đề '与王教授会议纪要 — DD/MM' — đây là chuẩn academic Trung Quốc.",
+    exercises: [
+      { type: "fill-blank", question: "选题要 ___ , 不能太宽泛。", answer: "有的放矢" },
+      {
+        type: "matching",
+        instruction: "Ghép cụm tiếng Trung học thuật với nghĩa tiếng Việt.",
+        pairs: [
+          { chinese: "导师", pinyin: "dǎo shī", english: "giáo sư hướng dẫn" },
+          { chinese: "开题报告", pinyin: "kāi tí bào gào", english: "đề cương / proposal" },
+          { chinese: "文献综述", pinyin: "wén xiàn zōng shù", english: "tổng quan tài liệu" },
+          { chinese: "锲而不舍", pinyin: "qiè ér bù shě", english: "kiên trì không bỏ cuộc" }
+        ]
+      },
+      {
+        type: "translation",
+        vietnamese: "Em sẽ thu hẹp đề tài theo gợi ý của thầy, gửi đề cương vào tuần sau.",
+        chinese: "我会按照您的建议缩小选题, 下周把开题报告发给您。",
+        pinyin: "Wǒ huì àn zhào nín de jiàn yì suō xiǎo xuǎn tí, xià zhōu bǎ kāi tí bào gào fā gěi nín."
+      }
+    ]
+  },
+  {
+    id: 55,
+    level: "B2",
+    category: "study_career",
+    title: "实习岗位的协商",
+    pinyin: "shí xí gǎng wèi de xié shāng",
+    topic: "Internship position negotiation",
+    title_vi: "Thương lượng vị trí thực tập",
+    title_en: "Negotiating an internship position",
+    sentences: [
+      {
+        chinese: "李经理, 谢谢您给我这次实习的机会。",
+        pinyin: "Lǐ jīnglǐ, xièxie nín gěi wǒ zhè cì shíxí de jīhuì.",
+        english: "Manager Li, thank you for giving me this internship opportunity.",
+        vi: "Anh Lý, em cảm ơn anh đã cho em cơ hội thực tập này.",
+        pronunciation_focus: ["实习 → shíxí (thực tập)", "机会 → jīhuì", "经理 → jīnglǐ", "谢谢 → xièxie (rút gọn của 谢谢您)"]
+      },
+      {
+        chinese: "我想跟您讨论一下实习的具体安排。",
+        pinyin: "Wǒ xiǎng gēn nín tǎolùn yīxià shíxí de jùtǐ ānpái.",
+        english: "I'd like to discuss the specific arrangements for the internship.",
+        vi: "Em muốn thảo luận với anh về sắp xếp cụ thể của kỳ thực tập.",
+        pronunciation_focus: ["讨论 → tǎolùn", "具体 → jùtǐ (cụ thể)", "安排 → ānpái (sắp xếp)", "实习 → shíxí"]
+      },
+      {
+        chinese: "我希望能参与具体的项目, 而不只是辅助工作。",
+        pinyin: "Wǒ xīwàng néng cānyù jùtǐ de xiàngmù, ér bù zhǐ shì fǔzhù gōngzuò.",
+        english: "I hope to participate in specific projects, not just assistant work.",
+        vi: "Em mong được tham gia dự án cụ thể, không chỉ làm việc phụ trợ.",
+        pronunciation_focus: ["参与 → cānyù (tham gia)", "项目 → xiàngmù (dự án)", "辅助 → fǔzhù (phụ trợ)", "希望 → xīwàng"]
+      },
+      {
+        chinese: "关于实习津贴, 不知道贵公司有什么标准?",
+        pinyin: "Guānyú shíxí jīntiē, bù zhīdào guì gōngsī yǒu shénme biāozhǔn?",
+        english: "Regarding internship stipend, may I ask what the company's standard is?",
+        vi: "Về phụ cấp thực tập, không biết quý công ty có tiêu chuẩn thế nào?",
+        pronunciation_focus: ["津贴 → jīntiē (phụ cấp)", "标准 → biāozhǔn (tiêu chuẩn)", "贵公司 → guì gōngsī (formal)", "关于 → guānyú (về)"]
+      },
+      {
+        chinese: "我会量力而行, 把每件交代的任务做到最好。",
+        pinyin: "Wǒ huì liànglì ér xíng, bǎ měi jiàn jiāodài de rènwù zuò dào zuì hǎo.",
+        english: "I will act within my capacity and do every assigned task as best I can.",
+        vi: "Em sẽ làm trong khả năng, hoàn thành tốt nhất mỗi việc được giao.",
+        pronunciation_focus: ["量力而行 → liànglì ér xíng (idiom 4 chữ: làm trong khả năng)", "交代 → jiāodài (giao phó)", "任务 → rènwù (nhiệm vụ)", "做到最好 → zuò dào zuì hǎo"]
+      }
+    ],
+    vocab: [
+      { chinese: "实习", pinyin: "shí xí", english: "internship", vi: "thực tập" },
+      { chinese: "实习生", pinyin: "shí xí shēng", english: "intern", vi: "thực tập sinh" },
+      { chinese: "津贴", pinyin: "jīn tiē", english: "stipend / allowance", vi: "phụ cấp" },
+      { chinese: "工作量", pinyin: "gōng zuò liàng", english: "workload", vi: "khối lượng công việc" },
+      { chinese: "工作时间", pinyin: "gōng zuò shí jiān", english: "working hours", vi: "thời gian làm việc" },
+      { chinese: "项目", pinyin: "xiàng mù", english: "project", vi: "dự án" },
+      { chinese: "导师制", pinyin: "dǎo shī zhì", english: "mentor system", vi: "chế độ thầy hướng dẫn (mentor)" },
+      { chinese: "转正", pinyin: "zhuǎn zhèng", english: "to convert from intern to full-time", vi: "chuyển chính thức (sau thực tập)" },
+      { chinese: "量力而行", pinyin: "liàng lì ér xíng", english: "act within one's ability (4-char idiom)", vi: "làm trong khả năng" },
+      { chinese: "循序渐进", pinyin: "xún xù jiàn jìn", english: "step by step", vi: "tuần tự tiến lên" }
+    ],
+    dialogue: [
+      { speaker: "实习生", chinese: "李经理, 我下周一就能开始实习。", pinyin: "Lǐ jīnglǐ, wǒ xià zhōu yī jiù néng kāishǐ shíxí.", english: "Manager Li, I can start the internship next Monday.", vi: "Anh Lý, em có thể bắt đầu thực tập từ thứ Hai tuần sau." },
+      { speaker: "李经理", chinese: "好的。具体安排我们一会儿讨论。", pinyin: "Hǎo de. Jùtǐ ānpái wǒmen yīhuǐr tǎolùn.", english: "Good. Let's discuss the specifics shortly.", vi: "Được. Lát nữa mình thảo luận chi tiết." },
+      { speaker: "实习生", chinese: "我想知道工作时间和有没有导师指导。", pinyin: "Wǒ xiǎng zhīdào gōngzuò shíjiān hé yǒu méiyǒu dǎoshī zhǐdǎo.", english: "I'd like to know the working hours and if there's mentor guidance.", vi: "Em muốn biết thời gian làm việc và có thầy hướng dẫn không." },
+      { speaker: "李经理", chinese: "工作时间九点到六点, 我们会给你安排一位mentor。", pinyin: "Gōngzuò shíjiān jiǔ diǎn dào liù diǎn, wǒmen huì gěi nǐ ānpái yī wèi mentor.", english: "Working hours are 9 to 6, and we'll assign you a mentor.", vi: "Giờ làm 9 đến 6, chúng tôi sẽ phân cho em một mentor." }
+    ],
+    dialogue_long: [
+      { speaker: "实习生", chinese: "李经理, 您好。感谢公司接受我的实习申请。我想确认几个细节。", pinyin: "Lǐ jīnglǐ, nín hǎo. Gǎnxiè gōngsī jiēshòu wǒ de shíxí shēnqǐng. Wǒ xiǎng quèrèn jǐ gè xìjié.", english: "Manager Li, hello. Thank you for accepting my internship application. I'd like to confirm a few details.", vi: "Chào anh Lý. Cảm ơn công ty đã chấp nhận đơn thực tập của em. Em muốn xác nhận vài chi tiết." },
+      { speaker: "李经理", chinese: "好, 你说说看。", pinyin: "Hǎo, nǐ shuōshuo kàn.", english: "Sure, go ahead.", vi: "Được, em nói xem nào." },
+      { speaker: "实习生", chinese: "首先是实习时长。我打算从七月一号到九月三十号, 一共三个月, 您看可以吗?", pinyin: "Shǒuxiān shì shíxí shícháng. Wǒ dǎsuàn cóng qī yuè yī hào dào jiǔ yuè sānshí hào, yīgòng sān gè yuè, nín kàn kěyǐ ma?", english: "First, internship duration. I plan from July 1st to September 30th, three months total. Is that okay?", vi: "Đầu tiên là thời lượng thực tập. Em định từ 1/7 đến 30/9, tổng cộng ba tháng, anh thấy ổn không?" },
+      { speaker: "李经理", chinese: "三个月可以, 但我们一般实习生最少六个月。三个月你能学到的有限。", pinyin: "Sān gè yuè kěyǐ, dàn wǒmen yībān shíxíshēng zuìshǎo liù gè yuè. Sān gè yuè nǐ néng xué dào de yǒuxiàn.", english: "Three months works, but our interns usually do at least six. In three months, what you can learn is limited.", vi: "Ba tháng được, nhưng thường thực tập sinh chúng tôi tối thiểu sáu tháng. Ba tháng em học được không nhiều." },
+      { speaker: "实习生", chinese: "我理解。但九月开学, 我必须回学校。如果可以, 寒假再来三个月, 加起来六个月可以吗?", pinyin: "Wǒ lǐjiě. Dàn jiǔ yuè kāixué, wǒ bìxū huí xuéxiào. Rúguǒ kěyǐ, hánjià zài lái sān gè yuè, jiā qǐlái liù gè yuè kěyǐ ma?", english: "I understand. But September is school start — I must return to school. If possible, three more months in winter break, totaling six months — would that work?", vi: "Em hiểu. Nhưng tháng 9 vào học, em phải về trường. Nếu được, kỳ nghỉ đông quay lại ba tháng nữa, cộng lại sáu tháng được không?" },
+      { speaker: "李经理", chinese: "这个安排不错, 但要看你寒假期间项目的连续性。我们再讨论。", pinyin: "Zhège ānpái bùcuò, dàn yào kàn nǐ hánjià qījiān xiàngmù de liánxù xìng. Wǒmen zài tǎolùn.", english: "That arrangement is decent, but depends on project continuity during winter break. Let's discuss further.", vi: "Cách sắp xếp này ổn, nhưng còn tùy vào tính liên tục của dự án trong kỳ đông. Mình thảo luận thêm." },
+      { speaker: "实习生", chinese: "好的。第二个问题是津贴。请问贵公司实习生的津贴标准是多少?", pinyin: "Hǎo de. Dì èr gè wèntí shì jīntiē. Qǐng wèn guì gōngsī shíxíshēng de jīntiē biāozhǔn shì duōshao?", english: "Okay. Second question is stipend. May I ask the company's intern stipend standard?", vi: "Vâng. Câu thứ hai là phụ cấp. Cho em hỏi tiêu chuẩn phụ cấp thực tập sinh của quý công ty là bao nhiêu?" },
+      { speaker: "李经理", chinese: "本科生每天两百, 研究生每天三百。包午餐, 不报销住宿。", pinyin: "Běnkē shēng měi tiān èr bǎi, yánjiūshēng měi tiān sān bǎi. Bāo wǔcān, bù bàoxiāo zhùsù.", english: "Undergrads 200 RMB per day, grad students 300. Lunch included, no housing reimbursement.", vi: "Sinh viên đại học 200 tệ/ngày, sau đại học 300 tệ/ngày. Bao ăn trưa, không hoàn tiền nhà ở." },
+      { speaker: "实习生", chinese: "明白。第三, 关于工作内容, 我希望能参与具体项目, 而不只做辅助工作。", pinyin: "Míngbái. Dì sān, guānyú gōngzuò nèiróng, wǒ xīwàng néng cānyù jùtǐ xiàngmù, ér bù zhǐ zuò fǔzhù gōngzuò.", english: "Understood. Third, regarding work content, I hope to join concrete projects, not just assistant work.", vi: "Em hiểu. Thứ ba, về nội dung công việc, em mong tham gia dự án cụ thể, không chỉ việc phụ trợ." },
+      { speaker: "李经理", chinese: "这个我能理解。但实习初期还是从基础工作开始, 循序渐进。前两周熟悉环境, 之后会安排你跟一个小项目。", pinyin: "Zhège wǒ néng lǐjiě. Dàn shíxí chūqī háishì cóng jīchǔ gōngzuò kāishǐ, xúnxù jiànjìn. Qián liǎng zhōu shúxī huánjìng, zhīhòu huì ānpái nǐ gēn yī gè xiǎo xiàngmù.", english: "I understand. But early on we still start with basic work, step by step. First two weeks for orientation, then we'll put you on a small project.", vi: "Anh hiểu. Nhưng giai đoạn đầu vẫn phải bắt đầu từ việc cơ bản, tuần tự tiến lên. Hai tuần đầu làm quen, sau đó sẽ phân cho em một dự án nhỏ." },
+      { speaker: "实习生", chinese: "好的, 我会量力而行。如果项目需要加班, 是否有额外补贴?", pinyin: "Hǎo de, wǒ huì liànglì ér xíng. Rúguǒ xiàngmù xūyào jiābān, shìfǒu yǒu éwài bǔtiē?", english: "Okay, I'll work within my capacity. If projects need overtime, is there extra allowance?", vi: "Vâng, em sẽ làm trong khả năng. Nếu dự án cần tăng ca, có phụ cấp thêm không?" },
+      { speaker: "李经理", chinese: "实习生原则上不加班。如果情况特殊, 我会单独和你商量, 不会强制。", pinyin: "Shíxíshēng yuánzé shàng bù jiābān. Rúguǒ qíngkuàng tèshū, wǒ huì dāndú hé nǐ shāngliang, bù huì qiángzhì.", english: "Interns in principle don't do overtime. If circumstances are special, I'll discuss with you privately, no forcing.", vi: "Thực tập sinh về nguyên tắc không tăng ca. Nếu hoàn cảnh đặc biệt, anh sẽ thảo luận riêng với em, không bắt buộc." },
+      { speaker: "实习生", chinese: "谢谢您的体贴。最后, 实习结束后是否有转正机会?", pinyin: "Xièxie nín de tǐtiē. Zuìhòu, shíxí jiéshù hòu shìfǒu yǒu zhuǎnzhèng jīhuì?", english: "Thank you for your consideration. Finally, after the internship, is there a chance to convert to full-time?", vi: "Cảm ơn anh đã quan tâm. Cuối cùng, sau khi thực tập có cơ hội chuyển chính thức không?" },
+      { speaker: "李经理", chinese: "有, 表现优秀的实习生我们会优先考虑转正。具体看你的整体表现和团队推荐。", pinyin: "Yǒu, biǎoxiàn yōuxiù de shíxíshēng wǒmen huì yōuxiān kǎolǜ zhuǎnzhèng. Jùtǐ kàn nǐ de zhěngtǐ biǎoxiàn hé tuánduì tuījiàn.", english: "Yes, outstanding interns get priority for conversion. Specifics depend on your overall performance and team recommendation.", vi: "Có. Thực tập sinh xuất sắc sẽ được ưu tiên chuyển chính thức. Tùy vào biểu hiện tổng thể và đề xuất của team." },
+      { speaker: "实习生", chinese: "明白了。我会努力争取。麻烦您把书面合同发我一份, 我家长想看一下。", pinyin: "Míngbái le. Wǒ huì nǔlì zhēngqǔ. Máfan nín bǎ shūmiàn hétong fā wǒ yī fèn, wǒ jiāzhǎng xiǎng kàn yīxià.", english: "Understood. I'll work hard for it. Could you send me the written contract — my parents would like to see it.", vi: "Em hiểu rồi. Em sẽ cố gắng. Phiền anh gửi em bản hợp đồng văn bản, bố mẹ em muốn xem." },
+      { speaker: "李经理", chinese: "没问题, 今天下班前发到你邮箱。还有什么疑问随时联系我。", pinyin: "Méi wèntí, jīntiān xiàbān qián fā dào nǐ yóuxiāng. Hái yǒu shénme yíwèn suíshí liánxì wǒ.", english: "No problem, will send to your email by end of today. Any questions, contact me anytime.", vi: "Không vấn đề, trước giờ tan ca hôm nay sẽ gửi vào email của em. Có thắc mắc gì cứ liên hệ anh bất cứ lúc nào." }
+    ],
+    roleplay_prompts: [
+      "Đóng vai sinh viên Việt Nam thương lượng thời lượng thực tập với manager Trung Quốc — bạn chỉ có 3 tháng nhưng công ty yêu cầu 6 tháng. Hãy đề xuất phương án 'split' (3 tháng hè + 3 tháng đông) và cam kết 'remote' giai đoạn giữa nếu cần.",
+      "Manager đề nghị mức phụ cấp 150 tệ/ngày, thấp hơn mặt bằng. Hãy thương lượng tăng lên 200 — KHÔNG đòi hỏi cứng nhắc, nhưng đưa ra dữ liệu thị trường (mức HSK 5+, sinh viên top trường) và đề xuất 'thử việc 1 tháng, sau đó review'.",
+      "Sau 2 tuần thực tập, bạn nhận ra mình chỉ được giao việc copy-paste, không có project. Hãy hẹn gặp manager riêng để xin chuyển sang việc có ý nghĩa hơn — KHÔNG phàn nàn về quá khứ, nói về điều bạn muốn làm tiếp theo. Dùng cụm '我希望能更好地发挥我的能力'."
+    ],
+    register_notes: "Thương lượng thực tập là môi trường formal vừa phải — không quá cao như phỏng vấn CSC nhưng vẫn 您 thường xuyên. Manager là 经理 (jīnglǐ) hoặc 主管 (zhǔguǎn) — gọi bằng họ + chức danh. Nếu manager trẻ và bảo 'cứ gọi anh là Tiểu Lý' (小李), bạn vẫn nên giữ '李经理' trong các cuộc trao đổi chính thức về hợp đồng/lương.\n\nCác cụm formal về thực tập: 实习津贴 (shíxí jīntiē — phụ cấp thực tập), 工作内容 (gōngzuò nèiróng — nội dung công việc), 转正 (zhuǎnzhèng — chuyển chính thức), 加班 (jiābān — tăng ca), 量力而行 (liànglì ér xíng — làm trong khả năng).\n\nKhi đề nghị tăng phụ cấp/giờ làm: KHÔNG dùng '我要' (tôi muốn). Dùng '我希望' hoặc '不知道是否可以'. Khi từ chối yêu cầu của manager: KHÔNG '我不行'. Dùng '我尽量' (tôi sẽ cố hết sức) hoặc '让我再想想' (để em suy nghĩ thêm). Manager Trung Quốc đặc biệt phản cảm với 'cứng nhắc' từ thực tập sinh.\n\nQuan trọng: KHÔNG gửi email khiếu nại/thương lượng quan trọng qua WeChat — phải qua email công ty. WeChat dùng cho cập nhật hàng ngày, không cho thương lượng.",
+    idiom_glosses: [
+      {
+        idiom: "量力而行",
+        literal: "đo sức rồi mà đi (liàng lì ér xíng)",
+        meaning: "Làm trong khả năng — biết giới hạn của mình. Cụm khiêm tốn lý tưởng cho thực tập sinh: thừa nhận chưa giàu kinh nghiệm nhưng cam kết làm tốt nhất có thể. Tránh hứa quá lớn rồi không làm được.",
+        example: "我会量力而行, 把每件任务做到最好。"
+      },
+      {
+        idiom: "循序渐进",
+        literal: "theo thứ tự dần tiến (xún xù jiàn jìn)",
+        meaning: "Tuần tự tiến lên — học từ cơ bản đến nâng cao. Cụm manager thường dùng để giải thích vì sao thực tập sinh phải bắt đầu từ việc cơ bản. Khi nghe manager nói cụm này = chấp nhận lộ trình, đừng đòi 'nhảy cóc'.",
+        example: "实习初期循序渐进, 不要太着急。"
+      },
+      {
+        idiom: "实事求是",
+        literal: "tìm sự thật từ sự việc (shí shì qiú shì)",
+        meaning: "Thực sự cầu thị — nói thật, không khoe khoang, không che giấu. Cụm dùng khi báo cáo tiến độ với manager: thừa nhận điều chưa làm xong, đề xuất cách giải quyết. Manager Trung Quốc đánh giá rất cao thái độ này.",
+        example: "汇报工作要实事求是, 不要虚报。"
+      },
+      {
+        idiom: "抛砖引玉",
+        literal: "ném gạch dụ ngọc (pāo zhuān yǐn yù)",
+        meaning: "Đem cái thô (của mình) để dụ cái tinh (của người) — khiêm tốn dùng khi đề xuất ý tưởng. Cụm chuẩn khi thực tập sinh dám đưa đề xuất với senior: '我先抛砖引玉, 大家有更好的想法欢迎补充'.",
+        example: "我先抛砖引玉, 提一个初步想法。"
+      }
+    ],
+    cultural_notes_vi: "Văn hóa thực tập Trung Quốc đại lục đặc biệt khác biệt với Việt Nam ở bốn điểm: (1) Thực tập KHÔNG phải là 'học việc miễn phí' như nhiều người Việt nghĩ — phụ cấp 150-300 tệ/ngày là chuẩn, có hợp đồng chính thức, đóng bảo hiểm xã hội (一般实习生险 yībān shíxíshēng xiǎn). KHÔNG ký hợp đồng = công ty 'đen', tránh xa. (2) Thực tập sinh được kỳ vọng làm việc THẬT, không chỉ photocopy/pha trà. Nhưng cũng KHÔNG được phép sai sót lớn — khác Mỹ (nơi 'fail fast' OK), Trung Quốc kỳ vọng thực tập sinh chăm chỉ + ít sai. (3) Mối quan hệ với 'mentor' (đồng nghiệp được phân để hướng dẫn bạn) cực quan trọng — đây là người sẽ viết đánh giá cuối kỳ và quyết định 转正 (chuyển chính thức). Tặng quà cuối kỳ (không bắt buộc nhưng được đánh giá cao): cà phê Việt Nam, bánh kẹo, vật kỷ niệm — tránh đắt tiền. (4) 'Nhậu' (聚餐 jùcān) team là cơ hội xây dựng quan hệ — đừng từ chối hết. Nếu không uống rượu được, nói 'đang dùng thuốc' (在吃药) — không bị hỏi thêm. Người không đi 聚餐 = bị coi là 'không hòa nhập' và mất cơ hội 转正.\n\nVề 转正: tỉ lệ chuyển từ thực tập sang chính thức ở các công ty Trung Quốc lớn (Tencent, Alibaba, ByteDance) khoảng 30-50%. Yếu tố quyết định: (a) đánh giá của mentor; (b) đóng góp cụ thể cho project; (c) thái độ làm việc (khiêm tốn, chủ động, ít than vãn); (d) quan hệ với team — không phải chỉ kỹ năng. Sinh viên Việt Nam thường giỏi (a) và (c) nhưng yếu (d) — đầu tư vào quan hệ team từ đầu.\n\nThời gian thực tập tiêu chuẩn: 6 tháng cho mainland (3 tháng coi là 'quá ngắn', không đủ thấy biểu hiện). Nếu chỉ có 3 tháng do lịch học, đề xuất split (3 hè + 3 đông) hoặc 'remote part-time' giai đoạn giữa.",
+    tip_advice_vi: "(1) Khi nhận offer thực tập, KHÔNG vội ký ngay. Yêu cầu hợp đồng văn bản (实习协议 shíxí xiéyì), đọc kỹ 6 mục: thời lượng, giờ làm, phụ cấp, công việc cụ thể, bảo hiểm, điều khoản chấm dứt. Nếu thiếu mục nào = công ty không chuyên nghiệp, cẩn thận. (2) Tuần đầu đến công ty SỚM 30 phút, làm quen với mọi người, ghi nhớ tên + chức vụ. Sếp Trung Quốc đặc biệt nhớ thực tập sinh chào hỏi đầy đủ. (3) KHÔNG mang đồ ăn nặng mùi (pho gà, mắm tôm) lên văn phòng — văn phòng Trung Quốc thường không có khu ăn riêng, mùi sẽ gây phản cảm. (4) Khi mentor giao việc, LUÔN tóm tắt lại để xác nhận: '我理解一下, 您是想让我做ABC, 截止时间是X, 对吗?'. Bước này cứu bạn khỏi 80% lỗi. (5) Khi sai, KHÔNG che giấu. Nói '我做错了, 现在的情况是X, 我想到的解决方案是Y, 您看可以吗?' — chuyển từ 'tôi sai' sang 'tôi đã có giải pháp'. Manager Trung Quốc đánh giá rất cao. (6) Cuối tuần, gửi email tóm tắt cho mentor: việc đã làm + việc tuần sau + câu hỏi cần hỗ trợ. Đây là 周报 (zhōubào — báo cáo tuần), chuẩn mực ở các công ty Trung Quốc lớn. (7) Nếu được chuyển chính thức, đừng vội đồng ý. Hỏi rõ vị trí, lương, lộ trình thăng tiến. Manager mong bạn 'chín chắn', không 'mê mẩn ngay'.",
+    exercises: [
+      { type: "fill-blank", question: "实习初期不要太急, 要 ___ 。", answer: "循序渐进" },
+      {
+        type: "matching",
+        instruction: "Ghép cụm tiếng Trung thực tập với nghĩa tiếng Việt.",
+        pairs: [
+          { chinese: "实习津贴", pinyin: "shí xí jīn tiē", english: "phụ cấp thực tập" },
+          { chinese: "转正", pinyin: "zhuǎn zhèng", english: "chuyển chính thức" },
+          { chinese: "量力而行", pinyin: "liàng lì ér xíng", english: "làm trong khả năng" },
+          { chinese: "抛砖引玉", pinyin: "pāo zhuān yǐn yù", english: "ném gạch dụ ngọc (đề xuất khiêm tốn)" }
+        ]
+      },
+      {
+        type: "translation",
+        vietnamese: "Em hy vọng được tham gia dự án cụ thể, không chỉ làm việc phụ trợ. Em sẽ làm trong khả năng và làm tốt nhất mỗi việc được giao.",
+        chinese: "我希望能参与具体项目, 不只做辅助工作。我会量力而行, 把每件任务做到最好。",
+        pinyin: "Wǒ xī wàng néng cān yù jù tǐ xiàng mù, bù zhǐ zuò fǔ zhù gōng zuò. Wǒ huì liàng lì ér xíng, bǎ měi jiàn rèn wù zuò dào zuì hǎo."
+      }
+    ]
+  },
+  {
+    id: 56,
+    level: "B2",
+    category: "study_career",
+    title: "给留学办公室发邮件咨询签证",
+    pinyin: "gěi liú xué bàn gōng shì fā yóu jiàn zī xún qiān zhèng",
+    topic: "Emailing study-abroad office about visa",
+    title_vi: "Gửi email cho văn phòng du học hỏi về visa",
+    title_en: "Emailing the study-abroad office about visa",
+    sentences: [
+      {
+        chinese: "尊敬的留学办公室老师, 您好。",
+        pinyin: "Zūnjìng de liúxué bàngōngshì lǎoshī, nín hǎo.",
+        english: "Respected teachers at the study-abroad office, hello.",
+        vi: "Kính gửi các thầy cô văn phòng du học, em xin chào.",
+        pronunciation_focus: ["尊敬的 → zūnjìng de (formal opening)", "留学办公室 → liúxué bàngōngshì (văn phòng du học)", "您好 → nín hǎo", "老师 → lǎoshī (gọi chung cho cán bộ trường)"]
+      },
+      {
+        chinese: "我是已被贵校录取的越南籍硕士新生。",
+        pinyin: "Wǒ shì yǐ bèi guì xiào lùqǔ de Yuènán jí shuòshì xīnshēng.",
+        english: "I am a newly admitted Vietnamese Master's student at your university.",
+        vi: "Em là tân sinh viên thạc sĩ người Việt đã được quý trường nhận.",
+        pronunciation_focus: ["贵校 → guì xiào (quý trường — formal)", "录取 → lùqǔ (tuyển nhận)", "越南籍 → Yuènán jí (quốc tịch Việt Nam)", "硕士新生 → shuòshì xīnshēng"]
+      },
+      {
+        chinese: "我想咨询一下学习签证(X1)办理的具体流程。",
+        pinyin: "Wǒ xiǎng zīxún yīxià xuéxí qiānzhèng (X1) bànlǐ de jùtǐ liúchéng.",
+        english: "I'd like to inquire about the specific procedure for processing the student visa (X1).",
+        vi: "Em muốn hỏi về quy trình cụ thể làm visa du học (X1).",
+        pronunciation_focus: ["咨询 → zīxún (tham vấn / hỏi)", "签证 → qiānzhèng (visa)", "X1 → loại visa du học dài hạn", "流程 → liúchéng (quy trình)"]
+      },
+      {
+        chinese: "我目前还没收到JW202表和录取通知书的纸质版。",
+        pinyin: "Wǒ mùqián hái méi shōu dào JW202 biǎo hé lùqǔ tōngzhīshū de zhǐzhì bǎn.",
+        english: "I have not yet received the paper version of the JW202 form and admission letter.",
+        vi: "Hiện em chưa nhận được bản giấy của mẫu JW202 và giấy báo nhập học.",
+        pronunciation_focus: ["JW202表 → mẫu đơn quan trọng cho visa du học", "录取通知书 → lùqǔ tōngzhīshū (giấy báo nhập học)", "纸质版 → zhǐzhì bǎn (bản giấy)", "目前 → mùqián"]
+      },
+      {
+        chinese: "请问大约什么时候能收到? 不胜感激。",
+        pinyin: "Qǐng wèn dàyuē shénme shíhou néng shōu dào? Bù shèng gǎnjī.",
+        english: "May I ask approximately when I will receive them? Greatly appreciated.",
+        vi: "Cho em hỏi khoảng khi nào em có thể nhận được? Em vô cùng biết ơn.",
+        pronunciation_focus: ["大约 → dàyuē (khoảng)", "不胜感激 → bù shèng gǎnjī (vô cùng biết ơn — formal email closer)", "请问 → qǐng wèn (cho phép em hỏi)", "什么时候 → shénme shíhou"]
+      }
+    ],
+    vocab: [
+      { chinese: "留学", pinyin: "liú xué", english: "study abroad", vi: "du học" },
+      { chinese: "签证", pinyin: "qiān zhèng", english: "visa", vi: "thị thực" },
+      { chinese: "录取通知书", pinyin: "lù qǔ tōng zhī shū", english: "admission letter", vi: "giấy báo nhập học" },
+      { chinese: "JW202表", pinyin: "JW èr líng èr biǎo", english: "JW202 form (visa application form for Chinese student visa)", vi: "mẫu JW202" },
+      { chinese: "体检", pinyin: "tǐ jiǎn", english: "physical examination", vi: "khám sức khỏe" },
+      { chinese: "邮寄", pinyin: "yóu jì", english: "to post / mail", vi: "gửi qua bưu điện" },
+      { chinese: "公证", pinyin: "gōng zhèng", english: "notarization", vi: "công chứng" },
+      { chinese: "不胜感激", pinyin: "bù shèng gǎn jī", english: "greatly appreciated (formal email closer)", vi: "vô cùng biết ơn" },
+      { chinese: "有备无患", pinyin: "yǒu bèi wú huàn", english: "be prepared, avoid trouble", vi: "có chuẩn bị thì không lo" },
+      { chinese: "按部就班", pinyin: "àn bù jiù bān", english: "follow steps in order", vi: "theo từng bước" }
+    ],
+    dialogue: [
+      { speaker: "学生", chinese: "您好, 我是越南来的新生, 想咨询签证的事。", pinyin: "Nín hǎo, wǒ shì Yuènán lái de xīnshēng, xiǎng zīxún qiānzhèng de shì.", english: "Hello, I'm a new student from Vietnam wanting to inquire about the visa.", vi: "Chào thầy cô, em là tân sinh viên đến từ Việt Nam, muốn hỏi về visa." },
+      { speaker: "办公室老师", chinese: "好的, 您的录取通知书号是多少?", pinyin: "Hǎo de, nín de lùqǔ tōngzhīshū hào shì duōshao?", english: "Sure, what's your admission letter number?", vi: "Được, số giấy báo nhập học của em là bao nhiêu?" },
+      { speaker: "学生", chinese: "QH202509-1234。", pinyin: "QH èr líng èr wǔ líng jiǔ - yāo èr sān sì.", english: "QH202509-1234.", vi: "QH202509-1234." },
+      { speaker: "办公室老师", chinese: "查到了, 您的JW202表已经在邮寄路上, 大概十天到。", pinyin: "Chá dào le, nín de JW202 biǎo yǐjīng zài yóujì lùshàng, dàgài shí tiān dào.", english: "Found you. Your JW202 is already in the mail, about ten days to arrive.", vi: "Tìm thấy rồi, mẫu JW202 của em đã trên đường gửi, khoảng 10 ngày sẽ đến." }
+    ],
+    dialogue_long: [
+      { speaker: "学生", chinese: "尊敬的留学办公室老师, 您好。我是QH202509-1234, 越南河内的陈氏梅。", pinyin: "Zūnjìng de liúxué bàngōngshì lǎoshī, nín hǎo. Wǒ shì QH202509-1234, Yuènán Hénèi de Chén Shìméi.", english: "Respected teachers, hello. I'm QH202509-1234, Tran Thi Mai from Hanoi, Vietnam.", vi: "Kính gửi các thầy cô, em xin chào. Em là số QH202509-1234, Trần Thị Mai từ Hà Nội, Việt Nam." },
+      { speaker: "办公室老师", chinese: "您好, 陈同学。需要什么帮助?", pinyin: "Nín hǎo, Chén tóngxué. Xūyào shénme bāngzhù?", english: "Hello, Chen. What help do you need?", vi: "Chào em Trần. Em cần giúp gì?" },
+      { speaker: "学生", chinese: "我下个月就要赴中国了, 但JW202表和录取通知书的纸质版还没收到。", pinyin: "Wǒ xià gè yuè jiù yào fù Zhōngguó le, dàn JW202 biǎo hé lùqǔ tōngzhīshū de zhǐzhì bǎn hái méi shōu dào.", english: "I'm going to China next month, but I haven't received the paper JW202 and admission letter yet.", vi: "Tháng sau em đã phải sang Trung Quốc, nhưng bản giấy mẫu JW202 và giấy báo nhập học vẫn chưa nhận được." },
+      { speaker: "办公室老师", chinese: "我帮您查一下。请稍等。... 您的材料是上周三发的, 走的是DHL国际快递。", pinyin: "Wǒ bāng nín chá yīxià. Qǐng shāo děng. ... Nín de cáiliào shì shàng zhōu sān fā de, zǒu de shì DHL guójì kuàidì.", english: "Let me check for you. One moment... Your materials were sent last Wednesday by DHL international express.", vi: "Em để cô tra cứu. Xin đợi một chút... Tài liệu của em đã gửi từ thứ Tư tuần trước, đi DHL quốc tế." },
+      { speaker: "学生", chinese: "请问大约什么时候能到河内?", pinyin: "Qǐng wèn dàyuē shénme shíhou néng dào Hénèi?", english: "May I ask approximately when it will reach Hanoi?", vi: "Cho em hỏi khoảng khi nào sẽ đến Hà Nội?" },
+      { speaker: "办公室老师", chinese: "DHL一般七到十天。这是您的运单号: 1234567890。您可以在DHL官网查。", pinyin: "DHL yībān qī dào shí tiān. Zhè shì nín de yùndān hào: 1234567890. Nín kěyǐ zài DHL guānwǎng chá.", english: "DHL usually takes 7-10 days. Here's your tracking number: 1234567890. You can check on DHL's official site.", vi: "DHL thường 7-10 ngày. Đây là mã vận đơn: 1234567890. Em có thể tra trên website DHL." },
+      { speaker: "学生", chinese: "好的, 谢谢。还有一个问题: 我办X1签证除了JW202还需要哪些材料?", pinyin: "Hǎo de, xièxie. Hái yǒu yī gè wèntí: wǒ bàn X1 qiānzhèng chúle JW202 hái xūyào nǎxiē cáiliào?", english: "Okay, thanks. One more question: besides the JW202, what other materials do I need for X1 visa?", vi: "Vâng, cảm ơn. Còn câu nữa: làm visa X1 ngoài JW202, em cần thêm tài liệu gì?" },
+      { speaker: "办公室老师", chinese: "需要: 护照原件 (有效期六个月以上)、录取通知书原件、JW202原件、近期照片、签证申请表。", pinyin: "Xūyào: hùzhào yuánjiàn (yǒuxiào qī liù gè yuè yǐshàng), lùqǔ tōngzhīshū yuánjiàn, JW202 yuánjiàn, jìnqī zhàopiàn, qiānzhèng shēnqǐng biǎo.", english: "You need: passport original (valid 6+ months), admission letter original, JW202 original, recent photo, visa application form.", vi: "Cần: hộ chiếu gốc (còn hạn từ 6 tháng trở lên), giấy báo nhập học gốc, JW202 gốc, ảnh mới, đơn xin visa." },
+      { speaker: "学生", chinese: "体检也需要做对吗?", pinyin: "Tǐjiǎn yě xūyào zuò duì ma?", english: "I also need to do a physical exam, right?", vi: "Khám sức khỏe cũng cần làm phải không?" },
+      { speaker: "办公室老师", chinese: "对, 需要在指定医院做。您去越南卫生部认可的医院, 拿《外国人体格检查记录》表。", pinyin: "Duì, xūyào zài zhǐdìng yīyuàn zuò. Nín qù Yuènán wèishēng bù rènkě de yīyuàn, ná 《Wàiguó rén tǐgé jiǎnchá jìlù》 biǎo.", english: "Yes, must be done at designated hospital. Go to a Vietnam Ministry of Health-approved hospital and get the 'Foreigner Physical Examination Record' form.", vi: "Đúng, phải làm ở bệnh viện chỉ định. Em đến bệnh viện được Bộ Y tế Việt Nam công nhận, lấy biểu mẫu 'Hồ sơ khám sức khỏe người nước ngoài'." },
+      { speaker: "学生", chinese: "请问体检的有效期是多久?", pinyin: "Qǐng wèn tǐjiǎn de yǒuxiào qī shì duō jiǔ?", english: "May I ask the validity period of the physical exam?", vi: "Cho em hỏi kết quả khám sức khỏe có hiệu lực bao lâu?" },
+      { speaker: "办公室老师", chinese: "六个月。所以您不要太早做, 大约出发前一个月做最合适。", pinyin: "Liù gè yuè. Suǒyǐ nín bù yào tài zǎo zuò, dàyuē chūfā qián yī gè yuè zuò zuì héshì.", english: "Six months. So don't do it too early — about a month before departure is most suitable.", vi: "Sáu tháng. Vậy nên em đừng làm quá sớm, khoảng một tháng trước khi đi là phù hợp nhất." },
+      { speaker: "学生", chinese: "明白。最后一个问题, 学费什么时候交? 我现在可以先转账吗?", pinyin: "Míngbái. Zuìhòu yī gè wèntí, xuéfèi shénme shíhou jiāo? Wǒ xiànzài kěyǐ xiān zhuǎnzhàng ma?", english: "Understood. Last question: when do I pay tuition? Can I transfer now?", vi: "Em hiểu. Câu cuối, học phí khi nào nộp? Em có thể chuyển khoản trước được không?" },
+      { speaker: "办公室老师", chinese: "建议您到校后再交, 因为我们要核对身份。如果一定要先交, 必须用我们的官方账号, 我现在发给您。", pinyin: "Jiànyì nín dào xiào hòu zài jiāo, yīnwèi wǒmen yào héduì shēnfèn. Rúguǒ yīdìng yào xiān jiāo, bìxū yòng wǒmen de guānfāng zhànghào, wǒ xiànzài fā gěi nín.", english: "Recommend paying after arrival, since we need identity verification. If you must pay early, must use our official account — I'll send it now.", vi: "Khuyên em đến trường rồi nộp, vì cần đối chiếu danh tính. Nếu nhất định nộp sớm, phải dùng tài khoản chính thức của trường, cô gửi em ngay." },
+      { speaker: "学生", chinese: "好的, 那我等到校再交。非常感谢您的耐心解答!", pinyin: "Hǎo de, nà wǒ děng dào xiào zài jiāo. Fēicháng gǎnxiè nín de nàixīn jiědá!", english: "Okay, I'll wait until arrival. Thank you very much for your patient explanation!", vi: "Vâng, vậy em đợi đến trường rồi nộp. Cảm ơn cô rất nhiều đã kiên nhẫn giải đáp!" },
+      { speaker: "办公室老师", chinese: "不客气。如果还有问题, 您可以发邮件到 admission@xxx.edu.cn, 我们会尽快回复。", pinyin: "Bù kèqì. Rúguǒ hái yǒu wèntí, nín kěyǐ fā yóujiàn dào admission@xxx.edu.cn, wǒmen huì jǐn kuài huífù.", english: "You're welcome. If more questions, email admission@xxx.edu.cn — we'll reply as soon as possible.", vi: "Không có gì. Nếu còn thắc mắc, em có thể gửi email tới admission@xxx.edu.cn, chúng tôi sẽ phản hồi sớm." }
+    ],
+    roleplay_prompts: [
+      "Đóng vai sinh viên Việt Nam viết email đầu tiên cho văn phòng du học Trung Quốc khi JW202 chưa đến sau 4 tuần. Hãy viết theo cấu trúc: tiêu đề trang trọng + chào + tự giới thiệu (mã sinh viên) + nêu vấn đề cụ thể + câu hỏi rõ ràng + cảm ơn (kèm 不胜感激) + ký tên đầy đủ. KHÔNG dùng tone gấp gáp.",
+      "Sau khi nhận JW202, bạn phát hiện thông tin SAI (tên bị viết nhầm, tháng sinh sai). Hãy viết email báo lỗi — không đổ lỗi, chỉ nêu sự việc + đề xuất giải pháp + xác nhận deadline. Dùng cụm '我注意到...可能存在出入' (em nhận thấy có thể có sai sót).",
+      "Bạn đã làm khám sức khỏe ở bệnh viện không nằm trong danh sách Bộ Y tế Việt Nam công nhận. Văn phòng du học từ chối kết quả. Hãy viết email xin được làm lại + xin gia hạn deadline visa do lỗi thông tin từ phía bạn — chịu trách nhiệm rõ, không đổ lỗi cho bệnh viện."
+    ],
+    register_notes: "Email cho văn phòng du học là môi trường formal cao nhất của giao tiếp viết — cao hơn email cho manager công ty. Tiêu đề email PHẢI có 3 phần: chủ đề chính + mã sinh viên/ngữ cảnh + tên ngắn. Ví dụ: '关于JW202表邮寄进度咨询 — 越南陈氏梅 QH202509-1234'. Email không có cấu trúc tiêu đề rõ = bị bỏ qua.\n\nMở đầu BẮT BUỘC '尊敬的留学办公室老师, 您好' — không '老师好' đơn lẻ, không gọi tên cụ thể (vì email thường gửi đến hộp chung). Khi văn phòng đã trả lời và biết ai phụ trách bạn, có thể chuyển sang '尊敬的[姓]老师' từ email tiếp theo.\n\nCác cụm formal email: 不胜感激 (bù shèng gǎnjī — vô cùng biết ơn), 烦请 (fánqǐng — phiền thầy/cô), 望尽快回复 (wàng jǐn kuài huífù — mong sớm phản hồi), 期待您的回复 (qídài nín de huífù — mong nhận phản hồi). Câu kết: 'XX 顿首' (XX dùnshǒu — XX cúi đầu) — quá formal cho email; 'XX 敬上' (jìng shàng — kính trình) là formal vừa phải, lý tưởng cho email du học. Cuối cùng kèm chữ ký: tên đầy đủ + mã sinh viên + số điện thoại.\n\nKhi xin lỗi vì lỗi của mình (lỗi thông tin, sai mẫu): KHÔNG dùng '对不起'. Dùng '给您添麻烦了, 实在抱歉' (gây phiền hà cho thầy cô, thực sự xin lỗi). Đây là cụm chuẩn academic email.",
+    idiom_glosses: [
+      {
+        idiom: "不胜感激",
+        literal: "không thể chịu nổi sự biết ơn (bù shèng gǎn jī)",
+        meaning: "Vô cùng biết ơn — câu kết email formal chuẩn. Mạnh hơn '感谢' nhưng không cường điệu. Thiếu cụm này ở email xin việc/du học bị coi là khô khan.",
+        example: "请您协助处理, 不胜感激。"
+      },
+      {
+        idiom: "有备无患",
+        literal: "có chuẩn bị thì không có nỗi lo (yǒu bèi wú huàn)",
+        meaning: "Có chuẩn bị thì không lo — chuẩn bị kỹ để tránh rắc rối. Cụm dùng khi giải thích vì sao bạn hỏi nhiều câu nhỏ về visa/khám sức khỏe: '我想有备无患, 提前确认一下'.",
+        example: "我想有备无患, 提前确认一下细节。"
+      },
+      {
+        idiom: "按部就班",
+        literal: "theo bộ phận và thứ tự (àn bù jiù bān)",
+        meaning: "Theo từng bước, không bỏ qua quy trình. Cụm dùng khi cam kết tuân thủ thủ tục: '我会按部就班, 一步一步办理'. Đặc biệt phù hợp cho ngữ cảnh hành chính/visa.",
+        example: "我会按部就班完成所有手续。"
+      },
+      {
+        idiom: "名正言顺",
+        literal: "danh chính ngôn thuận (míng zhèng yán shùn)",
+        meaning: "Có cơ sở chính đáng — danh nghĩa đúng, lời nói thuận. Cụm dùng khi xin được làm điều gì có lý do hợp pháp/hợp lệ: '我已经被贵校录取, 申请X1签证名正言顺'.",
+        example: "我已经被贵校录取, 申请X1签证名正言顺。"
+      }
+    ],
+    cultural_notes_vi: "Văn phòng du học (留学办公室 / 国际处) ở các đại học Trung Quốc có tốc độ phản hồi rất khác nhau: trường top (Bắc Đại, Thanh Hoa, Phúc Đán) phản hồi 1-3 ngày; trường địa phương 5-10 ngày. KHÔNG nên gửi email follow-up sớm hơn 5 ngày — bị coi là thiếu kiên nhẫn. Sau 7 ngày không phản hồi, gửi email follow-up nhẹ nhàng kèm tham chiếu email đầu.\n\nThời gian xử lý JW202: 2-4 tuần kể từ khi nhận hồ sơ điện tử. Nếu chưa đến trong 4 tuần, có khả năng (a) hồ sơ thiếu mục, (b) thông tin sai, (c) bưu điện. Hỏi văn phòng để có mã tracking.\n\nVề visa X1 vs X2: X1 cho học trên 6 tháng (du học chính thức), X2 cho học dưới 6 tháng (đoạn ngắn). KHÔNG nhầm — sai loại visa = bị từ chối nhập cảnh.\n\nKhám sức khỏe: phải làm ở bệnh viện được Bộ Y tế Việt Nam và Đại sứ quán Trung Quốc cùng công nhận. Tại Hà Nội: Bệnh viện Trung ương Quân đội 108, Bệnh viện E. Tại HCMC: Bệnh viện Chợ Rẫy, Bệnh viện Đại học Y Dược. Làm ở bệnh viện ngoài danh sách = kết quả bị từ chối, phải làm lại.\n\nKhi đến Trung Quốc, trong 30 ngày phải làm 'tạm trú' (临时居留 línshí jūliú) tại sở cảnh sát. Không làm = bị phạt 500-2000 tệ + có ghi vào hồ sơ. Văn phòng du học sẽ hướng dẫn nhưng bạn phải tự nhớ deadline.",
+    tip_advice_vi: "(1) MỌI email gửi văn phòng du học PHẢI có mã sinh viên/số đơn ở tiêu đề. Email không có mã = bị bỏ qua hoặc trả lời lệch nội dung. Chèn mã ngay sau chủ đề: '关于JW202表咨询 — QH202509-1234'. (2) Mỗi email chỉ hỏi 1 chủ đề. Nhồi 5 câu hỏi vào 1 email = nhân viên trả lời câu dễ trước, câu khó bỏ sót, bạn phải hỏi lại. Hỏi về visa = email A; hỏi về ký túc = email B. (3) ĐÍNH KÈM tài liệu liên quan (PDF của giấy báo nhập học, ảnh hộ chiếu) khi cần thiết — đừng để nhân viên phải tự tra. Tệp đặt tên rõ: 'TranThiMai_Passport_QH202509-1234.pdf'. (4) Định dạng email: font Arial/SimSun 12pt, line spacing 1.5, đoạn cách dòng. KHÔNG dùng emoji. KHÔNG viết hoa toàn bộ. Email lộn xộn = ấn tượng xấu. (5) Câu kết: 'XX 敬上' (XX kính trình) + dòng riêng cho chữ ký gồm tên + mã sinh viên + số điện thoại + email. Đây là chữ ký chuẩn academic Trung Quốc. (6) Nếu phải gửi email khẩn (visa sắp hết, hồ sơ thiếu), tiêu đề bắt đầu bằng '【紧急】' (jǐnjí — khẩn cấp). Lạm dụng = mất tác dụng; chỉ dùng khi thực sự khẩn. (7) Sau khi nhận phản hồi, gửi email cảm ơn ngắn gọn trong 24h: '谢谢您的解答, 我已经按照您的指导办理。如有疑问会再联系您'. Bước này tạo ấn tượng chuyên nghiệp và mở đường cho lần liên hệ tiếp theo.",
+    exercises: [
+      { type: "fill-blank", question: "请您协助处理, ___ 。", answer: "不胜感激" },
+      {
+        type: "matching",
+        instruction: "Ghép cụm tiếng Trung email du học với nghĩa tiếng Việt.",
+        pairs: [
+          { chinese: "录取通知书", pinyin: "lù qǔ tōng zhī shū", english: "giấy báo nhập học" },
+          { chinese: "签证", pinyin: "qiān zhèng", english: "visa / thị thực" },
+          { chinese: "不胜感激", pinyin: "bù shèng gǎn jī", english: "vô cùng biết ơn (formal)" },
+          { chinese: "按部就班", pinyin: "àn bù jiù bān", english: "theo từng bước" }
+        ]
+      },
+      {
+        type: "translation",
+        vietnamese: "Em là tân sinh viên thạc sĩ người Việt đã được quý trường nhận. Em muốn hỏi về quy trình làm visa du học X1.",
+        chinese: "我是已被贵校录取的越南籍硕士新生。我想咨询X1学习签证的办理流程。",
+        pinyin: "Wǒ shì yǐ bèi guì xiào lù qǔ de Yuè nán jí shuò shì xīn shēng. Wǒ xiǎng zī xún X1 xué xí qiān zhèng de bàn lǐ liú chéng."
+      }
+    ]
+  },
+  {
+    id: 57,
+    level: "B2",
+    category: "study_career",
+    title: "从越南打电话面试中国雇主",
+    pinyin: "cóng yuè nán dǎ diàn huà miàn shì zhōng guó gù zhǔ",
+    topic: "Phone interview from Vietnam to Chinese employer",
+    title_vi: "Phỏng vấn qua điện thoại từ Việt Nam với nhà tuyển dụng Trung Quốc",
+    title_en: "Phone interview from Vietnam to a Chinese employer",
+    sentences: [
+      {
+        chinese: "您好, 我是越南的应聘者阮文海, 现在方便面试吗?",
+        pinyin: "Nín hǎo, wǒ shì Yuènán de yìngpìn zhě Ruǎn Wénhǎi, xiànzài fāngbiàn miànshì ma?",
+        english: "Hello, I'm Nguyen Van Hai, the applicant from Vietnam. Is now convenient for the interview?",
+        vi: "Em chào anh/chị, em là Nguyễn Văn Hải, ứng viên từ Việt Nam. Bây giờ phỏng vấn có tiện không ạ?",
+        pronunciation_focus: ["应聘者 → yìngpìnzhě (ứng viên — formal)", "方便 → fāngbiàn (tiện)", "面试 → miànshì", "现在 → xiànzài"]
+      },
+      {
+        chinese: "信号有点不太稳定, 如果断开请您稍等, 我会立刻回拨。",
+        pinyin: "Xìnhào yǒudiǎn bù tài wěndìng, rúguǒ duànkāi qǐng nín shāo děng, wǒ huì lìkè huíbō.",
+        english: "The signal is a bit unstable; if it disconnects please wait a moment, I'll call back immediately.",
+        vi: "Tín hiệu hơi không ổn, nếu bị ngắt xin anh/chị đợi chút, em sẽ gọi lại ngay.",
+        pronunciation_focus: ["信号 → xìnhào (tín hiệu)", "稳定 → wěndìng (ổn định)", "断开 → duànkāi (ngắt)", "回拨 → huíbō (gọi lại)"]
+      },
+      {
+        chinese: "请您说话稍微大声一点, 我这边能听得更清楚。",
+        pinyin: "Qǐng nín shuōhuà shāowēi dàshēng yīdiǎn, wǒ zhè biān néng tīng de gèng qīngchu.",
+        english: "Could you speak a little louder? I can hear more clearly on my end.",
+        vi: "Phiền anh/chị nói to hơn một chút, em sẽ nghe rõ hơn.",
+        pronunciation_focus: ["稍微 → shāowēi (hơi)", "大声 → dàshēng (to tiếng)", "清楚 → qīngchu (rõ ràng)", "听得 → tīng de"]
+      },
+      {
+        chinese: "您刚才说的那一点, 我想再确认一下我的理解。",
+        pinyin: "Nín gāngcái shuō de nà yī diǎn, wǒ xiǎng zài quèrèn yīxià wǒ de lǐjiě.",
+        english: "About what you just said, I'd like to confirm my understanding.",
+        vi: "Về điều anh/chị vừa nói, em muốn xác nhận lại cách hiểu của em.",
+        pronunciation_focus: ["刚才 → gāngcái (vừa rồi)", "确认 → quèrèn (xác nhận)", "理解 → lǐjiě (cách hiểu)", "那一点 → nà yī diǎn (điểm đó)"]
+      },
+      {
+        chinese: "感谢您今天的时间, 期待您的好消息。",
+        pinyin: "Gǎnxiè nín jīntiān de shíjiān, qídài nín de hǎo xiāoxi.",
+        english: "Thank you for your time today; I look forward to your good news.",
+        vi: "Cảm ơn anh/chị đã dành thời gian hôm nay, em mong tin tốt từ anh/chị.",
+        pronunciation_focus: ["感谢 → gǎnxiè (formal hơn 谢谢)", "期待 → qídài (mong chờ)", "好消息 → hǎo xiāoxi (tin tốt)", "今天 → jīntiān"]
+      }
+    ],
+    vocab: [
+      { chinese: "电话面试", pinyin: "diàn huà miàn shì", english: "phone interview", vi: "phỏng vấn qua điện thoại" },
+      { chinese: "信号", pinyin: "xìn hào", english: "signal", vi: "tín hiệu" },
+      { chinese: "回拨", pinyin: "huí bō", english: "to call back", vi: "gọi lại" },
+      { chinese: "确认", pinyin: "què rèn", english: "to confirm", vi: "xác nhận" },
+      { chinese: "录取", pinyin: "lù qǔ", english: "to admit / hire", vi: "tuyển dụng / nhận" },
+      { chinese: "时差", pinyin: "shí chà", english: "time difference", vi: "chênh lệch múi giờ" },
+      { chinese: "网络", pinyin: "wǎng luò", english: "network / internet", vi: "mạng" },
+      { chinese: "言简意赅", pinyin: "yán jiǎn yì gāi", english: "concise and to the point (4-char idiom)", vi: "lời ngắn ý đủ" },
+      { chinese: "应对自如", pinyin: "yìng duì zì rú", english: "respond with ease (4-char idiom)", vi: "ứng đối tự nhiên" },
+      { chinese: "见机行事", pinyin: "jiàn jī xíng shì", english: "act according to circumstances", vi: "tùy cơ ứng biến" }
+    ],
+    dialogue: [
+      { speaker: "HR", chinese: "您好, 是阮文海吗?", pinyin: "Nín hǎo, shì Ruǎn Wénhǎi ma?", english: "Hello, is this Nguyen Van Hai?", vi: "Em chào anh, có phải Nguyễn Văn Hải không?" },
+      { speaker: "阮文海", chinese: "是的, 您好。请问您是?", pinyin: "Shì de, nín hǎo. Qǐng wèn nín shì?", english: "Yes, hello. May I ask who's calling?", vi: "Vâng đúng ạ, em chào anh/chị. Cho em hỏi là ai vậy?" },
+      { speaker: "HR", chinese: "我是上海ABC科技公司的张, 我们约的是今天下午三点电话面试。", pinyin: "Wǒ shì Shànghǎi ABC Kējì Gōngsī de Zhāng, wǒmen yuē de shì jīntiān xiàwǔ sān diǎn diànhuà miànshì.", english: "I'm Zhang from Shanghai ABC Tech Company. We scheduled the phone interview for 3 PM today.", vi: "Anh là Trương từ Công ty Công nghệ ABC Thượng Hải, mình hẹn phỏng vấn điện thoại 3 giờ chiều nay." },
+      { speaker: "阮文海", chinese: "好的张哥, 我准备好了。请您开始。", pinyin: "Hǎo de Zhāng gē, wǒ zhǔnbèi hǎo le. Qǐng nín kāishǐ.", english: "Okay Brother Zhang, I'm ready. Please go ahead.", vi: "Vâng anh Trương, em đã sẵn sàng. Mời anh bắt đầu." }
+    ],
+    dialogue_long: [
+      { speaker: "HR", chinese: "您好, 阮先生, 我是上海ABC科技的HR张明。我们准时开始面试。", pinyin: "Nín hǎo, Ruǎn xiānsheng, wǒ shì Shànghǎi ABC Kējì de HR Zhāng Míng. Wǒmen zhǔnshí kāishǐ miànshì.", english: "Hello, Mr. Nguyen. I'm Zhang Ming, HR at Shanghai ABC Tech. Let's start the interview on time.", vi: "Chào anh Nguyễn, tôi là Trương Minh, HR công ty Công nghệ ABC Thượng Hải. Mình bắt đầu phỏng vấn đúng giờ nhé." },
+      { speaker: "阮文海", chinese: "您好张老师。请问您能听清楚我说话吗? 网络可能不太稳定。", pinyin: "Nín hǎo Zhāng lǎoshī. Qǐng wèn nín néng tīng qīngchu wǒ shuōhuà ma? Wǎngluò kěnéng bù tài wěndìng.", english: "Hello Teacher Zhang. Can you hear me clearly? The network might be unstable.", vi: "Chào anh Trương. Cho em hỏi anh nghe em rõ không? Mạng có thể không ổn định lắm." },
+      { speaker: "HR", chinese: "听得很清楚, 您也能听到我吗?", pinyin: "Tīng de hěn qīngchu, nín yě néng tīng dào wǒ ma?", english: "I hear you clearly. Can you also hear me?", vi: "Tôi nghe rõ. Anh cũng nghe được tôi chứ?" },
+      { speaker: "阮文海", chinese: "能听到, 谢谢。如果中途断线, 我会立刻回拨, 请您稍等。", pinyin: "Néng tīng dào, xièxie. Rúguǒ zhōngtú duànxiàn, wǒ huì lìkè huíbō, qǐng nín shāo děng.", english: "Yes I can, thank you. If we disconnect mid-call, I'll call back immediately — please wait briefly.", vi: "Em nghe được, cảm ơn anh. Nếu giữa chừng bị ngắt, em sẽ gọi lại ngay, xin anh đợi một chút." },
+      { speaker: "HR", chinese: "好的。先做一个三分钟的自我介绍, 重点突出和这个职位相关的经验。", pinyin: "Hǎo de. Xiān zuò yī gè sān fēnzhōng de zìwǒ jièshào, zhòngdiǎn tūchū hé zhège zhíwèi xiāngguān de jīngyàn.", english: "Good. First, a three-minute self-introduction, highlighting experience relevant to this role.", vi: "Được. Trước tiên anh tự giới thiệu ba phút, tập trung vào kinh nghiệm liên quan đến vị trí này." },
+      { speaker: "阮文海", chinese: "好的。我叫阮文海, 河内国家大学计算机系毕业, 三年后端开发经验, 主要做支付系统。最近一年负责越南最大支付平台MoMo的核心模块。", pinyin: "Hǎo de. Wǒ jiào Ruǎn Wénhǎi, Hénèi Guójiā Dàxué jìsuànjī xì bìyè, sān nián hòuduān kāifā jīngyàn, zhǔyào zuò zhīfù xìtǒng. Zuìjìn yī nián fùzé Yuènán zuì dà zhīfù píngtái MoMo de héxīn mókuài.", english: "Okay. I'm Nguyen Van Hai, graduated from Vietnam National University Hanoi computer science department, 3 years backend development experience, mainly on payment systems. The past year I led core modules of MoMo, Vietnam's largest payment platform.", vi: "Vâng. Em tên là Nguyễn Văn Hải, tốt nghiệp khoa CNTT Đại học Quốc gia Hà Nội, ba năm kinh nghiệm backend, chủ yếu hệ thống thanh toán. Năm gần nhất em phụ trách module lõi của MoMo - nền tảng thanh toán lớn nhất Việt Nam." },
+      { speaker: "HR", chinese: "您能用中文做技术讨论吗? 比如和北京团队的代码评审。", pinyin: "Nín néng yòng zhōngwén zuò jìshù tǎolùn ma? Bǐrú hé Běijīng tuánduì de dàimǎ píngshěn.", english: "Can you do technical discussions in Chinese? E.g. code review with the Beijing team.", vi: "Anh có thể thảo luận kỹ thuật bằng tiếng Trung không? Ví dụ code review với team Bắc Kinh." },
+      { speaker: "阮文海", chinese: "可以。我HSK六级, 平时阅读中文技术文档, 也参与过北京同事的几次远程会议。", pinyin: "Kěyǐ. Wǒ HSK liù jí, píngshí yuèdú zhōngwén jìshù wéndàng, yě cānyù guò Běijīng tóngshì de jǐ cì yuǎnchéng huìyì.", english: "Yes. HSK 6, I regularly read Chinese tech docs and have joined several remote meetings with Beijing colleagues.", vi: "Được. Em HSK 6, hàng ngày đọc tài liệu kỹ thuật tiếng Trung, cũng tham gia vài cuộc họp từ xa với đồng nghiệp Bắc Kinh." },
+      { speaker: "HR", chinese: "好。这个职位需要每月去北京一周, 您能接受吗?", pinyin: "Hǎo. Zhège zhíwèi xūyào měi yuè qù Běijīng yī zhōu, nín néng jiēshòu ma?", english: "Good. This role requires going to Beijing one week per month — acceptable?", vi: "Được. Vị trí này cần đi Bắc Kinh một tuần mỗi tháng, anh chấp nhận được không?" },
+      { speaker: "阮文海", chinese: "可以接受。如果是固定的时间, 我可以提前安排家事。", pinyin: "Kěyǐ jiēshòu. Rúguǒ shì gùdìng de shíjiān, wǒ kěyǐ tíqián ānpái jiāshì.", english: "Acceptable. If it's a fixed time, I can arrange family matters in advance.", vi: "Em chấp nhận được. Nếu là thời gian cố định, em có thể sắp xếp việc gia đình trước." },
+      { speaker: "HR", chinese: "您期望的薪资是多少?", pinyin: "Nín qīwàng de xīnzī shì duōshao?", english: "What's your expected salary?", vi: "Lương kỳ vọng của anh là bao nhiêu?" },
+      { speaker: "阮文海", chinese: "根据市场和我的经验, 税前月薪三万到三万五人民币。当然要看整体福利。", pinyin: "Gēnjù shìchǎng hé wǒ de jīngyàn, shuì qián yuèxīn sān wàn dào sān wàn wǔ rénmínbì. Dāngrán yào kàn zhěngtǐ fúlì.", english: "Based on market and my experience, pre-tax monthly 30,000-35,000 RMB. Of course depends on overall benefits.", vi: "Dựa trên thị trường và kinh nghiệm của em, lương trước thuế 30 đến 35 nghìn nhân dân tệ. Còn tùy phúc lợi tổng thể." },
+      { speaker: "HR", chinese: "明白。那您对我们公司还有什么问题想了解的?", pinyin: "Míngbái. Nà nín duì wǒmen gōngsī hái yǒu shénme wèntí xiǎng liǎojiě de?", english: "Understood. Any questions you'd like to ask about our company?", vi: "Tôi hiểu. Anh còn câu hỏi nào về công ty không?" },
+      { speaker: "阮文海", chinese: "我想了解越南办公室的规模, 以及我会和哪个团队合作。", pinyin: "Wǒ xiǎng liǎojiě Yuènán bàngōngshì de guīmó, yǐjí wǒ huì hé nǎ gè tuánduì hézuò.", english: "I'd like to know the size of the Vietnam office and which team I'll work with.", vi: "Em muốn tìm hiểu quy mô văn phòng Việt Nam, và em sẽ làm với team nào." },
+      { speaker: "HR", chinese: "胡志明市办公室目前30人, 您会进入支付团队, 直接汇报给越南区CTO黎先生。", pinyin: "Húzhìmíng shì bàngōngshì mùqián sānshí rén, nín huì jìnrù zhīfù tuánduì, zhíjiē huìbào gěi Yuènán qū CTO Lí xiānsheng.", english: "Ho Chi Minh City office currently has 30 people. You'll join the payment team, reporting directly to Vietnam region CTO, Mr. Le.", vi: "Văn phòng TP HCM hiện 30 người. Anh sẽ vào team thanh toán, báo cáo trực tiếp cho CTO khu vực Việt Nam, anh Lê." },
+      { speaker: "阮文海", chinese: "明白了, 谢谢您的解答。如果有进一步的问题, 我可以邮件联系您吗?", pinyin: "Míngbái le, xièxie nín de jiědá. Rúguǒ yǒu jìnyībù de wèntí, wǒ kěyǐ yóujiàn liánxì nín ma?", english: "Understood, thank you for the explanation. If I have further questions, may I email you?", vi: "Em hiểu rồi, cảm ơn anh đã giải đáp. Nếu có thêm câu hỏi, em có thể email anh được không?" },
+      { speaker: "HR", chinese: "当然可以。我们会在一周内给您正式答复。今天感谢您的时间。", pinyin: "Dāngrán kěyǐ. Wǒmen huì zài yī zhōu nèi gěi nín zhèngshì dáfù. Jīntiān gǎnxiè nín de shíjiān.", english: "Of course. We'll give a formal reply within a week. Thank you for your time today.", vi: "Đương nhiên được. Chúng tôi sẽ phản hồi chính thức trong một tuần. Cảm ơn anh đã dành thời gian hôm nay." }
+    ],
+    roleplay_prompts: [
+      "Đóng vai ứng viên Việt Nam phỏng vấn điện thoại với HR Trung Quốc. Trong phỏng vấn, mạng đột ngột mất 30 giây. Hãy gọi lại ngay, mở đầu bằng '不好意思, 刚才信号断了, 您能听到我吗?' và xin tiếp tục từ điểm đã ngắt — KHÔNG yêu cầu HR nhắc lại toàn bộ.",
+      "HR đặt câu hỏi rất nhanh và không rõ. Bạn không hiểu 60% câu hỏi. Hãy yêu cầu họ nói lại, KHÔNG đoán mò. Dùng cụm '不好意思, 您刚才说...这部分我没听清, 能再说一遍吗?' — chỉ rõ phần không hiểu, không nói chung chung.",
+      "Cuối phỏng vấn, HR đề nghị kiểm tra tiếng Trung qua bài đọc kèm dịch trực tiếp. Đoạn văn dài 3 đoạn. Bạn có 30 giây chuẩn bị. Hãy yêu cầu thêm thời gian (1 phút) hoặc xin được dịch ý chính thay vì từng câu. Đề xuất phải khéo léo, không bị coi là yếu."
+    ],
+    register_notes: "Phỏng vấn điện thoại đặc biệt khó vì thiếu cues hình ảnh — bạn không thấy phản ứng của HR, không thấy họ đang ghi chú. Vì vậy phải dùng register formal HƠN một chút so với phỏng vấn trực tiếp. 您 toàn bộ — kể cả nếu HR trẻ và bảo 'cứ gọi tôi là Tiểu Trương'.\n\nCác cụm chuẩn cho phone interview: mở đầu '您好, 我是阮文海, 现在方便面试吗?'; khi không nghe rõ '不好意思, 您能再说一遍吗?' hoặc '请您稍微大声一点'; khi xác nhận hiểu đúng '我想再确认一下我的理解, 您是说...对吗?'; khi mất tín hiệu '不好意思, 刚才信号断了, 您能听到我吗?'; câu kết '感谢您今天的时间, 期待您的好消息'.\n\nTránh tuyệt đối: (a) Cười khẩy hoặc thở dài qua điện thoại — âm thanh rõ hơn bình thường; (b) Ngắt lời HR — qua điện thoại càng dễ ngắt nhầm; đợi 1 giây sau khi HR ngừng để chắc chắn họ đã xong; (c) Đa nhiệm — chỉ làm phỏng vấn, không vừa làm vừa kiểm tra điện thoại; HR Trung Quốc thường hỏi 'em đang làm gì khác không?' nếu nghe tiếng gõ phím.\n\nNgôn ngữ thân thể qua điện thoại: ĐỨNG (giọng tự tin hơn), MỈM CƯỜI (giọng thân thiện hơn), KHÔNG đeo headphone in-ear (âm thanh dội về thiếu tự nhiên — dùng over-ear nếu có).",
+    idiom_glosses: [
+      {
+        idiom: "言简意赅",
+        literal: "lời ngắn ý đủ (yán jiǎn yì gāi)",
+        meaning: "Lời nói ngắn gọn nhưng ý nghĩa đầy đủ. Cụm khen kỹ năng giao tiếp lý tưởng cho phone interview — HR Trung Quốc đặc biệt thích ứng viên trả lời ngắn gọn rõ ý. Tự nhận: '我尽量言简意赅, 不耽误您的时间'.",
+        example: "您的问题, 我尽量言简意赅地回答。"
+      },
+      {
+        idiom: "应对自如",
+        literal: "ứng đối tự nhiên (yìng duì zì rú)",
+        meaning: "Phản ứng nhanh, linh hoạt — không lúng túng. Cụm dùng khi tự miêu tả khả năng ứng phó: '在压力下我能应对自如'. Tránh dùng khi bạn đang lúng túng — sẽ phản tác dụng.",
+        example: "在突发情况下我能应对自如。"
+      },
+      {
+        idiom: "见机行事",
+        literal: "thấy cơ thì hành sự (jiàn jī xíng shì)",
+        meaning: "Tùy cơ ứng biến — không bám cứng kế hoạch. Cụm tích cực miêu tả phong cách làm việc linh hoạt. Đặc biệt phù hợp khi nói về kỹ năng xử lý dự án phức tạp.",
+        example: "项目推进中我会见机行事, 灵活调整。"
+      },
+      {
+        idiom: "慎言慎行",
+        literal: "cẩn ngôn cẩn hành (shèn yán shèn xíng)",
+        meaning: "Cẩn trọng từng lời nói và hành động. Cụm khiêm tốn lý tưởng cho ứng viên trẻ — báo hiệu bạn không bốc đồng, không hứa quá. Đối lập với 'self-promotion' phương Tây.",
+        example: "我做事比较慎言慎行, 喜欢先思考再行动。"
+      }
+    ],
+    cultural_notes_vi: "Phỏng vấn điện thoại quốc tế (Việt Nam ↔ Trung Quốc) có những đặc thù mà phỏng vấn trực tiếp không có: (1) Múi giờ — Trung Quốc UTC+8, Việt Nam UTC+7, chênh lệch 1 giờ. KHÔNG nhầm: nếu HR ở Bắc Kinh đề xuất '下午三点' (3 giờ chiều) = 14:00 giờ Việt Nam. Hỏi rõ múi giờ trong email xác nhận. (2) Ngôn ngữ: HR có thể chuyển sang tiếng Anh nếu thấy bạn yếu tiếng Trung — đừng coi đó là tích cực. Họ đang thử bạn. Cố giữ tiếng Trung đến cuối; nếu thực sự không hiểu, nói '能用中文换一种说法吗?' (có thể nói bằng tiếng Trung theo cách khác không). (3) Wechat call vs điện thoại quốc tế: phần lớn HR Trung Quốc thích Wechat hơn vì rẻ và quen thuộc. Cài Wechat trước, kết bạn với HR vài ngày trước phỏng vấn để test signal. Nếu HR muốn gọi điện thoại quốc tế, không sao, nhưng tự xác nhận chi phí roaming. (4) Ghi âm: ở Trung Quốc, ghi âm cuộc gọi phỏng vấn KHÔNG được phép trừ khi cả hai bên đồng ý. Đừng tự ghi để 'review sau'. Nếu cần ghi nhớ, ghi chép tay trong khi nói.\n\nTâm lý qua điện thoại: HR Trung Quốc đánh giá ứng viên qua giọng nói cao hơn 30%. Giọng tự tin (đứng nói), giọng cười nhẹ trước câu trả lời, giọng nhanh nhưng rõ = ấn tượng tốt. Giọng lí nhí, ngập ngừng, dài dòng = ấn tượng xấu. Tập đứng trước gương phỏng vấn 30 phút trước cuộc gọi thật.\n\nVề follow-up: gửi email cảm ơn trong 24 giờ bằng tiếng Trung. Đính kèm portfolio/code samples nếu chưa gửi. Đây là điểm cộng đặc biệt vì ít ứng viên Việt Nam làm bước này.",
+    tip_advice_vi: "(1) TEST setup 24 giờ trước: gọi thử bạn bè qua chính kênh sẽ dùng (WeChat call / Skype / Zoom), kiểm tra micro, headset, mạng. KHÔNG dùng wifi nhà cafe — phải mạng nhà cá nhân hoặc 4G ổn định. (2) Chuẩn bị 'crash kit': số WeChat của HR, email backup, số hotline lễ tân công ty (phòng khi mất tín hiệu). Nếu cuộc gọi rớt mà không liên lạc lại được = mất phỏng vấn. (3) Ngồi/đứng ở phòng yên tĩnh, đóng cửa, treo bảng 'không làm phiền' nếu sống chung. Tiếng trẻ con/chó sủa qua điện thoại = ứng viên không chuyên nghiệp. (4) Trước phỏng vấn 5 phút, uống nước ấm (giọng rõ hơn), KHÔNG cà phê (làm khô họng), KHÔNG sữa (làm nhầy họng). (5) Đặt CV, JD, ghi chú trên bàn — NHƯNG đừng đọc thuộc; HR sẽ nghe ra. Dùng làm tham chiếu khi cần. (6) Khi không hiểu một từ chuyên môn của HR, KHÔNG đoán. Hỏi '不好意思, 您说的XX是指...?' — chứng tỏ bạn cẩn thận. (7) Sau khi cúp máy, KHÔNG đăng status mạng xã hội ('vừa phỏng vấn xong căng quá') — HR Trung Quốc kiểm tra Linkedin/Facebook ứng viên trước khi quyết định.",
+    exercises: [
+      { type: "fill-blank", question: "我尽量 ___ 地回答您的问题。", answer: "言简意赅" },
+      {
+        type: "matching",
+        instruction: "Ghép cụm tiếng Trung phỏng vấn điện thoại với nghĩa tiếng Việt.",
+        pairs: [
+          { chinese: "信号", pinyin: "xìn hào", english: "tín hiệu" },
+          { chinese: "回拨", pinyin: "huí bō", english: "gọi lại" },
+          { chinese: "时差", pinyin: "shí chà", english: "chênh lệch múi giờ" },
+          { chinese: "言简意赅", pinyin: "yán jiǎn yì gāi", english: "lời ngắn ý đủ" }
+        ]
+      },
+      {
+        type: "translation",
+        vietnamese: "Xin lỗi, tín hiệu vừa rồi không ổn, anh có thể nhắc lại câu hỏi cuối được không?",
+        chinese: "不好意思, 刚才信号不太稳定, 您能重复一下最后一个问题吗?",
+        pinyin: "Bù hǎo yì si, gāng cái xìn hào bù tài wěn dìng, nín néng chóng fù yī xià zuì hòu yī gè wèn tí ma?"
+      }
+    ]
+  },
+  {
+    id: 58,
+    level: "B2",
+    category: "study_career",
+    title: "商务交流会上的自我介绍",
+    pinyin: "shāng wù jiāo liú huì shàng de zì wǒ jiè shào",
+    topic: "Self-introduction at a business networking event",
+    title_vi: "Tự giới thiệu tại sự kiện giao lưu doanh nghiệp",
+    title_en: "Self-introduction at a business networking event",
+    sentences: [
+      {
+        chinese: "您好, 我是越南胡志明市的陈伟, 在Vingroup负责中国市场。",
+        pinyin: "Nín hǎo, wǒ shì Yuènán Húzhìmíng shì de Chén Wěi, zài Vingroup fùzé Zhōngguó shìchǎng.",
+        english: "Hello, I'm Tran Vy from Ho Chi Minh City, Vietnam, in charge of China market at Vingroup.",
+        vi: "Em chào anh/chị, em là Trần Vĩ từ TP HCM Việt Nam, phụ trách thị trường Trung Quốc tại Vingroup.",
+        pronunciation_focus: ["负责 → fùzé (phụ trách)", "市场 → shìchǎng (thị trường)", "胡志明市 → Húzhìmíng shì", "您好 → nín hǎo"]
+      },
+      {
+        chinese: "今天能在这里认识您, 我感到非常荣幸。",
+        pinyin: "Jīntiān néng zài zhèlǐ rènshi nín, wǒ gǎndào fēicháng róngxìng.",
+        english: "I feel very honored to meet you here today.",
+        vi: "Hôm nay được làm quen với anh/chị tại đây, em cảm thấy rất vinh hạnh.",
+        pronunciation_focus: ["荣幸 → róngxìng (vinh hạnh)", "认识 → rènshi (làm quen)", "感到 → gǎndào (cảm thấy)", "非常 → fēicháng"]
+      },
+      {
+        chinese: "这是我的名片, 请多多指教。",
+        pinyin: "Zhè shì wǒ de míngpiàn, qǐng duōduō zhǐjiào.",
+        english: "Here's my business card; please favor me with your guidance.",
+        vi: "Đây là danh thiếp của em, xin được chỉ giáo nhiều.",
+        pronunciation_focus: ["名片 → míngpiàn (danh thiếp)", "请多多指教 → qǐng duōduō zhǐjiào (cụm formal khi trao đổi danh thiếp)", "这是 → zhè shì", "我的 → wǒ de"]
+      },
+      {
+        chinese: "我们公司主要做电商和金融科技, 跟贵公司可能有合作空间。",
+        pinyin: "Wǒmen gōngsī zhǔyào zuò diànshāng hé jīnróng kējì, gēn guì gōngsī kěnéng yǒu hézuò kōngjiān.",
+        english: "Our company mainly does e-commerce and fintech; there may be cooperation potential with your company.",
+        vi: "Công ty em chủ yếu làm thương mại điện tử và công nghệ tài chính, có thể có không gian hợp tác với quý công ty.",
+        pronunciation_focus: ["电商 → diànshāng (thương mại điện tử, viết tắt 电子商务)", "金融科技 → jīnróng kējì (fintech)", "合作空间 → hézuò kōngjiān (không gian hợp tác)", "贵公司 → guì gōngsī"]
+      },
+      {
+        chinese: "如果方便的话, 我们加个微信, 以后保持联系。",
+        pinyin: "Rúguǒ fāngbiàn de huà, wǒmen jiā gè wēixìn, yǐhòu bǎochí liánxì.",
+        english: "If convenient, let's add WeChat and keep in touch in the future.",
+        vi: "Nếu tiện, mình kết bạn WeChat, sau này giữ liên lạc.",
+        pronunciation_focus: ["微信 → wēixìn (WeChat)", "保持联系 → bǎochí liánxì (giữ liên lạc)", "以后 → yǐhòu (về sau)", "方便 → fāngbiàn"]
+      }
+    ],
+    vocab: [
+      { chinese: "商务交流会", pinyin: "shāng wù jiāo liú huì", english: "business networking event", vi: "sự kiện giao lưu doanh nghiệp" },
+      { chinese: "名片", pinyin: "míng piàn", english: "business card", vi: "danh thiếp" },
+      { chinese: "请多多指教", pinyin: "qǐng duō duō zhǐ jiào", english: "please give guidance (set phrase when meeting)", vi: "xin được chỉ giáo nhiều" },
+      { chinese: "合作", pinyin: "hé zuò", english: "cooperation", vi: "hợp tác" },
+      { chinese: "互利共赢", pinyin: "hù lì gòng yíng", english: "mutual benefit, win-win", vi: "đôi bên cùng có lợi" },
+      { chinese: "保持联系", pinyin: "bǎo chí lián xì", english: "keep in touch", vi: "giữ liên lạc" },
+      { chinese: "行业", pinyin: "háng yè", english: "industry", vi: "ngành nghề" },
+      { chinese: "礼尚往来", pinyin: "lǐ shàng wǎng lái", english: "courtesy demands reciprocity", vi: "có qua có lại" },
+      { chinese: "一见如故", pinyin: "yī jiàn rú gù", english: "feel like old friends at first meeting", vi: "gặp lần đầu như đã thân quen" },
+      { chinese: "八面玲珑", pinyin: "bā miàn líng lóng", english: "smooth in all directions", vi: "khéo léo mọi mặt" }
+    ],
+    dialogue: [
+      { speaker: "陈伟", chinese: "您好, 我叫陈伟, 来自越南Vingroup。", pinyin: "Nín hǎo, wǒ jiào Chén Wěi, láizì Yuènán Vingroup.", english: "Hello, I'm Tran Vy from Vingroup Vietnam.", vi: "Em chào anh, em là Trần Vĩ đến từ Vingroup Việt Nam." },
+      { speaker: "张总", chinese: "您好陈先生, 我是BYD的张明。", pinyin: "Nín hǎo Chén xiānsheng, wǒ shì BYD de Zhāng Míng.", english: "Hello Mr. Tran, I'm Zhang Ming from BYD.", vi: "Chào anh Trần, tôi là Trương Minh của BYD." },
+      { speaker: "陈伟", chinese: "久仰大名。这是我的名片, 请多多指教。", pinyin: "Jiǔ yǎng dà míng. Zhè shì wǒ de míngpiàn, qǐng duōduō zhǐjiào.", english: "Long admired your name. Here's my card; please give guidance.", vi: "Lâu nay đã ngưỡng mộ. Đây là danh thiếp của em, xin được chỉ giáo." },
+      { speaker: "张总", chinese: "客气了。这是我的, 我们多交流。", pinyin: "Kèqì le. Zhè shì wǒ de, wǒmen duō jiāoliú.", english: "You're too polite. Here's mine — let's stay in touch.", vi: "Khách sáo quá. Đây là danh thiếp của tôi, mình trao đổi nhiều nhé." }
+    ],
+    dialogue_long: [
+      { speaker: "陈伟", chinese: "您好, 请问您是BYD的张总吗?", pinyin: "Nín hǎo, qǐng wèn nín shì BYD de Zhāng zǒng ma?", english: "Hello, are you Director Zhang of BYD?", vi: "Em chào anh, cho em hỏi anh có phải là Tổng Trương của BYD không ạ?" },
+      { speaker: "张总", chinese: "是的, 我是张明。您是?", pinyin: "Shì de, wǒ shì Zhāng Míng. Nín shì?", english: "Yes, I'm Zhang Ming. And you are?", vi: "Đúng rồi, tôi là Trương Minh. Còn anh?" },
+      { speaker: "陈伟", chinese: "我是越南Vingroup的陈伟, 主要负责中国市场拓展。今天能在这里认识您, 我感到非常荣幸。", pinyin: "Wǒ shì Yuènán Vingroup de Chén Wěi, zhǔyào fùzé Zhōngguó shìchǎng tuòzhǎn. Jīntiān néng zài zhèlǐ rènshi nín, wǒ gǎndào fēicháng róngxìng.", english: "I'm Tran Vy from Vingroup Vietnam, mainly in charge of China market expansion. I'm very honored to meet you here today.", vi: "Em là Trần Vĩ từ Vingroup Việt Nam, chủ yếu phụ trách mở rộng thị trường Trung Quốc. Hôm nay được gặp anh tại đây em rất vinh hạnh." },
+      { speaker: "张总", chinese: "Vingroup我听说过, 是越南最大的集团之一。您具体做哪一块?", pinyin: "Vingroup wǒ tīngshuō guò, shì Yuènán zuì dà de jítuán zhī yī. Nín jùtǐ zuò nǎ yī kuài?", english: "I've heard of Vingroup, one of Vietnam's largest groups. What specifically do you handle?", vi: "Vingroup tôi đã nghe đến, là một trong những tập đoàn lớn nhất Việt Nam. Anh cụ thể phụ trách mảng nào?" },
+      { speaker: "陈伟", chinese: "我负责VinFast电动车在中国的供应链对接。这是我的名片, 请多多指教。", pinyin: "Wǒ fùzé VinFast diàndòngchē zài Zhōngguó de gōngyìng liàn duìjiē. Zhè shì wǒ de míngpiàn, qǐng duōduō zhǐjiào.", english: "I handle VinFast EV's supply-chain integration in China. Here's my card, please favor me with your guidance.", vi: "Em phụ trách kết nối chuỗi cung ứng của xe điện VinFast tại Trung Quốc. Đây là danh thiếp của em, xin được chỉ giáo." },
+      { speaker: "张总", chinese: "电动车! 我们正好是同行。这是我的名片, 我负责BYD的东南亚业务。", pinyin: "Diàndòngchē! Wǒmen zhènghǎo shì tóngháng. Zhè shì wǒ de míngpiàn, wǒ fùzé BYD de Dōngnányà yèwù.", english: "EVs! We're in the same field. Here's mine — I handle BYD's Southeast Asia business.", vi: "Xe điện! Mình đúng cùng ngành rồi. Đây là danh thiếp của tôi, tôi phụ trách thị trường Đông Nam Á của BYD." },
+      { speaker: "陈伟", chinese: "真是太好了, 一见如故。BYD在越南最近也在扩张吧?", pinyin: "Zhēn shì tài hǎo le, yī jiàn rú gù. BYD zài Yuènán zuìjìn yě zài kuòzhāng ba?", english: "Wonderful — feels like meeting an old friend. BYD is also expanding in Vietnam recently, right?", vi: "Thật là tuyệt, gặp như đã thân lâu. BYD ở Việt Nam gần đây cũng đang mở rộng đúng không ạ?" },
+      { speaker: "张总", chinese: "对, 我们去年在河内开了4S店, 今年要进胡志明市。您对越南本地的渠道熟悉吗?", pinyin: "Duì, wǒmen qùnián zài Hénèi kāi le 4S diàn, jīnnián yào jìn Húzhìmíng shì. Nín duì Yuènán běndì de qúdào shúxī ma?", english: "Yes, we opened a 4S dealership in Hanoi last year, this year we're entering Ho Chi Minh City. Are you familiar with local Vietnam channels?", vi: "Đúng, năm ngoái chúng tôi mở 4S ở Hà Nội, năm nay sẽ vào TP HCM. Anh có quen với các kênh phân phối Việt Nam không?" },
+      { speaker: "陈伟", chinese: "比较熟悉。Vingroup在汽车销售网络上有很多资源, 也许我们公司可以做一些合作。", pinyin: "Bǐjiào shúxī. Vingroup zài qìchē xiāoshòu wǎngluò shàng yǒu hěn duō zīyuán, yěxǔ wǒmen gōngsī kěyǐ zuò yīxiē hézuò.", english: "Quite familiar. Vingroup has many resources in auto sales networks — perhaps our companies could do some cooperation.", vi: "Khá quen. Vingroup có nhiều nguồn lực trong mạng lưới bán xe, có lẽ công ty mình có thể hợp tác." },
+      { speaker: "张总", chinese: "正合我意。互利共赢是最好的。下个月我会去河内出差, 到时候详谈?", pinyin: "Zhèng hé wǒ yì. Hùlì gòngyíng shì zuì hǎo de. Xià gè yuè wǒ huì qù Hénèi chūchāi, dào shíhou xiángtán?", english: "Exactly my thinking. Win-win is best. Next month I'll travel to Hanoi — we can discuss in detail then?", vi: "Đúng ý tôi. Đôi bên cùng có lợi là tốt nhất. Tháng sau tôi sẽ đi công tác Hà Nội, tới lúc đó mình bàn chi tiết nhé?" },
+      { speaker: "陈伟", chinese: "好的, 我会很期待。您几号到, 我可以安排办公室会面。", pinyin: "Hǎo de, wǒ huì hěn qídài. Nín jǐ hào dào, wǒ kěyǐ ānpái bàngōngshì huìmiàn.", english: "Great, I'll look forward to it. What date do you arrive — I can arrange an office meeting.", vi: "Vâng, em rất mong chờ. Anh đến ngày mấy, em có thể sắp xếp gặp tại văn phòng." },
+      { speaker: "张总", chinese: "10月15号到, 待三天。我让助理跟您协调。", pinyin: "Shí yuè shí wǔ hào dào, dài sān tiān. Wǒ ràng zhùlǐ gēn nín xiétiáo.", english: "Arrive Oct 15, staying three days. I'll have my assistant coordinate with you.", vi: "Tới ngày 15/10, ở ba ngày. Tôi sẽ bảo trợ lý phối hợp với anh." },
+      { speaker: "陈伟", chinese: "好的。如果方便的话, 我们先加个微信, 直接沟通更快。", pinyin: "Hǎo de. Rúguǒ fāngbiàn de huà, wǒmen xiān jiā gè wēixìn, zhíjiē gōutōng gèng kuài.", english: "Sounds good. If convenient, let's add WeChat first — direct communication is faster.", vi: "Vâng. Nếu tiện, mình kết WeChat trước, trao đổi trực tiếp nhanh hơn." },
+      { speaker: "张总", chinese: "好, 您扫我吧。", pinyin: "Hǎo, nín sǎo wǒ ba.", english: "Sure, scan mine.", vi: "Được, anh quét QR của tôi đi." },
+      { speaker: "陈伟", chinese: "加上了。期待和您进一步交流。希望能在贵公司的拓展中尽一份力。", pinyin: "Jiā shàng le. Qídài hé nín jìnyībù jiāoliú. Xīwàng néng zài guì gōngsī de tuòzhǎn zhōng jìn yī fèn lì.", english: "Added. Looking forward to further exchanges. I hope to contribute to your company's expansion.", vi: "Đã kết bạn. Mong được trao đổi thêm với anh. Em hy vọng có thể đóng góp một phần cho việc mở rộng của quý công ty." },
+      { speaker: "张总", chinese: "客气, 互相互相。先这样, 您忙您的, 我们后续联系。", pinyin: "Kèqì, hùxiāng hùxiāng. Xiān zhèyàng, nín máng nín de, wǒmen hòuxù liánxì.", english: "Don't be too formal — mutually. For now, you continue with your matters; we'll be in touch.", vi: "Khách sáo quá, qua lại thôi. Tạm thế đã, anh cứ tiếp tục công việc, mình liên lạc sau." },
+      { speaker: "陈伟", chinese: "好的, 谢谢张总, 后会有期。", pinyin: "Hǎo de, xièxie Zhāng zǒng, hòu huì yǒu qī.", english: "Thank you, Director Zhang. Until next time.", vi: "Vâng, cảm ơn Tổng Trương, hẹn gặp lại." }
+    ],
+    roleplay_prompts: [
+      "Đóng vai bạn — đại diện công ty Việt Nam — tiếp cận một CEO Trung Quốc tại tiệc cocktail. Bạn có 30 giây trước khi họ chuyển sang người khác. Hãy tạo 'elevator pitch' bằng tiếng Trung gồm: tên + công ty + giá trị bạn mang lại + đề xuất follow-up cụ thể (không chỉ 'có thời gian gặp nhau'). Dùng cụm '互利共赢'.",
+      "Bạn vừa được giới thiệu với 'Lão Vương' — sếp của một đối tác tiềm năng. Lão Vương lớn tuổi và bảo thủ. Hãy tự giới thiệu theo phong cách kính trọng cao: dùng họ + 总, hỏi thăm về công ty của họ trước khi nói về mình, dùng cụm '久仰大名' nếu phù hợp.",
+      "Trong một sự kiện, bạn nhận ra mình đã trao đổi danh thiếp với cùng một người 6 tháng trước nhưng họ không nhớ. Hãy gợi nhớ lịch sự — đề cập sự kiện cũ + chủ đề đã nói + tiến triển từ đó. Tránh gây bối rối; dùng cụm '不知道您还记得吗'."
+    ],
+    register_notes: "Sự kiện giao lưu doanh nghiệp Trung Quốc có register đặc biệt — 'formal nhưng ấm'. 您 toàn bộ với người mới gặp, đặc biệt người lớn tuổi/cấp cao hơn. Cách gọi: tên + chức danh viết tắt — 'Lý 总' (zǒng — viết tắt của 总经理 zǒng jīnglǐ, tổng giám đốc), 'Trương 董' (dǒng — viết tắt của 董事长 dǒng shì zhǎng, chủ tịch HĐQT). Gọi sai chức danh = ấn tượng xấu ngay.\n\nCác cụm chuẩn networking: mở đầu '您好, 请问您是X公司的Y总吗?' (xác nhận trước, không đoán); trao danh thiếp '请多多指教' kèm hai tay đưa danh thiếp, mặt chữ hướng về phía người nhận; khen công ty người ta '久仰大名' (lâu nay đã ngưỡng mộ — chỉ dùng khi thật sự biết); đề xuất hợp tác '互利共赢' (đôi bên cùng có lợi); kết thúc '后会有期' (hẹn gặp lại) hoặc '保持联系' (giữ liên lạc).\n\nTránh: (a) Trao danh thiếp một tay — bị coi là khinh miệt; (b) Cất danh thiếp ngay vào túi — phải đọc kỹ vài giây trước khi cất; (c) Viết lên danh thiếp người khác trước mặt họ — vô lễ; (d) Nói về tôn giáo, chính trị, tranh chấp Biển Đông — chuyển chủ đề ngay nếu đối phương đề cập.",
+    idiom_glosses: [
+      {
+        idiom: "一见如故",
+        literal: "gặp lần đầu như đã thân quen (yī jiàn rú gù)",
+        meaning: "Gặp lần đầu mà cảm thấy như đã quen lâu — dùng để bày tỏ thiện cảm với người mới gặp. Cụm này ấm áp, lý tưởng cho networking. Tránh lạm dụng — chỉ dùng khi thật sự cảm thấy.",
+        example: "和您一见如故, 真希望以后多多交流。"
+      },
+      {
+        idiom: "互利共赢",
+        literal: "có lợi lẫn nhau, cùng nhau thắng (hù lì gòng yíng)",
+        meaning: "Đôi bên cùng có lợi, cùng thắng — cụm chuẩn cho đề xuất hợp tác. Người Trung Quốc đặc biệt thích cụm này vì khẳng định không ai bị thiệt. Dùng thay cho 'win-win' tiếng Anh.",
+        example: "我们的合作能做到互利共赢。"
+      },
+      {
+        idiom: "礼尚往来",
+        literal: "lễ là sự qua lại (lǐ shàng wǎng lái)",
+        meaning: "Có qua có lại mới toại lòng nhau — nguyên tắc đối nhân xử thế Trung Quốc. Khi đối tác giúp bạn, bạn phải đền đáp; khi bạn giúp họ, mong đợi họ đền đáp. KHÔNG phải hối lộ — đây là bản chất của 关系.",
+        example: "礼尚往来嘛, 下次我请您吃饭。"
+      },
+      {
+        idiom: "久仰大名",
+        literal: "lâu ngưỡng mộ tên lớn (jiǔ yǎng dà míng)",
+        meaning: "Đã ngưỡng mộ tên tuổi từ lâu — cụm trang trọng khi gặp người nổi tiếng/cấp cao. Chỉ dùng khi BẠN THỰC SỰ BIẾT về họ — nếu không sẽ bị hỏi 'biết gì về tôi?' và lúng túng.",
+        example: "张总, 久仰大名, 今天终于见到您。"
+      }
+    ],
+    cultural_notes_vi: "Sự kiện giao lưu doanh nghiệp ở Trung Quốc đại lục là môi trường cực kỳ chiến lược — không phải 'cocktail party' nhẹ nhàng kiểu phương Tây. Bốn quy tắc cốt lõi: (1) Danh thiếp (名片) là CÔNG CỤ chuyên nghiệp, không phải mảnh giấy. In song ngữ Trung-Anh ở hai mặt; chức danh phải khớp tiếng Trung lẫn tiếng Anh. Mang TỐI THIỂU 50 cái cho một sự kiện 2 giờ. Cạn danh thiếp giữa chừng = thiếu chuẩn bị. (2) Quy tắc trao danh thiếp: hai tay đưa, mặt chữ hướng về phía người nhận, kèm câu '请多多指教'. Khi nhận, đọc kỹ 5-10 giây, có thể bình luận về công ty/chức vụ ('哦, 您是负责东南亚的'), sau đó cất vào ví danh thiếp (không phải ví tiền — bị coi là vô lễ). (3) Thứ tự giới thiệu: cấp thấp → cấp cao, trẻ → già, chủ → khách. Nếu bạn muốn người A gặp người B, giới thiệu A cho B trước (vì B là cấp cao hơn). Đừng tự xuất hiện trước người cao cấp — chờ được giới thiệu hoặc xin phép. (4) Sau sự kiện, gửi tin nhắn WeChat trong 24 giờ với: cảm ơn cuộc trò chuyện + đề cập 1 chi tiết cụ thể đã nói + đề xuất bước tiếp theo. Đây là yếu tố quyết định liệu mối quan hệ có sống tiếp hay không.\n\nVề 关系 (guānxi): mục tiêu networking ở Trung Quốc KHÔNG phải 'mở rộng mạng lưới rộng' (network) như phương Tây, mà 'xây dựng mối quan hệ sâu' (relationship) với 5-10 người chiến lược. Một bữa ăn dài 2 giờ với 1 người = giá trị hơn 10 cuộc trao danh thiếp ngắn. Đầu tư thời gian vào ít người chất lượng cao.\n\nĂn uống tại sự kiện: nếu có rượu trắng (白酒 báijiǔ), bạn KHÔNG bắt buộc phải uống nếu lý do hợp lý (đang lái xe, bị bệnh, theo tôn giáo). Nhưng nếu uống được, một-hai shot kèm câu 'cùng cạn ly vì hợp tác' sẽ tạo dấu ấn đặc biệt.",
+    tip_advice_vi: "(1) Chuẩn bị 'elevator pitch' 30 giây bằng tiếng Trung: tên + công ty + 1 thành tựu + 1 đề xuất cụ thể. Tập đến mức tự nhiên, không như đọc thuộc. (2) Mang theo: ví danh thiếp (KHÔNG để trong ví tiền), bút (để ghi chú lên danh thiếp người khác SAU sự kiện), điện thoại đã sạc đầy (chụp QR WeChat), kẹo bạc hà. (3) Trang phục: nam mặc vest tối màu + cà vạt; nữ mặc váy công sở + áo khoác. Tránh: trang sức lộng lẫy (nữ), cà vạt sặc sỡ (nam) — văn hóa kinh doanh Trung Quốc đại lục thiên về 'trang nhã'. (4) Đi quanh phòng theo chiến thuật: 30 phút đầu quan sát ai có mặt, ai cần tiếp cận; 60 phút giữa tập trung vào 3-5 người chiến lược; 30 phút cuối follow-up với những người đã gặp. (5) Khi không nhớ tên người mới gặp, KHÔNG đoán mò. Hỏi lại: '不好意思, 您贵姓?' (xin lỗi, anh/chị họ gì?) — đây là cách lịch sự xác nhận. (6) Tránh chủ đề nhạy cảm: chính trị nội bộ Trung Quốc, Đài Loan, tranh chấp biển, tham nhũng. Nếu đối phương đề cập, chuyển chủ đề bằng '这是个复杂的问题, 我们改天慢慢聊' (đây là chủ đề phức tạp, mình từ từ nói sau). (7) Trong vòng 24 giờ sau sự kiện, gửi tin WeChat: '张总, 昨天和您聊得很愉快, 关于...我整理了一些资料, 方便的话我发给您' — đây là follow-up vàng, ít người làm.",
+    exercises: [
+      { type: "fill-blank", question: "我们的合作一定能做到 ___ 。", answer: "互利共赢" },
+      {
+        type: "matching",
+        instruction: "Ghép cụm tiếng Trung networking với nghĩa tiếng Việt.",
+        pairs: [
+          { chinese: "名片", pinyin: "míng piàn", english: "danh thiếp" },
+          { chinese: "请多多指教", pinyin: "qǐng duō duō zhǐ jiào", english: "xin được chỉ giáo nhiều" },
+          { chinese: "一见如故", pinyin: "yī jiàn rú gù", english: "gặp lần đầu như đã thân quen" },
+          { chinese: "礼尚往来", pinyin: "lǐ shàng wǎng lái", english: "có qua có lại" }
+        ]
+      },
+      {
+        type: "translation",
+        vietnamese: "Đây là danh thiếp của em, xin được chỉ giáo nhiều. Mong sau này mình hợp tác đôi bên cùng có lợi.",
+        chinese: "这是我的名片, 请多多指教。希望以后我们的合作能互利共赢。",
+        pinyin: "Zhè shì wǒ de míng piàn, qǐng duō duō zhǐ jiào. Xī wàng yǐ hòu wǒ men de hé zuò néng hù lì gòng yíng."
+      }
+    ]
+  },
+  {
+    id: 59,
+    level: "B2",
+    category: "study_career",
+    title: "申请被拒后的跟进",
+    pinyin: "shēn qǐng bèi jù hòu de gēn jìn",
+    topic: "Following up on rejected application",
+    title_vi: "Theo sát sau khi đơn ứng tuyển bị từ chối",
+    title_en: "Following up on a rejected application",
+    sentences: [
+      {
+        chinese: "尊敬的李老师, 我已经收到贵校的拒信。",
+        pinyin: "Zūnjìng de Lǐ lǎoshī, wǒ yǐjīng shōu dào guì xiào de jù xìn.",
+        english: "Respected Teacher Li, I have received your university's rejection letter.",
+        vi: "Kính thưa cô Lý, em đã nhận được thư từ chối của quý trường.",
+        pronunciation_focus: ["拒信 → jù xìn (thư từ chối)", "尊敬的 → zūnjìng de", "已经 → yǐjīng (đã)", "贵校 → guì xiào"]
+      },
+      {
+        chinese: "虽然结果遗憾, 但我仍然非常感谢您的考虑。",
+        pinyin: "Suīrán jiéguǒ yíhàn, dàn wǒ réngrán fēicháng gǎnxiè nín de kǎolǜ.",
+        english: "Although the result is regrettable, I still deeply appreciate your consideration.",
+        vi: "Dù kết quả đáng tiếc, em vẫn vô cùng cảm ơn cô đã cân nhắc.",
+        pronunciation_focus: ["遗憾 → yíhàn (đáng tiếc)", "仍然 → réngrán (vẫn còn)", "考虑 → kǎolǜ (cân nhắc)", "感谢 → gǎnxiè"]
+      },
+      {
+        chinese: "如果方便的话, 想请您指出我申请材料中的不足之处。",
+        pinyin: "Rúguǒ fāngbiàn de huà, xiǎng qǐng nín zhǐchū wǒ shēnqǐng cáiliào zhōng de bùzú zhī chù.",
+        english: "If convenient, may I ask you to point out the shortcomings in my application materials?",
+        vi: "Nếu tiện, em xin cô chỉ ra những điểm còn thiếu sót trong hồ sơ ứng tuyển của em.",
+        pronunciation_focus: ["指出 → zhǐchū (chỉ ra)", "不足之处 → bùzú zhī chù (chỗ thiếu sót — formal)", "方便的话 → fāngbiàn de huà", "申请材料 → shēnqǐng cáiliào"]
+      },
+      {
+        chinese: "我打算明年再申请, 希望届时能呈现更好的自己。",
+        pinyin: "Wǒ dǎsuàn míngnián zài shēnqǐng, xīwàng jièshí néng chéngxiàn gèng hǎo de zìjǐ.",
+        english: "I plan to apply again next year, and hope to present a better self by then.",
+        vi: "Em định năm sau ứng tuyển lại, mong đến lúc đó có thể thể hiện một bản thân tốt hơn.",
+        pronunciation_focus: ["届时 → jièshí (đến lúc đó — formal)", "呈现 → chéngxiàn (thể hiện — formal)", "明年 → míngnián", "申请 → shēnqǐng"]
+      },
+      {
+        chinese: "不胜感激, 期待您的回复。",
+        pinyin: "Bù shèng gǎnjī, qídài nín de huífù.",
+        english: "Greatly appreciated; looking forward to your reply.",
+        vi: "Vô cùng biết ơn, em mong nhận được phản hồi của cô.",
+        pronunciation_focus: ["不胜感激 → bù shèng gǎnjī (formal closer)", "期待 → qídài (mong chờ)", "回复 → huífù (phản hồi)", "您的 → nín de"]
+      }
+    ],
+    vocab: [
+      { chinese: "拒信", pinyin: "jù xìn", english: "rejection letter", vi: "thư từ chối" },
+      { chinese: "申请材料", pinyin: "shēn qǐng cái liào", english: "application materials", vi: "hồ sơ ứng tuyển" },
+      { chinese: "不足之处", pinyin: "bù zú zhī chù", english: "shortcomings (formal)", vi: "chỗ thiếu sót" },
+      { chinese: "反馈", pinyin: "fǎn kuì", english: "feedback", vi: "phản hồi" },
+      { chinese: "改进", pinyin: "gǎi jìn", english: "to improve", vi: "cải thiện" },
+      { chinese: "再次申请", pinyin: "zài cì shēn qǐng", english: "to reapply", vi: "ứng tuyển lại" },
+      { chinese: "不耻下问", pinyin: "bù chǐ xià wèn", english: "not ashamed to ask those below (4-char idiom)", vi: "không xấu hổ hỏi người dưới" },
+      { chinese: "屡败屡战", pinyin: "lǚ bài lǚ zhàn", english: "fight on despite repeated defeats", vi: "thua nhiều vẫn chiến tiếp" },
+      { chinese: "卷土重来", pinyin: "juǎn tǔ chóng lái", english: "stage a comeback", vi: "cuốn đất quay lại — quyết tâm comeback" },
+      { chinese: "虚心求教", pinyin: "xū xīn qiú jiào", english: "humbly seek guidance", vi: "hư tâm cầu giáo" }
+    ],
+    dialogue: [
+      { speaker: "陈氏梅", chinese: "李老师, 您好。我收到了贵校的拒信。", pinyin: "Lǐ lǎoshī, nín hǎo. Wǒ shōu dào le guì xiào de jù xìn.", english: "Hello Teacher Li. I received your school's rejection letter.", vi: "Cô Lý, em chào cô. Em đã nhận được thư từ chối của quý trường." },
+      { speaker: "李老师", chinese: "嗯, 很遗憾这次没能录取你。", pinyin: "Èn, hěn yíhàn zhè cì méi néng lùqǔ nǐ.", english: "Yes, regrettably we couldn't admit you this time.", vi: "Ừm, rất tiếc lần này chưa thể nhận em." },
+      { speaker: "陈氏梅", chinese: "请问能告诉我具体不足在哪里吗?", pinyin: "Qǐng wèn néng gàosu wǒ jùtǐ bùzú zài nǎlǐ ma?", english: "May I ask which specific aspects fell short?", vi: "Cho em hỏi cụ thể em chưa đủ ở chỗ nào ạ?" },
+      { speaker: "李老师", chinese: "主要是研究计划的可行性需要再加强。", pinyin: "Zhǔyào shì yánjiū jìhuà de kěxíng xìng xūyào zài jiāqiáng.", english: "Mainly, the feasibility of your research plan needs strengthening.", vi: "Chủ yếu là tính khả thi của kế hoạch nghiên cứu cần được củng cố thêm." }
+    ],
+    dialogue_long: [
+      { speaker: "陈氏梅", chinese: "尊敬的李老师, 您好。我是越南陈氏梅, 申请号QH202509-1234。我已经收到贵校的拒信。", pinyin: "Zūnjìng de Lǐ lǎoshī, nín hǎo. Wǒ shì Yuènán Chén Shìméi, shēnqǐng hào QH202509-1234. Wǒ yǐjīng shōu dào guì xiào de jù xìn.", english: "Respected Teacher Li, hello. I'm Tran Thi Mai from Vietnam, application number QH202509-1234. I have received your school's rejection letter.", vi: "Kính chào cô Lý. Em là Trần Thị Mai từ Việt Nam, mã đơn QH202509-1234. Em đã nhận được thư từ chối." },
+      { speaker: "李老师", chinese: "陈同学你好, 看到你的邮件了。这次审核确实没能通过, 实在抱歉。", pinyin: "Chén tóngxué nǐ hǎo, kàn dào nǐ de yóujiàn le. Zhè cì shěnhé quèshí méi néng tōngguò, shízài bàoqiàn.", english: "Hello Chen, I've seen your email. The review indeed didn't pass this time — truly sorry.", vi: "Chào em Trần, cô đã đọc email của em. Lần xét duyệt này quả thực chưa đậu, thực sự xin lỗi." },
+      { speaker: "陈氏梅", chinese: "结果遗憾, 但我仍然非常感谢您的考虑。如果方便的话, 想请您指出我申请材料中的不足。", pinyin: "Jiéguǒ yíhàn, dàn wǒ réngrán fēicháng gǎnxiè nín de kǎolǜ. Rúguǒ fāngbiàn de huà, xiǎng qǐng nín zhǐchū wǒ shēnqǐng cáiliào zhōng de bùzú.", english: "The result is regrettable, but I deeply appreciate your consideration. If convenient, may I ask you to point out shortcomings in my materials?", vi: "Kết quả đáng tiếc, nhưng em vẫn vô cùng cảm ơn cô đã cân nhắc. Nếu tiện, em xin cô chỉ ra những thiếu sót trong hồ sơ." },
+      { speaker: "李老师", chinese: "评审组反馈主要有三点: 第一, 研究计划可行性, 时间和资源都偏理想化。", pinyin: "Píngshěn zǔ fǎnkuì zhǔyào yǒu sān diǎn: dì yī, yánjiū jìhuà kěxíng xìng, shíjiān hé zīyuán dōu piān lǐxiǎng huà.", english: "The review committee's feedback has three points: first, research plan feasibility — both time and resources lean toward idealistic.", vi: "Phản hồi của hội đồng có ba điểm: thứ nhất, tính khả thi của kế hoạch nghiên cứu, thời gian và nguồn lực đều thiên về lý tưởng hóa." },
+      { speaker: "陈氏梅", chinese: "明白。我之前确实低估了数据收集的工作量。第二点呢?", pinyin: "Míngbái. Wǒ zhīqián quèshí dīgū le shùjù shōují de gōngzuò liàng. Dì èr diǎn ne?", english: "Understood. I did underestimate the workload of data collection. What's the second point?", vi: "Em hiểu. Trước em đã coi nhẹ khối lượng thu thập dữ liệu. Điểm thứ hai là gì ạ?" },
+      { speaker: "李老师", chinese: "第二, 推荐信偏弱。一封是教课老师写的, 没有体现你的研究能力。", pinyin: "Dì èr, tuījiàn xìn piān ruò. Yī fēng shì jiāo kè lǎoshī xiě de, méiyǒu tǐxiàn nǐ de yánjiū nénglì.", english: "Second, recommendation letters are weak. One is from a teaching teacher, not reflecting your research ability.", vi: "Thứ hai, thư giới thiệu hơi yếu. Một thư là của giáo viên dạy lớp, chưa thể hiện khả năng nghiên cứu của em." },
+      { speaker: "陈氏梅", chinese: "我下次会请研究项目的导师写。第三点是?", pinyin: "Wǒ xià cì huì qǐng yánjiū xiàngmù de dǎoshī xiě. Dì sān diǎn shì?", english: "Next time I'll ask my research project advisor to write. And the third point?", vi: "Lần sau em sẽ nhờ thầy hướng dẫn dự án nghiên cứu viết. Điểm thứ ba?" },
+      { speaker: "李老师", chinese: "第三, 个人陈述写得太通用, 没有针对我们项目的特点。看不出你为什么非要来我们这里。", pinyin: "Dì sān, gèrén chénshù xiě de tài tōngyòng, méiyǒu zhēnduì wǒmen xiàngmù de tèdiǎn. Kàn bù chū nǐ wèishénme fēi yào lái wǒmen zhèlǐ.", english: "Third, the personal statement is too generic, not targeted at our program's features. Couldn't see why you specifically must come to us.", vi: "Thứ ba, bài tự thuật cá nhân viết quá chung chung, không nhắm vào đặc điểm chương trình. Không thấy được lý do em nhất định phải đến đây." },
+      { speaker: "陈氏梅", chinese: "这一点是我反思最深的。我下次会研究每个项目的特色, 写得更具体。", pinyin: "Zhè yī diǎn shì wǒ fǎnsī zuì shēn de. Wǒ xià cì huì yánjiū měi gè xiàngmù de tèsè, xiě de gèng jùtǐ.", english: "This is the point I've reflected on most. Next time I'll research each program's distinctive features and write more specifically.", vi: "Điểm này là điều em suy ngẫm nhiều nhất. Lần sau em sẽ nghiên cứu đặc trưng từng chương trình và viết cụ thể hơn." },
+      { speaker: "李老师", chinese: "嗯, 你的态度很好。年轻人屡败屡战很正常, 重要的是从中学习。", pinyin: "Èn, nǐ de tàidu hěn hǎo. Niánqīng rén lǚ bài lǚ zhàn hěn zhèngcháng, zhòngyào de shì cóng zhōng xuéxí.", english: "Hmm, your attitude is good. It's normal for young people to fight on through defeats — what matters is learning from them.", vi: "Ừm, thái độ của em rất tốt. Người trẻ thua nhiều lần là bình thường, quan trọng là học được từ đó." },
+      { speaker: "陈氏梅", chinese: "谢谢您的鼓励。我打算明年再申请, 届时希望能呈现更好的自己。", pinyin: "Xièxie nín de gǔlì. Wǒ dǎsuàn míngnián zài shēnqǐng, jièshí xīwàng néng chéngxiàn gèng hǎo de zìjǐ.", english: "Thank you for the encouragement. I plan to reapply next year and hope to present a better self by then.", vi: "Cảm ơn cô đã động viên. Em định năm sau ứng tuyển lại, mong khi đó thể hiện một bản thân tốt hơn." },
+      { speaker: "李老师", chinese: "好。如果你有改进后的研究计划, 可以发给我看, 我尽量给你建议。", pinyin: "Hǎo. Rúguǒ nǐ yǒu gǎijìn hòu de yánjiū jìhuà, kěyǐ fā gěi wǒ kàn, wǒ jǐnliàng gěi nǐ jiànyì.", english: "Good. If you have an improved research plan, you can send it to me — I'll try to give suggestions.", vi: "Được. Nếu em có kế hoạch nghiên cứu đã cải thiện, có thể gửi cô xem, cô sẽ cố gắng góp ý." },
+      { speaker: "陈氏梅", chinese: "真的可以吗? 这是我莫大的荣幸! 我会认真修改后再发您。", pinyin: "Zhēn de kěyǐ ma? Zhè shì wǒ mòdà de róngxìng! Wǒ huì rènzhēn xiūgǎi hòu zài fā nín.", english: "Really? That's my greatest honor! I'll carefully revise before sending you.", vi: "Thật ạ? Đây là vinh hạnh lớn của em! Em sẽ sửa kỹ rồi gửi cô." },
+      { speaker: "李老师", chinese: "客气了。学术之路本来就是不断试错。我相信你卷土重来时一定更强。", pinyin: "Kèqì le. Xuéshù zhī lù běnlái jiù shì bùduàn shìcuò. Wǒ xiāngxìn nǐ juǎn tǔ chóng lái shí yīdìng gèng qiáng.", english: "Don't be too formal. The academic path is constant trial and error. I believe when you make your comeback, you'll be stronger.", vi: "Khách sáo quá. Con đường học thuật vốn là thử và sai liên tục. Cô tin khi em quay lại sẽ mạnh hơn." },
+      { speaker: "陈氏梅", chinese: "您的鼓励对我意义重大。请允许我把您加为微信, 以后向您虚心求教。", pinyin: "Nín de gǔlì duì wǒ yìyì zhòngdà. Qǐng yǔnxǔ wǒ bǎ nín jiā wèi wēixìn, yǐhòu xiàng nín xūxīn qiújiào.", english: "Your encouragement means a lot to me. Please allow me to add you on WeChat to humbly seek guidance later.", vi: "Sự động viên của cô có ý nghĩa rất lớn với em. Cho phép em kết bạn WeChat để sau này hư tâm cầu giáo cô." },
+      { speaker: "李老师", chinese: "可以, 但邮件正式的事情还是发邮件。微信只用来简短沟通。", pinyin: "Kěyǐ, dàn yóujiàn zhèngshì de shìqing háishì fā yóujiàn. Wēixìn zhǐ yòng lái jiǎnduǎn gōutōng.", english: "Sure, but for formal matters, still email. WeChat only for brief communication.", vi: "Được, nhưng việc trang trọng vẫn gửi email. WeChat chỉ dùng trao đổi ngắn." }
+    ],
+    roleplay_prompts: [
+      "Đóng vai bạn vừa nhận thư từ chối từ học bổng CSC. Hãy viết email cho điều phối viên xin feedback cụ thể về hồ sơ — không van nài, không trách móc, chỉ xin thông tin để cải thiện. Mở đầu '虽然结果遗憾, 但我仍然感谢...', đóng bằng '不胜感激'.",
+      "Sau khi nhận feedback, bạn không đồng ý với một điểm (vd: họ nói 'thiếu kinh nghiệm nghiên cứu' nhưng bạn có 2 paper). Hãy phản hồi nhẹ nhàng, KHÔNG đối đầu — dùng cụm '我可能在材料中没有充分体现这部分, 是否能补充说明?' (có lẽ em chưa thể hiện đầy đủ phần này, em có thể bổ sung không?).",
+      "Một năm sau khi bị từ chối, bạn ứng tuyển lại cùng trường. Trong personal statement, hãy đề cập (lịch sự) về lần ứng tuyển trước, những gì đã cải thiện, và sự kiên định của bạn. Dùng cụm '屡败屡战' và '卷土重来' để thể hiện tinh thần — không tự thương hại."
+    ],
+    register_notes: "Email follow-up sau khi bị từ chối là môi trường formal cao nhưng cũng nhạy cảm. Phải cân bằng giữa: (a) thể hiện thất vọng (có thật), (b) thể hiện biết ơn (chân thành), (c) xin feedback cụ thể (chuyên nghiệp), (d) báo hiệu sẽ quay lại (kiên định).\n\nMở đầu BẮT BUỘC '尊敬的[姓]老师' — đã có quan hệ trước, không phải '留学办公室老师' generic. Câu mở: '我已经收到贵校的拒信' — thừa nhận sự thật, không né tránh. Sau đó IMMEDIATELY chuyển sang biết ơn: '虽然结果遗憾, 但我仍然非常感谢您的考虑'.\n\nKhi xin feedback: KHÔNG dùng '为什么我没被录取?' (tại sao tôi không được chọn? — phòng thủ). Dùng '想请您指出我申请材料中的不足之处' (xin thầy chỉ ra những thiếu sót — học hỏi). Sự khác biệt nhỏ nhưng tâm lý hoàn toàn khác.\n\nKhi báo ý định quay lại: '我打算明年再申请, 希望届时能呈现更好的自己'. Dùng 届时 (jièshí — đến lúc đó) thay vì 那时 (nà shí — lúc đó) — formal hơn. 呈现 (chéngxiàn — thể hiện/trình bày) thay vì 表现 (biǎoxiàn — biểu hiện) — formal hơn.\n\nTránh: (a) Tone bi quan ('em rất buồn') — không chuyên nghiệp; (b) Tone quá tích cực ('em hoàn toàn không sao') — không chân thành; (c) Đổ lỗi ('có lẽ vì lý do nào khác') — phá quan hệ.",
+    idiom_glosses: [
+      {
+        idiom: "屡败屡战",
+        literal: "thua nhiều, đánh nhiều (lǚ bài lǚ zhàn)",
+        meaning: "Thua nhiều lần vẫn chiến đấu — kiên trì không bỏ cuộc dù thất bại lặp lại. Cụm dùng để miêu tả tinh thần người trẻ ứng tuyển nhiều lần. Tích cực hơn '屡战屡败' (đánh nhiều, thua nhiều — bi quan).",
+        example: "年轻人屡败屡战很正常, 重要的是不放弃。"
+      },
+      {
+        idiom: "卷土重来",
+        literal: "cuốn đất quay lại (juǎn tǔ chóng lái)",
+        meaning: "Comeback mạnh mẽ — như cuộn đất bụi bay lên rồi xông trở lại trận địa. Cụm hùng hồn để miêu tả quyết tâm thử lại sau thất bại. Hơi cường điệu — dùng khi bạn thực sự cam kết.",
+        example: "明年我会卷土重来, 这次一定更有准备。"
+      },
+      {
+        idiom: "不耻下问",
+        literal: "không xấu hổ hỏi người dưới (bù chǐ xià wèn)",
+        meaning: "Không cảm thấy xấu hổ khi hỏi người có vẻ kém hơn mình — phẩm chất khiêm tốn của người ham học. Cụm tự miêu tả thái độ cầu thị: '我会不耻下问, 向所有人学习'.",
+        example: "我会不耻下问, 不断向他人请教。"
+      },
+      {
+        idiom: "虚心求教",
+        literal: "hư tâm cầu giáo (xū xīn qiú jiào)",
+        meaning: "Khiêm tốn xin được chỉ giáo — thái độ học hỏi đúng. Cụm dùng khi xin feedback từ người trên: '请允许我向您虚心求教'. Đặc biệt phù hợp khi đang có thất bại — báo hiệu bạn sẵn sàng học.",
+        example: "请允许我以后向您虚心求教。"
+      }
+    ],
+    cultural_notes_vi: "Văn hóa xin feedback sau khi bị từ chối ở Trung Quốc khác biệt với Mỹ/châu Âu: (1) Trường top Trung Quốc THƯỜNG KHÔNG cung cấp feedback cá nhân — không phải vì lười, mà vì sợ tranh chấp pháp lý. Đại đa số reply '我们对所有申请人保持公平, 不便对个案做点评' (chúng tôi công bằng với mọi ứng viên, không tiện đánh giá từng trường hợp). KHÔNG nài nỉ. (2) Tuy nhiên, nếu bạn ĐÃ CÓ quan hệ trước (đã email với GS, đã đến trường thăm) — feedback có thể có. Đầu tư xây dựng quan hệ TRƯỚC khi nộp đơn, không sau khi bị từ chối. (3) Nếu nhận được feedback, đó là TÀI SẢN. Phải đáp lại trang trọng: cảm ơn cụ thể từng điểm, mô tả cách bạn sẽ cải thiện, hứa cập nhật về tiến độ. Nhiều người Việt nhận feedback rồi im lặng — bị coi là thiếu tôn trọng và đóng cửa cho lần sau.\n\nVăn hóa 'thử lại' (再申请): Trung Quốc đại lục đặc biệt tôn trọng người kiên trì. Đỗ đại học/du học sau 2-3 lần thất bại = dấu hiệu của 'có chí'. Đừng giấu lịch sử thất bại trong đơn lần sau — đề cập trong personal statement với khung 'từ thất bại tôi học được X, Y, Z'. Đây là điểm cộng, không trừ.\n\nVề tone: KHÔNG bi lụy ('giấc mơ của em đã tan vỡ'), KHÔNG giả vờ bình thản ('không sao đâu, lần sau lại tới'). Tone đúng: 'tiếc nhưng học được, sẽ quay lại mạnh hơn'. Đây là phong thái 'reasonable resilience' (kiên cường lý tính) mà người Trung Quốc đánh giá cao.\n\nVề thời điểm follow-up: gửi email feedback trong 1-2 tuần sau khi nhận thư từ chối, KHÔNG quá sớm (1-2 ngày — nóng vội), KHÔNG quá muộn (1 tháng — không quan tâm).",
+    tip_advice_vi: "(1) ĐỌC LẠI thư từ chối kỹ trước khi viết email follow-up. Một số trường đã ghi sẵn 'không cung cấp feedback' — nếu vậy, KHÔNG email xin. Chuyển sang trường khác. (2) Tiêu đề email cụ thể: '关于申请结果的请教 — 申请号QH202509-1234'. Đừng dùng '为什么没被录取' — quá đối đầu. (3) Cấu trúc email 4 đoạn: (a) thừa nhận + cảm ơn; (b) xin feedback cụ thể; (c) cam kết cải thiện; (d) đóng formal. Mỗi đoạn 2-3 câu, không lan man. (4) KHÔNG đính kèm CV mới hay portfolio — chưa đến lúc. Email này chỉ là xin feedback, không phải re-pitch. (5) Nếu nhận được feedback gay gắt ('hồ sơ của bạn quá yếu'), KHÔNG defensive. Reply: '感谢您坦诚的反馈, 我会认真消化, 努力改进' (cảm ơn phản hồi thẳng thắn, em sẽ tiếp thu nghiêm túc và cải thiện). Người Trung Quốc đặc biệt đánh giá cao thái độ này. (6) Cập nhật tiến độ sau 3-6 tháng: gửi email ngắn cho người đã cho feedback, kèm 'tôi đã cải thiện X, Y, Z theo gợi ý của thầy/cô' + đính kèm bản cập nhật ngắn. Đây là 'closing the loop' — ít người làm, gây ấn tượng đặc biệt mạnh. (7) Lần ứng tuyển sau, đề cập (ngắn gọn) trong personal statement: '去年申请未果, 我深刻反思了三点不足... 一年来我做了以下改进...'. Đây là dấu hiệu của 'growth mindset' — điểm cộng lớn ở Trung Quốc.",
+    exercises: [
+      { type: "fill-blank", question: "明年我一定 ___ , 这次更有准备。", answer: "卷土重来" },
+      {
+        type: "matching",
+        instruction: "Ghép cụm tiếng Trung sau từ chối với nghĩa tiếng Việt.",
+        pairs: [
+          { chinese: "拒信", pinyin: "jù xìn", english: "thư từ chối" },
+          { chinese: "不足之处", pinyin: "bù zú zhī chù", english: "chỗ thiếu sót" },
+          { chinese: "屡败屡战", pinyin: "lǚ bài lǚ zhàn", english: "thua nhiều vẫn chiến tiếp" },
+          { chinese: "虚心求教", pinyin: "xū xīn qiú jiào", english: "hư tâm cầu giáo" }
+        ]
+      },
+      {
+        type: "translation",
+        vietnamese: "Tuy kết quả đáng tiếc, em vẫn vô cùng cảm ơn cô đã cân nhắc. Xin cô chỉ ra những thiếu sót để em có thể cải thiện cho lần sau.",
+        chinese: "虽然结果遗憾, 但我仍然非常感谢您的考虑。请您指出我的不足之处, 以便我下次改进。",
+        pinyin: "Suī rán jié guǒ yí hàn, dàn wǒ réng rán fēi cháng gǎn xiè nín de kǎo lǜ. Qǐng nín zhǐ chū wǒ de bù zú zhī chù, yǐ biàn wǒ xià cì gǎi jìn."
+      }
+    ]
+  },
+  {
+    id: 60,
+    level: "B2",
+    category: "study_career",
+    title: "请教授写推荐信",
+    pinyin: "qǐng jiào shòu xiě tuī jiàn xìn",
+    topic: "Asking a professor for a letter of recommendation",
+    title_vi: "Xin giáo sư viết thư giới thiệu",
+    title_en: "Asking a professor for a letter of recommendation",
+    sentences: [
+      {
+        chinese: "尊敬的王教授, 冒昧打扰您, 实在抱歉。",
+        pinyin: "Zūnjìng de Wáng jiàoshòu, màomèi dǎrǎo nín, shízài bàoqiàn.",
+        english: "Respected Professor Wang, I'm sorry to disturb you out of place.",
+        vi: "Kính thưa giáo sư Vương, em mạo muội làm phiền thầy, em thực sự xin lỗi.",
+        pronunciation_focus: ["冒昧 → màomèi (mạo muội — formal)", "打扰 → dǎrǎo (làm phiền)", "抱歉 → bàoqiàn (xin lỗi)", "尊敬的 → zūnjìng de"]
+      },
+      {
+        chinese: "我打算申请清华大学的硕士项目, 想恳请您为我写一封推荐信。",
+        pinyin: "Wǒ dǎsuàn shēnqǐng Qīnghuá Dàxué de shuòshì xiàngmù, xiǎng kěnqǐng nín wèi wǒ xiě yī fēng tuījiàn xìn.",
+        english: "I plan to apply for Tsinghua's Master's program and humbly ask you to write a letter of recommendation for me.",
+        vi: "Em định ứng tuyển chương trình thạc sĩ Đại học Thanh Hoa, em xin khẩn thiết nhờ thầy viết một thư giới thiệu cho em.",
+        pronunciation_focus: ["恳请 → kěnqǐng (khẩn thỉnh — formal)", "推荐信 → tuījiàn xìn (thư giới thiệu)", "硕士项目 → shuòshì xiàngmù", "申请 → shēnqǐng"]
+      },
+      {
+        chinese: "您是最了解我学术能力的老师, 您的推荐对我意义重大。",
+        pinyin: "Nín shì zuì liǎojiě wǒ xuéshù nénglì de lǎoshī, nín de tuījiàn duì wǒ yìyì zhòngdà.",
+        english: "You are the teacher who knows my academic ability best; your recommendation is of great significance to me.",
+        vi: "Thầy là người hiểu rõ năng lực học thuật của em nhất, thư giới thiệu của thầy có ý nghĩa to lớn với em.",
+        pronunciation_focus: ["了解 → liǎojiě (hiểu rõ)", "学术能力 → xuéshù nénglì (năng lực học thuật)", "意义重大 → yìyì zhòngdà (ý nghĩa to lớn)", "推荐 → tuījiàn"]
+      },
+      {
+        chinese: "推荐信的截止日期是十二月十五号, 我会提前把所有相关材料发给您。",
+        pinyin: "Tuījiàn xìn de jiézhǐ rìqī shì shí'èr yuè shíwǔ hào, wǒ huì tíqián bǎ suǒyǒu xiāngguān cáiliào fā gěi nín.",
+        english: "The deadline is December 15th — I'll send you all relevant materials in advance.",
+        vi: "Hạn nộp thư giới thiệu là 15/12, em sẽ gửi thầy mọi tài liệu liên quan từ trước.",
+        pronunciation_focus: ["截止日期 → jiézhǐ rìqī (hạn nộp)", "提前 → tíqián (trước hạn)", "相关材料 → xiāngguān cáiliào (tài liệu liên quan)", "十二月 → shí'èr yuè"]
+      },
+      {
+        chinese: "您的知遇之恩, 我永远铭记在心。",
+        pinyin: "Nín de zhī yù zhī ēn, wǒ yǒngyuǎn míngjì zài xīn.",
+        english: "I will forever remember your kindness in recognizing my potential.",
+        vi: "Ơn tri ngộ của thầy, em vĩnh viễn khắc ghi trong lòng.",
+        pronunciation_focus: ["知遇之恩 → zhī yù zhī ēn (ơn tri ngộ — idiom 4 chữ formal)", "永远 → yǒngyuǎn (mãi mãi)", "铭记在心 → míngjì zài xīn (khắc ghi trong lòng)", "您的 → nín de"]
+      }
+    ],
+    vocab: [
+      { chinese: "推荐信", pinyin: "tuī jiàn xìn", english: "letter of recommendation", vi: "thư giới thiệu" },
+      { chinese: "教授", pinyin: "jiào shòu", english: "professor", vi: "giáo sư" },
+      { chinese: "恳请", pinyin: "kěn qǐng", english: "to humbly request (formal)", vi: "khẩn thỉnh" },
+      { chinese: "截止日期", pinyin: "jié zhǐ rì qī", english: "deadline", vi: "hạn chót" },
+      { chinese: "推荐人", pinyin: "tuī jiàn rén", english: "recommender", vi: "người giới thiệu" },
+      { chinese: "学术能力", pinyin: "xué shù néng lì", english: "academic ability", vi: "năng lực học thuật" },
+      { chinese: "知遇之恩", pinyin: "zhī yù zhī ēn", english: "kindness of recognizing one's worth", vi: "ơn tri ngộ" },
+      { chinese: "不胜感激", pinyin: "bù shèng gǎn jī", english: "greatly appreciated", vi: "vô cùng biết ơn" },
+      { chinese: "恩重如山", pinyin: "ēn zhòng rú shān", english: "kindness as heavy as a mountain", vi: "ơn nặng như núi" },
+      { chinese: "铭记在心", pinyin: "míng jì zài xīn", english: "engrave in heart", vi: "khắc ghi trong lòng" }
+    ],
+    dialogue: [
+      { speaker: "学生", chinese: "王教授, 我有件事想恳请您。", pinyin: "Wáng jiàoshòu, wǒ yǒu jiàn shì xiǎng kěnqǐng nín.", english: "Professor Wang, there's something I'd like to humbly ask of you.", vi: "Thầy Vương, em có việc muốn khẩn thiết nhờ thầy." },
+      { speaker: "王教授", chinese: "你说说看。", pinyin: "Nǐ shuōshuo kàn.", english: "Go ahead.", vi: "Em nói xem nào." },
+      { speaker: "学生", chinese: "我打算申请清华硕士, 希望您能为我写推荐信。", pinyin: "Wǒ dǎsuàn shēnqǐng Qīnghuá shuòshì, xīwàng nín néng wèi wǒ xiě tuījiàn xìn.", english: "I'm applying for Tsinghua's Master's and hope you can write a recommendation.", vi: "Em định ứng tuyển thạc sĩ Thanh Hoa, mong thầy có thể viết thư giới thiệu cho em." },
+      { speaker: "王教授", chinese: "可以, 把你的简历和申请项目发给我吧。", pinyin: "Kěyǐ, bǎ nǐ de jiǎnlì hé shēnqǐng xiàngmù fā gěi wǒ ba.", english: "Sure, send me your CV and the application program.", vi: "Được, gửi thầy CV và chương trình em ứng tuyển nhé." }
+    ],
+    dialogue_long: [
+      { speaker: "学生", chinese: "尊敬的王教授, 冒昧打扰您。我是您去年指导过NLP项目的陈氏梅。", pinyin: "Zūnjìng de Wáng jiàoshòu, màomèi dǎrǎo nín. Wǒ shì nín qùnián zhǐdǎo guò NLP xiàngmù de Chén Shìméi.", english: "Respected Professor Wang, sorry to disturb. I'm Tran Thi Mai whom you supervised last year on the NLP project.", vi: "Kính thưa thầy Vương, em mạo muội làm phiền. Em là Trần Thị Mai mà thầy đã hướng dẫn dự án NLP năm ngoái." },
+      { speaker: "王教授", chinese: "陈同学, 我记得你。怎么了, 有什么事?", pinyin: "Chén tóngxué, wǒ jìde nǐ. Zěnme le, yǒu shénme shì?", english: "Chen, I remember you. What's up, what's the matter?", vi: "Em Trần, thầy nhớ em. Có chuyện gì vậy?" },
+      { speaker: "学生", chinese: "我打算申请清华大学计算机学院的硕士项目, 想恳请您为我写一封推荐信。", pinyin: "Wǒ dǎsuàn shēnqǐng Qīnghuá Dàxué jìsuànjī xuéyuàn de shuòshì xiàngmù, xiǎng kěnqǐng nín wèi wǒ xiě yī fēng tuījiàn xìn.", english: "I'm applying to Tsinghua's Computer Science Master's, and humbly ask you to write a recommendation letter.", vi: "Em định ứng tuyển chương trình thạc sĩ khoa Công nghệ Thông tin Đại học Thanh Hoa, em xin khẩn thiết nhờ thầy viết thư giới thiệu." },
+      { speaker: "王教授", chinese: "清华啊, 这是好目标。你打算申请哪个研究方向?", pinyin: "Qīnghuá a, zhè shì hǎo mùbiāo. Nǐ dǎsuàn shēnqǐng nǎ gè yánjiū fāngxiàng?", english: "Tsinghua — that's a good goal. Which research direction are you applying to?", vi: "Thanh Hoa à, mục tiêu tốt đấy. Em định ứng tuyển hướng nghiên cứu nào?" },
+      { speaker: "学生", chinese: "孙茂松教授的低资源语言NLP方向, 这跟我们去年做的越南语项目很相关。", pinyin: "Sūn Màosōng jiàoshòu de dī zīyuán yǔyán NLP fāngxiàng, zhè gēn wǒmen qùnián zuò de Yuènányǔ xiàngmù hěn xiāngguān.", english: "Professor Sun Maosong's low-resource language NLP direction, very related to the Vietnamese project we did last year.", vi: "Hướng NLP ngôn ngữ ít tài nguyên của giáo sư Tôn Mậu Tùng, rất liên quan đến dự án tiếng Việt mình làm năm ngoái." },
+      { speaker: "王教授", chinese: "嗯, 方向选得很对。截止日期是什么时候?", pinyin: "Èn, fāngxiàng xuǎn de hěn duì. Jiézhǐ rìqī shì shénme shíhou?", english: "Yes, well-chosen direction. When's the deadline?", vi: "Ừm, hướng chọn rất đúng. Hạn chót khi nào?" },
+      { speaker: "学生", chinese: "推荐信截止是十二月十五号, 也就是从今天起还有四十天。我希望能给您足够时间。", pinyin: "Tuījiàn xìn jiézhǐ shì shí'èr yuè shíwǔ hào, yě jiùshì cóng jīntiān qǐ hái yǒu sìshí tiān. Wǒ xīwàng néng gěi nín zúgòu shíjiān.", english: "Recommendation deadline is Dec 15, which is 40 days from today. I hope to give you enough time.", vi: "Hạn thư giới thiệu là 15/12, tính từ hôm nay là còn 40 ngày. Em mong dành cho thầy đủ thời gian." },
+      { speaker: "王教授", chinese: "好, 时间充裕。你需要把哪些材料发给我?", pinyin: "Hǎo, shíjiān chōngyù. Nǐ xūyào bǎ nǎxiē cáiliào fā gěi wǒ?", english: "Good, ample time. What materials do you need to send me?", vi: "Được, thời gian rộng rãi. Em cần gửi thầy những tài liệu gì?" },
+      { speaker: "学生", chinese: "我会发您: 简历、个人陈述、研究计划草稿、推荐信提交链接, 还有我整理的我们去年项目成果摘要。", pinyin: "Wǒ huì fā nín: jiǎnlì, gèrén chénshù, yánjiū jìhuà cǎogǎo, tuījiàn xìn tíjiāo liànjiē, hái yǒu wǒ zhěnglǐ de wǒmen qùnián xiàngmù chéngguǒ zhāiyào.", english: "I'll send: CV, personal statement, research plan draft, recommendation submission link, plus a summary of our project's outcomes from last year.", vi: "Em sẽ gửi thầy: CV, bài tự thuật, bản nháp kế hoạch nghiên cứu, link nộp thư giới thiệu, và bản tóm tắt thành quả dự án năm ngoái em đã tổng hợp." },
+      { speaker: "王教授", chinese: "项目摘要好, 这能帮我写得更具体。还有清华那边对推荐信有什么具体要求吗?", pinyin: "Xiàngmù zhāiyào hǎo, zhè néng bāng wǒ xiě de gèng jùtǐ. Hái yǒu Qīnghuá nà biān duì tuījiàn xìn yǒu shénme jùtǐ yāoqiú ma?", english: "Project summary is good — helps me write more specifically. Does Tsinghua have specific requirements for recommendation letters?", vi: "Tóm tắt dự án tốt, giúp thầy viết cụ thể hơn. Bên Thanh Hoa có yêu cầu cụ thể nào cho thư giới thiệu không?" },
+      { speaker: "学生", chinese: "他们要求英文版, 字数八百到一千二, 主要评估学术能力、研究潜力、和个人品质。", pinyin: "Tāmen yāoqiú yīngwén bǎn, zìshù bā bǎi dào yī qiān èr, zhǔyào pínggū xuéshù nénglì, yánjiū qiánlì, hé gèrén pǐnzhì.", english: "They require English version, 800-1200 words, evaluating academic ability, research potential, and personal qualities.", vi: "Họ yêu cầu bản tiếng Anh, 800-1200 chữ, đánh giá năng lực học thuật, tiềm năng nghiên cứu, và phẩm chất cá nhân." },
+      { speaker: "王教授", chinese: "好。你可以先写一个中文初稿, 包含你希望我强调的几个点, 我修改后翻译成英文。这样效率高一些。", pinyin: "Hǎo. Nǐ kěyǐ xiān xiě yī gè zhōngwén chūgǎo, bāohán nǐ xīwàng wǒ qiángdiào de jǐ gè diǎn, wǒ xiūgǎi hòu fānyì chéng yīngwén. Zhèyàng xiàolǜ gāo yīxiē.", english: "Good. You can first draft a Chinese version with points you want me to emphasize, I'll revise then translate to English. More efficient that way.", vi: "Được. Em có thể viết bản nháp tiếng Trung trước, bao gồm những điểm em mong thầy nhấn mạnh, thầy sửa rồi dịch sang tiếng Anh. Hiệu quả hơn." },
+      { speaker: "学生", chinese: "真的可以吗? 这是您莫大的帮助! 我会非常认真地准备初稿。", pinyin: "Zhēn de kěyǐ ma? Zhè shì nín mòdà de bāngzhù! Wǒ huì fēicháng rènzhēn de zhǔnbèi chūgǎo.", english: "Really? That's a huge help! I'll prepare the draft very carefully.", vi: "Thật ạ? Đây là sự giúp đỡ to lớn của thầy! Em sẽ chuẩn bị bản nháp thật nghiêm túc." },
+      { speaker: "王教授", chinese: "客气什么。不过有一点要说清楚: 推荐信的内容必须真实, 你写的草稿我会按需修改, 不会照搬。", pinyin: "Kèqì shénme. Bùguò yǒu yī diǎn yào shuō qīngchu: tuījiàn xìn de nèiróng bìxū zhēnshí, nǐ xiě de cǎogǎo wǒ huì àn xū xiūgǎi, bù huì zhàobān.", english: "Don't mention it. But one point to clarify: recommendation content must be truthful — I'll modify your draft as needed, not copy it.", vi: "Khách sáo gì chứ. Nhưng có một điểm phải rõ: nội dung thư giới thiệu phải chân thực, thầy sẽ sửa bản nháp em viết theo cần, không bê nguyên." },
+      { speaker: "学生", chinese: "完全理解。我只是给您参考, 最终表达由您决定。您的知遇之恩, 我永远铭记在心。", pinyin: "Wánquán lǐjiě. Wǒ zhǐshì gěi nín cānkǎo, zuìzhōng biǎodá yóu nín juédìng. Nín de zhī yù zhī ēn, wǒ yǒngyuǎn míngjì zài xīn.", english: "Completely understood. It's just reference — final expression is yours. Your kindness in recognizing my potential, I'll forever remember.", vi: "Em hoàn toàn hiểu. Em chỉ làm tài liệu tham khảo, cách diễn đạt cuối cùng do thầy quyết định. Ơn tri ngộ của thầy em vĩnh viễn khắc ghi trong lòng." },
+      { speaker: "王教授", chinese: "言重了。我帮你也是看好你的发展。希望你将来在清华一切顺利。", pinyin: "Yán zhòng le. Wǒ bāng nǐ yěshì kànhǎo nǐ de fāzhǎn. Xīwàng nǐ jiānglái zài Qīnghuá yīqiè shùnlì.", english: "Don't make it heavy. I help because I see your potential. Hope all goes well for you at Tsinghua in the future.", vi: "Em nói trọng quá rồi. Thầy giúp em cũng vì kỳ vọng vào sự phát triển của em. Mong tương lai em ở Thanh Hoa mọi việc thuận lợi." }
+    ],
+    roleplay_prompts: [
+      "Đóng vai bạn — sinh viên đã tốt nghiệp 2 năm — viết email cho giáo sư cũ chưa liên lạc một thời gian. Hãy mở đầu bằng update ngắn về công việc + lý do liên lạc lại + lời xin viết thư. KHÔNG vào thẳng việc xin — phải có 'warm-up' xã giao trước. Dùng cụm '冒昧打扰您' và '不知道您是否还记得我'.",
+      "Giáo sư đồng ý nhưng nói 'em viết bản nháp đi rồi tôi sửa'. Đây là bài kiểm tra. Hãy chuẩn bị bản nháp KHÔNG quá tự khen, KHÔNG quá khiêm tốn — viết về 3 thành tựu cụ thể với số liệu, kèm 1 đặc điểm tính cách. Sau đó email lại với câu '这是我整理的草稿, 请您按需修改'.",
+      "Giáo sư từ chối khéo: '最近实在太忙, 怕写不好影响你的申请'. Đây có thể là từ chối mềm hoặc lời thách. Hãy đáp lại nhẹ nhàng: nếu thực sự bận, đề xuất 'nếu thầy cảm thấy không tiện, em hiểu hoàn toàn' (cho lối thoát); nếu cảm thấy có thể thuyết phục, đề xuất giải pháp giảm gánh nặng (cung cấp bản nháp chi tiết, deadline rộng)."
+    ],
+    register_notes: "Email xin thư giới thiệu là một trong những giao tiếp formal nhất với giáo sư. Mở đầu BẮT BUỘC '尊敬的[姓]教授' kèm cụm '冒昧打扰您' (mạo muội làm phiền) — báo hiệu bạn biết mình đang yêu cầu một việc lớn.\n\nDùng động từ '恳请' (kěnqǐng — khẩn thỉnh) thay vì '请' đơn giản — đây là động từ formal cao cho yêu cầu trang trọng. Khi đề cập sự quan trọng của thư: '您的推荐对我意义重大' (thư của thầy có ý nghĩa to lớn với em) — thể hiện trọng lượng mà không nịnh nọt.\n\nKhi nói về deadline: '推荐信的截止日期是X月X号, 我希望能给您足够时间' — chủ động cho biết bạn tôn trọng thời gian của họ. Tối thiểu 4 TUẦN trước deadline; xin sát ngày = thiếu chuyên nghiệp.\n\nKhi giáo sư đồng ý, đáp lại bằng cụm formal: '您的知遇之恩, 我永远铭记在心' (ơn tri ngộ của thầy em vĩnh viễn khắc ghi). Đây là cụm cổ điển formal nhưng không bị coi là quá cường điệu trong context giáo sư-học trò.\n\nTránh: (a) Xin nhiều giáo sư cùng lúc cho cùng chương trình — bị phát hiện = mất uy tín; (b) Giấu tên các trường khác bạn đang ứng tuyển — nếu thầy hỏi, trả lời thật; (c) Sửa lại nội dung thầy viết — nếu cần điều chỉnh, gửi email xin thầy chỉnh.",
+    idiom_glosses: [
+      {
+        idiom: "知遇之恩",
+        literal: "ơn của sự tri ngộ (zhī yù zhī ēn)",
+        meaning: "Ơn tri ngộ — ơn của người nhận ra giá trị mình và cho cơ hội. Cụm cổ điển formal dùng khi cảm ơn giáo sư/sếp đã giúp đỡ. Mạnh nhưng không bị coi là cường điệu trong context Trung Quốc.",
+        example: "您的知遇之恩, 我永远铭记在心。"
+      },
+      {
+        idiom: "恩重如山",
+        literal: "ơn nặng như núi (ēn zhòng rú shān)",
+        meaning: "Ơn nặng như núi — biết ơn sâu sắc khó nói hết. Mạnh hơn 知遇之恩, dùng khi giáo sư đã làm việc lớn cho bạn (vd: dành 1 tuần viết thư chi tiết). Tránh dùng cho việc nhỏ — sẽ bị coi là sáo rỗng.",
+        example: "老师的帮助恩重如山, 我无以为报。"
+      },
+      {
+        idiom: "铭记在心",
+        literal: "khắc ghi vào tim (míng jì zài xīn)",
+        meaning: "Khắc ghi trong lòng — nhớ mãi không quên. Cụm formal dùng để cam kết nhớ ơn lâu dài. Đặc biệt phù hợp khi cảm ơn giáo sư cho cơ hội: '您的教诲我会铭记在心'.",
+        example: "您的教导我会铭记在心, 终生不忘。"
+      },
+      {
+        idiom: "无以为报",
+        literal: "không có gì để báo đáp (wú yǐ wèi bào)",
+        meaning: "Không biết lấy gì báo đáp — biết ơn đến mức cảm thấy không xứng đáp lại. Cụm khiêm tốn lý tưởng cho thư cảm ơn cuối cùng. Tránh dùng quá sớm — sẽ bị coi là khách sáo.",
+        example: "您的恩情我无以为报, 唯有努力学习。"
+      }
+    ],
+    cultural_notes_vi: "Văn hóa xin thư giới thiệu ở Trung Quốc đại lục có nét đặc thù: (1) Quan hệ giáo sư-học trò tiếp tục SAU khi tốt nghiệp — không như Mỹ (nơi giáo sư có thể bận đến mức quên học trò cũ). Giáo sư Trung Quốc thường nhớ học trò 5-10 năm sau, đặc biệt nếu bạn duy trì liên lạc (Tết gửi tin chúc, kỷ niệm kết quả thi). Đầu tư vào quan hệ này dài hạn. (2) Số lượng thư giới thiệu giáo sư có thể viết: thường giới hạn 5-10 thư/năm cho học bổng top. Nếu bạn xin và biết rằng thầy đã ngoài giới hạn, đề xuất 'nếu thầy không đủ thời gian, em hoàn toàn hiểu' — cho lối thoát. (3) 'Em viết nháp đi' không phải lười — đây là cách giáo sư kiểm tra: bạn có biết tự nhìn nhận điểm mạnh/yếu, có biết viết formal không. Bản nháp tốt = thầy viết nhanh và sâu sắc. Bản nháp kém = thầy phải sửa nhiều, dẫn đến thư không sâu. (4) Sau khi nhận thư, NHỚ cập nhật kết quả: nếu trúng tuyển, gửi tin báo + cảm ơn cụ thể; nếu trượt, vẫn gửi tin báo + cảm ơn (không bao giờ im lặng). Đây là 'closing the loop' quan trọng cho quan hệ tương lai. (5) Quà cảm ơn: KHÔNG bắt buộc nhưng phổ biến. Đặc sản quê (cà phê Việt Nam, trà sen) là lý tưởng — không quá đắt, biểu trưng quê hương. Tránh tiền mặt, voucher đắt tiền — bị nghi hối lộ.\n\nVề số lượng thư: chương trình Mỹ thường yêu cầu 3, Trung Quốc 2-3. KHÔNG xin thêm 'để dự phòng' — mỗi thư phải có lý do.\n\nVề ngôn ngữ thư: nếu chương trình đại học Trung Quốc, thư có thể tiếng Trung; nếu chương trình quốc tế tại Trung Quốc, thường yêu cầu tiếng Anh. Hỏi rõ trước khi giáo sư bắt đầu viết.",
+    tip_advice_vi: "(1) HẸN trực tiếp gặp giáo sư trước, không xin qua email lần đầu — thể hiện sự trang trọng. Nếu không thể gặp (đã ra trường), email phải đặc biệt formal. (2) Khoảng cách thời gian xin: TỐI THIỂU 4 tuần trước deadline. Lý tưởng 6-8 tuần. Xin sát ngày = thư viết vội = thư yếu. (3) Cung cấp 'package' đầy đủ cho giáo sư: CV mới nhất, personal statement, research plan, danh sách 3-5 thành tựu cụ thể bạn muốn họ nhấn mạnh, link nộp + mật khẩu (nếu có), deadline rõ ràng. Đặt tất cả vào 1 email với tiêu đề rõ: '关于推荐信材料 — 陈氏梅 — 截止12月15日'. (4) Nếu giáo sư yêu cầu bản nháp, viết theo cấu trúc: (a) tôi biết người này thế nào (trong context nào, bao lâu); (b) 3 điểm mạnh chính với số liệu/ví dụ cụ thể; (c) so sánh với học sinh khác (top 5%, top 1%); (d) cam kết người này sẽ thành công. Tránh adjective trống ('rất giỏi') — thay bằng số liệu ('GPA top 5%'). (5) Một tuần trước deadline, gửi email nhắc nhẹ: '王教授, 关于12月15日截止的推荐信, 不知您方便的话什么时候可以提交?' — nhắc nhưng không thúc giục. (6) Ngay sau khi giáo sư nộp thư, gửi email cảm ơn: '感谢您及时提交了推荐信, 您的支持对我意义重大'. (7) Sau khi có kết quả (đỗ hoặc trượt), update giáo sư trong 1-2 tuần. Đỗ: '感谢您的推荐信, 我已被X录取'. Trượt: '虽然这次未果, 但您的支持我永远感激'. Đừng im lặng — giáo sư sẽ nhớ.",
+    exercises: [
+      { type: "fill-blank", question: "您的 ___ , 我永远铭记在心。", answer: "知遇之恩" },
+      {
+        type: "matching",
+        instruction: "Ghép cụm tiếng Trung thư giới thiệu với nghĩa tiếng Việt.",
+        pairs: [
+          { chinese: "推荐信", pinyin: "tuī jiàn xìn", english: "thư giới thiệu" },
+          { chinese: "恳请", pinyin: "kěn qǐng", english: "khẩn thỉnh (formal)" },
+          { chinese: "知遇之恩", pinyin: "zhī yù zhī ēn", english: "ơn tri ngộ" },
+          { chinese: "铭记在心", pinyin: "míng jì zài xīn", english: "khắc ghi trong lòng" }
+        ]
+      },
+      {
+        type: "translation",
+        vietnamese: "Em xin khẩn thỉnh thầy viết thư giới thiệu cho em. Ơn tri ngộ của thầy, em vĩnh viễn khắc ghi trong lòng.",
+        chinese: "我恳请您为我写一封推荐信。您的知遇之恩, 我永远铭记在心。",
+        pinyin: "Wǒ kěn qǐng nín wèi wǒ xiě yī fēng tuī jiàn xìn. Nín de zhī yù zhī ēn, wǒ yǒng yuǎn míng jì zài xīn."
+      }
+    ]
+  },
+  {
+    id: 61,
+    level: "B2",
+    category: "study_career",
+    title: "学术场合讨论研究兴趣",
+    pinyin: "xué shù chǎng hé tǎo lùn yán jiū xìng qù",
+    topic: "Discussing research interests in academic context",
+    title_vi: "Thảo luận hướng nghiên cứu trong môi trường học thuật",
+    title_en: "Discussing research interests in academic context",
+    sentences: [
+      {
+        chinese: "我的研究兴趣主要集中在低资源语言的自然语言处理。",
+        pinyin: "Wǒ de yánjiū xìngqù zhǔyào jízhōng zài dī zīyuán yǔyán de zìrán yǔyán chǔlǐ.",
+        english: "My research interests mainly focus on NLP for low-resource languages.",
+        vi: "Hướng nghiên cứu của em chủ yếu tập trung vào xử lý ngôn ngữ tự nhiên cho các ngôn ngữ ít tài nguyên.",
+        pronunciation_focus: ["研究兴趣 → yánjiū xìngqù (hướng/sở thích nghiên cứu)", "集中 → jízhōng (tập trung)", "低资源语言 → dī zīyuán yǔyán", "自然语言处理 → zìrán yǔyán chǔlǐ (NLP)"]
+      },
+      {
+        chinese: "具体来说, 我对越南语-中文跨语言迁移学习特别感兴趣。",
+        pinyin: "Jùtǐ lái shuō, wǒ duì Yuènányǔ-zhōngwén kuà yǔyán qiānyí xuéxí tèbié gǎn xìngqù.",
+        english: "Specifically, I am particularly interested in Vietnamese-Chinese cross-lingual transfer learning.",
+        vi: "Cụ thể, em đặc biệt quan tâm đến học chuyển giao xuyên ngôn ngữ Việt-Trung.",
+        pronunciation_focus: ["具体来说 → jùtǐ lái shuō (cụ thể là)", "跨语言 → kuà yǔyán (xuyên ngôn ngữ)", "迁移学习 → qiānyí xuéxí (transfer learning)", "感兴趣 → gǎn xìngqù"]
+      },
+      {
+        chinese: "这一方向的学术价值在于填补越南语处理的数据空白。",
+        pinyin: "Zhè yī fāngxiàng de xuéshù jiàzhí zàiyú tiánbǔ Yuènányǔ chǔlǐ de shùjù kòngbái.",
+        english: "The academic value of this direction lies in filling the data gap for Vietnamese language processing.",
+        vi: "Giá trị học thuật của hướng này nằm ở việc lấp đầy khoảng trống dữ liệu xử lý tiếng Việt.",
+        pronunciation_focus: ["学术价值 → xuéshù jiàzhí (giá trị học thuật)", "填补 → tiánbǔ (lấp đầy)", "空白 → kòngbái (khoảng trống)", "在于 → zàiyú (nằm ở)"]
+      },
+      {
+        chinese: "我希望能在博士阶段进一步深化这方面的探索。",
+        pinyin: "Wǒ xīwàng néng zài bóshì jiēduàn jìn yī bù shēnhuà zhè fāngmiàn de tànsuǒ.",
+        english: "I hope to further deepen exploration in this area during the PhD stage.",
+        vi: "Em mong có thể đào sâu thêm hướng này ở giai đoạn tiến sĩ.",
+        pronunciation_focus: ["博士阶段 → bóshì jiēduàn (giai đoạn tiến sĩ)", "深化 → shēnhuà (đào sâu)", "探索 → tànsuǒ (khám phá)", "进一步 → jìn yī bù"]
+      },
+      {
+        chinese: "我会以锲而不舍的精神, 在这条学术道路上一以贯之。",
+        pinyin: "Wǒ huì yǐ qiè ér bù shě de jīngshén, zài zhè tiáo xuéshù dàolù shàng yī yǐ guàn zhī.",
+        english: "I will, with persevering spirit, stay consistent on this academic path.",
+        vi: "Em sẽ với tinh thần kiên trì không bỏ cuộc, đi nhất quán trên con đường học thuật này.",
+        pronunciation_focus: ["锲而不舍 → qiè ér bù shě (idiom 4 chữ: kiên trì)", "一以贯之 → yī yǐ guàn zhī (nhất quán xuyên suốt)", "学术道路 → xuéshù dàolù (con đường học thuật)", "精神 → jīngshén"]
+      }
+    ],
+    vocab: [
+      { chinese: "研究兴趣", pinyin: "yán jiū xìng qù", english: "research interest", vi: "hướng nghiên cứu / sở thích nghiên cứu" },
+      { chinese: "学术", pinyin: "xué shù", english: "academic", vi: "học thuật" },
+      { chinese: "课题", pinyin: "kè tí", english: "research topic", vi: "đề tài nghiên cứu" },
+      { chinese: "前沿", pinyin: "qián yán", english: "frontier / cutting edge", vi: "tiền tuyến / mũi nhọn" },
+      { chinese: "跨学科", pinyin: "kuà xué kē", english: "interdisciplinary", vi: "liên ngành" },
+      { chinese: "学术道路", pinyin: "xué shù dào lù", english: "academic path", vi: "con đường học thuật" },
+      { chinese: "锲而不舍", pinyin: "qiè ér bù shě", english: "persevere without giving up", vi: "kiên trì không bỏ cuộc" },
+      { chinese: "一以贯之", pinyin: "yī yǐ guàn zhī", english: "consistent throughout", vi: "nhất quán xuyên suốt" },
+      { chinese: "博古通今", pinyin: "bó gǔ tōng jīn", english: "well-versed in ancient and modern", vi: "thông cổ kim" },
+      { chinese: "学贯中西", pinyin: "xué guàn zhōng xī", english: "learning spans East and West", vi: "học vấn xuyên Đông Tây" }
+    ],
+    dialogue: [
+      { speaker: "教授", chinese: "请简要介绍一下您的研究兴趣。", pinyin: "Qǐng jiǎnyào jièshào yīxià nín de yánjiū xìngqù.", english: "Please briefly introduce your research interests.", vi: "Xin em giới thiệu ngắn gọn hướng nghiên cứu." },
+      { speaker: "学生", chinese: "我的研究兴趣集中在低资源语言NLP, 特别是越南语处理。", pinyin: "Wǒ de yánjiū xìngqù jízhōng zài dī zīyuán yǔyán NLP, tèbié shì Yuènányǔ chǔlǐ.", english: "My research interests focus on low-resource language NLP, especially Vietnamese.", vi: "Hướng nghiên cứu của em tập trung vào NLP ngôn ngữ ít tài nguyên, đặc biệt là tiếng Việt." },
+      { speaker: "教授", chinese: "为什么对这个方向感兴趣?", pinyin: "Wèishénme duì zhège fāngxiàng gǎn xìngqù?", english: "Why interested in this direction?", vi: "Sao em lại quan tâm hướng này?" },
+      { speaker: "学生", chinese: "因为越南语数据资源稀缺, 这是我作为越南人最有优势的研究方向。", pinyin: "Yīnwèi Yuènányǔ shùjù zīyuán xīquē, zhè shì wǒ zuòwéi Yuènán rén zuì yǒu yōushì de yánjiū fāngxiàng.", english: "Because Vietnamese data is scarce, this is the direction where I have the most advantage as a Vietnamese person.", vi: "Vì tài nguyên dữ liệu tiếng Việt khan hiếm, đây là hướng em có lợi thế nhất với tư cách người Việt." }
+    ],
+    dialogue_long: [
+      { speaker: "教授", chinese: "陈同学, 我想再深入了解一下您的研究兴趣。请详细说说。", pinyin: "Chén tóngxué, wǒ xiǎng zài shēnrù liǎojiě yīxià nín de yánjiū xìngqù. Qǐng xiángxì shuōshuo.", english: "Chen, I'd like to understand your research interests more deeply. Please elaborate.", vi: "Em Trần, thầy muốn tìm hiểu sâu hơn về hướng nghiên cứu của em. Em nói chi tiết đi." },
+      { speaker: "学生", chinese: "我的核心兴趣是低资源语言的自然语言处理, 重点是越南语和中文之间的跨语言迁移学习。", pinyin: "Wǒ de héxīn xìngqù shì dī zīyuán yǔyán de zìrán yǔyán chǔlǐ, zhòngdiǎn shì Yuènányǔ hé zhōngwén zhī jiān de kuà yǔyán qiānyí xuéxí.", english: "My core interest is NLP for low-resource languages, focusing on Vietnamese-Chinese cross-lingual transfer learning.", vi: "Hướng cốt lõi của em là NLP ngôn ngữ ít tài nguyên, trọng tâm là học chuyển giao xuyên ngôn ngữ giữa tiếng Việt và tiếng Trung." },
+      { speaker: "教授", chinese: "这两种语言虽然不同语系, 但有大量汉源词。您觉得这是优势还是挑战?", pinyin: "Zhè liǎng zhǒng yǔyán suīrán bùtóng yǔ xì, dàn yǒu dàliàng hàn yuán cí. Nín juéde zhè shì yōushì háishì tiǎozhàn?", english: "These two languages are from different families but share many Sino-origin words. Do you see this as advantage or challenge?", vi: "Hai ngôn ngữ này tuy khác hệ nhưng có nhiều từ Hán gốc. Em thấy đây là lợi thế hay thử thách?" },
+      { speaker: "学生", chinese: "两者皆有。优势是词汇层面的迁移有锚点; 挑战是语法和语义已经分化, 直接迁移会引入噪声。", pinyin: "Liǎng zhě jiē yǒu. Yōushì shì cíhuì céngmiàn de qiānyí yǒu máodiǎn; tiǎozhàn shì yǔfǎ hé yǔyì yǐjīng fēnhuà, zhíjiē qiānyí huì yǐnrù zàoshēng.", english: "Both. Advantage: lexical-level transfer has anchor points. Challenge: syntax and semantics have diverged — direct transfer introduces noise.", vi: "Cả hai. Lợi thế: chuyển giao ở mức từ vựng có điểm neo. Thử thách: ngữ pháp và ngữ nghĩa đã phân hóa, chuyển trực tiếp sẽ tạo nhiễu." },
+      { speaker: "教授", chinese: "好。那您打算用什么方法处理这种分化?", pinyin: "Hǎo. Nà nín dǎsuàn yòng shénme fāngfǎ chǔlǐ zhè zhǒng fēnhuà?", english: "Good. What method will you use to handle this divergence?", vi: "Tốt. Vậy em định dùng phương pháp gì để xử lý sự phân hóa này?" },
+      { speaker: "学生", chinese: "我打算结合两个方向: 一是用对比学习对齐表征空间, 二是引入语言学知识做后处理。", pinyin: "Wǒ dǎsuàn jiéhé liǎng gè fāngxiàng: yī shì yòng duìbǐ xuéxí duìqí biǎozhēng kōngjiān, èr shì yǐnrù yǔyánxué zhīshi zuò hòu chǔlǐ.", english: "I plan to combine two directions: contrastive learning to align representation spaces, and linguistic knowledge for post-processing.", vi: "Em định kết hợp hai hướng: dùng đối chiếu học để căn chỉnh không gian biểu diễn, và đưa kiến thức ngôn ngữ học vào hậu xử lý." },
+      { speaker: "教授", chinese: "听起来跨学科性比较强。您有语言学背景吗?", pinyin: "Tīng qǐlái kuà xuékē xìng bǐjiào qiáng. Nín yǒu yǔyánxué bèijǐng ma?", english: "Sounds quite interdisciplinary. Do you have a linguistics background?", vi: "Nghe có vẻ tính liên ngành cao. Em có nền tảng ngôn ngữ học không?" },
+      { speaker: "学生", chinese: "我本科辅修过普通语言学, 也自学了汉越语言对比研究。这是我跨学科探索的基础。", pinyin: "Wǒ běnkē fǔxiū guò pǔtōng yǔyánxué, yě zìxué le hàn-yuè yǔyán duìbǐ yánjiū. Zhè shì wǒ kuà xuékē tànsuǒ de jīchǔ.", english: "I minored in general linguistics during undergrad and self-studied Sino-Vietnamese comparative research. This is the basis for my interdisciplinary exploration.", vi: "Đại học em phụ chuyên ngành ngôn ngữ học đại cương, cũng tự học nghiên cứu đối chiếu tiếng Việt-Hán. Đây là nền tảng khám phá liên ngành của em." },
+      { speaker: "教授", chinese: "很好。您怎么看您这个方向五年之后的发展?", pinyin: "Hěn hǎo. Nín zěnme kàn nín zhège fāngxiàng wǔ nián zhī hòu de fāzhǎn?", english: "Good. How do you see the development of this direction in five years?", vi: "Tốt. Em nhìn nhận hướng này phát triển thế nào trong 5 năm tới?" },
+      { speaker: "学生", chinese: "随着大模型时代的到来, 低资源语言会从边缘走到核心。中越合作的语言资源建设是其中关键的一环。", pinyin: "Suízhe dà móxíng shídài de dàolái, dī zīyuán yǔyán huì cóng biānyuán zǒu dào héxīn. Zhōng-yuè hézuò de yǔyán zīyuán jiànshè shì qízhōng guānjiàn de yī huán.", english: "With the era of large models, low-resource languages will move from periphery to core. China-Vietnam language resource construction is a key link.", vi: "Cùng với kỷ nguyên mô hình lớn, ngôn ngữ ít tài nguyên sẽ chuyển từ ngoại vi vào cốt lõi. Xây dựng tài nguyên ngôn ngữ Việt-Trung hợp tác là mắt xích quan trọng." },
+      { speaker: "教授", chinese: "您的视野不错。最后一个问题: 如果未来研究遇到瓶颈, 您怎么应对?", pinyin: "Nín de shìyě bùcuò. Zuìhòu yī gè wèntí: rúguǒ wèilái yánjiū yùdào píngjǐng, nín zěnme yìngduì?", english: "Your vision is good. Last question: if your future research hits a bottleneck, how will you respond?", vi: "Tầm nhìn của em không tệ. Câu cuối: nếu nghiên cứu tương lai gặp bế tắc, em sẽ đối phó thế nào?" },
+      { speaker: "学生", chinese: "我相信锲而不舍的精神。具体做法: 第一, 反思方法是否有偏差; 第二, 向同行请教; 第三, 必要时换角度从相邻领域寻找灵感。", pinyin: "Wǒ xiāngxìn qiè ér bù shě de jīngshén. Jùtǐ zuòfǎ: dì yī, fǎnsī fāngfǎ shìfǒu yǒu piānchā; dì èr, xiàng tóngháng qǐngjiào; dì sān, bìyào shí huàn jiǎodù cóng xiānglín lǐngyù xúnzhǎo línggǎn.", english: "I believe in persevering spirit. Specifically: first, reflect on whether method has bias; second, seek guidance from peers; third, when necessary change angle to find inspiration from adjacent fields.", vi: "Em tin vào tinh thần kiên trì không bỏ cuộc. Cụ thể: thứ nhất, phản tư xem phương pháp có lệch lạc không; thứ hai, xin ý kiến đồng nghiệp; thứ ba, khi cần đổi góc nhìn tìm cảm hứng từ lĩnh vực lân cận." },
+      { speaker: "教授", chinese: "听到您说锲而不舍我很欣慰。学术之路需要的就是这种品质。", pinyin: "Tīng dào nín shuō qiè ér bù shě wǒ hěn xīnwèi. Xuéshù zhī lù xūyào de jiùshì zhè zhǒng pǐnzhì.", english: "Hearing you say 'persevering' makes me pleased. The academic path needs exactly this quality.", vi: "Nghe em nói kiên trì không bỏ cuộc, thầy rất an ủi. Con đường học thuật cần đúng phẩm chất này." },
+      { speaker: "学生", chinese: "感谢您的肯定。我会在这条路上一以贯之, 不辜负您和家人的期望。", pinyin: "Gǎnxiè nín de kěndìng. Wǒ huì zài zhè tiáo lù shàng yī yǐ guàn zhī, bù gūfù nín hé jiārén de qīwàng.", english: "Thank you for your affirmation. I'll stay consistent on this path, not disappointing your and my family's expectations.", vi: "Cảm ơn thầy đã ghi nhận. Em sẽ đi nhất quán trên con đường này, không phụ kỳ vọng của thầy và gia đình." },
+      { speaker: "教授", chinese: "好。您的研究计划等申请季再细化, 我们到时候再深入讨论。", pinyin: "Hǎo. Nín de yánjiū jìhuà děng shēnqǐng jì zài xìhuà, wǒmen dào shíhou zài shēnrù tǎolùn.", english: "Good. Refine your research plan as application season approaches; we'll discuss in depth then.", vi: "Được. Kế hoạch nghiên cứu của em chờ đến mùa ứng tuyển hãy chi tiết hóa, lúc đó mình thảo luận sâu hơn." },
+      { speaker: "学生", chinese: "好的, 我会在两周内发您一份初版研究计划, 请您批评指正。", pinyin: "Hǎo de, wǒ huì zài liǎng zhōu nèi fā nín yī fèn chū bǎn yánjiū jìhuà, qǐng nín pīpíng zhǐzhèng.", english: "Sure, I'll send you an initial research plan within two weeks for your criticism and correction.", vi: "Vâng, em sẽ gửi thầy bản đầu tiên kế hoạch nghiên cứu trong hai tuần, xin thầy phê bình chỉ chính." },
+      { speaker: "教授", chinese: "客气了。期待你的草稿。", pinyin: "Kèqì le. Qídài nǐ de cǎogǎo.", english: "Don't be too formal. Looking forward to your draft.", vi: "Khách sáo quá. Mong bản nháp của em." }
+    ],
+    roleplay_prompts: [
+      "Đóng vai sinh viên trao đổi với giáo sư về việc CHUYỂN hướng nghiên cứu (từ NLP sang Computer Vision). Hãy giải thích lý do KHÔNG phải vì 'chán hướng cũ' mà là 'tìm thấy điểm giao thoa thú vị hơn'. Dùng cụm '深入思考之后' và '新的兴趣点'.",
+      "Trong một workshop, bạn đứng trình bày 5 phút về hướng nghiên cứu của mình trước 20 nhà nghiên cứu Trung Quốc. Hãy chuẩn bị mở đầu hấp dẫn (1 con số/sự kiện gây chú ý), 3 điểm nội dung chính, kết thúc với câu hỏi mở để khán giả tham gia. Tránh đọc thuộc lòng.",
+      "Một giáo sư chuyên ngành khác (vd: kinh tế học) hỏi về hướng nghiên cứu NLP của bạn. Hãy giải thích NLP cho người ngoài ngành — không dùng thuật ngữ chuyên môn, dùng analogy đời sống ('giống như dạy máy tính đọc và hiểu báo'), kết nối với mối quan tâm của họ ('NLP có thể phân tích tâm lý thị trường')."
+    ],
+    register_notes: "Thảo luận học thuật về hướng nghiên cứu là môi trường formal HỌC THUẬT — register hơi khác formal CÔNG SỞ. Các cụm chuyên môn phải dùng chuẩn xác, không thể paraphrase: 自然语言处理 (NLP), 迁移学习 (transfer learning), 表征空间 (representation space), 跨学科 (interdisciplinary). Sai từ chuyên môn = bị nghi không thực sự làm research.\n\n您 toàn bộ với giáo sư, kể cả nếu thầy bảo gọi 'Lão sư' — sinh viên nước ngoài giữ formal lâu hơn. Khi nói về mình: KHÔNG '我觉得' đơn giản; dùng '我认为' (formal hơn) hoặc '我个人的看法是' (theo quan điểm cá nhân của em là).\n\nCác cụm formal academic: mở đầu '我的研究兴趣主要集中在...' (research interests focus on); cụ thể hóa '具体来说...' (specifically); đánh giá giá trị '这一方向的学术价值在于...' (academic value lies in); kế hoạch dài hạn '我希望能在博士阶段进一步深化...' (deepen in PhD stage); thừa nhận thử thách '当然这一方向也有挑战, 主要是...' (admit challenges); câu kết '我会以X的精神, 在这条道路上一以贯之' (with X spirit, stay consistent).\n\nKhi giáo sư đặt câu hỏi khó/thách thức ('5 năm sau hướng này còn relevant không?'): KHÔNG phòng thủ. Cấu trúc trả lời: thừa nhận khó khăn + đưa ra góc nhìn lạc quan có cơ sở + thừa nhận giới hạn của mình. Đây là 'reasonable optimism' — phẩm chất researcher.",
+    idiom_glosses: [
+      {
+        idiom: "锲而不舍",
+        literal: "khắc mà không bỏ (qiè ér bù shě)",
+        meaning: "Kiên trì không bỏ cuộc — như khắc đá không ngừng. Cụm cốt lõi cho thái độ research. Khi nói '我以锲而不舍的精神' = cam kết theo đuổi đề tài đến cùng. Đặc biệt phù hợp khi giáo sư hỏi về cách đối phó bottleneck.",
+        example: "做研究最重要的是锲而不舍。"
+      },
+      {
+        idiom: "一以贯之",
+        literal: "một mà xuyên suốt (yī yǐ guàn zhī)",
+        meaning: "Nhất quán xuyên suốt — không thay đổi hướng tùy hứng. Cụm dùng để cam kết theo đuổi một chủ đề lâu dài. Đối lập với 'flighty researcher' (đổi hướng liên tục) — phẩm chất xấu trong văn hóa academic Trung Quốc.",
+        example: "我会在这条研究路上一以贯之。"
+      },
+      {
+        idiom: "博古通今",
+        literal: "thông cổ thông kim (bó gǔ tōng jīn)",
+        meaning: "Hiểu rộng cả cổ kim — kiến thức bao quát cả lịch sử và hiện tại. Cụm khen học giả uyên bác. Có thể dùng để cam kết: '我希望能博古通今, 从经典中找新意'. Tránh tự khen mình bằng cụm này.",
+        example: "希望能在学术上博古通今, 不局限于一时一域。"
+      },
+      {
+        idiom: "学贯中西",
+        literal: "học vấn xuyên Trung Tây (xué guàn zhōng xī)",
+        meaning: "Học vấn xuyên cả phương Đông và phương Tây — kiến thức đa văn hóa. Cụm phù hợp đặc biệt cho sinh viên Việt Nam học ở Trung Quốc — làm cầu nối văn hóa. Cụm khen người giỏi cross-cultural.",
+        example: "我希望未来能学贯中西, 把越中两国的语言学传统结合起来。"
+      }
+    ],
+    cultural_notes_vi: "Thảo luận hướng nghiên cứu trong context Trung Quốc khác biệt với phương Tây ở bốn điểm: (1) Người Trung Quốc đặt giá trị cao vào 'long-term consistency' (一以贯之). Đổi hướng nghiên cứu giữa chừng = bị nghi 'không kiên định'. Khác Mỹ (nơi pivot được đánh giá cao). Vì vậy, khi giới thiệu hướng nghiên cứu: trình bày như một 'mạch logic' kéo dài 5-10 năm, không phải 'sở thích hiện tại'. (2) Trọng nguồn gốc kế thừa: hướng nghiên cứu của bạn nên được khung hóa trong dòng chảy học thuật — kế thừa ai, đóng góp gì mới. KHÔNG nói 'em có ý tưởng riêng' — sẽ bị coi là vô ơn. Nói '受X老师启发' (được khơi nguồn từ thầy X) hoặc '在Y研究的基础上' (trên nền tảng nghiên cứu của Y). (3) Tính ứng dụng quan trọng hơn ở Trung Quốc đại lục so với Mỹ. Research thuần lý thuyết khó tài trợ — luôn kết nối với 'ứng dụng thực tế', 'lợi ích quốc gia', 'hợp tác quốc tế'. Với sinh viên Việt Nam: kết nối với 'hợp tác Việt-Trung' = lý lẽ vàng để tài trợ. (4) 'Tính khả thi' (可行性) trọng hơn 'tính sáng tạo' (创新性). Một đề tài cực sáng tạo nhưng không khả thi trong 3-5 năm = bị từ chối. Một đề tài kế thừa nhưng cụ thể, khả thi, có dữ liệu sẵn = được chấp nhận.\n\nVề tính liên ngành (跨学科): Trung Quốc đại lục đang đẩy mạnh interdisciplinary research, đặc biệt 'AI + X' (X = ngành khác). Sinh viên Việt Nam có lợi thế: AI + ngôn ngữ học, AI + văn hóa Á Đông, AI + lịch sử Hán-Việt. Khai thác điều này khi trình bày hướng research.\n\nVề tone: KHÔNG quá mơ mộng ('em muốn thay đổi thế giới') — mộng tưởng. KHÔNG quá thực dụng ('em muốn sau này có việc làm tốt') — xa rời học thuật. Tone đúng: 'có ý nghĩa học thuật rõ + ứng dụng thực tế + bản thân có lợi thế'.",
+    tip_advice_vi: "(1) Chuẩn bị 'pitch ladder' — câu trả lời 30 giây / 2 phút / 5 phút / 15 phút cho cùng câu hỏi 'hướng research của bạn là gì'. Tùy đối tượng và ngữ cảnh chọn phiên bản phù hợp. Đầu tư nhiều nhất vào bản 2 phút — dùng nhiều nhất. (2) Khi mô tả hướng research, dùng cấu trúc 'tổ chức kim tự tháp': câu đầu tiên = ý chính (1 câu); câu 2-3 = mở rộng (2-3 câu); câu 4-5 = chi tiết cụ thể (con số, ví dụ). Nói rõ ý chính TRƯỚC chi tiết — người Trung Quốc đặc biệt thích cấu trúc này. (3) Khi giáo sư đặt câu hỏi 'tại sao quan trọng?', LUÔN có 3 lý do trong tay: (a) lý do học thuật (lấp khoảng trống lý thuyết), (b) lý do ứng dụng (giải quyết vấn đề thực tế), (c) lý do cá nhân (lợi thế đặc biệt của bạn). Đừng chỉ có 1. (4) Khi không biết câu trả lời chuyên sâu, KHÔNG bịa. Nói '这个角度我之前没有深入考虑过, 但我可以从X的方向尝试回答' (góc này em chưa nghĩ sâu nhưng em có thể thử từ hướng X). Sự thật + cố gắng > bịa. (5) Sau cuộc trao đổi, gửi email cảm ơn trong 24h kèm 'tiếp theo em sẽ': cụ thể 2-3 việc + deadline. Đây là 'closing the loop' chuẩn academic. (6) Đọc 5-10 paper mới nhất của giáo sư trước khi gặp. Đề cập một paper cụ thể trong cuộc trao đổi: '看了您去年那篇关于X的论文, 我特别认同Y的观点'. Đây là dấu hiệu mạnh nhất bạn nghiêm túc. (7) Mẹo phát âm cuối: '锲而不舍' (qiè ér bù shě) — qiè thanh 4 (xuống), shě thanh 3. Sai thanh = nghe nhầm '切' (cắt), thay đổi nghĩa hoàn toàn. Tập đọc to trước cuộc gặp.",
+    exercises: [
+      { type: "fill-blank", question: "我会在这条学术道路上 ___ , 不会半途而废。", answer: "一以贯之" },
+      {
+        type: "matching",
+        instruction: "Ghép cụm tiếng Trung học thuật với nghĩa tiếng Việt.",
+        pairs: [
+          { chinese: "研究兴趣", pinyin: "yán jiū xìng qù", english: "hướng nghiên cứu" },
+          { chinese: "跨学科", pinyin: "kuà xué kē", english: "liên ngành" },
+          { chinese: "锲而不舍", pinyin: "qiè ér bù shě", english: "kiên trì không bỏ cuộc" },
+          { chinese: "学贯中西", pinyin: "xué guàn zhōng xī", english: "học vấn xuyên Đông Tây" }
+        ]
+      },
+      {
+        type: "translation",
+        vietnamese: "Hướng nghiên cứu của em tập trung vào học chuyển giao xuyên ngôn ngữ Việt-Trung. Em sẽ với tinh thần kiên trì không bỏ cuộc, đi nhất quán trên con đường học thuật này.",
+        chinese: "我的研究兴趣集中在越南语-中文跨语言迁移学习。我会以锲而不舍的精神, 在这条学术道路上一以贯之。",
+        pinyin: "Wǒ de yán jiū xìng qù jí zhōng zài Yuè nán yǔ-zhōng wén kuà yǔ yán qiān yí xué xí. Wǒ huì yǐ qiè ér bù shě de jīng shén, zài zhè tiáo xué shù dào lù shàng yī yǐ guàn zhī."
+      }
+    ]
   }
 ];
 export default lessons;
