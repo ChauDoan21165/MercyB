@@ -44,6 +44,22 @@ export type KoreanExercise =
 
 export type KoreanCefrLevel = "A1" | "A2" | "B1" | "B2" | "C1" | "C2";
 
+export type IdiomGloss = {
+  idiom: string;
+  literal: string;
+  meaning: string;
+  example: string;
+};
+
+// B2-specific dialogue line — adds Vietnamese gloss to the existing
+// {speaker, hangul, meaning} shape used by lessons 1-50.
+export type KoreanB2DialogueLine = {
+  speaker: string;
+  hangul: string;
+  meaning: string;
+  vi?: string;
+};
+
 export type KoreanLesson = {
   id: number;
   level: KoreanCefrLevel;
@@ -54,6 +70,14 @@ export type KoreanLesson = {
   sentences: KoreanSentence[];
   dialogue: KoreanDialogueLine[];
   exercises: KoreanExercise[];
+  // B2-specific optional fields (Phase 2 conversation-focused lessons).
+  // All optional — existing A1/A2/B1 lessons typecheck unchanged.
+  cultural_notes_vi?: string;
+  tip_advice_vi?: string;
+  dialogue_long?: KoreanB2DialogueLine[];
+  roleplay_prompts?: string[];
+  register_notes?: string;
+  idiom_glosses?: IdiomGloss[];
 };
 
 export const lessons: KoreanLesson[] = [
