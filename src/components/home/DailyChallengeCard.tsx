@@ -92,13 +92,13 @@ export default function DailyChallengeCard({ isPhone = false }: Props) {
         </div>
         <div style={{ minWidth: 0, flex: 1 }}>
           <div style={{ fontSize: isPhone ? 17 : 19, fontWeight: 950, letterSpacing: -0.2 }}>
-            Mercy đã chuẩn bị thử thách hôm nay
+            Mercy đã chuẩn bị thử thách cho hôm nay
           </div>
           <div style={{ marginTop: 2, fontSize: 12, fontWeight: 700, opacity: 0.7 }}>
             Today&apos;s pronunciation challenge
           </div>
           <div style={{ marginTop: 6, fontSize: 13, fontWeight: 700, opacity: 0.85 }}>
-            Một câu, một phút. Tap để thử ngay.
+            Một câu, một phút. Chạm để thử ngay.
           </div>
         </div>
         <ChevronRight size={22} aria-hidden style={{ flexShrink: 0 }} />

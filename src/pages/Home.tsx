@@ -358,7 +358,7 @@ export default function Home() {
           Your English teacher. Grammar, pronunciation, writing — all in one place.
         </div>
         <div style={{ marginTop: 6, fontSize: z(13), fontWeight: 600, color: "rgba(140,60,90,0.58)", lineHeight: 1.5 }}>
-          Ngữ pháp, phát âm, viết văn — tất cả trong một nơi.
+          Ngữ pháp, phát âm, luyện viết — tất cả ở một nơi.
         </div>
 
         <div style={{ marginTop: 18, display: "inline-flex", alignItems: "center", gap: 8, padding: "10px 20px", borderRadius: 9999, background: "rgba(180,60,100,0.10)", border: "1px solid rgba(180,60,100,0.18)", color: "rgba(120,30,60,0.90)", fontWeight: 900, fontSize: z(14) }}>
@@ -368,7 +368,7 @@ export default function Home() {
         </div>
         {!access.isAuthenticated && (
           <div style={{ marginTop: 6, fontSize: z(13), fontWeight: 600, color: "rgba(140,60,90,0.58)", lineHeight: 1.5 }}>
-            Đăng nhập để học cùng Mercy →
+            Đăng nhập để học cùng Teacher Mercy →
           </div>
         )}
         {!access.isAuthenticated && (
@@ -399,7 +399,7 @@ export default function Home() {
               textAlign: "center",
             }}
           >
-            <span>Phát âm thử ngay — không cần đăng nhập</span>
+            <span>Thử phát âm ngay — không cần đăng nhập</span>
             <br />
             <span style={{ fontWeight: 600, color: "rgba(8,75,90,0.65)" }}>
               Try pronunciation now — no signup
@@ -455,13 +455,13 @@ export default function Home() {
             Try one word — no signup
           </div>
           <div style={{ fontSize: z(12), fontWeight: 700, color: "rgba(8,75,90,0.55)", marginTop: 2 }}>
-            Phát âm thử — không cần đăng nhập
+            Thử phát âm — không cần đăng nhập
           </div>
           <div style={{ marginTop: 6, fontSize: z(14), fontWeight: 700, color: "rgba(0,0,0,0.62)", lineHeight: 1.45 }}>
             Hear how MercyBlade scores your pronunciation in 12 seconds.
           </div>
           <div style={{ marginTop: 3, fontSize: z(12), fontWeight: 600, color: "rgba(0,0,0,0.40)", lineHeight: 1.4 }}>
-            Nghe MercyBlade chấm phát âm chỉ trong 12 giây.
+            Nhận điểm phát âm từ MercyBlade chỉ trong 12 giây.
           </div>
         </div>
 
@@ -494,7 +494,7 @@ export default function Home() {
             Browse rooms. Read, listen, reflect.
           </div>
           <div style={{ marginTop: 3, fontSize: z(12), fontWeight: 600, color: "rgba(0,0,0,0.40)", lineHeight: 1.4 }}>
-            Vào room để đọc, nghe, suy ngẫm.
+            Vào phòng học để đọc, nghe, suy ngẫm.
           </div>
         </div>
 
@@ -574,7 +574,7 @@ export default function Home() {
             30 topics — Part 1, 2, 3
           </div>
           <div style={{ marginTop: 6, fontSize: z(14), fontWeight: 700, color: "rgba(0,0,0,0.62)", lineHeight: 1.45 }}>
-            IELTS Speaking với phản hồi tiếng Việt — biết chính xác band đang ở đâu và làm thế nào để lên.
+            Luyện IELTS Speaking với phản hồi tiếng Việt — biết band hiện tại và cách nâng lên.
           </div>
           <div style={{ marginTop: 3, fontSize: z(12), fontWeight: 600, color: "rgba(0,0,0,0.40)", lineHeight: 1.4 }}>
             Vietnamese-language strategies, vocabulary by band, sample answers band 7 + band 5.
@@ -681,10 +681,10 @@ export default function Home() {
             Vietnamese Standardized Test of English Proficiency
           </div>
           <div style={{ marginTop: 6, fontSize: z(14), fontWeight: 700, color: "rgba(0,0,0,0.62)", lineHeight: 1.45 }}>
-            App học tiếng Anh tập trung riêng vào VSTEP — đúng định dạng Bộ Giáo dục.
+            Học VSTEP theo đúng định dạng Bộ Giáo dục.
           </div>
           <div style={{ marginTop: 3, fontSize: z(12), fontWeight: 600, color: "rgba(0,0,0,0.40)", lineHeight: 1.4 }}>
-            B1 + B2 Speaking, 30 chủ đề, mẹo cho người Việt.
+            Speaking B1 + B2, 30 chủ đề, mẹo riêng cho người Việt.
           </div>
         </div>
 
@@ -726,7 +726,7 @@ export default function Home() {
             New here? Try the 12-second pronunciation test below.
           </div>
           <div style={{ marginTop: 2, fontSize: z(12), fontWeight: 500, color: "rgba(0,0,0,0.40)", lineHeight: 1.4 }}>
-            Mới đến? Thử bài kiểm tra phát âm 12 giây bên dưới.
+            Mới bắt đầu? Thử bài kiểm tra phát âm 12 giây bên dưới.
           </div>
         </section>
 

@@ -153,7 +153,7 @@ function Header() {
           Based on your placement test — tap any area to see a quick lesson.
         </div>
         <div className="mt-0.5 text-[12px] font-medium leading-snug text-slate-400">
-          Dựa trên bài kiểm tra xếp lớp — chạm vào một mục để xem bài giảng ngắn.
+          Dựa trên bài đánh giá xếp lớp — chạm vào một mục để xem bài học ngắn.
         </div>
       </div>
     </div>
@@ -183,13 +183,13 @@ function EmptyCard({ onCta }: { onCta: () => void }) {
             Unlock your focus areas
           </div>
           <div className="mt-0.5 text-[12px] font-semibold text-amber-700/70">
-            Mở trọng tâm luyện tập
+            Xem trọng tâm cần luyện
           </div>
           <div className="mt-1.5 text-[13px] font-semibold leading-snug text-slate-600">
             Take the placement test to see where to focus first.
           </div>
           <div className="mt-0.5 text-[12px] font-medium leading-snug text-slate-400">
-            Làm bài kiểm tra xếp lớp để biết cần tập trung vào đâu.
+            Làm bài đánh giá xếp lớp để biết nên tập trung vào đâu.
           </div>
         </div>
         <ChevronRight className="h-5 w-5 flex-shrink-0 text-amber-500" aria-hidden />
@@ -216,7 +216,7 @@ function BalancedCard() {
             No weak spots jumped out on your placement. Keep practising.
           </div>
           <div className="mt-0.5 text-[12px] font-medium leading-snug text-slate-400">
-            Bài kiểm tra không phát hiện điểm yếu rõ rệt. Tiếp tục luyện tập nhé.
+            Bài đánh giá không phát hiện điểm yếu rõ rệt. Tiếp tục luyện tập nhé.
           </div>
         </div>
       </div>

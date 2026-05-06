@@ -56,7 +56,7 @@ export default function StoryPromptCard(): React.ReactElement | null {
         Bạn đã có một câu chuyện đáng kể.
       </h3>
       <p className="mt-1 text-sm text-amber-800">
-        Câu chuyện của bạn có thể giúp người Việt khác tin rằng họ cũng làm được.
+        Câu chuyện của bạn có thể giúp những người Việt khác tin rằng họ cũng làm được.
       </p>
       <div className="mt-3 flex flex-wrap gap-2">
         <Link

@@ -100,7 +100,7 @@ export default function RecommendedDrillCard() {
 
       <p style={descStyle}>
         Âm {pack.phoneme_ipa} của bạn đang ở {Math.round(weak.averageScore)}/100. Một
-        bài luyện 5 phút (10 câu) có thể kéo điểm lên rõ rệt.
+        bài luyện 5 phút (10 câu) có thể giúp điểm cải thiện rõ hơn.
       </p>
       <p style={descEnStyle}>
         Your {pack.phoneme_ipa} is at {Math.round(weak.averageScore)}/100. A focused

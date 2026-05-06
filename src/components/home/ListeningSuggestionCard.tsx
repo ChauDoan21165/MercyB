@@ -25,7 +25,7 @@ import { getUserListeningProgress } from "@/services/listeningProgress";
 const CATEGORY_VI: Record<ListeningCategory, string> = {
   restaurant:         "Nhà hàng",
   doctor:             "Bác sĩ",
-  "customer-service": "CSKH",
+  "customer-service": "Chăm sóc khách hàng",
   "job-interview":    "Phỏng vấn",
   casual:             "Đời thường",
   shopping:           "Mua sắm",
