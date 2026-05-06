@@ -7998,6 +7998,270 @@ level: "B2",
         pinyin: "Jiàn yú běn yán jiū yàng běn guī mó yǒu xiàn, suǒ dé jié lùn sì hū jǐn jù chū bù cān kǎo jià zhí, bù yí guò dù tuī guǎng."
       }
     ]
+  },
+  {
+    id: 96,
+    level: "C1",
+    category: "academic_discourse",
+    title: "术语之界定",
+    pinyin: "shù yǔ zhī jiè dìng",
+    topic: "Defining technical terms",
+    title_vi: "Định nghĩa thuật ngữ chuyên môn",
+    title_en: "Defining technical terms",
+    sentences: [
+      {
+        chinese: "本节将首先对'注意力机制'这一核心概念给出明确界定, 以避免后续讨论中之歧义。",
+        pinyin: "Běn jié jiāng shǒuxiān duì 'zhùyìlì jīzhì' zhè yī héxīn gàiniàn gěi chū míngquè jièdìng, yǐ bìmiǎn hòuxù tǎolùn zhōng zhī qíyì.",
+        english: "This section will first provide a clear definition of the core concept 'attention mechanism' so as to avoid ambiguity in subsequent discussion.",
+        vi: "Mục này trước tiên sẽ đưa ra định nghĩa rõ ràng cho khái niệm cốt lõi 'cơ chế chú ý', nhằm tránh sự đa nghĩa trong các thảo luận tiếp theo.",
+        pronunciation_focus: ["界定 → jièdìng (định nghĩa)", "歧义 → qíyì (đa nghĩa / nhập nhằng)", "明确 → míngquè (rõ ràng)", "以避免 → yǐ bìmiǎn (nhằm tránh — 书面)"]
+      },
+      {
+        chinese: "所谓'Transformer架构', 顾名思义, 即指一种基于自注意力机制实现序列变换的深度学习模型。",
+        pinyin: "Suǒwèi 'Transformer jiàgòu', gùmíng sīyì, jí zhǐ yī zhǒng jīyú zì zhùyìlì jīzhì shíxiàn xùliè biànhuàn de shēndù xuéxí móxíng.",
+        english: "The so-called 'Transformer architecture' — as the name suggests — refers to a deep learning model that performs sequence transformation based on the self-attention mechanism.",
+        vi: "Cái gọi là 'kiến trúc Transformer', đúng như tên gọi, chỉ một loại mô hình học sâu thực hiện biến đổi chuỗi dựa trên cơ chế tự chú ý.",
+        pronunciation_focus: ["所谓 → suǒwèi (cái gọi là — 书面)", "顾名思义 → gùmíng sīyì (đúng như tên gọi — idiom)", "即指 → jí zhǐ (tức chỉ — 书面)", "基于 → jīyú (dựa trên — 书面)"]
+      },
+      {
+        chinese: "需要指出的是, 该术语在不同语境中含义并不完全一致, 故有必要先行廓清其使用边界。",
+        pinyin: "Xūyào zhǐchū de shì, gāi shùyǔ zài bùtóng yǔjìng zhōng hányì bìng bù wánquán yīzhì, gù yǒu bìyào xiānxíng kuòqīng qí shǐyòng biānjiè.",
+        english: "It must be noted that this term does not carry entirely consistent meanings across different contexts, hence it is necessary first to clarify its boundary of use.",
+        vi: "Cần chỉ ra rằng, thuật ngữ này trong các ngữ cảnh khác nhau không hoàn toàn nhất quán về hàm nghĩa, do đó cần làm rõ trước phạm vi sử dụng của nó.",
+        pronunciation_focus: ["需要指出的是 → xūyào zhǐchū de shì (cần chỉ ra rằng)", "并不完全一致 → bìng bù wánquán yīzhì", "故 → gù (do đó — 书面)", "廓清 → kuòqīng (làm sáng tỏ — 书面)"]
+      },
+      {
+        chinese: "为了便于读者理解, 笔者拟将'模型可解释性'界定为模型决策过程对人类审视者之可读取程度。",
+        pinyin: "Wèile biànyú dúzhě lǐjiě, bǐzhě nǐ jiāng 'móxíng kě jiěshì xìng' jièdìng wéi móxíng juécè guòchéng duì rénlèi shěnshì zhě zhī kě dúqǔ chéngdù.",
+        english: "For the reader's ease of understanding, the author proposes to define 'model interpretability' as the degree of readability of the model's decision process to a human inspector.",
+        vi: "Để bạn đọc dễ hiểu, tác giả định nghĩa 'tính khả giải thích của mô hình' là mức độ có thể đọc được của quá trình ra quyết định của mô hình đối với người quan sát.",
+        pronunciation_focus: ["拟将 → nǐ jiāng (dự định / nay xin — 书面)", "可解释性 → kě jiěshì xìng (khả giải thích)", "审视者 → shěnshì zhě (người quan sát)", "可读取程度 → kě dúqǔ chéngdù"]
+      },
+      {
+        chinese: "综上所述, 严谨之术语界定不仅是学术写作之基本要求, 更是论证得以展开之前提条件。",
+        pinyin: "Zōng shàng suǒ shù, yánjǐn zhī shùyǔ jièdìng bùjǐn shì xuéshù xiězuò zhī jīběn yāoqiú, gèng shì lùnzhèng déyǐ zhǎnkāi zhī qiántí tiáojiàn.",
+        english: "In summary, rigorous term definition is not only a basic requirement of academic writing but also the prerequisite condition for argumentation to unfold.",
+        vi: "Tóm lại, việc định nghĩa thuật ngữ một cách nghiêm cẩn không chỉ là yêu cầu cơ bản của viết học thuật mà còn là điều kiện tiên quyết để luận chứng được triển khai.",
+        pronunciation_focus: ["严谨 → yánjǐn (nghiêm cẩn)", "基本要求 → jīběn yāoqiú", "得以展开 → déyǐ zhǎnkāi (có thể được triển khai — 书面)", "前提条件 → qiántí tiáojiàn (điều kiện tiên quyết)"]
+      }
+    ],
+    vocab: [
+      { chinese: "界定", pinyin: "jiè dìng", english: "to define / delineate", vi: "định nghĩa / phân định" },
+      { chinese: "术语", pinyin: "shù yǔ", english: "technical term", vi: "thuật ngữ" },
+      { chinese: "歧义", pinyin: "qí yì", english: "ambiguity", vi: "sự đa nghĩa" },
+      { chinese: "顾名思义", pinyin: "gù míng sī yì", english: "as the name suggests (idiom)", vi: "đúng như tên gọi (书面)" },
+      { chinese: "所谓", pinyin: "suǒ wèi", english: "so-called (formal)", vi: "cái gọi là (书面)" },
+      { chinese: "廓清", pinyin: "kuò qīng", english: "to clarify (formal)", vi: "làm sáng tỏ (书面)" },
+      { chinese: "前提条件", pinyin: "qián tí tiáo jiàn", english: "prerequisite", vi: "điều kiện tiên quyết" },
+      { chinese: "可解释性", pinyin: "kě jiě shì xìng", english: "interpretability", vi: "tính khả giải thích" },
+      { chinese: "外延", pinyin: "wài yán", english: "extension (logical scope)", vi: "ngoại diên" },
+      { chinese: "内涵", pinyin: "nèi hán", english: "intension (intrinsic meaning)", vi: "nội hàm" }
+    ],
+    dialogue: [
+      { speaker: "学生", chinese: "教授, 我paper第二段提到'AI agent', 但reviewer问这个术语具体指什么。", pinyin: "Jiàoshòu, wǒ paper dì èr duàn tídào 'AI agent', dàn reviewer wèn zhège shùyǔ jùtǐ zhǐ shénme.", english: "Professor, I mentioned 'AI agent' in paragraph 2, but reviewer asks what the term specifically refers to.", vi: "Thưa giáo sư, đoạn hai bài em có đề cập 'AI agent', nhưng reviewer hỏi thuật ngữ này cụ thể chỉ cái gì." },
+      { speaker: "教授", chinese: "Reviewer问得对。'AI agent'在不同文献中含义不同, 你必须先界定。", pinyin: "Reviewer wèn de duì. 'AI agent' zài bùtóng wénxiàn zhōng hányì bùtóng, nǐ bìxū xiān jièdìng.", english: "Reviewer is right. 'AI agent' has different meanings across literature — you must define it first.", vi: "Reviewer hỏi đúng. 'AI agent' trong các tài liệu khác nhau có ý nghĩa khác nhau, em phải định nghĩa trước." },
+      { speaker: "学生", chinese: "我应该按哪个流派的定义? Russell-Norvig的, 还是Wooldridge的, 还是LLM-era的?", pinyin: "Wǒ yīnggāi àn nǎ gè liúpài de dìngyì? Russell-Norvig de, háishì Wooldridge de, háishì LLM-era de?", english: "Which school's definition should I follow? Russell-Norvig's, Wooldridge's, or LLM-era?", vi: "Em nên theo định nghĩa của trường phái nào? Russell-Norvig, hay Wooldridge, hay LLM-era?" },
+      { speaker: "教授", chinese: "选一个, 注明出处, 解释为何选这个, 然后全文一致使用。这是术语规范的基本原则。", pinyin: "Xuǎn yī gè, zhùmíng chūchù, jiěshì wèihé xuǎn zhège, ránhòu quánwén yīzhì shǐyòng. Zhè shì shùyǔ guīfàn de jīběn yuánzé.", english: "Pick one, cite the source, explain why this one, then use it consistently throughout. That's the basic principle of terminology discipline.", vi: "Chọn một cái, ghi xuất xứ, giải thích lý do chọn nó, rồi dùng nhất quán toàn bài. Đây là nguyên tắc cơ bản của quy chuẩn thuật ngữ." }
+    ],
+    dialogue_long: [
+      { speaker: "学生", chinese: "教授, reviewer的修改意见里, 有大半都集中在'术语'问题上, 让我有点困惑。", pinyin: "Jiàoshòu, reviewer de xiūgǎi yìjiàn lǐ, yǒu dàbàn dōu jízhōng zài 'shùyǔ' wèntí shàng, ràng wǒ yǒudiǎn kùnhuò.", english: "Professor, more than half of reviewer's revision comments are about 'terminology' — I'm a bit confused.", vi: "Thưa giáo sư, hơn nửa các góp ý sửa của reviewer đều tập trung vào vấn đề 'thuật ngữ', em có chút lúng túng." },
+      { speaker: "教授", chinese: "你具体说说, 他都问了哪些?", pinyin: "Nǐ jùtǐ shuō shuō, tā dōu wènle nǎxiē?", english: "Tell me specifically — what did they ask?", vi: "Em nói cụ thể, reviewer hỏi những gì?" },
+      { speaker: "学生", chinese: "他问'representational understanding'指什么; 'world model'指什么; 'emergent capability'又指什么。我paper里都用了, 但没界定。", pinyin: "Tā wèn 'representational understanding' zhǐ shénme; 'world model' zhǐ shénme; 'emergent capability' yòu zhǐ shénme. Wǒ paper lǐ dōu yòngle, dàn méi jièdìng.", english: "They ask what 'representational understanding' means, what 'world model' means, what 'emergent capability' means. I used all of them but didn't define any.", vi: "Reviewer hỏi 'representational understanding' chỉ cái gì; 'world model' chỉ cái gì; 'emergent capability' chỉ cái gì. Trong bài em đều dùng, nhưng chưa định nghĩa." },
+      { speaker: "教授", chinese: "这是一个很常见的新手错误。你以为读者懂这些词。但学术写作的前提是: 假设读者不懂, 你要负责定义。", pinyin: "Zhè shì yī gè hěn chángjiàn de xīnshǒu cuòwù. Nǐ yǐwéi dúzhě dǒng zhèxiē cí. Dàn xuéshù xiězuò de qiántí shì: jiǎshè dúzhě bù dǒng, nǐ yào fùzé dìngyì.", english: "Very common rookie error. You assume readers know these terms. But the premise of academic writing is: assume the reader doesn't know — you're responsible for defining.", vi: "Đây là lỗi của người mới rất phổ biến. Em tưởng người đọc hiểu các từ này. Nhưng tiền đề của viết học thuật là: giả định người đọc không hiểu, em chịu trách nhiệm định nghĩa." },
+      { speaker: "学生", chinese: "可这些都是NLP领域常用术语, 写paper还要每次都解释吗?", pinyin: "Kě zhèxiē dōu shì NLP lǐngyù chángyòng shùyǔ, xiě paper hái yào měi cì dōu jiěshì ma?", english: "But these are commonly-used NLP terms — must I explain each one every time when writing a paper?", vi: "Nhưng đây đều là thuật ngữ thường dùng trong lĩnh vực NLP, viết bài còn phải giải thích mỗi lần sao?" },
+      { speaker: "教授", chinese: "三个原则。第一: 即便领域常用, 如果有歧义, 必须界定。'world model'这个词, NLP里和RL里完全不同含义。第二: 你的paper可能投到跨学科期刊, 读者来自其他领域, 必须界定。第三: 就算同行, 不同流派对同一术语理解不同, 你要明确选哪个流派。", pinyin: "Sān gè yuánzé. Dì yī: jíbiàn lǐngyù chángyòng, rúguǒ yǒu qíyì, bìxū jièdìng. 'World model' zhège cí, NLP lǐ hé RL lǐ wánquán bùtóng hányì. Dì èr: nǐ de paper kěnéng tóu dào kuà xuékē qīkān, dúzhě láizì qítā lǐngyù, bìxū jièdìng. Dì sān: jiùsuàn tóngháng, bùtóng liúpài duì tóng yī shùyǔ lǐjiě bùtóng, nǐ yào míngquè xuǎn nǎ gè liúpài.", english: "Three principles. First: even if commonly used in the field, if there's ambiguity, you must define. 'World model' means entirely different things in NLP and RL. Second: your paper may go to cross-disciplinary journals, readers from other fields — must define. Third: even within the field, different schools understand same terms differently — you must explicitly choose which school.", vi: "Ba nguyên tắc. Một: ngay cả thường dùng trong ngành, nếu có đa nghĩa, phải định nghĩa. Từ 'world model' trong NLP và RL có nghĩa hoàn toàn khác. Hai: bài em có thể đăng tạp chí liên ngành, độc giả từ ngành khác, phải định nghĩa. Ba: ngay đồng nghiệp, các trường phái khác nhau hiểu cùng thuật ngữ khác nhau, em phải chọn rõ trường phái nào." },
+      { speaker: "学生", chinese: "我应该把界定放在哪个section?", pinyin: "Wǒ yīnggāi bǎ jièdìng fàng zài nǎ gè section?", english: "Where should I place the definitions?", vi: "Em nên đặt phần định nghĩa ở section nào?" },
+      { speaker: "教授", chinese: "三种放法。一: 集中放在'术语界定'小节, 紧跟引言之后。适合术语多的paper。二: 在第一次出现处给定义, 用'本研究中, X 是指...'格式。适合术语少的paper。三: 写'术语表'附录。适合长综述。", pinyin: "Sān zhǒng fàngfǎ. Yī: jízhōng fàng zài 'shùyǔ jièdìng' xiǎojié, jǐn gēn yǐnyán zhīhòu. Shìhé shùyǔ duō de paper. Èr: zài dì yī cì chūxiàn chù gěi dìngyì, yòng 'běn yánjiū zhōng, X shì zhǐ...' géshì. Shìhé shùyǔ shǎo de paper. Sān: xiě 'shùyǔ biǎo' fùlù. Shìhé cháng zōngshù.", english: "Three placements. One: consolidate in a 'term definitions' subsection right after introduction. Fits papers with many terms. Two: define on first occurrence, format 'In this study, X refers to...'. Fits papers with few terms. Three: write a 'glossary' appendix. Fits long reviews.", vi: "Ba cách đặt. Một: tập trung trong tiểu mục 'định nghĩa thuật ngữ' ngay sau phần giới thiệu. Phù hợp bài nhiều thuật ngữ. Hai: định nghĩa ngay tại lần xuất hiện đầu tiên, theo định dạng 'trong nghiên cứu này, X chỉ...'. Phù hợp bài ít thuật ngữ. Ba: viết phụ lục 'bảng thuật ngữ'. Phù hợp tổng quan dài." },
+      { speaker: "学生", chinese: "我paper有6个核心术语, 应该用第一种方式。", pinyin: "Wǒ paper yǒu 6 gè héxīn shùyǔ, yīnggāi yòng dì yī zhǒng fāngshì.", english: "My paper has 6 core terms — should use the first method.", vi: "Bài em có 6 thuật ngữ cốt lõi, nên dùng cách đầu tiên." },
+      { speaker: "教授", chinese: "好。再注意定义本身的写法: 一个好的定义包括genus(类属)和differentia(种差)。比如'Transformer是一种(genus: 深度学习模型), 其特征在于(differentia: 自注意力机制 + 并行计算)'。", pinyin: "Hǎo. Zài zhùyì dìngyì běnshēn de xiěfǎ: yī gè hǎo de dìngyì bāokuò genus (lèishǔ) hé differentia (zhǒngchā). Bǐrú 'Transformer shì yī zhǒng (genus: shēndù xuéxí móxíng), qí tèzhēng zàiyú (differentia: zì zhùyìlì jīzhì + bìngxíng jìsuàn)'.", english: "Good. Also note the definition's own writing: a good definition includes genus (class) and differentia (distinguishing feature). E.g., 'Transformer is a (genus: deep learning model) characterized by (differentia: self-attention + parallel computation)'.", vi: "Tốt. Còn chú ý cách viết bản thân định nghĩa: một định nghĩa tốt bao gồm genus (phụ thuộc loại) và differentia (đặc trưng phân biệt). Ví dụ 'Transformer là một (genus: mô hình học sâu), đặc trưng ở chỗ (differentia: cơ chế tự chú ý + tính toán song song)'." },
+      { speaker: "学生", chinese: "明白了。这是Aristotle的定义法。", pinyin: "Míngbái le. Zhè shì Aristotle de dìngyì fǎ.", english: "Understood. That's Aristotle's definition method.", vi: "Em hiểu rồi. Đây là phương pháp định nghĩa của Aristotle." },
+      { speaker: "教授", chinese: "正是。两千多年前的方法, 至今仍是学术写作的基础。最后一句忠告: 永远不要在paper里说'X 顾名思义就是...'然后给完整定义。'顾名思义'之后只能跟简短解释, 不能跟正式定义。", pinyin: "Zhèngshì. Liǎng qiān duō nián qián de fāngfǎ, zhì jīn réng shì xuéshù xiězuò de jīchǔ. Zuìhòu yī jù zhōnggào: yǒngyuǎn bùyào zài paper lǐ shuō 'X gùmíng sīyì jiùshì...' ránhòu gěi wánzhěng dìngyì. 'Gùmíng sīyì' zhīhòu zhǐ néng gēn jiǎnduǎn jiěshì, bùnéng gēn zhèngshì dìngyì.", english: "Exactly. A 2000-year-old method, still the foundation of academic writing today. Final caution: never say in a paper 'X, as the name suggests, is...' and then give a full definition. After 'as the name suggests' can only follow a brief gloss, not a formal definition.", vi: "Đúng vậy. Phương pháp 2000 năm trước, đến nay vẫn là nền tảng của viết học thuật. Câu khuyên cuối: đừng bao giờ trong paper nói 'X, đúng như tên gọi, là...' rồi đưa ra định nghĩa đầy đủ. Sau '顾名思义' chỉ có thể là giải thích ngắn, không được là định nghĩa chính thức." }
+    ],
+    roleplay_prompts: [
+      "Bạn là sinh viên cao học viết section 'Term Definitions' cho luận án về 'AI alignment'. Hãy định nghĩa 3 thuật ngữ: (1) 'alignment' (Russell vs Anthropic vs Bostrom — chọn một, cite), (2) 'value learning', (3) 'mesa-optimizer'. Mỗi định nghĩa dùng cấu trúc Aristotle (genus + differentia) và format '本研究中, X 指...'. Tránh '顾名思义就是'.",
+      "Bạn là reviewer phản hồi về một paper dùng 'transformer' rất rộng (đôi khi chỉ kiến trúc, đôi khi chỉ family of models, đôi khi chỉ specific instance như BERT). Hãy viết phản biện theo register C1: chỉ ra inconsistency, đề xuất tác giả: (a) chọn một định nghĩa, (b) cite nguồn, (c) consistent throughout. Dùng cụm '术语使用不一致 / 建议明确界定 / 以避免歧义'.",
+      "Bạn là kỹ sư AI Việt Nam đang dịch một paper từ English sang Chinese. Term 'embedding' xuất hiện 30+ lần. Trong context khác nhau, có khi nghĩa là vector representation, có khi nghĩa là quá trình embedding, có khi nghĩa là layer specific. Hãy viết note thuật ngữ cho translator team: (1) Chinese term cho mỗi nghĩa (嵌入向量 / 嵌入过程 / 嵌入层), (2) khi nào dùng cái nào, (3) consistency rule."
+    ],
+    register_notes: "Định nghĩa thuật ngữ là kỹ năng cơ bản nhất của academic writing C1. Nguyên tắc: KHÔNG GIẢ ĐỊNH READER ĐÃ HIỂU.\n\n1. CẤU TRÚC ARISTOTELIAN (Genus + Differentia):\n\nGenus = lớp lớn hơn mà term thuộc về.\nDifferentia = đặc trưng phân biệt term này với các thành viên khác trong genus.\n\nVí dụ: 'Transformer 是一种 (genus: 深度学习模型), 其特征在于 (differentia: 通过自注意力机制实现序列变换)'.\n\nMột định nghĩa thiếu genus = không khung được. Thiếu differentia = không phân biệt được.\n\n2. CỤM TỪ ĐỊNH NGHĨA CHUẨN:\n\n- 本研究中, X 是指 (in this study, X refers to)\n- 所谓 X, 即指 / 是指 (the so-called X refers to)\n- X, 顾名思义 (X, as the name suggests) — CHỈ trước short gloss, không trước formal def\n- 笔者拟将 X 界定为 (the author proposes to define X as)\n- X 一词可定义为 (the term X can be defined as)\n- 在本文语境下, X 特指 (in this article's context, X specifically refers to)\n\n3. AVOID:\n\n- 'X就是X' (circular)\n- 'X包括X' (mereological circular)\n- 顾名思义 then full definition\n- 给定义không cite source khi term đã có established definition\n\n4. THREE CASES KHI BẮT BUỘC PHẢI ĐỊNH NGHĨA:\n\nCASE 1 — Term có nhiều nghĩa trong literature:\n'world model' (NLP/RL/cognitive science nghĩa khác nhau) → MUST DEFINE.\n\nCASE 2 — Term mới hoặc niche:\n'mesa-optimizer' (chuyên môn AI safety) → MUST DEFINE for general audience.\n\nCASE 3 — Term có usage history nhưng author dùng ý nghĩa specific:\n'understanding' (philosophy/ML/cognitive science) → MUST CHOOSE A SCHOOL.\n\n5. POSITIONING (CHỖ ĐẶT ĐỊNH NGHĨA):\n\nA. Centralized (集中放) — 'Terms and Definitions' subsection sau Introduction. Fit cho papers với 5+ key terms.\n\nB. In-text (随文界定) — định nghĩa khi term xuất hiện lần đầu. Fit cho papers với 1-3 key terms.\n\nC. Glossary (术语表附录) — fit cho long reviews / textbooks.\n\nMỗi positioning có pros/cons. Centralized = clear nhưng đứt mạch reading. In-text = smoother flow nhưng harder to look up. Glossary = comprehensive nhưng requires reader effort.\n\n6. INTENSION (内涵) vs EXTENSION (外延):\n\n- 内涵 (intension) = essential properties: 'human is a rational animal'.\n- 外延 (extension) = scope of objects: 'humans = all members of Homo sapiens'.\n\nGood def covers both. Pure intension can be too abstract. Pure extension can be too enumeration-heavy.\n\n7. CỤM 即 / 即指 (ji / ji zhi):\n\n书面 markers signaling 'is exactly / is precisely'. '所谓X, 即指Y' = canonical formal definition format.\n\n8. WHEN BORROWING ENGLISH TERM:\n\nFirst occurrence: 'Transformer (变换器, 一种基于自注意力机制的深度学习架构)'.\nLater: just '变换器' or just 'Transformer' — chọn 1, consistent.",
+    idiom_glosses: [
+      {
+        idiom: "顾名思义",
+        literal: "nhìn tên nghĩ ý nghĩa (gù míng sī yì)",
+        meaning: "Đúng như tên gọi — dùng để giới thiệu một term mà nghĩa khá hiển nhiên từ tên. CHỈ dùng trước SHORT GLOSS, không phải full formal definition. (书面/正式)",
+        example: "所谓'迁移学习', 顾名思义, 即将一个领域的知识迁移到另一领域。"
+      },
+      {
+        idiom: "不言自明",
+        literal: "không nói tự rõ (bù yán zì míng)",
+        meaning: "Không cần nói cũng rõ — self-evident. CẨN THẬN: nếu một term thực sự self-evident, không cần định nghĩa. Nếu reviewer hỏi, nghĩa là không self-evident. (书面/正式)",
+        example: "概念清晰是学术论证之前提, 此点不言自明。"
+      },
+      {
+        idiom: "鞭辟入里",
+        literal: "đào sâu thấu đáo (biān pì rù lǐ)",
+        meaning: "Phân tích thấu đáo, đi đến tận cốt lõi. Khen một định nghĩa hoặc analysis đào sâu được core mechanism. (书面/正式)",
+        example: "作者对'涌现能力'一概念的界定鞭辟入里, 令人受益。"
+      },
+      {
+        idiom: "一言以蔽之",
+        literal: "một lời che hết (yī yán yǐ bì zhī)",
+        meaning: "Trong một lời tóm gọn — academic phrase để give a concise summary definition. Khổng Tử dùng. (书面/正式)",
+        example: "一言以蔽之, 注意力机制即一种动态加权之表示学习方法。"
+      }
+    ],
+    cultural_notes_vi: "Văn hóa định nghĩa thuật ngữ ở Trung Quốc đại lục có một số đặc điểm:\n\n(1) TRADITION 名实之辨 (DEBATE OF NAMES AND REALITIES): Trung Quốc cổ đại có truyền thống triết học từ thời Khổng Tử (正名 — chính danh) đến Mặc Tử và Tuân Tử về tầm quan trọng của định nghĩa chính xác. 'Danh không chính thì lời không thuận, lời không thuận thì việc không thành' (名不正则言不顺, 言不顺则事不成 — Khổng Tử). Vì vậy student Trung Quốc tradition coi định nghĩa thuật ngữ là DUTY MORAL của scholar, không chỉ là technical requirement.\n\n(2) TRANSLATION OF FOREIGN TERMS: Trung Quốc đối mặt câu hỏi 'phiên dịch hay sáng tạo từ mới' khi import western technical terms. Có 4 strategies: (a) phonetic transliteration (Transformer → 特兰斯福莫 — gần như không dùng), (b) semantic translation (Transformer → 变换器 — dùng cho hardware), (c) calque (machine learning → 机器学习), (d) keep English. Strategy (c) thắng đa số ở ML — sinh viên thấy '机器学习', '深度学习', '神经网络' thay vì English.\n\n(3) AI-ERA TERMINOLOGY EXPLOSION: từ 2017+, AI/ML literature Trung Quốc bùng nổ. Hiệp hội terminology Trung Quốc (全国科学技术名词审定委员会) chưa kịp standardize. Vì vậy cùng một term có 2-3 cách dịch trong các papers khác nhau. Sinh viên Việt cần nắm: 'attention mechanism' = 注意力机制 (chuẩn) / 关注机制 (rare). 'Transformer' = thường giữ English / 变换器. 'Embedding' = 嵌入 (chuẩn) / 词嵌入 (cho word embedding).\n\n(4) ACADEMIC GENRE OF 概念辨析 (CONCEPTUAL CLARIFICATION): Trung Quốc có sub-genre học thuật riêng để 'làm rõ một concept'. Bài viết kiểu '论X与Y之辨' (about the distinction between X and Y) là staple của journals nhân văn. ML papers gần đây cũng có genre tương tự: 'Reasoning vs Pattern Matching: A Conceptual Clarification'.\n\n(5) AVOIDED OVERLY FOREIGN-LOOKING DEFINITIONS: students Trung Quốc tradition không thích định nghĩa quá phương Tây (ví dụ Wittgenstein style 'meaning is use'). Họ thích định nghĩa kiểu Aristotelian (genus + differentia) — clear, hierarchical, applicable.\n\n(6) DEFINITION DENSITY: papers Trung Quốc tier-1 thường có 2-5 thuật ngữ được định nghĩa rõ trong 'Term Definitions' subsection (chiếm 5-10% paper). Papers Trung Quốc tier thấp hơn ít định nghĩa terms — đó là dấu hiệu của 'không trưởng thành'. Sinh viên Việt: định nghĩa nhiều hơn = signal mature.\n\n(7) BACK-TRANSLATION TEST: cách verify định nghĩa của bạn rõ ràng: dịch ngược định nghĩa Trung Quốc sang English. Nếu English mơ hồ, định nghĩa Trung Quốc cũng mơ hồ. Iterate cho đến khi back-translation clear.\n\n(8) ETHICS OF TERMINOLOGY: dùng term mà không define = một số journals coi là minor academic misconduct (lừa người đọc về việc bạn đã làm rõ). Đặc biệt với terms có nhiều nghĩa.",
+    tip_advice_vi: "(1) MAKE A LIST: trước khi nộp paper, làm list tất cả thuật ngữ key. Mỗi term: định nghĩa tự bạn (1-2 câu) + nguồn nếu có. Đối chiếu với paper, check nhất quán. (2) ARISTOTELIAN STRUCTURE: 'X là một (genus) (which) đặc trưng bởi (differentia)'. Mỗi định nghĩa của bạn phải fit pattern này. Không fit = re-write. (3) AVOID '顾名思义' BEFORE FORMAL DEFINITION: '顾名思义' chỉ trước short gloss, không trước formal definition. Nếu đã có '所谓 X, 即指...', không cần '顾名思义'. (4) CITE WHEN BORROWING DEFINITION: nếu bạn dùng definition của Russell-Norvig, cite. Tự định nghĩa = '本研究中, 笔者拟将 X 界定为...'. Don't blur. (5) CONSISTENCY CHECK: search paper cho mỗi key term. Đếm số occurrences. Đảm bảo mỗi occurrence dùng cùng meaning đã định nghĩa. (6) FIRST OCCURRENCE RULE: khi term xuất hiện lần đầu, italicize hoặc bold + định nghĩa ngay. Sau đó dùng plain. (7) CROSS-DISCIPLINE TERM TRAP: 'word2vec', 'attention', 'embedding' — common ML terms — có meanings khác trong cognitive science / linguistics. Nếu paper liên ngành, define explicitly. (8) BACK-TRANSLATE TEST: dịch định nghĩa Trung Quốc sang English. Nếu English mơ hồ, Chinese cũng mơ hồ — fix ngay.",
+    exercises: [
+      { type: "fill-blank", question: "所谓'Transformer架构', ___ 名思义, 即指一种基于自注意力机制实现序列变换的深度学习模型。", answer: "顾" },
+      {
+        type: "matching",
+        instruction: "Ghép cụm định nghĩa với chức năng tiếng Việt.",
+        pairs: [
+          { chinese: "所谓", pinyin: "suǒ wèi", english: "cái gọi là (书面)" },
+          { chinese: "顾名思义", pinyin: "gù míng sī yì", english: "đúng như tên gọi" },
+          { chinese: "界定", pinyin: "jiè dìng", english: "định nghĩa / phân định" },
+          { chinese: "歧义", pinyin: "qí yì", english: "đa nghĩa / nhập nhằng" }
+        ]
+      },
+      {
+        type: "translation",
+        vietnamese: "Để bạn đọc dễ hiểu, tác giả định nghĩa 'tính khả giải thích của mô hình' là mức độ có thể đọc được của quá trình ra quyết định.",
+        chinese: "为了便于读者理解, 笔者拟将'模型可解释性'界定为模型决策过程的可读取程度。",
+        pinyin: "Wèi le biàn yú dú zhě lǐ jiě, bǐ zhě nǐ jiāng 'mó xíng kě jiě shì xìng' jiè dìng wéi mó xíng jué cè guò chéng de kě dú qǔ chéng dù."
+      }
+    ]
+  },
+  {
+    id: 97,
+    level: "C1",
+    category: "academic_discourse",
+    title: "方法论之比较",
+    pinyin: "fāng fǎ lùn zhī bǐ jiào",
+    topic: "Comparing methodologies",
+    title_vi: "So sánh phương pháp luận",
+    title_en: "Comparing methodologies",
+    sentences: [
+      {
+        chinese: "在软件工程实证研究中, 定量方法与定性方法各有千秋, 二者实则相辅相成。",
+        pinyin: "Zài ruǎnjiàn gōngchéng shízhèng yánjiū zhōng, dìngliàng fāngfǎ yǔ dìngxìng fāngfǎ gè yǒu qiānqiū, èr zhě shí zé xiāngfǔ xiāngchéng.",
+        english: "In empirical software engineering research, quantitative and qualitative methods each have their merits — the two are in fact mutually complementary.",
+        vi: "Trong nghiên cứu thực chứng kỹ thuật phần mềm, phương pháp định lượng và phương pháp định tính đều có điểm mạnh riêng, hai bên thực chất bổ sung cho nhau.",
+        pronunciation_focus: ["定量 → dìngliàng (định lượng)", "定性 → dìngxìng (định tính)", "各有千秋 → gè yǒu qiānqiū (mỗi bên có điểm mạnh — idiom)", "相辅相成 → xiāngfǔ xiāngchéng (bổ sung nhau — idiom)"]
+      },
+      {
+        chinese: "前者倾向于通过统计检验回答'有多少'的问题, 而后者则致力于揭示'为什么'与'如何'之深层机制。",
+        pinyin: "Qiánzhě qīngxiàng yú tōngguò tǒngjì jiǎnyàn huídá 'yǒu duōshǎo' de wèntí, ér hòuzhě zé zhìlì yú jiēshì 'wèishéme' yǔ 'rúhé' zhī shēncéng jīzhì.",
+        english: "The former tends to answer 'how much' through statistical tests, while the latter is devoted to revealing the deep mechanisms of 'why' and 'how'.",
+        vi: "Phương pháp đầu nghiêng về trả lời câu hỏi 'bao nhiêu' thông qua kiểm định thống kê, trong khi phương pháp sau dành để làm sáng tỏ cơ chế chiều sâu của 'tại sao' và 'như thế nào'.",
+        pronunciation_focus: ["前者...后者 → qiánzhě...hòuzhě (cái trước...cái sau — 书面 contrast)", "倾向于 → qīngxiàng yú (nghiêng về)", "致力于 → zhìlì yú (dành cho — 书面)", "深层机制 → shēncéng jīzhì (cơ chế sâu)"]
+      },
+      {
+        chinese: "若研究问题侧重于'广度', 则定量方法更为适宜; 若研究问题侧重于'深度', 则定性方法当可优先考虑。",
+        pinyin: "Ruò yánjiū wèntí cèzhòng yú 'guǎngdù', zé dìngliàng fāngfǎ gèng wéi shìyí; ruò yánjiū wèntí cèzhòng yú 'shēndù', zé dìngxìng fāngfǎ dāng kě yōuxiān kǎolǜ.",
+        english: "If a research question emphasizes 'breadth', quantitative methods are more suitable; if it emphasizes 'depth', qualitative methods may take priority.",
+        vi: "Nếu câu hỏi nghiên cứu nghiêng về 'bề rộng' thì phương pháp định lượng phù hợp hơn; nếu nghiêng về 'chiều sâu' thì phương pháp định tính có thể được ưu tiên xem xét.",
+        pronunciation_focus: ["若...则 → ruò...zé (nếu...thì — 书面)", "侧重于 → cèzhòng yú (nghiêng về)", "更为适宜 → gèng wéi shìyí (phù hợp hơn — 书面)", "当可 → dāng kě (có thể — 书面)"]
+      },
+      {
+        chinese: "诚然, 单一方法之研究存在固有局限, 因此混合方法研究近年来颇受学界青睐。",
+        pinyin: "Chéngrán, dānyī fāngfǎ zhī yánjiū cúnzài gùyǒu júxiàn, yīncǐ hùnhé fāngfǎ yánjiū jìnnián lái pō shòu xuéjiè qīnglài.",
+        english: "Admittedly, single-method studies have inherent limitations; hence mixed-methods research has received considerable academic favor in recent years.",
+        vi: "Thừa nhận rằng, nghiên cứu chỉ dùng một phương pháp duy nhất có những hạn chế cố hữu, do đó nghiên cứu phương pháp hỗn hợp những năm gần đây khá được giới học thuật ưa chuộng.",
+        pronunciation_focus: ["诚然 → chéngrán (thừa nhận / quả thực — 书面)", "固有局限 → gùyǒu júxiàn (hạn chế cố hữu)", "颇受青睐 → pō shòu qīnglài (khá được ưa chuộng — 书面)", "学界 → xuéjiè (giới học thuật)"]
+      },
+      {
+        chinese: "综上所述, 方法之选择不应囿于流派之偏见, 而当依据具体研究问题之性质审慎决定。",
+        pinyin: "Zōng shàng suǒ shù, fāngfǎ zhī xuǎnzé bù yīng yòu yú liúpài zhī piānjiàn, ér dāng yījù jùtǐ yánjiū wèntí zhī xìngzhì shěnshèn juédìng.",
+        english: "In summary, the choice of method should not be confined to school-bound prejudice but should be decided prudently based on the nature of the specific research question.",
+        vi: "Tóm lại, việc lựa chọn phương pháp không nên bị giới hạn bởi định kiến trường phái, mà cần được quyết định một cách thận trọng dựa trên bản chất của câu hỏi nghiên cứu cụ thể.",
+        pronunciation_focus: ["不应囿于 → bù yīng yòu yú (không nên bị giới hạn bởi — 书面)", "流派偏见 → liúpài piānjiàn (định kiến trường phái)", "依据 → yījù (dựa trên)", "审慎决定 → shěnshèn juédìng (quyết định thận trọng)"]
+      }
+    ],
+    vocab: [
+      { chinese: "方法论", pinyin: "fāng fǎ lùn", english: "methodology", vi: "phương pháp luận" },
+      { chinese: "定量", pinyin: "dìng liàng", english: "quantitative", vi: "định lượng" },
+      { chinese: "定性", pinyin: "dìng xìng", english: "qualitative", vi: "định tính" },
+      { chinese: "混合方法", pinyin: "hùn hé fāng fǎ", english: "mixed methods", vi: "phương pháp hỗn hợp" },
+      { chinese: "各有千秋", pinyin: "gè yǒu qiān qiū", english: "each has its merits (idiom)", vi: "mỗi bên đều có điểm mạnh (书面)" },
+      { chinese: "相辅相成", pinyin: "xiāng fǔ xiāng chéng", english: "mutually complement (idiom)", vi: "bổ sung cho nhau (书面)" },
+      { chinese: "诚然", pinyin: "chéng rán", english: "admittedly (formal)", vi: "thừa nhận / quả thực (书面)" },
+      { chinese: "倾向于", pinyin: "qīng xiàng yú", english: "to tend toward", vi: "nghiêng về" },
+      { chinese: "致力于", pinyin: "zhì lì yú", english: "to be devoted to (formal)", vi: "dành cho / chuyên tâm vào (书面)" },
+      { chinese: "审慎", pinyin: "shěn shèn", english: "prudent / careful", vi: "thận trọng" }
+    ],
+    dialogue: [
+      { speaker: "学生", chinese: "教授, 我的论文在'方法选择'这一章, 一直拿不定主意是用定量还是定性。", pinyin: "Jiàoshòu, wǒ de lùnwén zài 'fāngfǎ xuǎnzé' zhè yī zhāng, yīzhí ná bù dìng zhǔyì shì yòng dìngliàng háishì dìngxìng.", english: "Professor, in the 'method selection' chapter of my thesis I keep wavering between quantitative and qualitative.", vi: "Thưa giáo sư, ở chương 'lựa chọn phương pháp', em cứ chần chừ chưa quyết được giữa định lượng và định tính." },
+      { speaker: "教授", chinese: "你的研究问题是什么? 选方法之前, 先想清楚你要回答的问题。", pinyin: "Nǐ de yánjiū wèntí shì shénme? Xuǎn fāngfǎ zhīqián, xiān xiǎng qīngchu nǐ yào huídá de wèntí.", english: "What's your research question? Before picking a method, first clarify the question you want to answer.", vi: "Câu hỏi nghiên cứu của em là gì? Trước khi chọn phương pháp, hãy nghĩ rõ về câu hỏi em muốn trả lời." },
+      { speaker: "学生", chinese: "我想知道'为什么开发者在使用AI编程助手后, 仍然觉得效率没提升'。", pinyin: "Wǒ xiǎng zhīdào 'wèishéme kāifāzhě zài shǐyòng AI biānchéng zhùshǒu hòu, réngrán juéde xiàolǜ méi tíshēng'.", english: "I want to know 'why developers still feel productivity isn't improved after using AI coding assistants'.", vi: "Em muốn biết 'tại sao lập trình viên sau khi dùng trợ lý lập trình AI vẫn cảm thấy hiệu suất không tăng'." },
+      { speaker: "教授", chinese: "'为什么'是定性问题。你需要深度访谈, 而非问卷调查。但若同时想知'多少%开发者有这种感觉', 就需要混合方法。", pinyin: "'Wèishéme' shì dìngxìng wèntí. Nǐ xūyào shēndù fǎngtán, ér fēi wènjuàn diàochá. Dàn ruò tóngshí xiǎng zhī 'duōshǎo % kāifāzhě yǒu zhè zhǒng gǎnjué', jiù xūyào hùnhé fāngfǎ.", english: "'Why' is a qualitative question. You need deep interviews, not surveys. But if you also want to know 'what % of developers have this feeling', you need mixed methods.", vi: "'Tại sao' là câu hỏi định tính. Em cần phỏng vấn sâu, không phải khảo sát bằng bảng hỏi. Nhưng nếu đồng thời muốn biết 'bao nhiêu phần trăm lập trình viên có cảm giác này', thì cần phương pháp hỗn hợp." }
+    ],
+    dialogue_long: [
+      { speaker: "学生", chinese: "教授, 我读了三篇方法论的paper, 一篇说定量更严谨, 一篇说定性更深刻, 还有一篇说混合方法是未来。我反而更困惑了。", pinyin: "Jiàoshòu, wǒ dúle sān piān fāngfǎlùn de paper, yī piān shuō dìngliàng gèng yánjǐn, yī piān shuō dìngxìng gèng shēnkè, hái yǒu yī piān shuō hùnhé fāngfǎ shì wèilái. Wǒ fǎn'ér gèng kùnhuò le.", english: "Professor, I read three methodology papers — one says quantitative is more rigorous, one says qualitative is more profound, one says mixed methods is the future. I'm now more confused.", vi: "Thưa giáo sư, em đọc ba bài về phương pháp luận, một bài nói định lượng nghiêm cẩn hơn, một bài nói định tính sâu sắc hơn, một bài nói phương pháp hỗn hợp là tương lai. Em ngược lại càng rối hơn." },
+      { speaker: "教授", chinese: "这种困惑是好事, 说明你开始触及方法论的核心。三种说法各有千秋, 但都犯了同一个毛病: 把方法当目的, 而非把方法当工具。", pinyin: "Zhè zhǒng kùnhuò shì hǎoshì, shuōmíng nǐ kāishǐ chùjí fāngfǎlùn de héxīn. Sān zhǒng shuōfǎ gè yǒu qiānqiū, dàn dōu fànle tóng yī gè máobìng: bǎ fāngfǎ dāng mùdì, ér fēi bǎ fāngfǎ dāng gōngjù.", english: "This confusion is good — it means you're touching methodology's core. The three views each have merit, but all suffer the same flaw: treating method as end rather than tool.", vi: "Sự lúng túng này là điều tốt, chứng tỏ em đã bắt đầu chạm tới cốt lõi của phương pháp luận. Ba cách nói này đều có ưu điểm, nhưng đều mắc cùng một lỗi: coi phương pháp là mục đích, chứ không phải công cụ." },
+      { speaker: "学生", chinese: "您能详细说说吗?", pinyin: "Nín néng xiángxì shuō shuō ma?", english: "Could you elaborate?", vi: "Thầy/cô có thể nói chi tiết hơn không?" },
+      { speaker: "教授", chinese: "一个好的研究, 方法是问题逼出来的, 不是流派挑出来的。如果你的问题是'AI编程助手在多大程度上提升了开发者的代码提交速度', 这是定量问题, 用定性方法就答非所问。反之, 如果问题是'开发者如何在内心建构对AI助手的信任', 用定量问卷就根本触不到机制层面。", pinyin: "Yī gè hǎo de yánjiū, fāngfǎ shì wèntí bīchūlái de, bù shì liúpài tiāo chūlái de. Rúguǒ nǐ de wèntí shì 'AI biānchéng zhùshǒu zài duō dà chéngdù shàng tíshēngle kāifāzhě de dàimǎ tíjiāo sùdù', zhè shì dìngliàng wèntí, yòng dìngxìng fāngfǎ jiù dá fēi suǒ wèn. Fǎn zhī, rúguǒ wèntí shì 'kāifāzhě rúhé zài nèixīn jiàngòu duì AI zhùshǒu de xìnrèn', yòng dìngliàng wènjuàn jiù gēnběn chù bù dào jīzhì céngmiàn.", english: "In a good study, method is forced out by the question, not picked from a school. If your question is 'to what extent does an AI coding assistant boost commit speed?', that's quantitative — using qualitative misses the question. Conversely, if the question is 'how do developers internally construct trust toward AI assistants?', a quantitative survey simply can't touch the mechanism level.", vi: "Một nghiên cứu tốt, phương pháp được câu hỏi 'ép ra', không phải do trường phái 'chọn ra'. Nếu câu hỏi của em là 'AI trợ lý lập trình ở mức độ nào nâng cao tốc độ commit của lập trình viên', đây là câu hỏi định lượng, dùng phương pháp định tính sẽ trả lời lệch. Ngược lại, nếu câu hỏi là 'lập trình viên xây dựng niềm tin với AI trợ lý trong nội tâm như thế nào', dùng khảo sát định lượng căn bản không chạm được tầng cơ chế." },
+      { speaker: "学生", chinese: "那混合方法什么时候用?", pinyin: "Nà hùnhé fāngfǎ shénme shíhou yòng?", english: "Then when do you use mixed methods?", vi: "Vậy phương pháp hỗn hợp dùng khi nào?" },
+      { speaker: "教授", chinese: "三种典型场景。第一: 同一研究有'广度'+'深度'两个层次需求 — 例如'多少开发者觉得AI慢' (定量) + '为什么慢' (定性)。第二: 一种方法的发现需要另一种方法验证 — 定性发现pattern, 定量验证prevalence。第三: 单一方法能力有限的复杂现象 — 比如组织文化变迁。", pinyin: "Sān zhǒng diǎnxíng chǎngjǐng. Dì yī: tóng yī yánjiū yǒu 'guǎngdù'+ 'shēndù' liǎng gè céngcì xūqiú — lìrú 'duōshǎo kāifāzhě juéde AI màn' (dìngliàng) + 'wèishéme màn' (dìngxìng). Dì èr: yī zhǒng fāngfǎ de fāxiàn xūyào lìng yī zhǒng fāngfǎ yànzhèng — dìngxìng fāxiàn pattern, dìngliàng yànzhèng prevalence. Dì sān: dānyī fāngfǎ nénglì yǒuxiàn de fùzá xiànxiàng — bǐrú zǔzhī wénhuà biànqiān.", english: "Three typical scenarios. First: same study needs both 'breadth' and 'depth' — e.g., 'how many developers feel AI is slow' (quant) + 'why slow' (qual). Second: one method's findings need verification by another — qual finds patterns, quant verifies prevalence. Third: complex phenomena that single methods can't capture — e.g., organizational culture change.", vi: "Ba kịch bản điển hình. Một: cùng một nghiên cứu cần cả 'bề rộng' + 'chiều sâu' — ví dụ 'bao nhiêu lập trình viên thấy AI chậm' (định lượng) + 'tại sao chậm' (định tính). Hai: phát hiện của một phương pháp cần được phương pháp khác kiểm chứng — định tính tìm pattern, định lượng xác nhận prevalence. Ba: hiện tượng phức tạp mà một phương pháp đơn lẻ không nắm bắt được — ví dụ chuyển đổi văn hóa tổ chức." },
+      { speaker: "学生", chinese: "我的题目是'开发者在AI助手负面体验之后的应对策略'。这听起来同时需要广度和深度。", pinyin: "Wǒ de tímù shì 'kāifāzhě zài AI zhùshǒu fùmiàn tǐyàn zhīhòu de yìngduì cèlüè'. Zhè tīng qǐlái tóngshí xūyào guǎngdù hé shēndù.", english: "My topic is 'developer coping strategies after negative AI assistant experiences'. Sounds like it needs both breadth and depth.", vi: "Đề tài của em là 'chiến lược ứng phó của lập trình viên sau trải nghiệm tiêu cực với AI trợ lý'. Nghe có vẻ cần cả bề rộng và chiều sâu." },
+      { speaker: "教授", chinese: "正是。你可以这样设计: 第一阶段, 定量问卷调查200名开发者(广度)挑出主要应对策略类型。第二阶段, 从中选20名做半结构化深度访谈(深度), 揭示策略背后的心理机制。两个阶段相辅相成。", pinyin: "Zhèngshì. Nǐ kěyǐ zhèyàng shèjì: dì yī jiēduàn, dìngliàng wènjuàn diàochá 200 míng kāifāzhě (guǎngdù) tiāo chū zhǔyào yìngduì cèlüè lèixíng. Dì èr jiēduàn, cóngzhōng xuǎn 20 míng zuò bàn jiégòuhuà shēndù fǎngtán (shēndù), jiēshì cèlüè bèihòu de xīnlǐ jīzhì. Liǎng gè jiēduàn xiāngfǔ xiāngchéng.", english: "Exactly. You could design like this: Phase 1, quantitative survey of 200 developers (breadth) to identify main coping strategy types. Phase 2, select 20 for semi-structured deep interviews (depth) to reveal psychological mechanisms behind strategies. The two phases complement each other.", vi: "Đúng vậy. Em có thể thiết kế như sau: Giai đoạn 1, khảo sát định lượng 200 lập trình viên (bề rộng) chọn ra các kiểu chiến lược ứng phó chính. Giai đoạn 2, từ đó chọn 20 người làm phỏng vấn sâu bán cấu trúc (chiều sâu), làm sáng tỏ cơ chế tâm lý đằng sau các chiến lược. Hai giai đoạn bổ sung cho nhau." },
+      { speaker: "学生", chinese: "明白了。那定量阶段的样本量200, 是怎么算出来的?", pinyin: "Míngbái le. Nà dìngliàng jiēduàn de yàngběn liàng 200, shì zěnme suàn chūlái de?", english: "Got it. How is the 200 sample size for the quantitative phase calculated?", vi: "Em hiểu rồi. Vậy cỡ mẫu 200 ở giai đoạn định lượng tính ra thế nào ạ?" },
+      { speaker: "教授", chinese: "Power analysis: 假设effect size中等(0.5), alpha 0.05, power 0.8, 至少需要128人。考虑非response率20-30%, 把样本扩到200比较稳。这部分细节, 你写到methodology section里, reviewer会问。", pinyin: "Power analysis: jiǎshè effect size zhōngděng (0.5), alpha 0.05, power 0.8, zhì shǎo xūyào 128 rén. Kǎolǜ fēi response lǜ 20-30%, bǎ yàngběn kuò dào 200 bǐjiào wěn. Zhè bùfèn xìjié, nǐ xiě dào methodology section lǐ, reviewer huì wèn.", english: "Power analysis: assume medium effect size (0.5), alpha 0.05, power 0.8 — minimum 128 people. Considering 20-30% non-response, expanding to 200 is safer. Write this detail into methodology — reviewers will ask.", vi: "Power analysis: giả định effect size trung bình (0.5), alpha 0.05, power 0.8, tối thiểu cần 128 người. Tính đến tỷ lệ không phản hồi 20-30%, mở rộng mẫu lên 200 là an toàn hơn. Phần chi tiết này em viết vào mục methodology, reviewer sẽ hỏi." },
+      { speaker: "学生", chinese: "感谢教授, 这次方向清晰了很多。我下周提交修订版方法论章节。", pinyin: "Gǎnxiè jiàoshòu, zhè cì fāngxiàng qīngxī le hěnduō. Wǒ xià zhōu tíjiāo xiūdìng bǎn fāngfǎlùn zhāngjié.", english: "Thanks professor, the direction is much clearer now. I'll submit the revised methodology chapter next week.", vi: "Cảm ơn giáo sư, lần này hướng đi đã rõ ràng hơn nhiều. Tuần sau em nộp chương phương pháp luận bản sửa." },
+      { speaker: "教授", chinese: "好。最后一句忠告: 不要因为定量更'科学'就贬低定性, 也不要因为定性更'深刻'就轻视定量。两者都是工具, 服务于问题, 不应囿于流派之偏见。", pinyin: "Hǎo. Zuìhòu yī jù zhōnggào: bùyào yīnwèi dìngliàng gèng 'kēxué' jiù biǎndī dìngxìng, yě bùyào yīnwèi dìngxìng gèng 'shēnkè' jiù qīngshì dìngliàng. Liǎngzhě dōu shì gōngjù, fúwù yú wèntí, bù yīng yòu yú liúpài zhī piānjiàn.", english: "Final advice: don't disparage qualitative because quantitative seems more 'scientific', nor look down on quantitative because qualitative seems more 'profound'. Both are tools serving the question — should not be confined to school-based prejudice.", vi: "Tốt. Câu khuyên cuối: đừng vì định lượng có vẻ 'khoa học hơn' mà coi nhẹ định tính, cũng đừng vì định tính có vẻ 'sâu sắc hơn' mà xem thường định lượng. Cả hai đều là công cụ, phục vụ câu hỏi, không nên bị giới hạn bởi định kiến trường phái." }
+    ],
+    roleplay_prompts: [
+      "Bạn là sinh viên thạc sĩ trình bày luận án về 'Hiệu quả của code review tự động'. Giáo sư hỏi: 'tại sao em chọn quantitative thay vì qualitative?'. Hãy trả lời theo register C1: (1) phát biểu rõ research question (đo hiệu quả → quant), (2) acknowledge qualitative cũng có giá trị nhưng cho different question, (3) explicitly note bạn sẽ supplement với một small qualitative phase nếu reviewer request. Dùng cụm '研究问题之性质 / 各有千秋 / 相辅相成'.",
+      "Bạn là reviewer phản hồi paper dùng pure quantitative trên một câu hỏi rõ ràng cần qualitative ('tại sao users abandon app sau 2 ngày'). Hãy viết phản biện C1: (1) công nhận data analysis chặt, (2) chỉ ra mismatch giữa research question và method, (3) suggest add semi-structured interviews 15-20 người, (4) note paper hiện tại 'falls short of answering its own question'. Dùng cụm '方法与问题之间存在错位 / 笔者建议 / 鉴于'.",
+      "Bạn là PI viết grant proposal về 'AI literacy trong giáo dục K-12'. Reviewer 1 thường skeptical về qualitative methods. Hãy viết một paragraph phương pháp thuyết phục: balance định lượng (pre/post test 500 students) + định tính (focus groups với teachers). Dùng các cụm '混合方法 / 各有千秋 / 互补 / 三角验证 (triangulation)'."
+    ],
+    register_notes: "So sánh phương pháp luận là kỹ năng 'meta-research' của C1 scholar. Nguyên tắc: METHOD FOLLOWS QUESTION, NOT TASTE.\n\n1. CONTRAST CONNECTORS 书面:\n\n- 前者...后者 (the former... the latter)\n- 一方面...另一方面 (on one hand... on the other)\n- 与之相反 (in contrast)\n- 与此相对 (correspondingly opposed)\n- 不同于X, Y则... (unlike X, Y...)\n- 较之X, Y... (compared to X, Y...)\n\n2. SIMILARITY CONNECTORS:\n\n- 与...类似 (similar to...)\n- 同样地 (similarly)\n- 二者皆 (both)\n- 同X一致 (consistent with X)\n\n3. ASSESSMENT CONNECTORS:\n\n- 各有千秋 (each has merits)\n- 各有利弊 (each has pros and cons)\n- 相辅相成 (mutually complementary)\n- 殊途同归 (different paths, same destination)\n- 大相径庭 (vastly different)\n\n4. PHƯƠNG PHÁP TYPES & 中文 thuật ngữ:\n\n- Quantitative (定量) — surveys, experiments, statistics\n- Qualitative (定性) — interviews, ethnography, case studies, grounded theory\n- Mixed methods (混合方法) — combination, sequential or concurrent\n- Computational (计算方法) — simulation, modeling, agent-based\n- Design science (设计科学) — artifact creation\n\n5. METHOD-QUESTION MAPPING:\n\nResearch question type → Method:\n- 'How much / how often / what %' → Quantitative\n- 'Why / how / under what conditions' → Qualitative\n- 'How does X cause Y in the field' → Quasi-experimental + interviews\n- 'What patterns exist in massive corpora' → Computational\n- 'Does this novel artifact work' → Design science + evaluation\n\n6. AVOID FALSE DICHOTOMIES:\n\n- Định lượng ≠ 'rigor', định tính ≠ 'soft'. Cả hai có rigor standards riêng.\n- Trustworthiness criteria for qualitative: credibility, transferability, dependability, confirmability.\n- Validity types for quantitative: internal, external, construct, conclusion.\n\n7. MIXED METHODS DESIGNS:\n\n- Sequential explanatory (定量先, 定性后): quant identifies pattern, qual explains mechanism\n- Sequential exploratory (定性先, 定量后): qual generates theory, quant tests prevalence\n- Concurrent triangulation (同时三角验证): both at once, results compared\n\n8. METHODOLOGY-WAR PHRASES (đọc reviewer / discussion):\n\n- '定量原教旨主义' (quant fundamentalism) — over-reliance on numbers\n- '定性叙事化' (qual narrativization) — losing rigor in storytelling\n- '方法论之偏见' (methodological prejudice) — tự bịt mắt\n- '工具化思维' (tool-driven thinking) — letting tools dictate questions\n\nC1 scholar tránh các trap này.",
+    idiom_glosses: [
+      {
+        idiom: "各有千秋",
+        literal: "mỗi cái có ngàn thu (gè yǒu qiān qiū)",
+        meaning: "Mỗi bên đều có điểm mạnh riêng — academic phrase chuẩn để mở đầu so sánh không kết luận một phía. (书面/正式)",
+        example: "定量与定性方法各有千秋, 适用场景不同。"
+      },
+      {
+        idiom: "相辅相成",
+        literal: "hỗ trợ nhau và tạo thành nhau (xiāng fǔ xiāng chéng)",
+        meaning: "Bổ sung cho nhau, mỗi bên giúp bên kia hoàn thiện — academic justification cho mixed methods. (书面/正式)",
+        example: "理论与实证相辅相成, 缺一不可。"
+      },
+      {
+        idiom: "殊途同归",
+        literal: "đường khác nhau cùng đến (shū tú tóng guī)",
+        meaning: "Đường lối khác nhau cùng đi đến đích — methodology pluralism khi triangulation. Khen tu khi different methods reach same conclusion. (书面/正式)",
+        example: "定量分析与定性访谈在此点上殊途同归, 结论一致, 互为印证。"
+      },
+      {
+        idiom: "大相径庭",
+        literal: "khác nhau như đường lớn và sân (dà xiāng jìng tíng)",
+        meaning: "Vô cùng khác biệt — dùng khi hai methods produce DIFFERENT results, signaling cần investigate further. (书面/正式)",
+        example: "两种方法所得结论大相径庭, 提示其测量构念实非同物。"
+      }
+    ],
+    cultural_notes_vi: "Văn hóa method choice trong nghiên cứu Trung Quốc đại lục có một số đặc điểm:\n\n(1) HISTORICAL BIAS TOWARDS QUANTITATIVE: từ 1980s-2000s, đại học Trung Quốc đại lục copy mô hình Mỹ-Anh, ưu tiên quantitative. Sociology, education, psychology đều push quant. Qualitative bị coi 'soft', 'không khoa học'. Từ 2010+, qualitative bắt đầu được công nhận, đặc biệt qua các trường top ở Bắc Kinh, Thượng Hải, Hồng Kông.\n\n(2) STATISTICS WORSHIP: nhiều papers Trung Quốc tier-2 / tier-3 dùng statistics excessive nhưng questionable. Common errors: p-hacking, multiple testing without correction, overfitting, sample size issues. Reviewer top-tier journals bây giờ cảnh giác. Sinh viên Việt: dùng appropriate statistics > impressive looking statistics.\n\n(3) QUALITATIVE METHODOLOGY MATURITY: qualitative methodology infrastructure ở Trung Quốc đại lục vẫn đang xây. Software như NVivo / Atlas.ti / MAXQDA chưa phổ biến — hầu hết qualitative researcher còn coding manual. Sinh viên Việt dùng qualitative tools = competitive advantage.\n\n(4) MIXED METHODS POPULARITY: từ 2015+, mixed methods rất hot trong giáo dục, public health, software engineering ở Trung Quốc. Lý do: cho phép paper bao quát hơn, satisfy reviewer từ multiple traditions, fit complex social phenomena. Đa số grants 国家自然科学基金 (NSFC) khuyến khích mixed methods cho social science topics.\n\n(5) COMPUTATIONAL METHODS RISE: với big data + AI, computational social science đang nổi ở Trung Quốc. 北京大学, 清华, 复旦 đều có computational social science centers. Sinh viên trẻ Trung Quốc nhiều người làm web scraping + NLP analysis của social media data.\n\n(6) METHODOLOGY DEBATES: trong giới triết học khoa học Trung Quốc, có debate giữa positivism và interpretivism (实证主义 vs 解释主义). Câu trả lời mature: depends on research question, not philosophical preference.\n\n(7) INTERNATIONAL JOURNAL REQUIREMENTS: top journals quốc tế (especially in software engineering — TSE, ICSE, FSE) bây giờ require detailed methodology justification. Paper với một sentence như 'we conducted a survey' bị reject ngay. Sinh viên Việt cần biết: methodology section phải DENSE.\n\n(8) ETHICS CONCERN: bất kể method, IRB approval (伦理审查) hiện được đại học Trung Quốc top-tier require. Chỉ vài năm trước còn lax. Sinh viên Việt: budget thời gian cho ethics review (2-4 weeks), đặc biệt nếu interviews, surveys với human subjects.",
+    tip_advice_vi: "(1) START FROM QUESTION, NOT METHOD: viết research question đầu tiên. Method chỉ chọn sau. Sinh viên Việt thường mắc lỗi 'tôi muốn dùng deep learning' rồi mới tìm question — đảo ngược order. (2) MAP QUESTION TYPE TO METHOD: 'how much / what %' → quant. 'why / how / what mechanism' → qual. Mismatch = paper bị reviewer bash. (3) JUSTIFY METHOD CHOICE: dù chọn method nào, dedicate 1-2 paragraphs giải thích why this method fits this question. Không justify = lazy. (4) DON'T DISPARAGE OTHER METHODS: đừng viết 'qualitative is soft' hay 'quantitative is reductionist'. Tôn trọng both → reviewer respect bạn. (5) TRIANGULATION: nếu mixed methods, mention triangulation explicitly. '本研究采用三角验证策略, 通过定量与定性结果的相互印证以增强结论之可信度'. (6) POWER ANALYSIS for quant: justify sample size với power analysis. Reviewer luôn hỏi. Use G*Power software (free). (7) SATURATION for qual: justify number of interviews bằng 'theoretical saturation' hoặc 'data saturation'. Thường 12-25 interviews đủ. (8) READ TWO PAPERS AS MODELS: trước khi viết methodology section, đọc 2 papers cùng topic ở top journal. Một quant + một qual. Steal their structure (NOT content).",
+    exercises: [
+      { type: "fill-blank", question: "在软件工程实证研究中, 定量方法与定性方法各有 ___ 秋, 二者实则相辅相成。", answer: "千" },
+      {
+        type: "matching",
+        instruction: "Ghép thuật ngữ phương pháp luận với nghĩa tiếng Việt.",
+        pairs: [
+          { chinese: "定量", pinyin: "dìng liàng", english: "định lượng" },
+          { chinese: "定性", pinyin: "dìng xìng", english: "định tính" },
+          { chinese: "混合方法", pinyin: "hùn hé fāng fǎ", english: "phương pháp hỗn hợp" },
+          { chinese: "相辅相成", pinyin: "xiāng fǔ xiāng chéng", english: "bổ sung cho nhau (书面)" }
+        ]
+      },
+      {
+        type: "translation",
+        vietnamese: "Tóm lại, việc lựa chọn phương pháp không nên bị giới hạn bởi định kiến trường phái, mà cần được quyết định một cách thận trọng dựa trên bản chất của câu hỏi nghiên cứu cụ thể.",
+        chinese: "综上所述, 方法的选择不应囿于流派的偏见, 而应依据具体研究问题的性质审慎决定。",
+        pinyin: "Zōng shàng suǒ shù, fāng fǎ de xuǎn zé bù yīng yòu yú liú pài de piān jiàn, ér yīng yī jù jù tǐ yán jiū wèn tí de xìng zhì shěn shèn jué dìng."
+      }
+    ]
   }
 ];
 
