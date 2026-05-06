@@ -5302,6 +5302,153 @@ export const lessons: JapaneseLesson[] = [
     ] },
     { type: "translation", vietnamese: "Nói nghiêm ngặt, kết quả này được cho là chỉ có giá trị trong điều kiện hạn chế.", japanese: "厳密に言えば、本結果は限定された条件下でのみ妥当するものと考えられる。" }
   ]
+},
+{
+  id: 96,
+  title: "Academic discourse — defining technical terms",
+  title_vi: "Diễn ngôn học thuật — Định nghĩa thuật ngữ chuyên ngành",
+  title_en: "Academic discourse — defining technical terms",
+  category: "academic-discourse",
+  level: "C1",
+  vocabulary: [
+    { japanese: "定義 (ていぎ)", english: "definition" },
+    { japanese: "概念 (がいねん)", english: "concept" },
+    { japanese: "用語 (ようご)", english: "term / terminology" },
+    { japanese: "操作的定義 (そうさてきていぎ)", english: "operational definition" },
+    { japanese: "外延 (がいえん)", english: "extension (of a concept)" },
+    { japanese: "内包 (ないほう)", english: "intension (of a concept)" },
+    { japanese: "区別する (くべつする)", english: "to distinguish" },
+    { japanese: "厳密化 (げんみつか)", english: "operationalization / making strict" },
+    { japanese: "曖昧さ (あいまいさ)", english: "ambiguity" },
+    { japanese: "便宜上 (べんぎじょう)", english: "for convenience / pro tem" }
+  ],
+  examples: [
+    { japanese: "本稿では、「学習動機」を以下のように定義する。", english: "In this paper, 'learning motivation' is defined as follows." },
+    { japanese: "ここで言う「適応」とは、環境変化に対する行動上の調整を指すものとする。", english: "What is here referred to as 'adaptation' shall denote behavioral adjustment in response to environmental change." },
+    { japanese: "本概念の外延と内包を区別したうえで、議論を進める必要がある。", english: "It is necessary to proceed with the discussion after distinguishing the extension and intension of this concept." },
+    { japanese: "「言語接触」という用語は、論者によって含意が異なるため、本稿では暫定的に次のように限定する。", english: "Since the term 'language contact' carries differing implications among scholars, this paper provisionally restricts it as follows." },
+    { japanese: "本研究における「成功」とは、操作的に「テスト得点八割以上」と定義される。", english: "'Success' in this study is operationally defined as 'a test score of 80 percent or higher.'" },
+    { japanese: "用語の曖昧さは、議論の前提を不明瞭にし、結論の妥当性をも揺るがしかねない。", english: "Ambiguity in terminology obscures the premises of the argument and may even shake the validity of the conclusion." }
+  ],
+  dialogue: [
+    { speaker: "院生", japanese: "「成功」という語の定義について、ご相談させていただきたく存じます。", english: "I would like to consult you regarding the definition of the word 'success.'" },
+    { speaker: "指導教員", japanese: "どのような曖昧さが生じていますか。", english: "What kind of ambiguity has arisen?" },
+    { speaker: "院生", japanese: "テスト得点を基準とすべきか、自己評価を基準とすべきか、定まらずにおります。", english: "Whether to take test scores as the criterion or self-evaluation — I have not settled this." },
+    { speaker: "指導教員", japanese: "両立は困難です。本稿では便宜上いずれか一方に限定し、その旨を明記するのが筋でしょう。", english: "Reconciling both is difficult. In this paper, restricting it to one for convenience and stating that explicitly would be the proper course." }
+  ],
+  dialogue_long: [
+    { speaker: "院生", japanese: "本日は、用語定義についてご教示いただきたく、お時間頂戴いたしました。", english: "Today, I have asked for your time to receive guidance on terminology definition." },
+    { speaker: "指導教員", japanese: "どの用語が問題となっていますか。", english: "Which term has become problematic?" },
+    { speaker: "院生", japanese: "「文化的能力」という概念でございます。先行研究を概観いたしましたが、論者ごとに含意が大きく異なっておりまして。", english: "It is the concept of 'cultural competence.' I have surveyed prior research, but the implications differ greatly from scholar to scholar." },
+    { speaker: "指導教員", japanese: "代表的な定義を、いくつか挙げてみてください。", english: "Try listing a few representative definitions." },
+    { speaker: "院生", japanese: "Byram (一九九七) は知識・技能・態度の三要素から構成されるとし、Kramsch (一九九八) はこれを動的な交渉過程として捉えております。", english: "Byram (1997) takes it as composed of the three elements of knowledge, skills, and attitudes, while Kramsch (1998) grasps it as a dynamic process of negotiation." },
+    { speaker: "指導教員", japanese: "両者の定義には、能力を静的に捉えるか動的に捉えるかという点で根本的な相違があります。本研究では、いずれの立場を採るのですか。", english: "There is a fundamental difference between the two — whether to grasp competence statically or dynamically. Which position does this study take?" },
+    { speaker: "院生", japanese: "本研究は、教室内インタラクションを対象とするため、Kramsch の動的概念に依拠することが妥当かと存じます。", english: "Since this study targets in-classroom interaction, drawing on Kramsch's dynamic concept seems appropriate." },
+    { speaker: "指導教員", japanese: "結構です。ただし、依拠する定義を選ぶだけでは不十分です。本稿独自の操作的定義を併せて示す必要があります。", english: "Very well. However, merely selecting the definition to draw upon is insufficient. You also need to present an operational definition of your own." },
+    { speaker: "院生", japanese: "操作的定義の組み立て方について、ご示唆いただけますでしょうか。", english: "Could you give me suggestions on how to construct the operational definition?" },
+    { speaker: "指導教員", japanese: "概念の核となる二、三の要素を抽出し、それぞれを観察可能な指標に翻訳することです。曖昧な抽象概念を、データで測れる形に厳密化するのです。", english: "Extract two or three elements that form the core of the concept, and translate each into observable indicators. You make the ambiguous abstract concept strict in a form measurable by data." },
+    { speaker: "院生", japanese: "なるほど。たとえば「他者視点取得の頻度」と「文化的差異への明示的言及」を指標とする、といった具合でしょうか。", english: "I see. For example, taking 'frequency of perspective-taking' and 'explicit mention of cultural difference' as indicators — is that the sort of thing?" },
+    { speaker: "指導教員", japanese: "そのような方向で結構です。指標が概念の全体像を捉えていない可能性についても、留保として明記しておくのが望ましい。", english: "That sort of direction will do. The possibility that the indicators do not capture the entirety of the concept should also be made explicit as a reservation." },
+    { speaker: "院生", japanese: "肝に銘じます。定義の節、加筆して再度ご確認いただけますでしょうか。", english: "I will take that to heart. Could you check the definition section again after I have added to it?" },
+    { speaker: "指導教員", japanese: "もちろんです。来週までにお持ちください。", english: "Of course. Please bring it by next week." }
+  ],
+  roleplay_prompts: [
+    "Bạn cần introduce một term mới trong paper. Mở bằng 本稿では、「X」を以下のように定義する cộng định nghĩa cụ thể. KHÔNG dùng term mà không định nghĩa — reviewer Nhật ngay lập tức flag undefined terms.",
+    "Bạn dùng term mà literature có 2 conflicting definitions. Phrase bằng 「X」という用語は、論者によって含意が異なるため、本稿では暫定的に〜と限定する. Acknowledge conflict + state your choice + mark provisional.",
+    "Bạn đang convert abstract concept sang operational definition. Cụm 操作的に「〜」と定義される cộng nói indicators bạn sẽ dùng. KHÔNG để abstract — reviewer Nhật C1 expect operationalization."
+  ],
+  register_notes: "Định nghĩa thuật ngữ ở C1 academic Japanese theo 4 patterns. (1) STIPULATIVE DEFINITION (定義) — '本稿では「X」を〜と定義する'. Bạn declare ý nghĩa cho purposes của paper, không claim universal definition. Pattern an toàn nhất khi field có disagreement. (2) OPERATIONAL DEFINITION (操作的定義) — '操作的に〜と定義される' cộng observable indicators. Required cho empirical work; missing operational def = paper bị desk reject ở quantitative journals. (3) RESTRICTIVE DEFINITION (限定) — '本稿では便宜上〜に限定する'. Acknowledge term broader nhưng bound scope. 便宜上 (for convenience) signal honest scope reduction. (4) NEGATIVE DEFINITION (区別) — 'ここで言う「X」は〜を含まない' (X as referred to here does not include〜). Useful khi concept dễ bị confused với related terms. Definition syntax: subject-marker は, copula である, hoặc とは…のことである / とは…を指す. 「X」とは〜を指す là formal classroom-textbook style; 「X」を〜と定義する là journal style. Avoid 「X」って〜のことだよね (spoken). 外延 (extension — set of things term applies to) vs 内包 (intension — defining attributes) — C1 phải biết cả hai. Definition placement: ngay sau lần đầu term xuất hiện, hoặc trong subsection 「用語の定義」 ở đầu method section. KHÔNG để reader đợi đến results để biết term nghĩa gì.",
+  idiom_glosses: [
+    { idiom: "言葉を厳密に用いる (ことばをげんみつにもちいる)", literal: "Sử dụng từ ngữ chặt chẽ", meaning: "[書き言葉] Set phrase cho 'use words strictly/precisely' — academic virtue được expected ở C1.", example: "学術的議論においては、言葉を厳密に用いることが、論旨の明晰さを支える基盤となる。" },
+    { idiom: "玉虫色 (たまむしいろ)", literal: "Màu của bọ ngọc — đổi màu theo góc nhìn", meaning: "[書き言葉] Mơ hồ một cách cố ý — diễn giải khác nhau tùy người đọc; CRITIQUE term, không phải khen.", example: "玉虫色の定義は、議論を曖昧にし、結論の検証を困難にする。" },
+    { idiom: "百人百様 (ひゃくにんひゃくよう)", literal: "Trăm người trăm vẻ", meaning: "[書き言葉] Mỗi người định nghĩa khác — phù hợp khi mô tả disagreement trong literature về một concept.", example: "「グローバル化」の定義は百人百様であり、まずは本稿の用法を明示する必要がある。" },
+    { idiom: "言は意を尽くさず (げんはいをつくさず)", literal: "Lời không nói hết ý", meaning: "[硬い・書き言葉] Cổ ngữ — ngôn ngữ không bao giờ truyền đạt hết khái niệm; phù hợp khi acknowledge limit của definition.", example: "言は意を尽くさずと申すように、いかなる定義も対象の全体像を完全に捉え得るものではない。" }
+  ],
+  cultural_notes_vi: "Văn hóa định nghĩa trong giới học thuật Nhật khác phương Tây ở 3 điểm. (1) STIPULATIVE > UNIVERSAL — phương Tây philosophy có khuynh hướng tìm 'true definition'; Nhật academic pragmatic hơn — 'cho paper này, term này nghĩa gì'. Cụm 本稿では là cốt lõi. KHÔNG claim definition của bạn là universally correct. (2) ETYMOLOGY MATTERS — Nhật scholars thường giải thích nguồn gốc kanji của term. 「適応」とは、「適」と「応」から成り、〜 (the term 'tekiou' is composed of 'teki' and 'ou', meaning〜). Mức độ etymology phụ thuộc field — humanities / linguistics nhiều, hard sciences ít. (3) BORROW WORDS REQUIRE EXTRA CARE — terms từ tiếng Anh transliterated katakana (アイデンティティ, グローバル化) đặc biệt cần định nghĩa vì meanings drift trong Japanese context khác source language. Cụm: 「アイデンティティ」という語は、英語の identity と必ずしも一致しないため、本稿では〜と限定する. Khác VN: VN academic accept loanwords thoải mái không cần định nghĩa lại; Nhật C1 expect bạn flag drift. Mẹo: tạo 用語一覧 (glossary) ở appendix nếu paper dùng > 5 specialized terms. Reviewer thanks. Đọc viên ESL student thanks even more. Mẹo cuối: trước submit, list mọi term unusual và check — đã có definition chưa, có consistent với định nghĩa của bạn xuyên suốt paper không? Concept drift mid-paper là weakness phổ biến.",
+  tip_advice_vi: "Workflow định nghĩa term ở luận văn C1 Nhật. (a) IDENTIFY TERMS NEEDING DEFINITION — gồm: technical terms (jargon ngành), borrowed terms (từ ngoại), contested terms (literature disagree), neologisms (term mới của bạn). Skip: từ tiếng Nhật hàng ngày, terms định nghĩa rộng rãi và undisputed. (b) FOR EACH, CHỌN STYLE — stipulative (most general), operational (empirical work), restrictive (when field is broad), negative (when confusion likely). Mỗi term có thể cần combination. (c) PLACE STRATEGICALLY — first occurrence: short inline definition trong dấu ngoặc. Method section: full operational definition. Glossary: complete list. (d) CHECK CONSISTENCY — sau drafting, search mỗi term xuyên suốt paper, đảm bảo usage match definition. Drift là common — bạn có thể start với strict definition và slowly broaden khi viết. (e) CITE EXISTING DEFINITIONS RESPECTFULLY — nếu bạn modify Byram (1997)'s definition, frame như: Byram (一九九七) の定義を踏まえつつ、本稿では〜の点で修正を加え、〜とする. KHÔNG present modified version như nguyên bản của bạn — reviewer biết literature. Mẹo về negotiated meanings: nếu term bạn dùng có heavy political/cultural baggage (e.g. 「外国人」, 「日本語学習者」), acknowledge briefly. Cụm: 「X」という語は社会的含意を伴うことを承知しつつ、本稿では分析上の便宜から用いる. Mẹo cuối: nếu peer review push back trên definition, đừng cứng đầu. Nếu reviewer expert hiểu sai term, có nghĩa định nghĩa của bạn không clear enough cho audience rộng hơn. Revise để đỡ ambiguity, không argue rằng reviewer wrong.",
+  exercises: [
+    { type: "fill-blank", question: "本研究における「成功」とは、___的に「テスト得点八割以上」と定義される。", answer: "操作" },
+    { type: "matching", instruction: "Ghép cụm với chức năng định nghĩa.", pairs: [
+      { japanese: "本稿では〜と定義する", english: "stipulative — defines for paper's purposes" },
+      { japanese: "操作的に〜と定義される", english: "operational — observable indicators" },
+      { japanese: "便宜上〜に限定する", english: "restrictive — bound scope honestly" },
+      { japanese: "ここで言う〜は〜を含まない", english: "negative — exclude likely confusions" }
+    ] },
+    { type: "translation", vietnamese: "Sự mơ hồ của thuật ngữ làm tiền đề lập luận trở nên không rõ, có thể làm lung lay cả tính giá trị của kết luận.", japanese: "用語の曖昧さは、議論の前提を不明瞭にし、結論の妥当性をも揺るがしかねない。" }
+  ]
+},
+{
+  id: 97,
+  title: "Academic discourse — comparing methodologies",
+  title_vi: "Diễn ngôn học thuật — So sánh các phương pháp luận",
+  title_en: "Academic discourse — comparing methodologies",
+  category: "academic-discourse",
+  level: "C1",
+  vocabulary: [
+    { japanese: "方法論 (ほうほうろん)", english: "methodology" },
+    { japanese: "手法 (しゅほう)", english: "method / technique" },
+    { japanese: "質的 (しつてき)", english: "qualitative" },
+    { japanese: "量的 (りょうてき)", english: "quantitative" },
+    { japanese: "実証的 (じっしょうてき)", english: "empirical" },
+    { japanese: "比較対照 (ひかくたいしょう)", english: "comparative contrast" },
+    { japanese: "長所 (ちょうしょ)", english: "strength / merit" },
+    { japanese: "短所 (たんしょ)", english: "weakness / drawback" },
+    { japanese: "適合性 (てきごうせい)", english: "suitability / fit" },
+    { japanese: "相補的 (そうほてき)", english: "complementary" }
+  ],
+  examples: [
+    { japanese: "本節では、二つの方法論を比較対照したうえで、本研究における選択を正当化する。", english: "In this section, after comparatively contrasting the two methodologies, the choice made in this study is justified." },
+    { japanese: "質的手法は文脈の深い理解を可能にする一方、結果の一般化には制約を伴う。", english: "While qualitative methods enable deep understanding of context, generalization of results involves constraints." },
+    { japanese: "量的アプローチは統計的検定を通じた一般化に資するが、現象の機微を捉えにくい。", english: "Quantitative approaches contribute to generalization through statistical testing but struggle to capture the subtleties of phenomena." },
+    { japanese: "両者は対立的というよりも、相補的に位置づけられるべきものと考えられる。", english: "The two should be positioned not as oppositional but as complementary." },
+    { japanese: "本研究の問いの性質に鑑みれば、混合研究法の採用が最も適合的である。", english: "In light of the nature of the research question of this study, the adoption of mixed methods is most appropriate." },
+    { japanese: "いずれの手法を採るにせよ、選択の根拠を明示することが肝要である。", english: "Whichever method one adopts, making the grounds for the selection explicit is essential." }
+  ],
+  dialogue: [
+    { speaker: "院生", japanese: "本研究の方法論について、量的か質的か、決めかねております。", english: "Regarding the methodology of this study, I am unable to decide between quantitative and qualitative." },
+    { speaker: "指導教員", japanese: "問いの性質に立ち返ってみてください。何を明らかにしたいのですか。", english: "Try returning to the nature of the question. What do you wish to clarify?" },
+    { speaker: "院生", japanese: "学習者がどのような過程を経て表現を習得するのか、その内的プロセスを捉えたいと考えております。", english: "I wish to capture the internal process — what kind of process learners go through to acquire expressions." },
+    { speaker: "指導教員", japanese: "プロセスの解明であれば、質的手法に分があります。量的データは補強として位置づけてはいかがですか。", english: "For elucidating processes, qualitative methods have the advantage. How about positioning quantitative data as reinforcement?" }
+  ],
+  dialogue_long: [
+    { speaker: "院生", japanese: "本日は、方法論の選択についてご相談させていただきたく存じます。", english: "Today, I would like to consult about the choice of methodology." },
+    { speaker: "指導教員", japanese: "現在、どのような選択肢を比較されていますか。", english: "What options are you currently comparing?" },
+    { speaker: "院生", japanese: "実験デザインによる量的検証と、エスノグラフィーに基づく質的記述、この二つでございます。", english: "Quantitative verification by experimental design and qualitative description based on ethnography — these two." },
+    { speaker: "指導教員", japanese: "それぞれの長所と短所を、ご自身の言葉で整理してみてください。", english: "Try organizing the strengths and weaknesses of each in your own words." },
+    { speaker: "院生", japanese: "実験法は変数統制が可能で因果推論に強みがございますが、生態的妥当性に乏しいと指摘されます。エスノグラフィーは現場の文脈を保持できる反面、結果の一般化が困難となります。", english: "The experimental method allows variable control and has strength in causal inference but is pointed out as lacking in ecological validity. Ethnography can preserve the context of the field but on the other hand, generalization of results becomes difficult." },
+    { speaker: "指導教員", japanese: "両者の対比、的確に把握されています。本研究の問いは、何を明らかにすることを目指していますか。", english: "Your grasp of the contrast is accurate. What does the research question of this study aim to clarify?" },
+    { speaker: "院生", japanese: "教室における学習者の表現選択が、教師の介入によってどのように変容するかでございます。", english: "How learners' expression choices in the classroom transform under teacher intervention." },
+    { speaker: "指導教員", japanese: "因果と文脈の双方が問われていますね。一方の手法のみでは、片面しか照らし出せません。", english: "Both causality and context are at stake. With only one method, you can illuminate only one side." },
+    { speaker: "院生", japanese: "ということは、混合研究法のほうが、本研究の問いには適合的でしょうか。", english: "Then, would mixed methods be more appropriate for this study's question?" },
+    { speaker: "指導教員", japanese: "私もそう考えます。ただし、混合研究法は、二つの手法を並列するだけでは不十分です。両者の知見をいかに統合するかという論理が必須となります。", english: "I think so as well. However, mixed methods are not sufficient by merely placing two methods in parallel. The logic of how to integrate the findings of both becomes essential." },
+    { speaker: "院生", japanese: "統合の論理について、参考となる先行研究はございますでしょうか。", english: "Are there prior studies that would serve as reference regarding the logic of integration?" },
+    { speaker: "指導教員", japanese: "Creswell の枠組みが定評ありますが、近年の批判的検討も併せて押さえておくべきです。書誌は別途送ります。", english: "Creswell's framework is well-established, but you should also keep in view recent critical examinations. I will send the bibliography separately." },
+    { speaker: "院生", japanese: "ありがとうございます。方法論の節、書き直してまいります。", english: "Thank you. I will rewrite the methodology section." }
+  ],
+  roleplay_prompts: [
+    "Bạn justify chọn qualitative cho paper. Phrase bằng 本研究の問いの性質に鑑みれば、質的手法の採用が最も適合的である cộng nói trade-offs. KHÔNG dismiss quantitative — frame như 適合性 (fit) cho problem cụ thể này.",
+    "Reviewer chỉ trích bạn 'không generalize'. Đáp lại bằng 本研究の方法論的選択は、文脈の深い理解を優先したものであり、一般化は今後の量的検証に委ねたく存じます. Acknowledge limit + reframe scope.",
+    "Bạn proposing mixed methods. Cần justify integration logic. Phrase bằng 質的知見は量的検証の前提を提供し、量的結果は質的解釈の妥当性を支える、相互補完的な関係を想定している. Articulate WHY hai methods together > sum of parts."
+  ],
+  register_notes: "So sánh phương pháp ở C1 academic Japanese theo 4 nguyên tắc. (1) BALANCE BEFORE PREFERENCE — luôn present strengths của BOTH methods trước khi declare lựa chọn của bạn. Một-sided comparison ngay lập tức flag là biased. Cụm: 一方〜、他方〜 (on one hand, on the other), 〜の長所は〜にあるが、短所として〜が指摘される. (2) FRAME AS FIT, NOT QUALITY — KHÔNG nói method A 'better than' B; nói method A 'more 適合的 (suited)' to your specific question. 適合性 (fit) > 優劣 (superiority) là academic norm. Method A cho question X, method B cho question Y; both legitimate. (3) ACKNOWLEDGE TRADE-OFFS — every choice có cost. Cụm: 〜を採用することに伴い、〜の側面については別途の検討を要する. Show bạn understand trade-off, không pretend chosen method có no weakness. (4) INTEGRATION LOGIC FOR MIXED METHODS — nếu propose mixed methods, MUST articulate how qualitative + quantitative integrate. Sequential? Parallel? Embedded? Reviewer Nhật particularly strict về điểm này. Cụm: 質的知見は〜を提供し、量的結果は〜を裏付ける、相補的関係を想定する. Comparison structure templates: '〜は〜である一方、〜は〜である' (parallel), '〜と異なり、〜は〜' (contrast), '〜と共通する点として〜が挙げられる' (similarity), '〜と〜との相違は、〜という点に求められる' (locating difference). Avoid: 'A は B より良い' (A is better than B) — too absolute, no fit-frame. Use 'A は本研究の目的に照らし、B より適合的である' (A, in light of this study's aim, is more suited than B). Cẩn thận: trong field debates về method (quant vs qual wars), maintain neutral stance. Partisan tone gây alienate reviewers từ phía đối lập.",
+  idiom_glosses: [
+    { idiom: "適材適所 (てきざいてきしょ)", literal: "Đúng tài, đúng chỗ", meaning: "[書き言葉] Method phù hợp với problem phù hợp — core principle khi chọn methodology.", example: "研究方法の選択は、適材適所の原則に基づき、問いの性質に応じて行われるべきである。" },
+    { idiom: "二兎を追う者は一兎をも得ず (にとをおうものはいっとをもえず)", literal: "Đuổi hai con thỏ thì không bắt được cả hai", meaning: "[書き言葉] Cẩn báo against poorly-integrated mixed methods — chasing both ends up grasping neither.", example: "混合研究法は強力であるが、統合の論理を欠けば、二兎を追う者は一兎をも得ずとなりかねない。" },
+    { idiom: "一長一短 (いっちょういったん)", literal: "Một cái dài, một cái ngắn", meaning: "[書き言葉・話し言葉] Mỗi cái có long-and-short — set phrase neutral cho 'each has merits and demerits'.", example: "両手法は一長一短であり、研究目的に応じた選択が求められる。" },
+    { idiom: "車の両輪 (くるまのりょうりん)", literal: "Hai bánh xe của xe ngựa", meaning: "[書き言葉] Hai elements thiết yếu, không tách rời — phù hợp khi mô tả qual và quant như mutually necessary.", example: "質的研究と量的研究は、社会科学の車の両輪と言うべき関係にある。" }
+  ],
+  cultural_notes_vi: "So sánh methodology ở Nhật academic culture có 3 đặc điểm. (1) METHODOLOGICAL PLURALISM — Nhật academia, đặc biệt trong social sciences và humanities, tolerant với nhiều paradigms. Khác US/UK fields có method wars (quant vs qual conflict), Nhật default là 共存 (coexistence). Bạn có thể đề xuất qualitative trong field thường quant mà không bị dismissed nếu justification mạnh. (2) HIERARCHY OF METHODS BY FIELD — biology/chemistry: quant default; sociology/anthropology: qual respected equally; education: mixed methods phổ biến; psychology: quant dominant nhưng qual subfield tồn tại. Biết hierarchy của field bạn trước khi chọn. (3) METHOD AS APPRENTICESHIP — Nhật academic culture train methods qua 師弟関係 (master-apprentice relationship). Method choice của bạn often phản ánh advisor's tradition. Switching method đột ngột mà không thảo luận với advisor là institutional misstep, không chỉ academic. Cụm: 先生のご指導を仰ぎたく (would like to receive your guidance) khi propose method change. Khác VN: ở VN methodology section thường ngắn gọn formulaic; ở Nhật C1 paper, methodology rationale có thể chiếm 15-20 phần trăm paper, especially trong PhD theses. Đầu tư thời gian. Mẹo: tham khảo 3-5 papers gần đây trong target journal, xem họ structure methodology section như thế nào. Convention dày đặc và journal-specific. Mẹo cuối: nếu reviewer push back trên method choice, KHÔNG đổi method ở revision — defend choice với better articulated rationale. Switching methods mid-revision = signal bạn không thoughtful về choice ban đầu.",
+  tip_advice_vi: "Cấu trúc method-comparison section ở C1 Nhật. (a) PROBLEM-FRAMED OPENING — mở bằng research question, không bằng method list. Cụm: 本研究の問い、すなわち〜を明らかにするためには、いかなる方法論が適合的であろうか. Đặt vấn đề trước khi present options. (b) PRESENT 2-3 OPTIONS NEUTRALLY — mỗi option 1 paragraph: brief description, primary strength, primary weakness, prior usage trong field. KHÔNG editorialize ở stage này. Reader cần thấy bạn fair-minded. (c) APPLY FIT CRITERIA — explicit list 3-4 criteria từ research question (e.g., causal inference vs descriptive understanding, generalizability priority, sample size feasibility). Score mỗi option chống lại criteria. (d) DECLARE CHOICE WITH EXPLICIT RATIONALE — '以上の比較に基づき、本研究は〜を採用する。その理由は、第一に〜、第二に〜である'. Numbered rationale > vague gesture. (e) ACKNOWLEDGE TRADE-OFFS COMPLETELY — '本選択に伴う制約として、〜が挙げられる。これに対し、〜により補完を試みる'. Show bạn aware of cost + plan compensation. Mẹo về citation choice: cite methodologists (Creswell, Yin, Flick, Glaser & Strauss for qual; Cohen, Tabachnick for quant) là expected ở C1. Methodology paragraph với 0 method citations đọc như amateur. Mẹo về Japanese-specific: nếu method được developed bởi Nhật scholar (e.g., 状況的学習論), cite original Nhật source — reviewer Nhật value local intellectual lineage. Mẹo cuối: đọc lại comparison section asking 'reviewer của paradigm đối lập đọc cái này có cảm thấy fairly represented không?'. Nếu không, revise. Fairness của comparison là test of academic maturity.",
+  exercises: [
+    { type: "fill-blank", question: "両者は対立的というよりも、___的に位置づけられるべきものと考えられる。", answer: "相補" },
+    { type: "matching", instruction: "Ghép cụm với chức năng so sánh.", pairs: [
+      { japanese: "〜の長所は〜にあるが、短所として〜が指摘される", english: "balanced presentation of one method" },
+      { japanese: "本研究の問いの性質に鑑みれば", english: "ground choice in research question, not preference" },
+      { japanese: "適合性", english: "fit-frame replaces superiority-frame" },
+      { japanese: "相補的に位置づけられる", english: "frame methods as complementary, not oppositional" }
+    ] },
+    { type: "translation", vietnamese: "Dù áp dụng phương pháp nào, việc làm rõ căn cứ của lựa chọn là điều cốt yếu.", japanese: "いずれの手法を採るにせよ、選択の根拠を明示することが肝要である。" }
+  ]
 }
 ];
 export default lessons;
