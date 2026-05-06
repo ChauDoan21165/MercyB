@@ -8,12 +8,12 @@
 // Path scheme:
 //   ${level.toLowerCase()}/${lang}/${slug}/${unit}_${i+1}[_${speaker}].mp3
 //
-// `lang` is the ISO short code (fr/de/ja/ko/zh).
+// `lang` is the ISO short code (fr/de/ja/ko/zh/vi).
 // `slug`:
-//   - numeric lesson ids (Asian languages)  → `l${id}`
-//   - string lesson ids   (French / German) → `l<id-with-prefix-stripped>`
+//   - numeric lesson ids (Asian languages, Vietnamese) → `l${id}`
+//   - string lesson ids   (French / German)            → `l<id-with-prefix-stripped>`
 
-export type LessonAudioLang = "fr" | "de" | "ja" | "ko" | "zh";
+export type LessonAudioLang = "fr" | "de" | "ja" | "ko" | "zh" | "vi";
 
 export type LessonAudioLevel = "A1" | "A2" | "B1" | "B2" | "C1" | "C2";
 
@@ -23,6 +23,7 @@ const LANG_LONG_NAME: Record<LessonAudioLang, string> = {
   ja: "japanese",
   ko: "korean",
   zh: "chinese",
+  vi: "vietnamese",
 };
 
 export function lessonStorageSlug(
@@ -52,7 +53,12 @@ export type LessonAudioUnit =
   | { kind: "vocab"; index: number }
   | { kind: "dialogue_short"; index: number; speaker: "A" | "B" }
   | { kind: "dialogue_long"; index: number; speaker: "A" | "B" }
-  | { kind: "idiom"; index: number };
+  | { kind: "idiom"; index: number }
+  // Vietnamese-for-foreigners filename scheme — single track per phrase /
+  // dialogue line, no speaker suffix (voice alternates by index in the
+  // generation script). See scripts/generate-vietnamese-audio.ts.
+  | { kind: "phrase"; index: number }
+  | { kind: "dialogue_vi"; index: number };
 
 export function lessonAudioKey(audioBase: string, unit: LessonAudioUnit): string {
   switch (unit.kind) {
@@ -66,6 +72,10 @@ export function lessonAudioKey(audioBase: string, unit: LessonAudioUnit): string
       return `${audioBase}/dialogue_long_${unit.index}_${unit.speaker}.mp3`;
     case "idiom":
       return `${audioBase}/idiom_${unit.index}.mp3`;
+    case "phrase":
+      return `${audioBase}/phrase_${unit.index}.mp3`;
+    case "dialogue_vi":
+      return `${audioBase}/dialogue_${unit.index}.mp3`;
   }
 }
 

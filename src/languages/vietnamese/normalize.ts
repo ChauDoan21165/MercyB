@@ -1,8 +1,15 @@
 // src/languages/vietnamese/normalize.ts
 //
 // Converts VietnameseLesson to the shared LessonRenderer contract.
+//
+// Audio mapping: Vietnamese-for-foreigners uses a different filename scheme
+// than the other 5 languages — phrase_${n}.mp3 / dialogue_${n}.mp3 (no
+// speaker suffix; voice alternates by index in the generation script).
+// We declare that via `audioKinds` so the shared renderer dispatches to
+// the correct LessonAudioUnit kind without per-language branching.
 
 import type { NormalizedLesson } from "@/components/languages/LessonRenderer.types";
+import { lessonAudioBase } from "@/lib/lessonAudio";
 import type { VietnameseLesson } from "./lessons";
 
 export function normalizeVietnameseLesson(
@@ -30,5 +37,7 @@ export function normalizeVietnameseLesson(
     })),
     culturalNotesVi: lesson.cultural_note,
     tipAdviceVi: lesson.tip,
+    audioBase: lessonAudioBase("vi", lesson.id, lesson.level),
+    audioKinds: { sentence: "phrase", dialogue: "dialogue_vi" },
   };
 }
