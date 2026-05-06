@@ -13,8 +13,8 @@ import {
 
 const HERO_TITLE = "Vietnamese for Foreigners";
 const HERO_SUBTITLE =
-  "Learn Vietnamese for real life in Vietnam: cafes, taxis, shops, help, and simple introductions.";
-const VIETNAMESE_LEVELS = ["A1"] as const;
+  "Learn Vietnamese for real life in Vietnam: survival, daily life, and practical conversations.";
+const VIETNAMESE_LEVELS = ["A1", "A2", "B1"] as const;
 
 export default function VietnameseLessonsPage() {
   const theme = lessonThemes.vietnamese;
