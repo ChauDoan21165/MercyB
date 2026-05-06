@@ -5566,4 +5566,176 @@ level: "B2",
       { type: "translation", vietnamese: "Phần được góp ý đã được phản ánh vào chương 3 của bài.", hangul: "지적해 주신 부분을 본문 3장에 반영하였습니다." },
     ],
   },
+
+  // ── Phase C2 Round 1: Literary Criticism / Phê bình văn học — lessons 102-111 ──
+
+  // 102. Close reading
+  {
+    id: 102,
+    level: "C2",
+    title_vi: "Đọc kỹ văn bản (정독)",
+    title_en: "Close reading",
+    intro_vi:
+      "정독 (精讀) là nền tảng của phê bình văn học Hàn Quốc — bắt đầu từ đơn vị nhỏ nhất (어휘 선택, 문장 구조, 위치) rồi xây dựng lên ý nghĩa toàn văn bản. Truyền thống Hàn từ 김현 (1942-1990) trở đi nhấn mạnh: '비평은 정독 없이는 성립하지 않는다'. C2 đòi hỏi phân biệt 미시적 / 거시적 đọc, phân biệt 텍스트 내부 evidence vs 텍스트 외부 evidence.",
+    vocabulary: [
+      { hangul: "정독 (精讀)", meaning: "đọc kỹ / close reading" },
+      { hangul: "분석 (分析)", meaning: "phân tích" },
+      { hangul: "어휘 선택 (語彙選擇)", meaning: "lựa chọn từ ngữ" },
+      { hangul: "문장 구조 (文章構造)", meaning: "cấu trúc câu" },
+      { hangul: "미시적 독해 (微視的)", meaning: "đọc cấp vi mô" },
+      { hangul: "거시적 독해 (巨視的)", meaning: "đọc cấp vĩ mô" },
+      { hangul: "텍스트 내부", meaning: "nội tại văn bản / textual internal" },
+      { hangul: "텍스트 외부", meaning: "ngoại tại văn bản / textual external (biographical/historical)" },
+      { hangul: "모순 (矛盾)", meaning: "mâu thuẫn / contradiction" },
+      { hangul: "함축 (含蓄)", meaning: "hàm chứa / connotation" },
+    ],
+    sentences: [
+      { korean: "정독은 텍스트의 어휘 선택과 문장 구조를 미시적으로 분석하는 데서 출발한다.", romanized: "Jeongdogeun teksteu-ui eohwi seon-taekgwa munjang gujoreul misijeogeuro bunseok-haneun deseo chulbal-handa.", en: "Close reading begins with microscopic analysis of word choice and sentence structure.", vi: "Đọc kỹ bắt đầu từ phân tích vi mô lựa chọn từ ngữ và cấu trúc câu." },
+      { korean: "표면의 의미와 그 아래의 함축적 의미는 종종 어긋난다.", romanized: "Pyomyeon-ui uimi-wa geu araeui hamchukjeok uimineun jongjong eogeutnanda.", en: "Surface meaning and underlying connotation often diverge.", vi: "Ý nghĩa bề mặt và ý nghĩa hàm chứa bên dưới thường lệch nhau." },
+      { korean: "작가가 의도하지 않은 모순이 텍스트의 무의식을 드러내는 경우가 적지 않다.", romanized: "Jakga-ga uido-haji aneun mosuni teksteu-ui muuisigeul deureonaeneun gyeonguga jeokji anta.", en: "Contradictions unintended by the author often reveal the text's unconscious.", vi: "Mâu thuẫn ngoài ý đồ tác giả không hiếm khi hé lộ vô thức của văn bản." },
+      { korean: "비평이 정독에서 출발한다는 명제는 김현 이후의 한국 비평 전통에서 거듭 강조되어 왔다.", romanized: "Bipyeongi jeongdogeseo chulbal-handaneun myeongjeneun Gimhyeon ihu-ui Hanguk bipyeong jeon-tongeseo geodeup gangjo-doeeo watda.", en: "The proposition that criticism starts with close reading has been repeatedly emphasized in the Korean critical tradition since Kim Hyeon.", vi: "Mệnh đề 'phê bình bắt đầu từ đọc kỹ' đã được nhấn mạnh liên tục trong truyền thống phê bình Hàn từ Kim Hyeon trở đi." },
+      { korean: "이상의 「오감도」는 단어 하나하나가 무게를 지니는 텍스트로, 정독의 모범적인 대상이 된다.", romanized: "Isang-ui Ogamdoneun daneo hana-ha-naga mugereul jinineun teksteu-ro, jeongdog-ui mobeomjeo-gin daesangi doenda.", en: "Lee Sang's 'Ogamdo' is a text where each word carries weight — a model object for close reading.", vi: "「Ogamdo」 của Lee Sang là văn bản mà từng chữ đều có trọng lượng — đối tượng mẫu mực cho đọc kỹ." },
+    ],
+    dialogue: [
+      { speaker: "A", hangul: "본 텍스트의 어떤 측면에 주목해야 합니까?", meaning: "Which aspect of the text should we focus on?" },
+      { speaker: "B", hangul: "우선 반복되는 어휘와 그 위치 변화를 살펴야 합니다.", meaning: "First, recurring vocabulary and shifts in their position." },
+      { speaker: "A", hangul: "거시적 구조보다 미시적 분석부터 시작하는 셈이군요.", meaning: "So we start with micro-analysis before macro-structure." },
+      { speaker: "B", hangul: "정독은 항상 단위에서 전체로 향하는 운동입니다.", meaning: "Close reading is always a movement from unit to whole." },
+    ],
+    dialogue_long: [
+      { speaker: "A", hangul: "안녕하십니까. 오늘은 이상의 「오감도 시제1호」에 대한 정독을 시도하고자 합니다.", meaning: "Hello. Today I will attempt a close reading of Lee Sang's 'Ogamdo Si-je 1-ho'.", vi: "Xin chào quý vị. Hôm nay tôi thử đọc kỹ bài 'Ogamdo Si-je 1-ho' của Lee Sang." },
+      { speaker: "B", hangul: "어떤 단위에서 시작하시겠습니까?", meaning: "At what unit will you start?", vi: "Anh/chị bắt đầu từ đơn vị nào?" },
+      { speaker: "A", hangul: "첫째 행의 처리 — 띄어쓰기를 의도적으로 무시한 표기 — 부터 살피겠습니다.", meaning: "From the first line's treatment — the deliberate disregard of spacing.", vi: "Từ cách xử lý dòng đầu — bỏ khoảng trắng có chủ ý — tôi bắt đầu xem xét." },
+      { speaker: "B", hangul: "그 처리가 어떤 효과를 만든다고 보십니까?", meaning: "What effect does that treatment produce, in your view?", vi: "Anh/chị thấy cách xử lý đó tạo hiệu ứng gì?" },
+      { speaker: "A", hangul: "호흡 단위의 해체로 읽힙니다. 일반적인 문장 리듬을 깨뜨림으로써 독자에게 불안감을 강요한다고 사료됩니다.", meaning: "It reads as the dissolution of the breathing unit. By breaking ordinary sentence rhythm, it is judged to impose anxiety on the reader.", vi: "Tôi đọc nó như sự giải thể đơn vị hơi thở. Bằng cách phá vỡ nhịp câu thông thường, nó áp đặt cảm giác bất an lên độc giả." },
+      { speaker: "B", hangul: "단어 '아해(兒孩)'의 선택은 어떻게 보시나요? 표준 표기 '아이' 대신 한자어 표기를 살린 이유는?", meaning: "What about the choice of 'a-hae (兒孩)'? Why preserve the Sino-Korean form instead of the standard 'a-i'?", vi: "Lựa chọn từ '아해(兒孩)' anh/chị nhìn thế nào? Vì sao giữ dạng Hán-Hàn thay vì 'a-i' chuẩn?" },
+      { speaker: "A", hangul: "한자어 표기를 한글로 살림으로써 식민지 시기 모더니즘 시인의 이중적 위치 — 전통과 근대 사이 — 가 표면화된다고 해석할 수 있습니다.", meaning: "Preserving the Sino-Korean form in hangul surfaces the dual position of the colonial-era modernist poet — between tradition and modernity.", vi: "Bằng cách giữ dạng Hán-Hàn dưới dạng hangul, vị trí kép của thi nhân hiện đại thời thuộc địa — giữa truyền thống và hiện đại — được làm nổi bật." },
+      { speaker: "B", hangul: "그건 텍스트 외부의 정보 — 작가의 식민지적 위치 — 를 동원한 해석이군요. 정독의 범위를 어디까지 보십니까?", meaning: "That mobilizes textual-external information — the author's colonial position. Where do you see the boundary of close reading?", vi: "Đó là cách diễn giải có vận dụng thông tin ngoại tại văn bản — vị trí thuộc địa của tác giả. Anh/chị thấy biên giới của đọc kỹ ở đâu?" },
+      { speaker: "A", hangul: "예리한 지적이십니다. 본 정독에서는 우선 텍스트 내부의 구조에 집중하고, 외부 정보는 보조적으로만 활용하고자 합니다.", meaning: "A sharp point. This reading first concentrates on the text's internal structure; external information is used only auxiliarily.", vi: "Góp ý sắc bén. Trong cách đọc này, trước tiên tôi tập trung vào cấu trúc nội tại văn bản; thông tin ngoại tại chỉ dùng bổ trợ." },
+      { speaker: "B", hangul: "다음 단계는 무엇입니까?", meaning: "What's the next step?", vi: "Bước tiếp theo là gì?" },
+      { speaker: "A", hangul: "13이라는 숫자의 의미입니다. 시 전체에서 '13'이 두 번 — 첫째 행과 마지막 부근 — 반복되는데, 그 위치 변화가 의미 변화를 유도합니다.", meaning: "The meaning of the number 13. Across the poem, '13' recurs twice — first line and near the end — and that positional shift induces a semantic shift.", vi: "Ý nghĩa của con số 13. Trong toàn bài, '13' lặp hai lần — dòng đầu và gần cuối — và sự dịch chuyển vị trí đó dẫn dắt biến đổi nghĩa." },
+      { speaker: "B", hangul: "위치 변화로 어떤 변환이 일어납니까?", meaning: "What transformation occurs through positional shift?", vi: "Sự dịch chuyển vị trí dẫn đến biến đổi gì?" },
+      { speaker: "A", hangul: "첫 등장에서 13은 '주체의 수' — 13명의 아이들 — 을 가리키지만, 마지막에서는 '닫힌 길의 수'와 결합하여 출구 없음을 강조합니다.", meaning: "At first occurrence, 13 designates 'number of subjects' — 13 children; at the last, joined with 'number of closed paths', it emphasizes the absence of exit.", vi: "Ở lần xuất hiện đầu, 13 chỉ 'số chủ thể' — 13 đứa trẻ; ở lần cuối, kết hợp với 'số đường đóng', nó nhấn mạnh sự không lối thoát." },
+      { speaker: "B", hangul: "흥미로운 분석입니다. 다만 13이라는 숫자에 너무 큰 무게를 두는 것은 아닌지 — 단순한 우연일 수도 있습니다.", meaning: "Interesting analysis. But aren't we placing too much weight on the number 13 — it could be mere coincidence.", vi: "Phân tích thú vị. Nhưng có phải đang đặt quá nhiều trọng lượng lên con số 13 — có thể chỉ là ngẫu nhiên." },
+      { speaker: "A", hangul: "그 가능성을 배제할 수는 없습니다. 다만 시 전체에서 숫자가 다른 곳에 등장하지 않으므로, 13의 반복은 우연으로 보기 어렵다고 사료됩니다.", meaning: "That possibility cannot be excluded. However, since no other number appears elsewhere in the poem, the recurrence of 13 seems hard to dismiss as coincidence.", vi: "Khả năng đó không thể loại trừ. Tuy nhiên, vì không có con số nào khác xuất hiện ở chỗ khác trong bài, sự lặp của 13 khó coi là ngẫu nhiên." },
+      { speaker: "B", hangul: "정독은 텍스트의 모든 작은 신호를 의미 있는 것으로 다루되, 동시에 과잉 해석을 경계해야 합니다.", meaning: "Close reading treats every small signal as meaningful, yet must guard against overinterpretation.", vi: "Đọc kỹ coi mọi tín hiệu nhỏ trong văn bản là có nghĩa, đồng thời phải cảnh giác với diễn giải thái quá." },
+      { speaker: "A", hangul: "명심하겠습니다. 다음 발표에서는 통사 구조를 분석하겠습니다.", meaning: "I will bear that in mind. In the next presentation I will analyze syntactic structure.", vi: "Em ghi nhớ. Buổi tới tôi sẽ phân tích cấu trúc cú pháp." },
+    ],
+    roleplay_prompts: [
+      "Bạn đang viết close reading 1 paragraph từ 박완서 「엄마의 말뚝」. Diễn tập câu chọn 1 단어 (single word) làm trọng tâm + giải thích vì sao word đó đáng phân tích sâu (어휘 선택, 위치, 반복, 모순). Bằng 문어체. Tránh generic 'word is important' — show specific textual mechanism.",
+      "Trong 비평 세미나, đồng nghiệp criticize close reading của bạn là 'over-interpretation'. Diễn tập câu defend bằng 하십시오체: '과잉 해석의 위험은 인정하나, 본 분석은 텍스트 내부 증거에 한정하였습니다.' Cấu trúc: acknowledge concern + delineate boundary + cite specific evidence.",
+      "지도교수 yêu cầu phân biệt close reading vs distant reading. Diễn tập câu trả lời 30 giây — define each concept + when each is appropriate (close reading cho 미시 / distant reading cho corpus-level patterns).",
+    ],
+    register_notes:
+      "C2 비평문체 (literary critical writing): 문어체 강한 형태 — '~다' / '~는다' / '~기에' / '~으로써'. Lexicon C2: 정독, 미시적/거시적, 함축, 모순, 텍스트 내부/외부, 어휘 선택, 통사 구조 (syntactic structure). Critical move trong analysis: KHÔNG chỉ describe textual feature, MÀ show how feature produces meaning. Phrase vàng: '~로 읽힌다' (reads as), '~로 사료된다' (is judged), '~을 강요한다' (imposes), '~을 표면화한다' (surfaces). Hedging C2: '과잉 해석을 경계해야 한다' (must guard against overinterpretation), '~의 가능성을 배제할 수 없다' (cannot exclude the possibility). KHÔNG '내가 보기에' / '제 의견은' — 학술 비평 impersonal: '본 분석은', '본 정독은'. Khi attribute tradition: '김현 이후의 한국 비평 전통' — phrase canonical without direct quotation.",
+    idiom_glosses: [
+      { idiom: "행간을 읽다", literal: "đọc giữa các dòng", meaning: "đọc giữa dòng / đọc nghĩa hàm chứa (격식/문어 — classical critical idiom)", example: "비평가는 행간을 읽어 작가의 의도를 추적한다." },
+      { idiom: "결을 살피다", literal: "xem kỹ đường vân/sớ", meaning: "khảo sát kết cấu văn bản / đọc texture (격식/문어 — refined critical idiom)", example: "정독은 텍스트의 결을 살피는 작업이다." },
+      { idiom: "단어가 무게를 지니다", literal: "từ ngữ mang trọng lượng", meaning: "từng từ có sức nặng nghĩa (격식/문어 — emphasis on word density)", example: "이상의 시는 단어 하나하나가 무게를 지닌다." },
+      { idiom: "과잉 해석을 경계하다", literal: "cảnh giác với diễn giải thái quá", meaning: "thận trọng tránh đọc thêm thắt (격식/문어 — methodological discipline)", example: "정독은 정밀하되 과잉 해석을 경계해야 한다." },
+    ],
+    cultural_notes_vi:
+      "Korean literary critical tradition về close reading: (1) Pre-1960s — biographical / historical criticism dominant; (2) 1960s — 김현, 김치수, 김주연 등 '문학과지성' coterie introduces French structuralism + close reading discipline. 김현 (1942-1990) đặc biệt nhấn mạnh 정독 như nền tảng của mọi phê bình; (3) 1980s — 백낙청 / '창작과비평' coterie balance close reading với historical context (민족문학론); (4) 1990s-2000s — 황종연, 신형철 thế hệ tiếp tục close-reading tradition cập nhật theory; (5) Truyền thống Hàn coi balance là chuẩn — pure formalist close reading bị coi escapist; pure historicist bị coi reductionist; (6) Texts thường được dùng trong close reading exercises ở 국문학과: 이상 (modernism), 김동인 (naturalism), 염상섭 (realism), 박경리 (대하소설), 한강 (contemporary noir-poetic); (7) Đối với người Việt: close reading Korean text khó vì 한자어 + modernism syntax disruption + classical references. Strategy: read aloud first (phát hiện sound patterns), tra mọi từ không chắc, đánh dấu recurring images.",
+    tip_advice_vi:
+      "Close reading 5-step framework: (1) READ ALOUD trước — sound patterns, rhythm hiện ra; (2) MARK repetitions — words, images, syntactic patterns lặp lại; (3) NOTE oddities — bất thường về word choice, syntax disruption, broken expectations; (4) ASK 'why this word and not another' — substitution test reveals what each choice does; (5) BUILD interpretation từ accumulated noticings — KHÔNG từ pre-existing thesis. C2 best practices: phân biệt rõ (a) 텍스트 내부 evidence vs (b) 텍스트 외부 (biographical/historical) evidence — be transparent about which you use. Practice với short texts (시 / 단편) trước khi tackle 대하소설. Reference works: 김현 「한국 문학의 위상」 (basics), 황종연 「내향적 인간의 동성애」 (advanced). Sai lầm thường gặp: (a) Reading thesis INTO text — close reading must be inductive; (b) Ignoring sound — Korean poetry rich phonological texture; (c) Overconfidence — '~로 사료된다' / '~로 읽힌다' hedging cần thiết.",
+    exercises: [
+      { type: "fill-blank", question: "정독은 텍스트의 어휘 선택과 문장 구조를 ___으로 분석하는 데서 출발한다.", answer: "미시적" },
+      {
+        type: "matching",
+        pairs: [
+          { hangul: "행간을 읽다", meaning: "đọc nghĩa hàm chứa giữa dòng" },
+          { hangul: "결을 살피다", meaning: "khảo sát kết cấu văn bản" },
+          { hangul: "단어가 무게를 지니다", meaning: "từng từ có sức nặng" },
+          { hangul: "과잉 해석을 경계하다", meaning: "thận trọng tránh diễn giải thái quá" },
+        ],
+        instruction: "Nối thành ngữ phê bình với nghĩa",
+      },
+      { type: "translation", vietnamese: "Mâu thuẫn ngoài ý đồ tác giả không hiếm khi hé lộ vô thức của văn bản.", hangul: "작가가 의도하지 않은 모순이 텍스트의 무의식을 드러내는 경우가 적지 않다." },
+    ],
+  },
+
+  // 103. Narrative voice
+  {
+    id: 103,
+    level: "C2",
+    title_vi: "Tiếng nói tự sự (서술자의 목소리)",
+    title_en: "Narrative voice",
+    intro_vi:
+      "서술자 (narrator) — chủ đề trung tâm của tự sự học (narratology). C2 đòi hỏi phân biệt 시점 (POV: 1인칭 / 3인칭 전지적 / 3인칭 제한적), 자유간접화법 (FID), 신뢰할 수 없는 화자 (unreliable narrator), 거리 (distance) và 어조 (tone). Phân tích narrative voice không dừng ở 'narrator là ai' mà chuyển sang 'voice tạo nghĩa thế nào'.",
+    vocabulary: [
+      { hangul: "서술자 (敍述者)", meaning: "người kể chuyện / narrator" },
+      { hangul: "시점 (視點)", meaning: "điểm nhìn / point of view" },
+      { hangul: "1인칭 (一人稱)", meaning: "ngôi thứ nhất" },
+      { hangul: "3인칭 전지적 (全知的)", meaning: "ngôi thứ ba toàn tri / third-person omniscient" },
+      { hangul: "3인칭 제한적 (制限的)", meaning: "ngôi thứ ba hạn định" },
+      { hangul: "자유간접화법 (自由間接話法)", meaning: "diễn ngôn gián tiếp tự do / free indirect discourse" },
+      { hangul: "신뢰할 수 없는 화자", meaning: "người kể không đáng tin / unreliable narrator" },
+      { hangul: "거리 (距離)", meaning: "khoảng cách tự sự / narrative distance" },
+      { hangul: "어조 (語調)", meaning: "âm điệu / tone" },
+      { hangul: "초점화 (焦點化)", meaning: "tiêu điểm hóa / focalization (Genette)" },
+    ],
+    sentences: [
+      { korean: "서술자의 시점은 독자가 사건을 보는 각도를 결정한다.", romanized: "Seosulja-ui sijeomeun dokjaga sageoneul boneun gakdoreul gyeoljeong-handa.", en: "The narrator's POV determines the angle from which the reader sees events.", vi: "Điểm nhìn của người kể quyết định góc độ độc giả nhìn sự kiện." },
+      { korean: "자유간접화법은 서술자의 목소리와 인물의 의식을 동시에 전달하는 기법이다.", romanized: "Jayugan-jeop-hwabeobeun seosulja-ui moksoriwa inmurui uisigeul dongsi-e jeondal-haneun gibeob-ida.", en: "Free indirect discourse is the technique of conveying the narrator's voice and the character's consciousness simultaneously.", vi: "Diễn ngôn gián tiếp tự do là kỹ thuật truyền tải đồng thời tiếng nói người kể và ý thức nhân vật." },
+      { korean: "신뢰할 수 없는 화자를 채택할 경우, 독자는 서술의 표면을 의심하면서 읽게 된다.", romanized: "Sinloe-hal su eomneun hwajareul chaetaek-hal gyeong-u, dokjaneun seosur-ui pyomyeoneul uisim-hamyeonseo ilkge doenda.", en: "When an unreliable narrator is adopted, the reader reads while doubting the surface of the narration.", vi: "Khi chọn người kể không đáng tin, độc giả đọc trong khi nghi ngờ bề mặt tự sự." },
+      { korean: "김동인의 「감자」는 객관적 거리를 유지하는 3인칭 서술의 모범으로 평가된다.", romanized: "Gimdongin-ui Gamjaneun gaekgwanjeok georireul yuji-haneun 3-incheong seosur-ui mobeom-euro pyeongga-doenda.", en: "Kim Dong-in's 'Gamja' is assessed as a model of third-person narration that maintains objective distance.", vi: "「Gamja」 của Kim Dong-in được đánh giá là mẫu mực tự sự ngôi thứ ba duy trì khoảng cách khách quan." },
+      { korean: "박완서의 1인칭 회고체는 거리와 친밀함이 동시에 작동하는 복잡한 어조를 만든다.", romanized: "Bakwanseo-ui 1-incheong hoego-cheneun georiwa chinmilhami dongsi-e jakdong-haneun bokjap-han eojo-reul mandeunda.", en: "Park Wan-suh's first-person retrospective register produces a complex tone in which distance and intimacy operate simultaneously.", vi: "Văn hồi cố ngôi thứ nhất của Park Wan-suh tạo ra âm điệu phức tạp nơi khoảng cách và sự thân thuộc cùng vận hành." },
+    ],
+    dialogue: [
+      { speaker: "A", hangul: "1인칭과 3인칭 중 어느 시점이 본 분석에 더 적절합니까?", meaning: "Between first and third person, which POV better suits this analysis?" },
+      { speaker: "B", hangul: "사건 자체보다 인물의 내면이 중요하다면 1인칭이 유리합니다.", meaning: "If character interiority matters more than the events themselves, first person is advantageous." },
+      { speaker: "A", hangul: "다만 1인칭은 서술자 신뢰도 문제가 따라옵니다.", meaning: "However, first person carries the narrator-reliability problem." },
+      { speaker: "B", hangul: "그것을 한계로 명시하는 것이 비평의 정직성입니다.", meaning: "Acknowledging that as a limitation is the honesty of criticism." },
+    ],
+    dialogue_long: [
+      { speaker: "A", hangul: "안녕하십니까. 박완서의 「엄마의 말뚝」 1편의 서술자 분석을 발표하겠습니다.", meaning: "Hello. I will present an analysis of the narrator in Park Wan-suh's 'Mother's Stake', Part 1.", vi: "Xin chào quý vị. Tôi sẽ trình bày phân tích người kể trong 「Mẹ tôi và cây cọc」 phần 1 của Park Wan-suh." },
+      { speaker: "B", hangul: "우선 시점부터 말씀해 주시지요.", meaning: "Begin with the POV.", vi: "Trước tiên xin nói về điểm nhìn." },
+      { speaker: "A", hangul: "1인칭 회고체로, 성인이 된 화자가 어린 시절을 되돌아보는 구조입니다.", meaning: "First-person retrospective: the adult narrator looks back at childhood.", vi: "Ngôi thứ nhất hồi cố: người kể đã trưởng thành nhìn về tuổi thơ." },
+      { speaker: "B", hangul: "회고체에서 두 시간층 — 회상하는 현재와 회상되는 과거 — 이 어떻게 구별됩니까?", meaning: "In retrospective writing, how are the two temporal layers — the recalling present and the recalled past — distinguished?", vi: "Trong văn hồi cố, hai tầng thời gian — hiện tại đang nhớ và quá khứ được nhớ — phân biệt thế nào?" },
+      { speaker: "A", hangul: "동사의 시제 외에도 어휘 선택에서 차이가 납니다. 어린 시절 의식의 묘사에서는 작가가 의도적으로 어린이의 어휘를 사용합니다.", meaning: "Beyond verb tense, vocabulary differs. In depicting childhood consciousness, the author deliberately uses children's vocabulary.", vi: "Ngoài thì động từ, lựa chọn từ ngữ cũng khác. Khi miêu tả ý thức tuổi thơ, tác giả chủ ý dùng từ vựng của trẻ con." },
+      { speaker: "B", hangul: "그것이 자유간접화법의 효과와 어떻게 다릅니까?", meaning: "How does that differ from the effect of free indirect discourse?", vi: "Hiệu ứng đó khác diễn ngôn gián tiếp tự do thế nào?" },
+      { speaker: "A", hangul: "자유간접화법은 서술자와 인물 의식의 경계가 모호한 데 비해, 박완서의 회고체는 두 의식 사이의 거리를 명시적으로 표시합니다.", meaning: "Whereas FID has an ambiguous boundary between narrator and character consciousness, Park's retrospective register explicitly marks the distance between the two consciousnesses.", vi: "Trong khi FID có biên giới mờ giữa ý thức người kể và ý thức nhân vật, văn hồi cố của Park đánh dấu khoảng cách giữa hai ý thức một cách hiển ngôn." },
+      { speaker: "B", hangul: "신뢰성 문제는 어떻습니까? 회고하는 화자는 항상 신뢰할 수 있는가?", meaning: "What about reliability? Is a recalling narrator always trustworthy?", vi: "Vấn đề độ tin cậy thì sao? Người kể hồi cố có luôn đáng tin?" },
+      { speaker: "A", hangul: "그 점이 핵심입니다. 회고체 1인칭은 표면적으로는 신뢰적으로 보이지만, 회상의 선택과 누락에서 비신뢰성이 드러납니다.", meaning: "That is the crux. First-person retrospection appears trustworthy on the surface, but unreliability emerges in the selection and omission of memories.", vi: "Đó là điểm cốt lõi. Văn hồi cố ngôi thứ nhất bề mặt có vẻ đáng tin, nhưng sự bất tín hiện ra trong việc chọn lọc và bỏ sót ký ức." },
+      { speaker: "B", hangul: "본 작품에서 그 비신뢰성이 어디서 드러납니까?", meaning: "Where does that unreliability surface in this work?", vi: "Trong tác phẩm này sự bất tín đó hiện ở đâu?" },
+      { speaker: "A", hangul: "어머니에 대한 평가가 일관되지 않습니다. 같은 행위에 대해 서로 다른 시점의 평가가 충돌하는 부분이 세 군데 있습니다.", meaning: "Evaluations of the mother are inconsistent. There are three places where different temporal evaluations of the same action conflict.", vi: "Đánh giá về người mẹ không nhất quán. Có ba chỗ trong đó các đánh giá ở thời điểm khác nhau về cùng một hành động xung đột với nhau." },
+      { speaker: "B", hangul: "그 충돌이 의도적이라고 보십니까, 아니면 작가의 미세한 모순입니까?", meaning: "Do you see the conflict as intentional, or as a minor contradiction in the author?", vi: "Anh/chị thấy sự xung đột đó là cố ý hay là mâu thuẫn nhỏ của tác giả?" },
+      { speaker: "A", hangul: "의도적이라고 봅니다. 박완서의 다른 회고작에서도 동일한 패턴이 반복되기 때문입니다.", meaning: "I see it as intentional, because the same pattern recurs in Park's other retrospective works.", vi: "Tôi cho là cố ý, vì cùng mẫu hình đó lặp lại trong các tác phẩm hồi cố khác của Park." },
+      { speaker: "B", hangul: "어조는 어떻게 분석하셨습니까?", meaning: "How did you analyze tone?", vi: "Anh/chị phân tích âm điệu thế nào?" },
+      { speaker: "A", hangul: "회고체이지만 향수에 빠지지 않는, 약간의 아이러니가 섞인 어조입니다. 거리와 친밀함이 동시에 작동합니다.", meaning: "Retrospective yet not nostalgic — a tone tinged with slight irony. Distance and intimacy operate simultaneously.", vi: "Hồi cố nhưng không sa vào hoài niệm — âm điệu pha chút mỉa mai nhẹ. Khoảng cách và sự thân thuộc cùng vận hành." },
+      { speaker: "B", hangul: "다만 어조 분석은 주관성이 강한 영역이니 텍스트 증거를 더 풍부하게 제시하시지요.", meaning: "However, tone analysis is a strongly subjective domain — present richer textual evidence.", vi: "Tuy nhiên phân tích âm điệu là vùng tính chủ quan cao — anh/chị nên trình bày thêm chứng cứ văn bản phong phú." },
+      { speaker: "A", hangul: "알겠습니다. 시점은 형식 분석의 출발점일 뿐 — 시점이 의미를 어떻게 생산하는지가 비평의 핵심임을 명심하겠습니다.", meaning: "Understood. POV is only the starting point of formal analysis — I will bear in mind that how POV produces meaning is the core of criticism.", vi: "Em hiểu. Điểm nhìn chỉ là điểm xuất phát của phân tích hình thức — em ghi nhớ trọng tâm phê bình là cách điểm nhìn sản sinh nghĩa." },
+    ],
+    roleplay_prompts: [
+      "Diễn tập câu phân biệt giữa narrator's voice và character's consciousness trong 자유간접화법. Bằng 하십시오체. Cho 1 example từ Korean text bạn biết (박완서 / 한강 / 김애란 đều có FID rõ rệt). Cấu trúc: define FID + show boundary case + explain ambiguity effect.",
+      "Reviewer phê bình 'phần 시점 phân tích chỉ describe, chưa interpret'. Diễn tập câu refocus: '시점은 형식이 아니라 의미 생산 메커니즘이라는 관점에서 다시 분석하겠습니다.' Bằng 하십시오체.",
+      "Sinh viên hỏi vì sao narrative voice quan trọng. Diễn tập câu giải thích 30 giây — voice = ai nói = ai thấy = ai biết = ý thức hệ. Tránh jargon overload — khái niệm phải accessible.",
+    ],
+    register_notes:
+      "서술자 분석 register: 문어체. Lexicon C2: 시점 (POV), 1인칭/3인칭 전지적/제한적, 자유간접화법 (FID), 초점화 (focalization, Genette term), 신뢰할 수 없는 화자 (unreliable narrator), 거리 (narrative distance). Critical move trong analysis: KHÔNG describe POV, MÀ show how POV produces meaning. Phrase vàng: '~로 분석된다', '~로 읽힌다', '~을 표면화한다' (surfaces). KHÔNG '~다고 생각해요' — 학술 비평 impersonal: '본 분석은', '본 정독은'. Hedging C2: '~로 사료된다' (judged), '~로 해석할 수 있다' (can be interpreted as), '주관성이 강한 영역' (strongly subjective domain — for self-acknowledged interpretive moves). Khi attribute reading: '본 분석은 ~ 한다'. Khi đề cập canonical position: 'X 이후의 한국 비평 전통' / '~로 평가된다' (passive academic).",
+    idiom_glosses: [
+      { idiom: "행간에 의미를 두다", literal: "đặt nghĩa vào giữa dòng", meaning: "đặt ý nghĩa giữa các dòng / hide meaning in subtext (격식/문어)", example: "박완서는 행간에 의미를 두는 작가이다." },
+      { idiom: "두 의식을 겹치다", literal: "chồng hai ý thức", meaning: "lồng ghép hai ý thức (FID effect, 격식/문어)", example: "자유간접화법은 두 의식을 겹치는 기법이다." },
+      { idiom: "거리를 조절하다", literal: "điều chỉnh khoảng cách", meaning: "điều chỉnh khoảng cách tự sự (격식/문어)", example: "1인칭 회고체는 거리를 정교하게 조절한다." },
+      { idiom: "어조에 묻어 있다", literal: "ngấm trong âm điệu", meaning: "ẩn trong tone (격식/문어 — atmospheric idiom)", example: "작가의 비판은 어조에 묻어 있다." },
+    ],
+    cultural_notes_vi:
+      "Korean narrative voice tradition: (1) Classical 판소리 narration — omniscient narrator with shifting voices; (2) Late 19c — 신소설 introduces realist 3rd person; (3) 1920s — 김동인 「감자」 (1925) establishes naturalist 3rd-person limited; 이광수 「무정」 (1917) oscillates between omniscient và sentimental; (4) 1930s — 이상 introduces modernist FID, fragmented narration; 염상섭 sustains realist 3rd-person omniscient ('삼대'); (5) Post-war — 1인칭 회고체 dominant trong 박완서, 박경리, 김원일 (war memoirs); (6) Contemporary — 한강 ('소년이 온다') alternates 2인칭 직접 호명 với detached 3인칭; 김애란 1인칭 generation-defining voice; 정유정 thriller 3인칭 제한적 dominant. (7) 자유간접화법 less common in classical Korean literature than European modernism, but mature in 박완서 / 한강 / 김애란. (8) 신뢰할 수 없는 화자 — 정유정 「7년의 밤」 famous example.",
+    tip_advice_vi:
+      "Narrative voice analysis 4-step: (1) IDENTIFY POV explicitly — 1인칭/3인칭, omniscient/limited/objective; (2) MAP voice ranges — does narrator stay close to one character (focalization)? Does voice shift? (3) EVALUATE distance — temporal (회고 vs 동시), psychological (sympathetic vs ironic), epistemological (knows more or less than character); (4) INTERPRET ideological function — what does this voice make visible/invisible, who has authority, whose perspective is centered. C2 traps to avoid: (a) Treating voice as neutral container — voice always ideological; (b) Ignoring narrator's silences — what narrator DOESN'T say is also voice; (c) Confusing author with narrator — even 1인칭 회고체 is constructed. Reference Korean critical works: 김현 「한국 문학의 위상」 (basic), 황종연 「내향적 인간의 동성애」 (advanced), 신형철 「몰락의 에티카」 (modernist tradition).",
+    exercises: [
+      { type: "fill-blank", question: "자유간접화법은 서술자의 ___와 인물의 의식을 동시에 전달하는 기법이다.", answer: "목소리" },
+      {
+        type: "matching",
+        pairs: [
+          { hangul: "행간에 의미를 두다", meaning: "đặt nghĩa giữa dòng / subtext" },
+          { hangul: "두 의식을 겹치다", meaning: "lồng ghép hai ý thức (FID)" },
+          { hangul: "거리를 조절하다", meaning: "điều chỉnh khoảng cách tự sự" },
+          { hangul: "어조에 묻어 있다", meaning: "ẩn trong âm điệu" },
+        ],
+        instruction: "Nối thành ngữ phê bình với nghĩa",
+      },
+      { type: "translation", vietnamese: "Văn hồi cố ngôi thứ nhất của Park Wan-suh tạo ra âm điệu phức tạp nơi khoảng cách và sự thân thuộc cùng vận hành.", hangul: "박완서의 1인칭 회고체는 거리와 친밀함이 동시에 작동하는 복잡한 어조를 만든다." },
+    ],
+  },
 ];
