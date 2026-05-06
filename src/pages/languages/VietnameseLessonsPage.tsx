@@ -25,6 +25,9 @@ export default function VietnameseLessonsPage() {
     (sum, lesson) => sum + lesson.phrases.length,
     0,
   );
+  const dialogueCount = VIETNAMESE_LESSONS.filter(
+    (lesson) => lesson.dialogue && lesson.dialogue.length > 0,
+  ).length;
 
   const grouped = VIETNAMESE_LEVELS.map((level) => ({
     level,
@@ -53,7 +56,8 @@ export default function VietnameseLessonsPage() {
           {HERO_SUBTITLE}
         </p>
         <p className="mt-2 text-sm font-bold" style={{ color: theme.accent }}>
-          {VIETNAMESE_LESSONS.length} lessons · {phraseCount} phrases
+          {VIETNAMESE_LESSONS.length} lessons · {phraseCount} phrases ·{" "}
+          {dialogueCount} dialogues
         </p>
         <p className="mt-3 text-xs text-slate-500">
           <Link

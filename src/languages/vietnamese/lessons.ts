@@ -12,6 +12,13 @@ export type VietnamesePhrase = {
   context: string;
 };
 
+export type VietnameseDialogueLine = {
+  speaker: string;
+  vietnamese: string;
+  english: string;
+  pronunciation: string;
+};
+
 export type VietnameseLesson = {
   id: number;
   level: VietnameseCefrLevel;
@@ -19,6 +26,7 @@ export type VietnameseLesson = {
   subtitle: string;
   intro: string;
   phrases: VietnamesePhrase[];
+  dialogue?: VietnameseDialogueLine[];
   cultural_note: string;
   tip: string;
 };
@@ -1249,5 +1257,485 @@ export const VIETNAMESE_LESSONS: VietnameseLesson[] = [
       "Asking for repetition is normal. Short clarification phrases keep the conversation comfortable.",
     tip:
       "Use tôi hiểu một chút to signal effort and keep the other person patient.",
+  },
+  {
+    id: 26,
+    level: "A1",
+    title_en: "Roleplay: Ordering Coffee",
+    subtitle: "Practice a simple cafe order.",
+    intro:
+      "Practice this before ordering a drink at a local cafe.",
+    phrases: [],
+    dialogue: [
+      {
+        speaker: "A",
+        vietnamese: "Cho tôi một cà phê sữa đá.",
+        english: "One iced milk coffee, please.",
+        pronunciation: "chaw toy moht cafe sua da",
+      },
+      {
+        speaker: "B",
+        vietnamese: "Có đá không?",
+        english: "With ice?",
+        pronunciation: "caw da khome",
+      },
+      {
+        speaker: "A",
+        vietnamese: "Có, ít đá thôi.",
+        english: "Yes, just a little ice.",
+        pronunciation: "caw, eet da toy",
+      },
+      {
+        speaker: "B",
+        vietnamese: "Dạ, ngồi đây hay mang đi?",
+        english: "Okay, for here or take away?",
+        pronunciation: "yah, ngoy day hai mang dee",
+      },
+      {
+        speaker: "A",
+        vietnamese: "Ngồi đây.",
+        english: "For here.",
+        pronunciation: "ngoy day",
+      },
+    ],
+    cultural_note:
+      "Cafe orders are often short. Staff may ask about ice, sugar, or take away.",
+    tip:
+      "Pointing at the menu while saying the first line is completely normal.",
+  },
+  {
+    id: 27,
+    level: "A1",
+    title_en: "Roleplay: Ordering Street Food",
+    subtitle: "Order a simple bowl or plate.",
+    intro:
+      "Practice this at a street stall or casual local restaurant.",
+    phrases: [],
+    dialogue: [
+      {
+        speaker: "A",
+        vietnamese: "Cho tôi một tô phở bò.",
+        english: "One bowl of beef pho, please.",
+        pronunciation: "chaw toy moht toh fuh baw",
+      },
+      {
+        speaker: "B",
+        vietnamese: "Ăn ở đây hay mang đi?",
+        english: "Eat here or take away?",
+        pronunciation: "an uh day hai mang dee",
+      },
+      {
+        speaker: "A",
+        vietnamese: "Ăn ở đây.",
+        english: "Eat here.",
+        pronunciation: "an uh day",
+      },
+      {
+        speaker: "B",
+        vietnamese: "Có cay không?",
+        english: "Do you want it spicy?",
+        pronunciation: "caw kai khome",
+      },
+      {
+        speaker: "A",
+        vietnamese: "Không cay, làm ơn.",
+        english: "Not spicy, please.",
+        pronunciation: "khome kai, lam uhn",
+      },
+      {
+        speaker: "B",
+        vietnamese: "Dạ, chờ chút nhé.",
+        english: "Okay, please wait a moment.",
+        pronunciation: "yah, chuh chut nyeh",
+      },
+    ],
+    cultural_note:
+      "Street food conversations move quickly, but the same simple answers repeat often.",
+    tip:
+      "If you are unsure, say không cay early and point to the dish you want.",
+  },
+  {
+    id: 28,
+    level: "A1",
+    title_en: "Roleplay: Asking A Taxi Or Grab Driver",
+    subtitle: "Confirm the ride and destination.",
+    intro:
+      "Practice this before getting into a taxi or Grab car.",
+    phrases: [],
+    dialogue: [
+      {
+        speaker: "A",
+        vietnamese: "Đúng xe này không?",
+        english: "Is this the right car?",
+        pronunciation: "doong seh nai khome",
+      },
+      {
+        speaker: "B",
+        vietnamese: "Đúng rồi. Bạn đi đâu?",
+        english: "Yes. Where are you going?",
+        pronunciation: "doong roy. ban dee dow",
+      },
+      {
+        speaker: "A",
+        vietnamese: "Cho tôi đến địa chỉ này.",
+        english: "Please take me to this address.",
+        pronunciation: "chaw toy den dee-ah chee nai",
+      },
+      {
+        speaker: "B",
+        vietnamese: "Bạn trả bằng tiền mặt hay thẻ?",
+        english: "Will you pay cash or by card?",
+        pronunciation: "ban cha bang teen mat hai teh",
+      },
+      {
+        speaker: "A",
+        vietnamese: "Tôi trả bằng tiền mặt.",
+        english: "I will pay cash.",
+        pronunciation: "toy cha bang teen mat",
+      },
+    ],
+    cultural_note:
+      "Confirming the car and destination is useful at busy pickup spots.",
+    tip:
+      "Show the address on your phone while saying cho tôi đến địa chỉ này.",
+  },
+  {
+    id: 29,
+    level: "A1",
+    title_en: "Roleplay: Asking Directions",
+    subtitle: "Ask a local for a nearby place.",
+    intro:
+      "Practice this when you need help finding a bank, restroom, cafe, or address.",
+    phrases: [],
+    dialogue: [
+      {
+        speaker: "A",
+        vietnamese: "Xin lỗi, nhà vệ sinh ở đâu?",
+        english: "Excuse me, where is the bathroom?",
+        pronunciation: "seen loy, nha veh sing uh dow",
+      },
+      {
+        speaker: "B",
+        vietnamese: "Đi thẳng rồi rẽ trái.",
+        english: "Go straight, then turn left.",
+        pronunciation: "dee thang roy zeh chai",
+      },
+      {
+        speaker: "A",
+        vietnamese: "Xa không?",
+        english: "Is it far?",
+        pronunciation: "sa khome",
+      },
+      {
+        speaker: "B",
+        vietnamese: "Không xa, gần đây thôi.",
+        english: "Not far, just nearby.",
+        pronunciation: "khome sa, gan day toy",
+      },
+      {
+        speaker: "A",
+        vietnamese: "Cảm ơn bạn.",
+        english: "Thank you.",
+        pronunciation: "gahm uhn ban",
+      },
+    ],
+    cultural_note:
+      "People may answer with gestures, so watch where they point.",
+    tip:
+      "Repeat đi thẳng and rẽ trái aloud so you remember the direction.",
+  },
+  {
+    id: 30,
+    level: "A1",
+    title_en: "Roleplay: Shopping At A Market",
+    subtitle: "Ask the price and buy one item.",
+    intro:
+      "Practice this for markets, fruit stalls, and small shops.",
+    phrases: [],
+    dialogue: [
+      {
+        speaker: "A",
+        vietnamese: "Cái này bao nhiêu tiền?",
+        english: "How much is this?",
+        pronunciation: "kai nai bao nyew teen",
+      },
+      {
+        speaker: "B",
+        vietnamese: "Năm mươi nghìn.",
+        english: "Fifty thousand.",
+        pronunciation: "nam moo-ee ngeen",
+      },
+      {
+        speaker: "A",
+        vietnamese: "Mắc quá. Bớt được không?",
+        english: "Too expensive. Can you lower the price?",
+        pronunciation: "mak gwa. buht duoc khome",
+      },
+      {
+        speaker: "B",
+        vietnamese: "Bốn mươi nghìn được không?",
+        english: "Is forty thousand okay?",
+        pronunciation: "bon moo-ee ngeen duoc khome",
+      },
+      {
+        speaker: "A",
+        vietnamese: "Được, tôi lấy cái này.",
+        english: "Okay, I will take this one.",
+        pronunciation: "duoc, toy lay kai nai",
+      },
+    ],
+    cultural_note:
+      "Bargaining can be friendly in markets, but prices are fixed in supermarkets and malls.",
+    tip:
+      "Use a calculator or phone screen if numbers are hard to hear.",
+  },
+  {
+    id: 31,
+    level: "A1",
+    title_en: "Roleplay: Meeting A New Vietnamese Friend",
+    subtitle: "Start a warm first conversation.",
+    intro:
+      "Practice this when meeting a friend of a friend, classmate, or neighbor.",
+    phrases: [],
+    dialogue: [
+      {
+        speaker: "A",
+        vietnamese: "Xin chào, tôi tên là Alex.",
+        english: "Hello, my name is Alex.",
+        pronunciation: "seen chow, toy ten la Alex",
+      },
+      {
+        speaker: "B",
+        vietnamese: "Chào Alex, rất vui gặp bạn.",
+        english: "Hi Alex, nice to meet you.",
+        pronunciation: "chow Alex, zut vui gap ban",
+      },
+      {
+        speaker: "A",
+        vietnamese: "Bạn quê ở đâu?",
+        english: "Where is your hometown?",
+        pronunciation: "ban kway uh dow",
+      },
+      {
+        speaker: "B",
+        vietnamese: "Tôi quê ở Đà Nẵng. Còn bạn?",
+        english: "I am from Da Nang. And you?",
+        pronunciation: "toy kway uh da nang. con ban",
+      },
+      {
+        speaker: "A",
+        vietnamese: "Tôi đến từ Canada.",
+        english: "I am from Canada.",
+        pronunciation: "toy den tu Canada",
+      },
+      {
+        speaker: "B",
+        vietnamese: "Bạn nói tiếng Việt tốt đó.",
+        english: "You speak Vietnamese well.",
+        pronunciation: "ban noy tee-eng vyet tote daw",
+      },
+    ],
+    cultural_note:
+      "Hometown questions are a normal friendly way to begin a conversation.",
+    tip:
+      "Prepare your country name and one simple follow-up question.",
+  },
+  {
+    id: 32,
+    level: "A1",
+    title_en: "Roleplay: Landlord And Apartment Issue",
+    subtitle: "Report a basic home problem.",
+    intro:
+      "Practice this when messaging or speaking to a landlord, guard, or building staff.",
+    phrases: [],
+    dialogue: [
+      {
+        speaker: "A",
+        vietnamese: "Xin lỗi, máy lạnh bị hỏng.",
+        english: "Sorry, the air conditioner is broken.",
+        pronunciation: "seen loy, may lanh bee hong",
+      },
+      {
+        speaker: "B",
+        vietnamese: "Bị hỏng từ khi nào?",
+        english: "Since when has it been broken?",
+        pronunciation: "bee hong tu khi nao",
+      },
+      {
+        speaker: "A",
+        vietnamese: "Từ tối qua.",
+        english: "Since last night.",
+        pronunciation: "tu toy gwa",
+      },
+      {
+        speaker: "B",
+        vietnamese: "Tôi gọi người sửa nhé.",
+        english: "I will call a repair person.",
+        pronunciation: "toy goi nguoi sua nyeh",
+      },
+      {
+        speaker: "A",
+        vietnamese: "Cảm ơn. Khi nào họ đến?",
+        english: "Thank you. When will they come?",
+        pronunciation: "gahm uhn. khi nao haw den",
+      },
+    ],
+    cultural_note:
+      "A photo or short video can make apartment problems easier to explain.",
+    tip:
+      "Use the first line with a photo when messaging your landlord.",
+  },
+  {
+    id: 33,
+    level: "A1",
+    title_en: "Roleplay: Asking For Help When Lost",
+    subtitle: "Get help calmly when you cannot find a place.",
+    intro:
+      "Practice this for a mall, neighborhood, station, or unfamiliar street.",
+    phrases: [],
+    dialogue: [
+      {
+        speaker: "A",
+        vietnamese: "Xin lỗi, tôi bị lạc.",
+        english: "Excuse me, I am lost.",
+        pronunciation: "seen loy, toy bee lak",
+      },
+      {
+        speaker: "B",
+        vietnamese: "Bạn muốn đi đâu?",
+        english: "Where do you want to go?",
+        pronunciation: "ban mwon dee dow",
+      },
+      {
+        speaker: "A",
+        vietnamese: "Tôi muốn đến khách sạn này.",
+        english: "I want to go to this hotel.",
+        pronunciation: "toy mwon den khach san nai",
+      },
+      {
+        speaker: "B",
+        vietnamese: "Bạn đi thẳng rồi rẽ phải.",
+        english: "Go straight, then turn right.",
+        pronunciation: "ban dee thang roy zeh fai",
+      },
+      {
+        speaker: "A",
+        vietnamese: "Bạn chỉ trên bản đồ được không?",
+        english: "Can you show me on the map?",
+        pronunciation: "ban chee tren ban do duoc khome",
+      },
+      {
+        speaker: "B",
+        vietnamese: "Được, đây nhé.",
+        english: "Sure, here.",
+        pronunciation: "duoc, day nyeh",
+      },
+    ],
+    cultural_note:
+      "Showing a hotel name, map pin, or address helps people help you faster.",
+    tip:
+      "Keep your destination visible on your phone before asking for help.",
+  },
+  {
+    id: 34,
+    level: "A1",
+    title_en: "Roleplay: Making A Simple Plan",
+    subtitle: "Invite someone and confirm time.",
+    intro:
+      "Practice this when making plans with a friend, classmate, or coworker.",
+    phrases: [],
+    dialogue: [
+      {
+        speaker: "A",
+        vietnamese: "Tối nay bạn rảnh không?",
+        english: "Are you free tonight?",
+        pronunciation: "toy nai ban ranh khome",
+      },
+      {
+        speaker: "B",
+        vietnamese: "Có, bạn muốn làm gì?",
+        english: "Yes, what do you want to do?",
+        pronunciation: "caw, ban mwon lam zee",
+      },
+      {
+        speaker: "A",
+        vietnamese: "Mình đi cà phê nhé?",
+        english: "Let's go get coffee?",
+        pronunciation: "ming dee cafe nyeh",
+      },
+      {
+        speaker: "B",
+        vietnamese: "Được. Mấy giờ gặp nhau?",
+        english: "Okay. What time should we meet?",
+        pronunciation: "duoc. may zuh gap nhau",
+      },
+      {
+        speaker: "A",
+        vietnamese: "Bảy giờ được không?",
+        english: "Is seven o'clock okay?",
+        pronunciation: "bay zuh duoc khome",
+      },
+      {
+        speaker: "B",
+        vietnamese: "Được, hẹn gặp bạn.",
+        english: "Okay, see you.",
+        pronunciation: "duoc, hen gap ban",
+      },
+    ],
+    cultural_note:
+      "Coffee is a common low-pressure plan in Vietnam.",
+    tip:
+      "Use nhé to make invitations sound softer and friendly.",
+  },
+  {
+    id: 35,
+    level: "A1",
+    title_en: "Roleplay: Clinic Or Pharmacy Help",
+    subtitle: "Ask for basic medical help.",
+    intro:
+      "Practice this for a pharmacy, hotel front desk, or basic clinic visit.",
+    phrases: [],
+    dialogue: [
+      {
+        speaker: "A",
+        vietnamese: "Xin lỗi, tôi bị bệnh.",
+        english: "Excuse me, I am sick.",
+        pronunciation: "seen loy, toy bee ben",
+      },
+      {
+        speaker: "B",
+        vietnamese: "Bạn bị gì?",
+        english: "What is wrong?",
+        pronunciation: "ban bee zee",
+      },
+      {
+        speaker: "A",
+        vietnamese: "Tôi đau bụng.",
+        english: "I have a stomachache.",
+        pronunciation: "toy dow boong",
+      },
+      {
+        speaker: "B",
+        vietnamese: "Bạn cần thuốc không?",
+        english: "Do you need medicine?",
+        pronunciation: "ban kan thuoc khome",
+      },
+      {
+        speaker: "A",
+        vietnamese: "Có. Tôi cần thuốc nhẹ.",
+        english: "Yes. I need mild medicine.",
+        pronunciation: "caw. toy kan thuoc nyeh",
+      },
+      {
+        speaker: "B",
+        vietnamese: "Nếu nặng hơn, đi bệnh viện nhé.",
+        english: "If it gets worse, go to the hospital.",
+        pronunciation: "new nang hurn, dee ben vyen nyeh",
+      },
+    ],
+    cultural_note:
+      "For serious symptoms, ask for a hospital or clinic instead of only a pharmacy.",
+    tip:
+      "Keep a translated allergy or medical note on your phone if you need one.",
   },
 ];

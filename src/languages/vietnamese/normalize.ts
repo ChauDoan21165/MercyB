@@ -22,6 +22,12 @@ export function normalizeVietnameseLesson(
       en: phrase.english,
       note: phrase.context,
     })),
+    dialogue: lesson.dialogue?.map((line) => ({
+      speaker: line.speaker,
+      native: line.vietnamese,
+      romanization: line.pronunciation,
+      en: line.english,
+    })),
     culturalNotesVi: lesson.cultural_note,
     tipAdviceVi: lesson.tip,
   };
