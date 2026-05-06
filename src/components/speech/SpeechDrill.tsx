@@ -217,8 +217,8 @@ function wordColor(status: WordStatus): string {
 
 function scoreBandLabel(score: number): { en: string; vi: string } {
   if (score >= 85) return { en: 'Great pronunciation!', vi: 'Phát âm tốt lắm!' };
-  if (score >= 60) return { en: 'Good — a few slips', vi: 'Tạm ổn — còn vài lỗi' };
-  return { en: 'Keep practicing', vi: 'Tiếp tục luyện tập' };
+  if (score >= 60) return { en: 'Good — a few slips', vi: 'Khá ổn — còn vài chỗ cần sửa' };
+  return { en: 'Keep practicing', vi: 'Tiếp tục luyện nhé' };
 }
 
 function failureCopy(reason: string): { en: string; vi: string } {
@@ -232,22 +232,22 @@ function failureCopy(reason: string): { en: string; vi: string } {
     case 'service-not-allowed':
       return {
         en: 'Mic access was blocked. Allow microphone access and try again.',
-        vi: 'Quyền truy cập micro bị chặn. Cho phép micro rồi thử lại.',
+        vi: 'Quyền truy cập micro đang bị chặn. Hãy cho phép dùng micro rồi thử lại.',
       };
     case 'audio-capture':
       return {
         en: "We couldn't reach your microphone. Check that it's plugged in.",
-        vi: 'Chúng tôi không truy cập được micro. Kiểm tra xem đã cắm chưa.',
+        vi: 'Mercy không truy cập được micro. Hãy kiểm tra xem micro đã được cắm hoặc bật chưa.',
       };
     case 'network':
       return {
         en: 'Network problem during recognition. Check your connection.',
-        vi: 'Gặp sự cố mạng khi nhận dạng. Kiểm tra kết nối nhé.',
+        vi: 'Có sự cố mạng khi nhận dạng giọng nói. Kiểm tra kết nối rồi thử lại nhé.',
       };
     default:
       return {
         en: "Something went wrong. Let's try again.",
-        vi: 'Đã có lỗi xảy ra. Hãy thử lại.',
+        vi: 'Có lỗi xảy ra. Hãy thử lại nhé.',
       };
   }
 }
@@ -347,7 +347,7 @@ export function SpeechDrill({
             Pronunciation practice works best in Chrome or Safari on iOS
           </div>
           <div style={{ marginTop: 6, fontSize: 14, color: '#94a3b8' }}>
-            Tính năng phát âm hoạt động tốt nhất trên Chrome hoặc Safari
+            Tính năng luyện phát âm hoạt động tốt nhất trên Chrome hoặc Safari
           </div>
         </div>
       </div>

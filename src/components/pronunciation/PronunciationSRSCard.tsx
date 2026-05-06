@@ -317,7 +317,7 @@ function PhaseBody({
             lineHeight: 1.4,
           }}
         >
-          Đang chấm điểm... / Scoring your pronunciation...
+          Đang chấm điểm… · Scoring your pronunciation…
         </p>
         <style>{`@keyframes mb-srs-spin { to { transform: rotate(360deg); } }`}</style>
       </div>
@@ -338,7 +338,7 @@ function PhaseBody({
             lineHeight: 1.5,
           }}
         >
-          Trình duyệt chưa cho phép micro. Hãy bật quyền micro trong cài đặt
+          Trình duyệt chưa cho phép dùng micro. Hãy bật quyền micro trong cài đặt
           rồi thử lại.
           <br />
           <span style={{ color: "#475569", fontSize: 13 }}>
@@ -372,14 +372,14 @@ function PhaseBody({
             lineHeight: 1.5,
           }}
         >
-          Mercy chưa nghe rõ. Hãy nói lại chậm và rõ hơn.
+          Mercy chưa nghe rõ. Hãy nói lại chậm hơn và rõ hơn.
           <br />
           <span style={{ color: "#475569", fontSize: 13 }}>
             Mercy couldn't hear clearly. Please try again slowly and clearly.
           </span>
           <br />
           <span style={{ color: "#64748b", fontSize: 12 }}>
-            Đưa micro gần hơn và nói hết câu.
+            Đưa micro gần hơn và nói trọn câu.
             <br />
             Move closer to the mic and say the full sentence.
           </span>

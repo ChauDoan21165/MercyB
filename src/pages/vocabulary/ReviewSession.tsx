@@ -140,7 +140,7 @@ export function ReviewSessionView({
     return (
       <div style={pageStyle}>
         <Header />
-        <p style={emptyStyle}>Đang tải hàng đợi… · Loading queue…</p>
+        <p style={emptyStyle}>Đang tải danh sách ôn… · Loading queue…</p>
       </div>
     );
   }
@@ -150,7 +150,7 @@ export function ReviewSessionView({
       <div style={pageStyle}>
         <Header />
         <p style={emptyStyle}>
-          Có lỗi tải hàng đợi.
+          Không tải được danh sách ôn.
           <br />
           <span style={emptyEnStyle}>{error ?? "Failed to load."}</span>
         </p>
@@ -211,7 +211,7 @@ export function ReviewSessionView({
         ) : (
           <>
             <p style={defViStyle} data-testid="definition-vi">
-              {current.definition_vi || "(chưa có nghĩa)"}
+              {current.definition_vi || "(chưa có nghĩa tiếng Việt)"}
             </p>
             {current.definition_en ? (
               <p style={defEnStyle}>{current.definition_en}</p>
@@ -348,7 +348,7 @@ function NextReviewLine({
   if (!iso) {
     return (
       <p style={{ fontSize: 12, color: "rgba(0,0,0,0.55)", marginTop: 8 }}>
-        Bạn chưa có từ nào sắp tới · No upcoming reviews yet.
+        Chưa có từ nào cần ôn sắp tới · No upcoming reviews yet.
       </p>
     );
   }

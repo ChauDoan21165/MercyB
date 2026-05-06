@@ -178,7 +178,7 @@ export function SaveWordPopup({
 
               <div className="space-y-1.5">
                 <Label htmlFor="notebook-notes" className="text-xs">
-                  Ghi chú (optional)
+                  Ghi chú (không bắt buộc)
                 </Label>
                 <Textarea
                   id="notebook-notes"

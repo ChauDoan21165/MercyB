@@ -482,16 +482,16 @@ function GraduationCelebrationCard({
     <section
       style={celebrationStyle}
       role="alert"
-      aria-label={`Bạn đã graduate ${pack.phoneme_ipa}`}
+      aria-label={`Bạn đã hoàn thành mốc ${pack.phoneme_ipa}`}
       data-testid="graduation-celebration"
     >
       <div style={{ fontSize: 22 }}>🎓✨</div>
       <div style={{ flex: 1, minWidth: 0 }}>
         <div style={celebrationTitleStyle}>
-          Bạn đã graduate {pack.phoneme_ipa}!
+          Bạn đã hoàn thành mốc {pack.phoneme_ipa}!
         </div>
         <div style={celebrationSubtitleStyle}>
-          Three drill sessions in a row at {GRADUATION_SCORE_FLOOR}+/100. Ấn tượng đó.
+          Ba phiên luyện liên tiếp đạt {GRADUATION_SCORE_FLOOR}+/100. Rất ấn tượng.
         </div>
       </div>
       <button type="button" onClick={onDismiss} style={secondaryBtnStyle}>
@@ -523,7 +523,7 @@ function UnknownSlugView({
     <div style={pageStyle}>
       <h1 style={titleViStyle}>Không tìm thấy bài luyện · Pack not found</h1>
       <p style={{ fontSize: 13, color: "rgba(0,0,0,0.7)" }}>
-        Slug "{slug}" không khớp với bộ luyện nào.
+        Mã "{slug}" không khớp với bộ luyện nào.
       </p>
       <button type="button" onClick={onBack} style={primaryBtnStyle}>
         Quay lại /progress · Back
