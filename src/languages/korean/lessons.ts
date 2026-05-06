@@ -4902,4 +4902,168 @@ level: "B2",
       { type: "translation", vietnamese: "Như các nghiên cứu trước đã chỉ ra, biến số này không ổn định.", hangul: "선행 연구가 지적한 바와 같이, 이 변수는 안정적이지 않다." },
     ],
   },
+
+  // 94. Arguing & counter-arguing
+  {
+    id: 94,
+    level: "C1",
+    title_vi: "Lập luận & phản biện",
+    title_en: "Arguing & counter-arguing",
+    intro_vi:
+      "Bài này luyện cách xây dựng lập luận học thuật và phản biện luận điểm đối lập theo phong cách Hàn — KHÔNG đối đầu trực diện mà thừa nhận một phần (부분 인정) trước khi đưa luận cứ riêng. Cấu trúc kinh điển: '〜에 대해서는 동의한다. 다만 ~에 대해서는 다른 해석이 가능하다.' Trọng tâm: cụm 그러나, 한편, 이에 반해, 그럼에도 불구하고, 더 나아가.",
+    vocabulary: [
+      { hangul: "논거 (論據)", meaning: "luận cứ" },
+      { hangul: "반박 (反駁)", meaning: "phản bác" },
+      { hangul: "반론 (反論)", meaning: "phản luận / counter-argument" },
+      { hangul: "이의를 제기하다 (異議)", meaning: "nêu phản đối" },
+      { hangul: "한계 (限界)", meaning: "hạn chế" },
+      { hangul: "타당성 (妥當性)", meaning: "tính chính đáng / hợp lý" },
+      { hangul: "수긍하다 (首肯)", meaning: "công nhận / gật đầu" },
+      { hangul: "전제 조건", meaning: "điều kiện tiền đề" },
+      { hangul: "재고하다 (再考)", meaning: "xem xét lại" },
+      { hangul: "오히려", meaning: "ngược lại / trái lại" },
+    ],
+    sentences: [
+      { korean: "그 주장에는 일부 타당성이 있으나, 전제 조건이 충분히 검토되지 않았다.", romanized: "Geu jujang-eneun ilbu tadangseong-i isseuna, jeonje jogeon-i chungbunhi geomtodoeji anatda.", en: "There is partial validity in that claim, yet the premises have not been adequately examined.", vi: "Lập luận đó có phần hợp lý, nhưng các điều kiện tiền đề chưa được xem xét đủ." },
+      { korean: "이에 반해 본 연구는 다른 시각을 제시한다.", romanized: "Ie banhae bon yeonguneun dareun sigageul jesihanda.", en: "In contrast this study offers a different perspective.", vi: "Ngược lại, nghiên cứu này đề xuất một góc nhìn khác." },
+      { korean: "오히려 자료는 반대 방향의 결과를 보여 준다.", romanized: "Ohiryeo jaryoneun bandae banghyangui gyeolgwareul boyeo junda.", en: "On the contrary, the data show results in the opposite direction.", vi: "Trái lại, dữ liệu cho thấy kết quả theo hướng ngược lại." },
+      { korean: "그럼에도 불구하고 일부 결론은 재고할 필요가 있다.", romanized: "Geureom-edo bulguhago ilbu gyeolloneun jaegohal piryoga itda.", en: "Even so, some conclusions need reconsidering.", vi: "Dù vậy, một số kết luận cần được xem xét lại." },
+      { korean: "한편, 다른 해석의 가능성도 열려 있다.", romanized: "Hanpyeon, dareun haeseogui ganeungseongdo yeolyeo itda.", en: "Meanwhile, the possibility of other interpretations remains open.", vi: "Mặt khác, khả năng có cách diễn giải khác vẫn còn để ngỏ." },
+    ],
+    dialogue: [
+      { speaker: "발표자", hangul: "본 연구는 자율성이 성취에 직접 영향을 미친다고 주장합니다.", meaning: "This study argues that autonomy directly influences achievement." },
+      { speaker: "토론자", hangul: "그 부분에는 일부 동의합니다만, 매개 변수의 역할이 간과된 듯합니다.", meaning: "I partially agree, but the role of mediator variables seems overlooked." },
+      { speaker: "발표자", hangul: "좋은 지적이십니다. 다만 본 자료에서는 매개 효과가 통계적으로 유의하지 않았습니다.", meaning: "An astute point. However, in our data the mediation effect was not statistically significant." },
+      { speaker: "토론자", hangul: "그렇다면 표본 특성이 일반화를 제약할 가능성을 검토하셨는지요?", meaning: "Then have you considered that sample characteristics may limit generalisability?" },
+    ],
+    dialogue_long: [
+      { speaker: "토론자", hangul: "발표 잘 들었습니다. 본 연구의 결론에 대해 두 가지 이의를 제기하고자 합니다.", meaning: "Thank you for the talk. I'd like to raise two objections to the conclusions.", vi: "Cảm ơn anh/chị. Tôi xin nêu hai phản biện đối với kết luận của nghiên cứu." },
+      { speaker: "발표자", hangul: "예, 말씀해 주십시오.", meaning: "Yes, please go ahead.", vi: "Vâng, mời anh/chị nêu." },
+      { speaker: "토론자", hangul: "첫째, 표본의 연령 분포가 30대에 집중되어 있습니다. 결론을 다른 연령대로 확장하기에는 무리가 있다고 사료됩니다.", meaning: "First, the sample is concentrated in the 30s age band. Extending the conclusions to other age groups seems strained.", vi: "Thứ nhất, phân bố tuổi của mẫu tập trung ở nhóm 30 — mở rộng kết luận sang các nhóm khác có lẽ là khiên cưỡng." },
+      { speaker: "발표자", hangul: "표본의 한계는 분명히 있습니다. 그 점에 대해서는 수긍합니다. 다만 본 연구의 목적은 일반화보다 특정 집단의 메커니즘을 규명하는 데에 있었습니다.", meaning: "The sample limit is clear. I accept that. Still, the aim was to identify a mechanism in a specific group rather than to generalise.", vi: "Hạn chế mẫu là có thật, tôi công nhận. Tuy nhiên, mục đích nghiên cứu là làm rõ cơ chế trong một nhóm cụ thể, không phải khái quát hóa." },
+      { speaker: "토론자", hangul: "두 번째 점을 말씀드리면, 모형에서 사회적 자본 변수가 빠져 있습니다. 이 변수가 결과를 설명하는 더 강한 요인일 가능성이 있습니다.", meaning: "On the second point, the model omits social capital. That variable could be a stronger explanatory factor.", vi: "Điểm thứ hai: mô hình thiếu biến vốn xã hội. Biến này có khả năng là yếu tố giải thích mạnh hơn." },
+      { speaker: "발표자", hangul: "사회적 자본의 중요성은 부인할 수 없습니다. 그러나 본 자료에서는 해당 변수의 측정이 어려워 부득이 제외하였습니다. 후속 연구에서는 반드시 포함하고자 합니다.", meaning: "The importance of social capital cannot be denied. Yet in our data its measurement was difficult, so it was excluded out of necessity. We intend to include it in follow-up work.", vi: "Tầm quan trọng của vốn xã hội không thể phủ nhận. Tuy nhiên, trong dữ liệu của chúng tôi việc đo lường biến này khó nên đành phải loại — nghiên cứu tiếp theo sẽ chắc chắn bao gồm." },
+      { speaker: "토론자", hangul: "한 가지 더 묻고 싶습니다. 결론 부분에서 '강한 인과 관계'라는 표현을 쓰셨는데, 자료가 횡단면이라는 점에서 다소 강한 표현이 아닌가 싶습니다.", meaning: "One more question. The conclusion uses 'strong causal relationship,' but given the cross-sectional data that wording seems somewhat strong.", vi: "Thêm một câu nữa. Phần kết luận dùng cụm 'quan hệ nhân quả mạnh', nhưng với dữ liệu cắt ngang thì cụm này có lẽ hơi mạnh." },
+      { speaker: "발표자", hangul: "타당한 지적입니다. '강한 인과 관계' 대신 '강한 연관성'으로 표현을 수정하는 것이 적절할 듯합니다. 출판 단계에서 반영하겠습니다.", meaning: "A fair point. Replacing 'strong causal relationship' with 'strong association' would be more appropriate. I'll reflect this at the publication stage.", vi: "Một góp ý chính đáng. Thay 'quan hệ nhân quả mạnh' bằng 'liên hệ mạnh' sẽ phù hợp hơn — tôi xin sửa khi xuất bản." },
+      { speaker: "토론자", hangul: "감사합니다. 본 연구가 지닌 강점도 분명히 인정합니다. 단, 표현의 수위와 변수 누락에 대해서는 보완이 필요해 보입니다.", meaning: "Thank you. I clearly acknowledge the study's strengths. Still, the wording level and omitted variables need shoring up.", vi: "Cảm ơn anh/chị. Tôi cũng công nhận điểm mạnh của nghiên cứu. Tuy nhiên cường độ diễn đạt và biến bị bỏ sót cần được bổ sung." },
+      { speaker: "발표자", hangul: "지적해 주신 모든 부분을 진지하게 검토하겠습니다. 특히 사회적 자본 변수는 다음 자료 수집에서 우선 순위로 두겠습니다.", meaning: "I'll consider all points seriously. The social-capital variable in particular will be prioritised in the next data collection.", vi: "Tôi sẽ xem xét nghiêm túc mọi góp ý. Đặc biệt biến vốn xã hội sẽ được ưu tiên trong đợt thu thập dữ liệu tới." },
+      { speaker: "사회자", hangul: "두 분 감사합니다. 시간 관계상 추가 토론은 휴식 후로 미루겠습니다.", meaning: "Thanks to both. Owing to time, further discussion will be deferred until after the break.", vi: "Cảm ơn hai vị. Do thời gian, phần thảo luận thêm xin gác lại sau giờ giải lao." },
+      { speaker: "발표자", hangul: "감사합니다. 토론자 선생님의 지적은 후속 작업에 큰 도움이 될 것입니다.", meaning: "Thank you. The discussant's comments will greatly help follow-up work.", vi: "Cảm ơn anh/chị. Những góp ý của diễn giả thảo luận sẽ rất hữu ích cho công việc tiếp theo." },
+      { speaker: "토론자", hangul: "오히려 제가 더 많이 배웠습니다. 좋은 발표 감사합니다.", meaning: "On the contrary, I learned more. Thank you for the good talk.", vi: "Ngược lại, tôi mới là người học được nhiều hơn. Cảm ơn anh/chị đã có bài trình bày tốt." },
+      { speaker: "사회자", hangul: "휴식 후 11시에 다시 시작하겠습니다.", meaning: "We resume at 11 after the break.", vi: "Sau giờ giải lao 11 giờ chúng ta tiếp tục." },
+    ],
+    roleplay_prompts: [
+      "Một học giả phản biện ý kiến của bạn. Hãy tập đáp theo công thức 'thừa nhận một phần → giữ lập trường': '그 부분에 대해서는 수긍합니다. 다만 ~에 대해서는 다른 해석도 가능합니다.'",
+      "Bạn cần phản biện một bài đã đăng nhưng giữ tôn trọng. Hãy luyện cụm: 'Kim(2020)의 입장에는 일부 타당성이 있으나, 본 연구의 자료에서는 반대 방향의 결과가 확인되었다.'",
+      "Discussant chỉ ra mô hình của bạn thiếu một biến quan trọng. Hãy đáp với hedging và cam kết: 'X의 중요성은 부인할 수 없습니다. 본 자료에서는 측정의 한계로 부득이 제외하였으며, 후속 연구에서 반드시 포함하고자 합니다.'",
+    ],
+    register_notes:
+      "Lập luận / phản biện C1: (1) Cấu trúc 'partial concession + counter-argument' là vũ khí chính: '〜에는 일부 타당성이 있으나' / '〜 부분은 수긍하지만'. Hàn coi tranh luận trực diện là 무례 — phải có buffer. (2) Connector tăng cấp: 그러나 (nhưng — trang trọng), 한편 (mặt khác — trung lập), 이에 반해 (ngược lại — đối lập rõ), 오히려 (trái lại — nhấn mạnh đảo chiều), 그럼에도 불구하고 (dù vậy — nhượng bộ rồi giữ lập trường). (3) Khi phản biện, dùng câu hỏi tu từ thay vì khẳng định: '~ 가능성도 있지 않을까 사료됩니다' mềm hơn '~ 다고 본다'. (4) Cụm 'good point' Korean equivalent: '좋은 지적이십니다' (lịch sự) / '타당한 지적입니다' (chính thức). KHÔNG dùng 'good question' kiểu Anh — '좋은 질문' nghe qua dịch. (5) Khi nhường bước nhưng giữ kết luận: '결론 자체는 수긍하지만, 그에 도달하는 과정에는 보완이 필요해 보입니다'. (6) Tránh: '당신은 틀렸습니다' (you are wrong — gần như xúc phạm trong học thuật Hàn); thay bằng '본 결론에는 동의하기 어렵습니다' (I find the conclusion hard to agree with).",
+    idiom_glosses: [
+      { idiom: "이의를 제기하다", literal: "đưa ra ý phản đối", meaning: "(격식) nêu phản đối — cụm chuẩn của Q&A và peer review", example: "본 결론에 두 가지 이의를 제기하고자 한다." },
+      { idiom: "한 발 양보하다", literal: "lùi một bước", meaning: "(문어/구어) nhượng bộ một phần — chiến thuật phản biện ôn hòa", example: "한 발 양보하더라도, 핵심 결론은 유지된다." },
+      { idiom: "타당성을 인정하다", literal: "công nhận tính chính đáng", meaning: "(격식) thừa nhận có cơ sở — buffer trước phản biện", example: "그 주장의 타당성은 인정하나, 자료가 부족하다." },
+      { idiom: "결론에 도달하다", literal: "đến được kết luận", meaning: "(격식) đi đến kết luận — đối tượng hay bị phản biện về quá trình", example: "결론에 도달하는 과정에 보완이 필요하다." },
+    ],
+    cultural_notes_vi:
+      "Văn hóa tranh luận học thuật Hàn: (1) 토론자 (discussant) là vai trò chính thức — phản biện trong phạm vi đã chuẩn bị, không phải hỏi tự do. Vai discussant đòi hỏi cân bằng giữa khen điểm mạnh và chỉ điểm yếu — pattern '강점 인정 → 약점 지적 → 보완 제안'. (2) Tuổi và chức danh ảnh hưởng cách phản biện: học giả trẻ phản biện học giả cao niên cần soft framing 'malsseum-deurim sajiseureopji-man' (cho phép em được thưa). (3) Phản biện công khai trong học hội (학회) ít gay gắt hơn lab seminar — public face must be saved. Bất đồng nặng được giải quyết qua email/buổi cá nhân sau. (4) Kết thúc Q&A người trình bày bao giờ cũng cảm ơn discussant — '오히려 제가 더 많이 배웠습니다' là cụm mặc định. (5) Người Việt có xu hướng phản biện trực diện hơn (Việt văn hóa thẳng thắn hơn Hàn trong context này) — học cách thêm buffer là kỹ năng phải luyện. (6) Disagreement chuyển sang published critique (반론논문) thay vì kéo dài tại chỗ. Ở Hàn, 'người không nhường bước trong Q&A' nhanh chóng được dán nhãn 'không có phép tắc' (예의 없다). (7) Trợ giảng và sinh viên cao học không nên phản biện giáo sư cao niên trong public space trừ khi được mời rõ ràng.",
+    tip_advice_vi:
+      "Mô hình '4-1-1' để phản biện chuyên nghiệp: (4) Bốn phần khen — phương pháp, dữ liệu, viết, đóng góp; (1) Một phần phản biện chính; (1) Một đề xuất bổ sung. Khi nhận phản biện gay gắt: (a) Hít sâu, KHÔNG đáp trả ngay; (b) Bắt đầu bằng '좋은 지적이십니다' để câu giờ; (c) Phân loại — đó là phê phán method (sửa được) hay conceptual (cần đào sâu)? (d) Nếu method: hứa cụ thể '다음 판본/후속 연구에 반영하겠습니다'; (e) Nếu conceptual: thừa nhận '깊이 검토할 만한 부분입니다' và đề nghị thảo luận riêng sau. KHÔNG: (a) Defensive '하지만…' liên tiếp ngay đầu (signal stubborn); (b) Im lặng kéo dài (signal lúng túng); (c) Hứa nhiều hơn có thể giữ ('전부 다시 쓰겠습니다' nghe đáng ngờ). Cụm cứu nguy khi không có sẵn câu trả lời: '귀중한 지적입니다. 그 부분은 제가 충분히 검토하지 못했음을 인정합니다. 추가로 검토한 후 따로 답변드리겠습니다' (góp ý quý báu — em xin thừa nhận chưa xem xét thấu, sẽ trả lời riêng sau khi nghiên cứu thêm). Cuối cùng: phản biện hay nhất là cảm ơn cụ thể: '특히 사회적 자본 변수에 대한 지적은 후속 작업의 방향을 분명히 해 주었습니다.'",
+    exercises: [
+      { type: "fill-blank", question: "그 부분에 대해서는 ___합니다. 다만 다른 해석도 가능합니다.", answer: "수긍" },
+      {
+        type: "matching",
+        pairs: [
+          { hangul: "이의를 제기하다", meaning: "nêu phản đối" },
+          { hangul: "한 발 양보하다", meaning: "nhượng bộ một phần" },
+          { hangul: "타당성을 인정하다", meaning: "công nhận tính chính đáng" },
+          { hangul: "결론에 도달하다", meaning: "đi đến kết luận" },
+        ],
+        instruction: "Nối thành ngữ học thuật với nghĩa",
+      },
+      { type: "translation", vietnamese: "Ngược lại, nghiên cứu này đề xuất một góc nhìn khác.", hangul: "이에 반해 본 연구는 다른 시각을 제시한다." },
+    ],
+  },
+
+  // 95. Hedging & academic uncertainty
+  {
+    id: 95,
+    level: "C1",
+    title_vi: "Diễn ngôn dè dặt & sự không chắc chắn học thuật",
+    title_en: "Hedging & academic uncertainty",
+    intro_vi:
+      "Hedging (완곡 표현) là kỹ năng C1 cốt lõi — biết đặt cường độ phù hợp giữa quá tự tin và quá rụt rè. Bài này phân ba mức: (a) cao chắc chắn '~임이 분명하다 / ~이 확인되었다'; (b) trung bình '~인 것으로 보인다 / ~일 가능성이 높다'; (c) dè dặt '~일 수 있다 / ~일 가능성도 배제할 수 없다'. 사료된다 (rất trang trọng, văn viết) chỉ dùng cho phát biểu chính.",
+    vocabulary: [
+      { hangul: "추정 (推定)", meaning: "ước đoán" },
+      { hangul: "추론 (推論)", meaning: "suy luận" },
+      { hangul: "가능성 (可能性)", meaning: "khả năng" },
+      { hangul: "함의 (含意)", meaning: "hàm ý" },
+      { hangul: "잠재적 (潛在的)", meaning: "tiềm tàng" },
+      { hangul: "보인다 (見)", meaning: "có vẻ / dường như" },
+      { hangul: "시사하다 (示唆)", meaning: "gợi ý / hàm chứa ngụ ý" },
+      { hangul: "단정하다 (斷定)", meaning: "kết luận chắc nịch" },
+      { hangul: "신중하게 (愼重)", meaning: "thận trọng" },
+      { hangul: "조심스럽게 표현하다", meaning: "diễn đạt thận trọng" },
+    ],
+    sentences: [
+      { korean: "이 결과는 두 변수 간의 강한 연관성을 시사한다.", romanized: "I gyeolgwaneun du byeonsu ganui ganghan yeon-gwanseong-eul sisahanda.", en: "This result suggests a strong association between the two variables.", vi: "Kết quả này gợi ý một liên hệ mạnh giữa hai biến số." },
+      { korean: "그러나 인과 관계로 단정하기에는 자료가 부족하다.", romanized: "Geureona ingwa gwangye-ro danjeong-hagi-eneun jaryoga bujokhada.", en: "However, the data are insufficient to assert causation.", vi: "Tuy nhiên, dữ liệu chưa đủ để khẳng định quan hệ nhân quả." },
+      { korean: "이러한 효과는 특정 조건에서만 나타날 가능성이 있다.", romanized: "Ireohan hyogwaneun teukjeong jogeoneseoman natanal ganeungseong-i itda.", en: "Such an effect may occur only under specific conditions.", vi: "Hiệu ứng kiểu này có khả năng chỉ xuất hiện trong điều kiện đặc thù." },
+      { korean: "본 발견은 후속 연구를 통해 추가 검증될 수 있다고 사료된다.", romanized: "Bon balgyeon-eun husok yeongureul tonghae chuga geomjeungdoel su itdago saryodoenda.", en: "It is held that the present finding may be further verified through follow-up research.", vi: "Phát hiện này có thể được kiểm chứng thêm qua các nghiên cứu kế tiếp, theo nhận định của chúng tôi." },
+      { korean: "결과를 일반화하기 전에 신중한 해석이 요구된다.", romanized: "Gyeolgwareul ilbanhwa-hagi jeone sinjunghan haeseoki yoguendoenda.", en: "A cautious interpretation is required before generalising the results.", vi: "Cần diễn giải thận trọng trước khi khái quát hóa các kết quả." },
+    ],
+    dialogue: [
+      { speaker: "발표자", hangul: "본 결과는 음주 빈도와 우울 수준 간의 연관성을 시사합니다.", meaning: "The results suggest an association between drinking frequency and depression level." },
+      { speaker: "토론자", hangul: "'시사한다'와 '입증한다' 사이에서 어느 정도의 표현을 쓰셨습니까?", meaning: "Where did you place your expression between 'suggests' and 'demonstrates'?" },
+      { speaker: "발표자", hangul: "자료가 횡단면이라 '시사한다' 수준에서 멈추었습니다.", meaning: "Since the data are cross-sectional, I stopped at 'suggests.'" },
+      { speaker: "토론자", hangul: "그 신중함이 본 결과의 신뢰성을 높여 준다고 봅니다.", meaning: "That caution, I believe, strengthens the credibility of the results." },
+    ],
+    dialogue_long: [
+      { speaker: "발표자", hangul: "본 연구의 결과를 다음과 같이 요약합니다. 첫째, 두 변수 간의 강한 연관성이 확인되었습니다. 둘째, 이 연관성이 인과 관계로 해석될 수 있는지에 대해서는 신중한 검토가 필요합니다.", meaning: "The results are summarised as follows. First, a strong association between the two variables was confirmed. Second, whether this association can be interpreted as causal requires careful examination.", vi: "Kết quả nghiên cứu tóm gọn: thứ nhất, đã xác nhận liên hệ mạnh giữa hai biến; thứ hai, việc liên hệ này có được diễn giải là quan hệ nhân quả hay không cần được xem xét thận trọng." },
+      { speaker: "토론자1", hangul: "'강한 연관성이 확인되었다'라는 표현이 자료 규모에 비해 다소 강한 듯합니다. 어떻게 보십니까?", meaning: "The phrase 'strong association was confirmed' seems somewhat strong relative to the data size. How do you see it?", vi: "Cụm 'đã xác nhận liên hệ mạnh' có vẻ hơi mạnh so với quy mô dữ liệu. Anh/chị thấy thế nào?" },
+      { speaker: "발표자", hangul: "타당한 지적입니다. '확인되었다'를 '관찰되었다' 또는 '시사된다'로 바꾸는 것이 적절할 듯합니다.", meaning: "A fair point. Replacing 'confirmed' with 'observed' or 'suggested' would be more appropriate.", vi: "Một góp ý chính đáng. Thay 'đã xác nhận' bằng 'đã được quan sát' hoặc 'được gợi ý' sẽ phù hợp hơn." },
+      { speaker: "토론자2", hangul: "'사료된다'라는 표현은 본 발표에서 두 차례 등장했습니다. 그 사용이 학술 글쓰기에서 적절한지 의견을 듣고 싶습니다.", meaning: "The expression '사료된다' appeared twice in the presentation. I'd like your view on whether its use is appropriate in academic writing.", vi: "Cụm '사료된다' xuất hiện hai lần trong bài. Tôi muốn nghe ý kiến của anh/chị về việc dùng nó trong văn học thuật." },
+      { speaker: "발표자", hangul: "'사료된다'는 매우 격식적이고 신중한 표현으로, 결론 진술과 같이 중요한 부분에서만 제한적으로 사용하는 것이 바람직하다고 봅니다.", meaning: "'사료된다' is very formal and cautious; it is best used sparingly, only in key statements such as conclusions.", vi: "'사료된다' rất trang trọng và thận trọng — nên hạn chế dùng, chỉ giữ cho những phát biểu trọng tâm như kết luận." },
+      { speaker: "토론자2", hangul: "그 점에 동의합니다. 매 문장마다 사용하면 오히려 신뢰성이 떨어지는 효과가 있습니다.", meaning: "I agree. Using it in every sentence actually undermines credibility.", vi: "Tôi đồng ý. Dùng câu nào cũng có thì ngược lại sẽ làm giảm uy tín." },
+      { speaker: "발표자", hangul: "그래서 본 발표에서는 결론 부분과 핵심 함의 부분에서만 사용했습니다.", meaning: "That is why I used it only in the conclusion and the core implications section.", vi: "Vì vậy trong bài tôi chỉ dùng ở phần kết luận và phần hàm ý cốt lõi." },
+      { speaker: "토론자1", hangul: "한 가지 더 묻겠습니다. 'X일 가능성이 있다'와 'X일 수도 있다'의 차이를 어떻게 인식하고 계십니까?", meaning: "One more question. How do you distinguish 'X일 가능성이 있다' from 'X일 수도 있다'?", vi: "Tôi hỏi thêm một câu. Anh/chị phân biệt 'X일 가능성이 있다' với 'X일 수도 있다' thế nào?" },
+      { speaker: "발표자", hangul: "전자는 가능성을 명시적으로 제시하는 학술적 표현이고, 후자는 일상적이고 다소 캐주얼한 어감입니다. 학술 글쓰기에서는 전자를 선호합니다.", meaning: "The former is an academic expression that explicitly presents possibility; the latter has a daily, somewhat casual nuance. In academic writing the former is preferred.", vi: "Cụm trước trình bày khả năng một cách rõ ràng theo phong cách học thuật; cụm sau mang sắc thái đời thường, hơi thân mật. Trong văn học thuật nên dùng cụm trước." },
+      { speaker: "토론자2", hangul: "'배제할 수 없다'와 같은 이중 부정도 자주 등장합니다. 그 어감을 설명해 주실 수 있겠습니까?", meaning: "Double negatives such as '배제할 수 없다' also recur. Could you explain the nuance?", vi: "Phủ định kép như '배제할 수 없다' cũng hay gặp. Anh/chị có thể giải thích sắc thái không?" },
+      { speaker: "발표자", hangul: "'배제할 수 없다'는 '가능하다'보다 약한 긍정으로 작용합니다. 즉, 그 가능성을 부인할 수 없다는 의미입니다. 학술 글에서는 신중함을 강조할 때 유용합니다.", meaning: "'배제할 수 없다' functions as a weaker affirmation than '가능하다.' It means the possibility cannot be denied. It is useful when emphasising caution in academic writing.", vi: "'배제할 수 없다' hoạt động như một khẳng định yếu hơn '가능하다' — nghĩa là không thể phủ nhận khả năng đó. Cụm này hữu ích khi muốn nhấn sự thận trọng trong văn học thuật." },
+      { speaker: "사회자", hangul: "두 분, 매우 흥미로운 토론 감사합니다. 다음 발표 시간 관계상 여기서 마무리하겠습니다.", meaning: "Thank you both for a rich discussion. We close here owing to the next session's time.", vi: "Cảm ơn hai vị về phần thảo luận sâu. Do thời gian phiên kế tiếp, chúng ta dừng tại đây." },
+      { speaker: "발표자", hangul: "감사합니다. 토론자 두 분의 지적은 본 논문의 표현 수위를 한층 정교화하는 데 큰 도움이 되었습니다.", meaning: "Thank you. The discussants' comments greatly help refine the wording level of this paper.", vi: "Cảm ơn quý vị. Những góp ý của hai diễn giả thảo luận giúp tôi tinh chỉnh cường độ diễn đạt." },
+      { speaker: "토론자1", hangul: "오히려 저희가 좋은 사례를 통해 많이 배웠습니다.", meaning: "On the contrary, we learned much from this concrete example.", vi: "Ngược lại, qua một ví dụ cụ thể chúng tôi mới học được nhiều." },
+    ],
+    roleplay_prompts: [
+      "Bạn đang viết phần kết luận. Hãy luyện chuyển từ tuyên bố mạnh sang hedging: 'X가 Y의 원인이다' → 'X가 Y와 강한 연관성을 보이는 것으로 사료된다 / Y의 한 요인일 가능성이 높다고 보인다.'",
+      "Bạn được hỏi vì sao dùng '사료된다' chỉ hai lần. Hãy đáp: '매우 격식적인 표현으로, 결론과 핵심 함의 부분에서만 제한적으로 사용하는 것이 바람직하다고 봅니다.'",
+      "Bạn cần chỉ ra rằng dữ liệu chưa cho phép khẳng định nhân quả. Hãy luyện cụm: '본 자료는 횡단면이므로 인과 관계로 단정하기에는 자료가 부족합니다. 시사 수준에서 멈추는 것이 적절합니다.'",
+    ],
+    register_notes:
+      "Hedging C1 phân ba thang: (1) MẠNH — 입증되었다 (đã được chứng minh) / 분명하다. Chỉ dùng khi RCT, meta-analysis, hoặc consensus rõ. (2) TRUNG BÌNH — 시사한다 (gợi ý) / 보인다 / ~일 가능성이 높다 (khả năng cao). Dùng cho khảo sát, dữ liệu cắt ngang. (3) DÈ DẶT — ~일 가능성이 있다 / ~일 수 있다 / ~을 배제할 수 없다 (không thể loại trừ). Dùng cho exploratory, pilot, edge cases. Cụm 사료된다 chỉ ở mức trung-cao trang trọng, dành cho phát biểu chính. Lạm dụng → giảm uy tín. Cụm 단정하다 (kết luận chắc nịch) trong văn học thuật mang nghĩa tiêu cực — '단정하기 어렵다' = không nên kết luận vội. Khi báo cáo độ chắc chắn từ thống kê: 'p < 0.05 수준에서 유의하다' chính xác hơn 'significant'. Phủ định kép '배제할 수 없다' = soft positive, dùng khi không muốn affirm trực tiếp.",
+    idiom_glosses: [
+      { idiom: "단정하기 어렵다", literal: "khó kết luận chắc nịch", meaning: "(격식) khó khẳng định — hedging chuẩn của learning paragraph", example: "이 결과만으로 인과 관계를 단정하기 어렵다." },
+      { idiom: "배제할 수 없다", literal: "không thể loại trừ", meaning: "(문어/격식) không thể loại bỏ — soft positive qua phủ định kép", example: "다른 요인의 영향을 배제할 수 없다." },
+      { idiom: "신중을 기하다", literal: "thận trọng cẩn thận", meaning: "(격식) đặt sự thận trọng — cụm cảnh báo trong discussion", example: "결론을 일반화함에 있어 신중을 기해야 한다." },
+      { idiom: "여지를 남기다", literal: "để lại khoảng trống", meaning: "(문어) để ngỏ khả năng — không đóng cứng kết luận", example: "다른 해석의 여지를 남겨 두었다." },
+    ],
+    cultural_notes_vi:
+      "Văn hóa hedging Hàn vs Việt: (1) Tiếng Hàn học thuật 'over-hedge' so với tiếng Anh — bài viết tiếng Anh dùng 1-2 hedges/đoạn, tiếng Hàn có thể 4-5. Sinh viên Việt thường thiếu hedges vì văn hóa Việt thẳng thắn hơn — cần chủ động bổ sung. (2) Kiểu hedging quá đà ('것으로 보일 수도 있다고 사료될 가능성이 있다') ngược lại bị phê 'không có chính kiến'. Cân bằng là kỹ năng. (3) Trong văn nói (학회 발표), 〜습니다 thể tự thân đã trang trọng — không cần thêm 사료된다 mỗi câu. (4) Hàn coi confidence quá cao ở junior researcher là vô lễ với senior — sinh viên cao học mặc nhiên hedge nhiều hơn giáo sư. (5) Trong abstract, hedging gọn — '시사한다' / '확인되었다' đủ; KHÔNG dùng '사료된다' trong abstract vì abstract phải cô đọng. (6) Khi reviewer yêu cầu giảm hedging ('over-hedged') hoặc tăng hedging ('over-claimed'), đó là feedback chuẩn — không phải tấn công cá nhân. (7) Tạp chí Hàn ngữ và Anh ngữ có chuẩn khác — bản English version của cùng bài thường ít hedge hơn 30-40%.",
+    tip_advice_vi:
+      "Quy tắc 'hedging proportional to evidence': (a) RCT đối chứng + replicated → dùng được 입증되었다, 확인되었다. (b) Khảo sát quy mô lớn, có control variable → 시사한다, 보이는 것으로 보인다. (c) Quan sát, pilot, single study → 가능성이 있다, 시사할 수 있다. (d) Hypothesis chỉ mang tính suy đoán → 추론할 수 있다, 가능성을 배제할 수 없다. Mẹo viết: trong cùng đoạn, KHÔNG lặp 1 hedging form — luân phiên '~인 것으로 보인다 → ~일 가능성이 높다 → ~으로 추정된다'. Mẹo đọc lại: đếm số 사료된다 trong bài — nếu >3 trong abstract+intro thì cắt bớt; nếu = 0 trong discussion thì bài thiếu khiêm tốn. Khi reviewer ghi 'over-claimed': tìm động từ trong sentence và downgrade một bậc (입증 → 시사). Khi reviewer ghi 'too tentative': tìm hedging và remove một lớp ('~일 가능성도 배제할 수 없을 것으로 보인다' → '~일 가능성이 있다'). Cuối cùng: hedging KHÔNG phải tránh trách nhiệm — đó là nghệ thuật đặt cường độ kết luận đúng với độ chắc của dữ liệu. Một bài nghiên cứu hedge đúng được coi là 'mature' (성숙하다); hedge sai là 'immature' (미숙하다).",
+    exercises: [
+      { type: "fill-blank", question: "그러나 인과 관계로 ___하기에는 자료가 부족하다.", answer: "단정" },
+      {
+        type: "matching",
+        pairs: [
+          { hangul: "단정하기 어렵다", meaning: "khó khẳng định chắc nịch" },
+          { hangul: "배제할 수 없다", meaning: "không thể loại trừ (soft positive)" },
+          { hangul: "신중을 기하다", meaning: "đặt sự thận trọng" },
+          { hangul: "여지를 남기다", meaning: "để ngỏ khả năng / để lại khoảng trống" },
+        ],
+        instruction: "Nối thành ngữ học thuật với nghĩa",
+      },
+      { type: "translation", vietnamese: "Cần diễn giải thận trọng trước khi khái quát hóa các kết quả.", hangul: "결과를 일반화하기 전에 신중한 해석이 요구된다." },
+    ],
+  },
 ];
