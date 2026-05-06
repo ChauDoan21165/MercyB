@@ -20,8 +20,8 @@ function toWebPath(abs) {
 }
 
 if (!fs.existsSync(AUDIO_DIR)) {
-  console.error("❌ public/audio not found");
-  process.exit(1);
+  fs.mkdirSync(AUDIO_DIR, { recursive: true });
+  console.warn("⚠️  public/audio not found — created empty directory and continuing");
 }
 
 console.log("Scanning public/audio for .mp3 files...");
