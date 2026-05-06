@@ -14,6 +14,7 @@
 // once A1's canonical types file lands.
 
 import type { KoreanLesson, KoreanExercise } from "./lessons";
+import { lessonAudioBase } from "@/lib/lessonAudio";
 
 // ────────────────────────────────────────────────────────────────────────
 // Inline contract — TODO(PR-C): replace with import from
@@ -77,6 +78,7 @@ type NormalizedLesson = {
   roleplayPrompts?: string[];
   registerNotes?: string;
   idiomGlosses?: NormalizedIdiomGloss[];
+  audioBase?: string;
 };
 
 // ────────────────────────────────────────────────────────────────────────
@@ -122,6 +124,7 @@ export function normalizeKoreanLesson(
       meaning: g.meaning,
       example: g.example,
     })),
+    audioBase: lessonAudioBase("ko", lesson.id, lesson.level),
   };
 }
 
