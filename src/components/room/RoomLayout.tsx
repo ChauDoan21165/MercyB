@@ -21,7 +21,13 @@ interface RoomLayoutProps {
  * - Proper bottom padding for audio player
  */
 export const RoomLayout = ({ children, bgColor }: RoomLayoutProps) => (
-  <main className="min-h-screen" style={{ background: bgColor || "hsl(var(--background))" }}>
+  // translate="no" prevents Chrome/Google Translate (and similar extensions) from
+  // wrapping text nodes inside React-managed children with <font> tags, which
+  // desyncs the virtual DOM and crashes reconciliation with
+  // "NotFoundError: Failed to execute 'removeChild' on 'Node'".
+  // Sentry c00051fff1674c729840c824069bd77b. Foreign-language room content is
+  // the learning material — it shouldn't be auto-translated to Vietnamese anyway.
+  <main translate="no" className="min-h-screen" style={{ background: bgColor || "hsl(var(--background))" }}>
     {/* ✅ Match Home: PAGE_MAX=980 + 16px padding */}
     <div className="mx-auto max-w-[980px] px-4 py-6 pb-24">
       {children}
