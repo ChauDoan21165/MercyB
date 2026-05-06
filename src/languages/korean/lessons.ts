@@ -4730,4 +4730,176 @@ level: "B2",
       { type: "translation", vietnamese: "Em nói thẳng được không?", hangul: "솔직하게 말씀드려도 돼요?" },
     ],
   },
+
+  // ===== C1 R1 — Academic Discourse / Diễn ngôn học thuật =====
+
+  // 92. Presenting a thesis / hypothesis
+  {
+    id: 92,
+    level: "C1",
+    title_vi: "Trình bày luận điểm / giả thuyết",
+    title_en: "Presenting a thesis / hypothesis",
+    intro_vi:
+      "Bài này luyện cách nêu luận điểm chính (논지) và giả thuyết nghiên cứu (가설) ở cấp C1 — đăng ký 문어체 cho bản thảo và 〜습니다 thể cho phần nói khi thuyết trình. Trọng tâm: cấu trúc 'bối cảnh → khoảng trống → câu hỏi → giả thuyết → đóng góp', dùng nhiều 한자어 (本 연구, 선행 연구, 가설 등) để đạt độ chính xác học thuật.",
+    vocabulary: [
+      { hangul: "논지 (論旨)", meaning: "luận điểm chính" },
+      { hangul: "가설 (假說)", meaning: "giả thuyết" },
+      { hangul: "선행 연구 (先行 硏究)", meaning: "nghiên cứu tiền bối / công trình đi trước" },
+      { hangul: "연구 문제", meaning: "câu hỏi nghiên cứu" },
+      { hangul: "검증하다 (檢證)", meaning: "kiểm chứng" },
+      { hangul: "주장 (主張)", meaning: "lập luận / quan điểm" },
+      { hangul: "전제 (前提)", meaning: "tiền đề" },
+      { hangul: "본 연구 (本 硏究)", meaning: "nghiên cứu này (cụm dùng trong bản thảo)" },
+      { hangul: "기여 (寄與)", meaning: "đóng góp (học thuật)" },
+      { hangul: "사료되다 (思料)", meaning: "được cho rằng — hedging trang trọng" },
+    ],
+    sentences: [
+      { korean: "본 연구는 다음과 같은 가설을 검증하고자 한다.", romanized: "Bon yeonguneun da-eumgwa gateun gaseoreul geomjeunghagoja handa.", en: "This study seeks to test the following hypothesis.", vi: "Nghiên cứu này nhằm kiểm chứng giả thuyết sau đây." },
+      { korean: "선행 연구에서는 이 문제가 충분히 다루어지지 않았다.", romanized: "Seonhaeng yeongueseoneun i munjega chungbunhi daru-eojiji anatda.", en: "In prior research this issue has not been sufficiently addressed.", vi: "Trong các nghiên cứu trước, vấn đề này chưa được xử lý thấu đáo." },
+      { korean: "이러한 공백을 메우기 위해 다음의 연구 문제를 제기한다.", romanized: "Ireohan gongbaeg-eul me-ugi wihae da-eumui yeongu munjereul jegihanda.", en: "To fill this gap, we pose the following research question.", vi: "Để lấp khoảng trống này, chúng tôi đặt ra câu hỏi nghiên cứu sau." },
+      { korean: "본 가설은 다음 두 변수 간의 관계를 다룬다.", romanized: "Bon gaseoreun da-eum du byeonsu ganui gwangyereul darunda.", en: "The present hypothesis addresses the relationship between the two variables below.", vi: "Giả thuyết này bàn về mối quan hệ giữa hai biến số sau." },
+      { korean: "본 연구의 기여는 이론적·실천적 두 측면에서 확인된다.", romanized: "Bon yeonguui giyeoneun ironjeok·silcheonjeok du cheungmyeoneseo hwaginbendoinda.", en: "The contribution of this study is identified on both theoretical and practical fronts.", vi: "Đóng góp của nghiên cứu này được xác định ở hai phương diện lý thuyết và thực tiễn." },
+    ],
+    dialogue: [
+      { speaker: "발표자", hangul: "본 연구의 핵심 논지는 두 변수가 비선형 관계를 형성한다는 것입니다.", meaning: "The core thesis of this study is that the two variables form a non-linear relationship." },
+      { speaker: "청중", hangul: "그 가설을 어떤 자료로 검증하셨습니까?", meaning: "What data did you use to test that hypothesis?" },
+      { speaker: "발표자", hangul: "2015년부터 2024년까지의 패널 자료를 활용하였습니다.", meaning: "We used panel data from 2015 to 2024." },
+      { speaker: "청중", hangul: "선행 연구와의 차별점을 말씀해 주시겠습니까?", meaning: "Could you explain how this differs from prior work?" },
+    ],
+    dialogue_long: [
+      { speaker: "발표자", hangul: "안녕하십니까. 본 발표는 디지털 학습 환경에서 학습자 자율성과 학업 성취 간의 관계를 다룹니다.", meaning: "Good day. This presentation addresses the relationship between learner autonomy and academic achievement in digital learning environments.", vi: "Kính chào quý vị. Bài trình bày này bàn về mối quan hệ giữa tính tự chủ của người học và thành tích học tập trong môi trường học số." },
+      { speaker: "발표자", hangul: "선행 연구는 자율성이 성취에 긍정적 영향을 미친다고 보고해 왔습니다. 그러나 그 효과가 모든 환경에서 일관된다고 보기는 어렵습니다.", meaning: "Prior research has reported that autonomy positively influences achievement. However, it is hard to claim the effect is consistent across all settings.", vi: "Các nghiên cứu trước đã chỉ ra rằng tự chủ tác động tích cực đến thành tích. Tuy nhiên, khó có thể khẳng định hiệu ứng này nhất quán trong mọi bối cảnh." },
+      { speaker: "발표자", hangul: "이러한 점에서 본 연구는 다음과 같은 연구 문제를 제기합니다. 첫째, 자율성의 효과는 학습자 동기 수준에 따라 달라지는가? 둘째, 그 차이는 통계적으로 유의한가?", meaning: "Hence this study poses the following questions. First, does the effect of autonomy vary with learner motivation? Second, is the difference statistically significant?", vi: "Từ đó, nghiên cứu này đặt ra hai câu hỏi: thứ nhất, hiệu ứng của tính tự chủ có biến đổi theo mức độ động cơ hay không? Thứ hai, sự khác biệt đó có ý nghĩa thống kê hay không?" },
+      { speaker: "발표자", hangul: "이에 따라 본 연구의 핵심 가설을 다음과 같이 제시합니다. '학습자 자율성은 동기 수준이 높은 집단에서 더 큰 성취 효과를 보인다.'", meaning: "Accordingly the core hypothesis is stated as: 'Learner autonomy shows a stronger effect on achievement among high-motivation learners.'", vi: "Dựa vào đó, giả thuyết cốt lõi của nghiên cứu được phát biểu: 'Tính tự chủ của người học mang lại hiệu ứng thành tích lớn hơn ở nhóm có động cơ cao.'" },
+      { speaker: "청중1", hangul: "발표 잘 들었습니다. 한 가지 여쭙겠습니다. 가설이 단방향으로 진술된 이유가 무엇입니까?", meaning: "Thank you for the talk. May I ask — why is the hypothesis stated in a one-directional form?", vi: "Cảm ơn anh/chị đã trình bày. Cho phép tôi hỏi: vì sao giả thuyết lại được phát biểu theo một chiều?" },
+      { speaker: "발표자", hangul: "좋은 지적이십니다. 선행 이론, 특히 자기결정성 이론에 따라 방향성을 명시적으로 설정하였습니다. 다만 사후 분석에서는 양방향 가능성도 함께 검토하였습니다.", meaning: "An astute point. We set the direction explicitly following prior theory, in particular Self-Determination Theory. However, in post-hoc analyses we also examined the bidirectional possibility.", vi: "Đây là một góp ý xác đáng. Chúng tôi quy định hướng cụ thể dựa trên lý thuyết tiền đề, đặc biệt là Lý thuyết Tự quyết định. Trong phân tích bổ sung, chúng tôi cũng xem xét khả năng hai chiều." },
+      { speaker: "청중2", hangul: "본 가설이 검증되지 않을 가능성에 대해서도 논의가 있었습니까?", meaning: "Was there any discussion of the possibility that the hypothesis might not be supported?", vi: "Có thảo luận nào về khả năng giả thuyết không được kiểm chứng không?" },
+      { speaker: "발표자", hangul: "예, 있었습니다. 가설이 기각될 경우 두 변수 간의 관계가 매개 변수에 의해 설명될 수 있다는 대안 모형도 함께 제시한 바 있습니다.", meaning: "Yes. Should the hypothesis be rejected, we presented an alternative model in which the relationship is explained through a mediator variable.", vi: "Có. Trong trường hợp giả thuyết bị bác bỏ, chúng tôi cũng đã đề xuất mô hình thay thế trong đó mối quan hệ được giải thích thông qua một biến trung gian." },
+      { speaker: "청중3", hangul: "본 연구의 이론적 기여를 한 문장으로 요약해 주실 수 있겠습니까?", meaning: "Could you summarise the theoretical contribution of this study in one sentence?", vi: "Anh/chị có thể tóm gọn đóng góp lý thuyết của nghiên cứu trong một câu được không?" },
+      { speaker: "발표자", hangul: "한 문장으로 말씀드리면, 자율성-성취 관계가 동기 수준에 의해 조절된다는 점을 실증적으로 확인한 데에 본 연구의 이론적 기여가 있다고 사료됩니다.", meaning: "In one sentence — the theoretical contribution lies in empirically confirming that the autonomy-achievement relationship is moderated by motivation level.", vi: "Tóm gọn trong một câu: đóng góp lý thuyết nằm ở chỗ xác nhận thực nghiệm rằng quan hệ tự chủ – thành tích bị điều tiết bởi mức độ động cơ." },
+      { speaker: "사회자", hangul: "감사합니다. 마지막 질문은 휴식 후에 받겠습니다.", meaning: "Thank you. The final question will be taken after the break.", vi: "Cảm ơn. Câu hỏi cuối sẽ được nhận sau giờ giải lao." },
+      { speaker: "발표자", hangul: "감사합니다. 이상으로 발표를 마치겠습니다.", meaning: "Thank you. I shall conclude here.", vi: "Cảm ơn quý vị. Tôi xin kết thúc phần trình bày tại đây." },
+      { speaker: "청중1", hangul: "발표 잘 들었습니다. 추가로 궁금한 점은 휴식 시간에 여쭙겠습니다.", meaning: "Thank you for the talk. I'll ask further questions during the break.", vi: "Cảm ơn anh/chị. Những điểm còn lại tôi xin hỏi vào giờ giải lao." },
+      { speaker: "청중2", hangul: "본 연구의 후속 과제로 어떤 방향을 고려하고 계십니까?", meaning: "What directions are you considering for follow-up work?", vi: "Anh/chị đang cân nhắc hướng nghiên cứu tiếp theo nào?" },
+      { speaker: "발표자", hangul: "장기 종단 자료를 활용하여 인과 구조를 보다 정밀히 검증하는 작업을 후속 과제로 두고 있습니다.", meaning: "We plan a follow-up using long-term longitudinal data to test the causal structure more rigorously.", vi: "Chúng tôi dự định sử dụng dữ liệu dọc dài hạn để kiểm chứng cấu trúc nhân quả một cách chặt chẽ hơn." },
+      { speaker: "사회자", hangul: "감사합니다. 발표자께 다시 한번 박수 부탁드립니다.", meaning: "Thank you. Please applaud the presenter once more.", vi: "Xin cảm ơn. Một lần nữa xin tràng pháo tay cho diễn giả." },
+    ],
+    roleplay_prompts: [
+      "Bạn đang trình bày luận văn thạc sĩ trước hội đồng. Hãy mở đầu bằng cấu trúc 'bối cảnh → khoảng trống → câu hỏi → giả thuyết'. Cụm vàng: '선행 연구는 ~을/를 보고해 왔습니다. 그러나 ~에 대해서는 충분히 다루어지지 않았습니다. 이에 본 연구는 ~을/를 검증하고자 합니다.'",
+      "Hội đồng hỏi vì sao bạn chọn giả thuyết một chiều thay vì hai chiều. Hãy đáp dùng 〜습니다 thể, viện dẫn lý thuyết tiền đề: '선행 이론, 특히 ~에 따라 방향성을 명시적으로 설정하였습니다.'",
+      "Một thành viên hội đồng yêu cầu bạn tóm gọn đóng góp lý thuyết trong một câu. Hãy dùng cấu trúc hedging trang trọng: '한 문장으로 말씀드리면, ~라는 점을 실증적으로 확인한 데에 본 연구의 이론적 기여가 있다고 사료됩니다.'",
+    ],
+    register_notes:
+      "Đăng ký C1 cho thesis/giả thuyết: (1) Văn bản viết dùng 〜다 / 〜는다 thể (검증한다, 제기한다); phần nói trước hội đồng dùng 〜습니다 thể (검증하였습니다, 제기합니다). KHÔNG dùng 해요체 trong cả hai. (2) Hedging có ba mức: nhẹ '〜(으)ㄹ 수 있다', vừa '〜(으)ㄴ/는 것으로 보인다', mạnh-trang trọng '〜(으)ㄹ 수 있다고 사료된다' — sau cùng chỉ dùng cho phát biểu chính, không lạm dụng. (3) Cụm chuẩn 본 연구 (this study) thay vì 우리 연구 (our research) — thể hiện khoảng cách học thuật. (4) Khi giới thiệu giả thuyết: 다음과 같이 제시한다 / 다음과 같은 가설을 검증하고자 한다 — dùng nominalization 〜기 hoặc 〜것 cho cấu trúc động từ-thành-danh. (5) Khi liên kết khoảng trống → câu hỏi: 이러한 점에서 / 이에 따라 / 이를 바탕으로. (6) Tránh từ Anh hóa khi đã có 한자어 chuẩn — dùng 검증 thay vì 테스트, 가설 thay vì 하이퍼시스. (7) Khi diễn giả tự xưng: dùng 본 연구자 hoặc 필자 trong văn viết; 〜하였습니다 thể trong nói.",
+    idiom_glosses: [
+      { idiom: "공백을 메우다", literal: "lấp khoảng trống", meaning: "(문어/격식) lấp khoảng trống nghiên cứu — cụm chuẩn trong intro của bản thảo", example: "본 연구는 선행 연구의 공백을 메우고자 한다." },
+      { idiom: "논지를 전개하다", literal: "triển khai luận điểm", meaning: "(문어/격식) trình bày triển khai lập luận", example: "필자는 다음 절에서 논지를 단계적으로 전개하고자 한다." },
+      { idiom: "근거를 들다", literal: "viện dẫn căn cứ", meaning: "(격식) viện dẫn bằng chứng / luận cứ", example: "주장을 뒷받침할 근거를 충분히 들었다." },
+      { idiom: "사료된다", literal: "được suy xét rằng", meaning: "(문어/매우 격식) hedging cao cấp — thường gặp ở kết luận", example: "본 결과는 선행 모형을 보완할 수 있다고 사료된다." },
+    ],
+    cultural_notes_vi:
+      "Văn hóa thuyết trình học thuật Hàn (학회) khác Việt ở vài điểm: (1) Mở đầu trang trọng — '안녕하십니까. 본 발표는 ~을/를 다룹니다' là khung chuẩn; bỏ phần này bị coi là không lễ độ. (2) Hệ thứ bậc: tiến sĩ + giáo sư trong phòng được xưng 〜교수님; chủ tịch hội thảo (사회자) điều phối, đáp lại 사회자 trước khi trả lời câu hỏi. (3) Câu hỏi từ thành viên cao niên thường có thuật ngữ '여쭙다' (xin hỏi — khiêm cung): bạn đáp lại bằng '좋은 지적이십니다 / 중요한 질문이십니다' để công nhận trước khi vào nội dung. (4) Bác bỏ giả thuyết của diễn giả khác hiếm khi trực diện — thường mở bằng 'A 부분에는 동의하지만, B에 대해서는 다른 해석도 가능할 듯합니다'. (5) Q&A ở Hàn thường dài hơn Việt; nhiều câu hỏi cùng lúc bị coi là không tôn trọng — chờ 사회자 chọn người tiếp theo. (6) Sau buổi, danh thiếp (명함) trao hai tay; nói '잘 부탁드립니다' khi muốn duy trì liên hệ.",
+    tip_advice_vi:
+      "Bộ khung 4 ô để dựng phần mở luận văn ở C1: (1) BỐI CẢNH — 1 câu định vị lĩnh vực, dùng 〜은/는 분야이다 / 〜은/는 영역이다. (2) KHOẢNG TRỐNG — '선행 연구는 ~을/를 보고해 왔다. 그러나 ~에 대해서는 충분히 다루어지지 않았다.' (3) CÂU HỎI — '이에 따라 다음의 연구 문제를 제기한다.' Chia 1-2 câu hỏi cụ thể, đánh số 첫째/둘째. (4) GIẢ THUYẾT — '본 가설을 다음과 같이 진술한다' + phát biểu cô đọng. Mẹo phát âm: 본 연구 đọc /본녕구/ liên âm; 가설 đọc /가설/ với 'ㄹ' nhẹ. Khi nói 〜하였습니다 thể, hạ giọng cuối câu để giữ trang trọng — không lên giọng kiểu 〜요. Khi bị hỏi 'tại sao chọn cách tiếp cận này?', luôn neo vào 선행 이론 — viện dẫn một học giả cụ thể (예: Deci & Ryan의 자기결정성 이론). Tránh '제가 그냥 그렇게 했습니다' — đó là tự đánh hỏng uy tín. Cuối cùng: nếu chưa biết câu trả lời, hãy nói '좋은 지적이십니다. 그 부분은 추가로 검토한 뒤 답변드리겠습니다' — đây là cách mắc thoát chỉn chu của giới học thuật Hàn.",
+    exercises: [
+      { type: "fill-blank", question: "본 연구는 다음과 같은 ___을 검증하고자 한다.", answer: "가설" },
+      {
+        type: "matching",
+        pairs: [
+          { hangul: "공백을 메우다", meaning: "lấp khoảng trống nghiên cứu" },
+          { hangul: "논지를 전개하다", meaning: "triển khai luận điểm" },
+          { hangul: "근거를 들다", meaning: "viện dẫn bằng chứng" },
+          { hangul: "사료된다", meaning: "(hedging trang trọng) được suy xét rằng" },
+        ],
+        instruction: "Nối thành ngữ học thuật với nghĩa",
+      },
+      { type: "translation", vietnamese: "Trong các nghiên cứu trước, vấn đề này chưa được xử lý thấu đáo.", hangul: "선행 연구에서는 이 문제가 충분히 다루어지지 않았다." },
+    ],
+  },
+
+  // 93. Citing sources & attribution
+  {
+    id: 93,
+    level: "C1",
+    title_vi: "Trích dẫn nguồn & quy gán",
+    title_en: "Citing sources & attribution",
+    intro_vi:
+      "Bài này tập cách trích dẫn (인용) và quy gán quan điểm (귀속) trong văn học thuật Hàn — phân biệt trích nguyên văn (직접 인용), trích diễn ý (간접 인용), và tóm gọn (요약). Cấu trúc 〜에 따르면, 〜이/가 지적한 바와 같이 là cụm chuẩn. Tránh 'X said that' kiểu Anh ngữ — Hàn dùng 〜라고 보고하였다 / 〜라고 주장하였다 với động từ chuyển dẫn riêng.",
+    vocabulary: [
+      { hangul: "인용 (引用)", meaning: "trích dẫn" },
+      { hangul: "출처 (出處)", meaning: "nguồn / xuất xứ" },
+      { hangul: "참고 문헌 (參考 文獻)", meaning: "tài liệu tham khảo" },
+      { hangul: "직접 인용", meaning: "trích nguyên văn" },
+      { hangul: "간접 인용", meaning: "trích diễn ý" },
+      { hangul: "지적하다 (指摘)", meaning: "chỉ ra (động từ chuyển dẫn trang trọng)" },
+      { hangul: "주장하다 (主張)", meaning: "lập luận / khẳng định" },
+      { hangul: "보고하다 (報告)", meaning: "báo cáo" },
+      { hangul: "귀속시키다 (歸屬)", meaning: "quy gán cho" },
+      { hangul: "표절 (剽竊)", meaning: "đạo văn" },
+    ],
+    sentences: [
+      { korean: "Kim(2020)에 따르면 이 현상은 1990년대 이후 가속화되었다.", romanized: "Kim(icheon-i-sip)e ttareumyeon i hyeonsang-eun cheon-gubaek-gusip-nyeondae i-hu gasokhwadoeeotda.", en: "According to Kim (2020), this phenomenon has accelerated since the 1990s.", vi: "Theo Kim (2020), hiện tượng này đã được đẩy nhanh kể từ thập niên 1990." },
+      { korean: "Lee와 Park(2018)은 이와 다른 결론을 제시한 바 있다.", romanized: "Lee-wa Park(icheon-sippal)eun iwa dareun gyeolloneul jesihan ba itda.", en: "Lee and Park (2018) have presented a different conclusion.", vi: "Lee và Park (2018) đã từng đưa ra kết luận khác." },
+      { korean: "선행 연구가 지적한 바와 같이, 이 변수는 안정적이지 않다.", romanized: "Seonhaeng yeonguga jijeokhan bawa gachi, i byeonsuneun anjeongjeogiji anta.", en: "As prior research has noted, this variable is not stable.", vi: "Như các nghiên cứu trước đã chỉ ra, biến số này không ổn định." },
+      { korean: "본 인용은 출처와 함께 명시되어야 한다.", romanized: "Bon inyongeun chulcheowa hamkke myeongsidoeeoya handa.", en: "The citation must be stated with its source.", vi: "Phần trích dẫn này phải được ghi rõ kèm nguồn." },
+      { korean: "직접 인용은 큰따옴표 안에, 간접 인용은 본문에 자연스럽게 녹여 쓴다.", romanized: "Jikjeop inyongeun keunttaomppyo ane, ganjeop inyongeun bonmune jayeonseureopge nogyeo sseunda.", en: "Direct quotations go inside double quotes; indirect quotations are blended into the text.", vi: "Trích nguyên văn đặt trong ngoặc kép; trích diễn ý được hòa vào dòng văn." },
+    ],
+    dialogue: [
+      { speaker: "지도교수", hangul: "이 문장은 출처가 없는데, Kim 선생의 글에서 그대로 가져온 것 아닙니까?", meaning: "This sentence lacks a source — isn't it lifted from Prof. Kim's piece?" },
+      { speaker: "학생", hangul: "죄송합니다. 다음 판본에서 출처를 명시하겠습니다.", meaning: "I apologise. I will state the source in the next draft." },
+      { speaker: "지도교수", hangul: "직접 인용이라면 큰따옴표를, 간접 인용이라면 패러프레이즈를 분명히 해 주십시오.", meaning: "If it's a direct quote use double quotes; if it's indirect, make the paraphrase clear." },
+      { speaker: "학생", hangul: "네, 표절을 피하기 위해 인용 규정을 다시 확인하겠습니다.", meaning: "Yes, I will re-check the citation rules to avoid plagiarism." },
+    ],
+    dialogue_long: [
+      { speaker: "지도교수", hangul: "응웬 학생, 3장 두 번째 문단을 봐 주십시오. 출처가 빠져 있습니다.", meaning: "Mr Nguyen, please look at the second paragraph of Chapter 3. The source is missing.", vi: "Em Nguyễn, em xem đoạn thứ hai của chương 3 giúp tôi. Nguồn đang bị bỏ sót." },
+      { speaker: "학생", hangul: "확인해 보겠습니다. 어느 부분 말씀이신지요?", meaning: "I'll check. Which part do you mean?", vi: "Em xin xem ạ. Thầy nói cụ thể đoạn nào ạ?" },
+      { speaker: "지도교수", hangul: "'1990년대 이후 노동 시장의 양극화가 가속화되었다'라는 문장입니다. 이 주장은 Kim(2020)의 연구에서 처음 제기된 것입니다.", meaning: "The sentence 'labour-market polarisation accelerated after the 1990s.' That claim was first made in Kim (2020).", vi: "Câu 'sự phân cực thị trường lao động đã gia tăng sau thập niên 1990'. Luận điểm đó được Kim (2020) nêu ra đầu tiên." },
+      { speaker: "학생", hangul: "아, 그렇군요. 본문에 'Kim(2020)에 따르면'이라고 명시하면 되겠습니까?", meaning: "Ah, I see. Would 'According to Kim (2020)' in the body work?", vi: "Vâng, em hiểu. Em ghi 'Theo Kim (2020)' trong thân bài thì được không ạ?" },
+      { speaker: "지도교수", hangul: "그것이 간접 인용 형식입니다. 만약 원문 표현을 그대로 옮긴다면 큰따옴표를 사용하고 페이지까지 적어 주십시오.", meaning: "That is the indirect-citation form. If you reproduce the original wording, use double quotes and add the page number.", vi: "Đó là hình thức trích diễn ý. Nếu giữ nguyên câu chữ của tác giả thì dùng ngoặc kép và ghi cả số trang." },
+      { speaker: "학생", hangul: "알겠습니다. Kim(2020) 외에 보완할 만한 출처가 더 있을까요?", meaning: "Understood. Are there other sources I should add alongside Kim (2020)?", vi: "Em hiểu rồi ạ. Ngoài Kim (2020) còn nguồn nào nên bổ sung không ạ?" },
+      { speaker: "지도교수", hangul: "Lee와 Park(2018)의 비교 연구도 함께 언급하면 균형이 맞겠습니다. 두 연구는 서로 다른 결론에 이르렀기 때문입니다.", meaning: "It would be balanced to also mention Lee and Park (2018), since the two studies reached different conclusions.", vi: "Em nên dẫn thêm nghiên cứu so sánh của Lee và Park (2018) cho cân bằng — hai nghiên cứu đi đến kết luận khác nhau." },
+      { speaker: "학생", hangul: "두 결론이 어떻게 다른지 한 문장으로 정리해 주실 수 있겠습니까?", meaning: "Could you summarise in one sentence how the two conclusions differ?", vi: "Thầy có thể tóm tắt trong một câu sự khác biệt giữa hai kết luận không ạ?" },
+      { speaker: "지도교수", hangul: "Kim은 가속화의 원인을 기술 변화에서, Lee와 Park은 제도적 요인에서 찾고 있습니다. 두 시각을 모두 보여 주는 것이 균형 잡힌 서술입니다.", meaning: "Kim attributes the acceleration to technology, while Lee and Park trace it to institutional factors. Showing both views makes for a balanced account.", vi: "Kim quy nguyên nhân cho biến đổi công nghệ, còn Lee và Park đặt trọng tâm ở yếu tố thể chế. Trình bày cả hai quan điểm sẽ cân bằng." },
+      { speaker: "학생", hangul: "그러면 본문에서 'Kim(2020)이 기술 변화를 강조한 반면, Lee와 Park(2018)은 제도적 요인을 지적한다'라고 쓰면 되겠습니까?", meaning: "So I'll write 'Whereas Kim (2020) emphasises technological change, Lee and Park (2018) point to institutional factors'?", vi: "Vậy em viết 'Trong khi Kim (2020) nhấn mạnh biến đổi công nghệ, Lee và Park (2018) chỉ ra các yếu tố thể chế' được không ạ?" },
+      { speaker: "지도교수", hangul: "예, 그렇게 쓰면 출처와 입장을 모두 분명히 보여 줄 수 있습니다. 동사 선택에도 주의해 주십시오. '주장하다', '지적하다', '보고하다'는 미묘하게 다릅니다.", meaning: "Yes, that makes both source and stance clear. Watch your reporting verbs too — 주장하다, 지적하다, 보고하다 carry slightly different shades.", vi: "Đúng. Như vậy thể hiện rõ cả nguồn lẫn lập trường. Em cũng để ý động từ chuyển dẫn — 주장하다, 지적하다, 보고하다 mang sắc thái khác nhau." },
+      { speaker: "학생", hangul: "구체적으로 어떻게 다른지요?", meaning: "How do they differ specifically?", vi: "Cụ thể thì khác nhau thế nào ạ?" },
+      { speaker: "지도교수", hangul: "'주장하다'는 강한 입장 표명, '지적하다'는 비판적 환기, '보고하다'는 자료에 근거한 중립적 보고를 함의합니다. 글의 톤에 맞게 골라 써야 합니다.", meaning: "주장하다 implies a strong stance, 지적하다 a critical pointing-out, 보고하다 a neutral data-based report. Pick the verb that fits your tone.", vi: "주장하다 hàm nghĩa khẳng định mạnh, 지적하다 mang tính phê phán nhẹ, 보고하다 thì trung lập dựa trên dữ liệu. Em chọn cho hợp với giọng văn." },
+      { speaker: "학생", hangul: "감사합니다. 인용 규정을 다시 한번 확인하고 다음 판본에서 모두 반영하겠습니다.", meaning: "Thank you. I'll re-check the citation rules and reflect them in the next draft.", vi: "Cảm ơn thầy. Em sẽ xem lại quy định trích dẫn và đưa hết vào bản sửa kế tiếp." },
+      { speaker: "지도교수", hangul: "표절은 단순한 형식 위반이 아니라 신뢰의 문제입니다. 사소한 출처라도 빠뜨리지 않도록 하십시오.", meaning: "Plagiarism is not a mere formality issue but a matter of trust. Don't miss even minor sources.", vi: "Đạo văn không phải chuyện hình thức mà là chuyện uy tín. Đừng bỏ sót dù là nguồn nhỏ." },
+      { speaker: "학생", hangul: "명심하겠습니다.", meaning: "I will bear that in mind.", vi: "Em xin khắc cốt ghi tâm." },
+      { speaker: "지도교수", hangul: "다음 주 화요일까지 수정본을 제출해 주십시오.", meaning: "Please submit the revision by next Tuesday.", vi: "Em nộp bản sửa cho tôi trước thứ Ba tuần sau." },
+      { speaker: "학생", hangul: "예, 화요일 오전까지 보내드리겠습니다.", meaning: "Yes, I'll send it by Tuesday morning.", vi: "Vâng ạ, em sẽ gửi trước sáng thứ Ba." },
+    ],
+    roleplay_prompts: [
+      "Người hướng dẫn nhắc bạn đã viết một câu trích diễn ý mà thiếu nguồn. Hãy đáp dùng 〜습니다 thể, xin lỗi ngắn gọn, đề xuất sửa: '죄송합니다. 본문에 '~에 따르면'으로 명시하고 다음 판본에 반영하겠습니다.'",
+      "Bạn cần phân biệt 직접 인용 vs 간접 인용 trong cùng một đoạn. Hãy luyện cấu trúc: '직접 인용은 \"…\"로 표기하고, 간접 인용은 '~라고 보고하였다'와 같이 본문에 녹여 쓴다.'",
+      "Bạn muốn cân bằng hai quan điểm đối lập trong literature review. Hãy dùng cấu trúc 대조: 'Kim(2020)이 ~을/를 강조한 반면, Lee와 Park(2018)은 ~을/를 지적한다.'",
+    ],
+    register_notes:
+      "Citation đăng ký C1: (1) Cụm 〜에 따르면 / 〜이/가 지적한 바와 같이 / 〜이/가 보고한 바와 같이 là tiêu chuẩn intro của đoạn dẫn. (2) Động từ chuyển dẫn (reporting verbs) phân ba lớp: 주장하다 (lập trường mạnh) > 지적하다 (phê phán nhẹ) > 보고하다 (trung lập). Chọn theo giọng văn — bắt đầu mọi câu bằng '말했다' bị coi non-academic. (3) Định dạng năm: Kim(2020), Lee와 Park(2018), Kim 외(2019) cho ba người trở lên. Trong văn viết Hàn các tên Latin giữ nguyên không phiên âm. (4) Khi tự dẫn nghiên cứu của chính mình ở phần khác: 본 연구자는 별고에서(2022) — KHÔNG dùng 'I'. (5) 〜인용한 바 있다 / 〜제시한 바 있다 — cấu trúc 〜한 바 있다 nhấn mạnh tiền lệ, dùng cho dẫn nguồn lịch sử. (6) Tránh 'said' kiểu Anh ngữ qua dịch — '말하였다' nghe non-formal. (7) Khi không chắc nguồn: 'Kim(2020)이 ~로 추정된다고 본다' (Kim cho rằng X có khả năng) — kết hợp citation và hedging.",
+    idiom_glosses: [
+      { idiom: "출처를 밝히다", literal: "làm rõ xuất xứ", meaning: "(격식) ghi rõ nguồn — cụm chuẩn của đạo đức học thuật", example: "모든 인용은 출처를 정확히 밝혀야 한다." },
+      { idiom: "지적한 바와 같이", literal: "đúng như đã chỉ ra", meaning: "(문어/격식) như đã được chỉ ra — chuyển ý liên kết với nguồn", example: "Lee(2019)가 지적한 바와 같이, 이 효과는 일관되지 않는다." },
+      { idiom: "선행 연구를 검토하다", literal: "rà soát nghiên cứu tiền bối", meaning: "(격식) đánh giá tổng quan — bước bắt buộc của literature review", example: "본 절에서는 선행 연구를 비판적으로 검토한다." },
+      { idiom: "한 발 더 나아가다", literal: "tiến thêm một bước", meaning: "(문어) đi xa hơn — dùng khi nghiên cứu kế thừa và mở rộng kết luận trước", example: "본 연구는 Kim(2020)에서 한 발 더 나아가 매개 효과를 검증한다." },
+    ],
+    cultural_notes_vi:
+      "Văn hóa trích dẫn Hàn ở học thuật: (1) Đạo văn (표절) bị xử lý nghiêm — đại học top như SNU, Yonsei có hệ thống Turnitin tự động; sinh viên Việt cần đặc biệt cẩn trọng. (2) Phong cách APA / Chicago được dùng chủ yếu trong KHXH; ngành kỹ thuật theo IEEE. Nhiều tạp chí Hàn ngữ có riêng quy ước — kiểm tra '투고 규정' của tạp chí trước khi nộp. (3) Khi dẫn học giả Hàn cao niên, kèm danh xưng 〜교수 trong văn nói (학회 발표) nhưng KHÔNG trong văn viết — văn viết chỉ ghi họ + năm. (4) Self-citation ở Hàn ít gắt như phương Tây nhưng cần thiết phải có lý do chính đáng — 'Kim(2022) đã từng làm X, nay mở rộng sang Y'. (5) Ý thức về 'lineage học thuật' (학맥) cao — biết ai là học trò ai sẽ giúp dẫn nguồn khôn khéo. (6) Khi gặp khó khăn về diễn ngôn vì là người không nói tiếng Hàn bản ngữ, viện đào tạo có 글쓰기 센터 (Writing Center) hỗ trợ — đa số cho phép sinh viên quốc tế. (7) Tài liệu Hán Nôm cổ Việt Nam có thể được trích dẫn ở Hàn — nhiều trường có khoa Hán học (한문학) nghiên cứu kinh điển khu vực. (8) Sau công bố, gửi bản tách 별쇄본 cho người được trích dẫn là phép lịch sự còn được giữ.",
+    tip_advice_vi:
+      "Quy trình trích dẫn an toàn 4 bước: (1) Khi đọc, ghi ngay tác giả + năm + trang vào ghi chú — đừng trì hoãn. (2) Khi viết, mỗi luận điểm không phải của bạn phải có một citation. Nếu chưa có, đánh dấu [출처?] để quay lại sau. (3) Phân biệt diễn ý vs nguyên văn: nếu đổi 3+ từ liên tiếp → diễn ý; nếu giữ 5+ từ liên tiếp → nguyên văn cần ngoặc kép. (4) Bibliography rà cuối cùng bằng phần mềm (EndNote, Zotero, Mendeley). Mẹo chọn động từ chuyển dẫn: 강조하다 (nhấn mạnh) — họ rất tin điều đó. 시사하다 (gợi ý) — kết luận chưa quả quyết. 제안하다 (đề xuất) — đưa ra giải pháp. 비판하다 (phê phán) — chống lại quan điểm khác. 인정하다 (thừa nhận) — chấp nhận điều bất lợi. Thay đổi động từ chuyển dẫn theo từng paragraph để văn không lặp. Tránh: (a) Dẫn nguồn không rõ — nói 'một nghiên cứu chỉ ra' mà không tên; (b) Dẫn từ Wikipedia — không được chấp nhận; (c) Dẫn lại không kiểm chứng — nếu trích Lee qua Kim, ghi 'Lee(2010, Kim 2020에서 재인용)'. Khi giáo sư hướng dẫn yêu cầu thêm nguồn, đừng phòng thủ — họ giúp bạn tránh đạo văn. Câu mẫu chấp nhận: '지적해 주셔서 감사합니다. 다음 판본에 반영하겠습니다.'",
+    exercises: [
+      { type: "fill-blank", question: "Kim(2020)에 ___ 이 현상은 1990년대 이후 가속화되었다.", answer: "따르면" },
+      {
+        type: "matching",
+        pairs: [
+          { hangul: "출처를 밝히다", meaning: "ghi rõ nguồn" },
+          { hangul: "지적한 바와 같이", meaning: "đúng như đã chỉ ra" },
+          { hangul: "선행 연구를 검토하다", meaning: "rà soát nghiên cứu tiền bối" },
+          { hangul: "한 발 더 나아가다", meaning: "tiến thêm một bước (kế thừa và mở rộng)" },
+        ],
+        instruction: "Nối thành ngữ học thuật với nghĩa",
+      },
+      { type: "translation", vietnamese: "Như các nghiên cứu trước đã chỉ ra, biến số này không ổn định.", hangul: "선행 연구가 지적한 바와 같이, 이 변수는 안정적이지 않다." },
+    ],
+  },
 ];
