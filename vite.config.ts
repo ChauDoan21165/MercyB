@@ -128,6 +128,10 @@ export default defineConfig({
         'icons/icon-maskable-512.png',
       ],
       workbox: {
+        // Bumped from the 2 MiB default because the mercy-guide chunk is
+        // ~2.12 MB and growing as content lands; chunk-splitting is
+        // separate tech debt.
+        maximumFileSizeToCacheInBytes: 5 * 1024 * 1024,
         // Offline Lite v2 — when the browser does an SPA navigation
         // (e.g. user refreshes /room/foo while offline), serve the
         // cached index.html so the app shell boots and the in-app
