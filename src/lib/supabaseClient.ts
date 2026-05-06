@@ -1,3 +1,4 @@
+// src/lib/supabaseClient.ts
 /**
  * MercyBlade Blue — Supabase Client (CANONICAL)
  *
@@ -111,18 +112,24 @@ if (!rawSupabaseUrl || !rawSupabaseAnonKey) {
 
 // Capacitor injects `window.Capacitor` at runtime in the native shell. Detect
 // without importing `@capacitor/core` so this module stays test-safe (the
-// vitest jsdom env can't resolve that package). On native we swap supabase-js's
-// default `navigator.locks` coordinator for a no-op: WKWebView's lock impl
-// stalls under cold-boot contention and surfaces "Lock was stolen / Lock broken"
-// AbortErrors. Single-tab native context means cross-tab coordination — the
-// only thing the real lock provides — isn't needed. On web we leave the default
-// untouched so multi-tab refresh stays coordinated.
+// vitest jsdom env can't resolve that package).
 const isNativeShell =
   typeof window !== "undefined" &&
   Boolean(
     (window as { Capacitor?: { isNativePlatform?: () => boolean } }).Capacitor
       ?.isNativePlatform?.(),
   );
+
+// Android Chrome can surface Supabase auth's Web Locks contention as an
+// unhandled production AbortError: "Lock broken by another request with the
+// 'steal' option." In MercyBlade, avoiding that fatal browser lock path is safer
+// than crashing the app during anonymous/home auth bootstrap.
+const isAndroidChrome =
+  typeof navigator !== "undefined" &&
+  /Android/i.test(navigator.userAgent) &&
+  /Chrome/i.test(navigator.userAgent);
+
+const shouldBypassAuthLock = isNativeShell || isAndroidChrome;
 
 const noopAuthLock = <R,>(
   _name: string,
@@ -141,7 +148,7 @@ export const supabase: SupabaseClient = createClient(
       storageKey,
       storage,
       flowType: "pkce",
-      ...(isNativeShell ? { lock: noopAuthLock } : {}),
+      ...(shouldBypassAuthLock ? { lock: noopAuthLock } : {}),
     },
   },
 );
