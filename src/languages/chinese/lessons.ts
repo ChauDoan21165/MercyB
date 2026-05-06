@@ -7468,6 +7468,271 @@ level: "B2",
         pinyin: "Wǒ yǒu jiàn shì xiǎng gēn nǐ shuō, bù shì yào zé bèi nǐ. Zhè bù shì wǒ bù zài hu nǐ, shì wǒ xī wàng wǒ men de guān xi cháng jiǔ."
       }
     ]
+  },
+  {
+    id: 92,
+    level: "C1",
+    category: "academic_discourse",
+    title: "提出研究假设",
+    pinyin: "tí chū yán jiū jiǎ shè",
+    topic: "Presenting a research hypothesis",
+    title_vi: "Trình bày giả thuyết nghiên cứu",
+    title_en: "Presenting a research hypothesis",
+    sentences: [
+      {
+        chinese: "本研究旨在探讨人工智能辅助代码审查工具对初级开发人员代码质量之影响。",
+        pinyin: "Běn yánjiū zhǐ zài tàntǎo réngōng zhìnéng fǔzhù dàimǎ shěnchá gōngjù duì chūjí kāifā rényuán dàimǎ zhìliàng zhī yǐngxiǎng.",
+        english: "This study aims to investigate the impact of AI-assisted code review tools on junior developers' code quality.",
+        vi: "Nghiên cứu này nhằm khảo sát ảnh hưởng của công cụ rà soát mã nguồn hỗ trợ bởi trí tuệ nhân tạo đối với chất lượng mã của lập trình viên cấp đầu vào.",
+        pronunciation_focus: ["旨在 → zhǐ zài (nhằm mục đích — 书面)", "探讨 → tàntǎo (khảo sát)", "辅助 → fǔzhù (hỗ trợ)", "之影响 → zhī yǐngxiǎng (书面 chuộng 之 hơn 的)"]
+      },
+      {
+        chinese: "笔者假设, 在持续暴露于AI反馈三个月之后, 受试者所提交的代码缺陷率将显著下降。",
+        pinyin: "Bǐzhě jiǎshè, zài chíxù bàolù yú AI fǎnkuì sān gè yuè zhī hòu, shòushì zhě suǒ tíjiāo de dàimǎ quēxiànlǜ jiāng xiǎnzhù xiàjiàng.",
+        english: "The author hypothesizes that after three months of continuous AI feedback exposure, subjects' submitted code defect rate will decrease significantly.",
+        vi: "Tác giả giả thuyết rằng sau ba tháng tiếp xúc liên tục với phản hồi của AI, tỷ lệ lỗi trong mã do đối tượng nộp sẽ giảm đáng kể.",
+        pronunciation_focus: ["笔者 → bǐzhě (tác giả — 书面)", "受试者 → shòushì zhě (đối tượng nghiên cứu)", "缺陷率 → quēxiànlǜ", "显著 → xiǎnzhù (đáng kể)"]
+      },
+      {
+        chinese: "该假设之理论基础源自外部反馈循环对技能习得之促进作用, 此现象在教育心理学中已有充分论证。",
+        pinyin: "Gāi jiǎshè zhī lǐlùn jīchǔ yuán zì wàibù fǎnkuì xúnhuán duì jìnéng xídé zhī cùjìn zuòyòng, cǐ xiànxiàng zài jiàoyù xīnlǐxué zhōng yǐ yǒu chōngfèn lùnzhèng.",
+        english: "The hypothesis's theoretical foundation derives from the facilitating effect of external feedback loops on skill acquisition — a phenomenon thoroughly demonstrated in educational psychology.",
+        vi: "Cơ sở lý thuyết của giả thuyết này bắt nguồn từ tác dụng thúc đẩy của vòng phản hồi bên ngoài đối với việc tiếp thu kỹ năng — hiện tượng đã được chứng minh đầy đủ trong tâm lý học giáo dục.",
+        pronunciation_focus: ["该 → gāi (đó / nói trên — 书面)", "源自 → yuán zì (bắt nguồn từ)", "习得 → xídé (tiếp thu)", "此 → cǐ (này — 书面)"]
+      },
+      {
+        chinese: "然而, 此研究尚有一定局限性, 例如样本规模相对有限, 且仅限于使用单一编程语言的开发团队。",
+        pinyin: "Rán'ér, cǐ yánjiū shàng yǒu yīdìng júxiànxìng, lìrú yàngběn guīmó xiāngduì yǒuxiàn, qiě jǐn xiànyú shǐyòng dānyī biānchéng yǔyán de kāifā tuánduì.",
+        english: "However, this study has certain limitations, e.g., relatively limited sample size and restriction to teams using a single programming language.",
+        vi: "Tuy nhiên, nghiên cứu này vẫn có một số hạn chế nhất định, ví dụ quy mô mẫu tương đối hạn chế và chỉ giới hạn ở các nhóm phát triển sử dụng một ngôn ngữ lập trình duy nhất.",
+        pronunciation_focus: ["然而 → rán'ér (tuy nhiên — formal connector)", "尚有 → shàng yǒu (vẫn có — 书面)", "局限性 → júxiànxìng", "且 → qiě (và — 书面 thay 而且)"]
+      },
+      {
+        chinese: "综上所述, 若实验结果支持上述假设, 则本研究将为AI辅助开发工具之教学价值提供实证依据。",
+        pinyin: "Zōng shàng suǒ shù, ruò shíyàn jiéguǒ zhīchí shàngshù jiǎshè, zé běn yánjiū jiāng wèi AI fǔzhù kāifā gōngjù zhī jiàoxué jiàzhí tígōng shízhèng yījù.",
+        english: "In summary, if experimental results support the above hypothesis, this study will provide empirical evidence for the pedagogical value of AI-assisted development tools.",
+        vi: "Tóm lại, nếu kết quả thực nghiệm ủng hộ giả thuyết nêu trên, nghiên cứu này sẽ cung cấp bằng chứng thực nghiệm cho giá trị giáo huấn của công cụ phát triển hỗ trợ AI.",
+        pronunciation_focus: ["综上所述 → zōng shàng suǒ shù (tóm lại — 书面 connector)", "若...则 → ruò...zé (nếu...thì — 书面)", "实证依据 → shízhèng yījù (bằng chứng thực nghiệm)", "教学价值 → jiàoxué jiàzhí"]
+      }
+    ],
+    vocab: [
+      { chinese: "假设", pinyin: "jiǎ shè", english: "hypothesis", vi: "giả thuyết" },
+      { chinese: "旨在", pinyin: "zhǐ zài", english: "to aim at (formal)", vi: "nhằm mục đích" },
+      { chinese: "探讨", pinyin: "tàn tǎo", english: "to investigate / discuss", vi: "khảo sát / bàn luận" },
+      { chinese: "论证", pinyin: "lùn zhèng", english: "to demonstrate; argument", vi: "luận chứng" },
+      { chinese: "实证", pinyin: "shí zhèng", english: "empirical evidence", vi: "thực chứng / bằng chứng thực nghiệm" },
+      { chinese: "局限性", pinyin: "jú xiàn xìng", english: "limitation", vi: "tính hạn chế" },
+      { chinese: "显著", pinyin: "xiǎn zhù", english: "significant; remarkable", vi: "đáng kể / rõ rệt" },
+      { chinese: "缺陷率", pinyin: "quē xiàn lǜ", english: "defect rate", vi: "tỷ lệ khuyết tật" },
+      { chinese: "综上所述", pinyin: "zōng shàng suǒ shù", english: "in summary (formal)", vi: "tóm lại / như đã trình bày ở trên (书面)" },
+      { chinese: "由此可见", pinyin: "yóu cǐ kě jiàn", english: "from this one can see (formal)", vi: "qua đó có thể thấy (书面)" }
+    ],
+    dialogue: [
+      { speaker: "学生", chinese: "教授, 我想就开题报告中的核心假设向您汇报一下。", pinyin: "Jiàoshòu, wǒ xiǎng jiù kāití bàogào zhōng de héxīn jiǎshè xiàng nín huìbào yīxià.", english: "Professor, I'd like to brief you on the core hypothesis in my proposal.", vi: "Thưa giáo sư, em muốn báo cáo về giả thuyết cốt lõi trong đề cương ạ." },
+      { speaker: "教授", chinese: "好, 你先说一下你这个假设的理论基础是什么。", pinyin: "Hǎo, nǐ xiān shuō yīxià nǐ zhège jiǎshè de lǐlùn jīchǔ shì shénme.", english: "Good — first explain the theoretical basis of your hypothesis.", vi: "Tốt, em nói trước về cơ sở lý thuyết của giả thuyết." },
+      { speaker: "学生", chinese: "主要源自外部反馈循环对技能习得的促进作用, 已有相关教育心理学研究支持。", pinyin: "Zhǔyào yuán zì wàibù fǎnkuì xúnhuán duì jìnéng xídé de cùjìn zuòyòng, yǐ yǒu xiāngguān jiàoyù xīnlǐxué yánjiū zhīchí.", english: "Mainly from the facilitating effect of external feedback loops on skill acquisition — supported by educational psychology research.", vi: "Chủ yếu từ tác dụng thúc đẩy của vòng phản hồi bên ngoài đối với tiếp thu kỹ năng — đã có nghiên cứu tâm lý học giáo dục liên quan ủng hộ." },
+      { speaker: "教授", chinese: "嗯, 那你的样本规模和实验周期是怎么设计的? 局限性有没有充分讨论?", pinyin: "Èn, nà nǐ de yàngběn guīmó hé shíyàn zhōuqī shì zěnme shèjì de? Júxiànxìng yǒu méi yǒu chōngfèn tǎolùn?", english: "Mm, then how did you design sample size and experimental period? Are limitations sufficiently discussed?", vi: "Ừm, vậy quy mô mẫu và chu kỳ thực nghiệm em thiết kế thế nào? Hạn chế đã được bàn đầy đủ chưa?" }
+    ],
+    dialogue_long: [
+      { speaker: "学生", chinese: "教授, 这是我开题报告的初稿。我提出的核心假设是: AI辅助代码审查工具能显著降低初级开发人员的代码缺陷率。", pinyin: "Jiàoshòu, zhè shì wǒ kāití bàogào de chūgǎo. Wǒ tíchū de héxīn jiǎshè shì: AI fǔzhù dàimǎ shěnchá gōngjù néng xiǎnzhù jiàngdī chūjí kāifā rényuán de dàimǎ quēxiànlǜ.", english: "Professor, this is the first draft of my proposal. My core hypothesis: AI-assisted code review tools can significantly lower junior developer code defect rate.", vi: "Thưa giáo sư, đây là bản nháp đầu tiên của đề cương. Giả thuyết cốt lõi: công cụ rà soát mã hỗ trợ AI có thể giảm đáng kể tỷ lệ lỗi mã của lập trình viên đầu vào." },
+      { speaker: "教授", chinese: "题目本身有研究价值。但你这个假设比较强, 用'显著'这个词需要谨慎。你预设的效应量大概是多少?", pinyin: "Tímù běnshēn yǒu yánjiū jiàzhí. Dàn nǐ zhège jiǎshè bǐjiào qiáng, yòng 'xiǎnzhù' zhège cí xūyào jǐnshèn. Nǐ yùshè de xiàoyìngliàng dàgài shì duōshǎo?", english: "The topic has research value. But your hypothesis is rather strong — using 'significant' requires caution. What effect size are you presupposing?", vi: "Đề tài có giá trị nghiên cứu. Nhưng giả thuyết khá mạnh, dùng từ 'đáng kể' cần thận trọng. Em giả định độ lớn hiệu ứng khoảng bao nhiêu?" },
+      { speaker: "学生", chinese: "根据已有文献, Cohen's d 大约0.5左右, 属于中等效应。所以我把'显著'界定为p < 0.01, 而非简单的p < 0.05。", pinyin: "Gēnjù yǐ yǒu wénxiàn, Cohen's d dàyuē 0.5 zuǒyòu, shǔyú zhōngděng xiàoyìng. Suǒyǐ wǒ bǎ 'xiǎnzhù' jièdìng wéi p < 0.01, ér fēi jiǎndān de p < 0.05.", english: "Per existing literature, Cohen's d about 0.5 — medium effect. So I define 'significant' as p < 0.01, not simply p < 0.05.", vi: "Theo tài liệu đã có, Cohen's d khoảng 0.5, thuộc hiệu ứng trung bình. Nên em định nghĩa 'đáng kể' là p < 0.01, chứ không phải đơn giản p < 0.05." },
+      { speaker: "教授", chinese: "这个判断是合理的。那理论基础呢? 你不能只说'反馈循环', 这个概念太宽泛。你需要锁定一个具体的认知机制。", pinyin: "Zhège pànduàn shì hélǐ de. Nà lǐlùn jīchǔ ne? Nǐ bù néng zhǐ shuō 'fǎnkuì xúnhuán', zhège gàiniàn tài kuānfàn. Nǐ xūyào suǒdìng yī gè jùtǐ de rènzhī jīzhì.", english: "Reasonable call. Theoretical basis though? You can't just say 'feedback loops' — too broad. You need to pin a specific cognitive mechanism.", vi: "Đánh giá hợp lý. Còn cơ sở lý thuyết? Em không thể chỉ nói 'vòng phản hồi', khái niệm quá rộng. Cần khóa lại một cơ chế nhận thức cụ thể." },
+      { speaker: "学生", chinese: "我考虑用Anders Ericsson的'刻意练习'理论作为框架, 因为AI反馈具备即时性和针对性, 与其核心要素相符。", pinyin: "Wǒ kǎolǜ yòng Anders Ericsson de 'kèyì liànxí' lǐlùn zuòwéi kuàngjià, yīnwèi AI fǎnkuì jùbèi jíshíxìng hé zhēnduìxìng, yǔ qí héxīn yàosù xiāngfú.", english: "I'm considering Anders Ericsson's 'deliberate practice' theory as framework — AI feedback has immediacy and targeting, matching its core elements.", vi: "Em định dùng lý thuyết 'luyện tập có chủ đích' của Anders Ericsson làm khung — phản hồi AI có tính tức thời và tính nhắm trúng, phù hợp với các yếu tố cốt lõi." },
+      { speaker: "教授", chinese: "好。这个理论框架站得住脚。但你也得讨论它的局限性: 刻意练习理论本身在体育和音乐领域更成熟, 软件工程领域的适用性还有待验证。", pinyin: "Hǎo. Zhège lǐlùn kuàngjià zhàn de zhù jiǎo. Dàn nǐ yě děi tǎolùn tā de júxiànxìng: kèyì liànxí lǐlùn běnshēn zài tǐyù hé yīnyuè lǐngyù gèng chéngshú, ruǎnjiàn gōngchéng lǐngyù de shìyòngxìng hái yǒu dài yànzhèng.", english: "Good — that framework holds up. But you also have to discuss its limits: deliberate-practice is more mature in sports/music; software engineering applicability remains to be verified.", vi: "Tốt. Khung lý thuyết đứng vững. Nhưng cũng phải bàn về hạn chế của nó: lý thuyết luyện tập có chủ đích chín muồi hơn ở thể thao và âm nhạc, tính áp dụng trong kỹ thuật phần mềm còn cần kiểm chứng." },
+      { speaker: "学生", chinese: "明白。我会在'研究局限'一节中明确指出: 现有理论的领域迁移性、样本规模、单一编程语言这三点。", pinyin: "Míngbái. Wǒ huì zài 'yánjiū júxiàn' yī jié zhōng míngquè zhǐchū: xiàn yǒu lǐlùn de lǐngyù qiānyíxìng, yàngběn guīmó, dānyī biānchéng yǔyán zhè sān diǎn.", english: "Understood. I'll explicitly note in 'study limitations': domain transferability, sample size, single programming language.", vi: "Em hiểu. Em sẽ chỉ rõ trong mục 'hạn chế nghiên cứu': tính chuyển giao lĩnh vực, quy mô mẫu, ngôn ngữ lập trình duy nhất." },
+      { speaker: "教授", chinese: "另外, 你的零假设要写清楚。'AI反馈不影响代码质量'这个表述还不够准确, 应该具体到效应量和置信区间。", pinyin: "Lìngwài, nǐ de líng jiǎshè yào xiě qīngchu. 'AI fǎnkuì bù yǐngxiǎng dàimǎ zhìliàng' zhège biǎoshù hái bù gòu zhǔnquè, yīnggāi jùtǐ dào xiàoyìngliàng hé zhìxìn qūjiān.", english: "Also, write your null hypothesis clearly. 'AI feedback doesn't affect code quality' is still imprecise — be specific about effect size and confidence interval.", vi: "Ngoài ra, giả thuyết không (null) phải viết rõ. Câu 'phản hồi AI không ảnh hưởng đến chất lượng mã' chưa đủ chính xác, cần cụ thể đến độ lớn hiệu ứng và khoảng tin cậy." },
+      { speaker: "学生", chinese: "好的。我会改成: 'AI反馈组与对照组的缺陷率差异在95%置信区间内不超过0.1每千行代码'。", pinyin: "Hǎo de. Wǒ huì gǎi chéng: 'AI fǎnkuì zǔ yǔ duìzhào zǔ de quēxiànlǜ chāyì zài 95% zhìxìn qūjiān nèi bù chāoguò 0.1 měi qiān háng dàimǎ'.", english: "Yes. I'll rewrite: 'Defect rate difference between AI feedback and control groups does not exceed 0.1 per kLOC within 95% CI.'", vi: "Vâng. Em sẽ sửa thành: 'Chênh lệch tỷ lệ lỗi giữa nhóm phản hồi AI và nhóm đối chứng không vượt quá 0,1 trên một nghìn dòng mã trong khoảng tin cậy 95%'." },
+      { speaker: "教授", chinese: "这样具体多了。一个好的假设, 应该是可证伪的、可量化的、有理论支撑的。你这一稿离这个标准已经不远了。", pinyin: "Zhèyàng jùtǐ duō le. Yī gè hǎo de jiǎshè, yīnggāi shì kě zhèngwěi de, kě liànghuà de, yǒu lǐlùn zhīchēng de. Nǐ zhè yī gǎo lí zhège biāozhǔn yǐjīng bù yuǎn le.", english: "Much more specific. A good hypothesis must be falsifiable, quantifiable, theoretically supported. Your draft isn't far from that standard.", vi: "Như thế cụ thể hơn nhiều. Một giả thuyết tốt phải là khả bác (chứng minh sai được), khả định lượng, có lý thuyết hỗ trợ. Bản nháp của em đã không xa tiêu chuẩn này lắm." },
+      { speaker: "学生", chinese: "谢谢教授指点。我下周交修订稿。", pinyin: "Xièxie jiàoshòu zhǐdiǎn. Wǒ xià zhōu jiāo xiūdìnggǎo.", english: "Thank you for the guidance. I'll submit the revised draft next week.", vi: "Cảm ơn sự chỉ dạy của giáo sư. Tuần sau em nộp bản sửa." },
+      { speaker: "教授", chinese: "好。提醒一句: 假设不要过度承诺。学术界对'颠覆性'结论一向警惕, 你写得保守一点反而更可信。", pinyin: "Hǎo. Tíxǐng yī jù: jiǎshè bùyào guòdù chéngnuò. Xuéshùjiè duì 'diānfùxìng' jiélùn yīxiàng jǐngtì, nǐ xiě de bǎoshǒu yīdiǎn fǎn'ér gèng kěxìn.", english: "Reminder: don't over-commit your hypothesis. Academia is wary of 'disruptive' conclusions — writing conservatively reads as more credible.", vi: "Nhắc một câu: giả thuyết đừng cam kết quá mức. Giới học thuật luôn cảnh giác với kết luận 'mang tính đột phá', viết thận trọng hơn ngược lại đáng tin hơn." }
+    ],
+    roleplay_prompts: [
+      "Bạn là nghiên cứu sinh tiến sĩ trình bày giả thuyết của luận án trước hội đồng (3 giáo sư). Đề tài: 'Mô hình ngôn ngữ lớn có cải thiện năng suất viết tài liệu kỹ thuật của kỹ sư hay không?'. Hãy: (1) phát biểu giả thuyết một cách chính xác (specific, falsifiable), (2) nêu cơ sở lý thuyết, (3) thừa nhận một hạn chế cụ thể, (4) chốt bằng câu '由此可见 / 综上所述'. Tránh các từ '革命性 / 颠覆 / 突破' (quá mạnh, không academic).",
+      "Bạn là supervisor đang đọc bản đề cương của sinh viên cao học. Giả thuyết của họ là 'AI có thể thay thế lập trình viên'. Hãy phản hồi theo register học thuật: chỉ ra giả thuyết quá rộng, không kiểm chứng được, chưa xác định biến độc lập. Đề xuất cụ thể cách thu hẹp lại. Dùng cụm '此假设 / 该研究 / 笔者建议'.",
+      "Bạn là sinh viên Việt Nam viết outline luận văn thạc sĩ về 'Hiệu quả của AI trong dạy học tiếng Trung'. Hãy chuyển bản nháp tiếng Việt 'Tôi nghĩ AI giúp ích nhiều cho người học' sang tiếng Trung học thuật C1: dùng 笔者假设 / 旨在 / 实证依据 / 局限性. Tối thiểu 3 câu, mỗi câu sử dụng ít nhất 1 connector 书面."
+    ],
+    register_notes: "Trình bày giả thuyết là kỹ năng bút ngôn (书面语) cốt lõi ở C1.\n\nNGUYÊN TẮC CHÍNH:\n\n1. CHÍNH XÁC HƠN MẠNH MẼ: '可能 / 似乎 / 或许' nghe academic hơn '一定 / 肯定 / 必然'. Học giả Trung Quốc đánh giá CAO sự khiêm tốn epistemic. Câu 'AI tools 可能 提升代码质量' nghe đáng tin cậy hơn 'AI tools 必然 提升代码质量'.\n\n2. CẤU TRÚC GIẢ THUYẾT CHUẨN:\n- 笔者假设... (tác giả giả thuyết...)\n- 本研究旨在... (nghiên cứu này nhằm...)\n- 该假设之理论基础... (cơ sở lý thuyết của giả thuyết...)\n- 综上所述... (tóm lại...)\n\n3. ĐỘNG TỪ 书面 KEY:\n- 提出 (đưa ra) > 写\n- 探讨 (khảo sát) > 看\n- 论证 (luận chứng) > 证明 (quá mạnh)\n- 拟 (định / dự định) > 想\n\n4. CONNECTORS:\n- 然而 (tuy nhiên) > 但是\n- 此外 (ngoài ra) > 还有\n- 综上所述 (tóm lại — chỉ dùng cuối) > 总之\n- 由此可见 (qua đó có thể thấy) > 所以\n- 换言之 (nói cách khác) > 也就是说\n\n5. PRONOMINALS 书面:\n- 本研究 (nghiên cứu này) > 这个研究\n- 此现象 / 该现象 > 这个现象\n- 笔者 (first person formal) > 我\n- 之 (của) > 的 (trong cấu trúc danh từ trừu tượng)\n\n6. HEDGING (làm dịu khẳng định):\n- 似乎 (dường như)\n- 在某种程度上 (ở một mức độ nào đó)\n- 有待进一步研究 (cần nghiên cứu thêm)\n- 不无道理 (không phải không có lý — double negative)\n- 初步显示 (kết quả sơ bộ cho thấy)\n\n7. CẦN TRÁNH (口语):\n- 我觉得 / 我认为 (subjective) → 笔者认为 / passive\n- 啊 / 呢 / 吧 (sentence-final particles) → 0% trong 书面语\n- 真的 / 特别 / 超 (intensifiers) → 极为 / 颇为 / 相当\n- 而且 → 此外 / 再者\n- 但是 → 然而\n- 因为 → 由于\n\n8. SCALE-CALIBRATION:\n- 显著 (statistical sig) — chỉ dùng khi có data\n- 颇为 (khá) — neutral\n- 极为 (cực kỳ) — strong, dùng cẩn thận\n- 一定程度 (mức độ nhất định) — hedge\n\nKhi chấm điểm bài viết của sinh viên, giáo sư Trung Quốc thường扣 điểm vì: (a) dùng '我觉得', (b) dùng '一定 / 肯定' khi không đủ chứng cứ, (c) thiếu connector chuyển ý, (d) lặp '是 / 有'.",
+    idiom_glosses: [
+      {
+        idiom: "言之有据",
+        literal: "lời nói có căn cứ (yán zhī yǒu jù)",
+        meaning: "Lời nói có căn cứ — phát biểu được hỗ trợ bởi bằng chứng. Cụm 4 chữ 书面, dùng để khen luận án/giả thuyết có cơ sở. (书面/正式)",
+        example: "笔者所提出的假设言之有据, 并非凭空推测。"
+      },
+      {
+        idiom: "立论严谨",
+        literal: "lập luận nghiêm cẩn (lì lùn yán jǐn)",
+        meaning: "Lập luận nghiêm cẩn — argumentation rigorous. Cụm khen ngợi cao trong giới học thuật. Dùng khi review bài hoặc đánh giá hội đồng. (书面/正式)",
+        example: "该研究立论严谨, 数据翔实。"
+      },
+      {
+        idiom: "有待商榷",
+        literal: "đáng để cùng thảo luận (yǒu dài shāng què)",
+        meaning: "Đáng cùng thảo luận / vẫn cần bàn — academic euphemism cho 'có vấn đề'. Khi reviewer viết '此结论有待商榷', nghĩa là 'kết luận này có lỗi'. Cực formal. (书面/正式)",
+        example: "该假设虽有创意, 但其理论基础有待商榷。"
+      },
+      {
+        idiom: "推陈出新",
+        literal: "đẩy cũ ra cái mới (tuī chén chū xīn)",
+        meaning: "Loại bỏ cũ đưa ra mới — innovate. Dùng để mô tả contribution của một nghiên cứu. (书面/正式)",
+        example: "本研究在方法论上推陈出新, 突破了传统框架。"
+      }
+    ],
+    cultural_notes_vi: "Văn hóa học thuật Trung Quốc đại lục có một vài đặc điểm khác Việt Nam:\n\n(1) HIERARCHY THẦY-TRÒ: quan hệ supervisor-student (导师-学生 / 导生关系) gần như cha-con học thuật. Sinh viên xưng '老师 / 教授' chứ KHÔNG bao giờ gọi tên. Email mở đầu bằng '尊敬的X教授'. Sinh viên không tranh luận trực diện với supervisor — bất đồng được biểu đạt qua câu hỏi ('我能不能问一下...').\n\n(2) HEDGING STRONG: học giả Trung Quốc viết hedge nhiều hơn Mỹ/Anh. Câu English 'X causes Y' viết Trung Quốc thành 'X 可能 与 Y 之间 存在 一定 相关性'. Đây không phải thiếu tự tin — là chuẩn epistemic kế thừa từ tư duy Đạo gia/Khổng giáo: không khẳng định tuyệt đối.\n\n(3) FACE & CRITICISM: phê bình một nghiên cứu trong tiếng Trung dùng eufemism nhiều. Reviewer KHÔNG viết 'this study is flawed' mà viết '该研究有待进一步完善'. 'Sai' = 不当 (không thỏa đáng). 'Yếu' = 略显不足 (hơi thiếu). Sinh viên Việt Nam đến Trung Quốc thường thấy phản hồi quá nhẹ — đó là sự thật, đọc lại trong context cultural sẽ thấy criticism.\n\n(4) THESIS DEFENSE (答辩 — dábiàn): tại đại học Trung Quốc, defense kéo dài 30-90 phút, có 3-5 giáo sư hỏi. Câu hỏi thường mạnh, đôi khi mang tính 'đập' (打). Sinh viên không được defensive — phải LẮNG NGHE, nhận hạn chế, đề xuất cải thiện. Câu mở đầu chuẩn: '感谢评委指出, 您的意见很有道理, 笔者将在修订版中...'.\n\n(5) GIA ĐÌNH HỌC THUẬT (学术家庭): supervisor + sinh viên cùng supervisor (师兄/师姐/师弟/师妹) tạo thành 'gia đình' kết nối suốt đời. Network nghề nghiệp cực kỳ giá trị. Tham gia bữa ăn, tiệc supervisor là bắt buộc văn hóa.",
+    tip_advice_vi: "(1) ĐỌC 5 PAPERS Trung Quốc cùng chuyên ngành TRƯỚC khi viết: bắt được tone, vocabulary, structure. Học giả Trung Quốc viết khác Anh-Mỹ, copy structure mẫu là cách nhanh nhất. (2) DỊCH NGƯỢC SAU KHI VIẾT: viết tiếng Trung → translate sang Anh/Việt → đọc lại. Nếu sentence Anh/Việt mơ hồ, nghĩa là Trung văn cũng mơ hồ. Sửa cho cụ thể. (3) TRÁNH '我觉得 / 我认为': thay bằng '笔者认为' hoặc passive '可以认为'. 100% bài luận C1 phải tránh '我觉得'. (4) DÙNG ÍT NHẤT 1 connector mỗi đoạn: 然而 / 此外 / 综上所述 / 由此可见. Đoạn không có connector nghe đứt mạch. (5) ĐẾM TỪ 显著 trong bài: nếu > 5 lần, quá mạnh. Thay 1-2 chỗ bằng '颇为 / 较为 / 在一定程度上'. (6) MỞ ĐẦU GIẢ THUYẾT theo công thức: '笔者假设, 在 [điều kiện] 之下, [biến X] 将 [tác động] [biến Y]'. (7) KẾT GIẢ THUYẾT bằng falsifiability statement: '若 [kết quả thực nghiệm] [không xảy ra], 则该假设将被证伪'. Showing falsifiability = academic maturity. (8) ĐỪNG dùng cụm '革命性 / 颠覆 / 突破' về kết quả của chính mình. Chỉ reviewer/độc giả mới được phán đó là 革命性.",
+    exercises: [
+      { type: "fill-blank", question: "笔者 ___ 设, 在持续暴露于AI反馈三个月之后, 受试者的代码缺陷率将显著下降。", answer: "假" },
+      {
+        type: "matching",
+        instruction: "Ghép connector 书面 với chức năng tiếng Việt.",
+        pairs: [
+          { chinese: "综上所述", pinyin: "zōng shàng suǒ shù", english: "tóm lại / như đã trình bày" },
+          { chinese: "由此可见", pinyin: "yóu cǐ kě jiàn", english: "qua đó có thể thấy" },
+          { chinese: "然而", pinyin: "rán ér", english: "tuy nhiên" },
+          { chinese: "此外", pinyin: "cǐ wài", english: "ngoài ra" }
+        ]
+      },
+      {
+        type: "translation",
+        vietnamese: "Nghiên cứu này nhằm khảo sát ảnh hưởng của công cụ rà soát mã nguồn hỗ trợ bởi trí tuệ nhân tạo đối với chất lượng mã.",
+        chinese: "本研究旨在探讨人工智能辅助代码审查工具对代码质量的影响。",
+        pinyin: "Běn yán jiū zhǐ zài tàn tǎo rén gōng zhì néng fǔ zhù dài mǎ shěn chá gōng jù duì dài mǎ zhì liàng de yǐng xiǎng."
+      }
+    ]
+  },
+  {
+    id: 93,
+    level: "C1",
+    category: "academic_discourse",
+    title: "引用与归属",
+    pinyin: "yǐn yòng yǔ guī shǔ",
+    topic: "Citing sources and attribution",
+    title_vi: "Trích dẫn và quy thuộc nguồn",
+    title_en: "Citing sources and attribution",
+    sentences: [
+      {
+        chinese: "在文献综述章节, 笔者将系统梳理近十年来深度学习领域之代表性研究成果。",
+        pinyin: "Zài wénxiàn zōngshù zhāngjié, bǐzhě jiāng xìtǒng shūlǐ jìn shí nián lái shēndù xuéxí lǐngyù zhī dàibiǎoxìng yánjiū chéngguǒ.",
+        english: "In the literature review section, the author will systematically organize the representative research achievements of the deep learning field over the past decade.",
+        vi: "Trong chương tổng quan tài liệu, tác giả sẽ hệ thống hóa các thành quả nghiên cứu tiêu biểu của lĩnh vực học sâu trong mười năm qua.",
+        pronunciation_focus: ["文献综述 → wénxiàn zōngshù (tổng quan tài liệu)", "梳理 → shūlǐ (hệ thống hoá)", "代表性 → dàibiǎoxìng (tiêu biểu)", "之 → zhī (书面)"]
+      },
+      {
+        chinese: "如Vaswani等(2017)所指出, Transformer架构通过自注意力机制实现了对长距离依赖的有效建模。",
+        pinyin: "Rú Vaswani děng (èr líng yī qī) suǒ zhǐchū, Transformer jiàgòu tōngguò zì zhùyì jīzhì shíxiàn le duì cháng jùlí yīlài de yǒuxiào jiànmó.",
+        english: "As Vaswani et al. (2017) pointed out, the Transformer architecture realizes effective modeling of long-distance dependencies through the self-attention mechanism.",
+        vi: "Như Vaswani và cộng sự (2017) đã chỉ ra, kiến trúc Transformer đã thực hiện việc mô hình hóa hiệu quả các phụ thuộc khoảng cách xa thông qua cơ chế tự chú ý.",
+        pronunciation_focus: ["如...所指出 → rú...suǒ zhǐchū (như đã chỉ ra)", "等 → děng (et al. — viết sau tên tác giả)", "自注意力 → zì zhùyìlì (self-attention)", "建模 → jiànmó (mô hình hoá)"]
+      },
+      {
+        chinese: "此观点亦得到了后续多项研究之佐证, 详见Brown等(2020)及Wei等(2022)的相关论述。",
+        pinyin: "Cǐ guāndiǎn yì dédàole hòuxù duō xiàng yánjiū zhī zuǒzhèng, xiángjiàn Brown děng (èr líng èr líng) jí Wei děng (èr líng èr èr) de xiāngguān lùnshù.",
+        english: "This viewpoint has also been corroborated by multiple subsequent studies — see Brown et al. (2020) and Wei et al. (2022) for relevant discussions.",
+        vi: "Quan điểm này cũng đã được nhiều nghiên cứu sau đó chứng thực, xem chi tiết các luận giải liên quan của Brown và cộng sự (2020) và Wei và cộng sự (2022).",
+        pronunciation_focus: ["亦 → yì (cũng — 书面 thay 也)", "佐证 → zuǒzhèng (chứng thực)", "详见 → xiángjiàn (xem chi tiết)", "及 → jí (và — 书面 thay 和)"]
+      },
+      {
+        chinese: "值得注意的是, 部分早期文献(如Hochreiter & Schmidhuber, 1997)已对相关问题作出了开创性贡献, 不可忽视。",
+        pinyin: "Zhídé zhùyì de shì, bùfèn zǎoqī wénxiàn (rú Hochreiter & Schmidhuber, yī jiǔ jiǔ qī) yǐ duì xiāngguān wèntí zuòchūle kāichuàngxìng gòngxiàn, bùkě hūshì.",
+        english: "It is worth noting that some early literature (e.g., Hochreiter & Schmidhuber, 1997) has made pioneering contributions to related problems and should not be overlooked.",
+        vi: "Đáng chú ý rằng một số tài liệu thời kỳ đầu (như Hochreiter & Schmidhuber, 1997) đã có những đóng góp khai sáng cho các vấn đề liên quan, không thể xem nhẹ.",
+        pronunciation_focus: ["值得注意 → zhídé zhùyì (đáng chú ý)", "开创性 → kāichuàngxìng (khai sáng)", "贡献 → gòngxiàn (đóng góp)", "不可忽视 → bùkě hūshì (không thể xem nhẹ)"]
+      },
+      {
+        chinese: "综上所述, 严谨之引用不仅是对原作者的尊重, 更是学术诚信的具体体现, 不容懈怠。",
+        pinyin: "Zōng shàng suǒ shù, yánjǐn zhī yǐnyòng bùjǐn shì duì yuán zuòzhě de zūnzhòng, gèng shì xuéshù chéngxìn de jùtǐ tǐxiàn, bù róng xièdài.",
+        english: "In summary, rigorous citation is not only respect for the original author but also a concrete embodiment of academic integrity — and must not be neglected.",
+        vi: "Tóm lại, việc trích dẫn nghiêm cẩn không chỉ là sự tôn trọng tác giả gốc, mà còn là sự thể hiện cụ thể của liêm chính học thuật, không được lơ là.",
+        pronunciation_focus: ["严谨 → yánjǐn (nghiêm cẩn)", "学术诚信 → xuéshù chéngxìn (liêm chính học thuật)", "体现 → tǐxiàn (sự thể hiện)", "不容懈怠 → bù róng xièdài (không được lơ là — 书面)"]
+      }
+    ],
+    vocab: [
+      { chinese: "文献综述", pinyin: "wén xiàn zōng shù", english: "literature review", vi: "tổng quan tài liệu" },
+      { chinese: "引用", pinyin: "yǐn yòng", english: "to cite; citation", vi: "trích dẫn" },
+      { chinese: "出处", pinyin: "chū chù", english: "source / origin", vi: "xuất xứ / nguồn" },
+      { chinese: "归属", pinyin: "guī shǔ", english: "attribution", vi: "quy thuộc" },
+      { chinese: "佐证", pinyin: "zuǒ zhèng", english: "corroborating evidence", vi: "bằng chứng phụ trợ" },
+      { chinese: "学术诚信", pinyin: "xué shù chéng xìn", english: "academic integrity", vi: "liêm chính học thuật" },
+      { chinese: "标注", pinyin: "biāo zhù", english: "to annotate / mark", vi: "đánh dấu / chú thích" },
+      { chinese: "参考文献", pinyin: "cān kǎo wén xiàn", english: "references", vi: "tài liệu tham khảo" },
+      { chinese: "原作者", pinyin: "yuán zuò zhě", english: "original author", vi: "tác giả gốc" },
+      { chinese: "亦", pinyin: "yì", english: "also (formal)", vi: "cũng (书面)" }
+    ],
+    dialogue: [
+      { speaker: "助教", chinese: "你这一段直接引用了Vaswani的论文, 但只提了名字, 没标年份和页码。", pinyin: "Nǐ zhè yī duàn zhíjiē yǐnyòngle Vaswani de lùnwén, dàn zhǐ tíle míngzì, méi biāo niánfèn hé yèmǎ.", english: "You directly quoted Vaswani's paper here but only mentioned the name — no year or page number.", vi: "Đoạn này em trích dẫn trực tiếp paper của Vaswani nhưng chỉ nhắc tên, chưa ghi năm và số trang." },
+      { speaker: "学生", chinese: "我以为列在参考文献最后就够了, 不用每次标。", pinyin: "Wǒ yǐwéi liè zài cānkǎo wénxiàn zuìhòu jiù gòu le, bùyòng měi cì biāo.", english: "I thought listing it in references at the end was enough — no need to mark each time.", vi: "Em tưởng liệt kê ở mục tài liệu tham khảo cuối là đủ, không cần đánh dấu mỗi lần." },
+      { speaker: "助教", chinese: "不行。每次直接引用都必须标注作者、年份、页码。否则按学术不端处理。", pinyin: "Bù xíng. Měi cì zhíjiē yǐnyòng dōu bìxū biāozhù zuòzhě, niánfèn, yèmǎ. Fǒuzé àn xuéshù bùduān chǔlǐ.", english: "Not okay. Every direct quote must mark author, year, page. Otherwise it's treated as academic misconduct.", vi: "Không được. Mỗi lần trích dẫn trực tiếp phải đánh dấu tác giả, năm, số trang. Nếu không sẽ bị xử lý như gian lận học thuật." },
+      { speaker: "学生", chinese: "明白了。我马上改, 改完再请您审一遍。", pinyin: "Míngbái le. Wǒ mǎshàng gǎi, gǎi wán zài qǐng nín shěn yī biàn.", english: "Understood. I'll fix it now — when done I'll ask you to check again.", vi: "Em hiểu rồi. Em sửa ngay, sửa xong sẽ nhờ thầy/cô kiểm tra lại." }
+    ],
+    dialogue_long: [
+      { speaker: "助教", chinese: "我把你的初稿过了一遍, 引用规范上有几个比较关键的问题, 需要在投稿前彻底解决。", pinyin: "Wǒ bǎ nǐ de chūgǎo guòle yī biàn, yǐnyòng guīfàn shàng yǒu jǐ gè bǐjiào guānjiàn de wèntí, xūyào zài tóugǎo qián chèdǐ jiějué.", english: "I've gone through your draft. There are several key issues with citation conventions that must be thoroughly resolved before submission.", vi: "Em đã xem qua bản nháp. Có vài vấn đề khá then chốt về quy chuẩn trích dẫn cần giải quyết triệt để trước khi nộp bài." },
+      { speaker: "学生", chinese: "请您指出来, 我尽快改。", pinyin: "Qǐng nín zhǐ chūlái, wǒ jǐnkuài gǎi.", english: "Please point them out — I'll fix them quickly.", vi: "Xin thầy/cô chỉ ra giúp, em sẽ sửa nhanh nhất có thể." },
+      { speaker: "助教", chinese: "第一, 你在第三章引用了多个二手资料, 没标'转引自'。这是一个非常严重的问题, 在英文期刊里直接被拒。", pinyin: "Dì yī, nǐ zài dì sān zhāng yǐnyòngle duō gè èrshǒu zīliào, méi biāo 'zhuǎnyǐn zì'. Zhè shì yī gè fēicháng yánzhòng de wèntí, zài Yīngwén qīkān lǐ zhíjiē bèi jù.", english: "First, in chapter 3 you cite multiple secondary sources without marking 'cited from'. This is a very serious issue — English journals reject papers for this directly.", vi: "Một, em ở chương 3 trích dẫn nhiều nguồn thứ cấp mà không đánh dấu '转引自' (trích lại từ). Đây là vấn đề rất nghiêm trọng, các tạp chí tiếng Anh sẽ từ chối thẳng vì điều này." },
+      { speaker: "学生", chinese: "二手资料怎么标? 我之前是直接写原作者的。", pinyin: "Èrshǒu zīliào zěnme biāo? Wǒ zhīqián shì zhíjiē xiě yuán zuòzhě de.", english: "How do I mark secondary sources? I just wrote the original author before.", vi: "Nguồn thứ cấp đánh dấu thế nào ạ? Trước em viết thẳng tên tác giả gốc." },
+      { speaker: "助教", chinese: "格式是: '原作者(年)的观点(转引自X, 年, 页)'。这是学术诚信底线。如果你没读过原文, 就不能装作读过。", pinyin: "Géshì shì: 'yuán zuòzhě (nián) de guāndiǎn (zhuǎnyǐn zì X, nián, yè)'. Zhè shì xuéshù chéngxìn dǐxiàn. Rúguǒ nǐ méi dúguò yuánwén, jiù bù néng zhuāng zuò dúguò.", english: "Format: 'Original author (year)'s view (cited from X, year, page)'. This is the bottom line of academic integrity. If you haven't read the original, you can't pretend you have.", vi: "Định dạng: '[Tác giả gốc (năm)]'s quan điểm (转引自 X, năm, trang)'. Đây là ranh giới của liêm chính học thuật. Nếu em chưa đọc bản gốc, không được giả vờ đã đọc." },
+      { speaker: "学生", chinese: "我明白了。这个错误以前没人指出来过。", pinyin: "Wǒ míngbái le. Zhège cuòwù yǐqián méi rén zhǐ chūlái guò.", english: "I understand. No one pointed this out before.", vi: "Em hiểu rồi. Lỗi này trước chưa ai chỉ ra cho em." },
+      { speaker: "助教", chinese: "第二, 你引用Brown等(2020)那段, 用的是paraphrase, 但语序、用词都和原文几乎一样。这叫'掩饰性抄袭', 比直接抄更严重。", pinyin: "Dì èr, nǐ yǐnyòng Brown děng (èr líng èr líng) nà duàn, yòng de shì paraphrase, dàn yǔxù, yòngcí dōu hé yuánwén jīhū yīyàng. Zhè jiào 'yǎnshì xìng chāoxí', bǐ zhíjiē chāo gèng yánzhòng.", english: "Second, your Brown et al. (2020) paraphrase has nearly identical word order and vocabulary as the original. This is 'concealed plagiarism' — more serious than direct copying.", vi: "Hai, đoạn em trích dẫn Brown và cộng sự (2020) là paraphrase, nhưng trật tự câu và từ ngữ gần như giống y hệt bản gốc. Đây gọi là 'đạo văn ngụy trang', còn nghiêm trọng hơn copy thẳng." },
+      { speaker: "学生", chinese: "应该改写到什么程度才算合格?", pinyin: "Yīnggāi gǎixiě dào shénme chéngdù cái suàn hégé?", english: "How much rewriting is enough?", vi: "Cần viết lại đến mức độ nào mới đạt yêu cầu?" },
+      { speaker: "助教", chinese: "原则: 改变句子结构 + 替换至少60%的关键词 + 用自己的话提炼核心观点。如果担心, 就用直接引号引用并标页码, 这样反而更安全。", pinyin: "Yuánzé: gǎibiàn jùzi jiégòu + tìhuàn zhì shǎo bǎi fēn zhī liù shí de guānjiàn cí + yòng zìjǐ de huà tíliàn héxīn guāndiǎn. Rúguǒ dānxīn, jiù yòng zhíjiē yǐnhào yǐnyòng bìng biāo yèmǎ, zhèyàng fǎn'ér gèng ānquán.", english: "Principle: change sentence structure + replace at least 60% of keywords + extract core viewpoint in your own words. If worried, just use direct quotes with page number — that's actually safer.", vi: "Nguyên tắc: thay đổi cấu trúc câu + thay thế ít nhất 60% từ khoá + dùng lời mình chắt lọc quan điểm cốt lõi. Nếu lo lắng, dùng dấu ngoặc kép trích dẫn trực tiếp kèm số trang — như thế ngược lại an toàn hơn." },
+      { speaker: "学生", chinese: "好的。第三个问题是什么?", pinyin: "Hǎo de. Dì sān gè wèntí shì shénme?", english: "Okay — what's the third issue?", vi: "Vâng. Vấn đề thứ ba là gì ạ?" },
+      { speaker: "助教", chinese: "你的参考文献里有三篇文章, 在正文中找不到对应的引用。要么删, 要么补。学术规范不允许参考文献和正文不对应。", pinyin: "Nǐ de cānkǎo wénxiàn lǐ yǒu sān piān wénzhāng, zài zhèngwén zhōng zhǎo bù dào duìyìng de yǐnyòng. Yàome shān, yàome bǔ. Xuéshù guīfàn bù yǔnxǔ cānkǎo wénxiàn hé zhèngwén bù duìyìng.", english: "You have three papers in references with no matching citation in the body text. Either delete or add. Standards don't allow references and body to not match.", vi: "Trong mục tài liệu tham khảo có 3 bài, nhưng phần thân không có trích dẫn tương ứng. Hoặc xoá, hoặc bổ sung. Quy chuẩn không cho phép tài liệu tham khảo và thân bài không tương ứng." },
+      { speaker: "学生", chinese: "明白了。我今天晚上把这三个问题都改完, 明天早上再请您过一遍。", pinyin: "Míngbái le. Wǒ jīntiān wǎnshàng bǎ zhè sān gè wèntí dōu gǎi wán, míngtiān zǎoshang zài qǐng nín guò yī biàn.", english: "Got it. I'll fix all three tonight — tomorrow morning I'll ask you to review again.", vi: "Em hiểu rồi. Tối nay em sửa cả ba vấn đề, sáng mai sẽ nhờ thầy/cô xem lại." },
+      { speaker: "助教", chinese: "好。提醒一句: 引用规范不是形式主义, 它是学术世界的'信用记录'。一次抄袭, 终身留痕。宁可保守, 不要冒险。", pinyin: "Hǎo. Tíxǐng yī jù: yǐnyòng guīfàn bù shì xíngshì zhǔyì, tā shì xuéshù shìjiè de 'xìnyòng jìlù'. Yī cì chāoxí, zhōngshēn liúhén. Nìngkě bǎoshǒu, bùyào màoxiǎn.", english: "Good. Reminder: citation rules aren't formality — they're the 'credit record' of academia. One plagiarism leaves a permanent trace. Better conservative than risky.", vi: "Được. Nhắc một câu: quy chuẩn trích dẫn không phải hình thức chủ nghĩa, đó là 'hồ sơ tín dụng' của thế giới học thuật. Một lần đạo văn để lại dấu vết suốt đời. Thà bảo thủ còn hơn mạo hiểm." }
+    ],
+    roleplay_prompts: [
+      "Bạn là sinh viên năm cuối đang viết luận văn. Bạn đọc một câu thú vị trong bài báo của Smith (2019) — nhưng Smith đã trích lại từ Jones (2010). Bạn KHÔNG đọc Jones gốc. Hãy viết câu trích dẫn đúng quy chuẩn (转引自) và giải thích cho bạn cùng lớp tại sao không thể chỉ ghi 'Jones (2010)' khi bạn chưa đọc bản gốc. Dùng 学术诚信 / 不容懈怠.",
+      "Bạn là phó giáo sư đang phản hồi bản thảo của một sinh viên Việt Nam. Bản thảo có 3 chỗ paraphrase quá gần với bản gốc tiếng Anh (>70% trùng từ khoá). Hãy phản hồi theo register học thuật Trung Quốc: chỉ ra vấn đề + giải thích sự nghiêm trọng + đề xuất 2 cách sửa cụ thể (rewrite kỹ hơn / chuyển thành direct quote). Dùng cụm '严重 / 学术不端 / 建议'.",
+      "Bạn là biên tập viên tạp chí đang viết phản hồi từ chối một bản thảo vì 'lỗi trích dẫn nghiêm trọng'. Hãy viết một đoạn 4-5 câu, giữ register lịch sự nhưng nghiêm khắc: cảm ơn tác giả + chỉ rõ vấn đề (twin reasons: thiếu 转引 + paraphrase ngụy trang) + nói rõ KHÔNG accept resubmit cho cùng tạp chí + chúc may mắn nơi khác. Dùng '敬告作者 / 鉴于 / 经审议'."
+    ],
+    register_notes: "Trích dẫn (引用) là test sentinel cho liêm chính học thuật. Sinh viên Việt Nam đến Trung Quốc cần biết:\n\n1. THREE TYPES OF CITATION:\n\n- DIRECT QUOTE (直接引用): copy word-for-word, BẮT BUỘC dấu ngoặc kép + tác giả + năm + số trang.\n  Ví dụ: '...如Vaswani等(2017, p.6000)所言: \"自注意力机制\"...'\n- PARAPHRASE (释义引用): viết lại bằng lời mình, bắt buộc tác giả + năm. Phải thay đổi cấu trúc + ít nhất 60% từ khoá.\n  Ví dụ: '如Vaswani等(2017)所指出, Transformer架构...'\n- INDIRECT (转引): trích từ nguồn thứ cấp, bắt buộc '转引自'. Định dạng: 'A(年)(转引自B, 年, 页)'.\n\n2. CỤM TỪ DẪN NHẬP CHUẨN:\n\n- 如X所指出 (như X đã chỉ ra)\n- 据X(年)的研究表明 (theo nghiên cứu của X (năm) cho thấy)\n- X(年)认为 (X (năm) cho rằng)\n- 详见X(年) (xem chi tiết X (năm))\n- 借用X的话来说 (mượn lời X)\n- X的观点不无道理 (quan điểm của X không phải không có lý)\n\n3. CỤM CRITIQUE QUA CITATION:\n\n- X(年)虽然指出..., 但... (X chỉ ra... nhưng...)\n- 与X(年)的观点相左 (trái với quan điểm của X)\n- X(年)的研究似乎忽视了... (nghiên cứu của X dường như đã bỏ qua...)\n\n4. CITATION STYLE phổ biến ở Trung Quốc:\n\n- GB/T 7714-2015 (Trung Quốc national standard) — dùng trong luận án nội địa\n- APA — dùng cho các tạp chí Quốc tế và đại học top\n- IEEE — kỹ thuật / công nghệ\n- Chicago — văn học / lịch sử\n\n5. AVOID (口语 + sai):\n\n- '听说X说...' (nghe nói X bảo) — KHÔNG bao giờ trong 书面\n- 'X最近写了一篇文章说...' (X gần đây viết bài nói...) — quá vague\n- Không có năm — câu hỏi đầu tiên reviewer hỏi\n\n6. PLAGIARISM TIERS theo nghiêm trọng:\n\nT1 — Direct copy không quote, không cite: tệ nhất, full retraction\nT2 — Paraphrase ngụy trang (>70% trùng): tệ thứ hai, paper bị reject\nT3 — Cite tác giả gốc khi thực ra trích từ secondary source (không 转引): tệ thứ ba, paper bị từ chối\nT4 — Reference list mismatch với body text: minor, có thể sửa\n\n7. TỰ TRÍCH (self-citation): được phép, nhưng không quá 15-20% tổng citations. Nếu cao hơn, reviewer sẽ flag.\n\n8. CITATION CULTURE 中国: papers nội địa Trung Quốc thường balance 60% Quốc tế + 40% Trung Quốc. Trường top yêu cầu nhiều Quốc tế hơn (70-80%).",
+    idiom_glosses: [
+      {
+        idiom: "言之凿凿",
+        literal: "lời nói đinh ninh chắc chắn (yán zhī záo záo)",
+        meaning: "Lời nói chắc chắn, có căn cứ. Dùng để mô tả citation/argument vững chắc. 'Tác giả的论述 言之凿凿, 难以反驳.' (书面/正式)",
+        example: "该作者言之凿凿, 引证翔实, 令人信服。"
+      },
+      {
+        idiom: "旁征博引",
+        literal: "rộng tham khảo nhiều dẫn chứng (páng zhēng bó yǐn)",
+        meaning: "Tham khảo rộng, dẫn chứng nhiều — khen một bài viết có range tài liệu rộng. (书面/正式)",
+        example: "本章旁征博引, 涵盖了近三十年的相关研究。"
+      },
+      {
+        idiom: "不容置疑",
+        literal: "không cho phép nghi ngờ (bù róng zhì yí)",
+        meaning: "Không thể nghi ngờ — đi với fact đã được xác lập. Dùng cho reference cốt lõi. CHÚ Ý: chỉ dùng cho fact đã established, không phải opinion. (书面/正式)",
+        example: "深度学习对自然语言处理的革命性影响不容置疑。"
+      },
+      {
+        idiom: "不容懈怠",
+        literal: "không được phép lơ là (bù róng xiè dài)",
+        meaning: "Không được lơ là, không được sao nhãng. Dùng để nhấn mạnh tầm quan trọng của một quy chuẩn (như citation integrity). (书面/正式)",
+        example: "学术诚信是研究者的底线, 不容懈怠。"
+      }
+    ],
+    cultural_notes_vi: "Quy chuẩn trích dẫn trong giới học thuật Trung Quốc đại lục có một số khác biệt với Việt Nam và phương Tây:\n\n(1) PLAGIARISM ENFORCEMENT NGHIÊM khắc hơn so với 10 năm trước: từ 2017, các đại học Trung Quốc đại lục triển khai phần mềm 知网 (CNKI) để check duplicate. Tỷ lệ 'duplicate rate' (重复率) >15% bị từ chối answer luận án thạc sĩ; >20% bị tiến sĩ. Sinh viên Việt Nam KHÔNG nên đánh giá thấp việc này.\n\n(2) 转引自 (zhuǎnyǐn zì — cited from) là KHÁI NIỆM bắt buộc nhưng người Việt thường bỏ qua. Khi bạn đọc Smith (2019) trong đó Smith trích Jones (2010), và bạn không đọc Jones gốc, BẮT BUỘC ghi: '...Jones (2010) (转引自 Smith, 2019, p.X)'. Nếu chỉ ghi 'Jones (2010)' = giả vờ đã đọc bản gốc = đạo văn về mặt kỹ thuật.\n\n(3) DUPLICATE RATE CALCULATION: 知网 không chỉ check copy thuần, mà còn paraphrase ngụy trang. Thuật toán n-gram + semantic — nó phát hiện được khi bạn đổi từng từ một mà giữ structure. Kinh nghiệm thực tế: nếu duplicate rate quá cao, viết lại HOÀN TOÀN, không 'sửa từ' — algorithm bắt được.\n\n(4) GHOST AUTHORSHIP / 代写 (dài xiě — ghostwriting): BẤT HỢP PHÁP ở Trung Quốc, từ 2018 chính thức bị ban hành luật cấm. Sinh viên không được nhờ người khác viết, ngay cả native speaker để 'làm cho đẹp'. Editing được phép — chỉ proofreading + grammar fix. Re-write đoạn = vi phạm.\n\n(5) AI WRITING (AI写作): chính sách năm 2024-2025 đang định hình. Đa số đại học Trung Quốc top yêu cầu khai báo AI usage. ChatGPT để hỗ trợ idea OK, nhưng generate text sẽ bị reject. Thanh toán: an toàn nhất là không dùng AI cho text trong luận án.\n\n(6) FAIR USE (合理使用) trong tiếng Trung CHẶT hơn so với English fair use. Trích dẫn không quá 1/3 paragraph hoặc 1/4 chapter. Nếu cần dài hơn = phải xin permission tác giả.\n\n(7) CO-AUTHORSHIP CULTURE: bài báo Trung Quốc thường có 5-8 co-authors. Author order cực kỳ chính trị — đầu list là contribution lớn nhất, cuối list thường là supervisor. Sinh viên Việt collaborate phải bàn order trước, viết MOU nếu nghiêm túc.\n\n(8) RETRACTION CULTURE (撤稿): Trung Quốc có rate retraction cao nhất thế giới (Springer Nature 2017 — 107 papers Trung Quốc bị retract cùng lúc). Vì vậy citation integrity bây giờ được đặc biệt nhấn mạnh.",
+    tip_advice_vi: "(1) DÙNG ZOTERO / ENDNOTE / MENDELEY: phần mềm quản lý citation. Insert tự động + format theo style — tránh error tay. Học một lần, dùng cả đời. (2) CHỤP MÀN HÌNH page citation: khi đọc bản PDF, screenshot trang có quote + ghi vào Zotero. Sau này không phải tìm lại. (3) NẾU CHƯA ĐỌC BẢN GỐC, dùng 转引: đừng lười, đừng giả vờ. Một lần bị bắt = vết suốt đời. Thà ghi 'cited from X' hơn là risk. (4) RUN PLAGIARISM CHECK trước khi nộp: 知网 (CNKI), Turnitin, hoặc copyleaks. Mục tiêu duplicate rate <10% an toàn, <15% chấp nhận, >20% rewrite. (5) PARAPHRASE TỐT: đọc đoạn → đóng sách → viết lại từ memory → so sánh với bản gốc → sửa nếu giống quá. Đừng nhìn bản gốc và 'thay từ'. (6) DIRECT QUOTE LÀ AN TOÀN HƠN: nếu lo paraphrase không đạt, dùng dấu ngoặc kép + cite — luôn được chấp nhận. (7) REFERENCE LIST = BODY TEXT: trước khi nộp, scan lại reference list, check từng entry có xuất hiện trong body không. Excel column kiểm tra rất hiệu quả. (8) GIẤU CITATION trong text 5 phổ biến (用法): '据X所述', 'X(年)指出', '正如X所言', '详见X', 'X的研究表明'. Học thuộc 5 cụm này = đủ dùng cả luận án.",
+    exercises: [
+      { type: "fill-blank", question: "如Vaswani等(2017) ___ 指出, Transformer架构通过自注意力机制实现了对长距离依赖的建模。", answer: "所" },
+      {
+        type: "matching",
+        instruction: "Ghép cụm trích dẫn với chức năng tiếng Việt.",
+        pairs: [
+          { chinese: "转引自", pinyin: "zhuǎn yǐn zì", english: "trích lại từ (secondary source)" },
+          { chinese: "详见", pinyin: "xiáng jiàn", english: "xem chi tiết" },
+          { chinese: "学术诚信", pinyin: "xué shù chéng xìn", english: "liêm chính học thuật" },
+          { chinese: "参考文献", pinyin: "cān kǎo wén xiàn", english: "tài liệu tham khảo" }
+        ]
+      },
+      {
+        type: "translation",
+        vietnamese: "Tóm lại, việc trích dẫn nghiêm cẩn không chỉ là sự tôn trọng tác giả gốc, mà còn là sự thể hiện cụ thể của liêm chính học thuật.",
+        chinese: "综上所述, 严谨的引用不仅是对原作者的尊重, 更是学术诚信的具体体现。",
+        pinyin: "Zōng shàng suǒ shù, yán jǐn de yǐn yòng bù jǐn shì duì yuán zuò zhě de zūn zhòng, gèng shì xué shù chéng xìn de jù tǐ tǐ xiàn."
+      }
+    ]
   }
 ];
 
