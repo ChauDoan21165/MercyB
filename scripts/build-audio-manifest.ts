@@ -88,7 +88,7 @@ const LANG_CODES = {
 
 type LangKey = keyof typeof LANG_CODES;
 
-const LEVELS_TO_BUILD = ["A1", "A2", "B1", "B2", "C1"] as const;
+const LEVELS_TO_BUILD = ["A1", "A2", "B1", "B2", "C1", "C2"] as const;
 type Level = (typeof LEVELS_TO_BUILD)[number];
 
 const OUTPUT_PATH = resolve("audio-manifest.json");
