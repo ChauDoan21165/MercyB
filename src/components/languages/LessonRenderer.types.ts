@@ -78,6 +78,12 @@ export type NormalizedLesson = {
   culturalNotesVi?: string;
   tipAdviceVi?: string;
   grammar?: NormalizedGrammarPoint[];
+  // Storage prefix for the lesson's audio in the Supabase `room-audio` bucket,
+  // e.g. "a1/de/lgreetings_intro" or "a1/ja/l21". Append "/sentence_${i+1}.mp3"
+  // (or vocab/dialogue_short variants) to get a canonical audio key.
+  // Optional so callers that don't have audio mapping can still produce a
+  // valid NormalizedLesson; LessonAudioButton renders nothing when absent.
+  audioBase?: string;
 };
 
 export type LessonTheme = {

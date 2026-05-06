@@ -37,6 +37,11 @@ import type {
   NormalizedExercise,
 } from "./LessonRenderer.types";
 import { cefrPillColors, cefrPillLabels } from "./lessonThemes";
+import { LessonAudioButton } from "./LessonAudioButton";
+import {
+  lessonAudioKey,
+  dialogueShortSpeakerLetter,
+} from "@/lib/lessonAudio";
 
 interface LessonRendererProps {
   lesson: NormalizedLesson;
@@ -145,7 +150,21 @@ export function LessonRenderer({ lesson, theme }: LessonRendererProps) {
                   key={i}
                   className="rounded-lg border border-slate-200 bg-white p-3"
                 >
-                  <p className="text-sm font-medium text-slate-900">{s.native}</p>
+                  <div className="flex items-start gap-2">
+                    {lesson.audioBase && (
+                      <LessonAudioButton
+                        audioKey={lessonAudioKey(lesson.audioBase, {
+                          kind: "sentence",
+                          index: i + 1,
+                        })}
+                        ariaLabel={`Phát âm câu: ${s.native}`}
+                        accent={theme.accent}
+                      />
+                    )}
+                    <p className="text-sm font-medium text-slate-900 flex-1">
+                      {s.native}
+                    </p>
+                  </div>
                   {s.romanization && (
                     <p className="mt-0.5 text-xs italic text-slate-500">
                       {s.romanization}
@@ -186,25 +205,37 @@ export function LessonRenderer({ lesson, theme }: LessonRendererProps) {
               </p>
               <div className="mt-2 grid grid-cols-2 gap-1">
                 {lesson.vocabulary.map((v, vi) => (
-                  <div key={vi} className="text-xs">
-                    <span className="font-semibold text-slate-800">
-                      {v.native}
-                    </span>
-                    {v.romanization && (
-                      <span className="text-slate-400 ml-1">
-                        {v.romanization}
-                      </span>
+                  <div key={vi} className="text-xs flex items-start gap-1.5">
+                    {lesson.audioBase && (
+                      <LessonAudioButton
+                        audioKey={lessonAudioKey(lesson.audioBase, {
+                          kind: "vocab",
+                          index: vi + 1,
+                        })}
+                        ariaLabel={`Phát âm: ${v.native}`}
+                        accent={theme.accent}
+                      />
                     )}
-                    {(v.en || v.vi) && (
-                      <span className="text-slate-500 ml-2">
-                        {v.vi ?? v.en}
+                    <div className="min-w-0 flex-1">
+                      <span className="font-semibold text-slate-800">
+                        {v.native}
                       </span>
-                    )}
-                    {v.phonetic && (
-                      <span className="block text-[10px] text-slate-400">
-                        {v.phonetic}
-                      </span>
-                    )}
+                      {v.romanization && (
+                        <span className="text-slate-400 ml-1">
+                          {v.romanization}
+                        </span>
+                      )}
+                      {(v.en || v.vi) && (
+                        <span className="text-slate-500 ml-2">
+                          {v.vi ?? v.en}
+                        </span>
+                      )}
+                      {v.phonetic && (
+                        <span className="block text-[10px] text-slate-400">
+                          {v.phonetic}
+                        </span>
+                      )}
+                    </div>
                   </div>
                 ))}
               </div>
@@ -219,21 +250,34 @@ export function LessonRenderer({ lesson, theme }: LessonRendererProps) {
               </p>
               <div className="mt-2 space-y-2">
                 {lesson.dialogue.map((d, di) => (
-                  <div key={di} className="text-xs">
-                    <span className="font-bold" style={{ color: theme.accent }}>
-                      {d.speaker}:
-                    </span>{" "}
-                    <span className="text-slate-900 font-medium">{d.native}</span>
-                    {d.romanization && (
-                      <span className="text-slate-400 ml-1 italic">
-                        ({d.romanization})
-                      </span>
+                  <div key={di} className="text-xs flex items-start gap-1.5">
+                    {lesson.audioBase && (
+                      <LessonAudioButton
+                        audioKey={lessonAudioKey(lesson.audioBase, {
+                          kind: "dialogue_short",
+                          index: di + 1,
+                          speaker: dialogueShortSpeakerLetter(d.speaker),
+                        })}
+                        ariaLabel={`Phát âm hội thoại: ${d.native}`}
+                        accent={theme.accent}
+                      />
                     )}
-                    {(d.en || d.vi) && (
-                      <div className="text-slate-500 ml-5">
-                        {d.vi ?? d.en}
-                      </div>
-                    )}
+                    <div className="min-w-0 flex-1">
+                      <span className="font-bold" style={{ color: theme.accent }}>
+                        {d.speaker}:
+                      </span>{" "}
+                      <span className="text-slate-900 font-medium">{d.native}</span>
+                      {d.romanization && (
+                        <span className="text-slate-400 ml-1 italic">
+                          ({d.romanization})
+                        </span>
+                      )}
+                      {(d.en || d.vi) && (
+                        <div className="text-slate-500 ml-5">
+                          {d.vi ?? d.en}
+                        </div>
+                      )}
+                    </div>
                   </div>
                 ))}
               </div>
