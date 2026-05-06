@@ -67,6 +67,7 @@ import { supabase } from "@/lib/supabaseClient";
 import { AuthProvider } from "@/providers/AuthProvider";
 import { initSentry, stringLooksLikeExternalNoise } from "@/lib/monitoring/sentryInit";
 import { initializeWebVitals } from "@/lib/perf/webVitalsTracking";
+import { looksLikeChunkLoadFailure as sharedLooksLikeChunkLoadFailure } from "@/lib/chunkLoadError";
 
 declare global {
   interface Window {
@@ -121,17 +122,11 @@ function getFriendlyChunkErrorMessage(): string {
   ].join(" ");
 }
 
-function looksLikeChunkLoadFailure(err: unknown): boolean {
-  const message = asErrorMessage(err).toLowerCase();
-  return (
-    message.includes("failed to fetch dynamically imported module") ||
-    message.includes("dynamically imported module") ||
-    message.includes("importing a module script failed") ||
-    message.includes("loading chunk") ||
-    message.includes("chunkloaderror") ||
-    message.includes("failed to import")
-  );
-}
+// Re-exposed as a local name so the rest of this file keeps its existing
+// call sites unchanged. Single source of truth lives in chunkLoadError.ts
+// so main.tsx (window.error path) and lazyWithRetry.ts (React.lazy path)
+// stay aligned on what counts as a stale-chunk failure.
+const looksLikeChunkLoadFailure = sharedLooksLikeChunkLoadFailure;
 
 function hasAlreadyAttemptedChunkRecovery(): boolean {
   try { return sessionStorage.getItem(CHUNK_RELOAD_SESSION_KEY) === "1"; }

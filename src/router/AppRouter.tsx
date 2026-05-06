@@ -3,7 +3,8 @@
  * File: AppRouter.tsx
  */
 
-import React, { Suspense, lazy, useEffect, useRef } from "react";
+import React, { Suspense, useEffect, useRef } from "react";
+import { lazyWithRetry } from "@/lib/lazyWithRetry";
 import {
   Routes,
   Route,
@@ -30,217 +31,217 @@ import { WebOnlyRoute } from "@/router/WebOnlyRoute";
 
 const MB_ROUTER_VERSION = "2026-04-11-app-router-room-alias-hardening";
 
-const ChatHub             = lazy(() => import("@/pages/ChatHub"));
-const AllRooms            = lazy(() => import("@/pages/AllRooms"));
-const Home                = lazy(() => import("@/pages/Home"));
-const Privacy             = lazy(() => import("@/pages/Privacy"));
-const Terms                = lazy(() => import("@/pages/Terms"));
-const ContentAdvisory      = lazy(() => import("@/pages/legal/ContentAdvisory"));
-const Support             = lazy(() => import("@/pages/Support"));
-const AccountPage         = lazy(() => import("@/pages/AccountPage"));
-const XPHistoryPage       = lazy(() => import("@/pages/xp/XPHistoryPage"));
-const LevelUpModal        = lazy(() =>
+const ChatHub             = lazyWithRetry(() => import("@/pages/ChatHub"));
+const AllRooms            = lazyWithRetry(() => import("@/pages/AllRooms"));
+const Home                = lazyWithRetry(() => import("@/pages/Home"));
+const Privacy             = lazyWithRetry(() => import("@/pages/Privacy"));
+const Terms                = lazyWithRetry(() => import("@/pages/Terms"));
+const ContentAdvisory      = lazyWithRetry(() => import("@/pages/legal/ContentAdvisory"));
+const Support             = lazyWithRetry(() => import("@/pages/Support"));
+const AccountPage         = lazyWithRetry(() => import("@/pages/AccountPage"));
+const XPHistoryPage       = lazyWithRetry(() => import("@/pages/xp/XPHistoryPage"));
+const LevelUpModal        = lazyWithRetry(() =>
   import("@/components/xp/LevelUpModal").then((m) => ({ default: m.LevelUpModal })),
 );
 // A3 — Progress Certificates (gated by `certificates_enabled` flag).
-const MilestoneObserver   = lazy(() =>
+const MilestoneObserver   = lazyWithRetry(() =>
   import("@/components/certificates/MilestoneObserver").then((m) => ({ default: m.MilestoneObserver })),
 );
-const CertificateToast    = lazy(() =>
+const CertificateToast    = lazyWithRetry(() =>
   import("@/components/certificates/CertificateToast").then((m) => ({ default: m.CertificateToast })),
 );
-const CertificatesGalleryPage = lazy(() => import("@/pages/certificates/CertificatesGalleryPage"));
-const PushPreferencesPage = lazy(() => import("@/pages/account/PushPreferences"));
-const ReferralPage        = lazy(() => import("@/pages/Referral"));
-const BillingPage         = lazy(() => import("@/pages/Billing"));
-const BillingSuccessPage  = lazy(() => import("@/pages/BillingSuccessPage"));
-const CertVerifyPage      = lazy(() => import("@/pages/CertVerifyPage"));
-const Pricing             = lazy(() => import("../screens/Pricing"));
-const TierIndex           = lazy(() => import("@/pages/TierIndex"));
-const TierDetail          = lazy(() => import("@/pages/TierDetail"));
-const LoginPage           = lazy(() => import("@/pages/LoginPage"));
-const ResetPasswordPage   = lazy(() => import("@/pages/ResetPasswordPage"));
-const ConvertAccountPage  = lazy(() => import("@/pages/auth/ConvertAccount"));
-const AcceptInvitePage    = lazy(() => import("@/pages/auth/AcceptInvite"));
-const OnboardingPage      = lazy(() => import("@/pages/onboarding/OnboardingPage"));
-const BulkInvitePage      = lazy(() => import("@/pages/referral/BulkInvite"));
+const CertificatesGalleryPage = lazyWithRetry(() => import("@/pages/certificates/CertificatesGalleryPage"));
+const PushPreferencesPage = lazyWithRetry(() => import("@/pages/account/PushPreferences"));
+const ReferralPage        = lazyWithRetry(() => import("@/pages/Referral"));
+const BillingPage         = lazyWithRetry(() => import("@/pages/Billing"));
+const BillingSuccessPage  = lazyWithRetry(() => import("@/pages/BillingSuccessPage"));
+const CertVerifyPage      = lazyWithRetry(() => import("@/pages/CertVerifyPage"));
+const Pricing             = lazyWithRetry(() => import("../screens/Pricing"));
+const TierIndex           = lazyWithRetry(() => import("@/pages/TierIndex"));
+const TierDetail          = lazyWithRetry(() => import("@/pages/TierDetail"));
+const LoginPage           = lazyWithRetry(() => import("@/pages/LoginPage"));
+const ResetPasswordPage   = lazyWithRetry(() => import("@/pages/ResetPasswordPage"));
+const ConvertAccountPage  = lazyWithRetry(() => import("@/pages/auth/ConvertAccount"));
+const AcceptInvitePage    = lazyWithRetry(() => import("@/pages/auth/AcceptInvite"));
+const OnboardingPage      = lazyWithRetry(() => import("@/pages/onboarding/OnboardingPage"));
+const BulkInvitePage      = lazyWithRetry(() => import("@/pages/referral/BulkInvite"));
 
 // Email preferences — public /unsubscribe (token-based) + auth-required
 // /account/notifications.
-const UnsubscribePage             = lazy(() => import("@/pages/Unsubscribe"));
-const NotificationPreferencesPage = lazy(() => import("@/pages/account/NotificationPreferences"));
+const UnsubscribePage             = lazyWithRetry(() => import("@/pages/Unsubscribe"));
+const NotificationPreferencesPage = lazyWithRetry(() => import("@/pages/account/NotificationPreferences"));
 
-const PlacementWelcomePage = lazy(() => import("@/pages/placement/WelcomePage"));
-const PlacementWhoForPage  = lazy(() => import("@/pages/placement/WhoForPage"));
-const PlacementTestPage    = lazy(() => import("@/pages/placement/TestPage"));
-const PlacementResultsPage = lazy(() => import("@/pages/placement/ResultsPage"));
+const PlacementWelcomePage = lazyWithRetry(() => import("@/pages/placement/WelcomePage"));
+const PlacementWhoForPage  = lazyWithRetry(() => import("@/pages/placement/WhoForPage"));
+const PlacementTestPage    = lazyWithRetry(() => import("@/pages/placement/TestPage"));
+const PlacementResultsPage = lazyWithRetry(() => import("@/pages/placement/ResultsPage"));
 
-const SpeechDrillPage      = lazy(() => import("@/pages/SpeechDrillPage"));
-const PhonemeDrillPage     = lazy(() => import("@/pages/practice/PhonemeDrillPage"));
-const PronunciationSRSSessionPage = lazy(() => import("@/pages/PronunciationSRSSessionPage"));
-const VocabularyLibraryPage = lazy(() => import("@/pages/vocabulary/Library"));
-const VocabularyReviewPage = lazy(() => import("@/pages/vocabulary/ReviewSession"));
-const SpeechHistoryPage    = lazy(() => import("@/pages/speech/SpeechHistoryPage"));
-const DailyChallengePage   = lazy(() => import("@/pages/challenges/DailyChallengePage"));
-const ChallengeHistoryPage = lazy(() => import("@/pages/challenges/ChallengeHistoryPage"));
-const ProgressPage         = lazy(() => import("@/pages/Progress"));
-const ListeningLibraryPage = lazy(() => import("@/pages/listening/Library"));
-const ListeningClipPage    = lazy(() => import("@/pages/listening/ClipPlayer"));
-const LeaderboardPage      = lazy(() => import("@/pages/LeaderboardPage"));
-const MonthlyReferralLeaderboard = lazy(() => import("@/pages/leaderboards/MonthlyReferralLeaderboard"));
-const ProfessionsIndexPage = lazy(() => import("@/pages/professions/ProfessionsIndexPage"));
-const NailTechLessonsPage  = lazy(() => import("@/pages/professions/NailTechLessonsPage"));
-const RestaurantLessonsPage = lazy(() => import("@/pages/professions/RestaurantLessonsPage"));
-const CustomerServiceLessonsPage = lazy(() => import("@/pages/professions/CustomerServiceLessonsPage"));
-const TechWorkerLessonsPage = lazy(() => import("@/pages/professions/TechWorkerLessonsPage"));
-const HealthcareLessonsPage = lazy(() => import("@/pages/professions/HealthcareLessonsPage"));
-const DriversLessonsPage = lazy(() => import("@/pages/professions/DriversLessonsPage"));
-const HospitalityLessonsPage = lazy(() => import("@/pages/professions/HospitalityLessonsPage"));
+const SpeechDrillPage      = lazyWithRetry(() => import("@/pages/SpeechDrillPage"));
+const PhonemeDrillPage     = lazyWithRetry(() => import("@/pages/practice/PhonemeDrillPage"));
+const PronunciationSRSSessionPage = lazyWithRetry(() => import("@/pages/PronunciationSRSSessionPage"));
+const VocabularyLibraryPage = lazyWithRetry(() => import("@/pages/vocabulary/Library"));
+const VocabularyReviewPage = lazyWithRetry(() => import("@/pages/vocabulary/ReviewSession"));
+const SpeechHistoryPage    = lazyWithRetry(() => import("@/pages/speech/SpeechHistoryPage"));
+const DailyChallengePage   = lazyWithRetry(() => import("@/pages/challenges/DailyChallengePage"));
+const ChallengeHistoryPage = lazyWithRetry(() => import("@/pages/challenges/ChallengeHistoryPage"));
+const ProgressPage         = lazyWithRetry(() => import("@/pages/Progress"));
+const ListeningLibraryPage = lazyWithRetry(() => import("@/pages/listening/Library"));
+const ListeningClipPage    = lazyWithRetry(() => import("@/pages/listening/ClipPlayer"));
+const LeaderboardPage      = lazyWithRetry(() => import("@/pages/LeaderboardPage"));
+const MonthlyReferralLeaderboard = lazyWithRetry(() => import("@/pages/leaderboards/MonthlyReferralLeaderboard"));
+const ProfessionsIndexPage = lazyWithRetry(() => import("@/pages/professions/ProfessionsIndexPage"));
+const NailTechLessonsPage  = lazyWithRetry(() => import("@/pages/professions/NailTechLessonsPage"));
+const RestaurantLessonsPage = lazyWithRetry(() => import("@/pages/professions/RestaurantLessonsPage"));
+const CustomerServiceLessonsPage = lazyWithRetry(() => import("@/pages/professions/CustomerServiceLessonsPage"));
+const TechWorkerLessonsPage = lazyWithRetry(() => import("@/pages/professions/TechWorkerLessonsPage"));
+const HealthcareLessonsPage = lazyWithRetry(() => import("@/pages/professions/HealthcareLessonsPage"));
+const DriversLessonsPage = lazyWithRetry(() => import("@/pages/professions/DriversLessonsPage"));
+const HospitalityLessonsPage = lazyWithRetry(() => import("@/pages/professions/HospitalityLessonsPage"));
 
 // Language learning verticals
-const LanguagesIndexPage   = lazy(() => import("@/pages/languages/LanguagesIndexPage"));
-const FrenchLessonsPage    = lazy(() => import("@/pages/languages/FrenchLessonsPage"));
-const GermanLessonsPage    = lazy(() => import("@/pages/languages/GermanLessonsPage"));
-const JapaneseLessonsPage  = lazy(() => import("@/pages/languages/JapaneseLessonsPage"));
-const ChineseLessonsPage   = lazy(() => import("@/pages/languages/ChineseLessonsPage"));
-const KoreanLessonsPage    = lazy(() => import("@/pages/languages/KoreanLessonsPage"));
+const LanguagesIndexPage   = lazyWithRetry(() => import("@/pages/languages/LanguagesIndexPage"));
+const FrenchLessonsPage    = lazyWithRetry(() => import("@/pages/languages/FrenchLessonsPage"));
+const GermanLessonsPage    = lazyWithRetry(() => import("@/pages/languages/GermanLessonsPage"));
+const JapaneseLessonsPage  = lazyWithRetry(() => import("@/pages/languages/JapaneseLessonsPage"));
+const ChineseLessonsPage   = lazyWithRetry(() => import("@/pages/languages/ChineseLessonsPage"));
+const KoreanLessonsPage    = lazyWithRetry(() => import("@/pages/languages/KoreanLessonsPage"));
 
 // Mercy v2 — multi-turn conversation thread page (auth-required).
-const MercyThreadPage      = lazy(() => import("@/pages/mercy/MercyThreadPage"));
+const MercyThreadPage      = lazyWithRetry(() => import("@/pages/mercy/MercyThreadPage"));
 
 // Mercy unified chat — single-pane chat that replaces the multi-tab
 // drawer for users on the new default ('unified'). Legacy MercyGuide
 // drawer is preserved on Home for the 'classic' opt-out.
-const MercyUnifiedPage     = lazy(() => import("@/pages/mercy/MercyUnifiedPage"));
+const MercyUnifiedPage     = lazyWithRetry(() => import("@/pages/mercy/MercyUnifiedPage"));
 
-const WritingFeedbackPage  = lazy(() => import("@/pages/writing/WritingFeedbackPage"));
-const WritingPracticePage  = lazy(() => import("@/pages/writing/WritingPracticePage"));
-const WritingPracticeSessionPage = lazy(() => import("@/pages/writing/WritingPracticeSessionPage"));
+const WritingFeedbackPage  = lazyWithRetry(() => import("@/pages/writing/WritingFeedbackPage"));
+const WritingPracticePage  = lazyWithRetry(() => import("@/pages/writing/WritingPracticePage"));
+const WritingPracticeSessionPage = lazyWithRetry(() => import("@/pages/writing/WritingPracticeSessionPage"));
 
-const RoleplayPage = lazy(() => import("@/pages/RoleplayPage"));
+const RoleplayPage = lazyWithRetry(() => import("@/pages/RoleplayPage"));
 
 // IELTS prep mode (Step 11 — premium-gated; gate enforced per-page).
-const IELTSIndexPage      = lazy(() => import("@/pages/exam-prep/IELTSIndexPage"));
-const IELTSWritingPage    = lazy(() => import("@/pages/exam-prep/IELTSWritingPage"));
-const IELTSSpeakingPage   = lazy(() => import("@/pages/exam-prep/IELTSSpeakingPage"));
-const IELTSListeningPage  = lazy(() => import("@/pages/exam-prep/IELTSListeningPage"));
-const IELTSReadingPage    = lazy(() => import("@/pages/exam-prep/IELTSReadingPage"));
-const IELTSEstimatorPage  = lazy(() => import("@/pages/exam-prep/IELTSEstimatorPage"));
-const VSTEPSpeakingPage   = lazy(() => import("@/pages/exam-prep/VSTEPSpeakingPage"));
+const IELTSIndexPage      = lazyWithRetry(() => import("@/pages/exam-prep/IELTSIndexPage"));
+const IELTSWritingPage    = lazyWithRetry(() => import("@/pages/exam-prep/IELTSWritingPage"));
+const IELTSSpeakingPage   = lazyWithRetry(() => import("@/pages/exam-prep/IELTSSpeakingPage"));
+const IELTSListeningPage  = lazyWithRetry(() => import("@/pages/exam-prep/IELTSListeningPage"));
+const IELTSReadingPage    = lazyWithRetry(() => import("@/pages/exam-prep/IELTSReadingPage"));
+const IELTSEstimatorPage  = lazyWithRetry(() => import("@/pages/exam-prep/IELTSEstimatorPage"));
+const VSTEPSpeakingPage   = lazyWithRetry(() => import("@/pages/exam-prep/VSTEPSpeakingPage"));
 
 // SEO landing pages — Vietnamese-keyword targeted, public, no auth required.
-const SeoHocTiengAnhChoNguoiVietPage = lazy(() => import("@/pages/seo/HocTiengAnhChoNguoiVietPage"));
-const SeoSuaPhatAmTiengAnhPage       = lazy(() => import("@/pages/seo/SuaPhatAmTiengAnhPage"));
-const SeoLoiTiengAnhNguoiVietPage    = lazy(() => import("@/pages/seo/LoiTiengAnhNguoiVietHaySaiPage"));
-const SeoPhongVanTiengAnhPage        = lazy(() => import("@/pages/seo/PhongVanTiengAnhPage"));
-const SeoHocTiengAnhMienPhiPage      = lazy(() => import("@/pages/seo/HocTiengAnhMienPhiPage"));
+const SeoHocTiengAnhChoNguoiVietPage = lazyWithRetry(() => import("@/pages/seo/HocTiengAnhChoNguoiVietPage"));
+const SeoSuaPhatAmTiengAnhPage       = lazyWithRetry(() => import("@/pages/seo/SuaPhatAmTiengAnhPage"));
+const SeoLoiTiengAnhNguoiVietPage    = lazyWithRetry(() => import("@/pages/seo/LoiTiengAnhNguoiVietHaySaiPage"));
+const SeoPhongVanTiengAnhPage        = lazyWithRetry(() => import("@/pages/seo/PhongVanTiengAnhPage"));
+const SeoHocTiengAnhMienPhiPage      = lazyWithRetry(() => import("@/pages/seo/HocTiengAnhMienPhiPage"));
 
 // Per-topic SEO landing pages — Vietnamese-keyword targeted, public.
 // Each one is a self-contained route loaded on demand so the 60+ topic
 // surface stays out of the main bundle.
-const VstepTopicPage                 = lazy(() => import("@/pages/seo/VstepTopicPage"));
-const ToeicTopicPage                 = lazy(() => import("@/pages/seo/ToeicTopicPage"));
-const IeltsTopicPage                 = lazy(() => import("@/pages/seo/IeltsTopicPage"));
+const VstepTopicPage                 = lazyWithRetry(() => import("@/pages/seo/VstepTopicPage"));
+const ToeicTopicPage                 = lazyWithRetry(() => import("@/pages/seo/ToeicTopicPage"));
+const IeltsTopicPage                 = lazyWithRetry(() => import("@/pages/seo/IeltsTopicPage"));
 
 // Developer portal — Step 11 public API.
-const DeveloperPortalPage = lazy(() => import("@/pages/dev/DeveloperPortalPage"));
+const DeveloperPortalPage = lazyWithRetry(() => import("@/pages/dev/DeveloperPortalPage"));
 
 // 2FA Phase 1 — paid-tier gated, both routes RequireAuth-wrapped.
-const SecuritySettingsPage = lazy(() => import("@/pages/account/SecuritySettings"));
-const Enable2FAPage = lazy(() => import("@/pages/auth/Enable2FA"));
-const Aal2ChallengePage = lazy(() => import("@/pages/auth/Aal2Challenge"));
+const SecuritySettingsPage = lazyWithRetry(() => import("@/pages/account/SecuritySettings"));
+const Enable2FAPage = lazyWithRetry(() => import("@/pages/auth/Enable2FA"));
+const Aal2ChallengePage = lazyWithRetry(() => import("@/pages/auth/Aal2Challenge"));
 // 2FA Phase 2 — recovery flow (lost phone). Public route; password
 // is verified before the backup-code is checked.
-const RecoverWith2FAPage = lazy(() => import("@/pages/auth/RecoverWith2FA"));
+const RecoverWith2FAPage = lazyWithRetry(() => import("@/pages/auth/RecoverWith2FA"));
 
-const BlogIndex = lazy(() => import("@/pages/blog/BlogIndex"));
-const BlogPost  = lazy(() => import("@/pages/blog/BlogPost"));
-const WeeklyDigest = lazy(() => import("@/pages/blog/WeeklyDigest"));
+const BlogIndex = lazyWithRetry(() => import("@/pages/blog/BlogIndex"));
+const BlogPost  = lazyWithRetry(() => import("@/pages/blog/BlogPost"));
+const WeeklyDigest = lazyWithRetry(() => import("@/pages/blog/WeeklyDigest"));
 
 
-const PublicProfilePage   = lazy(() => import("@/pages/profile/PublicProfilePage"));
-const ShareProgressPage   = lazy(() => import("@/pages/profile/ShareProgressPage"));
+const PublicProfilePage   = lazyWithRetry(() => import("@/pages/profile/PublicProfilePage"));
+const ShareProgressPage   = lazyWithRetry(() => import("@/pages/profile/ShareProgressPage"));
 
-const PurchaseGiftPage    = lazy(() => import("@/pages/gift/PurchaseGiftPage"));
-const RedeemGiftPage      = lazy(() => import("@/pages/gift/RedeemGiftPage"));
-const MyGiftsPage         = lazy(() => import("@/pages/gift/MyGiftsPage"));
+const PurchaseGiftPage    = lazyWithRetry(() => import("@/pages/gift/PurchaseGiftPage"));
+const RedeemGiftPage      = lazyWithRetry(() => import("@/pages/gift/RedeemGiftPage"));
+const MyGiftsPage         = lazyWithRetry(() => import("@/pages/gift/MyGiftsPage"));
 
-const VNCulturalIndexPage = lazy(() => import("@/pages/cultural-packs/VNCulturalIndexPage"));
-const VNCulturalPackPage  = lazy(() => import("@/pages/cultural-packs/VNCulturalPackPage"));
+const VNCulturalIndexPage = lazyWithRetry(() => import("@/pages/cultural-packs/VNCulturalIndexPage"));
+const VNCulturalPackPage  = lazyWithRetry(() => import("@/pages/cultural-packs/VNCulturalPackPage"));
 
-const GroupsIndex          = lazy(() => import("@/pages/groups/GroupsIndex"));
-const GroupPage            = lazy(() => import("@/pages/groups/GroupPage"));
-const CreateGroupPage      = lazy(() => import("@/pages/groups/CreateGroupPage"));
+const GroupsIndex          = lazyWithRetry(() => import("@/pages/groups/GroupsIndex"));
+const GroupPage            = lazyWithRetry(() => import("@/pages/groups/GroupPage"));
+const CreateGroupPage      = lazyWithRetry(() => import("@/pages/groups/CreateGroupPage"));
 
-const PublicRoadmapPage    = lazy(() => import("@/pages/roadmap/PublicRoadmapPage"));
-const FeedbackTriagePage   = lazy(() => import("@/pages/admin/FeedbackTriagePage"));
+const PublicRoadmapPage    = lazyWithRetry(() => import("@/pages/roadmap/PublicRoadmapPage"));
+const FeedbackTriagePage   = lazyWithRetry(() => import("@/pages/admin/FeedbackTriagePage"));
 
-const InterviewIndex         = lazy(() => import("@/pages/interview/InterviewIndex"));
-const InterviewSessionPage   = lazy(() => import("@/pages/interview/InterviewSessionPage"));
-const MockInterviewIndex     = lazy(() => import("@/pages/mock-interview/MockInterviewIndex"));
-const MockInterviewRoom      = lazy(() => import("@/pages/mock-interview/MockInterviewRoom"));
-const InterviewSummaryPage   = lazy(() => import("@/pages/interview/InterviewSummaryPage"));
+const InterviewIndex         = lazyWithRetry(() => import("@/pages/interview/InterviewIndex"));
+const InterviewSessionPage   = lazyWithRetry(() => import("@/pages/interview/InterviewSessionPage"));
+const MockInterviewIndex     = lazyWithRetry(() => import("@/pages/mock-interview/MockInterviewIndex"));
+const MockInterviewRoom      = lazyWithRetry(() => import("@/pages/mock-interview/MockInterviewRoom"));
+const InterviewSummaryPage   = lazyWithRetry(() => import("@/pages/interview/InterviewSummaryPage"));
 
-const NailTechnicianPage     = lazy(() => import("@/pages/profession-packs/NailTechnicianPage"));
+const NailTechnicianPage     = lazyWithRetry(() => import("@/pages/profession-packs/NailTechnicianPage"));
 
-const ContributeSentencePage = lazy(() => import("@/pages/contribute/ContributeSentencePage"));
-const MySubmissionsPage      = lazy(() => import("@/pages/contribute/MySubmissionsPage"));
-const PendingSentencesPage   = lazy(() => import("@/pages/admin/PendingSentencesPage"));
+const ContributeSentencePage = lazyWithRetry(() => import("@/pages/contribute/ContributeSentencePage"));
+const MySubmissionsPage      = lazyWithRetry(() => import("@/pages/contribute/MySubmissionsPage"));
+const PendingSentencesPage   = lazyWithRetry(() => import("@/pages/admin/PendingSentencesPage"));
 
 // User testimonial pages — public stories index + auth-required share
 // flow + admin moderation queue. See migration
 // 20260426000000_user_stories.sql for the schema and RLS.
-const StoriesPage            = lazy(() => import("@/pages/Stories"));
-const ShareStoryPage         = lazy(() => import("@/pages/stories/ShareStory"));
-const StoryDetailPage        = lazy(() => import("@/pages/stories/StoryDetail"));
-const StoryModerationPage    = lazy(() => import("@/pages/admin/StoryModeration"));
+const StoriesPage            = lazyWithRetry(() => import("@/pages/Stories"));
+const ShareStoryPage         = lazyWithRetry(() => import("@/pages/stories/ShareStory"));
+const StoryDetailPage        = lazyWithRetry(() => import("@/pages/stories/StoryDetail"));
+const StoryModerationPage    = lazyWithRetry(() => import("@/pages/admin/StoryModeration"));
 
 // Teacher review portal (A11) — admin level 5+ reviewer queue +
 // admin level 9+ triage of teacher feedback. Schema:
 // supabase/migrations/20260533000000_teacher_feedback.sql.
-const TeacherReviewQueuePage    = lazy(() => import("@/pages/teacher-portal/ReviewQueue"));
-const TeacherReviewItemPage     = lazy(() => import("@/pages/teacher-portal/ReviewItem"));
-const TeacherFeedbackTriagePage = lazy(() => import("@/pages/admin/TeacherFeedbackTriage"));
-const TeacherRoute              = lazy(() => import("@/components/teacher-portal/TeacherRoute"));
+const TeacherReviewQueuePage    = lazyWithRetry(() => import("@/pages/teacher-portal/ReviewQueue"));
+const TeacherReviewItemPage     = lazyWithRetry(() => import("@/pages/teacher-portal/ReviewItem"));
+const TeacherFeedbackTriagePage = lazyWithRetry(() => import("@/pages/admin/TeacherFeedbackTriage"));
+const TeacherRoute              = lazyWithRetry(() => import("@/components/teacher-portal/TeacherRoute"));
 
 // Community-curated mock-interview prompts. See migration
 // 20260534000000_user_interview_prompts.sql for the schema and RLS.
-const SubmitInterviewPromptPage  = lazy(() => import("@/pages/interview-prompts/Submit"));
-const CommunityPromptsPage       = lazy(() => import("@/pages/mock-interview/CommunityPrompts"));
-const InterviewPromptsModerationPage = lazy(() => import("@/pages/admin/InterviewPromptsModeration"));
+const SubmitInterviewPromptPage  = lazyWithRetry(() => import("@/pages/interview-prompts/Submit"));
+const CommunityPromptsPage       = lazyWithRetry(() => import("@/pages/mock-interview/CommunityPrompts"));
+const InterviewPromptsModerationPage = lazyWithRetry(() => import("@/pages/admin/InterviewPromptsModeration"));
 
-const FamilyPlanPage         = lazy(() => import("@/pages/family/FamilyPlanPage"));
+const FamilyPlanPage         = lazyWithRetry(() => import("@/pages/family/FamilyPlanPage"));
 
-const TOEICIndexPage         = lazy(() => import("@/pages/exam-prep/TOEICIndexPage"));
-const TOEICPracticePage      = lazy(() => import("@/pages/exam-prep/TOEICPracticePage"));
-const TOEICEstimatorPage     = lazy(() => import("@/pages/exam-prep/TOEICEstimatorPage"));
-const TOEICPracticePackPage  = lazy(() => import("@/pages/exam-prep/toeic/Practice"));
-const IELTSSpeakingContentPage      = lazy(() => import("@/pages/exam-prep/ielts/Speaking"));
-const IELTSSpeakingTopicPage        = lazy(() => import("@/pages/exam-prep/ielts/SpeakingTopic"));
-const IELTSListeningContentPage     = lazy(() => import("@/pages/exam-prep/ielts/Listening"));
-const IELTSListeningItemPage        = lazy(() => import("@/pages/exam-prep/ielts/ListeningItem"));
+const TOEICIndexPage         = lazyWithRetry(() => import("@/pages/exam-prep/TOEICIndexPage"));
+const TOEICPracticePage      = lazyWithRetry(() => import("@/pages/exam-prep/TOEICPracticePage"));
+const TOEICEstimatorPage     = lazyWithRetry(() => import("@/pages/exam-prep/TOEICEstimatorPage"));
+const TOEICPracticePackPage  = lazyWithRetry(() => import("@/pages/exam-prep/toeic/Practice"));
+const IELTSSpeakingContentPage      = lazyWithRetry(() => import("@/pages/exam-prep/ielts/Speaking"));
+const IELTSSpeakingTopicPage        = lazyWithRetry(() => import("@/pages/exam-prep/ielts/SpeakingTopic"));
+const IELTSListeningContentPage     = lazyWithRetry(() => import("@/pages/exam-prep/ielts/Listening"));
+const IELTSListeningItemPage        = lazyWithRetry(() => import("@/pages/exam-prep/ielts/ListeningItem"));
 
-const CorporateDashboardPage = lazy(() => import("@/pages/corporate/CorporateDashboardPage"));
-const CreateCorporatePage    = lazy(() => import("@/pages/corporate/CreateCorporatePage"));
-const JoinCorporatePage      = lazy(() => import("@/pages/corporate/JoinCorporatePage"));
+const CorporateDashboardPage = lazyWithRetry(() => import("@/pages/corporate/CorporateDashboardPage"));
+const CreateCorporatePage    = lazyWithRetry(() => import("@/pages/corporate/CreateCorporatePage"));
+const JoinCorporatePage      = lazyWithRetry(() => import("@/pages/corporate/JoinCorporatePage"));
 
-const AdminDashboard          = lazy(() => import("@/pages/admin/AdminDashboard"));
-const AdminUsersPage          = lazy(() => import("@/pages/admin/AdminUsersPage"));
-const AdminPaymentsPage       = lazy(() => import("@/pages/admin/AdminPaymentsPage"));
-const AdminAccessCodes        = lazy(() => import("@/pages/admin/AdminAccessCodes"));
-const AudioCoveragePage       = lazy(() => import("@/pages/admin/AudioCoveragePage"));
-const AdminFeedbackPage       = lazy(() => import("@/pages/admin/AdminFeedbackPage"));
-const AdminSubscriptions      = lazy(() => import("@/pages/admin/AdminSubscriptions"));
-const FeatureFlagsAdmin       = lazy(() => import("@/pages/admin/FeatureFlagsAdmin"));
-const AdminAnalyticsPage      = lazy(() => import("@/pages/admin/AdminAnalyticsPage"));
-const LatencyMonitoring       = lazy(() => import("@/pages/admin/LatencyMonitoring"));
-const SloDashboard            = lazy(() => import("@/pages/admin/SloDashboard"));
-const SloDetail               = lazy(() => import("@/pages/admin/SloDetail"));
-const CostMonitoring          = lazy(() => import("@/pages/admin/CostMonitoring"));
-const FrontendPerformance     = lazy(() => import("@/pages/admin/FrontendPerformance"));
-const RetentionDashboard      = lazy(() => import("@/pages/admin/RetentionDashboard"));
-const BehavioralAnalytics     = lazy(() => import("@/pages/admin/BehavioralAnalytics"));
-const RoomLoadDiagnostics     = lazy(() =>
+const AdminDashboard          = lazyWithRetry(() => import("@/pages/admin/AdminDashboard"));
+const AdminUsersPage          = lazyWithRetry(() => import("@/pages/admin/AdminUsersPage"));
+const AdminPaymentsPage       = lazyWithRetry(() => import("@/pages/admin/AdminPaymentsPage"));
+const AdminAccessCodes        = lazyWithRetry(() => import("@/pages/admin/AdminAccessCodes"));
+const AudioCoveragePage       = lazyWithRetry(() => import("@/pages/admin/AudioCoveragePage"));
+const AdminFeedbackPage       = lazyWithRetry(() => import("@/pages/admin/AdminFeedbackPage"));
+const AdminSubscriptions      = lazyWithRetry(() => import("@/pages/admin/AdminSubscriptions"));
+const FeatureFlagsAdmin       = lazyWithRetry(() => import("@/pages/admin/FeatureFlagsAdmin"));
+const AdminAnalyticsPage      = lazyWithRetry(() => import("@/pages/admin/AdminAnalyticsPage"));
+const LatencyMonitoring       = lazyWithRetry(() => import("@/pages/admin/LatencyMonitoring"));
+const SloDashboard            = lazyWithRetry(() => import("@/pages/admin/SloDashboard"));
+const SloDetail               = lazyWithRetry(() => import("@/pages/admin/SloDetail"));
+const CostMonitoring          = lazyWithRetry(() => import("@/pages/admin/CostMonitoring"));
+const FrontendPerformance     = lazyWithRetry(() => import("@/pages/admin/FrontendPerformance"));
+const RetentionDashboard      = lazyWithRetry(() => import("@/pages/admin/RetentionDashboard"));
+const BehavioralAnalytics     = lazyWithRetry(() => import("@/pages/admin/BehavioralAnalytics"));
+const RoomLoadDiagnostics     = lazyWithRetry(() =>
   import("@/components/admin/RoomLoadDiagnostics").then((m) => ({
     default: m.RoomLoadDiagnostics,
   })),
@@ -249,7 +250,7 @@ const RoomLoadDiagnostics     = lazy(() =>
 // Dev-only: useAudioUrl manual test harness. Gated behind import.meta.env.DEV
 // so Vite tree-shakes both the dynamic import and the route JSX in prod builds.
 const DevAudioTest = import.meta.env.DEV
-  ? lazy(() => import("@/pages/DevAudioTest"))
+  ? lazyWithRetry(() => import("@/pages/DevAudioTest"))
   : null;
 
 declare global {
