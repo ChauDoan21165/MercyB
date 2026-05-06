@@ -171,7 +171,7 @@ export default function BillingSuccess() {
           {hasPremium ? "Your premium access is ready" : "Processing your subscription…"}
         </h1>
         <span style={viStyle}>
-          {hasPremium ? "Quyền truy cập premium của bạn đã sẵn sàng" : "Đang xử lý gói đăng ký của bạn…"}
+          {hasPremium ? "Quyền truy cập Premium của bạn đã sẵn sàng" : "Đang xử lý gói đăng ký của bạn…"}
         </span>
 
         <p style={{ margin: "12px 0 0", color: "#475569", lineHeight: 1.7, fontSize: 16 }}>
@@ -181,7 +181,7 @@ export default function BillingSuccess() {
         </p>
         <p style={{ margin: "3px 0 0", fontSize: 13, color: "#94a3b8", lineHeight: 1.5 }}>
           {hasPremium
-            ? "Gói đăng ký đã được xác nhận và quyền premium đang hoạt động."
+            ? "Gói đăng ký đã được xác nhận và quyền Premium đang hoạt động."
             : "Vui lòng chờ trong giây lát…"}
         </p>
 
@@ -221,7 +221,7 @@ export default function BillingSuccess() {
           }}>
             Premium access is now active.
             <span style={{ ...viStyle, color: "#047857" }}>
-              Quyền truy cập premium đang hoạt động.
+              Quyền truy cập Premium đang hoạt động.
             </span>
           </div>
         ) : null}

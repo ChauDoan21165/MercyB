@@ -32,7 +32,7 @@ const FAQS: FaqItem[] = [
         </p>
         <p style={{ color: "#475569" }}>
           Đăng nhập, mở trang <Link to="/account">Tài khoản</Link>, kéo xuống
-          dưới cùng và bấm <strong>Xóa tài khoản</strong>. Bạn sẽ được yêu cầu
+          cuối trang và nhấn <strong>Xóa tài khoản</strong>. Bạn sẽ được yêu cầu
           nhập <code>DELETE</code> để xác nhận. Tài khoản sẽ bị xóa ngay lập
           tức cùng với lịch sử học và điểm phát âm. Nếu không đăng nhập được,
           gửi email tới <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a>{" "}
@@ -58,11 +58,11 @@ const FAQS: FaqItem[] = [
           investigate.
         </p>
         <p style={{ color: "#475569" }}>
-          Trên iOS, gói đăng ký được tính phí qua Apple ID và quản lý ở Cài
+          Trên iOS, gói đăng ký được tính phí qua Apple ID và được quản lý trong Cài
           đặt → Apple ID → Đăng ký. Trên Android, mở Google Play → Thanh toán
           &amp; gói đăng ký. Trên web, mở <Link to="/billing">Thanh toán</Link>{" "}
-          và bấm <strong>Quản lý gói đăng ký</strong> để vào cổng Stripe để
-          hủy hoặc yêu cầu hoàn tiền. Nếu không tìm thấy giao dịch, hãy
+          và nhấn <strong>Quản lý gói đăng ký</strong> để mở cổng Stripe,
+          rồi hủy hoặc yêu cầu hoàn tiền. Nếu không tìm thấy giao dịch, hãy
           chuyển tiếp biên lai đến{" "}
           <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a>.
         </p>
@@ -98,10 +98,10 @@ const FAQS: FaqItem[] = [
         </p>
         <p style={{ color: "#475569" }}>
           Tính năng chấm phát âm cần quyền truy cập micro và kết nối ổn định.
-          Thử lần lượt: tải lại phòng và bấm mic lại; kiểm tra quyền micro
-          trong cài đặt trình duyệt hoặc điện thoại; nói gần micro và giảm
-          tiếng ồn xung quanh; nếu chấm trên cloud không khả dụng, MercyBlade
-          sẽ tự chuyển sang chấm cục bộ trong trình duyệt — bạn vẫn có điểm
+          Hãy thử lần lượt: tải lại phòng và nhấn mic lại; kiểm tra quyền micro
+          trong cài đặt trình duyệt hoặc điện thoại; nói gần micro hơn và giảm
+          tiếng ồn xung quanh. Nếu chấm điểm trên cloud không khả dụng, MercyBlade
+          sẽ tự chuyển sang chấm cục bộ trong trình duyệt — bạn vẫn có điểm,
           nhưng có thể ít chi tiết hơn. Nếu vẫn lỗi, gửi email tới{" "}
           <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a> kèm tên
           phòng và thiết bị đang dùng.
@@ -122,7 +122,7 @@ const FAQS: FaqItem[] = [
           expires, request another one.
         </p>
         <p style={{ color: "#475569" }}>
-          Ở màn hình đăng nhập, bấm <strong>Quên mật khẩu?</strong> và nhập
+          Ở màn hình đăng nhập, nhấn <strong>Quên mật khẩu?</strong> và nhập
           email tài khoản. Bạn sẽ nhận được liên kết đặt lại mật khẩu từ
           MercyBlade — mở trên cùng thiết bị và chọn mật khẩu mới. Liên kết
           có hiệu lực trong thời gian ngắn vì lý do bảo mật; nếu hết hạn, hãy
@@ -169,7 +169,7 @@ const FAQS: FaqItem[] = [
           đăng ký → MercyBlade → Hoàn tiền (Google quyết định); Stripe (web)
           — gửi email tới <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a>{" "}
           trong vòng 14 ngày sau khi mua; chúng tôi hoàn lại phần chưa sử
-          dụng nếu bạn chưa sử dụng dịch vụ đáng kể.
+          dụng nếu bạn chưa sử dụng dịch vụ nhiều.
         </p>
       </>
     ),
@@ -305,7 +305,7 @@ export default function Support() {
           Chat with us
         </p>
         <p style={{ marginTop: 6, marginBottom: 12, color: "#475569", fontSize: 14 }}>
-          Người Việt thường nhắn nhanh nhất qua Zalo và Messenger. Email cũng được. ·
+          Người Việt thường được phản hồi nhanh nhất qua Zalo và Messenger. Email cũng được. ·
           <span style={{ color: "#94a3b8" }}> Vietnamese learners reach us fastest via Zalo or Messenger. Email works too.</span>
         </p>
 
@@ -322,7 +322,7 @@ export default function Support() {
             accent="#0068FF"
             icon={<MessageSquare size={20} color="white" aria-hidden />}
             title_vi="Zalo"
-            title_en="Nhắn nhanh nhất / Fastest reply"
+            title_en="Phản hồi nhanh nhất / Fastest reply"
           />
           <ContactChannelCard
             href={SUPPORT_CHANNELS.messenger_url}
@@ -353,7 +353,7 @@ export default function Support() {
       </p>
       <p style={{ color: "#475569" }}>
         Chúng tôi là một đội nhỏ và đọc mọi email. Cách nhanh nhất để được hỗ
-        trợ là xem qua các câu hỏi bên dưới — phần lớn vấn đề đã có lời giải
+        trợ là xem qua các câu hỏi bên dưới — phần lớn vấn đề đã có hướng xử lý
         ở đó. Nếu chưa thấy câu hỏi của bạn, hãy gửi email tới{" "}
         <a href={`mailto:${SUPPORT_EMAIL}`}>
           <strong>{SUPPORT_EMAIL}</strong>

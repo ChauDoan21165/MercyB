@@ -162,7 +162,7 @@ function normalizeUiErrorMessage(message: string): UiMessage {
 
   return {
     en: message,
-    vi: "Đã xảy ra lỗi. Vui lòng thử lại.",
+    vi: "Có lỗi xảy ra. Vui lòng thử lại.",
   };
 }
 
@@ -180,7 +180,7 @@ function getPlanButtonLabel(args: {
     return (
       <div>
         Checking...
-        <span style={{ ...VIETNAMESE_SUB_STYLE, color: "inherit" }}>Đang kiểm tra...</span>
+        <span style={{ ...VIETNAMESE_SUB_STYLE, color: "inherit" }}>Đang kiểm tra…</span>
       </div>
     );
   }
@@ -189,7 +189,7 @@ function getPlanButtonLabel(args: {
     return (
       <div>
         Processing...
-        <span style={{ ...VIETNAMESE_SUB_STYLE, color: "inherit" }}>Đang xử lý...</span>
+        <span style={{ ...VIETNAMESE_SUB_STYLE, color: "inherit" }}>Đang xử lý…</span>
       </div>
     );
   }
@@ -210,7 +210,7 @@ function getPlanButtonLabel(args: {
     : plan === "month" ? "Subscribe monthly"  : "Subscribe yearly";
 
   const labelVi = isSwitch
-    ? plan === "month" ? "Chuyển sang tháng" : "Chuyển sang năm"
+    ? plan === "month" ? "Chuyển sang gói tháng" : "Chuyển sang gói năm"
     : plan === "month" ? "Đăng ký theo tháng" : "Đăng ký theo năm";
 
   return (
@@ -310,7 +310,7 @@ export default function Billing() {
     if (billingState === "updated") {
       setSuccessText({
         en: "Your plan was updated. Refreshing billing status...",
-        vi: "Gói của bạn đã được cập nhật. Đang làm mới trạng thái thanh toán...",
+        vi: "Gói của bạn đã được cập nhật. Đang làm mới trạng thái thanh toán…",
       });
 
       void pollEntitlementAfterBilling().then((data) => {
@@ -363,7 +363,7 @@ export default function Billing() {
       if (result.mode === "change_plan") {
         setSuccessText({
           en: "Your plan was updated. Refreshing billing status...",
-          vi: "Gói của bạn đã được cập nhật. Đang làm mới trạng thái thanh toán...",
+          vi: "Gói của bạn đã được cập nhật. Đang làm mới trạng thái thanh toán…",
         });
 
         const refreshed = await pollEntitlementAfterBilling();
@@ -507,7 +507,7 @@ export default function Billing() {
         <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginTop: 18 }}>
           <button type="button" onClick={() => void refreshEntitlement()} disabled={loading} style={secondaryButton}>
             Refresh access
-            <span style={VIETNAMESE_SUB_STYLE}>Cập nhật quyền truy cập</span>
+            <span style={VIETNAMESE_SUB_STYLE}>Làm mới quyền truy cập</span>
           </button>
 
           {isIos ? (
@@ -636,7 +636,7 @@ export default function Billing() {
             <div style={{ marginTop: 8, color: "#475569", lineHeight: 1.4, fontSize: 14 }}>
               Best long-term value with full premium access all year.
               <span style={{ ...VIETNAMESE_SUB_STYLE, color: "#94a3b8", fontSize: 12 }}>
-                Giá trị tốt nhất với quyền Premium trọn năm.
+                Giá trị tốt nhất với quyền Premium trong cả năm.
               </span>
             </div>
 

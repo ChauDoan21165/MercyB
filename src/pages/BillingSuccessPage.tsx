@@ -78,7 +78,7 @@ export default function BillingSuccessPage() {
     if (!isPremium)         return { en: "Free access", vi: "Truy cập miễn phí" };
     if (ent?.status === "trialing")
       return { en: "Premium (trial)", vi: "Cao cấp (dùng thử)" };
-    return { en: "Premium access", vi: "Quyền truy cập cao cấp" };
+    return { en: "Premium access", vi: "Quyền truy cập Premium" };
   }, [ent?.status, entitlementLoading, isPremium]);
 
   // ── Styles ──────────────────────────────────────────────────────────────────
@@ -171,8 +171,8 @@ export default function BillingSuccessPage() {
             {entitlementLoading
               ? "Đang đồng bộ trạng thái gói đăng ký…"
               : isPremium
-                ? "Quyền truy cập premium đang hoạt động. Bạn có thể vào tất cả phòng premium."
-                : "Thanh toán đã hoàn tất. Nếu quyền truy cập chưa cập nhật, hãy bấm Làm mới quyền truy cập."}
+                ? "Quyền truy cập Premium đang hoạt động. Bạn có thể vào tất cả phòng Premium."
+                : "Thanh toán đã hoàn tất. Nếu quyền truy cập chưa cập nhật, hãy nhấn Làm mới quyền truy cập."}
           </p>
 
           {/* Status grid */}
@@ -193,8 +193,8 @@ export default function BillingSuccessPage() {
               </p>
               <p style={{ ...subStyle, ...viStyle, marginTop: 2 }}>
                 {isPremium
-                  ? "Tất cả phòng premium đã được mở khóa."
-                  : "Chưa tìm thấy gói premium đang hoạt động."}
+                  ? "Tất cả phòng Premium đã được mở khóa."
+                  : "Chưa tìm thấy gói Premium đang hoạt động."}
               </p>
             </div>
 
