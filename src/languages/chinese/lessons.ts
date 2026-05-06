@@ -8262,6 +8262,271 @@ level: "B2",
         pinyin: "Zōng shàng suǒ shù, fāng fǎ de xuǎn zé bù yīng yòu yú liú pài de piān jiàn, ér yīng yī jù jù tǐ yán jiū wèn tí de xìng zhì shěn shèn jué dìng."
       }
     ]
+  },
+  {
+    id: 98,
+    level: "C1",
+    category: "academic_discourse",
+    title: "评议一项研究",
+    pinyin: "píng yì yī xiàng yán jiū",
+    topic: "Critiquing a study",
+    title_vi: "Đánh giá một nghiên cứu",
+    title_en: "Critiquing a study",
+    sentences: [
+      {
+        chinese: "该论文在新基准测试上取得了显著性能提升, 此点确有其据, 笔者亦予以肯定。",
+        pinyin: "Gāi lùnwén zài xīn jīzhǔn cèshì shàng qǔdéle xiǎnzhù xìngnéng tíshēng, cǐ diǎn què yǒu qí jù, bǐzhě yì yǔyǐ kěndìng.",
+        english: "The paper achieves significant performance gains on a new benchmark — this point has its grounds, and the author concurs.",
+        vi: "Bài báo này đã đạt được sự cải thiện hiệu năng đáng kể trên bài kiểm tra chuẩn mới, điểm này quả có căn cứ, tác giả cũng tán đồng.",
+        pronunciation_focus: ["该论文 → gāi lùnwén (bài báo này — 书面)", "确有其据 → què yǒu qí jù (quả có căn cứ — 书面)", "予以肯定 → yǔyǐ kěndìng (tán đồng — 书面)", "亦 → yì (cũng — 书面)"]
+      },
+      {
+        chinese: "然而, 在方法论层面, 该研究存在若干值得商榷之处, 兹择要论之。",
+        pinyin: "Rán'ér, zài fāngfǎlùn céngmiàn, gāi yánjiū cúnzài ruògān zhídé shāngquè zhī chù, zī zé yào lùn zhī.",
+        english: "However, at the methodological level, the study contains several points worth deliberating — to be selectively discussed below.",
+        vi: "Tuy nhiên, ở tầng phương pháp luận, nghiên cứu này tồn tại một số điểm đáng để bàn lại, ở đây chọn ra những điểm chính để luận giải.",
+        pronunciation_focus: ["若干 → ruògān (một vài — 书面)", "值得商榷 → zhídé shāngquè (đáng để bàn — 书面)", "兹 → zī (nay / ở đây — 书面)", "择要论之 → zé yào lùn zhī (chọn điểm chính để luận — 书面)"]
+      },
+      {
+        chinese: "其一, 实验所用之基准测试本身可能存在数据污染, 模型在训练阶段或已接触类似样本。",
+        pinyin: "Qí yī, shíyàn suǒ yòng zhī jīzhǔn cèshì běnshēn kěnéng cúnzài shùjù wūrǎn, móxíng zài xùnliàn jiēduàn huò yǐ jiēchù lèisì yàngběn.",
+        english: "First, the benchmark used in the experiment may itself suffer from data contamination — the model may have encountered similar samples during training.",
+        vi: "Một là, bản thân bài kiểm tra chuẩn dùng trong thí nghiệm có thể tồn tại sự nhiễm dữ liệu, mô hình ở giai đoạn huấn luyện có thể đã tiếp xúc với các mẫu tương tự.",
+        pronunciation_focus: ["其一 → qí yī (thứ nhất — 书面)", "数据污染 → shùjù wūrǎn (nhiễm dữ liệu)", "或已 → huò yǐ (có lẽ đã — 书面 hedge)", "接触 → jiēchù (tiếp xúc)"]
+      },
+      {
+        chinese: "其二, 论文之消融实验略显薄弱, 未能充分隔离各组件对最终性能之贡献。",
+        pinyin: "Qí èr, lùnwén zhī xiāoróng shíyàn lüè xiǎn bóruò, wèi néng chōngfèn gélí gè zǔjiàn duì zuìzhōng xìngnéng zhī gòngxiàn.",
+        english: "Second, the paper's ablation study appears somewhat weak — it fails to fully isolate each component's contribution to the final performance.",
+        vi: "Hai là, thí nghiệm bỏ thành phần (ablation) của bài hơi mỏng manh, chưa thể tách bạch đầy đủ đóng góp của từng cấu phần đối với hiệu năng cuối.",
+        pronunciation_focus: ["其二 → qí èr (thứ hai — 书面)", "消融实验 → xiāoróng shíyàn (ablation study)", "略显薄弱 → lüè xiǎn bóruò (hơi mỏng — 书面 hedge)", "隔离 → gélí (tách bạch)"]
+      },
+      {
+        chinese: "瑕不掩瑜, 该研究于领域内仍具相当贡献, 然其结论之外推性应受适度约束。",
+        pinyin: "Xiá bù yǎn yú, gāi yánjiū yú lǐngyù nèi réng jù xiāngdāng gòngxiàn, rán qí jiélùn zhī wàituīxìng yīng shòu shìdù yuēshù.",
+        english: "Flaws do not obscure the gem — the study still makes a considerable contribution to the field, yet the extrapolation of its conclusions should be subject to appropriate restraint.",
+        vi: "Những khiếm khuyết không che lấp được ưu điểm, nghiên cứu này trong lĩnh vực vẫn có đóng góp đáng kể, song tính khái quát hóa của kết luận cần được ràng buộc ở mức độ phù hợp.",
+        pronunciation_focus: ["瑕不掩瑜 → xiá bù yǎn yú (lỗi không che ưu — idiom)", "仍具 → réng jù (vẫn có — 书面)", "外推性 → wàituīxìng (tính khái quát hóa)", "适度约束 → shìdù yuēshù (ràng buộc thích hợp)"]
+      }
+    ],
+    vocab: [
+      { chinese: "评议", pinyin: "píng yì", english: "to evaluate / critique", vi: "đánh giá / bình nghị" },
+      { chinese: "商榷", pinyin: "shāng què", english: "to deliberate (formal)", vi: "bàn luận (书面)" },
+      { chinese: "消融实验", pinyin: "xiāo róng shí yàn", english: "ablation study", vi: "thí nghiệm bỏ thành phần" },
+      { chinese: "数据污染", pinyin: "shù jù wū rǎn", english: "data contamination", vi: "nhiễm dữ liệu" },
+      { chinese: "外推性", pinyin: "wài tuī xìng", english: "extrapolation / generalizability", vi: "tính khái quát hóa" },
+      { chinese: "瑕不掩瑜", pinyin: "xiá bù yǎn yú", english: "flaws don't obscure the gem (idiom)", vi: "khiếm khuyết không che ưu điểm (书面)" },
+      { chinese: "美中不足", pinyin: "měi zhōng bù zú", english: "minor flaw in beauty (idiom)", vi: "ngọc còn vết (书面)" },
+      { chinese: "见仁见智", pinyin: "jiàn rén jiàn zhì", english: "matter of opinion (idiom)", vi: "mỗi người mỗi ý (书面)" },
+      { chinese: "兹", pinyin: "zī", english: "now; here (formal)", vi: "nay / ở đây (书面)" },
+      { chinese: "贡献", pinyin: "gòng xiàn", english: "contribution", vi: "đóng góp" }
+    ],
+    dialogue: [
+      { speaker: "审稿人A", chinese: "你怎么看这篇关于新diffusion模型的paper?", pinyin: "Nǐ zěnme kàn zhè piān guānyú xīn diffusion móxíng de paper?", english: "What do you think of this new diffusion model paper?", vi: "Anh/chị nghĩ gì về bài paper về diffusion model mới này?" },
+      { speaker: "审稿人B", chinese: "结果挺漂亮, 但消融实验薄弱。各组件贡献没有有效隔离, 我担心是过拟合到benchmark。", pinyin: "Jiéguǒ tǐng piàoliang, dàn xiāoróng shíyàn bóruò. Gè zǔjiàn gòngxiàn méiyǒu yǒuxiào gélí, wǒ dānxīn shì guò nǐhé dào benchmark.", english: "Results look good but ablation is weak. Component contributions aren't effectively isolated — I worry it's overfit to benchmark.", vi: "Kết quả khá đẹp, nhưng ablation study mỏng. Đóng góp các cấu phần chưa được tách bạch hiệu quả, tôi lo nó overfitting vào benchmark." },
+      { speaker: "审稿人A", chinese: "你建议reject还是major revision?", pinyin: "Nǐ jiànyì reject háishì major revision?", english: "Do you suggest reject or major revision?", vi: "Anh/chị khuyến nghị reject hay major revision?" },
+      { speaker: "审稿人B", chinese: "Major revision。提交一个完整消融表 + cross-domain validation, 我可以接受。瑕不掩瑜, 但需要补足。", pinyin: "Major revision. Tíjiāo yī gè wánzhěng xiāoróng biǎo + cross-domain validation, wǒ kěyǐ jiēshòu. Xiá bù yǎn yú, dàn xūyào bǔzú.", english: "Major revision. Submit a complete ablation table + cross-domain validation, I can accept. Flaws don't obscure the gem, but they must be addressed.", vi: "Major revision. Nộp bảng ablation đầy đủ + cross-domain validation, tôi có thể accept. Khiếm khuyết không che ưu điểm, nhưng cần được bù đắp." }
+    ],
+    dialogue_long: [
+      { speaker: "审稿人", chinese: "我把审稿意见过一下。这篇paper有亮点, 但methodology有几个比较关键的问题。", pinyin: "Wǒ bǎ shěngǎo yìjiàn guò yīxià. Zhè piān paper yǒu liàngdiǎn, dàn methodology yǒu jǐ gè bǐjiào guānjiàn de wèntí.", english: "Let me go through my review comments. This paper has highlights but methodology has several key issues.", vi: "Tôi xin trình bày các ý kiến phản biện. Bài này có điểm sáng, nhưng phần phương pháp có vài vấn đề khá then chốt." },
+      { speaker: "副主编", chinese: "请说。", pinyin: "Qǐng shuō.", english: "Please go ahead.", vi: "Xin mời." },
+      { speaker: "审稿人", chinese: "首先, 我承认这篇paper的贡献: 在五个benchmark上, 性能比SOTA高2-5个百分点, 这是显著提升, 言之凿凿。我不否认其工程价值。", pinyin: "Shǒuxiān, wǒ chéngrèn zhè piān paper de gòngxiàn: zài wǔ gè benchmark shàng, xìngnéng bǐ SOTA gāo 2-5 gè bǎifēndiǎn, zhè shì xiǎnzhù tíshēng, yán zhī záo záo. Wǒ bù fǒurèn qí gōngchéng jiàzhí.", english: "First, I acknowledge the paper's contribution: performance is 2-5 percentage points above SOTA on five benchmarks — significant improvement, well-substantiated. I don't deny its engineering value.", vi: "Trước hết, tôi thừa nhận đóng góp của bài: trên năm benchmark, hiệu năng cao hơn SOTA 2-5 điểm phần trăm, đây là cải thiện đáng kể, có căn cứ. Tôi không phủ nhận giá trị kỹ thuật của nó." },
+      { speaker: "副主编", chinese: "那你的几个关键问题是什么?", pinyin: "Nà nǐ de jǐ gè guānjiàn wèntí shì shénme?", english: "Then what are your key issues?", vi: "Vậy các vấn đề then chốt của anh/chị là gì?" },
+      { speaker: "审稿人", chinese: "其一, 数据污染问题。该paper所选的五个benchmark中, 有三个发布于该模型预训练数据截止日期之前。我有理由怀疑模型在训练时已见过部分测试集样本。这一点paper完全没讨论。", pinyin: "Qí yī, shùjù wūrǎn wèntí. Gāi paper suǒ xuǎn de wǔ gè benchmark zhōng, yǒu sān gè fābù yú gāi móxíng yùxùnliàn shùjù jiézhǐ rìqí zhīqián. Wǒ yǒu lǐyóu huáiyí móxíng zài xùnliàn shí yǐ jiànguò bùfèn cèshì jí yàngběn. Zhè yī diǎn paper wánquán méi tǎolùn.", english: "First, data contamination. Three of the five benchmarks were released before the model's pretraining data cutoff. I have reason to suspect the model saw some test set samples during training. The paper completely fails to discuss this.", vi: "Một, vấn đề nhiễm dữ liệu. Trong 5 benchmark mà bài chọn, có 3 cái được công bố trước cut-off date của dữ liệu pretrain mô hình. Tôi có lý do nghi ngờ mô hình đã thấy một phần mẫu test set lúc huấn luyện. Điểm này bài hoàn toàn không bàn." },
+      { speaker: "副主编", chinese: "这是一个严重问题。其二是什么?", pinyin: "Zhè shì yī gè yánzhòng wèntí. Qí èr shì shénme?", english: "That's a serious issue. What's the second?", vi: "Đây là vấn đề nghiêm trọng. Vấn đề thứ hai?" },
+      { speaker: "审稿人", chinese: "其二, 消融实验设计不充分。Paper claims了三个novel components: 新attention机制 + 新loss + 新training schedule。但消融表中只单独测试了attention和loss, 没有测试training schedule。也就是说, 性能提升究竟来自哪个component, 论文未能给出充分证据。", pinyin: "Qí èr, xiāoróng shíyàn shèjì bù chōngfèn. Paper claims le sān gè novel components: xīn attention jīzhì + xīn loss + xīn training schedule. Dàn xiāoróng biǎo zhōng zhǐ dāndú cèshì le attention hé loss, méiyǒu cèshì training schedule. Yě jiùshì shuō, xìngnéng tíshēng jiūjìng láizì nǎ gè component, lùnwén wèi néng gěi chū chōngfèn zhèngjù.", english: "Second, ablation design is insufficient. The paper claims three novel components: new attention + new loss + new training schedule. But the ablation table only tests attention and loss separately, not training schedule. In other words, where the performance gain comes from is not adequately substantiated.", vi: "Hai, thiết kế ablation không đầy đủ. Bài claim 3 cấu phần mới: cơ chế attention mới + loss mới + lịch trình huấn luyện mới. Nhưng trong bảng ablation chỉ test riêng attention và loss, không test training schedule. Tức là, sự cải thiện hiệu năng đến từ cấu phần nào, bài chưa đưa ra đủ chứng cứ." },
+      { speaker: "副主编", chinese: "其三?", pinyin: "Qí sān?", english: "Third?", vi: "Thứ ba?" },
+      { speaker: "审稿人", chinese: "其三, 外推性论述薄弱。Paper claims这个方法'general', 适用于多种任务。但只测试了视觉任务, 完全没有测试语言或多模态任务。这种over-claim是reviewer会pick up的。", pinyin: "Qí sān, wàituīxìng lùnshù bóruò. Paper claims zhège fāngfǎ 'general', shìyòng yú duō zhǒng rènwù. Dàn zhǐ cèshì le shìjué rènwù, wánquán méiyǒu cèshì yǔyán huò duō mótài rènwù. Zhè zhǒng over-claim shì reviewer huì pick up de.", english: "Third, generalizability discussion is weak. The paper claims the method is 'general', applicable to many tasks. But only vision tasks are tested — language or multimodal tasks are not. This kind of over-claim is what reviewers pick up.", vi: "Ba, phần luận về tính khái quát hoá yếu. Bài claim phương pháp này 'tổng quát', dùng được cho nhiều loại task. Nhưng chỉ test vision tasks, hoàn toàn không test ngôn ngữ hay multimodal. Loại over-claim này reviewer sẽ pick up." },
+      { speaker: "副主编", chinese: "你建议什么处理?", pinyin: "Nǐ jiànyì shénme chǔlǐ?", english: "What do you recommend?", vi: "Anh/chị khuyến nghị xử lý thế nào?" },
+      { speaker: "审稿人", chinese: "Major revision。具体: (1) 加入data contamination分析章节, 至少检测test set overlap; (2) 补充完整消融表, 包括training schedule单独消融; (3) 要么在abstract收紧'general'的claim, 要么补充语言任务实验。瑕不掩瑜, 这是有潜力的工作, 但需要补足这三点。", pinyin: "Major revision. Jùtǐ: (1) jiārù data contamination fēnxī zhāngjié, zhì shǎo jiǎncè test set overlap; (2) bǔchōng wánzhěng xiāoróng biǎo, bāokuò training schedule dāndú xiāoróng; (3) yàome zài abstract shōujǐn 'general' de claim, yàome bǔchōng yǔyán rènwù shíyàn. Xiá bù yǎn yú, zhè shì yǒu qiánlì de gōngzuò, dàn xūyào bǔzú zhè sān diǎn.", english: "Major revision. Specifically: (1) add a data-contamination-analysis section, at least detect test set overlap; (2) supplement complete ablation table including training schedule alone; (3) either tighten the 'general' claim in abstract, or add language task experiments. Flaws don't obscure the gem — this has potential, but these three points must be addressed.", vi: "Major revision. Cụ thể: (1) thêm chương phân tích data contamination, ít nhất check test set overlap; (2) bổ sung bảng ablation đầy đủ, bao gồm ablation riêng cho training schedule; (3) hoặc thu hẹp claim 'general' trong abstract, hoặc bổ sung thí nghiệm task ngôn ngữ. Khiếm khuyết không che ưu điểm, đây là work có tiềm năng, nhưng cần bù 3 điểm này." },
+      { speaker: "副主编", chinese: "好。我同意你的建议。我们给作者一个月时间major revision。", pinyin: "Hǎo. Wǒ tóngyì nǐ de jiànyì. Wǒmen gěi zuòzhě yī gè yuè shíjiān major revision.", english: "Good. I agree with your suggestion. We give the authors a month for major revision.", vi: "Được. Tôi đồng ý với đề xuất của anh/chị. Cho tác giả một tháng để major revision." },
+      { speaker: "审稿人", chinese: "另外, 提醒一句: 评审写作的语气要保持客观。'此点存在不足'比'这是错的'更专业, 也更容易让作者接受修改。", pinyin: "Lìngwài, tíxǐng yī jù: píngshěn xiězuò de yǔqì yào bǎochí kèguān. 'Cǐ diǎn cúnzài bùzú' bǐ 'zhè shì cuò de' gèng zhuānyè, yě gèng róngyì ràng zuòzhě jiēshòu xiūgǎi.", english: "Reminder: review writing tone must remain objective. '此点存在不足' (this point has shortcomings) is more professional than '这是错的' (this is wrong) and makes authors more receptive to revision.", vi: "Ngoài ra, một câu nhắc: giọng văn phản biện phải giữ tính khách quan. '此点存在不足' (điểm này có thiếu sót) chuyên nghiệp hơn '这是错的' (cái này sai) và cũng dễ làm tác giả chấp nhận sửa hơn." }
+    ],
+    roleplay_prompts: [
+      "Bạn là reviewer 2 cho một paper claim '99.9% accuracy on medical image diagnosis'. Reviewer 1 đã accept; bạn nghi ngờ data leakage và over-fitting. Hãy viết review báo cáo của bạn theo register C1: (1) công nhận đóng góp tiềm năng, (2) chỉ ra 3 vấn đề methodology với evidence cụ thể, (3) đề xuất cụ thể (hold-out test set / external validation / temporal split), (4) khuyến nghị 'major revision' với deadline 6 weeks. Dùng cụm '此论尚需斟酌 / 笔者建议 / 鉴于'.",
+      "Bạn là PhD candidate được giao critique một paper trong reading group. Paper là của một famous lab và phương pháp đã được công nhận trong cộng đồng. Bạn phát hiện một weakness nghiêm trọng. Hãy chuẩn bị critique trong 3 phút: (1) acknowledge papers' status và contributions, (2) hedge appropriately để không sound disrespectful, (3) trình bày weakness với concrete examples, (4) đặt một câu hỏi xây dựng cho author nếu họ ở seminar. Dùng register học thuật + 学生愚见 / 不揣冒昧.",
+      "Bạn là editor in chief đang viết letter giải thích reject decision cho một paper. Paper có ý tưởng creative nhưng execution flaws (sample size 30 thay vì cần 200, no power analysis, no comparison baseline). Hãy viết một letter 5-6 câu C1 register: thừa nhận creativity + chỉ ra cụ thể flaws + suggest journal khác phù hợp hơn (hoặc revise và resubmit) + close politely. Dùng '经审议 / 鉴于 / 敬告作者'."
+    ],
+    register_notes: "Critiquing một paper là kỹ năng C1 advanced — combining acknowledgment + criticism + constructive suggestion in proper register.\n\n1. CẤU TRÚC CRITIQUE CHUẨN (5 BƯỚC):\n\n- BƯỚC 1 — ACKNOWLEDGE CONTRIBUTION: '该研究在X方面有价值'. Không acknowledge = không xây dựng.\n- BƯỚC 2 — TRANSITION: '然而 / 然 / 不过'. Tín hiệu chuyển từ praise sang critique.\n- BƯỚC 3 — IDENTIFY ISSUES: numbered (其一/其二/其三). Mỗi issue cụ thể, có evidence.\n- BƯỚC 4 — SUGGEST SOLUTIONS: '笔者建议 / 或可考虑'. Critique without suggestion = chỉ phá.\n- BƯỚC 5 — OVERALL ASSESSMENT: '瑕不掩瑜 + recommend' hoặc '尚不足以 + recommend reject'.\n\n2. SOFTNESS GRADUATION (LIGHT → HEAVY):\n\nLIGHT critique (ưu là 'note for improvement'):\n- 略显不足 (slightly inadequate)\n- 美中不足 (minor flaw amid beauty)\n- 尚有改进空间 (room for improvement)\n- 似可商榷 (perhaps debatable)\n\nMEDIUM critique:\n- 存在若干问题 (contains several issues)\n- 论据略嫌薄弱 (argument somewhat weak)\n- 此论恐难成立 (this claim hard to sustain)\n- 有待商榷 (needs deliberation)\n\nHEAVY critique:\n- 论证存在严重缺陷 (argumentation has serious defects)\n- 该假设站不住脚 (the hypothesis doesn't hold up)\n- 实验设计存在根本问题 (experimental design has fundamental issues)\n- 结论与数据不符 (conclusion inconsistent with data)\n\n3. TYPES OF METHODOLOGY ISSUES:\n\n- Data quality (数据质量): contamination, bias, sampling\n- Experimental design (实验设计): ablation gaps, confound, lack of baseline\n- Analysis (分析): statistical errors, p-hacking, overfitting\n- Reporting (报告): missing details, selective reporting, abstract over-claim\n- Generalizability (外推性): single domain, single dataset, no replication\n\n4. CỤM PHẢN BIỆN HIGH-FREQ:\n\n- 此点尚需斟酌 (this point needs deliberation)\n- 笔者持保留意见 (author maintains reservations)\n- 论据不足以支撑该结论 (evidence insufficient for the conclusion)\n- 该结论之外推性需谨慎 (extrapolation needs caution)\n- 实验设计或欠周延 (experimental design may be incomplete)\n\n5. CONSTRUCTIVE SUGGESTIONS:\n\n- 建议补充X实验 (recommend adding X experiment)\n- 或可考虑 + alternative method (could consider...)\n- 宜在X部分增加论述 (advisable to add discussion in X)\n- 数据宜进一步细化 (data should be further refined)\n\n6. CLASSIC ML/AI CRITIQUE TARGETS:\n\n- Data contamination (数据污染) — test set leak into training\n- Cherry-picking benchmarks (挑选有利基准)\n- Insufficient ablation (消融实验不足)\n- Over-claim generalizability (过度声称泛化性)\n- Missing baseline (缺少基线)\n- Single random seed (单一随机种子)\n- No statistical significance test (缺乏显著性检验)\n\n7. REVIEW DECISION:\n\n- 接受 (accept) — minor revision only\n- 修改后接受 (accept after revision) — minor revision\n- 重大修改 (major revision) — substantive issues, paper has potential\n- 拒稿 (reject) — fundamental flaws, can resubmit\n- 拒稿不予再审 (reject, no resubmission) — extreme cases\n\n8. CRITIQUE-SPECIFIC IDIOMS:\n\n- 瑕不掩瑜 — flaws don't hide gems (positive evaluation despite issues)\n- 美中不足 — minor flaw in beauty (mostly positive, small concern)\n- 见仁见智 — matter of opinion (matters of legitimate disagreement)\n- 一叶障目 — leaf blocks view (singular focus missing big picture)\n- 力所不逮 — force doesn't reach (acknowledging limits without blame)",
+    idiom_glosses: [
+      {
+        idiom: "瑕不掩瑜",
+        literal: "lỗi không che ưu điểm (xiá bù yǎn yú)",
+        meaning: "Khiếm khuyết không che lấp ưu điểm — phrase quan trọng để soften critique. Dùng để chỉ paper có flaws nhưng overall vẫn worthy. (书面/正式)",
+        example: "该研究虽存在若干局限, 然瑕不掩瑜, 仍具相当贡献。"
+      },
+      {
+        idiom: "美中不足",
+        literal: "đẹp trong không đủ (měi zhōng bù zú)",
+        meaning: "Cái đẹp vẫn còn thiếu sót — minor critique phrase. Mostly positive với một small concern. (书面/正式)",
+        example: "该paper论述详尽, 美中不足者, 实验样本规模略小。"
+      },
+      {
+        idiom: "见仁见智",
+        literal: "người thấy nhân, người thấy trí (jiàn rén jiàn zhì)",
+        meaning: "Mỗi người mỗi cách nhìn — diplomatic phrase cho legitimate disagreement. Khi reviewer không đồng ý nhưng acknowledge có nhiều quan điểm hợp lý. (书面/正式)",
+        example: "对于该方法的解释机制, 学界见仁见智。"
+      },
+      {
+        idiom: "一叶障目",
+        literal: "một lá che mắt (yī yè zhàng mù)",
+        meaning: "Một chiếc lá che mắt — chỉ tập trung vào một chi tiết mà bỏ qua tổng thể. Dùng để chỉ ra reviewer focus quá hẹp. (书面/正式)",
+        example: "评审若仅纠结于个别数据点, 难免一叶障目, 失之偏颇。"
+      }
+    ],
+    cultural_notes_vi: "Văn hóa peer review trong giới học thuật Trung Quốc đại lục có một số đặc điểm:\n\n(1) HỆ THỐNG REVIEW PHẦN LỚN BLIND nhưng không double-blind: Trung Quốc tier-1 journals đa số dùng single-blind (reviewer biết author, author không biết reviewer). Một số top journals (như 计算机学报) dùng double-blind. Hệ quả: power asymmetry. Senior authors có lợi.\n\n(2) FACE-PRESERVING REVIEW: phản biện Trung Quốc thường gentler bề ngoài so với phương Tây. '此点尚需斟酌' (point needs deliberation) thực ra nghĩa 'wrong'. Sinh viên Việt phải đọc subtle: phrase nhẹ trên giấy có thể nghĩa heavy.\n\n(3) GUANXI INFLUENCE: trong vài lĩnh vực ở Trung Quốc, có hiện tượng 'review network' giữa các labs cùng trường phái. Reviewer thường mềm với papers từ same lab / same supervisor's network. Top journals đang đẩy mạnh blinding để giảm hiện tượng này.\n\n(4) RETRACTION CULTURE: Trung Quốc có rate retraction cao nhất thế giới (so với US, EU). Lý do: pressure publish, P-hacking, ghost authorship. Vì vậy review hiện nay được nhấn mạnh hơn nhiều so với 10 năm trước.\n\n(5) SPECIAL ROLE OF '通讯作者' (corresponding author): trong reviews ở Trung Quốc, corresponding author thường là supervisor (PI). Sinh viên là first author nhưng PI takes responsibility cho review responses. Hệ quả: sinh viên Việt collaborate phải clear với PI trước về division of review labor.\n\n(6) AI-ASSISTED REVIEW: từ 2023+, một số reviewers dùng AI để help draft reviews. Một số journals đã ban (rejecting LLM-drafted reviews); khác lại allow as long as disclosed. Sinh viên Việt review papers should disclose nếu dùng AI.\n\n(7) LANGUAGE OF REVIEW: tier-1 journals Trung Quốc thường receive English reviews; tier-2/3 nhận cả English và Chinese. Sinh viên Việt nên review bằng English trừ khi journal explicitly require Chinese.\n\n(8) RESPONSE-TO-REVIEWER (回复审稿人): rebuttal letter ở Trung Quốc thường rất polite. Format: '感谢审稿人指出, 该意见非常宝贵 / 我们已按建议修改 / 详见正文p.X'. Defensive responses ('reviewer misunderstood') = sẽ làm reviewer angry. Even nếu reviewer thực sự hiểu sai, phải gentle.\n\n(9) REVIEWING GIÚP CAREER: review cho top journals = bonus cho academic CV ở Trung Quốc. Nếu được ACL / NeurIPS / ICML mời review, accept ngay — đây là invitation đáng giá.",
+    tip_advice_vi: "(1) ACKNOWLEDGE TRƯỚC: bắt đầu critique luôn bằng câu công nhận. Không acknowledge = author defensive ngay, sẽ không accept changes. '该研究确有其价值' / '论述基本扎实' — câu mở. (2) NUMBERED ISSUES: dùng 其一 / 其二 / 其三 để liệt kê. Không scattered. Reviewer top tier expect numbered structure. (3) EVIDENCE FOR EACH ISSUE: mỗi issue phải có evidence cụ thể (page #, table #, formula #). Vague critique = author dismiss. (4) SUGGEST SOLUTIONS: critique không có solution = chỉ là phá. Mỗi issue must end với '笔者建议...' hoặc '或可考虑...'. (5) LEAVE 'BIG PICTURE' VERDICT: kết review với '瑕不掩瑜, recommend major revision' hoặc tương tự. Cho author biết overall assessment. (6) HEDGE WHEN APPROPRIATE: '此点 似乎 / 或许 / 在某种程度上' khi không 100% chắc. Reviewer over-confident sẽ bị author rebut. (7) SOFTEN CRITICISM: dùng '不足 / 有待 / 尚需' thay vì '错 / 失败 / 不行'. Same critique, gentler delivery. Author respect more. (8) 'CRITIQUE THE WORK, NOT THE AUTHOR': '论证存在不足' tốt hơn '作者论证不力'. Subject = work, không phải person. (9) AVOID NIT-PICKING: don't critique typos in main text. Critique architecture-level issues. Reviewer chỉ chỉ format = annoyed editor + author.",
+    exercises: [
+      { type: "fill-blank", question: "瑕不 ___ 瑜, 该研究于领域内仍具相当贡献, 然其结论之外推性应受适度约束。", answer: "掩" },
+      {
+        type: "matching",
+        instruction: "Ghép cụm phản biện 书面 với chức năng tiếng Việt.",
+        pairs: [
+          { chinese: "瑕不掩瑜", pinyin: "xiá bù yǎn yú", english: "khiếm khuyết không che ưu" },
+          { chinese: "美中不足", pinyin: "měi zhōng bù zú", english: "ngọc còn vết" },
+          { chinese: "见仁见智", pinyin: "jiàn rén jiàn zhì", english: "mỗi người mỗi ý" },
+          { chinese: "尚需斟酌", pinyin: "shàng xū zhēn zhuó", english: "vẫn cần cân nhắc" }
+        ]
+      },
+      {
+        type: "translation",
+        vietnamese: "Tuy nhiên, ở tầng phương pháp luận, nghiên cứu này tồn tại một số điểm đáng để bàn lại, ở đây chọn ra những điểm chính để luận giải.",
+        chinese: "然而, 在方法论层面, 该研究存在若干值得商榷之处, 兹择要论之。",
+        pinyin: "Rán ér, zài fāng fǎ lùn céng miàn, gāi yán jiū cún zài ruò gān zhí dé shāng què zhī chù, zī zé yào lùn zhī."
+      }
+    ]
+  },
+  {
+    id: 99,
+    level: "C1",
+    category: "academic_discourse",
+    title: "会议问答的语体",
+    pinyin: "huì yì wèn dá de yǔ tǐ",
+    topic: "Conference Q&A register",
+    title_vi: "Văn phong hỏi-đáp tại hội nghị",
+    title_en: "Conference Q&A register",
+    sentences: [
+      {
+        chinese: "请允许笔者就此问题, 简要陈述本研究之初衷, 以期抛砖引玉。",
+        pinyin: "Qǐng yǔnxǔ bǐzhě jiù cǐ wèntí, jiǎnyào chénshù běn yánjiū zhī chūzhōng, yǐqī pāo zhuān yǐn yù.",
+        english: "Allow the author to briefly outline the original intent of this study on this question — by way of casting brick to attract jade.",
+        vi: "Xin phép tác giả về vấn đề này, trình bày sơ lược ý định ban đầu của nghiên cứu, với hy vọng 'ném gạch dẫn ngọc'.",
+        pronunciation_focus: ["请允许 → qǐng yǔnxǔ (xin phép — formal)", "陈述 → chénshù (trình bày)", "初衷 → chūzhōng (ý định ban đầu)", "抛砖引玉 → pāo zhuān yǐn yù (ném gạch dẫn ngọc — humble idiom)"]
+      },
+      {
+        chinese: "感谢这位老师指出, 您所提之问题极具启发性, 触及了本研究尚未充分展开之层面。",
+        pinyin: "Gǎnxiè zhè wèi lǎoshī zhǐchū, nín suǒ tí zhī wèntí jí jù qǐfāxìng, chùjíle běn yánjiū shàng wèi chōngfèn zhǎnkāi zhī céngmiàn.",
+        english: "Thank you for raising this — your question is highly illuminating, touching upon an aspect that this study has not yet fully developed.",
+        vi: "Xin cảm ơn thầy/cô đã chỉ ra, câu hỏi mà thầy/cô đặt ra rất gợi mở, đã chạm tới một tầng mà nghiên cứu này chưa khai triển đầy đủ.",
+        pronunciation_focus: ["感谢...指出 → gǎnxiè...zhǐchū (cảm ơn đã chỉ ra)", "极具启发性 → jí jù qǐfāxìng (rất gợi mở)", "触及 → chùjí (chạm tới)", "尚未 → shàng wèi (chưa — 书面)"]
+      },
+      {
+        chinese: "诚如您所言, 本研究在样本规模上确有局限, 此点笔者亦深以为憾, 拟在后续工作中加以改进。",
+        pinyin: "Chéngrú nín suǒ yán, běn yánjiū zài yàngběn guīmó shàng què yǒu júxiàn, cǐ diǎn bǐzhě yì shēn yǐwéi hàn, nǐ zài hòuxù gōngzuò zhōng jiāyǐ gǎijìn.",
+        english: "As you have rightly said, this study indeed has limitations in sample size — a point the author also deeply regrets, and proposes to improve in subsequent work.",
+        vi: "Đúng như thầy/cô đã nói, nghiên cứu này quả thực có hạn chế về quy mô mẫu, điểm này tác giả cũng rất tiếc nuối, và dự định sẽ cải thiện trong công việc sau này.",
+        pronunciation_focus: ["诚如您所言 → chéngrú nín suǒ yán (đúng như thầy/cô nói — formal)", "深以为憾 → shēn yǐwéi hàn (rất tiếc — 书面)", "拟在 → nǐ zài (dự định — 书面)", "加以改进 → jiāyǐ gǎijìn (cải thiện — 书面)"]
+      },
+      {
+        chinese: "至于您所关切之另一问题, 限于会议时间, 笔者愚以为可在会后另行探讨, 不知您意下如何?",
+        pinyin: "Zhìyú nín suǒ guānqiè zhī lìng yī wèntí, xiànyú huìyì shíjiān, bǐzhě yú yǐwéi kě zài huìhòu lìngxíng tàntǎo, bùzhī nín yìxià rúhé?",
+        english: "As for the other question you raised — limited by conference time — the author humbly suggests we discuss it separately after the session. May I ask your view?",
+        vi: "Về câu hỏi khác mà thầy/cô quan tâm, do giới hạn thời gian hội nghị, kẻ ngu này đề nghị có thể thảo luận sau phiên họp, không biết ý thầy/cô thế nào?",
+        pronunciation_focus: ["至于 → zhìyú (về phần — 书面)", "限于 → xiànyú (giới hạn bởi)", "愚以为 → yú yǐwéi (kẻ ngu cho rằng — humble)", "意下如何 → yìxià rúhé (ý ngài thế nào — 书面)"]
+      },
+      {
+        chinese: "再次感谢各位评委及与会同仁之宝贵意见, 笔者将认真整理, 不吝赐教之处望诸位继续关注。",
+        pinyin: "Zàicì gǎnxiè gèwèi píngwěi jí yùhuì tóngrén zhī bǎoguì yìjiàn, bǐzhě jiāng rènzhēn zhěnglǐ, bùlìn cìjiào zhī chù wàng zhūwèi jìxù guānzhù.",
+        english: "Thanks again to the committee and colleagues present for their valuable comments — the author will carefully organize them and continues to welcome your unsparing instruction.",
+        vi: "Một lần nữa xin cảm ơn các vị ủy viên hội đồng và các đồng nghiệp tham dự đã cho ý kiến quý báu, tác giả sẽ chỉnh lý nghiêm túc, mong các vị tiếp tục dạy bảo không tiếc.",
+        pronunciation_focus: ["与会同仁 → yùhuì tóngrén (đồng nghiệp tham dự — 书面)", "宝贵意见 → bǎoguì yìjiàn (ý kiến quý báu)", "不吝赐教 → bùlìn cìjiào (không tiếc dạy bảo — humble)", "诸位 → zhūwèi (các vị — 书面)"]
+      }
+    ],
+    vocab: [
+      { chinese: "抛砖引玉", pinyin: "pāo zhuān yǐn yù", english: "cast brick to attract jade (humble idiom)", vi: "ném gạch dẫn ngọc (书面/khiêm)" },
+      { chinese: "不吝赐教", pinyin: "bù lìn cì jiào", english: "do not stint in instructing me", vi: "không tiếc dạy bảo (书面/khiêm)" },
+      { chinese: "见教", pinyin: "jiàn jiào", english: "your instruction (humble)", vi: "sự chỉ giáo (书面/khiêm)" },
+      { chinese: "求教", pinyin: "qiú jiào", english: "to seek instruction", vi: "xin được chỉ giáo (书面/khiêm)" },
+      { chinese: "诚如您所言", pinyin: "chéng rú nín suǒ yán", english: "as you have rightly said", vi: "đúng như thầy/cô đã nói (书面)" },
+      { chinese: "限于", pinyin: "xiàn yú", english: "limited by (formal)", vi: "giới hạn bởi (书面)" },
+      { chinese: "至于", pinyin: "zhì yú", english: "as for (formal)", vi: "về phần / về việc (书面)" },
+      { chinese: "宝贵意见", pinyin: "bǎo guì yì jiàn", english: "valuable comments", vi: "ý kiến quý báu" },
+      { chinese: "评委", pinyin: "píng wěi", english: "panel / committee", vi: "ủy viên hội đồng / ủy viên chấm" },
+      { chinese: "深以为憾", pinyin: "shēn yǐ wéi hàn", english: "deeply regret", vi: "rất lấy làm tiếc (书面)" }
+    ],
+    dialogue: [
+      { speaker: "评委", chinese: "你的实验只用了一个数据集, 怎么说明方法的普适性?", pinyin: "Nǐ de shíyàn zhǐ yòngle yī gè shùjùjí, zěnme shuōmíng fāngfǎ de pǔshìxìng?", english: "Your experiment uses only one dataset — how do you demonstrate the method's generalizability?", vi: "Thí nghiệm của em chỉ dùng một tập dữ liệu, làm sao chứng minh tính phổ quát của phương pháp?" },
+      { speaker: "答辩人", chinese: "感谢评委指出, 您所提之问题极具启发性。诚如您所言, 单一数据集的确限制了普适性论证。笔者拟在后续研究中拓展至三个跨域数据集。", pinyin: "Gǎnxiè píngwěi zhǐchū, nín suǒ tí zhī wèntí jí jù qǐfāxìng. Chéngrú nín suǒ yán, dānyī shùjùjí díquè xiànzhì le pǔshìxìng lùnzhèng. Bǐzhě nǐ zài hòuxù yánjiū zhōng tuòzhǎn zhì sān gè kuàyù shùjùjí.", english: "Thank you for raising this; your question is highly illuminating. As you've rightly said, a single dataset indeed limits generalizability arguments. The author proposes to expand to three cross-domain datasets in subsequent research.", vi: "Cảm ơn ủy viên đã chỉ ra, câu hỏi rất gợi mở. Đúng như thầy/cô nói, tập dữ liệu duy nhất quả thực hạn chế lập luận về tính phổ quát. Tác giả dự định trong nghiên cứu sau sẽ mở rộng sang 3 tập dữ liệu liên ngành." },
+      { speaker: "评委", chinese: "听上去合理。但你能否先简要说说, 为什么本次只选了这一个?", pinyin: "Tīng shàngqù hélǐ. Dàn nǐ néng fǒu xiān jiǎnyào shuō shuō, wèishéme běn cì zhǐ xuǎnle zhè yī gè?", english: "Sounds reasonable. But could you briefly explain why only this one was chosen this time?", vi: "Nghe có lý. Nhưng em có thể nói sơ lược trước, tại sao lần này chỉ chọn một cái?" },
+      { speaker: "答辩人", chinese: "限于实验室计算资源, 本研究优先选取了与同行最具可比性的数据集。其他数据集的实验已列入后续计划。", pinyin: "Xiànyú shíyànshì jìsuàn zīyuán, běn yánjiū yōuxiān xuǎnqǔle yǔ tóngháng zuì jù kěbǐxìng de shùjùjí. Qítā shùjùjí de shíyàn yǐ lièrù hòuxù jìhuà.", english: "Limited by lab compute resources, this study prioritized the dataset most comparable to peers. Other datasets' experiments are already in the follow-up plan.", vi: "Do hạn chế về tài nguyên tính toán của phòng lab, nghiên cứu này ưu tiên chọn tập dữ liệu có tính tương đương với đồng nghiệp nhất. Thí nghiệm trên các tập khác đã được đưa vào kế hoạch tiếp theo." }
+    ],
+    dialogue_long: [
+      { speaker: "答辩人", chinese: "感谢主持人。各位评委、各位同仁: 笔者今天将简要汇报关于'AI辅助医学影像诊断'的研究。研究历时一年半, 涵盖六千例病例。下面进入问答环节。", pinyin: "Gǎnxiè zhǔchírén. Gèwèi píngwěi, gèwèi tóngrén: bǐzhě jīntiān jiāng jiǎnyào huìbào guānyú 'AI fǔzhù yīxué yǐngxiàng zhěnduàn' de yánjiū. Yánjiū lìshí yī nián bàn, hángài liù qiān lì bìnglì. Xiàmiàn jìnrù wèndá huánjié.", english: "Thank you, chair. Esteemed committee and colleagues: today the author briefly reports the study on 'AI-assisted medical image diagnosis'. Conducted over 1.5 years, covering 6,000 cases. Now to Q&A.", vi: "Xin cảm ơn người chủ trì. Kính thưa các ủy viên hội đồng và đồng nghiệp: tác giả hôm nay xin báo cáo sơ lược nghiên cứu về 'chẩn đoán hình ảnh y học có hỗ trợ AI'. Nghiên cứu kéo dài 1,5 năm, bao quát 6000 ca. Bây giờ vào phần hỏi-đáp." },
+      { speaker: "评委甲", chinese: "你的模型在测试集上的AUC高达0.97。但你怎么解释false positive rate还是有4.2%?", pinyin: "Nǐ de móxíng zài cèshìjí shàng de AUC gāodá 0.97. Dàn nǐ zěnme jiěshì false positive rate hái shì yǒu 4.2%?", english: "Your model's AUC on test set is 0.97. But how do you explain a false positive rate still at 4.2%?", vi: "AUC của mô hình em trên test set lên tới 0.97. Nhưng giải thích thế nào về false positive rate vẫn còn 4.2%?" },
+      { speaker: "答辩人", chinese: "感谢评委。这个问题非常重要, 也是笔者一直关注的焦点。4.2%FPR在临床实践中确实意味着每100例诊断中有4.2例假阳性。笔者从两个层面回应: 第一, 本模型设计为辅助诊断而非自动决策, 终判仍由医师做出, 即便误报亦可被人审过滤。第二, 在后续工作中, 笔者拟引入两阶段筛查, 第一阶段高灵敏度, 第二阶段高特异性, 整体FPR可降至1%以下。", pinyin: "Gǎnxiè píngwěi. Zhège wèntí fēicháng zhòngyào, yěshì bǐzhě yīzhí guānzhù de jiāodiǎn. 4.2% FPR zài línchuáng shíjiàn zhōng quèshí yìwèizhe měi 100 lì zhěnduàn zhōng yǒu 4.2 lì jiǎ yángxìng. Bǐzhě cóng liǎng gè céngmiàn huíyìng: dì yī, běn móxíng shèjì wèi fǔzhù zhěnduàn ér fēi zìdòng juécè, zhōng pàn réng yóu yīshī zuòchū, jíbiàn wùbào yì kě bèi rén shěn guòlǜ. Dì èr, zài hòuxù gōngzuò zhōng, bǐzhě nǐ yǐnrù liǎng jiēduàn shāichá, dì yī jiēduàn gāo língmǐndù, dì èr jiēduàn gāo tèyìxìng, zhěngtǐ FPR kě jiàng zhì 1% yǐxià.", english: "Thank you. This is a very important question and one I've focused on throughout. 4.2% FPR in clinical practice does mean 4.2 false positives per 100 diagnoses. I respond on two levels: first, this model is designed as decision support, not autonomous decision-making — final judgment remains with physicians, so false positives can be filtered by human review. Second, in follow-up work, I propose two-stage screening: stage 1 high sensitivity, stage 2 high specificity, overall FPR reducible to below 1%.", vi: "Cảm ơn ủy viên. Câu hỏi này rất quan trọng, cũng là điểm tác giả luôn chú trọng. 4.2% FPR trong thực hành lâm sàng quả thực nghĩa là cứ 100 ca chẩn đoán có 4.2 ca dương tính giả. Tác giả xin trả lời ở hai tầng: một, mô hình này thiết kế làm hỗ trợ chẩn đoán chứ không phải quyết định tự động, phán quyết cuối vẫn do bác sĩ đưa ra, kể cả báo nhầm cũng có thể được lọc bởi con người. Hai, trong công việc sau, tác giả dự định đưa vào sàng lọc hai giai đoạn, giai đoạn 1 độ nhạy cao, giai đoạn 2 độ đặc hiệu cao, FPR tổng thể có thể giảm xuống dưới 1%." },
+      { speaker: "评委乙", chinese: "我注意到你的训练数据全部来自一家医院。这个paper若投到JAMA, 我担心generalizability是大问题。", pinyin: "Wǒ zhùyì dào nǐ de xùnliàn shùjù quánbù láizì yī jiā yīyuàn. Zhège paper ruò tóu dào JAMA, wǒ dānxīn generalizability shì dà wèntí.", english: "I noticed your training data are all from one hospital. If submitting to JAMA, I worry generalizability is a major issue.", vi: "Tôi để ý dữ liệu huấn luyện của em đều từ một bệnh viện. Bài này nếu nộp JAMA, tôi lo generalizability là vấn đề lớn." },
+      { speaker: "答辩人", chinese: "评委的关切非常专业。诚如您所言, 单中心数据是本研究的核心局限之一。笔者已与三家协作医院展开洽谈, 拟在重新提交前补充至少两家外部医院之验证, 总样本量不少于3000例。这一计划已列入修订版methodology。", pinyin: "Píngwěi de guānqiè fēicháng zhuānyè. Chéngrú nín suǒ yán, dān zhōngxīn shùjù shì běn yánjiū de héxīn júxiàn zhī yī. Bǐzhě yǐ yǔ sān jiā xiézuò yīyuàn zhǎnkāi qiàtán, nǐ zài chóngxīn tíjiāo qián bǔchōng zhì shǎo liǎng jiā wàibù yīyuàn zhī yànzhèng, zǒng yàngběn liàng bù shǎo yú 3000 lì. Zhè yī jìhuà yǐ lièrù xiūdìng bǎn methodology.", english: "Your concern is very professional. As you've rightly said, single-center data is one of this study's core limitations. The author has been negotiating with three collaborating hospitals — before resubmission, the author proposes to supplement validation from at least two external hospitals, total sample no less than 3,000 cases. This plan is already in the revised methodology.", vi: "Sự quan tâm của ủy viên rất chuyên nghiệp. Đúng như thầy/cô nói, dữ liệu một trung tâm là một trong những hạn chế cốt lõi của nghiên cứu này. Tác giả đã đang thương thảo với ba bệnh viện hợp tác, dự định trước khi resubmit sẽ bổ sung kiểm chứng từ ít nhất hai bệnh viện bên ngoài, tổng cỡ mẫu không dưới 3000 ca. Kế hoạch này đã đưa vào methodology bản sửa." },
+      { speaker: "评委丙", chinese: "你刚才提到'两阶段筛查'的设计。这个idea是你自己想的, 还是借鉴了哪篇paper?", pinyin: "Nǐ gāngcái tídào 'liǎng jiēduàn shāichá' de shèjì. Zhège idea shì nǐ zìjǐ xiǎng de, háishì jièjiànle nǎ piān paper?", english: "You mentioned the 'two-stage screening' design earlier. Is the idea your own, or borrowed from some paper?", vi: "Em vừa nhắc tới thiết kế 'sàng lọc hai giai đoạn'. Ý tưởng này là em tự nghĩ ra, hay dựa trên bài paper nào?" },
+      { speaker: "答辩人", chinese: "感谢评委直接指出。该想法借鉴自Smith等(2021)关于乳腺癌筛查的研究, 笔者将该框架适配至本任务。学术贡献在于'适配', 非'原创'。这一点笔者将在revised paper中明确标注, 避免归属不当。", pinyin: "Gǎnxiè píngwěi zhíjiē zhǐchū. Gāi xiǎngfǎ jièjiàn zì Smith děng (èr líng èr yī) guānyú rǔxiàn'ái shāichá de yánjiū, bǐzhě jiāng gāi kuàngjià shìpèi zhì běn rènwù. Xuéshù gòngxiàn zàiyú 'shìpèi', fēi 'yuánchuàng'. Zhè yī diǎn bǐzhě jiāng zài revised paper zhōng míngquè biāozhù, bìmiǎn guīshǔ bùdàng.", english: "Thank you for asking directly. The idea is borrowed from Smith et al. (2021) on breast cancer screening — the author adapted this framework to the current task. The academic contribution is 'adaptation', not 'origination'. The author will explicitly mark this in the revised paper to avoid improper attribution.", vi: "Cảm ơn ủy viên đã hỏi thẳng. Ý tưởng này tham khảo từ Smith và cộng sự (2021) về sàng lọc ung thư vú, tác giả thích nghi khung này với nhiệm vụ hiện tại. Đóng góp học thuật nằm ở chỗ 'thích nghi', không phải 'gốc'. Điểm này tác giả sẽ ghi rõ trong bài revise, tránh quy thuộc nguồn không thoả đáng." },
+      { speaker: "主持人", chinese: "由于时间关系, 我们再问一个问题。", pinyin: "Yóuyú shíjiān guānxì, wǒmen zài wèn yī gè wèntí.", english: "Due to time, one more question.", vi: "Do thời gian, chúng ta hỏi thêm một câu nữa." },
+      { speaker: "评委甲", chinese: "你这个研究, 自我评价对临床实际应用的实际贡献度大概是多少?", pinyin: "Nǐ zhège yánjiū, zìwǒ píngjià duì línchuáng shíjì yìngyòng de shíjì gòngxiàn dù dàgài shì duōshǎo?", english: "Your study — what's your self-assessment of actual contribution to clinical application?", vi: "Nghiên cứu này, em tự đánh giá đóng góp thực tế cho ứng dụng lâm sàng khoảng bao nhiêu?" },
+      { speaker: "答辩人", chinese: "笔者愚以为, 本研究尚处于早期验证阶段。具体到临床应用, 至少还需要多中心RCT、FDA(或NMPA)审批、医师培训三大环节。本研究最大贡献或在于: 提供了一个具备工程可行性的baseline框架, 供后续临床转化研究借鉴。请允许笔者承认: 距离'真正落地'尚有相当距离。", pinyin: "Bǐzhě yú yǐwéi, běn yánjiū shàng chǔyú zǎoqī yànzhèng jiēduàn. Jùtǐ dào línchuáng yìngyòng, zhì shǎo hái xūyào duō zhōngxīn RCT, FDA (huò NMPA) shěnpī, yīshī péixùn sān dà huánjié. Běn yánjiū zuìdà gòngxiàn huò zàiyú: tígōngle yī gè jùbèi gōngchéng kěxíngxìng de baseline kuàngjià, gōng hòuxù línchuáng zhuǎnhuà yánjiū jièjiàn. Qǐng yǔnxǔ bǐzhě chéngrèn: jùlí 'zhēnzhèng luòdì' shàng yǒu xiāngdāng jùlí.", english: "The author humbly believes this study is at an early validation stage. To real clinical application, we still need multi-center RCTs, FDA (or NMPA) approval, physician training — three major hurdles. The biggest contribution may lie in: providing a baseline framework with engineering feasibility for follow-up clinical translation research. Allow me to acknowledge: there's still considerable distance from 'real deployment'.", vi: "Kẻ ngu này cho rằng, nghiên cứu này vẫn ở giai đoạn kiểm chứng sớm. Cụ thể đến ứng dụng lâm sàng, ít nhất còn cần multi-center RCT, FDA (hoặc NMPA) phê duyệt, đào tạo bác sĩ — ba mảng lớn. Đóng góp lớn nhất của nghiên cứu này có lẽ là: cung cấp một khung baseline có tính khả thi kỹ thuật, để các nghiên cứu chuyển giao lâm sàng sau tham khảo. Xin phép thừa nhận: còn cách 'thực sự đi vào sử dụng' một khoảng đáng kể." },
+      { speaker: "主持人", chinese: "时间到。再次感谢答辩人的精彩报告, 感谢各位评委的提问。", pinyin: "Shíjiān dào. Zàicì gǎnxiè dábiànrén de jīngcǎi bàogào, gǎnxiè gèwèi píngwěi de tíwèn.", english: "Time's up. Thanks again to the candidate for the excellent report, and to the committee for the questions.", vi: "Hết giờ. Một lần nữa cảm ơn người báo cáo về phần trình bày xuất sắc, cảm ơn các ủy viên về các câu hỏi." },
+      { speaker: "答辩人", chinese: "再次感谢各位评委及与会同仁之宝贵意见。笔者将认真整理。不吝赐教之处望诸位继续关注, 谢谢!", pinyin: "Zàicì gǎnxiè gèwèi píngwěi jí yùhuì tóngrén zhī bǎoguì yìjiàn. Bǐzhě jiāng rènzhēn zhěnglǐ. Bùlìn cìjiào zhī chù wàng zhūwèi jìxù guānzhù, xièxie!", english: "Thanks again to the committee and colleagues for valuable comments. I'll carefully organize them. Continued unsparing instruction is welcome, thank you!", vi: "Một lần nữa cảm ơn các ủy viên và đồng nghiệp tham dự về ý kiến quý báu. Tác giả sẽ chỉnh lý nghiêm túc. Mong các vị tiếp tục dạy bảo không tiếc, xin cảm ơn!" }
+    ],
+    roleplay_prompts: [
+      "Bạn là PhD candidate đang defense luận án. Một evaluator đặt một câu hỏi 'gài bẫy' (you didn't see this coming): 'nếu kết quả của em được ai đó replicate và họ thất bại, em giải thích thế nào?'. Hãy trả lời theo register Q&A C1: (1) cảm ơn câu hỏi, (2) acknowledge possibility, (3) provide concrete falsifiability conditions, (4) commit to making code/data open. Tránh defensive. Dùng cụm '您所提之问题极具启发性 / 笔者亦深以为...'.",
+      "Bạn là speaker tại international AI conference. Một audience member challenge nguồn dataset của bạn (suggest có data leakage). Bạn không 100% chắc nhưng nghi ngờ có. Hãy trả lời honestly mà vẫn graceful: (1) thank the question, (2) acknowledge concern is valid, (3) say sẽ verify post-conference, (4) invite continued dialogue. Tránh defensiveness. Dùng cụm '诚如您所言 / 限于...笔者拟 / 不吝赐教'.",
+      "Bạn là junior researcher đang trong Q&A đầu tiên ever, hỏi câu first question. Nervous. Có 1 câu hỏi gửi cho speaker famous lab. Hãy phrase câu hỏi humble + technically substantive: (1) self-introduce briefly, (2) acknowledge speaker's contribution, (3) ask the actual technical question (about edge case in their methodology), (4) end với '不揣冒昧 / 不知当否, 请赐教'."
+    ],
+    register_notes: "Q&A trong hội nghị Trung Quốc theo register cực kỳ formal — sinh viên Việt thường mismatch (quá casual hoặc quá defensive).\n\n1. PHRASE TỪ 'OPENING' KHI TRẢ LỜI:\n\n- 感谢评委指出 (thank you committee for pointing out)\n- 您所提之问题极具启发性 (your question is highly illuminating)\n- 这是一个非常重要的问题 (this is a very important question)\n- 这个问题触及了... (this question touches on...)\n- 请允许笔者... (allow the author to...)\n\n2. ACKNOWLEDGE BEFORE RESPOND:\n\nCách wrong (defensive): 'No, that's not the case' → đối kháng.\nCách right: '诚如您所言 / 您的关切非常专业 / 这一点笔者亦深以为憾'.\n\n3. HUMBLE FIRST PERSON:\n\n- 笔者 (the author — formal first person)\n- 笔者愚以为 (this humble author thinks — extreme humility)\n- 学生愚见 (this student's humble view — for grad students)\n- 不揣冒昧 (without weighing presumption — preface to a bold question)\n\n4. STRUCTURE TRẢ LỜI 4 BƯỚC:\n\n- BƯỚC 1: Acknowledge ('感谢...指出')\n- BƯỚC 2: Restate or clarify question ('您所提之问题, 即...')\n- BƯỚC 3: Substantive response (numbered if multi-part)\n- BƯỚC 4: Honest disclosure of limits + future plan ('限于... / 拟在后续...')\n\n5. PHRASE KẾT THÚC TRẢ LỜI:\n\n- 不知您意下如何? (may I ask your view?)\n- 笔者愿在会后继续向您请教 (would welcome further discussion after session)\n- 不吝赐教 (welcome unsparing instruction)\n\n6. TIME-LIMIT ESCAPES:\n\nKhi câu hỏi quá phức tạp / có nhiều parts:\n- 限于会议时间... (limited by conference time)\n- 可在会后另行探讨 (may we discuss after session)\n- 详尽回答恐占用过多时间... (a thorough answer may take too long)\n\nDùng tactically — không phải để dodge mà để time-manage.\n\n7. WHEN ASKED A QUESTION YOU DON'T KNOW:\n\n- 这是一个笔者尚未深入考虑的问题 (this is a question I haven't deeply considered)\n- 您所提之角度令笔者深受启发, 笔者会后定当深入研读 (your angle is illuminating, I'll study after session)\n\nKHÔNG fake. KHÔNG defensive. Acknowledge gap = academic maturity.\n\n8. RESPONDING TO HOSTILE CRITIQUE:\n\nNếu reviewer harsh / unfair, KHÔNG fight back. Phong cách:\n- 您所提之意见, 笔者将认真考量 (I will carefully consider your input)\n- 关于此点, 学界确有不同看法, 笔者持X立场, 是出于Y之考虑 (on this point, the field has different views; I take X stance, out of Y consideration)\n- 笔者愿在会后向您请教 (I would welcome further dialogue after session)\n\nNgắn, polite, redirect to substance.\n\n9. THANKING AT END:\n\n- 再次感谢各位评委及与会同仁之宝贵意见\n- 不吝赐教之处望诸位继续关注\n- 拙文必将根据各位之意见加以修订\n\n10. CỤM 抛砖引玉 (humble idiom):\n\n'抛砖引玉' literal = 'throw brick to attract jade' = my contribution is mere brick, hoping to attract better insights (jade) from you. Cực formal academic humility. Dùng ở opening hoặc closing of presentation.",
+    idiom_glosses: [
+      {
+        idiom: "抛砖引玉",
+        literal: "ném gạch dẫn ngọc (pāo zhuān yǐn yù)",
+        meaning: "Ném gạch để hấp dẫn ngọc — đóng góp khiêm tốn của mình mong dẫn ra suy nghĩ giá trị từ người khác. Phrase mở đầu / kết thúc presentation cực formal academic. (书面/khiêm)",
+        example: "笔者今日所言, 不过抛砖引玉, 望诸位多加指教。"
+      },
+      {
+        idiom: "不吝赐教",
+        literal: "không tiếc cho dạy bảo (bù lìn cì jiào)",
+        meaning: "Không tiếc dạy bảo — cụm humble thỉnh giáo cuối Q&A. Tradition Khổng giáo. (书面/khiêm)",
+        example: "笔者拙文若有不足之处, 望诸位评委不吝赐教。"
+      },
+      {
+        idiom: "不揣冒昧",
+        literal: "không tự lượng cái mạo muội (bù chuǎi mào mèi)",
+        meaning: "Không tự lượng sức mà mạo muội — phrase mở đầu trước khi đặt một câu hỏi bold / hoặc challenge senior. (书面/khiêm)",
+        example: "学生不揣冒昧, 想请教教授一个问题..."
+      },
+      {
+        idiom: "略陈管见",
+        literal: "trình bày sơ lược ý kiến hẹp hòi (lüè chén guǎn jiàn)",
+        meaning: "Trình bày sơ lược ý kiến hạn hẹp — humble cách diễn đạt 'I'll share my view' trước peers/seniors. (书面/khiêm)",
+        example: "笔者于此略陈管见, 不当之处, 敬请指正。"
+      }
+    ],
+    cultural_notes_vi: "Văn hóa Q&A tại hội nghị/defense Trung Quốc đại lục có nhiều điểm khác Việt Nam và phương Tây:\n\n(1) HUMBLE-FIRST CONVENTION: ngay cả khi bạn là expert, register opening phải humble. Câu '我是这个领域的专家, 让我告诉你...' = career-ending. Phải là '笔者愚以为 / 学生愚见 / 不揣冒昧地说'. Ironically, càng humble = càng được respect.\n\n(2) TIME PRESSURE: defense Trung Quốc thường strict 60-90 phút total. Q&A khoảng 30-45 phút. Mỗi câu hỏi expect 2-4 phút response. Nếu trả lời quá ngắn = không đủ tôn trọng. Nếu quá dài = sai etiquette về time.\n\n(3) HIERARCHY MATTERS: cách trả lời thay đổi based trên rank của người hỏi. Trả lời tenured professor: tăng humble + extended thanks. Trả lời peer: bình thường formal. Trả lời junior: vẫn polite nhưng có thể direct hơn.\n\n(4) FACE-PRESERVING DURING ATTACK: nếu evaluator hostile (đôi khi xảy ra ở Trung Quốc), KHÔNG fight back trực tiếp. Phong cách: redirect to substance, hedge own claim, propose follow-up. Direct combat = lose face cho cả 2.\n\n(5) ENGLISH MIXING ALLOWED: Trung Quốc đại lục Q&A cho phép mix English technical terms (như 'AUC', 'p-value', 'Transformer') vì nhiều terms chưa có established Chinese translation. Sinh viên Việt có lợi: dùng English terms khi cần.\n\n(6) PRESENTATIONS DOUBLE WAY: nhiều conferences Trung Quốc ngày nay có cả English-language sessions và Chinese-language sessions. Tier-1 international conferences (CCL, CSAI) là English. Tier-2 domestic (中文信息学报) là Chinese. Sinh viên Việt cần biết tone của venue.\n\n(7) POST-Q&A NETWORKING: sau Q&A, evaluator/audience có thể đến tiếp tục dialogue 1-on-1. Đây là moment quan trọng — junior nên chủ động tìm senior reviewer, '感谢您今天的指点, 笔者愿继续向您请教'. Networking opportunity.\n\n(8) FAILURE TO ANSWER: nếu bạn really không biết answer, phrase chuẩn: '这是笔者尚未深入考虑的角度, 您的指出令笔者深受启发. 笔者会后定当深入研读, 也愿继续向您请教'. KHÔNG bullshit. KHÔNG fake. Acknowledge + commit to learning.\n\n(9) FOLLOW-UP EMAILS: 24-48 hours sau Q&A, gửi email thank-you cho evaluators chính, attached revised draft notes của câu hỏi của họ. Đây là cultural standard ở Trung Quốc top universities. Skip = no follow-up = cold.\n\n(10) GENDER & AGE: nữ student trẻ trả lời Q&A thường được suggest tăng humble register so với nam senior. Đây là cultural pressure (không công bằng nhưng tồn tại). Cách balance: humble register + substantive content. Senior evaluator respect content over hierarchy form khi content thật sự strong.",
+    tip_advice_vi: "(1) PREP STANDARD OPENINGS: học thuộc 5 cụm opening responses trước khi defense. '感谢评委指出 / 这个问题非常重要 / 您所提之角度极具启发性 / 诚如您所言 / 限于时间...'. Tự động dùng — đỡ panic. (2) NUMBER YOUR ANSWERS: nếu câu hỏi multi-part, dùng '其一 / 其二 / 其三'. Reviewer follow easily. (3) ACKNOWLEDGE BEFORE RESPONDING: dù bạn disagree, START với acknowledge. '诚如您所言, X 是个真问题 ... 不过, 笔者拟从另一角度补充: ...' Acknowledge → pivot. (4) DON'T BLUFF: khi không biết, '这是笔者尚未深入考虑的角度' tốt hơn fake answer. Reviewer respect honest 'don't know' hơn confident wrong. (5) HEDGE WHEN APPROPRIATE: nếu data của bạn chỉ partial support claim, acknowledge: '本研究在X方面确有局限'. Don't over-promise. (6) USE TIME-LIMIT WISELY: '限于会议时间, 可否会后另行探讨?' — dùng khi câu hỏi cần extensive answer. Don't dodge — committed to dialogue post-session. (7) RESPOND ON SUBSTANCE EVEN UNDER ATTACK: nếu reviewer harsh, redirect to substance: '关于X点, 笔者持Y立场, 是出于Z之考虑'. Substance over emotion. (8) END WITH GRATITUDE: kết Q&A bằng '再次感谢各位评委之宝贵意见, 不吝赐教之处望诸位继续关注'. Ngắn, formal, gracious. (9) PRACTICE WITH MOCK PANEL: trước defense, mock 3-4 lần với senior students/postdocs. Build muscle memory. (10) DRESS + POSTURE: cultural norm ở Trung Quốc đại lục: business casual cho students defense. Stand straight. Eye contact với evaluator đang hỏi. Câu trả lời directed at chair khi answer applies broadly.",
+    exercises: [
+      { type: "fill-blank", question: "请允许笔者就此问题, 简要陈述本研究之初衷, 以期 ___ 砖引玉。", answer: "抛" },
+      {
+        type: "matching",
+        instruction: "Ghép cụm Q&A 书面 với chức năng tiếng Việt.",
+        pairs: [
+          { chinese: "抛砖引玉", pinyin: "pāo zhuān yǐn yù", english: "ném gạch dẫn ngọc (humble)" },
+          { chinese: "不吝赐教", pinyin: "bù lìn cì jiào", english: "không tiếc dạy bảo" },
+          { chinese: "诚如您所言", pinyin: "chéng rú nín suǒ yán", english: "đúng như thầy/cô nói" },
+          { chinese: "深以为憾", pinyin: "shēn yǐ wéi hàn", english: "rất lấy làm tiếc" }
+        ]
+      },
+      {
+        type: "translation",
+        vietnamese: "Một lần nữa xin cảm ơn các vị ủy viên hội đồng và các đồng nghiệp tham dự đã cho ý kiến quý báu, tác giả sẽ chỉnh lý nghiêm túc.",
+        chinese: "再次感谢各位评委及与会同仁的宝贵意见, 笔者将认真整理。",
+        pinyin: "Zài cì gǎn xiè gè wèi píng wěi jí yù huì tóng rén de bǎo guì yì jiàn, bǐ zhě jiāng rèn zhēn zhěng lǐ."
+      }
+    ]
   }
 ];
 
