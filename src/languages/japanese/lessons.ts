@@ -5014,6 +5014,150 @@ export const lessons: JapaneseLesson[] = [
     ] },
     { type: "translation", vietnamese: "Câu hỏi về chuyện riêng tư — em xin lỗi nhưng không trả lời được.", japanese: "プライベートに関わる質問は、申し訳ないのですが、お答えしかねます。" }
   ]
+},
+{
+  id: 92,
+  title: "Academic discourse — presenting a thesis / hypothesis",
+  title_vi: "Diễn ngôn học thuật — Trình bày luận điểm / giả thuyết",
+  title_en: "Academic discourse — presenting a thesis / hypothesis",
+  category: "academic-discourse",
+  level: "C1",
+  vocabulary: [
+    { japanese: "仮説 (かせつ)", english: "hypothesis" },
+    { japanese: "主張 (しゅちょう)", english: "claim / assertion" },
+    { japanese: "論旨 (ろんし)", english: "thesis / line of argument" },
+    { japanese: "立場 (たちば)", english: "position / stance" },
+    { japanese: "前提 (ぜんてい)", english: "premise" },
+    { japanese: "検証 (けんしょう)", english: "verification" },
+    { japanese: "妥当性 (だとうせい)", english: "validity" },
+    { japanese: "提唱する (ていしょうする)", english: "to advocate / propose" },
+    { japanese: "暫定的 (ざんていてき)", english: "tentative / provisional" },
+    { japanese: "蓋然性 (がいぜんせい)", english: "probability / likelihood (formal)" }
+  ],
+  examples: [
+    { japanese: "本研究は、X が Y に有意な影響を及ぼすという仮説を提示するものである。", english: "This study presents the hypothesis that X exerts a significant influence on Y." },
+    { japanese: "本稿の論旨は、従来の解釈に再考を促す点に他ならない。", english: "The thesis of this paper is nothing other than to prompt a reconsideration of the conventional interpretation." },
+    { japanese: "仮にこの前提が成立するならば、結論は次のように導かれる。", english: "If this premise holds, the conclusion is derived as follows." },
+    { japanese: "本研究は、X と Y との間に相関関係が存在する可能性を示唆するものである。", english: "This study suggests the possibility that a correlation exists between X and Y." },
+    { japanese: "以下では、まず仮説の理論的背景を概観したうえで、検証の方法を述べる。", english: "Below, after first surveying the theoretical background of the hypothesis, the verification method will be described." },
+    { japanese: "換言すれば、本仮説は、従来の枠組みでは捉えきれない側面を補完するものと位置づけられる。", english: "In other words, this hypothesis is positioned as complementing aspects that the conventional framework could not fully capture." }
+  ],
+  dialogue: [
+    { speaker: "院生", japanese: "本日は、修士論文の中間報告として、仮説の枠組みについてご説明させていただきます。", english: "Today, as an interim report on my master's thesis, I would like to explain the framework of my hypothesis." },
+    { speaker: "指導教員", japanese: "では、まず提唱されている仮説の核心からお願いできますか。", english: "Then, could you start with the core of the hypothesis you are advocating?" },
+    { speaker: "院生", japanese: "はい。本研究は、ベトナム人日本語学習者の語用論的能力が、滞在期間よりも対話量に依存するという仮説を提示するものでございます。", english: "Yes. This study presents the hypothesis that the pragmatic competence of Vietnamese learners of Japanese depends on volume of interaction rather than length of residence." },
+    { speaker: "指導教員", japanese: "なるほど。先行研究との差異は、どの点に求められるのでしょうか。", english: "I see. In what respect would you locate the difference from prior research?" }
+  ],
+  dialogue_long: [
+    { speaker: "院生", japanese: "本研究の出発点は、語用論的能力の獲得を、単なる時間関数として捉える従来のモデルに対する疑念にございます。", english: "The starting point of this study lies in a doubt regarding the conventional model that treats the acquisition of pragmatic competence as a mere function of time." },
+    { speaker: "指導教員", japanese: "つまり、滞在期間の長さだけでは説明がつかないという立場ですね。", english: "In other words, you take the position that length of residence alone cannot account for it." },
+    { speaker: "院生", japanese: "さようでございます。先行研究におきましても、滞在年数と語用論的正確性との相関は、必ずしも一貫した結果を示していないことが報告されております。", english: "That is so. Even in prior research, it has been reported that the correlation between years of residence and pragmatic accuracy does not necessarily show consistent results." },
+    { speaker: "指導教員", japanese: "それで、対話量という変数を独立変数として導入されたわけですか。", english: "And so you introduced the variable of interaction volume as an independent variable?" },
+    { speaker: "院生", japanese: "はい。具体的には、週あたりの実質的対話時間を指標とし、これが語用論的選択の妥当性に与える影響を検証するものでございます。", english: "Yes. Specifically, taking weekly substantive interaction hours as the indicator, I verify the effect this has on the validity of pragmatic choices." },
+    { speaker: "指導教員", japanese: "妥当性の判定は、どのような基準で行われますか。", english: "On what criteria will the judgment of validity be made?" },
+    { speaker: "院生", japanese: "母語話者三名による評定を主軸とし、評定者間信頼性を確保したうえで、五段階尺度による評価を行う予定でございます。", english: "I plan to make assessments by three native speakers the primary axis, secure inter-rater reliability, and then conduct evaluations on a five-point scale." },
+    { speaker: "指導教員", japanese: "仮説が支持されなかった場合の解釈の余地は、どの程度確保されていますか。", english: "To what extent is interpretive room secured in case the hypothesis is not supported?" },
+    { speaker: "院生", japanese: "ご指摘のとおり、対話量が説明変数として有意でなかった場合には、対話の質的側面、すなわち話題の多様性や役割の非対称性といった要因の関与が示唆される可能性がございます。", english: "As you point out, should interaction volume not prove significant as an explanatory variable, the involvement of qualitative aspects of interaction — namely, topic diversity and role asymmetry — may be suggested." },
+    { speaker: "指導教員", japanese: "結論を急がず、暫定的な位置づけにとどめておくのが賢明かと思います。", english: "It would be wise to refrain from hasty conclusions and keep them at a tentative positioning." },
+    { speaker: "院生", japanese: "肝に銘じます。本仮説は、あくまで一つの可能性として提示するに留め、過度の一般化は慎みたく存じます。", english: "I will take that to heart. I will present this hypothesis only as one possibility and refrain from excessive generalization." },
+    { speaker: "指導教員", japanese: "それで結構です。次回は、検証手続きの詳細を伺いましょう。", english: "That will do. Next time, let us hear the details of the verification procedure." }
+  ],
+  roleplay_prompts: [
+    "Bạn trình bày giả thuyết tại buổi báo cáo giữa kỳ. Mở đầu bằng 本研究は…という仮説を提示するものである. KHÔNG dùng 思います hay trộn です/ます trong phần luận điểm — giữ register である. Kết bằng câu định vị giả thuyết là 暫定的 (tentative).",
+    "Giáo sư hỏi 'điểm khác biệt với nghiên cứu trước là gì?'. Trả lời bằng 先行研究におきましては〜と報告されておりますが、本研究では… (acknowledge prior, then differentiate). KHÔNG dismiss tiền bối — Nhật academic norm là 敬意 (respect) cho prior work.",
+    "Giáo sư cảnh báo về over-generalization. Đáp lại bằng 過度の一般化は慎みたく存じます hoặc 結論を急がず、暫定的な位置づけにとどめます. Đây là academic humility — vẫn nghe confident nhưng có hedge."
+  ],
+  register_notes: "C1 academic Japanese yêu cầu shift hoàn toàn sang である-style trong luận văn / phát biểu chính thức; ます-style chỉ giữ trong dialogue Q&A. Năm pattern cốt lõi: (1) 提示動詞 — '〜を提示する/〜を提唱する/〜を主張する' thay cho 'I think'. KHÔNG dùng 思います ở luận điểm chính. (2) NOMINALIZATION — biến động từ thành 〜こと/〜もの: 仮説を提示するものである thay vì 仮説を提示する. Suffix 〜性 (妥当性, 蓋然性) và 〜化 (一般化, 体系化) là dấu hiệu C1 prose. (3) HEDGING TIERS — strong: 〜と考えられる; medium: 〜可能性が示唆される; soft: 〜と言えなくもない. Chọn theo strength of evidence. (4) DISCOURSE MARKERS — しかしながら (however, formal), 換言すれば (in other words), さらに言えば (moreover), とはいえ (that said). Tránh でも, だから ở văn viết. (5) HUMBLE-CLAIM — academic Japanese frame claim qua 〜に他ならない (nothing other than) hoặc 〜と位置づけられる (is positioned as) thay vì assertive 'is X'. Cẩn thận: 牽強付会 — đừng đẩy claim quá xa data. Reviewer Nhật rất nhạy với over-claim; hedging không phải yếu mà là dấu hiệu trưởng thành học thuật.",
+  idiom_glosses: [
+    { idiom: "一石を投じる (いっせきをとうじる)", literal: "Ném một viên đá", meaning: "[書き言葉] Đặt vấn đề mới gây thảo luận trong giới — phù hợp khi giả thuyết của bạn challenge consensus.", example: "本研究は、従来の通説に対し、一石を投じる試みとして位置づけられる。" },
+    { idiom: "牽強付会 (けんきょうふかい)", literal: "Cố ép kéo, gò gắn", meaning: "[硬い・書き言葉] Diễn giải gượng ép, đẩy data quá xa — điều cần TRÁNH khi trình bày giả thuyết.", example: "本仮説は、データを牽強付会に解釈することなく、慎重な検証を要するものである。" },
+    { idiom: "試金石 (しきんせき)", literal: "Đá thử vàng", meaning: "[書き言葉] Phép thử quyết định — dùng khi nói thí nghiệm/data là bài kiểm tra cho giả thuyết.", example: "本実験の結果は、提唱する仮説の妥当性を測る試金石となる。" },
+    { idiom: "我田引水 (がでんいんすい)", literal: "Dẫn nước về ruộng nhà mình", meaning: "[硬い・書き言葉] Diễn giải có lợi cho mình một cách thiên vị — phải tránh trong academic writing.", example: "解釈が我田引水に陥らぬよう、対立仮説の検討も併せて行う必要がある。" }
+  ],
+  cultural_notes_vi: "Trình bày giả thuyết trong giới học thuật Nhật khác phương Tây ở 4 điểm. (1) 控えめさ (khiêm tốn) cốt lõi — không claim 'chứng minh', chỉ 'gợi ý / cho thấy khả năng'. Câu kết của paper Nhật thường hedged. (2) 先行研究への敬意 — ngay cả khi bạn challenge tiền bối, phải acknowledge họ trước, không bao giờ dismiss. Cụm 〜の知見を踏まえつつ (kế thừa hiểu biết của...) là lễ. (3) 結論の暫定性 — gọi giả thuyết là 暫定的 (tentative) là dấu hiệu trưởng thành học thuật, KHÔNG yếu kém. Reviewer Nhật bonus điểm cho honest hedging. (4) 私 → 本研究/本稿 — chuyển từ ngôi 1 sang 'bài viết này / nghiên cứu này' làm chủ ngữ. 'I argue' = 本稿は〜を主張するものである. Khác VN: ở VN giả thuyết thường viết với 'tôi cho rằng', ở Nhật học thuật, depersonalize hoàn toàn. Mẹo: nếu bí, cụm 〜と考えられる là an toàn nhất — đủ academic, đủ hedge.",
+  tip_advice_vi: "Khi bạn trình bày giả thuyết ở 学会 hoặc 中間報告, dùng cấu trúc 4 phần. (a) FRAMING — 1 câu nói 'bài này đề xuất giả thuyết X'. KHÔNG kể lể context dài. Nhật academic value đi thẳng. (b) PRIOR ART — 2-3 câu acknowledge tiền bối + chỉ ra gap. Cụm: 先行研究におきましては〜が報告されているが、〜については十分な検討がなされていない. (c) HYPOTHESIS — phát biểu rõ giả thuyết, dùng 〜という仮説を提示する. Avoid 'tôi nghĩ'. (d) HEDGE — kết bằng 1 câu giới hạn phạm vi: 本仮説は暫定的なものであり、検証を要する. Mẹo Q&A: nếu giáo sư hỏi 'có phản chứng không?', KHÔNG defensive. Cụm: ご指摘のとおり、〜という反例の可能性も否定できません. Acknowledge trước, sau đó nói cách bạn xử lý. Mẹo cuối: tránh 絶対 (absolute), 必ず (definitely), 完全に (completely) trong hypothesis statements — ngay lập tức bị reviewer flag là over-claim.",
+  exercises: [
+    { type: "fill-blank", question: "本研究は、X が Y に有意な影響を及ぼすという___を提示するものである。", answer: "仮説" },
+    { type: "matching", instruction: "Ghép cụm với chức năng học thuật.", pairs: [
+      { japanese: "〜を提示するものである", english: "frame paper's main hypothesis impersonally" },
+      { japanese: "〜可能性が示唆される", english: "medium-strength hedge for findings" },
+      { japanese: "換言すれば", english: "formal discourse marker for restatement" },
+      { japanese: "暫定的な位置づけにとどめる", english: "academic humility — keep claim tentative" }
+    ] },
+    { type: "translation", vietnamese: "Bài viết này không gì khác hơn là thúc đẩy sự xem xét lại cách giải thích truyền thống.", japanese: "本稿は、従来の解釈に再考を促すものに他ならない。" }
+  ]
+},
+{
+  id: 93,
+  title: "Academic discourse — citing sources & attribution",
+  title_vi: "Diễn ngôn học thuật — Trích dẫn và ghi nguồn",
+  title_en: "Academic discourse — citing sources & attribution",
+  category: "academic-discourse",
+  level: "C1",
+  vocabulary: [
+    { japanese: "引用 (いんよう)", english: "citation / quotation" },
+    { japanese: "出典 (しゅってん)", english: "source / attribution" },
+    { japanese: "先行研究 (せんこうけんきゅう)", english: "prior research / literature" },
+    { japanese: "脚注 (きゃくちゅう)", english: "footnote" },
+    { japanese: "参考文献 (さんこうぶんけん)", english: "references / bibliography" },
+    { japanese: "孫引き (まごびき)", english: "secondary citation (citing a citation)" },
+    { japanese: "盗用 (とうよう)", english: "plagiarism" },
+    { japanese: "踏まえる (ふまえる)", english: "to build upon / take into account" },
+    { japanese: "依拠する (いきょする)", english: "to rely on / draw upon (formal)" },
+    { japanese: "改変 (かいへん)", english: "alteration (of cited text)" }
+  ],
+  examples: [
+    { japanese: "山田 (二〇一九) によれば、X と Y との関係は、文脈依存的であるとされる。", english: "According to Yamada (2019), the relationship between X and Y is said to be context-dependent." },
+    { japanese: "本稿は、田中 (二〇二〇) の枠組みに依拠しつつ、新たな観点を加えるものである。", english: "This paper, while drawing on the framework of Tanaka (2020), adds a new perspective." },
+    { japanese: "佐藤 (二〇一八: 四五) は、この点を「制度的慣性」と呼んでいる。", english: "Sato (2018: 45) calls this point 'institutional inertia.'" },
+    { japanese: "孫引きを避けるため、可能な限り原典に当たることが望ましい。", english: "In order to avoid secondary citation, consulting the original source whenever possible is desirable." },
+    { japanese: "引用に際しては、原文の改変を加えず、出典を明示しなければならない。", english: "When citing, the original text must not be altered, and the source must be made explicit." },
+    { japanese: "本研究は、これら一連の知見を踏まえたうえで、新たな仮説を提示するものである。", english: "Building upon this series of findings, this study presents a new hypothesis." }
+  ],
+  dialogue: [
+    { speaker: "院生", japanese: "先生、引用形式について一点ご相談がございます。", english: "Professor, I have one matter to consult about citation format." },
+    { speaker: "指導教員", japanese: "どうぞ。何でしょう。", english: "Go ahead. What is it?" },
+    { speaker: "院生", japanese: "原典が入手できない場合、孫引きをしてもよろしいでしょうか。", english: "If the original source cannot be obtained, would secondary citation be acceptable?" },
+    { speaker: "指導教員", japanese: "原則として避けるべきですが、やむを得ない場合は『〜による』と明記する必要があります。", english: "In principle it should be avoided, but in unavoidable cases, you must clearly state 'as cited in〜.'" }
+  ],
+  dialogue_long: [
+    { speaker: "院生", japanese: "実は、田中 (一九九五) で引用されている Smith (一九八〇) の議論を、本論で用いたいのですが、Smith の原典が国内では入手困難でございまして。", english: "Actually, I would like to use the argument of Smith (1980) cited in Tanaka (1995) in my paper, but Smith's original source is difficult to obtain domestically." },
+    { speaker: "指導教員", japanese: "なるほど。海外の図書館相互貸借や電子版での入手は試みましたか。", english: "I see. Have you tried interlibrary loan from abroad or obtaining an electronic version?" },
+    { speaker: "院生", japanese: "はい。CiNii および国会図書館のデジタルコレクションでも見当たらず、海外の機関にも問い合わせ中でございます。", english: "Yes. It is not in CiNii or the National Diet Library digital collection, and I am also currently inquiring with overseas institutions." },
+    { speaker: "指導教員", japanese: "結構な努力です。それでも入手できない場合は、孫引きせざるを得ませんが、その際は明示が肝要です。", english: "That is admirable effort. If still unobtainable, secondary citation cannot be helped, but in that case, explicit notation is essential." },
+    { speaker: "院生", japanese: "具体的には、どのように記述すべきでしょうか。", english: "Specifically, how should I write it?" },
+    { speaker: "指導教員", japanese: "本文中では「Smith (一九八〇、田中 一九九五による)」と記し、参考文献欄では田中 (一九九五) のみを挙げるのが一般的です。", english: "In the body, write 'Smith (1980, as cited in Tanaka 1995),' and in the references section, list only Tanaka (1995) — that is the general practice." },
+    { speaker: "院生", japanese: "承知いたしました。原典に依拠していないことを読者に明示するわけですね。", english: "Understood. So we make it explicit to the reader that we are not drawing on the original source." },
+    { speaker: "指導教員", japanese: "そのとおりです。出典の透明性は、研究倫理の根幹にほかなりません。", english: "Exactly so. Transparency of sources is nothing other than the foundation of research ethics." },
+    { speaker: "院生", japanese: "もう一点、原文の一部を省略する際の表記についても伺ってよろしいでしょうか。", english: "May I also ask about the notation when omitting part of the original text?" },
+    { speaker: "指導教員", japanese: "省略箇所は三点リーダー、すなわち「…」で示し、文意が変わらぬよう細心の注意を払う必要があります。", english: "Omitted portions should be indicated with an ellipsis '…,' and the utmost care must be taken so that the meaning of the sentence does not change." },
+    { speaker: "院生", japanese: "原文の趣旨を損なう恐れがある場合は、引用そのものを再検討すべきということですね。", english: "So if there is a risk of impairing the original intent, the citation itself should be reconsidered." },
+    { speaker: "指導教員", japanese: "ご認識のとおりです。引用は便利な道具ですが、誤用は盗用と紙一重ですので、慎重に。", english: "As you understand. Citation is a convenient tool, but misuse is paper-thin from plagiarism, so be careful." }
+  ],
+  roleplay_prompts: [
+    "Bạn cần dẫn một nguồn không tìm được bản gốc. Hỏi advisor về format孫引き. Mở bằng 一点ご相談がございます. KHÔNG tự quyết định format mà không hỏi — Nhật academic format strict, sai bị reviewer flag.",
+    "Reviewer chỉ ra rằng bạn đã paraphrase mà không attribute. Đáp lại bằng ご指摘ありがとうございます。出典の明示が不十分でございました cộng cách bạn fix. KHÔNG defensive — citation lapse là serious, acknowledge cleanly.",
+    "Bạn dẫn Yamada (2019) nhưng diễn giải hơi khác ý gốc. Phrase bằng 山田 (二〇一九) は…と論じているが、本研究はこれを発展させ… (acknowledge phần Yamada nói + chỉ ra phần bạn extend). KHÔNG misrepresent — Nhật reviewer kiểm tra original."
+  ],
+  register_notes: "Citation register tiers ở C1 academic Japanese: (1) NEUTRAL — '〜によれば' (according to), '〜は〜と述べている' (X states that). Standard, dùng cho đa số. (2) FORMAL — '〜に依拠しつつ' (drawing upon), '〜の知見を踏まえ' (building on findings of). Dùng khi heavy reliance. (3) DISTANCING — '〜とされる' (it is said), '〜と指摘されている' (it has been pointed out). Đánh dấu thông tin received, không tự bạn vouch. Hữu ích khi report claim nhưng chưa chắc. (4) CRITICAL — '〜は…と論じているが、本稿はこの解釈に異を唱える' (X argues, but this paper takes issue with that interpretation). C1 phải biết phân biệt 4 tiers. Số academic Japanese dùng kanji number: 二〇一九年 (2019) chứ không 2019年 trong 縦書き formal papers; 横書き modern paper thì cả hai chấp nhận. Trong dấu ngoặc citation, format Nhật: 山田 (二〇一九) hoặc (山田 二〇一九) — không có dấu phẩy như APA. Trang số: (山田 二〇一九: 四五). Quote ngắn: 「」 ngoặc. Quote dài: indented block. 改変 (alteration) gồm cả thay từ, đổi trật tự, gộp câu — phải mark. Chỉ acceptable change: 旧字体→新字体, full-width→half-width punctuation, [...] cho omission rõ ràng.",
+  idiom_glosses: [
+    { idiom: "鵜呑みにする (うのみにする)", literal: "Nuốt chửng như con chim cốc nuốt cá", meaning: "[書き言葉・話し言葉] Tin hoặc trích dẫn mà không kiểm tra critically — điều cần tránh khi dùng prior research.", example: "先行研究の主張を鵜呑みにせず、原典に当たって検証することが求められる。" },
+    { idiom: "玉石混淆 (ぎょくせきこんこう)", literal: "Ngọc và đá lẫn lộn", meaning: "[書き言葉] Tài liệu hỗn tạp — nguồn tốt và nguồn kém lẫn lộn; phù hợp khi đánh giá literature.", example: "近年のオンライン文献は玉石混淆であり、引用に際しては選別が肝要となる。" },
+    { idiom: "孫引き (まごびき)", literal: "Cháu kéo (dẫn từ dẫn)", meaning: "[学術用語] Trích dẫn từ nguồn thứ cấp thay vì bản gốc — chỉ acceptable khi không thể access nguồn gốc.", example: "孫引きは原則として避け、やむを得ない場合は出典を二重に明記する。" },
+    { idiom: "出典を明らかにする (しゅってんをあきらかにする)", literal: "Làm rõ nguồn", meaning: "[書き言葉] Set phrase chuẩn cho 'cite the source explicitly' — bắt buộc trong academic prose.", example: "他者の見解を援用する際は、必ず出典を明らかにしなければならない。" }
+  ],
+  cultural_notes_vi: "Văn hóa trích dẫn Nhật khác VN ở 4 điểm. (1) ATTRIBUTION CHẶT HƠN VN — ngay cả idea chung (general claim) cũng cite. VN academic thường acceptable không cite nếu là 'kiến thức phổ biến'; Nhật C1 academic require cite nhiều hơn. Khi nghi ngờ, cite. (2) ORDER CỦA NAME — Nhật references list dùng họ trước, không initial first name (山田太郎 chứ không 太郎・山田 hoặc T. Yamada trong paper Nhật). Khi cite tác giả nước ngoài: dùng full Romanized name hoặc katakana phiên âm tùy field. (3) 二重投稿 (double submission) là vi phạm nặng — đừng cite paper của chính bạn vào paper khác mà không declare. Self-citation phải mark rõ. (4) PARAPHRASE TIÊU CHUẨN CAO — paraphrase mà giữ structure câu gốc bị coi như 'patchwriting' = gần với 盗用. C1 phải hoàn toàn tái cấu trúc, hoặc quote thẳng. Khác VN: ở VN paraphrase loose hơn được chấp nhận; ở Nhật reviewer kiểm tra strict. Mẹo: nếu bạn không thể paraphrase đủ khác, quote trực tiếp + 「」 + cite trang. An toàn hơn paraphrase nửa vời.",
+  tip_advice_vi: "Workflow trích dẫn an toàn cho luận văn Nhật C1. (a) MỖI lần đọc paper, ghi ngay full citation + page numbers vào notes — đừng để 'sẽ tìm lại sau'. Sau 30 paper bạn không nhớ ai nói gì. (b) PHÂN BIỆT 3 mức ghi chú: 直接引用 (direct quote, nguyên văn) → 「」 + page; 言い換え (paraphrase) → no quote marks nhưng cite; 自分の解釈 (your synthesis) → no cite, mark với memo 'mine'. Trộn lẫn = nguy cơ 盗用. (c) TRƯỚC submit, double-check mỗi cite: tác giả + năm khớp với references list không? Page number chính xác không? Reviewer Nhật kiểm tra random sample — cite sai 1 chỗ làm reviewer mất tin tưởng cả paper. (d) KHI dùng 〜とされる (it is said), reviewer có thể hỏi 'ai nói?' — phải có cite ngay sau, hoặc đổi thành 'tôi giả định' với hedge khác. (e) KHI cite tiếng Việt source trong paper Nhật, theo convention: Romanized author name + year, references list ghi cả tựa gốc tiếng Việt + dịch tiếng Nhật trong [括弧]. Mẹo cuối: nếu phát hiện đã paraphrase thiếu attribution sau khi nộp, báo cáo chủ động cho biên tập viên — tự sửa được dù muộn vẫn nhẹ hơn nhiều so với bị phát hiện.",
+  exercises: [
+    { type: "fill-blank", question: "山田 (二〇一九) ___、X と Y との関係は、文脈依存的であるとされる。", answer: "によれば" },
+    { type: "matching", instruction: "Ghép cụm với citation function.", pairs: [
+      { japanese: "〜に依拠しつつ", english: "acknowledge heavy reliance on a framework" },
+      { japanese: "〜とされる", english: "distancing — report a claim without vouching" },
+      { japanese: "〜による", english: "mark a secondary citation (cited via X)" },
+      { japanese: "出典を明らかにする", english: "set phrase: explicitly state the source" }
+    ] },
+    { type: "translation", vietnamese: "Bài này, trong khi kế thừa khung phân tích của Tanaka (2020), bổ sung một góc nhìn mới.", japanese: "本稿は、田中 (二〇二〇) の枠組みに依拠しつつ、新たな観点を加えるものである。" }
+  ]
 }
 ];
 export default lessons;
