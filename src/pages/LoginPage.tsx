@@ -395,7 +395,10 @@ export default function LoginPage() {
   }, [busy, IS_DEV, redirectToOAuthReturn]);
 
   return (
-    <div className="mb-login-shell" style={UI.page}>
+    // translate="no" prevents Chrome/Google Translate from wrapping
+    // React-managed auth text nodes and triggering removeChild NotFoundError
+    // during signin state changes or OAuth redirects.
+    <div translate="no" className="mb-login-shell" style={UI.page}>
       {/* Responsive collapse: at <= 980px the two-column shell becomes a
           single column and the marketing panel is hidden via display:none.
           CSS-only — no runtime state, no flash on resize. */}
