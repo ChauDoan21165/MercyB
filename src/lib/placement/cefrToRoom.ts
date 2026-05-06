@@ -45,15 +45,15 @@ export function roomForCefr(cefr: ResultCEFR): string {
 export const CEFR_TAGLINE: Record<ResultCEFR, { en: string; vi: string }> = {
   pre_a1: {
     en: 'Absolute beginner — a clean start',
-    vi: 'Mới hoàn toàn — một khởi đầu sạch sẽ',
+    vi: 'Mới hoàn toàn — một khởi đầu rõ ràng',
   },
   A1: {
     en: 'Beginner — first words and phrases',
-    vi: 'Sơ khởi — từ vựng và câu đầu tiên',
+    vi: 'Mới bắt đầu — những từ và câu đầu tiên',
   },
   A2: {
     en: 'Elementary — solid foundation',
-    vi: 'Sơ cấp — nền tảng đã vững',
+    vi: 'Sơ cấp — nền tảng đang vững dần',
   },
   B1: {
     en: 'Intermediate — conversational confidence',
@@ -65,10 +65,10 @@ export const CEFR_TAGLINE: Record<ResultCEFR, { en: string; vi: string }> = {
   },
   C1: {
     en: 'Advanced — command and nuance',
-    vi: 'Cao cấp — làm chủ và tinh tế',
+    vi: 'Nâng cao — dùng tiếng Anh chính xác và tinh tế',
   },
   C2: {
     en: 'Proficient — near-native precision',
-    vi: 'Thành thạo — gần như bản ngữ',
+    vi: 'Thành thạo — độ chính xác gần như bản ngữ',
   },
 };

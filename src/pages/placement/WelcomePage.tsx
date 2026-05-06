@@ -127,15 +127,15 @@ export default function WelcomePage() {
       <div style={column}>
         <h1 style={headingStyle}>
           Let's find where you should start
-          <span style={headingViStyle}>Hãy tìm điểm bắt đầu phù hợp cho bạn</span>
+          <span style={headingViStyle}>Tìm điểm bắt đầu phù hợp với bạn</span>
         </h1>
 
         <p style={subtitleStyle}>
           A short test will show us your English level and point you at the
           first lesson that fits — no guessing.
           <span style={subtitleViStyle}>
-            Một bài đánh giá ngắn sẽ cho chúng tôi biết trình độ của bạn và
-            giới thiệu bài học đầu tiên phù hợp — bạn không phải tự đoán.
+            Một bài đánh giá ngắn sẽ giúp Mercy biết trình độ của bạn và
+            gợi ý bài học đầu tiên phù hợp — bạn không phải tự đoán.
           </span>
         </p>
 
@@ -152,7 +152,7 @@ export default function WelcomePage() {
             <div style={infoText}>
               10–12 questions (fewer or more based on your answers)
               <span style={infoTextVi}>
-                10–12 câu hỏi (có thể ít hoặc nhiều tuỳ câu trả lời)
+                10–12 câu hỏi (có thể ít hoặc nhiều hơn tuỳ câu trả lời)
               </span>
             </div>
           </div>
@@ -161,7 +161,7 @@ export default function WelcomePage() {
             <div style={infoText}>
               Bilingual support — English + Vietnamese throughout
               <span style={infoTextVi}>
-                Song ngữ — Tiếng Anh + Tiếng Việt suốt bài
+                Song ngữ — tiếng Anh + tiếng Việt trong suốt bài
               </span>
             </div>
           </div>
@@ -174,7 +174,7 @@ export default function WelcomePage() {
         >
           Start placement test
           <span style={{ display: 'block', fontSize: 12, fontWeight: 500, color: 'rgba(255,255,255,0.78)', marginTop: 2 }}>
-            Bắt đầu đánh giá
+            Bắt đầu bài đánh giá
           </span>
         </button>
 
@@ -185,7 +185,7 @@ export default function WelcomePage() {
         >
           Skip for now — I'll explore on my own
           <span style={{ display: 'block', fontSize: 12, color: '#94a3b8', marginTop: 2 }}>
-            Bỏ qua — để tôi tự khám phá
+            Bỏ qua — tôi sẽ tự khám phá
           </span>
         </button>
       </div>

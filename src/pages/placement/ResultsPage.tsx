@@ -305,7 +305,7 @@ export default function ResultsPage() {
 
   const displayTitleEn =
     roomInfo?.title?.en || 'Your recommended starting lesson';
-  const displayTitleVi = roomInfo?.title?.vi || 'Bài học đầu tiên gợi ý';
+  const displayTitleVi = roomInfo?.title?.vi || 'Bài học được gợi ý để bắt đầu';
   const displayDescEn = roomInfo?.content?.en;
   const displayDescVi = roomInfo?.content?.vi;
 
@@ -315,12 +315,12 @@ export default function ResultsPage() {
         <section style={banner}>
           <h1 style={bannerHeading}>
             Here's what we found
-            <span style={bannerHeadingVi}>Đây là kết quả của bạn</span>
+            <span style={bannerHeadingVi}>Kết quả của bạn đây</span>
           </h1>
           <p style={bannerSub}>
             Based on your answers. You can retake anytime.
             <span style={bannerSubVi}>
-              Dựa trên câu trả lời của bạn. Bạn có thể làm lại bất cứ lúc nào.
+              Dựa trên các câu trả lời của bạn. Bạn có thể làm lại bất cứ lúc nào.
             </span>
           </p>
         </section>
@@ -338,7 +338,7 @@ export default function ResultsPage() {
         <section style={startCard}>
           <div>
             <span style={tinyLabel}>Recommended starting lesson</span>
-            <span style={tinyLabelVi}>· Bài học đầu tiên gợi ý</span>
+            <span style={tinyLabelVi}>· Bài học được gợi ý để bắt đầu</span>
           </div>
           <div style={roomTitle}>{displayTitleEn}</div>
           <div style={roomTitleVi}>{displayTitleVi}</div>
@@ -365,10 +365,10 @@ export default function ResultsPage() {
 
         <div style={secondaryRow}>
           <Link to="/rooms" style={ghostBtn}>
-            Browse all lessons · Xem tất cả
+            Browse all lessons · Xem tất cả bài học
           </Link>
           <Link to="/placement" style={ghostBtn}>
-            Retake test · Làm lại
+            Retake test · Làm lại bài đánh giá
           </Link>
         </div>
 

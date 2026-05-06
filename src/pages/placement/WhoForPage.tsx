@@ -182,14 +182,14 @@ export default function WhoForPage() {
             <div style={cardIcon} aria-hidden>🧑</div>
             <div style={cardTitle}>
               Me — an adult learner
-              <span style={cardTitleVi}>Mình — người lớn đang học</span>
+              <span style={cardTitleVi}>Mình — người lớn học tiếng Anh</span>
             </div>
             <div style={cardBody}>
               Short test, 6–9 minutes, gives you a CEFR level and a
               recommended starting lesson.
               <div style={cardBodyVi}>
-                Bài đánh giá ngắn, 6–9 phút, cho bạn trình độ CEFR và bài học
-                nên bắt đầu.
+                Bài đánh giá ngắn trong 6–9 phút sẽ xác định trình độ CEFR và
+                gợi ý bài học nên bắt đầu.
               </div>
             </div>
           </button>
@@ -210,8 +210,8 @@ export default function WhoForPage() {
               Kids skip the test and go straight to fun beginner rooms —
               alphabet, colors, animals.
               <div style={cardBodyVi}>
-                Trẻ em bỏ qua bài đánh giá và vào thẳng các phòng khởi đầu
-                vui — bảng chữ cái, màu sắc, động vật.
+                Con sẽ bỏ qua bài đánh giá và vào thẳng các phòng nhập môn
+                vui nhộn — bảng chữ cái, màu sắc, động vật.
               </div>
             </div>
           </button>

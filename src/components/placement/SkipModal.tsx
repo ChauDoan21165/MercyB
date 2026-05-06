@@ -80,8 +80,8 @@ export function SkipModal({ open, onOpenChange, onKeepTesting, onSkip }: Props) 
                 marginTop: 6,
               }}
             >
-              Bạn có thể làm bất cứ lúc nào từ trang Tài khoản, và chúng
-              tôi sẽ giới thiệu bài học phù hợp khi bạn sẵn sàng.
+              Bạn có thể làm bài này bất cứ lúc nào từ trang Tài khoản, và
+              Mercy sẽ gợi ý bài học phù hợp khi bạn sẵn sàng.
             </span>
           </DialogDescription>
         </DialogHeader>
@@ -123,7 +123,7 @@ export function SkipModal({ open, onOpenChange, onKeepTesting, onSkip }: Props) 
                 marginTop: 2,
               }}
             >
-              Vâng, bỏ qua
+              Có, bỏ qua
             </span>
           </button>
         </DialogFooter>
