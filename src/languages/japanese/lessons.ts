@@ -4701,6 +4701,319 @@ export const lessons: JapaneseLesson[] = [
     ] },
     { type: "translation", vietnamese: "Người càng cố quá thường càng quên dựa vào người khác.", japanese: "頑張りすぎる方ほど、人に頼ることを忘れてしまわれます。" }
   ]
+},
+{
+  id: 88,
+  title: "Money and debt conversation with a friend — asking back, being asked",
+  title_vi: "Trò chuyện về tiền/nợ với bạn — đòi lại, được hỏi vay, động lực khó xử",
+  title_en: "Money and debt conversation with a friend — asking back, being asked",
+  category: "fluency",
+  level: "B2",
+  vocabulary: [
+    { japanese: "貸し借り (かしかり)", english: "lending and borrowing" },
+    { japanese: "立て替える (たてかえる)", english: "to pay temporarily on behalf of" },
+    { japanese: "返済 (へんさい)", english: "repayment" },
+    { japanese: "金銭 (きんせん)", english: "money (formal noun)" },
+    { japanese: "お金のやり取り (おかねのやりとり)", english: "money exchange / transaction" },
+    { japanese: "気まずい (きまずい)", english: "awkward / uncomfortable" },
+    { japanese: "切り出す (きりだす)", english: "to bring up (a difficult topic)" },
+    { japanese: "都合 (つごう)", english: "circumstances / convenience" },
+    { japanese: "正直に申し上げると (しょうじきにもうしあげると)", english: "honestly speaking (formal frame)" },
+    { japanese: "関係に響く (かんけいにひびく)", english: "to affect the relationship" }
+  ],
+  examples: [
+    { japanese: "少しお金のことでお話があるのですが、お時間よろしいでしょうか。", english: "I have something to discuss about money — do you have time?" },
+    { japanese: "先月立て替えた分のことなのですが、ご記憶でいらっしゃいますか。", english: "About what I paid on your behalf last month — do you recall?" },
+    { japanese: "急ぎませんので、ご都合のよい時にお返しいただければ幸いです。", english: "There's no rush; if you could repay at your convenience, I'd appreciate it." },
+    { japanese: "こちらこそ、こんな話を切り出して、申し訳ございません。", english: "I'm the one who's sorry to bring up such a topic." },
+    { japanese: "金銭で関係に響くのは、私の本意ではございません。", english: "It's not my intention for our relationship to be affected by money." }
+  ],
+  dialogue: [
+    { speaker: "チャウ", japanese: "ちょっとお話があるのですが、お時間よろしいでしょうか。", english: "I have a bit to discuss — do you have time?" },
+    { speaker: "友人", japanese: "うん、なに?", english: "Sure, what is it?" },
+    { speaker: "チャウ", japanese: "先月の旅行で、立て替えさせていただいた分のことなのですが。", english: "About the amount I covered for you during last month's trip." },
+    { speaker: "友人", japanese: "ああ、ごめん、すっかり忘れてた。明日中に振り込むね。", english: "Ah, sorry — completely forgot. I'll transfer it by tomorrow." }
+  ],
+  dialogue_long: [
+    { speaker: "チャウ", japanese: "今日は、ちょっとお話があって、お呼び立てしました。", english: "I called you out today because there's something to discuss." },
+    { speaker: "友人", japanese: "うん、改まって。何かあった?", english: "Sure — formal of you. Did something happen?" },
+    { speaker: "チャウ", japanese: "実は、お金のことなのですが、切り出しにくくて、ずっと迷っておりました。", english: "Actually, it's about money — hard to bring up, and I've been hesitating." },
+    { speaker: "友人", japanese: "お金? なんだろう。気にせず、言ってよ。", english: "Money? What is it? Don't hold back, tell me." },
+    { speaker: "チャウ", japanese: "先月の温泉旅行のときに、宿泊代を私が立て替えさせていただいた分があったんです。三万円ほどでした。", english: "During the hot-spring trip last month, I covered your share of the lodging — about 30,000 yen." },
+    { speaker: "友人", japanese: "...あ、そうだった。ごめん、本当に忘れてた。なんでもっと早く言ってくれなかったの。", english: "...ah, that's right. Sorry — I really did forget. Why didn't you say sooner?" },
+    { speaker: "チャウ", japanese: "言いそびれてしまって、それから時間が経つほど、切り出しにくくなりまして。今日、思い切ってお話しすることにしました。", english: "I missed the moment, and the more time passed, the harder it got. Today I decided to bring it up." },
+    { speaker: "友人", japanese: "そんな、こちらこそごめんなさい。あの後、私もバタバタしてて、すっかり忘れてた。今夜中に振り込むね。", english: "No, I'm the one to apologize. I was busy after that and completely forgot. I'll transfer it tonight." },
+    { speaker: "チャウ", japanese: "ありがとうございます。急ぎませんので、ご都合のよい時で構いません。それから、こちらこそ、こんな話を切り出して、申し訳ございません。", english: "Thank you. No rush — at your convenience. And — I'm the one who's sorry to bring this up." },
+    { speaker: "友人", japanese: "謝ることないよ。お金のこと、はっきり言ってくれた方が、お互い気持ちいい。", english: "No need to apologize. With money, saying it clearly feels better for both." },
+    { speaker: "チャウ", japanese: "そう言っていただけて、心が軽くなりました。実は、こちらにもう一つ、ご相談したいことがありまして。", english: "Hearing that, my heart feels lighter. Actually, there's one more thing I'd like to discuss." },
+    { speaker: "友人", japanese: "どうぞ。", english: "Go ahead." },
+    { speaker: "チャウ", japanese: "今後、共に旅行や食事に行く際に、私が立て替える形ではなく、その場で精算する形にさせていただけたらと思いまして。", english: "Going forward, when we travel or dine together, rather than me covering and settling later, I'd like us to split on the spot." },
+    { speaker: "友人", japanese: "もちろん、それでいい。むしろ、その方がいい。最近、PayPayや割り勘アプリで、その場で送れるしね。", english: "Of course, that's fine. Better, in fact. With PayPay and split apps, you can send on the spot now." },
+    { speaker: "チャウ", japanese: "ありがとうございます。私も、立て替えるのが嫌なわけではないのですが、後で切り出すのが、毎回少し心の負担になっておりまして。", english: "Thank you. It's not that I dislike fronting — but bringing it up later, each time, is a little burden on my heart." },
+    { speaker: "友人", japanese: "そっか。それ、私が気づかなかった。これからは、その場で精算で行こう。", english: "I see. I hadn't noticed that. From now on, let's settle on the spot." },
+    { speaker: "チャウ", japanese: "ありがとうございます。お金の話で、関係に響くのは、私の本意ではございませんので、こうしてお話できて、本当に助かりました。", english: "Thank you. Money affecting our relationship isn't my intention — being able to talk this through really helps." },
+    { speaker: "友人", japanese: "むしろ、こうやって話せる関係って、いい関係だよね。お金、ちゃんと話せない関係こそ、危ない。", english: "Actually, a relationship where we can talk like this — that's a good one. Relationships that can't talk money clearly — those are risky." }
+  ],
+  roleplay_prompts: [
+    "Đóng vai bạn cần đòi lại 30,000 yen bạn đã trả hộ trong chuyến du lịch. Đã 3 tuần. Hãy KHÔNG vague hint, KHÔNG dramatic — frame thẳng nhưng nhẹ. Cụm: kiridashi nikukute, mayotte orimashita ga (do dự khó nói nhưng) cộng senjitsu no ryokou de, tatekaesete itadaita bun ga arimashita (hôm trước em trả hộ phần). Specific amount + context. Họ apologize, accept gracefully — KHÔNG over-reassure ('it's nothing').",
+    "Bạn của bạn ASK YOU vay tiền (200,000 yen, hoàn trong 6 tháng). Bạn không thoải mái nhưng không muốn từ chối thô lỗ. Hãy KHÔNG immediately yes, KHÔNG immediately no — request time to think. Cụm: o-kimochi wa juubun ni rikai dekimasu. tada, kingaku ga ookii node, sukoshi kangae sasete itadakitaku zonjimasu (em hiểu — nhưng số tiền lớn, xin được suy nghĩ ít hôm). Avoid yes/no in moment.",
+    "Sau 2 ngày suy nghĩ, bạn quyết định decline. Cụm: kongo no jibun no keikaku to terashite, kondo wa o-yaku ni tatemasen (đối chiếu kế hoạch của em sắp tới, lần này em không giúp được). Suggest alternative: kingaku ga chiisakute mo, sukoshi nara kinougatta jibun de tasukerareru tokoro ga arimasu (số nhỏ thì em có thể). Maintain dignity for both."
+  ],
+  register_notes: "Tiền với bạn ở Nhật là minefield. Năm patterns: (1) BRING UP EARLIEST POSSIBLE: nếu tatekae (cover for friend), say in moment hoặc ngay sau (within 2-3 days). Wait > 2 weeks và conversation gets harder. Cụm in-moment: kyou no bun, ato de seisan deki masu ka. Modern apps (PayPay, LINE Pay, Kyash) make on-spot split easy — encourage. (2) FRAME AS SHARED PROBLEM: KHÔNG accuse 'you forgot' (kashi-tana). Frame như communication issue. Cụm: itai sobirete shimatte (tôi miss the moment), kiridashi nikukute (hard to bring up). Self-attribute hesitancy = preserves face. (3) NEVER ANGRY TONE: dù họ delay months, voice stay calm. Anger over money = friendship damage permanent. Calm clarity = friendship survives. Một câu firm-but-warm > mười câu emotional. (4) DECLINING LOAN REQUEST: KHÔNG immediate no (sounds dismissive of trust they showed). Buy time. Cụm: o-kimochi rikai dekimasu. sukoshi kangae sasete itadakitaku zonjimasu. 1-3 ngày sau, decline với reason concrete (kongo no shukyou ga, ima koukai ga genjitsu-teki dewa nai — current plans don't make this realistic). Specific reason > vague no. (5) KEEP RECORDS: dù trust friend, record dates + amounts in phone (private). Fading memory = source of friction. Có record = both can verify, không argue. Friendship transparency tools, không suspicion. // TODO native review — 'kiridashi nikukute, mayotte orimashita' phrasing — alternative iidashi nikukute mềm hơn cho closer friends; native reviewer noted 'kanjo nin' awkwardness in dialogue context — replaced with 'tatekaesase' which works for casual situations.",
+  idiom_glosses: [
+    { idiom: "親しき仲にも礼儀あり", literal: "Trong gần thân vẫn có lễ", meaning: "Bạn thân vẫn cần clarity về tiền — context apply directly here.", example: "親しき仲にも礼儀ありと申しますし、お金のことは曖昧にせず、はっきりさせたく存じます。" },
+    { idiom: "金の切れ目が縁の切れ目", literal: "Tiền hết là duyên hết", meaning: "Cảnh báo: friendship can break over money — phù hợp explain why bạn want to be clear NOW.", example: "金の切れ目が縁の切れ目と申しますので、関係を大切にするためにも、お金のことはきちんと話したく存じます。" },
+    { idiom: "立つ鳥跡を濁さず", literal: "Chim bay đi không làm đục nước", meaning: "Đi mà không để vết — phù hợp cho khi paying back: settle clean leave no residue.", example: "立つ鳥跡を濁さずと申しますし、今夜中に振り込ませていただきます。" },
+    { idiom: "貸した金は忘れろ、借りた金は忘れるな", literal: "Tiền cho mượn thì quên, tiền mượn thì nhớ", meaning: "Lời khuyên cũ: lender forgets, borrower remembers — câu hỏi đạo đức trao cho cả 2 phía.", example: "「貸した金は忘れろ、借りた金は忘れるな」と申します。私も、お返しすべきものは、必ず覚えております。" }
+  ],
+  cultural_notes_vi: "Văn hóa tiền-bạn ở Nhật khác VN ở 6 điểm. (1) WARIKAN DEFAULT: 割り勘 (split bill) là standard, even between close friends. Nhật rarely 'I'll get this one' as habit — exceptions: senpai treating kohai (workplace), or special occasion. Foreigners may default to alternating treats. Disclose preference upfront: warikan ga ii desu — itsumo (let's always split). (2) CASH STILL DOMINANT: dù IT advanced, cash still common. Khi splitting, exact amount expected — bring small bills. KHÔNG round up. Apps Solving this — encourage friend uses PayPay/LINE Pay if possible. (3) LOANS BETWEEN FRIENDS RARE: borrow significant from Japanese friend = reduce relationship to acquaintance level. Most Japanese have family/bank for big needs. Foreigner asking JP friend for loan = potentially severs friendship. Try alternative routes (employer advance, regional bank, family) before asking friend. (4) SHARED EXPENSES BUDGET: nếu group plan trip, often 1 person designated kanjou-gakari (treasury role). Họ collect, settle, distribute. Volunteer this role builds reputation, KHÔNG burden. (5) GIFT RECIPROCITY ECONOMY: nếu họ give expensive gift (omiyage worth 5,000+), reciprocity expected within 1-3 events together. KHÔNG necessarily money — comparable gift value. Foreigners sometimes don't track — Nhật notice. (6) BIRTHDAY EXPENSES: at restaurant for friend's birthday, friend whose birthday IS often expected to be treated by group, but friend pays back equivalent gift. Loose rule. Khác biệt với VN: ở VN bạn thân thay phiên trả luôn (turn-based treat economy), forgetting OK; ở Nhật, exact split or measured reciprocity. Vietnamese instinct 'I'll get this, you get next time' Japanese friend may feel awkward — feels like hidden ledger. Prefer warikan upfront. Mẹo: nếu bạn thấy friend never offer to pay (always you), brief observation can fix. Cụm: kondo, warikan demo daijoubu desu yo (next time, splitting is fine). Họ may not realize cultural mismatch. Long-term: keep friendship money-clean. Money confusion is one of top 3 reasons cross-cultural friendships in Japan dissolve. Worth bringing up early than late.",
+  tip_advice_vi: "Trước khi bring up money với friend: prepare 4 things. (a) AMOUNT — exact, không vague (35,000 yen, không 'a few tens of thousands'). (b) CONTEXT — what occasion, when, what for (last month's trip, lodging coverage). (c) URGENCY — bạn really need by date X, hoặc just want clarity? (d) ALTERNATIVE OFFER — if họ can't pay full now, OK monthly? Plan having gives friend escape route. Choose timing: KHÔNG over text (impersonal for serious topic), KHÔNG over phone (lacks visual). In-person, private setting, sit-down meeting. Send message ahead: chotto o-hanashi ga atte, jikan ga aru toki ni o-cha demo dou desu ka. KHÔNG specify topic in advance (creates anxiety). Tại meeting: warm-up first 10-15 phút normal conversation. Then transition naturally: jitsu wa, sukoshi o-hanashi shitai koto ga arimashite. Pause. Họ ready. Then state — concrete, calm. Watch face. Họ likely apology immediate (forgot, sorry). Accept gracefully without over-reassuring. Cụm: ki ni shinaide kudasai — hai, mou kekkou desu. Set repayment expectation: kongetsu-chuu ni, dou ka go-fubin no nai you ni o-negai shimasu (within this month, please). Specific deadline > vague. Sau khi họ commit timing: pivot to LARGER conversation. Future structure. Cụm: kongo, isshouni ryokou ya gohan ni iku toki, sono ba de seisan no katachi wa, ikaga deshou ka. Họ likely agree. Set new norm. Long-term protocols: trip planning together, always set kanjou-gakari (treasury role) upfront. Khi book hotel, restaurant, train tickets, designated person uses one card, others send share immediately via PayPay/LINE Pay. Total transparency. KHÔNG cumulative debt. Khi being asked to lend significant: PAUSE. KHÔNG yes/no in moment. Cụm: o-kimochi, juubun ni rikai dekimasu. tada, kingaku ga ookii node, sukoshi kangae sasete itadakitaku zonjimasu. Take 2-3 ngày. Honestly assess: would denial damage friendship beyond repair? Can bạn afford to lose this money entirely (loans to friends often become gifts)? Suggest alternative routes (his bank, his family, your introduction to someone with capital). Decline gracefully. Cụm: kongo no jibun no keikaku to terashite, kondo wa o-yaku ni tatemasen ga, kingaku ga chiisakute mo, sukoshi nara — (current plans don't allow, but smaller amount is OK if helpful). Khi being thanked for past help: don't make big deal. Cụm: dou itashimashite. otagai-sama desu (you're welcome — we're equals). Brief acknowledgment. Mẹo: nếu friend repeatedly slow on repayment (multiple times after multiple reminders), consider relationship recalibration. KHÔNG dramatic break — but do reduce financial entanglement. Going forward, only same-day-split situations. Cumulative trust slowly rebuilds với consistent behavior. Mẹo cuối: track everything in private (phone notes, simple spreadsheet). Friend who is loose with money typically also loose with other commitments (time, plans). Pattern data informs how much you invest. Healthy friendships have money in light, not in shadows.",
+  exercises: [
+    { type: "fill-blank", question: "金銭で関係に___のは、私の本意ではございません。", answer: "響く" },
+    { type: "matching", instruction: "Ghép cụm với function.", pairs: [
+      { japanese: "立て替えさせていただいた分", english: "amount I covered on your behalf — neutral framing" },
+      { japanese: "切り出しにくくて、迷っておりました", english: "self-attribute hesitancy, preserves their face" },
+      { japanese: "ご都合のよい時にお返しいただければ", english: "remove urgency pressure when receiving repayment" },
+      { japanese: "その場で精算する形に", english: "propose on-spot split as new norm" }
+    ] },
+    { type: "translation", vietnamese: "Nói chuyện tiền với bạn không phải để làm khó — mà để giữ tình cảm rõ.", japanese: "金銭の話を切り出すのは、関係を難しくするためではなく、はっきりさせて、関係を大切にするためでございます。" }
+  ]
+},
+{
+  id: 89,
+  title: "Religion and spiritual practice — across different beliefs",
+  title_vi: "Tôn giáo và thực hành tâm linh — giữa người khác niềm tin",
+  title_en: "Religion and spiritual practice — across different beliefs",
+  category: "fluency",
+  level: "B2",
+  vocabulary: [
+    { japanese: "信仰 (しんこう)", english: "religious belief / faith" },
+    { japanese: "宗教 (しゅうきょう)", english: "religion (broad term)" },
+    { japanese: "神社 (じんじゃ)", english: "Shinto shrine" },
+    { japanese: "お寺 (おてら)", english: "Buddhist temple" },
+    { japanese: "参拝 (さんぱい)", english: "visit / worship at shrine or temple" },
+    { japanese: "初詣 (はつもうで)", english: "first shrine visit of the new year" },
+    { japanese: "お墓参り (おはかまいり)", english: "visiting ancestors' grave" },
+    { japanese: "祈る (いのる)", english: "to pray" },
+    { japanese: "尊重 (そんちょう)", english: "respect (for others' beliefs)" },
+    { japanese: "価値観 (かちかん)", english: "values" }
+  ],
+  examples: [
+    { japanese: "ベトナムでは、家庭で先祖を祀る習慣がございまして。", english: "In Vietnam we have the custom of honoring ancestors at home." },
+    { japanese: "日本の初詣は、お寺と神社、両方に伺うのですか。", english: "For Japanese hatsumode, do people visit both temples and shrines?" },
+    { japanese: "信仰は人それぞれですので、お互いの考えを尊重したく存じます。", english: "Faith varies person to person; I'd like us to respect each other's thinking." },
+    { japanese: "宗派について、深くは存じませんが、興味を持っております。", english: "I don't know the sects deeply, but I'm interested." },
+    { japanese: "お墓参りに、ご一緒させていただいてもよろしいでしょうか。", english: "May I accompany you to visit the grave?" }
+  ],
+  dialogue: [
+    { speaker: "友人", japanese: "正月、初詣行く?", english: "You doing hatsumode for New Year?" },
+    { speaker: "チャウ", japanese: "ぜひ伺いたいのですが、作法をきちんと存じませんで。", english: "I'd like to — but I don't really know the proper manners." },
+    { speaker: "友人", japanese: "簡単だよ。ご一緒しよう。", english: "It's simple. Let's go together." },
+    { speaker: "チャウ", japanese: "ありがとうございます。ベトナムでも先祖を大切にする習慣がございますので、似たお気持ちで参拝できれば。", english: "Thank you. We honor ancestors in Vietnam too, so I can approach it with a similar feeling." }
+  ],
+  dialogue_long: [
+    { speaker: "友人", japanese: "もうすぐお正月だね。チャウさん、初詣はどうするの?", english: "New Year's coming. Chau, what about hatsumode?" },
+    { speaker: "チャウ", japanese: "実は、まだ一度も伺ったことがなくて。ベトナムにいた頃は、家でTet(旧正月)の儀式が中心でしたので。", english: "Actually, I've never been once. In Vietnam, Tet rituals at home were the main thing." },
+    { speaker: "友人", japanese: "へえ、そうなんだ。ベトナムでは、お正月にお寺や神社みたいなところには行かないの?", english: "Oh, really? In Vietnam, you don't go to a temple or shrine kind of place at New Year?" },
+    { speaker: "チャウ", japanese: "お寺に伺うこともございます。ただ、家庭の先祖を祀る場所が中心でして、玄関の祭壇や、家族が集まって祈る形が多いです。", english: "We do visit pagodas. But the home altar for ancestors is central — a shrine at the entrance, family gathered to pray." },
+    { speaker: "友人", japanese: "なるほど。日本も、家に仏壇がある家は同じような感じだよ。家族のご先祖を祀って、毎日手を合わせる。", english: "I see. In Japan too, homes with butsudan altars are similar — honoring family ancestors, praying daily." },
+    { speaker: "チャウ", japanese: "そうなのですね。共通点があるのが嬉しいです。ところで、初詣について、お聞きしたいのですが、お寺と神社、両方に伺うのですか。", english: "I see — it's nice we share a thread. About hatsumode, may I ask — do people go to both temples and shrines?" },
+    { speaker: "友人", japanese: "人によるかな。両方行く人もいるし、近所の神社一つだけって人も多い。私の家は、家の近くの神社と、お寺で祖父のお墓参りも兼ねる感じ。", english: "Depends on the person. Some go to both, many just to the neighborhood shrine. My family goes to the local shrine, plus the temple for my grandfather's grave." },
+    { speaker: "チャウ", japanese: "そうなのですね。一つお伺いしてもよろしいですか。日本の方は、ご自分の宗教を「私は仏教徒」とか「私は神道です」と意識されているのでしょうか。", english: "I see. May I ask — do Japanese people think of their religion as 'I am Buddhist' or 'I am Shinto'?" },
+    { speaker: "友人", japanese: "いい質問。実は、はっきり「私は何々教徒」って思ってる人は少数派なんだよね。多くの日本人は、神社にも行くし、お寺にも行くし、クリスマスも祝うし、お盆もする。実践はするけど、信仰の宣言はあまりしない。", english: "Good question. Honestly, those who think clearly 'I am X believer' are a minority. Many Japanese visit both shrines and temples, celebrate Christmas, observe Obon. We practice but rarely declare belief." },
+    { speaker: "チャウ", japanese: "なるほど、それは面白いですね。実践と信仰宣言が分かれているのですね。", english: "I see — that's interesting. Practice and belief declaration are separate." },
+    { speaker: "友人", japanese: "そうそう。チャウさんはベトナムで仏教の家庭で育った?", english: "Right. Chau, did you grow up in a Buddhist family in Vietnam?" },
+    { speaker: "チャウ", japanese: "両親は仏教の影響が強い家庭で育ちましたが、私自身は、特定の宗教に強く属しているという意識は薄くて。先祖への敬意は深く感じておりますが、信仰の形は柔らかいかと存じます。", english: "My parents grew up in homes strongly influenced by Buddhism, but I myself don't feel strongly attached to a specific religion. I feel deep reverence for ancestors, but my faith form is soft." },
+    { speaker: "友人", japanese: "それ、日本人の多くと近いかも。形はあるけど、教義に縛られない感じ。", english: "That might be close to many Japanese. There's a form, but not bound by doctrine." },
+    { speaker: "チャウ", japanese: "そう感じます。文化と信仰が、分かちがたく溶け合っている感じが。", english: "Yes, that's how I feel. A sense that culture and faith are inseparably blended." },
+    { speaker: "友人", japanese: "それじゃあ、初詣、ご一緒しようよ。作法は当日教えるから、心配しないで。", english: "Then let's do hatsumode together. I'll teach you the manners on the day; don't worry." },
+    { speaker: "チャウ", japanese: "ぜひ、お願いいたします。それから、可能であれば、おじいさまのお墓参りにも、一緒に伺ってよろしいでしょうか。先祖を敬うお気持ちは、私にも自然なものですので。", english: "Yes please. And if possible — may I also accompany you to your grandfather's grave? Reverence for ancestors feels natural to me too." },
+    { speaker: "友人", japanese: "もちろん。むしろ、そういう気持ちで一緒に来てくれるなら、祖父も喜ぶと思う。", english: "Of course. If anything, going together in that spirit — my grandfather would be glad." },
+    { speaker: "チャウ", japanese: "ありがとうございます。来年、お互いの文化を少しずつ学べる年にできれば、嬉しく存じます。", english: "Thank you. If next year can be one where we learn each other's cultures bit by bit, I'd be glad." }
+  ],
+  roleplay_prompts: [
+    "Bạn Nhật rủ bạn đi 初詣 (hatsumode) lần đầu. Hãy KHÔNG say 'I'm not religious' (sounds dismissive of their invitation). Cụm: zehi ukagaitai no desu ga, sahou wo kichinto zonjimasen de (rất muốn đi nhưng em không rành cách thức). Frame như willingness to participate respectfully, not declaration of belief.",
+    "Bạn Nhật hỏi 'are you Buddhist?' Hãy KHÔNG declare definitively. Frame như practice-oriented identity. Cụm: sosen e no keii wa fukaku kanjite orimasu ga, shinkou no katachi wa yawarakai kato zonjimasu (em cảm reverence sâu với tổ tiên, nhưng tín ngưỡng dạng mềm). Avoid both 'yes I am' and 'no I'm not' — Japanese register prefers ambiguous middle.",
+    "Bạn Nhật có grandfather đã mất, đang đi viếng mộ. Bạn xin được đi cùng. Hãy frame như continuation của cultural value bạn cũng share, không như religious tourism. Cụm: sosen wo uyamau o-kimochi wa, watakushi ni mo shizen na mono desu node, ojiisama no o-haka mairi ni, go-issho sasete itadaite mo yoroshii deshou ka. Reverent, brief, sincere."
+  ],
+  register_notes: "Tôn giáo Nhật khác phương Tây ở core. Năm patterns: (1) PRACTICE > DECLARATION: Nhật define religious identity through practice (visit shrine, observe Obon, do hatsumode), không through belief statement ('I am Christian'). KHÔNG ask 'what's your religion' bluntly — ask 'do you visit shrine at New Year' or 'do you observe Obon'. Practice-question là culturally fluent. (2) MULTI-PRACTICE NORMAL: nhiều Nhật visit shrine, temple, celebrate Christmas, marry Christian-style chapel. Foreigners may find logical contradiction; Japanese see như multiple cultural participations. KHÔNG point out 'inconsistency' — sounds insulting. (3) AVOID DOCTRINAL DEPTH: don't ask deep theology (which sect of Buddhism, which kami). Most Japanese don't know detail. Like asking American 'which exact Christianity'. Họ probably can't answer. Stay surface: practice questions, festival meanings broadly. (4) RESPECT ANCESTRAL PRACTICE: お墓参り (grave visit), お盆 ancestor festival — these resonate cross-culturally. Vietnamese ancestor reverence frames overlap. Lean into shared reverence, KHÔNG try to convert frame. (5) NEVER EVANGELIZE OR CRITIQUE: dù bạn deeply religious (Christian missionary background, Buddhist devotee), tránh sharing belief unless asked. Critiquing Japanese practices (Shinto as 'pagan', Buddhism as 'idolatrous') = serious offense. KHÔNG. // TODO native review — 'shinkou no katachi wa yawarakai' phrasing — alternative shinkou ga yuruyaka clearer cho some natives; one reviewer suggested 'shinkou-shin wa dansei ni atte' for personal frame though feels overly philosophical for casual register.",
+  idiom_glosses: [
+    { idiom: "苦しい時の神頼み", literal: "Khi khổ thì cầu thần", meaning: "Cầu khẩn chỉ khi cần — câu hơi tự châm biếm về cách nhiều Nhật engage tôn giáo, casual, KHÔNG sâu doctrine.", example: "苦しい時の神頼みと申しますが、平時から手を合わせる気持ちは大切にしたく存じます。" },
+    { idiom: "和をもって貴しとなす", literal: "Coi sự hòa làm điều quý", meaning: "Lời Thái tử Shotoku — harmony between beliefs cao hơn doctrinal correctness.", example: "和をもって貴しとなすと申しますし、信仰が違っても、お互いを尊重したく存じます。" },
+    { idiom: "袖振り合うも他生の縁", literal: "Vạt áo chạm nhau cũng là duyên kiếp", meaning: "Phật giáo nhân quả — encounter là karma. Phù hợp frame cross-cultural friendship as meaningful.", example: "袖振り合うも他生の縁と申しますが、文化を共有できる縁を、ありがたく感じております。" },
+    { idiom: "ご縁", literal: "Mối duyên", meaning: "Cụm Phật giáo gốc nhưng broadly used cho any meaningful connection — comfortably bridges religious vs secular.", example: "ご縁があって、お互いの文化を学べる関係になれましたこと、心より感謝しております。" }
+  ],
+  cultural_notes_vi: "Tôn giáo Nhật khác hẳn nhiều quốc gia ở 6 điểm. (1) RELIGIOUS POPULATION FIGURES MISLEADING: surveys show ~70 phần trăm Japanese 'Buddhist', ~70 phần trăm 'Shinto' — overlaps because most practice both. Census doesn't capture 'declared belief' meaningfully. Don't take official statistics as identity statements. (2) TWO RELIGIONS COEXIST IN ONE LIFE: typical Japanese pattern — born blessed at Shinto shrine, married Christian-chapel style, funeral Buddhist. Each life event has dominant tradition. KHÔNG contradiction — different traditions for different roles. (3) SHINTO IS NATURE-BASED: 神社 (shrine) honors kami, often nature-related (mountains, trees, water). Worship is connection-with-nature ritual. KHÔNG comparable to monotheistic concept of god. Visiting shrine is more like visiting sacred park than 'house of god'. (4) BUDDHISM IS ANCESTOR-BASED PRIMARILY: most Japanese Buddhism practice là centered on ancestor remembrance (お盆, お彼岸 ohigan, お墓参り). Doctrinal depth (which sect, which sutra) rarely engaged. Funerals dominantly Buddhist. (5) CHRISTIANITY IS WEDDING/AESTHETIC: ~1-2 phần trăm Japanese identify Christian. But ~50 phần trăm of weddings have Christian-style chapel ceremony. Kitch role, không faith. KHÔNG conflate. (6) NEW RELIGIOUS MOVEMENTS (新興宗教): groups like Soka Gakkai, Tenrikyo, smaller — sometimes politically active. Mention of 新興宗教 thường carries skeptical tone. Don't bring up. Khác biệt với VN: ở VN tôn giáo thường declared (Phật giáo, Công giáo, Cao Đài, Hòa Hảo); ở Nhật, identity diffuse, practice-based. Vietnamese instinct 'I'm Buddhist therefore I do A, B, C' may feel rigid to Japanese friend. Họ practice without label. Mẹo: nếu bạn deeply Catholic (or other declared faith), share that fact gently, KHÔNG as identity claim. Cụm: watakushi wa katorikku no katei de sodachimashita node, kazoku no kankei de mai-shu kyoukai ni mairimasu (em lớn lên trong gia đình Công giáo, vì gia đình em đi nhà thờ hàng tuần). Frame qua practice and family, không belief statement. Long-term: many Japanese friends grateful when foreigner show interest in their festival practices (matsuri, hatsumode, Obon). Genuine engagement honors. Tour-guide engagement (ask 'Which exact deity is enshrined here?') feels academic. Engagement-mode (light prayer, follow customs, eat festival food, stay quiet at solemn moments) more meaningful. Mẹo cuối: khi at temple/shrine/funeral, observe trước, copy. KHÔNG ask 'what should I do' loud. Watch one or two people, follow. Nếu unsure of one specific (cuối nào, hands clap mấy lần), ask whisper to friend beside you. Quiet observation is honored.",
+  tip_advice_vi: "Lần đầu hatsumode (sau Tết Tây): plan ahead. Friend Nhật có thể invite — nếu không, ask. Cụm: konno o-shougatsu, hatsumode ni go-issho sasete itadaite mo yoroshii deshou ka. Họ likely glad. Nếu bạn solo first time: chọn neighborhood shrine over Meiji Jingu (Tokyo's most famous, 3 million visitors first 3 days, 4-hour wait). Local shrines quieter, more authentic feel. Dress: nice clean clothes, KHÔNG too casual (ripped jeans inappropriate). Black or dark formal acceptable. Some Japanese wear kimono — không required for foreigner. Bring 5-yen coin (五円, go-en — homophone with 'fortune') hoặc 10-yen, 50-yen. Avoid 4-yen, 9-yen (homonyms with death/suffering). Khi tại shrine: line up at temizuya (water purification basin) first. Steps: pick up ladle right hand, water on left hand, switch, water on right hand, mouth rinse from cupped left hand (KHÔNG drink directly from ladle), tip ladle vertical to wash handle, return. Walk to main hall on side path (center belongs to kami). At offering box: bow once, ring bell if present, throw coin in box, bow twice deep, clap hands twice, prayer (silent — wish for year), bow once more. Khi tại temple (Buddhist): similar but no clapping. Just incense if offered, bows, palms together. Watch others, copy. Nếu friend present, follow them. After ceremony: many shrines/temples sell omamori (charm), omikuji (fortune slip). Light experience. KHÔNG mandatory. Khi friend invites đến funeral (Buddhist osoushiki): different protocol, see lesson 84. Don't conflate. Khi friend mentions kazoku no o-tera (family temple) — common among Japanese with butsudan home altar. Family temple ties go generations. If invited, attend respectfully. Đây is significant gesture — họ trust bạn with deep family heritage. Wear dark formal, bring small gift for family (KHÔNG flowers — temples have own arrangements). Bow at altar entrance. Pray briefly. Speak quiet throughout. Long-term: nếu seriously interested, study one tradition lightly. Read Heart Sutra English translation, visit famous temple in Kyoto, attend small matsuri. KHÔNG fake depth — surface honest engagement honored. Mẹo về Vietnamese identity: nếu chia sẻ Vietnamese ancestor practice với Japanese friend, frame như cousin practice, không alternative practice. Cụm: shaba mo nihon mo, sosen wo uyamau katachi ga aru tokoro ga, ureshii desu (Vietnam và Japan đều có cách tôn kính tổ tiên, mừng vì điểm chung). Builds bridge, không separation. Mẹo cuối: never debate religion sau alcohol. Drinks party + religion talk = no good outcome. Save serious religion conversation for sober daytime, private setting.",
+  exercises: [
+    { type: "fill-blank", question: "信仰は人それぞれですので、お互いの考えを___したく存じます。", answer: "尊重" },
+    { type: "matching", instruction: "Ghép cụm với function.", pairs: [
+      { japanese: "ご縁", english: "Buddhist-origin term broadly bridging religious/secular connection" },
+      { japanese: "信仰の形は柔らかい", english: "soft, practice-based identity frame (Japanese-friendly)" },
+      { japanese: "先祖を敬うお気持ち", english: "shared ancestor reverence frame (cross-cultural bridge)" },
+      { japanese: "実践と信仰宣言が分かれている", english: "Japan's separation of practice from belief declaration" }
+    ] },
+    { type: "translation", vietnamese: "Em rất muốn đi cùng — chỉ là chưa rành cách thức.", japanese: "ぜひ伺いたいのですが、作法をきちんと存じませんで。" }
+  ]
+},
+{
+  id: 90,
+  title: "Hearing a friend share a difficult past — being a good listener",
+  title_vi: "Lắng nghe bạn chia sẻ trải nghiệm quá khứ khó khăn",
+  title_en: "Hearing a friend share a difficult past — being a good listener",
+  category: "fluency",
+  level: "B2",
+  vocabulary: [
+    { japanese: "過去 (かこ)", english: "past" },
+    { japanese: "経験 (けいけん)", english: "experience" },
+    { japanese: "打ち明ける (うちあける)", english: "to confide / open up" },
+    { japanese: "聞き手 (ききて)", english: "listener" },
+    { japanese: "相づち (あいづち)", english: "verbal cues acknowledging the speaker" },
+    { japanese: "共感 (きょうかん)", english: "empathy" },
+    { japanese: "詮索 (せんさく)", english: "prying / probing" },
+    { japanese: "信頼 (しんらい)", english: "trust" },
+    { japanese: "受け止める (うけとめる)", english: "to receive / take in (a heavy thing)" },
+    { japanese: "そっと", english: "softly / quietly" }
+  ],
+  examples: [
+    { japanese: "話してくださって、ありがとうございます。", english: "Thank you for telling me." },
+    { japanese: "詳しくお聞きしてもよろしいですか、ご無理であれば、もちろん結構です。", english: "May I ask more, if it's OK — if it's hard, of course not." },
+    { japanese: "お気持ち、想像することしかできませんが、お聞きしております。", english: "I can only imagine your feelings, but I'm listening." },
+    { japanese: "あなたが今ここにいてくださること、それ自体が貴重に感じます。", english: "Just your being here now — that itself feels precious." },
+    { japanese: "今日伺ったお話は、私の中だけにとどめておきます。", english: "What I heard today, I'll keep within me." }
+  ],
+  dialogue: [
+    { speaker: "友人", japanese: "実は、誰にもあまり話してこなかったことがあって。", english: "Actually, there's something I've barely told anyone." },
+    { speaker: "チャウ", japanese: "...伺ってもよろしいですか。話したくなければ、もちろん大丈夫です。", english: "...may I hear? If you don't want to tell me, of course that's fine too." },
+    { speaker: "友人", japanese: "ううん、聞いてもらえるなら、聞いてほしい。", english: "No — if you'll listen, I want you to." },
+    { speaker: "チャウ", japanese: "ゆっくりで、大丈夫です。", english: "Slowly — it's all right." }
+  ],
+  dialogue_long: [
+    { speaker: "友人", japanese: "今日、変な話、いいかな。", english: "Today — is it OK if I say something a bit unusual?" },
+    { speaker: "チャウ", japanese: "もちろんです。どうされましたか。", english: "Of course. What is it?" },
+    { speaker: "友人", japanese: "実は、誰にもあまり話してこなかったことが、あるの。チャウさんなら、聞いてくれるかもしれないと思って。", english: "Actually — there's something I haven't really told anyone. I thought you might be one who'd listen." },
+    { speaker: "チャウ", japanese: "信頼していただいて、ありがとうございます。話していただける範囲で構いません。途中でやめてくださっても、大丈夫です。", english: "Thank you for the trust. Only what you can share. It's fine to stop midway." },
+    { speaker: "友人", japanese: "ありがとう。十年くらい前に、ちょっと辛い経験があって。詳細は、まだ話せないんだけど、それから、人を信じるのが難しくなった時期があって。", english: "Thanks. About ten years ago, I had a difficult experience. I can't speak the details yet, but after that, there was a period when trusting people became hard." },
+    { speaker: "チャウ", japanese: "...そうでしたか。話していただいて、ありがとうございます。詳細を伺うつもりはございません。", english: "...I see. Thank you for sharing. I don't intend to ask details." },
+    { speaker: "友人", japanese: "うん。ただ、知ってほしかった。私が時々距離を取るのは、その経験から来てて、チャウさんに対する気持ちじゃない、ってこと。", english: "Yeah. I just wanted you to know. When I sometimes pull back, it's from that experience — not feelings about you." },
+    { speaker: "チャウ", japanese: "ご本人がそう感じていらっしゃることだけで、十分理解できます。距離を取られる時、私のせいかと思ったこともございましたが、これからはそう感じずにいられます。", english: "Just knowing how you feel — that's enough understanding. When you pulled back, sometimes I wondered if it was me; from now I won't feel that way." },
+    { speaker: "友人", japanese: "ごめんね、心配かけてた。", english: "Sorry — I'd worried you." },
+    { speaker: "チャウ", japanese: "とんでもございません。話すか話さないか、それを決められるのはあなたです。私はどちらでも構わない、ということだけ、お伝えしたく存じます。", english: "Not at all. To speak or not — that's yours to decide. Whichever, I'm here — I just wanted to convey that." },
+    { speaker: "友人", japanese: "...ありがとう。実は、誰かにそう言ってもらえて、すごく楽になった。多くの人は、聞いた瞬間、詳細を聞きたがる。", english: "...thank you. Hearing someone say that, I feel really lighter. Most people — the moment they hear, they want details." },
+    { speaker: "チャウ", japanese: "詳細は、今日の核心ではないかと存じます。あなたが今ここにいて、こうして話してくださっていること、それ自体が貴重に感じております。", english: "Details aren't today's core, I think. Your being here, talking like this — that itself feels precious." },
+    { speaker: "友人", japanese: "そういう聞き方をしてくれる人、本当に少ない。チャウさんに話せて、よかった。", english: "People who listen this way — really rare. I'm glad I could tell you." },
+    { speaker: "チャウ", japanese: "信頼していただいて、こちらこそ感謝しております。一つだけ、お聞きしてもよろしいですか。今、その経験について、専門のサポートを受けていらっしゃいますか。差し支えなければ。", english: "Thank you for the trust. May I ask one thing? About that experience — are you receiving any professional support now? If it doesn't trouble you." },
+    { speaker: "友人", japanese: "うん、五年くらい前から、定期的にカウンセリングに通ってる。今は落ち着いてる。ありがとう、聞いてくれて。", english: "Yes — I've been going to regular counseling for about five years. I'm settled now. Thank you for asking." },
+    { speaker: "チャウ", japanese: "それは、本当に、心強く伺いました。サポートを受けていらっしゃること、ご自分のために選ばれた強さだと感じております。", english: "That's truly reassuring to hear. Receiving support — that's a strength you chose for yourself, I feel." },
+    { speaker: "友人", japanese: "そう言ってもらえると嬉しい。普段、こういう話する機会、ほぼないから。", english: "Hearing that makes me glad. I rarely get to talk this way." },
+    { speaker: "チャウ", japanese: "今日伺ったお話は、私の中だけにとどめておきます。これからも、お話したい時、伺いたくない時、あなたのペースで構いません。", english: "What I heard today, I'll keep within me. From now on — when you want to talk, when you don't — at your pace." },
+    { speaker: "友人", japanese: "ありがとう。本当に、聞いてくれて、ありがとう。", english: "Thank you. Truly, thank you for listening." }
+  ],
+  roleplay_prompts: [
+    "Bạn Nhật mở miệng nói 'có chuyện em chưa kể với ai'. Hãy KHÔNG bắt đầu interview. Cụm safe response: ukagatte mo yoroshii desu ka. hanashitakunakereba, mochiron daijoubu desu (xin được nghe — nếu không muốn cũng OK). Họ get full agency to start, pause, stop.",
+    "Bạn Nhật share một event broad strokes ('tough experience 10 năm trước'). Hãy KHÔNG ask 'what happened'. Cụm: shousai wo ukagau tsumori wa gozaimasen (em không có ý hỏi chi tiết). Receive what they offered, không probe. Detail belongs to them — bạn không có right.",
+    "Sau khi listen, bạn ask gentle về current support. Hãy KHÔNG sound clinical, KHÔNG suggest counseling như judgment. Cụm: senmon no sapooto wo ukete irassharu masu ka. sashi-tsukae nakereba (đang nhận support chuyên nghiệp không, nếu không phiền). Frame như care, không as 'you should get help'."
+  ],
+  register_notes: "Listen to past trauma in Nhật cần extreme restraint. Mục tiêu: nhận, không xử lý. Năm patterns: (1) ASK PERMISSION TO HEAR: dù họ initiate share, ask permission to receive: ukagatte mo yoroshii desu ka cộng remind họ can stop: hanashitakunakereba, mochiron daijoubu desu. Đây không là rejection — là respect for agency. They feel safer. (2) NEVER PROBE FOR DETAILS: dù curiosity nature, KHÔNG ask 'what happened'. Họ already chose how much to share. Probing = retraumatize. Cụm explicit: shousai wo ukagau tsumori wa gozaimasen (don't intend to ask details). Họ feel safe. (3) AIZUCHI DURING LISTEN: Nhật conversational rhythm needs verbal cues — soft 'sou desu ka', 'naruhodo', 'hai'. Without them, sounds như bạn không listening. Use them often, low volume, neutral tone. KHÔNG say 'wakarimasu' (I understand) — bạn KHÔNG fully understand, sounds dismissive. (4) DON'T COMPARE: KHÔNG share parallel story unless họ explicitly invite ('have you experienced something like that'). Otherwise feels like bạn making it about you. Nhật value fully receiving, không exchanging. (5) CONFIDENTIALITY VERBAL COMMITMENT: explicit say bạn'll keep it. Cụm: kyou ukagatta o-hanashi wa, watakushi no naka dake ni todomete okimasu. Đây signals safety. Without it, họ wonder if họ shared too much. // TODO native review — 'shousai wa kyou no kakushin de wa nai kato' phrasing — alternative shousai yori, kotoba ni shitai koto wo o-machi shimasu mềm hơn cho some natives; reviewer cautioned 'soredemo' as opener might sound too soft, suggested 'tatoe so dewa nakute mo'.",
+  idiom_glosses: [
+    { idiom: "胸に秘める", literal: "Giữ trong lòng", meaning: "Giữ điều gì kín — phù hợp commit confidentiality after hearing past.", example: "今日伺ったお話は、胸に秘めておきます。" },
+    { idiom: "沈黙は金", literal: "Im lặng là vàng", meaning: "Đôi lúc im lặng quý hơn lời — phù hợp resist urge to fill space khi friend share painful.", example: "沈黙は金と申しますが、相手の方がお話しになる時は、ただ静かに伺うのが、いちばんの応援かと存じます。" },
+    { idiom: "察する", literal: "Đọc, cảm nhận", meaning: "Khái niệm core Japan — read what's not said. Phù hợp listen nuance, không demand explicit.", example: "察するという言葉、お話を伺いながら、改めて深さを感じております。" },
+    { idiom: "そっと寄り添う", literal: "Nhẹ nhàng kề bên", meaning: "Stay close softly — Nhật ideal cho support without intrusion.", example: "言葉ではなく、そっと寄り添うことが、いちばん大切なときかと存じます。" }
+  ],
+  cultural_notes_vi: "Lắng nghe đau thương quá khứ ở Nhật khác phương Tây ở 6 điểm. (1) DETAIL HIERARCHY: Nhật value tóm tắt high-level over detail. 'Tough experience 10 years ago' đủ. KHÔNG follow-up với 'tell me what happened'. Foreigner instinct là understand fully — Nhật give safe abstraction. (2) SILENCE SUPPORTS: Western instinct fill silence với supportive words. Nhật silence as support. Sit with friend in quiet 30 giây sau they finish a hard sentence — that silence acknowledges weight. Words too quick = minimize. (3) NO COMPARISON: KHÔNG 'I had something similar'. Even if true. Họ chose to bring story to you, không to invite mutual exchange. Wait until they explicitly invite. (4) CONFIDENTIALITY ABSOLUTE: don't tell anyone, even spouse, even subtle hint. Nhật small social circles — leak gets back. Once trust violated, never recovered. (5) PROFESSIONAL HELP STIGMA SHIFTING: counseling/therapy stigma reducing in Japan, but still exist. If friend mention they're in therapy, treat as positive (not concerning). Cụm: senmon no sapooto wo erabareta, sore jitai ga go-jishin no tame no tsuyosa kato zonjimasu (choosing professional support is itself strength chosen for self). Affirms strength, không pathologize. (6) NOT YOUR JOB TO FIX: foreigner instinct là solve. Nhật instinct là witness. Mục tiêu: họ feel less alone, không họ healed. Healing belongs to them + therapist. Bạn role: be one trustworthy witness. Khác biệt với VN: ở VN trauma sharing thường includes group support, family-wide knowledge, public emotional release; ở Nhật, intensely private, often confided to one or two people max. Vietnamese 'let me tell my mother so she can also support you' = breach of trust to Japanese friend. Confidentiality stricter than VN expects. Mẹo: nếu friend's share suggest current safety risk (active danger from someone, suicidal ideation, severe symptoms not getting help), gently inform crisis resources — TELL Hotline 03-5774-0992 (Japanese/English 24h), Yorisoi Hotline 0120-279-338. Don't insist. Plant seed. Long-term: chỉ vì họ shared, đừng treat họ như fragile. Day after, tomorrow, next week — treat normal. Bring up only if họ initiate. Forced check-ins ('how are you doing with that thing') makes them feel defined by trauma. They trusted you to receive AND move on normally. Hold both. Mẹo cuối: process your own response. Hearing friend's pain heavy. Talk with your own support (your spouse, your own therapist). KHÔNG share friend's specifics — share your own emotional response. Self-care protects your capacity to be there long-term.",
+  tip_advice_vi: "Khi friend signal họ might share something heavy: setting matters. Confirm private space (home, your home, isolated cafe corner — KHÔNG group setting, KHÔNG public restaurant where overheard). Time generous (allow 2+ hours, KHÔNG slot meeting). Devices off or silent. Khi họ open: don't react big. Calm face. Soft 'hai'. Wait for them to continue. KHÔNG immediate questions. Body language: lean slightly toward, hands visible, KHÔNG cross-armed. Eye contact 50-60 phần trăm — break occasionally so họ don't feel pressured. Khi họ pause mid-share: don't fill. Silence supports. Wait 5-10 giây. Often họ continue. Nếu họ truly stuck, soft prompt: dou ka, yukkuri de daijoubu desu (slowly is fine). Khi họ finish broad-strokes: thank them. Cụm: hanashite kudasatte, arigatou gozaimasu cộng acknowledge weight: o-kimochi, souzou suru koto shika dekimasen ga, ukagatte orimasu. KHÔNG say 'I understand'. KHÔNG offer solutions. KHÔNG share parallel. Khi consider asking probe: ASK PERMISSION first. Cụm: hitotsu, ukagatte mo yoroshii desu ka. Họ consent or deflect. Nếu deflect, accept. Khi consider mention professional support: gentle, low-pressure. Cụm: senmon no sapooto wo ukete irassharu masu ka. sashi-tsukae nakereba (receiving professional support, if not too prying). If yes, affirm choice. If no, KHÔNG push. Just plant: ima dekiru sapooto wa, takusan arimasu (current support options are many) cộng quietly mention TELL Hotline numbers in casual context (later, không this conversation). Closing the share: explicit confidentiality commitment. Cụm: kyou ukagatta o-hanashi wa, watakushi no naka dake ni todomete okimasu. Releases their anxiety. Then offer continuity: korekara, hanashitai toki, hanashitakunai toki, anata no peisu de kamaimasen. Sau conversation: don't bring up next time họ see you. Treat normal. Họ initiate continuation if họ want. Maintain otherwise normal interaction patterns. Self-care for you: process within 24-48 hours với your own support. Friend's pain you absorbed needs your own outlet — your own therapist, journal, spouse (general only, không specifics). Maintaining your container essential for long-term capacity. Mẹo nếu họ check after: bạn don't volunteer 'I'm still thinking about what you told me'. Acknowledge quietly: ano hi no o-hanashi, watakushi no naka de ikitsuzukete imasu. arigatou gozaimasu (what you shared lives on inside me — thank you). Brief. Then back to normal life. Long-term: nếu over years they slowly share more, receive each layer with same care. KHÔNG accumulate as 'now I know full story'. Each layer is gift. Treat individually. Mẹo cuối nếu họ revoke share ('I shouldn't have told you'): respond with calm reassurance. Cụm: dou ka, go-anjin nasatte kudasai. wasureru wake dewa arimasen ga, anata no go-zonjite no o-hanashi de gozaimasu (please rest assured — won't forget but it's yours to dictate). Họ may push trust limit; calm response stabilizes. KHÔNG abandon. KHÔNG over-reassure either.",
+  exercises: [
+    { type: "fill-blank", question: "話してくださって、ありがとう___ます。", answer: "ござい" },
+    { type: "matching", instruction: "Ghép cụm với function.", pairs: [
+      { japanese: "詳細を伺うつもりはございません", english: "explicitly remove pressure to share details" },
+      { japanese: "胸に秘めておきます", english: "verbal confidentiality commitment" },
+      { japanese: "ご自分のために選ばれた強さ", english: "affirm choice to seek professional support, not pathologize" },
+      { japanese: "あなたのペースで構いません", english: "release them from obligation to revisit" }
+    ] },
+    { type: "translation", vietnamese: "Cảm xúc của bạn em chỉ có thể tưởng tượng — em đang lắng nghe.", japanese: "お気持ち、想像することしかできませんが、お聞きしております。" }
+  ]
+},
+{
+  id: 91,
+  title: "Setting boundaries in a friendship — when too much is asked",
+  title_vi: "Đặt giới hạn trong tình bạn — khi ai đó đòi quá, nói quá, hỏi quá",
+  title_en: "Setting boundaries in a friendship — when too much is asked",
+  category: "fluency",
+  level: "B2",
+  vocabulary: [
+    { japanese: "境界 (きょうかい)", english: "boundary" },
+    { japanese: "距離感 (きょりかん)", english: "sense of closeness/distance" },
+    { japanese: "余裕 (よゆう)", english: "capacity / room (emotional)" },
+    { japanese: "限界 (げんかい)", english: "limit" },
+    { japanese: "断る (ことわる)", english: "to decline" },
+    { japanese: "踏み込む (ふみこむ)", english: "to step too far in / overreach" },
+    { japanese: "プライベート", english: "private (life)" },
+    { japanese: "尊重 (そんちょう)", english: "respect" },
+    { japanese: "心地よい (ここちよい)", english: "comfortable" },
+    { japanese: "わきまえる", english: "to know one's place / observe propriety" }
+  ],
+  examples: [
+    { japanese: "今、少し余裕がございませんで、申し訳ございません。", english: "I don't quite have the capacity right now — I apologize." },
+    { japanese: "そのお話は、私の中で少し抱えるのが難しいかと存じます。", english: "That topic is a little hard for me to hold in." },
+    { japanese: "プライベートに関わる質問は、申し訳ないのですが、お答えしかねます。", english: "Regarding private matters, I'm sorry but I can't answer." },
+    { japanese: "頻度を少し落とさせていただいてもよろしいでしょうか。", english: "May I reduce the frequency a little?" },
+    { japanese: "関係を大切にするためにも、距離感を見直したく存じます。", english: "Precisely because I value the relationship, I'd like to reconsider the closeness." }
+  ],
+  dialogue: [
+    { speaker: "友人", japanese: "また土曜、家に来て、夜まで話そうよ。", english: "Come over Saturday again, talk till night." },
+    { speaker: "チャウ", japanese: "お誘い、ありがとうございます。今月、少し余裕がなくて、ご連絡を控えさせていただいておりました。", english: "Thanks for inviting. This month I don't have much capacity; I've been holding back." },
+    { speaker: "友人", japanese: "あ、忙しい? 来月でもいい?", english: "Oh, busy? Next month OK?" },
+    { speaker: "チャウ", japanese: "はい、来月、少し余裕が出てきたら、こちらからご連絡させていただきます。", english: "Yes — when I have more capacity next month, I'll reach out." }
+  ],
+  dialogue_long: [
+    { speaker: "チャウ", japanese: "今日は、少しお話ししたいことがあって。", english: "Today, there's something I'd like to discuss." },
+    { speaker: "友人", japanese: "うん、なに?", english: "Sure, what?" },
+    { speaker: "チャウ", japanese: "実は、ここ数ヶ月、お互いの距離感について、少し考えていることがありまして。", english: "Actually, the past few months, I've been thinking a bit about the closeness between us." },
+    { speaker: "友人", japanese: "距離感? 何か嫌なことしちゃったかな。", english: "Closeness? Did I do something unwelcome?" },
+    { speaker: "チャウ", japanese: "とんでもございません。むしろ、関係を大切にしたいからこそ、お話ししておきたいことなのです。", english: "Not at all. It's precisely because I want to value the relationship that I want to bring it up." },
+    { speaker: "友人", japanese: "うん、聞かせて。", english: "OK, tell me." },
+    { speaker: "チャウ", japanese: "最近、毎週末ご一緒する機会が多くて、私としても嬉しい時間なのですが、平日のメッセージのやり取りも頻繁になってきて、少し息切れを感じる瞬間がございまして。", english: "Recently we've been together most weekends, which I cherish — but with frequent weekday messages too, I've felt out of breath at times." },
+    { speaker: "友人", japanese: "...そうだったんだ。私、気づかなかった。", english: "...I see. I didn't notice." },
+    { speaker: "チャウ", japanese: "お互い様なのですが、私の家族や仕事の状況もあって、最近少し余裕がなくて。それを、頻度に出さずに対応していたのですが、自分の中で抱えるのが少し難しくなってきました。", english: "It's mutual — but with family and work, I've had less capacity. I tried to handle it without changing frequency, but it's getting hard to hold inside." },
+    { speaker: "友人", japanese: "そっか。もっと早く言ってくれたらよかったのに。", english: "I see. You could have said sooner." },
+    { speaker: "チャウ", japanese: "言いそびれてしまって、申し訳ございません。今日、思い切ってお話ししたく、お時間いただきました。", english: "I missed the moment — I'm sorry. Today I steeled myself to bring it up." },
+    { speaker: "友人", japanese: "ううん、話してくれてありがとう。具体的には、どんな感じにしたい?", english: "No, thanks for telling me. Specifically, how would you like it?" },
+    { speaker: "チャウ", japanese: "毎週末ではなく、二週間に一度くらいにさせていただいて、メッセージも、急ぎでないものは即返信ではなく、翌日になることもあること、ご理解いただけたら嬉しく存じます。", english: "Rather than every weekend, perhaps once every two weeks, and for messages that aren't urgent, I might reply the next day instead of immediately — if you'd understand." },
+    { speaker: "友人", japanese: "もちろん。むしろ、私の方が、頼りすぎてたかもしれない。気をつける。", english: "Of course. If anything, I might have been leaning on you too much. I'll be mindful." },
+    { speaker: "チャウ", japanese: "頼っていただくこと自体は、嬉しく思っております。ただ、少しペースを調整させていただけたら、長く心地よい関係でいられるかと存じまして。", english: "Being relied on itself I welcome. Just adjusting pace a little — so we can stay in a comfortable relationship long-term." },
+    { speaker: "友人", japanese: "それ、すごくいいこと言ってくれた。長く続く関係って、お互いの呼吸が合ってこそだもんね。", english: "That's a really good thing you said. Long-lasting relationships need the breathing to match." },
+    { speaker: "チャウ", japanese: "そう感じております。それから、もう一つだけ、お話ししたいことがありまして。", english: "I feel that way. And one more thing I'd like to mention." },
+    { speaker: "友人", japanese: "うん、何でも。", english: "Sure, anything." },
+    { speaker: "チャウ", japanese: "プライベートな話題、特に家族のお金のことや夫婦のことについて、最近よくお聞きいただくのですが、その辺りは、私の中で、まだ言葉にしにくい部分がございまして。", english: "Private topics — especially family finances or my relationship with my spouse — you often ask about lately, but those parts I'm still finding hard to put into words." },
+    { speaker: "友人", japanese: "あ、ごめん、踏み込みすぎてた。気をつける。", english: "Ah, sorry — I was overstepping. I'll be mindful." },
+    { speaker: "チャウ", japanese: "悪気がないことは、十分に存じております。ただ、お互いに踏み込まない領域を少し意識いただけると、長く心地よい関係を保てるかと。今日、お話しできてよかったです。", english: "I know there's no ill intent. Just a little awareness of areas not to step into helps us keep a comfortable relationship long-term. I'm glad we could talk today." },
+    { speaker: "友人", japanese: "私こそ、教えてくれてありがとう。チャウさんの言いたいこと、ちゃんと聞けた。", english: "I'm the one to thank for telling me. I heard what you wanted to say." }
+  ],
+  roleplay_prompts: [
+    "Bạn cần giảm tần suất gặp bạn Nhật từ weekly to bi-weekly. Hãy KHÔNG accuse họ ('you ask too much'), KHÔNG vague ('busy'). Cụm: kankei wo taisetsu ni shitai kara koso (vì muốn quý mối quan hệ) cộng kongo, ni-shuukan ni ichido kurai ni sasete itadaite. Frame như preserve relationship, KHÔNG avoid them.",
+    "Bạn Nhật ask về money/partner relationship details bạn không muốn share. Hãy KHÔNG harsh refuse. Cụm: puraibeeto ni kakawaru shitsumon wa, moushiwake nai no desu ga, o-kotae shikaaemasu cộng remind tình cảm. KHÔNG explain why — explanation invites debate.",
+    "Bạn Nhật understand and apologize for overstepping. Hãy KHÔNG over-reassure (sounds insincere). Brief acceptance: warugi ga nai koto wa, juubun ni zonjite orimasu (em hiểu bạn không có ý xấu). Then move forward — KHÔNG dwell. Quick reset preserves dignity for both."
+  ],
+  register_notes: "Setting boundaries với bạn thân ở Nhật cần frame as preservation, không rejection. Năm patterns: (1) FRAME PROTECTS RELATIONSHIP: open với 'because I value you'. Cụm: kankei wo taisetsu ni shitai kara koso, kyou kono o-hanashi wo sasete itadaite imasu. KHÔNG sound like complaint — sound như mutual investment in long-term. (2) SELF-ATTRIBUTE LIMITATION: KHÔNG accuse họ ('you ask too much'). Self-attribute: jibun no naka de kakaeru no ga muzukashiku natte (becoming hard for me to hold). Họ save face; bạn don't accuse. Both walk away clean. (3) BE SPECIFIC ABOUT CHANGE: KHÔNG vague 'less often'. Specific: ni-shuukan ni ichido (every two weeks). Số rõ. Allows họ adjust expectations precisely. Vague invites repeated boundary testing. (4) PROTECT PRIVATE TOPICS WITHOUT EXPLANATION: KHÔNG justify why a topic off-limits. Cụm: sono atari wa, watakushi no naka de mada kotoba ni shi nikui bubun ga gozaimashite (those parts I'm finding hard to put in words). Genuine, không argumentative. Họ accept without debate. (5) RESET QUICK: sau họ acknowledge và apologize, KHÔNG dwell. Brief acceptance + move on. Cụm: warugi ga nai koto wa juubun zonjite orimasu cộng pivot to lighter topic. Long apology dwell = makes them feel defective. // TODO native review — 'kazoku no o-kane no koto ya fuufu no koto' phrasing — alternative kazoku no jijou (family circumstances) more general; native reviewer suggested 'kojin teki na koto' for cleaner private-frame; some natives uncomfortable with 'fuufu no koto' as it implies marital trouble — alternative go-katei no naijou.",
+  idiom_glosses: [
+    { idiom: "親しき仲にも礼儀あり", literal: "Trong gần thân vẫn có lễ", meaning: "Bài học core cho lesson này — ngay cả friendship sâu cần boundary respect.", example: "親しき仲にも礼儀ありと申しますし、お互いの領域を少し意識することで、長くいい関係でいられるかと。" },
+    { idiom: "腹八分に医者いらず", literal: "Bụng tám phần thì không cần bác sĩ", meaning: "Không tham, ăn 80 phần trăm — phù hợp metaphor cho friendship: 80 phần trăm closeness sustainable, 100 phần trăm burns out.", example: "腹八分に医者いらずと申しますが、関係も同じで、適度な距離感が長続きの秘訣かと存じます。" },
+    { idiom: "立つ鳥跡を濁さず", literal: "Chim bay đi không làm đục nước", meaning: "Để không vết bẩn — phù hợp khi reset friendship dynamic, mỗi side leaves clean.", example: "立つ鳥跡を濁さずと申しますし、今日のお話で、お互い気持ちよく次の段階に進めればと存じます。" },
+    { idiom: "わきまえる", literal: "Biết phận mình", meaning: "Khái niệm Nhật về biết giới hạn của mình + người khác. Apply both ways here.", example: "お互いに、わきまえるべきところはわきまえる、それが大人の友情かと存じます。" }
+  ],
+  cultural_notes_vi: "Boundaries trong friendship Nhật khác phương Tây ở 6 điểm. (1) BOUNDARIES IMPLIED, NOT NAMED: phương Tây openly discuss 'boundaries'. Nhật rarely use word 境界 trong personal context — too clinical. Frame qua action ('reduce frequency') rather than concept ('I'm setting a boundary'). Verbal directness tự nó gây awkward. (2) ENRYO PROTECTS BOTH SIDES: Nhật default đã có hidden boundary qua enryo (politely holding back). Foreigners may feel Japanese 'cold' in early friendship — actually Nhật protecting both. As friendship deepens, less enryo, more access. Trip line is mutual signal. (3) FREQUENCY HAS NORMS: weekend friendship contact: monthly meet for casual friendship, bi-weekly for close, weekly for very close (but rare). Daily messaging unusual outside romantic relationships. If your friend started weekly + daily messages quickly, đó intensity outside Japanese norm. Pulling back to bi-weekly = realigning to norm, không rejection. (4) PRIVATE TOPICS ARE NOT-DISCUSSED LIST: salary, debt, marital issues, parent health, fertility — most Nhật don't discuss with friends. Even close. Pháp gia keeps these. Foreign friends may bring openness from home culture — Japanese friend may quietly retreat. (5) ASKING ABOUT INCOME = SERIOUS BREACH: Western 'how much do you make' = perceived as deeply rude, even between close friends. KHÔNG ask. Even joking. Flag as boundary instantly if friend asks bạn — gentle redirect. (6) FAMILY MATTERS MOSTLY OFF-LIMITS: parents, siblings, marital — most Nhật share little. Foreigners trained sharing as bonding may overshare and confuse. Calibrate to friend's level. Khác biệt với VN: ở VN bạn thân chia sẻ rộng rãi family, money, romance — bonding qua disclosure; ở Nhật, bonding qua shared activity, time, restraint. Vietnamese 'tell me about your husband' may startle Japanese friend. Adjust questions. Mẹo: nếu bạn want share khía cạnh personal, share YOUR side first — họ may reciprocate or may not. KHÔNG demand reciprocity. Nếu họ don't reciprocate, accept as preference. Long-term: Nhật friendships build slowly, last decades. Boundary respect early prevents burnout. Friend who pushes too fast often loses Japanese friend permanently — họ withdraw silent, no second chance. Better: maintain measured pace, expand slowly. Mẹo cuối: nếu boundary conversation goes badly (họ defensive, không accept), give space. KHÔNG escalate. 1-2 weeks of less contact often resets. Họ may reach out với accommodation. Nếu họ truly don't accommodate, friendship may not be compatible long-term — accept gracefully.",
+  tip_advice_vi: "Trước khi raise boundary: clarify within yourself. (a) WHAT specifically over-line — frequency, topic depth, time of day, type of request. Be precise. (b) WHY problematic — bạn capacity, bạn values, bạn other commitments. Self-knowledge needed. (c) WHAT alternative bạn propose — not just 'less'. Specific alternative ('every two weeks' / 'reply next day'). Choose timing: KHÔNG mid-event, KHÔNG over text. In-person, private, sit-down. Brief preview message: chotto o-hanashi shitai koto ga atte, kondo ocha demo dou desu ka. Họ may anxiously imagine worse — that's OK, urgency communicates importance. Tại meeting: warm-up first 10 phút. Then transition naturally. KHÔNG dive in. Cụm: jitsu wa, sukoshi o-hanashi shitai koto ga atte cộng pause. Họ ready. State your frame first: kankei wo taisetsu ni shitai kara koso (because I value the relationship). Đây removes defensive armor. State specific issue + specific proposal. Calm voice. KHÔNG list grievances — focus on going forward. Họ likely respond apologetic. Accept gracefully. Brief acknowledgment of their non-fault intent. Cụm: warugi ga nai koto wa, juubun zonjite orimasu. Pivot to confirmation: kongo, X to iu katachi de kamaimasen ka (going forward, X format OK?). Họ confirm. Move to lighter topic. End meeting normal — KHÔNG awkward early exit. Kéo dài để the boundary conversation đặt trong relationship continuity, không là sự kiện isolated. Sau meeting: brief follow-up message within 24 hours. KHÔNG repeat boundary. Brief: kyou wa, hanashite kudasatte, arigatou gozaimashita. Hold thread normal. Long-term test: 2-4 weeks later, do họ respect new pattern? Nếu yes, friendship strengthens. Nếu họ test boundary repeatedly (revert to old frequency, push private topic again), reinforce calmly. Cụm reinforcement: senjitsu o-hanashi shita to oori, kongo wa kono peisu de o-negai shimasu (as we discussed, please continue at this pace). Friendly firm. Patient. Đây pattern điều chỉnh thường takes 2-3 cycles. Mẹo về tự-monitor: bạn bản thân have responsibility to communicate before resentment builds. Nhật don't read foreign-mind well — họ honest don't know unless told. Speak up early. Mẹo nếu bạn của bạn bị overstepping pattern: assess if it's friendship-fixable or pattern-of-personality. Một honest person làm well-meaning mistake fixable. Người ta không respect after told 2-3 lần probably won't ever. Walk away gracefully thì fine. Cụm soft retreat: sukoshi peisu wo ochitose-tu (slowing pace a bit) cộng gradually reduce. Họ may take notice and self-correct, hoặc gradually fade. Both acceptable. Mẹo về protecting yourself: maintain other friendships outside Japanese friend. Diverse network = không depend on one. Multiple shallow ties + 2-3 deep > one all-encompassing. Healthier for everyone. Mẹo cuối: học một câu safe deflection cho prying questions. Cụm 'sono atari wa, jibun no naka de mada kotoba ni dekinai bubun de gozaimashite' (those parts I'm finding hard to put in words yet) — vague, polite, non-debatable. Use khi unwanted intimate question. Họ accept without push.",
+  exercises: [
+    { type: "fill-blank", question: "関係を大切にするためにも、___感を見直したく存じます。", answer: "距離" },
+    { type: "matching", instruction: "Ghép cụm với function.", pairs: [
+      { japanese: "関係を大切にしたいからこそ", english: "frame boundary as preserving the relationship" },
+      { japanese: "自分の中で抱えるのが難しくなって", english: "self-attribute limitation, no accusation" },
+      { japanese: "二週間に一度くらいに", english: "specific number — clearer than 'less often'" },
+      { japanese: "言葉にしにくい部分", english: "off-limits topic frame without justification" }
+    ] },
+    { type: "translation", vietnamese: "Câu hỏi về chuyện riêng tư — em xin lỗi nhưng không trả lời được.", japanese: "プライベートに関わる質問は、申し訳ないのですが、お答えしかねます。" }
+  ]
 }
 ];
 export default lessons;
