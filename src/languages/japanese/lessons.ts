@@ -5449,6 +5449,152 @@ export const lessons: JapaneseLesson[] = [
     ] },
     { type: "translation", vietnamese: "Dù áp dụng phương pháp nào, việc làm rõ căn cứ của lựa chọn là điều cốt yếu.", japanese: "いずれの手法を採るにせよ、選択の根拠を明示することが肝要である。" }
   ]
+},
+{
+  id: 98,
+  title: "Academic discourse — critiquing a study",
+  title_vi: "Diễn ngôn học thuật — Phê bình một nghiên cứu",
+  title_en: "Academic discourse — critiquing a study",
+  category: "academic-discourse",
+  level: "C1",
+  vocabulary: [
+    { japanese: "批評 (ひひょう)", english: "critique" },
+    { japanese: "評価 (ひょうか)", english: "evaluation" },
+    { japanese: "限界 (げんかい)", english: "limitation" },
+    { japanese: "課題 (かだい)", english: "issue / outstanding task" },
+    { japanese: "示唆に富む (しさにとむ)", english: "rich in implications" },
+    { japanese: "不備 (ふび)", english: "deficiency / shortcoming" },
+    { japanese: "再現性 (さいげんせい)", english: "reproducibility" },
+    { japanese: "意義 (いぎ)", english: "significance" },
+    { japanese: "貢献 (こうけん)", english: "contribution" },
+    { japanese: "改善の余地 (かいぜんのよち)", english: "room for improvement" }
+  ],
+  examples: [
+    { japanese: "本書評は、〇〇 (二〇二三) の意義と課題を併せて検討するものである。", english: "This book review examines both the significance and the issues of XX (2023)." },
+    { japanese: "本書は示唆に富む知見を多数提示しており、当該領域への貢献は大きい。", english: "This book presents numerous findings rich in implications, and its contribution to the field is substantial." },
+    { japanese: "ただし、サンプル選定の妥当性については、なお検討の余地が残されている。", english: "However, regarding the validity of sample selection, room for examination still remains." },
+    { japanese: "分析手法の透明性が十分に確保されておらず、再現性の点で課題が指摘されよう。", english: "The transparency of the analytical method is not sufficiently secured, and an issue may be pointed out regarding reproducibility." },
+    { japanese: "結論部における一般化の射程が、データの裏付けを超えているように思われる。", english: "The scope of generalization in the conclusion appears to exceed what the data supports." },
+    { japanese: "とはいえ、これらの限界は本書の意義を損なうものではなく、むしろ今後の研究の足がかりとなろう。", english: "That said, these limitations do not detract from the significance of this book; rather, they will serve as a foothold for future research." }
+  ],
+  dialogue: [
+    { speaker: "編集者", japanese: "次号の書評欄に、田中氏の新著の批評をお願いできますでしょうか。", english: "Could we ask you for a critique of Mr. Tanaka's new book for the next issue's book review section?" },
+    { speaker: "評者", japanese: "謹んでお引き受けいたします。意義と課題を併せて論じる方向でよろしいでしょうか。", english: "I will respectfully accept. Would the direction of discussing both significance and issues be acceptable?" },
+    { speaker: "編集者", japanese: "結構です。批判は建設的にお願いいたします。当該分野の発展に資する形で。", english: "That will do. Please make the criticism constructive — in a form that contributes to the development of the field." },
+    { speaker: "評者", japanese: "承知いたしました。長所を十分に評価したうえで、改善の余地を指摘するよう心がけます。", english: "Understood. I will take care to fully evaluate the strengths first, then point out room for improvement." }
+  ],
+  dialogue_long: [
+    { speaker: "評者", japanese: "本書評の執筆にあたり、まず本書の貢献を整理いたしましたので、ご報告させていただきます。", english: "In writing this book review, I first organized the contributions of the book; allow me to report on it." },
+    { speaker: "編集者", japanese: "お聞かせください。", english: "Please tell me." },
+    { speaker: "評者", japanese: "本書の最大の貢献は、これまで断片的に論じられてきた言語接触現象を、一貫した理論的枠組みのもとに体系化した点にございます。", english: "The greatest contribution of this book is having systematized, under a coherent theoretical framework, language contact phenomena that have hitherto been discussed in fragmented fashion." },
+    { speaker: "編集者", japanese: "なるほど。逆に、課題と感じられた点はいかがでしょうか。", english: "I see. Conversely, what about the points you felt to be issues?" },
+    { speaker: "評者", japanese: "三点ございます。第一に、提示された事例が東アジア圏に偏っており、理論の一般化可能性に留保が必要な点でございます。", english: "There are three. First, the cases presented are biased toward the East Asian sphere, and reservations are necessary regarding the generalizability of the theory." },
+    { speaker: "編集者", japanese: "重要なご指摘です。第二点はいかがですか。", english: "An important point. What about the second?" },
+    { speaker: "評者", japanese: "第二に、引用されているデータの一部について、出典の追跡が困難であり、再現性の観点から疑問が残ります。", english: "Second, regarding part of the data cited, tracking the source is difficult, and doubt remains from the perspective of reproducibility." },
+    { speaker: "編集者", japanese: "それは深刻な指摘になりかねません。慎重な書きぶりをお願いいたします。", english: "That could become a serious indication. Please write with caution." },
+    { speaker: "評者", japanese: "肝に銘じます。事実関係を確認したうえで、断定を避け、「読者にとって追跡が困難である」と限定的に記す予定でございます。", english: "I take that to heart. After confirming the facts, I plan to avoid definitive statements and write in a limited manner as 'difficult for the reader to trace.'" },
+    { speaker: "編集者", japanese: "結構です。第三点は。", english: "Very well. The third point?" },
+    { speaker: "評者", japanese: "第三に、結論部で示される政策提言が、本書の実証部分から論理的に必然と言えるかについては、なお検討の余地がございます。", english: "Third, regarding whether the policy recommendations shown in the conclusion can be said to be logically necessary from the empirical portion of the book, room for examination still remains." },
+    { speaker: "編集者", japanese: "全体として、批評の枠組みは整っているように思われます。長所評価とのバランスも忘れずに。", english: "Overall, the framework of the critique appears well-organized. Don't forget the balance with the evaluation of strengths." },
+    { speaker: "評者", japanese: "承知いたしました。批判が長所を覆い隠すことのないよう、構成を吟味いたします。", english: "Understood. I will scrutinize the composition so that the criticism does not obscure the strengths." }
+  ],
+  roleplay_prompts: [
+    "Bạn viết book review. Mở bằng evaluation of contribution: 本書の最大の貢献は〜にある, sau đó 1-2 paragraphs về strengths. CHỈ SAU ĐÓ critique. Nhật review norm: praise > critique trong tỉ lệ ít nhất 1:1.",
+    "Bạn cần raise serious concern về data sourcing. KHÔNG accuse fabrication. Cụm: 〜の出典追跡が困難であり、再現性の観点から疑問が残る. Frame như reader experience, không như author misconduct.",
+    "Closing critique. Cụm: これらの限界は本書の意義を損なうものではなく、むしろ今後の研究の足がかりとなろう. Reframe limitations như opportunities — softens critique, preserves author's standing."
+  ],
+  register_notes: "Book/study critique ở C1 academic Japanese theo quy ước 評価-課題-展望 (evaluation-issues-prospects). (1) STRUCTURE — opening: situate book trong field (3-5 câu); contribution: strengths với specifics (2-3 paragraphs); critique: 2-4 issues, mỗi cái 1 paragraph; conclusion: reframe limitations như opportunities cho future work. KHÔNG mở bằng critique — taboo. (2) CRITIQUE LANGUAGE TIERS — gentle: 〜の余地が残されている (room remains for), 〜について再検討が望まれる (re-examination is desired). Medium: 〜には不備が認められる (deficiency is recognized in), 〜の点で課題が指摘されよう (an issue may be pointed out). Strong: 〜は妥当性を欠くと言わざるを得ない (it must be said that〜lacks validity), 〜は誤りであると思われる (appears to be erroneous). Strong tier hiếm khi dùng cho whole book; reserve cho specific factual errors. (3) ATTRIBUTE TO TEXT, NOT AUTHOR — '本書は〜' (this book〜) ✓; '田中氏は〜という誤りを犯している' (Mr. Tanaka commits the error of〜) ✗. Critique work, không person. (4) NUMBERED CONCERNS — '第一に〜、第二に〜、第三に〜' makes critique scannable và signals organized thought, không emotional reaction. (5) BALANCE CLOSE — kết luận book review nên reaffirm overall value. Cụm: これらの限界は本書の意義を損なうものではない / 当該分野への貢献は大きい. Critique without closing balance đọc như hatchet job. Avoid: 'つまらない' (boring), '間違っている' (wrong) — too direct; '駄作' (worthless work) — never. Đặc biệt nguy hiểm: critiquing senior scholar (大家). Extra hedge required, public critique nên ít nhất 70 phần trăm appreciation. Direct critique thường handled qua personal correspondence hoặc 私信, không public review.",
+  idiom_glosses: [
+    { idiom: "賛否両論 (さんぴりょうろん)", literal: "Cả khen và chê", meaning: "[書き言葉・話し言葉] Vừa có ủng hộ vừa có phản đối — phù hợp khi mô tả mixed reception của work.", example: "本書の主張は学界において賛否両論を呼んでおり、本書評もその議論への一寄稿となろう。" },
+    { idiom: "瑕瑾 (かきん)", literal: "Vết và lỗi nhỏ", meaning: "[硬い・書き言葉] Khuyết điểm nhỏ trong tổng thể tốt — diplomatic critique vocabulary.", example: "本書は優れた成果であり、指摘した二、三の瑕瑾は、その価値を損なうものではない。" },
+    { idiom: "片手落ち (かたておち)", literal: "Một tay rơi (mất cân bằng)", meaning: "[書き言葉・話し言葉] Bias một chiều, không đầy đủ — cảnh báo critique của bạn không nên trở thành片手落ち.", example: "長所のみを論じ、課題に触れないのでは、書評として片手落ちと言わざるを得ない。" },
+    { idiom: "敬意を払う (けいいをはらう)", literal: "Tỏ kính ý", meaning: "[書き言葉] Tôn trọng — pair với critique để frame như respectful disagreement, không attack.", example: "著者の長年にわたる研鑽に敬意を払いつつ、以下の三点について再考を提起したい。" }
+  ],
+  cultural_notes_vi: "Văn hóa critique trong academia Nhật khác phương Tây ở 4 điểm. (1) PRAISE-FIRST RULE NGHIÊM NGẶT — phương Tây critique có thể balanced 50/50; Nhật academic critique strongly skews positive (70/30 minimum). Critique heavy without praise foundation đọc như mean-spirited. (2) SENIORITY HIERARCHY MATTERS — critiquing 大家 (eminent senior scholar) requires 99 phần trăm appreciation, 1 phần trăm issue. Critiquing peer cho phép more balance. Critiquing junior shouldn't be done in public — handle privately. Học senior status của author trước khi viết review. (3) FACE-PRESERVING LANGUAGE — direct disagreement gây loss of face cho author và reflects badly trên reviewer. Hedge dày: 〜という解釈もあり得よう (interpretation〜 might also be possible) thay vì 〜は誤っている (〜is wrong). (4) PUBLIC vs PRIVATE CRITIQUE — serious concerns thường handled qua personal correspondence (私信) hoặc closed seminars. Public review reserved cho mild observations. Western 'destruction' reviews (e.g. some major journals) effectively không tồn tại trong Nhật academic culture. Khác VN: VN critique culture variable, hơi giống Nhật nhưng với less rigid hierarchy. Việc transplant Western 'tough love' review style vào Nhật context có thể end careers. Mẹo: nếu bạn có serious concern về paper, FIRST send personal email gợi ý, gauge response, then quyết định public review tone. Mẹo cuối: post-critique relationship matters. Authors remember reviewers cho decades. Critique mà bạn không thể defend mặt-đối-mặt với author tại 学会 next year là critique không nên publish.",
+  tip_advice_vi: "Workflow viết một book review C1 Nhật hiệu quả. (a) READ TWICE — first read cho overall impression, second read cho specific evidence để cite. KHÔNG viết review từ first reading — bias dễ bias cao. (b) NOTE STRENGTHS 그 EQUALLY VỚI ISSUES — habit của critic là note flaws; counterbalance by explicitly noting strengths trong notes. Aim 5 strength notes : 3 issue notes ratio. (c) CHỌN 2-4 ISSUES MAXIMUM — 1 issue review đọc shallow; 6+ đọc petty. 3 well-developed issues là sweet spot. (d) FOR EACH ISSUE, FOLLOW 4-PART STRUCTURE — describe what book does (1-2 sentences) → identify the gap or concern (1-2 sentences) → explain why it matters (1-2 sentences) → suggest direction (1 sentence). Without (d), critique đọc như complaint. (e) DRAFT, COOL, REVISE — sau first draft, chờ 48 hours, đọc lại askind 'does this read like a fair-minded reviewer? Or a frustrated one?'. Revise tone-only ở second pass. (f) HEDGE STRENGTH MATCHING SEVERITY — typo / minor inaccuracy: gentle hedge. Methodological concern: medium. Factual error: strong but specific. Calibrate. Mẹo về citation — review nên cite 5-15 secondary sources tự nó: prior reviews của same book (nếu có), comparable works, frameworks bạn invoke. Review with 0 outside citations đọc như opinion piece, không academic critique. Mẹo về length — Nhật academic book reviews typically 2,000-4,000 字 (Japanese characters). Lá thư ngắn impression piece OK ở popular venues; refereed journals expect substantial review. Mẹo cuối: KHÔNG WRITE REVIEW IF BẠN COULD NOT WRITE A BOOK ON SAME TOPIC — phương châm Nhật academic. Nếu bạn không có competence để critique, decline review request. Reviewer competence phải match author competence cho review để có giá trị.",
+  exercises: [
+    { type: "fill-blank", question: "とはいえ、これらの限界は本書の意義を___ものではなく、むしろ今後の研究の足がかりとなろう。", answer: "損なう" },
+    { type: "matching", instruction: "Ghép cụm với chức năng phê bình.", pairs: [
+      { japanese: "示唆に富む知見", english: "praise — substantive contribution" },
+      { japanese: "再現性の観点から疑問が残る", english: "medium critique — methodological concern" },
+      { japanese: "なお検討の余地が残されている", english: "gentle critique — opportunity for refinement" },
+      { japanese: "今後の研究の足がかりとなろう", english: "reframe limitation as future-research seed" }
+    ] },
+    { type: "translation", vietnamese: "Phạm vi tổng quát hóa trong phần kết luận dường như vượt quá những gì dữ liệu cho phép.", japanese: "結論部における一般化の射程が、データの裏付けを超えているように思われる。" }
+  ]
+},
+{
+  id: 99,
+  title: "Academic discourse — conference Q&A register",
+  title_vi: "Diễn ngôn học thuật — Ngữ vực hỏi đáp tại hội thảo",
+  title_en: "Academic discourse — conference Q&A register",
+  category: "academic-discourse",
+  level: "C1",
+  vocabulary: [
+    { japanese: "質疑応答 (しつぎおうとう)", english: "Q&A session" },
+    { japanese: "発表者 (はっぴょうしゃ)", english: "presenter" },
+    { japanese: "司会者 (しかいしゃ)", english: "chair / moderator" },
+    { japanese: "フロア", english: "floor (audience)" },
+    { japanese: "ご教示 (ごきょうじ)", english: "instruction / enlightenment (humble)" },
+    { japanese: "ご清聴 (ごせいちょう)", english: "kind attention (closing phrase)" },
+    { japanese: "差し支えなければ (さしつかえなければ)", english: "if it does not inconvenience you" },
+    { japanese: "失礼ながら (しつれいながら)", english: "if I may be so impolite" },
+    { japanese: "持ち時間 (もちじかん)", english: "allotted time" },
+    { japanese: "趣旨 (しゅし)", english: "intent / gist" }
+  ],
+  examples: [
+    { japanese: "ご清聴ありがとうございました。ご質問、ご意見をお願いいたします。", english: "Thank you for your kind attention. I welcome your questions and comments." },
+    { japanese: "貴重なご発表、ありがとうございました。一点、ご教示いただきたく存じます。", english: "Thank you for the valuable presentation. I would like to receive instruction on one point." },
+    { japanese: "ご質問の趣旨を、私なりに確認させていただいてもよろしいでしょうか。", english: "May I confirm the intent of your question in my own words?" },
+    { japanese: "失礼ながら、その点については本研究の射程外でございます。", english: "If I may be impolite, that point falls outside the scope of this study." },
+    { japanese: "差し支えなければ、ご質問の背景についてもう少しお聞かせいただけますか。", english: "If it does not inconvenience you, could you tell me a little more about the background of your question?" },
+    { japanese: "持ち時間の関係上、簡潔にお答えさせていただきます。", english: "Due to time constraints, allow me to answer concisely." }
+  ],
+  dialogue: [
+    { speaker: "司会者", japanese: "それでは、フロアからご質問を承ります。挙手にてお願いいたします。", english: "Now then, we will receive questions from the floor. Please raise your hand." },
+    { speaker: "質問者", japanese: "貴重なご発表、ありがとうございました。所属は〇〇大学の田中と申します。一点、ご教示いただきたく存じます。", english: "Thank you for the valuable presentation. I am Tanaka from XX University. I would like to receive instruction on one point." },
+    { speaker: "発表者", japanese: "田中先生、ご質問ありがとうございます。どうぞお願いいたします。", english: "Professor Tanaka, thank you for the question. Please go ahead." },
+    { speaker: "質問者", japanese: "サンプル選定の基準について、もう少し詳しくご説明いただけますでしょうか。", english: "Regarding the criteria for sample selection, could you explain in a little more detail?" }
+  ],
+  dialogue_long: [
+    { speaker: "司会者", japanese: "ご発表、お疲れ様でした。質疑応答に移らせていただきます。フロアの皆様、いかがでしょうか。", english: "Thank you for your presentation. We will move to the Q&A. Audience members, how about you?" },
+    { speaker: "質問者A", japanese: "貴重なご発表ありがとうございました。所属は〇〇研究所の山田と申します。二点伺ってもよろしいでしょうか。", english: "Thank you for the valuable presentation. I am Yamada from the XX Institute. May I ask two points?" },
+    { speaker: "発表者", japanese: "山田先生、よろしくお願いいたします。", english: "Professor Yamada, please go ahead." },
+    { speaker: "質問者A", japanese: "第一に、対照群の設定について、サンプル間の同質性をいかに確保されたのか、ご教示いただけますでしょうか。", english: "First, regarding the establishment of the control group, could you explain how you secured homogeneity between samples?" },
+    { speaker: "発表者", japanese: "ご質問ありがとうございます。年齢、学習歴、母語の三変数について、群間で統計的に有意な差がないことを事前に確認いたしました。詳細は配布資料の三ページに記載しております。", english: "Thank you for the question. Regarding the three variables of age, learning history, and native language, I confirmed in advance that there were no statistically significant differences between the groups. Details are noted on page three of the handout." },
+    { speaker: "質問者A", japanese: "承知いたしました。第二点は、結論部の一般化についてでございます。本研究の知見は、他の言語圏の学習者にも適用可能とお考えでしょうか。", english: "Understood. The second point is about the generalization in the conclusion. Do you think the findings of this study are also applicable to learners of other language spheres?" },
+    { speaker: "発表者", japanese: "鋭いご指摘でございます。本研究は東アジア圏の学習者を対象としており、他言語圏への適用には別途の検証が必要と考えております。この点、結論部に明記すべきでございました。", english: "An incisive point. This study targeted learners of the East Asian sphere, and application to other language spheres requires separate verification. I should have made this explicit in the conclusion." },
+    { speaker: "質問者A", japanese: "丁寧なご回答、ありがとうございました。", english: "Thank you for the careful response." },
+    { speaker: "司会者", japanese: "次のご質問、いかがでしょうか。", english: "How about the next question?" },
+    { speaker: "質問者B", japanese: "失礼いたします。所属は△△大学の鈴木と申します。発表の趣旨を確認させていただきたいのですが、X と Y の関係について、因果と解釈してよろしいのでしょうか。", english: "Excuse me. I am Suzuki from Triangle University. I would like to confirm the intent of the presentation — is it acceptable to interpret the relationship between X and Y as causal?" },
+    { speaker: "発表者", japanese: "鈴木先生、重要な確認をありがとうございます。本研究では、相関を確認したにとどまり、因果の主張は控えております。表現が紛らわしかったとすれば、お詫び申し上げます。", english: "Professor Suzuki, thank you for the important confirmation. In this study, we have only confirmed correlation and have refrained from claims of causality. If the expression was misleading, I apologize." },
+    { speaker: "質問者B", japanese: "明確になりました。ありがとうございました。", english: "It has become clear. Thank you." },
+    { speaker: "司会者", japanese: "持ち時間が押しております。最後の質問とさせていただきます。", english: "Time is pressing. Let us make this the last question." }
+  ],
+  roleplay_prompts: [
+    "Bạn presenter mở Q&A. Cụm: ご清聴ありがとうございました。ご質問、ご意見をお願いいたします. Sau câu hỏi đầu tiên, repeat thanks: ご質問ありがとうございます. KHÔNG skip thanks — bare 'はい' sound brusque.",
+    "Bạn ask question từ floor. Mandatory format: greet (失礼いたします hoặc 貴重なご発表ありがとうございました) cộng identify (所属は〇〇大学の〜と申します) cộng question. KHÔNG bỏ identify — Nhật conference convention.",
+    "Bạn không biết câu trả lời. KHÔNG bịa. Cụm: ご質問の点については、現時点で十分に検討できておりません。今後の課題として承ります. Honest deferral được respected hơn pretend-knowledge."
+  ],
+  register_notes: "Q&A register ở Nhật conference theo strict choreography. (1) OPENING SEQUENCE — presenter kết bằng ご清聴ありがとうございました. Chair (司会者) opens floor: フロアからご質問を承ります. Questioner waits to be recognized, đứng lên (nếu microphone), đầu tiên identify: 失礼いたします hoặc greet, sau đó 所属は〇〇の〜と申します. Skip identify = breach of etiquette. (2) QUESTION FRAMING — gentle prelude required: 貴重なご発表ありがとうございました cộng 一点ご教示いただきたく hoặc 二点伺ってもよろしいでしょうか. Pure question without prelude đọc aggressive. Number questions nếu multiple. (3) PRESENTER RESPONSE — start với thank: ご質問ありがとうございます. Confirm understanding nếu unclear: ご質問の趣旨を確認させていただいてもよろしいでしょうか. Answer organized: 結論を申し上げますと cho concise; 三点に分けてお答えします cho complex. End với お答えになっておりますでしょうか (does this answer your question?) — invites follow-up. (4) HONORIFIC ASYMMETRY — questioner uses humble forms toward presenter (お聞かせいただけますか, ご教示いただけますか); presenter uses humble toward questioner (お答えさせていただきます, 承知いたしました). Equal-equal humility, neither dominates. (5) HANDLING DIFFICULT QUESTIONS — defer: 今後の課題として承ります (I receive as future task). Scope-out: 本研究の射程外でございます. Acknowledge limit: 現時点で十分に検討できておりません. KHÔNG fake answer — caught easily, reputational damage permanent. (6) CHAIR'S ROLE — manages time (持ち時間が押しております), prevents single questioner monopoly, closes session. Đừng challenge chair's calls. Vocabulary forbidden in Q&A: それは違います (that's wrong), わかりません (don't know — too bare; use 検討不足でございます), 関係ない (irrelevant — never). Time discipline: questions 30-60 sec, answers 60-120 sec. Long monologue questions ('actually what I want to comment is...') breach etiquette — chair will cut.",
+  idiom_glosses: [
+    { idiom: "釈迦に説法 (しゃかにせっぽう)", literal: "Giảng đạo cho Phật Thích Ca", meaning: "[書き言葉・話し言葉] Dạy expert thứ họ đã biết — humble disclaimer khi raise question to senior: 釈迦に説法かもしれませんが.", example: "釈迦に説法かもしれませんが、〇〇 (二〇二〇) においても同様の論点が指摘されているかと存じます。" },
+    { idiom: "蛇足 (だそく)", literal: "Vẽ rắn thêm chân", meaning: "[書き言葉・話し言葉] Thêm thừa, không cần thiết — humble disclaimer ở cuối comment: 蛇足ながら.", example: "蛇足ながら一言申し添えますと、本論点は次回学会でも継続して議論されるものと伺っております。" },
+    { idiom: "問うは一旦の恥、問わぬは末代の恥 (とうはいったんのはじ、とわぬはまつだいのはじ)", literal: "Hỏi là xấu hổ một lúc, không hỏi là xấu hổ cả đời", meaning: "[書き言葉] Better ask now than wonder forever — encouragement để raise basic question without shame.", example: "問うは一旦の恥と申しますし、初歩的な点ですがお伺いさせてください。" },
+    { idiom: "ご教示を賜る (ごきょうじをたまわる)", literal: "Nhận sự chỉ dạy", meaning: "[硬い・書き言葉] Most humble form cho 'receive instruction' — deploy khi questioning a senior.", example: "本件につきましては、先生のご教示を賜れれば幸甚に存じます。" }
+  ],
+  cultural_notes_vi: "Q&A culture ở Nhật conference khác phương Tây ở 4 điểm. (1) THANKS RITUAL — Western Q&A có thể skip thanks, đi thẳng vào question. Nhật mandatory mở bằng thanks. Skip = read as rude regardless of question quality. (2) IDENTIFY SELF — Nhật convention: 所属 + last name. Western có thể just ask without identify. Trong Nhật, anonymous question seen as cowardly. Even nếu chair already mới bạn lên, repeat self-identify in your opening. (3) NO 'GOTCHA' QUESTIONS — Western academic culture sometimes celebrates question designed to expose flaw publicly. Nhật strongly disapprove — gây loss of face cho presenter, reflects badly on questioner. Critique style: 'I'd like to learn more about how you addressed〜' rather than 'You didn't address〜'. (4) AUDIENCE-MEMBER COMMENTS THAY VÌ QUESTIONS — Western Q&A allows extended comments masquerading as questions ('I'd like to add to your point...'). Nhật convention: questions only, save extended comments cho networking break. Chair may cut long-comment-question politely. Khác VN: VN seminar Q&A typically informal hơn, less choreographed; chuyển sang Nhật context cần học chính xác sequence. Mẹo: trước first conference Nhật, attend 2-3 sessions chỉ để observe Q&A choreography. Memorize phrases. Practice một identify-question-thank sequence trước khi attempt. Mẹo: nếu bạn presenter và Q&A run dry (silence), KHÔNG awkwardly fill. Chair handles. Nếu muốn solicit specific feedback, prepare 1 question planted với colleague trước. Mẹo cuối: post-Q&A networking quan trọng. Approach questioners afterward: 先ほどはご質問ありがとうございました. Initiates relationship. Many career opportunities trong Nhật academia start với post-Q&A coffee.",
+  tip_advice_vi: "Pre-conference Q&A preparation cho presenter ở C1. (a) PREDICT QUESTIONS — list 5-7 likely questions trước presentation. For each, prepare 60-second answer. Cover: methodology choice, sample limitation, generalization scope, alternative interpretation, future direction. (b) PREPARE 'I DON'T KNOW' VERSIONS — practice 3 graceful deferrals: その点は今後の課題として承ります / 現時点で十分に検討できておりません / 本研究の射程外でございます. Có sẵn lúc panic. (c) BRING HANDOUT (配布資料) — 1-2 page sheet với data details. Refer trong Q&A: 詳細は配布資料の〜ページに記載しております. Saves time, demonstrates preparation. (d) WATER NEARBY — speaking dries throat; pause để uống signals composure, not weakness. Đối với questioner ở C1: (a) LISTEN ENTIRE PRESENTATION — taking notes throughout, không formulate question từ first 5 phút then mentally check out. Best questions reflect comprehensive listening. (b) WAIT YOUR TURN — Nhật convention: chair recognizes hand-raised order. Don't bypass. (c) SHORT QUESTIONS WIN — 30-second focused question > 2-minute meandering preamble. Chair và audience appreciate. (d) ONE QUESTION PER TURN — nếu bạn really need 2-3, ask one, wait response, raise hand again later. Chain-questioning hogs time. (e) FOLLOW UP OFFLINE — extended exchange, technical detail, criticism — handle qua email post-conference. Cụm follow-up: 先日の学会では貴重なご発表をありがとうございました cộng your detailed point. Mẹo về Q&A note-taking: presenter nên ghi xuống mọi câu hỏi nhận được, regardless of answer chất lượng. Sau conference, 24-hour-rule: review notes, identify weakest answers, strengthen cho next conference hoặc paper revision. Conference Q&A là live peer review — value the data. Mẹo cuối: post-presentation, send formal thanks cho chair: 本日は座長の労、誠にありがとうございました. Maintain relationship, opens future invitation.",
+  exercises: [
+    { type: "fill-blank", question: "貴重なご発表、ありがとうございました。一点、ご___いただきたく存じます。", answer: "教示" },
+    { type: "matching", instruction: "Ghép cụm với chức năng Q&A.", pairs: [
+      { japanese: "ご質問の趣旨を確認させていただいてもよろしいでしょうか", english: "presenter — verify question before answering" },
+      { japanese: "今後の課題として承ります", english: "presenter — graceful deferral when unsure" },
+      { japanese: "失礼ながら、その点は本研究の射程外でございます", english: "presenter — scope-out gracefully" },
+      { japanese: "差し支えなければ、もう少しお聞かせいただけますか", english: "presenter — invite questioner to elaborate" }
+    ] },
+    { type: "translation", vietnamese: "Do giới hạn thời gian, cho phép tôi trả lời ngắn gọn.", japanese: "持ち時間の関係上、簡潔にお答えさせていただきます。" }
+  ]
 }
 ];
 export default lessons;
