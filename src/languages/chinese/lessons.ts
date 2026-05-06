@@ -59,6 +59,7 @@ export type ChineseCategoryId =
   | "study_career"
   | "cultural_communication"
   | "travel_mobility"
+  | "personal_social"
   | "fluency";
 
 export type ChineseCategoryMeta = {
@@ -72,6 +73,7 @@ export const CHINESE_CATEGORIES: ReadonlyArray<ChineseCategoryMeta> = [
   { id: "study_career", title_vi: "Học tập & Nghề nghiệp", title_en: "Study & Career", expected_count: 10 },
   { id: "cultural_communication", title_vi: "Giao tiếp Văn hóa", title_en: "Cultural Communication", expected_count: 10 },
   { id: "travel_mobility", title_vi: "Du lịch & Di chuyển", title_en: "Travel & Mobility", expected_count: 10 },
+  { id: "personal_social", title_vi: "Quan hệ cá nhân & Xã hội", title_en: "Personal & Social Relationships", expected_count: 10 },
   { id: "fluency", title_vi: "Lưu loát", title_en: "Fluency", expected_count: 5 },
 ];
 
@@ -6099,6 +6101,413 @@ level: "B2",
         vietnamese: "Anh tài xế, em xem bản đồ thấy đường thẳng chỉ 15 phút, sao anh đi vòng? Em trả theo số tiền trên app, không trả thêm.",
         chinese: "师傅, 我看地图直走只要十五分钟, 您怎么绕路? 我按app上的金额付, 不付额外的。",
         pinyin: "Shī fu, wǒ kàn dì tú zhí zǒu zhǐ yào shí wǔ fēn zhōng, nín zěn me rào lù? Wǒ àn app shàng de jīn é fù, bù fù é wài de."
+      }
+    ]
+  },
+  {
+    id: 82,
+    level: "B2",
+    category: "personal_social",
+    title: "和中国公婆/岳父母的难谈话",
+    pinyin: "hé zhōng guó gōng pó / yuè fù mǔ de nán tán huà",
+    topic: "Difficult conversation with Chinese in-laws",
+    title_vi: "Cuộc nói chuyện khó với bố mẹ chồng/vợ Trung Quốc",
+    title_en: "Difficult conversation with Chinese in-laws",
+    sentences: [
+      {
+        chinese: "妈, 我知道您是为我们好, 但这件事我们想自己决定。",
+        pinyin: "Mā, wǒ zhīdào nín shì wèi wǒmen hǎo, dàn zhè jiàn shì wǒmen xiǎng zìjǐ juédìng.",
+        english: "Mom, I know you mean well, but this is something we want to decide ourselves.",
+        vi: "Mẹ ơi, con biết mẹ vì tốt cho bọn con, nhưng việc này bọn con muốn tự quyết định.",
+        pronunciation_focus: ["妈 → mā (gọi mẹ chồng/mẹ vợ — không dùng họ)", "为我们好 → wèi wǒmen hǎo (vì tốt cho bọn con)", "自己决定 → zìjǐ juédìng (tự quyết định)", "您 → nín (formal với mẹ chồng)"]
+      },
+      {
+        chinese: "我们越南的习惯有点不一样, 希望您能理解。",
+        pinyin: "Wǒmen Yuènán de xíguàn yǒudiǎn bù yīyàng, xīwàng nín néng lǐjiě.",
+        english: "Our Vietnamese customs are a bit different — I hope you can understand.",
+        vi: "Phong tục Việt Nam bọn con hơi khác, mong mẹ thông cảm.",
+        pronunciation_focus: ["习惯 → xíguàn (phong tục)", "不一样 → bù yīyàng (không giống)", "理解 → lǐjiě (thông cảm)", "希望 → xīwàng"]
+      },
+      {
+        chinese: "我会尊重您的想法, 也希望您尊重我们的选择。",
+        pinyin: "Wǒ huì zūnzhòng nín de xiǎngfǎ, yě xīwàng nín zūnzhòng wǒmen de xuǎnzé.",
+        english: "I'll respect your thoughts, and hope you'll respect our choice.",
+        vi: "Con sẽ tôn trọng ý kiến mẹ, cũng mong mẹ tôn trọng lựa chọn của bọn con.",
+        pronunciation_focus: ["尊重 → zūnzhòng (tôn trọng)", "想法 → xiǎngfǎ (ý kiến)", "选择 → xuǎnzé (lựa chọn)", "也希望 → yě xīwàng"]
+      },
+      {
+        chinese: "我们各让一步, 找到一个大家都能接受的办法吧。",
+        pinyin: "Wǒmen gè ràng yī bù, zhǎodào yī gè dàjiā dōu néng jiēshòu de bànfǎ ba.",
+        english: "Let's each give a little — find a solution everyone can accept.",
+        vi: "Mỗi bên nhường một bước, mình tìm cách mà ai cũng chấp nhận được.",
+        pronunciation_focus: ["各让一步 → gè ràng yī bù (mỗi bên nhường)", "接受 → jiēshòu (chấp nhận)", "办法 → bànfǎ (cách / phương án)", "大家 → dàjiā"]
+      },
+      {
+        chinese: "妈, 我永远是您的儿媳妇, 这点不会变。",
+        pinyin: "Mā, wǒ yǒngyuǎn shì nín de érxífu, zhè diǎn bù huì biàn.",
+        english: "Mom, I'll always be your daughter-in-law — that won't change.",
+        vi: "Mẹ ơi, con vẫn là con dâu của mẹ mãi mãi, điều này không thay đổi.",
+        pronunciation_focus: ["儿媳妇 → érxífu (con dâu)", "永远 → yǒngyuǎn (mãi mãi)", "不会变 → bù huì biàn (không đổi)", "这点 → zhè diǎn"]
+      }
+    ],
+    vocab: [
+      { chinese: "公公", pinyin: "gōng gong", english: "father-in-law (husband's father)", vi: "bố chồng" },
+      { chinese: "婆婆", pinyin: "pó po", english: "mother-in-law (husband's mother)", vi: "mẹ chồng" },
+      { chinese: "岳父", pinyin: "yuè fù", english: "father-in-law (wife's father)", vi: "bố vợ" },
+      { chinese: "岳母", pinyin: "yuè mǔ", english: "mother-in-law (wife's mother)", vi: "mẹ vợ" },
+      { chinese: "儿媳妇", pinyin: "ér xí fu", english: "daughter-in-law", vi: "con dâu" },
+      { chinese: "女婿", pinyin: "nǚ xu", english: "son-in-law", vi: "con rể" },
+      { chinese: "尊重", pinyin: "zūn zhòng", english: "to respect", vi: "tôn trọng" },
+      { chinese: "理解", pinyin: "lǐ jiě", english: "to understand / sympathize", vi: "thông cảm" },
+      { chinese: "习惯", pinyin: "xí guàn", english: "custom / habit", vi: "phong tục" },
+      { chinese: "各让一步", pinyin: "gè ràng yī bù", english: "each give a step (compromise)", vi: "mỗi bên nhường một bước" }
+    ],
+    dialogue: [
+      { speaker: "婆婆", chinese: "你们怎么不打算要孩子? 我们这把年纪等不及了。", pinyin: "Nǐmen zěnme bù dǎsuàn yào háizi? Wǒmen zhè bǎ niánjì děng bù jí le.", english: "Why aren't you planning to have kids? We're getting old, can't wait.", vi: "Sao các con không định có con? Bọn ta tuổi này đợi không nổi nữa." },
+      { speaker: "梅", chinese: "妈, 我们想再等两年, 工作稳定一些。", pinyin: "Mā, wǒmen xiǎng zài děng liǎng nián, gōngzuò wěndìng yīxiē.", english: "Mom, we want to wait two years, until work is more stable.", vi: "Mẹ ơi, bọn con muốn đợi hai năm nữa, công việc ổn định hơn đã." },
+      { speaker: "婆婆", chinese: "工作什么时候才稳定? 越早生越好。", pinyin: "Gōngzuò shénme shíhou cái wěndìng? Yuè zǎo shēng yuè hǎo.", english: "When will work ever be stable? Sooner the better.", vi: "Công việc khi nào mới ổn? Càng sớm sinh càng tốt." },
+      { speaker: "梅", chinese: "我理解您的关心, 但这是我和明华一起的决定, 希望您尊重。", pinyin: "Wǒ lǐjiě nín de guānxīn, dàn zhè shì wǒ hé Mínghuá yīqǐ de juédìng, xīwàng nín zūnzhòng.", english: "I understand your concern, but this is our decision, hope you'll respect it.", vi: "Con hiểu mẹ quan tâm, nhưng đây là quyết định của con và Minh Hoa, mong mẹ tôn trọng." }
+    ],
+    dialogue_long: [
+      { speaker: "婆婆", chinese: "小梅, 妈跟你说一件事。我跟你公公商量过了, 你们结婚两年了, 是不是该考虑要孩子?", pinyin: "Xiǎo Méi, mā gēn nǐ shuō yī jiàn shì. Wǒ gēn nǐ gōnggong shāngliang guò le, nǐmen jiéhūn liǎng nián le, shì bù shì gāi kǎolǜ yào háizi?", english: "Little Mei, let me tell you something. I've discussed with your father-in-law — you've been married two years, isn't it time to think about kids?", vi: "Tiểu Mai, mẹ nói con việc này. Mẹ với bố chồng đã bàn rồi, các con cưới hai năm rồi, có nên nghĩ chuyện con cái không?" },
+      { speaker: "梅", chinese: "妈, 我和明华讨论过了, 我们想再等两年。", pinyin: "Mā, wǒ hé Mínghuá tǎolùn guò le, wǒmen xiǎng zài děng liǎng nián.", english: "Mom, Minghua and I discussed it — we want to wait two more years.", vi: "Mẹ ơi, con với Minh Hoa đã thảo luận rồi, bọn con muốn đợi thêm hai năm nữa." },
+      { speaker: "婆婆", chinese: "为什么要等? 你今年三十了, 越往后越难生。我邻居家的儿媳妇三十二才生, 难产, 在医院躺了一个月。", pinyin: "Wèishénme yào děng? Nǐ jīnnián sānshí le, yuè wǎng hòu yuè nán shēng. Wǒ línjū jiā de érxífu sānshí èr cái shēng, nánchǎn, zài yīyuàn tǎng le yī gè yuè.", english: "Why wait? You're 30 this year — the longer you wait, the harder. My neighbor's daughter-in-law had hers at 32, difficult labor, hospitalized a month.", vi: "Sao phải đợi? Năm nay con 30 rồi, càng để lâu càng khó sinh. Con dâu nhà hàng xóm sinh năm 32 tuổi, khó sinh, nằm viện cả tháng." },
+      { speaker: "梅", chinese: "妈, 我知道您是为我好, 担心健康的事。但是我们越南也有一些家庭三十多才生第一个, 大家都好好的。", pinyin: "Mā, wǒ zhīdào nín shì wèi wǒ hǎo, dānxīn jiànkāng de shì. Dànshì wǒmen Yuènán yě yǒu yīxiē jiātíng sānshí duō cái shēng dì yī gè, dàjiā dōu hǎohǎo de.", english: "Mom, I know you mean well, worried about health. But many Vietnamese families have first child after 30, everyone's fine.", vi: "Mẹ ơi, con biết mẹ vì tốt cho con, lo cho sức khỏe. Nhưng ở Việt Nam cũng có nhiều gia đình ngoài 30 mới sinh con đầu, mọi người đều khỏe mạnh." },
+      { speaker: "婆婆", chinese: "可是我和你公公等着抱孙子啊。我们这把年纪了, 还能等多久?", pinyin: "Kěshì wǒ hé nǐ gōnggong děngzhe bào sūnzi a. Wǒmen zhè bǎ niánjì le, hái néng děng duō jiǔ?", english: "But we're waiting to hold a grandchild. At our age, how long can we wait?", vi: "Nhưng bố mẹ chồng đợi bế cháu. Tuổi này rồi, còn đợi được bao lâu?" },
+      { speaker: "梅", chinese: "妈, 我理解您的心情。但是我想跟您说几个原因, 希望您能理解。", pinyin: "Mā, wǒ lǐjiě nín de xīnqíng. Dànshì wǒ xiǎng gēn nín shuō jǐ gè yuányīn, xīwàng nín néng lǐjiě.", english: "Mom, I understand your feelings. But let me explain a few reasons, hope you'll understand.", vi: "Mẹ ơi, con hiểu tâm trạng mẹ. Nhưng con muốn nói mấy lý do với mẹ, mong mẹ thông cảm." },
+      { speaker: "婆婆", chinese: "你说。", pinyin: "Nǐ shuō.", english: "Go ahead.", vi: "Con nói đi." },
+      { speaker: "梅", chinese: "第一, 我们刚买房, 房贷压力大, 想再稳定两年。第二, 我刚升职, 工作正在关键期。第三, 我妈在越南身体不好, 我想多陪她两年。", pinyin: "Dì yī, wǒmen gāng mǎi fáng, fángdài yālì dà, xiǎng zài wěndìng liǎng nián. Dì èr, wǒ gāng shēngzhí, gōngzuò zhèngzài guānjiàn qī. Dì sān, wǒ mā zài Yuènán shēntǐ bù hǎo, wǒ xiǎng duō péi tā liǎng nián.", english: "First, we just bought a house, mortgage pressure is big. Second, I just got promoted, work is at a key stage. Third, my mom in Vietnam isn't well, I want to spend more time with her.", vi: "Thứ nhất, bọn con vừa mua nhà, áp lực vay mua nhà lớn, muốn ổn định thêm hai năm. Thứ hai, con vừa được thăng chức, công việc đang vào giai đoạn quan trọng. Thứ ba, mẹ con ở Việt Nam sức khỏe không tốt, con muốn ở bên mẹ thêm hai năm." },
+      { speaker: "婆婆", chinese: "你妈妈身体不好? 怎么没听明华说过?", pinyin: "Nǐ māma shēntǐ bù hǎo? Zěnme méi tīng Mínghuá shuō guò?", english: "Your mom isn't well? Why didn't Minghua mention it?", vi: "Mẹ con sức khỏe không tốt à? Sao Minh Hoa không nhắc?" },
+      { speaker: "梅", chinese: "她有高血压和糖尿病, 我每个月回去看她一次。如果有了孩子, 怕回去就不那么方便了。", pinyin: "Tā yǒu gāo xuèyā hé tángniàobìng, wǒ měi gè yuè huíqù kàn tā yī cì. Rúguǒ yǒu le háizi, pà huíqù jiù bù nàme fāngbiàn le.", english: "She has high blood pressure and diabetes — I go back monthly. With a child, going back wouldn't be as easy.", vi: "Mẹ có cao huyết áp và tiểu đường, mỗi tháng con về thăm một lần. Nếu có con, sợ đi về không thuận tiện như bây giờ." },
+      { speaker: "婆婆", chinese: "原来是这样。妈不知道这些事情, 是妈说话太着急了。", pinyin: "Yuánlái shì zhèyàng. Mā bù zhīdào zhèxiē shìqing, shì mā shuōhuà tài zháojí le.", english: "I see. Mom didn't know all this, mom was too pushy.", vi: "Hóa ra thế. Mẹ không biết những chuyện này, mẹ nói quá nóng vội rồi." },
+      { speaker: "梅", chinese: "妈, 您没说错什么, 您也是为我们好。我们各让一步: 两年后我和明华一定要孩子, 您看可以吗?", pinyin: "Mā, nín méi shuō cuò shénme, nín yěshì wèi wǒmen hǎo. Wǒmen gè ràng yī bù: liǎng nián hòu wǒ hé Mínghuá yīdìng yào háizi, nín kàn kěyǐ ma?", english: "Mom, you didn't say anything wrong, you mean well too. Let's each compromise: in two years Minghua and I will definitely have a child, okay?", vi: "Mẹ ơi, mẹ không sai gì, mẹ cũng vì tốt cho bọn con. Mỗi bên nhường một bước: hai năm sau con với Minh Hoa nhất định sẽ có con, mẹ thấy được không?" },
+      { speaker: "婆婆", chinese: "好, 那妈就等两年。但是你妈身体的事, 是不是需要我帮忙? 我可以去越南陪她一段时间。", pinyin: "Hǎo, nà mā jiù děng liǎng nián. Dànshì nǐ mā shēntǐ de shì, shì bù shì xūyào wǒ bāngmáng? Wǒ kěyǐ qù Yuènán péi tā yīduàn shíjiān.", english: "Okay, mom will wait two years. But about your mom's health — do you need help? I could go to Vietnam to be with her for a while.", vi: "Được, vậy mẹ đợi hai năm. Nhưng chuyện sức khỏe mẹ con, có cần mẹ giúp không? Mẹ có thể sang Việt Nam ở với mẹ con một thời gian." },
+      { speaker: "梅", chinese: "妈, 您真的太好了。我跟我妈说说, 看她意思。", pinyin: "Mā, nín zhēn de tài hǎo le. Wǒ gēn wǒ mā shuōshuo, kàn tā yìsi.", english: "Mom, you're really wonderful. Let me ask my mom what she thinks.", vi: "Mẹ ơi, mẹ tốt quá. Con sẽ hỏi mẹ con xem ý mẹ con thế nào." },
+      { speaker: "婆婆", chinese: "和睦相处最重要, 一家人嘛。", pinyin: "Hémù xiāngchǔ zuì zhòngyào, yī jiā rén ma.", english: "Living harmoniously matters most — we're family.", vi: "Hòa thuận với nhau là quan trọng nhất, gia đình mà." },
+      { speaker: "梅", chinese: "对, 妈, 谢谢您理解我们。", pinyin: "Duì, mā, xièxie nín lǐjiě wǒmen.", english: "Yes mom, thank you for understanding.", vi: "Đúng rồi mẹ, cảm ơn mẹ đã thông cảm với bọn con." }
+    ],
+    roleplay_prompts: [
+      "Bố chồng/mẹ chồng phê bình cách bạn nấu ăn (cho con) — ví dụ ít muối, không dùng xì dầu Trung Quốc kiểu cũ. Hãy giải thích cách nấu Việt Nam + đề xuất thử kết hợp + KHÔNG nói 'cách của mẹ sai'. Dùng cụm '我们越南这样做也很好吃, 您也可以试试'.",
+      "Mẹ chồng nhắc đi nhắc lại 'em phải gọi điện cho bà mỗi ngày'. Bạn cảm thấy quá nhiều. Hãy đặt giới hạn nhẹ nhàng: 'cuối tuần con sẽ gọi đều, ngày thường con bận công việc, mẹ thông cảm'. KHÔNG nói 'mẹ kỳ vọng quá'.",
+      "Bố vợ hỏi lương của bạn (chuẩn mực Trung Quốc — gia đình thân biết tiền của nhau). Bạn không muốn tiết lộ chi tiết. Hãy đáp khéo: 'lương con đủ chi tiêu cho gia đình, dư một ít để dành. Cụ thể con không tiện nói'. Lịch sự + không cứng."
+    ],
+    register_notes: "Quan hệ với bố mẹ chồng/vợ Trung Quốc dùng register CỰC FORMAL ban đầu, dần thân thiện. Xưng hô:\n\n- 妈 (mā) = mẹ chồng (tiếng Trung con dâu/rể đều gọi mẹ chồng/vợ là 妈, không có '婆婆' khi đối thoại trực tiếp — '婆婆' là từ kể về bà)\n- 爸 (bà) = bố chồng/bố vợ (cùng cách)\n- 您 (nín) BẮT BUỘC trong mọi đối thoại, kể cả khi đã thân nhiều năm\n- KHÔNG dùng tên riêng (李阿姨, 王叔叔) — quá xa cách\n- KHÔNG dùng 你 với bố mẹ chồng/vợ — vô lễ trong văn hóa Trung Quốc đại lục\n\nKhi bất đồng:\n- KHÔNG '您说错了' (mẹ nói sai) — leo thang ngay\n- DÙNG '我理解您的关心, 但是...' (con hiểu mẹ quan tâm, nhưng...)\n- DÙNG '我们越南的习惯是...' (phong tục Việt Nam của bọn con là...) — chuyển sang khung 'khác biệt văn hóa', không phải 'mẹ sai'\n- DÙNG '各让一步' (mỗi bên nhường) — đề xuất compromise\n- KẾT THÚC bằng cụm khẳng định quan hệ: '我永远是您的儿媳妇' / '一家人嘛'\n\nKhi mẹ chồng đề xuất giúp đỡ (chăm con, nấu ăn, chuyển đến ở chung):\n- KHÔNG từ chối thẳng — vô ơn trong văn hóa Trung Quốc\n- DÙNG 'mẹ tốt quá, con cảm ơn mẹ' + 'con sẽ thảo luận với chồng/vợ rồi báo lại'\n- Sau đó từ chối qua chồng/vợ với lý do thực tế (nhà nhỏ, công việc bận)\n\nTránh: (a) Tranh cãi trước mặt cả nhà — luôn nói riêng; (b) Kéo chồng/vợ vào tranh chấp công khai — đặt họ vào thế khó; (c) Khoe gia đình nhà mình hơn nhà chồng — gây tổn thương sâu; (d) Nhắn tin gay gắt qua WeChat — viết là bằng chứng, vĩnh viễn.",
+    idiom_glosses: [
+      {
+        idiom: "和睦相处",
+        literal: "hòa thuận chung sống (hé mù xiāng chǔ)",
+        meaning: "Sống hòa thuận với nhau — mục tiêu cao nhất của gia đình mở rộng. Cụm chuẩn để mẹ chồng/vợ kết thúc bất đồng: '一家人嘛, 和睦相处最重要'. Dùng để nhắc nhau ưu tiên hòa khí.",
+        example: "婆媳关系最重要的是和睦相处。"
+      },
+      {
+        idiom: "各让一步",
+        literal: "mỗi bên nhường một bước (gè ràng yī bù)",
+        meaning: "Mỗi bên lùi một bước — đề xuất compromise công bằng. Cụm dùng khi không thể đồng ý hoàn toàn: '我们各让一步, 找一个折中方案'. Tinh thần thỏa hiệp văn hóa Á Đông.",
+        example: "家事难断, 各让一步就好。"
+      },
+      {
+        idiom: "求同存异",
+        literal: "cầu đồng tồn dị (qiú tóng cún yì)",
+        meaning: "Tìm điểm chung, giữ điểm khác — không cần đồng thuận hoàn toàn. Áp dụng tốt cho khác biệt văn hóa Việt-Trung trong gia đình: 'mình 求同存异, không phải tranh ai đúng'.",
+        example: "我们文化不同, 求同存异就好。"
+      },
+      {
+        idiom: "将心比心",
+        literal: "lấy lòng đo lòng (jiāng xīn bǐ xīn)",
+        meaning: "Đặt mình vào vị trí người khác — đồng cảm. Cụm dùng để xin mẹ chồng/vợ thấu hiểu hoàn cảnh: '将心比心, 您也曾是儿媳妇' (đặt mình vào, mẹ cũng từng là con dâu). Cụm rất mạnh khi dùng đúng lúc.",
+        example: "将心比心, 我能理解您的想法。"
+      }
+    ],
+    cultural_notes_vi: "Quan hệ con dâu - mẹ chồng (婆媳关系 — póxí guānxi) là một trong những mối quan hệ phức tạp nhất trong gia đình Trung Quốc. Khác Việt Nam ở vài điểm:\n\n(1) GIA ĐÌNH MỞ RỘNG: ở Trung Quốc đại lục (đặc biệt vùng nông thôn + thành phố nhỏ), bố mẹ chồng kỳ vọng can dự sâu vào đời sống con — lựa chọn nhà, đặt tên cháu, chăm cháu, quyết định khi nào sinh con thứ hai. Vợ chồng trẻ ở thành phố lớn (Bắc Kinh, Thượng Hải) đã thay đổi nhưng quê thì vẫn vậy. Bạn lấy chồng/vợ Trung Quốc cần biết gia đình họ thuộc cấp độ nào.\n\n(2) CON DÂU LÀ 'NGƯỜI NHÀ NHƯNG NGƯỜI NGOÀI': khái niệm '半个外人' (nửa người ngoài) — về mặt pháp luật là vợ con trai, về mặt văn hóa vẫn cần thời gian để được công nhận hoàn toàn. Khác Việt Nam (con dâu nhanh chóng được coi là con). Đầu tư 3-5 năm để xây quan hệ tốt.\n\n(3) MẸ CHỒNG TRUNG QUỐC THƯỜNG NÓI THẲNG: không bóng gió. Khen thì khen công khai, chê cũng chê công khai. Người Việt thường thấy 'thô lỗ' — nhưng đó là phong cách thân mật của họ. Đừng coi mọi lời nhận xét là tấn công cá nhân.\n\n(4) ÁP LỰC SINH CON, CHĂM CON: cao hơn Việt Nam. 'Cháu nội' (孙子) đặc biệt quan trọng cho hệ thống dòng họ Trung Quốc. Nếu vợ chồng bạn không muốn có con sớm hoặc không muốn có con, đây sẽ là điểm xung đột chính. Cách xử lý: đưa lý do CỤ THỂ + thời gian dự kiến + cam kết.\n\n(5) TIỀN BẠC GIA ĐÌNH: bố mẹ chồng có thể hỏi lương, hỏi tiền tiết kiệm, đề xuất bạn đưa tiền về quê hàng tháng. Đây là chuẩn mực 'gia đình một mối'. Cách từ chối khéo: 'bọn con đang trả nợ mua nhà, chưa dư nhiều' — không nói 'không có'.\n\nVề lễ Tết và quà: con dâu Việt Nam lấy chồng Trung Quốc cần học kỹ. Tết âm lịch tặng quà bố mẹ chồng (mỗi bên 200-1,000 tệ). Sinh nhật, Tết Trung Thu, đầu năm — đều có. Đặc sản Việt Nam (cà phê, bánh đậu xanh) là quà lý tưởng — vừa tinh tế vừa thể hiện gốc văn hóa.\n\nVề ngôn ngữ: bố mẹ chồng/vợ thường hơn 50 tuổi → khả năng tiếng Anh rất hạn chế. Bạn PHẢI học tiếng Trung tốt để giao tiếp trực tiếp. Học tiếng địa phương của họ (giọng Bắc Kinh, Thượng Hải, Quảng Đông) là điểm cộng rất lớn — họ sẽ cảm thấy được tôn trọng.\n\nVề mâu thuẫn: ƯU TIÊN giải quyết qua chồng/vợ — họ đóng vai trò trung gian. Đừng đối đầu trực tiếp với mẹ chồng. Nếu bố mẹ chồng làm bạn buồn, NÓI VỚI CHỒNG/VỢ TRƯỚC, để họ truyền đạt — văn hóa 'không trực tiếp' (间接 — jiànjiē).",
+    tip_advice_vi: "(1) HỌC GỌI TÊN ĐÚNG ngay từ đầu: 妈 (mẹ chồng/vợ), 爸 (bố chồng/vợ), 哥 (anh chồng), 嫂 (chị dâu)... Sai gọi tên = bị coi là không nghiêm túc. Hỏi chồng/vợ list cách gọi cho cả gia đình và học thuộc trước khi gặp lần đầu. (2) HỌC NẤU 1-2 MÓN TRUNG QUỐC chuẩn (đặc biệt món của bố/mẹ chồng — ví dụ Tứ Xuyên thì học 麻婆豆腐, Bắc Kinh thì 京酱肉丝). Nấu cho họ ăn trong cuộc gặp đầu = bonding mạnh. Học từ video Bilibili + thực tập 5-10 lần trước. (3) MANG QUÀ ĐẶC SẢN VIỆT NAM mỗi lần thăm: cà phê G7 cao cấp, bánh đậu xanh Hải Dương, lụa Vạn Phúc, tranh Đông Hồ. Tổng giá trị 200-500 tệ. Gói gọn gàng, KHÔNG đỏ-đen (màu tang). (4) DÀNH RIÊNG 5-10 PHÚT mỗi lần gặp để TRÒ CHUYỆN với mẹ chồng — về sức khỏe, hàng xóm, trẻ con, công việc. Đừng chỉ làm việc nhà rồi đi. Đầu tư thời gian = đầu tư quan hệ. (5) LƯU SỐ ĐT mẹ chồng + gọi mỗi tuần 1 lần (15-20 phút) — kể cả không có gì cụ thể. Hỏi sức khỏe, kể chuyện công việc nhẹ. Mẹ chồng Trung Quốc cảm thấy được quan tâm khi bạn chủ động liên lạc. (6) KHI BẤT ĐỒNG: KHÔNG cãi trước mặt cả nhà. Rút lui (đi nấu ăn, chăm con, ra ngoài), bình tĩnh lại, sau đó nói RIÊNG với mẹ chồng hoặc qua chồng. Không gây mất mặt mẹ chồng trước người khác. (7) NHỚ NGÀY SINH NHẬT, KỶ NIỆM bố mẹ chồng: đặt nhắc nhở trên điện thoại. Lễ Trung Thu, Tết âm — gọi đầu tiên. Mẹ chồng Trung Quốc nhớ rất kỹ ai đã nhớ ai đã quên.",
+    exercises: [
+      { type: "fill-blank", question: "妈, 我知道您是 ___ 我们好, 但这件事我们想自己决定。", answer: "为" },
+      {
+        type: "matching",
+        instruction: "Ghép cụm tiếng Trung gia đình với nghĩa tiếng Việt.",
+        pairs: [
+          { chinese: "婆婆", pinyin: "pó po", english: "mẹ chồng" },
+          { chinese: "儿媳妇", pinyin: "ér xí fu", english: "con dâu" },
+          { chinese: "和睦相处", pinyin: "hé mù xiāng chǔ", english: "hòa thuận chung sống" },
+          { chinese: "各让一步", pinyin: "gè ràng yī bù", english: "mỗi bên nhường một bước" }
+        ]
+      },
+      {
+        type: "translation",
+        vietnamese: "Mẹ ơi, con biết mẹ vì tốt cho bọn con. Phong tục Việt Nam bọn con hơi khác, mong mẹ thông cảm. Mỗi bên nhường một bước nhé.",
+        chinese: "妈, 我知道您是为我们好。我们越南的习惯有点不一样, 希望您能理解。我们各让一步吧。",
+        pinyin: "Mā, wǒ zhī dào nín shì wèi wǒ men hǎo. Wǒ men Yuè nán de xí guàn yǒu diǎn bù yī yàng, xī wàng nín néng lǐ jiě. Wǒ men gè ràng yī bù ba."
+      }
+    ]
+  },
+  {
+    id: 83,
+    level: "B2",
+    category: "personal_social",
+    title: "和中国朋友的生活方式分歧",
+    pinyin: "hé zhōng guó péng you de shēng huó fāng shì fēn qí",
+    topic: "Lifestyle disagreement with Chinese friend (work-life balance, dating, finance)",
+    title_vi: "Bất đồng về lối sống với bạn Trung Quốc (work-life balance, hẹn hò, tiền bạc)",
+    title_en: "Lifestyle disagreement with Chinese friend",
+    sentences: [
+      {
+        chinese: "我觉得996的工作太累了, 长期下去身体会受不了。",
+        pinyin: "Wǒ juéde jiǔjiǔliù de gōngzuò tài lèi le, chángqī xiàqù shēntǐ huì shòu bù liǎo.",
+        english: "I think 996 work is too tiring — long-term, the body can't handle it.",
+        vi: "Em thấy lịch 996 mệt quá, lâu dài cơ thể không chịu nổi.",
+        pronunciation_focus: ["996 → jiǔjiǔliù (9am-9pm 6 days/week)", "工作 → gōngzuò (công việc)", "受不了 → shòu bù liǎo (không chịu nổi)", "长期 → chángqī (lâu dài)"]
+      },
+      {
+        chinese: "我懂你的想法, 但每个人的选择都不一样。",
+        pinyin: "Wǒ dǒng nǐ de xiǎngfǎ, dàn měi gè rén de xuǎnzé dōu bù yīyàng.",
+        english: "I understand your view, but everyone's choice is different.",
+        vi: "Mình hiểu cách nghĩ của bạn, nhưng mỗi người có lựa chọn riêng.",
+        pronunciation_focus: ["想法 → xiǎngfǎ (ý kiến / cách nghĩ)", "选择 → xuǎnzé (lựa chọn)", "不一样 → bù yīyàng (không giống)", "每个人 → měi gè rén"]
+      },
+      {
+        chinese: "你喜欢拼事业, 我更喜欢平衡, 这没有对错。",
+        pinyin: "Nǐ xǐhuan pīn shìyè, wǒ gèng xǐhuan pínghéng, zhè méiyǒu duì cuò.",
+        english: "You like grinding career, I prefer balance — there's no right or wrong.",
+        vi: "Bạn thích lao đầu vào sự nghiệp, mình thích cân bằng hơn, không ai đúng sai.",
+        pronunciation_focus: ["拼事业 → pīn shìyè (lao vào sự nghiệp)", "平衡 → pínghéng (cân bằng)", "对错 → duì cuò (đúng sai)", "更喜欢 → gèng xǐhuan"]
+      },
+      {
+        chinese: "我们见仁见智, 互相尊重就好。",
+        pinyin: "Wǒmen jiàn rén jiàn zhì, hùxiāng zūnzhòng jiùhǎo.",
+        english: "We see things differently — mutual respect is enough.",
+        vi: "Mỗi người một ý, tôn trọng nhau là được rồi.",
+        pronunciation_focus: ["见仁见智 → jiàn rén jiàn zhì (idiom: mỗi người một ý)", "互相 → hùxiāng (lẫn nhau)", "尊重 → zūnzhòng (tôn trọng)", "就好 → jiù hǎo"]
+      },
+      {
+        chinese: "不管选什么, 朋友还是朋友, 别因为这个伤感情。",
+        pinyin: "Bùguǎn xuǎn shénme, péngyou háishì péngyou, bié yīnwèi zhège shāng gǎnqíng.",
+        english: "Whatever we choose, friends remain friends — don't let this hurt our friendship.",
+        vi: "Dù chọn gì đi nữa, bạn bè vẫn là bạn bè, đừng vì việc này mà tổn thương tình cảm.",
+        pronunciation_focus: ["不管 → bùguǎn (dù gì)", "伤感情 → shāng gǎnqíng (tổn thương tình cảm)", "朋友 → péngyou", "还是 → háishì"]
+      }
+    ],
+    vocab: [
+      { chinese: "生活方式", pinyin: "shēng huó fāng shì", english: "lifestyle", vi: "lối sống" },
+      { chinese: "分歧", pinyin: "fēn qí", english: "disagreement", vi: "bất đồng" },
+      { chinese: "拼事业", pinyin: "pīn shì yè", english: "to grind career", vi: "lao vào sự nghiệp" },
+      { chinese: "平衡", pinyin: "píng héng", english: "balance", vi: "cân bằng" },
+      { chinese: "996", pinyin: "jiǔ jiǔ liù", english: "9am-9pm 6 days/week", vi: "lịch 996 (lao động cường độ cao)" },
+      { chinese: "对错", pinyin: "duì cuò", english: "right or wrong", vi: "đúng sai" },
+      { chinese: "见仁见智", pinyin: "jiàn rén jiàn zhì", english: "different perspectives", vi: "mỗi người một ý" },
+      { chinese: "互相尊重", pinyin: "hù xiāng zūn zhòng", english: "mutual respect", vi: "tôn trọng lẫn nhau" },
+      { chinese: "伤感情", pinyin: "shāng gǎn qíng", english: "to hurt feelings (friendship)", vi: "tổn thương tình cảm" },
+      { chinese: "三观不合", pinyin: "sān guān bù hé", english: "values don't align (worldview)", vi: "ba quan điểm không hợp" }
+    ],
+    dialogue: [
+      { speaker: "李同事", chinese: "你最近怎么早就下班了? 是不是没事做?", pinyin: "Nǐ zuìjìn zěnme zǎo jiù xiàbān le? Shì bù shì méi shì zuò?", english: "Why are you leaving work early lately? No work to do?", vi: "Sao dạo này bạn về sớm thế? Hết việc làm rồi à?" },
+      { speaker: "梅", chinese: "工作做完了我就走, 我不喜欢加班。", pinyin: "Gōngzuò zuò wán le wǒ jiù zǒu, wǒ bù xǐhuan jiābān.", english: "Work done, I go. I don't like overtime.", vi: "Mình xong việc thì về, mình không thích tăng ca." },
+      { speaker: "李同事", chinese: "在中国不加班怎么升职? 老板不喜欢这种员工。", pinyin: "Zài Zhōngguó bù jiābān zěnme shēngzhí? Lǎobǎn bù xǐhuan zhè zhǒng yuángōng.", english: "In China, no overtime = no promotion. Bosses don't like this kind of employee.", vi: "Ở Trung Quốc không tăng ca thì sao thăng chức? Sếp không thích kiểu nhân viên này." },
+      { speaker: "梅", chinese: "我懂, 但我有家人需要陪。我和你的选择不一样, 互相理解就好。", pinyin: "Wǒ dǒng, dàn wǒ yǒu jiārén xūyào péi. Wǒ hé nǐ de xuǎnzé bù yīyàng, hùxiāng lǐjiě jiùhǎo.", english: "I get it, but I have family to spend time with. We choose differently, mutual understanding is enough.", vi: "Mình hiểu, nhưng mình có gia đình cần ở bên. Mình và bạn lựa chọn khác nhau, hiểu nhau là được." }
+    ],
+    dialogue_long: [
+      { speaker: "李同事", chinese: "梅, 我跟你说, 你这样下去事业上很吃亏。同期入职的人都已经升副经理了, 就你还在原地。", pinyin: "Méi, wǒ gēn nǐ shuō, nǐ zhèyàng xiàqù shìyè shàng hěn chīkuī. Tóngqī rùzhí de rén dōu yǐjīng shēng fù jīnglǐ le, jiù nǐ hái zài yuándì.", english: "Mei, let me tell you — your career will suffer this way. Everyone who joined with you is already deputy manager, only you're still in place.", vi: "Mai, mình nói thật, bạn cứ thế này sự nghiệp sẽ thiệt thòi. Người vào cùng đợt với bạn đều đã lên phó giám đốc, chỉ mình bạn còn ở chỗ cũ." },
+      { speaker: "梅", chinese: "我知道, 但我有自己的考虑。", pinyin: "Wǒ zhīdào, dàn wǒ yǒu zìjǐ de kǎolǜ.", english: "I know, but I have my own considerations.", vi: "Mình biết, nhưng mình có cân nhắc riêng." },
+      { speaker: "李同事", chinese: "什么考虑? 你不想升职吗?", pinyin: "Shénme kǎolǜ? Nǐ bù xiǎng shēngzhí ma?", english: "What considerations? Don't you want a promotion?", vi: "Cân nhắc gì? Bạn không muốn thăng chức à?" },
+      { speaker: "梅", chinese: "想啊, 但不想以牺牲健康为代价。我每天工作十二小时, 周末还要加班, 这样下去三年我会得胃病。我看到我前公司的同事就是这样。", pinyin: "Xiǎng a, dàn bù xiǎng yǐ xīshēng jiànkāng wéi dàijià. Wǒ měi tiān gōngzuò shí'èr xiǎoshí, zhōumò hái yào jiābān, zhèyàng xiàqù sān nián wǒ huì dé wèibìng. Wǒ kàndào wǒ qián gōngsī de tóngshì jiùshì zhèyàng.", english: "I do, but not at the cost of health. Working 12 hours daily plus weekends — in 3 years I'd have stomach disease. I saw my old colleagues end up that way.", vi: "Muốn chứ, nhưng không muốn đánh đổi sức khỏe. Làm 12 tiếng mỗi ngày, cuối tuần tăng ca, 3 năm sau sẽ bị đau dạ dày. Mình thấy đồng nghiệp công ty cũ như thế." },
+      { speaker: "李同事", chinese: "可是大家都这样啊。我也是, 我老公也是, 我们身边的人都是。你越南人想法不一样吗?", pinyin: "Kěshì dàjiā dōu zhèyàng a. Wǒ yěshì, wǒ lǎogōng yěshì, wǒmen shēnbiān de rén dōu shì. Nǐ Yuènán rén xiǎngfǎ bù yīyàng ma?", english: "But everyone's like this. Me, my husband, everyone around us. Do Vietnamese think differently?", vi: "Nhưng ai cũng vậy mà. Mình cũng thế, chồng mình cũng thế, người xung quanh đều thế. Người Việt suy nghĩ khác à?" },
+      { speaker: "梅", chinese: "也不是越南人都这样, 我有越南朋友比中国人更拼。这是我个人的选择, 不代表全部越南人。", pinyin: "Yě bù shì Yuènán rén dōu zhèyàng, wǒ yǒu Yuènán péngyou bǐ Zhōngguó rén gèng pīn. Zhè shì wǒ gèrén de xuǎnzé, bù dàibiǎo quánbù Yuènán rén.", english: "Not all Vietnamese — I have Vietnamese friends more driven than Chinese. This is my personal choice, doesn't represent all Vietnamese.", vi: "Không phải người Việt nào cũng thế, mình có bạn Việt còn cày hơn người Trung. Đây là lựa chọn cá nhân, không đại diện cho người Việt." },
+      { speaker: "李同事", chinese: "那你的选择, 你的目标是什么? 不拼事业, 想过什么样的生活?", pinyin: "Nà nǐ de xuǎnzé, nǐ de mùbiāo shì shénme? Bù pīn shìyè, xiǎng guò shénme yàng de shēnghuó?", english: "Then what's your goal? Not chasing career, what kind of life?", vi: "Vậy lựa chọn của bạn, mục tiêu là gì? Không lao vào sự nghiệp, muốn sống thế nào?" },
+      { speaker: "梅", chinese: "我想稳稳地工作, 每天有时间运动, 周末跟朋友吃饭, 每年回越南看父母两次。我升职慢一点没关系, 只要我健康、家人健康就好。", pinyin: "Wǒ xiǎng wěnwěn de gōngzuò, měi tiān yǒu shíjiān yùndòng, zhōumò gēn péngyou chīfàn, měi nián huí Yuènán kàn fùmǔ liǎng cì. Wǒ shēngzhí màn yīdiǎn méi guānxi, zhǐyào wǒ jiànkāng, jiārén jiànkāng jiùhǎo.", english: "Steady work, daily exercise time, weekend meals with friends, twice a year visiting parents in Vietnam. Slow promotion's fine if I'm healthy and family is healthy.", vi: "Mình muốn làm ổn định, mỗi ngày có thời gian tập thể dục, cuối tuần ăn cơm với bạn, mỗi năm về Việt Nam thăm bố mẹ hai lần. Thăng chức chậm một chút không sao, miễn là mình và gia đình khỏe mạnh." },
+      { speaker: "李同事", chinese: "听起来挺好的, 但我做不到。我有房贷、车贷, 父母在老家等我寄钱。不拼怎么办?", pinyin: "Tīng qǐlái tǐng hǎo de, dàn wǒ zuò bù dào. Wǒ yǒu fángdài, chēdài, fùmǔ zài lǎojiā děng wǒ jì qián. Bù pīn zěnme bàn?", english: "Sounds nice, but I can't. I have mortgage, car loan, parents waiting for money. If not grinding, how?", vi: "Nghe hay đấy, nhưng mình không làm được. Mình có nợ mua nhà, nợ mua xe, bố mẹ ở quê đợi tiền. Không cày thì sao?" },
+      { speaker: "梅", chinese: "你的情况和我不一样。你有家庭责任, 你必须拼。我没有那么多压力, 所以我可以选择慢一点。", pinyin: "Nǐ de qíngkuàng hé wǒ bù yīyàng. Nǐ yǒu jiātíng zérèn, nǐ bìxū pīn. Wǒ méiyǒu nàme duō yālì, suǒyǐ wǒ kěyǐ xuǎnzé màn yīdiǎn.", english: "Your situation differs. You have family duties, must grind. I don't have as much pressure, so I can choose slow.", vi: "Hoàn cảnh của bạn khác mình. Bạn có trách nhiệm gia đình, phải cày. Mình không có nhiều áp lực thế, nên có thể chọn chậm hơn." },
+      { speaker: "李同事", chinese: "对, 我们的选择都有原因, 都没有错。", pinyin: "Duì, wǒmen de xuǎnzé dōu yǒu yuányīn, dōu méiyǒu cuò.", english: "Right, our choices have reasons, neither wrong.", vi: "Đúng, lựa chọn của mình đều có lý do, đều không sai." },
+      { speaker: "梅", chinese: "对啊, 见仁见智嘛。我之前担心你以为我看不起拼事业的人, 其实我很佩服你的努力。", pinyin: "Duì a, jiàn rén jiàn zhì ma. Wǒ zhīqián dānxīn nǐ yǐwéi wǒ kàn bù qǐ pīn shìyè de rén, qíshí wǒ hěn pèifu nǐ de nǔlì.", english: "Yes, see things differently. I was worried you'd think I look down on career grinders — actually I admire your effort.", vi: "Đúng, mỗi người một ý mà. Trước mình lo bạn nghĩ mình coi thường người lao vào sự nghiệp, thực ra mình rất khâm phục nỗ lực của bạn." },
+      { speaker: "李同事", chinese: "我也以为你觉得我傻, 这么拼为了什么。其实我跟你说出来反而轻松了。", pinyin: "Wǒ yě yǐwéi nǐ juéde wǒ shǎ, zhème pīn wèile shénme. Qíshí wǒ gēn nǐ shuō chūlái fǎn'ér qīngsōng le.", english: "I also thought you'd think I'm dumb, grinding for what. Actually saying it out loud feels lighter.", vi: "Mình cũng tưởng bạn nghĩ mình ngốc, cày để làm gì. Thực ra nói ra với bạn lại thấy nhẹ nhõm." },
+      { speaker: "梅", chinese: "朋友就是这样, 互相尊重不同的选择。咱们改天一起去吃越南菜?", pinyin: "Péngyou jiùshì zhèyàng, hùxiāng zūnzhòng bùtóng de xuǎnzé. Zánmen gǎitiān yīqǐ qù chī Yuènán cài?", english: "That's friendship — respecting different choices. Let's go for Vietnamese food another day?", vi: "Bạn bè là vậy, tôn trọng lựa chọn khác nhau. Hôm khác mình đi ăn món Việt cùng nhau nhé?" },
+      { speaker: "李同事", chinese: "好啊! 我也想看看你说的那种'平衡生活'是什么样的。", pinyin: "Hǎo a! Wǒ yě xiǎng kànkan nǐ shuō de nà zhǒng 'pínghéng shēnghuó' shì shénme yàng de.", english: "Great! I want to see this 'balanced life' you talk about.", vi: "Được! Mình cũng muốn xem 'cuộc sống cân bằng' bạn nói thế nào." }
+    ],
+    roleplay_prompts: [
+      "Bạn Trung Quốc thuyết phục bạn đi xem phối hôn nhân (相亲 — xiāngqīn) qua bố mẹ. Bạn người Việt quen tự tìm bạn đời, không qua matchmaking. Hãy giải thích quan điểm của mình + tôn trọng quan điểm bạn + KHÔNG nói cách nào đúng. Dùng cụm '我们越南这边比较倾向于...'.",
+      "Bạn Trung Quốc tiết kiệm 80% lương, thấy bạn người Việt chi cho ăn uống và du lịch là 'lãng phí'. Hãy bảo vệ lựa chọn chi tiêu của mình mà không phán xét lựa chọn tiết kiệm của bạn. Dùng cụm '每个人对幸福的定义不一样'.",
+      "Bạn Trung Quốc đi tập gym 5 lần/tuần, ép bạn cùng tập. Bạn không thích gym, thích đi bộ + yoga nhẹ. Hãy từ chối lịch sự, đề xuất hoạt động chung khác (đi bộ công viên cuối tuần). Dùng cụm '健身有很多种, 适合自己的最重要'."
+    ],
+    register_notes: "Bất đồng lối sống với bạn Trung Quốc cần register trung gian — không quá formal (bạn bè), không quá thân thiết (vẫn là chủ đề cần khéo). 你 / 我 với bạn ngang cấp.\n\nNguyên tắc cốt lõi:\n- KHÔNG nói 'cách của bạn sai' (你的方式错了) — leo thang ngay\n- DÙNG '我和你的选择不一样' (mình và bạn lựa chọn khác nhau) — neutral\n- DÙNG '没有对错' (không có đúng sai) — định khung không phán xét\n- DÙNG '每个人有每个人的考虑' (mỗi người có cân nhắc riêng) — tôn trọng độc lập\n\nKhi bạn Trung Quốc đã thúc ép bạn:\n- KHÔNG '别管我' (đừng quản tôi) — vô lễ\n- DÙNG '谢谢你的关心, 但我已经想过了' (cảm ơn bạn quan tâm, nhưng mình đã suy nghĩ rồi)\n- DÙNG '我会考虑你的建议' (mình sẽ cân nhắc gợi ý của bạn) — kết thúc lịch sự dù không định làm theo\n\nKhi giải thích sự khác biệt:\n- KHÔNG '在越南我们这样, 在中国你们那样' (ở Việt Nam thế này, ở Trung Quốc thế kia) — quá generalize, gây cảm giác đối đầu văn hóa\n- DÙNG 'có thể do văn hóa khác, có thể do tính cách' — chia sẻ trách nhiệm giữa cá nhân + văn hóa\n- KHÔNG '我们越南人比较...' (người Việt bọn mình hơi...) — cô lập mình thành nhóm\n- DÙNG '我个人觉得...' (cá nhân mình thấy...) — quan điểm cá nhân, không tổng quát\n\nTránh: (a) Tranh cãi gay gắt về 996, áp lực xã hội Trung Quốc — chủ đề nhạy cảm với người trẻ Trung Quốc; (b) Khuyên bạn 'hãy nghỉ việc' — họ có hoàn cảnh bạn không hiểu; (c) Khoe Việt Nam tốt hơn về work-life balance — không đúng (Việt Nam cũng có overwork), gây phản cảm.",
+    idiom_glosses: [
+      {
+        idiom: "见仁见智",
+        literal: "thấy nhân thấy trí (jiàn rén jiàn zhì)",
+        meaning: "Nhân giả thấy nhân, trí giả thấy trí — mỗi người nhìn nhận khác nhau. Cụm trung tính tuyệt vời cho bất đồng quan điểm: '这事见仁见智, 没有标准答案'. Khẳng định cả hai góc nhìn đều có giá trị.",
+        example: "工作和生活的平衡, 见仁见智。"
+      },
+      {
+        idiom: "各有所好",
+        literal: "mỗi người có sở thích riêng (gè yǒu suǒ hào)",
+        meaning: "Mỗi người có sở thích/lựa chọn khác nhau. Cụm dùng để chấp nhận khác biệt: '吃辣还是不吃辣, 各有所好'. Đối lập với tâm lý 'phải giống nhau'.",
+        example: "拼事业还是要平衡, 各有所好。"
+      },
+      {
+        idiom: "三观不合",
+        literal: "ba quan điểm không hợp (sān guān bù hé)",
+        meaning: "Ba quan điểm (世界观/人生观/价值观 — thế giới quan / nhân sinh quan / giá trị quan) không hợp — không cùng tần số sống. Cụm phổ biến trong giới trẻ Trung Quốc. Tránh áp đặt cụm này lên bạn — thường dùng để miêu tả người mình KHÔNG muốn thân thiết.",
+        example: "我们三观不合, 但还是好朋友。"
+      },
+      {
+        idiom: "互相尊重",
+        literal: "lẫn nhau tôn trọng (hù xiāng zūn zhòng)",
+        meaning: "Tôn trọng lẫn nhau — KHÔNG là idiom 4 chữ thuần nhưng cụm cốt lõi cho khác biệt. Câu chốt sau khi đã tranh luận: '我们互相尊重就好' (tôn trọng nhau là được rồi).",
+        example: "朋友之间最重要的是互相尊重。"
+      }
+    ],
+    cultural_notes_vi: "Bất đồng lối sống Việt-Trung là chủ đề tế nhị nhưng phổ biến trong tình bạn xuyên văn hóa. Năm điểm khác biệt thường gây tranh luận:\n\n(1) WORK CULTURE: Trung Quốc đại lục có '996' (9am-9pm, 6 ngày/tuần) trong tech và một số ngành. Đây là chuẩn mực được chấp nhận, dù bị chỉ trích. Người Việt thường có giờ làm 8-5 + 1-2 lần tăng ca/tuần. Khi bạn Trung Quốc nói '我加班到晚上11点' = không phàn nàn, là báo cáo bình thường. Không thương hại — họ không cảm thấy cần thương hại.\n\n(2) HỆ THỐNG HẸN HÒ / KẾT HÔN: Trung Quốc có truyền thống 相亲 (xiāngqīn — phối hôn nhân qua bố mẹ/người mai mối) vẫn phổ biến ở thành phố nhỏ + thế hệ lớn tuổi. Người trẻ thành phố thoát dần nhưng áp lực 'năm 30 tuổi vẫn chưa lấy chồng' cực mạnh. Khái niệm '剩女' (shèng nǚ — gái ế) là từ phổ biến và buồn. Người Việt không có khái niệm này mạnh đến vậy.\n\n(3) TIẾT KIỆM vs CHI TIÊU: tỷ lệ tiết kiệm hộ gia đình Trung Quốc cao nhất thế giới (~30-40% lương). Người Việt thường tiết kiệm ~15-25%. Nguyên nhân Trung Quốc: hệ thống an sinh xã hội yếu (y tế, hưu trí), văn hóa 'để con cháu', áp lực mua nhà cho con trai. Đừng coi thói tiết kiệm cực đoan của bạn Trung là 'keo kiệt' — đó là chiến lược sinh tồn.\n\n(4) FAMILY OBLIGATIONS: bố mẹ Trung Quốc gửi tiền hàng tháng cho ông bà ở quê là chuẩn mực. Người trẻ Trung Quốc thường gánh tài chính bố mẹ + ông bà 2 bên. Người Việt cũng có nhưng ít cường độ hơn. Khi bạn Trung Quốc nói 'mình phải gửi 5,000 tệ về quê' — đó không phải tự nguyện, là nghĩa vụ văn hóa.\n\n(5) FITNESS / HEALTH CULTURE: gym + tập thể hình rất phổ biến ở Trung Quốc đại lục đô thị (đặc biệt nam giới). Phòng gym 24/7 (Pure Fitness, Will's) ở Bắc Kinh, Thượng Hải. Người Việt thường tập nhẹ hơn — đi bộ, yoga, đạp xe. Khi bạn Trung Quốc đề xuất 'cùng đi gym 5 lần/tuần' = họ đang mời bạn vào hoạt động xã hội của họ. Từ chối nhẹ + đề xuất hoạt động khác.\n\nVỀ LỜI KHUYÊN không cần thiết: bạn bè Trung Quốc thường tự do đưa lời khuyên về lối sống của bạn. Đây không phải 'thô lỗ' mà là 'quan tâm thân tình'. Khác Việt Nam (lời khuyên thường được hỏi mới đưa). Không phật ý — cảm ơn + làm theo cách mình.\n\nVỀ CHỦ ĐỀ NHẠY CẢM riêng cá nhân (không phải chính trị): tiền lương, kế hoạch sinh con, lý do chưa kết hôn — bạn Trung Quốc có thể hỏi thẳng. Người Việt thường giấu. Cách trả lời: 'mình thoải mái với mức hiện tại', 'vẫn đang suy nghĩ', 'chưa gặp đúng người'. Nhẹ nhàng + không tiết lộ chi tiết.\n\nVỀ TỪ '三观' (sān guān — 3 quan điểm): rất phổ biến trong giới trẻ Trung Quốc — chỉ khái niệm tổng hợp về thế giới quan/nhân sinh quan/giá trị quan. '三观一致' = cùng tần số. '三观不合' = không cùng tần số. Khi bạn Trung Quốc nói '我们三观还挺一致的' = tín hiệu tốt cho tình bạn.",
+    tip_advice_vi: "(1) NGHE TRƯỚC, NÓI SAU. Khi bạn Trung Quốc bộc lộ lối sống/áp lực, dành 5-10 phút LẮNG NGHE trước khi đưa quan điểm. Hỏi: '你为什么这样选?' (sao bạn chọn thế?) — họ có lý do bạn không biết. (2) CHỌN BATTLE: không phải mọi bất đồng đều cần thảo luận. Bạn Trung Quốc tiết kiệm 80% lương = chuyện riêng của họ, không cần khuyên. Bạn ép bạn cũng thế = cần đặt giới hạn. Phân biệt 'họ làm gì' vs 'họ ép tôi làm gì'. (3) DÙNG NGÔN NGỮ '我' (mình) thay vì '你' (bạn): 'mình thấy 996 mệt' tốt hơn 'bạn làm 996 hại sức khỏe'. Chuyển từ phán xét sang chia sẻ. (4) KHEN ĐIỂM TÍCH CỰC trước khi đưa khác biệt: 'mình rất khâm phục nỗ lực của bạn, nhưng cá nhân mình chọn cách khác'. Cấu trúc compliment-but mềm hóa cuộc nói chuyện. (5) CHỮA LÀNH bằng HOẠT ĐỘNG CHUNG: sau cuộc nói chuyện về bất đồng, đề xuất hoạt động cùng (đi cà phê, ăn món bạn yêu thích). Củng cố tình bạn vượt qua bất đồng. (6) TRÁNH TRANH LUẬN chính trị/tôn giáo/Việt-Trung quan hệ. Bất đồng lối sống = OK, bất đồng chính trị = mất bạn. Nếu bạn Trung Quốc nêu chủ đề chính trị, chuyển hướng nhanh: '这个比较复杂, 我们改天再聊'. (7) CHẤP NHẬN bạn không thể thay đổi bạn Trung Quốc, họ không thể thay đổi bạn. Tình bạn lành mạnh = tôn trọng khác biệt + chia sẻ điểm chung. Sau 1-2 năm, bạn sẽ thấy bạn Trung Quốc dần điều chỉnh (ít gây áp lực hơn) — đó là dấu hiệu tình bạn đang chín.",
+    exercises: [
+      { type: "fill-blank", question: "你喜欢拼事业, 我更喜欢平衡, 这没有 ___ 错。", answer: "对" },
+      {
+        type: "matching",
+        instruction: "Ghép cụm tiếng Trung lối sống với nghĩa tiếng Việt.",
+        pairs: [
+          { chinese: "996", pinyin: "jiǔ jiǔ liù", english: "9am-9pm 6 ngày/tuần (lao động cường độ)" },
+          { chinese: "见仁见智", pinyin: "jiàn rén jiàn zhì", english: "mỗi người một ý" },
+          { chinese: "三观不合", pinyin: "sān guān bù hé", english: "ba quan điểm không hợp" },
+          { chinese: "互相尊重", pinyin: "hù xiāng zūn zhòng", english: "tôn trọng lẫn nhau" }
+        ]
+      },
+      {
+        type: "translation",
+        vietnamese: "Mình hiểu cách nghĩ của bạn, nhưng mỗi người có lựa chọn riêng. Bạn thích lao đầu vào sự nghiệp, mình thích cân bằng hơn, không ai đúng sai.",
+        chinese: "我懂你的想法, 但每个人的选择都不一样。你喜欢拼事业, 我更喜欢平衡, 这没有对错。",
+        pinyin: "Wǒ dǒng nǐ de xiǎng fǎ, dàn měi gè rén de xuǎn zé dōu bù yī yàng. Nǐ xǐ huan pīn shì yè, wǒ gèng xǐ huan píng héng, zhè méi yǒu duì cuò."
+      }
+    ]
+  },
+  {
+    id: 84,
+    level: "B2",
+    category: "personal_social",
+    title: "安慰失去亲人的朋友",
+    pinyin: "ān wèi shī qù qīn rén de péng you",
+    topic: "Comforting a friend after a loss (family member or pet)",
+    title_vi: "An ủi bạn vừa mất người thân hoặc thú cưng",
+    title_en: "Comforting a friend after a loss",
+    sentences: [
+      {
+        chinese: "听到这个消息我很难过, 节哀顺变。",
+        pinyin: "Tīngdào zhège xiāoxi wǒ hěn nánguò, jié āi shùn biàn.",
+        english: "I'm so sorry to hear this — please bear the grief and accept what happened.",
+        vi: "Nghe tin này mình rất buồn, mong bạn nén đau thương vượt qua nghịch cảnh.",
+        pronunciation_focus: ["难过 → nánguò (buồn)", "节哀顺变 → jié āi shùn biàn (idiom chuẩn an ủi tang)", "消息 → xiāoxi (tin)", "听到 → tīngdào"]
+      },
+      {
+        chinese: "我能想象你现在有多难, 我陪着你。",
+        pinyin: "Wǒ néng xiǎngxiàng nǐ xiànzài yǒu duō nán, wǒ péizhe nǐ.",
+        english: "I can imagine how hard this is for you — I'm here with you.",
+        vi: "Mình hình dung được lúc này bạn khó khăn thế nào, mình ở bên bạn.",
+        pronunciation_focus: ["想象 → xiǎngxiàng (hình dung)", "陪着 → péizhe (ở bên)", "多难 → duō nán (khó thế nào)", "现在 → xiànzài"]
+      },
+      {
+        chinese: "你不用强装坚强, 想哭就哭吧。",
+        pinyin: "Nǐ bù yòng qiáng zhuāng jiānqiáng, xiǎng kū jiù kū ba.",
+        english: "You don't have to pretend to be strong — cry if you need to.",
+        vi: "Bạn không cần gồng lên mạnh mẽ, muốn khóc thì khóc đi.",
+        pronunciation_focus: ["强装 → qiáng zhuāng (gồng lên giả)", "坚强 → jiānqiáng (mạnh mẽ)", "想哭就哭 → xiǎng kū jiù kū", "不用 → bù yòng"]
+      },
+      {
+        chinese: "需要什么帮忙, 任何时候打电话给我。",
+        pinyin: "Xūyào shénme bāngmáng, rènhé shíhou dǎ diànhuà gěi wǒ.",
+        english: "If you need any help, call me anytime.",
+        vi: "Cần giúp gì cứ gọi mình bất cứ lúc nào.",
+        pronunciation_focus: ["帮忙 → bāngmáng (giúp đỡ)", "任何时候 → rènhé shíhou (bất cứ lúc nào)", "打电话 → dǎ diànhuà (gọi điện)", "需要 → xūyào"]
+      },
+      {
+        chinese: "时间会慢慢治愈, 但思念永远在心里。",
+        pinyin: "Shíjiān huì mànman zhìyù, dàn sīniàn yǒngyuǎn zài xīnlǐ.",
+        english: "Time will slowly heal, but remembrance will always be in your heart.",
+        vi: "Thời gian sẽ từ từ chữa lành, nhưng nhớ nhung mãi trong tim.",
+        pronunciation_focus: ["治愈 → zhìyù (chữa lành)", "思念 → sīniàn (nhớ nhung)", "永远 → yǒngyuǎn (mãi mãi)", "心里 → xīnlǐ"]
+      }
+    ],
+    vocab: [
+      { chinese: "节哀顺变", pinyin: "jié āi shùn biàn", english: "bear grief, accept change (condolence idiom)", vi: "nén đau thương, vượt qua nghịch cảnh" },
+      { chinese: "去世", pinyin: "qù shì", english: "to pass away (formal)", vi: "qua đời" },
+      { chinese: "走了", pinyin: "zǒu le", english: "passed away (gentler)", vi: "đã đi rồi" },
+      { chinese: "亲人", pinyin: "qīn rén", english: "family member / loved one", vi: "người thân" },
+      { chinese: "葬礼", pinyin: "zàng lǐ", english: "funeral", vi: "tang lễ" },
+      { chinese: "悼念", pinyin: "dào niàn", english: "to mourn", vi: "tưởng niệm" },
+      { chinese: "陪伴", pinyin: "péi bàn", english: "to accompany", vi: "ở bên" },
+      { chinese: "治愈", pinyin: "zhì yù", english: "to heal", vi: "chữa lành" },
+      { chinese: "思念", pinyin: "sī niàn", english: "to miss / remembrance", vi: "nhớ nhung" },
+      { chinese: "白事", pinyin: "bái shì", english: "funeral matters (set phrase)", vi: "việc tang" }
+    ],
+    dialogue: [
+      { speaker: "朋友", chinese: "梅, 我外婆昨天走了。", pinyin: "Méi, wǒ wàipó zuótiān zǒu le.", english: "Mei, my grandma passed yesterday.", vi: "Mai, bà ngoại mình hôm qua mất rồi." },
+      { speaker: "梅", chinese: "天啊, 节哀顺变。我能为你做什么吗?", pinyin: "Tiān a, jié āi shùn biàn. Wǒ néng wèi nǐ zuò shénme ma?", english: "Oh no, my deepest condolences. What can I do for you?", vi: "Trời ơi, mong bạn nén đau thương. Mình có thể làm gì cho bạn không?" },
+      { speaker: "朋友", chinese: "现在很难受, 不知道说什么。", pinyin: "Xiànzài hěn nánshòu, bù zhīdào shuō shénme.", english: "Hurting now, don't know what to say.", vi: "Bây giờ mình đau lắm, không biết nói gì." },
+      { speaker: "梅", chinese: "不需要说什么, 我陪着你就好。我现在过来吗?", pinyin: "Bù xūyào shuō shénme, wǒ péizhe nǐ jiùhǎo. Wǒ xiànzài guòlái ma?", english: "No need to say anything — I'm here. Should I come over now?", vi: "Không cần nói gì cả, mình ở bên bạn là đủ. Mình qua bên bạn ngay nhé?" }
+    ],
+    dialogue_long: [
+      { speaker: "朋友", chinese: "梅... 我家小白今天早上走了。我陪了它十二年。", pinyin: "Méi... wǒ jiā Xiǎobái jīntiān zǎoshang zǒu le. Wǒ péi le tā shí'èr nián.", english: "Mei... our Xiaobai (dog) passed this morning. I had her 12 years.", vi: "Mai... Tiểu Bạch nhà mình sáng nay đi rồi. Mình ở bên nó 12 năm." },
+      { speaker: "梅", chinese: "丽丽, 我太难过了。十二年是很深的感情。", pinyin: "Lìli, wǒ tài nánguò le. Shí'èr nián shì hěn shēn de gǎnqíng.", english: "Lili, I'm so sad. 12 years is deep love.", vi: "Lệ Lệ, mình buồn quá. 12 năm là tình cảm rất sâu." },
+      { speaker: "朋友", chinese: "我从大学带它回家, 它陪我经历了所有事情, 失业, 分手, 搬家。它就像家人。", pinyin: "Wǒ cóng dàxué dài tā huí jiā, tā péi wǒ jīnglì le suǒyǒu shìqing, shīyè, fēnshǒu, bānjiā. Tā jiùxiàng jiārén.", english: "I brought her home from college — she went through everything with me: job loss, breakups, moves. She was family.", vi: "Mình đem nó về từ đại học, nó ở bên mình qua hết mọi chuyện: thất nghiệp, chia tay, chuyển nhà. Nó giống người nhà." },
+      { speaker: "梅", chinese: "宠物就是家人, 失去家人的痛我懂。我去年我家的猫也走了, 那段时间我有时候吃饭都没胃口。", pinyin: "Chǒngwù jiùshì jiārén, shīqù jiārén de tòng wǒ dǒng. Wǒ qùnián wǒ jiā de māo yě zǒu le, nà duàn shíjiān wǒ yǒushíhou chīfàn dōu méi wèikǒu.", english: "Pets are family, the pain of losing family I understand. Last year my cat passed too — for a while I had no appetite.", vi: "Thú cưng cũng là người nhà, mất người nhà mình hiểu nỗi đau. Năm ngoái mèo nhà mình cũng đi, thời gian đó có lúc mình không ăn nổi." },
+      { speaker: "朋友", chinese: "今天早上发现的, 我哭了一整天。同事都让我请假, 但我不想一个人呆在家里, 太空了。", pinyin: "Jīntiān zǎoshang fāxiàn de, wǒ kū le yī zhěng tiān. Tóngshì dōu ràng wǒ qǐng jià, dàn wǒ bù xiǎng yī gè rén dāi zài jiā lǐ, tài kōng le.", english: "Found her this morning, cried all day. Colleagues said take leave, but I don't want to be home alone — too empty.", vi: "Sáng nay phát hiện, mình khóc cả ngày. Đồng nghiệp bảo mình nghỉ phép, nhưng mình không muốn ở một mình trong nhà, trống trải quá." },
+      { speaker: "梅", chinese: "你今晚来我家吃饭吧, 我做你喜欢的越南河粉。我们不用聊很多, 你想哭就哭, 想说就说, 不想说也没关系。", pinyin: "Nǐ jīn wǎn lái wǒ jiā chīfàn ba, wǒ zuò nǐ xǐhuan de Yuènán héfěn. Wǒmen bùyòng liáo hěn duō, nǐ xiǎng kū jiù kū, xiǎng shuō jiù shuō, bù xiǎng shuō yě méi guānxi.", english: "Come to my place for dinner tonight, I'll make your favorite Vietnamese pho. We don't have to talk much — cry if you want, talk if you want, silence is fine too.", vi: "Tối nay sang nhà mình ăn cơm đi, mình nấu phở Việt bạn thích. Mình không cần nói nhiều, muốn khóc thì khóc, muốn nói thì nói, không nói cũng không sao." },
+      { speaker: "朋友", chinese: "好... 我可能会哭很多, 不要嫌烦。", pinyin: "Hǎo... wǒ kěnéng huì kū hěn duō, bù yào xián fán.", english: "Okay... I might cry a lot, don't mind.", vi: "Được... mình có thể khóc nhiều, đừng phiền nhé." },
+      { speaker: "梅", chinese: "丽丽, 你怎么想我都不嫌烦。难过是正常的, 不需要假装坚强。", pinyin: "Lìli, nǐ zěnme xiǎng wǒ dōu bù xián fán. Nánguò shì zhèngcháng de, bù xūyào jiǎzhuāng jiānqiáng.", english: "Lili, however you feel doesn't bother me. Sad is normal, no need to pretend strong.", vi: "Lệ Lệ, bạn buồn thế nào mình cũng không phiền. Buồn là bình thường, không cần giả vờ mạnh mẽ." },
+      { speaker: "朋友", chinese: "谢谢你。我之前有过几个朋友失去宠物, 我都不知道说什么, 只会说'别哭了'。", pinyin: "Xièxie nǐ. Wǒ zhīqián yǒu guò jǐ gè péngyou shīqù chǒngwù, wǒ dōu bù zhīdào shuō shénme, zhǐ huì shuō 'bié kū le'.", english: "Thanks. Before, when friends lost pets, I didn't know what to say — only 'don't cry'.", vi: "Cảm ơn bạn. Trước đây bạn mình mất thú cưng, mình không biết nói gì, chỉ biết nói 'đừng khóc nữa'." },
+      { speaker: "梅", chinese: "其实'别哭了'反而让人不舒服, 因为悲伤是要释放的。最好的安慰就是陪着, 不评价不催促。", pinyin: "Qíshí 'bié kū le' fǎn'ér ràng rén bù shūfu, yīnwèi bēishāng shì yào shìfàng de. Zuì hǎo de ānwèi jiùshì péizhe, bù píngjià bù cuīcù.", english: "Actually 'don't cry' makes people uncomfortable — sadness needs release. Best comfort is being there, no judgment no rushing.", vi: "Thực ra 'đừng khóc nữa' lại làm người ta khó chịu, vì nỗi buồn cần được giải tỏa. An ủi tốt nhất là ở bên, không phán xét không thúc giục." },
+      { speaker: "朋友", chinese: "我学到了。下次我朋友失去什么的时候, 我也这样陪她。", pinyin: "Wǒ xué dào le. Xià cì wǒ péngyou shīqù shénme de shíhou, wǒ yě zhèyàng péi tā.", english: "I'll learn from this. Next time a friend loses someone, I'll be there for her this way.", vi: "Mình học được rồi. Lần sau bạn mình mất gì đó, mình cũng sẽ ở bên như thế." },
+      { speaker: "梅", chinese: "你要不要把小白埋在公园那边的树下? 我陪你去。明天周末。", pinyin: "Nǐ yào bù yào bǎ Xiǎobái mái zài gōngyuán nà biān de shù xià? Wǒ péi nǐ qù. Míngtiān zhōumò.", english: "Want to bury Xiaobai under the tree in the park? I'll go with you. Tomorrow weekend.", vi: "Bạn có muốn chôn Tiểu Bạch dưới gốc cây bên công viên không? Mình đi cùng bạn. Mai cuối tuần." },
+      { speaker: "朋友", chinese: "想, 但我自己一个人做不到。", pinyin: "Xiǎng, dàn wǒ zìjǐ yī gè rén zuò bù dào.", english: "Yes, but I can't do it alone.", vi: "Muốn, nhưng mình một mình không làm được." },
+      { speaker: "梅", chinese: "明天上午八点我来接你, 一起去。", pinyin: "Míngtiān shàngwǔ bā diǎn wǒ lái jiē nǐ, yīqǐ qù.", english: "Tomorrow 8 AM I'll pick you up, go together.", vi: "Mai 8 giờ sáng mình đến đón bạn, cùng đi." },
+      { speaker: "朋友", chinese: "梅, 谢谢你。时间会慢慢治愈, 但思念永远在心里。", pinyin: "Méi, xièxie nǐ. Shíjiān huì mànman zhìyù, dàn sīniàn yǒngyuǎn zài xīnlǐ.", english: "Mei, thank you. Time will slowly heal, but remembrance stays.", vi: "Mai, cảm ơn bạn. Thời gian sẽ từ từ chữa lành, nhưng nhớ nhung mãi trong tim." },
+      { speaker: "梅", chinese: "一直在。", pinyin: "Yīzhí zài.", english: "Always here.", vi: "Luôn ở đây." }
+    ],
+    roleplay_prompts: [
+      "Bạn Trung Quốc nhắn tin báo bố vừa mất. Bạn không thể bay sang dự tang ngay (visa, công việc). Hãy nhắn tin an ủi đầy đủ + đề xuất cách thức cụ thể bạn có thể giúp từ xa (gọi điện hằng ngày, gửi hoa tang qua app, đặt tiền trợ phúng qua WeChat). Dùng cụm '节哀顺变' và '虽然我不能立刻过来, 但...'.",
+      "Bạn Trung Quốc đã 1 tháng kể từ khi mẹ mất, vẫn rất buồn. Đồng nghiệp đã ngừng hỏi thăm, nghĩ 'phải bước tiếp'. Bạn (người Việt) thấy bạn ấy vẫn cần. Hãy chủ động: rủ đi cà phê, hỏi thăm, đề nghị nói về mẹ nếu muốn. Tránh nói 'phải mạnh mẽ lên'.",
+      "Bạn Trung Quốc mất một người bạn thân (tự sát). Đây là tình huống nhạy cảm — KHÔNG đi sâu vào nguyên nhân/hỏi 'tại sao'. Chỉ ở bên + lắng nghe nếu họ muốn chia sẻ + tránh phán xét. Ưu tiên: sự hiện diện vô điều kiện. Cụm '我在这里' (mình ở đây)."
+    ],
+    register_notes: "An ủi sau mất mát ở Trung Quốc dùng register CỰC TRANG TRỌNG ban đầu, dần dần mềm. Người Trung Quốc thường ngại nói trực tiếp về cái chết — dùng từ giảm nhẹ.\n\nTừ thay thế '死' (sǐ — chết, quá thẳng):\n- 走了 (zǒu le — đã đi) — nhẹ nhàng, gần\n- 去世 (qù shì — qua đời) — formal, neutral\n- 离世 (lí shì — rời thế) — formal, văn vẻ\n- 不在了 (bù zài le — không còn) — gián tiếp\n- 仙逝 (xiān shì — tiên thệ) — rất formal, dùng cho người lớn tuổi\n\nCác cụm chuẩn an ủi:\n- '节哀顺变' (jié āi shùn biàn) — cụm cổ điển, formal\n- '请您节哀' (xin anh nén đau) — formal hơn\n- '我能想象你有多难' (mình hình dung được bạn khó thế nào)\n- '我陪着你' (mình ở bên bạn)\n- '不需要假装坚强' (không cần giả mạnh mẽ)\n- '需要什么帮忙告诉我' (cần giúp gì nói mình)\n\nTránh:\n- '别哭了' (đừng khóc nữa) — khiến người ta cảm thấy bị từ chối\n- '人都死了, 哭也没用' (chết rồi, khóc vô ích) — vô cảm\n- '你要坚强' (phải mạnh mẽ) — áp lực\n- '想开点' (nghĩ thoáng đi) — coi nhẹ nỗi đau\n- '他在天堂会很好' (họ ở thiên đàng sẽ tốt) — giả định tôn giáo, có thể không phù hợp\n\nVỀ ĐIỆN THOẠI vs GẶP MẶT: tin báo lần đầu thường qua text. Nhưng khi bạn nhận tin, ƯU TIÊN GẶP MẶT trong 24-48 giờ nếu cùng thành phố. Không thể gặp = gọi video, không phải chỉ text.\n\nVỀ VIẾNG THÁNG (吊唁 — diàoyàn): đến nhà tang chủ, mặc đồ tối màu (đen/trắng/xám — KHÔNG đỏ/sặc sỡ), mang phong bao tiền trợ phúng (奠仪 — diànyí, 200-1,000 tệ tùy thân). Đốt 3 nén nhang, cúi đầu 3 lần. Không chụp ảnh. Không cười. Ở 30 phút - 1 giờ rồi rời, không kéo dài.",
+    idiom_glosses: [
+      {
+        idiom: "节哀顺变",
+        literal: "tiết bi ai, thuận biến hóa (jié āi shùn biàn)",
+        meaning: "Hạn chế đau buồn, thuận theo biến cố — cụm cổ điển formal nhất để an ủi tang. Dùng trực tiếp với người mất thân hoặc trong văn bản chia buồn. Không thay thế tốt — học thuộc.",
+        example: "听到您父亲去世, 节哀顺变。"
+      },
+      {
+        idiom: "化悲痛为力量",
+        literal: "biến đau buồn thành sức mạnh (huà bēi tòng wéi lì liang)",
+        meaning: "Chuyển hóa nỗi đau thành động lực — an ủi giai đoạn 2 (sau lễ tang, khi bạn bắt đầu hồi phục). Cụm tích cực nhưng không vô cảm. Tránh dùng quá sớm — sẽ bị coi là vội vã.",
+        example: "我希望你能化悲痛为力量, 好好生活。"
+      },
+      {
+        idiom: "阴阳两隔",
+        literal: "âm dương hai cách (yīn yáng liǎng gé)",
+        meaning: "Cách trở sống chết — diễn tả nỗi đau xa cách vĩnh viễn. Cụm văn vẻ, dùng để cảm thông cho mất mát đặc biệt sâu (vợ chồng, con cái). Mạnh, không lạm dụng.",
+        example: "母亲走了, 我们阴阳两隔, 心里空荡荡的。"
+      },
+      {
+        idiom: "时间会治愈",
+        literal: "thời gian sẽ chữa lành (shí jiān huì zhì yù)",
+        meaning: "Thời gian là thuốc chữa lành — câu an ủi phổ biến. KHÔNG là idiom 4 chữ thuần nhưng cụm cốt lõi. Dùng giai đoạn 3 (vài tuần sau), không dùng ngay sau khi mất. Thêm '但思念永远在' (nhưng nhớ nhung mãi còn) để không tỏ ra coi nhẹ.",
+        example: "时间会慢慢治愈伤痛, 但思念永远在心里。"
+      }
+    ],
+    cultural_notes_vi: "An ủi sau mất mát trong văn hóa Trung Quốc đại lục có những đặc thù khác Việt Nam:\n\n(1) THỜI GIAN TANG: 7 ngày đầu (头七 — tóu qī) là thời gian quan trọng nhất, gia đình tập trung. Bạn bè đến viếng trong 7 ngày này. Sau 49 ngày (七七 — qī qī, theo Phật giáo) là kết thúc 'tang nặng'. 100 ngày + 1 năm là các mốc nhỏ. Người Việt có khái niệm tương tự (49 ngày, 100 ngày, giỗ) — cụm văn hóa shared.\n\n(2) MÀU SẮC TANG: trắng + đen + xám. KHÔNG đỏ tuyệt đối trong 49 ngày. Nếu bạn được mời đến nhà tang chủ, mặc TỐI MÀU. Mang phong bao tiền trợ phúng (奠仪 / 白包) — số lẻ (101, 201, 501, 1001) — KHÔNG số chẵn (200, 500). Khác cưới hỏi (số chẵn), đám tang dùng số lẻ.\n\n(3) NHẮN TIN TRONG TANG: KHÔNG dùng emoji vui (😊😄). Tin nhắn trang trọng, ngắn gọn. Mẫu chuẩn: '惊闻[称呼]噩耗, 万分悲痛。请节哀顺变, 多保重身体。如有需要, 随时找我。' (Đột nhiên nghe tin xấu của [người], vô cùng đau buồn. Xin nén đau thương, giữ gìn sức khỏe. Cần gì cứ tìm em.)\n\n(4) THĂM HỎI SAU 30 NGÀY: nhiều người Trung Quốc cảm thấy bị 'bỏ rơi' sau tuần đầu — bạn bè ngừng hỏi thăm. Là người Việt, BẠN có thể tạo khác biệt: nhắn tin nhẹ tuần thứ 2, thứ 4, tháng thứ 2 — chỉ '想到你了, 你怎么样了?' (mình nghĩ đến bạn, bạn dạo này thế nào). Không cần nhiều.\n\n(5) THÚ CƯNG: mất chó/mèo ở Trung Quốc đại lục đô thị giờ được công nhận là nỗi đau thật sự (giới trẻ + thành phố lớn). Đối xử như mất người thân nhỏ. Tang chôn cất tại 宠物殡仪馆 (pet funeral home) ở Bắc Kinh, Thượng Hải. Người lớn tuổi đôi khi không hiểu nỗi đau này — đừng kể với họ nếu họ không thân.\n\n(6) TỰ TỬ: chủ đề rất nhạy cảm + còn ít thảo luận công khai ở Trung Quốc. Khi bạn mất ai đó vì tự tử, KHÔNG hỏi 'tại sao'. KHÔNG đoán nguyên nhân. KHÔNG bình luận về chứng trầm cảm trừ khi bạn thân biết. Chỉ ở bên + lắng nghe.\n\n(7) NỀN TẢNG TÂM LINH: Trung Quốc đại lục có Phật giáo, Đạo giáo, không tôn giáo (atheist). KHÔNG nói 'họ ở thiên đàng' (天堂) trừ khi bạn biết người mất là Cơ Đốc giáo. Cụm trung tính: '愿他/她安息' (mong họ yên nghỉ), '一路走好' (đi yên — chúc đường về của người chết).\n\nVỀ TỪ '走了' (zǒu le — đã đi): cụm rất phổ biến, gentle. Khi bạn Trung Quốc nhắn '我外婆走了', họ đang nói bà ngoại mất. KHÔNG là 'đã đi đâu đó' theo nghĩa du lịch. Phản ứng đúng: '我很难过' (mình rất buồn) + '节哀顺变'.\n\nVỀ KHÔNG NÓI GÌ (沉默 — chénmò): trong văn hóa Trung Quốc, im lặng đồng cảm là OK. Bạn không cần nói nhiều — chỉ cần ở đó. 'Sự hiện diện > lời an ủi'. Đôi khi câu hay nhất là không nói gì, chỉ đưa khăn giấy và pha trà.",
+    tip_advice_vi: "(1) PHẢN HỒI NHANH khi nhận tin (1-2 giờ). Đừng chờ 'tìm câu hay'. Câu đơn giản '我太难过了, 节哀顺变, 我陪你' (mình rất buồn, nén đau thương, mình ở bên bạn) đủ và đúng. (2) ĐỀ XUẤT CỤ THỂ thay vì câu chung 'cần gì gọi mình'. Người đang đau không có năng lực yêu cầu. Hãy đề xuất rõ: 'tối nay sang nhà mình ăn cơm', 'mai mình đi mua đồ tang cùng', 'cuối tuần đi bộ công viên'. (3) MANG ĐỒ ĂN: người đau buồn quên ăn. Mang cơm, súp, đồ ăn dễ tiêu (cháo, súp gà). KHÔNG bánh ngọt sặc sỡ. (4) LẮNG NGHE > NÓI: trong cuộc gặp đầu, nói < 30% thời gian. 70% lắng nghe + đặt câu hỏi mở ('bạn nhớ nhất chuyện gì với bà?'). Để bạn ấy nói về người mất — đó là quá trình chữa lành. (5) ĐỪNG SỢ NƯỚC MẮT — của họ và của bạn. Nếu bạn cũng khóc, đó là chia sẻ chân thành. Đừng giả vờ bình thản. (6) NHẮN TIN ĐỀU 1 LẦN/TUẦN trong 2 tháng đầu. Mẫu '想到你了, 怎么样了?' (mình nghĩ đến bạn, bạn dạo này thế nào). Không cần dài. Chỉ cần đều. Nhiều người ngừng nhắn sau tuần đầu — bạn duy trì = khác biệt. (7) NHỚ NGÀY GIỖ (1 năm): đặt nhắc nhở. Nhắn tin: '今天是X一周年, 我也想她' (hôm nay là 1 năm mất X, mình cũng nhớ cô ấy). Cử chỉ này không bao giờ quên — bạn chứng minh tình bạn dài hạn.",
+    exercises: [
+      { type: "fill-blank", question: "听到这个消息我很难过, ___ 顺变。", answer: "节哀" },
+      {
+        type: "matching",
+        instruction: "Ghép cụm tiếng Trung an ủi tang với nghĩa tiếng Việt.",
+        pairs: [
+          { chinese: "节哀顺变", pinyin: "jié āi shùn biàn", english: "nén đau thương vượt qua nghịch cảnh" },
+          { chinese: "走了", pinyin: "zǒu le", english: "đã đi rồi (mất)" },
+          { chinese: "陪伴", pinyin: "péi bàn", english: "ở bên" },
+          { chinese: "时间会治愈", pinyin: "shí jiān huì zhì yù", english: "thời gian sẽ chữa lành" }
+        ]
+      },
+      {
+        type: "translation",
+        vietnamese: "Mình hình dung được lúc này bạn khó khăn thế nào, mình ở bên bạn. Bạn không cần gồng lên mạnh mẽ.",
+        chinese: "我能想象你现在有多难, 我陪着你。你不用强装坚强。",
+        pinyin: "Wǒ néng xiǎng xiàng nǐ xiàn zài yǒu duō nán, wǒ péi zhe nǐ. Nǐ bù yòng qiáng zhuāng jiān qiáng."
       }
     ]
   }
