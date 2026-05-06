@@ -8,6 +8,64 @@ const corsHeaders = {
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 }
 
+type VerifyPaymentBody = {
+  imageUrl?: unknown
+  tierId?: unknown
+}
+
+type ParsedOcr = {
+  transaction_id?: unknown
+  amount?: unknown
+  date?: unknown
+  payer_email?: unknown
+  payer_name?: unknown
+  confidence?: unknown
+}
+
+function asNonEmptyString(value: unknown): string | null {
+  if (typeof value !== 'string') return null
+  const trimmed = value.trim()
+  return trimmed.length > 0 ? trimmed : null
+}
+
+function extractPaymentProofPath(imageUrl: string): string | null {
+  const trimmed = imageUrl.trim()
+  if (!trimmed) return null
+
+  const markers = [
+    '/storage/v1/object/public/payment-proofs/',
+    '/storage/v1/object/sign/payment-proofs/',
+    '/storage/v1/object/payment-proofs/',
+  ]
+
+  for (const marker of markers) {
+    const idx = trimmed.indexOf(marker)
+    if (idx >= 0) {
+      return trimmed.slice(idx + marker.length).replace(/^\/+/, '')
+    }
+  }
+
+  if (trimmed.startsWith('payment-proofs/')) {
+    return trimmed.slice('payment-proofs/'.length).replace(/^\/+/, '')
+  }
+
+  if (!trimmed.includes('://')) {
+    return trimmed.replace(/^\/+/, '')
+  }
+
+  try {
+    const url = new URL(trimmed)
+    const match = url.pathname.match(/\/storage\/v1\/object\/(?:public|sign)\/payment-proofs\/(.+)$/)
+    return match?.[1]?.replace(/^\/+/, '') ?? null
+  } catch {
+    return null
+  }
+}
+
+function roundMoney(value: number): number {
+  return Math.round(value * 100) / 100
+}
+
 serve(async (req) => {
   if (req.method === 'OPTIONS') {
     return new Response('ok', { headers: corsHeaders })
@@ -18,173 +76,191 @@ serve(async (req) => {
     if (!authHeader) {
       return new Response(
         JSON.stringify({ error: 'Authentication required' }),
-        { status: 401, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+        { status: 401, headers: { ...corsHeaders, 'Content-Type': 'application/json' } },
       )
     }
 
     const supabaseClient = createClient(
       Deno.env.get('SUPABASE_URL') ?? '',
       Deno.env.get('SUPABASE_ANON_KEY') ?? '',
-      { global: { headers: { Authorization: authHeader } } }
+      { global: { headers: { Authorization: authHeader } } },
     )
 
     const { data: { user }, error: authError } = await supabaseClient.auth.getUser()
     if (authError || !user) {
       return new Response(
         JSON.stringify({ error: 'Invalid authentication' }),
-        { status: 401, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+        { status: 401, headers: { ...corsHeaders, 'Content-Type': 'application/json' } },
       )
     }
 
-    // Rate limit manual payment submissions
     try {
-      const clientIP = getClientIP(req);
-      await rateLimit(`verify-payment:${user.id}:${clientIP}`, 5, 300_000); // 5 calls per 5 minutes
+      const clientIP = getClientIP(req)
+      await rateLimit(`verify-payment:${user.id}:${clientIP}`, 5, 300_000)
     } catch (error) {
       if (error instanceof Error && error.message === 'RATE_LIMIT_EXCEEDED') {
         return new Response(
           JSON.stringify({ error: 'Too many payment submissions. Please wait a few minutes.' }),
-          { status: 429, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-        );
+          { status: 429, headers: { ...corsHeaders, 'Content-Type': 'application/json' } },
+        )
       }
     }
 
-    const { imageUrl, tierId, username, expectedAmount } = await req.json()
+    const body = (await req.json().catch(() => ({}))) as VerifyPaymentBody
+    const imageUrl = asNonEmptyString(body.imageUrl)
+    const tierId = asNonEmptyString(body.tierId)
 
-    if (!imageUrl || !tierId || !username) {
+    if (!imageUrl || !tierId) {
       throw new Error('Missing required fields')
     }
 
-    // Validate username
-    if (username.length > 100) {
-      throw new Error('Username must be less than 100 characters')
-    }
-
-    // Validate expectedAmount
-    if (expectedAmount && (isNaN(expectedAmount) || expectedAmount <= 0)) {
-      throw new Error('Invalid expected amount')
-    }
-
-    // Check user suspension status
     const { data: modStatus } = await supabaseClient
       .from('user_moderation_status')
       .select('is_suspended')
       .eq('user_id', user.id)
-      .single();
+      .single()
 
     if (modStatus?.is_suspended) {
       return new Response(
         JSON.stringify({ error: 'Account suspended for policy violations' }),
-        { status: 403, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-      );
+        { status: 403, headers: { ...corsHeaders, 'Content-Type': 'application/json' } },
+      )
     }
 
-    // Create service role client for storage access
-    const supabaseServiceClient = createClient(
-      Deno.env.get('SUPABASE_URL') ?? '',
-      Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') ?? ''
-    )
+    const { data: tierRow, error: tierError } = await supabaseClient
+      .from('subscription_tiers')
+      .select('id, price_monthly, is_active')
+      .eq('id', tierId)
+      .eq('is_active', true)
+      .maybeSingle()
 
-    // Extract file path from URL
-    const urlParts = imageUrl.split('/storage/v1/object/public/payment-proofs/')
-    if (urlParts.length < 2) {
+    if (tierError || !tierRow) {
+      return new Response(
+        JSON.stringify({ error: 'Invalid or inactive tier' }),
+        { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } },
+      )
+    }
+
+    const trustedExpectedAmountRaw = Number(tierRow.price_monthly)
+    const trustedExpectedAmount = Number.isFinite(trustedExpectedAmountRaw)
+      ? roundMoney(trustedExpectedAmountRaw)
+      : null
+
+    const { data: profileRow } = await supabaseClient
+      .from('profiles')
+      .select('username')
+      .eq('id', user.id)
+      .maybeSingle()
+
+    const resolvedUsername =
+      asNonEmptyString((profileRow as { username?: unknown } | null)?.username) ??
+      asNonEmptyString(user.email) ??
+      user.id
+
+    const filePath = extractPaymentProofPath(imageUrl)
+    if (!filePath) {
       throw new Error('Invalid storage URL')
     }
-    const filePath = urlParts[1]
 
-    // Download the image using service role
-    const { data: imageData, error: downloadError } = await supabaseServiceClient.storage
-      .from('payment-proofs')
-      .download(filePath)
+    const fileOwnerId = filePath.split('/')[0]?.trim() || ''
+    const ownsProof = fileOwnerId === user.id
 
-    if (downloadError || !imageData) {
-      console.error('Download error:', downloadError)
-      throw new Error('Failed to download image')
-    }
-    
-    const imageBuffer = await imageData.arrayBuffer()
-    const base64Image = btoa(String.fromCharCode(...new Uint8Array(imageBuffer)))
+    const supabaseServiceClient = createClient(
+      Deno.env.get('SUPABASE_URL') ?? '',
+      Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') ?? '',
+    )
 
-    console.log('Analyzing payment screenshot with OCR...')
+    let extracted: ParsedOcr | null = null
+    let confidence = 0
+    let extractedAmount = 0
+    let proofAnalyzed = false
 
-    // Use Lovable AI vision to extract text from screenshot
-    const LOVABLE_API_KEY = Deno.env.get('LOVABLE_API_KEY')
-    if (!LOVABLE_API_KEY) {
-      throw new Error('LOVABLE_API_KEY not configured')
-    }
+    if (ownsProof) {
+      const { data: imageData, error: downloadError } = await supabaseServiceClient.storage
+        .from('payment-proofs')
+        .download(filePath)
 
-    const aiResponse = await fetch('https://ai.gateway.lovable.dev/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${LOVABLE_API_KEY}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        model: 'google/gemini-2.5-flash',
-        messages: [
-          {
-            role: 'system',
-            content: 'You are a payment verification assistant. Extract transaction details from PayPal payment screenshots. Return ONLY valid JSON with these fields: transaction_id, amount (numeric), date (ISO format), payer_email, payer_name, confidence (0-1). If information is unclear or missing, set confidence lower.'
-          },
-          {
-            role: 'user',
-            content: [
-              {
-                type: 'text',
-                text: `Extract PayPal transaction details from this screenshot. Expected amount: $${expectedAmount}. Look for: transaction ID, amount paid, date, payer email/name.`
-              },
-              {
-                type: 'image_url',
-                image_url: {
-                  url: `data:image/jpeg;base64,${base64Image}`
-                }
+      if (downloadError || !imageData) {
+        console.error('Payment proof download failed')
+      } else {
+        const imageBuffer = await imageData.arrayBuffer()
+        const base64Image = btoa(String.fromCharCode(...new Uint8Array(imageBuffer)))
+        const LOVABLE_API_KEY = Deno.env.get('LOVABLE_API_KEY')
+
+        if (!LOVABLE_API_KEY) {
+          console.error('LOVABLE_API_KEY not configured')
+        } else {
+          const aiResponse = await fetch('https://ai.gateway.lovable.dev/v1/chat/completions', {
+            method: 'POST',
+            headers: {
+              'Authorization': `Bearer ${LOVABLE_API_KEY}`,
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              model: 'google/gemini-2.5-flash',
+              messages: [
+                {
+                  role: 'system',
+                  content: 'You are a payment verification assistant. Extract transaction details from PayPal payment screenshots. Return ONLY valid JSON with these fields: transaction_id, amount (numeric), date (ISO format), payer_email, payer_name, confidence (0-1). If information is unclear or missing, set confidence lower.',
+                },
+                {
+                  role: 'user',
+                  content: [
+                    {
+                      type: 'text',
+                      text: `Extract PayPal transaction details from this screenshot. Expected amount: $${trustedExpectedAmount ?? 0}. Look for: transaction ID, amount paid, date, payer email/name.`,
+                    },
+                    {
+                      type: 'image_url',
+                      image_url: {
+                        url: `data:image/jpeg;base64,${base64Image}`,
+                      },
+                    },
+                  ],
+                },
+              ],
+              max_tokens: 500,
+            }),
+          })
+
+          if (!aiResponse.ok) {
+            const errorText = await aiResponse.text()
+            console.error('AI API error:', errorText)
+          } else {
+            const aiData = await aiResponse.json()
+            const content = aiData.choices?.[0]?.message?.content
+
+            if (typeof content === 'string' && content.trim()) {
+              try {
+                const jsonMatch = content.match(/```json\n([\s\S]*?)\n```/) || content.match(/```\n([\s\S]*?)\n```/)
+                const jsonString = jsonMatch ? jsonMatch[1] : content
+                const parsed = JSON.parse(jsonString) as ParsedOcr
+                extracted = parsed
+                confidence = Number(parsed.confidence ?? 0)
+                extractedAmount = Number(parsed.amount ?? 0)
+                proofAnalyzed = true
+              } catch {
+                console.error('Failed to parse OCR response')
               }
-            ]
+            }
           }
-        ],
-        max_tokens: 500
-      }),
-    })
-
-    if (!aiResponse.ok) {
-      const errorText = await aiResponse.text()
-      console.error('AI API error:', errorText)
-      throw new Error('Failed to analyze screenshot')
+        }
+      }
     }
 
-    const aiData = await aiResponse.json()
-    const content = aiData.choices?.[0]?.message?.content
-    
-    if (!content) {
-      throw new Error('No response from AI')
-    }
-
-    console.log('AI Response:', content)
-
-    // Parse JSON response
-    let extracted
-    try {
-      // Remove markdown code blocks if present
-      const jsonMatch = content.match(/```json\n([\s\S]*?)\n```/) || content.match(/```\n([\s\S]*?)\n```/)
-      const jsonString = jsonMatch ? jsonMatch[1] : content
-      extracted = JSON.parse(jsonString)
-    } catch (e) {
-      console.error('Failed to parse AI response:', content)
-      throw new Error('Failed to parse extracted data')
-    }
-
-    const confidence = extracted.confidence || 0
-    const extractedAmount = parseFloat(extracted.amount || '0')
-    
-    // Auto-approve if high confidence and amount matches
     let status = 'pending'
     let verificationMethod = 'pending'
-    
-    if (confidence >= 0.85 && Math.abs(extractedAmount - expectedAmount) < 0.01) {
+
+    if (
+      ownsProof &&
+      proofAnalyzed &&
+      trustedExpectedAmount !== null &&
+      confidence >= 0.85 &&
+      Math.abs(extractedAmount - trustedExpectedAmount) < 0.01
+    ) {
       status = 'auto_approved'
       verificationMethod = 'ocr_auto'
-      
-      // Create subscription immediately
+
       const { error: subError } = await supabaseClient
         .from('user_subscriptions')
         .insert({
@@ -192,44 +268,41 @@ serve(async (req) => {
           tier_id: tierId,
           status: 'active',
           current_period_start: new Date().toISOString(),
-          current_period_end: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString() // 1 year
+          current_period_end: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString(),
         })
-      
+
       if (subError) {
         console.error('Failed to create subscription:', subError)
       } else {
-        // Audit log for auto-approved manual payment
         await auditLog({
           type: 'MANUAL_PAYMENT_AUTO_APPROVED',
           user_id: user.id,
           metadata: {
             tier_id: tierId,
-            username: username,
             extracted_amount: extractedAmount,
-            expected_amount: expectedAmount,
-            confidence: confidence,
-            transaction_id: extracted.transaction_id,
+            expected_amount: trustedExpectedAmount,
+            confidence,
+            transaction_id: extracted?.transaction_id ? String(extracted.transaction_id) : null,
           },
-        });
+        })
       }
     }
 
-    // Save submission record
     const { error: insertError } = await supabaseClient
       .from('payment_proof_submissions')
       .insert({
         user_id: user.id,
         tier_id: tierId,
         screenshot_url: imageUrl,
-        username: username,
-        extracted_transaction_id: extracted.transaction_id,
-        extracted_amount: extractedAmount,
-        extracted_date: extracted.date,
-        extracted_email: extracted.payer_email || extracted.payer_name,
-        ocr_confidence: confidence,
-        status: status,
+        username: resolvedUsername,
+        extracted_transaction_id: extracted?.transaction_id ? String(extracted.transaction_id) : null,
+        extracted_amount: extractedAmount || null,
+        extracted_date: extracted?.date ? String(extracted.date) : null,
+        extracted_email: extracted?.payer_email ? String(extracted.payer_email) : (extracted?.payer_name ? String(extracted.payer_name) : null),
+        ocr_confidence: proofAnalyzed ? confidence : 0,
+        status,
         verification_method: verificationMethod,
-        verified_at: status === 'auto_approved' ? new Date().toISOString() : null
+        verified_at: status === 'auto_approved' ? new Date().toISOString() : null,
       })
 
     if (insertError) {
@@ -238,14 +311,14 @@ serve(async (req) => {
     }
 
     return new Response(
-      JSON.stringify({ 
+      JSON.stringify({
         success: true,
-        status: status,
-        extracted: extracted,
-        confidence: confidence,
-        message: status === 'auto_approved' 
-          ? 'Payment verified! Your subscription is now active.' 
-          : 'Payment submitted for admin review. You will be notified once approved.'
+        status,
+        extracted,
+        confidence,
+        message: status === 'auto_approved'
+          ? 'Payment verified! Your subscription is now active.'
+          : 'Payment submitted for admin review. You will be notified once approved.',
       }),
       {
         headers: { ...corsHeaders, 'Content-Type': 'application/json' },
