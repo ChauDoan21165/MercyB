@@ -381,7 +381,7 @@ export default function SecuritySettings() {
             >
               {enabled
                 ? "Tài khoản của bạn được bảo vệ bằng mã 6 số từ điện thoại. Mỗi lần đăng nhập, bạn sẽ nhập mã này sau mật khẩu."
-                : "Bật 2FA để cần thêm một mã 6 số từ điện thoại mỗi khi đăng nhập. Mật khẩu một mình không đủ — kẻ gian không có điện thoại của bạn thì không vào được."}
+                : "Bật 2FA để cần thêm một mã 6 số từ điện thoại mỗi khi đăng nhập. Chỉ mật khẩu là chưa đủ — nếu không có điện thoại của bạn, người khác sẽ không vào được."}
             </p>
             <p
               style={{
@@ -498,7 +498,7 @@ export default function SecuritySettings() {
             >
               {backupUnusedCount === null
                 ? "—"
-                : `${backupUnusedCount} / 8 mã chưa dùng. Nếu mất điện thoại, dùng một mã ở /auth/recover để khôi phục.`}
+                : `${backupUnusedCount} / 8 mã chưa dùng. Nếu mất điện thoại, dùng một mã tại trang khôi phục /auth/recover.`}
             </p>
             <p
               style={{
@@ -525,7 +525,7 @@ export default function SecuritySettings() {
                 data-testid="mfa-backup-codes-regenerated"
               >
                 <strong style={{ color: "#92400e", fontSize: 14 }}>
-                  Lưu 8 mã mới NGAY · Save these 8 new codes NOW
+                  Lưu 8 mã mới ngay · Save these 8 new codes NOW
                 </strong>
                 <p style={{ marginTop: 4, fontSize: 12, color: "#78350f", lineHeight: 1.45 }}>
                   Mã cũ đã bị huỷ. Mã mới chỉ hiện một lần — sao chép hoặc lưu cẩn thận.
@@ -621,7 +621,7 @@ export default function SecuritySettings() {
                 lineHeight: 1.4,
               }}
             >
-              Tạo mới sẽ huỷ toàn bộ 8 mã cũ. Chỉ làm khi bạn đã dùng vài mã hoặc nghi ngờ chúng bị lộ.
+              Tạo mới sẽ huỷ toàn bộ 8 mã cũ. Chỉ tạo mới khi bạn đã dùng vài mã hoặc nghi ngờ chúng bị lộ.
               <br />
               <span style={{ color: "rgba(0,0,0,0.40)" }}>
                 Regenerating invalidates all 8 prior codes. Only do this after using some, or if you suspect a leak.

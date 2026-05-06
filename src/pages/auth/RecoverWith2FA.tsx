@@ -143,7 +143,7 @@ export default function RecoverWith2FA(): React.ReactElement {
     if (!cleanEmail || !cleanPassword || !cleanCode) {
       setErrorBilingual({
         en: "Email, password, and a backup code are all required.",
-        vi: "Email, mật khẩu và một mã dự phòng đều bắt buộc.",
+        vi: "Email, mật khẩu và một mã dự phòng là bắt buộc.",
       });
       return;
     }
@@ -256,7 +256,7 @@ export default function RecoverWith2FA(): React.ReactElement {
           </div>
 
           <p style={{ marginTop: 12, fontSize: 14, color: "rgba(0,0,0,0.72)", lineHeight: 1.55 }}>
-            Mất điện thoại? Nhập email, mật khẩu, và một trong 8 mã dự phòng bạn đã lưu khi bật 2FA.
+            Mất điện thoại? Nhập email, mật khẩu và một trong 8 mã dự phòng bạn đã lưu khi bật 2FA.
           </p>
           <p style={{ marginTop: 4, fontSize: 12, color: "rgba(0,0,0,0.50)", lineHeight: 1.5 }}>
             Lost your phone? Enter your email, password, and one of the 8 backup codes you saved when 2FA was enabled.
@@ -316,7 +316,7 @@ export default function RecoverWith2FA(): React.ReactElement {
                 required
               />
               <p style={{ marginTop: 6, fontSize: 11, color: "rgba(0,0,0,0.50)", lineHeight: 1.4 }}>
-                Mỗi mã chỉ dùng được một lần. Nếu chưa dùng, mã có dạng 4-4 ký tự nối bằng dấu gạch ngang.
+                Mỗi mã chỉ dùng được một lần. Nếu chưa dùng, mã có dạng 4 ký tự, dấu gạch ngang, rồi 4 ký tự.
                 <br />
                 <span style={{ color: "rgba(0,0,0,0.42)" }}>
                   Each code is single-use. Codes look like 4 chars + dash + 4 chars.

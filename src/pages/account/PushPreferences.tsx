@@ -116,8 +116,8 @@ export default function PushPreferencesPage() {
       case "registered":
         setEnrollMsg(
           result.reused
-            ? "Thiết bị đã đăng ký từ trước — sẵn sàng nhận push."
-            : "Đăng ký thành công — thiết bị sẽ nhận thông báo.",
+            ? "Thiết bị đã đăng ký từ trước — sẵn sàng nhận thông báo đẩy."
+            : "Đăng ký thành công — thiết bị sẽ nhận thông báo đẩy.",
         );
         break;
       case "permission_denied":
@@ -125,14 +125,14 @@ export default function PushPreferencesPage() {
         break;
       case "skipped_not_native":
         setEnrollMsg(
-          "Đang dùng trình duyệt web — push chỉ hoạt động trên app iOS/Android.",
+          "Bạn đang dùng trình duyệt web — thông báo đẩy chỉ hoạt động trên ứng dụng iOS/Android.",
         );
         break;
       case "skipped_denied_recently":
-        setEnrollMsg("Bạn vừa từ chối — thử lại trong session mới.");
+        setEnrollMsg("Bạn vừa từ chối — hãy thử lại trong phiên mới.");
         break;
       case "plugin_unavailable":
-        setEnrollMsg("Plugin push chưa được cài. Cập nhật app lên bản mới nhất.");
+        setEnrollMsg("Plugin thông báo đẩy chưa được cài. Hãy cập nhật ứng dụng lên bản mới nhất.");
         break;
       case "error":
         setEnrollMsg(`Lỗi: ${result.message}`);
@@ -147,7 +147,7 @@ export default function PushPreferencesPage() {
       const session = await supabase.auth.getSession();
       const accessToken = session.data.session?.access_token;
       if (!accessToken) {
-        setTestMsg("Không có session — đăng nhập lại nhé.");
+        setTestMsg("Không có phiên đăng nhập — đăng nhập lại nhé.");
         return;
       }
       const res = await fetch("/functions/v1/send-push", {
@@ -166,9 +166,9 @@ export default function PushPreferencesPage() {
       if (json.dispatched > 0) {
         setTestMsg("Đã gửi — kiểm tra thiết bị.");
       } else if (json.decision === "skipped_no_token") {
-        setTestMsg("Chưa có thiết bị nào đăng ký push. Bấm 'Đăng ký thiết bị' bên trên.");
+        setTestMsg("Chưa có thiết bị nào đăng ký thông báo đẩy. Nhấn 'Đăng ký thiết bị' bên trên.");
       } else {
-        setTestMsg(`Bị bỏ qua: ${json.decision}`);
+        setTestMsg(`Đã bỏ qua: ${json.decision}`);
       }
     } catch (e) {
       setTestMsg(e instanceof Error ? e.message : "Lỗi không xác định");
@@ -196,8 +196,8 @@ export default function PushPreferencesPage() {
               Đăng ký thiết bị này
             </h2>
             <p className="text-xs text-black/60 mb-3">
-              Để nhận push trên iPhone hoặc điện thoại Android, app cần xin
-              quyền một lần. Nhấn nút bên dưới — Hệ thống sẽ hiện hộp thoại.
+              Để nhận thông báo đẩy trên iPhone hoặc điện thoại Android, ứng dụng cần xin
+              quyền một lần. Nhấn nút bên dưới — hệ thống sẽ hiện hộp thoại.
             </p>
             <button
               type="button"
@@ -251,8 +251,8 @@ export default function PushPreferencesPage() {
               Giờ yên tĩnh
             </h2>
             <p className="text-xs text-black/60 mb-3">
-              Trong khung giờ này, Mercy không gửi push (trừ thông báo bạn ấn
-              nút Test). Mặc định 22:00–07:00.
+              Trong khung giờ này, Mercy không gửi thông báo đẩy (trừ thông báo bạn gửi
+              thử). Mặc định 22:00–07:00.
             </p>
             <div className="flex items-center gap-2 text-sm">
               <input
@@ -280,7 +280,7 @@ export default function PushPreferencesPage() {
               Thử gửi một thông báo
             </h2>
             <p className="text-xs text-emerald-900/80 mb-3">
-              Gửi một push thử về thiết bị bạn đã đăng ký. Bỏ qua giờ yên tĩnh.
+              Gửi một thông báo thử về thiết bị bạn đã đăng ký. Bỏ qua giờ yên tĩnh.
             </p>
             <button
               type="button"

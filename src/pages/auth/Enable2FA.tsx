@@ -445,7 +445,7 @@ export default function Enable2FA() {
                 data-testid="mfa-enroll-backup-codes"
               >
                 <strong style={{ color: "#92400e", fontSize: 15 }}>
-                  Lưu 8 mã dự phòng này NGAY · Save these 8 backup codes NOW
+                  Lưu 8 mã dự phòng này ngay · Save these 8 backup codes NOW
                 </strong>
                 <p style={{ marginTop: 6, fontSize: 13, color: "#78350f", lineHeight: 1.5 }}>
                   Mỗi mã chỉ dùng được một lần. Nếu mất điện thoại, một trong 8 mã này là cách duy nhất để khôi phục tài khoản.
@@ -521,7 +521,7 @@ export default function Enable2FA() {
                   lineHeight: 1.5,
                 }}
               >
-                Không tạo được mã dự phòng tự động. Vào trang Bảo mật để tạo thủ công.
+                Không thể tự động tạo mã dự phòng. Vào trang Bảo mật để tạo thủ công.
                 <br />
                 <span style={{ fontSize: 12, color: "#7f1d1d" }}>
                   Couldn't generate backup codes automatically. Visit Security settings to generate them manually.
@@ -543,7 +543,7 @@ export default function Enable2FA() {
                 onClick={() => navigate("/account/security")}
                 data-testid="mfa-enroll-success-back"
               >
-                Quay lại bảo mật · Back to Security
+                Quay lại Bảo mật · Back to Security
               </button>
             </div>
           </section>
@@ -613,7 +613,7 @@ export default function Enable2FA() {
                   textAlign: "center",
                 }}
               >
-                Không quét được? Nhập tay mã bên dưới.
+                Không quét được? Nhập mã bên dưới theo cách thủ công.
                 <br />
                 Can't scan? Enter the code below manually.
               </p>
@@ -625,7 +625,7 @@ export default function Enable2FA() {
 
           <h2 style={{ ...subheadingStyle, marginTop: 18 }}>3. Nhập mã 6 số</h2>
           <p style={bodyStyle}>
-            Ứng dụng sẽ hiện mã 6 số mới mỗi 30 giây. Nhập mã hiện tại để xác nhận.
+            Ứng dụng sẽ hiển thị mã 6 số mới mỗi 30 giây. Nhập mã hiện tại để xác nhận.
           </p>
           <p style={bodyViStyle}>
             The app shows a fresh 6-digit code every 30 seconds. Enter the current one to confirm.
