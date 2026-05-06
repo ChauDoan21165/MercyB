@@ -28,6 +28,9 @@ export default function VietnameseLessonsPage() {
   const dialogueCount = VIETNAMESE_LESSONS.filter(
     (lesson) => lesson.dialogue && lesson.dialogue.length > 0,
   ).length;
+  const pronunciationCount = VIETNAMESE_LESSONS.filter((lesson) =>
+    lesson.title_en.startsWith("Pronunciation:"),
+  ).length;
 
   const grouped = VIETNAMESE_LEVELS.map((level) => ({
     level,
@@ -57,7 +60,7 @@ export default function VietnameseLessonsPage() {
         </p>
         <p className="mt-2 text-sm font-bold" style={{ color: theme.accent }}>
           {VIETNAMESE_LESSONS.length} lessons · {phraseCount} phrases ·{" "}
-          {dialogueCount} dialogues
+          {dialogueCount} dialogues · {pronunciationCount} pronunciation mini-lessons
         </p>
         <p className="mt-3 text-xs text-slate-500">
           <Link

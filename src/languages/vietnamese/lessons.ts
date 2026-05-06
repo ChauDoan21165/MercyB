@@ -1738,4 +1738,388 @@ export const VIETNAMESE_LESSONS: VietnameseLesson[] = [
     tip:
       "Keep a translated allergy or medical note on your phone if you need one.",
   },
+  {
+    id: 36,
+    level: "A1",
+    title_en: "Pronunciation: Vietnamese Tones Overview",
+    subtitle: "Hear pitch and voice shape before chasing every word.",
+    intro:
+      "Vietnamese meaning changes with tone. For survival speaking, slow down and make the tone shape clear enough for the listener.",
+    phrases: [
+      {
+        english: "Flat tone example",
+        vietnamese: "ma",
+        pronunciation: "ma - level voice",
+        context: "Example: keep the voice steady, not rising or falling.",
+      },
+      {
+        english: "Rising tone example",
+        vietnamese: "má",
+        pronunciation: "ma - rising voice",
+        context: "Example: lift the pitch like a short question.",
+      },
+      {
+        english: "Practice line: Hello, I am learning Vietnamese.",
+        vietnamese: "Xin chào, tôi đang học tiếng Việt.",
+        pronunciation: "seen chow, toy dang hawk tee-eng vyet",
+        context: "Use this line when people hear your accent and you want them to be patient.",
+      },
+    ],
+    cultural_note:
+      "Common mistake: foreigners say every tone flat. Vietnamese listeners then hear a different word or no clear word.",
+    tip:
+      "Practice slowly first. Clear tone shape matters more than speed.",
+  },
+  {
+    id: 37,
+    level: "A1",
+    title_en: "Pronunciation: The Six Tones Of Ma",
+    subtitle: "Same base sound, different tone shape.",
+    intro:
+      "Use ma, má, mà, mả, mã, mạ to feel how tone changes meaning. This is practice for your ear and voice, not a grammar lesson.",
+    phrases: [
+      {
+        english: "Six-tone contrast",
+        vietnamese: "ma, má, mà, mả, mã, mạ",
+        pronunciation: "ma, ma rising, ma falling, ma dipping, ma broken rising, ma low heavy",
+        context: "Say them slowly as six different voice shapes.",
+      },
+      {
+        english: "Low heavy tone example",
+        vietnamese: "mạ",
+        pronunciation: "ma - low and firm",
+        context: "Do not add a long English vowel; keep it short and low.",
+      },
+      {
+        english: "Practice line: I don't understand yet.",
+        vietnamese: "Tôi chưa hiểu.",
+        pronunciation: "toy chua hyew",
+        context: "Use when you need someone to explain again.",
+      },
+    ],
+    cultural_note:
+      "Common mistake: learners only change loudness. Tone is pitch and voice shape, not volume.",
+    tip:
+      "Use your hand to trace the pitch: flat, up, down, dip, broken-up, low-heavy.",
+  },
+  {
+    id: 38,
+    level: "A1",
+    title_en: "Pronunciation: Xin Chào",
+    subtitle: "Make your first greeting easy to understand.",
+    intro:
+      "Xin chào is the safest polite greeting for foreigners. The chào tone falls, so do not say it like English chow with a rising voice.",
+    phrases: [
+      {
+        english: "Hello",
+        vietnamese: "Xin chào",
+        pronunciation: "seen chow - let chow fall",
+        context: "Use with anyone politely.",
+      },
+      {
+        english: "Hello everyone",
+        vietnamese: "Xin chào mọi người",
+        pronunciation: "seen chow moy nguoi",
+        context: "Use when greeting a small group.",
+      },
+      {
+        english: "Practice line: Hello, my name is Alex.",
+        vietnamese: "Xin chào, tôi tên là Alex.",
+        pronunciation: "seen chow, toy ten la Alex",
+        context: "Use for a simple first introduction.",
+      },
+    ],
+    cultural_note:
+      "Common mistake: saying chào too flat or too much like English chow. Let the tone fall gently.",
+    tip:
+      "Keep xin short and let chào carry the greeting.",
+  },
+  {
+    id: 39,
+    level: "A1",
+    title_en: "Pronunciation: Cảm Ơn",
+    subtitle: "Say thank you with clear tones.",
+    intro:
+      "Cảm ơn is short, but both words have tone movement. Say it slowly so it does not blur into one flat sound.",
+    phrases: [
+      {
+        english: "Thank you",
+        vietnamese: "Cảm ơn",
+        pronunciation: "gahm uhn - dip on cảm",
+        context: "Use anytime someone helps you.",
+      },
+      {
+        english: "Thank you very much",
+        vietnamese: "Cảm ơn nhiều",
+        pronunciation: "gahm uhn nyew",
+        context: "Use when someone gives extra help.",
+      },
+      {
+        english: "Practice line: Thank you for helping me.",
+        vietnamese: "Cảm ơn bạn đã giúp tôi.",
+        pronunciation: "gahm uhn ban da zoop toy",
+        context: "Use after someone gives directions or solves a small problem.",
+      },
+    ],
+    cultural_note:
+      "Common mistake: dropping the tone on cảm and saying a flat cam. The listener may still guess, but the phrase sounds unclear.",
+    tip:
+      "Pause slightly between cảm and ơn if you are new.",
+  },
+  {
+    id: 40,
+    level: "A1",
+    title_en: "Pronunciation: Không",
+    subtitle: "A tiny word you will use every day.",
+    intro:
+      "Không means no or not. It appears in many survival questions, so make the kh sound and the round vowel clear.",
+    phrases: [
+      {
+        english: "No / not",
+        vietnamese: "Không",
+        pronunciation: "khome - airy kh, round o",
+        context: "Use as a short answer or inside questions.",
+      },
+      {
+        english: "Is that okay?",
+        vietnamese: "Được không?",
+        pronunciation: "duoc khome",
+        context: "Use when asking if something is possible.",
+      },
+      {
+        english: "Practice line: Do you speak English?",
+        vietnamese: "Bạn nói tiếng Anh được không?",
+        pronunciation: "ban noy tee-eng anh duoc khome",
+        context: "Use before switching to English.",
+      },
+    ],
+    cultural_note:
+      "Common mistake: saying không like English come. Start with a breathy kh and keep the vowel round.",
+    tip:
+      "Practice không by itself, then in được không and cay không.",
+  },
+  {
+    id: 41,
+    level: "A1",
+    title_en: "Pronunciation: Ng Sound Survival",
+    subtitle: "The ng sound can start a Vietnamese word.",
+    intro:
+      "Vietnamese uses ng at the start of words. Foreigners often skip it, but it is important in common words like người and ngon.",
+    phrases: [
+      {
+        english: "Person / people",
+        vietnamese: "người",
+        pronunciation: "ngoo-ee",
+        context: "You hear this in hai người, many people, and family talk.",
+      },
+      {
+        english: "Delicious",
+        vietnamese: "ngon",
+        pronunciation: "ngon",
+        context: "Use after eating something good.",
+      },
+      {
+        english: "Practice line: Very delicious.",
+        vietnamese: "Ngon lắm.",
+        pronunciation: "ngon lam",
+        context: "Use as a friendly compliment at meals.",
+      },
+    ],
+    cultural_note:
+      "Common mistake: changing ng to n or g. Keep the back-of-mouth ng sound from English sing, but put it at the front.",
+    tip:
+      "Start with sing-ngon, then remove sing and keep ngon.",
+  },
+  {
+    id: 42,
+    level: "A1",
+    title_en: "Pronunciation: Final T, C, And P",
+    subtitle: "Stop the word cleanly at the end.",
+    intro:
+      "Vietnamese final consonants are short stops. Do not add an extra vowel after final t, c, or p.",
+    phrases: [
+      {
+        english: "A little",
+        vietnamese: "một chút",
+        pronunciation: "moht chut - stop at t",
+        context: "Useful in phrases like wait a little or a little ice.",
+      },
+      {
+        english: "Can / possible",
+        vietnamese: "được",
+        pronunciation: "duoc - stop at c",
+        context: "You hear this in được không.",
+      },
+      {
+        english: "Practice line: Please wait a little.",
+        vietnamese: "Chờ chút nhé.",
+        pronunciation: "chuh chut nyeh",
+        context: "Use when asking someone to wait briefly.",
+      },
+    ],
+    cultural_note:
+      "Common mistake: adding an English-style extra sound, like chút-uh or được-uh. Stop cleanly.",
+    tip:
+      "End the word by closing your mouth or tongue position, then stop.",
+  },
+  {
+    id: 43,
+    level: "A1",
+    title_en: "Pronunciation: Short And Long Vowels",
+    subtitle: "Small vowel changes can make words sound different.",
+    intro:
+      "Vietnamese has vowel contrasts that can feel small to foreigners. For survival, listen for length and mouth shape in common words.",
+    phrases: [
+      {
+        english: "Year / five",
+        vietnamese: "năm",
+        pronunciation: "num - short",
+        context: "Used in numbers and dates.",
+      },
+      {
+        english: "Male / south",
+        vietnamese: "nam",
+        pronunciation: "nahm - more open",
+        context: "You hear this in Việt Nam.",
+      },
+      {
+        english: "Practice line: I just arrived in Vietnam.",
+        vietnamese: "Tôi mới đến Việt Nam.",
+        pronunciation: "toy moy den vyet nahm",
+        context: "Use when explaining that you are new here.",
+      },
+    ],
+    cultural_note:
+      "Common mistake: using one English a sound for every Vietnamese vowel. Slow down and copy the mouth shape.",
+    tip:
+      "Practice with words you actually say, like Việt Nam, năm, bạn, and làm.",
+  },
+  {
+    id: 44,
+    level: "A1",
+    title_en: "Pronunciation: Polite Phrase Rhythm",
+    subtitle: "Sound calm and respectful in short phrases.",
+    intro:
+      "Vietnamese polite phrases often sound softer when you keep them short, even, and not too loud.",
+    phrases: [
+      {
+        english: "Please help me",
+        vietnamese: "giúp tôi",
+        pronunciation: "zoop toy",
+        context: "Add after many requests to sound polite.",
+      },
+      {
+        english: "A soft ending",
+        vietnamese: "nhé",
+        pronunciation: "nyeh",
+        context: "Use to soften requests or invitations.",
+      },
+      {
+        english: "Practice line: Please help me stop here.",
+        vietnamese: "Dừng ở đây giúp tôi nhé.",
+        pronunciation: "zoong uh day zoop toy nyeh",
+        context: "Use in a taxi or Grab when arriving.",
+      },
+    ],
+    cultural_note:
+      "Common mistake: stressing every word like English. Vietnamese often sounds smoother when each short word stays clear.",
+    tip:
+      "Say the phrase in small chunks: dừng ở đây / giúp tôi / nhé.",
+  },
+  {
+    id: 45,
+    level: "A1",
+    title_en: "Pronunciation: Common Foreigner Mistakes",
+    subtitle: "Fix the sounds that most often block understanding.",
+    intro:
+      "You do not need perfect Vietnamese. Focus on a few mistakes that make everyday phrases hard to understand.",
+    phrases: [
+      {
+        english: "Do not flatten tones",
+        vietnamese: "có, không, được",
+        pronunciation: "caw, khome, duoc",
+        context: "These words appear in many yes/no questions.",
+      },
+      {
+        english: "Do not drop final sounds",
+        vietnamese: "một, chút, được",
+        pronunciation: "moht, chut, duoc",
+        context: "Final stops help the word stay recognizable.",
+      },
+      {
+        english: "Practice line: Can you say that again?",
+        vietnamese: "Bạn nói lại được không?",
+        pronunciation: "ban noy lai duoc khome",
+        context: "Use when pronunciation or listening breaks down.",
+      },
+    ],
+    cultural_note:
+      "Common mistake: speaking too fast to hide uncertainty. Slow clear speech works better.",
+    tip:
+      "Pick three daily words and make them clear: không, được, cảm ơn.",
+  },
+  {
+    id: 46,
+    level: "A1",
+    title_en: "Pronunciation: Northern And Southern Note",
+    subtitle: "Expect different local accents.",
+    intro:
+      "Vietnamese pronunciation changes by region. A word may sound slightly different in Hanoi, Da Nang, and Ho Chi Minh City.",
+    phrases: [
+      {
+        english: "Yes / polite yes",
+        vietnamese: "dạ",
+        pronunciation: "yah or zah depending on region",
+        context: "You will hear this often in shops, cafes, and family settings.",
+      },
+      {
+        english: "Then / already",
+        vietnamese: "rồi",
+        pronunciation: "roy, zoy, or goy depending on region",
+        context: "Used in many daily sentences like tới rồi.",
+      },
+      {
+        english: "Practice line: I arrived.",
+        vietnamese: "Tôi tới rồi.",
+        pronunciation: "toy toy roy",
+        context: "Use by text or phone when you reach a meeting place.",
+      },
+    ],
+    cultural_note:
+      "Common mistake: thinking one accent is the only correct Vietnamese. Regional variation is normal.",
+    tip:
+      "Copy the people around you, but keep your core survival phrases clear and slow.",
+  },
+  {
+    id: 47,
+    level: "A1",
+    title_en: "Pronunciation: Listening For Tone",
+    subtitle: "Train your ear to hear more than the base word.",
+    intro:
+      "When listening, do not only hear the consonants and vowels. Listen for the tone shape because it carries meaning.",
+    phrases: [
+      {
+        english: "Listen for rising tone",
+        vietnamese: "má, có, nhé",
+        pronunciation: "rising or high tone shapes",
+        context: "These words may sound small, but the tone helps you identify them.",
+      },
+      {
+        english: "Listen for low or heavy tone",
+        vietnamese: "mạ, chợ, bệnh",
+        pronunciation: "low or heavy tone shapes",
+        context: "These tones can sound shorter or heavier to foreign ears.",
+      },
+      {
+        english: "Practice line: Sorry, I can't hear clearly.",
+        vietnamese: "Xin lỗi, tôi nghe không rõ.",
+        pronunciation: "seen loy, toy nghe khome raw",
+        context: "Use when noise or speed makes Vietnamese hard to catch.",
+      },
+    ],
+    cultural_note:
+      "Common mistake: hearing only ma and missing whether it was má, mà, mả, mã, or mạ.",
+    tip:
+      "When lost, ask for repetition slowly: Bạn nói lại được không?",
+  },
 ];
