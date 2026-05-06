@@ -8527,6 +8527,273 @@ level: "B2",
         pinyin: "Zài cì gǎn xiè gè wèi píng wěi jí yù huì tóng rén de bǎo guì yì jiàn, bǐ zhě jiāng rèn zhēn zhěng lǐ."
       }
     ]
+  },
+  {
+    id: 100,
+    level: "C1",
+    category: "academic_discourse",
+    title: "摘要与综述之撰写",
+    pinyin: "zhāi yào yǔ zōng shù zhī zhuàn xiě",
+    topic: "Writing abstracts and research summaries",
+    title_vi: "Soạn thảo tóm tắt và tổng quan",
+    title_en: "Writing abstracts and research summaries",
+    sentences: [
+      {
+        chinese: "摘要乃论文之精髓所在, 应力求开宗明义, 言简意赅, 一目了然。",
+        pinyin: "Zhāiyào nǎi lùnwén zhī jīngsuǐ suǒzài, yīng lìqiú kāi zōng míng yì, yán jiǎn yì gāi, yī mù liǎo rán.",
+        english: "The abstract is the essence of the paper — one should strive for clarity from the outset, conciseness with substance, and immediate intelligibility.",
+        vi: "Tóm tắt chính là tinh hoa của bài báo, cần nỗ lực mở đầu rõ ràng, lời ngắn ý đủ, nhìn một cái là hiểu.",
+        pronunciation_focus: ["乃 → nǎi (chính là — 书面)", "开宗明义 → kāi zōng míng yì (mở đầu rõ ràng — idiom)", "言简意赅 → yán jiǎn yì gāi (lời ngắn ý đủ — idiom)", "一目了然 → yī mù liǎo rán (nhìn một cái hiểu — idiom)"]
+      },
+      {
+        chinese: "结构上, 一份合格之摘要通常包括四要素: 研究背景、方法、结果及结论, 缺一不可。",
+        pinyin: "Jiégòu shàng, yī fèn hégé zhī zhāiyào tōngcháng bāokuò sì yàosù: yánjiū bèijǐng, fāngfǎ, jiéguǒ jí jiélùn, quē yī bùkě.",
+        english: "Structurally, a qualified abstract typically includes four elements: research background, methods, results, and conclusions — none can be omitted.",
+        vi: "Về cấu trúc, một tóm tắt đạt chuẩn thường bao gồm bốn yếu tố: bối cảnh nghiên cứu, phương pháp, kết quả và kết luận, thiếu một không được.",
+        pronunciation_focus: ["合格之 → hégé zhī (đạt chuẩn — 书面)", "四要素 → sì yàosù (bốn yếu tố)", "及 → jí (và — 书面)", "缺一不可 → quē yī bùkě (thiếu một không được)"]
+      },
+      {
+        chinese: "撰写时, 笔者宜删繁就简, 剔除冗余之表述, 保留最具信息密度之内容, 切忌冗长。",
+        pinyin: "Zhuànxiě shí, bǐzhě yí shān fán jiù jiǎn, tīchú rǒngyú zhī biǎoshù, bǎoliú zuì jù xìnxī mìdù zhī nèiróng, qièjì rǒngcháng.",
+        english: "When writing, the author should pare down complexity, remove redundant expressions, retain the most information-dense content, and absolutely avoid wordiness.",
+        vi: "Khi soạn thảo, tác giả nên cắt rườm rà, loại bỏ những cách diễn đạt thừa, giữ lại phần nội dung có mật độ thông tin cao nhất, kiêng kỵ rườm rà.",
+        pronunciation_focus: ["删繁就简 → shān fán jiù jiǎn (cắt rườm rà — idiom)", "剔除 → tīchú (loại bỏ — 书面)", "冗余 → rǒngyú (thừa thãi)", "切忌 → qièjì (kiêng kỵ — 书面)"]
+      },
+      {
+        chinese: "文献综述则应提纲挈领, 把握领域之脉络, 而非简单堆砌前人成果。",
+        pinyin: "Wénxiàn zōngshù zé yīng tígāng qièlǐng, bǎwò lǐngyù zhī màiluò, ér fēi jiǎndān duīqì qiánrén chéngguǒ.",
+        english: "A literature review should grasp the essence and command the field's pulse — rather than merely piling up predecessors' achievements.",
+        vi: "Tổng quan tài liệu thì cần nắm bắt cốt lõi, nắm vững mạch lạc của lĩnh vực, chứ không phải chỉ chất đống thành quả của người đi trước.",
+        pronunciation_focus: ["提纲挈领 → tígāng qièlǐng (nắm cương lĩnh — idiom)", "脉络 → màiluò (mạch lạc)", "堆砌 → duīqì (chất đống)", "前人 → qiánrén (người đi trước)"]
+      },
+      {
+        chinese: "综上所述, 摘要与综述虽功能各异, 然皆需以读者之视角为本, 务使其'画龙点睛'而非'画蛇添足'。",
+        pinyin: "Zōng shàng suǒ shù, zhāiyào yǔ zōngshù suī gōngnéng gè yì, rán jiē xū yǐ dúzhě zhī shìjiǎo wèi běn, wù shǐ qí 'huà lóng diǎn jīng' ér fēi 'huà shé tiān zú'.",
+        english: "In summary, although abstract and review serve different functions, both must be grounded in the reader's perspective — strive to 'dot the eyes of the dragon', not 'add feet to the snake'.",
+        vi: "Tóm lại, tóm tắt và tổng quan dù chức năng khác nhau, nhưng đều cần lấy góc nhìn của người đọc làm gốc, cốt để 'điểm mắt rồng' chứ không phải 'vẽ chân rắn'.",
+        pronunciation_focus: ["功能各异 → gōngnéng gè yì (chức năng khác nhau)", "视角为本 → shìjiǎo wèi běn (lấy góc nhìn làm gốc)", "画龙点睛 → huà lóng diǎn jīng (điểm mắt rồng — idiom)", "画蛇添足 → huà shé tiān zú (vẽ chân rắn — idiom)"]
+      }
+    ],
+    vocab: [
+      { chinese: "摘要", pinyin: "zhāi yào", english: "abstract", vi: "tóm tắt" },
+      { chinese: "综述", pinyin: "zōng shù", english: "review / overview", vi: "tổng quan" },
+      { chinese: "言简意赅", pinyin: "yán jiǎn yì gāi", english: "concise but substantive (idiom)", vi: "lời ngắn ý đủ (书面)" },
+      { chinese: "提纲挈领", pinyin: "tí gāng qiè lǐng", english: "grasp the main points (idiom)", vi: "nắm cương lĩnh (书面)" },
+      { chinese: "开宗明义", pinyin: "kāi zōng míng yì", english: "make the main point clear at the start (idiom)", vi: "mở đầu rõ ràng (书面)" },
+      { chinese: "画龙点睛", pinyin: "huà lóng diǎn jīng", english: "dot the eyes of the dragon (idiom)", vi: "điểm mắt rồng (书面)" },
+      { chinese: "删繁就简", pinyin: "shān fán jiù jiǎn", english: "cut redundancy and simplify (idiom)", vi: "cắt rườm rà (书面)" },
+      { chinese: "脉络", pinyin: "mài luò", english: "thread / pulse", vi: "mạch lạc" },
+      { chinese: "堆砌", pinyin: "duī qì", english: "to pile up (negative)", vi: "chất đống" },
+      { chinese: "切忌", pinyin: "qiè jì", english: "must avoid (formal)", vi: "kiêng kỵ (书面)" }
+    ],
+    dialogue: [
+      { speaker: "学生", chinese: "教授, 我的摘要reviewer说太长, 350词。但您之前说'背景、方法、结果、结论'四要素都要写。", pinyin: "Jiàoshòu, wǒ de zhāiyào reviewer shuō tài cháng, 350 cí. Dàn nín zhīqián shuō 'bèijǐng, fāngfǎ, jiéguǒ, jiélùn' sì yàosù dōu yào xiě.", english: "Professor, the reviewer says my abstract is too long — 350 words. But you said all four elements (background, methods, results, conclusion) must be included.", vi: "Thưa giáo sư, tóm tắt của em reviewer nói quá dài, 350 từ. Nhưng trước thầy/cô nói 'bối cảnh, phương pháp, kết quả, kết luận' — bốn yếu tố đều phải viết." },
+      { speaker: "教授", chinese: "四要素都写, 但每个要素只用1-2句, 这是关键。350词意味着每个要素3句左右, 太冗。", pinyin: "Sì yàosù dōu xiě, dàn měi gè yàosù zhǐ yòng 1-2 jù, zhè shì guānjiàn. 350 cí yìwèizhe měi gè yàosù 3 jù zuǒyòu, tài rǒng.", english: "Write all four — but each element only 1-2 sentences. That's the key. 350 words means about 3 sentences per element — too verbose.", vi: "Bốn yếu tố đều viết, nhưng mỗi yếu tố chỉ dùng 1-2 câu, đây là điểm then chốt. 350 từ nghĩa là mỗi yếu tố khoảng 3 câu, quá rườm." },
+      { speaker: "学生", chinese: "标准长度大概是多少?", pinyin: "Biāozhǔn chángdù dàgài shì duōshǎo?", english: "What's the typical length?", vi: "Độ dài chuẩn khoảng bao nhiêu?" },
+      { speaker: "教授", chinese: "不同期刊不同。计算机领域150-250词最常见, 医学期刊允许到300词。你的目标250词, 'delete first, qualify second'。", pinyin: "Bùtóng qīkān bùtóng. Jìsuànjī lǐngyù 150-250 cí zuì chángjiàn, yīxué qīkān yǔnxǔ dào 300 cí. Nǐ de mùbiāo 250 cí, 'delete first, qualify second'.", english: "Varies by journal. Computer science 150-250 most common; medical journals allow to 300. Target 250, 'delete first, qualify second'.", vi: "Tùy tạp chí. Ngành máy tính 150-250 từ phổ biến nhất, tạp chí y học cho đến 300 từ. Mục tiêu của em 250 từ, 'delete first, qualify second'." }
+    ],
+    dialogue_long: [
+      { speaker: "学生", chinese: "教授, 我准备投CCF-A会议, 请您看一下我这版摘要。我自己感觉应该是'四要素齐全'了, 不知您有何意见。", pinyin: "Jiàoshòu, wǒ zhǔnbèi tóu CCF-A huìyì, qǐng nín kàn yīxià wǒ zhè bǎn zhāiyào. Wǒ zìjǐ gǎnjué yīnggāi shì 'sì yàosù qíquán' le, bùzhī nín yǒu hé yìjiàn.", english: "Professor, I'm preparing to submit to a CCF-A conference. Please look at my abstract. I feel the 'four elements' are complete — what's your view?", vi: "Thưa giáo sư, em chuẩn bị nộp hội nghị CCF-A, xin thầy xem giúp bản tóm tắt. Em tự thấy 'bốn yếu tố' đã đầy đủ, không biết ý thầy/cô thế nào." },
+      { speaker: "教授", chinese: "我看一下。嗯, 第一句就有问题。'近年来, 随着深度学习的迅猛发展, 各个领域都涌现出大量基于神经网络的研究...' — 这句话毫无信息量。", pinyin: "Wǒ kàn yīxià. Èn, dì yī jù jiù yǒu wèntí. 'Jìnnián lái, suízhe shēndù xuéxí de xùnměng fāzhǎn, gège lǐngyù dōu yǒngxiàn chū dàliàng jīyú shénjīng wǎngluò de yánjiū...' — zhè jù huà háo wú xìnxī liàng.", english: "Let me see. Hmm — first sentence has issues. 'In recent years, with rapid development of deep learning, every field has seen many neural-network-based studies...' — this sentence has zero information.", vi: "Tôi xem nào. Ừm, câu đầu đã có vấn đề. 'Những năm gần đây, với sự phát triển nhanh chóng của học sâu, các lĩnh vực đều xuất hiện nhiều nghiên cứu dựa trên mạng nơ-ron...' — câu này hoàn toàn không có thông tin." },
+      { speaker: "学生", chinese: "可这是我看到的所有AI paper都这样开头的呀。", pinyin: "Kě zhè shì wǒ kàndào de suǒyǒu AI paper dōu zhèyàng kāitóu de ya.", english: "But this is how every AI paper I've seen begins.", vi: "Nhưng các bài AI em thấy đều mở đầu như thế ạ." },
+      { speaker: "教授", chinese: "正因为大家都这样, 你这样写就埋没了。Reviewer看摘要是为了快速决定要不要accept, 你前两句不抓住, 他就跳到下一篇。开宗明义, 第一句就要点出你的核心贡献。", pinyin: "Zhèng yīnwèi dàjiā dōu zhèyàng, nǐ zhèyàng xiě jiù máimò le. Reviewer kàn zhāiyào shì wèile kuàisù juédìng yào bùyào accept, nǐ qián liǎng jù bù zhuāzhù, tā jiù tiào dào xià yī piān. Kāi zōng míng yì, dì yī jù jiù yào diǎnchū nǐ de héxīn gòngxiàn.", english: "Precisely because everyone does this, your writing gets buried. Reviewers read abstracts to decide accept-or-not quickly; if your first two sentences don't grab them, they skip to next paper. Make the main point clear from the start — first sentence should pinpoint your core contribution.", vi: "Chính vì mọi người đều thế, em viết kiểu này chỉ bị chôn vùi. Reviewer đọc tóm tắt để quyết accept hay không nhanh; em hai câu đầu không níu được, họ bỏ qua bài tiếp. Mở đầu rõ ràng, câu đầu phải chỉ ra ngay đóng góp cốt lõi." },
+      { speaker: "学生", chinese: "那应该怎么改?", pinyin: "Nà yīnggāi zěnme gǎi?", english: "Then how should I revise?", vi: "Vậy nên sửa thế nào?" },
+      { speaker: "教授", chinese: "格式: '本文提出 [方法名], 它通过 [核心机制] 实现 [具体能力], 在 [基准] 上达到了 [量化结果]'。一句话四个信息点, 比你那两句空话强一百倍。", pinyin: "Géshì: 'běnwén tíchū [fāngfǎ míng], tā tōngguò [héxīn jīzhì] shíxiàn [jùtǐ nénglì], zài [jīzhǔn] shàng dádàole [liànghuà jiéguǒ]'. Yī jù huà sì gè xìnxī diǎn, bǐ nǐ nà liǎng jù kōnghuà qiáng yī bǎi bèi.", english: "Format: 'This paper proposes [method name], which through [core mechanism] achieves [specific capability], reaching [quantitative results] on [benchmark]'. One sentence with four information points — stronger than your two empty sentences a hundredfold.", vi: "Định dạng: 'Bài này đề xuất [tên phương pháp], thông qua [cơ chế cốt lõi] thực hiện [năng lực cụ thể], trên [bài chuẩn] đạt [kết quả định lượng]'. Một câu bốn điểm thông tin, mạnh hơn 100 lần so với 2 câu rỗng của em." },
+      { speaker: "学生", chinese: "明白。然后呢?", pinyin: "Míngbái. Ránhòu ne?", english: "Got it. Then?", vi: "Hiểu rồi. Sau đó?" },
+      { speaker: "教授", chinese: "第二句, 一句话讲方法的关键innovation。第三句, 一到两句讲方法的工作原理。第四五句, 实验结果, 配最重要的两个数字。最后一句, 一句结论 + 一个外推或future direction。", pinyin: "Dì èr jù, yī jù huà jiǎng fāngfǎ de guānjiàn innovation. Dì sān jù, yī dào liǎng jù jiǎng fāngfǎ de gōngzuò yuánlǐ. Dì sì wǔ jù, shíyàn jiéguǒ, pèi zuì zhòngyào de liǎng gè shùzì. Zuìhòu yī jù, yī jù jiélùn + yī gè wàituī huò future direction.", english: "Second: one sentence on key innovation. Third: 1-2 sentences on how the method works. Fourth-fifth: experimental results, two key numbers. Last: one conclusion sentence + one extrapolation or future direction.", vi: "Hai: một câu về innovation cốt lõi. Ba: 1-2 câu về cơ chế hoạt động. Bốn-năm: kết quả thí nghiệm, kèm 2 số quan trọng nhất. Cuối: một câu kết luận + một câu khái quát hoặc future direction." },
+      { speaker: "学生", chinese: "这样大概200词?", pinyin: "Zhèyàng dàgài 200 cí?", english: "About 200 words this way?", vi: "Như thế khoảng 200 từ?" },
+      { speaker: "教授", chinese: "正好。你paper的abstract限制是250词, 留50词给突发情况。删繁就简, 切忌冗长。最后再读一遍: 是否每句都有不可替代的信息? 如果删掉这句, abstract还成立吗? 不成立 = 留。成立 = 删。", pinyin: "Zhènghǎo. Nǐ paper de abstract xiànzhì shì 250 cí, liú 50 cí gěi tūfā qíngkuàng. Shān fán jiù jiǎn, qièjì rǒngcháng. Zuìhòu zài dú yī biàn: shìfǒu měi jù dōu yǒu bùkě tìdài de xìnxī? Rúguǒ shān diào zhè jù, abstract hái chénglì ma? Bù chénglì = liú. Chénglì = shān.", english: "Exactly. Your abstract limit is 250, leave 50 for contingencies. Cut redundancy and simplify, avoid verbosity. Finally re-read: does every sentence have irreplaceable information? If deleted, does the abstract still stand? Doesn't stand = keep. Still stands = delete.", vi: "Đúng. Giới hạn abstract paper em là 250 từ, để 50 từ cho tình huống bất ngờ. Cắt rườm rà, kiêng dài dòng. Cuối cùng đọc lại lần nữa: từng câu có thông tin không thể thay thế không? Nếu xoá câu này, abstract còn đứng vững không? Không vững = giữ. Vẫn vững = xoá." },
+      { speaker: "学生", chinese: "literature review呢? 我刚开始写, 有什么建议?", pinyin: "Literature review ne? Wǒ gāng kāishǐ xiě, yǒu shénme jiànyì?", english: "What about the literature review? Just starting — any suggestions?", vi: "Còn literature review thì sao? Em mới bắt đầu viết, có gì gợi ý không?" },
+      { speaker: "教授", chinese: "Lit review最忌堆砌。不是把20篇paper按时间顺序列出来叫做综述, 那叫'文献清单'。综述要提纲挈领: 整个领域的脉络是什么? 哪些是foundational papers? 哪些是流派分歧? 哪些是当前未解的开放问题? 你paper要在这个脉络中找到自己的位置。", pinyin: "Lit review zuì jì duīqì. Bù shì bǎ 20 piān paper àn shíjiān shùnxù liè chūlái jiàozuò zōngshù, nà jiào 'wénxiàn qīngdān'. Zōngshù yào tígāng qièlǐng: zhěnggè lǐngyù de màiluò shì shénme? Nǎxiē shì foundational papers? Nǎxiē shì liúpài fēnqí? Nǎxiē shì dāngqián wèi jiě de kāifàng wèntí? Nǐ paper yào zài zhège màiluò zhōng zhǎodào zìjǐ de wèizhì.", english: "Lit review's greatest taboo is piling up. Listing 20 papers chronologically isn't a review — that's a 'reference list'. Review must grasp essence: what is the field's pulse? Which are foundational papers? Where are the schools' disagreements? What current open questions remain? Your paper must find its position in that pulse.", vi: "Lit review kỵ nhất là chất đống. Không phải liệt 20 paper theo thứ tự thời gian gọi là tổng quan, đó gọi là 'danh sách tài liệu'. Tổng quan phải nắm cương lĩnh: mạch lạc của cả lĩnh vực là gì? Cái nào là foundational paper? Đâu là chỗ chia trường phái? Đâu là các open problem chưa giải? Bài em phải tìm được vị trí của nó trong mạch lạc này." },
+      { speaker: "学生", chinese: "我下来重写, 三天后给您。", pinyin: "Wǒ xià lái chóng xiě, sān tiān hòu gěi nín.", english: "I'll rewrite — submit in three days.", vi: "Em xuống viết lại, ba ngày sau nộp thầy/cô." },
+      { speaker: "教授", chinese: "好。最后忠告: 摘要写完不要立即定稿。放一晚, 第二天再读, 你会发现至少3处可删。'画龙点睛'比'画蛇添足'更难做到。", pinyin: "Hǎo. Zuìhòu zhōnggào: zhāiyào xiě wán bùyào lìjí dìnggǎo. Fàng yī wǎn, dì èr tiān zài dú, nǐ huì fāxiàn zhì shǎo 3 chù kě shān. 'Huà lóng diǎn jīng' bǐ 'huà shé tiān zú' gèng nán zuòdào.", english: "Final advice: don't finalize abstract immediately. Sit on it overnight; reread next day, you'll find at least 3 places to cut. 'Dotting the dragon's eye' is harder than 'adding feet to the snake'.", vi: "Tốt. Câu khuyên cuối: viết xong abstract đừng chốt ngay. Để qua đêm, hôm sau đọc lại, em sẽ tìm thấy ít nhất 3 chỗ có thể xoá. 'Điểm mắt rồng' khó hơn 'vẽ chân rắn'." }
+    ],
+    roleplay_prompts: [
+      "Bạn là sinh viên cao học vừa hoàn thành bài 'AI fairness in hiring'. Hãy viết abstract 200 từ Trung Quốc theo đúng 4 yếu tố (background → method → result → conclusion). Câu đầu phải nêu rõ contribution. Tránh '近年来 / 随着...的发展'. Dùng cụm '本文提出 / 实验表明 / 综上所述'.",
+      "Bạn là editor được hỏi review một abstract submitted to ACM journal. Abstract dài 380 từ, không có numbers, opening sentence is '近年来deep learning在各个领域取得了显著进步'. Hãy viết feedback 4-5 câu C1: chỉ ra (1) độ dài vượt limit, (2) opening sentence vô nghĩa, (3) thiếu quantitative results, (4) suggest cụ thể: cut to 200 words, lead with method name + benchmark number. Dùng cụm '过于冗长 / 信息密度不足 / 建议'.",
+      "Bạn là sinh viên Việt Nam viết một literature review cho luận án thạc sĩ về 'Reinforcement Learning from Human Feedback'. Hãy viết introduction-paragraph cho lit review section (150 từ): (1) phát biểu scope, (2) introduce 3-4 trường phái chính (RLHF / DPO / Constitutional AI), (3) state where your work fits. Dùng cụm '提纲挈领 / 脉络 / 流派分歧 / 在此脉络中, 本研究...'."
+    ],
+    register_notes: "Viết abstract và literature review là hai kỹ năng signature của academic writer C1+. Chính sinh viên với bài thí nghiệm xuất sắc cũng có thể bị reject vì abstract yếu.\n\n1. ABSTRACT 4-ELEMENT STRUCTURE (200-250 words):\n\nFORMAT chuẩn:\n- Câu 1-2 (BACKGROUND + GAP): không 近年来 mở đầu! Trực tiếp: '本文研究 X 问题. 现有方法存在 Y 局限'.\n- Câu 3 (CONTRIBUTION): '本文提出 [name], 通过 [mechanism] 实现 [capability]'.\n- Câu 4-5 (METHOD): mô tả ngắn cách method hoạt động.\n- Câu 6-7 (RESULTS): '实验表明 + 量化数字 + benchmark'. AT LEAST 2 numbers.\n- Câu 8 (CONCLUSION + IMPLICATION): '综上, X 为 Y 提供了 Z'.\n\n2. AVOID PHRASES (kill rate cao):\n\n- '近年来, 随着X的迅猛发展...' — banned.\n- '本文研究了一个非常重要的问题' — vô nghĩa.\n- '具有重要的理论意义和实践价值' — empty.\n- '希望本研究能为该领域做出贡献' — humble nhưng nội dung trống.\n\n3. INFORMATION DENSITY TEST:\n\nĐọc lại từng câu trong abstract. Hỏi: 'nếu xóa câu này, abstract có còn đứng vững không?'.\n- KHÔNG = câu cần thiết, giữ.\n- CÓ = câu vô ích, xóa.\n\nMục tiêu: 100% câu pass test này.\n\n4. NUMBERS:\n\nMỗi abstract phải có ít nhất 2 numbers:\n- Improvement: '比SOTA高 X 个百分点'\n- Sample size / dataset size: '在 N 个样本上'\n- Speed: '快 K 倍'\n- Comparison: '相比 baseline, AUC从 a 提升到 b'\n\nNumbers convince, không phải adjectives.\n\n5. LITERATURE REVIEW NGUYÊN TẮC:\n\nTRÁNH (堆砌):\n- 'X et al. did Y. Then Z et al. did W. Then ...': chronological listing.\n- Tóm tắt mỗi paper 1 câu: không có analysis.\n\nSHOULD (提纲挈领):\n- Identify 2-4 'schools' hoặc 'approaches' trong field.\n- Show progression: foundational → mainstream → recent advances.\n- Identify gaps / open problems.\n- Position your work explicitly: '本研究填补了 X gap'.\n\n6. CỤM TỪ STRUCTURE LIT REVIEW:\n\n- 该领域之研究大致可分为三类 (the field's research roughly divides into three categories)\n- 早期工作 (early work)... 主流方法 (mainstream methods)... 近期进展 (recent advances)...\n- 一种重要的研究路径 (an important research path) / 另一种主流approach (another mainstream approach)\n- 现有研究尚存在三个开放问题 (existing research still has three open problems)\n- 笔者注意到, 现有研究普遍忽视了 X (the author notes that existing research generally overlooks X)\n\n7. CỤM IDIOMS APPLICABLE:\n\n- 开宗明义 (open with clear thesis) — for abstract first sentence\n- 言简意赅 (concise but substantive) — abstract overall\n- 一目了然 (instantly understandable) — abstract goal\n- 删繁就简 (cut redundancy) — editing process\n- 提纲挈领 (grasp the essence) — for lit review\n- 画龙点睛 (dot the dragon's eye) — for the contribution sentence\n- 画蛇添足 (add snake feet) — for unnecessary additions\n\n8. JOURNAL-SPECIFIC LIMITS:\n\n- Nature / Science: 150-200 words, hard limit\n- ACM / IEEE: 150-250 words, hard limit  \n- 计算机学报 (Chinese): 150-300 words\n- Cell / NEJM: 250-300 words structured\n\nHard limit = strict. Kiểm tra journal guidelines TRƯỚC khi viết.",
+    idiom_glosses: [
+      {
+        idiom: "开宗明义",
+        literal: "mở môn phái rõ nghĩa (kāi zōng míng yì)",
+        meaning: "Mở đầu rõ nghĩa — point out main thesis at the very start. Critical principle for abstract / introduction first sentence. (书面/正式)",
+        example: "摘要应开宗明义, 第一句即点出研究核心贡献。"
+      },
+      {
+        idiom: "言简意赅",
+        literal: "lời ngắn ý đủ (yán jiǎn yì gāi)",
+        meaning: "Lời ngắn nhưng ý đầy đủ — academic writing virtue. Cụm khen abstract / executive summary good. (书面/正式)",
+        example: "该摘要言简意赅, 紧扣四要素, 堪称典范。"
+      },
+      {
+        idiom: "画龙点睛",
+        literal: "vẽ rồng điểm mắt (huà lóng diǎn jīng)",
+        meaning: "Vẽ rồng điểm mắt — last touch that brings the whole alive. Cụm khen the most insight-dense sentence in a paper. (书面/正式)",
+        example: "结论一段堪称画龙点睛, 升华了全文论证。"
+      },
+      {
+        idiom: "画蛇添足",
+        literal: "vẽ rắn thêm chân (huà shé tiān zú)",
+        meaning: "Vẽ rắn thêm chân — adding the unnecessary, ruining the whole. Cụm phê bình redundancy / over-explanation. (书面/正式)",
+        example: "abstract最后两句在重复结论, 实属画蛇添足。"
+      }
+    ],
+    cultural_notes_vi: "Văn hóa abstract / lit review trong giới học thuật Trung Quốc đại lục có một số điểm khác biệt với phương Tây và Việt Nam:\n\n(1) BILINGUAL ABSTRACTS REQUIREMENT: nhiều tạp chí Trung Quốc tier-1 yêu cầu BOTH Chinese abstract VÀ English abstract. Hai abstract phải parallel ý nhưng không phải translation 1:1. Sinh viên Việt cần biết: viết hai bản abstract = hai job, dù share content.\n\n(2) STRUCTURED ABSTRACT (结构化摘要): tạp chí y học và một số tạp chí khoa học xã hội Trung Quốc require structured abstract với explicit headers: 目的 (Objective), 方法 (Methods), 结果 (Results), 结论 (Conclusion). Tạp chí khác cho phép unstructured nhưng vẫn cần 4 elements implicit.\n\n(3) AVERSION TO OPENING CLICHÉS: từ 2018+, top journals Trung Quốc explicitly reject abstracts opening với '近年来, 随着X的迅猛发展'. Editor đếm số lần phrase này xuất hiện trong submitted manuscripts đã > 90% — bị coi là templated, lazy. Sinh viên Việt copy phrase này từ Chinese papers cũ = bị reject.\n\n(4) LITERATURE REVIEW LENGTH: standard Trung Quốc top journals require lit review chiếm 15-25% paper length. Quá ngắn = không đủ acknowledge prior work. Quá dài = không đủ contribution của bạn. Sinh viên Việt thường viết quá ngắn (5-10%) — needs expansion.\n\n(5) FOREIGN vs DOMESTIC CITATIONS BALANCE: top journals Trung Quốc expect lit review balance international (≥60%) + domestic Chinese (≤40%) sources. Quá nhiều domestic = parochial. Quá ít domestic = ignoring local field. Adjust based on subfield maturity.\n\n(6) META-ANALYSIS as alternative: ngày càng nhiều papers Trung Quốc ML/biomedical write systematic meta-analysis thay vì narrative review. Methodology stricter, subjectivity giảm. Sinh viên Việt nên consider meta-analysis cho thesis nếu field allows.\n\n(7) PRE-REGISTRATION CULTURE: từ 2020+, top Chinese journals trong psychology / education khuyến khích pre-registration. Đăng ký research plan trước khi collect data. Lit review section trở thành phần background of pre-registration.\n\n(8) AI-ASSISTED SUMMARIZATION: từ 2023+, học giả Trung Quốc sử dụng GPT/Claude để help draft lit reviews. Một số journals chấp nhận if disclosed; khác lại banned. Sinh viên Việt: disclose if used, even minor edits.\n\n(9) ABSTRACTS GET INDEXED, FULL TEXT KHÔNG: trong Chinese academic search engines (CNKI, WANFANG), abstract is what users see when browsing. Abstract weak = paper invisible regardless of full-text quality. Sinh viên Việt: abstract is FRONTLINE, not afterthought.\n\n(10) GRADUATE DEFENSE ABSTRACT: defense submission ở Trung Quốc đại lục requires Chinese abstract VÀ English abstract trên thesis cover page. Hội đồng thường judge thesis quality SOLELY based on abstract trong 60 seconds đầu tiên of defense. Underestimate abstract = underestimate defense success rate.",
+    tip_advice_vi: "(1) WRITE ABSTRACT LAST: viết toàn bộ paper trước, abstract cuối cùng. Bạn không thể tóm tắt cái bạn chưa viết. Nếu phải submit proposal, viết structured abstract trước (working draft), then revise sau khi paper xong. (2) CONTRIBUTION SENTENCE FIRST: câu đầu là CONTRIBUTION, không phải background. Format: '本文提出 [name], 通过 [mechanism] 实现 [capability]'. Practice this pattern. (3) AT LEAST 2 NUMBERS: abstract không có numbers = không convincing. Mục tiêu: improvement % + sample size, hoặc tương tự. (4) WORD COUNT TARGET = LIMIT × 0.85: nếu limit 250 words, target 200-220. Buffer cho revision. (5) DELETE PASS: viết bản 1 → lưu → đêm sau → mở ra → DELETE 30%. Đa số abstract bản 1 quá dài. (6) NO 'IN THIS PAPER, WE': dùng '本文 + 提出/研究/探讨'. Avoid first person plural - awkward in Chinese formal register. (7) SCAN TOP TIER ABSTRACTS: trước khi viết, đọc 5 abstracts published in your target journal. Note their sentence patterns + Chinese word choice. Imitate structure (NOT content). (8) LIT REVIEW: ORGANIZE BY THEMES not papers. Each subsection = 1 theme/issue, citing 5-10 papers in conversation, not 1 paper per paragraph. (9) POSITION YOUR WORK EXPLICITLY: lit review must end với clear statement '本研究填补了 [specific gap]'. Don't make reader infer. (10) META: sinh viên Việt thường viết lit review quá ngắn (under 10% paper). Top journal expect 15-25%. Expand if necessary. (11) CHINESE-ENGLISH DOUBLE PASS: viết Chinese abstract → translate sang English → adjust English to native fluency → translate English back sang Chinese → polish Chinese. Iteration tốt cho cả 2 languages.",
+    exercises: [
+      { type: "fill-blank", question: "摘要乃论文之精髓所在, 应力求开宗明义, ___ 简意赅, 一目了然。", answer: "言" },
+      {
+        type: "matching",
+        instruction: "Ghép idiom với chức năng tiếng Việt.",
+        pairs: [
+          { chinese: "开宗明义", pinyin: "kāi zōng míng yì", english: "mở đầu rõ ràng" },
+          { chinese: "言简意赅", pinyin: "yán jiǎn yì gāi", english: "lời ngắn ý đủ" },
+          { chinese: "画龙点睛", pinyin: "huà lóng diǎn jīng", english: "điểm mắt rồng" },
+          { chinese: "画蛇添足", pinyin: "huà shé tiān zú", english: "vẽ chân rắn (thừa)" }
+        ]
+      },
+      {
+        type: "translation",
+        vietnamese: "Về cấu trúc, một tóm tắt đạt chuẩn thường bao gồm bốn yếu tố: bối cảnh nghiên cứu, phương pháp, kết quả và kết luận, thiếu một không được.",
+        chinese: "结构上, 一份合格的摘要通常包括四要素: 研究背景、方法、结果及结论, 缺一不可。",
+        pinyin: "Jié gòu shàng, yī fèn hé gé de zhāi yào tōng cháng bāo kuò sì yào sù: yán jiū bèi jǐng, fāng fǎ, jié guǒ jí jié lùn, quē yī bù kě."
+      }
+    ]
+  },
+  {
+    id: 101,
+    level: "C1",
+    category: "academic_discourse",
+    title: "同行评审之反馈",
+    pinyin: "tóng háng píng shěn zhī fǎn kuì",
+    topic: "Peer review feedback",
+    title_vi: "Phản hồi đồng nghiệp đánh giá",
+    title_en: "Peer review feedback",
+    sentences: [
+      {
+        chinese: "笔者已就该手稿展开仔细审读, 现就其学术贡献、方法论及表述等三方面, 提供如下评审意见。",
+        pinyin: "Bǐzhě yǐ jiù gāi shǒugǎo zhǎnkāi zǐxì shěndú, xiàn jiù qí xuéshù gòngxiàn, fāngfǎlùn jí biǎoshù děng sān fāngmiàn, tígōng rúxià píngshěn yìjiàn.",
+        english: "The author has carefully read the manuscript and now offers the following review comments on three aspects: academic contribution, methodology, and presentation.",
+        vi: "Tác giả đã đọc kỹ bản thảo, nay xin cung cấp các ý kiến đánh giá sau về ba mặt: đóng góp học thuật, phương pháp luận và cách trình bày.",
+        pronunciation_focus: ["手稿 → shǒugǎo (bản thảo)", "审读 → shěndú (đọc xét — 书面)", "评审意见 → píngshěn yìjiàn (ý kiến đánh giá)", "如下 → rúxià (như sau — 书面)"]
+      },
+      {
+        chinese: "整体观之, 本稿选题前沿, 实证扎实, 言之有据, 笔者对其学术价值予以肯定。",
+        pinyin: "Zhěngtǐ guān zhī, běn gǎo xuǎntí qiányán, shízhèng zhāshí, yán zhī yǒu jù, bǐzhě duì qí xuéshù jiàzhí yǔyǐ kěndìng.",
+        english: "Viewed as a whole, this manuscript's topic is at the frontier, its empirical evidence solid, its claims well-grounded — the author affirms its academic value.",
+        vi: "Nhìn tổng thể, bản thảo này đề tài tiên phong, thực chứng vững chắc, luận điểm có căn cứ, tác giả tán đồng giá trị học thuật của nó.",
+        pronunciation_focus: ["整体观之 → zhěngtǐ guān zhī (nhìn tổng thể — 书面)", "选题前沿 → xuǎntí qiányán (đề tài tiên phong)", "扎实 → zhāshí (vững chắc)", "予以肯定 → yǔyǐ kěndìng (tán đồng — 书面)"]
+      },
+      {
+        chinese: "然而, 在方法层面, 本稿尚有若干值得改进之处, 兹提出三点具体建议, 供作者参考。",
+        pinyin: "Rán'ér, zài fāngfǎ céngmiàn, běn gǎo shàng yǒu ruògān zhídé gǎijìn zhī chù, zī tíchū sān diǎn jùtǐ jiànyì, gōng zuòzhě cānkǎo.",
+        english: "However, at the methodological level, this manuscript still has several points worth improving — three specific suggestions are offered below for the authors' reference.",
+        vi: "Tuy nhiên, ở tầng phương pháp, bản thảo còn một số điểm đáng để cải thiện, ở đây đề xuất ba gợi ý cụ thể, cung cấp cho tác giả tham khảo.",
+        pronunciation_focus: ["然而 → rán'ér (tuy nhiên)", "若干 → ruògān (một số — 书面)", "兹 → zī (nay — 书面)", "供 → gōng (cung cấp — 书面)"]
+      },
+      {
+        chinese: "建议作者针对上述三点逐一回应, 并在修订版中以颜色标注修改之处, 以便复审。",
+        pinyin: "Jiànyì zuòzhě zhēnduì shàngshù sān diǎn zhú yī huíyìng, bìng zài xiūdìng bǎn zhōng yǐ yánsè biāozhù xiūgǎi zhī chù, yǐbiàn fùshěn.",
+        english: "It is suggested that authors respond to each of the three points one by one, and mark revisions with colors in the revised version to facilitate re-review.",
+        vi: "Đề xuất tác giả phản hồi từng điểm một trong ba điểm trên, và trong bản sửa đánh dấu các chỗ sửa bằng màu để thuận lợi cho việc tái duyệt.",
+        pronunciation_focus: ["针对 → zhēnduì (nhắm vào — 书面)", "逐一回应 → zhú yī huíyìng (từng điểm trả lời)", "标注 → biāozhù (đánh dấu)", "以便 → yǐbiàn (để thuận lợi — 书面)"]
+      },
+      {
+        chinese: "综合评审意见, 本稿宜接受重大修改后再审, 不宜直接接受, 亦无须立即拒稿。",
+        pinyin: "Zōnghé píngshěn yìjiàn, běn gǎo yí jiēshòu zhòngdà xiūgǎi hòu zài shěn, bùyí zhíjiē jiēshòu, yì wúxū lìjí jùgǎo.",
+        english: "Synthesizing the review opinions, this manuscript should be accepted for re-review after major revision — neither directly accepted, nor immediately rejected.",
+        vi: "Tổng hợp ý kiến đánh giá, bản thảo này nên chấp nhận tái duyệt sau sửa đổi lớn, không nên chấp nhận trực tiếp, cũng không cần lập tức bác bỏ.",
+        pronunciation_focus: ["综合 → zōnghé (tổng hợp)", "重大修改 → zhòngdà xiūgǎi (major revision)", "再审 → zài shěn (re-review)", "亦无须 → yì wúxū (cũng không cần — 书面)"]
+      }
+    ],
+    vocab: [
+      { chinese: "同行评审", pinyin: "tóng háng píng shěn", english: "peer review", vi: "đồng nghiệp đánh giá" },
+      { chinese: "手稿", pinyin: "shǒu gǎo", english: "manuscript", vi: "bản thảo" },
+      { chinese: "重大修改", pinyin: "zhòng dà xiū gǎi", english: "major revision", vi: "sửa đổi lớn" },
+      { chinese: "小幅修改", pinyin: "xiǎo fú xiū gǎi", english: "minor revision", vi: "sửa đổi nhỏ" },
+      { chinese: "拒稿", pinyin: "jù gǎo", english: "to reject manuscript", vi: "bác bỏ / từ chối bản thảo" },
+      { chinese: "审稿人", pinyin: "shěn gǎo rén", english: "reviewer", vi: "người đánh giá" },
+      { chinese: "通讯作者", pinyin: "tōng xùn zuò zhě", english: "corresponding author", vi: "tác giả liên hệ" },
+      { chinese: "回应", pinyin: "huí yìng", english: "to respond", vi: "phản hồi" },
+      { chinese: "字斟句酌", pinyin: "zì zhēn jù zhuó", english: "weigh every word and phrase (idiom)", vi: "cân nhắc từng câu chữ (书面)" },
+      { chinese: "实事求是", pinyin: "shí shì qiú shì", english: "seek truth from facts (idiom)", vi: "thực sự cầu thị (书面)" }
+    ],
+    dialogue: [
+      { speaker: "新审稿人", chinese: "教授, 我第一次给期刊审稿, 不知道review letter怎么开头比较合适。", pinyin: "Jiàoshòu, wǒ dì yī cì gěi qīkān shěngǎo, bù zhīdào review letter zěnme kāitóu bǐjiào héshì.", english: "Professor, this is my first time reviewing for a journal — I don't know how to begin the review letter appropriately.", vi: "Thưa giáo sư, em lần đầu phản biện cho tạp chí, không biết review letter nên mở đầu thế nào cho phù hợp." },
+      { speaker: "资深审稿人", chinese: "标准开头: '笔者已就该手稿展开仔细审读, 现就其学术贡献、方法论及表述三方面, 提供如下评审意见。' 客观、专业、保留余地。", pinyin: "Biāozhǔn kāitóu: 'bǐzhě yǐ jiù gāi shǒugǎo zhǎnkāi zǐxì shěndú, xiàn jiù qí xuéshù gòngxiàn, fāngfǎlùn jí biǎoshù sān fāngmiàn, tígōng rúxià píngshěn yìjiàn.' Kèguān, zhuānyè, bǎoliú yúdì.", english: "Standard opener: 'The author has carefully read the manuscript and now offers review comments on three aspects: contribution, methodology, and presentation.' Objective, professional, leaves room.", vi: "Mở đầu chuẩn: 'Tác giả đã đọc kỹ bản thảo, nay cung cấp ý kiến đánh giá về ba mặt: đóng góp, phương pháp luận, cách trình bày.' Khách quan, chuyên nghiệp, để lại không gian." },
+      { speaker: "新审稿人", chinese: "如果我觉得这paper完全没救了, 也要这样温和?", pinyin: "Rúguǒ wǒ juéde zhè paper wánquán méi jiùle, yě yào zhèyàng wēnhé?", english: "Even if I feel the paper is hopeless, should I still be this gentle?", vi: "Nếu em cảm thấy bài này không cứu được nữa, cũng phải nhẹ nhàng thế à?" },
+      { speaker: "资深审稿人", chinese: "尤其要温和。Reject letter如果情绪化, 作者会上诉到editor, 麻烦你。专业的critique让reject站得住脚, 同时尊重作者人格。', 字斟句酌'是核心。", pinyin: "Yóuqí yào wēnhé. Reject letter rúguǒ qíngxùhuà, zuòzhě huì shàngsù dào editor, máfan nǐ. Zhuānyè de critique ràng reject zhàn de zhù jiǎo, tóngshí zūnzhòng zuòzhě réngé. 'Zì zhēn jù zhuó' shì héxīn.", english: "Especially must be gentle. If reject letter is emotional, authors appeal to editor — trouble for you. Professional critique makes reject defensible while respecting author dignity. 'Weighing every word' is core.", vi: "Đặc biệt phải nhẹ nhàng. Reject letter nếu cảm xúc hóa, tác giả sẽ kháng cáo lên editor, phiền em. Critique chuyên nghiệp làm reject đứng vững, đồng thời tôn trọng nhân cách tác giả. '字斟句酌' (cân nhắc từng câu) là cốt lõi." }
+    ],
+    dialogue_long: [
+      { speaker: "资深审稿人", chinese: "你这次review letter写得不错, 但我看了一遍, 有几个地方可以更优。让我们一起过。", pinyin: "Nǐ zhècì review letter xiě de bùcuò, dàn wǒ kànle yī biàn, yǒu jǐ gè dìfāng kěyǐ gèng yōu. Ràng wǒmen yīqǐ guò.", english: "Your review letter this time is decent, but I've read it — several places can be improved. Let's go through together.", vi: "Review letter lần này em viết khá ổn, nhưng tôi đọc rồi, có vài chỗ có thể tốt hơn. Mình cùng xem qua." },
+      { speaker: "新审稿人", chinese: "请您指出。", pinyin: "Qǐng nín zhǐchū.", english: "Please point them out.", vi: "Xin thầy chỉ ra giúp." },
+      { speaker: "资深审稿人", chinese: "第一, 你的opening有些abrupt: '该paper有几个严重问题'。我建议先acknowledge作者的工作: '本稿选题前沿, 实证较为扎实'再过渡到critique。否则作者一开始就defensive, 后面的具体建议都不容易吸收。", pinyin: "Dì yī, nǐ de opening yǒuxiē abrupt: 'gāi paper yǒu jǐ gè yánzhòng wèntí'. Wǒ jiànyì xiān acknowledge zuòzhě de gōngzuò: 'běn gǎo xuǎntí qiányán, shízhèng jiào wèi zhāshí' zài guòdù dào critique. Fǒuzé zuòzhě yī kāishǐ jiù defensive, hòumiàn de jùtǐ jiànyì dōu bù róngyì xīshōu.", english: "First, your opening is abrupt: 'The paper has several serious issues'. I suggest first acknowledging the work: 'topic frontier, empirical work fairly solid' before transitioning to critique. Otherwise authors are defensive immediately — your subsequent specific suggestions won't be absorbed.", vi: "Một, opening của em hơi abrupt: 'Bài này có vài vấn đề nghiêm trọng'. Tôi gợi ý trước hết acknowledge work của tác giả: 'đề tài tiên phong, thực chứng tương đối vững chắc' rồi chuyển sang critique. Nếu không tác giả ngay đầu đã defensive, các gợi ý cụ thể sau đều khó hấp thụ." },
+      { speaker: "新审稿人", chinese: "我以为acknowledge是socially nice但学术上没用。", pinyin: "Wǒ yǐwéi acknowledge shì socially nice dàn xuéshù shàng méi yòng.", english: "I thought acknowledgment is socially nice but academically useless.", vi: "Em tưởng acknowledge chỉ socially nice nhưng học thuật vô dụng." },
+      { speaker: "资深审稿人", chinese: "正相反。Acknowledge是professional review的核心。审稿不是审判, 是同行对话。第二, 你列了7个问题, 但没有priority。重要issues和typo混在一起。我建议: top 3 critical issues单独成段; 其他issues归类为'Minor comments', 编号list。", pinyin: "Zhèng xiāngfǎn. Acknowledge shì professional review de héxīn. Shěngǎo bùshì shěnpàn, shì tóngháng duìhuà. Dì èr, nǐ lièle 7 gè wèntí, dàn méiyǒu priority. Zhòngyào issues hé typo hùn zài yīqǐ. Wǒ jiànyì: top 3 critical issues dāndú chéng duàn; qítā issues guīlèi wèi 'Minor comments', biānhào list.", english: "Quite the opposite. Acknowledgment is core of professional review. Reviewing isn't judgment — it's peer dialogue. Second, you listed 7 problems but no priority. Major issues and typos mixed together. I suggest: top 3 critical issues each in its own paragraph; other issues grouped as 'Minor comments', numbered list.", vi: "Ngược lại. Acknowledge là cốt lõi của review chuyên nghiệp. Đánh giá không phải phán xét — là đối thoại giữa đồng nghiệp. Hai, em liệt kê 7 vấn đề nhưng không có priority. Vấn đề quan trọng và typo trộn lẫn. Tôi gợi ý: top 3 critical issues mỗi cái riêng đoạn; các issues khác gom thành 'Minor comments', list có số." },
+      { speaker: "新审稿人", chinese: "理解。第三呢?", pinyin: "Lǐjiě. Dì sān ne?", english: "Got it. Third?", vi: "Em hiểu. Còn cái thứ ba?" },
+      { speaker: "资深审稿人", chinese: "第三, 你的tone过于assertive: '这个方法是错的', '作者忽视了基本事实'。学术review的tone应该是hedged: '此方法似乎与文献中Smith(2021)所述的基础不一致, 笔者建议作者在Discussion部分加以澄清'。同样的message, register完全不同, 接收度差很大。", pinyin: "Dì sān, nǐ de tone guòyú assertive: 'zhège fāngfǎ shì cuò de', 'zuòzhě hūshìle jīběn shìshí'. Xuéshù review de tone yīnggāi shì hedged: 'cǐ fāngfǎ sìhū yǔ wénxiàn zhōng Smith (2021) suǒ shù de jīchǔ bù yīzhì, bǐzhě jiànyì zuòzhě zài Discussion bùfèn jiāyǐ chéngqīng'. Tóngyàng de message, register wánquán bùtóng, jiēshōu dù chā hěn dà.", english: "Third, your tone is too assertive: 'this method is wrong', 'authors ignored basic facts'. Academic review tone should be hedged: 'this method appears inconsistent with the basis described in Smith (2021); the reviewer recommends authors clarify this in the Discussion section'. Same message, completely different register, very different receptivity.", vi: "Ba, tone của em quá assertive: 'phương pháp này sai', 'tác giả bỏ qua sự thật cơ bản'. Tone của review học thuật nên hedged: 'phương pháp này dường như không nhất quán với cơ sở được mô tả trong Smith (2021), reviewer khuyến nghị tác giả làm rõ trong phần Discussion'. Cùng message, register hoàn toàn khác, độ tiếp thu chênh lệch nhiều." },
+      { speaker: "新审稿人", chinese: "如果我对一个point非常确信, 也要hedge?", pinyin: "Rúguǒ wǒ duì yī gè point fēicháng quèxìn, yě yào hedge?", english: "Even if I'm very confident on a point, must I hedge?", vi: "Nếu em rất chắc về một điểm, cũng phải hedge à?" },
+      { speaker: "资深审稿人", chinese: "100%确信只有少数情况, 比如math error或data inconsistency。即便如此, 写作时仍可: '此处计算似存在误差: 公式(3)的分母应为n而非n-1, 请作者核实'。注意'似', '请...核实' — 给作者face, 同时fact stated clearly。', 实事求是'是审稿伦理。", pinyin: "100% quèxìn zhǐyǒu shǎoshù qíngkuàng, bǐrú math error huò data inconsistency. Jíbiàn rúcǐ, xiězuò shí réng kě: 'cǐ chù jìsuàn sì cúnzài wùchā: gōngshì (3) de fēnmǔ yīng wèi n ér fēi n-1, qǐng zuòzhě héshí'. Zhùyì 'sì', 'qǐng...héshí' — gěi zuòzhě face, tóngshí fact stated clearly. 'Shíshì qiúshì' shì shěngǎo lúnlǐ.", english: "100% certainty applies in few cases — math error, data inconsistency. Even then, writing: 'a calculation here seems to contain error: formula (3)'s denominator should be n not n-1; please verify'. Note '似' (seems), '请...核实' (please verify) — giving author face while stating fact clearly. 'Seek truth from facts' is review ethics.", vi: "100% chắc chỉ có ít trường hợp như math error hay data inconsistency. Ngay cả khi đó, viết vẫn có thể: 'tính toán ở đây dường như có sai: mẫu số của công thức (3) nên là n chứ không phải n-1, xin tác giả kiểm tra'. Chú ý '似' (dường như), '请...核实' (xin kiểm tra) — cho tác giả face, đồng thời fact nói rõ. '实事求是' là đạo đức đánh giá." },
+      { speaker: "新审稿人", chinese: "我之前的reviews对作者有点苛刻了。", pinyin: "Wǒ zhīqián de reviews duì zuòzhě yǒudiǎn kēkè le.", english: "My previous reviews were a bit harsh on authors.", vi: "Các bản review trước của em hơi khắt khe với tác giả." },
+      { speaker: "资深审稿人", chinese: "这是新审稿人常见现象。Over-correction in next round, 你会过度positive。Balance慢慢学。最后, decision要明确: accept / minor revision / major revision / reject。模糊的decision会让editor做不了判断。", pinyin: "Zhè shì xīn shěngǎorén chángjiàn xiànxiàng. Over-correction in next round, nǐ huì guòdù positive. Balance mànmàn xué. Zuìhòu, decision yào míngquè: accept / minor revision / major revision / reject. Móhú de decision huì ràng editor zuò bùliǎo pànduàn.", english: "Common new-reviewer phenomenon. Over-correction next round — you'll be too positive. Balance learned slowly. Finally, decision must be clear: accept / minor revision / major revision / reject. Vague decision leaves editor unable to judge.", vi: "Đây là hiện tượng phổ biến ở người đánh giá mới. Over-correction lần sau, em sẽ quá positive. Balance học từ từ. Cuối, decision phải rõ: accept / minor revision / major revision / reject. Decision mơ hồ làm editor không phán quyết được." },
+      { speaker: "新审稿人", chinese: "明白了。我这次重写review letter, 三天内您再看一下?", pinyin: "Míngbái le. Wǒ zhècì chóng xiě review letter, sān tiān nèi nín zài kàn yīxià?", english: "Understood. I'll rewrite the review letter — could you look in three days?", vi: "Em hiểu rồi. Em viết lại review letter, ba ngày nữa thầy xem giúp được không?" },
+      { speaker: "资深审稿人", chinese: "好。最后忠告: 审稿时心中有'你将来也会被人审'。Reviewer与author是同行, 不是上下级。审稿是service to community, 写letter的态度应当谦逊、严谨、字斟句酌。这是学术伦理。", pinyin: "Hǎo. Zuìhòu zhōnggào: shěngǎo shí xīnzhōng yǒu 'nǐ jiānglái yě huì bèi rén shěn'. Reviewer yǔ author shì tóngháng, bùshì shàng xiàjí. Shěngǎo shì service to community, xiě letter de tàidù yīngdāng qiānxùn, yánjǐn, zì zhēn jù zhuó. Zhè shì xuéshù lúnlǐ.", english: "Final advice: while reviewing, hold 'you too will be reviewed someday'. Reviewer and author are peers, not superior-subordinate. Review is service to community; the attitude of writing letter should be humble, rigorous, and weigh-each-word. This is academic ethics.", vi: "Tốt. Câu khuyên cuối: khi đánh giá, trong lòng giữ 'em rồi cũng sẽ bị người khác đánh giá'. Reviewer và author là đồng nghiệp, không phải cấp trên-dưới. Đánh giá là service to community, thái độ viết letter cần khiêm tốn, nghiêm cẩn, cân nhắc từng câu. Đây là đạo đức học thuật." }
+    ],
+    roleplay_prompts: [
+      "Bạn là reviewer cho một paper về 'Object Detection in Autonomous Vehicles'. Paper có ý tưởng good (multi-modal fusion novel), data solid, nhưng (1) không có baseline comparison fair, (2) ablation study chỉ test 1/3 components, (3) generalization claim quá broad (test 1 dataset). Hãy viết review letter complete (250 từ): opening acknowledgment + 3 numbered critical issues + 2 minor comments + decision (major revision). Dùng cụm '本稿选题前沿 / 笔者建议 / 兹提出三点'.",
+      "Bạn là editor đang viết letter từ chối một paper. Reviewer 1 said accept, Reviewer 2 said reject, Reviewer 3 said major revision. Bạn quyết định reject vì methodology fundamental flaws. Hãy viết letter cho author: (1) cảm ơn submission, (2) tóm tắt review consensus, (3) nêu cụ thể 3 fundamental issues, (4) khuyến khích resubmit alternative venue. Tone: professional, no personal attack, no 'sorry but no'. Dùng '经审议 / 鉴于 / 不便接受'.",
+      "Bạn là reviewer phản hồi một paper từ một famous lab (chair of NeurIPS). Reputational pressure cao. Bạn tìm được data inconsistency thực sự (Table 3 và Table 5 contradict each other). Hãy viết review chỉ ra issue mà không seem disrespectful: (1) mở đầu acknowledge lab's contribution to field, (2) chỉ ra inconsistency với evidence rõ (page numbers, table numbers), (3) request clarification (không claim 'this is wrong'), (4) decision: minor revision. Dùng '请作者核实 / 似存在不一致 / 实事求是'."
+    ],
+    register_notes: "Peer review feedback là kỹ năng C1 'social-academic' phối hợp criticism + diplomacy. Sinh viên Việt thường mismatch tone (quá harsh hoặc quá soft).\n\n1. STANDARD REVIEW LETTER STRUCTURE:\n\n- OPENING (1-2 sentences): formal acknowledgment of submission, brief positive framing.\n- SUMMARY (2-3 sentences): summarize the paper's contribution in your own words. Convinces author you've read it.\n- POSITIVE NOTES (2-3 sentences): genuine positive feedback. Even reject papers usually have something good.\n- MAJOR ISSUES (numbered, 1 paragraph each): top 3-5 critical issues, prioritized.\n- MINOR ISSUES (bulleted): typos, formatting, small clarifications.\n- DECISION (1 sentence): clear recommendation.\n- CLOSING (1 sentence): thank author, encourage further work.\n\n2. PHRASE TỪ REVIEW STANDARD:\n\nOPENING:\n- 笔者已就该手稿展开仔细审读 (the author has carefully read this manuscript)\n- 现就...提供如下评审意见 (now offers the following review comments)\n\nPOSITIVE FRAMING:\n- 本稿选题前沿 (topic at the frontier)\n- 实证扎实 (empirical evidence solid)\n- 言之有据 (claims have grounds)\n- 论证严谨 (argumentation rigorous)\n- 表述清晰 (presentation clear)\n\nCRITICAL ISSUES:\n- 然而, 在X层面, 本稿尚有若干值得改进之处 (however, at X level, this manuscript has several points worth improving)\n- 笔者建议 (the reviewer suggests)\n- 此点尚需斟酌 (this point requires deliberation)\n- 论据似嫌不足 (evidence appears insufficient)\n- 建议作者补充 X (suggest authors supplement X)\n\nDECISION:\n- 笔者建议: accept / minor revision / major revision / reject (the reviewer recommends...)\n- 综合评审意见, 本稿宜接受重大修改后再审 (synthesizing the review, the manuscript should undergo major revision before re-review)\n\n3. TONE GRADUATION:\n\nFOR ACCEPT/MINOR REVISION:\n- 本稿质量上乘, 仅需minor adjustments (manuscript is high quality, needs only minor adjustments)\n- 总体评价积极 (overall assessment positive)\n\nFOR MAJOR REVISION:\n- 本稿有潜力, 但methodology存在若干关键问题 (has potential but methodology has key issues)\n- 重大修改之后, 笔者愿re-review (willing to re-review after major revision)\n\nFOR REJECT:\n- 鉴于本稿在X方面之根本缺陷 (in view of fundamental flaws in X)\n- 不宜在本期刊接受 (not suitable for acceptance in this journal)\n- 建议作者考虑投递更适合之venue (suggest considering more suitable venues)\n\n4. AVOID:\n\n- 'this paper is wrong / bad / poorly written' — no personal language\n- '我认为...' (overuse of first person opinion) — use '笔者' or passive\n- Emotional language: '令人失望 / 难以理解 / 莫名其妙'\n- Sarcasm — never\n- Comparisons across papers: 'much weaker than X paper' — unprofessional\n\n5. PRIORITIZATION:\n\n- TOP 3 CRITICAL: methodology, claim-evidence mismatch, data integrity\n- MIDDLE: literature gaps, ablation, generalizability\n- BOTTOM: typos, formatting\n\nBlend all together = chaos. Reviewer must signal priority.\n\n6. WHEN REVIEWER 1 SAYS ACCEPT, YOU SAY REJECT:\n\nDon't directly contradict R1. Phrase: '与第一审稿人不同, 笔者持保留意见. 主要原因如下...'. Editor decides.\n\n7. CONFLICT OF INTEREST:\n\nIf you know authors / cite their work / collaborate with them: declare to editor immediately. Cultural norm in China is stricter than US — declare even at minor connection level.\n\n8. HANDLING REBUTTAL:\n\nAuthors will respond. Read their response carefully. If they addressed your concerns: acknowledge, soften critique. If they didn't: stick to position firmly but politely.\n\n9. TIME COMMITMENT:\n\nProfessional review takes 4-8 hours minimum. Don't write rush reviews. Read paper twice; write letter from outline.\n\n10. CULTURAL CONSIDERATION:\n\nReviewing for Chinese journal: longer, more detailed reviews valued. Reviewing for international journal: more concise, more direct (still polite). Adjust style to venue.",
+    idiom_glosses: [
+      {
+        idiom: "字斟句酌",
+        literal: "cân nhắc từng chữ từng câu (zì zhēn jù zhuó)",
+        meaning: "Cân nhắc từng câu chữ — academic virtue cho viết review hoặc rebuttal. Reviewer phải '字斟句酌' để critique chính xác mà không gây offense. (书面/正式)",
+        example: "评审意见之撰写, 务必字斟句酌, 切忌情绪用事。"
+      },
+      {
+        idiom: "实事求是",
+        literal: "thực sự tìm ra cái thực (shí shì qiú shì)",
+        meaning: "Thực sự cầu thị / theo sự thật mà tìm — academic ethic principle. Reviewer phải 'từ data tìm sự thật', không bias by author identity. (书面/正式)",
+        example: "审稿人当本着实事求是之原则, 客观评价手稿。"
+      },
+      {
+        idiom: "直言不讳",
+        literal: "nói thẳng không kiêng kỵ (zhí yán bù huì)",
+        meaning: "Nói thẳng không kiêng kỵ — academic frankness, dùng để khen reviewer dám pointing out hard truths. Caveat: phải đi kèm với 客观 (objective). (书面/正式)",
+        example: "该审稿人直言不讳, 指出了本稿的核心methodology问题。"
+      },
+      {
+        idiom: "客观公正",
+        literal: "khách quan công bằng (kè guān gōng zhèng)",
+        meaning: "Khách quan công bằng — review ethics core. Reviewer commit to neither favoritism nor hostility. Standard phrase trong reviewer guidelines. (书面/正式)",
+        example: "评审过程必须坚持客观公正, 不受外部因素影响。"
+      }
+    ],
+    cultural_notes_vi: "Văn hóa peer review trong giới học thuật Trung Quốc đại lục:\n\n(1) ANONYMITY VS DISCLOSED: top journals Trung Quốc dùng single-blind (reviewer anonymous, author known). Một số top venues international (NeurIPS, ICML) dùng double-blind. Sinh viên Việt review cho Trung Quốc venues: bạn biết author, author không biết bạn. Power asymmetry — phải responsibly use.\n\n(2) HIDDEN GUANXI NETWORK: Trung Quốc có 'reviewer network' - các labs cùng trường phái thường review papers cho nhau softly. Top journals đang push double-blind để giảm bias này. Sinh viên Việt review papers from same advisor's network = explicitly declare conflict.\n\n(3) RESPONSE-TO-REVIEWER FORMAT: rebuttal trong giới học thuật Trung Quốc rất polite. Format: '审稿人意见: ...' '作者回复: 感谢审稿人指出, 该意见非常宝贵. 我们已...' Defensive responses ('reviewer misunderstood') = sẽ làm reviewer angry và push reject. Even nếu reviewer thực sự hiểu sai, phải gentle.\n\n(4) DECISION TIME EXPECTATIONS: Trung Quốc top journals expect review trong 21-30 days. Tier 2-3 trong 30-45 days. Review chậm = editor sẽ swap reviewer. Sinh viên Việt review: commit đúng thời hạn hoặc decline upfront.\n\n(5) AI-ASSISTED REVIEW POLICY: từ 2023+, một số journals Trung Quốc allow AI to help draft (must disclose), khác lại fully banned. ACL 2024, NeurIPS 2024 banned LLM-drafted reviews. Sinh viên Việt: check journal policy carefully, disclose dù chỉ minor edit.\n\n(6) REVIEW LANGUAGE: tier-1 Chinese journals nay accept English reviews (preferred). Tier-2/3 nhận cả Chinese và English. Sinh viên Việt: review tiếng Anh trừ khi journal explicitly requires Chinese.\n\n(7) REPUTATION AT STAKE: Trung Quốc có public review reputation system (Publons, ORCID). Reviewer quality tracked. Bad / unprofessional reviews → editors won't invite again. Career đụng độ. Sinh viên trẻ Việt: invest in review quality từ đầu.\n\n(8) ETHICS BOARD INVOLVEMENT: nếu review có serious concerns (ethics violation, data fabrication), report to ethics board (伦理委员会), không chỉ editor. Trung Quốc top journals đều có ethics board.\n\n(9) AUTHOR-REVIEWER RECIPROCITY: 'cycle of review' — reviewers cũng là authors. 'Treat others as you'd be treated'. Harsh review = bạn cũng sẽ nhận harsh review. Sinh viên Việt: maintain karma.\n\n(10) RESPONSE-TO-REVIEWER LETTERS PUBLISHED: một số journals ngày nay (như eLife, F1000Research) public publish review letters + responses. Sinh viên Việt: every word in your review may be public. Write accordingly.",
+    tip_advice_vi: "(1) READ PAPER TWICE: trước khi viết review, đọc paper full TWICE. Lần 1 cho overall, lần 2 cho details. Một lần đọc = miss issues. (2) WRITE FROM OUTLINE: outline review trước (3-5 critical issues + 5-10 minor). Outline đảm bảo coverage + priority. (3) START WITH ACKNOWLEDGMENT: dù paper hopeless, bắt đầu với positive: '该选题前沿 / 实证扎实'. Set tone collaborative. (4) NUMBER YOUR CRITIQUES: 其一 / 其二 / 其三. Author phải đáp from điểm. Numbered = trackable. (5) CITE LINE/PAGE NUMBERS: vague critique = ignored critique. 'Section 3.2, paragraph 2: argument không clear'. Specific = actionable. (6) HEDGE EVEN WHEN CONFIDENT: '此点似乎' / '可能存在' giảm confrontation 50% mà vẫn truyền message. (7) END WITH CLEAR DECISION: accept / minor / major / reject. Vague = editor angry. Editor expects ONE word recommendation. (8) RESPECT AUTHOR DIGNITY: critique work, không critique person. 'Methodology存在不足' tốt hơn 'authors are unprofessional'. (9) RESPONSE TIMELINE: commit deadline strictly. Late review = editor remember. Decline upfront if can't make. (10) SAVE TEMPLATE: review structure stable across papers. Make a personal template (opening / structure / closing). Saves time. (11) AI USAGE DISCLOSURE: nếu dùng AI to draft, even minor, disclose to editor in submission notes. Failure to disclose = academic misconduct nếu later discovered. (12) AVOID SUBJECT-SPECIFIC JARGON IN REVIEW: review may be read by editors from different sub-areas. Explain key technical terms. Inclusivity = professional.",
+    exercises: [
+      { type: "fill-blank", question: "笔者已就该手稿展开仔细审读, 现就其学术贡献、方法论及表述等三方面, ___ 供如下评审意见。", answer: "提" },
+      {
+        type: "matching",
+        instruction: "Ghép thuật ngữ peer review với chức năng tiếng Việt.",
+        pairs: [
+          { chinese: "重大修改", pinyin: "zhòng dà xiū gǎi", english: "major revision" },
+          { chinese: "小幅修改", pinyin: "xiǎo fú xiū gǎi", english: "minor revision" },
+          { chinese: "拒稿", pinyin: "jù gǎo", english: "reject manuscript" },
+          { chinese: "字斟句酌", pinyin: "zì zhēn jù zhuó", english: "cân nhắc từng câu chữ" }
+        ]
+      },
+      {
+        type: "translation",
+        vietnamese: "Tổng hợp ý kiến đánh giá, bản thảo này nên chấp nhận tái duyệt sau sửa đổi lớn, không nên chấp nhận trực tiếp, cũng không cần lập tức bác bỏ.",
+        chinese: "综合评审意见, 本稿宜接受重大修改后再审, 不宜直接接受, 亦无须立即拒稿。",
+        pinyin: "Zōng hé píng shěn yì jiàn, běn gǎo yí jiē shòu zhòng dà xiū gǎi hòu zài shěn, bù yí zhí jiē jiē shòu, yì wú xū lì jí jù gǎo."
+      }
+    ]
   }
 ];
 
