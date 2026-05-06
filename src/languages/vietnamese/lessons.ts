@@ -2124,7 +2124,7 @@ export const VIETNAMESE_LESSONS: VietnameseLesson[] = [
   },
   {
     id: 48,
-    level: "A2",
+    level: "A1",
     title_en: "Telling Stories About Your Day",
     subtitle: "Say what happened, what you did, and how you felt.",
     intro:
@@ -2200,7 +2200,7 @@ export const VIETNAMESE_LESSONS: VietnameseLesson[] = [
   },
   {
     id: 49,
-    level: "A2",
+    level: "A1",
     title_en: "Explaining Problems",
     subtitle: "Describe what is wrong in a clear, adult way.",
     intro:
@@ -2276,7 +2276,7 @@ export const VIETNAMESE_LESSONS: VietnameseLesson[] = [
   },
   {
     id: 50,
-    level: "A2",
+    level: "A1",
     title_en: "Giving Opinions Politely",
     subtitle: "Say what you think without sounding too strong.",
     intro:
@@ -2320,7 +2320,7 @@ export const VIETNAMESE_LESSONS: VietnameseLesson[] = [
   },
   {
     id: 51,
-    level: "A2",
+    level: "A1",
     title_en: "Making And Changing Plans",
     subtitle: "Arrange a time, then adjust it naturally.",
     intro:
@@ -2396,7 +2396,7 @@ export const VIETNAMESE_LESSONS: VietnameseLesson[] = [
   },
   {
     id: 52,
-    level: "A2",
+    level: "A1",
     title_en: "Talking About Work",
     subtitle: "Simple work talk for colleagues and small talk.",
     intro:
@@ -2466,7 +2466,7 @@ export const VIETNAMESE_LESSONS: VietnameseLesson[] = [
   },
   {
     id: 53,
-    level: "A2",
+    level: "A1",
     title_en: "Talking About Family And Relationships",
     subtitle: "Simple family language for daily conversations.",
     intro:
@@ -2510,7 +2510,7 @@ export const VIETNAMESE_LESSONS: VietnameseLesson[] = [
   },
   {
     id: 54,
-    level: "B1",
+    level: "A1",
     title_en: "Renting An Apartment",
     subtitle: "Deeper questions for housing and landlords.",
     intro:
@@ -2586,7 +2586,7 @@ export const VIETNAMESE_LESSONS: VietnameseLesson[] = [
   },
   {
     id: 55,
-    level: "B1",
+    level: "A1",
     title_en: "Doctor And Pharmacy Explanations",
     subtitle: "Describe symptoms clearly and simply.",
     intro:
@@ -2662,7 +2662,7 @@ export const VIETNAMESE_LESSONS: VietnameseLesson[] = [
   },
   {
     id: 56,
-    level: "B1",
+    level: "A1",
     title_en: "Workplace Vietnamese",
     subtitle: "Useful phrases for office or team conversations.",
     intro:
@@ -2706,7 +2706,7 @@ export const VIETNAMESE_LESSONS: VietnameseLesson[] = [
   },
   {
     id: 57,
-    level: "B1",
+    level: "A1",
     title_en: "Natural Connectors",
     subtitle: "Link ideas with vì, nên, nhưng, nếu, khi.",
     intro:
@@ -2756,7 +2756,7 @@ export const VIETNAMESE_LESSONS: VietnameseLesson[] = [
   },
   {
     id: 58,
-    level: "B1",
+    level: "A1",
     title_en: "Clarifying And Following Up",
     subtitle: "Keep the conversation moving naturally.",
     intro:
@@ -2832,7 +2832,7 @@ export const VIETNAMESE_LESSONS: VietnameseLesson[] = [
   },
   {
     id: 59,
-    level: "A1+",
+    level: "A1",
     title_en: "Talking About Your Routine",
     subtitle: "Say what your normal day looks like.",
     intro:
@@ -2882,7 +2882,7 @@ export const VIETNAMESE_LESSONS: VietnameseLesson[] = [
   },
   {
     id: 60,
-    level: "A1+",
+    level: "A1",
     title_en: "Talking About Likes And Dislikes",
     subtitle: "Give simple opinions with a reason.",
     intro:
@@ -2932,7 +2932,7 @@ export const VIETNAMESE_LESSONS: VietnameseLesson[] = [
   },
   {
     id: 61,
-    level: "A1+",
+    level: "A1",
     title_en: "Ordering With Modifications",
     subtitle: "Ask for small changes clearly.",
     intro:
@@ -2982,7 +2982,7 @@ export const VIETNAMESE_LESSONS: VietnameseLesson[] = [
   },
   {
     id: 62,
-    level: "A1+",
+    level: "A1",
     title_en: "Explaining Simple Problems",
     subtitle: "Say what is wrong without a long story.",
     intro:
@@ -3032,7 +3032,7 @@ export const VIETNAMESE_LESSONS: VietnameseLesson[] = [
   },
   {
     id: 63,
-    level: "A1+",
+    level: "A1",
     title_en: "Asking Follow-Up Questions",
     subtitle: "Keep the conversation from stopping.",
     intro:
@@ -3082,7 +3082,7 @@ export const VIETNAMESE_LESSONS: VietnameseLesson[] = [
   },
   {
     id: 64,
-    level: "A1+",
+    level: "A1",
     title_en: "Describing Places",
     subtitle: "Say what a place is like in simple connected sentences.",
     intro:
@@ -3132,7 +3132,7 @@ export const VIETNAMESE_LESSONS: VietnameseLesson[] = [
   },
   {
     id: 65,
-    level: "A1+",
+    level: "A1",
     title_en: "Simple Travel Conversations",
     subtitle: "Handle tickets, seats, bags, and arrival.",
     intro:
@@ -3182,7 +3182,7 @@ export const VIETNAMESE_LESSONS: VietnameseLesson[] = [
   },
   {
     id: 66,
-    level: "A1+",
+    level: "A1",
     title_en: "Asking For Recommendations",
     subtitle: "Ask locals for useful, specific suggestions.",
     intro:
@@ -3232,7 +3232,7 @@ export const VIETNAMESE_LESSONS: VietnameseLesson[] = [
   },
   {
     id: 67,
-    level: "A1+",
+    level: "A1",
     title_en: "Simple Social Conversations",
     subtitle: "Sound friendly without needing long Vietnamese.",
     intro:
@@ -3282,7 +3282,7 @@ export const VIETNAMESE_LESSONS: VietnameseLesson[] = [
   },
   {
     id: 68,
-    level: "A1+",
+    level: "A1",
     title_en: "Everyday Polite Conversation Flow",
     subtitle: "Open, respond, repair, and close politely.",
     intro:
@@ -3332,7 +3332,7 @@ export const VIETNAMESE_LESSONS: VietnameseLesson[] = [
   },
   {
     id: 69,
-    level: "A2",
+    level: "A1",
     title_en: "Visa And Immigration Office Basics",
     subtitle: "Handle simple office questions with calm, clear Vietnamese.",
     intro:
@@ -3414,7 +3414,7 @@ export const VIETNAMESE_LESSONS: VietnameseLesson[] = [
   },
   {
     id: 70,
-    level: "A2",
+    level: "A1",
     title_en: "Bank Account And ATM Problems",
     subtitle: "Talk about payments, cards, transfers, and banking trouble.",
     intro:
@@ -3496,7 +3496,7 @@ export const VIETNAMESE_LESSONS: VietnameseLesson[] = [
   },
   {
     id: 71,
-    level: "A2",
+    level: "A1",
     title_en: "Phone SIM And Internet Setup",
     subtitle: "Handle SIM cards, data, Wi-Fi, and mobile setup.",
     intro:
@@ -3578,7 +3578,7 @@ export const VIETNAMESE_LESSONS: VietnameseLesson[] = [
   },
   {
     id: 72,
-    level: "A2",
+    level: "A1",
     title_en: "Workplace Problems And Requests",
     subtitle: "Ask for help, time, or clarification at work.",
     intro:
@@ -3660,7 +3660,7 @@ export const VIETNAMESE_LESSONS: VietnameseLesson[] = [
   },
   {
     id: 73,
-    level: "A2",
+    level: "A1",
     title_en: "School Childcare And Family Schedules",
     subtitle: "Talk about children, pickup times, and school messages.",
     intro:
@@ -3742,7 +3742,7 @@ export const VIETNAMESE_LESSONS: VietnameseLesson[] = [
   },
   {
     id: 74,
-    level: "A2",
+    level: "A1",
     title_en: "Dating Social Nuance And Boundaries",
     subtitle: "Keep social conversations warm, clear, and respectful.",
     intro:
@@ -3824,7 +3824,7 @@ export const VIETNAMESE_LESSONS: VietnameseLesson[] = [
   },
   {
     id: 75,
-    level: "B1",
+    level: "A1",
     title_en: "Landlord Repairs And Complaints",
     subtitle: "Explain problems clearly and ask for repair without sounding harsh.",
     intro:
@@ -3906,7 +3906,7 @@ export const VIETNAMESE_LESSONS: VietnameseLesson[] = [
   },
   {
     id: 76,
-    level: "B1",
+    level: "A1",
     title_en: "Doctor Visit Symptoms And Pharmacy Details",
     subtitle: "Describe how you feel and ask about medicine clearly.",
     intro:
@@ -3988,7 +3988,7 @@ export const VIETNAMESE_LESSONS: VietnameseLesson[] = [
   },
   {
     id: 77,
-    level: "B1",
+    level: "A1",
     title_en: "Negotiating Politely And Making Complaints",
     subtitle: "Ask for a better price or a better solution without sounding rude.",
     intro:
@@ -4070,7 +4070,7 @@ export const VIETNAMESE_LESSONS: VietnameseLesson[] = [
   },
   {
     id: 78,
-    level: "B1",
+    level: "A1",
     title_en: "Telling Longer Stories And Reasons",
     subtitle: "Link ideas naturally when you explain what happened.",
     intro:
@@ -4114,7 +4114,7 @@ export const VIETNAMESE_LESSONS: VietnameseLesson[] = [
   },
   {
     id: 79,
-    level: "B1",
+    level: "A1",
     title_en: "Apologizing And Fixing Mistakes",
     subtitle: "Recover smoothly when you get something wrong.",
     intro:
@@ -4196,7 +4196,7 @@ export const VIETNAMESE_LESSONS: VietnameseLesson[] = [
   },
   {
     id: 80,
-    level: "B1",
+    level: "A1",
     title_en: "Understanding Common Vietnamese Responses",
     subtitle: "Learn the response words locals use every day.",
     intro:
@@ -4240,7 +4240,7 @@ export const VIETNAMESE_LESSONS: VietnameseLesson[] = [
   },
   {
     id: 81,
-    level: "A2",
+    level: "A1",
     title_en: "Visa And Immigration Office Follow-Up",
     subtitle: "Handle visa questions, documents, and return visits calmly.",
     intro:
@@ -4310,7 +4310,7 @@ export const VIETNAMESE_LESSONS: VietnameseLesson[] = [
   },
   {
     id: 82,
-    level: "A2",
+    level: "A1",
     title_en: "Bank Account And ATM Problems",
     subtitle: "Talk about cards, transfers, and banking trouble.",
     intro:
@@ -4380,7 +4380,7 @@ export const VIETNAMESE_LESSONS: VietnameseLesson[] = [
   },
   {
     id: 83,
-    level: "A2",
+    level: "A1",
     title_en: "Phone SIM And Internet Setup",
     subtitle: "Handle SIM cards, data plans, and Wi-Fi issues.",
     intro:
@@ -4450,7 +4450,7 @@ export const VIETNAMESE_LESSONS: VietnameseLesson[] = [
   },
   {
     id: 84,
-    level: "A2",
+    level: "A1",
     title_en: "Workplace Problems And Requests",
     subtitle: "Ask for help, more time, or clearer instructions at work.",
     intro:
@@ -4520,7 +4520,7 @@ export const VIETNAMESE_LESSONS: VietnameseLesson[] = [
   },
   {
     id: 85,
-    level: "A2",
+    level: "A1",
     title_en: "School Childcare And Family Schedules",
     subtitle: "Talk about children, pickup times, and school messages.",
     intro:
@@ -4590,7 +4590,7 @@ export const VIETNAMESE_LESSONS: VietnameseLesson[] = [
   },
   {
     id: 86,
-    level: "A2",
+    level: "A1",
     title_en: "Dating Social Nuance And Boundaries",
     subtitle: "Keep social conversations warm, clear, and respectful.",
     intro:
@@ -4660,7 +4660,7 @@ export const VIETNAMESE_LESSONS: VietnameseLesson[] = [
   },
   {
     id: 87,
-    level: "B1",
+    level: "A1",
     title_en: "Landlord Repairs And Complaints",
     subtitle: "Ask for repair without sounding harsh.",
     intro:
@@ -4730,7 +4730,7 @@ export const VIETNAMESE_LESSONS: VietnameseLesson[] = [
   },
   {
     id: 88,
-    level: "B1",
+    level: "A1",
     title_en: "Doctor Visit Symptoms And Pharmacy Details",
     subtitle: "Describe symptoms and ask about medicine clearly.",
     intro:
@@ -4800,7 +4800,7 @@ export const VIETNAMESE_LESSONS: VietnameseLesson[] = [
   },
   {
     id: 89,
-    level: "B1",
+    level: "A1",
     title_en: "Pharmacy Details And Dosage",
     subtitle: "Ask about timing, dose, and side effects at the pharmacy.",
     intro:
@@ -4870,7 +4870,7 @@ export const VIETNAMESE_LESSONS: VietnameseLesson[] = [
   },
   {
     id: 90,
-    level: "B1",
+    level: "A1",
     title_en: "Negotiating Politely",
     subtitle: "Ask for a better price or a better option without sounding rude.",
     intro:
@@ -4940,7 +4940,7 @@ export const VIETNAMESE_LESSONS: VietnameseLesson[] = [
   },
   {
     id: 91,
-    level: "B1",
+    level: "A1",
     title_en: "Telling Longer Stories",
     subtitle: "Link events naturally when you explain what happened.",
     intro:
@@ -5010,7 +5010,7 @@ export const VIETNAMESE_LESSONS: VietnameseLesson[] = [
   },
   {
     id: 92,
-    level: "B1",
+    level: "A1",
     title_en: "Explaining Preferences And Reasons",
     subtitle: "Say what you like and why in natural Vietnamese.",
     intro:
@@ -5080,7 +5080,7 @@ export const VIETNAMESE_LESSONS: VietnameseLesson[] = [
   },
   {
     id: 93,
-    level: "B1",
+    level: "A1",
     title_en: "Giving Advice Politely",
     subtitle: "Offer help without sounding bossy.",
     intro:
@@ -5112,7 +5112,7 @@ export const VIETNAMESE_LESSONS: VietnameseLesson[] = [
   },
   {
     id: 94,
-    level: "B1",
+    level: "A1",
     title_en: "Apologizing And Fixing Mistakes",
     subtitle: "Recover smoothly when you get something wrong.",
     intro:
@@ -5144,7 +5144,7 @@ export const VIETNAMESE_LESSONS: VietnameseLesson[] = [
   },
   {
     id: 95,
-    level: "B1",
+    level: "A1",
     title_en: "Making Complaints Without Sounding Rude",
     subtitle: "Explain a problem clearly and ask for a better solution.",
     intro:
@@ -5176,7 +5176,7 @@ export const VIETNAMESE_LESSONS: VietnameseLesson[] = [
   },
   {
     id: 96,
-    level: "B1",
+    level: "A1",
     title_en: "Understanding Common Vietnamese Responses",
     subtitle: "Learn the response words locals use every day.",
     intro:
