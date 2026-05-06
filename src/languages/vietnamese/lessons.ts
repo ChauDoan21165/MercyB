@@ -3330,4 +3330,912 @@ export const VIETNAMESE_LESSONS: VietnameseLesson[] = [
     tip:
       "Use nhé at the end of friendly closing lines. It softens the sentence without making it complicated.",
   },
+  {
+    id: 69,
+    level: "A2",
+    title_en: "Visa And Immigration Office Basics",
+    subtitle: "Handle simple office questions with calm, clear Vietnamese.",
+    intro:
+      "These lines help when you need to talk about visas, paperwork, and appointment questions in a government office.",
+    phrases: [
+      {
+        english: "I need to extend my visa.",
+        vietnamese: "Tôi cần gia hạn visa.",
+        pronunciation: "toy kun za-han vee-za",
+        context: "Use when asking about a visa extension.",
+      },
+      {
+        english: "I do not have all the documents yet.",
+        vietnamese: "Tôi chưa có đủ giấy tờ.",
+        pronunciation: "toy chua kaw doo zay toh",
+        context: "Use when you are missing some paperwork.",
+      },
+      {
+        english: "When is my appointment?",
+        vietnamese: "Lịch hẹn của tôi là khi nào?",
+        pronunciation: "lik hen cua toy la khi nao",
+        context: "Use to confirm your appointment time.",
+      },
+      {
+        english: "I came to ask about the procedure.",
+        vietnamese: "Tôi đến để hỏi về thủ tục.",
+        pronunciation: "toy den de hoy ve thoo took",
+        context: "Use when you want the office to explain the process.",
+      },
+      {
+        english: "Do I need to come back tomorrow?",
+        vietnamese: "Tôi có cần quay lại ngày mai không?",
+        pronunciation: "toy kaw kun kwai lai ngay mai khome",
+        context: "Use when you want to know if you must return later.",
+      },
+    ],
+    dialogue: [
+      {
+        speaker: "A",
+        vietnamese: "Chào anh, tôi muốn hỏi về việc gia hạn visa.",
+        english: "Hello, I want to ask about extending my visa.",
+        pronunciation: "chaw anh, toy mwon hoy ve vyek za-han vee-za",
+      },
+      {
+        speaker: "B",
+        vietnamese: "Dạ, anh đã có giấy tờ đầy đủ chưa?",
+        english: "Do you have all the documents already?",
+        pronunciation: "yah, anh da kaw zay toh day doo chua",
+      },
+      {
+        speaker: "A",
+        vietnamese: "Tôi chưa có đủ, nhưng tôi có hộ chiếu và ảnh.",
+        english: "Not all of them yet, but I have my passport and photos.",
+        pronunciation: "toy chua kaw doo, nyung toy kaw ho chyeu va anh",
+      },
+      {
+        speaker: "B",
+        vietnamese: "Vậy anh cần quay lại vào thứ Năm.",
+        english: "Then you need to come back on Thursday.",
+        pronunciation: "vay anh kun kwai lai vao thoo nam",
+      },
+      {
+        speaker: "A",
+        vietnamese: "Dạ, tôi hiểu rồi. Cảm ơn anh.",
+        english: "Okay, I understand. Thank you.",
+        pronunciation: "yah, toy hyew roy. kahm uhn anh",
+      },
+      {
+        speaker: "B",
+        vietnamese: "Không có gì, anh cứ đến đúng giờ nhé.",
+        english: "No problem, just come on time.",
+        pronunciation: "khome kaw zee, anh koo den doong zuh nyeh",
+      },
+    ],
+    cultural_note:
+      "At office counters, short polite sentences work better than long explanations.",
+    tip:
+      "Bring your passport, copies, and a pen. Small preparation makes Vietnamese office conversations much easier.",
+  },
+  {
+    id: 70,
+    level: "A2",
+    title_en: "Bank Account And ATM Problems",
+    subtitle: "Talk about payments, cards, transfers, and banking trouble.",
+    intro:
+      "Use these lines when a card fails, a transfer is slow, or you need help opening an account.",
+    phrases: [
+      {
+        english: "I want to open a bank account.",
+        vietnamese: "Tôi muốn mở tài khoản ngân hàng.",
+        pronunciation: "toy mwon muh tai-khoan ngan hang",
+        context: "Use when talking to a bank clerk.",
+      },
+      {
+        english: "I do not have a temporary residence card yet.",
+        vietnamese: "Tôi chưa có thẻ tạm trú.",
+        pronunciation: "toy chua kaw the tam choo",
+        context: "Use if the bank asks for local residency documents.",
+      },
+      {
+        english: "The ATM took my card.",
+        vietnamese: "Máy ATM nuốt thẻ của tôi rồi.",
+        pronunciation: "mai ay tee-em nuot the cua toy roy",
+        context: "Use when the machine keeps your card.",
+      },
+      {
+        english: "My transfer is not working.",
+        vietnamese: "Chuyển khoản của tôi không được.",
+        pronunciation: "chwen kwan cua toy khome duoc",
+        context: "Use when an online or app transfer fails.",
+      },
+      {
+        english: "Can you check my account, please?",
+        vietnamese: "Bạn kiểm tra tài khoản giúp tôi được không?",
+        pronunciation: "ban kiem tra tai-khoan zoop toy duoc khome",
+        context: "Use when you need a staff member to look at your account.",
+      },
+    ],
+    dialogue: [
+      {
+        speaker: "A",
+        vietnamese: "Xin chào, tôi muốn mở tài khoản ngân hàng.",
+        english: "Hello, I want to open a bank account.",
+        pronunciation: "seen chaw, toy mwon muh tai-khoan ngan hang",
+      },
+      {
+        speaker: "B",
+        vietnamese: "Anh đã có thẻ tạm trú chưa?",
+        english: "Do you already have a temporary residence card?",
+        pronunciation: "anh da kaw the tam choo chua",
+      },
+      {
+        speaker: "A",
+        vietnamese: "Tôi chưa có, nhưng tôi có hộ chiếu.",
+        english: "Not yet, but I have my passport.",
+        pronunciation: "toy chua kaw, nyung toy kaw ho chyeu",
+      },
+      {
+        speaker: "B",
+        vietnamese: "Dạ, vậy anh cần thêm giấy xác nhận địa chỉ.",
+        english: "Okay, then you also need an address confirmation.",
+        pronunciation: "yah, vay anh kun them zay sak nyan dee-ah chee",
+      },
+      {
+        speaker: "A",
+        vietnamese: "Máy ATM hôm qua nuốt thẻ của tôi.",
+        english: "Yesterday the ATM took my card.",
+        pronunciation: "mai ay tee-em hom kwa nuot the cua toy",
+      },
+      {
+        speaker: "B",
+        vietnamese: "Tôi sẽ kiểm tra giúp anh ngay bây giờ.",
+        english: "I will check it for you now.",
+        pronunciation: "toy seh kiem tra zoop anh ngay bay zuh",
+      },
+    ],
+    cultural_note:
+      "Bank and ATM problems are best handled with short, concrete nouns: card, account, transfer, passport.",
+    tip:
+      "If the first staff member cannot help, ask who should continue the process instead of repeating the whole story.",
+  },
+  {
+    id: 71,
+    level: "A2",
+    title_en: "Phone SIM And Internet Setup",
+    subtitle: "Handle SIM cards, data, Wi-Fi, and mobile setup.",
+    intro:
+      "These lines help when you need a new SIM, a better data plan, or help with internet installation.",
+    phrases: [
+      {
+        english: "I need a SIM card with data.",
+        vietnamese: "Tôi cần một SIM có data.",
+        pronunciation: "toy kun moht seem kaw day-ta",
+        context: "Use in a phone shop or convenience store.",
+      },
+      {
+        english: "My home Wi-Fi has been slow since yesterday.",
+        vietnamese: "Mạng Wi-Fi nhà tôi bị chậm từ hôm qua.",
+        pronunciation: "mang why-fye nha toy bee cham tu hom kwa",
+        context: "Use when reporting an internet problem.",
+      },
+      {
+        english: "Can you help me install the internet?",
+        vietnamese: "Bạn có thể giúp tôi lắp mạng không?",
+        pronunciation: "ban kaw the zoop toy lap mang khome",
+        context: "Use with a technician or service provider.",
+      },
+      {
+        english: "My phone is not receiving the OTP message.",
+        vietnamese: "Điện thoại tôi không nhận được mã OTP.",
+        pronunciation: "dee-en thoai toy khome nyan duoc ma oh-tee-pee",
+        context: "Use when bank or app codes do not arrive.",
+      },
+      {
+        english: "Please help me top up the data.",
+        vietnamese: "Làm ơn nạp thêm data giúp tôi.",
+        pronunciation: "lam uhn nap them day-ta zoop toy",
+        context: "Use when your mobile data is running low.",
+      },
+    ],
+    dialogue: [
+      {
+        speaker: "A",
+        vietnamese: "Chào bạn, tôi muốn mua SIM có data.",
+        english: "Hi, I want to buy a SIM with data.",
+        pronunciation: "chaw ban, toy mwon mua seem kaw day-ta",
+      },
+      {
+        speaker: "B",
+        vietnamese: "Bạn dùng mạng nào cũng được hay muốn mạng mạnh hơn?",
+        english: "Any network is fine, or do you want a stronger one?",
+        pronunciation: "ban zoom mang nao koom duoc hai mwon mang manh hon",
+      },
+      {
+        speaker: "A",
+        vietnamese: "Tôi muốn mạng ổn để làm việc.",
+        english: "I want stable internet for work.",
+        pronunciation: "toy mwon mang on deh lam vyek",
+      },
+      {
+        speaker: "B",
+        vietnamese: "Dạ, tôi có gói 30 ngày, có data nhiều hơn.",
+        english: "Okay, I have a 30-day plan with more data.",
+        pronunciation: "yah, toy kaw goi ba muoi ngay, kaw day-ta nyew hon",
+      },
+      {
+        speaker: "A",
+        vietnamese: "Nhà tôi cũng cần lắp Wi-Fi. Có thể giúp được không?",
+        english: "I also need Wi-Fi installed at home. Can you help?",
+        pronunciation: "nha toy koom kun lap why-fye. kaw the zoop duoc khome",
+      },
+      {
+        speaker: "B",
+        vietnamese: "Dạ, để tôi ghi địa chỉ của bạn.",
+        english: "Sure, let me write down your address.",
+        pronunciation: "yah, deh toy zee dee-ah chee cua ban",
+      },
+    ],
+    cultural_note:
+      "For SIM and internet, the most useful words are data, gói, mạng, and lắp.",
+    tip:
+      "If you do not know the exact plan, ask for the strongest or most stable option instead of trying to describe everything.",
+  },
+  {
+    id: 72,
+    level: "A2",
+    title_en: "Workplace Problems And Requests",
+    subtitle: "Ask for help, time, or clarification at work.",
+    intro:
+      "These lines are useful in offices, stores, and freelance situations where you need a clear, polite request.",
+    phrases: [
+      {
+        english: "I need to finish this today.",
+        vietnamese: "Tôi cần hoàn thành việc này hôm nay.",
+        pronunciation: "toy kun hoan than vyek nai hom nay",
+        context: "Use when a deadline matters.",
+      },
+      {
+        english: "I do not understand this task.",
+        vietnamese: "Tôi không hiểu việc này.",
+        pronunciation: "toy khome hyew vyek nai",
+        context: "Use when instructions are unclear.",
+      },
+      {
+        english: "Can you send it by email?",
+        vietnamese: "Bạn gửi qua email giúp tôi được không?",
+        pronunciation: "ban gooey kwa ee-mail zoop toy duoc khome",
+        context: "Use when you need a written version.",
+      },
+      {
+        english: "I need to leave early today.",
+        vietnamese: "Hôm nay tôi cần về sớm.",
+        pronunciation: "hom nay toy kun veh som",
+        context: "Use when you must leave before the normal time.",
+      },
+      {
+        english: "Can we discuss it tomorrow?",
+        vietnamese: "Mai mình bàn lại được không?",
+        pronunciation: "mai ming ban lai duoc khome",
+        context: "Use when you need more time to think or prepare.",
+      },
+    ],
+    dialogue: [
+      {
+        speaker: "A",
+        vietnamese: "Anh ơi, em chưa hiểu việc này lắm.",
+        english: "Excuse me, I do not understand this task very well.",
+        pronunciation: "anh oi, em chua hyew vyek nai lam",
+      },
+      {
+        speaker: "B",
+        vietnamese: "Không sao, tôi giải thích lại nhé.",
+        english: "No problem, I will explain again.",
+        pronunciation: "khome sao, toy zai thik lai nyeh",
+      },
+      {
+        speaker: "A",
+        vietnamese: "Nếu được, anh gửi qua email giúp em.",
+        english: "If possible, please send it by email.",
+        pronunciation: "new duoc, anh gooey kwa ee-mail zoop em",
+      },
+      {
+        speaker: "B",
+        vietnamese: "Được, nhưng hôm nay phải xong trước 5 giờ.",
+        english: "Okay, but it needs to be done before 5 o'clock today.",
+        pronunciation: "duoc, nyung hom nay fai song truok nam zuh",
+      },
+      {
+        speaker: "A",
+        vietnamese: "Vâng, em sẽ cố gắng hoàn thành.",
+        english: "Yes, I will do my best to finish it.",
+        pronunciation: "vang, em seh koh gung hoan than",
+      },
+      {
+        speaker: "B",
+        vietnamese: "Nếu cần gì thêm thì báo tôi nhé.",
+        english: "If you need anything else, tell me.",
+        pronunciation: "new kun zee them thi bao toy nyeh",
+      },
+    ],
+    cultural_note:
+      "Workplace Vietnamese often sounds best when you keep the request short and mention the deadline clearly.",
+    tip:
+      "Use mai mình bàn lại or để em kiểm tra when you need breathing room without sounding difficult.",
+  },
+  {
+    id: 73,
+    level: "A2",
+    title_en: "School Childcare And Family Schedules",
+    subtitle: "Talk about children, pickup times, and school messages.",
+    intro:
+      "These lines help with teachers, childcare staff, and family scheduling in daily life.",
+    phrases: [
+      {
+        english: "My child starts school next week.",
+        vietnamese: "Con tôi bắt đầu đi học tuần sau.",
+        pronunciation: "kon toy bat dau dee hok twan sao",
+        context: "Use when talking about school timing.",
+      },
+      {
+        english: "I need to pick up my child at five.",
+        vietnamese: "Tôi cần đón con lúc năm giờ.",
+        pronunciation: "toy kun don kon look nam zuh",
+        context: "Use when arranging pickup time.",
+      },
+      {
+        english: "The teacher said there is a meeting.",
+        vietnamese: "Cô giáo nói có một buổi họp.",
+        pronunciation: "koh ziao noy kaw moht boo-ee hop",
+        context: "Use when sharing a school notice.",
+      },
+      {
+        english: "My child is a little shy.",
+        vietnamese: "Con tôi hơi nhút nhát một chút.",
+        pronunciation: "kon toy hoy nyoot nyat moht chut",
+        context: "Use when explaining a child's personality.",
+      },
+      {
+        english: "Can you help explain the school message?",
+        vietnamese: "Bạn có thể giúp tôi hiểu tin nhắn của trường không?",
+        pronunciation: "ban kaw the zoop toy hyew tin nyan cua choong khome",
+        context: "Use when a school message is hard to understand.",
+      },
+    ],
+    dialogue: [
+      {
+        speaker: "A",
+        vietnamese: "Xin chào cô, con tôi mới bắt đầu đi học tuần sau.",
+        english: "Hello teacher, my child starts school next week.",
+        pronunciation: "seen chaw koh, kon toy moy bat dau dee hok twan sao",
+      },
+      {
+        speaker: "B",
+        vietnamese: "Dạ, vậy anh/chị cần đến sớm một chút.",
+        english: "Okay, then you need to come a little early.",
+        pronunciation: "yah, vay anh chi kun den som moht chut",
+      },
+      {
+        speaker: "A",
+        vietnamese: "Tôi cần đón con lúc năm giờ chiều.",
+        english: "I need to pick up my child at five p.m.",
+        pronunciation: "toy kun don kon look nam zuh chiew",
+      },
+      {
+        speaker: "B",
+        vietnamese: "Được ạ, tôi sẽ ghi chú lại.",
+        english: "Sure, I will note that down.",
+        pronunciation: "duoc ah, toy seh zee choo lai",
+      },
+      {
+        speaker: "A",
+        vietnamese: "Con tôi hơi nhút nhát, nên chắc cần thời gian.",
+        english: "My child is a little shy, so it may take time.",
+        pronunciation: "kon toy hoy nyoot nyat, nen chak kun tho-ee zian",
+      },
+      {
+        speaker: "B",
+        vietnamese: "Không sao, trẻ mới thường như vậy.",
+        english: "No problem, new children are often like that.",
+        pronunciation: "khome sao, chay moy thuong nyu vay",
+      },
+    ],
+    cultural_note:
+      "School conversations often sound softer when you mention time, routine, and the child's mood.",
+    tip:
+      "If a message is unclear, ask for one key detail first: time, place, or what to bring.",
+  },
+  {
+    id: 74,
+    level: "A2",
+    title_en: "Dating Social Nuance And Boundaries",
+    subtitle: "Keep social conversations warm, clear, and respectful.",
+    intro:
+      "Use these lines when you are getting to know someone and want to sound friendly without moving too fast.",
+    phrases: [
+      {
+        english: "I want to get to know you better.",
+        vietnamese: "Tôi muốn tìm hiểu bạn thêm.",
+        pronunciation: "toy mwon tim hyew ban them",
+        context: "Use when showing friendly interest.",
+      },
+      {
+        english: "I am not ready for that yet.",
+        vietnamese: "Tôi chưa sẵn sàng cho việc đó.",
+        pronunciation: "toy chua san zang chaw vyek do",
+        context: "Use when you want to slow things down.",
+      },
+      {
+        english: "Let's take it slowly.",
+        vietnamese: "Mình cứ từ từ nhé.",
+        pronunciation: "ming koo tu tu nyeh",
+        context: "Use to keep the pace gentle.",
+      },
+      {
+        english: "I prefer meeting in a public place.",
+        vietnamese: "Tôi thích gặp ở chỗ công cộng.",
+        pronunciation: "toy thik gap uh cho kong kong",
+        context: "Use when you want a safe, casual first meeting.",
+      },
+      {
+        english: "I feel comfortable talking with you.",
+        vietnamese: "Tôi thấy nói chuyện với bạn rất thoải mái.",
+        pronunciation: "toy thay noy chuyen voy ban zat thoai mai",
+        context: "Use when the conversation feels natural and easy.",
+      },
+    ],
+    dialogue: [
+      {
+        speaker: "A",
+        vietnamese: "Tôi muốn tìm hiểu bạn thêm, nếu bạn thấy thoải mái.",
+        english: "I want to get to know you better, if you feel comfortable.",
+        pronunciation: "toy mwon tim hyew ban them, new ban thay thoai mai",
+      },
+      {
+        speaker: "B",
+        vietnamese: "Dạ, mình cứ từ từ nhé.",
+        english: "Sure, let's take it slowly.",
+        pronunciation: "yah, ming koo tu tu nyeh",
+      },
+      {
+        speaker: "A",
+        vietnamese: "Tôi thích gặp ở chỗ công cộng cho thoải mái hơn.",
+        english: "I prefer meeting in a public place so it feels more comfortable.",
+        pronunciation: "toy thik gap uh cho kong kong chaw thoai mai hon",
+      },
+      {
+        speaker: "B",
+        vietnamese: "Được, quán cà phê là ổn.",
+        english: "Okay, a cafe is fine.",
+        pronunciation: "duoc, kwan cafe la on",
+      },
+      {
+        speaker: "A",
+        vietnamese: "Tôi chưa sẵn sàng cho việc đó, mong bạn hiểu.",
+        english: "I am not ready for that yet, I hope you understand.",
+        pronunciation: "toy chua san zang chaw vyek do, mong ban hyew",
+      },
+      {
+        speaker: "B",
+        vietnamese: "Không sao, mình tôn trọng nhau là được.",
+        english: "No problem, respecting each other is enough.",
+        pronunciation: "khome sao, ming ton trong nhau la duoc",
+      },
+    ],
+    cultural_note:
+      "In Vietnamese social conversation, soft boundaries sound better than direct rejection.",
+    tip:
+      "Use if you want a slower pace: mình cứ từ từ nhé, hoặc tôi chưa sẵn sàng.",
+  },
+  {
+    id: 75,
+    level: "B1",
+    title_en: "Landlord Repairs And Complaints",
+    subtitle: "Explain problems clearly and ask for repair without sounding harsh.",
+    intro:
+      "Use these lines when something in your apartment needs fixing and you need a practical response.",
+    phrases: [
+      {
+        english: "The faucet is leaking.",
+        vietnamese: "Vòi nước bị rò rỉ.",
+        pronunciation: "voi nuok bee ro ree",
+        context: "Use when water is leaking from the tap.",
+      },
+      {
+        english: "The Wi-Fi has been slow since yesterday.",
+        vietnamese: "Mạng Wi-Fi bị chậm từ hôm qua.",
+        pronunciation: "mang why-fye bee cham tu hom kwa",
+        context: "Use when the internet has been bad for a while.",
+      },
+      {
+        english: "Could you fix it before the weekend?",
+        vietnamese: "Nếu được, bạn có thể sửa giúp tôi trước cuối tuần không?",
+        pronunciation: "new duoc, ban kaw the sua zoop toy truok kwoi twan khome",
+        context: "Use when you want a repair done by a certain time.",
+      },
+      {
+        english: "The air conditioner is making a strange noise.",
+        vietnamese: "Máy lạnh kêu lạ.",
+        pronunciation: "mai lanh kew la",
+        context: "Use when the AC sounds wrong.",
+      },
+      {
+        english: "I already told you about this last week.",
+        vietnamese: "Tôi đã nói với bạn việc này tuần trước rồi.",
+        pronunciation: "toy da noy voy ban vyek nai twan truok roy",
+        context: "Use when you need to remind someone politely.",
+      },
+    ],
+    dialogue: [
+      {
+        speaker: "A",
+        vietnamese: "Chào anh, vòi nước trong bếp đang bị rò rỉ.",
+        english: "Hello, the kitchen faucet is leaking.",
+        pronunciation: "chaw anh, voi nuok trong bep dang bee ro ree",
+      },
+      {
+        speaker: "B",
+        vietnamese: "Tôi biết rồi. Tôi sẽ gọi thợ.",
+        english: "I know. I will call a repair person.",
+        pronunciation: "toy byet roy. toy seh goy tho",
+      },
+      {
+        speaker: "A",
+        vietnamese: "Nếu được, bạn có thể sửa giúp tôi trước cuối tuần không?",
+        english: "If possible, can you fix it before the weekend?",
+        pronunciation: "new duoc, ban kaw the sua zoop toy truok kwoi twan khome",
+      },
+      {
+        speaker: "B",
+        vietnamese: "Được, tôi sẽ sắp xếp hôm nay.",
+        english: "Okay, I will arrange it today.",
+        pronunciation: "duoc, toy seh sap sep hom nay",
+      },
+      {
+        speaker: "A",
+        vietnamese: "Mạng Wi-Fi cũng chậm từ hôm qua nữa.",
+        english: "The Wi-Fi has also been slow since yesterday.",
+        pronunciation: "mang why-fye koom cham tu hom kwa nua",
+      },
+      {
+        speaker: "B",
+        vietnamese: "Vậy tôi kiểm tra luôn cho bạn.",
+        english: "Then I will check it for you right away.",
+        pronunciation: "vay toy kiem tra lun chaw ban",
+      },
+    ],
+    cultural_note:
+      "For repair problems, one clear complaint plus one time marker is usually enough.",
+    tip:
+      "Say từ hôm qua, tuần trước, or mấy ngày rồi to make the timing easier to understand.",
+  },
+  {
+    id: 76,
+    level: "B1",
+    title_en: "Doctor Visit Symptoms And Pharmacy Details",
+    subtitle: "Describe how you feel and ask about medicine clearly.",
+    intro:
+      "These lines help when you need to explain symptoms, ask about dosage, and understand basic pharmacy instructions.",
+    phrases: [
+      {
+        english: "I have had a sore throat and cough for three days.",
+        vietnamese: "Tôi bị đau họng và ho khoảng ba ngày rồi.",
+        pronunciation: "toy bee dow hong va ho khwang ba ngay roy",
+        context: "Use when explaining how long you have felt sick.",
+      },
+      {
+        english: "I feel dizzy and a little weak.",
+        vietnamese: "Tôi bị chóng mặt và hơi mệt.",
+        pronunciation: "toy bee chong mat va hoy met",
+        context: "Use when describing general symptoms.",
+      },
+      {
+        english: "Do I need to take this medicine after eating?",
+        vietnamese: "Thuốc này uống sau khi ăn phải không?",
+        pronunciation: "thuok nai uong sau khi an fai khome",
+        context: "Use to confirm medicine instructions.",
+      },
+      {
+        english: "Is there something that does not make me sleepy?",
+        vietnamese: "Có thuốc nào không làm tôi buồn ngủ không?",
+        pronunciation: "kaw thuok nao khome lam toy bwan ngu khome",
+        context: "Use when you need a non-drowsy option.",
+      },
+      {
+        english: "I am allergic to penicillin.",
+        vietnamese: "Tôi bị dị ứng với penicillin.",
+        pronunciation: "toy bee zee oong voy pen-i-sil-in",
+        context: "Use for an important medical warning.",
+      },
+    ],
+    dialogue: [
+      {
+        speaker: "A",
+        vietnamese: "Bác sĩ ơi, tôi bị đau họng và ho khoảng ba ngày rồi.",
+        english: "Doctor, I have had a sore throat and cough for about three days.",
+        pronunciation: "bak see oi, toy bee dow hong va ho khwang ba ngay roy",
+      },
+      {
+        speaker: "B",
+        vietnamese: "Bạn có bị sốt không?",
+        english: "Do you have a fever?",
+        pronunciation: "ban kaw bee sot khome",
+      },
+      {
+        speaker: "A",
+        vietnamese: "Tôi không sốt, nhưng hơi mệt và chóng mặt.",
+        english: "I do not have a fever, but I feel weak and dizzy.",
+        pronunciation: "toy khome sot, nyung hoy met va chong mat",
+      },
+      {
+        speaker: "B",
+        vietnamese: "Được, tôi kê thuốc cho bạn nhé.",
+        english: "Okay, I will prescribe medicine for you.",
+        pronunciation: "duoc, toy ke thuok chaw ban nyeh",
+      },
+      {
+        speaker: "A",
+        vietnamese: "Thuốc này uống sau khi ăn phải không?",
+        english: "Do I take this medicine after eating?",
+        pronunciation: "thuok nai uong sau khi an fai khome",
+      },
+      {
+        speaker: "B",
+        vietnamese: "Dạ đúng, và uống nhiều nước nhé.",
+        english: "Yes, that's right, and drink plenty of water.",
+        pronunciation: "yah doong, va uong nyew nuok nyeh",
+      },
+    ],
+    cultural_note:
+      "Medical Vietnamese works best when you give time, symptom, and any allergy clearly.",
+    tip:
+      "If you know the body part, say it first: họng, đầu, bụng, ngực, or lưng.",
+  },
+  {
+    id: 77,
+    level: "B1",
+    title_en: "Negotiating Politely And Making Complaints",
+    subtitle: "Ask for a better price or a better solution without sounding rude.",
+    intro:
+      "These lines help when you need to negotiate, complain, or ask for another option in a calm way.",
+    phrases: [
+      {
+        english: "Could you lower the price a little?",
+        vietnamese: "Bạn có thể giảm giá một chút không?",
+        pronunciation: "ban kaw the ziam zia moht chut khome",
+        context: "Use in markets or with small services.",
+      },
+      {
+        english: "I can pay now if the price is reasonable.",
+        vietnamese: "Nếu giá hợp lý, tôi có thể trả ngay.",
+        pronunciation: "new zia hop lee, toy kaw the cha ngay",
+        context: "Use when you want to close a deal politely.",
+      },
+      {
+        english: "This is not what I expected.",
+        vietnamese: "Cái này không giống tôi mong đợi.",
+        pronunciation: "kai nai khome zong toy mong doi",
+        context: "Use when a product or service is disappointing.",
+      },
+      {
+        english: "I still need a better solution.",
+        vietnamese: "Tôi vẫn cần một giải pháp tốt hơn.",
+        pronunciation: "toy van kun moht zai fap tot hon",
+        context: "Use when the first answer is not enough.",
+      },
+      {
+        english: "Could you explain it one more time?",
+        vietnamese: "Bạn có thể giải thích lại một lần nữa không?",
+        pronunciation: "ban kaw the zai thik lai moht lan nua khome",
+        context: "Use when you want a clearer explanation.",
+      },
+    ],
+    dialogue: [
+      {
+        speaker: "A",
+        vietnamese: "Anh có thể giảm giá một chút không?",
+        english: "Can you lower the price a little?",
+        pronunciation: "anh kaw the ziam zia moht chut khome",
+      },
+      {
+        speaker: "B",
+        vietnamese: "Dạ, tôi có thể bớt cho anh một ít.",
+        english: "Yes, I can reduce it a little for you.",
+        pronunciation: "yah, toy kaw the but chaw anh moht eet",
+      },
+      {
+        speaker: "A",
+        vietnamese: "Nếu giá hợp lý, tôi có thể trả ngay.",
+        english: "If the price is reasonable, I can pay now.",
+        pronunciation: "new zia hop lee, toy kaw the cha ngay",
+      },
+      {
+        speaker: "B",
+        vietnamese: "Được, vậy tôi tính cho anh giá tốt hơn.",
+        english: "Okay, then I will give you a better price.",
+        pronunciation: "duoc, vay toy ting chaw anh zia tot hon",
+      },
+      {
+        speaker: "A",
+        vietnamese: "Cái này không giống tôi mong đợi lắm.",
+        english: "This is not quite what I expected.",
+        pronunciation: "kai nai khome zong toy mong doi lam",
+      },
+      {
+        speaker: "B",
+        vietnamese: "Tôi hiểu, để tôi xem còn cách nào khác.",
+        english: "I understand, let me see if there is another option.",
+        pronunciation: "toy hyew, deh toy xem kon kach nao khak",
+      },
+    ],
+    cultural_note:
+      "Polite negotiation often sounds better when you say nếu giá hợp lý or có thể bớt một chút không.",
+    tip:
+      "Avoid sounding absolute. A little, one more time, or another option keeps the tone softer.",
+  },
+  {
+    id: 78,
+    level: "B1",
+    title_en: "Telling Longer Stories And Reasons",
+    subtitle: "Link ideas naturally when you explain what happened.",
+    intro:
+      "These lines help you tell a fuller story with because, so, if, and when.",
+    phrases: [
+      {
+        english: "I went to the clinic yesterday because I felt unwell.",
+        vietnamese: "Hôm qua tôi đi khám vì thấy không khỏe.",
+        pronunciation: "hom kwa toy dee kham vi thay khome khoe",
+        context: "Use when starting a simple story about your day.",
+      },
+      {
+        english: "After that, I worked from home and rested.",
+        vietnamese: "Sau đó tôi làm việc ở nhà và nghỉ ngơi.",
+        pronunciation: "sau do toy lam vyek uh nha va nghi ngoy",
+        context: "Use to continue the story in time order.",
+      },
+      {
+        english: "I like this area because it is quiet and convenient.",
+        vietnamese: "Tôi thích khu này vì yên tĩnh và tiện.",
+        pronunciation: "toy thik khu nai vi yen ting va tien",
+        context: "Use when explaining a preference.",
+      },
+      {
+        english: "I was late because the bus was delayed.",
+        vietnamese: "Tôi đến muộn vì xe buýt bị trễ.",
+        pronunciation: "toy den muon vi seh bweet bee chay",
+        context: "Use when explaining a problem with timing.",
+      },
+      {
+        english: "If I have time, I usually go for coffee with friends.",
+        vietnamese: "Nếu có thời gian, tôi thường đi uống cà phê với bạn.",
+        pronunciation: "new kaw tho-ee zian, toy thuong dee uong cafe voy ban",
+        context: "Use when describing a habit or routine.",
+      },
+    ],
+    cultural_note:
+      "Longer Vietnamese stories still work best when the order is simple: before, after, because, so.",
+    tip:
+      "Use vì, nên, sau đó, and nếu to make your sentence longer without making it complicated.",
+  },
+  {
+    id: 79,
+    level: "B1",
+    title_en: "Apologizing And Fixing Mistakes",
+    subtitle: "Recover smoothly when you get something wrong.",
+    intro:
+      "These lines help when you mishear, send the wrong thing, or need to correct yourself politely.",
+    phrases: [
+      {
+        english: "Sorry, I misunderstood.",
+        vietnamese: "Xin lỗi, chắc tôi hiểu nhầm.",
+        pronunciation: "seen loy, chak toy hyew nyum",
+        context: "Use when you realized the meaning was wrong.",
+      },
+      {
+        english: "I will fix it now.",
+        vietnamese: "Tôi sẽ sửa ngay bây giờ.",
+        pronunciation: "toy seh sua ngay bay zuh",
+        context: "Use when you want to correct a mistake immediately.",
+      },
+      {
+        english: "Thank you for your patience.",
+        vietnamese: "Cảm ơn bạn đã kiên nhẫn.",
+        pronunciation: "gahm uhn ban da kyen nyan",
+        context: "Use after someone waits for you or repeats something.",
+      },
+      {
+        english: "I wrote the wrong address.",
+        vietnamese: "Tôi ghi sai địa chỉ.",
+        pronunciation: "toy zee sai dee-ah chee",
+        context: "Use when correcting an address or contact detail.",
+      },
+      {
+        english: "Could you send it again, please?",
+        vietnamese: "Bạn gửi lại giúp tôi được không?",
+        pronunciation: "ban gooey lai zoop toy duoc khome",
+        context: "Use when a message, file, or photo needs to be resent.",
+      },
+    ],
+    dialogue: [
+      {
+        speaker: "A",
+        vietnamese: "Xin lỗi, chắc tôi hiểu nhầm ý của bạn.",
+        english: "Sorry, I think I misunderstood your meaning.",
+        pronunciation: "seen loy, chak toy hyew nyum ee cua ban",
+      },
+      {
+        speaker: "B",
+        vietnamese: "Không sao, tôi nói lại nhé.",
+        english: "No problem, I will say it again.",
+        pronunciation: "khome sao, toy noy lai nyeh",
+      },
+      {
+        speaker: "A",
+        vietnamese: "Tôi sẽ sửa ngay bây giờ.",
+        english: "I will fix it right now.",
+        pronunciation: "toy seh sua ngay bay zuh",
+      },
+      {
+        speaker: "B",
+        vietnamese: "Cảm ơn, vậy là ổn rồi.",
+        english: "Thank you, then it is fine.",
+        pronunciation: "gahm uhn, vay la on roy",
+      },
+      {
+        speaker: "A",
+        vietnamese: "Tôi ghi sai địa chỉ, tôi sẽ gửi lại.",
+        english: "I wrote the wrong address, I will send it again.",
+        pronunciation: "toy zee sai dee-ah chee, toy seh gooey lai",
+      },
+      {
+        speaker: "B",
+        vietnamese: "Được, cảm ơn bạn đã báo lại.",
+        english: "Okay, thank you for letting me know.",
+        pronunciation: "duoc, gahm uhn ban da bao lai",
+      },
+    ],
+    cultural_note:
+      "A calm apology plus a concrete fix sounds much better than a long explanation of the mistake.",
+    tip:
+      "Use chắc tôi hiểu nhầm or tôi sẽ sửa ngay when you need a fast recovery line.",
+  },
+  {
+    id: 80,
+    level: "B1",
+    title_en: "Understanding Common Vietnamese Responses",
+    subtitle: "Learn the response words locals use every day.",
+    intro:
+      "These short phrases help you hear meaning in the tiny words people say all the time.",
+    phrases: [
+      {
+        english: "\"Dạ\" is a polite yes or polite response.",
+        vietnamese: "\"Dạ\" là cách đáp lễ lịch sự.",
+        pronunciation: "ya la kach dap leh lik soo",
+        context: "Use when you hear a soft polite response from staff or older people.",
+      },
+      {
+        english: "\"Ừ\" can be a casual yes.",
+        vietnamese: "\"Ừ\" là kiểu đồng ý thân mật.",
+        pronunciation: "oo la kiew dong ee than mat",
+        context: "Use when a friend or close person speaks casually.",
+      },
+      {
+        english: "\"Để tôi xem\" means let me check.",
+        vietnamese: "\"Để tôi xem\" nghĩa là để tôi kiểm tra.",
+        pronunciation: "deh toy xem nghia la deh toy kiem tra",
+        context: "Use when someone wants time to look at something.",
+      },
+      {
+        english: "\"Tùy bạn\" means up to you.",
+        vietnamese: "\"Tùy bạn\" nghĩa là bạn quyết định.",
+        pronunciation: "too-ee ban nghia la ban kwet dinh",
+        context: "Use when the other person is leaving the choice to you.",
+      },
+      {
+        english: "\"Không sao đâu\" means it is okay.",
+        vietnamese: "\"Không sao đâu\" nghĩa là không có vấn đề.",
+        pronunciation: "khome sao dow nghia la khome kaw van deh",
+        context: "Use when someone wants to reassure you.",
+      },
+    ],
+    cultural_note:
+      "Small response words in Vietnamese carry a lot of social meaning, so listen for tone as well as words.",
+    tip:
+      "When in doubt, hear the response as attitude first: polite, casual, checking, or reassuring.",
+  },
   ];
