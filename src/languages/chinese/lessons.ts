@@ -60,7 +60,8 @@ export type ChineseCategoryId =
   | "cultural_communication"
   | "travel_mobility"
   | "personal_social"
-  | "fluency";
+  | "fluency"
+  | "academic_discourse";
 
 export type ChineseCategoryMeta = {
   id: ChineseCategoryId;
@@ -75,6 +76,7 @@ export const CHINESE_CATEGORIES: ReadonlyArray<ChineseCategoryMeta> = [
   { id: "travel_mobility", title_vi: "Du lịch & Di chuyển", title_en: "Travel & Mobility", expected_count: 10 },
   { id: "personal_social", title_vi: "Quan hệ cá nhân & Xã hội", title_en: "Personal & Social Relationships", expected_count: 10 },
   { id: "fluency", title_vi: "Lưu loát", title_en: "Fluency", expected_count: 5 },
+  { id: "academic_discourse", title_vi: "Diễn ngôn học thuật", title_en: "Academic Discourse", expected_count: 10 },
 ];
 
 export type IdiomGloss = {
