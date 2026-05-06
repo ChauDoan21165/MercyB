@@ -4235,6 +4235,238 @@ export const lessons: JapaneseLesson[] = [
     ] },
     { type: "translation", vietnamese: "Phần chênh lệch do đi đường vòng, em không nên trả.", japanese: "遠回りの経路ですので、その差額分は私が負担すべきとは思えません。" }
   ]
+},
+{
+  id: 82,
+  title: "Difficult conversation with Japanese in-laws — cultural expectations",
+  title_vi: "Trò chuyện khó với gia đình chồng/vợ Nhật — kỳ vọng văn hóa",
+  title_en: "Difficult conversation with Japanese in-laws — cultural expectations",
+  category: "fluency",
+  level: "B2",
+  vocabulary: [
+    { japanese: "義両親 (ぎりょうしん)", english: "parents-in-law" },
+    { japanese: "義理 (ぎり)", english: "duty / obligation (in-law / social)" },
+    { japanese: "価値観 (かちかん)", english: "values / outlook" },
+    { japanese: "文化の違い (ぶんかのちがい)", english: "cultural difference" },
+    { japanese: "期待 (きたい)", english: "expectation" },
+    { japanese: "思いやり (おもいやり)", english: "consideration / empathy" },
+    { japanese: "距離感 (きょりかん)", english: "sense of closeness/distance" },
+    { japanese: "お盆 (おぼん)", english: "Obon — summer ancestor festival" },
+    { japanese: "帰省 (きせい)", english: "returning to one's family home" },
+    { japanese: "歩み寄る (あゆみよる)", english: "to meet halfway / mutually adjust" }
+  ],
+  examples: [
+    { japanese: "私たちの家庭の事情も、少しご理解いただけますと幸いに存じます。", english: "I'd be grateful if you could understand a little of our household's circumstances." },
+    { japanese: "文化の違いから、誤解が生じることもあるかと存じます。", english: "Cultural differences may at times give rise to misunderstandings." },
+    { japanese: "ベトナムでは少し違う習慣がございまして、ご相談させていただきたく存じます。", english: "Customs in Vietnam differ slightly — I'd humbly like to consult you." },
+    { japanese: "ご期待に沿えない部分もございますが、心からお詫び申し上げます。", english: "There are areas where I cannot meet your expectations — I sincerely apologize." },
+    { japanese: "お互い、少しずつ歩み寄れればと願っております。", english: "I hope we can gradually meet each other halfway." }
+  ],
+  dialogue: [
+    { speaker: "チャウ", japanese: "お義母さま、少しお話しさせていただいてもよろしいでしょうか。", english: "Mother-in-law, may I take a little of your time to talk?" },
+    { speaker: "義母", japanese: "ええ、何かしら。", english: "Yes, what is it?" },
+    { speaker: "チャウ", japanese: "今年のお盆ですが、ベトナムの家族の事情がございまして、帰省が短めになりそうでして。ご理解いただけますと幸いです。", english: "About Obon this year — there are circumstances on my Vietnamese family's side; my stay may be shorter. I'd appreciate your understanding." },
+    { speaker: "義母", japanese: "そうでしたか。事情があるのね。少し残念だけれど、大丈夫よ。", english: "I see. You have your reasons. A little disappointing, but it's all right." }
+  ],
+  dialogue_long: [
+    { speaker: "チャウ", japanese: "お義母さま、お時間少しよろしいでしょうか。お話ししたいことがございまして。", english: "Mother-in-law, do you have a moment? There's something I'd like to talk about." },
+    { speaker: "義母", japanese: "あら、改まって。何かあったの。", english: "Oh, this is formal. Did something happen?" },
+    { speaker: "チャウ", japanese: "実は、今度のお盆のことなのですが、ベトナムの家族の都合と重なってしまいまして、ご相談させていただきたく存じます。", english: "Actually, about Obon this time — it overlaps with my Vietnamese family's plans, and I'd like to consult you." },
+    { speaker: "義母", japanese: "ベトナムの方のご事情ね。どんな状況なのかしら。", english: "Your family in Vietnam, then. What's the situation?" },
+    { speaker: "チャウ", japanese: "母が少し体調を崩しておりまして、早めに顔を見せに帰国したいと考えておりまして。お盆の最終日には間に合わないかもしれません。", english: "My mother's health is a little unwell, and I'd like to go back early to see her. I may not make it back by the last day of Obon." },
+    { speaker: "義母", japanese: "それはご心配でしょう。お母さまの体調が一番大切ね。", english: "That must be worrying. Your mother's health comes first." },
+    { speaker: "チャウ", japanese: "ご理解、ありがとうございます。実は、もう一つご相談したいことがございまして。", english: "Thank you for understanding. There's one more thing I'd like to consult about." },
+    { speaker: "義母", japanese: "何かしら、遠慮せず言って。", english: "What is it? Don't hold back — go ahead." },
+    { speaker: "チャウ", japanese: "去年のお盆の際、お墓参りの作法に不慣れで、ご迷惑をおかけしてしまったのではないかと、ずっと気にかかっておりました。", english: "Last Obon, I was unfamiliar with the manners for visiting the grave; I've been worried I might have caused trouble." },
+    { speaker: "義母", japanese: "あら、そんなこと気にしていたの。慣れていなくて当然よ。私たちも、もっと丁寧に教えればよかったわね。", english: "Oh, you were worrying about that? It's natural not to be used to it. We should have explained more carefully too." },
+    { speaker: "チャウ", japanese: "いえ、私の方こそ、もっと事前に伺うべきでした。今年は、可能であれば、参拝の前に少しご説明いただけますと、心を込めて手を合わせられるかと存じます。", english: "No, I should have asked beforehand. If possible, this year, if you'd explain a little before we visit, I think I could pray with all my heart." },
+    { speaker: "義母", japanese: "ええ、もちろん。むしろ、聞いてくれると嬉しいわ。文化の違いは、お互い少しずつ知っていけばいいの。", english: "Of course. I'm actually glad you asked. Cultural differences — we just learn each other's bit by bit." },
+    { speaker: "チャウ", japanese: "ありがとうございます。実は、ベトナムでも先祖を大切にする習慣がございまして、お盆と似た行事もございます。", english: "Thank you. In fact, Vietnam too has the custom of honoring ancestors, with rituals similar to Obon." },
+    { speaker: "義母", japanese: "そうなの。それは知らなかったわ。今度詳しく教えてくれる?", english: "Really? I didn't know. Will you tell me more about it some time?" },
+    { speaker: "チャウ", japanese: "もちろんです。お互いの文化を共有できれば、より深く理解し合えるかと存じます。", english: "Of course. If we can share each other's cultures, I think we can understand each other more deeply." },
+    { speaker: "義母", japanese: "本当にそうね。家族って、血のつながりだけじゃなくて、こうして話し合って作っていくものなのよ。", english: "That's truly so. Family isn't only blood — it's something we build by talking like this." },
+    { speaker: "チャウ", japanese: "お義母さまにそう言っていただけて、心が軽くなりました。本当にありがとうございます。", english: "Hearing you say that, my heart feels lighter. Truly, thank you." },
+    { speaker: "義母", japanese: "こちらこそ、話してくれてありがとう。これからも、何かあれば遠慮なく言ってちょうだいね。", english: "And thank you for telling me. From now on, whenever something comes up, don't hesitate to say so." }
+  ],
+  roleplay_prompts: [
+    "Đóng vai bạn ở phòng khách nhà chồng/vợ Nhật, sau bữa tối. Bạn cần nói rằng năm nay không thể về quê chồng dài như mọi năm. Hãy KHÔNG bắt đầu với 'sumimasen ga' (sounds defensive) — frame như tham vấn (gosoudan). Cụm: okaa-sama, sukoshi o-hanashi sasete itadaite mo yoroshii desu ka. Đặt context (lý do bên VN) TRƯỚC khi đưa request.",
+    "Mẹ chồng nhắc một việc bạn làm sai năm ngoái (cách dâng cơm tổ tiên / cách thắp hương). Hãy KHÔNG over-apologize, KHÔNG defensive — acknowledge + ask học cách đúng. Cụm: jizen ni o-kiki suru beki deshita (em nên hỏi trước). Frame như cơ hội học hỏi, không như lỗi cần xóa.",
+    "Mẹ chồng tỏ ra hơi thất vọng nhưng KHÔNG nói thẳng — khoảng dừng dài, ánh mắt rời đi (察する moment). Hãy đọc ý — KHÔNG ép bà giải thích. Acknowledge: o-kimochi, juubun ni rikai shite orimasu (con hiểu được tâm trạng của mẹ). Sau đó offer một compromise nhỏ (ngày khác về phụ, gọi video Obon ngày đầu) để giữ relationship."
+  ],
+  register_notes: "Trò chuyện với 義両親 KHÁC trò chuyện công việc dù cùng register cao. Năm patterns: (1) FRAME AS CONSULTATION, NOT ANNOUNCEMENT: KHÔNG declare 'em sẽ về sớm' — frame 'em xin được tham vấn'. Cụm: go-soudan sasete itadakitaku zonjimasu. In-law có face — họ phải feel consulted, không thông báo. (2) CONTEXT BEFORE REQUEST: Vietnamese instinct là apologize first; Japanese in-law instinct là hear context. Đặt lý do (mẹ ốm, em gái cưới) TRƯỚC, request ngắn sau. Reverse order = sounds entitled. (3) READ 察する MOMENTS: in-law thường KHÔNG nói thẳng nếu thất vọng — biểu hiện qua silent pause, eye-aversion, tone shift. Khi thấy, KHÔNG ép giải thích. Acknowledge softly: o-kimochi rikai shite orimasu. (4) ENRYO BALANCE: trong gia đình chồng, dùng polite forms KHÔNG quá deferential (sounds như khách lạ). Mid-keigo (desu/masu + occasional itadaku) phù hợp daughter/son-in-law. Quá keigo = họ nói 'kazoku nan da kara, sonnani katai koto wa nai yo' (nhà mình mà, không cần khách sáo) — đó là gentle correction. (5) HONNE OPENING: nếu bạn share một tình cảm thật (con cũng nhớ ba mẹ ở VN), in-law thường đáp lại bằng honne của họ. Mutual vulnerability builds connection. // TODO native review — gosoudan sasete itadakitaku zonjimasu phrasing — alternative chotto gosoudan ga arimasu ít formal hơn cho closer in-law relationships; one Japanese reviewer suggested 'osore-irimasu ga' opening for first serious conversation.",
+  idiom_glosses: [
+    { idiom: "親しき仲にも礼儀あり", literal: "Trong quan hệ thân thiết cũng có lễ nghi", meaning: "Dù gia đình thân, vẫn cần lịch sự — phù hợp khi nhắc nhở chính bản thân không quá casual với mẹ chồng.", example: "親しき仲にも礼儀ありと申しますし、お義母さまには丁寧にお話ししたく存じます。" },
+    { idiom: "縁は異なもの", literal: "Duyên là điều kỳ lạ", meaning: "Duyên kết nối những con người không tưởng — phù hợp frame xuyên-văn-hóa marriage như duyên định.", example: "縁は異なものと申します。文化が違っても、こうして家族になれましたこと、感謝しております。" },
+    { idiom: "雨降って地固まる", literal: "Mưa rơi đất rắn lại", meaning: "Sau mâu thuẫn, quan hệ vững hơn — phù hợp đóng cuộc trò chuyện khó với in-laws bằng note tích cực.", example: "雨降って地固まると申しますし、今日のお話で、より理解が深まったかと存じます。" },
+    { idiom: "以心伝心", literal: "Truyền tâm bằng tâm", meaning: "Hiểu nhau không cần lời — Nhật value khả năng đọc tâm tư mà không phải nói. In-law đánh giá cao khi bạn 察する được.", example: "以心伝心と申しますが、お義母さまのお気持ち、少しでも汲み取れていれば幸いです。" }
+  ],
+  cultural_notes_vi: "Quan hệ với 義両親 ở Nhật khác hẳn VN ở 6 điểm. (1) HOUSEHOLD HEAD CONCEPT: dù 'ie' (家) system đã abolished sau 1947, văn hóa vẫn deep — eldest son's gia đình expected to honor ancestors, take care of parents in old age. Nếu chồng/vợ bạn là chōnan (長男, eldest son) hoặc chōjo (長女, eldest daughter, especially nếu không có nam), expectations về visiting + ritual cao. Discussing this UPFRONT before marriage saves grief. (2) OBON + NEW YEAR ARE NON-NEGOTIABLE: hai dịp này — お盆 (mid-August) và お正月 (New Year, Jan 1-3) — gia đình expected to gather. Skip lần đầu OK với good reason; skip nhiều năm = serious damage relationship. Nếu phải skip, GỌI ngay từ tháng trước, KHÔNG sát ngày. (3) GIFT CULTURE NUANCES: お中元 (ochuugen, July gift), お歳暮 (oseibo, December gift) — nhiều gia đình modern đã skip, nhưng nếu in-laws traditional, mỗi năm bỏ không gửi = noticed. Hỏi chồng/vợ verify expectations. Gift KHÔNG cần đắt (3,000-5,000 yen typical), nhưng phải có. (4) YOME VS MUKO: con dâu (yome, 嫁) historically có nghĩa vụ heavier hơn con rể (muko, 婿), nhưng gen Z+ in-laws relaxed nhiều. Tuy nhiên, ngay cả modern in-laws still appreciate khi yome remember birthdays, anniversaries của họ. (5) DIRECTNESS LEVEL: in-laws rarely tell you directly họ unhappy — họ tell con của họ (chồng/vợ bạn), người này tell bạn. Đây không phải gossip — là protocol. Nếu chồng/vợ bring up 'ba mẹ nhắc...', listen carefully. (6) NEVER COMPLAIN ABOUT IN-LAWS TO YOUR OWN PARENTS: ở VN ok đôi khi nhắc khó khăn với ba mẹ — at Nhật, in-laws hearing this gián tiếp là big betrayal. Khác biệt với VN: ở VN con dâu thường visit chợ với mẹ chồng, cùng nấu ăn, build relationship qua daily acts; ở Nhật, in-law relationship build qua structured events (festivals, gifts, formal visits) hơn casual time together. Mẹo: khi visit lần đầu, mang gift từ Vietnam (specialty trà, cà phê, snacks) — tạo ấn tượng tốt + cultural exchange. Một bộ tea set Bát Tràng, một hộp bánh đậu xanh, một hộp cà phê Trung Nguyên — all welcomed.",
+  tip_advice_vi: "Trước cuộc trò chuyện khó: prepare 3 things. (a) WHAT exactly bạn cần communicate — viết ra 1-2 câu cốt lõi. (b) WHY context — chuẩn bị 2-3 câu giải thích lý do. (c) WHAT bạn offer in compromise — đừng chỉ nói 'em không thể', cũng nói 'em sẽ làm X bù'. Choose timing carefully: KHÔNG bring up serious topic when in-law just woke up, just before sleep, or in middle of family event. Best: after dinner, sitting at low table (kotatsu hoặc dining), no TV, chồng/vợ bạn either present (supportive) OR completely absent (privacy). Confirm với chồng/vợ: which configuration their parents prefer. Open the talk: ask permission first. Cụm: o-jikan sukoshi yoroshii deshou ka cộng o-hanashi shitai koto ga gozaimashite (có thời gian một chút không, có việc muốn thưa). KHÔNG dive in. During the talk: speak slowly. Pauses OK. Don't fill silence — Nhật uses silence to process. Eye contact moderate (khoảng 60 phần trăm — staring = aggressive). Body posture calm, hands visible. Khi in-law respond: LISTEN FULLY before defending. Common in-law habit: bring up related concern bạn không expect. Don't dismiss — acknowledge: oshatte iru koto, juubun ni rikai dekimasu (em hiểu mẹ nói gì). Nếu disagree: KHÔNG argue thẳng. Cụm: ossharu tooride gozaimasu ga, watakushi-domo no koto mo sukoshi go-hairyo itadakemasu deshou ka (mẹ nói đúng, nhưng xin mẹ hiểu hoàn cảnh chúng con). Frame disagreement như request for empathy, KHÔNG counter-attack. After the talk: thank them. Cụm: o-hanashi sasete itadaki, arigatou gozaimashita. Within 3-5 ngày, send thank-you message via your spouse OR direct (depending closeness). Reinforce điểm tích cực conversation. Long-term: learn one cultural practice per year — ikebana, tea ceremony basics, calligraphy, regional dish. KHÔNG để impress, để genuinely engage culture. In-laws notice authentic interest. Mẹo cuối: nếu major disagreement không resolve trong 1 cuộc trò chuyện, KHÔNG force resolution. Cụm: kondo, mou ichido yukkuri o-hanashi sasete kudasai (lần tới, xin được trò chuyện kỹ hơn). Nhật resolve qua nhiều cuộc trò chuyện small, không one big confrontation. Patience là asset.",
+  exercises: [
+    { type: "fill-blank", question: "お互い、少しずつ___寄れればと願っております。", answer: "歩み" },
+    { type: "matching", instruction: "Ghép cụm với function.", pairs: [
+      { japanese: "ご相談させていただきたく存じます", english: "frame difficult topic as consultation, not announcement" },
+      { japanese: "お気持ち、十分に理解しております", english: "acknowledge in-law's feelings without forcing them to explain" },
+      { japanese: "お互い少しずつ歩み寄れれば", english: "frame relationship as mutual adjustment, not one-side compromise" },
+      { japanese: "事前にお伺いすべきでした", english: "graceful self-correction without over-apology" }
+    ] },
+    { type: "translation", vietnamese: "Có sự khác biệt văn hóa, đôi khi sinh hiểu lầm — em mong mẹ thông cảm.", japanese: "文化の違いから、誤解が生じることもございます。ご理解いただけますと幸いに存じます。" }
+  ]
+},
+{
+  id: 83,
+  title: "Political disagreement with a Japanese friend — holding ground respectfully",
+  title_vi: "Bất đồng chính trị với bạn Nhật — giữ quan điểm mà không làm rạn",
+  title_en: "Political disagreement with a Japanese friend — holding ground respectfully",
+  category: "fluency",
+  level: "B2",
+  vocabulary: [
+    { japanese: "意見 (いけん)", english: "opinion" },
+    { japanese: "立場 (たちば)", english: "position / standpoint" },
+    { japanese: "考え方 (かんがえかた)", english: "way of thinking" },
+    { japanese: "賛成 (さんせい)", english: "agreement / approval" },
+    { japanese: "反対 (はんたい)", english: "opposition / disagreement" },
+    { japanese: "尊重する (そんちょうする)", english: "to respect" },
+    { japanese: "議論 (ぎろん)", english: "debate / discussion" },
+    { japanese: "視点 (してん)", english: "viewpoint / perspective" },
+    { japanese: "前提 (ぜんてい)", english: "premise / assumption" },
+    { japanese: "気を悪くする (きをわるくする)", english: "to take offense / feel bad" }
+  ],
+  examples: [
+    { japanese: "立場は違いますが、お考えは尊重しております。", english: "Our positions differ, but I respect your way of thinking." },
+    { japanese: "私の見方は少し異なるのですが、お話を伺ってもよろしいでしょうか。", english: "My view differs a little — may I hear yours first?" },
+    { japanese: "気を悪くされたら申し訳ないのですが、別の視点もございまして。", english: "Forgive me if this gives offense — there's another perspective." },
+    { japanese: "ご意見は理解できますが、私としては賛同いたしかねます。", english: "I understand your opinion, but I cannot agree with it personally." },
+    { japanese: "この話題で関係が壊れるのは、私の本意ではございません。", english: "It's not my intention for our relationship to break over this topic." }
+  ],
+  dialogue: [
+    { speaker: "友人", japanese: "あの政策、けっこういいと思うんだよね。チャウさんはどう思う?", english: "I think that policy is pretty good. What do you think, Chau?" },
+    { speaker: "チャウ", japanese: "正直に申し上げますと、私は少し違う見方をしております。", english: "Honestly, I see it a little differently." },
+    { speaker: "友人", japanese: "へえ、どんなところが気になるの?", english: "Oh, what bothers you about it?" },
+    { speaker: "チャウ", japanese: "立場の違いはあるかもしれませんが、まずお考えを聞かせていただいてもよろしいですか。", english: "Our positions may differ — first, may I hear your thinking?" }
+  ],
+  dialogue_long: [
+    { speaker: "友人", japanese: "ねえチャウさん、最近のあのニュース見た? 政府の新しい移民政策の話。", english: "Hey Chau, did you see the recent news? The government's new immigration policy." },
+    { speaker: "チャウ", japanese: "見ました。賛否が分かれているようですね。", english: "I saw it. Opinions seem divided." },
+    { speaker: "友人", japanese: "私はけっこう賛成なんだけど。日本の経済を考えると必要だと思うし。チャウさんはどう?", english: "I'm rather in favor. Thinking about Japan's economy, I think it's necessary. How about you?" },
+    { speaker: "チャウ", japanese: "正直に申し上げると、私は少し違う見方をしておりまして。", english: "Honestly, I see it a little differently." },
+    { speaker: "友人", japanese: "へえ、どんなところが気になるの?", english: "Oh, what's bothering you about it?" },
+    { speaker: "チャウ", japanese: "気を悪くされたら申し訳ないのですが、まずあなたのお考えをもう少し詳しく聞かせていただいてもよろしいでしょうか。立場が違うかもしれませんので、まず理解したいと思いまして。", english: "Forgive me if this offends — could I hear your reasoning a bit more first? Since our positions may differ, I'd like to understand first." },
+    { speaker: "友人", japanese: "うん、私は労働力不足が深刻だと感じていて、外国人労働者の受け入れを広げる方が日本の将来にいいと思うの。", english: "Sure. I feel the labor shortage is severe, and I think widening acceptance of foreign workers is better for Japan's future." },
+    { speaker: "チャウ", japanese: "なるほど、そのお考えはよく理解できます。実は私も、受け入れ自体には反対しておりません。ただ、受け入れる側の制度が整っていない部分が気になっておりまして。", english: "I see — I understand that thinking well. Actually, I'm not opposed to acceptance itself. What concerns me is that the receiving-side system isn't fully in place." },
+    { speaker: "友人", japanese: "制度というと、具体的に?", english: "By system, you mean specifically?" },
+    { speaker: "チャウ", japanese: "外国人として日本で働いた経験から申し上げると、言語サポート、住居の保証人制度、医療の手続きなど、現場では難しさを感じる場面が多くあります。受け入れを広げる前に、その部分を整えていただけたらと、個人的に願っております。", english: "Speaking from my experience working in Japan as a foreigner — language support, housing-guarantor system, medical procedures — there are many points where the on-the-ground experience is hard. Personally, I hope those areas could be put in order before broadening acceptance." },
+    { speaker: "友人", japanese: "そっか、当事者としての視点だね。私はそこまで考えていなかった。", english: "I see — the perspective of someone who actually goes through it. I hadn't thought that far." },
+    { speaker: "チャウ", japanese: "立場が違いますので、見えるものも違うかと存じます。私もあなたの労働力不足のご指摘、確かにその通りだと思います。両方とも本当のことかと。", english: "Our positions differ, so what's visible differs too. Your point about labor shortage — I think it's truly so. Both things are true." },
+    { speaker: "友人", japanese: "うん、対立じゃなくて、両方大事ってことだよね。", english: "Yeah, not opposition — both matter, right?" },
+    { speaker: "チャウ", japanese: "そう思います。同じ問題でも、見る場所によって違って見えるのは自然なことかと。", english: "I think so. With the same issue, what we see depends on where we stand — that's natural." },
+    { speaker: "友人", japanese: "こういう話、率直にしてくれて嬉しい。普段、外国人の友達とこういう深い話、なかなかしないから。", english: "I'm glad you spoke frankly about this. I rarely have these deep talks with foreign friends." },
+    { speaker: "チャウ", japanese: "こちらこそ、聞いてくださって感謝しております。意見が違っても、こうして話せる関係はとても貴重です。", english: "Thank you for listening. Even when we disagree, a relationship where we can talk like this is very precious." },
+    { speaker: "友人", japanese: "また今度、ゆっくり話そうよ。違う意見、聞かせて。", english: "Let's talk slowly again sometime. Tell me your different opinions." },
+    { speaker: "チャウ", japanese: "ぜひ。お互いの視点を交換できる時間を、これからも大切にしたく存じます。", english: "Gladly. I'd like to keep treasuring the time we can exchange perspectives." }
+  ],
+  roleplay_prompts: [
+    "Bạn đang ăn trưa với đồng nghiệp Nhật, người này nêu chính kiến (chính sách lao động nước ngoài / quan hệ Nhật-VN / một issue social). Bạn không đồng ý nhưng KHÔNG muốn rạn quan hệ. Hãy MỞ bằng cách hỏi rõ quan điểm của họ TRƯỚC: mazu o-kangae wo kikasete itadaite mo yoroshii desu ka. KHÔNG counter-attack ngay.",
+    "Đồng nghiệp giải thích xong, bạn cần đưa quan điểm khác. Hãy frame như experiential perspective (tôi nói từ trải nghiệm cá nhân), KHÔNG abstract debate. Cụm: gaikokujin to shite Nihon de hataraita keiken kara moushiagemasu to. Phần personal lived experience khó để counter mà không rude — đây là Japanese cách giữ disagreement trong civility.",
+    "Đồng nghiệp tỏ ra hơi defensive. Hãy NHẬN chỗ họ đúng — KHÔNG rút lui hoàn toàn (yields-too-much), nhưng acknowledge điểm tốt: anata no shiteki, tashika ni sono toori dato omoimasu. Sau đó re-state your view một cách softer: kojin-teki ni wa, mada kininaru tokoro ga gozaimasu (cá nhân con vẫn còn điểm băn khoăn)."
+  ],
+  register_notes: "Bất đồng chính trị với người Nhật khác Mỹ/VN ở core: Nhật value WA (和, harmony) — direct counter-argument bị coi rude dù logic đúng. Năm patterns: (1) ASK FIRST, ANSWER SECOND: nguyên tắc bất di dịch. Khi friend bring up political topic, KHÔNG immediately give your view. Ask theirs first: o-kangae wo kikasete itadaite mo yoroshii deshou ka. Lý do: (a) thể hiện respect, (b) cho bạn time to calibrate response, (c) nếu họ có nuance bạn miss, bạn có thể tránh straw-man. (2) FRAME AS EXPERIENCE, NOT ABSTRACT: Nhật accept personal lived experience hơn abstract argument. Cụm: gaikokujin to shite (với tư cách người nước ngoài), watakushi no keiken kara (từ trải nghiệm cá nhân). Đây là conversational shield — họ không thể counter your lived experience một cách rude. (3) ACKNOWLEDGE BEFORE DISAGREE: 'I understand X, but Y' pattern. Cụm: oshatte iru koto wa rikai dekimasu ga (hiểu được điều bạn nói, nhưng). Without acknowledgment, disagreement bị nghe như dismissal. (4) PERSONAL OPINION FRAME: dùng watakushi to shite wa (riêng tôi thì), kojin-teki ni wa (cá nhân thì). Tránh universal claims (must, should, all Japanese). Frame như cá nhân = họ không cần defend cả nhóm. (5) CLOSE WITH RELATIONSHIP NOT POSITION: dù không reach agreement, kết thúc bằng affirmation về relationship: i-ken ga chigatte mo, kou shite hanaseru kankei wa kichou desu (dù khác ý kiến, mối quan hệ trò chuyện thế này quý lắm). Friend nhớ lại closing tone hơn debate detail. // TODO native review — sandou itashikanemasu phrasing — alternative kanari muzukashii kamoshiremasen mềm hơn cho strong disagreement; some natives caution that 'kanemasu' form sounds bureaucratic in casual political talk.",
+  idiom_glosses: [
+    { idiom: "和をもって貴しとなす", literal: "Coi sự hòa làm điều quý", meaning: "Lời của Thái tử Shōtoku — harmony cao hơn debate. Phù hợp khi đặt khung dialogue: dù bất đồng, mục tiêu vẫn là harmony.", example: "和をもって貴しとなすと申しますし、意見が違っても、対話を大切にしたいと存じます。" },
+    { idiom: "十人十色", literal: "Mười người mười màu", meaning: "Mỗi người mỗi ý — frame disagreement như tự nhiên, không bất thường.", example: "十人十色と申します。立場が違えば、見方も違って当然かと。" },
+    { idiom: "鶴の一声", literal: "Một tiếng kêu của hạc", meaning: "Lời quyết định từ người có quyền — context: disagreement không cần ai quyết, mỗi người giữ ý mình.", example: "鶴の一声で結論を出す必要はないかと。お互いの意見を持ち続けて構わないと存じます。" },
+    { idiom: "腹を割って話す", literal: "Mổ bụng ra mà nói", meaning: "Nói thẳng từ tim — phù hợp khi friendship đủ thân để chia sẻ honest view.", example: "腹を割って話せる関係は、本当に貴重だと感じております。" }
+  ],
+  cultural_notes_vi: "Bất đồng chính trị với bạn Nhật đặc biệt khó vì 6 yếu tố. (1) POLITICS = TABOO IN MOST SETTINGS: tại Nhật, politics rarely discussed at workplace, KHÔNG ở family dinner, KHÔNG with new friends. Nếu friend bring up, đó là sign of trust — họ test bạn có civilly handle được không. Disrespect = friendship damage permanent. (2) NUCLEAR / CONSTITUTION / U.S. BASES / IMMIGRATION = HOT TOPICS: bốn chủ đề có deep emotional layers. Nhiều Nhật không có strong opinion (silent majority); minority có very strong opinion (cả hai phía). Khi friend share, họ thường thuộc minority engaged — calibrate accordingly. (3) RELATIVITY OF FOREIGN OPINION: dù bạn ở Nhật 5 năm, người Nhật vẫn perceive bạn như outside observer. Strong opinion về Nhật politics sometimes nghe rude (như tourist phán nhà chủ). FRAME experiential ('với tư cách người nước ngoài sống ở Nhật') giúp legitimize. (4) DON'T COMPARE NEGATIVELY VS VIETNAM: tránh 'ở VN tốt hơn / xấu hơn'. Comparisons feel competitive. Dùng 'differently' thay 'better/worse'. (5) JAPANESE CONSERVATISM ≠ U.S. CONSERVATISM: spectrum chính trị Nhật khác hẳn Mỹ. Ngay center-left Nhật strict immigration hơn center-right Mỹ. Đừng map onto familiar frames. (6) AGREEMENT PRESSURE IS REAL: friend có thể continue press đồng ý. Bạn KHÔNG cần. Cụm: i-ken wa wakaremasu ga (ý kiến chia rẽ rồi) closes graceful. KHÔNG cần convert. Khác biệt với VN: ở VN bạn bè debate politics over rượu thường nóng, nhưng quan hệ thường survive vì văn hóa expressive forgive bigger; ở Nhật, một harsh political comment có thể end friendship — không recovery vì face damage permanent. Tone matters more than content. Mẹo: nếu chủ đề getting heated, deflect grace: kono hanashi, mata kondo yukkuri shimashou (chủ đề này hôm khác bàn từ tốn). Nhật accept time-out. KHÔNG insist resolve trong cùng buổi. Long-term: learn vài cụm shield: nhom — sou kamo shiremasen ga (có thể vậy nhưng), naruhodo (à ra vậy — neutral acknowledge), watakushi ni wa muzukashii topikku desu (chủ đề này khó với tôi). Last shield: humour. Nếu pressed too hard: politics no hanashi de, biiru ga oishiku naranaku narimashita (chuyện chính trị rồi bia thấy nhạt) — laugh + change subject.",
+  tip_advice_vi: "Trước khi tham gia chủ đề chính trị: đánh giá relationship + setting. Quan hệ <6 tháng + workplace setting: politely defer (sou desu ne, watakushi wa amari kuwashiku nai node — em không rành lắm). Quan hệ >1 năm + private setting: có thể engage. KHÔNG engage tại dinner table, family event, work nomikai (drink party) — even nếu được hỏi. Cụm safe defer: ima wa o-shokuji wo tanoshimimashou (giờ thưởng thức bữa ăn đã). Khi engage thật: rule 1, ask first. Listen 70 phần trăm, talk 30 phần trăm. Take notes mentally về reasons họ given. Khi reply: bắt đầu với 1 acknowledgment + 1 personal frame + 1 specific point. KHÔNG list 5 reasons. Một câu well-placed > năm câu rambling. Body language: voice level same, pace SLOW, eye contact 50 phần trăm. Avoid finger-pointing, leaning forward, table tap. Pace + posture signal civility hơn lời. Khi disagreement reach plateau (3-4 exchanges, neither convinced): close graceful. Cụm: rikai ga fukamarimashita. arigatou gozaimasu (em hiểu sâu hơn rồi, cảm ơn). Closing thanks acknowledges they shared, KHÔNG implies bạn agree. After conversation: don't bring up again next meeting. Move on. Nếu họ bring up again, brief acknowledge và pivot. Persistence on disagreement signals rudeness. Long-term: build reputation 'foreigner who can discuss thoughtfully' — bạn Nhật sẽ trust hơn, bring up serious topics more, deeper friendship grow. Biggest mistake: foreigners who 'win' political debate against Japanese friend. Friend then feels ambushed, withdraws future invitations. Goal KHÔNG là win — goal là understand each other deeper. Nếu sau cuộc trò chuyện, bạn HIỂU thêm họ một chút và họ HIỂU thêm bạn một chút, đó là success — dù nobody changed mind. Mẹo cuối: nếu sai (e.g., bạn nói factually wrong), correct yourself sớm: aa, sumimasen, watakushi no rikai ga machigatte imashita (xin lỗi, em hiểu sai). Self-correction = strong sign of integrity, friend respect tăng — KHÔNG giảm.",
+  exercises: [
+    { type: "fill-blank", question: "立場は違いますが、お考えは___しております。", answer: "尊重" },
+    { type: "matching", instruction: "Ghép cụm với function.", pairs: [
+      { japanese: "まずお考えを聞かせていただいてもよろしいでしょうか", english: "ask their view before stating yours" },
+      { japanese: "外国人としての経験から申し上げますと", english: "frame opinion as personal experience, harder to counter" },
+      { japanese: "おっしゃっていることは理解できますが", english: "acknowledge before disagreeing" },
+      { japanese: "意見が違っても、こうして話せる関係は貴重です", english: "close with affirmation of relationship" }
+    ] },
+    { type: "translation", vietnamese: "Em nói thẳng — em có cách nhìn hơi khác.", japanese: "正直に申し上げますと、私は少し違う見方をしております。" }
+  ]
+},
+{
+  id: 84,
+  title: "Comforting a friend after a loss — death of a family member",
+  title_vi: "An ủi bạn sau mất mát — qua đời người thân",
+  title_en: "Comforting a friend after a loss — death of a family member",
+  category: "fluency",
+  level: "B2",
+  vocabulary: [
+    { japanese: "ご愁傷さま (ごしゅうしょうさま)", english: "my condolences (formal, funeral context)" },
+    { japanese: "お悔やみ (おくやみ)", english: "condolences" },
+    { japanese: "悲しみ (かなしみ)", english: "sadness / grief" },
+    { japanese: "気持ち (きもち)", english: "feeling / mood" },
+    { japanese: "寄り添う (よりそう)", english: "to stay close beside / accompany" },
+    { japanese: "無理しないで (むりしないで)", english: "don't push yourself" },
+    { japanese: "支える (ささえる)", english: "to support" },
+    { japanese: "言葉が見つからない (ことばがみつからない)", english: "I can't find the words" },
+    { japanese: "そっと", english: "softly / quietly" },
+    { japanese: "回復 (かいふく)", english: "recovery" }
+  ],
+  examples: [
+    { japanese: "この度は、心よりお悔やみ申し上げます。", english: "My deepest condolences at this time." },
+    { japanese: "なんとお声をかけていいか、言葉が見つかりません。", english: "I cannot find the right words to say." },
+    { japanese: "無理せず、ご自分の気持ちを大切になさってください。", english: "Don't push yourself; please honor your own feelings." },
+    { japanese: "私で良ければ、いつでもそばにおります。", english: "If I'm of any help, I'm here for you anytime." },
+    { japanese: "今は何もしなくて大丈夫です。ただ、ここにおります。", english: "Right now you don't have to do anything. I'm just here." }
+  ],
+  dialogue: [
+    { speaker: "チャウ", japanese: "この度は、本当に...言葉になりません。心よりお悔やみ申し上げます。", english: "About this... I can't put it into words. My deepest condolences." },
+    { speaker: "友人", japanese: "ありがとう。来てくれて、本当に助かる。", english: "Thank you. You came — it really helps." },
+    { speaker: "チャウ", japanese: "話したいときも、話さなくていいときも、私はここにいます。", english: "Whether you want to talk or not, I'll be here." },
+    { speaker: "友人", japanese: "今は、ただ誰かそばにいてくれるだけで、ありがたい。", english: "Right now, just having someone close — that's a help." }
+  ],
+  dialogue_long: [
+    { speaker: "チャウ", japanese: "(玄関にて、静かに) 連絡を受けて、すぐに伺いました。この度は、本当に、言葉が見つかりません。心よりお悔やみ申し上げます。", english: "(at the entrance, quietly) I came as soon as I heard. About this — I truly cannot find the words. My deepest condolences." },
+    { speaker: "友人", japanese: "チャウさん...ありがとう。入って。", english: "Chau... thank you. Come in." },
+    { speaker: "チャウ", japanese: "失礼します。何かお持ちした方がよかったのですが、急なことで。", english: "Excuse me. I should have brought something, but it was so sudden." },
+    { speaker: "友人", japanese: "気にしないで。来てくれただけで十分よ。", english: "Don't worry. Just coming is enough." },
+    { speaker: "チャウ", japanese: "(部屋に座って、しばらく沈黙) ...お父さま、突然のことだったと聞きました。", english: "(sits in the room, silence for a while) ...I heard about your father — that it was sudden." },
+    { speaker: "友人", japanese: "うん。先週まで普通に話していたのに。まだ実感がわかなくて。", english: "Yeah. Last week we were talking normally. It still doesn't feel real." },
+    { speaker: "チャウ", japanese: "お気持ち、想像することもできません。ただ、無理にお話しいただかなくて大丈夫です。", english: "I can't even imagine how you feel. Please — you don't have to force yourself to talk." },
+    { speaker: "友人", japanese: "ありがとう。でも、誰かに話したい気持ちもあって。", english: "Thanks. But part of me wants to talk to someone too." },
+    { speaker: "チャウ", japanese: "もちろんです。話したいだけ、お聞きします。", english: "Of course. I'll listen for as long as you want to talk." },
+    { speaker: "友人", japanese: "父はね、最後まで仕事のことを気にしていたの。会社に迷惑かけないかって。最後の言葉が、母じゃなくて、職場のことだったの。", english: "Dad — until the end, he was worried about work. Whether he'd cause trouble for the company. His last words weren't to mom — they were about the workplace." },
+    { speaker: "チャウ", japanese: "...そうでしたか。それは、お父さまらしいご性格だったのでしょうね。", english: "...I see. That sounds like the kind of person your father was." },
+    { speaker: "友人", japanese: "うん。最後まで、人のことを考える人だった。", english: "Yeah. Until the end, he thought about others." },
+    { speaker: "チャウ", japanese: "(少し間を置いて) お父さまの生き方、誰かに話せる方がいるとしたら、それも大切な追悼かと存じます。", english: "(after a pause) Your father's way of living — if there's someone you can tell about it, that too is a precious form of remembering." },
+    { speaker: "友人", japanese: "ありがとう。チャウさんに話せてよかった。", english: "Thank you. I'm glad I could tell you." },
+    { speaker: "チャウ", japanese: "これから、お通夜やお葬式の準備で大変な日々が続くかと思います。何かお手伝いできることがあれば、いつでも遠慮なくおっしゃってください。買い物、食事の用意、お子さまの送り迎え、何でも構いません。", english: "From now, the wake and funeral preparations will keep you busy. If there's anything I can help with — shopping, meals, picking up your kids — anything, please don't hesitate." },
+    { speaker: "友人", japanese: "本当にありがとう。たぶん、来週、お願いしたいことが出てくると思う。", english: "Thank you truly. Probably next week, things I'll need help with will come up." },
+    { speaker: "チャウ", japanese: "はい、いつでもお声がけください。今夜は、ゆっくり休まれてください。睡眠だけでも、少しでも取れるよう願っております。", english: "Yes, please reach out anytime. Tonight — please rest slowly. Even just sleep, I hope you can get a little." },
+    { speaker: "友人", japanese: "うん、頑張ってみる。来てくれて、本当にありがとう。", english: "Yeah, I'll try. Thank you so much for coming." },
+    { speaker: "チャウ", japanese: "また明日、メッセージを送らせていただきます。返信は不要ですので、ご自分のペースでお過ごしください。", english: "I'll send a message tomorrow. No need to reply — please go at your own pace." }
+  ],
+  roleplay_prompts: [
+    "Bạn đang đến nhà bạn Nhật vừa mất ba. Tại cửa, bạn cần CHÀO không quá tươi (joy = inappropriate) cũng KHÔNG quá lệ (drama = burden cho bạn). Cụm: kono tabi wa, makoto ni go-shuushou-sama de gozaimasu cộng cúi đầu nhẹ. KHÔNG ôm, KHÔNG nắm tay (Nhật ít physical touch even ở moments emotional này).",
+    "Vào phòng, bạn ngồi xuống. Bạn của bạn có thể nói hoặc lặng thinh. Hãy KHÔNG chủ động hỏi 'do you want to talk' — đó là pressure. Đợi. Nếu họ nói, lắng nghe. Nếu họ im, ngồi với họ trong im lặng. Cụm khi cần phá im lặng: muri ni o-hanashi itadakanakute daijoubu desu (không cần cố nói).",
+    "Bạn của bạn share một kỷ niệm về người mất (e.g., câu nói cuối, một đặc điểm tính cách). Hãy KHÔNG immediately reply 'I understand' — chưa hiểu được. Cụm: sou deshita ka cộng pause cộng o-tou-sama rashii go-seikaku datta no deshou ne (chắc đó là tính cách của ba). Reflect lại điều họ said, KHÔNG generic comfort."
+  ],
+  register_notes: "An ủi sau mất mát ở Nhật khác hẳn nhiều văn hóa. Mục tiêu KHÔNG là cheer them up — là 寄り添う (yorisou, ngồi cạnh). Năm patterns: (1) USE 申し上げる FORMS: condolences dùng formal gozaimasu / moushiagemasu — không casual. Cụm chuẩn: kono tabi wa, makoto ni go-shuushou-sama de gozaimasu (lần này, thực sự xin chia buồn). KHÔNG dùng 'sumimasen' (sorry) — đó là apology, không phải condolence. (2) AVOID 大変 IN OPENING: nhiều người nước ngoài say 'taihen desu ne' (it must be hard). Trong context tử thi, sounds dismissive — minimize their grief. Tránh. Dùng 'go-shinpai no koto to omoimasu' (you must be worried/troubled) hoặc 'osasshi shimasu' (I imagine deeply). (3) FUNERAL VOCABULARY: お通夜 (otsuya, wake), お葬式 (osoushiki, funeral), 告別式 (kokubetsushiki, farewell ceremony), 香典 (kouden, condolence money), 喪主 (moshu, chief mourner). Biết minimum để không hỏi kỳ. Kouden ~5,000-10,000 yen for friend, in special envelope (不祝儀袋, bushuugibukuro). (4) NEVER SAY '元気を出して': Western 'cheer up' direct translation = genki wo dashite. Trong grief context Nhật = sounds like they shouldn't grieve. Tránh. Dùng: muri sezu, go-jibun no kimochi wo taisetsu ni nasatte kudasai (đừng cố, hãy quý trọng cảm xúc của bạn). (5) PRACTICAL HELP > EMOTIONAL WORDS: lời nhiều nhiều khi vô dụng. Offer concrete: cooking, kid pickup, errand, paperwork help. Cụm: gohan no junbi, kaimono nado, dou ka go-enryo naku. Practical help = thật sự chia tải. // TODO native review — sou deshita ka after share phrasing — alternative oshatte iru go-kimochi wakarimasu KHÔNG nên dùng (claim hiểu when bạn không thật sự hiểu — sounds presumptuous). Native reviewer suggested 'sou de gozaimashita ka' as more reverent variant.",
+  idiom_glosses: [
+    { idiom: "寄り添う", literal: "Đứng/ngồi sát bên", meaning: "Khái niệm Nhật về an ủi: không cố sửa, chỉ ở bên. Cốt lõi văn hóa grief support.", example: "言葉ではなく、ただ寄り添うだけで十分なときもございます。" },
+    { idiom: "故人を偲ぶ", literal: "Tưởng nhớ người quá cố", meaning: "Cụm formal cho 'remembering the deceased' — dùng tại funeral, anniversary, conversation về người mất.", example: "お父さまを偲びながら、これからもご家族で支え合っていただければと存じます。" },
+    { idiom: "時が薬", literal: "Thời gian là thuốc", meaning: "Thời gian chữa lành — phù hợp khi nói về quá trình hồi phục dần dần, KHÔNG quick fix.", example: "時が薬と申しますが、無理なさらず、少しずつで構いません。" },
+    { idiom: "ご冥福をお祈りいたします", literal: "Cầu nguyện cho an nghỉ ở thế giới bên kia", meaning: "Cụm chuẩn cho condolence cards, formal expressions. Phật giáo origin nhưng dùng broadly.", example: "心よりご冥福をお祈りいたします。" }
+  ],
+  cultural_notes_vi: "Văn hóa tang lễ Nhật khác VN ở 7 điểm. (1) NOTIFICATION TIMING: bạn có thể được thông báo qua SMS/LINE, không call. Đáp ngay với short message: kono tabi wa, makoto ni go-shuushou-sama desu. Sugu ni go-renraku itadaki, arigatou gozaimasu. Sau đó, ask về otsuya (wake) timing. (2) OTSUYA VS OSOUSHIKI: otsuya thường tối ngày sau passing (or sau several ngày nếu prep). Osoushiki ngày sau. Friends thường attend otsuya, not osoushiki (osoushiki cho close family + formal acquaintances). Confirm với chief mourner (or via họ family member). (3) DRESS CODE: black mourning suit/dress (喪服, mofuku). Black tie cho nam. Black or pearl earrings only cho nữ. KHÔNG colored jewelry, KHÔNG bright watch. White shirt only. Closed-toe black shoes. Không có outfit này: black formal wear acceptable as substitute, never colored. (4) KOUDEN: condolence money in special black-and-white envelope (不祝儀袋, bushuugibukuro available at convenience store, write 御霊前 (go-reizen) or 御香典 (go-kouden) trên outside). Amount varies by relationship: friend 5,000-10,000 yen; close friend 10,000-30,000 yen; coworker 3,000-5,000 yen. New bills KHÔNG used (only old bills, opposite of wedding). (5) CEREMONIAL ACTIONS: tại otsuya/osoushiki, bạn sẽ 焼香 (shoukou, incense offering). Steps: bow to family (1 cúi), bow to deceased's photo (1 cúi), pinch incense powder, raise to forehead (depending sect 1-3 times), drop in burner, hands together prayer, bow again. Watch person trước bạn nếu unsure — copy. (6) NO PHOTOS: tại funeral home, KHÔNG photo. KHÔNG video. Phone silent always. (7) POST-FUNERAL FOOD: nhiều nơi serve light meal (otoki) sau ceremony. Eat modestly, KHÔNG drink heavily even if alcohol available. Khác biệt với VN: ở VN funeral có thể có cười nói chia sẻ kỷ niệm; Nhật funerals quiet, somber, formal throughout. Speech only when invited. Mẹo: nếu bạn không thể attend (out of country, work emergency), gửi telegram (弔電, chouden) qua post office hoặc online — service tới in vài giờ. Plus follow-up handwritten condolence note. KHÔNG chỉ text. Long-term: 49 ngày sau (49日, shijuukunichi) là ceremony quan trọng — Buddhist belief soul transitions. Reach out around then with brief message. Sau đó, anniversary (一周忌, isshuuki) ngày 1 năm — small reach-out OK. Tránh major holidays (Obon, year-end) for grief check-in — quá heavy load thời gian đó. Chọn ordinary morning, simple message: o-genki ni o-sugoshi desu ka (mong bạn ổn).",
+  tip_advice_vi: "Khi nghe tin: respond NGAY (within 30 phút nếu awake). Short message OK. Cụm: kono tabi wa, makoto ni go-shuushou-sama desu. nani ka watakushi ni dekiru koto ga areba, dou ka o-mooshitsuke kudasai (xin chia buồn sâu sắc, có việc gì giúp được xin nói). Then: ask về otsuya / osoushiki timing + location, mà KHÔNG hỏi cause of death (nhạy cảm — họ tell nếu họ muốn). Trước khi đi: prepare kouden (condolence money) — convenience store có envelope. Pre-write outside (浄土真宗 use 御仏前, others use 御霊前 — ask shop staff if unsure). Inside, write your full name + amount in clean handwriting. Black ink only. Bring: kouden, business cards (some funeral receivers collect for thank-you list), simple black bag. KHÔNG bring flowers (family handles arrangement) unless explicitly asked. KHÔNG bring food. Tại địa điểm: arrive 10-15 phút sớm. Sign register (会葬御芳名, kaisou go-houmei) carefully — your name + address. Follow staff direction. Trong ceremony: phone silent. Sit quietly. Cry OK but KHÔNG audible sobbing. Khi 焼香: stand calmly, walk slowly, don't fumble. After ceremony: brief condolence to family. Cụm at receiving line: kono tabi wa, makoto ni go-shuushou-sama de gozaimasu cộng cúi 30 độ. KHÔNG long conversation. Family overwhelmed. Sau funeral: send card 1-2 weeks sau với handwritten note. Brief: simple thanks for being included, brief memory of deceased nếu bạn met them, offer continued support. KHÔNG long letter — adds emotional load. Visit friend riêng 2-3 weeks sau — alone time, casual, KHÔNG mention loss directly unless họ bring up. Bring small gift (food, simple practical item). Cụm khi gặp: o-tsukare-sama desu cộng o-genki ni o-sugoshi desu ka. Listen if họ want to talk. Long-term: anniversary remember. Ngày 1 tháng (月命日, tsukimeinichi), ngày 49日, 1 năm (一周忌) — brief message OK. KHÔNG forget completely — that hurts more than awkward acknowledgment. Mẹo cuối: nếu bạn lose someone of your own during this time và bạn cần support, vẫn reach out to your friend who lost — sharing parallel grief actually helps both. Cụm: watakushi mo saikin... (em cũng gần đây...) cộng share briefly. Mutual grief = mutual support.",
+  exercises: [
+    { type: "fill-blank", question: "この度は、心よりお___申し上げます。", answer: "悔やみ" },
+    { type: "matching", instruction: "Ghép cụm với function.", pairs: [
+      { japanese: "言葉が見つかりません", english: "honest acknowledgment that no words fit (not silence)" },
+      { japanese: "無理せず、ご自分のペースで", english: "release pressure to perform recovery" },
+      { japanese: "私で良ければ、いつでもそばにおります", english: "offer presence without conditions" },
+      { japanese: "お父さまらしいご性格", english: "reflect deceased's character — affirms their life" }
+    ] },
+    { type: "translation", vietnamese: "Lúc này không cần làm gì cả — em chỉ ở đây thôi.", japanese: "今は何もしなくて大丈夫です。ただ、ここにおります。" }
+  ]
 }
 ];
 export default lessons;
