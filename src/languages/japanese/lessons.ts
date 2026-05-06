@@ -5742,6 +5742,153 @@ export const lessons: JapaneseLesson[] = [
     ] },
     { type: "translation", vietnamese: "Cám ơn quý vị đã dành thời gian quý báu để bình duyệt; xin được gửi lời cảm ơn một lần nữa.", japanese: "貴重なお時間を賜り、ご査読いただきましたこと、重ねて御礼申し上げます。" }
   ]
+},
+{
+  id: 102,
+  title: "Literary criticism — close reading of a passage",
+  title_vi: "Phê bình văn học — Tinh đọc một đoạn văn",
+  title_en: "Literary criticism — close reading of a passage",
+  category: "literary-criticism",
+  level: "C2",
+  vocabulary: [
+    { japanese: "精読 (せいどく)", english: "close reading" },
+    { japanese: "文体 (ぶんたい)", english: "style / register" },
+    { japanese: "修辞 (しゅうじ)", english: "rhetoric" },
+    { japanese: "語彙選択 (ごいせんたく)", english: "lexical choice" },
+    { japanese: "構文 (こうぶん)", english: "syntax" },
+    { japanese: "反復 (はんぷく)", english: "repetition" },
+    { japanese: "韻律 (いんりつ)", english: "prosody" },
+    { japanese: "句読法 (くとうほう)", english: "punctuation usage" },
+    { japanese: "余白 (よはく)", english: "blank / unsaid space" },
+    { japanese: "含意 (がんい)", english: "implication / connotation" }
+  ],
+  examples: [
+    { japanese: "精読においては、一字一句の選択がいかなる効果を生むかを精査することが肝要である。", english: "In close reading, scrutinizing what effect the choice of each word and phrase produces is essential." },
+    { japanese: "漱石の文体は、漢文訓読体の硬質さと口語の柔らかさとを巧みに織り交ぜていると言えよう。", english: "Sōseki's style, it can be said, skillfully interweaves the hardness of kanbun-kundoku register with the softness of colloquial speech." },
+    { japanese: "川端の散文は、語の経済性と余白の力学とによって成り立っている。", english: "Kawabata's prose is built upon the economy of words and the dynamics of blank space." },
+    { japanese: "谷崎の長文は、その息の長さそのものが、官能的時間の表象たり得るのである。", english: "Tanizaki's long sentences — the very length of their breath itself can serve as a figuration of sensual time." },
+    { japanese: "蓮實重彦の表層批評は、深層に沈潜することなく、テクストの表面に現れる細部に徹底的に立ち止まることを要請する。", english: "Hasumi Shigehiko's surface criticism demands that one not sink into depths but rather dwell exhaustively on the details that surface on the text." },
+    { japanese: "句読点ひとつの位置によって、語り手の呼吸も、読者の呼吸も変わるのである。", english: "By the position of a single punctuation mark, both the narrator's breathing and the reader's breathing change." }
+  ],
+  dialogue: [
+    { speaker: "院生", japanese: "本日は、川端「雪国」冒頭の精読を試みたく存じます。", english: "Today I would like to attempt a close reading of the opening of Kawabata's 'Snow Country.'" },
+    { speaker: "指導教員", japanese: "あの一文ですね。「国境」「トンネル」「雪国」、三つの名詞の並びだけで、空間が転換する。", english: "That one sentence. With just the arrangement of the three nouns — 'border,' 'tunnel,' 'snow country' — space itself transforms." },
+    { speaker: "院生", japanese: "助詞の選択にも、留意すべき点が多々ございます。「と」「であった」、いずれも淡々とした文字面が、かえって衝撃を増幅させております。", english: "There are many points to attend to in the choice of particles as well. 'When' and 'was' — the very plainness of the surface intensifies, paradoxically, the impact." },
+    { speaker: "指導教員", japanese: "その「淡々」を支えているのが過去形の選択でしょう。現在形なら速度が消えてしまう。", english: "What sustains that 'plainness,' I would say, is the choice of past tense. With present tense, the velocity would vanish." }
+  ],
+  dialogue_long: [
+    { speaker: "院生", japanese: "精読の方法について、ご教示いただきたく存じます。何から手をつければよろしいか、いまだ手探りの状態でございまして。", english: "I would like to receive instruction on the method of close reading. As to where to begin, I remain in a state of groping." },
+    { speaker: "指導教員", japanese: "まず、テクストを声に出して読みなさい。黙読では捉えきれぬ韻律が、音読によって初めて立ち現れます。", english: "First, read the text aloud. The prosody that silent reading cannot apprehend appears for the first time only through vocal reading." },
+    { speaker: "院生", japanese: "音読の後、いかなる観点から分析に入るべきでしょうか。", english: "After reading aloud, from what standpoint should one enter into analysis?" },
+    { speaker: "指導教員", japanese: "四層に分けて考えるとよい。語彙、構文、修辞、句読法。それぞれに作家固有の「癖」があり、その癖こそが文体を成す。", english: "Think in four layers: lexis, syntax, rhetoric, punctuation. Each has a writer-specific 'habit,' and that very habit is what constitutes style." },
+    { speaker: "院生", japanese: "たとえば、漱石と鴎外を比較する際、いずれの層に着目するのが有効でしょうか。", english: "For instance, when comparing Sōseki and Ōgai, on which layer is it effective to focus?" },
+    { speaker: "指導教員", japanese: "両者の差は、構文の長短よりも、漢語と和語の配合比に最も鮮明に現れます。鴎外は漢語を骨格とし、漱石は漢語と和語の振幅を意図的に揺らす。", english: "The difference between the two appears most vividly not in the length of syntax but in the proportion of mixing kango and wago. Ōgai takes kango as skeleton; Sōseki intentionally oscillates the amplitude between kango and wago." },
+    { speaker: "院生", japanese: "なるほど。比較の軸が定まりました。次に、修辞の分析については、いかなる手順を踏むべきでしょうか。", english: "I see. The axis of comparison is fixed. Next, regarding the analysis of rhetoric, what procedure should one follow?" },
+    { speaker: "指導教員", japanese: "比喩、反復、対比、倒置——これらを機械的に列挙するのではなく、その修辞が「なぜ、ここで、この形で」用いられたかを問いなさい。修辞は装飾ではなく、意味の生成装置です。", english: "Metaphor, repetition, contrast, inversion — do not enumerate these mechanically; ask 'why, here, in this form' the rhetoric is used. Rhetoric is not ornament but a device for the generation of meaning." },
+    { speaker: "院生", japanese: "句読法について、もう少し詳しく伺ってもよろしいでしょうか。読点の位置など、軽視されがちかと存じます。", english: "May I hear in slightly more detail about punctuation? Things like the position of commas, I believe, tend to be slighted." },
+    { speaker: "指導教員", japanese: "句読法は呼吸である、とまで申せましょう。志賀直哉の極端な短文と、円地文子の屈曲する長文とを比較すれば、句読の差が思想の差であることが見えてくる。", english: "One might even say that punctuation is breathing. If you compare Shiga Naoya's extreme short sentences with the meandering long sentences of Enchi Fumiko, you come to see that the difference in punctuation is the difference in thought." },
+    { speaker: "院生", japanese: "余白についても、重要な観点と承りました。書かれていないことを読むとは、いかなる作業でしょうか。", english: "I have heard that blank space is also an important standpoint. What kind of work is it to read what is not written?" },
+    { speaker: "指導教員", japanese: "省略された主語、語られなかった出来事、書き手が触れることを避けた領域——これらの「不在」が、テクストの輪郭を逆照射するのです。蓮實重彦の表層批評は、この不在の輪郭をなぞる作業に他ならない。", english: "Omitted subjects, events not narrated, domains the writer avoids touching — these 'absences' illuminate, by reverse projection, the contour of the text. Hasumi Shigehiko's surface criticism is nothing other than the work of tracing this contour of absence." },
+    { speaker: "院生", japanese: "肝に銘じます。一篇の短編から始めて、四層と余白の観点で精読を試みてまいります。", english: "I take that to heart. I will begin with one short story and attempt close reading from the standpoints of the four layers and blank space." },
+    { speaker: "指導教員", japanese: "結構です。最初は時間を要しますが、習熟すれば、テクストが自ずと語り出すようになります。", english: "Very well. At first it requires time, but once you become accustomed, the text comes to speak of itself." }
+  ],
+  roleplay_prompts: [
+    "Bạn close-read 5 dòng đầu của một short story. Phương pháp: (1) đọc to, (2) phân lớp 4 tầng (語彙/構文/修辞/句読法), (3) hỏi 'tại sao tác giả chọn từ này, không phải từ đồng nghĩa?'. KHÔNG enumerate devices mechanically — luôn hỏi 'effect là gì?'.",
+    "Bạn so sánh prose của 漱石 và 鴎外. Trục so sánh: 漢語/和語 ratio, 構文 length, 句読 density. Cụm: 両者の差は、〜よりも、〜に最も鮮明に現れる. KHÔNG generic 'A is heavier than B' — chỉ ra layer cụ thể.",
+    "Bạn defend reading được based on absent text (省略された主語). Cụm: 〜の不在こそが、テクストの輪郭を逆照射している. KHÔNG over-claim — frame như one possible reading shaped by absence, dùng 〜と読み得よう."
+  ],
+  register_notes: "C2 literary criticism Japanese yêu cầu shift sang 評論文体 (critical-essay register), khác hoàn toàn với C1 academic prose. Năm đặc trưng cốt lõi. (1) 文語的余韻 — sentence endings 〜と言えよう (it may be said), 〜と考えられよう (may be thought), 〜と断ぜざるを得まい (one cannot but conclude). 'よう/まい' modal endings là dấu hiệu critical register; thay cho C1's neutral 〜と考えられる. (2) 漢文訓読体 echoes — 〜たり (be), 〜なり (is), 〜べし (should), 〜ざるを得ない (cannot but), 〜にほかならない (is nothing other than). Không cần dùng dày đặc nhưng selective deployment elevates register. (3) 雅文体 lexis — chọn 〜性 nominalizations với literary weight: 含意性, 反復性, 文体性, 表象性. Tránh transliterated katakana terms khi có Japanese equivalent (情景描写 thay vì シーン description). (4) 一字一句 LEVEL ATTENTION — claims phải reference specific textual features: '〜という助詞の選択が', '〜の句読点の位置が'. Vague impressionistic claims đọc amateur. (5) CRITICAL TRADITION CITATION — invoke Japanese critics: 蓮實重彦 (surface criticism), 柄谷行人 (transcendental critique), 加藤周一 (cultural history), 江藤淳 (cultural conservative), 吉本隆明 (poetics + politics). Western theory citations OK nhưng pair với Japanese reception (e.g., バルト → 蓮實's reception). KHÔNG fabricate quotes. Discourse markers cho close reading: 〜に着目すれば (focusing on〜), 〜を仔細に検すれば (examining〜in detail), 〜という細部が、〜を逆照射する (the detail of〜illuminates by reverse projection〜). Avoid: 〜と思います (subjective, low register), 美しい (beautiful — too vague), 素晴らしい (wonderful — fan-talk, not criticism). C2 critic doesn't praise; C2 critic analyzes effect. Cần nhớ: Japanese literary criticism tradition vẫn ảnh hưởng bởi 漢文 rhetoric, classical 古文 precedent, và post-war Western theory absorption. C2 register reflects all three layers.",
+  idiom_glosses: [
+    { idiom: "一字一句 (いちじいっく)", literal: "Một chữ, một câu", meaning: "[文語・書き言葉] Từng chữ từng câu — close reading principle: precision down to single character.", example: "精読とは、一字一句を疎かにせぬ読みの態度に他ならない。" },
+    { idiom: "行間を読む (ぎょうかんをよむ)", literal: "Đọc giữa các dòng", meaning: "[書き言葉・話し言葉] Đọc ý ngầm — phù hợp khi phân tích 余白 / 含意 / unstated meaning.", example: "テクストの真意は字面ではなく、行間を読むことで初めて立ち現れる。" },
+    { idiom: "文質彬彬 (ぶんしつひんぴん)", literal: "Văn vẻ và thực chất hài hòa", meaning: "[文語・硬い] 論語起源 — form và substance balanced; ideal phrase cho mature literary style.", example: "漱石の後期作品は、文質彬彬たる風格を帯びるに至っている。" },
+    { idiom: "余韻嫋々 (よいんじょうじょう)", literal: "Dư âm vương vấn dài lâu", meaning: "[文語] Lingering reverberation — đặc thù literary effect khi prose ends mà ý vẫn vang vọng.", example: "川端の短編は、しばしば余韻嫋々として、読み終えた後の沈黙にこそ作品の核心が宿る。" }
+  ],
+  cultural_notes_vi: "Văn hóa close reading ở Nhật academia khác Anh-Mỹ ở 4 điểm. (1) NEW CRITICISM CHỈ LÀ MỘT NGUỒN — Western close reading (Brooks, Empson) là một influence; nhưng Japanese tradition cũng kế thừa 注釈学 (annotation scholarship) cho 古典 như 源氏物語. Combined heritage: Western new criticism + Japanese textual annotation. C2 critic biết cả hai. (2) SURFACE > DEPTH — 蓮實重彦 (Hasumi Shigehiko) institutionalized 表層批評 (surface criticism) trong Japanese academy: stay với what's visible on text, resist hermeneutic descent into 'deep meaning'. Influential against psychoanalytic / biographical reading. (3) 一字一句 PRECISION — Japanese language allows extraordinarily fine distinctions (〜は vs 〜が, 〜だ vs 〜である, kanji choice 寂しい vs 淋しい). Close reading exploits these distinctions — particle changes between drafts of 漱石 manuscripts là entire dissertations. C2 reader notices drafts, variants, manuscript choices. (4) CRITIC AS WRITER — Japanese tradition: top critics often themselves accomplished writers (三島 as 評論家, 谷崎 as 評論家, 江藤淳 as essayist). Critical prose itself is literary object. Reading critic's prose for its own style is part of training. Khác VN: VN literary criticism heavily influenced bởi French structuralism via Soviet-era translation pipeline; Japanese pipeline draws directly from German philology, French theory, American new criticism. Reference frames different. Mẹo: học các Japanese 評論家' opening paragraphs by heart — 蓮實's 'まず〜' openings, 柄谷's hypothetical conditionals. Style absorbs through imitation. Mẹo cuối: nếu bạn chỉ biết Western theory frames, Japanese senpai sẽ subtly mark you as outsider. Knowledge of 古典注釈学 lineage và post-war Japanese critic genealogy (吉本-江藤-柄谷-蓮實-...) signals membership.",
+  tip_advice_vi: "Workflow close reading C2 Japanese cho luận văn / book review. (a) CHỌN PASSAGE NGẮN — 5-15 dòng max cho intensive close reading. Nếu passage dài hơn, bạn đang làm 構造分析 (structural analysis), không phải 精読. Distinguish purposes. (b) TYPE PASSAGE OUT BY HAND — physically retype text into your notes. Manual transcription forces attention to every character, every kana/kanji choice. Reveals patterns invisible khi just reading. (c) ANNOTATE 4 LAYERS — pass 1: 語彙 (lexis) — circle unusual word choices, mark kango/wago shifts. Pass 2: 構文 (syntax) — diagram clause structure, note inversions. Pass 3: 修辞 (rhetoric) — identify metaphor, metonymy, parallelism, anaphora. Pass 4: 句読法 (punctuation) — note unusual mark deployment. Each pass takes ~30 min cho 10 lines. (d) WRITE 'WHY' QUESTIONS — for each marked feature, write một question: 'tại sao tác giả chọn 寂しい thay vì 淋しい ở đây?'. Questions > assertions ở phase early. (e) SYNTHESIS — sau gathering features, identify pattern. Cụm: 〜という細部の集積が、〜という効果を生んでいる. Pattern claim must reference 3+ specific textual evidence points. Mẹo về citation — close reading paper cần dày critic citations: 蓮實 cho surface analysis, 柄谷 cho structural insight, 加藤 cho cultural-historical placement. Citation pattern signals which 学派 (school) bạn thuộc. Mẹo về quotes — when quoting passage, use 縦書き indented block ngoặc 「」 cho dialogue trong passage; reference page number của edition. ALWAYS cite specific edition (出版社, 年). 漱石 復刻版 và 全集版 có wording differences. Mẹo về length — close reading published essays thường 5,000-15,000 字. Shorter = surface impressionism. Longer thường loses focus. Sweet spot 8,000-12,000 字 cho one passage analysis. Mẹo cuối: read three close readings của same passage by different critics. Pattern of disagreement reveals what aspects của text are genuinely contested vs settled. Trains your own critical judgment.",
+  exercises: [
+    { type: "fill-blank", question: "精読においては、___一句の選択がいかなる効果を生むかを精査することが肝要である。", answer: "一字" },
+    { type: "matching", instruction: "Ghép cụm với chức năng phê bình.", pairs: [
+      { japanese: "〜と言えよう", english: "C2 critical register — hedged assertion" },
+      { japanese: "〜にほかならない", english: "literary register — emphatic identification" },
+      { japanese: "余白の力学", english: "analytic concept — dynamics of blank space" },
+      { japanese: "表層批評", english: "Hasumi's surface-criticism approach" }
+    ] },
+    { type: "translation", vietnamese: "Văn của Tanizaki — chính độ dài của hơi văn cũng có thể trở thành biểu tượng của thời gian khoái cảm.", japanese: "谷崎の長文は、その息の長さそのものが、官能的時間の表象たり得るのである。" }
+  ]
+},
+{
+  id: 103,
+  title: "Literary criticism — analyzing narrative voice and POV",
+  title_vi: "Phê bình văn học — Phân tích giọng kể và điểm nhìn",
+  title_en: "Literary criticism — analyzing narrative voice and POV",
+  category: "literary-criticism",
+  level: "C2",
+  vocabulary: [
+    { japanese: "語り手 (かたりて)", english: "narrator" },
+    { japanese: "視点 (してん)", english: "point of view" },
+    { japanese: "焦点化 (しょうてんか)", english: "focalization" },
+    { japanese: "一人称 (いちにんしょう)", english: "first-person" },
+    { japanese: "三人称 (さんにんしょう)", english: "third-person" },
+    { japanese: "全知視点 (ぜんちしてん)", english: "omniscient POV" },
+    { japanese: "限定視点 (げんていしてん)", english: "limited POV" },
+    { japanese: "自由間接話法 (じゆうかんせつわほう)", english: "free indirect discourse" },
+    { japanese: "信頼できない語り手 (しんらいできないかたりて)", english: "unreliable narrator" },
+    { japanese: "内的独白 (ないてきどくはく)", english: "interior monologue" }
+  ],
+  examples: [
+    { japanese: "「こゝろ」における三層構造の語りは、視点の重層化が真理の到達不能性そのものを表象している。", english: "The triple-layered narration in 'Kokoro' — the layering of viewpoints itself figures the very unreachability of truth." },
+    { japanese: "芥川「藪の中」は、複数の一人称証言の齟齬を通じて、客観的真実の不可能性を主題化する。", english: "Akutagawa's 'In a Grove' thematizes, through the contradictions among multiple first-person testimonies, the impossibility of objective truth." },
+    { japanese: "自由間接話法は、語り手と人物との境界を意図的に溶解させる手法であり、近代小説の根幹をなす。", english: "Free indirect discourse is a technique that intentionally dissolves the boundary between narrator and character, forming the foundation of the modern novel." },
+    { japanese: "信頼できない語り手は、読者に語りの背後を読み解く能動的姿勢を要請する。", english: "The unreliable narrator demands of the reader an active stance of decoding what lies behind the narration." },
+    { japanese: "大江健三郎の一人称は、私小説的伝統と西欧的告白体との接合点に位置する。", english: "Ōe Kenzaburō's first-person is positioned at the juncture of the I-novel tradition and Western confessional form." },
+    { japanese: "焦点化の概念は、ジュネット以降の物語論において不可欠の分析装置となっている。", english: "The concept of focalization has become an indispensable analytical device in narratology since Genette." }
+  ],
+  dialogue: [
+    { speaker: "院生", japanese: "「こゝろ」の三層構造について、論文を書いておりますが、視点の分析が定まりません。", english: "I am writing a paper on the triple-layer structure of 'Kokoro,' but my analysis of viewpoint will not settle." },
+    { speaker: "指導教員", japanese: "三層を、誰が誰に語っているか、まずそこから整理しなさい。「私」が「先生」を語る上巻、「私」が「両親」を語る中巻、「先生」が「私」に書く下巻。", english: "First organize from there: who is narrating to whom in the three layers. Volume one, 'I' narrates Sensei; volume two, 'I' narrates the parents; volume three, Sensei writes to 'I.'" },
+    { speaker: "院生", japanese: "下巻のみが手紙体——書かれたテクストとして読者に到達するわけですね。", english: "Only the third volume is in epistolary form — it reaches the reader as a written text." },
+    { speaker: "指導教員", japanese: "そのとおり。語りの媒体の差異が、認識の不可能性を構造化している。これが「こゝろ」の核心です。", english: "Exactly. The difference in narrative medium structures the impossibility of cognition. This is the core of 'Kokoro.'" }
+  ],
+  dialogue_long: [
+    { speaker: "院生", japanese: "本日は、自由間接話法について伺いたく存じます。日本近代文学における導入の経緯と、現代作家への影響について、整理が及んでおりません。", english: "Today I would like to ask about free indirect discourse. The circumstances of its introduction into modern Japanese literature, and its influence on contemporary writers — my organization has not reached there." },
+    { speaker: "指導教員", japanese: "良い問いです。日本における自由間接話法の本格的展開は、二葉亭四迷の言文一致体実験以降、徐々に深化していきました。", english: "A good question. The full-scale development of free indirect discourse in Japan deepened gradually following Futabatei Shimei's experiments in genbun-itchi style." },
+    { speaker: "院生", japanese: "とは申せ、漱石においては、なお地の文と人物の意識との境界が比較的明確であったように思われますが。", english: "That said, in Sōseki, the boundary between the ground text and the character's consciousness still seems to have been relatively clear." },
+    { speaker: "指導教員", japanese: "鋭いご指摘です。漱石の三人称小説——「それから」「門」など——では、地の文と人物意識の往還は見られますが、完全な溶解には至っていない。完全な自由間接話法的散文は、戦後の安部公房や大江において結実すると申せましょう。", english: "An incisive observation. In Sōseki's third-person novels — 'And Then,' 'The Gate' and others — there is to-and-fro between ground text and character consciousness, but it does not reach complete dissolution. Fully free-indirect-discourse prose, one might say, comes to fruition in the postwar Abe Kōbō and Ōe." },
+    { speaker: "院生", japanese: "現代作家においては、いかがでしょうか。村上春樹の一人称は、自由間接話法とどう関わるのでしょうか。", english: "What about in contemporary writers? How does Murakami Haruki's first-person relate to free indirect discourse?" },
+    { speaker: "指導教員", japanese: "村上は基本的に一人称を用い、自由間接話法そのものは多用しません。しかし、第三者の意識への接近を、対話と独白の境界を曖昧にすることで実現している。手法としては別ですが、効果には類似性があります。", english: "Murakami fundamentally uses the first person and does not employ free indirect discourse itself frequently. However, he realizes approach to the consciousness of third parties by blurring the boundary between dialogue and monologue. The technique differs, but there is similarity in effect." },
+    { speaker: "院生", japanese: "多和田葉子の二言語的実験との関連は、いかがでしょうか。", english: "What about the connection with Tawada Yōko's bilingual experiments?" },
+    { speaker: "指導教員", japanese: "多和田は、語り手の言語そのものを揺るがす作家です。日本語とドイツ語の間隙に立つ語り手は、いずれの言語に対しても外部者的視点を取り得る。これは従来の物語論が想定する焦点化の枠を逸脱しています。", english: "Tawada is a writer who shakes the language of the narrator itself. A narrator standing in the interstice between Japanese and German can take an outsider's viewpoint with respect to either language. This deviates from the framework of focalization assumed by conventional narratology." },
+    { speaker: "院生", japanese: "従来の物語論——ジュネットの枠組みでは、十分に分析しきれないということでしょうか。", english: "So conventional narratology — the Genette framework — cannot fully analyze this?" },
+    { speaker: "指導教員", japanese: "そうとも申せましょう。ジュネット理論は単一言語内での視点を前提としており、二言語間の視点移動には別の概念装置が要請される。最近では、エミリー・アプターらの翻訳論的アプローチが、この空白を埋めつつあります。", english: "One might say so. Genette's theory presupposes viewpoint within a single language, and movement of viewpoint between two languages demands different conceptual apparatus. Recently, the translation-theoretic approaches of Emily Apter and others are filling this lacuna." },
+    { speaker: "院生", japanese: "信頼できない語り手の概念についても、伺ってもよろしいでしょうか。日本文学における系譜を、整理しきれずにおります。", english: "May I also ask about the concept of the unreliable narrator? I have not been able to organize the genealogy in Japanese literature." },
+    { speaker: "指導教員", japanese: "起源としては、芥川「藪の中」「羅生門」が嚆矢と申せましょう。複数証言の齟齬という形式が、語りの信頼性そのものを問題化します。戦後では、安部「砂の女」、大江初期作品、近年では村田沙耶香「コンビニ人間」の語り手も、別種の不信頼性を示しております。", english: "As an origin, one might say Akutagawa's 'In a Grove' and 'Rashōmon' were the harbingers. The form of contradicting multiple testimonies problematizes the very reliability of narration. In the postwar period, Abe's 'The Woman in the Dunes,' early Ōe; in recent years, the narrator of Murata Sayaka's 'Convenience Store Woman' also displays a different sort of unreliability." },
+    { speaker: "院生", japanese: "幅広いご教示、誠にありがとうございました。系譜を踏まえて、論文の枠組みを再構築してまいります。", english: "Thank you most sincerely for the wide-ranging instruction. Taking the genealogy into account, I will reconstruct the framework of my paper." }
+  ],
+  roleplay_prompts: [
+    "Bạn analyze narrative voice của một short story trong seminar. Phương pháp: identify (1) ngôi (一/三人称), (2) focalization (全知/限定), (3) reliability cues, (4) free-indirect markers (helping verb slips, tense shifts). Dùng cụm 〜の視点は〜に焦点化されている cho specific claims.",
+    "Bạn defend reading rằng narrator của 'Kokoro' Sensei is unreliable. Cụm: 下巻の手紙体という形式自体が、語りの完結性に疑念を喚起する. KHÔNG generic 'unreliable narrator' — chỉ ra textual signals (gaps, contradictions, stylistic shifts).",
+    "Bạn compare 漱石's 三人称 và 大江's 一人称. Trục: distance giữa narrator và character consciousness, deployment của free indirect discourse. Cụm: 両者は人物意識への接近の度合いにおいて根本的に異なる. Chỉ specific scenes, không generic claims."
+  ],
+  register_notes: "Narrative voice analysis ở C2 Japanese requires fluent deployment của 物語論 vocabulary từ Genette tradition cộng Japanese-specific concepts. Năm key tools. (1) GENETTE-DERIVED TERMS (now Japanese standard) — 語り手 (narrator), 視点 (POV), 焦点化 (focalization), 全知視点 / 限定視点 (omniscient/limited), 内的焦点化 / 外的焦点化 (internal/external focalization), 自由間接話法 (free indirect discourse). Used khắp Japanese narratology since 1980s. (2) JAPANESE-SPECIFIC CONCEPTS — 私小説 (I-novel) tradition shapes how 一人称 reads in Japanese context — semi-autobiographical assumption. Distinct từ Western confessional. 言文一致 (genbun-itchi) movement của Meiji creates the modern Japanese narrative voice; understand pre/post-genbun-itchi distinction. (3) RELIABILITY ANALYSIS LEXICON — 信頼できない語り手 (unreliable narrator, Booth-derived), nhưng Japanese tradition has older homegrown form: 「藪の中」型構造 (Rashōmon-effect — multiple contradictory testimonies). Both vocab necessary. (4) FREE INDIRECT DISCOURSE MARKERS IN JAPANESE — 〜であった as past-tense narrative; sudden shift to 〜だ (present) signals character consciousness intrusion; 〜のだ / 〜のである (explanatory) often marks narrator's moralizing voice; honorifics on character action descriptions can mark narrator's ironic distance. C2 critic identifies these markers fluently. (5) DISCOURSE MARKERS FOR ANALYSIS — 語りの位相 (the phase of narration), 視点の往還 (oscillation of viewpoint), 焦点化の重層性 (layering of focalization), 語り手の介入 (narratorial intervention), 地の文と人物意識の境界 (boundary between ground text and character consciousness). Vocabulary forbidden ở C2 narratology: 'narrator's voice' bare — too general; '視点' without specifying internal/external/omniscient — imprecise; 'unreliable' without specific textual evidence — assertion without analysis. Critic to study: 兵藤裕己 (orality và narrative), 前田愛 (reading as event), 蓮實重彦 (against narratological depth-reading). 蓮實 actually argues against systematic narratological apparatus — knowing this debate là C2 marker.",
+  idiom_glosses: [
+    { idiom: "藪の中 (やぶのなか)", literal: "Trong bụi rậm — title của Akutagawa story", meaning: "[書き言葉] Set phrase trong critical Japanese cho irreducible multi-perspective narrative — cite when describing similar structures.", example: "本作の語りの構造は、まさに「藪の中」的多声性を現代に蘇らせるものと申せよう。" },
+    { idiom: "表裏一体 (ひょうりいったい)", literal: "Mặt và trái là một thân", meaning: "[書き言葉] Two faces of one body — narrator + author không thể tách rời trong I-novel; phù hợp khi analyzing 私小説.", example: "私小説における作者と語り手は、表裏一体の関係にあると見なされてきた。" },
+    { idiom: "言外の意 (げんがいのい)", literal: "Ý ngoài lời", meaning: "[文語・書き言葉] Ý nghĩa ngoài lời — phù hợp khi analyzing free indirect discourse / unreliable narrator implications.", example: "信頼できない語り手の独白は、言外の意を読者に汲ませることで効力を発揮する。" },
+    { idiom: "嚆矢 (こうし)", literal: "Mũi tên rít — tín hiệu khởi chiến", meaning: "[文語・硬い] First sign / pioneer — formal phrase cho 'first instance of'; deploy khi tracing genealogy.", example: "近代日本における信頼できない語り手の嚆矢は、芥川「藪の中」に求められよう。" }
+  ],
+  cultural_notes_vi: "Narrative theory ở Japanese academia có 4 đặc điểm differentiating từ Anglophone narratology. (1) GENETTE'S DOMINANCE — Japanese narratology (物語論) heavily Genette-influenced, more so than US/UK academy where post-classical narratology (Fludernik, Phelan) là dominant. C2 critic biết Genette terminology fluently bằng tiếng Nhật. Recent Fludernik reception starting nhưng vẫn niche. (2) 私小説 PROBLEM — Western narratology assumes clean separation author/narrator; Japanese 私小説 tradition troubles this distinction. Reading Dazai 'No Longer Human' với strict author/narrator separation feels artificial; reading với full identification feels naïve. C2 critic navigates this tension explicitly. (3) ORAL-WRITTEN HYBRIDITY — 兵藤裕己 và others trace Japanese narrative back to oral 語り (storytelling) tradition: 平家物語, 説経節, 講談. Modern novel still bears oral residues — narrator-to-listener address structures. Anglophone narratology less attentive. (4) HONORIFICS AS NARRATIVE TOOL — Japanese 敬語 deployment in narration (e.g., honorifics on character action) carries narratorial stance information impossible in non-honorific languages. 漱石 use of subtle honorific shifts on Sensei character signals narratorial respect; absence signals critical distance. Untranslatable layer, requires C2 sensitivity. Khác VN: Vietnamese narrative theory primarily through Russian/French routes (Bakhtin via translation, Genette directly); Japanese tradition layers Genette với pre-existing 語り tradition theorization. Reading frame quite different. Mẹo: nếu bạn analyze Japanese novel, MUST address how 敬語 deployment shapes narrative voice. Skipping this signals reading-as-translated-text-only. Mẹo cuối: Japanese narratology debates about 私小説 (autobiographical I-novel) authenticity vs fiction status are field-defining. Read 平野謙, 中村光夫, 加藤典洋 cho positions. Knowing genealogy of 私小説 debate signals C2 membership.",
+  tip_advice_vi: "Workflow analyzing narrative voice C2 Japanese. (a) FIRST PASS — IDENTIFY GRAMMATICAL VOICE — câu first 5 paragraphs: ngôi (一/三人称), tense (past 〜た / present 〜る), particle markedness (〜は establishing context vs 〜が introducing). Establishes baseline. (b) SECOND PASS — TRACK FOCALIZATION SHIFTS — mark every instance where narrative consciousness shifts: into character X's mind, out, into Y's mind, out. Diagram chronologically. Pattern reveals focalization strategy: stable (single character), variable (multiple), zero (omniscient). (c) THIRD PASS — RELIABILITY MARKERS — list any contradictions, gaps, hesitations, reframings. Self-correction by narrator? Information narrator should know but doesn't share? These are reliability cues. (d) FOURTH PASS — FREE INDIRECT MARKERS — circle every sentence where bạn cannot definitively say 'this is narrator speaking' OR 'this is character thinking'. Ambiguity zones = free indirect territory. Map density. (e) SYNTHESIS — claim what narrative voice DOES (not just what it IS): does it position reader as confidant? Judge? Participant in interpretive labor? Function > taxonomy. Mẹo về 漢字 awareness — narrator's choice of 寂しい vs 淋しい (both 'lonely'), 暗い vs 闇い, 美しい vs 麗しい carries register information that signals education / class / era của the narrator's voice. C2 reader notices. Mẹo về citation pattern — narrative voice paper cite Genette (essential), then Japanese narratologists: 兵藤裕己, 前田愛, 中村三春, 内田樹 (for popular criticism bridge). 0 Genette citations = paper feels untheorized; only Genette = paper feels imported. Balance. Mẹo về length — narrative voice analysis published essays typically 10,000-20,000 字. Allows 2-3 passes through key passages. Shorter = surface taxonomy without analysis. Mẹo về controversial readings — claiming a canonical narrator is 'unreliable' (e.g., Sensei in Kokoro, watashi in 'Sanshirō') is publishable IF bạn marshal textual evidence carefully. Reviewer will challenge — be ready to defend với specific passages, page numbers, prior critic positions you accept/reject. Mẹo cuối: avoid systematic application of single theory framework. Mature C2 analysis deploys Genette where useful, abandons where not, supplements với Japanese-specific concepts. Theoretical eclecticism, properly justified, signals intellectual maturity.",
+  exercises: [
+    { type: "fill-blank", question: "「こゝろ」における三層構造の語りは、視点の重層化が真理の___性そのものを表象している。", answer: "到達不能" },
+    { type: "matching", instruction: "Ghép concept với critic / source.", pairs: [
+      { japanese: "焦点化", english: "Genette — narratological term standard in Japanese 物語論" },
+      { japanese: "「藪の中」型構造", english: "Akutagawa — irreducible multi-perspective narrative" },
+      { japanese: "私小説", english: "Japanese tradition troubling author/narrator separation" },
+      { japanese: "言文一致", english: "Meiji movement creating modern Japanese narrative voice" }
+    ] },
+    { type: "translation", vietnamese: "Người kể không đáng tin cậy đòi hỏi ở người đọc một thái độ chủ động giải mã những gì nằm sau lời kể.", japanese: "信頼できない語り手は、読者に語りの背後を読み解く能動的姿勢を要請する。" }
+  ]
 }
 ];
 export default lessons;
