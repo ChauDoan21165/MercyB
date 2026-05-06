@@ -86,7 +86,7 @@ export default function WritingPracticeSessionPage() {
       <div className="min-h-screen bg-gradient-to-br from-[#FFF8F3] via-[#FFFDFC] to-[#F7FAFF]">
         <div className="mx-auto max-w-2xl px-4 py-10 text-center">
           <h1 className="text-xl font-semibold text-slate-900">
-            Đề bài không tồn tại · Prompt not found
+            Không tìm thấy đề bài · Prompt not found
           </h1>
           <p className="mt-2 text-sm text-slate-600">
             <Link to="/writing" className="text-emerald-700 underline">
@@ -157,14 +157,14 @@ export default function WritingPracticeSessionPage() {
           server_error:
             "Lỗi máy chủ. Vui lòng thử lại sau. · Server error — please try again.",
           bad_response:
-            "Phản hồi không hợp lệ. · Invalid response from server.",
+            "Phản hồi từ máy chủ không hợp lệ. · Invalid response from server.",
           network_error:
             "Lỗi mạng. Kiểm tra kết nối và thử lại. · Network error — check your connection.",
         };
         setErrorMsg(messages[err.reason]);
       } else {
         setErrorMsg(
-          "Đã có lỗi xảy ra. Vui lòng thử lại. · Something went wrong.",
+          "Có lỗi xảy ra. Vui lòng thử lại. · Something went wrong.",
         );
       }
     } finally {
@@ -236,7 +236,7 @@ export default function WritingPracticeSessionPage() {
             value={text}
             onChange={(e) => setText(e.target.value)}
             disabled={submitting || !!feedback}
-            placeholder="Viết bài của bạn ở đây... · Write your draft here..."
+            placeholder="Viết bài của bạn tại đây... · Write your draft here..."
             className="min-h-[220px] w-full resize-y rounded-2xl border border-[#E5CDB9] bg-white p-4 text-base leading-7 text-slate-900 shadow-sm outline-none transition placeholder:text-slate-400 focus:border-[#EFA98B] focus:ring-2 focus:ring-[#FFD3BF] disabled:bg-slate-50 disabled:text-slate-700 md:min-h-[280px]"
             aria-label="Writing submission"
           />
@@ -396,7 +396,7 @@ function FeedbackPanel({
       {feedback.vocabulary.length > 0 ? (
         <div>
           <h3 className="mb-2 text-sm font-semibold text-slate-900">
-            Từ vựng nâng cao · Vocabulary upgrades
+            Gợi ý nâng cấp từ vựng · Vocabulary upgrades
           </h3>
           <ul className="space-y-2">
             {feedback.vocabulary.map((v, idx) => (
@@ -467,7 +467,7 @@ function FeedbackPanel({
       {feedback.cultural_notes_vi.length + feedback.cultural_notes_en.length > 0 ? (
         <div>
           <h3 className="mb-2 text-sm font-semibold text-slate-900">
-            Lưu ý văn hóa · Cultural notes
+            Lưu ý về văn hóa · Cultural notes
           </h3>
           <ul className="space-y-1.5 text-[13px]">
             {feedback.cultural_notes_vi.map((note, idx) => (
@@ -508,7 +508,7 @@ function FeedbackPanel({
           onClick={onTryAgain}
           className="inline-flex h-10 items-center justify-center rounded-2xl border border-slate-300 bg-white px-4 text-[13px] font-semibold text-slate-800 shadow-sm transition hover:bg-slate-50"
         >
-          Viết lại · Try again
+          Thử viết lại · Try again
         </button>
         <button
           type="button"

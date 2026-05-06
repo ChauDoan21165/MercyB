@@ -98,7 +98,7 @@ export default function WritingPracticePage() {
           </h1>
           <p className="mt-1 text-sm text-slate-600 md:text-base">
             40 tình huống thực tế: email công việc, khiếu nại, hồ sơ hẹn hò,
-            mạng xã hội, và nhiều hơn. ·{" "}
+            mạng xã hội và nhiều tình huống khác. ·{" "}
             <span className="italic">
               Real-life prompts: workplace email, complaints, dating profile,
               social media, and more.
@@ -199,7 +199,7 @@ export default function WritingPracticePage() {
               </div>
               {loadingCompleted ? (
                 <p className="mt-1 text-[10px] italic text-slate-400">
-                  Đang tải lịch sử...
+                  Đang tải lịch sử làm bài...
                 </p>
               ) : null}
             </div>

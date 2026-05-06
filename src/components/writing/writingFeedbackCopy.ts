@@ -12,7 +12,7 @@ export const WRITING_COPY = {
   },
   pageIntro: {
     vi:
-      "Dán bài luận tiếng Anh của bạn (tối đa 2000 từ). Mercy sẽ chấm điểm 5 mặt và chỉ ra lỗi thường gặp với người Việt.",
+      "Dán bài luận tiếng Anh của bạn (tối đa 2000 từ). Mercy sẽ chấm theo 5 tiêu chí và chỉ ra lỗi thường gặp ở người Việt.",
     en:
       "Paste your English essay (up to 2000 words). Mercy scores 5 dimensions and surfaces common Vietnamese-learner errors.",
   },
@@ -37,7 +37,7 @@ export const WRITING_COPY = {
     en: "Save attempt",
   },
   saveDeferredHint: {
-    vi: "(Tính năng lưu sẽ ra mắt cùng cập nhật ban ngày.)",
+    vi: "(Tính năng lưu sẽ có trong bản cập nhật sắp tới.)",
     en: "(Saving will land in a daytime update.)",
   },
   emptyTextWarning: {
@@ -57,18 +57,18 @@ export const WRITING_COPY = {
     vocabulary: { vi: "Từ vựng", en: "Vocabulary" },
     structure: { vi: "Bố cục", en: "Structure" },
     spelling_punctuation: { vi: "Chính tả & dấu câu", en: "Spelling & punctuation" },
-    coherence: { vi: "Liên kết", en: "Coherence" },
+    coherence: { vi: "Mạch lạc", en: "Coherence" },
   },
   noIssuesGood: {
-    vi: "Không phát hiện lỗi ngữ pháp đặc trưng cho người Việt — rất tốt!",
+    vi: "Không phát hiện lỗi ngữ pháp thường gặp ở người Việt — rất tốt!",
     en: "No Vietnamese-typical grammar issues detected — well done!",
   },
   issuesHeading: {
-    vi: "Lỗi đặc trưng đã phát hiện",
+    vi: "Lỗi thường gặp đã phát hiện",
     en: "Issues detected",
   },
   microLessonCta: {
-    vi: "Học bài rút gọn",
+    vi: "Xem bài học ngắn",
     en: "Open micro-lesson",
   },
   spellingHeading: {
@@ -76,7 +76,7 @@ export const WRITING_COPY = {
     en: "Possible spelling errors",
   },
   cefrEstimate: (level: string): BilingualText => ({
-    vi: `Trình độ ước lượng: ${level}`,
+    vi: `Trình độ ước tính: ${level}`,
     en: `Estimated level: ${level}`,
   }),
   paragraphCount: (n: number): BilingualText => ({
@@ -93,7 +93,7 @@ export const WRITING_COPY = {
    * vn-writing-patterns.ts is the evidence behind the claim.
    */
   vnFeedbackBanner: {
-    vi: "Phản hồi viết theo lỗi đặc trưng người Việt — không phải template chung.",
+    vi: "Phản hồi bài viết theo lỗi thường gặp ở người Việt — không phải mẫu chung.",
     en: "Feedback tuned to Vietnamese-learner error patterns — not a generic template.",
   },
 } as const;

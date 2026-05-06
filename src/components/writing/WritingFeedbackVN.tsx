@@ -53,7 +53,7 @@ export function WritingFeedbackVN({ feedback }: Props) {
         <div className="flex items-center gap-2">
           <Sparkles size={16} />
           <p className="text-xs font-bold uppercase tracking-wider">
-            Band ước lượng · IELTS Writing Task 2
+            Band ước tính · IELTS Writing Task 2
           </p>
         </div>
         <p className="mt-1 text-3xl font-extrabold">
@@ -61,7 +61,7 @@ export function WritingFeedbackVN({ feedback }: Props) {
           <span className="ml-2 text-sm font-medium opacity-70">/ 9.0</span>
         </p>
         <p className="mt-1 text-xs opacity-70">
-          Ước lượng heuristic · không thay thế chấm bài bởi giáo viên thật.
+          Ước tính tự động · không thay thế phần chấm bài của giáo viên thật.
         </p>
       </div>
 
@@ -101,11 +101,11 @@ export function WritingFeedbackVN({ feedback }: Props) {
           <div className="mb-2 flex items-center gap-2 text-rose-700">
             <AlertTriangle size={16} />
             <p className="text-xs font-bold uppercase tracking-wider">
-              Lỗi đặc trưng người Việt · Vietnamese learner patterns detected
+              Lỗi thường gặp ở người Việt · Vietnamese learner patterns detected
             </p>
           </div>
           <p className="mb-3 text-xs text-rose-900/70">
-            Đây là các pattern thường thấy trong bài viết của người Việt — không phải template chung.
+            Đây là những lỗi thường thấy trong bài viết của người Việt — không phải mẫu chung.
           </p>
           <div className="space-y-3">
             {detectedPatterns.map(({ pattern, lineHits, excerpt }) => (
@@ -154,7 +154,7 @@ export function WritingFeedbackVN({ feedback }: Props) {
       ) : (
         <div className="rounded-xl border border-emerald-200 bg-emerald-50/50 p-4">
           <p className="text-sm font-bold text-emerald-800">
-            Không phát hiện lỗi đặc trưng người Việt rõ ràng.
+            Không phát hiện lỗi thường gặp ở người Việt một cách rõ ràng.
           </p>
           <p className="mt-1 text-xs text-emerald-700/80">
             No clear Vietnamese-learner patterns detected. Heuristic does not replace examiner review.
@@ -172,16 +172,16 @@ export function WritingFeedbackVN({ feedback }: Props) {
             </p>
           </div>
           <p className="text-xs font-bold text-sky-900">
-            Hiện tại · Currently at: Band {bandRubric.band.toFixed(1)}
+            Band hiện tại · Currently at: Band {bandRubric.band.toFixed(1)}
             {bandRubric.next_half_band_weeks > 0 ? (
               <span className="ml-2 font-normal text-sky-700">
-                · ~{bandRubric.next_half_band_weeks} tuần học tập trung
+                · ~{bandRubric.next_half_band_weeks} tuần luyện tập tập trung
               </span>
             ) : null}
           </p>
           <div className="mt-2 space-y-2 text-xs leading-relaxed text-slate-800">
             <div>
-              <p className="font-bold text-slate-900">Đang làm tốt · Strengths</p>
+              <p className="font-bold text-slate-900">Điểm mạnh · Strengths</p>
               <p>{bandRubric.strengths_vi}</p>
             </div>
             <div>
@@ -200,7 +200,7 @@ export function WritingFeedbackVN({ feedback }: Props) {
       {topRevisions.length > 0 ? (
         <div className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
           <p className="mb-2 text-xs font-bold uppercase tracking-wider text-slate-500">
-            3 việc cần sửa trước · Top 3 revisions
+            3 điểm nên sửa trước · Top 3 revisions
           </p>
           <ol className="space-y-2 text-xs leading-relaxed text-slate-700">
             {topRevisions.map((rev, idx) => (

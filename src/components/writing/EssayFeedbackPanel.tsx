@@ -231,7 +231,7 @@ export function EssayFeedbackPanelEmpty() {
   return (
     <div className="flex items-center gap-2 rounded-lg border border-primary/15 bg-primary/5 p-4 text-sm text-muted-foreground">
       <CheckCircle2 className="h-4 w-4 text-primary" />
-      <span>Bắt đầu nhập bài viết, sau đó nhấn "Nhận phản hồi" để xem điểm.</span>
+      <span>Bắt đầu viết, rồi nhấn "Nhận phản hồi" để xem điểm.</span>
     </div>
   );
 }
