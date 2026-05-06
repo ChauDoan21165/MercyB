@@ -5234,4 +5234,168 @@ level: "B2",
       { type: "translation", vietnamese: "Nghiên cứu này áp dụng phương pháp luận hỗn hợp kết hợp cả hai.", hangul: "본 연구는 두 방법을 결합한 혼합 방법론을 채택한다." },
     ],
   },
+
+  // 98. Critiquing a study
+  {
+    id: 98,
+    level: "C1",
+    title_vi: "Phê bình một nghiên cứu",
+    title_en: "Critiquing a study",
+    intro_vi:
+      "Bài này luyện kỹ năng phê bình (비평) một nghiên cứu trong literature review hoặc journal club — cân bằng giữa công nhận đóng góp và chỉ ra hạn chế. Cấu trúc 4 lớp: (1) thừa nhận đóng góp; (2) chỉ ra hạn chế cụ thể; (3) đặt câu hỏi mở; (4) gợi ý hướng cải thiện. Văn phong 〜다 thể cho viết, 〜습니다 cho nói trong seminar.",
+    vocabulary: [
+      { hangul: "비평 (批評)", meaning: "phê bình" },
+      { hangul: "공헌 (貢獻)", meaning: "đóng góp" },
+      { hangul: "한계점 (限界點)", meaning: "điểm hạn chế" },
+      { hangul: "문제점 (問題點)", meaning: "điểm có vấn đề" },
+      { hangul: "약점 (弱點)", meaning: "điểm yếu" },
+      { hangul: "표본의 대표성 (代表性)", meaning: "tính đại diện của mẫu" },
+      { hangul: "분석의 엄밀성 (嚴密性)", meaning: "tính chặt chẽ của phân tích" },
+      { hangul: "해석의 비약 (飛躍)", meaning: "bước nhảy trong diễn giải" },
+      { hangul: "재현 가능성 (再現)", meaning: "khả năng tái lập (reproducibility)" },
+      { hangul: "후속 과제 (後續)", meaning: "đề tài kế tiếp" },
+    ],
+    sentences: [
+      { korean: "Kim(2020)의 연구는 노동 시장 양극화 분야에 중요한 공헌을 남겼다.", romanized: "Kim(icheon-i-sip)ui yeonguneun nodong sijang yanggeukhwa bunya-e jung-yohan gonghyeon-eul namgyeotda.", en: "Kim's (2020) study made an important contribution to the field of labour-market polarisation.", vi: "Nghiên cứu của Kim (2020) đã có đóng góp quan trọng cho lĩnh vực phân cực thị trường lao động." },
+      { korean: "다만, 표본이 수도권에 한정되어 결론의 일반화에는 신중을 기할 필요가 있다.", romanized: "Daman, pyobon-i sudogwon-e hanjeong-doe-eo gyeolloneui ilbanhwa-eneun sinjung-eul gihal piryoga itda.", en: "However, the sample is limited to the capital area, so generalising the conclusion warrants caution.", vi: "Tuy nhiên, mẫu giới hạn ở vùng thủ đô nên cần thận trọng khi khái quát hóa kết luận." },
+      { korean: "분석에서 누락된 통제 변수에 대한 점검이 추가로 요구된다.", romanized: "Bunseokeseo nurakdoen tongje byeonsue daehan jeomgeomi chuga-ro yoguendoen-da.", en: "Additional checks on omitted control variables are required.", vi: "Cần kiểm tra bổ sung về các biến kiểm soát bị bỏ sót trong phân tích." },
+      { korean: "본 비평은 연구의 가치를 부정하는 것이 아니라, 후속 연구의 방향을 제시하기 위한 것이다.", romanized: "Bon bipyeong-eun yeonguui gachireul bujeong-haneun geosi anira, husok yeonguui banghyang-eul jesi-hagi wihan geosida.", en: "This critique does not deny the study's value but indicates directions for follow-up research.", vi: "Phê bình này không nhằm phủ định giá trị của nghiên cứu mà nhằm đề xuất hướng cho các nghiên cứu kế tiếp." },
+      { korean: "재현 가능성을 높이기 위해 자료와 코드의 공개가 권장된다.", romanized: "Jaehyeon ganeungseong-eul nopigi wihae jaryowa kodeu-ui gonggaega gwonjang-doendoen-da.", en: "Public release of data and code is recommended to enhance reproducibility.", vi: "Để nâng cao khả năng tái lập, việc công khai dữ liệu và mã nguồn được khuyến nghị." },
+    ],
+    dialogue: [
+      { speaker: "발표자", hangul: "오늘 저는 Kim(2020) 논문을 비평적으로 검토하겠습니다.", meaning: "Today I will critically review Kim's (2020) paper." },
+      { speaker: "참석자", hangul: "어떤 점에 초점을 두실 예정이십니까?", meaning: "Which point do you plan to focus on?" },
+      { speaker: "발표자", hangul: "공헌 두 가지, 한계 세 가지, 그리고 후속 과제 한 가지를 다루겠습니다.", meaning: "I'll address two contributions, three limitations, and one follow-up direction." },
+      { speaker: "참석자", hangul: "균형 있는 구성이군요. 시작하시지요.", meaning: "A balanced structure. Please proceed." },
+    ],
+    dialogue_long: [
+      { speaker: "발표자", hangul: "오늘은 저널 클럽에서 Kim(2020)의 논문을 비평적으로 검토하겠습니다. 먼저 본 연구의 공헌을 두 가지로 정리하였습니다.", meaning: "In today's journal club I will critically review Kim (2020). First, I summarise the contributions in two points.", vi: "Hôm nay tại journal club tôi xin phê bình bài Kim (2020). Trước hết, tôi tóm gọn đóng góp ở hai điểm." },
+      { speaker: "발표자", hangul: "첫째, 1990년대 이후 노동 시장 양극화의 시기적 추세를 체계적으로 정리한 점입니다. 둘째, 새로운 자료원인 패널 자료를 활용함으로써 선행 연구의 횡단면 한계를 보완한 점입니다.", meaning: "First, the systematic mapping of polarisation trends since the 1990s. Second, the use of panel data, supplementing prior cross-sectional limits.", vi: "Thứ nhất, việc hệ thống hóa xu hướng phân cực từ thập niên 1990. Thứ hai, sử dụng dữ liệu panel mới, bù đắp hạn chế cắt ngang của nghiên cứu trước." },
+      { speaker: "참석자1", hangul: "두 공헌은 분명합니다. 한계는 무엇입니까?", meaning: "The two contributions are clear. What are the limits?", vi: "Hai đóng góp rõ ràng. Hạn chế là gì?" },
+      { speaker: "발표자", hangul: "한계는 세 가지로 정리됩니다. 첫째, 표본이 수도권 거주자에 한정되어 지방의 양극화 양상이 반영되지 않았습니다. 둘째, 분석에서 가구 단위 변수가 누락되어 가구 효과가 통제되지 않았습니다. 셋째, 결론에서 '강한 인과 관계'라는 표현이 사용되었으나 자료가 본질적으로 관찰 자료라는 점에서 표현 수위가 높다고 사료됩니다.", meaning: "Three limitations. First, the sample is restricted to capital-area residents, missing regional patterns. Second, household-level variables are omitted. Third, the conclusion uses 'strong causal relationship' though the data are observational, so the wording strength is somewhat high.", vi: "Ba hạn chế: thứ nhất, mẫu giới hạn ở cư dân vùng thủ đô, thiếu mẫu hình địa phương. Thứ hai, mô hình bỏ sót biến cấp hộ. Thứ ba, kết luận dùng cụm 'quan hệ nhân quả mạnh' nhưng dữ liệu vốn là quan sát — cường độ diễn đạt hơi cao." },
+      { speaker: "참석자2", hangul: "세 번째 점, 표현 수위 문제는 어떻게 보완할 수 있다고 보십니까?", meaning: "The third point — how could the wording level be amended?", vi: "Điểm thứ ba — cường độ diễn đạt — anh/chị nghĩ có thể bổ sung thế nào?" },
+      { speaker: "발표자", hangul: "'강한 인과 관계'를 '강한 연관성' 또는 '시계열적으로 일관된 패턴'으로 수정하면 자료의 성격에 부합합니다. 인과 추론은 도구 변수나 자연 실험 설계가 추가될 때 비로소 가능합니다.", meaning: "Replacing 'strong causal relationship' with 'strong association' or 'temporally consistent pattern' fits the data's nature. Causal inference becomes possible only when an instrumental variable or natural experiment design is added.", vi: "Thay 'quan hệ nhân quả mạnh' bằng 'liên hệ mạnh' hoặc 'mẫu hình nhất quán theo thời gian' khớp với bản chất dữ liệu. Suy luận nhân quả chỉ khả dĩ khi có biến công cụ hoặc thiết kế thực nghiệm tự nhiên." },
+      { speaker: "참석자1", hangul: "공헌과 한계를 모두 짚어 주신 점이 인상적입니다. 후속 과제로 어떤 방향을 제안하십니까?", meaning: "It's impressive how you addressed both contributions and limits. What follow-up direction do you suggest?", vi: "Việc anh/chị nêu cả đóng góp và hạn chế rất ấn tượng. Anh/chị đề xuất hướng kế tiếp nào?" },
+      { speaker: "발표자", hangul: "두 가지를 제안합니다. 첫째, 비수도권 표본을 추가하여 지역별 양극화 양상을 비교하는 후속 연구. 둘째, 가구 패널 자료와 결합하여 다층 분석을 시도하는 연구입니다. 두 방향 모두 본 연구의 한계를 직접 다룹니다.", meaning: "Two proposals. First, a follow-up adding non-capital samples to compare regional patterns. Second, a study combining household panels for multilevel analysis. Both directly address the limitations.", vi: "Hai đề xuất. Một, nghiên cứu kế tiếp bổ sung mẫu ngoài thủ đô để so sánh mẫu hình theo vùng. Hai, nghiên cứu kết hợp panel hộ để phân tích đa tầng. Cả hai trực tiếp xử lý hạn chế." },
+      { speaker: "참석자2", hangul: "비평이 건설적입니다. 본 논문에 대한 종합 평가를 한 문장으로 정리해 주시겠습니까?", meaning: "The critique is constructive. Could you summarise the overall evaluation in one sentence?", vi: "Phê bình mang tính xây dựng. Anh/chị có thể tóm gọn đánh giá tổng thể trong một câu?" },
+      { speaker: "발표자", hangul: "한 문장으로 말씀드리면, Kim(2020)은 노동 시장 양극화 연구에 중요한 디딤돌을 놓았으며, 표본 확장과 가구 단위 분석이라는 두 보완 과제를 통해 더욱 견고한 결론에 도달할 수 있다고 사료됩니다.", meaning: "In one sentence — Kim (2020) lays an important stepping stone in polarisation research, and more robust conclusions can be reached through the two complementary tasks of sample expansion and household-level analysis.", vi: "Trong một câu: Kim (2020) đã đặt bậc thang quan trọng cho nghiên cứu phân cực thị trường lao động, và những kết luận chặt chẽ hơn có thể đạt được qua hai nhiệm vụ bổ sung là mở rộng mẫu và phân tích cấp hộ." },
+      { speaker: "참석자1", hangul: "균형 잡힌 비평이었습니다. 감사합니다.", meaning: "A balanced critique. Thank you.", vi: "Một phê bình cân bằng. Cảm ơn anh/chị." },
+      { speaker: "발표자", hangul: "오히려 두 분의 질문이 비평을 더 정밀하게 정리하는 데 도움이 되었습니다.", meaning: "On the contrary, your questions helped sharpen the critique.", vi: "Ngược lại, câu hỏi của hai vị giúp tôi tổ chức bài phê bình chặt chẽ hơn." },
+    ],
+    roleplay_prompts: [
+      "Bạn được giao bài Kim (2020) cho journal club. Hãy mở đầu bằng cấu trúc 4 lớp: '오늘은 Kim(2020)의 논문을 비평적으로 검토하겠습니다. 공헌 ~ 가지, 한계 ~ 가지, 그리고 후속 과제 ~ 가지를 다루겠습니다.'",
+      "Reviewer hỏi bạn cách bổ sung điểm yếu của bài. Hãy đáp với hướng cải thiện cụ thể: '도구 변수나 자연 실험 설계가 추가될 때 비로소 인과 추론이 가능합니다. 본 자료에 ~을/를 결합하면 보완이 가능합니다.'",
+      "Bạn cần đóng phần phê bình bằng đánh giá tổng thể. Hãy luyện cụm: '한 문장으로 말씀드리면, ~은/는 ~ 분야에 중요한 디딤돌을 놓았으며, ~이라는 보완 과제를 통해 더욱 견고한 결론에 도달할 수 있다고 사료됩니다.'",
+    ],
+    register_notes:
+      "Phê bình C1: (1) Mở luôn bằng đóng góp — '본 연구의 공헌은 ~이다.' KHÔNG mở bằng hạn chế (sounds attack). (2) Sandwich pattern: contribution → limit → forward direction. Mỗi part 1-3 câu rõ ràng. (3) Cụm thay 'criticise': 비평하다 (phê bình — neutral, scholarly), 검토하다 (xem xét — softer), 평가하다 (đánh giá — formal). KHÔNG dùng 비난하다 (chỉ trích — quá tiêu cực). (4) Cụm thay 'wrong': 보완이 필요하다 (cần bổ sung), 검토 여지가 있다 (có khoảng để xem xét), 추가 분석이 요구된다 (cần phân tích thêm). KHÔNG '틀렸다' / '잘못되었다'. (5) Khi muốn nhấn limit: '특히' (particularly), '한 가지 짚을 점은' (a point worth noting). (6) Khi đề xuất follow-up: '~을/를 통해 ~ 결론에 도달할 수 있다고 사료됩니다' — kết hợp suggestion với hedging. (7) Tránh dùng 'I think' kiểu Anh — '~다고 본다 / ~다고 사료된다 / ~을/를 제안한다'. (8) Trong văn viết, đặt critique cuối literature review để bridge sang phần research gap của bạn.",
+    idiom_glosses: [
+      { idiom: "공헌을 남기다", literal: "để lại đóng góp", meaning: "(격식) tạo đóng góp lâu dài — opener của critique paragraph", example: "Kim(2020)은 이 분야에 중요한 공헌을 남겼다." },
+      { idiom: "디딤돌을 놓다", literal: "đặt bậc đệm chân", meaning: "(문어) đặt nền tảng / bậc đệm — frame work tiền bối tích cực", example: "선행 연구는 후속 연구의 디딤돌을 놓았다." },
+      { idiom: "보완이 필요하다", literal: "cần bổ sung", meaning: "(격식) softer than 'wrong' — chuẩn của constructive critique", example: "표본 다양성 측면에서 보완이 필요하다." },
+      { idiom: "비약이 있다", literal: "có bước nhảy", meaning: "(격식) có bước nhảy logic — nhãn cho over-interpretation", example: "결론에서 자료를 넘어선 비약이 있다." },
+    ],
+    cultural_notes_vi:
+      "Văn hóa critique trong Hàn academia: (1) Journal club (저널 클럽) là sinh hoạt định kỳ ở lab — sinh viên cao học bị giao bài để review trước nhóm. Đây là môi trường an toàn để tập kỹ năng phê bình. (2) Critique senior scholar trong public space (논평) cần soft framing — 'malsseum-deurim sajiseureopji-man' (xin phép em được thưa). (3) Critique sinh viên junior cùng lab có thể trực diện hơn nhưng vẫn không humiliate — sandwich pattern bắt buộc. (4) Đề tài của giáo sư hướng dẫn KHÔNG nên critique trực diện trước nhóm — phương án: gửi feedback riêng, hoặc frame như 'tôi đang cân nhắc về câu hỏi mở: ~?'. (5) Hàn coi 'critique không có alternative' là không có giá trị — luôn kết bằng forward direction. (6) Khi viết literature review, critique các bài đối thủ chính của field nhưng KHÔNG critique bài của hội đồng giám khảo của bạn (academic politics — biết ai sẽ review). (7) Tạp chí Hàn ngữ thường blind peer review nhưng community nhỏ — phong cách viết của bạn dễ bị nhận ra. Critique professional, không personal. (8) Việt Nam có culture critique trực hơn Hàn — sinh viên Việt nên giảm cường độ 1-2 bậc khi viết tiếng Hàn.",
+    tip_advice_vi:
+      "Bộ khung phê bình 6 bước: (1) Đọc cả bài 2 lần — lần đầu để hiểu, lần hai để take notes; (2) List 2-3 contribution; (3) List 3-4 limitation cụ thể (kèm trích dẫn trang); (4) List 1-2 question mở; (5) List 1-2 follow-up direction; (6) Viết overall evaluation 1 câu. Cụm vàng cho từng phần: 'Contribution: ~을/를 체계적으로 정리한 점 / 새로운 ~을/를 활용한 점.' 'Limit: 표본이 ~에 한정됨 / ~ 변수 누락 / 표현 수위가 높음.' 'Follow-up: ~을/를 추가한 후속 연구 / ~과 결합한 다층 분석.' Mẹo phòng pitfall: (a) KHÔNG critique chỉ phần discussion — đọc cả method và results; (b) KHÔNG nhắc lại điểm tác giả đã thừa nhận trong limitation section của họ — không có giá trị; (c) KHÔNG phê tone (writing style) — phê substance; (d) KHÔNG đề xuất follow-up không khả thi (e.g., 'cần thêm 10,000 mẫu'). Khi journal club hỏi 'overall, was this paper good?': trả lời cân bằng — '본 분야에 가치 있는 기여를 한 논문입니다. 다만 ~ 측면에서 보완 여지가 있습니다.' KHÔNG đáp 'yes/no' đơn thuần. Cuối cùng: phê bình hay là phê bình mà sau đó tác giả vẫn muốn nói chuyện với bạn — professional, fair, forward-looking.",
+    exercises: [
+      { type: "fill-blank", question: "본 비평은 연구의 가치를 부정하는 것이 아니라, ___ 연구의 방향을 제시하기 위한 것이다.", answer: "후속" },
+      {
+        type: "matching",
+        pairs: [
+          { hangul: "공헌을 남기다", meaning: "để lại đóng góp" },
+          { hangul: "디딤돌을 놓다", meaning: "đặt bậc đệm / nền tảng" },
+          { hangul: "보완이 필요하다", meaning: "cần bổ sung (softer than 'wrong')" },
+          { hangul: "비약이 있다", meaning: "có bước nhảy logic (over-interpret)" },
+        ],
+        instruction: "Nối thành ngữ học thuật với nghĩa",
+      },
+      { type: "translation", vietnamese: "Cần kiểm tra bổ sung về các biến kiểm soát bị bỏ sót trong phân tích.", hangul: "분석에서 누락된 통제 변수에 대한 점검이 추가로 요구된다." },
+    ],
+  },
+
+  // 99. Conference Q&A register
+  {
+    id: 99,
+    level: "C1",
+    title_vi: "Đăng ký phát ngôn cho Q&A hội nghị",
+    title_en: "Conference Q&A register",
+    intro_vi:
+      "Bài này luyện đăng ký 〜습니다 thể trong Q&A hội nghị (학회 Q&A) — bao gồm cách nhận câu hỏi, đáp ngắn, hoãn câu hỏi không có sẵn, và đóng phiên Q&A. Nguyên tắc: nhận diện câu hỏi (acknowledge) → đáp ngắn (1-3 câu) → mời câu tiếp theo. KHÔNG dài dòng vì thời gian Q&A có hạn.",
+    vocabulary: [
+      { hangul: "질의응답 (質疑應答)", meaning: "hỏi đáp / Q&A" },
+      { hangul: "사회자 (司會者)", meaning: "người điều phối / chair" },
+      { hangul: "질문자 (質問者)", meaning: "người hỏi" },
+      { hangul: "답변하다 (答辯)", meaning: "trả lời (formal)" },
+      { hangul: "보충하다 (補充)", meaning: "bổ sung" },
+      { hangul: "여쭙다", meaning: "(khiêm cung) xin hỏi" },
+      { hangul: "마무리하다", meaning: "kết thúc / đóng" },
+      { hangul: "정리하다 (整理)", meaning: "tóm gọn / sắp xếp" },
+      { hangul: "감사드리다 (感謝)", meaning: "(khiêm cung) cảm ơn" },
+      { hangul: "추후 (追後)", meaning: "sau / về sau" },
+    ],
+    sentences: [
+      { korean: "좋은 지적이십니다. 짧게 답변드리겠습니다.", romanized: "Joeun jijeokisimnida. Jjalge dapbyeon-deurigetseumnida.", en: "An astute point. Let me answer briefly.", vi: "Một góp ý xác đáng. Tôi xin trả lời ngắn gọn." },
+      { korean: "그 부분은 충분히 검토되지 않은 영역이라, 추후 답변드려도 되겠습니까?", romanized: "Geu bubuneun chungbunhi geomtodoeji aneun yeong-yeogira, chuhu dapbyeon-deuryeodo doegetseumnikka?", en: "That area has not been fully examined — may I respond later?", vi: "Phần đó chưa được xem xét đầy đủ — cho phép tôi trả lời sau được không ạ?" },
+      { korean: "질문 감사합니다. 두 가지로 나누어 답변드리겠습니다.", romanized: "Jilmun gamsahamnida. Du gajiro nanueo dapbyeon-deurigetseumnida.", en: "Thank you for the question. I'll answer in two parts.", vi: "Cảm ơn câu hỏi. Tôi xin trả lời theo hai phần." },
+      { korean: "마지막 질문을 한 분만 더 받겠습니다.", romanized: "Majimak jilmuneul han bunman deo batgetseumnida.", en: "I'll take just one more — the final question.", vi: "Tôi xin nhận thêm một câu cuối cùng." },
+      { korean: "시간 관계상 추가 토론은 휴식 후로 미루겠습니다.", romanized: "Sigan gwangyesang chuga toron-eun hyusik huro mirugetseumnida.", en: "Owing to time, further discussion will be deferred until after the break.", vi: "Do thời gian, phần thảo luận thêm xin gác lại sau giờ giải lao." },
+    ],
+    dialogue: [
+      { speaker: "사회자", hangul: "발표 잘 들었습니다. 질문 받겠습니다.", meaning: "Thank you for the talk. I'll take questions." },
+      { speaker: "질문자", hangul: "한 가지 여쭙겠습니다. 표본 규모를 어떻게 결정하셨습니까?", meaning: "I'd like to ask — how was the sample size determined?" },
+      { speaker: "발표자", hangul: "선행 연구의 효과 크기를 바탕으로 최소 200명 이상으로 설정하였습니다.", meaning: "Based on prior effect sizes, we set a minimum of 200." },
+      { speaker: "사회자", hangul: "다음 질문 받겠습니다.", meaning: "Next question please." },
+    ],
+    dialogue_long: [
+      { speaker: "사회자", hangul: "발표 시간이 끝났습니다. 이제 질의응답 시간을 갖겠습니다. 시간은 15분으로 제한되어 있습니다.", meaning: "The talk is over. Now we'll move to Q&A. Time is limited to 15 minutes.", vi: "Phần trình bày đã kết thúc. Chúng ta vào phần hỏi đáp. Thời gian giới hạn 15 phút." },
+      { speaker: "질문자1", hangul: "발표 잘 들었습니다. 한 가지 여쭙겠습니다. 매개 변수 분석에서 부트스트랩 표본을 몇 회 반복하셨습니까?", meaning: "Thank you for the talk. May I ask — how many bootstrap iterations did you run for the mediation analysis?", vi: "Cảm ơn anh/chị. Cho phép tôi hỏi — phân tích trung gian dùng bao nhiêu vòng bootstrap?" },
+      { speaker: "발표자", hangul: "5,000회 반복하였습니다. 95% 신뢰구간이 0을 포함하지 않아 매개 효과의 통계적 유의성이 확인되었습니다.", meaning: "5,000 iterations. The 95% confidence interval did not include 0, confirming statistical significance of the mediation effect.", vi: "5,000 vòng. Khoảng tin cậy 95% không chứa 0, xác nhận ý nghĩa thống kê của hiệu ứng trung gian." },
+      { speaker: "질문자2", hangul: "감사합니다. 한 가지 더 질문드리고 싶습니다. 본 연구의 결론을 다른 문화권에 일반화할 수 있다고 보십니까?", meaning: "Thank you. One more — do you think the conclusions generalise to other cultural contexts?", vi: "Cảm ơn. Tôi xin hỏi thêm — anh/chị nghĩ kết luận có thể khái quát sang bối cảnh văn hóa khác không?" },
+      { speaker: "발표자", hangul: "신중히 답변드리겠습니다. 본 자료가 한국 표본에 한정되어 있어 직접적인 일반화는 어렵습니다. 다만 자율성-성취의 일반 메커니즘은 다른 문화권에서도 보고된 바 있어, 이론적 일반화는 부분적으로 가능하다고 사료됩니다.", meaning: "Let me answer carefully. As the data are limited to Korean samples, direct generalisation is difficult. However, the autonomy-achievement mechanism has been reported in other cultures, so theoretical generalisation is partially possible.", vi: "Tôi xin trả lời thận trọng. Vì dữ liệu giới hạn ở mẫu Hàn nên khái quát hóa trực tiếp khó. Tuy nhiên, cơ chế tự chủ – thành tích đã được báo cáo ở các nền văn hóa khác, nên khái quát hóa lý thuyết có thể khả dĩ một phần." },
+      { speaker: "질문자3", hangul: "본 연구의 결과가 정책에 어떤 함의를 갖는다고 보십니까?", meaning: "What policy implications do you see from the findings?", vi: "Anh/chị thấy kết quả này có hàm ý chính sách thế nào?" },
+      { speaker: "발표자", hangul: "정책 함의는 본 발표의 범위를 벗어나는 부분이라 짧게만 말씀드리겠습니다. 학습자 자율성 지원이 학업 성취와 연관된다면, 교실 내 자율성 지원 환경 조성이 정책 우선 순위로 고려될 수 있을 것입니다.", meaning: "Policy implications are beyond the talk's scope, so let me answer briefly. If learner autonomy support relates to achievement, fostering autonomy-supportive classroom environments could be a policy priority.", vi: "Hàm ý chính sách nằm ngoài phạm vi bài, nên tôi xin nói ngắn. Nếu hỗ trợ tự chủ liên hệ với thành tích, thì xây môi trường lớp học hỗ trợ tự chủ có thể là ưu tiên chính sách." },
+      { speaker: "질문자4", hangul: "한 가지 더 묻고 싶습니다. 본 분석에서 결측치를 어떻게 처리하셨습니까?", meaning: "One more — how did you handle missing data in the analysis?", vi: "Tôi xin hỏi thêm — anh/chị xử lý dữ liệu thiếu trong phân tích thế nào?" },
+      { speaker: "발표자", hangul: "다중 대체법(multiple imputation)을 사용하였습니다. 결측 비율은 5% 미만으로 모델 추정에 큰 영향을 미치지 않는 수준이었습니다.", meaning: "We used multiple imputation. The missingness was below 5%, which does not materially affect estimation.", vi: "Chúng tôi dùng multiple imputation. Tỷ lệ thiếu dưới 5%, không ảnh hưởng đáng kể đến ước lượng." },
+      { speaker: "질문자5", hangul: "사용하신 척도의 신뢰도 계수는 얼마였습니까?", meaning: "What was the reliability coefficient of the scale used?", vi: "Hệ số tin cậy của thang đo là bao nhiêu?" },
+      { speaker: "발표자", hangul: "Cronbach's alpha 기준 .87로, 양호한 내적 일관성을 확인하였습니다.", meaning: "Cronbach's alpha was .87, indicating good internal consistency.", vi: "Cronbach's alpha bằng .87, cho thấy tính nhất quán nội tại tốt." },
+      { speaker: "사회자", hangul: "시간 관계상 마지막 질문 한 분만 더 받겠습니다.", meaning: "Owing to time, just one more final question.", vi: "Do thời gian, tôi xin nhận thêm một câu cuối cùng." },
+      { speaker: "질문자6", hangul: "후속 연구의 방향을 한 문장으로 말씀해 주시겠습니까?", meaning: "Could you state the follow-up direction in one sentence?", vi: "Anh/chị có thể tóm gọn hướng nghiên cứu kế tiếp trong một câu được không?" },
+      { speaker: "발표자", hangul: "장기 종단 자료를 통해 인과 구조를 정밀히 검증하는 작업을 후속 과제로 두고 있습니다.", meaning: "We plan to rigorously test the causal structure using long-term longitudinal data.", vi: "Chúng tôi dự định kiểm chứng chặt chẽ cấu trúc nhân quả qua dữ liệu dọc dài hạn." },
+      { speaker: "사회자", hangul: "감사합니다. 답변 못 받은 부분은 휴식 시간에 발표자께 직접 여쭤 주시기 바랍니다.", meaning: "Thank you. For unanswered points, please ask the presenter directly during the break.", vi: "Cảm ơn. Các câu chưa được trả lời, xin quý vị hỏi trực tiếp diễn giả trong giờ giải lao." },
+      { speaker: "발표자", hangul: "감사합니다. 추가 토론은 언제든 환영합니다.", meaning: "Thank you. Further discussion is welcome anytime.", vi: "Cảm ơn quý vị. Mọi thảo luận thêm tôi luôn hoan nghênh." },
+    ],
+    roleplay_prompts: [
+      "Q&A vừa mở. Hãy tập đáp một câu hỏi method-detail (sample size, missing data, reliability coefficient) gọn 1-2 câu. Cụm: '~을/를 사용하였습니다. ~ 수치는 ~으로, ~을/를 확인하였습니다.'",
+      "Bạn nhận một câu hỏi nằm ngoài chuyên môn. Hãy luyện cụm hoãn lịch sự: '그 부분은 충분히 검토되지 않은 영역이라, 추후 답변드려도 되겠습니까?' hoặc '본 발표의 범위를 벗어나는 부분이라 짧게만 말씀드리겠습니다.'",
+      "Bạn cần đóng Q&A đẹp. Hãy luyện cụm: '시간 관계상 마지막 질문 한 분만 더 받겠습니다.' rồi sau câu cuối '답변 못 받은 부분은 휴식 시간에 직접 여쭤 주시기 바랍니다.'",
+    ],
+    register_notes:
+      "Đăng ký Q&A C1: (1) BẮT BUỘC 〜습니다 thể — KHÔNG hạ xuống 해요. (2) Acknowledge trước khi đáp: '좋은 지적이십니다' / '중요한 질문이십니다' / '질문 감사합니다.' Hai trong ba có sẵn trong slide notes của bạn. (3) Cụm khiêm cung khi nhận câu hỏi từ senior: '여쭙겠습니다' (xin hỏi — khiêm cung), 'malsseum-deuryeodo gwaenchanseumnikka' (xin được thưa). Bạn đáp lại bằng '말씀드리겠습니다' (xin được thưa). (4) Cụm hoãn câu hỏi: '추후 답변드려도 되겠습니까?' / '본 발표의 범위를 벗어나는 부분이라 짧게만 말씀드리겠습니다.' Cả hai đều OK. (5) Cụm đóng câu trả lời: '이상입니다' (đó là tất cả) — formal closure; KHÔNG '끝났어요'. (6) Khi không biết: '솔직히 말씀드리면, 그 부분은 제가 충분히 검토하지 못했습니다. 추가 검토 후 답변드리겠습니다.' Honest > guess. (7) Bao giờ cũng phải có sẵn 1-câu summary của thesis để đáp 'overall, what's your contribution?'. (8) Tránh 'I think' kiểu Anh — '~다고 봅니다' / '~다고 사료됩니다' tùy mức trang trọng.",
+    idiom_glosses: [
+      { idiom: "답변드리다", literal: "(khiêm cung) trả lời", meaning: "(격식) đáp dưới — verb chuẩn cho Q&A", example: "두 가지로 나누어 답변드리겠습니다." },
+      { idiom: "여쭙다", literal: "(khiêm cung) hỏi", meaning: "(격식) xin hỏi — junior nói với senior", example: "한 가지 여쭙겠습니다." },
+      { idiom: "마무리하다", literal: "kết thúc gọn", meaning: "(격식/구어) đóng phiên — chair dùng nhiều", example: "시간 관계상 여기서 마무리하겠습니다." },
+      { idiom: "추후 답변드리다", literal: "trả lời về sau", meaning: "(격식) defer answer politely — cụm cứu nguy", example: "그 부분은 추후 답변드리겠습니다." },
+    ],
+    cultural_notes_vi:
+      "Văn hóa Q&A hội nghị Hàn: (1) Người điều phối (사회자) là vai trò quan trọng — họ chọn người hỏi, quản lý thời gian. Đáp lại 사회자 trước khi đáp người hỏi: '예, 답변드리겠습니다.' (2) Câu hỏi đầu thường dành cho người cao niên trong phòng — sinh viên cao học chờ đến cuối. (3) 'Question that's actually a comment' (câu hỏi thực ra là bình luận) phổ biến — chỉ cần thừa nhận: '말씀하신 부분에 동의합니다. 짧게 보충드리면 ~.' (4) Khi nhận câu hỏi sai về method/data: KHÔNG correction trực diện ('아닙니다, 그것은…'). Soft: '말씀하신 부분과 약간 다른 측면이 있는데, ~.' (5) Sau Q&A, business card exchange — '명함 한 장 부탁드려도 되겠습니까?' Chuẩn bị business cards in 양면 (Hàn một mặt, Anh một mặt). (6) 'Coffee break offline question' culture — câu hỏi 'sensitive' hoặc 'detailed' chuyển ra giờ giải lao. (7) Tạp chí của hội thảo lớn (학회지) sau đó publish summary — câu hỏi và câu trả lời của bạn có thể xuất hiện trong proceedings. Trả lời cẩn thận. (8) Việt khác Hàn ở chỗ Q&A Việt thường ít hierarchical — sinh viên Việt ở Hàn nên chờ thêm 1-2 phút trước khi giơ tay, để senior hỏi trước.",
+    tip_advice_vi:
+      "Bộ chuẩn bị Q&A 5 câu: chuẩn bị TRƯỚC bài nói 5 câu trả lời cho 5 câu hỏi thường gặp: (1) 'Sample size có đủ không?'; (2) 'Tại sao chọn method này?'; (3) 'Có generalize được không?'; (4) 'Policy implications?'; (5) 'Follow-up direction?' Mỗi câu chuẩn bị 2-3 câu trả lời gọn. Mẹo presence: (a) Nhìn vào người hỏi khi họ đặt câu hỏi; (b) Gật đầu nhẹ khi họ kết thúc; (c) Đợi 1 giây rồi mới bắt đầu — show that you're considering. Mẹo handling khi không biết: hệ '3 lớp': (1) Acknowledge — '좋은 지적이십니다'; (2) Honest — '그 부분은 제가 충분히 검토하지 못했습니다'; (3) Forward — '추가 검토 후 답변드리겠습니다.' KHÔNG: (a) Bịa câu trả lời; (b) Defensive '하지만 그것은…' liên tiếp; (c) Trả lời quá dài (hơn 3 câu cho mỗi câu hỏi); (d) Lặp lại câu hỏi nguyên văn để câu giờ — Hàn coi đây là dấu hiệu lúng túng. Khi câu hỏi gay gắt: KHÔNG match tone. Trả lời calm, professional, brief. Audience nhớ tone kết thúc — nếu bạn cool, bạn thắng. Khi 사회자 báo hết giờ giữa câu trả lời: '시간 관계상 여기까지만 말씀드리겠습니다. 추후 직접 토론할 수 있다면 환영합니다.' Sau Q&A: gửi follow-up email 24h cho người hỏi sâu — 'o kim 박사님, 오늘 말씀하신 ~ 부분에 대한 추가 자료를 첨부드립니다.' Networking long-term value cao hơn instant Q&A win.",
+    exercises: [
+      { type: "fill-blank", question: "그 부분은 충분히 검토되지 않은 영역이라, ___ 답변드려도 되겠습니까?", answer: "추후" },
+      {
+        type: "matching",
+        pairs: [
+          { hangul: "답변드리다", meaning: "(khiêm cung) trả lời" },
+          { hangul: "여쭙다", meaning: "(khiêm cung) xin hỏi" },
+          { hangul: "마무리하다", meaning: "kết thúc / đóng phiên" },
+          { hangul: "추후 답변드리다", meaning: "hoãn câu trả lời lịch sự" },
+        ],
+        instruction: "Nối thành ngữ Q&A với nghĩa",
+      },
+      { type: "translation", vietnamese: "Cảm ơn câu hỏi. Tôi xin trả lời theo hai phần.", hangul: "질문 감사합니다. 두 가지로 나누어 답변드리겠습니다." },
+    ],
+  },
 ];
