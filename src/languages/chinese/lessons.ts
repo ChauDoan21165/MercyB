@@ -7733,6 +7733,271 @@ level: "B2",
         pinyin: "Zōng shàng suǒ shù, yán jǐn de yǐn yòng bù jǐn shì duì yuán zuò zhě de zūn zhòng, gèng shì xué shù chéng xìn de jù tǐ tǐ xiàn."
       }
     ]
+  },
+  {
+    id: 94,
+    level: "C1",
+    category: "academic_discourse",
+    title: "论辩与反驳",
+    pinyin: "lùn biàn yǔ fǎn bó",
+    topic: "Arguing and counter-arguing",
+    title_vi: "Lập luận và phản biện",
+    title_en: "Arguing and counter-arguing",
+    sentences: [
+      {
+        chinese: "关于大型语言模型是否具备真正的语言理解能力, 学术界至今众说纷纭。",
+        pinyin: "Guānyú dàxíng yǔyán móxíng shìfǒu jùbèi zhēnzhèng de yǔyán lǐjiě nénglì, xuéshùjiè zhì jīn zhòng shuō fēn yún.",
+        english: "Whether large language models genuinely possess language-understanding capability remains a matter of widely differing opinion in academia.",
+        vi: "Về việc các mô hình ngôn ngữ lớn có thực sự sở hữu năng lực lý giải ngôn ngữ hay không, giới học thuật cho đến nay vẫn còn nhiều ý kiến khác nhau.",
+        pronunciation_focus: ["关于...是否 → guānyú...shìfǒu (về việc... có hay không)", "具备 → jùbèi (sở hữu — 书面)", "众说纷纭 → zhòng shuō fēn yún (nhiều ý kiến trái chiều)", "至今 → zhì jīn (cho đến nay)"]
+      },
+      {
+        chinese: "持肯定观点者认为, 大模型在多项标准化测试中已超越人类平均水平, 此事实不容忽视。",
+        pinyin: "Chí kěndìng guāndiǎn zhě rènwéi, dà móxíng zài duō xiàng biāozhǔnhuà cèshì zhōng yǐ chāoyuè rénlèi píngjūn shuǐpíng, cǐ shìshí bù róng hūshì.",
+        english: "Those holding the affirmative view contend that large models have surpassed human average performance on multiple standardized tests, a fact that cannot be ignored.",
+        vi: "Những người giữ quan điểm khẳng định cho rằng các mô hình lớn đã vượt qua mức trung bình của con người trong nhiều bài kiểm tra chuẩn hóa, đây là sự thật không thể xem nhẹ.",
+        pronunciation_focus: ["持...观点者 → chí...guāndiǎn zhě (người giữ quan điểm — 书面 cấu trúc)", "超越 → chāoyuè (vượt qua)", "不容忽视 → bù róng hūshì (không được xem nhẹ)", "此事实 → cǐ shìshí (sự thật này — 书面)"]
+      },
+      {
+        chinese: "然而, 反对方指出, 测试成绩本身并不等同于真实理解, 二者之间存在概念上的混淆。",
+        pinyin: "Rán'ér, fǎnduì fāng zhǐchū, cèshì chéngjì běnshēn bìng bù děngtóng yú zhēnshí lǐjiě, èr zhě zhī jiān cúnzài gàiniàn shàng de hùnxiáo.",
+        english: "However, opponents point out that test scores themselves are not equivalent to genuine understanding — there exists a conceptual conflation between the two.",
+        vi: "Tuy nhiên, phía phản đối chỉ ra rằng điểm số bài kiểm tra tự thân không tương đương với sự lý giải thật sự, giữa hai khái niệm tồn tại một sự lẫn lộn về mặt quan niệm.",
+        pronunciation_focus: ["然而 → rán'ér (tuy nhiên — formal)", "反对方 → fǎnduì fāng (bên phản đối)", "等同于 → děngtóng yú (tương đương với)", "混淆 → hùnxiáo (sự lẫn lộn / nhập nhằng)"]
+      },
+      {
+        chinese: "笔者以为, 此争论之症结在于'理解'一词缺乏统一界定, 双方实则是在不同概念框架下进行论辩。",
+        pinyin: "Bǐzhě yǐwéi, cǐ zhēnglùn zhī zhèngjié zàiyú 'lǐjiě' yī cí quēfá tǒngyī jièdìng, shuāngfāng shí zé shì zài bùtóng gàiniàn kuàngjià xià jìnxíng lùnbiàn.",
+        english: "The author maintains that the crux of this debate lies in the lack of a unified definition of 'understanding' — the two sides are in fact arguing within different conceptual frameworks.",
+        vi: "Tác giả cho rằng, nguyên nhân cốt lõi của cuộc tranh luận này nằm ở chỗ từ 'lý giải' thiếu một định nghĩa thống nhất, hai bên thực ra đang lập luận dưới những khung khái niệm khác nhau.",
+        pronunciation_focus: ["症结 → zhèngjié (nút thắt cốt lõi)", "在于 → zàiyú (nằm ở — 书面)", "界定 → jièdìng (định nghĩa)", "实则 → shí zé (thực ra — 书面)"]
+      },
+      {
+        chinese: "综上所述, 在概念尚未厘清之前, 仓促得出结论恐不可取, 此问题有待进一步讨论。",
+        pinyin: "Zōng shàng suǒ shù, zài gàiniàn shàng wèi líqīng zhī qián, cāngcù déchū jiélùn kǒng bùkě qǔ, cǐ wèntí yǒu dài jìn yī bù tǎolùn.",
+        english: "In summary, drawing hasty conclusions before concepts are clarified would seem inadvisable; this question warrants further discussion.",
+        vi: "Tóm lại, trước khi khái niệm chưa được làm sáng tỏ, việc đi đến kết luận một cách vội vã có lẽ là không nên, vấn đề này cần được bàn luận thêm.",
+        pronunciation_focus: ["尚未 → shàng wèi (chưa — 书面)", "厘清 → líqīng (làm rõ)", "仓促 → cāngcù (vội vã)", "恐不可取 → kǒng bùkě qǔ (e rằng không nên — 书面 hedge)"]
+      }
+    ],
+    vocab: [
+      { chinese: "论辩", pinyin: "lùn biàn", english: "to debate / argue (formal)", vi: "lập luận / tranh biện" },
+      { chinese: "反驳", pinyin: "fǎn bó", english: "to refute", vi: "phản bác" },
+      { chinese: "立场", pinyin: "lì chǎng", english: "stance / position", vi: "lập trường" },
+      { chinese: "据理力争", pinyin: "jù lǐ lì zhēng", english: "argue based on reason (idiom)", vi: "căn cứ lẽ phải mà tranh luận (书面)" },
+      { chinese: "众说纷纭", pinyin: "zhòng shuō fēn yún", english: "diverse opinions abound (idiom)", vi: "nhiều ý kiến trái chiều (书面)" },
+      { chinese: "症结", pinyin: "zhèng jié", english: "crux / sticking point", vi: "nút thắt / điểm then chốt" },
+      { chinese: "厘清", pinyin: "lí qīng", english: "to clarify", vi: "làm sáng tỏ" },
+      { chinese: "仓促", pinyin: "cāng cù", english: "hasty / rushed", vi: "vội vã" },
+      { chinese: "概念框架", pinyin: "gài niàn kuàng jià", english: "conceptual framework", vi: "khung khái niệm" },
+      { chinese: "一概而论", pinyin: "yī gài ér lùn", english: "lump together; over-generalize (idiom)", vi: "vơ đũa cả nắm / khái quát một chiều (书面)" }
+    ],
+    dialogue: [
+      { speaker: "研究员A", chinese: "我认为大语言模型已经具备某种程度的语言理解能力, 测试结果就是证据。", pinyin: "Wǒ rènwéi dà yǔyán móxíng yǐjīng jùbèi mǒu zhǒng chéngdù de yǔyán lǐjiě nénglì, cèshì jiéguǒ jiùshì zhèngjù.", english: "I believe LLMs already possess some degree of language understanding — test results are the evidence.", vi: "Tôi cho rằng các mô hình ngôn ngữ lớn đã sở hữu một mức độ năng lực lý giải nhất định, kết quả kiểm tra chính là bằng chứng." },
+      { speaker: "研究员B", chinese: "这个结论恐怕下得太早了。测试成绩高, 不等于真正理解, 二者不应混为一谈。", pinyin: "Zhège jiélùn kǒngpà xià de tài zǎo le. Cèshì chéngjì gāo, bù děngyú zhēnzhèng lǐjiě, èr zhě bù yīng hùn wéi yī tán.", english: "This conclusion is drawn too early, I'm afraid. High test scores don't equal genuine understanding — the two shouldn't be conflated.", vi: "Kết luận này e rằng đưa ra quá sớm. Điểm số bài kiểm tra cao không có nghĩa là thực sự lý giải, hai cái không nên gộp lại làm một." },
+      { speaker: "研究员A", chinese: "那您怎么定义'真正理解'? 没有可操作的定义, 这场辩论永远没有结果。", pinyin: "Nà nín zěnme dìngyì 'zhēnzhèng lǐjiě'? Méiyǒu kě cāozuò de dìngyì, zhè chǎng biànlùn yǒngyuǎn méiyǒu jiéguǒ.", english: "Then how do you define 'genuine understanding'? Without an operational definition, this debate has no resolution.", vi: "Vậy ngài định nghĩa 'thực sự lý giải' thế nào? Không có định nghĩa khả thao tác, cuộc tranh luận này mãi không có kết quả." },
+      { speaker: "研究员B", chinese: "您这个反问很到位。我承认, 双方对'理解'的界定确实不同。这正是症结所在。", pinyin: "Nín zhège fǎnwèn hěn dàowèi. Wǒ chéngrèn, shuāngfāng duì 'lǐjiě' de jièdìng quèshí bùtóng. Zhè zhèng shì zhèngjié suǒzài.", english: "Your counter-question is well-placed. I admit, the two sides' definitions of 'understanding' do differ. That's exactly the crux.", vi: "Câu phản biện của ngài rất xác đáng. Tôi thừa nhận, cách định nghĩa 'lý giải' của hai bên thực sự khác nhau. Đây chính là nút thắt." }
+    ],
+    dialogue_long: [
+      { speaker: "研究员A", chinese: "今天的研讨会, 我想就大语言模型的'理解能力'这个问题, 提出几点看法。第一, GPT-4在LSAT、医师执照考试上都达到了前10%水平, 这本身就是理解的证据。", pinyin: "Jīntiān de yántǎohuì, wǒ xiǎng jiù dà yǔyán móxíng de 'lǐjiě nénglì' zhège wèntí, tíchū jǐ diǎn kànfǎ. Dì yī, GPT-4 zài LSAT, yīshī zhízhào kǎoshì shàng dōu dádàole qián 10% shuǐpíng, zhè běnshēn jiùshì lǐjiě de zhèngjù.", english: "At today's seminar, I'd like to offer several views on LLMs' 'understanding capability'. First, GPT-4 has reached top 10% on LSAT and medical licensing exams — this itself is evidence of understanding.", vi: "Hội thảo hôm nay, tôi muốn đưa ra vài ý kiến về vấn đề 'năng lực lý giải' của mô hình ngôn ngữ lớn. Thứ nhất, GPT-4 đã đạt top 10% ở LSAT và kỳ thi giấy phép hành nghề y, bản thân điều này đã là bằng chứng của sự lý giải." },
+      { speaker: "研究员B", chinese: "我想就此点提出反驳。考试成绩高, 与'理解'之间不能直接划等号。这是一个长期被混淆的概念问题。", pinyin: "Wǒ xiǎng jiù cǐ diǎn tíchū fǎnbó. Kǎoshì chéngjì gāo, yǔ 'lǐjiě' zhī jiān bùnéng zhíjiē huà děnghào. Zhè shì yī gè chángqī bèi hùnxiáo de gàiniàn wèntí.", english: "I'd like to refute this point. High test scores cannot be equated directly with 'understanding'. This is a long-conflated conceptual issue.", vi: "Tôi muốn phản bác điểm này. Điểm số kiểm tra cao không thể trực tiếp đặt dấu bằng với 'sự lý giải'. Đây là một vấn đề khái niệm lâu nay bị nhập nhằng." },
+      { speaker: "研究员A", chinese: "请您详细阐述一下您的理由。", pinyin: "Qǐng nín xiángxì chǎnshù yīxià nín de lǐyóu.", english: "Please elaborate your reasoning.", vi: "Xin ngài trình bày chi tiết lý do." },
+      { speaker: "研究员B", chinese: "其一, 大模型在训练数据中已见过大量类似题目, 其表现更接近模式匹配而非推理。其二, 当题目稍作改动, 性能往往大幅下降, 此种'脆性'恰是理解缺失的标志。", pinyin: "Qí yī, dà móxíng zài xùnliàn shùjù zhōng yǐ jiànguò dàliàng lèisì tímù, qí biǎoxiàn gèng jiējìn móshì pǐpèi ér fēi tuīlǐ. Qí èr, dāng tímù shāo zuò gǎidòng, xìngnéng wǎngwǎng dàfú xiàjiàng, cǐ zhǒng 'cuìxìng' qià shì lǐjiě quēshī de biāozhì.", english: "First, large models have seen many similar problems in training data — their performance is closer to pattern matching than reasoning. Second, when problems are slightly modified, performance often drops sharply — this 'brittleness' is precisely the signature of absent understanding.", vi: "Một, mô hình lớn đã thấy nhiều bài tương tự trong dữ liệu huấn luyện, biểu hiện của nó gần với khớp mẫu hơn là suy lý. Hai, khi đề bài được chỉnh sửa nhẹ, hiệu suất thường giảm mạnh, sự 'giòn' này chính là dấu hiệu thiếu lý giải." },
+      { speaker: "研究员A", chinese: "您这两点都有道理, 但我想反驳: 第一, 人类儿童学习语言, 又何尝不是从模式匹配开始? 第二, 性能下降的脆性问题, 在最近的GPT-4 turbo和Claude 3.5上已大幅改善。", pinyin: "Nín zhè liǎng diǎn dōu yǒu dàolǐ, dàn wǒ xiǎng fǎnbó: dì yī, rénlèi értóng xuéxí yǔyán, yòu hécháng bù shì cóng móshì pǐpèi kāishǐ? Dì èr, xìngnéng xiàjiàng de cuìxìng wèntí, zài zuìjìn de GPT-4 turbo hé Claude 3.5 shàng yǐ dàfú gǎishàn.", english: "Both your points have merit, but I'd counter: first, human children learning language — is it not also from pattern matching? Second, the brittleness performance issue has substantially improved on recent GPT-4 turbo and Claude 3.5.", vi: "Hai điểm của ngài đều có lý, nhưng tôi muốn phản bác: một, trẻ con học ngôn ngữ — chẳng phải cũng bắt đầu từ khớp mẫu? Hai, vấn đề 'giòn' về hiệu suất, ở GPT-4 turbo và Claude 3.5 gần đây đã cải thiện đáng kể." },
+      { speaker: "研究员B", chinese: "您把人类语言习得与模型训练等同起来, 这一类比本身就有待商榷。儿童的语言习得伴随着具身认知和因果交互, 而模型训练完全是统计性的。这是关键差异。", pinyin: "Nín bǎ rénlèi yǔyán xídé yǔ móxíng xùnliàn děngtóng qǐlái, zhè yī lèibǐ běnshēn jiù yǒudài shāngquè. Értóng de yǔyán xídé bànsuízhe jùshēn rènzhī hé yīnguǒ jiāohù, ér móxíng xùnliàn wánquán shì tǒngjìxìng de. Zhè shì guānjiàn chāyì.", english: "You equate human language acquisition with model training — that analogy itself is debatable. Children's language acquisition is accompanied by embodied cognition and causal interaction, while model training is entirely statistical. This is the key difference.", vi: "Ngài đặt việc thụ đắc ngôn ngữ của con người ngang với huấn luyện mô hình, sự so sánh này tự thân đã đáng để bàn lại. Việc thụ đắc ngôn ngữ của trẻ em đi cùng nhận thức nhập thể và tương tác nhân quả, còn huấn luyện mô hình hoàn toàn là tính thống kê. Đây là khác biệt then chốt." },
+      { speaker: "研究员A", chinese: "好, 您指出了类比的局限。那我想换个角度: 即便大模型不'真正理解', 它的输出在功能上已经足够。从工程角度, 这就足以被称为'理解'。", pinyin: "Hǎo, nín zhǐchūle lèibǐ de júxiàn. Nà wǒ xiǎng huàn gè jiǎodù: jíbiàn dà móxíng bù 'zhēnzhèng lǐjiě', tā de shūchū zài gōngnéng shàng yǐjīng zúgòu. Cóng gōngchéng jiǎodù, zhè jiù zúyǐ bèi chēngwéi 'lǐjiě'.", english: "Fair — you've noted the analogy's limits. Let me shift angle: even if large models don't 'truly understand', their outputs are functionally sufficient. From an engineering view, that warrants the label 'understanding'.", vi: "Tốt, ngài đã chỉ ra hạn chế của phép so sánh. Tôi muốn đổi góc độ: ngay cả khi mô hình lớn không 'thực sự lý giải', đầu ra của nó về mặt chức năng đã đủ. Từ góc độ kỹ thuật, điều này đủ để được gọi là 'lý giải'." },
+      { speaker: "研究员B", chinese: "这就回到最根本的问题: 您所谓的'理解', 是行为主义意义上的理解; 我所主张的, 是认知科学意义上的理解。我们使用的是同一个词, 但所指实非一物。", pinyin: "Zhè jiù huí dào zuì gēnběn de wèntí: nín suǒwèi de 'lǐjiě', shì xíngwéi zhǔyì yìyì shàng de lǐjiě; wǒ suǒ zhǔzhāng de, shì rènzhī kēxué yìyì shàng de lǐjiě. Wǒmen shǐyòng de shì tóng yī gè cí, dàn suǒ zhǐ shí fēi yī wù.", english: "This returns to the fundamental issue: your 'understanding' is behaviorist-sense understanding; mine is cognitive-science-sense understanding. We're using the same word but referring to genuinely different things.", vi: "Điều này quay lại vấn đề cơ bản nhất: 'sự lý giải' mà ngài nói là sự lý giải theo nghĩa hành vi luận; điều tôi chủ trương là sự lý giải theo nghĩa khoa học nhận thức. Chúng ta dùng cùng một từ, nhưng cái được chỉ thực ra không phải một." },
+      { speaker: "研究员A", chinese: "您这个分析让我反思。也许我们的辩论需要先回到定义层面, 才有可能产生建设性的结论。", pinyin: "Nín zhège fēnxī ràng wǒ fǎnsī. Yěxǔ wǒmen de biànlùn xūyào xiān huí dào dìngyì céngmiàn, cái yǒu kěnéng chǎnshēng jiànshèxìng de jiélùn.", english: "Your analysis makes me reflect. Perhaps our debate needs first to return to the definition level before constructive conclusions become possible.", vi: "Phân tích của ngài khiến tôi suy nghĩ lại. Có lẽ cuộc tranh luận của chúng ta cần quay về tầng định nghĩa trước, mới có thể đi tới kết luận mang tính xây dựng." },
+      { speaker: "研究员B", chinese: "正是。在'理解'尚未厘清之前, 一切肯定与否定的论断, 都难以避免概念混淆。综上所述, 此问题恐有待整个学界共同推进。", pinyin: "Zhèngshì. Zài 'lǐjiě' shàng wèi líqīng zhīqián, yīqiè kěndìng yǔ fǒudìng de lùnduàn, dōu nányǐ bìmiǎn gàiniàn hùnxiáo. Zōng shàng suǒ shù, cǐ wèntí kǒng yǒu dài zhěnggè xuéjiè gòngtóng tuījìn.", english: "Precisely. Before 'understanding' is clarified, all affirmative or negative claims will struggle to avoid conceptual conflation. In summary, this problem will require the entire academic community to advance together.", vi: "Đúng vậy. Trước khi 'lý giải' chưa được làm sáng tỏ, mọi phán đoán khẳng định hoặc phủ định đều khó tránh sự lẫn lộn khái niệm. Tóm lại, vấn đề này e rằng cần cả giới học thuật cùng tiến triển." },
+      { speaker: "研究员A", chinese: "感谢您今天的反驳。这场对话比单纯的'同意'更有价值。", pinyin: "Gǎnxiè nín jīntiān de fǎnbó. Zhè chǎng duìhuà bǐ dānchún de 'tóngyì' gèng yǒu jiàzhí.", english: "Thank you for today's rebuttal. This dialogue is more valuable than mere 'agreement'.", vi: "Cảm ơn ngài về sự phản biện hôm nay. Cuộc đối thoại này có giá trị hơn 'đồng ý' đơn thuần." },
+      { speaker: "研究员B", chinese: "学术辩论之意义, 不在于谁胜谁负, 而在于双方共同抵达更深的理解。", pinyin: "Xuéshù biànlùn zhī yìyì, bù zàiyú shuí shèng shuí fù, ér zàiyú shuāngfāng gòngtóng dǐdá gèng shēn de lǐjiě.", english: "The meaning of academic debate lies not in who wins or loses, but in both sides arriving at a deeper understanding together.", vi: "Ý nghĩa của tranh luận học thuật không nằm ở chỗ ai thắng ai thua, mà ở chỗ hai bên cùng đi tới một sự lý giải sâu hơn." }
+    ],
+    roleplay_prompts: [
+      "Bạn là PhD candidate trình bày luận án về 'AI bias'. Một thành viên hội đồng challenge: 'bias trong dataset là không thể tránh khỏi, vậy nghiên cứu của bạn vô nghĩa'. Hãy phản biện theo register học thuật C1: (1) thừa nhận điểm có lý của họ, (2) phân biệt 'không tránh khỏi' với 'không thể giảm thiểu', (3) chỉ ra giả định ngầm trong câu hỏi, (4) chốt bằng '此论断 / 笔者愚以为'. Tránh defensiveness.",
+      "Bạn là reviewer thứ 2 đang viết phản biện một paper. Reviewer 1 đã accept; bạn không đồng ý với methodology. Hãy viết phản biện 4-5 câu: (1) công nhận đóng góp, (2) chỉ ra cụ thể vấn đề methodology (sample size insufficient + control group missing), (3) đề xuất sửa chữa, (4) khuyến nghị 'major revision'. Dùng '与第一审稿人观点相左 / 笔者建议 / 有待商榷'.",
+      "Trong seminar, một sinh viên đặt câu hỏi: 'AI có thể có ý thức không?'. Bạn là giảng viên cần trả lời mà KHÔNG đứng về phía nào (vì đây là vấn đề triết học mở). Hãy: (1) nêu hai trường phái chính, (2) lập luận của mỗi trường phái, (3) chỉ ra symmetry hoặc differentia, (4) khuyến khích sinh viên tự tìm hiểu thêm. Dùng '众说纷纭 / 各有道理 / 有待进一步研究'."
+    ],
+    register_notes: "Lập luận và phản biện trong giới học thuật Trung Quốc: '据理力争' không có nghĩa là attack — nó có nghĩa là 'lập luận có căn cứ, không chịu thua khi mình đúng'.\n\n1. CẤU TRÚC PHẢN BIỆN CHUẨN (4 BƯỚC):\n\n- BƯỚC 1 — CÔNG NHẬN: '您的观点不无道理' / '此点确有其据' / '我同意您所说的X部分'. Không công nhận = đối thủ defensive ngay.\n- BƯỚC 2 — CHUYỂN: '然而' / '但笔者认为' / '需要补充的是'. Connector này là tín hiệu chuyển từ agreement sang counter.\n- BƯỚC 3 — PHẢN BIỆN CỤ THỂ: nêu lý do, dẫn chứng, hoặc cấu trúc lập luận của đối thủ thiếu sót.\n- BƯỚC 4 — KIẾN NGHỊ XÂY DỰNG: '笔者建议' / '或可考虑'. Tránh kết bằng câu phủ định.\n\n2. CỤM PHẢN BIỆN THEO MỨC ĐỘ:\n\nNHẸ (gentle):\n- 此点尚有商榷空间 (điểm này vẫn còn không gian để bàn)\n- 笔者愚以为 (kẻ ngu này cho rằng — humble)\n- 不无道理, 然... (không phải không có lý, nhưng...)\n\nTRUNG (medium):\n- 与此观点相左 (trái với quan điểm này)\n- 笔者持不同意见 (tác giả giữ ý kiến khác)\n- 此论恐难成立 (luận điểm này e khó đứng vững)\n\nMẠNH (strong):\n- 此说纯属误解 (cách nói này hoàn toàn là hiểu sai)\n- 论据不足以支持其结论 (luận cứ không đủ để hỗ trợ kết luận)\n- 该假设在逻辑上不成立 (giả thuyết này không vững về mặt logic)\n\nMẠNH cụm dùng cẩn thận — chỉ khi BẰNG CHỨNG đủ mạnh.\n\n3. ĐỪNG: tấn công cá nhân (ad hominem), gán động cơ ('您之所以这样说是因为您...'), dùng 口语 ('我觉得你错了').\n\n4. NẾU KHÔNG ĐỒNG Ý NHƯNG HỌ CAO HƠN MÌNH (giáo sư / reviewer cấp cao): tăng hedging và humble: '请教教授一个问题 / 笔者愚以为 / 不知可否商榷'. Phản biện thẳng dễ bị coi không lễ phép.\n\n5. NẾU HỌ TẤN CÔNG CÁ NHÂN: KHÔNG đáp trả đồng cấp. Quay về luận điểm: '我们回到具体问题, 这个数据是这样'. Ad hominem vs argument mismatch = bạn thắng về register.\n\n6. AGREEMENT-DISGUISED-AS-CRITIQUE (Trung Quốc cult): khi reviewer viết '此研究有所启发' (nghiên cứu này có chút gợi mở), nghĩa thực: 'không hay lắm'. '颇具创新性' = 'OK', '令人耳目一新' = 'rất tốt'. Học sắc thái.",
+    idiom_glosses: [
+      {
+        idiom: "据理力争",
+        literal: "căn cứ lẽ phải nỗ lực tranh đấu (jù lǐ lì zhēng)",
+        meaning: "Căn cứ vào lẽ phải mà tranh luận hết sức — kiên trì lập luận khi mình đúng. Cụm tích cực, dùng để khen người tranh luận có nguyên tắc, không nhường khi không đáng. (书面/正式)",
+        example: "面对评审的质疑, 他据理力争, 最终说服了委员会。"
+      },
+      {
+        idiom: "众说纷纭",
+        literal: "nhiều thuyết bay tản (zhòng shuō fēn yún)",
+        meaning: "Nhiều ý kiến trái chiều — academic standard cụm để mở đầu một review về vấn đề tranh cãi. (书面/正式)",
+        example: "关于此现象的成因, 学术界至今众说纷纭。"
+      },
+      {
+        idiom: "一概而论",
+        literal: "vơ một mà luận (yī gài ér lùn)",
+        meaning: "Vơ đũa cả nắm / khái quát vô lý. Dùng để cảnh báo: 'không thể一概而论' = 'không thể khái quát một cách đơn giản'. (书面/正式)",
+        example: "不同语言的语法结构差异巨大, 不可一概而论。"
+      },
+      {
+        idiom: "无可辩驳",
+        literal: "không thể nào bác bỏ (wú kě biàn bó)",
+        meaning: "Không thể bác bỏ — dùng cho fact đã được chứng minh chắc chắn. Cẩn thận: chỉ dùng khi BẰNG CHỨNG thật sự overwhelming. (书面/正式)",
+        example: "近十年来气候变化与人类活动之关联, 在数据上已无可辩驳。"
+      }
+    ],
+    cultural_notes_vi: "Văn hóa lập luận học thuật ở Trung Quốc đại lục có một số đặc điểm khác Việt Nam và phương Tây:\n\n(1) HARMONY VS CONFRONTATION: Trung Quốc có truyền thống Khổng giáo coi trọng 'hài hòa' (和谐). Phản biện trực diện trong public bị coi là 'không lễ phép' (失礼). Vì vậy phản biện học thuật được wrap nhiều lớp khiêm nhường: '愚以为', '不揣冒昧', '尚祈指正'.\n\n(2) HIERARCHY ẢNH HƯỞNG: phản biện một giáo sư cao tuổi/cao cấp khác phản biện một sinh viên ngang bằng. Với senior, BẮT BUỘC: (a) đặt câu hỏi thay vì khẳng định, (b) dùng cụm 'humble first person' (笔者愚以为, 学生愚见), (c) thừa nhận expertise của họ trước khi disagree.\n\n(3) FACE-SAVING TRONG CRITIQUE: nếu phải critique mạnh, KHÔNG critique trực tiếp tác giả mà critique luận điểm: 'X观点存在问题' (quan điểm X có vấn đề) thay vì '您的观点错了'. Subtle nhưng quan trọng. Subject của critique = ý tưởng, không phải con người.\n\n(4) DEBATE STYLE 答辩 (defending thesis): kéo dài 30-90 phút, có 3-5 giáo sư hỏi. Câu hỏi mạnh, có khi sharp. Sinh viên KHÔNG được defensive. Câu chuẩn để mở đầu trả lời: '感谢老师指出, 这个问题很有意思. 笔者的回答是...' (Cảm ơn thầy đã chỉ ra, câu hỏi này rất thú vị. Câu trả lời của tác giả là...).\n\n(5) TRUYỀN THỐNG 辩 (biàn — debate): Trung Quốc cổ đại có truyền thống 辩 từ thời Mạnh Tử, Trang Tử. Đến thời Tống có 朱熹辩论. Lập luận học thuật là phẩm chất tốt — không phải confrontation nghĩa xấu. Phân biệt: 辩 (debate có nguyên tắc) ≠ 吵 (cãi vã).\n\n(6) PEER REVIEW VĂN HÓA: reviewer Trung Quốc thường viết phản biện ngắn hơn reviewer Anh-Mỹ. Lý do: (a) tránh điểm soft, (b) tránh face issues. Sinh viên Việt khi nộp paper Trung Quốc cần đọc reviews carefully — short comment có thể chứa critique mạnh.\n\n(7) PUBLIC vs PRIVATE CRITIQUE: critique mạnh thường được giới hạn trong tin nhắn riêng / email. Public seminar = soft critique + private follow-up = real critique. Đây là sự khác biệt lớn so với phương Tây nơi public critique được coi là chuẩn mực.\n\n(8) SCHOLAR DUEL HISTORICAL: ở thế kỷ 20, có những 'cuộc đấu' học thuật nổi tiếng giữa các trí thức (như 鲁迅 vs 梁实秋). Nhưng nay những cuộc đấu này thường được coi là không lành mạnh. Phong cách hiện đại: lập luận chắc, register nghiêm túc, không attack cá nhân.",
+    tip_advice_vi: "(1) ĐỌC ARGUMENT trước khi viết counter: list ra 3 điểm bạn ĐỒNG Ý + 3 điểm bạn KHÔNG đồng ý. Phản biện chỉ những điểm bạn không đồng ý, công nhận những điểm còn lại. Phản biện toàn bộ = không xây dựng. (2) BẮT ĐẦU bằng AGREEMENT: '此观点不无道理' / '您所说的X部分确有其据'. Câu công nhận trước câu phản biện = đối thủ open. Bỏ qua bước này = họ defensive ngay. (3) KHÔNG TẤN CÔNG MOTIVES: tránh '您之所以这样说是因为...'. Quay về argument: 'argument本身有这些问题: A, B, C'. (4) DÙNG CONNECTOR phản biện: 然而 / 然 / 不过 / 但 / 然则. Connector tín hiệu chuyển. Không có connector = đối thủ không bắt được pivot. (5) HEDGE PHẢN BIỆN: '此论恐有不当' tốt hơn '此论是错的'. '恐 / 似乎 / 或许' giảm sharpness 50% mà vẫn truyền được message. (6) KẾT BẰNG ĐỀ XUẤT XÂY DỰNG: 'laughter建议在X方面进一步完善' / '或可考虑Y方法'. Phản biện không có constructive proposal = chỉ là phá. (7) QUAN SÁT HIERARCHY: nếu họ senior bạn, tăng hedging. Nếu họ peer, normal register. Nếu họ junior bạn, vẫn lịch sự — đừng patronize. (8) SAU KHI HỌ ĐÁP, CÔNG NHẬN: nếu họ đưa ra điểm hay, '您这一点说得很在理'. Mục tiêu cuộc tranh luận = cùng tiếp cận sự thật, không phải win.",
+    exercises: [
+      { type: "fill-blank", question: "在概念尚未 ___ 清之前, 仓促得出结论恐不可取。", answer: "厘" },
+      {
+        type: "matching",
+        instruction: "Ghép cụm phản biện 书面 với chức năng tiếng Việt.",
+        pairs: [
+          { chinese: "据理力争", pinyin: "jù lǐ lì zhēng", english: "tranh luận có căn cứ" },
+          { chinese: "众说纷纭", pinyin: "zhòng shuō fēn yún", english: "ý kiến trái chiều" },
+          { chinese: "一概而论", pinyin: "yī gài ér lùn", english: "vơ đũa cả nắm" },
+          { chinese: "有待商榷", pinyin: "yǒu dài shāng què", english: "vẫn cần bàn lại" }
+        ]
+      },
+      {
+        type: "translation",
+        vietnamese: "Quan điểm của ngài không phải không có lý, tuy nhiên tác giả cho rằng, nguyên nhân cốt lõi của tranh luận này nằm ở sự khác biệt về định nghĩa.",
+        chinese: "您的观点不无道理, 然而笔者以为, 此争论之症结在于定义的差异。",
+        pinyin: "Nín de guān diǎn bù wú dào lǐ, rán ér bǐ zhě yǐ wéi, cǐ zhēng lùn zhī zhèng jié zài yú dìng yì de chā yì."
+      }
+    ]
+  },
+  {
+    id: 95,
+    level: "C1",
+    category: "academic_discourse",
+    title: "学术语气的谨慎表达",
+    pinyin: "xué shù yǔ qì de jǐn shèn biǎo dá",
+    topic: "Academic hedging and uncertainty",
+    title_vi: "Diễn đạt thận trọng trong văn phong học thuật",
+    title_en: "Academic hedging and uncertainty",
+    sentences: [
+      {
+        chinese: "鉴于本研究样本规模有限, 所得结论似乎仅具初步参考价值, 不宜过度推广。",
+        pinyin: "Jiàn yú běn yánjiū yàngběn guīmó yǒuxiàn, suǒ dé jiélùn sìhū jǐn jù chūbù cānkǎo jiàzhí, bùyí guòdù tuīguǎng.",
+        english: "Given the limited sample size of this study, the conclusions seem to have only preliminary reference value and should not be over-extrapolated.",
+        vi: "Xét rằng quy mô mẫu của nghiên cứu này là hạn chế, các kết luận thu được dường như chỉ có giá trị tham khảo sơ bộ, không nên khái quát quá mức.",
+        pronunciation_focus: ["鉴于 → jiàn yú (xét rằng — formal)", "似乎 → sìhū (dường như — hedge)", "不宜 → bùyí (không nên — 书面)", "推广 → tuīguǎng (khái quát hoá / phổ biến)"]
+      },
+      {
+        chinese: "在某种程度上, 现有数据支持上述假设之成立, 然其稳健性仍有待进一步验证。",
+        pinyin: "Zài mǒu zhǒng chéngdù shàng, xiàn yǒu shùjù zhīchí shàngshù jiǎshè zhī chénglì, rán qí wěnjiànxìng réng yǒu dài jìn yī bù yànzhèng.",
+        english: "To some extent, existing data support the above hypothesis, but its robustness still requires further verification.",
+        vi: "Ở một mức độ nào đó, dữ liệu hiện có ủng hộ sự thành lập của giả thuyết nêu trên, song tính chắc chắn của nó vẫn cần được kiểm chứng thêm.",
+        pronunciation_focus: ["在某种程度上 → zài mǒu zhǒng chéngdù shàng (ở mức độ nào đó — hedge)", "稳健性 → wěnjiànxìng (tính ổn định)", "有待进一步 → yǒu dài jìn yī bù (cần thêm)", "然 → rán (nhưng — 书面 thay 但)"]
+      },
+      {
+        chinese: "该现象背后之机制目前尚不明朗, 学界对此存在多种解释, 各有其据。",
+        pinyin: "Gāi xiànxiàng bèihòu zhī jīzhì mùqián shàng bù mínglǎng, xuéjiè duì cǐ cúnzài duō zhǒng jiěshì, gè yǒu qí jù.",
+        english: "The mechanism behind this phenomenon remains unclear at present; multiple explanations exist in the academic community, each with its own grounds.",
+        vi: "Cơ chế đằng sau hiện tượng này hiện vẫn chưa sáng tỏ, giới học thuật tồn tại nhiều cách giải thích khác nhau, mỗi cách đều có căn cứ riêng.",
+        pronunciation_focus: ["尚不明朗 → shàng bù mínglǎng (vẫn chưa rõ — 书面)", "学界 → xuéjiè (giới học thuật)", "存在多种解释 → cúnzài duō zhǒng jiěshì", "各有其据 → gè yǒu qí jù (mỗi cái đều có căn cứ — 书面)"]
+      },
+      {
+        chinese: "笔者并非否认该方法之潜在价值, 而是认为, 仓促应用恐生不必要之风险。",
+        pinyin: "Bǐzhě bìngfēi fǒurèn gāi fāngfǎ zhī qiánzài jiàzhí, ér shì rènwéi, cāngcù yìngyòng kǒng shēng bù bìyào zhī fēngxiǎn.",
+        english: "The author does not deny the potential value of this method; rather, the author maintains that hasty application may give rise to unnecessary risks.",
+        vi: "Tác giả không phải phủ nhận giá trị tiềm tàng của phương pháp này, mà cho rằng việc áp dụng vội vã có thể sinh ra những rủi ro không cần thiết.",
+        pronunciation_focus: ["并非 → bìngfēi (không phải — 书面 emphatic)", "潜在价值 → qiánzài jiàzhí (giá trị tiềm tàng)", "恐生 → kǒng shēng (e rằng sinh ra — 书面 hedge)", "不必要 → bù bìyào"]
+      },
+      {
+        chinese: "综上所述, 此研究结果可视为一次有益的探索, 然远未达到可定论之阶段。",
+        pinyin: "Zōng shàng suǒ shù, cǐ yánjiū jiéguǒ kě shìwéi yī cì yǒuyì de tànsuǒ, rán yuǎn wèi dádào kě dìnglùn zhī jiēduàn.",
+        english: "In summary, the results of this study can be regarded as a useful exploration, but they are far from reaching the stage where conclusions can be drawn.",
+        vi: "Tóm lại, kết quả nghiên cứu này có thể được xem là một sự tìm tòi hữu ích, song còn rất xa đến giai đoạn có thể đưa ra kết luận xác định.",
+        pronunciation_focus: ["可视为 → kě shìwéi (có thể được xem là — passive 书面)", "有益 → yǒuyì (hữu ích)", "远未达到 → yuǎn wèi dádào (còn xa chưa đạt)", "定论 → dìnglùn (kết luận xác định)"]
+      }
+    ],
+    vocab: [
+      { chinese: "谨慎", pinyin: "jǐn shèn", english: "cautious", vi: "thận trọng" },
+      { chinese: "似乎", pinyin: "sì hū", english: "seem; appear (hedge)", vi: "dường như / có vẻ" },
+      { chinese: "在某种程度上", pinyin: "zài mǒu zhǒng chéng dù shàng", english: "to some extent", vi: "ở một mức độ nào đó" },
+      { chinese: "有待进一步研究", pinyin: "yǒu dài jìn yī bù yán jiū", english: "needs further research", vi: "cần nghiên cứu thêm" },
+      { chinese: "不无道理", pinyin: "bù wú dào lǐ", english: "not without reason", vi: "không phải không có lý" },
+      { chinese: "鉴于", pinyin: "jiàn yú", english: "in view of (formal)", vi: "xét rằng / xét về" },
+      { chinese: "不宜", pinyin: "bù yí", english: "not advisable", vi: "không nên" },
+      { chinese: "推广", pinyin: "tuī guǎng", english: "to extend; generalize", vi: "khái quát hoá / phổ biến" },
+      { chinese: "稳健性", pinyin: "wěn jiàn xìng", english: "robustness", vi: "tính ổn định / chắc chắn" },
+      { chinese: "定论", pinyin: "dìng lùn", english: "conclusive judgment", vi: "kết luận xác định" }
+    ],
+    dialogue: [
+      { speaker: "审稿人", chinese: "你这一段写得太确定了。'AI筛查工具优于人类放射科医生'这种说法, 在样本量这么小的情况下不能下。", pinyin: "Nǐ zhè yī duàn xiě de tài quèdìng le. 'AI shāichá gōngjù yōu yú rénlèi fàngshèkē yīshēng' zhè zhǒng shuōfǎ, zài yàngběn liàng zhème xiǎo de qíngkuàng xià bùnéng xià.", english: "This paragraph is written too definitively. 'AI screening tool outperforms human radiologists' — that claim cannot be made on this sample size.", vi: "Đoạn này em viết quá chắc chắn. Câu 'công cụ sàng lọc AI vượt trội bác sĩ X-quang' không thể đưa ra với cỡ mẫu nhỏ như vậy." },
+      { speaker: "学生", chinese: "我应该怎么修改才合适?", pinyin: "Wǒ yīnggāi zěnme xiūgǎi cái héshì?", english: "How should I revise it appropriately?", vi: "Em nên sửa thế nào cho phù hợp?" },
+      { speaker: "审稿人", chinese: "加hedge: '初步数据似乎显示...在某种程度上...有待进一步验证'。这样既保留发现, 又不过度承诺。", pinyin: "Jiā hedge: 'chūbù shùjù sìhū xiǎnshì...zài mǒu zhǒng chéngdù shàng...yǒu dài jìn yī bù yànzhèng'. Zhèyàng jì bǎoliú fāxiàn, yòu bù guòdù chéngnuò.", english: "Add hedges: 'preliminary data appear to suggest...to some extent...require further verification'. This preserves the finding while not over-promising.", vi: "Thêm hedge: 'dữ liệu sơ bộ dường như cho thấy... ở một mức độ nào đó... cần kiểm chứng thêm'. Như thế vừa giữ phát hiện, vừa không cam kết quá mức." },
+      { speaker: "学生", chinese: "明白了。学术写作的'确定'和'诚实', 不是同一回事。", pinyin: "Míngbái le. Xuéshù xiězuò de 'quèdìng' hé 'chéngshí', bù shì tóng yī huí shì.", english: "Understood. 'Confidence' and 'honesty' in academic writing are not the same thing.", vi: "Em hiểu rồi. 'Sự chắc chắn' và 'sự trung thực' trong viết học thuật không phải cùng một chuyện." }
+    ],
+    dialogue_long: [
+      { speaker: "审稿人", chinese: "我把你的初稿仔细看了一遍。研究本身有意思, 数据也扎实。但语气问题相当严重, 我标了二十多处。", pinyin: "Wǒ bǎ nǐ de chūgǎo zǐxì kànle yī biàn. Yánjiū běnshēn yǒuyìsi, shùjù yě zhāshí. Dàn yǔqì wèntí xiāngdāng yánzhòng, wǒ biāole èrshí duō chù.", english: "I've carefully read through your draft. The research itself is interesting and the data are solid. But there's a substantial tone problem — I've marked over twenty places.", vi: "Tôi đã đọc kỹ bản nháp của em. Bản thân nghiên cứu thú vị, dữ liệu cũng vững chắc. Nhưng vấn đề về giọng văn khá nghiêm trọng, tôi đã đánh dấu hơn hai mươi chỗ." },
+      { speaker: "学生", chinese: "请您具体说说是哪些问题。", pinyin: "Qǐng nín jùtǐ shuō shuō shì nǎxiē wèntí.", english: "Please specify what those issues are.", vi: "Xin thầy/cô nói cụ thể đó là những vấn đề gì." },
+      { speaker: "审稿人", chinese: "你过度使用了'证明'、'必然'、'肯定'这类强语气词。学术写作中, 没有几个声明能用'证明'这个词。'结果支持假设'和'结果证明假设'是两个完全不同的东西。", pinyin: "Nǐ guòdù shǐyòngle 'zhèngmíng', 'bìrán', 'kěndìng' zhè lèi qiáng yǔqì cí. Xuéshù xiězuò zhōng, méiyǒu jǐ gè shēngmíng néng yòng 'zhèngmíng' zhège cí. 'Jiéguǒ zhīchí jiǎshè' hé 'jiéguǒ zhèngmíng jiǎshè' shì liǎng gè wánquán bùtóng de dōngxi.", english: "You've overused strong-tone words like 'prove', 'inevitably', 'definitely'. In academic writing, few claims can use the word 'prove'. 'Results support hypothesis' and 'results prove hypothesis' are two completely different things.", vi: "Em đã dùng quá nhiều các từ ngữ giọng mạnh như 'chứng minh', 'tất yếu', 'chắc chắn'. Trong viết học thuật, ít có câu phát biểu nào có thể dùng từ 'chứng minh'. 'Kết quả ủng hộ giả thuyết' và 'kết quả chứng minh giả thuyết' là hai chuyện hoàn toàn khác nhau." },
+      { speaker: "学生", chinese: "因为我自己觉得数据很clean, 所以写得自信了。", pinyin: "Yīnwèi wǒ zìjǐ juéde shùjù hěn clean, suǒyǐ xiě de zìxìn le.", english: "Because I felt the data were clean, I wrote confidently.", vi: "Vì tự em thấy dữ liệu rất sạch, nên viết với sự tự tin." },
+      { speaker: "审稿人", chinese: "数据再clean, 也只是这一个研究, 这个样本量, 这个时间段。把它写成'AI筛查必然优于人类医生'就是overgeneralization。如果三年后另一个团队复现失败, 你的paper会被引用为反面案例。", pinyin: "Shùjù zài clean, yě zhǐshì zhè yī gè yánjiū, zhège yàngběn liàng, zhège shíjiānduàn. Bǎ tā xiě chéng 'AI shāichá bìrán yōu yú rénlèi yīshēng' jiùshì overgeneralization. Rúguǒ sān nián hòu lìng yī gè tuánduì fùxiàn shībài, nǐ de paper huì bèi yǐnyòng wéi fǎnmiàn ànlì.", english: "However clean the data, it's still just this one study, this sample size, this time period. Writing 'AI screening inevitably outperforms human doctors' is overgeneralization. If another team fails to replicate in three years, your paper will be cited as a negative case.", vi: "Dữ liệu dù sạch đến đâu, cũng chỉ là một nghiên cứu này, cỡ mẫu này, khoảng thời gian này. Viết thành 'sàng lọc AI tất yếu vượt trội bác sĩ' là khái quát hoá quá đà. Nếu ba năm sau một nhóm khác không tái lập được, bài của em sẽ bị trích dẫn làm ví dụ phản diện." },
+      { speaker: "学生", chinese: "我应该按什么标准添加hedge?", pinyin: "Wǒ yīnggāi àn shénme biāozhǔn tiānjiā hedge?", english: "What standard should I follow to add hedges?", vi: "Em nên thêm hedge theo tiêu chuẩn nào?" },
+      { speaker: "审稿人", chinese: "三层规则。第一层: 报告事实加'初步'/'本研究中'/'目前数据显示'。第二层: 解释机制加'似乎'/'可能'/'在某种程度上'。第三层: 推广结论加'有待进一步研究'/'尚不可一概而论'。每个claim对照三层, 选合适的层级。", pinyin: "Sān céng guīzé. Dì yī céng: bàogào shìshí jiā 'chūbù'/'běn yánjiū zhōng'/'mùqián shùjù xiǎnshì'. Dì èr céng: jiěshì jīzhì jiā 'sìhū'/'kěnéng'/'zài mǒu zhǒng chéngdù shàng'. Dì sān céng: tuīguǎng jiélùn jiā 'yǒu dài jìn yī bù yánjiū'/'shàng bùkě yī gài ér lùn'. Měi gè claim duìzhào sān céng, xuǎn héshì de céngjí.", english: "Three-layer rule. Layer 1: reporting facts — add 'preliminary'/'in this study'/'current data show'. Layer 2: explaining mechanism — add 'seems'/'possibly'/'to some extent'. Layer 3: extrapolating conclusions — add 'requires further research'/'cannot be over-generalized'. Match each claim to the layer; choose the appropriate level.", vi: "Quy tắc ba tầng. Tầng 1: báo cáo sự kiện — thêm 'sơ bộ'/'trong nghiên cứu này'/'dữ liệu hiện tại cho thấy'. Tầng 2: giải thích cơ chế — thêm 'dường như'/'có thể'/'ở một mức độ'. Tầng 3: khái quát kết luận — thêm 'cần nghiên cứu thêm'/'chưa thể vơ đũa cả nắm'. Mỗi claim đối chiếu ba tầng, chọn tầng phù hợp." },
+      { speaker: "学生", chinese: "这个三层规则非常实用。我之前没有这样系统地想过。", pinyin: "Zhège sān céng guīzé fēicháng shíyòng. Wǒ zhīqián méiyǒu zhèyàng xìtǒng dì xiǎngguò.", english: "This three-layer rule is very practical. I hadn't thought about it so systematically before.", vi: "Quy tắc ba tầng này rất thực dụng. Trước em chưa nghĩ một cách hệ thống như vậy." },
+      { speaker: "审稿人", chinese: "另外, 你对'局限性'部分写得太短了, 只有一段。一篇好的paper, 局限性应当占到方法论部分的15-20%。", pinyin: "Lìngwài, nǐ duì 'júxiànxìng' bùfèn xiě de tài duǎn le, zhǐyǒu yī duàn. Yī piān hǎo de paper, júxiànxìng yīngdāng zhàn dào fāngfǎlùn bùfèn de 15-20%.", english: "Also, your 'limitations' section is too short — just one paragraph. In a good paper, limitations should occupy 15-20% of the methodology section.", vi: "Ngoài ra, mục 'hạn chế' em viết quá ngắn, chỉ có một đoạn. Một bài tốt, mục hạn chế nên chiếm 15-20% của phần phương pháp luận." },
+      { speaker: "学生", chinese: "我以为局限性写多了会显得paper弱。", pinyin: "Wǒ yǐwéi júxiànxìng xiě duōle huì xiǎnde paper ruò.", english: "I thought writing many limitations would make the paper look weak.", vi: "Em tưởng viết nhiều hạn chế sẽ làm bài có vẻ yếu." },
+      { speaker: "审稿人", chinese: "这是新手的错觉。Reviewer看到全面、诚实的limitations部分, 反而会上调对paper的信任度。隐藏limitations才是真正的弱点, 因为reviewer会自己找, 然后reject。", pinyin: "Zhè shì xīnshǒu de cuòjué. Reviewer kàn dào quánmiàn, chéngshí de limitations bùfèn, fǎn'ér huì shàngdiào duì paper de xìnrèn dù. Yǐncáng limitations cái shì zhēnzhèng de ruòdiǎn, yīnwèi reviewer huì zìjǐ zhǎo, ránhòu reject.", english: "That's a beginner's illusion. Reviewers seeing comprehensive, honest limitations actually upgrade their trust in the paper. Hiding limitations is the real weakness — reviewers will find them anyway, then reject.", vi: "Đó là ảo giác của người mới. Reviewer thấy phần limitations toàn diện, trung thực, ngược lại sẽ tăng độ tin cậy đối với bài. Giấu limitations mới là điểm yếu thật — reviewer sẽ tự tìm, rồi reject." },
+      { speaker: "学生", chinese: "我下来重写, 三天后交给您。", pinyin: "Wǒ xià lái chóng xiě, sān tiān hòu jiāo gěi nín.", english: "I'll go rewrite — submit to you in three days.", vi: "Em xin xuống viết lại, ba ngày sau nộp cho thầy/cô." },
+      { speaker: "审稿人", chinese: "好。记住一个原则: 学术写作中, '确定'和'诚实'不是同义词。学者越成熟, 越知道在哪里加hedge。", pinyin: "Hǎo. Jì zhù yī gè yuánzé: xuéshù xiězuò zhōng, 'quèdìng' hé 'chéngshí' bù shì tóngyìcí. Xuézhě yuè chéngshú, yuè zhīdào zài nǎlǐ jiā hedge.", english: "Good. Remember one principle: in academic writing, 'certainty' and 'honesty' are not synonyms. The more mature a scholar, the more they know where to add hedges.", vi: "Tốt. Hãy nhớ một nguyên tắc: trong viết học thuật, 'sự chắc chắn' và 'sự trung thực' không đồng nghĩa. Học giả càng trưởng thành, càng biết thêm hedge ở đâu." }
+    ],
+    roleplay_prompts: [
+      "Bạn là sinh viên cao học vừa nhận được kết quả thí nghiệm rất 'đẹp' (p < 0.001, effect size lớn). Hãy viết phần 'Discussion' theo register hedging C1: (1) báo cáo finding với từ neutral, (2) thừa nhận sample size limit, (3) nêu 2 alternative interpretations, (4) chốt với 'có giá trị tham khảo, có待 thêm nghiên cứu'. Tránh từ '证明 / 必然 / 肯定'.",
+      "Bạn là reviewer đọc một paper claim 'AI tools 100% chính xác trong nhiệm vụ X'. Hãy viết phản biện hedging-focused: chỉ ra '100%' là claim quá mạnh, request thay bằng confidence interval cụ thể, suggest discussion về edge cases. Dùng cụm '此论断或欠妥 / 笔者建议...似乎更为稳妥 / 在某种程度上'.",
+      "Bạn là engineer trình bày kết quả của một A/B test trong nội bộ công ty. Sample size 5,000 users, p = 0.04. Hãy viết một paragraph theo register academic hedging C1: (1) báo cáo finding cụ thể, (2) acknowledge p-value gần boundary, (3) suggest replication trước khi rollout 100%, (4) chốt với recommendation chuyển từ test sang gradual rollout 25% → 50% → 100%."
+    ],
+    register_notes: "Hedging là KỸ NĂNG SIGNATURE của writer C1+. Sinh viên A2-B1 viết 'AI 提升代码质量'; sinh viên B2 viết 'AI 可以 提升代码质量'; sinh viên C1 viết '在某种程度上, 现有数据显示, AI 似乎 有助于提升代码质量, 然其稳健性 有待进一步验证'. Sự khác biệt = epistemic maturity.\n\n1. THREE-LAYER HEDGING (quy tắc ba tầng):\n\nLAYER 1 — REPORT FACT:\n- 初步显示 (kết quả sơ bộ cho thấy)\n- 本研究中 (trong nghiên cứu này)\n- 目前数据表明 (dữ liệu hiện tại thể hiện)\n- 在X条件下 (trong điều kiện X)\nNeutral, low risk.\n\nLAYER 2 — EXPLAIN MECHANISM:\n- 似乎 (dường như)\n- 可能 (có thể)\n- 在某种程度上 (ở mức độ nào đó)\n- 或可解释为 (có thể được giải thích là)\n- 不无可能 (không phải không thể)\nMedium hedge.\n\nLAYER 3 — EXTRAPOLATE CONCLUSION:\n- 有待进一步研究 (cần nghiên cứu thêm)\n- 尚不可一概而论 (chưa thể vơ đũa cả nắm)\n- 远未达到定论之阶段 (còn xa đến giai đoạn kết luận)\n- 不宜过度推广 (không nên khái quát quá mức)\nStrong hedge — required.\n\n2. AVOID OVERHEDGE:\n\nViết '可能似乎也许大概或许' = quá ngại, mất authority. 1-2 hedge per claim là đủ.\n\n3. SCALE-MATCHING:\n\n- Effect size LỚN (Cohen's d > 0.8): 'effect显著, 但仍需复现验证'\n- Effect size MEDIUM (0.5-0.8): 'effect可被观察到, 在某种程度上支持假设'\n- Effect size NHỎ (0.2-0.5): 'effect微弱, 解释需谨慎'\n- Effect size <0.2: 'effect不明显, 或为噪声'\n\nMatch hedge với scale của effect.\n\n4. NULL RESULT TREATMENT:\n\n- KHÔNG ĐƯỢC viết 'no effect' = 'AI vô tác dụng'.\n- CÁCH ĐÚNG: '在本研究条件下, 未能观察到显著差异, 但这并不必然意味着X与Y之间不存在关联' (Trong điều kiện nghiên cứu này, không quan sát được khác biệt đáng kể, nhưng điều này không nhất thiết có nghĩa X và Y không liên quan).\n- Power analysis nên được mention.\n\n5. UNCERTAINTY MARKERS LEVEL:\n\nUNCERTAINTY HIGH:\n- 该现象之机制目前 尚不明朗\n- 学界对此 存在较大争议\n- 现有证据 不足以 得出明确结论\n\nUNCERTAINTY MEDIUM:\n- 似乎 / 可能 / 或许\n- 在某种程度上 / 一定条件下\n\nUNCERTAINTY LOW (claim mạnh):\n- 实证表明 (empirical demonstrates)\n- 反复验证 (repeatedly validated)\n- 已 取得 共识 (consensus achieved)\n\n6. CỤM 不无... (double negative formal):\n\n- 不无道理 (không phải không có lý)\n- 不无可能 (không phải không thể)\n- 不无启发 (không phải không gợi mở)\n\nCực formal, dùng để hedge rất nhẹ.\n\n7. SỬA SUPER-CLAIMS:\n\n- '证明' → '支持' / '与...一致'\n- '必然' → '在多数情况下'\n- '肯定' → '可能性较高'\n- '完全' → '相当程度上'\n- '革命性' → '颇具创新性'\n\n8. AVOID HEDGE WHERE INAPPROPRIATE:\n\n- Method section reporting (这是事实): không hedge\n- Reference citation: không hedge\n- Mathematical proof: không hedge\n- Discussion / interpretation: hedge mạnh",
+    idiom_glosses: [
+      {
+        idiom: "不无道理",
+        literal: "không phải không có lý (bù wú dào lǐ)",
+        meaning: "Không phải không có lý — double negative formal hedge. Diplomat way of saying 'has merit' khi bạn vừa muốn công nhận một phần vừa muốn giữ ngầm reservation. (书面/正式)",
+        example: "您的观点不无道理, 然笔者尚有几点保留意见。"
+      },
+      {
+        idiom: "尚需斟酌",
+        literal: "vẫn cần cân nhắc (shàng xū zhēn zhuó)",
+        meaning: "Vẫn cần cân nhắc — formal way to say 'this needs more thought / not finalized'. Dùng trong review feedback. (书面/正式)",
+        example: "结论部分的措辞尚需斟酌, 建议加入更多hedge。"
+      },
+      {
+        idiom: "莫衷一是",
+        literal: "không biết theo cái nào là đúng (mò zhōng yī shì)",
+        meaning: "Không biết theo ai là đúng — academic phrase cho 'disagreement with no consensus'. Dùng để mô tả tình trạng tranh luận chưa kết. (书面/正式)",
+        example: "对于此问题, 学术界至今莫衷一是。"
+      },
+      {
+        idiom: "言不轻发",
+        literal: "lời không nhẹ phát (yán bù qīng fā)",
+        meaning: "Không phát ngôn tùy tiện — academic virtue: weighing words carefully before claiming. Khen reviewer/scholar có discipline. (书面/正式)",
+        example: "他治学严谨, 言不轻发, 每一论断皆有据可查。"
+      }
+    ],
+    cultural_notes_vi: "Văn hóa hedging trong học thuật Trung Quốc đại lục có một số đặc điểm:\n\n(1) TRADITION: hedging trong văn ngôn cổ đại đã có ('恐 / 似 / 庶几'). Tư tưởng Đạo gia coi 'không khẳng định tuyệt đối' là một virtue. Câu mở đầu của Đạo Đức Kinh '道可道, 非常道' chính là một hedge văn hoá: 'cái có thể nói được không phải cái thường tại'. Vì vậy hedging không phải foreign import — là native Chinese intellectual style.\n\n(2) DEFERENCE TO AUTHORITY: học giả Trung Quốc thường ngại challenge quan điểm của 大家 (great masters). Nếu cần phản biện một published authority, hedging cực mạnh: '愚以为...不揣冒昧地提出...或可商榷' (Kẻ ngu này cho rằng... không tự lượng đề xuất... có thể bàn luận).\n\n(3) MODERN OVERSWING: từ 2000-2010, một thế hệ scholars Trung Quốc trẻ chịu ảnh hưởng phương Tây bắt đầu viết 'confident' claims kiểu Mỹ ('我们的研究证明X'). Năm 2015+, swing back: hedging mạnh trở lại sau khi nhiều papers bị retract vì over-claim. Ngày nay viết quá confident = bị reviewer nghi không kinh nghiệm.\n\n(4) FACE & HEDGING: hedge cũng là face-saving cho future-self. Nếu bạn viết 'A 必然 提升 B' và 5 năm sau replication failure, bạn lose face. Nếu viết 'A 似乎 提升 B, 在 X 条件下', failure không hurt face — vì bạn đã hedge.\n\n(5) FOREIGN PAPERS xếp loại: paper Trung Quốc top tiers đọc Anh-Mỹ papers một cách critical. Họ note: paper Mỹ thường over-confident, paper Đức thường over-conservative, paper Nhật thường lỗi grammar nhưng claims chính xác. Học giả Trung Quốc cố gắng balance: structure Anh-Mỹ + hedging European + precision Nhật.\n\n(6) TRANSLATION TRAP: dịch thẳng English 'X causes Y' → tiếng Trung 'X 造成 Y' = quá mạnh. Đúng: 'X 与 Y 之间 存在 关联 / 在 某种 条件 下 影响 Y'. Sinh viên Việt thường mắc lỗi translate 1:1.\n\n(7) AI-ERA HEDGING: từ 2022 (ChatGPT release), giới học thuật Trung Quốc đặc biệt thận trọng với AI claims. 'AI 替代 X' / 'AI 颠覆 Y' bị flag automatically là buzz-word. Sinh viên viết 'AI có thể hỗ trợ X trong điều kiện Y' = tỉnh táo + được respect.\n\n(8) GENDER + AGE: sinh viên nữ trẻ thường được suggest hedge mạnh hơn (cultural pressure đối với 'không tự cao'). Sinh viên nam senior có thể hedge ít hơn mà vẫn được accept. Khi dạy hedging, các giáo sư nữ thường nhấn mạnh balance: enough hedge for safety, không quá nhiều để mất authority.",
+    tip_advice_vi: "(1) HEDGE TỪNG CLAIM một, không hedge cả paragraph: '这个 study 显示 X 似乎 在 Y 条件下 提升 Z'. Mỗi claim một hedge. Hedging cả paragraph = noise. (2) ĐỌC PAPER MẪU: chọn 3 papers cùng chuyên ngành published ở top journal Trung Quốc (中文 Sci 一区). Đếm số 似乎 / 在某种程度上 / 有待. Mục tiêu: match density của họ. (3) TRƯỚC KHI NỘP, DO 'CONFIDENCE AUDIT': search file của bạn cho '证明 / 必然 / 肯定 / 完全 / 一定'. Nếu xuất hiện > 5 lần, replace 70% chỗ bằng hedge. (4) LIMITATIONS SECTION = 15-20%: của methodology. Reviewer tin 'transparency' hơn là 'no flaws'. Hide limitations = paper bị reject. (5) TRANSLATE TỪ ENGLISH paper: KHÔNG dịch thẳng 'proves'. 'Proves' → '支持' (supports) / '与...一致' (consistent with). (6) NULL RESULTS handling: dùng 'in this study, no significant effect was observed' thay vì 'no effect exists'. Power analysis cần được mention. (7) DOUBLE NEGATIVE FORMAL '不无...': dùng cho hedge cực nhẹ. '此观点不无道理' = soft acknowledgement that has reservations. (8) MATCH HEDGE TO SCALE: effect size lớn = hedge nhẹ. Effect nhỏ = hedge nặng. Sinh viên thường mismatch.",
+    exercises: [
+      { type: "fill-blank", question: "在某种程度上, 现有数据 ___ 持上述假设之成立, 然其稳健性仍有待进一步验证。", answer: "支" },
+      {
+        type: "matching",
+        instruction: "Ghép cụm hedging với chức năng tiếng Việt.",
+        pairs: [
+          { chinese: "似乎", pinyin: "sì hū", english: "dường như" },
+          { chinese: "在某种程度上", pinyin: "zài mǒu zhǒng chéng dù shàng", english: "ở một mức độ nào đó" },
+          { chinese: "有待进一步研究", pinyin: "yǒu dài jìn yī bù yán jiū", english: "cần nghiên cứu thêm" },
+          { chinese: "不无道理", pinyin: "bù wú dào lǐ", english: "không phải không có lý (书面)" }
+        ]
+      },
+      {
+        type: "translation",
+        vietnamese: "Xét rằng quy mô mẫu của nghiên cứu này là hạn chế, các kết luận thu được dường như chỉ có giá trị tham khảo sơ bộ, không nên khái quát quá mức.",
+        chinese: "鉴于本研究样本规模有限, 所得结论似乎仅具初步参考价值, 不宜过度推广。",
+        pinyin: "Jiàn yú běn yán jiū yàng běn guī mó yǒu xiàn, suǒ dé jié lùn sì hū jǐn jù chū bù cān kǎo jià zhí, bù yí guò dù tuī guǎng."
+      }
+    ]
   }
 ];
 
