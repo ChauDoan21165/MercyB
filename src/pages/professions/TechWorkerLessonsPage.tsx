@@ -31,11 +31,11 @@ import {
 } from "@/data/profession-packs/tech-worker/content";
 
 const HERO_VI =
-  "Tiếng Anh dành cho dân tech. Cho dev, QA, PM, designer, devops.";
+  "Tiếng Anh cho người làm tech: dev, QA, PM, designer và DevOps.";
 const HERO_EN =
   "English for tech workers — engineers, QA, technical PMs, designers, devops.";
 const SUBHEAD_VI =
-  "Made by người Việt — học cách giao tiếp trong môi trường engineering Mỹ.";
+  "Viết cho người Việt — học cách giao tiếp trong môi trường kỹ thuật ở Mỹ.";
 
 export default function TechWorkerLessonsPage() {
   return (
@@ -153,7 +153,7 @@ function LessonTile({ lesson }: LessonTileProps) {
           <div className="rounded-lg border border-indigo-100 bg-indigo-50/60 p-3">
             <p className="inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wide text-indigo-700">
               <Code2 className="h-3 w-3" />
-              Văn hoá engineering Mỹ
+              Văn hoá kỹ thuật ở Mỹ
             </p>
             <p className="mt-1 text-xs leading-relaxed text-slate-700">
               {lesson.cultural_notes_vi}

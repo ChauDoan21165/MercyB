@@ -29,11 +29,11 @@ import {
 } from "@/data/profession-packs/drivers/content";
 
 const HERO_VI =
-  "Tiếng Anh dành cho tài xế. Cho Uber/Lyft, giao đồ ăn, tài xế xe tải.";
+  "Tiếng Anh cho tài xế: Uber/Lyft, giao đồ ăn và xe tải đường dài.";
 const HERO_EN =
   "English for drivers — Uber/Lyft, food delivery, long-haul trucking.";
 const SUBHEAD_VI =
-  "Made by người Việt — học cách giữ rating 4.8+ và xử lý sự cố trên đường.";
+  "Viết cho người Việt — học cách giữ đánh giá 4.8+ và xử lý sự cố trên đường.";
 
 export default function DriversLessonsPage() {
   return (

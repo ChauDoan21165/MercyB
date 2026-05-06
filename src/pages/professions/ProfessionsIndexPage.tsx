@@ -22,7 +22,7 @@ import {
 const HERO_VI = "Tiếng Anh nghề nghiệp cho người Việt";
 const HERO_EN = "Vocational English for Vietnamese workers";
 const SUBTITLE_VI =
-  "Mỗi gói nghề là tiếng Anh thực tế cho công việc thật — không phải sách giáo khoa.";
+  "Mỗi gói nghề tập trung vào tiếng Anh thực tế cho công việc thật — không phải tiếng Anh sách giáo khoa.";
 
 type Card = {
   slug: string;
@@ -60,7 +60,7 @@ const CARDS: Card[] = [
   },
   {
     slug: "customer-service",
-    title_vi: "Tiếng Anh chăm sóc khách",
+    title_vi: "Tiếng Anh chăm sóc khách hàng",
     title_en: "Customer Service",
     blurb_vi:
       "50 bài: mở cuộc gọi, lắng nghe chủ động, hạ nhiệt khách giận, từ chối khéo, chuyển cuộc gọi, xử lý khiếu nại.",
@@ -71,7 +71,7 @@ const CARDS: Card[] = [
   },
   {
     slug: "tech-worker",
-    title_vi: "Tiếng Anh dành cho dân tech",
+    title_vi: "Tiếng Anh cho người làm tech",
     title_en: "Tech Worker",
     blurb_vi:
       "50 bài: phỏng vấn kỹ thuật, standup, review PR, báo bug, demo, on-call, đàm phán lương, bất đồng nhóm.",
@@ -85,7 +85,7 @@ const CARDS: Card[] = [
     title_vi: "Tiếng Anh nhân viên y tế",
     title_en: "Healthcare",
     blurb_vi:
-      "50 bài: tiếp nhận, đánh giá đau, trao đổi thuốc, chăm người lớn tuổi/dementia, khẩn cấp, ghi hồ sơ. Giao tiếp — không phải training y khoa.",
+      "50 bài: tiếp nhận, đánh giá đau, trao đổi thuốc, chăm người lớn tuổi/sa sút trí tuệ, khẩn cấp, ghi hồ sơ. Giao tiếp — không phải đào tạo y khoa.",
     href: "/professions/healthcare",
     status: "active",
     Icon: HeartPulse,

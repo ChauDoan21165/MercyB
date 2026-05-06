@@ -29,18 +29,18 @@ import {
   type HealthcareLesson,
 } from "@/data/profession-packs/healthcare/content";
 
-const HERO_VI = "Tiếng Anh dành cho nhân viên y tế.";
-const HERO_LINE_2_VI = "Cho CNA, dental, home health, medical interpreter.";
+const HERO_VI = "Tiếng Anh cho nhân viên y tế.";
+const HERO_LINE_2_VI = "Cho CNA, nha khoa, chăm sóc tại nhà và phiên dịch y tế.";
 const HERO_EN =
   "English for healthcare workers — CNAs, dental assistants, home-health aides, medical interpreters.";
 const SUB_VI =
-  "Nội dung tập trung vào giao tiếp — không phải hướng dẫn y khoa. Made by người Việt, for người Việt.";
+  "Nội dung tập trung vào giao tiếp — không phải hướng dẫn y khoa. Viết cho người Việt, bởi người Việt.";
 
 const INTRO_VI =
-  "50 bài học giao tiếp y tế: tiếp nhận bệnh nhân, đánh giá đau, trao đổi thuốc, chăm sóc người lớn tuổi/sa sút trí tuệ, giao tiếp khẩn cấp, nhạy cảm văn hoá, ghi chú hồ sơ. Văn hoá bệnh viện Mỹ — không phải training y khoa.";
+  "50 bài học giao tiếp y tế: tiếp nhận bệnh nhân, đánh giá đau, trao đổi thuốc, chăm sóc người lớn tuổi/sa sút trí tuệ, giao tiếp khẩn cấp, nhạy cảm văn hoá, ghi chú hồ sơ. Văn hoá bệnh viện Mỹ — không phải đào tạo y khoa.";
 
 const SAFETY_NOTE_VI =
-  "Đây là tiếng Anh giao tiếp — KHÔNG phải khóa học y khoa, KHÔNG cấp chứng chỉ, KHÔNG thay thế training của trường nursing/dental/CNA. Mọi quyết định lâm sàng phải qua bác sĩ và y tá có giấy phép.";
+  "Đây là tiếng Anh giao tiếp — KHÔNG phải khóa học y khoa, KHÔNG cấp chứng chỉ, KHÔNG thay thế chương trình đào tạo nursing/dental/CNA. Mọi quyết định lâm sàng phải qua bác sĩ và y tá có giấy phép.";
 
 export default function HealthcareLessonsPage() {
   return (

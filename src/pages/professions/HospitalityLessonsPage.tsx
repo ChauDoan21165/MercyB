@@ -22,15 +22,15 @@ import {
   type HospitalityLesson,
 } from "@/data/profession-packs/hospitality/content";
 
-const HERO_VI = "Tiếng Anh dành cho khách sạn.";
-const HERO_LINE_2_VI = "Cho front desk, housekeeping, concierge, valet, banquet.";
+const HERO_VI = "Tiếng Anh cho ngành khách sạn.";
+const HERO_LINE_2_VI = "Cho lễ tân, dọn phòng, concierge, valet và tiệc sự kiện.";
 const HERO_EN =
   "English for hotel workers — front desk, housekeeping, concierge, valet, banquet servers.";
 const SUB_VI =
-  "Made by người Việt — học cách giao tiếp với khách Mỹ và quốc tế.";
+  "Viết cho người Việt — học cách giao tiếp với khách Mỹ và khách quốc tế.";
 
 const INTRO_VI =
-  "50 bài: nhận và trả phòng, concierge, dọn phòng, xử lý phàn nàn, tiệc & sự kiện, lễ phép qua điện thoại, khách không nói tiếng Anh, hiểu biết văn hoá. Tiêu chuẩn brand voice của khách sạn Mỹ — không phải sách giáo khoa.";
+  "50 bài: nhận và trả phòng, concierge, dọn phòng, xử lý phàn nàn, tiệc & sự kiện, lễ phép qua điện thoại, khách không nói tiếng Anh, hiểu biết văn hoá. Giọng giao tiếp chuẩn trong khách sạn Mỹ — không phải tiếng Anh sách giáo khoa.";
 
 export default function HospitalityLessonsPage() {
   return (
@@ -52,7 +52,7 @@ export default function HospitalityLessonsPage() {
         <p className="mt-3 text-sm italic text-slate-700">{SUB_VI}</p>
         <p className="mt-3 text-sm text-slate-700 leading-relaxed">{INTRO_VI}</p>
         <p className="mt-3 text-xs text-slate-500">
-          50 bài · 8 chủ đề · phiên bản brand-voice đời thực
+          50 bài · 8 chủ đề · phiên bản giao tiếp khách sạn đời thực
         </p>
         <p className="mt-1 text-xs text-slate-500">
           <Link

@@ -31,11 +31,11 @@ import {
 } from "@/data/profession-packs/customer-service/content";
 
 const HERO_VI =
-  "Tiếng Anh dành cho Customer Service. Cho call center, retail support, banking front-line.";
+  "Tiếng Anh cho chăm sóc khách hàng: tổng đài, hỗ trợ bán lẻ và giao dịch ngân hàng.";
 const HERO_EN =
   "English for customer service workers — call centers, retail support, banking, telecom, e-commerce.";
 const SUBHEAD_VI =
-  "Made by người Việt — học cách handle khách Mỹ chuyên nghiệp.";
+  "Viết cho người Việt — học cách xử lý khách Mỹ một cách chuyên nghiệp.";
 
 export default function CustomerServiceLessonsPage() {
   return (

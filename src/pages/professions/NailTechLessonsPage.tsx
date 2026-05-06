@@ -34,7 +34,7 @@ import {
 import NAIL_PACK from "@/data/profession-packs/nail-technician";
 
 const HERO_VI =
-  "Tiếng Anh dành cho thợ nail. Made by người Việt, for người Việt.";
+  "Tiếng Anh cho thợ nail. Viết cho người Việt, bởi người Việt.";
 const HERO_EN =
   "English for nail technicians, built by Vietnamese, for Vietnamese.";
 

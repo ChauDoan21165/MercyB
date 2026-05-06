@@ -27,10 +27,10 @@ const HERO_VI = "Tiếng Anh dành cho người làm nhà hàng.";
 const HERO_LINE_2_VI = "Cho server, host, đầu bếp, busser.";
 const HERO_EN = "English for restaurant workers — servers, hosts, cooks, bussers.";
 const SUB_VI =
-  "Made by người Việt, for người Việt — như bao nhiêu người Việt đang làm việc ở các nhà hàng Mỹ ngay lúc này.";
+  "Viết cho người Việt, bởi người Việt — giống như rất nhiều người Việt đang làm việc ở các nhà hàng Mỹ ngay lúc này.";
 
 const INTRO_VI =
-  "50 bài học thực tế: chào khách, gọi nước, giải thích menu, xử lý dị ứng, phàn nàn, gợi ý món Việt cho khách Mỹ, thanh toán + tip. Văn hoá nhà hàng Mỹ — không sách giáo khoa.";
+  "50 bài học thực tế: chào khách, gọi nước, giải thích menu, xử lý dị ứng, phàn nàn, gợi ý món Việt cho khách Mỹ, thanh toán + tip. Văn hoá nhà hàng Mỹ — không phải tiếng Anh sách giáo khoa.";
 
 export default function RestaurantLessonsPage() {
   return (
