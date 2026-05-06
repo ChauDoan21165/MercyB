@@ -5595,6 +5595,153 @@ export const lessons: JapaneseLesson[] = [
     ] },
     { type: "translation", vietnamese: "Do giới hạn thời gian, cho phép tôi trả lời ngắn gọn.", japanese: "持ち時間の関係上、簡潔にお答えさせていただきます。" }
   ]
+},
+{
+  id: 100,
+  title: "Academic discourse — abstract and summary writing",
+  title_vi: "Diễn ngôn học thuật — Viết tóm tắt (abstract) và tổng kết",
+  title_en: "Academic discourse — abstract and summary writing",
+  category: "academic-discourse",
+  level: "C1",
+  vocabulary: [
+    { japanese: "抄録 (しょうろく)", english: "abstract" },
+    { japanese: "要旨 (ようし)", english: "summary / gist" },
+    { japanese: "概要 (がいよう)", english: "overview" },
+    { japanese: "目的 (もくてき)", english: "purpose" },
+    { japanese: "方法 (ほうほう)", english: "method" },
+    { japanese: "結果 (けっか)", english: "result" },
+    { japanese: "結論 (けつろん)", english: "conclusion" },
+    { japanese: "字数制限 (じすうせいげん)", english: "word/character limit" },
+    { japanese: "キーワード", english: "keywords" },
+    { japanese: "簡潔 (かんけつ)", english: "concise" }
+  ],
+  examples: [
+    { japanese: "本稿は、ベトナム人日本語学習者の語用論的能力に関する実証研究である。", english: "This paper is an empirical study concerning the pragmatic competence of Vietnamese learners of Japanese." },
+    { japanese: "六十名の学習者を対象とし、ロールプレイ課題により対話データを収集した。", english: "Targeting sixty learners, dialogue data was collected through a role-play task." },
+    { japanese: "分析の結果、対話量と語用論的選択の妥当性との間に正の相関が確認された。", english: "As a result of analysis, a positive correlation between interaction volume and the validity of pragmatic choices was confirmed." },
+    { japanese: "本知見は、日本語教育における対話機会の確保の重要性を示唆するものである。", english: "These findings suggest the importance of securing opportunities for interaction in Japanese language education." },
+    { japanese: "本研究の限界として、サンプルが特定の地域に偏っていることが挙げられる。", english: "As a limitation of this study, the sample being biased toward a specific region can be mentioned." },
+    { japanese: "キーワード:語用論、日本語学習者、ロールプレイ、対話量", english: "Keywords: pragmatics, Japanese learners, role-play, interaction volume" }
+  ],
+  dialogue: [
+    { speaker: "院生", japanese: "抄録の字数制限が四百字でございますが、現状で六百字に達しております。", english: "The character limit for the abstract is four hundred, but I have currently reached six hundred." },
+    { speaker: "指導教員", japanese: "削るべきは背景の記述です。本研究の目的・方法・結果・結論の四要素に絞ってください。", english: "What should be cut is the background description. Restrict yourself to the four elements: purpose, method, results, and conclusion of this study." },
+    { speaker: "院生", japanese: "背景を一文に圧縮し、各要素を百字程度に収める方針でよろしいでしょうか。", english: "Would the policy of compressing the background into one sentence and fitting each element into around one hundred characters be acceptable?" },
+    { speaker: "指導教員", japanese: "結構です。抄録は本文の地図ですから、無駄を削ぎ落とすほど読まれます。", english: "Very well. An abstract is a map of the body, so the more waste you trim, the more it gets read." }
+  ],
+  dialogue_long: [
+    { speaker: "院生", japanese: "抄録の構成について、ご指導いただけますでしょうか。何度書き直しても焦点が定まらず、難渋しております。", english: "Could you guide me on the composition of the abstract? No matter how many times I rewrite it, the focus does not settle, and I am struggling." },
+    { speaker: "指導教員", japanese: "現在の草稿を、声に出して読んでみてください。どこで読者が迷子になるかが分かります。", english: "Try reading your current draft aloud. You will see where the reader gets lost." },
+    { speaker: "院生", japanese: "「本研究は、ベトナムにおける日本語教育の現状を踏まえ、学習者の語用論的能力の発達過程を探索的に検討するものであり…」", english: "'This study, taking into account the current state of Japanese language education in Vietnam, exploratorily examines the developmental process of learners' pragmatic competence...'" },
+    { speaker: "指導教員", japanese: "そこです。第一文で「踏まえ」が要りません。読者は背景を聞きに来ているのではなく、何を明らかにしたかを知りたいのです。", english: "There it is. In the first sentence, 'taking into account' is unnecessary. The reader has not come to hear the background but wants to know what you clarified." },
+    { speaker: "院生", japanese: "つまり、第一文は本研究の目的そのものを述べるべき、ということでございますね。", english: "In other words, the first sentence should state the purpose of the study itself." },
+    { speaker: "指導教員", japanese: "そのとおりです。「本研究は〜を明らかにすることを目的とする」が定型です。背景は第二文に短く回せます。", english: "Exactly. 'This study aims to clarify〜' is the standard form. The background can be shifted briefly to the second sentence." },
+    { speaker: "院生", japanese: "なるほど。続いて方法・結果・結論を、それぞれ二、三文ずつでまとめる、という構成でよろしいでしょうか。", english: "I see. Then would the composition of summarizing method, results, and conclusion in two or three sentences each be acceptable?" },
+    { speaker: "指導教員", japanese: "結構です。重要なのは、結果を抽象的にぼかさず、数値や主要な発見を具体的に示すことです。「有意な差が認められた」だけでは弱い。", english: "Very well. What is important is not blurring the results in the abstract but showing numerical values and main findings concretely. Just 'a significant difference was recognized' is weak." },
+    { speaker: "院生", japanese: "「対話量と語用論的妥当性との間に r=〇.六二の正の相関が確認された」のような具体性が必要、ということでございますね。", english: "So concreteness like 'a positive correlation of r=0.62 between interaction volume and pragmatic validity was confirmed' is necessary." },
+    { speaker: "指導教員", japanese: "そのとおりです。読者は抄録のみで論文の核心を判断します。具体的な発見が抄録にあるか否かが、本文を読まれるか否かを左右します。", english: "Exactly. Readers judge the core of the paper from the abstract alone. Whether or not concrete findings are in the abstract determines whether or not the body gets read." },
+    { speaker: "院生", japanese: "結論部については、いかがでしょうか。", english: "What about the conclusion section?" },
+    { speaker: "指導教員", japanese: "結論は、結果が何を意味するかを一文で述べ、限界を一文添えてください。新しい主張を導入してはいけません。", english: "For the conclusion, state in one sentence what the result means, and add one sentence on limitations. You must not introduce new claims." },
+    { speaker: "院生", japanese: "肝に銘じます。本日中に書き直し、明日再度ご確認をお願いできればと存じます。", english: "I take that to heart. I will rewrite it by today and would appreciate confirmation again tomorrow." },
+    { speaker: "指導教員", japanese: "結構です。声に出して、読者になったつもりで読み返すことを忘れずに。", english: "Very well. Don't forget to read it aloud as if becoming the reader." }
+  ],
+  roleplay_prompts: [
+    "Bạn viết abstract 400-字 limit. Cấu trúc 5 câu: (1) purpose, (2) brief background, (3) method với specifics, (4) result với numbers, (5) conclusion + limitation. KHÔNG mở bằng background — Nhật academic abstract opens với purpose.",
+    "Reviewer chỉ ra abstract của bạn quá vague: '結果の記述が抽象的'. Đáp lại bằng concrete numbers / findings, không general claims. Cụm: 〜の関係に r=〇.六二 の正の相関が確認された thay cho 'significant correlation observed'.",
+    "Bạn viết tổng kết kết luận. Cụm 本知見は〜を示唆するものである cho impact, sau đó 本研究の限界として〜が挙げられる. KHÔNG introduce new claims trong summary — chỉ recap + limit + future."
+  ],
+  register_notes: "Abstract writing ở C1 Japanese tuân theo cấu trúc IMRaC (Introduction-Methods-Results-Conclusion) compressed. (1) WORD-LIMIT TIERS — Nhật academic abstracts: 国際学会 200-300 từ tiếng Anh, 国内学会 300-600 字 tiếng Nhật, journal articles 400-800 字. Strict — over-limit auto-reject. (2) FIVE-SENTENCE TEMPLATE — câu 1: purpose ('本研究は〜を明らかにすることを目的とする'); câu 2: background ('〜については先行研究で〜が指摘されているが、〜については検討されていない'); câu 3-4: method + results với specifics ('〜名を対象とし〜を行い、〜が確認された'); câu 5: implication + limit ('本知見は〜を示唆するが、〜の制約がある'). Strict 5-sentence makes abstract scannable. (3) TENSE — methods và results past tense (〜した、〜が確認された); conclusion present (〜を示唆する); purpose can be either (〜を目的とする / 〜を目的とした). Consistency within each function. (4) AVOID — citations (abstract tự đứng độc lập), undefined acronyms (define hoặc skip), figures/tables (text only), forward references ('see Section 3' cấm). (5) KEYWORDS — 3-5 chuẩn, ordered từ specific (concept của bạn) đến general (field). Keywords là search-engine targeting; chọn carefully. (6) ABSTRACT VS SUMMARY VS OVERVIEW — 抄録 = formal abstract (front of paper). 要旨 = summary (often longer, presentation/proposal context). 概要 = overview (less structured, intro material). C1 phải distinguish. Common mistakes: opening với background (Western style sometimes does this; Nhật convention opens với purpose), vague results ('有意な結果が得られた' không đủ — need numbers), introducing new ideas in conclusion. Avoid: 思う (too soft), 〜と感じる (subjective). Use 〜と考えられる, 〜が示唆される.",
+  idiom_glosses: [
+    { idiom: "簡にして要を得る (かんにしてようをえる)", literal: "Đơn giản nhưng nắm được điểm chính", meaning: "[硬い・書き言葉] Concise yet capturing essence — virtue tối cao trong abstract writing.", example: "優れた抄録とは、簡にして要を得るものであり、読者を本文へと自然に導く。" },
+    { idiom: "言を尽くす (げんをつくす)", literal: "Dùng hết lời", meaning: "[書き言葉] Diễn đạt đầy đủ — anti-ideal cho abstract; warning against verbosity.", example: "抄録において言を尽くそうとすれば、かえって焦点が定まらない。" },
+    { idiom: "肝心要 (かんじんかなめ)", literal: "Gan + tim + then chốt — phần thiết yếu nhất", meaning: "[書き言葉・話し言葉] Core essential — abstract phải capture 肝心要 của paper.", example: "抄録には、本研究の肝心要のみを抽出して記すべきである。" },
+    { idiom: "読者の地図となる (どくしゃのちずとなる)", literal: "Trở thành bản đồ cho người đọc", meaning: "[書き言葉] Set phrase metaphor — abstract = map của paper, guide reader's navigation.", example: "良い抄録は、読者の地図となり、本文のいかなる節を読むべきかを示唆する。" }
+  ],
+  cultural_notes_vi: "Abstract conventions ở Nhật academic khác phương Tây ở 4 điểm. (1) PURPOSE FIRST, NOT BACKGROUND — Western abstracts (đặc biệt humanities) often mở bằng broad context; Nhật mở thẳng với research purpose ở câu 1. Trong tiếng Nhật, default reader assumed to know background; trong tiếng Anh international, có thể cần thêm 1 sentence context. Adjust theo target venue. (2) HUMBLE TONE EVEN IN ABSTRACT — Nhật abstract retain academic humility: 〜と考えられる > 〜である for interpretation; 〜の可能性が示唆される > 〜が証明された. Western abstract có thể bolder; Nhật reviewer có thể bị đẩy lùi bởi over-confident abstract. (3) NUMBERS DENSITY — Nhật C1 abstracts (especially STEM) dày đặc với specifics: sample sizes, effect sizes, p-values, percentages. Vague abstracts đọc weak. Humanities có thể less numerical nhưng vẫn cần concrete categories thay vì general claims. (4) BILINGUAL ABSTRACTS — nhiều Nhật journals require 和文抄録 (Japanese abstract) cộng English abstract. KHÔNG dịch direct — adjust mỗi version cho audience. English abstract có thể cần thêm context (international readers don't know Japan-specific terms); Japanese version assume more shared context. Khác VN: VN abstract conventions variable theo journal; nhiều VN journals chấp nhận longer narrative abstracts. Nhật C1 strictly structured. Adjust khi submit qua biên giới. Mẹo: collect 10 abstracts từ target journal, study structure. Mỗi journal có conventions riêng (some allow first-person, some don't; some require explicit headings 'Purpose:', 'Method:'). Match exactly. Mẹo: keywords trong tiếng Nhật KHÔNG được dùng spaces giữa terms — comma-separated với readings (kanji compounds typically). Mẹo cuối: nếu paper bị desk-reject từ abstract, KHÔNG giải thích hay protest — abstract is paper's elevator pitch; nếu fails, paper fails. Rewrite, resubmit elsewhere với better abstract.",
+  tip_advice_vi: "Workflow viết abstract C1 hiệu quả. (a) WRITE LAST — KHÔNG viết abstract trước paper. Write paper completely, sau đó distill. Pre-written abstracts thường drift away from final paper content. (b) REVERSE OUTLINE — sau hoàn thiện paper, viết 1-sentence summary mỗi section. Combine those sentences = first abstract draft. Often coherent enough cần ít revision. (c) MEASURE COMPRESSION RATIO — paper 8000 字 → abstract 400 字 = 5 phần trăm compression. Anything ratio under 3 phần trăm → abstract underwritten; over 8 phần trăm → paper undertight or abstract wordy. Sweet spot 4-6 phần trăm. (d) TRIM IN PASSES — pass 1: cut every 'などの', 'において', 'について' that doesn't change meaning. Pass 2: replace verbose forms với compressed (〜することができる → 〜できる). Pass 3: combine related sentences với 〜し、〜. Each pass typically saves 10-15 phần trăm. (e) TEST SCANNABILITY — show abstract to colleague không trong field. Hỏi: trong 30 giây, bạn nắm được purpose, method, finding chính? Nếu không, abstract still vague. Mẹo về số lượng — nếu paper có nhiều findings, list 2 chính trong abstract, mention 'その他の知見については本文を参照されたい'. Không cần dump tất cả. Mẹo về limitations — 1 limitation câu trong abstract acceptable; 3+ limitations nghe defensive. Hold rest cho discussion. Mẹo về keywords — dùng terms reviewer sẽ search. Nếu field có jargon Anh-Nhật parallel (e.g., プラグマティクス vs 語用論), include both. Maximize discoverability. Mẹo về 和文 vs English abstracts — write Japanese first nếu primary audience là Japanese; English first nếu primary là international. Direct translation often awkward; rewrite với target audience in mind. Mẹo cuối: revise abstract ít nhất 5 lần. Abstract chính là phần được đọc most và judge most. Time investment 5x rate-per-word so với body justified.",
+  exercises: [
+    { type: "fill-blank", question: "本知見は、日本語教育における対話機会の確保の重要性を___するものである。", answer: "示唆" },
+    { type: "matching", instruction: "Ghép cụm với chức năng abstract.", pairs: [
+      { japanese: "本研究は〜を明らかにすることを目的とする", english: "purpose statement — abstract sentence 1" },
+      { japanese: "〜を対象とし、〜を行った", english: "method statement — abstract sentence 3" },
+      { japanese: "〜が確認された", english: "result statement — past tense, concrete" },
+      { japanese: "本研究の限界として〜が挙げられる", english: "limitation note — abstract sentence 5" }
+    ] },
+    { type: "translation", vietnamese: "Là giới hạn của nghiên cứu này, có thể nêu ra việc mẫu thiên về một khu vực cụ thể.", japanese: "本研究の限界として、サンプルが特定の地域に偏っていることが挙げられる。" }
+  ]
+},
+{
+  id: 101,
+  title: "Academic discourse — peer review feedback",
+  title_vi: "Diễn ngôn học thuật — Phản hồi peer review",
+  title_en: "Academic discourse — peer review feedback",
+  category: "academic-discourse",
+  level: "C1",
+  vocabulary: [
+    { japanese: "査読 (さどく)", english: "peer review" },
+    { japanese: "査読者 (さどくしゃ)", english: "peer reviewer" },
+    { japanese: "コメント", english: "comment" },
+    { japanese: "修正 (しゅうせい)", english: "revision" },
+    { japanese: "対応 (たいおう)", english: "response / handling" },
+    { japanese: "再投稿 (さいとうこう)", english: "resubmission" },
+    { japanese: "採択 (さいたく)", english: "acceptance" },
+    { japanese: "不採択 (ふさいたく)", english: "rejection" },
+    { japanese: "条件付き採択 (じょうけんつきさいたく)", english: "conditional acceptance" },
+    { japanese: "応答書 (おうとうしょ)", english: "response letter" }
+  ],
+  examples: [
+    { japanese: "査読者各位のご指摘に深く感謝申し上げます。", english: "I deeply appreciate the indications of each reviewer." },
+    { japanese: "ご指摘の点につきましては、本文〇ページにて修正いたしました。", english: "Regarding the point you indicated, I have revised it on page X of the body." },
+    { japanese: "ご懸念の点について、以下のとおり対応いたしましたので、ご確認いただけますと幸いです。", english: "Regarding the point of concern, I have handled it as follows; I would be grateful if you could confirm." },
+    { japanese: "ご指摘は誠にもっともでございますが、紙幅の都合により、本稿では取り扱いを限定いたしました。", english: "The indication is entirely reasonable, but due to space constraints, this paper has limited the treatment." },
+    { japanese: "本論点については、改稿時に新たに節を設けて対応いたしました。", english: "Regarding this issue, in the revision I have set up a new section to address it." },
+    { japanese: "貴重なお時間を賜り、ご査読いただきましたこと、重ねて御礼申し上げます。", english: "I extend my gratitude once again for receiving your valuable time and your peer review." }
+  ],
+  dialogue: [
+    { speaker: "著者", japanese: "査読結果を拝見いたしました。条件付き採択とのことで、応答書の作成に取り掛かっております。", english: "I have reviewed the peer review result. As it is conditional acceptance, I am beginning preparation of the response letter." },
+    { speaker: "共著者", japanese: "査読者AとBで指摘が一部対立していますが、どう対応しましょうか。", english: "Reviewers A and B have partially conflicting indications — how shall we handle that?" },
+    { speaker: "著者", japanese: "対立点については、両者の指摘を併記したうえで、本稿の立場を改めて説明する方針でよろしいかと存じます。", english: "Regarding points of conflict, I think the policy of presenting both indications side by side and then re-explaining this paper's position would be acceptable." },
+    { speaker: "共著者", japanese: "それが穏当かと存じます。応答書の草稿、私のほうでも目を通します。", english: "That seems sound. I will also look over the draft of the response letter." }
+  ],
+  dialogue_long: [
+    { speaker: "著者", japanese: "査読コメントが二名分、計十七点ございます。応答書をどう構成すべきか、ご相談させていただけますでしょうか。", english: "There are review comments from two reviewers, seventeen points in total. May I consult on how to structure the response letter?" },
+    { speaker: "指導教員", japanese: "まず、コメントを四区分に整理してください。受け入れて修正、部分的に受け入れ、留保つきで応答、お断り。", english: "First, organize the comments into four categories: accepted and revised, partially accepted, responded to with reservation, and declined." },
+    { speaker: "著者", japanese: "受け入れが十二点、部分的が三点、留保つきが一点、お断りが一点でございます。", english: "Twelve are accepted, three partial, one with reservation, one declined." },
+    { speaker: "指導教員", japanese: "お断りの一点、内容を伺ってもよろしいでしょうか。", english: "May I hear the content of the one decline?" },
+    { speaker: "著者", japanese: "査読者Aより、「分析対象を中級学習者にも拡張すべき」とのご指摘ですが、本研究は上級学習者の特性に焦点を絞っており、拡張は本稿の射程外でございます。", english: "Reviewer A indicated 'the analysis target should be extended to intermediate learners as well,' but this study focuses on the characteristics of advanced learners, and extension falls outside the scope of this paper." },
+    { speaker: "指導教員", japanese: "妥当な判断です。応答書では、お断りの理由を丁寧に説明し、今後の課題として残す旨を明記してください。", english: "A reasonable judgment. In the response letter, carefully explain the reason for declining, and make clear that you leave it as a future task." },
+    { speaker: "著者", japanese: "承知いたしました。文面の例といたしましては、「ご指摘の通り、中級学習者を含めることにより知見の射程は広がりますが、本研究では上級学習者の特性を深く掘り下げることを優先いたしました。中級学習者への拡張は、今後の研究課題として承りたく存じます」のような形でいかがでしょうか。", english: "Understood. As an example of the wording: 'As you indicate, including intermediate learners would broaden the scope of findings, but in this study, deeply delving into the characteristics of advanced learners was prioritized. Extension to intermediate learners, I would receive as a future research task' — would something like this be acceptable?" },
+    { speaker: "指導教員", japanese: "結構です。お断りの場合でも、必ず査読者の指摘の妥当性を認め、感謝を表する。これが応答書の鉄則です。", english: "Very well. Even when declining, always acknowledge the validity of the reviewer's indication and express gratitude. This is the iron rule of the response letter." },
+    { speaker: "著者", japanese: "肝に銘じます。受け入れた点については、修正後の本文ページ数も併記すべきでしょうか。", english: "I take that to heart. For accepted points, should I also note the body page numbers after revision?" },
+    { speaker: "指導教員", japanese: "もちろんです。査読者は、自分の指摘がどう反映されたか、本文と応答書を往復して確認します。ページ番号があれば、その手間が省け、印象が良くなります。", english: "Of course. Reviewers go back and forth between body and response letter to confirm how their indication was reflected. With page numbers, that effort is saved, and the impression improves." },
+    { speaker: "著者", japanese: "なるほど。応答書は単なる説明ではなく、査読者への配慮の表現でもあるわけですね。", english: "I see. So the response letter is not merely an explanation but also an expression of consideration for the reviewers." },
+    { speaker: "指導教員", japanese: "そのとおりです。応答書の質が、再査読の結果を左右することも少なくありません。", english: "Exactly so. It is not uncommon for the quality of the response letter to influence the result of the re-review." },
+    { speaker: "著者", japanese: "心して取り組みます。草稿が出来ましたら、再度ご確認をお願いいたします。", english: "I will work on it in earnest. When the draft is ready, I will request your confirmation again." }
+  ],
+  roleplay_prompts: [
+    "Bạn nhận conditional acceptance với 10 reviewer comments. Mở response letter bằng 査読者各位のご指摘に深く感謝申し上げます. Sau đó list mỗi point: comment summary → response → page number của revision. KHÔNG defensive — accept hoặc explain gracefully.",
+    "Bạn cần decline 1 reviewer suggestion (out of scope). Cụm: ご指摘の通り、〜により知見の射程は広がりますが、本研究では〜を優先いたしました。〜への拡張は、今後の研究課題として承りたく存じます. Acknowledge merit + explain priority + defer.",
+    "Reviewer A và B mâu thuẫn nhau. Phrase: 査読者A様のご指摘とB様のご指摘とは部分的に対立しておりますが、本稿としては〜の立場を取らせていただきたく存じます. KHÔNG side với một reviewer aggressively — explain choice với balance."
+  ],
+  register_notes: "Peer review response letter ở C1 Japanese tuân theo strict format. (1) STRUCTURE — opening: thank reviewers ('査読者各位のご指摘に深く感謝申し上げます'); body: numbered response cho each comment; closing: 重ねて御礼申し上げます. (2) PER-COMMENT FORMAT — '査読者A様、ご指摘1: [paraphrase comment]. ご対応: [explain change], 修正箇所: 本文〇ページ〇行目'. Numbered, paraphrased (shows you understood), explicit page reference. (3) FOUR RESPONSE CATEGORIES — accept and revise (most common, simplest): 'ご指摘を踏まえ、〜のとおり修正いたしました'. Partial accept: 'ご指摘を踏まえ、〜の点については修正いたしましたが、〜については〜の理由により従来通りといたしました'. Reservation: 'ご指摘の点、誠にもっともながら、〜の制約により本稿では〜にとどめざるを得ませんでした'. Decline: ALWAYS acknowledge merit first, then explain why declined, then offer future-work framing. KHÔNG flat 'no'. (4) HONORIFICS — toward reviewer: 査読者A様 (formal), ご指摘 (honorific), ご教示 (humble request). Toward yourself/paper: 本稿, 当方, いたしました (humble). Maintain throughout — slipping into casual mid-letter signals carelessness. (5) CONFLICT HANDLING — when reviewers disagree, NEVER take sides ('A is right, B is wrong'). Cụm: '査読者A様とB様のご指摘は部分的に対立しておりますが、本稿としては〜の立場を取らせていただきたく存じます。これは、〜という理由によるものでございます'. Show bạn weighed both. (6) EDITOR-VS-REVIEWER — response letter addressed to editor, but content responds to reviewers. Editor reads first, decides re-review. Pro tip: short cover note to editor summarizing major changes, separate from detailed point-by-point. Forbidden vocabulary: わかりません, それは違います, 不要です. Required cushioning: 誠にもっともながら, ご指摘を踏まえ, 重ねて御礼申し上げます. Tone calibration: even when reviewer is wrong (rare but happens — factual error), respond gentle: 'ご指摘の点について改めて確認いたしましたところ、〇〇に関する記述は本文〇ページに既に明記しておりました' (rather than 'you missed page X'). Save face for reviewer.",
+  idiom_glosses: [
+    { idiom: "鉄は熱いうちに打て (てつはあついうちにうて)", literal: "Đập sắt khi còn nóng", meaning: "[書き言葉・話し言葉] Strike while iron hot — submit response letter trong window editor expects, không delay momentum.", example: "査読結果を受領した後は、鉄は熱いうちに打てと申しますし、速やかに応答書の作成に取り掛かるべきでございます。" },
+    { idiom: "謙虚に受け止める (けんきょにうけとめる)", literal: "Tiếp nhận một cách khiêm tốn", meaning: "[書き言葉] Accept feedback humbly — set phrase showing reviewer's comments accepted constructively.", example: "査読者各位のご指摘を謙虚に受け止め、改稿に反映いたしました。" },
+    { idiom: "慎重を期す (しんちょうをきす)", literal: "Cố gắng cẩn trọng", meaning: "[書き言葉] Take utmost care — phù hợp khi explaining bạn revised carefully theo comment.", example: "本箇所については、ご指摘を踏まえ、慎重を期して再検討いたしました。" },
+    { idiom: "再考の上、〜とした (さいこうのうえ、〜とした)", literal: "Sau khi xem xét lại, làm〜", meaning: "[硬い・書き言葉] After reconsideration, did X — formal phrase signaling thoughtful revision, not knee-jerk.", example: "ご指摘を踏まえ、再考の上、本節の構成を全面的に見直すこととした。" }
+  ],
+  cultural_notes_vi: "Peer review culture ở Nhật academia khác phương Tây ở 4 điểm. (1) GRATITUDE NORM — Nhật response letter không thể skip thanks. Mở thanks, đóng thanks, scattered thanks throughout cho specific suggestions. Western response letters đôi khi terse và transactional; Nhật reads as cold without thanks. Không phải sycophantic — đó là baseline civility. (2) DECLINE-ALWAYS-WITH-CARE — flat decline ('we disagree') hiếm khi acceptable. Even nếu reviewer's suggestion impossible, frame: acknowledge → explain constraint → defer to future work. Reviewer nhớ cách bạn declined; ungraceful decline reflects long-term. (3) REVIEWER ANONYMITY OFTEN BREACHED INFORMALLY — Nhật academic field nhỏ, tight network. Reviewers thường identifiable từ writing style, comment specifics. Treat response giả định reviewer sẽ biết identity của bạn (and you của họ) post-publication. Long-term relationship management. (4) RE-REVIEW EXPECTATIONS — sau revision, same reviewers thường được asked re-review. Nếu response letter aggressive hoặc dismissive, second-round verdict often harsher. Quality của response letter often determines accept/reject as much as quality of revisions. Khác VN: VN academic peer review culture variable; some journals casual. Nhật C1 journals strict format expectations. Khi submit qua biên giới, học specific journal conventions. Mẹo: collect 3-5 published response letters (some journals publish them) trong target journal, study tone. Mẹo về timing — Nhật reviewers thường complete trong 4-8 tuần. Sau bạn nhận feedback, ideal turnaround 2-4 tuần cho revision. Longer = signal not taking seriously. Mẹo: nếu cần thêm time, request extension early với polite email tới editor. Mẹo cuối: appreciation post-acceptance — sau paper accepted, send brief thanks tới editor (reviewers anonymous nhưng thanks reaches them indirectly). Cụm: 採択のご通知、誠にありがとうございました。査読者各位、編集委員会の皆様に重ねて御礼申し上げます. Maintains relationship cho future submissions.",
+  tip_advice_vi: "Peer review response workflow C1 Japanese. (a) READ ALL COMMENTS THRICE — first read: emotional reaction (let it pass, không respond ngay). Second read 24 hours later: classify mỗi comment (accept/partial/reservation/decline). Third read: identify specific revisions needed. KHÔNG draft response trong 24 hours đầu — emotional residue contaminates tone. (b) CREATE COMMENT TABLE — spreadsheet với columns: reviewer/number, comment paraphrase, your response category, specific revision (page/line), draft response text. Forces systematic handling. (c) REVISE PAPER FIRST, THEN WRITE LETTER — sequence matters. Revise body, sau đó letter references actual page numbers. Revising letter và body simultaneously creates inconsistencies. (d) FORMAT CHO READER — single-spaced response letter với clear hierarchy: Reviewer A heading > comment 1 > response > page reference. Bold reviewer comments, normal text response. Reviewer scans nhanh khi format clean. (e) ACCEPT MORE THAN BẠN INSTINCTIVELY WANT TO — first instinct often defensive: 'I already addressed that'. Second look thường shows reviewer nắm point bạn missed. Accept generously khi defensible — ratio 80 phần trăm accept : 20 phần trăm decline thường wise. (f) FOR DECLINES, OVER-EXPLAIN — accepted points cần ngắn ('修正済み, 本文5ページ参照'); declined points cần long explanation. Show bạn engaged seriously, không dismissed. Mẹo về scope — nếu reviewer asks expansion ('add intermediate learners'): graceful decline + future-work framing OK if scope clearly defined ahead. Nếu reviewer asks deeper analysis on existing scope: usually must accept. Mẹo về emotional management — store harsh comment 24-48 hours trước responding. Initial draft với 'unfortunately the reviewer misunderstands' bắt buộc phải đổi sang 'thank you for the comment, perhaps the original wording was unclear' trong final. Mẹo về co-authors — circulate response letter draft tới mọi co-authors trước submit. One co-author khilling final tone catches misjudged sentences. Mẹo cuối: lưu response letter mỗi paper. Pattern recognition (which comments recur, which language works best) builds skill across submissions. Sau 5-10 papers, response letter quality dramatically improves và becomes career asset.",
+  exercises: [
+    { type: "fill-blank", question: "ご指摘の点につきましては、本文〇ページにて___いたしました。", answer: "修正" },
+    { type: "matching", instruction: "Ghép cụm với chức năng response letter.", pairs: [
+      { japanese: "査読者各位のご指摘に深く感謝申し上げます", english: "opening — required gratitude" },
+      { japanese: "ご指摘を踏まえ、〜のとおり修正いたしました", english: "accept-and-revise — most common pattern" },
+      { japanese: "誠にもっともながら、紙幅の都合により〜にとどめざるを得ませんでした", english: "partial accept with reservation" },
+      { japanese: "今後の研究課題として承りたく存じます", english: "graceful decline — defer to future work" }
+    ] },
+    { type: "translation", vietnamese: "Cám ơn quý vị đã dành thời gian quý báu để bình duyệt; xin được gửi lời cảm ơn một lần nữa.", japanese: "貴重なお時間を賜り、ご査読いただきましたこと、重ねて御礼申し上げます。" }
+  ]
 }
 ];
 export default lessons;
