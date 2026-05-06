@@ -4467,6 +4467,240 @@ export const lessons: JapaneseLesson[] = [
     ] },
     { type: "translation", vietnamese: "Lúc này không cần làm gì cả — em chỉ ở đây thôi.", japanese: "今は何もしなくて大丈夫です。ただ、ここにおります。" }
   ]
+},
+{
+  id: 85,
+  title: "Apologizing for a serious mistake — repairing a friendship",
+  title_vi: "Xin lỗi vì sai lầm nghiêm trọng — hàn gắn tình bạn",
+  title_en: "Apologizing for a serious mistake — repairing a friendship",
+  category: "fluency",
+  level: "B2",
+  vocabulary: [
+    { japanese: "お詫び (おわび)", english: "apology (formal noun)" },
+    { japanese: "申し訳ない (もうしわけない)", english: "inexcusable / I'm so sorry" },
+    { japanese: "反省 (はんせい)", english: "self-reflection / accountability" },
+    { japanese: "責任 (せきにん)", english: "responsibility" },
+    { japanese: "言い訳 (いいわけ)", english: "excuse" },
+    { japanese: "信頼 (しんらい)", english: "trust" },
+    { japanese: "裏切る (うらぎる)", english: "to betray" },
+    { japanese: "取り戻す (とりもどす)", english: "to recover / regain" },
+    { japanese: "誠意 (せいい)", english: "sincerity" },
+    { japanese: "二度と (にどと)", english: "never again" }
+  ],
+  examples: [
+    { japanese: "今回の件、本当に申し訳ございませんでした。", english: "About this matter — I am truly sorry." },
+    { japanese: "言い訳はいたしません。すべて私の責任です。", english: "I won't make excuses. The responsibility is entirely mine." },
+    { japanese: "どうお詫びしてよいか、言葉が見つかりません。", english: "I don't know how to apologize — I can't find the words." },
+    { japanese: "二度とこのようなことを繰り返さぬよう、深く反省しております。", english: "I am deeply reflecting so this never happens again." },
+    { japanese: "信頼を取り戻せるよう、誠意を持って向き合ってまいります。", english: "I'll face this with sincerity so that I can earn back your trust." }
+  ],
+  dialogue: [
+    { speaker: "チャウ", japanese: "今日はお時間いただいて、ありがとうございます。先日の件で、直接お詫びがしたくて参りました。", english: "Thank you for the time today. I came in person to apologize for the other day." },
+    { speaker: "友人", japanese: "うん、座って。", english: "Mm, sit down." },
+    { speaker: "チャウ", japanese: "本当に申し訳ございませんでした。言い訳のしようもありません。", english: "I am truly sorry. There's no excuse I can offer." },
+    { speaker: "友人", japanese: "正直、傷ついた。でも、来てくれたこと、まずは聞かせて。", english: "Honestly, I was hurt. But — first, you came. Let me hear you." }
+  ],
+  dialogue_long: [
+    { speaker: "チャウ", japanese: "今日は急にお時間をいただいて、本当にありがとうございます。", english: "Thank you for making time on short notice today." },
+    { speaker: "友人", japanese: "うん。何度かメッセージが来てたから、会わなきゃとは思ってた。座って。", english: "Mm. You'd messaged a few times, so I thought we should meet. Sit." },
+    { speaker: "チャウ", japanese: "(深く頭を下げて) 先日の私の発言、本当に申し訳ございませんでした。あなたを傷つけてしまいました。", english: "(bows deeply) My remark the other day — I am truly sorry. I hurt you." },
+    { speaker: "友人", japanese: "頭、上げて。話しましょう。", english: "Raise your head. Let's talk." },
+    { speaker: "チャウ", japanese: "ありがとうございます。あの場で、私はあなたの仕事のことについて、軽い気持ちで話してしまいました。他の方の前で、しかも、あなたの努力を知らないかのように。本当にひどいことをしました。", english: "Thank you. At that moment, I spoke about your work lightly. In front of others, as if I didn't know your efforts. I did something truly awful." },
+    { speaker: "友人", japanese: "...あの場で、何で言ったの? 普段のチャウさんと違ったから、私もびっくりしてた。", english: "...why did you say it there? It wasn't like the Chau I know — I was startled." },
+    { speaker: "チャウ", japanese: "言い訳になりますので、長くは申しません。ただ、当日、私自身、別の場所で叱られたばかりで、気持ちが乱れておりまして。それを、あろうことか、あなたに向けてしまいました。完全に私の弱さです。", english: "It would be an excuse, so I won't go on. But that day, I had just been scolded elsewhere, and my emotions were disturbed. I — unforgivably — directed it at you. Entirely my own weakness." },
+    { speaker: "友人", japanese: "そうだったんだ。でも、それを聞いたから許せるとは限らないよ。", english: "I see. But hearing that doesn't necessarily mean I can forgive." },
+    { speaker: "チャウ", japanese: "おっしゃる通りでございます。理解いただきたくてお話ししたわけではございません。理由は、私の責任を軽くするものではございません。", english: "You're absolutely right. I'm not telling you in order to be understood. The reason doesn't lighten my responsibility." },
+    { speaker: "友人", japanese: "うん。それを、最初から、わかっててくれてるなら、話せる。", english: "Mm. If you understand that from the start, then I can talk." },
+    { speaker: "チャウ", japanese: "あなたが受けた痛みを、完全には想像できないかと思います。ただ、私自身、過去に同じような扱いを受けた経験がございますので、少しでも近づけたいと思っております。あの日以来、毎日、自分の発言を振り返っております。", english: "I don't think I can fully imagine the pain you felt. But I myself have experienced something similar in the past, so I want to come even a little closer to understanding. Since that day, I've reviewed my own words every day." },
+    { speaker: "友人", japanese: "私が一番つらかったのは、信頼してた人だったから、ってこと。", english: "What hurt me most was that it was someone I trusted." },
+    { speaker: "チャウ", japanese: "...そうですよね。信頼を裏切ってしまいました。それが、最も深い罪かと存じます。", english: "...yes. I betrayed your trust. That, I believe, is the deepest fault." },
+    { speaker: "友人", japanese: "言葉だけだったら、たぶん、もうチャウさんとは距離を置いてた。来てくれたから、話してる。", english: "If it had only been words, I'd probably already have distanced myself. You came — that's why we're talking." },
+    { speaker: "チャウ", japanese: "ありがとうございます。今日、お許しをいただきたいというお願いはいたしません。それは、私が決めることではございません。ただ、私としてできることをお伝えしたく存じます。", english: "Thank you. I won't ask for forgiveness today. That isn't for me to decide. But I'd like to share what I can do." },
+    { speaker: "友人", japanese: "うん、聞かせて。", english: "Yes, tell me." },
+    { speaker: "チャウ", japanese: "あの場にいた方々に、後日、私の発言が不当だったことをお伝えします。あなたが補修する必要のないようにしたく存じます。それから、二度とあのような場面で誰かを軽んじる発言をしないよう、自分に約束いたしました。それでも、許せないと感じられたら、それも当然のことかと存じます。", english: "I'll tell those who were there, later, that my remark was unjust. I want to make sure you don't have to repair anything. And I've promised myself never to make a remark belittling anyone in such a setting again. Even so — if you feel you can't forgive me, that, too, is natural." },
+    { speaker: "友人", japanese: "...わかった。今日のところは、それでいい。時間が必要かもしれないけど、また話せると思う。", english: "...all right. For today, that's enough. I may need time, but I think we can talk again." },
+    { speaker: "チャウ", japanese: "ありがとうございます。いつでも、ご連絡をお待ちしております。私から催促することはいたしません。", english: "Thank you. I'll await contact whenever. I won't push from my side." }
+  ],
+  roleplay_prompts: [
+    "Đóng vai bạn ngồi xuống trước người bạn Nhật bạn đã làm tổn thương. Bạn cần OPEN với deep apology — KHÔNG explanation trước, KHÔNG context. Cụm: makoto ni moushiwake gozaimasen deshita cộng cúi 30-45 độ. Đợi họ phản ứng. KHÔNG lift head until họ said 'atama wo agete' (nâng đầu lên).",
+    "Bạn đưa lý do (tâm trạng rối, vừa bị mắng nơi khác). Hãy KHÔNG dùng lý do để excuse — frame như explanation MÀ đồng thời accept là không xóa được lỗi. Cụm: iiwake ni narimasu node, nagaku wa moushimasen cộng riyuu wa, watakushi no sekinin wo karuku suru mono dewa gozaimasen.",
+    "Bạn KHÔNG ask forgiveness today. Hãy show concrete actions bạn sẽ làm — KHÔNG vague promises. Cụm: o-yurushi wo itadakitai to iu o-negai wa itashimasen. Liệt kê 2-3 việc cụ thể (e.g., correct misinformation với nhóm, change behavior pattern). Frame như bạn earn trust trở lại, KHÔNG demand it."
+  ],
+  register_notes: "Apology nghiêm trọng ở Nhật là craft. Năm patterns: (1) BOW DEPTH SIGNALS DEPTH: 15 độ = light apology (bumping into someone); 30 độ = medium (forgetting appointment); 45 độ = deep (hurt feelings, broken trust); 90 độ + holding 5 giây = serious wrongdoing. KHÔNG over-bow — 90 độ for forgotten lunch sounds melodramatic. Friend-level deep apology = 30-45 độ, hold 3-5 giây. (2) APOLOGY VERB STAGE: makoto ni moushiwake gozaimasen deshita (truly inexcusable) > moushiwake gozaimasen (apologetic) > sumimasen deshita (sorry — too light for serious). For meaningful break, dùng moushiwake gozaimasen deshita stage. (3) NO EXCUSE BEFORE APOLOGY: cardinal rule. KHÔNG 'I'm sorry but...' Open với apology raw. Reason ONLY if asked, AFTER apology accepted at least partially. Even then, frame: iiwake ni narimasu ga (this will become an excuse). Acknowledging excuse-status preempts criticism. (4) ACCOUNTABILITY OWNS THE FAULT: KHÔNG say 'misunderstanding' (gokai), 'I didn't mean it' (sou iu tsumori dewa nakatta) — sounds như deflecting. Use: subete watakushi no sekinin desu (entirely my responsibility). Even if shared blame realistic, in apology moment, take 100 phần trăm. (5) DON'T DEMAND FORGIVENESS: 'I hope you can forgive me' = subtle pressure. Better: o-yurushi wo itadakitai to iu o-negai wa itashimasen. sore wa, watakushi ga kimeru koto dewa gozaimasen (I'm not asking for forgiveness — that isn't mine to decide). Releases pressure, paradoxically increases forgiveness chance. // TODO native review — ano hi no hatsugen phrasing — alternative ano toki no kotoba feels more relational; native reviewers split on whether 'fukaku hansei shite orimasu' sounds sincere or formulaic in friend context — context-dependent.",
+  idiom_glosses: [
+    { idiom: "覆水盆に返らず", literal: "Nước đổ không thể về khay", meaning: "Việc đã làm không thể hoàn lại — phù hợp acknowledge mistake không thể undo, chỉ làm gì đó từ đây trở đi.", example: "覆水盆に返らずと申しますが、これからの行動でお返しできればと存じます。" },
+    { idiom: "禊を済ます", literal: "Hoàn thành lễ tẩy uế", meaning: "Trong context apology, frame act of apology như ritual cleansing — không erase error, mà mark willingness to begin again.", example: "今日のお詫びで全てが済むとは思っておりません。これは始まりに過ぎません。" },
+    { idiom: "立つ鳥跡を濁さず", literal: "Chim bay đi không làm đục nước", meaning: "Đi mà không để lại vết bẩn — phù hợp frame commitment không tái phạm, để lại quan hệ sạch.", example: "立つ鳥跡を濁さずと申しますし、今後は一切、同じ過ちを繰り返さぬよう努めます。" },
+    { idiom: "誠心誠意", literal: "Hết lòng hết dạ", meaning: "Cụm 4 chữ về sincerity tuyệt đối — nhấn rằng apology không formality.", example: "誠心誠意、向き合わせていただきます。" }
+  ],
+  cultural_notes_vi: "Apology văn hóa Nhật khác VN ở 7 điểm. (1) APOLOGY = ACT, NOT WORD: Nhật phân biệt 言葉のお詫び (lời apology) vs 行動のお詫び (apology bằng hành động). Word alone không đủ for serious wrong. Action: in-person visit, gift (omiyage), follow-up commitment, behavior change. Foreigners thường stop at words — Nhật wait for action. (2) IN-PERSON > MESSAGE: serious apology phải in-person. Text/call đầu OK để request meeting, KHÔNG là apology itself. Nếu khoảng cách lớn (overseas), video call > text. (3) GIFT IF APPROPRIATE: cho serious apology, mang omiyage nhỏ — KHÔNG expensive (sounds như bribe). Một hộp wagashi (Japanese sweets, 2,000-3,000 yen), một chai sake nice (3,000-5,000 yen). Wrap trong simple paper, white not flashy. Present after apology accepted, KHÔNG before. (4) TIME GAP MATTERS: apology 1-2 ngày after offense better than 1 tuần. Delay = perceived indifference. Nếu cần time để cool down (yours), brief acknowledgment + request meeting trong 48 hours: hansei shite orimasu. mou sukoshi shitara, jikan wo itadaitemo yoroshii deshou ka (đang reflecting, sau ít hôm xin được thời gian). (5) WITNESS MATTERS: nếu offense was public, apology nên có public component (correction in same group, public retraction). Nếu offense private, apology stay private. Mismatch = noted as awkward. (6) DOGEZA IS RARE: 土下座 (full prostration) extreme apology — appropriate for major wrongs (financial damage, public dishonor). KHÔNG cho friend hurt feelings. Over-doing đó = melodrama, friend uncomfortable. (7) FORGIVENESS NOT GUARANTEED: dù apology perfect, friend có thể không forgive. Accept gracefully. Cụm: o-yurushi itadakenakute mo, sore mo touzen no koto kato zonjimasu (dù không được tha thứ, đó cũng tự nhiên). Don't double down. Khác biệt với VN: ở VN apology thường over-emotional, immediate makeup, nhanh chóng moving on; Nhật apology measured, formal, KHÔNG rush. Process slow, but resolution thường stronger. Mẹo: practice apology speech 1-2 lần before delivery. Ghi out keypoints: (a) what bạn did, (b) what consequence, (c) what bạn understand of their pain, (d) what bạn'll do từ đây, (e) bạn không expect forgiveness today. Năm phần này, mỗi phần 2-3 câu. Total ~5 phút. Long-term: friend recovery takes 3-6 tháng even sau perfect apology. Patient. Don't withdraw if họ cool. Don't push if họ silent. Just stay available. Most relationships heal nếu offender stays consistent.",
+  tip_advice_vi: "Khi nhận ra mình sai: STOP làm anything else cho đến khi address. Reach out within 24 hours với short message: senjitsu no ken de, chokusetsu o-wabi sasete itadakitaku zonjimasu. o-jikan, kyousei shite mo yoroshii deshou ka (về việc hôm trước, em xin được trực tiếp xin lỗi — xin được thời gian). KHÔNG include apology trong text — save for in-person. Họ có thể respond cool hoặc delay — accept. Khi họ agree to meet: chọn neutral location (cafe, restaurant private corner, KHÔNG bar — alcohol làm conversation messy). Arrive 10 phút sớm. Wear neat clean clothing — KHÔNG flashy, KHÔNG sloppy. KHÔNG smell of alcohol. Cell phone silent. Bring small gift (3,000-5,000 yen) wrapped simple, ready to present at end. Khi gặp: don't hug, don't physical touch. Bow at greeting. Find seat. Order drinks if cafe — water OK. Khi sit down: đợi họ settle. KHÔNG dive in. Cụm khi ready: kyou wa, o-jikan wo itadaki, makoto ni arigatou gozaimasu cộng deep bow 30-45 độ. Hold 3 giây. Then start apology. Apology structure: (a) acknowledge what happened — concrete (KHÔNG 'what I did wrong' — say SPECIFIC: 'when I said X in front of Y'). (b) acknowledge their pain — KHÔNG 'sorry if you were hurt' (conditional = excuse). Say: 'anata wo kizutsukete shimaimashita' (I hurt you). (c) accept responsibility — entirely yours. (d) explain only if asked, briefly. (e) state actions you'll take. (f) explicitly release them from forgiveness obligation. Total 3-5 phút. Speak slowly, voice low, eye contact 50 phần trăm — too much = pressuring, too little = evasive. Pauses OK — let them process. Khi họ respond: LISTEN FULLY. Don't defend. Don't add. Just absorb. If họ cry, hand tissue silently, KHÔNG hug. If họ angry, accept the anger — Cụm: sou iwarete touzen desu (you're right to say that). If họ silent long, accept: ima, kotoba ga nai no mo touzen kato (silence is natural now too). Closing the meeting: don't ask for forgiveness verdict. Cụm: kyou wa, kiite itadaki, arigatou gozaimasu. mata, dou ka go-renraku no oki ni meshimase (thank you for listening today; please contact me at your convenience). Stand, bow again, leave. Don't look back at door. After meeting: send brief follow-up message within 24 hours. KHÔNG repeat apology. Brief: kyou wa, o-jikan wo itadaki, arigatou gozaimashita. go-renraku, o-machi shite orimasu. Then SILENCE. Don't message again. Don't post on social media. Wait. Họ contact bạn when ready — could be 1 week, 1 month, 6 months. Honor their pace. Long-term: nếu họ resume contact gradual, follow their lead. KHÔNG act like nothing happened (sounds dismissive). KHÔNG dwell on past offense (guilt-burden). Move forward but reference khi appropriate: ano koto wo wasurete imasen (I haven't forgotten that). Mẹo cuối: nếu họ KHÔNG resume contact in 6 months, accept it. Một final message OK: o-genki ni o-sugoshi de irassharu koto wo, negatte orimasu (wishing you well). Then truly let go. Some relationships don't recover. That's a lesson, not a failure.",
+  exercises: [
+    { type: "fill-blank", question: "言い訳はいたしません。すべて私の___です。", answer: "責任" },
+    { type: "matching", instruction: "Ghép cụm với function.", pairs: [
+      { japanese: "誠に申し訳ございませんでした", english: "deepest formal apology — used for serious offenses" },
+      { japanese: "言い訳になりますので、長くは申しません", english: "preempt excuse-status when giving context" },
+      { japanese: "信頼を取り戻せるよう", english: "frame goal as earning back trust, not demanding forgiveness" },
+      { japanese: "お許しいただけなくても、当然のことかと", english: "release the other person from forgiveness pressure" }
+    ] },
+    { type: "translation", vietnamese: "Em không xin tha thứ — đó không phải điều em quyết được.", japanese: "お許しをいただきたいというお願いはいたしません。それは私が決めることではございません。" }
+  ]
+},
+{
+  id: 86,
+  title: "Saying goodbye permanently — friend moving away, end of a relationship",
+  title_vi: "Lời tạm biệt vĩnh viễn — bạn chuyển đi xa, kết thúc một mối quan hệ",
+  title_en: "Saying goodbye permanently — friend moving away, end of a relationship",
+  category: "fluency",
+  level: "B2",
+  vocabulary: [
+    { japanese: "別れ (わかれ)", english: "parting / farewell" },
+    { japanese: "再会 (さいかい)", english: "reunion" },
+    { japanese: "思い出 (おもいで)", english: "memory" },
+    { japanese: "感謝 (かんしゃ)", english: "gratitude" },
+    { japanese: "寂しい (さびしい)", english: "lonely / wistful" },
+    { japanese: "縁 (えん)", english: "fate / connection" },
+    { japanese: "見送る (みおくる)", english: "to see (someone) off" },
+    { japanese: "前向き (まえむき)", english: "forward-looking / positive" },
+    { japanese: "新しい門出 (あたらしいかどで)", english: "new departure (for someone starting over)" },
+    { japanese: "心の中 (こころのなか)", english: "in one's heart" }
+  ],
+  examples: [
+    { japanese: "今日まで、本当にありがとうございました。", english: "Until today — truly thank you." },
+    { japanese: "離れていても、心の中ではいつもつながっております。", english: "Even apart, in our hearts we'll always be connected." },
+    { japanese: "一緒に過ごした日々は、私の宝物でございます。", english: "The days we spent together are my treasure." },
+    { japanese: "新しい門出に、心からエールを送らせていただきます。", english: "I send my heartfelt cheer for your new departure." },
+    { japanese: "またいつか、どこかでお会いできる日を楽しみにしております。", english: "I look forward to the day we meet again, somewhere, sometime." }
+  ],
+  dialogue: [
+    { speaker: "チャウ", japanese: "本当に、明日出発なんですね。", english: "You're really leaving tomorrow." },
+    { speaker: "友人", japanese: "うん。長かったような、短かったような。", english: "Yeah. Felt long, felt short." },
+    { speaker: "チャウ", japanese: "今日まで、本当にありがとうございました。あなたと過ごした時間は、私の宝物です。", english: "Until today — thank you truly. The time with you is my treasure." },
+    { speaker: "友人", japanese: "こちらこそ。離れても、つながっていようね。", english: "Same here. Even apart, let's stay connected." }
+  ],
+  dialogue_long: [
+    { speaker: "チャウ", japanese: "(送別の食事の席にて) 今日は、お時間を作っていただいて、本当にありがとうございます。", english: "(at a farewell meal) Thank you for making time today." },
+    { speaker: "友人", japanese: "むしろ、こちらこそ。チャウさんが企画してくれて嬉しい。", english: "I should thank you. I'm glad you arranged this." },
+    { speaker: "チャウ", japanese: "明日、いよいよドイツに発たれるんですね。実感がまだ湧きません。", english: "Tomorrow you really leave for Germany. It hasn't sunk in." },
+    { speaker: "友人", japanese: "私もまだ。荷物は全部送ったのに、なんだか夢みたい。", english: "Me neither. All my things are shipped, but it feels like a dream." },
+    { speaker: "チャウ", japanese: "三年前、初めてお会いしたとき、まさかこんな深い友達になれるとは思ってもいませんでした。", english: "Three years ago when we first met, I never thought we'd become such close friends." },
+    { speaker: "友人", japanese: "私も。日本語の教室で、隣の席だっただけだったのにね。", english: "Me too. We were just neighbors in Japanese class." },
+    { speaker: "チャウ", japanese: "あの頃、私はまだ日本語が拙くて、よく助けていただきました。あなたが教えてくださった「察する」という言葉、今でも忘れません。", english: "Back then my Japanese was clumsy; you helped me often. The word 'sassuru' you taught me — I still haven't forgotten." },
+    { speaker: "友人", japanese: "覚えてたんだ。あれは、私が「察すること、難しい」って言った日だったよね。", english: "You remembered. That was the day I said 'reading the unsaid is hard,' wasn't it." },
+    { speaker: "チャウ", japanese: "そうです。あの言葉から、文化を超えた心の通い方を学ばせていただきました。", english: "Yes. From that word, I learned a way hearts connect across cultures." },
+    { speaker: "友人", japanese: "嬉しい。そう言ってもらえると、私もこの三年、無駄じゃなかったと思える。", english: "I'm glad. Hearing that, I feel these three years weren't wasted." },
+    { speaker: "チャウ", japanese: "無駄なんて、とんでもございません。あなたが私の人生に与えてくださったものは、計り知れません。", english: "Wasted? Far from it. What you've given my life is immeasurable." },
+    { speaker: "友人", japanese: "ありがとう。チャウさんも、私にいっぱいくれた。日本にいる外国人としての視点、私の視野を広げてくれた。", english: "Thank you. You gave me a lot too. The view of a foreigner in Japan widened mine." },
+    { speaker: "チャウ", japanese: "(少し沈黙) ドイツに行かれて、お元気でいてください。", english: "(brief silence) In Germany — please stay well." },
+    { speaker: "友人", japanese: "うん。チャウさんも。家族のこと、大切にね。", english: "Mm. You too. Take care of your family." },
+    { speaker: "チャウ", japanese: "離れていても、心の中では、いつもつながっております。私にとって、あなたとの縁は一生のものです。", english: "Even apart, in my heart we'll always be connected. For me, our connection is for life." },
+    { speaker: "友人", japanese: "私もそう思う。一年に一回、メッセージじゃなくて、ちゃんと電話しよう。声を聞こう。", english: "I feel the same. Once a year, not just a message — let's actually call. Hear each other's voices." },
+    { speaker: "チャウ", japanese: "ぜひ。それから、いつか、どちらの国でもいいので、再会できる日を楽しみにしております。", english: "Yes please. And someday — in either country — I look forward to the day we meet again." },
+    { speaker: "友人", japanese: "うん、約束。じゃあ、次の乾杯、再会の日に。", english: "Yes — promise. Then our next toast — for the day we meet again." },
+    { speaker: "チャウ", japanese: "ありがとうございます。あなたの新しい門出に、心からエールを送らせていただきます。お元気で。", english: "Thank you. I send my heartfelt cheer for your new departure. Stay well." }
+  ],
+  roleplay_prompts: [
+    "Đóng vai bạn ở bữa tối tiễn đưa bạn Nhật chuyển đi định cư ở Đức. Hãy KHÔNG khóc to (Nhật restraint), KHÔNG over-promise tương lai. Cụm chính: kyou made, makoto ni arigatou gozaimashita cộng share một kỷ niệm cụ thể (KHÔNG generic 'good times'). Specific = sincere.",
+    "Bạn của bạn nói 'I'm sad to leave'. Hãy KHÔNG say 'don't be sad' (dismisses feeling). Cụm: o-kimochi, juubun ni rikai dekimasu cộng share lại sự sad của chính bạn — mutual vulnerability. Sau đó frame như chuyến đi mới, KHÔNG kết thúc.",
+    "Cuối bữa, bạn cần đóng cuộc gặp với gì hơn 'see you later'. Cụm phù hợp: anata to no en wa, isshou no mono desu (mối duyên với bạn là cả đời). Plus một concrete plan reconnection (call once a year, visit specific year). Reality > vague promise."
+  ],
+  register_notes: "Lời tạm biệt vĩnh viễn ở Nhật là restraint + specificity. Năm patterns: (1) GRATITUDE BEFORE SADNESS: open với thanks, not sad. Cụm: kyou made, makoto ni arigatou gozaimashita. Lý do: Nhật value gratitude làm anchor; sadness allowed but secondary frame. Khác Western style 'I'm so sad you're leaving' direct opener. (2) SPECIFIC MEMORIES > GENERAL: dùng 1-2 specific memory references — câu họ said, một meal cụ thể, một moment shared. Generic 'good times' sounds rote. Specific shows you valued the relationship deeply. (3) RESTRAINT IN CRYING: tears OK quietly, KHÔNG sobbing. Một single tear with a smile = poetic Nhật image. Loud emotion makes Nhật uncomfortable, perceived as performative. (4) KHÔNG OVER-PROMISE FUTURE: instead of 'we'll talk every week!' (likely false), use realistic: ichinen ni ikkai, denwa shimashou (let's call once a year). Realistic promise more likely kept = more meaningful. (5) FRAME AS NEW BEGINNING THEIR SIDE: shift focus to their atarashii kadode (new departure). Send energy outward. Cụm: anata no atarashii kadode ni, kokoro kara ehru wo okurasete itadakimasu. KHÔNG self-focus on your own loss. // TODO native review — 'isshou no mono' phrasing — alternative kekko fukai en mềm hơn cho close-but-not-romantic friendship; native reviewer suggested 'kako no fubuki' for permanent end of romantic relationship to avoid implications.",
+  idiom_glosses: [
+    { idiom: "袖振り合うも他生の縁", literal: "Vạt áo chạm nhau cũng là duyên kiếp trước", meaning: "Cuộc gặp gỡ tưởng tình cờ thực ra có duyên — phù hợp frame friendship như có ý nghĩa hơn ngẫu nhiên.", example: "袖振り合うも他生の縁と申しますが、あなたとの出会いは、私にとって特別なものでした。" },
+    { idiom: "会うは別れの始め", literal: "Gặp gỡ là khởi đầu của chia ly", meaning: "Triết lý vô thường (mujou) Phật giáo — cuộc gặp ẩn chứa cuộc chia. Thừa nhận parting là không tránh được.", example: "会うは別れの始めと申しますが、それでも、共に過ごせた日々に感謝しております。" },
+    { idiom: "去る者日々に疎し", literal: "Người đi xa ngày càng nhạt", meaning: "Câu cảnh báo: người đi xa thường nhạt dần — phù hợp khi commit chống lại trend này, mà KHÔNG over-promise.", example: "去る者日々に疎しと申しますが、私たちはそうならないよう、お互い努力したく存じます。" },
+    { idiom: "一期一会", literal: "Một thời, một gặp", meaning: "Mỗi cuộc gặp duy nhất — tea ceremony origin, khái niệm rằng từng moment với người là không thể lặp lại. Phù hợp closing toast.", example: "一期一会の精神で、今日の時間を心に刻みたく存じます。" }
+  ],
+  cultural_notes_vi: "Lời tạm biệt văn hóa Nhật khác VN ở 6 điểm. (1) GIFT EXCHANGE TRADITION: tại tiệc tiễn (送別会, soubetsukai), người ra đi thường nhận gifts — book about Japan để nhớ, photo album, regional specialties. Bạn cho người đi gift KHÔNG quá expensive (5,000-10,000 yen) hoặc bulky (họ phải pack). Light, meaningful: book of haiku, simple ceramic, photo printed nicely. Họ thường give gift back (memorabilia from soon-to-be-far place). Mutual exchange. (2) LETTER OVER SPEECH: at parting, brief handwritten letter (tegami) treasured more than long verbal speech. Letter survives years. Verbal speech forgotten. Write letter beforehand — even 1 page handwritten Japanese (or English với careful translation). Present at closing of meal. (3) NO HUGGING: dù emotional moment, hug KHÔNG là default. Bow at parting, perhaps light touch on shoulder. Hug only if individual relationship has established touch. Forced hug = awkward. (4) RAILWAY STATION FAREWELL: nếu seeing off at train station, classical pattern: walk to ticket gate, exchange final words on outside, watch them pass through, wave qua glass barrier until train pulls out. Don't leave first — let them disappear from view. Powerful imagery in Japanese culture — many films showcase this. (5) NEW YEAR CARD COMMITMENT: New Year cards (年賀状, nengajou) traditional way maintain long-distance friendship. Even loose ties survive via annual card. Commit to nengajou exchange — write address ngay. Continues decades. (6) RECONNECTION WHEN VISITING: nếu họ về Japan visit, expectation = họ contact bạn. Reverse same. Don't assume — explicit promise: kondo nihon ni kaette kuru toki wa, kanarazu o-shirase kudasai (next time you come back, please tell me). KHÔNG passive 'maybe see you'. Khác biệt với VN: ở VN tiệc chia tay thường rộn ràng, nhiều speech, nhiều rượu, late-night karaoke; Nhật quieter, deeper. Vietnamese might find Japanese parting feels 'cold' — đó không phải cold, là restraint với heaviness underneath. Mẹo: nếu mất relationship qua break-up rather than physical move, văn hóa Nhật thường ngừng contact hoàn toàn (ghosting). Foreigners có thể find this jarring. KHÔNG read như rejection of you — là Nhật cách closing emotional chapter. Don't push to reconnect. Long-term: track key dates — họ birthday, năm họ moved, anniversary của một moment shared. Brief contact một trong những ngày này per year keeps thread alive. Không phải over-contact, một thread thin mạnh hơn cuộc gọi forced không đều.",
+  tip_advice_vi: "Trước farewell event: prepare 3 things. (a) WRITE LETTER: 1 page, handwritten if possible. Structure: thanks for specific things, one shared memory in detail, your hope for their future, your commitment to stay in touch (realistic). KHÔNG generic. Một specific thing họ taught bạn, một meal that moved bạn. (b) GIFT: small, meaningful, transportable. Book in your language of authors they like. Photo printed nicely với simple frame. Hand-made craft. (c) CONCRETE FUTURE PLAN: KHÔNG vague. Plan như 'nengajou yearly + một call ngày X mỗi năm + nếu họ về Japan, dinner cụm này'. Realistic so probable kept. Day of event: arrive 10 phút sớm. Wear nice but not too formal (normal nice clothes — too formal sounds funeral). KHÔNG bring all friends — small group (3-5) better than large (10+). Quality conversation impossible với 10. Khi gặp: light greeting, hug only if relationship history. Find seat. Order food. Đừng rush to emotion — let conversation flow naturally first 30-60 phút. Khoảng 60-90 phút mark, naturally turn deep. Cụm transition: kyou made, makoto ni arigatou gozaimashita. Hold short pause. Then share specific. Rest of group có thể follow. Khi họ respond: listen fully. KHÔNG defend nếu họ critique (gentle), KHÔNG dismiss nếu họ thanks (over-modesty). Just receive. Tears OK quiet. Smile through tears. Nhật image. Closing the event: don't drag — set time end. Cụm: o-tsukare-sama de gozaimasu. souyousou aru kara, kyou wa kono atari de (you have early morning, let's wrap here). Walk together to station/parking. At parting point: brief final words, bow, wave. KHÔNG long extended goodbye — getas more painful. After event: send brief follow-up message within 24 hours. KHÔNG repeat what said in person. Brief: kyou wa, ureshikattai desu cộng safe travels message. Then begin distance phase. Long-term distance maintenance: nengajou commitment first January. Họ birthday brief message. One scheduled video call yearly. Anniversary of một shared event optional. KHÔNG try replicate frequency của in-person — distance friendship has different rhythm. Quality > frequency. Mẹo nếu họ ngừng responding: 1-2 unanswered nengajou OK — họ busy. 3+ silent years = họ moved on. Accept gracefully. Một final brief message OK: o-genki ni o-sugoshi de irassharu koto wo, kokoro kara negatte orimasu. Then truly let go. Some friendships have season. Mẹo cuối nếu farewell là end-of-relationship (break-up, falling-out không recoverable): rules different. Less ceremony, more dignity. Brief, no shared meal, no gift. Cụm: kyou made no jikan, kansha shite imasu. dou ka, o-genki de (thanks for time we had, take care). Then no contact — respect cleanness của ending.",
+  exercises: [
+    { type: "fill-blank", question: "離れていても、心の中ではいつも___っております。", answer: "つなが" },
+    { type: "matching", instruction: "Ghép cụm với function.", pairs: [
+      { japanese: "今日まで、本当にありがとうございました", english: "open farewell with gratitude before sadness" },
+      { japanese: "あなたが教えてくださった「察する」という言葉", english: "specific memory beats generic appreciation" },
+      { japanese: "新しい門出にエールを送らせていただきます", english: "shift focus to their forward journey" },
+      { japanese: "一年に一回、ちゃんと電話しよう", english: "realistic promise outlives vague commitment" }
+    ] },
+    { type: "translation", vietnamese: "Em mong ngày nào đó, ở đâu đó, lại được gặp bạn.", japanese: "またいつか、どこかでお会いできる日を楽しみにしております。" }
+  ]
+},
+{
+  id: 87,
+  title: "Supporting a friend through a hard time — work stress, family troubles",
+  title_vi: "Hỗ trợ bạn đang khó khăn — căng thẳng công việc, vấn đề gia đình",
+  title_en: "Supporting a friend through a hard time — work stress, family troubles",
+  category: "fluency",
+  level: "B2",
+  vocabulary: [
+    { japanese: "辛い (つらい)", english: "tough / painful (emotionally)" },
+    { japanese: "大変 (たいへん)", english: "rough / a lot to handle" },
+    { japanese: "頑張る (がんばる)", english: "to do one's best / endure" },
+    { japanese: "無理しないで (むりしないで)", english: "don't push yourself" },
+    { japanese: "肩の荷 (かたのに)", english: "burden on one's shoulders" },
+    { japanese: "話を聞く (はなしをきく)", english: "to listen (to someone's story)" },
+    { japanese: "心配 (しんぱい)", english: "worry / concern" },
+    { japanese: "応援 (おうえん)", english: "cheering / support" },
+    { japanese: "休む (やすむ)", english: "to rest" },
+    { japanese: "そばにいる (そばにいる)", english: "to be by someone's side" }
+  ],
+  examples: [
+    { japanese: "最近、お疲れのご様子ですが、大丈夫でいらっしゃいますか。", english: "You seem tired lately — are you all right?" },
+    { japanese: "話したくなければ、無理に話さなくて大丈夫です。", english: "If you don't feel like talking, you don't have to force it." },
+    { japanese: "私で良ければ、いつでも話を聞きます。", english: "If I'm useful, I'll listen anytime." },
+    { japanese: "一人で抱え込まないでくださいね。", english: "Please don't carry it alone." },
+    { japanese: "ゆっくり、無理せず、ご自分のペースで。", english: "Slowly, without pushing, at your own pace." }
+  ],
+  dialogue: [
+    { speaker: "チャウ", japanese: "最近、お元気ですか。少しお疲れのご様子で、心配しております。", english: "How have you been lately? You seem tired — I'm worried." },
+    { speaker: "友人", japanese: "うん...仕事と家のことで、ちょっと参ってる。", english: "Yeah... between work and home, I'm a bit worn out." },
+    { speaker: "チャウ", japanese: "話したくなければ、無理になさらなくて大丈夫です。ただ、一人で抱え込まないでくださいね。", english: "You don't have to force yourself to talk. Just — don't carry it alone." },
+    { speaker: "友人", japanese: "ありがとう。少し聞いてもらってもいい?", english: "Thank you. May I share a little?" }
+  ],
+  dialogue_long: [
+    { speaker: "チャウ", japanese: "今日、お時間いただいて、ありがとうございます。お疲れのところ、お呼び立てしてすみません。", english: "Thank you for the time today. Sorry to call you out when you're tired." },
+    { speaker: "友人", japanese: "ううん、むしろ呼んでくれて助かった。家にいると、ぼーっと考え込んでしまって。", english: "No — I'm glad you called. At home, I just blank out and ruminate." },
+    { speaker: "チャウ", japanese: "そうでしたか。最近、お会いするたびに、少しお疲れのご様子で、ずっと気になっておりまして。", english: "I see. Each time we've met lately, you've seemed tired — I've been concerned." },
+    { speaker: "友人", japanese: "気づいてくれてたんだ。実は、仕事と母のことで、ちょっと参ってて。", english: "You noticed. Actually, work and mom's situation — I've been worn out." },
+    { speaker: "チャウ", japanese: "話せる範囲で構いません。ご無理には、お聞きしません。", english: "Only what you can share. I won't ask beyond your comfort." },
+    { speaker: "友人", japanese: "ありがとう。仕事は、半年前にプロジェクトリーダーになって、責任が一気に増えて。残業が続いてて、家に帰ると母のことが待ってる。母、最近認知症の症状が出始めて。", english: "Thanks. Work — I became project lead six months ago, responsibility shot up. Overtime is constant, and at home, mom's situation waits. She's recently started showing dementia symptoms." },
+    { speaker: "チャウ", japanese: "...それは、本当に、肩の荷が重いですね。職場でも家でも、休まる場所がない。", english: "...that is truly a heavy burden. No place to rest, neither at work nor at home." },
+    { speaker: "友人", japanese: "うん。最近、自分が誰のために生きてるのか、わからなくなる時があって。", english: "Yeah. Lately there are times I don't know who I'm living for." },
+    { speaker: "チャウ", japanese: "(少し沈黙) ...そう感じてしまう瞬間、ありますよね。気持ち、想像できないかもしれませんが、お話聞かせていただけて、ありがたく思います。", english: "(brief silence) ...there are moments one feels that way. I may not fully imagine it, but I'm grateful you're sharing." },
+    { speaker: "友人", japanese: "ごめんね、重い話して。", english: "Sorry to dump heavy talk on you." },
+    { speaker: "チャウ", japanese: "重いなんて、とんでもございません。むしろ、聞かせていただいて、私の方こそありがたいです。一つ、伺ってもよろしいですか。", english: "Heavy? Not at all. If anything, I'm grateful to hear. May I ask one thing?" },
+    { speaker: "友人", japanese: "うん、何?", english: "Sure, what?" },
+    { speaker: "チャウ", japanese: "お母さまのケアで、デイサービスや、ヘルパーさんの手は借りていらっしゃいますか。", english: "For your mother's care — are you using day services, or helper support?" },
+    { speaker: "友人", japanese: "まだ申請してない。手続きがめんどうで、後回しに。", english: "Haven't applied yet. The paperwork's a hassle — kept putting it off." },
+    { speaker: "チャウ", japanese: "お一人で全部抱えると、ご自身が倒れてしまいます。地域の包括支援センターが手続きをサポートしてくださるので、ご一緒に伺ってもよろしいでしょうか。", english: "Carrying everything alone — you yourself will collapse. The local comprehensive support center helps with paperwork. May I go with you?" },
+    { speaker: "友人", japanese: "...一緒に行ってくれるの?", english: "...you'd come with me?" },
+    { speaker: "チャウ", japanese: "もちろんです。週末、空いておりますので、ご都合が合えば、一緒に申請の予約を取りましょう。それから、お仕事も、職場で介護休暇制度があるか、人事の方に伺うのも一つの手かと存じます。", english: "Of course. I'm free this weekend; if your schedule fits, let's book an application together. Also, at work — asking HR if family-care leave is available is one option." },
+    { speaker: "友人", japanese: "そっか。一人で全部、考えてた。誰かに聞けばよかったんだ。", english: "I see. I was figuring it all out alone. I should have asked someone." },
+    { speaker: "チャウ", japanese: "頑張りすぎる方ほど、人に頼ることを忘れてしまわれます。今日、話してくださって、本当にありがとうございます。週末、ご連絡しますね。それまで、無理せず、ご自分のペースで。", english: "Those who try hardest tend to forget to lean on others. Thank you for talking today. I'll reach out before the weekend. Until then — without pushing, at your own pace." }
+  ],
+  roleplay_prompts: [
+    "Đóng vai bạn nhận thấy bạn Nhật mệt mỏi nhiều tuần. Open conversation KHÔNG bằng 'are you OK?' (yes/no closes door) — bằng observation specific. Cụm: saikin, o-tsukare no go-yousu de, shinpai shite orimasu (gần đây thấy bạn mệt, em lo). Sau đó pause để họ choose share hoặc deflect.",
+    "Bạn của bạn share work + family stress. Hãy KHÔNG offer solutions immediately — first acknowledge weight. Cụm: kata no ni, omoi desu ne. shokuba demo ie demo, yasumaru basho ga nai (gánh nặng đè vai. ở work hay home không có chỗ nghỉ). Reflect lại. Solution-mode quá sớm = họ feel unheard.",
+    "Sau khi listen, bạn move to practical help — KHÔNG generic 'let me know if you need anything' (họ never ask). Specific: 'cuối tuần em đi cùng bạn lên trung tâm hỗ trợ điều thủ tục cho mẹ'. Cụm: go-issho ni ukagatte mo yoroshii deshou ka. Specific + concrete + you-going = thật sự share burden."
+  ],
+  register_notes: "Hỗ trợ bạn khó khăn ở Nhật cần balance enryo (không xâm phạm) và sasshi (đọc tâm). Năm patterns: (1) OPEN WITH SPECIFIC OBSERVATION, NOT QUESTION: 'are you OK' yes/no closes door. 'You've seemed tired' opens. Cụm: o-tsukare no go-yousu de cộng shinpai. Họ có agency to deflect (sou desu ne, jissai ni wa heiki desu) hoặc share. Both responses valid. (2) RESPECT THEIR PACE: nếu họ deflect, accept. KHÔNG push. Cụm: hai, kashikomarimashita. mata, o-itsudemo, o-koe gake itashimasu (vâng, lúc nào cũng có thể nhắn). Ý: door open. Họ come back when ready. (3) NO 'TAIHEN DESU NE' AS DISMISSAL: 'taihen' OK in light context. In serious sharing, sounds dismissive ('that sounds rough') — close conversation. Use heavier acknowledgment: kata no ni, omoi desu ne (the burden is heavy, isn't it) hoặc o-kimochi, juubun ni rikai dekimasu. (4) ASK PERMISSION TO ASK: nếu nghi gì cụ thể (đã apply support? đã talk to HR?), ASK PERMISSION first. Cụm: hitotsu, ukagatte mo yoroshii deshou ka. Then ask. Direct probing without permission = invasive. (5) OFFER SPECIFIC HELP, NOT GENERIC: KHÔNG 'let me know if anything I can do' (Japanese never ask — burdens you = they avoid). Cụm specific: konshuumatsu, go-issho ni X ni ukagaitemo yoroshii deshou ka. Concrete time + concrete action. Họ accept hoặc decline cụ thể. // TODO native review — 'kata no ni, omoi desu ne' phrasing — alternative go-fudan ga ookii desu ne sounds slightly more formal; some natives prefer 'tsurai desu ne' for emotional weight; never use 'oyousu yo' as closing — sounds dismissive in this register.",
+  idiom_glosses: [
+    { idiom: "肩の荷が下りる", literal: "Gánh nặng rời vai", meaning: "Cảm giác nhẹ vai sau khi share — phù hợp closing: thank họ for trusting you with the burden.", example: "今日、お話しいただいて、少しでも肩の荷が下りていれば嬉しく存じます。" },
+    { idiom: "親しき仲にも礼儀あり", literal: "Gần thân cũng cần lễ nghi", meaning: "Trong friendship sâu, vẫn ask permission trước khi probe — respect maintained.", example: "親しき仲にも礼儀ありと申しますし、立ち入ったことを伺う前に、一言お断りさせていただきます。" },
+    { idiom: "情けは人の為ならず", literal: "Lòng tốt không vì người khác", meaning: "Thực ra: lòng tốt cuối cùng quay lại với chính mình — KHÔNG misread như 'don't be kind'. Phù hợp khi friend nói 'sorry to bother you'.", example: "情けは人の為ならずと申します。私もいつかお世話になりますので、お互い様です。" },
+    { idiom: "腹を割って話す", literal: "Mổ bụng ra mà nói", meaning: "Nói thẳng từ tim — phù hợp acknowledge friend đã honne với bạn, đó là big trust.", example: "腹を割って話してくださって、こちらこそ感謝しております。" }
+  ],
+  cultural_notes_vi: "Văn hóa hỗ trợ ở Nhật khác VN ở 6 điểm. (1) ENRYO BARRIER: Nhật value KHÔNG burden others (meiwaku wo kakenai). Họ tự nhiên hide stress, decline help. Bạn có thể ask 5 lần, mỗi lần họ say 'daijoubu' before họ accept once. KHÔNG read 'daijoubu' literal — read context (body language, tone). (2) SOLUTION FATIGUE: Nhật stressed thường KHÔNG want solutions — họ already considered them. Want sasshi (acknowledgment), không advice. Don't jump to solutions. Listen 80 phần trăm, suggest 20 phần trăm. (3) PROFESSIONAL HELP STIGMA: mental health professional consultation in Japan increasing nhưng still stigma. Friend may resist 'see a counselor'. Better frame: chiiki no soudan madoguchi (community consultation desk) hoặc hokenfu-san (public health nurse) — feels less 'mental health' và more 'general support'. (4) FAMILY CARE INSURANCE (介護保険): nếu friend caring for elderly parent với dementia/disability, Japan has comprehensive family-care insurance system (kaigo hoken). Most Japanese KHÔNG aware of full benefits. Encourage application via 地域包括支援センター (chiiki houkatsu shien sentaa, community comprehensive support center) — every neighborhood has one. Free consultation. (5) WORKPLACE LEAVE OPTIONS: 介護休暇 (family-care leave) entitlement là legally protected. Most employees KHÔNG know. Up to 93 days unpaid leave protected from termination. Encourage friend ask HR. KHÔNG forced — just inform. (6) PHYSICAL CONTACT MINIMAL: comfort instinct ôm = KHÔNG culturally normal. Light pat on shoulder OK with established close friend. Better comfort: physically present, listen, follow-up message. Khác biệt với VN: ở VN bạn bè khó khăn thường gather to drink, eat heavy, share loud — collective release. Ở Nhật, support quieter, more individual, more practical infrastructure. Vietnamese instinct 'come over right now, let's drink' may feel intrusive to Japanese friend stressed. Adjust: brief specific offer (one tea, 1 hour), KHÔNG long open-ended. Mẹo: nếu friend có nguy cơ burnout cụ thể (suicidal speech, long isolation, severe physical symptoms), gọi 24h hotline TELL Hotline (03-5774-0992 — TELL Tokyo English/Japanese support) hoặc local hokenfu-san. Don't carry alone. Long-term: support is marathon, not sprint. Friend khó khăn typically 6-18 tháng để stabilize. Bạn role: maintain consistent presence ở thấp intensity (weekly brief message), KHÔNG burst high-intensity 1 month then disappear. Sustainable > intense.",
+  tip_advice_vi: "Khi nhận tín hiệu friend đang khó khăn (mệt, im lặng nhiều, cancel plans, complaint về work/family): MỞ door, KHÔNG force entry. First contact via channel họ comfortable (LINE message, brief call). Cụm safe opener: saikin, o-tsukare no go-yousu de, shinpai shite orimasu. nani ka, o-yaku ni tateru koto wa nai deshou ka (gần đây thấy bạn mệt, lo lắng. có gì giúp được không). Họ có 3 possible responses: (a) deflect (no, fine) — accept gracefully, kashikomarimashita, mata o-itsudemo o-koe gake shimasu. (b) brief share (yeah, work busy) — light support, muri sezu, gohan ka cha de mo go-issho dekireba. (c) deep share (long talk) — proceed with conversation. Khi họ deep share: setting matters. Public cafe OK cho moderate. Private (their home, your home, quiet park bench) for deep. Phone if distance. KHÔNG group setting (other people present = họ filtered). During listen: 80 phần trăm listen, 20 phần trăm reflect. Mirror back what they say in slightly different words. Cụm: shokuba mo ie mo, yasumaru basho ga nai. sou iu kanji desu ne (work and home, no resting place — that's how it is). Light reflection = họ feel heard. KHÔNG advise yet. Sau 30-60 phút of listening, ask permission to ask: hitotsu, ukagatte mo yoroshii deshou ka. They consent or deflect. Nếu consent, ask SPECIFIC, action-oriented question. Practical resources known? Workplace policy explored? Family help available? Keep one question per conversation. Multiple = interrogation feel. Khi propose help: SPECIFIC. Kongetsu no doyoubi, o-jikan ga areba, X ni go-issho ni ikemasen ka (Saturday this month, if you have time, can we go to X together). Họ accept or decline cụ thể. Don't insist if decline. Closing: Acknowledge their trust. Cụm: kyou, hanashite kudasatte, arigatou gozaimasu. konna fuu ni kikasete itadakeru kankei wo, kichou ni omotte orimasu. Brief follow-up message within 24h. Cụm: kyou wa hanasete kudasatte, arigatou gozaimashita. mata, o-itsudemo o-koe gake shimasu. Long-term presence: weekly brief contact (1-2 short messages, can be just 'thinking of you'). Monthly meet-up if possible. Họ wave cancellation OK; reschedule, không drop. Hold thread. Self-care for you: supporting someone in deep stress drains. Manage your own energy. Don't try be sole support — encourage friend connect với others (family, professional, community). Bạn one of 5 supports, không 5/5. Mẹo: nếu friend show signs of severe distress (specific suicidal language, social withdrawal complete, severe physical symptoms not eating sleeping for week+), reach out to a professional resource. TELL Hotline 03-5774-0992 (English/Japanese, 24h). Yorisoi Hotline 0120-279-338 (Japanese, free). Local hokenfu-san accessible via city hall. Don't carry alone. Mẹo cuối: bạn yourself need support. Talk to one trusted person (your spouse, your own friend, your therapist) about being a support. Carrying friend's pain heavy. Process it. Long-distance support sustainable only if you're sustainable.",
+  exercises: [
+    { type: "fill-blank", question: "一人で抱え___ないでくださいね。", answer: "込ま" },
+    { type: "matching", instruction: "Ghép cụm với function.", pairs: [
+      { japanese: "お疲れのご様子で、心配しております", english: "open with specific observation rather than yes/no question" },
+      { japanese: "ご無理には、お聞きしません", english: "respect their pace; let them set the depth" },
+      { japanese: "肩の荷が重いですね", english: "acknowledge weight before suggesting solutions" },
+      { japanese: "ご一緒に伺ってもよろしいでしょうか", english: "specific concrete help offer (you go with them)" }
+    ] },
+    { type: "translation", vietnamese: "Người càng cố quá thường càng quên dựa vào người khác.", japanese: "頑張りすぎる方ほど、人に頼ることを忘れてしまわれます。" }
+  ]
 }
 ];
 export default lessons;
