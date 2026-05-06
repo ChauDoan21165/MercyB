@@ -1,7 +1,7 @@
 /**
  * Generate B2 lesson audio via ElevenLabs and upload to Supabase Storage.
  *
- * Reads audio-manifest.json (built by build-b2-audio-manifest.ts), filters by
+ * Reads audio-manifest.json (built by build-audio-manifest.ts), filters by
  * --slug-prefix or --lang or --limit, then for each remaining entry:
  *   1. Check existence in Supabase Storage `room-audio` bucket — skip if present.
  *   2. POST text → ElevenLabs /v1/text-to-speech/{voice_id} (model: eleven_multilingual_v2)
@@ -77,6 +77,7 @@ type ManifestEntry = {
   text: string;
   voice_id: string;
   language: string;
+  level?: string; // populated by build-audio-manifest.ts (A1/A2/B1/B2)
   lesson_id: string | number;
   lesson_index: number;
   unit_kind: string;
@@ -96,7 +97,7 @@ type Progress = {
 function loadManifest(): { entries: ManifestEntry[] } {
   if (!existsSync(MANIFEST_PATH)) {
     console.error(`[generate] manifest missing: ${MANIFEST_PATH}`);
-    console.error("[generate] run: npx tsx scripts/build-b2-audio-manifest.ts");
+    console.error("[generate] run: npx tsx scripts/build-audio-manifest.ts");
     process.exit(1);
   }
   return JSON.parse(readFileSync(MANIFEST_PATH, "utf8"));
