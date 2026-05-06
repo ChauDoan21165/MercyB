@@ -3,7 +3,7 @@
 // Small MVP: Vietnamese survival speaking for foreigners in Vietnam.
 // Keep this intentionally compact. It is not a full curriculum.
 
-export type VietnameseCefrLevel = "A1" | "A2" | "B1";
+export type VietnameseCefrLevel = "A1" | "A1+" | "A2" | "B1";
 
 export type VietnamesePhrase = {
   english: string;
@@ -2829,5 +2829,505 @@ export const VIETNAMESE_LESSONS: VietnameseLesson[] = [
       "Good follow-up questions make Vietnamese conversations smoother than trying to guess and answer too quickly.",
     tip:
       "If you are not sure, ask one small clarifying question instead of restarting the whole conversation.",
+  },
+  {
+    id: 59,
+    level: "A1+",
+    title_en: "Talking About Your Routine",
+    subtitle: "Say what your normal day looks like.",
+    intro:
+      "These lines move beyond single phrases into short connected sentences about daily life.",
+    phrases: [
+      {
+        english: "I usually wake up early and drink coffee.",
+        vietnamese: "Tôi thường dậy sớm và uống cà phê.",
+        pronunciation: "toy thuong zay som va uong cafe",
+        context: "Use when a friend asks about your morning routine.",
+      },
+      {
+        english: "In the morning, I go to work by motorbike taxi.",
+        vietnamese: "Buổi sáng tôi đi làm bằng xe ôm công nghệ.",
+        pronunciation: "boo-ee sang toy dee lam bang seh om kong ngheh",
+        context: "Use to explain how you usually commute.",
+      },
+      {
+        english: "After work, I go home and cook a simple dinner.",
+        vietnamese: "Sau giờ làm, tôi về nhà và nấu bữa tối đơn giản.",
+        pronunciation: "sow zuh lam, toy veh nha va now bua toy don zan",
+        context: "Use when describing your evening routine.",
+      },
+      {
+        english: "In the evening, I exercise a little.",
+        vietnamese: "Buổi tối tôi tập thể dục một chút.",
+        pronunciation: "boo-ee toy toy tap teh zook moht chut",
+        context: "Use for simple health or lifestyle small talk.",
+      },
+      {
+        english: "On weekends, I usually meet friends or rest at home.",
+        vietnamese: "Cuối tuần tôi thường gặp bạn bè hoặc nghỉ ở nhà.",
+        pronunciation: "kwoi twan toy thuong gap ban beh hoak nghee uh nha",
+        context: "Use when talking about weekend habits.",
+      },
+      {
+        english: "Today my schedule is a little busy.",
+        vietnamese: "Hôm nay lịch của tôi hơi bận.",
+        pronunciation: "hom nay lik cua toy hoy bun",
+        context: "Use when explaining why you have limited time.",
+      },
+    ],
+    cultural_note:
+      "Vietnamese daily-life talk often uses short time markers like buổi sáng, sau giờ làm, and cuối tuần.",
+    tip:
+      "Add one reason or time phrase to a basic sentence. That is enough to sound more real at A1+.",
+  },
+  {
+    id: 60,
+    level: "A1+",
+    title_en: "Talking About Likes And Dislikes",
+    subtitle: "Give simple opinions with a reason.",
+    intro:
+      "Use these when talking about food, cafes, music, places, and everyday choices.",
+    phrases: [
+      {
+        english: "I like Vietnamese coffee because it is very strong.",
+        vietnamese: "Tôi thích cà phê Việt Nam vì rất đậm.",
+        pronunciation: "toy thik cafe vyet nam vi zut dum",
+        context: "Use when talking about coffee with staff or friends.",
+      },
+      {
+        english: "I like this place because it is quite quiet.",
+        vietnamese: "Tôi thích chỗ này vì khá yên tĩnh.",
+        pronunciation: "toy thik cho nai vi kha yen ting",
+        context: "Use when explaining why you chose a cafe or seat.",
+      },
+      {
+        english: "I do not like food that is too spicy.",
+        vietnamese: "Tôi không thích đồ ăn cay quá.",
+        pronunciation: "toy khome thik do an kai gwa",
+        context: "Use before ordering or choosing a dish.",
+      },
+      {
+        english: "I prefer sitting outside if it is not raining.",
+        vietnamese: "Tôi thích ngồi bên ngoài hơn nếu trời không mưa.",
+        pronunciation: "toy thik ngoy ben ngowai hon new choy khome mua",
+        context: "Use when choosing a table or meeting place.",
+      },
+      {
+        english: "This song is nice, but a little loud.",
+        vietnamese: "Bài nhạc này hay, nhưng hơi lớn.",
+        pronunciation: "bai nyak nai hai, nyung hoy lon",
+        context: "Use for a soft opinion in a cafe, bar, or taxi.",
+      },
+      {
+        english: "I like walking around this neighborhood in the evening.",
+        vietnamese: "Tôi thích đi bộ quanh khu này vào buổi tối.",
+        pronunciation: "toy thik dee bo quanh khu nai vao boo-ee toy",
+        context: "Use when chatting about where you live or stay.",
+      },
+    ],
+    cultural_note:
+      "A short reason with vì makes a beginner opinion sound warmer and more complete.",
+    tip:
+      "Use tôi thích, tôi không thích, and tôi thích hơn. Those three patterns cover many daily opinions.",
+  },
+  {
+    id: 61,
+    level: "A1+",
+    title_en: "Ordering With Modifications",
+    subtitle: "Ask for small changes clearly.",
+    intro:
+      "These lines help you order naturally when you need less sugar, less chili, no ice, or takeout.",
+    phrases: [
+      {
+        english: "Can I have less sugar?",
+        vietnamese: "Cho tôi ít đường hơn được không?",
+        pronunciation: "chaw toy it duong hon duoc khome",
+        context: "Use when ordering coffee, tea, or juice.",
+      },
+      {
+        english: "Please do not add ice.",
+        vietnamese: "Đừng bỏ đá giúp tôi nhé.",
+        pronunciation: "dung baw da zoop toy nyeh",
+        context: "Use when ordering a cold drink without ice.",
+      },
+      {
+        english: "Can you make it not too spicy?",
+        vietnamese: "Làm không cay quá được không?",
+        pronunciation: "lam khome kai gwa duoc khome",
+        context: "Use at street food stalls or restaurants.",
+      },
+      {
+        english: "Can I change rice to noodles?",
+        vietnamese: "Tôi đổi cơm sang bún được không?",
+        pronunciation: "toy doy kom sang boon duoc khome",
+        context: "Use when asking for a simple food substitution.",
+      },
+      {
+        english: "Please put the sauce on the side.",
+        vietnamese: "Để nước sốt riêng giúp tôi nhé.",
+        pronunciation: "deh nuok sot ryeng zoop toy nyeh",
+        context: "Use if you want to control how much sauce you eat.",
+      },
+      {
+        english: "I will eat here, but please pack one more portion to go.",
+        vietnamese: "Tôi ăn ở đây, nhưng gói thêm một phần mang đi giúp tôi.",
+        pronunciation: "toy an uh day, nyung goy them moht fun mang dee zoop toy",
+        context: "Use when dining in and buying extra food for later.",
+      },
+    ],
+    cultural_note:
+      "Small food changes are common, but keep the request short and point at the item if needed.",
+    tip:
+      "Put the change first, then add giúp tôi nhé to keep the request polite.",
+  },
+  {
+    id: 62,
+    level: "A1+",
+    title_en: "Explaining Simple Problems",
+    subtitle: "Say what is wrong without a long story.",
+    intro:
+      "Use these when something is not working, you made a mistake, or you need practical help.",
+    phrases: [
+      {
+        english: "I cannot open this door.",
+        vietnamese: "Tôi không mở được cửa này.",
+        pronunciation: "toy khome muh duoc kua nai",
+        context: "Use at an apartment, hotel, office, or shop entrance.",
+      },
+      {
+        english: "My card is not working.",
+        vietnamese: "Thẻ của tôi không dùng được.",
+        pronunciation: "theh cua toy khome zoong duoc",
+        context: "Use when a payment card fails.",
+      },
+      {
+        english: "I think I ordered the wrong item.",
+        vietnamese: "Tôi nghĩ tôi gọi nhầm món.",
+        pronunciation: "toy nghee toy goy nyum mon",
+        context: "Use when food or drink is not what you expected.",
+      },
+      {
+        english: "I left my bag in the car.",
+        vietnamese: "Tôi để quên túi trong xe.",
+        pronunciation: "toy deh quen too-ee trong seh",
+        context: "Use after leaving something in a taxi or Grab.",
+      },
+      {
+        english: "The address in the app is wrong.",
+        vietnamese: "Địa chỉ trong ứng dụng bị sai.",
+        pronunciation: "dee-ah chee trong ung zoong bee sai",
+        context: "Use when a driver, delivery person, or map has the wrong place.",
+      },
+      {
+        english: "I need help because I do not understand this message.",
+        vietnamese: "Tôi cần giúp vì tôi không hiểu tin nhắn này.",
+        pronunciation: "toy kun zoop vi toy khome hyew tin nyan nai",
+        context: "Use when showing a Vietnamese message on your phone.",
+      },
+    ],
+    cultural_note:
+      "For everyday problems, the clearest Vietnamese is often one sentence: problem first, reason second.",
+    tip:
+      "Use không... được for many simple problems: không mở được, không dùng được, không nghe được.",
+  },
+  {
+    id: 63,
+    level: "A1+",
+    title_en: "Asking Follow-Up Questions",
+    subtitle: "Keep the conversation from stopping.",
+    intro:
+      "These questions help you continue when you need more detail, slower speech, or a clear next step.",
+    phrases: [
+      {
+        english: "What does this word mean?",
+        vietnamese: "Từ này nghĩa là gì?",
+        pronunciation: "tu nai nghee-ah la zee",
+        context: "Use when learning a new word from a menu, sign, or message.",
+      },
+      {
+        english: "Can you say it again more slowly?",
+        vietnamese: "Bạn nói lại chậm hơn được không?",
+        pronunciation: "ban noy lai cham hon duoc khome",
+        context: "Use when the other person speaks too fast.",
+      },
+      {
+        english: "Is this today or tomorrow?",
+        vietnamese: "Cái này là hôm nay hay ngày mai?",
+        pronunciation: "kai nai la hom nay hai ngay mai",
+        context: "Use when confirming a date or appointment.",
+      },
+      {
+        english: "Where should I wait?",
+        vietnamese: "Tôi nên chờ ở đâu?",
+        pronunciation: "toy nen chuh uh dow",
+        context: "Use at a pickup point, clinic, office, or station.",
+      },
+      {
+        english: "Who should I call?",
+        vietnamese: "Tôi nên gọi cho ai?",
+        pronunciation: "toy nen goy chaw ai",
+        context: "Use when you need the right contact person.",
+      },
+      {
+        english: "Can you show me on the map?",
+        vietnamese: "Bạn chỉ cho tôi trên bản đồ được không?",
+        pronunciation: "ban chee chaw toy chen ban do duoc khome",
+        context: "Use when directions are hard to understand by speech.",
+      },
+    ],
+    cultural_note:
+      "Follow-up questions are normal. They sound more confident than pretending to understand.",
+    tip:
+      "If you feel stuck, ask one small question: ở đâu, ai, hôm nay hay ngày mai.",
+  },
+  {
+    id: 64,
+    level: "A1+",
+    title_en: "Describing Places",
+    subtitle: "Say what a place is like in simple connected sentences.",
+    intro:
+      "Use these when talking about cafes, hotels, apartments, streets, and neighborhoods.",
+    phrases: [
+      {
+        english: "This cafe is small but comfortable.",
+        vietnamese: "Quán cà phê này nhỏ nhưng thoải mái.",
+        pronunciation: "kwan cafe nai nyaw nyung thoai mai",
+        context: "Use when describing a cafe to a friend.",
+      },
+      {
+        english: "My apartment is near the market.",
+        vietnamese: "Căn hộ của tôi gần chợ.",
+        pronunciation: "kan ho cua toy gun chuh",
+        context: "Use when explaining where you live.",
+      },
+      {
+        english: "This street is quite busy in the evening.",
+        vietnamese: "Đường này buổi tối khá đông.",
+        pronunciation: "duong nai boo-ee toy kha dong",
+        context: "Use when describing traffic or a neighborhood.",
+      },
+      {
+        english: "The room is clean and quiet.",
+        vietnamese: "Phòng sạch và yên tĩnh.",
+        pronunciation: "fong sak va yen ting",
+        context: "Use when talking about a hotel room or apartment.",
+      },
+      {
+        english: "The hotel is a little far from the center.",
+        vietnamese: "Khách sạn hơi xa trung tâm.",
+        pronunciation: "khak san hoy sa choong tam",
+        context: "Use when explaining travel time or location.",
+      },
+      {
+        english: "I like this neighborhood because there are many restaurants.",
+        vietnamese: "Tôi thích khu này vì có nhiều quán ăn.",
+        pronunciation: "toy thik khu nai vi kaw nyew kwan an",
+        context: "Use when sharing why you like an area.",
+      },
+    ],
+    cultural_note:
+      "Place descriptions often combine one simple adjective with one reason: gần chợ, khá đông, nhiều quán ăn.",
+    tip:
+      "Start with the place, then add one quality. That keeps the sentence natural and beginner-friendly.",
+  },
+  {
+    id: 65,
+    level: "A1+",
+    title_en: "Simple Travel Conversations",
+    subtitle: "Handle tickets, seats, bags, and arrival.",
+    intro:
+      "These lines help with buses, trains, domestic travel, hotels, and short trips in Vietnam.",
+    phrases: [
+      {
+        english: "I want to buy a ticket to Da Nang.",
+        vietnamese: "Tôi muốn mua vé đi Đà Nẵng.",
+        pronunciation: "toy mwon mua veh dee da nang",
+        context: "Use at a station, travel desk, or ticket counter.",
+      },
+      {
+        english: "What time does the bus leave?",
+        vietnamese: "Xe buýt đi lúc mấy giờ?",
+        pronunciation: "seh bweet dee look may zuh",
+        context: "Use when confirming a departure time.",
+      },
+      {
+        english: "Is this seat empty?",
+        vietnamese: "Ghế này còn trống không?",
+        pronunciation: "geh nai kon chong khome",
+        context: "Use on a bus, train, or waiting area.",
+      },
+      {
+        english: "I have one suitcase and one backpack.",
+        vietnamese: "Tôi có một vali và một ba lô.",
+        pronunciation: "toy kaw moht va-lee va moht ba lo",
+        context: "Use when checking luggage or explaining your bags.",
+      },
+      {
+        english: "Please tell me when we arrive.",
+        vietnamese: "Khi nào đến, báo tôi biết giúp nhé.",
+        pronunciation: "khi nao den, bao toy byet zoop nyeh",
+        context: "Use if you are worried about missing your stop.",
+      },
+      {
+        english: "I am only staying here for two days.",
+        vietnamese: "Tôi chỉ ở đây hai ngày.",
+        pronunciation: "toy chee uh day hai ngay",
+        context: "Use at a hotel, homestay, or casual travel conversation.",
+      },
+    ],
+    cultural_note:
+      "Travel Vietnamese is easier when you confirm time, place, and bags separately.",
+    tip:
+      "Keep the city name clear. If pronunciation is hard, show the destination on your phone.",
+  },
+  {
+    id: 66,
+    level: "A1+",
+    title_en: "Asking For Recommendations",
+    subtitle: "Ask locals for useful, specific suggestions.",
+    intro:
+      "These lines help you ask for food, cafes, weekend ideas, and practical local choices.",
+    phrases: [
+      {
+        english: "Do you know a good pho place nearby?",
+        vietnamese: "Bạn biết quán phở nào ngon gần đây không?",
+        pronunciation: "ban byet kwan fuh nao ngon gun day khome",
+        context: "Use when asking a local for food nearby.",
+      },
+      {
+        english: "Which dish is easy for foreigners to eat?",
+        vietnamese: "Món nào dễ ăn cho người nước ngoài?",
+        pronunciation: "mon nao ze an chaw nguo-ee nuok ngowai",
+        context: "Use when you want a beginner-friendly dish.",
+      },
+      {
+        english: "Where should I go this weekend?",
+        vietnamese: "Cuối tuần này tôi nên đi đâu?",
+        pronunciation: "kwoi twan nai toy nen dee dow",
+        context: "Use when asking for local travel or activity ideas.",
+      },
+      {
+        english: "Can you recommend a quiet cafe for working?",
+        vietnamese: "Bạn gợi ý quán cà phê yên tĩnh để làm việc được không?",
+        pronunciation: "ban goy ee kwan cafe yen ting deh lam vyek duoc khome",
+        context: "Use when looking for a work-friendly cafe.",
+      },
+      {
+        english: "Is this place good for families?",
+        vietnamese: "Chỗ này phù hợp cho gia đình không?",
+        pronunciation: "cho nai foo hop chaw za ding khome",
+        context: "Use before choosing a restaurant, hotel, or activity.",
+      },
+      {
+        english: "If it were you, what would you choose?",
+        vietnamese: "Nếu là bạn thì bạn chọn gì?",
+        pronunciation: "new la ban thi ban chon zee",
+        context: "Use when you want the other person's honest recommendation.",
+      },
+    ],
+    cultural_note:
+      "Specific recommendation questions get better answers than broad questions like what is good here.",
+    tip:
+      "Add gần đây, yên tĩnh, cho gia đình, or cuối tuần này to make your question practical.",
+  },
+  {
+    id: 67,
+    level: "A1+",
+    title_en: "Simple Social Conversations",
+    subtitle: "Sound friendly without needing long Vietnamese.",
+    intro:
+      "Use these with neighbors, classmates, coworkers, new friends, and people you meet often.",
+    phrases: [
+      {
+        english: "Have you lived here for a long time?",
+        vietnamese: "Bạn sống ở đây lâu chưa?",
+        pronunciation: "ban song uh day lau chua",
+        context: "Use as friendly small talk with someone local.",
+      },
+      {
+        english: "I just moved here, so I am still learning.",
+        vietnamese: "Tôi mới chuyển đến đây nên vẫn đang học.",
+        pronunciation: "toy moy chuyen den day nen van dang hok",
+        context: "Use when explaining why your Vietnamese is still limited.",
+      },
+      {
+        english: "You speak Vietnamese very fast, but I want to try.",
+        vietnamese: "Bạn nói tiếng Việt nhanh quá, nhưng tôi muốn thử.",
+        pronunciation: "ban noy tee-eng vyet nyanh gwa, nyung toy mwon thu",
+        context: "Use warmly when someone speaks faster than you can follow.",
+      },
+      {
+        english: "I like talking with you because you speak clearly.",
+        vietnamese: "Tôi thích nói chuyện với bạn vì bạn nói rõ.",
+        pronunciation: "toy thik noy chuyen voy ban vi ban noy raw",
+        context: "Use as a friendly compliment during language practice.",
+      },
+      {
+        english: "When you are free, do you want to get coffee?",
+        vietnamese: "Lúc nào rảnh, bạn muốn đi uống cà phê không?",
+        pronunciation: "look nao ranh, ban mwon dee uong cafe khome",
+        context: "Use for a low-pressure social invitation.",
+      },
+      {
+        english: "Let's keep in touch.",
+        vietnamese: "Mình giữ liên lạc nhé.",
+        pronunciation: "ming zu lee-en lak nyeh",
+        context: "Use at the end of a friendly conversation.",
+      },
+    ],
+    cultural_note:
+      "Simple social Vietnamese often sounds better with gentle words like nhé, hơi, and muốn thử.",
+    tip:
+      "You can be honest about learning. Tôi vẫn đang học is useful and human.",
+  },
+  {
+    id: 68,
+    level: "A1+",
+    title_en: "Everyday Polite Conversation Flow",
+    subtitle: "Open, respond, repair, and close politely.",
+    intro:
+      "These lines help a short conversation feel complete instead of stopping after one phrase.",
+    phrases: [
+      {
+        english: "Excuse me, can I ask something?",
+        vietnamese: "Xin lỗi, tôi hỏi một chút được không?",
+        pronunciation: "seen loy, toy hoy moht chut duoc khome",
+        context: "Use before asking staff, neighbors, or strangers a question.",
+      },
+      {
+        english: "Yes, please go ahead.",
+        vietnamese: "Dạ được, bạn hỏi đi.",
+        pronunciation: "yah duoc, ban hoy dee",
+        context: "Use when inviting someone to ask or continue.",
+      },
+      {
+        english: "Thank you, I understand now.",
+        vietnamese: "Cảm ơn, bây giờ tôi hiểu rồi.",
+        pronunciation: "gahm uhn, bay zuh toy hyew roy",
+        context: "Use after someone explains something clearly.",
+      },
+      {
+        english: "Sorry, I need to leave first.",
+        vietnamese: "Xin lỗi, tôi phải đi trước.",
+        pronunciation: "seen loy, toy fai dee truok",
+        context: "Use when leaving a conversation or gathering early.",
+      },
+      {
+        english: "No problem, see you next time.",
+        vietnamese: "Không sao, hẹn gặp lần sau nhé.",
+        pronunciation: "khome sao, hen gap lun sow nyeh",
+        context: "Use to close a friendly interaction.",
+      },
+      {
+        english: "Thank you for talking with me.",
+        vietnamese: "Cảm ơn bạn đã nói chuyện với tôi.",
+        pronunciation: "gahm uhn ban da noy chuyen voy toy",
+        context: "Use after practice, help, or a warm casual conversation.",
+      },
+    ],
+    cultural_note:
+      "A complete polite flow can be very short: ask, listen, thank, and close gently.",
+    tip:
+      "Use nhé at the end of friendly closing lines. It softens the sentence without making it complicated.",
   },
   ];

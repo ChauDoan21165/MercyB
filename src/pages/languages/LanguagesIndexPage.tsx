@@ -83,7 +83,7 @@ const CARDS: Card[] = [
     title_en: "Survival Vietnamese",
     flag: "🇻🇳",
     blurb_vi:
-      "47 short lessons with 182 practical lines, 10 roleplay dialogues, and 12 pronunciation mini-lessons for real life in Vietnam.",
+      "68 short lessons with 305 practical lines, 17 dialogues, and 12 pronunciation mini-lessons for real life in Vietnam.",
     href: "/languages/vietnamese",
     accent: "green",
   },

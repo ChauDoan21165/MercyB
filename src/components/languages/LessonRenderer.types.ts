@@ -5,7 +5,7 @@
 // to NormalizedLesson at the page-module boundary; the renderer is
 // field-name-pure and never reads per-language field aliases.
 
-export type CefrLevel = "A1" | "A2" | "B1" | "B2" | "C1" | "C2";
+export type CefrLevel = "A1" | "A1+" | "A2" | "B1" | "B2" | "C1" | "C2";
 
 export type NormalizedSentence = {
   native: string;

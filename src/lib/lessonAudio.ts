@@ -15,7 +15,7 @@
 
 export type LessonAudioLang = "fr" | "de" | "ja" | "ko" | "zh" | "vi";
 
-export type LessonAudioLevel = "A1" | "A2" | "B1" | "B2" | "C1" | "C2";
+export type LessonAudioLevel = "A1" | "A1+" | "A2" | "B1" | "B2" | "C1" | "C2";
 
 const LANG_LONG_NAME: Record<LessonAudioLang, string> = {
   fr: "french",
