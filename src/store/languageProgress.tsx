@@ -1,7 +1,7 @@
 // src/store/languageProgress.tsx
 //
-// Progress tracking for the 5 bonus language modules (French, German,
-// Japanese, Chinese, Korean). The full system is wired up — localStorage
+// Progress tracking for the bonus language modules (French, German,
+// Japanese, Chinese, Korean, Vietnamese). The full system is wired up — localStorage
 // persistence, validation, cross-tab sync, the CompletedMap data
 // structure — but no UI calls toggleLesson or isLessonCompleted yet, so
 // in production every progress bar reads 0/50.
@@ -33,7 +33,7 @@ import {
   type ReactNode,
 } from "react";
 
-export type LearningLanguage = "french" | "german" | "japanese" | "chinese" | "korean";
+export type LearningLanguage = "french" | "german" | "japanese" | "chinese" | "korean" | "vietnamese";
 
 export const TOTAL_LESSONS_PER_LANGUAGE = 50;
 
@@ -43,6 +43,7 @@ export interface LanguageMeta {
   name: string;
   nameVi: string;
   flag: string;
+  totalLessons?: number;
 }
 
 export const LANGUAGES: LanguageMeta[] = [
@@ -51,6 +52,7 @@ export const LANGUAGES: LanguageMeta[] = [
   { id: "japanese", category: "asian", name: "Japanese", nameVi: "Tiếng Nhật", flag: "🇯🇵" },
   { id: "chinese", category: "asian", name: "Chinese", nameVi: "Tiếng Trung", flag: "🇨🇳" },
   { id: "korean", category: "asian", name: "Korean", nameVi: "Tiếng Hàn", flag: "🇰🇷" },
+  { id: "vietnamese", category: "asian", name: "Vietnamese", nameVi: "For foreigners", flag: "🇻🇳", totalLessons: 7 },
 ];
 
 const EUROPEAN = LANGUAGES.filter((l) => l.category === "european");
@@ -64,7 +66,7 @@ const LS_SELECTED = "mb.selectedLearningLanguage";
 type CompletedMap = Record<LearningLanguage, number[]>;
 
 function defaultCompleted(): CompletedMap {
-  return { french: [], german: [], japanese: [], chinese: [], korean: [] };
+  return { french: [], german: [], japanese: [], chinese: [], korean: [], vietnamese: [] };
 }
 
 function validateIds(ids: unknown): number[] {

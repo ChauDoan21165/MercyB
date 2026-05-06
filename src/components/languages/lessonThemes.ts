@@ -12,6 +12,7 @@ export const lessonThemes: Record<string, LessonTheme> = {
   japanese: { accent: "#F59E0B" }, // amber-500
   chinese:  { accent: "#DC2626" }, // red-600 (matches flag)
   korean:   { accent: "#8B5CF6" }, // violet-500
+  vietnamese: { accent: "#16A34A" }, // green-600
 };
 
 export const cefrPillColors: Record<string, string> = {

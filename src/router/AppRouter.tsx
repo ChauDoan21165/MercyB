@@ -105,6 +105,7 @@ const GermanLessonsPage    = lazyWithRetry(() => import("@/pages/languages/Germa
 const JapaneseLessonsPage  = lazyWithRetry(() => import("@/pages/languages/JapaneseLessonsPage"));
 const ChineseLessonsPage   = lazyWithRetry(() => import("@/pages/languages/ChineseLessonsPage"));
 const KoreanLessonsPage    = lazyWithRetry(() => import("@/pages/languages/KoreanLessonsPage"));
+const VietnameseLessonsPage = lazyWithRetry(() => import("@/pages/languages/VietnameseLessonsPage"));
 
 // Mercy v2 — multi-turn conversation thread page (auth-required).
 const MercyThreadPage      = lazyWithRetry(() => import("@/pages/mercy/MercyThreadPage"));
@@ -876,6 +877,9 @@ export default function AppRouter() {
           />
           <Route path="/languages/korean"
             element={<LazyPage><KoreanLessonsPage /></LazyPage>}
+          />
+          <Route path="/languages/vietnamese"
+            element={<LazyPage><VietnameseLessonsPage /></LazyPage>}
           />
 
 

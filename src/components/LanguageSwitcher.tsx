@@ -18,6 +18,7 @@ function barColor(id: LearningLanguage): string {
     japanese: "#F59E0B",
     chinese: "#DC2626",
     korean: "#8B5CF6",
+    vietnamese: "#16A34A",
   };
   return map[id];
 }
@@ -99,7 +100,11 @@ export default function LanguageSwitcher() {
         >
           {languages.map((lang) => {
             const completed = getCompletedCount(lang.id);
-            const pct = getProgressPercent(lang.id);
+            const totalLessons = lang.totalLessons ?? TOTAL_LESSONS_PER_LANGUAGE;
+            const pct =
+              lang.totalLessons && lang.totalLessons > 0
+                ? Math.min(100, Math.round((completed / lang.totalLessons) * 100))
+                : getProgressPercent(lang.id);
             const isSelected = selectedLanguage === lang.id;
 
             return (
@@ -107,7 +112,7 @@ export default function LanguageSwitcher() {
                 key={lang.id}
                 type="button"
                 onClick={() => handleCardClick(lang.id)}
-                aria-label={`${lang.name} — ${lang.nameVi} — ${completed}/${TOTAL_LESSONS_PER_LANGUAGE} lessons`}
+                aria-label={`${lang.name} — ${lang.nameVi} — ${completed}/${totalLessons} lessons`}
                 aria-pressed={isSelected}
                 style={{
                   display: "flex",
@@ -190,7 +195,7 @@ export default function LanguageSwitcher() {
                         color: barColor(lang.id),
                       }}
                     >
-                      {completed}/{TOTAL_LESSONS_PER_LANGUAGE}
+                      {completed}/{totalLessons}
                     </span>
                   </div>
                   <div

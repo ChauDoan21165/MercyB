@@ -11,10 +11,10 @@ import {
   ArrowRight,
 } from "lucide-react";
 
-const HERO_VI = "Học ngoại ngữ cho người Việt";
-const HERO_EN = "Language learning for Vietnamese speakers";
+const HERO_VI = "Practical language learning";
+const HERO_EN = "Real-life lessons for Vietnamese speakers and Vietnamese learners";
 const SUBTITLE_VI =
-  "Mỗi ngôn ngữ được thiết kế cho người Việt — phát âm, ngữ pháp, văn hoá, tất cả giải thích theo cách người Việt hiểu.";
+  "Learn useful phrases, pronunciation, and context. Most courses explain other languages for Vietnamese speakers; Vietnamese is a small survival-speaking MVP for foreigners in Vietnam.";
 
 type Card = {
   slug: string;
@@ -23,7 +23,7 @@ type Card = {
   flag: string;
   blurb_vi: string;
   href: string;
-  accent: "blue" | "red" | "crimson" | "amber" | "violet";
+  accent: "blue" | "red" | "crimson" | "amber" | "violet" | "green";
 };
 
 const CARDS: Card[] = [
@@ -77,6 +77,16 @@ const CARDS: Card[] = [
     href: "/languages/korean",
     accent: "violet",
   },
+  {
+    slug: "vietnamese",
+    title_vi: "Vietnamese for Foreigners",
+    title_en: "Survival Vietnamese",
+    flag: "🇻🇳",
+    blurb_vi:
+      "7 short lessons with 28 practical phrases for greetings, food, taxis, shopping, polite phrases, help, and self-introductions.",
+    href: "/languages/vietnamese",
+    accent: "green",
+  },
 ];
 
 const ACCENT_CLASSES: Record<string, { border: string; bg: string; icon: string }> = {
@@ -104,6 +114,11 @@ const ACCENT_CLASSES: Record<string, { border: string; bg: string; icon: string 
     border: "border-violet-200",
     bg: "bg-gradient-to-br from-violet-50 via-purple-50 to-fuchsia-50",
     icon: "text-violet-600",
+  },
+  green: {
+    border: "border-green-200",
+    bg: "bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50",
+    icon: "text-green-700",
   },
 };
 
