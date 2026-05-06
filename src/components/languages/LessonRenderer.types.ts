@@ -61,6 +61,16 @@ export type NormalizedGrammarPoint = {
   explanation: string;
 };
 
+// Per-lesson hint about which LessonAudioUnit kind to use for sentence-row
+// and dialogue-row audio buttons. Vietnamese-for-foreigners uses `phrase` /
+// `dialogue_vi` (no speaker suffix); the other 5 languages default to
+// `sentence` / `dialogue_short`. Set at the normalizer boundary so the
+// renderer stays field-name-pure (no per-language branching).
+export type NormalizedAudioKinds = {
+  sentence?: "sentence" | "phrase";
+  dialogue?: "dialogue_short" | "dialogue_vi";
+};
+
 export type NormalizedLesson = {
   id: number;
   level: CefrLevel;
@@ -84,6 +94,7 @@ export type NormalizedLesson = {
   // Optional so callers that don't have audio mapping can still produce a
   // valid NormalizedLesson; LessonAudioButton renders nothing when absent.
   audioBase?: string;
+  audioKinds?: NormalizedAudioKinds;
 };
 
 export type LessonTheme = {
