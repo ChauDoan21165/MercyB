@@ -52,7 +52,7 @@ export const LANGUAGES: LanguageMeta[] = [
   { id: "japanese", category: "asian", name: "Japanese", nameVi: "Tiếng Nhật", flag: "🇯🇵" },
   { id: "chinese", category: "asian", name: "Chinese", nameVi: "Tiếng Trung", flag: "🇨🇳" },
   { id: "korean", category: "asian", name: "Korean", nameVi: "Tiếng Hàn", flag: "🇰🇷" },
-  { id: "vietnamese", category: "asian", name: "Vietnamese", nameVi: "For foreigners", flag: "🇻🇳", totalLessons: 15 },
+  { id: "vietnamese", category: "asian", name: "Vietnamese", nameVi: "For foreigners", flag: "🇻🇳", totalLessons: 25 },
 ];
 
 const EUROPEAN = LANGUAGES.filter((l) => l.category === "european");

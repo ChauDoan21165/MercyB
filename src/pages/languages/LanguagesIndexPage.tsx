@@ -83,7 +83,7 @@ const CARDS: Card[] = [
     title_en: "Survival Vietnamese",
     flag: "🇻🇳",
     blurb_vi:
-      "15 short lessons with 76 practical phrases for cafes, food, taxis, shopping, apartments, emergencies, and everyday introductions.",
+      "25 short lessons with 146 practical phrases for survival, daily life, social confidence, texting, plans, and clarification.",
     href: "/languages/vietnamese",
     accent: "green",
   },

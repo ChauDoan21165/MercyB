@@ -690,4 +690,564 @@ export const VIETNAMESE_LESSONS: VietnameseLesson[] = [
     tip:
       "Save emergency phrases offline so they are available without mobile data.",
   },
+  {
+    id: 16,
+    level: "A1",
+    title_en: "Making Small Talk",
+    subtitle: "Start friendly everyday conversations.",
+    intro:
+      "Use these when chatting with neighbors, staff, classmates, coworkers, or new friends.",
+    phrases: [
+      {
+        english: "Where is your hometown?",
+        vietnamese: "Bạn quê ở đâu?",
+        pronunciation: "ban kway uh dow",
+        context: "Common friendly question when getting to know someone.",
+      },
+      {
+        english: "Have you lived here long?",
+        vietnamese: "Bạn sống ở đây lâu chưa?",
+        pronunciation: "ban song uh day low chua",
+        context: "Use with neighbors, coworkers, or new friends.",
+      },
+      {
+        english: "I just moved here.",
+        vietnamese: "Tôi mới chuyển đến đây.",
+        pronunciation: "toy moy chwen den day",
+        context: "Use when explaining why Vietnam is still new to you.",
+      },
+      {
+        english: "What do you do?",
+        vietnamese: "Bạn làm nghề gì?",
+        pronunciation: "ban lam ngeh zee",
+        context: "Natural small talk after introductions.",
+      },
+      {
+        english: "What do you usually do on weekends?",
+        vietnamese: "Cuối tuần bạn thường làm gì?",
+        pronunciation: "kwee twan ban thuong lam zee",
+        context: "Use when keeping a friendly conversation going.",
+      },
+      {
+        english: "It is crowded today.",
+        vietnamese: "Hôm nay đông quá.",
+        pronunciation: "home nai dome gwa",
+        context: "Easy comment in cafes, streets, malls, or events.",
+      },
+      {
+        english: "It is fun talking with you.",
+        vietnamese: "Nói chuyện với bạn vui quá.",
+        pronunciation: "noy chuyen voy ban vui gwa",
+        context: "Warm phrase when a conversation is going well.",
+      },
+    ],
+    cultural_note:
+      "Vietnamese small talk often starts with hometown, work, food, and daily plans.",
+    tip:
+      "Short answers are fine. A smile and one follow-up question can keep the conversation moving.",
+  },
+  {
+    id: 17,
+    level: "A1",
+    title_en: "Introducing Family And Friends",
+    subtitle: "Simple phrases for social introductions.",
+    intro:
+      "Use these when introducing people or meeting a friend's family.",
+    phrases: [
+      {
+        english: "This is my friend.",
+        vietnamese: "Đây là bạn tôi.",
+        pronunciation: "day la ban toy",
+        context: "Use when introducing a friend to someone.",
+      },
+      {
+        english: "This is my wife.",
+        vietnamese: "Đây là vợ tôi.",
+        pronunciation: "day la vuh toy",
+        context: "Use when introducing your wife.",
+      },
+      {
+        english: "This is my husband.",
+        vietnamese: "Đây là chồng tôi.",
+        pronunciation: "day la chom toy",
+        context: "Use when introducing your husband.",
+      },
+      {
+        english: "This is my child.",
+        vietnamese: "Đây là con tôi.",
+        pronunciation: "day la con toy",
+        context: "Use when introducing your child.",
+      },
+      {
+        english: "My family is overseas.",
+        vietnamese: "Gia đình tôi ở nước ngoài.",
+        pronunciation: "za ding toy uh nuoc ngoai",
+        context: "Use when explaining where your family lives.",
+      },
+      {
+        english: "My friend's name is...",
+        vietnamese: "Bạn tôi tên là...",
+        pronunciation: "ban toy ten la",
+        context: "Use before saying your friend's name.",
+      },
+      {
+        english: "Nice to meet your family.",
+        vietnamese: "Rất vui được gặp gia đình bạn.",
+        pronunciation: "zut vui duoc gap za ding ban",
+        context: "Polite phrase when meeting a friend's or partner's family.",
+      },
+    ],
+    cultural_note:
+      "Family introductions matter in Vietnam, and a simple respectful phrase goes a long way.",
+    tip:
+      "If you are unsure about age-based pronouns, keep the sentence simple and let locals help naturally.",
+  },
+  {
+    id: 18,
+    level: "A1",
+    title_en: "Weather And Daily Life",
+    subtitle: "Talk about the day around you.",
+    intro:
+      "Use these phrases for easy daily comments at home, work, cafes, and outside.",
+    phrases: [
+      {
+        english: "It is so hot today.",
+        vietnamese: "Hôm nay nóng quá.",
+        pronunciation: "home nai nawng gwa",
+        context: "Very common daily comment in Vietnam.",
+      },
+      {
+        english: "It is raining now.",
+        vietnamese: "Trời mưa rồi.",
+        pronunciation: "choy mua roy",
+        context: "Use when rain starts or changes your plans.",
+      },
+      {
+        english: "The weather is nice today.",
+        vietnamese: "Hôm nay đẹp trời.",
+        pronunciation: "home nai dep choy",
+        context: "Good small talk on a pleasant day.",
+      },
+      {
+        english: "I am going to work now.",
+        vietnamese: "Tôi đi làm bây giờ.",
+        pronunciation: "toy dee lam bay zuh",
+        context: "Use when leaving home or ending a chat.",
+      },
+      {
+        english: "I am going home.",
+        vietnamese: "Tôi về nhà.",
+        pronunciation: "toy veh nha",
+        context: "Use when leaving work, a cafe, or a friend's place.",
+      },
+      {
+        english: "I am going to the market.",
+        vietnamese: "Tôi đi chợ.",
+        pronunciation: "toy dee chuh",
+        context: "Useful for daily errands and neighborhood small talk.",
+      },
+      {
+        english: "I am a little tired.",
+        vietnamese: "Tôi hơi mệt.",
+        pronunciation: "toy hoy met",
+        context: "Simple way to explain low energy without a long story.",
+      },
+    ],
+    cultural_note:
+      "Weather, food, and daily errands are easy safe topics for light conversation.",
+    tip:
+      "Repeat daily-life phrases often. They become useful because you can say them every day.",
+  },
+  {
+    id: 19,
+    level: "A1",
+    title_en: "Cafe, Work, And Study Conversations",
+    subtitle: "Speak naturally in shared spaces.",
+    intro:
+      "Use these when working, studying, or spending time in cafes and coworking spaces.",
+    phrases: [
+      {
+        english: "I work here.",
+        vietnamese: "Tôi làm việc ở đây.",
+        pronunciation: "toy lam vyek uh day",
+        context: "Use when explaining why you are in a cafe or office.",
+      },
+      {
+        english: "I study Vietnamese here.",
+        vietnamese: "Tôi học tiếng Việt ở đây.",
+        pronunciation: "toy hawk tee-eng vyet uh day",
+        context: "Use at a cafe, class, or study place.",
+      },
+      {
+        english: "What are you studying?",
+        vietnamese: "Bạn đang học gì?",
+        pronunciation: "ban dang hawk zee",
+        context: "Friendly question for students or language learners.",
+      },
+      {
+        english: "I need Wi-Fi.",
+        vietnamese: "Tôi cần Wi-Fi.",
+        pronunciation: "toy kan wai-fai",
+        context: "Use in cafes, hotels, coworking spaces, or apartments.",
+      },
+      {
+        english: "What is the Wi-Fi password?",
+        vietnamese: "Mật khẩu Wi-Fi là gì?",
+        pronunciation: "mat khow wai-fai la zee",
+        context: "Use with staff before sitting down to work.",
+      },
+      {
+        english: "I will sit and work for a bit.",
+        vietnamese: "Tôi ngồi làm việc một chút.",
+        pronunciation: "toy ngoy lam vyek moht chut",
+        context: "Use if staff ask whether you are staying.",
+      },
+      {
+        english: "Where do you work?",
+        vietnamese: "Bạn làm việc ở đâu?",
+        pronunciation: "ban lam vyek uh dow",
+        context: "Natural work-related small talk.",
+      },
+    ],
+    cultural_note:
+      "Cafes are common places to work, study, meet friends, or wait between errands.",
+    tip:
+      "Keep cafe/work phrases short; most people only need the key idea.",
+  },
+  {
+    id: 20,
+    level: "A1",
+    title_en: "Asking For Recommendations",
+    subtitle: "Find good places and local favorites.",
+    intro:
+      "Use these when asking friends, staff, drivers, or neighbors for practical suggestions.",
+    phrases: [
+      {
+        english: "Which dish do you recommend?",
+        vietnamese: "Bạn giới thiệu món nào?",
+        pronunciation: "ban zoy thieu mon nao",
+        context: "Use in restaurants or with local friends.",
+      },
+      {
+        english: "Which place is good?",
+        vietnamese: "Chỗ nào tốt?",
+        pronunciation: "cho nao tote",
+        context: "General question for services, shops, or places.",
+      },
+      {
+        english: "Which cafe is good near here?",
+        vietnamese: "Gần đây có quán cà phê nào ngon không?",
+        pronunciation: "gan day caw kwan cafe nao ngon khome",
+        context: "Use when looking for a local cafe.",
+      },
+      {
+        english: "Is this dish good?",
+        vietnamese: "Món này có ngon không?",
+        pronunciation: "mon nai caw ngon khome",
+        context: "Use while pointing at a menu or food display.",
+      },
+      {
+        english: "Where should I go?",
+        vietnamese: "Tôi nên đi đâu?",
+        pronunciation: "toy nen dee dow",
+        context: "Use when asking for travel, food, or neighborhood ideas.",
+      },
+      {
+        english: "What is fun around here?",
+        vietnamese: "Ở đây có gì vui?",
+        pronunciation: "uh day caw zee vui",
+        context: "Use with friends or locals when exploring an area.",
+      },
+      {
+        english: "What place do you like?",
+        vietnamese: "Bạn thích chỗ nào?",
+        pronunciation: "ban thik cho nao",
+        context: "A friendly way to ask for a personal recommendation.",
+      },
+    ],
+    cultural_note:
+      "Local recommendations are often better than online lists, especially for food and coffee.",
+    tip:
+      "Ask one short question, then show your map if you need a specific location.",
+  },
+  {
+    id: 21,
+    level: "A1",
+    title_en: "Vietnamese Social Etiquette",
+    subtitle: "Be polite in homes and social moments.",
+    intro:
+      "Use these when visiting someone's home, joining a meal, or trying to be respectful.",
+    phrases: [
+      {
+        english: "What should I call you?",
+        vietnamese: "Tôi nên gọi bạn là gì?",
+        pronunciation: "toy nen goi ban la zee",
+        context: "Useful when you are unsure about names or pronouns.",
+      },
+      {
+        english: "May I come in?",
+        vietnamese: "Tôi có thể vào không?",
+        pronunciation: "toy caw theh vao khome",
+        context: "Use before entering a home, room, or office.",
+      },
+      {
+        english: "Do I need to take off my shoes?",
+        vietnamese: "Tôi có cần bỏ giày không?",
+        pronunciation: "toy caw kan baw zay khome",
+        context: "Useful before entering someone's home.",
+      },
+      {
+        english: "I brought a small gift.",
+        vietnamese: "Tôi mang quà nhỏ.",
+        pronunciation: "toy mang gwa nyaw",
+        context: "Use when visiting a home or meeting a host.",
+      },
+      {
+        english: "Excuse me, may I?",
+        vietnamese: "Xin phép nhé.",
+        pronunciation: "seen fep nyeh",
+        context: "Use softly before interrupting, entering, or doing something.",
+      },
+      {
+        english: "I don't want to bother you.",
+        vietnamese: "Tôi không muốn làm phiền.",
+        pronunciation: "toy khome mwon lam fyen",
+        context: "Use when asking for help politely.",
+      },
+      {
+        english: "Thank you for inviting me.",
+        vietnamese: "Cảm ơn vì đã mời tôi.",
+        pronunciation: "gahm uhn vee da moy toy",
+        context: "Use after being invited to a meal, home, or event.",
+      },
+    ],
+    cultural_note:
+      "Small etiquette phrases help you sound considerate even with beginner Vietnamese.",
+    tip:
+      "When in doubt, ask simply. Vietnamese hosts usually appreciate the effort.",
+  },
+  {
+    id: 22,
+    level: "A1",
+    title_en: "Common Polite Responses",
+    subtitle: "React naturally in everyday exchanges.",
+    intro:
+      "Use these short replies to sound warm, calm, and socially present.",
+    phrases: [
+      {
+        english: "Yes. / Respectful yes.",
+        vietnamese: "Dạ.",
+        pronunciation: "yah",
+        context: "Use with staff, older people, or when being polite.",
+      },
+      {
+        english: "Yes.",
+        vietnamese: "Vâng.",
+        pronunciation: "vung",
+        context: "Polite agreement or answer to a question.",
+      },
+      {
+        english: "Okay.",
+        vietnamese: "Được ạ.",
+        pronunciation: "duoc ah",
+        context: "Polite way to accept or confirm something.",
+      },
+      {
+        english: "No problem.",
+        vietnamese: "Không sao đâu.",
+        pronunciation: "khome sao dow",
+        context: "Use when someone apologizes or makes a small mistake.",
+      },
+      {
+        english: "You're welcome.",
+        vietnamese: "Không có gì.",
+        pronunciation: "khome caw zee",
+        context: "Use after someone says thank you.",
+      },
+      {
+        english: "Let me try.",
+        vietnamese: "Để tôi thử.",
+        pronunciation: "deh toy thu",
+        context: "Use when practicing language, food, or a new task.",
+      },
+      {
+        english: "Let me think a little.",
+        vietnamese: "Cho tôi suy nghĩ chút nhé.",
+        pronunciation: "chaw toy swee ngee chut nyeh",
+        context: "Use when you need time before answering.",
+      },
+    ],
+    cultural_note:
+      "Small responses like dạ and được ạ make everyday Vietnamese sound softer and more respectful.",
+    tip:
+      "These phrases are easy to repeat many times a day, so they build confidence quickly.",
+  },
+  {
+    id: 23,
+    level: "A1",
+    title_en: "Simple Texting And Chat Phrases",
+    subtitle: "Message friends, drivers, and staff.",
+    intro:
+      "Use these in text messages when meeting people, sending locations, or running late.",
+    phrases: [
+      {
+        english: "Where are you?",
+        vietnamese: "Bạn đang ở đâu?",
+        pronunciation: "ban dang uh dow",
+        context: "Use in messages with friends, drivers, or deliveries.",
+      },
+      {
+        english: "I will be a little late.",
+        vietnamese: "Tôi đến trễ một chút.",
+        pronunciation: "toy den treh moht chut",
+        context: "Use when you are delayed.",
+      },
+      {
+        english: "I arrived.",
+        vietnamese: "Tôi tới rồi.",
+        pronunciation: "toy toy roy",
+        context: "Use when you reach the meeting place.",
+      },
+      {
+        english: "Please send me the address.",
+        vietnamese: "Gửi địa chỉ cho tôi nhé.",
+        pronunciation: "gooy dee-ah chee chaw toy nyeh",
+        context: "Use before going somewhere new.",
+      },
+      {
+        english: "Text me when you arrive.",
+        vietnamese: "Nhắn tôi khi bạn đến.",
+        pronunciation: "nyan toy khi ban den",
+        context: "Use with friends or visitors.",
+      },
+      {
+        english: "I will call back later.",
+        vietnamese: "Tôi gọi lại sau.",
+        pronunciation: "toy goi lai sow",
+        context: "Use when you cannot talk now.",
+      },
+      {
+        english: "Okay, see you.",
+        vietnamese: "Ok, hẹn gặp bạn.",
+        pronunciation: "okay, hen gap ban",
+        context: "Friendly message to confirm plans.",
+      },
+    ],
+    cultural_note:
+      "Messaging in Vietnam is often short and practical. Clear location details matter more than long text.",
+    tip:
+      "Use these with a map pin, address, or screenshot when plans involve travel.",
+  },
+  {
+    id: 24,
+    level: "A1",
+    title_en: "Going Out And Invitations",
+    subtitle: "Make simple plans with people.",
+    intro:
+      "Use these when inviting someone out, choosing a place, or responding to plans.",
+    phrases: [
+      {
+        english: "Are you free tonight?",
+        vietnamese: "Tối nay bạn rảnh không?",
+        pronunciation: "toy nai ban ranh khome",
+        context: "Use when inviting a friend or coworker out.",
+      },
+      {
+        english: "Want to get coffee?",
+        vietnamese: "Đi cà phê không?",
+        pronunciation: "dee cafe khome",
+        context: "Casual invitation for friends or classmates.",
+      },
+      {
+        english: "Let's go eat dinner.",
+        vietnamese: "Mình đi ăn tối nhé.",
+        pronunciation: "ming dee an toy nyeh",
+        context: "Friendly plan suggestion.",
+      },
+      {
+        english: "Where do you want to go?",
+        vietnamese: "Bạn muốn đi đâu?",
+        pronunciation: "ban mwon dee dow",
+        context: "Use when choosing a cafe, restaurant, or activity.",
+      },
+      {
+        english: "What time should we meet?",
+        vietnamese: "Mấy giờ gặp nhau?",
+        pronunciation: "may zuh gap nhau",
+        context: "Use after deciding to meet.",
+      },
+      {
+        english: "I am busy today.",
+        vietnamese: "Tôi bận hôm nay.",
+        pronunciation: "toy ban home nai",
+        context: "Simple polite decline.",
+      },
+      {
+        english: "Maybe next time.",
+        vietnamese: "Để lần sau nhé.",
+        pronunciation: "deh lan sow nyeh",
+        context: "Warm way to decline without sounding harsh.",
+      },
+    ],
+    cultural_note:
+      "Coffee invitations are very normal in Vietnam and can be casual, quick, or social.",
+    tip:
+      "If you decline, adding nhé keeps the tone softer.",
+  },
+  {
+    id: 25,
+    level: "A1",
+    title_en: "Misunderstandings And Clarification",
+    subtitle: "Stay calm when conversation gets unclear.",
+    intro:
+      "Use these when someone speaks quickly, you miss a word, or you need time to understand.",
+    phrases: [
+      {
+        english: "Sorry, I can't hear clearly.",
+        vietnamese: "Xin lỗi, tôi nghe không rõ.",
+        pronunciation: "seen loy, toy nghe khome raw",
+        context: "Use in noisy places or on the phone.",
+      },
+      {
+        english: "Can you speak more slowly?",
+        vietnamese: "Bạn nói chậm hơn được không?",
+        pronunciation: "ban noy cham hurn duoc khome",
+        context: "Use when someone is speaking too fast.",
+      },
+      {
+        english: "Can you say that again?",
+        vietnamese: "Bạn nói lại được không?",
+        pronunciation: "ban noy lai duoc khome",
+        context: "Use when you missed the sentence.",
+      },
+      {
+        english: "I understand a little.",
+        vietnamese: "Tôi hiểu một chút.",
+        pronunciation: "toy hyew moht chut",
+        context: "Use when you understand some Vietnamese but not all.",
+      },
+      {
+        english: "I don't understand yet.",
+        vietnamese: "Tôi chưa hiểu.",
+        pronunciation: "toy chua hyew",
+        context: "Use when you need another explanation.",
+      },
+      {
+        english: "What do you mean?",
+        vietnamese: "Ý bạn là gì?",
+        pronunciation: "ee ban la zee",
+        context: "Use gently when the meaning is unclear.",
+      },
+      {
+        english: "Can you write it down?",
+        vietnamese: "Bạn viết ra được không?",
+        pronunciation: "ban vyet ra duoc khome",
+        context: "Use when names, addresses, or numbers are hard to catch.",
+      },
+    ],
+    cultural_note:
+      "Asking for repetition is normal. Short clarification phrases keep the conversation comfortable.",
+    tip:
+      "Use tôi hiểu một chút to signal effort and keep the other person patient.",
+  },
 ];
