@@ -8796,6 +8796,270 @@ level: "B2",
         pinyin: "Zōng hé píng shěn yì jiàn, běn gǎo yí jiē shòu zhòng dà xiū gǎi hòu zài shěn, bù yí zhí jiē jiē shòu, yì wú xū lì jí jù gǎo."
       }
     ]
+  },
+  {
+    id: 102,
+    level: "C2",
+    category: "literary_criticism",
+    title: "提出文学研究假设",
+    pinyin: "tí chū wén xué yán jiū jiǎ shè",
+    topic: "Presenting a literary research hypothesis",
+    title_vi: "Trình bày giả thuyết nghiên cứu văn học",
+    title_en: "Presenting a literary research hypothesis",
+    sentences: [
+      {
+        chinese: "本研究拟探讨《红楼梦》中'草蛇灰线'之叙事手法, 着重分析第五回与第七十八回之间的结构性呼应。",
+        pinyin: "Běn yánjiū nǐ tàntǎo «Hónglóumèng» zhōng 'cǎo shé huī xiàn' zhī xùshì shǒufǎ, zhuózhòng fēnxī dì wǔ huí yǔ dì qīshíbā huí zhī jiān de jiégòuxìng hūyìng.",
+        english: "This study proposes to investigate the 'concealed thread' (cǎo shé huī xiàn) narrative technique in Dream of the Red Chamber, focusing on the structural correspondence between Chapter 5 and Chapter 78.",
+        vi: "Nghiên cứu này dự định khảo sát thủ pháp tự sự 'thảo xà khôi tuyến' (mạch ngầm phục bút) trong Hồng Lâu Mộng, chú trọng phân tích sự hô ứng cấu trúc giữa hồi 5 và hồi 78.",
+        pronunciation_focus: ["拟 → nǐ (dự định — 文白)", "草蛇灰线 → cǎo shé huī xiàn (thủ pháp phục bút mờ — 文论术语)", "叙事手法 → xùshì shǒufǎ (thủ pháp tự sự)", "呼应 → hūyìng (hô ứng)"]
+      },
+      {
+        chinese: "笔者假设, 曹雪芹于太虚幻境一回所设之十二钗判词, 实为全书命运结构之元图式, 后续诸回皆暗合其轨迹。",
+        pinyin: "Bǐzhě jiǎshè, Cáo Xuěqín yú Tàixū Huànjìng yī huí suǒ shè zhī shí'èr chāi pàncí, shí wèi quán shū mìngyùn jiégòu zhī yuán túshì, hòuxù zhū huí jiē àn hé qí guǐjì.",
+        english: "The author hypothesizes that the twelve verses on the maidens which Cao Xueqin places in the Illusory Realm chapter constitute the meta-schema of the novel's fate-structure, with subsequent chapters all tacitly aligning with that trajectory.",
+        vi: "Tác giả giả thuyết rằng phán từ của thập nhị thoa mà Tào Tuyết Cần đặt trong hồi Thái Hư Huyễn Cảnh chính là siêu đồ thức cấu trúc số phận của toàn truyện, các hồi sau đều ngầm phù hợp với quỹ đạo ấy.",
+        pronunciation_focus: ["太虚幻境 → Tàixū Huànjìng (hồi 5 红楼梦)", "判词 → pàncí (phán từ — 12 maidens' fate verses)", "元图式 → yuán túshì (siêu đồ thức / meta-schema)", "暗合 → àn hé (ngầm phù hợp)"]
+      },
+      {
+        chinese: "此假设之理论根基, 既源于王国维《人间词话》中'境界'说之启发, 亦借鉴钱钟书《管锥编》论文本互渗之精微辨析。",
+        pinyin: "Cǐ jiǎshè zhī lǐlùn gēnjī, jì yuán yú Wáng Guówéi «Rénjiān Cíhuà» zhōng 'jìngjiè' shuō zhī qǐfā, yì jièjiàn Qián Zhōngshū «Guǎnzhuībiān» lùn wénběn hùshèn zhī jīngwéi biànxī.",
+        english: "The theoretical foundation of this hypothesis draws both from the inspiration of Wang Guowei's 'jìngjiè' doctrine in Renjian Cihua and from Qian Zhongshu's subtle analysis of textual interpenetration in Guanzhuibian.",
+        vi: "Cơ sở lý thuyết của giả thuyết này vừa bắt nguồn từ gợi ý của thuyết 'cảnh giới' trong Nhân Gian Từ Thoại của Vương Quốc Duy, vừa tham khảo phân tích tinh vi về sự thẩm thấu giữa các văn bản trong Quản Trùy Biên của Tiền Chung Thư.",
+        pronunciation_focus: ["既...亦 → jì...yì (vừa...vừa — 文言)", "境界 → jìngjiè (cảnh giới — 王国维 critical term)", "互渗 → hùshèn (thẩm thấu / interpenetration)", "精微辨析 → jīngwéi biànxī (phân tích tinh vi)"]
+      },
+      {
+        chinese: "然文本流变与版本歧异 — 尤以程甲本与脂评本之别为甚 — 实对本假设之可证伪性构成限制, 不容回避。",
+        pinyin: "Rán wénběn liúbiàn yǔ bǎnběn qíyì — yóu yǐ Chéngjiǎběn yǔ Zhīpíngběn zhī bié wèi shèn — shí duì běn jiǎshè zhī kě zhèngwěixìng gòuchéng xiànzhì, bù róng huíbì.",
+        english: "Yet textual transmission and version variation — especially as exemplified by the divergence between the Cheng Jia recension and the Zhi-commentary recensions — substantively constrain the falsifiability of this hypothesis, and may not be evaded.",
+        vi: "Tuy nhiên, sự lưu biến văn bản và dị biệt phiên bản — đặc biệt là khác biệt giữa bản Trình Giáp và các bản chú phê họ Chi — thực sự tạo nên giới hạn cho tính khả bác của giả thuyết này, không thể né tránh.",
+        pronunciation_focus: ["然 → rán (nhưng — 文言)", "尤以...为甚 → yóu yǐ...wèi shèn (đặc biệt là...nhất — 文言)", "脂评本 → Zhīpíngběn (bản chú phê của 脂砚斋)", "不容回避 → bù róng huíbì (không thể né tránh — 书面)"]
+      },
+      {
+        chinese: "综上所述, 若文本细读所得之结构对应, 能于多版本间相互印证, 则本研究或可为红学'草蛇灰线'之传统读法, 提供一可量化之新视角。",
+        pinyin: "Zōng shàng suǒ shù, ruò wénběn xìdú suǒ dé zhī jiégòu duìyìng, néng yú duō bǎnběn jiān xiānghù yìnzhèng, zé běn yánjiū huò kě wèi Hóngxué 'cǎo shé huī xiàn' zhī chuántǒng dúfǎ, tígōng yī kě liànghuà zhī xīn shìjiǎo.",
+        english: "In summary, should the structural correspondences obtained through close reading prove mutually verifiable across versions, this study may provide a quantifiable new perspective for Redology's traditional 'concealed thread' mode of reading.",
+        vi: "Tóm lại, nếu các đối ứng cấu trúc thu được qua đọc văn bản tỉ mỉ có thể được kiểm chứng lẫn nhau giữa nhiều phiên bản, nghiên cứu này có lẽ có thể cung cấp một góc nhìn mới mang tính định lượng cho cách đọc truyền thống 'thảo xà khôi tuyến' của Hồng học.",
+        pronunciation_focus: ["若...则 → ruò...zé (nếu...thì — 文言)", "印证 → yìnzhèng (chứng thực lẫn nhau)", "红学 → Hóngxué (Hồng học — Redology)", "或可 → huò kě (có lẽ có thể — 书面 hedge)"]
+      }
+    ],
+    vocab: [
+      { chinese: "草蛇灰线", pinyin: "cǎo shé huī xiàn", english: "concealed narrative foreshadowing (idiom)", vi: "phục bút mờ / mạch ngầm tự sự (书面 文论术语)" },
+      { chinese: "判词", pinyin: "pàn cí", english: "fate-verse (Honglou term)", vi: "phán từ (số phận — 红楼梦 ch.5)" },
+      { chinese: "境界", pinyin: "jìng jiè", english: "aesthetic/spiritual realm (王国维)", vi: "cảnh giới (王国维 critical term)" },
+      { chinese: "互文", pinyin: "hù wén", english: "intertextuality", vi: "hỗ văn / tính liên văn bản" },
+      { chinese: "可证伪性", pinyin: "kě zhèng wěi xìng", english: "falsifiability", vi: "tính khả bác" },
+      { chinese: "红学", pinyin: "hóng xué", english: "Redology (红楼梦 studies)", vi: "Hồng học" },
+      { chinese: "文本细读", pinyin: "wén běn xì dú", english: "close reading", vi: "đọc văn bản tỉ mỉ" },
+      { chinese: "脂评本", pinyin: "zhī píng běn", english: "Zhi-commentary edition (of 红楼梦)", vi: "bản chú phê của Chi Nghiễn Trai" },
+      { chinese: "程甲本", pinyin: "chéng jiǎ běn", english: "Cheng Jia edition (1791)", vi: "bản Trình Giáp (1791)" },
+      { chinese: "拟", pinyin: "nǐ", english: "to propose / intend (formal)", vi: "dự định / định / nay xin (文白)" }
+    ],
+    dialogue: [
+      { speaker: "学生", chinese: "教授, 我提出的研究假设, 围绕《红楼梦》判词与全书命运结构之对应, 不知是否成立?", pinyin: "Jiàoshòu, wǒ tíchū de yánjiū jiǎshè, wéirào «Hónglóumèng» pàncí yǔ quán shū mìngyùn jiégòu zhī duìyìng, bùzhī shìfǒu chénglì?", english: "Professor, my hypothesis centers on the correspondence between Honglou's fate-verses and the novel's overall destiny-structure — does it hold?", vi: "Thưa giáo sư, giả thuyết em đưa ra xoay quanh sự đối ứng giữa phán từ của Hồng Lâu Mộng và cấu trúc số phận toàn truyện, không biết có đứng được không?" },
+      { speaker: "教授", chinese: "命题本身具学术价值, 红学'草蛇灰线'之说由来已久, 然将其上升为'元图式', 实属较强之主张, 须慎之又慎。", pinyin: "Mìngtí běnshēn jù xuéshù jiàzhí, Hóngxué 'cǎo shé huī xiàn' zhī shuō yóulái yǐjiǔ, rán jiāng qí shàngshēng wéi 'yuán túshì', shí shǔ jiào qiáng zhī zhǔzhāng, xū shèn zhī yòu shèn.", english: "The proposition has academic value — Redology's 'concealed thread' notion has long history. Yet elevating it to 'meta-schema' is a rather strong claim and demands utmost caution.", vi: "Mệnh đề tự thân có giá trị học thuật, thuyết 'thảo xà khôi tuyến' trong Hồng học đã có từ lâu. Nhưng nâng nó lên thành 'siêu đồ thức' thực ra là một chủ trương khá mạnh, phải cực kỳ thận trọng." },
+      { speaker: "学生", chinese: "如何使此命题臻于可证伪之境?", pinyin: "Rúhé shǐ cǐ mìngtí zhēn yú kě zhèngwěi zhī jìng?", english: "How can this proposition reach the realm of falsifiability?", vi: "Làm sao để mệnh đề này đạt được trạng thái khả bác?" },
+      { speaker: "教授", chinese: "量化对应关系, 设阈值, 比对程甲本与脂本之异同。良好的文学假设, 不应止于诗化, 而当能被证据推翻。", pinyin: "Liànghuà duìyìng guānxì, shè yùzhí, bǐduì Chéngjiǎběn yǔ Zhīběn zhī yìtóng. Liánghǎo de wénxué jiǎshè, bù yīng zhǐ yú shīhuà, ér dāng néng bèi zhèngjù tuīfān.", english: "Quantify the correspondences, set thresholds, compare divergences between Cheng Jia and Zhi recensions. A good literary hypothesis should not rest in the poetic — it must be vulnerable to evidential refutation.", vi: "Định lượng quan hệ đối ứng, đặt ngưỡng, đối chiếu dị đồng giữa bản Trình Giáp và bản Chi. Một giả thuyết văn học tốt không nên dừng ở cái thi vị, mà phải có thể bị bằng chứng lật đổ." }
+    ],
+    dialogue_long: [
+      { speaker: "学生", chinese: "教授, 我打算把博士论文做成《红楼梦》前八十回与后四十回的结构对位研究, 但担心规模太大。", pinyin: "Jiàoshòu, wǒ dǎsuàn bǎ bóshì lùnwén zuò chéng «Hónglóumèng» qián bāshí huí yǔ hòu sìshí huí de jiégòu duìwèi yánjiū, dàn dānxīn guīmó tài dà.", english: "Professor, I plan to make my doctoral thesis a structural counterpoint study of the first 80 vs. the last 40 chapters of Honglou — but worry the scale is too large.", vi: "Thưa giáo sư, em định làm luận án tiến sĩ về nghiên cứu đối vị cấu trúc giữa 80 hồi đầu và 40 hồi sau của Hồng Lâu Mộng, nhưng lo quy mô quá lớn." },
+      { speaker: "教授", chinese: "题目宏大, 但容易流于空泛。先把'对位'这个隐喻具体化: 你要测量什么? 主题词频? 人物情节呼应? 还是叙述节奏?", pinyin: "Tímù hóngdà, dàn róngyì liú yú kōngfàn. Xiān bǎ 'duìwèi' zhège yǐnyù jùtǐhuà: nǐ yào cèliáng shénme? Zhǔtí cípín? Rénwù qíngjié hūyìng? Háishì xùshù jiézòu?", english: "The topic is grand but risks vagueness. First concretize the metaphor 'counterpoint' — what do you measure? Theme-word frequencies? Character-plot echoes? Narrative pacing?", vi: "Đề tài lớn, nhưng dễ rơi vào trống rỗng. Trước hết cụ thể hóa ẩn dụ 'đối vị': em định đo cái gì? Tần suất từ chủ đề? Sự hô ứng nhân vật cốt truyện? Hay nhịp tự sự?" },
+      { speaker: "学生", chinese: "我最关心的是命运预言与实际情节的吻合度。具体说, 第五回十二钗判词每一首所预设之结局, 是否能在后续章回中找到对应文本?", pinyin: "Wǒ zuì guānxīn de shì mìngyùn yùyán yǔ shíjì qíngjié de wěnhédù. Jùtǐ shuō, dì wǔ huí shí'èr chāi pàncí měi yī shǒu suǒ yùshè zhī jiéjú, shìfǒu néng zài hòuxù zhānghuí zhōng zhǎodào duìyìng wénběn?", english: "What I care most about is the fit between fate-prophecies and actual plot. Concretely: each of Chapter 5's twelve fate-verses prefigures an ending — can corresponding text be found in subsequent chapters?", vi: "Em quan tâm nhất là độ ăn khớp giữa lời tiên tri số phận và cốt truyện thực tế. Cụ thể: mỗi phán từ trong thập nhị thoa hồi 5 đã định trước một kết cục, liệu có thể tìm thấy văn bản tương ứng trong các hồi sau?" },
+      { speaker: "教授", chinese: "这是一个可以操作的题目。但你必须分清两层: 一层是脂本所暗示的曹雪芹原意, 一层是程高本续作的实际处理。两层不能混为一谈。", pinyin: "Zhè shì yī gè kěyǐ cāozuò de tímù. Dàn nǐ bìxū fēnqīng liǎng céng: yī céng shì Zhīběn suǒ ànshì de Cáo Xuěqín yuányì, yī céng shì Chénggāoběn xùzuò de shíjì chǔlǐ. Liǎng céng bùnéng hùn wéi yī tán.", english: "An operable topic. But you must distinguish two layers: one is the original intent that the Zhi-commentary implies for Cao Xueqin; the other is the actual treatment in the Cheng-Gao continuation. The two cannot be conflated.", vi: "Đây là một đề tài có thể thao tác. Nhưng em phải phân biệt hai tầng: một là ý gốc của Tào Tuyết Cần mà bản Chi gợi ý, hai là cách xử lý thực tế của phần tục viết Trình-Cao. Hai tầng không thể trộn lẫn." },
+      { speaker: "学生", chinese: "如果两者吻合度高, 是否能反过来论证程高本忠于脂本暗示?", pinyin: "Rúguǒ liǎngzhě wěnhédù gāo, shìfǒu néng fǎn guòlái lùnzhèng Chénggāoběn zhōng yú Zhīběn ànshì?", english: "If the two show high alignment, can we conversely argue the Cheng-Gao continuation is faithful to the Zhi-commentary's hints?", vi: "Nếu hai cái ăn khớp cao, có thể ngược lại lập luận rằng phần Trình-Cao trung thành với gợi ý của bản Chi không?" },
+      { speaker: "教授", chinese: "可以提出此假设, 但要谨慎: '高度吻合'本身是定量概念, 你必须先建立测量标准。否则就成了循环论证。学界对程高本之评价向来分歧, 你不可贸然加入任何一派。", pinyin: "Kěyǐ tíchū cǐ jiǎshè, dàn yào jǐnshèn: 'gāodù wěnhé' běnshēn shì dìngliàng gàiniàn, nǐ bìxū xiān jiànlì cèliáng biāozhǔn. Fǒuzé jiù chéngle xúnhuán lùnzhèng. Xuéjiè duì Chénggāoběn zhī píngjià xiànglái fēnqí, nǐ bùkě màorán jiārù rènhé yī pài.", english: "You may pose that hypothesis, but with caution: 'high alignment' is itself quantitative — you must first establish measurement criteria, lest it become circular. Scholarly evaluations of the Cheng-Gao continuation have long diverged; you mustn't rashly join any camp.", vi: "Có thể đặt giả thuyết này, nhưng phải thận trọng: 'ăn khớp cao' tự thân là khái niệm định lượng, em phải lập tiêu chuẩn đo lường trước. Nếu không sẽ thành lập luận vòng quanh. Giới học thuật từ lâu đã chia rẽ về việc đánh giá phần Trình-Cao, em không được vội vàng gia nhập phái nào." },
+      { speaker: "学生", chinese: "我考虑用王国维'三种境界'之说作为框架, 借以衡量判词与情节的境界一致性。", pinyin: "Wǒ kǎolǜ yòng Wáng Guówéi 'sān zhǒng jìngjiè' zhī shuō zuòwéi kuàngjià, jièyǐ héngliáng pàncí yǔ qíngjié de jìngjiè yīzhìxìng.", english: "I'm considering Wang Guowei's 'three realms' doctrine as framework, to gauge realm-consistency between fate-verses and plot.", vi: "Em định dùng thuyết 'tam cảnh giới' của Vương Quốc Duy làm khung, để đo lường tính nhất quán cảnh giới giữa phán từ và cốt truyện." },
+      { speaker: "教授", chinese: "王国维的境界说本是为词体而立, 用于小说叙事须经转化, 不可生搬硬套。可结合钱钟书《管锥编》论比兴互文的方法, 你将获得更精细的工具。", pinyin: "Wáng Guówéi de jìngjiè shuō běn shì wèi cítǐ ér lì, yòng yú xiǎoshuō xùshì xū jīng zhuǎnhuà, bùkě shēng bān yìng tào. Kě jiéhé Qián Zhōngshū «Guǎnzhuībiān» lùn bǐxìng hùwén de fāngfǎ, nǐ jiāng huòdé gèng jīngxì de gōngjù.", english: "Wang Guowei's jìngjiè was framed for ci poetry; applying it to novelistic narrative requires transformation — no rigid transplantation. Pair it with Qian Zhongshu's method on bǐxìng-intertextuality in Guanzhuibian, and you'll have finer-grained instruments.", vi: "Thuyết cảnh giới của Vương Quốc Duy vốn được lập cho thể từ, dùng cho tự sự tiểu thuyết phải qua chuyển hóa, không được áp đặt cứng. Kết hợp với phương pháp luận về tỷ hứng-hỗ văn của Tiền Chung Thư trong Quản Trùy Biên, em sẽ có công cụ tinh hơn." },
+      { speaker: "学生", chinese: "明白。那zero假设要怎么写? 总不能写'判词与情节无关'这种空话?", pinyin: "Míngbái. Nà zero jiǎshè yào zěnme xiě? Zǒng bùnéng xiě 'pàncí yǔ qíngjié wúguān' zhè zhǒng kōnghuà?", english: "Understood. Then how do I write the null hypothesis? Surely not 'fate-verses bear no relation to plot' — empty phrasing?", vi: "Em hiểu. Vậy giả thuyết không (null) viết thế nào? Chắc không thể viết 'phán từ và cốt truyện không liên quan' — câu trống rỗng?" },
+      { speaker: "教授", chinese: "零假设须具体: '在所设阈值之下, 判词关键词与该人物所在章回之关键词共现率, 与随机基线无显著差异'。这就把抽象的'无关'转化成可统计的命题。", pinyin: "Líng jiǎshè xū jùtǐ: 'zài suǒ shè yùzhí zhī xià, pàncí guānjiàn cí yǔ gāi rénwù suǒ zài zhānghuí zhī guānjiàn cí gòngxiàn lǜ, yǔ suíjī jīxiàn wú xiǎnzhù chāyì'. Zhè jiù bǎ chōuxiàng de 'wúguān' zhuǎnhuà chéng kě tǒngjì de mìngtí.", english: "The null must be concrete: 'Under the chosen threshold, the co-occurrence rate of fate-verse keywords and chapter keywords for the corresponding character does not differ significantly from a random baseline.' That converts abstract 'no relation' into a statistically tractable proposition.", vi: "Giả thuyết không phải cụ thể: 'Dưới ngưỡng đã đặt, tỉ lệ đồng xuất hiện của từ khóa phán từ với từ khóa của các hồi nơi nhân vật tương ứng xuất hiện, không khác biệt đáng kể so với đường cơ sở ngẫu nhiên'. Như thế biến cái trừu tượng 'không liên quan' thành mệnh đề thống kê hoá được." },
+      { speaker: "学生", chinese: "如此一来, 我的研究既保留了文学性, 又获得了实证基础。", pinyin: "Rúcǐ yī lái, wǒ de yánjiū jì bǎoliúle wénxuéxìng, yòu huòdéle shízhèng jīchǔ.", english: "In this way, my research preserves literary character while acquiring empirical foundation.", vi: "Như thế nghiên cứu của em vừa giữ tính văn học, vừa có được cơ sở thực chứng." },
+      { speaker: "教授", chinese: "正是。最后一句忠告: 文学研究忌避两端, 一端是诗化漫谈, 一端是数据迷信。你的位置应在二者之间。", pinyin: "Zhèngshì. Zuìhòu yī jù zhōnggào: wénxué yánjiū jì bì liǎng duān, yī duān shì shīhuà màntán, yī duān shì shùjù míxìn. Nǐ de wèizhì yīng zài èr zhě zhī jiān.", english: "Exactly. Final caveat: literary research must avoid two extremes — poetic chatter on one end, data fetishism on the other. Your place is between them.", vi: "Đúng vậy. Câu khuyên cuối: nghiên cứu văn học kỵ hai cực đoan, một bên là tản mạn thi vị, một bên là sùng bái dữ liệu. Vị trí của em nên ở giữa hai cái." }
+    ],
+    roleplay_prompts: [
+      "Bạn là PhD candidate trình bày giả thuyết luận án trước hội đồng (3 giáo sư trung văn). Đề tài: 'Thủ pháp 草蛇灰线 trong 西游记 — sự hô ứng giữa hồi 1 và hồi 100 (始终相对)'. Hãy phát biểu giả thuyết theo C2 register: (1) định vị nó trong truyền thống 红学/西游学 nhưng không sao chép, (2) nêu nền tảng lý thuyết (王国维 境界 + 钱钟书 互文), (3) acknowledge một hạn chế cụ thể về văn bản, (4) chốt với '若...则...或可'. Tránh từ '革命性 / 突破 / 颠覆'.",
+      "Bạn là supervisor đọc đề cương luận văn thạc sĩ tỳ vào nhau như: 'cảnh giới của 王维 cao hơn 杜甫'. Hãy phản hồi C2: chỉ ra giả thuyết comparative quá lớn / không kiểm chứng được (高/低 dựa trên tiêu chí gì?) / 王维 và 杜甫 thuộc hai phong cách khác biệt căn bản (山水/现实). Đề xuất thu hẹp thành 'so sánh thủ pháp 比兴 trong 5 bài 山水诗 của 王维 với 5 bài 田园诗 của 王维 thời kỳ vãn niên'. Dùng cụm '此命题恐过于宏大 / 笔者建议 / 须先界定'.",
+      "Bạn là sinh viên đang viết introduction cho luận án về '苏轼 词中 豪放与婉约 之辩证'. Hãy chuyển bản nháp tiếng Việt 'Tôi nghĩ Tô Thức kết hợp hai phong cách' thành tiếng Trung học thuật C2 (3 câu, mỗi câu dùng ít nhất 1 connector 文白 và 1 古典 critical term — 风骨 / 意境 / 神韵 / 气韵). Ground claim trong 王国维 hoặc 朱光潜 lý thuyết."
+    ],
+    register_notes: "Phát biểu giả thuyết trong phê bình văn học C2 cần kết hợp ba yếu tố: (a) modern academic discipline, (b) 古典文论 lexicon, (c) văn bản học rigor.\n\n1. CẤU TRÚC GIẢ THUYẾT VĂN HỌC:\n\n- 笔者拟探讨 / 笔者假设... (the author proposes / hypothesizes)\n- 本研究着重分析 [文本] 中之 [现象] (this study focuses on phenomenon X in text Y)\n- 此假设之理论根基, 既源于... 亦借鉴... (theoretical foundation derives both from... and...)\n- 综上所述, 若...则本研究或可为...提供 (in summary, if... then this study may provide for...)\n\n2. ĐỘNG TỪ HOẠT ĐỘNG VĂN BẢN:\n\n- 探讨 (investigate) > 看 / 研究\n- 揭示 (reveal) > 发现\n- 阐发 (elucidate) > 解释\n- 阐扬 (elaborate / expound)\n- 着墨 (lit. apply ink — focus on)\n- 论及 (touch upon)\n- 钩沉 (lit. fish from the deep — recover obscure material)\n\n3. CRITICAL TRADITION REFERENCES:\n\n- 王国维《人间词话》 — 境界 doctrine. Use 第N则 to cite specific sections.\n- 钱钟书《管锥编》《谈艺录》 — comparative poetics, intertextuality. 旁征博引 is its signature.\n- 朱光潜《诗论》《文艺心理学》 — aesthetics, 意象, 移情.\n- 宗白华《美学散步》 — 中国美学之 心物一元.\n- 古典: 刘勰《文心雕龙》 — 风骨, 体性, 神思. 司空图《诗品》 — 二十四诗品.\n\nKhi cite, dùng book name in 《》, KHÔNG bare name. '王国维《人间词话》第二十六则曰' (Wang Guowei in Renjian Cihua section 26 states). Cite section number cho cổ điển texts.\n\n4. CỤM 文言 IN CRITICAL PROSE:\n\n- 之 > 的 (in abstract noun phrases)\n- 其 > 它的 / 他的\n- 此 > 这\n- 该 / 斯 > 这个 (formal demonstrative)\n- 然 > 但是\n- 然则 > 那么\n- 抑或 > 或者\n- 是以 > 因此\n- 盖 > 因为 / 大概 (古典 connector)\n- 凡 > 凡是\n- 若 / 倘 / 苟 > 如果\n- 则 > 就\n- 而 > 但是 / 并且 (conjunction, depending on context)\n\nC2 critical prose có thể dùng 5-10 文言 markers per page. Quá nhiều = pretentious. Quá ít = không đạt C2.\n\n5. HEDGING C2 LEVEL:\n\n- 或可 (perhaps able to) > 可能\n- 似可 / 似乎 (seems able to / seems)\n- 恐 (I fear / probably) — 文言 hedge\n- 庶几 (perhaps approaches / nearly) — 文言 hedge\n- 不无道理 (not without reason)\n- 殆 (probably) — 文言, 极书面\n- 颇 (rather / considerably) — 文言, less hedge but tone-modulator\n\n6. TỪ AVOIDED IN C2 LITERARY PROSE:\n\n- 我觉得 / 我认为 — replace with 笔者以为 / 笔者愚以为 / 拟以为 / passive\n- 啊 / 呢 / 吧 — never\n- 而且 → 且 / 兼以 / 此外 / 尚有\n- 因为 → 由于 / 缘于 / 盖因\n- 但是 → 然 / 然则 / 抑或\n- 这个 → 此 / 兹\n\n7. SCALE-CALIBRATION cho LITERARY CLAIMS:\n\n- 显著 — chỉ dùng cho quantitative.\n- 颇为 (quite) — neutral, often.\n- 极为 (exceedingly) — cho rare praise.\n- 不无 (not without) — softening.\n- 略具 (slightly possess) — mild.\n- 蔚为大观 (forms a grand sight) — strong positive idiom for literary phenomenon.\n\n8. CỤM TỪ CRITIQUE TRUTH-CLAIMS HEDGE:\n\n- 此论或可商榷 (this argument is open to deliberation)\n- 此说尚有 발dilemma (this position still presents a dilemma)\n- 学界于此一向众说纷纭 (academia has long held diverse views on this)\n- 是非曲直, 当俟后人裁断 (whether right or wrong — this awaits posterity's judgment) — 文言 escape hatch khi không muốn lập trường",
+    idiom_glosses: [
+      {
+        idiom: "草蛇灰线",
+        literal: "rắn cỏ - đường tro (cǎo shé huī xiàn)",
+        meaning: "Rắn trườn trong cỏ, đường tro mờ — narrative term: foreshadowing thread that surfaces only briefly, then disappears, then resurfaces. Cụm 红学 cốt lõi để mô tả thủ pháp foreshadowing mờ trong tự sự cổ điển. (书面 文论术语)",
+        example: "曹雪芹之笔法, 草蛇灰线, 伏脉千里, 非细读不能察。"
+      },
+      {
+        idiom: "伏脉千里",
+        literal: "mạch ngầm xa nghìn dặm (fú mài qiān lǐ)",
+        meaning: "Mạch văn ngầm dài nghìn dặm — narrative phrase: hidden plot-thread laid early surfaces much later. Thường đi kèm 草蛇灰线. (书面 文论术语)",
+        example: "脂批屡称此处'伏脉千里', 提示读者警觉后文呼应。"
+      },
+      {
+        idiom: "言近旨远",
+        literal: "lời gần ý xa (yán jìn zhǐ yuǎn)",
+        meaning: "Lời gần gũi ý sâu xa — classical aesthetic praise: surface plain, deep meaning. Khen prose có ngụ ý lớn dưới câu chữ giản dị. (书面/正式)",
+        example: "庄子寓言, 言近旨远, 字简意丰。"
+      },
+      {
+        idiom: "钩沉索隐",
+        literal: "móc vật chìm tìm vật ẩn (gōu chén suǒ yǐn)",
+        meaning: "Móc vớt cái chìm dưới biển, tìm tòi cái ẩn — academic metaphor for textual scholarship recovering obscure or lost material. Khen học giả 文献学. (书面/正式)",
+        example: "王国维治学钩沉索隐, 于敦煌残卷中发覆甚多。"
+      }
+    ],
+    cultural_notes_vi: "Văn hóa nghiên cứu văn học cổ điển ở Trung Quốc đại lục có những điểm khác biệt với Việt Nam mà sinh viên cần biết:\n\n(1) HỒNG HỌC LÀ MỘT NGÀNH RIÊNG: 红学 (Hồng học — Redology) đã thành một ngành học độc lập từ thời 胡适 (1921, 'Hồng Lâu Mộng khảo'). Hiện có 中国红楼梦学会, 学术期刊 《红楼梦学刊》, hàng nghìn luận văn / năm. Sinh viên Việt định làm Hồng học cần đọc Hồng học sử trước (nắm tóm các派 — 索隐派, 考证派, 文学派) để định vị mình. Không nên 'phát minh lại bánh xe'.\n\n(2) 脂批 (CHI BÌNH) LÀ NỀN TẢNG: bản chú phê bí ẩn ký 脂砚斋 / 畸笏叟 cung cấp bằng chứng văn bản học cốt yếu. 'Tiếp cận trực tiếp 脂本' (nhất là 庚辰本) trở thành dấu hiệu của learner Hồng học chuyên nghiệp. Sinh viên Việt nên đọc bản 红楼梦 in song song 脂批 chứ không phải chỉ bản 'phổ thông' (bản 程乙 đã chỉnh).\n\n(3) 王国维 LÀ FOUNDATIONAL: 王国维 (1877-1927) là người sáng lập modern Chinese literary criticism. Ba tác phẩm cốt lõi: 《人间词话》 (mỹ học từ), 《红楼梦评论》 (1904, áp dụng Schopenhauer vào Hồng Lâu Mộng), 《宋元戏曲史》. Citation 王国维 = signal của serious learner. Tránh chỉ trích dẫn câu '词以境界为最上' đứng riêng — phải đặt trong context toàn 64 则 + posthumous additions.\n\n(4) 钱钟书 LÀ ENCYCLOPEDIC: 钱钟书 (1910-1998) viết 《管锥编》 (1979) tổng cộng ~140万字, comparative poetics đan xen Trung-Tây-cổ-kim. Đây là pinnacle của thế kỷ 20 Chinese literary scholarship. Sinh viên Việt: đọc 管锥编 trong original cực khó (文言 + bilingual quotations). Khuyến nghị bắt đầu với 《谈艺录》 (1948) — ngắn hơn, tiếp cận hơn.\n\n(5) TRADITION VS THEORY: học giả Trung Quốc divides giữa 古典文论派 (王国维, 钱钟书, 朱光潜 + 陈寅恪 — focus 古典 lexicon) và 现代文学理论派 (importing Western theory: deconstruction, reception aesthetics, narratology). Top universities (北大, 清华, 复旦, 南大) có cả hai. Sinh viên Việt làm Trung văn nên decide early: traditional or theory-driven, then commit.\n\n(6) 脂学 vs 抄本学: Hồng học có debate lâu đời về quyền uy của các 脂本 ('the eight authentic versions' debate). 庚辰本, 甲戌本, 戚序本... mỗi bản có advocate. Sinh viên Việt: nắm rõ debate trước khi cite một version cụ thể.\n\n(7) PRE-MODERN AS LIVE TRADITION: tại Trung Quốc đại lục, classical Chinese poetry (Tang/Song) vẫn được học thuộc lòng từ tiểu học. Most undergraduate có thể recite 50-100 bài. So với phương Tây 'Shakespeare là cái cũ', cổ thi Tang/Song là cái sống động. Sinh viên Việt cần build base này bằng 200+ poems memorization.\n\n(8) PUBLICATION CULTURE: top journals Trung Quốc về 古典文学: 《文学评论》 (CASS), 《文学遗产》, 《中国比较文学》. Quy chuẩn citation rất nghiêm — incorrect citation = reject ngay. Use 中文社科引用规范 (GB/T 7714-2015).",
+    tip_advice_vi: "(1) READ 5 PAPERS từ 《文学评论》 hoặc 《文学遗产》 cùng chủ đề trước khi viết. C2 register học bằng cách imitate, không qua textbook. (2) BUILD A QUOTATION DATABASE: tạo file Markdown với 100 most-cited critical phrases (王国维, 钱钟书, 朱光潜...) — exact quote + 出处 + 原典context. Sinh viên Việt thường mắc lỗi cite từ memory, sai chữ, sai 出处. (3) DISTINGUISH TRADITIONAL vs MODERN LEXICON: '意境 / 风骨 / 神韵' = 古典 lexicon, không nên dùng cho 现代/当代 literature analysis. '叙述者 / 视点 / 互文性' = modern lexicon, không nên áp đặt vào Tang/Song poetry analysis (anachronism). Match lexicon to era. (4) NEVER FABRICATE QUOTES: nếu không 100% chắc một câu là của 王国维, paraphrase nội dung thay vì direct quote. C2 reviewers sẽ catch fake quotes ngay — career suicide. (5) 文言 LITE: dùng 之 / 其 / 此 / 然 mỗi page 5-10 lần. Quá nhiều (15+) = pretentious; quá ít (0-2) = không đạt C2. (6) HYPOTHESIS PHRASING: '笔者拟探讨...着重分析' rồi 'laughter假设...实为...' rồi '若...则本研究或可为...'. Học công thức này. Đa số C2 hypothesis trong 古典 ngành đều theo nó. (7) AVOID 'REVOLUTIONARY' CLAIMS về 古典: 红学 / 唐诗 đã được nghiên cứu 1000+ năm. Claim 'colon颠覆' / '突破性发现' = laughter naive. Position your work as 'modest extension / refinement / new perspective'. (8) ENGAGE WITH 学界 EXPLICITLY: name-check 3-5 living scholars trong field bạn (e.g., 周汝昌 cho Hồng học, 葛兆光 cho 思想史, 陈平原 cho 学术史) trong literature review. Ignore them = bị coi là 闭门造车. (9) VERSION-CITE RIGOROUSLY: '红楼梦 第28回' không đủ. '红楼梦 庚辰本 第28回 第X页' là chuẩn C2. Khác bản khác text — phải specify. (10) HEDGE LITERARY CLAIMS: '或可视为' / '似亦不无道理' / '颇可深思' — 古典 hedges hơn modern. Match register to period.",
+    exercises: [
+      { type: "fill-blank", question: "曹雪芹之笔法, 草蛇灰线, ___ 脉千里, 非细读不能察。", answer: "伏" },
+      {
+        type: "matching",
+        instruction: "Ghép cụm 文论术语 với chức năng tiếng Việt.",
+        pairs: [
+          { chinese: "草蛇灰线", pinyin: "cǎo shé huī xiàn", english: "phục bút mờ / mạch ngầm" },
+          { chinese: "境界", pinyin: "jìng jiè", english: "cảnh giới (王国维)" },
+          { chinese: "互文", pinyin: "hù wén", english: "hỗ văn / liên văn bản" },
+          { chinese: "可证伪性", pinyin: "kě zhèng wěi xìng", english: "tính khả bác" }
+        ]
+      },
+      {
+        type: "translation",
+        vietnamese: "Tác giả giả thuyết rằng phán từ của thập nhị thoa do Tào Tuyết Cần đặt trong hồi Thái Hư Huyễn Cảnh chính là siêu đồ thức cấu trúc số phận của toàn truyện.",
+        chinese: "笔者假设, 曹雪芹于太虚幻境一回所设之十二钗判词, 实为全书命运结构之元图式。",
+        pinyin: "Bǐ zhě jiǎ shè, Cáo Xuě qín yú Tài xū Huàn jìng yī huí suǒ shè zhī shí èr chāi pàn cí, shí wèi quán shū mìng yùn jié gòu zhī yuán tú shì."
+      }
+    ]
+  },
+  {
+    id: 103,
+    level: "C2",
+    category: "literary_criticism",
+    title: "文学批评的引用规范",
+    pinyin: "wén xué pī píng de yǐn yòng guī fàn",
+    topic: "Citation conventions in literary criticism",
+    title_vi: "Quy chuẩn trích dẫn trong phê bình văn học",
+    title_en: "Citation conventions in literary criticism",
+    sentences: [
+      {
+        chinese: "在论及王维'诗中有画'之美学特征时, 笔者首先溯源于苏轼《东坡题跋》中之原典表述。",
+        pinyin: "Zài lùn jí Wáng Wéi 'shī zhōng yǒu huà' zhī měixué tèzhēng shí, bǐzhě shǒuxiān sùyuán yú Sū Shì «Dōngpō Tíbá» zhōng zhī yuándiǎn biǎoshù.",
+        english: "When discussing the aesthetic feature 'painting within poetry' as ascribed to Wang Wei, the author first traces it back to the original formulation in Su Shi's Dongpo Tiba.",
+        vi: "Khi luận về đặc trưng mỹ học 'thi trung hữu họa' (trong thơ có tranh) của Vương Duy, tác giả trước hết truy nguyên về cách diễn đạt nguyên điển trong Đông Pha Đề Bạt của Tô Thức.",
+        pronunciation_focus: ["论及 → lùn jí (luận tới — 文白)", "溯源 → sùyuán (truy nguyên)", "原典 → yuándiǎn (nguyên điển)", "题跋 → tíbá (đề bạt — colophon thể loại)"]
+      },
+      {
+        chinese: "王国维《人间词话》第一则即开宗明义指出'词以境界为最上, 有境界则自成高格', 此论已成为现代古典文论之基石。",
+        pinyin: "Wáng Guówéi «Rénjiān Cíhuà» dì yī zé jí kāizōng míngyì zhǐchū 'cí yǐ jìngjiè wéi zuì shàng, yǒu jìngjiè zé zì chéng gāogé', cǐ lùn yǐ chéngwéi xiàndài gǔdiǎn wénlùn zhī jīshí.",
+        english: "Wang Guowei in Renjian Cihua, Section 1, explicitly states from the outset: 'Of ci, jìngjiè is the highest; with jìngjiè, lofty quality forms of itself' — this thesis has become the cornerstone of modern classical literary theory.",
+        vi: "Vương Quốc Duy trong Nhân Gian Từ Thoại, mục 1, đã nêu thẳng từ đầu: 'Của thể từ, cảnh giới là tối thượng; có cảnh giới thì tự thành phẩm cách cao' — luận điểm này đã trở thành nền tảng của hiện đại cổ điển văn luận.",
+        pronunciation_focus: ["第一则 → dì yī zé (mục 1 — đơn vị 词话)", "开宗明义 → kāizōng míngyì (mở đầu rõ ràng — idiom)", "境界 → jìngjiè (cảnh giới)", "高格 → gāogé (phẩm cách cao)"]
+      },
+      {
+        chinese: "钱钟书《管锥编》对古今诗学之爬梳, 旁征博引, 涵盖中西, 实为研究中国古典诗学之必读之作。",
+        pinyin: "Qián Zhōngshū «Guǎnzhuībiān» duì gǔjīn shīxué zhī páshū, pángzhēng bóyǐn, hángài Zhōng-Xī, shí wèi yánjiū Zhōngguó gǔdiǎn shīxué zhī bìdú zhī zuò.",
+        english: "Qian Zhongshu's combing-through of poetics ancient and modern in Guanzhuibian — wide-ranging in reference, embracing both Chinese and Western — is in truth indispensable reading for the study of classical Chinese poetics.",
+        vi: "Sự gạn lọc của Tiền Chung Thư đối với thi học cổ kim trong Quản Trùy Biên, tham khảo rộng dẫn chứng nhiều, bao quát Trung-Tây, thực là tác phẩm phải đọc cho nghiên cứu thi học cổ điển Trung Hoa.",
+        pronunciation_focus: ["爬梳 → páshū (gạn lọc / hệ thống hoá — 文白)", "旁征博引 → pángzhēng bóyǐn (idiom)", "涵盖 → hángài (bao quát)", "必读之作 → bìdú zhī zuò (tác phẩm bắt buộc đọc)"]
+      },
+      {
+        chinese: "引用前贤之论, 切忌断章取义; 尤其是王国维'有我之境'与'无我之境'之分, 须置于其整体美学体系中方得其确解。",
+        pinyin: "Yǐnyòng qiánxián zhī lùn, qièjì duàn zhāng qǔ yì; yóuqí shì Wáng Guówéi 'yǒu wǒ zhī jìng' yǔ 'wú wǒ zhī jìng' zhī fēn, xū zhì yú qí zhěngtǐ měixué tǐxì zhōng fāng dé qí quèjiě.",
+        english: "When citing the views of predecessors, one must avoid taking words out of context; especially Wang Guowei's distinction between 'realm with self' and 'realm without self' — only when placed within his overall aesthetic system can the correct understanding be obtained.",
+        vi: "Trích dẫn luận của tiền hiền, kiêng kỵ ngắt câu lấy nghĩa; đặc biệt là sự phân biệt 'cảnh có ta' và 'cảnh không ta' của Vương Quốc Duy, phải đặt trong toàn hệ thống mỹ học của ông mới có được sự hiểu đúng.",
+        pronunciation_focus: ["前贤 → qiánxián (tiền hiền — 文白)", "切忌 → qièjì (kiêng kỵ — 书面)", "断章取义 → duàn zhāng qǔ yì (idiom)", "方得其确解 → fāng dé qí quèjiě (mới có hiểu đúng — 文白)"]
+      },
+      {
+        chinese: "综上所述, 严谨之文献征引, 不仅是学术规范之要求, 更是与古今学者展开深度对话之前提。",
+        pinyin: "Zōng shàng suǒ shù, yánjǐn zhī wénxiàn zhēngyǐn, bùjǐn shì xuéshù guīfàn zhī yāoqiú, gèng shì yǔ gǔjīn xuézhě zhǎnkāi shēndù duìhuà zhī qiántí.",
+        english: "In summary, rigorous literature citation is not merely an academic-discipline requirement; it is also the prerequisite for entering substantive dialogue with scholars ancient and modern.",
+        vi: "Tóm lại, sự trích dẫn tài liệu nghiêm cẩn không chỉ là yêu cầu của quy chuẩn học thuật, mà còn là tiền đề để triển khai đối thoại sâu với học giả cổ kim.",
+        pronunciation_focus: ["征引 → zhēngyǐn (chinh dẫn / trích dẫn — 文白)", "古今学者 → gǔjīn xuézhě (học giả cổ kim)", "深度对话 → shēndù duìhuà (đối thoại sâu)", "前提 → qiántí (tiền đề)"]
+      }
+    ],
+    vocab: [
+      { chinese: "引用规范", pinyin: "yǐn yòng guī fàn", english: "citation conventions", vi: "quy chuẩn trích dẫn" },
+      { chinese: "溯源", pinyin: "sù yuán", english: "to trace to origin (formal)", vi: "truy nguyên (书面)" },
+      { chinese: "原典", pinyin: "yuán diǎn", english: "primary classical text", vi: "nguyên điển" },
+      { chinese: "题跋", pinyin: "tí bá", english: "colophon (essay genre)", vi: "đề bạt (thể loại 文 cổ điển)" },
+      { chinese: "断章取义", pinyin: "duàn zhāng qǔ yì", english: "take out of context (idiom)", vi: "ngắt câu lấy nghĩa (书面)" },
+      { chinese: "旁征博引", pinyin: "páng zhēng bó yǐn", english: "wide reference (idiom)", vi: "tham khảo rộng dẫn chứng nhiều (书面)" },
+      { chinese: "爬梳", pinyin: "pá shū", english: "to comb through systematically", vi: "gạn lọc / hệ thống hoá (文白)" },
+      { chinese: "古典文论", pinyin: "gǔ diǎn wén lùn", english: "classical literary theory", vi: "cổ điển văn luận" },
+      { chinese: "前贤", pinyin: "qián xián", english: "predecessors / former sages", vi: "tiền hiền (文白)" },
+      { chinese: "必读之作", pinyin: "bì dú zhī zuò", english: "indispensable reading", vi: "tác phẩm phải đọc (书面)" }
+    ],
+    dialogue: [
+      { speaker: "学生", chinese: "教授, 我引用了王国维'有境界则自成高格', 但reviewer说我浅尝辄止。", pinyin: "Jiàoshòu, wǒ yǐnyòngle Wáng Guówéi 'yǒu jìngjiè zé zì chéng gāogé', dàn reviewer shuō wǒ qiǎn cháng zhé zhǐ.", english: "Professor, I quoted Wang Guowei's 'with jìngjiè, lofty quality forms of itself' — but reviewer says I merely scratched the surface.", vi: "Thưa giáo sư, em đã trích Vương Quốc Duy 'có cảnh giới thì tự thành phẩm cách cao', nhưng reviewer nói em chỉ chạm bề ngoài." },
+      { speaker: "教授", chinese: "Reviewer说得对。'境界'说在《人间词话》六十四则中层层递进, 你只引第一则, 等于无视后续的'造境/写境', '有我/无我'之精微辨析。", pinyin: "Reviewer shuō de duì. 'Jìngjiè' shuō zài «Rénjiān Cíhuà» liùshísì zé zhōng céngcéng dìjìn, nǐ zhǐ yǐn dì yī zé, děngyú wúshì hòuxù de 'zàojìng/xiějìng', 'yǒu wǒ/wú wǒ' zhī jīngwéi biànxī.", english: "Reviewer is right. The 'jìngjiè' doctrine builds layer-by-layer through the 64 sections of Renjian Cihua. You quoted only Section 1 — that ignores subsequent subtle distinctions like 'fashioned realm vs. depicted realm' and 'with self vs. without self'.", vi: "Reviewer nói đúng. Thuyết 'cảnh giới' trong Nhân Gian Từ Thoại 64 mục là tầng tầng tăng tiến, em chỉ trích mục 1, tức là bỏ qua phân tích tinh vi sau như 'tạo cảnh/tả cảnh', 'có ta/không ta'." },
+      { speaker: "学生", chinese: "如何示意我已读全书?", pinyin: "Rúhé shìyì wǒ yǐ dú quán shū?", english: "How do I signal I've read the entire work?", vi: "Làm sao bày tỏ rằng em đã đọc toàn bộ?" },
+      { speaker: "教授", chinese: "Cite 第N则, cross-reference between sections, acknowledge textual history (王国维 sinh前 published 64则, 后 posthumous additions 收入 全集). Show you grasp the system, not the slogan.", pinyin: "Cite dì N zé, cross-reference between sections, acknowledge textual history (Wáng Guówéi shēng qián published 64 zé, hòu posthumous additions shōurù quánjí). Show you grasp the system, not the slogan.", english: "Cite '第N则' (Section N), cross-reference among sections, acknowledge textual history — Wang Guowei published 64 sections in his lifetime, later posthumous additions are collected in the complete works. Demonstrate you grasp the system, not the slogan.", vi: "Cite '第N则' (mục số N), tham chiếu chéo giữa các mục, thừa nhận lịch sử văn bản — Vương Quốc Duy lúc sinh thời công bố 64 mục, các bổ sung di cảo về sau được tập hợp trong toàn tập. Chứng tỏ em nắm hệ thống, chứ không phải slogan." }
+    ],
+    dialogue_long: [
+      { speaker: "学生", chinese: "教授, 我paper第三章引述了大量古典文论, 但reviewer意见集中在'引文系统不一致'和'断章取义'两条。", pinyin: "Jiàoshòu, wǒ paper dì sān zhāng yǐnshùle dàliàng gǔdiǎn wénlùn, dàn reviewer yìjiàn jízhōng zài 'yǐnwén xìtǒng bù yīzhì' hé 'duàn zhāng qǔ yì' liǎng tiáo.", english: "Professor, my paper's chapter 3 cites much classical literary theory, but reviewer's comments focus on 'inconsistent citation system' and 'taking out of context'.", vi: "Thưa giáo sư, chương 3 bài em trích dẫn nhiều cổ điển văn luận, nhưng ý kiến reviewer tập trung vào 'hệ thống trích dẫn không nhất quán' và 'ngắt câu lấy nghĩa' — hai điểm." },
+      { speaker: "教授", chinese: "把具体例子说说, 我看一下你引用的方式。", pinyin: "Bǎ jùtǐ lìzi shuō shuō, wǒ kàn yīxià nǐ yǐnyòng de fāngshì.", english: "Tell me concrete examples — let me see how you cite.", vi: "Em nói cụ thể vài ví dụ, để tôi xem cách trích dẫn của em." },
+      { speaker: "学生", chinese: "我引王国维只写'王国维曰...', 引钱钟书写'钱氏《管锥编》云...', 引刘勰写'《文心雕龙》'。每个不同。", pinyin: "Wǒ yǐn Wáng Guówéi zhǐ xiě 'Wáng Guówéi yuē...', yǐn Qián Zhōngshū xiě 'Qián shì «Guǎnzhuībiān» yún...', yǐn Liú Xié xiě '«Wénxīn Diāolóng»'. Měi gè bùtóng.", english: "Citing Wang Guowei I write 'Wang Guowei says...', citing Qian Zhongshu I write 'Qian's Guanzhuibian says...', citing Liu Xie I write only 'Wenxin Diaolong'. Each different.", vi: "Trích Vương Quốc Duy em chỉ viết '王国维曰...', trích Tiền Chung Thư viết '钱氏《管锥编》云...', trích Lưu Hiệp viết '《文心雕龙》'. Mỗi cái khác." },
+      { speaker: "教授", chinese: "这就是reviewer的'不一致'。学术写作要求统一格式: '作者《书名》[卷/则/篇]: \"原文\"'。比如'王国维《人间词话》第二十六则: \"古今之成大事业、大学问者, 必经过三种之境界...\"'。", pinyin: "Zhè jiùshì reviewer de 'bù yīzhì'. Xuéshù xiězuò yāoqiú tǒngyī géshì: 'zuòzhě «shū míng» [juǎn/zé/piān]: \"yuánwén\"'. Bǐrú 'Wáng Guówéi «Rénjiān Cíhuà» dì èrshíliù zé: \"gǔjīn zhī chéng dà shìyè, dà xuéwèn zhě, bì jīngguò sān zhǒng zhī jìngjiè...\"'.", english: "That is reviewer's 'inconsistency'. Academic writing requires unified format: 'Author Book-name [section]: \"original text\"'. E.g., 'Wang Guowei, Renjian Cihua, Section 26: \"Those who from ancient to modern accomplish great endeavor, great learning, must pass through three realms...\"'.", vi: "Đây chính là 'không nhất quán' của reviewer. Viết học thuật yêu cầu thống nhất định dạng: '[Tác giả] 《[tên sách]》 [thiên/mục/quyển]: \"nguyên văn\"'. Ví dụ: '王国维《人间词话》第二十六则: \"古今之成大事业、大学问者, 必经过三种之境界...\"'." },
+      { speaker: "学生", chinese: "明白了。那'断章取义'的问题呢?", pinyin: "Míngbái le. Nà 'duàn zhāng qǔ yì' de wèntí ne?", english: "Understood. And the 'out of context' problem?", vi: "Em hiểu rồi. Còn vấn đề 'ngắt câu lấy nghĩa'?" },
+      { speaker: "教授", chinese: "你引王国维'有我之境, 以我观物, 故物皆著我之色彩'就停了, 没引下半段'无我之境, 以物观物, 故不知何者为我'。这两半相互定义, 拆开则失。", pinyin: "Nǐ yǐn Wáng Guówéi 'yǒu wǒ zhī jìng, yǐ wǒ guān wù, gù wù jiē zhuó wǒ zhī sècǎi' jiù tíng le, méi yǐn xià bàn duàn 'wú wǒ zhī jìng, yǐ wù guān wù, gù bù zhī hézhě wéi wǒ'. Zhè liǎng bàn xiānghù dìngyì, chāikāi zé shī.", english: "You cited Wang Guowei's 'realm with self: viewing things through self, so things all bear the colors of self' and stopped — without citing the second half: 'realm without self: viewing things through things, so one knows not which is self'. The two halves define each other; split them and meaning is lost.", vi: "Em trích '有我之境, 以我观物, 故物皆著我之色彩' rồi dừng, không trích nửa sau '无我之境, 以物观物, 故不知何者为我'. Hai nửa định nghĩa lẫn nhau; tách ra thì mất." },
+      { speaker: "学生", chinese: "我担心引太多, 文章变成大段引文堆砌。", pinyin: "Wǒ dānxīn yǐn tài duō, wénzhāng biàn chéng dà duàn yǐnwén duīqì.", english: "I worry that quoting too much makes the article a pile of long passages.", vi: "Em lo trích nhiều quá, bài viết thành một đống đoạn trích dài." },
+      { speaker: "教授", chinese: "原则是: 关键概念之原典必须 verbatim 引, 配自己阐释; 次级claim可paraphrase + cite。一篇好的paper, 引文可占5%-10%, 阐释占90%以上。", pinyin: "Yuánzé shì: guānjiàn gàiniàn zhī yuándiǎn bìxū verbatim yǐn, pèi zìjǐ chǎnshì; cìjí claim kě paraphrase + cite. Yī piān hǎo de paper, yǐnwén kě zhàn 5%-10%, chǎnshì zhàn 90% yǐshàng.", english: "Principle: key concepts' primary texts must be quoted verbatim, paired with your own elucidation; secondary claims may be paraphrased + cited. A good paper has 5-10% quotation, 90%+ elucidation.", vi: "Nguyên tắc: nguyên điển của khái niệm cốt lõi phải trích verbatim, kèm chú giải của em; claim thứ cấp có thể paraphrase + cite. Một bài tốt: trích chiếm 5-10%, chú giải 90%+." },
+      { speaker: "学生", chinese: "钱钟书《管锥编》引用怎么处理? 他自己已经引过的二手资料?", pinyin: "Qián Zhōngshū «Guǎnzhuībiān» yǐnyòng zěnme chǔlǐ? Tā zìjǐ yǐjīng yǐnguò de èrshǒu zīliào?", english: "How to handle Qian Zhongshu's Guanzhuibian citations — secondary materials he already quoted?", vi: "Trích dẫn Quản Trùy Biên của Tiền Chung Thư xử lý thế nào? Nguồn thứ cấp mà chính ông đã trích?" },
+      { speaker: "教授", chinese: "钱书最棘手。他引古人, 如你直接cite那个古人而不通过钱书, 必须读原文核实。如读原文不便, 用'转引自钱钟书《管锥编》第X册第Y页'。绝不能 fake first-hand。", pinyin: "Qián shū zuì jíshǒu. Tā yǐn gǔrén, rú nǐ zhíjiē cite nàge gǔrén ér bù tōngguò Qián shū, bìxū dú yuánwén héshí. Rú dú yuánwén bùbiàn, yòng 'zhuǎnyǐn zì Qián Zhōngshū «Guǎnzhuībiān» dì X cè dì Y yè'. Jué bùnéng fake first-hand.", english: "Qian's book is the trickiest. He quotes ancients — if you cite that ancient directly without going through Qian, you must read the primary text to verify. If primary reading isn't feasible, use '转引自 Qián Zhōngshū Guanzhuibian Vol. X p. Y'. Absolutely never fake first-hand.", vi: "Sách của Tiền là khó nhất. Ông trích cổ nhân — nếu em cite trực tiếp cổ nhân ấy mà không qua sách của Tiền, phải đọc nguyên văn kiểm chứng. Nếu không tiện, dùng '转引自钱钟书《管锥编》第X册第Y页'. Tuyệt đối không được giả first-hand." },
+      { speaker: "学生", chinese: "明白。最后一问: 引外文论著怎么标注?", pinyin: "Míngbái. Zuìhòu yī wèn: yǐn wàiwén lùnzhù zěnme biāozhù?", english: "Understood. Last question: how to mark citations of foreign treatises?", vi: "Em hiểu. Câu cuối: trích luận trước nước ngoài đánh dấu thế nào?" },
+      { speaker: "教授", chinese: "原文 + 中译并列。例: 'Plaks (1976: 187) 论及《红楼梦》之 \"narrative recursion\" (浦安迪所谓\"叙述递归\"), 与脂批\"草蛇灰线\"之说颇可印证。' 既保留原概念之精度, 又服务中文读者。", pinyin: "Yuánwén + zhōngyì bìngliè. Lì: 'Plaks (1976: 187) lùn jí «Hónglóumèng» zhī \"narrative recursion\" (Pǔ Āndí suǒwèi \"xùshù dìguī\"), yǔ Zhī pī \"cǎo shé huī xiàn\" zhī shuō pō kě yìnzhèng.' Jì bǎoliú yuán gàiniàn zhī jīngdù, yòu fúwù Zhōngwén dúzhě.", english: "Original + Chinese translation in parallel. Example: 'Plaks (1976: 187) discussing Honglou's \"narrative recursion\" (what Plaks calls 叙述递归), can be quite verified against the Zhi-commentary's \"concealed thread\" notion.' Preserves original precision while serving Chinese readers.", vi: "Nguyên văn + Trung dịch song song. Ví dụ: 'Plaks (1976: 187) luận tới \"narrative recursion\" (浦安迪 gọi là \"叙述递归\") của Hồng Lâu Mộng, có thể đối chứng khá tốt với thuyết \"草蛇灰线\" của Chi phê.' Vừa giữ độ chính xác của khái niệm gốc, vừa phục vụ độc giả Trung văn." }
+    ],
+    roleplay_prompts: [
+      "Bạn là sinh viên Việt viết literature review cho luận án về '苏轼词的婉约风格'. Trong đó cần cite王国维, 钱钟书, 朱光潜. Hãy viết một đoạn 200 từ Trung Quốc tổng hợp 3 quan điểm khác nhau về Tô Thức từ — verbatim quote chỉ cho 1 critical phrase mỗi học giả, paraphrase phần còn lại, đặt mỗi học giả trong một paragraph khác. Format chuẩn '王国维《人间词话》第N则: \"...\"'.",
+      "Bạn là PhD candidate nhận review feedback rằng bạn đã trích sai 钱钟书 一句话. Reviewer đã mục location đúng (《谈艺录》某trang). Hãy viết response-to-reviewer letter (4-5 câu): (1) thừa nhận lỗi rõ ràng, không bao biện, (2) explain bạn đã đọc primary nhưng nhớ sai, (3) commit fix in revision với exact correction shown, (4) thank reviewer for catching. Tone: humble + professional. Dùng cụm '深以为憾 / 谨表谢忱 / 已遵嘱修订'.",
+      "Bạn là editor của tạp chí 古典文学 giải thích cho một author trẻ vì sao họ phải mua format theo GB/T 7714-2015 cho cite cổ điển texts. Hãy viết một paragraph 150 từ giải thích: (1) quy chuẩn yêu cầu '作者—书名《》—卷次/则次—页码' format, (2) lý do (preserves textual integrity, allows verification, respects 古典 textual history), (3) common errors (chỉ cite 'X曰' thiếu 出处, paraphrase mà claim direct quote). Dùng register editor authority + helpful instruction."
+    ],
+    register_notes: "Trích dẫn trong phê bình văn học C2 đòi hỏi tinh tế hơn academic discourse C1: ngoài formal correctness, phải tôn trọng truyền thống 文献学 và conventions 古典 textual scholarship.\n\n1. CITATION FORMAT CHUẨN cho 古典 TEXTS:\n\n格式 (cf. GB/T 7714-2015):\n'作者《书名》[卷/则/篇/章次]: \"原文\"'\n\nVí dụ:\n- 王国维《人间词话》第一则: '词以境界为最上'\n- 刘勰《文心雕龙·神思》: '思理为妙, 神与物游'\n- 苏轼《东坡题跋·书摩诘蓝田烟雨图》: '味摩诘之诗, 诗中有画'\n- 钱钟书《管锥编》第二册第467页: '...'\n\nNote: 古典 texts được divide thành 篇 / 卷 / 则 / 章 / 回 — phải biết unit conventions của từng work:\n- 词话 → 则\n- 诗话 → 则\n- 经/子 → 篇 (《庄子·逍遥游》)\n- 史 → 卷 / 列传 (《史记·孔子世家》)\n- 章回小说 → 回 (《红楼梦》第五回)\n- 文集 → 卷 (《东坡集》卷七)\n\n2. THREE TIERS OF CITATION:\n\nTIER 1 — ORIGINAL VERBATIM (cho key concept primary text):\n- 必须 verbatim, 必须 quote marks, 必须 出处.\n- Ví dụ: 王国维《人间词话》第二十六则: '古今之成大事业、大学问者, 必经过三种之境界...'\n- Frequency: 1-3 per chapter, không quá nhiều.\n\nTIER 2 — PARAPHRASE WITH CITATION (cho secondary claims):\n- Lời mình + cite tác giả + 出处.\n- Ví dụ: 王国维认为, 真正的境界来自'真景物, 真感情'之自然流露(《人间词话》第六则).\n- Frequency: chính, ~80% citations.\n\nTIER 3 — INDIRECT CITATION (转引自):\n- Khi không tiếp cận primary, mượn qua secondary scholar.\n- Format: 'X(年)在Y中指出Z (转引自钱钟书《管锥编》第N册第M页)'.\n- Frequency: hạn chế dùng, only when primary inaccessible.\n\n3. HISTORICAL TEXTUAL ISSUES:\n\n- 多版本考虑: 红楼梦 has 脂本 + 程甲 + 程乙. 杜诗 has 仇兆鳌注 + 杨伦笺注. Cite specific edition.\n- Posthumous additions: 王国维《人间词话》sinh前 published 64 zé; later editor added more. Quote which?\n- Authentic vs forgery debates: e.g. 《文子》 authenticity, 《列子》 dating. Acknowledge if relevant.\n- 集 vs 选: cite full collected works (e.g., 《王国维全集》) vs popular anthologies.\n\n4. CỤM TỪ DẪN NHẬP CHUẨN:\n\n- 王国维曰 / 王国维云 (Wang Guowei says) — 文白\n- 王国维有言 (Wang Guowei has said)\n- 王国维《人间词话》第N则有云 (in section N of Renjian Cihua)\n- 据王国维所论 (according to Wang Guowei's discussion)\n- 借用王国维之说 (borrowing Wang Guowei's formulation)\n- 王国维曾云 (Wang Guowei once stated)\n- 苏轼《东坡题跋》中有名句 (Su Shi's Dongpo Tiba contains the famous lines)\n\n5. AVOID:\n\n- Bare 'X曰' without 出处.\n- Quotation marks without page/section number.\n- 'I think Wang Guowei means...' inserted into quote translation.\n- Anachronistic concepts: applying '叙述者' to Tang poetry, '互文性' to 周易.\n- Mixing English-only / Chinese-only ad hoc — pick a system + stick.\n\n6. CỤM CRITIQUE QUA CITATION:\n\n- 王国维之论, 不无道理, 然... (Wang's view has merit, yet...)\n- 借王国维之言, 拓展之 (extending Wang's formulation)\n- 笔者愿就王国维此说稍作补充 (this author would supplement Wang's view slightly)\n- 与王国维立场相近 / 相左 (close to / opposed to Wang's position)\n\n7. CỤM 自典故/原典 (FROM CANONICAL ALLUSIONS):\n\nKhi cite 古典 phrases-as-allusions (not direct quotation):\n\n- 化用 (xiàiyòng — adapt-use): 苏轼此句化用陶渊明'采菊东篱下'.\n- 暗合 (àn hé — secretly accord with): 此意暗合庄子'坐忘'之说.\n- 借典 (jiè diǎn — borrow allusion): 作者借'草蛇灰线'之典, 暗示读者...\n\n8. TÀI LIỆU SỐ HOÁ AND CITATION:\n\nNgày nay 中国基本古籍库 (CHANT), 全唐诗 (online), 中华经典古籍库 cho phép quick search of classical texts. Sinh viên Việt KHÔNG được rely 100% on database — text errors common, edition specifications missing. Use database for discovery, then verify against print critical edition.",
+    idiom_glosses: [
+      {
+        idiom: "断章取义",
+        literal: "ngắt câu lấy nghĩa (duàn zhāng qǔ yì)",
+        meaning: "Ngắt một câu / đoạn ra khỏi context để lấy nghĩa thuận với mình — fundamental academic sin. Cụm critical, dùng để chỉ trích misuse của citation. Origin: 春秋左传. (书面/正式)",
+        example: "引王国维'有我之境'而不及'无我之境', 实属断章取义。"
+      },
+      {
+        idiom: "旁征博引",
+        literal: "tham khảo bên cạnh, dẫn chứng nhiều (páng zhēng bó yǐn)",
+        meaning: "Trích dẫn rộng + reference đa nguồn — academic virtue. Khen scholar có scholarship range rộng, đặc biệt dùng cho 钱钟书 style. (书面/正式)",
+        example: "钱钟书《管锥编》旁征博引, 涵盖中西经史子集。"
+      },
+      {
+        idiom: "言出有典",
+        literal: "lời nói có điển (yán chū yǒu diǎn)",
+        meaning: "Lời nói có điển tích / xuất xứ — academic credit. Khen scholar mỗi câu đều có nguồn gốc canonical. Khác với 旁征博引 (rộng): 言出有典 nhấn mạnh authenticity. (书面/正式)",
+        example: "其论虽简, 然言出有典, 字字有据。"
+      },
+      {
+        idiom: "有据可查",
+        literal: "có bằng chứng có thể kiểm tra (yǒu jù kě chá)",
+        meaning: "Có căn cứ kiểm chứng được — academic positive evaluation. Counterpart của 言出有典 nhưng modern register. Dùng để khen citations meticulous. (书面/正式)",
+        example: "全章引证, 件件有据可查, 无一虚言。"
+      }
+    ],
+    cultural_notes_vi: "Văn hóa trích dẫn cổ điển ở Trung Quốc đại lục có những đặc điểm sinh viên Việt cần biết:\n\n(1) 古文献学 (TEXTUAL SCHOLARSHIP) LÀ NỀN: classical Chinese textual scholarship (考据学 / 文献学) có truyền thống từ 朴学 thời Càn-Gia (Qing). Modern continuation includes 陈寅恪, 余嘉锡, 余英时, 葛兆光. Sinh viên Việt cần đọc một intro cuốn — như 余嘉锡《古书通例》 — để hiểu tradition này.\n\n(2) 出处 (XUẤT XỨ) LÀ KEY CONCEPT: trong 古典 scholarship, biết 出处 = academic legitimacy. Một câu cite mà không 出处 = academic disgrace. 出处 phải bao gồm: tác giả, sách, thiên/quyển/则/章, edition (nếu có dispute).\n\n(3) 古典 EDITORS COMMITTEE: top editions của 古典 works thường được committee edit qua decades. 中华书局点校本 24 史 took ~20 years (1958-78). Sinh viên Việt cần biết: cite '中华书局1979年点校本' khác với '商务印书馆某某年版'. Different editions, different authority.\n\n(4) 海外汉学 (OVERSEAS SINOLOGY) BÌNH ĐẲNG VỚI 内地: top Chinese scholars cite Plaks, Hightower, Owen, Idema cùng 余英时, 钱钟书. Đây là cosmopolitan culture của Chinese 古典 studies từ ~1980. Sinh viên Việt nên biết Western sinologists nổi tiếng và cite cross-tradition.\n\n(5) 转引自 (CITED FROM) MUST BE EXPLICIT: nếu bạn cite Y thông qua 钱钟书 's quote of Y, bắt buộc viết '转引自钱钟书《管锥编》第N页'. Ngụy trang first-hand reading khi thực ra second-hand = academic dishonesty. Top journals catch this immediately.\n\n(6) 王国维 IS CULTURAL ICON: 王国维 (1877-1927) suicide trong 1927 đã trở thành cultural event. Citation 王国维 carries gravitas — không nên overuse, đặc biệt cho minor claims. Reserve for foundational moments.\n\n(7) 钱钟书 IS REPUTATION TEST: 钱钟书《管锥编》 reading is benchmark of 中文系 graduate. Sinh viên Việt admitted cite 管锥编 fluently = signal of seriousness. Cite incorrectly = signal of bluffing. Read at least 200 pages before citing.\n\n(8) 朱光潜 IS BRIDGE: 朱光潜 bridges 西方美学 (he studied Croce, Bergson) and 古典 lexicon. 《诗论》 (1943) is most accessible — 200 pages, read in a weekend. Foundational reading cho Vietnamese student going to Trung Quốc.\n\n(9) PUBLISHED CRITICAL EDITIONS: top 古典 publishers: 中华书局, 上海古籍出版社, 国家图书馆出版社. Sinh viên Việt: prefer these. Avoid pop edition (e.g., 民间 anthology) cho serious citation.\n\n(10) 古籍数字化 ETHICS: 中国基本古籍库, 中华经典古籍库 are massive digitized corpora. Use for discovery. But always verify against print critical edition for citations — digital errors common (OCR scanning errors, missing 字 / wrong 字).",
+    tip_advice_vi: "(1) BUILD A CITATION DATABASE: tạo file Markdown với 50-100 most-cited 古典 phrases (王国维 / 钱钟书 / 苏轼 / 陶渊明). Mỗi entry: exact quote + 出处 + page + 1-line context. Build over months. Pay for itself trong luận án. (2) FORMAT CONSISTENCY: trước khi nộp paper, search bài cho '《' và '\"'. Đảm bảo mọi citation tuân theo cùng format. Top reviewers reject for inconsistency. (3) PRIMARY SOURCE WHEN POSSIBLE: nếu cite 王国维 từ secondary scholar, đặt thời gian đọc primary. Nếu thực sự không tiếp cận được, '转引自' explicit. Don't fake. (4) SECTION/PAGE NUMBER MANDATORY: '王国维曰' không enough. '王国维《人间词话》第十五则' is minimum standard. (5) ENGLISH-CHINESE PARALLEL CITATIONS: when citing Western sinologist, give original term + Chinese translation. 'narrative recursion (叙述递归)'. Preserves precision + serves Chinese readers. (6) AVOID ANACHRONISM: don't apply '叙述者' to Tang poetry — wrong period. Don't apply '风骨' to 现代 novels — wrong tradition. Match concept to era. (7) PRIMARY SOURCES OVER POPULAR EDITIONS: cite 中华书局 hoặc 上海古籍 critical edition rather than mass-market paperback. (8) READ KEY SECTIONS BEFORE CITING: don't cite 王国维 chỉ from secondary discussions. Read sections you cite, plus surrounding 5-10 sections. (9) ENGAGE IN 学界 DEBATES: name 3-5 living scholars in your field (周汝昌 cho Hồng học, 葛兆光 cho 思想史). Position your citation in their debates. (10) TRUST BUT VERIFY 古籍数字化: digital corpora useful for discovery but error-prone. Always verify against print critical edition before citing.",
+    exercises: [
+      { type: "fill-blank", question: "引用前贤之论, ___ 忌断章取义; 尤其是王国维'有我之境'与'无我之境'之分, 须置于其整体美学体系中方得其确解。", answer: "切" },
+      {
+        type: "matching",
+        instruction: "Ghép cụm 引用 với chức năng tiếng Việt.",
+        pairs: [
+          { chinese: "断章取义", pinyin: "duàn zhāng qǔ yì", english: "ngắt câu lấy nghĩa" },
+          { chinese: "旁征博引", pinyin: "páng zhēng bó yǐn", english: "tham khảo rộng" },
+          { chinese: "言出有典", pinyin: "yán chū yǒu diǎn", english: "lời có xuất xứ" },
+          { chinese: "转引自", pinyin: "zhuǎn yǐn zì", english: "trích lại từ" }
+        ]
+      },
+      {
+        type: "translation",
+        vietnamese: "Tóm lại, sự trích dẫn tài liệu nghiêm cẩn không chỉ là yêu cầu của quy chuẩn học thuật, mà còn là tiền đề để triển khai đối thoại sâu với học giả cổ kim.",
+        chinese: "综上所述, 严谨的文献征引, 不仅是学术规范的要求, 更是与古今学者展开深度对话的前提。",
+        pinyin: "Zōng shàng suǒ shù, yán jǐn de wén xiàn zhēng yǐn, bù jǐn shì xué shù guī fàn de yāo qiú, gèng shì yǔ gǔ jīn xué zhě zhǎn kāi shēn dù duì huà de qián tí."
+      }
+    ]
   }
 ];
 
