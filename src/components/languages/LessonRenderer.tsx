@@ -153,10 +153,12 @@ export function LessonRenderer({ lesson, theme }: LessonRendererProps) {
                   <div className="flex items-start gap-2">
                     {lesson.audioBase && (
                       <LessonAudioButton
-                        audioKey={lessonAudioKey(lesson.audioBase, {
-                          kind: "sentence",
-                          index: i + 1,
-                        })}
+                        audioKey={lessonAudioKey(
+                          lesson.audioBase,
+                          lesson.audioKinds?.sentence === "phrase"
+                            ? { kind: "phrase", index: i + 1 }
+                            : { kind: "sentence", index: i + 1 },
+                        )}
                         ariaLabel={`Phát âm câu: ${s.native}`}
                         accent={theme.accent}
                       />
@@ -253,11 +255,16 @@ export function LessonRenderer({ lesson, theme }: LessonRendererProps) {
                   <div key={di} className="text-xs flex items-start gap-1.5">
                     {lesson.audioBase && (
                       <LessonAudioButton
-                        audioKey={lessonAudioKey(lesson.audioBase, {
-                          kind: "dialogue_short",
-                          index: di + 1,
-                          speaker: dialogueShortSpeakerLetter(d.speaker),
-                        })}
+                        audioKey={lessonAudioKey(
+                          lesson.audioBase,
+                          lesson.audioKinds?.dialogue === "dialogue_vi"
+                            ? { kind: "dialogue_vi", index: di + 1 }
+                            : {
+                                kind: "dialogue_short",
+                                index: di + 1,
+                                speaker: dialogueShortSpeakerLetter(d.speaker),
+                              },
+                        )}
                         ariaLabel={`Phát âm hội thoại: ${d.native}`}
                         accent={theme.accent}
                       />
