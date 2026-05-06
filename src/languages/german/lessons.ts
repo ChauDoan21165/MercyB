@@ -8141,6 +8141,210 @@ const FLUENCY: GermanLesson[] = [
   },
 ];
 
+// ── C1 R1: Diễn ngôn học thuật / Academic Discourse ─────────────────────
+
+const C1_R1: GermanLesson[] = [
+  {
+    id: "lthese_praesentation",
+    level: "C1",
+    category: "fluency",
+    title_vi: "Trình bày luận điểm / giả thuyết trong môi trường học thuật Đức",
+    title_en: "Presenting a thesis or hypothesis in a German academic setting",
+    sentences: [
+      { en: "Die zentrale These der vorliegenden Arbeit besteht darin, dass sprachliche Hybridität nicht als Defizit, sondern als Ressource zu konzeptualisieren ist.", vi: "Luận điểm trung tâm của công trình này là sự lai tạp ngôn ngữ phải được khái niệm hóa như một nguồn lực, chứ không phải một khiếm khuyết.", pronunciation_focus: ["These → TÊ-zê", "Hybridität → huy-bri-đi-TÊT", "konzeptualisieren → kôn-tsép-tu-a-li-ZI-rần"] },
+      { en: "Daraus ergibt sich die Hypothese, dass Code-Switching unter vietnamesisch-deutschen Studierenden systematischen Mustern folgt, die sich kontextspezifisch rekonstruieren lassen.", vi: "Từ đó nảy sinh giả thuyết rằng sự chuyển mã ngôn ngữ ở sinh viên Việt-Đức tuân theo những mô thức có hệ thống, có thể được tái dựng theo từng ngữ cảnh cụ thể.", pronunciation_focus: ["Hypothese → huy-pô-TÊ-zê", "systematisch → zys-tê-MA-tish", "rekonstruieren → rê-kôn-stru-I-rần"] },
+      { en: "Es ließe sich überdies argumentieren, dass die bisherige Forschung diesen Aspekt zugunsten quantitativer Erhebungen vernachlässigt hat.", vi: "Hơn nữa, có thể lập luận rằng nghiên cứu hiện hành đã bỏ qua khía cạnh này để nghiêng về các khảo sát định lượng.", pronunciation_focus: ["argumentieren → ar-gu-mân-TI-rần", "zugunsten → tsu-GUN-stần", "vernachlässigt → fe-NAKH-lê-sikht"] },
+      { en: "Mein Beitrag zielt mithin darauf ab, eine bislang vernachlässigte Forschungslücke methodisch zu schließen.", vi: "Đóng góp của tôi do đó hướng đến việc khép lại một khoảng trống nghiên cứu cho đến nay vẫn bị bỏ ngỏ về mặt phương pháp.", pronunciation_focus: ["mithin → mit-HIN", "Forschungslücke → FÔ-shungs-luy-kê", "methodisch → mê-TÔ-đish"] },
+      { en: "Im Folgenden möchte ich zunächst den theoretischen Rahmen umreißen, sodann die methodische Vorgehensweise erläutern.", vi: "Tiếp theo tôi sẽ phác thảo khung lý thuyết trước, sau đó trình bày phương pháp tiến hành.", pronunciation_focus: ["theoretischer Rahmen → tê-Ô-rê-ti-shờ RA-mần", "umreißen → UM-rai-sần", "Vorgehensweise → FÔ-gê-ầns-vai-zê"] },
+    ],
+    cultural_notes_vi: "Trình bày luận điểm trong Doktorandenkolloquium (hội thảo nghiên cứu sinh) hoặc Kolloquium (xê-mi-na chuyên đề) ở đại học Đức tuân theo ba quy ước cốt lõi khác hẳn văn hóa học thuật Việt Nam. (1) THESE TRƯỚC, BIOGRAFIE SAU: người Đức expect bạn vào thẳng nội dung nghiên cứu trong 30 giây đầu — KHÔNG dành 5 phút giới thiệu bản thân, kể quá trình học. Câu mở chuẩn: 'Die zentrale These meiner Arbeit besteht darin...' hoặc 'Im Zentrum meiner Untersuchung steht...'. Tiểu sử cá nhân chỉ xuất hiện nếu có người hỏi cụ thể. (2) HEDGING ≠ THIẾU TỰ TIN: ngôn ngữ học thuật Đức dùng Konjunktiv II ('es ließe sich argumentieren', 'dürfte', 'vermutlich') như dấu hiệu CẨN TRỌNG TRI THỨC, không phải lưỡng lự. Câu khẳng định mạnh ('das ist eindeutig...', 'es steht außer Frage') BỊ XEM là thiếu chín chắn ở cấp tiến sĩ. Vietnamese-trained scholars có xu hướng nói cứng do văn hóa khẳng định trong luận văn — phải re-train. (3) EINWÄNDE WILLKOMMEN: ở Kolloquium, giáo sư/đồng nghiệp sẽ challenge ngay tại chỗ — đó là culture, không phải attack. Câu trả lời chuẩn: 'Das ist ein berechtigter Einwand — ich würde wie folgt darauf antworten...' (đó là phản đối có cơ sở — tôi sẽ trả lời như sau).\n\nKhác Việt Nam: ở VN, presentation thường kết bằng 'em xin lắng nghe ý kiến của thầy cô' — gợi ý sự khiêm tốn. Ở Đức, kết bằng 'Damit komme ich zum Schluss und freue mich auf Ihre Fragen' — formal, neutral, ngang hàng intellectually.\n\nMột chi tiết quan trọng: Funktionsverbgefüge (cụm động từ chức năng) là dấu hiệu C1 chuẩn của Wissenschaftssprache. Thay vì 'wir analysieren X', nói 'X wird einer Analyse unterzogen'. Thay vì 'wir verwenden methode Y', nói 'Methode Y kommt zur Anwendung'. Đây không phải pretentious — đây là chuẩn academic. Học thuộc 20-30 cụm này trước Kolloquium đầu tiên.\n\nVề cấu trúc: Doktorandenkolloquium điển hình kéo dài 90 phút. Format: 20-30 phút trình bày + 30-60 phút thảo luận. Slides nên có Handout 2 trang phát đầu — người Đức appreciate Handout vì có thể ghi chú trực tiếp.",
+    tip_advice_vi: "Trước Kolloquium (1 tuần): (1) Soạn Handout 2 trang A4 — gồm These, Forschungsfrage, methodischer Rahmen, vorläufige Ergebnisse, offene Fragen. Photocopy 15-20 bản. (2) Luyện đọc to phần mở đầu (3 phút) — cho đến khi không cần liếc slide. (3) Chuẩn bị 5-7 câu trả lời cho Standardeinwände: 'Warum diese Methode?', 'Warum dieser Korpus?', 'Wie generalisierbar?', 'Was ist neu?', 'Welche Theorie?'.\n\nTrong khi trình bày: (1) Tốc độ chậm — 100-120 từ/phút (slower than VN academic style). (2) Nhấn mạnh các 'Gliederungssignale' (tín hiệu cấu trúc): 'Im Folgenden...', 'Sodann...', 'Abschließend lässt sich festhalten...'. Người nghe ghi chép theo signals này. (3) Khi quote nguồn, dùng Konjunktiv I: 'Bourdieu (1991) zufolge sei...' (theo Bourdieu thì...).\n\nNgôn ngữ trình bày luận điểm chuẩn:\n- 'Die zentrale These der vorliegenden Arbeit besteht darin...' (luận điểm trung tâm của công trình này là...)\n- 'Daraus ergibt sich die Hypothese, dass...' (từ đó nảy sinh giả thuyết rằng...)\n- 'Es ließe sich argumentieren, dass...' (có thể lập luận rằng... — Konjunktiv II hedging)\n- 'Mein Beitrag zielt darauf ab, ... zu ...' (đóng góp của tôi nhằm...)\n- 'Im Folgenden möchte ich ... darlegen / umreißen / erläutern' (tiếp theo tôi sẽ trình bày/phác thảo/giải thích)\n- 'Damit komme ich zum Schluss' (đến đây tôi đi đến kết luận)\n\nKhi bị phản đối:\n- 'Das ist ein berechtigter Einwand' (đó là phản đối có cơ sở)\n- 'Diese Frage berührt einen wesentlichen Punkt' (câu hỏi này chạm đến một điểm cốt yếu)\n- 'Darauf möchte ich differenziert eingehen' (tôi muốn trả lời điều này một cách phân biệt)\n- 'In dieser Allgemeinheit würde ich der Aussage nicht zustimmen, allerdings...' (ở mức độ khái quát này tôi không đồng ý, tuy nhiên...)\n\nKhi không biết: 'Das übersteigt den Rahmen meiner gegenwärtigen Untersuchung — ich nehme die Anregung gern auf' (điều đó vượt khỏi khuôn khổ nghiên cứu hiện tại của tôi — tôi xin tiếp thu gợi ý). KHÔNG bịa.\n\nMẹo cuối: ghi âm Kolloquium đầu tiên (xin phép trước) — nghe lại để phát hiện các điểm 'Vietnamese-flavored' trong tiếng Đức học thuật của bạn (ví dụ: thiếu Genitiv, dùng Akkusativ thay Dativ sau giới từ). C1 academic đòi hỏi structural precision cao hơn B2 conversational.",
+    vocabulary: [
+      { word: "die These", en: "thesis, central claim", vi: "luận điểm", pos: "noun (f)", pronunciation_vi: "đi TÊ-zê" },
+      { word: "die Hypothese", en: "hypothesis", vi: "giả thuyết", pos: "noun (f)", pronunciation_vi: "đi huy-pô-TÊ-zê" },
+      { word: "der Forschungsstand", en: "state of the art (research)", vi: "tình trạng nghiên cứu hiện tại", pos: "noun (m)", pronunciation_vi: "đe FÔ-shungs-shtant" },
+      { word: "die Forschungslücke", en: "research gap", vi: "khoảng trống nghiên cứu", pos: "noun (f)", pronunciation_vi: "đi FÔ-shungs-luy-kê" },
+      { word: "der theoretische Rahmen", en: "theoretical framework", vi: "khung lý thuyết", pos: "noun phrase", pronunciation_vi: "đe tê-Ô-rê-ti-shê RA-mần" },
+      { word: "die Vorgehensweise", en: "methodological approach", vi: "phương pháp tiến hành", pos: "noun (f)", pronunciation_vi: "đi FÔ-gê-ầns-vai-zê" },
+      { word: "umreißen", en: "to outline (in broad strokes)", vi: "phác thảo (rộng)", pos: "verb (sep.)", pronunciation_vi: "UM-rai-sần" },
+      { word: "darlegen", en: "to set forth, expound", vi: "trình bày (chi tiết)", pos: "verb (sep.)", pronunciation_vi: "ĐA-lê-gần" },
+      { word: "konzeptualisieren", en: "to conceptualize", vi: "khái niệm hóa", pos: "verb", pronunciation_vi: "kôn-tsép-tu-a-li-ZI-rần" },
+      { word: "der Beitrag (zu)", en: "contribution (to a field)", vi: "đóng góp (cho lĩnh vực)", pos: "noun (m)", pronunciation_vi: "đe BAI-trak" },
+    ],
+    dialogue: [
+      { speaker: "Linh", text: "Sehr geehrte Kolleginnen und Kollegen, im Zentrum meiner Untersuchung steht die Frage, inwiefern Code-Switching als Ressource zu rekonzeptualisieren ist.", vi: "Kính thưa quý đồng nghiệp, trọng tâm nghiên cứu của tôi là câu hỏi: chuyển mã ngôn ngữ có thể được tái khái niệm hóa như một nguồn lực ở mức độ nào." },
+      { speaker: "Prof. Bauer", text: "Was unterscheidet Ihren Ansatz von den ressourcenorientierten Studien der Hamburger Schule?", vi: "Cách tiếp cận của bạn khác gì so với những nghiên cứu hướng nguồn lực của trường phái Hamburg?" },
+      { speaker: "Linh", text: "Eine berechtigte Frage. Im Unterschied zu jener Tradition lege ich den Schwerpunkt auf vietnamesisch-deutsche Sprecher zweiter Generation, deren Verhalten bislang kaum dokumentiert ist.", vi: "Một câu hỏi có cơ sở. Khác với truyền thống đó, tôi đặt trọng tâm vào người nói thế hệ hai Việt-Đức, hành vi của họ cho đến nay hầu như chưa được tư liệu hóa." },
+      { speaker: "Prof. Bauer", text: "Demzufolge wäre Ihre Arbeit als komplementäre Vertiefung zu verstehen.", vi: "Theo đó công trình của bạn được hiểu như một sự đào sâu bổ sung." },
+    ],
+    dialogue_long: [
+      { speaker: "Linh", text: "Sehr geehrte Kolleginnen und Kollegen, ich danke Ihnen, dass Sie sich heute Zeit für mein Promotionsvorhaben nehmen.", vi: "Kính thưa quý đồng nghiệp, tôi xin cảm ơn quý vị đã dành thời gian cho dự án tiến sĩ của tôi hôm nay." },
+      { speaker: "Linh", text: "Im Zentrum meiner Untersuchung steht die These, dass sprachliche Hybridität bei vietnamesisch-deutschen Studierenden nicht als Defizit, sondern als kommunikative Ressource zu konzeptualisieren ist.", vi: "Trọng tâm nghiên cứu của tôi là luận điểm rằng sự lai tạp ngôn ngữ ở sinh viên Việt-Đức phải được khái niệm hóa như một nguồn lực giao tiếp, chứ không phải một khiếm khuyết." },
+      { speaker: "Linh", text: "Daraus ergibt sich die Hypothese, dass Code-Switching systematischen Mustern folgt, die sich diskursanalytisch rekonstruieren lassen.", vi: "Từ đó nảy sinh giả thuyết rằng chuyển mã tuân theo các mô thức có hệ thống, có thể được tái dựng bằng phân tích diễn ngôn." },
+      { speaker: "Linh", text: "Im Folgenden möchte ich zunächst den theoretischen Rahmen umreißen, sodann die methodische Vorgehensweise erläutern und abschließend erste vorläufige Befunde zur Diskussion stellen.", vi: "Tiếp theo tôi sẽ phác thảo khung lý thuyết, trình bày phương pháp tiến hành, và cuối cùng đưa các kết quả sơ bộ ra thảo luận." },
+      { speaker: "Prof. Bauer", text: "Bevor Sie fortfahren, Frau Nguyễn — was unterscheidet Ihren Ansatz substanziell von den ressourcenorientierten Studien der Hamburger Schule, etwa von Hinnenkamp oder Auer?", vi: "Trước khi bạn tiếp tục, cô Nguyễn — cách tiếp cận của bạn về thực chất khác gì so với những nghiên cứu hướng nguồn lực của trường phái Hamburg, chẳng hạn của Hinnenkamp hay Auer?" },
+      { speaker: "Linh", text: "Eine berechtigte Frage. Auer (1998) zufolge sei Code-Switching primär als Kontextualisierungshinweis zu verstehen — eine Position, der ich grundsätzlich folge.", vi: "Một câu hỏi có cơ sở. Theo Auer (1998), chuyển mã chủ yếu được hiểu như một dấu hiệu ngữ cảnh hóa — quan điểm mà về cơ bản tôi tuân theo." },
+      { speaker: "Linh", text: "Im Unterschied zur Hamburger Tradition lege ich den Schwerpunkt jedoch auf vietnamesisch-deutsche Sprecher zweiter Generation in akademischen Settings, deren Verhalten bislang kaum systematisch dokumentiert ist.", vi: "Khác với truyền thống Hamburg, tôi đặt trọng tâm vào người nói thế hệ hai Việt-Đức trong môi trường học thuật, hành vi của họ cho đến nay hầu như chưa được tư liệu hóa có hệ thống." },
+      { speaker: "Prof. Bauer", text: "Demzufolge wäre Ihre Arbeit als komplementäre Vertiefung zu verstehen — nicht als grundsätzliche Revision.", vi: "Theo đó công trình của bạn được hiểu như một sự đào sâu bổ sung — không phải là một xét lại căn bản." },
+      { speaker: "Linh", text: "Genau in diesem Sinne ist sie konzipiert. Mein Beitrag zielt mithin darauf ab, eine empirische Forschungslücke methodisch zu schließen.", vi: "Đúng theo nghĩa đó nó được thiết kế. Đóng góp của tôi do đó hướng đến việc khép lại một khoảng trống nghiên cứu thực nghiệm về mặt phương pháp." },
+      { speaker: "Dr. Akinwumi", text: "Wäre es zulässig, die Methode der Konversationsanalyse hier anzuwenden, gegeben die relativ geringe Korpusgröße?", vi: "Liệu có thể chấp nhận được khi áp dụng phương pháp phân tích hội thoại ở đây, do quy mô ngữ liệu tương đối nhỏ không?" },
+      { speaker: "Linh", text: "Diese Frage berührt einen wesentlichen Punkt. Mein Korpus umfasst aktuell 42 Stunden audio-aufgezeichneter Seminardiskussionen — eine Größenordnung, die nach gängigen Standards der Konversationsanalyse als hinreichend gelten dürfte.", vi: "Câu hỏi này chạm đến một điểm cốt yếu. Ngữ liệu của tôi hiện gồm 42 giờ thảo luận xê-mi-na ghi âm — một quy mô có thể được coi là đủ theo các chuẩn thông dụng của phân tích hội thoại." },
+      { speaker: "Dr. Akinwumi", text: "Und die Frage der Generalisierbarkeit?", vi: "Và vấn đề tính khái quát?" },
+      { speaker: "Linh", text: "Hier muss ich eine Einschränkung anbringen: meine Studie erhebt keinen Anspruch auf statistische Repräsentativität, sondern auf typologische Tiefenschärfe.", vi: "Ở đây tôi phải đưa ra một hạn chế: nghiên cứu của tôi không tuyên bố tính đại diện thống kê, mà là độ sắc nét loại hình học." },
+      { speaker: "Prof. Bauer", text: "Eine vernünftige Selbsteinschränkung. Wie steht es um die ethische Dimension — Einwilligung der Sprecher?", vi: "Một sự tự giới hạn hợp lý. Khía cạnh đạo đức thì sao — sự đồng ý của người nói?" },
+      { speaker: "Linh", text: "Sämtliche Aufnahmen erfolgten mit informierter Einwilligung gemäß DSGVO; das Ethikvotum der Universität liegt vor.", vi: "Toàn bộ các bản ghi đều được thực hiện với sự đồng ý có thông tin theo DSGVO; phiếu thẩm định đạo đức của trường đã có sẵn." },
+      { speaker: "Prof. Bauer", text: "Damit hätten wir die Grundlagen geklärt. Bitte fahren Sie mit dem theoretischen Rahmen fort.", vi: "Như vậy chúng ta đã làm rõ những nền tảng. Mời bạn tiếp tục với khung lý thuyết." },
+      { speaker: "Linh", text: "Vielen Dank. Ich greife nun auf das Konzept der ‚mehrsprachigen Praxis' von Pennycook und García zurück, das ich in dreierlei Hinsicht modifiziere.", vi: "Xin cảm ơn. Tôi sẽ vận dụng khái niệm ‚thực hành đa ngữ' của Pennycook và García, mà tôi sửa đổi ở ba phương diện." },
+    ],
+    roleplay_prompts: [
+      "Bạn là nghiên cứu sinh tiến sĩ Việt Nam tại Universität Bielefeld, trình bày These trung tâm tại Doktorandenkolloquium đầu tiên. Mở đầu trong 30 giây với These + Hypothese, KHÔNG kể tiểu sử cá nhân.",
+      "Một giáo sư đặt câu hỏi cứng về việc cách tiếp cận của bạn khác gì với trường phái đã có. Đáp formal: acknowledge ('eine berechtigte Frage'), trích Konjunktiv I cho nguồn ('Auer (1998) zufolge sei...'), nêu khác biệt cụ thể.",
+      "Một đồng nghiệp postdoc đặt câu hỏi về tính khái quát của nghiên cứu. Đáp bằng Funktionsverbgefüge + tự giới hạn formal: 'meine Studie erhebt keinen Anspruch auf statistische Repräsentativität' — không defensive, không apologetic.",
+    ],
+    register_notes: "Trình bày luận điểm C1 academic: 'Sie' tuyệt đối với tất cả participants kể cả đồng nghiệp postdoc gặp lần đầu. Konjunktiv II cho hedging luận điểm: 'es ließe sich argumentieren', 'dürfte', 'wäre denkbar'. Konjunktiv I cho citing nguồn: 'Bourdieu zufolge sei...', 'Nach Auer handle es sich um...'. Funktionsverbgefüge bắt buộc: 'zur Anwendung kommen' (= angewendet werden), 'in Frage stellen' (= bezweifeln), 'Bezug nehmen auf' (= sich beziehen auf), 'in Erwägung ziehen' (= überlegen). Connectors C1 chuẩn: 'mithin' (do đó, formal hơn 'also'), 'demzufolge' (theo đó), 'gleichwohl' (tuy nhiên, formal), 'insofern als' (xét rằng), 'sodann' (tiếp đó). KHÔNG dùng 'und so' / 'aber' / 'auch' đơn lẻ — colloquial. Genitiv bắt buộc với: 'aufgrund', 'hinsichtlich', 'zugunsten', 'ungeachtet'. Khi không biết: 'Das übersteigt den Rahmen meiner gegenwärtigen Untersuchung' — không bịa, không 'ich weiß nicht' đơn lẻ.",
+    idiom_glosses: [
+      { idiom: "den Nagel auf den Kopf treffen", literal: "đóng đinh ngay vào đầu", meaning: "nói trúng tâm điểm vấn đề (gehoben/standardsprachlich)", example: "Mit dieser Beobachtung haben Sie den Nagel auf den Kopf getroffen — das ist genau die Forschungslücke, die ich adressiere." },
+      { idiom: "etwas auf den Punkt bringen", literal: "đưa điều gì đến đúng điểm", meaning: "tóm gọn vào trọng tâm cốt lõi (standardsprachlich)", example: "Wenn ich meine These auf den Punkt bringen darf: sprachliche Hybridität ist Ressource, nicht Defizit." },
+      { idiom: "ein zweischneidiges Schwert sein", literal: "là một thanh kiếm hai lưỡi", meaning: "có cả mặt lợi và mặt hại (gehoben)", example: "Die quantitative Methode ist ein zweischneidiges Schwert — sie bringt Repräsentativität, aber auf Kosten der Tiefenschärfe." },
+      { idiom: "Wasser auf jemandes Mühle sein", literal: "là nước cho cối xay của ai đó", meaning: "ủng hộ luận điểm của ai đó (gehoben)", example: "Die jüngsten Befunde von Pennycook sind Wasser auf meine Mühle — sie bestätigen meinen Ressourcenansatz." },
+    ],
+    exercises: [
+      {
+        type: "fill_blank",
+        instruction_vi: "Điền cấu trúc trình bày luận điểm C1:",
+        pronunciation_focus: [],
+        items: [
+          { prompt: "Die zentrale ___ der vorliegenden Arbeit besteht darin, dass...", answer: "These" },
+          { prompt: "Daraus ___ sich die Hypothese, dass...", answer: "ergibt" },
+          { prompt: "Es ___ sich argumentieren, dass die bisherige Forschung...", answer: "ließe" },
+          { prompt: "Mein Beitrag zielt ___ darauf ab, eine Forschungslücke zu schließen.", answer: "mithin" },
+        ],
+      },
+      {
+        type: "matching",
+        instruction_vi: "Nối Funktionsverbgefüge Đức với động từ tương đương đơn giản:",
+        pronunciation_focus: [],
+        items: [
+          { prompt: "zur Anwendung kommen", answer: "angewendet werden" },
+          { prompt: "in Frage stellen", answer: "bezweifeln" },
+          { prompt: "Bezug nehmen auf", answer: "sich beziehen auf" },
+          { prompt: "in Erwägung ziehen", answer: "überlegen" },
+        ],
+      },
+      {
+        type: "translation",
+        instruction_vi: "Dịch sang tiếng Đức học thuật C1 (Funktionsverbgefüge + Konjunktiv II khi cần):",
+        pronunciation_focus: ["thesis presentation"],
+        items: [
+          { prompt: "Luận điểm trung tâm của công trình này là sự lai tạp ngôn ngữ phải được khái niệm hóa như một nguồn lực.", answer: "Die zentrale These der vorliegenden Arbeit besteht darin, dass sprachliche Hybridität als Ressource zu konzeptualisieren ist." },
+          { prompt: "Có thể lập luận rằng nghiên cứu hiện hành đã bỏ qua khía cạnh này.", answer: "Es ließe sich argumentieren, dass die bisherige Forschung diesen Aspekt vernachlässigt hat." },
+          { prompt: "Đóng góp của tôi do đó hướng đến việc khép lại một khoảng trống nghiên cứu.", answer: "Mein Beitrag zielt mithin darauf ab, eine Forschungslücke zu schließen." },
+          { prompt: "Tiếp theo tôi sẽ phác thảo khung lý thuyết, sau đó trình bày phương pháp.", answer: "Im Folgenden möchte ich zunächst den theoretischen Rahmen umreißen, sodann die methodische Vorgehensweise erläutern." },
+        ],
+      },
+    ],
+  },
+  {
+    id: "lzitate_quellen",
+    level: "C1",
+    category: "fluency",
+    title_vi: "Trích dẫn nguồn và quy thuộc tác giả trong văn bản học thuật Đức",
+    title_en: "Citing sources and attribution in German academic writing",
+    sentences: [
+      { en: "Bourdieu (1991, S. 47) zufolge sei symbolische Macht stets an die Anerkennung durch die Beherrschten gebunden.", vi: "Theo Bourdieu (1991, tr. 47), quyền lực biểu tượng luôn gắn liền với sự thừa nhận từ phía những người bị chi phối.", pronunciation_focus: ["Bourdieu → bu-ĐI-uy", "zufolge → tsu-FÔL-gê", "Anerkennung → AN-e-ken-nung"] },
+      { en: "In Anlehnung an Habermas (1981) lässt sich der Begriff der kommunikativen Rationalität dergestalt fassen, dass er auf konsensorientiertem Diskurs beruht.", vi: "Dựa theo Habermas (1981), khái niệm tính duy lý giao tiếp có thể được hiểu theo cách rằng nó dựa trên diễn ngôn hướng đồng thuận.", pronunciation_focus: ["Anlehnung → AN-lê-nung", "kommunikative → kô-mu-ni-ka-TI-vê", "dergestalt → đe-gê-SHTAL-t"] },
+      { en: "Die Autorin verweist hierbei explizit auf die methodischen Vorarbeiten von Garfinkel, ohne dessen ethnomethodologische Prämissen jedoch vollständig zu übernehmen.", vi: "Tác giả ở đây dẫn chiếu rõ ràng đến những công trình phương pháp luận trước đó của Garfinkel, song không tiếp thu toàn bộ tiền đề dân tộc phương pháp luận của ông.", pronunciation_focus: ["verweist → fe-VAIST", "ethnomethodologisch → êt-nô-mê-tô-đô-LÔ-gish", "Prämissen → PRÊ-mi-sần"] },
+      { en: "Wie bereits an anderer Stelle ausgeführt wurde (vgl. Müller 2019), ist diese Lesart nicht unumstritten.", vi: "Như đã được trình bày ở chỗ khác (xem Müller 2019), cách đọc này không phải không gây tranh cãi.", pronunciation_focus: ["ausgeführt → AOS-gê-fuyt", "vgl. → fe-glaikh-ê", "unumstritten → un-um-SHTRI-tần"] },
+      { en: "Die folgenden Ausführungen stützen sich maßgeblich auf die Arbeiten von García & Wei (2014), denen ich mich in zentralen Punkten anschließe.", vi: "Những trình bày sau đây dựa chủ yếu vào các công trình của García & Wei (2014), mà tôi đồng tình ở những điểm trung tâm.", pronunciation_focus: ["stützen sich → SHTUY-tsần zikh", "maßgeblich → MAS-gê-blikh", "anschließen → AN-shli-sần"] },
+    ],
+    cultural_notes_vi: "Trích dẫn nguồn trong học thuật Đức tuân theo những quy ước tinh tế khác văn hóa Anh-Mỹ và Việt Nam. (1) KONJUNKTIV I CHO INDIREKTE REDE: khi tường thuật quan điểm tác giả khác, dùng Konjunktiv I bắt buộc để TÁCH ý kiến của họ khỏi quan điểm của bạn. 'Bourdieu sagt, dass X ist' SAI ở C1 — phải là 'Bourdieu zufolge sei X' hoặc 'Nach Bourdieu handle es sich um X'. Đây là dấu hiệu wissenschaftliche Distanzierung. (2) BẮT BUỘC trang số: 'Bourdieu (1991, S. 47)' — khác Anh-Mỹ thường chỉ ghi năm. Trích nguyên văn (direkte Zitate) phải có trang. Nếu là paraphrase, có thể (S. xx-yy). (3) CITATION STYLES KHÁC VIỆT NAM: ở Đức Geisteswissenschaften thường dùng harvard-style 'Müller (2019)' inline + Bibliografie cuối; Naturwissenschaften thường dùng số '[1]'. Mỗi Lehrstuhl có Stilrichtlinien riêng — HỎI Doktorvater/-mutter trước khi viết.\n\nKhác Việt Nam: ở VN, trích dẫn thường có yếu tố 'tôn trọng học giả lớn' — trích nhiều, không tranh luận. Ở Đức, trích là để TRANH LUẬN với tác giả, đồng tình hoặc không đồng tình một cách rõ ràng. 'In Anlehnung an X, jedoch...' (dựa theo X, song...) là cấu trúc chuẩn — trích để định vị bản thân, không trích để xưng tụng.\n\nSelbstplagiarismus (tự đạo văn): nếu bạn đã publish một đoạn ở Hausarbeit cũ hoặc bài hội thảo, KHÔNG được copy nguyên văn vào luận văn mà không trích chính mình. 'Wie bereits an anderer Stelle ausgeführt wurde (vgl. Verfasserin 2023)...' — bắt buộc.\n\nMột chi tiết quan trọng: cụm từ 'vgl.' (vergleiche = so sánh) ≠ trích nguyên văn. Dùng 'vgl.' khi paraphrase + chỉ tham chiếu. Dùng nguyên văn '...' với trang chính xác khi quote literal. Lẫn hai cái = vi phạm hàn lâm nghiêm trọng có thể bị rút bằng (ví dụ vụ Karl-Theodor zu Guttenberg).\n\nVề DSGVO: trích nguồn từ social media, blog cá nhân của người sống — có ràng buộc bảo vệ dữ liệu cá nhân. Tham khảo Datenschutzbeauftragte của trường trước khi đưa vào luận văn.\n\nVề trích nguồn tiếng Việt trong văn bản tiếng Đức: dùng tên tác giả gốc + (Übersetzung der Verfasserin) sau bản dịch. KHÔNG translit ngẫu hứng — theo bảng UTF-8 chuẩn quốc tế.",
+    tip_advice_vi: "Trước khi trích:\n1. KIỂM TRA SOURCE TRỰC TIẾP — không trích lại từ secondary source mà không note. Nếu phải dùng secondary: 'X (1985, zit. nach Y 2010, S. 23)' — bắt buộc dấu 'zit. nach'.\n2. CHECK trang chính xác — Citavi/Zotero làm sạch tự động, nhưng verify ở bản in/PDF gốc.\n3. KIỂM TRA Sekundärliteratur — khoa học Đức expect bạn đọc cả các critic của tác giả gốc. Trích Bourdieu mà không đọc Wacquant về Bourdieu = thiếu sót.\n\nCấu trúc trích dẫn formal:\n- 'X zufolge sei Y' — Konjunktiv I, formal nhất\n- 'Nach X handle es sich um Y' — Konjunktiv I, formal\n- 'X (Jahr) argumentiert, dass Y sei' — Konjunktiv I in subordinate clause\n- 'In Anlehnung an X' — dựa theo (đồng tình)\n- 'Im Anschluss an X' — tiếp theo X (đồng tình)\n- 'Im Unterschied zu X' — khác với X\n- 'In Abgrenzung von X' — phân biệt với X (formal hơn)\n- 'Entgegen der Auffassung von X' — trái với quan điểm của X\n- 'Wie bereits ... ausgeführt wurde (vgl. X Jahr)' — như đã nói (paraphrase tự trích)\n- 'Bekanntlich verweist X darauf, dass...' — như được biết, X chỉ ra rằng (formal)\n\nKhi không đồng ý với tác giả:\n- 'Diese Position erscheint mir aus zwei Gründen problematisch' (formal)\n- 'In dieser Allgemeinheit lässt sich der Aussage nicht zustimmen'\n- 'Gegen diese Lesart spricht jedoch...'\n- KHÔNG: 'X liegt falsch' / 'X ist Unsinn' (colloquial + thiếu register)\n\nKhi nguồn cũ nhưng vẫn relevant:\n- 'Auch wenn die Studie aus dem Jahr 1985 stammt, behält ihre Argumentation Gültigkeit, da...'\n\nKhi nguồn primary inaccessible:\n- 'Für eine umfassende Diskussion vgl. Y (Jahr)' — chuyển reader sang secondary\n\nMẹo cuối: viết 1 trang Begründung (justification) cho mỗi nguồn quan trọng — TẠI SAO bạn trích Bourdieu mà không Foucault? Doktorvater sẽ hỏi. Có sẵn = Verteidigung dễ hơn nhiều. Citavi có chức năng note này — dùng từ ngày đầu PhD.",
+    vocabulary: [
+      { word: "das Zitat", en: "quotation, citation", vi: "trích dẫn", pos: "noun (n)", pronunciation_vi: "đát tsi-TAT" },
+      { word: "die Quelle", en: "source", vi: "nguồn", pos: "noun (f)", pronunciation_vi: "đi KVÊ-lê" },
+      { word: "zufolge (+ Dat)", en: "according to", vi: "theo (formal)", pos: "preposition (Dat)", pronunciation_vi: "tsu-FÔL-gê" },
+      { word: "in Anlehnung an", en: "in accordance with, following", vi: "dựa theo", pos: "phrase", pronunciation_vi: "in AN-lê-nung an" },
+      { word: "verweisen auf", en: "to refer to", vi: "dẫn chiếu đến", pos: "verb (sep.)", pronunciation_vi: "fe-VAI-zần aof" },
+      { word: "die Anmerkung / Fußnote", en: "footnote, annotation", vi: "chú thích / cước chú", pos: "noun (f)", pronunciation_vi: "đi AN-mê-kung / FUS-nô-tê" },
+      { word: "vgl. (vergleiche)", en: "cf. (compare)", vi: "xem / so sánh (cước chú)", pos: "abbreviation", pronunciation_vi: "fe-glai-khê" },
+      { word: "ebd. (ebenda)", en: "ibid.", vi: "cùng nguồn (như trên)", pos: "abbreviation", pronunciation_vi: "ê-bên-đa" },
+      { word: "der/die Verfasser/-in", en: "author", vi: "tác giả", pos: "noun (m/f)", pronunciation_vi: "đe fe-FA-sờ" },
+      { word: "die Sekundärliteratur", en: "secondary literature", vi: "tài liệu thứ cấp", pos: "noun (f)", pronunciation_vi: "đi zê-kun-ĐÊ-li-tê-ra-tu" },
+    ],
+    dialogue: [
+      { speaker: "Doktorandin Linh", text: "In meinem dritten Kapitel beziehe ich mich primär auf Bourdieu — meinen Sie, das ist die richtige Schwerpunktsetzung?", vi: "Ở chương ba tôi tham chiếu chủ yếu Bourdieu — thầy thấy đó có phải trọng tâm đúng không?" },
+      { speaker: "Prof. Bauer", text: "Bourdieu ist unverzichtbar, gewiss. Doch sollten Sie auch die kritische Rezeption — Wacquant, Calhoun — heranziehen, andernfalls wirkt Ihre Argumentation einseitig.", vi: "Bourdieu chắc chắn không thể thiếu. Nhưng bạn cũng nên đưa vào sự tiếp nhận phê phán — Wacquant, Calhoun — nếu không lập luận của bạn sẽ trông một chiều." },
+      { speaker: "Linh", text: "Verstanden. Wäre es zulässig, Bourdieus Begriff in Anlehnung an Wacquant zu modifizieren, statt ihn unverändert zu übernehmen?", vi: "Tôi hiểu. Liệu có chấp nhận được khi sửa đổi khái niệm của Bourdieu dựa theo Wacquant, thay vì tiếp thu không đổi không?" },
+      { speaker: "Prof. Bauer", text: "Nicht nur zulässig — wissenschaftlich erforderlich. Aber begründen Sie die Modifikation explizit.", vi: "Không chỉ chấp nhận được — về khoa học là cần thiết. Nhưng hãy biện minh sự sửa đổi một cách rõ ràng." },
+    ],
+    dialogue_long: [
+      { speaker: "Doktorandin Linh", text: "Frau Professor Bauer, ich hätte eine Frage zur Zitierweise im dritten Kapitel.", vi: "Thưa Giáo sư Bauer, tôi có một câu hỏi về cách trích dẫn trong chương ba." },
+      { speaker: "Prof. Bauer", text: "Bitte, treten Sie ein. Worum geht es konkret?", vi: "Mời bạn vào. Cụ thể là vấn đề gì?" },
+      { speaker: "Linh", text: "Ich beziehe mich primär auf Bourdieu — etwa zwölf direkte Zitate, dazu zwanzig paraphrasierte Stellen. Meinen Sie, das ist die richtige Schwerpunktsetzung?", vi: "Tôi tham chiếu chủ yếu Bourdieu — khoảng mười hai trích dẫn nguyên văn, kèm hai mươi đoạn paraphrase. Thầy thấy đó có phải trọng tâm đúng không?" },
+      { speaker: "Prof. Bauer", text: "Bourdieu ist für Ihr Thema unverzichtbar, gewiss. Doch sollten Sie auch die kritische Rezeption heranziehen — Wacquant zur Methodologie, Calhoun zur Begriffsschärfe. Andernfalls wirkt Ihre Argumentation einseitig.", vi: "Đối với chủ đề của bạn, Bourdieu chắc chắn không thể thiếu. Nhưng bạn cũng phải đưa vào sự tiếp nhận phê phán — Wacquant về phương pháp luận, Calhoun về độ sắc nét khái niệm. Nếu không lập luận của bạn sẽ trông một chiều." },
+      { speaker: "Linh", text: "Das leuchtet ein. Wie verhält es sich mit der Form der Zitation? Ich habe bisher das Harvard-System verwendet — Autor (Jahr, Seite).", vi: "Điều đó hợp lý. Còn hình thức trích dẫn thì sao? Cho đến nay tôi dùng hệ thống Harvard — tác giả (năm, trang)." },
+      { speaker: "Prof. Bauer", text: "Das entspricht den Stilrichtlinien unseres Lehrstuhls. Achten Sie aber konsequent darauf, ‚vgl.' nur bei Paraphrasen zu setzen, nicht bei direkten Zitaten.", vi: "Điều đó phù hợp với quy chuẩn của Lehrstuhl chúng ta. Nhưng hãy kiên trì lưu ý dùng ‚vgl.' chỉ ở các paraphrase, không ở trích dẫn nguyên văn." },
+      { speaker: "Linh", text: "Eine weitere Frage: ich möchte Bourdieus Habitus-Begriff modifizieren, da er für vietnamesisch-deutsche Sprecher zu deterministisch greift. Wäre das zulässig?", vi: "Một câu hỏi nữa: tôi muốn sửa đổi khái niệm habitus của Bourdieu, vì với người nói Việt-Đức nó có vẻ quá có tính tất định. Liệu có chấp nhận được không?" },
+      { speaker: "Prof. Bauer", text: "Nicht nur zulässig — wissenschaftlich erforderlich. Aber begründen Sie die Modifikation explizit, idealerweise in Anlehnung an Sekundärliteratur, die ähnliche Kritik formuliert hat.", vi: "Không chỉ chấp nhận được — về khoa học là cần thiết. Nhưng hãy biện minh sự sửa đổi một cách rõ ràng, lý tưởng là dựa theo tài liệu thứ cấp đã xây dựng phê phán tương tự." },
+      { speaker: "Linh", text: "Wacquant (2014) verweist auf eine ähnliche Schwäche im Migrationskontext — den könnte ich heranziehen.", vi: "Wacquant (2014) chỉ ra một điểm yếu tương tự trong bối cảnh di cư — tôi có thể vận dụng tác giả đó." },
+      { speaker: "Prof. Bauer", text: "Sehr gut. Formulieren Sie es etwa folgendermaßen: ‚In Anlehnung an Wacquant (2014) modifiziere ich den Habitus-Begriff dergestalt, dass die Migrationskonfiguration zweiter Generation berücksichtigt wird.'", vi: "Rất tốt. Hãy diễn đạt như thế này: ‚Dựa theo Wacquant (2014), tôi sửa đổi khái niệm habitus theo cách rằng cấu hình di cư thế hệ hai được tính đến.'" },
+      { speaker: "Linh", text: "Notiert. Eine letzte Frage zu Selbstzitation: in meinem Konferenzpapier 2023 habe ich bereits einen Teil der Argumentation entwickelt. Darf ich daraus übernehmen?", vi: "Tôi đã ghi. Một câu hỏi cuối về tự trích: trong bài hội thảo 2023 của tôi tôi đã phát triển một phần lập luận. Tôi có được lấy lại không?" },
+      { speaker: "Prof. Bauer", text: "Übernehmen ja, aber zitieren Sie sich selbst korrekt — sonst handelt es sich um Selbstplagiat. ‚Wie bereits an anderer Stelle ausgeführt wurde (vgl. Verfasserin 2023, S. 14ff.).'", vi: "Lấy lại được, nhưng phải tự trích chính mình — nếu không là tự đạo văn. ‚Như đã được trình bày ở chỗ khác (xem Verfasserin 2023, tr. 14 và tt.).'" },
+      { speaker: "Linh", text: "Auch wenn es nur drei Sätze sind?", vi: "Ngay cả khi chỉ ba câu?" },
+      { speaker: "Prof. Bauer", text: "Auch dann. Die Universität hat hier eine Null-Toleranz-Politik. Lieber einmal zu viel zitieren als einmal zu wenig.", vi: "Cả khi đó. Trường có chính sách không khoan nhượng ở điểm này. Thà trích thừa một lần còn hơn thiếu một lần." },
+      { speaker: "Linh", text: "Verstanden. Damit hätte ich für heute keine weiteren Fragen — vielen Dank für die ausführliche Klärung.", vi: "Tôi hiểu. Như vậy tôi không có câu hỏi nào nữa cho hôm nay — xin cảm ơn thầy đã làm rõ tỉ mỉ." },
+      { speaker: "Prof. Bauer", text: "Gern. Schicken Sie mir das überarbeitete Kapitel bis Ende des Monats.", vi: "Sẵn lòng. Hãy gửi cho tôi chương đã chỉnh sửa trước cuối tháng." },
+    ],
+    roleplay_prompts: [
+      "Bạn đang chuẩn bị chương ba luận án và đến gặp Doktormutter để thảo luận về cách trích dẫn Bourdieu. Mở đầu formal, hỏi cụ thể về Schwerpunktsetzung và tỷ lệ trích dẫn nguyên văn vs paraphrase.",
+      "Doktormutter đề xuất bạn modify khái niệm habitus dựa theo Wacquant. Diễn đạt sự sửa đổi đó bằng formula chuẩn: 'In Anlehnung an Wacquant (2014) modifiziere ich ... dergestalt, dass...'",
+      "Hỏi về Selbstzitation: bạn đã viết một đoạn trong Konferenzpapier 2023, giờ muốn dùng lại trong luận án. Doktormutter giải thích bắt buộc tự trích — diễn đạt câu chuẩn 'Wie bereits an anderer Stelle ausgeführt wurde'.",
+    ],
+    register_notes: "Trích dẫn C1 academic: Konjunktiv I bắt buộc cho indirekte Rede. 'Bourdieu sagt, X ist' SAI; phải là 'Bourdieu zufolge sei X' / 'Nach Bourdieu handle es sich um X'. Khi quote literal: dấu ‚...' (Anführungszeichen Đức) hoặc Anführungszeichen kép + trang chính xác. Khi paraphrase: 'vgl. X (Jahr, S. xx-yy)'. Funktionsverbgefüge: 'Bezug nehmen auf' (= sich beziehen auf), 'in Anlehnung an' (= sich anlehnen), 'in Abgrenzung von' (= sich abgrenzen). Connectors: 'andernfalls' (nếu không), 'gleichwohl' (tuy nhiên formal), 'insofern als' (xét rằng). Khi không đồng ý: 'In dieser Allgemeinheit lässt sich der Aussage nicht zustimmen' / 'Gegen diese Lesart spricht jedoch...' — KHÔNG 'X ist falsch' / 'X liegt daneben'. Selbstzitation bắt buộc: 'wie bereits an anderer Stelle ausgeführt wurde (vgl. Verfasserin Jahr, S. xx)'. Sekundärliteratur ('zit. nach') khi không tiếp cận được nguồn gốc — formal phải đánh dấu rõ.",
+    idiom_glosses: [
+      { idiom: "auf den Schultern von Riesen stehen", literal: "đứng trên vai của những người khổng lồ", meaning: "kế thừa và xây dựng trên thành tựu của các học giả lớn (gehoben)", example: "Mit dieser Untersuchung stehe ich auf den Schultern von Riesen — Bourdieu, Habermas, Garfinkel haben den Weg geebnet." },
+      { idiom: "den Stein des Anstoßes liefern", literal: "cung cấp viên đá gây vấp", meaning: "đưa ra điểm gây tranh luận quyết định (gehoben)", example: "Wacquants Kritik (2014) lieferte den Stein des Anstoßes für meine Modifikation des Habitus-Begriffs." },
+      { idiom: "ins selbe Horn stoßen", literal: "thổi cùng một cái sừng (gốc săn bắn)", meaning: "đồng tình với quan điểm của ai đó (gehoben)", example: "García & Wei (2014) stoßen ins selbe Horn wie Pennycook — beide plädieren für eine ressourcenorientierte Lesart." },
+      { idiom: "der rote Faden", literal: "sợi chỉ đỏ", meaning: "chủ đề xuyên suốt, mạch lập luận trung tâm (standardsprachlich)", example: "Bourdieus Begriff der symbolischen Macht bildet den roten Faden meiner Argumentation." },
+    ],
+    exercises: [
+      {
+        type: "fill_blank",
+        instruction_vi: "Điền cấu trúc trích dẫn formal Đức:",
+        pronunciation_focus: [],
+        items: [
+          { prompt: "Bourdieu (1991, S. 47) ___ sei symbolische Macht an Anerkennung gebunden.", answer: "zufolge" },
+          { prompt: "In ___ an Habermas (1981) lässt sich der Begriff dergestalt fassen.", answer: "Anlehnung" },
+          { prompt: "Wie bereits an anderer Stelle ausgeführt wurde (___. Müller 2019)...", answer: "vgl" },
+          { prompt: "Die folgenden Ausführungen ___ sich auf die Arbeiten von García & Wei.", answer: "stützen" },
+        ],
+      },
+      {
+        type: "matching",
+        instruction_vi: "Nối thuật ngữ trích dẫn Đức với chức năng:",
+        pronunciation_focus: [],
+        items: [
+          { prompt: "vgl.", answer: "Paraphrase / so sánh tham chiếu" },
+          { prompt: "ebd.", answer: "Cùng nguồn liền trước (ibid)" },
+          { prompt: "zit. nach", answer: "Trích lại từ nguồn thứ cấp" },
+          { prompt: "in Anlehnung an", answer: "Dựa theo (đồng tình)" },
+        ],
+      },
+      {
+        type: "translation",
+        instruction_vi: "Dịch sang tiếng Đức học thuật C1 (Konjunktiv I cho citation):",
+        pronunciation_focus: ["citation"],
+        items: [
+          { prompt: "Theo Bourdieu (1991, tr. 47), quyền lực biểu tượng luôn gắn với sự thừa nhận.", answer: "Bourdieu (1991, S. 47) zufolge sei symbolische Macht stets an die Anerkennung gebunden." },
+          { prompt: "Dựa theo Habermas (1981), khái niệm tính duy lý giao tiếp dựa trên diễn ngôn đồng thuận.", answer: "In Anlehnung an Habermas (1981) lässt sich der Begriff der kommunikativen Rationalität dergestalt fassen, dass er auf konsensorientiertem Diskurs beruht." },
+          { prompt: "Như đã được trình bày ở chỗ khác (xem Müller 2019), cách đọc này không phải không gây tranh cãi.", answer: "Wie bereits an anderer Stelle ausgeführt wurde (vgl. Müller 2019), ist diese Lesart nicht unumstritten." },
+          { prompt: "Tác giả dẫn chiếu rõ ràng đến các công trình phương pháp luận của Garfinkel.", answer: "Die Autorin verweist hierbei explizit auf die methodischen Vorarbeiten von Garfinkel." },
+        ],
+      },
+    ],
+  },
+];
+
 // ── Aggregate export ────────────────────────────────────────────────────
 
 export const GERMAN_LESSONS: ReadonlyArray<GermanLesson> = [
@@ -8170,6 +8374,7 @@ export const GERMAN_LESSONS: ReadonlyArray<GermanLesson> = [
   ...EXPRESSIONS,
   ...ADVANCED_GRAMMAR,
   ...FLUENCY,
+  ...C1_R1,
 ];
 
 export function getLessonsByCategory(
