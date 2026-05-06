@@ -3,20 +3,11 @@
  * Central export for all performance features
  */
 
-export * from './code-splitting';
 export * from './memory-optimization';
 export * from './battery-optimization';
 export * from './virtualization';
 export * from './bundle-optimization';
 export * from './worker-utils';
-
-// Re-export commonly used utilities
-export {
-  lazyLoad,
-  preloadComponent,
-  prefetchRoute,
-  preloadCriticalRoutes,
-} from './code-splitting';
 
 export {
   throttle,
