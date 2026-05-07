@@ -787,6 +787,61 @@ async function createCheckoutSessionForFreeUser(params: {
   });
   if ("error" in customer) return customer.error;
 
+  // === LAST-LINE DUPLICATE GUARD (Stripe-direct) ===
+  // checkForActiveSubscription() at line 906 reads the canonical
+  // subscription record from Supabase first. If that row is stale or
+  // missing (webhook dropped, sync drift, manual deletion) but Stripe
+  // still has a live subscription on this customer, the canonical-only
+  // check misses it and we'd reach checkout.sessions.create → duplicate.
+  //
+  // Direct Stripe list as the last line of defense. Same response shape
+  // as checkForActiveSubscription so the frontend handler at
+  // src/lib/billing.ts:258 routes the user to the billing portal
+  // identically.
+  //
+  // Fail-open on Stripe error: a transient list-call failure must NOT
+  // block a legitimate first-time customer from completing checkout.
+  // The canonical check upstream is the primary guard; this is a
+  // defense-in-depth net.
+  try {
+    const existingSubs = await params.stripe.subscriptions.list({
+      customer: customer.customerId,
+      status: "all",
+      limit: 10,
+    });
+    const blockingSub = existingSubs.data.find((s) =>
+      ["active", "trialing", "past_due", "unpaid"].includes(s.status),
+    );
+    if (blockingSub) {
+      logInfo("Stripe-direct duplicate guard fired", {
+        user_id: params.userId,
+        customer_id: customer.customerId,
+        existing_subscription_id: blockingSub.id,
+        existing_status: blockingSub.status,
+        canonical_check_passed: true,
+      });
+      return json({
+        ok: true,
+        action: "manage_billing",
+        message:
+          "Bạn đã có gói đăng ký đang hoạt động. Vui lòng quản lý thanh toán qua cổng billing.",
+        en_message:
+          "You already have an active Stripe subscription. Please manage your billing.",
+        subscription_id: blockingSub.id,
+        current_status: blockingSub.status,
+        requires_new_subscription: false,
+        function_version: FUNCTION_VERSION,
+      }, 200);
+    }
+  } catch (err) {
+    logError("Stripe-direct duplicate guard list-call failed; proceeding to checkout", {
+      user_id: params.userId,
+      customer_id: customer.customerId,
+      detail: errToObj(err),
+    });
+    // Intentionally do not return — fail open per the defense-in-depth note.
+  }
+
   let session: Stripe.Checkout.Session;
   try {
     session = await params.stripe.checkout.sessions.create({
