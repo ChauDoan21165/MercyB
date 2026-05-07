@@ -377,6 +377,31 @@ export default defineConfig({
           if (s.includes('/mercy-guide/tabs/EnglishLogicTab')) {
             return 'mercy-logic-tab';
           }
+          // Per-level lesson data lives in its own chunk per language ×
+          // level so opening A1 doesn't pull C1+C2 etc. The registry file
+          // (`lessons.ts`) and small helpers stay in the tab/page chunk;
+          // only the bulky `lessons-{level}.ts` data files are split out.
+          if (s.includes('/languages/french/lessons-')) {
+            const m = s.match(/lessons-(a1|a2|b1|b2|c1|c2)/);
+            return m ? `lessons-french-${m[1]}` : undefined;
+          }
+          if (s.includes('/languages/german/lessons-')) {
+            const m = s.match(/lessons-(a1|a2|b1|b2|c1|c2)/);
+            return m ? `lessons-german-${m[1]}` : undefined;
+          }
+          if (s.includes('/languages/chinese/lessons-')) {
+            const m = s.match(/lessons-(a1|a2|b1|b2|c1|c2)/);
+            return m ? `lessons-chinese-${m[1]}` : undefined;
+          }
+          if (s.includes('/languages/japanese/lessons-')) {
+            const m = s.match(/lessons-(a1|a2|b1|b2|c1|c2)/);
+            return m ? `lessons-japanese-${m[1]}` : undefined;
+          }
+          if (s.includes('/languages/korean/lessons-')) {
+            const m = s.match(/lessons-(a1|a2|b1|b2|c1|c2)/);
+            return m ? `lessons-korean-${m[1]}` : undefined;
+          }
+
           if (
             s.includes('/mercy-guide/tabs/FrenchLessonsTab') ||
             s.includes('/languages/french/')

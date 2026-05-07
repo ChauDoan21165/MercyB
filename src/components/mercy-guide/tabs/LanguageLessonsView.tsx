@@ -3,9 +3,13 @@
 // Pure rendering body for the per-language lesson tabs inside the Mercy
 // guide panel. Takes its language data via props so each per-language
 // wrapper (FrenchLessonsTab / GermanLessonsTab) can import only the data
-// it needs and ride its own lazy chunk.
+// it needs.
+//
+// Lazy-load split: the view loads only the user's selected level via
+// the language's per-level loader, so opening the tab no longer pulls
+// every level's data eagerly.
 
-import React, { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
   Sparkles,
   Lightbulb,
@@ -17,10 +21,21 @@ import {
 
 import type { FrenchVocabEntry } from "@/languages/french/vocabulary";
 import type { GermanVocabEntry } from "@/languages/german/vocabulary";
-import type { FrenchCategoryMeta, FrenchLesson } from "@/languages/french/lessons";
-import type { GermanCategoryMeta, GermanLesson } from "@/languages/german/lessons";
+import type {
+  FrenchCategoryMeta,
+  FrenchLesson,
+  FrenchCefrLevel,
+} from "@/languages/french/lessons";
+import type {
+  GermanCategoryMeta,
+  GermanLesson,
+  GermanCefrLevel,
+} from "@/languages/german/lessons";
 
 export type LanguageCode = "french" | "german";
+
+type AnyLevel = FrenchCefrLevel | GermanCefrLevel;
+type AnyLesson = FrenchLesson | GermanLesson;
 
 export type LanguageLessonsConfig = {
   code: LanguageCode;
@@ -30,16 +45,19 @@ export type LanguageLessonsConfig = {
   accent: "blue" | "red";
   vocab: ReadonlyArray<FrenchVocabEntry | GermanVocabEntry>;
   categories: ReadonlyArray<FrenchCategoryMeta | GermanCategoryMeta>;
-  getLessonsByCategory: (category: string) => (FrenchLesson | GermanLesson)[];
+  loadLessonsForLevel: (level: AnyLevel) => Promise<AnyLesson[]>;
 };
 
-const ACCENT_COLORS: Record<string, { light: string; medium: string; dark: string; border: string; bg: string }> = {
+const LEVELS: ReadonlyArray<AnyLevel> = ["A1", "A2", "B1", "B2", "C1", "C2"];
+
+const ACCENT_COLORS: Record<string, { light: string; medium: string; dark: string; border: string; bg: string; activeBg: string }> = {
   blue: {
     light: "blue-50",
     medium: "blue-100",
     dark: "blue-700",
     border: "border-blue-200",
     bg: "bg-gradient-to-br from-blue-50 via-indigo-50 to-sky-50",
+    activeBg: "bg-blue-600",
   },
   red: {
     light: "red-50",
@@ -47,6 +65,7 @@ const ACCENT_COLORS: Record<string, { light: string; medium: string; dark: strin
     dark: "red-700",
     border: "border-red-200",
     bg: "bg-gradient-to-br from-red-50 via-rose-50 to-amber-50",
+    activeBg: "bg-red-600",
   },
 };
 
@@ -57,6 +76,40 @@ type Props = {
 export default function LanguageLessonsView({ config }: Props) {
   const colors = ACCENT_COLORS[config.accent];
   const [showVocab, setShowVocab] = useState(false);
+  const [level, setLevel] = useState<AnyLevel>("A1");
+  const [lessons, setLessons] = useState<AnyLesson[] | null>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+    setLessons(null);
+    config
+      .loadLessonsForLevel(level)
+      .then((arr) => {
+        if (!cancelled) setLessons(arr);
+      })
+      .catch((err) => {
+        if (!cancelled) {
+          console.error("[LanguageLessonsView] level load failed", level, err);
+          setLessons([]);
+        }
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [config, level]);
+
+  const lessonsByCategory = useMemo(() => {
+    const map = new Map<string, AnyLesson[]>();
+    if (!lessons) return map;
+    for (const lesson of lessons) {
+      const cat =
+        (lesson as { category?: string }).category ?? "uncategorized";
+      const arr = map.get(cat);
+      if (arr) arr.push(lesson);
+      else map.set(cat, [lesson]);
+    }
+    return map;
+  }, [lessons]);
 
   return (
     <div className="space-y-3 px-1 pt-1">
@@ -113,29 +166,65 @@ export default function LanguageLessonsView({ config }: Props) {
         )}
       </div>
 
+      {/* Level selector */}
+      <nav
+        aria-label="Chọn cấp độ"
+        className="flex flex-wrap gap-1.5"
+      >
+        {LEVELS.map((lv) => {
+          const active = lv === level;
+          return (
+            <button
+              key={lv}
+              type="button"
+              onClick={() => setLevel(lv)}
+              className={`rounded-full border px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide transition ${
+                active
+                  ? `border-transparent ${colors.activeBg} text-white`
+                  : "border-slate-200 bg-white text-slate-600 hover:bg-slate-50"
+              }`}
+              aria-pressed={active}
+            >
+              {lv}
+            </button>
+          );
+        })}
+      </nav>
+
       {/* Lessons */}
-      {config.categories.map((cat) => {
-        const lessons = config.getLessonsByCategory(cat.id);
-        return (
-          <section key={cat.id}>
-            <header className="mb-1.5 flex items-baseline justify-between">
-              <h3 className="text-xs font-semibold uppercase tracking-wide text-slate-600">
-                {cat.title_vi}
-              </h3>
-              <span className="text-[10px] text-slate-400">
-                {cat.title_en} · {lessons.length} bài
-              </span>
-            </header>
-            <ol className="space-y-1.5">
-              {lessons.map((lesson) => (
-                <li key={lesson.id}>
-                  <LessonTile lesson={lesson} colors={colors} />
-                </li>
-              ))}
-            </ol>
-          </section>
-        );
-      })}
+      {lessons === null ? (
+        <p className="rounded-lg border border-slate-200 bg-white px-3 py-3 text-xs text-slate-500">
+          Đang tải bài học cấp độ {level}…
+        </p>
+      ) : lessons.length === 0 ? (
+        <p className="rounded-lg border border-slate-200 bg-white px-3 py-3 text-xs text-slate-500">
+          Chưa có bài học cho cấp độ này.
+        </p>
+      ) : (
+        config.categories.map((cat) => {
+          const catLessons = lessonsByCategory.get(cat.id) ?? [];
+          if (catLessons.length === 0) return null;
+          return (
+            <section key={cat.id}>
+              <header className="mb-1.5 flex items-baseline justify-between">
+                <h3 className="text-xs font-semibold uppercase tracking-wide text-slate-600">
+                  {cat.title_vi}
+                </h3>
+                <span className="text-[10px] text-slate-400">
+                  {cat.title_en} · {catLessons.length} bài
+                </span>
+              </header>
+              <ol className="space-y-1.5">
+                {catLessons.map((lesson) => (
+                  <li key={lesson.id}>
+                    <LessonTile lesson={lesson} colors={colors} />
+                  </li>
+                ))}
+              </ol>
+            </section>
+          );
+        })
+      )}
     </div>
   );
 }
