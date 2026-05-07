@@ -513,25 +513,31 @@ function extractAsianLang(
 
 // ─── Load lessons modules ─────────────────────────────────────────────────
 
+// PR #318 split each language's lessons.ts into per-level files:
+//   src/languages/{lang}/lessons-{a1|a2|b1|b2|c1|c2}.ts
+// The original lessons.ts was reduced to types + a lazy registry whose
+// async loaders are not callable from a Node script that bypasses Vite's
+// chunk graph. So we read the per-level files directly and concat.
 async function loadLessons(lang: LangKey): Promise<Lesson[]> {
-  const path = resolve(`src/languages/${lang}/lessons.ts`);
-  const url = pathToFileURL(path).href;
-  const mod = await import(url);
-  // Conventions vary; gather all exports and concat the lesson arrays.
-  const candidates = [
-    mod.lessons,
-    mod.LESSONS,
-    mod.default,
-    mod[`${lang.toUpperCase()}_LESSONS`],
-    mod[`FRENCH_LESSONS`],
-    mod[`GERMAN_LESSONS`],
-    mod[`JAPANESE_LESSONS`],
-    mod[`KOREAN_LESSONS`],
-    mod[`CHINESE_LESSONS`],
-  ];
-  const arr = candidates.find((c) => Array.isArray(c)) as Lesson[] | undefined;
-  if (!arr) throw new Error(`No lessons array found in ${lang}/lessons.ts`);
-  return arr;
+  const all: Lesson[] = [];
+  for (const level of LEVELS_TO_BUILD) {
+    const path = resolve(
+      `src/languages/${lang}/lessons-${level.toLowerCase()}.ts`,
+    );
+    const url = pathToFileURL(path).href;
+    const mod = await import(url);
+    const candidates = [mod.lessons, mod.default];
+    const arr = candidates.find((c) => Array.isArray(c)) as
+      | Lesson[]
+      | undefined;
+    if (!arr) {
+      throw new Error(
+        `No lessons array found in ${lang}/lessons-${level.toLowerCase()}.ts`,
+      );
+    }
+    all.push(...arr);
+  }
+  return all;
 }
 
 // ─── Main ─────────────────────────────────────────────────────────────────
