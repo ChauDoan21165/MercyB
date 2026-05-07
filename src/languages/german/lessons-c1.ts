@@ -3419,6 +3419,3386 @@ export const lessons: GermanLesson[] = [
         ]
       }
     ]
+  },
+  {
+    "id": "lgehalt_bonus_verhandlung",
+    "level": "C1",
+    "category": "fluency",
+    "title_vi": "Đàm phán lương và thưởng — Gehalts- und Bonusverhandlung",
+    "title_en": "Salary and bonus negotiation in a German workplace",
+    "sentences": [
+      {
+        "en": "Vor dem Hintergrund der erweiterten Verantwortung im laufenden Geschäftsjahr halte ich eine Anpassung des Grundgehalts für angemessen.",
+        "vi": "Trên cơ sở phạm vi trách nhiệm được mở rộng trong năm tài chính hiện tại, tôi cho rằng việc điều chỉnh mức lương cơ bản là phù hợp.",
+        "pronunciation_focus": [
+          "Hintergrund → HIN-tê-grunt",
+          "Geschäftsjahr → gê-SHEFTS-ja",
+          "angemessen → AN-gê-mê-sần"
+        ]
+      },
+      {
+        "en": "Ich hätte gerne über eine Erhöhung um acht Prozent gesprochen, gemessen an vergleichbaren Positionen im Markt.",
+        "vi": "Tôi muốn trao đổi về mức tăng tám phần trăm, tham chiếu các vị trí tương đương trên thị trường.",
+        "pronunciation_focus": [
+          "Erhöhung → e-HƠ-ung",
+          "Prozent → prô-TSENT",
+          "vergleichbar → fe-GLAIKH-ba"
+        ]
+      },
+      {
+        "en": "Hinsichtlich des variablen Anteils schlage ich vor, die Zielvereinbarung an konkrete, messbare Ergebnisse zu koppeln.",
+        "vi": "Về phần thưởng biến thiên, tôi đề xuất gắn thỏa thuận mục tiêu với các kết quả cụ thể, có thể đo được.",
+        "pronunciation_focus": [
+          "hinsichtlich → HIN-zikh-likh",
+          "Zielvereinbarung → TSIL-fe-ain-ba-rung",
+          "messbar → MÊS-ba"
+        ]
+      },
+      {
+        "en": "Sollten die heute vorliegenden Zahlen für eine sofortige Anpassung nicht ausreichen, wäre eine Zwischenüberprüfung in sechs Monaten denkbar.",
+        "vi": "Nếu các số liệu hiện có hôm nay chưa đủ cho một sự điều chỉnh ngay, một đợt rà soát giữa kỳ sau sáu tháng có thể được tính đến.",
+        "pronunciation_focus": [
+          "Sollten → ZÔL-tần",
+          "vorliegend → FÔ-li-gần",
+          "Zwischenüberprüfung → TSVI-shần-uy-bờ-pruy-fung"
+        ]
+      },
+      {
+        "en": "Mir geht es nicht ausschließlich um die Zahl, sondern um eine Vereinbarung, die Leistung und Anerkennung in ein klares Verhältnis setzt.",
+        "vi": "Với tôi điều quan trọng không chỉ là con số, mà là một thỏa thuận đặt thành quả và sự ghi nhận vào quan hệ rõ ràng.",
+        "pronunciation_focus": [
+          "ausschließlich → AOS-shli-slikh",
+          "Anerkennung → AN-e-kên-nung",
+          "Verhältnis → fe-HEL-tnis"
+        ]
+      }
+    ],
+    "cultural_notes_vi": "Đàm phán lương trong môi trường công ty Đức tuân theo quy ước rất khác Việt Nam. (1) ZAHLEN-EINSTIEG: người Đức expect bạn đưa ra một con số cụ thể (Wunsch-Gehalt) trong vòng 5-10 phút đầu, kèm Begründung. KHÔNG vòng vo, KHÔNG đợi sếp đưa ra số trước. Câu chuẩn: 'Ich hätte gerne über eine Erhöhung um X Prozent gesprochen' — Konjunktiv II mềm hóa nhưng vẫn rõ con số. (2) MARKTREFERENZ: Begründung mạnh nhất là so với 'vergleichbare Positionen im Markt' — chuẩn bị Gehaltsspiegel của Stepstone, Kununu, Glassdoor, hoặc Tarifvertrag (nếu có) trước khi vào phòng. Người Đức đánh giá cao argument basiert auf data, không persönliche Bedürfnisse ('Ich brauche das, weil meine Miete steigt' = unprofessional). (3) FIX vs VARIABEL: lương Đức thường gồm Grundgehalt + variabler Anteil (5-30%). Đàm phán cả hai, không chỉ Grundgehalt. Variabel được gắn với Zielvereinbarung — yêu cầu Ziele 'konkret, messbar, erreichbar'.\n\nKhác Việt Nam: ở VN, nhiều khi sếp 'ban' tăng lương theo cảm tính thâm niên / quan hệ. Ở Đức, đàm phán là RIGHT của Mitarbeiter, được expect, không bị xem là 'không biết điều'. Im lặng = không đòi = không được tăng.\n\nMột chi tiết quan trọng: KHÔNG nói 'ich brauche mehr Geld' (tôi cần thêm tiền) — đó là persönliches Bedürfnis. Nói 'ich halte X für angemessen, gemessen an Y' (tôi cho X là phù hợp, so với Y) — đó là argument professional.\n\nTarifverträge: nếu công ty có Tarifvertrag (IG Metall, ver.di, etc.), Grundgehalt thường nằm trong Entgeltgruppe cố định — đàm phán xảy ra ở variabler Anteil + Eingruppierung. Nếu công ty AT (außertariflich), Grundgehalt frei verhandelbar.\n\nVề Bonus-Verhandlung: variabler Anteil Đức thường có công thức: Erreichungsgrad × Zielprämie. Đòi hỏi clarity:\n- Welche Ziele? (qualitativ vs quantitativ)\n- Wie wird gemessen? (KPI cụ thể)\n- Wann ausgezahlt? (Q1 nach Geschäftsjahr-Ende thường)\n- Was bei Teil-Erreichung? (linear, gestuft, oder all-or-nothing)\n\nVề thời điểm: Gehaltsverhandlung Đức thường vào Mitarbeitergespräch (annual review) — Q4 oder Q1. Mid-year requests cần lý do mạnh (promotion, neue Verantwortung). Đàm phán beim Berufseinstieg là moment quan trọng nhất — sau đó tăng theo % anchored to Anfangsgehalt.\n\nVề Aufschub: nếu sếp nói 'aktuell nicht möglich' — không từ bỏ. Đề xuất Zwischenüberprüfung trong 6 Monate, hoặc alternative Komponenten (Weiterbildungsbudget, Home-Office-Tage, Dienstwagen-Upgrade).",
+    "tip_advice_vi": "Trước Gehaltsgespräch (4 tuần trước):\n1. SAMMELN: Erfolge documentation — Projekte abgeschlossen, Umsatz beigetragen, Verantwortung erweitert. Konkrete Zahlen, nicht Gefühle.\n2. RECHERCHIEREN: Stepstone Gehaltsreport für Ihre Position + Region + Branche. Note 25th-Percentile, Median, 75th-Percentile.\n3. ZIEL DEFINIEREN: Wunsch-Zahl (75th percentile), Walk-away-Zahl (median), Mid-point cho Verhandlung.\n4. ALTERNATIVES: nếu Geld nicht möglich — Weiterbildung budget? Home-Office? Sabbatical? Dienstwagen?\n\nIm Gespräch (Struktur 4 Schritte):\n1. ANERKENNUNG: 'Vielen Dank, dass Sie sich heute Zeit nehmen' (1 Satz, không hơn)\n2. LEISTUNGSBILANZ: 3-4 cụ thể Erfolge (90 Sekunden tổng cộng)\n3. ZAHL: 'Vor dem Hintergrund der erweiterten Verantwortung halte ich eine Anpassung um X Prozent für angemessen, gemessen an Y'\n4. RAUM für Antwort: schweigen Sie sau khi đặt câu, KHÔNG nervous talk\n\nNgôn ngữ Gehaltsverhandlung formal:\n- 'Vor dem Hintergrund von X halte ich Y für angemessen' (trên nền X tôi cho Y phù hợp)\n- 'Ich hätte gerne über eine Erhöhung um X Prozent gesprochen' (Konjunktiv II soft request)\n- 'Gemessen an vergleichbaren Positionen im Markt' (so với positions tương đương trên thị trường)\n- 'Hinsichtlich des variablen Anteils schlage ich vor...' (về variabler Anteil tôi đề xuất)\n- 'Sollten X für Y nicht ausreichen, wäre Z denkbar' (nếu X không đủ cho Y, Z có thể tính đến)\n- 'Mir geht es nicht ausschließlich um die Zahl, sondern um...' (với tôi không chỉ con số, mà...)\n\nKhi sếp nói 'Budget ist eng':\n- 'Ich verstehe die Budget-Lage. Wäre alternativ ein Weiterbildungsbudget oder zusätzliche Home-Office-Tage denkbar?' (tôi hiểu tình hình. Có thể thay bằng Weiterbildung hoặc Home-Office không?)\n- 'Könnten wir eine Zwischenüberprüfung in sechs Monaten vereinbaren?' (mình thỏa thuận rà soát giữa kỳ sau 6 tháng được không?)\n\nKhi sếp đưa low offer:\n- 'Das liegt unter meiner Vorstellung. Ich hatte X im Kopf — ist hier noch Bewegung?' (thấp hơn kỳ vọng. Tôi nghĩ đến X — còn dư địa không?)\n- KHÔNG: 'Das ist zu wenig' (zu konfrontativ). KHÔNG: 'Das geht klar' khi nó không klar.\n\nKhi cần Bedenkzeit:\n- 'Ich möchte das Angebot in Ruhe prüfen — könnten wir uns Anfang nächster Woche zurückmelden?' (tôi muốn xem xét kỹ — đầu tuần sau gặp lại được không?)\n\nKhi rejected complete:\n- 'Ich nehme das zur Kenntnis. Können wir die Kriterien festhalten, die für eine Anpassung im nächsten Jahr erfüllt sein müssten?' (tôi ghi nhận. Mình ghi lại tiêu chí cần đạt cho năm sau được không?)\n\nMẹo cuối: nói NGHIÊN CỨU — không Schauspielerei. Người Đức nhận ra sofort khi bạn đang ‚acting confident'. Authentische Vorbereitung > falsche Selbstsicherheit. Wenn Sie nervous sind, sagen Sie es einmal: 'Ich gestehe, das Gespräch fällt mir schwer — gleichwohl ist es mir wichtig.' Diese Geste oft de-eskaliert.",
+    "vocabulary": [
+      {
+        "word": "die Gehaltsverhandlung",
+        "en": "salary negotiation",
+        "vi": "đàm phán lương",
+        "pos": "noun (f)",
+        "pronunciation_vi": "đi gê-HALTS-fe-han-đlung"
+      },
+      {
+        "word": "die Anpassung (des Gehalts)",
+        "en": "adjustment (of salary)",
+        "vi": "việc điều chỉnh (lương)",
+        "pos": "noun (f)",
+        "pronunciation_vi": "đi AN-pa-sung"
+      },
+      {
+        "word": "das Grundgehalt / der variable Anteil",
+        "en": "base salary / variable component",
+        "vi": "lương cơ bản / phần biến thiên",
+        "pos": "noun (n) / noun (m)",
+        "pronunciation_vi": "đát GRUNT-gê-halt / đe va-RI-a-blê AN-tail"
+      },
+      {
+        "word": "die Zielvereinbarung",
+        "en": "performance agreement",
+        "vi": "thỏa thuận mục tiêu",
+        "pos": "noun (f)",
+        "pronunciation_vi": "đi TSIL-fe-ain-ba-rung"
+      },
+      {
+        "word": "der Erreichungsgrad",
+        "en": "level of target achievement",
+        "vi": "mức độ đạt mục tiêu",
+        "pos": "noun (m)",
+        "pronunciation_vi": "đe e-RAI-khungs-grat"
+      },
+      {
+        "word": "vergleichbar (mit)",
+        "en": "comparable (with)",
+        "vi": "tương đương (với)",
+        "pos": "adjective",
+        "pronunciation_vi": "fe-GLAIKH-ba"
+      },
+      {
+        "word": "der Tarifvertrag",
+        "en": "collective bargaining agreement",
+        "vi": "thỏa ước tập thể",
+        "pos": "noun (m)",
+        "pronunciation_vi": "đe ta-RIF-fe-trak"
+      },
+      {
+        "word": "außertariflich (AT)",
+        "en": "outside collective agreement (AT)",
+        "vi": "ngoài thỏa ước tập thể",
+        "pos": "adjective",
+        "pronunciation_vi": "AOS-sờ-ta-rif-likh"
+      },
+      {
+        "word": "die Zwischenüberprüfung",
+        "en": "interim review",
+        "vi": "rà soát giữa kỳ",
+        "pos": "noun (f)",
+        "pronunciation_vi": "đi TSVI-shần-uy-bờ-pruy-fung"
+      },
+      {
+        "word": "angemessen",
+        "en": "appropriate, reasonable",
+        "vi": "phù hợp, hợp lý",
+        "pos": "adjective",
+        "pronunciation_vi": "AN-gê-mê-sần"
+      }
+    ],
+    "dialogue": [
+      {
+        "speaker": "Linh",
+        "text": "Vielen Dank, dass Sie sich heute Zeit nehmen. Ich möchte über eine Anpassung des Grundgehalts sprechen — vor dem Hintergrund der erweiterten Verantwortung im laufenden Jahr.",
+        "vi": "Cám ơn anh đã dành thời gian hôm nay. Tôi muốn trao đổi về việc điều chỉnh mức lương cơ bản — trên cơ sở phạm vi trách nhiệm được mở rộng trong năm nay."
+      },
+      {
+        "speaker": "HR-Leiter Berger",
+        "text": "Gerne. Welche Größenordnung schwebt Ihnen vor?",
+        "vi": "Sẵn lòng. Cô nghĩ đến mức nào?"
+      },
+      {
+        "speaker": "Linh",
+        "text": "Acht Prozent — gemessen an vergleichbaren Positionen im Markt, die ich anhand des Stepstone-Reports geprüft habe.",
+        "vi": "Tám phần trăm — tham chiếu các vị trí tương đương trên thị trường, tôi đã kiểm tra qua báo cáo Stepstone."
+      },
+      {
+        "speaker": "HR-Leiter Berger",
+        "text": "Acht ist im oberen Bereich. Lassen Sie uns die Zahlen gemeinsam durchgehen.",
+        "vi": "Tám phần trăm nằm ở phần trên. Mình cùng đi qua các số liệu."
+      }
+    ],
+    "dialogue_long": [
+      {
+        "speaker": "HR-Leiter Berger",
+        "text": "Frau Nguyễn, schön Sie zu sehen. Wie geht es Ihnen?",
+        "vi": "Cô Nguyễn, vui được gặp cô. Cô khỏe chứ?"
+      },
+      {
+        "speaker": "Linh",
+        "text": "Vielen Dank, gut. Vielen Dank, dass Sie sich heute Zeit nehmen.",
+        "vi": "Cảm ơn anh, tốt. Cám ơn anh đã dành thời gian hôm nay."
+      },
+      {
+        "speaker": "HR-Leiter Berger",
+        "text": "Worum geht es Ihnen heute genau?",
+        "vi": "Hôm nay cô muốn trao đổi cụ thể điều gì?"
+      },
+      {
+        "speaker": "Linh",
+        "text": "Ich möchte über eine Anpassung des Grundgehalts sprechen. Vor dem Hintergrund der erweiterten Verantwortung im laufenden Geschäftsjahr halte ich eine Anpassung für angemessen.",
+        "vi": "Tôi muốn trao đổi về việc điều chỉnh mức lương cơ bản. Trên cơ sở phạm vi trách nhiệm được mở rộng trong năm tài chính hiện tại, tôi cho rằng điều chỉnh là phù hợp."
+      },
+      {
+        "speaker": "HR-Leiter Berger",
+        "text": "Welche Größenordnung schwebt Ihnen vor?",
+        "vi": "Cô nghĩ đến mức nào?"
+      },
+      {
+        "speaker": "Linh",
+        "text": "Acht Prozent — gemessen an vergleichbaren Positionen im Markt. Ich habe den Stepstone-Gehaltsreport für Senior-Engineering-Rollen in München durchgegangen, und mein aktuelles Grundgehalt liegt ungefähr im Median; mein Beitrag im laufenden Jahr rechtfertigt aus meiner Sicht eine Verschiebung Richtung 75. Perzentil.",
+        "vi": "Tám phần trăm — tham chiếu các vị trí tương đương trên thị trường. Tôi đã đi qua báo cáo lương Stepstone cho vai trò Senior-Engineering ở Munich, và mức lương hiện tại của tôi nằm khoảng trung vị; theo tôi, đóng góp của tôi trong năm nay biện minh cho dịch chuyển hướng tới phân vị 75."
+      },
+      {
+        "speaker": "HR-Leiter Berger",
+        "text": "Acht ist im oberen Bereich. Können Sie die erweiterte Verantwortung konkretisieren?",
+        "vi": "Tám phần trăm nằm ở phần trên. Cô có thể nói cụ thể về phạm vi trách nhiệm được mở rộng?"
+      },
+      {
+        "speaker": "Linh",
+        "text": "Drei Punkte. Erstens: ich habe das Bauer-Projekt seit Mai allein verantwortet, mit einem Volumen von etwa zwei Millionen. Zweitens: ich führe seit Juli das fünfköpfige Frontend-Team — eine Team-Lead-Funktion, die im Vertrag nicht vorgesehen war. Drittens: ich habe die fachliche Schulung von zwei Junior-Hires übernommen.",
+        "vi": "Ba điểm. Thứ nhất: tôi đã chịu trách nhiệm dự án Bauer một mình từ tháng Năm, với quy mô khoảng hai triệu. Thứ hai: từ tháng Bảy tôi dẫn dắt nhóm Frontend gồm năm người — chức năng Team-Lead không có trong hợp đồng. Thứ ba: tôi đã đảm nhận đào tạo chuyên môn hai nhân viên junior."
+      },
+      {
+        "speaker": "HR-Leiter Berger",
+        "text": "Das ist substanziell. Wie sieht es mit dem variablen Anteil aus — Sie sind aktuell bei zwölf Prozent Zielprämie?",
+        "vi": "Điều đó có chất. Còn variabler Anteil thì sao — hiện tại cô ở mức Zielprämie 12 phần trăm đúng không?"
+      },
+      {
+        "speaker": "Linh",
+        "text": "Genau. Hinsichtlich des variablen Anteils schlage ich vor, die Zielvereinbarung an konkrete, messbare Ergebnisse zu koppeln — etwa Projekt-Margen, Team-Performance-KPIs. Eine Erhöhung der Zielprämie auf achtzehn Prozent wäre meines Erachtens marktkonform für Team-Lead-Funktionen.",
+        "vi": "Chính xác. Về variabler Anteil, tôi đề xuất gắn thỏa thuận mục tiêu với các kết quả cụ thể, có thể đo được — ví dụ Margin dự án, KPI hiệu suất nhóm. Theo tôi, tăng Zielprämie lên 18 phần trăm phù hợp thị trường cho chức năng Team-Lead."
+      },
+      {
+        "speaker": "HR-Leiter Berger",
+        "text": "Acht Prozent fix plus eine Anhebung der Zielprämie auf achtzehn Prozent — das ist ein erheblicher Sprung. Lassen Sie mich offen sein: in der aktuellen Budget-Lage wären sechs Prozent fix realistisch, mit Zielprämie auf fünfzehn.",
+        "vi": "Tám phần trăm fix cộng nâng Zielprämie lên 18 — đó là bước nhảy đáng kể. Cho tôi nói thẳng: trong tình hình ngân sách hiện tại, sáu phần trăm fix là thực tế, với Zielprämie lên 15."
+      },
+      {
+        "speaker": "Linh",
+        "text": "Das verstehe ich. Sollten die heute vorliegenden Zahlen für eine sofortige Anpassung auf acht Prozent nicht ausreichen, wäre eine Zwischenüberprüfung im Q2 denkbar — gekoppelt an klar definierte Meilensteine.",
+        "vi": "Tôi hiểu. Nếu các số liệu hiện có hôm nay chưa đủ cho một sự điều chỉnh ngay 8 phần trăm, một đợt rà soát giữa kỳ vào Q2 có thể được tính đến — gắn với các cột mốc được định nghĩa rõ."
+      },
+      {
+        "speaker": "HR-Leiter Berger",
+        "text": "Eine Zwischenüberprüfung halte ich für realistisch. Welche Meilensteine schweben Ihnen vor?",
+        "vi": "Rà soát giữa kỳ tôi thấy thực tế. Cô nghĩ đến cột mốc nào?"
+      },
+      {
+        "speaker": "Linh",
+        "text": "Erstens: Bauer-Projekt-Abschluss innerhalb der vereinbarten Marge. Zweitens: vollständige Übernahme der Team-Lead-Verantwortung im Vertrag, formal ausgewiesen. Drittens: dokumentierte Schulungsergebnisse der Junior-Hires.",
+        "vi": "Thứ nhất: hoàn thành dự án Bauer trong Margin đã thỏa thuận. Thứ hai: tiếp nhận hoàn toàn trách nhiệm Team-Lead trong hợp đồng, được ghi nhận chính thức. Thứ ba: kết quả đào tạo nhân viên junior được tư liệu hóa."
+      },
+      {
+        "speaker": "HR-Leiter Berger",
+        "text": "Schreiben Sie mir das in einem kurzen Memo zusammen, ich besorge die Freigabe und wir setzen das im April fort.",
+        "vi": "Cô tổng hợp ngắn cho tôi qua memo, tôi sẽ xin phê duyệt và mình tiếp tục vào tháng Tư."
+      },
+      {
+        "speaker": "Linh",
+        "text": "Wird gemacht. Mir geht es nicht ausschließlich um die Zahl, sondern um eine Vereinbarung, die Leistung und Anerkennung in ein klares Verhältnis setzt — vielen Dank für die offene Antwort.",
+        "vi": "Tôi sẽ làm. Với tôi điều quan trọng không chỉ là con số, mà là một thỏa thuận đặt thành quả và sự ghi nhận vào quan hệ rõ ràng — cám ơn anh đã trả lời thẳng."
+      }
+    ],
+    "roleplay_prompts": [
+      "Bạn là Senior Engineer ở München với 5 năm kinh nghiệm. Yêu cầu Gehaltsanpassung +8% trong Mitarbeitergespräch năm. Mở đầu formal: ‚Vor dem Hintergrund der erweiterten Verantwortung halte ich X für angemessen' + ba Erfolge cụ thể.",
+      "HR-Leiter đề xuất 6% thay vì 8%. Đáp formal: chấp nhận hiện tại không đủ + đề nghị Zwischenüberprüfung im Q2 mit konkreten Meilensteinen. KHÔNG ‚das ist zu wenig' (zu konfrontativ).",
+      "Khi rejected complete (‚Budget zu eng'): đề nghị alternative Komponenten (Weiterbildungsbudget, Home-Office, Dienstwagen) — diễn đạt ‚Wäre alternativ X denkbar?' formal."
+    ],
+    "register_notes": "Gehaltsverhandlung C1: ‚Sie' tuyệt đối với HR-Leiter / Vorgesetzte. Konjunktiv II cho soft request: ‚Ich hätte gerne über X gesprochen' / ‚wäre Y denkbar'. Funktionsverbgefüge: ‚in ein klares Verhältnis setzen' (đặt vào quan hệ rõ), ‚zur Kenntnis nehmen' (ghi nhận), ‚an X koppeln' (gắn với X). Argument-Struktur: ‚Vor dem Hintergrund von X halte ich Y für angemessen' — Kausale Begründung formal. Marktreferenz bắt buộc: ‚gemessen an vergleichbaren Positionen im Markt'. KHÔNG ‚ich brauche mehr' (persönliches Bedürfnis), KHÔNG ‚alle anderen verdienen mehr' (peer-Vergleich, schwach). Khi sếp gegenangebot: KHÔNG sofort accept; nói ‚Ich möchte das in Ruhe prüfen — Anfang nächster Woche melde ich mich zurück' để có Bedenkzeit. Khi rejected: ‚Können wir die Kriterien festhalten, die für eine Anpassung im nächsten Jahr erfüllt sein müssten?' — wandelt Niederlage in roadmap.",
+    "idiom_glosses": [
+      {
+        "idiom": "die Karten auf den Tisch legen",
+        "literal": "đặt bài lên bàn",
+        "meaning": "minh bạch hóa, công khai dữ liệu (standardsprachlich)",
+        "example": "Lassen Sie uns die Karten auf den Tisch legen — hier ist mein Stepstone-Vergleich, und hier ist meine Leistungsbilanz."
+      },
+      {
+        "idiom": "in trockenen Tüchern sein",
+        "literal": "ở trong khăn khô",
+        "meaning": "đã được giải quyết chắc chắn, ‚in the bag' (standardsprachlich)",
+        "example": "Sobald die Freigabe vom Bereichsleiter da ist, ist die Anpassung in trockenen Tüchern."
+      },
+      {
+        "idiom": "Spielraum haben",
+        "literal": "có không gian chơi",
+        "meaning": "có dư địa thương lượng (standardsprachlich)",
+        "example": "Ich gehe davon aus, dass beim variablen Anteil noch Spielraum besteht."
+      },
+      {
+        "idiom": "den Ball flach halten",
+        "literal": "giữ quả bóng thấp (gốc bóng đá)",
+        "meaning": "giữ tone bình tĩnh, không leo thang (standardsprachlich)",
+        "example": "Auch wenn ich enttäuscht bin, halte ich den Ball flach — das nächste Gespräch ist wichtiger als heute."
+      }
+    ],
+    "exercises": [
+      {
+        "type": "fill_blank",
+        "instruction_vi": "Điền cấu trúc Gehaltsverhandlung C1:",
+        "pronunciation_focus": [],
+        "items": [
+          {
+            "prompt": "Vor dem ___ der erweiterten Verantwortung halte ich eine Anpassung für angemessen.",
+            "answer": "Hintergrund"
+          },
+          {
+            "prompt": "Ich hätte gerne über eine Erhöhung um acht Prozent ___, gemessen an vergleichbaren Positionen.",
+            "answer": "gesprochen"
+          },
+          {
+            "prompt": "Hinsichtlich des variablen Anteils schlage ich vor, die ___ an konkrete Ergebnisse zu koppeln.",
+            "answer": "Zielvereinbarung"
+          },
+          {
+            "prompt": "Mir geht es nicht ausschließlich um die Zahl, sondern um eine ___, die Leistung und Anerkennung in ein klares Verhältnis setzt.",
+            "answer": "Vereinbarung"
+          }
+        ]
+      },
+      {
+        "type": "matching",
+        "instruction_vi": "Nối thuật ngữ Gehaltsverhandlung với chức năng:",
+        "pronunciation_focus": [],
+        "items": [
+          {
+            "prompt": "Tarifvertrag",
+            "answer": "Thỏa ước tập thể (lương trong Entgeltgruppe cố định)"
+          },
+          {
+            "prompt": "außertariflich (AT)",
+            "answer": "Ngoài Tarif — Grundgehalt frei verhandelbar"
+          },
+          {
+            "prompt": "Zielvereinbarung",
+            "answer": "Thỏa thuận mục tiêu cho variabler Anteil"
+          },
+          {
+            "prompt": "Zwischenüberprüfung",
+            "answer": "Rà soát giữa kỳ — alternative khi sofortige Anpassung không khả thi"
+          }
+        ]
+      },
+      {
+        "type": "translation",
+        "instruction_vi": "Dịch sang tiếng Đức formal C1 (Konjunktiv II khi cần):",
+        "pronunciation_focus": ["salary negotiation"],
+        "items": [
+          {
+            "prompt": "Trên cơ sở phạm vi trách nhiệm được mở rộng, tôi cho rằng việc điều chỉnh mức lương cơ bản là phù hợp.",
+            "answer": "Vor dem Hintergrund der erweiterten Verantwortung halte ich eine Anpassung des Grundgehalts für angemessen."
+          },
+          {
+            "prompt": "Tôi muốn trao đổi về mức tăng tám phần trăm, tham chiếu các vị trí tương đương trên thị trường.",
+            "answer": "Ich hätte gerne über eine Erhöhung um acht Prozent gesprochen, gemessen an vergleichbaren Positionen im Markt."
+          },
+          {
+            "prompt": "Nếu các số liệu hôm nay chưa đủ cho điều chỉnh ngay, một đợt rà soát giữa kỳ sau sáu tháng có thể được tính đến.",
+            "answer": "Sollten die heute vorliegenden Zahlen für eine sofortige Anpassung nicht ausreichen, wäre eine Zwischenüberprüfung in sechs Monaten denkbar."
+          },
+          {
+            "prompt": "Với tôi điều quan trọng không chỉ là con số, mà là một thỏa thuận đặt thành quả và sự ghi nhận vào quan hệ rõ ràng.",
+            "answer": "Mir geht es nicht ausschließlich um die Zahl, sondern um eine Vereinbarung, die Leistung und Anerkennung in ein klares Verhältnis setzt."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lvertragsklauseln_zurueckweisen",
+    "level": "C1",
+    "category": "fluency",
+    "title_vi": "Phản đối điều khoản hợp đồng — Vertragsklauseln zurückweisen",
+    "title_en": "Pushing back on contract clauses in a German employment contract",
+    "sentences": [
+      {
+        "en": "Bevor ich den Vertrag unterzeichne, möchte ich auf drei Klauseln zurückkommen, die mir in der vorliegenden Form nicht tragfähig erscheinen.",
+        "vi": "Trước khi ký hợp đồng, tôi muốn quay lại ba điều khoản mà ở dạng hiện tại đối với tôi không vững.",
+        "pronunciation_focus": [
+          "unterzeichnen → UN-tê-tsai-khê-nần",
+          "Klauseln → KLAO-zệ-l-n",
+          "tragfähig → TRAK-fê-ikh"
+        ]
+      },
+      {
+        "en": "Das Wettbewerbsverbot in seiner aktuellen Reichweite — vierundzwanzig Monate, gesamteuropäisch — ist meines Erachtens unverhältnismäßig.",
+        "vi": "Điều khoản cấm cạnh tranh ở phạm vi hiện tại — hai mươi bốn tháng, toàn châu Âu — theo tôi là không tương xứng.",
+        "pronunciation_focus": [
+          "Wettbewerbsverbot → VÊT-bê-vêps-fe-bôt",
+          "Reichweite → RAIKH-vai-tê",
+          "unverhältnismäßig → un-fe-HEL-tnis-mê-sikh"
+        ]
+      },
+      {
+        "en": "Bezüglich der Vertraulichkeitsklausel würde ich anregen, den Anwendungsbereich auf geschäftskritische Informationen zu beschränken.",
+        "vi": "Về điều khoản bảo mật, tôi xin đề nghị giới hạn phạm vi áp dụng vào các thông tin trọng yếu của hoạt động kinh doanh.",
+        "pronunciation_focus": [
+          "Bezüglich → bê-TSUYK-likh",
+          "Vertraulichkeitsklausel → fe-TRAU-likh-kaits-klao-zệl",
+          "Anwendungsbereich → AN-ven-đungs-bê-raikh"
+        ]
+      },
+      {
+        "en": "Hinsichtlich der Überstundenregelung schlage ich eine Klarstellung vor: pauschale Abgeltung bis maximal zwanzig Stunden monatlich, alles darüber gesondert vergütet.",
+        "vi": "Về quy định làm thêm giờ, tôi đề xuất làm rõ: bù khoán tối đa hai mươi giờ mỗi tháng, mọi giờ vượt được trả riêng.",
+        "pronunciation_focus": [
+          "Überstundenregelung → uy-bờ-SHTUN-đần-rê-gê-lung",
+          "pauschal → pao-SHAL",
+          "vergütet → fe-GUY-tệt"
+        ]
+      },
+      {
+        "en": "Diese Anpassungen sind aus meiner Sicht nicht verhandlungsschwer, sondern Ausdruck der Symmetrie, die ein langfristiges Arbeitsverhältnis erfordert.",
+        "vi": "Theo tôi, những điều chỉnh này không nặng về thương lượng, mà là biểu hiện của tính đối xứng mà một quan hệ lao động dài hạn đòi hỏi.",
+        "pronunciation_focus": [
+          "Anpassungen → AN-pa-sung-gần",
+          "Symmetrie → zuy-mê-TRI",
+          "Arbeitsverhältnis → AR-baits-fe-hel-tnis"
+        ]
+      }
+    ],
+    "cultural_notes_vi": "Đàm phán Arbeitsvertrag (hợp đồng lao động) ở Đức trước khi ký là CHUẨN, không phải ngoại lệ. Người Đức expect Bewerber đọc kỹ + đặt câu hỏi. Im lặng ký = bị xem là entweder thiếu chuyên nghiệp hoặc không hiểu hợp đồng. (1) WETTBEWERBSVERBOT (nachvertragliches): điều khoản cấm cạnh tranh sau khi rời công ty. Luật Đức: chỉ có hiệu lực nếu (a) viết rõ, (b) tối đa 24 tháng, (c) công ty trả Karenzentschädigung tối thiểu 50% Vergütung. Wettbewerbsverbot ohne Karenzentschädigung = nichtig. Nhiều Vorlage có Wettbewerbsverbot 24 tháng EU-weit là quá rộng cho hầu hết Stellen — đề nghị giới hạn về (a) Branche + (b) Region + (c) Zeit. (2) VERTRAULICHKEITSKLAUSEL: thường rất rộng — bao gồm 'alle Informationen aus dem Arbeitsverhältnis'. Đề nghị giới hạn: 'geschäftskritische Informationen' với Definition + Ausnahmen (öffentlich bekannte Information, eigene Erfindungen pre-employment). (3) ÜBERSTUNDENABGELTUNG: Vorlage thường nói 'Überstunden sind mit dem Gehalt abgegolten' — ohne Limit. Diese Klausel ist arbeitsrechtlich problematisch wenn unbegrenzt. Đề nghị Klarstellung: pauschale Abgeltung bis X Stunden/Monat, darüber gesondert vergütet.\n\nKhác Việt Nam: ở VN, hợp đồng lao động thường được xem là Standardformular, ít đàm phán. Ở Đức, đàm phán hợp đồng pre-signing là QUYỀN của Arbeitnehmer. Sau khi ký, ändern hợp đồng cần Einverständnis của cả hai bên — schwerer.\n\nMột chi tiết quan trọng: KHÔNG verhandlen alles auf einmal. Wählen 2-3 wichtigste Klauseln. Wer fünf bis sechs Klauseln in Frage stellt, signalisiert ‚schwierig' — Arbeitgeber kann zurückziehen. Top 3 typische Anpassungen:\n1. Wettbewerbsverbot (Reichweite begrenzen)\n2. Überstundenregelung (Klarstellung mit Limit)\n3. Vertraulichkeitsklausel (Anwendungsbereich präzisieren)\n\nKündigungsfrist: thường gesetzlich (§ 622 BGB) — bốn tuần zum 15. oder Monatsende. Nếu Vertrag nói 'sechs Monate' für Mitarbeiter — đó là đối xứng với Arbeitgeber-Kündigungsfrist? Nếu chỉ Mitarbeiter có sechs Monate aber Arbeitgeber gesetzlich, das ist unverhältnismäßig. Phải đối xứng theo § 622 Abs. 6 BGB.\n\nProbezeit: tối đa sechs Monate ở Đức. Innerhalb der Probezeit: Kündigungsfrist hai tuần (§ 622 Abs. 3 BGB). Kürzere Probezeit (drei Monate) kann ausgehandelt werden.\n\nUrlaub: gesetzlich Mindestens 20 Werktage / 24 Werktage 6-Tage-Woche / 5-Tage-Woche. Marktüblich: 28-30 Werktage. Verhandeln wenn Vorlage chỉ gesetzliches Minimum.\n\nGehaltszusage Mündlich vs Schriftlich: alle Vereinbarungen ZWINGEND schriftlich im Vertrag. Mündliche Zusage des HR-Leiters ist juristisch schwer durchsetzbar.",
+    "tip_advice_vi": "Vor Vertragsverhandlung (1 Woche):\n1. JURIST review (optional, recommended): Anwalt für Arbeitsrecht prüft 1-2 Stunden, kostet 200-400 EUR — billigste Versicherung.\n2. KLAUSELN MARKIEREN: print Vertrag, 3 Farben — grün (OK), gelb (Klärung), rot (ändern erforderlich).\n3. PRIORISIEREN: Top 3 wichtigste Punkte. Andere mündlich erwähnen ohne fordernd.\n4. ALTERNATIVTEXT vorbereiten: nicht nur ‚X muss weg', sondern ‚X könnte ersetzt werden durch Y' — konstruktiv.\n\nIm Verhandlungsgespräch (Struktur):\n1. RAHMEN setzen: ‚Bevor ich unterzeichne, möchte ich auf drei Klauseln zurückkommen, die mir in der vorliegenden Form nicht tragfähig erscheinen.'\n2. KLAUSELN benennen: konkret § + Klauseltext, nicht vage.\n3. BEGRÜNDUNG: warum problematic? — juristisch, marktüblich, persönliches Risiko.\n4. ALTERNATIV-VORSCHLAG: konkreter Text.\n5. SCHLIESSEN: ‚Diese Anpassungen sind aus meiner Sicht nicht verhandlungsschwer.'\n\nNgôn ngữ Vertragsverhandlung formal:\n- ‚Bevor ich unterzeichne, möchte ich auf drei Klauseln zurückkommen' (trước khi ký, tôi muốn quay lại ba điều khoản)\n- ‚In der vorliegenden Form erscheint mir X nicht tragfähig' (ở dạng hiện tại X không vững)\n- ‚X ist meines Erachtens unverhältnismäßig' (theo tôi X không tương xứng)\n- ‚Bezüglich X würde ich anregen, Y' (về X tôi xin đề nghị Y)\n- ‚Hinsichtlich X schlage ich eine Klarstellung vor' (về X tôi đề xuất làm rõ)\n- ‚Diese Anpassungen sind nicht verhandlungsschwer' (những điều chỉnh này không nặng về thương lượng)\n- ‚Ausdruck der Symmetrie, die ein langfristiges Arbeitsverhältnis erfordert' (biểu hiện đối xứng quan hệ lao động dài hạn đòi hỏi)\n\nKhi HR sagt ‚Standardvertrag, nicht änderbar':\n- ‚Ich verstehe — gleichwohl bitte ich um Prüfung. Die genannten Klauseln betreffen meine berufliche Bewegungsfreiheit nach der Kündigung; in der jetzigen Form könnte ich nicht unterzeichnen.' (tôi hiểu — song xin được kiểm tra. Các điều khoản nêu liên quan tự do nghề nghiệp sau Kündigung; ở dạng hiện tại tôi không thể ký.)\n\nKhi HR offers Kompromiss:\n- ‚Das ist ein konstruktiver Vorschlag. Lassen Sie mich das mit meinem Anwalt durchgehen — ich melde mich Ende der Woche zurück.' (gợi ý có tính xây dựng. Cho tôi đi qua với luật sư — cuối tuần tôi báo lại.)\n\nKhi Verhandlung scheitert:\n- ‚Ich nehme zur Kenntnis, dass die Klausel nicht änderbar ist. In der vorliegenden Form sehe ich mich gezwungen, vom Vertrag Abstand zu nehmen — bedauerlich, da die Position fachlich attraktiv ist.' (tôi ghi nhận điều khoản không thể đổi. Ở dạng hiện tại tôi buộc phải rút khỏi hợp đồng — đáng tiếc vì vị trí hấp dẫn về chuyên môn.)\n\nMẹo cuối: KHÔNG ‚threats' (‚wenn nicht, gehe ich'). KHÔNG emotional. Sachlich, konkret, alternativ-orientiert. Wenn Sie wirklich gehen müssen — sagen Sie es einmal, ruhig, am Ende. Drohung wiederholen schwächt Position.",
+    "vocabulary": [
+      {
+        "word": "der Arbeitsvertrag",
+        "en": "employment contract",
+        "vi": "hợp đồng lao động",
+        "pos": "noun (m)",
+        "pronunciation_vi": "đe AR-baits-fe-trak"
+      },
+      {
+        "word": "die Vertragsklausel",
+        "en": "contract clause",
+        "vi": "điều khoản hợp đồng",
+        "pos": "noun (f)",
+        "pronunciation_vi": "đi fe-TRAKS-klao-zệl"
+      },
+      {
+        "word": "das Wettbewerbsverbot (nachvertraglich)",
+        "en": "non-compete clause (post-contractual)",
+        "vi": "điều khoản cấm cạnh tranh (sau hợp đồng)",
+        "pos": "noun (n)",
+        "pronunciation_vi": "đát VÊT-bê-vêps-fe-bôt"
+      },
+      {
+        "word": "die Karenzentschädigung",
+        "en": "compensation during non-compete period",
+        "vi": "bồi thường thời gian cấm cạnh tranh",
+        "pos": "noun (f)",
+        "pronunciation_vi": "đi ka-RENZ-ent-shê-đi-gung"
+      },
+      {
+        "word": "die Vertraulichkeitsklausel",
+        "en": "confidentiality clause",
+        "vi": "điều khoản bảo mật",
+        "pos": "noun (f)",
+        "pronunciation_vi": "đi fe-TRAU-likh-kaits-klao-zệl"
+      },
+      {
+        "word": "die Überstundenabgeltung",
+        "en": "overtime compensation arrangement",
+        "vi": "bù khoán giờ làm thêm",
+        "pos": "noun (f)",
+        "pronunciation_vi": "đi uy-bờ-SHTUN-đần-ap-gel-tung"
+      },
+      {
+        "word": "die Kündigungsfrist",
+        "en": "notice period",
+        "vi": "thời hạn báo trước nghỉ việc",
+        "pos": "noun (f)",
+        "pronunciation_vi": "đi KUYN-đi-gungs-frist"
+      },
+      {
+        "word": "die Probezeit",
+        "en": "probation period",
+        "vi": "thời gian thử việc",
+        "pos": "noun (f)",
+        "pronunciation_vi": "đi PRÔ-bê-tsait"
+      },
+      {
+        "word": "tragfähig",
+        "en": "tenable, sustainable (of a clause)",
+        "vi": "vững (về điều khoản)",
+        "pos": "adjective",
+        "pronunciation_vi": "TRAK-fê-ikh"
+      },
+      {
+        "word": "unverhältnismäßig",
+        "en": "disproportionate",
+        "vi": "không tương xứng",
+        "pos": "adjective",
+        "pronunciation_vi": "un-fe-HEL-tnis-mê-sikh"
+      }
+    ],
+    "dialogue": [
+      {
+        "speaker": "Linh",
+        "text": "Frau Berger, vielen Dank für den Vertragsentwurf. Bevor ich unterzeichne, möchte ich auf drei Klauseln zurückkommen.",
+        "vi": "Cô Berger, cám ơn cô về bản dự thảo hợp đồng. Trước khi ký, tôi muốn quay lại ba điều khoản."
+      },
+      {
+        "speaker": "HR-Berger",
+        "text": "Gerne. Welche Klauseln meinen Sie?",
+        "vi": "Sẵn lòng. Cô nghĩ đến điều khoản nào?"
+      },
+      {
+        "speaker": "Linh",
+        "text": "Das Wettbewerbsverbot in § 12, die Vertraulichkeitsklausel in § 14, und die Überstundenregelung in § 8 — alle drei erscheinen mir in der vorliegenden Form unverhältnismäßig.",
+        "vi": "Điều khoản cấm cạnh tranh § 12, điều khoản bảo mật § 14, và quy định làm thêm giờ § 8 — cả ba ở dạng hiện tại với tôi đều không tương xứng."
+      },
+      {
+        "speaker": "HR-Berger",
+        "text": "Das ist viel auf einmal. Lassen Sie uns mit dem Wettbewerbsverbot beginnen.",
+        "vi": "Đó là nhiều cùng lúc. Mình bắt đầu với điều khoản cấm cạnh tranh."
+      }
+    ],
+    "dialogue_long": [
+      {
+        "speaker": "Linh",
+        "text": "Frau Berger, vielen Dank für den Vertragsentwurf, den Sie mir gestern geschickt haben. Bevor ich unterzeichne, möchte ich auf drei Klauseln zurückkommen, die mir in der vorliegenden Form nicht tragfähig erscheinen.",
+        "vi": "Cô Berger, cám ơn cô về bản dự thảo hợp đồng cô gửi hôm qua. Trước khi ký, tôi muốn quay lại ba điều khoản mà ở dạng hiện tại với tôi không vững."
+      },
+      {
+        "speaker": "HR-Berger",
+        "text": "Gerne. Welche Klauseln genau?",
+        "vi": "Sẵn lòng. Điều khoản nào cụ thể?"
+      },
+      {
+        "speaker": "Linh",
+        "text": "Erstens: das Wettbewerbsverbot in § 12 — vierundzwanzig Monate, gesamteuropäisch. Zweitens: die Vertraulichkeitsklausel in § 14 — Anwendungsbereich umfasst ‚alle Informationen aus dem Arbeitsverhältnis'. Drittens: die Überstundenregelung in § 8 — pauschale Abgeltung ohne Obergrenze.",
+        "vi": "Thứ nhất: điều khoản cấm cạnh tranh § 12 — 24 tháng, toàn châu Âu. Thứ hai: điều khoản bảo mật § 14 — phạm vi bao gồm ‚mọi thông tin từ quan hệ lao động'. Thứ ba: quy định làm thêm § 8 — bù khoán không giới hạn trên."
+      },
+      {
+        "speaker": "HR-Berger",
+        "text": "Das ist viel auf einmal. Lassen Sie uns mit dem Wettbewerbsverbot beginnen — was schlagen Sie vor?",
+        "vi": "Nhiều cùng lúc. Mình bắt đầu với điều khoản cấm cạnh tranh — cô đề xuất gì?"
+      },
+      {
+        "speaker": "Linh",
+        "text": "Vierundzwanzig Monate gesamteuropäisch ist meines Erachtens unverhältnismäßig. Ich schlage vor: zwölf Monate, beschränkt auf direkte Wettbewerber im DACH-Raum, mit gesetzlich vorgesehener Karenzentschädigung von fünfzig Prozent.",
+        "vi": "24 tháng toàn châu Âu theo tôi không tương xứng. Tôi đề xuất: 12 tháng, giới hạn vào các đối thủ trực tiếp trong khu vực DACH, với Karenzentschädigung 50% theo luật."
+      },
+      {
+        "speaker": "HR-Berger",
+        "text": "Zwölf Monate DACH liegt im Marktüblichen. Karenzentschädigung ist bei uns Standard. Lassen Sie mich das mit der Geschäftsführung abstimmen — ich gehe von einer Einigung aus.",
+        "vi": "12 tháng DACH nằm trong phạm vi thị trường. Karenzentschädigung là chuẩn ở chúng tôi. Cho tôi thống nhất với ban lãnh đạo — tôi nghĩ sẽ đồng thuận."
+      },
+      {
+        "speaker": "Linh",
+        "text": "Vielen Dank. Bezüglich der Vertraulichkeitsklausel würde ich anregen, den Anwendungsbereich auf geschäftskritische Informationen zu beschränken — mit Definition und Ausnahmen für öffentlich bekannte Information sowie eigenes Wissen vor Vertragsbeginn.",
+        "vi": "Cám ơn. Về điều khoản bảo mật, tôi xin đề nghị giới hạn phạm vi vào thông tin trọng yếu — với định nghĩa và ngoại lệ cho thông tin đã công khai và hiểu biết riêng trước hợp đồng."
+      },
+      {
+        "speaker": "HR-Berger",
+        "text": "Das ist berechtigt. Eine pauschale Klausel hält juristisch ohnehin nicht — wir präzisieren das.",
+        "vi": "Có cơ sở. Một điều khoản chung chung dù sao cũng không vững về pháp lý — chúng tôi sẽ làm rõ."
+      },
+      {
+        "speaker": "Linh",
+        "text": "Hinsichtlich der Überstundenregelung schlage ich eine Klarstellung vor: pauschale Abgeltung bis maximal zwanzig Stunden monatlich, alles darüber gesondert vergütet zum Stundensatz analog zum Grundgehalt.",
+        "vi": "Về quy định làm thêm, tôi đề xuất làm rõ: bù khoán tối đa 20 giờ mỗi tháng, mọi giờ vượt được trả riêng theo mức giờ tương đương lương cơ bản."
+      },
+      {
+        "speaker": "HR-Berger",
+        "text": "Zwanzig Stunden pauschal ist akzeptabel. Bei der Vergütung darüber müsste ich rückfragen — ist hier auch Freizeitausgleich denkbar?",
+        "vi": "20 giờ bù khoán chấp nhận được. Về thanh toán giờ vượt tôi phải hỏi lại — có thể bù bằng nghỉ thay được không?"
+      },
+      {
+        "speaker": "Linh",
+        "text": "Freizeitausgleich auf meinen Wunsch wäre eine produktive Lösung — Arbeitgeber wählt jedoch nicht, sondern Arbeitnehmer. Das wäre die Symmetrie.",
+        "vi": "Bù nghỉ theo nguyện vọng của tôi sẽ là giải pháp năng suất — nhưng người chọn là Arbeitnehmer, không phải Arbeitgeber. Đó là tính đối xứng."
+      },
+      {
+        "speaker": "HR-Berger",
+        "text": "Verstanden — Wahlrecht beim Arbeitnehmer. Notiert. Sind das alle Punkte?",
+        "vi": "Tôi hiểu — quyền chọn ở Arbeitnehmer. Tôi đã ghi. Đó là tất cả điểm chứ?"
+      },
+      {
+        "speaker": "Linh",
+        "text": "Das sind die Hauptpunkte. Eine Anregung noch: die Kündigungsfrist sollte symmetrisch sein — sechs Monate Mitarbeiter und Arbeitgeber, oder beidseitig gesetzlich.",
+        "vi": "Đó là các điểm chính. Một đề nghị nữa: thời hạn báo trước nên đối xứng — 6 tháng cả Mitarbeiter và Arbeitgeber, hoặc cả hai theo luật."
+      },
+      {
+        "speaker": "HR-Berger",
+        "text": "Symmetrische Kündigungsfristen sind für Senior-Positionen üblich. Ich nehme sechs Monate beidseitig auf.",
+        "vi": "Thời hạn báo trước đối xứng là thông thường cho vị trí Senior. Tôi sẽ đưa 6 tháng đối xứng."
+      },
+      {
+        "speaker": "Linh",
+        "text": "Diese Anpassungen sind aus meiner Sicht nicht verhandlungsschwer, sondern Ausdruck der Symmetrie, die ein langfristiges Arbeitsverhältnis erfordert. Vielen Dank für die offene Diskussion.",
+        "vi": "Theo tôi, những điều chỉnh này không nặng về thương lượng, mà là biểu hiện đối xứng mà quan hệ lao động dài hạn đòi hỏi. Cám ơn cô về cuộc trao đổi cởi mở."
+      },
+      {
+        "speaker": "HR-Berger",
+        "text": "Ich schicke Ihnen den überarbeiteten Vertrag bis Mittwoch. Wenn Ihr Anwalt grünes Licht gibt, können wir Donnerstag unterzeichnen.",
+        "vi": "Tôi gửi cô bản hợp đồng đã sửa trước thứ Tư. Nếu luật sư cô đồng ý, mình ký thứ Năm."
+      }
+    ],
+    "roleplay_prompts": [
+      "Bạn nhận Vertragsentwurf cho Senior-Position ở Berlin Startup. Mở đầu Verhandlung formal: ‚Bevor ich unterzeichne, möchte ich auf drei Klauseln zurückkommen' + benennen § cụ thể (Wettbewerbsverbot, Vertraulichkeit, Überstunden).",
+      "HR đề nghị Wettbewerbsverbot 24 Monate gesamteuropäisch. Đáp formal: ‚unverhältnismäßig' + Alternativvorschlag: 12 Monate DACH-Raum + Karenzentschädigung 50%. KHÔNG ‚das ist zu viel' (zu vage).",
+      "HR sagt Standardvertrag nicht änderbar. Đáp formal: ‚Ich verstehe — gleichwohl bitte ich um Prüfung. In der jetzigen Form könnte ich nicht unterzeichnen' — KHÔNG drohung, KHÔNG emotional, sachlich + alternativ-orientiert."
+    ],
+    "register_notes": "Vertragsverhandlung C1: ‚Sie' tuyệt đối với HR. Konjunktiv II cho Vorschläge: ‚würde ich anregen', ‚wäre denkbar', ‚schlage ich vor'. Funktionsverbgefüge: ‚in Frage stellen' (đặt vấn đề), ‚zur Kenntnis nehmen' (ghi nhận), ‚Abstand nehmen von' (rút khỏi). Khi pushback: ‚in der vorliegenden Form nicht tragfähig' / ‚unverhältnismäßig' (formal kritik). Konstruktiv: ‚würde ich anregen, X' / ‚schlage ich Y vor' — alternativ statt nur Ablehnung. Top 3 typische Klauseln: Wettbewerbsverbot, Vertraulichkeit, Überstunden. KHÔNG verhandeln 5+ Klauseln (signalisiert ‚schwierig'). KHÔNG drohung (‚sonst gehe ich'). Khi Standard-Klausel argumentiert: ‚Ich verstehe — gleichwohl bitte ich um Prüfung' (formal Pushback ohne Konfrontation). Schlüsselformel: ‚Diese Anpassungen sind nicht verhandlungsschwer, sondern Ausdruck der Symmetrie, die ein langfristiges Arbeitsverhältnis erfordert' — kết hợp Konstruktivität + Prinzip.",
+    "idiom_glosses": [
+      {
+        "idiom": "die Symmetrie wahren",
+        "literal": "giữ tính đối xứng",
+        "meaning": "duy trì cân bằng hai bên trong hợp đồng (gehoben/standardsprachlich)",
+        "example": "Eine symmetrische Kündigungsfrist wahrt die Symmetrie zwischen Arbeitgeber und Arbeitnehmer."
+      },
+      {
+        "idiom": "in trockenen Tüchern",
+        "literal": "trong khăn khô",
+        "meaning": "đã được giải quyết chắc chắn (standardsprachlich)",
+        "example": "Sobald die drei Klauseln angepasst sind, ist der Vertrag in trockenen Tüchern."
+      },
+      {
+        "idiom": "Hand und Fuß haben",
+        "literal": "có tay và chân",
+        "meaning": "có cơ sở vững chắc (standardsprachlich)",
+        "example": "Mein Einwand zum Wettbewerbsverbot hat Hand und Fuß — ohne Karenzentschädigung ist die Klausel ohnehin nichtig."
+      },
+      {
+        "idiom": "die Pferde scheu machen",
+        "literal": "làm ngựa hoảng (gốc cưỡi ngựa)",
+        "meaning": "gây hoang mang, đẩy đối phương vào defensive (gehoben/standardsprachlich)",
+        "example": "Ich verhandle gleichzeitig nur drei Klauseln — fünf wären zu viel, das macht die HR-Pferde scheu."
+      }
+    ],
+    "exercises": [
+      {
+        "type": "fill_blank",
+        "instruction_vi": "Điền cấu trúc Vertragsverhandlung C1:",
+        "pronunciation_focus": [],
+        "items": [
+          {
+            "prompt": "Bevor ich den Vertrag ___, möchte ich auf drei Klauseln zurückkommen.",
+            "answer": "unterzeichne"
+          },
+          {
+            "prompt": "Das Wettbewerbsverbot ist meines Erachtens ___.",
+            "answer": "unverhältnismäßig"
+          },
+          {
+            "prompt": "Bezüglich der Vertraulichkeitsklausel würde ich ___, den Anwendungsbereich zu beschränken.",
+            "answer": "anregen"
+          },
+          {
+            "prompt": "Diese Anpassungen sind Ausdruck der ___, die ein langfristiges Arbeitsverhältnis erfordert.",
+            "answer": "Symmetrie"
+          }
+        ]
+      },
+      {
+        "type": "matching",
+        "instruction_vi": "Nối thuật ngữ Vertragsklauseln với chức năng:",
+        "pronunciation_focus": [],
+        "items": [
+          {
+            "prompt": "Wettbewerbsverbot",
+            "answer": "Cấm cạnh tranh sau khi rời công ty"
+          },
+          {
+            "prompt": "Karenzentschädigung",
+            "answer": "Bồi thường 50% trong thời gian Wettbewerbsverbot"
+          },
+          {
+            "prompt": "Vertraulichkeitsklausel",
+            "answer": "Điều khoản bảo mật thông tin"
+          },
+          {
+            "prompt": "pauschale Überstundenabgeltung",
+            "answer": "Bù khoán giờ làm thêm (cần Limit)"
+          }
+        ]
+      },
+      {
+        "type": "translation",
+        "instruction_vi": "Dịch sang tiếng Đức formal C1:",
+        "pronunciation_focus": ["contract negotiation"],
+        "items": [
+          {
+            "prompt": "Trước khi ký, tôi muốn quay lại ba điều khoản mà ở dạng hiện tại không vững.",
+            "answer": "Bevor ich unterzeichne, möchte ich auf drei Klauseln zurückkommen, die mir in der vorliegenden Form nicht tragfähig erscheinen."
+          },
+          {
+            "prompt": "Điều khoản cấm cạnh tranh ở phạm vi hiện tại là không tương xứng.",
+            "answer": "Das Wettbewerbsverbot in seiner aktuellen Reichweite ist meines Erachtens unverhältnismäßig."
+          },
+          {
+            "prompt": "Tôi đề xuất bù khoán tối đa 20 giờ mỗi tháng, mọi giờ vượt được trả riêng.",
+            "answer": "Ich schlage eine pauschale Abgeltung bis maximal zwanzig Stunden monatlich vor, alles darüber gesondert vergütet."
+          },
+          {
+            "prompt": "Những điều chỉnh này là biểu hiện của tính đối xứng mà quan hệ lao động dài hạn đòi hỏi.",
+            "answer": "Diese Anpassungen sind Ausdruck der Symmetrie, die ein langfristiges Arbeitsverhältnis erfordert."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lmehrparteien_verhandlung",
+    "level": "C1",
+    "category": "fluency",
+    "title_vi": "Điều phối đàm phán nhiều bên — Mehrparteien-Verhandlung leiten",
+    "title_en": "Leading a multi-party negotiation in a German corporate context",
+    "sentences": [
+      {
+        "en": "Lassen Sie mich zunächst den Rahmen abstecken: Wir haben drei Bereiche am Tisch — Engineering, Vertrieb, Recht — mit teils konkurrierenden Prioritäten.",
+        "vi": "Cho phép tôi xác định khung trước: chúng ta có ba bộ phận ở bàn — Engineering, Bán hàng, Pháp chế — với các ưu tiên một phần cạnh tranh.",
+        "pronunciation_focus": [
+          "abstecken → AB-shtê-kên",
+          "Bereiche → bê-RAI-khê",
+          "konkurrierend → kôn-ku-RI-rần"
+        ]
+      },
+      {
+        "en": "Ich schlage vor, dass jede Seite zunächst ihre Kernanforderungen in höchstens drei Punkten formuliert, bevor wir in die Diskussion einsteigen.",
+        "vi": "Tôi đề xuất mỗi bên trước hết nêu yêu cầu cốt lõi tối đa ba điểm, trước khi đi vào thảo luận.",
+        "pronunciation_focus": [
+          "Kernanforderungen → KÊN-an-fô-đê-rung-ần",
+          "höchstens → HƠKH-stần",
+          "einsteigen → AIN-shtai-gân"
+        ]
+      },
+      {
+        "en": "Damit verschaffen wir uns Klarheit darüber, wo Übereinstimmung besteht und wo tatsächlich verhandelt werden muss.",
+        "vi": "Như vậy chúng ta có sự rõ ràng về nơi đã đồng thuận và nơi thực sự cần đàm phán.",
+        "pronunciation_focus": [
+          "Klarheit → KLA-hait",
+          "Übereinstimmung → UY-bê-ain-shtim-mung",
+          "tatsächlich → TAT-zêkh-likh"
+        ]
+      },
+      {
+        "en": "Ich möchte vorausschicken, dass meine Rolle hier moderierend ist — ich vertrete heute keine eigene fachliche Position, sondern gewährleiste die strukturierte Diskussion.",
+        "vi": "Tôi muốn nói trước rằng vai trò của tôi ở đây là điều phối — hôm nay tôi không đại diện một quan điểm chuyên môn riêng, mà đảm bảo cuộc thảo luận có cấu trúc.",
+        "pronunciation_focus": [
+          "vorausschicken → fô-RAOS-shi-kên",
+          "moderierend → mô-đê-RI-rần",
+          "gewährleisten → gê-VÊ-lai-stần"
+        ]
+      },
+      {
+        "en": "Sollten wir an einer Stelle in eine Sackgasse geraten, schlage ich vor, den Punkt zurückzustellen und am Ende auf einer höheren Aggregationsebene zu lösen.",
+        "vi": "Nếu ở một điểm chúng ta rơi vào ngõ cụt, tôi đề xuất gác điểm đó lại và giải quyết ở cấp tổng hợp cao hơn vào cuối.",
+        "pronunciation_focus": [
+          "Sackgasse → ZAK-ga-sê",
+          "zurückstellen → tsu-RUYK-shtê-lần",
+          "Aggregationsebene → a-grê-ga-tsi-ÔNS-ê-bê-nê"
+        ]
+      }
+    ],
+    "cultural_notes_vi": "Mehrparteien-Verhandlung (đàm phán nhiều bên) trong môi trường công ty Đức tuân theo quy ước rất cấu trúc. (1) ROLLENKLARHEIT: ngay từ đầu phải làm rõ ai làm Moderator, ai vertritt fachliche Position, ai entscheidet. Người Đức cực kỳ allergisch với role confusion. Câu mở chuẩn của Moderator: ‚Meine Rolle ist heute moderierend — ich vertrete keine fachliche Position'. Nếu Moderator có Stake, phải nói trước: ‚Aus Engineering-Sicht würde ich später X argumentieren — heute moderiere ich neutral'. (2) STRUKTURIERTE EINSTIEG: 3-Punkte-Regel của Đức — jede Partei nennt 3 Kernanforderungen vor offener Diskussion. Tránh ‚Diskussion ohne Anker' wo people talk past each other. (3) AGGREGATIONSEBENE: nếu Sackgasse auf Detail-Ebene, escape route chuẩn = ‚auf höhere Aggregationsebene heben' — von ‚welche Klausel' về ‚welches Prinzip'. Khi tìm Prinzip-Konsens, Detail-Lösungen folgen.\n\nKhác Việt Nam: ở VN, Mehrparteien-Meeting thường có Hierarchie-strikten Ablauf — sếp cao nhất nói trước, junior cuối. Ở Đức Mehrparteien-Verhandlung, jede Partei có Stimme bất kể Hierarchie — Moderator gewährleistet Sprechzeit symmetrisch.\n\nMột chi tiết quan trọng: deutsche Mehrparteien-Verhandlung schätzt PROTOKOLL extrem. Wer das Protokoll führt, hat Macht — die Formulierung der Vereinbarung shape die Umsetzung. Khi bạn moderate, frage am Anfang: ‚Wer übernimmt das Protokoll?' — wenn niemand sich meldet, übernehmen Sie selbst (mehr Kontrolle). Schlüsselsätze müssen am Ende verifiziert werden: ‚Habe ich das richtig zusammengefasst?'.\n\nVề Konsens vs Mehrheitsentscheidung: deutsche Geschäftskultur prefer Konsens (alle stimmen zu, even reluctantly), aber wenn Konsens không khả thi, Mehrheitsentscheidung ist akzeptabel. Vermeiden ‚Tyrannei der Mehrheit' — Minderheit muss Position protokolliert kriegen.\n\nVề Verhandlungstaktik in Mehrparteien: \n- BATNA (Best Alternative to Negotiated Agreement) jeder Partei explicit machen — was passiert, wenn keine Einigung?\n- ZOPA (Zone of Possible Agreement) identifizieren — wo überlappen die Akzeptanzbereiche?\n- ANCHORING vermeiden für Moderator — wer zuerst Zahl nennt, ankert; Moderator soll nicht ankern\n\nVề Eskalation: nếu zwei Bereiche tiefer Konflikt, Moderator kann ‚Bilateral-Pause' anbieten — die zwei Bereiche reden 15 Minuten alleine, kommen mit Vorschlag zurück. Diese Technik (called ‚caucusing' in Mediation) ist akzeptiert.\n\nLanguage register: ‚Sie' tuyệt đối, kể cả wenn Teilnehmer sich kennen. Kein ‚Du' im Mehrparteien-Format — signalisiert in-group / out-group.",
+    "tip_advice_vi": "Vor Mehrparteien-Verhandlung (1 Tag):\n1. AGENDA strukturieren: 5 Punkte, max. 90 Minuten total. Mehr als 5 = Überforderung. Mehr als 90 = Konzentrationsverlust.\n2. PROTOKOLL-FÜHRUNG klären: wer? Manuell oder mit Tool (z.B. Confluence)?\n3. EIGENE NEUTRALITÄT prüfen: hast du Stakes in einem der Punkte? Falls ja — sage es VOR der Sitzung, nicht während.\n4. POTENZIELLE SACKGASSEN antizipieren: welche Punkte werden hart? Wie bringst du sie auf höhere Aggregationsebene?\n\nIm Verhandlungsraum (4 Phasen):\n1. RAHMEN setzen (5 Min): Ziel, Teilnehmer, Rollen, Agenda, Zeit\n2. EINSTIEG (15 Min): jede Partei 3 Kernanforderungen ohne Diskussion\n3. DISKUSSION (50 Min): Punkt-für-Punkt, Moderator gewährleistet Sprechzeit\n4. ABSCHLUSS (20 Min): Zusammenfassung der Einigungen + offene Punkte + nächste Schritte\n\nNgôn ngữ Moderator C1:\n- ‚Lassen Sie mich zunächst den Rahmen abstecken' (cho phép tôi xác định khung trước)\n- ‚Ich schlage vor, dass jede Seite ihre Kernanforderungen in höchstens drei Punkten formuliert' (đề xuất mỗi bên nêu yêu cầu cốt lõi tối đa ba điểm)\n- ‚Damit verschaffen wir uns Klarheit darüber, wo Übereinstimmung besteht' (như vậy có sự rõ ràng về nơi đã đồng thuận)\n- ‚Meine Rolle ist heute moderierend' (vai trò tôi hôm nay là điều phối)\n- ‚Sollten wir in eine Sackgasse geraten, schlage ich vor, den Punkt auf eine höhere Aggregationsebene zu heben' (nếu rơi vào ngõ cụt, đề xuất nâng lên cấp tổng hợp cao hơn)\n- ‚Habe ich das richtig zusammengefasst?' (tôi đã tóm gọn đúng chưa?)\n\nKhi Partei dominiert / monologisiert:\n- ‚Herr Müller, lassen Sie mich kurz unterbrechen — ich möchte sicherstellen, dass auch Frau Bauer dazu die Gelegenheit hat' (anh Müller, cho tôi cắt ngang ngắn — tôi muốn đảm bảo cô Bauer cũng có cơ hội)\n- ‚Sehr produktiver Beitrag — bevor wir vertiefen, würde ich gerne die Vertriebs-Sicht hören' (đóng góp năng suất — trước khi đào sâu, xin nghe góc nhìn Bán hàng)\n\nKhi Sackgasse:\n- ‚Wir scheinen hier in eine Sackgasse zu geraten — ich schlage vor, den Punkt zurückzustellen und am Ende auf einer höheren Aggregationsebene zu lösen' (chúng ta có vẻ rơi ngõ cụt — đề xuất gác lại và giải ở cấp cao hơn cuối)\n- ‚Lassen Sie uns für fünfzehn Minuten Bilateral-Pause machen — Engineering und Vertrieb klären den Detailpunkt, wir kommen mit Vorschlag zurück' (hãy 15 phút Bilateral-Pause — Engineering và Vertrieb làm rõ chi tiết, quay lại với đề xuất)\n\nKhi Eskalation:\n- ‚Lassen Sie uns kurz innehalten — ich glaube, hier ist die Sache wichtiger als die Person. Können wir zur Sachebene zurückkehren?' (hãy dừng — vấn đề quan trọng hơn con người. Mình quay về Sachebene được không?)\n\nAbschluss-Formel:\n- ‚Lassen Sie mich zusammenfassen, was wir heute vereinbart haben: erstens X, zweitens Y, drittens Z. Offen bleiben A und B — wir treffen uns nächste Woche zu diesen Punkten. Habe ich das richtig erfasst?' (cho phép tôi tóm: thứ nhất X, thứ hai Y, thứ ba Z. Còn mở A và B — tuần sau gặp lại. Tôi nắm đúng chứ?)\n\nMẹo cuối: Moderator zu sein heißt nicht, ‚der Schiedsrichter zu spielen'. Moderator ist DIENER der Diskussion — gewährleistet Sprechzeit, fasst zusammen, hält Struktur. Wer Moderator als Macht-Position betreibt, verliert Vertrauen aller Parteien.",
+    "vocabulary": [
+      {
+        "word": "die Mehrparteien-Verhandlung",
+        "en": "multi-party negotiation",
+        "vi": "đàm phán nhiều bên",
+        "pos": "noun (f)",
+        "pronunciation_vi": "đi MÊ-pa-tai-ần-fe-han-đlung"
+      },
+      {
+        "word": "moderieren",
+        "en": "to moderate, facilitate",
+        "vi": "điều phối",
+        "pos": "verb",
+        "pronunciation_vi": "mô-đê-RI-rần"
+      },
+      {
+        "word": "die Kernanforderung",
+        "en": "core requirement",
+        "vi": "yêu cầu cốt lõi",
+        "pos": "noun (f)",
+        "pronunciation_vi": "đi KÊN-an-fô-đê-rung"
+      },
+      {
+        "word": "die Übereinstimmung",
+        "en": "agreement, alignment",
+        "vi": "sự đồng thuận",
+        "pos": "noun (f)",
+        "pronunciation_vi": "đi UY-bê-ain-shtim-mung"
+      },
+      {
+        "word": "die Sackgasse",
+        "en": "dead end, deadlock",
+        "vi": "ngõ cụt, bế tắc",
+        "pos": "noun (f)",
+        "pronunciation_vi": "đi ZAK-ga-sê"
+      },
+      {
+        "word": "die Aggregationsebene",
+        "en": "level of aggregation",
+        "vi": "cấp tổng hợp",
+        "pos": "noun (f)",
+        "pronunciation_vi": "đi a-grê-ga-tsi-ÔNS-ê-bê-nê"
+      },
+      {
+        "word": "die Bilateral-Pause / das Caucusing",
+        "en": "bilateral pause, caucusing",
+        "vi": "tạm dừng song phương",
+        "pos": "noun (f/n)",
+        "pronunciation_vi": "đi bi-la-tê-RAL-pao-zê"
+      },
+      {
+        "word": "das BATNA / die beste Alternative",
+        "en": "BATNA — best alternative to negotiated agreement",
+        "vi": "BATNA — phương án thay thế tốt nhất",
+        "pos": "noun (n/f)",
+        "pronunciation_vi": "đát BAT-na"
+      },
+      {
+        "word": "gewährleisten",
+        "en": "to ensure, guarantee",
+        "vi": "đảm bảo",
+        "pos": "verb",
+        "pronunciation_vi": "gê-VÊ-lai-stần"
+      },
+      {
+        "word": "das Protokoll führen",
+        "en": "to take minutes",
+        "vi": "ghi biên bản",
+        "pos": "verb phrase",
+        "pronunciation_vi": "đát prô-tô-KÔL FUY-rần"
+      }
+    ],
+    "dialogue": [
+      {
+        "speaker": "Linh (Moderatorin)",
+        "text": "Lassen Sie mich zunächst den Rahmen abstecken: wir haben drei Bereiche am Tisch — Engineering, Vertrieb, Recht. Meine Rolle ist heute moderierend.",
+        "vi": "Cho phép tôi xác định khung trước: chúng ta có ba bộ phận — Engineering, Bán hàng, Pháp chế. Vai trò tôi hôm nay là điều phối."
+      },
+      {
+        "speaker": "Engineering-Lead",
+        "text": "Können wir direkt zur Diskussion einsteigen? Wir haben nur achtzig Minuten.",
+        "vi": "Mình có thể đi vào thảo luận luôn không? Chúng ta chỉ có 80 phút."
+      },
+      {
+        "speaker": "Linh",
+        "text": "Bevor wir das tun, schlage ich vor, dass jede Seite ihre Kernanforderungen in höchstens drei Punkten formuliert — fünfzehn Minuten total. Damit verschaffen wir uns Klarheit darüber, wo Übereinstimmung besteht und wo tatsächlich verhandelt werden muss.",
+        "vi": "Trước khi làm vậy, tôi đề xuất mỗi bên nêu yêu cầu cốt lõi tối đa ba điểm — 15 phút tổng cộng. Như vậy chúng ta có sự rõ ràng về nơi đồng thuận và nơi cần đàm phán."
+      },
+      {
+        "speaker": "Engineering-Lead",
+        "text": "Verstanden. Engineering beginnt.",
+        "vi": "Tôi hiểu. Engineering bắt đầu."
+      }
+    ],
+    "dialogue_long": [
+      {
+        "speaker": "Linh (Moderatorin)",
+        "text": "Guten Morgen alle zusammen, vielen Dank, dass Sie sich die neunzig Minuten Zeit nehmen. Lassen Sie mich zunächst den Rahmen abstecken: wir haben drei Bereiche am Tisch — Engineering vertreten durch Herrn Bauer, Vertrieb durch Frau Müller, Recht durch Herrn Dr. Schneider — mit teils konkurrierenden Prioritäten zum Bauer-Projekt.",
+        "vi": "Chào tất cả, cám ơn các anh chị đã dành 90 phút. Cho tôi xác định khung trước: chúng ta có ba bộ phận — Engineering có anh Bauer, Bán hàng có cô Müller, Pháp chế có Tiến sĩ Schneider — với ưu tiên một phần cạnh tranh cho dự án Bauer."
+      },
+      {
+        "speaker": "Linh",
+        "text": "Ich möchte vorausschicken, dass meine Rolle hier moderierend ist — ich vertrete heute keine eigene fachliche Position, sondern gewährleiste die strukturierte Diskussion. Wer übernimmt das Protokoll?",
+        "vi": "Tôi muốn nói trước rằng vai trò tôi ở đây là điều phối — hôm nay tôi không đại diện quan điểm chuyên môn riêng, mà đảm bảo thảo luận có cấu trúc. Ai ghi biên bản?"
+      },
+      {
+        "speaker": "Frau Müller",
+        "text": "Ich kann das übernehmen — wir haben Confluence offen.",
+        "vi": "Tôi có thể đảm nhận — chúng tôi đã mở Confluence."
+      },
+      {
+        "speaker": "Linh",
+        "text": "Vielen Dank. Ich schlage vor, dass jede Seite zunächst ihre Kernanforderungen in höchstens drei Punkten formuliert, bevor wir in die Diskussion einsteigen. Engineering beginnt — fünf Minuten.",
+        "vi": "Cám ơn. Tôi đề xuất mỗi bên trước hết nêu yêu cầu cốt lõi tối đa ba điểm, trước khi đi vào thảo luận. Engineering bắt đầu — 5 phút."
+      },
+      {
+        "speaker": "Herr Bauer",
+        "text": "Drei Punkte. Erstens: technische Spezifikation muss vor Vertragsabschluss final sein. Zweitens: Engineering-Ressourcen ab Q2 zu fünfzig Prozent gebunden — keine zusätzliche Zusagen. Drittens: Change-Requests nach Vertragsabschluss kostenpflichtig nach festem Tarif.",
+        "vi": "Ba điểm. Thứ nhất: spec kỹ thuật phải hoàn thiện trước khi ký hợp đồng. Thứ hai: nguồn lực Engineering từ Q2 đã bị buộc 50% — không cam kết thêm. Thứ ba: change-request sau khi ký phải tính phí theo Tarif cố định."
+      },
+      {
+        "speaker": "Linh",
+        "text": "Vielen Dank. Vertrieb?",
+        "vi": "Cám ơn. Bán hàng?"
+      },
+      {
+        "speaker": "Frau Müller",
+        "text": "Drei Punkte. Erstens: Vertragsabschluss bis Ende des Quartals — der Kunde wartet seit acht Wochen. Zweitens: Spielraum für Customizing innerhalb der ersten sechs Monate ohne Aufpreis — Vertriebszusage. Drittens: Eskalationspfad bei technischen Problemen direkt zur Geschäftsführung.",
+        "vi": "Ba điểm. Thứ nhất: ký hợp đồng trước cuối quý — khách đã đợi 8 tuần. Thứ hai: dư địa cho customizing trong sáu tháng đầu không tính thêm — cam kết bán hàng. Thứ ba: đường escalation cho vấn đề kỹ thuật trực tiếp lên ban lãnh đạo."
+      },
+      {
+        "speaker": "Linh",
+        "text": "Recht?",
+        "vi": "Pháp chế?"
+      },
+      {
+        "speaker": "Dr. Schneider",
+        "text": "Drei Punkte. Erstens: Haftungsbegrenzung in der vorliegenden Form unzureichend — wir brauchen Cap auf zwölf Monatsumsätze. Zweitens: SLAs müssen mit Messverfahren verbunden sein, sonst rechtlich nicht durchsetzbar. Drittens: Datenschutz-Annex DSGVO-konform, ohne den ist der Vertrag nicht unterzeichenbar.",
+        "vi": "Ba điểm. Thứ nhất: giới hạn trách nhiệm dạng hiện tại không đủ — cần Cap trên doanh thu 12 tháng. Thứ hai: SLA phải gắn với phương pháp đo, nếu không không khả thi pháp lý. Thứ ba: phụ lục bảo vệ dữ liệu phải hợp DSGVO, nếu không không thể ký hợp đồng."
+      },
+      {
+        "speaker": "Linh",
+        "text": "Vielen Dank an alle. Ich fasse die Schnittmengen und Konflikte zusammen: Übereinstimmung besteht beim Ziel — Vertragsabschluss noch dieses Quartal. Konflikt entsteht zwischen Engineering-Ressourcenlage und Vertriebs-Customizing-Zusage. Recht legt Mindestbedingungen fest, die sowohl Engineering als auch Vertrieb akzeptieren müssen.",
+        "vi": "Cám ơn tất cả. Tôi tóm gọn giao thoa và xung đột: đồng thuận về mục tiêu — ký hợp đồng quý này. Xung đột giữa tình trạng nguồn lực Engineering và cam kết customizing của Bán hàng. Pháp chế đặt điều kiện tối thiểu cả Engineering và Bán hàng phải chấp nhận."
+      },
+      {
+        "speaker": "Frau Müller",
+        "text": "Wenn Engineering Ressourcen blockiert, kann ich das Customizing nicht zusagen — der Kunde springt ab.",
+        "vi": "Nếu Engineering chặn nguồn lực, tôi không thể cam kết customizing — khách sẽ bỏ."
+      },
+      {
+        "speaker": "Herr Bauer",
+        "text": "Wenn ich Customizing zusage, kann ich die anderen Projekte nicht halten — Domino-Effekt.",
+        "vi": "Nếu tôi cam kết customizing, các dự án khác không giữ được — hiệu ứng domino."
+      },
+      {
+        "speaker": "Linh",
+        "text": "Wir scheinen hier in eine Sackgasse zu geraten. Ich schlage vor, den Detail-Punkt zurückzustellen und auf eine höhere Aggregationsebene zu heben: was ist das Prinzip? Aus Engineering-Sicht: Ressourcensicherheit. Aus Vertriebs-Sicht: Kundenzusagen einhaltbar machen. Beide Prinzipien sind nicht unvereinbar — die Frage ist die Konkretion.",
+        "vi": "Chúng ta có vẻ rơi vào ngõ cụt. Tôi đề xuất gác chi tiết lại và nâng lên cấp tổng hợp cao hơn: nguyên tắc là gì? Từ góc Engineering: an toàn nguồn lực. Từ góc Bán hàng: giữ được cam kết với khách. Hai nguyên tắc không không tương thích — câu hỏi là cụ thể hóa."
+      },
+      {
+        "speaker": "Linh",
+        "text": "Lassen Sie uns für fünfzehn Minuten Bilateral-Pause machen — Engineering und Vertrieb klären, ob ein Customizing-Volumen-Cap akzeptabel wäre, der Engineering-Ressourcen schont und Vertrieb gegenüber dem Kunden tragfähig ist. Recht und ich schauen parallel auf die Haftungsklausel-Formulierung.",
+        "vi": "Hãy 15 phút Bilateral-Pause — Engineering và Bán hàng làm rõ liệu một volume-cap cho customizing có chấp nhận được không, vừa tiết kiệm nguồn lực Engineering vừa khả thi với khách. Pháp chế và tôi song song xem điều khoản trách nhiệm."
+      },
+      {
+        "speaker": "Herr Bauer",
+        "text": "Einverstanden. Fünfzehn Minuten.",
+        "vi": "Đồng ý. 15 phút."
+      },
+      {
+        "speaker": "Linh",
+        "text": "Wir treffen uns um zehn vor zehn wieder. Lassen Sie mich abschließend zusammenfassen, was wir heute schon vereinbart haben: einigen wir uns auf das Ziel — Vertragsabschluss dieses Quartal — und die Mindestbedingungen von Recht. Strittig: Customizing-Volumen, Eskalationspfad. Habe ich das richtig erfasst?",
+        "vi": "Mình gặp lại lúc 10 kém 10. Cho tôi tóm gọn cuối cái mình đã đồng thuận: mục tiêu — ký hợp đồng quý này — và điều kiện tối thiểu của Pháp chế. Đang tranh cãi: volume customizing, đường escalation. Tôi nắm đúng chứ?"
+      }
+    ],
+    "roleplay_prompts": [
+      "Bạn moderate Mehrparteien-Verhandlung 90 phút giữa Engineering, Vertrieb, Recht. Mở đầu formal: Rahmen abstecken + Rollenklärung (‚Meine Rolle ist heute moderierend') + Protokoll-Klärung + 3-Punkte-Regel.",
+      "Engineering muốn skip 3-Punkte-Regel ‚wir haben nur 80 Minuten'. Đáp formal: ‚Bevor wir das tun, schlage ich vor...' + Begründung tại sao 3 điểm cốt lõi vor Diskussion produktiver hơn.",
+      "Sackgasse zwischen Engineering Ressourcen-Schutz và Vertrieb Customizing-Zusage. Diễn đạt formal: ‚auf höhere Aggregationsebene heben' + đề xuất Bilateral-Pause 15 phút + Schlüsselformel Abschluss-Zusammenfassung."
+    ],
+    "register_notes": "Mehrparteien-Verhandlung-Moderation C1: ‚Sie' tuyệt đối với mọi Teilnehmer. Konjunktiv II cho Vorschläge: ‚Ich schlage vor, dass...', ‚Wäre denkbar...'. Funktionsverbgefüge: ‚den Rahmen abstecken' (xác định khung), ‚Klarheit verschaffen' (làm rõ), ‚in Sackgasse geraten' (rơi vào ngõ cụt), ‚auf höhere Aggregationsebene heben' (nâng cấp tổng hợp). Rollenklarheit bắt buộc: ‚Meine Rolle ist heute moderierend — ich vertrete keine fachliche Position'. 3-Punkte-Regel: ‚jede Seite formuliert ihre Kernanforderungen in höchstens drei Punkten'. Khi dominiert: ‚Lassen Sie mich kurz unterbrechen — ich möchte sicherstellen, dass auch X dazu die Gelegenheit hat'. Bilateral-Pause Tool: ‚fünfzehn Minuten Bilateral-Pause — kommen mit Vorschlag zurück'. Abschluss-Verifikation: ‚Habe ich das richtig zusammengefasst?'. KHÔNG ankert (zuerst Zahl nennen) als Moderator. KHÔNG eigene fachliche Position vertreten ohne explicite Rollen-Wechsel-Ankündigung.",
+    "idiom_glosses": [
+      {
+        "idiom": "die Fäden in der Hand halten",
+        "literal": "giữ các sợi chỉ trong tay",
+        "meaning": "kiểm soát quá trình (gehoben/standardsprachlich)",
+        "example": "Als Moderator halte ich die Fäden in der Hand, ohne selbst Position zu beziehen."
+      },
+      {
+        "idiom": "alle ins Boot holen",
+        "literal": "đưa tất cả lên thuyền",
+        "meaning": "đảm bảo mọi bên tham gia / đồng thuận (standardsprachlich)",
+        "example": "Bevor wir entscheiden, müssen wir alle drei Bereiche ins Boot holen — sonst trägt die Vereinbarung nicht."
+      },
+      {
+        "idiom": "auf den Tisch bringen",
+        "literal": "đưa lên bàn",
+        "meaning": "đặt lên bàn thảo luận, công khai (standardsprachlich)",
+        "example": "Bringen wir die Konflikte auf den Tisch, statt sie in Kaffee-Pausen auszutragen."
+      },
+      {
+        "idiom": "ein gemeinsamer Nenner",
+        "literal": "một mẫu số chung",
+        "meaning": "điểm đồng thuận tối thiểu (standardsprachlich)",
+        "example": "Auf höherer Aggregationsebene finden wir den gemeinsamen Nenner — beide Seiten wollen Vertragsabschluss noch dieses Quartal."
+      }
+    ],
+    "exercises": [
+      {
+        "type": "fill_blank",
+        "instruction_vi": "Điền cấu trúc Mehrparteien-Verhandlung-Moderation C1:",
+        "pronunciation_focus": [],
+        "items": [
+          {
+            "prompt": "Lassen Sie mich zunächst den Rahmen ___.",
+            "answer": "abstecken"
+          },
+          {
+            "prompt": "Ich schlage vor, dass jede Seite ihre ___ in höchstens drei Punkten formuliert.",
+            "answer": "Kernanforderungen"
+          },
+          {
+            "prompt": "Meine Rolle ist heute ___ — ich vertrete keine eigene fachliche Position.",
+            "answer": "moderierend"
+          },
+          {
+            "prompt": "Sollten wir in eine ___ geraten, schlage ich vor, den Punkt auf höhere Aggregationsebene zu heben.",
+            "answer": "Sackgasse"
+          }
+        ]
+      },
+      {
+        "type": "matching",
+        "instruction_vi": "Nối thuật ngữ Mehrparteien-Verhandlung với chức năng:",
+        "pronunciation_focus": [],
+        "items": [
+          {
+            "prompt": "BATNA",
+            "answer": "Best Alternative — phương án thay thế nếu không có Einigung"
+          },
+          {
+            "prompt": "ZOPA",
+            "answer": "Zone of Possible Agreement — vùng khả thi đồng thuận"
+          },
+          {
+            "prompt": "Bilateral-Pause / Caucusing",
+            "answer": "Tạm dừng song phương — hai bên làm rõ riêng"
+          },
+          {
+            "prompt": "Aggregationsebene heben",
+            "answer": "Nâng từ chi tiết lên nguyên tắc khi Sackgasse"
+          }
+        ]
+      },
+      {
+        "type": "translation",
+        "instruction_vi": "Dịch sang tiếng Đức formal C1 (Moderator-Rolle):",
+        "pronunciation_focus": ["multi-party negotiation"],
+        "items": [
+          {
+            "prompt": "Cho phép tôi xác định khung trước: chúng ta có ba bộ phận với ưu tiên một phần cạnh tranh.",
+            "answer": "Lassen Sie mich zunächst den Rahmen abstecken: Wir haben drei Bereiche am Tisch mit teils konkurrierenden Prioritäten."
+          },
+          {
+            "prompt": "Tôi đề xuất mỗi bên nêu yêu cầu cốt lõi tối đa ba điểm trước khi đi vào thảo luận.",
+            "answer": "Ich schlage vor, dass jede Seite ihre Kernanforderungen in höchstens drei Punkten formuliert, bevor wir in die Diskussion einsteigen."
+          },
+          {
+            "prompt": "Tôi muốn nói trước rằng vai trò tôi ở đây là điều phối — hôm nay tôi không đại diện quan điểm chuyên môn riêng.",
+            "answer": "Ich möchte vorausschicken, dass meine Rolle hier moderierend ist — ich vertrete heute keine eigene fachliche Position."
+          },
+          {
+            "prompt": "Nếu rơi vào ngõ cụt, tôi đề xuất gác lại và giải ở cấp tổng hợp cao hơn.",
+            "answer": "Sollten wir in eine Sackgasse geraten, schlage ich vor, den Punkt zurückzustellen und auf eine höhere Aggregationsebene zu lösen."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lmit_lieferanten_verhandeln",
+    "level": "C1",
+    "category": "fluency",
+    "title_vi": "Đàm phán với nhà cung cấp Đức — Mit deutschen Lieferanten verhandeln",
+    "title_en": "Negotiating with German suppliers in B2B procurement",
+    "sentences": [
+      {
+        "en": "Vor dem Hintergrund unserer Volumen-Steigerung von achtzehn Prozent im laufenden Jahr halten wir eine Anpassung der Konditionen für angezeigt.",
+        "vi": "Trên cơ sở mức tăng khối lượng 18% trong năm hiện tại, chúng tôi cho rằng việc điều chỉnh điều kiện là cần thiết.",
+        "pronunciation_focus": [
+          "Volumen-Steigerung → vô-LU-mân-shtai-gê-rung",
+          "Konditionen → kôn-đi-tsi-Ô-nần",
+          "angezeigt → AN-gê-tsai-kt"
+        ]
+      },
+      {
+        "en": "Konkret schlagen wir einen Mengenrabatt von vier Prozent ab dem nächsten Bestellzyklus vor, gekoppelt an eine verbindliche Abnahmezusage.",
+        "vi": "Cụ thể chúng tôi đề xuất chiết khấu khối lượng 4% từ chu kỳ đặt hàng tới, gắn với cam kết tiếp nhận có hiệu lực.",
+        "pronunciation_focus": [
+          "Mengenrabatt → MÊN-gân-ra-bat",
+          "Bestellzyklus → bê-SHTÊL-tsuy-klus",
+          "verbindlich → fe-BIN-đlikh"
+        ]
+      },
+      {
+        "en": "Die aktuellen Lieferzeiten von zwölf Wochen sind vor dem Hintergrund unserer Produktionsplanung an der Grenze des Tragbaren.",
+        "vi": "Thời gian giao hàng hiện tại 12 tuần trên cơ sở kế hoạch sản xuất của chúng tôi đang ở giới hạn chịu đựng.",
+        "pronunciation_focus": [
+          "Lieferzeiten → LI-fê-tsai-tần",
+          "Produktionsplanung → prô-đuk-tsi-ÔNS-pla-nung",
+          "Tragbaren → TRAK-ba-rần"
+        ]
+      },
+      {
+        "en": "Hinsichtlich der Qualitätssicherung schlagen wir vor, dass wir einmal jährlich ein gemeinsames Audit beim Werk in Stuttgart durchführen.",
+        "vi": "Về đảm bảo chất lượng, chúng tôi đề xuất một lần mỗi năm cùng tiến hành audit tại nhà máy ở Stuttgart.",
+        "pronunciation_focus": [
+          "Qualitätssicherung → kva-li-TÊTS-zi-khê-rung",
+          "gemeinsames Audit → gê-MAIN-za-mês AO-đit",
+          "durchführen → ĐUKH-fuy-rần"
+        ]
+      },
+      {
+        "en": "Eine langfristige Partnerschaft setzt aus unserer Sicht voraus, dass beide Seiten das Verhältnis von Preis, Qualität und Lieferzuverlässigkeit gemeinsam optimieren.",
+        "vi": "Một quan hệ đối tác dài hạn theo chúng tôi đòi hỏi cả hai bên cùng tối ưu hóa quan hệ giữa giá, chất lượng và độ tin cậy giao hàng.",
+        "pronunciation_focus": [
+          "langfristig → LANG-fris-tikh",
+          "Lieferzuverlässigkeit → LI-fê-tsu-fe-le-sikh-kait",
+          "optimieren → ôp-ti-MI-rần"
+        ]
+      }
+    ],
+    "cultural_notes_vi": "Đàm phán với deutsche Lieferanten (nhà cung cấp Đức) trong B2B-Procurement có quy ước rất khác Việt Nam. (1) FACHLICHE TIEFE: deutsche Vertrieb-Repräsentant erwartet Käufer fachlich kompetent — kennt Spezifikationen, Materialeigenschaften, Toleranzen, Zertifizierungen. Wer ‚nur Preisverhandlung' macht und Spezifikationen nicht versteht, wird als ‚nicht ernsthaft' wahrgenommen. (2) PARTNERSCHAFT vs TRANSAKTION: deutsche Mittelstand-Lieferanten denken in 5-10-Jahre-Partnerschaften, nicht Single-Transaction. Wer aggressiv Preise drückt, gefährdet Lieferzuverlässigkeit für die nächsten Jahre. Konstruktiv: ‚Win-Win durch Volumen + Lieferzeiten + Qualität', nicht ‚Win-Lose durch Preisdruck'. (3) AUDIT-KULTUR: gemeinsame Audits beim Werk sind Standard für strategische Lieferanten. Annual Audit + Quartals-Performance-Reviews + Eskalationsmechanismen. Wer das ablehnt, signalisiert Misstrauen.\n\nKhác Việt Nam: Procurement Việt Nam thường aggressiv-transaktional — drücken Preise auf RFQ-Basis, wechseln Lieferanten häufig. Deutsche Lieferanten erwarten Stabilität — wenn Sie zwei Jahre nicht bestellen, sind Sie ‚außen' und kommen schwer wieder rein.\n\nMột chi tiết quan trọng: KHÔNG ‚der Wettbewerb gibt mir das billiger' (impliziter Threat-to-Switch). Diese Taktik wird in Deutschland als ‚unprofessionell' wahrgenommen — funktioniert in China-Procurement, nicht in DACH. Stattdessen: ‚Wir haben das Marktbild geprüft — Ihr Angebot liegt im oberen Drittel. Können wir gemeinsam an einer Annäherung arbeiten?'.\n\nVề Mengenrabatt-Verhandlung: deutsche Lieferanten bieten oft Staffel-Modell (5% bei +10% Volumen, 8% bei +20%, 12% bei +30%). Verhandeln das Schwellenwert nicht aggressive das Maximum.\n\nVề Lieferzeiten: deutsche Maschinenbau-Lieferanten haben oft 12-16 Wochen Standard-Lieferzeit für Sonderanfertigungen. Verkürzen kostet Aufpreis (Express-Linien). Verhandeln statt: ‚Können wir einen Forecast-Mechanismus etablieren, der Ihre Planung verbessert und unsere Lieferzeiten verkürzt?'.\n\nVề Qualitätssicherung: deutsche QS-Standards (ISO 9001, IATF 16949 für Automotive, MDR für Medizin) sind streng. Eine Klausel ‚Reklamationsrecht 30 Tage nach Wareneingang' ist Standard — verhandeln nicht weg, sondern erweitern (60 Tage für komplexe Komponenten).\n\nVề Zahlungsbedingungen: deutsche Standard ist ‚30 Tage netto' oder ‚2% Skonto bei 14 Tagen'. Skonto-Optimierung is interessant. Verhandeln Sie dafür längere Lieferantenkredit (45-60 Tage) — das hilft Cash-Flow ohne Preisanpassung beim Lieferanten zu erfordern.\n\nVề Eskalation: deutsche Mittelstand-CEO ist oft direkt erreichbar — wenn Verhandlung mit Vertrieb stuck, höfliche Anfrage an CEO ist akzeptabel. Aber: nur einmal, nicht regelmäßig. CEO-Eskalation ist ‚letzte Karte'.",
+    "tip_advice_vi": "Vor Lieferanten-Verhandlung (1 Woche):\n1. RFQ-DATEN: aktuelle Spec, Mengen, Lieferzeiten dokumentiert.\n2. MARKTPREIS-VERGLEICH: 3 alternative Lieferanten benchmarked (auch wenn Sie nicht wechseln wollen).\n3. WIN-WIN-PUNKTE identifizieren: Volumen-Zusage, Forecast-Sharing, gemeinsames Audit, Long-Term-Vereinbarung.\n4. WALK-AWAY-Punkt definieren: bei welchem Preis / Lieferzeit gehen Sie wirklich?\n\nIm Verhandlungsgespräch (Struktur):\n1. RAHMEN: Volumen-Steigerung vorstellen (Zahlen + Zeitraum)\n2. BEGRÜNDUNG: ‚Vor diesem Hintergrund halten wir eine Anpassung für angezeigt'\n3. KONKRETER VORSCHLAG: Mengenrabatt + Bedingung (Abnahmezusage)\n4. PARTNERSCHAFT framing: ‚gemeinsame Optimierung'\n5. AUDIT / FORECAST anbieten: Win-Win-Komponente\n\nNgôn ngữ Lieferanten-Verhandlung formal:\n- ‚Vor dem Hintergrund unserer Volumen-Steigerung halten wir eine Anpassung für angezeigt' (trên cơ sở tăng volume, điều chỉnh là cần thiết)\n- ‚Konkret schlagen wir einen Mengenrabatt von X Prozent vor' (cụ thể đề xuất chiết khấu X%)\n- ‚Gekoppelt an eine verbindliche Abnahmezusage' (gắn với cam kết tiếp nhận)\n- ‚Die aktuellen Lieferzeiten sind an der Grenze des Tragbaren' (thời gian giao hiện tại ở giới hạn chịu đựng)\n- ‚Hinsichtlich der Qualitätssicherung schlagen wir vor...' (về QS đề xuất)\n- ‚Eine langfristige Partnerschaft setzt voraus, dass beide Seiten X' (đối tác dài hạn đòi hỏi cả hai bên X)\n\nKhi Lieferant resistant:\n- ‚Ich verstehe Ihre Position. Lassen Sie uns die Zahlen gemeinsam durchgehen — vielleicht finden wir auf der Volumen-Seite oder bei den Lieferzeiten Spielraum, der für beide trägt.' (tôi hiểu. Hãy cùng đi qua số liệu — có thể tìm dư địa volume hoặc lieferzeit tốt cho cả hai)\n- KHÔNG: ‚Wettbewerber gibt mir billiger' (unprofessional in DACH)\n- KHÔNG: ‚Sie müssen' (Konfrontativ)\n\nKhi Compromise möglich:\n- ‚Drei Prozent Mengenrabatt plus Forecast-Sharing klingt wie ein guter erster Schritt. Lassen Sie uns das in einem Probezeitraum von sechs Monaten testen.' (3% chiết khấu + chia sẻ forecast nghe như bước đầu tốt. Mình thử trong 6 tháng)\n\nKhi Lieferant aggressiv:\n- ‚Lassen Sie uns kurz innehalten. Beide Seiten haben Interesse an einer langfristigen Partnerschaft. Wo sehen Sie Konzessionsspielraum auf Ihrer Seite?' (mình dừng. Cả hai có lợi ích quan hệ dài hạn. Anh thấy dư địa nhượng bộ ở đâu?)\n\nMẹo cuối: deutsche Lieferanten-Verhandlung ist Marathon, nicht Sprint. Aufbauen Vertrauen über mehrere Bestellzyklen, dann größere Konzessionen. Wer auf erstem Meeting Maximum verlangt, bekommt Minimum. Geduld wird belohnt mit besseren Konditionen über Zeit + Lieferzuverlässigkeit, wenn der Markt knapp wird.",
+    "vocabulary": [
+      {
+        "word": "der/die Lieferant/-in",
+        "en": "supplier",
+        "vi": "nhà cung cấp",
+        "pos": "noun (m/f)",
+        "pronunciation_vi": "đe LI-fê-rant"
+      },
+      {
+        "word": "die Konditionen (pl.)",
+        "en": "terms, conditions (commercial)",
+        "vi": "điều kiện (thương mại)",
+        "pos": "noun (pl)",
+        "pronunciation_vi": "đi kôn-đi-tsi-Ô-nần"
+      },
+      {
+        "word": "der Mengenrabatt",
+        "en": "volume discount",
+        "vi": "chiết khấu khối lượng",
+        "pos": "noun (m)",
+        "pronunciation_vi": "đe MÊN-gân-ra-bat"
+      },
+      {
+        "word": "die Abnahmezusage",
+        "en": "purchase commitment",
+        "vi": "cam kết tiếp nhận",
+        "pos": "noun (f)",
+        "pronunciation_vi": "đi AB-na-mê-tsu-za-gê"
+      },
+      {
+        "word": "die Lieferzeit / Lieferzuverlässigkeit",
+        "en": "delivery time / reliability",
+        "vi": "thời gian giao / độ tin cậy giao",
+        "pos": "noun (f)",
+        "pronunciation_vi": "đi LI-fê-tsait"
+      },
+      {
+        "word": "die Qualitätssicherung",
+        "en": "quality assurance",
+        "vi": "đảm bảo chất lượng",
+        "pos": "noun (f)",
+        "pronunciation_vi": "đi kva-li-TÊTS-zi-khê-rung"
+      },
+      {
+        "word": "das gemeinsame Audit",
+        "en": "joint audit",
+        "vi": "audit chung",
+        "pos": "noun (n)",
+        "pronunciation_vi": "đát gê-MAIN-za-mê AO-đit"
+      },
+      {
+        "word": "der Forecast / die Bedarfsprognose",
+        "en": "forecast / demand forecast",
+        "vi": "dự báo nhu cầu",
+        "pos": "noun (m/f)",
+        "pronunciation_vi": "đe FÔ-kast"
+      },
+      {
+        "word": "das Skonto",
+        "en": "early-payment discount",
+        "vi": "chiết khấu thanh toán sớm",
+        "pos": "noun (n)",
+        "pronunciation_vi": "đát SKÔN-tô"
+      },
+      {
+        "word": "an der Grenze des Tragbaren",
+        "en": "at the limit of what is bearable",
+        "vi": "ở giới hạn chịu đựng",
+        "pos": "phrase",
+        "pronunciation_vi": "an đe GREN-tsê đệs TRAK-ba-rần"
+      }
+    ],
+    "dialogue": [
+      {
+        "speaker": "Linh (Procurement)",
+        "text": "Herr Kaufmann, vor dem Hintergrund unserer Volumen-Steigerung von achtzehn Prozent halten wir eine Anpassung der Konditionen für angezeigt.",
+        "vi": "Anh Kaufmann, trên cơ sở mức tăng volume 18% chúng tôi cho rằng điều chỉnh điều kiện là cần thiết."
+      },
+      {
+        "speaker": "Vertrieb Kaufmann",
+        "text": "Welche Konditionen schweben Ihnen vor?",
+        "vi": "Anh nghĩ đến điều kiện nào?"
+      },
+      {
+        "speaker": "Linh",
+        "text": "Konkret: Mengenrabatt von vier Prozent ab dem nächsten Bestellzyklus, gekoppelt an eine verbindliche Abnahmezusage über zwölf Monate.",
+        "vi": "Cụ thể: chiết khấu khối lượng 4% từ chu kỳ tới, gắn với cam kết tiếp nhận có hiệu lực 12 tháng."
+      },
+      {
+        "speaker": "Vertrieb Kaufmann",
+        "text": "Vier Prozent ist im oberen Bereich. Bei verbindlicher Zusage über zwölf Monate können wir über drei Prozent reden — das wäre marktkonform.",
+        "vi": "4% nằm ở phần trên. Với cam kết có hiệu lực 12 tháng, mình có thể bàn 3% — phù hợp thị trường."
+      }
+    ],
+    "dialogue_long": [
+      {
+        "speaker": "Linh",
+        "text": "Herr Kaufmann, vielen Dank, dass Sie sich heute Zeit nehmen. Wie geht es Ihrem Team in Stuttgart?",
+        "vi": "Anh Kaufmann, cám ơn anh đã dành thời gian hôm nay. Đội của anh ở Stuttgart thế nào?"
+      },
+      {
+        "speaker": "Vertrieb Kaufmann",
+        "text": "Gut, danke. Was steht auf der Agenda?",
+        "vi": "Tốt, cám ơn. Agenda hôm nay là gì?"
+      },
+      {
+        "speaker": "Linh",
+        "text": "Drei Punkte: Konditionen, Lieferzeiten, Qualitätssicherung — alles vor dem Hintergrund unserer Volumen-Steigerung von achtzehn Prozent im laufenden Jahr.",
+        "vi": "Ba điểm: điều kiện, thời gian giao, đảm bảo chất lượng — tất cả trên cơ sở tăng volume 18% năm hiện tại."
+      },
+      {
+        "speaker": "Vertrieb Kaufmann",
+        "text": "Achtzehn Prozent — das ist solide. Beginnen wir mit den Konditionen.",
+        "vi": "18% — vững. Mình bắt đầu với điều kiện."
+      },
+      {
+        "speaker": "Linh",
+        "text": "Konkret schlagen wir einen Mengenrabatt von vier Prozent ab dem nächsten Bestellzyklus vor, gekoppelt an eine verbindliche Abnahmezusage über zwölf Monate. Im Gegenzug bieten wir Forecast-Sharing auf rollierender Basis.",
+        "vi": "Cụ thể chúng tôi đề xuất chiết khấu khối lượng 4% từ chu kỳ tới, gắn cam kết tiếp nhận 12 tháng. Đổi lại chúng tôi chia sẻ forecast theo cơ sở rolling."
+      },
+      {
+        "speaker": "Vertrieb Kaufmann",
+        "text": "Vier Prozent ist im oberen Bereich unserer Staffel. Bei verbindlicher Zusage über zwölf Monate können wir über drei Prozent reden, das wäre marktkonform. Forecast-Sharing nehmen wir gerne auf.",
+        "vi": "4% nằm ở phần trên Staffel của chúng tôi. Với cam kết 12 tháng, mình có thể bàn 3% — phù hợp thị trường. Forecast-sharing nhận sẵn lòng."
+      },
+      {
+        "speaker": "Linh",
+        "text": "Drei Prozent plus rolliertes Forecast-Sharing klingt wie ein guter erster Schritt. Lassen Sie uns das in einem Probezeitraum von sechs Monaten festhalten — Bewährung führt zu vier Prozent.",
+        "vi": "3% cộng forecast-sharing nghe như bước đầu tốt. Mình ghi vào giai đoạn thử 6 tháng — đạt sẽ lên 4%."
+      },
+      {
+        "speaker": "Vertrieb Kaufmann",
+        "text": "Bewährungsklausel akzeptiere ich — Kennzahlen müssen wir definieren. Welche?",
+        "vi": "Điều khoản đạt đánh giá tôi chấp nhận — mình phải định nghĩa KPI. Cái gì?"
+      },
+      {
+        "speaker": "Linh",
+        "text": "Forecast-Genauigkeit von neunzig Prozent über sechs Monate, Pünktlichkeitsquote bei Bestellabrufen über fünfundneunzig Prozent. Beide Seiten messen, monatliche Reviews.",
+        "vi": "Độ chính xác forecast 90% trong 6 tháng, tỷ lệ đúng giờ khi gọi đơn trên 95%. Cả hai bên đo, review hàng tháng."
+      },
+      {
+        "speaker": "Vertrieb Kaufmann",
+        "text": "Akzeptiert. Lieferzeiten?",
+        "vi": "Chấp nhận. Thời gian giao?"
+      },
+      {
+        "speaker": "Linh",
+        "text": "Die aktuellen zwölf Wochen sind vor dem Hintergrund unserer Produktionsplanung an der Grenze des Tragbaren. Können wir gemeinsam einen Pfad zu zehn Wochen erarbeiten — vielleicht über Forecast-getriebene Vorfertigung?",
+        "vi": "12 tuần hiện tại trên cơ sở kế hoạch sản xuất ở giới hạn chịu đựng. Mình cùng xây lộ trình xuống 10 tuần được không — có thể qua sản xuất trước theo forecast?"
+      },
+      {
+        "speaker": "Vertrieb Kaufmann",
+        "text": "Forecast-getriebene Vorfertigung ist denkbar, sofern Sie verbindliche Mengen committen. Bei 80 Prozent Commit-Rate können wir Lieferzeit auf zehn Wochen reduzieren.",
+        "vi": "Sản xuất trước theo forecast khả thi, miễn là cam kết khối lượng có hiệu lực. Với 80% commit-rate mình có thể giảm xuống 10 tuần."
+      },
+      {
+        "speaker": "Linh",
+        "text": "Achtzig Prozent Commit ist machbar. Übrig: Qualitätssicherung — hinsichtlich der QS schlagen wir vor, dass wir einmal jährlich ein gemeinsames Audit beim Werk in Stuttgart durchführen.",
+        "vi": "80% commit khả thi. Còn lại: QS — về QS chúng tôi đề xuất một lần mỗi năm cùng audit tại nhà máy Stuttgart."
+      },
+      {
+        "speaker": "Vertrieb Kaufmann",
+        "text": "Annual Audit ist Standard für unsere Strategischen — gerne. Wir koordinieren Termin im Q1.",
+        "vi": "Audit hàng năm là chuẩn cho khách chiến lược — vui lòng. Mình phối hợp lịch trong Q1."
+      },
+      {
+        "speaker": "Linh",
+        "text": "Lassen Sie mich zusammenfassen: drei Prozent Mengenrabatt mit Bewährungs-Pfad zu vier Prozent, Forecast-Sharing, Lieferzeit zehn Wochen bei achtzig Prozent Commit, Annual Audit Q1. Habe ich das richtig erfasst?",
+        "vi": "Cho tôi tóm gọn: 3% chiết khấu với đường đến 4%, forecast-sharing, lieferzeit 10 tuần với 80% commit, Annual Audit Q1. Tôi nắm đúng chứ?"
+      },
+      {
+        "speaker": "Vertrieb Kaufmann",
+        "text": "Korrekt zusammengefasst. Eine langfristige Partnerschaft setzt aus unserer Sicht genau das voraus — gemeinsame Optimierung.",
+        "vi": "Tóm chuẩn. Một quan hệ đối tác dài hạn theo chúng tôi đòi hỏi chính điều đó — cùng tối ưu hóa."
+      },
+      {
+        "speaker": "Linh",
+        "text": "Eine langfristige Partnerschaft setzt aus unserer Sicht voraus, dass beide Seiten das Verhältnis von Preis, Qualität und Lieferzuverlässigkeit gemeinsam optimieren. Vielen Dank für die offene Diskussion — ich schicke das Memo bis Ende der Woche.",
+        "vi": "Một quan hệ đối tác dài hạn theo chúng tôi đòi hỏi cả hai bên cùng tối ưu giá, chất lượng, độ tin cậy giao. Cám ơn anh đã trao đổi cởi mở — tôi gửi memo cuối tuần."
+      }
+    ],
+    "roleplay_prompts": [
+      "Bạn là Procurement-Lead, đàm phán với deutsche Maschinenbau-Lieferant ở Stuttgart. Mở đầu formal: ‚Vor dem Hintergrund unserer Volumen-Steigerung von 18%...' + 3 Themen (Konditionen / Lieferzeiten / QS).",
+      "Lieferant counter-offer 3% statt 4%. Đáp formal: chấp nhận như erster Schritt + Bewährungs-Pfad zu 4% mit konkreten KPIs (Forecast-Genauigkeit 90%, Pünktlichkeit 95%). KHÔNG ‚Wettbewerber gibt billiger'.",
+      "Đề xuất Lieferzeit-Reduktion von 12 auf 10 Wochen über Forecast-getriebene Vorfertigung mit 80% Commit-Rate. Diễn đạt Schlussformel partnership-orientiert: ‚gemeinsame Optimierung von Preis, Qualität, Lieferzuverlässigkeit'."
+    ],
+    "register_notes": "Lieferanten-Verhandlung C1: ‚Sie' tuyệt đối với Vertrieb. Konjunktiv II không obligatory — Indikativ direct + sachlich OK. Funktionsverbgefüge: ‚an der Grenze des Tragbaren liegen' (ở giới hạn chịu đựng), ‚in Anpassung treten' (đi vào điều chỉnh), ‚zur Geltung bringen' (làm có hiệu lực). Argument-Struktur: ‚Vor dem Hintergrund von X halten wir Y für angezeigt' (trên cơ sở X, Y là cần thiết). Konkret-Vorschlag formula: ‚Konkret schlagen wir A vor, gekoppelt an B' (cụ thể đề xuất A, gắn với B). Win-Win framing: ‚Im Gegenzug bieten wir X' (đổi lại chúng tôi đề xuất X). Partnership formula bắt buộc: ‚langfristige Partnerschaft setzt voraus, dass beide Seiten X gemeinsam optimieren'. KHÔNG ‚Wettbewerb gibt billiger' (unprofessional in DACH). KHÔNG aggressive Threats. Bewährungs-Mechanismus oft hữu ích — Probezeit + KPIs + Eskalation zu besseren Konditionen.",
+    "idiom_glosses": [
+      {
+        "idiom": "Hand in Hand arbeiten",
+        "literal": "làm việc tay trong tay",
+        "meaning": "hợp tác chặt chẽ (standardsprachlich)",
+        "example": "Eine langfristige Partnerschaft funktioniert nur, wenn Procurement und Lieferant Hand in Hand arbeiten."
+      },
+      {
+        "idiom": "den Markt sondieren",
+        "literal": "thăm dò thị trường",
+        "meaning": "khảo sát giá / điều kiện thị trường (gehoben/standardsprachlich)",
+        "example": "Bevor wir verhandeln, sondieren wir den Markt — drei alternative Lieferanten benchmarked."
+      },
+      {
+        "idiom": "ein Ass im Ärmel haben",
+        "literal": "có quân Át trong tay áo",
+        "meaning": "có lợi thế bí mật trong đàm phán (standardsprachlich)",
+        "example": "Mit Forecast-Sharing haben wir ein Ass im Ärmel — der Lieferant gewinnt Planungssicherheit, wir gewinnen Preisspielraum."
+      },
+      {
+        "idiom": "die Spreu vom Weizen trennen",
+        "literal": "tách trấu khỏi lúa",
+        "meaning": "phân biệt cốt lõi khỏi không cần (gehoben)",
+        "example": "Im Mengenrabatt-Verhandlung trennt sich die Spreu vom Weizen — strategische Lieferanten geben mehr nach als reine Transaktionsanbieter."
+      }
+    ],
+    "exercises": [
+      {
+        "type": "fill_blank",
+        "instruction_vi": "Điền cấu trúc Lieferanten-Verhandlung C1:",
+        "pronunciation_focus": [],
+        "items": [
+          {
+            "prompt": "Vor dem ___ unserer Volumen-Steigerung halten wir eine Anpassung für angezeigt.",
+            "answer": "Hintergrund"
+          },
+          {
+            "prompt": "Konkret schlagen wir einen ___ von vier Prozent vor.",
+            "answer": "Mengenrabatt"
+          },
+          {
+            "prompt": "Die aktuellen Lieferzeiten sind an der Grenze des ___.",
+            "answer": "Tragbaren"
+          },
+          {
+            "prompt": "Eine langfristige Partnerschaft ___ voraus, dass beide Seiten gemeinsam optimieren.",
+            "answer": "setzt"
+          }
+        ]
+      },
+      {
+        "type": "matching",
+        "instruction_vi": "Nối thuật ngữ Lieferanten-Verhandlung với chức năng:",
+        "pronunciation_focus": [],
+        "items": [
+          {
+            "prompt": "Mengenrabatt + Abnahmezusage",
+            "answer": "Volume discount gắn với commitment"
+          },
+          {
+            "prompt": "Forecast-Sharing rollierend",
+            "answer": "Win-Win — gibt Lieferant Planungssicherheit"
+          },
+          {
+            "prompt": "Bewährungs-Klausel",
+            "answer": "Probezeit + KPIs + Eskalation zu besseren Konditionen"
+          },
+          {
+            "prompt": "Annual Audit Q1",
+            "answer": "QS-Standard für strategische Lieferanten"
+          }
+        ]
+      },
+      {
+        "type": "translation",
+        "instruction_vi": "Dịch sang tiếng Đức formal C1:",
+        "pronunciation_focus": ["supplier negotiation"],
+        "items": [
+          {
+            "prompt": "Trên cơ sở mức tăng khối lượng 18%, chúng tôi cho rằng điều chỉnh điều kiện là cần thiết.",
+            "answer": "Vor dem Hintergrund unserer Volumen-Steigerung von achtzehn Prozent halten wir eine Anpassung der Konditionen für angezeigt."
+          },
+          {
+            "prompt": "Cụ thể chúng tôi đề xuất chiết khấu khối lượng 4% gắn với cam kết tiếp nhận có hiệu lực.",
+            "answer": "Konkret schlagen wir einen Mengenrabatt von vier Prozent vor, gekoppelt an eine verbindliche Abnahmezusage."
+          },
+          {
+            "prompt": "Thời gian giao hàng hiện tại ở giới hạn chịu đựng.",
+            "answer": "Die aktuellen Lieferzeiten sind an der Grenze des Tragbaren."
+          },
+          {
+            "prompt": "Một quan hệ đối tác dài hạn đòi hỏi cả hai bên cùng tối ưu hóa giá, chất lượng và độ tin cậy giao.",
+            "answer": "Eine langfristige Partnerschaft setzt voraus, dass beide Seiten das Verhältnis von Preis, Qualität und Lieferzuverlässigkeit gemeinsam optimieren."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lkonstruktiver_widerspruch",
+    "level": "C1",
+    "category": "fluency",
+    "title_vi": "Phản đối có tính xây dựng với cấp trên — Konstruktiver Widerspruch gegenüber Führung",
+    "title_en": "Constructive pushback to leadership in a German organization",
+    "sentences": [
+      {
+        "en": "Frau Direktorin, ich teile die strategische Stoßrichtung im Grundsatz, möchte jedoch zwei Punkte zur Diskussion stellen, die mir aus operativer Sicht problematisch erscheinen.",
+        "vi": "Thưa giám đốc, tôi chia sẻ định hướng chiến lược về căn bản, song muốn đưa hai điểm ra thảo luận mà từ góc vận hành có vẻ có vấn đề với tôi.",
+        "pronunciation_focus": [
+          "Stoßrichtung → SHTÔS-rikh-tung",
+          "Grundsatz → GRUNT-zats",
+          "operativ → ô-pê-ra-TIF"
+        ]
+      },
+      {
+        "en": "Erstens halte ich den Zeitplan für ambitioniert — die geplanten zwölf Wochen reichen meines Erachtens nicht aus, um die Migrations-Risiken angemessen abzufedern.",
+        "vi": "Thứ nhất, tôi cho rằng kế hoạch thời gian đầy tham vọng — 12 tuần dự kiến theo tôi không đủ để giảm thiểu rủi ro migration một cách phù hợp.",
+        "pronunciation_focus": [
+          "ambitioniert → am-bi-tsi-ô-NIT",
+          "abzufedern → AB-tsu-fê-đần",
+          "Migrations-Risiken → mi-gra-tsi-ÔNS-ri-zi-kân"
+        ]
+      },
+      {
+        "en": "Zweitens würde ich anregen, dass wir das Engineering-Team frühzeitig in die Anforderungsanalyse einbeziehen — eine reine Top-Down-Vorgabe birgt erhebliche Umsetzungsrisiken.",
+        "vi": "Thứ hai, tôi xin đề nghị chúng ta sớm đưa nhóm Engineering vào phân tích yêu cầu — chỉ định hướng top-down thuần túy chứa rủi ro triển khai đáng kể.",
+        "pronunciation_focus": [
+          "anregen → AN-rê-gần",
+          "frühzeitig → FRUY-tsai-tikh",
+          "Anforderungsanalyse → AN-fô-đê-rungs-a-na-luy-zê"
+        ]
+      },
+      {
+        "en": "Mein Anliegen ist nicht, die Entscheidung in Frage zu stellen, sondern die Wahrscheinlichkeit ihrer erfolgreichen Umsetzung zu erhöhen.",
+        "vi": "Mối quan tâm của tôi không phải là đặt vấn đề về quyết định, mà là tăng xác suất triển khai thành công của nó.",
+        "pronunciation_focus": [
+          "Anliegen → AN-li-gân",
+          "Wahrscheinlichkeit → VA-shain-likh-kait",
+          "Umsetzung → UM-zê-tsung"
+        ]
+      },
+      {
+        "en": "Sollten Sie das anders sehen, übernehme ich selbstverständlich die Linie — ich wollte Ihnen die Risiken jedoch transparent gemacht haben, bevor wir starten.",
+        "vi": "Nếu chị nhìn nhận khác, tất nhiên tôi sẽ theo chỉ đạo — tuy nhiên tôi muốn làm minh bạch các rủi ro trước khi mình bắt đầu.",
+        "pronunciation_focus": [
+          "selbstverständlich → ZELP-st-fe-shten-likh",
+          "transparent → trans-pa-RENT",
+          "starten → SHTA-tần"
+        ]
+      }
+    ],
+    "cultural_notes_vi": "Konstruktiver Widerspruch gegenüber Führung trong văn hóa công ty Đức tuân theo Streitkultur principle — pushback ist Teil der professionellen Pflicht, nicht Verstoß gegen Hierarchie. (1) WIDERSPRUCH ALS LOYALITÄT: deutsche Führung erwartet, dass kompetente Mitarbeiter Risiken aufzeigen, BEVOR die Entscheidung umgesetzt wird. ‚Ja-Sager' wird als ‚nicht denkend' wahrgenommen. Câu chuẩn của Direktorin nach gutem Pushback: ‚Vielen Dank, dass Sie das angesprochen haben — das hatten wir nicht ausreichend bedacht'. (2) SACHE vs PERSON: pushback bắt buộc auf Sachebene — ‚der Zeitplan ist ambitioniert', không ‚Sie haben das schlecht durchdacht'. Persönliche Kritik = Karriereschaden. Kritik an der Sache = Karriereförderung. (3) LOYALITÄT NACH ENTSCHEIDUNG: nach pushback, wenn Direktorin trotzdem an Entscheidung festhält, MUSS Mitarbeiter loyal umsetzen. Câu chuẩn: ‚Sollten Sie das anders sehen, übernehme ich selbstverständlich die Linie'. ‚Disagree and commit' (Bezos-formel) ist auch deutsche Norm — wer nach Entscheidung weiter widerspricht, untergräbt Vertrauen.\n\nKhác Việt Nam: trong văn hóa Việt, junior widersprechen senior leader öffentlich là rất nhạy cảm — thường ‚behind closed doors' oder gar nicht. Ở Đức, öffentlicher Widerspruch in Meetings ist normal, solange sachlich. Nhiều VN-trained scholars haben Schwierigkeit mit dieser kulturelle Norm.\n\nMột chi tiết quan trọng: TIMING ist entscheidend. Pushback BEVOR Entscheidung getroffen ist = produktiv. Pushback NACH öffentlicher Verkündung der Entscheidung = Loyalitätsproblem. Wenn die CEO eine Strategie auf Hauptversammlung verkündet hat, ist es zu spät für ‚das halte ich für falsch' — auch wenn Sie das tatsächlich für falsch halten.\n\nVề ‚Anliegen' vs ‚Forderung': formal Pushback formuliert sich als ‚Anliegen' (concern, not demand). ‚Mein Anliegen ist...' weicher als ‚Ich fordere...'. Anliegen impliziert: ich bringe es ein, Sie entscheiden.\n\nVề Schriftlichkeit: nach kritischem Mündlich-Pushback empfiehlt sich Memo per E-Mail — ‚zur Dokumentation der besprochenen Risiken'. Diese Memo schützt Sie, wenn die Entscheidung schiefgeht (‚ich hatte ja gewarnt'). Memo nicht aggressive — sachlich Risikodokumentation.\n\nVề Eskalation: wenn direkter Vorgesetzter pushback ablehnt und Sie weiterhin schwere Bedenken haben, Eskalation zum Vorgesetzten des Vorgesetzten möglich, aber NUR mit Ankündigung an direkten Vorgesetzten zuerst (‚Ich werde mit Frau Direktorin direkt reden — ich informiere Sie'). Eskalation hinter dem Rücken = professionelles Selbstmord.\n\nVề Compliance-Risiken: wenn Pushback Compliance / Recht / Sicherheit betrifft (z.B. Datenschutz-Verletzung, illegale Praxis), ist Eskalation an Compliance-Officer / Betriebsrat nicht nur erlaubt, sondern Pflicht (‚Whistleblower-Schutz' nach HinSchG seit 2023).",
+    "tip_advice_vi": "Vor Pushback-Gespräch (Vorbereitung):\n1. ZIEL klären: Risiken aufzeigen ODER Entscheidung kippen? Letzteres ist viel schwerer und braucht stärkere Argumente.\n2. SACHEBENE: 2-3 konkrete operative Risiken, mit Wahrscheinlichkeit und Impact.\n3. ALTERNATIV-VORSCHLAG: was würden Sie stattdessen tun? — Pushback ohne Alternativ ist Lamento, nicht Beratung.\n4. LOYALITÄTS-ZUSICHERUNG: vorbereiten — ‚Sollten Sie das anders sehen, übernehme ich die Linie' am Ende.\n\nIm Gespräch (5-Schritte-Struktur):\n1. ZUSTIMMUNG zur strategischen Stoßrichtung (1 Satz): ‚Ich teile die strategische Stoßrichtung im Grundsatz'\n2. ANKÜNDIGUNG: ‚möchte jedoch zwei Punkte zur Diskussion stellen'\n3. RISIKEN nennen: konkret, mit Begründung\n4. ALTERNATIVE / MITIGATION: was würden Sie tun?\n5. LOYALITÄTS-ZUSICHERUNG: ‚Sollten Sie das anders sehen, übernehme ich die Linie'\n\nNgôn ngữ Konstruktiver Widerspruch C1:\n- ‚Ich teile die strategische Stoßrichtung im Grundsatz, möchte jedoch zwei Punkte zur Diskussion stellen' (chia sẻ định hướng chiến lược căn bản, song muốn đưa hai điểm ra thảo luận)\n- ‚Aus operativer Sicht erscheinen mir folgende Punkte problematisch' (từ góc vận hành các điểm sau có vẻ có vấn đề)\n- ‚Ich halte X für ambitioniert / problematisch / unzureichend' (tôi cho X là đầy tham vọng / có vấn đề / không đủ)\n- ‚Meines Erachtens reicht Y nicht aus, um Z abzufedern' (theo tôi Y không đủ để giảm thiểu Z)\n- ‚Ich würde anregen, dass...' (tôi xin đề nghị)\n- ‚Mein Anliegen ist nicht, die Entscheidung in Frage zu stellen, sondern die Umsetzung zu erleichtern' (mối quan tâm của tôi không phải đặt vấn đề về quyết định, mà giúp triển khai)\n- ‚Sollten Sie das anders sehen, übernehme ich selbstverständlich die Linie' (nếu chị nhìn khác, tôi tất nhiên theo chỉ đạo)\n\nKhi Direktorin annahmiert (‚Sie verstehen die Strategie nicht'):\n- ‚Ich verstehe die strategische Logik — meine Bedenken betreffen die operative Umsetzung. Können wir das auseinanderhalten?' (tôi hiểu logic chiến lược — quan ngại của tôi về triển khai vận hành. Mình tách ra được không?)\n\nKhi Direktorin akzeptiert pushback teilweise:\n- ‚Vielen Dank, dass Sie den Punkt aufnehmen. Lassen Sie uns konkret werden — was wäre ein realistischer Zeitplan?' (cám ơn chị đã tiếp nhận. Cụ thể — kế hoạch thời gian thực tế là gì?)\n\nKhi Direktorin festhält an Entscheidung:\n- ‚Ich nehme das zur Kenntnis. Selbstverständlich übernehme ich die Linie — ich wollte die Risiken transparent gemacht haben, bevor wir starten. Können wir die Mitigation-Maßnahmen kurz besprechen?' (tôi ghi nhận. Tất nhiên tôi theo chỉ đạo — tôi muốn làm minh bạch rủi ro trước khi bắt đầu. Mình bàn ngắn các biện pháp giảm thiểu được không?)\n\nNach Gespräch — Memo (1 Tag):\n- ‚Liebe Frau Direktorin, vielen Dank für das offene Gespräch heute. Zur Dokumentation halte ich die diskutierten Risiken kurz fest: 1. Zeitplan-Risiko (geschätzt mittelhoch); 2. Engineering-Einbindung (geschätzt hoch). Mitigation-Maßnahmen wie besprochen: A, B, C. Ich starte wie vereinbart Montag mit der Umsetzung. Mit besten Grüßen, Linh.'\n\nMẹo cuối: Pushback ist Karriere-Stärkung wenn richtig gemacht — Loyalitäts-Beweis durch Mut + Sachlichkeit. Wer NIE pushback macht, wird als ‚nicht selbst denkend' wahrgenommen. Wer ZU OFT pushback macht, als ‚schwierig'. Sweet spot: 2-3 substantielle Pushbacks pro Jahr auf strategische Entscheidungen.",
+    "vocabulary": [
+      {
+        "word": "der konstruktive Widerspruch",
+        "en": "constructive pushback",
+        "vi": "phản đối có tính xây dựng",
+        "pos": "noun (m)",
+        "pronunciation_vi": "đe kôn-struk-TI-vê VI-đê-shpruk"
+      },
+      {
+        "word": "die Stoßrichtung",
+        "en": "strategic direction, thrust",
+        "vi": "định hướng chiến lược",
+        "pos": "noun (f)",
+        "pronunciation_vi": "đi SHTÔS-rikh-tung"
+      },
+      {
+        "word": "im Grundsatz",
+        "en": "in principle",
+        "vi": "về căn bản",
+        "pos": "phrase",
+        "pronunciation_vi": "im GRUNT-zats"
+      },
+      {
+        "word": "operativ",
+        "en": "operational",
+        "vi": "vận hành",
+        "pos": "adjective",
+        "pronunciation_vi": "ô-pê-ra-TIF"
+      },
+      {
+        "word": "ambitioniert",
+        "en": "ambitious",
+        "vi": "đầy tham vọng",
+        "pos": "adjective",
+        "pronunciation_vi": "am-bi-tsi-ô-NIT"
+      },
+      {
+        "word": "abfedern",
+        "en": "to cushion, mitigate",
+        "vi": "giảm thiểu",
+        "pos": "verb (sep.)",
+        "pronunciation_vi": "AB-fê-đần"
+      },
+      {
+        "word": "die Migrations-Risiken (pl.)",
+        "en": "migration risks",
+        "vi": "rủi ro migration",
+        "pos": "noun (pl)",
+        "pronunciation_vi": "đi mi-gra-tsi-ÔNS-ri-zi-kân"
+      },
+      {
+        "word": "das Anliegen",
+        "en": "concern, request (formal)",
+        "vi": "mối quan tâm (formal)",
+        "pos": "noun (n)",
+        "pronunciation_vi": "đát AN-li-gân"
+      },
+      {
+        "word": "die Linie übernehmen",
+        "en": "to follow the official line",
+        "vi": "theo chỉ đạo chính thức",
+        "pos": "verb phrase",
+        "pronunciation_vi": "đi LI-ni-ê uy-bờ-NÊ-mần"
+      },
+      {
+        "word": "das Mitigation-Maßnahmen",
+        "en": "mitigation measures",
+        "vi": "biện pháp giảm thiểu",
+        "pos": "noun (pl)",
+        "pronunciation_vi": "đát mi-ti-GA-tsi-ôn-mas-na-mần"
+      }
+    ],
+    "dialogue": [
+      {
+        "speaker": "Linh",
+        "text": "Frau Direktorin, ich teile die strategische Stoßrichtung im Grundsatz, möchte jedoch zwei Punkte zur Diskussion stellen, die mir aus operativer Sicht problematisch erscheinen.",
+        "vi": "Thưa giám đốc, tôi chia sẻ định hướng chiến lược về căn bản, song muốn đưa hai điểm ra thảo luận mà từ góc vận hành có vẻ có vấn đề."
+      },
+      {
+        "speaker": "Direktorin Wagner",
+        "text": "Bitte, treten Sie ein. Welche Punkte?",
+        "vi": "Mời cô. Điểm nào?"
+      },
+      {
+        "speaker": "Linh",
+        "text": "Erstens der Zeitplan — zwölf Wochen sind meines Erachtens zu knapp für die Migrations-Risiken. Zweitens die Engineering-Einbindung — eine reine Top-Down-Vorgabe birgt Umsetzungsrisiken.",
+        "vi": "Thứ nhất kế hoạch — 12 tuần theo tôi quá hẹp cho rủi ro migration. Thứ hai sự tham gia của Engineering — chỉ định hướng top-down chứa rủi ro triển khai."
+      },
+      {
+        "speaker": "Direktorin Wagner",
+        "text": "Vielen Dank, dass Sie das ansprechen. Lassen Sie uns die Punkte einzeln durchgehen.",
+        "vi": "Cám ơn cô đã nêu lên. Mình đi qua từng điểm."
+      }
+    ],
+    "dialogue_long": [
+      {
+        "speaker": "Linh",
+        "text": "Frau Direktorin Wagner, ich danke für den Termin. Ich teile die strategische Stoßrichtung der Cloud-Migration im Grundsatz, möchte jedoch zwei Punkte zur Diskussion stellen, die mir aus operativer Sicht problematisch erscheinen.",
+        "vi": "Thưa giám đốc Wagner, tôi cám ơn vì cuộc hẹn. Tôi chia sẻ định hướng chiến lược Cloud-Migration về căn bản, song muốn đưa hai điểm ra thảo luận mà từ góc vận hành có vẻ có vấn đề."
+      },
+      {
+        "speaker": "Direktorin Wagner",
+        "text": "Bitte sprechen Sie. Sie wissen, dass mir Pushback wichtig ist, solange er sachlich bleibt.",
+        "vi": "Mời cô nói. Cô biết với tôi pushback quan trọng, miễn là sachlich."
+      },
+      {
+        "speaker": "Linh",
+        "text": "Erstens halte ich den Zeitplan für ambitioniert. Die geplanten zwölf Wochen reichen meines Erachtens nicht aus, um die Migrations-Risiken angemessen abzufedern. Konkret: die Daten-Konsolidierung allein wird auf Basis der Inventory-Analyse acht bis zehn Wochen brauchen.",
+        "vi": "Thứ nhất tôi cho kế hoạch đầy tham vọng. 12 tuần dự kiến theo tôi không đủ để giảm thiểu rủi ro migration. Cụ thể: chỉ riêng Daten-Konsolidierung trên cơ sở phân tích inventory sẽ cần 8-10 tuần."
+      },
+      {
+        "speaker": "Direktorin Wagner",
+        "text": "Acht bis zehn Wochen für Daten-Konsolidierung — wie kommen Sie zu der Schätzung?",
+        "vi": "8-10 tuần cho Daten-Konsolidierung — cô có ước lượng đó từ đâu?"
+      },
+      {
+        "speaker": "Linh",
+        "text": "Wir haben drei Legacy-Systeme mit nicht-konformer Schema-Struktur. Die Vorhalte-Analyse zeigt allein 47 Mapping-Konflikte, die manuell aufgelöst werden müssen. Bei einer Erfahrungsrate von 2 Konflikten pro Tag ergibt das vier bis fünf Wochen reine Mapping-Arbeit, plus Test-Zyklen.",
+        "vi": "Chúng tôi có 3 hệ thống legacy với cấu trúc schema không-conform. Phân tích trước cho thấy 47 mapping-conflict cần giải thủ công. Với năng suất 2 conflict/ngày, chỉ riêng mapping mất 4-5 tuần, cộng test-cycle."
+      },
+      {
+        "speaker": "Direktorin Wagner",
+        "text": "Das ist eine substantielle Datenbasis. Was schlagen Sie vor?",
+        "vi": "Đó là cơ sở dữ liệu có chất. Cô đề xuất gì?"
+      },
+      {
+        "speaker": "Linh",
+        "text": "Verlängerung des Zeitplans auf siebzehn Wochen — drei Wochen Daten-Audit, sieben Wochen Konsolidierung, fünf Wochen Migration, zwei Wochen Stabilisierung. Diese Phasen sind nicht parallelisierbar ohne Qualitätsverlust.",
+        "vi": "Kéo dài kế hoạch lên 17 tuần — 3 tuần data audit, 7 tuần konsolidierung, 5 tuần migration, 2 tuần stabilisierung. Các phase này không song song được mà không mất chất lượng."
+      },
+      {
+        "speaker": "Direktorin Wagner",
+        "text": "Siebzehn Wochen ist deutlich länger als ursprünglich geplant. Was ist Ihr zweiter Punkt?",
+        "vi": "17 tuần dài hơn rõ so với kế hoạch ban đầu. Điểm thứ hai của cô là gì?"
+      },
+      {
+        "speaker": "Linh",
+        "text": "Zweitens würde ich anregen, dass wir das Engineering-Team frühzeitig in die Anforderungsanalyse einbeziehen. Eine reine Top-Down-Vorgabe birgt erhebliche Umsetzungsrisiken — die Architektur-Entscheidungen werden aktuell im Strategie-Komitee getroffen, ohne Engineering-Input. Das hat in der Vergangenheit zu Re-Work-Schleifen geführt.",
+        "vi": "Thứ hai tôi xin đề nghị mình sớm đưa Engineering vào phân tích yêu cầu. Top-down thuần túy chứa rủi ro triển khai đáng kể — quyết định kiến trúc hiện được làm ở Strategie-Komitee, không có Engineering-Input. Trong quá khứ điều này dẫn đến vòng làm lại."
+      },
+      {
+        "speaker": "Direktorin Wagner",
+        "text": "Können Sie das mit konkreten Beispielen unterlegen?",
+        "vi": "Cô có thể chỉ ví dụ cụ thể không?"
+      },
+      {
+        "speaker": "Linh",
+        "text": "Im Bauer-Projekt 2023 wurde die API-Architektur ohne Engineering-Konsultation entschieden. Das Re-Work nach drei Monaten kostete uns elf Wochen und etwa 180.000 Euro. Mit frühzeitiger Engineering-Einbindung wäre das vermeidbar gewesen.",
+        "vi": "Ở dự án Bauer 2023 kiến trúc API được quyết định không hỏi Engineering. Re-Work sau 3 tháng tốn 11 tuần và khoảng 180.000 euro. Nếu sớm đưa Engineering vào, điều đó có thể tránh được."
+      },
+      {
+        "speaker": "Direktorin Wagner",
+        "text": "Das Bauer-Beispiel kenne ich. Ich war an der Architektur-Entscheidung damals beteiligt — die Lehre habe ich gezogen. Was schlagen Sie konkret vor?",
+        "vi": "Ví dụ Bauer tôi biết. Hồi đó tôi tham gia quyết định kiến trúc — tôi rút bài học. Cụ thể cô đề xuất gì?"
+      },
+      {
+        "speaker": "Linh",
+        "text": "Ein Engineering-Architect im Strategie-Komitee als Vollmitglied, nicht nur als Berater. Architecture-Entscheidungen brauchen Engineering-Veto-Recht bei technischen Showstoppern.",
+        "vi": "Một Engineering-Architect trong Strategie-Komitee như thành viên đầy đủ, không chỉ tư vấn. Quyết định kiến trúc cần Engineering-Veto-Recht ở các showstopper kỹ thuật."
+      },
+      {
+        "speaker": "Direktorin Wagner",
+        "text": "Engineering-Veto-Recht ist ein starker Eingriff in die Komitee-Struktur. Lassen Sie mich das durchdenken. Mein Anliegen ist die Geschwindigkeit — Veto kann Verzögerungen erzeugen.",
+        "vi": "Engineering-Veto-Recht là can thiệp mạnh vào cấu trúc Komitee. Cho tôi suy nghĩ. Mối quan tâm của tôi là tốc độ — Veto có thể gây chậm trễ."
+      },
+      {
+        "speaker": "Linh",
+        "text": "Das Anliegen verstehe ich. Wir können das Veto-Recht eingrenzen — nur bei Themen mit Re-Work-Potenzial über 100.000 Euro oder vier Wochen. Mein Anliegen ist nicht, die Entscheidung in Frage zu stellen, sondern die Wahrscheinlichkeit ihrer erfolgreichen Umsetzung zu erhöhen.",
+        "vi": "Tôi hiểu mối quan tâm. Mình có thể giới hạn Veto-Recht — chỉ ở chủ đề Re-Work potential trên 100.000 euro hoặc 4 tuần. Mối quan tâm của tôi không phải đặt vấn đề về quyết định, mà tăng xác suất triển khai thành công."
+      },
+      {
+        "speaker": "Direktorin Wagner",
+        "text": "Eingegrenztes Veto klingt durchdacht. Schreiben Sie mir das in einem Memo zusammen, ich nehme es ins Strategie-Komitee mit. Beim Zeitplan: siebzehn Wochen ist verhandelbar — fünfzehn Wochen wären meine rote Linie. Können wir uns dazwischen einigen?",
+        "vi": "Veto giới hạn nghe có suy nghĩ. Cô tổng hợp trong memo, tôi đưa vào Strategie-Komitee. Về kế hoạch: 17 tuần thương lượng được — 15 tuần là giới hạn của tôi. Mình có thể đồng thuận giữa được không?"
+      },
+      {
+        "speaker": "Linh",
+        "text": "Sechzehn Wochen mit Engineering-Einbindung von Tag eins, zwei Wochen Stabilisierung integriert in laufende Migration statt sequenziell. Sollten Sie das anders sehen, übernehme ich selbstverständlich die Linie — ich wollte Ihnen die Risiken jedoch transparent gemacht haben, bevor wir starten.",
+        "vi": "16 tuần với Engineering-tham gia từ ngày một, 2 tuần stabilisierung tích hợp vào migration đang chạy thay vì tuần tự. Nếu chị nhìn khác, tất nhiên tôi theo chỉ đạo — tuy nhiên tôi muốn làm minh bạch rủi ro trước khi bắt đầu."
+      },
+      {
+        "speaker": "Direktorin Wagner",
+        "text": "Sechzehn Wochen mit integrierter Stabilisierung akzeptiere ich. Memo bis Mittwoch. Vielen Dank, Frau Nguyễn — diese Art von Pushback ist genau, was die Organisation braucht.",
+        "vi": "16 tuần với stabilisierung tích hợp tôi chấp nhận. Memo trước thứ Tư. Cám ơn cô Nguyễn — kiểu pushback này chính là cái tổ chức cần."
+      }
+    ],
+    "roleplay_prompts": [
+      "Bạn là Senior-Manager đề xuất pushback đối với CEO về Cloud-Migration timeline (12 tuần quá ngắn). Mở đầu formal: ‚Ich teile die strategische Stoßrichtung im Grundsatz, möchte jedoch zwei Punkte zur Diskussion stellen' + 2 điểm sachlich.",
+      "CEO accept partial pushback (Zeitplan extended) but resists Engineering-Veto-Recht. Đề xuất Kompromiss: Veto giới hạn cho Re-Work-Potenzial >100k EUR / 4 tuần. Diễn đạt formal: ‚Mein Anliegen ist nicht, die Entscheidung in Frage zu stellen, sondern...'.",
+      "CEO setzt rote Linie bei 15 Wochen vs 17 Wochen vorgeschlagen. Diễn đạt Kompromiss + Loyalitäts-Zusicherung: ‚Sollten Sie das anders sehen, übernehme ich selbstverständlich die Linie — ich wollte Risiken transparent gemacht haben'."
+    ],
+    "register_notes": "Konstruktiver Widerspruch C1: ‚Sie' tuyệt đối với Direktorin/Geschäftsführung. Konjunktiv II cho Vorschläge: ‚würde ich anregen', ‚wäre denkbar', ‚halte X für ambitioniert'. Funktionsverbgefüge: ‚zur Diskussion stellen' (đưa ra thảo luận), ‚in Frage stellen' (đặt vấn đề), ‚Risiken abfedern' (giảm thiểu rủi ro), ‚die Linie übernehmen' (theo chỉ đạo). 5-Schritte-Struktur bắt buộc: Zustimmung → Ankündigung → Risiken → Alternative → Loyalitäts-Zusicherung. Schlüsselformeln:\n- Mở đầu: ‚Ich teile die strategische Stoßrichtung im Grundsatz, möchte jedoch...'\n- Reframing: ‚Mein Anliegen ist nicht, die Entscheidung in Frage zu stellen, sondern die Umsetzung zu erleichtern'\n- Kết: ‚Sollten Sie das anders sehen, übernehme ich selbstverständlich die Linie'\nKHÔNG ‚Sie haben das nicht durchdacht' (Personalisierung). KHÔNG persönliche Kritik. KHÔNG Pushback nach öffentlicher Verkündung. ‚Anliegen' weicher als ‚Forderung'. Memo nach Pushback empfehlenswert für Dokumentation.",
+    "idiom_glosses": [
+      {
+        "idiom": "den Finger in die Wunde legen",
+        "literal": "đặt ngón tay vào vết thương",
+        "meaning": "chỉ ra điểm yếu chính xác (gehoben/standardsprachlich)",
+        "example": "Mit dem Hinweis auf das Bauer-Beispiel haben Sie den Finger in die Wunde gelegt — das war damals tatsächlich vermeidbar."
+      },
+      {
+        "idiom": "Klartext reden",
+        "literal": "nói chữ rõ",
+        "meaning": "nói thẳng không vòng vo (standardsprachlich)",
+        "example": "Lassen Sie mich Klartext reden: der Zeitplan ist mit den vorhandenen Ressourcen nicht haltbar."
+      },
+      {
+        "idiom": "die rote Linie",
+        "literal": "đường đỏ",
+        "meaning": "giới hạn cuối không thể vượt (standardsprachlich)",
+        "example": "Fünfzehn Wochen wären meine rote Linie — alles darüber kann ich der Geschäftsführung nicht vermitteln."
+      },
+      {
+        "idiom": "auf einen gemeinsamen Nenner kommen",
+        "literal": "đến mẫu số chung",
+        "meaning": "đạt đồng thuận (standardsprachlich)",
+        "example": "Wir kommen auf einen gemeinsamen Nenner — sechzehn Wochen mit integrierter Stabilisierung."
+      }
+    ],
+    "exercises": [
+      {
+        "type": "fill_blank",
+        "instruction_vi": "Điền cấu trúc Konstruktiver Widerspruch C1:",
+        "pronunciation_focus": [],
+        "items": [
+          {
+            "prompt": "Ich teile die strategische ___ im Grundsatz, möchte jedoch zwei Punkte zur Diskussion stellen.",
+            "answer": "Stoßrichtung"
+          },
+          {
+            "prompt": "Die geplanten zwölf Wochen reichen meines Erachtens nicht aus, um die Migrations-Risiken angemessen ___.",
+            "answer": "abzufedern"
+          },
+          {
+            "prompt": "Mein ___ ist nicht, die Entscheidung in Frage zu stellen, sondern die Umsetzung zu erleichtern.",
+            "answer": "Anliegen"
+          },
+          {
+            "prompt": "Sollten Sie das anders sehen, übernehme ich selbstverständlich die ___.",
+            "answer": "Linie"
+          }
+        ]
+      },
+      {
+        "type": "matching",
+        "instruction_vi": "Nối khái niệm Konstruktiver Widerspruch với chức năng:",
+        "pronunciation_focus": [],
+        "items": [
+          {
+            "prompt": "Sache vs Person",
+            "answer": "Tách phê phán quyết định khỏi tấn công cá nhân"
+          },
+          {
+            "prompt": "Anliegen vs Forderung",
+            "answer": "Concern (mềm) vs Demand (cứng)"
+          },
+          {
+            "prompt": "Disagree and commit",
+            "answer": "Sau Entscheidung — phản đối ngừng, loyalty bắt đầu"
+          },
+          {
+            "prompt": "Memo nach Pushback",
+            "answer": "Dokumentation Risiken cho future reference"
+          }
+        ]
+      },
+      {
+        "type": "translation",
+        "instruction_vi": "Dịch sang tiếng Đức formal C1:",
+        "pronunciation_focus": ["constructive pushback"],
+        "items": [
+          {
+            "prompt": "Tôi chia sẻ định hướng chiến lược về căn bản, song muốn đưa hai điểm ra thảo luận từ góc vận hành.",
+            "answer": "Ich teile die strategische Stoßrichtung im Grundsatz, möchte jedoch zwei Punkte aus operativer Sicht zur Diskussion stellen."
+          },
+          {
+            "prompt": "Tôi xin đề nghị chúng ta sớm đưa Engineering vào phân tích yêu cầu.",
+            "answer": "Ich würde anregen, dass wir das Engineering-Team frühzeitig in die Anforderungsanalyse einbeziehen."
+          },
+          {
+            "prompt": "Mối quan tâm của tôi không phải đặt vấn đề về quyết định, mà tăng xác suất triển khai thành công.",
+            "answer": "Mein Anliegen ist nicht, die Entscheidung in Frage zu stellen, sondern die Wahrscheinlichkeit ihrer erfolgreichen Umsetzung zu erhöhen."
+          },
+          {
+            "prompt": "Nếu chị nhìn khác, tất nhiên tôi theo chỉ đạo — tôi muốn làm minh bạch rủi ro trước khi bắt đầu.",
+            "answer": "Sollten Sie das anders sehen, übernehme ich selbstverständlich die Linie — ich wollte Ihnen die Risiken jedoch transparent gemacht haben, bevor wir starten."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "linterkulturelle_verhandlung",
+    "level": "C1",
+    "category": "fluency",
+    "title_vi": "Đàm phán liên văn hóa Đức/Việt — Interkulturelle Verhandlung",
+    "title_en": "Intercultural negotiation between German and Vietnamese counterparts",
+    "sentences": [
+      {
+        "en": "Eine erfolgreiche interkulturelle Verhandlung setzt voraus, dass beide Seiten ihre kulturell geprägten Erwartungen explizit machen, anstatt sie stillschweigend vorauszusetzen.",
+        "vi": "Một cuộc đàm phán liên văn hóa thành công đòi hỏi cả hai bên làm rõ các kỳ vọng được định hình bởi văn hóa, thay vì giả định ngầm.",
+        "pronunciation_focus": [
+          "interkulturell → in-tê-kul-tu-RÊL",
+          "stillschweigend → SHTIL-shvai-gân",
+          "vorauszusetzen → fô-RAOS-tsu-zê-tsên"
+        ]
+      },
+      {
+        "en": "Im deutschen Kontext erwartet man Direktheit als Zeichen von Respekt; im vietnamesischen Kontext kann dieselbe Direktheit als Mangel an Höflichkeit gelesen werden.",
+        "vi": "Trong bối cảnh Đức, sự thẳng thắn được kỳ vọng như dấu hiệu tôn trọng; trong bối cảnh Việt, cùng sự thẳng thắn đó có thể được đọc như thiếu lễ phép.",
+        "pronunciation_focus": [
+          "Direktheit → đi-RÊK-t-hait",
+          "Mangel → MAN-gệl",
+          "Höflichkeit → HƠF-likh-kait"
+        ]
+      },
+      {
+        "en": "Ich schlage daher vor, dass wir zu Beginn jeder Verhandlungsrunde eine kurze Phase des Erwartungsabgleichs einbauen — fünf Minuten, in denen beide Seiten benennen, was ihnen prozedural wichtig ist.",
+        "vi": "Tôi do đó đề xuất ở đầu mỗi vòng đàm phán chúng ta bố trí một giai đoạn ngắn để hiệu chỉnh kỳ vọng — 5 phút, trong đó cả hai bên nêu điều gì quan trọng về mặt thủ tục.",
+        "pronunciation_focus": [
+          "Verhandlungsrunde → fe-HAN-đlungs-run-đê",
+          "Erwartungsabgleich → e-VA-tungs-ap-glaikh",
+          "prozedural → prô-tsê-đu-RAL"
+        ]
+      },
+      {
+        "en": "Was im einen System als ‚produktive Konfrontation' gilt, kann im anderen als Beziehungsverletzung registriert werden — beides ist legitim, aber muss übersetzt werden.",
+        "vi": "Cái trong một hệ thống được coi là ‚đối đầu năng suất' có thể trong hệ thống khác được ghi nhận như vi phạm quan hệ — cả hai đều hợp pháp, nhưng phải được dịch.",
+        "pronunciation_focus": [
+          "Konfrontation → kôn-frôn-ta-tsi-ÔN",
+          "Beziehungsverletzung → bê-TSI-ungs-fe-let-tsung",
+          "registriert → rê-gis-TRIT"
+        ]
+      },
+      {
+        "en": "Mein Vorschlag ist, dass ich als Bindeglied zwischen den Kulturen agieren kann — nicht, um Konflikte zu vermeiden, sondern um sie produktiv zu machen.",
+        "vi": "Đề xuất của tôi là tôi có thể vận hành như cầu nối giữa các văn hóa — không phải để tránh xung đột, mà để làm cho chúng năng suất.",
+        "pronunciation_focus": [
+          "Bindeglied → BIN-đê-glit",
+          "agieren → a-GI-rần",
+          "produktiv → prô-đuk-TIF"
+        ]
+      }
+    ],
+    "cultural_notes_vi": "Đàm phán liên văn hóa Đức/Việt có ba điểm xung đột phổ biến mà C1-Profis phải biết. (1) DIREKTHEIT vs HÖFLICHKEIT: deutsche Norm = direct = respect (saying what you think shows you take other side seriously). vietnamese Norm = indirect = respect (preserving harmony, not putting other in awkward position). Khi deutsche Verhandlungspartnerin sagt ‚das ist nicht akzeptabel' — vietnamesische counterpart hört ‚Beziehungsabbruch'. Khi vietnamesische counterpart sagt ‚vielleicht überlegen wir das nochmal' — deutsche Verhandlungspartnerin hört ‚alles offen'. Beide haben Recht in ihrer Kultur — Übersetzungsleistung ist nötig. (2) ZEIT-HORIZONT: deutsche Geschäftskultur = explicit deadlines, klare Meilensteine. vietnamesische Geschäftskultur = relationship first, deadlines fluid. Khi deutsche Seite sagt ‚wir brauchen das bis Freitag' — das ist hard deadline. Khi vietnamesische Seite sagt ‚wir machen das so schnell wie möglich' — das ist ehrliche Absicht ohne hard commitment. Misunderstanding produziert Frustration auf beiden Seiten. (3) ENTSCHEIDUNGSFINDUNG: deutsche Norm = decision in meeting, dann delegated. vietnamesische Norm = consensus internally first, decision presented. Khi deutsche Seite drängt auf decision in meeting — vietnamesische Seite ist überrumpelt, weil sie noch nicht intern abgestimmt hat.\n\nKhác Việt Nam: in Vietnam, ein vietnamesisch-vietnamesischer Verhandler nutzt indirekte Sprache + relationship-building selbstverständlich. Wenn beide Seiten interkulturell sind (deutsche Firma + vietnamesischer Verhandler), die rolle des Vietnamesen pivot — er muss BEIDE Modi beherrschen.\n\nMột chi tiết quan trọng: ‚face' (Gesicht) ist concept im vietnamesischen Kontext aber không direkt in deutscher Geschäftskultur. Wenn deutsche Verhandlungspartnerin öffentlich vietnamesische Counterpart kritisiert ‚das war ein Fehler' — das ist Gesichtsverlust. Übersetzung in deutsche Norm: kritik privat, sachlich, ohne demütigendes Vokabular.\n\nVề Erwartungsabgleich (expectation alignment): Pre-Negotiation Phase 5-10 Minuten, beide Seiten benennen prozedurale Erwartungen — wie wird entschieden, in welcher Sprache, mit welchen Zwischenphasen. Diese Phase oft entscheidet über Erfolg.\n\nVề ‚Bindeglied'-Rolle: bilingual / bicultural Verhandler hat Brückenfunktion. Câu chuẩn: ‚Mein Vorschlag ist, dass ich als Bindeglied zwischen den Kulturen agieren kann — nicht, um Konflikte zu vermeiden, sondern um sie produktiv zu machen'. Wichtig: ‚productive Konflikt-Machung' nicht ‚Konflikt-Vermeidung'. Vermeidung produziert nur verzögerte Eskalation.\n\nVề Sprachwahl: wenn beide Seiten English sprechen, often besser als Deutsch oder Vietnamesisch — neutralizes power asymmetry. Aber: technical concepts oft besser in deutscher Originalsprache (Vorvertrag, Geheimhaltungsvereinbarung — präziser im Original). Code-Switching ist akzeptiert wenn alle Teilnehmer mitkommen.",
+    "tip_advice_vi": "Vor Interkultureller Verhandlung (Vorbereitung 1 Woche):\n1. KULTURELLE ERWARTUNGEN auflisten — beide Seiten. Direktheit-Skala? Zeit-Horizont? Entscheidungsfindung?\n2. SPRACHWAHL klären — Englisch (neutral), Deutsch (Heimvorteil DE), Vietnamesisch (Heimvorteil VN), oder Code-Switching mit Übersetzer-Backup?\n3. ZEITPLAN großzügig — interkulturelle Verhandlung dauert 30-50% länger als monokulturelle. Plan accordingly.\n4. BINDEGLIED-ROLLE klären: spielen Sie diese Rolle? Wenn ja, transparent kommunizieren.\n\nIm Verhandlungsraum (4-Phasen-Struktur):\n1. ERWARTUNGSABGLEICH (10 Min): beide Seiten benennen prozedurale Erwartungen\n2. RELATIONSHIP-PHASE (15 Min): Smalltalk, gemeinsame Bezugspunkte, persönliche Themen — wichtig für VN-Norm\n3. SACH-DISKUSSION (60-90 Min): Inhalte, Abwechseln direkter und indirekter Modi je nach Sprecher\n4. ZUSAMMENFASSUNG (15 Min): explicit, schriftlich verifiziert — Standard-deutsch, aber gegen-prüft mit VN-Seite ‚habe ich das richtig erfasst?'\n\nNgôn ngữ Interkulturelle Verhandlung C1:\n- ‚Eine erfolgreiche interkulturelle Verhandlung setzt voraus, dass beide Seiten ihre kulturell geprägten Erwartungen explizit machen' (đàm phán liên văn hóa thành công đòi hỏi cả hai bên làm rõ kỳ vọng định hình bởi văn hóa)\n- ‚Was im einen System als X gilt, kann im anderen als Y registriert werden' (cái trong hệ thống này là X có thể trong hệ thống khác là Y)\n- ‚Beides ist legitim, aber muss übersetzt werden' (cả hai hợp pháp, nhưng phải được dịch)\n- ‚Ich schlage einen kurzen Erwartungsabgleich vor' (đề xuất hiệu chỉnh kỳ vọng ngắn)\n- ‚Mein Vorschlag ist, dass ich als Bindeglied zwischen den Kulturen agieren kann' (đề xuất tôi vận hành như cầu nối)\n- ‚Nicht, um Konflikte zu vermeiden, sondern um sie produktiv zu machen' (không phải tránh xung đột, mà làm cho chúng năng suất)\n\nKhi deutsche Seite frustriert über VN-Indirektheit:\n- ‚Ich verstehe, dass die indirekte Formulierung deutsche Erwartungen unterläuft. Lassen Sie mich übersetzen: was Frau Tran sagte, bedeutet auf der Sachebene Y' (tôi hiểu cách diễn đạt gián tiếp đi ngược kỳ vọng Đức. Cho tôi dịch: cô Tran ở mặt nội dung có nghĩa Y)\n\nKhi VN-Seite verletzt über deutsche Direktheit:\n- ‚Anh/chị Tran, ‚das ist nicht akzeptabel' từ phía Đức không phải attack — đó là ‚wir haben hier substanzielle Differenz und respektieren Sie genug, das zu sagen'. Quan hệ vẫn nguyên.' (Frau/Herr Tran, ‚das ist nicht akzeptabel' from German side is not attack — it's ‚we have substantial difference and respect you enough to say so'. Relationship intact.)\n\nKhi Zeitplan-Konflikt:\n- ‚Beide Seiten haben unterschiedliche Zeit-Horizonte. Lassen Sie uns ein Hybrid-Modell festlegen: hard deadlines für externe Liefertermine, fluid für interne Abstimmungen.' (cả hai bên có time-horizon khác nhau. Mình thiết lập hybrid: hard deadlines cho external delivery, fluid cho internal alignment.)\n\nKhi Entscheidung in Meeting:\n- ‚Ich würde anregen, dass wir die Entscheidung nicht heute treffen — die VN-Seite braucht interne Konsultation, das ist Standard. Wir können in einer Woche zurückkommen mit beidseitig commit-fähigem Vorschlag.' (đề nghị không quyết định hôm nay — VN-Seite cần tham vấn nội bộ, là chuẩn. Mình quay lại sau 1 tuần với đề xuất commit được cả hai bên.)\n\nMẹo cuối: interkulturelle Verhandlung ist wie Übersetzen in Echtzeit. Kein ‚richtig' oder ‚falsch' — beide Modi sind in ihren Kontexten optimal. Bindeglied-Rolle ist most challenging und most valuable role im Raum. Nicht ‚culturally neutral' agieren — explicitly bicultural, beide Modi sichtbar machen.",
+    "vocabulary": [
+      {
+        "word": "die interkulturelle Verhandlung",
+        "en": "intercultural negotiation",
+        "vi": "đàm phán liên văn hóa",
+        "pos": "noun (f)",
+        "pronunciation_vi": "đi in-tê-kul-tu-RÊ-lê fe-han-đlung"
+      },
+      {
+        "word": "der Erwartungsabgleich",
+        "en": "expectation alignment",
+        "vi": "hiệu chỉnh kỳ vọng",
+        "pos": "noun (m)",
+        "pronunciation_vi": "đe e-VA-tungs-ap-glaikh"
+      },
+      {
+        "word": "kulturell geprägt",
+        "en": "culturally shaped",
+        "vi": "được định hình bởi văn hóa",
+        "pos": "phrase",
+        "pronunciation_vi": "kul-tu-RÊL gê-PRÊK-t"
+      },
+      {
+        "word": "die Direktheit",
+        "en": "directness",
+        "vi": "sự thẳng thắn",
+        "pos": "noun (f)",
+        "pronunciation_vi": "đi đi-RÊK-t-hait"
+      },
+      {
+        "word": "die Höflichkeit",
+        "en": "politeness, courtesy",
+        "vi": "sự lễ phép",
+        "pos": "noun (f)",
+        "pronunciation_vi": "đi HƠF-likh-kait"
+      },
+      {
+        "word": "die Beziehungsverletzung",
+        "en": "relationship violation",
+        "vi": "vi phạm quan hệ",
+        "pos": "noun (f)",
+        "pronunciation_vi": "đi bê-TSI-ungs-fe-let-tsung"
+      },
+      {
+        "word": "das Bindeglied",
+        "en": "link, bridge (between groups)",
+        "vi": "cầu nối",
+        "pos": "noun (n)",
+        "pronunciation_vi": "đát BIN-đê-glit"
+      },
+      {
+        "word": "der Zeit-Horizont",
+        "en": "time horizon",
+        "vi": "tầm thời gian",
+        "pos": "noun (m)",
+        "pronunciation_vi": "đe TSAIT-hô-ri-tsônt"
+      },
+      {
+        "word": "die Entscheidungsfindung",
+        "en": "decision-making",
+        "vi": "quá trình ra quyết định",
+        "pos": "noun (f)",
+        "pronunciation_vi": "đi ent-SHAI-đungs-fin-đung"
+      },
+      {
+        "word": "stillschweigend voraussetzen",
+        "en": "to tacitly assume",
+        "vi": "giả định ngầm",
+        "pos": "verb phrase",
+        "pronunciation_vi": "SHTIL-shvai-gần fô-RAOS-tsê-tsần"
+      }
+    ],
+    "dialogue": [
+      {
+        "speaker": "Linh (Bindeglied)",
+        "text": "Bevor wir in die Sach-Diskussion einsteigen, schlage ich einen kurzen Erwartungsabgleich vor — fünf Minuten, in denen beide Seiten benennen, was ihnen prozedural wichtig ist.",
+        "vi": "Trước khi đi vào thảo luận nội dung, tôi đề xuất một hiệu chỉnh kỳ vọng ngắn — 5 phút, trong đó cả hai bên nêu điều quan trọng về thủ tục."
+      },
+      {
+        "speaker": "Frau Müller (DE)",
+        "text": "Sehr gut. Mir ist wichtig: klare Deadlines, Entscheidung heute, schriftliches Memo am Ende.",
+        "vi": "Rất tốt. Với tôi quan trọng: deadline rõ, quyết định hôm nay, memo viết ở cuối."
+      },
+      {
+        "speaker": "Herr Tran (VN)",
+        "text": "Tôi hiểu — bên tôi cần khoảng một tuần tham vấn nội bộ trước khi commit. Hôm nay tụi tôi có thể nêu vị trí, song quyết định cuối cùng cần thời gian.",
+        "vi": "(Tôi hiểu — bên tôi cần khoảng một tuần tham vấn nội bộ trước khi commit. Hôm nay tụi tôi có thể nêu vị trí, song quyết định cuối cùng cần thời gian.)"
+      },
+      {
+        "speaker": "Linh",
+        "text": "Damit haben wir einen ersten kulturellen Übersetzungspunkt: deutsche Erwartung an heutige Entscheidung trifft auf vietnamesische Erwartung an interne Konsultation. Beides ist legitim — lassen Sie uns einen Hybrid-Modus festlegen.",
+        "vi": "Như vậy chúng ta có điểm dịch văn hóa đầu: kỳ vọng Đức về quyết định hôm nay gặp kỳ vọng Việt về tham vấn nội bộ. Cả hai hợp pháp — mình thiết lập hybrid-modus."
+      }
+    ],
+    "dialogue_long": [
+      {
+        "speaker": "Linh",
+        "text": "Frau Müller, Herr Tran, vielen Dank, dass Sie hier zusammengekommen sind. Bevor wir in die Sach-Diskussion einsteigen, möchte ich kurz die Rolle, in der ich heute moderiere, transparent machen: ich bin als Bindeglied zwischen den Kulturen tätig — vietnamesisch geprägt, in Deutschland ausgebildet, mit der Aufgabe, kulturelle Übersetzungsleistungen sichtbar zu machen.",
+        "vi": "Cô Müller, anh Tran, cám ơn các vị đã gặp ở đây. Trước khi đi vào thảo luận nội dung, tôi muốn làm rõ vai trò mà tôi điều phối hôm nay: tôi vận hành như cầu nối giữa các văn hóa — nền Việt, đào tạo ở Đức, với nhiệm vụ làm thấy được các chuyển dịch văn hóa."
+      },
+      {
+        "speaker": "Frau Müller",
+        "text": "Das ist hilfreich. Ich gestehe, dass meine bisherigen Erfahrungen mit vietnamesischen Geschäftspartnern eher frustrierend waren — viele indirekte Formulierungen, schwer zu interpretieren.",
+        "vi": "Hữu ích. Tôi thừa nhận trải nghiệm trước đây với đối tác kinh doanh Việt khá frustrating — nhiều cách diễn đạt gián tiếp, khó diễn giải."
+      },
+      {
+        "speaker": "Linh",
+        "text": "Eine erfolgreiche interkulturelle Verhandlung setzt voraus, dass beide Seiten ihre kulturell geprägten Erwartungen explizit machen, anstatt sie stillschweigend vorauszusetzen. Ich schlage daher einen kurzen Erwartungsabgleich vor — fünf Minuten, in denen beide Seiten benennen, was ihnen prozedural wichtig ist. Frau Müller, beginnen Sie?",
+        "vi": "Đàm phán liên văn hóa thành công đòi hỏi cả hai bên làm rõ kỳ vọng văn hóa, thay vì giả định ngầm. Tôi do đó đề xuất hiệu chỉnh kỳ vọng ngắn — 5 phút, trong đó cả hai bên nêu điều quan trọng về thủ tục. Cô Müller, cô bắt đầu?"
+      },
+      {
+        "speaker": "Frau Müller",
+        "text": "Drei Punkte. Erstens: ich erwarte direkte Sprache. Wenn etwas nicht akzeptabel ist, sollte das auch so gesagt werden. Zweitens: klare Deadlines. Drittens: Entscheidung möglichst heute, mit schriftlichem Memo am Ende.",
+        "vi": "Ba điểm. Thứ nhất: tôi kỳ vọng ngôn ngữ thẳng. Cái không chấp nhận được nên được nói thế. Thứ hai: deadline rõ. Thứ ba: quyết định nếu được hôm nay, với memo viết ở cuối."
+      },
+      {
+        "speaker": "Linh",
+        "text": "Vielen Dank. Herr Tran?",
+        "vi": "Cám ơn. Anh Tran?"
+      },
+      {
+        "speaker": "Herr Tran",
+        "text": "Drei Punkte. Erstens: bei uns wird Direktheit als Mangel an Höflichkeit gelesen — wir formulieren oft indirekt, das bedeutet nicht Unentschiedenheit, sondern Respekt. Zweitens: Entscheidungen werden bei uns konsens-basiert gefällt — ich kann heute Position nehmen, finale Zusage nach interner Abstimmung. Drittens: Beziehungs-Aufbau vor Sach-Diskussion ist uns wichtig.",
+        "vi": "Ba điểm. Thứ nhất: bên tôi sự thẳng thắn được đọc như thiếu lễ phép — tụi tôi thường diễn đạt gián tiếp, đó không phải lưỡng lự, mà là tôn trọng. Thứ hai: quyết định bên tôi được đưa ra dựa trên đồng thuận — hôm nay tôi có thể nêu vị trí, cam kết cuối sau tham vấn nội bộ. Thứ ba: xây dựng quan hệ trước thảo luận nội dung quan trọng với chúng tôi."
+      },
+      {
+        "speaker": "Linh",
+        "text": "Damit haben wir drei zentrale Übersetzungspunkte. Erstens: Direktheit. Im deutschen Kontext erwartet man Direktheit als Zeichen von Respekt; im vietnamesischen Kontext kann dieselbe Direktheit als Mangel an Höflichkeit gelesen werden. Beides ist legitim — beide Seiten müssen es übersetzen.",
+        "vi": "Như vậy chúng ta có ba điểm dịch trung tâm. Thứ nhất: sự thẳng thắn. Trong bối cảnh Đức, thẳng thắn được kỳ vọng như tôn trọng; trong bối cảnh Việt, cùng sự thẳng thắn đó có thể được đọc như thiếu lễ phép. Cả hai hợp pháp — cả hai bên phải dịch."
+      },
+      {
+        "speaker": "Frau Müller",
+        "text": "Was bedeutet das praktisch? Soll ich indirekter sprechen?",
+        "vi": "Cụ thể nghĩa là gì? Tôi nên nói gián tiếp hơn không?"
+      },
+      {
+        "speaker": "Linh",
+        "text": "Nicht zwingend. Sie können direkt bleiben — das ist Ihre Norm. Aber Sie wissen, dass eine direkte Aussage wie ‚das ist nicht akzeptabel' von Herrn Tran zunächst als hart empfunden wird. Eine Brücken-Formulierung wäre: ‚wir sehen das aktuell schwierig — können wir nach Alternativen suchen?'. Inhaltlich gleich, kulturell weicher.",
+        "vi": "Không bắt buộc. Cô có thể giữ thẳng — là chuẩn của cô. Nhưng cô biết một câu thẳng như ‚das ist nicht akzeptabel' với anh Tran ban đầu sẽ được cảm như cứng. Cách diễn đạt cầu nối: ‚chúng tôi thấy điều đó hiện khó — mình tìm phương án khác được không?'. Nội dung giống, văn hóa mềm hơn."
+      },
+      {
+        "speaker": "Herr Tran",
+        "text": "Cám ơn — und meinerseits versuche ich, kritische Punkte explizit zu benennen, statt nur durch Pause zu signalisieren.",
+        "vi": "(Cám ơn — và bên tôi sẽ cố nêu các điểm phê phán rõ, thay vì chỉ ra hiệu qua ngắt.)"
+      },
+      {
+        "speaker": "Linh",
+        "text": "Zweitens: Entscheidungsfindung. Frau Müller erwartet Entscheidung heute, Herr Tran braucht interne Konsultation. Was im einen System als ‚produktive Sitzung' gilt, kann im anderen als Überrumpelung registriert werden — beides ist legitim, aber muss übersetzt werden.",
+        "vi": "Thứ hai: ra quyết định. Cô Müller kỳ vọng quyết định hôm nay, anh Tran cần tham vấn nội bộ. Cái trong hệ thống này là ‚họp năng suất' có thể trong hệ thống khác là ‚bị áp đặt' — cả hai hợp pháp, nhưng phải được dịch."
+      },
+      {
+        "speaker": "Frau Müller",
+        "text": "Können wir einen Hybrid-Modus finden?",
+        "vi": "Mình có thể tìm chế độ hybrid không?"
+      },
+      {
+        "speaker": "Linh",
+        "text": "Mein Vorschlag: heute Position-Statements und Mitigation-Vorschläge, kein binding decision. Eine Woche interne Konsultation auf VN-Seite, parallel deutsche Vorbereitung. Nächste Sitzung in zehn Tagen mit beidseitig commit-fähigem Vorschlag. Hard deadlines für externe Liefertermine bleiben fest, fluid für interne Abstimmungen.",
+        "vi": "Đề xuất của tôi: hôm nay trao đổi vị trí và đề xuất giảm thiểu, không quyết định ràng buộc. Một tuần tham vấn nội bộ phía VN, song song chuẩn bị Đức. Cuộc họp tiếp theo sau 10 ngày với đề xuất commit được cả hai bên. Hard deadlines cho external delivery giữ chắc, fluid cho internal alignment."
+      },
+      {
+        "speaker": "Frau Müller",
+        "text": "Akzeptiert. Drittens — Beziehungs-Aufbau?",
+        "vi": "Chấp nhận. Thứ ba — xây dựng quan hệ?"
+      },
+      {
+        "speaker": "Linh",
+        "text": "Mein Vorschlag: nach der heutigen Sitzung gemeinsames Abendessen — informell, ohne Tagesordnung. Das ist VN-Norm und in deutscher Geschäftskultur ebenfalls üblich für strategische Partnerschaften.",
+        "vi": "Đề xuất của tôi: sau cuộc họp hôm nay ăn tối chung — informell, không agenda. Là chuẩn VN và cũng thông thường trong văn hóa kinh doanh Đức cho đối tác chiến lược."
+      },
+      {
+        "speaker": "Frau Müller",
+        "text": "Sehr gerne. Lassen Sie uns mit der Sach-Diskussion beginnen.",
+        "vi": "Vui lòng. Mình bắt đầu với thảo luận nội dung."
+      }
+    ],
+    "roleplay_prompts": [
+      "Bạn là Bindeglied zwischen deutscher Verhandlerin (Direktheit-Norm) và Vietnamese Counterpart (Indirekte-Norm). Mở đầu formal: làm rõ Bindeglied-Rolle + Erwartungsabgleich-Phase 5 phút.",
+      "Deutsche Seite frustriert über VN-Indirektheit. Diễn đạt formal: ‚Was im einen System als X gilt, kann im anderen als Y registriert werden — beides ist legitim' + Brücken-Formulierung-Beispiel (‚das ist nicht akzeptabel' → ‚wir sehen das aktuell schwierig').",
+      "Konflikt zwischen DE Entscheidung-heute Erwartung und VN Konsens-erst Erwartung. Đề xuất Hybrid-Modus formal: position-statements heute, internal consultation 1 Woche, decision in 10 Tagen mit hard external deadlines + fluid internal alignment."
+    ],
+    "register_notes": "Interkulturelle Verhandlung-Moderation C1: ‚Sie' tuyệt đối với Teilnehmer. Konjunktiv II cho Brücken-Vorschläge: ‚Eine Brücken-Formulierung wäre...'. Funktionsverbgefüge: ‚explizit machen' (làm rõ), ‚stillschweigend voraussetzen' (giả định ngầm), ‚produktiv machen' (làm năng suất), ‚als Bindeglied agieren' (vận hành như cầu nối). Schlüsselformel cho cultural translation: ‚Was im einen System als X gilt, kann im anderen als Y registriert werden — beides ist legitim, aber muss übersetzt werden'. Bindeglied-Rolle bắt buộc transparent gemacht werden — không pretend culturally neutral. KHÔNG ‚VN-Seite versteht nicht' / ‚DE-Seite ist hart' (Personalisierung der Kultur). Stattdessen: ‚VN-Norm ist X, DE-Norm ist Y' (Sachebene). Hybrid-Modus oft Lösung für direkte Konflikte zwischen Normen — hard deadlines for external, fluid for internal alignment.",
+    "idiom_glosses": [
+      {
+        "idiom": "die Brücke schlagen",
+        "literal": "đập cầu (build a bridge)",
+        "meaning": "tạo kết nối giữa các bên (gehoben/standardsprachlich)",
+        "example": "Als Bindeglied schlage ich die Brücke zwischen deutscher Direktheit und vietnamesischer Höflichkeit."
+      },
+      {
+        "idiom": "etwas in andere Worte fassen",
+        "literal": "đặt cái gì vào từ khác",
+        "meaning": "diễn đạt lại cho phù hợp ngữ cảnh khác (standardsprachlich)",
+        "example": "Wenn die deutsche Direktheit die VN-Seite verletzt, fasse ich es in andere Worte — Inhalt bleibt, Form passt."
+      },
+      {
+        "idiom": "auf Augenhöhe verhandeln",
+        "literal": "đàm phán ở mức mắt",
+        "meaning": "đàm phán trên cơ sở bình đẳng (gehoben/standardsprachlich)",
+        "example": "Auf Augenhöhe verhandeln heißt: weder die deutsche noch die vietnamesische Norm wird privilegiert — beide werden übersetzt."
+      },
+      {
+        "idiom": "den Boden bereiten",
+        "literal": "chuẩn bị đất",
+        "meaning": "tạo điều kiện cho điều gì đó (standardsprachlich)",
+        "example": "Der Erwartungsabgleich bereitet den Boden für eine produktive Sach-Diskussion."
+      }
+    ],
+    "exercises": [
+      {
+        "type": "fill_blank",
+        "instruction_vi": "Điền cấu trúc Interkulturelle Verhandlung C1:",
+        "pronunciation_focus": [],
+        "items": [
+          {
+            "prompt": "Eine erfolgreiche interkulturelle Verhandlung setzt voraus, dass beide Seiten ihre kulturell ___ Erwartungen explizit machen.",
+            "answer": "geprägten"
+          },
+          {
+            "prompt": "Im deutschen Kontext erwartet man Direktheit als Zeichen von Respekt; im vietnamesischen Kontext kann dieselbe Direktheit als Mangel an ___ gelesen werden.",
+            "answer": "Höflichkeit"
+          },
+          {
+            "prompt": "Was im einen System als ‚produktive Konfrontation' gilt, kann im anderen als ___ registriert werden.",
+            "answer": "Beziehungsverletzung"
+          },
+          {
+            "prompt": "Mein Vorschlag ist, dass ich als ___ zwischen den Kulturen agieren kann — nicht, um Konflikte zu vermeiden, sondern um sie produktiv zu machen.",
+            "answer": "Bindeglied"
+          }
+        ]
+      },
+      {
+        "type": "matching",
+        "instruction_vi": "Nối điểm xung đột văn hóa với chiến lược cầu nối:",
+        "pronunciation_focus": [],
+        "items": [
+          {
+            "prompt": "DE Direktheit vs VN Indirektheit",
+            "answer": "Brücken-Formulierungen — Inhalt gleich, Form weicher"
+          },
+          {
+            "prompt": "DE Entscheidung-heute vs VN Konsens-erst",
+            "answer": "Hybrid-Modus — Position heute, Decision später"
+          },
+          {
+            "prompt": "DE Hard Deadlines vs VN Fluid Time",
+            "answer": "Hard external deadlines + fluid internal alignment"
+          },
+          {
+            "prompt": "DE Sache-zuerst vs VN Beziehung-zuerst",
+            "answer": "Erwartungsabgleich + gemeinsames Abendessen"
+          }
+        ]
+      },
+      {
+        "type": "translation",
+        "instruction_vi": "Dịch sang tiếng Đức formal C1:",
+        "pronunciation_focus": ["intercultural negotiation"],
+        "items": [
+          {
+            "prompt": "Một cuộc đàm phán liên văn hóa thành công đòi hỏi cả hai bên làm rõ các kỳ vọng văn hóa, thay vì giả định ngầm.",
+            "answer": "Eine erfolgreiche interkulturelle Verhandlung setzt voraus, dass beide Seiten ihre kulturell geprägten Erwartungen explizit machen, anstatt sie stillschweigend vorauszusetzen."
+          },
+          {
+            "prompt": "Cái trong một hệ thống là ‚đối đầu năng suất' có thể trong hệ thống khác là vi phạm quan hệ — cả hai hợp pháp, nhưng phải được dịch.",
+            "answer": "Was im einen System als ‚produktive Konfrontation' gilt, kann im anderen als Beziehungsverletzung registriert werden — beides ist legitim, aber muss übersetzt werden."
+          },
+          {
+            "prompt": "Tôi đề xuất ở đầu mỗi vòng đàm phán bố trí một giai đoạn ngắn để hiệu chỉnh kỳ vọng.",
+            "answer": "Ich schlage vor, dass wir zu Beginn jeder Verhandlungsrunde eine kurze Phase des Erwartungsabgleichs einbauen."
+          },
+          {
+            "prompt": "Đề xuất của tôi là tôi có thể vận hành như cầu nối giữa các văn hóa — không phải để tránh xung đột, mà để làm cho chúng năng suất.",
+            "answer": "Mein Vorschlag ist, dass ich als Bindeglied zwischen den Kulturen agieren kann — nicht, um Konflikte zu vermeiden, sondern um sie produktiv zu machen."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lstreitbeilegung_arbeitsplatz",
+    "level": "C1",
+    "category": "fluency",
+    "title_vi": "Giải quyết tranh chấp formal tại nơi làm việc — Formelle Streitbeilegung",
+    "title_en": "Formal workplace dispute resolution in a German company",
+    "sentences": [
+      {
+        "en": "Ich bitte um eine formelle Klärung, da der Konflikt mit Herrn Schmitt durch informelle Gespräche nicht beigelegt werden konnte.",
+        "vi": "Tôi xin một sự làm rõ chính thức, vì xung đột với anh Schmitt qua các cuộc trao đổi không chính thức không thể được giải quyết.",
+        "pronunciation_focus": [
+          "formelle Klärung → fô-MÊ-lê KLE-rung",
+          "informelle Gespräche → in-fô-MÊ-lê gê-SHPRÊ-khê",
+          "beigelegt → BAI-gê-lê-kt"
+        ]
+      },
+      {
+        "en": "Mein Anliegen betrifft die Sachebene — wiederholt fehlende Abstimmung bei Schnittstellen-Themen — und nicht die Person als solche.",
+        "vi": "Mối quan tâm của tôi liên quan đến cấp độ nội dung — sự thiếu phối hợp lặp lại ở các chủ đề giao diện — và không phải con người như vậy.",
+        "pronunciation_focus": [
+          "Sachebene → ZAKH-ê-bê-nê",
+          "Abstimmung → AP-shtim-mung",
+          "Schnittstellen → SHNIT-shtê-lần"
+        ]
+      },
+      {
+        "en": "Ich habe bereits dreimal das direkte Gespräch gesucht — die getroffenen Vereinbarungen wurden im Anschluss nicht umgesetzt.",
+        "vi": "Tôi đã ba lần tìm cuộc trao đổi trực tiếp — các thỏa thuận đạt được sau đó không được triển khai.",
+        "pronunciation_focus": [
+          "dreimal → ĐRAI-mal",
+          "Vereinbarungen → fe-AIN-ba-rung-ần",
+          "umgesetzt → UM-gê-zê-tst"
+        ]
+      },
+      {
+        "en": "Mein Wunsch ist eine moderierte Aussprache mit klarem Protokoll und überprüfbaren Vereinbarungen — kein Mobbing-Vorwurf, kein arbeitsrechtlicher Schritt.",
+        "vi": "Nguyện vọng của tôi là một cuộc trao đổi có điều phối với biên bản rõ và các thỏa thuận có thể kiểm tra — không cáo buộc mobbing, không bước pháp lý lao động.",
+        "pronunciation_focus": [
+          "moderierte Aussprache → mô-đê-RI-tê AOS-shpra-khê",
+          "Mobbing-Vorwurf → MÔ-bing-fô-vuf",
+          "arbeitsrechtlich → AR-baits-rêkht-likh"
+        ]
+      },
+      {
+        "en": "Sollte die Mediation scheitern, wäre die nächste Eskalationsstufe der Betriebsrat — diese Option möchte ich vermeiden, sehe sie jedoch transparent vor.",
+        "vi": "Nếu hòa giải thất bại, bước escalation tiếp theo là Betriebsrat — tôi muốn tránh lựa chọn này, song nhìn thấy nó minh bạch trước.",
+        "pronunciation_focus": [
+          "Mediation → mê-đi-a-tsi-ÔN",
+          "Eskalationsstufe → es-ka-la-tsi-ÔNS-shtu-fê",
+          "Betriebsrat → bê-TRIPS-rat"
+        ]
+      }
+    ],
+    "cultural_notes_vi": "Formelle Streitbeilegung am deutschen Arbeitsplatz tuân theo Stufenmodell rất klar. (1) STUFE 1 — DIREKTGESPRÄCH: erste Anlaufstelle ist immer das direkte Gespräch mit der Konfliktpartei. Mehrfach (2-3 mal). Erst wenn Direktgespräch scheitert, Eskalation. Wer direkt zur HR geht ohne Direktgespräch versucht zu haben, signalisiert Konfliktunfähigkeit. (2) STUFE 2 — VORGESETZTER: nächste Eskalation ist gemeinsamer Termin mit dem Vorgesetzten von beiden Parteien (Disziplinarvorgesetzter, nicht fachlicher Lead). Vorgesetzter moderiert oder eskaliert weiter. (3) STUFE 3 — HR / PERSONALABTEILUNG: wenn Vorgesetzter nicht löst, HR-Beratung. HR ist neutral — KEINE Anwältin der einen Seite. (4) STUFE 4 — BETRIEBSRAT: bei strukturellen Problemen (Mobbing-Verdacht, Diskriminierung, arbeitsrechtliche Verstöße). Betriebsrat ist gewählter Mitarbeitervertretung mit gesetzlichen Rechten. (5) STUFE 5 — ARBEITSGERICHT: letzte Eskalation, professionellem Vermittlungsverfahren oft vorausgehend.\n\nKhác Việt Nam: in vietnamesischen Unternehmen oft direkte Eskalation zum Vorgesetzten (Hierarchie-respect). Wenig institutionalisierte Mediation. Betriebsrat-Konzept (Mitbestimmung) ist deutsche Spezialität — kollegial gewählt, mit Gesetzlichen Rechten nach BetrVG.\n\nMột chi tiết quan trọng: GESICHTSWAHRUNG aller Parteien ist auch in deutscher Kultur wichtig, anders als oft behauptet. Stufenmodell ermöglicht Eskalation ohne öffentliche Demütigung — jede Stufe schützt beide Seiten. Wer direkt mit Mobbing-Vorwurf beim CEO landet, hat Eskalationsbeschleunigung verursacht und meistens beide Karrieren beschädigt.\n\nVề SACHEBENE vs PERSONEBENE: deutsche Streitbeilegung-Kultur unterscheidet strict. Sachebene = Verhalten, Pflichtverletzung, Vereinbarungsbruch — verhandelbar. Personebene = Charakter, Persönlichkeit — NICHT verhandelbar in Mediation. Wer Mediation auf Personebene führt, scheitert.\n\nVề DOKUMENTATION: alle informellen Gespräche schriftlich festhalten (E-Mail-Memo nach Gespräch, ‚zur Zusammenfassung der Vereinbarungen'). Diese Dokumentation ist essential bei späterer Eskalation — ohne Dokumentation hat HR / Betriebsrat keine Grundlage.\n\nVề Mobbing-Vorwurf: schwerer Vorwurf, juristisch definiert (BAG-Rechtsprechung). KEINE leichtfertige Verwendung. Echte Mobbing-Definition: ‚systematisches Anfeinden, Schikanieren, Diskriminieren über längere Zeit'. Einmalige Konflikte = kein Mobbing. Falscher Mobbing-Vorwurf kann Reputations-Schaden für Vorwurfsteller verursachen.\n\nVề Mediation: deutsche Unternehmen ab 200 Mitarbeitern haben oft interne Mediator:innen. Externe Mediation kostenpflichtig (200-400 EUR/Stunde) aber neutral. Mediation ist freiwillig — beide Parteien müssen zustimmen.\n\nVề Whistleblower-Schutz: seit HinSchG 2023 sind Beschäftigte gesetzlich geschützt, wenn sie Compliance-Verstöße melden. Aber: Persönliche Konflikte sind keine Compliance-Verstöße. Whistleblower-Mechanismus nicht für interpersonelle Streits missbrauchen.",
+    "tip_advice_vi": "Vor formeller Streitbeilegung (Vorbereitung 1 Woche):\n1. CHRONOLOGIE erstellen: Datum, Ereignis, eigene Reaktion, Reaktion der Gegenseite — Tabelle.\n2. DOKUMENTATION sammeln: E-Mails, Memos, Zeugen-Aussagen wenn relevant.\n3. EIGENES VERHALTEN reflektieren: was habe ich beigetragen? Wo war ich nicht klar?\n4. ZIEL definieren: Verhaltensänderung der Gegenseite? Klare Vereinbarung? Trennung der Aufgabenbereiche? Versetzung? Klarheit über Ziel verhindert Eskalation.\n\nIm formellen Verfahren (Stufen):\n1. DIREKTGESPRÄCH (2-3 Versuche, dokumentiert)\n2. VORGESETZTER (gemeinsamer Termin, Protokoll)\n3. HR-MEDIATION (neutral, freiwillig, mit Vereinbarung)\n4. BETRIEBSRAT (bei strukturellen Problemen)\n5. ARBEITSGERICHT (Letzte Stufe, Anwalt erforderlich)\n\nNgôn ngữ Streitbeilegung formal C1:\n- ‚Ich bitte um eine formelle Klärung' (xin sự làm rõ chính thức)\n- ‚Mein Anliegen betrifft die Sachebene — nicht die Person als solche' (mối quan tâm của tôi ở cấp độ nội dung — không phải con người)\n- ‚Ich habe bereits dreimal das direkte Gespräch gesucht' (tôi đã ba lần tìm trao đổi trực tiếp)\n- ‚Die getroffenen Vereinbarungen wurden im Anschluss nicht umgesetzt' (các thỏa thuận đạt được không được triển khai)\n- ‚Mein Wunsch ist eine moderierte Aussprache mit klarem Protokoll' (nguyện vọng là cuộc trao đổi có điều phối với biên bản rõ)\n- ‚Sollte die Mediation scheitern, wäre die nächste Eskalationsstufe X' (nếu hòa giải thất bại, bước escalation tiếp là X)\n- ‚Diese Option möchte ich vermeiden, sehe sie jedoch transparent vor' (lựa chọn này tôi muốn tránh, song nhìn thấy nó minh bạch)\n\nKhi Vorgesetzter zögert:\n- ‚Ich verstehe Ihren Wunsch nach informeller Lösung. Drei Direktgespräche haben aber keine Verhaltensänderung gebracht — eine moderierte Aussprache wäre der nächste Schritt im Stufenmodell.' (tôi hiểu nguyện vọng giải pháp informell. Ba lần direct trao đổi không mang đổi hành vi — moderierte Aussprache là bước tiếp trong stufenmodell.)\n\nKhi HR fragt nach Mobbing-Vorwurf:\n- ‚Es handelt sich nicht um Mobbing im juristischen Sinn — kein systematisches Anfeinden. Es handelt sich um wiederholte Pflichtverletzung bei Schnittstellen-Abstimmung. Sachebene, nicht Personebene.' (không phải mobbing nghĩa pháp lý — không systematic attack. Là vi phạm nghĩa vụ lặp lại ở schnittstellen-Abstimmung. Sachebene, không Personebene.)\n\nKhi Mediation gewünscht:\n- ‚Ich stimme einer Mediation gerne zu, sofern sie ergebnisoffen geführt wird und beide Seiten gleichberechtigt vertreten sind. Wer moderiert?' (tôi đồng thuận hòa giải, miễn là dẫn dắt mở kết quả và cả hai bên đại diện bình đẳng. Ai điều phối?)\n\nNach Mediation — Vereinbarung:\n- ‚Lassen Sie uns das Ergebnis schriftlich festhalten: Verhaltensvereinbarung mit konkreten Pflichten, Eskalationsmechanismus bei Verstößen, Überprüfung in drei Monaten.' (mình ghi kết quả văn bản: thỏa thuận hành vi với nghĩa vụ cụ thể, cơ chế escalation khi vi phạm, kiểm tra sau 3 tháng.)\n\nMẹo cuối: Streitbeilegung ist Marathon, nicht Sprint. 2-6 Monate für komplexere Konflikte ist normal. Geduld + Dokumentation + Sachebene-Disziplin = Erfolg. Wer Eskalation überspringt, schadet eigener Position.",
+    "vocabulary": [
+      {
+        "word": "die formelle Streitbeilegung",
+        "en": "formal dispute resolution",
+        "vi": "giải quyết tranh chấp chính thức",
+        "pos": "noun (f)",
+        "pronunciation_vi": "đi fô-MÊ-lê SHTRAIT-bai-lê-gung"
+      },
+      {
+        "word": "die Sachebene / Personebene",
+        "en": "content level / personal level",
+        "vi": "cấp độ nội dung / cá nhân",
+        "pos": "noun (f)",
+        "pronunciation_vi": "đi ZAKH-ê-bê-nê / pe-ZÔN-ê-bê-nê"
+      },
+      {
+        "word": "die moderierte Aussprache",
+        "en": "moderated discussion",
+        "vi": "cuộc trao đổi có điều phối",
+        "pos": "noun (f)",
+        "pronunciation_vi": "đi mô-đê-RI-tê AOS-shpra-khê"
+      },
+      {
+        "word": "der Betriebsrat",
+        "en": "works council",
+        "vi": "Hội đồng người lao động",
+        "pos": "noun (m)",
+        "pronunciation_vi": "đe bê-TRIPS-rat"
+      },
+      {
+        "word": "die Eskalationsstufe",
+        "en": "escalation level",
+        "vi": "cấp escalation",
+        "pos": "noun (f)",
+        "pronunciation_vi": "đi es-ka-la-tsi-ÔNS-shtu-fê"
+      },
+      {
+        "word": "das Mobbing / der Mobbing-Vorwurf",
+        "en": "bullying / accusation of bullying",
+        "vi": "mobbing / cáo buộc mobbing",
+        "pos": "noun (n/m)",
+        "pronunciation_vi": "đát MÔ-bing"
+      },
+      {
+        "word": "die Mediation",
+        "en": "mediation",
+        "vi": "hòa giải",
+        "pos": "noun (f)",
+        "pronunciation_vi": "đi mê-đi-a-tsi-ÔN"
+      },
+      {
+        "word": "ergebnisoffen",
+        "en": "open-ended (mediation)",
+        "vi": "mở kết quả",
+        "pos": "adjective",
+        "pronunciation_vi": "e-GÊP-nis-ô-fân"
+      },
+      {
+        "word": "die Verhaltensvereinbarung",
+        "en": "behavioral agreement",
+        "vi": "thỏa thuận hành vi",
+        "pos": "noun (f)",
+        "pronunciation_vi": "đi fe-HAL-tens-fe-ain-ba-rung"
+      },
+      {
+        "word": "beilegen",
+        "en": "to settle, resolve (a dispute)",
+        "vi": "giải quyết (tranh chấp)",
+        "pos": "verb (sep.)",
+        "pronunciation_vi": "BAI-lê-gân"
+      }
+    ],
+    "dialogue": [
+      {
+        "speaker": "Linh",
+        "text": "Frau Berger, ich bitte um eine formelle Klärung. Der Konflikt mit Herrn Schmitt konnte durch drei informelle Gespräche nicht beigelegt werden.",
+        "vi": "Cô Berger, tôi xin sự làm rõ chính thức. Xung đột với anh Schmitt qua ba cuộc trao đổi không chính thức không thể được giải quyết."
+      },
+      {
+        "speaker": "HR-Berger",
+        "text": "Worum geht es konkret? Mobbing-Vorwurf?",
+        "vi": "Cụ thể là gì? Cáo buộc mobbing?"
+      },
+      {
+        "speaker": "Linh",
+        "text": "Kein Mobbing — Sachebene. Wiederholte fehlende Abstimmung bei Schnittstellen-Themen, die zu Re-Work und Verzögerungen führt. Mein Wunsch ist eine moderierte Aussprache mit klarem Protokoll.",
+        "vi": "Không mobbing — cấp độ nội dung. Sự thiếu phối hợp lặp lại ở các chủ đề giao diện, dẫn đến Re-Work và chậm trễ. Nguyện vọng của tôi là moderierte Aussprache với biên bản rõ."
+      },
+      {
+        "speaker": "HR-Berger",
+        "text": "Das ist ein konstruktiver Ansatz. Ich kontaktiere Herrn Schmitt und schlage einen Mediations-Termin vor.",
+        "vi": "Đó là cách tiếp cận xây dựng. Tôi liên lạc anh Schmitt và đề xuất lịch hòa giải."
+      }
+    ],
+    "dialogue_long": [
+      {
+        "speaker": "Linh",
+        "text": "Frau Berger, vielen Dank, dass Sie sich heute Zeit nehmen. Ich bitte um eine formelle Klärung, da der Konflikt mit Herrn Schmitt durch informelle Gespräche nicht beigelegt werden konnte.",
+        "vi": "Cô Berger, cám ơn cô đã dành thời gian hôm nay. Tôi xin sự làm rõ chính thức, vì xung đột với anh Schmitt qua các trao đổi không chính thức không thể được giải quyết."
+      },
+      {
+        "speaker": "HR-Berger",
+        "text": "Worum geht es konkret? Bevor wir anfangen — soll das ein Mobbing-Vorwurf werden?",
+        "vi": "Cụ thể là gì? Trước khi bắt đầu — đây có phải cáo buộc mobbing không?"
+      },
+      {
+        "speaker": "Linh",
+        "text": "Kein Mobbing-Vorwurf. Es handelt sich nicht um Mobbing im juristischen Sinn — kein systematisches Anfeinden, kein Schikanieren. Mein Anliegen betrifft die Sachebene — wiederholt fehlende Abstimmung bei Schnittstellen-Themen — und nicht die Person als solche.",
+        "vi": "Không cáo buộc mobbing. Không phải mobbing theo nghĩa pháp lý — không systematic anfeinden, không schikanieren. Mối quan tâm của tôi ở cấp độ nội dung — sự thiếu phối hợp lặp lại ở các chủ đề giao diện — không phải con người như vậy."
+      },
+      {
+        "speaker": "HR-Berger",
+        "text": "Gut, dass Sie das klar trennen. Können Sie konkret werden?",
+        "vi": "Tốt khi cô tách ra rõ. Cô có thể cụ thể không?"
+      },
+      {
+        "speaker": "Linh",
+        "text": "Drei dokumentierte Vorfälle in den letzten vier Monaten. Erstens: API-Spezifikation Bauer-Projekt — getroffen Vereinbarung 15. März, nicht eingehalten, Re-Work zwei Wochen. Zweitens: Sprint-Planning Q3 — Schnittstellen nicht abgestimmt, drei Sprints betroffen. Drittens: aktuelles Müller-Projekt — gleiche Muster.",
+        "vi": "Ba sự việc được tư liệu hóa trong 4 tháng qua. Thứ nhất: spec API dự án Bauer — thỏa thuận đạt 15/3, không giữ, Re-Work 2 tuần. Thứ hai: Sprint-Planning Q3 — schnittstellen không phối hợp, 3 sprints bị ảnh hưởng. Thứ ba: dự án Müller hiện tại — cùng pattern."
+      },
+      {
+        "speaker": "HR-Berger",
+        "text": "Drei Vorfälle dokumentiert — das ist substantiell. Welche Schritte haben Sie bisher unternommen?",
+        "vi": "Ba sự việc đã tư liệu — substantiell. Cô đã làm những bước nào đến giờ?"
+      },
+      {
+        "speaker": "Linh",
+        "text": "Ich habe bereits dreimal das direkte Gespräch gesucht — am 22. März, am 15. Mai und am 3. Juli. Die getroffenen Vereinbarungen wurden im Anschluss nicht umgesetzt. Alle drei Gespräche habe ich per E-Mail-Memo dokumentiert — ich habe Ihnen die Memos vorab geschickt.",
+        "vi": "Tôi đã ba lần tìm cuộc trao đổi trực tiếp — 22/3, 15/5 và 3/7. Các thỏa thuận đạt được sau đó không được triển khai. Cả ba lần tôi tư liệu hóa qua memo email — tôi đã gửi cô trước."
+      },
+      {
+        "speaker": "HR-Berger",
+        "text": "Ich habe die Memos gesehen. Konsequente Dokumentation — das hilft. Was ist Ihr Wunsch für die nächste Stufe?",
+        "vi": "Tôi đã xem memo. Tư liệu hóa nhất quán — hữu ích. Nguyện vọng cô cho bước tiếp theo là gì?"
+      },
+      {
+        "speaker": "Linh",
+        "text": "Mein Wunsch ist eine moderierte Aussprache mit klarem Protokoll und überprüfbaren Vereinbarungen. Sie als HR moderieren neutral, beide Seiten haben gleiche Sprechzeit, Ergebnis schriftlich mit Eskalationsmechanismus bei Verstößen. Kein Mobbing-Vorwurf, kein arbeitsrechtlicher Schritt — wir versuchen ergebnisoffen eine Lösung auf Sachebene.",
+        "vi": "Nguyện vọng tôi là moderierte Aussprache với biên bản rõ và thỏa thuận có thể kiểm tra. Cô như HR điều phối trung lập, cả hai bên có sprechzeit bằng nhau, kết quả văn bản với cơ chế escalation khi vi phạm. Không cáo buộc mobbing, không bước pháp lý lao động — mình thử mở kết quả tìm giải pháp ở Sachebene."
+      },
+      {
+        "speaker": "HR-Berger",
+        "text": "Konstruktiver Ansatz. Was ist die Eskalationsstufe danach, falls Mediation scheitert?",
+        "vi": "Cách tiếp cận xây dựng. Bước escalation tiếp theo là gì nếu hòa giải thất bại?"
+      },
+      {
+        "speaker": "Linh",
+        "text": "Sollte die Mediation scheitern, wäre die nächste Eskalationsstufe der Betriebsrat — diese Option möchte ich vermeiden, sehe sie jedoch transparent vor. Erst Mediation, dann Betriebsrat, dann gegebenenfalls externe Mediation. Arbeitsgericht ist letzte Option, keine, die ich aktuell verfolge.",
+        "vi": "Nếu hòa giải thất bại, bước escalation tiếp là Betriebsrat — lựa chọn này tôi muốn tránh, song nhìn minh bạch trước. Trước hòa giải, rồi Betriebsrat, rồi có thể hòa giải bên ngoài. Tòa lao động là lựa chọn cuối, không phải cái tôi theo đuổi hiện tại."
+      },
+      {
+        "speaker": "HR-Berger",
+        "text": "Klar strukturiert. Eine Bedingung von meiner Seite: ich kontaktiere Herrn Schmitt mit Ihrer Schilderung und biete ihm Mediation an. Wenn er zustimmt, terminieren wir — wenn er ablehnt, sind Sie von der Mediations-Pflicht entbunden und können direkt zum Betriebsrat.",
+        "vi": "Cấu trúc rõ. Một điều kiện từ phía tôi: tôi liên lạc anh Schmitt với mô tả của cô và đề xuất hòa giải. Nếu anh đồng ý, mình lên lịch — nếu từ chối, cô được giải phóng khỏi nghĩa vụ hòa giải và có thể trực tiếp đi Betriebsrat."
+      },
+      {
+        "speaker": "Linh",
+        "text": "Einverstanden. Eine Frage zur Mediation selbst: wer moderiert? Sie als HR oder externer Mediator?",
+        "vi": "Đồng ý. Một câu hỏi về hòa giải: ai điều phối? Cô như HR hay mediator bên ngoài?"
+      },
+      {
+        "speaker": "HR-Berger",
+        "text": "Bei Sachebene-Konflikten ohne Mobbing-Verdacht moderiere ich intern. Bei strukturellen oder schwerwiegenden Konflikten würden wir extern moderieren — kostet 300 EUR pro Stunde, beide Parteien tragen je hälftig. In Ihrem Fall — Sachebene mit dokumentierter Historie — ist intern angemessen.",
+        "vi": "Ở các xung đột Sachebene không có nghi ngờ mobbing, tôi điều phối nội bộ. Ở các xung đột structural hoặc nặng, chúng tôi điều phối externally — chi phí 300 EUR/giờ, cả hai bên trả nửa. Trong trường hợp của cô — Sachebene với historie được tư liệu — nội bộ phù hợp."
+      },
+      {
+        "speaker": "Linh",
+        "text": "Akzeptiert. Wann könnte der Termin stattfinden?",
+        "vi": "Chấp nhận. Lịch khi nào có thể?"
+      },
+      {
+        "speaker": "HR-Berger",
+        "text": "Nach Rücksprache mit Herrn Schmitt vermutlich nächste Woche. Ich melde mich bis Freitag mit konkretem Vorschlag. Halten Sie sich Mittwoch nachmittag offen.",
+        "vi": "Sau khi trao đổi với anh Schmitt có thể tuần sau. Tôi báo lại trước thứ Sáu với đề xuất cụ thể. Cô để trống chiều thứ Tư."
+      },
+      {
+        "speaker": "Linh",
+        "text": "Mache ich. Vielen Dank für die strukturierte Bearbeitung — das vermittelt mir Vertrauen in den Prozess.",
+        "vi": "Tôi sẽ làm. Cám ơn cô về xử lý có cấu trúc — điều đó cho tôi sự tin tưởng vào quá trình."
+      }
+    ],
+    "roleplay_prompts": [
+      "Bạn xin formelle Klärung mit HR sau 3 lần direkt trao đổi failed. Mở đầu formal: ‚Ich bitte um eine formelle Klärung' + làm rõ Sachebene-Konflikt, KHÔNG Mobbing-Vorwurf.",
+      "HR fragt liệu đây có phải Mobbing-Vorwurf không. Diễn đạt formal: ‚Es handelt sich nicht um Mobbing im juristischen Sinn — kein systematisches Anfeinden' + cụ thể về Sachebene (3 sự việc tư liệu).",
+      "Đề xuất Mediation als Stufe 3 + transparent über Stufenmodell: ‚Sollte die Mediation scheitern, wäre die nächste Eskalationsstufe der Betriebsrat — diese Option möchte ich vermeiden, sehe sie jedoch transparent vor'."
+    ],
+    "register_notes": "Streitbeilegung formal C1: ‚Sie' tuyệt đối với HR / Betriebsrat. Konjunktiv II cho Eskalations-Hypothese: ‚Sollte die Mediation scheitern, wäre die nächste Eskalationsstufe X'. Funktionsverbgefüge: ‚das direkte Gespräch suchen' (tìm trao đổi trực tiếp), ‚Vereinbarungen umsetzen' (triển khai thỏa thuận), ‚Sachebene betreffen' (liên quan Sachebene), ‚in Frage stellen' (đặt vấn đề). Sachebene vs Personebene phân biệt strict — không trộn lẫn. Stufenmodell explicit: Direktgespräch → Vorgesetzter → HR-Mediation → Betriebsrat → Arbeitsgericht. Mobbing-Vorwurf NUR khi juristisch erfüllbar (systematisches Anfeinden, Schikanieren) — không leichtfertig. Dokumentation bắt buộc: E-Mail-Memos nach jedem Gespräch, mit Datum + Vereinbarungen. ‚Ergebnisoffen' khi Mediation — beide Parteien gleichberechtigt. Verhaltensvereinbarung schriftlich mit Eskalationsmechanismus.",
+    "idiom_glosses": [
+      {
+        "idiom": "den Stier bei den Hörnern packen",
+        "literal": "nắm bò ở sừng",
+        "meaning": "đối mặt thẳng vấn đề khó (gehoben/standardsprachlich)",
+        "example": "Nach drei gescheiterten Direktgesprächen muss man den Stier bei den Hörnern packen — formelle Mediation."
+      },
+      {
+        "idiom": "die Wogen glätten",
+        "literal": "làm phẳng sóng",
+        "meaning": "làm dịu xung đột (gehoben)",
+        "example": "Eine moderierte Aussprache kann die Wogen glätten — wenn beide Seiten ergebnisoffen kommen."
+      },
+      {
+        "idiom": "vom Hundertsten ins Tausendste kommen",
+        "literal": "từ 100 sang 1000",
+        "meaning": "leo thang từ chuyện nhỏ sang chuyện lớn (standardsprachlich)",
+        "example": "Wenn man Sachebene und Personebene vermischt, kommt man schnell vom Hundertsten ins Tausendste."
+      },
+      {
+        "idiom": "Brücken bauen",
+        "literal": "xây cầu",
+        "meaning": "tạo kết nối, hòa giải (standardsprachlich)",
+        "example": "Eine erfolgreiche Mediation baut Brücken zwischen den Konfliktparteien — ohne die Differenz zuzukleistern."
+      }
+    ],
+    "exercises": [
+      {
+        "type": "fill_blank",
+        "instruction_vi": "Điền cấu trúc Streitbeilegung formal C1:",
+        "pronunciation_focus": [],
+        "items": [
+          {
+            "prompt": "Ich bitte um eine ___ Klärung, da der Konflikt durch informelle Gespräche nicht beigelegt werden konnte.",
+            "answer": "formelle"
+          },
+          {
+            "prompt": "Mein Anliegen betrifft die ___ und nicht die Person als solche.",
+            "answer": "Sachebene"
+          },
+          {
+            "prompt": "Mein Wunsch ist eine ___ Aussprache mit klarem Protokoll und überprüfbaren Vereinbarungen.",
+            "answer": "moderierte"
+          },
+          {
+            "prompt": "Sollte die Mediation scheitern, wäre die nächste ___ der Betriebsrat.",
+            "answer": "Eskalationsstufe"
+          }
+        ]
+      },
+      {
+        "type": "matching",
+        "instruction_vi": "Nối Stufen của formelle Streitbeilegung Đức:",
+        "pronunciation_focus": [],
+        "items": [
+          {
+            "prompt": "Stufe 1 — Direktgespräch",
+            "answer": "Direkt mit Konfliktpartei (2-3 mal)"
+          },
+          {
+            "prompt": "Stufe 2 — Vorgesetzter",
+            "answer": "Disziplinarvorgesetzter beider Parteien"
+          },
+          {
+            "prompt": "Stufe 3 — HR-Mediation",
+            "answer": "Neutral, freiwillig, mit Vereinbarung"
+          },
+          {
+            "prompt": "Stufe 4 — Betriebsrat",
+            "answer": "Bei strukturellen Problemen, gewählter Vertretung"
+          }
+        ]
+      },
+      {
+        "type": "translation",
+        "instruction_vi": "Dịch sang tiếng Đức formal C1:",
+        "pronunciation_focus": ["dispute resolution"],
+        "items": [
+          {
+            "prompt": "Tôi xin sự làm rõ chính thức, vì xung đột qua các trao đổi không chính thức không thể được giải quyết.",
+            "answer": "Ich bitte um eine formelle Klärung, da der Konflikt durch informelle Gespräche nicht beigelegt werden konnte."
+          },
+          {
+            "prompt": "Mối quan tâm của tôi liên quan đến cấp độ nội dung — sự thiếu phối hợp lặp lại — và không phải con người như vậy.",
+            "answer": "Mein Anliegen betrifft die Sachebene — wiederholt fehlende Abstimmung — und nicht die Person als solche."
+          },
+          {
+            "prompt": "Tôi đã ba lần tìm cuộc trao đổi trực tiếp — các thỏa thuận đạt được sau đó không được triển khai.",
+            "answer": "Ich habe bereits dreimal das direkte Gespräch gesucht — die getroffenen Vereinbarungen wurden im Anschluss nicht umgesetzt."
+          },
+          {
+            "prompt": "Nếu hòa giải thất bại, bước escalation tiếp theo là Betriebsrat — tôi muốn tránh lựa chọn này, song nhìn nó minh bạch trước.",
+            "answer": "Sollte die Mediation scheitern, wäre die nächste Eskalationsstufe der Betriebsrat — diese Option möchte ich vermeiden, sehe sie jedoch transparent vor."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lverhandlung_beenden_batna",
+    "level": "C1",
+    "category": "fluency",
+    "title_vi": "Kết thúc đàm phán và rời bàn (BATNA) — Verhandlung beenden und gehen",
+    "title_en": "Walking away from a negotiation — using BATNA effectively",
+    "sentences": [
+      {
+        "en": "Bevor ich fortfahre, möchte ich transparent machen, dass ich eine konkrete Alternative zu dieser Vereinbarung verfolge — meine BATNA liegt nicht im Hypothetischen.",
+        "vi": "Trước khi tiếp tục, tôi muốn làm minh bạch rằng tôi đang theo đuổi một phương án thay thế cụ thể cho thỏa thuận này — BATNA của tôi không nằm ở giả định.",
+        "pronunciation_focus": [
+          "transparent → trans-pa-RENT",
+          "konkrete Alternative → kôn-KRÊ-tê al-tê-na-TI-vê",
+          "Hypothetischen → huy-pô-TÊ-ti-shần"
+        ]
+      },
+      {
+        "en": "Sollten wir uns auf den genannten Eckwerten nicht einigen können, sehe ich mich gezwungen, von der Verhandlung Abstand zu nehmen — ohne Groll, aber mit Klarheit.",
+        "vi": "Nếu chúng ta không đồng thuận được về các giá trị mốc đã nêu, tôi buộc phải rút khỏi đàm phán — không có ác cảm, song với sự rõ ràng.",
+        "pronunciation_focus": [
+          "Eckwerten → ÊK-vê-tần",
+          "Abstand nehmen → AP-shtant nê-mần",
+          "Groll → GRÔL"
+        ]
+      },
+      {
+        "en": "Mein Walk-Away-Punkt ist nicht aus Verhandlungstaktik gewählt, sondern entspricht der wirtschaftlichen Realität — unter X wird die Vereinbarung für mich unwirtschaftlich.",
+        "vi": "Điểm walk-away của tôi không được chọn từ chiến thuật đàm phán, mà phù hợp với thực tế kinh tế — dưới X thỏa thuận trở nên không kinh tế với tôi.",
+        "pronunciation_focus": [
+          "Walk-Away-Punkt → vôk-ê-VÊI-punkt",
+          "Verhandlungstaktik → fe-HAN-đlungs-tak-tik",
+          "unwirtschaftlich → un-VIT-shaft-likh"
+        ]
+      },
+      {
+        "en": "Ich bedauere, dass wir an diesem Punkt nicht weiterkommen — gleichwohl danke ich Ihnen für die offene und faire Führung der Gespräche.",
+        "vi": "Tôi tiếc rằng chúng ta không tiến tiếp ở điểm này — tuy nhiên tôi cám ơn các vị về cách dẫn dắt cuộc trao đổi cởi mở và công bằng.",
+        "pronunciation_focus": [
+          "bedauere → bê-ĐAO-ê-rê",
+          "gleichwohl → glaikh-VÔL",
+          "Führung → FUY-rung"
+        ]
+      },
+      {
+        "en": "Sollte sich die Lage Ihrerseits in den nächsten Wochen ändern, stehe ich für ein erneutes Gespräch zur Verfügung — die Tür bleibt offen.",
+        "vi": "Nếu tình hình phía các vị thay đổi trong các tuần tới, tôi sẵn sàng cho một cuộc trao đổi mới — cánh cửa vẫn mở.",
+        "pronunciation_focus": [
+          "Lage → LA-gê",
+          "erneutes → e-NỌI-tệs",
+          "zur Verfügung → tsu fe-FUY-gung"
+        ]
+      }
+    ],
+    "cultural_notes_vi": "BATNA-Strategie (Walk-Away) trong văn hóa đàm phán Đức tuân theo strenger Sachlichkeit-Norm. (1) BATNA REAL, NICHT BLUFF: deutsche Verhandlungspartner sind sehr empfindlich für Bluffs. Ein angedeuteter Walk-Away ohne reale Alternative wird als unprofessional erkannt — und die counterparty wird future Verhandlungen härter führen. BATNA muss konkret sein: ‚wir haben Angebot von Lieferant X über Y zu Z' — nicht ‚wir können auch woanders kaufen'. (2) WALK-AWAY OHNE GROLL: deutsche Geschäftskultur bewahrt Beziehung auch im Walk-Away. Câu chuẩn: ‚Ich bedauere, dass wir an diesem Punkt nicht weiterkommen — gleichwohl danke ich Ihnen für die offene Führung der Gespräche'. Hostile Walk-Away verbrennt Brücken für 5-10 Jahre. (3) DIE TÜR OFFEN HALTEN: am Ende eines Walk-Away signalisieren Sie Bereitschaft, später wieder zu sprechen. ‚Sollte sich die Lage ändern, stehe ich für ein erneutes Gespräch zur Verfügung'. Diese Geste ist wichtig — Markt-Bedingungen ändern sich, und der Walk-Away kann später revisited werden.\n\nKhác Việt Nam: in vietnamesischer Geschäftskultur, Walk-Away ist oft endgültig — Beziehungs-Schwerpunkt macht Re-Open schwer. In deutscher Kultur, Walk-Away on Sachebene ist akzeptiert und Re-Open möglich, wenn Bedingungen sich ändern.\n\nMột chi tiết quan trọng: TIMING des Walk-Away. Zu früh angekündigt ohne Versuch zur Annäherung = unprofessional. Zu spät angekündigt = ressourcenverschwendend für beide. Sweet spot: nach 2-3 Verhandlungsrunden ohne Konvergenz, Walk-Away klar signalisieren.\n\nVề Eckwerten (mốc giá trị): vor Verhandlung definieren — Wunsch-Punkt (best case), Walk-Away-Punkt (worst acceptable), Mid-Range (realistic target). Ohne diese drei Punkte verliert man Orientierung in hitzigen Verhandlungen.\n\nVề ZOPA (Zone of Possible Agreement): Schnittmenge zwischen Ihrer Akzeptanzzone und der Counterparty-Akzeptanzzone. Wenn ZOPA leer ist, ist Walk-Away rational. Wenn ZOPA existiert aber klein ist, mehr Verhandlung zu finden.\n\nVề Eckwerten kommunizieren: nicht alle Eckwerte preisgeben. Wunsch-Punkt + Walk-Away-Punkt sind Verhandlungsmasse. Was Sie offenlegen: dass Sie eine BATNA haben (zur Glaubwürdigkeit), aber nicht die genaue Zahl der BATNA (zur Verhandlungsmacht).\n\nVề Verhandlungs-Reframing als letzter Versuch: bevor Sie walk-away, ein letztes Reframing versuchen — ‚vielleicht haben wir das Problem falsch zugeschnitten?'. Manchmal liegt die Lösung außerhalb der bisherigen Optionen.\n\nVề schriftlicher Bestätigung: nach mündlichem Walk-Away, kurze E-Mail innerhalb von 24 Stunden — ‚zur Bestätigung unseres heutigen Gesprächs: leider keine Einigung erzielt; danke für die offene Diskussion; bei Veränderung der Lage stehe ich gerne erneut zur Verfügung'. Diese Mail dokumentiert Walk-Away ohne Drama.",
+    "tip_advice_vi": "Vor BATNA-Walk-Away (Vorbereitung):\n1. BATNA REAL machen: konkrete Alternative — anderer Lieferant, anderes Stellenangebot, alternative Investition. Keine vagen ‚wir machen es selbst' wenn Sie es nicht wirklich machen können.\n2. ECKWERTE definieren: Wunsch-Punkt, Walk-Away-Punkt, Mid-Range. Schriftlich, vor Verhandlung.\n3. ZOPA prüfen: was wissen Sie über die Akzeptanzzone der Counterparty? Wenn ZOPA leer, Walk-Away ist rational.\n4. SCRIPT vorbereiten für Walk-Away-Moment — verhindert Eskalation in der Hitze.\n\nIm Verhandlungsraum (3-Phasen-Walk-Away):\n1. ANKÜNDIGUNG (transparent): ‚Bevor ich fortfahre, möchte ich transparent machen, dass ich eine konkrete Alternative verfolge'\n2. ECKWERTE benennen: Walk-Away-Punkt klar (mit Begründung)\n3. WALK-AWAY ohne Groll: Bedauern + Dank + Tür offen halten\n\nNgôn ngữ BATNA und Walk-Away C1:\n- ‚Bevor ich fortfahre, möchte ich transparent machen, dass ich eine konkrete Alternative zu dieser Vereinbarung verfolge' (trước khi tiếp, tôi muốn minh bạch rằng tôi đang theo đuổi alternative cụ thể)\n- ‚Meine BATNA liegt nicht im Hypothetischen' (BATNA của tôi không ở giả định)\n- ‚Sollten wir uns nicht einigen können, sehe ich mich gezwungen, von der Verhandlung Abstand zu nehmen' (nếu không đồng thuận, tôi buộc rút khỏi đàm phán)\n- ‚Mein Walk-Away-Punkt ist nicht aus Verhandlungstaktik gewählt, sondern entspricht der wirtschaftlichen Realität' (walk-away không từ chiến thuật, mà phù hợp thực tế kinh tế)\n- ‚Ich bedauere, dass wir an diesem Punkt nicht weiterkommen — gleichwohl danke ich Ihnen' (tiếc rằng không tiến tiếp — tuy nhiên cám ơn)\n- ‚Sollte sich die Lage ändern, stehe ich für ein erneutes Gespräch zur Verfügung — die Tür bleibt offen' (nếu tình hình thay đổi, tôi sẵn sàng — cửa vẫn mở)\n\nKhi Counterparty fragt nach BATNA-Details:\n- ‚Ich bestätige nicht jedes Detail meiner BATNA — das wäre Verhandlungsnaivität. Ich bestätige aber, dass sie real ist und mir Walk-Away ermöglicht.' (tôi không xác nhận từng chi tiết BATNA — đó sẽ là ngây thơ đàm phán. Nhưng tôi xác nhận BATNA thật và cho phép tôi walk-away.)\n\nKhi Counterparty Bluff vorwirft:\n- ‚Sie unterstellen mir Bluffen. Lassen Sie es mich sachlich sagen: meine BATNA ist real. Sollten wir keine Einigung finden, gehe ich tatsächlich weg — ohne Drama, aber mit Konsequenz.' (anh nghi tôi bluff. Sachlich nói: BATNA của tôi thật. Nếu không đồng thuận, tôi thật sự đi — không drama, nhưng với consequence.)\n\nKhi letzte Verhandlungsrunde:\n- ‚Bevor wir endgültig auseinandergehen, ein letzter Versuch: vielleicht haben wir das Problem falsch zugeschnitten? Lassen Sie uns für zehn Minuten frei denken — was wären Optionen außerhalb der bisherigen Konditionen?' (trước khi đi hẳn, một thử cuối: có thể mình cắt vấn đề sai? Cho 10 phút free think — option ngoài các điều kiện hiện tại?)\n\nNach Walk-Away — E-Mail (24 Stunden):\n- ‚Sehr geehrter Herr X, vielen Dank für die offene Diskussion gestern. Wie besprochen konnten wir uns auf den Konditionen leider nicht einigen — ich bedauere das. Sollte sich die Marktlage Ihrerseits in den nächsten Wochen verändern, stehe ich gerne für ein erneutes Gespräch zur Verfügung. Mit freundlichen Grüßen, Linh.'\n\nMẹo cuối: BATNA-Walk-Away ist die stärkste Verhandlungsmacht — ABER nur wenn real. Wer als Bluff erwischt wird, verliert nicht nur diese Verhandlung, sondern Reputation für künftige. Lieber kein Walk-Away als ein gebluffter Walk-Away.",
+    "vocabulary": [
+      {
+        "word": "die BATNA / die beste Alternative",
+        "en": "BATNA — best alternative to negotiated agreement",
+        "vi": "BATNA — phương án thay thế tốt nhất",
+        "pos": "noun (f)",
+        "pronunciation_vi": "đi BAT-na"
+      },
+      {
+        "word": "der Walk-Away-Punkt",
+        "en": "walk-away point",
+        "vi": "điểm rút lui",
+        "pos": "noun (m)",
+        "pronunciation_vi": "đe vôk-ê-VÊI-punkt"
+      },
+      {
+        "word": "die Eckwerte (pl.)",
+        "en": "key parameters, anchor values",
+        "vi": "các giá trị mốc",
+        "pos": "noun (pl)",
+        "pronunciation_vi": "đi ÊK-vê-tê"
+      },
+      {
+        "word": "ZOPA / Zone of Possible Agreement",
+        "en": "ZOPA — zone of possible agreement",
+        "vi": "ZOPA — vùng khả thi đồng thuận",
+        "pos": "noun (f)",
+        "pronunciation_vi": "đi TSÔ-pa"
+      },
+      {
+        "word": "Abstand nehmen von",
+        "en": "to step back from, withdraw",
+        "vi": "rút khỏi",
+        "pos": "verb phrase",
+        "pronunciation_vi": "AP-shtant NÊ-mần fôn"
+      },
+      {
+        "word": "der Groll",
+        "en": "resentment, grudge",
+        "vi": "ác cảm",
+        "pos": "noun (m)",
+        "pronunciation_vi": "đe GRÔL"
+      },
+      {
+        "word": "unwirtschaftlich",
+        "en": "uneconomical",
+        "vi": "không kinh tế",
+        "pos": "adjective",
+        "pronunciation_vi": "un-VIT-shaft-likh"
+      },
+      {
+        "word": "die Tür offen halten",
+        "en": "to keep the door open",
+        "vi": "giữ cửa mở",
+        "pos": "verb phrase",
+        "pronunciation_vi": "đi TUY Ô-fân HAL-tần"
+      },
+      {
+        "word": "das Bluffen / der Bluff",
+        "en": "bluffing / bluff",
+        "vi": "bluff",
+        "pos": "noun (n/m)",
+        "pronunciation_vi": "đát BLU-fân"
+      },
+      {
+        "word": "die Verhandlungsmacht",
+        "en": "negotiating power",
+        "vi": "quyền lực đàm phán",
+        "pos": "noun (f)",
+        "pronunciation_vi": "đi fe-HAN-đlungs-makht"
+      }
+    ],
+    "dialogue": [
+      {
+        "speaker": "Linh",
+        "text": "Bevor ich fortfahre, möchte ich transparent machen, dass ich eine konkrete Alternative zu dieser Vereinbarung verfolge — meine BATNA liegt nicht im Hypothetischen.",
+        "vi": "Trước khi tiếp, tôi muốn minh bạch rằng tôi đang theo đuổi alternative cụ thể — BATNA của tôi không ở giả định."
+      },
+      {
+        "speaker": "Verhandlungspartner",
+        "text": "Können Sie konkretisieren?",
+        "vi": "Anh có thể cụ thể được không?"
+      },
+      {
+        "speaker": "Linh",
+        "text": "Ich bestätige nicht jedes Detail meiner BATNA — das wäre Verhandlungsnaivität. Ich bestätige aber: sie ist real, sie liegt im akzeptablen Bereich, und sie ermöglicht mir Walk-Away.",
+        "vi": "Tôi không xác nhận từng chi tiết — đó sẽ là ngây thơ đàm phán. Nhưng tôi xác nhận: BATNA của tôi thật, nằm trong phạm vi chấp nhận được, và cho phép tôi walk-away."
+      },
+      {
+        "speaker": "Verhandlungspartner",
+        "text": "Verstanden. Lassen Sie uns die Konditionen nochmal durchgehen.",
+        "vi": "Tôi hiểu. Mình đi qua điều kiện một lần nữa."
+      }
+    ],
+    "dialogue_long": [
+      {
+        "speaker": "Linh",
+        "text": "Herr Kaufmann, wir sitzen jetzt in Verhandlungsrunde drei. Bevor ich fortfahre, möchte ich transparent machen, dass ich eine konkrete Alternative zu dieser Vereinbarung verfolge — meine BATNA liegt nicht im Hypothetischen.",
+        "vi": "Anh Kaufmann, chúng ta ở vòng đàm phán thứ ba. Trước khi tiếp, tôi muốn minh bạch rằng tôi đang theo đuổi alternative cụ thể — BATNA của tôi không ở giả định."
+      },
+      {
+        "speaker": "Verhandlungspartner Kaufmann",
+        "text": "Können Sie das konkretisieren?",
+        "vi": "Anh có thể cụ thể không?"
+      },
+      {
+        "speaker": "Linh",
+        "text": "Ich bestätige nicht jedes Detail meiner BATNA — das wäre Verhandlungsnaivität. Ich bestätige aber, dass sie real ist und mir Walk-Away ermöglicht. Sollten wir uns auf den genannten Eckwerten nicht einigen können, sehe ich mich gezwungen, von der Verhandlung Abstand zu nehmen — ohne Groll, aber mit Klarheit.",
+        "vi": "Tôi không xác nhận từng chi tiết BATNA — đó sẽ là ngây thơ đàm phán. Nhưng tôi xác nhận thật và cho phép walk-away. Nếu chúng ta không đồng thuận được về các Eckwerten, tôi buộc rút khỏi đàm phán — không ác cảm, song với sự rõ ràng."
+      },
+      {
+        "speaker": "Kaufmann",
+        "text": "Welche Eckwerten halten Sie für nicht verhandelbar?",
+        "vi": "Anh xem các Eckwerten nào không thể thương lượng?"
+      },
+      {
+        "speaker": "Linh",
+        "text": "Drei. Erstens: Liefer-SLA von 95 Prozent on-time — darunter ist das Risiko-Profil zu hoch. Zweitens: Mengenrabatt-Staffel ab 10.000 Einheiten mit minimum 5 Prozent — sonst ist die Total-Cost-of-Ownership ungünstiger als meine Alternative. Drittens: Audit-Recht einmal jährlich — das ist Compliance-Pflicht, nicht verhandelbar.",
+        "vi": "Ba. Thứ nhất: Liefer-SLA on-time 95% — dưới đó risk-profile quá cao. Thứ hai: chiết khấu khối lượng từ 10.000 đơn vị với tối thiểu 5% — nếu không TCO sẽ kém hơn alternative của tôi. Thứ ba: quyền audit hàng năm — là Compliance-Pflicht, không thương lượng được."
+      },
+      {
+        "speaker": "Kaufmann",
+        "text": "SLA 95 Prozent ist im oberen Marktbereich. Wir haben aktuell 92 Prozent SLA mit Pönale bei Unterschreitung. Das ist unser absolutes Maximum.",
+        "vi": "SLA 95% nằm ở phần trên thị trường. Chúng tôi hiện có 92% SLA với phạt khi vi phạm. Đó là maximum tuyệt đối của chúng tôi."
+      },
+      {
+        "speaker": "Linh",
+        "text": "Das verstehe ich. Mein Walk-Away-Punkt ist nicht aus Verhandlungstaktik gewählt, sondern entspricht der wirtschaftlichen Realität — unter 95 Prozent SLA wird die Vereinbarung für mich unwirtschaftlich, weil meine Produktion bei 8 Prozent Verzögerung Kettenreaktionen erzeugt, die teurer sind als der Preisunterschied zur Alternative.",
+        "vi": "Tôi hiểu. Walk-away của tôi không từ chiến thuật, mà phù hợp thực tế kinh tế — dưới 95% SLA thỏa thuận trở nên không kinh tế, vì sản xuất của tôi với 8% trễ tạo ra chuỗi phản ứng đắt hơn chênh lệch giá so với alternative."
+      },
+      {
+        "speaker": "Kaufmann",
+        "text": "Das ist ein nachvollziehbares Argument. Lassen Sie mich kurz mit der Geschäftsführung Rücksprache halten — fünfzehn Minuten Pause?",
+        "vi": "Lập luận có thể hiểu. Cho tôi tham vấn ban lãnh đạo — nghỉ 15 phút?"
+      },
+      {
+        "speaker": "Linh",
+        "text": "Gerne.",
+        "vi": "Sẵn lòng."
+      },
+      {
+        "speaker": "Kaufmann (nach Pause)",
+        "text": "Wir können 95 Prozent SLA anbieten — bei einem Preisaufschlag von 4 Prozent für die zusätzliche Risikodeckung. Das ist unser letztes Angebot.",
+        "vi": "Chúng tôi có thể đề xuất SLA 95% — với phụ phí 4% cho rủi ro bổ sung. Đó là đề xuất cuối."
+      },
+      {
+        "speaker": "Linh",
+        "text": "Ich danke für den Schritt. Lassen Sie mich rechnen: 95 Prozent SLA + 4 Prozent Preisaufschlag versus meine Alternative — die Total-Cost-of-Ownership ist immer noch leicht zu Ihrem Nachteil. Ich bedauere, dass wir an diesem Punkt nicht weiterkommen — gleichwohl danke ich Ihnen für die offene und faire Führung der Gespräche.",
+        "vi": "Cám ơn bước đi. Cho tôi tính: SLA 95% + phụ phí 4% so với alternative của tôi — TCO vẫn nghiêng nhẹ về phía bất lợi cho anh. Tôi tiếc rằng chúng ta không tiến tiếp ở điểm này — tuy nhiên cám ơn anh về cách dẫn dắt cởi mở và công bằng."
+      },
+      {
+        "speaker": "Kaufmann",
+        "text": "Sie gehen tatsächlich? Das überrascht mich nicht — Ihre BATNA war konkret begründet. Bedauerlich für uns.",
+        "vi": "Anh thật sự đi? Điều đó không làm tôi ngạc nhiên — BATNA của anh có cơ sở cụ thể. Đáng tiếc cho chúng tôi."
+      },
+      {
+        "speaker": "Linh",
+        "text": "Sollte sich die Lage Ihrerseits in den nächsten Wochen ändern — etwa veränderte Risiko-Bewertung oder andere Volumina — stehe ich für ein erneutes Gespräch zur Verfügung. Die Tür bleibt offen.",
+        "vi": "Nếu tình hình các vị thay đổi trong các tuần tới — chẳng hạn đánh giá rủi ro khác hoặc volume khác — tôi sẵn sàng cho cuộc trao đổi mới. Cửa vẫn mở."
+      },
+      {
+        "speaker": "Kaufmann",
+        "text": "Vielen Dank — diese Geste ehrt Sie. Wir bleiben in Kontakt.",
+        "vi": "Cám ơn — cử chỉ đó tôn vinh anh. Chúng ta giữ liên lạc."
+      },
+      {
+        "speaker": "Linh",
+        "text": "Ich werde Ihnen morgen eine kurze E-Mail zur Bestätigung senden — zur Dokumentation des heutigen Gesprächs und meiner Bereitschaft, später wieder ins Gespräch zu kommen.",
+        "vi": "Tôi sẽ gửi anh một email ngắn xác nhận ngày mai — tư liệu cuộc trao đổi hôm nay và sự sẵn sàng quay lại trao đổi sau."
+      },
+      {
+        "speaker": "Kaufmann",
+        "text": "Sehr professionell. Auf Wiedersehen, Frau Nguyễn.",
+        "vi": "Rất chuyên nghiệp. Tạm biệt cô Nguyễn."
+      },
+      {
+        "speaker": "Linh",
+        "text": "Auf Wiedersehen, Herr Kaufmann.",
+        "vi": "Tạm biệt anh Kaufmann."
+      }
+    ],
+    "roleplay_prompts": [
+      "Bạn ở Verhandlungsrunde 3 mit deutscher Lieferant. SLA-Anforderung 95% nicht erreicht. Mở đầu Walk-Away-Phase formal: ‚Bevor ich fortfahre, möchte ich transparent machen, dass ich eine konkrete Alternative verfolge — meine BATNA liegt nicht im Hypothetischen'.",
+      "Counterparty đề xuất 95% SLA + 4% Preisaufschlag. Tính TCO und stelle fest, alternative immer noch besser. Diễn đạt formal Walk-Away: ‚Ich bedauere, dass wir an diesem Punkt nicht weiterkommen — gleichwohl danke ich Ihnen für die offene Führung der Gespräche'.",
+      "Halten die Tür offen: ‚Sollte sich die Lage Ihrerseits ändern, stehe ich für ein erneutes Gespräch zur Verfügung — die Tür bleibt offen'. Folgen mit E-Mail-Bestätigung 24 Stunden später."
+    ],
+    "register_notes": "BATNA / Walk-Away C1: ‚Sie' tuyệt đối. Konjunktiv II cho hypothetische Eskalation: ‚Sollten wir uns nicht einigen können, sehe ich mich gezwungen, von der Verhandlung Abstand zu nehmen'. Funktionsverbgefüge: ‚Abstand nehmen von' (rút khỏi), ‚zur Verfügung stehen' (sẵn sàng), ‚in Frage kommen' (được tính đến), ‚außer Betracht bleiben' (không được tính). Schlüsselformeln:\n- BATNA-Ankündigung: ‚meine BATNA liegt nicht im Hypothetischen'\n- Walk-Away-Begründung: ‚nicht aus Verhandlungstaktik gewählt, sondern entspricht der wirtschaftlichen Realität'\n- Walk-Away-Bedauern: ‚Ich bedauere, dass wir an diesem Punkt nicht weiterkommen — gleichwohl danke ich Ihnen'\n- Tür offen halten: ‚Sollte sich die Lage ändern, stehe ich für ein erneutes Gespräch zur Verfügung'\nKHÔNG bluff (BATNA muss real sein). KHÔNG hostile Walk-Away (verbrennt Brücken). Schriftliche Bestätigung 24h danach Standard.",
+    "idiom_glosses": [
+      {
+        "idiom": "die Karten auf den Tisch legen",
+        "literal": "đặt bài lên bàn",
+        "meaning": "minh bạch hóa Position (standardsprachlich)",
+        "example": "Mit der Ankündigung der BATNA lege ich die Karten auf den Tisch — ohne dabei jedes Detail zu zeigen."
+      },
+      {
+        "idiom": "die Reißleine ziehen",
+        "literal": "kéo dây kéo dù",
+        "meaning": "stop khẩn cấp, walk-away (standardsprachlich)",
+        "example": "Nach drei Verhandlungsrunden ohne Konvergenz war es Zeit, die Reißleine zu ziehen."
+      },
+      {
+        "idiom": "Brücken nicht abreißen",
+        "literal": "không phá cầu",
+        "meaning": "không cắt đứt quan hệ trong walk-away (standardsprachlich)",
+        "example": "Auch beim Walk-Away reißen wir die Brücken nicht ab — der Markt kann sich ändern."
+      },
+      {
+        "idiom": "auf Augenhöhe verhandeln",
+        "literal": "đàm phán ngang mắt",
+        "meaning": "đàm phán bình đẳng (gehoben/standardsprachlich)",
+        "example": "BATNA gibt Ihnen die Macht, auf Augenhöhe zu verhandeln — ohne sie sind Sie strukturell benachteiligt."
+      }
+    ],
+    "exercises": [
+      {
+        "type": "fill_blank",
+        "instruction_vi": "Điền cấu trúc BATNA / Walk-Away C1:",
+        "pronunciation_focus": [],
+        "items": [
+          {
+            "prompt": "Bevor ich fortfahre, möchte ich transparent machen, dass ich eine konkrete ___ zu dieser Vereinbarung verfolge.",
+            "answer": "Alternative"
+          },
+          {
+            "prompt": "Sollten wir uns nicht einigen können, sehe ich mich gezwungen, von der Verhandlung ___ zu nehmen.",
+            "answer": "Abstand"
+          },
+          {
+            "prompt": "Mein Walk-Away-Punkt ist nicht aus Verhandlungstaktik gewählt, sondern entspricht der ___ Realität.",
+            "answer": "wirtschaftlichen"
+          },
+          {
+            "prompt": "Sollte sich die Lage Ihrerseits ändern, stehe ich für ein erneutes Gespräch zur ___.",
+            "answer": "Verfügung"
+          }
+        ]
+      },
+      {
+        "type": "matching",
+        "instruction_vi": "Nối khái niệm BATNA-Strategie với chức năng:",
+        "pronunciation_focus": [],
+        "items": [
+          {
+            "prompt": "BATNA",
+            "answer": "Best Alternative — phương án thay thế nếu không có Einigung"
+          },
+          {
+            "prompt": "ZOPA",
+            "answer": "Zone of Possible Agreement — vùng đồng thuận khả thi"
+          },
+          {
+            "prompt": "Walk-Away-Punkt",
+            "answer": "Mức tối thiểu — dưới đó rút khỏi"
+          },
+          {
+            "prompt": "Tür offen halten",
+            "answer": "Walk-Away-Norm — re-open option khi Bedingungen thay đổi"
+          }
+        ]
+      },
+      {
+        "type": "translation",
+        "instruction_vi": "Dịch sang tiếng Đức formal C1:",
+        "pronunciation_focus": ["BATNA walk-away"],
+        "items": [
+          {
+            "prompt": "Trước khi tiếp tục, tôi muốn minh bạch rằng BATNA của tôi không ở giả định.",
+            "answer": "Bevor ich fortfahre, möchte ich transparent machen, dass meine BATNA nicht im Hypothetischen liegt."
+          },
+          {
+            "prompt": "Walk-away của tôi không được chọn từ chiến thuật, mà phù hợp với thực tế kinh tế.",
+            "answer": "Mein Walk-Away-Punkt ist nicht aus Verhandlungstaktik gewählt, sondern entspricht der wirtschaftlichen Realität."
+          },
+          {
+            "prompt": "Tôi tiếc rằng chúng ta không tiến tiếp — tuy nhiên cám ơn các vị về cách dẫn dắt cởi mở và công bằng.",
+            "answer": "Ich bedauere, dass wir an diesem Punkt nicht weiterkommen — gleichwohl danke ich Ihnen für die offene und faire Führung der Gespräche."
+          },
+          {
+            "prompt": "Nếu tình hình thay đổi, tôi sẵn sàng cho cuộc trao đổi mới — cửa vẫn mở.",
+            "answer": "Sollte sich die Lage ändern, stehe ich für ein erneutes Gespräch zur Verfügung — die Tür bleibt offen."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lniedrige_angebote_ablehnen",
+    "level": "C1",
+    "category": "fluency",
+    "title_vi": "Từ chối đề xuất thấp mà không phá vỡ quan hệ — Niedrige Angebote ablehnen ohne Beziehungsschaden",
+    "title_en": "Rejecting low offers without damaging the business relationship",
+    "sentences": [
+      {
+        "en": "Vielen Dank für Ihr Angebot — ich schätze die Sorgfalt, mit der es ausgearbeitet wurde, sehe es jedoch deutlich unterhalb des Bereichs, der für uns wirtschaftlich tragfähig ist.",
+        "vi": "Cám ơn về đề xuất của các vị — tôi trân trọng sự cẩn thận trong việc soạn thảo, song thấy nó rõ ràng dưới mức kinh tế khả thi với chúng tôi.",
+        "pronunciation_focus": [
+          "Sorgfalt → ZÔK-falt",
+          "ausgearbeitet → AOS-gê-a-bai-tệt",
+          "tragfähig → TRAK-fê-ikh"
+        ]
+      },
+      {
+        "en": "Ihr Vorschlag liegt etwa vierzehn Prozent unter dem Marktdurchschnitt für vergleichbare Leistungen — eine Annäherung wäre erforderlich, damit wir weiterverhandeln können.",
+        "vi": "Đề xuất của các vị nằm khoảng 14% dưới mức trung bình thị trường cho các dịch vụ tương đương — một sự xích lại sẽ cần thiết để chúng ta có thể tiếp tục đàm phán.",
+        "pronunciation_focus": [
+          "Marktdurchschnitt → MAKT-đukh-shnit",
+          "vergleichbare Leistungen → fe-GLAIKH-ba-rê LAI-shtun-gân",
+          "Annäherung → AN-nê-ê-rung"
+        ]
+      },
+      {
+        "en": "Mir ist daran gelegen, dass beide Seiten am Ende eine Vereinbarung mitgestalten, die sich rechnet — daher meine offene Rückmeldung statt höflicher Hinhaltung.",
+        "vi": "Với tôi quan trọng là cả hai bên cuối cùng cùng định hình một thỏa thuận có lợi — do đó phản hồi cởi mở của tôi thay vì lịch sự kéo dài.",
+        "pronunciation_focus": [
+          "mitgestalten → MIT-gê-shtal-tần",
+          "rechnet → RÊKH-nệt",
+          "Hinhaltung → HIN-hal-tung"
+        ]
+      },
+      {
+        "en": "Wenn Sie aus Ihrer Sicht keinen weiteren Spielraum sehen, verstehe ich das — gleichwohl möchten wir die Tür für eine Anpassung in einer späteren Runde nicht schließen.",
+        "vi": "Nếu từ góc các vị không còn dư địa, tôi hiểu — tuy nhiên chúng tôi không muốn đóng cửa cho điều chỉnh ở vòng sau.",
+        "pronunciation_focus": [
+          "Spielraum → SHPIL-raom",
+          "gleichwohl → glaikh-VÔL",
+          "Anpassung → AN-pa-sung"
+        ]
+      },
+      {
+        "en": "Eine niedrigschwellige Lösung wäre, dass Sie einen überarbeiteten Vorschlag in vierzehn Tagen einreichen — wir bewerten ihn ohne Vorwurf, ohne Statussignal.",
+        "vi": "Một giải pháp ngưỡng thấp sẽ là các vị nộp một đề xuất đã chỉnh sửa trong 14 ngày — chúng tôi đánh giá không phê phán, không status-signal.",
+        "pronunciation_focus": [
+          "niedrigschwellig → NI-đrikh-shvê-likh",
+          "überarbeitet → uy-bờ-A-bai-tệt",
+          "Statussignal → SHTA-tus-zig-nal"
+        ]
+      }
+    ],
+    "cultural_notes_vi": "Niedrige Angebote ablehnen ohne Beziehungsschaden in deutscher Geschäftskultur folgt einem präzisen Muster. (1) ANERKENNUNG der Mühe: bevor man ablehnt, muss man die Mühe der Counterparty würdigen. ‚Vielen Dank für Ihr Angebot — ich schätze die Sorgfalt'. Diese Höflichkeit ist nicht bloße Floskel, sondern signalisiert Respekt für professionelle Arbeit. (2) SACHLICHE BEGRÜNDUNG: Ablehnung muss auf data basieren, nicht auf Geschmack. ‚vierzehn Prozent unter dem Marktdurchschnitt' ist überprüfbar. ‚zu niedrig' ohne Begründung ist unprofessional. (3) TÜR OFFEN HALTEN: niedriges Angebot heute ≠ niemals Geschäft. Markt-Bedingungen ändern sich, Volumina ändern sich, Counterparty-Strategien ändern sich. Schließen Sie nie die Tür, außer Compliance-Verstoß oder schwerer Vertrauensbruch.\n\nKhác Việt Nam: in Vietnam, low offer rejection oft sehr indirekt (‚wir überlegen', ‚wir kommen zurück'). In Deutschland zu indirekt = Counterparty wartet vergeblich, wird frustriert. Direkter (mit Höflichkeit) ist effizienter.\n\nMột chi tiết quan trọng: HÖFLICHE HINHALTUNG (höfliche delays without intent to commit) ist in deutscher Geschäftskultur SCHLIMMER als direkte Ablehnung. Wer Counterparty drei Wochen warten lässt, dann ablehnt, verursacht Reputations-Schaden. Direkte Ablehnung am Tag der Angebots-Empfangs-Prüfung wird respektiert.\n\nVề ‚niedrigschwellige Lösung' (low-threshold solution): einen Pfad für Counterparty zur Re-Engagement, ohne dass sie das Gesicht verliert. ‚Eine niedrigschwellige Lösung wäre, dass Sie einen überarbeiteten Vorschlag in vierzehn Tagen einreichen' — Counterparty kann ohne Konfrontation verbessern. Status-Signal-frei: keine ‚wir geben Ihnen noch eine Chance' (paternalistic).\n\nVề Marktreferenz: rejection-Begründung mit Marktreferenz ist immer stark. ‚vierzehn Prozent unter dem Marktdurchschnitt' (mit konkreter Quelle: Stepstone, Branchenreport, eigene Vergleichsdaten) ist nicht persönlich angreifbar. Counterparty kann mit eigenem Marktreferenz reagieren — Diskussion bleibt sachlich.\n\nVề ‚es rechnet sich nicht': deutsche Wirtschaftssprache verwendet ‚es rechnet sich (nicht)' für ‚it's not economically viable'. Diese Formel ist neutraler als ‚wir können das nicht akzeptieren' — fokussiert auf Wirtschaftlichkeit, nicht auf Ablehnung.\n\nVề Statussignale vermeiden: KEINE ‚wir sind Ihre größere Counterparty' / ‚wir können wo anders kaufen' (impliziter Status-Drohung). Sachlich, höflich, mit Marktreferenz. Status-Signale verbrennen Beziehung.\n\nVề Schriftliche Bestätigung: nach mündlicher Ablehnung E-Mail-Memo binnen 24 Stunden — kurze, höfliche Zusammenfassung. ‚Wie heute besprochen, sehen wir Ihren Vorschlag noch nicht im wirtschaftlich tragfähigen Bereich. Wir freuen uns auf einen überarbeiteten Vorschlag, sollten Sie weitere Spielräume sehen. Mit freundlichen Grüßen.'\n\nVề langfristige Beziehung: niedriges Angebot heute kann morgen Volumen-erhöhen oder marktanpassen. Investieren Sie in Beziehung trotz Ablehnung — Counterparty erinnert sich an höfliche Behandlung in der Niederlage und bietet Vorzugsbehandlung in der nächsten Runde.",
+    "tip_advice_vi": "Vor Ablehnung niedriger Angebote (Vorbereitung):\n1. MARKTREFERENZ besorgen: konkrete Daten zur Marktdurchschnitt — Branchenreport, Stepstone, eigene Vergleichsangebote.\n2. ECKWERTE definieren: was wäre noch akzeptabel? Diese Zahl behalten Sie für sich, aber wissen.\n3. ‚NIEDRIGSCHWELLIGE LÖSUNG' vorbereiten: wie kann Counterparty re-engage ohne Gesichtsverlust?\n4. SCRIPT vorbereiten für Ablehnung — verhindert improvised harshness.\n\nIm Verhandlungsgespräch (4-Phasen-Ablehnung):\n1. ANERKENNUNG: ‚Vielen Dank für Ihr Angebot — ich schätze die Sorgfalt'\n2. SACHLICHE ABLEHNUNG mit Marktreferenz: ‚X Prozent unter dem Marktdurchschnitt'\n3. INTENT signalisieren: ‚wir möchten weiterverhandeln, daher direkte Rückmeldung'\n4. NIEDRIGSCHWELLIGE LÖSUNG: ‚überarbeiteter Vorschlag in 14 Tagen'\n\nNgôn ngữ niedrige Angebote ablehnen C1:\n- ‚Vielen Dank für Ihr Angebot — ich schätze die Sorgfalt, mit der es ausgearbeitet wurde' (cám ơn — tôi trân trọng sự cẩn thận)\n- ‚Sehe es jedoch deutlich unterhalb des Bereichs, der für uns wirtschaftlich tragfähig ist' (song thấy rõ ràng dưới mức kinh tế khả thi)\n- ‚Ihr Vorschlag liegt etwa X Prozent unter dem Marktdurchschnitt' (đề xuất nằm khoảng X% dưới trung bình thị trường)\n- ‚Eine Annäherung wäre erforderlich, damit wir weiterverhandeln können' (sự xích lại cần thiết để tiếp tục đàm phán)\n- ‚Mir ist daran gelegen, dass beide Seiten am Ende eine Vereinbarung mitgestalten, die sich rechnet' (với tôi quan trọng cả hai cùng định hình thỏa thuận có lợi)\n- ‚Daher meine offene Rückmeldung statt höflicher Hinhaltung' (do đó phản hồi cởi mở thay vì lịch sự kéo dài)\n- ‚Eine niedrigschwellige Lösung wäre, dass Sie einen überarbeiteten Vorschlag einreichen' (giải pháp ngưỡng thấp là các vị nộp đề xuất đã chỉnh sửa)\n\nKhi Counterparty pushback (‚das ist unser Maximum'):\n- ‚Ich verstehe Ihre Position. Sollten Sie Ihrerseits keine weiteren Spielräume sehen, müssen wir das so akzeptieren — gleichwohl möchten wir die Tür für eine Anpassung in einer späteren Runde nicht schließen.' (tôi hiểu. Nếu các vị không có dư địa, mình phải chấp nhận — tuy nhiên không đóng cửa cho điều chỉnh sau.)\n\nKhi Counterparty Status-Spiel beginnt (‚dann gehen wir zu Wettbewerber'):\n- ‚Das verstehe ich — Sie müssen tun, was wirtschaftlich für Sie sinnvoll ist. Auch wir suchen die wirtschaftlich beste Lösung. Sollte sich Ihre Lage ändern, stehe ich für ein erneutes Gespräch zur Verfügung.' (tôi hiểu — anh phải làm cái có lợi kinh tế. Chúng tôi cũng tìm giải pháp tốt nhất kinh tế. Nếu lage anh thay đổi, tôi sẵn sàng.)\n\nNach Ablehnung — E-Mail (24 Stunden):\n- ‚Sehr geehrter Herr X, vielen Dank für das heutige Gespräch. Wie besprochen sehen wir Ihren Vorschlag noch nicht im wirtschaftlich tragfähigen Bereich — eine Annäherung um etwa zehn Prozent würde uns Spielraum für eine Einigung geben. Wir freuen uns auf einen überarbeiteten Vorschlag bis zum 15. November. Mit freundlichen Grüßen, Linh.'\n\nKhi langfristige Beziehung wichtig:\n- ‚Auch wenn wir heute keine Einigung finden, schätze ich die professionelle Zusammenarbeit. Lassen Sie uns in drei Monaten erneut in Kontakt treten — die Marktlage wird sich entwickeln.' (dù hôm nay không đồng thuận, tôi trân trọng hợp tác chuyên nghiệp. Mình liên lạc lại sau 3 tháng — tình hình thị trường sẽ phát triển.)\n\nMẹo cuối: Ablehnung mit Würde stärkt Reputation für nächste Runde. Wer ‚nein' professionell sagen kann, wird ernst genommen wenn er ‚ja' sagt. Höfliche Hinhaltung ist langfristig schlechter als sachliche Ablehnung am Tag der Empfangs-Prüfung.",
+    "vocabulary": [
+      {
+        "word": "die Sorgfalt",
+        "en": "thoroughness, diligence",
+        "vi": "sự cẩn thận",
+        "pos": "noun (f)",
+        "pronunciation_vi": "đi ZÔK-falt"
+      },
+      {
+        "word": "wirtschaftlich tragfähig",
+        "en": "economically viable",
+        "vi": "kinh tế khả thi",
+        "pos": "adjective phrase",
+        "pronunciation_vi": "VIT-shaft-likh TRAK-fê-ikh"
+      },
+      {
+        "word": "der Marktdurchschnitt",
+        "en": "market average",
+        "vi": "trung bình thị trường",
+        "pos": "noun (m)",
+        "pronunciation_vi": "đe MAKT-đukh-shnit"
+      },
+      {
+        "word": "die Annäherung",
+        "en": "approximation, convergence",
+        "vi": "sự xích lại",
+        "pos": "noun (f)",
+        "pronunciation_vi": "đi AN-nê-ê-rung"
+      },
+      {
+        "word": "die Hinhaltung",
+        "en": "stalling, delay tactic",
+        "vi": "kéo dài, trì hoãn",
+        "pos": "noun (f)",
+        "pronunciation_vi": "đi HIN-hal-tung"
+      },
+      {
+        "word": "der Spielraum",
+        "en": "negotiation room, leeway",
+        "vi": "dư địa thương lượng",
+        "pos": "noun (m)",
+        "pronunciation_vi": "đe SHPIL-raom"
+      },
+      {
+        "word": "niedrigschwellig",
+        "en": "low-threshold",
+        "vi": "ngưỡng thấp",
+        "pos": "adjective",
+        "pronunciation_vi": "NI-đrikh-shvê-likh"
+      },
+      {
+        "word": "es rechnet sich (nicht)",
+        "en": "it's (not) economically viable",
+        "vi": "có lợi (không) kinh tế",
+        "pos": "verb phrase",
+        "pronunciation_vi": "ês RÊKH-nệt zikh"
+      },
+      {
+        "word": "die offene Rückmeldung",
+        "en": "open feedback",
+        "vi": "phản hồi cởi mở",
+        "pos": "noun (f)",
+        "pronunciation_vi": "đi Ô-fê-nê RUYK-mel-đung"
+      },
+      {
+        "word": "das Statussignal",
+        "en": "status signal",
+        "vi": "tín hiệu địa vị",
+        "pos": "noun (n)",
+        "pronunciation_vi": "đát SHTA-tus-zig-nal"
+      }
+    ],
+    "dialogue": [
+      {
+        "speaker": "Linh",
+        "text": "Herr Schneider, vielen Dank für Ihr Angebot — ich schätze die Sorgfalt, mit der es ausgearbeitet wurde. Sehe es jedoch deutlich unterhalb des Bereichs, der für uns wirtschaftlich tragfähig ist.",
+        "vi": "Anh Schneider, cám ơn về đề xuất — tôi trân trọng sự cẩn thận. Song thấy rõ ràng dưới mức kinh tế khả thi với chúng tôi."
+      },
+      {
+        "speaker": "Schneider",
+        "text": "Wie groß ist der Abstand?",
+        "vi": "Khoảng cách lớn cỡ nào?"
+      },
+      {
+        "speaker": "Linh",
+        "text": "Etwa vierzehn Prozent unter dem Marktdurchschnitt für vergleichbare Leistungen. Eine Annäherung wäre erforderlich, damit wir weiterverhandeln können — daher meine offene Rückmeldung statt höflicher Hinhaltung.",
+        "vi": "Khoảng 14% dưới trung bình thị trường cho dịch vụ tương đương. Sự xích lại cần thiết để chúng ta có thể tiếp tục đàm phán — do đó phản hồi cởi mở thay vì lịch sự kéo dài."
+      },
+      {
+        "speaker": "Schneider",
+        "text": "Vielen Dank für die Direktheit. Lassen Sie uns das intern prüfen — wir kommen mit überarbeitetem Vorschlag zurück.",
+        "vi": "Cám ơn về sự thẳng thắn. Cho chúng tôi kiểm tra nội bộ — sẽ quay lại với đề xuất chỉnh sửa."
+      }
+    ],
+    "dialogue_long": [
+      {
+        "speaker": "Linh",
+        "text": "Herr Schneider, vielen Dank, dass Sie sich heute Zeit nehmen. Ich habe Ihr Angebot vom letzten Freitag gründlich geprüft — und möchte Ihnen eine offene Rückmeldung geben.",
+        "vi": "Anh Schneider, cám ơn anh đã dành thời gian hôm nay. Tôi đã kiểm tra kỹ đề xuất của anh từ thứ Sáu trước — và muốn cho anh phản hồi cởi mở."
+      },
+      {
+        "speaker": "Schneider",
+        "text": "Bitte, ich bin gespannt.",
+        "vi": "Mời cô, tôi rất quan tâm."
+      },
+      {
+        "speaker": "Linh",
+        "text": "Vielen Dank für Ihr Angebot — ich schätze die Sorgfalt, mit der es ausgearbeitet wurde. Die Strukturierung ist klar, die Phasen-Aufteilung sinnvoll, die SLA-Definition präzise. Sehe es jedoch deutlich unterhalb des Bereichs, der für uns wirtschaftlich tragfähig ist.",
+        "vi": "Cám ơn về đề xuất — tôi trân trọng sự cẩn thận. Cấu trúc rõ, phân pha hợp lý, định nghĩa SLA chính xác. Song thấy rõ ràng dưới mức kinh tế khả thi với chúng tôi."
+      },
+      {
+        "speaker": "Schneider",
+        "text": "Können Sie das konkretisieren?",
+        "vi": "Cô có thể cụ thể được không?"
+      },
+      {
+        "speaker": "Linh",
+        "text": "Ihr Vorschlag liegt etwa vierzehn Prozent unter dem Marktdurchschnitt für vergleichbare Leistungen. Ich beziehe mich dabei auf den Branchenreport ‚IT-Beratung DACH 2024' und drei Vergleichsangebote, die wir aktuell prüfen — alle drei im Bereich von ungefähr 1.180 bis 1.250 Euro Tagessatz für Senior-Consultants. Ihr Angebot liegt bei 1.030 Euro.",
+        "vi": "Đề xuất của anh nằm khoảng 14% dưới trung bình thị trường cho dịch vụ tương đương. Tôi tham chiếu Branchenreport ‚IT-Beratung DACH 2024' và 3 đề xuất so sánh chúng tôi đang kiểm tra — cả 3 ở mức khoảng 1.180-1.250 EUR Tagessatz cho Senior-Consultant. Đề xuất anh ở 1.030 EUR."
+      },
+      {
+        "speaker": "Schneider",
+        "text": "Das ist eine substantielle Diskrepanz. Lassen Sie mich nachfragen: ist das ein Punkt, an dem die Beziehung scheitert, oder ist Verhandlung möglich?",
+        "vi": "Đó là chênh lệch substantiell. Cho tôi hỏi: đây là điểm quan hệ thất bại, hay đàm phán khả thi?"
+      },
+      {
+        "speaker": "Linh",
+        "text": "Mir ist daran gelegen, dass beide Seiten am Ende eine Vereinbarung mitgestalten, die sich rechnet — daher meine offene Rückmeldung statt höflicher Hinhaltung. Eine Annäherung wäre erforderlich, damit wir weiterverhandeln können. Ich gehe nicht aus der Verhandlung — ich signalisiere, wo der wirtschaftlich tragfähige Bereich beginnt.",
+        "vi": "Với tôi quan trọng là cả hai bên cuối cùng cùng định hình thỏa thuận có lợi — do đó phản hồi cởi mở thay vì lịch sự kéo dài. Sự xích lại cần thiết để chúng ta có thể tiếp tục đàm phán. Tôi không rút khỏi đàm phán — tôi báo hiệu nơi vùng kinh tế khả thi bắt đầu."
+      },
+      {
+        "speaker": "Schneider",
+        "text": "Welche Annäherung würde Spielraum schaffen?",
+        "vi": "Sự xích lại nào sẽ tạo dư địa?"
+      },
+      {
+        "speaker": "Linh",
+        "text": "Konkretes nenne ich nicht — das wäre Verhandlungsnaivität. Aber: zehn Prozent Annäherung würde uns in einen Bereich bringen, in dem ich konstruktiv weiterverhandeln kann. Unter diesem Wert wird es schwer, eine Vereinbarung intern zu rechtfertigen.",
+        "vi": "Cụ thể tôi không nêu — đó sẽ là ngây thơ đàm phán. Nhưng: xích 10% sẽ đưa chúng ta vào vùng mà tôi có thể đàm phán xây dựng. Dưới giá trị đó sẽ khó biện minh thỏa thuận nội bộ."
+      },
+      {
+        "speaker": "Schneider",
+        "text": "Und wenn wir aus unserer Sicht keinen weiteren Spielraum sehen?",
+        "vi": "Và nếu từ góc chúng tôi không có dư địa?"
+      },
+      {
+        "speaker": "Linh",
+        "text": "Wenn Sie aus Ihrer Sicht keinen weiteren Spielraum sehen, verstehe ich das — gleichwohl möchten wir die Tür für eine Anpassung in einer späteren Runde nicht schließen. Märkte ändern sich, Bedingungen ändern sich. Eine niedrigschwellige Lösung wäre, dass Sie einen überarbeiteten Vorschlag in vierzehn Tagen einreichen — wir bewerten ihn ohne Vorwurf, ohne Statussignal.",
+        "vi": "Nếu từ góc các vị không có dư địa, tôi hiểu — tuy nhiên không đóng cửa cho điều chỉnh ở vòng sau. Thị trường thay đổi, điều kiện thay đổi. Giải pháp ngưỡng thấp là các vị nộp đề xuất đã chỉnh sửa trong 14 ngày — chúng tôi đánh giá không phê phán, không Statussignal."
+      },
+      {
+        "speaker": "Schneider",
+        "text": "‚Ohne Vorwurf, ohne Statussignal' — das ist eine bemerkenswert konstruktive Formulierung. Wir prüfen das intern. Wenn wir nichts schicken, verstehen Sie das auch ohne Verstimmung?",
+        "vi": "‚Không phê phán, không Statussignal' — diễn đạt xây dựng đáng chú ý. Chúng tôi sẽ kiểm tra nội bộ. Nếu chúng tôi không gửi gì, cô hiểu không có sự khó chịu?"
+      },
+      {
+        "speaker": "Linh",
+        "text": "Selbstverständlich. Wenn wirtschaftlich nicht möglich, ist kein überarbeiteter Vorschlag die ehrlichere Antwort. Auch dann bleiben wir in professionellem Kontakt — die Märkte können sich in sechs oder zwölf Monaten anders darstellen.",
+        "vi": "Tất nhiên. Nếu kinh tế không khả thi, không có đề xuất chỉnh sửa là câu trả lời thật thà hơn. Cũng vậy, chúng ta giữ liên lạc chuyên nghiệp — thị trường có thể trong 6-12 tháng tỏ ra khác."
+      },
+      {
+        "speaker": "Schneider",
+        "text": "Vielen Dank für die offene und faire Führung des Gesprächs. Ich melde mich bis zum 15. November — entweder mit überarbeitetem Vorschlag oder mit ehrlicher Absage.",
+        "vi": "Cám ơn về cách dẫn dắt cởi mở và công bằng. Tôi báo lại trước 15/11 — hoặc với đề xuất chỉnh sửa hoặc với từ chối thật thà."
+      },
+      {
+        "speaker": "Linh",
+        "text": "Das ist die Art von Geschäftsbeziehung, die ich schätze. Ich schicke Ihnen heute Abend ein kurzes Memo zur Bestätigung — ohne Druck, nur zur Dokumentation.",
+        "vi": "Đó là kiểu quan hệ kinh doanh tôi trân trọng. Tôi gửi anh memo ngắn xác nhận tối nay — không áp lực, chỉ tư liệu hóa."
+      },
+      {
+        "speaker": "Schneider",
+        "text": "Vielen Dank, Frau Nguyễn. Auf Wiedersehen.",
+        "vi": "Cám ơn cô Nguyễn. Tạm biệt."
+      },
+      {
+        "speaker": "Linh",
+        "text": "Auf Wiedersehen, Herr Schneider — und einen guten Heimweg.",
+        "vi": "Tạm biệt anh Schneider — và chúc đường về tốt."
+      }
+    ],
+    "roleplay_prompts": [
+      "Bạn nhận đề xuất 14% dưới Marktdurchschnitt từ deutscher IT-Beratung-Lieferant. Mở đầu Ablehnung formal: ‚Vielen Dank — ich schätze die Sorgfalt' + Marktreferenz cụ thể (Branchenreport + Vergleichsangebote).",
+      "Counterparty fragt nach Annäherung-Maß. Đáp formal: ‚Konkretes nenne ich nicht — das wäre Verhandlungsnaivität' + signal range (10% Annäherung würde Spielraum schaffen). KHÔNG geben Sie Walk-Away-Punkt preis.",
+      "Diễn đạt niedrigschwellige Lösung: ‚überarbeiteter Vorschlag in 14 Tagen — wir bewerten ihn ohne Vorwurf, ohne Statussignal'. Folgen mit ehrlicher Schlussfomula: ‚Auch wenn keine Einigung, professioneller Kontakt für die Zukunft'."
+    ],
+    "register_notes": "Niedrige Angebote ablehnen C1: ‚Sie' tuyệt đối. Konjunktiv II cho hypothetische Spielräume: ‚Eine Annäherung wäre erforderlich', ‚wenn Sie keinen weiteren Spielraum sehen'. Funktionsverbgefüge: ‚zur Verfügung stehen' (sẵn sàng), ‚in Frage kommen' (được tính), ‚außerhalb des wirtschaftlich tragfähigen Bereichs liegen' (nằm ngoài vùng kinh tế khả thi). Schlüsselformeln:\n- Anerkennung: ‚Vielen Dank für Ihr Angebot — ich schätze die Sorgfalt'\n- Sachliche Ablehnung: ‚X Prozent unter dem Marktdurchschnitt'\n- Intent: ‚daher meine offene Rückmeldung statt höflicher Hinhaltung'\n- Niedrigschwellige Lösung: ‚überarbeiteter Vorschlag in 14 Tagen, ohne Vorwurf, ohne Statussignal'\nKHÔNG ‚das ist zu wenig' (vage). KHÔNG ‚wir gehen zu Wettbewerber' (Status-Drohung). KHÔNG höfliche Hinhaltung (länger schlechter als direkte Ablehnung). Marktreferenz mit konkreter Quelle bắt buộc.",
+    "idiom_glosses": [
+      {
+        "idiom": "die Tür offen halten",
+        "literal": "giữ cửa mở",
+        "meaning": "duy trì option re-engage future (standardsprachlich)",
+        "example": "Auch bei Ablehnung halten wir die Tür offen — Märkte ändern sich, Bedingungen ändern sich."
+      },
+      {
+        "idiom": "auf Augenhöhe",
+        "literal": "ở mức mắt",
+        "meaning": "trên cơ sở bình đẳng (gehoben/standardsprachlich)",
+        "example": "Ich lehne ab auf Augenhöhe — sachlich, mit Marktreferenz, ohne Statussignal."
+      },
+      {
+        "idiom": "den Mantel des Schweigens hüllen",
+        "literal": "phủ áo choàng im lặng",
+        "meaning": "im lặng về điều khó (gehoben)",
+        "example": "Ich hülle nicht den Mantel des Schweigens über mein Veto — direkte Rückmeldung respektiert die Counterparty."
+      },
+      {
+        "idiom": "es rechnet sich nicht",
+        "literal": "không tính ra (kinh tế)",
+        "meaning": "không kinh tế khả thi (standardsprachlich)",
+        "example": "Bei vierzehn Prozent unter Marktdurchschnitt rechnet sich die Vereinbarung für uns nicht — das muss ich offen sagen."
+      }
+    ],
+    "exercises": [
+      {
+        "type": "fill_blank",
+        "instruction_vi": "Điền cấu trúc niedrige Angebote ablehnen C1:",
+        "pronunciation_focus": [],
+        "items": [
+          {
+            "prompt": "Vielen Dank für Ihr Angebot — ich schätze die ___, mit der es ausgearbeitet wurde.",
+            "answer": "Sorgfalt"
+          },
+          {
+            "prompt": "Sehe es jedoch deutlich unterhalb des Bereichs, der für uns wirtschaftlich ___ ist.",
+            "answer": "tragfähig"
+          },
+          {
+            "prompt": "Daher meine offene Rückmeldung statt höflicher ___.",
+            "answer": "Hinhaltung"
+          },
+          {
+            "prompt": "Eine ___ Lösung wäre, dass Sie einen überarbeiteten Vorschlag in 14 Tagen einreichen.",
+            "answer": "niedrigschwellige"
+          }
+        ]
+      },
+      {
+        "type": "matching",
+        "instruction_vi": "Nối Phasen của Ablehnung niedriger Angebote:",
+        "pronunciation_focus": [],
+        "items": [
+          {
+            "prompt": "Phase 1 — Anerkennung",
+            "answer": "‚Vielen Dank — ich schätze die Sorgfalt'"
+          },
+          {
+            "prompt": "Phase 2 — Sachliche Ablehnung",
+            "answer": "‚X Prozent unter dem Marktdurchschnitt'"
+          },
+          {
+            "prompt": "Phase 3 — Intent",
+            "answer": "‚offene Rückmeldung statt höflicher Hinhaltung'"
+          },
+          {
+            "prompt": "Phase 4 — Niedrigschwellige Lösung",
+            "answer": "‚überarbeiteter Vorschlag in 14 Tagen — ohne Vorwurf, ohne Statussignal'"
+          }
+        ]
+      },
+      {
+        "type": "translation",
+        "instruction_vi": "Dịch sang tiếng Đức formal C1:",
+        "pronunciation_focus": ["rejecting low offers"],
+        "items": [
+          {
+            "prompt": "Cám ơn về đề xuất — tôi trân trọng sự cẩn thận, song thấy rõ ràng dưới mức kinh tế khả thi với chúng tôi.",
+            "answer": "Vielen Dank für Ihr Angebot — ich schätze die Sorgfalt, mit der es ausgearbeitet wurde, sehe es jedoch deutlich unterhalb des Bereichs, der für uns wirtschaftlich tragfähig ist."
+          },
+          {
+            "prompt": "Đề xuất nằm khoảng 14% dưới mức trung bình thị trường — sự xích lại cần thiết để chúng ta có thể tiếp tục đàm phán.",
+            "answer": "Ihr Vorschlag liegt etwa vierzehn Prozent unter dem Marktdurchschnitt — eine Annäherung wäre erforderlich, damit wir weiterverhandeln können."
+          },
+          {
+            "prompt": "Với tôi quan trọng là cả hai bên cùng định hình thỏa thuận có lợi — do đó phản hồi cởi mở thay vì lịch sự kéo dài.",
+            "answer": "Mir ist daran gelegen, dass beide Seiten am Ende eine Vereinbarung mitgestalten, die sich rechnet — daher meine offene Rückmeldung statt höflicher Hinhaltung."
+          },
+          {
+            "prompt": "Một giải pháp ngưỡng thấp là các vị nộp đề xuất đã chỉnh sửa trong 14 ngày — chúng tôi đánh giá không phê phán, không Statussignal.",
+            "answer": "Eine niedrigschwellige Lösung wäre, dass Sie einen überarbeiteten Vorschlag in vierzehn Tagen einreichen — wir bewerten ihn ohne Vorwurf, ohne Statussignal."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lfeindlicher_verhandlungspartner",
+    "level": "C1",
+    "category": "fluency",
+    "title_vi": "Đối phó với đối tác đàm phán có thái độ thù địch — Mit feindlichem Verhandlungspartner umgehen",
+    "title_en": "Handling a hostile negotiation counterpart with composure",
+    "sentences": [
+      {
+        "en": "Herr Müller, ich nehme zur Kenntnis, dass Sie den Ton verschärft haben — gleichwohl möchte ich die Sachebene nicht verlassen.",
+        "vi": "Anh Müller, tôi ghi nhận anh đã làm gay gắt giọng điệu — tuy nhiên tôi không muốn rời khỏi cấp độ nội dung.",
+        "pronunciation_focus": [
+          "zur Kenntnis nehmen → tsu KÊN-tnis nê-mân",
+          "Ton verschärft → TÔN fe-SHÊFT",
+          "Sachebene → ZAKH-ê-bê-nê"
+        ]
+      },
+      {
+        "en": "Ihre Rhetorik mag intensiv sein — sie ändert jedoch nichts an den Eckwerten, die mein Mandat mir vorgibt.",
+        "vi": "Hùng biện của anh có thể mạnh — song không thay đổi gì các Eckwerten mà ủy nhiệm của tôi quy định.",
+        "pronunciation_focus": [
+          "Rhetorik → rê-TÔ-rik",
+          "intensiv → in-tên-ZIF",
+          "Mandat → man-ĐAT"
+        ]
+      },
+      {
+        "en": "Lassen Sie uns kurz innehalten — wir können auf dieser Eskalationsstufe nicht produktiv weiterverhandeln, und beide Seiten verlieren dadurch.",
+        "vi": "Hãy dừng một lát — chúng ta không thể đàm phán năng suất ở cấp eskalation này, và cả hai bên đều mất.",
+        "pronunciation_focus": [
+          "innehalten → IN-nê-hal-tân",
+          "Eskalationsstufe → es-ka-la-tsi-ÔNS-shtu-fê",
+          "produktiv → prô-đuk-TIF"
+        ]
+      },
+      {
+        "en": "Wenn Sie persönliche Angriffe als Verhandlungstaktik einsetzen, signalisiere ich Ihnen offen: das wirkt nicht — meine Position wird dadurch nicht weicher, sondern härter.",
+        "vi": "Nếu anh dùng tấn công cá nhân như chiến thuật đàm phán, tôi báo hiệu thẳng: không có hiệu quả — vị trí của tôi không trở nên mềm, mà cứng hơn.",
+        "pronunciation_focus": [
+          "persönliche Angriffe → pe-ZÔN-likh-ê AN-gri-fê",
+          "signalisiere → zig-na-li-ZI-rê",
+          "weicher / härter → VAI-khê / HÊ-tê"
+        ]
+      },
+      {
+        "en": "Ich schlage vor, dass wir eine fünfzehnminütige Pause einlegen — danach beginnen wir mit dem Punkt, an dem produktive Diskussion möglich ist.",
+        "vi": "Tôi đề xuất chúng ta nghỉ 15 phút — sau đó bắt đầu từ điểm thảo luận năng suất có thể.",
+        "pronunciation_focus": [
+          "fünfzehnminütige → FUYNF-tsên-mi-nuy-ti-gê",
+          "Pause einlegen → PAO-zê AIN-lê-gân",
+          "produktive Diskussion → prô-đuk-TI-vê đis-ku-zi-ÔN"
+        ]
+      }
+    ],
+    "cultural_notes_vi": "Mit feindlichem Verhandlungspartner umgehen in deutscher Geschäftskultur erfordert spezifische Disziplinen. (1) RUHE BEWAHREN: deutsche Geschäftskultur respektiert Ruhe unter Druck — es ist Beweis von Reife und Verhandlungskompetenz. Wer gegen-aggressiv reagiert, verliert die ‚moralische Position'. Selbst wenn der Counterpart unprofessional agiert, professionelle Antwort bewahrt Ihre Position. (2) SACHEBENE NICHT VERLASSEN: ‚Ich nehme zur Kenntnis, dass Sie den Ton verschärft haben — gleichwohl möchte ich die Sachebene nicht verlassen' ist Schlüsselformel. Refuse to engage on Personebene auch wenn provoziert. (3) PAUSE EINLEGEN: deutsche Verhandlungskultur akzeptiert ‚Pause' als de-escalation tool. Nicht ‚Schwäche' — Stärke. ‚Lassen Sie uns kurz innehalten' kann jederzeit von einer Seite gefordert werden, ohne Gesichtsverlust.\n\nKhác Việt Nam: vietnamesische Reaktion auf hostility oft Rückzug oder Versuch der Harmonisierung. In Deutschland kann Rückzug als Schwäche gelesen werden — aktive Sachebene-Verteidigung wird respektiert. Aber: aktive Sachebene-Verteidigung ≠ Gegen-Aggression.\n\nMột chi tiết quan trọng: NICHT JEDE INTENSITÄT IST FEINDSELIGKEIT. Deutsche Geschäftskultur kann sehr direct sein — was als ‚aggressiv' wahrgenommen wird, ist oft nur ‚direct'. Unterscheiden Sie:\n- DIRECT: ‚Ihr Vorschlag ist zu teuer' (Sachebene, akzeptabel)\n- INTENSIV: ‚Ihr Vorschlag ist absurd teuer' (gehärtete Sachebene, noch akzeptabel)\n- FEINDSELIG: ‚Sie versuchen uns über den Tisch zu ziehen' (Personebene, nicht akzeptabel)\n\nReaktion sollte zur Eskalationsstufe passen.\n\nVề Power-Tactics: feindliche Verhandlungspartner verwenden oft:\n- INTIMIDATION (lautstark sprechen, einschüchtern)\n- DEADLINE-PRESSURE (‚jetzt entscheiden oder Angebot weg')\n- PERSONAL ATTACKS (‚Sie verstehen das Geschäft nicht')\n- WALK-OUT-THREAT (‚dann gehen wir')\n- SILENT TREATMENT (Schweigen als Druck)\n\nFür jede Taktik gibt es professionelle Gegenreaktion, die Sachebene bewahrt.\n\nVề Mandat-Reframing: Schlüsselformel: ‚Ihre Rhetorik mag intensiv sein — sie ändert jedoch nichts an den Eckwerten, die mein Mandat mir vorgibt'. Diese Formel personalisiert die Position WEG vom individuellen Verhandler — die Eckwerten kommen vom Mandanten / Geschäftsführung. Counterparty kann Sie nicht persönlich angreifen, weil Sie nur ‚Mandat ausführen'.\n\nVề Walk-Away als Antwort auf Hostility: wenn Counterparty grenzüberschreitend feindselig wird (Beleidigungen, persönliche Attacken, Tisch-Tipping), ist Walk-Away professionell und sogar erforderlich. Câu chuẩn: ‚Auf dieser Ebene kann ich nicht weiterverhandeln. Ich bin offen für ein Folgegespräch, wenn beide Seiten zur Sachebene zurückkehren.'\n\nVề Schriftliche Eskalation: nach feindseliger Verhandlung E-Mail innerhalb 24 Stunden — sachlich, mit Eskalations-Pfad. ‚Wie heute besprochen, ist eine produktive Verhandlung auf der bisherigen Ebene nicht möglich. Ich biete einen Termin für Folgegespräch am [Datum] an. Bei wiederholter Eskalation behalte ich mir vor, das Mandat an meine Vorgesetzte zu eskalieren.'\n\nVề Selbst-Care: feindselige Verhandlungen sind emotional erschöpfend. Plan in Erholungszeit nach. Niemand verhandelt 8 Stunden hostilities am Tag professionell. Geben Sie sich Zeit zur Recovery.",
+    "tip_advice_vi": "Vor feindseliger Verhandlung (Vorbereitung):\n1. ECKWERTE schriftlich vor sich: erinnert an Sachebene-Disziplin in der Hitze.\n2. MANDAT klar: was darf ich nicht ändern? Diese Pflicht erleichtert Verteidigung gegen Druck.\n3. PAUSE-TRIGGER definieren: bei welcher Eskalation rufe ich ‚Pause' aus? Schwellenwert vorher festlegen.\n4. WALK-AWAY-Schwelle definieren: ab welchem Punkt verlasse ich Verhandlung?\n\nIn der feindseligen Verhandlung (5 Reaktionen):\n1. RUHE BEWAHREN: Atmen, langsam sprechen, Tonfall NICHT mitziehen\n2. SACHEBENE-REFRAMING: ‚Ich verstehe, dass Sie das stark empfinden — auf Sachebene...'\n3. MANDAT-VERTEIDIGUNG: ‚Eckwerten kommen vom Mandanten — ich kann nicht von ihnen abweichen'\n4. PAUSE FORDERN bei Eskalation: ‚Lassen Sie uns kurz innehalten'\n5. WALK-AWAY bei Grenzüberschreitung: ‚Auf dieser Ebene kann ich nicht weiterverhandeln'\n\nNgôn ngữ feindlicher Verhandlungspartner C1:\n- ‚Ich nehme zur Kenntnis, dass Sie den Ton verschärft haben — gleichwohl möchte ich die Sachebene nicht verlassen' (tôi ghi nhận anh đã làm gay gắt — song không muốn rời Sachebene)\n- ‚Ihre Rhetorik mag intensiv sein — sie ändert jedoch nichts an den Eckwerten' (hùng biện anh có thể mạnh — song không thay đổi Eckwerten)\n- ‚Eckwerten, die mein Mandat mir vorgibt' (Eckwerten mà ủy nhiệm tôi quy định)\n- ‚Lassen Sie uns kurz innehalten — wir können auf dieser Eskalationsstufe nicht produktiv weiterverhandeln' (hãy dừng — không thể đàm phán năng suất ở cấp này)\n- ‚Wenn Sie persönliche Angriffe als Taktik einsetzen, signalisiere ich Ihnen offen: das wirkt nicht' (nếu anh dùng tấn công cá nhân như chiến thuật, tôi báo thẳng: không hiệu quả)\n- ‚Ich schlage vor, dass wir eine fünfzehnminütige Pause einlegen' (đề xuất nghỉ 15 phút)\n\nKhi Counterparty intimidiert mit Lautstärke:\n- ‚Herr Müller, ich höre Sie auch in normaler Lautstärke. Können wir den Pegel etwas senken? Das hilft uns beiden, sachlich zu bleiben.' (anh Müller, tôi nghe anh ở mức bình thường. Mình giảm âm lượng được không? Giúp cả hai sachlich.)\n\nKhi Counterparty Deadline-Pressure:\n- ‚Sie setzen eine Deadline — verständlich, dass die Zeit für Sie wichtig ist. Ich bin nicht bereit, eine Vereinbarung unter Zeitdruck zu unterzeichnen, die ich nicht ausreichend prüfen konnte. Sollte die Deadline nicht verhandelbar sein, müssten wir das Gespräch verschieben.' (anh đặt deadline — hiểu thời gian quan trọng với anh. Tôi không sẵn sàng ký thỏa thuận dưới áp lực thời gian không đủ kiểm tra. Nếu deadline không thương lượng, mình phải hoãn cuộc trao đổi.)\n\nKhi Counterparty persönlich attackiert:\n- ‚Was Sie über meine Person sagen, gehört nicht in diese Verhandlung. Lassen Sie uns auf die Sachebene zurückkehren — wir verhandeln einen Vertrag, nicht meine Kompetenz.' (cái anh nói về cá nhân tôi không thuộc đàm phán này. Mình quay lại Sachebene — đàm phán hợp đồng, không phải năng lực tôi.)\n\nKhi Counterparty Walk-Out-droht:\n- ‚Wenn Sie die Verhandlung beenden möchten, respektiere ich das. Ich biete einen Folgetermin in der nächsten Woche an — bei beiderseitigem Interesse können wir weitersprechen.' (nếu anh muốn dừng đàm phán, tôi tôn trọng. Tôi đề xuất lịch theo dõi tuần sau — nếu cả hai có quan tâm mình tiếp tục.)\n\nKhi Counterparty Silent Treatment:\n- (langes Schweigen aushalten — 30-60 Sekunden) — ‚Ich nehme das Schweigen als Hinweis, dass Sie nachdenken. Möchten Sie, dass ich den nächsten Punkt vorbringe, oder bevorzugen Sie eine kurze Pause?' (tôi xem im lặng như anh đang suy nghĩ. Anh muốn tôi đưa điểm tiếp hay tạm nghỉ ngắn?)\n\nNach feindseliger Verhandlung — E-Mail (24 Stunden):\n- ‚Sehr geehrter Herr Müller, vielen Dank für die Verhandlung gestern. Wie besprochen ist eine produktive Fortsetzung auf der bisherigen Eskalationsstufe nicht möglich. Ich biete einen Folgetermin am [Datum] an, sofern beide Seiten zur Sachebene zurückkehren. Mit freundlichen Grüßen, Linh.'\n\nMẹo cuối: feindlicher Verhandlungspartner ist oft Test — wenn Sie Ruhe bewahren und Sachebene halten, gewinnen Sie Respekt. Wenn Sie gegen-aggressiv werden, validieren Sie das Spiel und verlieren langfristig.",
+    "vocabulary": [
+      {
+        "word": "der feindliche Verhandlungspartner",
+        "en": "hostile negotiation counterpart",
+        "vi": "đối tác đàm phán thù địch",
+        "pos": "noun (m)",
+        "pronunciation_vi": "đe FAIN-likh-ê fe-han-đlungs-pat-nê"
+      },
+      {
+        "word": "den Ton verschärfen",
+        "en": "to harden the tone",
+        "vi": "làm gay gắt giọng",
+        "pos": "verb phrase",
+        "pronunciation_vi": "đên TÔN fe-SHE-fân"
+      },
+      {
+        "word": "die Eskalationsstufe",
+        "en": "escalation level",
+        "vi": "cấp eskalation",
+        "pos": "noun (f)",
+        "pronunciation_vi": "đi es-ka-la-tsi-ÔNS-shtu-fê"
+      },
+      {
+        "word": "innehalten",
+        "en": "to pause, take a break",
+        "vi": "dừng, nghỉ",
+        "pos": "verb (sep.)",
+        "pronunciation_vi": "IN-nê-hal-tân"
+      },
+      {
+        "word": "der persönliche Angriff",
+        "en": "personal attack",
+        "vi": "tấn công cá nhân",
+        "pos": "noun (m)",
+        "pronunciation_vi": "đe pe-ZÔN-likh-ê AN-grif"
+      },
+      {
+        "word": "das Mandat",
+        "en": "mandate, authorization",
+        "vi": "ủy nhiệm",
+        "pos": "noun (n)",
+        "pronunciation_vi": "đát man-ĐAT"
+      },
+      {
+        "word": "die Deadline-Pressure / der Zeitdruck",
+        "en": "deadline pressure",
+        "vi": "áp lực thời gian",
+        "pos": "noun phrase",
+        "pronunciation_vi": "đe TSAIT-đruk"
+      },
+      {
+        "word": "die Intimidation / die Einschüchterung",
+        "en": "intimidation",
+        "vi": "đe dọa",
+        "pos": "noun (f)",
+        "pronunciation_vi": "đi AIN-shuy-khê-rung"
+      },
+      {
+        "word": "die Grenzüberschreitung",
+        "en": "boundary violation, overstep",
+        "vi": "vượt ranh giới",
+        "pos": "noun (f)",
+        "pronunciation_vi": "đi GREN-tsuy-bê-shrai-tung"
+      },
+      {
+        "word": "Ruhe bewahren",
+        "en": "to remain composed",
+        "vi": "giữ bình tĩnh",
+        "pos": "verb phrase",
+        "pronunciation_vi": "RU-ê bê-VA-rân"
+      }
+    ],
+    "dialogue": [
+      {
+        "speaker": "Müller (feindselig)",
+        "text": "Frau Nguyễn, das ist absurd! Sie versuchen offensichtlich, uns über den Tisch zu ziehen — typische asiatische Verhandlungstaktik!",
+        "vi": "Cô Nguyễn, điều này absurd! Cô rõ ràng đang cố gắng lừa chúng tôi — chiến thuật đàm phán châu Á điển hình!"
+      },
+      {
+        "speaker": "Linh",
+        "text": "Herr Müller, ich nehme zur Kenntnis, dass Sie den Ton verschärft haben — gleichwohl möchte ich die Sachebene nicht verlassen. Was Sie über meine Person oder Herkunft sagen, gehört nicht in diese Verhandlung.",
+        "vi": "Anh Müller, tôi ghi nhận anh đã làm gay gắt giọng — song không muốn rời Sachebene. Cái anh nói về con người hay gốc gác của tôi không thuộc đàm phán này."
+      },
+      {
+        "speaker": "Müller",
+        "text": "Sie sind hier nicht, um Manieren zu lehren!",
+        "vi": "Cô không có ở đây để dạy cách cư xử!"
+      },
+      {
+        "speaker": "Linh",
+        "text": "Ich lehre keine Manieren — ich definiere die Bedingungen, unter denen ich verhandle. Lassen Sie uns eine fünfzehnminütige Pause einlegen. Danach beginnen wir mit dem Punkt, an dem produktive Diskussion möglich ist.",
+        "vi": "Tôi không dạy manners — tôi định nghĩa điều kiện đàm phán. Hãy nghỉ 15 phút. Sau đó bắt đầu từ điểm thảo luận năng suất có thể."
+      }
+    ],
+    "dialogue_long": [
+      {
+        "speaker": "Müller (feindselig)",
+        "text": "Frau Nguyễn, dieses Angebot ist absurd! Sie versuchen offensichtlich, uns über den Tisch zu ziehen — typische asiatische Verhandlungstaktik. Wir sind hier nicht in Hanoi.",
+        "vi": "Cô Nguyễn, đề xuất này absurd! Cô rõ ràng đang cố lừa chúng tôi — chiến thuật đàm phán châu Á điển hình. Chúng ta không ở Hà Nội."
+      },
+      {
+        "speaker": "Linh",
+        "text": "Herr Müller, ich nehme zur Kenntnis, dass Sie den Ton verschärft haben — gleichwohl möchte ich die Sachebene nicht verlassen. Was Sie über meine Person oder Herkunft sagen, gehört nicht in diese Verhandlung. Wir verhandeln einen Vertrag, nicht meine Identität.",
+        "vi": "Anh Müller, tôi ghi nhận anh đã làm gay gắt giọng — song không muốn rời Sachebene. Cái anh nói về con người hay gốc gác tôi không thuộc đàm phán này. Chúng ta đàm phán hợp đồng, không phải identity của tôi."
+      },
+      {
+        "speaker": "Müller",
+        "text": "Sie sind die einzige am Tisch, die ein Problem mit Direktheit hat! Wir sind hier in Deutschland — hier wird Klartext gesprochen.",
+        "vi": "Cô là người duy nhất ở bàn có vấn đề với sự thẳng thắn! Chúng ta ở Đức — ở đây nói thẳng."
+      },
+      {
+        "speaker": "Linh",
+        "text": "Direktheit auf Sachebene begrüße ich. Persönliche Angriffe und ethnische Stereotypen sind keine Direktheit — sie sind Eskalation. Ihre Rhetorik mag intensiv sein — sie ändert jedoch nichts an den Eckwerten, die mein Mandat mir vorgibt.",
+        "vi": "Direktheit ở Sachebene tôi chào đón. Tấn công cá nhân và stereotypen sắc tộc không phải direktheit — là eskalation. Hùng biện anh có thể mạnh — song không thay đổi Eckwerten ủy nhiệm tôi quy định."
+      },
+      {
+        "speaker": "Müller",
+        "text": "‚Mandat' — Sie verstecken sich hinter einem Mandat! Treffen Sie eine Entscheidung!",
+        "vi": "‚Mandat' — cô trốn sau ủy nhiệm! Cô ra quyết định đi!"
+      },
+      {
+        "speaker": "Linh",
+        "text": "Ich verstecke mich nicht — ich respektiere meine Rolle. Eine Verhandlerin ohne Mandat ist nicht autorisiert. Wenn Sie persönliche Angriffe als Verhandlungstaktik einsetzen, signalisiere ich Ihnen offen: das wirkt nicht — meine Position wird dadurch nicht weicher, sondern härter.",
+        "vi": "Tôi không trốn — tôi tôn trọng vai trò. Một verhandlerin không có ủy nhiệm không được autorisiert. Nếu anh dùng tấn công cá nhân như chiến thuật đàm phán, tôi báo thẳng: không hiệu quả — vị trí tôi không trở nên mềm, mà cứng hơn."
+      },
+      {
+        "speaker": "Müller",
+        "text": "Sie machen es absichtlich kompliziert!",
+        "vi": "Cô cố tình làm phức tạp!"
+      },
+      {
+        "speaker": "Linh",
+        "text": "Lassen Sie uns kurz innehalten — wir können auf dieser Eskalationsstufe nicht produktiv weiterverhandeln, und beide Seiten verlieren dadurch. Ich schlage vor, dass wir eine fünfzehnminütige Pause einlegen. Danach beginnen wir mit dem Punkt, an dem produktive Diskussion möglich ist — Sachebene, Marktreferenz, konkrete Eckwerten.",
+        "vi": "Hãy dừng — không thể đàm phán năng suất ở cấp eskalation này, và cả hai bên đều mất. Tôi đề xuất nghỉ 15 phút. Sau đó bắt đầu từ điểm thảo luận năng suất có thể — Sachebene, Marktreferenz, Eckwerten cụ thể."
+      },
+      {
+        "speaker": "Müller (nach Pause, ruhiger)",
+        "text": "Frau Nguyễn, ich entschuldige mich — meine Bemerkungen waren unangemessen. Ich war frustriert über den Marktdruck.",
+        "vi": "Cô Nguyễn, tôi xin lỗi — bình luận của tôi không phù hợp. Tôi frustrated về áp lực thị trường."
+      },
+      {
+        "speaker": "Linh",
+        "text": "Ich nehme die Entschuldigung an — und schätze sie. Marktdruck verstehe ich. Lassen Sie uns auf der Sachebene neu beginnen: was ist Ihr realistischer Spielraum, gegeben die wirtschaftliche Lage Ihres Hauses?",
+        "vi": "Tôi nhận xin lỗi — và trân trọng. Áp lực thị trường tôi hiểu. Hãy bắt đầu lại trên Sachebene: dư địa thực tế của anh là gì, given tình hình kinh tế nhà anh?"
+      },
+      {
+        "speaker": "Müller",
+        "text": "Ehrlich? Wir können maximal sechs Prozent unter unsere ursprüngliche Position. Mehr ist budgetseitig nicht drin.",
+        "vi": "Thật à? Chúng tôi có thể tối đa 6% dưới vị trí ban đầu. Hơn nữa ngân sách không cho phép."
+      },
+      {
+        "speaker": "Linh",
+        "text": "Sechs Prozent ist eine Annäherung, mit der ich konstruktiv weiterverhandeln kann. Das ist die Geste, die wir brauchten — und sie wäre vor zwanzig Minuten genauso möglich gewesen, ohne den Eskalationspfad. Lassen Sie uns auf dieser Basis weitergehen.",
+        "vi": "6% là sự xích lại tôi có thể đàm phán xây dựng. Đó là cử chỉ chúng ta cần — và nó cũng khả thi 20 phút trước, không qua đường eskalation. Hãy tiếp tục trên cơ sở này."
+      },
+      {
+        "speaker": "Müller",
+        "text": "Sie haben Recht. Lessons learned.",
+        "vi": "Cô đúng. Lessons learned."
+      },
+      {
+        "speaker": "Linh",
+        "text": "Was im Geschäft passiert, gehört nicht ins Persönliche — wir bleiben professionelle Partner. Lassen Sie uns die offenen Punkte durchgehen.",
+        "vi": "Cái xảy ra trong kinh doanh không thuộc cá nhân — chúng ta vẫn là đối tác chuyên nghiệp. Hãy đi qua các điểm mở."
+      },
+      {
+        "speaker": "Müller",
+        "text": "Beginnen wir mit der Lieferzeit-Klausel.",
+        "vi": "Mình bắt đầu với điều khoản thời gian giao."
+      },
+      {
+        "speaker": "Linh",
+        "text": "Sehr gerne. Auch ich danke für die professionelle Recovery — das ist nicht selbstverständlich, und ich schätze es.",
+        "vi": "Sẵn lòng. Tôi cũng cám ơn về sự recovery chuyên nghiệp — điều đó không hiển nhiên, và tôi trân trọng."
+      }
+    ],
+    "roleplay_prompts": [
+      "Verhandlungspartner attackiert mit ethnischem Stereotyp (‚typische asiatische Taktik'). Đáp formal: ‚Ich nehme zur Kenntnis, dass Sie den Ton verschärft haben — gleichwohl möchte ich die Sachebene nicht verlassen' + grenzen klar: persönliche Angriffe gehören nicht in Verhandlung.",
+      "Counterparty lautstark + Druck. Diễn đạt: ‚Ihre Rhetorik mag intensiv sein — sie ändert jedoch nichts an den Eckwerten, die mein Mandat mir vorgibt' + Mandat-Reframing depersonalisiert Position.",
+      "Sau Eskalation, đề xuất 15-Min-Pause: ‚Wir können auf dieser Eskalationsstufe nicht produktiv weiterverhandeln'. Sau Pause + Counterparty xin lỗi, accept Entschuldigung professionell + reframing zur Sachebene."
+    ],
+    "register_notes": "Mit feindlichem Verhandlungspartner umgehen C1: ‚Sie' tuyệt đối — auch unter Druck. Funktionsverbgefüge: ‚zur Kenntnis nehmen' (ghi nhận), ‚zur Geltung bringen' (làm có hiệu lực), ‚in Frage stellen' (đặt vấn đề), ‚den Ton verschärfen' (làm gay gắt giọng). Mandat-Reframing als Schutz: ‚Ihre Rhetorik mag intensiv sein — sie ändert jedoch nichts an den Eckwerten, die mein Mandat mir vorgibt' depersonalisiert Position. Pause als de-escalation tool legitim, không Schwäche. Walk-Away bei Grenzüberschreitung möglich aber rare. Schlüsselformel cho personal attacks: ‚Wenn Sie persönliche Angriffe als Verhandlungstaktik einsetzen, signalisiere ich Ihnen offen: das wirkt nicht — meine Position wird dadurch nicht weicher, sondern härter'. KHÔNG gegen-aggressiv. KHÔNG validate hostility durch defensive emotion. KHÔNG Sachebene verlassen.",
+    "idiom_glosses": [
+      {
+        "idiom": "ein dickes Fell haben",
+        "literal": "có lông da dày",
+        "meaning": "kiên cường trước phê phán/tấn công (standardsprachlich)",
+        "example": "In feindseligen Verhandlungen braucht man ein dickes Fell — persönliche Angriffe dürfen nicht durchdringen."
+      },
+      {
+        "idiom": "Ruhe bewahren",
+        "literal": "giữ yên tĩnh",
+        "meaning": "giữ bình tĩnh dưới áp lực (standardsprachlich)",
+        "example": "Wer Ruhe bewahrt, gewinnt im hostile environment — Eskalation belohnt sich nie langfristig."
+      },
+      {
+        "idiom": "den Ball flach halten",
+        "literal": "giữ bóng thấp",
+        "meaning": "giữ tone bình tĩnh, không leo thang (standardsprachlich)",
+        "example": "Auch wenn Müller laut wird — ich halte den Ball flach. Eskalation würde nur seine Taktik validieren."
+      },
+      {
+        "idiom": "ins Schwarze treffen",
+        "literal": "đánh trúng tâm đen",
+        "meaning": "trúng đích chính xác (gehoben/standardsprachlich)",
+        "example": "Mit dem Mandat-Reframing habe ich ins Schwarze getroffen — Müller konnte nicht weiter persönlich werden."
+      }
+    ],
+    "exercises": [
+      {
+        "type": "fill_blank",
+        "instruction_vi": "Điền cấu trúc feindlicher Verhandlungspartner C1:",
+        "pronunciation_focus": [],
+        "items": [
+          {
+            "prompt": "Ich nehme zur ___, dass Sie den Ton verschärft haben — gleichwohl möchte ich die Sachebene nicht verlassen.",
+            "answer": "Kenntnis"
+          },
+          {
+            "prompt": "Ihre Rhetorik mag intensiv sein — sie ändert jedoch nichts an den Eckwerten, die mein ___ mir vorgibt.",
+            "answer": "Mandat"
+          },
+          {
+            "prompt": "Lassen Sie uns kurz ___ — wir können auf dieser Eskalationsstufe nicht produktiv weiterverhandeln.",
+            "answer": "innehalten"
+          },
+          {
+            "prompt": "Wenn Sie persönliche Angriffe einsetzen, signalisiere ich Ihnen offen: meine Position wird dadurch nicht weicher, sondern ___.",
+            "answer": "härter"
+          }
+        ]
+      },
+      {
+        "type": "matching",
+        "instruction_vi": "Nối Power-Tactic feindseliger Verhandlung với Gegenreaktion C1:",
+        "pronunciation_focus": [],
+        "items": [
+          {
+            "prompt": "Lautstärke / Intimidation",
+            "answer": "‚Ich höre Sie auch in normaler Lautstärke' + Pegel senken"
+          },
+          {
+            "prompt": "Persönliche Angriffe",
+            "answer": "‚Was Sie über meine Person sagen, gehört nicht in diese Verhandlung' + Sachebene"
+          },
+          {
+            "prompt": "Deadline-Pressure",
+            "answer": "‚Nicht bereit unter Zeitdruck zu unterzeichnen' + Verschiebung"
+          },
+          {
+            "prompt": "Walk-Out-Threat",
+            "answer": "‚Respektiere das' + Folgetermin anbieten"
+          }
+        ]
+      },
+      {
+        "type": "translation",
+        "instruction_vi": "Dịch sang tiếng Đức formal C1 (composure under hostility):",
+        "pronunciation_focus": ["hostile counterpart"],
+        "items": [
+          {
+            "prompt": "Tôi ghi nhận anh đã làm gay gắt giọng — tuy nhiên tôi không muốn rời khỏi cấp độ nội dung.",
+            "answer": "Ich nehme zur Kenntnis, dass Sie den Ton verschärft haben — gleichwohl möchte ich die Sachebene nicht verlassen."
+          },
+          {
+            "prompt": "Hùng biện của anh có thể mạnh — song không thay đổi gì các Eckwerten mà ủy nhiệm của tôi quy định.",
+            "answer": "Ihre Rhetorik mag intensiv sein — sie ändert jedoch nichts an den Eckwerten, die mein Mandat mir vorgibt."
+          },
+          {
+            "prompt": "Hãy dừng một lát — chúng ta không thể đàm phán năng suất ở cấp eskalation này.",
+            "answer": "Lassen Sie uns kurz innehalten — wir können auf dieser Eskalationsstufe nicht produktiv weiterverhandeln."
+          },
+          {
+            "prompt": "Nếu anh dùng tấn công cá nhân như chiến thuật đàm phán, tôi báo thẳng: không hiệu quả — vị trí của tôi không trở nên mềm, mà cứng hơn.",
+            "answer": "Wenn Sie persönliche Angriffe als Verhandlungstaktik einsetzen, signalisiere ich Ihnen offen: das wirkt nicht — meine Position wird dadurch nicht weicher, sondern härter."
+          }
+        ]
+      }
+    ]
   }
 ];
 
