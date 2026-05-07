@@ -497,8 +497,7 @@ function buildFallbackPracticeText(payload: PronunciationLaunchPayload | null, c
   if (sourceText) return sourceText;
   const fromRoom = cleanText(contentEn);
   if (!fromRoom) return '';
-  const firstSentence = fromRoom.match(/[^.!?]+[.!?]?/u)?.[0] ?? fromRoom;
-  return cleanText(firstSentence);
+  return cleanText(fromRoom);
 }
 
 export function MercySpeakTab({
