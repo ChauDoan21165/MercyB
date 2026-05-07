@@ -6775,10 +6775,10 @@ export const lessons: GermanLesson[] = [
           }
         ]
       },
-      {
-        "type": "translation",
-        "instruction_vi": "Dịch sang tiếng Đức formal C1 (composure under hostility):",
-        "pronunciation_focus": ["hostile counterpart"],
+  {
+    "type": "translation",
+    "instruction_vi": "Dịch sang tiếng Đức formal C1 (composure under hostility):",
+    "pronunciation_focus": ["hostile counterpart"],
         "items": [
           {
             "prompt": "Tôi ghi nhận anh đã làm gay gắt giọng — tuy nhiên tôi không muốn rời khỏi cấp độ nội dung.",
@@ -6799,6 +6799,1481 @@ export const lessons: GermanLesson[] = [
         ]
       }
     ]
+  },
+  {
+    "id": "ldisputation_konjunktiv",
+    "level": "C1",
+    "category": "fluency",
+    "title_vi": "Disputation và bảo vệ luận án",
+    "title_en": "Disputation and oral defense",
+    "sentences": [
+      {
+        "en": "Die zentrale These meiner Dissertation besteht darin, dass sprachliche Variation in akademischen Kontexten nicht als Fehler, sondern als soziale Positionierung zu lesen ist.",
+        "vi": "Luận điểm trung tâm của luận án tôi là biến thể ngôn ngữ trong bối cảnh học thuật không nên được xem là lỗi, mà là một dạng định vị xã hội.",
+        "pronunciation_focus": [
+          "zentrale These → tsehn-TRA-lê TÊ-zê",
+          "sprachliche Variation → SHPRAKH-likê va-ri-a-TSI-ôn",
+          "soziale Positionierung → zô-TSI-a-lê pô-zi-tsi-ô-NI-rung"
+        ]
+      },
+      {
+        "en": "Das ist ein berechtigter Einwand, doch ich würde ihn nur eingeschränkt auf die Gesamtargumentation übertragen.",
+        "vi": "Đó là một phản biện xác đáng, nhưng tôi chỉ muốn áp dụng nó một cách giới hạn vào toàn bộ lập luận.",
+        "pronunciation_focus": [
+          "berechtigter Einwand → bê-RÊH-ti-khơr AI-nvãnt",
+          "eingeschränkt → AYn-gê-SHRENGKT",
+          "Gesamtargumentation → gê-ZAMT-ar-gu-men-ta-TSI-ôn"
+        ]
+      },
+      {
+        "en": "Für die Disputation ist es entscheidend, zwischen methodischer Kritik und inhaltlicher Gegenposition zu unterscheiden.",
+        "vi": "Trong buổi bảo vệ luận án, điều quyết định là phải phân biệt giữa phê bình phương pháp và lập trường nội dung đối nghịch.",
+        "pronunciation_focus": [
+          "Disputation → đis-pu-ta-TSI-ôn",
+          "methodische Kritik → mê-tô-DI-shê KRI-tik",
+          "Gegenposition → GÊ-gân-pô-zi-tsi-ôn"
+        ]
+      },
+      {
+        "en": "Im Kolloquium lässt sich eine Schwäche oft deutlicher benennen als im endgültigen Gutachten.",
+        "vi": "Trong colloquium, một điểm yếu thường có thể được gọi tên rõ hơn so với bản nhận xét cuối cùng.",
+        "pronunciation_focus": [
+          "Kolloquium → KÔ-lo-kvi-um",
+          "Schwäche → SHVÊ-khê",
+          "Gutachten → GU-tak-hân"
+        ]
+      },
+      {
+        "en": "Wenn ich die Frage knapp beantworten darf: Der Beitrag liegt in der empirischen Präzisierung eines bislang zu breit gefassten Begriffs.",
+        "vi": "Nếu tôi được trả lời ngắn gọn: đóng góp nằm ở việc tinh chỉnh thực nghiệm một khái niệm vốn trước nay được hiểu quá rộng.",
+        "pronunciation_focus": [
+          "empirische Präzisierung → em-pi-RI-shê prê-tsi-ZI-rung",
+          "bislang → BIs-lang",
+          "zu breit gefasst → tsu brrayt gê-FAST"
+        ]
+      }
+    ],
+    "vocabulary": [
+      {
+        "word": "die Disputation",
+        "en": "oral defense",
+        "vi": "bảo vệ luận án",
+        "pos": "noun (f)",
+        "pronunciation_vi": "đi đis-pu-ta-tsi-ôn"
+      },
+      {
+        "word": "der Einwand",
+        "en": "objection, criticism",
+        "vi": "phản biện, ý kiến phản đối",
+        "pos": "noun (m)",
+        "pronunciation_vi": "đe AI-nvãnt"
+      },
+      {
+        "word": "die Gesamtargumentation",
+        "en": "overall argumentation",
+        "vi": "toàn bộ lập luận",
+        "pos": "noun (f)",
+        "pronunciation_vi": "đi gê-ZAMT-ar-gu-men-ta-tsi-ôn"
+      },
+      {
+        "word": "das Gutachten",
+        "en": "expert report / review",
+        "vi": "bản nhận xét chuyên môn",
+        "pos": "noun (n)",
+        "pronunciation_vi": "đas GU-tak-hân"
+      },
+      {
+        "word": "die Präzisierung",
+        "en": "specification, refinement",
+        "vi": "sự tinh chỉnh, làm rõ",
+        "pos": "noun (f)",
+        "pronunciation_vi": "đi prê-tsi-ZI-rung"
+      }
+    ],
+    "dialogue": [
+      {
+        "speaker": "Vorsitzender",
+        "text": "Herr Kandidat, wie würden Sie den Kern Ihres Beitrags in einem Satz formulieren?",
+        "vi": "Thưa ứng viên, anh sẽ diễn đạt cốt lõi đóng góp của mình trong một câu như thế nào?"
+      },
+      {
+        "speaker": "Kandidat",
+        "text": "Der Beitrag liegt in der empirischen Präzisierung eines bislang zu weit gefassten Begriffs.",
+        "vi": "Đóng góp nằm ở việc tinh chỉnh thực nghiệm một khái niệm vốn trước nay được hiểu quá rộng."
+      },
+      {
+        "speaker": "Gutachterin",
+        "text": "Inwiefern ist das mehr als nur eine moderate Verschiebung der Terminologie?",
+        "vi": "Ở mức nào đây không chỉ là một sự dịch chuyển nhẹ về thuật ngữ?"
+      },
+      {
+        "speaker": "Kandidat",
+        "text": "Das ist ein berechtigter Einwand, den ich in der Fassung der Schlusskapitel bereits berücksichtigt habe.",
+        "vi": "Đó là một phản biện xác đáng, điều mà tôi đã tính đến trong bản chỉnh sửa của các chương kết."
+      }
+    ],
+    "exercises": [
+      {
+        "type": "fill_blank",
+        "instruction_vi": "Điền thuật ngữ phù hợp:",
+        "pronunciation_focus": [],
+        "items": [
+          {
+            "prompt": "Die zentrale ___ meiner Dissertation besteht darin, dass Variation als soziale Positionierung zu lesen ist.",
+            "answer": "These"
+          },
+          {
+            "prompt": "Das ist ein berechtigter ___, doch ich würde ihn nur eingeschränkt übertragen.",
+            "answer": "Einwand"
+          },
+          {
+            "prompt": "Im ___ lässt sich eine Schwäche oft deutlicher benennen als im endgültigen Gutachten.",
+            "answer": "Kolloquium"
+          }
+        ]
+      },
+      {
+        "type": "translation",
+        "instruction_vi": "Dịch sang tiếng Đức formal C1:",
+        "pronunciation_focus": ["defense language"],
+        "items": [
+          {
+            "prompt": "Đóng góp nằm ở việc tinh chỉnh thực nghiệm một khái niệm vốn trước nay được hiểu quá rộng.",
+            "answer": "Der Beitrag liegt in der empirischen Präzisierung eines bislang zu breit gefassten Begriffs."
+          },
+          {
+            "prompt": "Đó là một phản biện xác đáng, nhưng tôi chỉ muốn áp dụng nó một cách giới hạn vào toàn bộ lập luận.",
+            "answer": "Das ist ein berechtigter Einwand, doch ich würde ihn nur eingeschränkt auf die Gesamtargumentation übertragen."
+          }
+        ]
+      }
+    ],
+    "cultural_notes_vi": "Disputation ở đại học Đức không phải là thi vấn đáp để 'đọc đúng đáp án', mà là một cuộc kiểm tra năng lực lập luận. Người nghe có quyền cắt ngang, phản biện và yêu cầu bạn thu hẹp hoặc mở rộng câu trả lời. Nghe căng, nhưng đó là văn hóa học thuật bình thường.",
+    "tip_advice_vi": "Khi bị phản biện, hãy trả lời theo ba bước: công nhận câu hỏi, phân biệt phạm vi, rồi quay lại luận điểm chính. Tránh phòng thủ quá dài; một câu công nhận + một câu giới hạn + một câu chốt là đủ.",
+    "register_notes": "C1 Disputation register: dùng 'berechtigter Einwand', 'Gesamtargumentation', 'Präzisierung', 'einzugrenzen'. Không dùng khẩu ngữ kiểu 'ich glaube halt'. Hãy coi mọi câu trả lời như một phần của bài trình bày học thuật, không phải tranh luận cá nhân."
+  },
+  {
+    "id": "lhabilitation_probevorlesung",
+    "level": "C1",
+    "category": "fluency",
+    "title_vi": "Habilitation và giờ giảng thử",
+    "title_en": "Habilitation track and trial lecture",
+    "sentences": [
+      {
+        "en": "Im Habilitationsverfahren zählt nicht nur die Forschung, sondern ebenso die Fähigkeit, einen komplexen Gegenstand didaktisch zu strukturieren.",
+        "vi": "Trong quy trình habilitation, không chỉ nghiên cứu mà cả khả năng cấu trúc một chủ đề phức tạp theo hướng sư phạm cũng được tính đến.",
+        "pronunciation_focus": [
+          "Habilitationsverfahren → ha-bi-li-ta-tsi-ÔNS-fêr-fân",
+          "didaktisch → đi-ĐAK-tish",
+          "strukturieren → shtruk-tu-RI-rân"
+        ]
+      },
+      {
+        "en": "Die Probevorlesung verlangt eine Balance zwischen fachlicher Tiefe und anschlussfähiger Vermittlung.",
+        "vi": "Giờ giảng thử đòi hỏi sự cân bằng giữa chiều sâu chuyên môn và cách truyền đạt dễ theo dõi.",
+        "pronunciation_focus": [
+          "Probevorlesung → PRÔ-bê-fôr-lê-zung",
+          "Balance → ba-LAN-tsê",
+          "anschlussfähig → AN-shlus-fê-rik"
+        ]
+      },
+      {
+        "en": "Ich würde an dieser Stelle die Zielgruppe explizit mitdenken: nicht nur die Fachkolleginnen, sondern auch die Studierenden.",
+        "vi": "Ở chỗ này tôi sẽ chủ động tính đến đối tượng mục tiêu: không chỉ đồng nghiệp chuyên ngành mà cả sinh viên.",
+        "pronunciation_focus": [
+          "Zielgruppe → tsil-GRU-pê",
+          "explizit → ek-spli-ZIT",
+          "mitdenken → mit-DEN-kân"
+        ]
+      },
+      {
+        "en": "Gerade auf Habilitationsniveau wird erwartet, dass man Forschung und Lehre nicht gegeneinander ausspielt.",
+        "vi": "Đặc biệt ở cấp độ habilitation, người ta kỳ vọng rằng nghiên cứu và giảng dạy không bị đặt đối lập với nhau.",
+        "pronunciation_focus": [
+          "Habilitationsniveau → ha-bi-li-ta-tsi-ÔNS-ni-vo",
+          "gegeneinander → GÊ-gân-ai-nan-dêr",
+          "ausspielen → OUTS-shpi-lân"
+        ]
+      },
+      {
+        "en": "Wenn ich das Beispiel zuspitzen darf: Ein guter Habilitationsvortrag erklärt nicht nur, was er tut, sondern auch, warum gerade so.",
+        "vi": "Nếu tôi được phép nói cô đọng: một bài thuyết trình habilitation tốt không chỉ giải thích nó đang làm gì, mà còn vì sao lại làm theo cách đó.",
+        "pronunciation_focus": [
+          "zuspitzen → TSU-shpi-tsân",
+          "Habilitationsvortrag → ha-bi-li-ta-tsi-ÔNS-fôr-trak",
+          "gerade so → GÊ-ra-dê zô"
+        ]
+      }
+    ],
+    "vocabulary": [
+      {
+        "word": "die Habilitation",
+        "en": "postdoctoral qualification / habilitation",
+        "vi": "học vị/điều kiện habilitation",
+        "pos": "noun (f)",
+        "pronunciation_vi": "ha-bi-li-ta-tsi-ôn"
+      },
+      {
+        "word": "die Probevorlesung",
+        "en": "trial lecture",
+        "vi": "giờ giảng thử",
+        "pos": "noun (f)",
+        "pronunciation_vi": "PRÔ-bê-fôr-lê-zung"
+      },
+      {
+        "word": "didaktisch",
+        "en": "didactic, pedagogically structured",
+        "vi": "theo hướng sư phạm",
+        "pos": "adjective",
+        "pronunciation_vi": "đi-ĐAK-tish"
+      },
+      {
+        "word": "anschlussfähig",
+        "en": "accessible / connectable to the field",
+        "vi": "có tính liên kết, dễ nối vào mạch chuyên ngành",
+        "pos": "adjective",
+        "pronunciation_vi": "AN-shlus-fê-rik"
+      },
+      {
+        "word": "die Zielgruppe",
+        "en": "target audience",
+        "vi": "đối tượng mục tiêu",
+        "pos": "noun (f)",
+        "pronunciation_vi": "tsil-GRU-pê"
+      }
+    ],
+    "dialogue": [
+      {
+        "speaker": "Professorin",
+        "text": "Wie würden Sie Ihre Lehrperspektive im Rahmen der Probevorlesung erläutern?",
+        "vi": "Cô sẽ trình bày quan điểm giảng dạy của mình như thế nào trong phạm vi giờ giảng thử?"
+      },
+      {
+        "speaker": "Bewerber",
+        "text": "Ich würde Forschung und Lehre nicht gegeneinander ausspielen, sondern didaktisch aufeinander beziehen.",
+        "vi": "Tôi sẽ không đặt nghiên cứu và giảng dạy đối lập nhau, mà liên hệ chúng với nhau theo cách sư phạm."
+      },
+      {
+        "speaker": "Professorin",
+        "text": "Und wie sichern Sie die Anschlussfähigkeit für eine nicht spezialisierte Hörerschaft?",
+        "vi": "Và làm sao anh bảo đảm tính dễ theo dõi cho một nhóm người nghe không chuyên sâu?"
+      },
+      {
+        "speaker": "Bewerber",
+        "text": "Ich beginne mit einem alltagsnahen Beispiel und führe dann schrittweise in den theoretischen Kern ein.",
+        "vi": "Tôi bắt đầu bằng một ví dụ gần với đời sống rồi từng bước đưa vào lõi lý thuyết."
+      }
+    ],
+    "exercises": [
+      {
+        "type": "fill_blank",
+        "instruction_vi": "Điền từ học thuật phù hợp:",
+        "pronunciation_focus": [],
+        "items": [
+          {
+            "prompt": "Die ___ verlangt eine Balance zwischen Tiefe und Vermittlung.",
+            "answer": "Probevorlesung"
+          },
+          {
+            "prompt": "Eine gute Vorlesung bleibt auch für die nicht spezialisierte ___ anschlussfähig.",
+            "answer": "Zielgruppe"
+          },
+          {
+            "prompt": "Erklären Sie nicht nur, was Sie tun, sondern auch, warum gerade ___.",
+            "answer": "so"
+          }
+        ]
+      },
+      {
+        "type": "translation",
+        "instruction_vi": "Dịch sang tiếng Đức formal C1:",
+        "pronunciation_focus": ["trial lecture"],
+        "items": [
+          {
+            "prompt": "Tôi sẽ không đặt nghiên cứu và giảng dạy đối lập nhau, mà liên hệ chúng với nhau theo cách sư phạm.",
+            "answer": "Ich würde Forschung und Lehre nicht gegeneinander ausspielen, sondern didaktisch aufeinander beziehen."
+          },
+          {
+            "prompt": "Tôi bắt đầu bằng một ví dụ gần với đời sống rồi từng bước đưa vào lõi lý thuyết.",
+            "answer": "Ich beginne mit einem alltagsnahen Beispiel und führe dann schrittweise in den theoretischen Kern ein."
+          }
+        ]
+      }
+    ],
+    "cultural_notes_vi": "Habilitation ở Đức là một ngưỡng nghề nghiệp học thuật chứ không chỉ là thêm một chứng chỉ. Người nghe muốn thấy bạn có khả năng dạy, cấu trúc tư duy, và chuyển phức tạp thành mạch logic rõ ràng. Nếu bài giảng quá giống seminar paper, bạn sẽ bị chê là chưa đủ 'Lehrfähigkeit'.",
+    "tip_advice_vi": "Trong giờ giảng thử, đừng cố chứng minh mình biết mọi thứ. Hãy chứng minh rằng bạn biết chọn mức độ chi tiết phù hợp với người nghe. Habilitation cần cả nghiên cứu lẫn năng lực sư phạm.",
+    "register_notes": "Dùng 'ich würde', 'ich beginne', 'ich führe ein' để giữ register học thuật. Tránh làm bài giảng giống tranh luận nghiên cứu thuần túy. Người xét Habilitation muốn nghe một người vừa có chuyên môn vừa có khả năng dạy."
+  },
+  {
+    "id": "ldfg_antrag_narrativ",
+    "level": "C1",
+    "category": "fluency",
+    "title_vi": "Narrative của đơn xin DFG",
+    "title_en": "DFG grant narrative",
+    "sentences": [
+      {
+        "en": "Ein überzeugender DFG-Antrag beginnt mit einem präzisen Forschungsstand und einem klar benennbaren Erkenntnisinteresse.",
+        "vi": "Một đơn xin DFG thuyết phục bắt đầu bằng tình trạng nghiên cứu chính xác và một mối quan tâm nhận thức được gọi tên rõ ràng.",
+        "pronunciation_focus": [
+          "DFG-Antrag → đê-Ê-fê-CHÊ AN-trak",
+          "Forschungsstand → FÔ-shungs-shtant",
+          "Erkenntnisinteresse → e-rken-tnis-IN-tê-rê-sê"
+        ]
+      },
+      {
+        "en": "Die Projektbeschreibung sollte das Arbeitsprogramm, die Arbeitsschritte und die erwartete Originalität transparent machen.",
+        "vi": "Bản mô tả dự án nên làm rõ chương trình công việc, các bước thực hiện và tính nguyên gốc dự kiến.",
+        "pronunciation_focus": [
+          "Projektbeschreibung → prô-YeKT-bê-shri-bung",
+          "Arbeitsprogramm → AR-baits-prô-gram",
+          "Originalität → ô-ri-gi-na-li-TÊT"
+        ]
+      },
+      {
+        "en": "Nach den aktuellen DFG-Hinweisen ist die Antragssprache zwar sachlich, aber nicht trocken zu halten.",
+        "vi": "Theo hướng dẫn hiện hành của DFG, ngôn ngữ đơn cần giữ tính khách quan nhưng không nên khô cứng.",
+        "pronunciation_focus": [
+          "DFG-Hinweisen → đê-Ê-fê-CHÊ HIN-vai-zân",
+          "sachlich → ZAKH-likh",
+          "trocken → TRÔ-kân"
+        ]
+      },
+      {
+        "en": "Wer nur Ziele behauptet, ohne Machbarkeit und Zeitplan zu zeigen, überzeugt die Gutachtenden selten.",
+        "vi": "Ai chỉ tuyên bố mục tiêu mà không chỉ ra tính khả thi và tiến độ thì hiếm khi thuyết phục được người phản biện.",
+        "pronunciation_focus": [
+          "Machbarkeit → MAKH-bat-khait",
+          "Zeitplan → TSAYT-plaan",
+          "Gutachtenden → GU-tak-hân-dân"
+        ]
+      },
+      {
+        "en": "Ich würde den Beitrag des Projekts deshalb nicht nur thematisch, sondern auch methodisch zuspitzen.",
+        "vi": "Vì vậy tôi sẽ làm nổi bật đóng góp của dự án không chỉ về mặt chủ đề mà còn cả về mặt phương pháp.",
+        "pronunciation_focus": [
+          "Beitrag → BAI-trak",
+          "methodisch → mê-TÔ-dish",
+          "zuspitzen → TSU-shpi-tsân"
+        ]
+      }
+    ],
+    "vocabulary": [
+      {
+        "word": "der DFG-Antrag",
+        "en": "DFG grant application",
+        "vi": "đơn xin tài trợ DFG",
+        "pos": "noun (m)",
+        "pronunciation_vi": "đê-Ê-fê-CHÊ an-trak"
+      },
+      {
+        "word": "die Projektbeschreibung",
+        "en": "project description",
+        "vi": "mô tả dự án",
+        "pos": "noun (f)",
+        "pronunciation_vi": "prô-YeKT-bê-shri-bung"
+      },
+      {
+        "word": "die Machbarkeit",
+        "en": "feasibility",
+        "vi": "tính khả thi",
+        "pos": "noun (f)",
+        "pronunciation_vi": "MAKH-bat-khait"
+      },
+      {
+        "word": "das Arbeitsprogramm",
+        "en": "work programme",
+        "vi": "chương trình công việc",
+        "pos": "noun (n)",
+        "pronunciation_vi": "AR-baits-prô-gram"
+      },
+      {
+        "word": "die Originalität",
+        "en": "originality",
+        "vi": "tính nguyên gốc",
+        "pos": "noun (f)",
+        "pronunciation_vi": "ô-ri-gi-na-li-TÊT"
+      }
+    ],
+    "dialogue": [
+      {
+        "speaker": "Postdoc",
+        "text": "Wie würden Sie den roten Faden Ihres DFG-Antrags in zwei Sätzen zusammenfassen?",
+        "vi": "Anh/chị sẽ tóm tắt sợi chỉ đỏ của đơn DFG trong hai câu như thế nào?"
+      },
+      {
+        "speaker": "Beraterin",
+        "text": "Der Antrag braucht ein klares Erkenntnisinteresse, einen präzisen Forschungsstand und ein realistisches Arbeitsprogramm.",
+        "vi": "Đơn cần có mối quan tâm nhận thức rõ, tình trạng nghiên cứu chính xác và một chương trình công việc thực tế."
+      },
+      {
+        "speaker": "Postdoc",
+        "text": "Und wie stark muss ich die Originalität betonen?",
+        "vi": "Và tôi cần nhấn mạnh tính nguyên gốc đến mức nào?"
+      },
+      {
+        "speaker": "Beraterin",
+        "text": "Deutlich, aber belegt — die Gutachtenden wollen kein Pathos, sondern einen nachvollziehbaren Erkenntnisgewinn.",
+        "vi": "Rõ ràng, nhưng có chứng cứ — người phản biện không cần lời hoa mỹ, mà cần giá trị nhận thức có thể theo dõi được."
+      }
+    ],
+    "exercises": [
+      {
+        "type": "fill_blank",
+        "instruction_vi": "Điền từ còn thiếu trong ngôn ngữ đơn DFG:",
+        "pronunciation_focus": [],
+        "items": [
+          {
+            "prompt": "Ein überzeugender ___ beginnt mit einem präzisen Forschungsstand.",
+            "answer": "DFG-Antrag"
+          },
+          {
+            "prompt": "Die ___ sollte Arbeitsprogramm und Zeitplan transparent machen.",
+            "answer": "Projektbeschreibung"
+          },
+          {
+            "prompt": "Wer nur Ziele behauptet, ohne ___ zu zeigen, überzeugt selten.",
+            "answer": "Machbarkeit"
+          }
+        ]
+      },
+      {
+        "type": "translation",
+        "instruction_vi": "Dịch sang tiếng Đức formal C1:",
+        "pronunciation_focus": ["DFG proposal"],
+        "items": [
+          {
+            "prompt": "Bản mô tả dự án nên làm rõ chương trình công việc, các bước thực hiện và tính nguyên gốc dự kiến.",
+            "answer": "Die Projektbeschreibung sollte das Arbeitsprogramm, die Arbeitsschritte und die erwartete Originalität transparent machen."
+          },
+          {
+            "prompt": "Ai chỉ tuyên bố mục tiêu mà không chỉ ra tính khả thi và tiến độ thì hiếm khi thuyết phục được người phản biện.",
+            "answer": "Wer nur Ziele behauptet, ohne Machbarkeit und Zeitplan zu zeigen, überzeugt die Gutachtenden selten."
+          }
+        ]
+      }
+    ],
+    "cultural_notes_vi": "Theo hướng DFG, đơn xin tài trợ cần phải 'trong sạch': câu hỏi nghiên cứu rõ, chương trình công việc rõ, và mức độ mới rõ. DFG đánh giá qua quy trình cạnh tranh và phản biện; vì vậy văn phong quá chung chung sẽ yếu ngay từ đầu. Đây là mô tả ngôn ngữ-học thuật, không phải tư vấn xin quỹ từng trường hợp.",
+    "tip_advice_vi": "Khi viết DFG-Antrag, hãy đi theo trật tự: Forschungsstand → Erkenntnisinteresse → Arbeitsprogramm → Zeitplan → erwarteter Erkenntnisgewinn. Nếu bạn thiếu một mắt xích, đơn sẽ nhìn như ý tưởng chưa chín.",
+    "register_notes": "DFG-register: sachlich, exakt, kompetitiv. Thay vì kể câu chuyện cá nhân, hãy cho thấy lỗ hổng nghiên cứu, cách bạn sẽ lấp nó, và tại sao dự án này đáng cạnh tranh. Đừng lạm dụng khẩu hiệu như 'innovativ' mà không có chứng cứ."
+  },
+  {
+    "id": "ldoktorvater_doktormutter",
+    "level": "C1",
+    "category": "fluency",
+    "title_vi": "Quan hệ Doktorvater/Doktormutter",
+    "title_en": "The Doktorvater / Doktormutter relationship dynamic",
+    "sentences": [
+      {
+        "en": "Die Beziehung zum Doktorvater ist in Deutschland oft zugleich fachlich, hierarchisch und persönlich geprägt.",
+        "vi": "Mối quan hệ với Doktorvater ở Đức thường vừa mang tính chuyên môn, vừa có tính thứ bậc, vừa có yếu tố cá nhân.",
+        "pronunciation_focus": [
+          "Doktorvater → đốc-tor-FAA-tơ",
+          "hierarchisch → hi-rar-KHISH",
+          "persönlich geprägt → pe-ZÖN-likh gê-PRÊKT"
+        ]
+      },
+      {
+        "en": "Eine gute Doktormutter oder ein guter Doktorvater erwartet nicht nur Loyalität, sondern auch intellektuelle Eigenständigkeit.",
+        "vi": "Một Doktormutter hay Doktorvater tốt không chỉ kỳ vọng sự trung thành mà còn cả tính độc lập trí tuệ.",
+        "pronunciation_focus": [
+          "Doktormutter → đốc-tor-MU-tơ",
+          "Loyalität → loi-a-li-TÊT",
+          "Eigenständigkeit → AI-gân-shten-đik-kait"
+        ]
+      },
+      {
+        "en": "Wenn ich um Rat bitte, möchte ich zugleich signalisieren, dass ich die Verantwortung für die Entscheidung selbst übernehme.",
+        "vi": "Khi tôi xin lời khuyên, tôi đồng thời muốn cho thấy rằng tôi tự chịu trách nhiệm cho quyết định của mình.",
+        "pronunciation_focus": [
+          "um Rat bitten → um RAAAT bit-tân",
+          "verantwortung → fe-ran-tvortung",
+          "selbst übernehme → zelpst y-ber-nê-mê"
+        ]
+      },
+      {
+        "en": "Gerade in der Promotionsphase wird oft mehr implizit erwartet, als schriftlich festgehalten wird.",
+        "vi": "Ngay trong giai đoạn làm tiến sĩ, người ta thường kỳ vọng ngầm nhiều hơn so với những gì được ghi thành văn bản.",
+        "pronunciation_focus": [
+          "Promotionsphase → prô-mo-tsi-ÔNS-faa-zê",
+          "implizit → im-pli-ZIT",
+          "festgehalten → fêst-gê-hal-tân"
+        ]
+      },
+      {
+        "en": "Ich würde deshalb zwischen fachlicher Kritik und persönlicher Kränkung strikt unterscheiden.",
+        "vi": "Vì vậy tôi sẽ phân biệt thật chặt giữa phê bình chuyên môn và tổn thương cá nhân.",
+        "pronunciation_focus": [
+          "fachliche Kritik → FAKH-lik-ê KRI-tik",
+          "Kränkung → KREN-kung",
+          "strikt unterscheiden → shtRIKT un-shoi-dân"
+        ]
+      }
+    ],
+    "vocabulary": [
+      {
+        "word": "der Doktorvater / die Doktormutter",
+        "en": "doctoral supervisor / advisor",
+        "vi": "người hướng dẫn tiến sĩ",
+        "pos": "noun phrase",
+        "pronunciation_vi": "đốc-tor-FAA-tơ / đốc-tor-MU-tơ"
+      },
+      {
+        "word": "die Eigenständigkeit",
+        "en": "independence, self-reliance",
+        "vi": "tính độc lập",
+        "pos": "noun (f)",
+        "pronunciation_vi": "AI-gân-shten-đik-kait"
+      },
+      {
+        "word": "die Promotionsphase",
+        "en": "doctoral phase",
+        "vi": "giai đoạn làm tiến sĩ",
+        "pos": "noun (f)",
+        "pronunciation_vi": "prô-mo-tsi-ÔNS-faa-zê"
+      },
+      {
+        "word": "um Rat bitten",
+        "en": "to ask for advice",
+        "vi": "xin lời khuyên",
+        "pos": "verb phrase",
+        "pronunciation_vi": "um RAAAT bit-tân"
+      },
+      {
+        "word": "die Kränkung",
+        "en": "hurt feelings / offense",
+        "vi": "sự tự ái bị tổn thương",
+        "pos": "noun (f)",
+        "pronunciation_vi": "KREN-kung"
+      }
+    ],
+    "dialogue": [
+      {
+        "speaker": "Doktorandin",
+        "text": "Ich wollte Sie um Rat bitten, ohne meine eigene Entscheidung aus der Hand zu geben.",
+        "vi": "Em muốn xin thầy/cô lời khuyên mà không đánh mất quyền quyết định của chính mình."
+      },
+      {
+        "speaker": "Doktormutter",
+        "text": "Das ist ein vernünftiger Ansatz — Eigenständigkeit und Rücksprache schließen sich nicht aus.",
+        "vi": "Đó là một cách tiếp cận hợp lý — tính độc lập và việc xin ý kiến không loại trừ nhau."
+      },
+      {
+        "speaker": "Doktorandin",
+        "text": "Manchmal habe ich das Gefühl, dass unausgesprochene Erwartungen schwerer wiegen als formale Vorgaben.",
+        "vi": "Đôi khi em có cảm giác những kỳ vọng không nói ra lại nặng hơn các quy định chính thức."
+      },
+      {
+        "speaker": "Doktormutter",
+        "text": "Das ist in der Promotionsphase nicht ungewöhnlich. Wichtig ist, dass Sie Rückfragen frühzeitig ansprechen.",
+        "vi": "Điều đó không lạ trong giai đoạn tiến sĩ. Quan trọng là em nêu câu hỏi sớm."
+      }
+    ],
+    "exercises": [
+      {
+        "type": "fill_blank",
+        "instruction_vi": "Điền từ phù hợp về quan hệ hướng dẫn:",
+        "pronunciation_focus": [],
+        "items": [
+          {
+            "prompt": "Die Beziehung zum ___ ist oft fachlich und hierarchisch geprägt.",
+            "answer": "Doktorvater"
+          },
+          {
+            "prompt": "Eine gute Betreuung erwartet auch intellektuelle ___.",
+            "answer": "Eigenständigkeit"
+          },
+          {
+            "prompt": "Ich würde zwischen Kritik und ___ strikt unterscheiden.",
+            "answer": "Kränkung"
+          }
+        ]
+      },
+      {
+        "type": "translation",
+        "instruction_vi": "Dịch sang tiếng Đức formal C1:",
+        "pronunciation_focus": ["supervision dynamic"],
+        "items": [
+          {
+            "prompt": "Em muốn xin thầy/cô lời khuyên mà không đánh mất quyền quyết định của chính mình.",
+            "answer": "Ich wollte Sie um Rat bitten, ohne meine eigene Entscheidung aus der Hand zu geben."
+          },
+          {
+            "prompt": "Điều đó không lạ trong giai đoạn tiến sĩ. Quan trọng là em nêu câu hỏi sớm.",
+            "answer": "Das ist in der Promotionsphase nicht ungewöhnlich. Wichtig ist, dass Sie Rückfragen frühzeitig ansprechen."
+          }
+        ]
+      }
+    ],
+    "cultural_notes_vi": "Quan hệ với Doktorvater/Doktormutter ở Đức thường vừa cá nhân vừa thể chế. Bạn cần biết khi nào nên hỏi, khi nào nên tự quyết, và khi nào nên ghi lại mọi thứ bằng văn bản. Ngoài ra, hãy phân biệt rõ giữa góp ý học thuật và áp lực quyền lực.",
+    "tip_advice_vi": "Trong quan hệ hướng dẫn, câu an toàn là: xin lời khuyên, xác nhận phạm vi trách nhiệm của mình, rồi báo lại quyết định. Điều này giữ được cả sự tôn trọng lẫn tính độc lập.",
+    "register_notes": "Dùng 'um Rat bitten', 'Rücksprache', 'Eigenständigkeit', 'Erwartungen' thay vì than phiền trực tiếp. Trong Đức, một câu nói khéo còn quan trọng hơn việc bạn có đúng ngay lập tức hay không."
+  },
+  {
+    "id": "lkonjunktiv_i_begutachtung",
+    "level": "C1",
+    "category": "fluency",
+    "title_vi": "Konjunktiv I trong phê bình gián tiếp",
+    "title_en": "Konjunktiv I in reported critique",
+    "sentences": [
+      {
+        "en": "Der Gutachter bemerke, die theoretische Rahmung sei noch nicht hinreichend mit dem Korpus verschaltet.",
+        "vi": "Người phản biện nhận xét rằng khung lý thuyết vẫn chưa được nối đủ chặt với ngữ liệu.",
+        "pronunciation_focus": [
+          "bemerke → bê-MÊ-rkê",
+          "theoretische Rahmung → tê-Ô-rê-ti-shê RA-mung",
+          "verschaltet → fe-SHAL-tet"
+        ]
+      },
+      {
+        "en": "Die Autorin führe aus, dass die methodische Entscheidung aus Gründen der Vergleichbarkeit getroffen worden sei.",
+        "vi": "Tác giả trình bày rằng quyết định phương pháp đã được đưa ra vì lý do so sánh được.",
+        "pronunciation_focus": [
+          "führe aus → FYU-rê OUTS",
+          "Vergleichbarkeit → fer-GLAIKH-bat-kait",
+          "getroffen worden sei → gê-TRO-fân vor-dân zay"
+        ]
+      },
+      {
+        "en": "Laut Bericht könne der Befund auch anders gelesen werden, sofern man den Kontext enger fasse.",
+        "vi": "Theo báo cáo, kết quả cũng có thể được đọc khác đi nếu người ta thu hẹp bối cảnh lại.",
+        "pronunciation_focus": [
+          "könne → KÖ-nê",
+          "Befund → bê-FUNT",
+          "enger fasse → Ê-ngơ fa-sê"
+        ]
+      },
+      {
+        "en": "In der Begutachtung ist der Konjunktiv I kein Stilspiel, sondern ein Mittel zur Distanzierung von fremder Rede.",
+        "vi": "Trong thẩm định, Konjunktiv I không phải là trò chơi phong cách mà là phương tiện tạo khoảng cách với lời nói của người khác.",
+        "pronunciation_focus": [
+          "Begutachtung → bê-GU-tak-tung",
+          "Distanzierung → đi-săn-tsi-RUNG",
+          "fremder Rede → FREM-đơ RÊ-đê"
+        ]
+      },
+      {
+        "en": "Wenn Sie Kritik referieren, sollten Sie mit Konjunktiv I arbeiten, sofern es um sachliche Wiedergabe geht.",
+        "vi": "Khi anh/chị thuật lại phê bình, nên dùng Konjunktiv I nếu mục đích là tái hiện khách quan.",
+        "pronunciation_focus": [
+          "referieren → rê-fe-RI-rân",
+          "Wiedergabe → VI-đơ-ga-bê",
+          "sachliche → ZAKH-lik-ê"
+        ]
+      }
+    ],
+    "vocabulary": [
+      {
+        "word": "der Konjunktiv I",
+        "en": "reported speech mood",
+        "vi": "thức gián tiếp / trần thuật gián tiếp",
+        "pos": "noun phrase",
+        "pronunciation_vi": "kôn-yunk-tif ai"
+      },
+      {
+        "word": "die Begutachtung",
+        "en": "review / evaluation",
+        "vi": "việc thẩm định",
+        "pos": "noun (f)",
+        "pronunciation_vi": "bê-GU-tak-tung"
+      },
+      {
+        "word": "die Wiedergabe",
+        "en": "rendering, reproduction",
+        "vi": "sự tái hiện",
+        "pos": "noun (f)",
+        "pronunciation_vi": "VI-đơ-ga-bê"
+      },
+      {
+        "word": "die Distanzierung",
+        "en": "distancing",
+        "vi": "sự tạo khoảng cách",
+        "pos": "noun (f)",
+        "pronunciation_vi": "đi-săn-tsi-RUNG"
+      },
+      {
+        "word": "referieren",
+        "en": "to report, summarize",
+        "vi": "thuật lại, tóm tắt",
+        "pos": "verb",
+        "pronunciation_vi": "rê-fe-RI-rân"
+      }
+    ],
+    "dialogue": [
+      {
+        "speaker": "Sekretärin",
+        "text": "Der Gutachter bemerke, die Argumentation sei an mehreren Stellen zu eng geführt.",
+        "vi": "Người phản biện nhận xét rằng lập luận được triển khai quá chặt ở nhiều chỗ."
+      },
+      {
+        "speaker": "Autor",
+        "text": "Ich würde das im Protokoll mit Konjunktiv I wiedergeben, damit die Distanz zur fremden Rede klar bleibt.",
+        "vi": "Tôi sẽ ghi lại trong biên bản bằng Konjunktiv I để giữ rõ khoảng cách với lời của người khác."
+      },
+      {
+        "speaker": "Sekretärin",
+        "text": "Und wenn Sie die Kritik in Ihrer Erwiderung zusammenfassen?",
+        "vi": "Còn khi anh/chị tóm tắt phản biện trong phản hồi thì sao?"
+      },
+      {
+        "speaker": "Autor",
+        "text": "Dann verwende ich ebenfalls den Konjunktiv I, sofern ich den Inhalt neutral referieren möchte.",
+        "vi": "Khi đó tôi cũng dùng Konjunktiv I, miễn là tôi muốn thuật lại nội dung một cách trung tính."
+      }
+    ],
+    "exercises": [
+      {
+        "type": "fill_blank",
+        "instruction_vi": "Điền thức gián tiếp phù hợp:",
+        "pronunciation_focus": [],
+        "items": [
+          {
+            "prompt": "Der Gutachter ___, die theoretische Rahmung sei noch zu eng.",
+            "answer": "bemerke"
+          },
+          {
+            "prompt": "Die Autorin ___ aus, dass die Entscheidung methodisch begründet sei.",
+            "answer": "führe"
+          },
+          {
+            "prompt": "Im wissenschaftlichen Bericht dient der Konjunktiv I der ___.",
+            "answer": "Distanzierung"
+          }
+        ]
+      },
+      {
+        "type": "translation",
+        "instruction_vi": "Dịch sang tiếng Đức formal C1:",
+        "pronunciation_focus": ["reported critique"],
+        "items": [
+          {
+            "prompt": "Người phản biện nhận xét rằng khung lý thuyết vẫn chưa được nối đủ chặt với ngữ liệu.",
+            "answer": "Der Gutachter bemerke, die theoretische Rahmung sei noch nicht hinreichend mit dem Korpus verschaltet."
+          },
+          {
+            "prompt": "Khi thuật lại phê bình, nên dùng Konjunktiv I để giữ khoảng cách với lời của người khác.",
+            "answer": "Wenn Sie Kritik referieren, sollten Sie mit Konjunktiv I arbeiten, sofern es um sachliche Wiedergabe geht."
+          }
+        ]
+      }
+    ],
+    "cultural_notes_vi": "Trong phản biện học thuật Đức, Konjunktiv I là công cụ chuẩn để tách lời mình khỏi lời người khác. Nó giúp bạn viết lại comment reviewer hoặc tóm tắt ý kiến mà không làm mất tính khách quan. Dùng sai kiểu trực tiếp quá mức sẽ làm câu trả lời nghe chủ quan hơn mức cần thiết.",
+    "tip_advice_vi": "Khi báo cáo critique, hãy giữ một nhịp: 'der Gutachter bemerke...', 'die Autorin führe aus...', 'laut Bericht könne...'. Mục tiêu là tái hiện nội dung chứ không chen cảm xúc vào câu thuật lại.",
+    "register_notes": "Konjunktiv I rất quan trọng trong reviewer response, minutes, and seminar reports. Đừng trộn nó với khẩu ngữ. Nếu bạn cần một câu an toàn, dùng: 'Der Gutachter bemerke, dass...' hoặc 'Die Autorin führe aus, dass...'."
+  },
+  {
+    "id": "lwissenschaftlicher_widerspruch",
+    "level": "C1",
+    "category": "fluency",
+    "title_vi": "Phản biện học thuật có giữ thể diện",
+    "title_en": "Hedged academic disagreement",
+    "sentences": [
+      {
+        "en": "Ich würde den Befund an dieser Stelle nicht grundsätzlich bestreiten, aber m.E. ist die Herleitung noch zu knapp.",
+        "vi": "Tôi sẽ không phủ nhận kết quả ở chỗ này về nguyên tắc, nhưng theo ý kiến của tôi thì phần suy luận vẫn còn quá ngắn.",
+        "pronunciation_focus": [
+          "m.E. → em Ê",
+          "grundsätzlich bestreiten → GRUNT-tsét-slich be-SHTRAI-tân",
+          "Herleitung → HÊR-lai-tung"
+        ]
+      },
+      {
+        "en": "Gegebenenfalls müsste man die These stärker begrenzen, damit sie analytisch belastbar bleibt.",
+        "vi": "Trong trường hợp cần thiết, người ta phải giới hạn mạnh hơn luận điểm để nó vẫn đủ vững về mặt phân tích.",
+        "pronunciation_focus": [
+          "gegebenenfalls → gê-GÊ-bênên-fals",
+          "begrenzen → bê-GREN-tsân",
+          "belastbar → bê-LAST-bar"
+        ]
+      },
+      {
+        "en": "Womöglich unterschätzt die Autorin die Reichweite des eigenen Arguments.",
+        "vi": "Có lẽ tác giả đang đánh giá thấp độ bao quát của chính lập luận của mình.",
+        "pronunciation_focus": [
+          "womöglich → vo-MÖK-likh",
+          "unterschätzt → un-tơ-SHETST",
+          "Reichweite → RAIKH-vai-tê"
+        ]
+      },
+      {
+        "en": "Im akademischen Gespräch ist Widerspruch dann tragfähig, wenn er präzise und höflich formuliert wird.",
+        "vi": "Trong trao đổi học thuật, phản biện chỉ có sức nặng khi được diễn đạt chính xác và lịch sự.",
+        "pronunciation_focus": [
+          "Widerspruch → VI-dơ-sprukh",
+          "tragfähig → TRAK-fêk",
+          "höflich formuliert → HÖF-likh for-mu-LIY-ret"
+        ]
+      }
+    ],
+    "vocabulary": [
+      {
+        "word": "m.E.",
+        "en": "meines Erachtens / in my view",
+        "vi": "theo ý kiến của tôi",
+        "pos": "abbreviation",
+        "pronunciation_vi": "em Ê"
+      },
+      {
+        "word": "gegebenenfalls",
+        "en": "if necessary / where appropriate",
+        "vi": "nếu cần / trong trường hợp cần thiết",
+        "pos": "adverb",
+        "pronunciation_vi": "gê-GÊ-bênên-fals"
+      },
+      {
+        "word": "womöglich",
+        "en": "possibly, perhaps",
+        "vi": "có lẽ, có khả năng",
+        "pos": "adverb",
+        "pronunciation_vi": "vo-MÖK-likh"
+      },
+      {
+        "word": "belastbar",
+        "en": "robust, sound",
+        "vi": "đủ vững, có sức nặng",
+        "pos": "adjective",
+        "pronunciation_vi": "bê-LAST-bar"
+      },
+      {
+        "word": "bestreiten",
+        "en": "to dispute, contest",
+        "vi": "phản bác, bác bỏ",
+        "pos": "verb",
+        "pronunciation_vi": "be-SHTRAI-tân"
+      }
+    ],
+    "dialogue": [
+      {
+        "speaker": "Professorin",
+        "text": "Ich würde den Einspruch nicht zurückweisen, aber m.E. braucht er noch eine präzisere Begründung.",
+        "vi": "Tôi sẽ không bác bỏ phản biện, nhưng theo tôi nó vẫn cần một lập luận chặt hơn."
+      },
+      {
+        "speaker": "Doktorand",
+        "text": "Das verstehe ich. Gegebenenfalls kann ich die Passage mit mehr Daten absichern.",
+        "vi": "Em hiểu ạ. Nếu cần, em có thể củng cố đoạn đó bằng thêm dữ liệu."
+      },
+      {
+        "speaker": "Professorin",
+        "text": "Wichtig ist, dass der Widerspruch sachlich bleibt und nicht persönlich wirkt.",
+        "vi": "Điều quan trọng là sự phản biện phải giữ tính khách quan, không làm nó thành chuyện cá nhân."
+      },
+      {
+        "speaker": "Doktorand",
+        "text": "Genau. Dann kann auch eine kritische Rückmeldung produktiv werden.",
+        "vi": "Đúng vậy. Khi đó một phản hồi mang tính phê bình vẫn có thể trở nên hữu ích."
+      }
+    ],
+    "exercises": [
+      {
+        "type": "fill_blank",
+        "instruction_vi": "Điền cách phản biện phù hợp:",
+        "pronunciation_focus": [],
+        "items": [
+          {
+            "prompt": "___ ist die Herleitung noch zu knapp.",
+            "answer": "m.E."
+          },
+          {
+            "prompt": "___ müsste man die These enger fassen.",
+            "answer": "Gegebenenfalls"
+          },
+          {
+            "prompt": "Ein akademischer Widerspruch sollte ___ formuliert sein.",
+            "answer": "höflich"
+          }
+        ]
+      },
+      {
+        "type": "translation",
+        "instruction_vi": "Dịch sang tiếng Đức formal C1:",
+        "pronunciation_focus": ["hedged disagreement"],
+        "items": [
+          {
+            "prompt": "Theo ý kiến của tôi, lập luận này cần được thu hẹp lại một chút.",
+            "answer": "m.E. sollte das Argument an dieser Stelle noch etwas enger gefasst werden."
+          },
+          {
+            "prompt": "Có lẽ tác giả đang đánh giá thấp độ bao quát của lập luận.",
+            "answer": "Womöglich unterschätzt die Autorin die Reichweite des eigenen Arguments."
+          }
+        ]
+      }
+    ],
+    "cultural_notes_vi": "Trong thảo luận học thuật Đức, phản biện tốt thường đi kèm giảm độ đối đầu: m.E., gegebenenfalls, womöglich. Các từ này giúp bạn giữ thể diện cho đối phương mà vẫn làm rõ điểm yếu của lập luận. Đây là cách phản biện chuyên nghiệp, không phải cách né tránh.",
+    "tip_advice_vi": "Khi bất đồng, đừng mở đầu bằng phủ định mạnh. Hãy mở bằng công nhận một phần, rồi thêm m.E. hoặc gegebenenfalls để hạ nhiệt câu nói.",
+    "register_notes": "Ở C1, câu phản biện có trọng lượng hơn khi bạn nói 'Ich würde...' hoặc 'm.E. ...' thay vì 'Das ist falsch'."
+  },
+  {
+    "id": "lkolloquium_moderation",
+    "level": "C1",
+    "category": "fluency",
+    "title_vi": "Điều phối buổi colloquium nhiều bên",
+    "title_en": "Chairing a multi-party colloquium",
+    "sentences": [
+      {
+        "en": "Ich würde vorschlagen, dass wir zunächst die Ausgangsfrage klären und dann die einzelnen Positionen bündeln.",
+        "vi": "Tôi đề nghị trước hết làm rõ câu hỏi xuất phát rồi mới gom các quan điểm riêng lẻ lại.",
+        "pronunciation_focus": [
+          "vorschlagen → FÔR-shla-gân",
+          "Ausgangsfrage → AOß-gang-s-frA-gê",
+          "Positionen bündeln → po-zi-TSI-ô-nən BÜN-dln"
+        ]
+      },
+      {
+        "en": "Womöglich hilft es, wenn wir die Diskussion in zwei Blöcke teilen: Theorie und Methode.",
+        "vi": "Có lẽ sẽ hữu ích nếu chúng ta chia thảo luận thành hai phần: lý thuyết và phương pháp.",
+        "pronunciation_focus": [
+          "womöglich → vo-MÖK-likh",
+          "Blocke teilen → BLÔ-kê TAI-lân",
+          "Methode → mê-TÔ-đê"
+        ]
+      },
+      {
+        "en": "Bitte lassen Sie die Rückfragen gebündelt am Ende kommen, damit der rote Faden erhalten bleibt.",
+        "vi": "Xin vui lòng để các câu hỏi được gom lại và hỏi ở cuối, để mạch chính của buổi trao đổi không bị đứt.",
+        "pronunciation_focus": [
+          "Rückfragen → RÜK-fra-gân",
+          "gebündelt → ge-BÜN-delt",
+          "roter Faden → RÔ-tơ FA-dân"
+        ]
+      },
+      {
+        "en": "Als Vorsitzende müssen Sie nicht alles selbst erklären, sondern vor allem den Austausch strukturieren.",
+        "vi": "Với vai trò chủ tọa, anh/chị không cần tự giải thích hết mọi thứ, mà chủ yếu phải cấu trúc cuộc trao đổi.",
+        "pronunciation_focus": [
+          "Vorsitzende → FÔR-tsit-sen-dê",
+          "strukturieren → shtruk-tu-RI-rân",
+          "Austausch → AOß-taush"
+        ]
+      }
+    ],
+    "vocabulary": [
+      {
+        "word": "das Kolloquium",
+        "en": "colloquium, academic discussion",
+        "vi": "buổi colloquium / thảo luận học thuật",
+        "pos": "noun (n)",
+        "pronunciation_vi": "ko-LÔ-kvi-um"
+      },
+      {
+        "word": "bündeln",
+        "en": "to bundle, consolidate",
+        "vi": "gom lại, tập hợp",
+        "pos": "verb",
+        "pronunciation_vi": "BÜN-dln"
+      },
+      {
+        "word": "der rote Faden",
+        "en": "the thread, guiding line",
+        "vi": "mạch chính",
+        "pos": "noun phrase",
+        "pronunciation_vi": "RÔ-tơ FA-dân"
+      },
+      {
+        "word": "strukturieren",
+        "en": "to structure",
+        "vi": "cấu trúc, sắp xếp",
+        "pos": "verb",
+        "pronunciation_vi": "shtruk-tu-RI-rân"
+      },
+      {
+        "word": "die Rückfrage",
+        "en": "follow-up question",
+        "vi": "câu hỏi tiếp theo",
+        "pos": "noun (f)",
+        "pronunciation_vi": "RÜK-fra-gê"
+      }
+    ],
+    "dialogue": [
+      {
+        "speaker": "Vorsitzende",
+        "text": "Ich würde die Diskussion jetzt öffnen, aber bitte zunächst nur zwei Rückfragen.",
+        "vi": "Tôi sẽ mở thảo luận ngay bây giờ, nhưng trước hết xin chỉ hai câu hỏi."
+      },
+      {
+        "speaker": "Teilnehmer",
+        "text": "Womöglich wäre es sinnvoll, erst die methodischen Unklarheiten zu klären.",
+        "vi": "Có lẽ sẽ hợp lý nếu trước tiên làm rõ các điểm chưa rõ về phương pháp."
+      },
+      {
+        "speaker": "Vorsitzende",
+        "text": "Genau, ich bündele das und gebe dann das Wort zurück in die Runde.",
+        "vi": "Đúng vậy, tôi sẽ gom ý đó lại rồi trả lời phát biểu trở lại cho cả vòng thảo luận."
+      },
+      {
+        "speaker": "Teilnehmer",
+        "text": "So bleibt der rote Faden erhalten und niemand verliert den Anschluss.",
+        "vi": "Như vậy mạch chính sẽ được giữ và không ai bị mất kết nối."
+      }
+    ],
+    "exercises": [
+      {
+        "type": "fill_blank",
+        "instruction_vi": "Điền từ điều phối phù hợp:",
+        "pronunciation_focus": [],
+        "items": [
+          {
+            "prompt": "Bitte die Rückfragen am Ende ___.",
+            "answer": "bündeln"
+          },
+          {
+            "prompt": "Als ___ muss man den Austausch strukturieren.",
+            "answer": "Vorsitzende"
+          },
+          {
+            "prompt": "Der ___ hilft, die Diskussion zusammenzuhalten.",
+            "answer": "rote Faden"
+          }
+        ]
+      },
+      {
+        "type": "translation",
+        "instruction_vi": "Dịch sang tiếng Đức formal C1:",
+        "pronunciation_focus": ["meeting chair"],
+        "items": [
+          {
+            "prompt": "Tôi đề nghị trước hết làm rõ câu hỏi xuất phát rồi mới gom các quan điểm riêng lẻ lại.",
+            "answer": "Ich würde vorschlagen, dass wir zunächst die Ausgangsfrage klären und dann die einzelnen Positionen bündeln."
+          },
+          {
+            "prompt": "Xin vui lòng để các câu hỏi được gom lại và hỏi ở cuối.",
+            "answer": "Bitte lassen Sie die Rückfragen gebündelt am Ende kommen."
+          }
+        ]
+      }
+    ],
+    "cultural_notes_vi": "Trong buổi colloquium của Đức, người chủ tọa thường được kỳ vọng giữ nhịp, cắt bớt lan man và bảo vệ mạch tranh luận. Sự lịch sự ở đây nằm ở cách bạn cấu trúc cuộc trao đổi, không phải ở việc nói thật nhiều.",
+    "tip_advice_vi": "Nếu bạn phải điều phối nhiều người, hãy dùng câu ngắn, mệnh lệnh mềm và các mốc rõ ràng: erstens, dann, am Ende.",
+    "register_notes": "Giọng C1 khi điều phối hội thảo nên trung tính, rõ, không quá thân mật. Vai trò chủ tọa cần nghe vững chứ không cần nghe áp đặt."
+  },
+  {
+    "id": "lwisszeitvg_reform",
+    "level": "C1",
+    "category": "fluency",
+    "title_vi": "WissZeitVG và bối cảnh nhiệm kỳ khoa học",
+    "title_en": "WissZeitVG reform and academic employment context",
+    "sentences": [
+      {
+        "en": "Im aktuellen Diskurs zur Reform des WissZeitVG geht es vor allem um Planbarkeit, Qualität und weniger befristeten Druck.",
+        "vi": "Trong tranh luận hiện nay về cải cách WissZeitVG, trọng tâm là tính dự đoán, chất lượng và giảm áp lực hợp đồng ngắn hạn.",
+        "pronunciation_focus": [
+          "WissZeitVG → VIS-tsait-fê-gê",
+          "Planbarkeit → PLA-nbar-kait",
+          "befristeten Druck → bê-FRIS-tê-tân DRUK"
+        ]
+      },
+      {
+        "en": "Womöglich ist die Reform auch deshalb so umstritten, weil Universitäten sehr unterschiedlich davon betroffen sind.",
+        "vi": "Có lẽ cải cách này gây tranh cãi cũng vì các đại học bị ảnh hưởng rất khác nhau.",
+        "pronunciation_focus": [
+          "umstritten → um-SHRIT-tân",
+          "Universitäten → u-ni-ve-zi-TÊ-tən",
+          "betroffen → bê-TRO-fân"
+        ]
+      },
+      {
+        "en": "Gegebenenfalls muss man zwischen rechtlicher Lage, Personalpolitik und akademischer Realität klar unterscheiden.",
+        "vi": "Trong trường hợp cần thiết, phải phân biệt rõ giữa tình hình pháp lý, chính sách nhân sự và thực tế học thuật.",
+        "pronunciation_focus": [
+          "gegebenenfalls → gê-GÊ-bênên-fals",
+          "Personalpolitik → pêr-zo-NAAL-po-li-tik",
+          "Realität → rê-a-li-TÊT"
+        ]
+      },
+      {
+        "en": "Das ist keine Rechtsberatung, sondern eine akademische Einordnung des derzeitigen Diskussionsstands.",
+        "vi": "Đây không phải là tư vấn pháp lý, mà chỉ là một cách đặt vấn đề theo tình hình thảo luận hiện tại.",
+        "pronunciation_focus": [
+          "Rechtsberatung → rếkts-bê-RA-tung",
+          "Einordnung → AI-nor-dnung",
+          "Diskussionsstands → dis-ku-SIÔNS-shtants"
+        ]
+      }
+    ],
+    "vocabulary": [
+      {
+        "word": "das WissZeitVG",
+        "en": "German Fixed-Term Contracts for Academic Staff Act",
+        "vi": "luật hợp đồng có thời hạn cho nhân sự học thuật",
+        "pos": "noun phrase",
+        "pronunciation_vi": "VIS-tsait-fê-gê"
+      },
+      {
+        "word": "Planbarkeit",
+        "en": "predictability",
+        "vi": "tính dự đoán được",
+        "pos": "noun (f)",
+        "pronunciation_vi": "PLA-nbar-kait"
+      },
+      {
+        "word": "befristet",
+        "en": "fixed-term",
+        "vi": "có thời hạn",
+        "pos": "adjective",
+        "pronunciation_vi": "bê-FRIS-tet"
+      },
+      {
+        "word": "einordnen",
+        "en": "to contextualize, frame",
+        "vi": "đặt vào bối cảnh",
+        "pos": "verb",
+        "pronunciation_vi": "AI-nor-dnân"
+      },
+      {
+        "word": "der Diskussionsstand",
+        "en": "state of the discussion",
+        "vi": "tình hình thảo luận hiện tại",
+        "pos": "noun (m)",
+        "pronunciation_vi": "dis-ku-SIÔNS-shtant"
+      }
+    ],
+    "dialogue": [
+      {
+        "speaker": "Dozentin",
+        "text": "Wir sollten die Reform des WissZeitVG sachlich einordnen und keine vorschnellen Schlussfolgerungen ziehen.",
+        "vi": "Chúng ta nên đặt cải cách WissZeitVG vào bối cảnh một cách khách quan và không rút ra kết luận vội."
+      },
+      {
+        "speaker": "Doktorand",
+        "text": "Das sehe ich auch so, wobei die Planbarkeit für den Nachwuchs zentral bleibt.",
+        "vi": "Em cũng thấy vậy, trong đó tính dự đoán cho thế hệ trẻ vẫn là then chốt."
+      },
+      {
+        "speaker": "Dozentin",
+        "text": "Genau, aber das ist keine Rechtsberatung, sondern nur eine Einordnung des Diskussionsstands.",
+        "vi": "Đúng vậy, nhưng đây không phải tư vấn pháp lý, mà chỉ là cách đặt vấn đề theo tình hình thảo luận."
+      },
+      {
+        "speaker": "Doktorand",
+        "text": "Dann kann man die Argumente sauber voneinander trennen: rechtlich, institutionell und akademisch.",
+        "vi": "Khi đó ta có thể tách các lập luận ra rõ ràng: pháp lý, thể chế và học thuật."
+      }
+    ],
+    "exercises": [
+      {
+        "type": "fill_blank",
+        "instruction_vi": "Điền cụm phù hợp về bối cảnh pháp lý:",
+        "pronunciation_focus": [],
+        "items": [
+          {
+            "prompt": "Das ist keine ___, sondern eine Einordnung des Diskussionsstands.",
+            "answer": "Rechtsberatung"
+          },
+          {
+            "prompt": "Bei der Reform geht es auch um mehr ___.",
+            "answer": "Planbarkeit"
+          },
+          {
+            "prompt": "Man sollte rechtliche Lage und akademische Realität klar ___.",
+            "answer": "unterscheiden"
+          }
+        ]
+      },
+      {
+        "type": "translation",
+        "instruction_vi": "Dịch sang tiếng Đức formal C1:",
+        "pronunciation_focus": ["academic employment"],
+        "items": [
+          {
+            "prompt": "Trong tranh luận hiện nay về cải cách WissZeitVG, trọng tâm là tính dự đoán và giảm áp lực hợp đồng ngắn hạn.",
+            "answer": "Im aktuellen Diskurs zur Reform des WissZeitVG geht es vor allem um Planbarkeit und weniger befristeten Druck."
+          },
+          {
+            "prompt": "Đây không phải là tư vấn pháp lý, mà chỉ là một cách đặt vấn đề theo tình hình thảo luận hiện tại.",
+            "answer": "Das ist keine Rechtsberatung, sondern eine akademische Einordnung des derzeitigen Diskussionsstands."
+          }
+        ]
+      }
+    ],
+    "cultural_notes_vi": "WissZeitVG là chủ đề pháp lý - nhân sự nhạy cảm trong giới học thuật Đức. Vì vậy nên nói rất rõ: đây là bối cảnh thảo luận, không phải tư vấn pháp lý. Khi viết về nó, hãy giữ khoảng cách, nêu diễn biến tranh luận, và tránh khẳng định như luật sư.",
+    "tip_advice_vi": "Nếu bạn đang viết về cải cách luật, hãy dùng từ khóa như 'Diskussionsstand', 'Einordnung', 'Planbarkeit', 'befristet' để giữ văn phong học thuật và an toàn.",
+    "register_notes": "Mọi câu về WissZeitVG nên gắn nhãn bối cảnh. Không nên chuyển sang ngôn ngữ khẳng định pháp lý nếu bạn không đang viết một văn bản pháp luật."
+  },
+  {
+    "id": "lpeer_review_antwort",
+    "level": "C1",
+    "category": "fluency",
+    "title_vi": "Phản hồi người phản biện và báo cáo phê bình",
+    "title_en": "Responding to peer review",
+    "sentences": [
+      {
+        "en": "Der Gutachter bemerke, der Theoriebezug sei noch zu implizit, weshalb wir die Überarbeitung sichtbarer machen sollten.",
+        "vi": "Người phản biện nhận xét rằng liên hệ với lý thuyết vẫn còn quá hàm ẩn, vì vậy chúng ta nên làm phần sửa đổi rõ hơn.",
+        "pronunciation_focus": [
+          "Gutachter → GUT-akh-ter",
+          "Theoriebezug → tê-o-RI-bê-tsuk",
+          "implizit → im-pli-TSIET"
+        ]
+      },
+      {
+        "en": "Die Autorin führe aus, dass sie den Einwand dankbar aufnehme und im Manuskript präzisieren werde.",
+        "vi": "Tác giả trình bày rằng cô ấy biết ơn phản biện đó và sẽ làm rõ thêm trong bản thảo.",
+        "pronunciation_focus": [
+          "dankbar aufnehmen → DANK-bar auF-NÊ-mân",
+          "präzisieren → prê-tsi-ZI-rân",
+          "Manuskript → ma-nu-SKRIPT"
+        ]
+      },
+      {
+        "en": "Womöglich ist eine kurze, sachliche Antwort stärker als eine lange Verteidigung.",
+        "vi": "Có lẽ một phản hồi ngắn gọn, khách quan còn mạnh hơn một lời biện hộ dài dòng.",
+        "pronunciation_focus": [
+          "womöglich → vo-MÖK-likh",
+          "sachlich → ZAKH-likh",
+          "Verteidigung → feR-TAI-di-gung"
+        ]
+      },
+      {
+        "en": "In der Erwiderung zählt nicht die Geste der Rechtfertigung, sondern die Klarheit der Revision.",
+        "vi": "Trong phản hồi, điều quan trọng không phải là cử chỉ biện minh mà là độ rõ ràng của phần chỉnh sửa.",
+        "pronunciation_focus": [
+          "Erwiderung → eR-VI-dơ-rung",
+          "Rechtfertigung → RÊKHT-fer-ti-gung",
+          "Revision → rê-vi-ZIÔN"
+        ]
+      }
+    ],
+    "vocabulary": [
+      {
+        "word": "die Erwiderung",
+        "en": "response, rejoinder",
+        "vi": "phản hồi",
+        "pos": "noun (f)",
+        "pronunciation_vi": "eR-VI-dơ-rung"
+      },
+      {
+        "word": "der Einwand",
+        "en": "objection",
+        "vi": "phản biện, ý kiến phản đối",
+        "pos": "noun (m)",
+        "pronunciation_vi": "AIN-vant"
+      },
+      {
+        "word": "präzisieren",
+        "en": "to specify, make precise",
+        "vi": "làm rõ, cụ thể hóa",
+        "pos": "verb",
+        "pronunciation_vi": "prê-tsi-ZI-rân"
+      },
+      {
+        "word": "revidieren",
+        "en": "to revise",
+        "vi": "sửa đổi",
+        "pos": "verb",
+        "pronunciation_vi": "rê-vi-DI-rân"
+      },
+      {
+        "word": "der Theoriebezug",
+        "en": "theoretical link",
+        "vi": "liên hệ lý thuyết",
+        "pos": "noun (m)",
+        "pronunciation_vi": "tê-o-RI-bê-tsuk"
+      }
+    ],
+    "dialogue": [
+      {
+        "speaker": "Reviewer",
+        "text": "Der Gutachter bemerke, der Theoriebezug sei noch zu implizit.",
+        "vi": "Người phản biện nhận xét rằng liên hệ với lý thuyết vẫn còn quá hàm ẩn."
+      },
+      {
+        "speaker": "Autorin",
+        "text": "Ich nehme den Einwand dankbar auf und werde die Passage präzisieren.",
+        "vi": "Tôi ghi nhận ý kiến đó với sự biết ơn và sẽ làm rõ đoạn này."
+      },
+      {
+        "speaker": "Reviewer",
+        "text": "Wichtig ist, dass die Revision sichtbar wird und nicht nur behauptet wird.",
+        "vi": "Điều quan trọng là phần sửa đổi phải nhìn thấy được chứ không chỉ được nói miệng."
+      },
+      {
+        "speaker": "Autorin",
+        "text": "Genau, deshalb formuliere ich die Erwiderung kurz, sachlich und präzise.",
+        "vi": "Đúng vậy, vì thế tôi sẽ viết phản hồi ngắn gọn, khách quan và chính xác."
+      }
+    ],
+    "exercises": [
+      {
+        "type": "fill_blank",
+        "instruction_vi": "Điền từ phù hợp cho phản hồi phản biện:",
+        "pronunciation_focus": [],
+        "items": [
+          {
+            "prompt": "Die ___ sollte die wichtigsten Einwände klar aufnehmen.",
+            "answer": "Erwiderung"
+          },
+          {
+            "prompt": "Bitte die Passage noch etwas ___.",
+            "answer": "präzisieren"
+          },
+          {
+            "prompt": "Ein gutachterlicher Einwand ist nicht das Ende, sondern der Beginn der ___.",
+            "answer": "Revision"
+          }
+        ]
+      },
+      {
+        "type": "translation",
+        "instruction_vi": "Dịch sang tiếng Đức formal C1:",
+        "pronunciation_focus": ["peer review response"],
+        "items": [
+          {
+            "prompt": "Tác giả trình bày rằng cô ấy biết ơn phản biện đó và sẽ làm rõ thêm trong bản thảo.",
+            "answer": "Die Autorin führe aus, dass sie den Einwand dankbar aufnehme und im Manuskript präzisieren werde."
+          },
+          {
+            "prompt": "Có lẽ một phản hồi ngắn gọn, khách quan còn mạnh hơn một lời biện hộ dài dòng.",
+            "answer": "Womöglich ist eine kurze, sachliche Antwort stärker als eine lange Verteidigung."
+          }
+        ]
+      }
+    ],
+    "cultural_notes_vi": "Phản hồi phản biện trong tiếng Đức thường đề cao tính rõ ràng, khiêm tốn và sửa chữa có thể kiểm chứng. Đừng biến reply thành một cuộc tranh cãi cảm xúc. Người đọc muốn thấy bạn hiểu góp ý và đã hành động theo góp ý đó.",
+    "tip_advice_vi": "Dùng cấu trúc: nhận góp ý, xác nhận điểm sửa, rồi nêu chính xác nơi đã chỉnh trong bản thảo. Ngắn và có kiểm chứng là tốt nhất.",
+    "register_notes": "Trong reviewer response, hãy nói như người chỉnh bản thảo chuyên nghiệp, không phải như người đang tự bào chữa."
+  },
+  {
+    "id": "lbegriffsschaerfe_anschlussfaehigkeit",
+    "level": "C1",
+    "category": "fluency",
+    "title_vi": "Độ sắc của khái niệm và khả năng nối kết",
+    "title_en": "Conceptual precision and intellectual connectivity",
+    "sentences": [
+      {
+        "en": "Ein starker Beitrag zeichnet sich nicht nur durch Originalität aus, sondern auch durch begriffliche Schärfe und Anschlussfähigkeit.",
+        "vi": "Một đóng góp mạnh không chỉ nổi bật nhờ tính nguyên gốc mà còn nhờ độ sắc của khái niệm và khả năng nối kết.",
+        "pronunciation_focus": [
+          "begriffliche Schärfe → bê-GRIF-likhê SHER-fê",
+          "Anschlussfähigkeit → AN-shlus-fêk-kait",
+          "Originalität → o-ri-gi-na-li-TÊT"
+        ]
+      },
+      {
+        "en": "Womöglich muss man den theoretischen Rahmen erst so zuschneiden, dass er überhaupt anschlussfähig wird.",
+        "vi": "Có lẽ phải cắt chỉnh khung lý thuyết trước sao cho nó thật sự có khả năng nối kết.",
+        "pronunciation_focus": [
+          "zuschneiden → TSU-shnai-dân",
+          "theoretischen Rahmen → tê-o-RÊ-ti-shên RA-mân",
+          "anschlussfähig → AN-shlus-fêk"
+        ]
+      },
+      {
+        "en": "Gegebenenfalls ist nicht mehr Material nötig, sondern eine präzisere Fragestellung.",
+        "vi": "Trong trường hợp cần thiết, điều cần không phải là thêm chất liệu mà là một câu hỏi nghiên cứu chính xác hơn.",
+        "pronunciation_focus": [
+          "gegebenenfalls → gê-GÊ-bênên-fals",
+          "Fragestellung → FRA-gê-shtel-lung",
+          "präziser → prê-TSI-zơ"
+        ]
+      },
+      {
+        "en": "In der Geisteswissenschaft entscheidet oft die Formulierung darüber, ob ein Gedanke tragfähig wird.",
+        "vi": "Trong khoa học nhân văn, cách diễn đạt thường quyết định xem một ý tưởng có đủ sức nặng hay không.",
+        "pronunciation_focus": [
+          "Geisteswissenschaft → GAI-stes-vis-sen-shaft",
+          "Formulierung → for-mu-LI-rung",
+          "tragfähig → TRAK-fêk"
+        ]
+      }
+    ],
+    "vocabulary": [
+      {
+        "word": "begrifflich",
+        "en": "conceptual",
+        "vi": "thuộc khái niệm",
+        "pos": "adjective",
+        "pronunciation_vi": "bê-GRIF-likh"
+      },
+      {
+        "word": "Schärfe",
+        "en": "sharpness, precision",
+        "vi": "độ sắc, độ chính xác",
+        "pos": "noun (f)",
+        "pronunciation_vi": "SHER-fê"
+      },
+      {
+        "word": "anschlussfähig",
+        "en": "connectable, linkable",
+        "vi": "có khả năng nối kết",
+        "pos": "adjective",
+        "pronunciation_vi": "AN-shlus-fêk"
+      },
+      {
+        "word": "tragfähig",
+        "en": "robust, substantial",
+        "vi": "có sức nặng, có khả năng đứng vững",
+        "pos": "adjective",
+        "pronunciation_vi": "TRAK-fêk"
+      },
+      {
+        "word": "die Fragestellung",
+        "en": "research question",
+        "vi": "câu hỏi nghiên cứu",
+        "pos": "noun (f)",
+        "pronunciation_vi": "FRA-gê-shtel-lung"
+      }
+    ],
+    "dialogue": [
+      {
+        "speaker": "Professor",
+        "text": "Ein Beitrag überzeugt mich erst, wenn er begrifflich scharf und anschlussfähig formuliert ist.",
+        "vi": "Một bài viết chỉ thuyết phục tôi khi nó được diễn đạt vừa sắc về khái niệm vừa có khả năng nối kết."
+      },
+      {
+        "speaker": "Doktorandin",
+        "text": "Dann sollte ich die Fragestellung wohl noch stärker zuschneiden.",
+        "vi": "Vậy có lẽ em nên chỉnh lại câu hỏi nghiên cứu chặt hơn."
+      },
+      {
+        "speaker": "Professor",
+        "text": "Genau, gegebenenfalls weniger Material, aber mehr analytische Präzision.",
+        "vi": "Đúng vậy, nếu cần thì ít chất liệu hơn nhưng phân tích chính xác hơn."
+      },
+      {
+        "speaker": "Doktorandin",
+        "text": "Das hilft, damit der Gedanke tragfähig und weiterverwendbar wird.",
+        "vi": "Điều đó sẽ giúp ý tưởng đủ vững và có thể tiếp tục được sử dụng."
+      }
+    ],
+    "exercises": [
+      {
+        "type": "fill_blank",
+        "instruction_vi": "Điền cụm khái niệm phù hợp:",
+        "pronunciation_focus": [],
+        "items": [
+          {
+            "prompt": "Ein Beitrag braucht ___ und Anschlussfähigkeit.",
+            "answer": "begriffliche Schärfe"
+          },
+          {
+            "prompt": "___ sollte man die Fragestellung enger fassen.",
+            "answer": "Gegebenenfalls"
+          },
+          {
+            "prompt": "Ein Gedanke wird erst durch gute Formulierung ___.",
+            "answer": "tragfähig"
+          }
+        ]
+      },
+      {
+        "type": "translation",
+        "instruction_vi": "Dịch sang tiếng Đức formal C1:",
+        "pronunciation_focus": ["conceptual precision"],
+        "items": [
+          {
+            "prompt": "Một đóng góp mạnh không chỉ nổi bật nhờ tính nguyên gốc mà còn nhờ độ sắc của khái niệm.",
+            "answer": "Ein starker Beitrag zeichnet sich nicht nur durch Originalität aus, sondern auch durch begriffliche Schärfe."
+          },
+          {
+            "prompt": "Có lẽ phải cắt chỉnh khung lý thuyết trước sao cho nó thật sự có khả năng nối kết.",
+            "answer": "Womöglich muss man den theoretischen Rahmen erst so zuschneiden, dass er überhaupt anschlussfähig wird."
+          }
+        ]
+      }
+    ],
+    "cultural_notes_vi": "Trong văn viết học thuật Đức, người ta rất coi trọng Begriffsschärfe và Anschlussfähigkeit. Ý tưởng không chỉ cần mới mà còn phải nối được vào cuộc tranh luận đang có. Đây là thước đo thực dụng của sự thuyết phục.",
+    "tip_advice_vi": "Nếu muốn viết mạnh ở C1, hãy luôn hỏi: khái niệm này có sắc chưa, và nó nối được vào ai, vào tranh luận nào?",
+    "register_notes": "Các từ như 'tragfähig', 'anschlussfähig', 'begrifflich' nghe rất học thuật. Chúng phù hợp khi bạn muốn viết với tầm vóc, không phải khi nói chuyện thân mật."
   }
 ];
 
