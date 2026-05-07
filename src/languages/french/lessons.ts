@@ -35,6 +35,7 @@ export type FrenchCategoryId =
   | "society"
   | "expressions"
   | "advanced_grammar"
+  | "public_communication"
   | "fluency";
 
 export type FrenchCategoryMeta = {
@@ -70,6 +71,7 @@ export const FRENCH_CATEGORIES: ReadonlyArray<FrenchCategoryMeta> = [
   { id: "society", title_vi: "Xã hội", title_en: "Society", expected_count: 5 },
   { id: "expressions", title_vi: "Biểu đạt", title_en: "Expressions", expected_count: 5 },
   { id: "advanced_grammar", title_vi: "Ngữ pháp nâng cao", title_en: "Advanced grammar", expected_count: 5 },
+  { id: "public_communication", title_vi: "Truyền thông công chúng", title_en: "Public communication", expected_count: 10 },
   { id: "fluency", title_vi: "Lưu loát", title_en: "Fluency", expected_count: 5 },
 ];
 
@@ -180,4 +182,4 @@ export function getLessonById(id: number | string): FrenchLesson | undefined {
 // Total lesson count across every level. Kept manually in sync with the
 // per-level files; updated by scripts/install-lessons-registry.mjs at
 // generation time.
-export const FRENCH_TOTAL_LESSONS = 121;
+export const FRENCH_TOTAL_LESSONS = 141;

@@ -63,6 +63,7 @@ export type ChineseCategoryId =
   | "fluency"
   | "academic_discourse"
   | "professional_negotiation"
+  | "public_communication"
   | "literary_criticism";
 
 export type ChineseCategoryMeta = {
@@ -80,6 +81,7 @@ export const CHINESE_CATEGORIES: ReadonlyArray<ChineseCategoryMeta> = [
   { id: "fluency", title_vi: "Lưu loát", title_en: "Fluency", expected_count: 5 },
   { id: "academic_discourse", title_vi: "Diễn ngôn học thuật", title_en: "Academic Discourse", expected_count: 10 },
   { id: "professional_negotiation", title_vi: "Đàm phán chuyên nghiệp", title_en: "Professional Negotiation", expected_count: 10 },
+  { id: "public_communication", title_vi: "Truyền thông công chúng", title_en: "Public Communication", expected_count: 10 },
   { id: "literary_criticism", title_vi: "Phê bình văn học", title_en: "Literary Criticism", expected_count: 10 },
 ];
 
@@ -185,4 +187,4 @@ export function getLessonById(id: number | string): ChineseLesson | undefined {
 // Total lesson count across every level. Kept manually in sync with the
 // per-level files; updated by scripts/install-lessons-registry.mjs at
 // generation time.
-export const CHINESE_TOTAL_LESSONS = 129;
+export const CHINESE_TOTAL_LESSONS = 139;

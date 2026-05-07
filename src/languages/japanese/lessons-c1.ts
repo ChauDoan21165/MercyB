@@ -3519,6 +3519,264 @@ export const lessons: JapaneseLesson[] = [
       { "type": "fill-blank", "question": "領域横断的な議論では、用語の___可能性そのものが一つの論点となります。", "answer": "翻訳" },
       { "type": "translation", "vietnamese": "Khi kết nối tri thức từ các lĩnh vực khác nhau, cần xem xét cẩn thận khả năng di chuyển của khái niệm.", "japanese": "異なる領域の知見を接続する際には、概念の移植可能性を慎重に見極める必要があります。" }
     ]
+  },
+  {
+    "id": 122,
+    "title": "Public communication — opening a press conference",
+    "title_vi": "Truyền thông công chúng — Mở đầu họp báo",
+    "title_en": "Public communication — opening a press conference",
+    "category": "public-communication",
+    "level": "C1",
+    "vocabulary": [
+      { "japanese": "記者会見 (きしゃかいけん)", "english": "press conference" },
+      { "japanese": "冒頭発言 (ぼうとうはつげん)", "english": "opening statement" },
+      { "japanese": "事実関係 (じじつかんけい)", "english": "factual circumstances" },
+      { "japanese": "質疑応答 (しつぎおうとう)", "english": "Q&A" }
+    ],
+    "examples": [
+      { "japanese": "本日はお忙しいところお集まりいただき、誠にありがとうございます。まず、現時点で確認できている事実関係をご説明いたします。", "english": "Thank you very much for gathering here despite your busy schedules. First, I will explain the facts that can be confirmed at this point.", "pronunciation_focus": ["丁寧語 opening", "お集まりいただき", "現時点で"] },
+      { "japanese": "未確認の情報については推測で申し上げることを控え、確認が取れ次第、速やかに共有いたします。", "english": "Regarding unconfirmed information, we will refrain from speaking speculatively and will share it promptly once confirmed.", "pronunciation_focus": ["控え", "確認が取れ次第", "共有いたします"] }
+    ],
+    "dialogue": [
+      { "speaker": "広報責任者", "japanese": "冒頭で三点だけ申し上げ、その後、質疑応答に入らせていただきます。", "english": "I will make three points at the beginning, then we will move into Q&A." },
+      { "speaker": "記者", "japanese": "本日の会見では、原因についても説明されますか。", "english": "Will today's press conference also explain the cause?" }
+    ],
+    "roleplay_prompts": [
+      "Open a Japanese press conference in 丁寧語: gratitude, confirmed facts, Q&A structure.",
+      "Decline speculation without sounding evasive: 未確認の情報については..."
+    ],
+    "register_notes": "Japanese press-conference openings are procedural and restrained. 丁寧語 is the base register; excessive emotion before facts are established can sound performative.",
+    "cultural_notes_vi": "Mở họp báo tiếng Nhật cần trật tự: cảm ơn, phạm vi thông tin đã xác nhận, thời điểm Q&A. Không mở bằng khẩu hiệu.",
+    "tip_advice_vi": "Công thức: 本日は...ありがとうございます → まず...ご説明いたします → その後、質疑応答."
+  },
+  {
+    "id": 123,
+    "title": "Public communication — writing a press release",
+    "title_vi": "Truyền thông công chúng — Viết thông cáo báo chí",
+    "title_en": "Public communication — writing a press release",
+    "category": "public-communication",
+    "level": "C1",
+    "vocabulary": [
+      { "japanese": "プレスリリース", "english": "press release" },
+      { "japanese": "発表資料 (はっぴょうしりょう)", "english": "announcement material" },
+      { "japanese": "引用コメント (いんようコメント)", "english": "quoted comment" },
+      { "japanese": "過度な表現 (かどなひょうげん)", "english": "excessive wording" }
+    ],
+    "examples": [
+      { "japanese": "プレスリリースの第一段落では、誰が、いつ、何を発表したのかを簡潔に示す必要があります。", "english": "The first paragraph of a press release needs to state concisely who announced what, and when.", "pronunciation_focus": ["誰が、いつ、何を", "簡潔に示す", "press rhythm"] },
+      { "japanese": "『画期的』や『業界初』といった表現は、根拠が示せる場合に限って用いるべきです。", "english": "Expressions like 'groundbreaking' or 'industry-first' should be used only when evidence can be shown.", "pronunciation_focus": ["画期的", "業界初", "根拠が示せる場合"] }
+    ],
+    "dialogue": [
+      { "speaker": "編集者", "japanese": "見出しは少し強すぎますね。根拠を本文で示せる表現にしましょう。", "english": "The headline is a bit too strong. Let us use wording that can be supported in the body." },
+      { "speaker": "広報担当", "japanese": "承知しました。第一段落を事実中心に直し、コメントは第二段落に移します。", "english": "Understood. I will revise the first paragraph around facts and move the comment to the second paragraph." }
+    ],
+    "register_notes": "Japanese press releases prefer clean fact order over promotional intensity. If using strong claims, attach measurable evidence.",
+    "cultural_notes_vi": "Thông cáo báo chí tiếng Nhật không nên giống quảng cáo. Từ mạnh phải có căn cứ.",
+    "tip_advice_vi": "Lead bằng 5W1H, sau đó mới quote của lãnh đạo."
+  },
+  {
+    "id": 124,
+    "title": "Public communication — writing an op-ed for major Japanese papers",
+    "title_vi": "Truyền thông công chúng — Viết op-ed cho báo Nhật lớn",
+    "title_en": "Public communication — writing an op-ed for major Japanese papers",
+    "category": "public-communication",
+    "level": "C1",
+    "vocabulary": [
+      { "japanese": "寄稿 (きこう)", "english": "contributed article" },
+      { "japanese": "論点 (ろんてん)", "english": "point at issue" },
+      { "japanese": "社説的文体 (しゃせつてきぶんたい)", "english": "editorial style" },
+      { "japanese": "読者層 (どくしゃそう)", "english": "readership" }
+    ],
+    "examples": [
+      { "japanese": "朝日新聞や日本経済新聞への寄稿では、個人的な経験を公共的な論点へ接続する構成が求められます。", "english": "For contributed articles to papers such as Asahi Shimbun or Nikkei, a structure that connects personal experience to a public issue is required.", "pronunciation_focus": ["寄稿", "公共的な論点", "接続する"] },
+      { "japanese": "ただし、主張を急ぎすぎると説得力を失うため、反対意見が生じる余地も先に示しておきます。", "english": "However, if the claim is rushed, persuasiveness is lost, so room for opposing views should also be shown first.", "pronunciation_focus": ["ただし", "説得力", "反対意見"] }
+    ],
+    "dialogue": [
+      { "speaker": "編集委員", "japanese": "この原稿は視点が面白いですが、読者がなぜ今読むべきかがまだ弱いです。", "english": "This draft has an interesting perspective, but it is still weak on why readers should read it now." },
+      { "speaker": "筆者", "japanese": "なるほど。冒頭で社会的な背景を示し、その後に自分の経験を置きます。", "english": "I see. I will show the social background at the beginning, then place my own experience after that." }
+    ],
+    "register_notes": "Japanese op-ed style is measured: state a public issue, show awareness of counterarguments, then offer a clear but not theatrical position.",
+    "cultural_notes_vi": "Op-ed Nhật hay có giọng cân bằng, tránh tuyên bố quá nhanh. Truyền thống 寄稿 coi trọng trách nhiệm với độc giả.",
+    "tip_advice_vi": "Mở bài bằng vấn đề công: なぜ今この論点なのか."
+  },
+  {
+    "id": 125,
+    "title": "Public communication — podcast and talk show appearance",
+    "title_vi": "Truyền thông công chúng — Xuất hiện trên podcast / talk show",
+    "title_en": "Public communication — podcast and talk show appearance",
+    "category": "public-communication",
+    "level": "C1",
+    "vocabulary": [
+      { "japanese": "ポッドキャスト", "english": "podcast" },
+      { "japanese": "聞き手 (ききて)", "english": "interviewer / listener" },
+      { "japanese": "補足する (ほそくする)", "english": "to add context" },
+      { "japanese": "言い換える (いいかえる)", "english": "to rephrase" }
+    ],
+    "examples": [
+      { "japanese": "ポッドキャストでは、記者会見より柔らかく話して構いませんが、事実確認の線は崩さないことが大切です。", "english": "On a podcast, it is fine to speak more softly than in a press conference, but it is important not to loosen the boundary around verified facts.", "pronunciation_focus": ["柔らかく話して", "構いません", "線は崩さない"] },
+      { "japanese": "なるほど、ただ、その点については少し補足させてください。", "english": "I see. However, please let me add a little context on that point.", "pronunciation_focus": ["なるほど、ただ", "補足させてください", "soft disagreement"] }
+    ],
+    "dialogue": [
+      { "speaker": "司会", "japanese": "社内では、かなり早い段階で問題を把握していたのでしょうか。", "english": "Did the company understand the issue internally at a fairly early stage?" },
+      { "speaker": "ゲスト", "japanese": "なるほど、ただ、その表現だと少し広く聞こえるかもしれません。確認できたのは先週の技術レビュー後です。", "english": "I see, though that wording may sound a little broad. What we could confirm was after last week's technical review." }
+    ],
+    "register_notes": "Podcast register can be less formal but should remain 丁寧. Use なるほど、ただ... to disagree without sounding combative.",
+    "cultural_notes_vi": "Podcast tiếng Nhật không quá cứng, nhưng khách mời đại diện tổ chức vẫn phải giữ 丁寧語 và ranh giới sự thật.",
+    "tip_advice_vi": "Soft correction pattern: なるほど、ただ、その表現だと..."
+  },
+  {
+    "id": 126,
+    "title": "Public communication — live TV news interview",
+    "title_vi": "Truyền thông công chúng — Phỏng vấn truyền hình trực tiếp",
+    "title_en": "Public communication — live TV news interview",
+    "category": "public-communication",
+    "level": "C1",
+    "vocabulary": [
+      { "japanese": "生放送 (なまほうそう)", "english": "live broadcast" },
+      { "japanese": "キャスター", "english": "news anchor" },
+      { "japanese": "即答する (そくとうする)", "english": "to answer immediately" },
+      { "japanese": "確認済み (かくにんずみ)", "english": "confirmed / verified" }
+    ],
+    "examples": [
+      { "japanese": "生放送では、長い説明よりも、確認済みの事実を短く区切って答えるほうが伝わります。", "english": "On live television, confirmed facts delivered in short units come across better than long explanations.", "pronunciation_focus": ["生放送", "短く区切って", "伝わります"] },
+      { "japanese": "ご指摘の通り重要な点ですが、現時点では確認済みの情報に限ってお答えします。", "english": "As you point out, that is an important point, but at this stage I will answer only with confirmed information.", "pronunciation_focus": ["ご指摘の通り", "現時点では", "限って"] }
+    ],
+    "dialogue": [
+      { "speaker": "キャスター", "japanese": "再発防止を今この場で約束できますか。", "english": "Can you promise prevention of recurrence here and now?" },
+      { "speaker": "広報責任者", "japanese": "空約束は避けたいと思います。確認済みの対応として、本日中に一次報告を公表いたします。", "english": "I would like to avoid an empty promise. As a confirmed response, we will publish an initial report today." }
+    ],
+    "register_notes": "Live TV Japanese needs compact, quotable 丁寧語. Do not fight the anchor; acknowledge, narrow, answer.",
+    "cultural_notes_vi": "Trên TV trực tiếp, câu Nhật phải ngắn hơn văn họp báo. Dùng ご指摘の通りですが... để giữ phép lịch sự khi thu hẹp câu hỏi.",
+    "tip_advice_vi": "Three-beat answer: acknowledge → confirmed fact → next action."
+  },
+  {
+    "id": 127,
+    "title": "Public communication — institutional apology press conference",
+    "title_vi": "Truyền thông công chúng — Họp báo xin lỗi của tổ chức",
+    "title_en": "Public communication — institutional apology press conference",
+    "category": "public-communication",
+    "level": "C1",
+    "vocabulary": [
+      { "japanese": "お詫び申し上げます (おわびもうしあげます)", "english": "we sincerely apologize" },
+      { "japanese": "再発防止策 (さいはつぼうしさく)", "english": "measures to prevent recurrence" },
+      { "japanese": "責任の所在 (せきにんのしょざい)", "english": "where responsibility lies" },
+      { "japanese": "深く受け止める (ふかくうけとめる)", "english": "to take seriously" }
+    ],
+    "examples": [
+      { "japanese": "このたびは、多大なるご迷惑とご不安をおかけしましたことを、心よりお詫び申し上げます。", "english": "We sincerely apologize for causing significant inconvenience and anxiety.", "pronunciation_focus": ["謙譲語", "おかけしましたこと", "お詫び申し上げます"] },
+      { "japanese": "謝罪の後には、責任の所在、補償方針、再発防止策を順に説明する必要があります。", "english": "After the apology, it is necessary to explain where responsibility lies, the compensation policy, and recurrence-prevention measures in order.", "pronunciation_focus": ["責任の所在", "補償方針", "再発防止策"] }
+    ],
+    "dialogue": [
+      { "speaker": "代表取締役", "japanese": "本日は、まず私からお詫びを申し上げます。原因説明はその後、担当役員より行います。", "english": "Today, I will first offer our apology. The explanation of causes will then be given by the responsible executive." },
+      { "speaker": "記者", "japanese": "謝罪だけではなく、補償についても本日説明されますか。", "english": "Will compensation also be explained today, not only the apology?" }
+    ],
+    "roleplay_prompts": [
+      "Deliver a Japanese institutional apology using 謙譲語.",
+      "After apology, move to responsibility, remedy, and recurrence prevention."
+    ],
+    "register_notes": "Japanese institutional apology press conferences form a distinct genre: deep apology, bowing register in language, then concrete accountability. 謙譲語 is expected, but vague remorse without action sounds hollow.",
+    "cultural_notes_vi": "Bài xin lỗi tổ chức kiểu Nhật không chỉ là 'xin lỗi'. Nó phải có cấu trúc: お詫び → 責任 → 補償/対応 → 再発防止策.",
+    "tip_advice_vi": "Use お詫び申し上げます for apology, but immediately follow with what will change."
+  },
+  {
+    "id": 128,
+    "title": "Public communication — background briefing off the record",
+    "title_vi": "Truyền thông công chúng — Briefing bối cảnh không công khai",
+    "title_en": "Public communication — background briefing off the record",
+    "category": "public-communication",
+    "level": "C1",
+    "vocabulary": [
+      { "japanese": "背景説明 (はいけいせつめい)", "english": "background explanation" },
+      { "japanese": "オフレコ", "english": "off the record" },
+      { "japanese": "引用不可 (いんようふか)", "english": "not for quotation" },
+      { "japanese": "取材メモ (しゅざいメモ)", "english": "reporting notes" }
+    ],
+    "examples": [
+      { "japanese": "ここから先は背景説明であり、直接の引用はお控えいただけますでしょうか。", "english": "From this point onward, this is background explanation; could you please refrain from direct quotation?", "pronunciation_focus": ["背景説明", "お控えいただけますでしょうか", "direct rule"] },
+      { "japanese": "オフレコの範囲を曖昧にしたまま話すと、後で信頼関係を損なうことがあります。", "english": "If you speak while leaving the scope of off-the-record unclear, trust may be damaged later.", "pronunciation_focus": ["範囲を曖昧に", "信頼関係", "損なう"] }
+    ],
+    "dialogue": [
+      { "speaker": "広報担当", "japanese": "この数字は背景理解のためで、紙面での直接引用は避けてください。", "english": "This figure is for background understanding, so please avoid direct quotation in print." },
+      { "speaker": "記者", "japanese": "承知しました。『関係者によると』という形でも不可でしょうか。", "english": "Understood. Would it also be unacceptable in the form 'according to a person involved'?" }
+    ],
+    "register_notes": "Japanese media relations require explicit attribution rules. Say what is on record, background, or off record before the sensitive information.",
+    "cultural_notes_vi": "Đừng mặc định mọi người hiểu オフレコ giống nhau. Nói rõ 引用可/引用不可 trước.",
+    "tip_advice_vi": "Ground rules first: ここまでは引用可, ここからは背景説明."
+  },
+  {
+    "id": 129,
+    "title": "Public communication — hostile journalist Q&A",
+    "title_vi": "Truyền thông công chúng — Q&A với phóng viên gay gắt",
+    "title_en": "Public communication — hostile journalist Q&A",
+    "category": "public-communication",
+    "level": "C1",
+    "vocabulary": [
+      { "japanese": "厳しいご質問 (きびしいごしつもん)", "english": "tough question" },
+      { "japanese": "前提 (ぜんてい)", "english": "premise" },
+      { "japanese": "受け止める (うけとめる)", "english": "to receive / take seriously" },
+      { "japanese": "事実と異なる (じじつとことなる)", "english": "differs from the facts" }
+    ],
+    "examples": [
+      { "japanese": "ご指摘の通り、厳しいご批判があることは重く受け止めております。", "english": "As you point out, we take seriously the fact that there is strong criticism.", "pronunciation_focus": ["ご指摘の通り", "重く受け止めております", "deferential acknowledgment"] },
+      { "japanese": "ただ、その前提の一部は事実と異なりますので、確認できている範囲で整理してお答えします。", "english": "However, part of that premise differs from the facts, so I will organize and answer within what can be confirmed.", "pronunciation_focus": ["ただ", "前提の一部", "整理してお答えします"] }
+    ],
+    "dialogue": [
+      { "speaker": "記者", "japanese": "世論が批判しなければ、御社は隠し続けたのではありませんか。", "english": "If public opinion had not criticized you, wouldn't your company have continued hiding this?" },
+      { "speaker": "広報責任者", "japanese": "ご指摘の通り、不信感が生じていることは重く受け止めます。ただ、『隠し続けた』という前提は事実と異なります。", "english": "As you point out, we take seriously that distrust has arisen. However, the premise that we 'continued hiding it' differs from the facts." }
+    ],
+    "register_notes": "For hostile Q&A, Japanese indirect disagreement protects face while correcting the frame. Use ご指摘の通りですが... / ただ... rather than direct confrontation.",
+    "cultural_notes_vi": "Khi phóng viên gay gắt, đừng nói thẳng '違います' đầu câu. Acknowledge trước, sau đó chỉnh tiền đề.",
+    "tip_advice_vi": "Pattern: ご指摘の通り...重く受け止めます。ただ、その前提は..."
+  },
+  {
+    "id": 130,
+    "title": "Public communication — spokesperson weekly press briefing",
+    "title_vi": "Truyền thông công chúng — Người phát ngôn briefing hằng tuần",
+    "title_en": "Public communication — spokesperson weekly press briefing",
+    "category": "public-communication",
+    "level": "C1",
+    "vocabulary": [
+      { "japanese": "報道官 (ほうどうかん)", "english": "spokesperson" },
+      { "japanese": "定例会見 (ていれいかいけん)", "english": "regular press briefing" },
+      { "japanese": "更新事項 (こうしんじこう)", "english": "updates" },
+      { "japanese": "現時点ではコメントを控える", "english": "to refrain from comment at this stage" }
+    ],
+    "examples": [
+      { "japanese": "本日の定例会見では、三件の更新事項をご報告し、その後ご質問をお受けします。", "english": "At today's regular briefing, I will report three updates and then take your questions.", "pronunciation_focus": ["定例会見", "更新事項", "ご質問をお受けします"] },
+      { "japanese": "その件につきましては、関係者への確認が続いておりますので、現時点ではコメントを控えます。", "english": "Regarding that matter, confirmation with relevant parties is still ongoing, so we will refrain from comment at this stage.", "pronunciation_focus": ["その件につきましては", "確認が続いております", "コメントを控えます"] }
+    ],
+    "dialogue": [
+      { "speaker": "報道官", "japanese": "まず、今週の更新事項を三点ご説明します。未確定の案件については、確認後に書面でお知らせします。", "english": "First, I will explain three updates this week. For unconfirmed matters, we will notify you in writing after confirmation." },
+      { "speaker": "記者", "japanese": "未確定というのは、発表が遅れているという意味ですか。", "english": "Does 'unconfirmed' mean that the announcement is delayed?" }
+    ],
+    "register_notes": "A Japanese spokesperson must be predictable. Weekly briefings use stable wording: updates, pending confirmations, written follow-up.",
+    "cultural_notes_vi": "報道官 không phải trả lời hết mọi thứ. Điều quan trọng là giữ nhịp cập nhật rõ ràng và nhất quán.",
+    "tip_advice_vi": "Useful phrase: 確認後に書面でお知らせします."
+  },
+  {
+    "id": 131,
+    "title": "Public communication — official statement on social media",
+    "title_vi": "Truyền thông công chúng — Tuyên bố chính thức trên mạng xã hội",
+    "title_en": "Public communication — official statement on social media",
+    "category": "public-communication",
+    "level": "C1",
+    "vocabulary": [
+      { "japanese": "公式アカウント", "english": "official account" },
+      { "japanese": "固定投稿 (こていとうこう)", "english": "pinned post" },
+      { "japanese": "スクリーンショット", "english": "screenshot" },
+      { "japanese": "続報 (ぞくほう)", "english": "follow-up report" }
+    ],
+    "examples": [
+      { "japanese": "公式アカウントでの声明は短くても、謝罪、対応、続報の場所を明確に示す必要があります。", "english": "Even if a statement on an official account is short, it must clearly state the apology, response, and where follow-up updates will appear.", "pronunciation_focus": ["公式アカウント", "続報", "明確に示す"] },
+      { "japanese": "感情的な返信を重ねるより、固定投稿で確認済みの情報を整理するほうが安全です。", "english": "Rather than stacking emotional replies, it is safer to organize confirmed information in a pinned post.", "pronunciation_focus": ["感情的な返信", "固定投稿", "確認済みの情報"] }
+    ],
+    "dialogue": [
+      { "speaker": "SNS担当", "japanese": "この文面は少し軽く見えます。公式声明としては、謝罪と対応を先に出しましょう。", "english": "This wording looks a little too casual. As an official statement, let us put the apology and response first." },
+      { "speaker": "広報責任者", "japanese": "はい。固定投稿にして、続報は同じスレッドで更新します。", "english": "Yes. We will pin it and update follow-up information in the same thread." }
+    ],
+    "register_notes": "Official Japanese social statements should not sound like customer-service chat. Keep it short, formal enough, and screenshot-safe.",
+    "cultural_notes_vi": "SNS tiếng Nhật có thể ngắn, nhưng tuyên bố chính thức vẫn phải giữ phẩm chất tổ chức.",
+    "tip_advice_vi": "Three-line SNS formula: お詫び → 現在の対応 → 続報の場所."
   }
 ];
 

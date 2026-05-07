@@ -8399,6 +8399,306 @@ export const lessons: FrenchLesson[] = [
         "french": "Je revendique le droit à l'hétérodoxie comme condition de la vitalité scientifique, sans quoi un champ se transforme en doctrine."
       }
     ]
+  },
+  {
+    "id": "lpress_conference_opening",
+    "category": "public_communication",
+    "level": "C1",
+    "title_vi": "Mở đầu một buổi họp báo",
+    "title_en": "Opening a press conference",
+    "sentences": [
+      {
+        "en": "Mesdames et Messieurs, merci d'être présents. Je commencerai par les faits établis, puis je répondrai à vos questions.",
+        "vi": "Thưa quý vị, cảm ơn vì đã có mặt. Tôi sẽ bắt đầu bằng các sự kiện đã xác lập, rồi trả lời câu hỏi của quý vị.",
+        "pronunciation_focus": ["faits établis", "je commencerai", "questions"]
+      },
+      {
+        "en": "Ce qui n'est pas encore vérifié ne sera pas présenté comme une certitude.",
+        "vi": "Điều chưa được xác minh sẽ không được trình bày như một điều chắc chắn.",
+        "pronunciation_focus": ["vérifié", "certitude", "ne sera pas"]
+      }
+    ],
+    "vocabulary": [
+      { "word": "les faits établis", "en": "established facts", "vi": "sự kiện đã xác lập", "pos": "noun phrase", "pronunciation_vi": "lê fe za-ta-bli" },
+      { "word": "une conférence de presse", "en": "press conference", "vi": "họp báo", "pos": "noun", "pronunciation_vi": "kon-fê-rongs đơ press" }
+    ],
+    "dialogue": [
+      { "speaker": "Porte-parole", "text": "Je ferai d'abord une déclaration liminaire de quatre minutes, puis nous ouvrirons les questions.", "vi": "Tôi sẽ phát biểu mở đầu bốn phút, rồi chúng ta mở phần câu hỏi." },
+      { "speaker": "Journaliste", "text": "La direction répondra-t-elle aussi aux questions techniques ?", "vi": "Ban lãnh đạo cũng sẽ trả lời các câu hỏi kỹ thuật chứ?" }
+    ],
+    "cultural_notes_vi": "Mở họp báo kiểu Pháp cần rõ và thẳng: faits établis trước, questions sau. Lịch sự nhưng không vòng vo.",
+    "tip_advice_vi": "Cấu trúc: merci d'être présents → faits établis → périmètre → questions.",
+    "register_notes": "French press-conference opening favors clarity and controlled directness. Avoid sentimental openings; state the scope of verified facts."
+  },
+  {
+    "id": "lpress_release_writing",
+    "category": "public_communication",
+    "level": "C1",
+    "title_vi": "Viết thông cáo báo chí",
+    "title_en": "Writing a press release",
+    "sentences": [
+      {
+        "en": "Un communiqué de presse commence par l'information vérifiable: qui fait quoi, quand, où et pourquoi cela compte.",
+        "vi": "Một thông cáo báo chí bắt đầu bằng thông tin có thể xác minh: ai làm gì, khi nào, ở đâu và vì sao điều đó quan trọng.",
+        "pronunciation_focus": ["communiqué de presse", "vérifiable", "pourquoi cela compte"]
+      },
+      {
+        "en": "Les adjectifs promotionnels affaiblissent le texte s'ils ne sont pas soutenus par des chiffres ou une citation précise.",
+        "vi": "Các tính từ quảng bá làm yếu văn bản nếu không được chống đỡ bằng số liệu hoặc trích dẫn cụ thể.",
+        "pronunciation_focus": ["adjectifs promotionnels", "soutenus", "citation précise"]
+      }
+    ],
+    "vocabulary": [
+      { "word": "un communiqué", "en": "press release", "vi": "thông cáo", "pos": "noun", "pronunciation_vi": "ko-muy-ni-kê" },
+      { "word": "une citation", "en": "quote", "vi": "trích dẫn", "pos": "noun", "pronunciation_vi": "si-ta-sion" }
+    ],
+    "dialogue": [
+      { "speaker": "Rédactrice", "text": "Le titre promet trop. Donnons plutôt l'information concrète dès la première ligne.", "vi": "Tiêu đề hứa quá nhiều. Hãy đưa thông tin cụ thể ngay dòng đầu." },
+      { "speaker": "Responsable communication", "text": "D'accord, je retire « révolutionnaire » et j'ajoute le chiffre d'usage réel.", "vi": "Đồng ý, tôi bỏ từ 'mang tính cách mạng' và thêm số liệu sử dụng thực tế." }
+    ],
+    "cultural_notes_vi": "Thông cáo Pháp mạnh khi chính xác. Từ hoa mỹ dễ bị nhà báo bỏ qua nếu không có số liệu.",
+    "tip_advice_vi": "Lead phải trả lời: qui, quoi, quand, où, pourquoi.",
+    "register_notes": "French press releases should be concrete and media-usable, not brochure-like."
+  },
+  {
+    "id": "ltribune_major_papers",
+    "category": "public_communication",
+    "level": "C1",
+    "title_vi": "Viết tribune cho báo Pháp lớn",
+    "title_en": "Writing an op-ed for major French papers",
+    "sentences": [
+      {
+        "en": "Une tribune destinée au Monde, à Libération ou au Figaro doit transformer une expérience particulière en question publique.",
+        "vi": "Một tribune gửi Le Monde, Libération hoặc Le Figaro phải biến một kinh nghiệm cụ thể thành vấn đề công.",
+        "pronunciation_focus": ["tribune", "question publique", "Le Monde"]
+      },
+      {
+        "en": "Bien que l'auteur défende une position nette, il faut qu'il anticipe l'objection principale.",
+        "vi": "Dù tác giả bảo vệ một lập trường rõ, anh ấy/cô ấy phải dự liệu phản bác chính.",
+        "pronunciation_focus": ["Bien que + subjonctif", "défende", "il faut qu'il anticipe"]
+      }
+    ],
+    "vocabulary": [
+      { "word": "une tribune", "en": "op-ed", "vi": "bài quan điểm / tribune", "pos": "noun", "pronunciation_vi": "tri-bun" },
+      { "word": "une objection", "en": "objection", "vi": "phản bác", "pos": "noun", "pronunciation_vi": "ốp-zhek-sion" }
+    ],
+    "dialogue": [
+      { "speaker": "Éditorialiste", "text": "Votre angle est fort, mais il manque l'objection que le lecteur formulera spontanément.", "vi": "Góc nhìn của bạn mạnh, nhưng còn thiếu phản bác mà độc giả sẽ tự nêu ra." },
+      { "speaker": "Autrice", "text": "Je vais l'intégrer dès le troisième paragraphe, afin que la thèse ne paraisse pas fermée.", "vi": "Tôi sẽ đưa nó vào ngay đoạn ba để luận điểm không có vẻ đóng kín." }
+    ],
+    "cultural_notes_vi": "Truyền thống tribune ở Pháp cho phép giọng trực diện, nhưng phải có cấu trúc lập luận và dự liệu phản biện.",
+    "tip_advice_vi": "Dùng concessive subjunctive: Bien que je défende..., il faut que...",
+    "register_notes": "A French tribune is not neutral reportage. It is an argued public stance with literary economy and intellectual pressure."
+  },
+  {
+    "id": "lpodcast_talk_show_appearance",
+    "category": "public_communication",
+    "level": "C1",
+    "title_vi": "Xuất hiện trên podcast hoặc talk show",
+    "title_en": "Podcast / talk show appearance",
+    "sentences": [
+      {
+        "en": "Dans un podcast, le ton peut être plus conversationnel, à condition que les faits restent strictement tenus.",
+        "vi": "Trong podcast, giọng có thể trò chuyện hơn, miễn là sự kiện vẫn được giữ thật chặt.",
+        "pronunciation_focus": ["conversationnel", "à condition que", "restent"]
+      },
+      {
+        "en": "Je comprends la question, mais je préfère distinguer ce que nous savons de ce que nous supposons.",
+        "vi": "Tôi hiểu câu hỏi, nhưng tôi muốn phân biệt điều chúng tôi biết với điều chúng tôi đang giả định.",
+        "pronunciation_focus": ["je comprends", "je préfère distinguer", "supposons"]
+      }
+    ],
+    "vocabulary": [
+      { "word": "conversationnel", "en": "conversational", "vi": "có tính trò chuyện", "pos": "adjective", "pronunciation_vi": "kon-vehr-sa-sio-nel" },
+      { "word": "supposer", "en": "to suppose", "vi": "giả định", "pos": "verb", "pronunciation_vi": "su-po-zê" }
+    ],
+    "dialogue": [
+      { "speaker": "Animateur", "text": "En clair, vous saviez que le problème existait ?", "vi": "Nói thẳng ra, các anh chị biết vấn đề tồn tại rồi?" },
+      { "speaker": "Invitée", "text": "Je comprends la formulation, mais elle va plus loin que les faits. Ce que nous savions, c'était l'existence d'un signal faible.", "vi": "Tôi hiểu cách đặt câu, nhưng nó đi xa hơn sự kiện. Điều chúng tôi biết là có một tín hiệu yếu." }
+    ],
+    "cultural_notes_vi": "Podcast Pháp cho phép tự nhiên hơn, nhưng khách mời đại diện tổ chức vẫn phải phân biệt faits và suppositions.",
+    "tip_advice_vi": "Câu hữu dụng: Je comprends la question, mais je préfère distinguer...",
+    "register_notes": "French talk-show register can be warm and fast, but precise boundary-setting remains essential."
+  },
+  {
+    "id": "ltv_news_live_interview",
+    "category": "public_communication",
+    "level": "C1",
+    "title_vi": "Phỏng vấn truyền hình trực tiếp — trả lời anchor",
+    "title_en": "TV news interview — responding to anchors live",
+    "sentences": [
+      {
+        "en": "En direct, une réponse efficace tient en deux phrases: reconnaître la question, puis donner le fait vérifié.",
+        "vi": "Trên sóng trực tiếp, câu trả lời hiệu quả nằm trong hai câu: thừa nhận câu hỏi, rồi đưa sự kiện đã xác minh.",
+        "pronunciation_focus": ["en direct", "deux phrases", "fait vérifié"]
+      },
+      {
+        "en": "Je ne vais pas vous donner une promesse de plateau; je peux en revanche vous donner un calendrier.",
+        "vi": "Tôi sẽ không đưa một lời hứa cho đẹp trên sóng; ngược lại tôi có thể đưa một lịch trình.",
+        "pronunciation_focus": ["promesse de plateau", "en revanche", "calendrier"]
+      }
+    ],
+    "vocabulary": [
+      { "word": "en direct", "en": "live", "vi": "trực tiếp", "pos": "adverbial phrase", "pronunciation_vi": "ong đi-rekt" },
+      { "word": "un plateau", "en": "TV studio set", "vi": "trường quay", "pos": "noun", "pronunciation_vi": "pla-tô" }
+    ],
+    "dialogue": [
+      { "speaker": "Présentateur", "text": "Pouvez-vous promettre ce soir que cela ne se reproduira pas ?", "vi": "Tối nay ông/bà có thể hứa rằng việc này sẽ không lặp lại không?" },
+      { "speaker": "Porte-parole", "text": "Je ne ferai pas une promesse de plateau. Je peux vous dire que l'audit sera publié vendredi.", "vi": "Tôi sẽ không hứa cho đẹp trên sóng. Tôi có thể nói rằng báo cáo rà soát sẽ được công bố thứ Sáu." }
+    ],
+    "cultural_notes_vi": "Phỏng vấn truyền hình Pháp thường trực diện. Câu trả lời phải ngắn, có lực, nhưng không được bluff.",
+    "tip_advice_vi": "Dùng formule mạnh nhưng có trách nhiệm: Je ne ferai pas une promesse de plateau.",
+    "register_notes": "French live-news interviews prize crisp confrontation. A controlled refusal can sound more credible than a soft non-answer."
+  },
+  {
+    "id": "linstitutional_apology_press_conference",
+    "category": "public_communication",
+    "level": "C1",
+    "title_vi": "Họp báo xin lỗi công khai của tổ chức",
+    "title_en": "Institutional public apology press conference",
+    "sentences": [
+      {
+        "en": "Nous présentons nos excuses aux personnes affectées; cette erreur n'aurait pas dû se produire.",
+        "vi": "Chúng tôi xin lỗi những người bị ảnh hưởng; sai sót này lẽ ra không được xảy ra.",
+        "pronunciation_focus": ["présentons nos excuses", "personnes affectées", "n'aurait pas dû"]
+      },
+      {
+        "en": "Quoique l'enquête interne soit encore en cours, nous assumons déjà notre responsabilité opérationnelle.",
+        "vi": "Dù cuộc điều tra nội bộ vẫn đang diễn ra, chúng tôi đã nhận trách nhiệm vận hành của mình.",
+        "pronunciation_focus": ["Quoique + subjonctif", "soit", "responsabilité opérationnelle"]
+      }
+    ],
+    "vocabulary": [
+      { "word": "présenter ses excuses", "en": "to apologize", "vi": "xin lỗi", "pos": "verb phrase", "pronunciation_vi": "prê-zong-tê se zex-kuz" },
+      { "word": "assumer", "en": "to take responsibility", "vi": "nhận trách nhiệm", "pos": "verb", "pronunciation_vi": "a-su-mê" }
+    ],
+    "dialogue": [
+      { "speaker": "Directrice générale", "text": "Je veux être claire: nous ne sommes pas ici pour minimiser l'erreur, mais pour l'assumer et la réparer.", "vi": "Tôi muốn nói rõ: chúng tôi không ở đây để giảm nhẹ sai sót, mà để nhận và sửa nó." },
+      { "speaker": "Journaliste", "text": "Qui, précisément, portera la responsabilité de cette défaillance ?", "vi": "Chính xác thì ai sẽ chịu trách nhiệm về sự cố này?" }
+    ],
+    "cultural_notes_vi": "Xin lỗi tổ chức bằng tiếng Pháp phải trực diện. Nếu chỉ nói regret mà không nói responsabilité, nghe như né tránh.",
+    "tip_advice_vi": "Apology sequence: excuses → erreur → responsabilité → réparation → calendrier.",
+    "register_notes": "French public apology rewards frank responsibility. Avoid bureaucratic fog."
+  },
+  {
+    "id": "lbackground_briefing_off_record",
+    "category": "public_communication",
+    "level": "C1",
+    "title_vi": "Briefing bối cảnh — off the record",
+    "title_en": "Background briefing — off-the-record context",
+    "sentences": [
+      {
+        "en": "Avant de commencer, je précise le cadre: ceci est en background, non attribuable directement.",
+        "vi": "Trước khi bắt đầu, tôi nói rõ khung: phần này là thông tin bối cảnh, không gán trực tiếp.",
+        "pronunciation_focus": ["je précise le cadre", "background", "non attribuable"]
+      },
+      {
+        "en": "L'objectif n'est pas de faire fuiter une version, mais de vous donner les éléments de contexte nécessaires.",
+        "vi": "Mục tiêu không phải rò rỉ một phiên bản, mà là đưa cho quý vị các yếu tố bối cảnh cần thiết.",
+        "pronunciation_focus": ["faire fuiter", "éléments de contexte", "nécessaires"]
+      }
+    ],
+    "vocabulary": [
+      { "word": "non attribuable", "en": "not attributable", "vi": "không gán nguồn trực tiếp", "pos": "adjective", "pronunciation_vi": "non na-tri-buy-apl" },
+      { "word": "le contexte", "en": "context", "vi": "bối cảnh", "pos": "noun", "pronunciation_vi": "kon-tekst" }
+    ],
+    "dialogue": [
+      { "speaker": "Conseiller presse", "text": "Cette partie peut éclairer votre papier, mais elle ne doit pas être citée comme déclaration officielle.", "vi": "Phần này có thể giúp bài viết sáng rõ hơn, nhưng không được trích như tuyên bố chính thức." },
+      { "speaker": "Journaliste", "text": "Je peux donc utiliser le raisonnement, mais pas vous l'attribuer nommément.", "vi": "Vậy tôi có thể dùng logic lập luận, nhưng không gán tên ông/bà." }
+    ],
+    "cultural_notes_vi": "Trong quan hệ báo chí Pháp, phải định nghĩa rõ on/off/background trước khi nói nội dung nhạy cảm.",
+    "tip_advice_vi": "Phrase clé: je précise le cadre.",
+    "register_notes": "Off-the-record French requires explicit attribution boundaries; do not rely on implied understandings."
+  },
+  {
+    "id": "lhostile_journalist_qa_public_scrutiny",
+    "category": "public_communication",
+    "level": "C1",
+    "title_vi": "Q&A với nhà báo gay gắt dưới áp lực công chúng",
+    "title_en": "Hostile journalist Q&A under public scrutiny",
+    "sentences": [
+      {
+        "en": "Je conteste votre prémisse, mais je réponds à la question de fond.",
+        "vi": "Tôi phản đối tiền đề của anh/chị, nhưng tôi trả lời câu hỏi cốt lõi.",
+        "pronunciation_focus": ["je conteste", "prémisse", "question de fond"]
+      },
+      {
+        "en": "Même si la critique est dure, elle oblige l'institution à répondre précisément, pas à se réfugier dans la langue de bois.",
+        "vi": "Dù phê bình gay gắt, nó buộc tổ chức phải trả lời chính xác, không núp sau ngôn ngữ sáo rỗng.",
+        "pronunciation_focus": ["Même si", "répondre précisément", "langue de bois"]
+      }
+    ],
+    "vocabulary": [
+      { "word": "contester une prémisse", "en": "to challenge a premise", "vi": "phản đối một tiền đề", "pos": "verb phrase", "pronunciation_vi": "kon-tes-tê un prê-mis" },
+      { "word": "la langue de bois", "en": "evasive bureaucratic language", "vi": "ngôn ngữ sáo rỗng né tránh", "pos": "idiom", "pronunciation_vi": "long đơ boa" }
+    ],
+    "dialogue": [
+      { "speaker": "Journaliste", "text": "Vous avez attendu que l'affaire explose pour admettre l'échec, c'est bien cela ?", "vi": "Các ông/bà đợi vụ việc bùng lên mới thừa nhận thất bại, đúng không?" },
+      { "speaker": "Porte-parole", "text": "Non, je conteste cette prémisse. En revanche, vous avez raison sur un point: notre communication initiale a été insuffisante.", "vi": "Không, tôi phản đối tiền đề đó. Ngược lại, anh/chị đúng ở một điểm: truyền thông ban đầu của chúng tôi chưa đủ." }
+    ],
+    "cultural_notes_vi": "French hostile interview cho phép phản đối trực tiếp hơn. Truyền thống Pujadas/Demorand/Bocquet coi trọng câu trả lời rõ và khả năng chịu va chạm.",
+    "tip_advice_vi": "Direct-disagreement formula: Non, je conteste cette prémisse. En revanche...",
+    "register_notes": "In the French hostile-interview tradition, a direct correction can be legitimate if paired with a substantive answer."
+  },
+  {
+    "id": "lspokesperson_weekly_press_briefing",
+    "category": "public_communication",
+    "level": "C1",
+    "title_vi": "Vai trò người phát ngôn — briefing hằng tuần",
+    "title_en": "Spokesperson role — weekly press briefing",
+    "sentences": [
+      {
+        "en": "Le rôle du porte-parole n'est pas de tout dire, mais de dire de manière stable ce qui peut l'être.",
+        "vi": "Vai trò người phát ngôn không phải nói hết mọi thứ, mà là nói một cách ổn định những gì có thể nói.",
+        "pronunciation_focus": ["porte-parole", "de manière stable", "ce qui peut l'être"]
+      },
+      {
+        "en": "Sur ce point, nous n'avons pas d'élément nouveau; une mise à jour écrite sera envoyée vendredi.",
+        "vi": "Về điểm này, chúng tôi chưa có yếu tố mới; cập nhật bằng văn bản sẽ được gửi thứ Sáu.",
+        "pronunciation_focus": ["élément nouveau", "mise à jour écrite", "vendredi"]
+      }
+    ],
+    "vocabulary": [
+      { "word": "un porte-parole", "en": "spokesperson", "vi": "người phát ngôn", "pos": "noun", "pronunciation_vi": "port-pa-rol" },
+      { "word": "une mise à jour", "en": "update", "vi": "cập nhật", "pos": "noun", "pronunciation_vi": "mi za zhur" }
+    ],
+    "dialogue": [
+      { "speaker": "Porte-parole", "text": "Je vous propose de commencer par les trois mises à jour confirmées cette semaine.", "vi": "Tôi đề nghị bắt đầu bằng ba cập nhật đã xác nhận trong tuần này." },
+      { "speaker": "Journaliste", "text": "Pourquoi refusez-vous de répondre sur le dossier encore ouvert ?", "vi": "Vì sao ông/bà từ chối trả lời về hồ sơ còn mở?" }
+    ],
+    "cultural_notes_vi": "Briefing hằng tuần kiểu Pháp cần đều, rõ và không quá phòng thủ. Nói 'chưa có yếu tố mới' được, nếu có lịch cập nhật.",
+    "tip_advice_vi": "Stable phrase: nous n'avons pas d'élément nouveau; une mise à jour écrite sera envoyée...",
+    "register_notes": "The spokesperson voice is institutional, repetitive by design, and accountable over time."
+  },
+  {
+    "id": "lofficial_social_media_statement",
+    "category": "public_communication",
+    "level": "C1",
+    "title_vi": "Tuyên bố chính thức trên mạng xã hội",
+    "title_en": "Official statement on social media channels",
+    "sentences": [
+      {
+        "en": "Un message officiel sur les réseaux sociaux doit être court, mais jamais improvisé.",
+        "vi": "Một thông điệp chính thức trên mạng xã hội phải ngắn, nhưng không bao giờ được ứng biến tùy tiện.",
+        "pronunciation_focus": ["réseaux sociaux", "court", "jamais improvisé"]
+      },
+      {
+        "en": "La première phrase pose la position, la deuxième annonce l'action, la troisième indique où suivre la suite.",
+        "vi": "Câu đầu đặt lập trường, câu hai thông báo hành động, câu ba chỉ nơi theo dõi tiếp.",
+        "pronunciation_focus": ["pose la position", "annonce l'action", "suivre la suite"]
+      }
+    ],
+    "vocabulary": [
+      { "word": "les réseaux sociaux", "en": "social media", "vi": "mạng xã hội", "pos": "noun phrase", "pronunciation_vi": "rê-zô sô-si-ô" },
+      { "word": "improvisé", "en": "improvised", "vi": "ứng biến tùy tiện", "pos": "adjective", "pronunciation_vi": "anh-pro-vi-zê" }
+    ],
+    "dialogue": [
+      { "speaker": "Community manager", "text": "Cette réponse est trop familière pour un compte officiel.", "vi": "Câu trả lời này quá thân mật đối với tài khoản chính thức." },
+      { "speaker": "Directrice communication", "text": "Gardons trois phrases: position, action, lien vers la mise à jour complète.", "vi": "Giữ ba câu: lập trường, hành động, link tới bản cập nhật đầy đủ." }
+    ],
+    "cultural_notes_vi": "Tài khoản chính thức tiếng Pháp có thể ngắn, nhưng không được nghe như tranh luận bình luận.",
+    "tip_advice_vi": "Công thức ba câu: position → action → lien.",
+    "register_notes": "French official social copy should be terse, composed, and screenshot-proof."
   }
 ];
 
