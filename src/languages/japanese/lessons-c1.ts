@@ -2324,6 +2324,653 @@ export const lessons: JapaneseLesson[] = [
         "japanese": "貴重なお時間を賜り、ご査読いただきましたこと、重ねて御礼申し上げます。"
       }
     ]
+  },
+  {
+    "id": 102,
+    "title": "Professional negotiation — salary negotiation",
+    "title_vi": "Đàm phán chuyên nghiệp — Đàm phán mức lương",
+    "title_en": "Professional negotiation — salary negotiation",
+    "category": "professional-negotiation",
+    "level": "C1",
+    "vocabulary": [
+      { "japanese": "給与 (きゅうよ)", "english": "salary (formal)" },
+      { "japanese": "待遇 (たいぐう)", "english": "treatment / compensation package" },
+      { "japanese": "査定 (さてい)", "english": "performance evaluation" },
+      { "japanese": "昇給 (しょうきゅう)", "english": "pay raise" },
+      { "japanese": "業績 (ぎょうせき)", "english": "performance / track record" },
+      { "japanese": "貢献 (こうけん)", "english": "contribution" },
+      { "japanese": "ご相談 (ごそうだん)", "english": "humble 'consultation' (frame for negotiation)" },
+      { "japanese": "評価 (ひょうか)", "english": "evaluation" },
+      { "japanese": "配慮 (はいりょ)", "english": "consideration / accommodation" },
+      { "japanese": "妥当 (だとう)", "english": "appropriate / fair" }
+    ],
+    "examples": [
+      { "japanese": "平素より格別のご配慮を賜り、誠にありがとうございます。", "english": "I am sincerely grateful for the special consideration you have shown me as a matter of routine." },
+      { "japanese": "入社以来三年が経ち、業績への貢献を踏まえご相談させていただきたく存じます。", "english": "Three years have passed since I joined, and I would like to consult with you in light of my contribution to performance." },
+      { "japanese": "同業他社の市場相場を参考にいたしますと、現在の待遇には若干の隔たりがあるように思われます。", "english": "Referring to the market rates of comparable firms, there appears to be a slight gap with my current compensation." },
+      { "japanese": "つきましては、給与改定についてご検討いただけませんでしょうか。", "english": "Accordingly, would you consider a salary revision?" },
+      { "japanese": "急ぎませんので、貴社のご都合のよろしい時期にお返事を頂戴できれば幸いに存じます。", "english": "There is no rush, so I would be most grateful to receive a reply at a time convenient for the company." },
+      { "japanese": "今後とも一層の貢献を心がけてまいる所存でございます。", "english": "I intend to strive for ever greater contribution going forward." },
+      { "japanese": "ご多用のところ恐縮ですが、何卒ご検討のほどよろしくお願い申し上げます。", "english": "I am sorry to trouble you in your busy schedule, but I respectfully request your consideration." }
+    ],
+    "dialogue": [
+      { "speaker": "社員", "japanese": "部長、お忙しいところ恐縮ですが、少々お時間頂戴できますでしょうか。", "english": "Director, I'm sorry to interrupt, but could you spare a few moments?" },
+      { "speaker": "部長", "japanese": "ええ、どうぞ。何か。", "english": "Yes, please. What is it?" },
+      { "speaker": "社員", "japanese": "給与の件で、ご相談させていただきたく存じます。", "english": "I would like to consult with you regarding my salary." },
+      { "speaker": "部長", "japanese": "なるほど。具体的には。", "english": "I see. Specifically?" }
+    ],
+    "dialogue_long": [
+      { "speaker": "社員", "japanese": "部長、お忙しいところ恐縮ですが、十分ほどお時間頂戴できますでしょうか。", "english": "Director, sorry to trouble you in your busy schedule — could I have about ten minutes?" },
+      { "speaker": "部長", "japanese": "ああ、構いませんよ。何でしょうか。", "english": "Sure, that's fine. What is it?" },
+      { "speaker": "社員", "japanese": "入社以来三年が経ちまして、自身の業績と今後の方向性について、ご相談させていただきたく参りました。", "english": "Three years have passed since I joined, and I came to consult about my performance and future direction." },
+      { "speaker": "部長", "japanese": "ええ、どうぞ。", "english": "Yes, please go ahead." },
+      { "speaker": "社員", "japanese": "この三年間、お任せいただいたプロジェクトを概ね予定通り完遂してまいりましたところ、今年度は売上目標を15%上回る形で着地いたしました。", "english": "Over these three years I have completed the projects entrusted to me roughly on schedule, and this fiscal year landed 15% above the sales target." },
+      { "speaker": "部長", "japanese": "確かに、よくやってくれているのは認識しております。", "english": "Indeed, I am aware that you have been doing well." },
+      { "speaker": "社員", "japanese": "つきましては、誠に恐縮ながら、給与改定についてご検討いただけませんでしょうか。同業他社の相場と照らし合わせますと、若干の隔たりを感じる次第でございます。", "english": "Accordingly, with great deference, might I ask you to consider a salary revision? Comparing with rates at peer firms, I sense a slight gap." },
+      { "speaker": "部長", "japanese": "なるほど。直接話してくださってありがとうございます。具体的にどの程度のお考えで。", "english": "I see. Thank you for raising this directly. Roughly what range did you have in mind?" },
+      { "speaker": "社員", "japanese": "貴社の評価基準を尊重したうえで、市場相場の中央値あたりが妥当ではないかと存じております。具体的な数字は、貴社のご判断にお任せいたします。", "english": "Respecting the company's evaluation criteria, I think the median of market rates would be appropriate. I leave the specific figure to the company's judgment." },
+      { "speaker": "部長", "japanese": "査定の時期と合わせて、上長ともお話ししてみます。少々お時間をいただけますか。", "english": "I'll discuss with my superior in line with the assessment cycle. May I have some time?" },
+      { "speaker": "社員", "japanese": "もちろんでございます。急ぎませんので、貴社のご都合のよろしい時期にお返事を頂戴できれば幸いです。", "english": "Of course. There is no rush — I would be grateful for a reply when it suits the company." },
+      { "speaker": "部長", "japanese": "分かりました。検討します。今後ともよろしくお願いします。", "english": "Understood. I will consider it. Continued thanks for your work." },
+      { "speaker": "社員", "japanese": "こちらこそ、ご多用のところ恐縮でございました。今後とも一層の貢献を心がけてまいります。", "english": "On the contrary, I'm sorry for the imposition. I will strive for greater contribution from now on." }
+    ],
+    "roleplay_prompts": [
+      "Bạn 入社 5 năm, chưa từng được tăng lương. Diễn tập câu mở đầu — phải dùng 相談 framing không phải 要求. Cụm: '〜についてご相談させていただきたく' KHÔNG '〜を要求します'. Mention 業績 trước khi nêu 待遇.",
+      "Sếp Nhật phản ứng 'うちは年功序列だから' (chế độ thâm niên). Diễn tập câu acknowledge norm + soft pushback: '社の方針は十分理解しておりますが、〜'. Tránh đối đầu — frame as 'individual consideration within the system'.",
+      "Sếp đề nghị tăng nhỏ hơn expected. Diễn tập câu accept gracefully + leave door open: 'まずはご配慮に感謝いたします。改めて、〜の機会を頂戴できれば幸いです.' KHÔNG nói '低すぎます'."
+    ],
+    "register_notes": "給与交渉 trong Nhật là moment tinh tế nhất của business Japanese. (1) FRAMING — KHÔNG '要求' (demand) hay '交渉' (negotiate); dùng 'ご相談' (consultation). Đây là euphemism quan trọng — biến confrontational thành consultative. (2) KEIGO LAYERS — phải dùng 4 layers cùng lúc: 謙譲語 cho hành động của mình ('参りました', '頂戴する'), 尊敬語 cho hành động của sếp ('ご検討いただく'), 丁寧語 ます-form throughout, plus 美化語 ('お時間', 'ご相談'). (3) PERFORMANCE FIRST — luôn nêu 業績 (achievements) TRƯỚC khi nêu yêu cầu. Reverse order = bị coi là 'demanding without earning'. (4) MARKET REFERENCE — '市場相場' / '同業他社' justify yêu cầu mà không sound greedy. Frame as 'fairness with peers' chứ không 'I want more'. (5) TIMING — '急ぎません' signal patience; sếp Nhật value patience — pressuring = 失礼. Đừng give ultimatum. (6) SPECIFIC NUMBERS — Nhật business culture lúc đầu vague về số ('妥当な額' = 'reasonable amount'); để sếp đưa ra số. Pushing exact figure = aggressive. KHÔNG: '今すぐ答えてください' (answer now), '他の会社からオファーがあります' (have other offer — coi là threat in Japan).",
+    "idiom_glosses": [
+      { "idiom": "顔を立てる (かおをたてる)", "literal": "Dựng cái mặt lên", "meaning": "[硬い] Giữ thể diện cho người đối diện — applies khi accept smaller raise gracefully.", "example": "部長の顔を立てつつ、改めて機会を頂戴したい旨をお伝えする。" },
+      { "idiom": "二の足を踏む (にのあしをふむ)", "literal": "Bước thứ hai do dự", "meaning": "[書き言葉] Do dự — applies khi họ delay phản hồi.", "example": "給与改定について二の足を踏まれているご様子でございます。" },
+      { "idiom": "渡りに船 (わたりにふね)", "literal": "Thuyền đến đúng lúc đang qua sông", "meaning": "[書き言葉] Cơ hội đến đúng lúc — khi họ proactively offer raise.", "example": "査定時期と重なり、まさに渡りに船でございました。" },
+      { "idiom": "下手に出る (したてにでる)", "literal": "Đi ra với tư thế thấp", "meaning": "[硬い] Dùng thái độ humble để approach — central technique cho salary negotiation.", "example": "下手に出ることが、結果的に交渉を進める鍵となる。" }
+    ],
+    "cultural_notes_vi": "Văn hóa 給与交渉 ở Nhật khác hẳn phương Tây và cả Việt Nam: (1) HISTORICAL CONTEXT — chế độ 年功序列 (seniority-based pay) truyền thống làm individual negotiation hiếm. Modern startup / 外資系 (foreign companies) cởi mở hơn nhưng truyền thống Nhật firms vẫn raise theo định kỳ 査定 (April assessment). (2) FREQUENCY — average Japanese employee never directly negotiates salary career-long. Khi xảy ra, thường tại promotion, transfer, or returning offer matching. (3) COUNTER-OFFER CULTURE — Nhật firms LITTLE flexibility cho counter-offer khi có offer khác. Threatening to leave often results in 'OK, leave' rather than 'we'll match'. Cảnh báo: bringing competing offer là double-edged. (4) TIMING — đề xuất sau khi đã 'earn' clear value (project completion, year-end review). KHÔNG ngay khi join hay middle of project. (5) WHO INITIATES — manager often expects YOU to bring it up. Silent dissatisfaction = 'they're fine'. But initiation must be với extreme humility framing. (6) GENDER NOTE — historical research suggests Japanese women under-negotiate compared to men by larger gap than Western counterparts; 男女問題 active topic. (7) FOREIGN EMPLOYEE — gaijin trong 日本企業 thường được expected to follow 同じルール; trong 外資系 can use Western style. Confirm với HR culture của company before initiating.",
+    "tip_advice_vi": "Salary negotiation Japanese 7-step framework: (1) RESEARCH market rate trên DODA, リクナビ, パーソルキャリア — cần data trước khi nói; (2) TIMING — sau project win, before year-end review (査定 thường tháng 3-4); (3) REQUEST 1-on-1 → '少々お時間頂戴できますでしょうか'. Never ambush in group meeting; (4) FRAMING — '相談したい' không '要求します'; (5) PERFORMANCE FIRST — kể đóng góp cụ thể có numbers (sales, project completion, certifications acquired); (6) ASK don't DEMAND — 'ご検討いただけませんでしょうか' (could you consider) thay vì 'ください'; (7) GRACEFUL EXIT — accept 'I'll consider' as legitimate response, follow-up trong 2-3 tuần. Common mistakes: (a) Mentioning competing offer without strategy — Nhật firm thường không match; (b) Comparing với same-level colleagues by name — privacy violation; (c) Demanding specific number — let them propose; (d) Going over manager's head — face-loss for direct manager. Phrase to memorize: '貴社の評価基準を尊重したうえで、市場相場を踏まえご検討いただければ幸いです.' Nailing this one sentence shows you understand Japanese business context."
+  },
+  {
+    "id": 103,
+    "title": "Professional negotiation — renegotiating contract terms",
+    "title_vi": "Đàm phán chuyên nghiệp — Đàm phán lại điều khoản hợp đồng",
+    "title_en": "Professional negotiation — renegotiating contract terms",
+    "category": "professional-negotiation",
+    "level": "C1",
+    "vocabulary": [
+      { "japanese": "契約 (けいやく)", "english": "contract" },
+      { "japanese": "条件 (じょうけん)", "english": "terms / conditions" },
+      { "japanese": "見直し (みなおし)", "english": "review / reconsideration" },
+      { "japanese": "依頼 (いらい)", "english": "request" },
+      { "japanese": "合意事項 (ごういじこう)", "english": "agreed items" },
+      { "japanese": "調整 (ちょうせい)", "english": "adjustment" },
+      { "japanese": "弾力的 (だんりょくてき)", "english": "flexible" },
+      { "japanese": "数量 (すうりょう)", "english": "quantity" },
+      { "japanese": "単価 (たんか)", "english": "unit price" },
+      { "japanese": "供給 (きょうきゅう)", "english": "supply" }
+    ],
+    "examples": [
+      { "japanese": "既存契約の条件につきまして、見直しのご相談をさせていただきたく、ご連絡差し上げました。", "english": "I am reaching out to consult about a review of the terms of our existing contract." },
+      { "japanese": "市場環境の変化に伴い、当初の前提と現状とに乖離が生じております。", "english": "With shifts in the market environment, a divergence has emerged between the original premise and current conditions." },
+      { "japanese": "つきましては、納期および数量について、若干の調整をご検討いただけませんでしょうか。", "english": "Accordingly, would you consider slight adjustments to delivery date and quantity?" },
+      { "japanese": "双方にとって弾力的な条件設定が望ましいかと存じます。", "english": "I believe a flexible setting of terms would be desirable for both parties." },
+      { "japanese": "御社のご都合に合わせて、改めて協議の場を設けさせていただければ幸いです。", "english": "It would be most appreciated if we could arrange a fresh meeting at your convenience." },
+      { "japanese": "既存の合意事項を尊重しつつ、現状に即した形で再構築を図る次第でございます。", "english": "While honoring the existing agreed items, we are seeking to restructure in a form befitting current conditions." },
+      { "japanese": "ご多忙のところ恐縮ですが、ご検討のほどよろしくお願い申し上げます。", "english": "I am sorry to impose during your busy time, but I respectfully ask for your consideration." }
+    ],
+    "dialogue": [
+      { "speaker": "営業", "japanese": "田中部長、契約条件の件でご相談がございます。", "english": "Director Tanaka, I have a consultation regarding contract terms." },
+      { "speaker": "顧客", "japanese": "ああ、納期の件でしたか。", "english": "Ah, the delivery-date matter?" },
+      { "speaker": "営業", "japanese": "はい、現状の納期を二週間延長いただけませんでしょうか。", "english": "Yes — could the current delivery date be extended by two weeks?" },
+      { "speaker": "顧客", "japanese": "理由を伺ってもよろしいでしょうか。", "english": "May I ask the reason?" }
+    ],
+    "dialogue_long": [
+      { "speaker": "営業", "japanese": "田中部長、お忙しいところ恐縮でございます。先日締結いたしました契約条件につきまして、若干のご相談をさせていただきたく参りました。", "english": "Director Tanaka, sorry to trouble you in your busy schedule. I came to consult slightly about the contract terms we concluded recently." },
+      { "speaker": "顧客", "japanese": "ええ、伺います。何が気がかりでしょうか。", "english": "Yes, I'll listen. What is concerning you?" },
+      { "speaker": "営業", "japanese": "当初は月産5,000個を予定しておりましたが、原材料の供給状況が変化しまして、現状での維持が困難な見通しでございます。", "english": "We initially planned 5,000 units per month, but raw-material supply conditions have shifted and current maintenance looks difficult." },
+      { "speaker": "顧客", "japanese": "なるほど、原材料側の問題ですね。具体的には。", "english": "I see — a problem on the raw-material side. Specifically?" },
+      { "speaker": "営業", "japanese": "主要部品の半導体について、納入先の生産調整が入っており、当社への供給も遅れが見込まれております。", "english": "Regarding the semiconductor as main component, our supplier has entered production adjustment and supply to us is also expected to delay." },
+      { "speaker": "顧客", "japanese": "御社側の問題ではなく、サプライチェーン全体の問題ですね。", "english": "So it's not your company's issue but a supply-chain-wide issue." },
+      { "speaker": "営業", "japanese": "さようでございます。つきましては、納期を二週間延長いただくか、もしくは月産数量を一時的に4,000個に調整いただけませんでしょうか。", "english": "That is so. Accordingly, could the delivery be extended by two weeks, or alternatively could the monthly volume be temporarily adjusted to 4,000 units?" },
+      { "speaker": "顧客", "japanese": "当社の生産計画にも影響が出ますので、即答は致しかねますが、検討します。", "english": "Since it affects our production planning, I cannot give an immediate answer, but I will consider." },
+      { "speaker": "営業", "japanese": "ご無理を申し上げて誠に申し訳ございません。御社のご事情を踏まえ、双方にとって弾力的な条件設定を模索できればと存じます。", "english": "Truly sorry for the imposition. Taking your circumstances into account, I hope we can explore flexible terms for both sides." },
+      { "speaker": "顧客", "japanese": "御社の対応としては、どのようなお考えでしょうか。", "english": "What are your ideas for your company's response?" },
+      { "speaker": "営業", "japanese": "単価を据え置く前提で、納期延長または数量調整のいずれかをお選びいただく形ではいかがでしょうか。代替案としまして、追加コスト負担は当社で吸収いたします。", "english": "On the premise of holding the unit price unchanged, would you select either extension or volume adjustment? As an alternative, our company would absorb any additional cost burden." },
+      { "speaker": "顧客", "japanese": "単価据え置きは助かります。社内で検討して、来週末までにお返事いたします。", "english": "Holding the unit price would help. I'll discuss internally and reply by end of next week." },
+      { "speaker": "営業", "japanese": "寛大なご対応に感謝申し上げます。今後とも長期的なお取引を続けさせていただけますよう、誠意をもって対応してまいります。", "english": "I am grateful for your generous handling. So that we may continue our long-term business, we will respond with sincerity going forward." }
+    ],
+    "roleplay_prompts": [
+      "Vendor B của bạn đột nhiên muốn raise giá 10%. Diễn tập câu push back theo cấu trúc Japanese: thừa nhận market pressure + xin specific reason + propose middle ground. Tránh thẳng thừng từ chối — Nhật business culture coi rejection lập tức là 失礼.",
+      "Bạn cần shorten contract period từ 5 năm xuống 3 năm vì company strategy change. Diễn tập câu giải thích without losing partner trust: '弊社の中期計画見直しに伴い〜'. Frame as your problem, not theirs.",
+      "Long-term partner asks for late payment extension (60 → 90 days). Diễn tập câu balance — accommodate vs protect cash flow: '〜の場合に限り柔軟に対応〜' (in this case only, flexibly accommodate)."
+    ],
+    "register_notes": "契約 negotiation phải dùng 商談 register cao nhất. (1) CHỦ NGỮ TRÁNH 私 — dùng '当社', '弊社', '双方', 'お互いさま'. (2) CONDITIONALITY — '〜場合', '〜次第', '〜の限り' để leave room cho flexibility. (3) FACE-SAVING — KHÔNG nói 'cannot' / 'unable'; dùng '困難な見通し' (difficult to maintain), '致しかねます' (cannot do — formal way). (4) SHARED PROBLEM — frame issue như joint problem, không one-sided. 'サプライチェーン全体の問題' tốt hơn '当社の問題'. (5) RECIPROCITY signaling — '双方にとって', '互いに' xuyên suốt. (6) BURIED ASK — yêu cầu chính (extension hay quantity reduction) không phải câu đầu — context first. KHÔNG: 'できません', 'やります' commit prematurely; '〜してほしい' (childish). Khi propose: '〜いただけませんでしょうか' / '〜のお考えはいかがでしょうか'. Phrase vàng: '誠意をもって対応してまいります' (will respond with sincerity) — closing line.",
+    "idiom_glosses": [
+      { "idiom": "持ちつ持たれつ (もちつもたれつ)", "literal": "Người này giữ, người kia được giữ", "meaning": "[書き言葉] Tương trợ qua lại — relationship-based negotiation cornerstone.", "example": "長期的なお取引は、持ちつ持たれつで成り立つものでございます。" },
+      { "idiom": "折り合いをつける (おりあいをつける)", "literal": "Ghép vào với nhau", "meaning": "[書き言葉] Đạt thỏa thuận giữa chừng — tiêu biểu cho compromise.", "example": "双方の事情を踏まえ、折り合いをつけたく存じます。" },
+      { "idiom": "痛み分け (いたみわけ)", "literal": "Chia đau", "meaning": "[硬い] Cùng chia sẻ thiệt hại — both-sides-give-something framing.", "example": "今回の状況は、双方にとって痛み分けの形にせざるを得ません。" },
+      { "idiom": "棚上げ (たなあげ)", "literal": "Đặt lên kệ", "meaning": "[口語混じり] Tạm gác — useful when one issue blocks progress.", "example": "その点は一旦棚上げにし、優先課題から議論しましょう。" }
+    ],
+    "cultural_notes_vi": "Renegotiation văn hóa Nhật: (1) CONTRACT VS NEGOTIATION — phương Tây contract = final; Nhật contract = framework with implicit ongoing renegotiation. Long-term partners expected to adjust khi conditions change. (2) PRECONDITION TIMING — most renegotiation initiated when current contract period 80%+ complete. Mid-contract renegotiation requires excellent justification (force majeure, market shift, regulatory change). (3) LANGUAGE OF MUTUAL BENEFIT — successful renegotiation framed as solving shared problem. Solo problem framing = lose trust. (4) DOCUMENT TRAIL — even informal discussions documented in 議事録 (meeting minutes); follow-up email summarizing 'what was discussed' is professional norm. (5) WHO ATTENDS — usually 課長 + 部長 from each side; for major contracts 役員 (executive) attends. (6) FOREIGN-PARTNER GAP — Vietnamese teams often more contract-rigid (treat document as fixed); Japanese partner expects iteration. Bridge: communicate Vietnam team's contract-formality stance to Japan partner so they don't perceive as inflexibility. Mistake: Nhật partner shows polite agreement → Vietnamese team thinks deal closed → Nhật partner expected continued discussion. 'はい' = 'I hear you', không nhất thiết 'tôi đồng ý'.",
+    "tip_advice_vi": "Renegotiation 6-step: (1) PREPARE EVIDENCE — market data, internal reports, supply-chain documents. Nhật business require evidence; emotional appeals ineffective. (2) CHOOSE MOMENT — schedule formal 商談 (commercial meeting), don't ambush. Send agenda 1 tuần trước. (3) START WITH SHARED CONTEXT — 'recent market conditions / supply changes / regulatory updates'. Frame as joint reality, not your demand. (4) PROPOSE OPTIONS — không 1 demand. Tiếng Nhật prefer 2-3 options ('A案 / B案 / C案'). Lets partner choose / counter-propose. (5) BUILD IN RECIPROCITY — 'in exchange for X, we offer Y' even if Y is small (extended payment terms, longer commitment, exclusivity, etc). (6) ACCEPT 'WILL CONSIDER' — Japanese partner saying '検討します' is genuine — they need internal 根回し. Don't pressure for instant answer. Common mistake: Vietnamese team treats '検討します' as 'no'. It's 'pause to consult internally'. Follow up via email in 1 tuần with summary + asking timeline. Phrase to nail: '双方にとって弾力的な条件設定が望ましいかと存じます.' Embeds reciprocity, mutual benefit, hedging."
+  },
+  {
+    "id": 104,
+    "title": "Professional negotiation — chairing a multi-party meeting",
+    "title_vi": "Đàm phán chuyên nghiệp — Chủ trì hội nghị nhiều bên",
+    "title_en": "Professional negotiation — chairing a multi-party meeting",
+    "category": "professional-negotiation",
+    "level": "C1",
+    "vocabulary": [
+      { "japanese": "議長 (ぎちょう)", "english": "chair / chairperson" },
+      { "japanese": "議事 (ぎじ)", "english": "agenda / proceedings" },
+      { "japanese": "進行 (しんこう)", "english": "proceeding / facilitation" },
+      { "japanese": "発言 (はつげん)", "english": "remarks / utterance" },
+      { "japanese": "採決 (さいけつ)", "english": "voting / decision-taking" },
+      { "japanese": "合意 (ごうい)", "english": "consensus / agreement" },
+      { "japanese": "議題 (ぎだい)", "english": "agenda topic" },
+      { "japanese": "中立 (ちゅうりつ)", "english": "neutrality" },
+      { "japanese": "取りまとめ (とりまとめ)", "english": "summarizing / consolidating" },
+      { "japanese": "異議 (いぎ)", "english": "objection" }
+    ],
+    "examples": [
+      { "japanese": "それでは、定刻となりましたので、本日の会議を開始させていただきます。", "english": "It being the appointed time, we will now open today's meeting." },
+      { "japanese": "お手元の議事次第に沿って進めさせていただきます。", "english": "We will proceed in accordance with the agenda before you." },
+      { "japanese": "ご発言は、お一人三分程度を目安に、お願いいたします。", "english": "May we ask each speaker to aim for around three minutes." },
+      { "japanese": "ご意見が出尽くしたかと存じますので、論点を整理させていただきます。", "english": "It seems opinions have been exhausted, so I will organize the points." },
+      { "japanese": "異議がないようでしたら、本案を採決にて確認させていただきます。", "english": "If there is no objection, we will confirm this proposal by vote." },
+      { "japanese": "多数決によりまして、本案は承認されました。", "english": "By majority vote, this proposal has been approved." },
+      { "japanese": "本日の議論は以上をもちまして終了とさせていただきます。", "english": "The discussion today will be concluded with this." }
+    ],
+    "dialogue": [
+      { "speaker": "議長", "japanese": "それでは、議題1番、来期予算案について、財務部からご説明をお願いいたします。", "english": "Now then, agenda item 1 — please have Finance present on the next-period budget proposal." },
+      { "speaker": "財務", "japanese": "はい。お配りした資料の通り、本予算案は売上目標を10%上乗せした想定でございます。", "english": "Yes. As in the materials, this proposal assumes a 10% increase to the sales target." },
+      { "speaker": "議長", "japanese": "ご説明ありがとうございました。質疑応答に移らせていただきます。", "english": "Thank you for the explanation. We will move to Q&A." },
+      { "speaker": "営業", "japanese": "一点よろしいでしょうか。", "english": "May I raise one point?" }
+    ],
+    "dialogue_long": [
+      { "speaker": "議長", "japanese": "それでは、定刻でございますので、本日の経営会議を開始させていただきます。本日は5つの議題がございます。お配りした次第表のとおり、進めさせていただければと存じます。", "english": "It being the appointed time, we will now open today's executive meeting. There are five items on the agenda. We hope to proceed in accordance with the schedule distributed." },
+      { "speaker": "財務", "japanese": "お願いいたします。", "english": "Please go ahead." },
+      { "speaker": "議長", "japanese": "議題1番、来期予算案について、財務部の山田部長よりご説明をいただきます。山田部長、よろしくお願いいたします。", "english": "Agenda 1 — Director Yamada of Finance will present the next-period budget. Director Yamada, please." },
+      { "speaker": "山田 (財務)", "japanese": "ありがとうございます。お手元の資料1ページからご覧ください。来期は売上目標を10%上乗せし、新規市場開拓に重点を置く方針でございます。", "english": "Thank you. Please refer to page 1 of the materials. For next period, we add 10% to the sales target with a policy of focusing on new market development." },
+      { "speaker": "議長", "japanese": "ご説明ありがとうございました。それでは質疑応答に移らせていただきます。ご質問ご意見のある方は、お申し出ください。", "english": "Thank you for the presentation. We will move to Q&A. Those with questions or comments, please come forward." },
+      { "speaker": "営業", "japanese": "一点、よろしいでしょうか。営業部としましては、10%目標は厳しいと感じております。", "english": "May I raise one point? From Sales' perspective, the 10% target feels stringent." },
+      { "speaker": "議長", "japanese": "営業部のご指摘ありがとうございます。財務部からのご回答はいかがでしょうか。", "english": "Thank you for Sales' point. Finance, what is your response?" },
+      { "speaker": "山田", "japanese": "ご懸念は承知しております。詳細につきましては、市場成長率を踏まえた見立てでございますが、確かに営業現場との温度差はあるかと存じます。", "english": "We are aware of the concern. The details rest on a forecast informed by market growth rates, but indeed there may be a gap with sales-floor reality." },
+      { "speaker": "議長", "japanese": "両部署の論点が整理されてきたかと存じます。他のご意見はいかがでしょうか。", "english": "The points from both departments seem to be coming into shape. Any other views?" },
+      { "speaker": "製造", "japanese": "製造側からは、生産能力の観点から申し上げますと、10%増産は設備投資なくしては困難と見ております。", "english": "From the production side, from the standpoint of capacity, we view a 10% production increase as difficult without capital investment." },
+      { "speaker": "議長", "japanese": "各部署からのご意見が出揃ったかと存じます。論点を整理させていただきます。営業側は目標水準への懸念、製造側は生産能力の制約、財務側は市場機会のお考え — この三つの軸で議論されていると理解しておりますが、相違ございませんか。", "english": "It seems opinions from each department are now in. Let me organize the points. Sales: concern about target level. Production: capacity constraint. Finance: market-opportunity view. I understand we are discussing along these three axes — is there any disagreement with that summary?" },
+      { "speaker": "全員", "japanese": "ございません。", "english": "There is none." },
+      { "speaker": "議長", "japanese": "ありがとうございます。では、本日中の結論は時期尚早かと存じますので、各部署にて持ち帰り検討いただき、来週再度議論することにさせていただいてよろしいでしょうか。", "english": "Thank you. A conclusion within today seems premature, so may we have each department take this back, deliberate, and discuss again next week?" },
+      { "speaker": "全員", "japanese": "異議ございません。", "english": "No objection." },
+      { "speaker": "議長", "japanese": "議題1番は次回に持ち越しといたします。続きまして、議題2番に移らせていただきます。", "english": "Agenda 1 will be carried over to the next meeting. Continuing, we move to agenda 2." }
+    ],
+    "roleplay_prompts": [
+      "Bạn chair meeting với 3 phòng ban đang xung đột về budget. Diễn tập câu acknowledge each side without taking sides: '〜の論点と〜の論点、双方ご指摘のとおりかと存じます'. Tránh '正しい' / '間違い' về parties.",
+      "Một participant talks too long. Diễn tập câu cut off politely: '貴重なご意見ありがとうございます。時間の関係上、要点のみで恐縮ですが〜'. Frame as time issue, not 'speaking too much'.",
+      "Two participants begin arguing aggressively. Diễn tập câu de-escalate: '少々論点を整理させていただいてよろしいでしょうか'. Pull back to procedure."
+    ],
+    "register_notes": "議長 register Nhật yêu cầu PERFECT NEUTRALITY. (1) NEVER 'I think / 私は' — chair không có opinion in proceedings. Use '〜という整理ができるかと存じます' (it can be organized as ~) thay vì '私は〜と思います'. (2) 〜させていただく overuse OK in chair role — '進めさせていただきます', '整理させていただきます'. Multiple させていただく per minute is normal for facilitator. (3) FACE-PRESERVING attribution — when summarizing conflict, attribute to 'parts of the discussion' not specific individuals: '〜という意見もございますし、〜というご意見もございます'. (4) PROCEDURAL refrains — '異議ございませんでしょうか', '多数決にて確認させていただきます', '次第表に沿って' — these are stock phrases all participants expect. (5) TIME-MANAGEMENT framing — when cutting off, NEVER 'time's up' but '時間の関係上'. KHÔNG: '黙ってください' (be quiet), '違います' (wrong). Khi votes split: '本日中の結論は時期尚早' (premature for today's conclusion) — graceful deferral.",
+    "idiom_glosses": [
+      { "idiom": "議論を尽くす (ぎろんをつくす)", "literal": "Vắt cạn cuộc thảo luận", "meaning": "[硬い] Thảo luận đến cùng — chair's signal that all opinions heard.", "example": "議論を尽くしたうえで、採決に移らせていただきます。" },
+      { "idiom": "持ち越し (もちこし)", "literal": "Mang qua (sang phiên sau)", "meaning": "[事務的・書き言葉] Gác lại sang phiên sau — chair's tool for deferring.", "example": "結論は時期尚早ですので、次回への持ち越しといたします。" },
+      { "idiom": "鶴の一声 (つるのひとこえ)", "literal": "Một tiếng kêu của hạc", "meaning": "[書き言葉] Phán quyết của người trên — đỉnh cao hierarchy intervention.", "example": "議論が紛糾した後、社長の鶴の一声で方針が定まった。" },
+      { "idiom": "落としどころ (おとしどころ)", "literal": "Chỗ để hạ xuống", "meaning": "[口語/会話] Điểm thỏa hiệp — chair guides toward this.", "example": "双方の主張を踏まえ、適切な落としどころを模索する必要がございます。" }
+    ],
+    "cultural_notes_vi": "Multi-party meeting văn hóa Nhật: (1) STRUCTURE — formal 会議 luôn có 議事次第 (agenda) sent in advance, 議事録 (minutes) recorded by 書記 (secretary), specific seating order (上座 most senior). (2) ROLE OF CHAIR — chair = facilitator, không decision-maker. Chair role rotates by department or seniority depending on company. (3) NEMAWASHI before meeting — Nhật business culture: real decisions made in pre-meeting 1-on-1s; meeting itself often 'theater' to confirm consensus. Foreign teams often confused why meetings 'just rubber-stamp'. (4) SILENCE = consent in some firms; in others = veto. Read context. (5) CONFLICT in Japanese meeting = quiet disagreement, not loud debate. Detecting it requires 空気を読む (reading air). Indirect signals: prolonged silence, '少しお時間いただいてよろしいでしょうか', no eye contact, change of topic. (6) CONSENSUS-FIRST framework — vote (採決) often only at end after everyone speaks. Voting before all-spoken = procedural violation. (7) BENT — recent generation moving toward Western-style direct meetings, especially in IT/startup; traditional firms still consensus-first.",
+    "tip_advice_vi": "Chair 6-step framework: (1) PRE-MEETING — agenda, materials sent 24h advance min; conduct 根回し với key stakeholders to surface concerns; (2) OPENING — '定刻でございますので' (it's the appointed time) — Nhật business strict on starting on time even if 5-min late entries; (3) FACILITATE NEUTRALLY — chair's voice neutral, attribute opinions to roles ('営業側', '製造側'), never agree/disagree with substance; (4) MANAGE TIME — '時間の関係上' phrasing — gentle interruption; visible clock helps; (5) SUMMARIZE OBJECTIVELY — restate key points before vote: 'A案、B案、C案、それぞれ〜という観点から〜'; (6) CLOSE — even when no decision, 'next steps' clear: who, what, by when. Common Vietnamese mistakes: (a) Chair takes side → loses neutrality respect; (b) Cuts off speaker rudely → face loss for speaker; (c) Pushes for vote when consensus not formed → procedural violation; (d) Forgets nemawashi → meeting collapses despite skilled facilitation. Phrase to memorize: '論点を整理させていただきます' — chair's most important sentence. Embeds neutrality, structure, deference."
+  },
+  {
+    "id": 105,
+    "title": "Professional negotiation — vendor price negotiation",
+    "title_vi": "Đàm phán chuyên nghiệp — Đàm phán giá với nhà cung cấp",
+    "title_en": "Professional negotiation — vendor price negotiation",
+    "category": "professional-negotiation",
+    "level": "C1",
+    "vocabulary": [
+      { "japanese": "仕入れ (しいれ)", "english": "purchasing / sourcing" },
+      { "japanese": "単価 (たんか)", "english": "unit price" },
+      { "japanese": "値引き (ねびき)", "english": "discount" },
+      { "japanese": "取引量 (とりひきりょう)", "english": "transaction volume" },
+      { "japanese": "量産 (りょうさん)", "english": "mass production" },
+      { "japanese": "納入 (のうにゅう)", "english": "delivery to buyer" },
+      { "japanese": "競合他社 (きょうごうたしゃ)", "english": "competitor / competing firm" },
+      { "japanese": "見積もり (みつもり)", "english": "quote / estimate" },
+      { "japanese": "値下げ (ねさげ)", "english": "price reduction" },
+      { "japanese": "ボリュームディスカウント", "english": "volume discount" }
+    ],
+    "examples": [
+      { "japanese": "お見積もり拝見いたしました。単価につきまして、若干の見直しをご検討いただけませんでしょうか。", "english": "I have reviewed the quote. Could you consider a slight revision of the unit price?" },
+      { "japanese": "弊社といたしましては、年間の取引量を増加させる方向で社内検討中でございます。", "english": "On our side, we are internally considering increasing annual transaction volume." },
+      { "japanese": "競合他社さんのお見積もりとも比較させていただいておりますが、単価面でご一考いただければ幸甚でございます。", "english": "We are comparing with quotes from competitor firms; we would be very grateful for reconsideration on the unit price front." },
+      { "japanese": "量産効果が見込まれる前提で、単価を3%程度ご調整いただくことは可能でしょうか。", "english": "On the assumption that mass-production effects are expected, would it be possible to adjust the unit price by about 3%?" },
+      { "japanese": "長期的なパートナーシップを念頭に、双方にとって持続可能な価格設定を模索いたしたく存じます。", "english": "With long-term partnership in mind, we wish to seek pricing sustainable for both parties." },
+      { "japanese": "ご無理を申し上げる形となり恐縮ですが、ご検討のほどよろしくお願い申し上げます。", "english": "Sorry to make an unreasonable request, but I respectfully ask for your consideration." },
+      { "japanese": "御社のご事情も踏まえ、納期や数量で柔軟にご対応いたす所存でございます。", "english": "Bearing your circumstances in mind as well, we intend to respond flexibly on delivery and volume." }
+    ],
+    "dialogue": [
+      { "speaker": "購買", "japanese": "鈴木課長、新規発注の単価について、ご相談がございます。", "english": "Manager Suzuki, I have a consultation about the unit price on the new order." },
+      { "speaker": "納品", "japanese": "はい、お聞きいたします。", "english": "Yes, please tell me." },
+      { "speaker": "購買", "japanese": "競合他社さんのお見積もりが、御社よりも5%ほど低くなっております。", "english": "A competitor's quote is about 5% lower than yours." },
+      { "speaker": "納品", "japanese": "なるほど、状況は把握いたしました。", "english": "I see — I understand the situation." }
+    ],
+    "dialogue_long": [
+      { "speaker": "購買 (Linh)", "japanese": "鈴木課長、お忙しいところお時間頂戴し恐縮でございます。来期の量産部品発注の単価につきまして、ご相談がございます。", "english": "Manager Suzuki, sorry to take your time in your busy schedule. I have a consultation about the unit price for next-period mass-production parts." },
+      { "speaker": "納品 (鈴木)", "japanese": "お世話になっております。何か気がかりな点が。", "english": "Thank you for your continued business. Is there a concern?" },
+      { "speaker": "購買", "japanese": "御社よりお見積もりいただきました単価、誠に良心的かと存じます。ただ、競合他社さんのお見積もりが5%ほど下回っておりまして。", "english": "The unit price you quoted is truly reasonable. However, a competitor's quote runs about 5% below it." },
+      { "speaker": "納品", "japanese": "なるほど、競合さんのお見積もりですね。具体的な企業名は伺えますでしょうか。", "english": "I see — a competitor's quote. May I ask the specific company name?" },
+      { "speaker": "購買", "japanese": "大変恐縮ですが、企業名は控えさせていただきます。ただ、5%という数字は申し上げます。", "english": "I am very sorry, but I must withhold the company name. However, I do convey the 5% figure." },
+      { "speaker": "納品", "japanese": "了解いたしました。御社のご状況、把握いたしました。", "english": "Understood. I grasp your situation." },
+      { "speaker": "購買", "japanese": "弊社といたしましては、御社との長期的なお取引を最優先と考えており、単純な低価格選択は望んでおりません。ただ、社内では価格根拠の説明責任もございまして。", "english": "On our side, we prioritize long-term business with you and do not desire mere lowest-price selection. However, internally there is also accountability for explaining pricing." },
+      { "speaker": "納品", "japanese": "お考えはよくわかります。仮に量産規模の拡大が見込まれる場合、ボリュームディスカウントの適用は検討の余地がございます。", "english": "I well understand your thinking. If expansion of mass-production scale is anticipated, there is room to consider applying a volume discount." },
+      { "speaker": "購買", "japanese": "ありがたいご提案でございます。現状で年間100万個を予定しておりますが、150万個まで増加させた場合、単価のご調整はいかがでしょうか。", "english": "A welcome proposal. We currently plan one million units per year — should we increase to 1.5 million, what about a unit-price adjustment?" },
+      { "speaker": "納品", "japanese": "50%増の取引量でしたら、量産効果の見込みも立ちます。社内で精査のうえ、来週中に修正お見積もりをご提出させていただきます。", "english": "With a 50% volume increase, mass-production effects are foreseeable. After internal review we will submit a revised quote within next week." },
+      { "speaker": "購買", "japanese": "寛大なご対応に感謝申し上げます。修正お見積もりを拝見のうえ、改めて社内検討に入らせていただきます。", "english": "I am grateful for your generous response. Upon reviewing the revised quote, we will again enter internal consideration." },
+      { "speaker": "納品", "japanese": "こちらこそ、丁寧にご事情をお伝えいただきありがとうございます。今後とも双方にとって持続可能な関係を維持してまいりたく存じます。", "english": "On the contrary, thank you for conveying your circumstances carefully. We hope to maintain a sustainable relationship for both sides going forward." },
+      { "speaker": "購買", "japanese": "同感でございます。今回の件、双方にとって望ましい結論となるよう、誠意をもって対応してまいります。", "english": "I share that view. We will respond with sincerity so this matter reaches a desirable conclusion for both." }
+    ],
+    "roleplay_prompts": [
+      "Long-time vendor offers giá tăng 8%. You không thể accept. Diễn tập câu push back without dropping vendor: 'これまでのお取引と御社のご事情を尊重したく存じますが、〜'. Use long-term partnership framing.",
+      "New vendor underbids your existing supplier 15%. You want to switch but maintain relationships. Diễn tập câu inform existing vendor before switching: 'ご事情をお話ししたく〜'.",
+      "Vendor demands minimum 3-year contract for discount. You only want 1 year. Diễn tập câu negotiate flex: '段階的な契約期間延長は可能でしょうか — まずは1年でスタートし、〜'."
+    ],
+    "register_notes": "Vendor negotiation 商談 register: (1) INFO ASYMMETRY tactics — KHÔNG reveal exact competitor pricing structure ('5%下回ります' OK; '株式会社XXは〜円です' violation of business norm). Same restraint expected từ vendor. (2) RECIPROCAL 仕入れ politeness — buyer holds power but doesn't display it. '買ってあげる' attitude = dead deal. Use '頂戴する', '仕入れさせていただく'. (3) JUSTIFY ASK with internal logic — 'social need to explain pricing' / 'company-wide policy' / 'audit requirement' externalize the demand từ personal preference to corporate process. (4) VOLUME-DISCOUNT framing common — even if total volume same, restructure to look like 'larger order' (multi-year, larger SKU bundle, exclusivity). (5) NO DEADLINE pressure — 'until Friday' demand kills trust; '社内手続きの都合上、来月初旬までに方向性が定まれば幸い' acceptable. KHÔNG: '安くしてください' (make cheaper — childish), '値下げしないなら他社にします' (threat ineffective in Japan).",
+    "idiom_glosses": [
+      { "idiom": "折衝 (せっしょう)", "literal": "Khắc phục cọ xát", "meaning": "[硬い・書き言葉] Đàm phán mặt-đối-mặt — formal negotiation term.", "example": "来週、納入価格について折衝の場を設ける予定でございます。" },
+      { "idiom": "渋い顔をする (しぶいかおをする)", "literal": "Làm bộ mặt chát", "meaning": "[口語] Tỏ thái độ không vui — read vendor's negative reaction.", "example": "値下げ要請に対し、御社が渋い顔をされたことは承知しております。" },
+      { "idiom": "帳尻を合わせる (ちょうじりをあわせる)", "literal": "Khớp con số sổ sách", "meaning": "[硬い] Cân đối sổ sách / make ends meet — buyer-side framing.", "example": "弊社の予算と帳尻を合わせるため、若干の調整をお願いしている次第でございます。" },
+      { "idiom": "一肌脱ぐ (ひとはだぬぐ)", "literal": "Cởi một lớp da", "meaning": "[口語混じり] Nỗ lực vì người khác — used when asking for favor.", "example": "今回ばかりは一肌脱いでいただけないでしょうか。" }
+    ],
+    "cultural_notes_vi": "Vendor negotiation Nhật: (1) RELATIONSHIP > PRICE — long-term Nhật vendor relationships value continuity over %. Switching vendors for 5% saving = high-cost decision (loses goodwill, supplier-quality trust). (2) 系列 (keiretsu) legacy — historic Nhật business used industrial groupings; pricing within keiretsu not market-driven. Modern Nhật firms more open but vestiges remain. (3) TRANSPARENCY paradox — buyers expect vendor cost-structure transparency ('what's your manufacturing cost?'), but rarely give equivalent transparency about own profit margins. Asymmetric. (4) HONORING PAST PRICES — frequent re-pricing pressure damages relationship; annual review acceptable, quarterly re-negotiation aggressive. (5) DEMAND PATTERNS — Japanese buyers often ask for slow downward price erosion year-on-year ('改善活動' / 'cost-down activity'), preferred over big one-time cuts. (6) GAIATSU avoidance — competitor-pricing as bargaining chip works modestly in Nhật, less than in West. Vendor may prefer to lose deal rather than match aggressively, fearing precedent. (7) FOR VIETNAM-JAPAN supply chain: Vietnamese buyers can over-rely on hard-bargain tactics learned from Western training; Japan-specific approach (relationship + slow erosion) often more sustainable.",
+    "tip_advice_vi": "Vendor negotiation 6-step: (1) PREP — 3 competitor quotes minimum, market price database; show vendor you know market without being aggressive. (2) FRAMING — 'ご相談したい' tone, not '交渉します'. (3) PROVIDE DATA — '5%差' specific number (not 'much cheaper elsewhere'); shows reasoning. (4) PROPOSE WIN-WIN — volume increase, longer commitment, reduced SKU complexity, faster payment terms — these all give vendor something for cutting price. (5) ACCEPT NEGOTIATION ROOM — don't push for max cut; settle around midpoint between your ideal and their initial ask. (6) DOCUMENT — modify quote, sign updated 注文書 (purchase order). Common mistakes: (a) Threatening to switch immediately — Nhật vendor may call your bluff and walk away, especially if smaller buyer; (b) Demanding cuts without offering anything — appears greedy; (c) Public meeting embarrassment — never raise pricing concerns in front of vendor's customer or executive; (d) Ignoring relationship history — long-term vendor should be approached differently than new vendor. Phrase to memorize: '長期的なパートナーシップを念頭に、双方にとって持続可能な価格設定を模索いたしたく存じます.' Embeds long-term thinking, mutual benefit, sustainability — three pillars of Nhật vendor relations."
+  },
+  {
+    "id": 106,
+    "title": "Professional negotiation — constructive disagreement with senior",
+    "title_vi": "Đàm phán chuyên nghiệp — Bất đồng mang tính xây dựng với cấp trên",
+    "title_en": "Professional negotiation — constructive disagreement with senior",
+    "category": "professional-negotiation",
+    "level": "C1",
+    "vocabulary": [
+      { "japanese": "異議 (いぎ)", "english": "objection" },
+      { "japanese": "異論 (いろん)", "english": "different opinion" },
+      { "japanese": "申し上げる (もうしあげる)", "english": "to humbly say (謙譲語)" },
+      { "japanese": "失礼ながら (しつれいながら)", "english": "with respect / forgive my forwardness" },
+      { "japanese": "拝見する (はいけんする)", "english": "to humbly look at" },
+      { "japanese": "私見 (しけん)", "english": "personal opinion (humble)" },
+      { "japanese": "検討の余地 (けんとうのよち)", "english": "room for consideration" },
+      { "japanese": "誠に恐縮 (まことにきょうしゅく)", "english": "truly sorry / apologetic" },
+      { "japanese": "補足 (ほそく)", "english": "supplement / additional input" },
+      { "japanese": "別の角度 (べつのかくど)", "english": "different angle" }
+    ],
+    "examples": [
+      { "japanese": "失礼ながら、私見を申し上げてもよろしいでしょうか。", "english": "With respect, may I humbly state my personal view?" },
+      { "japanese": "部長のお考えに大筋では賛同いたしますが、一点気になる点がございます。", "english": "I largely agree with your thinking, Director, but there is one point of concern." },
+      { "japanese": "異論を申し上げる立場にはございませんが、別の角度からの見方も補足させていただければと存じます。", "english": "I am not in a position to raise objections, but I would like to add a view from a different angle." },
+      { "japanese": "ご指摘の方針、ごもっともでございますが、〜の場合に懸念がございます。", "english": "Your direction is entirely reasonable, but there is concern in the case of ~." },
+      { "japanese": "私の理解不足かもしれませんが、〜という解釈で間違いないでしょうか。", "english": "Perhaps my understanding is lacking, but is the interpretation ~ correct?" },
+      { "japanese": "ご判断は部長にお任せいたしますが、一案として申し上げる次第でございます。", "english": "I leave the judgment to you, Director — I offer this only as one option." },
+      { "japanese": "改めて精査のうえ、明日午前中にご相談に上がってもよろしいでしょうか。", "english": "After scrutinizing again, may I come to consult tomorrow morning?" }
+    ],
+    "dialogue": [
+      { "speaker": "社員", "japanese": "部長、お時間よろしいでしょうか。先ほどのご方針について、少々補足させていただきたく。", "english": "Director, is your time available? I would like to supplement the direction discussed earlier." },
+      { "speaker": "部長", "japanese": "ええ、何でしょうか。", "english": "Yes, what is it?" },
+      { "speaker": "社員", "japanese": "失礼ながら、一点だけ気になる点が。", "english": "With respect, just one point of concern." },
+      { "speaker": "部長", "japanese": "言ってみてください。", "english": "Please go ahead." }
+    ],
+    "dialogue_long": [
+      { "speaker": "社員", "japanese": "部長、お時間少々頂戴できますでしょうか。先ほどの会議でご指示いただきましたX社向けの提案書の件、補足させていただきたく参りました。", "english": "Director, may I have a few minutes? I came to supplement the X-Company proposal direction you gave in the meeting earlier." },
+      { "speaker": "部長", "japanese": "ええ、伺います。何か気になる点が。", "english": "Yes, I'm listening. Is there a concern?" },
+      { "speaker": "社員", "japanese": "大筋では部長のお方針に賛同いたします。お考えの戦略は、御社との関係強化に資するものと存じます。ただ、失礼ながら一点だけ補足させていただきたく。", "english": "I broadly agree with your direction. The strategy you envision will, I believe, contribute to strengthening relations with the company. However, with respect, I would add just one point." },
+      { "speaker": "部長", "japanese": "どうぞ。", "english": "Please." },
+      { "speaker": "社員", "japanese": "私の理解不足の可能性も十分にございますが、ご提示いただいた価格設定が、市場相場と比較してやや高めかと感じております。", "english": "It may well be my own lack of understanding, but the pricing presented feels somewhat high compared with market rates." },
+      { "speaker": "部長", "japanese": "なるほど。具体的には。", "english": "I see. Specifically?" },
+      { "speaker": "社員", "japanese": "同業のY社さんが類似プロジェクトで提示された価格を、ある程度推測しております。詳細な根拠は控えますが、おそらく今回の弊社価格は10%ほど上回るかと。", "english": "I have some estimate of the price peer Y-Company offered for a similar project. I will withhold detailed grounds, but our current price likely runs about 10% above." },
+      { "speaker": "部長", "japanese": "そうですか。それは社内向けにきちんと根拠を整理しておく必要がありますね。", "english": "Is that so? Then we need to organize the rationale properly for internal purposes." },
+      { "speaker": "社員", "japanese": "さようでございます。営業現場としての懸念は、X社が複数社比較を行った場合、価格面で不利になる可能性がある点でございます。", "english": "Indeed. The sales-floor concern is that if X-Company conducts multi-firm comparison, we may be disadvantaged on price." },
+      { "speaker": "部長", "japanese": "ご指摘ありがとうございます。何か対案はございますか。", "english": "Thank you for the point. Do you have a counter-proposal?" },
+      { "speaker": "社員", "japanese": "一案として、価格は維持しつつ、サポート期間延長やトレーニング無償提供などの付加価値を盛り込む案も考えられるかと。ただ、ご判断は部長にお任せいたします。", "english": "As one option, holding the price while adding extended support and free training — added value — might be conceivable. But the judgment I leave to you." },
+      { "speaker": "部長", "japanese": "それは検討の余地ありますね。明日午前、提案書修正案を持ってきてもらえますか。", "english": "That has room for consideration. Could you bring a revised proposal tomorrow morning?" },
+      { "speaker": "社員", "japanese": "かしこまりました。明日10時頃、改めて相談させていただきます。失礼ながら申し上げまして、誠に恐縮でございました。", "english": "Understood. I will consult again at around 10 tomorrow. I am truly sorry for speaking out of turn." },
+      { "speaker": "部長", "japanese": "いえ、率直なご意見ありがとうございました。今後とも気がついた点はお知らせください。", "english": "No, thank you for your candid view. Please let me know whatever you notice going forward." }
+    ],
+    "roleplay_prompts": [
+      "Sếp đề xuất một plan bạn thấy có lỗ hổng. Diễn tập câu mở bằng acknowledge + buried disagreement. Cấu trúc: 'お考えに大筋では賛同いたしますが、一点〜'. KHÔNG mở bằng '違うと思います'.",
+      "Sếp insist 'đúng rồi, làm theo'. Diễn tập câu HEDGE-RETREAT — không cứng đầu nhưng để lại thông tin. 'ご判断にお任せいたしますが、〜の場合は、〜'. Plant doubt without confronting.",
+      "Sếp publicly criticize ý kiến của bạn trong meeting. Diễn tập câu RECOVER without losing face: 'ご指摘ありがとうございます。私の説明が不十分でございました。〜'. Take blame for clarity, not for substance."
+    ],
+    "register_notes": "上司への異論 register là test ULTIMATE của business Japanese. (1) ENTRY framing — '失礼ながら / 私見を申し上げてもよろしいでしょうか / 補足させていただきたく' — never enter without permission-seeking buffer. (2) AGREE-FIRST — '大筋では賛同いたします' / 'ごもっともでございます' must precede dissent. Skipping = 失礼. (3) HEDGE OWNERSHIP — '私の理解不足かもしれませんが' (perhaps my misunderstanding) shifts ownership of disagreement TỪ sếp's error TO your possible misunderstanding. Saves face. (4) SCENARIO framing — '〜の場合に懸念' — phrase concerns as conditional scenarios, không as absolute objections. (5) DEFER FINAL — '判断はお任せいたします' — explicitly hand decision authority back to sếp even sau khi raising concern. Sếp keeps face of decisive leader. (6) ALTERNATIVE-AS-OPTION — propose alt as '一案として' (as one option), not 'instead'. KHÔNG: '間違っています' (wrong), '反対です' (opposed), 'そうじゃないでしょう' (isn't that not so?). Goal: plant seed of doubt + provide alternative + let sếp 'realize' on own.",
+    "idiom_glosses": [
+      { "idiom": "諫言 (かんげん)", "literal": "Lời can ngăn", "meaning": "[硬い・書き言葉] Lời khuyên thẳng đối với cấp trên — historical samurai concept still operative.", "example": "諫言を申し上げるのは、組織のためを思ってこそでございます。" },
+      { "idiom": "否定はしないが (ひていはしないが)", "literal": "Không phủ nhận nhưng", "meaning": "[硬い] Pivot phrase — không phủ nhận sếp nhưng đặt khía cạnh khác.", "example": "部長のお考えを否定はしないが、別の見方も検討に値するかと存じます。" },
+      { "idiom": "角を立てる (かどをたてる)", "literal": "Dựng góc nhọn", "meaning": "[口語混じり] Làm gay gắt / gây va chạm — exact thing to AVOID.", "example": "角を立てずに異論を伝える技術が、上司との関係性の鍵となる。" },
+      { "idiom": "思い直す (おもいなおす)", "literal": "Suy nghĩ lại", "meaning": "[硬い] Suy lại / xem xét lại — hopeful framing of sếp's reaction.", "example": "部長が思い直していただけることを期待いたします。" }
+    ],
+    "cultural_notes_vi": "Nhật corporate disagreement với 上司: (1) HIERARCHY weight — Nhật firms strong hierarchical chain; junior contradicting senior in public = serious 失礼. Private 1-on-1 = acceptable. (2) GROUP HARMONY (和) prioritized over individual correctness — hierarchy assumes senior has more context, even if wrong technically. (3) TIMING — disagree immediately (in meeting) = aggressive; disagree privately later = wisdom. Best practice: ask for private follow-up time. (4) WRITTEN trumps spoken — controversial points often raised in email/memo where author can be more explicit and senior can read without facing contradiction. (5) THIRD-PARTY ESCALATION RISK — if you go over manager's head, even via HR, 8/10 you lose. Manager keeps relationship; you become 'difficult'. (6) GENERATIONAL SHIFT — Gen Z Nhật employees more direct than parents' generation; tech firms / 外資系 accept Western directness; trad firms (manufacturing, banking) still hierarchical. (7) SAVING SENIOR'S FACE — even when disagreement leads to senior's plan being abandoned, never claim victory; let senior frame it as 'his/her decision' to revise. (8) Vietnamese learner perspective: similar hierarchy in Việt firms; difference is Việt accepts more emotional expression in disagreement, Nhật strict suppression of emotion in pro context.",
+    "tip_advice_vi": "Disagreement with senior 7-step: (1) PRIVATE not PUBLIC — request '少々お時間頂戴できますでしょうか'; (2) BUFFER OPEN — '失礼ながら' or '補足させていただきたく'; (3) AGREE FIRST — explicit acknowledgment of senior's good points; (4) HEDGE OWNERSHIP — 'my possible misunderstanding'; (5) CONDITIONAL CONCERN — 'in case of X scenario'; (6) PROPOSE ALTERNATIVE — '一案として'; (7) DEFER FINAL — 'judgment up to you'. Common Vietnamese mistakes: (a) Public disagreement → manager loses face → relationship damaged; (b) No agreement-first preamble → seems oppositional; (c) Stating it as 'wrong' → triggers defensive response; (d) Repeating after rejection — once or twice OK, third time = insubordination. After disagreement: send follow-up email summarizing your concern + offer to discuss further if helpful. Keeps record without being aggressive. Phrase to memorize: '部長のお考えに大筋では賛同いたしますが、一点だけ補足させていただきたく.' Embeds: agreement-first, buffer, single-point focus, humble framing. The framework that makes disagreement possible without conflict in Japanese business."
+  },
+  {
+    "id": 107,
+    "title": "Professional negotiation — cross-cultural Japanese vs Vietnamese style",
+    "title_vi": "Đàm phán chuyên nghiệp — Đàm phán liên văn hóa: phong cách Nhật vs Việt",
+    "title_en": "Professional negotiation — cross-cultural Japanese vs Vietnamese style",
+    "category": "professional-negotiation",
+    "level": "C1",
+    "vocabulary": [
+      { "japanese": "異文化 (いぶんか)", "english": "different culture" },
+      { "japanese": "文化的差異 (ぶんかてきさい)", "english": "cultural difference" },
+      { "japanese": "相互理解 (そうごりかい)", "english": "mutual understanding" },
+      { "japanese": "商習慣 (しょうしゅうかん)", "english": "business custom / commercial practice" },
+      { "japanese": "暗黙の了解 (あんもくのりょうかい)", "english": "tacit understanding" },
+      { "japanese": "摺り合わせ (すりあわせ)", "english": "alignment / harmonization" },
+      { "japanese": "配慮 (はいりょ)", "english": "consideration" },
+      { "japanese": "共通項 (きょうつうこう)", "english": "common ground" },
+      { "japanese": "補完関係 (ほかんかんけい)", "english": "complementary relationship" },
+      { "japanese": "根回し (ねまわし)", "english": "pre-meeting consensus building" }
+    ],
+    "examples": [
+      { "japanese": "日越両国の商習慣の違いを踏まえ、慎重に進めてまいりたく存じます。", "english": "Bearing in mind business-custom differences between Japan and Vietnam, we wish to proceed cautiously." },
+      { "japanese": "日本式は摺り合わせを重視し、ベトナム式は決断速度を重視する傾向がございます。", "english": "The Japanese style tends to value alignment; the Vietnamese style values speed of decision." },
+      { "japanese": "双方の強みを活かす形で、共通項を見出していければと存じます。", "english": "We hope to find common ground in a form that utilizes the strengths of both sides." },
+      { "japanese": "暗黙の了解に頼ることなく、書面での確認を徹底してまいります。", "english": "Without relying on tacit understanding, we will thoroughly confirm in writing." },
+      { "japanese": "ベトナム側の率直なご意見も、双方の理解を深めるうえで貴重でございます。", "english": "The Vietnamese side's frank views are also valuable for deepening mutual understanding." },
+      { "japanese": "文化的差異は障害ではなく、補完関係として捉えることが可能でございます。", "english": "Cultural difference can be grasped not as an obstacle but as a complementary relationship." },
+      { "japanese": "当初は摩擦が生じる場面もございますが、長期的には双方の利益に資すると確信しております。", "english": "Initially there may be moments of friction, but in the long run we are confident this will serve both parties' interests." }
+    ],
+    "dialogue": [
+      { "speaker": "日本側", "japanese": "ベトナム側のスピード感には、毎度感心しております。", "english": "We are always impressed by the Vietnamese side's pace." },
+      { "speaker": "ベトナム側", "japanese": "ありがとうございます。日本側の細やかさからは、いつも学ばされております。", "english": "Thank you. We always learn from the Japanese side's attention to detail." },
+      { "speaker": "日本側", "japanese": "双方の強みを活かす形で、合意点を探りたいと存じます。", "english": "I would like to seek points of agreement that draw on both sides' strengths." },
+      { "speaker": "ベトナム側", "japanese": "同感でございます。", "english": "I share that view." }
+    ],
+    "dialogue_long": [
+      { "speaker": "日本側 (山田)", "japanese": "本日はお忙しい中、お時間頂戴し誠にありがとうございます。", "english": "Thank you sincerely for taking time today amid your busy schedule." },
+      { "speaker": "ベトナム側 (Linh)", "japanese": "こちらこそ、ご足労いただき恐縮でございます。", "english": "On the contrary, we are obliged for your visit." },
+      { "speaker": "日本側", "japanese": "早速ですが、先週いただきましたご提案について、社内で検討いたしました結果、いくつか確認したい点が出てまいりました。", "english": "Without delay — regarding the proposal you submitted last week, after internal consideration several points to confirm have emerged." },
+      { "speaker": "ベトナム側", "japanese": "はい、お聞きいたします。どんな点でしょうか。", "english": "Yes, I am listening. What sorts of points?" },
+      { "speaker": "日本側", "japanese": "提案書の納期、3週間とご記載いただきましたが、当社の経験では、類似プロジェクトで4-5週間を要するケースが多いように思われます。", "english": "You wrote a delivery period of three weeks, but in our experience similar projects often require four to five weeks." },
+      { "speaker": "ベトナム側", "japanese": "ご指摘ありがとうございます。弊社チームは、類似案件で3週間で完遂した実績がございますが、御社のご懸念も理解いたします。", "english": "Thank you for the point. Our team has a track record of completing similar work in three weeks, but we understand your concern." },
+      { "speaker": "日本側", "japanese": "失礼ながら、もし途中で予定通り進まない場合の対応について、ご教示いただけますでしょうか。", "english": "With respect, could you instruct us on the response should things not proceed as planned mid-way?" },
+      { "speaker": "ベトナム側", "japanese": "ごもっともなご質問でございます。リスク管理の観点では、通常2週目末に中間チェックを実施し、必要に応じて追加リソース投入を行います。最大1週間の延長まで吸収可能な体制でございます。", "english": "An entirely reasonable question. From a risk-management perspective, we conduct a mid-point check at the end of week two and invest additional resources as needed. The system can absorb up to one week of extension." },
+      { "speaker": "日本側", "japanese": "なるほど、リスク管理の枠組みは整っておられるのですね。安心いたしました。", "english": "I see — your risk-management framework is in place. I am reassured." },
+      { "speaker": "ベトナム側", "japanese": "日本企業様とのお取引では、確実性へのお考えを最優先と承知しております。スピードを担保しつつも、品質と確実性を両立する形で進めさせていただきたく存じます。", "english": "We are aware that in transactions with Japanese firms, the priority on certainty is paramount. We wish to proceed in a form that secures speed while reconciling it with quality and certainty." },
+      { "speaker": "日本側", "japanese": "日越の文化的特性をうまく組み合わせていく形ですね。ベトナム側の素早さと、日本側の念入りな確認 — 双方の強みを活かせれば、本案件はうまくいくかと存じます。", "english": "A form that combines the cultural characteristics of Japan and Vietnam well. The Vietnamese side's swiftness and the Japanese side's careful verification — if we can leverage both, this matter should go well." },
+      { "speaker": "ベトナム側", "japanese": "同感でございます。文化的差異は障害ではなく、補完関係として捉えることができれば、長期的にWin-Winの関係を築けると確信しております。", "english": "I share that view. If cultural difference can be grasped as a complementary relationship rather than an obstacle, we are confident a long-term win-win can be built." },
+      { "speaker": "日本側", "japanese": "それでは、本日の議論を踏まえまして、当社内で再検討のうえ、来週中には正式回答をお送りいたします。", "english": "Then, taking today's discussion into account, after re-consideration internally we will send our formal response within next week." },
+      { "speaker": "ベトナム側", "japanese": "かしこまりました。引き続きどうぞよろしくお願い申し上げます。", "english": "Understood. We respectfully ask for your continued cooperation." }
+    ],
+    "roleplay_prompts": [
+      "Bạn (Vietnamese team) đang frustrate với 根回し approach của Nhật partner. Diễn tập câu LEARN — không complain — '日本側のプロセスを学ばせていただきたく〜'. Frame as your learning, not their slowness.",
+      "Nhật partner sếp wants 'guarantee' on every commitment. You're used to Việt-style 'we'll figure out as we go'. Diễn tập câu translate Việt practice into Nhật-acceptable form: 'リスク管理の枠組みとして〜' — frame iteration as risk management, not 'as we go'.",
+      "Lunar New Year phải tạm dừng project nhưng Nhật team không hiểu Tết importance. Diễn tập câu giải thích 1 phút about Tết tầm quan trọng + propose specific plan to manage handover. Tránh 'đó là văn hóa của chúng tôi' defensive."
+    ],
+    "register_notes": "Cross-cultural negotiation register: meta-level — bạn ngầm giải thích văn hóa MÌNH trong khi tôn trọng văn hóa CỦA HỌ. (1) ACKNOWLEDGE BOTH — '日本側の〜' và 'ベトナム側の〜' separately, không '我々' để collapse. (2) STRENGTHS framing — không 'we have problems with each other'; nói '双方の強み'. (3) BRIDGE phrases — '補完関係' (complementary relationship), '相互理解' (mutual understanding) — embed văn hóa khác là asset, không deficit. (4) PROCESS LANGUAGE — when explain Việt practice, dùng risk-management framework Nhật understand: 'チェックポイント', 'リスク吸収体制'. (5) HONEST about gaps — không pretend cultures same. '日本のスピード感とは異なるかもしれませんが' (may differ from Japan's pace) acknowledges gap before bridging. (6) LONG-TERM framing — '長期的には' / 'Win-Win' — Nhật value relationship continuity. KHÔNG: '日本人は遅い' (Japanese are slow), 'ベトナム式の方がいい' (Vietnamese way is better). Both = relationship killer.",
+    "idiom_glosses": [
+      { "idiom": "摺り合わせ (すりあわせ)", "literal": "Mài cọ vào nhau", "meaning": "[硬い・書き言葉] Tinh chỉnh khớp với nhau — Japanese practice signature.", "example": "摺り合わせを重ねた結果、双方が納得する形に至りました。" },
+      { "idiom": "ウィン・ウィン", "literal": "Win-Win (loanword)", "meaning": "[カタカナ・口語混じり] Cùng có lợi — globalist business term.", "example": "文化的特性を活かし、ウィン・ウィンの関係を構築してまいります。" },
+      { "idiom": "一長一短 (いっちょういったん)", "literal": "Một dài một ngắn", "meaning": "[硬い] Mỗi bên có điểm mạnh và điểm yếu — used to acknowledge cultural trade-offs.", "example": "日本式とベトナム式は一長一短の関係にあると申せます。" },
+      { "idiom": "落としどころを探る (おとしどころをさぐる)", "literal": "Tìm điểm để hạ xuống", "meaning": "[口語/会話] Tìm điểm thỏa hiệp — central activity.", "example": "双方の文化的特性を踏まえ、最適な落としどころを探ってまいります。" }
+    ],
+    "cultural_notes_vi": "Vietnam-Japan business interaction: (1) PACE DIFFERENCE — Japanese decision via 根回し takes weeks; Việt decision can happen in single meeting. Mutual frustration: Việt sees Nhật as slow; Nhật sees Việt as reckless. Both views miss the structural reason (consensus-building vs hierarchy + speed). (2) RISK TOLERANCE — Nhật risk-averse, prefer guarantees; Việt risk-adaptive, prefer iteration. When Nhật ask 'guarantee', Việt panic; when Việt say 'we'll figure out', Nhật panic. Bridge: framework risk management. (3) CONFLICT STYLE — Nhật indirect ('検討します' = often 'no'); Việt more direct in negotiations. Việt teams need to learn Nhật indirect signals. (4) FACE-LOSS — Nhật extremely sensitive to public face-loss; Việt more comfortable with public correction. Việt teams in JV với Nhật should mirror Nhật standard for cross-team interactions. (5) HOLIDAY ALIGNMENT — Tết (Việt) and 正月 (Nhật) different periods (lunar vs solar). Project planning across both = need explicit handover protocol. (6) LANGUAGE — even when both sides speak English, important to know that 80% of subtext lost in non-native English. Use English for formal protocol, but Vietnamese counterpart with Japanese skills (or 通訳) for sensitive moments. (7) GENERATIONAL — Younger Japanese generation more direct than parents'; younger Vietnamese more risk-aware. Younger team mix often easier than mixed-generation team mix. (8) SUCCESS PATTERN — Vietnamese teams who succeed in JV with Japan: high English/Japanese fluency, learn Japanese business protocols thoroughly, hire Japanese cultural consultant for first 6 months.",
+    "tip_advice_vi": "Cross-cultural negotiation 8-step: (1) PRE-LEARN — Vietnamese team learn 根回し, 報連相 (hou-ren-sou: report-contact-consult), 名刺 etiquette before any meeting; (2) BRING TRANSLATOR even if both sides speak English — for sensitive negotiation; (3) DOCUMENT IN BOTH languages — Nhật prefer written; (4) ALLOW NEMAWASHI TIME — schedule 2-3x more time than Western negotiation; (5) REFERENCE BOTH cultures' strengths — never imply one is 'better'; (6) USE BRIDGE LANGUAGE — risk management, win-win, complementary; (7) DEBRIEF INTERNALLY — Vietnamese team after Nhật meeting: discuss what 信号 might have been missed; (8) FOLLOW UP IN WRITING — within 24h, summary email of meeting in both English and Japanese. Common Vietnamese team mistakes: (a) Treating Japanese 'はい' as 'yes' (often = 'I hear you'); (b) Pushing for closure when Nhật team wants to consult; (c) Bringing competing offer too early in negotiation; (d) Public correction of Japanese counterpart's mistake — should be done privately. Common Japanese team mistakes (Vietnamese learners can subtly redirect): (a) Treating Vietnamese speed as carelessness; (b) Demanding guarantees Vietnamese partner can't realistically provide; (c) Ignoring Tết/Lunar New Year impact on schedules. Phrase to memorize: '双方の強みを活かす形で、共通項を見出していければと存じます.' Embeds mutual respect, complementarity, joint search."
+  },
+  {
+    "id": 108,
+    "title": "Professional negotiation — formal workplace dispute resolution",
+    "title_vi": "Đàm phán chuyên nghiệp — Giải quyết tranh chấp nơi làm việc chính thức",
+    "title_en": "Professional negotiation — formal workplace dispute resolution",
+    "category": "professional-negotiation",
+    "level": "C1",
+    "vocabulary": [
+      { "japanese": "紛争 (ふんそう)", "english": "dispute" },
+      { "japanese": "解決 (かいけつ)", "english": "resolution" },
+      { "japanese": "仲裁 (ちゅうさい)", "english": "arbitration / mediation" },
+      { "japanese": "調停 (ちょうてい)", "english": "mediation" },
+      { "japanese": "苦情 (くじょう)", "english": "complaint" },
+      { "japanese": "申し立て (もうしたて)", "english": "formal complaint / filing" },
+      { "japanese": "面談 (めんだん)", "english": "interview / meeting" },
+      { "japanese": "中立的 (ちゅうりつてき)", "english": "neutral" },
+      { "japanese": "事実関係 (じじつかんけい)", "english": "facts of the matter" },
+      { "japanese": "是正 (ぜせい)", "english": "rectification" }
+    ],
+    "examples": [
+      { "japanese": "弊社の人事部として、中立的立場から事実関係の確認をさせていただきます。", "english": "As the company's HR, we will verify the facts from a neutral standpoint." },
+      { "japanese": "ご両者からの申し立てを慎重に拝聴し、適切な対応を講じてまいります。", "english": "We will listen carefully to filings from both parties and take appropriate measures." },
+      { "japanese": "双方の認識のずれを整理したうえで、是正策を検討いたします。", "english": "After organizing the misalignment in both sides' perceptions, we will examine corrective measures." },
+      { "japanese": "本件は内密に取り扱い、公開はいたしません。", "english": "This matter will be handled in confidence and will not be made public." },
+      { "japanese": "今後の円滑な業務遂行のため、双方歩み寄りのお考えはございますでしょうか。", "english": "For smooth future operations, would each of you consider stepping toward the other?" },
+      { "japanese": "必要に応じて第三者の仲裁を導入することも検討の一つでございます。", "english": "As needed, introducing third-party mediation is one option to consider." },
+      { "japanese": "本日のご面談で得た情報は、社内規程に基づき適切に取り扱います。", "english": "Information obtained in today's meeting will be handled appropriately under internal rules." }
+    ],
+    "dialogue": [
+      { "speaker": "HR", "japanese": "田中さん、本日はお時間頂戴し誠にありがとうございます。", "english": "Mr. Tanaka, thank you sincerely for your time today." },
+      { "speaker": "社員", "japanese": "いえ、こちらこそ。", "english": "No, on the contrary." },
+      { "speaker": "HR", "japanese": "先日ご提出いただいた申し立てについて、事実関係を確認させていただきたく。", "english": "I'd like to verify the facts regarding the filing you submitted recently." },
+      { "speaker": "社員", "japanese": "はい、お願いいたします。", "english": "Yes, please proceed." }
+    ],
+    "dialogue_long": [
+      { "speaker": "HR (人事)", "japanese": "田中さん、お忙しい中お時間頂戴し恐縮でございます。本日は、先日ご提出いただいた申し立てに関するご面談でございます。本件は内密に取り扱いますので、ご安心ください。", "english": "Mr. Tanaka, sorry to take your time in your busy schedule. Today is the meeting concerning the filing you submitted recently. This matter is handled in confidence, so please be assured." },
+      { "speaker": "田中", "japanese": "ありがとうございます。", "english": "Thank you." },
+      { "speaker": "HR", "japanese": "それでは、申し立て内容を改めて整理させていただきます。山田部長との業務指示の食い違いに起因する問題と認識しておりますが、相違ございませんでしょうか。", "english": "Let me review the filing content. We understand the issue stems from a misalignment of work directives with Director Yamada — is there any disagreement with that?" },
+      { "speaker": "田中", "japanese": "さようでございます。具体的には、3月のプロジェクトの優先順位について、明確な指示が出されない中で、業務遅延の責任を問われた点が問題でございます。", "english": "That is so. Specifically, the issue is that, regarding March's project priority, with no clear directive issued, I was held responsible for delays." },
+      { "speaker": "HR", "japanese": "なるほど。事実関係の確認のため、いくつかお尋ねしてもよろしいでしょうか。指示が不明確と感じられた具体的な日時とご状況を、可能な範囲でお話しいただけますか。", "english": "I see. To verify facts, may I ask several questions? Could you describe specific date-times and situations where directives felt unclear, to the extent possible?" },
+      { "speaker": "田中", "japanese": "3月10日の朝礼で、優先順位がA案件と指示されましたが、同日午後の会議でB案件が優先と変更されました。文書での通知はございませんでした。", "english": "At the morning meeting on March 10, priority was directed as Project A; in the afternoon meeting same day, it was changed to Project B as priority. There was no written notice." },
+      { "speaker": "HR", "japanese": "了解いたしました。山田部長側にも、別途ご面談を実施し、ご認識を確認いたします。両者のお話を踏まえ、事実関係を整理させていただきます。", "english": "Understood. We will separately conduct an interview with Director Yamada to confirm his perception. Based on both accounts, we will organize the facts." },
+      { "speaker": "田中", "japanese": "ご検討よろしくお願いいたします。", "english": "I respectfully ask for your consideration." },
+      { "speaker": "HR", "japanese": "一点、率直にお伺いしてもよろしいでしょうか。今回の件、最終的にどのような形での解決をお望みでしょうか。", "english": "One thing, may I ask candidly — what form of final resolution do you wish for this matter?" },
+      { "speaker": "田中", "japanese": "異動を希望しているわけではございません。指示系統の明確化と、過去の評価の修正をお願いしたく存じます。", "english": "It is not that I wish for transfer. I would request clarification of the chain of directives and revision of past evaluations." },
+      { "speaker": "HR", "japanese": "かしこまりました。ご希望は理解いたしました。今後、双方のお話を整理のうえ、両者で歩み寄れる是正案を策定いたします。来週中に再度ご面談の場を設けさせていただきますので、よろしくお願いいたします。", "english": "Understood. Your wishes I have grasped. After organizing both accounts, we will draft a corrective measure both parties can move toward. We will arrange another meeting next week." },
+      { "speaker": "田中", "japanese": "ありがとうございます。慎重なご対応に感謝申し上げます。", "english": "Thank you. I am grateful for your careful handling." },
+      { "speaker": "HR", "japanese": "いえ、当然のことでございます。本件、誠意をもって対応してまいります。", "english": "No, it is only natural. We will handle this matter with sincerity going forward." }
+    ],
+    "roleplay_prompts": [
+      "Bạn là HR, mediating between 2 employees with personal conflict. Diễn tập câu open NEUTRAL: '中立的立場から事実関係の確認をさせていただきます'. Tránh take side / show emotion.",
+      "One employee accuses another of harassment but no witness. Diễn tập câu collect facts without judging: '具体的な日時、状況、お気持ちの経緯' framework. Sequence: time → situation → emotional progression.",
+      "After investigation, you must inform employee complaint not substantiated. Diễn tập câu deliver bad news with dignity: 'ご申し立ての内容について慎重に確認いたしましたが、ハラスメント認定には至らなかったことをご報告いたします. ただし、〜'. Acknowledge their feeling without confirming case."
+    ],
+    "register_notes": "HR mediation register: ULTRA NEUTRAL. (1) NO PRONOUNS — không '私', '我々', '彼/彼女'; thay bằng '当方', '弊社', '田中さん', '山田部長' specific names. Eliminates implicit alignment. (2) FACT-FOCUSED — '事実関係', '客観的な状況' — không '感情' / 'お気持ち' as primary basis (because 'feelings' không formal grounds for HR action). (3) PROCESS LANGUAGE — '面談', '事実確認', '是正策' — process terminology buffers raw conflict. (4) CONFIDENTIALITY signaling — '内密', '社内規程に基づき適切に取り扱います' — must explicitly state to gain trust. (5) TWO-SIDED — never investigate one side; '両者のお話', '双方の認識' — symmetrical phrasing prevents bias appearance. (6) CLOSING WITHOUT JUDGMENT — '是正案を策定', '歩み寄り' — solution-oriented language. KHÔNG: '正しい / 間違い' (right/wrong), 'あなたの言うとおり' (you're correct — takes side), 'もっと我慢すべき' (should endure more — invalidates).",
+    "idiom_glosses": [
+      { "idiom": "歩み寄る (あゆみよる)", "literal": "Bước lại gần", "meaning": "[硬い] Tiến lại gần nhau / nhường nhịn — central goal of mediation.", "example": "双方歩み寄りの姿勢があってこそ、解決の糸口が見えてまいります。" },
+      { "idiom": "火種 (ひだね)", "literal": "Mầm lửa", "meaning": "[硬い] Mầm xung đột — early warning.", "example": "小さな誤解が、放置されれば紛争の火種となる場合がございます。" },
+      { "idiom": "遺恨 (いこん)", "literal": "Hận còn lại", "meaning": "[硬い・書き言葉] Thù oán còn lại — what mediation tries to prevent.", "example": "表面的な解決では、遺恨が残る可能性が否定できません。" },
+      { "idiom": "落としどころ (おとしどころ)", "literal": "Chỗ để hạ xuống", "meaning": "[口語/会話] Điểm thỏa hiệp — same as meeting use.", "example": "双方が納得できる落としどころを探る必要がございます。" }
+    ],
+    "cultural_notes_vi": "Workplace dispute resolution Nhật: (1) HARASSMENT TYPES — Japanese law recognizes パワハラ (power harassment), セクハラ (sexual harassment), マタハラ (maternity harassment), モラハラ (moral harassment). Each has specific legal definition. (2) RELUCTANCE TO COMPLAIN — Japanese employees historically reluctant to file formal complaint due to stigma + fear of retaliation. New harassment laws (2020) strengthening protections; still cultural resistance. (3) HR ROLE — typically HR investigates internally; major cases may go to 労基署 (labor standards office) or 弁護士 (lawyer). HR results ranges from coaching to disciplinary action. (4) MEDIATION CULTURE — Japanese culture preference for indirect resolution; formal mediation often last resort after informal channels (manager, mentor) failed. (5) TIMELINE — Japanese investigation typically 2-4 weeks, longer than Western counterparts; thoroughness valued over speed. (6) DOCUMENTATION CRITICAL — for complaint to succeed, employee should document: dates, times, locations, witnesses, copies of relevant emails. Without documentation, 'he-said/she-said' often results in inconclusive finding. (7) OUTCOMES — frequent outcome: training for involved parties, revised reporting structure, transfer of one party (often the complainant — controversial). Pure 'punishment' rare. (8) Vietnamese learner caution: harassment standards differ between Vietnam and Japan; behavior acceptable in Việt context (loud public correction, casual touch) may register as harassment in Nhật.",
+    "tip_advice_vi": "Workplace dispute 7-step (employee side): (1) DOCUMENT EARLY — keep dated log of incidents, save emails, screenshots; (2) RAISE INFORMALLY FIRST — direct conversation with offender, then with manager; Japanese culture expects this attempt; (3) ESCALATE TO HR with documentation when informal fails; (4) WRITTEN COMPLAINT — formal 申立書 with specific incidents, not generalized grievances; (5) PARTICIPATE IN INVESTIGATION fully — answer questions completely, provide all evidence; (6) MANAGE EXPECTATIONS — outcome may not be 'punishment of offender'; often process improvement, training, transfer; (7) IF UNRESOLVED, external option (labor lawyer, 労基署) — but be aware this damages internal relationships. Vietnamese learner specific: (a) Tone matters — formal 申立 in calm written language stronger than emotional verbal complaints; (b) Witnesses help but not always available — direct evidence (recordings, emails) stronger; (c) Be aware some Japanese firms still discriminate against complainant despite law. HR side perspective: '内密に取り扱います' must be a real promise. Phrase to memorize: '双方歩み寄りのお考えはございますでしょうか.' Reframes dispute from 'win-lose' to 'mutual adjustment'."
+  },
+  {
+    "id": 109,
+    "title": "Professional negotiation — closing or walking away",
+    "title_vi": "Đàm phán chuyên nghiệp — Kết thúc giao dịch hoặc rút lui",
+    "title_en": "Professional negotiation — closing or walking away",
+    "category": "professional-negotiation",
+    "level": "C1",
+    "vocabulary": [
+      { "japanese": "取引終結 (とりひきしゅうけつ)", "english": "closing transaction" },
+      { "japanese": "撤退 (てったい)", "english": "withdrawal / pullout" },
+      { "japanese": "終了 (しゅうりょう)", "english": "termination / end" },
+      { "japanese": "契約解除 (けいやくかいじょ)", "english": "contract termination" },
+      { "japanese": "円満 (えんまん)", "english": "amicable" },
+      { "japanese": "見送り (みおくり)", "english": "passing on / declining" },
+      { "japanese": "一旦保留 (いったんほりゅう)", "english": "putting on hold" },
+      { "japanese": "後日改めて (ごじつあらためて)", "english": "at a later date" },
+      { "japanese": "ご縁 (ごえん)", "english": "connection / opportunity" },
+      { "japanese": "苦渋 (くじゅう)", "english": "agony / bitter (decision)" }
+    ],
+    "examples": [
+      { "japanese": "諸般の事情を勘案いたしまして、本件の見送りを決定いたしました。", "english": "Taking various circumstances into account, we have decided to pass on this matter." },
+      { "japanese": "御社のご提案、誠に魅力的でございましたが、社内事情により今回はお見送りとさせていただきます。", "english": "Your proposal was truly attractive, but due to internal circumstances we will pass this time." },
+      { "japanese": "別の機会にご縁がありましたら、ぜひお声がけいただければ幸いに存じます。", "english": "If a connection arises on another occasion, we would be most grateful for a contact." },
+      { "japanese": "ここまでのお取引、誠にありがとうございました。", "english": "Thank you sincerely for our business up to this point." },
+      { "japanese": "円満な形で本件を終結させていただきたく、ご協力をお願い申し上げます。", "english": "We wish to conclude this matter amicably, and respectfully ask for your cooperation." },
+      { "japanese": "撤退の判断は苦渋のものでございましたが、長期的な視点からのご理解をお願いいたします。", "english": "The withdrawal decision was an agonizing one, but we ask for your understanding from a long-term perspective." },
+      { "japanese": "本件は一旦保留とし、状況の変化に応じて改めてご相談させていただければと存じます。", "english": "We will place this on hold for now, and consult again should circumstances change." }
+    ],
+    "dialogue": [
+      { "speaker": "A", "japanese": "ご提案いただきました件、社内で慎重に検討してまいりましたが。", "english": "Regarding the proposal you submitted, we have carefully considered it internally." },
+      { "speaker": "B", "japanese": "お返事をお待ちしておりました。", "english": "We have been awaiting your reply." },
+      { "speaker": "A", "japanese": "誠に申し訳ございませんが、今回はお見送りとさせていただきたく。", "english": "We are truly sorry, but we would like to pass this time." },
+      { "speaker": "B", "japanese": "そうですか。理由を伺ってもよろしいでしょうか。", "english": "I see. May I ask the reason?" }
+    ],
+    "dialogue_long": [
+      { "speaker": "A (vendor)", "japanese": "いつもお世話になっております。先日のお打ち合わせの件で、お伺いいたしました。", "english": "Thank you for your continued business. I came regarding our recent meeting." },
+      { "speaker": "B (buyer Linh)", "japanese": "お忙しい中ありがとうございます。実は、ご相談したい内容がございまして。", "english": "Thank you for coming in your busy schedule. Actually, there is something I wished to consult about." },
+      { "speaker": "A", "japanese": "はい、伺います。", "english": "Yes, I will listen." },
+      { "speaker": "B", "japanese": "ご提案いただきましたサービス導入の件でございますが、社内で慎重に検討した結果、誠に申し訳ございませんが、今回はお見送りとさせていただきたく存じます。", "english": "Regarding the service-introduction proposal you submitted — after careful internal consideration, we are truly sorry, but we would like to pass this time." },
+      { "speaker": "A", "japanese": "そうでございますか。差し支えなければ、ご判断の理由をお伺いしてもよろしいでしょうか。", "english": "I see. If it is not an inconvenience, may I ask the reason for your decision?" },
+      { "speaker": "B", "japanese": "本年度、社内の予算配分が大きく変わりまして、新規システム導入の優先度を一段下げる方針となりました。御社のご提案そのものに不満があるわけではございません。", "english": "Internal budget allocation has changed significantly this year, and the policy is to lower the priority of new-system introduction by one notch. It is not that there is dissatisfaction with your proposal itself." },
+      { "speaker": "A", "japanese": "なるほど、社内事情でございますね。承知いたしました。", "english": "I see — internal circumstances. Understood." },
+      { "speaker": "B", "japanese": "ここまで丁寧にご対応いただきましたこと、誠に感謝申し上げます。御社の技術力と対応の早さは、社内でも高く評価されておりました。", "english": "I am sincerely grateful for your careful handling up to this point. Your company's technical capability and responsiveness were highly valued internally." },
+      { "speaker": "A", "japanese": "そうおっしゃっていただけますと、こちらとしましても今後の励みになります。", "english": "Hearing you say so will encourage us going forward." },
+      { "speaker": "B", "japanese": "来年度以降、状況が変われば改めてご相談させていただきたく存じます。御社のご担当者様のお名前と連絡先は、引き続き保持させていただいてよろしいでしょうか。", "english": "Should circumstances change next fiscal year onward, we wish to consult again. May we keep your representative's name and contact?" },
+      { "speaker": "A", "japanese": "もちろんでございます。当方からも、適切なタイミングで弊社の最新情報をお送りさせていただければと存じます。", "english": "Of course. From our side as well, we hope to send our latest information at appropriate timing." },
+      { "speaker": "B", "japanese": "ぜひお願いいたします。今回はご縁がございませんでしたが、今後ともよろしくお願い申し上げます。", "english": "Please do. There was no connection this time, but we ask for your continued cooperation." },
+      { "speaker": "A", "japanese": "こちらこそ、今後とも長いお付き合いを賜れますよう、心よりお願い申し上げます。本日はわざわざお時間頂戴し、誠にありがとうございました。", "english": "On the contrary, we sincerely hope to receive a long association going forward. Thank you sincerely for your time today." },
+      { "speaker": "B", "japanese": "ご足労いただき恐縮でございました。", "english": "We are obliged for your having made the effort to come." }
+    ],
+    "roleplay_prompts": [
+      "Bạn phải walk away từ deal đã đàm phán 6 tháng. Diễn tập câu express genuine regret without commit. '苦渋のご判断ではございますが〜' framing. Maintain relationship for future.",
+      "Vendor đã invest đáng kể chuẩn bị offer. Bạn có obligation tinh thần. Diễn tập câu acknowledge investment + decline: '御社のご準備に対する心からの感謝を申し上げる一方で〜'.",
+      "Counterpart push back hard on rejection. Diễn tập câu STAY firm without escalating: '社内方針に基づくご判断でございますので、ご理解賜りたく存じます'. Frame as 'company decision' not personal."
+    ],
+    "register_notes": "Closing / declining register: ULTRA POLITE because emotional moment. (1) EUPHEMISMS for rejection — '見送り' (passing on), '一旦保留' (on hold), '今回はご縁がない' (no connection this time). KHÔNG '断る' (refuse — too direct). (2) SHARED OWNERSHIP of decision — '社内事情', '諸般の事情' (various circumstances) externalize the rejection. Personal preferences should not appear. (3) GRATITUDE FIRST — never start with 'we decline'; start with thanks for time/effort. (4) FUTURE-FRIENDLY — '別の機会にご縁がありましたら' / '改めてご相談させていただければ' — keep door open for future. Even if you'll never work with them again, language preserves dignity. (5) EXPLAIN WITHOUT BLAMING — '社内事情' is enough; don't list specific 'reasons your offer wasn't good enough'. (6) RECIPROCITY — '今後ともよろしくお願いします' standard close even when ending. KHÔNG: '安すぎ' / '高すぎ' / '質が悪い' (too cheap / too expensive / quality bad), '次は別の会社にします' (next time we'll use another firm).",
+    "idiom_glosses": [
+      { "idiom": "縁があったら (えんがあったら)", "literal": "Nếu có duyên", "meaning": "[硬い] Nếu có duyên — keep-door-open phrasing.", "example": "ご縁があったら、ぜひ別の機会にご相談させていただきます。" },
+      { "idiom": "苦渋の決断 (くじゅうのけつだん)", "literal": "Quyết định khổ sở", "meaning": "[硬い・書き言葉] Quyết định khổ sở — difficult close.", "example": "撤退は苦渋の決断でございましたが、長期的視点では避けられない選択でした。" },
+      { "idiom": "後ろ髪を引かれる (うしろがみをひかれる)", "literal": "Tóc sau bị kéo lại", "meaning": "[口語混じり] Luyến tiếc — emotional element.", "example": "撤退には後ろ髪を引かれる思いがございますが、決断いたしました。" },
+      { "idiom": "風向きが変わる (かぜむきがかわる)", "literal": "Hướng gió đổi", "meaning": "[口語混じり] Tình thế thay đổi — context for re-engagement later.", "example": "風向きが変われば、改めてご相談させていただければと存じます。" }
+    ],
+    "cultural_notes_vi": "Japanese closing/walking-away: (1) NEVER A CLEAN BREAK — Japanese business prefers 'see you next time' framing even when situation guarantees no next time. Western 'we'll be in touch' often disingenuous; Japanese version genuinely keeps option open. (2) RELATIONSHIP RESIDUE — vendor whose offer was declined will receive courtesy email from buyer in subsequent year ('how have you been?'). This is genuine, not formality. (3) EXPLANATION CULTURE — Japanese business expects 'the why' even on decline. Just '採用しません' (we won't adopt) feels inadequate; explain (vague but explain). (4) FACE-PRESERVING for VENDOR — vendor invested time and resources; declining without acknowledgment damages their internal reputation (their boss thinks they failed). Buyer's polite framing helps vendor save face. (5) WALKING AWAY mid-deal RARE — most Japanese deals proceed to natural conclusion; walking away is unusual and damages buyer's reputation in industry. (6) SUBSEQUENT WARMING — declined vendors who handled rejection well often get business 12-24 months later. The way decline is handled is itself negotiation. (7) FOREIGN COMPANY DECLINING JP VENDOR — particular care needed because foreign company already 'outsider'; over-blunt decline can damage foreign company's reputation in JP market broadly. (8) Vietnamese learner perspective: Việt business culture more transactional sometimes; Japanese expectation of relationship-preservation through closure is unfamiliar at first.",
+    "tip_advice_vi": "Closing/declining 7-step: (1) NEVER decline by email alone for substantial deal — voice or in-person; (2) THANK FIRST — 'お忙しいところお時間頂戴し誠にありがとうございました'; (3) STATE DECLINE clearly but with euphemism — '見送りとさせていただきます'; (4) PROVIDE GENERAL REASON — '社内事情', 'タイミング', '予算配分' — never specific criticisms of vendor's offer; (5) PRESERVE FUTURE — 'ご縁があれば改めて' / 'タイミングが合えば'; (6) INFORMATION SHARING — share what you can about future opportunities (when next budget cycle, when re-evaluating); (7) WARM CLOSE — 'ますます御発展を心よりお祈り申し上げます' (sincerely wish your continued development). Common Vietnamese mistakes: (a) Email-only decline for substantial relationship — feels cold; (b) Listing specific issues with offer — sounds like critique; (c) Vague 'we'll consider' instead of decline — Japanese vendor will follow up indefinitely thinking deal alive; (d) No future-friendly close — vendor feels written off. Phrase to memorize: '誠に申し訳ございませんが、今回はお見送りとさせていただきたく、別の機会にご縁がございましたら、ぜひお声がけいただければ幸いに存じます.' Combines: apology + euphemism for decline + future-open framing — Japanese-business closing template."
+  },
+  {
+    "id": 110,
+    "title": "Professional negotiation — handling lowball without breaking nemawashi",
+    "title_vi": "Đàm phán chuyên nghiệp — Xử lý đề nghị thấp mà giữ được quan hệ",
+    "title_en": "Professional negotiation — handling lowball without breaking nemawashi",
+    "category": "professional-negotiation",
+    "level": "C1",
+    "vocabulary": [
+      { "japanese": "提示額 (ていじがく)", "english": "offered amount" },
+      { "japanese": "想定外 (そうていがい)", "english": "outside expectations" },
+      { "japanese": "妥当性 (だとうせい)", "english": "appropriateness / validity" },
+      { "japanese": "根拠 (こんきょ)", "english": "basis / grounds" },
+      { "japanese": "再考 (さいこう)", "english": "reconsideration" },
+      { "japanese": "隔たり (へだたり)", "english": "gap / disparity" },
+      { "japanese": "譲歩 (じょうほ)", "english": "concession" },
+      { "japanese": "接点 (せってん)", "english": "common ground" },
+      { "japanese": "値ごろ感 (ねごろかん)", "english": "sense of fair price" },
+      { "japanese": "市場水準 (しじょうすいじゅん)", "english": "market level" }
+    ],
+    "examples": [
+      { "japanese": "ご提示いただきました金額は、弊社の想定とは少々隔たりがあるように感じております。", "english": "The amount you presented seems to have a slight gap from our expectations." },
+      { "japanese": "お見積りの根拠について、もう少し詳しくお教えいただけますでしょうか。", "english": "Could you tell us a bit more in detail about the basis of your estimate?" },
+      { "japanese": "失礼ながら、現時点でのご提示額にお応えするのは難しい状況でございます。", "english": "With respect, it is a difficult situation for us to meet the currently presented amount." },
+      { "japanese": "双方の隔たりを埋めるべく、共通の接点を探っていければと存じます。", "english": "We hope to search for common ground in order to bridge the gap between both sides." },
+      { "japanese": "一度社内で再検討の時間をいただけませんでしょうか。", "english": "Could we have time for one round of internal reconsideration?" },
+      { "japanese": "提示額の差異の理由をお互いに整理しましたうえで、改めてお話を進めさせていただければ幸いです。", "english": "After mutually organizing the reasons for the gap in offered amounts, we would be glad to proceed with discussions again." },
+      { "japanese": "価格以外の側面、例えば納期や支払い条件など、柔軟性を持って検討する余地はございますでしょうか。", "english": "Are there aspects beyond price — for example delivery timing or payment terms — where there is room for flexible consideration?" }
+    ],
+    "dialogue": [
+      { "speaker": "A", "japanese": "ご提示いただいた金額について、率直に申し上げてもよろしいでしょうか。", "english": "Regarding the amount you presented, may I speak frankly?" },
+      { "speaker": "B", "japanese": "もちろんでございます。", "english": "Of course." },
+      { "speaker": "A", "japanese": "弊社の想定とは少々隔たりがあるように感じております。", "english": "It seems to have a slight gap from our expectations." },
+      { "speaker": "B", "japanese": "なるほど。具体的にはどの程度の差異とお考えでしょうか。", "english": "I see. Specifically, what degree of gap do you have in mind?" }
+    ],
+    "dialogue_long": [
+      { "speaker": "A (vendor Mercy)", "japanese": "先日ご提示いただきました金額の件で、お時間頂戴できますでしょうか。", "english": "Could I have your time regarding the amount you presented recently?" },
+      { "speaker": "B (buyer)", "japanese": "もちろんでございます。", "english": "Of course." },
+      { "speaker": "A", "japanese": "失礼ながら、率直に申し上げてもよろしいでしょうか。", "english": "Pardon me, but may I speak frankly?" },
+      { "speaker": "B", "japanese": "ぜひ、お聞かせください。", "english": "Please, do let me hear." },
+      { "speaker": "A", "japanese": "弊社の想定する妥当な水準と比較いたしますと、ご提示いただいた金額には少々隔たりがあるように感じております。具体的には、弊社の市場調査によりますと、同等のサービスが3割ほど高い価格帯で取引されている事例が複数ございます。", "english": "Compared with the appropriate level we anticipate, the amount you presented seems to have a slight gap. Specifically, our market research shows multiple cases where equivalent services traded at about 30 percent higher." },
+      { "speaker": "B", "japanese": "なるほど、ご懸念は理解いたしました。当方の提示額の根拠を改めてご説明させていただきます。本年度、当社の予算配分の制約が厳しく、御社のご提案を採用する場合、価格面での折り合いがつかなければ、社内承認が困難な状況でございます。", "english": "I see — your concern is understood. Let me re-explain the basis of our presented amount. This fiscal year, our budget allocation constraints are strict; should your proposal be adopted, internal approval is difficult unless price alignment is achieved." },
+      { "speaker": "A", "japanese": "社内事情、承知いたしました。価格面での隔たりを埋める方法について、双方で検討する余地はないでしょうか。例えば、サービス範囲の調整、納期の柔軟化、支払い条件の見直しなど、いくつかの選択肢があるかと存じます。", "english": "Internal circumstances — understood. Is there room for both sides to consider methods of bridging the price gap? For example, scope adjustment, delivery flexibility, payment-term review — there are several options." },
+      { "speaker": "B", "japanese": "具体的なご提案をお伺いできますでしょうか。", "english": "Could I hear specific proposals?" },
+      { "speaker": "A", "japanese": "案の一つとしましては、サービスを段階的に導入する形をとり、初年度は基本パッケージのみ、次年度以降に拡張機能を追加する方式でございます。これにより初年度の費用を抑えつつ、長期的なお取引の継続が可能となります。", "english": "One option: a phased introduction — first year basic package only, second year onward adding expansion features. This contains first-year cost while enabling long-term continuation of business." },
+      { "speaker": "B", "japanese": "興味深いご提案でございます。社内に持ち帰り、関係者と相談させていただいてもよろしいでしょうか。", "english": "An interesting proposal. May I take it back internally and consult with stakeholders?" },
+      { "speaker": "A", "japanese": "もちろんでございます。あわせて、競合他社のお見積りの一般的な水準を、参考データとして共有させていただいてもよろしければ、判断材料としてお役立ていただけるかと存じます。", "english": "Of course. In addition, if you would permit, we can share general competitor-quote levels as reference data, useful as material for your judgment." },
+      { "speaker": "B", "japanese": "ぜひお願いいたします。情報を踏まえて、再度社内で検討いたします。", "english": "Please do. Based on the information, we will reconsider internally." },
+      { "speaker": "A", "japanese": "本日は率直なお話、誠にありがとうございました。価格は重要でございますが、価格のみで関係性が決まるものではないと考えております。長期的な信頼関係を築けるよう、双方歩み寄りの姿勢で進めてまいりたく存じます。", "english": "Thank you sincerely for your candid discussion today. Price is important, but we do not believe relationship is determined by price alone. We hope to proceed with a posture of mutual stepping-toward, to build long-term trust." },
+      { "speaker": "B", "japanese": "こちらこそ、率直にお話しいただき感謝申し上げます。前向きに検討させていただきます。", "english": "On the contrary, we are grateful for your frankness. We will consider this in a forward-looking manner." }
+    ],
+    "roleplay_prompts": [
+      "Bạn nhận lowball 30% dưới expectation. Diễn tập câu push back without breaking relationship: '少々隔たりがある' framing + ask for 根拠 buyer's reasoning. Tránh '安すぎる' / 'unacceptable'. Maintain '前向き' tone.",
+      "Buyer offers 'this is final' price below cost. Diễn tập câu provide alternative paths: scope reduction, payment terms, longer-term commitment. 価格以外の側面 framework — explore non-price levers before treating price as fixed.",
+      "After multiple rounds, gap remains. Diễn tập câu walk away gracefully without burning bridge: 'タイミングが合いませんでしたが、ぜひまた別の機会に〜' framing. Preserve future re-engagement window."
+    ],
+    "register_notes": "Lowball-handling register: ASSERTIVE BUT POLITE — must signal disagreement without escalating. (1) UNDERSTATEMENT — '少々隔たりがある' (a slight gap), '想定とは異なる' (differs from expectations) — KHÔNG '低すぎる' (too low) / '受け入れられない' (unacceptable). The Japanese 'slight' is understood as 'significant'. (2) ASK FOR 根拠 — '根拠についてお伺いしたく存じます' — request for basis is polite but pushes back. Forces buyer to articulate, often weakening their position. (3) JOINT FRAMING — '双方の隔たりを埋める' — never 'your offer is wrong'; gap belongs to both sides. (4) ALTERNATIVES — present multiple paths (scope/timeline/payment terms); this maintains '前向き' (forward-leaning) tone. (5) NEVER ESCALATE — 'これは社内方針なので変えられません' = absolute escalation; instead '社内でも再検討の余地があるかもしれません'. (6) PRESERVE 関係 — frame as 'finding the right shape' not 'fighting over price'. KHÔNG: '冗談でしょう' (you must be joking), '話にならない' (out of the question), '他社のほうが高く買い取ってくれる' (others would pay more — competition threat is rude in Japanese context).",
+    "idiom_glosses": [
+      { "idiom": "折り合いをつける (おりあいをつける)", "literal": "Đặt sự khớp nhau", "meaning": "[硬い] Đạt thỏa hiệp — central to lowball negotiation.", "example": "双方が折り合いをつけられる水準を模索してまいります。" },
+      { "idiom": "痛み分け (いたみわけ)", "literal": "Chia nỗi đau", "meaning": "[硬い] Cùng chịu thiệt — both sides give to bridge gap.", "example": "痛み分けの形でも、関係性を維持できる水準を探りたいと存じます。" },
+      { "idiom": "一度持ち帰り (いちどもちかえり)", "literal": "Mang về một lần", "meaning": "[口語] Mang về xin ý kiến nội bộ — buy thinking time.", "example": "一度持ち帰り、社内で再検討させていただきます。" },
+      { "idiom": "値ごろ感 (ねごろかん)", "literal": "Cảm giác giá hợp lý", "meaning": "[口語] Cảm giác giá hợp lý — market intuition.", "example": "御社のご提示は弊社の値ごろ感と少々隔たりがございます。" }
+    ],
+    "cultural_notes_vi": "Japanese lowball culture: (1) RARE INITIAL LOWBALL — Japanese buyers don't typically open with extreme lowball; that's seen as bad-faith negotiation. If lowball offered, often signals real budget constraint, not tactic. (2) SIGNAL VS PRICE — what looks like lowball may actually be 'budget envelope' — buyer truly cannot pay more. Vendor's job: probe whether constraint is real or negotiating tactic. (3) NO HARD COUNTERS — Japanese rarely respond to lowball with hard counter (40% above lowball). Instead, soft response: '隔たり', request for explanation. (4) CONTEXT MATTERS — same '安い' offer can be insulting (in luxury vendor context) or generous (relative to alternatives in cost-pressured industry). (5) BUYER'S CULTURE — Japanese buyers often face strict procurement rules; 'lowball' may reflect approval requirements, not personal preference. Negotiator should distinguish 'individual offers' from 'institutional offer'. (6) FACE-LOSS RISK — directly calling an offer 'too low' damages buyer's face if they're constrained. Better: 'we have a gap, let's understand each other'. (7) Vietnamese learner pitfall: Việt negotiation more direct ('that's too low' / 'final price 50% more'); in Nhật this signals lack of business sophistication and ends deals before they begin.",
+    "tip_advice_vi": "Lowball handling 7-step: (1) PAUSE — never react in real-time; 'お時間いただいてもよろしいでしょうか' buys time; (2) UNDERSTAND BUDGET — request basis ('根拠'), discover whether constraint is genuine or tactical; (3) FRAME AS GAP — '隔たり', not 'low'; (4) EXPLORE NON-PRICE LEVERS — scope, timeline, payment terms, longer-term commitment, exclusivity; (5) PROPOSE ALTERNATIVES — usually 2-3 paths; (6) BUYER PROCESSES INTERNALLY — '一度持ち帰り'; respect the time; (7) RE-ENGAGE WITH RECONSIDERATION — '改めて' / '再考' framing. Common Vietnamese mistakes: (a) Direct counter (e.g. 'we need ¥X minimum') without exploring why buyer offered low; (b) Showing emotion ('安すぎます'); (c) Threatening competition ('他社では...'); (d) Taking 'final price' at face value (Japanese buyers often have flexibility they don't reveal initially). Phrase to memorize: 'ご提示いただいた金額と弊社の想定との間には、少々隔たりがあるように感じております。お見積りの根拠についてもう少しお教えいただければ、双方で接点を探りやすくなるかと存じます.' Combines: gap acknowledgment + request for basis + joint-search framing — lowball-handling template."
+  },
+  {
+    "id": 111,
+    "title": "Professional negotiation — hostile counterpart",
+    "title_vi": "Đàm phán chuyên nghiệp — Đối tác có thái độ thù địch",
+    "title_en": "Professional negotiation — hostile counterpart",
+    "category": "professional-negotiation",
+    "level": "C1",
+    "vocabulary": [
+      { "japanese": "敵対的 (てきたいてき)", "english": "hostile / antagonistic" },
+      { "japanese": "対立 (たいりつ)", "english": "opposition / confrontation" },
+      { "japanese": "緊張 (きんちょう)", "english": "tension" },
+      { "japanese": "高圧的 (こうあつてき)", "english": "high-handed / intimidating" },
+      { "japanese": "冷静 (れいせい)", "english": "composed / calm" },
+      { "japanese": "毅然 (きぜん)", "english": "resolute / unwavering" },
+      { "japanese": "反論 (はんろん)", "english": "counterargument" },
+      { "japanese": "中断 (ちゅうだん)", "english": "interruption / pause" },
+      { "japanese": "賠償 (ばいしょう)", "english": "compensation / damages" },
+      { "japanese": "一線 (いっせん)", "english": "line / limit" }
+    ],
+    "examples": [
+      { "japanese": "ご意見は承りましたが、弊社といたしましても譲れない一線がございます。", "english": "Your opinion is heard, but our company too has a line that cannot be conceded." },
+      { "japanese": "冷静にご議論を進めさせていただきたく、ご協力をお願い申し上げます。", "english": "We respectfully request your cooperation in proceeding with calm discussion." },
+      { "japanese": "高圧的なお言葉は差し控えていただき、事実に基づいた建設的なご議論をお願いいたします。", "english": "Please refrain from high-handed words; we ask for fact-based constructive discussion." },
+      { "japanese": "本日の議論はここで一旦中断し、後日改めて協議の場を設けさせていただきたく存じます。", "english": "We wish to pause today's discussion here, and arrange another consultation at a later date." },
+      { "japanese": "弊社の立場を毅然とお伝えしたいと存じますが、敵対的な姿勢を取るつもりはございません。", "english": "We wish to convey our position resolutely, but have no intention of taking a hostile posture." },
+      { "japanese": "双方の主張を一度整理し、共通の事実認識から議論を再開いたしましょう。", "english": "Let us once organize both sides' assertions and resume discussion from shared factual recognition." },
+      { "japanese": "ご批判の点については承知いたしましたが、その前提が正確であるかにつき、改めて確認させてください。", "english": "We acknowledge the points of criticism, but please let us confirm again whether the premise is accurate." }
+    ],
+    "dialogue": [
+      { "speaker": "A (hostile)", "japanese": "御社の対応は到底容認できません。即時の改善を要求します。", "english": "Your company's handling is by no means acceptable. We demand immediate improvement." },
+      { "speaker": "B", "japanese": "ご懸念は承りました。事実関係について、改めて整理させていただいてもよろしいでしょうか。", "english": "Your concern is heard. May we re-organize the facts of the matter?" },
+      { "speaker": "A", "japanese": "言い訳は結構です。", "english": "Excuses are not needed." },
+      { "speaker": "B", "japanese": "言い訳ではなく、共通の認識から議論を進めるためのご確認でございます。", "english": "Not excuses — confirmation in order to proceed from shared recognition." }
+    ],
+    "dialogue_long": [
+      { "speaker": "A (hostile client Tran)", "japanese": "御社の対応は到底容認できるものではありません。今回の遅延、誰の責任ですか。即時の改善と賠償を要求します。", "english": "Your company's handling is by no means acceptable. Whose responsibility is this delay? We demand immediate improvement and compensation." },
+      { "speaker": "B (vendor Mercy)", "japanese": "ご不快な思いをおかけし、心よりお詫び申し上げます。お話を伺うにあたり、まず事実関係を整理させていただいてもよろしいでしょうか。", "english": "We apologize sincerely for the discomfort caused. In hearing you out, may we first organize the facts of the matter?" },
+      { "speaker": "A", "japanese": "整理も何もない。期日に間に合わなかった、それが事実です。", "english": "There's nothing to organize. You did not meet the deadline — that is the fact." },
+      { "speaker": "B", "japanese": "期日のお約束を守れなかったことは事実でございます。その責任は弊社にございます。お詫び申し上げます。一方で、今後の対応をどのような形で進めるべきかについては、双方で建設的に議論する必要があるかと存じます。", "english": "It is fact that we failed to keep the promised deadline. That responsibility lies with us. We apologize. On the other hand, regarding how to proceed with the response going forward, we believe both sides need to discuss constructively." },
+      { "speaker": "A", "japanese": "建設的という言葉で逃げないでいただきたい。具体的にどう償うのですか。", "english": "Don't escape with the word 'constructive'. Specifically, how will you make amends?" },
+      { "speaker": "B", "japanese": "ご批判を真摯に受け止めております。具体的な対応案として、三点ご提案させていただきます。一つ、追加費用なしでの完了。二つ、次回プロジェクトでの優先対応。三つ、本件に関する再発防止策の文書提出。以上が現時点での誠意ある提案でございます。", "english": "We accept your criticism sincerely. As specific responses, allow us to propose three points: one, completion without additional cost; two, priority handling on the next project; three, submission of a written recurrence-prevention plan for this matter. These are sincere proposals at this point." },
+      { "speaker": "A", "japanese": "それでは不十分です。賠償金を支払ってください。", "english": "That is insufficient. Pay compensation." },
+      { "speaker": "B", "japanese": "ご要望は承りました。賠償金につきましては、契約書の規定に基づき協議が必要となる事項でございます。本日、即答することは控えさせていただきますが、社内で正式に検討し、後日改めてご回答申し上げます。", "english": "Your request is heard. Regarding compensation, this is a matter requiring discussion based on contract provisions. We refrain from immediate answer today, but will examine internally and respond formally at a later date." },
+      { "speaker": "A", "japanese": "即答できないなら、誠意がないということです。", "english": "If you cannot answer immediately, it means you have no sincerity." },
+      { "speaker": "B", "japanese": "誠意の表現方法は、即答ではなく、適切な検討と確実な実行であると弊社は考えております。本日の議論を踏まえ、社内で慎重に検討させていただきたく存じます。", "english": "We believe the expression of sincerity is not immediate answer but appropriate examination and reliable execution. Based on today's discussion, we wish to consider carefully internally." },
+      { "speaker": "A", "japanese": "では、来週までに回答してください。それまでは契約継続の判断を保留します。", "english": "Then respond by next week. Until then, we hold the decision on contract continuation." },
+      { "speaker": "B", "japanese": "承知いたしました。来週中に正式回答をお持ちいたします。本日の率直なご指摘、誠にありがとうございました。今後ともよろしくお願い申し上げます。", "english": "Understood. We will bring formal response within next week. Thank you sincerely for today's frank criticism. We ask for your continued cooperation." },
+      { "speaker": "A", "japanese": "よろしく頼みます。", "english": "We rely on you." },
+      { "speaker": "B", "japanese": "失礼いたしました。", "english": "Pardon us." }
+    ],
+    "roleplay_prompts": [
+      "Counterpart yelling, blaming personally. Diễn tập câu STAY calm + redirect to facts: '冷静にご議論を進めさせていただきたく、お願い申し上げます'. Don't mirror anger. Pause if needed: 'お時間を10分いただけますでしょうか'.",
+      "Counterpart demands immediate concession exceeding your authority. Diễn tập câu HOLD line without escalating: '即答することは控えさせていただきますが、社内で慎重に検討のうえ後日回答いたします'. Frame as process, not refusal.",
+      "Counterpart resorts to personal attacks ('お前の会社は信用できない'). Diễn tập câu acknowledge feeling without conceding: 'ご不快な思いをおかけしたことはお詫びいたしますが、本件は事実に基づいた議論でお進めいただけますと幸いです'. Redirect to evidence."
+    ],
+    "register_notes": "Hostile-counterpart register: CONTROLLED FORMALITY. (1) DOUBLE DOWN ON KEIGO when other side breaks register — '〜でございます', '〜申し上げます', '〜いただけますでしょうか'. Higher formality = social power; signals 'I'm not destabilized'. (2) NEVER MIRROR HOSTILITY — even if counterpart drops to 'お前' / casual aggressive, you stay polite. Mirroring loses moral high ground + escalates. (3) ACKNOWLEDGE FEELING separate from concession — 'ご不快な思いをおかけし' (feeling acknowledged) ≠ '弊社の責任です' (responsibility accepted). (4) FACT REDIRECT — '事実関係を整理する' / 'お話を伺うにあたり' constantly redirects from emotion to verifiable facts. (5) HOLD AUTHORITY LINE — 'これは私の権限を超えますので、社内で〜' is honest + protective; pretending more authority than you have causes catastrophe. (6) WALKING AWAY GRACEFULLY — '本日はここで一旦中断' / 'お時間を頂戴し改めて' provides pressure-release without surrender. (7) EVIDENCE OVER ARGUMENT — '記録によれば〜' / '契約書では〜' — facts and documents are your shield. KHÔNG: 'ふざけるな' (don't joke), '怒らないでください' (don't get angry — patronizing), 'こちらだって' (we also — defensive escalation), Việt-style emotional appeals ('お互い感情的にならず、人間的に') — Japanese hostile context expects formal not personal.",
+    "idiom_glosses": [
+      { "idiom": "火に油を注ぐ (ひにあぶらをそそぐ)", "literal": "Đổ dầu vào lửa", "meaning": "[硬い・書き言葉] Đổ thêm dầu vào lửa — what to avoid.", "example": "性急な反論は、火に油を注ぐ結果となりかねません。" },
+      { "idiom": "一線を画す (いっせんをかくす)", "literal": "Vẽ một đường", "meaning": "[硬い] Vạch ranh giới — non-negotiable line.", "example": "譲歩はいたしますが、一線を画すべき点もございます。" },
+      { "idiom": "風林火山 (ふうりんかざん)", "literal": "Gió rừng lửa núi", "meaning": "[硬い・書き言葉/古典] Sun Tzu / Takeda strategy — nhanh khi cần, vững khi cần.", "example": "本件は、風林火山の精神で臨む必要があるかと存じます。" },
+      { "idiom": "喧嘩両成敗 (けんかりょうせいばい)", "literal": "Trong cãi nhau, cả hai bị phạt", "meaning": "[硬い・書き言葉] Both-sides-blamed — Japanese principle for conflict.", "example": "喧嘩両成敗の原則に立ち、双方の検証を行うべきかと存じます。" }
+    ],
+    "cultural_notes_vi": "Japanese hostile-negotiation: (1) RARITY — open hostility rare in Japanese business; if it occurs, signals serious dysfunction (existential threat to deal, individual under extreme pressure, deliberate intimidation tactic). (2) CULTURAL EXPECTATIONS — Japanese executives expect each other to maintain formality even under pressure; breaking formality signals breakdown of professional relationship. (3) FACE-LOSS DYNAMICS — counterpart who's hostile is often face-losing publicly; calmly maintaining your formality lets them de-escalate without further loss. (4) WITNESSES MATTER — Japanese hostile meetings often have multiple attendees; behavior judged by all present, not just principal. Composure earns long-term respect. (5) ESCALATION PATHS — if executive-level hostile, may escalate to board/CEO level; both sides usually want to avoid this; finding face-saving exit is mutual interest. (6) LEGAL TERRITORY — if hostile turns to threats (lawsuits, regulatory complaints), Japanese culture views these escalations as serious damage to relationship; rarely repaired. (7) REPAIR — even after hostile meeting, formal apology email + 改めてのご面談 (renewed meeting) standard practice; relationship can recover with effort. (8) Vietnamese learner perspective: Việt business culture sometimes more comfortable with public confrontation; in Nhật this rapidly degrades trust irrespective of who is 'right' on facts.",
+    "tip_advice_vi": "Hostile-counterpart 8-step: (1) DON'T REACT IN REAL-TIME — pause, breathe, 'お時間〜分いただけますでしょうか'; (2) MAINTAIN KEIGO above their level — even if they yell, you stay 〜でございます; (3) ACKNOWLEDGE FEELING without conceding facts — 'ご不快な思いをおかけしたこと'; (4) REDIRECT TO FACTS — '記録によれば〜'; (5) DON'T TAKE BAIT for personal attacks — '本件は事実に基づき〜'; (6) PROTECT AUTHORITY LINE — never agree to more than you can deliver; '社内で検討'; (7) PROPOSE PROCESS not concession — 'a follow-up meeting next week with formal response'; (8) DOCUMENT — after hostile meeting, write detailed minutes immediately; share with internal team and (if safe) with counterpart. Common Vietnamese mistakes: (a) Mirroring tone (escalates); (b) Personal apology that sounds like accepting fault you don't have ('申し訳ございません, 弊社の全面的な責任で〜'); (c) Promising things outside your authority to calm down (later disastrous); (d) Walking out without face-saving exit. Phrase to memorize: 'ご不快な思いをおかけし、心よりお詫び申し上げます。一方で、今後の対応については、事実関係を整理したうえで、双方で建設的にご議論を進めさせていただきたく存じます.' Combines: feeling-acknowledgment + redirect-to-facts + joint-process framing — stand-your-ground without escalating."
   }
 ];
 
