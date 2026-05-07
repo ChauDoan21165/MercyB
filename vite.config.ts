@@ -359,7 +359,38 @@ export default defineConfig({
           // Kids data files — split into separate chunk
           if (s.includes('/mercy-guide/kids/kidPage')) return 'kids-data';
 
-          // MercyGuide components — split from main
+          // Per-tab chunks inside the Mercy guide. Each is reached only via
+          // React.lazy in MercyGuidePanel, so naming them explicitly keeps
+          // the chunks stable across builds and prevents the catch-all
+          // 'mercy-guide' rule below from re-merging them. See
+          // src/components/mercy-guide/MercyGuidePanel.tsx for the lazy
+          // boundaries.
+          if (s.includes('/mercy-guide/MercyTeacherTab')) {
+            return 'mercy-teacher-tab';
+          }
+          if (s.includes('/mercy-guide/MercySpeakTab')) {
+            return 'mercy-speak-tab';
+          }
+          if (s.includes('/mercy-guide/tabs/grammar-writing/')) {
+            return 'mercy-grammar-tab';
+          }
+          if (s.includes('/mercy-guide/tabs/EnglishLogicTab')) {
+            return 'mercy-logic-tab';
+          }
+          if (
+            s.includes('/mercy-guide/tabs/FrenchLessonsTab') ||
+            s.includes('/languages/french/')
+          ) {
+            return 'mercy-french-tab';
+          }
+          if (
+            s.includes('/mercy-guide/tabs/GermanLessonsTab') ||
+            s.includes('/languages/german/')
+          ) {
+            return 'mercy-german-tab';
+          }
+
+          // MercyGuide shell + shared utilities — keep in the original chunk.
           if (s.includes('/mercy-guide/') || s.includes('/MercyGuide')) return 'mercy-guide';
 
           return undefined;

@@ -1,12 +1,9 @@
-// src/components/mercy-guide/tabs/LanguageLessonsTab.tsx
+// src/components/mercy-guide/tabs/LanguageLessonsView.tsx
 //
-// Shared tab component for French and German language lessons inside
-// the Mercy guide panel. Renders vocabulary and lessons from the
-// language modules at src/languages/*.
-//
-// Each lesson expands inline to show sentences, pronunciation focus,
-// cultural notes, and learning tips — consistent with the profession
-// pack lesson tiles but adapted for the Mercy panel context.
+// Pure rendering body for the per-language lesson tabs inside the Mercy
+// guide panel. Takes its language data via props so each per-language
+// wrapper (FrenchLessonsTab / GermanLessonsTab) can import only the data
+// it needs and ride its own lazy chunk.
 
 import React, { useState } from "react";
 import {
@@ -18,17 +15,14 @@ import {
   Globe,
 } from "lucide-react";
 
-import type { FrenchCategoryId, FrenchCategoryMeta, FrenchLesson } from "@/languages/french/lessons";
-import { FRENCH_CATEGORIES, getLessonsByCategory as getFrenchLessonsByCategory, FRENCH_LESSONS } from "@/languages/french/lessons";
-import { FRENCH_VOCABULARY, type FrenchVocabEntry } from "@/languages/french/vocabulary";
+import type { FrenchVocabEntry } from "@/languages/french/vocabulary";
+import type { GermanVocabEntry } from "@/languages/german/vocabulary";
+import type { FrenchCategoryMeta, FrenchLesson } from "@/languages/french/lessons";
+import type { GermanCategoryMeta, GermanLesson } from "@/languages/german/lessons";
 
-import type { GermanCategoryId, GermanCategoryMeta, GermanLesson } from "@/languages/german/lessons";
-import { GERMAN_CATEGORIES, getLessonsByCategory as getGermanLessonsByCategory, GERMAN_LESSONS } from "@/languages/german/lessons";
-import { GERMAN_VOCABULARY, type GermanVocabEntry } from "@/languages/german/vocabulary";
+export type LanguageCode = "french" | "german";
 
-type LanguageCode = "french" | "german";
-
-type LanguageConfig = {
+export type LanguageLessonsConfig = {
   code: LanguageCode;
   label: string;
   labelVi: string;
@@ -37,31 +31,6 @@ type LanguageConfig = {
   vocab: ReadonlyArray<FrenchVocabEntry | GermanVocabEntry>;
   categories: ReadonlyArray<FrenchCategoryMeta | GermanCategoryMeta>;
   getLessonsByCategory: (category: string) => (FrenchLesson | GermanLesson)[];
-};
-
-const LANGUAGE_CONFIGS: Record<LanguageCode, LanguageConfig> = {
-  french: {
-    code: "french",
-    label: "French",
-    labelVi: "Tiếng Pháp",
-    flag: "🇫🇷",
-    accent: "blue",
-    vocab: FRENCH_VOCABULARY,
-    categories: FRENCH_CATEGORIES,
-    getLessonsByCategory: (cat) =>
-      getFrenchLessonsByCategory(cat as FrenchCategoryId),
-  },
-  german: {
-    code: "german",
-    label: "German",
-    labelVi: "Tiếng Đức",
-    flag: "🇩🇪",
-    accent: "red",
-    vocab: GERMAN_VOCABULARY,
-    categories: GERMAN_CATEGORIES,
-    getLessonsByCategory: (cat) =>
-      getGermanLessonsByCategory(cat as GermanCategoryId),
-  },
 };
 
 const ACCENT_COLORS: Record<string, { light: string; medium: string; dark: string; border: string; bg: string }> = {
@@ -82,11 +51,10 @@ const ACCENT_COLORS: Record<string, { light: string; medium: string; dark: strin
 };
 
 type Props = {
-  language: LanguageCode;
+  config: LanguageLessonsConfig;
 };
 
-export default function LanguageLessonsTab({ language }: Props) {
-  const config = LANGUAGE_CONFIGS[language];
+export default function LanguageLessonsView({ config }: Props) {
   const colors = ACCENT_COLORS[config.accent];
   const [showVocab, setShowVocab] = useState(false);
 
@@ -128,13 +96,13 @@ export default function LanguageLessonsTab({ language }: Props) {
               {config.vocab.map((entry, i) => (
                 <div key={i} className="flex items-baseline gap-1.5 rounded px-1.5 py-0.5 text-xs hover:bg-slate-50">
                   <span className="font-medium text-slate-900">
-                    {language === "french"
+                    {config.code === "french"
                       ? (entry as FrenchVocabEntry).fr
                       : (entry as GermanVocabEntry).de}
                   </span>
                   <span className="text-slate-400">—</span>
                   <span className="text-slate-600">
-                    {language === "french"
+                    {config.code === "french"
                       ? (entry as FrenchVocabEntry).vi
                       : (entry as GermanVocabEntry).vi}
                   </span>
@@ -161,10 +129,7 @@ export default function LanguageLessonsTab({ language }: Props) {
             <ol className="space-y-1.5">
               {lessons.map((lesson) => (
                 <li key={lesson.id}>
-                  <LessonTile
-                    lesson={lesson}
-                    colors={colors}
-                  />
+                  <LessonTile lesson={lesson} colors={colors} />
                 </li>
               ))}
             </ol>

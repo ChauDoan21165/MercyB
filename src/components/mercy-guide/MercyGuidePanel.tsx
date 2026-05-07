@@ -2,7 +2,7 @@
 // File: MercyGuidePanel.tsx
 
 import { getPointsDisplay, getStreakDays, getStreakEmoji } from '@/services/pointsService';
-import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import React, { Suspense, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import {
   X,
   ChevronDown,
@@ -22,12 +22,37 @@ import {
 } from 'lucide-react';
 
 import { useUserAccess } from '@/hooks/useUserAccess';
+import { lazyWithRetry } from '@/lib/lazyWithRetry';
 import { MERCY_HOST_IMAGE_FALLBACK, MERCY_HOST_IMAGE_SRC } from './shared';
-import MercyTeacherTab from './MercyTeacherTab';
-import MercySpeakTab from './MercySpeakTab';
-import { GrammarWritingTab } from './tabs/grammar-writing/GrammarWritingTab';
-import EnglishLogicTab from './tabs/EnglishLogicTab';
-import LanguageLessonsTab from './tabs/LanguageLessonsTab';
+
+// Lazy-load each heavy tab so the mercy-guide initial chunk stays small.
+// First-time activation of a tab loads its own async chunk; subsequent
+// renders are synchronous from cache. See vite.config.ts manualChunks
+// for the matching chunk-name rules.
+const MercyTeacherTab = lazyWithRetry(() => import('./MercyTeacherTab'));
+const MercySpeakTab = lazyWithRetry(() => import('./MercySpeakTab'));
+const GrammarWritingTab = lazyWithRetry(
+  () => import('./tabs/grammar-writing/GrammarWritingTab'),
+);
+const EnglishLogicTab = lazyWithRetry(() => import('./tabs/EnglishLogicTab'));
+const FrenchLessonsTab = lazyWithRetry(
+  () => import('./tabs/FrenchLessonsTab'),
+);
+const GermanLessonsTab = lazyWithRetry(
+  () => import('./tabs/GermanLessonsTab'),
+);
+
+function TabLoadingFallback() {
+  return (
+    <div
+      className="flex items-center justify-center px-3 py-8 text-xs text-slate-400"
+      role="status"
+      aria-live="polite"
+    >
+      Đang tải…
+    </div>
+  );
+}
 
 import type {
   GrammarApiResponse,
@@ -951,6 +976,17 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
   const [activeTab, setLocalActiveTab] = useState<MercyTabType>(
     normalizeTab(initialTab),
   );
+  // Tabs that use display:contents/none to stay mounted across switches
+  // (grammar, logic) need to be mounted on first activation. We track that
+  // here so the lazy import only fires when the user actually opens the
+  // tab; once mounted, the tab stays in the tree to preserve state.
+  const [mountedStickyTabs, setMountedStickyTabs] = useState<{
+    grammar: boolean;
+    logic: boolean;
+  }>(() => ({
+    grammar: normalizeTab(initialTab) === 'grammar',
+    logic: normalizeTab(initialTab) === 'logic',
+  }));
   const [showGreeting, setShowGreeting] = useState(true);
   const [learningSupportMode, setLearningSupportMode] =
     useState<LearningSupportMode>('gentle');
@@ -1214,6 +1250,11 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
       }
 
       setLocalActiveTab(tabId);
+      if (tabId === 'grammar' || tabId === 'logic') {
+        setMountedStickyTabs((prev) =>
+          prev[tabId] ? prev : { ...prev, [tabId]: true },
+        );
+      }
       safelyUpdateInteraction();
       setActiveTab?.(tabId);
     },
@@ -1516,67 +1557,73 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
           ) : null}
 
           {activeTab === 'teacher' ? (
-            <MercyTeacherTab
-              latestTeacherWritingState={latestTeacherWritingState}
-              latestAnalysisResult={resolvedLatestAnalysisResult}
-              teacherMemorySummary={teacherMemorySummary}
-              onOpenPronunciation={() =>
-                handleOpenPronunciation(pronunciationPayload ?? undefined)
-              }
-              onOpenWriting={handleOpenWriting}
-              isLocked={!accessFeatures.hasMercyJourney && !kidsModeActive}
-              onUnlock={kidsModeActive ? undefined : goToPricing}
-              unlockTitle={
-                kidsModeActive ? 'Mercy kids mode' : 'Unlock Mercy Journey'
-              }
-              unlockDescription={
-                kidsModeActive
-                  ? 'Mercy keeps kids mode simple, warm, and listening-first.'
-                  : 'Journey turns one real sentence into coaching, memory, progress notes, and a clear next step across Grammar, Speak, and Logic.'
-              }
-              unlockButtonLabel="Upgrade to Premium"
-              learningSupportMode={learningSupportMode}
-              isKidsMode={kidsModeActive}
-              kidsModeAgeBand={kidsModeAgeBand}
-              teacherLabel={
-                cleanText(panelTitle) ||
-                cleanText(bubbleLabel) ||
-                'Teacher Mercy'
-              }
-              disableTeacherWriting={disableTeacherWriting}
-              selectedKidsObjectKey={selectedKidsObjectKey}
-              onSelectKidsObject={handleSelectKidsObject}
-              selectedKidsPage={selectedKidsPage}
-              onSelectKidsPage={handleSelectKidsPage}
-            />
+            <Suspense fallback={<TabLoadingFallback />}>
+              <MercyTeacherTab
+                latestTeacherWritingState={latestTeacherWritingState}
+                latestAnalysisResult={resolvedLatestAnalysisResult}
+                teacherMemorySummary={teacherMemorySummary}
+                onOpenPronunciation={() =>
+                  handleOpenPronunciation(pronunciationPayload ?? undefined)
+                }
+                onOpenWriting={handleOpenWriting}
+                isLocked={!accessFeatures.hasMercyJourney && !kidsModeActive}
+                onUnlock={kidsModeActive ? undefined : goToPricing}
+                unlockTitle={
+                  kidsModeActive ? 'Mercy kids mode' : 'Unlock Mercy Journey'
+                }
+                unlockDescription={
+                  kidsModeActive
+                    ? 'Mercy keeps kids mode simple, warm, and listening-first.'
+                    : 'Journey turns one real sentence into coaching, memory, progress notes, and a clear next step across Grammar, Speak, and Logic.'
+                }
+                unlockButtonLabel="Upgrade to Premium"
+                learningSupportMode={learningSupportMode}
+                isKidsMode={kidsModeActive}
+                kidsModeAgeBand={kidsModeAgeBand}
+                teacherLabel={
+                  cleanText(panelTitle) ||
+                  cleanText(bubbleLabel) ||
+                  'Teacher Mercy'
+                }
+                disableTeacherWriting={disableTeacherWriting}
+                selectedKidsObjectKey={selectedKidsObjectKey}
+                onSelectKidsObject={handleSelectKidsObject}
+                selectedKidsPage={selectedKidsPage}
+                onSelectKidsPage={handleSelectKidsPage}
+              />
+            </Suspense>
           ) : null}
 
-          <div style={{ display: activeTab === 'grammar' && accessFeatures.hasMercyGrammar && !hideGrammarTab && !disableGrammarAnalysis && !kidsModeActive ? 'contents' : 'none' }}>
-            <GrammarWritingTab
-              roomId={roomId}
-              roomTitle={roomTitle}
-              contentEn={contentEn}
-              englishLevel={
-                (profile as { english_level?: string | null } | null | undefined)
-                  ?.english_level ?? null
-              }
-              learningSupportMode={learningSupportMode}
-              teacherTask={resolvedTeacherTask ?? undefined}
-              onAnalysisResult={onAnalysisResult}
-              onTeacherWritingStateChange={onTeacherWritingStateChange}
-              onPracticePronunciation={(payload) => {
-                if (!accessFeatures.hasMercySpeak) {
-                  goToPricing();
-                  return;
-                }
+          {mountedStickyTabs.grammar ? (
+            <div style={{ display: activeTab === 'grammar' && accessFeatures.hasMercyGrammar && !hideGrammarTab && !disableGrammarAnalysis && !kidsModeActive ? 'contents' : 'none' }}>
+              <Suspense fallback={<TabLoadingFallback />}>
+                <GrammarWritingTab
+                  roomId={roomId}
+                  roomTitle={roomTitle}
+                  contentEn={contentEn}
+                  englishLevel={
+                    (profile as { english_level?: string | null } | null | undefined)
+                      ?.english_level ?? null
+                  }
+                  learningSupportMode={learningSupportMode}
+                  teacherTask={resolvedTeacherTask ?? undefined}
+                  onAnalysisResult={onAnalysisResult}
+                  onTeacherWritingStateChange={onTeacherWritingStateChange}
+                  onPracticePronunciation={(payload) => {
+                    if (!accessFeatures.hasMercySpeak) {
+                      goToPricing();
+                      return;
+                    }
 
-                onPracticePronunciation?.(payload);
-                handleTabChange('pronunciation');
-              }}
-              onOpenEnglishLogic={handleOpenLogic}
-              onMemoryUpdate={onMemoryUpdate}
-            />
-          </div>
+                    onPracticePronunciation?.(payload);
+                    handleTabChange('pronunciation');
+                  }}
+                  onOpenEnglishLogic={handleOpenLogic}
+                  onMemoryUpdate={onMemoryUpdate}
+                />
+              </Suspense>
+            </div>
+          ) : null}
 
           {activeTab === 'grammar' &&
           (!accessFeatures.hasMercyGrammar ||
@@ -1599,44 +1646,46 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
           ) : null}
 
           {activeTab === 'pronunciation' && accessFeatures.hasMercySpeak ? (
-            <MercySpeakTab
-              roomId={roomId}
-              roomTitle={roomTitle}
-              contentEn={contentEn}
-              initialPracticeLine={initialPracticeLine}
-              profile={
-                profile as
-                  | {
-                      preferred_name?: string | null;
-                      english_level?: string | null;
-                    }
-                  | null
-                  | undefined
-              }
-              troubleWords={normalizedTroubleWords}
-              speakPractice={speakPractice}
-              launchPayload={pronunciationPayload}
-              pendingPayload={pronunciationPayload}
-              pendingPronunciationPayload={pronunciationPayload}
-              onMemoryUpdate={onMemoryUpdate}
-              onOpenEnglishLogic={
-                disableEnglishLogic || hideLogicTab || kidsModeActive
-                  ? undefined
-                  : handleOpenLogic
-              }
-              learningSupportMode={
-                kidsModeActive ? 'gentle' : learningSupportMode
-              }
-              isKidsMode={kidsModeActive}
-              kidsModeAgeBand={kidsModeAgeBand}
-              preferTapAndRepeat={kidsModeActive || preferTapAndRepeat}
-              teacherLabel={
-                cleanText(panelTitle) ||
-                cleanText(bubbleLabel) ||
-                'Teacher Mercy'
-              }
-              selectedKidsObjectKey={selectedKidsObjectKey}
-            />
+            <Suspense fallback={<TabLoadingFallback />}>
+              <MercySpeakTab
+                roomId={roomId}
+                roomTitle={roomTitle}
+                contentEn={contentEn}
+                initialPracticeLine={initialPracticeLine}
+                profile={
+                  profile as
+                    | {
+                        preferred_name?: string | null;
+                        english_level?: string | null;
+                      }
+                    | null
+                    | undefined
+                }
+                troubleWords={normalizedTroubleWords}
+                speakPractice={speakPractice}
+                launchPayload={pronunciationPayload}
+                pendingPayload={pronunciationPayload}
+                pendingPronunciationPayload={pronunciationPayload}
+                onMemoryUpdate={onMemoryUpdate}
+                onOpenEnglishLogic={
+                  disableEnglishLogic || hideLogicTab || kidsModeActive
+                    ? undefined
+                    : handleOpenLogic
+                }
+                learningSupportMode={
+                  kidsModeActive ? 'gentle' : learningSupportMode
+                }
+                isKidsMode={kidsModeActive}
+                kidsModeAgeBand={kidsModeAgeBand}
+                preferTapAndRepeat={kidsModeActive || preferTapAndRepeat}
+                teacherLabel={
+                  cleanText(panelTitle) ||
+                  cleanText(bubbleLabel) ||
+                  'Teacher Mercy'
+                }
+                selectedKidsObjectKey={selectedKidsObjectKey}
+              />
+            </Suspense>
           ) : null}
 
           {activeTab === 'pronunciation' && !accessFeatures.hasMercySpeak ? (
@@ -1647,28 +1696,32 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
             />
           ) : null}
 
-          <div style={{ display: activeTab === 'logic' && accessFeatures.hasMercyLogic && !hideLogicTab && !disableEnglishLogic && !kidsModeActive ? 'contents' : 'none' }}>
-            <EnglishLogicTab
-              roomTitle={roomTitle}
-              contentEn={contentEn}
-              learningSupportMode={learningSupportMode}
-              troubleWords={normalizedTroubleWords}
-              latestTeacherWritingState={latestTeacherWritingState}
-              latestAnalysisResult={resolvedLatestAnalysisResult}
-              pendingPronunciationPayload={pronunciationPayload}
-              onOpenPronunciation={handleOpenPronunciation}
-              onOpenWriting={handleOpenWriting}
-              onMemoryUpdate={onMemoryUpdate}
-              onVaultReplay={() => {}}
-              isKidsMode={kidsModeActive}
-              kidsModeAgeBand={kidsModeAgeBand}
-              teacherLabel={
-                cleanText(panelTitle) ||
-                cleanText(bubbleLabel) ||
-                'Teacher Mercy'
-              }
-            />
-          </div>
+          {mountedStickyTabs.logic ? (
+            <div style={{ display: activeTab === 'logic' && accessFeatures.hasMercyLogic && !hideLogicTab && !disableEnglishLogic && !kidsModeActive ? 'contents' : 'none' }}>
+              <Suspense fallback={<TabLoadingFallback />}>
+                <EnglishLogicTab
+                  roomTitle={roomTitle}
+                  contentEn={contentEn}
+                  learningSupportMode={learningSupportMode}
+                  troubleWords={normalizedTroubleWords}
+                  latestTeacherWritingState={latestTeacherWritingState}
+                  latestAnalysisResult={resolvedLatestAnalysisResult}
+                  pendingPronunciationPayload={pronunciationPayload}
+                  onOpenPronunciation={handleOpenPronunciation}
+                  onOpenWriting={handleOpenWriting}
+                  onMemoryUpdate={onMemoryUpdate}
+                  onVaultReplay={() => {}}
+                  isKidsMode={kidsModeActive}
+                  kidsModeAgeBand={kidsModeAgeBand}
+                  teacherLabel={
+                    cleanText(panelTitle) ||
+                    cleanText(bubbleLabel) ||
+                    'Teacher Mercy'
+                  }
+                />
+              </Suspense>
+            </div>
+          ) : null}
 
           {activeTab === 'logic' &&
           (!accessFeatures.hasMercyLogic ||
@@ -1691,11 +1744,15 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
           ) : null}
 
           {activeTab === 'french' && !kidsModeActive ? (
-            <LanguageLessonsTab language="french" />
+            <Suspense fallback={<TabLoadingFallback />}>
+              <FrenchLessonsTab />
+            </Suspense>
           ) : null}
 
           {activeTab === 'german' && !kidsModeActive ? (
-            <LanguageLessonsTab language="german" />
+            <Suspense fallback={<TabLoadingFallback />}>
+              <GermanLessonsTab />
+            </Suspense>
           ) : null}
         </div>
       </div>
