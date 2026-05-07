@@ -3,6 +3,7 @@
 import Stripe from "https://esm.sh/stripe@14.25.0?target=denonext";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.49.1";
 
+import { getStripeWebhookSecrets } from "./core.ts";
 import {
   handleCheckoutSessionCompleted,
   handleCustomerSubscriptionCreatedOrUpdated,
@@ -37,8 +38,12 @@ function getStripeClient(): Stripe {
   });
 }
 
-function getWebhookSecret(): string | null {
-  return Deno.env.get("STRIPE_WEBHOOK_SIGNING_SECRET");
+// Reads every supported env var name (STRIPE_WEBHOOK_SECRET,
+// SECRET_STRIPE_WEBHOOK_SECRET, STRIPE_SIGNING_SECRET,
+// STRIPE_WEBHOOK_SIGNING_SECRET) and parses comma/newline separated
+// values, so a webhook with rotated secrets keeps verifying during cutover.
+function getWebhookSecrets(): string[] {
+  return getStripeWebhookSecrets();
 }
 
 function getSupabaseAdmin(): DBClient {
@@ -116,33 +121,45 @@ Deno.serve(async (request: Request) => {
     return json({ error: "Missing Stripe-Signature header" }, 400);
   }
 
-  const webhookSecret = getWebhookSecret();
+  const webhookSecrets = getWebhookSecrets();
 
-  if (!webhookSecret) {
+  if (webhookSecrets.length === 0) {
     console.error("stripe-webhook: missing signing secret");
     return json({ error: "Webhook secret not configured" }, 500);
   }
 
   const rawBody = await request.text();
 
-  let event: StripeWebhookEvent;
+  let event: StripeWebhookEvent | null = null;
+  let lastVerificationError: unknown = null;
 
-  try {
-    const stripe = getStripeClient();
-    const cryptoProvider = Stripe.createSubtleCryptoProvider();
+  const stripe = getStripeClient();
+  const cryptoProvider = Stripe.createSubtleCryptoProvider();
 
-    event = await stripe.webhooks.constructEventAsync(
-      rawBody,
-      signature,
-      webhookSecret,
-      undefined,
-      cryptoProvider,
-    ) as StripeWebhookEvent;
-  } catch (error) {
-    const serialized = serializeError(error);
+  for (const candidate of webhookSecrets) {
+    try {
+      event = await stripe.webhooks.constructEventAsync(
+        rawBody,
+        signature,
+        candidate,
+        undefined,
+        cryptoProvider,
+      ) as StripeWebhookEvent;
+      lastVerificationError = null;
+      break;
+    } catch (error) {
+      lastVerificationError = error;
+    }
+  }
+
+  if (!event) {
+    const serialized = serializeError(lastVerificationError);
 
     console.error("stripe-webhook: signature verification failed", {
-      message: error instanceof Error ? error.message : String(error),
+      attemptedSecrets: webhookSecrets.length,
+      message: lastVerificationError instanceof Error
+        ? lastVerificationError.message
+        : String(lastVerificationError),
       error: serialized,
     });
 
