@@ -8274,6 +8274,306 @@ export const lessons: GermanLesson[] = [
     "cultural_notes_vi": "Trong văn viết học thuật Đức, người ta rất coi trọng Begriffsschärfe và Anschlussfähigkeit. Ý tưởng không chỉ cần mới mà còn phải nối được vào cuộc tranh luận đang có. Đây là thước đo thực dụng của sự thuyết phục.",
     "tip_advice_vi": "Nếu muốn viết mạnh ở C1, hãy luôn hỏi: khái niệm này có sắc chưa, và nó nối được vào ai, vào tranh luận nào?",
     "register_notes": "Các từ như 'tragfähig', 'anschlussfähig', 'begrifflich' nghe rất học thuật. Chúng phù hợp khi bạn muốn viết với tầm vóc, không phải khi nói chuyện thân mật."
+  },
+  {
+    "id": "lpressekonferenz_eroeffnen",
+    "category": "public_communication",
+    "level": "C1",
+    "title_vi": "Mở đầu một buổi họp báo",
+    "title_en": "Opening a press conference",
+    "sentences": [
+      {
+        "en": "Meine Damen und Herren, vielen Dank, dass Sie so kurzfristig gekommen sind. Ich beginne mit den gesicherten Fakten und komme danach zu Ihren Fragen.",
+        "vi": "Thưa quý vị, cảm ơn vì đã đến trong thời gian ngắn như vậy. Tôi bắt đầu bằng các sự kiện đã được xác nhận rồi sau đó đến câu hỏi của quý vị.",
+        "pronunciation_focus": ["gesicherten Fakten", "kurzfristig", "danach"]
+      },
+      {
+        "en": "Was noch geprüft wird, werden wir nicht als Tatsache darstellen.",
+        "vi": "Điều còn đang được kiểm tra, chúng tôi sẽ không trình bày như sự thật đã xác lập.",
+        "pronunciation_focus": ["geprüft wird", "als Tatsache darstellen"]
+      }
+    ],
+    "vocabulary": [
+      { "word": "die Pressekonferenz", "en": "press conference", "vi": "họp báo", "pos": "noun (f)", "pronunciation_vi": "PRES-sê-kon-fê-rents" },
+      { "word": "gesichert", "en": "verified / established", "vi": "đã được xác nhận", "pos": "adjective", "pronunciation_vi": "gê-zí-khơt" }
+    ],
+    "dialogue": [
+      { "speaker": "Pressesprecherin", "text": "Ich werde zunächst drei Punkte darstellen, anschließend öffnen wir die Fragerunde.", "vi": "Trước hết tôi sẽ trình bày ba điểm, sau đó chúng ta mở phần hỏi đáp." },
+      { "speaker": "Journalist", "text": "Wird die Geschäftsführung selbst Fragen beantworten?", "vi": "Ban điều hành sẽ tự trả lời câu hỏi chứ?" }
+    ],
+    "cultural_notes_vi": "Mở họp báo tiếng Đức cần rõ, có thứ tự, không màu mè. Gesicherte Fakten là cụm rất quan trọng.",
+    "tip_advice_vi": "Công thức: Dank → gesicherte Fakten → Prüfstatus → Fragerunde.",
+    "register_notes": "German press-conference openings prize procedural clarity. Avoid unsupported certainty; mark what is geprüft versus gesichert."
+  },
+  {
+    "id": "lpressemitteilung_schreiben",
+    "category": "public_communication",
+    "level": "C1",
+    "title_vi": "Viết thông cáo báo chí",
+    "title_en": "Writing a press release",
+    "sentences": [
+      {
+        "en": "Eine Pressemitteilung beginnt mit der überprüfbaren Nachricht, nicht mit der Selbstdarstellung des Unternehmens.",
+        "vi": "Một thông cáo báo chí bắt đầu bằng tin có thể kiểm chứng, không phải sự tự trình diễn của doanh nghiệp.",
+        "pronunciation_focus": ["Pressemitteilung", "überprüfbar", "Selbstdarstellung"]
+      },
+      {
+        "en": "Nach Angaben des Unternehmens werde die neue Plattform zunächst in drei Städten getestet.",
+        "vi": "Theo thông tin từ công ty, nền tảng mới sẽ trước tiên được thử nghiệm tại ba thành phố.",
+        "pronunciation_focus": ["Konjunktiv I: werde", "Nach Angaben", "zunächst"]
+      }
+    ],
+    "vocabulary": [
+      { "word": "die Pressemitteilung", "en": "press release", "vi": "thông cáo báo chí", "pos": "noun (f)", "pronunciation_vi": "PRES-sê-mit-tai-lung" },
+      { "word": "nach Angaben", "en": "according to statements", "vi": "theo thông tin", "pos": "phrase", "pronunciation_vi": "nakh AP-ga-bơn" }
+    ],
+    "dialogue": [
+      { "speaker": "Redakteur", "text": "Die Überschrift klingt nach Werbung. Schreiben Sie lieber, was tatsächlich neu ist.", "vi": "Tiêu đề nghe như quảng cáo. Hãy viết điều thực sự mới." },
+      { "speaker": "Kommunikationsmanager", "text": "Verstanden. Ich stelle die überprüfbare Nachricht an den Anfang.", "vi": "Hiểu rồi. Tôi sẽ đặt tin có thể kiểm chứng lên đầu." }
+    ],
+    "cultural_notes_vi": "Thông cáo báo chí tiếng Đức thích sự kiểm chứng và Konjunktiv I khi tường thuật tuyên bố.",
+    "tip_advice_vi": "Dùng nach Angaben + Konjunktiv I để báo chí hóa thông tin nguồn.",
+    "register_notes": "German press releases should avoid marketing superlatives unless substantiated by evidence."
+  },
+  {
+    "id": "lgastbeitrag_grosse_zeitungen",
+    "category": "public_communication",
+    "level": "C1",
+    "title_vi": "Viết op-ed cho báo Đức lớn",
+    "title_en": "Writing an op-ed for major German papers",
+    "sentences": [
+      {
+        "en": "Ein Gastbeitrag für die FAZ, die Süddeutsche Zeitung oder Die Zeit braucht eine klare These und eine faire Darstellung der Gegenposition.",
+        "vi": "Một bài op-ed cho FAZ, Süddeutsche Zeitung hoặc Die Zeit cần một luận điểm rõ và cách trình bày công bằng về lập trường đối lập.",
+        "pronunciation_focus": ["Gastbeitrag", "klare These", "Gegenposition"]
+      },
+      {
+        "en": "M. E. überzeugt der Text erst dann, wenn er Streitkultur nicht scheut, aber die Gegenseite nicht karikiert.",
+        "vi": "Theo tôi, bài viết chỉ thuyết phục khi không né tránh văn hóa tranh luận nhưng cũng không biếm họa phía đối lập.",
+        "pronunciation_focus": ["m.E.", "Streitkultur", "karikiert"]
+      }
+    ],
+    "vocabulary": [
+      { "word": "der Gastbeitrag", "en": "op-ed / guest essay", "vi": "bài quan điểm", "pos": "noun (m)", "pronunciation_vi": "GAST-bai-trak" },
+      { "word": "die Streitkultur", "en": "culture of argument", "vi": "văn hóa tranh luận", "pos": "noun (f)", "pronunciation_vi": "SHTRAIT-kul-tua" }
+    ],
+    "dialogue": [
+      { "speaker": "Ressortleiterin", "text": "Ihre These ist stark, aber die Gegenposition wirkt noch wie eine Karikatur.", "vi": "Luận điểm của anh/chị mạnh, nhưng phía đối lập vẫn bị vẽ như biếm họa." },
+      { "speaker": "Autor", "text": "Ich schärfe den Widerspruch, ohne die Gegenseite lächerlich zu machen.", "vi": "Tôi sẽ làm sắc mâu thuẫn mà không biến phía đối lập thành trò cười." }
+    ],
+    "cultural_notes_vi": "Op-ed Đức có thể tranh luận mạnh. Streitkultur không có nghĩa là công kích cá nhân.",
+    "tip_advice_vi": "Dùng m.E. để đánh dấu lập trường: m.E. überzeugt der Text...",
+    "register_notes": "German opinion writing values explicit disagreement plus fair reconstruction of the opposing argument."
+  },
+  {
+    "id": "lpodcast_talkshow_auftritt",
+    "category": "public_communication",
+    "level": "C1",
+    "title_vi": "Xuất hiện trên podcast hoặc talk show",
+    "title_en": "Podcast / talk show appearance",
+    "sentences": [
+      {
+        "en": "Im Podcast darf der Ton persönlicher sein; die Grenze zwischen Erfahrung und gesicherter Aussage muss dennoch klar bleiben.",
+        "vi": "Trong podcast, giọng có thể cá nhân hơn; nhưng ranh giới giữa trải nghiệm và phát biểu đã xác minh vẫn phải rõ.",
+        "pronunciation_focus": ["persönlicher", "Grenze", "gesicherter Aussage"]
+      },
+      {
+        "en": "Womöglich ist das der richtige Eindruck, aber ich würde ihn gern präzisieren.",
+        "vi": "Có thể đó là ấn tượng đúng, nhưng tôi muốn làm nó chính xác hơn.",
+        "pronunciation_focus": ["womöglich", "Eindruck", "präzisieren"]
+      }
+    ],
+    "vocabulary": [
+      { "word": "womöglich", "en": "possibly", "vi": "có thể", "pos": "adverb", "pronunciation_vi": "vô-mơk-likh" },
+      { "word": "präzisieren", "en": "to make precise", "vi": "làm rõ chính xác", "pos": "verb", "pronunciation_vi": "prê-tsi-zi-rơn" }
+    ],
+    "dialogue": [
+      { "speaker": "Moderator", "text": "Heißt das, Sie wussten intern schon lange Bescheid?", "vi": "Có nghĩa là nội bộ các anh/chị đã biết từ lâu?" },
+      { "speaker": "Gast", "text": "Womöglich entsteht dieser Eindruck. Präzise gesagt: Wir hatten ein Signal, aber noch keine belastbare Diagnose.", "vi": "Có thể tạo ra ấn tượng đó. Nói chính xác: chúng tôi có một tín hiệu, nhưng chưa có chẩn đoán đủ vững." }
+    ],
+    "cultural_notes_vi": "Podcast Đức có thể tự nhiên hơn nhưng vẫn thích sự chính xác khái niệm.",
+    "tip_advice_vi": "Hedge hữu dụng: womöglich + präzise gesagt.",
+    "register_notes": "German podcast speech may be warmer, but a representative still needs conceptual precision."
+  },
+  {
+    "id": "ltv_nachrichten_live_interview",
+    "category": "public_communication",
+    "level": "C1",
+    "title_vi": "Phỏng vấn truyền hình trực tiếp — trả lời anchor",
+    "title_en": "TV news interview — responding to anchors live",
+    "sentences": [
+      {
+        "en": "Im Live-Interview zählt nicht Vollständigkeit, sondern eine belastbare Antwort in kurzen Sätzen.",
+        "vi": "Trong phỏng vấn trực tiếp, điều quan trọng không phải sự đầy đủ mà là câu trả lời vững trong các câu ngắn.",
+        "pronunciation_focus": ["Live-Interview", "belastbare Antwort", "kurzen Sätzen"]
+      },
+      {
+        "en": "Ich werde hier keine pauschale Zusage machen; gegebenenfalls kann ich aber den Zeitplan nennen.",
+        "vi": "Tôi sẽ không đưa cam kết chung chung ở đây; nếu phù hợp, tôi có thể nêu lịch trình.",
+        "pronunciation_focus": ["pauschale Zusage", "gegebenenfalls", "Zeitplan"]
+      }
+    ],
+    "vocabulary": [
+      { "word": "belastbar", "en": "robust / reliable", "vi": "vững, đáng tin", "pos": "adjective", "pronunciation_vi": "bê-LAST-ba" },
+      { "word": "gegebenenfalls", "en": "if applicable", "vi": "nếu phù hợp", "pos": "adverb", "pronunciation_vi": "gê-GÊ-bơ-nơn-fals" }
+    ],
+    "dialogue": [
+      { "speaker": "Moderatorin", "text": "Können Sie heute Abend garantieren, dass so etwas nicht wieder passiert?", "vi": "Tối nay ông/bà có thể đảm bảo rằng việc này không lặp lại không?" },
+      { "speaker": "Sprecher", "text": "Eine Garantie wäre unseriös. Belastbar zusagen kann ich: Der Prüfbericht kommt am Freitag.", "vi": "Đảm bảo như vậy sẽ thiếu nghiêm túc. Điều tôi có thể cam kết vững là: báo cáo rà soát ra vào thứ Sáu." }
+    ],
+    "cultural_notes_vi": "Trên truyền hình Đức, câu trả lời tốt thường thẳng, ngắn, không hứa quá.",
+    "tip_advice_vi": "Từ khóa C1: belastbar. Dùng để phân biệt lời hứa có căn cứ và lời hứa rỗng.",
+    "register_notes": "German live TV rewards concise accountability and punishes vague reassurance."
+  },
+  {
+    "id": "linstitutionelle_entschuldigung_pressekonferenz",
+    "category": "public_communication",
+    "level": "C1",
+    "title_vi": "Họp báo xin lỗi công khai của tổ chức",
+    "title_en": "Institutional public apology press conference",
+    "sentences": [
+      {
+        "en": "Wir bitten alle Betroffenen ausdrücklich um Entschuldigung; diese Belastung hätte nicht entstehen dürfen.",
+        "vi": "Chúng tôi xin lỗi rõ ràng tất cả những người bị ảnh hưởng; gánh nặng này lẽ ra không được phát sinh.",
+        "pronunciation_focus": ["ausdrücklich um Entschuldigung", "Betroffenen", "hätte nicht"]
+      },
+      {
+        "en": "Zur Verantwortung gehört, dass wir nicht nur Bedauern ausdrücken, sondern Abhilfe, Zuständigkeit und Fristen benennen.",
+        "vi": "Trách nhiệm bao gồm việc không chỉ bày tỏ tiếc nuối mà còn nêu biện pháp khắc phục, người phụ trách và thời hạn.",
+        "pronunciation_focus": ["Verantwortung", "Abhilfe", "Fristen benennen"]
+      }
+    ],
+    "vocabulary": [
+      { "word": "die Abhilfe", "en": "remedy", "vi": "biện pháp khắc phục", "pos": "noun (f)", "pronunciation_vi": "AP-hil-fơ" },
+      { "word": "die Zuständigkeit", "en": "responsibility / remit", "vi": "trách nhiệm phụ trách", "pos": "noun (f)", "pronunciation_vi": "TSU-shten-dikh-kait" }
+    ],
+    "dialogue": [
+      { "speaker": "Vorstand", "text": "Ich beginne mit der Entschuldigung. Danach nennen wir die konkreten Abhilfemaßnahmen und Fristen.", "vi": "Tôi bắt đầu bằng lời xin lỗi. Sau đó chúng tôi nêu biện pháp khắc phục và thời hạn cụ thể." },
+      { "speaker": "Journalistin", "text": "Wer übernimmt die operative Verantwortung?", "vi": "Ai nhận trách nhiệm vận hành?" }
+    ],
+    "cultural_notes_vi": "Xin lỗi tổ chức bằng tiếng Đức cần Entschuldigung + Verantwortung + Fristen. Bedauern một mình là yếu.",
+    "tip_advice_vi": "Không chỉ nói es tut uns leid; nêu Abhilfe và Fristen.",
+    "register_notes": "German institutional apology is credible when it names responsibility and repair mechanisms."
+  },
+  {
+    "id": "lhintergrundgespraech_off_record",
+    "category": "public_communication",
+    "level": "C1",
+    "title_vi": "Briefing bối cảnh — off the record",
+    "title_en": "Background briefing — off-the-record context",
+    "sentences": [
+      {
+        "en": "Vorab zum Rahmen: Dieses Hintergrundgespräch ist nicht zur direkten Zitierung bestimmt.",
+        "vi": "Trước hết về khung trao đổi: cuộc trao đổi bối cảnh này không dành cho trích dẫn trực tiếp.",
+        "pronunciation_focus": ["Vorab zum Rahmen", "Hintergrundgespräch", "Zitierung"]
+      },
+      {
+        "en": "Es soll die Chronologie erklären, nicht eine bestimmte Lesart in die Berichterstattung drücken.",
+        "vi": "Nó nhằm giải thích trình tự thời gian, không phải ép một cách đọc nhất định vào tin bài.",
+        "pronunciation_focus": ["Chronologie", "Lesart", "Berichterstattung"]
+      }
+    ],
+    "vocabulary": [
+      { "word": "das Hintergrundgespräch", "en": "background briefing", "vi": "trao đổi bối cảnh", "pos": "noun (n)", "pronunciation_vi": "HIN-tơ-grunt-gơ-shprekh" },
+      { "word": "die Zitierung", "en": "quotation", "vi": "trích dẫn", "pos": "noun (f)", "pronunciation_vi": "tsi-TI-rung" }
+    ],
+    "dialogue": [
+      { "speaker": "Pressereferent", "text": "Diese Einordnung ist als Hintergrund gedacht, nicht als namentliches Zitat.", "vi": "Phần phân loại này là thông tin bối cảnh, không phải trích dẫn kèm tên." },
+      { "speaker": "Journalist", "text": "Kann ich die Chronologie ohne Namensnennung verwenden?", "vi": "Tôi có thể dùng trình tự thời gian mà không nêu tên không?" }
+    ],
+    "cultural_notes_vi": "Trong báo chí Đức, Hintergrundgespräch phải rõ quy tắc trích dẫn trước khi nói nội dung nhạy cảm.",
+    "tip_advice_vi": "Phrase: nicht zur direkten Zitierung bestimmt.",
+    "register_notes": "German background briefings depend on explicit attribution rules and trust over time."
+  },
+  {
+    "id": "lharte_journalistenfragen_oeffentliche_pruefung",
+    "category": "public_communication",
+    "level": "C1",
+    "title_vi": "Q&A với phóng viên gay gắt dưới áp lực công chúng",
+    "title_en": "Hostile journalist Q&A under public scrutiny",
+    "sentences": [
+      {
+        "en": "Ich halte die Prämisse Ihrer Frage für falsch, beantworte aber gern den sachlichen Kern.",
+        "vi": "Tôi cho rằng tiền đề câu hỏi của anh/chị là sai, nhưng sẵn sàng trả lời phần cốt lõi về nội dung.",
+        "pronunciation_focus": ["Prämisse", "sachlicher Kern", "beantworte gern"]
+      },
+      {
+        "en": "Streitkultur bedeutet nicht, schärfer zu klingen, sondern präziser zu unterscheiden.",
+        "vi": "Văn hóa tranh luận không có nghĩa là nghe gắt hơn, mà là phân biệt chính xác hơn.",
+        "pronunciation_focus": ["Streitkultur", "präziser", "unterscheiden"]
+      }
+    ],
+    "vocabulary": [
+      { "word": "die Prämisse", "en": "premise", "vi": "tiền đề", "pos": "noun (f)", "pronunciation_vi": "prê-MIS-sơ" },
+      { "word": "der sachliche Kern", "en": "substantive core", "vi": "cốt lõi nội dung", "pos": "noun phrase", "pronunciation_vi": "ZAKH-likh-er kern" }
+    ],
+    "dialogue": [
+      { "speaker": "Journalist", "text": "Sie haben doch erst reagiert, als der öffentliche Druck zu groß wurde.", "vi": "Các ông/bà chỉ phản ứng khi áp lực công chúng quá lớn thôi mà." },
+      { "speaker": "Sprecherin", "text": "Diese Prämisse teile ich nicht. M. E. ist aber richtig: Unsere erste Kommunikation war nicht präzise genug.", "vi": "Tôi không chia sẻ tiền đề đó. Theo tôi, điểm đúng là: truyền thông đầu tiên của chúng tôi chưa đủ chính xác." }
+    ],
+    "cultural_notes_vi": "Streitkultur Đức cho phép phản đối trực tiếp, miễn là phản đối vào tiền đề hoặc nội dung, không vào con người.",
+    "tip_advice_vi": "Formula: Diese Prämisse teile ich nicht. M.E. ist aber richtig...",
+    "register_notes": "Hostile German Q&A can be direct; precision and fairness keep it professional."
+  },
+  {
+    "id": "lpressesprecher_woechentliches_briefing",
+    "category": "public_communication",
+    "level": "C1",
+    "title_vi": "Vai trò người phát ngôn — briefing báo chí hằng tuần",
+    "title_en": "Spokesperson role — weekly press briefing",
+    "sentences": [
+      {
+        "en": "Die Aufgabe eines Pressesprechers besteht darin, verlässlich zu sagen, was gesagt werden kann, und offen zu markieren, was noch geprüft wird.",
+        "vi": "Nhiệm vụ của người phát ngôn là nói đáng tin điều có thể nói và đánh dấu rõ điều còn đang kiểm tra.",
+        "pronunciation_focus": ["Pressesprecher", "verlässlich", "markieren"]
+      },
+      {
+        "en": "Zu diesem Punkt gibt es keinen neuen Stand; gegebenenfalls reichen wir bis Freitag eine schriftliche Ergänzung nach.",
+        "vi": "Về điểm này chưa có tình trạng mới; nếu phù hợp, chúng tôi sẽ gửi bổ sung bằng văn bản trước thứ Sáu.",
+        "pronunciation_focus": ["neuer Stand", "gegebenenfalls", "schriftliche Ergänzung"]
+      }
+    ],
+    "vocabulary": [
+      { "word": "der Pressesprecher", "en": "spokesperson", "vi": "người phát ngôn", "pos": "noun (m)", "pronunciation_vi": "PRES-sê-shpre-khơ" },
+      { "word": "der neue Stand", "en": "latest status", "vi": "tình trạng mới", "pos": "noun phrase", "pronunciation_vi": "NOY-ơ shtant" }
+    ],
+    "dialogue": [
+      { "speaker": "Pressesprecher", "text": "Ich beginne mit zwei bestätigten Updates und markiere anschließend die offenen Punkte.", "vi": "Tôi bắt đầu bằng hai cập nhật đã xác nhận rồi đánh dấu các điểm còn mở." },
+      { "speaker": "Journalistin", "text": "Warum gibt es zu dem Vorfall noch keinen neuen Stand?", "vi": "Vì sao sự cố đó vẫn chưa có trạng thái mới?" }
+    ],
+    "cultural_notes_vi": "Briefing Đức thích sự lặp lại ổn định: confirmed update, offener Punkt, schriftliche Ergänzung.",
+    "tip_advice_vi": "Useful hedge: gegebenenfalls reichen wir ... nach.",
+    "register_notes": "The spokesperson register is repetitive because institutional trust is built through stable wording."
+  },
+  {
+    "id": "loffizielle_social_media_stellungnahme",
+    "category": "public_communication",
+    "level": "C1",
+    "title_vi": "Tuyên bố chính thức trên mạng xã hội",
+    "title_en": "Official statement on social media channels",
+    "sentences": [
+      {
+        "en": "Eine offizielle Stellungnahme auf Social Media darf knapp sein, aber nicht beiläufig wirken.",
+        "vi": "Một tuyên bố chính thức trên mạng xã hội có thể ngắn, nhưng không được có vẻ tùy tiện.",
+        "pronunciation_focus": ["offizielle Stellungnahme", "knapp", "beiläufig"]
+      },
+      {
+        "en": "Der erste Satz benennt die Position, der zweite die Maßnahme, der dritte den Ort weiterer Informationen.",
+        "vi": "Câu đầu nêu lập trường, câu hai nêu biện pháp, câu ba nêu nơi có thông tin tiếp theo.",
+        "pronunciation_focus": ["benennt", "Maßnahme", "weitere Informationen"]
+      }
+    ],
+    "vocabulary": [
+      { "word": "die Stellungnahme", "en": "statement", "vi": "tuyên bố / phát biểu lập trường", "pos": "noun (f)", "pronunciation_vi": "SHTEL-lung-nah-mơ" },
+      { "word": "beiläufig", "en": "casual / incidental", "vi": "tùy tiện, tiện miệng", "pos": "adjective", "pronunciation_vi": "BAI-loy-fikh" }
+    ],
+    "dialogue": [
+      { "speaker": "Social-Media-Redakteur", "text": "Die Antwort klingt zu spontan für einen offiziellen Kanal.", "vi": "Câu trả lời nghe quá ứng biến đối với một kênh chính thức." },
+      { "speaker": "Kommunikationsleiterin", "text": "Dann formulieren wir es als kurze Stellungnahme: Position, Maßnahme, Link zum Update.", "vi": "Vậy ta diễn đạt như một tuyên bố ngắn: lập trường, biện pháp, link tới cập nhật." }
+    ],
+    "cultural_notes_vi": "Social media tiếng Đức vẫn có thể rất gọn, nhưng tài khoản chính thức cần giọng đáng tin và không 'chatty'.",
+    "tip_advice_vi": "Three-line pattern: Position → Maßnahme → Link.",
+    "register_notes": "German official social copy should be concise, legally careful, and screenshot-proof."
   }
 ];
 

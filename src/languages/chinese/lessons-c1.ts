@@ -5015,6 +5015,406 @@ export const lessons: ChineseLesson[] = [
       ] },
       { "type": "translation", "vietnamese": "Sau tốt nghiệp, tác giả vẫn xem cựu sinh viên là thành viên của gia đình học thuật, tiếp tục cung cấp thư giới thiệu, lời khuyên học thuật và hỗ trợ mạng lưới nghề nghiệp; đây là quan hệ cả đời.", "chinese": "毕业后, 笔者仍视前学生为学术家庭之成员, 持续提供推荐信、学术建议与职业网络支持; 这是一辈子之关系。", "pinyin": "Bì yè hòu, bǐ zhě réng shì qián xué shēng wéi xué shù jiā tíng zhī chéng yuán, chí xù tí gōng tuī jiàn xìn, xué shù jiàn yì yǔ zhí yè wǎng luò zhī chí; zhè shì yī bèi zi zhī guān xì." }
     ]
+  },
+  {
+    "id": 132,
+    "level": "C1",
+    "category": "public_communication",
+    "title": "主持记者会开场",
+    "pinyin": "zhǔ chí jì zhě huì kāi chǎng",
+    "topic": "Opening a press conference",
+    "title_vi": "Mở đầu một buổi họp báo",
+    "title_en": "Opening a press conference",
+    "sentences": [
+      {
+        "chinese": "各位媒体朋友, 感谢大家在短时间内来到现场; 今天我们会先说明事实, 再回应大家关心的问题。",
+        "pinyin": "Gèwèi méitǐ péngyǒu, gǎnxiè dàjiā zài duǎn shíjiān nèi lái dào xiànchǎng; jīntiān wǒmen huì xiān shuōmíng shìshí, zài huíyìng dàjiā guānxīn de wèntí.",
+        "english": "Friends from the media, thank you for coming on short notice; today we will first state the facts, then respond to the questions you care about.",
+        "vi": "Thưa các bạn truyền thông, cảm ơn mọi người đã đến trong thời gian ngắn; hôm nay chúng tôi sẽ trình bày sự việc trước, rồi trả lời các câu hỏi mọi người quan tâm.",
+        "pronunciation_focus": ["各位媒体朋友 → formal but warm", "先...再... → structured order", "回应 → huíyìng"]
+      },
+      {
+        "chinese": "在调查完成之前, 我们不会作没有根据的推测; 但可以确认的是, 受影响的客户已经获得直接通知。",
+        "pinyin": "Zài diàochá wánchéng zhīqián, wǒmen bù huì zuò méiyǒu gēnjù de tuīcè; dàn kěyǐ quèrèn de shì, shòu yǐngxiǎng de kèhù yǐjīng huòdé zhíjiē tōngzhī.",
+        "english": "Before the review is completed, we will not make unfounded speculation; what we can confirm is that affected customers have been notified directly.",
+        "vi": "Trước khi hoàn tất rà soát, chúng tôi sẽ không suy đoán thiếu căn cứ; điều có thể xác nhận là khách hàng bị ảnh hưởng đã được thông báo trực tiếp.",
+        "pronunciation_focus": ["没有根据的推测", "可以确认的是", "受影响的客户"]
+      }
+    ],
+    "vocab": [
+      { "chinese": "记者会", "pinyin": "jì zhě huì", "english": "press conference", "vi": "họp báo" },
+      { "chinese": "媒体朋友", "pinyin": "méi tǐ péng yǒu", "english": "members of the media", "vi": "các bạn truyền thông" },
+      { "chinese": "说明事实", "pinyin": "shuō míng shì shí", "english": "state the facts", "vi": "trình bày sự việc" },
+      { "chinese": "回应关切", "pinyin": "huí yìng guān qiè", "english": "respond to concerns", "vi": "phản hồi quan ngại" }
+    ],
+    "dialogue": [
+      { "speaker": "发言人", "chinese": "感谢各位媒体朋友到场, 我先用三分钟说明目前已经确认的情况。", "pinyin": "Gǎnxiè gèwèi méitǐ péngyǒu dàochǎng, wǒ xiān yòng sān fēnzhōng shuōmíng mùqián yǐjīng quèrèn de qíngkuàng.", "english": "Thank you all for coming. I will first use three minutes to explain what has been confirmed.", "vi": "Cảm ơn các bạn truyền thông đã đến. Tôi sẽ dùng ba phút để trình bày những gì đã xác nhận." },
+      { "speaker": "记者", "chinese": "请问今天会开放现场提问吗?", "pinyin": "Qǐngwèn jīntiān huì kāifàng xiànchǎng tíwèn ma?", "english": "Will there be live questions today?", "vi": "Hôm nay có mở phần hỏi trực tiếp không?" }
+    ],
+    "register_notes": "HK/Taiwan/SG Chinese press-conference openings are calm, procedural, and relationship-aware. Open with thanks, define what is confirmed, reserve what is still under review, then promise a Q&A window. Avoid over-apologizing before facts are known.",
+    "exercises": [
+      { "type": "translation", "vietnamese": "Chúng tôi sẽ trình bày sự việc trước, rồi trả lời câu hỏi của truyền thông.", "chinese": "我们会先说明事实, 再回应媒体的问题。", "pinyin": "Wǒmen huì xiān shuōmíng shìshí, zài huíyìng méitǐ de wèntí." }
+    ]
+  },
+  {
+    "id": 133,
+    "level": "C1",
+    "category": "public_communication",
+    "title": "撰写新闻稿",
+    "pinyin": "zhuàn xiě xīn wén gǎo",
+    "topic": "Writing a press release",
+    "title_vi": "Viết thông cáo báo chí",
+    "title_en": "Writing a press release",
+    "sentences": [
+      {
+        "chinese": "本公司今日宣布, 将于新加坡推出面向中小企业的双语客户服务平台。",
+        "pinyin": "Běn gōngsī jīnrì xuānbù, jiāng yú Xīnjiāpō tuīchū miànxiàng zhōngxiǎo qǐyè de shuāngyǔ kèhù fúwù píngtái.",
+        "english": "The company announced today that it will launch a bilingual customer-service platform for SMEs in Singapore.",
+        "vi": "Công ty hôm nay công bố sẽ ra mắt tại Singapore một nền tảng chăm sóc khách hàng song ngữ dành cho doanh nghiệp vừa và nhỏ.",
+        "pronunciation_focus": ["本公司今日宣布", "推出", "面向中小企业"]
+      },
+      {
+        "chinese": "新闻稿第二段应补充背景、数据与引述, 避免把宣传口号写成新闻事实。",
+        "pinyin": "Xīnwéngǎo dì èr duàn yīng bǔchōng bèijǐng, shùjù yǔ yǐnshù, bìmiǎn bǎ xuānchuán kǒuhào xiě chéng xīnwén shìshí.",
+        "english": "The second paragraph of a press release should add background, data, and quotes, avoiding turning slogans into news facts.",
+        "vi": "Đoạn thứ hai của thông cáo nên bổ sung bối cảnh, dữ liệu và trích dẫn, tránh viết khẩu hiệu quảng bá như thể là sự kiện báo chí.",
+        "pronunciation_focus": ["背景、数据与引述", "宣传口号", "新闻事实"]
+      }
+    ],
+    "vocab": [
+      { "chinese": "新闻稿", "pinyin": "xīn wén gǎo", "english": "press release", "vi": "thông cáo báo chí" },
+      { "chinese": "引述", "pinyin": "yǐn shù", "english": "quotation", "vi": "trích dẫn" },
+      { "chinese": "背景资料", "pinyin": "bèi jǐng zī liào", "english": "background information", "vi": "tư liệu bối cảnh" },
+      { "chinese": "宣传口号", "pinyin": "xuān chuán kǒu hào", "english": "promotional slogan", "vi": "khẩu hiệu quảng bá" }
+    ],
+    "dialogue": [
+      { "speaker": "编辑", "chinese": "标题不要写'重新定义行业', 写清楚谁在何处推出什么。", "pinyin": "Biāotí bùyào xiě 'chóngxīn dìngyì hángyè', xiě qīngchǔ shéi zài héchù tuīchū shénme.", "english": "Do not write 'redefining the industry' in the headline. State who is launching what, and where.", "vi": "Đừng viết tiêu đề 'định nghĩa lại ngành'. Hãy viết rõ ai ra mắt cái gì, ở đâu." },
+      { "speaker": "公关经理", "chinese": "明白, 我会把第一段改成事实导向, 第二段再放引述。", "pinyin": "Míngbái, wǒ huì bǎ dì yī duàn gǎi chéng shìshí dǎoxiàng, dì èr duàn zài fàng yǐnshù.", "english": "Understood. I will make the first paragraph fact-led and put the quote in the second paragraph.", "vi": "Hiểu rồi. Tôi sẽ sửa đoạn đầu theo hướng sự kiện, rồi đặt trích dẫn ở đoạn hai." }
+    ],
+    "register_notes": "A Chinese-language press release in HK/Taiwan/SG business contexts should lead with fact, not hype. Keep the headline concrete, put data before adjectives, and make executive quotes sound accountable rather than grandiose.",
+    "exercises": [
+      { "type": "fill-blank", "question": "新闻稿第二段应补充背景、数据与 ___。", "answer": "引述" }
+    ]
+  },
+  {
+    "id": 134,
+    "level": "C1",
+    "category": "public_communication",
+    "title": "为主要华文媒体撰写评论文章",
+    "pinyin": "wèi zhǔ yào huá wén méi tǐ zhuàn xiě píng lùn wén zhāng",
+    "topic": "Writing an op-ed for major Chinese-language papers",
+    "title_vi": "Viết bài bình luận cho báo Hoa ngữ lớn",
+    "title_en": "Writing an op-ed for major Chinese-language papers",
+    "sentences": [
+      {
+        "chinese": "一篇给《联合早报》或香港《明报》的评论文章, 必须先提出公共问题, 再给出可执行的判断。",
+        "pinyin": "Yī piān gěi Liánhé Zǎobào huò Xiānggǎng Míngbào de pínglùn wénzhāng, bìxū xiān tíchū gōnggòng wèntí, zài gěi chū kě zhíxíng de pànduàn.",
+        "english": "An op-ed for Lianhe Zaobao or Hong Kong's Ming Pao must first frame a public issue, then offer an actionable judgment.",
+        "vi": "Một bài bình luận cho Liên Hợp Tảo Báo hoặc Minh Báo Hong Kong phải nêu vấn đề công trước, rồi đưa ra nhận định có thể hành động.",
+        "pronunciation_focus": ["评论文章", "公共问题", "可执行的判断"]
+      },
+      {
+        "chinese": "评论不是抱怨, 而是把经验、数据和价值判断组织成一个负责任的论点。",
+        "pinyin": "Pínglùn bù shì bàoyuàn, ér shì bǎ jīngyàn, shùjù hé jiàzhí pànduàn zǔzhī chéng yī gè fù zérèn de lùndiǎn.",
+        "english": "Commentary is not complaint; it organizes experience, data, and value judgment into a responsible argument.",
+        "vi": "Bình luận không phải than phiền; nó tổ chức kinh nghiệm, dữ liệu và phán đoán giá trị thành một luận điểm có trách nhiệm.",
+        "pronunciation_focus": ["不是...而是...", "价值判断", "负责任的论点"]
+      }
+    ],
+    "vocab": [
+      { "chinese": "评论文章", "pinyin": "píng lùn wén zhāng", "english": "op-ed / commentary", "vi": "bài bình luận" },
+      { "chinese": "公共问题", "pinyin": "gōng gòng wèn tí", "english": "public issue", "vi": "vấn đề công" },
+      { "chinese": "价值判断", "pinyin": "jià zhí pàn duàn", "english": "value judgment", "vi": "phán đoán giá trị" },
+      { "chinese": "论点", "pinyin": "lùn diǎn", "english": "argument", "vi": "luận điểm" }
+    ],
+    "dialogue": [
+      { "speaker": "专栏编辑", "chinese": "你的稿子有观点, 但还缺一个公共问题的入口。", "pinyin": "Nǐ de gǎozi yǒu guāndiǎn, dàn hái quē yī gè gōnggòng wèntí de rùkǒu.", "english": "Your draft has a view, but it still lacks an entry point through a public issue.", "vi": "Bản thảo có quan điểm, nhưng còn thiếu lối vào qua một vấn đề công." },
+      { "speaker": "作者", "chinese": "我会把个人观察放到第三段, 第一段先写读者共同面对的压力。", "pinyin": "Wǒ huì bǎ gèrén guānchá fàng dào dì sān duàn, dì yī duàn xiān xiě dúzhě gòngtóng miànduì de yālì.", "english": "I will move personal observation to the third paragraph and open with the pressure readers face collectively.", "vi": "Tôi sẽ chuyển quan sát cá nhân xuống đoạn ba, đoạn đầu viết về áp lực chung mà độc giả đang đối mặt." }
+    ],
+    "register_notes": "For major Chinese-language papers in HK/Taiwan/SG, avoid slogans and partisan framing. A strong op-ed moves from shared public concern to evidence, then to a measured but clear recommendation.",
+    "exercises": [
+      { "type": "translation", "vietnamese": "Bình luận không phải than phiền, mà là một luận điểm có trách nhiệm.", "chinese": "评论不是抱怨, 而是一个负责任的论点。", "pinyin": "Pínglùn bù shì bàoyuàn, ér shì yī gè fù zérèn de lùndiǎn." }
+    ]
+  },
+  {
+    "id": 135,
+    "level": "C1",
+    "category": "public_communication",
+    "title": "参加播客或谈话节目",
+    "pinyin": "cān jiā bō kè huò tán huà jié mù",
+    "topic": "Podcast / talk show appearance",
+    "title_vi": "Xuất hiện trên podcast hoặc talk show",
+    "title_en": "Podcast / talk show appearance",
+    "sentences": [
+      {
+        "chinese": "在播客里, 你可以比记者会更自然, 但仍要避免把未经确认的信息说成事实。",
+        "pinyin": "Zài bōkè lǐ, nǐ kěyǐ bǐ jìzhěhuì gèng zìrán, dàn réng yào bìmiǎn bǎ wèi jīng quèrèn de xìnxī shuō chéng shìshí.",
+        "english": "On a podcast, you can sound more natural than in a press conference, but you must still avoid presenting unconfirmed information as fact.",
+        "vi": "Trên podcast, bạn có thể nói tự nhiên hơn họp báo, nhưng vẫn phải tránh biến thông tin chưa xác nhận thành sự thật.",
+        "pronunciation_focus": ["播客", "更自然", "未经确认的信息"]
+      },
+      {
+        "chinese": "主持人追问时, 可以先承认问题的合理性, 再把回答带回你能负责的范围。",
+        "pinyin": "Zhǔchírén zhuīwèn shí, kěyǐ xiān chéngrèn wèntí de hélǐxìng, zài bǎ huídá dài huí nǐ néng fùzé de fànwéi.",
+        "english": "When the host follows up, first acknowledge the legitimacy of the question, then bring the answer back to the scope you can own.",
+        "vi": "Khi người dẫn hỏi dồn, có thể thừa nhận tính hợp lý của câu hỏi trước, rồi đưa câu trả lời về phạm vi mình chịu trách nhiệm được.",
+        "pronunciation_focus": ["追问", "合理性", "能负责的范围"]
+      }
+    ],
+    "vocab": [
+      { "chinese": "播客", "pinyin": "bō kè", "english": "podcast", "vi": "podcast" },
+      { "chinese": "谈话节目", "pinyin": "tán huà jié mù", "english": "talk show", "vi": "chương trình trò chuyện" },
+      { "chinese": "追问", "pinyin": "zhuī wèn", "english": "follow-up question", "vi": "hỏi dồn / hỏi tiếp" },
+      { "chinese": "负责范围", "pinyin": "fù zé fàn wéi", "english": "scope of responsibility", "vi": "phạm vi chịu trách nhiệm" }
+    ],
+    "dialogue": [
+      { "speaker": "主持人", "chinese": "听起来你们内部其实早就知道问题存在, 对吗?", "pinyin": "Tīng qǐlái nǐmen nèibù qíshí zǎo jiù zhīdào wèntí cúnzài, duì ma?", "english": "It sounds like your team knew internally that the problem existed, right?", "vi": "Nghe như nội bộ các anh chị đã biết vấn đề từ lâu, đúng không?" },
+      { "speaker": "来宾", "chinese": "这是一个合理的追问。就我能确认的范围来说, 我们是在上周完成技术复核后才定案。", "pinyin": "Zhè shì yī gè hélǐ de zhuīwèn. Jiù wǒ néng quèrèn de fànwéi lái shuō, wǒmen shì zài shàng zhōu wánchéng jìshù fùhé hòu cái dìng'àn.", "english": "That is a fair follow-up. Within what I can confirm, we finalized it only after completing the technical review last week.", "vi": "Đó là câu hỏi tiếp hợp lý. Trong phạm vi tôi có thể xác nhận, chúng tôi chỉ chốt sau khi hoàn tất rà soát kỹ thuật tuần trước." }
+    ],
+    "register_notes": "Podcast Chinese can be warmer and more conversational, but C1 public-facing speech still needs containment: acknowledge, clarify, and avoid casual speculation.",
+    "exercises": [
+      { "type": "fill-blank", "question": "主持人追问时, 先承认问题的 ___, 再回到负责范围。", "answer": "合理性" }
+    ]
+  },
+  {
+    "id": 136,
+    "level": "C1",
+    "category": "public_communication",
+    "title": "电视新闻直播回应主播",
+    "pinyin": "diàn shì xīn wén zhí bō huí yìng zhǔ bō",
+    "topic": "TV news interview — responding to anchors live",
+    "title_vi": "Trả lời người dẫn trong phỏng vấn truyền hình trực tiếp",
+    "title_en": "TV news interview — responding to anchors live",
+    "sentences": [
+      {
+        "chinese": "直播访问中, 回答必须短、稳、可引用; 如果句子太长, 主播会打断你。",
+        "pinyin": "Zhíbō fǎngwèn zhōng, huídá bìxū duǎn, wěn, kě yǐnyòng; rúguǒ jùzi tài cháng, zhǔbō huì dǎduàn nǐ.",
+        "english": "In a live interview, answers must be short, steady, and quotable; if your sentences are too long, the anchor will interrupt you.",
+        "vi": "Trong phỏng vấn trực tiếp, câu trả lời phải ngắn, vững và có thể trích dẫn; nếu câu quá dài, người dẫn sẽ cắt lời.",
+        "pronunciation_focus": ["短、稳、可引用", "打断", "直播访问"]
+      },
+      {
+        "chinese": "当主播要求你立即表态时, 可以说: 我理解这个问题很急, 但我们需要以核实后的信息为准。",
+        "pinyin": "Dāng zhǔbō yāoqiú nǐ lìjí biǎotài shí, kěyǐ shuō: wǒ lǐjiě zhège wèntí hěn jí, dàn wǒmen xūyào yǐ héshí hòu de xìnxī wéi zhǔn.",
+        "english": "When the anchor asks you to take a position immediately, say: I understand the urgency, but we need to rely on verified information.",
+        "vi": "Khi người dẫn yêu cầu bạn lập tức bày tỏ quan điểm, có thể nói: Tôi hiểu vấn đề này rất gấp, nhưng chúng tôi cần dựa trên thông tin đã xác minh.",
+        "pronunciation_focus": ["立即表态", "以...为准", "核实后的信息"]
+      }
+    ],
+    "vocab": [
+      { "chinese": "直播访问", "pinyin": "zhí bō fǎng wèn", "english": "live interview", "vi": "phỏng vấn trực tiếp" },
+      { "chinese": "主播", "pinyin": "zhǔ bō", "english": "news anchor", "vi": "người dẫn tin tức" },
+      { "chinese": "表态", "pinyin": "biǎo tài", "english": "state a position", "vi": "bày tỏ lập trường" },
+      { "chinese": "可引用", "pinyin": "kě yǐn yòng", "english": "quotable", "vi": "có thể trích dẫn" }
+    ],
+    "dialogue": [
+      { "speaker": "主播", "chinese": "你现在能不能直接承诺, 同类事件不会再发生?", "pinyin": "Nǐ xiànzài néng bù néng zhíjiē chéngnuò, tónglèi shìjiàn bù huì zài fāshēng?", "english": "Can you directly promise now that this kind of incident will not happen again?", "vi": "Anh/chị có thể cam kết ngay rằng sự việc tương tự sẽ không xảy ra nữa không?" },
+      { "speaker": "发言人", "chinese": "我不能给空泛承诺, 但可以承诺两点: 今天完成复核, 明天公开改善时间表。", "pinyin": "Wǒ bùnéng gěi kōngfàn chéngnuò, dàn kěyǐ chéngnuò liǎng diǎn: jīntiān wánchéng fùhé, míngtiān gōngkāi gǎishàn shíjiānbiǎo.", "english": "I cannot give a vague promise, but I can commit to two things: completing the review today and publishing the improvement timeline tomorrow.", "vi": "Tôi không thể đưa lời hứa chung chung, nhưng có thể cam kết hai điểm: hoàn tất rà soát hôm nay và công bố lộ trình cải thiện ngày mai." }
+    ],
+    "register_notes": "Live TV rewards concise Chinese. Use two-point answers, avoid defensive tone, and never improvise facts. A strong line is calm enough for viewers and short enough for editors.",
+    "exercises": [
+      { "type": "translation", "vietnamese": "Tôi không thể đưa lời hứa chung chung, nhưng có thể cam kết hai điểm.", "chinese": "我不能给空泛承诺, 但可以承诺两点。", "pinyin": "Wǒ bùnéng gěi kōngfàn chéngnuò, dàn kěyǐ chéngnuò liǎng diǎn." }
+    ]
+  },
+  {
+    "id": 137,
+    "level": "C1",
+    "category": "public_communication",
+    "title": "机构公开道歉记者会",
+    "pinyin": "jī gòu gōng kāi dào qiàn jì zhě huì",
+    "topic": "Institutional public apology press conference",
+    "title_vi": "Họp báo xin lỗi công khai của tổ chức",
+    "title_en": "Institutional public apology press conference",
+    "sentences": [
+      {
+        "chinese": "我们向受影响的客户和合作伙伴郑重道歉; 这不是他们应当承受的服务体验。",
+        "pinyin": "Wǒmen xiàng shòu yǐngxiǎng de kèhù hé hézuò huǒbàn zhèngzhòng dàoqiàn; zhè bù shì tāmen yīngdāng chéngshòu de fúwù tǐyàn.",
+        "english": "We offer a solemn apology to affected customers and partners; this is not the service experience they should have had to endure.",
+        "vi": "Chúng tôi xin lỗi nghiêm túc tới khách hàng và đối tác bị ảnh hưởng; đây không phải trải nghiệm dịch vụ mà họ đáng phải chịu.",
+        "pronunciation_focus": ["郑重道歉", "应当承受", "服务体验"]
+      },
+      {
+        "chinese": "道歉之后必须说明补救、责任和时间表, 否则听起来只是情绪管理。",
+        "pinyin": "Dàoqiàn zhīhòu bìxū shuōmíng bǔjiù, zérèn hé shíjiānbiǎo, fǒuzé tīng qǐlái zhǐ shì qíngxù guǎnlǐ.",
+        "english": "After apologizing, you must explain remedy, responsibility, and timeline; otherwise it sounds like emotional management only.",
+        "vi": "Sau lời xin lỗi phải nêu biện pháp khắc phục, trách nhiệm và thời hạn; nếu không sẽ nghe như chỉ quản lý cảm xúc.",
+        "pronunciation_focus": ["补救", "责任", "时间表"]
+      }
+    ],
+    "vocab": [
+      { "chinese": "郑重道歉", "pinyin": "zhèng zhòng dào qiàn", "english": "solemnly apologize", "vi": "xin lỗi nghiêm túc" },
+      { "chinese": "补救", "pinyin": "bǔ jiù", "english": "remedy", "vi": "khắc phục" },
+      { "chinese": "承担责任", "pinyin": "chéng dān zé rèn", "english": "take responsibility", "vi": "chịu trách nhiệm" },
+      { "chinese": "改善时间表", "pinyin": "gǎi shàn shí jiān biǎo", "english": "improvement timeline", "vi": "lộ trình cải thiện" }
+    ],
+    "dialogue": [
+      { "speaker": "行政总裁", "chinese": "我们先道歉, 再说明补救方案。今天不是找借口的场合。", "pinyin": "Wǒmen xiān dàoqiàn, zài shuōmíng bǔjiù fāng'àn. Jīntiān bù shì zhǎo jièkǒu de chǎnghé.", "english": "We will apologize first, then explain remedies. Today is not the occasion for excuses.", "vi": "Chúng tôi xin lỗi trước, rồi trình bày phương án khắc phục. Hôm nay không phải nơi để viện cớ." },
+      { "speaker": "记者", "chinese": "谁会为这次失误负责?", "pinyin": "Shéi huì wèi zhè cì shīwù fùzé?", "english": "Who will take responsibility for this failure?", "vi": "Ai sẽ chịu trách nhiệm cho sai sót lần này?" }
+    ],
+    "register_notes": "In overseas Chinese institutional apologies, the apology must preserve dignity without evasion. Use direct responsibility, concrete repair, and a time-bound review. Avoid saying only 'we regret any inconvenience'.",
+    "exercises": [
+      { "type": "fill-blank", "question": "道歉之后必须说明补救、责任和 ___。", "answer": "时间表" }
+    ]
+  },
+  {
+    "id": 138,
+    "level": "C1",
+    "category": "public_communication",
+    "title": "背景简报与非公开说明",
+    "pinyin": "bèi jǐng jiǎn bào yǔ fēi gōng kāi shuō míng",
+    "topic": "Background briefing — off-the-record context",
+    "title_vi": "Briefing bối cảnh và thông tin không công khai",
+    "title_en": "Background briefing — off-the-record context",
+    "sentences": [
+      {
+        "chinese": "背景简报的目的不是放风, 而是帮助记者理解时间线、技术限制和决策背景。",
+        "pinyin": "Bèijǐng jiǎnbào de mùdì bù shì fàngfēng, ér shì bāngzhù jìzhě lǐjiě shíjiānxiàn, jìshù xiànzhì hé juécè bèijǐng.",
+        "english": "The purpose of a background briefing is not to leak hints, but to help reporters understand the timeline, technical limits, and decision context.",
+        "vi": "Mục đích của briefing bối cảnh không phải thả tín hiệu, mà là giúp phóng viên hiểu dòng thời gian, giới hạn kỹ thuật và bối cảnh quyết định.",
+        "pronunciation_focus": ["背景简报", "放风", "时间线"]
+      },
+      {
+        "chinese": "开场必须先讲清楚规则: 哪些可以引用, 哪些只能作为背景理解。",
+        "pinyin": "Kāichǎng bìxū xiān jiǎng qīngchǔ guīzé: nǎxiē kěyǐ yǐnyòng, nǎxiē zhǐ néng zuòwéi bèijǐng lǐjiě.",
+        "english": "At the start, you must clarify the rules: what can be quoted and what is only for background understanding.",
+        "vi": "Khi mở đầu phải nói rõ quy tắc: phần nào có thể trích dẫn, phần nào chỉ dùng để hiểu bối cảnh.",
+        "pronunciation_focus": ["讲清楚规则", "可以引用", "背景理解"]
+      }
+    ],
+    "vocab": [
+      { "chinese": "背景简报", "pinyin": "bèi jǐng jiǎn bào", "english": "background briefing", "vi": "briefing bối cảnh" },
+      { "chinese": "非公开", "pinyin": "fēi gōng kāi", "english": "off the record / non-public", "vi": "không công khai" },
+      { "chinese": "引用", "pinyin": "yǐn yòng", "english": "quote", "vi": "trích dẫn" },
+      { "chinese": "时间线", "pinyin": "shí jiān xiàn", "english": "timeline", "vi": "dòng thời gian" }
+    ],
+    "dialogue": [
+      { "speaker": "公关顾问", "chinese": "这部分可以背景理解, 但请不要直接引用姓名和数字。", "pinyin": "Zhè bùfen kěyǐ bèijǐng lǐjiě, dàn qǐng bùyào zhíjiē yǐnyòng xìngmíng hé shùzì.", "english": "This part is for background understanding, but please do not directly quote names or figures.", "vi": "Phần này dùng để hiểu bối cảnh, nhưng xin đừng trích dẫn trực tiếp tên và số liệu." },
+      { "speaker": "记者", "chinese": "明白, 我可以写'知情人士表示'吗?", "pinyin": "Míngbái, wǒ kěyǐ xiě 'zhīqíng rénshì biǎoshì' ma?", "english": "Understood. May I write 'a person familiar with the matter said'?", "vi": "Hiểu rồi. Tôi có thể viết 'người nắm sự việc cho biết' không?" }
+    ],
+    "register_notes": "Background briefings require explicit ground rules. In HK/Taiwan/SG media settings, do not assume 'off the record' means the same thing to every outlet; state attribution rules before substance.",
+    "exercises": [
+      { "type": "translation", "vietnamese": "Phần này có thể dùng để hiểu bối cảnh, nhưng xin đừng trích dẫn trực tiếp.", "chinese": "这部分可以作为背景理解, 但请不要直接引用。", "pinyin": "Zhè bùfen kěyǐ zuòwéi bèijǐng lǐjiě, dàn qǐng bùyào zhíjiē yǐnyòng." }
+    ]
+  },
+  {
+    "id": 139,
+    "level": "C1",
+    "category": "public_communication",
+    "title": "公众压力下回应尖锐提问",
+    "pinyin": "gōng zhòng yā lì xià huí yìng jiān ruì tí wèn",
+    "topic": "Hostile journalist Q&A under public scrutiny",
+    "title_vi": "Trả lời phóng viên gay gắt dưới áp lực công chúng",
+    "title_en": "Hostile journalist Q&A under public scrutiny",
+    "sentences": [
+      {
+        "chinese": "面对尖锐提问, 不要先评价记者的动机; 先回答问题本身, 再纠正不准确的前提。",
+        "pinyin": "Miànduì jiānruì tíwèn, bùyào xiān píngjià jìzhě de dòngjī; xiān huídá wèntí běnshēn, zài jiūzhèng bù zhǔnquè de qiántí.",
+        "english": "When facing a sharp question, do not begin by judging the reporter's motive; answer the question itself, then correct inaccurate premises.",
+        "vi": "Khi gặp câu hỏi gay gắt, đừng đánh giá động cơ của phóng viên trước; hãy trả lời bản thân câu hỏi, rồi chỉnh lại tiền đề không chính xác.",
+        "pronunciation_focus": ["尖锐提问", "动机", "不准确的前提"]
+      },
+      {
+        "chinese": "你可以说: 我不同意问题中的前提, 但我会回应你关心的核心。",
+        "pinyin": "Nǐ kěyǐ shuō: wǒ bù tóngyì wèntí zhōng de qiántí, dàn wǒ huì huíyìng nǐ guānxīn de héxīn.",
+        "english": "You can say: I do not agree with the premise of the question, but I will respond to the core of your concern.",
+        "vi": "Bạn có thể nói: Tôi không đồng ý với tiền đề trong câu hỏi, nhưng tôi sẽ trả lời phần cốt lõi anh/chị quan tâm.",
+        "pronunciation_focus": ["不同意前提", "回应核心", "关心"]
+      }
+    ],
+    "vocab": [
+      { "chinese": "尖锐提问", "pinyin": "jiān ruì tí wèn", "english": "sharp question", "vi": "câu hỏi gay gắt" },
+      { "chinese": "公众压力", "pinyin": "gōng zhòng yā lì", "english": "public pressure", "vi": "áp lực công chúng" },
+      { "chinese": "前提", "pinyin": "qián tí", "english": "premise", "vi": "tiền đề" },
+      { "chinese": "纠正", "pinyin": "jiū zhèng", "english": "correct", "vi": "chỉnh lại" }
+    ],
+    "dialogue": [
+      { "speaker": "记者", "chinese": "你们是不是等到舆论爆发才愿意承认错误?", "pinyin": "Nǐmen shì bù shì děng dào yúlùn bàofā cái yuànyì chéngrèn cuòwù?", "english": "Did you only admit the mistake after public opinion erupted?", "vi": "Có phải các anh chị chỉ chịu nhận lỗi sau khi dư luận bùng lên không?" },
+      { "speaker": "发言人", "chinese": "我不同意这个前提, 但我理解大家为什么会有这种感受。我们昨天公开的时间线可以说明处理过程。", "pinyin": "Wǒ bù tóngyì zhège qiántí, dàn wǒ lǐjiě dàjiā wèishéme huì yǒu zhè zhǒng gǎnshòu. Wǒmen zuótiān gōngkāi de shíjiānxiàn kěyǐ shuōmíng chǔlǐ guòchéng.", "english": "I do not agree with that premise, but I understand why people may feel that way. The timeline we released yesterday explains the handling process.", "vi": "Tôi không đồng ý với tiền đề đó, nhưng tôi hiểu vì sao mọi người có cảm giác như vậy. Dòng thời gian chúng tôi công bố hôm qua giải thích quá trình xử lý." }
+    ],
+    "register_notes": "Hostile Q&A in Chinese public settings needs firmness without face-loss escalation. Separate premise, emotion, and answer. Do not accuse the journalist; correct the frame and return to verifiable facts.",
+    "exercises": [
+      { "type": "translation", "vietnamese": "Tôi không đồng ý với tiền đề đó, nhưng tôi hiểu vì sao mọi người có cảm giác như vậy.", "chinese": "我不同意这个前提, 但我理解大家为什么会有这种感受。", "pinyin": "Wǒ bù tóngyì zhège qiántí, dàn wǒ lǐjiě dàjiā wèishéme huì yǒu zhè zhǒng gǎnshòu." }
+    ]
+  },
+  {
+    "id": 140,
+    "level": "C1",
+    "category": "public_communication",
+    "title": "每周新闻简报发言人角色",
+    "pinyin": "měi zhōu xīn wén jiǎn bào fā yán rén jué sè",
+    "topic": "Spokesperson role — weekly press briefing",
+    "title_vi": "Vai trò người phát ngôn trong briefing báo chí hằng tuần",
+    "title_en": "Spokesperson role — weekly press briefing",
+    "sentences": [
+      {
+        "chinese": "每周简报的价值在于建立稳定预期: 哪些议题更新, 哪些仍在处理中, 哪些暂不评论。",
+        "pinyin": "Měi zhōu jiǎnbào de jiàzhí zàiyú jiànlì wěndìng yùqī: nǎxiē yìtí gēngxīn, nǎxiē réng zài chǔlǐ zhōng, nǎxiē zàn bù pínglùn.",
+        "english": "The value of a weekly briefing lies in setting stable expectations: what topics are updated, what remains in process, and what will not be commented on for now.",
+        "vi": "Giá trị của briefing hằng tuần nằm ở việc tạo kỳ vọng ổn định: vấn đề nào có cập nhật, vấn đề nào đang xử lý, vấn đề nào tạm thời không bình luận.",
+        "pronunciation_focus": ["建立稳定预期", "议题更新", "暂不评论"]
+      },
+      {
+        "chinese": "发言人不是把所有问题都答完的人, 而是把机构立场清楚、稳定、可追踪地表达出来的人。",
+        "pinyin": "Fāyánrén bù shì bǎ suǒyǒu wèntí dōu dá wán de rén, ér shì bǎ jīgòu lìchǎng qīngchǔ, wěndìng, kě zhuīzōng de biǎodá chūlái de rén.",
+        "english": "A spokesperson is not someone who answers every question completely, but someone who expresses the institution's position clearly, steadily, and traceably.",
+        "vi": "Người phát ngôn không phải người trả lời hết mọi câu hỏi, mà là người diễn đạt lập trường của tổ chức rõ ràng, ổn định và có thể truy vết.",
+        "pronunciation_focus": ["发言人", "机构立场", "可追踪"]
+      }
+    ],
+    "vocab": [
+      { "chinese": "发言人", "pinyin": "fā yán rén", "english": "spokesperson", "vi": "người phát ngôn" },
+      { "chinese": "每周简报", "pinyin": "měi zhōu jiǎn bào", "english": "weekly briefing", "vi": "briefing hằng tuần" },
+      { "chinese": "稳定预期", "pinyin": "wěn dìng yù qī", "english": "stable expectations", "vi": "kỳ vọng ổn định" },
+      { "chinese": "暂不评论", "pinyin": "zàn bù píng lùn", "english": "no comment for now", "vi": "tạm thời không bình luận" }
+    ],
+    "dialogue": [
+      { "speaker": "记者", "chinese": "这个议题今天为什么没有更新?", "pinyin": "Zhège yìtí jīntiān wèishéme méiyǒu gēngxīn?", "english": "Why is there no update on this issue today?", "vi": "Vì sao hôm nay vấn đề này không có cập nhật?" },
+      { "speaker": "发言人", "chinese": "因为复核还在进行, 我们不想用不完整的信息误导公众。下周二前会给出书面更新。", "pinyin": "Yīnwèi fùhé hái zài jìnxíng, wǒmen bù xiǎng yòng bù wánzhěng de xìnxī wùdǎo gōngzhòng. Xià zhōu'èr qián huì gěi chū shūmiàn gēngxīn.", "english": "Because the review is still ongoing, we do not want to mislead the public with incomplete information. We will provide a written update before next Tuesday.", "vi": "Vì rà soát vẫn đang diễn ra, chúng tôi không muốn dùng thông tin chưa đầy đủ để làm công chúng hiểu sai. Trước thứ Ba tuần sau sẽ có cập nhật bằng văn bản." }
+    ],
+    "register_notes": "A weekly spokesperson rhythm builds trust through predictability. It is acceptable to say 'no update' if you pair it with reason, next step, and timing.",
+    "exercises": [
+      { "type": "fill-blank", "question": "每周简报的价值在于建立稳定 ___。", "answer": "预期" }
+    ]
+  },
+  {
+    "id": 141,
+    "level": "C1",
+    "category": "public_communication",
+    "title": "社交媒体官方声明",
+    "pinyin": "shè jiāo méi tǐ guān fāng shēng míng",
+    "topic": "Official statement on social media channels",
+    "title_vi": "Tuyên bố chính thức trên kênh mạng xã hội",
+    "title_en": "Official statement on social media channels",
+    "sentences": [
+      {
+        "chinese": "社交媒体声明要比新闻稿短, 但不能比新闻稿随便; 每一句都可能被截图转发。",
+        "pinyin": "Shèjiāo méitǐ shēngmíng yào bǐ xīnwéngǎo duǎn, dàn bùnéng bǐ xīnwéngǎo suíbiàn; měi yī jù dōu kěnéng bèi jiétú zhuǎnfā.",
+        "english": "A social-media statement should be shorter than a press release, but not more casual; every sentence may be screenshotted and shared.",
+        "vi": "Tuyên bố trên mạng xã hội nên ngắn hơn thông cáo báo chí, nhưng không được tùy tiện hơn; câu nào cũng có thể bị chụp màn hình và chia sẻ.",
+        "pronunciation_focus": ["社交媒体声明", "随便", "截图转发"]
+      },
+      {
+        "chinese": "第一句说明立场, 第二句说明行动, 第三句说明后续更新在哪里发布。",
+        "pinyin": "Dì yī jù shuōmíng lìchǎng, dì èr jù shuōmíng xíngdòng, dì sān jù shuōmíng hòuxù gēngxīn zài nǎlǐ fābù.",
+        "english": "The first sentence states the position, the second states the action, and the third states where later updates will be posted.",
+        "vi": "Câu đầu nêu lập trường, câu hai nêu hành động, câu ba nói cập nhật tiếp theo sẽ đăng ở đâu.",
+        "pronunciation_focus": ["立场", "行动", "后续更新"]
+      }
+    ],
+    "vocab": [
+      { "chinese": "官方声明", "pinyin": "guān fāng shēng míng", "english": "official statement", "vi": "tuyên bố chính thức" },
+      { "chinese": "截图", "pinyin": "jié tú", "english": "screenshot", "vi": "chụp màn hình" },
+      { "chinese": "转发", "pinyin": "zhuǎn fā", "english": "share / repost", "vi": "chia sẻ lại" },
+      { "chinese": "后续更新", "pinyin": "hòu xù gēng xīn", "english": "follow-up update", "vi": "cập nhật tiếp theo" }
+    ],
+    "dialogue": [
+      { "speaker": "社媒编辑", "chinese": "这条声明太像聊天, 我建议改成三句: 立场、行动、更新时间。", "pinyin": "Zhè tiáo shēngmíng tài xiàng liáotiān, wǒ jiànyì gǎi chéng sān jù: lìchǎng, xíngdòng, gēngxīn shíjiān.", "english": "This statement sounds too much like chat. I suggest three sentences: position, action, update time.", "vi": "Tuyên bố này giống trò chuyện quá. Tôi đề nghị sửa thành ba câu: lập trường, hành động, thời gian cập nhật." },
+      { "speaker": "主管", "chinese": "同意, 也把评论区置顶回复准备好, 避免每个问题都临场发挥。", "pinyin": "Tóngyì, yě bǎ pínglùn qū zhìdǐng huífù zhǔnbèi hǎo, bìmiǎn měi gè wèntí dōu línchǎng fāhuī.", "english": "Agreed. Also prepare a pinned reply for comments so we do not improvise every answer.", "vi": "Đồng ý. Chuẩn bị cả trả lời ghim trong phần bình luận để khỏi ứng biến từng câu." }
+    ],
+    "register_notes": "Official Chinese social copy should be compact, not cute. Assume screenshot circulation, keep the line accountable, and point readers to one verified update channel.",
+    "exercises": [
+      { "type": "translation", "vietnamese": "Câu đầu nêu lập trường, câu hai nêu hành động, câu ba nói nơi cập nhật.", "chinese": "第一句说明立场, 第二句说明行动, 第三句说明更新在哪里发布。", "pinyin": "Dì yī jù shuōmíng lìchǎng, dì èr jù shuōmíng xíngdòng, dì sān jù shuōmíng gēngxīn zài nǎlǐ fābù." }
+    ]
   }
 ];
 
