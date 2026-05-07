@@ -404,7 +404,7 @@ export default function ChatHub() {
     <div className="min-h-screen bg-background text-foreground">
       <style>{`
         :root {
-          --mb-essay-zoom: var(--mb-essay-zoom, 100);
+          --mb-essay-zoom: 100;
         }
 
         [data-mb-room-zoom="1"] {
