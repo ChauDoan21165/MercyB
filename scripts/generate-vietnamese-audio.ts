@@ -8,7 +8,11 @@
  *   - phrases: alternate thuminh / leminh by phrase index
  *   - dialogue: first speaker = thuminh, second = leminh, alternating per line
  *
- * Storage key pattern: a1/vi/l{id}/phrase_{n}.mp3, a1/vi/l{id}/dialogue_{n}.mp3
+ * Storage key pattern: {level}/vi/l{id}/phrase_{n}.mp3,
+ *                       {level}/vi/l{id}/dialogue_{n}.mp3
+ *
+ * The level segment is derived per-lesson from lesson.level.toLowerCase()
+ * so each batch lands under the right prefix without manual config.
  *
  * Required env (.env.local then .env):
  *   FPT_API_KEY
@@ -16,9 +20,10 @@
  *   SUPABASE_SERVICE_ROLE_KEY
  *
  * Usage:
- *   npx tsx scripts/generate-vietnamese-audio.ts            — full run
+ *   npx tsx scripts/generate-vietnamese-audio.ts            — full run, all levels
  *   npx tsx scripts/generate-vietnamese-audio.ts --dry-run  — list what would run
  *   npx tsx scripts/generate-vietnamese-audio.ts --limit=5  — first 5 entries
+ *   npx tsx scripts/generate-vietnamese-audio.ts --level=B1 — only lessons with level==="B1"
  */
 
 import { config as loadDotenv } from "dotenv";
@@ -46,6 +51,8 @@ const args = process.argv.slice(2);
 const DRY_RUN = args.includes("--dry-run");
 const LIMIT_ARG = args.find((a) => a.startsWith("--limit="));
 const LIMIT = LIMIT_ARG ? parseInt(LIMIT_ARG.split("=")[1]!, 10) : Infinity;
+const LEVEL_ARG = args.find((a) => a.startsWith("--level="));
+const LEVEL_FILTER = LEVEL_ARG ? LEVEL_ARG.split("=")[1]!.trim() : null;
 
 const VOICES = ["thuminh", "leminh"] as const;
 
@@ -57,12 +64,18 @@ type Entry = {
 
 // Build manifest
 const entries: Entry[] = [];
-for (const lesson of VIETNAMESE_LESSONS) {
+const filteredLessons = LEVEL_FILTER
+  ? VIETNAMESE_LESSONS.filter((l) => (l as { level?: string }).level === LEVEL_FILTER)
+  : VIETNAMESE_LESSONS;
+for (const lesson of filteredLessons) {
+  // Storage prefix follows the lesson's own CEFR level so each batch
+  // lands under the right segment (a1/vi/..., b1/vi/..., etc).
+  const levelPrefix = String((lesson as { level?: string }).level ?? "a1").toLowerCase();
   // Phrases: alternate voices by index
   lesson.phrases.forEach((ph, i) => {
     if (!ph.vietnamese?.trim()) return;
     entries.push({
-      storage_key: `a1/vi/l${lesson.id}/phrase_${i + 1}.mp3`,
+      storage_key: `${levelPrefix}/vi/l${lesson.id}/phrase_${i + 1}.mp3`,
       text: ph.vietnamese.trim().length < 3 ? ph.vietnamese.trim() + "." : ph.vietnamese.trim(),
       voice: VOICES[i % 2]!,
     });
@@ -72,7 +85,7 @@ for (const lesson of VIETNAMESE_LESSONS) {
     lesson.dialogue.forEach((line, i) => {
       if (!line.vietnamese?.trim()) return;
       entries.push({
-        storage_key: `a1/vi/l${lesson.id}/dialogue_${i + 1}.mp3`,
+        storage_key: `${levelPrefix}/vi/l${lesson.id}/dialogue_${i + 1}.mp3`,
         text: line.vietnamese.trim().length < 3 ? line.vietnamese.trim() + "." : line.vietnamese.trim(),
         voice: VOICES[i % 2]!,
       });
