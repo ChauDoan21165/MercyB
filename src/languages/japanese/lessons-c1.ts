@@ -2971,6 +2971,554 @@ export const lessons: JapaneseLesson[] = [
     ],
     "cultural_notes_vi": "Japanese hostile-negotiation: (1) RARITY — open hostility rare in Japanese business; if it occurs, signals serious dysfunction (existential threat to deal, individual under extreme pressure, deliberate intimidation tactic). (2) CULTURAL EXPECTATIONS — Japanese executives expect each other to maintain formality even under pressure; breaking formality signals breakdown of professional relationship. (3) FACE-LOSS DYNAMICS — counterpart who's hostile is often face-losing publicly; calmly maintaining your formality lets them de-escalate without further loss. (4) WITNESSES MATTER — Japanese hostile meetings often have multiple attendees; behavior judged by all present, not just principal. Composure earns long-term respect. (5) ESCALATION PATHS — if executive-level hostile, may escalate to board/CEO level; both sides usually want to avoid this; finding face-saving exit is mutual interest. (6) LEGAL TERRITORY — if hostile turns to threats (lawsuits, regulatory complaints), Japanese culture views these escalations as serious damage to relationship; rarely repaired. (7) REPAIR — even after hostile meeting, formal apology email + 改めてのご面談 (renewed meeting) standard practice; relationship can recover with effort. (8) Vietnamese learner perspective: Việt business culture sometimes more comfortable with public confrontation; in Nhật this rapidly degrades trust irrespective of who is 'right' on facts.",
     "tip_advice_vi": "Hostile-counterpart 8-step: (1) DON'T REACT IN REAL-TIME — pause, breathe, 'お時間〜分いただけますでしょうか'; (2) MAINTAIN KEIGO above their level — even if they yell, you stay 〜でございます; (3) ACKNOWLEDGE FEELING without conceding facts — 'ご不快な思いをおかけしたこと'; (4) REDIRECT TO FACTS — '記録によれば〜'; (5) DON'T TAKE BAIT for personal attacks — '本件は事実に基づき〜'; (6) PROTECT AUTHORITY LINE — never agree to more than you can deliver; '社内で検討'; (7) PROPOSE PROCESS not concession — 'a follow-up meeting next week with formal response'; (8) DOCUMENT — after hostile meeting, write detailed minutes immediately; share with internal team and (if safe) with counterpart. Common Vietnamese mistakes: (a) Mirroring tone (escalates); (b) Personal apology that sounds like accepting fault you don't have ('申し訳ございません, 弊社の全面的な責任で〜'); (c) Promising things outside your authority to calm down (later disastrous); (d) Walking out without face-saving exit. Phrase to memorize: 'ご不快な思いをおかけし、心よりお詫び申し上げます。一方で、今後の対応については、事実関係を整理したうえで、双方で建設的にご議論を進めさせていただきたく存じます.' Combines: feeling-acknowledgment + redirect-to-facts + joint-process framing — stand-your-ground without escalating."
+  },
+  {
+    "id": 112,
+    "title": "Academic discourse — doctoral defense opening",
+    "title_vi": "Diễn ngôn học thuật — Mở đầu buổi bảo vệ luận án tiến sĩ",
+    "title_en": "Academic discourse — doctoral defense opening",
+    "category": "academic-discourse",
+    "level": "C1",
+    "vocabulary": [
+      { "japanese": "博士論文審査 (はくしろんぶんしんさ)", "english": "doctoral dissertation defense / examination" },
+      { "japanese": "審査委員 (しんさいいん)", "english": "examining committee member" },
+      { "japanese": "学位論文 (がくいろんぶん)", "english": "degree dissertation" },
+      { "japanese": "研究課題 (けんきゅうかだい)", "english": "research question / research topic" },
+      { "japanese": "独自性 (どくじせい)", "english": "originality" },
+      { "japanese": "貢献 (こうけん)", "english": "contribution" },
+      { "japanese": "射程 (しゃてい)", "english": "scope / reach" },
+      { "japanese": "ご審査 (ごしんさ)", "english": "your examination / review (honorific)" }
+    ],
+    "examples": [
+      { "japanese": "本日はご多用のところ、本博士論文のご審査を賜り、誠にありがとうございます。", "english": "Thank you sincerely for examining this doctoral dissertation despite your busy schedules.", "pronunciation_focus": ["ご多用: ごたよう", "賜り: たまわり", "formal opening intonation"] },
+      { "japanese": "本論文は、近代日本語教育史における学習者主体の形成過程を再検討するものでございます。", "english": "This dissertation reexamines the formation process of learner agency in modern Japanese-language education history.", "pronunciation_focus": ["再検討: さいけんとう", "形成過程: けいせいかてい", "long compound pacing"] },
+      { "japanese": "先行研究の知見を踏まえつつ、本研究では資料分析と聞き取り調査を接続する点に独自性を求めました。", "english": "Building on prior findings, this study locates its originality in connecting document analysis with interview research.", "pronunciation_focus": ["踏まえつつ: ふまえつつ", "聞き取り: ききとり", "つつ cadence"] },
+      { "japanese": "発表では、研究課題、方法、主要な知見、そして本論文の限界の順にご説明いたします。", "english": "In the presentation, I will explain the research question, method, major findings, and limitations of the dissertation in that order.", "pronunciation_focus": ["主要: しゅよう", "限界: げんかい", "list rhythm"] }
+    ],
+    "dialogue": [
+      { "speaker": "申請者", "japanese": "本日はご審査の機会を賜り、誠にありがとうございます。", "english": "Thank you sincerely for the opportunity to be examined today." },
+      { "speaker": "主査", "japanese": "それでは、まず論文全体の問題意識からご説明ください。", "english": "Then please begin by explaining the overall problem awareness of the dissertation." },
+      { "speaker": "申請者", "japanese": "はい。本論文の出発点は、学習者を単なる制度の受け手として捉える枠組みへの疑問にございます。", "english": "Yes. The starting point of this dissertation lies in questioning the framework that treats learners merely as recipients of institutions." },
+      { "speaker": "主査", "japanese": "承知しました。貢献の位置づけも併せて示してください。", "english": "Understood. Please also indicate how you position the contribution." }
+    ],
+    "dialogue_long": [
+      { "speaker": "申請者", "japanese": "本日は、博士論文『近代日本語教育史における学習者主体の形成』について、概要をご説明申し上げます。", "english": "Today I will present an overview of my doctoral dissertation, 'The Formation of Learner Agency in Modern Japanese-Language Education History.'" },
+      { "speaker": "主査", "japanese": "まず、問題意識を簡潔にお願いします。", "english": "First, please state your problem awareness concisely." },
+      { "speaker": "申請者", "japanese": "従来の研究は制度設計や教育政策に焦点を当ててきましたが、学習者自身がいかに制度を解釈し、利用したかについては十分に検討されておりません。", "english": "Prior research has focused on institutional design and education policy, but how learners themselves interpreted and used institutions has not been sufficiently examined." },
+      { "speaker": "副査", "japanese": "その不足を、どの資料で補うのでしょうか。", "english": "With what materials do you supplement that gap?" },
+      { "speaker": "申請者", "japanese": "学校文書に加え、同窓会誌、手紙、聞き取り記録を用い、制度側と学習者側の記述を照合いたしました。", "english": "In addition to school documents, I used alumni magazines, letters, and interview records to compare accounts from the institutional and learner sides." },
+      { "speaker": "主査", "japanese": "結構です。では方法論上の制約にも触れながら進めてください。", "english": "Good. Please proceed while also touching on methodological constraints." }
+    ],
+    "roleplay_prompts": [
+      "Bạn mở đầu buổi 博士論文審査. Dùng 'ご審査を賜り' và trình bày thứ tự 研究課題 → 方法 → 知見 → 限界. Không dùng casual 今日は来てくれて.",
+      "Chủ khảo hỏi 'điểm độc đáo ở đâu'. Trả lời bằng '〜に独自性を求めました' thay vì 自分の研究は新しいです.",
+      "Bạn cần nêu limitation ngay từ đầu. Dùng '射程' và '限界' để nghe mature, không defensive."
+    ],
+    "register_notes": "博士論文審査 register nằm giữa lecture formal và oral defense humility. (1) OPENING is highly formulaic: ご多用のところ / ご審査を賜り / 誠にありがとうございます. (2) Self-reference should be '本論文' or '本研究', not 私. (3) Originality is framed as '独自性を求める/位置づける' rather than boasting. (4) Scope control is essential: name 限界 early so committee sees maturity. (5) Voice pace: long compounds like 博士論文審査 and 形成過程 need deliberate chunking; rushing sounds nervous.",
+    "idiom_glosses": [
+      { "idiom": "襟を正す (えりをただす)", "literal": "Chỉnh cổ áo", "meaning": "[硬い] Nghiêm túc bước vào một việc trọng đại.", "example": "審査に臨むにあたり、改めて襟を正す思いでおります。" },
+      { "idiom": "俎上に載せる (そじょうにのせる)", "literal": "Đặt lên thớt", "meaning": "[書き言葉] Đưa một vấn đề ra để phân tích kỹ.", "example": "本論文では、従来当然視されてきた前提を俎上に載せる。" }
+    ],
+    "cultural_notes_vi": "Bảo vệ luận án tiến sĩ ở Nhật thường ít theatrical hơn một số môi trường phương Tây: không 'defend aggressively', mà trình bày chặt, nhận chỉ摘, và chứng minh bạn hiểu giới hạn của mình. Chủ khảo và phó khảo giữ vai trò phân tầng rõ. Ứng viên không nên tranh thắng; nên cho thấy năng lực sửa, giới hạn claim, và định vị đóng góp khiêm tốn nhưng rõ.",
+    "tip_advice_vi": "Template mở đầu: cảm ơn hội đồng → tên luận án → vấn đề nghiên cứu → điểm độc đáo → thứ tự trình bày. Câu an toàn: 本日は、研究課題、方法、主要な知見、限界の順にご説明いたします. Nếu run: đọc chậm ở compounds dài; dừng nhẹ sau 本論文は.",
+    "exercises": [
+      { "type": "fill-blank", "question": "本日はご多用のところ、本博士論文のご審査を___、誠にありがとうございます。", "answer": "賜り" },
+      { "type": "translation", "vietnamese": "Luận án này định vị đóng góp ở việc kết nối phân tích tư liệu và phỏng vấn.", "japanese": "本論文は、資料分析と聞き取り調査を接続する点に貢献を位置づけるものである。" }
+    ]
+  },
+  {
+    "id": 113,
+    "title": "Academic discourse — doctoral defense under critique",
+    "title_vi": "Diễn ngôn học thuật — Ứng đáp khi bị chất vấn trong bảo vệ tiến sĩ",
+    "title_en": "Academic discourse — doctoral defense under critique",
+    "category": "academic-discourse",
+    "level": "C1",
+    "vocabulary": [
+      { "japanese": "根本的 (こんぽんてき)", "english": "fundamental" },
+      { "japanese": "方法論上 (ほうほうろんじょう)", "english": "methodologically" },
+      { "japanese": "制約 (せいやく)", "english": "constraint" },
+      { "japanese": "反証可能性 (はんしょうかのうせい)", "english": "falsifiability" },
+      { "japanese": "再分析 (さいぶんせき)", "english": "reanlysis" },
+      { "japanese": "再考 (さいこう)", "english": "reconsideration" },
+      { "japanese": "留保 (りゅうほ)", "english": "reservation / qualification" },
+      { "japanese": "今後の課題 (こんごのかだい)", "english": "future task / future research issue" }
+    ],
+    "examples": [
+      { "japanese": "ご指摘の点は、本論文の方法論上の制約に深く関わるものと受け止めております。", "english": "I understand that your point is deeply related to a methodological constraint of this dissertation.", "pronunciation_focus": ["方法論上: ほうほうろんじょう", "受け止める: うけとめる", "soft concession tone"] },
+      { "japanese": "ただし、本研究の資料選定は、当該時期の記録保存状況を踏まえたうえでの判断でございます。", "english": "However, the material selection in this study is a judgment made in light of the archival conditions of the period concerned.", "pronunciation_focus": ["当該時期: とうがいじき", "踏まえたうえで", "ただし pause"] },
+      { "japanese": "この点につきましては、結論部分でより明確な留保を加える必要があると考えております。", "english": "On this point, I believe it is necessary to add a clearer qualification in the conclusion.", "pronunciation_focus": ["留保: りゅうほ", "必要: ひつよう", "humble final fall"] },
+      { "japanese": "先生のご指摘を踏まえ、補論にて再分析の可能性を示したく存じます。", "english": "Building on your comment, I would like to indicate the possibility of reanalysis in an appendix.", "pronunciation_focus": ["補論: ほろん", "再分析: さいぶんせき", "存じます politeness"] }
+    ],
+    "dialogue": [
+      { "speaker": "副査", "japanese": "資料選定に偏りがあるという批判に、どのように答えますか。", "english": "How do you respond to the criticism that your material selection is biased?" },
+      { "speaker": "申請者", "japanese": "ご指摘の通り、資料の偏在は本論文の重要な制約でございます。", "english": "As you point out, uneven distribution of materials is an important constraint of this dissertation." },
+      { "speaker": "副査", "japanese": "では、結論の強さを弱める必要があるのではありませんか。", "english": "Then is it not necessary to weaken the strength of the conclusion?" },
+      { "speaker": "申請者", "japanese": "はい。その点は、結論部でより明示的に留保を加えるべきだと考えております。", "english": "Yes. I believe that point should be qualified more explicitly in the conclusion." }
+    ],
+    "dialogue_long": [
+      { "speaker": "副査", "japanese": "本論文は興味深い一方で、資料の偏りが結論に与える影響を軽く見ているように読めました。", "english": "While the dissertation is interesting, it read as though it underestimated the effect of source bias on the conclusion." },
+      { "speaker": "申請者", "japanese": "ご指摘の通り、その点は本論文の根本的な制約に関わる部分でございます。", "english": "As you point out, that issue concerns a fundamental constraint of this dissertation." },
+      { "speaker": "副査", "japanese": "では、主張の射程をどう限定しますか。", "english": "Then how will you limit the scope of the claim?" },
+      { "speaker": "申請者", "japanese": "当該資料群から確認できる範囲に限定し、制度全体への一般化は避ける形に修正いたします。", "english": "I will limit the claim to the range confirmable from the materials concerned and revise it to avoid generalization to the entire institution." },
+      { "speaker": "主査", "japanese": "その修正方針であれば、論文の貢献は維持できると思います。", "english": "With that revision policy, I think the dissertation's contribution can be maintained." },
+      { "speaker": "申請者", "japanese": "ありがとうございます。貢献と制約の関係がより明確になるよう、結論部を再構成いたします。", "english": "Thank you. I will restructure the conclusion so that the relationship between contribution and constraint becomes clearer." }
+    ],
+    "roleplay_prompts": [
+      "Committee says your sample is biased. Start with ご指摘の通り, then name 制約, then propose 修正.",
+      "Bạn không agree hoàn toàn. Dùng ただし after acknowledgement, then evidence-based explanation. Không nói それは違います.",
+      "Bạn cần hứa sửa luận án. Dùng 修正いたします / 再構成いたします, không casual 直します."
+    ],
+    "register_notes": "Trong defense, phản biện tốt gồm 3 bước: ACCEPT THE ISSUE, LIMIT THE DAMAGE, STATE REVISION. 'ご指摘の通り' không có nghĩa bạn surrender toàn bộ argument; nó là entry ticket để trả lời. 'ただし' dùng được, nhưng phải đứng sau acknowledgement. '制約' tốt hơn '弱点' vì nghe academic hơn. '今後の課題' dùng khi chưa sửa ngay được; đừng lạm dụng để né trách nhiệm.",
+    "idiom_glosses": [
+      { "idiom": "真摯に受け止める (しんしにうけとめる)", "literal": "Tiếp nhận một cách chân thành", "meaning": "[formal] Nhận góp ý nghiêm túc, không defensive.", "example": "ご批判は真摯に受け止め、修正に反映いたします。" },
+      { "idiom": "議論の余地がある (ぎろんのよちがある)", "literal": "Có khoảng trống để thảo luận", "meaning": "[academic] Vẫn còn điểm cần bàn, không phủ định thô.", "example": "この解釈にはなお議論の余地がございます。" }
+    ],
+    "cultural_notes_vi": "Trong bảo vệ tiến sĩ ở Nhật, ứng viên được đánh giá cả về thái độ nhận góp ý. Nếu phản ứng kiểu 'tôi đã đúng rồi', hội đồng dễ xem là chưa trưởng thành học thuật. Nhưng nhận hết cũng nguy hiểm. Cách hay: nhận constraint, giữ contribution, đề xuất sửa.",
+    "tip_advice_vi": "Công thức trả lời critique: ご指摘の通り + issue noun + ただし + rationale + 修正方針. Ví dụ: ご指摘の通り、資料の偏在は制約でございます。ただし、当該時期の保存状況を踏まえると、現時点で最も妥当な資料群であると考えております.",
+    "exercises": [
+      { "type": "fill-blank", "question": "この点につきましては、結論部分でより明確な___を加える必要があると考えております。", "answer": "留保" },
+      { "type": "matching", "instruction": "Match defense phrases to function.", "pairs": [
+        { "japanese": "ご指摘の通り", "english": "acknowledge critique" },
+        { "japanese": "方法論上の制約", "english": "name limitation formally" },
+        { "japanese": "再構成いたします", "english": "promise revision respectfully" }
+      ] }
+    ]
+  },
+  {
+    "id": 114,
+    "title": "Academic discourse — conference presentation Q&A",
+    "title_vi": "Diễn ngôn học thuật — Hỏi đáp sau tham luận hội thảo",
+    "title_en": "Academic discourse — conference presentation Q&A",
+    "category": "academic-discourse",
+    "level": "C1",
+    "vocabulary": [
+      { "japanese": "学会発表 (がっかいはっぴょう)", "english": "conference presentation" },
+      { "japanese": "質疑応答 (しつぎおうとう)", "english": "Q&A session" },
+      { "japanese": "座長 (ざちょう)", "english": "session chair" },
+      { "japanese": "フロア", "english": "the floor / audience" },
+      { "japanese": "補足 (ほそく)", "english": "supplementary comment" },
+      { "japanese": "射程外 (しゃていがい)", "english": "outside the scope" },
+      { "japanese": "示唆 (しさ)", "english": "suggestion / implication" },
+      { "japanese": "検討課題 (けんとうかだい)", "english": "issue for examination" }
+    ],
+    "examples": [
+      { "japanese": "ご質問ありがとうございます。まず一点目につきまして、補足してご説明いたします。", "english": "Thank you for the question. Regarding the first point, I will add a supplementary explanation.", "pronunciation_focus": ["ご質問: ごしつもん", "一点目: いってんめ", "Q&A opening"] },
+      { "japanese": "その点は本発表の射程外ではございますが、今後の検討課題として重要だと考えております。", "english": "That point is outside the scope of this presentation, but I consider it important as a future issue for examination.", "pronunciation_focus": ["射程外: しゃていがい", "検討課題: けんとうかだい", "scope hedge"] },
+      { "japanese": "ただいまのご指摘は、分析単位の設定に関わる重要な問題でございます。", "english": "Your comment just now concerns an important issue regarding the setting of the unit of analysis.", "pronunciation_focus": ["分析単位: ぶんせきたんい", "設定: せってい", "acknowledgement rhythm"] },
+      { "japanese": "時間の関係上、詳細は発表後に改めてご相談させていただければ幸いです。", "english": "Due to time, I would be grateful if we could discuss the details after the presentation.", "pronunciation_focus": ["時間の関係上", "改めて: あらためて", "polite deferral"] }
+    ],
+    "dialogue": [
+      { "speaker": "座長", "japanese": "それでは、フロアからご質問をお願いいたします。", "english": "Now, questions from the floor, please." },
+      { "speaker": "質問者", "japanese": "大変興味深いご発表でした。分析単位について一点伺います。", "english": "It was a very interesting presentation. I have one question about the unit of analysis." },
+      { "speaker": "発表者", "japanese": "ご質問ありがとうございます。分析単位の設定は、本研究でも慎重に検討した点でございます。", "english": "Thank you for the question. The setting of the unit of analysis is something this study also examined carefully." },
+      { "speaker": "座長", "japanese": "時間が限られておりますので、簡潔にお願いいたします。", "english": "Time is limited, so please keep it concise." }
+    ],
+    "dialogue_long": [
+      { "speaker": "質問者", "japanese": "サンプル数が限られている点について、結果の一般化可能性をどのようにお考えでしょうか。", "english": "Regarding the limited sample size, how do you view the generalizability of the results?" },
+      { "speaker": "発表者", "japanese": "重要なご指摘をありがとうございます。本発表では、一般化よりも事例内部の過程を明らかにすることを主眼としております。", "english": "Thank you for the important comment. This presentation primarily aims to clarify processes within the cases rather than generalization." },
+      { "speaker": "質問者", "japanese": "では、他地域への応用は難しいという理解でよろしいですか。", "english": "Then should I understand that application to other regions is difficult?" },
+      { "speaker": "発表者", "japanese": "ただちに応用可能とは申し上げにくいのですが、比較研究の仮説形成には一定の示唆を与えるものと考えております。", "english": "It is difficult to say it is immediately applicable, but I believe it provides certain implications for hypothesis formation in comparative research." },
+      { "speaker": "座長", "japanese": "ありがとうございます。では次のご質問に移ります。", "english": "Thank you. Let us move to the next question." },
+      { "speaker": "発表者", "japanese": "後ほど詳細をご教示いただけましたら幸いです。", "english": "I would be grateful if you could advise me in more detail afterward." }
+    ],
+    "roleplay_prompts": [
+      "Bạn là presenter, bị hỏi generalizability. Trả lời bằng '一般化よりも〜を主眼'.",
+      "Chair says time is limited. Deflect politely: '詳細は発表後に'.",
+      "Questioner asks beyond scope. Dùng 射程外 nhưng acknowledge as future task."
+    ],
+    "register_notes": "学会発表 Q&A có three-way dynamics: presenter, questioner, chair. Presenter must answer questioner while respecting chair's time control. Good answers begin with thanks, identify the point, answer narrowly, then defer details. '射程外' acceptable if paired with '重要な検討課題'. Avoid 'わかりません' naked; use '現時点では十分に検討できておりません'.",
+    "idiom_glosses": [
+      { "idiom": "的を射る (まとをいる)", "literal": "Bắn trúng mục tiêu", "meaning": "[neutral] Câu hỏi/góp ý rất đúng trọng tâm.", "example": "先生のご質問は、まさに本研究の課題の的を射ております。" },
+      { "idiom": "紙幅の都合 (しふくのつごう)", "literal": "Do giới hạn giấy", "meaning": "[academic writing] Do giới hạn dung lượng bài viết.", "example": "紙幅の都合上、詳細な分析は別稿に譲る。" }
+    ],
+    "cultural_notes_vi": "Q&A học hội Nhật thường rất lịch sự nhưng có thể sắc. '大変興味深い' không bảo đảm khen thật; đôi khi chỉ là opening formula trước critique. Presenter cần nghe phần sau. Chair có quyền cắt; đừng chống chair.",
+    "tip_advice_vi": "Câu cứu nguy: '現時点では十分に検討できておりませんが、今後の重要な課題として承ります.' Dùng khi không biết, nhưng nhớ ghi lại câu hỏi sau buổi.",
+    "exercises": [
+      { "type": "fill-blank", "question": "時間の___上、詳細は発表後に改めてご相談させていただければ幸いです。", "answer": "関係" },
+      { "type": "translation", "vietnamese": "Điểm đó nằm ngoài phạm vi bài trình bày này, nhưng là vấn đề quan trọng cho nghiên cứu sau.", "japanese": "その点は本発表の射程外ではございますが、今後の重要な検討課題でございます。" }
+    ]
+  },
+  {
+    "id": 115,
+    "title": "Academic discourse — indirect disagreement: なるほど、ただ",
+    "title_vi": "Diễn ngôn học thuật — Bất đồng gián tiếp: なるほど、ただ",
+    "title_en": "Academic discourse — indirect disagreement: naruhodo, tada",
+    "category": "academic-discourse",
+    "level": "C1",
+    "vocabulary": [
+      { "japanese": "なるほど", "english": "I see / that is a fair point" },
+      { "japanese": "ただ", "english": "however / that said" },
+      { "japanese": "一理ある (いちりある)", "english": "to have a point" },
+      { "japanese": "別解釈 (べつかいしゃく)", "english": "alternative interpretation" },
+      { "japanese": "慎重に (しんちょうに)", "english": "carefully / cautiously" },
+      { "japanese": "必ずしも (かならずしも)", "english": "not necessarily" },
+      { "japanese": "成立する (せいりつする)", "english": "to hold / be valid" },
+      { "japanese": "前提 (ぜんてい)", "english": "premise" }
+    ],
+    "examples": [
+      { "japanese": "なるほど、その解釈にも一理あります。ただ、資料の年代差を考慮すると、別解釈の余地もあるかと存じます。", "english": "I see; that interpretation has a point. However, considering the chronological difference in the materials, there may also be room for another interpretation.", "pronunciation_focus": ["なるほど pause", "一理: いちり", "ただ soft pivot"] },
+      { "japanese": "ご趣旨は理解いたしました。ただし、その前提が本事例にもそのまま成立するかは慎重に見る必要がございます。", "english": "I understand your point. However, whether that premise holds as-is for this case must be examined carefully.", "pronunciation_focus": ["趣旨: しゅし", "前提: ぜんてい", "ただし stronger than ただ"] },
+      { "japanese": "確かに数量的には小さい差ですが、質的には無視しにくい差異であると考えられます。", "english": "Certainly, quantitatively it is a small difference, but qualitatively it can be considered a difference that is difficult to ignore.", "pronunciation_focus": ["数量的: すうりょうてき", "質的: しつてき", "contrast pitch"] },
+      { "japanese": "先生のお考えを踏まえますと、結論の表現をやや弱めることが適切かもしれません。", "english": "In light of your view, it may be appropriate to slightly weaken the wording of the conclusion.", "pronunciation_focus": ["踏まえますと", "弱める: よわめる", "かもしれません hedge"] }
+    ],
+    "dialogue": [
+      { "speaker": "同期", "japanese": "このデータなら、結論はもっと強く言ってもよくない？", "english": "With this data, couldn't you state the conclusion more strongly?" },
+      { "speaker": "院生", "japanese": "なるほど、たしかにその見方もある。ただ、サンプルが限定的だから少し怖いんだよね。", "english": "I see, that view makes sense. But the sample is limited, so I am a little cautious." },
+      { "speaker": "先生", "japanese": "結論の強さについては、もう少し慎重でよいかもしれません。", "english": "Regarding the strength of the conclusion, a little more caution may be appropriate." },
+      { "speaker": "院生", "japanese": "ご指摘の通りです。表現を調整いたします。", "english": "As you point out. I will adjust the wording." }
+    ],
+    "dialogue_long": [
+      { "speaker": "研究会参加者", "japanese": "この事例は、むしろ制度の影響が弱かったことを示しているのではないでしょうか。", "english": "Doesn't this case rather show that institutional influence was weak?" },
+      { "speaker": "発表者", "japanese": "なるほど、その読み方にも一理あると思います。", "english": "I see; I think that reading also has a point." },
+      { "speaker": "研究会参加者", "japanese": "だとすると、あなたの主張とは逆になりますよね。", "english": "If so, it becomes the opposite of your claim, doesn't it?" },
+      { "speaker": "発表者", "japanese": "ただ、制度の影響が弱いというより、影響が直接的ではなかったと捉えるほうが資料に即しているかと考えております。", "english": "However, rather than saying institutional influence was weak, I think it fits the materials better to see the influence as not direct." },
+      { "speaker": "研究会参加者", "japanese": "なるほど、媒介要因を想定しているわけですね。", "english": "I see, you are assuming mediating factors." },
+      { "speaker": "発表者", "japanese": "はい。その点をより明確に記述する必要があると感じました。ありがとうございます。", "english": "Yes. I realized I need to describe that point more clearly. Thank you." }
+    ],
+    "roleplay_prompts": [
+      "Practice disagreeing with a seminar participant using なるほど + ただ. No direct それは違います.",
+      "With a peer, use casual but still academic Japanese: たしかに…たださ. With a professor, switch to ご指摘の通りですが.",
+      "Reframe opposition as 別解釈の余地 rather than 'wrong'."
+    ],
+    "register_notes": "なるほど is not agreement by itself; in academic Japanese it often means 'I have received your frame'. ただ introduces careful disagreement. ただし is firmer and more written/formal. With 同期: なるほど、でも/たださ acceptable. With 先生: なるほど、ご指摘の通りです。ただし... or ご趣旨は理解いたしました。ただ.... The convention lets disagreement happen without public face-loss.",
+    "idiom_glosses": [
+      { "idiom": "一理ある (いちりある)", "literal": "Có một lý", "meaning": "Có phần đúng, nhưng chưa chắc đủ.", "example": "その反論には一理あるが、資料全体を説明するには不十分である。" },
+      { "idiom": "水掛け論 (みずかけろん)", "literal": "Tranh cãi tạt nước", "meaning": "Cãi qua cãi lại không có bằng chứng tiến triển.", "example": "水掛け論を避けるため、まず前提を整理する必要がある。" }
+    ],
+    "cultural_notes_vi": "Bất đồng trong học thuật Nhật rất hay đi qua cushion. Người nghe native sẽ hiểu 'なるほど、ただ...' là disagreement nhẹ. Người học Việt dễ nghe nhầm thành đồng ý rồi bất ngờ. Hãy chú ý phần sau ただ.",
+    "tip_advice_vi": "Công thức: なるほど + partial agreement + ただ + scope/premise/data. Nếu nói với giáo sư, thêm ご指摘の通り / ご趣旨は理解いたしました.",
+    "exercises": [
+      { "type": "fill-blank", "question": "なるほど、その解釈にも一理あります。___、資料の年代差を考慮すると、別解釈の余地もございます。", "answer": "ただ" },
+      { "type": "translation", "vietnamese": "Tôi hiểu ý thầy/cô. Tuy nhiên, cần xem cẩn thận liệu tiền đề đó có đúng với trường hợp này không.", "japanese": "ご趣旨は理解いたしました。ただし、その前提が本事例にも成立するかは慎重に見る必要がございます。" }
+    ]
+  },
+  {
+    "id": 116,
+    "title": "Academic discourse — ご指摘の通りですが",
+    "title_vi": "Diễn ngôn học thuật — 'Đúng như thầy/cô chỉ ra, nhưng...'",
+    "title_en": "Academic discourse — as you point out, however",
+    "category": "academic-discourse",
+    "level": "C1",
+    "vocabulary": [
+      { "japanese": "ご指摘 (ごしてき)", "english": "your comment / criticism" },
+      { "japanese": "ご教示 (ごきょうじ)", "english": "your instruction / guidance" },
+      { "japanese": "趣旨 (しゅし)", "english": "main point / intent" },
+      { "japanese": "補足説明 (ほそくせつめい)", "english": "supplementary explanation" },
+      { "japanese": "論点 (ろんてん)", "english": "point at issue" },
+      { "japanese": "整理 (せいり)", "english": "organization / clarification" },
+      { "japanese": "修正案 (しゅうせいあん)", "english": "revision proposal" },
+      { "japanese": "反映する (はんえいする)", "english": "to reflect / incorporate" }
+    ],
+    "examples": [
+      { "japanese": "ご指摘の通り、現行の記述では論点の整理が十分ではございません。", "english": "As you point out, the current description does not sufficiently organize the points at issue.", "pronunciation_focus": ["ご指摘: ごしてき", "現行: げんこう", "humble admission"] },
+      { "japanese": "ただ、資料解釈そのものを変更するというより、説明の順序を改める必要があると考えております。", "english": "However, rather than changing the interpretation of the materials itself, I believe it is necessary to revise the order of explanation.", "pronunciation_focus": ["資料解釈: しりょうかいしゃく", "変更: へんこう", "rather-than structure"] },
+      { "japanese": "先生のご教示を踏まえ、第三章に補足説明を加える修正案を考えております。", "english": "Based on your guidance, I am considering a revision proposal adding supplementary explanation to Chapter 3.", "pronunciation_focus": ["ご教示: ごきょうじ", "第三章: だいさんしょう", "keigo with 先生"] },
+      { "japanese": "ご趣旨を誤解しておりましたら恐縮ですが、論点は比較対象の妥当性にあるという理解でよろしいでしょうか。", "english": "Apologies if I have misunderstood your intent, but may I understand that the issue lies in the validity of the comparison target?", "pronunciation_focus": ["誤解: ごかい", "恐縮: きょうしゅく", "clarifying question rise"] }
+    ],
+    "dialogue": [
+      { "speaker": "先生", "japanese": "第二章の議論は少し飛躍しているように見えます。", "english": "The argument in Chapter 2 seems to make a slight leap." },
+      { "speaker": "院生", "japanese": "ご指摘の通り、説明が不足しておりました。", "english": "As you point out, the explanation was insufficient." },
+      { "speaker": "先生", "japanese": "結論を変える必要があるかもしれませんね。", "english": "It may be necessary to change the conclusion." },
+      { "speaker": "院生", "japanese": "ただ、結論そのものより、そこに至る論拠を補強する方向で修正できるかと存じます。", "english": "However, rather than the conclusion itself, I think it may be possible to revise by strengthening the warrant leading to it." }
+    ],
+    "dialogue_long": [
+      { "speaker": "先生", "japanese": "この節では、先行研究との関係がやや見えにくいですね。", "english": "In this section, the relationship with prior research is somewhat hard to see." },
+      { "speaker": "院生", "japanese": "ご指摘の通りです。先行研究の整理から自分の分析への接続が弱かったと認識しております。", "english": "As you point out. I recognize that the connection from the literature review to my analysis was weak." },
+      { "speaker": "先生", "japanese": "どう直すつもりですか。", "english": "How do you intend to fix it?" },
+      { "speaker": "院生", "japanese": "第二章末に、先行研究の限界と本研究の分析視角をつなぐ段落を追加する修正案を考えております。", "english": "I am considering adding a paragraph at the end of Chapter 2 connecting the limitations of prior research with this study's analytical perspective." },
+      { "speaker": "先生", "japanese": "それなら流れは見えやすくなるでしょう。", "english": "That should make the flow easier to see." },
+      { "speaker": "院生", "japanese": "ありがとうございます。修正後、改めてご確認いただけますと幸いです。", "english": "Thank you. I would be grateful if you could check it again after revision." }
+    ],
+    "roleplay_prompts": [
+      "Professor says your argument jumps. Use ご指摘の通り, then state 修正案.",
+      "You partially disagree with professor's suggested conclusion change. Say '結論そのものより...' to redirect.",
+      "Ask a clarification question with ご趣旨を誤解しておりましたら恐縮ですが."
+    ],
+    "register_notes": "ご指摘の通り is high-value academic keigo. It acknowledges critique, not defeat. Follow with specific diagnosis: 説明不足, 論点整理不足, 接続が弱い. Then revision proposal. ご教示 is more deferential than ご指摘; use with senior professor, not with peer. With peers, 指摘してくれてありがとう is enough.",
+    "idiom_glosses": [
+      { "idiom": "筋を通す (すじをとおす)", "literal": "Thông đường gân/đường lý", "meaning": "Giữ logic nhất quán.", "example": "論旨の筋を通すため、章構成を見直す必要がある。" },
+      { "idiom": "腑に落ちる (ふにおちる)", "literal": "Rơi xuống phủ tạng", "meaning": "Hiểu ra / thấy thuyết phục.", "example": "この説明を加えれば、読者にも腑に落ちやすくなる。" }
+    ],
+    "cultural_notes_vi": "Với giáo sư Nhật, disagreement cần đi qua hierarchy. Cụm ご指摘の通りですが nghe vừa respectful vừa giữ quyền lập luận. Nhưng dùng quá nhiều cũng thành máy móc. Hãy thêm diagnosis cụ thể sau đó.",
+    "tip_advice_vi": "Template email sau meeting: 本日はご指摘を賜り、誠にありがとうございました。ご指摘の通り、第二章の論点整理が不十分でございました。修正案として、〜を追加いたします.",
+    "exercises": [
+      { "type": "fill-blank", "question": "先生の___を踏まえ、第三章に補足説明を加える修正案を考えております。", "answer": "ご教示" },
+      { "type": "translation", "vietnamese": "Nếu em hiểu sai ý thầy/cô thì xin thứ lỗi, nhưng có phải điểm chính là tính hợp lý của đối tượng so sánh không ạ?", "japanese": "ご趣旨を誤解しておりましたら恐縮ですが、論点は比較対象の妥当性にあるという理解でよろしいでしょうか。" }
+    ]
+  },
+  {
+    "id": 117,
+    "title": "Academic discourse — keigo gradient: professor, senpai, peer",
+    "title_vi": "Diễn ngôn học thuật — Thang kính ngữ giữa giáo sư, senpai và bạn đồng khóa",
+    "title_en": "Academic discourse — keigo gradient: professor, senpai, peer",
+    "category": "academic-discourse",
+    "level": "C1",
+    "vocabulary": [
+      { "japanese": "先生 (せんせい)", "english": "professor / teacher" },
+      { "japanese": "先輩 (せんぱい)", "english": "senior student / senior colleague" },
+      { "japanese": "同期 (どうき)", "english": "same cohort / peer" },
+      { "japanese": "敬語 (けいご)", "english": "honorific language" },
+      { "japanese": "丁寧体 (ていねいたい)", "english": "polite style" },
+      { "japanese": "普通体 (ふつうたい)", "english": "plain style" },
+      { "japanese": "距離感 (きょりかん)", "english": "sense of social distance" },
+      { "japanese": "失礼 (しつれい)", "english": "rudeness / discourtesy" }
+    ],
+    "examples": [
+      { "japanese": "先生、先ほどのご指摘について、一点確認させていただいてもよろしいでしょうか。", "english": "Professor, may I confirm one point about your comment earlier?", "pronunciation_focus": ["確認: かくにん", "させていただく", "rising permission question"] },
+      { "japanese": "先輩、もしお時間あれば、研究計画書を少し見ていただけませんか。", "english": "Senpai, if you have time, could you look over my research proposal a little?", "pronunciation_focus": ["研究計画書: けんきゅうけいかくしょ", "いただけませんか", "semi-formal request"] },
+      { "japanese": "この章、ちょっと論点が散ってる気がするんだけど、どう思う？", "english": "I feel like the points in this chapter are a bit scattered; what do you think?", "pronunciation_focus": ["散ってる: ちってる", "どう思う", "peer casual fall"] },
+      { "japanese": "同じ内容でも、相手との関係によって語尾と依頼表現を調整する必要がある。", "english": "Even with the same content, it is necessary to adjust sentence endings and request expressions according to the relationship with the other person.", "pronunciation_focus": ["語尾: ごび", "依頼表現: いらいひょうげん", "metalinguistic terms"] }
+    ],
+    "dialogue": [
+      { "speaker": "同期A", "japanese": "先生にこのまま『見てください』って送って大丈夫かな。", "english": "Is it okay to send 'please look at this' to the professor as-is?" },
+      { "speaker": "同期B", "japanese": "先生なら『ご確認いただけますでしょうか』のほうが安全だと思う。", "english": "For a professor, I think 'could you please check it' in honorific form is safer." },
+      { "speaker": "同期A", "japanese": "先輩には？", "english": "What about to a senpai?" },
+      { "speaker": "同期B", "japanese": "『見ていただけませんか』くらいでいいんじゃないかな。", "english": "Something like 'could you look at it' should be fine." }
+    ],
+    "dialogue_long": [
+      { "speaker": "院生", "japanese": "先生へのメール、敬語が重すぎても変ですか。", "english": "Is it strange if the honorifics in an email to a professor are too heavy?" },
+      { "speaker": "先輩", "japanese": "重すぎるより、軽すぎるほうが危ないですね。ただ、毎回『賜り』まで使う必要はありません。", "english": "Too light is riskier than too heavy. But you do not need to use 'tamawari' every time." },
+      { "speaker": "院生", "japanese": "同期には普通体で大丈夫ですよね。", "english": "Plain style is fine with peers, right?" },
+      { "speaker": "先輩", "japanese": "基本的には大丈夫です。ただ、研究会の場では同期でも少し丁寧にしたほうが無難です。", "english": "Basically yes. But in a seminar setting, even with peers, being a little polite is safer." },
+      { "speaker": "院生", "japanese": "場面で変えるんですね。", "english": "So it changes by situation." },
+      { "speaker": "先輩", "japanese": "そうです。相手だけでなく、場のフォーマリティも見ます。", "english": "Exactly. You look not only at the person, but also at the formality of the setting." }
+    ],
+    "roleplay_prompts": [
+      "Ask professor to review a draft: use ご確認いただけますでしょうか.",
+      "Ask senpai for feedback: use 見ていただけませんか, not ultra-heavy keigo.",
+      "Talk to peer about weak chapter: switch to plain style but keep academic vocabulary."
+    ],
+    "register_notes": "Keigo gradient is relational plus situational. 先生 gets honorific request: ご確認いただけますでしょうか. 先輩 gets polite but lighter: 見ていただけませんか. 同期 can take plain style: どう思う? But public seminar raises formality for everyone. Over-keigo with peers creates distance; under-keigo with professor creates risk.",
+    "idiom_glosses": [
+      { "idiom": "距離を測る (きょりをはかる)", "literal": "Đo khoảng cách", "meaning": "Ước lượng mức gần xa xã hội trước khi nói.", "example": "研究室では、相手との距離を測りながら敬語を調整する必要がある。" },
+      { "idiom": "角が立つ (かどがたつ)", "literal": "Góc cạnh dựng lên", "meaning": "Làm lời nói nghe sắc, gây mất lòng.", "example": "普通体のまま依頼すると、相手によっては角が立つ。" }
+    ],
+    "cultural_notes_vi": "Phòng lab Nhật là nơi hierarchy và thân mật cùng tồn tại. Senpai có thể uống cà phê với bạn nhưng vẫn là người đi trước. Với giáo sư, email thường formal hơn nói chuyện hành lang. Với đồng khóa, casual được nhưng khi đang trong seminar, public face làm register tăng.",
+    "tip_advice_vi": "Nếu không chắc, dùng one-step safer keigo. Nhưng đừng dùng ultra-keigo với đồng khóa trong chat riêng; nghe xa cách. Rule: person + place + medium. Email formal hơn chat. Public seminar formal hơn hallway.",
+    "exercises": [
+      { "type": "matching", "instruction": "Match relationship to request phrase.", "pairs": [
+        { "japanese": "先生", "english": "ご確認いただけますでしょうか" },
+        { "japanese": "先輩", "english": "見ていただけませんか" },
+        { "japanese": "同期", "english": "見てくれる？" }
+      ] },
+      { "type": "translation", "vietnamese": "Thưa thầy/cô, em xin phép xác nhận một điểm về góp ý lúc nãy có được không ạ?", "japanese": "先生、先ほどのご指摘について、一点確認させていただいてもよろしいでしょうか。" }
+    ]
+  },
+  {
+    "id": 118,
+    "title": "Academic discourse — KAKENHI narrative: significance",
+    "title_vi": "Diễn ngôn học thuật — Kể câu chuyện 科研費: ý nghĩa nghiên cứu",
+    "title_en": "Academic discourse — KAKENHI narrative: significance",
+    "category": "academic-discourse",
+    "level": "C1",
+    "vocabulary": [
+      { "japanese": "科研費 (かけんひ)", "english": "KAKENHI / Grants-in-Aid for Scientific Research" },
+      { "japanese": "研究目的 (けんきゅうもくてき)", "english": "research objective" },
+      { "japanese": "学術的意義 (がくじゅつてきいぎ)", "english": "academic significance" },
+      { "japanese": "社会的意義 (しゃかいてきいぎ)", "english": "social significance" },
+      { "japanese": "波及効果 (はきゅうこうか)", "english": "ripple effect / broader impact" },
+      { "japanese": "独創性 (どくそうせい)", "english": "originality / creativity" },
+      { "japanese": "萌芽的 (ほうがてき)", "english": "emerging / exploratory" },
+      { "japanese": "研究構想 (けんきゅうこうそう)", "english": "research concept / design" }
+    ],
+    "examples": [
+      { "japanese": "本研究の学術的意義は、移民言語教育を制度史と生活史の接点から捉え直す点にある。", "english": "The academic significance of this study lies in reexamining immigrant language education at the intersection of institutional history and life history.", "pronunciation_focus": ["学術的意義", "生活史: せいかつし", "である-style prose"] },
+      { "japanese": "社会的意義としては、多文化共生政策における学習支援の再設計に示唆を与えることが挙げられる。", "english": "As social significance, it may be noted that the study provides implications for redesigning learning support in multicultural coexistence policy.", "pronunciation_focus": ["多文化共生: たぶんかきょうせい", "再設計: さいせっけい", "policy compound pacing"] },
+      { "japanese": "本研究は萌芽的段階にあるが、既存の制度研究に生活史資料を接続する点で波及効果が期待される。", "english": "Although this study is at an exploratory stage, ripple effects are expected in connecting life-history materials to existing institutional research.", "pronunciation_focus": ["萌芽的: ほうがてき", "波及効果: はきゅうこうか", "contrast with が"] },
+      { "japanese": "採択可能性を高めるには、研究目的と意義の接続を一文で示す必要がある。", "english": "To raise the chance of adoption, it is necessary to show the connection between research objective and significance in one sentence.", "pronunciation_focus": ["採択: さいたく", "可能性: かのうせい", "proposal-writing rhythm"] }
+    ],
+    "dialogue": [
+      { "speaker": "若手研究者", "japanese": "科研費の意義の書き方が、どうしても抽象的になってしまいます。", "english": "My writing of the significance section for KAKENHI keeps becoming abstract." },
+      { "speaker": "先輩研究者", "japanese": "学術的意義と社会的意義を分けて、一文ずつで核を書いてみてください。", "english": "Separate academic and social significance, and try writing the core of each in one sentence." },
+      { "speaker": "若手研究者", "japanese": "波及効果も入れたほうがよいでしょうか。", "english": "Should I include broader impact as well?" },
+      { "speaker": "先輩研究者", "japanese": "はい。ただし大きく言い過ぎず、具体的な読者や現場を想定するとよいです。", "english": "Yes. But do not overstate it; it is good to imagine concrete readers or fields of practice." }
+    ],
+    "dialogue_long": [
+      { "speaker": "若手研究者", "japanese": "研究目的は書けるのですが、意義がどうしても『重要である』で止まってしまいます。", "english": "I can write the objective, but the significance always stops at 'it is important.'" },
+      { "speaker": "先輩研究者", "japanese": "『何に対して重要なのか』を分けると書きやすくなります。学術的にはどの議論を進めますか。", "english": "It becomes easier if you separate 'important for what.' Academically, which debate does it advance?" },
+      { "speaker": "若手研究者", "japanese": "制度史と生活史を接続する点です。", "english": "The point is connecting institutional history and life history." },
+      { "speaker": "先輩研究者", "japanese": "では、それを学術的意義の一文にしてください。社会的意義は、誰の実践に届きますか。", "english": "Then make that one sentence for academic significance. For social significance, whose practice will it reach?" },
+      { "speaker": "若手研究者", "japanese": "自治体の学習支援や地域日本語教室です。", "english": "Municipal learning support and community Japanese classes." },
+      { "speaker": "先輩研究者", "japanese": "そこまで具体化できれば、科研費の文章としてかなり強くなります。", "english": "If you can make it that concrete, the KAKENHI text becomes much stronger." }
+    ],
+    "roleplay_prompts": [
+      "Write one sentence for 学術的意義 and one for 社会的意義. Avoid vague 重要です.",
+      "Explain 波及効果 without over-claiming: use 示唆を与える, 期待される.",
+      "Ask senpai to review KAKENHI draft with appropriate semi-formal keigo."
+    ],
+    "register_notes": "科研費 narrative is persuasive but not salesy. The core is objective -> gap -> originality -> significance -> feasibility. 学術的意義 must name the scholarly debate; 社会的意義 must name concrete publics or practices. '重要である' alone is weak. Use '〜に示唆を与える', '〜を再検討する契機となる', '〜への波及効果が期待される'.",
+    "idiom_glosses": [
+      { "idiom": "地に足がつく (ちにあしがつく)", "literal": "Chân chạm đất", "meaning": "Thực tế, không bay bổng.", "example": "科研費では、地に足のついた研究計画が求められる。" },
+      { "idiom": "風呂敷を広げる (ふろしきをひろげる)", "literal": "Trải rộng khăn gói", "meaning": "Nói quá rộng, ôm đồm.", "example": "意義を強調するあまり、風呂敷を広げすぎないよう注意する。" }
+    ],
+    "cultural_notes_vi": "科研費 không chỉ là money; nó là genre học thuật riêng. Văn phong cần thuyết phục hội đồng rằng project mới, cần thiết, làm được, và có ảnh hưởng. Nói quá to thường phản tác dụng. Reviewer thích ambition có kiểm soát.",
+    "tip_advice_vi": "Viết KAKENHI: dùng nouns mạnh: 目的, 独創性, 意義, 波及効果, 実現可能性. Mỗi phần trả lời một câu hỏi. Nếu một câu không nói rõ 'ai benefit' hoặc 'debate nào tiến lên', câu đó còn yếu.",
+    "exercises": [
+      { "type": "fill-blank", "question": "本研究の___意義は、制度史と生活史の接点から移民言語教育を捉え直す点にある。", "answer": "学術的" },
+      { "type": "translation", "vietnamese": "Ý nghĩa xã hội là nghiên cứu này gợi ý cho việc thiết kế lại hỗ trợ học tập trong chính sách đa văn hóa cộng sinh.", "japanese": "社会的意義としては、多文化共生政策における学習支援の再設計に示唆を与えることが挙げられる。" }
+    ]
+  },
+  {
+    "id": 119,
+    "title": "Academic discourse — KAKENHI narrative: feasibility and novelty",
+    "title_vi": "Diễn ngôn học thuật — 科研費: tính khả thi và tính mới",
+    "title_en": "Academic discourse — KAKENHI narrative: feasibility and novelty",
+    "category": "academic-discourse",
+    "level": "C1",
+    "vocabulary": [
+      { "japanese": "実現可能性 (じつげんかのうせい)", "english": "feasibility" },
+      { "japanese": "予備調査 (よびちょうさ)", "english": "preliminary survey / pilot study" },
+      { "japanese": "研究体制 (けんきゅうたいせい)", "english": "research organization / team structure" },
+      { "japanese": "年次計画 (ねんじけいかく)", "english": "annual plan" },
+      { "japanese": "遂行能力 (すいこうのうりょく)", "english": "capacity to execute" },
+      { "japanese": "新規性 (しんきせい)", "english": "novelty" },
+      { "japanese": "蓄積 (ちくせき)", "english": "accumulation / track record" },
+      { "japanese": "リスク管理 (りすくかんり)", "english": "risk management" }
+    ],
+    "examples": [
+      { "japanese": "本研究の実現可能性は、予備調査で得られた資料群と既存の研究協力体制によって担保される。", "english": "The feasibility of this study is secured by the materials obtained in the preliminary survey and the existing research collaboration structure.", "pronunciation_focus": ["実現可能性", "予備調査", "担保: たんぽ"] },
+      { "japanese": "新規性は、単に対象を変える点ではなく、制度史と語りの分析を統合する点にある。", "english": "The novelty lies not simply in changing the object of study, but in integrating institutional history with narrative analysis.", "pronunciation_focus": ["新規性: しんきせい", "統合: とうごう", "not A but B rhythm"] },
+      { "japanese": "一年目は資料収集、二年目は分析、三年目は成果公開を中心に進める計画である。", "english": "The plan is to focus on material collection in year one, analysis in year two, and publication of results in year three.", "pronunciation_focus": ["一年目/二年目/三年目", "成果公開", "enumeration rhythm"] },
+      { "japanese": "調査協力が得られない場合に備え、代替資料の収集経路も確保している。", "english": "In preparation for cases where research cooperation cannot be obtained, alternative routes for collecting materials have also been secured.", "pronunciation_focus": ["代替資料: だいたいしりょう", "収集経路", "risk clause"] }
+    ],
+    "dialogue": [
+      { "speaker": "若手研究者", "japanese": "新規性を書くと、どうしても大げさに見えてしまいます。", "english": "When I write novelty, it ends up looking exaggerated." },
+      { "speaker": "先輩研究者", "japanese": "対象の新しさだけでなく、組み合わせの新しさとして書くと安定します。", "english": "It becomes stable if you write not only object novelty but novelty in the combination." },
+      { "speaker": "若手研究者", "japanese": "実現可能性は予備調査で示せますか。", "english": "Can I show feasibility through the pilot study?" },
+      { "speaker": "先輩研究者", "japanese": "はい。資料の所在と協力者の見通しが書ければ強いです。", "english": "Yes. It is strong if you can write where the materials are and prospects for collaborators." }
+    ],
+    "dialogue_long": [
+      { "speaker": "研究代表者", "japanese": "審査では、独創性と実現可能性のどちらが重視されるのでしょうか。", "english": "In review, which is emphasized more, originality or feasibility?" },
+      { "speaker": "共同研究者", "japanese": "どちらか一方ではなく、両方の接続が重要です。新しいが実行不能な計画も、実行可能だが新しくない計画も弱いです。", "english": "Not one or the other; the connection of both is important. A plan that is new but infeasible is weak, as is a feasible plan that is not new." },
+      { "speaker": "研究代表者", "japanese": "では、予備調査の結果を前に出したほうがよいですね。", "english": "Then I should foreground the pilot results." },
+      { "speaker": "共同研究者", "japanese": "そうですね。さらに、調査が難航した場合の代替案も一段落入れましょう。", "english": "Yes. Also, let us include a paragraph on alternatives if the survey becomes difficult." },
+      { "speaker": "研究代表者", "japanese": "リスク管理まで書くと、弱気に見えませんか。", "english": "If I write risk management, won't it look timid?" },
+      { "speaker": "共同研究者", "japanese": "むしろ計画の成熟度を示せます。科研費では、楽観だけでは弱いです。", "english": "Rather, it shows the maturity of the plan. In KAKENHI, optimism alone is weak." }
+    ],
+    "roleplay_prompts": [
+      "Explain novelty as method combination, not merely new topic.",
+      "Show feasibility with 予備調査 and 協力体制.",
+      "Add risk management without sounding pessimistic."
+    ],
+    "register_notes": "科研費 feasibility prose should be concrete: who, what data, when, what backup. Novelty prose should avoid '世界初' unless truly defensible. Better: '〜を統合する点に新規性がある'. 年次計画 should sound executable, not wishful. Risk management is a strength in Japanese grant writing.",
+    "idiom_glosses": [
+      { "idiom": "絵に描いた餅 (えにかいたもち)", "literal": "Bánh mochi vẽ trên tranh", "meaning": "Kế hoạch đẹp nhưng không ăn được, thiếu khả thi.", "example": "実現可能性を示さなければ、計画は絵に描いた餅と見なされる。" },
+      { "idiom": "布石を打つ (ふせきをうつ)", "literal": "Đặt quân cờ chuẩn bị", "meaning": "Chuẩn bị bước nền cho kết quả sau.", "example": "予備調査は本研究の実施に向けた重要な布石である。" }
+    ],
+    "cultural_notes_vi": "Reviewer 科研費 đọc rất nhanh. Câu về feasibility phải cụ thể đến mức họ tin bạn làm được trong timeline. Người học hay viết ý tưởng hay nhưng thiếu plan B. Nhật grant prose đánh giá cao risk awareness.",
+    "tip_advice_vi": "Check mỗi KAKENHI paragraph bằng câu hỏi: reviewer có thấy data ở đâu, ai giúp, năm nào làm, nếu fail thì sao không? Nếu không, thêm cụ thể.",
+    "exercises": [
+      { "type": "fill-blank", "question": "本研究の実現可能性は、___調査で得られた資料群によって担保される。", "answer": "予備" },
+      { "type": "translation", "vietnamese": "Tính mới không nằm ở việc chỉ đổi đối tượng, mà ở việc tích hợp hai phương pháp.", "japanese": "新規性は、単に対象を変える点ではなく、二つの方法を統合する点にある。" }
+    ]
+  },
+  {
+    "id": 120,
+    "title": "Academic discourse — peer review response letter",
+    "title_vi": "Diễn ngôn học thuật — Thư trả lời phản biện",
+    "title_en": "Academic discourse — peer review response letter",
+    "category": "academic-discourse",
+    "level": "C1",
+    "vocabulary": [
+      { "japanese": "査読 (さどく)", "english": "peer review" },
+      { "japanese": "査読者 (さどくしゃ)", "english": "reviewer" },
+      { "japanese": "修正稿 (しゅうせいこう)", "english": "revised manuscript" },
+      { "japanese": "回答書 (かいとうしょ)", "english": "response letter" },
+      { "japanese": "該当箇所 (がいとうかしょ)", "english": "relevant section" },
+      { "japanese": "反映 (はんえい)", "english": "reflection / incorporation" },
+      { "japanese": "再投稿 (さいとうこう)", "english": "resubmission" },
+      { "japanese": "ご懸念 (ごけねん)", "english": "your concern" }
+    ],
+    "examples": [
+      { "japanese": "査読者の先生方には、貴重なご指摘を賜り、心より御礼申し上げます。", "english": "We sincerely thank the reviewers for their valuable comments.", "pronunciation_focus": ["査読者: さどくしゃ", "賜り", "formal gratitude"] },
+      { "japanese": "ご指摘を踏まえ、三ページ第二段落に先行研究との関係を補足いたしました。", "english": "Based on your comment, we added explanation of the relationship with prior research in the second paragraph on page 3.", "pronunciation_focus": ["第二段落: だいにだんらく", "補足: ほそく", "page-reference rhythm"] },
+      { "japanese": "ご懸念の点につきましては、修正稿では表現を弱め、結論の射程を限定いたしました。", "english": "Regarding your concern, in the revised manuscript we weakened the wording and limited the scope of the conclusion.", "pronunciation_focus": ["ご懸念", "修正稿", "射程を限定"] },
+      { "japanese": "なお、ご提案の分析を全面的に追加することは紙幅の都合上困難であるため、今後の課題として明記いたしました。", "english": "However, because fully adding the analysis you suggested is difficult due to space limitations, we explicitly noted it as a future task.", "pronunciation_focus": ["全面的: ぜんめんてき", "紙幅: しふく", "なお transition"] }
+    ],
+    "dialogue": [
+      { "speaker": "著者A", "japanese": "査読コメント2番、かなり厳しいですね。", "english": "Reviewer comment 2 is quite severe." },
+      { "speaker": "著者B", "japanese": "まず感謝を書いて、対応できる部分とできない部分を分けましょう。", "english": "First write gratitude, then separate what we can address and what we cannot." },
+      { "speaker": "著者A", "japanese": "反論しても大丈夫でしょうか。", "english": "Is it okay to rebut?" },
+      { "speaker": "著者B", "japanese": "反論というより、対応方針の説明として書いたほうが安全です。", "english": "Rather than rebuttal, it is safer to write it as an explanation of our response policy." }
+    ],
+    "dialogue_long": [
+      { "speaker": "著者A", "japanese": "査読者は、対象を中級学習者まで広げるべきだと書いています。", "english": "The reviewer writes that we should expand the target to intermediate learners." },
+      { "speaker": "著者B", "japanese": "本研究の焦点は上級学習者なので、全面的な追加は難しいですね。", "english": "The focus of this study is advanced learners, so full addition is difficult." },
+      { "speaker": "著者A", "japanese": "では、断ってよいのでしょうか。", "english": "Then may we decline?" },
+      { "speaker": "著者B", "japanese": "断るのではなく、『本稿の射程を超えるため、今後の課題として明記した』と書きます。", "english": "Rather than declining, we write that it exceeds the scope of this paper and has been explicitly noted as a future task." },
+      { "speaker": "著者A", "japanese": "なるほど。対応した箇所もページ番号で示します。", "english": "I see. We will also show the revised locations by page number." },
+      { "speaker": "著者B", "japanese": "はい。査読者が確認しやすい回答書にしましょう。", "english": "Yes. Let us make the response letter easy for the reviewer to check." }
+    ],
+    "roleplay_prompts": [
+      "Write response to reviewer: thank, state change, page/paragraph location.",
+      "Reviewer asks impossible extra analysis. Decline as scope issue, not refusal.",
+      "Turn disagreement into 対応方針の説明."
+    ],
+    "register_notes": "査読回答書 is polite, precise, and inspectable. Each response should include: gratitude, action, location. If not complying, explain scope/space/method reason respectfully. Avoid '対応できません'. Prefer '本稿の射程を超えるため、今後の課題として明記いたしました'. Reviewers appreciate page numbers.",
+    "idiom_glosses": [
+      { "idiom": "言葉を尽くす (ことばをつくす)", "literal": "Dùng hết lời", "meaning": "Giải thích cẩn thận, đầy đủ.", "example": "査読回答では、誤解を避けるため言葉を尽くす必要がある。" },
+      { "idiom": "角を丸める (かどをまるめる)", "literal": "Làm tròn góc cạnh", "meaning": "Làm lời phản hồi mềm hơn.", "example": "反論の角を丸め、対応方針として提示する。" }
+    ],
+    "cultural_notes_vi": "Trả lời phản biện ở Nhật rất chú trọng kính trọng reviewer. Ngay cả khi reviewer hiểu sai, response không được viết như 'reviewer wrong'. Hãy viết: 説明が不十分であったため, revised to clarify. Bạn nhận lỗi về clarity, không tự hủy argument.",
+    "tip_advice_vi": "Response matrix: Comment / Response / Revision location. Mỗi response có page number. Nếu không sửa, phải có reason học thuật, không phải preference.",
+    "exercises": [
+      { "type": "fill-blank", "question": "ご指摘を踏まえ、三ページ第二段落に先行研究との関係を___いたしました。", "answer": "補足" },
+      { "type": "translation", "vietnamese": "Vì vượt quá phạm vi bài này, chúng tôi đã ghi rõ là vấn đề nghiên cứu sau.", "japanese": "本稿の射程を超えるため、今後の課題として明記いたしました。" }
+    ]
+  },
+  {
+    "id": 121,
+    "title": "Academic discourse — intellectual roundtable and interdisciplinary dialogue",
+    "title_vi": "Diễn ngôn học thuật — Tọa đàm tri thức và đối thoại liên ngành",
+    "title_en": "Academic discourse — intellectual roundtable and interdisciplinary dialogue",
+    "category": "academic-discourse",
+    "level": "C1",
+    "vocabulary": [
+      { "japanese": "座談会 (ざだんかい)", "english": "roundtable discussion" },
+      { "japanese": "領域横断 (りょういきおうだん)", "english": "cross-disciplinary" },
+      { "japanese": "問題系 (もんだいけい)", "english": "problematic / constellation of issues" },
+      { "japanese": "接点 (せってん)", "english": "point of contact" },
+      { "japanese": "対話可能性 (たいわかのうせい)", "english": "possibility of dialogue" },
+      { "japanese": "理論的射程 (りろんてきしゃてい)", "english": "theoretical reach" },
+      { "japanese": "翻訳可能性 (ほんやくかのうせい)", "english": "translatability" },
+      { "japanese": "知的生産 (ちてきせいさん)", "english": "intellectual production" }
+    ],
+    "examples": [
+      { "japanese": "本日の座談会では、教育学、社会学、言語学の接点からこの問題系を考えてみたいと思います。", "english": "In today's roundtable, I would like to consider this constellation of issues from the points of contact among education, sociology, and linguistics.", "pronunciation_focus": ["座談会: ざだんかい", "問題系: もんだいけい", "field list rhythm"] },
+      { "japanese": "領域横断的な議論では、用語の翻訳可能性そのものが一つの論点となります。", "english": "In cross-disciplinary discussion, the translatability of terms itself becomes one point at issue.", "pronunciation_focus": ["領域横断的", "翻訳可能性", "そのもの emphasis"] },
+      { "japanese": "先生のお話を伺いながら、私の分野でいう『媒介』概念との接点を感じました。", "english": "Listening to your remarks, I sensed a point of contact with the concept of mediation in my field.", "pronunciation_focus": ["伺いながら", "媒介: ばいかい", "intellectual bridge tone"] },
+      { "japanese": "異なる領域の知見を接続する際には、安易な一般化ではなく、概念の移植可能性を慎重に見極める必要があります。", "english": "When connecting findings from different fields, it is necessary to carefully assess the portability of concepts rather than make easy generalizations.", "pronunciation_focus": ["移植可能性", "見極める", "long sentence breath"] }
+    ],
+    "dialogue": [
+      { "speaker": "司会", "japanese": "本日は、領域横断的な視点から議論を深めたいと思います。", "english": "Today I would like to deepen the discussion from a cross-disciplinary perspective." },
+      { "speaker": "教育学者", "japanese": "社会学の議論と接続することで、学習者をめぐる問題系がより立体的に見えるように思います。", "english": "By connecting with sociological debates, the constellation of issues around learners seems to appear more three-dimensional." },
+      { "speaker": "社会学者", "japanese": "ただ、概念をそのまま移すことには慎重であるべきでしょう。", "english": "However, we should be cautious about transferring concepts as-is." },
+      { "speaker": "言語学者", "japanese": "その点こそ、今日の対話の核心かもしれません。", "english": "That point may be the core of today's dialogue." }
+    ],
+    "dialogue_long": [
+      { "speaker": "司会", "japanese": "まず、各分野で共有できる問いは何か、というところから始めたいと思います。", "english": "First, I would like to begin with what questions can be shared across fields." },
+      { "speaker": "教育学者", "japanese": "教育学では、学習者の変容をどのように記述するかが中心的な問いになります。", "english": "In education, the central question is how to describe learner transformation." },
+      { "speaker": "社会学者", "japanese": "社会学では、その変容がどの制度的条件のもとで可能になるかを問います。", "english": "In sociology, we ask under what institutional conditions that transformation becomes possible." },
+      { "speaker": "言語学者", "japanese": "言語学では、変容が具体的な発話や相互行為にどう現れるかを見ます。", "english": "In linguistics, we look at how transformation appears in concrete utterances and interaction." },
+      { "speaker": "司会", "japanese": "つまり、同じ現象を異なる単位で見ているわけですね。", "english": "In other words, you are looking at the same phenomenon in different units." },
+      { "speaker": "教育学者", "japanese": "はい。その単位の違いを前提にしたうえで、どこに接点を作るかが重要だと思います。", "english": "Yes. I think it is important to create points of contact while presupposing those differences in unit." }
+    ],
+    "roleplay_prompts": [
+      "Moderate an interdisciplinary roundtable. Start with shared question, not your own field.",
+      "Bridge another scholar's point to your field: '私の分野でいう〜との接点'.",
+      "Warn against easy transfer of concepts using 移植可能性 and 慎重に見極める."
+    ],
+    "register_notes": "Intellectual roundtable register is less rigid than dissertation defense but more abstract. The key move is bridge-building: 接点, 対話可能性, 領域横断. Avoid making other fields sound naive. Use '私の分野でいう' to translate concepts humbly. Good moderators summarize at the level of questions, not opinions.",
+    "idiom_glosses": [
+      { "idiom": "橋を架ける (はしをかける)", "literal": "Bắc cầu", "meaning": "Tạo kết nối giữa lĩnh vực/khái niệm.", "example": "本座談会は、教育学と言語学のあいだに橋を架ける試みである。" },
+      { "idiom": "交通整理 (こうつうせいり)", "literal": "Điều tiết giao thông", "meaning": "Sắp xếp các luận điểm để cuộc thảo luận không rối.", "example": "司会者には、複数の論点を交通整理する役割が求められる。" }
+    ],
+    "cultural_notes_vi": "Tọa đàm học thuật Nhật thường coi trọng 'dịch' giữa lĩnh vực. Một scholar giỏi không chỉ nói field mình, mà giúp người khác hiểu concept của mình có thể và không thể di chuyển sang field khác. Moderator tốt giúp tạo 接点 chứ không ép consensus.",
+    "tip_advice_vi": "Roundtable phrase set: 先生のお話を伺いながら..., 私の分野でいう..., 接点を感じました, 一度論点を整理します. Đây là intellectual humility + active synthesis.",
+    "exercises": [
+      { "type": "fill-blank", "question": "領域横断的な議論では、用語の___可能性そのものが一つの論点となります。", "answer": "翻訳" },
+      { "type": "translation", "vietnamese": "Khi kết nối tri thức từ các lĩnh vực khác nhau, cần xem xét cẩn thận khả năng di chuyển của khái niệm.", "japanese": "異なる領域の知見を接続する際には、概念の移植可能性を慎重に見極める必要があります。" }
+    ]
   }
 ];
 

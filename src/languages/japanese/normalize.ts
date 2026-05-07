@@ -94,6 +94,7 @@ export function normalizeJapaneseLesson(
     sentences: lesson.examples.map((e) => ({
       native: e.japanese,
       en: e.english,
+      pronunciationFocus: e.pronunciation_focus,
     })),
     vocabulary: lesson.vocabulary.map((v) => ({
       native: v.japanese,
