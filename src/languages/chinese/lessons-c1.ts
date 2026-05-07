@@ -3276,6 +3276,456 @@ export const lessons: ChineseLesson[] = [
         "pinyin": "Zōng hé píng shěn yì jiàn, běn gǎo yí jiē shòu zhòng dà xiū gǎi hòu zài shěn, bù yí zhí jiē jiē shòu, yì wú xū lì jí jù gǎo."
       }
     ]
+  },
+  {
+    "id": 112,
+    "level": "C1",
+    "category": "professional_negotiation",
+    "title": "薪资和奖金谈判",
+    "pinyin": "xīn zī hé jiǎng jīn tán pàn",
+    "topic": "Salary and bonus negotiation",
+    "title_vi": "Đàm phán lương và thưởng",
+    "title_en": "Salary and bonus negotiation",
+    "sentences": [
+      {
+        "chinese": "基于我在香港市场负责区域客户的业绩, 我希望重新讨论总薪酬结构, 尤其是固定薪资与绩效奖金的比例。",
+        "pinyin": "Jīyú wǒ zài Xiānggǎng shìchǎng fùzé qūyù kèhù de yèjì, wǒ xīwàng chóngxīn tǎolùn zǒng xīnchóu jiégòu, yóuqí shì gùdìng xīnzī yǔ jìxiào jiǎngjīn de bǐlì.",
+        "english": "Based on my performance managing regional clients in the Hong Kong market, I would like to revisit the total compensation structure, especially the ratio between base salary and performance bonus.",
+        "vi": "Dựa trên thành tích phụ trách khách hàng khu vực tại thị trường Hong Kong, tôi muốn thảo luận lại cơ cấu tổng đãi ngộ, đặc biệt là tỷ lệ giữa lương cố định và thưởng hiệu suất.",
+        "pronunciation_focus": ["薪酬 → xīnchóu", "绩效 → jìxiào", "比例 → bǐlì"]
+      },
+      {
+        "chinese": "如果公司目前无法调整底薪, 我也愿意考虑更明确的季度奖金机制。",
+        "pinyin": "Rúguǒ gōngsī mùqián wúfǎ tiáozhěng dǐxīn, wǒ yě yuànyì kǎolǜ gèng míngquè de jìdù jiǎngjīn jīzhì.",
+        "english": "If the company cannot adjust base salary at the moment, I am also open to a clearer quarterly bonus mechanism.",
+        "vi": "Nếu hiện tại công ty chưa thể điều chỉnh lương cơ bản, tôi cũng sẵn sàng cân nhắc một cơ chế thưởng theo quý rõ ràng hơn.",
+        "pronunciation_focus": ["底薪 → dǐxīn", "季度 → jìdù", "机制 → jīzhì"]
+      },
+      {
+        "chinese": "我并不是只看短期数字, 而是希望薪酬安排能反映岗位责任和未来增长空间。",
+        "pinyin": "Wǒ bìng bú shì zhǐ kàn duǎnqī shùzì, ér shì xīwàng xīnchóu ānpái néng fǎnyìng gǎngwèi zérèn hé wèilái zēngzhǎng kōngjiān.",
+        "english": "I am not looking only at short-term numbers; I hope the compensation arrangement reflects role responsibility and future growth potential.",
+        "vi": "Tôi không chỉ nhìn vào con số ngắn hạn; tôi mong phần đãi ngộ phản ánh trách nhiệm của vị trí và dư địa tăng trưởng trong tương lai.",
+        "pronunciation_focus": ["短期 → duǎnqī", "岗位责任 → gǎngwèi zérèn", "增长空间 → zēngzhǎng kōngjiān"]
+      },
+      {
+        "chinese": "为了避免双方期待落差, 我建议把奖金计算方式和发放时间写进正式录用文件。",
+        "pinyin": "Wèile bìmiǎn shuāngfāng qīdài luòchā, wǒ jiànyì bǎ jiǎngjīn jìsuàn fāngshì hé fāfàng shíjiān xiě jìn zhèngshì lùyòng wénjiàn.",
+        "english": "To avoid a gap in expectations, I suggest putting the bonus formula and payment timing into the formal offer document.",
+        "vi": "Để tránh chênh lệch kỳ vọng giữa hai bên, tôi đề nghị đưa cách tính thưởng và thời điểm chi trả vào thư nhận việc chính thức.",
+        "pronunciation_focus": ["期待落差 → qīdài luòchā", "发放 → fāfàng", "录用文件 → lùyòng wénjiàn"]
+      },
+      {
+        "chinese": "若贵司能在签约前确认这一点, 我会更有信心长期投入这个团队。",
+        "pinyin": "Ruò guìsī néng zài qiānyuē qián quèrèn zhè yīdiǎn, wǒ huì gèng yǒu xìnxīn chángqī tóurù zhège tuánduì.",
+        "english": "If your company can confirm this before signing, I will have greater confidence in committing to this team long term.",
+        "vi": "Nếu quý công ty có thể xác nhận điểm này trước khi ký, tôi sẽ tự tin hơn khi gắn bó lâu dài với đội ngũ.",
+        "pronunciation_focus": ["贵司 → guìsī", "签约 → qiānyuē", "长期投入 → chángqī tóurù"]
+      }
+    ],
+    "vocab": [
+      { "chinese": "总薪酬", "pinyin": "zǒng xīn chóu", "english": "total compensation", "vi": "tổng đãi ngộ" },
+      { "chinese": "底薪", "pinyin": "dǐ xīn", "english": "base salary", "vi": "lương cơ bản" },
+      { "chinese": "绩效奖金", "pinyin": "jì xiào jiǎng jīn", "english": "performance bonus", "vi": "thưởng hiệu suất" },
+      { "chinese": "季度奖金", "pinyin": "jì dù jiǎng jīn", "english": "quarterly bonus", "vi": "thưởng theo quý" },
+      { "chinese": "发放时间", "pinyin": "fā fàng shí jiān", "english": "payment timing", "vi": "thời điểm chi trả" },
+      { "chinese": "录用文件", "pinyin": "lù yòng wén jiàn", "english": "offer document", "vi": "thư nhận việc" },
+      { "chinese": "期待落差", "pinyin": "qī dài luò chā", "english": "expectation gap", "vi": "chênh lệch kỳ vọng" },
+      { "chinese": "增长空间", "pinyin": "zēng zhǎng kōng jiān", "english": "growth potential", "vi": "dư địa tăng trưởng" }
+    ],
+    "dialogue": [
+      { "speaker": "候选人", "chinese": "谢谢贵司给我这个offer。我对团队很有兴趣, 但想进一步讨论总薪酬结构。", "pinyin": "Xièxie guìsī gěi wǒ zhège offer. Wǒ duì tuánduì hěn yǒu xìngqù, dàn xiǎng jìnyībù tǎolùn zǒng xīnchóu jiégòu.", "english": "Thank you for the offer. I am very interested in the team, but I would like to discuss the total compensation structure further.", "vi": "Cảm ơn quý công ty đã gửi offer. Tôi rất quan tâm đến đội ngũ, nhưng muốn trao đổi thêm về cơ cấu tổng đãi ngộ." },
+      { "speaker": "HR", "chinese": "当然。您最关心的是底薪、奖金, 还是入职时间?", "pinyin": "Dāngrán. Nín zuì guānxīn de shì dǐxīn, jiǎngjīn, háishì rùzhí shíjiān?", "english": "Of course. Are you most concerned about base salary, bonus, or start date?", "vi": "Tất nhiên. Anh/chị quan tâm nhất đến lương cơ bản, thưởng, hay thời điểm nhận việc?" },
+      { "speaker": "候选人", "chinese": "主要是奖金机制。若季度目标达成, 我希望计算方式能更透明。", "pinyin": "Zhǔyào shì jiǎngjīn jīzhì. Ruò jìdù mùbiāo dáchéng, wǒ xīwàng jìsuàn fāngshì néng gèng tòumíng.", "english": "Mainly the bonus mechanism. If quarterly targets are met, I hope the calculation method can be more transparent.", "vi": "Chủ yếu là cơ chế thưởng. Nếu đạt mục tiêu theo quý, tôi mong cách tính minh bạch hơn." },
+      { "speaker": "HR", "chinese": "理解。我可以把这一点带回去确认, 并在修订版offer里写清楚。", "pinyin": "Lǐjiě. Wǒ kěyǐ bǎ zhè yīdiǎn dài huíqù quèrèn, bìng zài xiūdìngbǎn offer lǐ xiě qīngchu.", "english": "Understood. I can take this back for confirmation and state it clearly in the revised offer.", "vi": "Tôi hiểu. Tôi có thể mang điểm này về xác nhận và ghi rõ trong bản offer sửa đổi." }
+    ],
+    "exercises": [
+      { "type": "fill-blank", "question": "我希望重新讨论总___结构, 尤其是固定薪资与绩效奖金的比例。", "answer": "薪酬" },
+      { "type": "matching", "instruction": "Ghép thuật ngữ đàm phán lương với nghĩa tiếng Việt.", "pairs": [
+        { "chinese": "底薪", "pinyin": "dǐ xīn", "english": "lương cơ bản" },
+        { "chinese": "绩效奖金", "pinyin": "jì xiào jiǎng jīn", "english": "thưởng hiệu suất" },
+        { "chinese": "录用文件", "pinyin": "lù yòng wén jiàn", "english": "thư nhận việc" }
+      ] },
+      { "type": "translation", "vietnamese": "Nếu hiện tại công ty chưa thể điều chỉnh lương cơ bản, tôi sẵn sàng cân nhắc một cơ chế thưởng theo quý rõ ràng hơn.", "chinese": "如果公司目前无法调整底薪, 我也愿意考虑更明确的季度奖金机制。", "pinyin": "Rúguǒ gōngsī mùqián wúfǎ tiáozhěng dǐxīn, wǒ yě yuànyì kǎolǜ gèng míngquè de jìdù jiǎngjīn jīzhì." }
+    ]
+  },
+  {
+    "id": 113,
+    "level": "C1",
+    "category": "professional_negotiation",
+    "title": "拒绝不利的合约条款",
+    "pinyin": "jù jué bù lì de hé yuē tiáo kuǎn",
+    "topic": "Rejecting unfavorable contract terms",
+    "title_vi": "Từ chối điều khoản hợp đồng bất lợi",
+    "title_en": "Rejecting unfavorable contract terms",
+    "sentences": [
+      { "chinese": "我们理解贵方需要控制风险, 但目前的违约金条款明显超过了服务金额本身。", "pinyin": "Wǒmen lǐjiě guìfāng xūyào kòngzhì fēngxiǎn, dàn mùqián de wéiyuējīn tiáokuǎn míngxiǎn chāoguòle fúwù jīn'é běnshēn.", "english": "We understand your need to control risk, but the current penalty clause clearly exceeds the service amount itself.", "vi": "Chúng tôi hiểu quý bên cần kiểm soát rủi ro, nhưng điều khoản phạt vi phạm hiện tại rõ ràng vượt quá giá trị dịch vụ.", "pronunciation_focus": ["贵方 → guìfāng", "违约金 → wéiyuējīn", "服务金额 → fúwù jīn'é"] },
+      { "chinese": "如果责任没有上限, 我们内部的风控委员会很难批准这份合约。", "pinyin": "Rúguǒ zérèn méiyǒu shàngxiàn, wǒmen nèibù de fēngkòng wěiyuánhuì hěn nán pīzhǔn zhè fèn héyuē.", "english": "If liability has no cap, our internal risk control committee will find it difficult to approve this contract.", "vi": "Nếu trách nhiệm không có mức trần, ủy ban kiểm soát rủi ro nội bộ của chúng tôi sẽ rất khó phê duyệt hợp đồng này.", "pronunciation_focus": ["责任 → zérèn", "上限 → shàngxiàn", "批准 → pīzhǔn"] },
+      { "chinese": "我们建议把赔偿责任限定在过去三个月已支付费用的范围内。", "pinyin": "Wǒmen jiànyì bǎ péicháng zérèn xiàndìng zài guòqù sān gè yuè yǐ zhīfù fèiyòng de fànwéi nèi.", "english": "We suggest limiting compensation liability to the fees paid over the past three months.", "vi": "Chúng tôi đề nghị giới hạn trách nhiệm bồi thường trong phạm vi phí đã thanh toán trong ba tháng vừa qua.", "pronunciation_focus": ["赔偿责任 → péicháng zérèn", "限定 → xiàndìng", "范围 → fànwéi"] },
+      { "chinese": "付款周期可以讨论, 但六十天账期会对我们的现金流造成实质压力。", "pinyin": "Fùkuǎn zhōuqī kěyǐ tǎolùn, dàn liùshí tiān zhàngqī huì duì wǒmen de xiànjīnliú zàochéng shízhì yālì.", "english": "The payment cycle is open for discussion, but a sixty-day payment term would create real pressure on our cash flow.", "vi": "Chu kỳ thanh toán có thể trao đổi, nhưng kỳ hạn 60 ngày sẽ gây áp lực thực tế lên dòng tiền của chúng tôi.", "pronunciation_focus": ["付款周期 → fùkuǎn zhōuqī", "账期 → zhàngqī", "现金流 → xiànjīnliú"] },
+      { "chinese": "若双方能在责任上限和付款周期上各退一步, 这份合约就有继续推进的空间。", "pinyin": "Ruò shuāngfāng néng zài zérèn shàngxiàn hé fùkuǎn zhōuqī shàng gè tuì yī bù, zhè fèn héyuē jiù yǒu jìxù tuījìn de kōngjiān.", "english": "If both sides can each make a concession on the liability cap and payment cycle, this contract will still have room to move forward.", "vi": "Nếu hai bên mỗi bên nhường một bước về mức trần trách nhiệm và chu kỳ thanh toán, hợp đồng này vẫn còn không gian để tiếp tục.", "pronunciation_focus": ["各退一步 → gè tuì yī bù", "推进 → tuījìn", "空间 → kōngjiān"] }
+    ],
+    "vocab": [
+      { "chinese": "合约条款", "pinyin": "hé yuē tiáo kuǎn", "english": "contract clause", "vi": "điều khoản hợp đồng" },
+      { "chinese": "违约金", "pinyin": "wéi yuē jīn", "english": "penalty for breach", "vi": "phạt vi phạm" },
+      { "chinese": "责任上限", "pinyin": "zé rèn shàng xiàn", "english": "liability cap", "vi": "mức trần trách nhiệm" },
+      { "chinese": "赔偿责任", "pinyin": "péi cháng zé rèn", "english": "compensation liability", "vi": "trách nhiệm bồi thường" },
+      { "chinese": "付款周期", "pinyin": "fù kuǎn zhōu qī", "english": "payment cycle", "vi": "chu kỳ thanh toán" },
+      { "chinese": "账期", "pinyin": "zhàng qī", "english": "payment term", "vi": "kỳ hạn thanh toán" },
+      { "chinese": "现金流", "pinyin": "xiàn jīn liú", "english": "cash flow", "vi": "dòng tiền" },
+      { "chinese": "修订版", "pinyin": "xiū dìng bǎn", "english": "revised version", "vi": "bản sửa đổi" }
+    ],
+    "dialogue": [
+      { "speaker": "客户", "chinese": "我们希望保留现有违约金条款, 这样对双方都有约束力。", "pinyin": "Wǒmen xīwàng bǎoliú xiànyǒu wéiyuējīn tiáokuǎn, zhèyàng duì shuāngfāng dōu yǒu yuēshùlì.", "english": "We hope to keep the current penalty clause; it creates discipline for both sides.", "vi": "Chúng tôi muốn giữ điều khoản phạt vi phạm hiện tại; như vậy cả hai bên đều có ràng buộc." },
+      { "speaker": "供应方", "chinese": "我们理解这个考虑, 但没有上限的责任会使我们无法签署。", "pinyin": "Wǒmen lǐjiě zhège kǎolǜ, dàn méiyǒu shàngxiàn de zérèn huì shǐ wǒmen wúfǎ qiānshǔ.", "english": "We understand that consideration, but uncapped liability would make it impossible for us to sign.", "vi": "Chúng tôi hiểu cân nhắc đó, nhưng trách nhiệm không giới hạn sẽ khiến chúng tôi không thể ký." },
+      { "speaker": "客户", "chinese": "那你们可以接受什么样的上限?", "pinyin": "Nà nǐmen kěyǐ jiēshòu shénme yàng de shàngxiàn?", "english": "What kind of cap could you accept?", "vi": "Vậy mức trần nào thì phía anh/chị có thể chấp nhận?" },
+      { "speaker": "供应方", "chinese": "我们建议以上一季度已付款项为上限, 并把严重疏忽单独列明。", "pinyin": "Wǒmen jiànyì yǐ shàng yī jìdù yǐ fù kuǎnxiàng wéi shàngxiàn, bìng bǎ yánzhòng shūhū dāndú lièmíng.", "english": "We suggest using the previous quarter's paid fees as the cap, and listing gross negligence separately.", "vi": "Chúng tôi đề nghị lấy khoản đã thanh toán của quý trước làm mức trần, và liệt kê riêng trường hợp sơ suất nghiêm trọng." }
+    ],
+    "exercises": [
+      { "type": "fill-blank", "question": "如果责任没有___, 我们内部很难批准这份合约。", "answer": "上限" },
+      { "type": "matching", "instruction": "Ghép thuật ngữ hợp đồng với nghĩa tiếng Việt.", "pairs": [
+        { "chinese": "违约金", "pinyin": "wéi yuē jīn", "english": "phạt vi phạm" },
+        { "chinese": "付款周期", "pinyin": "fù kuǎn zhōu qī", "english": "chu kỳ thanh toán" },
+        { "chinese": "赔偿责任", "pinyin": "péi cháng zé rèn", "english": "trách nhiệm bồi thường" }
+      ] },
+      { "type": "translation", "vietnamese": "Chúng tôi đề nghị giới hạn trách nhiệm bồi thường trong phạm vi phí đã thanh toán trong ba tháng vừa qua.", "chinese": "我们建议把赔偿责任限定在过去三个月已支付费用的范围内。", "pinyin": "Wǒmen jiànyì bǎ péicháng zérèn xiàndìng zài guòqù sān gè yuè yǐ zhīfù fèiyòng de fànwéi nèi." }
+    ]
+  },
+  {
+    "id": 114,
+    "level": "C1",
+    "category": "professional_negotiation",
+    "title": "主持多方谈判会议",
+    "pinyin": "zhǔ chí duō fā tán pàn huì yì",
+    "topic": "Facilitating multi-party negotiation meetings",
+    "title_vi": "Chủ trì cuộc họp đàm phán nhiều bên",
+    "title_en": "Facilitating multi-party negotiation meetings",
+    "sentences": [
+      { "chinese": "今天的会议涉及三方利益, 我建议先确认共同目标, 再逐项处理分歧。", "pinyin": "Jīntiān de huìyì shèjí sānfāng lìyì, wǒ jiànyì xiān quèrèn gòngtóng mùbiāo, zài zhúxiàng chǔlǐ fēnqí.", "english": "Today's meeting involves the interests of three parties, so I suggest confirming shared goals first and then addressing disagreements item by item.", "vi": "Cuộc họp hôm nay liên quan đến lợi ích của ba bên, nên tôi đề nghị xác nhận mục tiêu chung trước rồi xử lý từng điểm bất đồng.", "pronunciation_focus": ["涉及 → shèjí", "共同目标 → gòngtóng mùbiāo", "逐项 → zhúxiàng"] },
+      { "chinese": "为了避免会议失焦, 每个议题请先给出事实背景, 再提出各自立场。", "pinyin": "Wèile bìmiǎn huìyì shījiāo, měi gè yìtí qǐng xiān gěi chū shìshí bèijǐng, zài tíchū gèzì lìchǎng.", "english": "To avoid losing focus, please give the factual background for each agenda item before presenting each side's position.", "vi": "Để cuộc họp không mất trọng tâm, mỗi chủ đề xin nêu bối cảnh thực tế trước, rồi mới trình bày lập trường của từng bên.", "pronunciation_focus": ["失焦 → shījiāo", "议题 → yìtí", "立场 → lìchǎng"] },
+      { "chinese": "目前我们已经形成两项初步共识, 剩下的问题集中在价格调整和交付时间。", "pinyin": "Mùqián wǒmen yǐjīng xíngchéng liǎng xiàng chūbù gòngshí, shèngxià de wèntí jízhōng zài jiàgé tiáozhěng hé jiāofù shíjiān.", "english": "So far we have formed two preliminary points of consensus, and the remaining issues focus on price adjustment and delivery timeline.", "vi": "Hiện tại chúng ta đã có hai điểm đồng thuận sơ bộ, các vấn đề còn lại tập trung vào điều chỉnh giá và thời hạn giao hàng.", "pronunciation_focus": ["初步共识 → chūbù gòngshí", "集中在 → jízhōng zài", "交付时间 → jiāofù shíjiān"] },
+      { "chinese": "请各方把不可接受的底线说清楚, 这样我们才能判断是否还有交换空间。", "pinyin": "Qǐng gèfāng bǎ bù kě jiēshòu de dǐxiàn shuō qīngchu, zhèyàng wǒmen cáinéng pànduàn shìfǒu hái yǒu jiāohuàn kōngjiān.", "english": "Please make each party's unacceptable bottom lines clear, so we can judge whether there is still room for trade-offs.", "vi": "Xin các bên nói rõ những ranh giới không thể chấp nhận, để chúng ta đánh giá còn không gian trao đổi hay không.", "pronunciation_focus": ["各方 → gèfāng", "底线 → dǐxiàn", "交换空间 → jiāohuàn kōngjiān"] },
+      { "chinese": "我会在会后发出会议纪要, 把已达成共识和待确认事项分开列明。", "pinyin": "Wǒ huì zài huì hòu fāchū huìyì jìyào, bǎ yǐ dáchéng gòngshí hé dài quèrèn shìxiàng fēnkāi lièmíng.", "english": "After the meeting I will send minutes that list confirmed consensus separately from items awaiting confirmation.", "vi": "Sau cuộc họp tôi sẽ gửi biên bản, tách riêng các điểm đã thống nhất và các mục còn chờ xác nhận.", "pronunciation_focus": ["会议纪要 → huìyì jìyào", "待确认 → dài quèrèn", "列明 → lièmíng"] }
+    ],
+    "vocab": [
+      { "chinese": "多方谈判", "pinyin": "duō fā tán pàn", "english": "multi-party negotiation", "vi": "đàm phán nhiều bên" },
+      { "chinese": "共同目标", "pinyin": "gòng tóng mù biāo", "english": "shared goal", "vi": "mục tiêu chung" },
+      { "chinese": "分歧", "pinyin": "fēn qí", "english": "disagreement", "vi": "bất đồng" },
+      { "chinese": "议题", "pinyin": "yì tí", "english": "agenda item", "vi": "chủ đề họp" },
+      { "chinese": "立场", "pinyin": "lì chǎng", "english": "position", "vi": "lập trường" },
+      { "chinese": "共识", "pinyin": "gòng shí", "english": "consensus", "vi": "đồng thuận" },
+      { "chinese": "底线", "pinyin": "dǐ xiàn", "english": "bottom line", "vi": "ranh giới cuối" },
+      { "chinese": "会议纪要", "pinyin": "huì yì jì yào", "english": "meeting minutes", "vi": "biên bản cuộc họp" }
+    ],
+    "dialogue": [
+      { "speaker": "主持人", "chinese": "我们先确认共同目标: 这个项目要按时上线, 同时控制额外成本。", "pinyin": "Wǒmen xiān quèrèn gòngtóng mùbiāo: zhège xiàngmù yào ànshí shàngxiàn, tóngshí kòngzhì éwài chéngběn.", "english": "Let's first confirm the shared goal: the project should launch on time while controlling extra cost.", "vi": "Trước tiên hãy xác nhận mục tiêu chung: dự án cần lên đúng hạn, đồng thời kiểm soát chi phí phát sinh." },
+      { "speaker": "客户", "chinese": "我们最担心的是上线时间, 因为市场活动已经排好了。", "pinyin": "Wǒmen zuì dānxīn de shì shàngxiàn shíjiān, yīnwèi shìchǎng huódòng yǐjīng pái hǎo le.", "english": "Our biggest concern is launch timing, because the marketing campaign is already scheduled.", "vi": "Điều chúng tôi lo nhất là thời điểm lên sản phẩm, vì chiến dịch marketing đã được xếp lịch." },
+      { "speaker": "供应方", "chinese": "我们可以保证核心功能, 但新增功能需要调整范围或预算。", "pinyin": "Wǒmen kěyǐ bǎozhèng héxīn gōngnéng, dàn xīnzēng gōngnéng xūyào tiáozhěng fànwéi huò yùsuàn.", "english": "We can guarantee core features, but new features require adjusting scope or budget.", "vi": "Chúng tôi có thể bảo đảm chức năng cốt lõi, nhưng tính năng mới cần điều chỉnh phạm vi hoặc ngân sách." },
+      { "speaker": "主持人", "chinese": "好, 我把这个记录为待确认事项: 范围不变则预算调整, 预算不变则范围调整。", "pinyin": "Hǎo, wǒ bǎ zhège jìlù wéi dài quèrèn shìxiàng: fànwéi bú biàn zé yùsuàn tiáozhěng, yùsuàn bú biàn zé fànwéi tiáozhěng.", "english": "Good, I will record this as an item to confirm: if scope stays unchanged, budget adjusts; if budget stays unchanged, scope adjusts.", "vi": "Được, tôi ghi điểm này là mục cần xác nhận: nếu phạm vi không đổi thì ngân sách điều chỉnh; nếu ngân sách không đổi thì phạm vi điều chỉnh." }
+    ],
+    "exercises": [
+      { "type": "fill-blank", "question": "目前我们已经形成两项初步___, 剩下的问题集中在价格和交付时间。", "answer": "共识" },
+      { "type": "matching", "instruction": "Ghép từ vựng cuộc họp với nghĩa tiếng Việt.", "pairs": [
+        { "chinese": "议题", "pinyin": "yì tí", "english": "chủ đề họp" },
+        { "chinese": "分歧", "pinyin": "fēn qí", "english": "bất đồng" },
+        { "chinese": "会议纪要", "pinyin": "huì yì jì yào", "english": "biên bản cuộc họp" }
+      ] },
+      { "type": "translation", "vietnamese": "Sau cuộc họp tôi sẽ gửi biên bản, tách riêng các điểm đã thống nhất và các mục còn chờ xác nhận.", "chinese": "我会在会后发出会议纪要, 把已达成共识和待确认事项分开列明。", "pinyin": "Wǒ huì zài huì hòu fāchū huìyì jìyào, bǎ yǐ dáchéng gòngshí hé dài quèrèn shìxiàng fēnkāi lièmíng." }
+    ]
+  },
+  {
+    "id": 115,
+    "level": "C1",
+    "category": "professional_negotiation",
+    "title": "与供应商谈判价格",
+    "pinyin": "yǔ gōng yìng shāng tán pàn jià gé",
+    "topic": "Negotiating price with suppliers",
+    "title_vi": "Đàm phán giá với nhà cung cấp",
+    "title_en": "Negotiating price with suppliers",
+    "sentences": [
+      { "chinese": "贵方报价比我们上一轮采购高出十二个百分点, 这部分涨幅需要更详细的成本说明。", "pinyin": "Guìfāng bàojià bǐ wǒmen shàng yī lún cǎigòu gāo chū shí'èr gè bǎifēndiǎn, zhè bùfen zhǎngfú xūyào gèng xiángxì de chéngběn shuōmíng.", "english": "Your quotation is twelve percentage points higher than our previous procurement round, and this increase requires a more detailed cost explanation.", "vi": "Báo giá của quý bên cao hơn vòng mua hàng trước của chúng tôi 12 điểm phần trăm, phần tăng này cần giải thích chi phí chi tiết hơn.", "pronunciation_focus": ["报价 → bàojià", "百分点 → bǎifēndiǎn", "涨幅 → zhǎngfú"] },
+      { "chinese": "如果我们承诺年度采购量, 贵方是否可以在单价上给予更稳定的折扣?", "pinyin": "Rúguǒ wǒmen chéngnuò niándù cǎigòu liàng, guìfāng shìfǒu kěyǐ zài dānjià shàng jǐyǔ gèng wěndìng de zhékòu?", "english": "If we commit to annual purchase volume, could your side provide a more stable discount on unit price?", "vi": "Nếu chúng tôi cam kết sản lượng mua hàng hằng năm, quý bên có thể đưa ra mức chiết khấu ổn định hơn trên đơn giá không?", "pronunciation_focus": ["承诺 → chéngnuò", "采购量 → cǎigòu liàng", "单价 → dānjià"] },
+      { "chinese": "我们并非单纯压价, 而是希望把价格、交期和服务水平放在同一张表里评估。", "pinyin": "Wǒmen bìngfēi dānchún yājià, ér shì xīwàng bǎ jiàgé, jiāoqī hé fúwù shuǐpíng fàng zài tóng yī zhāng biǎo lǐ pínggū.", "english": "We are not simply pushing down price; we want to evaluate price, delivery schedule, and service level in the same table.", "vi": "Chúng tôi không chỉ đơn thuần ép giá; chúng tôi muốn đánh giá giá, thời hạn giao hàng và mức dịch vụ trong cùng một bảng.", "pronunciation_focus": ["压价 → yājià", "交期 → jiāoqī", "服务水平 → fúwù shuǐpíng"] },
+      { "chinese": "若价格无法再降, 是否可以延长质保期或增加售后响应时段?", "pinyin": "Ruò jiàgé wúfǎ zài jiàng, shìfǒu kěyǐ yáncháng zhìbǎoqī huò zēngjiā shòuhòu xiǎngyìng shíduàn?", "english": "If the price cannot be lowered further, could you extend the warranty period or increase after-sales response hours?", "vi": "Nếu giá không thể giảm thêm, quý bên có thể kéo dài thời hạn bảo hành hoặc tăng khung giờ phản hồi hậu mãi không?", "pronunciation_focus": ["质保期 → zhìbǎoqī", "售后 → shòuhòu", "响应时段 → xiǎngyìng shíduàn"] },
+      { "chinese": "我们愿意把首批订单提前确认, 但需要贵方在付款条件上给出相应配合。", "pinyin": "Wǒmen yuànyì bǎ shǒupī dìngdān tíqián quèrèn, dàn xūyào guìfāng zài fùkuǎn tiáojiàn shàng gěi chū xiāngyìng pèihé.", "english": "We are willing to confirm the first batch of orders earlier, but we need corresponding cooperation from your side on payment terms.", "vi": "Chúng tôi sẵn sàng xác nhận lô đơn hàng đầu tiên sớm hơn, nhưng cần quý bên phối hợp tương ứng về điều kiện thanh toán.", "pronunciation_focus": ["首批 → shǒupī", "付款条件 → fùkuǎn tiáojiàn", "相应配合 → xiāngyìng pèihé"] }
+    ],
+    "vocab": [
+      { "chinese": "供应商", "pinyin": "gōng yìng shāng", "english": "supplier", "vi": "nhà cung cấp" },
+      { "chinese": "报价", "pinyin": "bào jià", "english": "quotation", "vi": "báo giá" },
+      { "chinese": "采购量", "pinyin": "cǎi gòu liàng", "english": "purchase volume", "vi": "sản lượng mua hàng" },
+      { "chinese": "单价", "pinyin": "dān jià", "english": "unit price", "vi": "đơn giá" },
+      { "chinese": "交期", "pinyin": "jiāo qī", "english": "delivery schedule", "vi": "thời hạn giao hàng" },
+      { "chinese": "质保期", "pinyin": "zhì bǎo qī", "english": "warranty period", "vi": "thời hạn bảo hành" },
+      { "chinese": "售后响应", "pinyin": "shòu hòu xiǎng yìng", "english": "after-sales response", "vi": "phản hồi hậu mãi" },
+      { "chinese": "付款条件", "pinyin": "fù kuǎn tiáo jiàn", "english": "payment terms", "vi": "điều kiện thanh toán" }
+    ],
+    "dialogue": [
+      { "speaker": "采购经理", "chinese": "这次报价比去年高不少, 能否说明主要成本变化?", "pinyin": "Zhècì bàojià bǐ qùnián gāo bù shǎo, néngfǒu shuōmíng zhǔyào chéngběn biànhuà?", "english": "This quotation is much higher than last year. Could you explain the main cost changes?", "vi": "Báo giá lần này cao hơn năm ngoái khá nhiều. Anh/chị có thể giải thích các thay đổi chi phí chính không?" },
+      { "speaker": "供应商", "chinese": "主要是原材料和物流成本上涨, 我们也承受了不少压力。", "pinyin": "Zhǔyào shì yuáncáiliào hé wùliú chéngběn shàngzhǎng, wǒmen yě chéngshòule bù shǎo yālì.", "english": "Mainly raw materials and logistics costs have increased; we are under considerable pressure as well.", "vi": "Chủ yếu là chi phí nguyên vật liệu và logistics tăng, phía chúng tôi cũng chịu áp lực không nhỏ." },
+      { "speaker": "采购经理", "chinese": "理解。若我们承诺年度采购量, 单价是否还有调整空间?", "pinyin": "Lǐjiě. Ruò wǒmen chéngnuò niándù cǎigòu liàng, dānjià shìfǒu hái yǒu tiáozhěng kōngjiān?", "english": "Understood. If we commit to annual volume, is there still room to adjust unit price?", "vi": "Tôi hiểu. Nếu chúng tôi cam kết sản lượng hằng năm, đơn giá còn không gian điều chỉnh không?" },
+      { "speaker": "供应商", "chinese": "如果订单分三批确认, 我们可以给出阶梯折扣。", "pinyin": "Rúguǒ dìngdān fēn sān pī quèrèn, wǒmen kěyǐ gěi chū jiētī zhékòu.", "english": "If the orders are confirmed in three batches, we can offer tiered discounts.", "vi": "Nếu đơn hàng được xác nhận thành ba lô, chúng tôi có thể đưa ra chiết khấu bậc thang." }
+    ],
+    "exercises": [
+      { "type": "fill-blank", "question": "我们并非单纯___, 而是希望综合评估价格、交期和服务水平。", "answer": "压价" },
+      { "type": "matching", "instruction": "Ghép thuật ngữ mua hàng với nghĩa tiếng Việt.", "pairs": [
+        { "chinese": "单价", "pinyin": "dān jià", "english": "đơn giá" },
+        { "chinese": "交期", "pinyin": "jiāo qī", "english": "thời hạn giao hàng" },
+        { "chinese": "质保期", "pinyin": "zhì bǎo qī", "english": "thời hạn bảo hành" }
+      ] },
+      { "type": "translation", "vietnamese": "Nếu chúng tôi cam kết sản lượng mua hàng hằng năm, quý bên có thể đưa ra mức chiết khấu ổn định hơn không?", "chinese": "如果我们承诺年度采购量, 贵方是否可以在单价上给予更稳定的折扣?", "pinyin": "Rúguǒ wǒmen chéngnuò niándù cǎigòu liàng, guìfāng shìfǒu kěyǐ zài dānjià shàng jǐyǔ gèng wěndìng de zhékòu?" }
+    ]
+  },
+  {
+    "id": 116,
+    "level": "C1",
+    "category": "professional_negotiation",
+    "title": "对上级的建设性反对意见",
+    "pinyin": "duì shàng jí de jiàn shè xìng fǎn duì yì jiàn",
+    "topic": "Constructive disagreement with a senior manager",
+    "title_vi": "Phản đối mang tính xây dựng với cấp trên",
+    "title_en": "Constructive disagreement with a senior manager",
+    "sentences": [
+      { "chinese": "我理解这个方向背后的商业考虑, 但从执行风险看, 目前的时间表过于紧张。", "pinyin": "Wǒ lǐjiě zhège fāngxiàng bèihòu de shāngyè kǎolǜ, dàn cóng zhíxíng fēngxiǎn kàn, mùqián de shíjiānbiǎo guòyú jǐnzhāng.", "english": "I understand the business rationale behind this direction, but from an execution-risk perspective, the current timeline is too tight.", "vi": "Tôi hiểu cân nhắc kinh doanh đằng sau hướng đi này, nhưng xét từ rủi ro thực thi, tiến độ hiện tại quá gấp.", "pronunciation_focus": ["商业考虑 → shāngyè kǎolǜ", "执行风险 → zhíxíng fēngxiǎn", "时间表 → shíjiānbiǎo"] },
+      { "chinese": "我不是反对目标本身, 而是担心资源配置不足会影响交付质量。", "pinyin": "Wǒ bú shì fǎnduì mùbiāo běnshēn, ér shì dānxīn zīyuán pèizhì bùzú huì yǐngxiǎng jiāofù zhìliàng.", "english": "I am not opposing the goal itself; I am concerned that insufficient resource allocation will affect delivery quality.", "vi": "Tôi không phản đối chính mục tiêu đó; tôi lo rằng phân bổ nguồn lực chưa đủ sẽ ảnh hưởng đến chất lượng bàn giao.", "pronunciation_focus": ["反对 → fǎnduì", "资源配置 → zīyuán pèizhì", "交付质量 → jiāofù zhìliàng"] },
+      { "chinese": "如果必须保持原定上线日期, 我建议把非核心功能移到第二阶段。", "pinyin": "Rúguǒ bìxū bǎochí yuándìng shàngxiàn rìqī, wǒ jiànyì bǎ fēi héxīn gōngnéng yí dào dì èr jiēduàn.", "english": "If we must keep the original launch date, I suggest moving non-core features to the second phase.", "vi": "Nếu bắt buộc giữ ngày lên sản phẩm ban đầu, tôi đề nghị chuyển các chức năng không cốt lõi sang giai đoạn hai.", "pronunciation_focus": ["原定 → yuándìng", "非核心功能 → fēi héxīn gōngnéng", "第二阶段 → dì èr jiēduàn"] },
+      { "chinese": "为了让决策更稳妥, 我可以在明天中午前补一份风险对照表。", "pinyin": "Wèile ràng juécè gèng wěntuǒ, wǒ kěyǐ zài míngtiān zhōngwǔ qián bǔ yī fèn fēngxiǎn duìzhào biǎo.", "english": "To make the decision more robust, I can provide a risk comparison table by noon tomorrow.", "vi": "Để quyết định chắc hơn, tôi có thể bổ sung một bảng đối chiếu rủi ro trước trưa mai.", "pronunciation_focus": ["稳妥 → wěntuǒ", "补一份 → bǔ yī fèn", "对照表 → duìzhào biǎo"] },
+      { "chinese": "若您仍决定按原计划推进, 我会全力配合, 同时把关键风险持续汇报。", "pinyin": "Ruò nín réng juédìng àn yuán jìhuà tuījìn, wǒ huì quánlì pèihé, tóngshí bǎ guānjiàn fēngxiǎn chíxù huìbào.", "english": "If you still decide to proceed as planned, I will fully cooperate while continuing to report key risks.", "vi": "Nếu anh/chị vẫn quyết định triển khai theo kế hoạch ban đầu, tôi sẽ phối hợp hết sức, đồng thời tiếp tục báo cáo các rủi ro then chốt.", "pronunciation_focus": ["按原计划 → àn yuán jìhuà", "全力配合 → quánlì pèihé", "持续汇报 → chíxù huìbào"] }
+    ],
+    "vocab": [
+      { "chinese": "建设性反对", "pinyin": "jiàn shè xìng fǎn duì", "english": "constructive disagreement", "vi": "phản đối mang tính xây dựng" },
+      { "chinese": "商业考虑", "pinyin": "shāng yè kǎo lǜ", "english": "business rationale", "vi": "cân nhắc kinh doanh" },
+      { "chinese": "执行风险", "pinyin": "zhí xíng fēng xiǎn", "english": "execution risk", "vi": "rủi ro thực thi" },
+      { "chinese": "资源配置", "pinyin": "zī yuán pèi zhì", "english": "resource allocation", "vi": "phân bổ nguồn lực" },
+      { "chinese": "非核心功能", "pinyin": "fēi hé xīn gōng néng", "english": "non-core feature", "vi": "chức năng không cốt lõi" },
+      { "chinese": "风险对照表", "pinyin": "fēng xiǎn duì zhào biǎo", "english": "risk comparison table", "vi": "bảng đối chiếu rủi ro" },
+      { "chinese": "全力配合", "pinyin": "quán lì pèi hé", "english": "fully cooperate", "vi": "phối hợp hết sức" },
+      { "chinese": "持续汇报", "pinyin": "chí xù huì bào", "english": "keep reporting", "vi": "tiếp tục báo cáo" }
+    ],
+    "dialogue": [
+      { "speaker": "经理", "chinese": "我希望这个版本月底上线, 所有功能都要包含。", "pinyin": "Wǒ xīwàng zhège bǎnběn yuèdǐ shàngxiàn, suǒyǒu gōngnéng dōu yào bāohán.", "english": "I want this version launched by month-end with all features included.", "vi": "Tôi muốn phiên bản này lên vào cuối tháng, bao gồm toàn bộ chức năng." },
+      { "speaker": "员工", "chinese": "我理解目标, 但以目前资源来看, 这样做可能会牺牲交付质量。", "pinyin": "Wǒ lǐjiě mùbiāo, dàn yǐ mùqián zīyuán lái kàn, zhèyàng zuò kěnéng huì xīshēng jiāofù zhìliàng.", "english": "I understand the goal, but with current resources, doing so may sacrifice delivery quality.", "vi": "Tôi hiểu mục tiêu, nhưng với nguồn lực hiện tại, làm vậy có thể phải hy sinh chất lượng bàn giao." },
+      { "speaker": "经理", "chinese": "那你的替代方案是什么?", "pinyin": "Nà nǐ de tìdài fāng'àn shì shénme?", "english": "What is your alternative proposal?", "vi": "Vậy phương án thay thế của bạn là gì?" },
+      { "speaker": "员工", "chinese": "保留核心功能按时上线, 其他功能列入第二阶段, 我明天给您风险对照表。", "pinyin": "Bǎoliú héxīn gōngnéng ànshí shàngxiàn, qítā gōngnéng lièrù dì èr jiēduàn, wǒ míngtiān gěi nín fēngxiǎn duìzhào biǎo.", "english": "Launch core features on time, move the others to phase two, and I will give you a risk comparison table tomorrow.", "vi": "Giữ chức năng cốt lõi lên đúng hạn, đưa các chức năng khác vào giai đoạn hai, và ngày mai tôi gửi anh/chị bảng đối chiếu rủi ro." }
+    ],
+    "exercises": [
+      { "type": "fill-blank", "question": "我不是反对目标本身, 而是担心资源___不足会影响交付质量。", "answer": "配置" },
+      { "type": "matching", "instruction": "Ghép cụm phản đối xây dựng với nghĩa tiếng Việt.", "pairs": [
+        { "chinese": "执行风险", "pinyin": "zhí xíng fēng xiǎn", "english": "rủi ro thực thi" },
+        { "chinese": "替代方案", "pinyin": "tì dài fāng àn", "english": "phương án thay thế" },
+        { "chinese": "全力配合", "pinyin": "quán lì pèi hé", "english": "phối hợp hết sức" }
+      ] },
+      { "type": "translation", "vietnamese": "Nếu bắt buộc giữ ngày lên sản phẩm ban đầu, tôi đề nghị chuyển các chức năng không cốt lõi sang giai đoạn hai.", "chinese": "如果必须保持原定上线日期, 我建议把非核心功能移到第二阶段。", "pinyin": "Rúguǒ bìxū bǎochí yuándìng shàngxiàn rìqī, wǒ jiànyì bǎ fēi héxīn gōngnéng yí dào dì èr jiēduàn." }
+    ]
+  },
+  {
+    "id": 117,
+    "level": "C1",
+    "category": "professional_negotiation",
+    "title": "跨文化谈判: 华人商业与越南商业风格",
+    "pinyin": "kuà wén huà tán pàn: huá rén shāng yè yǔ yuè nán shāng yè fēng gé",
+    "topic": "Cross-cultural negotiation: Chinese diaspora and Vietnamese business styles",
+    "title_vi": "Đàm phán liên văn hoá: phong cách kinh doanh người Hoa và Việt Nam",
+    "title_en": "Cross-cultural negotiation: Chinese diaspora and Vietnamese business styles",
+    "sentences": [
+      { "chinese": "在海外华人商业环境中, 关系建立往往先于价格讨论, 这一点和许多越南企业的做法相近。", "pinyin": "Zài hǎiwài Huárén shāngyè huánjìng zhōng, guānxi jiànlì wǎngwǎng xiān yú jiàgé tǎolùn, zhè yīdiǎn hé xǔduō Yuènán qǐyè de zuòfǎ xiāngjìn.", "english": "In overseas Chinese business settings, relationship building often comes before price discussion, which is similar to the practice of many Vietnamese companies.", "vi": "Trong môi trường kinh doanh người Hoa ở nước ngoài, việc xây dựng quan hệ thường đi trước thảo luận giá, điểm này khá gần với cách làm của nhiều doanh nghiệp Việt Nam.", "pronunciation_focus": ["海外华人 → hǎiwài Huárén", "先于 → xiān yú", "相近 → xiāngjìn"] },
+      { "chinese": "差异在于, 新加坡团队通常更重视书面确认, 而越南团队可能更依赖会后的关系维护。", "pinyin": "Chāyì zàiyú, Xīnjiāpō tuánduì tōngcháng gèng zhòngshì shūmiàn quèrèn, ér Yuènán tuánduì kěnéng gèng yīlài huì hòu de guānxi wéihù.", "english": "The difference is that Singapore teams usually value written confirmation more, while Vietnamese teams may rely more on relationship maintenance after the meeting.", "vi": "Khác biệt là đội ngũ Singapore thường coi trọng xác nhận bằng văn bản hơn, còn đội ngũ Việt Nam có thể dựa nhiều hơn vào việc duy trì quan hệ sau họp.", "pronunciation_focus": ["差异在于 → chāyì zàiyú", "书面确认 → shūmiàn quèrèn", "关系维护 → guānxi wéihù"] },
+      { "chinese": "若对方表达得比较含蓄, 不宜立刻理解为同意, 需要用温和方式再次确认。", "pinyin": "Ruò duìfāng biǎodá de bǐjiào hánxù, bù yí lìkè lǐjiě wéi tóngyì, xūyào yòng wēnhé fāngshì zàicì quèrèn.", "english": "If the other side expresses itself indirectly, it should not be immediately interpreted as agreement; confirmation should be made again in a gentle way.", "vi": "Nếu đối phương diễn đạt khá hàm ý, không nên lập tức hiểu là đồng ý; cần xác nhận lại bằng cách nhẹ nhàng.", "pronunciation_focus": ["含蓄 → hánxù", "不宜 → bù yí", "再次确认 → zàicì quèrèn"] },
+      { "chinese": "面对沉默, 经验不足的谈判者容易急着让步, 但沉默有时只是对方内部消化信息的方式。", "pinyin": "Miànduì chénmò, jīngyàn bùzú de tánpàn zhě róngyì jízhe ràngbù, dàn chénmò yǒushí zhǐshì duìfāng nèibù xiāohuà xìnxī de fāngshì.", "english": "When facing silence, inexperienced negotiators often rush to concede, but silence may simply be the other side's way of processing information internally.", "vi": "Khi gặp im lặng, người đàm phán thiếu kinh nghiệm dễ vội nhượng bộ, nhưng đôi khi im lặng chỉ là cách đối phương tiêu hoá thông tin nội bộ.", "pronunciation_focus": ["沉默 → chénmò", "让步 → ràngbù", "消化信息 → xiāohuà xìnxī"] },
+      { "chinese": "最稳妥的做法是把口头善意转化为具体行动, 例如会后纪要、时间表和责任人。", "pinyin": "Zuì wěntuǒ de zuòfǎ shì bǎ kǒutóu shànyì zhuǎnhuà wéi jùtǐ xíngdòng, lìrú huì hòu jìyào, shíjiānbiǎo hé zérèn rén.", "english": "The safest approach is to turn verbal goodwill into concrete actions, such as post-meeting minutes, a timeline, and responsible owners.", "vi": "Cách chắc chắn nhất là chuyển thiện chí bằng lời thành hành động cụ thể, ví dụ biên bản sau họp, mốc thời gian và người phụ trách.", "pronunciation_focus": ["稳妥 → wěntuǒ", "口头善意 → kǒutóu shànyì", "责任人 → zérèn rén"] }
+    ],
+    "vocab": [
+      { "chinese": "跨文化谈判", "pinyin": "kuà wén huà tán pàn", "english": "cross-cultural negotiation", "vi": "đàm phán liên văn hoá" },
+      { "chinese": "海外华人", "pinyin": "hǎi wài Huá rén", "english": "overseas Chinese", "vi": "người Hoa ở nước ngoài" },
+      { "chinese": "关系建立", "pinyin": "guān xi jiàn lì", "english": "relationship building", "vi": "xây dựng quan hệ" },
+      { "chinese": "含蓄", "pinyin": "hán xù", "english": "indirect; implicit", "vi": "hàm ý, không nói thẳng" },
+      { "chinese": "让步", "pinyin": "ràng bù", "english": "concession", "vi": "nhượng bộ" },
+      { "chinese": "书面确认", "pinyin": "shū miàn què rèn", "english": "written confirmation", "vi": "xác nhận bằng văn bản" },
+      { "chinese": "关系维护", "pinyin": "guān xi wéi hù", "english": "relationship maintenance", "vi": "duy trì quan hệ" },
+      { "chinese": "口头善意", "pinyin": "kǒu tóu shàn yì", "english": "verbal goodwill", "vi": "thiện chí bằng lời" }
+    ],
+    "dialogue": [
+      { "speaker": "越南经理", "chinese": "刚才对方一直说'可以再研究', 这算同意了吗?", "pinyin": "Gāngcái duìfāng yìzhí shuō 'kěyǐ zài yánjiū', zhè suàn tóngyì le ma?", "english": "They kept saying 'we can study it further.' Does that count as agreement?", "vi": "Nãy giờ họ cứ nói 'có thể nghiên cứu thêm', vậy có tính là đồng ý không?" },
+      { "speaker": "顾问", "chinese": "不一定。这种说法比较含蓄, 可能是保留空间, 也可能是礼貌拒绝。", "pinyin": "Bù yídìng. Zhè zhǒng shuōfǎ bǐjiào hánxù, kěnéng shì bǎoliú kōngjiān, yě kěnéng shì lǐmào jùjué.", "english": "Not necessarily. That wording is indirect; it may preserve room, or it may be a polite refusal.", "vi": "Chưa chắc. Cách nói này khá hàm ý; có thể là giữ không gian, cũng có thể là từ chối lịch sự." },
+      { "speaker": "越南经理", "chinese": "那我应该怎么跟进?", "pinyin": "Nà wǒ yīnggāi zěnme gēnjìn?", "english": "How should I follow up?", "vi": "Vậy tôi nên theo dõi tiếp thế nào?" },
+      { "speaker": "顾问", "chinese": "会后发一封邮件, 把你理解的共识列出来, 请他们修正或确认。", "pinyin": "Huì hòu fā yī fēng yóujiàn, bǎ nǐ lǐjiě de gòngshí liè chūlái, qǐng tāmen xiūzhèng huò quèrèn.", "english": "Send an email after the meeting listing your understanding of the consensus, and ask them to correct or confirm it.", "vi": "Sau họp gửi một email, liệt kê các điểm đồng thuận theo cách hiểu của bạn, rồi mời họ sửa hoặc xác nhận." }
+    ],
+    "exercises": [
+      { "type": "fill-blank", "question": "若对方表达得比较___, 不宜立刻理解为同意。", "answer": "含蓄" },
+      { "type": "matching", "instruction": "Ghép khái niệm liên văn hoá với nghĩa tiếng Việt.", "pairs": [
+        { "chinese": "关系建立", "pinyin": "guān xi jiàn lì", "english": "xây dựng quan hệ" },
+        { "chinese": "书面确认", "pinyin": "shū miàn què rèn", "english": "xác nhận bằng văn bản" },
+        { "chinese": "口头善意", "pinyin": "kǒu tóu shàn yì", "english": "thiện chí bằng lời" }
+      ] },
+      { "type": "translation", "vietnamese": "Nếu đối phương diễn đạt khá hàm ý, không nên lập tức hiểu là đồng ý.", "chinese": "若对方表达得比较含蓄, 不宜立刻理解为同意。", "pinyin": "Ruò duìfāng biǎodá de bǐjiào hánxù, bù yí lìkè lǐjiě wéi tóngyì." }
+    ]
+  },
+  {
+    "id": 118,
+    "level": "C1",
+    "category": "professional_negotiation",
+    "title": "职场正式纠纷解决",
+    "pinyin": "zhí chǎng zhèng shì jiū fēn jiě jué",
+    "topic": "Formal workplace dispute resolution",
+    "title_vi": "Giải quyết tranh chấp chính thức tại nơi làm việc",
+    "title_en": "Formal workplace dispute resolution",
+    "sentences": [
+      { "chinese": "在进入正式申诉程序之前, 我建议双方先基于事实记录进行一次调解会议。", "pinyin": "Zài jìnrù zhèngshì shēnsù chéngxù zhīqián, wǒ jiànyì shuāngfāng xiān jīyú shìshí jìlù jìnxíng yī cì tiáojiě huìyì.", "english": "Before entering the formal grievance procedure, I suggest both sides hold a mediation meeting based on factual records.", "vi": "Trước khi bước vào quy trình khiếu nại chính thức, tôi đề nghị hai bên họp hòa giải một lần dựa trên hồ sơ sự việc.", "pronunciation_focus": ["申诉程序 → shēnsù chéngxù", "事实记录 → shìshí jìlù", "调解会议 → tiáojiě huìyì"] },
+      { "chinese": "我们讨论的是具体事件和流程漏洞, 不是对任何个人作道德判断。", "pinyin": "Wǒmen tǎolùn de shì jùtǐ shìjiàn hé liúchéng lòudòng, bú shì duì rènhé gèrén zuò dàodé pànduàn.", "english": "We are discussing specific incidents and process gaps, not making moral judgments about any individual.", "vi": "Chúng ta đang thảo luận sự việc cụ thể và lỗ hổng quy trình, không đưa ra phán xét đạo đức về cá nhân nào.", "pronunciation_focus": ["流程漏洞 → liúchéng lòudòng", "道德判断 → dàodé pànduàn", "个人 → gèrén"] },
+      { "chinese": "若会议无法达成一致, 我们会按照员工手册中的升级机制处理。", "pinyin": "Ruò huìyì wúfǎ dáchéng yízhì, wǒmen huì ànzhào yuángōng shǒucè zhōng de shēngjí jīzhì chǔlǐ.", "english": "If the meeting cannot reach agreement, we will handle it according to the escalation mechanism in the employee handbook.", "vi": "Nếu cuộc họp không đạt được thống nhất, chúng tôi sẽ xử lý theo cơ chế leo thang trong sổ tay nhân viên.", "pronunciation_focus": ["达成一致 → dáchéng yízhì", "员工手册 → yuángōng shǒucè", "升级机制 → shēngjí jīzhì"] },
+      { "chinese": "所有陈述都应附上可核实证据, 包括邮件、会议纪要和任务记录。", "pinyin": "Suǒyǒu chénshù dōu yīng fù shàng kě héshí zhèngjù, bāokuò yóujiàn, huìyì jìyào hé rènwù jìlù.", "english": "All statements should include verifiable evidence, including emails, meeting minutes, and task records.", "vi": "Mọi trình bày đều nên kèm bằng chứng có thể kiểm chứng, gồm email, biên bản họp và hồ sơ nhiệm vụ.", "pronunciation_focus": ["陈述 → chénshù", "可核实 → kě héshí", "证据 → zhèngjù"] },
+      { "chinese": "最终目标不是追究谁赢谁输, 而是恢复合作边界并防止问题重复发生。", "pinyin": "Zuìzhōng mùbiāo bú shì zhuījiū shuí yíng shuí shū, ér shì huīfù hézuò biānjiè bìng fángzhǐ wèntí chóngfù fāshēng.", "english": "The ultimate goal is not to determine who wins or loses, but to restore cooperation boundaries and prevent recurrence.", "vi": "Mục tiêu cuối cùng không phải truy cứu ai thắng ai thua, mà là khôi phục ranh giới hợp tác và ngăn vấn đề lặp lại.", "pronunciation_focus": ["追究 → zhuījiū", "合作边界 → hézuò biānjiè", "重复发生 → chóngfù fāshēng"] }
+    ],
+    "vocab": [
+      { "chinese": "纠纷解决", "pinyin": "jiū fēn jiě jué", "english": "dispute resolution", "vi": "giải quyết tranh chấp" },
+      { "chinese": "申诉程序", "pinyin": "shēn sù chéng xù", "english": "grievance procedure", "vi": "quy trình khiếu nại" },
+      { "chinese": "调解会议", "pinyin": "tiáo jiě huì yì", "english": "mediation meeting", "vi": "cuộc họp hòa giải" },
+      { "chinese": "流程漏洞", "pinyin": "liú chéng lòu dòng", "english": "process gap", "vi": "lỗ hổng quy trình" },
+      { "chinese": "升级机制", "pinyin": "shēng jí jī zhì", "english": "escalation mechanism", "vi": "cơ chế leo thang" },
+      { "chinese": "可核实证据", "pinyin": "kě hé shí zhèng jù", "english": "verifiable evidence", "vi": "bằng chứng có thể kiểm chứng" },
+      { "chinese": "合作边界", "pinyin": "hé zuò biān jiè", "english": "cooperation boundary", "vi": "ranh giới hợp tác" },
+      { "chinese": "重复发生", "pinyin": "chóng fù fā shēng", "english": "recurrence", "vi": "lặp lại" }
+    ],
+    "dialogue": [
+      { "speaker": "HR", "chinese": "我们今天先聚焦事实, 不讨论个人动机。", "pinyin": "Wǒmen jīntiān xiān jùjiāo shìshí, bù tǎolùn gèrén dòngjī.", "english": "Today we will focus on facts first and not discuss personal motives.", "vi": "Hôm nay chúng ta tập trung vào sự kiện trước, không bàn động cơ cá nhân." },
+      { "speaker": "员工A", "chinese": "我可以接受, 但希望我的邮件记录被纳入材料。", "pinyin": "Wǒ kěyǐ jiēshòu, dàn xīwàng wǒ de yóujiàn jìlù bèi nàrù cáiliào.", "english": "I can accept that, but I hope my email records are included in the materials.", "vi": "Tôi có thể chấp nhận, nhưng mong hồ sơ email của tôi được đưa vào tài liệu." },
+      { "speaker": "员工B", "chinese": "我也希望会议纪要能准确记录我的说明。", "pinyin": "Wǒ yě xīwàng huìyì jìyào néng zhǔnquè jìlù wǒ de shuōmíng.", "english": "I also hope the meeting minutes accurately record my explanation.", "vi": "Tôi cũng mong biên bản họp ghi chính xác phần giải thích của tôi." },
+      { "speaker": "HR", "chinese": "可以。会后我会发给双方确认, 再进入下一步程序。", "pinyin": "Kěyǐ. Huì hòu wǒ huì fā gěi shuāngfāng quèrèn, zài jìnrù xià yī bù chéngxù.", "english": "Yes. After the meeting I will send it to both sides for confirmation before moving to the next step.", "vi": "Được. Sau cuộc họp tôi sẽ gửi cho hai bên xác nhận, rồi mới đi vào bước tiếp theo." }
+    ],
+    "exercises": [
+      { "type": "fill-blank", "question": "所有陈述都应附上可核实___, 包括邮件和会议纪要。", "answer": "证据" },
+      { "type": "matching", "instruction": "Ghép thuật ngữ xử lý tranh chấp với nghĩa tiếng Việt.", "pairs": [
+        { "chinese": "申诉程序", "pinyin": "shēn sù chéng xù", "english": "quy trình khiếu nại" },
+        { "chinese": "调解会议", "pinyin": "tiáo jiě huì yì", "english": "cuộc họp hòa giải" },
+        { "chinese": "升级机制", "pinyin": "shēng jí jī zhì", "english": "cơ chế leo thang" }
+      ] },
+      { "type": "translation", "vietnamese": "Mục tiêu cuối cùng không phải truy cứu ai thắng ai thua, mà là khôi phục ranh giới hợp tác.", "chinese": "最终目标不是追究谁赢谁输, 而是恢复合作边界。", "pinyin": "Zuìzhōng mùbiāo bú shì zhuījiū shuí yíng shuí shū, ér shì huīfù hézuò biānjiè." }
+    ]
+  },
+  {
+    "id": 119,
+    "level": "C1",
+    "category": "professional_negotiation",
+    "title": "终止谈判和退出",
+    "pinyin": "zhōng zhǐ tán pàn hé tuì chū",
+    "topic": "Ending negotiation and walking away",
+    "title_vi": "Kết thúc đàm phán và rút lui",
+    "title_en": "Ending negotiation and walking away",
+    "sentences": [
+      { "chinese": "经过三轮讨论, 我们认为双方在核心条款上的差距仍然过大。", "pinyin": "Jīngguò sān lún tǎolùn, wǒmen rènwéi shuāngfāng zài héxīn tiáokuǎn shàng de chājù réngrán guòdà.", "english": "After three rounds of discussion, we believe the gap between the two sides on core terms remains too large.", "vi": "Sau ba vòng thảo luận, chúng tôi cho rằng khoảng cách giữa hai bên về các điều khoản cốt lõi vẫn còn quá lớn.", "pronunciation_focus": ["三轮讨论 → sān lún tǎolùn", "核心条款 → héxīn tiáokuǎn", "差距 → chājù"] },
+      { "chinese": "继续投入时间可能会产生更高机会成本, 因此我们需要重新评估最佳替代方案。", "pinyin": "Jìxù tóurù shíjiān kěnéng huì chǎnshēng gèng gāo jīhuì chéngběn, yīncǐ wǒmen xūyào chóngxīn pínggū zuìjiā tìdài fāng'àn.", "english": "Continuing to invest time may create higher opportunity cost, so we need to reassess our best alternative.", "vi": "Tiếp tục đầu tư thời gian có thể tạo chi phí cơ hội cao hơn, vì vậy chúng tôi cần đánh giá lại phương án thay thế tốt nhất.", "pronunciation_focus": ["机会成本 → jīhuì chéngběn", "重新评估 → chóngxīn pínggū", "最佳替代方案 → zuìjiā tìdài fāng'àn"] },
+      { "chinese": "这不是对贵方能力的否定, 而是基于当前条件作出的商业判断。", "pinyin": "Zhè bú shì duì guìfāng nénglì de fǒudìng, ér shì jīyú dāngqián tiáojiàn zuò chū de shāngyè pànduàn.", "english": "This is not a denial of your capability, but a business judgment based on current conditions.", "vi": "Đây không phải là phủ định năng lực của quý bên, mà là phán đoán kinh doanh dựa trên điều kiện hiện tại.", "pronunciation_focus": ["否定 → fǒudìng", "当前条件 → dāngqián tiáojiàn", "商业判断 → shāngyè pànduàn"] },
+      { "chinese": "为了保持后续合作可能, 我们建议把这次讨论记录为暂缓, 而不是彻底关闭。", "pinyin": "Wèile bǎochí hòuxù hézuò kěnéng, wǒmen jiànyì bǎ zhècì tǎolùn jìlù wéi zànhuǎn, ér bú shì chèdǐ guānbì.", "english": "To preserve the possibility of future cooperation, we suggest recording this discussion as paused rather than fully closed.", "vi": "Để giữ khả năng hợp tác sau này, chúng tôi đề nghị ghi nhận cuộc thảo luận này là tạm hoãn, không phải đóng hoàn toàn.", "pronunciation_focus": ["后续合作 → hòuxù hézuò", "暂缓 → zànhuǎn", "彻底关闭 → chèdǐ guānbì"] },
+      { "chinese": "若未来预算、交期或范围发生变化, 我们愿意在新的基础上重新沟通。", "pinyin": "Ruò wèilái yùsuàn, jiāoqī huò fànwéi fāshēng biànhuà, wǒmen yuànyì zài xīn de jīchǔ shàng chóngxīn gōutōng.", "english": "If budget, delivery timeline, or scope changes in the future, we are willing to reconnect on a new basis.", "vi": "Nếu trong tương lai ngân sách, thời hạn giao hàng hoặc phạm vi thay đổi, chúng tôi sẵn sàng trao đổi lại trên cơ sở mới.", "pronunciation_focus": ["预算 → yùsuàn", "范围 → fànwéi", "重新沟通 → chóngxīn gōutōng"] }
+    ],
+    "vocab": [
+      { "chinese": "终止谈判", "pinyin": "zhōng zhǐ tán pàn", "english": "terminate negotiation", "vi": "chấm dứt đàm phán" },
+      { "chinese": "退出", "pinyin": "tuì chū", "english": "walk away", "vi": "rút lui" },
+      { "chinese": "核心条款", "pinyin": "hé xīn tiáo kuǎn", "english": "core terms", "vi": "điều khoản cốt lõi" },
+      { "chinese": "机会成本", "pinyin": "jī huì chéng běn", "english": "opportunity cost", "vi": "chi phí cơ hội" },
+      { "chinese": "最佳替代方案", "pinyin": "zuì jiā tì dài fāng àn", "english": "best alternative", "vi": "phương án thay thế tốt nhất" },
+      { "chinese": "暂缓", "pinyin": "zàn huǎn", "english": "pause temporarily", "vi": "tạm hoãn" },
+      { "chinese": "后续合作", "pinyin": "hòu xù hé zuò", "english": "future cooperation", "vi": "hợp tác sau này" },
+      { "chinese": "商业判断", "pinyin": "shāng yè pàn duàn", "english": "business judgment", "vi": "phán đoán kinh doanh" }
+    ],
+    "dialogue": [
+      { "speaker": "买方", "chinese": "我们讨论了三轮, 但价格和交期仍然差距很大。", "pinyin": "Wǒmen tǎolùn le sān lún, dàn jiàgé hé jiāoqī réngrán chājù hěn dà.", "english": "We have discussed for three rounds, but price and delivery timeline still differ greatly.", "vi": "Chúng ta đã thảo luận ba vòng, nhưng giá và thời hạn giao hàng vẫn chênh lệch rất lớn." },
+      { "speaker": "卖方", "chinese": "您的意思是暂时不继续推进?", "pinyin": "Nín de yìsi shì zànshí bù jìxù tuījìn?", "english": "Do you mean not moving forward for now?", "vi": "Ý anh/chị là tạm thời không tiếp tục thúc đẩy nữa?" },
+      { "speaker": "买方", "chinese": "是的。但我们希望记录为暂缓, 不是关闭合作可能。", "pinyin": "Shì de. Dàn wǒmen xīwàng jìlù wéi zànhuǎn, bú shì guānbì hézuò kěnéng.", "english": "Yes. But we hope to record it as paused, not as closing the possibility of cooperation.", "vi": "Đúng vậy. Nhưng chúng tôi muốn ghi nhận là tạm hoãn, không phải đóng khả năng hợp tác." },
+      { "speaker": "卖方", "chinese": "理解。若条件变化, 我们再基于新范围重新沟通。", "pinyin": "Lǐjiě. Ruò tiáojiàn biànhuà, wǒmen zài jīyú xīn fànwéi chóngxīn gōutōng.", "english": "Understood. If conditions change, we can reconnect based on the new scope.", "vi": "Tôi hiểu. Nếu điều kiện thay đổi, chúng ta sẽ trao đổi lại dựa trên phạm vi mới." }
+    ],
+    "exercises": [
+      { "type": "fill-blank", "question": "继续投入时间可能会产生更高___成本。", "answer": "机会" },
+      { "type": "matching", "instruction": "Ghép thuật ngữ rút lui với nghĩa tiếng Việt.", "pairs": [
+        { "chinese": "暂缓", "pinyin": "zàn huǎn", "english": "tạm hoãn" },
+        { "chinese": "退出", "pinyin": "tuì chū", "english": "rút lui" },
+        { "chinese": "机会成本", "pinyin": "jī huì chéng běn", "english": "chi phí cơ hội" }
+      ] },
+      { "type": "translation", "vietnamese": "Đây không phải là phủ định năng lực của quý bên, mà là phán đoán kinh doanh dựa trên điều kiện hiện tại.", "chinese": "这不是对贵方能力的否定, 而是基于当前条件作出的商业判断。", "pinyin": "Zhè bú shì duì guìfāng nénglì de fǒudìng, ér shì jīyú dāngqián tiáojiàn zuò chū de shāngyè pànduàn." }
+    ]
+  },
+  {
+    "id": 120,
+    "level": "C1",
+    "category": "professional_negotiation",
+    "title": "处理低报价并保持关系",
+    "pinyin": "chǔ lǐ dī bào jià bìng bǎo chí guān xi",
+    "topic": "Handling low offers while preserving the relationship",
+    "title_vi": "Xử lý báo giá thấp mà vẫn giữ quan hệ",
+    "title_en": "Handling low offers while preserving the relationship",
+    "sentences": [
+      { "chinese": "感谢贵方坦率给出预算范围, 但这个报价低于我们可持续交付的成本线。", "pinyin": "Gǎnxiè guìfāng tǎnshuài gěi chū yùsuàn fànwéi, dàn zhège bàojià dī yú wǒmen kě chíxù jiāofù de chéngběn xiàn.", "english": "Thank you for frankly sharing your budget range, but this offer is below the cost line for sustainable delivery.", "vi": "Cảm ơn quý bên đã thẳng thắn đưa ra phạm vi ngân sách, nhưng mức giá này thấp hơn đường chi phí để chúng tôi bàn giao bền vững.", "pronunciation_focus": ["坦率 → tǎnshuài", "低于 → dī yú", "成本线 → chéngběn xiàn"] },
+      { "chinese": "如果按这个价格执行, 我担心服务质量会下降, 这对双方的长期关系都不理想。", "pinyin": "Rúguǒ àn zhège jiàgé zhíxíng, wǒ dānxīn fúwù zhìliàng huì xiàjiàng, zhè duì shuāngfāng de chángqī guānxi dōu bù lǐxiǎng.", "english": "If we execute at this price, I worry service quality will decline, which is not ideal for the long-term relationship of either side.", "vi": "Nếu thực hiện theo mức giá này, tôi lo chất lượng dịch vụ sẽ giảm, điều đó không lý tưởng cho quan hệ dài hạn của cả hai bên.", "pronunciation_focus": ["服务质量 → fúwù zhìliàng", "长期关系 → chángqī guānxi", "不理想 → bù lǐxiǎng"] },
+      { "chinese": "为了照顾贵方预算, 我们可以先缩小服务范围, 而不是在质量上妥协。", "pinyin": "Wèile zhàogù guìfāng yùsuàn, wǒmen kěyǐ xiān suōxiǎo fúwù fànwéi, ér bú shì zài zhìliàng shàng tuǒxié.", "english": "To accommodate your budget, we can first narrow the service scope rather than compromise on quality.", "vi": "Để cân nhắc ngân sách của quý bên, chúng tôi có thể thu hẹp phạm vi dịch vụ trước, thay vì thỏa hiệp về chất lượng.", "pronunciation_focus": ["照顾预算 → zhàogù yùsuàn", "缩小范围 → suōxiǎo fànwéi", "妥协 → tuǒxié"] },
+      { "chinese": "我不希望今天的价格分歧影响双方关系, 所以提出两个更体面的调整方案。", "pinyin": "Wǒ bù xīwàng jīntiān de jiàgé fēnqí yǐngxiǎng shuāngfāng guānxi, suǒyǐ tíchū liǎng gè gèng tǐmiàn de tiáozhěng fāng'àn.", "english": "I do not want today's price gap to affect the relationship, so I am proposing two more face-saving adjustment options.", "vi": "Tôi không muốn bất đồng giá hôm nay ảnh hưởng đến quan hệ hai bên, nên đưa ra hai phương án điều chỉnh thể diện hơn.", "pronunciation_focus": ["价格分歧 → jiàgé fēnqí", "体面 → tǐmiàn", "调整方案 → tiáozhěng fāng'àn"] },
+      { "chinese": "若未来预算增加, 我们可以把被暂缓的模块重新纳入第二阶段。", "pinyin": "Ruò wèilái yùsuàn zēngjiā, wǒmen kěyǐ bǎ bèi zànhuǎn de mókuài chóngxīn nàrù dì èr jiēduàn.", "english": "If the budget increases in the future, we can bring the paused modules back into phase two.", "vi": "Nếu ngân sách tăng trong tương lai, chúng tôi có thể đưa các module tạm hoãn trở lại giai đoạn hai.", "pronunciation_focus": ["预算增加 → yùsuàn zēngjiā", "暂缓 → zànhuǎn", "纳入 → nàrù"] }
+    ],
+    "vocab": [
+      { "chinese": "低报价", "pinyin": "dī bào jià", "english": "low offer", "vi": "báo giá thấp" },
+      { "chinese": "可持续交付", "pinyin": "kě chí xù jiāo fù", "english": "sustainable delivery", "vi": "bàn giao bền vững" },
+      { "chinese": "成本线", "pinyin": "chéng běn xiàn", "english": "cost line", "vi": "đường chi phí" },
+      { "chinese": "服务范围", "pinyin": "fú wù fàn wéi", "english": "service scope", "vi": "phạm vi dịch vụ" },
+      { "chinese": "质量妥协", "pinyin": "zhì liàng tuǒ xié", "english": "quality compromise", "vi": "thỏa hiệp về chất lượng" },
+      { "chinese": "体面方案", "pinyin": "tǐ miàn fāng àn", "english": "face-saving option", "vi": "phương án giữ thể diện" },
+      { "chinese": "回旋空间", "pinyin": "huí xuán kōng jiān", "english": "room to maneuver", "vi": "không gian xoay xở" },
+      { "chinese": "第二阶段", "pinyin": "dì èr jiē duàn", "english": "phase two", "vi": "giai đoạn hai" }
+    ],
+    "dialogue": [
+      { "speaker": "客户", "chinese": "我们的预算只有这个数, 希望你们尽量配合。", "pinyin": "Wǒmen de yùsuàn zhǐyǒu zhège shù, xīwàng nǐmen jìnliàng pèihé.", "english": "Our budget is only this amount. We hope you can cooperate as much as possible.", "vi": "Ngân sách của chúng tôi chỉ có mức này, mong phía anh/chị cố gắng phối hợp." },
+      { "speaker": "服务方", "chinese": "谢谢您坦率说明。这个预算低于完整交付的成本线。", "pinyin": "Xièxie nín tǎnshuài shuōmíng. Zhège yùsuàn dī yú wánzhěng jiāofù de chéngběn xiàn.", "english": "Thank you for explaining frankly. This budget is below the cost line for full delivery.", "vi": "Cảm ơn anh/chị đã thẳng thắn nói rõ. Ngân sách này thấp hơn đường chi phí cho việc bàn giao đầy đủ." },
+      { "speaker": "客户", "chinese": "那有没有折中的做法?", "pinyin": "Nà yǒu méiyǒu zhézhōng de zuòfǎ?", "english": "Is there a compromise approach?", "vi": "Vậy có cách dung hòa nào không?" },
+      { "speaker": "服务方", "chinese": "可以。我们保留核心服务, 暂缓两个模块, 这样既照顾预算, 也不牺牲质量。", "pinyin": "Kěyǐ. Wǒmen bǎoliú héxīn fúwù, zànhuǎn liǎng gè mókuài, zhèyàng jì zhàogù yùsuàn, yě bù xīshēng zhìliàng.", "english": "Yes. We keep the core service and pause two modules, which respects the budget without sacrificing quality.", "vi": "Có. Chúng tôi giữ dịch vụ cốt lõi, tạm hoãn hai module; như vậy vừa cân nhắc ngân sách, vừa không hy sinh chất lượng." }
+    ],
+    "exercises": [
+      { "type": "fill-blank", "question": "这个报价低于我们可持续交付的___线。", "answer": "成本" },
+      { "type": "matching", "instruction": "Ghép thuật ngữ xử lý giá thấp với nghĩa tiếng Việt.", "pairs": [
+        { "chinese": "低报价", "pinyin": "dī bào jià", "english": "báo giá thấp" },
+        { "chinese": "回旋空间", "pinyin": "huí xuán kōng jiān", "english": "không gian xoay xở" },
+        { "chinese": "体面方案", "pinyin": "tǐ miàn fāng àn", "english": "phương án giữ thể diện" }
+      ] },
+      { "type": "translation", "vietnamese": "Để cân nhắc ngân sách của quý bên, chúng tôi có thể thu hẹp phạm vi dịch vụ trước, thay vì thỏa hiệp về chất lượng.", "chinese": "为了照顾贵方预算, 我们可以先缩小服务范围, 而不是在质量上妥协。", "pinyin": "Wèile zhàogù guìfāng yùsuàn, wǒmen kěyǐ xiān suōxiǎo fúwù fànwéi, ér bú shì zài zhìliàng shàng tuǒxié." }
+    ]
+  },
+  {
+    "id": 121,
+    "level": "C1",
+    "category": "professional_negotiation",
+    "title": "与敌对对手谈判",
+    "pinyin": "yǔ dí duì duì shǒu tán pàn",
+    "topic": "Negotiating with a hostile counterpart",
+    "title_vi": "Đàm phán với đối thủ đối kháng",
+    "title_en": "Negotiating with a hostile counterpart",
+    "sentences": [
+      { "chinese": "对方语气强硬时, 我们不必立刻反击, 先把争议点重新界定为可处理的问题。", "pinyin": "Duìfāng yǔqì qiángyìng shí, wǒmen bú bì lìkè fǎnjī, xiān bǎ zhēngyì diǎn chóngxīn jièdìng wéi kě chǔlǐ de wèntí.", "english": "When the other side's tone is aggressive, we do not need to counterattack immediately; first redefine the disputed point as a manageable problem.", "vi": "Khi giọng điệu đối phương cứng rắn, chúng ta không cần phản kích ngay; trước hết hãy định nghĩa lại điểm tranh cãi thành vấn đề có thể xử lý.", "pronunciation_focus": ["语气强硬 → yǔqì qiángyìng", "反击 → fǎnjī", "重新界定 → chóngxīn jièdìng"] },
+      { "chinese": "我建议我们暂停五分钟, 让双方团队内部确认底线后再继续。", "pinyin": "Wǒ jiànyì wǒmen zàntíng wǔ fēnzhōng, ràng shuāngfāng tuánduì nèibù quèrèn dǐxiàn hòu zài jìxù.", "english": "I suggest we pause for five minutes and let both teams internally confirm their bottom lines before continuing.", "vi": "Tôi đề nghị tạm dừng năm phút để hai đội xác nhận nội bộ ranh giới cuối rồi tiếp tục.", "pronunciation_focus": ["暂停 → zàntíng", "内部确认 → nèibù quèrèn", "底线 → dǐxiàn"] },
+      { "chinese": "如果会议继续以指责方式推进, 我担心双方都会失去判断空间。", "pinyin": "Rúguǒ huìyì jìxù yǐ zhǐzé fāngshì tuījìn, wǒ dānxīn shuāngfāng dōu huì shīqù pànduàn kōngjiān.", "english": "If the meeting continues through blame, I worry both sides will lose room for judgment.", "vi": "Nếu cuộc họp tiếp tục bằng cách quy trách nhiệm, tôi lo cả hai bên sẽ mất không gian phán đoán.", "pronunciation_focus": ["指责 → zhǐzé", "推进 → tuījìn", "判断空间 → pànduàn kōngjiān"] },
+      { "chinese": "我们可以不同意彼此的结论, 但仍需要同意一套核对事实的方法。", "pinyin": "Wǒmen kěyǐ bù tóngyì bǐcǐ de jiélùn, dàn réng xūyào tóngyì yī tào héduì shìshí de fāngfǎ.", "english": "We may disagree with each other's conclusions, but we still need to agree on a method for checking facts.", "vi": "Chúng ta có thể không đồng ý với kết luận của nhau, nhưng vẫn cần đồng ý về một phương pháp đối chiếu sự thật.", "pronunciation_focus": ["彼此 → bǐcǐ", "核对事实 → héduì shìshí", "方法 → fāngfǎ"] },
+      { "chinese": "若今天无法形成方案, 我建议请双方都信任的第三方主持下一轮沟通。", "pinyin": "Ruò jīntiān wúfǎ xíngchéng fāng'àn, wǒ jiànyì qǐng shuāngfāng dōu xìnrèn de dìsānfāng zhǔchí xià yī lún gōutōng.", "english": "If we cannot form a plan today, I suggest inviting a third party trusted by both sides to facilitate the next round of communication.", "vi": "Nếu hôm nay không thể hình thành phương án, tôi đề nghị mời một bên thứ ba mà hai bên đều tin tưởng chủ trì vòng trao đổi tiếp theo.", "pronunciation_focus": ["形成方案 → xíngchéng fāng'àn", "第三方 → dìsānfāng", "下一轮 → xià yī lún"] }
+    ],
+    "vocab": [
+      { "chinese": "敌对对手", "pinyin": "dí duì duì shǒu", "english": "hostile counterpart", "vi": "đối thủ đối kháng" },
+      { "chinese": "语气强硬", "pinyin": "yǔ qì qiáng yìng", "english": "aggressive tone", "vi": "giọng điệu cứng rắn" },
+      { "chinese": "反击", "pinyin": "fǎn jī", "english": "counterattack", "vi": "phản kích" },
+      { "chinese": "争议点", "pinyin": "zhēng yì diǎn", "english": "disputed point", "vi": "điểm tranh cãi" },
+      { "chinese": "暂停", "pinyin": "zàn tíng", "english": "pause", "vi": "tạm dừng" },
+      { "chinese": "指责", "pinyin": "zhǐ zé", "english": "blame; accuse", "vi": "quy trách, chỉ trích" },
+      { "chinese": "核对事实", "pinyin": "hé duì shì shí", "english": "check facts", "vi": "đối chiếu sự thật" },
+      { "chinese": "第三方", "pinyin": "dì sān fāng", "english": "third party", "vi": "bên thứ ba" }
+    ],
+    "dialogue": [
+      { "speaker": "对方", "chinese": "你们一直拖延, 现在还要求修改条款, 这很难接受。", "pinyin": "Nǐmen yìzhí tuōyán, xiànzài hái yāoqiú xiūgǎi tiáokuǎn, zhè hěn nán jiēshòu.", "english": "You have been delaying, and now you still ask to modify terms. This is hard to accept.", "vi": "Phía anh/chị cứ kéo dài, giờ còn yêu cầu sửa điều khoản, điều này rất khó chấp nhận." },
+      { "speaker": "我方", "chinese": "我听到您的不满。为了处理问题, 我们先把争议点拆开看。", "pinyin": "Wǒ tīng dào nín de bùmǎn. Wèile chǔlǐ wèntí, wǒmen xiān bǎ zhēngyì diǎn chāi kāi kàn.", "english": "I hear your dissatisfaction. To handle the issue, let's first separate the disputed points.", "vi": "Tôi nghe thấy sự không hài lòng của anh/chị. Để xử lý vấn đề, trước hết ta tách các điểm tranh cãi ra." },
+      { "speaker": "对方", "chinese": "你们是不是根本不想合作?", "pinyin": "Nǐmen shì bú shì gēnběn bù xiǎng hézuò?", "english": "Do you actually not want to cooperate at all?", "vi": "Có phải phía anh/chị căn bản không muốn hợp tác không?" },
+      { "speaker": "我方", "chinese": "我们仍希望合作, 但需要先确认事实和底线。若有必要, 可以请第三方协助主持。", "pinyin": "Wǒmen réng xīwàng hézuò, dàn xūyào xiān quèrèn shìshí hé dǐxiàn. Ruò yǒu bìyào, kěyǐ qǐng dìsānfāng xiézhù zhǔchí.", "english": "We still hope to cooperate, but we need to confirm facts and bottom lines first. If necessary, we can invite a third party to facilitate.", "vi": "Chúng tôi vẫn mong hợp tác, nhưng cần xác nhận sự thật và ranh giới trước. Nếu cần, có thể mời bên thứ ba hỗ trợ chủ trì." }
+    ],
+    "exercises": [
+      { "type": "fill-blank", "question": "对方语气强硬时, 我们不必立刻___。", "answer": "反击" },
+      { "type": "matching", "instruction": "Ghép thuật ngữ xử lý đối kháng với nghĩa tiếng Việt.", "pairs": [
+        { "chinese": "争议点", "pinyin": "zhēng yì diǎn", "english": "điểm tranh cãi" },
+        { "chinese": "暂停", "pinyin": "zàn tíng", "english": "tạm dừng" },
+        { "chinese": "第三方", "pinyin": "dì sān fāng", "english": "bên thứ ba" }
+      ] },
+      { "type": "translation", "vietnamese": "Chúng ta có thể không đồng ý với kết luận của nhau, nhưng vẫn cần đồng ý về một phương pháp đối chiếu sự thật.", "chinese": "我们可以不同意彼此的结论, 但仍需要同意一套核对事实的方法。", "pinyin": "Wǒmen kěyǐ bù tóngyì bǐcǐ de jiélùn, dàn réng xūyào tóngyì yī tào héduì shìshí de fāngfǎ." }
+    ]
   }
 ];
 
