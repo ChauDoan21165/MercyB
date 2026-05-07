@@ -1,9 +1,16 @@
 // PATH: supabase/functions/stripe-webhook/index.ts
 
-import Stripe from "https://esm.sh/stripe@14.25.0?target=denonext";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.49.1";
 
-import { getStripeWebhookSecrets } from "./core.ts";
+import {
+  getServiceRoleKey,
+  getStripeWebhookSecrets,
+  getSupabaseUrl,
+  isoNow,
+  logWebhook,
+} from "./core.ts";
+import { isSupportedStripeWebhookEventType } from "./event-types.ts";
+import { verifyStripeSignatureOrThrow } from "./stripe-signature.ts";
 import {
   handleCheckoutSessionCompleted,
   handleCustomerSubscriptionCreatedOrUpdated,
@@ -14,6 +21,7 @@ import {
 
 import type {
   BillingEnvironment,
+  Database,
   DBClient,
   StripeWebhookEvent,
 } from "./types.ts";
@@ -22,20 +30,25 @@ function getEnvironmentFromEvent(event: StripeWebhookEvent): BillingEnvironment 
   return event.livemode ? "production" : "sandbox";
 }
 
-function getRequiredEnv(name: string): string {
-  const value = Deno.env.get(name);
-
-  if (!value) {
-    throw new Error(`Missing required environment variable: ${name}`);
-  }
-
-  return value;
+function getOptionalEnv(name: string): string {
+  return (Deno.env.get(name) ?? "").trim();
 }
 
-function getStripeClient(): Stripe {
-  return new Stripe(getRequiredEnv("STRIPE_SECRET_KEY"), {
-    apiVersion: "2025-09-30.clover",
-  });
+function getRequiredSupabaseConfig(): {
+  supabaseUrl: string;
+  supabaseServiceRoleKey: string;
+} {
+  const supabaseUrl = getOptionalEnv("SUPABASE_URL") || getSupabaseUrl();
+  const supabaseServiceRoleKey =
+    getOptionalEnv("SUPABASE_SERVICE_ROLE_KEY") || getServiceRoleKey();
+
+  if (!supabaseUrl || !supabaseServiceRoleKey) {
+    throw new Error(
+      "Missing required Supabase config: SUPABASE_URL/SUPABASE_SERVICE_ROLE_KEY or PROJECT_SUPABASE_URL/PROJECT_SUPABASE_SERVICE_ROLE_KEY",
+    );
+  }
+
+  return { supabaseUrl, supabaseServiceRoleKey };
 }
 
 // Reads every supported env var name (STRIPE_WEBHOOK_SECRET,
@@ -47,8 +60,7 @@ function getWebhookSecrets(): string[] {
 }
 
 function getSupabaseAdmin(): DBClient {
-  const supabaseUrl = getRequiredEnv("SUPABASE_URL");
-  const supabaseServiceRoleKey = getRequiredEnv("SUPABASE_SERVICE_ROLE_KEY");
+  const { supabaseUrl, supabaseServiceRoleKey } = getRequiredSupabaseConfig();
 
   return createClient(
     supabaseUrl,
@@ -93,22 +105,93 @@ function json(body: unknown, status = 200): Response {
   });
 }
 
-// Tracking is intentionally disabled.
-// The stripe_webhook_events table/schema is not aligned with the deployed code,
-// and it is now a non-critical side effect. We bypass it completely so billing
-// can complete successfully.
+function isMissingStripeWebhookEventsTable(error: unknown): boolean {
+  if (!error || typeof error !== "object") return false;
+
+  const maybe = error as { code?: string; message?: unknown };
+
+  return (
+    maybe.code === "PGRST205" &&
+    String(maybe.message ?? "").includes("public.stripe_webhook_events")
+  );
+}
+
+async function upsertStripeWebhookEventResult(params: {
+  supabase: DBClient;
+  event: Pick<StripeWebhookEvent, "id" | "type" | "livemode">;
+  processed: boolean;
+  errorMessage?: string | null;
+}): Promise<boolean> {
+  const payload: Database["public"]["Tables"]["stripe_webhook_events"]["Insert"] = {
+    event_id: params.event.id,
+    type: params.event.type,
+    livemode: typeof params.event.livemode === "boolean"
+      ? params.event.livemode
+      : null,
+    processed_at: params.processed ? isoNow() : null,
+    error: params.errorMessage ?? null,
+  };
+
+  const { error } = await params.supabase
+    .from("stripe_webhook_events")
+    .upsert(payload, { onConflict: "event_id" });
+
+  if (!error) return true;
+
+  if (isMissingStripeWebhookEventsTable(error)) {
+    console.warn(
+      "stripe-webhook stripe_webhook_events table missing; skipping result mark",
+      error,
+    );
+    return true;
+  }
+
+  logWebhook("error", "failed to upsert stripe webhook event result", {
+    event_id: params.event.id,
+    event_type: params.event.type,
+    processed: params.processed,
+    error_message: params.errorMessage ?? null,
+    error,
+  });
+
+  throw error;
+}
+
 async function markStripeWebhookEventProcessed(
-  _supabase: DBClient,
-  _event: Pick<StripeWebhookEvent, "id" | "type" | "livemode">,
+  supabase: DBClient,
+  event: Pick<StripeWebhookEvent, "id" | "type" | "livemode">,
 ): Promise<boolean> {
-  return true;
+  return await upsertStripeWebhookEventResult({
+    supabase,
+    event,
+    processed: true,
+    errorMessage: null,
+  });
 }
 
 async function hasStripeWebhookEventBeenProcessed(
-  _supabase: DBClient,
-  _eventId: string,
+  supabase: DBClient,
+  eventId: string,
 ): Promise<boolean> {
-  return false;
+  const { data, error } = await supabase
+    .from("stripe_webhook_events")
+    .select("event_id")
+    .eq("event_id", eventId)
+    .maybeSingle();
+
+  if (error) {
+    if (isMissingStripeWebhookEventsTable(error)) {
+      console.warn(
+        "stripe-webhook stripe_webhook_events table missing; skipping replay short-circuit",
+        error,
+      );
+      return false;
+    }
+
+    throw error;
+  }
+
+  return !!data?.event_id;
 }
 
 Deno.serve(async (request: Request) => {
@@ -128,23 +211,20 @@ Deno.serve(async (request: Request) => {
     return json({ error: "Webhook secret not configured" }, 500);
   }
 
-  const rawBody = await request.text();
+  const rawBodyBytes = new Uint8Array(await request.arrayBuffer());
 
+  let verified = false;
   let event: StripeWebhookEvent | null = null;
   let lastVerificationError: unknown = null;
 
-  const stripe = getStripeClient();
-  const cryptoProvider = Stripe.createSubtleCryptoProvider();
-
   for (const candidate of webhookSecrets) {
     try {
-      event = await stripe.webhooks.constructEventAsync(
-        rawBody,
-        signature,
-        candidate,
-        undefined,
-        cryptoProvider,
-      ) as StripeWebhookEvent;
+      await verifyStripeSignatureOrThrow({
+        rawBodyBytes,
+        sigHeader: signature,
+        webhookSecret: candidate,
+      });
+      verified = true;
       lastVerificationError = null;
       break;
     } catch (error) {
@@ -152,7 +232,7 @@ Deno.serve(async (request: Request) => {
     }
   }
 
-  if (!event) {
+  if (!verified) {
     const serialized = serializeError(lastVerificationError);
 
     console.error("stripe-webhook: signature verification failed", {
@@ -170,6 +250,37 @@ Deno.serve(async (request: Request) => {
         error: serialized,
       },
       400,
+    );
+  }
+
+  try {
+    event = JSON.parse(new TextDecoder().decode(rawBodyBytes)) as StripeWebhookEvent;
+  } catch (error) {
+    const serialized = serializeError(error);
+
+    return json(
+      {
+        ok: false,
+        stage: "parse_event",
+        error: serialized,
+      },
+      400,
+    );
+  }
+
+  if (!event?.id) {
+    return json({ ok: false, error: "Stripe event missing id" }, 400);
+  }
+
+  if (!isSupportedStripeWebhookEventType(event.type)) {
+    return json(
+      {
+        ok: true,
+        ignored: true,
+        eventId: event.id,
+        type: event.type,
+      },
+      200,
     );
   }
 
@@ -257,10 +368,6 @@ Deno.serve(async (request: Request) => {
           markStripeWebhookEventProcessed,
         });
         break;
-
-      default:
-        await markStripeWebhookEventProcessed(supabase, event);
-        break;
     }
 
     return json({ ok: true, eventId: event.id, type: event.type }, 200);
@@ -273,6 +380,19 @@ Deno.serve(async (request: Request) => {
       message: error instanceof Error ? error.message : String(error),
       error: serialized,
     });
+
+    try {
+      await upsertStripeWebhookEventResult({
+        supabase,
+        event,
+        processed: false,
+        errorMessage: error instanceof Error
+          ? error.message
+          : String(error ?? "unknown error"),
+      });
+    } catch {
+      // best-effort only
+    }
 
     return json(
       {
