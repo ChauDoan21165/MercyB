@@ -2652,11 +2652,1080 @@ export const lessons: KoreanLesson[] = [
         ],
         "instruction": "Nối thành ngữ peer review với nghĩa"
       },
+  {
+    "type": "translation",
+    "vietnamese": "Phần được góp ý đã được phản ánh vào chương 3 của bài.",
+    "hangul": "지적해 주신 부분을 본문 3장에 반영하였습니다."
+  }
+    ]
+  },
+  {
+    "id": 102,
+    "level": "C1",
+    "title_vi": "Đàm phán lương và thưởng",
+    "title_en": "Negotiating salary and bonus",
+    "intro_vi": "Bài này luyện cách nói về lương, thưởng và gói đãi ngộ bằng 존댓말 trong môi trường doanh nghiệp Hàn.",
+    "vocabulary": [
+      {
+        "hangul": "연봉 (年俸)",
+        "meaning": "lương năm"
+      },
+      {
+        "hangul": "성과급 (成果給)",
+        "meaning": "thưởng theo thành tích"
+      },
+      {
+        "hangul": "총보상",
+        "meaning": "tổng đãi ngộ"
+      },
+      {
+        "hangul": "처우 (處遇)",
+        "meaning": "đãi ngộ"
+      },
+      {
+        "hangul": "재검토하다 (再檢討)",
+        "meaning": "xem xét lại"
+      }
+    ],
+    "sentences": [
+      {
+        "korean": "이번 제안에서는 연봉보다 총보상 패키지를 함께 보고 싶습니다.",
+        "romanized": "Ibeon jejaneseoneun yeonbongboda chongbosang paekijireul hamkke bogo sipseumnida.",
+        "en": "I would like to look at the total compensation package rather than salary alone.",
+        "vi": "Tôi muốn xem tổng gói đãi ngộ hơn là chỉ riêng lương.",
+        "pronunciation_focus": ["연봉보다", "총보상 패키지", "함께 보고 싶습니다"]
+      },
+      {
+        "korean": "성과에 따라 보너스가 조정될 수 있는지 여쭙고 싶습니다.",
+        "romanized": "Seonggwae ttara boneoseuga jeojongdoel su inneunji yeojjupgo sipseumnida.",
+        "en": "I would like to ask whether the bonus can be adjusted according to performance.",
+        "vi": "Tôi muốn hỏi liệu tiền thưởng có thể điều chỉnh theo thành tích hay không.",
+        "pronunciation_focus": ["성과에 따라", "보너스", "여쭙고 싶습니다"]
+      },
+      {
+        "korean": "현재 제 경력과 책임 범위를 고려하면 조금 더 상향된 조건이 필요합니다.",
+        "romanized": "Hyeonjae je gyeongryeokgwa chaegim beomwireul goreohamyeon jogeum deo sanghyangdoen jogeoni pil-yohamnida.",
+        "en": "Considering my current experience and responsibilities, I need somewhat better terms.",
+        "vi": "Xét đến kinh nghiệm và phạm vi trách nhiệm hiện tại của tôi, tôi cần điều kiện tốt hơn một chút.",
+        "pronunciation_focus": ["책임 범위", "상향된 조건", "필요합니다"]
+      },
+      {
+        "korean": "가능하시다면 다음 주까지 검토 결과를 주시면 감사하겠습니다.",
+        "romanized": "Ganeunghasidamyeon daeum jukkaji geomto gyeolgwareul jusimyeon gamsahagetseumnida.",
+        "en": "If possible, I would appreciate it if you could give me the review result by next week.",
+        "vi": "Nếu được, tôi rất cảm ơn nếu anh/chị có thể phản hồi kết quả xem xét vào tuần tới.",
+        "pronunciation_focus": ["가능하시다면", "검토 결과", "감사하겠습니다"]
+      }
+    ],
+    "dialogue": [
+      {
+        "speaker": "지원자",
+        "hangul": "이번 조건을 감사히 검토하였습니다만, 연봉과 성과급 부분을 다시 말씀드려도 되겠습니까?",
+        "meaning": "I appreciate the offer, but may I revisit the salary and bonus portions?",
+        "text_ko": "이번 조건을 감사히 검토하였습니다만, 연봉과 성과급 부분을 다시 말씀드려도 되겠습니까?",
+        "text_vi": "Tôi đã xem xét điều kiện này rất trân trọng, nhưng tôi xin phép trao đổi lại về phần lương và thưởng được không ạ?",
+        "text_en": "I appreciate the offer, but may I revisit the salary and bonus portions?"
+      },
+      {
+        "speaker": "인사팀",
+        "hangul": "물론입니다. 어떤 부분이 가장 중요하신지 말씀해 주시겠습니까?",
+        "meaning": "Of course. Could you tell us which part matters most to you?",
+        "text_ko": "물론입니다. 어떤 부분이 가장 중요하신지 말씀해 주시겠습니까?",
+        "text_vi": "Tất nhiên rồi ạ. Anh/chị có thể cho biết phần nào quan trọng nhất không?",
+        "text_en": "Of course. Could you tell us which part matters most to you?"
+      },
+      {
+        "speaker": "지원자",
+        "hangul": "총보상 기준으로 보면, 제 경력과 책임 범위를 조금 더 반영해 주시면 좋겠습니다.",
+        "meaning": "Looking at total compensation, I would appreciate a bit more reflection of my experience and responsibilities.",
+        "text_ko": "총보상 기준으로 보면, 제 경력과 책임 범위를 조금 더 반영해 주시면 좋겠습니다.",
+        "text_vi": "Nếu nhìn theo tổng đãi ngộ, tôi mong có thể phản ánh thêm một chút kinh nghiệm và phạm vi trách nhiệm của tôi.",
+        "text_en": "Looking at total compensation, I would appreciate a bit more reflection of my experience and responsibilities."
+      },
+      {
+        "speaker": "인사팀",
+        "hangul": "보너스 구조도 함께 조정해 보는 방안을 검토해 보겠습니다.",
+        "meaning": "We will consider adjusting the bonus structure as well.",
+        "text_ko": "보너스 구조도 함께 조정해 보는 방안을 검토해 보겠습니다.",
+        "text_vi": "Chúng tôi sẽ xem xét phương án điều chỉnh cả cấu trúc thưởng nữa.",
+        "text_en": "We will consider adjusting the bonus structure as well."
+      },
+      {
+        "speaker": "지원자",
+        "hangul": "감사합니다. 회사와 함께 장기적으로 성장하고 싶습니다.",
+        "meaning": "Thank you. I want to grow with the company in the long term.",
+        "text_ko": "감사합니다. 회사와 함께 장기적으로 성장하고 싶습니다.",
+        "text_vi": "Cảm ơn anh/chị. Tôi muốn phát triển lâu dài cùng công ty.",
+        "text_en": "Thank you. I want to grow with the company in the long term."
+      },
+      {
+        "speaker": "인사팀",
+        "hangul": "좋습니다. 다음 주까지 검토 결과를 다시 전달드리겠습니다.",
+        "meaning": "Very well. We will share the review result again by next week.",
+        "text_ko": "좋습니다. 다음 주까지 검토 결과를 다시 전달드리겠습니다.",
+        "text_vi": "Vâng, chúng tôi sẽ gửi lại kết quả xem xét trước tuần sau.",
+        "text_en": "Very well. We will share the review result again by next week."
+      }
+    ],
+    "cultural_notes_vi": "Khi đàm phán lương với công ty Hàn, tốt nhất là nói theo khung 'tổng đãi ngộ' thay vì chỉ một con số. Họ sẽ nghe kỹ hơn nếu bạn gắn yêu cầu với kinh nghiệm, trách nhiệm và đóng góp lâu dài.",
+    "tip_advice_vi": "Mẫu nói an toàn: cảm ơn → nêu phạm vi công việc → hỏi về điều chỉnh → xin thời gian xem xét. Đừng mở đầu bằng con số quá gắt; trong môi trường Hàn, nhịp điệu và độ mềm của câu rất quan trọng.",
+    "exercises": [
+      {
+        "type": "fill-blank",
+        "question": "이번 제안에서는 연봉보다 ___ 패키지를 함께 보고 싶습니다.",
+        "answer": "총보상"
+      },
       {
         "type": "translation",
-        "vietnamese": "Phần được góp ý đã được phản ánh vào chương 3 của bài.",
-        "hangul": "지적해 주신 부분을 본문 3장에 반영하였습니다."
+        "vietnamese": "Tôi muốn hỏi liệu tiền thưởng có thể điều chỉnh theo thành tích hay không.",
+        "hangul": "성과에 따라 보너스가 조정될 수 있는지 여쭙고 싶습니다."
       }
+    ]
+  },
+  {
+    "id": 103,
+    "level": "C1",
+    "title_vi": "Từ chối điều khoản bất lợi",
+    "title_en": "Pushing back on unfavorable contract clauses",
+    "intro_vi": "Bài này luyện cách phản biện điều khoản hợp đồng bằng cách nói thẳng nhưng vẫn giữ thể diện cho hai bên.",
+    "vocabulary": [
+      {
+        "hangul": "계약서 (契約書)",
+        "meaning": "hợp đồng"
+      },
+      {
+        "hangul": "조항 (條項)",
+        "meaning": "điều khoản"
+      },
+      {
+        "hangul": "면책 (免責)",
+        "meaning": "miễn trách nhiệm"
+      },
+      {
+        "hangul": "위약금 (違約金)",
+        "meaning": "tiền phạt vi phạm"
+      },
+      {
+        "hangul": "법무팀",
+        "meaning": "pháp chế"
+      }
+    ],
+    "sentences": [
+      {
+        "korean": "이 조항은 저희 입장에서는 부담이 큽니다.",
+        "romanized": "I johangeun jeohu ipjangeseoneun budami kumnida.",
+        "en": "From our side, this clause is quite burdensome.",
+        "vi": "Điều khoản này là gánh nặng khá lớn từ phía chúng tôi.",
+        "pronunciation_focus": ["저희 입장에서는", "부담이 큽니다", "이 조항"]
+      },
+      {
+        "korean": "면책 범위가 너무 넓어서 수정이 필요합니다.",
+        "romanized": "Myeonchaek beomwiga neomu neolb-eoseo sujeongi pilyohamnida.",
+        "en": "The scope of the disclaimer is too broad, so revision is needed.",
+        "vi": "Phạm vi miễn trách quá rộng nên cần sửa.",
+        "pronunciation_focus": ["면책 범위", "너무 넓어서", "수정이 필요합니다"]
+      },
+      {
+        "korean": "저희 법무팀은 이 부분을 그대로 승인하기 어렵다고 봅니다.",
+        "romanized": "Jeohu beommuteameun i bubuneul geudaero seung-inhagi eoryeopdago bomnida.",
+        "en": "Our legal team considers it difficult to approve this part as is.",
+        "vi": "Bộ phận pháp chế của chúng tôi cho rằng khó có thể phê duyệt nguyên trạng phần này.",
+        "pronunciation_focus": ["법무팀", "그대로 승인하기", "어렵다고 봅니다"]
+      },
+      {
+        "korean": "대신 책임 한도를 명확히 두는 수정안을 제안드리고 싶습니다.",
+        "romanized": "Daesin chaegim handoreul myeonghakhidoeneun sujeongan-eul jeandan-deurigo sipseumnida.",
+        "en": "Instead, I would like to propose a revision that clearly sets a liability cap.",
+        "vi": "Thay vào đó, tôi muốn đề xuất bản sửa đổi làm rõ giới hạn trách nhiệm.",
+        "pronunciation_focus": ["책임 한도", "명확히", "수정안을 제안드리고 싶습니다"]
+      }
+    ],
+    "dialogue": [
+      {
+        "speaker": "법무팀",
+        "hangul": "이 조항은 저희 표준 계약과 비교해도 많이 불리합니다.",
+        "meaning": "This clause is much less favorable even compared with our standard contract.",
+        "text_ko": "이 조항은 저희 표준 계약과 비교해도 많이 불리합니다.",
+        "text_vi": "Điều khoản này bất lợi hơn nhiều so với hợp đồng tiêu chuẩn của chúng tôi.",
+        "text_en": "This clause is much less favorable even compared with our standard contract."
+      },
+      {
+        "speaker": "거래처",
+        "hangul": "어느 부분이 가장 문제라고 보십니까?",
+        "meaning": "Which part do you see as the biggest issue?",
+        "text_ko": "어느 부분이 가장 문제라고 보십니까?",
+        "text_vi": "Phần nào anh/chị cho là vấn đề lớn nhất?",
+        "text_en": "Which part do you see as the biggest issue?"
+      },
+      {
+        "speaker": "법무팀",
+        "hangul": "면책 범위가 너무 넓고, 위약금도 과도합니다.",
+        "meaning": "The disclaimer is too broad, and the penalty is excessive.",
+        "text_ko": "면책 범위가 너무 넓고, 위약금도 과도합니다.",
+        "text_vi": "Phạm vi miễn trách quá rộng và tiền phạt cũng quá cao.",
+        "text_en": "The disclaimer is too broad, and the penalty is excessive."
+      },
+      {
+        "speaker": "거래처",
+        "hangul": "그렇다면 어느 수준까지 수정하면 가능하시겠습니까?",
+        "meaning": "Then to what extent would it be possible if we revised it?",
+        "text_ko": "그렇다면 어느 수준까지 수정하면 가능하시겠습니까?",
+        "text_vi": "Vậy nếu sửa đến mức nào thì có thể chấp nhận được ạ?",
+        "text_en": "Then to what extent would it be possible if we revised it?"
+      },
+      {
+        "speaker": "법무팀",
+        "hangul": "책임 한도만 명확히 조정하면 내부 승인 가능성이 높습니다.",
+        "meaning": "If we clarify only the liability cap, internal approval is likely.",
+        "text_ko": "책임 한도만 명확히 조정하면 내부 승인 가능성이 높습니다.",
+        "text_vi": "Nếu chỉ điều chỉnh rõ giới hạn trách nhiệm thì khả năng phê duyệt nội bộ sẽ cao hơn.",
+        "text_en": "If we clarify only the liability cap, internal approval is likely."
+      },
+      {
+        "speaker": "거래처",
+        "hangul": "좋습니다. 수정안을 오늘 안에 보내드리겠습니다.",
+        "meaning": "Good. We will send a revised draft within today.",
+        "text_ko": "좋습니다. 수정안을 오늘 안에 보내드리겠습니다.",
+        "text_vi": "Vâng, chúng tôi sẽ gửi bản sửa đổi trong hôm nay.",
+        "text_en": "Good. We will send a revised draft within today."
+      }
+    ],
+    "cultural_notes_vi": "Khi từ chối điều khoản, không nên nói kiểu 'không được'. Hàn Quốc chuộng câu '그대로 승인하기 어렵습니다' hoặc '수정이 필요합니다' hơn. Giữ nhịp mềm nhưng lập luận rõ, bạn sẽ bảo vệ được cả quan hệ lẫn lập trường.",
+    "tip_advice_vi": "Công thức tốt nhất: chỉ ra vấn đề, nêu vì sao bất lợi, rồi đưa bản sửa cụ thể. Đừng để câu chuyện biến thành tranh cãi đúng-sai; hãy đưa nó về 'cách sửa để cả hai bên đều chấp nhận'.",
+    "exercises": [
+      {
+        "type": "fill-blank",
+        "question": "면책 범위가 너무 넓어서 ___이/가 필요합니다.",
+        "answer": "수정"
+      },
+      {
+        "type": "translation",
+        "vietnamese": "Bộ phận pháp chế của chúng tôi cho rằng khó có thể phê duyệt nguyên trạng phần này.",
+        "hangul": "저희 법무팀은 이 부분을 그대로 승인하기 어렵다고 봅니다."
+      }
+    ]
+  },
+  {
+    "id": 104,
+    "level": "C1",
+    "title_vi": "Điều phối cuộc họp nhiều bên",
+    "title_en": "Chairing a multi-party meeting",
+    "intro_vi": "Bài này luyện cách chủ trì họp có nhiều bên, giữ nhịp trao đổi và chốt kết luận bằng 존댓말 rất tự nhiên.",
+    "vocabulary": [
+      {
+        "hangul": "안건 (案件)",
+        "meaning": "vấn đề trong cuộc họp"
+      },
+      {
+        "hangul": "발언 순서",
+        "meaning": "thứ tự phát biểu"
+      },
+      {
+        "hangul": "쟁점 (爭點)",
+        "meaning": "điểm tranh luận"
+      },
+      {
+        "hangul": "합의점 (合意點)",
+        "meaning": "điểm đồng thuận"
+      },
+      {
+        "hangul": "회의록 (會議錄)",
+        "meaning": "biên bản họp"
+      }
+    ],
+    "sentences": [
+      {
+        "korean": "그럼 발언 순서는 먼저 공급사, 그다음 내부팀, 마지막으로 저희 순서로 진행하겠습니다.",
+        "romanized": "Geureom bal-eon sunseoneun meonjeo gonggubsan, geudaeum naebu tim, majimag-euro jeohu sunseoro jinhaenghagetseumnida.",
+        "en": "Then we will proceed with speaking order as supplier first, then our internal team, and finally us.",
+        "vi": "Vậy thứ tự phát biểu sẽ là nhà cung cấp trước, sau đó đội nội bộ, cuối cùng là bên chúng tôi.",
+        "pronunciation_focus": ["발언 순서는", "그다음", "마지막으로"]
+      },
+      {
+        "korean": "오늘 안건은 가격, 일정, 그리고 품질 기준의 세 가지입니다.",
+        "romanized": "Oneul ang-eoneun gagyeok, iljeong, geurigo pumjil gijunui se gajimnida.",
+        "en": "Today’s agenda has three items: price, schedule, and quality standards.",
+        "vi": "Nội dung họp hôm nay gồm ba mục: giá, tiến độ và tiêu chuẩn chất lượng.",
+        "pronunciation_focus": ["오늘 안건은", "품질 기준", "세 가지입니다"]
+      },
+      {
+        "korean": "쟁점이 많으니 한 번에 결론 내기보다 단계적으로 정리하겠습니다.",
+        "romanized": "Jaengjeomi maneuni han beone gyeolron naegi boda dangyegjeogeuro jeongrihagetseumnida.",
+        "en": "Since there are many points of contention, I will organize them step by step rather than reaching a conclusion at once.",
+        "vi": "Vì có nhiều điểm tranh luận nên tôi sẽ sắp xếp theo từng bước thay vì chốt ngay.",
+        "pronunciation_focus": ["쟁점이 많으니", "단계적으로", "정리하겠습니다"]
+      },
+      {
+        "korean": "합의된 부분과 남은 부분을 구분해서 회의록에 남기겠습니다.",
+        "romanized": "Hab-ui doen bubungwa nam-eun bubuneul gubunhaeseo hoeuigoge namgigetseumnida.",
+        "en": "I will separate the agreed points from the remaining points and record them in the minutes.",
+        "vi": "Tôi sẽ tách phần đã thống nhất và phần còn lại để ghi vào biên bản họp.",
+        "pronunciation_focus": ["합의된 부분", "구분해서", "회의록에 남기겠습니다"]
+      }
+    ],
+    "dialogue": [
+      {
+        "speaker": "사회자",
+        "hangul": "바쁘신데 참석해 주셔서 감사합니다. 오늘은 세 가지 안건을 순서대로 다루겠습니다.",
+        "meaning": "Thank you for joining despite your busy schedule. Today we will address three agenda items in order.",
+        "text_ko": "바쁘신데 참석해 주셔서 감사합니다. 오늘은 세 가지 안건을 순서대로 다루겠습니다.",
+        "text_vi": "Cảm ơn quý vị đã tham dự dù rất bận. Hôm nay chúng ta sẽ xử lý ba nội dung theo thứ tự.",
+        "text_en": "Thank you for joining despite your busy schedule. Today we will address three agenda items in order."
+      },
+      {
+        "speaker": "공급사",
+        "hangul": "먼저 가격 조정이 가능한지 말씀드려도 되겠습니까?",
+        "meaning": "May I first ask whether price adjustment is possible?",
+        "text_ko": "먼저 가격 조정이 가능한지 말씀드려도 되겠습니까?",
+        "text_vi": "Trước hết, tôi xin hỏi liệu có thể điều chỉnh giá được không ạ?",
+        "text_en": "May I first ask whether price adjustment is possible?"
+      },
+      {
+        "speaker": "사회자",
+        "hangul": "좋습니다. 가격부터 논의하겠습니다. 내부팀께서 현재 기준을 말씀해 주시겠습니까?",
+        "meaning": "Good. We will discuss price first. Could the internal team share the current 기준?",
+        "text_ko": "좋습니다. 가격부터 논의하겠습니다. 내부팀께서 현재 기준을 말씀해 주시겠습니까?",
+        "text_vi": "Được ạ. Chúng ta sẽ bàn về giá trước. Nhóm nội bộ có thể cho biết tiêu chí hiện tại không?",
+        "text_en": "Good. We will discuss price first. Could the internal team share the current 기준?"
+      },
+      {
+        "speaker": "내부팀",
+        "hangul": "기준은 유지하되 납기 단축이 가능하면 일부 조정 여지는 있습니다.",
+        "meaning": "The standard will remain, but if the lead time can be shortened, there is room for partial adjustment.",
+        "text_ko": "기준은 유지하되 납기 단축이 가능하면 일부 조정 여지는 있습니다.",
+        "text_vi": "Tiêu chuẩn sẽ giữ nguyên, nhưng nếu có thể rút ngắn thời gian giao hàng thì vẫn có dư địa điều chỉnh một phần.",
+        "text_en": "The standard will remain, but if the lead time can be shortened, there is room for partial adjustment."
+      },
+      {
+        "speaker": "사회자",
+        "hangul": "그럼 이 부분은 합의 가능성으로 정리하고, 일정 안건으로 넘어가겠습니다.",
+        "meaning": "Then let us record this as a potential agreement and move on to the schedule item.",
+        "text_ko": "그럼 이 부분은 합의 가능성으로 정리하고, 일정 안건으로 넘어가겠습니다.",
+        "text_vi": "Vậy ta sẽ ghi phần này là có khả năng thống nhất và chuyển sang phần tiến độ.",
+        "text_en": "Then let us record this as a potential agreement and move on to the schedule item."
+      },
+      {
+        "speaker": "사회자",
+        "hangul": "회의록은 오늘 오후에 공유드리겠습니다.",
+        "meaning": "I will share the minutes this afternoon.",
+        "text_ko": "회의록은 오늘 오후에 공유드리겠습니다.",
+        "text_vi": "Biên bản họp sẽ được chia sẻ vào chiều nay ạ.",
+        "text_en": "I will share the minutes this afternoon."
+      }
+    ],
+    "cultural_notes_vi": "Người chủ trì họp ở Hàn phải nói rõ ai phát biểu trước, ai chốt sau, và phần nào sẽ được ghi vào biên bản. Nếu bạn điều phối tốt, cuộc họp sẽ trông rất 'có kiểm soát' và chuyên nghiệp.",
+    "tip_advice_vi": "Công thức chủ trì họp: nêu thứ tự phát biểu, chia từng 안건, tách phần đồng thuận và phần còn lại, rồi chốt bằng 회의록. Chỉ cần giữ được nhịp họp, bạn đã vượt xa kiểu nói chuyện lỏng lẻo thông thường.",
+    "exercises": [
+      {
+        "type": "fill-blank",
+        "question": "오늘 ___은 가격, 일정, 그리고 품질 기준의 세 가지입니다.",
+        "answer": "안건"
+      },
+      {
+        "type": "translation",
+        "vietnamese": "Tôi sẽ tách phần đã thống nhất và phần còn lại để ghi vào biên bản họp.",
+        "hangul": "합의된 부분과 남은 부분을 구분해서 회의록에 남기겠습니다."
+      }
+    ]
+  },
+  {
+    "id": 105,
+    "level": "C1",
+    "title_vi": "Đàm phán giá với nhà cung cấp",
+    "title_en": "Negotiating pricing with suppliers",
+    "intro_vi": "Bài này luyện cách nói về đơn giá, khối lượng, thời hạn giao hàng và điều kiện hợp tác lâu dài với nhà cung cấp.",
+    "vocabulary": [
+      { "hangul": "단가 (單價)", "meaning": "đơn giá" },
+      { "hangul": "납기 (納期)", "meaning": "thời hạn giao hàng" },
+      { "hangul": "물량", "meaning": "khối lượng hàng" },
+      { "hangul": "재견적", "meaning": "báo giá lại" },
+      { "hangul": "장기 계약", "meaning": "hợp đồng dài hạn" }
+    ],
+    "sentences": [
+      {
+        "korean": "단가만 보지 말고 납기와 품질까지 함께 봐야 합니다.",
+        "romanized": "Danggamaneul boji malgo napgigwa pumjilkkaji hamkke bwaya hamnida.",
+        "en": "We should not look only at unit price, but also at lead time and quality.",
+        "vi": "Không nên chỉ nhìn đơn giá mà còn phải xem cả thời hạn giao hàng và chất lượng.",
+        "pronunciation_focus": ["단가만", "납기와 품질", "함께 봐야 합니다"]
+      },
+      {
+        "korean": "물량이 늘면 공급가를 다시 조정할 여지가 있습니다.",
+        "romanized": "Mulryangi neurmyeon gonggubgareul dasi jojonghal yeojiga itseumnida.",
+        "en": "If the volume increases, there is room to readjust the supply price.",
+        "vi": "Nếu khối lượng tăng thì có dư địa điều chỉnh lại giá cung cấp.",
+        "pronunciation_focus": ["물량이 늘면", "공급가를", "조정할 여지"]
+      },
+      {
+        "korean": "재견적을 요청드리면 얼마나 빨리 가능하시겠습니까?",
+        "romanized": "Jaegyeonjeogeul yocheongdeurimyeon eolmana ppalli ganeunghasigetseumnikka?",
+        "en": "If we request a revised quote, how quickly could you provide it?",
+        "vi": "Nếu yêu cầu báo giá lại thì anh/chị có thể phản hồi nhanh đến mức nào?",
+        "pronunciation_focus": ["재견적을", "얼마나 빨리", "가능하시겠습니까"]
+      },
+      {
+        "korean": "장기 계약을 전제로 보면 서로 마진을 조금씩 조정할 수 있습니다.",
+        "romanized": "Janggi gyeyageul jeonjero bomyeon seoro majineul jogeumsik jojonghal su itseumnida.",
+        "en": "If we assume a long-term contract, both sides can adjust margin a little.",
+        "vi": "Nếu nhìn trên cơ sở hợp đồng dài hạn thì hai bên có thể điều chỉnh biên lợi nhuận một chút.",
+        "pronunciation_focus": ["장기 계약을", "서로 마진", "조정할 수 있습니다"]
+      }
+    ],
+    "dialogue": [
+      {
+        "speaker": "구매팀",
+        "hangul": "이번 물량 기준으로 다시 견적을 주실 수 있겠습니까?",
+        "meaning": "Could you provide a new quote based on this volume?",
+        "text_ko": "이번 물량 기준으로 다시 견적을 주실 수 있겠습니까?",
+        "text_vi": "Anh/chị có thể báo giá lại dựa trên khối lượng lần này không ạ?",
+        "text_en": "Could you provide a new quote based on this volume?"
+      },
+      {
+        "speaker": "공급사",
+        "hangul": "가능합니다만, 현재 단가를 많이 낮추기는 어렵습니다.",
+        "meaning": "It is possible, but it is hard to lower the current unit price much.",
+        "text_ko": "가능합니다만, 현재 단가를 많이 낮추기는 어렵습니다.",
+        "text_vi": "Có thể ạ, nhưng hiện tại rất khó để hạ đơn giá nhiều.",
+        "text_en": "It is possible, but it is hard to lower the current unit price much."
+      },
+      {
+        "speaker": "구매팀",
+        "hangul": "납기를 조금 앞당겨 주시면 단가 조정 여지를 더 볼 수 있습니다.",
+        "meaning": "If you can move the lead time up a little, we can look at more room to adjust the price.",
+        "text_ko": "납기를 조금 앞당겨 주시면 단가 조정 여지를 더 볼 수 있습니다.",
+        "text_vi": "Nếu có thể rút ngắn thời hạn giao hàng một chút, chúng tôi sẽ có thêm dư địa để xem xét điều chỉnh đơn giá.",
+        "text_en": "If you can move the lead time up a little, we can look at more room to adjust the price."
+      },
+      {
+        "speaker": "공급사",
+        "hangul": "그럼 재견적을 받아 내부에서 다시 검토해 보겠습니다.",
+        "meaning": "Then we will take a revised quote and review it internally again.",
+        "text_ko": "그럼 재견적을 받아 내부에서 다시 검토해 보겠습니다.",
+        "text_vi": "Vậy chúng tôi sẽ nhận báo giá lại và xem xét lại nội bộ.",
+        "text_en": "Then we will take a revised quote and review it internally again."
+      },
+      {
+        "speaker": "구매팀",
+        "hangul": "장기 계약 조건까지 함께 보면 더 좋은 구조가 나올 수도 있습니다.",
+        "meaning": "If we also look at long-term contract terms, we may reach a better structure.",
+        "text_ko": "장기 계약 조건까지 함께 보면 더 좋은 구조가 나올 수도 있습니다.",
+        "text_vi": "Nếu nhìn cả điều kiện hợp đồng dài hạn thì có thể sẽ ra cấu trúc tốt hơn.",
+        "text_en": "If we also look at long-term contract terms, we may reach a better structure."
+      },
+      {
+        "speaker": "공급사",
+        "hangul": "알겠습니다. 오늘 안에 수정 제안을 보내드리겠습니다.",
+        "meaning": "Understood. We will send a revised proposal today.",
+        "text_ko": "알겠습니다. 오늘 안에 수정 제안을 보내드리겠습니다.",
+        "text_vi": "Vâng, chúng tôi sẽ gửi đề xuất điều chỉnh trong hôm nay.",
+        "text_en": "Understood. We will send a revised proposal today."
+      }
+    ],
+    "cultural_notes_vi": "Đàm phán với nhà cung cấp ở Hàn thường đi theo logic: giá không tách rời tiến độ và chất lượng. Nếu bạn chỉ ép giá, họ sẽ giữ thế phòng thủ; nếu bạn đặt giá trong bức tranh dài hạn, họ dễ mở đường hơn.",
+    "tip_advice_vi": "Đừng hỏi ngay 'có giảm không?'. Hãy nói theo chuỗi: khối lượng → thời hạn giao hàng → điều chỉnh đơn giá → hợp đồng dài hạn. Như vậy câu nói của bạn nghe có chiến lược hơn.",
+    "exercises": [
+      { "type": "fill-blank", "question": "단가만 보지 말고 ___와 품질까지 함께 봐야 합니다.", "answer": "납기" },
+      { "type": "translation", "vietnamese": "Nếu nhìn cả điều kiện hợp đồng dài hạn thì có thể sẽ ra cấu trúc tốt hơn.", "hangul": "장기 계약 조건까지 함께 보면 더 좋은 구조가 나올 수도 있습니다." }
+    ]
+  },
+  {
+    "id": 106,
+    "level": "C1",
+    "title_vi": "Phản đối xây dựng với cấp trên",
+    "title_en": "Constructive disagreement upward",
+    "intro_vi": "Bài này luyện cách phản đối cấp trên một cách xây dựng, giữ lễ phép nhưng vẫn bảo vệ góc nhìn chuyên môn.",
+    "vocabulary": [
+      { "hangul": "우려 (憂慮)", "meaning": "lo ngại" },
+      { "hangul": "리스크", "meaning": "rủi ro" },
+      { "hangul": "대안 (代案)", "meaning": "phương án thay thế" },
+      { "hangul": "우선순위", "meaning": "ưu tiên" },
+      { "hangul": "자원 배분", "meaning": "phân bổ nguồn lực" }
+    ],
+    "sentences": [
+      {
+        "korean": "말씀하신 방향은 충분히 이해하지만, 일정 측면에서 한 가지 우려가 있습니다.",
+        "romanized": "Malsseumhasin banghyangeun chungbunhi ihaehajiman, iljeong cheugmyeoneseo han gaji uryega itseumnida.",
+        "en": "I fully understand the direction you mentioned, but I have one concern regarding the schedule.",
+        "vi": "Tôi hiểu đầy đủ hướng anh/chị nói, nhưng có một lo ngại về mặt tiến độ.",
+        "pronunciation_focus": ["말씀하신 방향", "한 가지 우려", "일정 측면"]
+      },
+      {
+        "korean": "지금 이 속도로 가면 품질 점검 시간이 부족할 수 있습니다.",
+        "romanized": "Jigeum i sokdoro gamyeon pumjil jeomgeom sigani bujokhal su itseumnida.",
+        "en": "At this pace, there may not be enough time for quality checks.",
+        "vi": "Nếu đi theo tốc độ này thì có thể sẽ thiếu thời gian kiểm tra chất lượng.",
+        "pronunciation_focus": ["품질 점검", "부족할 수 있습니다", "지금 이 속도"]
+      },
+      {
+        "korean": "대안을 하나 더 검토해 보면 리스크를 줄일 수 있습니다.",
+        "romanized": "Daean-eul hana deo geomtohae bomyeon riseukureul juril su itseumnida.",
+        "en": "If we review one more alternative, we can reduce risk.",
+        "vi": "Nếu xem thêm một phương án nữa thì có thể giảm rủi ro.",
+        "pronunciation_focus": ["대안을", "리스크를 줄일", "검토해 보면"]
+      },
+      {
+        "korean": "우선순위를 조금만 조정하면 더 현실적인 일정이 나옵니다.",
+        "romanized": "Useonsunwireul jogeumman jojonghamyeon deo hyeonsiljeogin iljeong-i naopnida.",
+        "en": "If we adjust the priorities slightly, a more realistic schedule will emerge.",
+        "vi": "Nếu điều chỉnh thứ tự ưu tiên một chút thì sẽ có tiến độ thực tế hơn.",
+        "pronunciation_focus": ["우선순위를", "조정하면", "현실적인 일정"]
+      }
+    ],
+    "dialogue": [
+      {
+        "speaker": "팀장",
+        "hangul": "이번 일정은 그대로 밀고 가겠습니다.",
+        "meaning": "We will push ahead with this schedule as is.",
+        "text_ko": "이번 일정은 그대로 밀고 가겠습니다.",
+        "text_vi": "Tiến độ lần này chúng ta sẽ giữ nguyên và đẩy tiếp.",
+        "text_en": "We will push ahead with this schedule as is."
+      },
+      {
+        "speaker": "실무자",
+        "hangul": "말씀하신 방향은 이해하지만, 품질 점검 시간이 조금 부족해 보입니다.",
+        "meaning": "I understand the direction, but the quality-check time looks a little insufficient.",
+        "text_ko": "말씀하신 방향은 이해하지만, 품질 점검 시간이 조금 부족해 보입니다.",
+        "text_vi": "Tôi hiểu hướng anh/chị nói, nhưng thời gian kiểm tra chất lượng có vẻ hơi thiếu.",
+        "text_en": "I understand the direction, but the quality-check time looks a little insufficient."
+      },
+      {
+        "speaker": "팀장",
+        "hangul": "그렇다면 어떤 대안이 있습니까?",
+        "meaning": "Then what alternative do you have?",
+        "text_ko": "그렇다면 어떤 대안이 있습니까?",
+        "text_vi": "Vậy có phương án thay thế nào không?",
+        "text_en": "Then what alternative do you have?"
+      },
+      {
+        "speaker": "실무자",
+        "hangul": "우선순위를 조금 조정하면 핵심 기능을 먼저 내고 나머지는 다음 단계로 넘길 수 있습니다.",
+        "meaning": "If we adjust priorities slightly, we can ship the core functions first and move the rest to the next stage.",
+        "text_ko": "우선순위를 조금 조정하면 핵심 기능을 먼저 내고 나머지는 다음 단계로 넘길 수 있습니다.",
+        "text_vi": "Nếu điều chỉnh ưu tiên một chút thì có thể ra mắt chức năng cốt lõi trước và chuyển phần còn lại sang giai đoạn sau.",
+        "text_en": "If we adjust priorities slightly, we can ship the core functions first and move the rest to the next stage."
+      },
+      {
+        "speaker": "팀장",
+        "hangul": "그 의견을 반영해 다시 정리해 보세요.",
+        "meaning": "Please revise it again reflecting that opinion.",
+        "text_ko": "그 의견을 반영해 다시 정리해 보세요.",
+        "text_vi": "Hãy phản ánh ý kiến đó và sắp xếp lại lần nữa nhé.",
+        "text_en": "Please revise it again reflecting that opinion."
+      },
+      {
+        "speaker": "실무자",
+        "hangul": "네, 오늘 안에 수정해서 공유드리겠습니다.",
+        "meaning": "Yes, I will revise it and share it within today.",
+        "text_ko": "네, 오늘 안에 수정해서 공유드리겠습니다.",
+        "text_vi": "Vâng, tôi sẽ sửa và chia sẻ trong hôm nay ạ.",
+        "text_en": "Yes, I will revise it and share it within today."
+      }
+    ],
+    "cultural_notes_vi": "Khi phản đối cấp trên ở Hàn, mục tiêu không phải 'thắng' mà là giữ được uy tín của cả hai bên. Bạn nên mở đầu bằng sự đồng thuận, sau đó mới nêu rủi ro và đưa một phương án thay thế cụ thể.",
+    "tip_advice_vi": "Công thức tốt nhất: hiểu → lo ngại → phương án thay thế → nhờ chỉnh lại. Nếu bạn làm được vậy, câu phản đối của bạn sẽ nghe xây dựng chứ không chống đối.",
+    "exercises": [
+      { "type": "fill-blank", "question": "말씀하신 방향은 이해하지만, 일정 측면에서 한 가지 ___가 있습니다.", "answer": "우려" },
+      { "type": "translation", "vietnamese": "Nếu điều chỉnh thứ tự ưu tiên một chút thì sẽ có tiến độ thực tế hơn.", "hangul": "우선순위를 조금만 조정하면 더 현실적인 일정이 나옵니다." }
+    ]
+  },
+  {
+    "id": 107,
+    "level": "C1",
+    "title_vi": "So sánh phong cách đàm phán Hàn và Việt",
+    "title_en": "Korean vs Vietnamese negotiation culture",
+    "intro_vi": "Bài này giúp người học nói về khác biệt văn hóa đàm phán mà không rơi vào định kiến hay giọng phán xét.",
+    "vocabulary": [
+      { "hangul": "체면 (體面)", "meaning": "thể diện" },
+      { "hangul": "정 (情)", "meaning": "tình nghĩa" },
+      { "hangul": "완곡하게", "meaning": "một cách uyển chuyển" },
+      { "hangul": "직접적", "meaning": "trực tiếp" },
+      { "hangul": "관계 중심", "meaning": "thiên về quan hệ" }
+    ],
+    "sentences": [
+      {
+        "korean": "한국에서는 결론을 빨리 내기보다 사전 조율을 중시하는 편입니다.",
+        "romanized": "Hangugeseoneun gyeolroneul ppalli naegi boda sajeon joyureul jungsi haneun pyeonimnida.",
+        "en": "In Korea, people tend to value prior coordination more than reaching a conclusion quickly.",
+        "vi": "Ở Hàn Quốc, người ta thường coi trọng việc điều chỉnh trước hơn là chốt kết luận nhanh.",
+        "pronunciation_focus": ["사전 조율", "중시하는 편", "결론을 빨리"]
+      },
+      {
+        "korean": "베트남에서는 관계를 먼저 만들고 나서 협상을 여는 경우가 많습니다.",
+        "romanized": "Beteunameseoneun gwangyerul meonjeo mandeulgo naseo hyeopsangeul yeoneun gyeongu-ga manseumnida.",
+        "en": "In Vietnam, it is often common to build the relationship first and then open the negotiation.",
+        "vi": "Ở Việt Nam, thường người ta xây quan hệ trước rồi mới mở đàm phán.",
+        "pronunciation_focus": ["관계를 먼저", "협상을 여는", "경우가 많습니다"]
+      },
+      {
+        "korean": "직접적으로 말하면 효율적이지만, 체면을 해칠 수 있어 완곡한 표현이 필요합니다.",
+        "romanized": "Jikjeobjeogeuro malhamyeon hyoyuljeogijiman, chemyeoneul haechil su isseo wanggokhan pyeohyeoni pilyohamnida.",
+        "en": "Direct speech may be efficient, but it can hurt face, so softer expressions are needed.",
+        "vi": "Nói trực tiếp thì hiệu quả, nhưng có thể làm mất thể diện nên cần cách diễn đạt uyển chuyển.",
+        "pronunciation_focus": ["직접적으로", "체면을 해칠 수", "완곡한 표현"]
+      },
+      {
+        "korean": "양쪽 문화를 모두 이해하면 협상 속도와 신뢰를 함께 챙길 수 있습니다.",
+        "romanized": "Yangjjok munhwareul modu ihaehamyeon hyeopsang sokdowa sinroereul hamkke chaenggil su itseumnida.",
+        "en": "If you understand both cultures, you can manage both negotiation speed and trust.",
+        "vi": "Nếu hiểu cả hai nền văn hóa, bạn có thể vừa giữ tốc độ đàm phán vừa giữ được sự tin cậy.",
+        "pronunciation_focus": ["양쪽 문화를", "신뢰를 함께", "챙길 수 있습니다"]
+      }
+    ],
+    "dialogue": [
+      {
+        "speaker": "동료",
+        "hangul": "한국식 협상과 베트남식 협상의 차이를 어떻게 보십니까?",
+        "meaning": "How do you see the difference between Korean and Vietnamese negotiation styles?",
+        "text_ko": "한국식 협상과 베트남식 협상의 차이를 어떻게 보십니까?",
+        "text_vi": "Anh/chị nhìn sự khác nhau giữa phong cách đàm phán Hàn và Việt như thế nào ạ?",
+        "text_en": "How do you see the difference between Korean and Vietnamese negotiation styles?"
+      },
+      {
+        "speaker": "실무자",
+        "hangul": "한국에서는 사전 조율이 중요하고, 베트남에서는 관계 형성이 더 먼저 보이는 경우가 많습니다.",
+        "meaning": "In Korea, prior coordination matters; in Vietnam, relationship building often comes first.",
+        "text_ko": "한국에서는 사전 조율이 중요하고, 베트남에서는 관계 형성이 더 먼저 보이는 경우가 많습니다.",
+        "text_vi": "Ở Hàn Quốc, điều chỉnh trước rất quan trọng; còn ở Việt Nam, xây dựng quan hệ thường được thấy trước.",
+        "text_en": "In Korea, prior coordination matters; in Vietnam, relationship building often comes first."
+      },
+      {
+        "speaker": "동료",
+        "hangul": "그럼 베트남에서는 더 직접적으로 말하면 안 되나요?",
+        "meaning": "Then should we not speak more directly in Vietnam?",
+        "text_ko": "그럼 베트남에서는 더 직접적으로 말하면 안 되나요?",
+        "text_vi": "Vậy ở Việt Nam thì không nên nói trực tiếp hơn sao ạ?",
+        "text_en": "Then should we not speak more directly in Vietnam?"
+      },
+      {
+        "speaker": "실무자",
+        "hangul": "직접성은 필요하지만, 관계를 해치지 않는 선에서 완곡하게 말하는 것이 좋습니다.",
+        "meaning": "Directness is needed, but it is better to speak softly enough not to damage the relationship.",
+        "text_ko": "직접성은 필요하지만, 관계를 해치지 않는 선에서 완곡하게 말하는 것이 좋습니다.",
+        "text_vi": "Cần sự trực tiếp, nhưng nên nói uyển chuyển ở mức không làm hỏng quan hệ.",
+        "text_en": "Directness is needed, but it is better to speak softly enough not to damage the relationship."
+      },
+      {
+        "speaker": "동료",
+        "hangul": "체면과 효율을 함께 생각해야 하는군요.",
+        "meaning": "So we need to think about both face and efficiency.",
+        "text_ko": "체면과 효율을 함께 생각해야 하는군요.",
+        "text_vi": "Vậy là phải nghĩ đến cả thể diện lẫn hiệu quả.",
+        "text_en": "So we need to think about both face and efficiency."
+      },
+      {
+        "speaker": "실무자",
+        "hangul": "맞습니다. 그 균형이 협상 성공률을 높여 줍니다.",
+        "meaning": "Exactly. That balance raises the success rate of the negotiation.",
+        "text_ko": "맞습니다. 그 균형이 협상 성공률을 높여 줍니다.",
+        "text_vi": "Đúng vậy. Cân bằng đó sẽ nâng tỷ lệ thành công của đàm phán.",
+        "text_en": "Exactly. That balance raises the success rate of the negotiation."
+      }
+    ],
+    "cultural_notes_vi": "Không nên mô tả một bên là 'thẳng' và một bên là 'vòng vo' theo kiểu đánh giá. Hãy nói theo hướng quan sát: Hàn thiên về chuẩn bị và sắp xếp trước, Việt Nam thường đặt nặng quan hệ và nhịp trao đổi mềm hơn.",
+    "tip_advice_vi": "Khi so sánh văn hóa, hãy dùng 'thường', 'có xu hướng', 'trong một số bối cảnh' để tránh kết luận cứng. Điều này làm câu của bạn trưởng thành hơn rất nhiều.",
+    "exercises": [
+      { "type": "fill-blank", "question": "한국에서는 ___ 조율이 중요하고, 베트남에서는 관계 형성이 더 먼저 보입니다.", "answer": "사전" },
+      { "type": "translation", "vietnamese": "Nếu hiểu cả hai nền văn hóa, bạn có thể vừa giữ tốc độ đàm phán vừa giữ được sự tin cậy.", "hangul": "양쪽 문화를 모두 이해하면 협상 속도와 신뢰를 함께 챙길 수 있습니다." }
+    ]
+  },
+  {
+    "id": 108,
+    "level": "C1",
+    "title_vi": "Giải quyết tranh chấp chính thức trong công ty",
+    "title_en": "Formal workplace dispute resolution",
+    "intro_vi": "Bài này luyện cách xử lý tranh chấp nội bộ bằng ngôn ngữ chính thức, rõ ràng và không kích động cảm xúc.",
+    "vocabulary": [
+      { "hangul": "중재 (仲裁)", "meaning": "trung gian hòa giải" },
+      { "hangul": "사실관계", "meaning": "tình tiết sự việc" },
+      { "hangul": "증빙 (證憑)", "meaning": "bằng chứng" },
+      { "hangul": "인사팀", "meaning": "phòng nhân sự" },
+      { "hangul": "재발 방지", "meaning": "ngăn tái diễn" }
+    ],
+    "sentences": [
+      {
+        "korean": "감정적으로 대응하기보다 사실관계를 문서로 정리하는 편이 좋습니다.",
+        "romanized": "Gamjeongjeogeuro daeunghagi boda sasilgwangyereul munseoro jeongrineun pyeoni joapseumnida.",
+        "en": "Rather than responding emotionally, it is better to organize the facts in writing.",
+        "vi": "Thay vì phản ứng cảm tính, tốt hơn là sắp xếp sự việc bằng văn bản.",
+        "pronunciation_focus": ["사실관계", "문서로", "정리하는 편"]
+      },
+      {
+        "korean": "증빙 자료가 있으면 회의에서 논의가 훨씬 명확해집니다.",
+        "romanized": "Jeungbing jaryoga isseumyeon hoeuieseo nonuiga hwolssin myeonghakhajimnida.",
+        "en": "If there is supporting evidence, discussion in the meeting becomes much clearer.",
+        "vi": "Nếu có tài liệu chứng minh thì trao đổi trong cuộc họp sẽ rõ ràng hơn nhiều.",
+        "pronunciation_focus": ["증빙 자료", "훨씬 명확해집니다", "회의에서"]
+      },
+      {
+        "korean": "인사팀에 공식적으로 접수하면 절차를 따를 수 있습니다.",
+        "romanized": "Insateame gongsikjeogeuro jeopsuhamyeon jeolchareul ttareul su itseumnida.",
+        "en": "If it is formally filed with HR, the procedure can be followed.",
+        "vi": "Nếu nộp chính thức cho nhân sự thì có thể đi theo quy trình.",
+        "pronunciation_focus": ["인사팀에", "공식적으로", "절차를 따를 수 있습니다"]
+      },
+      {
+        "korean": "재발 방지를 위해서는 책임 소재와 후속 조치를 분명히 해야 합니다.",
+        "romanized": "Jaebal bangjireul wihaeseoneun chaegim sojaewa husok jochireul bunmyeonghi haeya hamnida.",
+        "en": "To prevent recurrence, responsibility and follow-up measures must be made explicit.",
+        "vi": "Để ngăn tái diễn thì phải làm rõ trách nhiệm và biện pháp tiếp theo.",
+        "pronunciation_focus": ["재발 방지", "책임 소재", "후속 조치"]
+      }
+    ],
+    "dialogue": [
+      {
+        "speaker": "직원",
+        "hangul": "이 문제는 개인 감정이 아니라 절차 문제로 다루었으면 합니다.",
+        "meaning": "I would like this issue to be handled as a procedural matter, not a personal one.",
+        "text_ko": "이 문제는 개인 감정이 아니라 절차 문제로 다루었으면 합니다.",
+        "text_vi": "Tôi mong vấn đề này được xử lý như chuyện quy trình chứ không phải cảm xúc cá nhân.",
+        "text_en": "I would like this issue to be handled as a procedural matter, not a personal one."
+      },
+      {
+        "speaker": "인사팀",
+        "hangul": "알겠습니다. 우선 사실관계를 먼저 확인하겠습니다.",
+        "meaning": "Understood. We will first confirm the facts.",
+        "text_ko": "알겠습니다. 우선 사실관계를 먼저 확인하겠습니다.",
+        "text_vi": "Được ạ. Trước hết chúng tôi sẽ xác minh tình tiết sự việc.",
+        "text_en": "Understood. We will first confirm the facts."
+      },
+      {
+        "speaker": "직원",
+        "hangul": "증빙 자료는 이메일과 회의록으로 모두 남아 있습니다.",
+        "meaning": "The supporting evidence remains in email and meeting minutes.",
+        "text_ko": "증빙 자료는 이메일과 회의록으로 모두 남아 있습니다.",
+        "text_vi": "Tài liệu chứng minh đều còn trong email và biên bản họp.",
+        "text_en": "The supporting evidence remains in email and meeting minutes."
+      },
+      {
+        "speaker": "인사팀",
+        "hangul": "그럼 관련 부서와 함께 중재안을 검토하겠습니다.",
+        "meaning": "Then we will review a mediation proposal with the relevant department.",
+        "text_ko": "그럼 관련 부서와 함께 중재안을 검토하겠습니다.",
+        "text_vi": "Vậy chúng tôi sẽ cùng bộ phận liên quan xem xét phương án hòa giải.",
+        "text_en": "Then we will review a mediation proposal with the relevant department."
+      },
+      {
+        "speaker": "직원",
+        "hangul": "재발 방지까지 포함해서 정리해 주시면 감사하겠습니다.",
+        "meaning": "I would appreciate it if you could include recurrence prevention as well.",
+        "text_ko": "재발 방지까지 포함해서 정리해 주시면 감사하겠습니다.",
+        "text_vi": "Tôi sẽ rất cảm ơn nếu anh/chị tổng hợp cả phần ngăn tái diễn.",
+        "text_en": "I would appreciate it if you could include recurrence prevention as well."
+      },
+      {
+        "speaker": "인사팀",
+        "hangul": "네, 오늘 안에 정리해 드리겠습니다.",
+        "meaning": "Yes, we will organize it within today.",
+        "text_ko": "네, 오늘 안에 정리해 드리겠습니다.",
+        "text_vi": "Vâng, chúng tôi sẽ tổng hợp trong hôm nay.",
+        "text_en": "Yes, we will organize it within today."
+      }
+    ],
+    "cultural_notes_vi": "Khi có tranh chấp nội bộ ở Hàn, người ta rất coi trọng cách ghi lại bằng chứng và quy trình. Nếu bạn nói theo cảm xúc quá mạnh, bạn sẽ bị xem là làm phức tạp vấn đề; nếu bạn trình bày bằng tài liệu, bạn sẽ được nghe kỹ hơn.",
+    "tip_advice_vi": "Hãy luôn tách 'sự việc', 'bằng chứng', 'quy trình' và 'biện pháp tái diễn'. Cách này nghe rất C1 và làm câu chuyện bớt cảm tính.",
+    "exercises": [
+      { "type": "fill-blank", "question": "감정적으로 대응하기보다 ___를 문서로 정리하는 편이 좋습니다.", "answer": "사실관계" },
+      { "type": "translation", "vietnamese": "Tôi mong vấn đề này được xử lý như chuyện quy trình chứ không phải cảm xúc cá nhân.", "hangul": "이 문제는 개인 감정이 아니라 절차 문제로 다루었으면 합니다." }
+    ]
+  },
+  {
+    "id": 109,
+    "level": "C1",
+    "title_vi": "Kết thúc đàm phán và rút lui",
+    "title_en": "Negotiation closure and withdrawal",
+    "intro_vi": "Bài này luyện cách rút khỏi đàm phán mà vẫn giữ quan hệ, đặc biệt khi bạn đã có phương án thay thế tốt hơn.",
+    "vocabulary": [
+      { "hangul": "철수 (撤收)", "meaning": "rút lui" },
+      { "hangul": "대안 (代案)", "meaning": "phương án thay thế" },
+      { "hangul": "최종안", "meaning": "đề xuất cuối cùng" },
+      { "hangul": "보류", "meaning": "tạm hoãn" },
+      { "hangul": "우선순위", "meaning": "ưu tiên" }
+    ],
+    "sentences": [
+      {
+        "korean": "현재 조건으로는 저희 우선순위와 맞지 않아 진행이 어렵습니다.",
+        "romanized": "Hyeonjae jogeoneuro neun jeohu useonsunwiwa matji anha jinhaeng-i eoryeopseumnida.",
+        "en": "Under the current terms, it is difficult to proceed because they do not match our priorities.",
+        "vi": "Với điều kiện hiện tại, chúng tôi khó có thể tiếp tục vì không khớp với ưu tiên của mình.",
+        "pronunciation_focus": ["현재 조건으로는", "우선순위와", "진행이 어렵습니다"]
+      },
+      {
+        "korean": "다른 대안이 있으므로 무리해서 서두르지는 않겠습니다.",
+        "romanized": "Dareun daean-i isseumuro muriheseo seodureujineun angetseumnida.",
+        "en": "Since we have another option, we will not force ourselves to rush.",
+        "vi": "Vì đã có phương án khác nên chúng tôi sẽ không ép mình phải vội vàng.",
+        "pronunciation_focus": ["다른 대안", "무리해서", "서두르지는 않겠습니다"]
+      },
+      {
+        "korean": "최종안을 주셔도 바로 수락하지 않고 내부 검토를 하겠습니다.",
+        "romanized": "Choejongan-eul jusyeodo baro surakhaji anko naebu geomto-reul hagetseumnida.",
+        "en": "Even if you give us a final offer, we will still review it internally before accepting.",
+        "vi": "Dù anh/chị đưa đề xuất cuối cùng thì chúng tôi vẫn sẽ xem xét nội bộ trước khi chấp nhận.",
+        "pronunciation_focus": ["최종안을", "바로 수락하지 않고", "내부 검토"]
+      },
+      {
+        "korean": "관계를 생각해서도 지금 단계에서 보류하는 것이 더 나을 수 있습니다.",
+        "romanized": "Gwangelul saenggakhaeseodo jigeum dangyeseo boreuhaneun geosi deo na-eul su itseumnida.",
+        "en": "For the sake of the relationship, it may be better to pause at this stage.",
+        "vi": "Xét cả về quan hệ, có lẽ tạm dừng ở giai đoạn này sẽ tốt hơn.",
+        "pronunciation_focus": ["관계를 생각해서도", "보류하는 것이", "더 나을 수 있습니다"]
+      }
+    ],
+    "dialogue": [
+      {
+        "speaker": "상대방",
+        "hangul": "이 조건이면 바로 계약하실 수 있습니까?",
+        "meaning": "At these terms, can you sign the contract right away?",
+        "text_ko": "이 조건이면 바로 계약하실 수 있습니까?",
+        "text_vi": "Với điều kiện này thì anh/chị có thể ký ngay không ạ?",
+        "text_en": "At these terms, can you sign the contract right away?"
+      },
+      {
+        "speaker": "협상자",
+        "hangul": "감사하지만, 현재 우선순위와는 조금 맞지 않습니다.",
+        "meaning": "Thank you, but it does not quite match our current priorities.",
+        "text_ko": "감사하지만, 현재 우선순위와는 조금 맞지 않습니다.",
+        "text_vi": "Cảm ơn anh/chị, nhưng hiện tại nó không khớp lắm với ưu tiên của chúng tôi.",
+        "text_en": "Thank you, but it does not quite match our current priorities."
+      },
+      {
+        "speaker": "상대방",
+        "hangul": "그럼 조건을 조금 더 바꾸면 가능하시겠습니까?",
+        "meaning": "Then would it be possible if we change the terms a little more?",
+        "text_ko": "그럼 조건을 조금 더 바꾸면 가능하시겠습니까?",
+        "text_vi": "Vậy nếu điều chỉnh điều kiện thêm một chút thì có thể được không?",
+        "text_en": "Then would it be possible if we change the terms a little more?"
+      },
+      {
+        "speaker": "협상자",
+        "hangul": "다른 대안이 있어서 무리하게 진행하지는 않으려 합니다.",
+        "meaning": "Since we have another option, we do not want to proceed forcefully.",
+        "text_ko": "다른 대안이 있어서 무리하게 진행하지는 않으려 합니다.",
+        "text_vi": "Vì chúng tôi có phương án khác nên không muốn tiếp tục một cách gượng ép.",
+        "text_en": "Since we have another option, we do not want to proceed forcefully."
+      },
+      {
+        "speaker": "상대방",
+        "hangul": "알겠습니다. 그럼 다시 검토해 보겠습니다.",
+        "meaning": "Understood. Then we will review it again.",
+        "text_ko": "알겠습니다. 그럼 다시 검토해 보겠습니다.",
+        "text_vi": "Vâng, vậy chúng tôi sẽ xem xét lại.",
+        "text_en": "Understood. Then we will review it again."
+      },
+      {
+        "speaker": "협상자",
+        "hangul": "감사합니다. 좋은 관계는 앞으로도 계속 이어가고 싶습니다.",
+        "meaning": "Thank you. I would like to continue the good relationship going forward.",
+        "text_ko": "감사합니다. 좋은 관계는 앞으로도 계속 이어가고 싶습니다.",
+        "text_vi": "Cảm ơn anh/chị. Chúng tôi vẫn muốn giữ mối quan hệ tốt đẹp trong tương lai.",
+        "text_en": "Thank you. I would like to continue the good relationship going forward."
+      }
+    ],
+    "cultural_notes_vi": "Rút khỏi đàm phán ở Hàn không nên nghe như 'cắt đứt'. Bạn cần để lại cửa mở, đặc biệt nếu muốn hợp tác lại sau này. Từ như 보류, 검토, 대안, 우선순위 giúp câu rút lui nghe chuyên nghiệp hơn.",
+    "tip_advice_vi": "Khi phải dừng đàm phán, hãy nói: cảm ơn, nêu lý do ưu tiên, nhắc đến phương án khác, và giữ quan hệ mở. Đó là cách rút lui mà không làm sập cầu.",
+    "exercises": [
+      { "type": "fill-blank", "question": "현재 조건으로는 저희 ___와 맞지 않아 진행이 어렵습니다.", "answer": "우선순위" },
+      { "type": "translation", "vietnamese": "Vì chúng tôi có phương án khác nên không muốn tiếp tục một cách gượng ép.", "hangul": "다른 대안이 있어서 무리하게 진행하지는 않으려 합니다." }
+    ]
+  },
+  {
+    "id": 110,
+    "level": "C1",
+    "title_vi": "Xử lý đề xuất giá quá thấp mà vẫn giữ quan hệ",
+    "title_en": "Handling a lowball offer while preserving the relationship",
+    "intro_vi": "Bài này luyện cách xử lý lời đề nghị quá thấp mà không làm đổ vỡ 정 và 체면 trong quan hệ làm ăn.",
+    "vocabulary": [
+      { "hangul": "저가", "meaning": "giá quá thấp" },
+      { "hangul": "예산", "meaning": "ngân sách" },
+      { "hangul": "관계 유지", "meaning": "duy trì quan hệ" },
+      { "hangul": "체면 (體面)", "meaning": "thể diện" },
+      { "hangul": "완곡하게", "meaning": "uyển chuyển" }
+    ],
+    "sentences": [
+      {
+        "korean": "제안 금액이 저희 예산 범위와는 꽤 차이가 있습니다.",
+        "romanized": "Jean geumaegi jeohu yesan beomwiwaneun kkwae chaiga itseumnida.",
+        "en": "The proposed amount is quite different from our budget range.",
+        "vi": "Số tiền đề xuất chênh khá nhiều so với phạm vi ngân sách của chúng tôi.",
+        "pronunciation_focus": ["제안 금액", "예산 범위", "차이가 있습니다"]
+      },
+      {
+        "korean": "그렇다고 해서 관계를 해치고 싶지는 않습니다.",
+        "romanized": "Geureotago haeseo gwangyereul haechigo sipjineun anseumnida.",
+        "en": "That said, we do not want to damage the relationship.",
+        "vi": "Dù vậy, chúng tôi cũng không muốn làm tổn hại quan hệ.",
+        "pronunciation_focus": ["그렇다고 해서", "관계를 해치고", "싶지는 않습니다"]
+      },
+      {
+        "korean": "조금 더 현실적인 범위로 다시 제안해 주시면 좋겠습니다.",
+        "romanized": "Jogeum deo hyeonsiljeogin beomwiro dasi jeanhae jusimyeon jotseumnida.",
+        "en": "It would be better if you could propose again within a more realistic range.",
+        "vi": "Sẽ tốt hơn nếu anh/chị đề xuất lại trong một phạm vi thực tế hơn.",
+        "pronunciation_focus": ["현실적인 범위", "다시 제안해", "주시면 좋겠습니다"]
+      },
+      {
+        "korean": "장기적으로 협력하려면 서로 부담이 없는 수준이 좋습니다.",
+        "romanized": "Janggijeogeuro hyeobryeokharamyeon seoro budami eomneun sujuni johseumnida.",
+        "en": "If we want to cooperate long term, a level that is not burdensome for either side is best.",
+        "vi": "Nếu muốn hợp tác lâu dài thì mức không gây gánh nặng cho cả hai bên sẽ tốt hơn.",
+        "pronunciation_focus": ["장기적으로", "서로 부담", "없는 수준"]
+      }
+    ],
+    "dialogue": [
+      {
+        "speaker": "상대방",
+        "hangul": "이 정도 금액이면 바로 진행해 주실 수 있습니까?",
+        "meaning": "Can you proceed right away at this amount?",
+        "text_ko": "이 정도 금액이면 바로 진행해 주실 수 있습니까?",
+        "text_vi": "Với mức tiền này thì anh/chị có thể tiến hành ngay không ạ?",
+        "text_en": "Can you proceed right away at this amount?"
+      },
+      {
+        "speaker": "협상자",
+        "hangul": "감사하지만, 제안 금액이 저희 예산과는 꽤 차이가 있습니다.",
+        "meaning": "Thank you, but the proposed amount is quite far from our budget.",
+        "text_ko": "감사하지만, 제안 금액이 저희 예산과는 꽤 차이가 있습니다.",
+        "text_vi": "Cảm ơn anh/chị, nhưng số tiền đề xuất chênh khá nhiều so với ngân sách của chúng tôi.",
+        "text_en": "Thank you, but the proposed amount is quite far from our budget."
+      },
+      {
+        "speaker": "상대방",
+        "hangul": "그럼 어느 정도가 가능하시겠습니까?",
+        "meaning": "Then what range would be possible?",
+        "text_ko": "그럼 어느 정도가 가능하시겠습니까?",
+        "text_vi": "Vậy mức nào thì có thể được ạ?",
+        "text_en": "Then what range would be possible?"
+      },
+      {
+        "speaker": "협상자",
+        "hangul": "관계를 생각해서라도 서로 부담이 없는 수준으로 조정하면 좋겠습니다.",
+        "meaning": "For the sake of the relationship, I think it would be good to adjust to a non-burdensome level for both sides.",
+        "text_ko": "관계를 생각해서라도 서로 부담이 없는 수준으로 조정하면 좋겠습니다.",
+        "text_vi": "Xét cả về quan hệ, tôi nghĩ nên điều chỉnh về mức không gây gánh nặng cho cả hai bên.",
+        "text_en": "For the sake of the relationship, I think it would be good to adjust to a non-burdensome level for both sides."
+      },
+      {
+        "speaker": "상대방",
+        "hangul": "알겠습니다. 다시 계산해 보겠습니다.",
+        "meaning": "Understood. We will recalculate it.",
+        "text_ko": "알겠습니다. 다시 계산해 보겠습니다.",
+        "text_vi": "Vâng, chúng tôi sẽ tính lại.",
+        "text_en": "Understood. We will recalculate it."
+      },
+      {
+        "speaker": "협상자",
+        "hangul": "감사합니다. 좋은 관계를 오래 이어가고 싶습니다.",
+        "meaning": "Thank you. I want to keep the good relationship for a long time.",
+        "text_ko": "감사합니다. 좋은 관계를 오래 이어가고 싶습니다.",
+        "text_vi": "Cảm ơn anh/chị. Tôi muốn duy trì mối quan hệ tốt đẹp lâu dài.",
+        "text_en": "Thank you. I want to keep the good relationship for a long time."
+      }
+    ],
+    "cultural_notes_vi": "Đề nghị giá quá thấp là tình huống dễ làm mất thể diện nếu bạn trả lời quá cứng. Cách tốt hơn là nói về ngân sách, phạm vi thực tế và quan hệ dài hạn. Như vậy bạn từ chối được mà không làm bên kia bẽ mặt.",
+    "tip_advice_vi": "Dùng các cụm như '예산과 차이가 있습니다', '현실적인 범위', '서로 부담이 없는 수준' để giữ giọng trung tính. Những cụm này rất hữu ích khi bạn cần nói 'không' mà vẫn tử tế.",
+    "exercises": [
+      { "type": "fill-blank", "question": "제안 금액이 저희 ___와는 꽤 차이가 있습니다.", "answer": "예산" },
+      { "type": "translation", "vietnamese": "Sẽ tốt hơn nếu anh/chị đề xuất lại trong một phạm vi thực tế hơn.", "hangul": "조금 더 현실적인 범위로 다시 제안해 주시면 좋겠습니다." }
+    ]
+  },
+  {
+    "id": 111,
+    "level": "C1",
+    "title_vi": "Đàm phán với đối thủ gay gắt",
+    "title_en": "Negotiating with a hostile counterpart",
+    "intro_vi": "Bài này luyện cách giữ bình tĩnh, đặt ranh giới và không để cuộc đàm phán bị kéo vào đối đầu cảm xúc.",
+    "vocabulary": [
+      { "hangul": "압박", "meaning": "áp lực" },
+      { "hangul": "경계선", "meaning": "ranh giới" },
+      { "hangul": "기록", "meaning": "ghi lại" },
+      { "hangul": "중단", "meaning": "tạm dừng" },
+      { "hangul": "정중하게", "meaning": "một cách lịch sự" }
+    ],
+    "sentences": [
+      {
+        "korean": "상대가 압박하더라도 감정을 따라가면 협상이 망가집니다.",
+        "romanized": "Sangdaega appakhadeorado gamjeong-eul ttaragamyeon hyeopsangi manggajimnida.",
+        "en": "Even if the other side pressures us, following emotion will ruin the negotiation.",
+        "vi": "Dù phía kia gây áp lực, nếu chạy theo cảm xúc thì đàm phán sẽ hỏng.",
+        "pronunciation_focus": ["상대가 압박하더라도", "감정을 따라가면", "망가집니다"]
+      },
+      {
+        "korean": "사실만 정리해서 정중하게 말하면 불필요한 충돌을 줄일 수 있습니다.",
+        "romanized": "Sasilman jeongrihaeseo jeongjunghage malhamyeon bulpiryohan chungdoreul juril su itseumnida.",
+        "en": "If we organize only the facts and speak politely, unnecessary conflict can be reduced.",
+        "vi": "Nếu chỉ sắp xếp sự thật và nói một cách lịch sự thì có thể giảm va chạm không cần thiết.",
+        "pronunciation_focus": ["사실만 정리해서", "정중하게", "충돌을 줄일 수 있습니다"]
+      },
+      {
+        "korean": "한계를 분명히 말하되, 예의는 끝까지 지켜야 합니다.",
+        "romanized": "Hanggye-reul bunmyeonghi malhade, yeui-neun kkeutkkaji jikyeoya hamnida.",
+        "en": "We should state our limits clearly while keeping courtesy until the end.",
+        "vi": "Cần nói rõ giới hạn nhưng vẫn phải giữ lễ phép đến cùng.",
+        "pronunciation_focus": ["한계를 분명히", "예의는 끝까지", "지켜야 합니다"]
+      },
+      {
+        "korean": "대화가 계속 공격적으로 가면 잠시 중단하는 것도 하나의 방법입니다.",
+        "romanized": "Daehwaga gyesok gonggyeokjeogeuro gamyeon jamsi jungdanhaneun geosdo hanaui bangbeobimnida.",
+        "en": "If the conversation keeps becoming aggressive, pausing briefly is also one method.",
+        "vi": "Nếu cuộc trao đổi cứ ngày càng công kích thì tạm dừng một lúc cũng là một cách.",
+        "pronunciation_focus": ["계속 공격적으로", "잠시 중단하는", "하나의 방법"]
+      }
+    ],
+    "dialogue": [
+      {
+        "speaker": "상대방",
+        "hangul": "이 조건이 아니면 협의할 이유가 없습니다.",
+        "meaning": "If it is not this condition, there is no reason to negotiate.",
+        "text_ko": "이 조건이 아니면 협의할 이유가 없습니다.",
+        "text_vi": "Nếu không phải điều kiện này thì không có lý do gì để thương lượng.",
+        "text_en": "If it is not this condition, there is no reason to negotiate."
+      },
+      {
+        "speaker": "협상자",
+        "hangul": "압박하시는 의도는 이해하지만, 저희 기준은 분명합니다.",
+        "meaning": "I understand the intention to pressure us, but our 기준 is clear.",
+        "text_ko": "압박하시는 의도는 이해하지만, 저희 기준은 분명합니다.",
+        "text_vi": "Tôi hiểu ý anh/chị đang gây áp lực, nhưng tiêu chí của chúng tôi rất rõ.",
+        "text_en": "I understand the intention to pressure us, but our 기준 is clear."
+      },
+      {
+        "speaker": "상대방",
+        "hangul": "그럼 더 이상 얘기할 필요가 없겠군요.",
+        "meaning": "Then there is no need to talk further, I suppose.",
+        "text_ko": "그럼 더 이상 얘기할 필요가 없겠군요.",
+        "text_vi": "Vậy thì chắc không cần nói thêm nữa rồi.",
+        "text_en": "Then there is no need to talk further, I suppose."
+      },
+      {
+        "speaker": "협상자",
+        "hangul": "아닙니다. 사실만 정리해서 다시 보시면 선택지가 더 보일 수 있습니다.",
+        "meaning": "Not at all. If we review the facts again, more options may become visible.",
+        "text_ko": "아닙니다. 사실만 정리해서 다시 보시면 선택지가 더 보일 수 있습니다.",
+        "text_vi": "Không phải vậy. Nếu xem lại theo đúng sự thật thì có thể sẽ thấy thêm lựa chọn.",
+        "text_en": "Not at all. If we review the facts again, more options may become visible."
+      },
+      {
+        "speaker": "상대방",
+        "hangul": "좋습니다. 그럼 문서로 다시 주세요.",
+        "meaning": "Fine. Then please send it again in writing.",
+        "text_ko": "좋습니다. 그럼 문서로 다시 주세요.",
+        "text_vi": "Được. Vậy hãy gửi lại bằng văn bản.",
+        "text_en": "Fine. Then please send it again in writing."
+      },
+      {
+        "speaker": "협상자",
+        "hangul": "네, 정리해서 오늘 안에 보내드리겠습니다.",
+        "meaning": "Yes, I will organize it and send it within today.",
+        "text_ko": "네, 정리해서 오늘 안에 보내드리겠습니다.",
+        "text_vi": "Vâng, tôi sẽ tổng hợp và gửi trong hôm nay ạ.",
+        "text_en": "Yes, I will organize it and send it within today."
+      }
+    ],
+    "cultural_notes_vi": "Đối thủ quá gay gắt thường muốn kéo cuộc nói chuyện sang cảm xúc. Cách chống đỡ tốt nhất là quay lại dữ kiện, giới hạn, và văn bản. Trong môi trường Hàn, người giữ được bình tĩnh thường có lợi thế hơn người nói to.",
+    "tip_advice_vi": "Nếu bị ép mạnh, đừng phản ứng ngay. Hãy nói ngắn, nêu giới hạn, đề nghị quay lại bằng văn bản, và nếu cần thì tạm dừng. Đó là cách giữ ranh giới mà vẫn lịch sự.",
+    "exercises": [
+      { "type": "fill-blank", "question": "상대가 압박하더라도 감정을 따라가면 협상이 ____. ", "answer": "망가집니다" },
+      { "type": "translation", "vietnamese": "Nếu chỉ sắp xếp sự thật và nói một cách lịch sự thì có thể giảm va chạm không cần thiết.", "hangul": "사실만 정리해서 정중하게 말하면 불필요한 충돌을 줄일 수 있습니다." }
     ]
   }
 ];
