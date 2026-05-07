@@ -5689,6 +5689,2716 @@ export const lessons: FrenchLesson[] = [
         "french": "L'agressivité de votre formulation ne change rien à la solidité de votre dossier — j'évalue les arguments, pas le ton."
       }
     ]
+  },
+  {
+    "id": "lthesis_defense_opening",
+    "level": "C1",
+    "category": "fluency",
+    "title_vi": "Mở đầu một soutenance de thèse",
+    "title_en": "Opening a thesis defense",
+    "sentences": [
+      {
+        "en": "Monsieur le Président, Mesdames et Messieurs les membres du jury, je vous remercie d'avoir accepté de juger ce travail mené sous la direction du professeur Lefèvre.",
+        "vi": "Thưa Chủ tịch hội đồng, thưa quý Thầy Cô thành viên hội đồng, tôi xin trân trọng cảm ơn quý vị đã nhận lời thẩm định công trình được thực hiện dưới sự hướng dẫn của giáo sư Lefèvre.",
+        "pronunciation_focus": [
+          "Mesdames → mè-dam",
+          "Messieurs → mè-siơ",
+          "membres → mãm-brơ",
+          "direction → di-rèk-sion"
+        ]
+      },
+      {
+        "en": "Ma thèse, soutenue ce jour, porte sur l'évolution des dispositifs d'enseignement précoce du français langue étrangère au Vietnam entre mille neuf cent quatre-vingt-six et deux mille vingt.",
+        "vi": "Luận án, được bảo vệ hôm nay, nghiên cứu về sự tiến triển của các thiết chế dạy tiếng Pháp ngoại ngữ sớm tại Việt Nam, giai đoạn 1986–2020.",
+        "pronunciation_focus": [
+          "soutenue → su-tơ-nu",
+          "dispositifs → di-spo-zi-tif",
+          "précoce → pré-kos",
+          "étrangère → é-trãn-jèr"
+        ]
+      },
+      {
+        "en": "L'objet central de mon travail consiste à interroger la circulation des modèles pédagogiques entre la France et le Vietnam, en montrant comment ces modèles ont été à la fois importés, réinterprétés, et localement transformés.",
+        "vi": "Đối tượng trung tâm của công trình là chất vấn sự lưu chuyển của các mô hình sư phạm giữa Pháp và Việt Nam, cho thấy các mô hình ấy đã được nhập, diễn giải lại, và biến đổi tại chỗ ra sao.",
+        "pronunciation_focus": [
+          "interroger → an-tè-ro-jé",
+          "circulation → sir-ku-la-sion",
+          "pédagogiques → pé-da-go-jik",
+          "réinterprétés → ré-an-tèr-pré-té"
+        ]
+      },
+      {
+        "en": "Bien que les sources soient hétérogènes — archives institutionnelles, manuels scolaires, entretiens biographiques —, j'ai veillé à ce que leur traitement obéisse à un protocole méthodologique unifié.",
+        "vi": "Mặc dù các nguồn rất không đồng nhất — lưu trữ thiết chế, sách giáo khoa, phỏng vấn tiểu sử — tôi đã chú ý sao cho việc xử lý chúng tuân theo một quy trình phương pháp luận thống nhất.",
+        "pronunciation_focus": [
+          "Bien que → biãn kơ",
+          "soient → soa",
+          "hétérogènes → é-té-ro-jèn",
+          "obéisse → o-bé-is"
+        ]
+      },
+      {
+        "en": "Avant d'entrer dans le détail, qu'il me soit permis de remercier les institutions sans lesquelles cette recherche n'eût pas vu le jour: l'Université Paris Cité, l'École française d'Extrême-Orient, et l'Université des Sciences sociales et humaines de Hanoi.",
+        "vi": "Trước khi đi vào chi tiết, xin cho phép tôi cảm ơn các thiết chế mà nếu không có thì công trình này đã không thể ra đời: Đại học Paris Cité, Viện Viễn Đông Bác Cổ, và Đại học Khoa học Xã hội và Nhân văn Hà Nội.",
+        "pronunciation_focus": [
+          "qu'il me soit permis → kil mơ soa pèr-mi",
+          "sans lesquelles → sã lè-kèl",
+          "n'eût pas vu → nu pa vu",
+          "Extrême-Orient → èks-trèm-o-rian"
+        ]
+      }
+    ],
+    "cultural_notes_vi": "Soutenance de thèse trong hệ thống Pháp là một nghi lễ cực kỳ codifié, khác biệt rõ với « thesis defense » Anglo-saxon hay buổi bảo vệ luận án ở Việt Nam.\n\nCẤU TRÚC CHUẨN (đa số trường hợp, tùy école doctorale):\n(1) Présentation par le candidat: 30–45 phút, KHÔNG được vượt quá. Président de jury sẽ cắt nếu cần.\n(2) Tour de parole của các rapporteurs (báo cáo viên ngoài, đã nộp rapport bằng văn bản trước đó): mỗi người 30–45 phút questions/discussion.\n(3) Tour des examinateurs (thường 1–2 người): 20–30 phút mỗi người.\n(4) Le directeur de thèse intervient en dernier (ngắn).\n(5) Délibération à huis clos (jury rời phòng).\n(6) Proclamation: « Le jury, à l'unanimité [hoặc à la majorité], vous décerne le grade de docteur. » — Thông thường mention « très honorable » hoặc không mention; mention « avec les félicitations du jury » đã bị nhiều trường BÃI BỎ chính thức (HCERES khuyến cáo từ 2014, vì khó so sánh giữa institutions). Một số trường vẫn giữ.\n\nJURY: tối thiểu 4 người, gồm:\n- Président(e) — chủ tọa, do jury bầu khi bắt đầu phiên (thường là examinateur cấp Pr).\n- Hai rapporteurs externes ngoài école doctorale của candidate (đôi khi ngoài cả université). Họ đã viết rapport — báo cáo trước đó cho phép soutenance diễn ra. Rapport là document chính, soutenance không thể bị từ chối ở giai đoạn này — nói cách khác, soutenance một phần là « formalité »: nếu rapports đã accept, candidate sẽ pass. Nhưng mention thì rất quan trọng.\n- Examinateurs (1–2): có thể từ trong université.\n- Directeur de thèse: KHÔNG có quyền vote về mention nhưng được phát biểu.\n\nNGHI LỄ NGÔN NGỮ:\n- VOUVOIEMENT bắt buộc với mọi thành viên jury, kể cả nếu candidate đã thân với họ qua nhiều năm. Soutenance là không gian chính thức.\n- « Monsieur/Madame le/la Président(e) », « Madame la rapporteure », « Madame l'examinatrice » — danh xưng chính thức.\n- Mở đầu các remerciements d'usage là BẮT BUỘC. Không có = bị xem là vô lễ với jury và institutions.\n- Plus-que-parfait du subjonctif (« n'eût pas vu le jour ») là dấu hiệu tu từ rất cao — không bắt buộc, nhưng candidate dùng đúng được nhớ. Sai (lẫn với passé composé) thì phản tác dụng.\n\nCÁI BẪY CHO VIỆT NAM:\n(a) Quá khiêm tốn ở mở đầu — « Je ne suis qu'un modeste doctorant... » → jury Pháp đọc đó là chưa sẵn sàng làm docteur. Khiêm tốn là một thái độ mà jury sẽ chấp nhận hay không, KHÔNG phải tuyên bố mà candidate đưa ra.\n(b) Xem soutenance là « bài kiểm tra » → đó là một nghi lễ tri thức học thuật mà candidate là tâm điểm. Nói chậm, dứt khoát, không xin lỗi quá nhiều.\n(c) Cố nói tiếng Pháp « hoa mỹ »: bão hòa các formules « il convient de souligner que », « il importe de rappeler que »... Một-hai lần là tu từ; lặp đi lặp lại = ảo. Xen kẽ với « j'ai choisi de... », « je défends que... ».\n\n⚠️ Lưu ý: Các thông tin trên là mô tả thông lệ — KHÔNG phải tư vấn pháp lý hay tư vấn nghề nghiệp. Mỗi école doctorale có règlement intérieur riêng; vérifier auprès de votre direction et de votre service de scolarité avant la soutenance.",
+    "tip_advice_vi": "CHUẨN BỊ MỞ ĐẦU SOUTENANCE — checklist 7 bước:\n\n(1) ÉCRIRE LES REMERCIEMENTS D'USAGE — 90 giây maximum. Cấu trúc đề xuất: jury → directeur → laboratoire → financeurs (ANR, bourse Eiffel, CIFRE…) → famille (1 câu cuối, ngắn). Đừng dài; người nghe không tới để nghe lời cảm ơn.\n\n(2) PHRASE D'OUVERTURE — chuẩn formule: « Monsieur le Président, Mesdames et Messieurs les membres du jury, [direct address spécifique aux rapporteurs si politesse l'exige]... » Tránh « Bonjour à tous » — quá thân mật.\n\n(3) ÉTABLIR LE PLAN — sau remerciements, một câu rõ: « Mon exposé s'organisera en trois temps: d'abord X, ensuite Y, et enfin Z. » — Jury cần biết bạn đi đâu.\n\n(4) RÉPÉTER LA PROBLÉMATIQUE en deux temps: lần đầu dài ở đầu thèse + lần thứ hai ngắn (1–2 câu) ở cuối exposé. « Je rappelle la question centrale: ... »\n\n(5) GÉRER LE TEMPS — tập với chronomètre. Vượt 5 phút = bị cắt = mất phần trọng yếu. Thiếu 5 phút = jury hoài nghi sự đầy đủ. Đúng giờ là kỹ năng C2 institutionnel.\n\n(6) PRÉPARER UNE PHRASE DE CLÔTURE — không kết thúc bằng « voilà, c'est tout » hay « j'ai fini ». Dùng « Voici les principaux résultats que je soumets à votre appréciation. Je vous remercie pour votre attention et reste à votre disposition pour vos questions. »\n\n(7) CONNAÎTRE SES SOURCES PAR CŒUR — jury sẽ hỏi « Vous citez Bourdieu page 47 — quel ouvrage exactement ? » Không nhớ = chấn động uy tín. Mang một cuốn thèse đã in để tra cứu trong soutenance được phép.\n\nTRÁNH:\n- Đọc slide nguyên xi (jury đã đọc thèse — bạn diễn giải, không tóm tắt).\n- Câu mở đầu là « Je vais vous parler de... » → trẻ con. Dùng « Mon exposé porte sur... »\n- « Nous » modestie ngẫu nhiên (« nous avons trouvé... ») nếu thèse là individual: dùng « j'ai trouvé / j'ai retenu... ».\n- Phong thái xin lỗi: « Je sais que mon travail comporte des limites... » — limites sẽ được jury nhắc; bạn không cần dẫn dắt.\n\n⚠️ Lưu ý: Không phải lời khuyên pháp lý hay nghề nghiệp. Règlement của école doctorale có thể thay đổi format (durée, ordre, mention). Vérifier en amont auprès de votre direction.",
+    "vocabulary": [
+      {
+        "word": "une soutenance de thèse",
+        "en": "a thesis defense",
+        "vi": "buổi bảo vệ luận án",
+        "pos": "n.f.",
+        "pronunciation_vi": "su-tơ-nãns dơ tèz"
+      },
+      {
+        "word": "le jury de thèse",
+        "en": "the thesis jury",
+        "vi": "hội đồng bảo vệ",
+        "pos": "n.m.",
+        "pronunciation_vi": "ju-ri dơ tèz"
+      },
+      {
+        "word": "un rapporteur, une rapporteure",
+        "en": "external thesis reviewer",
+        "vi": "rapporteur — báo cáo viên ngoài",
+        "pos": "n.",
+        "pronunciation_vi": "ra-por-tơr / ra-por-tơ-rơ"
+      },
+      {
+        "word": "le directeur de thèse",
+        "en": "the thesis director / supervisor",
+        "vi": "giáo sư hướng dẫn",
+        "pos": "n.m.",
+        "pronunciation_vi": "di-rèk-tơr dơ tèz"
+      },
+      {
+        "word": "Monsieur le Président du jury",
+        "en": "Mr. President of the jury",
+        "vi": "Thưa Chủ tịch hội đồng",
+        "pos": "loc.",
+        "pronunciation_vi": "mơ-siơ lơ pré-zi-dã du ju-ri"
+      },
+      {
+        "word": "soutenir une thèse",
+        "en": "to defend a thesis",
+        "vi": "bảo vệ luận án",
+        "pos": "v.",
+        "pronunciation_vi": "su-tơ-nir un tèz"
+      },
+      {
+        "word": "porter sur",
+        "en": "to deal with / to be about",
+        "vi": "nghiên cứu về / xoay quanh",
+        "pos": "v.",
+        "pronunciation_vi": "por-té sur"
+      },
+      {
+        "word": "les remerciements d'usage",
+        "en": "customary acknowledgments",
+        "vi": "lời cảm ơn theo thông lệ",
+        "pos": "n.m.pl.",
+        "pronunciation_vi": "rơ-mèr-si-mã du-zaj"
+      },
+      {
+        "word": "qu'il me soit permis de",
+        "en": "may I be permitted to (formal)",
+        "vi": "xin cho phép tôi (subjunctif littéraire)",
+        "pos": "loc. soutenue",
+        "pronunciation_vi": "kil mơ soa pèr-mi dơ"
+      },
+      {
+        "word": "voir le jour",
+        "en": "to come into being / to be born",
+        "vi": "ra đời",
+        "pos": "loc. v.",
+        "pronunciation_vi": "voar lơ jur"
+      }
+    ],
+    "dialogue": [
+      {
+        "speaker": "Pr. Garnier (Présidente du jury)",
+        "text": "Madame Tran, le jury est constitué. Vous avez la parole pour quarante minutes.",
+        "vi": "Cô Trần, hội đồng đã được thành lập. Cô có quyền phát biểu trong bốn mươi phút."
+      },
+      {
+        "speaker": "Linh",
+        "text": "Je vous remercie, Madame la Présidente. Permettez-moi tout d'abord d'exprimer ma gratitude au jury, et en particulier à Madame Boucher et Monsieur Schmitt, qui ont accepté la charge de rapporteurs.",
+        "vi": "Tôi xin cảm ơn quý Chủ tịch. Trước tiên cho phép tôi bày tỏ lòng biết ơn đến hội đồng, và đặc biệt đến Cô Boucher và Thầy Schmitt, đã nhận trách nhiệm rapporteur."
+      },
+      {
+        "speaker": "Pr. Garnier",
+        "text": "Je vous prie d'aller à l'essentiel — le temps des questions viendra ensuite, et il sera ample.",
+        "vi": "Tôi xin cô đi vào trọng tâm — thời gian hỏi đáp sẽ đến sau, và sẽ rất rộng."
+      },
+      {
+        "speaker": "Linh",
+        "text": "Volontiers. Mon exposé s'organisera en trois temps: la genèse de la problématique, la méthodologie retenue, et les principaux résultats que je soumets à votre appréciation.",
+        "vi": "Rất sẵn lòng. Phần trình bày của tôi sẽ chia ba phần: sự hình thành câu hỏi nghiên cứu, phương pháp đã chọn, và các kết quả chính mà tôi xin trình lên hội đồng đánh giá."
+      }
+    ],
+    "dialogue_long": [
+      {
+        "speaker": "Pr. Garnier (Présidente du jury, ouverture)",
+        "text": "Mesdames, Messieurs, la séance est ouverte. Le jury est constitué de Madame Boucher, professeure à l'Université Lyon 2, en qualité de rapporteure, de Monsieur Schmitt, directeur de recherche au CNRS, en qualité de rapporteur, de moi-même, professeure à l'Université Paris Cité, en qualité de présidente, et de Monsieur Lefèvre, directeur de thèse. Madame Tran, vous avez la parole pour quarante minutes.",
+        "vi": "Thưa quý Cô quý Thầy, phiên họp được mở. Hội đồng gồm Cô Boucher, giáo sư Đại học Lyon 2, với tư cách rapporteure; Thầy Schmitt, giám đốc nghiên cứu CNRS, với tư cách rapporteur; chính tôi, giáo sư Đại học Paris Cité, với tư cách chủ tọa; và Thầy Lefèvre, giám đốc hướng dẫn. Cô Trần, cô có quyền phát biểu trong bốn mươi phút."
+      },
+      {
+        "speaker": "Linh",
+        "text": "Madame la Présidente, Mesdames et Messieurs les membres du jury, je vous remercie d'avoir accepté de juger ce travail mené sous la direction du professeur Lefèvre.",
+        "vi": "Thưa quý Chủ tịch, thưa quý Cô quý Thầy thành viên hội đồng, tôi xin cảm ơn quý vị đã nhận lời thẩm định công trình được thực hiện dưới sự hướng dẫn của giáo sư Lefèvre."
+      },
+      {
+        "speaker": "Linh",
+        "text": "Avant d'entrer dans le détail, qu'il me soit permis de remercier les institutions sans lesquelles cette recherche n'eût pas vu le jour: l'Université Paris Cité qui m'a accueillie, l'École française d'Extrême-Orient pour son soutien archivistique, et l'Université des Sciences sociales et humaines de Hanoi pour l'accès aux fonds vietnamiens. Je remercie également le Programme Eiffel pour le financement initial et l'ANR « Circulations Pédagogiques » pour la prolongation.",
+        "vi": "Trước khi đi vào chi tiết, xin cho phép tôi cảm ơn các thiết chế mà nếu không có thì công trình này đã không thể ra đời: Đại học Paris Cité đã đón tiếp tôi, Viện Viễn Đông Bác Cổ vì hỗ trợ lưu trữ, và Đại học Khoa học Xã hội và Nhân văn Hà Nội vì cho phép tiếp cận các quỹ tài liệu Việt. Tôi cũng cảm ơn Chương trình Eiffel cấp kinh phí ban đầu và ANR « Circulations Pédagogiques » cho phép kéo dài thời gian nghiên cứu."
+      },
+      {
+        "speaker": "Linh",
+        "text": "Mon exposé s'organisera en trois temps. Premier temps: la genèse de la problématique, c'est-à-dire la manière dont une question apparemment simple — comment enseigne-t-on le français aux enfants au Vietnam ? — m'a conduit à un objet historique et politique beaucoup plus large.",
+        "vi": "Phần trình bày của tôi gồm ba phần. Phần thứ nhất: sự hình thành câu hỏi nghiên cứu — tức là cách thức một câu hỏi tưởng đơn giản — người ta dạy tiếng Pháp cho trẻ em ở Việt Nam ra sao ? — đã dẫn tôi đến một đối tượng lịch sử và chính trị rộng lớn hơn nhiều."
+      },
+      {
+        "speaker": "Linh",
+        "text": "Deuxième temps: la méthodologie retenue. J'ai choisi un dispositif mixte qualitatif-quantitatif. Bien que les sources soient hétérogènes — archives institutionnelles à Aix et à Hanoi, manuels scolaires des années mille neuf cent quatre-vingt-six à deux mille vingt, entretiens biographiques avec dix-huit enseignants —, j'ai veillé à ce que leur traitement obéisse à un protocole méthodologique unifié.",
+        "vi": "Phần thứ hai: phương pháp đã chọn. Tôi chọn một thiết kế hỗn hợp định tính-định lượng. Mặc dù các nguồn rất không đồng nhất — lưu trữ thiết chế ở Aix và Hà Nội, sách giáo khoa từ 1986 đến 2020, mười tám phỏng vấn tiểu sử với giáo viên — tôi đã chú ý sao cho việc xử lý chúng tuân theo một quy trình phương pháp luận thống nhất."
+      },
+      {
+        "speaker": "Linh",
+        "text": "Troisième temps: les principaux résultats. Je défends trois thèses. La première: les modèles pédagogiques français n'ont pas été simplement importés au Vietnam, mais réinterprétés à travers une grille locale issue de la tradition pédagogique soviétique des années cinquante.",
+        "vi": "Phần thứ ba: các kết quả chính. Tôi bảo vệ ba luận điểm. Luận điểm thứ nhất: các mô hình sư phạm Pháp không chỉ được nhập vào Việt Nam, mà được diễn giải lại qua một lưới đọc địa phương kế thừa từ truyền thống sư phạm Liên Xô những năm 1950."
+      },
+      {
+        "speaker": "Linh",
+        "text": "La deuxième: la circulation n'est jamais à sens unique. À partir des années deux mille, des innovations vietnamiennes — notamment l'enseignement précoce mixte — sont, à leur tour, repérées et discutées dans les travaux français, quoique cette réception demeure marginale.",
+        "vi": "Luận điểm thứ hai: sự lưu chuyển không bao giờ một chiều. Từ những năm 2000, các cách tân Việt Nam — đáng chú ý là dạy ngoại ngữ sớm hỗn hợp — đến lượt mình được nhận diện và thảo luận trong các công trình Pháp, dẫu sự tiếp nhận này còn ngoài lề."
+      },
+      {
+        "speaker": "Linh",
+        "text": "La troisième: les acteurs de cette circulation ne sont pas, comme on le suppose souvent, les institutions étatiques, mais des trajectoires individuelles — formateurs, traducteurs, enseignants migrants — que j'ai cartographiées dans le chapitre cinq.",
+        "vi": "Luận điểm thứ ba: các tác nhân của sự lưu chuyển này không phải, như người ta thường giả định, các thiết chế nhà nước, mà là các quỹ đạo cá nhân — chuyên gia đào tạo, dịch giả, giáo viên di cư — mà tôi đã lập bản đồ ở chương năm."
+      },
+      {
+        "speaker": "Linh",
+        "text": "Je rappelle, pour conclure, la question centrale: comment se transmet, entre deux espaces nationaux asymétriques, un savoir pédagogique ? Ma réponse, en une phrase: à travers des médiateurs humains que les histoires institutionnelles tendent à occulter. Voici les principaux résultats que je soumets à votre appréciation. Je vous remercie pour votre attention et reste à votre disposition pour vos questions.",
+        "vi": "Để kết thúc, tôi xin nhắc lại câu hỏi trung tâm: làm thế nào, giữa hai không gian quốc gia bất đối xứng, một tri thức sư phạm được truyền lại ? Câu trả lời của tôi, trong một câu: qua các trung gian con người mà lịch sử thiết chế có xu hướng che khuất. Đây là các kết quả chính mà tôi xin trình lên hội đồng đánh giá. Tôi cảm ơn quý vị đã lắng nghe và sẵn sàng trả lời câu hỏi."
+      },
+      {
+        "speaker": "Pr. Garnier",
+        "text": "Je vous remercie, Madame Tran. L'exposé a duré trente-huit minutes, dans le temps imparti. Je donne la parole à Madame Boucher pour le premier rapport.",
+        "vi": "Cảm ơn cô. Bài trình bày kéo dài 38 phút, trong khoảng thời gian quy định. Tôi nhường lời cho Cô Boucher để trình bày rapport đầu tiên."
+      },
+      {
+        "speaker": "Linh",
+        "text": "Avec plaisir, Madame la Présidente.",
+        "vi": "Sẵn lòng, thưa Chủ tịch."
+      }
+    ],
+    "roleplay_prompts": [
+      "Mở đầu một soutenance trong 5 phút: remerciements d'usage (jury → directeur → labo → financeurs → famille en une phrase) + plan de l'exposé en trois temps. Sử dụng đúng « qu'il me soit permis de » một lần.",
+      "Présentez en 3 phút problématique của thèse, sử dụng EXACTLY HAI subjonctif trong subordonnées concessives (« bien que ... soient », « quoique ... demeure »).",
+      "Présidente signale ngầm rằng bạn đang vượt giờ (« je vous prie de conclure »). Adapter ngay: condenser results en une phrase, signaler một section bạn abandonne (« je laisse de côté la dimension comparative — j'y reviendrai aux questions »), kết thúc bằng phrase de clôture chuẩn."
+    ],
+    "register_notes": "Soutenance là không gian học thuật ở mức trang trọng cao nhất. Một số đặc điểm ngôn ngữ C1+ bắt buộc:\n\n(1) VOUVOIEMENT TUYỆT ĐỐI — kể cả với directeur de thèse mà bạn đã thân hai năm. « Tu » dùng nhầm = signal manque de professionalisme.\n\n(2) NOMINALISATION đậm đặc: « la genèse de la problématique » thay « comment la problématique a été formée »; « la circulation des modèles » thay « comment les modèles ont circulé ».\n\n(3) SUBJONCTIF dans subordonnées concessives — bắt buộc:\n- « Bien que les sources soient hétérogènes... »\n- « Quoique cette réception demeure marginale... »\n- « Encore que la généralisation soit délicate... »\n- « Sans que cette dimension ait été pleinement explorée... »\n\n(4) PLUS-QUE-PARFAIT DU SUBJONCTIF — không bắt buộc, nhưng dùng đúng được nhớ:\n- « ... sans lesquelles cette recherche n'eût pas vu le jour »\n- « ... s'il en eût été autrement, nous aurions retenu une autre méthode »\n→ Sai = cố hoa mỹ + thất bại; KHÔNG dùng còn an toàn hơn dùng sai.\n\n(5) FORMULES D'AUTOPOSITIONNEMENT C1:\n- « Je défends que... » (= I argue that)\n- « Je soutiens que... » (= I maintain that)\n- « Je m'efforce de montrer que... » (= I endeavor to show that)\n- « Mon travail s'inscrit dans le champ de... » (= my work is situated in)\n→ TRÁNH « je pense que », « à mon avis », « selon moi » — quá B1.\n\n(6) FORMULES DE CLÔTURE STANDARD:\n- « Je vous remercie pour votre attention. »\n- « Je reste à votre disposition pour vos questions. »\n- « Je soumets ces résultats à votre appréciation. »\n→ KHÔNG: « voilà, c'est tout », « je crois que j'ai fini », « merci ! ».\n\n(7) GERER LE TEMPS = GERER LA PAROLE: jury sẽ ngắt nếu bạn vượt — đó là quyền của président. Đáp lại: « Je vous remercie de me rappeler à l'ordre, Madame la Présidente. Je conclus dans une minute. »",
+    "idiom_glosses": [
+      {
+        "idiom": "Mener un travail à bien (formel)",
+        "literal": "Đưa một công trình tới chỗ tốt",
+        "meaning": "Hoàn thành một công trình đến nơi đến chốn — chuẩn học thuật.",
+        "example": "Le directeur de thèse a permis à la candidate de mener à bien un travail ambitieux."
+      },
+      {
+        "idiom": "Sous la direction du Pr. X (formel)",
+        "literal": "Dưới sự hướng dẫn của Pr. X",
+        "meaning": "Cú pháp chuẩn để tri ân directeur — không thay được bằng « avec ».",
+        "example": "Cette thèse a été menée sous la direction du professeur Lefèvre."
+      },
+      {
+        "idiom": "Qu'il me soit permis de (très soutenu)",
+        "literal": "Xin cho phép tôi",
+        "meaning": "Subjunctif littéraire — formules mở đầu remerciements ở registre cao.",
+        "example": "Qu'il me soit permis de remercier ma directrice de thèse pour sa patience."
+      },
+      {
+        "idiom": "Sans laquelle ... n'eût pas vu le jour (littéraire)",
+        "literal": "Mà nếu không có thì ... đã không ra đời",
+        "meaning": "Plus-que-parfait du subjonctif — registre littéraire, dùng cho remerciements thiết chế.",
+        "example": "Cette recherche, sans le concours de ces archives, n'eût pas vu le jour."
+      }
+    ],
+    "exercises": [
+      {
+        "type": "fill-blank",
+        "question": "Bien que les sources ___ hétérogènes, leur traitement obéit à un protocole unifié.",
+        "answer": "soient"
+      },
+      {
+        "type": "matching",
+        "pairs": [
+          ["soutenir une thèse", "bảo vệ luận án"],
+          ["un rapporteur", "báo cáo viên ngoài"],
+          ["les remerciements d'usage", "lời cảm ơn theo thông lệ"],
+          ["voir le jour", "ra đời"]
+        ],
+        "instruction": "Nối thuật ngữ soutenance với nghĩa Việt"
+      },
+      {
+        "type": "translation",
+        "vietnamese": "Trước khi đi vào chi tiết, xin cho phép tôi cảm ơn các thiết chế mà nếu không có thì công trình đã không ra đời.",
+        "french": "Avant d'entrer dans le détail, qu'il me soit permis de remercier les institutions sans lesquelles cette recherche n'eût pas vu le jour."
+      }
+    ]
+  },
+  {
+    "id": "lresponding_to_rapporteur",
+    "level": "C1",
+    "category": "fluency",
+    "title_vi": "Đáp lại một rapporteur sévère",
+    "title_en": "Responding to a severe rapporteur",
+    "sentences": [
+      {
+        "en": "Madame la rapporteure, je vous remercie pour la rigueur de votre lecture, qui m'oblige à préciser un point essentiel sur lequel votre objection porte, je crois, à faux.",
+        "vi": "Thưa Cô rapporteure, tôi cảm ơn vì sự chặt chẽ trong cách Cô đọc, điều đó buộc tôi phải làm rõ một điểm cốt yếu mà tôi tin sự phản biện của Cô đã bắn lệch.",
+        "pronunciation_focus": [
+          "rapporteure → ra-por-tơ-rơ",
+          "rigueur → ri-gơr",
+          "oblige → o-blij",
+          "porte à faux → port a fo"
+        ]
+      },
+      {
+        "en": "Vous me reprochez de ne pas avoir cité les travaux de Foucault sur ce point précis ; je vous répondrai, sans détour, que je les ai sciemment écartés, parce qu'ils relèvent d'un cadre épistémologique distinct de celui que je revendique.",
+        "vi": "Cô trách tôi không trích các công trình của Foucault về điểm cụ thể này; tôi xin đáp, không quanh co, rằng tôi đã chủ ý gạt chúng ra, bởi chúng thuộc một khung tri thức luận khác với khung mà tôi nhận.",
+        "pronunciation_focus": [
+          "reprochez → rơ-pro-shé",
+          "sciemment → si-a-mã",
+          "écartés → é-kar-té",
+          "épistémologique → é-pis-té-mo-lo-jik"
+        ]
+      },
+      {
+        "en": "Je conteste — respectueusement mais fermement — l'idée que mon échantillon soit insuffisant pour fonder les conclusions que j'avance.",
+        "vi": "Tôi phản bác — một cách tôn trọng nhưng dứt khoát — ý kiến cho rằng mẫu nghiên cứu của tôi không đủ để dựng nên các kết luận mà tôi đưa ra.",
+        "pronunciation_focus": [
+          "conteste → kõn-tèst",
+          "respectueusement → rès-pèk-tu-ơz-mã",
+          "fermement → fèr-mơ-mã",
+          "insuffisant → an-su-fi-zã"
+        ]
+      },
+      {
+        "en": "Quoique votre critique méthodologique soit légitime sur le principe, elle me paraît, en l'occurrence, déplacée: la question que je traite n'appelle pas le protocole quantitatif que vous suggérez.",
+        "vi": "Cho dù sự phê phán phương pháp luận của Cô về nguyên tắc là hợp lý, đối với tôi nó, trong trường hợp này, là không đúng chỗ: câu hỏi tôi xử lý không yêu cầu quy trình định lượng mà Cô gợi ý.",
+        "pronunciation_focus": [
+          "Quoique → koa-kơ",
+          "soit → soa",
+          "déplacée → dé-pla-sé",
+          "n'appelle pas → na-pèl pa"
+        ]
+      },
+      {
+        "en": "Je tiens à dire avec netteté que je ne partage pas votre lecture du chapitre quatre, et je m'apprête à en exposer les raisons une à une.",
+        "vi": "Tôi muốn nói rõ rằng tôi không chia sẻ cách Cô đọc chương bốn, và tôi chuẩn bị trình bày lần lượt từng lý do.",
+        "pronunciation_focus": [
+          "tiens à → tian a",
+          "netteté → nèt-té",
+          "partage → par-taj",
+          "m'apprête → ma-prèt"
+        ]
+      }
+    ],
+    "cultural_notes_vi": "Tranh luận học thuật Pháp TRỰC TIẾP HƠN tranh luận Anglo-saxon — đây là nét văn hóa quan trọng nhất Việt Nam thường hiểu sai khi sang Pháp.\n\nKHÁC BIỆT VỚI ANGLO ACADEMIC NORMS:\n- Anglo: « I'd like to gently push back on this point... », « one might wonder whether... », « perhaps it could be argued that... » → softening obligatoire trước mỗi lập luận trái ngược.\n- French: « Je conteste cette lecture », « Je ne partage pas cette analyse », « Sur ce point, nous divergeons fondamentalement », « Je m'inscris en faux contre cette thèse » → KHÔNG cần soften.\n\nVÌ SAO ? Truyền thống intellectuelle française từ disputatio thời trung cổ → débat des Lumières → tradition de la contradiction (Sartre vs Camus 1952, Bourdieu vs Boudon, Aron vs les structuralistes). Đối với người Pháp, một lập luận TỐT là một lập luận SỐNG SÓT khi bị tấn công trực diện. Nói « may I gently suggest... » với một rapporteur Pháp khiến họ nghĩ bạn không tin lập luận của chính mình.\n\nGIỚI HẠN — DIRECT, KHÔNG PHẢI AGGRESSIF:\n- « Je conteste l'idée que... » → ACCEPTABLE (direct, raisonné)\n- « Je rejette catégoriquement... » → ACCEPTABLE en contexte (rejet motivé, généralement avec subjonctif)\n- « Vous avez tort » sans argumentation → INACCEPTABLE (rude, infantilisant)\n- « C'est faux » sans nuance → INACCEPTABLE pour soutenance (acceptable peut-être en café entre collègues)\n\nĐIỀU PHẢI ĐI KÈM với mỗi désaccord direct:\n(a) RECONNAISSANCE de la rigueur du rapporteur — « Je vous remercie pour la rigueur de votre lecture » / « Votre objection est légitime sur le principe ».\n(b) ARGUMENT — KHÔNG được nói « je ne suis pas d'accord » và dừng lại. Phải kèm raison: « parce que... », « dans la mesure où... », « pour la raison suivante: ... ».\n(c) OUVERTURE — kết thúc phản biện bằng câu cho thấy bạn vẫn nghe: « Cela étant, votre remarque me conduit à préciser X que je n'avais pas suffisamment développé. »\n\nCẤU TRÚC « THANK + DISAGREE + ARGUE + OPEN » là chuỗi học thuật Pháp chuẩn để réfuter une critique majeure.\n\nCÁI BẪY CHO VIỆT NAM:\n(a) Văn hóa Việt + lớp tiếng Pháp B2 dạy formules trống rỗng « Je suis tout à fait d'accord avec vous » → ở C1 academic, bị xem là không có suy nghĩ riêng.\n(b) Sợ « cãi » giáo sư → nhường quá nhiều → jury hiểu là bạn không có defense → mention thấp.\n(c) Học theo Anglo « may I respectfully suggest... » → nghe ngắc ngứ ở Pháp.\n(d) Đáp lại bằng tiếng Anh « no actually I think... » → mất register. PHẢI nói tiếng Pháp đúng cấp độ.\n\nĐỌC THÊM (background, không bắt buộc):\n- Sartre, Réponse à Albert Camus (Les Temps modernes, août 1952) — một mẫu mực của tranh luận trí thức trực tiếp + tu từ.\n- Bourdieu, Réponse à Boudon (Actes de la recherche en sciences sociales, 1986).\n- Foucault, débats avec Chomsky (1971, télévision néerlandaise).",
+    "tip_advice_vi": "PROTOCOLE 7 BƯỚC để réfuter une critique sévère de rapporteur:\n\n(1) NE PAS RÉPONDRE TROP VITE — pause 2 secondes obligatoire. « Permettez-moi un instant pour vous répondre. » Câu này ÉCLAIRCIT cho jury là bạn écoute sérieusement, không défensif.\n\n(2) RECONNAÎTRE LA LÉGITIMITÉ — « Votre objection est légitime sur le principe », « La rigueur de votre lecture m'oblige à préciser ». Đây KHÔNG phải concession — đây là báo hiệu rằng bạn ENTENDU.\n\n(3) DISTINGUER ce với quoi bạn agree và disagree — quan trọng nhất bước. Hiếm khi rapporteur sai HOÀN TOÀN; thường họ sai về một aspect trong khi raison về aspect khác. « Sur le point méthodologique, je vous donne raison. Sur la conclusion qu'on en tire, je conteste. »\n\n(4) FORMULER LA CONTESTATION DIRECTEMENT — không hedge, không bóng gió. « Je conteste l'idée que ... soit ». Subjunctif sau « contester l'idée que », « ne pas partager que », « refuser que » — bắt buộc.\n\n(5) DONNER L'ARGUMENT — un, parfois deux. KHÔNG ba: ba luận điểm = jury mất tập trung. Cấu trúc: « ...pour la raison suivante: [Argument 1]. Et corollairement, [Argument 2 nếu cần]. »\n\n(6) ANTICIPER LA CONTRE-OBJECTION — nếu bạn biết rapporteur sẽ phản bác argument của bạn, đặt câu hỏi đó vào miệng họ trước: « On pourrait à juste titre m'objecter ici que... À cela je répondrais que... » → cho thấy bạn đã nghĩ tới luận điểm cao hơn họ.\n\n(7) ROUVRIR L'ÉCHANGE — kết thúc bằng câu cho thấy bạn không cố « gagner » mà tiếp tục dialoguer. « Je laisse cela à votre appréciation. » / « Je serai bien sûr heureuse d'échanger plus avant si vous le souhaitez. »\n\nTRÁNH:\n- Im lặng vì bối rối → jury nghĩ bạn không có response.\n- Phản công cá nhân (« vous n'avez pas lu attentivement »): même si vrai, INACCEPTABLE.\n- Apologetic excessif (« Vous avez peut-être raison, je n'avais pas pensé à ça... ») trong khi bạn vẫn tin là mình đúng → bị xem là không có conviction.\n- Recourir à l'anglais ou langage non-académique en frustrant.\n\nLUYỆN Ở NHÀ: viết ra 5 critiques mà bạn nghĩ rapporteur có thể đưa ra, và viết phản hồi mỗi cái theo cấu trúc 7 bước. Đọc to. Recorder và nghe lại — bạn sẽ thấy chỗ nào tone xuống thành défensif, chỗ nào sang aggressif. Mục tiêu: « calme, ferme, argumenté » — đó là tonus học thuật Pháp chuẩn.",
+    "vocabulary": [
+      {
+        "word": "porter à faux",
+        "en": "to miss the mark / to be off-target",
+        "vi": "bắn lệch / không trúng đích",
+        "pos": "loc. v.",
+        "pronunciation_vi": "por-té a fo"
+      },
+      {
+        "word": "sciemment",
+        "en": "knowingly / deliberately",
+        "vi": "có chủ ý / cố ý",
+        "pos": "adv.",
+        "pronunciation_vi": "si-a-mã"
+      },
+      {
+        "word": "relever d'un cadre",
+        "en": "to belong to a framework",
+        "vi": "thuộc về một khung",
+        "pos": "loc. v.",
+        "pronunciation_vi": "rơ-lơ-vé dan ka-drơ"
+      },
+      {
+        "word": "l'épistémologie",
+        "en": "epistemology",
+        "vi": "tri thức luận",
+        "pos": "n.f.",
+        "pronunciation_vi": "é-pis-té-mo-lo-ji"
+      },
+      {
+        "word": "avec netteté",
+        "en": "with firmness / with clarity",
+        "vi": "một cách dứt khoát",
+        "pos": "loc.",
+        "pronunciation_vi": "a-vèk nèt-té"
+      },
+      {
+        "word": "sans détour",
+        "en": "without circumlocution / directly",
+        "vi": "không quanh co",
+        "pos": "loc.",
+        "pronunciation_vi": "sã dé-tur"
+      },
+      {
+        "word": "déplacé(e)",
+        "en": "out of place / inappropriate",
+        "vi": "không đúng chỗ",
+        "pos": "adj.",
+        "pronunciation_vi": "dé-pla-sé"
+      },
+      {
+        "word": "contester l'idée que (+ subj.)",
+        "en": "to contest the idea that",
+        "vi": "phản bác ý kiến cho rằng",
+        "pos": "loc. v.",
+        "pronunciation_vi": "kõn-tès-té li-dé kơ"
+      },
+      {
+        "word": "s'inscrire en faux contre",
+        "en": "to firmly disagree with",
+        "vi": "phản bác mạnh mẽ",
+        "pos": "loc. v.",
+        "pronunciation_vi": "san-skri-rơ ã fo kõn-trơ"
+      },
+      {
+        "word": "tenir à dire que",
+        "en": "to insist on saying that",
+        "vi": "muốn nói rõ rằng",
+        "pos": "loc. v.",
+        "pronunciation_vi": "tơ-nir a dir kơ"
+      }
+    ],
+    "dialogue": [
+      {
+        "speaker": "Pr. Boucher (rapporteure)",
+        "text": "Madame Tran, vous écartez Foucault sans justification convaincante, ce qui me paraît un point faible majeur de votre architecture théorique.",
+        "vi": "Cô Trần, cô gạt Foucault mà không có lý do thuyết phục, điều này theo tôi là một điểm yếu lớn của kiến trúc lý thuyết của cô."
+      },
+      {
+        "speaker": "Linh",
+        "text": "Permettez-moi un instant. Je vous remercie pour la rigueur de cette objection. Je vous répondrai, sans détour, que cet écartement n'est nullement un oubli, mais un choix raisonné.",
+        "vi": "Cho tôi xin một khoảnh khắc. Tôi cảm ơn về sự chặt chẽ của phản biện này. Tôi xin đáp, không quanh co, rằng việc gạt Foucault không hề là một sự bỏ sót, mà là một lựa chọn có lý."
+      },
+      {
+        "speaker": "Pr. Boucher",
+        "text": "Je vous écoute.",
+        "vi": "Tôi đang nghe."
+      },
+      {
+        "speaker": "Linh",
+        "text": "Foucault travaille dans un cadre archéologique qui présuppose la rupture épistémique entre épistémès. Mon objet — la transmission pédagogique sur quatre décennies — appelle au contraire un cadre processuel: je conteste l'idée que la rupture soit l'outil pertinent ici.",
+        "vi": "Foucault làm việc trong khung khảo cổ học giả định sự đứt gãy giữa các épistémès. Đối tượng của tôi — sự truyền lại sư phạm trong bốn thập kỷ — ngược lại đòi hỏi một khung quá trình: tôi phản bác ý kiến cho rằng đứt gãy là công cụ thích hợp ở đây."
+      }
+    ],
+    "dialogue_long": [
+      {
+        "speaker": "Pr. Boucher (rapporteure, premier point)",
+        "text": "Madame Tran, j'ouvre par un point qui me semble central. Vous écartez Foucault sans justification convaincante, ce qui me paraît un point faible majeur de votre architecture théorique. Comment justifiez-vous cette absence ?",
+        "vi": "Cô Trần, tôi mở đầu bằng một điểm mà theo tôi là trung tâm. Cô gạt Foucault mà không có lý do thuyết phục, điều này theo tôi là một điểm yếu lớn của kiến trúc lý thuyết của cô. Cô biện minh thế nào cho sự thiếu vắng này ?"
+      },
+      {
+        "speaker": "Linh",
+        "text": "Permettez-moi un instant pour répondre clairement. Je vous remercie pour la rigueur de cette objection — elle m'oblige à préciser un choix qui mérite, en effet, d'être explicité davantage. Je vous répondrai, sans détour, que cet écartement n'est nullement un oubli, mais un choix raisonné.",
+        "vi": "Cho phép tôi một khoảnh khắc để trả lời rõ ràng. Tôi cảm ơn về sự chặt chẽ của phản biện này — nó buộc tôi làm rõ một lựa chọn mà thật sự đáng được trình bày kỹ hơn. Tôi đáp, không quanh co, rằng việc gạt Foucault không hề là một sự bỏ sót, mà là một lựa chọn có lý."
+      },
+      {
+        "speaker": "Linh",
+        "text": "Foucault, dans L'archéologie du savoir et dans Surveiller et punir, travaille dans un cadre qui présuppose la rupture épistémique entre formations discursives. Mon objet — la transmission pédagogique sur quatre décennies — appelle au contraire un cadre processuel, attentif aux continuités, aux médiateurs, aux transformations lentes. Je conteste l'idée que la grille foucaldienne soit l'outil pertinent ici.",
+        "vi": "Foucault, trong L'Archéologie du savoir và Surveiller et punir, làm việc trong một khung giả định sự đứt gãy tri thức luận giữa các formations discursives. Đối tượng của tôi — sự truyền lại sư phạm trong bốn thập kỷ — ngược lại đòi hỏi một khung quá trình, chú ý đến tính liên tục, đến trung gian, đến biến đổi chậm. Tôi phản bác ý kiến cho rằng lưới đọc Foucault là công cụ phù hợp ở đây."
+      },
+      {
+        "speaker": "Pr. Boucher",
+        "text": "Mais Foucault traite aussi de continuités, dans la généalogie ! Vous le simplifiez.",
+        "vi": "Nhưng Foucault cũng xử lý tính liên tục, trong phương pháp phả hệ! Cô đang đơn giản hóa ông."
+      },
+      {
+        "speaker": "Linh",
+        "text": "Sur ce point, je vous donne raison: la généalogie foucaldienne s'attache aux continuités. Je nuance donc ma formulation: ce n'est pas Foucault dans son ensemble que j'écarte, mais l'usage qu'en fait l'historiographie pédagogique française des années deux mille — usage qui privilégie la rupture. Je m'en explique au chapitre deux, page soixante-dix-huit.",
+        "vi": "Về điểm này, tôi nhận lỗi với Cô: phương pháp phả hệ Foucault chú ý tính liên tục. Vậy tôi điều chỉnh cách diễn đạt: không phải Foucault toàn thể tôi gạt, mà cách sử dụng ông của lịch sử sư phạm Pháp những năm 2000 — cách sử dụng nhấn vào đứt gãy. Tôi giải thích ở chương hai, trang 78."
+      },
+      {
+        "speaker": "Pr. Boucher (deuxième point)",
+        "text": "Deuxième point. Votre échantillon — dix-huit entretiens — me paraît trop restreint pour fonder vos conclusions sur quatre décennies.",
+        "vi": "Điểm thứ hai. Mẫu nghiên cứu của cô — 18 phỏng vấn — đối với tôi là quá nhỏ để dựng kết luận về bốn thập kỷ."
+      },
+      {
+        "speaker": "Linh",
+        "text": "Je conteste — respectueusement mais fermement — l'idée que mon échantillon soit insuffisant. Quoique votre critique soit légitime sur le principe en logique quantitative, elle me paraît, en l'occurrence, déplacée: la question que je traite n'appelle pas le protocole quantitatif que vous suggérez. Je travaille en analyse compréhensive, où la saturation théorique — atteinte vers le quatorzième entretien — est le critère pertinent.",
+        "vi": "Tôi phản bác — một cách tôn trọng nhưng dứt khoát — ý kiến rằng mẫu của tôi không đủ. Cho dù phê phán của Cô về nguyên tắc là hợp lý trong logic định lượng, nó, trong trường hợp này, không đúng chỗ: câu hỏi tôi xử lý không yêu cầu quy trình định lượng Cô gợi ý. Tôi làm việc theo phân tích hiểu (compréhensive), nơi bão hòa lý thuyết — đạt được khoảng phỏng vấn thứ 14 — là tiêu chí thích hợp."
+      },
+      {
+        "speaker": "Pr. Boucher",
+        "text": "La saturation théorique reste un argument ad hoc largement contesté.",
+        "vi": "Bão hòa lý thuyết vẫn là luận điểm ad hoc còn rất gây tranh cãi."
+      },
+      {
+        "speaker": "Linh",
+        "text": "Je connais le débat. Glaser et Strauss l'ont introduite en mille neuf cent soixante-sept ; Bowen l'a précisée en deux mille huit. La contestation existe, certes, notamment chez O'Reilly et Parker en deux mille douze. Cela étant, le concept demeure standard en sociologie qualitative française — Beaud et Weber, Guide de l'enquête de terrain, le retiennent comme critère opérant. Je m'inscris en faux contre l'idée qu'il faille importer ici les normes quantitatives.",
+        "vi": "Tôi biết tranh luận đó. Glaser và Strauss đưa khái niệm này vào năm 1967; Bowen làm rõ năm 2008. Sự phản đối tồn tại, chắc chắn, đặc biệt từ O'Reilly và Parker năm 2012. Tuy vậy, khái niệm vẫn chuẩn trong xã hội học định tính Pháp — Beaud và Weber, Guide de l'enquête de terrain, giữ nó làm tiêu chí. Tôi phản bác mạnh mẽ ý kiến cho rằng phải nhập các chuẩn định lượng ở đây."
+      },
+      {
+        "speaker": "Pr. Boucher",
+        "text": "C'est une réponse argumentée. Je note la divergence et nous y reviendrons à la délibération.",
+        "vi": "Đây là một câu trả lời có lập luận. Tôi ghi nhận sự khác biệt và chúng tôi sẽ trở lại điều này khi nghị án."
+      },
+      {
+        "speaker": "Linh",
+        "text": "Je vous remercie, Madame la rapporteure. Je tiens à dire avec netteté que ces désaccords m'ont conduit à mieux formuler ma position — votre lecture sera utile, même là où nous divergeons.",
+        "vi": "Tôi cảm ơn Cô. Tôi muốn nói rõ rằng những bất đồng này đã giúp tôi diễn đạt vị trí của mình tốt hơn — cách Cô đọc sẽ hữu ích, ngay cả ở những điểm chúng ta khác."
+      }
+    ],
+    "roleplay_prompts": [
+      "Rapporteur cho rằng échantillon của bạn « trop restreint pour conclure ». Đáp lại trực tiếp theo cấu trúc 7 bước (pause → reconnaissance → distinguer → contester → argumenter → anticiper → rouvrir). Sử dụng « Je conteste l'idée que ... soit » đúng một lần.",
+      "Rapporteur dùng giọng kẻ cả (« ce travail manque clairement de maturité »). Đáp lại không leo thang nhưng KHÔNG nhường: « Je tiens à dire avec netteté que je ne partage pas cette appréciation. Voici pourquoi: ... » + một argument cụ thể.",
+      "Rapporteur trích một paper bạn đã đọc và sciemment gạt. Đáp: thừa nhận đã đọc, giải thích quyết định bằng « Je l'ai sciemment écarté pour la raison suivante: ... » + lý do épistémologique cụ thể. KHÔNG xin lỗi."
+    ],
+    "register_notes": "Tranh luận Pháp + désaccord trực tiếp ở C1+ đòi hỏi register CHÍNH XÁC:\n\n(1) FORMULES DE CONTESTATION — toàn bộ cần subjunctif sau « que »:\n- « Je conteste l'idée que [+ subj.] » — « Je conteste l'idée que mon échantillon soit insuffisant. »\n- « Je ne partage pas que [+ subj.] » — « Je ne partage pas que cette analyse soit pertinente. »\n- « Je m'inscris en faux contre l'idée que [+ subj.] » — registre élevé.\n- « Je refuse que [+ subj.] » — fort, dùng cẩn thận.\n- « Je récuse l'argument selon lequel [+ subj.] » — académique.\n\n(2) RECONNAISSANCE PARTIELLE OBLIGATOIRE:\n- « Sur le principe, votre objection est légitime. »\n- « Sur ce point, je vous donne raison. »\n- « Votre lecture est rigoureuse, et m'oblige à préciser. »\n→ Sans cette reconnaissance, contestation = arrogance.\n\n(3) MARQUEURS DE DIRECTITÉ ACCEPTABLES:\n- « sans détour » (= without circumlocution)\n- « avec netteté » (= with firmness)\n- « pour le dire clairement » (= to put it clearly)\n- « je le dis franchement » (= I say it frankly)\n→ Ces marqueurs SIGNALENT que ce qui suit sera direct, et autorisent la directité ensuite.\n\n(4) FORMULES DE CONCESSION D'OUVERTURE:\n- « Cela étant, ... »\n- « Il n'en demeure pas moins que ... »\n- « Cela ne change rien à l'essentiel: ... »\n→ Permettent de céder un point sans céder l'argument central.\n\n(5) SUBJONCTIF DANS SUBORDONNÉES CONCESSIVES — bắt buộc à C1:\n- « Quoique votre critique soit légitime sur le principe... »\n- « Bien que je connaisse le débat sur la saturation... »\n- « Encore que la généralisation soit délicate... »\n- « Quel que soit l'argument retenu... »\n\n(6) TRÁNH:\n- « Je suis tout à fait d'accord avec vous » alors que vous ne l'êtes pas — fausse politesse, repérée.\n- « Vous avez tort » sans argument — ad hominem.\n- « Peut-être que vous avez raison... » alors que vous savez le contraire — manque de conviction.\n- « C'est faux ! » → trop oral, inadapté soutenance.\n- Anglo-style « may I respectfully suggest that perhaps... » → en français, paraît évasif.",
+    "idiom_glosses": [
+      {
+        "idiom": "Porter à faux (formel)",
+        "literal": "Mang đến chỗ sai",
+        "meaning": "Bắn lệch / không trúng đích — phép phản bác lịch sự nhưng dứt khoát.",
+        "example": "Votre objection, sur ce point précis, porte à faux: la question est ailleurs."
+      },
+      {
+        "idiom": "Sans détour (formel)",
+        "literal": "Không đường vòng",
+        "meaning": "Không quanh co — báo hiệu sẽ nói thẳng, biện minh cho directness.",
+        "example": "Je vous le dis sans détour: cette critique me paraît mal fondée."
+      },
+      {
+        "idiom": "Avec netteté (soutenu)",
+        "literal": "Với sự rõ nét",
+        "meaning": "Một cách dứt khoát — assertion firmness, registre élevé.",
+        "example": "Je tiens à dire avec netteté que je ne partage pas votre lecture."
+      },
+      {
+        "idiom": "S'inscrire en faux contre (soutenu)",
+        "literal": "Ghi tên ngược lại với",
+        "meaning": "Phản bác mạnh mẽ — formule académique standard cho désaccord ferme.",
+        "example": "Je m'inscris en faux contre l'idée qu'il faille importer ici les normes quantitatives."
+      }
+    ],
+    "exercises": [
+      {
+        "type": "fill-blank",
+        "question": "Je conteste l'idée que mon échantillon ___ insuffisant.",
+        "answer": "soit"
+      },
+      {
+        "type": "matching",
+        "pairs": [
+          ["porter à faux", "bắn lệch"],
+          ["sciemment", "có chủ ý"],
+          ["sans détour", "không quanh co"],
+          ["s'inscrire en faux contre", "phản bác mạnh mẽ"]
+        ],
+        "instruction": "Nối thuật ngữ tranh luận với nghĩa Việt"
+      },
+      {
+        "type": "translation",
+        "vietnamese": "Cho dù phê phán phương pháp luận của Cô về nguyên tắc là hợp lý, đối với tôi nó, trong trường hợp này, là không đúng chỗ.",
+        "french": "Quoique votre critique méthodologique soit légitime sur le principe, elle me paraît, en l'occurrence, déplacée."
+      }
+    ]
+  },
+  {
+    "id": "lanr_grant_proposal",
+    "level": "C1",
+    "category": "fluency",
+    "title_vi": "Trình bày một dự án ANR",
+    "title_en": "Defending an ANR grant proposal",
+    "sentences": [
+      {
+        "en": "Le présent projet, intitulé « Circulations Pédagogiques Asie-Europe », s'inscrit dans l'axe quatre du programme générique de l'ANR — sciences humaines et sociales — et sollicite un financement sur quarante-deux mois.",
+        "vi": "Dự án này, mang tên « Circulations Pédagogiques Asie-Europe », nằm trong trục bốn của chương trình générique ANR — khoa học nhân văn và xã hội — và xin tài trợ trong 42 tháng.",
+        "pronunciation_focus": [
+          "intitulé → an-ti-tu-lé",
+          "axe → ax",
+          "générique → jé-né-rik",
+          "sollicite → so-li-sit"
+        ]
+      },
+      {
+        "en": "Notre consortium associe trois unités de recherche — l'UMR huit cent quarante-trois, l'EFEO, et l'École doctorale de Hanoi — autour d'une question commune: comment se fabrique, en pratique, la circulation d'un savoir pédagogique ?",
+        "vi": "Consortium gồm ba đơn vị nghiên cứu — UMR 8043, EFEO, và École doctorale Hà Nội — quanh một câu hỏi chung: trên thực tế, sự lưu chuyển của một tri thức sư phạm được tạo ra như thế nào?",
+        "pronunciation_focus": [
+          "consortium → kõn-sor-siom",
+          "associe → a-so-si",
+          "fabrique → fa-brik",
+          "savoir → sa-voar"
+        ]
+      },
+      {
+        "en": "Quoique le terrain vietnamien ait fait l'objet d'études ponctuelles, aucune enquête longitudinale d'envergure n'a, à ce jour, été conduite — ce que ce projet entend précisément combler.",
+        "vi": "Cho dù terrain Việt Nam đã được nghiên cứu lẻ tẻ, chưa có khảo sát theo chuỗi thời gian quy mô nào tới nay được thực hiện — đó chính là khoảng trống dự án này muốn lấp.",
+        "pronunciation_focus": [
+          "Quoique → koa-kơ",
+          "ait fait → è fè",
+          "longitudinale → lõn-ji-tu-di-nal",
+          "envergure → ãn-vèr-gur"
+        ]
+      },
+      {
+        "en": "Les livrables prévus comprennent trois articles dans des revues classées de rang A, une monographie aux Presses universitaires de Rennes, et la mise en accès libre d'un corpus de mille deux cents documents archivés.",
+        "vi": "Các sản phẩm dự kiến gồm ba bài báo trên tạp chí xếp hạng A, một chuyên khảo tại NXB Đại học Rennes, và mở quyền truy cập tự do một tập hợp 1.200 tài liệu lưu trữ.",
+        "pronunciation_focus": [
+          "livrables → li-vra-blơ",
+          "monographie → mo-no-gra-fi",
+          "Presses → près",
+          "archivés → ar-shi-vé"
+        ]
+      },
+      {
+        "en": "Le budget sollicité, soit cent soixante-treize mille euros, se ventile en frais de mission, gratifications de stages doctoraux, prestations de service et frais d'environnement selon la grille standard de l'ANR.",
+        "vi": "Kinh phí xin cấp, tức 173.000 euros, phân bổ thành phí công tác, trợ cấp thực tập sau đại học, dịch vụ thuê ngoài và frais d'environnement theo bảng chuẩn ANR.",
+        "pronunciation_focus": [
+          "soit → soa",
+          "ventile → vãn-til",
+          "gratifications → gra-ti-fi-ka-sion",
+          "environnement → ãn-vi-ron-mã"
+        ]
+      }
+    ],
+    "cultural_notes_vi": "L'ANR (Agence Nationale de la Recherche) là cơ quan tài trợ nghiên cứu chính của Pháp, lập năm 2005. Hiểu về văn hóa đệ trình ANR là kỹ năng C1+ thiết yếu cho researcher Pháp.\n\nCẤU TRÚC CHƯƠNG TRÌNH (đại cương — chi tiết thay đổi hằng năm):\n- AAPG (Appel à Projets Générique) — annuel, mở rộng tới mọi lĩnh vực, chia thành « axes ». Axes thay đổi mỗi năm; ví dụ axe 4 hiện nay là « SHS » (sciences humaines et sociales) — nhưng VÉRIFIER trên site ANR.\n- Programmes spécifiques: ANR ASTRID (défense), ANR LabCom (laboratoires communs avec entreprises), JCJC (Jeunes Chercheuses Jeunes Chercheurs — pour chercheurs en début de carrière), PRC (Projet de Recherche Collaborative), PRCE (avec entreprise), PRCI (international).\n- Programmes thématiques (annuels): liés à plans nationaux (transition écologique, santé, IA…).\n\nTRÌNH TỰ ĐỆ TRÌNH (en deux étapes pour AAPG):\n(1) PRÉ-PROPOSITION (mars-avril): document court (~6 trang). Décrit hypothèse, méthodologie, consortium. Évalué par un comité d'experts.\n(2) PROPOSITION COMPLÈTE (juillet — si pré-proposition admise): document long (~30 trang). Détaille livrables, calendrier, budget, encadrement, environnement scientifique.\n(3) AUDITION (parfois): si projet en finale serrée. Le coordinateur défend devant comité (15 min présentation + 15 min questions).\n(4) DÉCISION (automne).\n(5) DÉMARRAGE: contrat signé entre établissement et ANR. Versement prèléevement par tranches.\n\nVOCABULAIRE INSTITUTIONNEL CHUẨN:\n- Le coordinateur / la coordinatrice du projet — lead PI, signe pour l'établissement.\n- Le partenaire — autres laboratoires/établissements impliqués.\n- L'unité de recherche (UMR, EA, LMR…) — laboratoire d'appartenance.\n- Le comité de pilotage — organe de gouvernance interne au projet.\n- Les WP (work packages) — paquets de travail, cadre standard de structuration.\n- Les livrables (deliverables) — produits engagés (articles, ouvrages, datasets, prototypes…).\n- Les jalons (milestones) — étapes-clés permettant de mesurer l'avancement.\n- Le coût marginal vs le coût complet — budgets différents selon partenaire.\n- Le frais d'environnement (FE) — pourcentage forfaitaire pour frais induits.\n\nĐIỂM CRITIQUE NHƯNG ÍT NGƯỜI VIỆT BIẾT:\n(a) ANR ne finance PAS les salaires statutaires des chercheurs permanents. Finance: postdocs, doctorants (gratifications), missions, équipements, prestations.\n(b) Taux de succès AAPG ~10-15% — projet rejeté est la NORME, pas l'exception.\n(c) Coordinateur DOIT être chercheur statutaire en France (pas seulement docteur). Pour Vietnamiens: il faut être MCF, CR/DR (CNRS), ou équivalent dans un établissement d'enseignement supérieur français — et donc avoir une qualification CNU au préalable (cf. lesson cnu_qualification).\n(d) Les pré-propositions sont évaluées en aveugle: ne pas trop se citer; risque d'identification.\n\nĐỌC THÊM (officiel, à vérifier en amont):\n- Site officiel: anr.fr (chercher « guide du candidat AAPG » année courante).\n- Comités scientifiques: liste publiée annuellement.\n\n⚠️ Lưu ý: Các thông tin trên là mô tả thông lệ, KHÔNG phải tư vấn pháp lý hay nghề nghiệp. Règles ANR thay đổi hằng năm — toujours consulter le « guide du candidat » officiel de l'année et le service ingénierie de projet de votre établissement avant tout dépôt.",
+    "tip_advice_vi": "PROTOCOLE 8 BƯỚC để bảo vệ một projet ANR oralement (audition):\n\n(1) STRUCTURE DE L'EXPOSÉ — 15 minutes max:\n- Slide 1: Titre, acronyme, axe, durée, budget.\n- Slide 2-3: Question scientifique, état de l'art, verrou.\n- Slide 4: Hypothèse principale en une phrase.\n- Slide 5-7: Méthodologie + WP.\n- Slide 8: Consortium (qui fait quoi).\n- Slide 9: Calendrier + jalons.\n- Slide 10: Livrables.\n- Slide 11: Budget ventilé.\n- Slide 12: Pourquoi MAINTENANT, pourquoi NOUS.\n\n(2) NHẤN « LE VERROU SCIENTIFIQUE » — comité ANR đánh giá theo critères: scientifique (40%), méthodologique (25%), organisation (20%), impact (15%) — varies. Verrou scientifique = obstacle conceptuel mà projet sẽ phá. Một câu rõ ràng: « Le verrou que nous nous proposons de lever est le suivant: ... »\n\n(3) DÉFENDRE LA COMPOSITION DU CONSORTIUM — comité hỏi « pourquoi ce partenaire ? ». Phải có lý do scientifique (compétence complémentaire), không pas seulement pratique. « Le partenaire 2 apporte la maîtrise des archives vietnamiennes, indispensable au volet historique. »\n\n(4) JUSTIFIER LE BUDGET LIGNE PAR LIGNE — không nói « budget standard ». Mỗi poste: « Quinze mille euros de mission correspondent à six déplacements à Hanoi sur quarante-deux mois, soit deux mille cinq cents euros par mission incluant transport et hébergement. »\n\n(5) ANTICIPER LES OBJECTIONS RÉCURRENTES:\n- « Pourquoi ne pas un projet H2020/Horizon Europe ? » — Phải có réponse: scope national (sources françaises), maturité du consortium, calendrier.\n- « Quel est le risque que vous abandonniez ? » — répondre avec plan B sur les WP.\n- « Y a-t-il déjà un projet équivalent ? » — connaître le paysage français/européen.\n\n(6) PRÉSENTER L'ENVIRONNEMENT SCIENTIFIQUE — école doctorale, laboratoire, infrastructures. ANR finance ≠ équipements lourds; pour ceux-ci, il faut démontrer accès via labo.\n\n(7) ENGAGEMENT INSTITUTIONNEL — confirmer que la direction du laboratoire et l'établissement appuient. Lettre de soutien souvent demandée.\n\n(8) PROTOCOLE EN CAS DE QUESTION DIFFICILE:\n- Reformuler la question pour montrer compréhension.\n- Si on ne sait pas: « C'est une question pertinente. À ce stade, je n'ai pas la réponse complète. Je propose d'y revenir avec mon partenaire X qui maîtrise le point. » → Honnêteté est valorisée.\n- Si question hostile: garder la calme, reformuler en termes scientifiques.\n\nTRÁNH:\n- Slides surchargées (jury lit slide → ne vous écoute pas).\n- Vocabulaire flou: « innovant, prometteur, à la pointe » → vide; nominaliser: « la nouveauté méthodologique réside en X ».\n- Promettre trop de livrables — ANR demande FAISABILITÉ, pas ambition démesurée.\n- Mépriser les commentaires des évaluateurs en cas de rejet — souvent le projet est resoumis avec succès l'année suivante après prise en compte des remarques.\n\n⚠️ Lưu ý: Không phải tư vấn nghề nghiệp. Modalités d'audition ANR thay đổi annuellement; vérifier le règlement de l'année concernée et consulter le service de soutien à la recherche de l'établissement.",
+    "vocabulary": [
+      {
+        "word": "l'ANR (Agence Nationale de la Recherche)",
+        "en": "the French National Research Agency",
+        "vi": "Cơ quan Quốc gia Pháp về Nghiên cứu",
+        "pos": "n.f.",
+        "pronunciation_vi": "lan-ar"
+      },
+      {
+        "word": "un appel à projets (AAP)",
+        "en": "a call for proposals",
+        "vi": "lời gọi đệ trình dự án",
+        "pos": "n.m.",
+        "pronunciation_vi": "an a-pèl a pro-jè"
+      },
+      {
+        "word": "le coordinateur, la coordinatrice",
+        "en": "the project coordinator (lead PI)",
+        "vi": "điều phối viên dự án",
+        "pos": "n.",
+        "pronunciation_vi": "kor-di-na-tơr / kor-di-na-tri-sơ"
+      },
+      {
+        "word": "le verrou scientifique",
+        "en": "the scientific bottleneck",
+        "vi": "nút thắt khoa học",
+        "pos": "n.m.",
+        "pronunciation_vi": "lơ vè-ru sian-ti-fik"
+      },
+      {
+        "word": "un livrable",
+        "en": "a deliverable",
+        "vi": "sản phẩm phải nộp",
+        "pos": "n.m.",
+        "pronunciation_vi": "an li-vra-blơ"
+      },
+      {
+        "word": "un jalon",
+        "en": "a milestone",
+        "vi": "mốc dự án",
+        "pos": "n.m.",
+        "pronunciation_vi": "an ja-lõn"
+      },
+      {
+        "word": "un work package (WP)",
+        "en": "a work package",
+        "vi": "gói công việc",
+        "pos": "n.m.",
+        "pronunciation_vi": "an wơrk-pak-èj"
+      },
+      {
+        "word": "une unité de recherche (UMR, EA)",
+        "en": "a research unit",
+        "vi": "đơn vị nghiên cứu",
+        "pos": "n.f.",
+        "pronunciation_vi": "u-ni-té dơ rơ-shèrsh"
+      },
+      {
+        "word": "ventiler un budget",
+        "en": "to break down a budget",
+        "vi": "phân bổ kinh phí",
+        "pos": "v.",
+        "pronunciation_vi": "vãn-ti-lé an bu-jè"
+      },
+      {
+        "word": "le frais d'environnement (FE)",
+        "en": "indirect overhead costs",
+        "vi": "chi phí gián tiếp",
+        "pos": "n.m.",
+        "pronunciation_vi": "lơ frè dãn-vi-ron-mã"
+      }
+    ],
+    "dialogue": [
+      {
+        "speaker": "Pr. Dubois (président du comité d'évaluation)",
+        "text": "Madame Tran, vous coordonnez ce projet. En une phrase: quel est le verrou scientifique que vous prétendez lever ?",
+        "vi": "Cô Trần, cô điều phối dự án này. Trong một câu: nút thắt khoa học cô tuyên bố sẽ phá là gì?"
+      },
+      {
+        "speaker": "Linh",
+        "text": "Le verrou est le suivant: les modèles existants traitent la circulation pédagogique comme une diffusion top-down depuis la France ; aucun ne rend compte des médiateurs humains qui transforment, en pratique, ces modèles. Notre projet construit un cadre processuel pour modéliser cette transformation.",
+        "vi": "Nút thắt là: các mô hình hiện có xem sự lưu chuyển sư phạm như một sự lan tỏa top-down từ Pháp; chưa mô hình nào tính tới các trung gian con người trên thực tế đã biến đổi các mô hình ấy. Dự án xây một khung quá trình để mô hình hóa sự biến đổi đó."
+      },
+      {
+        "speaker": "Pr. Dubois",
+        "text": "Pourquoi un consortium tripartite — Paris, Hanoi, EFEO — plutôt qu'un projet purement français ?",
+        "vi": "Vì sao một consortium ba bên — Paris, Hà Nội, EFEO — chứ không phải một dự án thuần Pháp?"
+      },
+      {
+        "speaker": "Linh",
+        "text": "Pour une raison méthodologique précise: la circulation suppose un terrain symétrique. Étudier sa moitié française sans accès direct aux archives vietnamiennes produirait un biais structurel. Le partenaire de Hanoi n'est pas optionnel: il est constitutif de l'objet.",
+        "vi": "Vì một lý do phương pháp cụ thể: lưu chuyển giả định một terrain đối xứng. Nghiên cứu nửa Pháp mà không tiếp cận trực tiếp lưu trữ Việt Nam sẽ tạo lệch cấu trúc. Đối tác Hà Nội không phải tùy chọn: nó thuộc về đối tượng."
+      }
+    ],
+    "dialogue_long": [
+      {
+        "speaker": "Pr. Dubois (président du comité)",
+        "text": "Madame Tran, votre projet a passé le filtre de la pré-proposition. Vous disposez de quinze minutes pour le présenter, suivies de quinze minutes de questions. Allez-y.",
+        "vi": "Cô Trần, dự án của cô đã qua được pré-proposition. Cô có 15 phút trình bày, sau đó 15 phút hỏi đáp. Mời cô."
+      },
+      {
+        "speaker": "Linh",
+        "text": "Mesdames, Messieurs les membres du comité, je vous remercie de l'attention que vous portez à ce projet. Le présent projet, intitulé « Circulations Pédagogiques Asie-Europe », s'inscrit dans l'axe quatre du programme générique de l'ANR — sciences humaines et sociales — et sollicite un financement sur quarante-deux mois pour un budget total de cent soixante-treize mille euros.",
+        "vi": "Thưa quý Cô quý Thầy thành viên hội đồng, tôi xin cảm ơn sự quan tâm dành cho dự án. Dự án này, mang tên « Circulations Pédagogiques Asie-Europe », nằm trong trục bốn AAPG ANR — khoa học nhân văn xã hội — xin tài trợ 42 tháng cho ngân sách 173.000 euros."
+      },
+      {
+        "speaker": "Linh",
+        "text": "Je commence par le verrou scientifique. La littérature traite habituellement la circulation pédagogique comme un mouvement descendant depuis les centres européens ; or les travaux récents — notamment ceux d'Anne-Marie Chartier — montrent que les médiateurs humains transforment significativement ces modèles. Aucun cadre théorique unifié ne permet, à ce jour, de modéliser cette transformation. C'est ce verrou que nous nous proposons de lever.",
+        "vi": "Tôi bắt đầu bằng verrou khoa học. Tài liệu thường xem sự lưu chuyển sư phạm như một dòng chảy xuống từ trung tâm châu Âu; nhưng công trình gần đây — đặc biệt của Anne-Marie Chartier — cho thấy các trung gian con người biến đổi đáng kể các mô hình ấy. Hiện chưa có khung lý thuyết thống nhất cho phép mô hình hóa sự biến đổi này. Verrou đó là cái dự án muốn phá."
+      },
+      {
+        "speaker": "Linh",
+        "text": "Notre consortium associe trois unités: l'UMR huit cent quarante-trois (Paris Cité), pour le volet conceptuel et la coordination ; l'EFEO, pour l'expertise archivistique en Asie ; et l'École doctorale de Hanoi, pour le terrain vietnamien et la collecte d'entretiens. Quoique le terrain vietnamien ait fait l'objet d'études ponctuelles, aucune enquête longitudinale d'envergure n'a, à ce jour, été conduite — ce que ce projet entend précisément combler.",
+        "vi": "Consortium gồm ba đơn vị: UMR 8043 (Paris Cité), phần khái niệm và điều phối; EFEO, chuyên môn lưu trữ ở châu Á; và École doctorale Hà Nội, terrain Việt Nam và thu thập phỏng vấn. Cho dù terrain Việt đã được nghiên cứu lẻ tẻ, chưa có khảo sát longitudinal quy mô nào tới nay được thực hiện — đó chính là khoảng trống dự án muốn lấp."
+      },
+      {
+        "speaker": "Linh",
+        "text": "Le projet se structure en quatre work packages. Le WP1, coordonné par Paris, porte sur le cadre théorique. Le WP2, coordonné par l'EFEO, sur la collecte archivistique. Le WP3, coordonné par Hanoi, sur les entretiens biographiques. Le WP4, transversal, sur la valorisation. Chaque WP comprend trois jalons sur la durée du projet — au total douze jalons, dont je signale les deux plus critiques: la livraison du cadre théorique consolidé au mois douze, et la mise en accès libre du corpus au mois trente-six.",
+        "vi": "Dự án cấu trúc thành bốn work packages. WP1, do Paris điều phối, về khung lý thuyết. WP2, do EFEO điều phối, về thu thập lưu trữ. WP3, do Hà Nội điều phối, về phỏng vấn tiểu sử. WP4, xuyên suốt, về truyền bá. Mỗi WP có ba jalons trong thời lượng dự án — tổng 12 jalons, hai jalon then chốt nhất: giao khung lý thuyết hoàn chỉnh tháng 12, và mở quyền truy cập tự do corpus tháng 36."
+      },
+      {
+        "speaker": "Linh",
+        "text": "Les livrables prévus comprennent: trois articles dans des revues classées de rang A — un dans Annales HSS, un dans Revue française de pédagogie, un dans Education and Society —, une monographie aux Presses universitaires de Rennes, et la mise en accès libre d'un corpus de mille deux cents documents archivés sur la plateforme Nakala-Huma-Num.",
+        "vi": "Sản phẩm dự kiến: ba bài báo trên tạp chí xếp hạng A — một trên Annales HSS, một trên Revue française de pédagogie, một trên Education and Society —, một chuyên khảo tại NXB Đại học Rennes, mở truy cập tự do 1.200 tài liệu lưu trữ trên Nakala-Huma-Num."
+      },
+      {
+        "speaker": "Linh",
+        "text": "Le budget sollicité, soit cent soixante-treize mille euros, se ventile ainsi: soixante-dix-huit mille euros de gratifications doctorales (deux contrats), quarante-cinq mille de missions, vingt-six mille de prestations, dix-sept mille trois cents de frais d'environnement et six mille sept cents de petit équipement. Cette ventilation respecte la grille standard de l'ANR.",
+        "vi": "Ngân sách 173.000 euros phân bổ: 78.000 euros gratifications nghiên cứu sinh (hai hợp đồng), 45.000 euros công tác, 26.000 dịch vụ ngoài, 17.300 frais d'environnement, và 6.700 trang thiết bị nhỏ. Phân bổ này theo bảng chuẩn ANR."
+      },
+      {
+        "speaker": "Linh",
+        "text": "Pour conclure, je tiens à souligner trois éléments qui justifient la pertinence du projet aujourd'hui. Premièrement, la maturité du consortium: les trois partenaires collaborent informellement depuis deux mille dix-neuf. Deuxièmement, la disponibilité des archives vietnamiennes, récemment ouvertes par le décret de deux mille vingt-trois — fenêtre qui pourrait se refermer. Troisièmement, l'absence de projet équivalent en cours, vérifiée auprès de la base ANR-Horizon Europe.",
+        "vi": "Để kết thúc, tôi muốn nhấn ba yếu tố biện minh cho mức độ thích hợp hôm nay. Thứ nhất, sự trưởng thành của consortium: ba đối tác hợp tác không chính thức từ 2019. Thứ hai, sự sẵn có của lưu trữ Việt, mở gần đây nhờ nghị định 2023 — cửa sổ có thể đóng lại. Thứ ba, không có dự án tương đương đang chạy, đã kiểm tra trên cơ sở dữ liệu ANR-Horizon Europe."
+      },
+      {
+        "speaker": "Pr. Dubois",
+        "text": "Merci. Question d'ordre méthodologique: pourquoi avoir écarté Horizon Europe au profit d'un projet ANR national ?",
+        "vi": "Cảm ơn. Câu hỏi phương pháp luận: vì sao gạt Horizon Europe và chọn dự án ANR quốc gia?"
+      },
+      {
+        "speaker": "Linh",
+        "text": "Excellente question. Trois raisons. Un: les sources françaises, qui constituent la moitié du corpus, sont concentrées en France — une logique nationale est donc adaptée. Deux: le consortium n'a pas encore atteint la masse critique européenne (cinq partenaires de pays différents) qu'exige Horizon Europe. Trois: le calendrier — Horizon Europe ouvre dans dix-huit mois sur ce thème ; nous prévoyons de candidater à ce moment-là, en capitalisant sur les résultats du présent projet ANR.",
+        "vi": "Câu hỏi rất xác đáng. Ba lý do. Một: nguồn Pháp, chiếm nửa corpus, tập trung tại Pháp — logique quốc gia phù hợp. Hai: consortium chưa đạt khối lượng tới hạn châu Âu (năm đối tác khác nước) mà Horizon Europe yêu cầu. Ba: lịch — Horizon Europe mở trong 18 tháng về chủ đề này; chúng tôi dự định nộp khi đó, tận dụng kết quả ANR hiện thời."
+      },
+      {
+        "speaker": "Pr. Dubois",
+        "text": "Réponse claire. Et le risque d'abandon par votre partenaire vietnamien — comment l'avez-vous mitigé ?",
+        "vi": "Câu trả lời rõ. Còn rủi ro đối tác Việt Nam rút lui — cô đã giảm thiểu thế nào?"
+      },
+      {
+        "speaker": "Linh",
+        "text": "Risque réel, je le reconnais. Trois mesures: un protocole MoU signé en avril deux mille vingt-six, des jalons de livraison tous les six mois (donc visibilité précoce de tout glissement), et un partenaire vietnamien de secours pré-identifié à l'Université de Da Nang. Le plan B est documenté dans le WP4.",
+        "vi": "Rủi ro thật, tôi thừa nhận. Ba biện pháp: MoU ký tháng 4/2026, các jalons giao mỗi 6 tháng (thấy sớm mọi trượt), và đối tác Việt dự phòng đã được xác định trước tại Đại học Đà Nẵng. Kế hoạch B được tài liệu hóa trong WP4."
+      }
+    ],
+    "roleplay_prompts": [
+      "Présentez en 5 phút verrou scientifique của một projet ANR fictif (chọn lĩnh vực bạn rành). Cấu trúc: état de l'art en 1 phrase + verrou en 1 phrase + hypothèse en 1 phrase + comment levér en 3 phrases. Sử dụng ít nhất một subjonctif concessif.",
+      "Comité hỏi: « Pourquoi ce consortium et pas un projet purement intra-français ? » Trả lời theo logic phương pháp (không phải pratique): partenaire ngoài là CONSTITUTIF de l'objet, không phải optionnel.",
+      "Comité chỉ ra rằng budget mission 45.000 euros « semble élevé ». Justifier ligne par ligne: nombre de missions, destination, durée, coût unitaire. Không nói « budget standard » — phải concret."
+    ],
+    "register_notes": "Discours ANR (oral et écrit) sử dụng register technique-scientifique chính xác cao:\n\n(1) NOMINALISATION INSTITUTIONNELLE:\n- « la coordination du projet » thay « celui qui coordonne »\n- « la livraison du jalon » thay « quand on livrera »\n- « la consolidation du cadre théorique » thay « quand on aura un cadre stable »\n\n(2) FORMULES DE PROJET CHUẨN:\n- « Le présent projet s'inscrit dans... »\n- « Le verrou que nous nous proposons de lever est... »\n- « Le projet se structure en N work packages... »\n- « Les livrables prévus comprennent... »\n- « Le budget sollicité se ventile en... »\n\n(3) SUBJONCTIF AVEC EXPRESSIONS DE NÉCESSITÉ — bắt buộc:\n- « Il convient que les jalons soient atteints à temps. »\n- « Il importe que le consortium dispose d'un protocole de gouvernance clair. »\n- « Il est essentiel que les livrables fassent l'objet d'une validation externe. »\n\n(4) CONCESSIVES SOUTENUES:\n- « Quoique le terrain ait fait l'objet d'études antérieures... »\n- « Bien que la maturité du consortium soit récente... »\n- « Aussi rigoureuse que soit la planification... »\n\n(5) CHIFFRES À L'ORAL — règles:\n- « cent soixante-treize mille euros » (KHÔNG « 173,000 »).\n- « quarante-deux mois » (KHÔNG « 42 mois »).\n- « rang A » (sigle conservé).\n\n(6) ACRONYMES — première mention en entier puis sigle:\n- « l'Agence Nationale de la Recherche (ANR) » → ensuite « l'ANR »\n- « les sciences humaines et sociales (SHS) » → ensuite « les SHS »\n- « unité mixte de recherche (UMR) » → ensuite « l'UMR ».\n\n(7) TRÁNH:\n- « innovant », « prometteur », « à la pointe », « disruptif » → vide. Nominaliser: « la nouveauté méthodologique réside en X ».\n- « on » impersonnel pour le projet → utiliser « le projet », « notre consortium », « nous » (incluant les partenaires).\n- Anglais sauf termes consacrés (work package, milestone) — et les expliquer en français la première fois.",
+    "idiom_glosses": [
+      {
+        "idiom": "Lever un verrou (scientifique)",
+        "literal": "Mở một khóa",
+        "meaning": "Phá một nút thắt khoa học — formule ANR standard.",
+        "example": "Le verrou que nous nous proposons de lever concerne la modélisation des médiateurs humains."
+      },
+      {
+        "idiom": "Faire l'objet de (formel)",
+        "literal": "Làm đối tượng của",
+        "meaning": "Được nghiên cứu / xử lý — registre académique.",
+        "example": "Ce terrain a fait l'objet d'études ponctuelles, mais d'aucune enquête longitudinale."
+      },
+      {
+        "idiom": "Combler une lacune (formel)",
+        "literal": "Lấp một lỗ trống",
+        "meaning": "Lấp khoảng trống tài liệu — justification standard de projet.",
+        "example": "Le présent projet entend combler cette lacune par une enquête longitudinale."
+      },
+      {
+        "idiom": "Capitaliser sur les résultats (institutionnel)",
+        "literal": "Vốn hóa trên kết quả",
+        "meaning": "Tận dụng các kết quả — vocabulaire de gestion de projet.",
+        "example": "Nous capitaliserons sur les résultats du présent projet pour candidater ensuite à Horizon Europe."
+      }
+    ],
+    "exercises": [
+      {
+        "type": "fill-blank",
+        "question": "Quoique le terrain ___ fait l'objet d'études ponctuelles, aucune enquête longitudinale n'a été conduite.",
+        "answer": "ait"
+      },
+      {
+        "type": "matching",
+        "pairs": [
+          ["lever un verrou", "phá một nút thắt"],
+          ["un livrable", "sản phẩm phải nộp"],
+          ["un jalon", "mốc dự án"],
+          ["ventiler un budget", "phân bổ kinh phí"]
+        ],
+        "instruction": "Nối thuật ngữ ANR với nghĩa Việt"
+      },
+      {
+        "type": "translation",
+        "vietnamese": "Verrou mà chúng tôi đề xuất phá là sự thiếu một khung lý thuyết thống nhất để mô hình hóa các trung gian con người.",
+        "french": "Le verrou que nous nous proposons de lever est l'absence d'un cadre théorique unifié permettant de modéliser les médiateurs humains."
+      }
+    ]
+  },
+  {
+    "id": "lhceres_evaluation",
+    "level": "C1",
+    "category": "fluency",
+    "title_vi": "Audition HCERES của một đơn vị nghiên cứu",
+    "title_en": "HCERES audition of a research unit",
+    "sentences": [
+      {
+        "en": "L'unité que je dirige, l'UMR huit cent quarante-trois, comprend trente-deux chercheurs permanents, vingt-huit doctorants, et quatre ingénieurs d'études — soit un effectif total de soixante-quatre personnels au moment de la visite.",
+        "vi": "Đơn vị tôi chỉ đạo, UMR 8043, gồm 32 nghiên cứu viên cơ hữu, 28 nghiên cứu sinh, và 4 kỹ sư học thuật — tổng nhân lực 64 người tại thời điểm thẩm định.",
+        "pronunciation_focus": [
+          "unité → u-ni-té",
+          "comprend → kõn-prã",
+          "doctorants → dok-to-rã",
+          "effectif → è-fèk-tif"
+        ]
+      },
+      {
+        "en": "Le bilan que nous présentons couvre la période de janvier deux mille dix-neuf à décembre deux mille vingt-quatre, soit le contrat quinquennal venant à échéance.",
+        "vi": "Bản tổng kết chúng tôi trình bày bao trùm giai đoạn từ tháng 1/2019 đến tháng 12/2024, tức hợp đồng năm năm sắp hết hạn.",
+        "pronunciation_focus": [
+          "bilan → bi-lã",
+          "couvre → ku-vrơ",
+          "quinquennal → kan-kè-nal",
+          "échéance → é-shé-ãns"
+        ]
+      },
+      {
+        "en": "Sur les six axes scientifiques antérieurs, deux sont reconduits, trois sont reformulés à la suite des recommandations du précédent comité, et un nouveau axe — celui des humanités numériques — est créé en réponse à l'évolution du paysage disciplinaire.",
+        "vi": "Trong sáu trục khoa học trước, hai được giữ nguyên, ba được tái hình thành theo khuyến nghị hội đồng trước, và một trục mới — humanités numériques — được tạo nhằm đáp ứng sự tiến triển của lĩnh vực.",
+        "pronunciation_focus": [
+          "axes → ax",
+          "reconduits → rơ-kõn-dui",
+          "reformulés → rơ-for-mu-lé",
+          "humanités → u-ma-ni-té"
+        ]
+      },
+      {
+        "en": "Les indicateurs bibliométriques que je vais présenter doivent être lus avec la prudence d'usage en SHS: le nombre de publications n'est pas, en lui-même, un indicateur de qualité, et nous prions le comité de croiser ces données avec l'analyse qualitative du rapport.",
+        "vi": "Các chỉ báo bibliométrique tôi sắp trình bày cần được đọc với sự thận trọng thường lệ trong SHS: số lượng publications không tự thân là chỉ báo chất lượng, và chúng tôi đề nghị hội đồng đối chiếu với phân tích định tính trong báo cáo.",
+        "pronunciation_focus": [
+          "indicateurs → an-di-ka-tơr",
+          "bibliométriques → bi-bli-o-mé-trik",
+          "prudence → pru-dãns",
+          "croiser → kroa-zé"
+        ]
+      },
+      {
+        "en": "Bien que la trajectoire collective de l'unité demeure ascendante, je tiens à signaler franchement deux faiblesses persistantes que le projet pour le contrat suivant entend traiter: le déséquilibre de genre dans l'encadrement doctoral et le retard de notre politique de science ouverte.",
+        "vi": "Mặc dù quỹ đạo tập thể của đơn vị vẫn đi lên, tôi muốn thẳng thắn nêu hai điểm yếu dai dẳng mà dự án cho hợp đồng tiếp theo có ý định xử lý: mất cân bằng giới trong hướng dẫn nghiên cứu sinh và sự chậm trễ trong chính sách science ouverte.",
+        "pronunciation_focus": [
+          "Bien que → biãn kơ",
+          "demeure → dơ-mơr",
+          "déséquilibre → dé-zé-ki-li-brơ",
+          "encadrement → ãn-ka-drơ-mã"
+        ]
+      }
+    ],
+    "cultural_notes_vi": "L'HCERES (Haut Conseil de l'Évaluation de la Recherche et de l'Enseignement Supérieur) — cơ quan đánh giá độc lập về nghiên cứu và đại học, lập năm 2014 (succède à l'AERES créée en 2006). Évaluation HCERES là KHÁC RA RIÊNG so với evaluation cá nhân (CNU) hay evaluation projet (ANR).\n\nĐỐI TƯỢNG ÉVALUATION HCERES:\n- Les unités de recherche (UMR, EA, FR, USR…) — đánh giá tập thể quan trọng nhất.\n- Les écoles doctorales.\n- Les établissements d'enseignement supérieur.\n- Les coordinations territoriales (anciennement COMUE).\n- Les formations (mastères, doctorats…) — depuis les réformes récentes.\n\nÉVALUATION D'UNE UNITÉ DE RECHERCHE — TRÌNH TỰ:\n(1) AUTOÉVALUATION par l'unité (rapport ~50-100 trang) — bilan quinquennal + projet pour le contrat suivant. Document très structuré: bibliométrie, structure, ressources, gouvernance, productions scientifiques, formation, valorisation.\n(2) DOCUMENTS RECUEILLIS par HCERES: liste de publications, contrats, thèses soutenues, etc.\n(3) VISITE SUR SITE par un comité d'experts (4-7 personnes selon taille) — généralement 1-2 jours. Présidé par un expert externe.\n(4) ENTRETIENS pendant visite: direction de l'unité, chercheurs en exercice, doctorants, personnels d'appui, partenaires, tutelles. Chaque catégorie reçue séparément.\n(5) RAPPORT D'ÉVALUATION (3-6 mois après visite) — synthèse + recommandations + appréciation par axe.\n(6) CONTRADICTOIRE: l'unité peut répondre par écrit à des points de désaccord factuel.\n(7) PUBLICATION du rapport sur site HCERES (sauf parties confidentielles).\n\nNOTATION — depuis 2017 il n'y a PLUS de notation alphabétique (ancien système A+/A/B/C aboli). L'évaluation est désormais qualitative — analyse des forces, faiblesses, opportunités, menaces (matrice SWOT) + recommandations.\n\nIMPLICATIONS CONCRÈTES:\n- Bien évalué = négociation budgétaire avec tutelles (CNRS, université) facilitée pour le prochain contrat.\n- Mal évalué = restructuration possible (fusion avec autre unité, changement de direction, fermeture en cas extrême).\n- L'évaluation NE DÉCIDE PAS directement: elle informe les décisions des tutelles.\n\nLE DIRECTEUR DE L'UNITÉ — pivot de l'audition. Doit être: (a) factuel sur le bilan; (b) honest sur les faiblesses (omettre = comité les trouvera et perdra confiance); (c) orienté projet pour le contrat suivant.\n\nVĂN HÓA HCERES À CONNAÎTRE:\n(a) Le rapport d'autoévaluation NE DOIT PAS être promotionnel. Le comité valorise la lucidité — un rapport « tout va bien » fait suspecter l'autoévaluation.\n(b) Les FAIBLESSES annoncées préventivement par l'unité = signe de maturité; les FAIBLESSES découvertes par le comité = signe de mauvaise foi.\n(c) La PARITÉ et la SCIENCE OUVERTE sont des dimensions désormais évaluées explicitement (depuis 2020); ne pas en parler = malus.\n(d) Le COMITÉ NE NÉGOCIE PAS — il évalue. Tenter de « charmer » est contre-productif. Tenter de « faire pression » via tutelles = catastrophe.\n\nĐỌC THÊM:\n- Site officiel: hceres.fr (chercher « référentiel d'évaluation des unités de recherche » — version courante).\n- Référentiels disciplinaires (SHS, sciences dures, médecine — varient légèrement).\n\n⚠️ Lưu ý: Các thông tin trên là mô tả thông lệ — KHÔNG phải tư vấn pháp lý. Procédures HCERES thay đổi qua các vagues d'évaluation; vérifier le référentiel de la vague courante via votre direction d'unité.",
+    "tip_advice_vi": "PROTOCOLE 8 BƯỚC pour le directeur d'unité face au comité HCERES:\n\n(1) PRÉPARER UNE PRÉSENTATION DE 30 MIN — pas plus. Le comité a déjà lu le rapport ; vous donnez le souffle, pas le détail. Structure standard:\n- 5 min: contexte de l'unité (effectifs, tutelles, gouvernance)\n- 8 min: bilan des axes scientifiques (PRIORISER 2-3 réussites majeures, ne pas tout couvrir)\n- 5 min: bilan financier et ressources humaines\n- 5 min: forces et FAIBLESSES (un nombre équivalent — la lucidité est valorisée)\n- 7 min: projet pour le contrat suivant — articulation avec le bilan\n\n(2) DÉSIGNER QUI PARLE EN ENTRETIENS:\n- Direction (vous + adjoints): parler du collectif, jamais nominalement d'un chercheur sauf accord préalable.\n- Chercheurs: parler en leur nom propre, pas pour l'unité.\n- Doctorants: invités à parler franchement de l'encadrement; insister auprès d'eux qu'ils peuvent dire ce qu'ils pensent (c'est protégé).\n- Personnels d'appui: souvent traités en moins; les briefer comme tout le monde.\n\n(3) ANTICIPER LES QUESTIONS RÉCURRENTES:\n- « Quel est, selon vous, le point d'identité scientifique fort de l'unité ? » — préparer une phrase.\n- « Quelle est votre stratégie de signature ? » — règles de signature des publications.\n- « Comment intégrez-vous les jeunes chercheurs ? » — politique d'accueil.\n- « Politique science ouverte ? » — depuis 2020 obligatoire.\n- « Parité dans l'encadrement doctoral ? » — chiffres précis demandés.\n- « Plan en cas de départ massif à la retraite ? » — pyramide des âges.\n\n(4) ASSUMER LES FAIBLESSES — règle d'or:\n- Annoncer 2-3 faiblesses RÉELLES dans la présentation.\n- Pour chacune: cause + plan d'action dans le projet suivant.\n- Faiblesses possibles: déséquilibre disciplinaire, retard science ouverte, taille critique d'un axe, tension RH, dépendance à un chercheur partant…\n\n(5) NE JAMAIS DIRE « TOUT VA BIEN »:\n- Trahit autoévaluation superficielle.\n- Préférer: « Le bilan est globalement positif, mais nous identifions trois zones d'amélioration que voici. »\n\n(6) PROTOCOLE EN CAS DE CRITIQUE PENDANT VISITE:\n- Reconnaître la légitimité de la remarque.\n- Apporter UN élément factuel complémentaire que le comité n'a pas vu.\n- Ne PAS contester en bloc: le comité a passé des semaines sur le dossier.\n\n(7) SIGNALER LES CONFLITS INTERNES — avec doigté:\n- Si l'unité traverse une crise (départ d'un axe, conflit interne), MIEUX VAUT le dire que le cacher.\n- Formule: « L'unité a connu en 2022 une période de tension autour de l'axe X qui s'est résolue par Y. »\n\n(8) APRÈS LA VISITE:\n- Phase contradictoire: lire le rapport préliminaire avec attention; signaler les ERREURS FACTUELLES (pas les désaccords d'appréciation).\n- Préparer la suite avec les tutelles indépendamment du rapport.\n\nTRÁNH:\n- Présenter l'unité comme une somme d'individus brillants (le comité évalue le COLLECTIF).\n- Nommément critiquer un chercheur de l'unité (faute managériale grave).\n- Comparer publiquement avec une unité concurrente (le comité décide la comparaison).\n- Promettre des choses non-tenables dans le projet (le comité saura).\n\n⚠️ Lưu ý: KHÔNG phải tư vấn pháp lý hay nghề nghiệp. Référentiels HCERES thay đổi qua từng vague; toujours s'appuyer sur le référentiel officiel de la vague concernée et consulter la direction de votre unité avant tout préparatif.",
+    "vocabulary": [
+      {
+        "word": "l'HCERES",
+        "en": "the French research and higher education evaluation authority",
+        "vi": "Hội đồng cao cấp đánh giá nghiên cứu và đại học",
+        "pos": "n.m.",
+        "pronunciation_vi": "lash-sé-rès"
+      },
+      {
+        "word": "une unité de recherche",
+        "en": "a research unit",
+        "vi": "đơn vị nghiên cứu",
+        "pos": "n.f.",
+        "pronunciation_vi": "un u-ni-té dơ rơ-shèrsh"
+      },
+      {
+        "word": "l'autoévaluation",
+        "en": "self-assessment",
+        "vi": "tự đánh giá",
+        "pos": "n.f.",
+        "pronunciation_vi": "o-to-é-va-lu-a-sion"
+      },
+      {
+        "word": "le bilan quinquennal",
+        "en": "the five-year assessment",
+        "vi": "tổng kết năm năm",
+        "pos": "n.m.",
+        "pronunciation_vi": "lơ bi-lã kan-kè-nal"
+      },
+      {
+        "word": "le contrat venant à échéance",
+        "en": "the contract reaching its end",
+        "vi": "hợp đồng đến hạn",
+        "pos": "loc.",
+        "pronunciation_vi": "lơ kõn-tra vơ-nã a é-shé-ãns"
+      },
+      {
+        "word": "un axe scientifique",
+        "en": "a scientific axis / theme",
+        "vi": "trục khoa học",
+        "pos": "n.m.",
+        "pronunciation_vi": "an ax sian-ti-fik"
+      },
+      {
+        "word": "les indicateurs bibliométriques",
+        "en": "bibliometric indicators",
+        "vi": "chỉ báo bibliométrique",
+        "pos": "n.m.pl.",
+        "pronunciation_vi": "lè zan-di-ka-tơr bi-bli-o-mé-trik"
+      },
+      {
+        "word": "la science ouverte",
+        "en": "open science",
+        "vi": "khoa học mở",
+        "pos": "n.f.",
+        "pronunciation_vi": "la sians u-vèrt"
+      },
+      {
+        "word": "les tutelles",
+        "en": "the supervising authorities (CNRS, university…)",
+        "vi": "cơ quan giám hộ (CNRS, đại học…)",
+        "pos": "n.f.pl.",
+        "pronunciation_vi": "lè tu-tèl"
+      },
+      {
+        "word": "la phase contradictoire",
+        "en": "the right-of-reply phase",
+        "vi": "giai đoạn phản biện chính thức",
+        "pos": "n.f.",
+        "pronunciation_vi": "la faz kõn-tra-dik-toa-rơ"
+      }
+    ],
+    "dialogue": [
+      {
+        "speaker": "Pr. Müller (présidente du comité HCERES)",
+        "text": "Madame Tran, vous dirigez l'unité depuis quatre ans. Quel est, à vos yeux, son point d'identité scientifique fort, et quelle est sa principale faiblesse ?",
+        "vi": "Cô Trần, cô chỉ đạo đơn vị bốn năm rồi. Trong mắt cô, điểm nhận diện khoa học mạnh là gì, và điểm yếu chính là gì?"
+      },
+      {
+        "speaker": "Linh (directrice d'unité)",
+        "text": "Le point fort, je le formule ainsi: une expertise singulière sur la circulation des savoirs entre l'Asie et l'Europe, articulée par cinq chercheurs cœur autour d'un terrain commun. Ce n'est pas l'addition d'individus brillants — c'est un objet partagé.",
+        "vi": "Điểm mạnh, tôi diễn đạt thế này: một chuyên môn riêng biệt về sự lưu chuyển tri thức giữa châu Á và châu Âu, được khớp nối bởi năm nghiên cứu viên cốt lõi quanh một terrain chung. Đây không phải phép cộng các cá nhân xuất sắc — đó là một đối tượng chia sẻ."
+      },
+      {
+        "speaker": "Pr. Müller",
+        "text": "Et la principale faiblesse ?",
+        "vi": "Còn điểm yếu chính?"
+      },
+      {
+        "speaker": "Linh",
+        "text": "Bien que le bilan global soit positif, je tiens à le signaler franchement: notre politique de science ouverte accuse un retard de deux à trois ans par rapport aux unités comparables. Le projet pour le contrat suivant prévoit un poste d'IGR data steward et un protocole de dépôt en HAL d'ici à dix-huit mois.",
+        "vi": "Mặc dù tổng kết tổng quát tích cực, tôi muốn nêu thẳng: chính sách science ouverte của chúng tôi chậm 2-3 năm so với các đơn vị tương đương. Dự án cho hợp đồng tới đặt một vị trí IGR data steward và quy trình nộp HAL trong 18 tháng."
+      }
+    ],
+    "dialogue_long": [
+      {
+        "speaker": "Pr. Müller (présidente du comité)",
+        "text": "Madame Tran, le comité a lu le rapport. La séance d'audition de la direction commence — vous avez trente minutes pour présenter le bilan et le projet. Nous avons des questions ensuite.",
+        "vi": "Cô Trần, hội đồng đã đọc báo cáo. Phiên thẩm vấn ban giám đốc bắt đầu — cô có 30 phút trình bày bilan và dự án. Chúng tôi sẽ có câu hỏi sau."
+      },
+      {
+        "speaker": "Linh",
+        "text": "Madame la Présidente, Mesdames et Messieurs les membres du comité, je vous remercie d'avoir accepté cette charge. L'unité que je dirige, l'UMR huit cent quarante-trois, comprend trente-deux chercheurs permanents, vingt-huit doctorants, et quatre ingénieurs d'études — soit un effectif total de soixante-quatre personnels au moment de la visite.",
+        "vi": "Thưa Chủ tịch, thưa quý Cô quý Thầy, tôi cảm ơn đã nhận trách nhiệm này. Đơn vị tôi chỉ đạo, UMR 8043, gồm 32 nghiên cứu viên cơ hữu, 28 nghiên cứu sinh, và 4 kỹ sư học thuật — tổng nhân lực 64 người tại thời điểm thẩm định."
+      },
+      {
+        "speaker": "Linh",
+        "text": "Le bilan que je présente couvre la période de janvier deux mille dix-neuf à décembre deux mille vingt-quatre, soit le contrat quinquennal venant à échéance. Trois éléments structurent le bilan: la consolidation scientifique des axes, l'évolution des ressources, et l'évolution de la composition humaine de l'unité.",
+        "vi": "Bilan tôi trình bày bao trùm 1/2019–12/2024, tức hợp đồng 5 năm sắp hết hạn. Ba yếu tố cấu trúc bilan: củng cố khoa học của các trục, biến đổi nguồn lực, biến đổi thành phần nhân lực."
+      },
+      {
+        "speaker": "Linh",
+        "text": "Sur les six axes scientifiques antérieurs, deux sont reconduits, trois sont reformulés à la suite des recommandations du précédent comité, et un nouveau axe — celui des humanités numériques — est créé en réponse à l'évolution du paysage disciplinaire. La reformulation des trois axes a, je le souligne, été conduite dans la transparence: l'ensemble des chercheurs a été consulté lors de quatre séminaires internes en deux mille vingt-deux et vingt-trois.",
+        "vi": "Trong 6 trục khoa học trước, 2 giữ nguyên, 3 tái hình thành theo khuyến nghị hội đồng trước, và 1 trục mới — humanités numériques — được tạo. Việc tái hình thành 3 trục, tôi nhấn mạnh, được thực hiện minh bạch: toàn bộ nghiên cứu viên được tham vấn trong 4 séminaire nội bộ năm 2022–2023."
+      },
+      {
+        "speaker": "Linh",
+        "text": "Les indicateurs bibliométriques — que je vais présenter avec la prudence d'usage en SHS — montrent une trajectoire ascendante: cent quarante-huit articles dans des revues à comité de lecture, vingt-quatre ouvrages dont neuf en édition étrangère, et trente-six chapitres dans des collectifs internationaux. Mais je prie le comité de croiser ces données avec l'analyse qualitative du chapitre quatre du rapport: le nombre n'est pas, en lui-même, un indicateur de qualité.",
+        "vi": "Chỉ báo bibliométrique — tôi sẽ trình bày với sự thận trọng thường lệ trong SHS — cho thấy quỹ đạo đi lên: 148 bài báo tạp chí có comité de lecture, 24 đầu sách trong đó 9 ở NXB nước ngoài, 36 chương sách collectif quốc tế. Nhưng tôi đề nghị hội đồng đối chiếu với phân tích định tính chương 4 báo cáo: số lượng không tự thân là chỉ báo chất lượng."
+      },
+      {
+        "speaker": "Linh",
+        "text": "Sur les faiblesses, je tiens à signaler franchement deux points persistants. Premièrement, le déséquilibre de genre dans l'encadrement doctoral: soixante-douze pour cent des doctorants encadrés sont des femmes, mais seuls quarante-trois pour cent des HDR habilités à les encadrer le sont. Le projet pour le contrat suivant prévoit un soutien à l'HDR de trois MCF femmes, dont les dossiers sont avancés. Deuxièmement, le retard science ouverte: notre taux de dépôt en HAL plafonne à soixante et un pour cent, contre quatre-vingt-cinq pour cent pour les unités comparables. Le projet prévoit un poste d'IGR data steward et un protocole formalisé.",
+        "vi": "Về điểm yếu, tôi muốn thẳng thắn nêu hai điểm dai dẳng. Thứ nhất, mất cân bằng giới trong hướng dẫn nghiên cứu sinh: 72% nghiên cứu sinh được hướng dẫn là nữ, nhưng chỉ 43% HDR có quyền hướng dẫn họ là nữ. Dự án hợp đồng tới đặt hỗ trợ HDR cho 3 MCF nữ. Thứ hai, chậm science ouverte: tỉ lệ nộp HAL của chúng tôi đứng 61%, so với 85% của các đơn vị tương đương. Dự án đặt vị trí IGR data steward và quy trình chính thức."
+      },
+      {
+        "speaker": "Pr. Müller",
+        "text": "Merci. Première question: la création de l'axe humanités numériques — est-ce une vraie reconfiguration ou un effet d'affichage ?",
+        "vi": "Cảm ơn. Câu đầu: việc tạo trục humanités numériques — đó có phải là tái cấu trúc thật sự hay chỉ effet d'affichage?"
+      },
+      {
+        "speaker": "Linh",
+        "text": "Question légitime. Trois éléments montrent qu'il s'agit d'une reconfiguration réelle, pas d'un affichage. Un: l'unité a recruté en deux mille vingt-deux un MCF spécialiste d'analyse de corpus en TAL — recrutement spécifique à l'axe. Deux: cinq doctorants s'inscrivent désormais sur cet axe, dont trois en cotutelle avec l'INRIA. Trois: nous avons obtenu en deux mille vingt-trois un projet ANR PRC dédié, doté de cent vingt mille euros. L'axe a une masse critique propre.",
+        "vi": "Câu hỏi xác đáng. Ba yếu tố cho thấy đây là tái cấu trúc thật, không phải chỉ trưng bày. Một: đơn vị tuyển 2022 một MCF chuyên gia phân tích corpus TAL — tuyển dụng riêng cho trục. Hai: 5 nghiên cứu sinh hiện đăng ký trục này, trong đó 3 cotutelle với INRIA. Ba: chúng tôi nhận năm 2023 một ANR PRC dành cho trục, 120.000 euros. Trục có khối lượng tới hạn riêng."
+      },
+      {
+        "speaker": "Pr. Müller",
+        "text": "Et la dépendance à votre prédécesseur, le professeur Bertrand, qui partait à la retraite en 2025 — comment l'avez-vous mitigée ?",
+        "vi": "Còn sự lệ thuộc vào người tiền nhiệm của cô, giáo sư Bertrand, nghỉ hưu 2025 — cô đã giảm thiểu thế nào?"
+      },
+      {
+        "speaker": "Linh",
+        "text": "Risque réel et anticipé depuis 2022. Trois mesures: un, un transfert progressif de l'encadrement de ses neuf doctorants — six ont déjà soutenu, trois sont en co-encadrement avec deux MCF qui prendront le relais ; deux, un poste de PR ouvert au recrutement pour septembre deux mille vingt-six, fléché sur ses domaines ; trois, le projet d'unité prévoit explicitement la stabilisation collective de son axe par trois MCF — l'identité scientifique ne dépendra plus d'une personne.",
+        "vi": "Rủi ro thật, đã anticipate từ 2022. Ba biện pháp: một, chuyển dần việc hướng dẫn 9 nghiên cứu sinh — 6 đã bảo vệ, 3 đang đồng-hướng dẫn với 2 MCF tiếp quản; hai, mở vị trí PR tuyển dụng tháng 9/2026, fléché trên lĩnh vực; ba, dự án đơn vị dự định ổn định tập thể trục này qua 3 MCF — bản sắc khoa học không lệ thuộc vào một người."
+      },
+      {
+        "speaker": "Pr. Müller",
+        "text": "Le doctorant que nous avons rencontré ce matin a évoqué une tension dans l'axe trois en deux mille vingt-deux. Pouvez-vous nous éclairer ?",
+        "vi": "Nghiên cứu sinh chúng tôi gặp sáng nay đề cập một căng thẳng trong trục 3 năm 2022. Cô có thể làm rõ?"
+      },
+      {
+        "speaker": "Linh",
+        "text": "Je vous remercie de poser la question franchement. L'unité a connu en deux mille vingt-deux une période de tension autour de l'axe trois — désaccord scientifique sur l'orientation théorique entre deux groupes. La résolution s'est faite par un séminaire de médiation en novembre vingt-deux, animé par un collègue extérieur (le Pr. Lemaire, Lyon 2), aboutissant à la reformulation que vous lisez dans le rapport. Il n'y a pas eu de départ ; deux thèses qui auraient pu être affectées ont été soutenues normalement. Je tiens à dire avec netteté que cette période a été éprouvante mais traitée institutionnellement.",
+        "vi": "Tôi cảm ơn câu hỏi thẳng. Đơn vị có giai đoạn căng thẳng năm 2022 quanh trục 3 — bất đồng khoa học về định hướng lý thuyết giữa hai nhóm. Giải quyết qua một séminaire trung gian tháng 11/2022, do đồng nghiệp ngoài (Pr. Lemaire, Lyon 2) điều phối, dẫn đến việc tái hình thành mà quý vị đọc trong báo cáo. Không có ai rời đi; 2 luận án có thể bị ảnh hưởng đã bảo vệ bình thường. Tôi muốn nói rõ rằng giai đoạn này gian nan nhưng được xử lý ở cấp thiết chế."
+      }
+    ],
+    "roleplay_prompts": [
+      "Mở đầu audition HCERES en 5 phút: chiffres clés của unité (effectifs, axes, période) + ANNONCER 2 forces et 2 faiblesses dès le début. Sử dụng ít nhất một « Bien que ... soit » concessif.",
+      "Comité hỏi: « Tout va bien dans votre unité ? » Trả lời en évitant la fausse positivité: nommer une tension réelle (déséquilibre genre, retard science ouverte, départ d'un PR) + plan d'action.",
+      "Comité chỉ ra mâu thuẫn giữa rapport (« axe consolidé ») và phỏng vấn doctorant (« je n'ai pas vu cet axe vivre »). Đáp: thừa nhận sự khả tín của observation + giải thích sự khác biệt entre la réalité dirigeante et l'expérience doctorale + plan correctif."
+    ],
+    "register_notes": "Discours HCERES = registre INSTITUTIONNEL chính xác, gần administratif:\n\n(1) FORMULES DE BILAN STANDARD:\n- « Le bilan que je présente couvre la période de... »\n- « Sur les N axes antérieurs, X sont reconduits, Y sont reformulés... »\n- « La trajectoire collective de l'unité demeure ascendante. »\n- « Les indicateurs bibliométriques doivent être lus avec la prudence d'usage en SHS. »\n\n(2) FORMULES DE FAIBLESSE — fundamental, ne pas escamoter:\n- « Je tiens à signaler franchement... »\n- « Une faiblesse persistante que le projet entend traiter... »\n- « Notre politique de science ouverte accuse un retard de... »\n- « Le déséquilibre de genre... »\n→ Ces formules permettent d'aborder les faiblesses sans qu'elles paraissent défensives.\n\n(3) MARQUEURS DE COLLECTIF — l'unité parle au nom du COLLECTIF, jamais d'individus:\n- « L'unité a connu... » (jamais « le professeur X a fait... »)\n- « L'ensemble des chercheurs a été consulté... »\n- « La trajectoire collective... »\n→ Mention nominale d'un chercheur uniquement: pour saluer un départ à la retraite ou évoquer un Nobel/médaille.\n\n(4) SUBJONCTIF DE NÉCESSITÉ INSTITUTIONNELLE:\n- « Il convient que les recommandations soient mises en œuvre... »\n- « Il importe que la parité fasse l'objet d'un suivi annuel... »\n- « Il est essentiel que la science ouverte soit consolidée... »\n\n(5) CONCESSIVES SOUTENUES:\n- « Bien que le bilan global soit positif... »\n- « Quoique la trajectoire demeure ascendante... »\n- « Aussi délicat que soit le diagnostic... »\n\n(6) CHIFFRES — donner contextes:\n- KHÔNG « 148 articles » seul → « cent quarante-huit articles, soit en moyenne dix-neuf par an et par chercheur cœur ».\n- KHÔNG « 61% en HAL » seul → « soixante et un pour cent, contre quatre-vingt-cinq pour cent pour les unités comparables ».\n→ Comparer + ratio = signe de maturité analytique.\n\n(7) TRÁNH:\n- « Tout va bien » / « excellente santé » → trahit autoévaluation superficielle.\n- Comparaison nominale avec autres unités (laisser le comité comparer).\n- Critique nommée d'un chercheur de l'unité.\n- « On verra » / « peut-être » / « bientôt » → engagements doivent être DATÉS.",
+    "idiom_glosses": [
+      {
+        "idiom": "Venir à échéance (formel)",
+        "literal": "Đến chỗ hết hạn",
+        "meaning": "Tới hạn — vocabulaire institutionnel des contrats.",
+        "example": "Le contrat quinquennal vient à échéance en décembre deux mille vingt-quatre."
+      },
+      {
+        "idiom": "Accuser un retard (institutionnel)",
+        "literal": "Cáo buộc một sự chậm trễ",
+        "meaning": "Có một sự chậm trễ rõ — formule pour signaler une faiblesse.",
+        "example": "Notre politique de science ouverte accuse un retard de deux à trois ans."
+      },
+      {
+        "idiom": "Croiser les données (méthodologique)",
+        "literal": "Bắt chéo dữ liệu",
+        "meaning": "Đối chiếu dữ liệu — méthode SHS standard.",
+        "example": "Nous prions le comité de croiser ces données avec l'analyse qualitative."
+      },
+      {
+        "idiom": "Atteindre la masse critique (institutionnel)",
+        "literal": "Đạt khối lượng tới hạn",
+        "meaning": "Đạt đủ ngưỡng để tự duy trì — vocabulaire de gouvernance scientifique.",
+        "example": "L'axe a désormais une masse critique propre, indépendamment de son fondateur."
+      }
+    ],
+    "exercises": [
+      {
+        "type": "fill-blank",
+        "question": "Bien que le bilan global ___ positif, je tiens à signaler deux faiblesses.",
+        "answer": "soit"
+      },
+      {
+        "type": "matching",
+        "pairs": [
+          ["l'autoévaluation", "tự đánh giá"],
+          ["venir à échéance", "đến hạn"],
+          ["accuser un retard", "có một sự chậm trễ"],
+          ["les tutelles", "cơ quan giám hộ"]
+        ],
+        "instruction": "Nối thuật ngữ HCERES với nghĩa Việt"
+      },
+      {
+        "type": "translation",
+        "vietnamese": "Mặc dù quỹ đạo tập thể của đơn vị vẫn đi lên, tôi muốn thẳng thắn nêu hai điểm yếu dai dẳng.",
+        "french": "Bien que la trajectoire collective de l'unité demeure ascendante, je tiens à signaler franchement deux faiblesses persistantes."
+      }
+    ]
+  },
+  {
+    "id": "lcnu_qualification",
+    "level": "C1",
+    "category": "fluency",
+    "title_vi": "Hồ sơ qualification CNU",
+    "title_en": "Building a CNU qualification dossier",
+    "sentences": [
+      {
+        "en": "Le présent rapport sur les travaux, soumis à la section quatorze du Conseil National des Universités, retrace un parcours de recherche organisé autour d'un fil conducteur unique: la circulation transnationale des savoirs pédagogiques.",
+        "vi": "Báo cáo về các công trình này, nộp lên section 14 của Conseil National des Universités, phác lại một hành trình nghiên cứu xoay quanh một sợi chỉ đỏ duy nhất: sự lưu chuyển xuyên quốc gia của các tri thức sư phạm.",
+        "pronunciation_focus": [
+          "présent → pré-zã",
+          "soumis → su-mi",
+          "section → sèk-sion",
+          "circulation → sir-ku-la-sion"
+        ]
+      },
+      {
+        "en": "Bien que ma trajectoire ait connu une mobilité géographique soutenue — Hanoi, Paris, Aix-en-Provence —, mon objet de recherche demeure stable, et c'est sa cohérence que ce rapport entend mettre en évidence.",
+        "vi": "Mặc dù hành trình của tôi đã trải qua một sự dịch chuyển địa lý đáng kể — Hà Nội, Paris, Aix-en-Provence —, đối tượng nghiên cứu của tôi vẫn ổn định, và chính sự nhất quán này là điều báo cáo muốn làm nổi bật.",
+        "pronunciation_focus": [
+          "Bien que → biãn kơ",
+          "ait connu → è ko-nu",
+          "soutenue → su-tơ-nu",
+          "demeure → dơ-mơr"
+        ]
+      },
+      {
+        "en": "Mon corpus publié à ce jour comprend une monographie issue de ma thèse, sept articles dans des revues à comité de lecture — dont quatre dans des revues classées —, deux chapitres dans des collectifs internationaux, et la coordination d'un numéro thématique de la Revue française de pédagogie.",
+        "vi": "Danh mục công bố tới nay gồm một chuyên khảo từ luận án, bảy bài báo trong tạp chí có comité de lecture — trong đó bốn trong tạp chí xếp hạng —, hai chương trong sách collectif quốc tế, và đồng phụ trách một số chuyên đề Revue française de pédagogie.",
+        "pronunciation_focus": [
+          "corpus → kor-pus",
+          "monographie → mo-no-gra-fi",
+          "comité → ko-mi-té",
+          "thématique → té-ma-tik"
+        ]
+      },
+      {
+        "en": "Sur le plan pédagogique, j'ai assuré, en qualité d'attachée temporaire d'enseignement et de recherche, un service annuel de cent quatre-vingt-douze heures équivalent TD, en master comme en licence, dans deux universités françaises et une université vietnamienne.",
+        "vi": "Về mặt sư phạm, tôi đã đảm nhiệm, với tư cách ATER, một service năm 192 giờ tương đương TD, từ master tới licence, tại hai đại học Pháp và một đại học Việt Nam.",
+        "pronunciation_focus": [
+          "plan → plã",
+          "qualité → ka-li-té",
+          "attachée → a-ta-shé",
+          "équivalent → é-ki-va-lã"
+        ]
+      },
+      {
+        "en": "Le projet de recherche que je joins au présent dossier prolonge mon parcours antérieur tout en s'en démarquant: il consiste à étendre le cadre processuel élaboré dans ma thèse à un terrain comparatif — Vietnam, Cambodge, Laos — sur la période deux mille à deux mille vingt-cinq.",
+        "vi": "Dự án nghiên cứu tôi đính kèm hồ sơ này tiếp nối hành trình trước đó đồng thời tách khỏi nó: mở rộng khung quá trình xây dựng trong luận án sang một terrain so sánh — Việt Nam, Campuchia, Lào — giai đoạn 2000–2025.",
+        "pronunciation_focus": [
+          "joins → joan",
+          "prolonge → pro-lõnj",
+          "démarquant → dé-mar-kã",
+          "comparatif → kõn-pa-ra-tif"
+        ]
+      }
+    ],
+    "cultural_notes_vi": "Le CNU (Conseil National des Universités) est une instance institutionnelle française pour la régulation de la carrière universitaire — DIFFÉRENT du recrutement (établissement) et de l'évaluation scientifique (HCERES).\n\nQUALIFICATION CNU — POURQUOI:\nEn France, pour candidater à un poste de Maître de Conférences (MCF) ou de Professeur des Universités (PR), il faut être préalablement « qualifié » par la section CNU correspondant à la discipline. Sans qualification, candidature impossible (sauf voies dérogatoires limitées: extra-européens hors qualification, sections sans CNU, voie longue article 46-3…).\n\nSECTIONS CNU — STRUCTURE:\n- Environ 77 sections actives (la liste évolue).\n- Chaque section ~50-100 membres élus pour 4 ans (parité, élections nationales).\n- Exemples: section 7 (sciences du langage), section 14 (langues romanes), section 15 (langues asiatiques), section 19 (sociologie/démographie), section 22 (histoire et civilisations modernes/contemporaines), section 27 (informatique).\n- Une section décide souverainement des critères de qualification — variabilité disciplinaire significative.\n\nCALENDRIER QUALIFICATION (annuel):\n(1) INSCRIPTION sur la liste — octobre-novembre via Galaxie/Antares.\n(2) DÉPÔT DU DOSSIER — décembre (varies selon les années).\n(3) EXAMEN par 2 rapporteurs choisis dans la section — janvier-février.\n(4) RAPPORTS communiqués au candidat — généralement consultatifs.\n(5) DÉCISION lors de la session plénière de la section — mars-avril.\n(6) QUALIFICATION valable 4 ans (anciennement 4 ans avec extension exceptionnelle ; vérifier l'année courante).\n\nDOSSIER STANDARD — varie selon section, mais en général:\n- Le rapport de soutenance.\n- Une copie du diplôme de doctorat.\n- Un curriculum vitae.\n- Une liste exhaustive des publications, communications, charges d'enseignement.\n- UN « rapport sur les travaux » — document central, généralement 10-30 pages.\n- Une « notice » — résumé biographique court.\n\nLE RAPPORT SUR LES TRAVAUX — CŒUR DU DOSSIER:\nC'est lui que les rapporteurs lisent en priorité. Structure type:\n(1) Introduction — fil conducteur de la trajectoire scientifique.\n(2) Bilan de la thèse — méthodologie, résultats, réception.\n(3) Travaux post-thèse — articles, ouvrages, projets.\n(4) Bilan d'enseignement (PR seulement obligatoire — pour MCF, à présent souvent demandé dès la qualification).\n(5) Projet de recherche — directions futures.\n(6) (Pour PR) Capacité à diriger des recherches.\n\nCRITÈRES DE QUALIFICATION (très variables par section, mais typiquement):\n- Une thèse soutenue.\n- Une production post-thèse minimale (varies: certaines sections demandent 2-3 articles publiés ou acceptés).\n- Un projet de recherche structuré.\n- (Pour PR) une HDR.\n\nVĂN HÓA À CONNAÎTRE:\n(a) Le CNU N'EST PAS un jugement de valeur scientifique — c'est une attestation d'aptitude à postuler. Une non-qualification n'est pas une condamnation; on peut redéposer l'année suivante avec un dossier renforcé.\n(b) Les SECTIONS sont disciplinaires; certaines (comme la section 11 — études anglophones) sont réputées plus exigeantes que d'autres. Renseignement informel via les collègues utile.\n(c) « Qualifié » ≠ « recruté ». Beaucoup de qualifiés ne trouvent jamais de poste (notamment en SHS, où le nombre de qualifiés excède le nombre de postes par un facteur de 5 à 10).\n(d) Le rapport sur les travaux DOIT être personnel — éviter le ton purement bibliographique. Le candidat doit montrer un raisonnement, pas seulement aligner publications.\n\nĐỌC THÊM:\n- Site galaxie.enseignementsup-recherche.gouv.fr (procédures officielles).\n- Le « rapport au CNU » spécifique de chaque section, publié annuellement.\n\n⚠️ Lưu ý: KHÔNG phải tư vấn pháp lý hay nghề nghiệp. Modalités de qualification CNU thay đổi với các décrets et avec les pratiques de chaque section. Toujours consulter le site officiel Galaxie/Antares pour la campagne de l'année concernée et solliciter le retour de collègues qualifiés récemment dans votre section.",
+    "tip_advice_vi": "PROTOCOLE 8 BƯỚC pour rédiger un rapport sur les travaux qui passe la qualification:\n\n(1) IDENTIFIER LE FIL CONDUCTEUR — première phrase du rapport. PAS « j'ai travaillé sur X puis sur Y », MAIS « mon parcours s'organise autour d'une question unique: ... ». Le fil doit relier thèse + post-thèse + projet futur. Si pas de fil clair, en construire un — c'est l'exercice du rapport.\n\n(2) STRUCTURE EN TROIS TEMPS:\n- Temps 1: la thèse — méthodologie + résultats principaux + réception (cite réception positive ET critique en gardant équilibre).\n- Temps 2: l'après-thèse — comment vos publications POURSUIVENT et NUANCENT le travail de thèse (jamais « répétition »).\n- Temps 3: le projet — comment l'avenir s'inscrit dans le fil + en marque l'évolution.\n\n(3) MENTIONNER LES RAPPORTEURS DE THÈSE et leur réception — surtout s'ils sont reconnus dans la section. KHÔNG par flatterie, mais parce que leur jugement est lisible par les rapporteurs CNU.\n\n(4) ASSUMER LES MOBILITÉS — pour le candidat international (Vietnamiens souvent dans ce cas):\n- Présenter les mobilités comme contribution scientifique, pas comme parcours chaotique.\n- « Cette mobilité Hanoi-Paris-Aix m'a permis d'accéder à des terrains complémentaires. »\n- KHÔNG « j'ai dû déménager pour des raisons personnelles ».\n\n(5) DONNER LES NUMÉROS:\n- N publications, dont X dans revues classées.\n- N communications, dont X invitées.\n- N HEQ TD enseignées, dans X universités.\n- N étudiants encadrés (mémoires de master, co-encadrement de thèse).\n- N participations à jury de thèse en qualité d'examinateur.\n\n(6) RECONNAÎTRE LES LIMITES:\n- « Mon corpus de publications est encore limité en revues anglophones » — si vrai, le dire et expliquer le projet de redressement.\n- « Mon expérience d'enseignement reste à diversifier » — si vrai, plan d'action.\n→ Lucidité = signe de maturité.\n\n(7) PROJET DE RECHERCHE — DOIT être réaliste. Pas un programme pour 20 ans. Trois axes, calendrier sur 4 ans, articulation avec un laboratoire identifié (vérifier accord informel avant dépôt).\n\n(8) FORME — règles à suivre:\n- 15-25 pages (varies; ne pas dépasser format demandé par section).\n- Police standard (Times 11 ou équivalent).\n- Pagination, table des matières.\n- Bibliographie complète à la fin OU intégrée selon section.\n\nTRÁNH:\n- Ton hagiographique sur soi-même.\n- Liste de publications sans interprétation.\n- Critique de collègues ou de courants concurrents.\n- Promesses irréalistes pour le projet.\n- Confusion HDR vs qualification (HDR vient APRÈS).\n- Photo (interdit — anonymisation discriminations).\n\n⚠️ Lưu ý: Không phải tư vấn pháp lý hay nghề nghiệp. Le format et les exigences précises VARIENT par section CNU. Toujours consulter le « rapport CNU » de votre section pour la campagne de l'année concernée + l'avis informel d'au moins deux collègues récemment qualifiés.",
+    "vocabulary": [
+      {
+        "word": "le CNU (Conseil National des Universités)",
+        "en": "the National Council of Universities",
+        "vi": "Hội đồng Quốc gia các Đại học",
+        "pos": "n.m.",
+        "pronunciation_vi": "lơ sé-èn-u"
+      },
+      {
+        "word": "la qualification",
+        "en": "the qualification (CNU)",
+        "vi": "qualification — chứng nhận điều kiện",
+        "pos": "n.f.",
+        "pronunciation_vi": "la ka-li-fi-ka-sion"
+      },
+      {
+        "word": "une section disciplinaire",
+        "en": "a disciplinary section",
+        "vi": "section chuyên ngành",
+        "pos": "n.f.",
+        "pronunciation_vi": "un sèk-sion di-si-pli-nèr"
+      },
+      {
+        "word": "le rapport sur les travaux",
+        "en": "the report on works (qualification dossier)",
+        "vi": "báo cáo về các công trình",
+        "pos": "n.m.",
+        "pronunciation_vi": "lơ ra-por sur lè tra-vo"
+      },
+      {
+        "word": "Maître de Conférences (MCF)",
+        "en": "Associate Professor (French rank)",
+        "vi": "Maître de Conférences — phó giáo sư",
+        "pos": "n.",
+        "pronunciation_vi": "mè-trơ dơ kõn-fé-rãns"
+      },
+      {
+        "word": "Professeur des Universités (PR)",
+        "en": "Full Professor (French rank)",
+        "vi": "Professeur des Universités — giáo sư",
+        "pos": "n.",
+        "pronunciation_vi": "pro-fè-sơr dè zu-ni-vèr-si-té"
+      },
+      {
+        "word": "ATER (Attaché Temporaire d'Enseignement et de Recherche)",
+        "en": "Temporary Teaching and Research Attaché",
+        "vi": "ATER — vị trí giảng dạy và nghiên cứu tạm thời",
+        "pos": "n.",
+        "pronunciation_vi": "a-tèr"
+      },
+      {
+        "word": "HEQ TD (heure équivalent travaux dirigés)",
+        "en": "tutorial-equivalent hour",
+        "vi": "giờ tương đương TD",
+        "pos": "n.f.",
+        "pronunciation_vi": "ash-ơ-ku té-dé"
+      },
+      {
+        "word": "le fil conducteur",
+        "en": "the unifying thread",
+        "vi": "sợi chỉ đỏ",
+        "pos": "n.m.",
+        "pronunciation_vi": "lơ fil kõn-duk-tơr"
+      },
+      {
+        "word": "se démarquer de",
+        "en": "to distinguish oneself from",
+        "vi": "tách khỏi / khác biệt với",
+        "pos": "v.",
+        "pronunciation_vi": "sơ dé-mar-ké dơ"
+      }
+    ],
+    "dialogue": [
+      {
+        "speaker": "Pr. Lambert (rapporteur CNU section 14)",
+        "text": "Madame Tran, votre rapport mentionne sept articles. Combien dans des revues classées par la section quatorze ?",
+        "vi": "Cô Trần, báo cáo có nhắc bảy bài báo. Trong đó bao nhiêu thuộc tạp chí xếp hạng bởi section 14?"
+      },
+      {
+        "speaker": "Linh",
+        "text": "Quatre, dont deux dans la liste A. Les trois autres relèvent de revues à comité de lecture non classées par la section, mais dont la légitimité disciplinaire est attestée — je pense notamment à la Revue française de pédagogie.",
+        "vi": "Bốn, trong đó hai thuộc danh sách A. Ba bài còn lại thuộc tạp chí có comité de lecture không xếp hạng bởi section, nhưng tính hợp pháp ngành đã được khẳng định — tôi nghĩ tới Revue française de pédagogie."
+      },
+      {
+        "speaker": "Pr. Lambert",
+        "text": "Et votre projet de recherche prévoit-il une internationalisation des supports de publication ?",
+        "vi": "Còn dự án nghiên cứu có dự định quốc tế hóa kênh xuất bản?"
+      },
+      {
+        "speaker": "Linh",
+        "text": "Oui, explicitement. Le projet prévoit deux articles en anglais sur quatre ans, dans Comparative Education et International Review of Education. Je reconnais que mon corpus actuel est encore majoritairement francophone — c'est une faiblesse identifiée à laquelle le projet répond.",
+        "vi": "Vâng, rõ ràng. Dự án dự định hai bài báo tiếng Anh trên bốn năm, trên Comparative Education và International Review of Education. Tôi thừa nhận corpus hiện tại còn chủ yếu tiếng Pháp — đó là điểm yếu được nhận diện mà dự án đáp ứng."
+      }
+    ],
+    "dialogue_long": [
+      {
+        "speaker": "Pr. Lambert (rapporteur CNU section 14, retour informel)",
+        "text": "Madame Tran, je suis votre rapporteur pour la section quatorze. Je tenais à vous donner mes premières impressions avant la session plénière. Le rapport est solide ; quelques points méritent qu'on en parle.",
+        "vi": "Cô Trần, tôi là rapporteur của cô cho section 14. Tôi muốn nói cho cô những ấn tượng đầu trước phiên plénière. Báo cáo vững; vài điểm đáng để bàn."
+      },
+      {
+        "speaker": "Linh",
+        "text": "Je vous remercie sincèrement, Monsieur le rapporteur. Je suis preneuse de toute observation.",
+        "vi": "Tôi xin chân thành cảm ơn. Tôi sẵn sàng tiếp nhận mọi ý kiến."
+      },
+      {
+        "speaker": "Pr. Lambert",
+        "text": "Premier point: le fil conducteur est clair, et c'est un atout. Vous le formulez bien — la circulation transnationale des savoirs pédagogiques. Beaucoup de candidats échouent à présenter leur parcours autrement que comme une accumulation. Vous, non. C'est noté positivement.",
+        "vi": "Điểm đầu: sợi chỉ đỏ rõ, đó là một ưu điểm. Cô diễn đạt tốt — sự lưu chuyển xuyên quốc gia của tri thức sư phạm. Nhiều ứng viên không trình bày được hành trình ngoài việc tích lũy. Cô thì khác. Điều đó được ghi nhận tích cực."
+      },
+      {
+        "speaker": "Pr. Lambert",
+        "text": "Deuxième point — et là j'ai un doute. Votre production post-thèse en revues classées est de quatre articles en quatre ans. C'est correct mais pas spectaculaire. Quelle est votre stratégie pour les quatre prochaines années ?",
+        "vi": "Điểm hai — và đây tôi có nghi vấn. Sản phẩm hậu luận án của cô trong tạp chí xếp hạng là 4 bài trong 4 năm. Đủ nhưng không xuất sắc. Chiến lược 4 năm tới của cô thế nào?"
+      },
+      {
+        "speaker": "Linh",
+        "text": "Je vous remercie de la franchise. Sur la cadence, vous avez raison: quatre articles classés en quatre ans correspond à un rythme moyen pour la section. Ma stratégie post-qualification se structure ainsi: deux articles déjà sous évaluation — un dans Cahiers de la recherche sur l'éducation, un dans Comparative Education ; deux en cours d'écriture issus du projet ANR « Circulations Pédagogiques » ; et la monographie aux Presses universitaires de Rennes prévue pour fin deux mille vingt-sept.",
+        "vi": "Tôi cảm ơn sự thẳng thắn. Về nhịp, ông đúng: 4 articles classés trong 4 năm là nhịp trung bình cho section. Chiến lược hậu qualification của tôi: 2 bài đã ở giai đoạn đánh giá — một ở Cahiers de la recherche sur l'éducation, một ở Comparative Education; 2 bài đang viết từ dự án ANR « Circulations Pédagogiques »; và chuyên khảo ở NXB ĐH Rennes dự định cuối 2027."
+      },
+      {
+        "speaker": "Pr. Lambert",
+        "text": "Très bien — ces éléments concrets, pourquoi ne sont-ils pas dans le rapport sur les travaux ? J'ai dû lire entre les lignes.",
+        "vi": "Tốt — vậy sao những yếu tố cụ thể này không có trong báo cáo? Tôi phải đọc giữa các dòng."
+      },
+      {
+        "speaker": "Linh",
+        "text": "Vous avez raison, c'est une faiblesse rédactionnelle. J'ai voulu éviter l'effet d'annonce sur des articles non encore acceptés. Mais à l'évidence, j'ai sous-pondéré le projet à venir au profit du bilan. C'est un point que je note pour une éventuelle redéposition, ou pour la prochaine campagne d'auditions de recrutement.",
+        "vi": "Ông đúng, đó là điểm yếu trong soạn thảo. Tôi muốn tránh effet d'annonce với các articles chưa được chấp nhận. Nhưng rõ ràng, tôi đã đánh giá thấp dự án tương lai để ưu tiên bilan. Đây là điểm tôi ghi cho một lần nộp lại có thể, hoặc cho kỳ tuyển dụng tiếp."
+      },
+      {
+        "speaker": "Pr. Lambert",
+        "text": "Troisième point: votre service d'enseignement. ATER en France et chargée de cours à Hanoi. Très bien sur le papier. Mais je note que vous mentionnez peu d'innovation pédagogique. Y a-t-il des UE que vous avez créées, des dispositifs ?",
+        "vi": "Điểm ba: service giảng dạy. ATER ở Pháp và chargée de cours ở Hà Nội. Tốt trên giấy. Nhưng tôi để ý cô ít nói về cải tiến sư phạm. Có UE nào cô tạo, dispositifs nào?"
+      },
+      {
+        "speaker": "Linh",
+        "text": "Question légitime. À Aix, en deux mille vingt-trois, j'ai conçu et coordonné une UE de master « Méthodes qualitatives pour les terrains transnationaux », vingt-quatre heures, de l'orientation à l'évaluation. C'est mentionné en annexe trois mais — vous avez raison — pas valorisé dans le corps du rapport. Je le retiens pour l'audition de recrutement.",
+        "vi": "Câu hỏi xác đáng. Tại Aix, năm 2023, tôi thiết kế và điều phối một UE master « Phương pháp định tính cho terrain xuyên quốc gia », 24 giờ, từ định hướng tới đánh giá. Có ghi trong annexe 3 nhưng — ông đúng — không được valorisé trong thân báo cáo. Tôi ghi nhận cho audition tuyển dụng."
+      },
+      {
+        "speaker": "Pr. Lambert",
+        "text": "Bien. Quatrième et dernier point: votre passage par Hanoi. Vous le présentez comme une mobilité positive. C'est un choix juste — mais certains de mes collègues lisent les parcours non strictement français comme un signe de manque d'ancrage. Avez-vous un argument pour répondre à cette objection si elle vient en plénière ?",
+        "vi": "Tốt. Điểm bốn và cuối: thời gian ở Hà Nội. Cô trình bày như một mobilité tích cực. Lựa chọn đúng — nhưng vài đồng nghiệp của tôi đọc các parcours không thuần Pháp như dấu hiệu thiếu gốc. Cô có argument để đáp nếu objection ấy đến trong plénière?"
+      },
+      {
+        "speaker": "Linh",
+        "text": "Oui, et je tiens à le dire avec netteté. Mon ancrage français est attesté par: une thèse soutenue à Paris Cité, deux contrats ATER, l'inscription dans deux unités françaises, la coordination d'un numéro de la Revue française de pédagogie. Mon passage par Hanoi n'est pas un défaut d'ancrage — c'est un atout méthodologique pour mon objet, qui appelle un terrain symétrique. Je m'inscris en faux contre l'idée que la mobilité asiatique soit un déficit.",
+        "vi": "Vâng, và tôi muốn nói rõ. Sự cắm gốc Pháp của tôi được chứng minh bởi: luận án ở Paris Cité, hai hợp đồng ATER, đăng ký tại hai đơn vị Pháp, đồng phụ trách một số chuyên đề Revue française de pédagogie. Thời gian Hà Nội không phải thiếu gốc — đó là một ưu thế phương pháp cho đối tượng của tôi, vốn đòi hỏi terrain đối xứng. Tôi phản bác ý kiến cho rằng mobilité châu Á là sự thiếu hụt."
+      },
+      {
+        "speaker": "Pr. Lambert",
+        "text": "Excellente réponse. Gardez exactement cette formulation pour la plénière si la question se pose. Je serai favorable à votre qualification — sans qu'il soit possible de garantir la décision collective bien sûr.",
+        "vi": "Câu trả lời xuất sắc. Giữ chính xác diễn đạt này cho plénière nếu câu hỏi đặt ra. Tôi sẽ ủng hộ qualification của cô — dĩ nhiên không thể đảm bảo quyết định tập thể."
+      }
+    ],
+    "roleplay_prompts": [
+      "Présentez en 3 phút fil conducteur de votre parcours de recherche fictif. Phải articuler thèse + post-thèse + projet futur quanh une question UNIQUE. Sử dụng « se démarquer », « s'inscrire dans la continuité », « prolonger ».",
+      "Rapporteur fait remarquer rằng production post-thèse « est correcte mais pas spectaculaire ». Đáp lại: thừa nhận le rythme moyen, expliciter le pipeline (articles sous évaluation + en cours + monographie) avec dates précises. Tránh effet d'annonce.",
+      "Question piège: « Votre passage par Hanoi est-il un signe d'éloignement de la science française ? » Đáp lại bằng cấu trúc 7 bước contestation (cf. lesson 2): reconnaissance + contestation + arguments concrets (publications, contrats, unités d'attache)."
+    ],
+    "register_notes": "Discours CNU = registre INSTITUTIONNEL ACADÉMIQUE — formel, factuel, structuré:\n\n(1) FORMULES D'AUTOPRÉSENTATION RAPPORT SUR LES TRAVAUX:\n- « Le présent rapport, soumis à la section X du CNU... »\n- « Mon parcours s'organise autour d'une question unique: ... »\n- « Mon corpus publié à ce jour comprend... »\n- « Sur le plan pédagogique, j'ai assuré... »\n- « Le projet de recherche que je joins prolonge mon parcours antérieur tout en s'en démarquant: ... »\n\n(2) NOMINALISATION DE LA TRAJECTOIRE:\n- « la consolidation de mon corpus » thay « j'ai consolidé »\n- « l'élaboration d'un cadre processuel » thay « j'ai élaboré »\n- « la mobilité géographique » thay « j'ai déménagé »\n\n(3) SUBJONCTIF DANS CONCESSIVES:\n- « Bien que ma trajectoire ait connu une mobilité géographique soutenue... »\n- « Quoique mon corpus en revues anglophones demeure limité... »\n- « Encore que la cadence des publications soit moyenne... »\n\n(4) FORMULES DE RECONNAISSANCE DE LIMITES:\n- « Je reconnais que... »\n- « Mon corpus en X est encore limité — c'est une faiblesse à laquelle le projet répond. »\n- « Cette dimension reste à diversifier. »\n→ Lucidité valorisée par les rapporteurs CNU.\n\n(5) FORMULES DE PROJET:\n- « Le projet prévoit, sur quatre ans, ... »\n- « Trois axes structurent le programme à venir: ... »\n- « Ce travail s'articule avec [unité de rattachement] dans le cadre de... »\n\n(6) ÉQUILIBRE ACTIF/PASSIF:\n- Ne pas tout passifver: « Cette UE a été créée par moi » → préférer « j'ai conçu cette UE ». Le « je » mesuré est attendu (différent du « je » exclu en soutenance).\n\n(7) TRÁNH:\n- Listings sans interprétation (tableaux statistiques sans commentaire).\n- Hyperboles (« contribution majeure », « rayonnement international ») non étayées.\n- Critique de collègues, courants concurrents, écoles.\n- Mention nominale de personnes en termes de jugement.\n- Hagiographie de soi-même.\n- Confusion HDR / qualification / recrutement.",
+    "idiom_glosses": [
+      {
+        "idiom": "Un fil conducteur (académique)",
+        "literal": "Một sợi chỉ dẫn dắt",
+        "meaning": "Sợi chỉ đỏ — formule centrale pour articuler une trajectoire.",
+        "example": "Mon parcours s'organise autour d'un fil conducteur unique: la circulation transnationale des savoirs."
+      },
+      {
+        "idiom": "S'inscrire dans la continuité de (formel)",
+        "literal": "Đăng ký vào sự liên tục của",
+        "meaning": "Nối tiếp công trình — formule de positionnement.",
+        "example": "Mes travaux post-thèse s'inscrivent dans la continuité de la thèse, tout en s'en démarquant sur deux points."
+      },
+      {
+        "idiom": "Mettre en évidence (académique)",
+        "literal": "Đặt ra trước mắt",
+        "meaning": "Làm nổi bật — formule standard pour signaler un résultat.",
+        "example": "C'est cette cohérence interne que le présent rapport entend mettre en évidence."
+      },
+      {
+        "idiom": "Faire l'objet d'une attention soutenue (institutionnel)",
+        "literal": "Là đối tượng của một sự chú ý bền bỉ",
+        "meaning": "Được chú ý kỹ — registre formel pour signaler une thématique traitée en profondeur.",
+        "example": "La dimension pédagogique a fait l'objet d'une attention soutenue tout au long du parcours."
+      }
+    ],
+    "exercises": [
+      {
+        "type": "fill-blank",
+        "question": "Bien que ma trajectoire ___ connu une mobilité soutenue, mon objet de recherche demeure stable.",
+        "answer": "ait"
+      },
+      {
+        "type": "matching",
+        "pairs": [
+          ["le rapport sur les travaux", "báo cáo về các công trình"],
+          ["le fil conducteur", "sợi chỉ đỏ"],
+          ["se démarquer de", "tách khỏi"],
+          ["s'inscrire dans la continuité de", "nối tiếp công trình của"]
+        ],
+        "instruction": "Nối thuật ngữ CNU với nghĩa Việt"
+      },
+      {
+        "type": "translation",
+        "vietnamese": "Dự án nghiên cứu tôi đính kèm hồ sơ này tiếp nối hành trình trước đó đồng thời tách khỏi nó.",
+        "french": "Le projet de recherche que je joins au présent dossier prolonge mon parcours antérieur tout en s'en démarquant."
+      }
+    ]
+  },
+  {
+    "id": "lmcf_audition",
+    "level": "C1",
+    "category": "fluency",
+    "title_vi": "Audition tuyển dụng MCF",
+    "title_en": "MCF recruitment audition",
+    "sentences": [
+      {
+        "en": "Madame la Présidente du comité, Mesdames et Messieurs, je vous remercie d'avoir retenu mon dossier pour cette audition au poste numéro deux mille vingt-six trait MCF zéro quatre, fléché en sociolinguistique du bilinguisme.",
+        "vi": "Thưa Chủ tịch hội đồng, thưa quý Cô quý Thầy, tôi cảm ơn đã chọn hồ sơ tôi cho audition vị trí 2026-MCF-04, fléché xã hội ngôn ngữ học song ngữ.",
+        "pronunciation_focus": [
+          "retenu → rơ-tơ-nu",
+          "audition → o-di-sion",
+          "fléché → flé-shé",
+          "bilinguisme → bi-lan-guism"
+        ]
+      },
+      {
+        "en": "Mon exposé s'articulera en trois temps: la cohérence de mon parcours scientifique au regard du profil du poste, mon projet d'enseignement pour les unités d'enseignement listées dans la fiche, et mon insertion projetée dans le laboratoire d'accueil.",
+        "vi": "Bài trình bày của tôi gồm ba phần: sự nhất quán của hành trình khoa học so với profil vị trí, dự án giảng dạy cho các UE liệt kê trong fiche, và việc hội nhập dự kiến vào laboratoire d'accueil.",
+        "pronunciation_focus": [
+          "exposé → èks-po-zé",
+          "cohérence → ko-é-rãns",
+          "profil → pro-fil",
+          "insertion → an-sèr-sion"
+        ]
+      },
+      {
+        "en": "Le profil du poste, tel qu'il est défini dans la fiche, requiert une compétence en méthodes mixtes appliquées à des terrains plurilingues — précisément le cœur de ma formation doctorale et de mes publications post-thèse.",
+        "vi": "Profil vị trí, theo fiche, đòi hỏi năng lực phương pháp hỗn hợp áp dụng cho terrain đa ngôn ngữ — chính xác là lõi của đào tạo doctorat và publications hậu luận án.",
+        "pronunciation_focus": [
+          "tel qu'il est → tèl kil è",
+          "requiert → rơ-kièr",
+          "appliquées → a-pli-ké",
+          "plurilingues → plu-ri-lan-gơ"
+        ]
+      },
+      {
+        "en": "Sur le plan pédagogique, je me propose, dès la première année, d'assurer le service annuel de cent quatre-vingt-douze HEQ TD, réparti entre l'UE de licence trois 'Sociolinguistique' et le séminaire de master 'Méthodes qualitatives'.",
+        "vi": "Về mặt sư phạm, tôi đề xuất, ngay năm đầu, đảm bảo service năm 192 HEQ TD, phân bổ giữa UE licence 3 'Sociolinguistique' và séminaire master 'Méthodes qualitatives'.",
+        "pronunciation_focus": [
+          "pédagogique → pé-da-go-jik",
+          "propose → pro-poz",
+          "service → sèr-vis",
+          "réparti → ré-par-ti"
+        ]
+      },
+      {
+        "en": "Mon insertion dans le laboratoire LSO ne serait pas un parachutage: j'ai eu l'occasion d'y collaborer en deux mille vingt-quatre dans le cadre du projet ANR coordonné par le professeur Bertrand, et la composition actuelle du laboratoire correspond précisément à mon objet.",
+        "vi": "Hội nhập của tôi vào laboratoire LSO sẽ không phải là parachutage: tôi đã có dịp cộng tác năm 2024 trong khuôn khổ dự án ANR do giáo sư Bertrand điều phối, và thành phần hiện tại của laboratoire đúng với đối tượng của tôi.",
+        "pronunciation_focus": [
+          "insertion → an-sèr-sion",
+          "parachutage → pa-ra-shu-taj",
+          "collaborer → ko-la-bo-ré",
+          "composition → kõn-po-zi-sion"
+        ]
+      }
+    ],
+    "cultural_notes_vi": "L'audition de recrutement MCF (Maître de Conférences) est l'épreuve QUYẾT ĐỊNH dans le concours de recrutement français — différent de la qualification CNU (qui est un préalable national) et de l'évaluation HCERES (qui évalue le collectif).\n\nTRÌNH TỰ CONCOURS MCF:\n(1) Le poste est PUBLIÉ sur Galaxie/Antares en février-mars (campagne synchronisée nationale, dite « campagne synchronisée »).\n(2) Inscription du candidat: dépôt du dossier (CV + rapport de candidature + projet d'enseignement et de recherche) — généralement deux à trois semaines après publication.\n(3) Examen des dossiers par un comité de sélection (« COS ») composé d'enseignants-chercheurs (parité interne/externe à l'établissement, parité femmes/hommes obligatoire).\n(4) AUDITION (mai-juin) — typiquement 30-45 minutes par candidat: 15-20 min présentation + 15-25 min questions.\n(5) Le COS classe les candidats. Le classement est transmis au conseil académique restreint (CAR) — ou son équivalent — qui valide.\n(6) Le candidat classé en tête est convoqué à un entretien parfois pour confirmation. Puis nomination par décret.\n\nLE COS — IMPORTANT POUR LE CANDIDAT À COMPRENDRE:\n- 8-12 membres généralement (varies). Parité interne/externe ~50/50. Parité genre obligatoire.\n- Présidé par un membre interne (souvent un PR du laboratoire d'accueil).\n- Les rapporteurs au sein du COS lisent les dossiers en amont; rapport oral présenté au COS avant audition.\n- Audition est PUBLIQUE (pas d'huis clos sauf cas exceptionnel).\n\nAUDITION — STRUCTURE STANDARD:\n- 15-20 min: présentation par le candidat (parcours + recherche + enseignement + insertion).\n- 15-25 min: questions du COS.\n- Le candidat sort. Le COS délibère.\n\nLE POSTE FLÉCHÉ:\n- Chaque poste a une « fiche de poste » qui spécifie: la section CNU principale + une section secondaire éventuelle, le profil enseignement (UE à prendre en charge), le profil recherche (laboratoire d'accueil + axes), et parfois des contraintes (ex: mobilité, projet pédagogique).\n- Le candidat DOIT prouver son adéquation au profil. C'est la base du recrutement.\n\nVĂN HÓA À CONNAÎTRE:\n(a) Le local insider — un candidat « interne » à l'établissement (ATER, postdoc local, doctorant local) a souvent un avantage informationnel (connaissance du labo, des collègues), mais l'avantage est SOUVENT SURÉVALUÉ par les candidats externes. Les COS exigent un dossier solide indépendamment de la familiarité locale.\n(b) Le LOCAL FLÉCHÉ — situations où le poste est de facto destiné à un candidat précis (rare mais existant). Parfois lisible dans la fiche très spécifique. Cas à éviter pour candidats externes (perte de temps).\n(c) La DIVERSITÉ DES PARCOURS — la France a longtemps recruté des « locaux »; les pratiques évoluent. Mais un candidat 100% non-français a parfois encore besoin de plus de signaux d'ancrage français.\n(d) Le PROJET D'ENSEIGNEMENT est crucial — beaucoup de candidats négligent. Le COS pose toujours: « Quelles UE prendrez-vous en charge dès septembre, et quelles innovations apportez-vous ? »\n(e) Le RECRUTEMENT DE FEMME EN SECTION DOMINÉE PAR LES HOMMES — politique active dans certaines sections; à connaître mais pas à tabler.\n\nĐỌC THÊM:\n- Décret 84-431 du 6 juin 1984 (statut MCF/PR — référence juridique).\n- Site Galaxie pour fiches de postes courantes.\n- Forums informels: postes-mcfpr (mais à utiliser avec discernement, parfois imprécis).\n\n⚠️ Lưu ý: KHÔNG phải tư vấn pháp lý hay nghề nghiệp. Procédures de recrutement MCF varient légèrement selon établissements et selon réformes en cours (ex: chaires de professeur junior, voies dérogatoires…). Toujours consulter la fiche de poste précise + la procédure de l'établissement concerné + un mentor récemment recruté dans la même section.",
+    "tip_advice_vi": "PROTOCOLE 9 BƯỚC pour réussir une audition MCF:\n\n(1) ANALYSER LA FICHE DE POSTE LIGNE PAR LIGNE — avant tout. Identifier:\n- La section CNU principale + secondaire.\n- Le profil recherche: axes, laboratoire d'accueil, mots-clés.\n- Le profil enseignement: UE listées, niveau (L/M), volumes éventuels.\n- Les contraintes spécifiques.\n→ Votre exposé doit ANSWER POINT-PAR-POINT à la fiche.\n\n(2) PRÉPARER UN EXPOSÉ DE 18 MIN (avec marge pour 20):\n- 2 min: parcours en une phrase + fil conducteur.\n- 5 min: programme de recherche — ARTICULÉ AU LABO D'ACCUEIL.\n- 6 min: programme d'enseignement — UE listées dans fiche, plus 1-2 ajouts.\n- 3 min: insertion dans le collectif (collaborations, axes communs).\n- 2 min: conclusion synthétique.\n\n(3) NE PAS RACONTER VOTRE THÈSE — le COS l'a lue. Synthèse en deux phrases. Le temps doit aller au PROJET.\n\n(4) CONNAÎTRE LE LABO ET SES MEMBRES — y compris les NOMS:\n- Lire 3-4 publications récentes des membres clés.\n- Repérer 2 axes où vous pouvez collaborer.\n- Le COS vous demandera: « avec qui dans le labo collaboreriez-vous? » Réponse PRÉCISE attendue.\n\n(5) PROJET D'ENSEIGNEMENT — détaillé, pas générique:\n- UE listées: prendre en charge avec PROGRAMMES PROPOSÉS (titre des séances, méthodes, évaluations).\n- 1-2 UE NOUVELLES proposées en lien avec votre recherche.\n- Mention de niveau L et M équilibrée.\n- Encadrement de mémoires: thématiques que vous pouvez encadrer.\n\n(6) ANTICIPER LES QUESTIONS RÉCURRENTES:\n- « Pourquoi notre établissement / notre poste précisément ? » — Préparer une réponse FACTUELLE (collaboration possible avec X, accès à archives Y, complémentarité avec axe Z).\n- « Avec qui dans le labo collaboreriez-vous ? »\n- « Quelles UE prendrez-vous dès septembre ? »\n- « Quels articles publierez-vous dans les deux ans ? »\n- « Si vous ne réussissez pas ce concours, que ferez-vous ? » — réponse: « je continuerai à candidater l'année suivante avec un dossier renforcé ; entretemps, je poursuivrai mes activités en X. » (jamais « je quitterai la recherche »).\n- Question sur la mobilité (étrangère pour candidats étrangers): cf. lesson cnu_qualification, cấu trúc 7 bước.\n\n(7) CODE VESTIMENTAIRE ET FORMAT — codes implicites:\n- Tenue formelle (costume / tailleur classique, pas obligatoirement strict mais propre, sobre).\n- Arriver 30 min avant.\n- Apporter copies du CV + projet pour chaque membre du COS (8-12 copies).\n- Slides: numérotées, lisibles, pas surchargées.\n\n(8) COMPORTEMENT EN AUDITION:\n- Vouvoiement à TOUS les membres, même si vous en connaissez certains.\n- Saluer chaque membre en entrant, en commençant par la Présidente.\n- Ne pas regarder uniquement la Présidente — balayer le COS du regard.\n- Pour question hostile: rester calme, reformuler, répondre en cédant un terrain factuel + tenir le terrain principal.\n\n(9) APRÈS L'AUDITION:\n- Envoyer un email de remerciement à la Présidente du COS le soir même (sobre, court).\n- Préparer le suivi: si classé, étapes administratives; si non classé, demander un retour informel auprès d'un membre, et capitaliser pour la campagne suivante.\n\nTRÁNH:\n- Mémoriser un texte appris par cœur (paraît mécanique).\n- Comparer ostensiblement avec un autre candidat.\n- Critiquer une institution ou un collègue.\n- Promettre des choses non tenables (« je publierai cinq articles par an »).\n- Confondre audition de recrutement et soutenance de thèse (registres différents).\n\n⚠️ Lưu ý: Không phải tư vấn pháp lý hay nghề nghiệp. Modalités d'audition varient selon établissements et selon réformes. Toujours s'appuyer sur la procédure officielle de l'établissement concerné et solliciter le retour de mentors récemment recrutés.",
+    "vocabulary": [
+      {
+        "word": "une audition de recrutement",
+        "en": "a recruitment audition",
+        "vi": "phiên audition tuyển dụng",
+        "pos": "n.f.",
+        "pronunciation_vi": "un o-di-sion dơ rơ-kru-tơ-mã"
+      },
+      {
+        "word": "le comité de sélection (COS)",
+        "en": "the selection committee",
+        "vi": "comité tuyển chọn",
+        "pos": "n.m.",
+        "pronunciation_vi": "lơ ko-mi-té dơ sé-lèk-sion"
+      },
+      {
+        "word": "la fiche de poste",
+        "en": "the position description",
+        "vi": "mô tả vị trí",
+        "pos": "n.f.",
+        "pronunciation_vi": "la fish dơ post"
+      },
+      {
+        "word": "fléché en (un domaine)",
+        "en": "earmarked for (a domain)",
+        "vi": "fléché về (một lĩnh vực)",
+        "pos": "loc.",
+        "pronunciation_vi": "flé-shé ã"
+      },
+      {
+        "word": "le profil du poste",
+        "en": "the profile of the position",
+        "vi": "profil vị trí",
+        "pos": "n.m.",
+        "pronunciation_vi": "lơ pro-fil du post"
+      },
+      {
+        "word": "le laboratoire d'accueil",
+        "en": "the host laboratory",
+        "vi": "laboratoire d'accueil",
+        "pos": "n.m.",
+        "pronunciation_vi": "lơ la-bo-ra-toa-rơ da-kơy"
+      },
+      {
+        "word": "l'insertion dans un collectif",
+        "en": "insertion into a collective",
+        "vi": "hội nhập vào tập thể",
+        "pos": "n.f.",
+        "pronunciation_vi": "lan-sèr-sion dã an ko-lèk-tif"
+      },
+      {
+        "word": "un parachutage",
+        "en": "a parachute drop (forced insertion)",
+        "vi": "parachutage — ngã từ trên xuống",
+        "pos": "n.m.",
+        "pronunciation_vi": "an pa-ra-shu-taj"
+      },
+      {
+        "word": "le service annuel d'enseignement",
+        "en": "the annual teaching service",
+        "vi": "service năm về giảng dạy",
+        "pos": "n.m.",
+        "pronunciation_vi": "lơ sèr-vis a-nu-èl"
+      },
+      {
+        "word": "un classement",
+        "en": "a ranking",
+        "vi": "xếp hạng",
+        "pos": "n.m.",
+        "pronunciation_vi": "an klas-mã"
+      }
+    ],
+    "dialogue": [
+      {
+        "speaker": "Pr. Garcia (Présidente du COS)",
+        "text": "Madame Tran, vous disposez de vingt minutes. À vous.",
+        "vi": "Cô Trần, cô có hai mươi phút. Mời cô."
+      },
+      {
+        "speaker": "Linh",
+        "text": "Madame la Présidente, Mesdames et Messieurs les membres du comité, je vous remercie d'avoir retenu mon dossier. Mon exposé s'articulera en trois temps: la cohérence de mon parcours au regard du profil du poste, mon projet d'enseignement pour les UE listées, et mon insertion projetée dans le laboratoire LSO.",
+        "vi": "Thưa Chủ tịch, thưa quý Cô quý Thầy, tôi cảm ơn đã chọn hồ sơ. Bài trình bày gồm ba phần: nhất quán hành trình so với profil vị trí, dự án giảng dạy cho các UE, và hội nhập dự kiến vào laboratoire LSO."
+      },
+      {
+        "speaker": "Pr. Garcia",
+        "text": "Question d'ouverture: pourquoi notre établissement plutôt qu'un autre ?",
+        "vi": "Câu hỏi mở đầu: vì sao đơn vị chúng tôi chứ không phải một nơi khác?"
+      },
+      {
+        "speaker": "Linh",
+        "text": "Trois raisons précises. Un: le laboratoire LSO est l'un des deux en France à articuler sociolinguistique du bilinguisme et politiques linguistiques transnationales — c'est exactement mon objet. Deux: l'archive Aix-Sud, accessible dans votre établissement, conditionne l'extension de mes corpus. Trois: les UE listées correspondent à mes domaines d'enseignement antérieurs, ce qui assure une prise de fonction sans rupture pédagogique.",
+        "vi": "Ba lý do cụ thể. Một: laboratoire LSO là một trong hai ở Pháp khớp nối sociolinguistique du bilinguisme và politiques linguistiques transnationales — đúng đối tượng của tôi. Hai: lưu trữ Aix-Sud, tiếp cận được tại đơn vị này, là điều kiện để mở rộng corpus. Ba: các UE liệt kê khớp với lĩnh vực giảng dạy trước đó, đảm bảo nhận nhiệm vụ không gãy."
+      }
+    ],
+    "dialogue_long": [
+      {
+        "speaker": "Pr. Garcia (Présidente du COS, ouverture)",
+        "text": "Madame Tran, vous êtes la troisième candidate auditionnée ce matin. Vous disposez de vingt minutes pour votre exposé, suivies d'environ vingt-cinq minutes de questions. Le comité est complet — onze membres aujourd'hui. Nous vous écoutons.",
+        "vi": "Cô Trần, cô là ứng viên thứ ba sáng nay. Cô có 20 phút trình bày, sau đó khoảng 25 phút hỏi đáp. Comité đầy đủ — 11 thành viên hôm nay. Chúng tôi nghe cô."
+      },
+      {
+        "speaker": "Linh",
+        "text": "Madame la Présidente, Mesdames et Messieurs les membres du comité, je vous remercie d'avoir retenu mon dossier pour cette audition au poste numéro deux mille vingt-six trait MCF zéro quatre, fléché en sociolinguistique du bilinguisme. Mon exposé s'articulera en trois temps: la cohérence de mon parcours scientifique au regard du profil du poste, mon projet d'enseignement pour les UE listées, et mon insertion projetée dans le laboratoire d'accueil.",
+        "vi": "Thưa Chủ tịch, thưa quý Cô quý Thầy thành viên comité, tôi cảm ơn đã chọn hồ sơ cho audition vị trí 2026-MCF-04, fléché xã hội ngôn ngữ học song ngữ. Bài trình bày gồm ba phần: nhất quán hành trình so với profil vị trí, dự án giảng dạy cho các UE, hội nhập dự kiến vào laboratoire d'accueil."
+      },
+      {
+        "speaker": "Linh",
+        "text": "Premier temps: la cohérence. Le profil du poste, tel qu'il est défini dans la fiche, requiert une compétence en méthodes mixtes appliquées à des terrains plurilingues — précisément le cœur de ma formation doctorale et de mes publications post-thèse. Ma thèse, soutenue en deux mille vingt-trois à Paris Cité, portait sur la circulation des modèles pédagogiques entre la France et le Vietnam ; mes quatre articles classés post-thèse en prolongent la méthodologie.",
+        "vi": "Phần một: sự nhất quán. Profil vị trí, theo fiche, đòi hỏi năng lực phương pháp hỗn hợp áp dụng cho terrain đa ngôn ngữ — chính là lõi đào tạo doctorat và các publications hậu luận án. Luận án, bảo vệ 2023 ở Paris Cité, về sự lưu chuyển mô hình sư phạm giữa Pháp và Việt; bốn articles classés hậu luận án tiếp nối phương pháp đó."
+      },
+      {
+        "speaker": "Linh",
+        "text": "Deuxième temps: le projet d'enseignement. Sur le plan pédagogique, je me propose, dès la première année, d'assurer le service annuel de cent quatre-vingt-douze HEQ TD, réparti ainsi: quarante-huit heures en licence trois pour l'UE 'Sociolinguistique', soixante-douze heures en master un pour l'UE 'Méthodes qualitatives' — listées toutes deux dans la fiche —, et soixante-douze heures en master deux pour une UE nouvelle que je propose de créer: 'Terrains plurilingues comparés'.",
+        "vi": "Phần hai: dự án giảng dạy. Về sư phạm, tôi đề xuất, ngay năm đầu, đảm bảo service năm 192 HEQ TD, phân bổ: 48 giờ licence 3 cho UE 'Sociolinguistique', 72 giờ master 1 cho UE 'Méthodes qualitatives' — cả hai được liệt kê trong fiche —, và 72 giờ master 2 cho một UE mới tôi đề xuất tạo: 'Terrains plurilingues comparés'."
+      },
+      {
+        "speaker": "Linh",
+        "text": "Cette UE nouvelle prolonge mon projet de recherche et complète l'offre actuelle du master, qui ne comprend pas, à ma connaissance, de séminaire dédié aux terrains plurilingues d'Asie. Elle s'articulerait avec l'UE 'Politiques linguistiques' coordonnée par Madame Garcia, par une séquence transversale en M2 sur l'évaluation des dispositifs.",
+        "vi": "UE mới này tiếp nối dự án nghiên cứu và bổ sung cho offre hiện tại của master, mà theo tôi biết, không có séminaire dành cho terrain đa ngôn ngữ châu Á. Nó sẽ khớp với UE 'Politiques linguistiques' do Cô Garcia điều phối, qua một séquence xuyên suốt M2 về đánh giá dispositifs."
+      },
+      {
+        "speaker": "Linh",
+        "text": "Troisième temps: l'insertion. Mon insertion dans le laboratoire LSO ne serait pas un parachutage. J'ai eu l'occasion d'y collaborer en deux mille vingt-quatre dans le cadre du projet ANR coordonné par le professeur Bertrand. La composition actuelle du laboratoire correspond précisément à mon objet: deux MCF travaillent sur l'Asie du Sud-Est, et le séminaire mensuel 'Terrains du plurilinguisme' offre un cadre direct d'inscription.",
+        "vi": "Phần ba: hội nhập. Hội nhập vào laboratoire LSO sẽ không phải parachutage. Tôi đã có dịp cộng tác năm 2024 trong khuôn khổ dự án ANR do giáo sư Bertrand điều phối. Thành phần hiện tại của laboratoire khớp đúng với đối tượng của tôi: hai MCF làm về Đông Nam Á, và séminaire tháng 'Terrains du plurilinguisme' tạo khung đăng ký trực tiếp."
+      },
+      {
+        "speaker": "Linh",
+        "text": "Pour conclure, ma candidature s'inscrit dans une convergence rare entre profil de poste, projet de recherche, projet d'enseignement et collectif d'accueil. Je vous remercie pour votre attention et reste à votre disposition pour vos questions.",
+        "vi": "Để kết thúc, ứng cử của tôi nằm trong một sự hội tụ hiếm giữa profil vị trí, dự án nghiên cứu, dự án giảng dạy và collectif d'accueil. Tôi cảm ơn quý vị đã lắng nghe và sẵn sàng trả lời câu hỏi."
+      },
+      {
+        "speaker": "Pr. Garcia",
+        "text": "Merci. Madame Lemaire, première question, je vous prie.",
+        "vi": "Cảm ơn. Cô Lemaire, câu hỏi đầu xin mời."
+      },
+      {
+        "speaker": "Pr. Lemaire (membre interne)",
+        "text": "Madame Tran, vous proposez de créer une UE en M2. Comment l'articuleriez-vous avec l'UE 'Anthropologie linguistique' que coordonne mon collègue Pr. Schmitt — risque de redondance ?",
+        "vi": "Cô Trần, cô đề xuất tạo một UE ở M2. Cô khớp nó với UE 'Anthropologie linguistique' do đồng nghiệp Pr. Schmitt điều phối ra sao — rủi ro trùng lặp?"
+      },
+      {
+        "speaker": "Linh",
+        "text": "Question pertinente. J'ai consulté la maquette M2 et lu le syllabus du Pr. Schmitt. La distinction me paraît claire: 'Anthropologie linguistique' s'articule autour des représentations et des idéologies linguistiques, en perspective ethnographique. Mon UE proposée porte sur la comparaison de DISPOSITIFS — politiques publiques, programmes pédagogiques, infrastructures éducatives. Ce sont deux entrées disciplinaires complémentaires, non concurrentes. Une séance commune en milieu de semestre pourrait, du reste, formaliser cette complémentarité.",
+        "vi": "Câu hỏi xác đáng. Tôi đã đọc maquette M2 và syllabus Pr. Schmitt. Sự khác biệt theo tôi rõ: 'Anthropologie linguistique' xoay quanh đại diện và hệ tư tưởng ngôn ngữ, góc dân tộc học. UE tôi đề xuất về so sánh DISPOSITIFS — chính sách công, chương trình sư phạm, hạ tầng giáo dục. Hai cửa ngành bổ sung, không cạnh tranh. Một buổi chung giữa học kỳ có thể, hơn nữa, formaliser sự bổ sung đó."
+      },
+      {
+        "speaker": "Pr. Lemaire",
+        "text": "Très bien. Avez-vous déjà parlé au Pr. Schmitt de cette articulation ?",
+        "vi": "Tốt. Cô đã nói với Pr. Schmitt về sự khớp nối này chưa?"
+      },
+      {
+        "speaker": "Linh",
+        "text": "Pas formellement, par discrétion procédurale: prendre l'initiative en amont d'une audition aurait pu paraître présomptueux. Mais en cas de succès au concours, ce serait une de mes premières démarches institutionnelles — discuter de l'articulation avant validation par le conseil de département.",
+        "vi": "Chưa chính thức, vì discrétion thủ tục: chủ động trước audition có thể trông giả định trước. Nhưng nếu thành công ở concours, đó sẽ là một trong démarches đầu — bàn về sự khớp nối trước validation conseil de département."
+      },
+      {
+        "speaker": "Pr. Garcia",
+        "text": "Réponse mesurée. Question suivante, M. Dubois.",
+        "vi": "Câu trả lời chừng mực. Câu hỏi tiếp, Thầy Dubois."
+      },
+      {
+        "speaker": "Pr. Dubois (membre externe)",
+        "text": "Madame Tran, votre formation est principalement franco-vietnamienne. Comment vos compétences se positionnent-elles face à la concurrence en sociolinguistique du bilinguisme, qui est, vous le savez, fortement anglophone ?",
+        "vi": "Cô Trần, đào tạo cô chủ yếu Pháp-Việt. Năng lực cô định vị thế nào so với cạnh tranh trong sociolinguistique du bilinguisme, mà như cô biết, chủ yếu anglophone?"
+      },
+      {
+        "speaker": "Linh",
+        "text": "Je connais le débat. Je l'aborde sans détour. Trois éléments. Un: ma formation est trilingue — vietnamien natif, français de scolarité doctorale, anglais de travail attesté par des publications dans Comparative Education et International Review of Education. Je conteste l'idée que le profil franco-vietnamien soit un déficit en sociolinguistique du bilinguisme — c'est, en réalité, un atout terrain. Deux: la sociolinguistique anglophone est massive mais largement focalisée sur les diasporas américaine et britannique ; le terrain asiatique francophone — Vietnam, Cambodge, Laos — reste sous-théorisé. Trois: le projet de recherche prévoit explicitement deux articles anglophones par cycle de quatre ans, ce qui correspond à un engagement réaliste plutôt qu'à une promesse vide.",
+        "vi": "Tôi biết tranh luận đó. Tôi xử lý không quanh co. Ba yếu tố. Một: đào tạo của tôi tam ngữ — Việt bản ngữ, Pháp đào tạo doctorat, Anh làm việc chứng minh qua publications ở Comparative Education và International Review of Education. Tôi phản bác ý kiến cho rằng profil Pháp-Việt là thiếu hụt trong sociolinguistique du bilinguisme — thực ra là một lợi thế terrain. Hai: sociolinguistique anglophone đồ sộ nhưng chủ yếu tập trung diaspora Mỹ và Anh; terrain châu Á francophone — Việt, Campuchia, Lào — còn ít được lý thuyết hóa. Ba: dự án nghiên cứu dự định rõ hai articles tiếng Anh mỗi 4 năm, là cam kết hiện thực không phải lời hứa rỗng."
+      }
+    ],
+    "roleplay_prompts": [
+      "Mở đầu audition MCF en 5 phút: remerciement + plan en 3 temps + cohérence parcours/profil. Tham chiếu rõ NUMÉRO du poste et sa fléchage. Sử dụng ít nhất một subjonctif concessif.",
+      "Comité hỏi: « Avec qui dans le labo collaboreriez-vous concrètement ? » Đáp lại bằng tên cụ thể (2 chercheurs) + sujet de collaboration + lecture récente d'un de leurs articles. Tránh trả lời générique.",
+      "Question piège: « Pourquoi nous, et pas le poste équivalent à Lyon publié la semaine dernière ? » Đáp: 3 lý do CỤ THỂ liées au laboratoire d'accueil (composition, accès archives, articulation UE). KHÔNG nói « parce que vous m'attirez plus »."
+    ],
+    "register_notes": "Audition MCF = registre académique formel + INSTITUTIONNEL — proche soutenance mais avec un volet enseignement et insertion:\n\n(1) RÉFÉRENCES À LA FICHE DE POSTE — bắt buộc:\n- « Le profil du poste, tel qu'il est défini dans la fiche, requiert... »\n- « Les UE listées dans la fiche, notamment X et Y... »\n- « Au regard du profil du poste... »\n- « En adéquation avec la section CNU N et la section secondaire M... »\n→ Ne pas montrer la fiche = candidature sans préparation.\n\n(2) FORMULES D'ENGAGEMENT PÉDAGOGIQUE:\n- « Je me propose, dès la première année, d'assurer... »\n- « Le service annuel se répartirait ainsi: ... »\n- « Je propose la création d'une UE nouvelle... »\n→ Verbes au CONDITIONNEL si rien n'est encore validé; au FUTUR si le poste est obtenu (mais c'est présomptueux en audition — préférer conditionnel).\n\n(3) FORMULES D'INSERTION DANS LE COLLECTIF:\n- « Mon insertion dans le laboratoire ne serait pas un parachutage... »\n- « La composition actuelle du laboratoire correspond précisément à... »\n- « Je collaborerais avec [nom précis] sur [sujet précis]... »\n\n(4) RAISONS PRÉCISES POUR LE POSTE — éviter les formules creuses:\n- KHÔNG « j'ai été attirée par votre université ».\n- DÙNG « trois raisons précises: un... deux... trois... » + arguments spécifiques (composition labo, accès archives, articulation UE).\n\n(5) SUBJONCTIF DANS CONCESSIVES + DANS NÉCESSITÉ:\n- « Bien que la concurrence soit forte... »\n- « Quoique mon corpus anglophone demeure en construction... »\n- « Il convient que la prise de fonction soit immédiatement opérationnelle. »\n\n(6) TRÁNH:\n- « Je suis la meilleure candidate » → présomptueux; laissez le COS juger.\n- Comparaisons nominales avec autres candidats.\n- Promesses irréalistes (« je publierai 5 articles par an », « je créerai 4 UE »).\n- « J'aimerais bien... » → verbe modal faible; préférer « je me propose de... ».\n- Confusion section CNU vs profil du poste (proches mais distincts)."
+,
+    "idiom_glosses": [
+      {
+        "idiom": "Fléché en (un domaine) [institutionnel]",
+        "literal": "Có mũi tên về",
+        "meaning": "Đánh dấu hướng đến (lĩnh vực) — vocabulaire de la fiche de poste.",
+        "example": "Le poste est fléché en sociolinguistique du bilinguisme avec section secondaire en sciences de l'éducation."
+      },
+      {
+        "idiom": "Ne pas être un parachutage (institutionnel)",
+        "literal": "Không phải sự nhảy dù",
+        "meaning": "Không bị áp đặt từ ngoài — argument standard pour candidat externe au labo.",
+        "example": "Mon insertion dans le laboratoire ne serait pas un parachutage, puisque j'y collabore depuis 2024."
+      },
+      {
+        "idiom": "Au regard de (formel)",
+        "literal": "Trước cái nhìn của",
+        "meaning": "So với / khi xét tới — registre administratif-académique.",
+        "example": "La cohérence du parcours, au regard du profil du poste, paraît établie."
+      },
+      {
+        "idiom": "Une convergence rare (institutionnel)",
+        "literal": "Một sự hội tụ hiếm",
+        "meaning": "Sự gặp gỡ hiếm — formule de conclusion d'audition pour synthétiser la pertinence.",
+        "example": "Ma candidature s'inscrit dans une convergence rare entre profil de poste et projet de recherche."
+      }
+    ],
+    "exercises": [
+      {
+        "type": "fill-blank",
+        "question": "Bien que la concurrence ___ forte, mon profil correspond précisément au profil du poste.",
+        "answer": "soit"
+      },
+      {
+        "type": "matching",
+        "pairs": [
+          ["la fiche de poste", "mô tả vị trí"],
+          ["fléché en", "fléché về"],
+          ["le laboratoire d'accueil", "laboratoire d'accueil"],
+          ["un parachutage", "ngã từ trên xuống"]
+        ],
+        "instruction": "Nối thuật ngữ audition MCF với nghĩa Việt"
+      },
+      {
+        "type": "translation",
+        "vietnamese": "Hội nhập của tôi vào laboratoire LSO sẽ không phải là parachutage: tôi đã cộng tác trong khuôn khổ dự án ANR năm 2024.",
+        "french": "Mon insertion dans le laboratoire LSO ne serait pas un parachutage: j'ai collaboré dans le cadre du projet ANR en deux mille vingt-quatre."
+      }
+    ]
+  },
+  {
+    "id": "lresearch_seminar_animation",
+    "level": "C1",
+    "category": "fluency",
+    "title_vi": "Điều phối một séminaire de recherche",
+    "title_en": "Animating a research seminar",
+    "sentences": [
+      {
+        "en": "Avant de céder la parole à notre invitée, permettez-moi de la situer brièvement et d'esquisser la question qui nous réunit aujourd'hui.",
+        "vi": "Trước khi nhường lời cho khách mời của chúng ta, cho phép tôi định vị ngắn gọn về cô ấy và phác thảo câu hỏi tập hợp chúng ta hôm nay.",
+        "pronunciation_focus": [
+          "céder → sé-dé",
+          "invitée → an-vi-té",
+          "esquisser → ès-ki-sé",
+          "réunit → ré-u-ni"
+        ]
+      },
+      {
+        "en": "L'objet de notre séminaire de cette année — la circulation transnationale des savoirs — appelle, par sa nature même, un travail collectif: aucune discipline ne le couvre seule.",
+        "vi": "Đối tượng séminaire năm nay của chúng ta — sự lưu chuyển xuyên quốc gia của tri thức — chính bởi bản chất của nó đòi hỏi một công việc tập thể: không ngành nào tự phủ kín được nó.",
+        "pronunciation_focus": [
+          "circulation → sir-ku-la-sion",
+          "transnationale → trãn-na-sio-nal",
+          "appelle → a-pèl",
+          "collectif → ko-lèk-tif"
+        ]
+      },
+      {
+        "en": "Je vous propose, sans plus tarder, d'ouvrir la discussion par une question simple en apparence, mais sur laquelle votre exposé semble passer rapidement: en quoi exactement votre cadre théorique se distingue-t-il de celui de Sapiro ?",
+        "vi": "Tôi đề xuất, không trì hoãn, mở thảo luận bằng một câu hỏi tưởng đơn giản, nhưng trong bài trình bày dường như cô đi qua nhanh: chính xác khung lý thuyết của cô khác với khung của Sapiro ở chỗ nào?",
+        "pronunciation_focus": [
+          "sans plus tarder → sã plu tar-dé",
+          "simple → san-plơ",
+          "apparence → a-pa-rãns",
+          "exactement → èg-zak-tơ-mã"
+        ]
+      },
+      {
+        "en": "Avant que nous n'épuisions le temps imparti, je voudrais que nous revenions sur un point soulevé en passant et qui me paraît, en fait, central — la question des médiateurs invisibles.",
+        "vi": "Trước khi chúng ta dùng hết thời gian, tôi muốn quay lại một điểm được nêu lướt qua mà theo tôi, thực ra, là trung tâm — câu hỏi về các trung gian vô hình.",
+        "pronunciation_focus": [
+          "épuisions → é-pui-zion",
+          "imparti → an-par-ti",
+          "soulevé → sul-vé",
+          "médiateurs → mé-dia-tơr"
+        ]
+      },
+      {
+        "en": "Pour clore la séance, je propose une synthèse en trois points, en notant que rien n'est tranché — la discussion d'aujourd'hui sera reprise dans la séance du quinze mai consacrée précisément à cette question.",
+        "vi": "Để kết thúc phiên, tôi đề xuất một tổng hợp ba điểm, đồng thời lưu ý rằng không có gì đã được phân định — thảo luận hôm nay sẽ được nối tiếp ở phiên ngày 15/5 dành riêng cho câu hỏi này.",
+        "pronunciation_focus": [
+          "clore → klor",
+          "synthèse → san-tèz",
+          "tranché → trãn-shé",
+          "consacrée → kõn-sa-kré"
+        ]
+      }
+    ],
+    "cultural_notes_vi": "« Le séminaire de recherche » là một thiết chế trung tâm của đời sống trí thức Pháp — khác biệt rõ với « le cours » và với « la conférence »:\n\nKHÁC BIỆT VỚI CÁC FORMAT KHÁC:\n- Le COURS: monodirectionnel, professeur enseigne, étudiants prennent notes. Évaluation à la fin.\n- La CONFÉRENCE / TABLE RONDE: événement ponctuel, audience large, échange limité.\n- LE SÉMINAIRE DE RECHERCHE: collectif, périodique, participants sont chercheurs ou doctorants avancés, échange est l'objet principal.\n\nCẤU TRÚC TYPIQUE D'UN SÉMINAIRE:\n(1) ANIMATEUR (1-2 personnes, souvent membres permanents du labo) — ouvre la séance.\n(2) PRÉSENTATION D'UN(E) INVITÉ(E) ou d'un(e) chercheur(se) du labo — 30-50 min.\n(3) DISCUSSION ouverte — 45-60 min, animée par le ou les modérateurs.\n(4) CLÔTURE par l'animateur — synthèse + annonce de la séance suivante.\n\nDURÉE STANDARD: 1h30 à 2h. Hebdomadaire ou bimensuel.\n\nINSTITUTIONS À CONNAÎTRE:\n- Les SÉMINAIRES DE L'EHESS — institution emblématique. Chaque enseignant-chercheur titulaire peut animer un séminaire annuel ouvert au public. Programme publié par l'EHESS.\n- Les SÉMINAIRES DE L'ENS — Ulm, Lyon, Cachan. Plus internes, fréquentés par doctorants.\n- Les SÉMINAIRES DES UMR / EA — programme propre à chaque unité.\n- Les SÉMINAIRES INTER-LABOS — coordonnés par plusieurs unités sur un thème commun.\n\nRÔLE DE L'ANIMATEUR — clé:\n(a) PRÉSENTER l'invité(e): trajectoire, publications, lien avec le séminaire — 5 min max.\n(b) ESQUISSER LA QUESTION: pourquoi cet invité, pourquoi maintenant.\n(c) CÉDER LA PAROLE: « Je vous cède la parole, vous disposez de [N] minutes. »\n(d) PROVOQUER LA DISCUSSION par UNE PREMIÈRE QUESTION CIBLÉE — pas générique. L'animateur a lu les publications de l'invité(e) et identifie une zone de tension.\n(e) DISTRIBUER LA PAROLE pendant la discussion — appeler par leur nom, gérer les tours, éviter les monopolisations.\n(f) REFORMULER les questions floues du public en termes précis pour l'invité(e).\n(g) SYNTHÉTISER en 3-5 min à la fin.\n\nVĂN HÓA INTELLECTUELLE — POURQUOI L'ANIMATEUR EST DIRECT:\nDans la tradition française du séminaire (héritée des « salons » du XVIIIe + de la disputatio médiévale), l'animateur n'est PAS neutre comme un modérateur de table ronde télévisuelle. Il est un intellectuel parmi d'autres, qui a son point de vue, et qui pose les questions difficiles. La « première question de l'animateur » est souvent la PLUS rude — c'est elle qui fixe le ton du débat.\n\nKHÁC ANGLO MODEL: dans les « research seminars » américains, l'animateur tend à être facilitateur neutre. En France, l'animateur peut dire « je conteste votre lecture de Bourdieu » ouvertement, en tant qu'animateur. Cela ne brise pas la civilité — au contraire, l'invité(e) prend cette directité comme un signe de sérieux.\n\nLES SÉMINAIRES « VEDETTE » — culture intellectuelle:\n- Le séminaire de Bourdieu au Collège de France (années 80-90): références vivantes encore.\n- Les séminaires de Foucault au Collège de France (1970-1984): publiés depuis comme cours.\n- Les séminaires de l'EHESS de Sapiro, Lahire, Ogien, etc.\n→ Connaître ces traditions = signaler appartenance au champ.\n\nĐỌC THÊM:\n- Sapiro, La Sociologie de la littérature (2014) — exemples de pratique de séminaire.\n- Lahire, La Culture des individus (2004), introduction — réflexion sur le travail collectif au séminaire.\n- Site de l'EHESS, programme annuel des séminaires (en accès libre).\n\nGỢI Ý CHO NGƯỜI VIỆT NAM:\n(a) Khi tham dự séminaire lần đầu, không bắt buộc phát biểu — l'écoute est valorisée.\n(b) Khi prends la parole, formuler une question précise (pas un commentaire général). Nommer l'auteur cité.\n(c) Tutoiement absolument INTERDIT — vouvoiement entre tous, même collègues proches.\n(d) Le séminaire est un espace de désaccord — sự bất đồng được hoan nghênh nếu được argumenté.",
+    "tip_advice_vi": "PROTOCOLE 8 BƯỚC pour animer un séminaire de recherche:\n\n(1) PRÉPARATION AVANT LA SÉANCE:\n- Lire au moins 3 publications récentes de l'invité(e).\n- Identifier 2 zones de tension dans son œuvre — points où il/elle est en débat avec d'autres.\n- Préparer 4-5 questions, dont 1 « première question » difficile et 3-4 « questions de relance ».\n- Briefer brièvement l'invité(e) sur la composition du séminaire (qui sera là).\n\n(2) OUVERTURE — 5 minutes maximum:\n- « Bonjour à tous, je suis heureuse d'ouvrir cette séance du séminaire... »\n- Présenter l'invité(e): trajectoire, publications-clés, lien avec le thème annuel.\n- Esquisser la question qui réunit le séminaire ce jour.\n- Céder la parole avec timing précis: « Vous disposez de quarante-cinq minutes, le temps de la discussion sera ensuite ouvert pour quarante-cinq minutes. »\n\n(3) ÉCOUTE PENDANT L'EXPOSÉ — actif:\n- Ne pas faire l'appel sur le téléphone.\n- Noter 3-5 points qui méritent discussion.\n- Repérer 1 affirmation qui ouvre une question forte pour la première question.\n\n(4) PREMIÈRE QUESTION — moment-clé du séminaire:\n- Précise, pas générique.\n- Adressée DIRECTEMENT à l'invité(e), pas au public.\n- Touche au cœur, pas à la périphérie.\n- Formule type: « Vous avez avancé que [X]. Avant que nous n'ouvrions au public, je voudrais qu'on revienne précisément sur ce point: comment articulez-vous [X] avec [Y, qui semble en tension] ? »\n\n(5) GESTION DE LA DISCUSSION — distribution de parole:\n- « Madame Lemaire, vous aviez levé la main en premier. »\n- Garder une LISTE mentale (ou écrite) des intervenants.\n- ÉQUILIBRER seniors / juniors / doctorants. Ne pas laisser les seniors monopoliser.\n- Si une question est confuse, REFORMULER pour l'invité(e): « Si je comprends bien, vous demandez si... ».\n- Si un échange devient un duel entre deux personnes au détriment du collectif, intervenir: « Permettez-moi de rouvrir au reste de la salle. »\n\n(6) PROVOQUER QUAND NÉCESSAIRE:\n- Si l'invité(e) élude une question, redemander avec netteté: « Pour que ce soit clair: vous me dites donc que... ? »\n- Si un consensus s'installe trop vite, jouer l'avocat du diable: « Je formule une objection, à titre de débat: ... »\n- Cette directité est ATTENDUE de l'animateur, pas perçue comme rudesse.\n\n(7) GESTION DU TEMPS:\n- Surveiller la pendule.\n- À 15 min de la fin, signaler: « Nous avons une dizaine de minutes pour deux dernières questions. »\n- Refuser de prolonger au-delà du temps annoncé (respect du collectif et de l'invité(e)).\n\n(8) CLÔTURE — synthèse en 3-5 min:\n- « Trois points me semblent ressortir de notre discussion: ... »\n- Indiquer ce qui reste ouvert: « Ce qui n'est pas tranché, c'est X — ce sera l'objet d'une séance ultérieure. »\n- Annoncer la séance suivante: « Le quinze mai, nous accueillerons Monsieur Y, dont le travail prolonge précisément ces questions. »\n- Remercier l'invité(e) chaleureusement mais brièvement.\n\nTRÁNH:\n- Monopoliser la parole en tant qu'animateur — l'invité(e) doit avoir 50%+ du temps total.\n- Présenter l'invité(e) en hyperboles (« sommité internationale », « référence incontournable ») — paraît courtisan.\n- Éviter les questions difficiles par politesse — perd la respect de l'invité(e) et du collectif.\n- Laisser un échange devenir personnel ou hostile — intervenir avant la dérive.\n- Conclure en synthétisant à votre place ce que l'invité(e) a dit (« vous avez en somme dit que... ») si vous n'êtes pas d'accord — laisser l'invité(e) corriger.\n\nGỢI Ý CHO NGƯỜI VIỆT NAM:\nKhi animer cho lần đầu, lo lắng phổ biến: « tôi sẽ trông thiếu tôn trọng nếu hỏi câu khó ». Đó là sai lầm: trong văn hóa séminaire Pháp, sự tôn trọng được thể hiện QUA câu hỏi khó. Một animateur không hỏi gì khó được hiểu là chưa đọc invité hoặc không quan tâm đủ.",
+    "vocabulary": [
+      {
+        "word": "un séminaire de recherche",
+        "en": "a research seminar",
+        "vi": "séminaire nghiên cứu",
+        "pos": "n.m.",
+        "pronunciation_vi": "an sé-mi-nèr dơ rơ-shèrsh"
+      },
+      {
+        "word": "animer un séminaire",
+        "en": "to animate / chair a seminar",
+        "vi": "điều phối một séminaire",
+        "pos": "v.",
+        "pronunciation_vi": "a-ni-mé an sé-mi-nèr"
+      },
+      {
+        "word": "céder la parole",
+        "en": "to give the floor",
+        "vi": "nhường lời",
+        "pos": "loc. v.",
+        "pronunciation_vi": "sé-dé la pa-rol"
+      },
+      {
+        "word": "esquisser une question",
+        "en": "to sketch a question",
+        "vi": "phác thảo một câu hỏi",
+        "pos": "v.",
+        "pronunciation_vi": "ès-ki-sé un kès-tion"
+      },
+      {
+        "word": "le temps imparti",
+        "en": "the allotted time",
+        "vi": "thời gian quy định",
+        "pos": "n.m.",
+        "pronunciation_vi": "lơ tã an-par-ti"
+      },
+      {
+        "word": "soulever un point",
+        "en": "to raise a point",
+        "vi": "nêu một điểm",
+        "pos": "v.",
+        "pronunciation_vi": "su-lơ-vé an poan"
+      },
+      {
+        "word": "l'avocat du diable",
+        "en": "the devil's advocate",
+        "vi": "luật sư của quỷ",
+        "pos": "n.m.",
+        "pronunciation_vi": "la-vo-ka du diab-lơ"
+      },
+      {
+        "word": "trancher une question",
+        "en": "to settle a question",
+        "vi": "phân định một câu hỏi",
+        "pos": "v.",
+        "pronunciation_vi": "trãn-shé un kès-tion"
+      },
+      {
+        "word": "clore la séance",
+        "en": "to close the session",
+        "vi": "kết thúc phiên",
+        "pos": "loc. v.",
+        "pronunciation_vi": "klor la sé-ãns"
+      },
+      {
+        "word": "une synthèse en trois points",
+        "en": "a three-point synthesis",
+        "vi": "tổng hợp ba điểm",
+        "pos": "n.f.",
+        "pronunciation_vi": "un san-tèz ã troa poan"
+      }
+    ],
+    "dialogue": [
+      {
+        "speaker": "Linh (animatrice du séminaire)",
+        "text": "Avant de céder la parole à notre invitée, je voudrais l'introduire brièvement. Madame Sapiro est directrice de recherche au CNRS, elle a publié notamment La Sociologie de la littérature en 2014. Aujourd'hui, elle nous parle de la circulation transnationale des œuvres.",
+        "vi": "Trước khi nhường lời cho khách mời, tôi muốn giới thiệu ngắn gọn. Cô Sapiro là directrice de recherche tại CNRS, đã xuất bản đáng chú ý cuốn La Sociologie de la littérature năm 2014. Hôm nay, cô nói với chúng ta về sự lưu chuyển xuyên quốc gia của các tác phẩm."
+      },
+      {
+        "speaker": "Linh",
+        "text": "Madame, je vous cède la parole. Vous disposez de quarante-cinq minutes, et nous aurons ensuite quarante-cinq minutes de discussion.",
+        "vi": "Cô Sapiro, tôi nhường lời. Cô có 45 phút, sau đó chúng ta có 45 phút thảo luận."
+      },
+      {
+        "speaker": "Pr. Sapiro (après son exposé)",
+        "text": "Je vous remercie. Je suis maintenant à votre disposition pour les questions.",
+        "vi": "Cảm ơn quý vị. Tôi xin sẵn sàng nhận câu hỏi."
+      },
+      {
+        "speaker": "Linh",
+        "text": "Je me permets d'ouvrir la discussion par une question. Vous avez avancé que la circulation se fait par des médiateurs institutionnels. Comment articulez-vous cela avec le rôle des médiateurs informels — traducteurs indépendants, agents littéraires — qui semble passer au second plan dans votre exposé ?",
+        "vi": "Cho phép tôi mở thảo luận bằng một câu hỏi. Cô vừa nói rằng lưu chuyển diễn ra qua các trung gian thiết chế. Cô khớp điều đó với vai trò của các trung gian không chính thức — dịch giả độc lập, agent văn học — vốn dường như đứng hàng hai trong bài, ra sao?"
+      }
+    ],
+    "dialogue_long": [
+      {
+        "speaker": "Linh (animatrice, ouverture)",
+        "text": "Bonsoir à tous. Je suis heureuse d'ouvrir cette séance du séminaire annuel 'Circulations transnationales des savoirs', qui se tient depuis octobre dans cet amphithéâtre de l'EHESS. Aujourd'hui, nous accueillons Madame Gisèle Sapiro, directrice de recherche au CNRS, professeure à l'EHESS. Madame Sapiro a publié, entre autres, La Sociologie de la littérature en deux mille quatorze et Les Écrivains et la politique en France en deux mille dix-huit.",
+        "vi": "Xin chào tất cả. Tôi vui mừng khai mạc phiên séminaire năm 'Circulations transnationales des savoirs', diễn ra từ tháng 10 tại giảng đường này của EHESS. Hôm nay chúng ta đón Cô Gisèle Sapiro, directrice de recherche CNRS, professeure EHESS. Cô đã xuất bản, trong số khác, La Sociologie de la littérature 2014 và Les Écrivains et la politique en France 2018."
+      },
+      {
+        "speaker": "Linh",
+        "text": "Le thème de notre séminaire — la circulation transnationale des savoirs — appelle, par sa nature même, un travail collectif: aucune discipline ne le couvre seule. Nous avons commencé l'année par la circulation des sciences dures, puis par la circulation des théories juridiques. Aujourd'hui, avec Madame Sapiro, nous abordons la circulation des œuvres littéraires, qui présente, je le crois, des spécificités que la discussion permettra d'éclaircir. Madame, je vous cède la parole. Vous disposez de quarante-cinq minutes, suivies d'une discussion ouverte d'une durée équivalente.",
+        "vi": "Chủ đề séminaire — sự lưu chuyển xuyên quốc gia của tri thức — chính bởi bản chất của nó đòi hỏi một công việc tập thể: không ngành nào tự phủ kín được. Chúng ta đã bắt đầu năm bằng lưu chuyển khoa học cứng, rồi lưu chuyển lý thuyết pháp lý. Hôm nay, với Cô Sapiro, chúng ta đề cập lưu chuyển các tác phẩm văn học, theo tôi tin, có đặc thù mà thảo luận sẽ làm rõ. Thưa Cô, tôi nhường lời. Cô có 45 phút, tiếp theo là thảo luận mở 45 phút."
+      },
+      {
+        "speaker": "Pr. Sapiro (après son exposé de 45 min)",
+        "text": "Je vous remercie pour votre attention. Je suis à votre disposition pour les questions.",
+        "vi": "Cảm ơn quý vị đã lắng nghe. Tôi sẵn sàng nhận câu hỏi."
+      },
+      {
+        "speaker": "Linh",
+        "text": "Madame, merci pour cet exposé qui ouvre plusieurs pistes. Avant que nous n'ouvrions au public, je me permets d'ouvrir la discussion par une question d'animatrice. Vous avez avancé que la circulation transnationale se fait principalement par des médiateurs institutionnels — agents, éditeurs, festivals. Quoique cet argument soit fortement étayé pour le cas français-anglais, je m'interroge sur les cas asymétriques: comment articulez-vous votre cadre avec les médiateurs informels — traducteurs indépendants, agents littéraires solitaires — qui semblent passer au second plan dans votre exposé ?",
+        "vi": "Thưa Cô, cảm ơn về bài trình bày mở ra nhiều hướng. Trước khi mở cho công chúng, cho phép tôi đặt một câu hỏi với tư cách animatrice. Cô vừa nói rằng lưu chuyển xuyên quốc gia chủ yếu diễn ra qua các trung gian thiết chế — agent, biên tập, festival. Mặc dù lập luận này được hỗ trợ mạnh cho trường hợp Pháp-Anh, tôi tự hỏi về các trường hợp bất đối xứng: Cô khớp khung của Cô với các trung gian không chính thức — dịch giả độc lập, agent văn học cô đơn — vốn dường như đứng hàng hai, ra sao?"
+      },
+      {
+        "speaker": "Pr. Sapiro",
+        "text": "Question pertinente. Vous touchez à un point réel. Mon cadre privilégie les médiateurs institutionnels parce que les sources que j'ai mobilisées — archives d'agents, contrats d'édition, données IPSTEC — les rendent visibles. Les médiateurs informels sont plus difficiles à saisir empiriquement. Mais vous avez raison: dans des cas asymétriques comme la France-Vietnam, le poids relatif des informels est probablement supérieur. C'est un point que je n'ai pas exploré.",
+        "vi": "Câu hỏi xác đáng. Cô chạm vào một điểm thật. Khung của tôi ưu tiên các trung gian thiết chế bởi nguồn tôi huy động — lưu trữ agent, hợp đồng xuất bản, dữ liệu IPSTEC — làm chúng hiện ra. Các trung gian không chính thức khó nắm bắt empirically. Nhưng cô đúng: trong các trường hợp bất đối xứng như Pháp-Việt, trọng số của không chính thức có thể cao hơn. Đó là điểm tôi chưa khai thác."
+      },
+      {
+        "speaker": "Linh",
+        "text": "Merci de cette ouverture. J'ouvre maintenant au public — je vois plusieurs mains levées. Madame Lemaire, vous étiez la première.",
+        "vi": "Cảm ơn sự cởi mở. Tôi mở cho công chúng — tôi thấy nhiều tay giơ. Cô Lemaire, cô là người đầu."
+      },
+      {
+        "speaker": "Pr. Lemaire (membre du séminaire)",
+        "text": "Madame Sapiro, vous citez régulièrement Bourdieu — Les Règles de l'art — comme cadre de référence. Mais Bourdieu lui-même a été critique de la sociologie de la traduction de Casanova. Comment vous positionnez-vous dans ce débat ?",
+        "vi": "Cô Sapiro, cô thường trích Bourdieu — Les Règles de l'art — làm khung quy chiếu. Nhưng chính Bourdieu đã phê bình xã hội học dịch của Casanova. Cô định vị mình thế nào trong tranh luận đó?"
+      },
+      {
+        "speaker": "Pr. Sapiro",
+        "text": "Question délicate. Je continue Bourdieu sur le concept de champ, je nuance Casanova sur la centralité parisienne. La méridienne géographique de Casanova me paraît surdéterminée — j'opte pour une géographie polycentrique.",
+        "vi": "Câu hỏi nhạy. Tôi tiếp tục Bourdieu về khái niệm champ, tôi điều chỉnh Casanova về tính trung tâm Paris. Đường meridian địa lý của Casanova theo tôi quá xác định — tôi chọn địa lý đa trung tâm."
+      },
+      {
+        "speaker": "Linh",
+        "text": "Si je peux reformuler pour le séminaire: vous gardez la grille bourdieusienne mais vous décentrez le champ — Paris n'est plus la méridienne. C'est une position plus proche de Lahire que de Casanova, je crois ?",
+        "vi": "Nếu tôi diễn đạt lại cho séminaire: cô giữ khung Bourdieu nhưng cô phi-trung tâm hóa champ — Paris không còn là đường meridian. Đây là vị trí gần Lahire hơn Casanova, tôi nghĩ vậy?"
+      },
+      {
+        "speaker": "Pr. Sapiro",
+        "text": "Reformulation juste, oui. Je suis effectivement plus proche de Lahire sur ce point précis.",
+        "vi": "Diễn đạt lại đúng. Tôi quả thật gần Lahire hơn ở điểm cụ thể này."
+      },
+      {
+        "speaker": "Linh",
+        "text": "Merci. Monsieur Schmitt, vous aviez la main levée ensuite.",
+        "vi": "Cảm ơn. Thầy Schmitt, thầy có giơ tay sau đó."
+      },
+      {
+        "speaker": "Linh (clôture, après 45 min de discussion)",
+        "text": "Nous arrivons au terme du temps imparti. Pour clore la séance, je propose une synthèse en trois points. Premièrement, le cadre de Madame Sapiro, qui privilégie les médiateurs institutionnels, semble robuste pour les flux symétriques mais demande à être complété pour les flux asymétriques — ce point reviendra dans la séance du quinze mai consacrée précisément à ces flux. Deuxièmement, le débat avec Casanova sur la méridienne parisienne reste ouvert et nourrira le travail de notre groupe. Troisièmement, la question des médiateurs informels — soulevée par Madame Lemaire et Monsieur Dubois — sera l'objet d'une séance dédiée que je co-organiserai avec Monsieur Dubois en juin. Madame Sapiro, je vous remercie chaleureusement pour la générosité de votre présence et la qualité de cet échange.",
+        "vi": "Chúng ta đến cuối thời gian. Để kết thúc, tôi đề xuất tổng hợp ba điểm. Thứ nhất, khung của Cô Sapiro, ưu tiên các trung gian thiết chế, vững cho luồng đối xứng nhưng cần bổ sung cho luồng bất đối xứng — điểm này sẽ trở lại ở phiên 15/5. Thứ hai, tranh luận với Casanova về đường meridian Paris vẫn mở. Thứ ba, câu hỏi về các trung gian không chính thức — do Cô Lemaire và Thầy Dubois nêu — sẽ là chủ đề một phiên riêng tôi đồng tổ chức với Thầy Dubois tháng 6. Thưa Cô Sapiro, tôi xin chân thành cảm ơn về sự rộng lượng và chất lượng trao đổi."
+      }
+    ],
+    "roleplay_prompts": [
+      "Mở đầu một séminaire en 4 phút: présentation de l'invité (3 phrases) + esquisse de la question annuelle (1 phrase) + cession de la parole avec timing précis. Sử dụng « cèder la parole », « esquisser », « le temps imparti ».",
+      "Premier question d'animatrice à un invité dont vous CONTESTEZ une thèse. Cấu trúc: reconnaître la solidité de l'argument + pivoter vers la zone de tension + question directe. Tránh question générique du type « pourriez-vous développer ? ».",
+      "Modérer un échange qui devient duel entre deux participants. Intervenir poliment mais fermement: « Permettez-moi de rouvrir au reste de la salle. Madame X, vous aviez la main levée depuis cinq minutes. » Sau đó reformuler ce qui s'est dit pour reprendre le contrôle."
+    ],
+    "register_notes": "Animation de séminaire = registre académique INTERMÉDIAIRE — soutenu mais avec souplesse pour gérer le débat:\n\n(1) FORMULES D'OUVERTURE:\n- « Bonsoir à tous, je suis heureuse d'ouvrir cette séance... »\n- « Avant de céder la parole à notre invité(e)... »\n- « Permettez-moi de la / le situer brièvement... »\n- « Le thème de notre séminaire appelle, par sa nature même... »\n\n(2) FORMULES DE CESSION DE PAROLE:\n- « Je vous cède la parole. Vous disposez de N minutes. »\n- « Vous avez la parole. »\n- « Madame X, vous étiez la première à lever la main. »\n- « Monsieur Y, à vous. »\n\n(3) FORMULES DE PROVOCATION INTELLECTUELLE:\n- « Je me permets d'ouvrir par une question difficile... »\n- « À titre de débat, je formule l'objection suivante: ... »\n- « Avant que nous n'ouvrions au public, je voudrais que nous revenions sur un point... »\n- « Permettez que je joue l'avocat du diable... »\n\n(4) REFORMULATION:\n- « Si je vous comprends bien, vous me dites que... »\n- « Si je peux reformuler pour le séminaire: ... »\n- « Pour que ce soit clair: votre position est donc... ? »\n→ La reformulation est un acte de modération, à utiliser quand une question est confuse.\n\n(5) GESTION DU TEMPS:\n- « Nous avons une dizaine de minutes pour deux dernières questions. »\n- « Le temps imparti touche à sa fin. »\n- « Je vais devoir clore. »\n\n(6) FORMULES DE CLÔTURE:\n- « Pour clore la séance, je propose une synthèse en trois points. »\n- « Trois éléments me semblent ressortir... »\n- « Ce qui n'est pas tranché, c'est X — sera l'objet d'une séance ultérieure. »\n- « Je remercie chaleureusement notre invité(e). »\n\n(7) SUBJONCTIF DANS DES SUBORDONNÉES TEMPORELLES:\n- « Avant que nous n'épuisions le temps imparti... » (avant que + subjonctif + ne explétif)\n- « Avant que nous n'ouvrions au public... »\n- « Pourvu que nous parvenions à conclure... »\n\n(8) TRÁNH:\n- Hyperboles dans présentation invité (« sommité », « référence absolue »).\n- Question générique (« pourriez-vous développer ? »).\n- Monopolisation de la parole en tant qu'animateur.\n- Tutoiement (même si vous tutoyez l'invité en privé).\n- Conclure à la place de l'invité(e) en cas de désaccord."
+,
+    "idiom_glosses": [
+      {
+        "idiom": "Céder la parole (académique)",
+        "literal": "Nhường lời nói",
+        "meaning": "Nhường lời — formule animateur standard.",
+        "example": "Je vous cède la parole, Madame Sapiro. Vous disposez de quarante-cinq minutes."
+      },
+      {
+        "idiom": "Esquisser une question (intellectuel)",
+        "literal": "Phác họa một câu hỏi",
+        "meaning": "Đặt một câu hỏi tổng quát, ngắn gọn — pour ouvrir un séminaire.",
+        "example": "Avant de céder la parole, permettez-moi d'esquisser la question qui nous réunit aujourd'hui."
+      },
+      {
+        "idiom": "Jouer l'avocat du diable (idiomatique)",
+        "literal": "Đóng vai luật sư của quỷ",
+        "meaning": "Đặt phản biện cố ý — formule pour annoncer une provocation intellectuelle.",
+        "example": "Je joue l'avocat du diable un instant: et si la circulation se faisait surtout par les médiateurs informels ?"
+      },
+      {
+        "idiom": "Trancher une question (formel)",
+        "literal": "Chặt một câu hỏi",
+        "meaning": "Phân định dứt khoát — souvent au négatif: « rien n'est tranché ».",
+        "example": "À l'issue de cette séance, rien n'est tranché — la discussion reprendra le quinze mai."
+      }
+    ],
+    "exercises": [
+      {
+        "type": "fill-blank",
+        "question": "Avant que nous n'___ le temps imparti, je voudrais qu'on revienne sur un point soulevé en passant.",
+        "answer": "épuisions"
+      },
+      {
+        "type": "matching",
+        "pairs": [
+          ["céder la parole", "nhường lời"],
+          ["esquisser une question", "phác họa một câu hỏi"],
+          ["l'avocat du diable", "luật sư của quỷ"],
+          ["clore la séance", "kết thúc phiên"]
+        ],
+        "instruction": "Nối thuật ngữ animation séminaire với nghĩa Việt"
+      },
+      {
+        "type": "translation",
+        "vietnamese": "Để kết thúc phiên, tôi đề xuất một tổng hợp ba điểm, đồng thời lưu ý rằng không có gì đã được phân định.",
+        "french": "Pour clore la séance, je propose une synthèse en trois points, en notant que rien n'est tranché."
+      }
+    ]
+  },
+  {
+    "id": "lpublic_intellectual_debate",
+    "level": "C1",
+    "category": "fluency",
+    "title_vi": "Débat d'idées dans l'espace public",
+    "title_en": "Public intellectual debate",
+    "sentences": [
+      {
+        "en": "Je tiens à distinguer d'emblée le désaccord scientifique du désaccord idéologique: le premier porte sur les faits et la méthode, le second sur les valeurs — et ces deux registres ne se confondent pas.",
+        "vi": "Tôi muốn phân biệt ngay từ đầu giữa bất đồng khoa học và bất đồng tư tưởng: loại thứ nhất về sự kiện và phương pháp, loại thứ hai về giá trị — và hai bình diện này không lẫn được.",
+        "pronunciation_focus": [
+          "d'emblée → dã-blé",
+          "désaccord → dé-za-kor",
+          "idéologique → i-dé-o-lo-jik",
+          "confondent → kõn-fõnd"
+        ]
+      },
+      {
+        "en": "Quoique la formule télévisuelle impose la concision, je refuse que la simplification dégrade la rigueur du propos: il existe des manières concises ET rigoureuses, et c'est à nous, intellectuels, de les chercher.",
+        "vi": "Mặc dù format truyền hình bắt phải ngắn gọn, tôi từ chối để sự đơn giản hóa làm suy giảm sự chặt chẽ của lập luận: có những cách diễn đạt ngắn mà vẫn chặt chẽ, và chúng ta, giới trí thức, có nhiệm vụ tìm.",
+        "pronunciation_focus": [
+          "Quoique → koa-kơ",
+          "télévisuelle → té-lé-vi-zu-èl",
+          "concision → kõn-si-zion",
+          "dégrade → dé-grad"
+        ]
+      },
+      {
+        "en": "La tribune que je signe aujourd'hui dans Le Monde n'est pas un manifeste politique: c'est une intervention de scientifique, fondée sur les conclusions d'un travail de recherche dont les références sont disponibles en accès libre sur HAL.",
+        "vi": "Bài tribune tôi ký hôm nay trên Le Monde không phải là một tuyên ngôn chính trị: đó là một can thiệp của nhà khoa học, dựa trên kết luận của một công trình nghiên cứu mà tài liệu tham khảo có thể truy cập tự do trên HAL.",
+        "pronunciation_focus": [
+          "tribune → tri-bun",
+          "manifeste → ma-ni-fèst",
+          "intervention → an-tèr-vãn-sion",
+          "accès → ak-sè"
+        ]
+      },
+      {
+        "en": "Je n'accepte pas l'étiquette de polémiste qu'on m'attribue depuis cette tribune: la polémique vise à disqualifier l'adversaire, le débat vise à préciser les divergences pour mieux travailler ensemble.",
+        "vi": "Tôi không chấp nhận nhãn polémiste mà người ta gắn cho tôi sau bài tribune đó: polémique nhằm hạ uy tín đối thủ, débat nhằm làm rõ những khác biệt để cùng làm việc tốt hơn.",
+        "pronunciation_focus": [
+          "étiquette → é-ti-kèt",
+          "polémiste → po-lé-mist",
+          "disqualifier → dis-ka-li-fié",
+          "divergences → di-vèr-jãns"
+        ]
+      },
+      {
+        "en": "Bien que le format de l'émission soit contraint, je vous demande, Monsieur le présentateur, de me permettre de répondre à l'objection précédente — sans quoi la nuance que je voudrais apporter risque d'être perdue.",
+        "vi": "Mặc dù format chương trình bị giới hạn, tôi yêu cầu, thưa người dẫn, cho phép tôi trả lời phản biện trước đó — nếu không, sắc thái tôi muốn đưa ra có thể bị mất.",
+        "pronunciation_focus": [
+          "Bien que → biãn kơ",
+          "contraint → kõn-tran",
+          "présentateur → pré-zãn-ta-tơr",
+          "perdue → pèr-du"
+        ]
+      }
+    ],
+    "cultural_notes_vi": "« Le débat d'idées » và rộng hơn « la vie intellectuelle française » là một espace public spécifique — không tồn tại tương đương ở phần lớn các nền văn hóa khác:\n\nL'INTELLECTUEL — UN STATUT FRANÇAIS RECONNU:\nLa figure de « l'intellectuel » remonte à Émile Zola, « J'accuse...! » (L'Aurore, 13 janvier 1898), pendant l'affaire Dreyfus. À partir de ce moment, le mot « intellectuel » devient en France un statut public: une personne formée dans le champ académique ou littéraire qui intervient dans le débat public sur des questions politiques, sociales ou éthiques.\n\nLignée: Zola → Sartre / Aron / Camus → Bourdieu / Foucault / Derrida → Onfray / Badiou / Polony / Sapiro / Lordon (lignée contemporaine).\n\nFORMATS DE L'INTERVENTION:\n(1) LA TRIBUNE — texte d'opinion publié dans un grand quotidien (Le Monde, Libération, Le Figaro, La Croix). Format: 3000-5000 signes. Signée individuellement ou collectivement. Soumise à l'éditorial; peut être refusée.\n(2) LE BILLET D'HUMEUR — court, plus libre, parfois ironique. Format: 1500-3000 signes.\n(3) LA LETTRE OUVERTE — adresse à une personnalité ou institution. Format variable.\n(4) LE LIVRE GRAND PUBLIC — essai destiné à un public large (PUF, Seuil, Gallimard, Fayard…).\n(5) L'ENTRETIEN — interview dans presse écrite ou audiovisuelle.\n(6) L'ÉMISSION DE PLATEAU — format télévisuel/radiophonique. Risques: simplification, instrumentalisation par le présentateur, dérive vers spectacle.\n\nDISTINCTION CRITIQUE: DÉBAT vs POLÉMIQUE:\n- LE DÉBAT vise à préciser des divergences pour faire avancer la pensée collective. Argumenté, fact-based, réversible (on peut changer d'avis).\n- LA POLÉMIQUE vise à disqualifier l'adversaire. Personnelle, rhétorique, irréversible.\n→ Un intellectuel sérieux refuse l'étiquette de « polémiste » — qui désigne quelqu'un qui privilégie la disqualification.\n\nMÉDIA-PAYSAGE FRANÇAIS — À CONNAÎTRE:\n- LE MONDE: référence centrale, tribunes lues par décideurs.\n- LIBÉRATION: à gauche, intellectuel-friendly.\n- LE FIGARO: à droite, traditionnel.\n- LA CROIX: catholique, plus modérée.\n- MEDIAPART: investigation, pure player.\n- FRANCE CULTURE: radio publique, format long, sérieux. Émission « La Grande Table », « Les Matins », « À voix nue ».\n- ARTE: chaîne franco-allemande, formats documentaires longs.\n- FRANCE 5: chaîne publique, émissions culturelles. « C dans l'air », « La Grande Librairie ».\n\nRISQUES POUR L'INTELLECTUEL:\n(a) MÉDIA-IZATION — devenir « intellectuel médiatique » sans nouvelle œuvre derrière. Bourdieu critique cela: « la fonction publique critique de l'intellectuel risque de se dégrader en spectacle si elle se déconnecte de la production scientifique ».\n(b) SIMPLIFICATION — accepter de réduire un argument complexe à un slogan; perdre la rigueur.\n(c) INSTRUMENTALISATION — un parti politique, un éditorialiste, un lobby utilise vos prises de position.\n(d) POLÉMIQUE — glisser vers l'attaque personnelle.\n(e) AFFAIRE — devenir personnage d'« affaire » médiatique au-delà du contrôle.\n\nDÉBATS CÉLÈBRES À RÉFÉRENCER (background):\n- Sartre vs Camus, 1952 (sur la révolution communiste).\n- Aron vs Sartre (sur le marxisme).\n- Bourdieu vs Boudon (sur la sociologie de la décision).\n- Le « débat sur le foulard » 1989 (laïcité).\n- Les « affaires » universitaires post-2015 (cancel culture, théories décoloniales, débats sur la liberté académique).\n\nĐỊNH HƯỚNG CHO TRÍ THỨC VIỆT NAM HOẠT ĐỘNG TẠI PHÁP:\n(a) Connaître ces débats = appartenir au champ.\n(b) Le statut d'intellectuel français ne s'auto-décerne PAS — il vient de l'œuvre + de la reconnaissance par les pairs + de l'usage public.\n(c) Pour un intellectuel non-français en France: la tribune est accessible mais demande adresse à des questions où votre regard apporte (Asie, post-colonialisme, etc.) plutôt qu'à toute question.\n(d) Ne pas confondre « intellectuel » (statut) et « expert » (compétence). L'intellectuel parle au nom de valeurs publiques, l'expert au nom de connaissances disciplinaires.\n\nĐỌC THÊM (background):\n- Pascal Ory, Les Intellectuels en France (1986, rééd. 2002).\n- Pierre Bourdieu, Sur la télévision (Liber-Raisons d'agir, 1996).\n- Frédéric Lordon, Les affects de la politique (2016).\n\n⚠️ Lưu ý: Không phải tư vấn pháp lý hay nghề nghiệp. Le paysage médiatique évolue (notamment avec les pure players, les podcasts, les réseaux sociaux). Toujours vérifier les politiques éditoriales actuelles avant de proposer une tribune.",
+    "tip_advice_vi": "PROTOCOLE 9 BƯỚC pour intervenir publiquement comme intellectuel sans perdre la rigueur:\n\n(1) DÉCIDER QUAND INTERVENIR:\n- Avez-vous un APPORT que d'autres ne peuvent pas faire (fondé sur votre recherche, votre terrain, votre langue) ?\n- Le sujet rejoint-il votre champ d'expertise ? Si non, abstenir — vous ne défendez pas mieux qu'un autre intellectuel sur ce sujet.\n- Le timing: trop tôt = on n'a pas les éléments; trop tard = la conversation est passée.\n\n(2) CHOISIR LE BON FORMAT:\n- Tribune presse: pour une thèse argumentée stable.\n- Lettre ouverte signée collectivement: pour un appel à action institutionnelle.\n- Entretien presse: pour un sujet de fond demandant développement.\n- Plateau TV: à éviter sauf maîtrise du sujet ET maîtrise du format (formation préalable utile).\n\n(3) RÉDIGER UNE TRIBUNE — règles:\n- Une thèse claire en première phrase.\n- Argumentation en 4-6 paragraphes.\n- Position personnelle assumée (ne pas s'abriter derrière « les chercheurs disent que... »).\n- Référencer le travail scientifique (note de bas ou phrase « disponible en accès libre sur HAL »).\n- Conclusion qui ouvre, ne ferme pas.\n- Format respecté: 3000-5000 signes selon journal.\n\n(4) NE PAS CONFONDRE TRIBUNE ET MANIFESTE:\n- TRIBUNE: argumentation à partir de votre travail.\n- MANIFESTE: prise de position politique collective.\n→ Un intellectuel peut signer un manifeste mais doit reconnaître que c'est un acte différent.\n\n(5) DÉFENDRE LA NUANCE EN ÉMISSION:\n- Si on simplifie votre propos, intervenir: « Permettez-moi de préciser, parce que la formulation que vous me prêtez n'est pas exactement la mienne. »\n- Si on vous coupe systématiquement: « Monsieur le présentateur, je vous demande de me permettre de finir cet argument. »\n- Si une question est piégée: la reformuler avant de répondre. « Si je comprends bien, vous me demandez si... ? »\n- Refuser les questions hors sujet: « Cette question relève d'un autre champ, je ne suis pas légitime pour y répondre. »\n\n(6) DISTINGUER DÉBAT ET POLÉMIQUE:\n- Si l'échange dérape vers la polémique, NE PAS suivre.\n- Refuser le ad hominem: « Mon contradicteur peut me reprocher [X], mais c'est l'argument qu'il faut discuter, pas la personne. »\n- Si étiqueté « polémiste »: « Je ne polémique pas — je débats sur des arguments. La distinction est essentielle. »\n\n(7) PROTÉGER LE TRAVAIL SCIENTIFIQUE:\n- L'intervention publique ne DOIT PAS dégrader la recherche.\n- Garder une fréquence raisonnable: 2-3 tribunes / an, pas 2-3 / mois.\n- Ne pas accepter toute sollicitation TV — épuisement, simplification, instrumentalisation.\n\n(8) ASSUMER LA RÉCEPTION:\n- Tribune publiée = vous serez critiqué publiquement. Préparer mentalement.\n- Twitter / réseaux sociaux: parfois violent, parfois pertinent. Distinguer.\n- Réponse: répondre seulement si l'objection est argumentée. Ignorer le bruit.\n\n(9) PROTOCOLE EN CAS DE CONTROVERSE PROLONGÉE:\n- Réponse écrite courte sur les arguments factuels.\n- Pas de réponse sur les attaques personnelles.\n- Si nécessaire, communiqué via votre institution (université, laboratoire) — collectivise.\n- Documenter pour archives.\n\nTRÁNH:\n- Devenir « personnage médiatique » sans nouvelle production.\n- Accepter le format télévisuel sans préparation.\n- Confondre votre statut d'expert et votre statut citoyen — préciser à chaque intervention.\n- Soumettre une tribune en zone hors expertise.\n- Ad hominem (même si l'autre commence).\n- Refuser tout débat — refuser le débat = refuser le statut d'intellectuel.\n\n⚠️ Lưu ý: Không phải tư vấn pháp lý hay nghề nghiệp. La participation au débat public a des conséquences professionnelles (financement, promotion, relations institutionnelles). Toujours en discuter en amont avec votre direction d'unité et votre service de communication.",
+    "vocabulary": [
+      {
+        "word": "une tribune (presse)",
+        "en": "an op-ed",
+        "vi": "bài tribune báo chí",
+        "pos": "n.f.",
+        "pronunciation_vi": "un tri-bun"
+      },
+      {
+        "word": "un billet d'humeur",
+        "en": "a column / brief opinion piece",
+        "vi": "billet d'humeur",
+        "pos": "n.m.",
+        "pronunciation_vi": "an bi-yè du-mơr"
+      },
+      {
+        "word": "une lettre ouverte",
+        "en": "an open letter",
+        "vi": "thư ngỏ",
+        "pos": "n.f.",
+        "pronunciation_vi": "un lè-trơ u-vèrt"
+      },
+      {
+        "word": "le débat d'idées",
+        "en": "the debate of ideas",
+        "vi": "tranh luận tư tưởng",
+        "pos": "n.m.",
+        "pronunciation_vi": "lơ dé-ba di-dé"
+      },
+      {
+        "word": "un polémiste",
+        "en": "a polemicist",
+        "vi": "polémiste — người gây tranh cãi",
+        "pos": "n.",
+        "pronunciation_vi": "an po-lé-mist"
+      },
+      {
+        "word": "disqualifier l'adversaire",
+        "en": "to disqualify the opponent",
+        "vi": "hạ uy tín đối thủ",
+        "pos": "v.",
+        "pronunciation_vi": "dis-ka-li-fié lad-vèr-sèr"
+      },
+      {
+        "word": "préciser une divergence",
+        "en": "to clarify a divergence",
+        "vi": "làm rõ một sự khác biệt",
+        "pos": "v.",
+        "pronunciation_vi": "pré-si-zé un di-vèr-jãns"
+      },
+      {
+        "word": "le format télévisuel",
+        "en": "the TV format",
+        "vi": "format truyền hình",
+        "pos": "n.m.",
+        "pronunciation_vi": "lơ for-mat té-lé-vi-zu-èl"
+      },
+      {
+        "word": "la simplification",
+        "en": "simplification",
+        "vi": "sự đơn giản hóa",
+        "pos": "n.f.",
+        "pronunciation_vi": "la san-pli-fi-ka-sion"
+      },
+      {
+        "word": "l'instrumentalisation",
+        "en": "instrumentalization",
+        "vi": "sự công cụ hóa",
+        "pos": "n.f.",
+        "pronunciation_vi": "lan-stru-mãn-ta-li-za-sion"
+      }
+    ],
+    "dialogue": [
+      {
+        "speaker": "M. Lefranc (présentateur radio, France Culture)",
+        "text": "Madame Tran, vous signez ce matin une tribune dans Le Monde. Avec votre tribune vous êtes-vous transformée en militante ?",
+        "vi": "Cô Trần, sáng nay cô ký một tribune trên Le Monde. Với bài tribune đó cô có biến thành nhà hoạt động không?"
+      },
+      {
+        "speaker": "Linh",
+        "text": "Je tiens à distinguer d'emblée. La tribune que je signe n'est pas un manifeste politique: c'est une intervention de scientifique, fondée sur les conclusions de mon travail de recherche, dont les références sont disponibles en accès libre sur HAL. Je ne deviens pas militante en publiant cette tribune — j'apporte au débat public un savoir construit méthodologiquement.",
+        "vi": "Tôi muốn phân biệt ngay. Bài tribune tôi ký không phải tuyên ngôn chính trị: là một can thiệp của nhà khoa học, dựa trên kết luận công trình nghiên cứu, tài liệu tham khảo có thể truy cập tự do trên HAL. Tôi không trở thành nhà hoạt động khi xuất bản bài này — tôi đưa vào débat công một tri thức được xây dựng có phương pháp."
+      },
+      {
+        "speaker": "M. Lefranc",
+        "text": "Mais votre prise de position pourra être instrumentalisée par tel ou tel parti politique. Comment l'évitez-vous ?",
+        "vi": "Nhưng quan điểm của cô có thể bị partisan này nọ instrumentaliser. Cô tránh thế nào?"
+      },
+      {
+        "speaker": "Linh",
+        "text": "Je ne peux pas l'éviter complètement — c'est inhérent à toute prise de parole publique. Ce que je peux faire: ancrer rigoureusement mon argument dans le travail scientifique, refuser les amalgames, et répondre aux objections argumentées sans suivre les disqualifications personnelles.",
+        "vi": "Tôi không tránh được hoàn toàn — đó là điều cố hữu của mọi phát biểu công khai. Điều tôi làm được: cắm chặt lập luận vào công trình khoa học, từ chối các amalgam, và đáp các phản biện có lập luận mà không theo các disqualification cá nhân."
+      }
+    ],
+    "dialogue_long": [
+      {
+        "speaker": "M. Lefranc (présentateur, plateau TV France 5, 'C dans l'air')",
+        "text": "Madame Tran, bonsoir. Vous êtes maître de conférences, sociolinguiste, et vous publiez ce matin dans Le Monde une tribune sur la place du français au Vietnam. Première question simple: pourquoi cette tribune maintenant ?",
+        "vi": "Cô Trần, chào cô. Cô là maître de conférences, sociolinguiste, và sáng nay đăng một tribune trên Le Monde về vị trí tiếng Pháp ở Việt Nam. Câu hỏi đầu đơn giản: tại sao tribune này, lúc này?"
+      },
+      {
+        "speaker": "Linh",
+        "text": "Bonsoir, Monsieur Lefranc. La tribune répond à une actualité: la décision annoncée la semaine dernière par le ministère de l'Éducation vietnamien de rendre l'apprentissage du français optionnel dès la classe de sixième, qui aura des effets durables sur le bilinguisme du pays. J'apporte une contribution à ce débat sur la base d'un travail de recherche en cours.",
+        "vi": "Chào Thầy. Bài tribune đáp một thời sự: quyết định công bố tuần trước của Bộ Giáo dục Việt Nam đưa việc học tiếng Pháp thành tùy chọn ngay từ lớp 6, sẽ có hệ quả lâu dài cho song ngữ của đất nước. Tôi đóng góp vào tranh luận này trên cơ sở một công trình nghiên cứu đang triển khai."
+      },
+      {
+        "speaker": "M. Lefranc",
+        "text": "Mais cette décision est souveraine du Vietnam. Êtes-vous en train de juger les choix d'un État souverain ?",
+        "vi": "Nhưng quyết định đó thuộc chủ quyền Việt Nam. Cô đang phán xét lựa chọn của một quốc gia có chủ quyền?"
+      },
+      {
+        "speaker": "Linh",
+        "text": "Je ne juge pas la souveraineté — qui est un fait. Je propose une analyse des conséquences sociolinguistiques de cette décision, en m'appuyant sur des données comparatives: que se passe-t-il ailleurs quand une langue d'enseignement précoce devient optionnelle ? Mon rôle d'analyste n'est pas de dire au Vietnam ce qu'il doit faire — c'est d'éclairer les enjeux de ce qu'il décide.",
+        "vi": "Tôi không phán xét chủ quyền — vốn là một sự thật. Tôi đề xuất một phân tích hệ quả ngôn ngữ-xã hội của quyết định này, dựa trên dữ liệu so sánh: điều gì xảy ra ở nơi khác khi một ngôn ngữ giảng dạy sớm thành tùy chọn? Vai trò nhà phân tích của tôi không phải nói cho Việt Nam phải làm gì — mà làm rõ các bối cảnh của điều họ quyết định."
+      },
+      {
+        "speaker": "M. Lefranc",
+        "text": "Mais avouons-le: vous êtes vietnamienne, vous écrivez en France, vous vivez en France. Vous êtes en porte-à-faux ?",
+        "vi": "Nhưng phải thừa nhận: cô là người Việt, cô viết ở Pháp, sống ở Pháp. Cô không bị mâu thuẫn?"
+      },
+      {
+        "speaker": "Linh",
+        "text": "Je ne suis pas en porte-à-faux. Je m'inscris en faux contre l'idée qu'une chercheuse vietnamienne en France ne pourrait parler du Vietnam que depuis une position assignée. Mon expertise — sociolinguistique du bilinguisme — est précisément située au croisement des deux espaces, et c'est cette position qui me permet une analyse que ni un sociolinguiste exclusivement français ni un sociolinguiste exclusivement vietnamien ne pourrait formuler.",
+        "vi": "Tôi không bị mâu thuẫn. Tôi phản bác ý kiến cho rằng một nhà nghiên cứu Việt ở Pháp chỉ có thể nói về Việt Nam từ một vị trí gán sẵn. Chuyên môn của tôi — sociolinguistique du bilinguisme — chính nằm ở giao điểm hai không gian, và chính vị trí này cho phép tôi một phân tích mà một sociolinguiste thuần Pháp hoặc thuần Việt không thể formuler."
+      },
+      {
+        "speaker": "M. Lefranc",
+        "text": "Vous êtes accusée — par certains commentateurs sur les réseaux sociaux — d'être l'agent d'une nostalgie coloniale, de défendre la francophonie comme un héritage à préserver. Que répondez-vous ?",
+        "vi": "Cô bị cáo buộc — bởi một số bình luận trên mạng xã hội — là agent của một nostalgie thuộc địa, bảo vệ francophonie như một di sản. Cô đáp gì?"
+      },
+      {
+        "speaker": "Linh",
+        "text": "Je réponds avec netteté. Premièrement, je n'ai jamais défendu la francophonie comme un héritage colonial — j'ai défendu le bilinguisme comme un atout cognitif et social, qu'il s'agisse de français-vietnamien, anglais-vietnamien ou chinois-vietnamien. Deuxièmement, l'accusation de nostalgie coloniale est, en l'occurrence, un effet rhétorique de disqualification — précisément ce que la polémique fait, et ce que je refuse. Troisièmement, je n'accepte pas l'étiquette qu'on m'attribue: la polémique vise à disqualifier l'adversaire, le débat vise à préciser les divergences pour mieux travailler ensemble. Je débats; je ne polémique pas.",
+        "vi": "Tôi đáp dứt khoát. Một, tôi chưa bao giờ bảo vệ francophonie như di sản thuộc địa — tôi bảo vệ song ngữ như một lợi thế nhận thức và xã hội, dù là Pháp-Việt, Anh-Việt hay Trung-Việt. Hai, cáo buộc nostalgie thuộc địa, trong trường hợp này, là hiệu ứng tu từ disqualification — chính điều mà polémique làm, và là điều tôi từ chối. Ba, tôi không chấp nhận nhãn người ta gắn: polémique nhằm hạ uy tín đối thủ, débat nhằm làm rõ những khác biệt để cùng làm việc tốt hơn. Tôi débats; tôi không polémique."
+      },
+      {
+        "speaker": "M. Lefranc",
+        "text": "Le format de l'émission ne nous laisse plus que deux minutes. Une dernière question: est-ce le rôle d'un universitaire de signer une tribune dans Le Monde ?",
+        "vi": "Format chương trình chỉ còn 2 phút. Câu cuối: ký một tribune trên Le Monde có phải vai trò của một học giả?"
+      },
+      {
+        "speaker": "Linh",
+        "text": "Bien que le format soit contraint, je voudrais répondre précisément. Oui, c'est le rôle d'un universitaire — depuis Zola en mille huit cent quatre-vingt-dix-huit. À condition de respecter trois règles: ancrer la prise de parole dans son champ d'expertise, ne pas confondre le statut de chercheur et le statut de citoyen, et accepter la critique argumentée qui suivra. C'est ce que je fais, ce que mes prédécesseurs ont fait, et ce qui maintient l'intellectuel comme figure publique en France — distincte du commentateur d'opinion.",
+        "vi": "Mặc dù format bị giới hạn, tôi muốn trả lời cụ thể. Đúng, đó là vai trò của một học giả — từ Zola năm 1898. Với ba điều kiện: cắm phát biểu vào lĩnh vực chuyên môn, không lẫn lộn statut nhà nghiên cứu với statut công dân, và chấp nhận phê phán có lập luận theo sau. Đó là điều tôi làm, các tiền nhân đã làm, và là điều duy trì người trí thức như một nhân vật công ở Pháp — phân biệt với commentateur d'opinion."
+      },
+      {
+        "speaker": "M. Lefranc",
+        "text": "Madame Tran, je vous remercie.",
+        "vi": "Cô Trần, cảm ơn cô."
+      },
+      {
+        "speaker": "Linh",
+        "text": "Je vous remercie également.",
+        "vi": "Tôi cũng cảm ơn Thầy."
+      }
+    ],
+    "roleplay_prompts": [
+      "Présentateur télé tente de simplifier votre argument en slogan. Đáp lại: refuser la simplification sans rebuffer; reformuler en restant concis. « Permettez-moi de préciser, parce que la formulation que vous me prêtez n'est pas exactement la mienne. »",
+      "On vous accuse en plateau d'être « polémiste ». Đáp lại bằng distinction conceptuelle: débat (préciser divergences pour avancer) vs polémique (disqualifier l'adversaire). Refuser l'étiquette sans escalader.",
+      "Question piège: « Mais vous êtes étrangère, comment osez-vous critiquer la politique X ? » Đáp: contester l'idée que la position assignée détermine la légitimité analytique; situer votre expertise au croisement; refuser le glissement vers ad hominem."
+    ],
+    "register_notes": "Discours intellectuel public = registre académique ADAPTÉ aux contraintes médiatiques — soutenu mais accessible, court mais rigoureux:\n\n(1) FORMULES DE DISTINCTION CONCEPTUELLE — clé en débat:\n- « Je tiens à distinguer d'emblée le X du Y. »\n- « Il convient de ne pas confondre A et B. »\n- « Le débat vise X ; la polémique vise Y. »\n→ Distinguer = signaler que vous gardez la rigueur même en format contraint.\n\n(2) FORMULES D'ANCRAGE SCIENTIFIQUE:\n- « ...fondé(e) sur les conclusions de mon travail de recherche... »\n- « ...dont les références sont disponibles en accès libre sur HAL. »\n- « ...sur la base de données comparatives. »\n→ Permet de distinguer prise de parole d'expert vs prise de parole d'opinion.\n\n(3) FORMULES DE REFUS D'ÉTIQUETTE:\n- « Je n'accepte pas l'étiquette de polémiste. »\n- « Je conteste l'idée que [position assignée]. »\n- « Je m'inscris en faux contre l'amalgame entre X et Y. »\n\n(4) FORMULES DE DEMANDE DE TEMPS:\n- « Bien que le format soit contraint, je voudrais répondre précisément. »\n- « Permettez-moi de finir cet argument. »\n- « Sans quoi la nuance que je voudrais apporter risque d'être perdue. »\n\n(5) FORMULES DE RÉPONSE À ATTAQUE:\n- « Je réponds avec netteté. »\n- « Premièrement... Deuxièmement... Troisièmement... »\n- « C'est, en l'occurrence, un effet rhétorique de disqualification — ce que je refuse. »\n\n(6) SUBJONCTIF:\n- « Quoique la formule télévisuelle impose la concision... »\n- « Bien que le format soit contraint... »\n- « ...je refuse que la simplification dégrade la rigueur. »\n- « Je conteste que la position assignée détermine la légitimité analytique. »\n\n(7) ADAPTATION AU REGISTRE MÉDIATIQUE — fine ligne:\n- Pas de jargon (« formation discursive », « hexis corporelle ») — préférer expressions accessibles.\n- Garder précision: « le bilinguisme cognitif » plutôt que « parler deux langues ».\n- Citer des chiffres précis si nécessaires.\n- Utiliser exemples concrets, jamais d'abstraction pure.\n\n(8) TRÁNH:\n- Devenir trop pédagogique (« en réalité, voyez-vous, la sociolinguistique étudie... ») — paraît condescendant.\n- Suivre la polémique vers l'ad hominem.\n- Promettre des choses non tenables (« si on adopte ma proposition, le Vietnam sera... »).\n- Refuser tout débat (« je ne réponds pas à cette accusation ») — refuser le débat = refuser le statut d'intellectuel.\n- Confondre statut de chercheur et statut de citoyen sans préciser."
+,
+    "idiom_glosses": [
+      {
+        "idiom": "D'emblée (formel)",
+        "literal": "Ngay từ đầu",
+        "meaning": "Ngay từ đầu — formule pour signaler une distinction initiale.",
+        "example": "Je tiens à distinguer d'emblée le désaccord scientifique du désaccord idéologique."
+      },
+      {
+        "idiom": "Être en porte-à-faux (formel)",
+        "literal": "Ở trong tình thế đỡ sai",
+        "meaning": "Ở trong vị trí mâu thuẫn — formule de débat pour signaler une accusation d'incohérence.",
+        "example": "On me reproche d'être en porte-à-faux ; je conteste cette lecture."
+      },
+      {
+        "idiom": "Couper court à un débat (idiomatique)",
+        "literal": "Cắt ngắn một tranh luận",
+        "meaning": "Đóng một tranh luận sớm — souvent négatif, accusation contre un présentateur.",
+        "example": "En coupant court au débat, le présentateur a ramené la complexité à un slogan."
+      },
+      {
+        "idiom": "L'effet rhétorique de disqualification (académique)",
+        "literal": "Hiệu ứng tu từ hạ uy tín",
+        "meaning": "Hiệu ứng tu từ nhằm phế bỏ đối thủ — analyse standard de la polémique.",
+        "example": "L'accusation de nostalgie coloniale est, en l'occurrence, un effet rhétorique de disqualification."
+      }
+    ],
+    "exercises": [
+      {
+        "type": "fill-blank",
+        "question": "Quoique la formule télévisuelle ___ la concision, je refuse que la simplification dégrade la rigueur du propos.",
+        "answer": "impose"
+      },
+      {
+        "type": "matching",
+        "pairs": [
+          ["une tribune", "bài tribune báo chí"],
+          ["un polémiste", "polémiste"],
+          ["d'emblée", "ngay từ đầu"],
+          ["disqualifier l'adversaire", "hạ uy tín đối thủ"]
+        ],
+        "instruction": "Nối thuật ngữ débat public với nghĩa Việt"
+      },
+      {
+        "type": "translation",
+        "vietnamese": "Tôi không chấp nhận nhãn polémiste mà người ta gắn cho tôi: polémique nhằm hạ uy tín đối thủ, débat nhằm làm rõ những khác biệt.",
+        "french": "Je n'accepte pas l'étiquette de polémiste qu'on m'attribue: la polémique vise à disqualifier l'adversaire, le débat vise à préciser les divergences."
+      }
+    ]
+  },
+  {
+    "id": "lacademic_roundtable",
+    "level": "C1",
+    "category": "fluency",
+    "title_vi": "Table ronde scientifique",
+    "title_en": "Academic roundtable",
+    "sentences": [
+      {
+        "en": "Je remercie le modérateur de m'avoir associée à cette table ronde, et je salue les autres intervenants dont les travaux nourrissent depuis longtemps ma réflexion — Mesdames Sapiro et Lemaire, Monsieur Schmitt.",
+        "vi": "Tôi cảm ơn người điều phối đã mời tôi tham gia table ronde này, và xin chào các diễn giả khác mà công trình của họ từ lâu nuôi suy nghĩ của tôi — Cô Sapiro, Cô Lemaire, Thầy Schmitt.",
+        "pronunciation_focus": [
+          "modérateur → mo-dé-ra-tơr",
+          "associée → a-so-si-é",
+          "intervenants → an-tèr-vơ-nã",
+          "nourrissent → nu-ris"
+        ]
+      },
+      {
+        "en": "L'intervention liminaire que je vais livrer en sept minutes ne prétend nullement épuiser la question, mais propose une entrée par un cas précis: la circulation des manuels scolaires français au Vietnam, dont l'étude permet, je crois, d'éclairer les points sur lesquels nos approches divergent.",
+        "vi": "Bài can thiệp mở đầu tôi sẽ đưa ra trong 7 phút không hề tham vọng vét cạn câu hỏi, mà đề xuất một cửa vào qua một trường hợp cụ thể: sự lưu chuyển sách giáo khoa Pháp ở Việt Nam, mà việc nghiên cứu nó, theo tôi, làm sáng tỏ các điểm phân kỳ giữa các tiếp cận của chúng ta.",
+        "pronunciation_focus": [
+          "intervention → an-tèr-vãn-sion",
+          "liminaire → li-mi-nèr",
+          "épuiser → é-pui-zé",
+          "divergent → di-vèr-jơ"
+        ]
+      },
+      {
+        "en": "Quoique je rejoigne Madame Sapiro sur le constat — la circulation est inégale —, je me sépare d'elle sur l'interprétation: l'inégalité ne tient pas seulement aux médiateurs institutionnels, mais à une asymétrie structurelle du capital symbolique.",
+        "vi": "Mặc dù tôi đồng ý với Cô Sapiro về sự kiện — lưu chuyển bất bình đẳng —, tôi tách khỏi Cô về diễn giải: sự bất bình đẳng không chỉ do các trung gian thiết chế, mà do một sự bất đối xứng cấu trúc của vốn tượng trưng.",
+        "pronunciation_focus": [
+          "Quoique → koa-kơ",
+          "rejoigne → rơ-joa-nhơ",
+          "constat → kõn-sta",
+          "asymétrie → a-si-mé-tri"
+        ]
+      },
+      {
+        "en": "À Monsieur Schmitt qui défend la thèse opposée, je voudrais répondre amicalement mais fermement: votre cadre, qui suppose une circulation équitable conditionnée par les contrats institutionnels, ne tient pas l'épreuve des données vietnamiennes que je vais évoquer.",
+        "vi": "Với Thầy Schmitt, người bảo vệ luận điểm ngược, tôi muốn đáp một cách thân thiện nhưng dứt khoát: khung của Thầy, giả định một lưu chuyển công bằng được điều kiện hóa bởi các hợp đồng thiết chế, không trụ được trước dữ liệu Việt Nam mà tôi sắp đề cập.",
+        "pronunciation_focus": [
+          "amicalement → a-mi-kal-mã",
+          "fermement → fèr-mơ-mã",
+          "épreuve → é-prơv",
+          "évoquer → é-vo-ké"
+        ]
+      },
+      {
+        "en": "Pour conclure mon intervention liminaire — et avant que la discussion ne s'ouvre —, je formule une question que je laisse à la table: comment articuler la dimension symbolique et la dimension contractuelle, sans en réduire l'une à l'autre ?",
+        "vi": "Để kết thúc phần can thiệp mở đầu — và trước khi thảo luận mở ra —, tôi đặt một câu hỏi để lại cho bàn: làm thế nào khớp nối chiều kích tượng trưng và chiều kích hợp đồng, mà không reduce cái này thành cái kia?",
+        "pronunciation_focus": [
+          "conclure → kõn-klur",
+          "discussion → dis-ku-sion",
+          "articuler → ar-ti-ku-lé",
+          "réduire → ré-duir"
+        ]
+      }
+    ],
+    "cultural_notes_vi": "« La table ronde scientifique » est un format DIFFÉRENT du séminaire de recherche, du colloque, et du débat public:\n\nKHÁC BIỆT VỚI CÁC FORMATS PROCHES:\n- LE SÉMINAIRE: 1 invité, audience intime, échange long avec public.\n- LE COLLOQUE: événement à plusieurs sessions, communications individuelles, format additif.\n- LA TABLE RONDE: 3-5 intervenants en parallèle, modérateur, échange entre intervenants l'objet principal.\n- LE DÉBAT PUBLIC TÉLÉVISUEL: cf. lesson lpublic_intellectual_debate — audience large, contraintes spectaculaires.\n\nCẤU TRÚC TYPIQUE D'UNE TABLE RONDE SCIENTIFIQUE:\n(1) Modérateur: introduit la question d'ensemble (5-10 min) + présente les intervenants.\n(2) INTERVENTIONS LIMINAIRES — chaque intervenant 7-12 min, ordre fixé à l'avance.\n(3) DISCUSSION ENTRE INTERVENANTS — modérateur sollicite réactions; les intervenants se répondent.\n(4) Q&A AVEC PUBLIC — généralement plus court qu'en séminaire.\n(5) SYNTHÈSE par modérateur ou par chacun.\n\nDURÉE STANDARD: 1h30 à 2h, selon contexte (intégrée dans un colloque ou autonome).\n\nDÉFI CENTRAL POUR L'INTERVENANT:\n(a) RESTER DISTINCTIF — chaque intervenant doit apporter un angle SPÉCIFIQUE, pas répéter ce que les autres diront.\n(b) ENGAGER les co-intervenants — pas seulement parler de votre travail isolément.\n(c) GÉRER LE TEMPS — modérateurs coupent en table ronde; respecter le temps imparti.\n(d) ÊTRE CIVIL MAIS DIRECT — désaccord public avec un co-intervenant est attendu et valorisé.\n\nTRADITIONS FRANÇAISES À CONNAÎTRE:\n- TABLES RONDES DES COLLOQUES INTERNATIONAUX (EHESS, Centre Pompidou, Musée du Quai Branly): la « clôture par table ronde » est un genre établi.\n- TABLES RONDES DE GAZETTES SCIENTIFIQUES (revues comme Annales HSS, Revue de Synthèse): souvent en présence d'auteurs en débat.\n- TABLES RONDES DE FESTIVALS DU LIVRE (Saint-Malo, Mouans-Sartoux): plus accessible au grand public mais avec exigence académique.\n\nVOCABULAIRE PROPRE:\n- « L'intervention liminaire » — premier tour, court (7-12 min).\n- « La discussion croisée » — l'échange entre intervenants après les liminaires.\n- « La modération » — le travail du modérateur.\n- « Le tour de parole » — distribution organisée.\n- « L'angle d'attaque » — l'entrée spécifique de l'intervenant.\n\nĐỊNH HƯỚNG VĂN HÓA:\n(a) DÉSACCORD INSTITUTIONNALISÉ — l'organisateur invite souvent volontairement des intervenants en désaccord. C'est l'objectif. Le désaccord civil est l'horizon.\n(b) NE PAS RÉPÉTER les co-intervenants — anticiper ce qu'ils diront, prendre un angle complémentaire.\n(c) SE LAISSER INTERROMPRE par modérateur ou co-intervenant si l'argument est compris — montrer ouverture intellectuelle.\n(d) « JE REJOINS X SUR Y MAIS JE M'EN SÉPARE SUR Z » — formule typique des tables rondes francaises pour articuler proximité et distance.\n(e) CITER LE TRAVAIL DES CO-INTERVENANTS — par leur nom, ouvrage, année. Si vous ne l'avez pas lu, on s'en aperçoit.\n\nKHÁC BIỆT VỚI ANGLO TABLE RONDE:\n- Anglo: souvent plus consensuelle, intervention « building on what X said ».\n- France: « while I share X's diagnosis, I diverge on the interpretation » — affirme l'individualité intellectuelle, pas le consensus.\n- Anglo modérateur: facilitateur neutre.\n- France modérateur: peut être un intellectuel parmi les autres, qui contribue intellectuellement.\n\nĐỌC THÊM:\n- Documents enregistrés des tables rondes du Centre Pompidou (BPI), souvent accessibles en ligne.\n- Programmes des colloques de l'EHESS pour exemples de format.\n- Bourdieu, Choses dites (1987), pour réflexions sur l'organisation collective du travail intellectuel.\n\n⚠️ Lưu ý: Les conventions de table ronde varient selon les institutions et les disciplines. SHS plus directes que sciences dures (où la table ronde porte plus sur consensus que désaccord). Toujours s'informer du format précis avant de participer (durée intervention liminaire, nombre d'intervenants, présence de public, format de la discussion croisée).",
+    "tip_advice_vi": "PROTOCOLE 8 BƯỚC pour réussir une intervention en table ronde scientifique:\n\n(1) PRÉPARATION AVANT:\n- Connaître les CO-INTERVENANTS: lire au moins 2 publications récentes de chacun.\n- Identifier ce qui DISTINGUE votre approche de chaque autre.\n- Choisir UN ANGLE D'ATTAQUE — l'entrée spécifique qui ne sera prise par personne d'autre.\n- Préparer une intervention liminaire CHRONOMÉTRÉE — pas plus de 7 min même si on vous donne 10 (laisser du temps à la discussion).\n\n(2) STRUCTURE DE L'INTERVENTION LIMINAIRE — 7 min maximum:\n- 30 sec: salutations + remerciement + situer co-intervenants.\n- 1 min: votre angle d'attaque + thèse en une phrase.\n- 4 min: argumentation par UN cas concret (pas trois cas — un seul, déployé).\n- 1 min: positionnement par rapport aux co-intervenants — « Je rejoins X sur Y mais je m'en sépare sur Z ».\n- 30 sec: question ouverte que vous laissez à la table.\n\n(3) FORMULES STANDARD D'OUVERTURE:\n- « Je remercie le modérateur de m'avoir associée à cette table ronde. »\n- « Je salue les autres intervenants dont les travaux nourrissent depuis longtemps ma réflexion. »\n- « L'intervention liminaire que je vais livrer ne prétend nullement épuiser la question. »\n- « Je propose une entrée par un cas précis. »\n\n(4) CITER LES CO-INTERVENANTS — règle:\n- Citer NOMINALEMENT au moins une fois chacun, par leur ouvrage avec année.\n- Citer ce qui CONVERGE et ce qui DIVERGE — pas seulement ce qui vous oppose.\n- Formule type: « Madame Sapiro, dans La Sociologie de la littérature, a magistralement établi X. Je me sépare cependant de cette thèse sur Y. »\n\n(5) GESTION DE LA DISCUSSION CROISÉE:\n- Préparer 2-3 RÉPONSES POSSIBLES aux interventions des co-intervenants.\n- Si on vous interpelle directement, répondre brièvement (1-2 min) puis rendre la balle.\n- Si vous interpellez quelqu'un, NOMMER explicitement: « À Monsieur Schmitt qui défend la thèse opposée, je voudrais... »\n- Refuser le silence si on vous attaque, refuser la longueur excessive si on vous donne raison.\n\n(6) FORMULES DE POSITIONNEMENT — typiques des tables rondes:\n- « Je rejoins X sur Y mais je m'en sépare sur Z. »\n- « Sur le constat, nous convergeons; sur l'interprétation, nous divergeons. »\n- « Quoique je rejoigne X, je voudrais nuancer... »\n- « Je m'inscris en faux contre la thèse défendue à l'instant par X. »\n- « Le cadre que défend X ne tient pas l'épreuve des données que je vais évoquer. »\n\n(7) GESTION DU MODÉRATEUR:\n- Si modérateur vous coupe: ne pas insister, finir la phrase puis céder.\n- Si modérateur reformule mal votre propos: corriger gentiment. « Si je peux préciser: ce que je dis n'est pas exactement... ».\n- Si modérateur sollicite votre réaction à un autre intervenant: répondre brièvement avec respect (« Je remercie X de cette intervention; mon désaccord porte sur... »).\n\n(8) Q&A AVEC PUBLIC:\n- Même règles qu'en séminaire (cf. lesson lresearch_seminar_animation): écouter, reformuler si nécessaire, répondre directement.\n- Si la question est adressée à un autre intervenant, attendre. Si elle est adressée à plusieurs, brève intervention en complément.\n\nTRÁNH:\n- Répéter les propos d'un co-intervenant déjà passé (le public le remarque immédiatement).\n- Lire un texte écrit (en table ronde, le format demande oral plus libre qu'en colloque).\n- Monopolisation: dépasser systématiquement le temps imparti.\n- Ignorer les co-intervenants (votre intervention isolée = manque la table ronde).\n- Désaccord ad hominem (« Madame X est mal informée ») au lieu de désaccord intellectuel.\n- Esquiver les questions difficiles du modérateur ou du public.\n\n⚠️ Lưu ý: Les conventions varient selon institutions. Format de la table ronde, public attendu, durée, modalités de discussion croisée — tous demandent confirmation préalable avec organisateur. Ne pas hésiter à demander en amont.",
+    "vocabulary": [
+      {
+        "word": "une table ronde",
+        "en": "a roundtable",
+        "vi": "bàn tròn",
+        "pos": "n.f.",
+        "pronunciation_vi": "un ta-blơ rõnd"
+      },
+      {
+        "word": "une intervention liminaire",
+        "en": "an opening intervention",
+        "vi": "phát biểu mở đầu",
+        "pos": "n.f.",
+        "pronunciation_vi": "un an-tèr-vãn-sion li-mi-nèr"
+      },
+      {
+        "word": "le modérateur, la modératrice",
+        "en": "the moderator",
+        "vi": "người điều phối",
+        "pos": "n.",
+        "pronunciation_vi": "lơ mo-dé-ra-tơr"
+      },
+      {
+        "word": "rejoindre quelqu'un sur",
+        "en": "to agree with someone on",
+        "vi": "đồng ý với ai về",
+        "pos": "v.",
+        "pronunciation_vi": "rơ-joan-drơ kèl-kan sur"
+      },
+      {
+        "word": "se séparer de quelqu'un sur",
+        "en": "to disagree with someone on",
+        "vi": "tách khỏi ai về",
+        "pos": "v.",
+        "pronunciation_vi": "sơ sé-pa-ré dơ kèl-kan sur"
+      },
+      {
+        "word": "l'angle d'attaque",
+        "en": "the angle of attack",
+        "vi": "góc tiếp cận",
+        "pos": "n.m.",
+        "pronunciation_vi": "lãn-glơ da-tak"
+      },
+      {
+        "word": "la discussion croisée",
+        "en": "the cross-discussion",
+        "vi": "thảo luận chéo",
+        "pos": "n.f.",
+        "pronunciation_vi": "la dis-ku-sion kroa-zé"
+      },
+      {
+        "word": "tenir l'épreuve de",
+        "en": "to withstand the test of",
+        "vi": "trụ được trước",
+        "pos": "v.",
+        "pronunciation_vi": "tơ-nir lé-prơv dơ"
+      },
+      {
+        "word": "le capital symbolique",
+        "en": "symbolic capital",
+        "vi": "vốn tượng trưng",
+        "pos": "n.m.",
+        "pronunciation_vi": "lơ ka-pi-tal san-bo-lik"
+      },
+      {
+        "word": "l'asymétrie structurelle",
+        "en": "structural asymmetry",
+        "vi": "bất đối xứng cấu trúc",
+        "pos": "n.f.",
+        "pronunciation_vi": "la-si-mé-tri struk-tu-rèl"
+      }
+    ],
+    "dialogue": [
+      {
+        "speaker": "Pr. Garnier (modérateur de la table ronde)",
+        "text": "Madame Tran, vous êtes la troisième à intervenir, vous disposez de huit minutes. Vous avez la parole.",
+        "vi": "Cô Trần, cô là người thứ ba phát biểu, cô có 8 phút. Mời cô."
+      },
+      {
+        "speaker": "Linh",
+        "text": "Je remercie le modérateur, et je salue Madame Sapiro et Monsieur Schmitt dont les interventions précédentes ont magnifiquement posé le décor — quoique sur des bases que je vais discuter. Mon angle d'attaque sera spécifique: la circulation des manuels scolaires français au Vietnam, qui me paraît permettre de trancher entre les deux thèses qui viennent d'être défendues.",
+        "vi": "Tôi cảm ơn người điều phối, và xin chào Cô Sapiro và Thầy Schmitt mà các phát biểu trước đã đặt khung tuyệt đẹp — mặc dù trên cơ sở tôi sắp bàn luận. Góc tiếp cận của tôi sẽ cụ thể: lưu chuyển sách giáo khoa Pháp ở Việt Nam, theo tôi cho phép phân định giữa hai luận điểm vừa được bảo vệ."
+      },
+      {
+        "speaker": "Pr. Garnier",
+        "text": "Vous suggérez donc que l'un de vos co-intervenants se trompe ?",
+        "vi": "Vậy cô gợi ý rằng một trong các đồng diễn giả sai?"
+      },
+      {
+        "speaker": "Linh",
+        "text": "Je ne dirais pas qu'ils se trompent. Je dirais que leurs cadres respectifs, valides dans leurs domaines, ne tiennent pas l'épreuve d'un cas particulier — ce qui est précisément ce que la table ronde cherche à faire émerger. Je rejoins Madame Sapiro sur le constat de l'inégalité; je m'en sépare sur l'interprétation.",
+        "vi": "Tôi không nói họ sai. Tôi nói rằng các khung tương ứng của họ, có giá trị trong lĩnh vực riêng, không trụ được trước một trường hợp đặc biệt — chính là điều table ronde tìm cách làm nổi bật. Tôi đồng ý với Cô Sapiro về sự kiện bất bình đẳng; tôi tách khỏi Cô về diễn giải."
+      }
+    ],
+    "dialogue_long": [
+      {
+        "speaker": "Pr. Garnier (modérateur, ouverture)",
+        "text": "Bonjour à tous. Cette table ronde clôt notre colloque 'Circulations transnationales des savoirs'. Nous accueillons quatre intervenants en désaccord — c'est précisément ce qui rend cette table ronde intéressante. Madame Sapiro ouvrira, suivie de Monsieur Schmitt, puis de Madame Tran, et enfin de Madame Lemaire. Chacun dispose de huit minutes liminaires, suivies d'une discussion croisée modérée par moi-même, et d'une ouverture au public.",
+        "vi": "Xin chào tất cả. Table ronde này khép lại colloque 'Circulations transnationales des savoirs'. Chúng ta đón bốn diễn giả bất đồng — chính đó là điều làm bàn này thú vị. Cô Sapiro mở đầu, tiếp theo Thầy Schmitt, rồi Cô Trần, cuối cùng Cô Lemaire. Mỗi người 8 phút mở đầu, tiếp theo thảo luận chéo, và mở cho công chúng."
+      },
+      {
+        "speaker": "Pr. Garnier (après les interventions de Sapiro et Schmitt)",
+        "text": "Madame Tran, à vous.",
+        "vi": "Cô Trần, mời cô."
+      },
+      {
+        "speaker": "Linh",
+        "text": "Je remercie le modérateur de m'avoir associée à cette table ronde, et je salue les autres intervenants dont les travaux nourrissent depuis longtemps ma réflexion — Madame Sapiro pour La Sociologie de la littérature, Monsieur Schmitt pour Contrats et culture, Madame Lemaire pour ses travaux sur les politiques linguistiques. L'intervention liminaire que je vais livrer en sept minutes ne prétend nullement épuiser la question, mais propose une entrée par un cas précis: la circulation des manuels scolaires français au Vietnam.",
+        "vi": "Tôi cảm ơn người điều phối đã mời tôi vào table ronde, và xin chào các diễn giả khác mà công trình từ lâu nuôi suy nghĩ của tôi — Cô Sapiro về La Sociologie de la littérature, Thầy Schmitt về Contrats et culture, Cô Lemaire về các công trình politiques linguistiques. Phát biểu mở đầu của tôi trong 7 phút không hề tham vọng vét cạn câu hỏi, mà đề xuất một cửa vào qua trường hợp cụ thể: lưu chuyển sách giáo khoa Pháp ở Việt Nam."
+      },
+      {
+        "speaker": "Linh",
+        "text": "Quoique je rejoigne Madame Sapiro sur le constat — la circulation des œuvres et des manuels est inégale —, je me sépare d'elle sur l'interprétation: l'inégalité ne tient pas seulement aux médiateurs institutionnels comme elle le suggère, mais à une asymétrie structurelle du capital symbolique entre la métropole et les espaces post-coloniaux. Cette asymétrie précède les médiateurs et les surdétermine.",
+        "vi": "Mặc dù tôi đồng ý với Cô Sapiro về sự kiện — lưu chuyển bất bình đẳng —, tôi tách khỏi Cô về diễn giải: bất bình đẳng không chỉ do các trung gian thiết chế như Cô gợi ý, mà do bất đối xứng cấu trúc của vốn tượng trưng giữa metropole và không gian hậu thuộc địa. Bất đối xứng này có trước trung gian và surdétermine họ."
+      },
+      {
+        "speaker": "Linh",
+        "text": "À Monsieur Schmitt, qui défend la thèse opposée — celle d'une circulation équitable conditionnée par les contrats institutionnels —, je voudrais répondre amicalement mais fermement: votre cadre, brillamment défendu pour le cas franco-allemand, ne tient pas l'épreuve des données vietnamiennes que je vais évoquer. Le contrat franchit la frontière, mais il franchit avec lui des asymétries de prestige que le contrat seul ne neutralise pas.",
+        "vi": "Với Thầy Schmitt, người bảo vệ luận điểm ngược — sự lưu chuyển công bằng được điều kiện hóa bởi hợp đồng thiết chế —, tôi muốn đáp một cách thân thiện nhưng dứt khoát: khung của Thầy, được bảo vệ xuất sắc cho trường hợp Pháp-Đức, không trụ được trước dữ liệu Việt Nam tôi sắp đề cập. Hợp đồng vượt qua biên giới, nhưng nó mang theo các bất đối xứng prestige mà hợp đồng đơn lẻ không trung hòa được."
+      },
+      {
+        "speaker": "Linh",
+        "text": "Le cas concret. Entre mille neuf cent cinquante-quatre et deux mille vingt, environ quatre cents manuels français de niveau primaire ont été utilisés au Vietnam, dont la moitié sous contrat avec un éditeur français. Or, l'analyse du contenu — que j'ai conduite sur un échantillon de quatre-vingts manuels — révèle que la voix vietnamienne y est représentée comme objet (ce qu'on enseigne SUR le Vietnam) plutôt que comme sujet (ce que les Vietnamiens disent du français). Le contrat n'a pas neutralisé l'asymétrie ; il l'a institutionnalisée sous une forme contractuelle.",
+        "vi": "Trường hợp cụ thể. Giữa 1954 và 2020, khoảng 400 sách giáo khoa Pháp cấp tiểu học đã được dùng ở Việt Nam, một nửa dưới hợp đồng với editeur Pháp. Tuy nhiên, phân tích nội dung — tôi đã làm trên mẫu 80 sách — cho thấy tiếng nói Việt được đại diện như đối tượng (cái người ta dạy VỀ Việt Nam) hơn là chủ thể (cái người Việt nói về tiếng Pháp). Hợp đồng không trung hòa bất đối xứng; nó thiết chế hóa nó dưới hình thức contractuelle."
+      },
+      {
+        "speaker": "Linh",
+        "text": "Pour conclure mon intervention liminaire — et avant que la discussion ne s'ouvre —, je formule une question que je laisse à la table: comment articuler la dimension symbolique et la dimension contractuelle, sans en réduire l'une à l'autre ? Je crois que cette question, qui me sépare à la fois de Madame Sapiro et de Monsieur Schmitt, sera plus féconde que de chercher à trancher entre nos deux cadres. Je vous remercie.",
+        "vi": "Để kết thúc — và trước khi thảo luận mở ra —, tôi đặt một câu hỏi cho bàn: làm thế nào khớp nối chiều kích tượng trưng và chiều kích hợp đồng, mà không reduce cái này thành cái kia? Tôi tin câu hỏi này, vốn tách tôi khỏi cả Cô Sapiro lẫn Thầy Schmitt, sẽ phong phú hơn việc cố phân định giữa hai khung. Tôi xin cảm ơn."
+      },
+      {
+        "speaker": "Pr. Garnier",
+        "text": "Merci, Madame Tran. Avant de donner la parole à Madame Lemaire, Monsieur Schmitt vous a sollicitée d'un signe — voulez-vous lui répondre brièvement ?",
+        "vi": "Cảm ơn cô. Trước khi nhường lời cho Cô Lemaire, Thầy Schmitt vừa giơ tay với cô — cô muốn đáp ngắn gọn không?"
+      },
+      {
+        "speaker": "Pr. Schmitt",
+        "text": "Une seule question rapide à Madame Tran. Vous citez l'asymétrie post-coloniale. N'est-ce pas un cadre désormais discrédité, qui essentialise des positions qui ont évolué ?",
+        "vi": "Một câu hỏi nhanh duy nhất với Cô Trần. Cô trích bất đối xứng hậu thuộc địa. Đó không phải là khung đã bị bác bỏ, vốn essentialise các vị trí đã tiến triển sao?"
+      },
+      {
+        "speaker": "Linh",
+        "text": "Question légitime. Je n'utilise pas le cadre post-colonial dans sa version essentialisante — celle critiquée à juste titre par les travaux récents. J'utilise le concept d'ASYMÉTRIE STRUCTURELLE qui est plus précis, et qui se mesure empiriquement par des indicateurs de circulation des œuvres. Donc, sur ce point précis, je crois que nous parlons de cadres différents — votre objection vise un cadre que je n'utilise pas.",
+        "vi": "Câu hỏi xác đáng. Tôi không dùng khung hậu thuộc địa ở phiên bản essentialisante — phiên bản bị các công trình gần đây phê phán đúng. Tôi dùng khái niệm BẤT ĐỐI XỨNG CẤU TRÚC, chính xác hơn, và được đo empirically qua các chỉ báo lưu chuyển tác phẩm. Vậy, về điểm cụ thể này, tôi tin chúng ta nói về các khung khác — phản biện của Thầy nhắm tới một khung tôi không dùng."
+      },
+      {
+        "speaker": "Pr. Schmitt",
+        "text": "Réponse claire — j'en prends note. Nous reviendrons à la discussion croisée.",
+        "vi": "Câu trả lời rõ — tôi ghi nhận. Chúng ta sẽ trở lại trong thảo luận chéo."
+      },
+      {
+        "speaker": "Pr. Garnier",
+        "text": "Madame Lemaire, à vous pour la dernière intervention liminaire.",
+        "vi": "Cô Lemaire, mời cô cho phát biểu mở đầu cuối cùng."
+      }
+    ],
+    "roleplay_prompts": [
+      "Mở đầu một intervention liminaire en 5 phút trong một table ronde với 3 co-intervenants. Saluer + situer angle d'attaque + une thèse + 1 cas concret + positionner par rapport aux 3 co-intervenants par formule « Je rejoins X sur Y mais je m'en sépare sur Z » pour chacun.",
+      "Co-intervenant công khai bác luận điểm của bạn pendant la discussion croisée. Đáp lại bằng formule « Je remercie X de cette intervention; mon désaccord porte précisément sur... » + argument concret + question retournée à X. Tránh défensivité.",
+      "Modérateur reformule mal vos propos: « Madame Tran défend donc une approche post-coloniale orthodoxe... » Trả lời: corriger doucement (« Si je peux préciser: ce n'est pas exactement ma position. J'utilise plutôt... ») mà không humilier modérateur."
+    ],
+    "register_notes": "Table ronde scientifique = registre académique formel + INTERACTIF — soutenu mais avec souplesse pour engager les co-intervenants:\n\n(1) FORMULES D'OUVERTURE D'INTERVENTION LIMINAIRE:\n- « Je remercie le modérateur de m'avoir associée à cette table ronde. »\n- « Je salue les autres intervenants dont les travaux nourrissent depuis longtemps ma réflexion. »\n- « L'intervention liminaire que je vais livrer ne prétend nullement épuiser la question. »\n- « Je propose une entrée par un cas précis. »\n\n(2) FORMULES DE POSITIONNEMENT — CŒUR de la table ronde:\n- « Je rejoins X sur Y mais je m'en sépare sur Z. »\n- « Sur le constat, nous convergeons; sur l'interprétation, nous divergeons. »\n- « Quoique je rejoigne X, je voudrais nuancer... »\n- « À X qui défend la thèse opposée, je voudrais répondre amicalement mais fermement. »\n- « Le cadre que défend X ne tient pas l'épreuve des données que je vais évoquer. »\n\n(3) FORMULES DE QUESTION OUVERTE — pour clore intervention liminaire:\n- « Je formule une question que je laisse à la table: ... »\n- « Cette question, qui me sépare de X et Y, sera plus féconde que de trancher. »\n- « C'est ce point que la discussion croisée pourra approfondir. »\n\n(4) FORMULES DE RÉPONSE EN DISCUSSION CROISÉE:\n- « Je remercie X de cette intervention; mon désaccord porte précisément sur... »\n- « Sur ce point, votre objection vise un cadre que je n'utilise pas. »\n- « Si je peux préciser: ce que vous me prêtez n'est pas exactement ma position. »\n- « Sur le fait, je vous donne raison ; sur l'interprétation, je conteste. »\n\n(5) SUBJONCTIFS À MAÎTRISER:\n- « Quoique je rejoigne Madame Sapiro sur le constat... »\n- « Avant que la discussion ne s'ouvre... »\n- « Sans que la discussion ait épuisé tous les angles... »\n- « ...à condition que les cadres soient clairement distingués. »\n\n(6) RAPPELS DE CIVILITÉ ACADÉMIQUE — typiquement français:\n- Vouvoiement obligatoire entre TOUS les intervenants, même en désaccord vif.\n- Adresser nominalement: « Madame Sapiro », « Monsieur Schmitt » — pas « ma collègue », « notre ami ».\n- Citer ouvrages et années — montrer connaissance du travail.\n- « Amicalement mais fermement » — formule emblématique du désaccord civil.\n\n(7) TRÁNH:\n- Répétition d'un co-intervenant (le public le note).\n- Désaccord ad hominem (« Madame X est mal informée »).\n- Esquive de question difficile (« sujet trop complexe pour cette table »).\n- Lecture d'un texte écrit (en table ronde, oral plus libre attendu).\n- Mention nominale dépréciative en absence du concerné."
+,
+    "idiom_glosses": [
+      {
+        "idiom": "Rejoindre quelqu'un sur (académique)",
+        "literal": "Đi cùng ai về",
+        "meaning": "Đồng ý với ai về một điểm — formule de positionnement standard.",
+        "example": "Je rejoins Madame Sapiro sur le constat; je m'en sépare sur l'interprétation."
+      },
+      {
+        "idiom": "Tenir l'épreuve de (formel)",
+        "literal": "Trụ trước thử thách của",
+        "meaning": "Trụ được trước — pour évaluer si un cadre tient face aux données.",
+        "example": "Votre cadre, brillant pour le cas franco-allemand, ne tient pas l'épreuve des données vietnamiennes."
+      },
+      {
+        "idiom": "Trancher entre deux thèses (académique)",
+        "literal": "Chặt giữa hai luận điểm",
+        "meaning": "Phân định giữa hai luận điểm — souvent au négatif: « plus fécond que de trancher ».",
+        "example": "Cette question sera plus féconde que de chercher à trancher entre nos deux cadres."
+      },
+      {
+        "idiom": "Amicalement mais fermement (formel)",
+        "literal": "Một cách thân thiện nhưng dứt khoát",
+        "meaning": "Thân thiện nhưng dứt khoát — formule emblématique du désaccord civil.",
+        "example": "À Monsieur Schmitt, je voudrais répondre amicalement mais fermement: votre cadre ne tient pas."
+      }
+    ],
+    "exercises": [
+      {
+        "type": "fill-blank",
+        "question": "Quoique je ___ Madame Sapiro sur le constat, je me sépare d'elle sur l'interprétation.",
+        "answer": "rejoigne"
+      },
+      {
+        "type": "matching",
+        "pairs": [
+          ["une intervention liminaire", "phát biểu mở đầu"],
+          ["la discussion croisée", "thảo luận chéo"],
+          ["l'angle d'attaque", "góc tiếp cận"],
+          ["tenir l'épreuve de", "trụ được trước"]
+        ],
+        "instruction": "Nối thuật ngữ table ronde với nghĩa Việt"
+      },
+      {
+        "type": "translation",
+        "vietnamese": "Mặc dù tôi đồng ý với Cô Sapiro về sự kiện, tôi tách khỏi Cô về diễn giải: bất bình đẳng không chỉ do trung gian thiết chế.",
+        "french": "Quoique je rejoigne Madame Sapiro sur le constat, je me sépare d'elle sur l'interprétation: l'inégalité ne tient pas seulement aux médiateurs institutionnels."
+      }
+    ]
+  },
+  {
+    "id": "lcontroversial_position",
+    "level": "C1",
+    "category": "fluency",
+    "title_vi": "Bảo vệ một quan điểm học thuật gây tranh cãi",
+    "title_en": "Defending a controversial academic position",
+    "sentences": [
+      {
+        "en": "La position que je défends aujourd'hui est, je le sais, minoritaire dans le champ — et l'objet précis de mon intervention est de montrer en quoi cette minorité tient méthodologiquement, malgré l'inconfort institutionnel qu'elle produit.",
+        "vi": "Vị trí tôi bảo vệ hôm nay là, tôi biết, thiểu số trong lĩnh vực — và mục đích cụ thể của bài can thiệp là cho thấy thiểu số đó vẫn vững về phương pháp luận, dù sự khó chịu thiết chế mà nó tạo ra.",
+        "pronunciation_focus": [
+          "minoritaire → mi-no-ri-tèr",
+          "champ → shã",
+          "méthodologiquement → mé-to-do-lo-jik-mã",
+          "inconfort → an-kõn-for"
+        ]
+      },
+      {
+        "en": "Je m'inscris explicitement dans une tradition hétérodoxe — celle de Lordon en économie, de Lahire en sociologie, de Quemada-Diez en didactique — qui n'est ni isolée ni récente, et dont l'apport au débat scientifique est, à mon sens, sous-estimé.",
+        "vi": "Tôi đăng ký rõ ràng trong một truyền thống hétérodoxe — của Lordon trong kinh tế, Lahire trong xã hội học, Quemada-Diez trong didactique — không cô lập cũng không gần đây, và đóng góp vào tranh luận khoa học, theo tôi, bị đánh giá thấp.",
+        "pronunciation_focus": [
+          "explicitement → èks-pli-sit-mã",
+          "hétérodoxe → é-té-ro-doks",
+          "isolée → i-zo-lé",
+          "sous-estimé → su-zès-ti-mé"
+        ]
+      },
+      {
+        "en": "Bien que je sache que cette position me coûtera professionnellement — ralentissement de carrière, isolement institutionnel, refus de tribunes —, je tiens à dire avec netteté que ce coût ne doit pas se confondre avec une invalidité scientifique.",
+        "vi": "Mặc dù tôi biết vị trí này sẽ tốn kém chuyên môn cho tôi — chậm tiến độ sự nghiệp, cô lập thiết chế, bị từ chối tribunes —, tôi muốn nói rõ rằng chi phí ấy không lẫn với sự không hợp lệ khoa học.",
+        "pronunciation_focus": [
+          "Bien que → biãn kơ",
+          "sache → sash",
+          "ralentissement → ra-lãn-tis-mã",
+          "invalidité → an-va-li-di-té"
+        ]
+      },
+      {
+        "en": "Je distingue radicalement l'hétérodoxie scientifique — fondée sur des arguments méthodologiques — de la posture provocatrice gratuite, qui se contente de transgresser sans construire.",
+        "vi": "Tôi phân biệt triệt để sự hétérodoxie khoa học — dựa trên lập luận phương pháp luận — với thái độ provocatrice gratuite, vốn chỉ vi phạm mà không xây dựng.",
+        "pronunciation_focus": [
+          "radicalement → ra-di-kal-mã",
+          "fondée → fõn-dé",
+          "provocatrice → pro-vo-ka-tri-sơ",
+          "transgresser → trãns-grè-sé"
+        ]
+      },
+      {
+        "en": "À mes contradicteurs orthodoxes, je n'oppose pas un mépris symétrique: je revendique le DROIT À L'HÉTÉRODOXIE comme condition de la vitalité scientifique, sans quoi un champ se transforme en doctrine.",
+        "vi": "Với các đối thủ orthodoxe của mình, tôi không đối phó bằng sự khinh thị đối xứng: tôi đòi quyền hétérodoxie như điều kiện cho sức sống khoa học, nếu không một lĩnh vực biến thành giáo điều.",
+        "pronunciation_focus": [
+          "contradicteurs → kõn-tra-dik-tơr",
+          "mépris → mé-pri",
+          "vitalité → vi-ta-li-té",
+          "doctrine → dok-trin"
+        ]
+      }
+    ],
+    "cultural_notes_vi": "Défendre une position académique controversée — « la disputatio moderne » — est une pratique avec des règles précises dans le champ français. Distinguer:\n\nL'HÉTÉRODOXIE — légitime, voire valorisée:\nUne position est « hétérodoxe » quand elle s'écarte du consensus disciplinaire dominant tout en restant fondée sur des arguments méthodologiques recevables. Elle peut être minoritaire mais elle est SCIENTIFIQUEMENT défendable. Examples français contemporains:\n- Frédéric Lordon en économie (critique de la théorie standard, marxisme spinoziste).\n- Bernard Lahire en sociologie (critique de l'unicité du habitus bourdieusien).\n- Cynthia Fleury en philosophie politique (théorie du soin politique).\n- Achille Mbembe en philosophie post-coloniale.\n\nLA POLÉMIQUE — illégitime ou suspecte:\nCf. lesson 8: la polémique vise à disqualifier l'adversaire. Hétérodoxie ≠ polémique.\n\nLA PROVOCATION GRATUITE — illégitime:\nUne position qui transgresse pour transgresser, sans contenu construit. Le « contrarianisme » sans rigueur. Distingué de l'hétérodoxie par l'absence d'argument méthodologique.\n\nLA DOCTRINE — danger d'un champ:\nUn champ devient « doctrinaire » quand il refuse toute hétérodoxie interne. Bourdieu lui-même a alerté contre la « doctrinairisation » des disciplines. La vitalité scientifique requiert l'existence d'hétérodoxies.\n\nCOÛTS ET BÉNÉFICES DE LA POSITION HÉTÉRODOXE:\nCOÛTS:\n- Ralentissement de carrière: postes plus difficiles à obtenir, promotions plus lentes.\n- Isolement institutionnel: moins d'invitations à colloques, moins de financement, moins de jurys.\n- Refus de tribunes: les médias dominants peuvent éviter les voix hétérodoxes.\n- Solitude argumentative: moins de pairs avec qui discuter.\n\nBÉNÉFICES (parfois):\n- Visibilité publique parfois supérieure (les médias cherchent des « voix différentes »).\n- Pertinence dans les périodes de crise des paradigmes orthodoxes.\n- Continuité avec une tradition reconnue (lignée intellectuelle).\n- Possibilité de contribuer au renouvellement du champ.\n\nRÈGLES TACITES POUR DÉFENDRE UNE POSITION HÉTÉRODOXE:\n(a) S'INSCRIRE DANS UNE LIGNÉE — ne pas se présenter comme génialement seul. Citer prédécesseurs hétérodoxes du champ. Cela signale que vous CONNAISSEZ la tradition d'hétérodoxie disciplinaire.\n(b) DÉMONTRER LA RIGUEUR — votre position doit être MIEUX argumentée que la position orthodoxe sur ce point précis. Pas équivalente — meilleure, sur ce point.\n(c) ASSUMER LES COÛTS — ne pas demander de pitié. La position hétérodoxe se choisit par rigueur, pas par jouissance de marginalité.\n(d) RECONNAÎTRE LA LÉGITIMITÉ DE L'ORTHODOXIE — éviter le mépris symétrique. L'orthodoxie a aussi ses raisons.\n(e) DISTINGUER ce que vous remettez en cause de ce que vous gardez — peu d'hétérodoxes contestent TOUT du paradigme dominant.\n(f) ANTICIPER LES OBJECTIONS et y répondre dans votre exposition initiale.\n(g) ACCEPTER LE DIALOGUE — l'hétérodoxe qui refuse le dialogue glisse vers la polémique.\n(h) GARDER L'OUVERTURE — votre position peut évoluer si les arguments sont concluants. La fermeture = doctrine.\n\nDÉBATS HISTORIQUES À RÉFÉRENCER (background):\n- Sartre vs Aron (existentialisme vs libéralisme, années 50-70).\n- Bourdieu vs Boudon (sociologie de la décision, années 80).\n- Lahire vs orthodoxie bourdieusienne (années 2000-).\n- Lordon vs économie standard (années 2010-).\n→ Les hétérodoxies SURVIVENT et finissent souvent par influencer le mainstream — argument pour leur légitimité.\n\nPIÈGES DE LA POSITION HÉTÉRODOXE:\n(i) DEVENIR « MARGINAL DE PROFESSION » — adopter la marginalité comme identité, refuser tout dialogue avec orthodoxie.\n(ii) GLISSER VERS LA POLÉMIQUE — la solitude argumentative use; la tentation de disqualifier l'orthodoxie est forte.\n(iii) ÊTRE INSTRUMENTALISÉ par les médias comme « voix dissonante » — perdre la rigueur en gagnant la visibilité.\n(iv) S'ENFERMER DANS UN CERCLE D'HÉTÉRODOXES — où le débat est limité à ceux qui partagent déjà la position.\n\nĐỌC THÊM:\n- Bourdieu, Méditations pascaliennes (1997), sur la pression conformiste du champ.\n- Lahire, Monde pluriel (2012), sur la dispute avec l'orthodoxie.\n- Lordon, Imperium (2015), sur le rôle des hétérodoxies en théorie politique.\n\n⚠️ Lưu ý: Không phải tư vấn pháp lý hay nghề nghiệp. La position hétérodoxe a des coûts professionnels RÉELS — financement, recrutement, promotions. Toujours en discuter en amont avec un mentor ayant la même tradition d'hétérodoxie. Ne pas confondre courage scientifique et imprudence professionnelle.",
+    "tip_advice_vi": "PROTOCOLE 9 BƯỚC pour défendre une position académique controversée:\n\n(1) DIAGNOSTIC PRÉALABLE — êtes-vous vraiment hétérodoxe ?\n- Votre position contredit-elle le consensus du champ ? (vérifier en lisant 5-10 publications de référence récentes).\n- Si oui: l'hétérodoxie est-elle DÉJÀ représentée par d'autres ? (S'inscrire dans une lignée).\n- Quelle est la SOURCE de votre divergence: méthodologie ? Données ? Cadre théorique ?\n→ Si vous ne pouvez pas répondre précisément, vous êtes peut-être en désaccord local, pas hétérodoxe.\n\n(2) S'INSCRIRE DANS UNE TRADITION — règle d'or:\n- Citer 2-3 prédécesseurs hétérodoxes de votre champ.\n- Formules: « Je m'inscris dans une tradition... », « Cette position prolonge celle de... », « Lordon avait formulé un point analogue en X. »\n- Cela signale lecture, humilité, ancrage.\n\n(3) DÉMONTRER LA RIGUEUR — pas seulement affirmer:\n- Votre position doit s'appuyer sur méthodologie EXPLICITE, pas seulement sur intuition.\n- Données empiriques privilégiées si possible.\n- Comparaison avec position orthodoxe sur ce point précis: en quoi vous êtes plus précis(e), pas seulement différent(e).\n\n(4) DISTINCTIONS CLÉS — éviter les amalgames:\n- HÉTÉRODOXIE ≠ POLÉMIQUE (cf. lesson 8): hétérodoxie argumente, polémique disqualifie.\n- HÉTÉRODOXIE ≠ PROVOCATION GRATUITE: hétérodoxie construit, provocation transgresse.\n- HÉTÉRODOXIE ≠ DOCTRINE INVERSE: hétérodoxie reconnaît la légitimité de l'orthodoxie sur d'autres points.\n→ Faire ces distinctions explicites dans l'intervention montre maturité.\n\n(5) ANTICIPER LES OBJECTIONS — préparer 3-5:\n- « Vous êtes isolé(e), c'est un signe de faiblesse. » → Réponse: lignée + tradition.\n- « Votre position est idéologique, pas scientifique. » → Réponse: méthodologie explicite + données.\n- « Vous transgressez pour transgresser. » → Réponse: distinction hétérodoxie / provocation.\n- « Vous mépriserez l'orthodoxie. » → Réponse: reconnaître ses raisons.\n- « Votre position ne tient pas la critique. » → Réponse: invitez critique, listez les contre-arguments traités.\n\n(6) STRUCTURE TYPIQUE D'UNE INTERVENTION HÉTÉRODOXE:\n- 1. Reconnaître l'orthodoxie et sa légitimité partielle.\n- 2. Identifier UN POINT PRÉCIS de divergence.\n- 3. Argumenter par UN cas concret + UNE méthodologie explicite.\n- 4. S'inscrire dans une lignée hétérodoxe identifiée.\n- 5. Anticiper UNE objection majeure et y répondre.\n- 6. Rouvrir au dialogue — votre position est argumentée, pas absolue.\n\n(7) GESTION DES COÛTS PROFESSIONNELS:\n- Ne pas demander de pitié.\n- Ne pas se plaindre de la marginalité — assumer.\n- Diversifier les voies de carrière: si l'hétérodoxie ralentit la voie académique, considérer voies alternatives (presses universitaires, médias, ONG, expertise publique).\n- Cultiver une niche — d'autres hétérodoxes du champ — où le débat est intense.\n\n(8) GARDER L'OUVERTURE:\n- Votre position N'EST PAS définitive. Elle peut évoluer si les arguments sont concluants.\n- Lire en priorité les meilleurs adversaires, pas les plus faibles.\n- Discuter régulièrement avec orthodoxes — l'isolement ferme.\n\n(9) DÉFENDRE LE DROIT À L'HÉTÉRODOXIE — au-delà de votre position propre:\n- Argument méta: la vitalité scientifique requiert l'existence d'hétérodoxies, indépendamment de qui a raison.\n- C'est un argument de PRINCIPE qui dépasse votre cas individuel.\n- Cela protège aussi les autres hétérodoxes du champ.\n\nTRÁNH:\n- Se présenter comme un génie isolé (« je suis le seul à voir »).\n- Mépriser l'orthodoxie — confondre désaccord et délégitimation.\n- Glisser vers la polémique sous prétexte de « directité ».\n- S'enfermer dans cercle d'hétérodoxes uniquement.\n- Adopter l'identité de marginal — devient cliché.\n- Confondre courage scientifique et provocation gratuite.\n- Refuser tout dialogue avec orthodoxie.\n- Promettre que votre position « va bouleverser le champ » — laissez le champ juger.\n\n⚠️ Lưu ý: KHÔNG phải tư vấn nghề nghiệp. Adopter une position hétérodoxe a des conséquences professionnelles RÉELLES — financement, recrutement, promotions. Discutez avec un mentor partageant cette tradition AVANT de prendre une position publique forte. Le courage scientifique ne se confond pas avec l'imprudence stratégique.",
+    "vocabulary": [
+      {
+        "word": "une position controversée",
+        "en": "a controversial position",
+        "vi": "vị trí gây tranh cãi",
+        "pos": "n.f.",
+        "pronunciation_vi": "un po-zi-sion kõn-tro-vèr-sé"
+      },
+      {
+        "word": "l'hétérodoxie",
+        "en": "heterodoxy",
+        "vi": "sự hétérodoxie / không chính thống",
+        "pos": "n.f.",
+        "pronunciation_vi": "lé-té-ro-dok-si"
+      },
+      {
+        "word": "minoritaire dans le champ",
+        "en": "minoritarian in the field",
+        "vi": "thiểu số trong lĩnh vực",
+        "pos": "loc.",
+        "pronunciation_vi": "mi-no-ri-tèr dã lơ shã"
+      },
+      {
+        "word": "s'inscrire dans une tradition",
+        "en": "to inscribe oneself in a tradition",
+        "vi": "đăng ký vào một truyền thống",
+        "pos": "v.",
+        "pronunciation_vi": "san-skri-rơ dã un tra-di-sion"
+      },
+      {
+        "word": "le ralentissement de carrière",
+        "en": "career slowdown",
+        "vi": "chậm tiến độ sự nghiệp",
+        "pos": "n.m.",
+        "pronunciation_vi": "lơ ra-lãn-tis-mã dơ ka-rièr"
+      },
+      {
+        "word": "l'isolement institutionnel",
+        "en": "institutional isolation",
+        "vi": "cô lập thiết chế",
+        "pos": "n.m.",
+        "pronunciation_vi": "li-zol-mã an-sti-tu-sio-nèl"
+      },
+      {
+        "word": "la posture provocatrice gratuite",
+        "en": "the gratuitous provocative posture",
+        "vi": "thái độ khiêu khích vô bổ",
+        "pos": "n.f.",
+        "pronunciation_vi": "la pos-tur pro-vo-ka-tri-sơ gra-tu-it"
+      },
+      {
+        "word": "le droit à l'hétérodoxie",
+        "en": "the right to heterodoxy",
+        "vi": "quyền hétérodoxie",
+        "pos": "n.m.",
+        "pronunciation_vi": "lơ droa a lé-té-ro-dok-si"
+      },
+      {
+        "word": "la doctrine",
+        "en": "doctrine",
+        "vi": "giáo điều",
+        "pos": "n.f.",
+        "pronunciation_vi": "la dok-trin"
+      },
+      {
+        "word": "le mépris symétrique",
+        "en": "the symmetrical contempt",
+        "vi": "sự khinh thị đối xứng",
+        "pos": "n.m.",
+        "pronunciation_vi": "lơ mé-pri si-mé-trik"
+      }
+    ],
+    "dialogue": [
+      {
+        "speaker": "Pr. Garnier (séminaire de l'EHESS)",
+        "text": "Madame Tran, votre exposé contredit le consensus disciplinaire récent. Êtes-vous consciente du coût intellectuel d'une telle position ?",
+        "vi": "Cô Trần, bài trình bày của cô mâu thuẫn với consensus ngành gần đây. Cô có ý thức về chi phí trí thức của một vị trí như vậy không?"
+      },
+      {
+        "speaker": "Linh",
+        "text": "J'en suis pleinement consciente. La position que je défends est minoritaire dans le champ — et l'objet précis de mon intervention est de montrer en quoi cette minorité tient méthodologiquement, malgré l'inconfort institutionnel qu'elle produit. Je m'inscris explicitement dans une tradition hétérodoxe — celle de Lordon, de Lahire, de Quemada-Diez —, qui n'est ni isolée ni récente.",
+        "vi": "Tôi ý thức đầy đủ. Vị trí tôi bảo vệ là thiểu số trong lĩnh vực — và mục đích cụ thể của bài can thiệp là cho thấy thiểu số đó vẫn vững về phương pháp luận, dù sự khó chịu thiết chế nó tạo ra. Tôi đăng ký rõ ràng trong truyền thống hétérodoxe — của Lordon, Lahire, Quemada-Diez —, không cô lập cũng không gần đây."
+      },
+      {
+        "speaker": "Pr. Garnier",
+        "text": "Mais à quoi bon l'hétérodoxie si elle vous coûte ?",
+        "vi": "Nhưng hétérodoxie để làm gì nếu nó tốn kém cho cô?"
+      },
+      {
+        "speaker": "Linh",
+        "text": "Je distingue radicalement l'hétérodoxie scientifique — fondée sur des arguments méthodologiques — de la posture provocatrice gratuite. Je ne pratique pas la marginalité comme identité. Je revendique le droit à l'hétérodoxie comme condition de la vitalité scientifique du champ. Sans hétérodoxies internes, un champ se transforme en doctrine — et c'est cela qui m'importe au-delà de ma position propre.",
+        "vi": "Tôi phân biệt triệt để hétérodoxie khoa học — dựa trên lập luận phương pháp luận — với thái độ khiêu khích vô bổ. Tôi không thực hành sự marginalité như bản sắc. Tôi đòi quyền hétérodoxie như điều kiện cho sức sống khoa học của lĩnh vực. Không có hétérodoxies nội bộ, một lĩnh vực biến thành giáo điều — và đó là điều quan trọng với tôi vượt xa vị trí riêng."
+      }
+    ],
+    "dialogue_long": [
+      {
+        "speaker": "Pr. Garnier (séminaire EHESS, modératrice)",
+        "text": "Madame Tran, je vais ouvrir notre séance par une question peu habituelle. Vous avez accepté d'être interviewée parce que vous tenez une position critique vis-à-vis de l'orthodoxie actuelle de la sociolinguistique du bilinguisme. Vous savez le coût de cette posture. Pourquoi tenez-vous ?",
+        "vi": "Cô Trần, tôi mở phiên này bằng một câu hỏi không thông thường. Cô đồng ý phỏng vấn vì cô có quan điểm phê phán đối với orthodoxie hiện tại của sociolinguistique du bilinguisme. Cô biết chi phí của vị trí ấy. Vì sao cô vẫn giữ?"
+      },
+      {
+        "speaker": "Linh",
+        "text": "Je vous remercie de cette question franche, Madame la modératrice. Je tiens parce que les arguments tiennent. La position que je défends n'est pas issue d'une jouissance de la marginalité — c'est une conclusion à laquelle je suis arrivée par accumulation de données empiriques et par réflexion méthodologique. Tant que les arguments tiennent, la position tient. Si demain les données invalidaient ma position, je l'abandonnerais.",
+        "vi": "Tôi cảm ơn câu hỏi thẳng thắn. Tôi giữ vì các lập luận trụ. Vị trí tôi bảo vệ không xuất phát từ sự thỏa mãn của marginalité — đó là một kết luận tôi đạt tới qua tích lũy dữ liệu empirique và suy ngẫm phương pháp luận. Chừng nào lập luận trụ, vị trí trụ. Nếu mai dữ liệu phủ nhận vị trí, tôi sẽ bỏ."
+      },
+      {
+        "speaker": "Pr. Garnier",
+        "text": "Soyons concrets. Vous critiquez le cadre de Cummins — référence dominante depuis 1979 — sur la transférabilité des compétences linguistiques. C'est presque une hérésie en sociolinguistique du bilinguisme.",
+        "vi": "Cụ thể đi. Cô phê phán khung Cummins — quy chiếu chính từ 1979 — về sự transférabilité của năng lực ngôn ngữ. Gần như là dị giáo trong sociolinguistique du bilinguisme."
+      },
+      {
+        "speaker": "Linh",
+        "text": "Le mot 'hérésie' est révélateur — et c'est précisément cela qui doit nous interpeller. Quand un champ utilise le vocabulaire religieux pour qualifier un désaccord scientifique, le champ a glissé vers la doctrine. Bien que je sache que cette position me coûtera professionnellement — ralentissement de carrière, isolement institutionnel, refus de tribunes —, je tiens à dire avec netteté que ce coût ne doit pas se confondre avec une invalidité scientifique.",
+        "vi": "Từ « hérésie » là hé lộ — và chính đó là điều phải làm chúng ta đặt câu hỏi. Khi một lĩnh vực dùng từ vựng tôn giáo để gọi một bất đồng khoa học, lĩnh vực đã trượt về phía giáo điều. Mặc dù tôi biết vị trí này sẽ tốn kém chuyên môn — chậm sự nghiệp, cô lập thiết chế, bị từ chối tribunes —, tôi muốn nói rõ rằng chi phí ấy không lẫn với sự không hợp lệ khoa học."
+      },
+      {
+        "speaker": "Pr. Garnier",
+        "text": "Mais Cummins a soixante ans d'évidence empirique derrière lui. Vous êtes seule contre soixante ans.",
+        "vi": "Nhưng Cummins có 60 năm bằng chứng empirique sau lưng. Cô đứng một mình chống 60 năm."
+      },
+      {
+        "speaker": "Linh",
+        "text": "Je ne suis pas seule. Je m'inscris explicitement dans une tradition hétérodoxe — celle de Lordon en économie, de Lahire en sociologie, de Quemada-Diez en didactique — qui n'est ni isolée ni récente, et dont l'apport au débat scientifique est, à mon sens, sous-estimé. En sociolinguistique précisément, des chercheurs comme Suresh Canagarajah depuis deux mille treize, ou Ofelia García aux États-Unis, ont avancé des positions analogues — leur cadre du translanguaging conteste l'hypothèse de transférabilité par le bas. Ce que vous appelez 'soixante ans contre moi' est plutôt 'soixante ans dont les vingt dernières voient une fragmentation du paradigme'.",
+        "vi": "Tôi không một mình. Tôi đăng ký rõ ràng trong truyền thống hétérodoxe — của Lordon trong kinh tế, Lahire trong xã hội học, Quemada-Diez trong didactique — không cô lập cũng không gần đây, và đóng góp vào tranh luận khoa học, theo tôi, bị đánh giá thấp. Trong sociolinguistique cụ thể, các nhà nghiên cứu như Suresh Canagarajah từ 2013, hay Ofelia García ở Mỹ, đã đưa ra vị trí tương tự — khung translanguaging của họ phản bác giả định transférabilité từ dưới. Điều bà gọi '60 năm chống tôi' đúng hơn là '60 năm mà 20 năm cuối thấy paradigm bị fragmentation'."
+      },
+      {
+        "speaker": "Pr. Garnier",
+        "text": "On vous accuse cependant — je vous le rapporte parce que les commentaires courent — d'adopter une posture provocatrice par souci de visibilité.",
+        "vi": "Tuy nhiên cô bị cáo buộc — tôi báo cáo vì bình luận đang lan — là adopter một thái độ khiêu khích vì souci visibilité."
+      },
+      {
+        "speaker": "Linh",
+        "text": "Je distingue radicalement l'hétérodoxie scientifique — fondée sur des arguments méthodologiques — de la posture provocatrice gratuite, qui se contente de transgresser sans construire. Mon hétérodoxie est argumentée par méthode mixte qualitative-quantitative, sur un échantillon de cent vingt étudiants vietnamiens-français-anglais. Mes données sont disponibles en accès libre sur Nakala. Si quelqu'un peut produire des données qui invalident mes conclusions, je serai la première à reconsidérer ma position. Une provocation gratuite, par définition, ne peut être réfutée par les données — la mienne, oui. C'est la différence.",
+        "vi": "Tôi phân biệt triệt để hétérodoxie khoa học — dựa trên lập luận phương pháp luận — với thái độ khiêu khích vô bổ, vốn chỉ vi phạm mà không xây dựng. Hétérodoxie của tôi được lập luận bởi phương pháp hỗn hợp định tính-định lượng, trên mẫu 120 sinh viên Việt-Pháp-Anh. Dữ liệu của tôi có truy cập tự do trên Nakala. Nếu ai có thể đưa ra dữ liệu phủ nhận kết luận, tôi sẽ là người đầu xem lại. Một provocation gratuite, theo định nghĩa, không thể bị bác bỏ bởi dữ liệu — của tôi, có. Đó là sự khác biệt."
+      },
+      {
+        "speaker": "Pr. Garnier",
+        "text": "Question dernière, je tiens à vous la poser franchement: à quoi bon, si l'orthodoxie ne change pas ?",
+        "vi": "Câu cuối, tôi muốn hỏi thẳng: để làm gì, nếu orthodoxie không thay đổi?"
+      },
+      {
+        "speaker": "Linh",
+        "text": "À mes contradicteurs orthodoxes, je n'oppose pas un mépris symétrique. Je revendique le droit à l'hétérodoxie comme condition de la vitalité scientifique, sans quoi un champ se transforme en doctrine. Cet argument dépasse mon cas individuel. Si demain ma position est validée par les données, le champ aura avancé. Si elle est invalidée, le champ aura précisé ses limites — et c'est aussi un progrès. Si elle reste minoritaire pendant trente ans avant d'être prise au sérieux comme l'a été Bourdieu pendant longtemps, alors elle aura nourri silencieusement. Dans tous les cas, le travail scientifique aura gagné. C'est cela qui m'importe.",
+        "vi": "Với các đối thủ orthodoxe, tôi không đối phó bằng sự khinh thị đối xứng. Tôi đòi quyền hétérodoxie như điều kiện cho sức sống khoa học, nếu không một lĩnh vực biến thành giáo điều. Lập luận này vượt qua trường hợp riêng. Nếu mai vị trí của tôi được dữ liệu xác nhận, lĩnh vực sẽ tiến lên. Nếu bị bác bỏ, lĩnh vực sẽ làm rõ giới hạn — đó cũng là tiến bộ. Nếu vẫn thiểu số 30 năm trước khi được nghiêm túc như Bourdieu đã thế lâu, thì nó vẫn nuôi dưỡng âm thầm. Trong mọi trường hợp, công việc khoa học sẽ thắng. Đó là điều quan trọng với tôi."
+      }
+    ],
+    "roleplay_prompts": [
+      "Vous présentez une position hétérodoxe en séminaire EHESS. Mở đầu en 4 phút: situer votre position par rapport à l'orthodoxie + s'inscrire dans une lignée hétérodoxe (citer 2-3 prédécesseurs) + annoncer méthodologie. Sử dụng « Je m'inscris dans une tradition », « hétérodoxe », « consensus disciplinaire ».",
+      "On vous accuse en discussion d'être un(e) « provocateur(rice) gratuit(e) ». Đáp lại bằng distinction: hétérodoxie argumentée vs provocation gratuite. Citer méthodologie + données disponibles + invitation à réfutation empirique.",
+      "Question piège (en interview presse): « Si vous êtes minoritaire, c'est que vous avez tort ? » Đáp: contester le syllogisme (« minoritaire = tort »); citer cas historiques (Bourdieu longtemps minoritaire avant reconnaissance); défendre le droit à l'hétérodoxie comme principe."
+    ],
+    "register_notes": "Discours de défense d'une position controversée = registre académique HAUT — mélange de fermeté + mesure + ouverture:\n\n(1) FORMULES D'AUTOPOSITIONNEMENT HÉTÉRODOXE:\n- « La position que je défends est, je le sais, minoritaire dans le champ. »\n- « Je m'inscris explicitement dans une tradition hétérodoxe. »\n- « Cette position prolonge celle de [prédécesseurs]. »\n- « Je revendique le droit à l'hétérodoxie. »\n\n(2) FORMULES D'ANCRAGE DANS UNE LIGNÉE — règle d'or:\n- « ...celle de Lordon en économie, de Lahire en sociologie... »\n- « Une tradition qui n'est ni isolée ni récente. »\n- « Lordon avait formulé un point analogue en X. »\n→ Citer 2-3 noms par discipline; ne pas inventer.\n\n(3) DISTINCTIONS CLÉS:\n- « Je distingue l'hétérodoxie scientifique de la posture provocatrice gratuite. »\n- « Hétérodoxie ≠ polémique. »\n- « La marginalité n'est pas une identité. »\n- « Je n'oppose pas un mépris symétrique aux orthodoxes. »\n\n(4) FORMULES D'ASSUMER LES COÛTS:\n- « Bien que je sache que cette position me coûtera professionnellement... »\n- « Le coût ne doit pas se confondre avec une invalidité scientifique. »\n- « J'en suis pleinement consciente. »\n→ Ton: assumer, pas se plaindre.\n\n(5) FORMULES D'OUVERTURE — protéger contre la fermeture doctrinaire:\n- « Si demain les données invalident ma position, je l'abandonnerais. »\n- « Une provocation gratuite ne peut être réfutée par les données — la mienne, oui. »\n- « Mes données sont disponibles en accès libre. »\n→ Cela protège contre l'accusation de doctrinarisme inverse.\n\n(6) ARGUMENT MÉTA — défense du DROIT à l'hétérodoxie:\n- « Sans hétérodoxies internes, un champ se transforme en doctrine. »\n- « La vitalité scientifique requiert l'existence d'hétérodoxies. »\n- « Cet argument dépasse mon cas individuel. »\n→ L'argument méta est plus puissant que la défense de votre position propre.\n\n(7) SUBJONCTIFS À MAÎTRISER:\n- « Bien que je sache que... »\n- « Quoique cette position soit minoritaire... »\n- « ...sans qu'il faille pour autant céder à la provocation. »\n- « Avant que le champ ne se transforme en doctrine... »\n\n(8) TRÁNH:\n- Se présenter comme génie isolé.\n- Mépriser ostensiblement l'orthodoxie.\n- Glisser vers polémique (ad hominem, disqualification).\n- Adopter la marginalité comme identité.\n- Confondre hétérodoxie et confort de la dissidence.\n- Refuser tout dialogue.\n- Promettre que votre position « va bouleverser » — laissez le champ juger."
+,
+    "idiom_glosses": [
+      {
+        "idiom": "S'inscrire dans une tradition (académique)",
+        "literal": "Đăng ký vào một truyền thống",
+        "meaning": "Đăng ký vào một truyền thống — formule cho ancrage dans une lignée intellectuelle.",
+        "example": "Je m'inscris explicitement dans une tradition hétérodoxe — celle de Lordon, de Lahire, de Quemada-Diez."
+      },
+      {
+        "idiom": "Le droit à l'hétérodoxie (philosophique)",
+        "literal": "Quyền hétérodoxie",
+        "meaning": "Quyền được giữ vị trí không chính thống — argument méta de la vie scientifique.",
+        "example": "Je revendique le droit à l'hétérodoxie comme condition de la vitalité scientifique."
+      },
+      {
+        "idiom": "Le mépris symétrique (formel)",
+        "literal": "Sự khinh thị đối xứng",
+        "meaning": "Sự khinh thị đối xứng — đặc điểm cần tránh khi bảo vệ vị trí thiểu số.",
+        "example": "À mes contradicteurs orthodoxes, je n'oppose pas un mépris symétrique."
+      },
+      {
+        "idiom": "Le glissement vers la doctrine (philosophique)",
+        "literal": "Sự trượt về giáo điều",
+        "meaning": "Sự trượt về giáo điều — risque que court un champ qui refuse l'hétérodoxie.",
+        "example": "Quand un champ utilise le vocabulaire religieux pour qualifier un désaccord, le glissement vers la doctrine est en cours."
+      }
+    ],
+    "exercises": [
+      {
+        "type": "fill-blank",
+        "question": "Bien que je ___ que cette position me coûtera professionnellement, je tiens à dire avec netteté que ce coût ne doit pas se confondre avec une invalidité scientifique.",
+        "answer": "sache"
+      },
+      {
+        "type": "matching",
+        "pairs": [
+          ["l'hétérodoxie", "sự không chính thống"],
+          ["s'inscrire dans une tradition", "đăng ký vào một truyền thống"],
+          ["le droit à l'hétérodoxie", "quyền hétérodoxie"],
+          ["le mépris symétrique", "sự khinh thị đối xứng"]
+        ],
+        "instruction": "Nối thuật ngữ position controversée với nghĩa Việt"
+      },
+      {
+        "type": "translation",
+        "vietnamese": "Tôi đòi quyền hétérodoxie như điều kiện cho sức sống khoa học, nếu không một lĩnh vực biến thành giáo điều.",
+        "french": "Je revendique le droit à l'hétérodoxie comme condition de la vitalité scientifique, sans quoi un champ se transforme en doctrine."
+      }
+    ]
   }
 ];
 
