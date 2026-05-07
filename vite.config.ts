@@ -122,6 +122,15 @@ export default defineConfig({
       // full reload. This is the "no aggressive auto-refresh, no
       // breaking current users mid-session" rule from the v2 brief.
       registerType: 'prompt',
+      // Disable the plugin's auto-injected registerSW.js. The default
+      // ('auto') ships a tiny script that calls navigator.serviceWorker
+      // .register('/sw.js') with NO `.catch`, so any rejection (private
+      // mode, security/policy block, file:// origin, transient network
+      // failure, etc.) surfaces in Sentry as an unhandled "Error: Rejected"
+      // pointing at registerSW.js. main.tsx already does the registration
+      // manually with a `.catch(devLog)` swallow, so this duplicate auto-
+      // registration is both redundant and the source of the noise.
+      injectRegister: false,
       includeAssets: [
         'icons/icon-192.png',
         'icons/icon-512.png',
