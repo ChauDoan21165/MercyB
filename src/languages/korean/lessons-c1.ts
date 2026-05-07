@@ -4718,6 +4718,996 @@ export const lessons: KoreanLesson[] = [
       ], "instruction": "Nối kỹ thuật defense với nghĩa Việt" },
       { "type": "translation", "vietnamese": "Để giải tỏa hoàn toàn lo ngại thầy/cô đã nêu, nghiên cứu tiếp theo sẽ cần kiểm chứng lại với mẫu khác.", "hangul": "지적하신 우려를 완전히 해소하기 위해서는 후속 연구에서 다른 표본으로 재검증이 필요할 것입니다." }
     ]
+  },
+  {
+    "id": 122,
+    "level": "C1",
+    "title_vi": "Mở đầu họp báo chính thức",
+    "title_en": "Opening a press conference",
+    "intro_vi": "Bài này luyện đăng ký 하십시오체 cho họp báo chính thức (기자회견) — hình thức Hàn rất nghiêm. Cấu trúc 4 ô: 인사 → 자기소개 → 회견 목적 → 진행 안내. Mỗi câu kết bằng 〜습니다 / 〜겠습니다. Cụm trục: '안녕하십니까. 〜의 〜입니다', '오늘 이 자리는 〜에 관해 말씀드리고자 마련되었습니다'. Cấm trộn 해요체 dù chỉ một câu — sẽ là tin nóng trong 24h.",
+    "vocabulary": [
+      { "hangul": "기자회견 (記者會見)", "meaning": "họp báo (n.m. — gi-ja-hoe-gyeon)" },
+      { "hangul": "회견장 (會見場)", "meaning": "phòng họp báo (n.m. — hoe-gyeon-jang)" },
+      { "hangul": "사전 안내 (事前 案內)", "meaning": "thông báo trước (n.m. — sa-jeon an-nae)" },
+      { "hangul": "진행 순서", "meaning": "thứ tự tiến hành (n.m. — jin-haeng sun-seo)" },
+      { "hangul": "마련되다", "meaning": "được sắp xếp / chuẩn bị (v. passive — ma-ryeon-doe-da)" },
+      { "hangul": "발표 후 질의응답", "meaning": "hỏi đáp sau công bố (n.m. — bal-pyo hu jil-ui-eung-dap)" },
+      { "hangul": "공식 입장 (公式 立場)", "meaning": "lập trường chính thức (n.m. — gong-sik ip-jang)" },
+      { "hangul": "사전 공지 (事前 公知)", "meaning": "thông báo công khai trước (n.m. — sa-jeon gong-ji)" },
+      { "hangul": "협조 부탁드립니다", "meaning": "kính mong hợp tác (formal request — hyeop-jo bu-tak-deu-rim-ni-da)" },
+      { "hangul": "이상으로", "meaning": "đến đây / với điều này (transitional — i-sang-eu-ro)" }
+    ],
+    "sentences": [
+      {
+        "korean": "안녕하십니까. 한국교육개발원 대외협력실장 김민지입니다.",
+        "romanized": "Annyeonghasimnikka. Hangukgyoyukgaebalwon daeoehyeoblyeoksiljang Kim Minji imnida.",
+        "en": "Good day. I am Kim Minji, Director of External Affairs at the Korea Educational Development Institute.",
+        "vi": "Kính chào quý vị. Tôi là Kim Minji, Trưởng phòng Quan hệ đối ngoại của Viện Phát triển Giáo dục Hàn Quốc.",
+        "pronunciation_focus": ["안녕하십니까 → /안녕하심니까/", "대외협력실장 → /대외혐녁실장/", "입니다 → /임니다/"]
+      },
+      {
+        "korean": "오늘 이 자리는 최근 보도된 학습 격차 보고서에 관해 본원의 공식 입장을 말씀드리고자 마련되었습니다.",
+        "romanized": "Oneul i jarineun choegeun bodo-doen hakseup gyeokcha bogoseoe gwanhae bonwonui gongsik ipjangeul malsseumdeurigoja maryeondoeotseumnida.",
+        "en": "This briefing has been arranged to convey the Institute's official position on the recently reported learning-gap study.",
+        "vi": "Buổi này được sắp xếp để chúng tôi trình bày lập trường chính thức của Viện về báo cáo khoảng cách học tập vừa được đưa tin.",
+        "pronunciation_focus": ["오늘 이 자리는 → /오느리자리는/", "보도된 → /보도된/", "마련되었습니다 → /마련되어씀니다/"]
+      },
+      {
+        "korean": "회견은 약 30분간 진행되며, 발표 후 약 20분간 질의응답 시간을 가지겠습니다.",
+        "romanized": "Hoegyeoneun yak 30-bun-gan jinhaengdoe-myeo, balpyo hu yak 20-bun-gan jirui-eungdap siganeul gajigessseumnida.",
+        "en": "The briefing will run for approximately 30 minutes, followed by a 20-minute Q&A.",
+        "vi": "Buổi họp báo sẽ diễn ra khoảng 30 phút, sau đó là 20 phút hỏi đáp.",
+        "pronunciation_focus": ["진행되며 → /진행되며/", "질의응답 → /지리응답/", "가지겠습니다 → /가지겐씀니다/"]
+      },
+      {
+        "korean": "질문은 회견 종료 후 한 분당 한 가지로 부탁드립니다.",
+        "romanized": "Jilmuneun hoegyeon jongryo hu han bundang han gajiro butakdeurimnida.",
+        "en": "We ask one question per person at the end of the briefing.",
+        "vi": "Sau khi kết thúc, xin mỗi quý vị đặt một câu hỏi.",
+        "pronunciation_focus": ["종료 후 → /종뇨후/", "한 분당 → /한분당/", "부탁드립니다 → /부탁뜨림니다/"]
+      },
+      {
+        "korean": "본격적인 발표에 앞서, 진행 순서를 사전에 안내해 드리겠습니다.",
+        "romanized": "Bongyeokjeokin balpyoe apseo, jinhaeng sunseoreul sajeone annaehae deurigessseumnida.",
+        "en": "Before the main briefing, I will outline the order of proceedings.",
+        "vi": "Trước khi vào nội dung chính, tôi xin được thông báo trước thứ tự tiến hành.",
+        "pronunciation_focus": ["본격적인 → /본격쩌긴/", "앞서 → /압써/", "안내해 드리겠습니다 → /안내해드리겐씀니다/"]
+      }
+    ],
+    "dialogue": [
+      { "speaker": "사회자", "hangul": "지금부터 한국교육개발원 기자회견을 시작하겠습니다.", "meaning": "We shall now begin the press briefing of the Korea Educational Development Institute." },
+      { "speaker": "사회자", "hangul": "먼저 본원 대외협력실장께서 회견 목적과 진행 순서를 안내해 드리겠습니다.", "meaning": "First, the Director of External Affairs will outline the purpose and order of proceedings." },
+      { "speaker": "발표자", "hangul": "안녕하십니까. 본원 대외협력실장 김민지입니다.", "meaning": "Good day. I am Kim Minji, Director of External Affairs." },
+      { "speaker": "발표자", "hangul": "협조 부탁드리며, 본격적인 발표를 시작하겠습니다.", "meaning": "Thank you for your cooperation. Let me now begin the main briefing." }
+    ],
+    "dialogue_long": [
+      { "speaker": "사회자 (KEDI 대변인실 직원)", "hangul": "지금부터 한국교육개발원 기자회견을 시작하겠습니다. 회견은 두 부분으로 진행되며, 본원 대외협력실장의 발표 후 약 20분간 질의응답 시간을 가지겠습니다.", "meaning": "We shall now begin the press briefing of KEDI. The briefing has two parts, with a 20-minute Q&A after the main statement.", "vi": "Bây giờ chúng tôi xin bắt đầu họp báo của Viện Phát triển Giáo dục Hàn Quốc. Buổi gồm hai phần — sau phần phát biểu của Trưởng phòng Quan hệ đối ngoại sẽ có 20 phút hỏi đáp." },
+      { "speaker": "사회자", "hangul": "회견 중 사진 촬영은 자유로우시나, 영상 송출은 발표 후 질의응답 부분만 가능함을 사전에 안내해 드립니다.", "meaning": "Still photos may be taken throughout, but video broadcast is permitted only during the Q&A — please note this in advance.", "vi": "Trong suốt buổi, chụp ảnh tĩnh được tự do, nhưng phát hình truyền trực tiếp chỉ cho phép ở phần hỏi đáp — xin thông báo trước." },
+      { "speaker": "사회자", "hangul": "그러면 김민지 실장님, 자리 부탁드리겠습니다.", "meaning": "Then, Director Kim Minji, please take the floor.", "vi": "Vậy xin mời bà Kim Minji lên phát biểu." },
+      { "speaker": "발표자 (단상에 올라 가벼운 인사)", "hangul": "안녕하십니까. 한국교육개발원 대외협력실장 김민지입니다. 바쁘신 가운데 시간 내 주신 기자 여러분께 깊은 감사를 드립니다.", "meaning": "Good day. I am Kim Minji, Director of External Affairs at KEDI. I thank the journalists for taking time amid busy schedules.", "vi": "Kính chào quý vị. Tôi là Kim Minji, Trưởng phòng Quan hệ đối ngoại KEDI. Xin chân thành cảm ơn các phóng viên đã dành thời gian dù lịch bận." },
+      { "speaker": "발표자", "hangul": "오늘 이 자리는 지난 11월 한겨레와 KBS가 공동 보도한 학습 격차 자료에 관해 본원의 공식 입장을 말씀드리고자 마련되었습니다. 보도 이후 사회 각계에서 다양한 우려와 문의가 있었기에, 사실관계와 본원의 추후 계획을 함께 정리해 드리려고 합니다.", "meaning": "This briefing has been arranged to set out the Institute's official position on the learning-gap data jointly reported by Hankyoreh and KBS in November. Given the broad concern and inquiries since then, we shall lay out the facts together with our follow-up plan.", "vi": "Buổi này được sắp xếp để chúng tôi trình bày lập trường chính thức của Viện về dữ liệu khoảng cách học tập do Hankyoreh và KBS đồng đưa tin tháng 11. Vì sau bài báo có nhiều lo ngại và câu hỏi từ các giới, chúng tôi xin tổng hợp sự thật và kế hoạch tiếp theo." },
+      { "speaker": "발표자", "hangul": "회견은 약 30분간 진행될 예정이며, 다음 네 가지 순서를 따르겠습니다. 첫째, 보도된 자료의 출처와 분석 방법론. 둘째, 본원이 확인한 사실관계. 셋째, 본원이 인정하는 한계와 향후 보완 계획. 넷째, 정책 협력 부처와의 후속 조치 방향.", "meaning": "The briefing will run about 30 minutes in four parts: data source and methodology; established facts as we have verified them; limitations we acknowledge and our remediation plan; and the direction of follow-up actions with our policy partners.", "vi": "Buổi sẽ kéo dài khoảng 30 phút và đi theo bốn phần: nguồn dữ liệu và phương pháp; các sự thật đã xác minh; những giới hạn Viện thừa nhận và kế hoạch khắc phục; và hướng phối hợp tiếp theo với các cơ quan đối tác." },
+      { "speaker": "발표자", "hangul": "발표 종료 후 질의응답 시간에는 한 분당 한 가지 질문을 부탁드리며, 시간 관계상 추가 질문은 회견 종료 후 본원 대변인실로 별도 문의해 주시기 바랍니다.", "meaning": "During the Q&A please limit yourselves to one question each; for time reasons, additional questions can be directed to our spokesperson's office afterwards.", "vi": "Trong phần hỏi đáp, xin mỗi quý vị một câu hỏi; do giới hạn thời gian, các câu hỏi thêm có thể chuyển đến văn phòng phát ngôn của Viện sau buổi." },
+      { "speaker": "발표자", "hangul": "본격적인 발표에 앞서 사전에 한 가지 더 안내해 드립니다. 본 회견의 모든 발언은 원장의 위임을 받아 본원의 공식 입장으로 말씀드리는 것입니다.", "meaning": "One additional preliminary note: every statement today is delivered as the Institute's official position, under delegation from the President.", "vi": "Trước khi vào nội dung, một thông tin thêm: mọi phát biểu hôm nay được trình bày như lập trường chính thức của Viện, theo ủy quyền của Viện trưởng." },
+      { "speaker": "발표자", "hangul": "협조 부탁드리며, 그러면 본격적인 발표를 시작하겠습니다.", "meaning": "Thank you for your cooperation. I shall now begin the main briefing.", "vi": "Xin cảm ơn sự hợp tác của quý vị. Bây giờ tôi xin vào phần phát biểu chính." },
+      { "speaker": "기자 (회견 후 질의응답 시작 시점)", "hangul": "한겨레 박지훈 기자입니다. 첫 번째 질문 드리겠습니다.", "meaning": "Park Jihoon, Hankyoreh. I'd like to ask the first question.", "vi": "Tôi là phóng viên Park Jihoon, báo Hankyoreh. Xin được hỏi câu đầu tiên." },
+      { "speaker": "발표자", "hangul": "예, 박 기자님 말씀해 주시기 바랍니다.", "meaning": "Yes, Mr. Park, please proceed.", "vi": "Vâng, mời ông Park đặt câu hỏi." }
+    ],
+    "roleplay_prompts": [
+      "Bạn là 대변인 mở họp báo về vụ rò rỉ dữ liệu của một viện nghiên cứu. Soạn 5 câu mở đầu — chào + tự giới thiệu + lý do triệu tập họp báo + cấu trúc 4 phần + lời cảm ơn báo chí. KHÔNG trộn 해요체.",
+      "Trong họp báo, có nhà báo bật micro hỏi trước khi 사회자 mời. Soạn 1 câu của 사회자 ngắt nhẹ + 1 câu mời họ lùi tới phần Q&A. Cụm vàng: '죄송합니다만 발표가 끝난 뒤 질의응답 시간에 받겠습니다.'",
+      "Soạn email gửi cho phóng viên trước họp báo (24h trước) — kèm thời gian, địa điểm, agenda, thông tin liên hệ 대변인실, ghi chú '동영상 송출은 질의응답 부분만 가능'."
+    ],
+    "register_notes": "기자회견 đăng ký bắt buộc 하십시오체: (1) Câu kết 〜습니다 / 〜겠습니다 / 〜십시오 — KHÔNG có ngoại lệ trong toàn buổi. (2) Mở đầu cố định: '안녕하십니까. (소속) (직책) (성명)입니다.' Theo đúng thứ tự — đảo thứ tự = đọc là không chuẩn. (3) Khi giới thiệu chủ đề: '오늘 이 자리는 〜에 관해 〜을/를 말씀드리고자 마련되었습니다' — câu cố định, học thuộc. (4) Khi anuncio agenda: '첫째 / 둘째 / 셋째 / 넷째' với '입니다' kết. KHÔNG '1번 / 2번' kiểu khoa học. (5) Khi mời nhà báo lên đặt câu hỏi: '〜기자님 말씀해 주시기 바랍니다' — chuẩn. KHÔNG '〜기자님, 말씀하세요' (cứng quá). (6) Khi cảm ơn cuối: '협조 부탁드립니다' — chuẩn closing. KHÔNG '감사합니다' đơn lẻ (yếu). (7) Cụm 'cá nhân hóa' bị cấm: '제가 생각하기에는' / '저 개인적으로는' — vì 대변인 nói nhân danh tổ chức, không cá nhân. Thay '본원의 입장에서는' / '본원이 확인한 바로는'. (8) Tránh: 'OK', 'right', tiếng Anh chêm — toàn bộ 한자어 chuẩn (사실관계, 진행 순서, 질의응답).",
+    "idiom_glosses": [
+      { "idiom": "오늘 이 자리는 〜을/를 위하여 마련되었습니다", "literal": "buổi này hôm nay được sắp xếp vì ~", "meaning": "(매우 격식, 기자회견 도입부) cụm cố định để định mục đích — học thuộc làm chuẩn", "example": "오늘 이 자리는 본원의 공식 입장을 말씀드리고자 마련되었습니다." },
+      { "idiom": "사전에 안내해 드리다", "literal": "thông báo trước (kính ngữ)", "meaning": "(격식) cụm chuẩn cho thông tin meta — agenda, time limit, broadcast rules", "example": "영상 송출은 질의응답 부분만 가능함을 사전에 안내해 드립니다." },
+      { "idiom": "협조 부탁드립니다", "literal": "kính mong hợp tác", "meaning": "(매우 격식) closing chuẩn của 대변인 — 〜드립니다 khiêm cung max", "example": "협조 부탁드리며, 그러면 본격적인 발표를 시작하겠습니다." },
+      { "idiom": "본원의 공식 입장으로 말씀드리다", "literal": "trình bày như lập trường chính thức của Viện", "meaning": "(격식, 대변인 전용) chuyển trách nhiệm phát ngôn lên tổ chức, không cá nhân", "example": "본 회견의 모든 발언은 본원의 공식 입장으로 말씀드리는 것입니다." }
+    ],
+    "cultural_notes_vi": "기자회견 ở Hàn là một thể loại nghi lễ chặt chẽ — khác xa Việt Nam và cũng khác Mỹ. Hiểu sai vài điểm là tin sốc trong vòng 24 giờ.\n\n(1) THỜI GIAN: 기자회견 cấp Viện (or hơn) thường diễn ra ở 정부세종청사, 한국프레스센터 (서울 광화문), hoặc trụ sở tổ chức. Bắt đầu chính xác đến phút — 14:00 nghĩa là phát biểu mở đầu lúc 14:00:00, không 14:00:30. Trễ 1 phút = tin với headline 'X 분 지각'.\n\n(2) TRANG PHỤC: 정장 (suit) tối, cà-vạt cho nam, áo blazer cho nữ. Một 대변인 đến mặc áo polo = vô lý nghiêm trọng. KBS, MBC, JTBC, YTN sẽ chụp toàn cảnh và toàn diện trang phục — bất kỳ lệch chuẩn đều thành câu chuyện riêng.\n\n(3) CẤU TRÚC HỌP BÁO chuẩn ở Hàn có 4 ô: 사회자 mở phiên → 발표자 phát biểu → 질의응답 → 사회자 đóng phiên. Bỏ một ô = không chuyên nghiệp. Trong họp báo nhỏ, 사회자 và 발표자 có thể là một người, nhưng phải nói rõ chuyển vai.\n\n(4) 눈치 TRAP cho người Việt: trong họp báo Việt thường có khoảnh khắc 'cả buổi cùng cười nhẹ' để giải tỏa căng thẳng. Ở Hàn KHÔNG — họp báo là nghi thức, cười tự nhiên hoặc nói chuyện riêng = bị đọc là không nghiêm trọng. Tỉnh táo, gravitas duy trì cả buổi. Một 발표자 cười nhẹ trên TV trong họp báo về crisis = tựa đề báo 'X 웃으며 답변, 시민들 분노'. Đây là 눈치 đặc biệt cấp Hàn.\n\n(5) PHƯƠNG TIỆN MEDIA: trong họp báo, các tay máy KBS, MBC, SBS, YTN, JTBC, 채널A, MBN ngồi ở hàng đầu; 한겨레, 조선, 중앙, 동아, 경향 ở hàng giữa; báo điện tử (오마이뉴스, 뉴스1, 뉴시스) ở phía sau. Khi 사회자 mời câu hỏi, quy ước là cho các báo đài lớn trước. Đảo thứ tự = vô lý chính trị (tỏ ra ưu ái).\n\n(6) DANH XƯNG: 'OOO 기자님' khi mời lên hỏi; 'OOO 기자' khi nhắc đến trong cuộc nói chuyện sau. Không bao giờ chỉ 'OOO 씨' với phóng viên trong 기자회견 — họ là chuyên môn, dùng 'OOO 기자님' là chuẩn nhất.\n\n(7) Sau buổi: 대변인실 sẽ gửi 보도자료 chính thức (text + media kit) trong 30 phút — đó là hợp đồng ngầm. Không gửi = báo chí tự diễn giải, có thể sai. Lưu ý: tên các nhà báo, đài cụ thể trong bài này (한겨레 박지훈) là illustrative — sự nghiệp của các phóng viên thay đổi nhanh, học viên nên xác nhận hiện tại trước khi trích trong tác phẩm riêng.",
+    "tip_advice_vi": "5 bước chuẩn bị 1 buổi 기자회견 trong 1 tuần: (1) NGÀY 1-2 — soạn 발표문 (script) đầy đủ — KHÔNG ad-lib trong 기자회견 chính thức ở Hàn. Mỗi câu được kiểm tra trước. (2) NGÀY 3 — soạn 예상 질문 (anticipated questions) — 30 câu khả thi, mỗi câu 30s + 90s + 3-phút response (tùy độ nghiêm trọng). (3) NGÀY 4 — luyện trên video; check nhịp 90 글자/phút; check pause; check khuôn mặt (NEUTRALITY là yếu tố rất quan trọng — Hàn TV phóng đại biểu cảm). (4) NGÀY 5 — họp với 대변인실 + 법무팀 + 홍보실 — review 발표문 cuối cùng; mỗi từ phải qua duyệt pháp lý. (5) NGÀY 6 — gửi 보도 안내 (press advisory) đến 출입처 (registered press pool) 24h trước; chuẩn bị media kit. (6) NGÀY 7 — đến 30 phút trước; check micro, ánh sáng, lưng phông; KHÔNG ăn no; uống ấm để giọng tốt. MẸO PHÁT ÂM dưới ánh đèn studio: '안녕하십니까' /안녕하심니까/ — kéo nhẹ 'ㅁ'; '실장' /실짱/ — 받침 ㄹ + 된소리화 ㅈ→ㅉ; '입장' /입짱/ tương tự. ĐỪNG: (a) đến với điện thoại trong tay — bị tay máy chụp; (b) gọi tên phóng viên không đầy đủ chức danh; (c) cười khi nói về vấn đề nghiêm trọng — 24h crisis; (d) trả lời câu hỏi không liên quan agenda — chuyển '그 부분은 본 회견 의제가 아니므로 별도로 답변드리겠습니다'.",
+    "exercises": [
+      { "type": "fill-blank", "question": "오늘 이 자리는 본원의 공식 입장을 말씀드리고자 ___되었습니다.", "answer": "마련" },
+      { "type": "matching", "pairs": [
+        { "hangul": "기자회견", "meaning": "họp báo" },
+        { "hangul": "공식 입장", "meaning": "lập trường chính thức" },
+        { "hangul": "협조 부탁드립니다", "meaning": "kính mong hợp tác" }
+      ], "instruction": "Nối thuật ngữ 기자회견 với nghĩa Việt" },
+      { "type": "translation", "vietnamese": "Trước khi vào nội dung chính, tôi xin được thông báo trước thứ tự tiến hành.", "hangul": "본격적인 발표에 앞서, 진행 순서를 사전에 안내해 드리겠습니다." }
+    ]
+  },
+  {
+    "id": 123,
+    "level": "C1",
+    "title_vi": "Viết thông cáo báo chí (보도자료)",
+    "title_en": "Writing a press release",
+    "intro_vi": "Bài này luyện 보도자료 — văn bản tổ chức gửi báo chí. Đăng ký: 〜다체 nghiêm ngặt (〜한다 / 〜이다 / 〜되었다). Cấu trúc 5 ô: 헤드라인 (lead) → 부제목 → 본문 lead 단락 → 세부 사항 → 연락처. Trục: '〜에 따르면', '〜은/는 〜이라고 밝혔다'. Yêu cầu cốt: tin tức quan trọng nhất phải ở câu đầu (lead 1 dòng); 5W1H trong đoạn 1; quote chính thức ở đoạn 2.",
+    "vocabulary": [
+      { "hangul": "보도자료 (報道資料)", "meaning": "thông cáo báo chí (n.m. — bo-do-ja-ryo)" },
+      { "hangul": "헤드라인", "meaning": "headline / tiêu đề chính (n.m. — he-deu-ra-in)" },
+      { "hangul": "부제목 (副題目)", "meaning": "tiêu đề phụ (n.m. — bu-je-mok)" },
+      { "hangul": "본문 (本文)", "meaning": "nội dung chính (n.m. — bon-mun)" },
+      { "hangul": "공동 발표 (共同 發表)", "meaning": "công bố chung (n.m. — gong-dong bal-pyo)" },
+      { "hangul": "출입처 (出入處)", "meaning": "press pool / báo đăng ký (n.m. — chul-ip-cheo)" },
+      { "hangul": "엠바고 (embargo)", "meaning": "lệnh cấm đăng trước (loanword — em-ba-go)" },
+      { "hangul": "공보팀", "meaning": "đội PR / báo chí (n.m. — gong-bo-tim)" },
+      { "hangul": "별첨 (別添)", "meaning": "tài liệu kèm theo (n.m. — byeol-cheom)" },
+      { "hangul": "문의 사항", "meaning": "thắc mắc liên hệ (n.m. — mun-ui sa-hang)" }
+    ],
+    "sentences": [
+      {
+        "korean": "한국교육개발원은 학습 격차 보완을 위한 3개년 시범 사업을 4월 1일부터 시작한다고 28일 밝혔다.",
+        "romanized": "Hangukgyoyukgaebalwoneun hakseup gyeokcha bowaneul wihan 3-gaenyeon sibeom sa-eobeul 4-wol 1-il buteo sijakhandago 28-il balhyeotda.",
+        "en": "KEDI announced on the 28th that it will begin a three-year pilot programme to address learning gaps from 1 April.",
+        "vi": "Viện Phát triển Giáo dục Hàn Quốc thông báo ngày 28 rằng sẽ khởi động dự án thí điểm 3 năm nhằm thu hẹp khoảng cách học tập từ 1 tháng 4.",
+        "pronunciation_focus": ["보완을 위한 → /보와늘위한/", "3개년 → /삼개년/", "밝혔다 → /발켣따/"]
+      },
+      {
+        "korean": "본 사업은 농어촌 및 저소득 가정 학습자 약 5,000명을 대상으로 추진된다.",
+        "romanized": "Bon sa-eobeun nong-eochon mit jeosodeuk gajeong hakseupja yak 5,000-myeongeul daesangeuro chujindoenda.",
+        "en": "The programme targets approximately 5,000 learners in rural and low-income households.",
+        "vi": "Dự án nhắm đến khoảng 5.000 học viên thuộc nông thôn và gia đình thu nhập thấp.",
+        "pronunciation_focus": ["농어촌 → /농어촌/", "저소득 → /저소득/", "추진된다 → /추진된다/"]
+      },
+      {
+        "korean": "김민지 대외협력실장은 \"본 사업은 단순 지원이 아닌 학습자 중심의 동기 강화 모델\"이라고 밝혔다.",
+        "romanized": "Kim Minji daeoehyeobnyeoksiljangeun \"bon sa-eobeun dansun jiwoni anin hakseupja jungsim-ui dongi ganghwa modelirago\" balhyeotda.",
+        "en": "Director Kim Minji stated, \"This is not simple aid but a learner-centred motivation-strengthening model.\"",
+        "vi": "Bà Kim Minji, Trưởng phòng Quan hệ đối ngoại, phát biểu: \"Đây không phải là hỗ trợ đơn thuần mà là mô hình tăng cường động cơ lấy người học làm trung tâm.\"",
+        "pronunciation_focus": ["대외협력실장은 → /대외혐녁실장은/", "지원이 아닌 → /지워니아닌/", "밝혔다 → /발켣따/"]
+      },
+      {
+        "korean": "본 자료에 대한 문의는 한국교육개발원 공보팀 (02-1234-5678)으로 부탁드린다.",
+        "romanized": "Bon jaryoe daehan munuineun Hangukgyoyukgaebalwon gongbotim (02-1234-5678) eu-ro butakdrindeunda.",
+        "en": "For inquiries on this release, please contact KEDI Public Relations (02-1234-5678).",
+        "vi": "Mọi thắc mắc về tài liệu này xin liên hệ Đội PR KEDI (02-1234-5678).",
+        "pronunciation_focus": ["공보팀 → /공보팀/", "부탁드린다 → /부탁뜨린다/"]
+      },
+      {
+        "korean": "본 보도자료는 4월 1일 오전 10시까지 엠바고 처리한다.",
+        "romanized": "Bon bodojaryoneun 4-wol 1-il ojeon 10-si kkaji embago cheorihanda.",
+        "en": "This release is under embargo until 10:00 AM on 1 April.",
+        "vi": "Thông cáo này được áp dụng lệnh cấm đăng đến 10 giờ sáng ngày 1 tháng 4.",
+        "pronunciation_focus": ["보도자료는 → /보도자료는/", "엠바고 처리한다 → /엠바고처리한다/"]
+      }
+    ],
+    "dialogue": [
+      { "speaker": "공보팀장", "hangul": "헤드라인이 길어요. 한 줄로 줄이고 부제목에 세부 정보 넣읍시다.", "meaning": "The headline is too long. Cut to one line and put details in the subhead." },
+      { "speaker": "주무관", "hangul": "예. '학습 격차 보완 3개년 시범 사업, 5,000명 대상으로 추진'으로 해 보겠습니다.", "meaning": "Yes — let me try 'Three-year Pilot Programme for Learning-Gap Remediation, Targeting 5,000 Learners'." },
+      { "speaker": "공보팀장", "hangul": "좋습니다. 그리고 엠바고 시간 — 4월 1일 오전 10시 — 헤더에 명시하세요.", "meaning": "Good. And the embargo — 10 AM on 1 April — note it explicitly in the header." },
+      { "speaker": "주무관", "hangul": "알겠습니다. 보도자료 상단에 '4월 1일 오전 10시 엠바고'로 표기하겠습니다.", "meaning": "Understood. I will mark '10 AM on 1 April Embargo' at the top of the release." }
+    ],
+    "dialogue_long": [
+      { "speaker": "공보팀장 (편집 회의)", "hangul": "초안 검토합시다. 첫 문장이 가장 중요해요. 다시 읽어볼래요?", "meaning": "Let's review the draft. The first sentence is most important. Read it again, please.", "vi": "Mình rà bản nháp. Câu đầu quan trọng nhất. Em đọc lại được không?" },
+      { "speaker": "주무관", "hangul": "예. '한국교육개발원은 학습 격차 보완을 위한 3개년 시범 사업을 4월 1일부터 시작한다고 28일 밝혔다.'", "meaning": "Yes. 'KEDI announced on the 28th that it will begin a three-year pilot programme to address learning gaps from 1 April.'", "vi": "Vâng. 'Viện Phát triển Giáo dục Hàn Quốc thông báo ngày 28 rằng sẽ khởi động dự án thí điểm 3 năm nhằm thu hẹp khoảng cách học tập từ 1 tháng 4.'" },
+      { "speaker": "공보팀장", "hangul": "5W1H가 다 들어갔어요. 누가 — KEDI; 무엇 — 시범 사업; 언제 — 4월 1일; 어디 — 전국; 왜 — 학습 격차 보완; 어떻게 — 3년간. 좋아요.", "meaning": "5W1H is all in. Who — KEDI; what — pilot programme; when — 1 April; where — nationwide; why — gap remediation; how — over three years. Good.", "vi": "5W1H đầy đủ. Ai — KEDI; cái gì — dự án thí điểm; khi nào — 1/4; ở đâu — toàn quốc; vì sao — thu hẹp khoảng cách; như thế nào — trong 3 năm. Tốt." },
+      { "speaker": "공보팀장", "hangul": "그런데 두 번째 단락에 인용이 너무 길어요. 한 문장으로 압축합시다.", "meaning": "But the quote in the second paragraph is too long. Compress it to one sentence.", "vi": "Nhưng đoạn 2 trích dẫn dài quá. Em rút thành một câu." },
+      { "speaker": "주무관", "hangul": "현재: '본 사업은 학습 격차의 양적 측면뿐 아니라 학습자가 느끼는 동기 부족도 해결하기 위해 설계된 종합적 모델로서, 단순 재정 지원에 머무르지 않는다.' 이걸 어떻게 줄일까요?", "meaning": "Current: 'This is a comprehensive model designed to address not only quantitative gaps but also the motivation deficit felt by learners, going beyond mere financial aid.' How do I cut this?", "vi": "Hiện tại: 'Dự án này là mô hình tổng hợp thiết kế để giải quyết không chỉ khía cạnh định lượng của khoảng cách học tập mà cả thiếu động cơ học viên cảm nhận, vượt qua hỗ trợ tài chính đơn thuần.' Em rút thế nào?" },
+      { "speaker": "공보팀장", "hangul": "이렇게 줄여 봅시다 — '본 사업은 단순 지원이 아닌 학습자 중심의 동기 강화 모델'. 30자 이내, 헤드라인이 될 만한 문장이에요.", "meaning": "Try this — 'this is not simple aid but a learner-centred motivation-strengthening model.' Under 30 characters, headline-worthy.", "vi": "Em rút thế này — 'không phải hỗ trợ đơn thuần mà là mô hình tăng cường động cơ lấy người học làm trung tâm'. Dưới 30 chữ, đáng làm headline." },
+      { "speaker": "주무관", "hangul": "확실히 더 인용하기 좋겠습니다. 한겨레, 조선일보 모두 그 문장을 그대로 받아 쓰기 쉬운 길이네요.", "meaning": "Definitely more quotable. Both Hankyoreh and Chosun Ilbo could lift it as-is.", "vi": "Đúng là dễ trích dẫn hơn. Cả Hankyoreh lẫn Chosun Ilbo đều có thể lấy nguyên." },
+      { "speaker": "공보팀장", "hangul": "그게 보도자료 작성의 핵심이에요. 기자가 그대로 인용할 수 있는 문장 한두 개를 의도적으로 만드는 것. 본문 끝에 별첨 자료 목록 넣었어요?", "meaning": "That is the core craft. Deliberately produce one or two sentences journalists can lift verbatim. Did you list the appendix materials at the end of the body?", "vi": "Đó là cốt lõi của 보도자료. Cố ý tạo 1-2 câu nhà báo trích nguyên. Em có liệt kê tài liệu phụ đính ở cuối thân bài chưa?" },
+      { "speaker": "주무관", "hangul": "예. 별첨 1: 사업 개요 PDF; 별첨 2: 통계 표 5개; 별첨 3: 보도용 인포그래픽 PNG 3종; 별첨 4: 김민지 실장 프로필.", "meaning": "Yes. App. 1: project overview PDF; App. 2: five statistical tables; App. 3: three press infographics; App. 4: Director Kim's bio.", "vi": "Vâng. PL1: tổng quan dự án PDF; PL2: 5 bảng thống kê; PL3: 3 infographic dành cho báo; PL4: hồ sơ TS. Kim." },
+      { "speaker": "공보팀장", "hangul": "엠바고 시간이 정확하죠? 4월 1일 오전 10시 KST. 시간대 표기 잊지 마세요. 외신도 받으니까.", "meaning": "Embargo time exact? 10 AM KST, 1 April. Don't forget the timezone — foreign press receive this too.", "vi": "Giờ embargo chính xác chứ? 10h sáng giờ Hàn ngày 1/4. Đừng quên ghi múi giờ — báo nước ngoài cũng nhận." },
+      { "speaker": "주무관", "hangul": "확인했습니다. 'EMBARGO: 1 APR, 10:00 KST'로 영문 병기까지 했습니다.", "meaning": "Confirmed. I added the English notation 'EMBARGO: 1 APR, 10:00 KST' as well.", "vi": "Đã xác nhận. Em ghi luôn cả tiếng Anh 'EMBARGO: 1 APR, 10:00 KST'." },
+      { "speaker": "공보팀장", "hangul": "좋습니다. 출입처 명단으로 31일 오후 5시에 일괄 발송하세요. 발송 후 텔레그램 출입처 단톡에 안내 메시지 한 번 더 보내고요.", "meaning": "Good. Send to the press pool at 5 PM on the 31st. After dispatch, post a follow-up note in the press-pool Telegram channel.", "vi": "Tốt. Em gửi list 출입처 lúc 17h ngày 31. Sau đó nhắn thêm một note trong nhóm Telegram của 출입처." }
+    ],
+    "roleplay_prompts": [
+      "Bạn viết 보도자료 cho công bố quỹ học bổng mới của tổ chức bạn. Soạn câu lead 1 dòng (5W1H) + 1 câu trích dẫn 30자 từ giám đốc — phải đáng để Hankyoreh, Chosun trích nguyên.",
+      "Bạn cần báo embargo 48h trước. Soạn header gồm: 'EMBARGO: (날짜 시간 KST)' + 'NOT FOR RELEASE BEFORE'. Soạn email gửi 출입처 đính kèm 보도자료 — kính chào + giới thiệu + nhấn mạnh embargo + danh sách 별첨 + liên hệ.",
+      "Soạn email follow-up cho phóng viên Hankyoreh đã trích sai trong bài về tổ chức bạn. KHÔNG dùng từ 'wrong' / 'incorrect'; thay '본문 〜 부분에 사실관계 차이가 있어 정정 요청드립니다'."
+    ],
+    "register_notes": "보도자료 đăng ký 〜다체 nghiêm: (1) Câu kết 〜한다 / 〜되었다 / 〜이다. KHÔNG '〜합니다' (oral); KHÔNG '〜할 것입니다' (rườm). Một bộ phận 보도자료 quasi 'đối thoại' (thông báo từ một quan chức) có thể ghi '〜이라고 밝혔다' / '〜이라고 강조했다'. (2) HEADLINE: ngắn, định danh chủ thể đầu tiên. Quy ước: '〜은/는 〜한다고 〜일 밝혔다' — chuẩn nhất. (3) Phần lead 단락 (đoạn đầu) phải có 5W1H. Đọc 1 lần là biết hết. (4) Trích dẫn (인용): luôn '〜은 \"〜\"이라고 밝혔다' — KHÔNG '〜이 말하기를 〜이라고 했다' (cứng); KHÔNG '〜의 발언에 따르면' (rườm cho lead). Quote cần ngắn, đáng trích — 보도자료 chuyên nghiệp Hàn cố ý tạo soundbite 30자 cho mỗi quote. (5) DATE: '〜일 밝혔다' chuẩn — KHÔNG '오늘 발표했다' (sai vì không rõ ngày khi báo đến tay người đọc). Format: '28일' / '4월 1일'. (6) NUMBER: dùng số Ả Rập + đơn vị '5,000명', '3개년', '약 8억 원'. KHÔNG '오천 명' (mất chuẩn báo). Số tiền '억 원' chuẩn; '백만 원' OK. (7) FOOTER bắt buộc: '본 자료에 대한 문의는 〜팀 (전화)으로 부탁드린다' + 별첨 list + (nếu có) embargo. Thiếu = không chuyên. (8) Avoid: 'Issued by KEDI' kiểu Anh — chuẩn ở Hàn là tên tổ chức ở đầu line + ngày phát ở footer.",
+    "idiom_glosses": [
+      { "idiom": "〜이라고 밝혔다", "literal": "đã làm rõ rằng ~", "meaning": "(보도자료 전용) cụm chuẩn để dẫn quote — KHÔNG '말했다' (sai register)", "example": "김 실장은 \"본 사업은 단순 지원이 아니다\"라고 밝혔다." },
+      { "idiom": "엠바고 처리하다", "literal": "xử lý theo embargo", "meaning": "(보도자료) áp lệnh cấm đăng trước thời điểm — chuẩn quốc tế nhập vào Hàn", "example": "본 보도자료는 4월 1일 오전 10시까지 엠바고 처리한다." },
+      { "idiom": "별첨", "literal": "đính kèm riêng", "meaning": "(공식 문서) phụ lục đính kèm — phải đánh số (별첨 1, 2, 3)", "example": "별첨 1: 사업 개요 / 별첨 2: 통계 표 5종" },
+      { "idiom": "5W1H를 챙기다", "literal": "trông coi 5W1H", "meaning": "(언론 작성) đảm bảo lead có ai-cái gì-khi nào-ở đâu-tại sao-thế nào", "example": "lead 단락에서 5W1H를 챙기는 것이 보도자료 작성의 기본이다." }
+    ],
+    "cultural_notes_vi": "보도자료 ở Hàn là một thể loại nghi thức nghiêm ngặt và là cầu nối giữa tổ chức và báo chí.\n\n(1) HỆ THỐNG 출입처: ở Hàn, các 청사 (cơ quan chính phủ) và tổ chức lớn có 'press pool' đăng ký — chỉ phóng viên đã đăng ký mới được vào. 보도자료 đầu tiên gửi đến danh sách này, sau đó công khai. Người Việt mới làm PR ở Hàn dễ bỏ qua hệ thống và gửi rộng — bị phóng viên 출입처 phản ứng vì 'mất ưu tiên'.\n\n(2) THỜI ĐIỂM PHÁT: quy ước phát 보도자료 vào buổi chiều (15:00–17:00) một ngày trước ngày bài lên báo — để báo có thời gian biên tập. Phát buổi sáng = báo phải tin ngay, gây áp lực; phát buổi tối = báo bỏ. Crisis communication có thể phát ngay nhưng phải kèm 'EMBARGO: NONE' (KHÔNG embargo).\n\n(3) 눈치 TRAP cho người Việt: khi tổ chức bạn có tin xấu, đừng cố che giấu trong 보도자료 dài — báo Hàn rất giỏi trích lọc. Quy ước: nêu tin xấu trong câu đầu (lead) đầy đủ + ngay sau đó là biện pháp khắc phục. Cố giấu sẽ bị 한겨레, 시사IN khui vào tuần sau với headline 'KEDI 숨겼다'. Quote nổi tiếng từ 김어준 podcast: '나쁜 뉴스는 첫 줄에 박아야 한다.'\n\n(4) DEFINITION CỦA 'INFORMATION CONTROL' KHÁC VIỆT: ở Hàn, kiểm soát thông tin thông qua TIMING + FRAMING (chọn câu trích, chọn người trích, chọn ngày phát), KHÔNG qua dấu cấm thông tin. 엠바고 là công cụ chuẩn — vi phạm = bị 출입처 cấm trong 1-3 tháng.\n\n(5) QUOTES ĐƯỢC THIẾT KẾ: một 보도자료 có 1-2 quote 'designed for headline' — đó là kỹ năng đặc biệt. Quote không quá 30 글자, gây ấn tượng (paradox, contrast, soundbite). Một 보도자료 không có quote đáng trích = báo đặt headline tự, có thể sai. Một quote tốt: '단순 지원이 아닌 학습자 중심 모델.' Một quote tồi: '우리는 학생들의 미래를 위해 최선을 다하겠습니다.' (rỗng).\n\n(6) DANH XƯNG TỔ CHỨC: 'KEDI' (영문) + '한국교육개발원' (한글) — luôn ghi cả hai trong 보도자료, vì báo nước ngoài cũng nhận. Tên tổ chức trong câu đầu phải đầy đủ; sau đó có thể rút gọn. Tên các đài, báo nhắc trong dialogue (한겨레, 조선일보, 한국일보) là illustrative — học viên nên xác nhận tên đầy đủ và 출입처 hiện tại trước khi dùng trong tác phẩm riêng.",
+    "tip_advice_vi": "5 bước viết 1 보도자료 trong 1 ngày: (1) GIỜ 1-2 — soạn lead 1 dòng. Test: nếu cắt phần còn lại, lead vẫn đáng đăng. 5W1H đầy đủ. (2) GIỜ 3 — soạn 2 quotes (30자 mỗi cái) — designed for headline; 1 quote chiến lược (\"단순 지원이 아니다\") + 1 quote ấm áp (về people). (3) GIỜ 4-5 — soạn body 3-4 đoạn — mỗi đoạn ~5 dòng, 1 ý chính. Đoạn 2 = quote chính; đoạn 3 = số liệu cụ thể; đoạn 4 = next step / call. (4) GIỜ 6 — header (embargo, ngày phát, tổ chức), footer (liên hệ + 별첨 list). (5) GIỜ 7 — proof + send to 법무팀 + 공보팀장 — không thay đổi sau khi gửi (vi phạm uy tín). MẸO PHÁT ÂM khi đọc to để check: '밝혔다' /발켣따/ — 'ㄱ→ㄴ' không xảy ra ở đây vì 받침 'ㄱㅎ→ㅋ'; '추진한다' /추진한다/ trôi chảy. ĐỪNG: (a) đặt embargo quá dài (>72h) — báo bỏ; (b) không có 별첨 — báo không có hình ảnh, bài kém; (c) gửi 보도자료 sau 18:00 — báo đã đóng đợt; (d) trộn 〜습니다 (oral) trong 〜다 (written) — đọc là không chuyên.",
+    "exercises": [
+      { "type": "fill-blank", "question": "한국교육개발원은 학습 격차 보완 시범 사업을 4월 1일부터 시작한다고 28일 ___.", "answer": "밝혔다" },
+      { "type": "matching", "pairs": [
+        { "hangul": "보도자료", "meaning": "thông cáo báo chí" },
+        { "hangul": "엠바고", "meaning": "lệnh cấm đăng trước" },
+        { "hangul": "별첨", "meaning": "tài liệu kèm theo" }
+      ], "instruction": "Nối thuật ngữ 보도자료 với nghĩa Việt" },
+      { "type": "translation", "vietnamese": "Mọi thắc mắc về tài liệu này xin liên hệ Đội PR KEDI (02-1234-5678).", "hangul": "본 자료에 대한 문의는 한국교육개발원 공보팀 (02-1234-5678)으로 부탁드린다." }
+    ]
+  },
+  {
+    "id": 124,
+    "level": "C1",
+    "title_vi": "Viết 기고문 / 칼럼 (op-ed) cho báo lớn",
+    "title_en": "Writing an op-ed for major Korean papers",
+    "intro_vi": "Bài này luyện 기고문 / 칼럼 — bài viết quan điểm cá nhân (chuyên gia) đăng trên báo lớn (한겨레, 경향, 조선, 중앙). Đăng ký: 〜다체 soutenu — pha trộn 한자어 dày đặc với câu ngắn xen lẫn câu dài. Cấu trúc 5 phần: (1) hook — ví dụ cụ thể hoặc số liệu sốc, (2) 진단 — chẩn đoán vấn đề, (3) 분석 — lý lẽ trung tâm, (4) 제안 — đề xuất chính sách, (5) 결언 — kết luận có sức nặng. 1500–2500 글자. Trục: '〜야 한다', '〜이/가 필요한 시점이다'.",
+    "vocabulary": [
+      { "hangul": "기고문 (寄稿文)", "meaning": "bài viết đóng góp / op-ed (n.m. — gi-go-mun)" },
+      { "hangul": "칼럼", "meaning": "column / op-ed thường kỳ (loanword — kal-leom)" },
+      { "hangul": "사설 (社說)", "meaning": "xã luận (báo viết) (n.m. — sa-seol)" },
+      { "hangul": "기고하다 (寄稿)", "meaning": "đóng góp bài viết (v. — gi-go-ha-da)" },
+      { "hangul": "필자 (筆者)", "meaning": "tác giả (n.m. — pil-ja)" },
+      { "hangul": "정책 제안 (政策 提案)", "meaning": "đề xuất chính sách (n.m. — jeong-chaek je-an)" },
+      { "hangul": "공론장 (公論場)", "meaning": "diễn đàn công luận (n.m. — gong-non-jang)" },
+      { "hangul": "근본적 처방", "meaning": "biện pháp cơ bản / fundamental (n.m. — geun-bon-jeok cheo-bang)" },
+      { "hangul": "지면 (紙面)", "meaning": "trang báo (n.m. — ji-myeon)" },
+      { "hangul": "분량 제한 (分量 制限)", "meaning": "giới hạn dung lượng (n.m. — bun-nyang je-han)" }
+    ],
+    "sentences": [
+      {
+        "korean": "농어촌 한 학생의 학습 시간이 도시 또래보다 주당 평균 8시간 부족하다.",
+        "romanized": "Nong-eochon han hakseng-ui hakseup sigani dosi ttoraeboda judang pyeonggyun 8-sigan bujokhada.",
+        "en": "A rural student's study time falls short of the urban peer's by 8 hours per week, on average.",
+        "vi": "Thời gian học của một học sinh nông thôn ít hơn bạn cùng tuổi ở thành phố trung bình 8 giờ mỗi tuần.",
+        "pronunciation_focus": ["농어촌 → /농어촌/", "학습 시간 → /학씁씨간/", "주당 → /주당/"]
+      },
+      {
+        "korean": "단순한 자원 배분 문제로 진단해서는 본질을 놓치게 된다.",
+        "romanized": "Dansunhan jawon baebun munjero jindanhaeseoneun bonjireul nochige doenda.",
+        "en": "Diagnosed as a mere resource-allocation issue, the essence is missed.",
+        "vi": "Nếu chẩn đoán như một vấn đề phân bổ tài nguyên đơn thuần, ta sẽ bỏ lỡ bản chất.",
+        "pronunciation_focus": ["단순한 → /단순한/", "자원 배분 → /자원배분/", "놓치게 된다 → /노치게된다/"]
+      },
+      {
+        "korean": "필요한 것은 단편적 지원이 아니라 학습 동기를 함께 설계하는 정책이다.",
+        "romanized": "Piryohan geoseun danpyeonjeok jiwoni anira hakseup donggireul hamkke seolgyehaneun jeongchaegida.",
+        "en": "What is needed is not piecemeal support but policy that designs learning motivation in tandem.",
+        "vi": "Điều cần thiết không phải hỗ trợ rời rạc mà là chính sách thiết kế động cơ học tập cùng lúc.",
+        "pronunciation_focus": ["필요한 것은 → /피료한거슨/", "단편적 지원이 아니라 → /단편적지워니아니라/", "정책이다 → /정채기다/"]
+      },
+      {
+        "korean": "교육의 격차는 결국 사회의 격차로 누적된다.",
+        "romanized": "Gyoyukui gyeokchaneun gyeolguk sahoeui gyeokchaero nujeokdoenda.",
+        "en": "Educational inequality ultimately compounds into societal inequality.",
+        "vi": "Khoảng cách giáo dục cuối cùng tích lũy thành khoảng cách xã hội.",
+        "pronunciation_focus": ["교육의 → /교유긔/", "격차로 → /격차로/", "누적된다 → /누적된다/"]
+      },
+      {
+        "korean": "지금이야말로 근본적 처방이 필요한 시점이다.",
+        "romanized": "Jigeumiyamallo geunbonjeok cheobangi piryohan sijeomida.",
+        "en": "Now, more than ever, fundamental remedies are needed.",
+        "vi": "Đây chính là thời điểm cần biện pháp cơ bản.",
+        "pronunciation_focus": ["지금이야말로 → /지그미야말로/", "근본적 처방이 → /근본적처방이/", "시점이다 → /시저미다/"]
+      }
+    ],
+    "dialogue": [
+      { "speaker": "한겨레 칼럼 담당 데스크", "hangul": "1,800자 칼럼 한 편 부탁드립니다. 학습 격차 주제로요. 마감 사흘 후입니다.", "meaning": "Could you write an 1,800-character column on the learning-gap theme? Deadline three days." },
+      { "speaker": "필자 (대학교수)", "hangul": "예, 가능합니다. 헤드라인은 어느 정도 자유롭게 잡아도 되겠습니까?", "meaning": "Yes, doable. May I have leeway on the headline?" },
+      { "speaker": "데스크", "hangul": "예. 다만 너무 길거나 학술적 용어 위주는 피해 주십시오.", "meaning": "Yes — but please avoid overly long or jargon-heavy headlines." },
+      { "speaker": "필자", "hangul": "알겠습니다. 토요일 오전까지 보내드리겠습니다.", "meaning": "Understood. I'll send by Saturday morning." }
+    ],
+    "dialogue_long": [
+      { "speaker": "데스크 (한겨레 오피니언 부)", "hangul": "교수님, 이번 학습 격차 시리즈 다섯 번째 칼럼 부탁드립니다. 1,800자 안에서요.", "meaning": "Professor, we'd like the fifth column in our learning-gap series. Within 1,800 characters.", "vi": "Thưa Giáo sư, xin Giáo sư viết bài thứ 5 của loạt khoảng cách học tập. Trong 1.800 chữ." },
+      { "speaker": "필자", "hangul": "주제가 다섯 번째군요. 앞 네 편의 논점이 어느 정도 다뤄졌는지 확인하고 시작하겠습니다.", "meaning": "Fifth — let me first see what the four previous columns have covered.", "vi": "Bài thứ 5. Em sẽ xem 4 bài trước đã bàn gì rồi mới bắt đầu." },
+      { "speaker": "데스크", "hangul": "1편 — 자원 격차 (이전 데이터); 2편 — 교사 부족 (현장 르포); 3편 — 가정 변수 (사회학자 인터뷰); 4편 — 정책 비판 (편집위원). 교수님은 5편 — 종합 진단과 제안 부탁드립니다.", "meaning": "Part 1 — resource gaps (data); Part 2 — teacher shortages (field report); Part 3 — family variables (sociologist interview); Part 4 — policy critique (editorial board). Yours is Part 5 — synthesis and proposal.", "vi": "Bài 1 — khoảng cách tài nguyên (dữ liệu); 2 — thiếu giáo viên (phóng sự); 3 — biến gia đình (phỏng vấn xã hội học); 4 — phê bình chính sách (ban biên tập). Giáo sư viết bài 5 — tổng hợp chẩn đoán và đề xuất." },
+      { "speaker": "필자", "hangul": "다섯 번째 글이라 hook은 의외성 있는 통계로 시작해야겠습니다. '농어촌 학생의 학습 시간이 도시 또래보다 주당 평균 8시간 부족하다' — 이 숫자를 첫 줄에 두는 게 어떻습니까?", "meaning": "As the fifth piece, the hook needs an unexpected statistic. 'A rural student's study time falls short of the urban peer's by 8 hours per week' — opening with this figure?", "vi": "Bài thứ 5 nên có hook là một thống kê bất ngờ. 'Thời gian học của học sinh nông thôn ít hơn bạn thành phố 8 giờ mỗi tuần' — đặt câu này dòng đầu?" },
+      { "speaker": "데스크", "hangul": "좋습니다. 그 숫자가 어디서 온 통계인지 본문에서 한 줄로 처리해 주시고요.", "meaning": "Good. Address where the number comes from in one line in the body.", "vi": "Tốt. Trong thân bài Giáo sư xử lý nguồn của con số đó trong 1 dòng." },
+      { "speaker": "필자", "hangul": "예. 그리고 진단 부분에서 'A 정책의 한계'를 한 단락 다루고, 분석 부분에서 동기 변수의 중요성, 제안 부분에서 시범 사업 모델, 결언에서 사회 전체의 격차 누적 위험으로 마무리하겠습니다.", "meaning": "Yes. The diagnosis section will cover 'limits of Policy A' in one paragraph; the analysis will treat the importance of motivation variables; the proposal will offer a pilot-programme model; the closer will warn of compounding societal inequality.", "vi": "Vâng. Phần chẩn đoán em xử lý 'giới hạn chính sách A' trong một đoạn; phân tích — tầm quan trọng của biến động cơ; đề xuất — mô hình thí điểm; kết luận cảnh báo về tích lũy khoảng cách xã hội." },
+      { "speaker": "데스크", "hangul": "결언이 잘 나오면 데스크 헤더가 인용하기 쉽습니다. '지금이야말로 근본적 처방이 필요한 시점이다' — 이런 문장이면 좋겠습니다.", "meaning": "A strong closer makes the desk header easy to lift. Something like 'Now, more than ever, fundamental remedies are needed' would work.", "vi": "Câu kết mạnh thì desk lấy làm header dễ. Câu kiểu 'Đây chính là thời điểm cần biện pháp cơ bản' sẽ tốt." },
+      { "speaker": "필자", "hangul": "마침 그 문장 정도로 마무리하려고 했습니다. 다만 'X 정부' 같은 직접 비판은 피하겠습니다 — 시리즈 4편이 이미 다뤘기에.", "meaning": "I was thinking exactly that closer. I'll avoid direct critique of 'X administration' — Part 4 already did that.", "vi": "Em định kết bằng câu đó. Em sẽ tránh phê bình thẳng 'chính phủ X' — bài 4 đã làm rồi." },
+      { "speaker": "데스크", "hangul": "교수님 칼럼은 정책 비판보다 진단과 제안 쪽이 강점이니까요. 5편을 그 강점으로 마무리하면 시리즈가 균형 잡힙니다.", "meaning": "Your strength is diagnosis and proposal rather than direct critique. Closing the series in that mode balances it.", "vi": "Sở trường của Giáo sư là chẩn đoán và đề xuất hơn là phê phán thẳng. Kết loạt theo hướng đó sẽ cân bằng." },
+      { "speaker": "필자", "hangul": "그럼 토요일 오전까지 1,800자 안에서 마무리해 보내드리겠습니다.", "meaning": "Then I'll have the 1,800-character version by Saturday morning.", "vi": "Vậy em hoàn thành bản 1.800 chữ trước sáng thứ bảy." },
+      { "speaker": "데스크", "hangul": "감사합니다. 받으면 화요일 지면에 올리겠습니다. 칼럼 끝에 교수님 직위와 소속 한 줄로 표기하시고요.", "meaning": "Thank you. We'll publish on Tuesday. Please add a one-line bio with your position and affiliation at the end.", "vi": "Cảm ơn. Nhận xong chúng tôi đăng trang thứ ba. Xin Giáo sư ghi 1 dòng chức danh + cơ quan ở cuối bài." }
+    ],
+    "roleplay_prompts": [
+      "Bạn được mời viết 1 칼럼 1,500자 cho 경향신문 về tự chủ học sinh trong môi trường số. Soạn 5 câu — hook (statistic) + 진단 + 분석 + 제안 + 결언. Câu cuối phải đáng làm header.",
+      "Soạn email cho 데스크 한겨레 đề xuất một chủ đề op-ed của riêng bạn — kèm 200자 abstract + 본문 dự kiến + chức danh tác giả + thời gian giao bản.",
+      "Soạn 1 đoạn '진단' (chẩn đoán) 5 câu cho chủ đề 'AI 시대 교사의 역할' — KHÔNG kết luận; chỉ đặt câu hỏi sắc và mở các 'rạn nứt' trong cách nhìn hiện hành."
+    ],
+    "register_notes": "기고문 đăng ký 〜다체 soutenu — đặc thù khác 보도자료: (1) Câu kết 〜한다 / 〜이다 / 〜되었다 — đa dạng hơn 보도자료. Có thể dùng câu hỏi tu từ '왜 그런가?' để tăng nhịp. (2) Tỉ lệ Hán-Hàn cao — 한자어 dày đặc (단편적 지원, 근본적 처방, 본질을 놓치게 된다). Đó là dấu chuyên gia. (3) Câu ngắn xen câu dài — kỹ thuật cuốn người đọc. Một câu 30 글자 sau một câu 80 글자 = nhịp tốt. (4) Hook trong câu 1: số liệu sốc, vignette, hoặc paradox. KHÔNG bắt đầu '오늘날 우리 사회는…' (chán). (5) Cụm 'closer' đáng làm header: '〜이/가 필요한 시점이다' / '〜야 한다' / '〜이/가 미래를 결정한다'. Designed for desk to lift. (6) Avoid 1인칭 '나는' / '저는' — 칼럼 ở Hàn dùng impersonal — '필자는' (rare, formal) hoặc lược chủ ngữ. (7) Avoid jargon học thuật quá: '메타분석에서 효과 크기 0.42' — chuyển sang '약 두 배 강한 효과'. (8) Closing line BẮT BUỘC: '〜교수, 〜대학교 〜학과' (chức danh + cơ quan) — quy ước 칼럼 박스.",
+    "idiom_glosses": [
+      { "idiom": "〜이/가 필요한 시점이다", "literal": "là thời điểm cần ~", "meaning": "(칼럼 closer) cụm chuẩn closer of op-ed — đáng làm header", "example": "지금이야말로 근본적 처방이 필요한 시점이다." },
+      { "idiom": "본질을 놓치다", "literal": "bỏ lỡ bản chất", "meaning": "(칼럼) cụm phê bình một diagnosis sai — soutenu", "example": "단순한 자원 배분 문제로 진단해서는 본질을 놓치게 된다." },
+      { "idiom": "단편적 지원이 아니라", "literal": "không phải hỗ trợ rời rạc mà", "meaning": "(칼럼 정책 제안) thiết lập đối lập hỗ trợ-rời-rạc-vs-chính-sách-tổng-thể — hữu hiệu", "example": "필요한 것은 단편적 지원이 아니라 종합 정책이다." },
+      { "idiom": "격차로 누적되다", "literal": "tích lũy thành khoảng cách", "meaning": "(칼럼) cụm cảnh báo về compound effect — closer mạnh", "example": "교육의 격차는 결국 사회의 격차로 누적된다." }
+    ],
+    "cultural_notes_vi": "기고문 / 칼럼 trong báo Hàn là một thể loại có cấu trúc kinh tế-văn hóa riêng.\n\n(1) HỆ THỐNG 면 (trang): các báo lớn có 오피니언 면 chuẩn — 사설 + 칼럼 + 기고. 사설 = ban biên tập viết (anonymous, voice của báo); 칼럼 = chuyên gia thường kỳ ký tên; 기고 = chuyên gia khách mời. Mỗi loại có giá trị uy tín khác — 칼럼 thường kỳ là ổn định nhất.\n\n(2) PHÂN PHE Ý THỨC: báo Hàn phân chia 진보 (한겨레, 경향) vs 보수 (조선, 중앙, 동아) vs 중도 (한국일보) — học giả chọn báo thường theo định hướng. Một học giả viết cho cả 한겨레 lẫn 조선 = bị xem là cơ hội. Quy ước: chọn 1 mạng và viết thường trên đó.\n\n(3) 눈치 TRAP cho người Việt: trong 칼럼 Việt, tác giả thường kết bằng '나' — quan điểm cá nhân. Ở Hàn, '나' / '저' rất hiếm; thay là impersonal hoặc '필자는'. Phong cách 칼럼 Hàn là 'objectivity-flavored opinion' — tác giả có quan điểm rõ nhưng giọng văn không cá nhân hóa.\n\n(4) ĐỘ DÀI VÀ NHỊP: 칼럼 chuẩn 1,500-2,500 글자. Một câu trung bình 50-60 글자. Ngắt câu mạnh — '왜 그런가? 답은 분명하다.' = nhịp đắc địa. Đoạn không quá 5 câu — vì lên báo bị wrap khó đọc.\n\n(5) HEADER LIFTING: desk thường tự đặt header dựa trên câu mạnh nhất trong bài — không phải tiêu đề tác giả nộp. Tác giả khôn lửa designed sentences để dễ trích — đó là kỹ năng đặc biệt. Câu kết của 칼럼 này (지금이야말로 근본적 처방이 필요한 시점이다) chính là một 'header bait'.\n\n(6) THÙ LAO: 칼럼 cho học giả ở báo lớn ở Hàn ~30-50만원/bài — không cao nhưng uy tín. Nguồn uy tín đi kèm cơ hội tham gia 자문 정책 (tư vấn chính sách) sau đó. Lưu ý các báo, biên tập viên cụ thể nhắc trong dialogue (한겨레 데스크) là illustrative — sự tổ chức biên tập thay đổi nhanh ở Hàn, học viên xác nhận hiện tại trước khi nộp bài thực.",
+    "tip_advice_vi": "Quy trình viết 1 칼럼 trong 3 ngày: (1) NGÀY 1 — chọn hook: 1 thống kê đáng nhớ HOẶC 1 vignette cụ thể HOẶC 1 paradox đáng đọc. KHÔNG general intro. (2) NGÀY 2 — viết bản nháp 1: tự do, vượt ngân sách 글자 OK. Cấu trúc 5 phần (hook / 진단 / 분석 / 제안 / 결언). (3) NGÀY 3 morning — cắt: trim đến chính xác 1,800자 hoặc gần. Cắt câu rườm; KHÔNG cắt câu 'header bait'. (4) NGÀY 3 afternoon — đọc to. Câu nào vướng = thay. Câu nào không sản sinh ý mới = bỏ. (5) NGÀY 3 evening — gửi 데스크 + sub-line chức danh. MẸO PHÁT ÂM khi đọc to: '근본적 처방' /근본적처방/ — 'ㄱ→ㄴ' không xảy ra ở đây vì 받침 'ㄱ' giữ; '시점이다' /시저미다/. ĐỪNG: (a) viết câu hỏi tu từ liên tiếp 3 lần — yếu; (b) trích dẫn quá nhiều học giả nước ngoài — Hàn đọc giả không kết nối; (c) dùng câu cuối '~이라고 생각한다' — cá nhân hóa, yếu nhịp; thay '~이다'; (d) gửi muộn — desk có quyền cắt giảm hoặc loại — thà nộp sớm với bản chưa hoàn hảo còn hơn nộp muộn với bản tinh chỉnh.",
+    "exercises": [
+      { "type": "fill-blank", "question": "필요한 것은 단편적 지원이 아니라 학습 동기를 함께 ___하는 정책이다.", "answer": "설계" },
+      { "type": "matching", "pairs": [
+        { "hangul": "기고문", "meaning": "bài viết đóng góp / op-ed" },
+        { "hangul": "칼럼", "meaning": "column thường kỳ" },
+        { "hangul": "사설", "meaning": "xã luận của báo" }
+      ], "instruction": "Nối thuật ngữ 오피니언 với nghĩa Việt" },
+      { "type": "translation", "vietnamese": "Khoảng cách giáo dục cuối cùng tích lũy thành khoảng cách xã hội.", "hangul": "교육의 격차는 결국 사회의 격차로 누적된다." }
+    ]
+  },
+  {
+    "id": 125,
+    "level": "C1",
+    "title_vi": "Xuất hiện trên podcast / talk show",
+    "title_en": "Podcast / talk show appearance",
+    "intro_vi": "Bài này luyện đăng ký 해요체 cho podcast và 시사 토크쇼 — tone informal-warm khác hẳn 기자회견. Đặc trưng: 〜아요/어요 / 〜죠 / 〜네요; xen lẫn '아, 그게요…' (chuyển ý); cho phép tự đùa nhẹ. KHÔNG '〜야' (반말). Cấu trúc dialogue: 호스트 mở chào → guest tự giới thiệu warm → host hỏi câu mở → guest dẫn vào nội dung. Trục: '아, 좋은 질문이세요', '말씀드리자면 〜이에요', '그렇죠'.",
+    "vocabulary": [
+      { "hangul": "팟캐스트", "meaning": "podcast (loanword — pat-kae-seu-teu)" },
+      { "hangul": "토크쇼", "meaning": "talk show (loanword — to-keu-syo)" },
+      { "hangul": "진행자", "meaning": "host / người dẫn (n.m. — jin-haeng-ja)" },
+      { "hangul": "출연자 (出演者)", "meaning": "khách mời / người xuất hiện (n.m. — chu-ryeon-ja)" },
+      { "hangul": "방송 분량", "meaning": "thời lượng phát sóng (n.m. — bang-song bun-nyang)" },
+      { "hangul": "녹음하다 (錄音)", "meaning": "thu âm (v. — no-geum-ha-da)" },
+      { "hangul": "편집되다 (編輯)", "meaning": "được biên tập (v. passive — pyeon-jip-doe-da)" },
+      { "hangul": "청취자 (聽取者)", "meaning": "thính giả (n.m. — cheong-chwi-ja)" },
+      { "hangul": "방청객 (傍聽客)", "meaning": "khán giả tại chỗ (n.m. — bang-cheong-gaek)" },
+      { "hangul": "라이브 방송", "meaning": "phát sóng trực tiếp (loanword — la-i-beu bang-song)" }
+    ],
+    "sentences": [
+      {
+        "korean": "안녕하세요, 청취자 여러분. 오늘 모실 분은 한국교육개발원 김민지 박사님이세요.",
+        "romanized": "Annyeonghaseyo, cheongchwija yeoreobun. Oneul mosil buneun Hangukgyoyukgaebalwon Kim Minji baksanim iseyo.",
+        "en": "Hi everyone. Today's guest is Dr. Kim Minji from the Korea Educational Development Institute.",
+        "vi": "Xin chào quý thính giả. Khách mời hôm nay là TS. Kim Minji từ Viện Phát triển Giáo dục Hàn Quốc.",
+        "pronunciation_focus": ["청취자 → /청취자/", "여러분 → /여러분/", "박사님이세요 → /박싸니미세요/"]
+      },
+      {
+        "korean": "박사님, 청취자분들께 한 줄로 자기 소개 부탁드릴게요.",
+        "romanized": "Baksanim, cheongchwijabundeulkke han juro jagi sogae butakdeurilgeyo.",
+        "en": "Doctor, please introduce yourself in one line for our listeners.",
+        "vi": "Tiến sĩ, xin giới thiệu một dòng cho thính giả ạ.",
+        "pronunciation_focus": ["박사님 → /박싸님/", "한 줄로 → /한주로/", "부탁드릴게요 → /부탁뜨릴께요/"]
+      },
+      {
+        "korean": "아, 좋은 질문이세요. 말씀드리자면 — 저희 연구는 학습 격차의 메커니즘을 다뤄요.",
+        "romanized": "A, joeun jilmuniseyo. Malsseumdeurijamyeon — jeohui yeongu-neun hakseup gyeokchaui mekeonijeumeul darwoyo.",
+        "en": "Oh, a good question. Let me put it this way — our research deals with the mechanism of learning gaps.",
+        "vi": "À, câu hỏi hay. Nói thế này — nghiên cứu của chúng em xử lý cơ chế khoảng cách học tập.",
+        "pronunciation_focus": ["좋은 질문이세요 → /조은질문이세요/", "말씀드리자면 → /말씀드리자면/", "다뤄요 → /다뤄요/"]
+      },
+      {
+        "korean": "쉽게 풀어 드리면, 자유 시간을 늘리는 것보다 그 시간을 어떻게 채우는지가 더 중요하다는 거예요.",
+        "romanized": "Swipge pureo deurimyeon, jayu siganeul neullineun geotboda geu siganeul eotteoke chaeu-neunjiga deo jung-yohadaneun geoyeyo.",
+        "en": "To put it accessibly — what matters more than expanding free time is how that time is filled.",
+        "vi": "Nói dễ hiểu — điều quan trọng hơn việc tăng thời gian tự do là cách lấp đầy thời gian đó.",
+        "pronunciation_focus": ["쉽게 풀어 → /쉽께푸러/", "채우는지가 → /채우는지가/", "중요하다는 거예요 → /중요하다는거에요/"]
+      },
+      {
+        "korean": "오늘 좋은 말씀 정말 감사해요. 청취자분들도 많이 배우셨을 것 같아요.",
+        "romanized": "Oneul joeun malsseum jeongmal gamsahaeyo. Cheongchwijabundeuldo mani baeusyeosseul geot gatayo.",
+        "en": "Thanks for the great words today. I'm sure listeners learned a lot, too.",
+        "vi": "Cảm ơn Tiến sĩ hôm nay. Em tin thính giả cũng học được rất nhiều.",
+        "pronunciation_focus": ["좋은 말씀 → /조은말씀/", "감사해요 → /감사해요/", "배우셨을 것 같아요 → /배우셔쓸걷가타요/"]
+      }
+    ],
+    "dialogue": [
+      { "speaker": "진행자", "hangul": "박사님, 학습 격차 문제 — 해결할 수 있을까요? 솔직히 어려워 보이는데요.", "meaning": "Doctor — the learning gap, can we really solve it? Honestly, it looks hard." },
+      { "speaker": "박사", "hangul": "어렵죠. 그런데 '시간 늘리기'에서 '시간 의미 있게 채우기'로 관점만 바꿔도 절반은 풀려요.", "meaning": "It's hard, yes. But shifting from 'expand time' to 'fill time meaningfully' resolves half of it." },
+      { "speaker": "진행자", "hangul": "오, 그게 핵심이군요. 청취자분들 잘 이해하셨을 것 같아요.", "meaning": "Oh, that's the heart of it. I think listeners got that." },
+      { "speaker": "박사", "hangul": "감사합니다. 더 풀어 드리고 싶지만 시간이 짧네요!", "meaning": "Thanks. I'd love to elaborate, but time's short!" }
+    ],
+    "dialogue_long": [
+      { "speaker": "진행자 (CBS 김현정의 뉴스쇼 류 시사 라디오)", "hangul": "여러분, 안녕하세요. 김현정의 시사 미팅, 매주 화요일 모셔서 들어보는 코너죠. 오늘 모실 분은 한국교육개발원의 김민지 박사님이세요. 박사님, 안녕하세요.", "meaning": "Hello, everyone. Today on Kim Hyunjeong's Current-Affairs Meeting — every Tuesday — we welcome Dr. Kim Minji from KEDI. Doctor, hello.", "vi": "Xin chào quý vị. 'Cuộc gặp Thời sự với Kim Hyunjeong' — mỗi thứ ba. Khách mời hôm nay là TS. Kim Minji của KEDI. Tiến sĩ, chào." },
+      { "speaker": "박사", "hangul": "안녕하세요. 진행자님, 그리고 청취자 여러분. 불러 주셔서 감사해요.", "meaning": "Hello, host and listeners. Thank you for having me.", "vi": "Xin chào. Cảm ơn anh và quý thính giả đã mời em." },
+      { "speaker": "진행자", "hangul": "박사님 연구가 요즘 화제거든요. 한겨레 일면에 실린 그 자료. 청취자분들께 한 줄로 자기 소개 부탁드릴게요.", "meaning": "Your research has been all over the news — front page of Hankyoreh. Could you introduce yourself in one line for our listeners?", "vi": "Nghiên cứu của Tiến sĩ đang nóng — trang nhất Hankyoreh. Tiến sĩ giới thiệu 1 dòng cho thính giả nhé." },
+      { "speaker": "박사", "hangul": "예. 말씀드리자면 — 저는 한국교육개발원에서 학습자 동기와 격차를 연구하고 있어요. 한 10년 정도 됐네요.", "meaning": "Yes. Put it this way — at KEDI I research learner motivation and gaps. About ten years at it.", "vi": "Vâng. Nói thế này — em làm nghiên cứu về động cơ và khoảng cách học tập tại KEDI. Khoảng 10 năm rồi." },
+      { "speaker": "진행자", "hangul": "10년이면 깊이 있게 보셨을 것 같아요. 그럼 본격적으로 가볼까요? 학습 격차 — 해결할 수 있는 문제일까요? 솔직히 청취자분들도 의심하시거든요.", "meaning": "Ten years — deep dive. Shall we get into it? Learning gap — can it actually be solved? Listeners are skeptical.", "vi": "10 năm — chắc Tiến sĩ nhìn sâu. Mình vào chính nhé? Khoảng cách học tập — có thể giải quyết không? Thính giả cũng đang nghi." },
+      { "speaker": "박사", "hangul": "솔직히 어렵죠. 단순한 문제는 아니에요. 그런데 — 관점을 한 번만 바꿔보면 의외로 길이 보여요. '시간을 더 주자'에서 '주어진 시간을 의미 있게 채우자'로요.", "meaning": "Honestly, hard. Not simple. But — shift the lens once, and a path appears. From 'more time' to 'meaningfully filled time'.", "vi": "Thẳng thắn, khó. Không đơn giản. Nhưng — chuyển góc nhìn một lần là thấy đường. Từ 'cho thêm thời gian' sang 'lấp đầy thời gian một cách có ý nghĩa'." },
+      { "speaker": "진행자", "hangul": "오, 청취자분들 들으셨죠? '시간을 의미 있게 채우자' — 이건 부모님들 들으셔야겠는데요? 박사님, 더 풀어 주실래요?", "meaning": "Listeners, did you hear that? 'Fill time meaningfully' — parents need to hear this. Doctor, can you unpack?", "vi": "Quý thính giả nghe rồi chứ? 'Lấp đầy thời gian có ý nghĩa' — phụ huynh phải nghe. Tiến sĩ giải thích thêm được không?" },
+      { "speaker": "박사", "hangul": "쉽게 풀어 드리면, 아이가 자유 시간을 1시간 더 받는다고 그 시간이 자동으로 학습 시간이 되지는 않아요. 그 1시간을 어떻게 보내는지를 부모가 함께 설계해 주는 게 중요한 거죠. 예를 들어 '오늘 책 한 권 읽어'보다 '왜 이 책이 너한테 흥미로울까 한번 생각해봐' 같은 질문이요.", "meaning": "Simply — if a child gets one extra hour of free time, that hour doesn't automatically become study time. What matters is parents co-designing how it's spent. Instead of 'read a book today', try 'why might this book interest you?'.", "vi": "Nói dễ hiểu — nếu con được thêm 1 giờ tự do, giờ đó không tự động thành giờ học. Quan trọng là cha mẹ cùng thiết kế cách dùng giờ đó. Thay vì 'hôm nay đọc một quyển', hỏi 'vì sao quyển này có thể làm con thích?'." },
+      { "speaker": "진행자", "hangul": "그 차이가 작아 보여도 실제로는 크대요. 박사님 자료에서 1.6배 차이가 났다고 한겨레가 보도했거든요. 그게 어떤 뜻이에요?", "meaning": "The difference looks small but is actually big — Hankyoreh reported a 1.6× gap from your data. What does that mean?", "vi": "Khác biệt có vẻ nhỏ nhưng thực sự lớn — Hankyoreh đưa tin chênh 1,6 lần từ dữ liệu của Tiến sĩ. Có nghĩa là gì?" },
+      { "speaker": "박사", "hangul": "예를 들어, 동기가 낮은 학생이 자유 시간을 늘려서 성적이 5점 오른다면, 동기가 높은 학생은 비슷한 자유 시간으로 8점이 올라요. 같은 시간, 다른 결과인 거죠.", "meaning": "For example, a low-motivation student might gain 5 points from extra free time; a high-motivation student gains 8. Same time, different outcome.", "vi": "Ví dụ, học sinh động cơ thấp tăng 5 điểm với thời gian tự do thêm; học sinh động cơ cao tăng 8 điểm với cùng thời gian. Cùng thời gian, khác kết quả." },
+      { "speaker": "진행자", "hangul": "와, 그래서 부모 입장에서는 시간을 늘리기 전에 동기 먼저 봐야 하는 거네요?", "meaning": "Wow — so as parents, we should look at motivation before adding time?", "vi": "Wow — vậy từ vai phụ huynh, mình phải xem động cơ trước khi tăng thời gian?" },
+      { "speaker": "박사", "hangul": "그렇죠. 동기와 시간을 함께 봐야 해요. 한쪽만 보면 효과가 절반도 안 나와요.", "meaning": "Right. Look at motivation and time together. Either alone gives less than half the effect.", "vi": "Đúng. Phải xem động cơ và thời gian cùng nhau. Chỉ một bên thì hiệu quả không đến nửa." },
+      { "speaker": "진행자", "hangul": "오늘 좋은 말씀 정말 감사해요, 박사님. 시간 관계상 여기서 마무리하는데, 추가 정보는 KEDI 홈페이지에 자료 있다고 하셨죠?", "meaning": "Thank you for the great words, Doctor. We must wrap up — listeners can find more on the KEDI website, yes?", "vi": "Cảm ơn Tiến sĩ. Vì giới hạn thời gian mình kết tại đây — thính giả có thể xem thêm trên website KEDI nhỉ?" },
+      { "speaker": "박사", "hangul": "예, 보고서 PDF로 공개되어 있어요. 청취자분들 한 번 보시면 좋겠어요. 감사합니다.", "meaning": "Yes, the report is open as PDF. I hope listeners take a look. Thank you.", "vi": "Vâng, báo cáo công khai dưới dạng PDF. Em hy vọng thính giả ghé xem. Cảm ơn anh." }
+    ],
+    "roleplay_prompts": [
+      "Bạn là khách mời 시사 라디오 30 phút. Soạn 5 câu mở đầu — chào host và thính giả + giới thiệu 1 dòng + cảm ơn lời mời + thông điệp cốt lõi + sẵn sàng vào nội dung.",
+      "Host hỏi: '박사님이 정말 단순화하면 뭐예요?' (rút gọn nhất là gì) — soạn 1 câu trả lời 30자 mà vẫn không 'oversimplify'. Cụm vàng: '쉽게 풀어 드리면 〜이에요'.",
+      "Cuối phỏng vấn, host hỏi 'thông điệp cuối cho phụ huynh' — soạn 2 câu kết, KHÔNG dùng 〜습니다 thể (đăng ký 해요체); câu kết phải đáng nhớ và actionable."
+    ],
+    "register_notes": "팟캐스트 / 토크쇼 đăng ký 해요체 chuẩn: (1) Câu kết 〜아요 / 〜어요 / 〜죠 / 〜네요 / 〜군요. KHÔNG '〜습니다' liên tiếp (over-formal cho podcast); KHÔNG '〜야' (반말, vô lễ). (2) Mở đầu: '안녕하세요, 청취자 여러분' (chuẩn) — KHÔNG '안녕하십니까' (over-formal cho radio không nghi thức). (3) Khi nhận câu hỏi tốt: '아, 좋은 질문이세요' / '아, 그게요…' — cụm chuyển ý chuẩn của podcast. KHÔNG '훌륭한 질문입니다' (over-formal). (4) Cách dẫn vào nội dung: '말씀드리자면 〜이에요' (informal-formal mix), '쉽게 풀어 드리면 〜', '예를 들어 〜' — chuẩn. (5) 한자어 vẫn dùng nhưng giảm — '메커니즘' OK; '본질을 놓치게 된다' (calque văn) chuyển '핵심을 놓쳐요'. (6) Cụm 'soft yes': '그렇죠' (đúng vậy) / '맞아요' (đúng) — host expect; KHÔNG '그렇다' (cứng). (7) Đùa nhẹ cho phép — 'ㅎㅎ', 'ㅋㅋ' không xuất hiện trong văn bản nhưng tone OK. KHÔNG sarcasm hoặc dark humor — Hàn radio mainstream tránh. (8) Cách kết — '오늘 좋은 말씀 감사해요' / '청취자분들 많이 배우셨을 것 같아요' — chuẩn host close. Guest đáp '감사합니다' OK 1 lần (formal cho closure). (9) Tránh: 'I think', 'kinda', 'maybe' chêm tiếng Anh — toàn Hàn.",
+    "idiom_glosses": [
+      { "idiom": "아, 좋은 질문이세요", "literal": "à, đó là câu hỏi tốt", "meaning": "(해요체, 팟캐스트) cụm chuyển ý chuẩn — thừa nhận host đặt câu hay rồi vào nội dung", "example": "아, 좋은 질문이세요. 말씀드리자면 — 저희 연구는 〜를 다뤄요." },
+      { "idiom": "쉽게 풀어 드리면", "literal": "nếu trình bày dễ hiểu", "meaning": "(해요체) cụm chuyển sang ngôn ngữ thường ngày — đặc biệt cho thính giả không chuyên", "example": "쉽게 풀어 드리면, 자유 시간을 어떻게 채우는지가 더 중요해요." },
+      { "idiom": "그렇죠", "literal": "đúng vậy nhỉ", "meaning": "(해요체) câu xác nhận mềm — chuẩn cho dialogue podcast; có cảm giác bằng nhau với host", "example": "그렇죠. 동기와 시간을 함께 봐야 해요." },
+      { "idiom": "한 번 보시면 좋겠어요", "literal": "nếu xem một lần thì hay", "meaning": "(해요체) khuyến nghị mềm cho thính giả — KHÔNG '꼭 보세요' (cứng); KHÔNG '보십시오' (over-formal)", "example": "보고서 PDF로 공개되어 있어요. 청취자분들 한 번 보시면 좋겠어요." }
+    ],
+    "cultural_notes_vi": "팟캐스트 và 시사 토크쇼 ở Hàn là một thể loại sôi động — và chuyển từ thể loại 기자회견 (formal) là một bước đăng ký lớn người Việt dễ nhầm.\n\n(1) PHÂN PHE PODCAST: ở Hàn có dải rộng — '김어준의 뉴스공장 historical' và '김현정의 뉴스쇼' (CBS) — 진보 leaning; '주진우 라이브' — center-left; 정치 podcasts gắn với từng phe. Một học giả xuất hiện trên một chương trình = thường được đọc là chính trị aligned. Quy ước: chọn cẩn thận; nếu là chuyên gia trung lập, có thể xuất hiện trên cả hai phía.\n\n(2) PHÂN TÔNG VỚI TV NEWS: TV news 앵커 dùng 〜습니다 cứng; podcast host dùng 해요체 ấm. Khi guest học thuật chuyển từ TV news sang podcast trong cùng tuần — phải chuyển đăng ký toàn diện. Một câu '오늘 이 자리는 〜을/를 위하여…' (격식) trên podcast = đọc là 'không hiểu media'.\n\n(3) 눈치 TRAP: ở 팟캐스트, host thường dùng cụm 'hint' thông báo time đang hết — '한 마디만 더 하시죠' (một lời nữa thôi nhé), '이제 마무리할 시간이…' (sắp đến giờ kết). Guest người Việt mới làm podcast Hàn dễ bỏ qua hint, nói tiếp đến khi host phải ngắt rõ. Cách đúng: khi nghe hint, kết câu trong 30 giây.\n\n(4) RECORDING vs LIVE: 라이브 방송 (live broadcast) — KHÔNG sửa được; cẩn trọng từng từ. 녹음 후 편집 (record then edit) — có thể yêu cầu cắt một câu sau ('아까 그 부분, 편집 가능할까요?'). Quy ước: hỏi trước recording — 'editing 가능 여부 확인 부탁드려요.'\n\n(5) PODCAST CULTURE: thính giả Hàn rất tích cực — bình luận live trên YouTube cùng lúc, gọi vào, nhắn lên trang. Guest có thể mời thính giả tương tác '댓글로 의견 보내 주시면…' nhưng KHÔNG quá thường (vô tổ chức).\n\n(6) Tên các chương trình radio / podcast nhắc trong dialogue (CBS 김현정의 뉴스쇼) là illustrative — landscape media Hàn thay đổi nhanh, host đến và đi. Học viên xác nhận chương trình hiện hoạt động trước khi nhắc trong tác phẩm riêng.",
+    "tip_advice_vi": "Quy trình chuẩn bị 1 podcast 30 phút trong 1 tuần: (1) NGÀY 1-2 — research host: nghe 3-5 episode trước; ghi pattern câu hỏi, tone, độ formal. (2) NGÀY 3 — soạn 3 thông điệp cốt lõi (KHÔNG quá 3); mỗi thông điệp 1 câu, 해요체. (3) NGÀY 4 — soạn 5-7 'soundbites' đáng nhớ — câu 30자 dễ trích cho clip. (4) NGÀY 5 — chuẩn bị 2-3 phép ẩn dụ cho concept khó (vì podcast không có visual). (5) NGÀY 6 — luyện phỏng vấn với 1 đồng nghiệp — đo nhịp 95-105 글자/phút (chậm hơn TV news). (6) NGÀY 7 — đến 15 phút trước; uống ấm; KHÔNG ăn sữa (phlegm). MẸO PHÁT ÂM: '청취자' /청취자/ rõ; '말씀드리자면' /말씀드리자면/ trôi chảy không vấp. ĐỪNG: (a) đeo trang sức kêu — micro thu được; (b) ngắt lời host — phong cách Hàn coi là vô lễ ngay cả ở podcast; (c) nói '아 그게요' liên tục — host thấy thiếu chuẩn bị; (d) vượt thời gian — host có quyền cắt edit.",
+    "exercises": [
+      { "type": "fill-blank", "question": "아, 좋은 질문이세요. ___ — 저희 연구는 학습 격차의 메커니즘을 다뤄요.", "answer": "말씀드리자면" },
+      { "type": "matching", "pairs": [
+        { "hangul": "팟캐스트", "meaning": "podcast" },
+        { "hangul": "진행자", "meaning": "host / người dẫn" },
+        { "hangul": "청취자", "meaning": "thính giả" }
+      ], "instruction": "Nối thuật ngữ podcast với nghĩa Việt" },
+      { "type": "translation", "vietnamese": "Nói dễ hiểu — điều quan trọng hơn việc tăng thời gian tự do là cách lấp đầy thời gian đó.", "hangul": "쉽게 풀어 드리면, 자유 시간을 늘리는 것보다 그 시간을 어떻게 채우는지가 더 중요하다는 거예요." }
+    ]
+  },
+  {
+    "id": 126,
+    "level": "C1",
+    "title_vi": "Phỏng vấn TV news — đáp 앵커 trên studio trực tiếp",
+    "title_en": "TV news interview — responding to anchors live",
+    "intro_vi": "Bài này luyện đăng ký 하십시오체 cho phỏng vấn live trên TV news (KBS 뉴스9, MBC 뉴스데스크, JTBC 뉴스룸). Đặc trưng: 앵커 hỏi câu xen lẫn 〜습니까 / 〜십니까; guest đáp 〜습니다 / 〜겠습니다 nghiêm. Khác podcast: KHÔNG đùa, KHÔNG '아 그게요', KHÔNG 〜네요. Câu phải ngắn (30-50 글자), trả lời 60-90 giây tối đa cho mỗi câu hỏi. Trục: '말씀드리자면 〜입니다', '간단히 말씀드리면 〜입니다'.",
+    "vocabulary": [
+      { "hangul": "앵커 (anchor)", "meaning": "phát thanh viên / anchor (loanword — aeng-keo)" },
+      { "hangul": "스튜디오 출연", "meaning": "lên hình studio (n.m. — seu-tyu-di-o chu-ryeon)" },
+      { "hangul": "생방송 (生放送)", "meaning": "phát sóng trực tiếp (n.m. — saeng-bang-song)" },
+      { "hangul": "패키지 인터뷰", "meaning": "interview pre-recorded edited (loanword — pae-ki-ji)" },
+      { "hangul": "원격 연결", "meaning": "kết nối từ xa (n.m. — won-gyeok yeon-gyeol)" },
+      { "hangul": "톱뉴스 (top news)", "meaning": "tin chính của bản tin (loanword — top-nyu-seu)" },
+      { "hangul": "사실관계 (事實關係)", "meaning": "sự thật và mối liên hệ (n.m. — sa-sil-gwan-gye)" },
+      { "hangul": "공식 입장", "meaning": "lập trường chính thức (n.m. — gong-sik ip-jang)" },
+      { "hangul": "현장 중계 (現場 中繼)", "meaning": "tường thuật hiện trường (n.m. — hyeon-jang jung-gye)" },
+      { "hangul": "방송 시간 관리", "meaning": "quản lý thời gian phát sóng (n.m. — bang-song si-gan gwan-li)" }
+    ],
+    "sentences": [
+      {
+        "korean": "안녕하십니까. 한국교육개발원 김민지입니다.",
+        "romanized": "Annyeonghasimnikka. Hangukgyoyukgaebalwon Kim Minji imnida.",
+        "en": "Good evening. I am Kim Minji of the Korea Educational Development Institute.",
+        "vi": "Kính chào quý vị. Tôi là Kim Minji của Viện Phát triển Giáo dục Hàn Quốc.",
+        "pronunciation_focus": ["안녕하십니까 → /안녕하심니까/", "입니다 → /임니다/"]
+      },
+      {
+        "korean": "결론부터 말씀드리면, 학습 격차는 시간 부족이 아니라 동기 부족에서 비롯됩니다.",
+        "romanized": "Gyeollon-buteo malsseumdeurimyeon, hakseup gyeokchaneun sigan bujogi anira dongi bujogeseo birotdoemnida.",
+        "en": "To begin with the conclusion, the learning gap stems not from a shortage of time but of motivation.",
+        "vi": "Bắt đầu từ kết luận, khoảng cách học tập bắt nguồn không phải từ thiếu thời gian mà từ thiếu động cơ.",
+        "pronunciation_focus": ["결론부터 → /결론부터/", "동기 부족 → /동기부족/", "비롯됩니다 → /비롣뙴니다/"]
+      },
+      {
+        "korean": "이는 본 연구가 1,200명을 대상으로 분석한 결과입니다.",
+        "romanized": "Ineun bon yeonguga 1,200-myeongeul daesangeuro bunseokhan gyeolgwa imnida.",
+        "en": "This is the result of our analysis of 1,200 participants.",
+        "vi": "Đây là kết quả phân tích trên 1.200 người tham gia.",
+        "pronunciation_focus": ["이는 → /이는/", "1,200명을 → /천이백명을/", "결과입니다 → /결과임니다/"]
+      },
+      {
+        "korean": "정책적으로는 지원의 양보다 설계의 질을 우선해야 한다고 판단됩니다.",
+        "romanized": "Jeongchaekjeogeuroneun jiwon-ui yangboda seolgyeui jireul useonhaeya handago pandanboemnida.",
+        "en": "On the policy side, the quality of design should take precedence over the quantity of support, in our judgement.",
+        "vi": "Về mặt chính sách, theo nhận định, chất lượng thiết kế nên ưu tiên hơn lượng hỗ trợ.",
+        "pronunciation_focus": ["정책적으로는 → /정책쩌그로는/", "양보다 → /양보다/", "판단됩니다 → /판단됨니다/"]
+      },
+      {
+        "korean": "추가 자료는 본원 홈페이지에서 확인하실 수 있습니다.",
+        "romanized": "Chuga jaryoneun bonwon homperjieseo hwaginhasil su itseumnida.",
+        "en": "Additional materials are available on the Institute's homepage.",
+        "vi": "Quý vị có thể xem thêm tài liệu trên trang chủ của Viện.",
+        "pronunciation_focus": ["추가 자료는 → /추가자료는/", "홈페이지에서 → /홈페이지에서/", "있습니다 → /읻씀니다/"]
+      }
+    ],
+    "dialogue": [
+      { "speaker": "앵커", "hangul": "오늘 KEDI 김민지 박사님 모셨습니다. 박사님, 안녕하십니까.", "meaning": "Tonight Dr. Kim Minji of KEDI joins us. Doctor, good evening." },
+      { "speaker": "박사", "hangul": "안녕하십니까. 불러 주셔서 감사합니다.", "meaning": "Good evening. Thank you for having me." },
+      { "speaker": "앵커", "hangul": "박사님, 이번 보고서의 핵심을 30초 안에 정리해 주실 수 있겠습니까?", "meaning": "Doctor, could you summarise the report's core in 30 seconds?" },
+      { "speaker": "박사", "hangul": "예. 학습 격차는 시간 부족이 아닌 동기 부족에서 비롯되며, 정책은 양이 아닌 질에 집중해야 합니다.", "meaning": "Yes. The learning gap stems not from time but from motivation; policy should focus on quality, not quantity." }
+    ],
+    "dialogue_long": [
+      { "speaker": "앵커 (KBS 뉴스9 류 톱뉴스 시점)", "hangul": "오늘 핵심 뉴스 다섯 번째 소식입니다. 한국교육개발원이 학습 격차 보고서를 발표했습니다. 핵심 저자인 한국교육개발원 김민지 박사님 스튜디오에 모셨습니다. 박사님, 안녕하십니까.", "meaning": "Our fifth lead story tonight. KEDI released a report on the learning gap. We have lead author Dr. Kim Minji from KEDI in studio. Doctor, good evening.", "vi": "Tin chính thứ 5 tối nay. KEDI vừa công bố báo cáo về khoảng cách học tập. Tác giả chính, TS. Kim Minji của KEDI, đang có mặt tại trường quay. Tiến sĩ, kính chào." },
+      { "speaker": "박사", "hangul": "안녕하십니까. 불러 주셔서 감사합니다.", "meaning": "Good evening. Thank you for having me.", "vi": "Kính chào quý vị. Cảm ơn đã mời." },
+      { "speaker": "앵커", "hangul": "박사님, 시청자분들이 가장 궁금해하시는 부분부터 여쭙겠습니다. 30초 안에 — 보고서의 핵심이 무엇입니까?", "meaning": "Doctor — viewers' top question first. In 30 seconds — what is the report's core?", "vi": "Tiến sĩ, em hỏi điều khán giả băn khoăn nhất trước. Trong 30 giây — điểm cốt lõi của báo cáo là gì?" },
+      { "speaker": "박사", "hangul": "결론부터 말씀드리면, 학습 격차는 시간 부족이 아니라 동기 부족에서 비롯됩니다. 1,200명을 분석한 결과, 동기가 높은 학생은 같은 자유 시간으로 1.6배 더 큰 효과를 보였습니다. 따라서 정책은 양이 아닌 질에 집중해야 한다는 것이 본 연구의 결론입니다.", "meaning": "To begin with the conclusion: the learning gap stems from motivation, not time. From 1,200 participants, high-motivation students showed a 1.6× effect on the same free time. Therefore, policy should focus on quality, not quantity.", "vi": "Bắt đầu từ kết luận: khoảng cách học tập bắt nguồn từ động cơ, không phải thời gian. Trên 1.200 người, học sinh động cơ cao cho hiệu quả lớn hơn 1,6 lần với cùng thời gian tự do. Vì vậy, chính sách nên tập trung vào chất lượng, không phải số lượng." },
+      { "speaker": "앵커", "hangul": "1.6배라는 숫자가 충격적입니다. 그렇다면 부모님들은 무엇을 바꿔야 합니까?", "meaning": "The 1.6 figure is striking. So what should parents change?", "vi": "Con số 1,6 lần thật ấn tượng. Vậy phụ huynh phải thay đổi gì?" },
+      { "speaker": "박사", "hangul": "두 가지입니다. 첫째, 자유 시간 자체보다 그 시간을 어떻게 채우는지에 함께 관여하는 것입니다. 둘째, '왜 이 책이 너에게 흥미로울까'와 같은 질문을 통해 동기를 함께 설계하는 것입니다.", "meaning": "Two things. First, engage in how free time is filled, not just how much there is. Second, co-design motivation through questions like 'why might this book interest you?'.", "vi": "Hai điều. Một, cùng tham gia vào cách lấp đầy thời gian tự do, không chỉ lượng thời gian. Hai, cùng thiết kế động cơ qua câu hỏi như 'vì sao quyển sách này có thể làm con thích?'." },
+      { "speaker": "앵커", "hangul": "정책 차원에서는 어떤 처방이 가능합니까?", "meaning": "On the policy front, what remedies are possible?", "vi": "Về mặt chính sách, biện pháp nào khả thi?" },
+      { "speaker": "박사", "hangul": "본원이 4월부터 시작하는 3개년 시범 사업이 그 답의 하나입니다. 농어촌 학습자 5,000명을 대상으로 동기 강화 모델을 도입할 계획입니다. 정책은 시간 늘리기보다 시간 채우기에 집중해야 한다고 판단됩니다.", "meaning": "Our three-year pilot, beginning in April, is one answer. We will introduce a motivation-strengthening model for 5,000 rural learners. Policy should focus on filling time, not extending it.", "vi": "Dự án thí điểm 3 năm của Viện, khởi động từ tháng 4, là một câu trả lời. Chúng tôi sẽ đưa mô hình tăng cường động cơ vào 5.000 học sinh nông thôn. Theo nhận định, chính sách nên tập trung vào lấp đầy thời gian, không phải kéo dài thời gian." },
+      { "speaker": "앵커", "hangul": "끝으로, 시청자분들께 한 말씀 부탁드립니다.", "meaning": "Finally, a closing word for viewers.", "vi": "Cuối cùng, xin Tiến sĩ một lời cho khán giả." },
+      { "speaker": "박사", "hangul": "교실의 자유 시간을 어떻게 설계하느냐가 우리 아이들의 미래를 결정합니다. 부모, 교사, 정책 입안자가 함께 그 설계에 관여해야 할 시점입니다. 감사합니다.", "meaning": "How classroom 'free time' is designed determines our children's future. Parents, teachers and policymakers must engage in that design together. Thank you.", "vi": "Cách thiết kế thời gian tự do trong lớp học sẽ định đoạt tương lai của trẻ em chúng ta. Đây là thời điểm phụ huynh, giáo viên và người làm chính sách cùng tham gia vào thiết kế đó. Xin cảm ơn." },
+      { "speaker": "앵커", "hangul": "박사님, 좋은 말씀 감사드립니다. 한국교육개발원 김민지 박사님이었습니다. 다음 소식 이어서 전해드리겠습니다.", "meaning": "Doctor, thank you for these insights. That was Dr. Kim Minji of KEDI. We continue with the next story.", "vi": "Cảm ơn Tiến sĩ. Đó là TS. Kim Minji của KEDI. Tiếp đến tin tiếp theo." }
+    ],
+    "roleplay_prompts": [
+      "Bạn được mời lên 뉴스9 4 phút sau khi tổ chức bạn công bố báo cáo gây sốc. Soạn 1 câu chào + 1 câu kết luận-trước (30s rule) + 2 câu evidence + 1 câu đề xuất. Tổng dưới 60 giây nói.",
+      "앵커 hỏi: '이 결과가 모든 학생에게 적용됩니까?' (kết quả áp dụng cho mọi học sinh?). Soạn 1 câu hedge có evidence — 'NHẤT THIẾT không phải tất cả'. Cụm vàng: '본 결과는 〜에 한해서는 일관됩니다만, 〜의 경우는 추가 검증이 필요합니다.'",
+      "Sau phỏng vấn live, 앵커 mời '한 말씀'. Soạn 2 câu kết — 1 câu thông điệp cốt lõi + 1 câu actionable. KHÔNG dùng 〜네요 / 〜죠 (đăng ký podcast); BẮT BUỘC 〜습니다."
+    ],
+    "register_notes": "TV news interview đăng ký 하십시오체 nghiêm: (1) Câu kết 〜습니다 / 〜십니다 / 〜겠습니다. KHÔNG '〜아요/어요' / '〜네요' / '〜죠' (đăng ký podcast). (2) Mở đầu: '안녕하십니까' (KHÔNG '안녕하세요'). (3) Tự xưng: '한국교육개발원 김민지입니다' — chức vụ + tên + 입니다 — KHÔNG '저는 〜이에요'. (4) Câu trả lời cấu trúc cố định: '결론부터 말씀드리면 〜입니다' — chuẩn TV. Phù hợp với tốc độ chú ý của khán giả. (5) Số liệu: '1.6배', '5,000명' đọc rõ — KHÔNG '약 1.6배 정도' (mềm hóa quá). (6) Khi gọi 앵커: '앵커님' nhưng quy ước rằng họ tự giới thiệu trước; trong cuộc đối thoại ngắn không nhắc tên 앵커, dùng câu impersonal. (7) Đóng câu trả lời cuối: '〜이라고 판단됩니다' / '〜라고 사료됩니다' (không cá nhân) HOẶC '〜이/가 본 연구의 결론입니다'. (8) Mời 앵커 đặt câu tiếp theo (rare from guest, but if needed): KHÔNG '다음 질문 주시죠'; KHÔNG nói gì, để 앵커 chủ động. (9) Tránh: 'um', 'ah', '음…' — TV recording xa filler; tập tới khi không có. Cụm chuyển ý chuẩn: '말씀드리자면', '구체적으로는', '정책 차원에서는'. (10) Nhịp: 90-100 글자/phút — chậm hơn podcast; cho phép viewer xử lý.",
+    "idiom_glosses": [
+      { "idiom": "결론부터 말씀드리면", "literal": "nói từ kết luận", "meaning": "(TV news) cụm chuẩn để bắt đầu câu trả lời quan trọng — báo trước cho viewer 'chuẩn bị nghe điểm chính'", "example": "결론부터 말씀드리면, 학습 격차는 동기 부족에서 비롯됩니다." },
+      { "idiom": "간단히 말씀드리면", "literal": "nói một cách đơn giản", "meaning": "(TV news) cụm chuẩn cho 시청자 — báo trước câu trả lời được đơn giản hóa cho hiểu nhanh", "example": "간단히 말씀드리면, 양이 아닌 질입니다." },
+      { "idiom": "본 연구의 결론입니다", "literal": "đây là kết luận của nghiên cứu này", "meaning": "(격식) cụm đóng câu mạnh — chuyển trách nhiệm phát ngôn lên 'nghiên cứu', không cá nhân", "example": "정책은 양이 아닌 질에 집중해야 한다는 것이 본 연구의 결론입니다." },
+      { "idiom": "한 말씀 부탁드립니다", "literal": "kính nhờ một lời", "meaning": "(TV news) cụm 앵커 mời câu kết — guest đáp với câu thông điệp + actionable", "example": "끝으로, 시청자분들께 한 말씀 부탁드립니다." }
+    ],
+    "cultural_notes_vi": "TV news Hàn là một thể loại nghiêm ngặt với cấu trúc thời lượng cứng và đăng ký formal nhất.\n\n(1) PHÂN PHE TV NEWS: KBS 뉴스9 (공영방송, balance), MBC 뉴스데스크 (truyền thống tả-trung), SBS 8뉴스 (commercial), JTBC 뉴스룸 (손석희 시기 trung-tả, hiện tại biến đổi), YTN/연합뉴스TV (cable). Khi guest học giả xuất hiện, chọn channel phù hợp với chuyên môn và độ chính xác của số liệu — sai số liệu trên KBS 뉴스9 là tin sốc cấp quốc gia.\n\n(2) TIME COMPRESSION CỰC KỲ NGHIÊM: trong 톱뉴스 (top news), guest có 3-5 phút TỐI ĐA cho cả phỏng vấn. Mỗi câu trả lời 60-90 giây. Vượt = 앵커 ngắt; bị ngắt = đọc là không hiểu media. QUY TẮC '결론부터' (kết luận trước) là chuẩn TV — vì viewer có thể chuyển kênh giữa câu.\n\n(3) 눈치 TRAP cho người Việt: 앵커 dùng câu hỏi 'hint' — '간단히' (đơn giản), '한 마디로' (một lời), '30초 안에' — đó là tín hiệu 'TÔI CÒN ÍT THỜI GIAN'. Người Việt mới làm TV Hàn thường ignored hint và trả lời chi tiết → 앵커 ngắt → guest mất uy tín. Cách đúng: ngay khi nghe hint, kết câu trong 30s.\n\n(4) STUDIO ETIQUETTE: arrive 1 tiếng trước; trang điểm bắt buộc nam và nữ; trang phục không họa tiết nhỏ (gây 'moiré' trên TV). Trên ghế studio: ngồi thẳng, chân đặt cố định (chân nhịp = micro thu được); tay đặt trên đùi hoặc bàn; mắt tới 앵커, KHÔNG camera (trừ khi 앵커 mời 'camera 향해 한 말씀').\n\n(5) GỮI BIỂU CẢM: TV Hàn phóng đại biểu cảm. Một nhếch mép = TV reading 'sarcasm'. Một nháy mắt = 'tired/uncomfortable'. Trang phục, biểu cảm, tone — tất cả đều phải 'serious-warm-controlled'.\n\n(6) LỖI THƯỜNG GẶP: (a) Cười khi nói số liệu (TV reading 'không nghiêm túc'); (b) trả lời '잘 모르겠습니다' (KHÔNG được — guest lên TV phải có câu trả lời, dù hedge — '추후 검토하여 답변드리겠습니다'); (c) chỉ vào 앵커 hoặc camera — vô lễ; (d) đùa nhẹ — không phù hợp news context; phù hợp talk show.\n\n(7) Tên các 앵커 cụ thể nhắc trong dialogue (KBS 뉴스9 류) là illustrative — danh sách 앵커 thay đổi theo seasonal renewal; học viên xác nhận 앵커 hiện tại của chương trình trước khi nhắc trong tác phẩm.",
+    "tip_advice_vi": "5 bước chuẩn bị 1 phỏng vấn TV news 4 phút trong 24h: (1) NHẬN TIN trưa: list 5 câu hỏi 앵커 sẽ hỏi (dựa trên topic và pattern channel); chuẩn bị 60-90s response cho mỗi câu. (2) TỐI: viết 'cheat card' 5 dòng — 1 hook (số liệu sốc), 1 kết luận, 1 evidence, 1 chính sách, 1 đóng. (3) MORNING: luyện trên video — đo thời gian; check trang phục (KHÔNG sọc, KHÔNG họa tiết); check biểu cảm. (4) ARRIVE 60 phút trước; trang điểm; check micro; gặp 앵커 5 phút trước phỏng vấn — họ sẽ nói pattern câu hỏi. (5) DURING: lắng nghe câu hỏi đầy đủ (KHÔNG ngắt); pause 1 giây; trả lời 결론부터; kết bằng câu mạnh. MẸO PHÁT ÂM: '결론부터' /결론부터/ rõ; '판단됩니다' /판단됨니다/; '비롯됩니다' /비롣뙴니다/ — kết câu chuẩn để viewer cảm 'điểm dừng'. ĐỪNG: (a) đến với điện thoại bật âm — micro studio thu được; (b) uống cà phê đậm trước — gây dry mouth; (c) đeo trang sức kêu — micro thu được; (d) trả lời câu '잘 모르겠습니다' — luôn có '추후 답변드리겠습니다'.",
+    "exercises": [
+      { "type": "fill-blank", "question": "결론부터 말씀드리면, 학습 격차는 시간 부족이 아니라 동기 부족에서 ___.", "answer": "비롯됩니다" },
+      { "type": "matching", "pairs": [
+        { "hangul": "앵커", "meaning": "phát thanh viên / anchor" },
+        { "hangul": "생방송", "meaning": "phát sóng trực tiếp" },
+        { "hangul": "톱뉴스", "meaning": "tin chính của bản tin" }
+      ], "instruction": "Nối thuật ngữ TV news với nghĩa Việt" },
+      { "type": "translation", "vietnamese": "Cách thiết kế thời gian tự do trong lớp học sẽ định đoạt tương lai của trẻ em chúng ta.", "hangul": "교실의 자유 시간을 어떻게 설계하느냐가 우리 아이들의 미래를 결정합니다." }
+    ]
+  },
+  {
+    "id": 127,
+    "level": "C1",
+    "title_vi": "Họp báo xin lỗi công khai chính thức (사과 기자회견)",
+    "title_en": "Institutional public apology press conference",
+    "intro_vi": "Bài này luyện một trong các thể loại nghi lễ công khai nghiêm trọng nhất của Hàn — 사과 기자회견. Đăng ký: 하십시오체 + 謙讓語 (khiêm nhường tối đa). Cấu trúc cố định 5 ô: (1) thừa nhận sự việc (인정), (2) bow 90 độ + lời xin lỗi (사과), (3) trách nhiệm cá nhân/tổ chức (책임), (4) biện pháp khắc phục cụ thể (재발 방지 대책), (5) bow lần hai. Câu mở chuẩn: '진심으로 사과드립니다' / '머리 숙여 사과드립니다'. Một câu sai = headline 24h cấp quốc gia.",
+    "vocabulary": [
+      { "hangul": "공식 사과 (公式 謝過)", "meaning": "xin lỗi chính thức (n.m. — gong-sik sa-gwa)" },
+      { "hangul": "사과문 (謝過文)", "meaning": "văn bản xin lỗi (n.m. — sa-gwa-mun)" },
+      { "hangul": "고개를 숙이다", "meaning": "cúi đầu (idiom-physical — go-gae-reul suk-i-da)" },
+      { "hangul": "머리 숙여 사과드리다", "meaning": "cúi đầu xin lỗi (formal — meo-ri suk-yeo)" },
+      { "hangul": "전적인 책임 (全的 責任)", "meaning": "trách nhiệm hoàn toàn (n.m. — jeon-jeo-gin chae-gim)" },
+      { "hangul": "재발 방지 대책 (再發 防止)", "meaning": "biện pháp ngăn tái phát (n.m. — jae-bal bang-ji)" },
+      { "hangul": "심려를 끼쳐 드리다", "meaning": "khiến quý vị lo lắng (humble — sim-ryeo)" },
+      { "hangul": "송구스럽다", "meaning": "rất hổ thẹn (formal-emotional — song-gu-seu-reop-da)" },
+      { "hangul": "변명의 여지가 없다", "meaning": "không có chỗ biện minh (idiom — byeon-myeong-ui yeo-ji)" },
+      { "hangul": "다시 한번 사과드리다", "meaning": "một lần nữa xin lỗi (closing repeat — da-si han-beon)" }
+    ],
+    "sentences": [
+      {
+        "korean": "먼저, 이번 일로 심려를 끼쳐 드린 점 머리 숙여 사과드립니다.",
+        "romanized": "Meonjeo, ibeon illo simryeoreul kkichyeo deurin jeom meori sukyeo sagwadrimnida.",
+        "en": "First and foremost, I bow my head in apology for the concern this matter has caused.",
+        "vi": "Trước tiên, tôi cúi đầu xin lỗi vì vụ việc này đã khiến quý vị lo lắng.",
+        "pronunciation_focus": ["먼저 → /먼저/", "심려를 끼쳐 → /심려를끼처/", "머리 숙여 사과드립니다 → /머리수겨사과드림니다/"]
+      },
+      {
+        "korean": "본 사안에 대한 모든 책임은 본원에 있으며, 어떠한 변명의 여지도 없습니다.",
+        "romanized": "Bon saane daehan modeun chaegimeun bonwone isseumyeo, eotteohan byeonmyeong-ui yeojido eopseumnida.",
+        "en": "All responsibility for this matter rests with the Institute; there is no room for excuses.",
+        "vi": "Toàn bộ trách nhiệm về vụ việc thuộc về Viện và không có chỗ cho biện minh.",
+        "pronunciation_focus": ["본 사안에 → /본사아네/", "어떠한 → /어떠한/", "변명의 여지도 → /변명의여지도/"]
+      },
+      {
+        "korean": "재발 방지를 위해 다음 세 가지 대책을 즉시 시행하겠습니다.",
+        "romanized": "Jaebal bangji-reul wihae da-eum se gaji daechaegeul jeuksi sihaenghagessseumnida.",
+        "en": "To prevent recurrence, we will immediately implement the following three measures.",
+        "vi": "Để ngăn tái phát, chúng tôi sẽ thi hành ngay ba biện pháp sau đây.",
+        "pronunciation_focus": ["재발 방지를 → /재발방지를/", "세 가지 대책 → /세가지대책/", "시행하겠습니다 → /시행하게씀니다/"]
+      },
+      {
+        "korean": "본 사태와 관련된 모든 결정과 책임은 원장이 직접 지겠습니다.",
+        "romanized": "Bon sataewa gwallyeondoen modeun gyeoljeong-gwa chaegimeun wonjangi jikjeop jigessseumnida.",
+        "en": "All decisions and responsibility regarding this incident will be borne directly by the President.",
+        "vi": "Mọi quyết định và trách nhiệm liên quan đến sự cố này sẽ do Viện trưởng trực tiếp gánh.",
+        "pronunciation_focus": ["사태와 관련된 → /사태와관련된/", "원장이 직접 → /원장이직쩝/", "지겠습니다 → /지게씀니다/"]
+      },
+      {
+        "korean": "다시 한번 진심으로 머리 숙여 사과드립니다.",
+        "romanized": "Dasi hanbeon jinsim-euro meori sukyeo sagwadrimnida.",
+        "en": "Once again, I bow my head in sincere apology.",
+        "vi": "Một lần nữa, tôi thành tâm cúi đầu xin lỗi.",
+        "pronunciation_focus": ["다시 한번 → /다시한번/", "진심으로 → /진심으로/", "머리 숙여 → /머리수겨/"]
+      }
+    ],
+    "dialogue": [
+      { "speaker": "원장 (단상에서)", "hangul": "안녕하십니까. 한국교육개발원 원장 박지훈입니다.", "meaning": "Good day. I am Park Jihoon, President of KEDI." },
+      { "speaker": "원장", "hangul": "먼저, 이번 일로 심려를 끼쳐 드린 점, 머리 숙여 사과드립니다.", "meaning": "First, for the concern this matter has caused, I bow my head in apology." },
+      { "speaker": "원장 (90도 인사 후 다시 일어남)", "hangul": "본 사안에 대한 모든 책임은 본원에 있습니다.", "meaning": "All responsibility for this matter rests with the Institute." },
+      { "speaker": "원장", "hangul": "다시 한번 진심으로 사과드립니다.", "meaning": "Once again, I sincerely apologise." }
+    ],
+    "dialogue_long": [
+      { "speaker": "사회자 (대변인실 직원)", "hangul": "지금부터 한국교육개발원 입장 발표 기자회견을 시작하겠습니다. 본 회견은 약 10분간 진행되며, 발표 후 별도의 질의응답 시간은 마련되지 않았음을 사전에 안내해 드립니다.", "meaning": "We shall now begin KEDI's statement press conference. The briefing will run about 10 minutes; no Q&A is scheduled afterwards, please note.", "vi": "Bây giờ chúng tôi xin bắt đầu họp báo công bố lập trường của Viện Phát triển Giáo dục Hàn Quốc. Buổi sẽ kéo dài khoảng 10 phút; xin thông báo trước rằng không có phần hỏi đáp sau buổi." },
+      { "speaker": "사회자", "hangul": "그러면 박지훈 원장님, 자리 부탁드리겠습니다.", "meaning": "Then, President Park Jihoon, please take the floor.", "vi": "Vậy xin mời Viện trưởng Park Jihoon lên phát biểu." },
+      { "speaker": "원장 (단상에 올라 깊은 인사 후 마이크 앞에 섬)", "hangul": "안녕하십니까. 한국교육개발원 원장 박지훈입니다. 오늘 이 자리에 서게 된 것은 매우 송구스러운 일이며, 본인을 비롯한 본원 모두에게 무거운 자리입니다.", "meaning": "Good day. I am Park Jihoon, President of KEDI. To stand here today is a deeply regretful occasion and a heavy moment for myself and for the entire Institute.", "vi": "Kính chào quý vị. Tôi là Park Jihoon, Viện trưởng Viện Phát triển Giáo dục Hàn Quốc. Việc tôi đứng ở đây hôm nay là một điều rất đáng xấu hổ và là khoảnh khắc nặng nề cho bản thân tôi cũng như toàn Viện." },
+      { "speaker": "원장", "hangul": "먼저, 지난 11월 본원이 발간한 학습 격차 보고서의 자료 일부에서 절차상 오류가 확인된 점, 그리고 그 사실이 외부 보도를 통해 알려진 이후 시민과 학부모, 교사 여러분, 그리고 협력 기관 모두에 큰 심려를 끼쳐 드린 점, 머리 숙여 사과드립니다.", "meaning": "First — that procedural errors were confirmed in part of the data of the learning-gap report published in November, and that this became known via outside reporting, has caused great concern to citizens, parents, teachers and our partner institutions. For all of this, I bow my head in apology.", "vi": "Trước tiên — về việc xác nhận có sai sót quy trình trong một phần dữ liệu của báo cáo khoảng cách học tập Viện công bố tháng 11, và việc sự thật đó được biết qua báo chí ngoài đã gây lo lắng lớn cho công dân, phụ huynh, giáo viên, cùng các cơ quan đối tác — vì tất cả những điều đó, tôi cúi đầu xin lỗi." },
+      { "speaker": "원장 (90도 인사 5초 유지 후 천천히 일어남)", "hangul": "본 사안에 대한 모든 책임은 본원에 있으며, 어떠한 변명의 여지도 없습니다. 자료 검증 절차를 충분히 두지 못한 것은 본원의 업무 관리 책임이며, 그 책임의 전적은 원장인 본인에게 있음을 분명히 밝힙니다.", "meaning": "All responsibility for this matter rests with the Institute, and there is no room for excuses. That we did not establish sufficient verification procedures is a failure of management on the Institute's part, and I make clear that the full weight of that responsibility rests with me, as President.", "vi": "Toàn bộ trách nhiệm về vụ việc thuộc về Viện và không có chỗ cho biện minh. Việc chưa thiết lập đủ quy trình kiểm chứng dữ liệu là trách nhiệm quản lý của Viện; tôi xin nói rõ toàn bộ trách nhiệm đó thuộc về tôi với tư cách Viện trưởng." },
+      { "speaker": "원장", "hangul": "재발 방지를 위해 다음 세 가지 대책을 즉시 시행하겠습니다. 첫째, 보고서 발간 전 외부 통계 전문가의 독립 검증 절차를 의무화합니다. 둘째, 자료 검증 위원회를 본원 내부에 신설하여 분기별 점검을 시행합니다. 셋째, 본 사안의 처리 과정을 백서로 정리하여 6개월 이내에 공개합니다.", "meaning": "To prevent recurrence, we will immediately enact three measures. First, mandatory independent verification by outside statisticians before any report is published. Second, establishment of an internal Data Verification Committee, with quarterly reviews. Third, the handling of this matter will be compiled into a white paper and made public within six months.", "vi": "Để ngăn tái phát, chúng tôi thi hành ngay ba biện pháp. Một, bắt buộc thẩm định độc lập bởi chuyên gia thống kê bên ngoài trước khi bất kỳ báo cáo nào được công bố. Hai, thành lập Ủy ban Kiểm chứng Dữ liệu nội bộ với rà soát theo quý. Ba, toàn bộ quá trình xử lý vụ việc sẽ được tổng hợp thành sách trắng và công khai trong 6 tháng." },
+      { "speaker": "원장", "hangul": "또한 본인을 포함한 관련 책임자에 대한 인사 조치는 이사회의 검토를 거쳐 다음 달 안에 결정될 예정이며, 그 결과 역시 공개하겠습니다.", "meaning": "Furthermore, personnel actions concerning myself and other responsible parties will be decided next month following Board review, and the results will likewise be made public.", "vi": "Ngoài ra, các biện pháp nhân sự đối với bản thân tôi và các bên có trách nhiệm liên quan sẽ được quyết định trong tháng tới sau khi Hội đồng quản trị xem xét, và kết quả cũng sẽ được công khai." },
+      { "speaker": "원장", "hangul": "오늘 이 자리에 서서 어떤 변명도 드리지 않겠습니다. 본 사안의 무게는 사과만으로 해소될 수 있는 것이 아님을 잘 알고 있으며, 본원이 다시 신뢰를 얻기까지는 오랜 시간과 구체적 행동이 필요하다는 점, 무겁게 받아들이고 있습니다.", "meaning": "Standing here today, I will offer no excuse. I know full well that the weight of this matter cannot be resolved by apology alone, and that earning back trust will require long time and concrete action — I receive this with the gravity it deserves.", "vi": "Đứng ở đây hôm nay, tôi sẽ không đưa ra bất kỳ biện minh nào. Tôi hiểu rất rõ rằng sức nặng của vụ việc không thể giải quyết chỉ bằng lời xin lỗi, và rằng để Viện lấy lại niềm tin sẽ cần thời gian dài cùng hành động cụ thể — tôi tiếp nhận điều này với sự nghiêm trọng đáng có." },
+      { "speaker": "원장 (마지막 인사 직전)", "hangul": "다시 한번 진심으로 머리 숙여 사과드립니다.", "meaning": "Once again, I bow my head in sincere apology.", "vi": "Một lần nữa, tôi thành tâm cúi đầu xin lỗi." },
+      { "speaker": "원장 (90도 인사 7초 유지 후 단상에서 내려옴)", "hangul": "감사합니다.", "meaning": "Thank you.", "vi": "Xin cảm ơn." },
+      { "speaker": "사회자", "hangul": "이상으로 한국교육개발원 입장 발표 기자회견을 마치겠습니다. 추가 문의는 본원 대변인실로 부탁드립니다.", "meaning": "This concludes KEDI's statement press conference. Further inquiries to our spokesperson's office, please.", "vi": "Đến đây chúng tôi xin kết thúc họp báo công bố lập trường của Viện. Mọi thắc mắc thêm xin gửi về văn phòng phát ngôn của Viện." }
+    ],
+    "roleplay_prompts": [
+      "Tổ chức bạn vừa rò rỉ dữ liệu cá nhân 50,000 người. Soạn 사과문 5 đoạn theo cấu trúc cố định: 인정 → 사과 (cúi 90 độ) → 책임 → 재발 방지 대책 (3 biện pháp) → 사과 lại + cúi. Tổng thời gian nói: 8-10 phút.",
+      "Trong 사과 기자회견, một phóng viên chen vào giữa với câu hỏi gay gắt — quy ước 사과 기자회견 thường KHÔNG có Q&A. Soạn 1 câu của 사회자 ngắt và mời phóng viên gửi câu hỏi qua 대변인실. Cụm vàng: '본 회견은 입장 발표만 진행되며, 질의응답은 별도 마련되지 않았습니다.'",
+      "Soạn 사과문 viết kèm họp báo (text bản giấy + PDF) — 1 trang, 4 đoạn. Văn bản phải khớp với phát biểu nói nhưng cô đọng hơn (không bow chỉ thị)."
+    ],
+    "register_notes": "사과 기자회견 — đăng ký 하십시오체 + 謙讓語 cực đại: (1) Câu mở: '안녕하십니까' + chức vụ + tên + 입니다 — chuẩn. KHÔNG '안녕하세요' (sai register cho crisis). (2) Cụm core 'sám hối': '머리 숙여 사과드립니다' — chuẩn nhất. KHÔNG '죄송합니다' (yếu, kiểu cá nhân nhỏ); KHÔNG '용서해 주십시오' (over-emotional). (3) BOW PHYSICAL: 90 độ, giữ 5-7 giây — cấp Hàn quy ước. Ngẩng quá nhanh = bị đọc 'không thành tâm'. (4) Cấu trúc: 인정 (thừa nhận sự việc) phải đến TRƯỚC 사과 — không 사과 trước rồi giải thích, vì đọc là 'tránh né'. (5) Cụm trách nhiệm: '전적인 책임' / '모든 책임' / '직접 지겠습니다'. KHÔNG '관련된 책임' (yếu). (6) 재발 방지 대책 BẮT BUỘC cụ thể, đánh số (첫째/둘째/셋째). Câu mơ hồ '최선을 다하겠습니다' = TIN TỨC 24h vì viewer Hàn coi là không có biện pháp thật. (7) Câu kết: '다시 한번 진심으로 머리 숙여 사과드립니다' + bow lần 2 — chuẩn. KHÔNG '오늘 이 자리에 서주셔서 감사합니다' (vô lý, sai). (8) Tránh: 'I think', 'um', 'maybe', cười, nhếch môi, nháy mắt — TV phóng đại tất cả. (9) NGÔI XƯNG: KHÔNG '저는' / '제가' chen vào (cá nhân hóa quá); thay '본인' (formal self), '본원' (institution self), '원장' (chức vụ self). (10) Sau 사과 기자회견: KHÔNG nói chuyện với phóng viên ngoài hành lang; KHÔNG cười; rời đi nghiêm trang.",
+    "idiom_glosses": [
+      { "idiom": "머리 숙여 사과드리다", "literal": "cúi đầu xin lỗi", "meaning": "(매우 격식, 사과 기자회견 전용) cụm chuẩn cao nhất của xin lỗi công khai — kèm bow physical 90 độ", "example": "이번 일로 심려를 끼쳐 드린 점 머리 숙여 사과드립니다." },
+      { "idiom": "변명의 여지가 없다", "literal": "không có chỗ biện minh", "meaning": "(격식, 사과) cụm thừa nhận trách nhiệm tuyệt đối — bắt buộc trong 사과문 nghiêm trọng", "example": "본 사안에 대한 모든 책임은 본원에 있으며, 어떠한 변명의 여지도 없습니다." },
+      { "idiom": "전적인 책임을 지다", "literal": "gánh trách nhiệm hoàn toàn", "meaning": "(매우 격식) cụm chuyển trách nhiệm về cá nhân/tổ chức — KHÔNG '관련된 책임' (yếu)", "example": "그 책임의 전적은 원장인 본인에게 있음을 분명히 밝힙니다." },
+      { "idiom": "재발 방지 대책", "literal": "biện pháp ngăn tái phát", "meaning": "(공식) cụm cấu trúc chuẩn — phải đánh số (첫째/둘째/셋째) với biện pháp cụ thể, không trừu tượng", "example": "재발 방지를 위해 다음 세 가지 대책을 즉시 시행하겠습니다." }
+    ],
+    "cultural_notes_vi": "사과 기자회견 ở Hàn là một thể loại nghi lễ độc đáo và cực kỳ nghiêm — không có tương đương trực tiếp ở Việt Nam, và khác xa cả Mỹ và Nhật.\n\n(1) BOW GRADIENT: ở Hàn, độ sâu cúi đầu mang ý nghĩa định lượng. 15° = chào lịch sự bình thường; 30° = cảm ơn / xin lỗi nhỏ; 45° = lỗi nghiêm trọng cá nhân; 90° = lỗi công khai cấp tổ chức. Một CEO cúi 30° trong họp báo về tử nạn nhân viên = headline 'X 가벼운 사과' = thiệt hại lớn hơn không xin lỗi. Một CEO cúi 90° giữ 7 giây = ổn. Quy ước: chờ phóng viên ngẩng đầu (sau khi chụp ảnh) trước khi bạn ngẩng đầu.\n\n(2) TIMING TUYỆT ĐỐI: 사과 기자회견 phải diễn ra trong 24-48 giờ kể từ khi sự việc bùng nổ. Trễ = 'không thành tâm'; tổ chức bị đọc là 'tính toán PR'. Trong 24h đầu, tổ chức phải: (a) công bố 사과문 viết qua 보도자료, (b) gọi 사과 기자회견 cho 36-48h sau, (c) ngừng mọi hoạt động không cốt yếu (mạng xã hội, marketing).\n\n(3) 눈치 TRAP cho người Việt — RẤT NGHIÊM: trong 사과 기자회견, KHÔNG được biểu cảm gì ngoài serious-grim. Một micro-expression nhếch môi = TV slow-mo, viral 24h. Một câu 'thực sự rất buồn' kèm tiếng cười nhẹ ngại ngùng = headline '울먹이며 웃었다, 시민 분노'. Người Việt có habit cười nhẹ trong tình huống bối rối — Hàn TV reading là 'mocking the public'. Tập kiểm soát mặt 7 phút trước gương trước.\n\n(4) NGÔN NGỮ TUYỆT ĐỐI KHÔNG ĐƯỢC: 'I think', 'maybe', 'I'll try', 'we hope', '~ㄹ까 합니다' (mơ hồ), '아마' (có lẽ). PHẢI: 'I will' / '시행하겠습니다' / '책임지겠습니다' (chắc chắn). Người Việt mới làm crisis comm Hàn dễ rơi vào hedge — bị đọc là 'không cam kết'.\n\n(5) FOLLOW-UP THIẾT YẾU: trong 1 tuần sau 사과 기자회견, tổ chức phải có MIN 3 hành động cụ thể visible — (a) báo cáo 백서 đầu tiên (interim), (b) sa thải / luân chuyển ít nhất 1 nhân sự cao cấp (nếu nghiêm trọng), (c) liên lạc trực tiếp với người bị ảnh hưởng. Thiếu = 'sám hối giả'; báo Hàn (한겨레, 시사IN) sẽ khui trong 1-2 tuần.\n\n(6) NGÔN NGỮ NHẠY CẢM: KHÔNG '실수' (sai sót — quá nhẹ); KHÔNG '오해' (hiểu lầm — đẩy lỗi sang người khác); KHÔNG '유감' (lấy làm tiếc — KHÔNG phải xin lỗi, là expressing regret kiểu chính trị quốc tế). PHẢI: '잘못' (lỗi sai), '책임' (trách nhiệm), '사과드립니다' (xin lỗi). Một quan chức Hàn từng dùng '유감' thay '사과' = bão dư luận trong 72h.\n\n(7) Tên các tổ chức, người cụ thể nhắc trong dialogue (KEDI, 박지훈 원장) là illustrative — học viên KHÔNG được dùng nguyên trong tác phẩm thực, vì 사과 thực sự gắn với một sự kiện cụ thể của tổ chức cụ thể; nhầm = vô tình bôi nhọ.",
+    "tip_advice_vi": "Quy trình chuẩn bị 1 사과 기자회견 trong 24-48h: (1) GIỜ 1-3: bộ phận 법무팀 + 홍보실 + 대변인실 ngồi cùng — write 사과문 1 trang. KHÔNG hedge. Mỗi câu được rà 3 lần. (2) GIỜ 4-6: chốt 3 biện pháp 재발 방지 cụ thể — phải actionable trong 30 ngày. Mơ hồ = scandal lần 2. (3) GIỜ 7-12: CEO/원장 luyện đọc 사과문 trước gương 5 lần — không vấp; check biểu cảm; tập bow 90° giữ 7 giây. (4) GIỜ 13-18: book 사과실 (phòng họp báo trang trí formal); chuẩn bị slide '1번 사과문, 2번 재발 방지 대책'. KHÔNG slide trang trí. (5) GIỜ 19-24: gửi 보도자료 trước 24h kèm thông báo họp báo. Note: NO Q&A. Lý do: trong 사과 기자회견 nghiêm, Q&A không phù hợp; nó kéo dài tổn thương. (6) GIỜ 25-36 (ngày thứ 2): họp báo. CEO đến 30 phút trước; check micro; KHÔNG ăn no; uống ấm. (7) GIỜ 37-48 (sau): thực hiện ngay biện pháp đã hứa — nếu hứa 'họp Hội đồng tuần này', họp tuần này. MẸO PHÁT ÂM (đặc thù 사과): '머리 숙여 사과드립니다' /머리수겨사과드림니다/ — kéo nhẹ 'ㅁ' cuối; '심려를 끼쳐 드린' /심려를끼처드린/ — không vấp giữa 끼쳐; '재발 방지 대책' /재발방지대책/ trôi chảy. ĐỪNG: (a) đọc giấy — phải nhìn camera 90% thời gian; (b) cười dù chỉ một micro — viral; (c) 'I'll do my best' (yếu) — phải nói chính xác sẽ làm gì; (d) cãi với phóng viên ngoài hành lang — quy ước im lặng + đi thẳng đến xe.",
+    "exercises": [
+      { "type": "fill-blank", "question": "먼저, 이번 일로 ___를 끼쳐 드린 점 머리 숙여 사과드립니다.", "answer": "심려" },
+      { "type": "matching", "pairs": [
+        { "hangul": "머리 숙여 사과드리다", "meaning": "cúi đầu xin lỗi (90 độ)" },
+        { "hangul": "변명의 여지가 없다", "meaning": "không có chỗ biện minh" },
+        { "hangul": "재발 방지 대책", "meaning": "biện pháp ngăn tái phát" }
+      ], "instruction": "Nối cụm 사과 기자회견 với nghĩa Việt" },
+      { "type": "translation", "vietnamese": "Toàn bộ trách nhiệm về vụ việc thuộc về Viện và không có chỗ cho biện minh.", "hangul": "본 사안에 대한 모든 책임은 본원에 있으며, 어떠한 변명의 여지도 없습니다." }
+    ]
+  },
+  {
+    "id": 128,
+    "level": "C1",
+    "title_vi": "Họp báo nền (백브리핑) — không trích dẫn trực tiếp",
+    "title_en": "Background briefing — off-the-record context",
+    "intro_vi": "백브리핑 là họp gặp giữa 출입처 phóng viên và 대변인/관계자, KHÔNG để trích dẫn trực tiếp. Đăng ký: 하십시오체 nhưng giảm rườm; cho phép giải thích nội bộ. Quy ước cố định: 'on the record' (cho trích nguyên) / 'on background' (chỉ trích nội dung không nêu nguồn) / 'off the record' (KHÔNG được dùng). Không được vi phạm — vi phạm = 출입처 đóng cửa với báo đó. Trục: '오늘 자리는 백브리핑임을 사전에 안내드립니다', '이 부분은 인용하지 말아 주시기 바랍니다'.",
+    "vocabulary": [
+      { "hangul": "백브리핑 (back briefing)", "meaning": "họp báo nền không trích (loanword — baek-beu-ri-ping)" },
+      { "hangul": "오프 더 레코드 (off-the-record)", "meaning": "không công bố (loanword — o-peu-deo-le-ko-deu)" },
+      { "hangul": "온 더 레코드 (on-the-record)", "meaning": "có thể trích (loanword — on-deo-le-ko-deu)" },
+      { "hangul": "익명 처리 (匿名 處理)", "meaning": "xử lý ẩn danh (n.m. — ig-myeong cheo-ri)" },
+      { "hangul": "관계자 (關係者)", "meaning": "người liên quan / nguồn (n.m. — gwan-gye-ja)" },
+      { "hangul": "당국자 (當局者)", "meaning": "quan chức (đề cập ẩn danh) (n.m. — dang-guk-ja)" },
+      { "hangul": "정부 소식통", "meaning": "nguồn tin chính phủ (n.m. — jeong-bu so-sik-tong)" },
+      { "hangul": "맥락을 이해하는 것이 중요하다", "meaning": "hiểu bối cảnh là quan trọng (idiom — maeng-na-geul ihae)" },
+      { "hangul": "공식 발표 전 (公式 發表 前)", "meaning": "trước khi công bố chính thức (n.m. — gong-sik bal-pyo jeon)" },
+      { "hangul": "엠바고 깨다", "meaning": "phá embargo (idiom — em-ba-go kkae-da)" }
+    ],
+    "sentences": [
+      {
+        "korean": "오늘 이 자리는 백브리핑임을 사전에 안내드립니다.",
+        "romanized": "Oneul i jarineun baekbeuripingimeul sajeone annaedeurimnida.",
+        "en": "I note in advance that today's meeting is a background briefing.",
+        "vi": "Tôi xin thông báo trước rằng buổi hôm nay là họp báo nền.",
+        "pronunciation_focus": ["오늘 이 자리는 → /오느리자리는/", "백브리핑임을 → /백브리핑이믈/", "안내드립니다 → /안내드림니다/"]
+      },
+      {
+        "korean": "본 발언 중 일부는 인용하지 말아 주시기 바랍니다.",
+        "romanized": "Bon baleon jung ilbu-neun inyong-haji marayajusi-gi baramnida.",
+        "en": "Please do not quote portions of these remarks.",
+        "vi": "Một phần phát ngôn xin quý vị không trích dẫn.",
+        "pronunciation_focus": ["본 발언 중 → /본바런중/", "인용하지 말아 → /이뇽하지마라/", "주시기 바랍니다 → /주시기바람니다/"]
+      },
+      {
+        "korean": "맥락을 함께 이해해 주시는 것이 중요하다고 판단됩니다.",
+        "romanized": "Maengnageul hamkke ihaehae jusineun geosi jung-yohadago pandanboemnida.",
+        "en": "Understanding the context together is, in our view, important.",
+        "vi": "Theo nhận định, việc cùng hiểu bối cảnh là điều quan trọng.",
+        "pronunciation_focus": ["맥락을 → /맹나글/", "함께 이해해 → /함께이해해/", "판단됩니다 → /판단됨니다/"]
+      },
+      {
+        "korean": "이 부분은 본원 관계자 익명으로 처리해 주시면 감사하겠습니다.",
+        "romanized": "I bubuneun bonwon gwangyeja igmyeongeuro cheorihae jusimyeon gamsahagessseumnida.",
+        "en": "I would be grateful if this portion were handled anonymously, attributed to 'an Institute source'.",
+        "vi": "Phần này xin quý vị xử lý ẩn danh — quy về 'nguồn của Viện' — tôi xin cảm ơn.",
+        "pronunciation_focus": ["이 부분은 → /이부부는/", "관계자 익명으로 → /관계자익명으로/", "감사하겠습니다 → /감사하게씀니다/"]
+      },
+      {
+        "korean": "공식 발표는 다음 주 화요일로 예정되어 있으니 그때까지 엠바고로 처리해 주시기 바랍니다.",
+        "romanized": "Gongsik balpyoneun da-eum ju hwayoillo yejeongdoeo isseu-ni geuttaekkaji embago-ro cheorihae jusi-gi baramnida.",
+        "en": "The official announcement is scheduled for Tuesday next week; please treat the matter under embargo until then.",
+        "vi": "Công bố chính thức dự kiến vào thứ ba tuần tới; xin quý vị xử lý theo embargo đến lúc đó.",
+        "pronunciation_focus": ["공식 발표는 → /공식빨표는/", "예정되어 있으니 → /예정되어이쓰니/", "엠바고로 처리 → /엠바고로처리/"]
+      }
+    ],
+    "dialogue": [
+      { "speaker": "대변인", "hangul": "오늘 자리는 백브리핑입니다. 인용은 '관계자' 익명으로 부탁드립니다.", "meaning": "Today's meeting is a background briefing. Please attribute as 'a source', anonymously." },
+      { "speaker": "기자", "hangul": "예, 알겠습니다. 데이터 부분에 대해 좀 더 풀어 주실 수 있겠습니까?", "meaning": "Understood. Could you elaborate on the data portion?" },
+      { "speaker": "대변인", "hangul": "예. 이 부분은 공식 발표 전이라 맥락만 이해해 주시면 됩니다.", "meaning": "Yes. As this is pre-announcement, just grasp the context." },
+      { "speaker": "기자", "hangul": "감사합니다. 엠바고는 언제까지입니까?", "meaning": "Thank you. Until when does the embargo apply?" }
+    ],
+    "dialogue_long": [
+      { "speaker": "대변인 (KEDI 대변인실, 출입처 5명 모임)", "hangul": "오늘 시간 내 주셔서 감사합니다. 미리 두 가지 안내드리겠습니다. 첫째, 오늘 자리는 백브리핑입니다. 둘째, 모든 발언은 '본원 관계자' 익명으로 처리해 주시기 바랍니다.", "meaning": "Thank you for joining today. Two notes upfront. First, this is a background briefing. Second, all remarks should be attributed anonymously as 'an Institute source.'", "vi": "Cảm ơn quý vị đã dành thời gian. Hai thông báo trước. Một, buổi hôm nay là họp báo nền. Hai, mọi phát ngôn xin quý vị xử lý ẩn danh, quy về 'nguồn của Viện'." },
+      { "speaker": "기자 (한겨레)", "hangul": "예, 이해했습니다. 다음 주 발표 자료에 대해 미리 맥락을 들을 수 있을까요?", "meaning": "Understood. May we get context on next week's release in advance?", "vi": "Vâng, đã hiểu. Mình có thể nghe bối cảnh trước về tài liệu công bố tuần sau không?" },
+      { "speaker": "대변인", "hangul": "예. 다음 주 화요일 오전 10시에 학습 격차 시범 사업 백서를 공개할 예정입니다. 백서는 5월부터 시작하는 본 사업의 운영 방안과 1차 평가 지표를 담고 있습니다.", "meaning": "Yes. The pilot-programme white paper will be released Tuesday next week at 10 AM. It contains the operational plan starting May and the first set of evaluation indicators.", "vi": "Vâng. Sách trắng dự án thí điểm khoảng cách học tập sẽ công bố thứ ba tuần sau lúc 10h sáng. Sách trắng bao gồm phương án vận hành bắt đầu từ tháng 5 và bộ chỉ số đánh giá pha 1." },
+      { "speaker": "기자 (조선일보)", "hangul": "1차 평가 지표 중 가장 핵심이 되는 것은 무엇입니까?", "meaning": "Of the first-stage indicators, which is most central?", "vi": "Trong các chỉ số pha 1, chỉ số nào trọng tâm nhất?" },
+      { "speaker": "대변인", "hangul": "이 부분은 인용하지 말아 주시기 바랍니다 — 핵심 지표는 '학습자 동기 변화'입니다. 자율성 변화나 성취 변화가 아닌 동기 변수 자체를 평가 기준으로 둔 것이 본 사업의 차별점입니다.", "meaning": "Please do not quote this — the key indicator is 'change in learner motivation.' Setting the motivation variable itself, rather than autonomy or achievement, as the assessment criterion is the project's distinctive feature.", "vi": "Phần này xin không trích — chỉ số chính là 'thay đổi động cơ học sinh'. Việc đặt biến động cơ làm tiêu chí đánh giá, thay vì thay đổi tự chủ hay thành tích, là điểm khác biệt của dự án." },
+      { "speaker": "기자 (중앙일보)", "hangul": "이를 '관계자' 익명으로 한 줄 인용해도 되겠습니까?", "meaning": "May we use this as a one-line quote attributed to 'a source'?", "vi": "Mình có thể dùng làm một câu trích, quy về 'nguồn', được không?" },
+      { "speaker": "대변인", "hangul": "한 줄 정도 익명 처리하시면 가능합니다. 다만 '동기 변수를 평가 기준으로 두었다'까지만 인용해 주시고, 그 이상의 세부는 화요일 공식 발표 후에 부탁드립니다.", "meaning": "A single anonymous line is acceptable. Please limit the quote to 'set the motivation variable as the assessment criterion'; further detail after Tuesday's official announcement.", "vi": "Một câu xử lý ẩn danh thì được. Xin trích chỉ đến 'đặt biến động cơ làm tiêu chí đánh giá'; phần chi tiết hơn xin chờ sau công bố chính thức thứ ba." },
+      { "speaker": "기자 (한겨레)", "hangul": "엠바고는 화요일 오전 10시까지로 이해하면 될까요?", "meaning": "Embargo until Tuesday 10 AM, then?", "vi": "Vậy embargo đến 10h sáng thứ ba, đúng chứ?" },
+      { "speaker": "대변인", "hangul": "예. 그 시점까지는 백서 내용 인용 불가입니다. 단, 오늘 백브리핑에서 들으신 일반 맥락 — '학습 격차 사업이 5월부터 시작된다' 정도의 사실관계 — 은 이번 주 보도해 주셔도 됩니다.", "meaning": "Yes. Until that point, the white-paper contents cannot be quoted. However, the general context you heard today — facts at the level of 'the gap programme begins in May' — may be reported this week.", "vi": "Vâng. Đến lúc đó, nội dung sách trắng không được trích. Tuy nhiên, bối cảnh chung quý vị nghe hôm nay — sự thật ở mức 'dự án khoảng cách học tập khởi động từ tháng 5' — có thể đưa tin tuần này." },
+      { "speaker": "기자 (조선일보)", "hangul": "한 가지 더 — 사업 예산 규모에 대한 일반 정보도 주실 수 있을까요?", "meaning": "One more — could you share general information on the project budget?", "vi": "Một điều nữa — có thể chia sẻ thông tin chung về quy mô ngân sách dự án không?" },
+      { "speaker": "대변인", "hangul": "예산은 5년간 12억 5천만 원으로 책정되어 있습니다. 이 부분은 '관계자' 익명으로 보도하셔도 됩니다. 백서에서도 동일한 수치가 공개됩니다.", "meaning": "The budget stands at 1.25 billion KRW over five years. This may be reported anonymously via 'a source'; the same figure is in the white paper.", "vi": "Ngân sách định 1,25 tỷ won trong 5 năm. Phần này có thể đưa tin ẩn danh qua 'nguồn'; con số tương tự sẽ có trong sách trắng." },
+      { "speaker": "기자 (한겨레)", "hangul": "감사합니다. 추가 질문이 생기면 화요일 공식 발표 전후로 다시 문의드리겠습니다.", "meaning": "Thank you. If further questions arise, we will reach out around Tuesday's announcement.", "vi": "Cảm ơn bà. Nếu có thêm câu hỏi mình sẽ liên hệ lại quanh thời điểm công bố thứ ba." },
+      { "speaker": "대변인", "hangul": "예. 오늘 들으신 내용 가운데 인용 범위가 헷갈리시면 보도 전에 본실로 한 번 확인 부탁드립니다. 잘못된 인용은 양측 모두에게 부담이 되니까요.", "meaning": "Yes. If quoting boundaries are unclear, please confirm with us before publication. Mis-quotation burdens both sides.", "vi": "Vâng. Nếu phạm vi trích lẫn lộn, xin liên hệ chúng tôi trước khi đăng. Trích sai gánh nặng cho cả hai bên." }
+    ],
+    "roleplay_prompts": [
+      "Bạn là 대변인 mở 백브리핑 với 5 phóng viên xếp hạng. Soạn 4 câu mở phiên — chào + thông báo 'on background' + quy ước 'attribution: 관계자' + cảnh báo embargo 다음 주 화요일.",
+      "Phóng viên hỏi câu vượt phạm vi — hỏi chi tiết người chịu trách nhiệm cá nhân. Bạn từ chối lịch sự. Cụm vàng: '그 부분은 본 백브리핑의 범위를 벗어납니다. 화요일 공식 발표 자료에서 확인하실 수 있겠습니다.'",
+      "Soạn email gửi sau 백브리핑 cho 5 phóng viên — tóm tắt điểm đã chia sẻ + xác nhận quy ước attribution + thời gian embargo + liên hệ confirm trước đăng. KHÔNG giấy tờ chính thức (vì trên record sẽ chuyển đổi nature)."
+    ],
+    "register_notes": "백브리핑 đăng ký 하십시오체 với một vài đặc thù: (1) Câu kết 〜습니다 / 〜겠습니다 — chuẩn TV news. (2) NHƯNG cho phép giải thích nội bộ dài hơn (background); vì thế câu có thể dài 80-100 글자, không như 60 글자 của TV. (3) BẮT BUỘC mở đầu rõ: '오늘 자리는 백브리핑임을 안내드립니다' — KHÔNG bỏ; nếu phóng viên trích sai sau đó, mình KHÔNG có defense. (4) KHI yêu cầu off-record: '이 부분은 인용하지 말아 주시기 바랍니다' (đơn giản, lịch sự) HOẶC '이 부분은 백그라운드로만 처리해 주시기 바랍니다' (kỹ thuật hơn). (5) KHI cho phép trích ẩn danh: '관계자 익명으로 처리해 주시면 감사하겠습니다' / '본원 관계자로 인용 가능합니다'. (6) KHI ép buộc embargo: 'X일 X시까지 엠바고로 처리해 주시기 바랍니다'. (7) Quy ước về 'attribution': 4 cấp — '관계자' (anonymous source), '본원 관계자' (institute source), '〜팀 관계자' (department source), '대변인' (spokesperson — on the record). Phải định trước. (8) Câu kết phiên: 'X일 X시 공식 발표 전후로 추가 문의 부탁드립니다' — chuẩn closing. (9) Tránh: '편하게 말씀하세요' (off-topic, vi phạm formality); '이건 비밀입니다' (vô lý, vì có 5 phóng viên trong phòng).",
+    "idiom_glosses": [
+      { "idiom": "오늘 자리는 백브리핑임을 안내드립니다", "literal": "tôi thông báo buổi hôm nay là 백브리핑", "meaning": "(매우 격식, 백브리핑 도입부) cụm cố định bắt buộc — bỏ = không có defense nếu phóng viên trích sai", "example": "오늘 자리는 백브리핑임을 사전에 안내드립니다." },
+      { "idiom": "관계자 익명으로 처리하다", "literal": "xử lý ẩn danh quy về 'nguồn'", "meaning": "(공식 PR) cụm chuẩn cho attribution agreement — phóng viên quote nội dung mà không lộ tên nguồn", "example": "이 부분은 본원 관계자 익명으로 처리해 주시면 감사하겠습니다." },
+      { "idiom": "엠바고로 처리하다", "literal": "xử lý theo embargo", "meaning": "(공식) áp giới hạn thời gian — vi phạm = 출입처 đóng cửa", "example": "공식 발표 전까지 엠바고로 처리해 주시기 바랍니다." },
+      { "idiom": "맥락을 함께 이해하다", "literal": "cùng hiểu bối cảnh", "meaning": "(백브리핑 전용) cụm chỉ rõ rằng nội dung được chia sẻ là 'context' không 'fact for direct quote'", "example": "맥락을 함께 이해해 주시는 것이 중요하다고 판단됩니다." }
+    ],
+    "cultural_notes_vi": "백브리핑 là một thể loại 'middle-ground' giữa họp báo công khai và đối thoại không chính thức — và là một institution đặc thù của 출입처 Hàn.\n\n(1) HỆ THỐNG 출입처: ở Hàn, 'press pool' đăng ký theo cơ quan — 청와대 출입처, 국회 출입처, 대법원 출입처, 각 부처 출입처, KEDI 출입처 v.v. Mỗi 출입처 có 5-30 phóng viên cố định. 백브리핑 chỉ dành cho 출입처 — KHÔNG mở cho phóng viên ngoài. Người Việt mới làm PR ở Hàn dễ gửi thông báo 백브리핑 rộng — vi phạm nghiêm trọng.\n\n(2) ATTRIBUTION GRADIENT: 4 cấp với consequence khác nhau cho cả nguồn và phóng viên. (a) 'on the record' / 대변인 quote — full name, full quote OK; (b) 'on background' / '본원 관계자 익명' — quote OK, name NOT; (c) 'deep background' / '정부 소식통' — paraphrase OK, direct quote NOT; (d) 'off the record' — KHÔNG được dùng dưới hình thức nào, kể cả paraphrase. Phóng viên Hàn quen các cấp này; 대변인 phải gọi tên cấp trước phát ngôn.\n\n(3) 눈치 TRAP cho người Việt: trong 백브리핑, có thể có lúc phóng viên hỏi 'Tôi có thể nói thêm gì với editor?' — đó KHÔNG phải sự tò mò, mà là yêu cầu chính thức về phạm vi share. Trả lời cụ thể: 'editor 한 분께만 백그라운드로, 데스크 회의 외 공개 금지' — chuẩn. Mơ hồ '편하게요' = bị diễn giải tự, có thể leak.\n\n(4) VI PHẠM EMBARGO: là tội nặng. Một phóng viên vi phạm = 출입처 cấm 1-3 tháng cho cả tờ báo, không chỉ cá nhân; danh tiếng phóng viên hỏng. Tổ chức cũng phải chịu trách nhiệm — nếu lỗi kỹ thuật của 대변인실 (ví dụ gửi sớm) = 대변인 phải xin lỗi 출입처 chính thức. Quy ước nghiêm.\n\n(5) MOTIVATION CHO 백브리핑: tổ chức dùng 백브리핑 để (a) 'trial balloon' (test reaction trước khi công bố); (b) prebuttal (đối phó tin xấu sắp ra); (c) 'context-setting' (làm phóng viên hiểu sâu để không trích sai sau khi công bố). Người Việt thường dùng cho mục đích (c) đầu tiên — đó là cách an toàn nhất.\n\n(6) TIMING TỐI ƯU: 24-48h trước công bố chính thức. Quá sớm = leak risk; quá muộn = phóng viên không có thời gian thu thập context.\n\n(7) Tên các báo cụ thể nhắc trong dialogue (한겨레, 조선일보, 중앙일보) là illustrative — 출입처 composition thay đổi theo organisation; học viên xác nhận 출입처 hiện tại của tổ chức trước khi áp dụng.",
+    "tip_advice_vi": "5 bước chuẩn bị 1 백브리핑 trong 48h: (1) NGÀY 1 morning — quyết định scope: cái gì on-record, cái gì on-background, cái gì off-record (KHÔNG share off-record); viết 'attribution sheet'. (2) NGÀY 1 afternoon — gọi 출입처 회장 (leader) confirm thời gian + phòng + danh sách 5-10 phóng viên. KHÔNG mở rộng. (3) NGÀY 2 morning — gửi calendar invite kèm 1 dòng '본 자리는 백브리핑입니다'; KHÔNG kèm tài liệu chi tiết. (4) NGÀY 2 afternoon — họp 백브리핑 30-45 phút; ngay đầu phiên, READ ATTRIBUTION RULES bằng văn (KHÔNG ad-lib). (5) NGÀY 2 evening — gửi follow-up email tóm tắt: '오늘 들으신 내용 중 X / Y / Z 까지 〜 attribution으로 보도 가능; W 부분은 화요일 공식 발표 후 가능' — văn bản như evidence nếu có vi phạm sau. MẸO PHÁT ÂM: '백브리핑' /백브리핑/ với 'ㅂ→ㅂ' rõ; '익명으로' /익명으로/. ĐỪNG: (a) ad-lib attribution rule giữa phiên — bị diễn giải khác; (b) cho phép 'off-record' rồi share — vô lý; nếu là 'off-record' thì giữ trong đầu mình; (c) gặp riêng 1 phóng viên ngoài 출입처 với cùng nội dung — vi phạm fairness; (d) gửi 보도자료 đầy đủ kèm 백브리핑 — biến nó thành on-record không cần 백브리핑.",
+    "exercises": [
+      { "type": "fill-blank", "question": "오늘 이 자리는 ___임을 사전에 안내드립니다.", "answer": "백브리핑" },
+      { "type": "matching", "pairs": [
+        { "hangul": "백브리핑", "meaning": "họp báo nền không trích" },
+        { "hangul": "익명 처리", "meaning": "xử lý ẩn danh" },
+        { "hangul": "엠바고", "meaning": "lệnh cấm đăng trước" }
+      ], "instruction": "Nối thuật ngữ 백브리핑 với nghĩa Việt" },
+      { "type": "translation", "vietnamese": "Phần này xin quý vị xử lý ẩn danh — quy về 'nguồn của Viện'.", "hangul": "이 부분은 본원 관계자 익명으로 처리해 주시면 감사하겠습니다." }
+    ]
+  },
+  {
+    "id": 129,
+    "level": "C1",
+    "title_vi": "Hỏi đáp với phóng viên gay gắt (송곳 질문)",
+    "title_en": "Hostile journalist Q&A under public scrutiny",
+    "intro_vi": "Bài này luyện kỹ năng cao nhất: trả lời câu hỏi 송곳 (mũi dùi) — gay gắt, công khai, dưới ánh đèn TV. Đăng ký: 하십시오체 nghiêm + sang số controlled (giảm hedge khi bị truy vấn cứng). Cấu trúc 4 bước: (1) thừa nhận quan điểm phóng viên (인정), (2) tách yếu tố giả định (구분), (3) đưa fact + evidence (사실), (4) đề xuất bước tiếp theo (다음 단계). KHÔNG phản ứng cảm xúc; KHÔNG '잘 모르겠습니다'; KHÔNG cãi tay đôi. Quy ước Hàn: 1-2 round phản biện gay gắt OK, 3 round = 사회자 can thiệp.",
+    "vocabulary": [
+      { "hangul": "송곳 질문", "meaning": "câu hỏi mũi dùi / gay gắt (n.m. — song-got jil-mun)" },
+      { "hangul": "공세적 (攻勢的)", "meaning": "tính tấn công (adj. — gong-se-jeok)" },
+      { "hangul": "대응하다 (對應)", "meaning": "đáp lại / xử lý (v. — dae-eung-ha-da)" },
+      { "hangul": "감정적 대응", "meaning": "phản ứng cảm xúc (n.m. — gam-jeong-jeok)" },
+      { "hangul": "차분히 응대하다", "meaning": "đáp lại bình tĩnh (v. — cha-bun-hi)" },
+      { "hangul": "전제를 구분하다", "meaning": "phân tách giả định (v. — jeon-je-reul gu-bun)" },
+      { "hangul": "정확한 사실관계", "meaning": "sự thật chính xác (n.m. — jeong-hwak-han)" },
+      { "hangul": "오해를 풀다", "meaning": "giải tỏa hiểu lầm (v. — o-hae-reul pul-da)" },
+      { "hangul": "의도적 왜곡 (歪曲)", "meaning": "bóp méo cố ý (n.m. — ui-do-jeok wae-gok)" },
+      { "hangul": "추가로 답변드리겠습니다", "meaning": "tôi sẽ trả lời bổ sung (formal — chu-ga-ro)" }
+    ],
+    "sentences": [
+      {
+        "korean": "기자님께서 지적하신 부분은 매우 중요한 우려라고 받아들이고 있습니다.",
+        "romanized": "Gijanim-kkeseo jijeokhasin bubuneun maeu jung-yohan uryeorago badaadeurigo itseumnida.",
+        "en": "We take the concern raised by the journalist as a significant one.",
+        "vi": "Chúng tôi xem điểm phóng viên vừa nêu là một quan ngại rất quan trọng.",
+        "pronunciation_focus": ["기자님께서 → /기자님께서/", "지적하신 부분은 → /지저카신부부는/", "받아들이고 있습니다 → /바다드리고읻씀니다/"]
+      },
+      {
+        "korean": "다만, 질문에 포함된 한 가지 전제는 사실관계와 다릅니다.",
+        "romanized": "Daman, jilmune pohamdoen han gaji jeonjeneun sasil-gwangye-wa dareumnida.",
+        "en": "However, one premise within the question differs from the established facts.",
+        "vi": "Tuy nhiên, có một giả định trong câu hỏi không khớp với sự thật.",
+        "pronunciation_focus": ["다만 → /다만/", "포함된 → /포함된/", "사실관계와 다릅니다 → /사실관계와다름니다/"]
+      },
+      {
+        "korean": "본원이 확인한 자료에 근거하여 답변드리자면, 다음과 같습니다.",
+        "romanized": "Bonwoni hwaginhan jaryoe geungeohayeo dapbyeondeurijamyeon, da-eumgwa gateumnida.",
+        "en": "Based on the materials the Institute has verified, my response is as follows.",
+        "vi": "Dựa trên dữ liệu Viện đã xác minh, tôi xin trả lời như sau.",
+        "pronunciation_focus": ["확인한 자료에 → /화긴한자료에/", "근거하여 → /근거하여/", "답변드리자면 → /답뼌드리자면/"]
+      },
+      {
+        "korean": "이 부분은 의도적 왜곡이 아닌, 측정 시점의 차이임을 분명히 말씀드립니다.",
+        "romanized": "I bubuneun uidojeok waegoki anin, cheukjeong sijeomui chai-im-eul bunmyeonghi malsseumdeurimnida.",
+        "en": "I make it clear that this reflects a difference in measurement timing, not intentional distortion.",
+        "vi": "Tôi xin nói rõ phần này không phải bóp méo cố ý, mà là khác biệt thời điểm đo.",
+        "pronunciation_focus": ["의도적 왜곡이 → /의도적왜고기/", "측정 시점 → /측정시점/", "분명히 말씀드립니다 → /분명히말씀드림니다/"]
+      },
+      {
+        "korean": "추가 자료를 정리하여 회견 종료 후 본원 대변인실로 별도 전달드리겠습니다.",
+        "romanized": "Chuga jaryoreul jeongnihayeo hoegyeon jongnyo hu bonwon daebyeoninsillo byeoldo jeondaldeurigessseumnida.",
+        "en": "I will compile additional materials and deliver them separately through our spokesperson's office after the briefing.",
+        "vi": "Tôi sẽ tổng hợp thêm tài liệu và gửi riêng qua văn phòng phát ngôn sau khi kết thúc buổi.",
+        "pronunciation_focus": ["추가 자료를 → /추가자료를/", "회견 종료 후 → /회견종뇨후/", "전달드리겠습니다 → /전달드리게씀니다/"]
+      }
+    ],
+    "dialogue": [
+      { "speaker": "기자 (강한 톤)", "hangul": "박사님, 이 자료가 조작되었다는 의혹이 나오고 있는데 어떻게 해명하시겠습니까?", "meaning": "Doctor — there are suspicions the data has been manipulated. How do you account for this?" },
+      { "speaker": "박사 (1초 pause)", "hangul": "기자님께서 지적하신 부분은 매우 중요한 우려라고 받아들이고 있습니다.", "meaning": "I take the journalist's concern as a significant one." },
+      { "speaker": "박사", "hangul": "다만, 질문에 포함된 '조작' 전제는 사실관계와 다릅니다. 본 자료는 측정 시점이 다르게 기록된 부분이 있어, 의도적 왜곡이 아닌 측정 차이임을 본원이 확인하였습니다.", "meaning": "However, the premise of 'manipulation' in the question differs from the facts. The data show measurement-timing differences, not intentional distortion — verified by the Institute." },
+      { "speaker": "박사", "hangul": "추가 자료를 정리하여 회견 종료 후 별도로 전달드리겠습니다.", "meaning": "I will compile further materials and deliver them after the briefing." }
+    ],
+    "dialogue_long": [
+      { "speaker": "기자 (한겨레, 강한 톤)", "hangul": "박사님, 단도직입적으로 묻겠습니다. 이번 자료가 조작되었다는 의혹이 어제 모 매체에 의해 제기되었습니다. 한 줄로 답변해 주십시오 — 조작이 있었습니까, 없었습니까?", "meaning": "Doctor, let me be direct. Yesterday a media outlet alleged the data was manipulated. One line, please — was there manipulation, or not?", "vi": "Tiến sĩ, em hỏi thẳng. Hôm qua một báo nêu nghi vấn dữ liệu bị bóp méo. Trả lời một dòng — có hay không?" },
+      { "speaker": "박사 (1초 pause, 차분한 톤)", "hangul": "조작은 없었습니다. 다만 기자님께서 지적하신 의혹은 매우 중요한 우려라고 받아들이고 있으며, 본원이 그 의혹을 어떻게 검증했는지 분명히 말씀드리겠습니다.", "meaning": "There was no manipulation. That said, I take the suspicion you raise as a significant concern, and I will set out clearly how the Institute has verified it.", "vi": "Không có bóp méo. Tuy nhiên, tôi xem nghi vấn anh nêu là quan ngại rất quan trọng, và tôi sẽ trình bày rõ Viện đã kiểm chứng nghi vấn đó thế nào." },
+      { "speaker": "박사", "hangul": "본 자료에는 측정 시점이 두 차례에 걸쳐 다르게 기록된 변수가 5개 있습니다. 이 5개 변수에 대해 외부 통계 전문가의 독립 검증을 거친 결과, 모든 변수의 측정값이 원자료와 일치함을 확인하였습니다.", "meaning": "Five variables in this dataset were recorded at two different points in time. Independent verification by an outside statistician confirmed that all five match the original raw data.", "vi": "Trong dữ liệu này có 5 biến được ghi nhận ở hai thời điểm khác nhau. Sau khi qua thẩm định độc lập bởi chuyên gia thống kê bên ngoài, cả 5 biến đều khớp với dữ liệu gốc." },
+      { "speaker": "기자 (더 강하게)", "hangul": "박사님, '독립 검증'이라고 하시는데 그 검증자가 본원과 이해관계가 없다는 것을 어떻게 증명하시겠습니까?", "meaning": "Doctor, you say 'independent verification' — how will you prove the verifier has no conflict of interest with the Institute?", "vi": "Tiến sĩ, ông nói 'thẩm định độc lập' — làm sao chứng minh người thẩm định không có lợi ích chung với Viện?" },
+      { "speaker": "박사 (1초 pause, 더 차분히)", "hangul": "그 우려도 정당하다고 생각합니다. 본 검증은 한국통계학회가 추천한 통계학자 두 분에게 의뢰하였으며, 두 분의 이해관계 진술서는 통계학회 공식 양식에 따라 작성되었습니다. 양식과 진술서는 통계학회 홈페이지에서 누구나 확인하실 수 있습니다.", "meaning": "That concern is fair. The verification was commissioned to two statisticians recommended by the Korean Statistical Society; their disclosure forms follow the Society's standard template and are publicly available on the Society's website.", "vi": "Tôi cho rằng quan ngại đó cũng chính đáng. Việc thẩm định được giao cho hai nhà thống kê do Hội Thống kê Hàn Quốc giới thiệu; bản kê khai lợi ích của hai vị theo mẫu chuẩn của Hội và có thể xem công khai trên website Hội." },
+      { "speaker": "기자", "hangul": "그래도 시민들이 의심하는 이유는 본원이 결과를 발표하기 전에 자료를 6개월간 보유했다는 점입니다. 6개월 동안 무엇을 했습니까?", "meaning": "Citizens still suspect because the Institute held the data for six months before release. What was done during those six months?", "vi": "Nhưng công dân vẫn nghi vì Viện giữ dữ liệu 6 tháng trước khi công bố. Trong 6 tháng đó các vị làm gì?" },
+      { "speaker": "박사", "hangul": "6개월의 활용 내역을 분 단위로 답변드리기는 어려우나, 큰 흐름은 이렇습니다. 처음 2개월은 자료 정제 및 표본 가중치 산정. 이어 2개월은 분석 및 1차 결과 도출. 마지막 2개월은 외부 통계 전문가 검증과 보고서 작성. 모든 단계에 걸친 작업 일지는 본원 백서에 첨부될 예정입니다.", "meaning": "I cannot account for the six months by the minute, but the broad flow: first two months — data cleaning and weighting; next two — analysis and first-pass results; final two — independent verification and report drafting. The full work log will be attached to the Institute's white paper.", "vi": "Em không thể trả lời 6 tháng đến từng phút, nhưng dòng chính là: 2 tháng đầu — làm sạch và tính trọng số; 2 tháng tiếp — phân tích và rút kết quả pha 1; 2 tháng cuối — thẩm định độc lập và soạn báo cáo. Nhật ký công việc đầy đủ sẽ được đính kèm sách trắng của Viện." },
+      { "speaker": "기자", "hangul": "백서에 첨부된다고 했는데 백서는 언제 공개됩니까?", "meaning": "Attached to the white paper — when is the white paper published?", "vi": "Đính kèm sách trắng — vậy sách trắng công khai khi nào?" },
+      { "speaker": "박사", "hangul": "백서는 6개월 이내 공개를 약속드렸습니다. 정확한 공개 일자는 다음 주 중 본원 대변인실을 통해 안내드리겠습니다.", "meaning": "I have committed to publishing the white paper within six months. The precise date will be announced through our spokesperson's office next week.", "vi": "Em đã cam kết công khai sách trắng trong 6 tháng. Ngày chính xác sẽ được thông báo qua văn phòng phát ngôn của Viện trong tuần tới." },
+      { "speaker": "사회자 (3 round 후 개입)", "hangul": "다른 기자분들도 질문 기회를 드리겠습니다. 한겨레 기자님 추가 질문은 회견 종료 후 본원 대변인실로 부탁드리겠습니다.", "meaning": "We will offer the floor to other journalists. Further questions from Hankyoreh after the briefing through our spokesperson's office, please.", "vi": "Chúng tôi sẽ trao cơ hội cho các phóng viên khác. Câu hỏi thêm từ Hankyoreh xin gửi qua văn phòng phát ngôn sau buổi." },
+      { "speaker": "박사", "hangul": "예. 한겨레 기자님께서 지적해 주신 우려는 본원이 진지하게 받아들이고 있으며, 회견 종료 후 추가 자료를 별도 전달드리겠습니다.", "meaning": "Yes. The concerns the Hankyoreh journalist raised are taken seriously by the Institute; additional materials will be delivered separately after the briefing.", "vi": "Vâng. Các quan ngại phóng viên Hankyoreh nêu được Viện tiếp nhận nghiêm túc; sau buổi sẽ gửi tài liệu bổ sung." }
+    ],
+    "roleplay_prompts": [
+      "Phóng viên hỏi: '박사님이 정말 결백하다면 6개월 동안 왜 침묵하셨습니까?' (nếu thực sự trong sạch tại sao im lặng 6 tháng?). Soạn câu trả lời 4 bước (인정 + 구분 + 사실 + 다음 단계) — KHÔNG phản ứng cảm xúc; pause 1 giây trước.",
+      "Bị truy vấn 3 round liên tiếp gay gắt. Soạn lời cho 사회자 (chair) — cụm vàng: '다른 기자분들도 질문 기회를 드리겠습니다. 추가 질문은 별도로 부탁드립니다.' Đó là 'safe phrase' chuẩn để giải tỏa.",
+      "Soạn email follow-up gửi 한겨레 phóng viên ngay sau buổi — kèm tài liệu bổ sung; KHÔNG cảm xúc; cảm ơn quan ngại; mời gặp riêng nếu cần."
+    ],
+    "register_notes": "Hostile Q&A — đăng ký 하십시오체 + giảm hedge khi bị truy vấn cứng: (1) Câu kết 〜습니다 / 〜이라고 받아들이고 있습니다. KHÔNG '〜인 것 같아요' (yếu, sai register). (2) PAUSE 1 giây trước mỗi câu trả lời gay gắt — quy ước Hàn coi là 'mature'. KHÔNG vội đáp. (3) BƯỚC 1 — '인정' (acknowledge): '기자님께서 지적하신 부분은 매우 중요한 우려라고 받아들이고 있습니다' — chuẩn. KHÔNG '맞는 말씀입니다' (yếu); KHÔNG '걱정 마세요' (over-confident). (4) BƯỚC 2 — '구분' (distinguish): '다만, 질문에 포함된 한 가지 전제는 사실관계와 다릅니다' — chuẩn. Phân tách giả định khỏi câu hỏi. (5) BƯỚC 3 — '사실' (facts): '본원이 확인한 자료에 근거하여 답변드리자면 〜입니다' + 1-2 con số / evidence cụ thể. (6) BƯỚC 4 — '다음 단계' (next step): '추가 자료를 정리하여 회견 종료 후 별도 전달드리겠습니다' — KHÔNG bỏ qua bước này; đó là cách 'kết câu' bằng commitment. (7) Khi không biết trả lời ngay: KHÔNG '잘 모르겠습니다' (yếu); thay '추후 확인하여 답변드리겠습니다' / '본원 대변인실을 통해 별도 전달드리겠습니다'. (8) Hedge quá nhiều khi bị tấn công = bị đọc 'có ẩn ý'; giảm hedge một bậc khi bị truy gay gắt — '판단됩니다' (hedge) → '확인하였습니다' (firm). (9) NGÔN NGỮ TUYỆT ĐỐI KHÔNG: 'frankly speaking 솔직히' (TV reading 'che giấu trước đó'); '오해의 소지가 있다' (đẩy lỗi sang phóng viên); 'the journalist is wrong' (KHÔNG bao giờ).",
+    "idiom_glosses": [
+      { "idiom": "받아들이고 있다", "literal": "đang tiếp nhận", "meaning": "(격식, hostile Q&A 1단계) cụm 'acknowledge' chuẩn — present continuous = đang xử lý nghiêm", "example": "기자님께서 지적하신 부분은 매우 중요한 우려라고 받아들이고 있습니다." },
+      { "idiom": "전제를 구분하다", "literal": "phân tách giả định", "meaning": "(격식, hostile Q&A 2단계) tách lỗi của câu hỏi khỏi nội dung — không phải từ chối câu hỏi", "example": "질문에 포함된 한 가지 전제는 사실관계와 다릅니다." },
+      { "idiom": "근거하여 답변드리자면", "literal": "nếu trả lời dựa trên căn cứ", "meaning": "(격식, hostile Q&A 3단계) tín hiệu chuyển sang fact-based response — báo trước evidence sẽ đến", "example": "본원이 확인한 자료에 근거하여 답변드리자면, 다음과 같습니다." },
+      { "idiom": "별도 전달드리겠습니다", "literal": "tôi sẽ gửi riêng", "meaning": "(격식, hostile Q&A 4단계) commitment to follow-up — chuyển closure mà không cãi tiếp", "example": "추가 자료를 정리하여 회견 종료 후 별도 전달드리겠습니다." }
+    ],
+    "cultural_notes_vi": "송곳 질문 — câu hỏi mũi dùi — là một thể loại đặc trưng của báo chí Hàn, đặc biệt trong các crisis press conference.\n\n(1) BÁO PHE GAY GẮT: ở Hàn, một số tờ báo có 'attack reporter' chuyên — 한겨레, 시사IN cho 진보 attack 보수 organisations; 조선일보, 동아일보 cho 보수 attack 진보. Nếu tổ chức bạn align với một phe, expect đối nghịch từ phóng viên phe ngược. Chuẩn bị câu hỏi từ phóng viên đối nghịch chiếm 70% prep time.\n\n(2) 눈치 TRAP — 가장 위험: trong 송곳 Q&A, phóng viên thường dùng 'compound question' — 1 câu hỏi chứa 2-3 giả định gài bẫy. Ví dụ: 'X 박사님, 자료를 6개월 보유했다는 점에서 자료가 조작되었다는 시민들의 의혹은 정당하지 않습니까?' (chứa 3 yếu tố: 6 tháng giữ + nghi điều giả định + 'citizens believe'). Nếu trả lời 'X 부분은 동의합니다, Y 부분은 동의하지 않습니다' kiểu phân tích — bị quote sai 'X 박사 일부 인정'. Cách đúng: tách câu hỏi thành 3 sub-questions trong câu trả lời ('질문에 세 가지 요소가 있습니다…') rồi đáp từng cái — kéo dài câu trả lời nhưng bảo vệ nội dung.\n\n(3) 1 / 2 / 3 ROUND CONVENTION: ở Hàn, phóng viên có thể truy 1-2 round liên tiếp; round 3 = 사회자 BẮT BUỘC can thiệp. Nếu 사회자 không can thiệp ở round 3 = 사회자 bị xem là không chuyên. Người Việt mới làm 대변인 cần nhận biết tín hiệu sau round 2 (giọng phóng viên cao hơn) và chuẩn bị cụm '추가 질문은 회견 종료 후 별도 부탁드립니다' để kích hoạt 사회자 chuyển.\n\n(4) FAKE-CALM TRAP: phóng viên gay gắt thường dùng tone bình thường, làm guest hạ guard, rồi gài bẫy. Nguyên tắc: tone phóng viên KHÔNG là tín hiệu — content mới là. Nếu câu hỏi chứa 'really', 'truly', 'honestly', 'in fact' — nó gay gắt dù tone calm.\n\n(5) BIỂU CẢM CONTROL: TV phóng đại micro-expressions. Khi bị tấn công gay gắt, mặt phải giữ neutral; có thể nhẹ gật đầu '진지하게 듣고 있습니다' để cho thấy listening. KHÔNG: nhếch môi, nháy mắt, lắc đầu, cau mày — bất kỳ cái nào cũng = headline.\n\n(6) AFTER-EFFECT: sau 송곳 Q&A — KHÔNG cãi tiếp ngoài hành lang; KHÔNG cười với một phóng viên friendlier (làm phóng viên tấn công 'thấy' mất mặt); rời đi nghiêm trang; tweet/social media im lặng 24h. Trong 24h sau, gửi tài liệu bổ sung qua 대변인실 — đó là 'documentary defense' mạnh hơn defense miệng.\n\n(7) Tên các phóng viên cụ thể nhắc trong dialogue (한겨레 기자) là illustrative — phóng viên cụ thể của các đài/báo thay đổi nhanh; học viên xác nhận hiện tại trước khi nhắc trong tác phẩm.",
+    "tip_advice_vi": "5 bước chuẩn bị cho 송곳 Q&A trong 24h: (1) GIỜ 1-3 — list 30 câu hỏi gay gắt nhất có thể; viết 4-bước response cho 10 câu đáng sợ nhất. (2) GIỜ 4-6 — luyện với đồng nghiệp đóng vai phóng viên — họ phải gay gắt; bạn chỉnh sao cho mỗi response mượt trong 60-90 giây. (3) GIỜ 7-9 — quay video — check pause (phải 1 giây), giọng (giảm tốc khi bị tấn công), mặt (neutral). (4) GIỜ 10-12 — chuẩn bị 'cheat card' với 4 cụm vàng: '받아들이고 있습니다' / '전제는 사실관계와 다릅니다' / '근거하여 답변드리자면' / '별도 전달드리겠습니다'. (5) GIỜ 13-24 — ngủ đủ; sáng đến 30 phút trước; KHÔNG cà phê đậm (hand tremor + rapid speech). MẸO PHÁT ÂM dưới áp lực: hạ thấp tone 1 nửa octave + nói chậm 20%. '받아들이고 있습니다' /바다드리고읻씀니다/ — 'ㄷ→ㄴ' không xảy ra ở đây vì 받침 'ㄷ' giữ; '근거하여' /근거하여/. ĐỪNG: (a) tay run — đặt tay trên bàn; (b) chớp mắt nhanh = TV reading 'lying'; (c) trả lời câu hỏi không được hỏi — chỉ trả lời câu được hỏi; (d) cãi với phóng viên — đáp một câu rồi chuyển sang phóng viên khác; (e) hứa cụ thể không thể giữ — 'X 시간 내 자료 공개' nếu không chắc thì '추후 별도 안내드리겠습니다' an toàn hơn.",
+    "exercises": [
+      { "type": "fill-blank", "question": "기자님께서 지적하신 부분은 매우 중요한 우려라고 ___ 있습니다.", "answer": "받아들이고" },
+      { "type": "matching", "pairs": [
+        { "hangul": "송곳 질문", "meaning": "câu hỏi mũi dùi" },
+        { "hangul": "전제를 구분하다", "meaning": "phân tách giả định" },
+        { "hangul": "차분히 응대하다", "meaning": "đáp lại bình tĩnh" }
+      ], "instruction": "Nối kỹ thuật hostile Q&A với nghĩa Việt" },
+      { "type": "translation", "vietnamese": "Tôi xin nói rõ phần này không phải bóp méo cố ý, mà là khác biệt thời điểm đo.", "hangul": "이 부분은 의도적 왜곡이 아닌, 측정 시점의 차이임을 분명히 말씀드립니다." }
+    ]
+  },
+  {
+    "id": 130,
+    "level": "C1",
+    "title_vi": "Vai trò 대변인 — bản tóm hằng tuần với báo chí",
+    "title_en": "Spokesperson role — weekly press briefing",
+    "intro_vi": "Bài này luyện vai 대변인 (spokesperson) — người phát ngôn của tổ chức, gặp 출입처 hằng tuần. Đăng ký: 하십시오체 nhưng cho phép giảm chính thức trong dialogue qua lại. Khác 원장 (CEO) ở chỗ: 대변인 KHÔNG quyết định nội dung, chỉ truyền đạt. Vì thế phải có '제가 본원의 입장을 전달드리겠습니다' framing. Câu trả lời '노 코멘트' (no comment) cũng có nghệ thuật — KHÔNG dùng tùy tiện. Trục: '본원의 공식 입장은 〜입니다', '아직 결정된 바 없습니다'.",
+    "vocabulary": [
+      { "hangul": "대변인 (代辯人)", "meaning": "người phát ngôn (n.m. — dae-byeo-nin)" },
+      { "hangul": "공식 입장", "meaning": "lập trường chính thức (n.m. — gong-sik ip-jang)" },
+      { "hangul": "입장을 전달하다", "meaning": "truyền đạt lập trường (v. — ip-jang-eul jeon-dal)" },
+      { "hangul": "결정된 바 없다", "meaning": "chưa có quyết định (idiom — gyeoljeong-doen ba)" },
+      { "hangul": "노 코멘트 (no comment)", "meaning": "không bình luận (loanword — no-ko-men-teu)" },
+      { "hangul": "주간 브리핑", "meaning": "briefing hàng tuần (n.m. — ju-gan beu-ri-ping)" },
+      { "hangul": "정례 브리핑 (定例)", "meaning": "briefing định kỳ (n.m. — jeong-nye)" },
+      { "hangul": "공보 담당관 (公報 擔當官)", "meaning": "cán bộ phụ trách PR (n.m. — gong-bo dam-dang-gwan)" },
+      { "hangul": "취재 요청 (取材 要請)", "meaning": "yêu cầu phỏng vấn (n.m. — chwi-jae yo-cheong)" },
+      { "hangul": "대언론 창구 (對言論 窓口)", "meaning": "kênh giao tiếp với báo chí (n.m. — dae-eon-non chang-gu)" }
+    ],
+    "sentences": [
+      {
+        "korean": "안녕하십니까. 이번 주 정례 브리핑을 시작하겠습니다.",
+        "romanized": "Annyeonghasimnikka. Ibeon ju jeongnye beuripingeul sijakhagessseumnida.",
+        "en": "Good day. I shall now begin this week's regular briefing.",
+        "vi": "Kính chào quý vị. Tôi xin bắt đầu briefing định kỳ tuần này.",
+        "pronunciation_focus": ["정례 브리핑 → /정례브리핑/", "시작하겠습니다 → /시자카게씀니다/"]
+      },
+      {
+        "korean": "본원의 공식 입장은 다음과 같습니다.",
+        "romanized": "Bonwon-ui gongsik ipjangeun da-eumgwa gateumnida.",
+        "en": "The Institute's official position is as follows.",
+        "vi": "Lập trường chính thức của Viện như sau.",
+        "pronunciation_focus": ["본원의 → /보눠늬/", "공식 입장은 → /공식입짱은/", "다음과 같습니다 → /다음꽈갇씀니다/"]
+      },
+      {
+        "korean": "그 사안은 아직 결정된 바 없으며, 결정 즉시 별도로 안내드리겠습니다.",
+        "romanized": "Geu sa-aneun ajik gyeoljeongdoen ba eopseumyeo, gyeoljeong jeuksi byeoldoro annaedeurigessseumnida.",
+        "en": "Nothing has been decided on that matter; we shall inform you separately as soon as a decision is made.",
+        "vi": "Vấn đề đó hiện chưa có quyết định; ngay khi có, chúng tôi sẽ thông báo riêng.",
+        "pronunciation_focus": ["결정된 바 → /결정된바/", "별도로 → /별도로/", "안내드리겠습니다 → /안내드리게씀니다/"]
+      },
+      {
+        "korean": "본 사안은 본원의 정책 영역이 아니므로 답변드릴 위치에 있지 않습니다.",
+        "romanized": "Bon sa-aneun bonwon-ui jeongchaek yeong-yeoki anim-euro dapbyeondeuril wichi-e itji anseumnida.",
+        "en": "This matter is not within the Institute's policy remit, so I am not in a position to comment.",
+        "vi": "Vụ việc này không thuộc lĩnh vực chính sách của Viện nên tôi không ở vị trí để trả lời.",
+        "pronunciation_focus": ["정책 영역이 아니므로 → /정책영여기아니므로/", "답변드릴 위치에 → /답뼌드릴위치에/", "있지 않습니다 → /읻찌안씀니다/"]
+      },
+      {
+        "korean": "추가 취재 요청은 본원 대변인실로 부탁드립니다.",
+        "romanized": "Chuga chwijae yocheongeun bonwon daebyeonin-sillo butakdeurimnida.",
+        "en": "Additional interview requests, please direct to the spokesperson's office.",
+        "vi": "Mọi yêu cầu phỏng vấn thêm xin gửi qua văn phòng phát ngôn của Viện.",
+        "pronunciation_focus": ["추가 취재 요청 → /추가취재요청/", "대변인실로 → /대변인실로/", "부탁드립니다 → /부탁뜨림니다/"]
+      }
+    ],
+    "dialogue": [
+      { "speaker": "기자", "hangul": "원장님이 어제 학회에서 발언하신 부분 — 본원 입장과 일치합니까?", "meaning": "Yesterday's remarks by the President at the conference — do they align with the Institute's position?" },
+      { "speaker": "대변인", "hangul": "예, 일치합니다. 원장의 발언은 본원의 공식 입장이며, 발언 전문은 본원 홈페이지에 공개되어 있습니다.", "meaning": "Yes, they align. The President's remarks reflect the Institute's official position; the full transcript is on our homepage." },
+      { "speaker": "기자", "hangul": "5월 시범 사업 일정 — 변동 가능성이 있습니까?", "meaning": "The May pilot — any possibility of schedule change?" },
+      { "speaker": "대변인", "hangul": "현 시점에서는 5월 1일 시작으로 확정되어 있습니다. 변경 사항이 발생하면 즉시 안내드리겠습니다.", "meaning": "As of now, the start is firmly 1 May. Any change will be communicated promptly." }
+    ],
+    "dialogue_long": [
+      { "speaker": "대변인 (KEDI 대변인실, 매주 화요일 정례 브리핑)", "hangul": "안녕하십니까. 이번 주 정례 브리핑을 시작하겠습니다. 출입처 기자분 다섯 분 모두 자리해 주셨네요. 감사드립니다.", "meaning": "Good day. This week's regular briefing begins. All five Press Pool journalists are present — thank you.", "vi": "Kính chào quý vị. Briefing định kỳ tuần này xin bắt đầu. Cả 5 phóng viên 출입처 đều có mặt — xin cảm ơn." },
+      { "speaker": "대변인", "hangul": "이번 주 본원 동정은 세 가지입니다. 첫째, 5월 1일부터 시작하는 시범 사업 운영 위원회 1차 회의가 어제 개최되었습니다. 둘째, 한국통계학회와의 협력 양해각서를 어제 체결하였습니다. 셋째, 다음 주 화요일 백서 공개 예정입니다.", "meaning": "Three items this week. First, the pilot's Operating Committee held its first meeting yesterday. Second, an MOU with the Korean Statistical Society was signed yesterday. Third, the white paper is scheduled for release next Tuesday.", "vi": "Tin chính tuần này gồm ba: một, Ủy ban Vận hành dự án thí điểm 1/5 đã họp phiên đầu hôm qua. Hai, đã ký MOU với Hội Thống kê Hàn Quốc hôm qua. Ba, sách trắng dự kiến công khai thứ ba tuần sau." },
+      { "speaker": "기자 (한겨레)", "hangul": "통계학회 양해각서 — 협력 범위가 어떻게 됩니까?", "meaning": "The MOU with the Statistical Society — what's the scope?", "vi": "MOU với Hội Thống kê — phạm vi hợp tác thế nào?" },
+      { "speaker": "대변인", "hangul": "협력 범위는 두 가지입니다. 본원 발간 자료의 외부 통계 검증, 그리고 통계학회 추천 전문가의 본원 자문 위원 위촉. 양해각서 전문은 본원 홈페이지에서 확인하실 수 있습니다.", "meaning": "Scope has two parts: external statistical verification of Institute reports, and the appointment of Society-recommended experts to our advisory panel. Full text on our homepage.", "vi": "Phạm vi gồm hai phần: thẩm định thống kê độc lập tài liệu của Viện, và bổ nhiệm chuyên gia do Hội giới thiệu vào ban tư vấn. Toàn văn MOU có trên website." },
+      { "speaker": "기자 (조선일보)", "hangul": "원장님이 어제 학회 만찬에서 정부 정책에 대해 비판적 발언을 하셨다는 보도가 있는데, 본원 입장입니까, 개인 견해입니까?", "meaning": "There's a report the President made critical remarks about government policy at last night's dinner — Institute position or personal view?", "vi": "Có tin Viện trưởng phát biểu phê bình chính sách chính phủ trong bữa tối học hội tối qua — là lập trường Viện hay quan điểm cá nhân?" },
+      { "speaker": "대변인", "hangul": "그 부분은 본원이 발언 전문을 확인한 뒤 답변드리겠습니다. 현재로서는 보도된 내용의 정확한 맥락이 본원에 도달하지 않은 상태입니다.", "meaning": "That requires confirmation of the full transcript before I respond. The reported content's full context has not yet reached the Institute.", "vi": "Phần đó tôi sẽ trả lời sau khi Viện xác nhận toàn văn phát biểu. Hiện tại, bối cảnh đầy đủ của nội dung được đưa tin chưa đến tay Viện." },
+      { "speaker": "기자", "hangul": "그러면 현재 답변드릴 수 있는 부분은 무엇입니까?", "meaning": "Then what can you respond to right now?", "vi": "Vậy hiện tại bà có thể trả lời phần nào?" },
+      { "speaker": "대변인", "hangul": "현 시점에서 본원이 확정한 입장은 두 가지입니다. 첫째, 모든 공식 입장은 본원 대변인실을 통해 발표되며, 학회 발언은 학자 개인 학술 활동입니다. 둘째, 그러나 발언 내용이 본원 정책에 영향을 줄 가능성이 있다면 별도 검토 후 입장을 정리하여 발표하겠습니다.", "meaning": "Two confirmed positions for now. First, all official positions are issued via this office; conference remarks are personal academic activity. Second, however, if remarks have implications for Institute policy, we will review and issue a separate position.", "vi": "Hai lập trường đã xác định hiện tại. Một, mọi lập trường chính thức phát đi qua văn phòng này; phát biểu tại học hội là hoạt động học thuật cá nhân. Hai, tuy nhiên nếu nội dung phát biểu có thể ảnh hưởng chính sách Viện, chúng tôi sẽ xem xét riêng và công bố lập trường." },
+      { "speaker": "기자 (중앙일보)", "hangul": "다음 주 백서 공개 — 시간과 장소를 알려 주시겠습니까?", "meaning": "Next week's white paper — time and venue?", "vi": "Sách trắng tuần sau — thời gian và địa điểm?" },
+      { "speaker": "대변인", "hangul": "다음 주 화요일 오전 10시, 한국프레스센터 19층 기자회견장입니다. 사전 보도 안내는 오늘 오후 6시까지 출입처 단톡과 이메일로 별도 발송하겠습니다.", "meaning": "Tuesday next week, 10 AM, Korea Press Center 19th-floor briefing room. Press advisory will go out by 6 PM today via Press Pool channels and email.", "vi": "Thứ ba tuần sau, 10h sáng, Phòng họp báo tầng 19 Trung tâm Báo chí Hàn Quốc. Press advisory sẽ gửi đến 6h chiều hôm nay qua nhóm 출입처 và email." },
+      { "speaker": "기자 (한겨레)", "hangul": "백서에 외부 통계학자 검증 결과 포함됩니까?", "meaning": "Will the white paper include the outside statistician verification?", "vi": "Sách trắng có bao gồm kết quả thẩm định của nhà thống kê bên ngoài không?" },
+      { "speaker": "대변인", "hangul": "예, 부록으로 첨부됩니다. 검증 결과 요약과 검증자의 이해관계 진술서가 함께 첨부됩니다.", "meaning": "Yes, in the appendix. The verification summary and the verifier's disclosure form are attached together.", "vi": "Vâng, đính kèm phụ lục. Tóm tắt kết quả thẩm định và bản kê khai lợi ích của người thẩm định được đính kèm cùng." },
+      { "speaker": "대변인", "hangul": "다른 질문 없으시면 이상으로 이번 주 정례 브리핑을 마치겠습니다. 추가 취재 요청은 본 대변인실로 부탁드립니다. 다음 주 화요일 같은 시간 브리핑에서 뵙겠습니다.", "meaning": "If no further questions, today's regular briefing concludes. Further interview requests through this office, please. See you next Tuesday at the same hour.", "vi": "Nếu không có câu hỏi khác, briefing định kỳ tuần này xin kết thúc. Mọi yêu cầu phỏng vấn thêm xin qua văn phòng này. Hẹn quý vị thứ ba tuần sau cùng giờ." }
+    ],
+    "roleplay_prompts": [
+      "Bạn là 대변인 mở 정례 브리핑 hằng tuần. Soạn 4 câu mở đầu — chào + cảm ơn 출입처 + giới thiệu 3 nội dung tuần + mời câu hỏi.",
+      "Phóng viên hỏi câu vượt phạm vi — chính sách Bộ Giáo dục mà Viện không phụ trách. Bạn từ chối lịch sự mà không né. Cụm vàng: '본 사안은 본원의 정책 영역이 아니므로 답변드릴 위치에 있지 않습니다. 〜에 문의하시기 바랍니다.'",
+      "Phóng viên ép '노 코멘트 means 정 yes / no?'. Soạn câu trả lời ngắn lý giải — 'no comment' trong 대변인 Hàn KHÔNG là 'có nhưng giấu'; thay nói '아직 결정된 바 없습니다' (chưa có quyết định) HOẶC '본 사안은 답변드릴 위치에 있지 않습니다' (không thuộc thẩm quyền)."
+    ],
+    "register_notes": "대변인 đăng ký 하십시오체 với một số đặc thù: (1) Câu kết 〜습니다 / 〜겠습니다 / 〜십시오. KHÔNG '〜아요/어요'. (2) Tự xưng: KHÔNG '저' hoặc '제'; thay '본 대변인실' / '본원 대변인'. Vì 대변인 nói nhân danh tổ chức. (3) MỞ ĐẦU: '안녕하십니까. 이번 주 정례 브리핑을 시작하겠습니다' — chuẩn weekly. (4) Chuyển trách nhiệm sang 'tổ chức': KHÔNG '제가 답변드리겠습니다'; thay '본원의 입장을 전달드리겠습니다' / '본원이 확정한 입장은 〜입니다'. (5) KHI không biết: '아직 결정된 바 없습니다' (chưa có quyết định) — hợp lý nếu thật chưa quyết. KHÔNG dùng nếu đã quyết — bị xem là dối trá. (6) KHI VỀ chính sách ngoài thẩm quyền: '본 사안은 본원의 정책 영역이 아니므로 답변드릴 위치에 있지 않습니다' — chuyển trách nhiệm về cơ quan đúng thẩm quyền. (7) KHI bị ép vào 'cá nhân vs. tổ chức': '본원의 공식 입장은 본 대변인실을 통해 발표됩니다' — phân biệt rõ. (8) 'NO COMMENT' — KHÔNG dùng. Thay bằng cụ thể: '아직 결정된 바 없습니다' / '확인 후 답변드리겠습니다' / '본 사안은 본원의 영역이 아닙니다'. Mỗi lần 대변인 nói '노 코멘트' = headline 'X 회피'. (9) ĐÓNG: '추가 취재 요청은 본 대변인실로 부탁드립니다. 다음 주 같은 시간 브리핑에서 뵙겠습니다' — chuẩn weekly closing. (10) Tránh mỉa mai dù phóng viên gay gắt — 대변인 mỉa mai = tin sốc.",
+    "idiom_glosses": [
+      { "idiom": "본원의 공식 입장은", "literal": "lập trường chính thức của Viện là", "meaning": "(격식, 대변인 전용) cụm chuyển trách nhiệm phát ngôn lên tổ chức — báo trước 'điều sắp nói được duyệt'", "example": "본원의 공식 입장은 다음과 같습니다." },
+      { "idiom": "결정된 바 없다", "literal": "chưa có quyết định", "meaning": "(격식) cụm thay 'no comment' khi tổ chức thực sự chưa quyết — chỉ dùng khi đúng", "example": "그 사안은 아직 결정된 바 없으며, 결정 즉시 별도로 안내드리겠습니다." },
+      { "idiom": "답변드릴 위치에 있지 않다", "literal": "không ở vị trí trả lời", "meaning": "(격식) cụm chuẩn để chuyển câu hỏi về cơ quan đúng thẩm quyền — không né mà đúng quy trình", "example": "본 사안은 본원의 정책 영역이 아니므로 답변드릴 위치에 있지 않습니다." },
+      { "idiom": "별도로 안내드리겠습니다", "literal": "tôi sẽ thông báo riêng", "meaning": "(격식, 대변인) cụm commitment to follow-up — chuyển closure mà không cãi", "example": "결정 즉시 별도로 안내드리겠습니다." }
+    ],
+    "cultural_notes_vi": "대변인 ở Hàn là một vai có trọng lượng — đặc biệt ở cấp 청와대, 정부 부처, và 대기업 (Samsung, LG, Hyundai). Mỗi 대변인실 có 5-10 nhân sự phối hợp.\n\n(1) HỆ THỐNG 정례 브리핑: trong các tổ chức lớn, weekly briefing với 출입처 là quy ước cố định. 청와대 가능 매일; 부처 thường 1-2 lần/tuần; 기업 1 lần/tuần. Bỏ một buổi không thông báo trước = scandal nhỏ. Thường vào cùng giờ một ngày trong tuần (예: 매주 화요일 오전 10시).\n\n(2) PHÂN BIỆT '대변인' VỚI 'CEO/원장': 대변인 KHÔNG phải decision-maker. Khi phóng viên hỏi câu yêu cầu policy decision, 대변인 phải '확인 후 답변드리겠습니다'. Cố trả lời quyết định thay CEO = bị CEO bác sau, mất uy tín. Người Việt mới làm 대변인 dễ rơi vào 'over-step' — trả lời câu chưa được duyệt.\n\n(3) 눈치 TRAP — RẤT TINH TẾ: phóng viên hay 'gài' bằng câu hỏi 'cá nhân của bạn nghĩ gì?'. 대변인 KHÔNG bao giờ cá nhân hóa. Cụm chuẩn để né: '본 대변인실의 모든 발언은 본원의 공식 입장으로 전달됩니다. 개인 견해는 본 자리에서 발표하지 않겠습니다.' Một slip vào '제 생각엔…' = câu trích đó thành 'X 대변인 개인 견해' và vô hiệu hóa toàn brief tuần đó.\n\n(4) RELATIONSHIP 출입처: 대변인 phải biết tên + tờ báo + style của tất cả phóng viên 출입처 — quy ước. Gọi sai tên = scandal nhỏ. Thường có 사전 만남 (pre-meeting) trước briefing đầu tiên với phóng viên mới — chuẩn etiquette.\n\n(5) WEEKLY RHYTHM: thứ hai sáng, 대변인실 họp với CEO + 법무 + PR — quyết định content briefing tuần. Thứ ba/thứ năm: briefing. Thứ sáu chiều: review tuần — đánh giá quote nào đã ra, có sai lệch nào không. Quy trình tight.\n\n(6) NGÔN NGỮ TUYỆT ĐỐI KHÔNG: 'I think', '제 생각에는', 'maybe', '아마' — 대변인 mất uy tín ngay; '잘 모르겠습니다' — phóng viên kết luận 'incompetent'; '편하게 묻지 마세요' — vô lễ. PHẢI: 'X에 대해서는 확인 후 답변드리겠습니다' / '본원의 공식 입장은 〜입니다'.\n\n(7) Tên các 출입처, briefing room cụ thể nhắc trong dialogue (한국프레스센터 19층) là illustrative — địa điểm cụ thể của các tổ chức thay đổi; học viên xác nhận trước khi viết tác phẩm thực.",
+    "tip_advice_vi": "5 bước weekly briefing routine của 대변인: (1) THỨ HAI MORNING — họp 30 phút với CEO + 법무 + 홍보 — quyết định 3 nội dung sẽ briefing tuần này. (2) THỨ HAI AFTERNOON — chuẩn bị 'cheat sheet' 1 trang: 3 nội dung + 5 câu hỏi anticipated + 3 câu né lịch sự (cho câu vượt thẩm quyền). (3) THỨ BA MORNING (ngày briefing) — đến 30 phút trước; check phòng; chào phóng viên; đọc lại cheat sheet 3 lần. (4) DURING — nói 5-7 phút briefing + 15-20 phút Q&A; viết tay note câu hỏi đã không trả lời được. (5) THỨ BA AFTERNOON — gửi follow-up email cho phóng viên có câu hỏi treo: 'X에 대해 확인하였습니다. 다음과 같습니다 〜'. (6) THỨ NĂM — review báo Hàn xem quote đã ra như thế nào; nếu có sai lệch, gọi phóng viên cá nhân lịch sự. MẸO PHÁT ÂM: '대변인' /대벼닌/; '정례 브리핑' /정녜브리핑/; '결정된 바 없다' /결정된바업따/. ĐỪNG: (a) ngắt phóng viên — 절대 KHÔNG; (b) cười khi nói tin xấu — 24h crisis; (c) 'I personally believe' chen vào — bị quote làm CEO khó xử; (d) hứa cụ thể không xác nhận với CEO — bị bác sau là tổn hại uy tín.",
+    "exercises": [
+      { "type": "fill-blank", "question": "그 사안은 아직 결정된 ___ 없으며, 결정 즉시 별도로 안내드리겠습니다.", "answer": "바" },
+      { "type": "matching", "pairs": [
+        { "hangul": "대변인", "meaning": "người phát ngôn" },
+        { "hangul": "정례 브리핑", "meaning": "briefing định kỳ" },
+        { "hangul": "본원의 공식 입장", "meaning": "lập trường chính thức của Viện" }
+      ], "instruction": "Nối thuật ngữ 대변인 với nghĩa Việt" },
+      { "type": "translation", "vietnamese": "Vụ việc này không thuộc lĩnh vực chính sách của Viện nên tôi không ở vị trí để trả lời.", "hangul": "본 사안은 본원의 정책 영역이 아니므로 답변드릴 위치에 있지 않습니다." }
+    ]
+  },
+  {
+    "id": 131,
+    "level": "C1",
+    "title_vi": "Tuyên bố chính thức trên kênh mạng xã hội",
+    "title_en": "Official statement on social media channels",
+    "intro_vi": "Bài này luyện viết 공식 입장문 cho kênh mạng xã hội (Twitter/X, Facebook, Instagram, blog tổ chức). Đăng ký: 〜다체 nghiêm ngặt — không hoàn toàn 〜습니다 (vì đó là PR style of TV news, lệch trên social) và KHÔNG 〜아요 (informal, kém uy). Cấu trúc 3 ô: 사실 확인 → 본원 입장 → 향후 조치. Ngắn — 280 chữ cho Twitter/X; 800-1000 글자 cho post đầy đủ. Trục: '〜에 대한 본원의 입장을 다음과 같이 밝힌다', '본원은 〜에 대하여 〜한다'.",
+    "vocabulary": [
+      { "hangul": "입장문 (立場文)", "meaning": "văn bản lập trường (n.m. — ip-jang-mun)" },
+      { "hangul": "공식 채널", "meaning": "kênh chính thức (n.m. — gong-sik chae-neol)" },
+      { "hangul": "사실 확인 (事實 確認)", "meaning": "xác nhận sự thật (n.m. — sa-sil hwa-gin)" },
+      { "hangul": "사실과 다르다", "meaning": "khác với sự thật (idiom — sa-sil-gwa)" },
+      { "hangul": "유감을 표하다 (遺憾)", "meaning": "bày tỏ tiếc (formal-political — yu-gam)" },
+      { "hangul": "강력히 부인하다 (强力)", "meaning": "phủ nhận mạnh mẽ (v. — gang-nyeok-hi)" },
+      { "hangul": "향후 조치", "meaning": "biện pháp tiếp theo (n.m. — hyang-hu jo-chi)" },
+      { "hangul": "허위 사실 (虛僞 事實)", "meaning": "thông tin sai sự thật (n.m. — heo-wi sa-sil)" },
+      { "hangul": "법적 대응", "meaning": "biện pháp pháp lý (n.m. — beop-jeok dae-eung)" },
+      { "hangul": "공식 채널을 통해 발표하다", "meaning": "công bố qua kênh chính thức (idiom — gong-sik chae-neol)" }
+    ],
+    "sentences": [
+      {
+        "korean": "본원은 최근 SNS상에서 유포되고 있는 일부 주장에 대하여 다음과 같이 본원의 입장을 밝힌다.",
+        "romanized": "Bonwoneun choegeun SNS-sangeseo yupodoego itneun ilbu jujange daehayeo da-eumgwa gateun-i bonwon-ui ipjangeul balgheunda.",
+        "en": "The Institute hereby states its position regarding certain claims circulating on social media as follows.",
+        "vi": "Viện xin trình bày lập trường về một số khẳng định đang lan truyền trên mạng xã hội như sau.",
+        "pronunciation_focus": ["SNS상에서 → /에스엔에스상에서/", "유포되고 → /유포되고/", "밝힌다 → /발킨다/"]
+      },
+      {
+        "korean": "첫째, '본원이 자료를 조작하였다'는 주장은 사실과 다르다.",
+        "romanized": "Cheotjjae, 'bonwoni jaryoreul jojakhayeotdaneun' jujangeun sasil-gwa dareuda.",
+        "en": "First, the claim that the Institute manipulated the data is contrary to fact.",
+        "vi": "Một, khẳng định 'Viện đã bóp méo dữ liệu' là không đúng sự thật.",
+        "pronunciation_focus": ["조작하였다는 → /조자카여따는/", "주장은 → /주장은/", "사실과 다르다 → /사실꽈다르다/"]
+      },
+      {
+        "korean": "둘째, 본 자료는 한국통계학회 추천 외부 통계 전문가 두 분의 독립 검증을 거쳤다.",
+        "romanized": "Duljjae, bon jaryoneun Hangukdong-gyehakhoe chucheon oebu tonggye jeonmunga du bunui doknip geomjeungeul geocheotda.",
+        "en": "Second, this dataset has undergone independent verification by two outside statisticians recommended by the Korean Statistical Society.",
+        "vi": "Hai, dữ liệu này đã qua thẩm định độc lập bởi hai nhà thống kê do Hội Thống kê Hàn Quốc giới thiệu.",
+        "pronunciation_focus": ["둘째 → /둘째/", "외부 통계 전문가 → /외부통계전문가/", "거쳤다 → /거첟따/"]
+      },
+      {
+        "korean": "셋째, 허위 사실 유포에 대해서는 향후 법적 대응을 검토할 수 있다.",
+        "romanized": "Setjjae, heowi sasil yupoe daehaeseoneun hyanghu beopjjeok dae-eungeul geomtohal su itda.",
+        "en": "Third, regarding the dissemination of falsehoods, legal action may be considered going forward.",
+        "vi": "Ba, đối với việc lan truyền thông tin sai sự thật, biện pháp pháp lý có thể được xem xét tới đây.",
+        "pronunciation_focus": ["허위 사실 → /허위사실/", "유포에 → /유포에/", "법적 대응을 → /법쩍대응을/"]
+      },
+      {
+        "korean": "본원의 모든 공식 입장은 본 채널과 본원 홈페이지를 통해서만 발표된다.",
+        "romanized": "Bonwon-ui modeun gongsik ipjangeun bon chae-neolgwa bonwon hompejireul tonghaeseoman balpyodoenda.",
+        "en": "All of the Institute's official positions are released solely through this channel and the Institute's homepage.",
+        "vi": "Mọi lập trường chính thức của Viện chỉ được công bố qua kênh này và website của Viện.",
+        "pronunciation_focus": ["모든 공식 입장은 → /모든공식입짱은/", "본 채널과 → /본채널과/", "발표된다 → /발표된다/"]
+      }
+    ],
+    "dialogue": [
+      { "speaker": "공보팀장", "hangul": "트위터에 5분 안에 발표문 올려야 합니다. 한 문장 lead 부탁드립니다.", "meaning": "We need to post on X in five minutes. One-sentence lead, please." },
+      { "speaker": "주무관", "hangul": "'본원은 SNS상에서 유포되는 일부 주장에 대해 다음과 같이 입장을 밝힙니다.' — 280자 안에 들어옵니다.", "meaning": "'The Institute states its position on certain claims circulating on social media as follows.' — fits within 280 characters." },
+      { "speaker": "공보팀장", "hangul": "본문은 페이스북 1,000자 버전과 트위터 280자 압축 버전 두 가지 만들어 주세요.", "meaning": "Make two versions — full 1,000 characters for Facebook and a 280-character compressed version for X." },
+      { "speaker": "주무관", "hangul": "예. 두 버전 다 끝나면 법무 확인 거쳐 즉시 게시하겠습니다.", "meaning": "Yes. Both versions go to Legal, then post immediately." }
+    ],
+    "dialogue_long": [
+      { "speaker": "공보팀장 (긴급 상황실)", "hangul": "1시간 전부터 트위터에 본원 자료 조작설이 확산되고 있습니다. 1시간 안에 공식 입장문을 발표해야 해요. 채널은?", "meaning": "Manipulation rumors have been spreading on X for an hour. We must release an official statement within the hour. Channels?", "vi": "Tin đồn về bóp méo dữ liệu của Viện đã lan trên X được 1 tiếng. Phải công bố lập trường chính thức trong 1 giờ. Kênh nào?" },
+      { "speaker": "주무관", "hangul": "트위터 (X) — 본원 공식 계정, 페이스북 — 페이지 게시물, 본원 홈페이지 — 보도자료실, 이렇게 세 군데 동시 게시 권장드립니다.", "meaning": "X — Institute's official account; Facebook — page post; Institute homepage — pressroom. Recommend simultaneous posting on all three.", "vi": "X — tài khoản chính thức của Viện; Facebook — page post; website Viện — phòng báo. Khuyến nghị đăng đồng thời cả ba." },
+      { "speaker": "공보팀장", "hangul": "그래야겠어요. 그러면 트위터용 280자 압축, 페이스북용 1,000자 버전, 홈페이지용 정식 입장문 세 개 — 30분 안에 만들 수 있죠?", "meaning": "Yes. Then 280-char compressed for X, 1,000-char version for Facebook, full statement for homepage — three pieces in 30 minutes?", "vi": "Phải vậy. Vậy 280 chữ rút cho X, 1.000 chữ cho Facebook, văn bản đầy đủ cho website — ba bản trong 30 phút được chứ?" },
+      { "speaker": "주무관", "hangul": "예. 핵심 메시지가 무엇인지 먼저 합의하면 30분 안에 가능합니다.", "meaning": "Yes — once we agree on the core message, 30 minutes is feasible.", "vi": "Vâng. Một khi thống nhất thông điệp cốt lõi, 30 phút khả thi." },
+      { "speaker": "공보팀장", "hangul": "핵심 메시지 세 가지로 갑시다. 첫째 — 조작 의혹은 사실과 다르다. 둘째 — 본 자료는 외부 검증을 거쳤다. 셋째 — 허위 사실 유포에 대해서는 법적 대응을 검토할 수 있다.", "meaning": "Three core messages: First — manipulation allegations are contrary to fact. Second — the data went through external verification. Third — legal action may be considered for false-information dissemination.", "vi": "Ba thông điệp cốt lõi: Một — cáo buộc bóp méo trái với sự thật. Hai — dữ liệu đã qua thẩm định độc lập. Ba — đối với phát tán thông tin sai, có thể xem xét biện pháp pháp lý." },
+      { "speaker": "주무관", "hangul": "법적 대응 부분 — 법무팀 확인 받아야겠습니다. 'detect할 수 있다' 같은 가능형이 더 안전할 듯합니다.", "meaning": "The legal action line needs Legal's sign-off. A modal form like 'may be considered' is safer.", "vi": "Phần biện pháp pháp lý — phải có duyệt của 법무팀. Thể khả năng 'có thể xem xét' an toàn hơn." },
+      { "speaker": "공보팀장", "hangul": "맞습니다. '법적 대응을 검토할 수 있다'로 가시고요. '검토할 것이다' (will) 가 아니라 '검토할 수 있다' (may). 이 차이가 매우 중요합니다.", "meaning": "Right. '법적 대응을 검토할 수 있다' (may), not '검토할 것이다' (will). This distinction matters greatly.", "vi": "Đúng. '검토할 수 있다' (có thể xem xét), không '검토할 것이다' (sẽ xem xét). Khác biệt này rất quan trọng." },
+      { "speaker": "주무관", "hangul": "트위터 280자 초안 — '본원은 SNS상에서 유포되는 일부 주장에 대해 다음과 같이 본원의 입장을 밝힙니다. ① 자료 조작은 사실과 다릅니다. ② 본 자료는 외부 통계 전문가의 독립 검증을 거쳤습니다. ③ 허위 사실 유포에 대해서는 향후 법적 대응을 검토할 수 있습니다. — 한국교육개발원' — 270자입니다.", "meaning": "X 280-char draft — 'The Institute states its position on circulating claims: 1) data manipulation is contrary to fact; 2) the data underwent independent verification; 3) legal action may be considered for false-info dissemination. — KEDI' — 270 chars.", "vi": "Bản nháp X 280 chữ — 'Viện công bố lập trường về các khẳng định đang lan truyền: 1) bóp méo dữ liệu trái sự thật; 2) dữ liệu đã qua thẩm định độc lập; 3) lan truyền thông tin sai có thể xem xét pháp lý. — KEDI' — 270 chữ." },
+      { "speaker": "공보팀장", "hangul": "압축 잘 되었습니다. 페이스북 버전은 같은 3가지 메시지 + 외부 검증자 정보 + 본원 홈페이지 링크. 1,000자 안에서요.", "meaning": "Well compressed. Facebook version: same three messages + verifier info + homepage link, within 1,000 chars.", "vi": "Rút tốt. Bản Facebook: cùng 3 thông điệp + thông tin người thẩm định + link website, trong 1.000 chữ." },
+      { "speaker": "주무관", "hangul": "홈페이지 정식 입장문은 1,500자 정도, 사실관계 자세히 + 외부 검증 결과 요약 + 향후 조치 + 추가 문의 연락처 — 이렇게 4단락이면 충분합니다.", "meaning": "Homepage full statement around 1,500 chars: detailed facts + verification summary + future measures + contact — four paragraphs is enough.", "vi": "Văn bản đầy đủ trên website khoảng 1.500 chữ: sự thật chi tiết + tóm tắt thẩm định + biện pháp sau + liên hệ — 4 đoạn là đủ." },
+      { "speaker": "공보팀장", "hangul": "법무 5분 검토, 그리고 즉시 게시. 게시 후 본 대변인실 단톡으로 출입처에 알림 보내고요.", "meaning": "Legal review for five minutes, then post. After posting, notify Press Pool through the spokesperson's office Telegram.", "vi": "법무 review 5 phút, rồi đăng ngay. Sau đăng, thông báo 출입처 qua Telegram của văn phòng phát ngôn." },
+      { "speaker": "주무관", "hangul": "예, 진행하겠습니다. 게시 시각 — 17시 30분 목표로요.", "meaning": "Yes, proceeding. Target post time — 5:30 PM.", "vi": "Vâng, em làm. Mục tiêu giờ đăng — 17h30." },
+      { "speaker": "공보팀장", "hangul": "한 가지 더 — 게시 후 댓글에 답변하지 마세요. 본원 공식 입장은 본문에 있고, 댓글 답변은 새로운 발언이 됩니다.", "meaning": "One more thing — do not reply to comments after posting. Our official position is in the post; comment replies become new statements.", "vi": "Một điều nữa — sau khi đăng đừng trả lời bình luận. Lập trường chính thức của Viện trong bài; trả lời bình luận thành phát ngôn mới." }
+    ],
+    "roleplay_prompts": [
+      "Tin đồn lan trên X: tổ chức bạn 'sa thải nhân viên đã tố giác'. Soạn 입장문 280 chữ — 사실 확인 (denial / partial admission) + 본원 입장 + 향후 조치. KHÔNG dùng 〜습니다 (TV style, sai social).",
+      "Soạn 입장문 1,000 chữ cho Facebook về cùng tin đồn — 4 đoạn, có link đến tài liệu xác minh trên website. KHÔNG quote tên cá nhân chuyên gia (privacy).",
+      "1 tuần sau, dư luận đã lắng. Soạn 1 post 'follow-up' (300 chữ) cập nhật biện pháp đã thực hiện kể từ 입장문 đầu tiên — chứng minh tổ chức 'mặt' đối với cam kết. Không gây attention lại với chi tiết tin đồn cũ."
+    ],
+    "register_notes": "공식 입장문 đăng ký 〜다체 đặc thù (khác PR style của TV / podcast / báo): (1) Câu kết 〜한다 / 〜이다 / 〜밝힌다 — KHÔNG '〜합니다' (TV style); KHÔNG '〜해요' (informal). Đó là quy ước của 입장문 official. (2) Mở câu chuẩn: '본원은 〜에 대하여 다음과 같이 본원의 입장을 밝힌다.' — đặc thù social channel, KHÔNG '안녕하십니까' (TV style). (3) ĐÁNH SỐ rõ — ① ② ③ hoặc 첫째/둘째/셋째 — vì user trên social scroll nhanh, cần visual structure. (4) Lập trường: 3 dạng — '사실과 다르다' (denial), '사실로 확인되었다' (admission), '확인 중이다' (pending). KHÔNG 'partially true / partially false' — Hàn social không xử lý nuance được. (5) MOTIVATION: '강력히 부인한다' (denial mạnh) / '유감을 표한다' (regret political) / '사과드린다' (apology nếu thực sự sai). Mỗi lựa chọn = consequence khác. (6) ĐÓNG: '본원의 모든 공식 입장은 〜을 통해서만 발표된다' — quan trọng để invalidate fake messages giả mạo Viện trên các kênh khác. (7) THREAT LANGUAGE: '법적 대응을 검토할 수 있다' (may consider legal action) — quy ước của 입장문 đối với fake news. KHÔNG '법적 대응할 것이다' (will — bị xem là threatening citizens). KHÔNG '강력히 처벌하겠다' (will punish — overreach, làm tăng phản ứng). (8) Tránh: emoji, exclamation marks, slang — 입장문 BẮT BUỘC nghiêm trang dù trên Twitter. (9) Hashtag: ở post Facebook OK 1-2 hashtag liên quan; trên Twitter giới hạn để không vẻ marketing.",
+    "idiom_glosses": [
+      { "idiom": "본원의 입장을 다음과 같이 밝힌다", "literal": "Viện công bố lập trường như sau", "meaning": "(매우 격식, 입장문 도입부) cụm cố định bắt buộc — phải nói trước nội dung, vì user social scroll nhanh", "example": "본원은 SNS상에서 유포되는 일부 주장에 대하여 다음과 같이 본원의 입장을 밝힌다." },
+      { "idiom": "사실과 다르다", "literal": "khác với sự thật", "meaning": "(입장문, denial) cụm phủ nhận chuẩn — KHÔNG '거짓이다' (cứng), KHÔNG '아니다' (yếu)", "example": "본원이 자료를 조작하였다는 주장은 사실과 다르다." },
+      { "idiom": "법적 대응을 검토할 수 있다", "literal": "có thể xem xét biện pháp pháp lý", "meaning": "(공식, 향후 조치) cụm cảnh báo về fake news — '검토할 수 있다' (may), KHÔNG '검토할 것이다' (will)", "example": "허위 사실 유포에 대해서는 향후 법적 대응을 검토할 수 있다." },
+      { "idiom": "본원의 공식 입장은 본 채널을 통해서만 발표된다", "literal": "lập trường chính thức của Viện chỉ công bố qua kênh này", "meaning": "(공식, 입장문 closing) cụm vô hiệu hóa fake accounts giả mạo — quan trọng cho social ecosystem", "example": "본원의 모든 공식 입장은 본 채널과 본원 홈페이지를 통해서만 발표된다." }
+    ],
+    "cultural_notes_vi": "공식 입장문 trên kênh mạng xã hội ở Hàn là một thể loại mới (5-10 năm gần đây) nhưng đã có quy ước rõ ràng — và đầy bẫy.\n\n(1) ECOSYSTEM CHANNELS: tổ chức Hàn lớn thường có (a) Twitter/X — fast response (5-30 phút sau crisis); (b) Facebook page — medium-form (200-1000 chữ); (c) YouTube — video statement nếu nghiêm trọng; (d) Instagram — hình ảnh-driven, ít official; (e) Naver blog — long-form, SEO; (f) website pressroom — văn bản đầy đủ. Mỗi kênh đăng ký + content khác.\n\n(2) TIMING NGHIÊM: trong crisis, '24h golden rule' — phải có 입장문 đầu tiên trong 24 giờ. '1h golden rule' cho fast-moving tin đồn trên X — chậm hơn = tin đồn nhân lên 10x. Người Việt thường nghĩ 'gather all facts first, then respond'; ở Hàn social, 'respond fast with what you know + commit to update' tốt hơn.\n\n(3) 눈치 TRAP TRÊN SOCIAL: đặc biệt nguy. Bình luận trên post 입장문 thường có 50% là phản ứng emotional. KHÔNG trả lời bình luận — quy ước Hàn nghiêm. Một câu trả lời cho 1 user = câu đó thành 'phát ngôn mới', đôi khi mâu thuẫn với 입장문 chính. Một số org Hàn (특히 chính phủ) tắt comments — làm cho user phẫn nộ ban đầu nhưng tránh được crisis lan thêm.\n\n(4) FONT VÀ TIME: post 입장문 nên dùng default font; KHÔNG bold màu mè; KHÔNG emoji; KHÔNG hashtag marketing-flavored. Time đăng tốt nhất: 10-11 sáng (working hours), TRÁNH 6-9 tối (peak troll time), TRÁNH cuối tuần (low engagement, leak risk).\n\n(5) ATTRIBUTION CỦA POST: post BẮT BUỘC ký bằng tên tổ chức ở cuối ('— 한국교육개발원') hoặc bằng badge verification. KHÔNG ký tên cá nhân — vì kênh là organisation channel, không cá nhân.\n\n(6) CROSS-PLATFORM CONSISTENCY: 280-char Twitter version PHẢI khớp về thông điệp với 1000-char Facebook version với 1500-char website version. User screenshot từng phiên bản — nếu thông điệp lệch, rất nguy hiểm. Quy trình PR Hàn chuyên nghiệp: 1 master statement + 3 versions cùng được duyệt cùng lúc.\n\n(7) Tên các kênh, platform cụ thể (Twitter/X, Facebook, Naver blog) là illustrative — landscape platform thay đổi nhanh; học viên xác nhận platform đang được dùng trong tổ chức cụ thể trước khi áp dụng.",
+    "tip_advice_vi": "5 bước phát 입장문 social trong 1 giờ (crisis mode): (1) PHÚT 0-10 — nhận tin đồn; gọi 법무 + 홍보 + 대변인 — họp ngắn 5 phút; quyết định (a) deny / (b) partial / (c) pending. (2) PHÚT 11-25 — viết master statement 1500 chữ trên website; có 3 đoạn rõ (사실 확인 / 본원 입장 / 향후 조치); 법무 review 5 phút. (3) PHÚT 26-40 — compress thành 1000 chữ Facebook + 280 chữ Twitter; check master message lệch chưa. (4) PHÚT 41-50 — đăng đồng thời ba kênh + email 출입처 alert. (5) PHÚT 51-60 — tắt comment trên Facebook (hoặc giảm visibility); không trả lời comment trên Twitter; theo dõi sentiment 30 phút sau. MẸO PHÁT ÂM (đọc kiểm tra): '밝힌다' /발킨다/; '검토할 수 있다' /검토할쑤읻따/; '허위 사실 유포에' /허위사시류포에/. ĐỪNG: (a) trả lời comment cá nhân — câu đó trở thành phát ngôn mới; (b) đăng emoji ở 입장문 — bị reading 'không nghiêm trọng'; (c) gửi nhân viên cá nhân (không phải 대변인실) đăng — vi phạm quy trình; (d) update post sau khi đăng — quy ước Hàn xem version đầu là chính thức; muốn sửa = đăng phiên bản mới có note '〜에 대한 정정/추가'. Một typo cũng để nguyên trong post gốc.",
+    "exercises": [
+      { "type": "fill-blank", "question": "본원은 SNS상에서 유포되고 있는 일부 주장에 대하여 다음과 같이 본원의 입장을 ___.", "answer": "밝힌다" },
+      { "type": "matching", "pairs": [
+        { "hangul": "입장문", "meaning": "văn bản lập trường" },
+        { "hangul": "사실과 다르다", "meaning": "khác với sự thật" },
+        { "hangul": "법적 대응을 검토할 수 있다", "meaning": "có thể xem xét biện pháp pháp lý" }
+      ], "instruction": "Nối thuật ngữ 입장문 với nghĩa Việt" },
+      { "type": "translation", "vietnamese": "Mọi lập trường chính thức của Viện chỉ được công bố qua kênh này và website của Viện.", "hangul": "본원의 모든 공식 입장은 본 채널과 본원 홈페이지를 통해서만 발표된다." }
+    ]
   }
 ];
 
