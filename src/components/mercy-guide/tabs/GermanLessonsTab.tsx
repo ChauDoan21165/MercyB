@@ -1,17 +1,18 @@
 // src/components/mercy-guide/tabs/GermanLessonsTab.tsx
 //
 // Per-language wrapper for the German lessons tab inside the Mercy guide
-// panel. Imports German lessons + vocabulary at module scope so this file
-// rides its own lazy chunk; opening the French tab does not pull German
-// data and vice versa.
+// panel. The tab is itself lazy-loaded by MercyGuidePanel; inside the
+// tab, individual levels are loaded on demand via the lazy registry so
+// users only download the level they actually open.
 
 import LanguageLessonsView, {
   type LanguageLessonsConfig,
 } from "./LanguageLessonsView";
 import {
   GERMAN_CATEGORIES,
-  getLessonsByCategory,
-  type GermanCategoryId,
+  loadLessonsForLevel,
+  type GermanCefrLevel,
+  type GermanLesson,
 } from "@/languages/german/lessons";
 import { GERMAN_VOCABULARY } from "@/languages/german/vocabulary";
 
@@ -23,7 +24,8 @@ const GERMAN_CONFIG: LanguageLessonsConfig = {
   accent: "red",
   vocab: GERMAN_VOCABULARY,
   categories: GERMAN_CATEGORIES,
-  getLessonsByCategory: (cat) => getLessonsByCategory(cat as GermanCategoryId),
+  loadLessonsForLevel: (level) =>
+    loadLessonsForLevel(level as GermanCefrLevel) as Promise<GermanLesson[]>,
 };
 
 export default function GermanLessonsTab() {

@@ -2,19 +2,30 @@
 //
 // Phase 0 PR-E: French cuts over to the shared <LessonRenderer>.
 // Lesson rendering goes through normalizeFrenchLesson → LessonRenderer;
-// category grouping (FRENCH_CATEGORIES + getLessonsByCategory) stays at
-// the page level since it's French-specific UX.
+// category grouping (FRENCH_CATEGORIES) stays at the page level since
+// it's French-specific UX.
+//
+// Lazy-load split: the page loads only the selected level's lessons
+// (lessons-a1.ts ... lessons-c2.ts) on demand and groups them into
+// categories at render time.
 
+import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 
 import {
   FRENCH_CATEGORIES,
-  getLessonsByCategory,
+  FRENCH_TOTAL_LESSONS,
+  loadLessonsForLevel,
   type FrenchCategoryMeta,
+  type FrenchCefrLevel,
+  type FrenchLesson,
 } from "@/languages/french/lessons";
 import { normalizeFrenchLesson } from "@/languages/french/normalize";
 import { LessonRenderer } from "@/components/languages/LessonRenderer";
-import { lessonThemes } from "@/components/languages/lessonThemes";
+import {
+  lessonThemes,
+  cefrPillLabels,
+} from "@/components/languages/lessonThemes";
 import type { LessonTheme } from "@/components/languages/LessonRenderer.types";
 
 const HERO_VI =
@@ -22,8 +33,50 @@ const HERO_VI =
 const HERO_EN =
   "French for Vietnamese learners — from bonjour to l'addition.";
 
+const FRENCH_LEVELS: ReadonlyArray<FrenchCefrLevel> = [
+  "A1",
+  "A2",
+  "B1",
+  "B2",
+  "C1",
+  "C2",
+];
+
 export default function FrenchLessonsPage() {
   const theme = lessonThemes.french;
+  const [level, setLevel] = useState<FrenchCefrLevel>("A1");
+  const [lessons, setLessons] = useState<FrenchLesson[] | null>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+    setLessons(null);
+    loadLessonsForLevel(level)
+      .then((arr) => {
+        if (!cancelled) setLessons(arr);
+      })
+      .catch((err) => {
+        if (!cancelled) {
+          console.error("[FrenchLessonsPage] level load failed", level, err);
+          setLessons([]);
+        }
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [level]);
+
+  const lessonsByCategory = useMemo(() => {
+    const map = new Map<string, FrenchLesson[]>();
+    if (!lessons) return map;
+    for (const lesson of lessons) {
+      const cat = lesson.category ?? "uncategorized";
+      const arr = map.get(cat);
+      if (arr) arr.push(lesson);
+      else map.set(cat, [lesson]);
+    }
+    return map;
+  }, [lessons]);
+
   return (
     <div className="mx-auto w-full max-w-3xl px-4 py-6">
       <header className="mb-6 rounded-2xl border border-blue-200 bg-gradient-to-br from-blue-50 via-indigo-50 to-sky-50 p-5">
@@ -38,7 +91,7 @@ export default function FrenchLessonsPage() {
           Phát âm viết riêng cho người Việt. Âm mũi, âm câm, liaison — giải thích theo cách người Việt hiểu.
         </p>
         <p className="mt-3 text-xs text-slate-500">
-          50 bài · 26 chủ đề · A1 → B2
+          {FRENCH_TOTAL_LESSONS} bài · A1 → C2
         </p>
         <p className="mt-1 text-xs text-slate-500">
           <Link
@@ -50,24 +103,67 @@ export default function FrenchLessonsPage() {
         </p>
       </header>
 
-      <div className="space-y-5">
-        {FRENCH_CATEGORIES.map((cat) => (
-          <CategorySection key={cat.id} category={cat} theme={theme} />
-        ))}
-      </div>
+      <nav
+        aria-label="Chọn cấp độ"
+        className="mb-4 flex flex-wrap gap-2"
+      >
+        {FRENCH_LEVELS.map((lv) => {
+          const active = lv === level;
+          return (
+            <button
+              key={lv}
+              type="button"
+              onClick={() => setLevel(lv)}
+              className={`rounded-full border px-3 py-1 text-xs font-semibold transition ${
+                active
+                  ? "border-blue-600 bg-blue-600 text-white shadow-sm"
+                  : "border-slate-200 bg-white text-slate-600 hover:bg-slate-50"
+              }`}
+              aria-pressed={active}
+            >
+              {cefrPillLabels[lv] ?? lv}
+            </button>
+          );
+        })}
+      </nav>
+
+      {lessons === null ? (
+        <p className="rounded-lg border border-slate-200 bg-white px-3 py-4 text-sm text-slate-500">
+          Đang tải bài học cấp độ {cefrPillLabels[level] ?? level}…
+        </p>
+      ) : lessons.length === 0 ? (
+        <p className="rounded-lg border border-slate-200 bg-white px-3 py-4 text-sm text-slate-500">
+          Chưa có bài học cho cấp độ này.
+        </p>
+      ) : (
+        <div className="space-y-5">
+          {FRENCH_CATEGORIES.map((cat) => {
+            const catLessons = lessonsByCategory.get(cat.id);
+            if (!catLessons || catLessons.length === 0) return null;
+            return (
+              <CategorySection
+                key={cat.id}
+                category={cat}
+                lessons={catLessons}
+                theme={theme}
+              />
+            );
+          })}
+        </div>
+      )}
     </div>
   );
 }
 
 function CategorySection({
   category,
+  lessons,
   theme,
 }: {
   category: FrenchCategoryMeta;
+  lessons: FrenchLesson[];
   theme: LessonTheme;
 }) {
-  const lessons = getLessonsByCategory(category.id);
-  if (lessons.length === 0) return null;
   return (
     <section>
       <header className="mb-2 flex items-baseline justify-between">
