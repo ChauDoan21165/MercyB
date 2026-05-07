@@ -5206,4 +5206,1824 @@ export const VIETNAMESE_LESSONS: VietnameseLesson[] = [
     tip:
       "When in doubt, hear the response as attitude first: polite, casual, checking, or reassuring.",
   },
-  ];
+  {
+    id: 97,
+    level: "B1",
+    title_en: "Family Pressure: Checking In Without Pushing",
+    subtitle: "Ask about a sensitive family topic gently.",
+    intro:
+      "These lines help when you want to check in with someone without sounding nosy or controlling.",
+    phrases: [
+      {
+        english: "I do want to ask, but if it is uncomfortable, you do not have to answer.",
+        vietnamese: "Tôi cũng muốn hỏi, nhưng nếu bạn không thoải mái thì không cần trả lời đâu.",
+        pronunciation: "toy kung mwon hoy, nyung new ban khong thoai mai thi khong kun cha loy dau",
+        context: "Use before asking about a private family matter.",
+      },
+      {
+        english: "I am asking because I care, not because I want to pressure you.",
+        vietnamese: "Tôi hỏi vì quan tâm thôi, chứ không phải muốn gây áp lực cho bạn.",
+        pronunciation: "toy hoy vi quan tam thoy, chu khong phai mwon gay ap look cho ban",
+        context: "Use when your intention might be misunderstood.",
+      },
+    ],
+    dialogue: [
+      {
+        speaker: "A",
+        vietnamese: "Dạo này ở nhà ổn không? Nếu khó nói thì thôi cũng được.",
+        english: "Have things been okay at home lately? If it is hard to talk about, it is okay not to.",
+        pronunciation: "zao nai uh nha on khong, new kho noy thi thoy kung duoc",
+      },
+      {
+        speaker: "B",
+        vietnamese: "Ừ... cũng hơi căng, nhưng tôi chưa biết kể từ đâu.",
+        english: "Yeah... it has been a bit tense, but I do not know where to start.",
+        pronunciation: "oo, kung hoy kang, nyung toy chua biet keh tu dau",
+      },
+      {
+        speaker: "A",
+        vietnamese: "Không sao, bạn cứ nói chậm thôi. Tôi nghe được.",
+        english: "It is okay. Just take it slowly. I can listen.",
+        pronunciation: "khong sao, ban ku noy cham thoy, toy nghe duoc",
+      },
+      {
+        speaker: "B",
+        vietnamese: "Cảm ơn. Có người nghe mà không phán xét cũng đỡ rồi.",
+        english: "Thank you. Having someone listen without judging already helps.",
+        pronunciation: "kam un, ko nguoi nghe ma khong fan zet kung do roy",
+      },
+    ],
+    cultural_note:
+      "In Vietnamese family conversations, direct questions can feel heavy. A soft permission line gives the other person space.",
+    tip:
+      "Use nếu khó nói thì thôi cũng được when you want to lower pressure before a sensitive question.",
+  },
+  {
+    id: 98,
+    level: "B1",
+    title_en: "Parents Comparing You To Others",
+    subtitle: "Respond to comparison without attacking your parents.",
+    intro:
+      "These lines help heritage speakers and adult learners talk about comparison, shame, and expectations calmly.",
+    phrases: [
+      {
+        english: "I know you want me to do well, but comparison makes me feel small.",
+        vietnamese: "Con biết ba mẹ muốn con tốt hơn, nhưng bị so sánh làm con thấy mình nhỏ lại.",
+        pronunciation: "kon biet ba me mwon kon tot hon, nyung bi so sanh lam kon thay minh nyo lai",
+        context: "Use with parents when comparison hurts but you still want respect.",
+      },
+      {
+        english: "Can we talk about my path without bringing up other people's children?",
+        vietnamese: "Mình nói chuyện về đường đi của con thôi, đừng nhắc con nhà người ta được không?",
+        pronunciation: "minh noy chuyen ve duong di kua kon thoy, dung nyak kon nha nguoi ta duoc khong",
+        context: "Use when you need a clearer boundary around comparison.",
+      },
+    ],
+    dialogue: [
+      {
+        speaker: "A",
+        vietnamese: "Ba mẹ cứ nói con nhà người ta, con nghe nhiều cũng mệt.",
+        english: "When you keep bringing up other people's children, I get tired of hearing it.",
+        pronunciation: "ba me ku noy kon nha nguoi ta, kon nghe nhieu kung met",
+      },
+      {
+        speaker: "B",
+        vietnamese: "Ba mẹ chỉ muốn con có động lực thôi.",
+        english: "We just want you to have motivation.",
+        pronunciation: "ba me chi mwon kon ko dong luc thoy",
+      },
+      {
+        speaker: "A",
+        vietnamese: "Con hiểu, nhưng cách đó làm con thấy bị chê nhiều hơn là được động viên.",
+        english: "I understand, but that way makes me feel criticized more than encouraged.",
+        pronunciation: "kon hieu, nyung kach do lam kon thay bi che nhieu hon la duoc dong vien",
+      },
+      {
+        speaker: "B",
+        vietnamese: "Ừ, vậy mình nói cách khác nha.",
+        english: "Okay, then let us talk about it another way.",
+        pronunciation: "oo, vay minh noy kach khak nha",
+      },
+    ],
+    cultural_note:
+      "Many Vietnamese parents use comparison as motivation, but adult children often hear it as rejection.",
+    tip:
+      "Name both truths: con hiểu ý tốt, nhưng cách đó làm con đau. That keeps the door open.",
+  },
+  {
+    id: 99,
+    level: "B1",
+    title_en: "Not Ready For Marriage",
+    subtitle: "Explain your timing without sounding dismissive.",
+    intro:
+      "Use these lines when relatives ask about marriage and you need a calm, adult answer.",
+    phrases: [
+      {
+        english: "I am not avoiding marriage; I just want to be ready emotionally and financially.",
+        vietnamese: "Con không né chuyện cưới hỏi, chỉ là con muốn sẵn sàng hơn về cảm xúc và tài chính.",
+        pronunciation: "kon khong ne chuyen kuoi hoy, chi la kon mwon san sang hon ve kam xuk va tai chinh",
+        context: "Use with family when they think you are delaying without reason.",
+      },
+      {
+        english: "I would rather marry later than rush and make both people suffer.",
+        vietnamese: "Con thà cưới trễ còn hơn vội vàng rồi làm khổ cả hai người.",
+        pronunciation: "kon tha kuoi tre kon hon voy vang roy lam kho ka hai nguoi",
+        context: "Use to explain a more thoughtful view of marriage.",
+      },
+    ],
+    dialogue: [
+      {
+        speaker: "A",
+        vietnamese: "Sao con chưa tính chuyện cưới xin?",
+        english: "Why have you not thought about getting married yet?",
+        pronunciation: "sao kon chua tinh chuyen kuoi xin",
+      },
+      {
+        speaker: "B",
+        vietnamese: "Con có nghĩ chứ, nhưng con chưa muốn làm cho xong chuyện.",
+        english: "I have thought about it, but I do not want to do it just to get it over with.",
+        pronunciation: "kon ko nghi chu, nyung kon chua mwon lam cho xong chuyen",
+      },
+      {
+        speaker: "A",
+        vietnamese: "Lớn rồi, chờ hoài cũng khó.",
+        english: "You are grown now; waiting forever is hard too.",
+        pronunciation: "lon roy, cho hoai kung kho",
+      },
+      {
+        speaker: "B",
+        vietnamese: "Con hiểu. Con chỉ muốn khi cưới thì thật sự có trách nhiệm.",
+        english: "I understand. I just want to be truly responsible when I marry.",
+        pronunciation: "kon hieu, kon chi mwon khi kuoi thi that su ko trach nhiem",
+      },
+    ],
+    cultural_note:
+      "Marriage questions often carry care, anxiety, family pride, and fear of gossip all at once.",
+    tip:
+      "Use con hiểu to acknowledge family worry before explaining your own timing.",
+  },
+  {
+    id: 100,
+    level: "B1",
+    title_en: "Comforting A Burned-Out Sibling",
+    subtitle: "Support someone without turning it into advice too fast.",
+    intro:
+      "These phrases are for real family support when someone is tired, ashamed, or overwhelmed.",
+    phrases: [
+      {
+        english: "You do not have to be strong with me all the time.",
+        vietnamese: "Ở với tôi, bạn không cần lúc nào cũng phải mạnh mẽ đâu.",
+        pronunciation: "uh voi toy, ban khong kun luk nao kung phai manh me dau",
+        context: "Use when someone always hides their exhaustion.",
+      },
+      {
+        english: "Resting is not failure; it means your body has been carrying too much.",
+        vietnamese: "Nghỉ không phải là thất bại, mà là cơ thể bạn đã gồng quá lâu rồi.",
+        pronunciation: "ngi khong phai la that bai, ma la ko the ban da gong qua lau roy",
+        context: "Use to reframe rest for someone who feels guilty.",
+      },
+    ],
+    dialogue: [
+      {
+        speaker: "A",
+        vietnamese: "Tôi thấy mình vô dụng ghê. Mới làm chút đã kiệt sức.",
+        english: "I feel so useless. I barely did anything and I am already exhausted.",
+        pronunciation: "toy thay minh vo dung ghe, moi lam chut da kiet suc",
+      },
+      {
+        speaker: "B",
+        vietnamese: "Không phải vô dụng đâu. Bạn gồng lâu quá rồi.",
+        english: "You are not useless. You have been pushing yourself for too long.",
+        pronunciation: "khong phai vo dung dau, ban gong lau qua roy",
+      },
+      {
+        speaker: "A",
+        vietnamese: "Nhưng ai cũng chịu được, có mình tôi là than.",
+        english: "But everyone else can handle it. I am the only one complaining.",
+        pronunciation: "nyung ai kung chiu duoc, ko minh toy la than",
+      },
+      {
+        speaker: "B",
+        vietnamese: "Người ta chịu được hay không mình đâu thấy hết. Bạn mệt thì mình lo phần mệt trước.",
+        english: "We do not see everything other people carry. If you are tired, let us care for that first.",
+        pronunciation: "nguoi ta chiu duoc hay khong minh dau thay het, ban met thi minh lo phan met truoc",
+      },
+    ],
+    cultural_note:
+      "Vietnamese support can become advice very quickly. Sometimes the kinder move is to witness the tiredness first.",
+    tip:
+      "Use mình lo phần mệt trước to slow the conversation down and focus on the person.",
+  },
+  {
+    id: 101,
+    level: "B1",
+    title_en: "Quiet Resentment In The Family",
+    subtitle: "Say something is building up before it explodes.",
+    intro:
+      "These lines help you name resentment early without making the conversation dramatic.",
+    phrases: [
+      {
+        english: "I am not angry right now, but I can feel resentment building up.",
+        vietnamese: "Bây giờ tôi không giận, nhưng tôi thấy trong lòng bắt đầu có sự ấm ức.",
+        pronunciation: "bay gio toy khong zan, nyung toy thay trong long bat dau ko su am uk",
+        context: "Use when you want to prevent a bigger conflict.",
+      },
+      {
+        english: "I do not want to pretend everything is fine and then become cold later.",
+        vietnamese: "Tôi không muốn giả vờ ổn rồi sau đó lại lạnh nhạt.",
+        pronunciation: "toy khong mwon za vo on roy sau do lai lanh nhat",
+        context: "Use to explain why you are bringing up a hard topic.",
+      },
+    ],
+    dialogue: [
+      {
+        speaker: "A",
+        vietnamese: "Có chuyện này tôi muốn nói sớm, trước khi nó thành khó chịu.",
+        english: "There is something I want to say early, before it turns into resentment.",
+        pronunciation: "ko chuyen nai toy mwon noy som, truoc khi no thanh kho chiu",
+      },
+      {
+        speaker: "B",
+        vietnamese: "Nghe nghiêm trọng vậy?",
+        english: "That sounds serious.",
+        pronunciation: "nghe nghiem trong vay",
+      },
+      {
+        speaker: "A",
+        vietnamese: "Không nghiêm trọng, nhưng nếu im hoài chắc sẽ thành nghiêm trọng.",
+        english: "It is not serious yet, but if I keep quiet, it probably will become serious.",
+        pronunciation: "khong nghiem trong, nyung new im hoai chak se thanh nghiem trong",
+      },
+      {
+        speaker: "B",
+        vietnamese: "Ừ, vậy nói đi. Tôi nghe.",
+        english: "Okay, say it. I am listening.",
+        pronunciation: "oo, vay noy di, toy nghe",
+      },
+    ],
+    cultural_note:
+      "In many families, silence is treated as peace. But long silence can become emotional distance.",
+    tip:
+      "Use nói sớm to frame the conversation as prevention, not attack.",
+  },
+  {
+    id: 102,
+    level: "B1",
+    title_en: "Money Stress With Parents",
+    subtitle: "Talk about financial pressure with respect and clarity.",
+    intro:
+      "Use these phrases when money, support, debt, or family obligation feels emotionally loaded.",
+    phrases: [
+      {
+        english: "I want to help, but I need to be honest about what I can actually afford.",
+        vietnamese: "Con muốn giúp, nhưng con cần nói thật về khả năng tài chính của con.",
+        pronunciation: "kon mwon zup, nyung kon kun noy that ve kha nang tai chinh kua kon",
+        context: "Use when setting a realistic family support limit.",
+      },
+      {
+        english: "If I say yes to everything, later I may become resentful, and I do not want that.",
+        vietnamese: "Nếu con cái gì cũng nhận, sau này con dễ ấm ức, mà con không muốn vậy.",
+        pronunciation: "new kon kai zi kung nhan, sau nai kon ze am uk, ma kon khong mwon vay",
+        context: "Use when money boundaries are tied to family peace.",
+      },
+    ],
+    dialogue: [
+      {
+        speaker: "A",
+        vietnamese: "Tháng này con gửi được ít hơn một chút, được không?",
+        english: "Can I send a little less this month?",
+        pronunciation: "thang nai kon gui duoc it hon mot chut, duoc khong",
+      },
+      {
+        speaker: "B",
+        vietnamese: "Ở nhà cũng đang kẹt, nên ba mẹ mới hỏi.",
+        english: "Things are tight at home too, that is why we asked.",
+        pronunciation: "uh nha kung dang ket, nen ba me moi hoy",
+      },
+      {
+        speaker: "A",
+        vietnamese: "Con hiểu. Con không bỏ mặc đâu, chỉ là con cũng cần thở một chút.",
+        english: "I understand. I am not abandoning you, I just need a little breathing room too.",
+        pronunciation: "kon hieu, kon khong bo mak dau, chi la kon kung kun tho mot chut",
+      },
+      {
+        speaker: "B",
+        vietnamese: "Ừ, vậy con gửi được bao nhiêu thì nói rõ nha.",
+        english: "Okay, then tell us clearly how much you can send.",
+        pronunciation: "oo, vay kon gui duoc bao nhieu thi noy ro nha",
+      },
+    ],
+    cultural_note:
+      "Money support in Vietnamese families can carry love, duty, guilt, and pride at the same time.",
+    tip:
+      "Give a number if you can. Clear limits often feel less hurtful than vague avoidance.",
+  },
+  {
+    id: 103,
+    level: "B1",
+    title_en: "Respectful Disagreement With A Parent",
+    subtitle: "Disagree without turning the conversation into a fight.",
+    intro:
+      "These lines help you separate respect from obedience when you need to speak honestly.",
+    phrases: [
+      {
+        english: "I respect your experience, but this part of my life is different now.",
+        vietnamese: "Con tôn trọng kinh nghiệm của ba mẹ, nhưng phần này trong đời con bây giờ khác rồi.",
+        pronunciation: "kon ton trong kinh nghiem kua ba me, nyung phan nai trong doi kon bay gio khak roy",
+        context: "Use when older advice does not fit your current situation.",
+      },
+      {
+        english: "I am not trying to win; I just want you to understand why I choose this.",
+        vietnamese: "Con không cố thắng đâu, con chỉ muốn ba mẹ hiểu vì sao con chọn như vậy.",
+        pronunciation: "kon khong ko thang dau, kon chi mwon ba me hieu vi sao kon chon nhu vay",
+        context: "Use when disagreement starts to feel competitive.",
+      },
+    ],
+    dialogue: [
+      {
+        speaker: "A",
+        vietnamese: "Con biết ba mẹ lo, nhưng con muốn thử cách của con.",
+        english: "I know you are worried, but I want to try my way.",
+        pronunciation: "kon biet ba me lo, nyung kon mwon thu kach kua kon",
+      },
+      {
+        speaker: "B",
+        vietnamese: "Ba mẹ sống lâu hơn, thấy nhiều hơn con.",
+        english: "We have lived longer and seen more than you.",
+        pronunciation: "ba me song lau hon, thay nhieu hon kon",
+      },
+      {
+        speaker: "A",
+        vietnamese: "Dạ, con biết. Nhưng hoàn cảnh của con có vài điểm khác.",
+        english: "Yes, I know. But my situation has a few differences.",
+        pronunciation: "ya, kon biet, nyung hoan kanh kua kon ko vai diem khak",
+      },
+      {
+        speaker: "B",
+        vietnamese: "Vậy con giải thích cho ba mẹ nghe.",
+        english: "Then explain it to us.",
+        pronunciation: "vay kon zai thik cho ba me nghe",
+      },
+    ],
+    cultural_note:
+      "Dạ can soften disagreement without erasing your point. It signals respect before the boundary.",
+    tip:
+      "Use con muốn ba mẹ hiểu rather than con muốn ba mẹ đồng ý when agreement may be too much to ask.",
+  },
+  {
+    id: 104,
+    level: "B1",
+    title_en: "Vietnamese Parenting Boundaries",
+    subtitle: "Talk about discipline, pressure, and emotional safety.",
+    intro:
+      "Use these lines when discussing parenting choices that differ from the older generation.",
+    phrases: [
+      {
+        english: "I want my child to respect adults, but I also want them to feel safe speaking honestly.",
+        vietnamese: "Tôi muốn con biết tôn trọng người lớn, nhưng cũng muốn con thấy an toàn khi nói thật.",
+        pronunciation: "toy mwon kon biet ton trong nguoi lon, nyung kung mwon kon thay an toan khi noy that",
+        context: "Use when explaining a balanced parenting value.",
+      },
+      {
+        english: "Being strict is not the same as making a child afraid.",
+        vietnamese: "Nghiêm không có nghĩa là làm cho con sợ.",
+        pronunciation: "nghiem khong ko nghia la lam cho kon so",
+        context: "Use when discussing discipline without fear.",
+      },
+    ],
+    dialogue: [
+      {
+        speaker: "A",
+        vietnamese: "Con nít phải sợ người lớn một chút mới ngoan.",
+        english: "Children need to fear adults a little to behave.",
+        pronunciation: "kon nit phai so nguoi lon mot chut moi ngoan",
+      },
+      {
+        speaker: "B",
+        vietnamese: "Tôi hiểu ý đó, nhưng tôi không muốn con sợ đến mức giấu hết mọi chuyện.",
+        english: "I understand that idea, but I do not want my child to be so afraid they hide everything.",
+        pronunciation: "toy hieu y do, nyung toy khong mwon kon so den muc zau het moi chuyen",
+      },
+      {
+        speaker: "A",
+        vietnamese: "Vậy làm sao dạy được?",
+        english: "Then how can you teach them?",
+        pronunciation: "vay lam sao zay duoc",
+      },
+      {
+        speaker: "B",
+        vietnamese: "Vẫn có giới hạn rõ ràng, chỉ là mình không làm nhục con.",
+        english: "There are still clear limits; we just do not humiliate the child.",
+        pronunciation: "van ko zoi han ro rang, chi la minh khong lam nhuk kon",
+      },
+    ],
+    cultural_note:
+      "Many Vietnamese parenting conversations blend love, fear, sacrifice, and authority. Nuance matters.",
+    tip:
+      "Use vẫn có giới hạn rõ ràng to show you are not rejecting structure.",
+  },
+  {
+    id: 105,
+    level: "B1",
+    title_en: "A Deep Apology To A Friend",
+    subtitle: "Apologize without over-explaining or defending yourself.",
+    intro:
+      "These phrases help you repair trust after you hurt someone or handled something poorly.",
+    phrases: [
+      {
+        english: "I understand why that hurt you, and I should not have brushed it off.",
+        vietnamese: "Tôi hiểu vì sao chuyện đó làm bạn đau, và lẽ ra tôi không nên xem nhẹ như vậy.",
+        pronunciation: "toy hieu vi sao chuyen do lam ban dau, va le ra toy khong nen xem nhe nhu vay",
+        context: "Use when apologizing for minimizing someone's feelings.",
+      },
+      {
+        english: "I do not want to use my stress as an excuse for treating you badly.",
+        vietnamese: "Tôi không muốn lấy chuyện tôi căng thẳng làm cớ để đối xử tệ với bạn.",
+        pronunciation: "toy khong mwon lay chuyen toy kang thang lam ko de doi xu te voi ban",
+        context: "Use when taking responsibility without self-pity.",
+      },
+    ],
+    dialogue: [
+      {
+        speaker: "A",
+        vietnamese: "Tôi xin lỗi vì hôm đó đã nói kiểu rất lạnh.",
+        english: "I am sorry for speaking so coldly that day.",
+        pronunciation: "toy xin loy vi hom do da noy kieu rat lanh",
+      },
+      {
+        speaker: "B",
+        vietnamese: "Tôi không giận vì bạn bận. Tôi buồn vì bạn làm như tôi phiền.",
+        english: "I was not mad that you were busy. I was hurt because you made me feel like a burden.",
+        pronunciation: "toy khong zan vi ban ban, toy buon vi ban lam nhu toy phien",
+      },
+      {
+        speaker: "A",
+        vietnamese: "Ừ, tôi nghe. Tôi đã làm bạn thấy bị gạt ra ngoài.",
+        english: "Yes, I hear that. I made you feel pushed aside.",
+        pronunciation: "oo, toy nghe, toy da lam ban thay bi gat ra ngoai",
+      },
+      {
+        speaker: "B",
+        vietnamese: "Chỉ cần bạn hiểu vậy là tôi nhẹ hơn rồi.",
+        english: "Just knowing you understand that already makes me feel lighter.",
+        pronunciation: "chi kun ban hieu vay la toy nhe hon roy",
+      },
+    ],
+    cultural_note:
+      "A strong Vietnamese apology often includes nhận lỗi, hiểu nỗi đau, and a concrete change.",
+    tip:
+      "Avoid nhưng right after xin lỗi. It can make the apology sound like a defense.",
+  },
+  {
+    id: 106,
+    level: "B1",
+    title_en: "Soft Refusal Without Burning The Relationship",
+    subtitle: "Say no in a way that keeps dignity for both sides.",
+    intro:
+      "Use these lines when you cannot accept an invitation, favor, or request but want to stay warm.",
+    phrases: [
+      {
+        english: "I really appreciate you thinking of me, but I cannot take this on right now.",
+        vietnamese: "Tôi rất quý việc bạn nghĩ tới tôi, nhưng lúc này tôi không nhận thêm được.",
+        pronunciation: "toy rat quy viec ban nghi toi toy, nyung luk nai toy khong nhan them duoc",
+        context: "Use for a warm but clear refusal.",
+      },
+      {
+        english: "I do not want to say yes and then do it carelessly.",
+        vietnamese: "Tôi không muốn nhận lời rồi làm qua loa.",
+        pronunciation: "toy khong mwon nhan loy roy lam qua loa",
+        context: "Use when refusing because you want to be responsible.",
+      },
+    ],
+    dialogue: [
+      {
+        speaker: "A",
+        vietnamese: "Cuối tuần này bạn phụ tôi một việc được không?",
+        english: "Can you help me with something this weekend?",
+        pronunciation: "cuoi tuan nai ban phu toy mot viec duoc khong",
+      },
+      {
+        speaker: "B",
+        vietnamese: "Tôi muốn giúp lắm, nhưng tuần này tôi kín lịch thật sự.",
+        english: "I really want to help, but this week my schedule is truly full.",
+        pronunciation: "toy mwon zup lam, nyung tuan nai toy kin lich that su",
+      },
+      {
+        speaker: "A",
+        vietnamese: "Không được chút nào hả?",
+        english: "Not even a little?",
+        pronunciation: "khong duoc chut nao ha",
+      },
+      {
+        speaker: "B",
+        vietnamese: "Tôi sợ nhận rồi làm không tới nơi. Để lần sau tôi phụ kỹ hơn nha.",
+        english: "I am afraid I would say yes and not do it properly. Let me help more fully next time.",
+        pronunciation: "toy so nhan roy lam khong toi noi, de lan sau toy phu ky hon nha",
+      },
+    ],
+    cultural_note:
+      "A soft refusal protects mặt mũi by showing appreciation before the limit.",
+    tip:
+      "Use tôi sợ nhận rồi làm không tới nơi when your no is about capacity, not rejection.",
+  },
+  {
+    id: 107,
+    level: "B1",
+    title_en: "Dating: Unclear Intentions",
+    subtitle: "Ask where things are going without sounding accusatory.",
+    intro:
+      "These phrases help with modern dating conversations where signals are mixed or vague.",
+    phrases: [
+      {
+        english: "I like spending time with you, but I am a little unsure what you are looking for.",
+        vietnamese: "Tôi thích đi chơi với bạn, nhưng tôi hơi không rõ bạn đang tìm điều gì.",
+        pronunciation: "toy thik di choi voi ban, nyung toy hoy khong ro ban dang tim dieu zi",
+        context: "Use when dating feels warm but undefined.",
+      },
+      {
+        english: "I do not need an answer immediately, but I do need honesty.",
+        vietnamese: "Tôi không cần câu trả lời ngay, nhưng tôi cần sự thật lòng.",
+        pronunciation: "toy khong kun kau tra loy ngay, nyung toy kun su that long",
+        context: "Use when asking for emotional clarity.",
+      },
+    ],
+    dialogue: [
+      {
+        speaker: "A",
+        vietnamese: "Tôi vui khi gặp bạn, nhưng thú thật tôi hơi lấn cấn.",
+        english: "I enjoy seeing you, but honestly I feel a little uneasy.",
+        pronunciation: "toy vui khi gap ban, nyung thu that toy hoy lan kan",
+      },
+      {
+        speaker: "B",
+        vietnamese: "Vì chuyện gì?",
+        english: "About what?",
+        pronunciation: "vi chuyen zi",
+      },
+      {
+        speaker: "A",
+        vietnamese: "Tôi không rõ mình đang tìm hiểu nghiêm túc hay chỉ đi chơi cho vui.",
+        english: "I am not sure if we are seriously getting to know each other or just hanging out.",
+        pronunciation: "toy khong ro minh dang tim hieu nghiem tuk hay chi di choi cho vui",
+      },
+      {
+        speaker: "B",
+        vietnamese: "Ừ, câu đó công bằng. Để tôi nói thật hơn.",
+        english: "Yeah, that is a fair question. Let me be more honest.",
+        pronunciation: "oo, kau do kong bang, de toy noy that hon",
+      },
+    ],
+    cultural_note:
+      "Dating conversations in Vietnamese can be indirect, especially when neither person wants to mất mặt.",
+    tip:
+      "Use hơi lấn cấn for a natural way to say something feels off but not explosive.",
+  },
+  {
+    id: 108,
+    level: "B1",
+    title_en: "Dating And Family Expectations",
+    subtitle: "Talk about family pressure around relationships.",
+    intro:
+      "These lines help when dating is not only between two people but also tied to family timing and approval.",
+    phrases: [
+      {
+        english: "I like you, but I also need to move carefully because my family gets involved quickly.",
+        vietnamese: "Tôi thích bạn, nhưng tôi cũng cần đi chậm vì gia đình tôi hay xen vào khá sớm.",
+        pronunciation: "toy thik ban, nyung toy kung kun di cham vi gia dinh toy hay xen vao kha som",
+        context: "Use when family pressure affects dating pace.",
+      },
+      {
+        english: "I do not want us to rush just because people are asking questions.",
+        vietnamese: "Tôi không muốn tụi mình vội chỉ vì người khác hỏi nhiều.",
+        pronunciation: "toy khong mwon tui minh voi chi vi nguoi khak hoy nhieu",
+        context: "Use when outside pressure is shaping the relationship.",
+      },
+    ],
+    dialogue: [
+      {
+        speaker: "A",
+        vietnamese: "Mẹ tôi bắt đầu hỏi về bạn rồi.",
+        english: "My mom has started asking about you.",
+        pronunciation: "me toy bat dau hoy ve ban roy",
+      },
+      {
+        speaker: "B",
+        vietnamese: "Nghe hơi áp lực ha.",
+        english: "That sounds a little pressuring.",
+        pronunciation: "nghe hoy ap luc ha",
+      },
+      {
+        speaker: "A",
+        vietnamese: "Ừ, tôi thích bạn, nhưng không muốn tụi mình bị đẩy nhanh quá.",
+        english: "Yeah, I like you, but I do not want us to be pushed too fast.",
+        pronunciation: "oo, toy thik ban, nyung khong mwon tui minh bi day nhanh qua",
+      },
+      {
+        speaker: "B",
+        vietnamese: "Vậy mình cứ đi chậm, nhưng nói rõ với nhau.",
+        english: "Then let us go slowly, but stay clear with each other.",
+        pronunciation: "vay minh ku di cham, nyung noy ro voi nhau",
+      },
+    ],
+    cultural_note:
+      "Family curiosity can feel like care to one person and pressure to another.",
+    tip:
+      "Use tụi mình bị đẩy nhanh quá to name outside pressure without blaming your partner.",
+  },
+  {
+    id: 109,
+    level: "B1",
+    title_en: "Saying You Need Space",
+    subtitle: "Ask for emotional space without disappearing.",
+    intro:
+      "Use these phrases when you need quiet time but do not want the other person to feel abandoned.",
+    phrases: [
+      {
+        english: "I need some space, but I am not trying to punish you.",
+        vietnamese: "Tôi cần một chút không gian, nhưng không phải để phạt bạn.",
+        pronunciation: "toy kun mot chut khong gian, nyung khong phai de fat ban",
+        context: "Use when asking for space after tension.",
+      },
+      {
+        english: "Can we pause tonight and talk again when both of us are calmer?",
+        vietnamese: "Tối nay mình tạm dừng nha, khi cả hai bình tĩnh hơn rồi nói tiếp được không?",
+        pronunciation: "toi nai minh tam dung nha, khi ka hai binh tinh hon roy noy tiep duoc khong",
+        context: "Use when a conversation is getting heated.",
+      },
+    ],
+    dialogue: [
+      {
+        speaker: "A",
+        vietnamese: "Tôi thấy mình sắp nói những câu không nên nói.",
+        english: "I feel like I am about to say things I should not say.",
+        pronunciation: "toy thay minh sap noy nhung kau khong nen noy",
+      },
+      {
+        speaker: "B",
+        vietnamese: "Vậy bạn muốn dừng lại hả?",
+        english: "So you want to stop?",
+        pronunciation: "vay ban mwon dung lai ha",
+      },
+      {
+        speaker: "A",
+        vietnamese: "Dừng tối nay thôi. Tôi vẫn muốn giải quyết chuyện này.",
+        english: "Just stop for tonight. I still want to resolve this.",
+        pronunciation: "dung toi nai thoy, toy van mwon zai quyet chuyen nai",
+      },
+      {
+        speaker: "B",
+        vietnamese: "Ừ, mai mình nói tiếp.",
+        english: "Okay, we will talk more tomorrow.",
+        pronunciation: "oo, mai minh noy tiep",
+      },
+    ],
+    cultural_note:
+      "Space can be mistaken for coldness. A time promise helps the other person feel less rejected.",
+    tip:
+      "Add mai mình nói tiếp or lát nữa mình nhắn lại if you need distance but not disappearance.",
+  },
+  {
+    id: 110,
+    level: "B1",
+    title_en: "Awkward Follow-Up After A Date",
+    subtitle: "Be kind when the feeling is not mutual.",
+    intro:
+      "These lines help you close a dating conversation honestly without being cruel.",
+    phrases: [
+      {
+        english: "I had a good time, but I did not feel the kind of connection I am looking for.",
+        vietnamese: "Tôi đã có một buổi đi chơi vui, nhưng tôi không cảm thấy kiểu kết nối mình đang tìm.",
+        pronunciation: "toy da ko mot buoi di choi vui, nyung toy khong kam thay kieu ket noi minh dang tim",
+        context: "Use when declining a second date kindly.",
+      },
+      {
+        english: "I do not want to keep talking if I already know my heart is not there.",
+        vietnamese: "Tôi không muốn tiếp tục nhắn nếu trong lòng tôi đã biết là không tới.",
+        pronunciation: "toy khong mwon tiep tuc nhan new trong long toy da biet la khong toi",
+        context: "Use when honesty is kinder than dragging things out.",
+      },
+    ],
+    dialogue: [
+      {
+        speaker: "A",
+        vietnamese: "Tối qua tôi vui, nhưng chắc tôi nên nói thật.",
+        english: "I had fun last night, but I should probably be honest.",
+        pronunciation: "toi qua toy vui, nyung chak toy nen noy that",
+      },
+      {
+        speaker: "B",
+        vietnamese: "Ừ, bạn nói đi.",
+        english: "Okay, say it.",
+        pronunciation: "oo, ban noy di",
+      },
+      {
+        speaker: "A",
+        vietnamese: "Tôi quý bạn, nhưng không thấy cảm giác hẹn hò.",
+        english: "I respect you, but I do not feel a dating connection.",
+        pronunciation: "toy quy ban, nyung khong thay kam ziak hen ho",
+      },
+      {
+        speaker: "B",
+        vietnamese: "Buồn chút, nhưng cảm ơn vì nói rõ.",
+        english: "That stings a little, but thank you for being clear.",
+        pronunciation: "buon chut, nyung kam un vi noy ro",
+      },
+    ],
+    cultural_note:
+      "A clear, kind ending often hurts less than vague replies that slowly disappear.",
+    tip:
+      "Use tôi quý bạn to preserve dignity without implying romantic interest.",
+  },
+  {
+    id: 111,
+    level: "B1",
+    title_en: "Workplace Burnout",
+    subtitle: "Explain exhaustion without sounding unreliable.",
+    intro:
+      "These phrases help you talk about burnout in a practical workplace tone.",
+    phrases: [
+      {
+        english: "I can still handle my work, but my current pace is not sustainable.",
+        vietnamese: "Tôi vẫn xử lý được công việc, nhưng nhịp hiện tại không bền được.",
+        pronunciation: "toy van xu ly duoc kong viec, nyung nhip hien tai khong ben duoc",
+        context: "Use with a manager when you need a realistic pace.",
+      },
+      {
+        english: "I need to adjust priorities before the quality starts dropping.",
+        vietnamese: "Tôi cần điều chỉnh ưu tiên trước khi chất lượng bắt đầu đi xuống.",
+        pronunciation: "toy kun dieu chinh uu tien truoc khi chat luong bat dau di xuong",
+        context: "Use when asking to reprioritize work.",
+      },
+    ],
+    dialogue: [
+      {
+        speaker: "A",
+        vietnamese: "Tôi muốn nói sớm về tải công việc hiện tại.",
+        english: "I want to speak early about my current workload.",
+        pronunciation: "toy mwon noy som ve tai kong viec hien tai",
+      },
+      {
+        speaker: "B",
+        vietnamese: "Có vấn đề gì không?",
+        english: "Is there a problem?",
+        pronunciation: "ko van de zi khong",
+      },
+      {
+        speaker: "A",
+        vietnamese: "Chưa hỏng, nhưng nếu giữ nhịp này thì chất lượng sẽ giảm.",
+        english: "Nothing is broken yet, but if we keep this pace, quality will drop.",
+        pronunciation: "chua hong, nyung new zu nhip nai thi chat luong se zam",
+      },
+      {
+        speaker: "B",
+        vietnamese: "Vậy mình xem lại ưu tiên tuần này.",
+        english: "Then let us review this week's priorities.",
+        pronunciation: "vay minh xem lai uu tien tuan nai",
+      },
+    ],
+    cultural_note:
+      "In many workplaces, burnout is easier to discuss through quality, priorities, and sustainability than emotions alone.",
+    tip:
+      "Use không bền được when you need to say a pace cannot continue.",
+  },
+  {
+    id: 112,
+    level: "B1",
+    title_en: "Impossible Deadline",
+    subtitle: "Push back on timing without rejecting responsibility.",
+    intro:
+      "Use these lines when a deadline is too tight and you need to negotiate scope or time.",
+    phrases: [
+      {
+        english: "With the current scope, this deadline is risky.",
+        vietnamese: "Với phạm vi hiện tại, hạn này khá rủi ro.",
+        pronunciation: "voi fam vi hien tai, han nai kha rui ro",
+        context: "Use when the timeline may create quality or delivery risk.",
+      },
+      {
+        english: "If we need it by Friday, we should reduce the scope clearly.",
+        vietnamese: "Nếu cần xong trước thứ Sáu, mình nên giảm phạm vi cho rõ.",
+        pronunciation: "new kun xong truoc thu sau, minh nen zam fam vi cho ro",
+        context: "Use when offering a practical tradeoff.",
+      },
+    ],
+    dialogue: [
+      {
+        speaker: "A",
+        vietnamese: "Việc này có thể xong trong hai ngày không?",
+        english: "Can this be done in two days?",
+        pronunciation: "viec nai ko the xong trong hai ngay khong",
+      },
+      {
+        speaker: "B",
+        vietnamese: "Nếu giữ đủ phạm vi thì hơi rủi ro.",
+        english: "If we keep the full scope, it is a bit risky.",
+        pronunciation: "new zu du fam vi thi hoy rui ro",
+      },
+      {
+        speaker: "A",
+        vietnamese: "Vậy phương án nào ổn hơn?",
+        english: "Then what option is better?",
+        pronunciation: "vay fuong an nao on hon",
+      },
+      {
+        speaker: "B",
+        vietnamese: "Mình chốt phần cần nhất trước, phần còn lại để sang tuần.",
+        english: "We lock the most necessary part first and move the rest to next week.",
+        pronunciation: "minh chot phan kun nyat truoc, phan kon lai de sang tuan",
+      },
+    ],
+    cultural_note:
+      "A practical tradeoff sounds better than a flat no in most workplace conversations.",
+    tip:
+      "Use phạm vi and rủi ro to sound calm, specific, and professional.",
+  },
+  {
+    id: 113,
+    level: "B1",
+    title_en: "Pushing Back Politely",
+    subtitle: "Disagree with a direction while staying constructive.",
+    intro:
+      "These phrases help you raise concerns without sounding negative or defensive.",
+    phrases: [
+      {
+        english: "I understand the direction, but I am worried about one part.",
+        vietnamese: "Tôi hiểu hướng đó, nhưng tôi hơi lo một phần.",
+        pronunciation: "toy hieu huong do, nyung toy hoy lo mot phan",
+        context: "Use before giving a concern in a meeting.",
+      },
+      {
+        english: "Can I suggest a safer version of this idea?",
+        vietnamese: "Tôi đề xuất một phiên bản an toàn hơn của ý này được không?",
+        pronunciation: "toy de xuat mot fien ban an toan hon kua y nai duoc khong",
+        context: "Use when offering an alternative instead of only criticizing.",
+      },
+    ],
+    dialogue: [
+      {
+        speaker: "A",
+        vietnamese: "Mình sẽ launch toàn bộ vào tuần sau.",
+        english: "We will launch everything next week.",
+        pronunciation: "minh se launch toan bo vao tuan sau",
+      },
+      {
+        speaker: "B",
+        vietnamese: "Tôi hiểu mục tiêu, nhưng tôi hơi lo phần kiểm thử.",
+        english: "I understand the goal, but I am a little worried about testing.",
+        pronunciation: "toy hieu muc tieu, nyung toy hoy lo phan kiem thu",
+      },
+      {
+        speaker: "A",
+        vietnamese: "Bạn nghĩ nên làm sao?",
+        english: "What do you think we should do?",
+        pronunciation: "ban nghi nen lam sao",
+      },
+      {
+        speaker: "B",
+        vietnamese: "Mình launch từng phần nhỏ để nếu có lỗi thì dễ xử lý hơn.",
+        english: "We launch in smaller parts so if there is a bug, it is easier to handle.",
+        pronunciation: "minh launch tung phan nyo de new ko loi thi ze xu ly hon",
+      },
+    ],
+    cultural_note:
+      "Soft concern plus concrete alternative is often easier to receive than direct opposition.",
+    tip:
+      "Use tôi hơi lo một phần to open a concern without making it sound like a rejection.",
+  },
+  {
+    id: 114,
+    level: "B1",
+    title_en: "Coworker Tension",
+    subtitle: "Address awkwardness before it becomes office drama.",
+    intro:
+      "Use these lines when a coworker relationship feels cold, unclear, or passive-aggressive.",
+    phrases: [
+      {
+        english: "I feel some tension between us, and I would rather clear it up directly.",
+        vietnamese: "Tôi thấy giữa mình có chút căng, nên tôi muốn nói rõ thay vì để vậy.",
+        pronunciation: "toy thay zua minh ko chut kang, nen toy mwon noy ro thay vi de vay",
+        context: "Use when you want to address awkwardness early.",
+      },
+      {
+        english: "If I missed something, please tell me. I do not want to guess.",
+        vietnamese: "Nếu tôi có sót gì thì bạn nói giúp tôi, tôi không muốn đoán mò.",
+        pronunciation: "new toy ko sot zi thi ban noy zup toy, toy khong mwon doan mo",
+        context: "Use when a coworker seems upset but has not said why.",
+      },
+    ],
+    dialogue: [
+      {
+        speaker: "A",
+        vietnamese: "Mấy ngày nay tôi thấy mình nói chuyện hơi gượng.",
+        english: "These past few days I feel like our conversations have been a little stiff.",
+        pronunciation: "may ngay nay toy thay minh noy chuyen hoy guong",
+      },
+      {
+        speaker: "B",
+        vietnamese: "Tôi cũng có cảm giác vậy.",
+        english: "I felt that too.",
+        pronunciation: "toy kung ko kam ziak vay",
+      },
+      {
+        speaker: "A",
+        vietnamese: "Nếu có gì tôi làm chưa ổn, bạn nói thẳng nhưng nhẹ giúp tôi nha.",
+        english: "If I did something poorly, please tell me directly but gently.",
+        pronunciation: "new ko zi toy lam chua on, ban noy thang nyung nhe zup toy nha",
+      },
+      {
+        speaker: "B",
+        vietnamese: "Ừ, có một chuyện trong buổi họp hôm đó.",
+        english: "Okay, there was one thing in that meeting.",
+        pronunciation: "oo, ko mot chuyen trong buoi hop hom do",
+      },
+    ],
+    cultural_note:
+      "Workplace tension in Vietnamese settings may stay indirect for a long time unless someone opens a face-saving path.",
+    tip:
+      "Use nói thẳng nhưng nhẹ to invite honesty without inviting harshness.",
+  },
+  {
+    id: 115,
+    level: "B1",
+    title_en: "Asking For Help At Work",
+    subtitle: "Ask for support without sounding helpless.",
+    intro:
+      "These phrases help you ask for guidance, review, or backup in a mature way.",
+    phrases: [
+      {
+        english: "I have tried two approaches, but I am still stuck at this point.",
+        vietnamese: "Tôi đã thử hai cách, nhưng vẫn bị kẹt ở chỗ này.",
+        pronunciation: "toy da thu hai kach, nyung van bi ket uh cho nai",
+        context: "Use when asking for help after showing effort.",
+      },
+      {
+        english: "Could you help me check my thinking, not solve the whole thing for me?",
+        vietnamese: "Bạn giúp tôi kiểm tra hướng nghĩ thôi, không cần làm hết giúp tôi đâu.",
+        pronunciation: "ban zup toy kiem tra huong nghi thoy, khong kun lam het zup toy dau",
+        context: "Use when you want guidance while keeping ownership.",
+      },
+    ],
+    dialogue: [
+      {
+        speaker: "A",
+        vietnamese: "Tôi bị kẹt chỗ này, nhưng không muốn đẩy việc qua cho bạn.",
+        english: "I am stuck here, but I do not want to push the work onto you.",
+        pronunciation: "toy bi ket cho nai, nyung khong mwon day viec qua cho ban",
+      },
+      {
+        speaker: "B",
+        vietnamese: "Bạn đã thử gì rồi?",
+        english: "What have you tried already?",
+        pronunciation: "ban da thu zi roy",
+      },
+      {
+        speaker: "A",
+        vietnamese: "Tôi thử hai hướng này. Bạn xem giúp tôi sai ở logic nào được không?",
+        english: "I tried these two directions. Could you help me see where the logic is wrong?",
+        pronunciation: "toy thu hai huong nai, ban xem zup toy sai uh logic nao duoc khong",
+      },
+      {
+        speaker: "B",
+        vietnamese: "Được, gửi tôi xem nhanh.",
+        english: "Sure, send it and I will take a quick look.",
+        pronunciation: "duoc, gui toy xem nhanh",
+      },
+    ],
+    cultural_note:
+      "Showing what you already tried makes a help request feel responsible rather than passive.",
+    tip:
+      "Use kiểm tra hướng nghĩ when you want mentoring, not handoff.",
+  },
+  {
+    id: 116,
+    level: "B1",
+    title_en: "Resigning Gracefully",
+    subtitle: "Leave a job without burning bridges.",
+    intro:
+      "Use these lines when you need to resign, transition work, and keep the relationship respectful.",
+    phrases: [
+      {
+        english: "This was not an easy decision, and I am grateful for what I learned here.",
+        vietnamese: "Đây không phải quyết định dễ dàng, và tôi biết ơn những gì đã học được ở đây.",
+        pronunciation: "day khong phai quyet dinh ze zang, va toy biet un nhung zi da hoc duoc uh day",
+        context: "Use when opening a resignation conversation.",
+      },
+      {
+        english: "I want to hand things over clearly so the team is not left struggling.",
+        vietnamese: "Tôi muốn bàn giao rõ ràng để team không bị chới với.",
+        pronunciation: "toy mwon ban giao ro rang de team khong bi choi voi",
+        context: "Use when showing responsibility during transition.",
+      },
+    ],
+    dialogue: [
+      {
+        speaker: "A",
+        vietnamese: "Tôi muốn báo trước là tôi đã quyết định nghỉ.",
+        english: "I want to let you know in advance that I have decided to resign.",
+        pronunciation: "toy mwon bao truoc la toy da quyet dinh nghi",
+      },
+      {
+        speaker: "B",
+        vietnamese: "Có chuyện gì làm bạn không hài lòng à?",
+        english: "Is there something that made you unhappy?",
+        pronunciation: "ko chuyen zi lam ban khong hai long a",
+      },
+      {
+        speaker: "A",
+        vietnamese: "Có vài lý do cá nhân và hướng phát triển mới. Tôi vẫn rất biết ơn team.",
+        english: "There are a few personal reasons and a new direction for growth. I am still very grateful to the team.",
+        pronunciation: "ko vai ly zo ka nhan va huong fat trien moi, toy van rat biet un team",
+      },
+      {
+        speaker: "B",
+        vietnamese: "Vậy mình lên kế hoạch bàn giao cho ổn.",
+        english: "Then let us make a transition plan properly.",
+        pronunciation: "vay minh len ke hoach ban giao cho on",
+      },
+    ],
+    cultural_note:
+      "Vietnamese resignation conversations often value gratitude and smooth handover as much as the formal notice.",
+    tip:
+      "Use bàn giao rõ ràng to keep the focus on responsibility, not drama.",
+  },
+  {
+    id: 117,
+    level: "B1",
+    title_en: "Financial Stress With A Partner",
+    subtitle: "Talk about money anxiety without blaming.",
+    intro:
+      "These lines help couples discuss money when both love and fear are present.",
+    phrases: [
+      {
+        english: "When money gets tight, I get quiet, but that does not mean I blame you.",
+        vietnamese: "Khi tiền bạc căng, tôi hay im lặng, nhưng không có nghĩa là tôi trách bạn.",
+        pronunciation: "khi tien bak kang, toy hay im lang, nyung khong ko nghia la toy trach ban",
+        context: "Use when your stress response looks like distance.",
+      },
+      {
+        english: "Can we look at the numbers together before both of us panic separately?",
+        vietnamese: "Mình xem số liệu cùng nhau trước khi mỗi người tự hoảng được không?",
+        pronunciation: "minh xem so lieu kung nhau truoc khi moi nguoi tu hoang duoc khong",
+        context: "Use when asking for shared problem-solving.",
+      },
+    ],
+    cultural_note:
+      "Money conversations can quickly become about dignity. Keep the focus on shared reality, not personal failure.",
+    tip:
+      "Use cùng nhau to lower defensiveness and remind both people they are on the same side.",
+  },
+  {
+    id: 118,
+    level: "B1",
+    title_en: "Splitting Bills Awkwardly",
+    subtitle: "Handle payment without resentment or embarrassment.",
+    intro:
+      "Use these phrases when paying, splitting, or treating someone needs a little tact.",
+    phrases: [
+      {
+        english: "Let us split this one; next time one of us can treat if it feels natural.",
+        vietnamese: "Bữa này mình chia nha, lần sau ai mời cũng được nếu thấy tự nhiên.",
+        pronunciation: "bua nai minh chia nha, lan sau ai moi kung duoc new thay tu nhien",
+        context: "Use on dates or with friends when you want low pressure.",
+      },
+      {
+        english: "I appreciate the offer, but I feel more comfortable paying my part.",
+        vietnamese: "Tôi rất quý ý tốt của bạn, nhưng tôi thấy thoải mái hơn khi trả phần của mình.",
+        pronunciation: "toy rat quy y tot kua ban, nyung toy thay thoai mai hon khi tra phan kua minh",
+        context: "Use when someone insists on paying and you want a gentle boundary.",
+      },
+    ],
+    cultural_note:
+      "Paying can carry care, status, romance, or obligation. A light tone helps avoid awkwardness.",
+    tip:
+      "Use bữa này mình chia nha when you want the moment to feel simple and uncharged.",
+  },
+  {
+    id: 119,
+    level: "B1",
+    title_en: "Lending Money Boundaries",
+    subtitle: "Protect a relationship when money is requested.",
+    intro:
+      "These lines help you say yes, no, or not that much without damaging trust.",
+    phrases: [
+      {
+        english: "I care about you, but lending money is difficult for me right now.",
+        vietnamese: "Tôi thương bạn, nhưng chuyện cho mượn tiền lúc này hơi khó với tôi.",
+        pronunciation: "toy thuong ban, nyung chuyen cho muon tien luk nai hoy kho voi toy",
+        context: "Use when refusing a loan but keeping warmth.",
+      },
+      {
+        english: "I can help a smaller amount, and I need us to be clear about repayment.",
+        vietnamese: "Tôi giúp được một khoản nhỏ hơn, và mình cần rõ chuyện trả lại.",
+        pronunciation: "toy zup duoc mot khoan nyo hon, va minh kun ro chuyen tra lai",
+        context: "Use when agreeing with a clear limit.",
+      },
+    ],
+    cultural_note:
+      "Money loans can quietly change friendships. Clarity protects the relationship more than vague generosity.",
+    tip:
+      "Use khoản nhỏ hơn if you can help a little but not the full amount.",
+  },
+  {
+    id: 120,
+    level: "B1",
+    title_en: "Supporting Someone Unemployed",
+    subtitle: "Encourage without making them feel ashamed.",
+    intro:
+      "Use these phrases when a friend or relative is job hunting and feeling judged.",
+    phrases: [
+      {
+        english: "Not having a job right now does not erase your value.",
+        vietnamese: "Hiện tại chưa có việc không có nghĩa là giá trị của bạn mất đi.",
+        pronunciation: "hien tai chua ko viec khong ko nghia la gia tri kua ban mat di",
+        context: "Use when someone feels ashamed about unemployment.",
+      },
+      {
+        english: "If you want, I can help you think through next steps, not pressure you.",
+        vietnamese: "Nếu bạn muốn, tôi có thể cùng bạn nghĩ bước tiếp theo, chứ không ép bạn.",
+        pronunciation: "new ban mwon, toy ko the kung ban nghi buoc tiep theo, chu khong ep ban",
+        context: "Use when offering practical support gently.",
+      },
+    ],
+    cultural_note:
+      "Job status can feel tied to family face. Support should reduce shame before strategy.",
+    tip:
+      "Use nếu bạn muốn to avoid turning care into pressure.",
+  },
+  {
+    id: 121,
+    level: "B1",
+    title_en: "Heritage Identity: Feeling In-Between",
+    subtitle: "Talk about belonging to more than one world.",
+    intro:
+      "These lines are for heritage speakers who feel Vietnamese and not Vietnamese enough at the same time.",
+    phrases: [
+      {
+        english: "Sometimes I feel too Vietnamese in one place and not Vietnamese enough in another.",
+        vietnamese: "Đôi khi tôi thấy mình quá Việt ở một nơi, mà lại không đủ Việt ở nơi khác.",
+        pronunciation: "doi khi toy thay minh qua viet uh mot noi, ma lai khong du viet uh noi khak",
+        context: "Use when describing in-between identity.",
+      },
+      {
+        english: "I am trying to reconnect without pretending I grew up the same way.",
+        vietnamese: "Tôi đang cố kết nối lại, nhưng không muốn giả vờ là mình lớn lên giống mọi người.",
+        pronunciation: "toy dang ko ket noi lai, nyung khong mwon za vo la minh lon len zong moi nguoi",
+        context: "Use when talking about heritage language or culture honestly.",
+      },
+    ],
+    cultural_note:
+      "Heritage identity often includes love, loss, embarrassment, and longing in the same sentence.",
+    tip:
+      "Use không đủ Việt to name the feeling directly without turning it into self-hate.",
+  },
+  {
+    id: 122,
+    level: "B1",
+    title_en: "Speaking Vietnamese With Relatives",
+    subtitle: "Handle correction, embarrassment, and trying again.",
+    intro:
+      "Use these lines when you want to practice Vietnamese with family but feel nervous.",
+    phrases: [
+      {
+        english: "Please correct me gently; I want to learn, but I get embarrassed easily.",
+        vietnamese: "Mọi người sửa nhẹ giúp con nha, con muốn học nhưng dễ ngại lắm.",
+        pronunciation: "moi nguoi sua nhe zup kon nha, kon mwon hoc nyung ze ngai lam",
+        context: "Use before speaking Vietnamese with relatives.",
+      },
+      {
+        english: "I understand more than I can say, so please give me a little time.",
+        vietnamese: "Con hiểu nhiều hơn con nói được, nên cho con thêm chút thời gian nha.",
+        pronunciation: "kon hieu nhieu hon kon noy duoc, nen cho kon them chut thoi gian nha",
+        context: "Use when relatives expect faster speaking.",
+      },
+    ],
+    cultural_note:
+      "Family correction can feel loving to elders and humiliating to learners. Naming the need helps.",
+    tip:
+      "Use sửa nhẹ giúp con to invite correction without making it public embarrassment.",
+  },
+  {
+    id: 123,
+    level: "B1",
+    title_en: "Feeling Judged At Community Events",
+    subtitle: "Describe social pressure without sounding hostile.",
+    intro:
+      "These phrases help when community gatherings feel warm and stressful at the same time.",
+    phrases: [
+      {
+        english: "I like seeing everyone, but sometimes I feel like I am being evaluated.",
+        vietnamese: "Tôi thích gặp mọi người, nhưng đôi khi có cảm giác mình đang bị đánh giá.",
+        pronunciation: "toy thik gap moi nguoi, nyung doi khi ko kam ziak minh dang bi danh zia",
+        context: "Use when explaining discomfort at community events.",
+      },
+      {
+        english: "I know people may not mean harm, but the questions still feel heavy.",
+        vietnamese: "Tôi biết mọi người có thể không có ý xấu, nhưng mấy câu hỏi đó vẫn nặng.",
+        pronunciation: "toy biet moi nguoi ko the khong ko y xau, nyung may kau hoy do van nang",
+        context: "Use when intrusive questions are framed as care.",
+      },
+    ],
+    cultural_note:
+      "Vietnamese community events can mix belonging with comparison, curiosity, and social pressure.",
+    tip:
+      "Use không có ý xấu to keep the critique soft while still naming impact.",
+  },
+  {
+    id: 124,
+    level: "B1",
+    title_en: "Accent Shame",
+    subtitle: "Talk about pronunciation insecurity honestly.",
+    intro:
+      "Use these lines when accent, mistakes, or laughter make speaking Vietnamese feel vulnerable.",
+    phrases: [
+      {
+        english: "When people laugh at my pronunciation, even kindly, I freeze.",
+        vietnamese: "Khi người ta cười cách tôi phát âm, dù là cười vui, tôi vẫn bị khựng lại.",
+        pronunciation: "khi nguoi ta kuoi kach toy fat am, du la kuoi vui, toy van bi khung lai",
+        context: "Use when explaining why correction needs care.",
+      },
+      {
+        english: "I am not ashamed of Vietnamese; I am ashamed of not sounding like I belong.",
+        vietnamese: "Tôi không xấu hổ vì tiếng Việt, tôi xấu hổ vì nghe như mình không thuộc về.",
+        pronunciation: "toy khong xau ho vi tieng viet, toy xau ho vi nghe nhu minh khong thuoc ve",
+        context: "Use when describing a deeper heritage-language wound.",
+      },
+    ],
+    cultural_note:
+      "Accent is not just sound. For many learners it touches identity, family, and belonging.",
+    tip:
+      "Use bị khựng lại for the natural feeling of freezing mid-sentence.",
+  },
+  {
+    id: 125,
+    level: "B1",
+    title_en: "Internet Slang And Gentle Teasing",
+    subtitle: "Understand casual Vietnamese online tone.",
+    intro:
+      "These phrases help you handle jokes, slang, and teasing in group chats without sounding stiff.",
+    phrases: [
+      {
+        english: "Are you teasing me or being serious? I cannot read the tone.",
+        vietnamese: "Bạn đang chọc tôi hay nói nghiêm túc vậy? Tôi đọc giọng không ra.",
+        pronunciation: "ban dang chok toy hay noy nghiem tuk vay, toy dok zong khong ra",
+        context: "Use in chat when tone is unclear.",
+      },
+      {
+        english: "That sounded a little harsh in text, but maybe I am reading it wrong.",
+        vietnamese: "Nhắn vậy nghe hơi gắt, nhưng chắc tôi hiểu sai giọng cũng nên.",
+        pronunciation: "nhan vay nghe hoy gat, nyung chak toy hieu sai zong kung nen",
+        context: "Use to flag tone without escalating.",
+      },
+    ],
+    cultural_note:
+      "Vietnamese texting often uses teasing, particles, and shorthand that can sound sharper than intended.",
+    tip:
+      "Use chắc tôi hiểu sai giọng cũng nên to leave room for misunderstanding.",
+  },
+  {
+    id: 126,
+    level: "B1",
+    title_en: "Group Chat Misunderstanding",
+    subtitle: "Repair tone when a message lands badly.",
+    intro:
+      "Use these lines when a quick message causes awkwardness in a family, friend, or work chat.",
+    phrases: [
+      {
+        english: "I reread my message and realized it sounded colder than I meant.",
+        vietnamese: "Tôi đọc lại tin nhắn mới thấy nó lạnh hơn ý tôi nhiều.",
+        pronunciation: "toy dok lai tin nhan moi thay no lanh hon y toy nhieu",
+        context: "Use when repairing a text tone mistake.",
+      },
+      {
+        english: "I meant to be brief, not dismissive.",
+        vietnamese: "Ý tôi là nói cho gọn, chứ không phải xem nhẹ bạn.",
+        pronunciation: "y toy la noy cho gon, chu khong phai xem nhe ban",
+        context: "Use when a short message sounded rude.",
+      },
+    ],
+    cultural_note:
+      "Short Vietnamese replies can feel efficient or cold depending on relationship and timing.",
+    tip:
+      "Use đọc lại tin nhắn mới thấy to take responsibility without overdramatizing.",
+  },
+  {
+    id: 127,
+    level: "B1",
+    title_en: "Avoiding Gossip Gracefully",
+    subtitle: "Step out of gossip without sounding superior.",
+    intro:
+      "These phrases help you keep boundaries around gossip while preserving the social mood.",
+    phrases: [
+      {
+        english: "I do not know the full story, so I do not want to judge too quickly.",
+        vietnamese: "Tôi không biết hết câu chuyện, nên không muốn phán xét vội.",
+        pronunciation: "toy khong biet het kau chuyen, nen khong mwon fan zet voi",
+        context: "Use when people ask for your opinion about someone else.",
+      },
+      {
+        english: "Let us leave that part aside; I do not want to talk behind their back too much.",
+        vietnamese: "Mình bỏ qua phần đó đi, tôi không muốn nói sau lưng người ta nhiều quá.",
+        pronunciation: "minh bo qua phan do di, toy khong mwon noy sau lung nguoi ta nhieu qua",
+        context: "Use to redirect a gossip thread.",
+      },
+    ],
+    cultural_note:
+      "A gentle redirect works better than moralizing, especially in close social groups.",
+    tip:
+      "Use không biết hết câu chuyện to leave the conversation without accusing anyone.",
+  },
+  {
+    id: 128,
+    level: "B1",
+    title_en: "A Soft Implied No",
+    subtitle: "Recognize and give indirect refusals.",
+    intro:
+      "Use these lines when Vietnamese communication is indirect and the real answer is probably no.",
+    phrases: [
+      {
+        english: "Let me see first usually means the answer is not certain.",
+        vietnamese: "\"Để tôi xem đã\" thường có nghĩa là chưa chắc được.",
+        pronunciation: "de toy xem da thuong ko nghia la chua chak duoc",
+        context: "Use when explaining a soft Vietnamese refusal.",
+      },
+      {
+        english: "I do not want to say no too bluntly, but I probably cannot make it.",
+        vietnamese: "Tôi không muốn từ chối thẳng quá, nhưng chắc tôi không đi được.",
+        pronunciation: "toy khong mwon tu choi thang qua, nyung chak toy khong di duoc",
+        context: "Use when you need to make the implied no clearer.",
+      },
+    ],
+    cultural_note:
+      "Indirect no protects face, but it can confuse learners who expect direct answers.",
+    tip:
+      "Listen for chắc, để xem, hơi khó, and lần sau nha as soft no signals.",
+  },
+  {
+    id: 129,
+    level: "B1",
+    title_en: "When Someone Says They Are Okay",
+    subtitle: "Hear the emotion behind ổn.",
+    intro:
+      "These lines help you respond when someone says they are okay but does not seem okay.",
+    phrases: [
+      {
+        english: "You say you are okay, but your voice sounds tired.",
+        vietnamese: "Bạn nói là ổn, nhưng giọng bạn nghe mệt lắm.",
+        pronunciation: "ban noy la on, nyung zong ban nghe met lam",
+        context: "Use gently when someone's tone says more than their words.",
+      },
+      {
+        english: "I will not push, but I am here if you want to say the real version.",
+        vietnamese: "Tôi không ép đâu, nhưng nếu bạn muốn nói bản thật hơn thì tôi ở đây.",
+        pronunciation: "toy khong ep dau, nyung new ban mwon noy ban that hon thi toy uh day",
+        context: "Use when giving someone space to open up.",
+      },
+    ],
+    cultural_note:
+      "Ổn can mean fine, surviving, leave me alone, or please ask once more. Tone matters.",
+    tip:
+      "Use bản thật hơn for a modern, natural way to invite more honesty.",
+  },
+  {
+    id: 130,
+    level: "B1",
+    title_en: "Comforting After A Breakup",
+    subtitle: "Be present without insulting the ex or rushing healing.",
+    intro:
+      "Use these phrases when a friend is grieving a relationship and needs dignity.",
+    phrases: [
+      {
+        english: "You can miss someone and still know leaving was the right choice.",
+        vietnamese: "Bạn có thể nhớ một người mà vẫn biết rời đi là đúng.",
+        pronunciation: "ban ko the nho mot nguoi ma van biet roi di la dung",
+        context: "Use when someone doubts themselves after a breakup.",
+      },
+      {
+        english: "I will not force you to be okay faster than you are.",
+        vietnamese: "Tôi không bắt bạn phải ổn nhanh hơn nhịp của bạn.",
+        pronunciation: "toy khong bat ban phai on nhanh hon nhip kua ban",
+        context: "Use to comfort without rushing.",
+      },
+    ],
+    cultural_note:
+      "Good comfort does not always need criticism of the ex. Sometimes it needs permission to grieve.",
+    tip:
+      "Use nhịp của bạn to sound gentle and emotionally mature.",
+  },
+  {
+    id: 131,
+    level: "B1",
+    title_en: "Difficult Advice Without Preaching",
+    subtitle: "Tell someone the truth with care.",
+    intro:
+      "These lines help you give hard advice while keeping the other person respected.",
+    phrases: [
+      {
+        english: "I may be wrong, but from the outside, this pattern looks painful for you.",
+        vietnamese: "Có thể tôi sai, nhưng nhìn từ ngoài thì kiểu này đang làm bạn đau.",
+        pronunciation: "ko the toy sai, nyung nhin tu ngoai thi kieu nai dang lam ban dau",
+        context: "Use before giving a difficult observation.",
+      },
+      {
+        english: "I am saying this because I care, not because I think I know better than you.",
+        vietnamese: "Tôi nói vì thương bạn, không phải vì nghĩ mình biết hơn bạn.",
+        pronunciation: "toy noy vi thuong ban, khong phai vi nghi minh biet hon ban",
+        context: "Use when advice may sound intrusive.",
+      },
+    ],
+    cultural_note:
+      "Hard advice lands better when you lower your authority and raise your care.",
+    tip:
+      "Start with có thể tôi sai when the other person's life is more complex than what you see.",
+  },
+  {
+    id: 132,
+    level: "B1",
+    title_en: "Repairing After Silence",
+    subtitle: "Come back after distance without pretending nothing happened.",
+    intro:
+      "Use these phrases when a friendship or family relationship went quiet after conflict.",
+    phrases: [
+      {
+        english: "I know I went quiet, and that probably hurt you.",
+        vietnamese: "Tôi biết tôi đã im lặng, và chắc điều đó làm bạn buồn.",
+        pronunciation: "toy biet toy da im lang, va chak dieu do lam ban buon",
+        context: "Use when re-opening after withdrawal.",
+      },
+      {
+        english: "I needed time, but I should have told you instead of disappearing.",
+        vietnamese: "Tôi cần thời gian, nhưng lẽ ra tôi nên nói thay vì biến mất.",
+        pronunciation: "toy kun thoi gian, nyung le ra toy nen noy thay vi bien mat",
+        context: "Use when silence became hurtful.",
+      },
+    ],
+    cultural_note:
+      "Silence can protect you in the moment and damage trust over time.",
+    tip:
+      "Use lẽ ra tôi nên nói to take responsibility without shaming yourself endlessly.",
+  },
+  {
+    id: 133,
+    level: "B1",
+    title_en: "Storytelling: A Childhood Memory",
+    subtitle: "Tell a short emotional story naturally.",
+    intro:
+      "These phrases help you tell stories with setting, feeling, and reflection.",
+    phrases: [
+      {
+        english: "When I was little, I did not understand it, but now I see why my parents were worried.",
+        vietnamese: "Hồi nhỏ tôi không hiểu, nhưng bây giờ mới thấy vì sao ba mẹ lo.",
+        pronunciation: "hoi nyo toy khong hieu, nyung bay gio moi thay vi sao ba me lo",
+        context: "Use when telling a reflective childhood story.",
+      },
+      {
+        english: "That memory is small, but it stayed with me for a long time.",
+        vietnamese: "Kỷ niệm đó nhỏ thôi, nhưng nó ở lại trong tôi rất lâu.",
+        pronunciation: "ky niem do nyo thoy, nyung no uh lai trong toy rat lau",
+        context: "Use when a small moment had lasting emotional meaning.",
+      },
+    ],
+    cultural_note:
+      "Natural Vietnamese storytelling often moves between event, feeling, and lesson.",
+    tip:
+      "Use hồi nhỏ, lúc đó, bây giờ mới thấy to create a simple emotional timeline.",
+  },
+  {
+    id: 134,
+    level: "B1",
+    title_en: "Explaining An Opinion In A Group",
+    subtitle: "Speak with nuance when people disagree.",
+    intro:
+      "Use these lines when you want to share a view without sounding rigid.",
+    phrases: [
+      {
+        english: "I see both sides, but I lean a little toward this option.",
+        vietnamese: "Tôi thấy cả hai phía đều có lý, nhưng tôi hơi nghiêng về phương án này.",
+        pronunciation: "toy thay ka hai fia deu ko ly, nyung toy hoy nghieng ve fuong an nai",
+        context: "Use in group discussion when your opinion is nuanced.",
+      },
+      {
+        english: "My concern is not the idea itself, but how we will carry it out.",
+        vietnamese: "Điều tôi lo không phải là ý tưởng, mà là cách mình thực hiện.",
+        pronunciation: "dieu toy lo khong phai la y tuong, ma la kach minh thuc hien",
+        context: "Use to separate concept from execution.",
+      },
+    ],
+    cultural_note:
+      "A nuanced opinion often needs both acknowledgment and a clear position.",
+    tip:
+      "Use hơi nghiêng về when you have a preference but do not want to sound absolute.",
+  },
+  {
+    id: 135,
+    level: "B1",
+    title_en: "Dinner Table Disagreement",
+    subtitle: "Keep a family meal from turning into a debate.",
+    intro:
+      "These phrases help when a dinner conversation gets tense, personal, or repetitive.",
+    phrases: [
+      {
+        english: "I think we see this differently, but I do not want dinner to turn into a fight.",
+        vietnamese: "Con nghĩ mình nhìn chuyện này khác nhau, nhưng con không muốn bữa ăn thành cuộc cãi nhau.",
+        pronunciation: "kon nghi minh nhin chuyen nai khak nhau, nyung kon khong mwon bua an thanh kuoc kai nhau",
+        context: "Use to de-escalate a family meal.",
+      },
+      {
+        english: "Can we leave this topic for another time and eat peacefully today?",
+        vietnamese: "Mình để chuyện này lúc khác nói, hôm nay ăn cho yên được không?",
+        pronunciation: "minh de chuyen nai luk khak noy, hom nay an cho yen duoc khong",
+        context: "Use when the topic is ruining the mood.",
+      },
+    ],
+    cultural_note:
+      "Meals are relationship spaces. Protecting the meal can sometimes protect the relationship.",
+    tip:
+      "Use ăn cho yên for a natural, slightly tired but non-aggressive reset.",
+  },
+  {
+    id: 136,
+    level: "B1",
+    title_en: "Caring For An Aging Parent",
+    subtitle: "Talk about love, fatigue, and responsibility.",
+    intro:
+      "Use these lines when caregiving is loving but emotionally heavy.",
+    phrases: [
+      {
+        english: "I love my parent, but caregiving still makes me tired sometimes.",
+        vietnamese: "Tôi thương ba mẹ, nhưng chăm sóc lâu ngày vẫn có lúc tôi kiệt sức.",
+        pronunciation: "toy thuong ba me, nyung cham sok lau ngay van ko luk toy kiet suc",
+        context: "Use when admitting caregiver fatigue without guilt.",
+      },
+      {
+        english: "I need help not because I do not care, but because I cannot do everything alone.",
+        vietnamese: "Tôi cần người phụ không phải vì tôi không thương, mà vì tôi không thể làm hết một mình.",
+        pronunciation: "toy kun nguoi phu khong phai vi toy khong thuong, ma vi toy khong the lam het mot minh",
+        context: "Use when asking family for help.",
+      },
+    ],
+    cultural_note:
+      "Vietnamese caregiving ideals can make people hide exhaustion. Naming fatigue does not erase love.",
+    tip:
+      "Use không phải vì tôi không thương to protect the emotional meaning before asking for support.",
+  },
+  {
+    id: 137,
+    level: "B1",
+    title_en: "Sibling Duty And Resentment",
+    subtitle: "Talk about unequal family responsibility.",
+    intro:
+      "These phrases help when one sibling carries more family work or emotional labor than others.",
+    phrases: [
+      {
+        english: "I do not mind helping, but I am starting to feel like the default person for everything.",
+        vietnamese: "Tôi không ngại giúp, nhưng tôi bắt đầu thấy mình thành người mặc định cho mọi việc.",
+        pronunciation: "toy khong ngai zup, nyung toy bat dau thay minh thanh nguoi mak dinh cho moi viec",
+        context: "Use when family labor feels unequal.",
+      },
+      {
+        english: "Can we divide this more clearly so it does not all fall on one person?",
+        vietnamese: "Mình chia rõ hơn được không, để đừng dồn hết lên một người?",
+        pronunciation: "minh chia ro hon duoc khong, de dung zon het len mot nguoi",
+        context: "Use when asking siblings to share responsibility.",
+      },
+    ],
+    cultural_note:
+      "The oldest child, daughter, or local sibling may become the default helper without anyone naming it.",
+    tip:
+      "Use người mặc định for the modern feeling of being automatically assigned responsibility.",
+  },
+  {
+    id: 138,
+    level: "B1",
+    title_en: "Raising A Bilingual Child",
+    subtitle: "Talk about language, pressure, and connection.",
+    intro:
+      "These lines help parents discuss Vietnamese language learning without turning it into shame.",
+    phrases: [
+      {
+        english: "I want Vietnamese to feel like connection, not punishment.",
+        vietnamese: "Tôi muốn tiếng Việt là sự kết nối, chứ không phải hình phạt.",
+        pronunciation: "toy mwon tieng viet la su ket noi, chu khong phai hinh fat",
+        context: "Use when discussing how to teach a child Vietnamese.",
+      },
+      {
+        english: "If we shame the child every time they make a mistake, they will stop trying.",
+        vietnamese: "Nếu lần nào con sai mình cũng làm con xấu hổ, con sẽ ngừng cố gắng.",
+        pronunciation: "new lan nao kon sai minh kung lam kon xau ho, kon se ngung ko gang",
+        context: "Use when correcting older relatives' approach to language.",
+      },
+    ],
+    cultural_note:
+      "Language survival in diaspora depends on warmth as much as discipline.",
+    tip:
+      "Use kết nối, không phải hình phạt to explain the emotional goal clearly.",
+  },
+  {
+    id: 139,
+    level: "B1",
+    title_en: "Dating After Divorce",
+    subtitle: "Speak about a sensitive past with dignity.",
+    intro:
+      "Use these phrases when discussing divorce, dating again, or fear of judgment.",
+    phrases: [
+      {
+        english: "That chapter was painful, but I do not want it to define my whole life.",
+        vietnamese: "Giai đoạn đó rất đau, nhưng tôi không muốn nó định nghĩa cả đời mình.",
+        pronunciation: "zai doan do rat dau, nyung toy khong mwon no dinh nghia ka doi minh",
+        context: "Use when talking about divorce or a difficult past.",
+      },
+      {
+        english: "I am open to loving again, but I move more carefully now.",
+        vietnamese: "Tôi vẫn mở lòng để yêu lại, nhưng bây giờ tôi đi cẩn thận hơn.",
+        pronunciation: "toy van mo long de yeu lai, nyung bay gio toy di kan than hon",
+        context: "Use when explaining dating with more caution.",
+      },
+    ],
+    cultural_note:
+      "Divorce can carry extra social judgment in Vietnamese communities, especially for women and parents.",
+    tip:
+      "Use giai đoạn đó rather than labeling your whole identity around one relationship.",
+  },
+  {
+    id: 140,
+    level: "B1",
+    title_en: "A Friend Cancels Often",
+    subtitle: "Address repeated cancellation without accusing.",
+    intro:
+      "These lines help you talk about reliability, disappointment, and changing expectations.",
+    phrases: [
+      {
+        english: "I know things come up, but when plans change often, I start feeling unimportant.",
+        vietnamese: "Tôi biết ai cũng có việc đột xuất, nhưng khi kế hoạch đổi hoài, tôi bắt đầu thấy mình không quan trọng.",
+        pronunciation: "toy biet ai kung ko viec dot xuat, nyung khi ke hoach doi hoai, toy bat dau thay minh khong quan trong",
+        context: "Use when repeated cancellations hurt.",
+      },
+      {
+        english: "If you are too busy these days, we can plan less often but more realistically.",
+        vietnamese: "Nếu dạo này bạn quá bận, mình hẹn ít lại nhưng thực tế hơn cũng được.",
+        pronunciation: "new zao nai ban qua ban, minh hen it lai nyung thuc te hon kung duoc",
+        context: "Use when adjusting expectations rather than ending the friendship.",
+      },
+    ],
+    cultural_note:
+      "A practical adjustment can save a friendship from repeated disappointment.",
+    tip:
+      "Use thực tế hơn to make the new plan feel mature, not punitive.",
+  },
+  {
+    id: 141,
+    level: "B1",
+    title_en: "Roommate Tension",
+    subtitle: "Talk about shared space before resentment grows.",
+    intro:
+      "Use these phrases when cleanliness, noise, guests, or schedules are creating stress.",
+    phrases: [
+      {
+        english: "I do not want to make this bigger than it is, but the shared space has been hard for me.",
+        vietnamese: "Tôi không muốn làm lớn chuyện, nhưng phần không gian chung dạo này hơi khó chịu với tôi.",
+        pronunciation: "toy khong mwon lam lon chuyen, nyung phan khong gian chung zao nai hoy kho chiu voi toy",
+        context: "Use to open a roommate conversation gently.",
+      },
+      {
+        english: "Can we agree on a small rule that both of us can actually keep?",
+        vietnamese: "Mình thống nhất một quy định nhỏ mà cả hai thật sự làm được nha?",
+        pronunciation: "minh thong nhat mot quy dinh nyo ma ka hai that su lam duoc nha",
+        context: "Use when making a realistic house rule.",
+      },
+    ],
+    cultural_note:
+      "Shared-space conflict often improves with small clear agreements rather than big moral speeches.",
+    tip:
+      "Use không muốn làm lớn chuyện to show you are trying to stay reasonable.",
+  },
+  {
+    id: 142,
+    level: "B1",
+    title_en: "Neighbor Noise Complaint",
+    subtitle: "Complain politely but clearly.",
+    intro:
+      "Use these lines when you need to complain about noise without escalating the relationship.",
+    phrases: [
+      {
+        english: "I am sorry to bother you, but the noise after midnight has been hard for my family.",
+        vietnamese: "Xin lỗi vì làm phiền, nhưng tiếng ồn sau nửa đêm làm nhà tôi rất khó nghỉ.",
+        pronunciation: "xin loy vi lam fien, nyung tieng on sau nua dem lam nha toy rat kho ngi",
+        context: "Use when approaching a neighbor respectfully.",
+      },
+      {
+        english: "Could we keep it quieter after this hour? I would really appreciate it.",
+        vietnamese: "Sau giờ này mình giữ yên hơn một chút được không? Tôi cảm ơn nhiều lắm.",
+        pronunciation: "sau gio nai minh zu yen hon mot chut duoc khong, toy kam un nhieu lam",
+        context: "Use when asking for a specific change.",
+      },
+    ],
+    cultural_note:
+      "A respectful opening makes a complaint easier to receive, but the request still needs to be specific.",
+    tip:
+      "Use sau nửa đêm or sau giờ này so the complaint has a clear boundary.",
+  },
+  {
+    id: 143,
+    level: "B1",
+    title_en: "Explaining Mental Stress To A Doctor",
+    subtitle: "Describe stress symptoms clearly and calmly.",
+    intro:
+      "These phrases help you talk about stress, sleep, appetite, and emotional strain in practical Vietnamese.",
+    phrases: [
+      {
+        english: "Lately I have been tired even after sleeping, and my chest feels tight when I am stressed.",
+        vietnamese: "Dạo này tôi ngủ dậy vẫn mệt, và khi căng thẳng thì ngực hay bị nặng.",
+        pronunciation: "zao nai toy ngu zay van met, va khi kang thang thi nguc hay bi nang",
+        context: "Use when describing stress symptoms to a doctor.",
+      },
+      {
+        english: "I am not sure if this is physical or stress-related, so I wanted to check.",
+        vietnamese: "Tôi không chắc đây là vấn đề cơ thể hay do căng thẳng, nên muốn đi kiểm tra.",
+        pronunciation: "toy khong chak day la van de ko the hay zo kang thang, nen mwon di kiem tra",
+        context: "Use when explaining why you came in.",
+      },
+    ],
+    cultural_note:
+      "Practical symptom language can make mental stress easier to discuss in medical settings.",
+    tip:
+      "Name sleep, appetite, chest, stomach, and timeline. Concrete details help.",
+  },
+  {
+    id: 144,
+    level: "B1",
+    title_en: "Talking About Therapy Or Emotional Support",
+    subtitle: "Discuss mental health without sounding dramatic.",
+    intro:
+      "Use these phrases when you want to explain counseling, support, or emotional care in everyday language.",
+    phrases: [
+      {
+        english: "I am not going because I am broken; I am going because I want to understand myself better.",
+        vietnamese: "Tôi không đi vì tôi hư hỏng gì, tôi đi vì muốn hiểu mình hơn.",
+        pronunciation: "toy khong di vi toy hu hong zi, toy di vi mwon hieu minh hon",
+        context: "Use when explaining therapy to someone skeptical.",
+      },
+      {
+        english: "Talking to someone neutral helps me sort out what is really happening.",
+        vietnamese: "Nói chuyện với một người trung lập giúp tôi gỡ rối chuyện trong đầu.",
+        pronunciation: "noy chuyen voi mot nguoi trung lap zup toy go roi chuyen trong dau",
+        context: "Use when describing emotional support simply.",
+      },
+    ],
+    cultural_note:
+      "Mental health language can feel stigmatized. Everyday wording often works better than clinical labels.",
+    tip:
+      "Use gỡ rối chuyện trong đầu for a natural, non-academic way to describe emotional processing.",
+  },
+  {
+    id: 145,
+    level: "B1",
+    title_en: "Comforting Someone At A Funeral",
+    subtitle: "Offer condolences with quiet respect.",
+    intro:
+      "Use these lines when someone is grieving and you need words that are simple, respectful, and not too much.",
+    phrases: [
+      {
+        english: "I do not know what to say, but I am very sorry for your loss.",
+        vietnamese: "Tôi không biết nói gì cho đủ, nhưng tôi rất tiếc vì mất mát của gia đình bạn.",
+        pronunciation: "toy khong biet noy zi cho du, nyung toy rat tiek vi mat mat kua gia dinh ban",
+        context: "Use when offering condolences sincerely.",
+      },
+      {
+        english: "If your family needs anything practical, please tell me.",
+        vietnamese: "Nếu gia đình cần gì cụ thể, bạn cứ nói tôi biết nha.",
+        pronunciation: "new gia dinh kun zi ku the, ban ku noy toy biet nha",
+        context: "Use when offering practical help after a death.",
+      },
+    ],
+    cultural_note:
+      "In grief, simple and quiet usually lands better than trying to explain the loss.",
+    tip:
+      "Use không biết nói gì cho đủ when words feel inadequate but you still want to show care.",
+  },
+  {
+    id: 146,
+    level: "B1",
+    title_en: "Everyday Polite Flow With Elders",
+    subtitle: "Keep a conversation respectful but natural.",
+    intro:
+      "These phrases help you move through greetings, small questions, and soft exits with older Vietnamese speakers.",
+    phrases: [
+      {
+        english: "Yes, I have been well. I have just been a bit busy with work lately.",
+        vietnamese: "Dạ, con vẫn khỏe. Dạo này con chỉ hơi bận công việc một chút.",
+        pronunciation: "ya, kon van khoe, zao nai kon chi hoy ban kong viec mot chut",
+        context: "Use when an elder asks how you have been.",
+      },
+      {
+        english: "I will let you rest now. I will visit again when I have a chance.",
+        vietnamese: "Thôi con để cô chú nghỉ nha. Có dịp con ghé lại thăm.",
+        pronunciation: "thoy kon de ko chu nghi nha, ko dip kon ghe lai tham",
+        context: "Use when ending a polite visit or phone call.",
+      },
+    ],
+    cultural_note:
+      "Polite Vietnamese with elders is warm, indirect, and often uses small softeners like dạ, nha, and có dịp.",
+    tip:
+      "Use con with older adults when appropriate; it often sounds warmer than tôi.",
+  },
+];
