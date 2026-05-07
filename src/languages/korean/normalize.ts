@@ -3,7 +3,7 @@
 // Converts KoreanLesson → NormalizedLesson for the shared <LessonRenderer>.
 //
 // Korean field-name notes:
-//   - sentences carry full {korean, romanized, en, vi}
+//   - sentences carry full {korean, romanized, en, vi, pronunciation_focus?}
 //   - vocab/dialogue use {hangul, meaning} where `meaning` is Vietnamese
 //     glossing (verified by spot-reading lessons 1-20 — meaning values like
 //     "Xin chào", "tên", "phụ âm cuối"); mapped to NormalizedVocab/Dialogue.vi
@@ -97,6 +97,7 @@ export function normalizeKoreanLesson(
       romanization: s.romanized,
       en: s.en,
       vi: s.vi,
+      pronunciationFocus: s.pronunciation_focus,
     })),
     vocabulary: lesson.vocabulary.map((v) => ({
       native: v.hangul,
@@ -104,8 +105,9 @@ export function normalizeKoreanLesson(
     })),
     dialogue: lesson.dialogue.map((d) => ({
       speaker: d.speaker,
-      native: d.hangul,
-      vi: d.meaning,
+      native: d.hangul ?? d.text_ko ?? "",
+      en: d.text_en,
+      vi: d.text_vi ?? d.meaning,
     })),
     exercises: lesson.exercises.map(normalizeKoreanExercise),
     culturalNotesVi: (lesson as any).cultural_notes_vi,

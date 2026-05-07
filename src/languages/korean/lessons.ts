@@ -11,12 +11,16 @@ export type KoreanSentence = {
   romanized: string;
   en: string;
   vi: string;
+  pronunciation_focus?: string[];
 };
 
 export type KoreanDialogueLine = {
   speaker: string;
   hangul: string;
   meaning: string;
+  text_ko?: string;
+  text_vi?: string;
+  text_en?: string;
 };
 
 export type KoreanExerciseFillBlank = {
@@ -140,4 +144,4 @@ export function getLessonById(id: number | string): KoreanLesson | undefined {
 // Total lesson count across every level. Kept manually in sync with the
 // per-level files; updated by scripts/install-lessons-registry.mjs at
 // generation time.
-export const KOREAN_TOTAL_LESSONS = 111;
+export const KOREAN_TOTAL_LESSONS = 121;
