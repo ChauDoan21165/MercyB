@@ -3648,6 +3648,7 @@ export const lessons: GermanLesson[] = [
       {"word": "der Einwand", "en": "objection", "vi": "phản bác", "pos": "noun (m)", "pronunciation_vi": "đe AIN-vant"},
       {"word": "das Prüfungsgespräch", "en": "examination conversation", "vi": "đối thoại thi vấn đáp", "pos": "noun (n)", "pronunciation_vi": "đas PRUY-fungs-gê-shprêkh"}
     ],
+    "dialogue": [],
     "exercises": [
       {"type": "fill_blank", "instruction_vi": "Điền từ:", "pronunciation_focus": [], "items": [
         {"prompt": "Das Kolloquium dient nicht der ___, sondern der gemeinsamen Prüfung einer Argumentation.", "answer": "Bloßstellung"},

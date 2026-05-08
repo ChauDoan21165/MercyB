@@ -2585,6 +2585,7 @@ export const lessons: JapaneseLesson[] = [
       {"japanese": "「わかりません」と答えることは恥ではない。わかっていないことを「わかっている」と装うことこそが、考究の精神に反する。", "english": "Answering 'I don't know' is no shame. Pretending to know what one does not know is what goes against the spirit of inquiry."},
       {"japanese": "審査員の質問をまず自分の言葉で言い換えること — この一手間が、防御ではなく対話の姿勢を示す。", "english": "First restate the examiner's question in your own words — this single step shows an attitude of dialogue, not defense."}
     ],
+    "dialogue": [],
     "exercises": [
       {"type": "fill-blank", "question": "口頭試問の目的は、執筆者を貶めることではなく、論文の論理を共に___することにある。", "answer": "検証"},
       {"type": "matching", "instruction": "Nối:", "pairs": [{"japanese": "口頭試問", "english": "oral defense"}, {"japanese": "質疑応答", "english": "Q&A session"}, {"japanese": "副査", "english": "secondary examiner"}, {"japanese": "今後の課題", "english": "future research"}]}
