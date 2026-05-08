@@ -179,6 +179,7 @@ The script runs the full pre-flight (§1) before invoking `xcodebuild` so you do
 6. **App Review Information**:
    - Demo account credentials (from §3 above)
    - Notes paragraph from A6 §5
+   - **Privacy policy URL**: `https://mercyblade.com/privacy` — also linked from the in-app AI data consent screen shown on first launch (see `src/components/AIConsentModal.tsx`).
    - Contact email: `admin@mercyblade.com`
    - Phone: optional
 7. **Version Release**: Manually release after approval (recommended for the first launch).
