@@ -1,8 +1,12 @@
 // src/pages/languages/VietnameseLessonsPage.tsx — /languages/vietnamese
 
+import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 
-import { VIETNAMESE_LESSONS } from "@/languages/vietnamese/lessons";
+import type { VietnameseLesson, VietnameseCefrLevel } from "@/languages/vietnamese/lessons";
+import {
+  loadAllVietnameseLessons,
+} from "@/languages/vietnamese/lessons";
 import { normalizeVietnameseLesson } from "@/languages/vietnamese/normalize";
 import { LessonRenderer } from "@/components/languages/LessonRenderer";
 import {
@@ -14,28 +18,72 @@ import {
 const HERO_TITLE = "Vietnamese for Foreigners";
 const HERO_SUBTITLE =
   "Learn Vietnamese for real life in Vietnam: survival, daily life, and practical conversations.";
-const VIETNAMESE_LEVELS = ["A1", "A1+", "A2", "B1"] as const;
+const VIETNAMESE_LEVELS: VietnameseCefrLevel[] = ["A1", "B1", "B2"];
 
 export default function VietnameseLessonsPage() {
   const theme = lessonThemes.vietnamese;
-  const normalized = VIETNAMESE_LESSONS.map((lesson) =>
-    normalizeVietnameseLesson(lesson),
-  );
-  const phraseCount = VIETNAMESE_LESSONS.reduce(
-    (sum, lesson) => sum + lesson.phrases.length,
-    0,
-  );
-  const dialogueCount = VIETNAMESE_LESSONS.filter(
-    (lesson) => lesson.dialogue && lesson.dialogue.length > 0,
-  ).length;
-  const pronunciationCount = VIETNAMESE_LESSONS.filter((lesson) =>
-    lesson.title_en.startsWith("Pronunciation:"),
-  ).length;
+  const [lessons, setLessons] = useState<VietnameseLesson[] | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
-  const grouped = VIETNAMESE_LEVELS.map((level) => ({
-    level,
-    lessons: normalized.filter((lesson) => lesson.level === level),
-  }));
+  useEffect(() => {
+    let cancelled = false;
+    loadAllVietnameseLessons()
+      .then((all) => {
+        if (!cancelled) setLessons(all);
+      })
+      .catch((err) => {
+        if (!cancelled) setError(String(err?.message ?? err));
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  const normalized = useMemo(() => {
+    if (!lessons) return [];
+    return lessons.map((lesson) => normalizeVietnameseLesson(lesson));
+  }, [lessons]);
+
+  const stats = useMemo(() => {
+    if (!lessons) return null;
+    const phraseCount = lessons.reduce(
+      (sum, lesson) => sum + lesson.phrases.length,
+      0,
+    );
+    const dialogueCount = lessons.filter(
+      (lesson) => lesson.dialogue && lesson.dialogue.length > 0,
+    ).length;
+    const pronunciationCount = lessons.filter((lesson) =>
+      lesson.title_en.startsWith("Pronunciation:"),
+    ).length;
+    return { phraseCount, dialogueCount, pronunciationCount };
+  }, [lessons]);
+
+  const grouped = useMemo(() => {
+    if (!normalized.length) return [];
+    return VIETNAMESE_LEVELS.map((level) => ({
+      level,
+      lessons: normalized.filter((lesson) => lesson.level === level),
+    }));
+  }, [normalized]);
+
+  // Loading state
+  if (error) {
+    return (
+      <div className="mx-auto w-full max-w-3xl px-4 py-12 text-center">
+        <p className="text-sm text-red-600">Failed to load lessons.</p>
+        <p className="mt-1 text-xs text-slate-500">{error}</p>
+      </div>
+    );
+  }
+
+  if (!lessons) {
+    return (
+      <div className="mx-auto w-full max-w-3xl px-4 py-12 text-center">
+        <p className="text-sm text-slate-500">Loading Vietnamese lessons…</p>
+      </div>
+    );
+  }
 
   return (
     <div className="mx-auto w-full max-w-3xl px-4 py-6">
@@ -58,10 +106,12 @@ export default function VietnameseLessonsPage() {
         <p className="mt-1 text-sm font-medium text-slate-600">
           {HERO_SUBTITLE}
         </p>
-        <p className="mt-2 text-sm font-bold" style={{ color: theme.accent }}>
-          {VIETNAMESE_LESSONS.length} lessons · {phraseCount} phrases ·{" "}
-          {dialogueCount} dialogues · {pronunciationCount} pronunciation mini-lessons
-        </p>
+        {stats && (
+          <p className="mt-2 text-sm font-bold" style={{ color: theme.accent }}>
+            {lessons.length} lessons · {stats.phraseCount} phrases ·{" "}
+            {stats.dialogueCount} dialogues · {stats.pronunciationCount} pronunciation mini-lessons
+          </p>
+        )}
         <p className="mt-3 text-xs text-slate-500">
           <Link
             to="/languages"
