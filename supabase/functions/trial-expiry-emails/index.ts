@@ -144,6 +144,10 @@ Deno.serve(async (req) => {
     return new Response(null, { headers: corsHeaders });
   }
 
+  // Deprecated: trial nudges now handled by email-automations.
+  // This function is disabled to prevent duplicate sends.
+  return send({ ok: false, error: "Deprecated: use email-automations instead.", deprecated: true });
+
   try {
     // ── Auth: admin level >= 9 ───────────────────────────────────────────
     const authHeader = req.headers.get("Authorization");
