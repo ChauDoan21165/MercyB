@@ -217,6 +217,9 @@ const FamilyPlanPage         = lazyWithRetry(() => import("@/pages/family/Family
 const TOEICIndexPage         = lazyWithRetry(() => import("@/pages/exam-prep/TOEICIndexPage"));
 const TOEICPracticePage      = lazyWithRetry(() => import("@/pages/exam-prep/TOEICPracticePage"));
 const TOEICEstimatorPage     = lazyWithRetry(() => import("@/pages/exam-prep/TOEICEstimatorPage"));
+
+// TOEFL iBT prep (Step 11 — scaffolding; premium gate is in-page, auth-required).
+const TOEFLIndexPage         = lazyWithRetry(() => import("@/pages/exam-prep/TOEFLIndexPage"));
 const TOEICPracticePackPage  = lazyWithRetry(() => import("@/pages/exam-prep/toeic/Practice"));
 const IELTSSpeakingContentPage      = lazyWithRetry(() => import("@/pages/exam-prep/ielts/Speaking"));
 const IELTSSpeakingTopicPage        = lazyWithRetry(() => import("@/pages/exam-prep/ielts/SpeakingTopic"));
@@ -1322,6 +1325,22 @@ export default function AppRouter() {
               </RequireAuth>
             }
           />
+
+          {/* TOEFL iBT prep (Step 11 — scaffolding; premium gate is in-page, auth-required) */}
+          <Route path="/exam/toefl"
+            element={
+              <RequireAuth>
+                <LazyPage><TOEFLIndexPage /></LazyPage>
+              </RequireAuth>
+            }
+          />
+          {/* TODO(TOEFL): Add routes when built:
+              /exam/toefl/reading
+              /exam/toefl/listening
+              /exam/toefl/speaking
+              /exam/toefl/writing
+              /exam/toefl/estimator
+          */}
           <Route path="/exam/toeic/practice/:sectionId"
             element={
               <RequireAuth>

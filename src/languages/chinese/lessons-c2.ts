@@ -3488,7 +3488,8 @@ export const lessons: ChineseLesson[] = [
       {"chinese": "答辩之第一要诀: 听清问题, 复述一遍, 确认理解无误, 然后作答。此看似拖延, 实为最有效的策略。", "pinyin": "Dábiàn zhī dì-yī yàojué: tīng qīng wèntí, fùshù yī biàn, quèrèn lǐjiě wú wù, ránhòu zuòdá. Cǐ kànsì tuōyán, shí wéi zuì yǒuxiào de cèlüè.", "english": "The first secret of defense: hear the question clearly, restate it once, confirm correct understanding, then answer. This appears to be delay but is in fact the most effective strategy.", "vi": "Bí quyết thứ nhất của đáp biện: nghe rõ câu hỏi, thuật lại một lần, xác nhận hiểu đúng, rồi mới trả lời. Điều này trông có vẻ trì hoãn, thực ra là chiến lược hiệu quả nhất."},
       {"chinese": "不知为不知, 是知也。答辩中最忌讳者, 莫过于强不知以为知。", "pinyin": "Bù zhī wéi bù zhī, shì zhī yě. Dábiàn zhōng zuì jìhuì zhě, mò guòyú qiáng bù zhī yǐ wéi zhī.", "english": "To know what one does not know — that is knowledge. In a defense, nothing is more taboo than forcing what one does not know into what one pretends to know.", "vi": "Không biết là không biết, đó là biết vậy. Trong đáp biện điều tối kỵ nhất, không gì hơn là cưỡng ép điều không biết thành điều ra vẻ biết."}
     ],
-    "exercises": [
+        "dialogue": [],
+"exercises": [
       {"type": "fill-blank", "question": "答辩之第一要诀: 听清问题, ___一遍, 确认理解无误, 然后作答。", "answer": "复述"},
       {"type": "matching", "pairs": [{"chinese": "答辩", "pinyin": "dá biàn", "english": "defense"}, {"chinese": "质疑", "pinyin": "zhì yí", "english": "to question"}, {"chinese": "致谢", "pinyin": "zhì xiè", "english": "express thanks"}, {"chinese": "陈述", "pinyin": "chén shù", "english": "presentation"}], "instruction": "Nối thuật ngữ đáp biện"}
     ]

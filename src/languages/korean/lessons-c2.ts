@@ -3013,7 +3013,8 @@ export const lessons: KoreanLesson[] = [
       {"korean": "좋은 학술 에세이는 결론의 참신함이 아니라, 결론에 이르는 논증의 투명성으로 평가된다.", "romanized": "Joeun haksul eseineun gyeollon-ui chamsinham-i anira, gyeollon-e ireuneun nonjeung-ui tumyeongseong-euro pyeongga-doenda.", "en": "A good academic essay is evaluated not by the novelty of its conclusion but by the transparency of the argumentation leading to it.", "vi": "Một tiểu luận học thuật tốt được đánh giá không phải bởi tính mới lạ của kết luận, mà bởi tính minh bạch của lập luận dẫn đến kết luận."},
       {"korean": "자기 논증의 한계를 스스로 지적하는 '유보'는, 약점이 아니라 비판적 사고의 징표다.", "romanized": "Jagi nonjeung-ui hangyereul seuseuro jijeok-haneun 'yubo'neun, yakjeom-i anira bipanjeok sago-ui jingpyo-da.", "en": "The 'qualification' that points out the limits of one's own argument is not a weakness but a sign of critical thinking.", "vi": "Sự 'bảo lưu' tự chỉ ra giới hạn của lập luận mình không phải là điểm yếu, mà là dấu hiệu của tư duy phê phán."}
     ],
-    "exercises": [
+        "dialogue": [],
+"exercises": [
       {"type": "fill-blank", "question": "좋은 학술 에세이는 결론의 참신함이 아니라, 결론에 이르는 ___의 투명성으로 평가된다.", "answer": "논증"},
       {"type": "matching", "pairs": [{"hangul": "서론·본론·결론", "meaning": "mở-thân-kết"}, {"hangul": "반론", "meaning": "phản luận"}, {"hangul": "유보", "meaning": "bảo lưu / qualification"}, {"hangul": "문제 제기", "meaning": "đặt vấn đề"}], "instruction": "Nối thuật ngữ"}
     ]
@@ -3033,7 +3034,8 @@ export const lessons: KoreanLesson[] = [
       {"korean": "구술 심사의 목적은 응시자를 곤경에 빠뜨리는 것이 아니라, 논문의 논리를 함께 검증하는 데 있다.", "romanized": "Gusul simsa-ui mokjeogeun eungsijareul gongyeong-e ppatteurineun geosi anira, nonmun-ui nollireul hamkke geomjeung-haneun de itda.", "en": "The purpose of the oral defense is not to put the candidate in a difficult position but to verify the logic of the thesis together.", "vi": "Mục đích của thi vấn đáp không phải là đẩy thí sinh vào tình thế khó, mà là cùng nhau kiểm chứng logic của luận văn."},
       {"korean": "'모르겠습니다'라고 답하는 것은 부끄러운 일이 아니다. 모르는 것을 아는 체하는 것이야말로 학문의 정신에 반한다.", "romanized": "'Moreugetseumnida'rago dap-haneun geoseun bukkeureoun iri anida. Moreuneun geoseul aneun che-haneun geosiyamallo hangmunui jeongsine banhanda.", "en": "Answering 'I don't know' is not shameful. Pretending to know what one does not know is what goes against the spirit of scholarship.", "vi": "Trả lời 'tôi không biết' không phải là điều đáng xấu hổ. Giả vờ biết điều mình không biết mới là điều phản lại tinh thần học thuật."}
     ],
-    "exercises": [
+        "dialogue": [],
+"exercises": [
       {"type": "fill-blank", "question": "구술 심사의 목적은 응시자를 곤경에 빠뜨리는 것이 아니라, 논문의 논리를 함께 ___하는 데 있다.", "answer": "검증"},
       {"type": "matching", "pairs": [{"hangul": "구술 심사", "meaning": "thi vấn đáp / oral defense"}, {"hangul": "심사위원", "meaning": "hội đồng chấm thi"}, {"hangul": "질의응답", "meaning": "Q&A"}, {"hangul": "연구 윤리", "meaning": "đạo đức nghiên cứu"}], "instruction": "Nối thuật ngữ"}
     ]
