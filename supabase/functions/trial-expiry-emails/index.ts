@@ -238,6 +238,22 @@ Deno.serve(async (req) => {
     let alreadyQueued = 0;
 
     for (const { user, campaign } of queueable) {
+      const { data: existingRow } = await adminClient
+        .from("email_sends_log")
+        .select("id, status")
+        .eq("user_id", user.id)
+        .eq("campaign", campaign)
+        .in("status", ["sent", "pending"])
+        .maybeSingle();
+
+      if (existingRow) {
+        if (existingRow.status === "pending") {
+          sendable.push({ id: existingRow.id, user, campaign });
+        }
+        alreadyQueued++;
+        continue;
+      }
+
       const { data: inserted, error: insertError } = await adminClient
         .from("email_sends_log")
         .insert({
@@ -252,9 +268,6 @@ Deno.serve(async (req) => {
 
       if (insertError) {
         if (insertError.code === "23505") {
-          // Pending row already exists — pick it up so the send pass still
-          // processes it. Without this, A6's earlier-run pending rows would
-          // sit forever.
           const { data: existing } = await adminClient
             .from("email_sends_log")
             .select("id")
