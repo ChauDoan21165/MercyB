@@ -73,6 +73,8 @@ export interface TOEICPracticeItem {
   estimated_time_minutes: number;
   title_vi: string;
   title_en: string;
+  /** Canonical audio key for listening items. Deterministic: toeic-listening/{id}.mp3. undefined for reading items. */
+  audioKey?: string;
 }
 
 // ════════════════════════════════════════════════════════════════════
@@ -89,6 +91,7 @@ const LISTENING: TOEICPracticeItem[] = [
     level: 405,
     title_vi: "Trao đổi tài liệu tại văn phòng",
     title_en: "Office document hand-off",
+    audioKey: "toeic-listening/toeic_listening_part1_office_interaction.mp3",
     passage_or_audio_script:
       "(Photo: A woman at a desk hands a stack of papers to a man standing beside her.)\n" +
       "(A) She is filing documents in a cabinet.\n" +
@@ -144,6 +147,7 @@ const LISTENING: TOEICPracticeItem[] = [
     level: 605,
     title_vi: "Bốc hàng tại kho",
     title_en: "Warehouse loading",
+    audioKey: "toeic-listening/toeic_listening_part1_warehouse_loading.mp3",
     passage_or_audio_script:
       "(Photo: Two workers in safety vests are loading sealed boxes onto a flat-bed truck.)\n" +
       "(A) The workers are unloading furniture.\n" +
@@ -199,6 +203,7 @@ const LISTENING: TOEICPracticeItem[] = [
     level: 405,
     title_vi: "Quán cà phê ngoài trời",
     title_en: "Outdoor café scene",
+    audioKey: "toeic-listening/toeic_listening_part1_outdoor_cafe.mp3",
     passage_or_audio_script:
       "(Photo: A waiter places two coffee cups on a small round table where a couple is seated under a sun umbrella.)\n" +
       "(A) The customers are paying the bill.\n" +
@@ -256,6 +261,7 @@ const LISTENING: TOEICPracticeItem[] = [
     level: 605,
     title_vi: "Đề nghị đổi giờ họp",
     title_en: "Rescheduling a meeting",
+    audioKey: "toeic-listening/toeic_listening_part2_meeting_reschedule.mp3",
     passage_or_audio_script:
       "Q: Could we push the marketing review to Thursday afternoon?\n" +
       "(A) Sure, three o'clock works for me.\n" +
@@ -309,6 +315,7 @@ const LISTENING: TOEICPracticeItem[] = [
     level: 785,
     title_vi: "Câu trả lời gián tiếp",
     title_en: "Indirect-response trap",
+    audioKey: "toeic-listening/toeic_listening_part2_indirect_response.mp3",
     passage_or_audio_script:
       "Q: Has the new printer been delivered yet?\n" +
       "(A) Let me check with reception.\n" +
@@ -362,6 +369,7 @@ const LISTENING: TOEICPracticeItem[] = [
     level: 405,
     title_vi: "Câu hỏi lựa chọn (or)",
     title_en: "Either/or question",
+    audioKey: "toeic-listening/toeic_listening_part2_choice_question.mp3",
     passage_or_audio_script:
       "Q: Would you prefer a window seat or an aisle seat?\n" +
       "(A) The flight is at six.\n" +
@@ -417,6 +425,7 @@ const LISTENING: TOEICPracticeItem[] = [
     level: 605,
     title_vi: "Nhận phòng khách sạn",
     title_en: "Hotel check-in",
+    audioKey: "toeic-listening/toeic_listening_part3_hotel_checkin.mp3",
     passage_or_audio_script:
       "M: Good evening. I'm checking in — the reservation should be under Linh Nguyen.\n" +
       "W: Welcome, Ms. Nguyen. I see your booking — a deluxe room for two nights. There's one note: the room you reserved is on the third floor, but the air-conditioner is being repaired. We can move you to a similar room on the seventh floor at no extra charge — would that work?\n" +
@@ -487,6 +496,7 @@ const LISTENING: TOEICPracticeItem[] = [
     level: 785,
     title_vi: "Thương lượng với nhà cung cấp",
     title_en: "Supplier negotiation",
+    audioKey: "toeic-listening/toeic_listening_part3_supplier_negotiation.mp3",
     passage_or_audio_script:
       "M: Thanks for sending the revised quote. The unit price is fine, but the lead time of six weeks is going to be tight for our launch.\n" +
       "W: I understand. If we prioritize your order, we can shave off about a week — so five weeks instead of six. The trade-off is we'd need a 30 percent deposit upfront instead of the usual 15.\n" +
@@ -562,6 +572,7 @@ const LISTENING: TOEICPracticeItem[] = [
     level: 605,
     title_vi: "Gọi tổng đài IT",
     title_en: "IT helpdesk call",
+    audioKey: "toeic-listening/toeic_listening_part3_it_helpdesk.mp3",
     passage_or_audio_script:
       "W: IT support — this is Maya. How can I help?\n" +
       "M: Hi Maya, my email keeps showing 'connection error' since this morning. I've tried restarting twice but no luck.\n" +
@@ -629,6 +640,7 @@ const LISTENING: TOEICPracticeItem[] = [
     level: 605,
     title_vi: "Thông báo bảo trì văn phòng",
     title_en: "Office maintenance announcement",
+    audioKey: "toeic-listening/toeic_listening_part4_office_announcement.mp3",
     passage_or_audio_script:
       "Good morning, everyone. This is a reminder that the building's electrical maintenance is scheduled for this Saturday from 8 a.m. to 2 p.m. During those hours, all power on floors three through seven — including the main printers, conference room AV systems, and the freight elevator — will be temporarily off. Personal laptops will of course still run on battery, but Wi-Fi access points will be down. If you need to finish urgent work, please plan to be in the office by Friday evening or work remotely on Saturday. The cafeteria on the first floor remains open as usual. Thank you for your cooperation.",
     questions: [
@@ -701,6 +713,7 @@ const LISTENING: TOEICPracticeItem[] = [
     level: 405,
     title_vi: "Quảng cáo radio - cửa hàng đồ điện tử",
     title_en: "Electronics store radio ad",
+    audioKey: "toeic-listening/toeic_listening_part4_radio_advert.mp3",
     passage_or_audio_script:
       "Listeners, are you tired of laptops that slow down after a year? At BrightMark Electronics, we're celebrating our tenth anniversary with a four-day weekend sale — Thursday through Sunday only. All laptops in stock are 20 percent off, and you'll get a free three-year warranty when you spend over five hundred dollars. Want to skip the lines? Order online at brightmark dot com and choose store pickup — your laptop will be ready in two hours. Visit our flagship store on Pine Street downtown, open daily from 10 a.m.",
     questions: [
@@ -763,6 +776,7 @@ const LISTENING: TOEICPracticeItem[] = [
     level: 605,
     title_vi: "Hộp thư thoại - gọi lại khách hàng",
     title_en: "Customer voicemail callback",
+    audioKey: "toeic-listening/toeic_listening_part4_voicemail_callback.mp3",
     passage_or_audio_script:
       "Hello, this message is for Mr. Tran. This is Sandra calling from Riverside Auto regarding the service appointment you booked for next Monday at 9 a.m. Unfortunately, the brake pads we need for your vehicle were back-ordered, and the shipment won't arrive until Wednesday. We have two options: we can keep your Monday slot and complete only the oil change, then have you return Wednesday afternoon for the brakes — at no additional labor charge — or we can move the entire appointment to Wednesday at 3 p.m. Please call me back at 555-0142 when you have a moment so we can confirm.",
     questions: [
@@ -837,6 +851,7 @@ const LISTENING: TOEICPracticeItem[] = [
     level: 785,
     title_vi: "Họp đánh giá quý",
     title_en: "Quarterly business review",
+    audioKey: "toeic-listening/toeic_listening_extra_quarterly_review.mp3",
     passage_or_audio_script:
       "Welcome, everyone, to the Q3 review. Three headlines today. First, total revenue came in at 14.2 million dollars, four percent above target — driven mostly by the enterprise segment, where we closed two large accounts in August. Second, customer churn ticked up from 2.1 to 2.7 percent; the customer success team is leading a deep dive next week. Third, we're slightly behind on the new analytics product launch — engineering hit a security review that pushed the release from October to mid-November. We'll cover the launch readiness plan after this overview.",
     questions: [
@@ -904,6 +919,7 @@ const LISTENING: TOEICPracticeItem[] = [
     level: 605,
     title_vi: "Họp giao ban đầu ngày",
     title_en: "Team morning stand-up",
+    audioKey: "toeic-listening/toeic_listening_extra_team_standup.mp3",
     passage_or_audio_script:
       "M: Quick stand-up — Anna, where are we on the customer survey?\n" +
       "W: I'll have first results by Thursday. Two snags: the response rate is only twelve percent so far, lower than the eighteen we projected, and a few customers asked if their answers will stay anonymous.\n" +
@@ -968,6 +984,7 @@ const LISTENING: TOEICPracticeItem[] = [
     level: 905,
     title_vi: "Bất đồng về ngân sách",
     title_en: "Budget disagreement",
+    audioKey: "toeic-listening/toeic_listening_extra_budget_disagreement.mp3",
     passage_or_audio_script:
       "M: I have to push back on the proposed marketing cut. Trimming twelve percent from Q4 will cripple our holiday campaign, which historically drives a third of annual revenue.\n" +
       "W: I hear you, but Finance is asking every department for a similar trim — we can't carve out an exception unless we can defend it with hard numbers.\n" +

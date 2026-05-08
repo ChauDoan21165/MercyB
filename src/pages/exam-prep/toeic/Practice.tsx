@@ -15,6 +15,7 @@
 import React, { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { ChevronRight, Clock3, Headphones, BookOpen, AlertTriangle } from "lucide-react";
+import TalkingFacePlayButton from "@/components/audio/TalkingFacePlayButton";
 
 import {
   TOEIC_LISTENING_ITEMS,
@@ -437,6 +438,26 @@ function PracticeItemDetail({ item }: { item: TOEICPracticeItem }) {
   return (
     <div style={{ padding: "0 16px 18px", display: "flex", flexDirection: "column", gap: 14, borderTop: "1px solid rgba(0,0,0,0.06)" }}>
       <Section title={passageHeader}>
+        {/* Audio playback for listening items */}
+        {item.section === "listening" && item.audioKey ? (
+          <div style={{ marginBottom: 12 }}>
+            <TalkingFacePlayButton
+              src={item.audioKey}
+              label={item.title_vi}
+              hostContext={{
+                roomId: item.id,
+                entryId: item.id,
+                text_en: item.title_en,
+                text_vi: item.title_vi,
+                keyword: `toeic-part-${item.part}`,
+              }}
+            />
+          </div>
+        ) : item.section === "listening" ? (
+          <div style={{ marginBottom: 12, padding: "10px 14px", borderRadius: 12, background: "rgba(245,158,11,0.08)", border: "1px solid rgba(245,158,11,0.20)", fontSize: 13, fontWeight: 700, color: "rgba(146,64,14,0.85)", textAlign: "center" }}>
+            🔊 Audio coming soon
+          </div>
+        ) : null}
         <pre
           style={{
             margin: 0,
