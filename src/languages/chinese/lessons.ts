@@ -64,7 +64,10 @@ export type ChineseCategoryId =
   | "academic_discourse"
   | "professional_negotiation"
   | "public_communication"
-  | "literary_criticism";
+  | "literary_criticism"
+  | "arts_criticism"
+  | "civic_discourse"
+  | "rhetoric_capstone";
 
 export type ChineseCategoryMeta = {
   id: ChineseCategoryId;
@@ -187,4 +190,4 @@ export function getLessonById(id: number | string): ChineseLesson | undefined {
 // Total lesson count across every level. Kept manually in sync with the
 // per-level files; updated by scripts/install-lessons-registry.mjs at
 // generation time.
-export const CHINESE_TOTAL_LESSONS = 139;
+export const CHINESE_TOTAL_LESSONS = 145;

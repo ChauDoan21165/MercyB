@@ -2639,6 +2639,424 @@ export const lessons: FrenchLesson[] = [
         "french": "Défendre une interprétation contestée suppose qu'on en assume publiquement les conséquences, y compris la possibilité d'avoir tort."
       }
     ]
+  }  ,
+  {
+    "id": "larts_critique_dart",
+    "level": "C2",
+    "category": "arts_criticism",
+    "title_vi": "Phê bình nghệ thuật tạo hình — critique d'art",
+    "title_en": "Art criticism — analyzing visual art in French",
+    "sentences": [
+      {
+        "en": "Loin de se réduire à un exercice d'admiration, la critique d'art se doit d'articuler un jugement esthétique étayé sur des critères explicites et, si possible, falsifiables.",
+        "vi": "Khác hẳn việc quy giảm thành một bài tập chiêm ngưỡng, phê bình nghệ thuật phải khớp nối một phán đoán thẩm mỹ có cơ sở trên các tiêu chí hiển ngôn và, nếu có thể, khả bác.",
+        "pronunciation_focus": [
+          "exercice → èg-zèr-sis",
+          "jugement → ju-jơ-mãn",
+          "étayé → é-tè-ié",
+          "falsifiable → fal-si-fi-ablơ"
+        ]
+      },
+      {
+        "en": "La toile de Soulages, qu'on taxe volontiers de monochrome, mobilise en réalité un travail de la lumière que seule une fréquentation prolongée de l'œuvre donne à voir.",
+        "vi": "Bức toan của Soulages, vốn dễ bị quy là đơn sắc, thực ra huy động một công việc của ánh sáng mà chỉ sự gần gũi kéo dài với tác phẩm mới cho thấy.",
+        "pronunciation_focus": [
+          "Soulages → su-laj",
+          "monochrome → mo-no-krôm",
+          "fréquentation → fré-kãn-ta-sion",
+          "prolongée → pro-lõn-jé"
+        ]
+      },
+      {
+        "en": "Il eût été vain de juger cette installation à l'aune des catégories traditionnelles de la beauté; c'est précisément la destitution du beau que l'artiste met en scène.",
+        "vi": "Sẽ vô ích nếu phán xét sắp đặt này theo tiêu chí các phạm trù truyền thống của cái đẹp; chính sự truất bỏ cái đẹp là điều nghệ sĩ dàn dựng.",
+        "pronunciation_focus": [
+          "eût → u",
+          "aune → ôn",
+          "destitution → dès-ti-tu-sion",
+          "beau → bô"
+        ]
+      },
+      {
+        "en": "La critique d'art, telle que Diderot l'a inaugurée dans ses Salons, n'a jamais été une paraphrase de l'image; elle en est la traduction dans un autre médium, qui est la langue.",
+        "vi": "Phê bình nghệ thuật, như Diderot đã khai mở trong các Salon của ông, chưa bao giờ là sự paraphrase hình ảnh; đó là sự dịch chuyển nó sang một chất liệu khác, là ngôn ngữ.",
+        "pronunciation_focus": [
+          "Diderot → di-dơ-rô",
+          "Salons → sa-lõn",
+          "paraphrase → pa-ra-fraz",
+          "médium → mé-di-om"
+        ]
+      },
+      {
+        "en": "Force est de constater que le discours sur l'art contemporain oscille, en France, entre un hermétisme théorique et un lyrisme publicitaire, sans que l'un ni l'autre ne serve la compréhension du public.",
+        "vi": "Phải thừa nhận rằng diễn ngôn về nghệ thuật đương đại dao động, ở Pháp, giữa một sự bí ẩn lý thuyết và một chất trữ tình quảng cáo, mà không cái nào phục vụ sự hiểu của công chúng.",
+        "pronunciation_focus": [
+          "constater → kõns-ta-té",
+          "hermétisme → èr-mé-tismơ",
+          "lyrisme → li-rismơ",
+          "oscille → o-siy"
+        ]
+      }
+    ],
+    "cultural_notes_vi": "PHÊ BÌNH NGHỆ THUẬT PHÁP (critique d'art) có lịch sử đặc thù:\n\n(1) DIDEROT (1713-1784) — người sáng lập thể loại. Các Salon (1759-1781) của ông là những văn bản nền tảng: mô tả tranh cho độc giả không xem được tranh (công chúng ở tỉnh xa). Phương pháp: description vive + jugement esthétique + anecdote philosophique. Đến nay, mọi critique d'art Pháp vẫn thừa kế Diderot ở hai điểm: (a) 'peindre avec des mots' — không tả kỹ thuật khô mà render cảm giác, (b) 'philosopher à partir de l'image' — lấy tranh làm điểm xuất phát suy tư.\n\n(2) BAUDELAIRE — Salons (1845, 1846, 1859) nâng critique lên thành 'partiale, passionnée, politique'. Le Peintre de la vie moderne (1863) giới thiệu khái niệm 'modernité': cái đẹp gồm một phần vĩnh cửu và một phần tạm thời.\n\n(3) TRUYỀN THỐNG SALON: Académie des Beaux-Arts tổ chức Salon hàng năm từ 1667. Đến thế kỷ 19, Salon là sự kiện trung tâm của đời sống nghệ thuật Paris. Critic viết compte rendu de Salon là thể loại chính đến tận 1880s.\n\n(4) THẾ KỶ 20: Malraux (Les Voix du silence, 1951) — musée imaginaire. Merleau-Ponty (L'Œil et l'Esprit, 1960) — phénoménologie de la perception visuelle. Didi-Huberman (Devant l'image, 1990) — critique de l'iconologie panofskienne. Bourdieu (Les Règles de l'art, 1992) — sociologie du champ artistique.\n\n(5) CẢNH BÁO: critique contemporain Pháp chia làm hai phe: (a) 'journalistique' — viết cho Le Monde, Libération, Les Inrocks: accessible, storyteller, opinion; (b) 'universitaire' — viết cho revues savantes: théorique, jargon, dense. C2 critique phải biết cả hai register và chọn theo contexte.\n\n(6) ĐẶC THÙ CHO NGƯỜI VIỆT: nghệ thuật đương đại VN (từ Đổi Mới 1986) có truyền thống riêng — Nguyễn Quân, Trần Lương, Đinh Q. Lê... Khi viết critique d'art bằng tiếng Pháp về nghệ thuật VN, cần dịch các khái niệm thẩm mỹ Việt (hồn, duyên, thần thái) mà không biến chúng thành folklore.",
+    "tip_advice_vi": "CẤU TRÚC CRITIQUE D'ART CHUẨN (1500-3000 mots, báo hoặc revue):\n\n1. ACCROCHE (1-2 câu) — bắt đầu bằng một chi tiết cụ thể của tác phẩm, không bằng généralité: 'À l'entrée de la salle, un immense panneau noir vous arrête net.'\n\n2. DESCRIPTION (20%) — tả tác phẩm minh bạch, như thể độc giả không thấy nó. Dùng présent de l'indicatif. Éviter vocabulaire technique quá dày — 'couleur froide' thay vì 'palette restreinte aux tons azuréens'.\n\n3. CONTEXTUALISATION (20%) — đặt tác phẩm trong œuvre của nghệ sĩ, trong mouvement, trong époque. Không cần dài — 2-3 câu gọn.\n\n4. ANALYSE (40%) — phát triển 2-3 'axes de lecture' giống explication de texte:\n- Axe 1: matière / technique (chất liệu, cử chỉ)\n- Axe 2: dispositif spatial (không gian, người xem)\n- Axe 3: charge symbolique (symbolique, politique)\nMỗi axe cần citations visuelles — 'le rouge, posé à la jonction des deux plans, fait basculer la composition.'\n\n5. JUGEMENT (20%) — đưa ra đánh giá, có lập luận. KHÔNG 'c'est beau' / 'c'est laid'. Dùng: 'réussi' / 'moins convaincant' + lý do. Formule: 'Si la première salle emporte l'adhésion par son audace formelle, la seconde déçoit par son académisme revenu.'\n\nCỤM HỮU ÍCH:\n- 'L'œuvre donne à voir...' (tác phẩm cho thấy...)\n- 'Le parti pris de l'artiste consiste à...' (chủ trương của nghệ sĩ là...)\n- 'On peut lire cette installation comme...' (có thể đọc sắp đặt này như...)\n- 'Le spectateur se trouve convoqué à...' (người xem bị triệu tập vào...)\n- 'La réussite tient à...' (sự thành công nằm ở...)\n- 'En revanche, tel aspect laisse perplexe.' (ngược lại, khía cạnh này gây bối rối.)\n\nSAI LẦM PHỔ BIẾN:\n- Dùng nhiều adjectif rỗng ('magnifique', 'sublime', 'saisissant')\n- Biographie de l'artiste quá dài — critique không phải notice Wikipedia\n- Éviter le name-dropping théorique — một référence à Deleuze / Rancière / Didi-Huberman đủ, không cần parade érudite\n- Không bao giờ kết luận 'À vous de juger' — critique assume son jugement",
+    "vocabulary": [
+      {"word": "un compte rendu d'exposition", "en": "exhibition review", "vi": "bài điểm triển lãm", "pos": "n.m.", "pronunciation_vi": "kõnt rãn-du dèk-spo-zi-sion"},
+      {"word": "le parti pris", "en": "the chosen approach / bias", "vi": "chủ trương / thiên kiến", "pos": "n.m.", "pronunciation_vi": "par-ti pri"},
+      {"word": "la matière picturale", "en": "the painterly material", "vi": "chất liệu hội họa", "pos": "n.f.", "pronunciation_vi": "ma-tièr pik-tu-ral"},
+      {"word": "le dispositif", "en": "the apparatus / setup", "vi": "thiết đặt (không gian)", "pos": "n.m.", "pronunciation_vi": "dis-po-zi-tif"},
+      {"word": "la touche", "en": "the brushstroke", "vi": "nét cọ", "pos": "n.f.", "pronunciation_vi": "tush"},
+      {"word": "la toile", "en": "the canvas", "vi": "bức toan / vải vẽ", "pos": "n.f.", "pronunciation_vi": "toal"},
+      {"word": "un accrochage", "en": "the hanging (of works)", "vi": "cách treo / bố trí tranh", "pos": "n.m.", "pronunciation_vi": "a-kro-shaj"},
+      {"word": "le regardeur", "en": "the viewer / beholder", "vi": "người xem (Duchamp)", "pos": "n.m.", "pronunciation_vi": "rơ-gar-dơr"},
+      {"word": "une installation", "en": "an installation (art)", "vi": "một sắp đặt", "pos": "n.f.", "pronunciation_vi": "an-sta-la-sion"},
+      {"word": "plastique", "en": "plastic / formal (adj.)", "vi": "tạo hình (tính từ)", "pos": "adj.", "pronunciation_vi": "plas-tik"}
+    ],
+    "dialogue": [
+      {"speaker": "Commissaire", "text": "Quelle lecture faites-vous de cette série de Soulages ?", "vi": "Chị đọc loạt tranh Soulages này thế nào?"},
+      {"speaker": "Linh", "text": "J'y vois moins une exploration du noir qu'une archéologie de la lumière — le tableau fonctionne comme un piège à photons.", "vi": "Tôi thấy ở đó ít là một khảo sát về màu đen hơn là một khảo cổ học về ánh sáng — bức tranh vận hành như một cái bẫy photon."},
+      {"speaker": "Commissaire", "text": "Intéressant. Mais ne surinterprétez-vous pas ? Soulages lui-même récuse toute métaphysique.", "vi": "Thú vị. Nhưng có phải chị diễn giải thái quá? Soulages tự bác bỏ mọi siêu hình."},
+      {"speaker": "Linh", "text": "L'artiste n'est pas le propriétaire du sens — une fois l'œuvre livrée au public, la lecture lui échappe.", "vi": "Nghệ sĩ không phải chủ sở hữu của nghĩa — một khi tác phẩm được trao cho công chúng, cách đọc thoát khỏi ông."}
+    ],
+    "dialogue_long": [
+      {"speaker": "Rédactrice en chef (Magazine Art Press)", "text": "Linh, vous couvrez la rétrospective Boltanski au Centre Pompidou. Huit cents mots, angle personnel exigé. Pas un catalogue déguisé.", "vi": "Linh, chị phụ trách hồi cố Boltanski ở Centre Pompidou. Tám trăm chữ, góc cá nhân bắt buộc. Không phải catalogue cải trang."},
+      {"speaker": "Linh", "text": "J'entre par l'installation des vêtements — la 'Réserve'. Le visiteur est enveloppé dans des habits d'absents. C'est une thanatographie textile.", "vi": "Tôi vào bằng sắp đặt quần áo — 'Réserve'. Người xem bị bao bọc trong áo quần của những người vắng mặt. Đó là một ký sự tử vong bằng vải."},
+      {"speaker": "Rédactrice", "text": "Bien — angle concret, pas de généralité. Mais évitez 'thanatographie' — trop universitaire pour nos lecteurs. Dites 'un mémorial de l'absence'.", "vi": "Tốt — góc cụ thể, không chung chung. Nhưng tránh 'thanatographie' — quá đại học cho độc giả ta. Nói 'một đài tưởng niệm sự vắng mặt'."},
+      {"speaker": "Linh", "text": "Entendu. Second mouvement: le son. Boltanski fait entendre des battements de cœur dans l'obscurité. L'œuvre devient un corps sans organes — le public circule dans un espace cardiaque.", "vi": "Đồng ý. Chuyển động hai: âm thanh. Boltanski cho nghe nhịp tim trong bóng tối. Tác phẩm trở thành một thân thể không cơ quan — công chúng lưu chuyển trong một không gian tim."},
+      {"speaker": "Rédactrice", "text": "'Corps sans organes' — Deleuze, donc. Trop de théorie d'un coup. Remplacez par 'l'exposition bat au rythme d'un cœur collectif'. Plus charnel.", "vi": "'Thân thể không cơ quan' — Deleuze. Quá nhiều lý thuyết một lúc. Thay bằng 'triển lãm đập theo nhịp một trái tim tập thể'. Thịt da hơn."},
+      {"speaker": "Linh", "text": "Vous avez raison. L'art critique journalistique exige de faire sentir avant de faire penser.", "vi": "Chị đúng. Phê bình nghệ thuật báo chí đòi hỏi làm cho cảm trước khi làm cho nghĩ."},
+      {"speaker": "Rédactrice", "text": "Exactement. Troisième mouvement: la chute. Quelques phrases sur la sortie — que reste-t-il au visiteur en quittant ?", "vi": "Chính xác. Chuyển động ba: cú rơi. Vài câu về lối ra — còn lại gì cho người xem khi rời khỏi?"},
+      {"speaker": "Linh", "text": "On sort de Boltanski moins triste qu'allégé — le deuil collectif a paradoxalement quelque chose de réconfortant. C'est cela, l'angle final.", "vi": "Ra khỏi Boltanski ít buồn hơn là nhẹ nhõm — tang chung tập thể mâu thuẫn có gì đó an ủi. Đó là góc cuối."},
+      {"speaker": "Rédactrice", "text": "Parfait. Bouclez sur cette note d'ambivalence. Ni pathos, ni cynisme. Rendez-moi le papier demain midi.", "vi": "Hoàn hảo. Đóng lại trên nốt lưỡng trị này. Không pathos, không cynisme. Gửi tôi bài trưa mai."}
+    ],
+    "roleplay_prompts": [
+      "Bạn viết critique 500 mots về một triển lãm tranh sơn mài Việt Nam tại Paris. Dùng cấu trúc: (1) entrée par une œuvre précise, (2) 2 axes d'analyse (matière + mémoire), (3) jugement nuancé. Phrase clé: 'Loin de se réduire à un artisanat décoratif, la laque vietnamienne...'",
+      "Trong buổi soutenance mémoire về mỹ thuật, jury hỏi bạn: 'Votre critique n'est-elle qu'une description lyrique?' Phản biện: định nghĩa critique d'art comme 'traduction dans un autre médium', dẫn Diderot, phân biệt description và analyse.",
+      "Bạn được giao viết catalogue essay 1500 mots cho triển lãm cá nhân. Hãy phác thảo structure: éviter biographie linéaire, partir d'un concept (le vide / la trace / la répétition), analyser 3 œuvres clés, conclure sur une question ouverte sans answer definitive."
+    ],
+    "register_notes": "CRITIQUE D'ART C2 — ba register tùy contexte:\n\nREGISTRE JOURNALISTIQUE (presse grand public):\n- Vocabulaire accessible, phrases courtes (15-25 mots)\n- Présent de l'indicatif dominant\n- Éviter passé simple, subjonctif imparfait\n- 'On est saisi par...', 'L'effet est immédiat:', 'Ce qui frappe d'abord, c'est...'\n\nREGISTRE UNIVERSITAIRE (revue savante):\n- Lexique spécialisé: 'chromatisme', 'scénographie', 'dispositif scopique'\n- Citations théoriques intégrées: 'Comme l'écrit Rancière dans Le Partage du sensible (2000)...'\n- Subjonctif: 'Il est regrettable que l'accrochage n'ait pas tenu compte...'\n- Questions rhétoriques: 'Faut-il voir dans ce choix de monter l'exposition à l'envers une intention déconstructrice?'\n\nREGISTRE CATALOGUE (essay pour livre d'artiste):\n- Ton plus personnel, essai littéraire\n- Je permis (rare ailleurs): 'Je me souviens de ma première rencontre avec cette toile...'\n- Métaphores filées: 'L'œuvre se déploie comme une partition dont chaque salle serait un mouvement.'\n- Ni trop technique, ni trop journalistique\n\nĐỘNG TỪ CLÉ:\n- 'donner à voir' (cho thấy) — neutre\n- 'mettre en scène' (dàn dựng) — neutre\n- 'convoquer' (triệu tập) — soutenu: 'l'artiste convoque le spectateur à...'\n- 'tramer' (dệt nên) — littéraire\n- 'sourdre' (rỉ ra) — rất littéraire\n\nTRÁNH:\n- 'Cette œuvre est magnifique' → không phân tích\n- 'L'artiste exprime sa souffrance' → biographisme naïf\n- 'C'est intéressant' → mot vide\n- Trop de technique sans jugement → catalogue de vente",
+    "idiom_glosses": [
+      {"idiom": "Accrocher l'œil", "literal": "Móc vào mắt", "meaning": "Thu hút thị giác — critique d'art pour décrire ce qui saisit d'abord le regard.", "example": "Ce qui accroche l'œil dans cette toile, c'est moins la composition d'ensemble que ce minuscule détail rouge au bord droit."},
+      {"idiom": "Donner à voir", "literal": "Cho thấy", "meaning": "Rendre visible — verbe central de la critique d'art française, issu de Paul Éluard (Donner à voir, 1939).", "example": "Cette installation donne à voir l'invisible — le passage du temps rendu sensible par l'accumulation d'objets quotidiens."},
+      {"idiom": "Faire date", "literal": "Làm nên ngày tháng", "meaning": "Marquer l'histoire — pour désigner une œuvre / exposition qui fait époque.", "example": "L'exposition 'Magiciens de la terre' (1989) a fait date en mettant fin à l'hégémonie occidentale dans l'art contemporain."},
+      {"idiom": "Prendre le parti de", "literal": "Lấy phía của", "meaning": "Chọn cách tiếp cận — 'le parti pris esthétique de l'artiste'.", "example": "L'artiste prend le parti du vide contre le plein, du silence contre le bruit — un ascétisme formel radical."}
+    ],
+    "exercises": [
+      {"type": "fill-blank", "question": "La critique d'art, telle que ___ l'a inaugurée dans ses Salons, n'a jamais été une paraphrase de l'image.", "answer": "Diderot"},
+      {"type": "matching", "pairs": [["le parti pris", "chủ trương / thiên kiến"], ["la touche", "nét cọ"], ["le regardeur", "người xem (Duchamp)"], ["un accrochage", "cách treo tranh"]], "instruction": "Nối thuật ngữ critique d'art với nghĩa Việt"},
+      {"type": "translation", "vietnamese": "Khác hẳn việc quy giảm thành bài tập chiêm ngưỡng, phê bình nghệ thuật phải khớp nối một phán đoán thẩm mỹ có cơ sở.", "french": "Loin de se réduire à un exercice d'admiration, la critique d'art se doit d'articuler un jugement esthétique étayé sur des critères explicites."}
+    ]
+  },
+  {
+    "id": "larts_critique_cinema",
+    "level": "C2",
+    "category": "arts_criticism",
+    "title_vi": "Phê bình điện ảnh — critique de cinéma",
+    "title_en": "Film criticism — writing a French film review",
+    "sentences": [
+      {
+        "en": "La critique de cinéma, en France, ne saurait être un simple verdict d'humeur: elle engage une analyse de la mise en scène comme pensée à l'œuvre.",
+        "vi": "Phê bình điện ảnh, ở Pháp, không thể là một phán quyết tùy hứng đơn giản: nó dấn thân vào một phân tích mise en scène như tư duy đang vận hành.",
+        "pronunciation_focus": [
+          "saurait → sô-rè",
+          "verdict → vèr-dik",
+          "mise en scène → mi-zãn-sèn",
+          "pensée → pãn-sé"
+        ]
+      },
+      {
+        "en": "Bazin l'avait bien vu: le plan-séquence n'est pas un simple procédé technique — il est un choix éthique qui restitue au spectateur sa liberté de regard.",
+        "vi": "Bazin đã thấy rõ: plan-séquence không phải một thủ pháp kỹ thuật đơn giản — đó là một lựa chọn đạo đức trả lại cho khán giả sự tự do của cái nhìn.",
+        "pronunciation_focus": [
+          "Bazin → ba-zan",
+          "plan-séquence → plãn-sé-kãns",
+          "éthique → é-tik",
+          "spectateur → spèk-ta-tơr"
+        ]
+      },
+      {
+        "en": "La politique des auteurs, telle que les Cahiers du Cinéma l'ont formulée dans les années 1950, postule que le metteur en scène est le véritable auteur du film, contre la tradition du scénariste-roi.",
+        "vi": "Chính sách tác giả, như Cahiers du Cinéma đã hình thành trong những năm 1950, định đề rằng đạo diễn mới là tác giả đích thực của phim, chống lại truyền thống biên kịch-làm-vua.",
+        "pronunciation_focus": [
+          "Cahiers → ka-ié",
+          "postule → pos-tul",
+          "metteur en scène → mè-tơr-ãn-sèn",
+          "scénariste → sé-na-rist"
+        ]
+      },
+      {
+        "en": "Il eût été plus fructueux d'analyser la lumière crépusculaire qui baigne tout le troisième acte — elle n'est pas décorative, elle est le sens même du film.",
+        "vi": "Sẽ có kết quả hơn nếu phân tích ánh sáng hoàng hôn tắm cả hồi ba — nó không có tính trang trí, nó là chính nghĩa của phim.",
+        "pronunciation_focus": [
+          "eût → u",
+          "crépusculaire → kré-pus-ku-lèr",
+          "décorative → dé-ko-ra-tiv",
+          "baigne → bèny"
+        ]
+      },
+      {
+        "en": "En dernière analyse, ce qui distingue la critique française de l'anglo-saxonne, c'est le primat accordé à la mise en scène sur le scénario — une idée que même les détracteurs de la 'politique des auteurs' ont dû intégrer.",
+        "vi": "Sau cùng, điều phân biệt phê bình Pháp với Anh-Mỹ là sự ưu tiên dành cho mise en scène hơn kịch bản — một ý tưởng mà ngay cả những người phản đối 'chính sách tác giả' cũng đã phải tích hợp.",
+        "pronunciation_focus": [
+          "dernière → dèr-nièr",
+          "anglo-saxonne → ãn-glô-sak-son",
+          "détracteurs → dé-trak-tơr",
+          "intégrer → an-té-gré"
+        ]
+      }
+    ],
+    "cultural_notes_vi": "PHÊ BÌNH ĐIỆN ẢNH PHÁP — di sản riêng từ Cahiers du Cinéma (1951):\n\n(1) BAZIN (1918-1958) — cofondateur des Cahiers. Ontologie de l'image photographique (Qu'est-ce que le cinéma ?, 1958): le cinéma accomplit le 'complexe de la momie' — sauver l'être par l'apparence. Phân biệt: metteurs en scène qui 'croient à l'image' vs ceux qui 'croient à la réalité'. Plan-séquence và profondeur de champ = choix éthiques, không chỉ esthétiques.\n\n(2) POLITIQUE DES AUTEURS — Truffaut (1954, 'Une certaine tendance du cinéma français') lance thuật ngữ. Nguyên lý: le metteur en scène (thường là scénariste de ses films) est le véritable auteur. Điều này cho phép valoriser Hollywood (Hitchcock, Hawks, Ford) mà critique Pháp trước đó coi thường.\n\n(3) CAHIERS CRITICS DEVENUS CINÉASTES — Godard, Truffaut, Rohmer, Rivette, Chabrol — tất cả khởi nghiệp viết critique cho Cahiers rồi chuyển sang làm phim (Nouvelle Vague). Truyền thống: critiquer comme manière d'apprendre à faire. Điều này rất Pháp.\n\n(4) DANEY (1944-1992) — kế thừa Bazin ở Cahiers, sau sang Libération. Lý thuyết về 'cinéma comme art du passage': de la salle obscure au monde, de l'image au réel. Citation célèbre: 'Le cinéma, c'est l'art de montrer.'\n\n(5) DEBAT ĐƯƠNG ĐẠI: Les Cahiers vẫn tồn tại (mensuel). Đối thủ: Positif (1952), plus 'contre-Cahiers'. Cả hai lập trường khác nhau về cùng một film — đọc cả hai khi muốn viết critique sérieuse.\n\n(6) ĐẶC THÙ VIỆT NAM: phê bình điện ảnh VN phát triển khác — nhiều influence từ critique văn học (Lê Hồng Lâm, Ngô Phương Lan). Khi viết bằng tiếng Pháp về cinéma VN (Trần Anh Hùng, Phan Đăng Di), tích hợp khái niệm Pháp (mise en scène, plan-séquence) vào ngữ cảnh VN mà không ép buộc.",
+    "tip_advice_vi": "STRUCTURE D'UNE CRITIQUE DE FILM C2 (1500-2000 mots):\n\n1. ENTRÉE EN MATIÈRE (2 phrases max): bắt đầu bằng một plan cụ thể, một scène, một geste — không 'Ce film raconte l'histoire de...'\n- 'Dès le premier plan — un travelling latéral sur un mur de brique —, le film impose son rythme.'\n\n2. RÉSUMÉ MINIMAL (10% max): résumer tối thiểu, đủ để comprendre contexte. Jamais spoiler fin. Formule: 'Le film suit X qui... jusqu'à ce que...'\n\n3. ANALYSE DE LA MISE EN SCÈNE (60%) — các axes:\n- Axe espace: cadrage / profondeur de champ / décor / hors-champ\n- Axe temps: montage / ellipse / plan-séquence / ralenti\n- Axe son: voix / musique / bruits / silence\n- Axe acteur: direction d'acteurs / corps / voix\n- Axe lumière: source / couleur / ombre\nKHÔNG cần tất cả — chọn 2-3 axes phù hợp với film.\n\n4. MISE EN PERSPECTIVE (20%): situer trong filmographie du cinéaste, trong courant esthétique. Citation critique: 'Comme l'écrit Daney...' / 'Bazin aurait vu dans ce plan...'\n\n5. JUGEMENT (10%): đưa verdict có lập luận. Có thể aimer ET critiquer ('réussi formellement mais politiquement naïf').\n\nCỤM HỮU ÍCH:\n- 'La mise en scène consiste ici à...' (mise en scène ở đây là...)\n- 'Ce plan, qui dure plus de trois minutes, oblige le spectateur à...'\n- 'La lumière, dans ce film, n'éclaire pas — elle signifie.'\n- 'Le choix du hors-champ est ici plus éloquent que ce qui est montré.'\n- 'Le montage, heurté, refuse toute psychologie — il impose une lecture politique.'\n\nTRÁNH:\n- Juger le scénario seulement: 'L'histoire est invraisemblable' → pas pertinent en critique française.\n- Note sur 5 étoiles sans texte: rédactionnel attendu.\n- Parler des acteurs en people: critique, pas Voici.\n- 'Ce film est un chef-d'œuvre' sans argument: affirmation vide.",
+    "vocabulary": [
+      {"word": "la mise en scène", "en": "direction / staging", "vi": "dàn dựng / mise en scène", "pos": "n.f.", "pronunciation_vi": "mi-zãn-sèn"},
+      {"word": "un travelling", "en": "a tracking shot", "vi": "cú travelling", "pos": "n.m.", "pronunciation_vi": "trav-ling"},
+      {"word": "le hors-champ", "en": "off-screen space", "vi": "ngoại cảnh / không gian ngoài khung", "pos": "n.m.", "pronunciation_vi": "or-shãn"},
+      {"word": "la profondeur de champ", "en": "depth of field", "vi": "độ sâu trường ảnh", "pos": "n.f.", "pronunciation_vi": "pro-fõn-dơr dơ shãn"},
+      {"word": "le montage", "en": "editing", "vi": "dựng phim", "pos": "n.m.", "pronunciation_vi": "mõn-taj"},
+      {"word": "un plan-séquence", "en": "a long take / sequence shot", "vi": "cú máy liên tục không cắt", "pos": "n.m.", "pronunciation_vi": "plãn-sé-kãns"},
+      {"word": "la politique des auteurs", "en": "auteur theory", "vi": "chính sách tác giả", "pos": "n.f.", "pronunciation_vi": "po-li-tik dé-zô-tơr"},
+      {"word": "diégétique", "en": "diegetic (within the story world)", "vi": "thuộc về thế giới truyện", "pos": "adj.", "pronunciation_vi": "dié-jé-tik"},
+      {"word": "un panoramique", "en": "a pan shot", "vi": "cú lia máy", "pos": "n.m.", "pronunciation_vi": "pa-no-ra-mik"},
+      {"word": "le cadre", "en": "the frame", "vi": "khuôn hình", "pos": "n.m.", "pronunciation_vi": "kadr"}
+    ],
+    "dialogue": [
+      {"speaker": "Rédacteur", "text": "Votre critique du dernier Desplechin est trop descriptive. Où est l'analyse de la mise en scène ?", "vi": "Bài phê bình Desplechin mới nhất của bạn quá mô tả. Phân tích mise en scène đâu?"},
+      {"speaker": "Linh", "text": "J'ai décrit la séquence d'ouverture, mais vous avez raison — je n'ai pas dit pourquoi la caméra quitte le personnage pour s'attarder sur la fenêtre.", "vi": "Tôi đã mô tả cảnh mở đầu, nhưng anh đúng — tôi chưa nói tại sao máy quay rời nhân vật để nấn ná ở cửa sổ."},
+      {"speaker": "Rédacteur", "text": "Exactement. Ce mouvement n'est pas anodin: il dit le point de vue du cinéaste sur son personnage.", "vi": "Chính xác. Chuyển động đó không vô cớ: nó nói lên điểm nhìn của đạo diễn về nhân vật của ông."},
+      {"speaker": "Linh", "text": "Je reprends — je pars de ce décadrage pour montrer comment Desplechin construit un regard ironique sur son protagoniste.", "vi": "Tôi làm lại — tôi xuất phát từ sự lệch khung này để chỉ ra cách Desplechin xây dựng cái nhìn mỉa mai về nhân vật chính."}
+    ],
+    "dialogue_long": [
+      {"speaker": "Prof. Daney (séminaire de critique, Fémis)", "text": "Mademoiselle Tran, vous venez de voir le dernier film de Claire Denis. En deux phrases: quel est le geste de mise en scène qui le définit ?", "vi": "Cô Trần, cô vừa xem phim mới nhất của Claire Denis. Trong hai câu: cử chỉ mise en scène nào định nghĩa nó?"},
+      {"speaker": "Linh", "text": "Le geste, c'est la peau. Denis filme les corps à une distance qui annule toute pudeur sans jamais devenir obscène. La caméra est un épiderme.", "vi": "Cử chỉ, đó là da. Denis quay các thân thể ở một khoảng cách hủy bỏ mọi e dè mà không bao giờ trở nên tục tằn. Máy quay là một lớp biểu bì."},
+      {"speaker": "Prof. Daney", "text": "'La caméra est un épiderme' — c'est une formule. Développez: quel plan précis vous fait dire cela ?", "vi": "'Máy quay là một lớp biểu bì' — đó là một công thức. Triển khai: cảnh chính xác nào khiến cô nói vậy?"},
+      {"speaker": "Linh", "text": "La scène de la douche, au tiers du film. La caméra est si proche de la nuque de l'actrice qu'on perçoit le duvet. Ce n'est plus un cadrage — c'est une caresse optique.", "vi": "Cảnh tắm vòi sen, ở một phần ba phim. Máy quay gần gáy diễn viên đến mức ta thấy lông tơ. Đó không còn là cadrage — đó là một vuốt ve quang học."},
+      {"speaker": "Prof. Daney", "text": "Très bien. Maintenant, le revers: cette proximité a-t-elle un coût ? Que sacrifie le film ?", "vi": "Rất tốt. Giờ mặt trái: sự cận kề này có cái giá không? Phim hy sinh gì?"},
+      {"speaker": "Linh", "text": "Il sacrifie la narration classique. On ne sait jamais vraiment ce qui se passe au niveau de l'intrigue. Mais c'est un choix cohérent: le film ne raconte pas, il éprouve.", "vi": "Nó hy sinh tự sự cổ điển. Không bao giờ thực sự biết cái gì xảy ra ở cấp độ cốt truyện. Nhưng đó là lựa chọn nhất quán: phim không kể, nó thể nghiệm."},
+      {"speaker": "Prof. Daney", "text": "Vous défendez un cinéma de la sensation contre un cinéma du récit. Thèse classique des Cahiers. Mais attention au dogmatisme: certains films font les deux.", "vi": "Cô bảo vệ một điện ảnh của cảm giác chống lại điện ảnh của tự sự. Luận đề Cahiers cổ điển. Nhưng coi chừng chủ nghĩa: một số phim làm cả hai."},
+      {"speaker": "Linh", "text": "Je nuance: Denis fait les deux, mais la sensation prime. Le récit est le prétexte; la chair, le texte.", "vi": "Tôi sắc thái hóa: Denis làm cả hai, nhưng cảm giác chiếm ưu tiên. Tự sự là cái cớ; da thịt, là văn bản."},
+      {"speaker": "Prof. Daney", "text": "'La chair, le texte' — bon mot. Pour la semaine prochaine, vous m'écrivez 1500 mots sur ce film en partant de cette idée. Et surtout: pas une seule référence à Deleuze.", "vi": "'Da thịt, là văn bản' — chữ hay. Tuần sau, cô viết cho tôi 1500 chữ về phim này xuất phát từ ý này. Và nhất là: không một tham chiếu nào đến Deleuze."}
+    ],
+    "roleplay_prompts": [
+      "Bạn critique một bộ phim cho tạp chí bài trí thức. Tập trung vào MỘT séquence — phân tích mise en scène, lumière, son. Áp dụng Bazin: 'le plan-séquence restitue au spectateur sa liberté de regard'. Không tóm tắt toàn bộ phim.",
+      "Trong séminaire cinéma, bạn défend quan điểm 'ce blockbuster est plus intéressant que ce film d'auteur'. Dùng politique des auteurs argument: mise en scène > scénario. Phrase clé: 'On juge un cinéaste à sa mise en scène, non à son sujet.'",
+      "Bạn compare deux critiques du même film (Cahiers vs Positif). Phân tích divergence: l'un voit 'formalisme creux', l'autre 'économie de moyens'. Dùng analyse contrastive cho thấy mỗi critique part d'un présupposé khác nhau về ce que le cinéma doit être."
+    ],
+    "register_notes": "CRITIQUE DE CINÉMA C2 — đặc thù française:\n\nLEXIQUE TECHNIQUE INTÉGRÉ (không glossaire séparé):\n- Không nói 'le réalisateur utilise un travelling' + giải thích travelling là gì\n- Nói 'le travelling latéral du deuxième acte épouse le mouvement de l'actrice'\n- Lexique supposé connu: travelling, panoramique, plan fixe, plan-séquence, hors-champ, profondeur de champ, amorce, raccord, champ-contrechamp\n\nVERBES DE MISE EN SCÈNE:\n- 'cadrer' (đóng khung) — 'Le cinéaste cadre le visage au plus près'\n- 'monter' (dựng) — 'Le film est monté sec, sans transitions'\n- 'éclairer' — 'La scène est éclairée à la bougie'\n- 'filmer' — 'Godard filme la nuque d'Anna Karina comme un paysage'\n\nTEMP VERBAL dans critique de film:\n- PRÉSENT dominant: 'Le film s'ouvre sur...', 'La caméra suit...'\n- PASSÉ COMPOSÉ cho judgement synthétique: 'Le cinéaste a choisi de...'\n- IMPARFAIT pour habitude / arrière-plan: 'À l'époque, Truffaut écrivait...'\n- SUBJONCTIF cho critique: 'Il est dommage que le montage n'ait pas été plus serré.'\n\nCITATION CRITIQUE:\n- Dẫn critique khác: 'Comme l'écrit Daney dans Libération (12 mars 1985)...'\n- Dẫn cinéaste interviewé: 'Dans un entretien aux Inrockuptibles, Desplechin déclare...'\n- KHÔNG citer Wikipedia: 'Selon Wikipédia...' → disqualifiant\n\nTON:\n- Assertif mais pas arrogant: 'On peut voir dans ce choix...' > 'Il est évident que...'\n- Nuancier: 'Si la première partie emporte l'adhésion, la seconde laisse plus circonspect.'\n- Jamais jargonnant pour le plaisir — chaque terme technique doit servir l'analyse",
+    "idiom_glosses": [
+      {"idiom": "Faire école", "literal": "Làm nên trường phái", "meaning": "Tạo ảnh hưởng đến thế hệ sau — critique khen cinéaste có descendance.", "example": "Bresson a fait école — sans lui, ni Rohmer, ni Dumont, ni Kaurismäki ne filmeraient comme ils le font."},
+      {"idiom": "Film d'auteur", "literal": "Phim tác giả", "meaning": "Phim trong đó cinéaste là auteur véritable, không simple exécutant — terme central politique des auteurs.", "example": "Malgré son budget confortable, ce blockbuster reste un film d'auteur — on reconnaît la patte de Nolan à chaque plan."},
+      {"idiom": "Mettre en scène", "literal": "Đặt lên sân khấu / dàn dựng", "meaning": "Không chỉ 'réaliser', mà penser le cinéma par l'espace, le temps, les corps — verbe sacré critique française.", "example": "Ce n'est pas l'histoire qui compte, c'est comment le cinéaste la met en scène."},
+      {"idiom": "Tenir le plan", "literal": "Giữ cú máy", "meaning": "Garder le plan sans couper — qualité: résister à la tentation du montage rapide. 'Tenir un plan-séquence de 8 minutes.'", "example": "Peu de cinéastes osent encore tenir le plan — la mode est au montage clip. Ce film, lui, prend le temps de regarder."}
+    ],
+    "exercises": [
+      {"type": "fill-blank", "question": "La politique des auteurs, telle que les ___ l'ont formulée dans les années 1950, postule que le metteur en scène est le véritable auteur du film.", "answer": "Cahiers du Cinéma"},
+      {"type": "matching", "pairs": [["la mise en scène", "dàn dựng"], ["le hors-champ", "không gian ngoài khung"], ["le plan-séquence", "cú máy liên tục không cắt"], ["le travelling", "cú máy di chuyển"]], "instruction": "Nối thuật ngữ critique cinéma với nghĩa Việt"},
+      {"type": "translation", "vietnamese": "Bazin đã thấy rõ: plan-séquence không phải một thủ pháp kỹ thuật đơn giản — đó là một lựa chọn đạo đức trả lại cho khán giả sự tự do của cái nhìn.", "french": "Bazin l'avait bien vu: le plan-séquence n'est pas un simple procédé technique — il est un choix éthique qui restitue au spectateur sa liberté de regard."}
+    ]
+  }  ,
+  {
+    "id": "lcivic_debat_laicite",
+    "level": "C2",
+    "category": "civic_discourse",
+    "title_vi": "Tranh luận về laïcité — nguyên lý và tranh cãi",
+    "title_en": "Debating laïcité — principles and controversies",
+    "sentences": [
+      {"en": "La laïcité, telle que la loi de 1905 l'a instituée, ne saurait être confondue avec une hostilité envers le fait religieux; elle garantit la liberté de conscience tout en préservant la neutralité de l'État.", "vi": "Laïcité, như luật 1905 đã thiết lập, không thể bị nhầm lẫn với sự thù địch đối với thực tại tôn giáo; nó bảo đảm tự do lương tâm trong khi vẫn duy trì tính trung lập của Nhà nước.", "pronunciation_focus": ["laïcité → la-i-si-té", "instituée → an-sti-tu-é", "conscience → kõn-siãns", "neutralité → nơ-tra-li-té"]},
+      {"en": "Il eût été plus sage, dans ce débat, de distinguer la laïcité juridique — qui relève du droit — de la laïcité identitaire — qui relève, elle, du registre passionnel.", "vi": "Sẽ khôn ngoan hơn, trong tranh luận này, nếu phân biệt laïcité pháp lý — thuộc về luật pháp — với laïcité bản sắc — vốn thuộc về bình diện cảm xúc.", "pronunciation_focus": ["eût → u", "juridique → ju-ri-dik", "identitaire → i-dãn-ti-tèr", "passionnel → pa-sio-nèl"]},
+      {"en": "Force est de constater que le terme même de 'laïcité' est devenu, dans le discours public contemporain, un signifiant flottant que chaque camp politique investit d'un sens différent.", "vi": "Phải thừa nhận rằng chính thuật ngữ 'laïcité' đã trở thành, trong diễn ngôn công cộng đương đại, một cái biểu đạt trôi nổi mà mỗi phe chính trị rót vào một nghĩa khác nhau.", "pronunciation_focus": ["constater → kõns-ta-té", "signifiant → si-ni-fiãn", "flottant → flo-tãn", "investit → an-vès-ti"]},
+      {"en": "La question du voile à l'école, pour ne prendre qu'un exemple, cristallise des tensions qui excèdent largement le cadre scolaire — elle mobilise des conceptions antagonistes de la République, de la liberté et de l'égalité des sexes.", "vi": "Câu hỏi về khăn trùm đầu ở trường học, chỉ lấy một ví dụ, kết tinh những căng thẳng vượt xa khung học đường — nó huy động các quan niệm đối kháng về Cộng hòa, về tự do và về bình đẳng giới.", "pronunciation_focus": ["cristallise → kris-ta-liz", "excèdent → èk-sèd", "antagonistes → ãn-ta-go-nist", "égalité → é-ga-li-té"]},
+      {"en": "Un débat digne de ce nom exige que l'on sache écouter la position adverse sans la caricaturer — condition plus facile à énoncer qu'à respecter dans l'arène médiatique.", "vi": "Một cuộc tranh luận xứng đáng với tên gọi đòi hỏi ta biết lắng nghe lập trường đối phương mà không biếm họa nó — điều kiện dễ phát biểu hơn là tuân thủ trên vũ đài truyền thông.", "pronunciation_focus": ["adverse → ad-vèrs", "caricaturer → ka-ri-ka-tu-ré", "énoncer → é-nõn-sé", "arène → a-rèn"]}
+    ],
+    "cultural_notes_vi": "LAÏCITÉ — KHÁI NIỆM PHÁP KHÔNG CÓ TƯƠNG ĐƯƠNG TRỰC TIẾP:\n\n(1) LUẬT 1905 (Loi de séparation des Églises et de l'État): Article 1 — 'La République assure la liberté de conscience. Elle garantit le libre exercice des cultes.' Article 2 — 'La République ne reconnaît, ne salarie ni ne subventionne aucun culte.' Đây là văn bản nền tảng.\n\n(2) HAI TRUYỀN THỐNG LAÏCITÉ: (a) laïcité 'ouverte' (Jaurès, Briand) — tôn trọng tự do tôn giáo, Nhà nước trung lập nhưng không thù địch; (b) laïcité 'de combat' (Combes, début 1900s) — tích cực đẩy lùi ảnh hưởng tôn giáo khỏi không gian công.\n\n(3) KHÁC BIỆT VỚI SECULARISM ANH-MỸ: secularism Anh-Mỹ là 'nhà nước không can thiệp vào tôn giáo' (negative liberty). Laïcité Pháp là 'nhà nước bảo vệ cá nhân khỏi áp lực tôn giáo' (positive liberty through state).\n\n(4) LUẬT 2004: cấm 'signes religieux ostensibles' trong trường công. 2010: cấm che mặt nơi công cộng (burqa). Hai luật gây tranh cãi quốc tế.\n\n(5) DEBAT ĐƯƠNG ĐẠI: chia làm ba phe: (a) 'laïcité historique' (trung thành 1905), (b) 'laïcité identitaire' (coi laïcité là 'bản sắc Pháp' chống Hồi giáo — thường bị cáo buộc là islamophobie déguisée), (c) 'laïcité inclusive' (đòi điều chỉnh 1905 cho xã hội đa dạng tôn giáo ngày nay).\n\n(6) ĐIỀU TỐI QUAN TRỌNG CHO NGƯỜI VIỆT: Việt Nam có truyền thống 'tam giáo đồng nguyên' + chính sách tôn giáo riêng của nhà nước xã hội chủ nghĩa. KHÔNG áp đặt khuôn laïcité Pháp lên thực tại Việt Nam. Nhưng khi tham gia tranh luận bằng tiếng Pháp, phải nắm vững ba phân biệt: laïcité juridique vs politique vs identitaire.",
+    "tip_advice_vi": "TRANH LUẬN LAÏCITÉ C2 — CẤU TRÚC PHÁT BIỂU:\n\n1. POSITIONNER SON CAMP immédiatement: 'Je parle depuis une position laïque ouverte...' / 'Je me réclame de la laïcité historique de 1905...'\n\n2. DISTINGUER LES NIVEAUX:\n- Le plan juridique (que dit la loi?)\n- Le plan politique (que devrait dire la loi?)\n- Le plan sociologique (quelles sont les pratiques réelles?)\n\n3. CITER LA LOI, PAS L'OPINION: 'L'article 1 de la loi de 1905 dispose que...' > 'À mon avis...'\n\n4. RECONNAÎTRE LA COMPLEXITÉ: 'La question est complexe et ne saurait se réduire à...'\n\n5. CONCÉDER UN POINT avant de marquer le sien: 'Je concède que... Cependant...'\n\nCỤM HỮU ÍCH:\n- 'Il importe de distinguer...' (cần phân biệt)\n- 'La laïcité n'est pas... elle est...' (laïcité không phải là... mà là...)\n- 'On aurait tort de confondre...' (sẽ sai nếu nhầm lẫn...)\n- 'Le principe de laïcité exige que...' (nguyên lý laïcité đòi hỏi...)\n- 'C'est là une dérive sémantique qu'il faut dénoncer.' (đó là một sự trượt nghĩa cần vạch trần.)\n\nTRÁNH:\n- 'La laïcité, c'est l'interdiction de...' → simplification abusive\n- 'Tous les croyants pensent que...' → généralisation\n- Ton passionnel: 'C'est scandaleux!' → disqualifiant en débat républicain",
+    "vocabulary": [
+      {"word": "la laïcité", "en": "secularism (French model)", "vi": "chủ nghĩa thế tục kiểu Pháp", "pos": "n.f.", "pronunciation_vi": "la-i-si-té"},
+      {"word": "la liberté de conscience", "en": "freedom of conscience", "vi": "tự do lương tâm", "pos": "n.f.", "pronunciation_vi": "li-bèr-té dơ kõn-siãns"},
+      {"word": "la neutralité de l'État", "en": "state neutrality", "vi": "tính trung lập của Nhà nước", "pos": "n.f.", "pronunciation_vi": "nơ-tra-li-té dơ lé-ta"},
+      {"word": "un signe religieux ostensible", "en": "conspicuous religious symbol", "vi": "biểu tượng tôn giáo lộ liễu", "pos": "n.m.", "pronunciation_vi": "si-niơ rơ-li-ji-ơ os-tãn-si-blơ"},
+      {"word": "le prosélytisme", "en": "proselytism", "vi": "sự truyền giáo tích cực", "pos": "n.m.", "pronunciation_vi": "pro-zé-li-tismơ"},
+      {"word": "le vivre-ensemble", "en": "living together / social cohesion", "vi": "sống chung / cộng đồng", "pos": "n.m.", "pronunciation_vi": "vivr-ãn-sãn-blơ"},
+      {"word": "le communautarisme", "en": "communitarianism (pejorative)", "vi": "chủ nghĩa cộng đồng khép kín", "pos": "n.m.", "pronunciation_vi": "ko-mu-nô-ta-rismơ"},
+      {"word": "un signifiant flottant", "en": "a floating signifier", "vi": "cái biểu đạt trôi nổi", "pos": "n.m.", "pronunciation_vi": "si-ni-fiãn flo-tãn"},
+      {"word": "la sphère publique", "en": "the public sphere", "vi": "không gian công cộng", "pos": "n.f.", "pronunciation_vi": "sfèr pu-blik"},
+      {"word": "séculier / séculière", "en": "secular (adj.)", "vi": "thế tục (tính từ)", "pos": "adj.", "pronunciation_vi": "sé-ku-lié"}
+    ],
+    "dialogue": [
+      {"speaker": "Interlocuteur", "text": "La laïcité, pour vous, est-ce d'abord un principe juridique ou une valeur identitaire?", "vi": "Laïcité, với bạn, trước hết là nguyên lý pháp lý hay giá trị bản sắc?"},
+      {"speaker": "Linh", "text": "Juridique, sans hésitation. La loi de 1905 a tranché: l'État ne connaît pas les cultes, il les ignore institutionnellement, mais il les protège tous également.", "vi": "Pháp lý, không do dự. Luật 1905 đã phân xử: Nhà nước không biết đến các tín ngưỡng, bỏ qua chúng về mặt thể chế, nhưng bảo vệ tất cả như nhau."},
+      {"speaker": "Interlocuteur", "text": "Mais cette neutralité n'est-elle pas, en pratique, une fiction? L'État finance l'entretien des églises d'avant 1905.", "vi": "Nhưng tính trung lập đó trong thực tế không phải là hư cấu sao? Nhà nước tài trợ bảo trì nhà thờ xây trước 1905."},
+      {"speaker": "Linh", "text": "Vous touchez juste — c'est le paradoxe concordataire qui subsiste en Alsace-Moselle. Mais l'exception confirme la règle, elle ne l'invalide pas.", "vi": "Bạn chạm đúng — đó là nghịch lý concordat còn tồn tại ở Alsace-Moselle. Nhưng ngoại lệ xác nhận quy tắc, không phủ nhận nó."}
+    ],
+    "dialogue_long": [
+      {"speaker": "Modérateur (émission 'Du grain à moudre', France Culture)", "text": "Nous recevons ce soir trois invités pour débattre de la laïcité à l'école. Madame Tran, vous êtes doctorante en droit public. Votre position?", "vi": "Tối nay chúng tôi tiếp ba khách mời tranh luận về laïcité ở trường học. Bà Trần, bà là nghiên cứu sinh công pháp. Lập trường của bà?"},
+      {"speaker": "Linh", "text": "Je pars du texte de 1905, qui me semble trop souvent invoqué sans être lu. L'article premier garantit la liberté de conscience — c'est le principe. La neutralité de l'État en découle, elle n'est pas le principe premier.", "vi": "Tôi xuất phát từ văn bản 1905, vốn theo tôi quá thường được viện dẫn mà không được đọc. Điều một bảo đảm tự do lương tâm — đó là nguyên lý. Tính trung lập của Nhà nước hệ quả từ đó, không phải nguyên lý hàng đầu."},
+      {"speaker": "Invité 2 (essayiste)", "text": "Vous faites du droit sans voir la réalité sociologique: la laïcité est aujourd'hui menacée par l'entrisme communautariste dans les écoles.", "vi": "Bà làm luật mà không thấy thực tại xã hội học: laïcité ngày nay bị đe dọa bởi sự xâm nhập của chủ nghĩa cộng đồng vào các trường học."},
+      {"speaker": "Linh", "text": "Votre terme 'entrisme' mérite d'être interrogé. De quel entrisme parlez-vous exactement? Avez-vous des données chiffrées, ou s'agit-il d'une impression?", "vi": "Thuật ngữ 'xâm nhập' của ông xứng đáng bị chất vấn. Chính xác ông nói về sự xâm nhập nào? Ông có dữ liệu định lượng không, hay đây là một ấn tượng?"},
+      {"speaker": "Invité 2", "text": "Je parle de faits — des jeunes filles qui arrivent voilées en cours d'EPS, des menus hallal imposés...", "vi": "Tôi nói về các sự kiện — các cô gái trẻ đến giờ thể dục với khăn trùm đầu, thực đơn halal bị áp đặt..."},
+      {"speaker": "Linh", "text": "Vous mélangez trois registres: le voile à l'école (tranché par la loi de 2004), la restauration scolaire (qui relève du pouvoir discrétionnaire des collectivités), et un sentiment d'insécurité culturelle. Mélanger ces registres, c'est précisément ce qui empêche un débat rationnel.", "vi": "Ông trộn ba bình diện: khăn trùm ở trường (đã được luật 2004 phân xử), phục vụ ăn uống trường học (thuộc quyền tùy nghi của chính quyền địa phương), và một cảm giác bất an văn hóa. Trộn các bình diện này, chính là điều ngăn cản tranh luận lý tính."},
+      {"speaker": "Modérateur", "text": "Madame Tran, on vous sent attachée au droit. Mais le droit n'est-il pas toujours en retard sur le réel?", "vi": "Bà Trần, chúng tôi thấy bà gắn bó với luật. Nhưng luật không phải luôn chậm hơn thực tại sao?"},
+      {"speaker": "Linh", "text": "Le droit est en retard, c'est entendu. Mais c'est précisément parce qu'il est en retard qu'il nous oblige à la lenteur du raisonnement — et c'est cette lenteur qui protège du jugement hâtif.", "vi": "Luật chậm hơn, đã rõ. Nhưng chính vì nó chậm hơn mà nó buộc ta vào sự chậm rãi của suy lý — và chính sự chậm rãi đó bảo vệ khỏi phán xét vội vàng."}
+    ],
+    "roleplay_prompts": [
+      "Bạn tham gia débat télévisé về laïcité. Đối thủ nói: 'La laïcité, c'est l'interdiction du religieux dans l'espace public.' Phản bác: phân biệt 'interdiction du religieux' và 'neutralité de l'État', dẫn luật 1905. Cấu trúc: concession ('Je comprends votre préoccupation') + correction juridique + exemple concret.",
+      "Trong séminaire, bạn défend luận điểm: 'La loi de 2004 sur les signes religieux à l'école était nécessaire mais insuffisante.' Giải thích pourquoi nécessaire + pourquoi insuffisante + đề xuất giải pháp bổ sung. Dùng registre universitaire."
+    ],
+    "register_notes": "DÉBAT LAÏCITÉ C2 — REGISTRE:\n\nTon: calme, analytique, không passionnel. Người Pháp đánh giá cao 'la raison' trong tranh luận laïcité.\n\nLexique obligatoire:\n- 'distinguer' / 'il importe de distinguer' (cần phân biệt)\n- 'sur le plan juridique / politique / sociologique'\n- 'la loi dispose que...' (luật quy định rằng...)\n- 'le législateur a voulu...' (nhà lập pháp đã muốn...)\n\nHEDGING:\n- 'Il me semble que...' (tôi thấy rằng...)\n- 'On peut soutenir que...' (có thể chủ trương rằng...)\n- 'La question mérite d'être posée autrement.' (câu hỏi xứng đáng được đặt khác đi.)\n\nTRÁNH:\n- Ton indigné: 'C'est une honte!' / 'C'est scandaleux!'\n- Amalgame: 'Les musulmans pensent que...' — toujours distinguer 'certains musulmans'\n- Anachronisme: projeter des catégories contemporaines sur 1905",
+    "idiom_glosses": [
+      {"idiom": "Un signifiant flottant", "literal": "Cái biểu đạt trôi nổi", "meaning": "Thuật ngữ mượn từ Lacan / Lévi-Strauss: một từ mà nghĩa trở nên bất định vì mỗi phe gán cho nó một nội dung khác. Trong tranh luận laïcité, 'laïcité' chính là signifiant flottant.", "example": "Le mot 'laïcité' est devenu un signifiant flottant — chacun y met ce qu'il veut, et c'est précisément ce qui rend le débat si difficile."},
+      {"idiom": "La loi dispose que...", "literal": "Luật quy định rằng...", "meaning": "Công thức pháp lý chuẩn để trích dẫn luật — tín hiệu cho thấy bạn nói từ văn bản, không từ ý kiến cá nhân.", "example": "La loi de 1905 dispose que la République ne reconnaît aucun culte — cela ne signifie pas qu'elle les ignore, mais qu'elle ne les institutionnalise pas."}
+    ],
+    "exercises": [
+      {"type": "fill-blank", "question": "La laïcité, telle que la loi de 1905 l'a ___, ne saurait être confondue avec une hostilité envers le fait religieux.", "answer": "instituée"},
+      {"type": "matching", "pairs": [["la loi de 1905", "luật tách Giáo hội khỏi Nhà nước"], ["la liberté de conscience", "tự do lương tâm"], ["le communautarisme", "chủ nghĩa cộng đồng khép kín"], ["un signifiant flottant", "cái biểu đạt trôi nổi"]], "instruction": "Nối thuật ngữ tranh luận laïcité với nghĩa Việt"},
+      {"type": "translation", "vietnamese": "Một cuộc tranh luận xứng đáng với tên gọi đòi hỏi ta biết lắng nghe lập trường đối phương mà không biếm họa nó.", "french": "Un débat digne de ce nom exige que l'on sache écouter la position adverse sans la caricaturer."}
+    ]
+  },
+  {
+    "id": "lcivic_discours_politique",
+    "level": "C2",
+    "category": "civic_discourse",
+    "title_vi": "Phân tích diễn văn chính trị — rhétorique présidentielle",
+    "title_en": "Analyzing political speech — French presidential rhetoric",
+    "sentences": [
+      {"en": "Le discours politique, dans la tradition républicaine française, ne se réduit pas à la transmission d'un message: il est un acte performatif qui institue le locuteur en représentant de la nation.", "vi": "Diễn văn chính trị, trong truyền thống cộng hòa Pháp, không quy giảm thành việc truyền tải thông điệp: đó là một hành vi ngôn hành thiết lập người nói thành đại diện của quốc gia.", "pronunciation_focus": ["discours → dis-kur", "performatif → pèr-for-ma-tif", "institue → an-sti-tu", "locuteur → lo-ku-tơr"]},
+      {"en": "L'analyse du discours politique exige qu'on prête attention moins au contenu explicite — les promesses, les bilans — qu'aux marqueurs formels: les pronoms, les temps verbaux, les figures de rhétorique par lesquelles l'orateur construit sa légitimité.", "vi": "Phân tích diễn ngôn chính trị đòi hỏi chú ý ít hơn đến nội dung hiển ngôn — các lời hứa, các bản tổng kết — mà nhiều hơn đến các dấu hiệu hình thức: đại từ, thì động từ, các hình thái tu từ qua đó nhà hùng biện kiến tạo tính chính danh của mình.", "pronunciation_focus": ["explicite → èk-spli-sit", "pronoms → pro-nõn", "rhétorique → ré-to-rik", "légitimité → lé-ji-ti-mi-té"]},
+      {"en": "Le 'nous' présidentiel, chez de Gaulle, englobe la France entière dans une transcendance historique; chez Mitterrand, il dessine un camp politique; chez Macron, il se veut rassembleur tout en restant singulier — trois usages d'un même pronom, trois conceptions du pouvoir.", "vi": "Cái 'chúng ta' tổng thống, ở de Gaulle, bao trùm toàn nước Pháp trong một sự siêu việt lịch sử; ở Mitterrand, nó phác họa một phe chính trị; ở Macron, nó muốn tập hợp mà vẫn giữ tính đơn nhất — ba cách dùng cùng một đại từ, ba quan niệm về quyền lực.", "pronunciation_focus": ["de Gaulle → dơ Gôl", "Mitterrand → Mi-tê-rãn", "Macron → Ma-krõn", "englobe → ãn-glob"]},
+      {"en": "Il eût été instructif de comparer la syntaxe de Jaurès — ample, hypotaxique, chargée de subordonnées — à celle de Clémenceau — brève, parataxique, faite de phrases qui claquent comme des couperets.", "vi": "Sẽ bổ ích nếu so sánh cú pháp của Jaurès — rộng, giàu mệnh đề phụ, đầy các câu lệ thuộc — với cú pháp của Clémenceau — ngắn, đặt cạnh, toàn những câu vang lên như lưỡi máy chém.", "pronunciation_focus": ["Jaurès → Jo-rès", "hypotaxique → i-po-tak-sik", "Clémenceau → Klé-mãn-sô", "parataxique → pa-ra-tak-sik"]},
+      {"en": "Tout discours présidentiel est, en dernière analyse, un exercice d'équilibriste entre la nécessité de rassurer et l'obligation de mobiliser — équilibre dont la rupture se lit, souvent, dans le choix des adjectifs.", "vi": "Mọi diễn văn tổng thống, xét đến cùng, là một bài tập giữ thăng bằng giữa nhu cầu trấn an và nghĩa vụ huy động — sự thăng bằng mà sự đổ vỡ thường đọc được trong cách chọn tính từ.", "pronunciation_focus": ["équilibriste → é-ki-li-brist", "rassurer → ra-su-ré", "mobiliser → mo-bi-li-zé", "adjectifs → ad-jèk-tif"]}
+    ],
+    "cultural_notes_vi": "PHÂN TÍCH DIỄN VĂN CHÍNH TRỊ PHÁP — DI SẢN:\n\n(1) JAURÈS (1859-1914): bậc thầy hùng biện — câu dài, hypotaxe, nhịp điệu oratoire. 'Le courage, c'est de chercher la vérité et de la dire.'\n\n(2) DE GAULLE (1890-1970): phong cách 'monarque républicain'. 'Nous' bao trùm toàn dân tộc. Câu ngắn gọn, tính từ thiêng: 'la France éternelle'. Conférence de presse comme genre.\n\n(3) MITTERRAND (1916-1996): 'rhétorique de la gauche'. 'Nous' chỉ phe tả. Phong cách văn chương — citation Lamartine, Hugo. 'Les forces de l'esprit' (1985, discours au Congrès).\n\n(4) MACRON (2017-): phong cách 'en même temps' — juxtapose hai vế tương phản trong cùng câu. 'Je veux être le président qui réconcilie les deux France.'\n\n(5) CÔNG CỤ PHÂN TÍCH: analyse du discours 'à la française' (Pêcheux, Maingueneau) khác critical discourse analysis Anh-Mỹ (Fairclough, van Dijk) ở chỗ chú trọng énonciation (ai nói với ai, từ vị trí nào) hơn là ideology critique.\n\n(6) THỂ LOẠI: discours d'investiture, vœux du 31 décembre, allocution en temps de crise, débat télévisé d'entre-deux-tours — mỗi thể loại có règles rhétoriques riêng.",
+    "tip_advice_vi": "GRILLE PHÂN TÍCH DIỄN VĂN CHÍNH TRỊ C2 (7 axes):\n\n1. ÉNONCIATION: Qui parle? D'où? À qui? (Président / candidat / ministre)\n2. PRONOMS: Je / Nous / On / Ils — mỗi đại từ vẽ một bản đồ chính trị\n3. TEMPS VERBAUX: Présent (vérité générale), Futur (promesse), Passé composé (bilan), Imparfait (nostalgie)\n4. FIGURES: Anaphore, métaphore, antithèse, question rhétorique\n5. CHAMP LEXICAL: abstrait (République, Nation, Peuple) vs concret (salaire, hôpital)\n6. SYNTAXE: Phrase longue hypotaxique (Jaurès) vs phrase courte parataxique (Clémenceau)\n7. SILENCES / HÉSITATIONS: Ce qui n'est pas dit, les thèmes évités\n\nCỤM HỮU ÍCH:\n- 'Le locuteur se construit ici comme...' (người nói tự kiến tạo ở đây như...)\n- 'L'usage du pronom X révèle...' (cách dùng đại từ X tiết lộ...)\n- 'Le choix du passé composé n'est pas anodin: il...' (chọn passé composé không vô cớ: nó...)\n- 'Cette anaphore en début de paragraphe scande...' (phép điệp ngữ đầu đoạn này gõ nhịp...)",
+    "vocabulary": [
+      {"word": "un discours-programme", "en": "a platform speech", "vi": "diễn văn cương lĩnh", "pos": "n.m.", "pronunciation_vi": "dis-kur pro-gram"},
+      {"word": "le pronom 'nous'", "en": "the pronoun 'we'", "vi": "đại từ 'chúng ta'", "pos": "n.m.", "pronunciation_vi": "pro-nõn nu"},
+      {"word": "une anaphore", "en": "anaphora (rhetorical)", "vi": "phép điệp ngữ đầu câu", "pos": "n.f.", "pronunciation_vi": "a-na-for"},
+      {"word": "l'allocution", "en": "formal address / speech", "vi": "bài phát biểu chính thức", "pos": "n.f.", "pronunciation_vi": "a-lo-ku-sion"},
+      {"word": "la performativité", "en": "performativity (Austin)", "vi": "tính ngôn hành", "pos": "n.f.", "pronunciation_vi": "pèr-for-ma-ti-vi-té"},
+      {"word": "l'éloquence", "en": "eloquence", "vi": "tài hùng biện", "pos": "n.f.", "pronunciation_vi": "é-lo-kãns"},
+      {"word": "la tribune", "en": "the rostrum / platform", "vi": "bục diễn đàn", "pos": "n.f.", "pronunciation_vi": "tri-bun"},
+      {"word": "le clivage", "en": "cleavage / divide", "vi": "sự chia rẽ / phân tuyến", "pos": "n.m.", "pronunciation_vi": "kli-vaj"},
+      {"word": "rassembleur / rassembleuse", "en": "unifying (adj.)", "vi": "tập hợp / đoàn kết", "pos": "adj.", "pronunciation_vi": "ra-sãn-blơr"},
+      {"word": "un slogan", "en": "a slogan", "vi": "khẩu hiệu", "pos": "n.m.", "pronunciation_vi": "slo-gãn"}
+    ],
+    "dialogue": [
+      {"speaker": "Étudiant", "text": "Comment analyser le 'nous' dans un discours de Macron?", "vi": "Phân tích chữ 'nous' trong diễn văn Macron thế nào?"},
+      {"speaker": "Prof. Maingueneau", "text": "Demandez-vous: ce 'nous' inclut-il l'auditoire présent? Le pays entier? L'humanité? La réponse change selon le paragraphe — et c'est cette variation qu'il faut cartographier.", "vi": "Hãy tự hỏi: 'nous' này có bao gồm cử tọa hiện diện? Toàn đất nước? Nhân loại? Câu trả lời thay đổi theo từng đoạn — và chính sự biến đổi đó cần được vẽ bản đồ."},
+      {"speaker": "Étudiant", "text": "Et si 'nous' est ambigu?", "vi": "Nếu 'nous' mơ hồ thì sao?"},
+      {"speaker": "Prof. Maingueneau", "text": "L'ambiguïté n'est pas un défaut — c'est une ressource rhétorique. Un 'nous' qui peut être lu comme 'les Français' OU 'mon gouvernement' permet de parler à deux publics en même temps.", "vi": "Sự mơ hồ không phải là khiếm khuyết — đó là tài nguyên tu từ. Một 'nous' có thể được đọc là 'người Pháp' HOẶC 'chính phủ của tôi' cho phép nói với hai công chúng cùng một lúc."}
+    ],
+    "dialogue_long": [
+      {"speaker": "Prof. Maingueneau (séminaire d'analyse du discours, Paris 3)", "text": "Mademoiselle Tran, vous avez choisi d'analyser le discours d'investiture de François Mitterrand, 21 mai 1981. Pourquoi ce discours?", "vi": "Cô Trần, cô đã chọn phân tích diễn văn nhậm chức của François Mitterrand, 21 tháng 5 năm 1981. Vì sao diễn văn này?"},
+      {"speaker": "Linh", "text": "Parce que c'est un discours de basculement — la gauche arrive au pouvoir pour la première fois sous la Ve République. La rhétorique doit accomplir une double tâche: rassurer ceux qui ont peur, et mobiliser ceux qui espèrent.", "vi": "Vì đó là một diễn văn bước ngoặt — phe tả lên nắm quyền lần đầu dưới nền Đệ Ngũ Cộng hòa. Tu từ phải hoàn thành nhiệm vụ kép: trấn an những người sợ, và huy động những người hy vọng."},
+      {"speaker": "Prof. Maingueneau", "text": "Bien. Commencez par les pronoms — que trouvez-vous?", "vi": "Tốt. Bắt đầu bằng các đại từ — cô thấy gì?"},
+      {"speaker": "Linh", "text": "Le 'je' domine le premier tiers — Mitterrand s'institue comme sujet de l'action. Puis le 'nous' prend le relais, mais un 'nous' qui exclut la droite: 'nous, la gauche', 'nous, le peuple de gauche'. Ce n'est pas le 'nous' gaullien qui englobe la France entière.", "vi": "Cái 'je' chi phối một phần ba đầu — Mitterrand thiết lập mình như chủ thể hành động. Rồi 'nous' tiếp quản, nhưng là 'nous' loại trừ phe hữu: 'chúng ta, phe tả', 'chúng ta, nhân dân cánh tả'. Đó không phải là 'nous' của de Gaulle bao trùm toàn nước Pháp."},
+      {"speaker": "Prof. Maingueneau", "text": "Très juste. Et les temps verbaux?", "vi": "Rất đúng. Còn thì động từ?"},
+      {"speaker": "Linh", "text": "Alternance entre futur ('je proposerai', 'nous construirons') et présent de vérité générale ('la justice est la condition de la paix'). Le passé est presque absent — aucune nostalgie, aucune référence à Giscard. L'ennemi n'est pas nommé, il est effacé.", "vi": "Xen kẽ giữa futur ('tôi sẽ đề xuất', 'chúng ta sẽ xây dựng') và présent chân lý tổng quát ('công lý là điều kiện của hòa bình'). Quá khứ hầu như vắng mặt — không hoài niệm, không tham chiếu đến Giscard. Kẻ thù không được gọi tên, nó bị xóa đi."},
+      {"speaker": "Prof. Maingueneau", "text": "L'effacement de l'adversaire — c'est une trouvaille. Développez pour la semaine prochaine.", "vi": "Sự xóa bỏ đối thủ — đó là một phát hiện. Triển khai cho tuần sau."}
+    ],
+    "roleplay_prompts": [
+      "Bạn phân tích một discours politique Pháp đương đại (chọn một bài cụ thể). Dùng grille 7 axes (énonciation, pronoms, temps, figures, lexique, syntaxe, silences). Kết luận: 'Ce discours révèle une conception du pouvoir qui...'",
+      "Trong séminaire, bạn bị critique: 'Votre analyse est trop formaliste, vous ignorez le contexte politique.' Phản hồi: concéder, puis montrer comment l'analyse formelle ÉCLAIRE le contexte politique ('c'est précisément par l'analyse des pronoms que l'on voit comment le locuteur construit son adversaire')."
+    ],
+    "register_notes": "ANALYSE DU DISCOURS POLITIQUE C2:\n- Métalangage obligatoire: 'énonciation', 'locuteur', 'allocutaire', 'pronom', 'marqueur', 'modalité', 'ethos discursif'.\n- Khi trích dẫn discours: toujours donner date + contexte + paragraphe.\n- Khi phân tích: 'Le choix de X plutôt que Y révèle...' > 'X veut dire...'\n- Khi kết luận: 'Ce discours construit un ethos de...' (diễn văn này kiến tạo một diện mạo đạo đức của...)\n- TRÁNH: jugement politique ('ce discours est démagogique') — rester dans l'analyse formelle.",
+    "idiom_glosses": [
+      {"idiom": "Un morceau d'anthologie", "literal": "Một đoạn hợp tuyển", "meaning": "Một đoạn văn / diễn văn xuất sắc đến mức xứng đáng được đưa vào sách giáo khoa — khen discours politique.", "example": "Le 'Je vous ai compris' du général de Gaulle à Alger, en 1958, est un morceau d'anthologie de l'ambiguïté politique assumée."}
+    ],
+    "exercises": [
+      {"type": "fill-blank", "question": "Le discours politique est un acte ___ qui institue le locuteur en représentant de la nation.", "answer": "performatif"},
+      {"type": "matching", "pairs": [["une anaphore", "phép điệp ngữ đầu câu"], ["l'allocution", "bài phát biểu chính thức"], ["le clivage", "sự chia rẽ / phân tuyến"], ["l'éloquence", "tài hùng biện"]], "instruction": "Nối thuật ngữ phân tích diễn ngôn với nghĩa Việt"},
+      {"type": "translation", "vietnamese": "Phân tích diễn ngôn chính trị đòi hỏi chú ý ít hơn đến nội dung hiển ngôn mà nhiều hơn đến các dấu hiệu hình thức: đại từ, thì động từ, các hình thái tu từ.", "french": "L'analyse du discours politique exige qu'on prête attention moins au contenu explicite qu'aux marqueurs formels: les pronoms, les temps verbaux, les figures de rhétorique."}
+    ]
+  }  ,
+  {
+    "id": "lrhet_dissertation_philo",
+    "level": "C2", "category": "rhetoric_capstone",
+    "title_vi": "Dissertation philosophique — viết luận triết học",
+    "title_en": "Philosophical dissertation — writing the French dissertation",
+    "sentences": [
+      {"en": "La dissertation philosophique, telle que l'épreuve du baccalauréat puis celle de l'agrégation l'ont consacrée, n'est pas un exercice d'opinion — elle est l'art de construire un problème et d'en déployer les implications selon une architecture argumentative rigoureuse.", "vi": "Dissertation triết học, như kỳ thi tú tài rồi agrégation đã thánh hóa, không phải là bài tập nêu ý kiến — đó là nghệ thuật kiến tạo một vấn đề và triển khai các hệ quả của nó theo một kiến trúc lập luận nghiêm ngặt.", "pronunciation_focus": ["dissertation → di-sèr-ta-sion", "baccalauréat → ba-ka-lo-ré-a", "agrégation → a-gré-ga-sion", "argumentative → ar-gu-mãn-ta-tiv"]},
+      {"en": "Loin de se réduire à la formule scolaire 'thèse-antithèse-synthèse', la dissertation digne de ce nom exige qu'on problématise — c'est-à-dire qu'on transforme une question apparente en un problème conceptuel dont les termes mêmes sont à interroger.", "vi": "Khác hẳn việc quy giảm thành công thức học đường 'chính đề - phản đề - hợp đề', dissertation xứng đáng với tên gọi đòi hỏi phải đặt vấn đề hóa — nghĩa là biến một câu hỏi bề ngoài thành một vấn đề khái niệm mà chính các thuật ngữ của nó cũng phải được chất vấn.", "pronunciation_focus": ["thèse → tèz", "antithèse → ãn-ti-tèz", "problématiser → pro-blé-ma-ti-zé", "conceptuel → kõn-sèp-tu-èl"]},
+      {"en": "Il eût été préférable que le candidat commençât par définir les termes du sujet — car c'est dans l'écart entre le sens commun et le sens philosophique d'un mot que le problème prend naissance.", "vi": "Sẽ tốt hơn nếu thí sinh bắt đầu bằng cách định nghĩa các thuật ngữ của đề bài — vì chính trong khoảng cách giữa nghĩa thông thường và nghĩa triết học của một từ mà vấn đề nảy sinh.", "pronunciation_focus": ["eût → u", "commençât → ko-mãn-sa", "écart → é-kar", "naissance → nè-sãns"]},
+      {"en": "Une transition digne de ce nom ne se contente pas d'annoncer la partie suivante — elle montre en quoi la partie qu'on achève rend nécessaire la partie qui vient.", "vi": "Một chuyển đoạn xứng đáng với tên gọi không bằng lòng với việc thông báo phần tiếp theo — nó chỉ ra vì sao phần ta vừa kết thúc khiến cho phần sắp tới trở nên tất yếu.", "pronunciation_focus": ["transition → trãn-zi-sion", "annoncer → a-nõn-sé", "achève → a-shèv", "nécessaire → né-sé-sèr"]},
+      {"en": "Conclure, ce n'est pas répéter ce qu'on a dit; c'est montrer le chemin parcouru et indiquer, fût-ce d'un mot, ce que ce chemin ouvre comme question nouvelle.", "vi": "Kết luận, không phải là lặp lại điều đã nói; mà là chỉ ra con đường đã đi và cho thấy, dù chỉ một từ, con đường đó mở ra câu hỏi mới nào.", "pronunciation_focus": ["conclure → kõn-klur", "parcouru → par-ku-ru", "fût-ce → fus", "ouvre → u-vrơ"]}
+    ],
+    "cultural_notes_vi": "DISSERTATION PHILOSOPHIQUE — THỂ LOẠI PHÁP ĐỘC ĐÁO:\n\n(1) Đây là bài tập trung tâm của giáo dục Pháp từ lớp 12 (Terminale) đến agrégation. Không nước nào khác có thể loại tương đương — essay Anh-Mỹ tự do hơn, Aufsatz Đức ít structure hơn.\n\n(2) CẤU TRÚC CHUẨN:\n- Introduction (3 parties): (a) accroche, (b) problématisation, (c) annonce du plan\n- Développement (2-3 parties), mỗi partie có 2-3 sous-parties\n- Conclusion (2 parties): (a) bilan, (b) ouverture\n\n(3) 'THÈSE-ANTITHÈSE-SYNTHÈSE' LÀ HIỂU LẦM: Công thức này là simplification pédagogique. Dissertation triết học thực sự có thể có 2, 3 hoặc 4 parties — điều quan trọng là progression argumentative, không phải dialectique mécanique.\n\n(4) PROBLÉMATISER: Động từ quan trọng nhất. Biến 'La liberté existe-t-elle?' thành 'À quelles conditions un acte peut-il être dit libre?' — đó là problématiser.\n\n(5) TIÊU CHÍ CHẤM:\n- Compréhension du sujet (không hors-sujet)\n- Cohérence argumentative (các phần liên kết)\n- Mobilisation philosophique (références, concepts)\n- Qualité de l'écriture (clarté, précision, élégance)\n\n(6) LƯU Ý CHO NGƯỜI VIỆT: VN có truyền thống 'nghị luận' nhưng dissertation Pháp khác ở chỗ: (a) không dùng 'tôi', (b) không kể chuyện cá nhân, (c) phải có problématique explicite, (d) conclusion không 'rút ra bài học đạo đức'.",
+    "tip_advice_vi": "MÉTHODE EN 6 ÉTAPES (cho dissertation 4 giờ):\n\n1. ANALYSE DU SUJET (30 min): Définir chaque terme. Repérer les présupposés. 'La liberté consiste-t-elle à faire ce qu'il nous plaît?' — le mot 'consiste' est crucial: il demande une définition de l'essence.\n\n2. PROBLÉMATISER (30 min): Transformer la question en problème. 'Cette question suppose que la liberté se définit par son objet (ce qu'on fait). Mais la liberté n'est-elle pas plutôt dans l'origine de l'acte que dans son contenu?'\n\n3. ÉLABORER LE PLAN (20 min): 2-3 parties. Chaque partie = une réponse possible à la problématique. Ordre: du plus évident (qu'il faut dépasser) au plus élaboré.\n\n4. RÉDIGER L'INTRODUCTION AU BROUILLON (20 min): Soigner l'accroche (une citation, un exemple, un paradoxe). La problématique tient en 2-3 phrases. L'annonce du plan doit être explicite: 'Nous verrons d'abord..., puis..., enfin...'\n\n5. RÉDIGER LE DÉVELOPPEMENT (120 min): Chaque partie = 1 argument principal + 1-2 arguments secondaires + 1 exemple philosophique + 1 transition. Toujours lier à la problématique.\n\n6. RÉDIGER LA CONCLUSION ET RELIRE (40 min): Conclusion: synthèse + ouverture. Relire: orthographe, cohérence des transitions, hors-sujet?",
+    "vocabulary": [
+      {"word": "problématiser", "en": "to problematize", "vi": "đặt vấn đề hóa", "pos": "v.", "pronunciation_vi": "pro-blé-ma-ti-zé"},
+      {"word": "une accroche", "en": "a hook / opening sentence", "vi": "câu móc / câu vào bài", "pos": "n.f.", "pronunciation_vi": "a-krosh"},
+      {"word": "une transition", "en": "a transition between parts", "vi": "chuyển đoạn", "pos": "n.f.", "pronunciation_vi": "trãn-zi-sion"},
+      {"word": "un présupposé", "en": "a presupposition", "vi": "tiền giả định", "pos": "n.m.", "pronunciation_vi": "pré-su-po-zé"},
+      {"word": "la progression argumentative", "en": "argumentative progression", "vi": "tiến trình lập luận", "pos": "n.f.", "pronunciation_vi": "pro-grè-sion ar-gu-mãn-ta-tiv"},
+      {"word": "une objection", "en": "an objection", "vi": "phản bác / bác luận", "pos": "n.f.", "pronunciation_vi": "ob-jèk-sion"},
+      {"word": "une réfutation", "en": "a refutation", "vi": "sự bác bỏ", "pos": "n.f.", "pronunciation_vi": "ré-fu-ta-sion"},
+      {"word": "un concept", "en": "a concept", "vi": "khái niệm", "pos": "n.m.", "pronunciation_vi": "kõn-sèp"},
+      {"word": "une ouverture", "en": "an opening / concluding opening", "vi": "phần mở ra cuối bài", "pos": "n.f.", "pronunciation_vi": "u-vèr-tur"},
+      {"word": "le hors-sujet", "en": "off-topic (cardinal sin)", "vi": "lạc đề", "pos": "n.m.", "pronunciation_vi": "or-su-jè"}
+    ],
+    "dialogue": [
+      {"speaker": "Professeur", "text": "Votre dissertation sur la liberté est bien écrite, mais où est la problématique?", "vi": "Bài dissertation về tự do của em viết tốt, nhưng problématique đâu?"},
+      {"speaker": "Linh", "text": "J'ai pensé que la question 'La liberté consiste-t-elle à faire ce qu'il nous plaît?' était déjà une problématique.", "vi": "Em tưởng câu hỏi 'Tự do có phải là làm điều ta thích không?' đã là một problématique."},
+      {"speaker": "Professeur", "text": "Non — une question n'est pas une problématique. La problématique, c'est le conflit des réponses possibles à cette question. Reformulez.", "vi": "Không — câu hỏi không phải là problématique. Problématique là sự xung đột giữa các câu trả lời khả dĩ cho câu hỏi đó. Làm lại."},
+      {"speaker": "Linh", "text": "Donc: 'Si la liberté se définit par l'absence de contrainte, faire ce qu'il nous plaît serait libre. Mais si la liberté suppose la maîtrise rationnelle de soi, alors céder à ses plaisirs pourrait être une forme d'esclavage.' Est-ce une problématique?", "vi": "Vậy: 'Nếu tự do được định nghĩa bằng sự vắng mặt của cưỡng chế, thì làm điều ta thích sẽ là tự do. Nhưng nếu tự do giả định sự làm chủ lý tính đối với bản thân, thì chiều theo khoái lạc có thể là một dạng nô lệ.' Đây có phải là problématique không?"}
+    ],
+    "dialogue_long": [
+      {"speaker": "Jury d'agrégation", "text": "Mademoiselle Tran, vous avez quatre heures pour traiter le sujet suivant: 'Peut-on penser sans préjugés?'", "vi": "Cô Trần, cô có bốn giờ để xử lý đề bài sau: 'Có thể suy nghĩ mà không có định kiến không?'"}
+    ],
+    "roleplay_prompts": [
+      "Bạn viết introduction cho dissertation với đề: 'La technique libère-t-elle l'homme ou l'asservit-elle?' Cấu trúc: accroche (1 citation), problématisation (conflit), annonce du plan (3 parties). KHÔNG répondre à la question dans l'introduction.",
+      "Trong khóa préparation agrégation, bạn bị critique: 'Votre plan est trop descriptif, pas assez dialectique.' Sửa plan: biến mỗi partie thành một réponse argumentée, pas một thème."
+    ],
+    "register_notes": "DISSERTATION PHILOSOPHIQUE C2:\n- 'Nous' (pas 'je'): 'Nous nous demanderons si...', 'Nous analyserons...'\n- Présent de vérité générale: 'La liberté se définit comme...'\n- Conditionnel cho giả thuyết: 'On pourrait objecter que...'\n- Connecteurs logiques obligatoires: 'cependant', 'néanmoins', 'toutefois', 'en revanche', 'par conséquent', 'dès lors'\n- Citation intégrée: 'Comme l'écrit Kant dans les Fondements de la métaphysique des mœurs...'\n- Pas de 'je', pas d'anecdote personnelle, pas de 'de nos jours...'",
+    "idiom_glosses": [],
+    "exercises": [
+      {"type": "fill-blank", "question": "Problématiser, c'est transformer une question apparente en un ___ conceptuel.", "answer": "problème"},
+      {"type": "matching", "pairs": [["problématiser", "đặt vấn đề hóa"], ["une accroche", "câu mở đầu"], ["le hors-sujet", "lạc đề"], ["une transition", "chuyển đoạn"]], "instruction": "Nối thuật ngữ dissertation với nghĩa"},
+      {"type": "translation", "vietnamese": "Kết luận không phải là lặp lại điều đã nói, mà là chỉ ra con đường đã đi và cho thấy con đường đó mở ra câu hỏi mới nào.", "french": "Conclure, ce n'est pas répéter ce qu'on a dit; c'est montrer le chemin parcouru et indiquer ce que ce chemin ouvre comme question nouvelle."}
+    ]
+  },
+  {
+    "id": "lrhet_grand_oral",
+    "level": "C2", "category": "rhetoric_capstone",
+    "title_vi": "Grand oral — soutenance và hùng biện học thuật",
+    "title_en": "Grand oral — academic defense and oral rhetoric",
+    "sentences": [
+      {"en": "La soutenance de thèse, moment culminant du parcours doctoral, n'est pas un simple compte rendu de recherche — c'est une performance rhétorique où le candidat doit à la fois exposer, défendre et incarner son travail devant un jury qui en connaît parfois mieux les faiblesses que lui-même.", "vi": "Buổi bảo vệ luận án, khoảnh khắc đỉnh cao của hành trình tiến sĩ, không phải là bản tường trình nghiên cứu đơn giản — đó là một trình diễn tu từ nơi nghiên cứu sinh phải đồng thời trình bày, bảo vệ và hiện thân cho công trình của mình trước hội đồng đôi khi biết rõ điểm yếu của nó hơn chính mình.", "pronunciation_focus": ["soutenance → su-tơ-nãns", "culminant → kul-mi-nãn", "incarner → an-kar-né", "faiblesses → fè-bles"]},
+      {"en": "L'art du grand oral ne consiste pas à nier les objections, mais à les intégrer dans une perspective plus large qui en montre à la fois la pertinence et les limites.", "vi": "Nghệ thuật grand oral không nằm ở việc phủ nhận các phản bác, mà ở việc tích hợp chúng vào một viễn tượng rộng hơn, cho thấy đồng thời tính thích đáng và giới hạn của chúng.", "pronunciation_focus": ["objections → ob-jèk-sion", "intégrer → an-té-gré", "perspective → pèr-spèk-tiv", "pertinence → pèr-ti-nãns"]},
+      {"en": "Force est de constater que la qualité d'une soutenance se joue souvent moins dans les réponses que dans la manière de recevoir les questions: une écoute attentive, une reformulation fidèle, puis une réponse argumentée — cette séquence vaut tous les effets de manche.", "vi": "Phải thừa nhận rằng chất lượng của một buổi bảo vệ thường được quyết định ít ở các câu trả lời hơn là ở cách tiếp nhận câu hỏi: một sự lắng nghe chăm chú, một sự diễn đạt lại trung thành, rồi một câu trả lời có lập luận — chuỗi này đáng giá hơn mọi hiệu ứng khoa trương.", "pronunciation_focus": ["soutenance → su-tơ-nãns", "écoute → é-kut", "reformulation → rơ-for-mu-la-sion", "fidèle → fi-dèl"]}
+    ],
+    "cultural_notes_vi": "LA SOUTENANCE FRANÇAISE:\n\n(1) Khác với defense Anh-Mỹ (thường ngắn, 1-2 giờ, ít formel), soutenance Pháp là nghi lễ học thuật — có thể kéo dài 3-5 giờ, mở cửa cho công chúng, kết thúc bằng mention (très honorable, très honorable avec félicitations).\n\n(2) CẤU TRÚC: (a) Exposé du candidat (20-30 min), (b) Questions du jury (mỗi thành viên 15-30 min), (c) Délibération, (d) Proclamation.\n\n(3) MENTIONS: 'Honorable' (đỗ tối thiểu), 'Très honorable' (tốt), 'Très honorable avec félicitations' (xuất sắc — hiếm).\n\n(4) GRAND ORAL D'AGRÉGATION: Bài thi miệng 1 giờ (30 phút exposé + 30 phút questions). Khác soutenance ở chỗ: sujet inconnu à l'avance, préparation en loge (bibliothèque).\n\n(5) CHIẾN LƯỢC: Người Pháp đánh giá cao 'l'honnêteté intellectuelle' — nếu không biết, nói 'Je ne sais pas' tốt hơn là bluffer. Bluffer bị phát hiện = mất tất cả.",
+    "tip_advice_vi": "PRÉPARER UN GRAND ORAL (10 CONSEILS):\n\n1. CONNAÎTRE SES LIMITES: Biết điểm yếu của mình trước khi jury tìm ra.\n2. STRUCTURER L'EXPOSÉ: Introduction (pourquoi ce sujet, quelle thèse, quel plan), développement (3 points max), conclusion (ouverture).\n3. PARLER LENTEMENT: 120 mots / minute tối đa.\n4. REGARDER LE JURY: Pas lire ses notes.\n5. REFORMULER LA QUESTION avant de répondre — montre qu'on a compris, gagne du temps.\n6. AVOUER L'IGNORANCE: 'Je n'ai pas exploré cet aspect, mais...'\n7. MONTRER LE CHEMINEMENT: 'Au début de ma thèse, je pensais X; maintenant, je pense Y.'\n8. CITER LE JURY: 'Comme l'a montré le Professeur X, membre de ce jury...' — déférence stratégique.\n9. GÉRER LE TRAC: Respirer avant chaque réponse.\n10. CONCLURE AVEC DIGNITÉ: Remercier le jury, reconnaître ce qu'on a appris.",
+    "vocabulary": [
+      {"word": "la soutenance", "en": "thesis defense", "vi": "buổi bảo vệ luận án", "pos": "n.f.", "pronunciation_vi": "su-tơ-nãns"},
+      {"word": "le jury", "en": "the examining committee", "vi": "hội đồng chấm thi", "pos": "n.m.", "pronunciation_vi": "ju-ri"},
+      {"word": "un exposé", "en": "an oral presentation", "vi": "bài trình bày miệng", "pos": "n.m.", "pronunciation_vi": "èk-spo-zé"},
+      {"word": "la délibération", "en": "the deliberation (of the jury)", "vi": "sự nghị bàn của hội đồng", "pos": "n.f.", "pronunciation_vi": "dé-li-bé-ra-sion"},
+      {"word": "une mention", "en": "a grade / distinction", "vi": "xếp hạng / danh dự", "pos": "n.f.", "pronunciation_vi": "mãn-sion"},
+      {"word": "une objection", "en": "an objection", "vi": "phản bác", "pos": "n.f.", "pronunciation_vi": "ob-jèk-sion"},
+      {"word": "un rapporteur", "en": "a reviewer / rapporteur", "vi": "người phản biện / báo cáo viên", "pos": "n.m.", "pronunciation_vi": "ra-por-tơr"},
+      {"word": "le directeur de thèse", "en": "thesis advisor", "vi": "người hướng dẫn luận án", "pos": "n.m.", "pronunciation_vi": "di-rèk-tơr dơ tèz"},
+      {"word": "la loge", "en": "the preparation room (agrégation)", "vi": "phòng chuẩn bị thi", "pos": "n.f.", "pronunciation_vi": "loj"},
+      {"word": "les félicitations", "en": "congratulations (highest distinction)", "vi": "lời khen tặng (danh dự cao nhất)", "pos": "n.f. pl.", "pronunciation_vi": "fé-li-si-ta-sion"}
+    ],
+    "dialogue": [
+      {"speaker": "Jury", "text": "Vous affirmez que votre thèse comble une lacune. Mais l'ouvrage de Martin (2019), que vous ne citez pas, traite exactement de cette question. Que répondez-vous?", "vi": "Bà khẳng định luận án của bà lấp một khoảng trống. Nhưng công trình của Martin (2019), mà bà không trích dẫn, bàn chính xác về câu hỏi này. Bà trả lời sao?"},
+      {"speaker": "Linh", "text": "Je vous remercie de cette référence que je ne connaissais pas. Si vous me le permettez, je répondrai en deux temps: d'abord, je reconnais cette lacune bibliographique — c'est une faiblesse de mon travail. Ensuite, je précise que ma thèse aborde la question sous un angle différent, celui de..., qui me semble complémentaire plutôt que redondant.", "vi": "Tôi cảm ơn thầy về tham khảo mà tôi chưa biết. Nếu thầy cho phép, tôi xin trả lời hai bước: trước, tôi thừa nhận khoảng trống thư mục này — đó là điểm yếu của công trình tôi. Sau, tôi xin nói rõ luận án tôi tiếp cận câu hỏi từ một góc khác, góc của..., mà tôi thấy là bổ sung chứ không trùng lặp."}
+    ],
+    "dialogue_long": [
+      {"speaker": "Président du jury", "text": "Madame Tran, vous avez quarante-cinq minutes pour présenter votre thèse. Nous vous écoutons.", "vi": "Bà Trần, bà có bốn mươi lăm phút để trình bày luận án. Chúng tôi lắng nghe bà."}
+    ],
+    "roleplay_prompts": [
+      "Bạn đang soutenance. Jury hỏi: 'Quelle est la principale limite de votre travail?' Trả lời: nêu 1 giới hạn thực, giải thích tại sao bạn chấp nhận nó, và cho thấy bạn đã làm gì để giảm thiểu. Cấu trúc: 'La principale limite... J'en suis conscient(e)... Pour y remédier, j'ai...'",
+      "Préparer exposé 20 phút cho soutenance de thèse (sujet tự chọn). Cấu trúc: (1) Pourquoi ce sujet, (2) Thèse principale, (3) Trois résultats clés, (4) Limites et perspectives. Pas de détails — synthèse."
+    ],
+    "register_notes": "GRAND ORAL C2: Tutoiement = jamais. Vouvoyer chaque membre du jury. Formules: 'Monsieur le Président, Mesdames et Messieurs les membres du jury'. Khi ne sait pas: 'Cette question touche à une limite de mon travail que je n'ai pas encore explorée'. Khi remercie: 'Je tiens à remercier mon directeur de thèse, le Professeur X, sans qui...' TON: humble mais pas servile. Compétent mais pas arrogant.",
+    "idiom_glosses": [],
+    "exercises": [
+      {"type": "fill-blank", "question": "L'art du grand oral ne consiste pas à nier les ___, mais à les intégrer dans une perspective plus large.", "answer": "objections"},
+      {"type": "matching", "pairs": [["la soutenance", "buổi bảo vệ luận án"], ["le jury", "hội đồng chấm thi"], ["un exposé", "bài trình bày miệng"], ["les félicitations", "danh dự cao nhất"]], "instruction": "Nối thuật ngữ grand oral với nghĩa Việt"},
+      {"type": "translation", "vietnamese": "Chất lượng của một buổi bảo vệ thường được quyết định ít ở các câu trả lời hơn là ở cách tiếp nhận câu hỏi.", "french": "La qualité d'une soutenance se joue souvent moins dans les réponses que dans la manière de recevoir les questions."}
+    ]
   }
 ];
 

@@ -3284,6 +3284,376 @@ export const lessons: GermanLesson[] = [
         ]
       }
     ]
+  }  ,
+  {
+    "id": "larts_kunstkritik",
+    "level": "C2",
+    "category": "arts_criticism",
+    "title_vi": "Phê bình nghệ thuật tạo hình — Kunstkritik",
+    "title_en": "Art criticism — analyzing visual art in German",
+    "sentences": [
+      {
+        "en": "Die Kunstkritik, verstanden als öffentliche Urteilsbildung, ist in der deutschsprachigen Tradition seit Lessings ‚Laokoon' (1766) an die Frage nach den medienspezifischen Grenzen der Künste gebunden.",
+        "vi": "Phê bình nghệ thuật, được hiểu như sự tạo thành phán đoán công khai, trong truyền thống tiếng Đức từ ‚Laokoon' (1766) của Lessing đã gắn với câu hỏi về ranh giới đặc thù chất liệu của các bộ môn nghệ thuật.",
+        "pronunciation_focus": ["Lessing → LÊ-sing", "Laokoon → la-Ô-ko-on", "medienspezifisch → MÊ-đi-ên-shpê-tsi-fish", "gebunden → gê-BUN-đần"]
+      },
+      {
+        "en": "Die Jury tat gut daran, die Arbeit nicht nach Maßgabe eines anekdotischen Realismus zu beurteilen, sondern sie als Reflexion über die Bedingungen von Sichtbarkeit selbst zu befragen.",
+        "vi": "Ban giám khảo đã làm tốt khi không đánh giá tác phẩm theo tiêu chí của chủ nghĩa hiện thực giai thoại, mà chất vấn nó như sự phản tư về chính những điều kiện của tính khả kiến.",
+        "pronunciation_focus": ["Maßgabe → MAS-ga-bê", "anekdotisch → a-nek-ĐÔ-tish", "Sichtbarkeit → ZIKHT-ba-kait", "befragen → bê-FRA-gần"]
+      },
+      {
+        "en": "Beuys' erweiterter Kunstbegriff — wonach jeder Mensch ein Künstler sei — lässt sich nicht als naive Sozialutopie abtun; er reformuliert die Frage, wer an der gesellschaftlichen Formgebung teilhat.",
+        "vi": "Khái niệm nghệ thuật mở rộng của Beuys — theo đó mỗi người là một nghệ sĩ — không thể bị gạt đi như một không tưởng xã hội ngây thơ; nó tái lập công thức câu hỏi ai tham gia vào sự tạo hình xã hội.",
+        "pronunciation_focus": ["Beuys → Boiz", "Kunstbegriff → KUNST-bê-grif", "Sozialutopie → zo-tsi-AL-u-tô-pi", "Formgebung → FOM-gê-bung"]
+      },
+      {
+        "en": "Richter hat über Jahrzehnte eine Malerei betrieben, die das Medium zugleich behauptet und dementiert — man kann seine Verwischungen geradezu als eine Praxis der bildgewordenen Skepsis lesen.",
+        "vi": "Richter đã suốt hàng thập kỷ theo đuổi một hội họa vừa khẳng định vừa phủ nhận chất liệu — ta có thể đọc những vệt nhòe của ông như một thực hành của sự hoài nghi đã trở thành hình.",
+        "pronunciation_focus": ["Richter → RIKH-tơ", "dementiert → đê-men-TI-ơt", "Verwischungen → fe-VI-shung-ần", "Skepsis → SKÊP-sis"]
+      },
+      {
+        "en": "Eine seriöse Auseinandersetzung mit dem Werk hätte nicht bei der biographischen Anekdote anzusetzen, sondern bei dem maltechnischen Befund — die Lasur verrät mehr über die Werkintention als jeder Lebenslauf.",
+        "vi": "Một sự tranh luận nghiêm túc với tác phẩm lẽ ra không bắt đầu từ giai thoại tiểu sử, mà từ chứng tích kỹ thuật vẽ — lớp men trong suốt tiết lộ về ý hướng tác phẩm nhiều hơn bất kỳ sơ yếu lý lịch nào.",
+        "pronunciation_focus": ["Auseinandersetzung → AO-zai-nan-đơ-zét-tsung", "Befund → bê-FUNT", "Lasur → la-ZUA", "Werkintention → VEK-in-ten-tsi-ôn"]
+      }
+    ],
+    "cultural_notes_vi": "KUNSTKRITIK TRONG TRUYỀN THỐNG ĐỨC:\n\n(1) LESSING (1729-1781): ‚Laokoon oder Über die Grenzen der Malerei und Poesie' (1766) — phân biệt triệt để giữa bildende Kunst (không gian, simultanéité) và Dichtung (thời gian, successivité). Ảnh hưởng đến tận ngày nay: một critique tranh không nên 'kể chuyện' (narrative fallacy).\n\n(2) GOETHE: ‚Über Kunst und Altertum' (1816-1832) — tạp chí của Goethe định hình phê bình nghệ thuật như văn chương. Goethe viết về màu sắc (Farbenlehre, 1810) — phân tích quang học và tâm lý của màu.\n\n(3) BEUYS (1921-1986): erweiterter Kunstbegriff — ''Jeder Mensch ist ein Künstler''. Soziale Plastik: xã hội là tác phẩm nghệ thuật tổng thể, mọi người tham gia tạo hình. Documenta, Kunstakademie Düsseldorf.\n\n(4) RICHTER (1932-): hội họa sau nhiếp ảnh. Verwischung (làm nhòe) như phê phán về tính chân thực của hình ảnh. ‚Atlas' — archive hình ảnh.\n\n(5) TRADITION FEUILLETON: FAZ (Frankfurter Allgemeine Zeitung), SZ (Süddeutsche Zeitung), Die Zeit — feuilleton văn hóa là thể chế. Kunstkritik xuất bản trên báo giấy vẫn có trọng lượng ở Đức hơn ở Anh-Mỹ.\n\n(6) DOCUMENTA (Kassel, mỗi 5 năm): triển lãm nghệ thuật đương đại quan trọng nhất thế giới. Mỗi kỳ Documenta sản sinh ra hàng nghìn trang Kunstkritik tiếng Đức. Học giả C2 nên đọc catalogue raisonné của ít nhất một kỳ Documenta.\n\n(7) LƯU Ý CHO NGƯỜI VIỆT: tiếng Đức Kunstkritik dùng rất nhiều nominalisation (Substantivierung): 'das In-Beziehung-Setzen', 'das Sich-Einlassen auf...'. Đây là đặc trưng German academic prose. Không nên dịch sang lối văn động từ của Pháp / Anh.",
+    "tip_advice_vi": "CẤU TRÚC KUNSTKRITIK C2 CHO MỘT FEUILLETON (2500-4000 Zeichen):\n\n1. EINSTIEG (2-3 Sätze): vào bằng một quan sát cụ thể — một màu, một vật liệu, một cử chỉ trưng bày. Không 'Die Ausstellung zeigt Werke von...'.\n- 'Schon im ersten Raum stockt der Schritt: ein monochromes Grau, das bei näherem Hinsehen in Dutzende von Schattierungen zerfällt.'\n\n2. BESCHREIBUNG (25%): mô tả chính xác, khách quan. Người đọc Đức kỳ vọng Präzision: tên chất liệu, kỹ thuật, kích thước. 'Öl auf Leinwand, 200 × 300 cm' là thông tin bắt buộc.\n\n3. KONTEXTUALISIERUNG (20%): đặt trong œuvre và trong Kunstgeschichte. Nhưng ngắn gọn — người Đức ghét name-dropping rỗng.\n\n4. DEUTUNG (40%): diễn giải. Phần quan trọng nhất. 2-3 Deutungsansätze:\n- Formal: wie wirkt das Material?\n- Historisch: in welcher Tradition steht das Werk?\n- Gesellschaftlich: was sagt das Werk über unsere Gegenwart?\nMỗi Deutungsansatz cần một câu thematisch: 'Das Werk lässt sich als Kommentar zur...'\n\n5. URTEIL (15%): kết luận có phán đoán. Người Đức thích verdict rõ ràng, có lập luận. 'Gelungen' / 'weniger überzeugend' + warum.\n\nCỤM HỮU ÍCH:\n- 'Das Werk gibt zu denken, dass...' (tác phẩm khiến suy nghĩ rằng...)\n- 'In der Tradition von X stehend, bricht das Werk doch zugleich mit...' (đứng trong truyền thống X, nhưng đồng thời phá vỡ...)\n- 'Die Materialentscheidung ist hier alles andere als beliebig.' (lựa chọn chất liệu ở đây không hề tùy tiện.)\n- 'Gerade im Scheitern des Anspruchs liegt die eigentliche Aussage.' (chính trong sự thất bại của yêu sách mới nằm tuyên ngôn thực sự.)\n\nTRÁNH:\n- Schwärmerei (mê đắm): người Đức không tin người viết 'begeistert'.\n- Biographismus: đời tư nghệ sĩ không thay thế được Werkbeschreibung.\n- Unbelegte Behauptungen: mỗi tuyên bố phải có bằng chứng từ tác phẩm.",
+    "vocabulary": [
+      {"word": "die Kunstkritik", "en": "art criticism", "vi": "phê bình nghệ thuật", "pos": "noun (f)", "pronunciation_vi": "đi KUNST-kri-tik"},
+      {"word": "die Bildbetrachtung", "en": "contemplation / analysis of a picture", "vi": "sự quan sát / phân tích tranh", "pos": "noun (f)", "pronunciation_vi": "đi BILT-bê-trakh-tung"},
+      {"word": "der erweiterte Kunstbegriff", "en": "expanded concept of art (Beuys)", "vi": "khái niệm nghệ thuật mở rộng", "pos": "noun phrase", "pronunciation_vi": "đe e-VAI-tơ-tê KUNST-bê-grif"},
+      {"word": "die Verwischung", "en": "blurring (Richter)", "vi": "sự làm nhòe", "pos": "noun (f)", "pronunciation_vi": "đi fe-VI-shung"},
+      {"word": "die Lasur", "en": "glaze (thin transparent paint layer)", "vi": "lớp men trong suốt", "pos": "noun (f)", "pronunciation_vi": "đi la-ZUA"},
+      {"word": "die Soziale Plastik", "en": "social sculpture (Beuys)", "vi": "điêu khắc xã hội", "pos": "noun phrase", "pronunciation_vi": "đi zo-tsi-A-lê PLAS-tik"},
+      {"word": "die Bildsprache", "en": "visual language / pictorial idiom", "vi": "ngôn ngữ hình ảnh", "pos": "noun (f)", "pronunciation_vi": "đi BILT-shpra-khê"},
+      {"word": "das Tafelbild", "en": "panel painting", "vi": "tranh giá vẽ / bảng", "pos": "noun (n)", "pronunciation_vi": "đas TA-fần-bilt"},
+      {"word": "der Ausstellungskatalog", "en": "exhibition catalogue", "vi": "catalogue triển lãm", "pos": "noun (m)", "pronunciation_vi": "đe AOS-shtê-lungs-ka-ta-lôg"},
+      {"word": "die Kunstausstellung", "en": "art exhibition", "vi": "triển lãm nghệ thuật", "pos": "noun (f)", "pronunciation_vi": "đi KUNST-aos-shtê-lung"}
+    ],
+    "dialogue": [
+      {"speaker": "Doktorvater", "text": "Was genau meinen Sie mit ‚bildgewordene Skepsis' bei Richter?", "vi": "Chính xác thầy muốn nói gì với 'hoài nghi đã trở thành hình' ở Richter?"},
+      {"speaker": "Linh", "text": "Die Verwischung verweigert dem Betrachter die Festlegung — man sieht ein Foto, das keines mehr ist. Die Technik selbst trägt den Zweifel aus.", "vi": "Sự làm nhòe từ chối người xem sự xác định — ta thấy một bức ảnh không còn là ảnh. Chính kỹ thuật thực thi sự hoài nghi."},
+      {"speaker": "Doktorvater", "text": "Sie unterscheiden also zwischen Sujet-Skepsis und Material-Skepsis?", "vi": "Vậy chị phân biệt giữa hoài nghi về chủ đề và hoài nghi về chất liệu?"},
+      {"speaker": "Linh", "text": "Genau — die Skepsis ist nicht im Dargestellten, sondern im Darstellungsmodus selbst verankert.", "vi": "Chính xác — hoài nghi không nằm trong cái được biểu đạt, mà trong chính phương thức biểu đạt."}
+    ],
+    "dialogue_long": [
+      {"speaker": "Prof. Schneider (Institut für Kunstgeschichte)", "text": "Frau Nguyễn, Sie schreiben Ihre Magisterarbeit über Beuys. Was ist Ihr spezifischer Zugang?", "vi": "Cô Nguyễn, cô viết luận văn thạc sĩ về Beuys. Cách tiếp cận đặc thù của cô là gì?"},
+      {"speaker": "Linh", "text": "Ich möchte Beuys' Begriff der Sozialen Plastik auf seine Materialität hin befragen. Was heißt es konkret, dass Fett und Filz politische Materialien sind?", "vi": "Tôi muốn chất vấn khái niệm Điêu khắc Xã hội của Beuys về tính vật chất của nó. Nghĩa cụ thể là gì khi mỡ và nỉ là những chất liệu chính trị?"},
+      {"speaker": "Prof. Schneider", "text": "Gut — Sie setzen nicht bei der Ideologie an, sondern beim Material. Das ist der solidere Weg. Wie gehen Sie vor?", "vi": "Tốt — cô không bắt đầu từ hệ tư tưởng, mà từ chất liệu. Đó là con đường vững hơn. Cô tiến hành thế nào?"},
+      {"speaker": "Linh", "text": "Ich analysiere drei Werke, in denen Fett als Wärmespeicher, als Energie-Reservoir und als formlose Materie je unterschiedlich fungiert.", "vi": "Tôi phân tích ba tác phẩm trong đó mỡ vận hành như bộ lưu trữ nhiệt, như hồ chứa năng lượng, và như vật chất vô hình dạng — mỗi lần khác nhau."},
+      {"speaker": "Prof. Schneider", "text": "Referenzautoren?", "vi": "Tác giả tham khảo?"},
+      {"speaker": "Linh", "text": "Primär Beuys' eigene Schriften, sekundär Theweleits Körper-Analysen und Böhmes Atmosphären-Begriff.", "vi": "Sơ cấp là các trước tác của chính Beuys, thứ cấp là phân tích thân thể của Theweleit và khái niệm Bầu khí quyển của Böhme."},
+      {"speaker": "Prof. Schneider", "text": "Theweleit ist eine starke Wahl für die politische Dimension des Körpers. Was erwarten Sie als Ergebnis?", "vi": "Theweleit là một lựa chọn mạnh cho chiều kích chính trị của thân thể. Cô kỳ vọng kết quả gì?"},
+      {"speaker": "Linh", "text": "Dass Beuys' Materialien nicht symbolisch funktionieren — sie bedeuten nicht FÜR etwas, sie SIND der politische Vollzug selbst.", "vi": "Rằng chất liệu của Beuys không vận hành một cách biểu tượng — chúng không NGHĨA LÀ cho cái gì, chúng LÀ chính sự thực thi chính trị."},
+      {"speaker": "Prof. Schneider", "text": "Eine ambitionierte These. Achten Sie darauf, dass Sie das am Material belegen, nicht nur behaupten.", "vi": "Một luận đề đầy tham vọng. Cô chú ý chứng minh điều đó trên chất liệu, không chỉ tuyên bố."}
+    ],
+    "roleplay_prompts": [
+      "Bạn viết Kunstkritik cho FAZ về một Ausstellung tranh sơn dầu đương đại. Vào bằng một quan sát chất liệu cụ thể, phát triển 2 Deutungsansätze (formal + gesellschaftlich), kết luận mit Urteil. Ngôn ngữ: khách quan, không schwärmerisch.",
+      "Trong Kolloquium, Doktorvater phản biện: 'Ihre Beuys-Lektüre ist zu affirmativ.' Bạn acknowledge rồi nêu giới hạn của chính mình: 'Die Grenze meiner Arbeit liegt darin, dass ich Beuys' problematische Selbstinszenierung nicht hinreichend problematisiere.' Dùng Konjunktiv II.",
+      "Bạn so sánh hai Ausstellungskritiken về cùng một Documenta-Ausstellung (FAZ vs taz). Phân tích sự khác biệt về lập trường chính trị ngầm qua Wortwahl (FAZ: 'anspruchsvoll', taz: 'elitär')."
+    ],
+    "register_notes": "KUNSTKRITIK C2 ĐỨC — đặc điểm ngữ vực:\n\nKONJUNKTIV I cho indirekte Rede: 'Richter selbst sagt, seine Malerei sei kein Statement, sondern ein Befragen.'\nKONJUNKTIV II cho giả định phản thực: 'Hätte die Jury das Werk anders gehängt, wäre seine räumliche Dimension deutlicher geworden.'\n\nNOMINALSTIL: thay vì 'der Künstler malt, um zu zeigen', viết 'das malerische Verfahren dient der Sichtbarmachung von...'\n\nKOMPOSITA (từ ghép): đặc sản tiếng Đức — Bildsprache, Materialgerechtigkeit, Wahrnehmungsbedingungen, Ausstellungsdispositiv. Không ngại tạo Komposita mới miễn rõ nghĩa.\n\nPASSIV: rất thường dùng trong học thuật Đức: 'Das Werk wird als Kommentar zur Konsumkultur gelesen.'\n\nMAN: chủ ngữ không xác định phổ biến: 'Man könnte einwenden, dass...', 'Man sieht sich konfrontiert mit...'\n\nFUNKTIONSVERBGEFÜGE: 'zur Anwendung kommen', 'in den Blick nehmen', 'zur Diskussion stellen'.\n\nTRÁNH:\n- 'Ich finde das Werk schön' → zu subjektiv\n- Umgangssprache: 'toll', 'super', 'krass'\n- Anglizismen quá nhiều: 'Das Statement des Künstlers' → 'Die Aussage des Künstlers' (nếu có thể)\n- Unbelegte Behauptungen: nếu nói 'Das Werk kritisiert den Kapitalismus', phải chỉ ra WIE (chất liệu, hình thức, bối cảnh trưng bày)",
+    "idiom_glosses": [
+      {"idiom": "ins Auge fallen", "literal": "rơi vào mắt", "meaning": "Gây chú ý thị giác tức thì — dùng trong mô tả triển lãm.", "example": "Als Erstes fällt der monströse Kronleuchter ins Auge — er besteht aus gebrauchten Tampons."},
+      {"idiom": "zu denken geben", "literal": "cho để suy nghĩ", "meaning": "Khiến suy nghĩ — formal, lịch sự, dùng khi tác phẩm không đưa ra câu trả lời dễ.", "example": "Die Arbeit gibt zu denken, gerade weil sie sich einer raschen Deutung verweigert."},
+      {"idiom": "ins Werk setzen", "literal": "đặt vào tác phẩm", "meaning": "Hiện thực hóa trong tác phẩm — formal, gehoben.", "example": "Was der Künstler theoretisch entwirft, setzt er in dieser Installation konsequent ins Werk."},
+      {"idiom": "auf den Punkt bringen", "literal": "đưa đến điểm", "meaning": "Diễn đạt chính xác, cô đọng — dùng khi khen một nghệ sĩ hoặc một critique.", "example": "Diese Arbeit bringt das Unbehagen der Gegenwart auf den Punkt."}
+    ],
+    "exercises": [
+      {"type": "fill_blank", "instruction_vi": "Điền từ Kunstkritik C2:", "pronunciation_focus": [], "items": [
+        {"prompt": "Die Jury tat gut daran, die Arbeit nicht nach Maßgabe eines anekdotischen ___ zu beurteilen.", "answer": "Realismus"},
+        {"prompt": "Richter hat über Jahrzehnte eine Malerei betrieben, die das Medium zugleich behauptet und ___.", "answer": "dementiert"},
+        {"prompt": "Eine seriöse Auseinandersetzung hätte beim maltechnischen ___ anzusetzen.", "answer": "Befund"},
+        {"prompt": "Beuys' ___ Kunstbegriff — wonach jeder Mensch ein Künstler sei — lässt sich nicht als naive Sozialutopie abtun.", "answer": "erweiterter"}
+      ]},
+      {"type": "matching", "instruction_vi": "Nối thuật ngữ Kunstkritik với chức năng:", "pronunciation_focus": [], "items": [
+        {"prompt": "Soziale Plastik", "answer": "Điêu khắc xã hội (Beuys)"},
+        {"prompt": "Verwischung", "answer": "Kỹ thuật làm nhòe (Richter)"},
+        {"prompt": "Bildbetrachtung", "answer": "Phân tích quan sát tranh"},
+        {"prompt": "erweiterter Kunstbegriff", "answer": "Khái niệm nghệ thuật mở rộng"}
+      ]},
+      {"type": "translation", "instruction_vi": "Dịch sang tiếng Đức Kunstkritik C2:", "pronunciation_focus": ["Kunstkritik"], "items": [
+        {"prompt": "Phê bình nghệ thuật, được hiểu như sự tạo thành phán đoán công khai, gắn với câu hỏi về ranh giới đặc thù chất liệu của các bộ môn nghệ thuật.", "answer": "Die Kunstkritik, verstanden als öffentliche Urteilsbildung, ist an die Frage nach den medienspezifischen Grenzen der Künste gebunden."},
+        {"prompt": "Ban giám khảo đã làm tốt khi không đánh giá tác phẩm theo tiêu chí của chủ nghĩa hiện thực giai thoại.", "answer": "Die Jury tat gut daran, die Arbeit nicht nach Maßgabe eines anekdotischen Realismus zu beurteilen."},
+        {"prompt": "Chính trong sự thất bại của yêu sách mới nằm tuyên ngôn thực sự.", "answer": "Gerade im Scheitern des Anspruchs liegt die eigentliche Aussage."}
+      ]}
+    ]
+  },
+  {
+    "id": "larts_filmkritik",
+    "level": "C2",
+    "category": "arts_criticism",
+    "title_vi": "Phê bình điện ảnh — Filmkritik",
+    "title_en": "Film criticism — writing a German film review",
+    "sentences": [
+      {
+        "en": "Die deutschsprachige Filmkritik hat sich, anders als die französische, nie vollständig von der Literaturkritik emanzipiert — noch immer wird ein Film zuallererst an seinem Drehbuch gemessen.",
+        "vi": "Phê bình điện ảnh tiếng Đức, khác với Pháp, chưa bao giờ hoàn toàn tự giải phóng khỏi phê bình văn học — phim vẫn trước hết bị đo bằng kịch bản của nó.",
+        "pronunciation_focus": ["emanzipiert → ê-man-tsi-PI-ơt", "Drehbuch → ĐRÊ-bukh", "zuallererst → tsu-AL-ơ-erst", "gemessen → gê-MÊS-sần"]
+      },
+      {
+        "en": "Fassbinders melodramatische Ästhetik — man denke an ‚Angst essen Seele auf' — betreibt eine radikale Politisierung des Gefühls, die mit Brechts Verfremdungseffekt wenig, mit Sirk's Ironie jedoch umso mehr gemein hat.",
+        "vi": "Mỹ học kịch mê-lô của Fassbinder — hãy nghĩ đến ‚Angst essen Seele auf' — thực hiện một sự chính trị hóa triệt để của cảm xúc, vốn có ít điểm chung với hiệu ứng lạ hóa của Brecht, nhưng càng nhiều với sự mỉa mai của Sirk.",
+        "pronunciation_focus": ["Fassbinder → FAS-bin-đơ", "melodramatisch → mê-lo-đra-MA-tish", "Verfremdungseffekt → fe-FREM-đungs-ê-fekt", "gemein → gê-MAIN"]
+      },
+      {
+        "en": "Die Berliner Schule — insbesondere Petzold und Ade — hat einen filmischen Realismus entwickelt, der nicht abbildet, sondern verdichtet: jede Einstellung ist eine These über das, was Wirklichkeit heißen könnte.",
+        "vi": "Trường phái Berlin — đặc biệt Petzold và Ade — đã phát triển một chủ nghĩa hiện thực điện ảnh không phản ánh, mà nén đặc: mỗi cảnh quay là một luận đề về điều có thể gọi là thực tại.",
+        "pronunciation_focus": ["Petzold → PÉT-tsolt", "Realismus → rê-a-LIS-mus", "Einstellung → AIN-shtê-lung", "Wirklichkeit → VIK-likh-kait"]
+      },
+      {
+        "en": "Es wäre verfehlt, Hanekes Gewaltdarstellung als voyeuristisch abzutun — der Vorwurf verkennt, dass der eigentliche Schock nicht im Gezeigten, sondern in der Konsequenz des Nicht-Zeigens liegt.",
+        "vi": "Sẽ sai lầm nếu gạt bỏ cách thể hiện bạo lực của Haneke như thói tò mò thị dâm — lời chê trách đó nhầm lẫn rằng cú sốc thực sự không nằm trong cái được chiếu, mà trong hệ quả của sự không chiếu.",
+        "pronunciation_focus": ["verfehlt → fe-FÊLT", "voyeuristisch → voa-iơu-RIS-tish", "Vorwurf → FO-vuaf", "Konsequenz → kon-zê-KVÊNZ"]
+      },
+      {
+        "en": "Festivalberichterstattung — ob aus Cannes, Venedig oder der Berlinale — verlangt vom Kritiker nicht nur ein ästhetisches, sondern auch ein kulturpolitisches Urteilsvermögen in verdichteter Form.",
+        "vi": "Tường thuật liên hoan phim — dù ở Cannes, Venice hay Berlinale — đòi hỏi ở nhà phê bình không chỉ năng lực phán đoán thẩm mỹ, mà cả năng lực phán đoán văn hóa-chính trị dưới hình thức nén đặc.",
+        "pronunciation_focus": ["Festivalberichterstattung → FÊS-ti-val-bê-rikht-ơ-shtat-tung", "Cannes → Kan", "Urteilsvermögen → U-tails-fe-mơ-gần", "verdichtet → fe-DIKH-têt"]
+      }
+    ],
+    "cultural_notes_vi": "FILMKRITIK TRONG TRUYỀN THỐNG ĐỨC:\n\n(1) KRACAUER (1889-1966): ‚Von Caligari zu Hitler' (1947) — phân tích điện ảnh Weimar như tiền-sử tâm lý của chủ nghĩa Quốc xã. ‚Theorie des Films' (1960): điện ảnh như 'sự cứu rỗi thực tại vật lý'.\n\n(2) FASSBINDER (1945-1982): Neuer Deutscher Film. Mélodrame như phê phán xã hội. Chịu ảnh hưởng Douglas Sirk (Mỹ gốc Đức). ‚Die Ehe der Maria Braun', ‚Angst essen Seele auf'.\n\n(3) BERLINER SCHULE: Christian Petzold, Maren Ade, Angela Schanelec, Thomas Arslan — thế hệ post-Wall. Realism mới: không tâm lý học, không giải thích, chỉ quan sát chính xác.\n\n(4) HANEKE (Áo, nhưng viết tiếng Đức): ‚Caché', ‚Das weiße Band', ‚Amour' — điện ảnh như sự chất vấn đạo đức người xem. Gewalt không được chiếu mà được cấu trúc trong off-screen.\n\n(5) BERLINALE: Liên hoan phim quốc tế Berlin — một trong Big Three (cùng Cannes, Venice). Chính trị hóa mạnh (Giải Gấu Vàng thường có ý nghĩa chính trị).\n\n(6) FILMKRITIK BÁO CHÍ: Khác Pháp ở chỗ ít chú trọng mise en scène, nhiều chú trọng nội dung / chính trị / xã hội. FAZ, SZ, Die Zeit, taz, Der Spiegel đều có Filmkritik riêng.\n\n(7) LƯU Ý CHO NGƯỜI VIỆT: tiếng Đức Filmkritik hay dùng Adjektiv phức: 'gesellschaftskritisch', 'sozialrealistisch', 'kammerspielartig'. Những từ này không có tương đương 1-từ trong tiếng Việt.",
+    "tip_advice_vi": "CẤU TRÚC FILMKRITIK CHO FEUILLETON (3000-5000 Zeichen):\n\n1. VORSPANN (1 Satz): câu vào phải sắc — một hình ảnh, một âm thanh, một nghịch lý.\n\n2. MINIMALE INHALTSANGABE (10%): tóm tắt cốt truyện tối thiểu. Không spoil.\n\n3. FILMISCHE ANALYSE (50%) — các lớp phân tích:\n- Bildästhetik: Kameraarbeit, Kadrage, Licht, Farbe\n- Montage: Schnittrhythmus, Ellipsen, Parallelmontage\n- Ton: Musik, Geräusch, Stille, Voice-Over\n- Schauspielführung: Körper, Gestik, Sprechweise\n\n4. EINORDNUNG (25%): trong filmographie của đạo diễn, trong dòng phim, trong bối cảnh chính trị-xã hội.\n\n5. FAZIT (15%): phán quyết rõ ràng. Người Đức ghét review lưng chừng.\n\nCỤM HỮU ÍCH:\n- 'Der Film handelt nicht von..., sondern er handelt durch...' (phim không kể về..., mà hành động thông qua...)\n- 'Die Kamera ist hier keine Beobachterin, sondern eine Komplizin.' (máy quay ở đây không phải người quan sát, mà là đồng lõa.)\n- 'Der Schnitt setzt weniger auf Kontinuität als auf Reibung.' (việc dựng phim dựa ít vào liên tục hơn là vào ma sát.)\n\nTRÁNH:\n- Nacherzählung (kể lại cốt truyện) — Filmkritik không phải Inhaltsangabe.\n- Betroffenheitsgestus ('Dieser Film hat mich tief bewegt') — quá chủ quan cho báo Đức.\n- Pauschale Wertung ('ein Meisterwerk') ohne Begründung.",
+    "vocabulary": [
+      {"word": "die Einstellung", "en": "shot / take", "vi": "cảnh quay / cú máy", "pos": "noun (f)", "pronunciation_vi": "đi AIN-shtê-lung"},
+      {"word": "die Kamerafahrt", "en": "camera movement / tracking", "vi": "cú di chuyển máy quay", "pos": "noun (f)", "pronunciation_vi": "đi KA-mê-ra-fa-t"},
+      {"word": "die Kadrage", "en": "framing", "vi": "khuôn hình / bố cục", "pos": "noun (f)", "pronunciation_vi": "đi ka-ĐRA-jơ"},
+      {"word": "der Off-Raum", "en": "off-screen space", "vi": "không gian ngoại cảnh", "pos": "noun (m)", "pronunciation_vi": "đe ÔF-raum"},
+      {"word": "die Montage", "en": "editing", "vi": "dựng phim", "pos": "noun (f)", "pronunciation_vi": "đi mon-TA-jơ"},
+      {"word": "der Schnitt", "en": "cut / editing", "vi": "nhát cắt / dựng", "pos": "noun (m)", "pronunciation_vi": "đe Shnit"},
+      {"word": "die Plansequenz", "en": "long take / sequence shot", "vi": "cú máy dài không cắt", "pos": "noun (f)", "pronunciation_vi": "đi PLAN-zê-kvenz"},
+      {"word": "die Tonspur", "en": "soundtrack", "vi": "rãnh âm thanh", "pos": "noun (f)", "pronunciation_vi": "đi TÔN-shpua"},
+      {"word": "die Schauspielführung", "en": "direction of actors", "vi": "chỉ đạo diễn xuất", "pos": "noun (f)", "pronunciation_vi": "đi SHAO-shpil-fuy-rung"},
+      {"word": "das Drehbuch", "en": "screenplay", "vi": "kịch bản phim", "pos": "noun (n)", "pronunciation_vi": "đas ĐRÊ-bukh"}
+    ],
+    "dialogue": [
+      {"speaker": "Redakteur", "text": "Ihre Haneke-Kritik ist klug, aber Sie sagen kaum etwas zum Schnitt.", "vi": "Bài phê bình Haneke của bạn sắc sảo, nhưng bạn hầu như không nói gì về cách dựng phim."},
+      {"speaker": "Linh", "text": "Stimmt — die Ellipse in der Eingangssequenz hätte ich genauer beschreiben müssen. Das Verschweigen des Ereignisses ist ja der eigentliche Schock.", "vi": "Đúng — lẽ ra tôi phải mô tả kỹ hơn đoạn ellipse trong cảnh mở đầu. Sự im lặng về sự kiện chính là cú sốc thực sự."},
+      {"speaker": "Redakteur", "text": "Genau. Schreiben Sie einen Absatz nach, der die Abwesenheit des Bildes als Strategie analysiert.", "vi": "Chính xác. Viết thêm một đoạn phân tích sự vắng mặt của hình ảnh như chiến lược."},
+      {"speaker": "Linh", "text": "Mache ich — Haneke zwingt uns ja, das nicht Gezeigte zu sehen. Das ist die Pointe.", "vi": "Tôi làm — Haneke buộc ta thấy cái không được chiếu. Đó là điểm nhọn."}
+    ],
+    "dialogue_long": [
+      {"speaker": "Prof. Wagner (Filmwissenschaft, FU Berlin)", "text": "Frau Nguyễn, Sie schreiben Ihre Dissertation über die Berliner Schule. Was ist Ihre Leitthese?", "vi": "Cô Nguyễn, cô viết luận án tiến sĩ về Trường phái Berlin. Luận đề dẫn đường của cô là gì?"},
+      {"speaker": "Linh", "text": "Ich behaupte, dass der Realismus der Berliner Schule kein Abbildrealismus ist, sondern ein Kondensationsrealismus — die Filme zeigen weniger, um mehr sichtbar zu machen.", "vi": "Tôi tuyên bố rằng chủ nghĩa hiện thực của Trường phái Berlin không phải chủ nghĩa hiện thực phản ánh, mà là chủ nghĩa hiện thực ngưng tụ — phim cho thấy ít hơn để làm cho thấy được nhiều hơn."},
+      {"speaker": "Prof. Wagner", "text": "'Kondensationsrealismus' — ein starker Begriff. An welchem filmischen Mittel machen Sie das fest?", "vi": "'Chủ nghĩa hiện thực ngưng tụ' — một khái niệm mạnh. Cô neo nó vào phương tiện điện ảnh nào?"},
+      {"speaker": "Linh", "text": "An der Kadrage. Petzold schneidet Gesichter nicht an den erwarteten Stellen — er verschiebt den Bildausschnitt minimal, sodass der Zuschauer das Gefühl hat, etwas zu verpassen. Dieses 'Zu-wenig' ist das formale Äquivalent zur gesellschaftlichen Unsichtbarkeit seiner Figuren.", "vi": "Ở kadrage. Petzold không cắt mặt ở những chỗ được kỳ vọng — ông dịch chuyển khung hình tối thiểu, khiến khán giả có cảm giác bỏ lỡ điều gì. Cái 'quá ít' này là tương đương hình thức với sự vô hình xã hội của các nhân vật của ông."},
+      {"speaker": "Prof. Wagner", "text": "Gut beobachtet. Und wo verorten Sie Ihre Arbeit theoretisch?", "vi": "Quan sát tốt. Và cô đặt công trình của mình về mặt lý thuyết ở đâu?"},
+      {"speaker": "Linh", "text": "Zwischen Kracauers Realismus-Theorie und Rancières Begriff der Aufteilung des Sinnlichen. Kracauer liefert die filmtheoretische Grundlage, Rancière die politische.", "vi": "Giữa lý thuyết hiện thực của Kracauer và khái niệm Phân chia cái cảm năng của Rancière. Kracauer cung cấp nền tảng lý thuyết điện ảnh, Rancière cung cấp nền tảng chính trị."},
+      {"speaker": "Prof. Wagner", "text": "Eine ungewöhnliche Kombination — Kracauer und Rancière. Das müssen Sie gut begründen.", "vi": "Một sự kết hợp khác thường — Kracauer và Rancière. Cô phải lập luận tốt cho điều đó."},
+      {"speaker": "Linh", "text": "Beide teilen die Grundannahme, dass Sichtbarkeit immer politisch verteilt ist. Kracauer denkt das vom Film her, Rancière von der Polizei der Wahrnehmung. Die Brücke ist das, was ich 'Kondensation' nenne.", "vi": "Cả hai chia sẻ tiền giả định cơ bản rằng tính khả kiến luôn được phân phối một cách chính trị. Kracauer nghĩ điều đó từ điện ảnh, Rancière từ cảnh sát của tri giác. Cây cầu là cái tôi gọi là 'ngưng tụ'."}
+    ],
+    "roleplay_prompts": [
+      "Bạn viết Filmkritik cho Die Zeit về một bộ phim thuộc Trường phái Berlin. Cấu trúc: (1) vào bằng một Einstellung cụ thể, (2) phân tích Kadrage và Schnitt, (3) đặt trong bối cảnh chính trị-xã hội Đức đương đại, (4) Fazit rõ ràng.",
+      "Trong Seminar về Haneke, đồng nghiệp chỉ trích 'Gewaltverherrlichung'. Bạn phản bác: phân biệt Darstellung và Befürwortung, nêu ví dụ cụ thể một cảnh không chiếu bạo lực (Aussparung), kết luận: 'Der eigentliche Schock liegt im Nicht-Gezeigten.'",
+      "Bạn so sánh Filmkritik FAZ và taz về cùng một Berlinale-Beitrag. Phân tích sự khác biệt về lập trường qua Wortwahl: FAZ dùng 'formal überzeugend', taz dùng 'politisch fragwürdig'. Chỉ ra mỗi tờ presupponiert tiêu chí đánh giá khác nhau."
+    ],
+    "register_notes": "FILMKRITIK C2 ĐỨC:\n\nPRÄSENS cho mô tả phim: 'Der Film beginnt mit...', 'Die Kamera folgt...'\nPERFEKT cho bình luận: 'Der Regisseur hat sich hier für eine ungewöhnliche Kadrage entschieden.'\nKONJUNKTIV II cho phê bình: 'Es wäre besser gewesen, die Szene zu kürzen.'\n\nPASSIV: 'Der Film wird getragen von...', 'Die Spannung wird nicht durch Handlung, sondern durch Blicke erzeugt.'\n\nADJEKTIV chính xác (không rỗng):\n- 'sperrig' (cứng đầu, chống lại tiếp nhận dễ)\n- 'spröde' (khô khan, không chiều lòng)\n- 'lakonisch' (kiệm lời, ít thoại)\n- 'unterkühlt' (lạnh dưới mức bình thường)\n\nFACHLICHE PRÄZISION:\n- 'Die Totale wird hier durch eine Großaufnahme abgelöst' (viễn cảnh được thay bằng cận cảnh)\n- 'Der Schnitt erfolgt auf Blickachse' (cắt theo trục nhìn)\n\nTRÁNH:\n- Anglizismen: 'Der Film featured...' → 'Der Film zeigt...'\n- 'Der beste Film des Jahres' → tuyên bố tuyệt đối không có chứng cứ\n- Spoiler: không bao giờ tiết lộ kết thúc trong Filmkritik Đức",
+    "idiom_glosses": [
+      {"idiom": "unter die Haut gehen", "literal": "đi dưới da", "meaning": "Tác động sâu sắc, ám ảnh — dùng sparingly trong critique formal.", "example": "Die letzte Einstellung geht unter die Haut — ein stummes Gesicht, das länger steht, als man erträgt."},
+      {"idiom": "den Ton angeben", "literal": "đưa ra âm", "meaning": "Định hình giọng điệu / dẫn dắt — dùng trong phân tích nhạc phim hoặc phong cách.", "example": "Schon der Vorspann gibt den Ton an: ein dissonantes Cello, das nie aufgelöst wird."},
+      {"idiom": "ins Leere laufen", "literal": "chạy vào khoảng không", "meaning": "Dẫn đến hư vô, không giải quyết — geignet cho phim kết thúc mở.", "example": "Die Handlung läuft bewusst ins Leere — eine Auflösung würde den Film um seine eigentliche Aussage bringen."},
+      {"idiom": "den Blick lenken", "literal": "dẫn dắt cái nhìn", "meaning": "Hướng dẫn thị giác người xem — dùng cho phân tích Kadrage / mise en scène.", "example": "Die Kadrage lenkt den Blick auf das, was am Rand geschieht — das Zentrum bleibt leer."}
+    ],
+    "exercises": [
+      {"type": "fill_blank", "instruction_vi": "Điền từ Filmkritik C2:", "pronunciation_focus": [], "items": [
+        {"prompt": "Die Berliner Schule hat einen filmischen Realismus entwickelt, der nicht abbildet, sondern ___.", "answer": "verdichtet"},
+        {"prompt": "Der eigentliche Schock liegt nicht im Gezeigten, sondern in der Konsequenz des ___.", "answer": "Nicht-Zeigens"},
+        {"prompt": "Festivalberichterstattung verlangt vom Kritiker ein ___ Urteilsvermögen.", "answer": "kulturpolitisches"},
+        {"prompt": "Fassbinders melodramatische Ästhetik betreibt eine radikale ___ des Gefühls.", "answer": "Politisierung"}
+      ]},
+      {"type": "matching", "instruction_vi": "Nối thuật ngữ Filmkritik với chức năng:", "pronunciation_focus": [], "items": [
+        {"prompt": "Kadrage", "answer": "Khuôn hình / bố cục khung"},
+        {"prompt": "Off-Raum", "answer": "Không gian ngoài khung hình"},
+        {"prompt": "Plansequenz", "answer": "Cú máy dài không cắt"},
+        {"prompt": "Schauspielführung", "answer": "Chỉ đạo diễn xuất"}
+      ]},
+      {"type": "translation", "instruction_vi": "Dịch sang tiếng Đức Filmkritik C2:", "pronunciation_focus": ["Filmkritik"], "items": [
+        {"prompt": "Phê bình điện ảnh tiếng Đức chưa bao giờ hoàn toàn tự giải phóng khỏi phê bình văn học.", "answer": "Die deutschsprachige Filmkritik hat sich nie vollständig von der Literaturkritik emanzipiert."},
+        {"prompt": "Máy quay ở đây không phải người quan sát, mà là đồng lõa.", "answer": "Die Kamera ist hier keine Beobachterin, sondern eine Komplizin."},
+        {"prompt": "Phim không kể, mà hành động thông qua hình ảnh và âm thanh.", "answer": "Der Film handelt nicht, sondern er handelt durch Bild und Ton."}
+      ]}
+    ]
+  }  ,
+  {
+    "id": "lcivic_politische_rede",
+    "level": "C2",
+    "category": "civic_discourse",
+    "title_vi": "Phân tích diễn văn chính trị — politische Rede analysieren",
+    "title_en": "Analyzing political speech in German",
+    "sentences": [
+      {"en": "Die politische Rede ist in der deutschen Demokratie nicht bloßes Ornament, sondern das zentrale Medium, in dem sich der demokratische Wille allererst bildet und zur Darstellung bringt.", "vi": "Diễn văn chính trị trong nền dân chủ Đức không chỉ là trang sức, mà là chất liệu trung tâm trong đó ý chí dân chủ mới hình thành và tự trình hiện.", "pronunciation_focus": ["Ornament → o-na-MEN-t", "Medium → MÊ-đi-um", "demokratisch → đê-mo-KRA-tish", "Darstellung → ĐA-shtê-lung"]},
+      {"en": "Brandts Kniefall von Warschau 1970 war eine Rede ohne Worte — eine Geste, die mehr sagte, als jede Regierungserklärung hätte leisten können, und die dennoch bis heute umstritten bleibt.", "vi": "Cái quỳ gối của Brandt ở Warsaw 1970 là một diễn văn không lời — một cử chỉ nói nhiều hơn bất kỳ tuyên bố chính phủ nào có thể làm được, mà vẫn gây tranh cãi đến tận hôm nay.", "pronunciation_focus": ["Brandt → Brant", "Kniefall → KNI-fal", "Regierungserklärung → rê-GI-rungs-e-klê-rung", "umstritten → UM-shtri-tần"]},
+      {"en": "Die Analyse einer Bundestagsdebatte erfordert weniger die Prüfung des propositionalen Gehalts als vielmehr die Aufmerksamkeit für das, was die Rede im Vollzug selbst bewirkt — sie ist, mit Austin gesprochen, ein performativer Akt.", "vi": "Phân tích một cuộc tranh luận Bundestag đòi hỏi ít việc kiểm tra nội dung mệnh đề hơn là sự chú ý đến điều mà diễn văn trong chính sự thực thi tạo ra — nó, nói theo Austin, là một hành vi ngôn hành.", "pronunciation_focus": ["Bundestagsdebatte → BUN-đes-tags-đê-ba-tê", "propositional → pro-po-zi-tsi-o-NAL", "performativer → pe-fo-ma-TI-vơ", "Vollzug → FÔL-tsug"]},
+      {"en": "Weizsäckers Rede zum 8. Mai 1985 — 'Der 8. Mai war ein Tag der Befreiung' — ist ein Musterbeispiel dafür, wie ein einziger Satz eine ganze nationale Erinnerungskultur neu zu justieren vermag.", "vi": "Diễn văn của Weizsäcker ngày 8 tháng 5 năm 1985 — 'Ngày 8 tháng 5 là một ngày giải phóng' — là một ví dụ mẫu mực về cách một câu duy nhất có thể tái chỉnh toàn bộ văn hóa ký ức quốc gia.", "pronunciation_focus": ["Weizsäcker → VAITS-ze-kơ", "Befreiung → bê-FRAI-ung", "Erinnerungskultur → e-RI-nê-rungs-kul-tua", "justieren → yus-TI-rần"]},
+      {"en": "Es wäre verfehlt, eine politische Rede allein an ihrem Wahrheitsgehalt zu messen — politische Wahrheit ist, anders als wissenschaftliche, stets auch eine Frage der situativen Angemessenheit und der rhetorischen Wirksamkeit.", "vi": "Sẽ sai lầm nếu đo diễn văn chính trị chỉ bằng hàm lượng chân lý của nó — chân lý chính trị, khác với chân lý khoa học, bao giờ cũng là câu hỏi về tính phù hợp tình huống và hiệu lực tu từ.", "pronunciation_focus": ["Wahrheitsgehalt → VA-hait-s-gê-halt", "Angemessenheit → AN-gê-mê-sần-hait", "Wirksamkeit → VI-k-zam-kait", "verfehlt → fe-FÊLT"]}
+    ],
+    "cultural_notes_vi": "POLITISCHE REDE TRONG TRUYỀN THỐNG ĐỨC:\n\n(1) BUNDESTAG — diễn đàn trung tâm. Khác với Anh (Prime Minister's Questions đối đầu), tranh luận Bundestag formal hơn, ít ngắt lời, dài hơn. Regierungserklärung (tuyên bố chính phủ) là thể loại riêng.\n\n(2) BRANDT (1913-1992): Kniefall 1970 — quỳ trước đài tưởng niệm Warsaw Ghetto. Không lời. Gây tranh cãi dữ dội ở Đức ('đã đi quá xa' vs 'cần thiết').\n\n(3) WEIZSÄCKER (1920-2015): Rede zum 40. Jahrestag des Kriegsendes, 8. Mai 1985. Lần đầu một tổng thống Đức gọi 8/5 là 'Tag der Befreiung' (ngày giải phóng) chứ không phải 'Niederlage' (thất bại). Chuyển đổi ký ức tập thể.\n\n(4) GAUCK (2013-2017): mục sư → tổng thống. Phong cách đạo đức, nhấn mạnh Freiheit và Verantwortung. Reden thường bắt đầu bằng câu chuyện cá nhân.\n\n(5) MERKEL (2005-2021): phong cách 'sachlich' — không hùng biện, ít ẩn dụ, câu ngắn, logic. 'Wir schaffen das' (2015) — câu nói gây tranh cãi nhất sự nghiệp.\n\n(6) ĐẶC THÙ ĐỨC: Politische Rede Đức ít dùng ẩn dụ rực rỡ (như Pháp) và ít dùng ngôn ngữ tôn giáo (như Mỹ). Thiên về Sachlichkeit (tính khách quan), Argumentation, và historische Verantwortung (trách nhiệm lịch sử).",
+    "tip_advice_vi": "PHÂN TÍCH POLITISCHE REDE C2:\n\n1. REDESITUATION: Ai nói? Ở đâu? (Bundestag / Wahlkampf / Gedenkfeier) Trước ai?\n2. AUFBAU: Gliederung (dàn ý) — Rede Đức thường rất rõ ràng về cấu trúc: Einleitung, Hauptteil (3 Punkte), Schluss.\n3. SPRACHLICHE MITTEL:\n- Nominalstil (dấu hiệu Sachlichkeit)\n- Passiv (tránh trách nhiệm? 'Es wurde beschlossen' — ai beschlossen?)\n- Konjunktiv (hedging: 'Es wäre zu prüfen, ob...')\n- Modalverben (sollen, müssen, dürfen, können — mỗi Modalverb vẽ bản đồ nghĩa vụ / khả năng)\n4. SCHLÜSSELWÖRTER: 'Freiheit', 'Verantwortung', 'Gerechtigkeit', 'Sicherheit', 'Europa'\n5. HISTORISCHE BEZÜGE: Rede Đức hầu như luôn có Bezug đến quá khứ (NS-Zeit, Wiedervereinigung)\n\nCỤM HỮU ÍCH:\n- 'Die Rede inszeniert den Sprecher als...'\n- 'Auffällig ist die Häufung von Passivkonstruktionen — sie...'\n- 'Der Konjunktiv II signalisiert hier...'",
+    "vocabulary": [
+      {"word": "die Regierungserklärung", "en": "government declaration", "vi": "tuyên bố chính phủ", "pos": "noun (f)", "pronunciation_vi": "đi rê-GI-rungs-e-klê-rung"},
+      {"word": "der Bundestag", "en": "German federal parliament", "vi": "Quốc hội liên bang Đức", "pos": "noun (m)", "pronunciation_vi": "đe BUN-đes-tag"},
+      {"word": "die Gedenkrede", "en": "commemorative speech", "vi": "diễn văn tưởng niệm", "pos": "noun (f)", "pronunciation_vi": "đi gê-ĐENK-rê-đê"},
+      {"word": "der Schulterschluss", "en": "closing ranks / solidarity", "vi": "sự đoàn kết vai kề vai", "pos": "noun (m)", "pronunciation_vi": "đe SHUL-tơ-shlus"},
+      {"word": "die Streitkultur", "en": "culture of debate", "vi": "văn hóa tranh luận", "pos": "noun (f)", "pronunciation_vi": "đi SHTRAIT-kul-tua"},
+      {"word": "der Konsens", "en": "consensus", "vi": "đồng thuận", "pos": "noun (m)", "pronunciation_vi": "đe kon-ZENS"},
+      {"word": "die Willensbildung", "en": "formation of will", "vi": "sự hình thành ý chí", "pos": "noun (f)", "pronunciation_vi": "đi VI-lầns-bil-đung"},
+      {"word": "der Befreiungsschlag", "en": "liberating stroke", "vi": "cú giải phóng", "pos": "noun (m)", "pronunciation_vi": "đe bê-FRAI-ungs-shlag"},
+      {"word": "die Sachlichkeit", "en": "objectivity / matter-of-factness", "vi": "tính khách quan", "pos": "noun (f)", "pronunciation_vi": "đi ZAKH-likh-kait"},
+      {"word": "das Gedenken", "en": "remembrance", "vi": "sự tưởng niệm", "pos": "noun (n)", "pronunciation_vi": "đas gê-ĐEN-kần"}
+    ],
+    "dialogue": [
+      {"speaker": "Seminarleiter", "text": "Was unterscheidet Weizsäckers Rede von 1985 von früheren Gedenkreden zum 8. Mai?", "vi": "Điều gì phân biệt diễn văn của Weizsäcker năm 1985 với các diễn văn tưởng niệm 8/5 trước đó?"},
+      {"speaker": "Linh", "text": "Vor allem das Wort 'Befreiung'. Seine Vorgänger sprachen von 'Niederlage' oder 'Zusammenbruch'. Der Wechsel des Substantivs ist ein Wechsel des Geschichtsbildes.", "vi": "Trước hết là từ 'giải phóng'. Những người tiền nhiệm nói về 'thất bại' hay 'sụp đổ'. Sự thay đổi danh từ là sự thay đổi quan niệm lịch sử."},
+      {"speaker": "Seminarleiter", "text": "Und rhetorisch — wie erzeugt die Rede diese Wirkung?", "vi": "Còn về mặt tu từ — diễn văn tạo ra hiệu ứng này thế nào?"},
+      {"speaker": "Linh", "text": "Durch eine Kette von kurzen Hauptsätzen, jeder ein Urteil. Keine Hypotaxe, keine Abschweifung. Jeder Satz ein Hammerschlag.", "vi": "Bằng một chuỗi câu chính ngắn, mỗi câu là một phán quyết. Không hypotaxe, không lan man. Mỗi câu một nhát búa."}
+    ],
+    "dialogue_long": [
+      {"speaker": "Prof. Klein (Politolinguistik, Uni Trier)", "text": "Frau Nguyễn, Sie analysieren Merkels 'Wir schaffen das' vom August 2015. Warum dieser Satz?", "vi": "Cô Nguyễn, cô phân tích câu 'Wir schaffen das' của Merkel tháng 8/2015. Vì sao câu này?"},
+      {"speaker": "Linh", "text": "Weil es der seltene Fall einer politischen Äußerung ist, die im Rückblick als Zäsur gilt. Drei Wörter, aber sie markieren eine Wende in der deutschen Asylpolitik.", "vi": "Vì đó là trường hợp hiếm của một phát ngôn chính trị mà nhìn lại được coi là bước ngoặt. Ba từ, nhưng chúng đánh dấu một khúc quanh trong chính sách tị nạn Đức."},
+      {"speaker": "Prof. Klein", "text": "Analysieren Sie das Pronomen 'wir' — wer ist dieses 'wir'?", "vi": "Phân tích đại từ 'wir' — cái 'wir' này là ai?"},
+      {"speaker": "Linh", "text": "Das ist der Streitpunkt. Merkel ließ bewusst offen, ob 'wir' die Regierung, die Deutschen oder Europa meint. Diese Offenheit war rhetorisch klug, aber politisch riskant — sie lud jeden ein, sich angesprochen zu fühlen, und ebnete so der AfD das Feld, die sich NICHT angesprochen fühlte.", "vi": "Đó là điểm tranh cãi. Merkel cố ý để mở không rõ 'wir' là chính phủ, người Đức hay châu Âu. Sự để mở này tu từ thì khôn ngoan, nhưng chính trị thì liều — nó mời mọi người cảm thấy mình được nói đến, và như thế mở đường cho AfD, phe KHÔNG cảm thấy được nói đến."}
+    ],
+    "roleplay_prompts": [
+      "Bạn phân tích một Bundestagsrede gần đây. Dùng 5 bước: Redesituation, Aufbau, Sprachliche Mittel (Passiv! Modalverben!), Schlüsselwörter, Historische Bezüge. Kết luận: 'Die Rede konstruiert ein Deutschland, das...'",
+      "Trong Seminar, bạn defend Merkels 'Wir schaffen das' gegen chỉ trích là 'politisch naiv'. Phân biệt rhetorische Funktion (tạo niềm tin) và politische Umsetzung (chính sách thực tế). Dùng Konjunktiv II cho hedge."
+    ],
+    "register_notes": "POLITISCHE REDE C2 ĐỨC: Nominalstil là dấu hiệu quan trọng nhất. 'Die zur Diskussion stehende Frage' > 'Die Frage, die diskutiert wird'. Passiv tránh nêu chủ thể: 'Es wurde entschieden' (ai?). Modalverben vẽ nghĩa vụ: 'müssen' (bắt buộc), 'sollen' (đạo đức), 'dürfen' (được phép). Konjunktiv I cho indirekte Rede trong Bundestag: 'Der Minister sagte, die Lage sei unter Kontrolle.' Tránh: Pathos quá mức, Umgangssprache, Anglizismen.",
+    "idiom_glosses": [
+      {"idiom": "Wir schaffen das", "literal": "Chúng ta làm được điều đó", "meaning": "Câu nói của Merkel tháng 8/2015 về khủng hoảng tị nạn. Đã thành idiom chính trị Đức — vừa được ca ngợi là can đảm, vừa bị chỉ trích là ngây thơ.", "example": "Mit 'Wir schaffen das' setzte Merkel 2015 eine Formel in die Welt, die bis heute die deutsche Asyldebatte polarisiert."}
+    ],
+    "exercises": [
+      {"type": "fill_blank", "instruction_vi": "Điền từ politische Rede C2:", "pronunciation_focus": [], "items": [
+        {"prompt": "Die politische Rede ist das zentrale ___, in dem sich der demokratische Wille bildet.", "answer": "Medium"},
+        {"prompt": "Weizsäckers Rede nannte den 8. Mai 1945 einen Tag der ___.", "answer": "Befreiung"},
+        {"prompt": "Brandts ___ von Warschau war eine Rede ohne Worte.", "answer": "Kniefall"},
+        {"prompt": "Merkels Rede-Stil ist geprägt von ___ — wenig Metaphern, viel Logik.", "answer": "Sachlichkeit"}
+      ]},
+      {"type": "matching", "instruction_vi": "Nối thuật ngữ với chức năng:", "pronunciation_focus": [], "items": [
+        {"prompt": "Regierungserklärung", "answer": "Tuyên bố chính phủ tại Bundestag"},
+        {"prompt": "Streitkultur", "answer": "Văn hóa tranh luận dân chủ"},
+        {"prompt": "Gedenkrede", "answer": "Diễn văn tưởng niệm"},
+        {"prompt": "Willensbildung", "answer": "Sự hình thành ý chí chính trị"}
+      ]},
+      {"type": "translation", "instruction_vi": "Dịch sang tiếng Đức:", "pronunciation_focus": [], "items": [
+        {"prompt": "Sẽ sai lầm nếu đo diễn văn chính trị chỉ bằng hàm lượng chân lý của nó.", "answer": "Es wäre verfehlt, eine politische Rede allein an ihrem Wahrheitsgehalt zu messen."}
+      ]}
+    ]
+  },
+  {
+    "id": "lcivic_buergerdebatte",
+    "level": "C2",
+    "category": "civic_discourse",
+    "title_vi": "Tranh luận công dân — Bürgerdeliberation und Streitkultur",
+    "title_en": "Civic deliberation — democratic debate culture",
+    "sentences": [
+      {"en": "Die deliberative Demokratie, wie Habermas sie in ‚Faktizität und Geltung' (1992) entworfen hat, setzt voraus, dass Bürger einander nicht als Gegner, sondern als Teilnehmer eines gemeinsamen Prozesses der vernünftigen Willensbildung begegnen.", "vi": "Dân chủ thảo luận, như Habermas đã phác thảo trong 'Faktizität und Geltung' (1992), giả định rằng các công dân gặp nhau không như đối thủ, mà như những người tham gia một quá trình chung của sự hình thành ý chí hợp lý.", "pronunciation_focus": ["Habermas → HA-bơ-mas", "Faktizität → fak-ti-tsi-TÊT", "deliberative → đê-li-bê-ra-TI-vê", "Willensbildung → VI-lầns-bil-đung"]},
+      {"en": "Die deutsche Streitkultur — etwa in Fernsehformaten wie ‚Anne Will' oder ‚Maischberger' — leidet nach verbreiteter Auffassung darunter, dass echte argumentative Auseinandersetzung zunehmend durch rhetorische Selbstbehauptung ersetzt wird.", "vi": "Văn hóa tranh luận Đức — chẳng hạn trong các format truyền hình như 'Anne Will' hay 'Maischberger' — theo quan niệm phổ biến đang đau khổ vì sự tranh luận lập luận thực sự ngày càng bị thay thế bởi sự tự khẳng định tu từ.", "pronunciation_focus": ["Streitkultur → SHTRAIT-kul-tua", "argumentativ → a-gu-men-ta-TIF", "Selbstbehauptung → ZELPST-bê-haop-tung", "ersetzt → e-ZÉTST"]},
+      {"en": "Mithin wäre zu fragen, ob die Rede von der ‚postfaktischen' Politik nicht selbst ein rhetorisches Manöver darstellt, das den unvermeidlichen rhetorischen Charakter jeder Politik verdeckt und einen mythischen Zustand purer Sachlichkeit beschwört, den es nie gegeben hat.", "vi": "Do đó cần hỏi liệu lời nói về chính trị 'hậu-sự-thực' không chính là một thủ pháp tu từ, che giấu tính chất tu từ tất yếu của mọi chính trị và gợi lên một trạng thái huyền thoại của tính khách quan thuần túy chưa bao giờ tồn tại.", "pronunciation_focus": ["postfaktisch → PÔST-fak-tish", "rhetorisch → rê-TO-rish", "unvermeidlich → un-fe-MAIT-likh", "beschwört → bê-SHVƠ-ơt"]},
+      {"en": "Eine lebendige Demokratie zeichnet sich nicht durch die Abwesenheit von Konflikten aus, sondern dadurch, dass sie die Verfahren bereitstellt, in denen Konflikte in Argumente — und nicht in Gewalt — überführt werden.", "vi": "Một nền dân chủ sống động không nổi bật vì sự vắng mặt của xung đột, mà vì nó cung cấp các quy trình trong đó xung đột được chuyển hóa thành lập luận — chứ không phải bạo lực.", "pronunciation_focus": ["zeichnet → TSAIKH-nêt", "Konflikt → kon-FLIKT", "Verfahren → fe-FA-rần", "Gewalt → gê-VALT"]},
+      {"en": "Es wäre ein Missverständnis des Konsenses, ihn als Uniformität zu deuten — Konsens in der Demokratie meint nicht Einmütigkeit, sondern den vorläufigen Abschluss eines Streits, der unter anderen Bedingungen jederzeit wieder aufbrechen kann.", "vi": "Sẽ là một hiểu lầm về đồng thuận nếu diễn giải nó như sự đồng nhất — đồng thuận trong dân chủ không có nghĩa là nhất trí, mà là sự kết thúc tạm thời của một tranh cãi, có thể bùng lại bất cứ lúc nào trong các điều kiện khác.", "pronunciation_focus": ["Missverständnis → MIS-fe-shten-tnis", "Uniformität → u-ni-fo-mi-TÊT", "Einmütigkeit → AIN-muy-tikh-kait", "aufbrechen → AOF-brê-khần"]}
+    ],
+    "cultural_notes_vi": "BÜRGERDELIBERATION TRONG TRUYỀN THỐNG ĐỨC:\n\n(1) HABERMAS (1929-): lý thuyết về Öffentlichkeit (không gian công cộng) và deliberative Demokratie. Strukturwandel der Öffentlichkeit (1962) — lịch sử không gian công từ salon bourgeois thế kỷ 18 đến mass media thế kỷ 20.\n\n(2) KHÔNG GIAN CÔNG ĐỨC: khác Anh-Mỹ — Đức có truyền thống mạnh về Verein (hội đoàn), Genossenschaft (hợp tác xã), và Mitbestimmung (đồng quyết định trong doanh nghiệp). Các thiết chế trung gian giữa cá nhân và nhà nước.\n\n(3) STREITKULTUR: từ những năm 1990, Đức trải qua lo lắng về 'Politikverdrossenheit' (sự chán ngán chính trị). Đối sách: Bürgerdialog, Planungszelle, Bürgerrat — các hình thức dân chủ trực tiếp / thảo luận.\n\n(4) MEDIEN: Öffentlich-rechtlicher Rundfunk (ARD, ZDF) có nhiệm vụ pháp định cung cấp thông tin và diễn đàn tranh luận. Khác với mô hình thương mại Mỹ.\n\n(5) THÁCH THỨC ĐƯƠNG ĐẠI: AfD phá vỡ đồng thuận hậu chiến (không cực hữu trong Bundestag). Mạng xã hội làm phân mảnh Öffentlichkeit. Câu hỏi: liệu mô hình Habermas còn đứng vững?",
+    "tip_advice_vi": "THAM GIA BÜRGERDEBATTE C2:\n\n1. POSITION BEZIEHEN: 'Ich spreche hier als...' — luôn nêu vị trí phát ngôn của mình.\n2. ANDERE POSITION ANERKENNEN: 'Ich verstehe Ihren Punkt, dass..., aber...'\n3. AUF DAS ARGUMENT EINGEHEN, nicht auf die Person.\n4. PRÄMISSEN OFFENLEGEN: 'Meine Prämisse ist, dass...' — người Đức đánh giá cao sự minh bạch về tiền đề.\n5. KONSENS SUCHEN, nicht Sieg: 'Vielleicht können wir uns darauf einigen, dass...'\n\nCỤM HỮU ÍCH:\n- 'Dem würde ich entgegenhalten, dass...' (tôi phản biện rằng...)\n- 'Hier liegt, wie mir scheint, ein Missverständnis vor.' (ở đây, theo tôi, có một hiểu lầm.)\n- 'Lassen Sie uns die Prämissen klären, bevor wir...'\n- 'Das ist ein starkes Argument, allerdings...'\n\nTRÁNH:\n- Ad hominem: 'Sie haben doch keine Ahnung!'\n- Polemik thay vì Argument\n- Schweigen bei Provokation — phải trả lời, nhưng trả lời bằng lập luận",
+    "vocabulary": [
+      {"word": "die Öffentlichkeit", "en": "the public sphere (Habermas)", "vi": "không gian công cộng", "pos": "noun (f)", "pronunciation_vi": "đi Ơ-fần-likh-kait"},
+      {"word": "die Deliberation", "en": "deliberation", "vi": "sự thảo luận / nghị sự", "pos": "noun (f)", "pronunciation_vi": "đi đê-li-bê-ra-TSI-ÔN"},
+      {"word": "der Bürgerdialog", "en": "citizen dialogue", "vi": "đối thoại công dân", "pos": "noun (m)", "pronunciation_vi": "đe BUY-gơ-đi-a-lôg"},
+      {"word": "die Konsensfindung", "en": "consensus-building", "vi": "sự tìm kiếm đồng thuận", "pos": "noun (f)", "pronunciation_vi": "đi kon-ZENS-fin-đung"},
+      {"word": "der Dissens", "en": "dissent / disagreement", "vi": "sự bất đồng / dị kiến", "pos": "noun (m)", "pronunciation_vi": "đe dis-ZENS"},
+      {"word": "die Vorverständigung", "en": "prior understanding / pre-agreement", "vi": "sự thông hiểu trước / tiền nhất trí", "pos": "noun (f)", "pronunciation_vi": "đi FO-fe-shten-đi-gung"},
+      {"word": "der Interessenausgleich", "en": "balancing of interests", "vi": "sự cân bằng lợi ích", "pos": "noun (m)", "pronunciation_vi": "đe IN-tê-rê-sần-aos-glaikh"},
+      {"word": "die Bürgerbeteiligung", "en": "citizen participation", "vi": "sự tham gia của công dân", "pos": "noun (f)", "pronunciation_vi": "đi BUY-gơ-bê-tai-li-gung"},
+      {"word": "die Streitfrage", "en": "the point of contention", "vi": "vấn đề tranh cãi", "pos": "noun (f)", "pronunciation_vi": "đi SHTRAIT-fra-gê"},
+      {"word": "der Grundkonsens", "en": "fundamental consensus", "vi": "đồng thuận nền tảng", "pos": "noun (m)", "pronunciation_vi": "đe GRUN-kon-zens"}
+    ],
+    "dialogue": [
+      {"speaker": "Bürger", "text": "Warum soll ich mich an einem Bürgerdialog beteiligen? Die Politik macht doch, was sie will.", "vi": "Tại sao tôi nên tham gia đối thoại công dân? Chính trị gia vẫn làm điều họ muốn."},
+      {"speaker": "Linh", "text": "Das ist ein verbreitetes Gefühl — aber gerade weil Sie dieses Gefühl haben, ist Ihre Stimme im Dialog wichtig. Demokratie lebt nicht vom Schweigen der Unzufriedenen.", "vi": "Đó là một cảm giác phổ biến — nhưng chính vì bạn có cảm giác này, tiếng nói của bạn trong đối thoại mới quan trọng. Dân chủ không sống bằng sự im lặng của những người bất mãn."}
+    ],
+    "dialogue_long": [
+      {"speaker": "Moderator (Bürgerforum Stuttgart 21)", "text": "Frau Nguyễn, Sie vertreten hier die Position der Befürworter des Projekts. Ihr Gegenüber, Herr Müller, die der Gegner. Wir haben 90 Minuten. Bitte, Sie haben das Wort.", "vi": "Bà Nguyễn, bà đại diện ở đây cho lập trường ủng hộ dự án. Đối diện bà, ông Müller, cho lập trường phản đối. Chúng ta có 90 phút. Xin mời bà."},
+      {"speaker": "Linh", "text": "Ich beginne mit dem, was uns eint: dass der Stuttgarter Bahnhof modernisiert werden muss. Der Dissens betrifft das Wie, nicht das Ob. Vielleicht können wir uns zunächst auf diese gemeinsame Prämisse einigen?", "vi": "Tôi bắt đầu với điều thống nhất chúng ta: rằng ga Stuttgart phải được hiện đại hóa. Bất đồng liên quan đến Cách, không phải Có. Có lẽ chúng ta có thể nhất trí trước về tiền đề chung này?"}
+    ],
+    "roleplay_prompts": [
+      "Bạn điều hành một Bürgerdialog về chính sách khí hậu. Một công dân nói: 'Das ist doch alles Ideologie!' Trả lời: acknowledge cảm xúc, tách Ideologie khỏi Wissenschaft, mời đối thoại dựa trên dữ liệu cụ thể.",
+      "Bạn tham gia tranh luận truyền hình về tự do ngôn luận. Đối thủ nói: 'Man muss doch mal sagen dürfen, was Sache ist!' Bạn phản bác: phân biệt Meinungsfreiheit (được bảo vệ) và Meinungsäußerung ohne Faktenbasis (không giúp ích cho tranh luận)."
+    ],
+    "register_notes": "BÜRGERDEBATTE C2: Ton lịch sự nhưng kiên quyết. Siezen bắt buộc nếu không thân. Konjunktiv II cho lịch sự: 'Ich würde vorschlagen...', 'Könnten Sie erläutern...'. Không ngắt lời (đặc thù Đức — chờ người kia nói xong). Khi phản bác: 'Da muss ich widersprechen' > 'Das ist Quatsch'.",
+    "idiom_glosses": [
+      {"idiom": "Zur Sache kommen", "literal": "Đến việc", "meaning": "Đi vào vấn đề chính — German love of Sachlichkeit. Dùng khi tranh luận lan man.", "example": "Lassen Sie uns zur Sache kommen — welche konkreten Zahlen legen Sie Ihrer Prognose zugrunde?"}
+    ],
+    "exercises": [
+      {"type": "fill_blank", "instruction_vi": "Điền từ Bürgerdebatte C2:", "pronunciation_focus": [], "items": [
+        {"prompt": "Die deliberative Demokratie setzt ___, dass Bürger einander als Teilnehmer eines gemeinsamen Prozesses begegnen.", "answer": "voraus"},
+        {"prompt": "Eine lebendige Demokratie zeichnet sich nicht durch die ___ von Konflikten aus.", "answer": "Abwesenheit"},
+        {"prompt": "Konsens meint nicht Einmütigkeit, sondern den vorläufigen ___ eines Streits.", "answer": "Abschluss"}
+      ]},
+      {"type": "matching", "instruction_vi": "Nối thuật ngữ:", "pronunciation_focus": [], "items": [
+        {"prompt": "Öffentlichkeit", "answer": "Không gian công cộng (Habermas)"},
+        {"prompt": "Deliberation", "answer": "Thảo luận / nghị luận dân chủ"},
+        {"prompt": "Bürgerbeteiligung", "answer": "Sự tham gia của công dân"},
+        {"prompt": "Konsensfindung", "answer": "Tìm kiếm đồng thuận"}
+      ]},
+      {"type": "translation", "instruction_vi": "Dịch sang tiếng Đức:", "pronunciation_focus": [], "items": [
+        {"prompt": "Dân chủ sống động không nổi bật vì sự vắng mặt của xung đột, mà vì nó cung cấp các quy trình chuyển hóa xung đột thành lập luận.", "answer": "Eine lebendige Demokratie zeichnet sich nicht durch die Abwesenheit von Konflikten aus, sondern dadurch, dass sie die Verfahren bereitstellt, in denen Konflikte in Argumente überführt werden."}
+      ]}
+    ]
+  }
+  ,
+  {
+    "id": "lrhet_essay", "level": "C2", "category": "rhetoric_capstone",
+    "title_vi": "Tiểu luận học thuật — der philosophische Essay", "title_en": "Academic essay — writing the German philosophical essay",
+    "sentences": [
+      {"en": "Der philosophische Essay, wie Adorno ihn in ‚Der Essay als Form' (1958) bestimmt hat, ist kein bloßer Vorläufer der wissenschaftlichen Abhandlung, sondern eine eigenständige Denkform, die das Begriffliche am Besonderen entzündet, statt das Besondere unter Allgemeinbegriffe zu subsumieren.", "vi": "Tiểu luận triết học, như Adorno đã xác định trong 'Der Essay als Form' (1958), không phải là tiền thân đơn thuần của luận văn khoa học, mà là một hình thái tư duy độc lập, đốt cháy cái khái niệm ở cái đặc thù, thay vì gộp cái đặc thù dưới các khái niệm tổng quát.", "pronunciation_focus": ["Essay → e-SÊ", "Abhandlung → AP-hand-lung", "eigenständig → AI-gần-shten-dikh", "subsumieren → zup-zu-MI-rần"]},
+      {"en": "Der Essay verlangt vom Schreibenden, dass er das Denken auf dem Papier gleichsam vor den Augen des Lesers vollzieht — nicht ein fertiges Resultat präsentiert, sondern den Prozess der Gedankenbildung selbst zur Darstellung bringt.", "vi": "Tiểu luận đòi hỏi ở người viết phải thực hiện tư duy trên giấy như thể trước mắt độc giả — không trình bày kết quả đã hoàn thành, mà đưa ra chính quá trình hình thành tư tưởng.", "pronunciation_focus": ["gleichsam → GLAIKH-zam", "Gedankenbildung → gê-ĐANG-kần-bil-đung", "Darstellung → ĐA-shtê-lung"]}
+    ],
+    "cultural_notes_vi": "DER PHILOSOPHISCHE ESSAY — TRUYỀN THỐNG ĐỨC:\n\n(1) ADORNO (1903-1969): 'Der Essay als Form' — essay là hình thái tư duy chống lại hệ thống. Không 'chứng minh' như Abhandlung, mà 'thử nghiệm' như Versuch.\n\n(2) KHÁC VỚI DISSERTATION PHÁP: Essay Đức ít structure cứng hơn, cho phép 'je' khi cần, có thể mở đầu bằng anecdote hoặc câu hỏi.\n\n(3) CẤU TRÚC: Mở (câu hỏi / nghịch lý), Thân (2-3 vòng suy tư, mỗi vòng sâu hơn), Kết (mở ra câu hỏi mới — không đóng).\n\n(4) NHÂN VẬT: Adorno, Benjamin, Lukács, Arendt, Blumenberg — tất cả đều viết essay triết học.",
+    "tip_advice_vi": "Viết Essay triết học C2: (1) Bắt đầu bằng một câu hỏi thực sự, không phải câu hỏi giả. (2) Cho phép mình 'nghĩ trên giấy' — viết để khám phá, không viết để chứng minh điều đã biết. (3) Dùng Konjunktiv II cho suy đoán: 'Es könnte sein, dass...' (4) Kết thúc mở: 'Vielleicht...' thay vì 'Also...'",
+    "vocabulary": [
+      {"word": "der Essay", "en": "the essay", "vi": "tiểu luận", "pos": "noun (m)", "pronunciation_vi": "đe e-SÊ"},
+      {"word": "die Abhandlung", "en": "treatise / academic paper", "vi": "luận văn / chuyên khảo", "pos": "noun (f)", "pronunciation_vi": "đi AP-hand-lung"},
+      {"word": "der Gedankengang", "en": "train of thought", "vi": "mạch tư duy", "pos": "noun (m)", "pronunciation_vi": "đe gê-ĐANG-kần-gang"},
+      {"word": "die Versuchsanordnung", "en": "experimental setup", "vi": "bố trí thử nghiệm", "pos": "noun (f)", "pronunciation_vi": "đi fe-ZUKHS-an-o-nung"},
+      {"word": "das Begriffliche", "en": "the conceptual", "vi": "cái thuộc về khái niệm", "pos": "noun (n)", "pronunciation_vi": "đas bê-GRIF-li-khê"},
+      {"word": "erörtern", "en": "to discuss / examine thoroughly", "vi": "thảo luận kỹ lưỡng", "pos": "verb", "pronunciation_vi": "e-Ơ-tần"},
+      {"word": "abwägen", "en": "to weigh / consider", "vi": "cân nhắc / đắn đo", "pos": "verb", "pronunciation_vi": "AP-vê-gần"},
+      {"word": "das Für und Wider", "en": "the pros and cons", "vi": "lợi và hại / thuận và nghịch", "pos": "noun phrase", "pronunciation_vi": "đas FUY-a unt VI-đơ"}
+    ],
+    "dialogue": [
+      {"speaker": "Doktorvater", "text": "Ihr Essay ist klug, aber er springt. Wo ist der rote Faden?", "vi": "Essay của chị sắc sảo, nhưng nó nhảy cóc. Sợi chỉ đỏ đâu?"},
+      {"speaker": "Linh", "text": "Ich dachte, der Essay verträgt Sprünge — Adorno selbst sagt, der Essay dürfe assoziativ sein.", "vi": "Tôi tưởng essay chịu được những cú nhảy — chính Adorno nói essay được phép liên tưởng."},
+      {"speaker": "Doktorvater", "text": "Assoziativ, ja. Aber nicht beliebig. Die Sprünge müssen einer inneren Logik folgen, die der Leser nachvollziehen kann.", "vi": "Liên tưởng, đúng. Nhưng không phải tùy tiện. Những cú nhảy phải theo một logic nội tại mà độc giả có thể lần theo."}
+    ],
+    "exercises": [
+      {"type": "fill_blank", "instruction_vi": "Điền từ:", "pronunciation_focus": [], "items": [
+        {"prompt": "Der philosophische Essay ist keine bloße ___, sondern eine eigenständige Denkform.", "answer": "Abhandlung"},
+        {"prompt": "Der Essay präsentiert nicht das fertige Resultat, sondern den ___ der Gedankenbildung.", "answer": "Prozess"}
+      ]}
+    ]
+  },
+  {
+    "id": "lrhet_kolloquium", "level": "C2", "category": "rhetoric_capstone",
+    "title_vi": "Bảo vệ học thuật — Abschlusskolloquium und Verteidigung", "title_en": "Academic defense — colloquium and oral examination",
+    "sentences": [
+      {"en": "Das Kolloquium dient nicht der Bloßstellung, sondern der gemeinsamen Prüfung einer Argumentation — eine souveräne Verteidigung erkennt die Berechtigung der Einwände an, bevor sie deren Reichweite einschränkt.", "vi": "Kolloquium không nhằm vạch trần, mà nhằm cùng nhau kiểm tra một lập luận — một sự bảo vệ tự chủ thừa nhận tính hợp lệ của các phản bác trước khi giới hạn phạm vi của chúng.", "pronunciation_focus": ["Kolloquium → ko-LÔ-kvi-um", "Bloßstellung → BLÔS-shtê-lung", "Berechtigung → bê-REKH-ti-gung", "Reichweite → RAIKH-vai-tê"]},
+      {"en": "Es wäre ein Fehler, auf einen Einwand mit einer Gegenbehauptung zu antworten, statt zunächst zu reformulieren, was der Einwand genau besagt — erst im Reformulieren zeigt sich, ob man den Anderen wirklich verstanden hat.", "vi": "Sẽ là sai lầm nếu trả lời một phản bác bằng một khẳng định đối lập, thay vì trước hết diễn đạt lại chính xác điều phản bác muốn nói — chính trong việc diễn đạt lại mới lộ ra liệu mình đã thực sự hiểu người kia chưa.", "pronunciation_focus": ["Gegenbehauptung → GÊ-gần-bê-haop-tung", "reformulieren → rê-fo-mu-LI-rần"]}
+    ],
+    "cultural_notes_vi": "KOLLOQUIUM / VERTEIDIGUNG ĐỨC:\n\n(1) Khác Pháp: ít nghi lễ hơn, thường 1-2 giờ. Không có 'mention'. Chỉ 'bestanden' (đỗ) hoặc 'nicht bestanden' (trượt).\n\n(2) DISPUTATION: truyền thống trung cổ — ngày nay vẫn còn ở một số khoa (nhất là triết học). Rigorosum (thi miệng toàn diện) vs Disputation (tranh luận về luận án).\n\n(3) CHIẾN LƯỢC: Người Đức đánh giá cao 'Sachlichkeit' trong Kolloquium — không khoa trương, không phòng thủ. Công nhận điểm yếu = mạnh mẽ.",
+    "tip_advice_vi": "CHUẨN BỊ KOLLOQUIUM C2: (1) Chuẩn bị 3 câu trả lời cho 'Was ist die größte Schwäche Ihrer Arbeit?' (2) Luyện reformulieren: 'Wenn ich Sie richtig verstehe, meinen Sie...' (3) Dùng Konjunktiv II cho khiêm tốn: 'Da würde ich zögern...'",
+    "vocabulary": [
+      {"word": "das Kolloquium", "en": "colloquium / oral defense", "vi": "kỳ thi vấn đáp / bảo vệ", "pos": "noun (n)", "pronunciation_vi": "đas ko-LÔ-kvi-um"},
+      {"word": "die Verteidigung", "en": "defense", "vi": "sự bảo vệ (luận án)", "pos": "noun (f)", "pronunciation_vi": "đi fe-TAI-đi-gung"},
+      {"word": "der Einwand", "en": "objection", "vi": "phản bác", "pos": "noun (m)", "pronunciation_vi": "đe AIN-vant"},
+      {"word": "das Prüfungsgespräch", "en": "examination conversation", "vi": "đối thoại thi vấn đáp", "pos": "noun (n)", "pronunciation_vi": "đas PRUY-fungs-gê-shprêkh"}
+    ],
+    "exercises": [
+      {"type": "fill_blank", "instruction_vi": "Điền từ:", "pronunciation_focus": [], "items": [
+        {"prompt": "Das Kolloquium dient nicht der ___, sondern der gemeinsamen Prüfung einer Argumentation.", "answer": "Bloßstellung"},
+        {"prompt": "Erst im ___ zeigt sich, ob man den Anderen wirklich verstanden hat.", "answer": "Reformulieren"}
+      ]}
+    ]
   }
 ];
 

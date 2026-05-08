@@ -36,7 +36,10 @@ export type FrenchCategoryId =
   | "expressions"
   | "advanced_grammar"
   | "public_communication"
-  | "fluency";
+  | "fluency"
+  | "arts_criticism"
+  | "civic_discourse"
+  | "rhetoric_capstone";
 
 export type FrenchCategoryMeta = {
   id: FrenchCategoryId;
@@ -182,4 +185,4 @@ export function getLessonById(id: number | string): FrenchLesson | undefined {
 // Total lesson count across every level. Kept manually in sync with the
 // per-level files; updated by scripts/install-lessons-registry.mjs at
 // generation time.
-export const FRENCH_TOTAL_LESSONS = 141;
+export const FRENCH_TOTAL_LESSONS = 147;

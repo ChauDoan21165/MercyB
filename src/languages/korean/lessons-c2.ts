@@ -2796,6 +2796,247 @@ export const lessons: KoreanLesson[] = [
         "hangul": "옹호의 어조는 단정적이어서는 안 되며, 동시에 자기 약화에 빠져서도 안 된다."
       }
     ]
+  }  ,
+  {
+    "id": 112,
+    "level": "C2",
+    "title_vi": "Phê bình mỹ thuật (미술 비평)",
+    "title_en": "Art criticism",
+    "intro_vi": "미술 비평 (art criticism) ở Hàn Quốc có lịch sử gắn liền với sự du nhập của modernism phương Tây qua Nhật Bản thời thuộc địa, rồi bùng nổ sau chiến tranh Triều Tiên trong các nhóm như AG (Avant-Garde, 1969), ST (Space & Time, 1981). C2 đòi hỏi sinh viên phân biệt các dòng phê bình: 인상비평 (impressionistic), 분석비평 (analytic), 이데올로기비평 (ideological — minjung art 1980s), 그리고 hậu-민중 thời hậu-1990s. Phê bình mỹ thuật Hàn không tách rời khỏi bối cảnh thuộc địa / phân liệt / dân chủ hóa.",
+    "vocabulary": [
+      {"hangul": "미술 비평 (美術批評)", "meaning": "phê bình mỹ thuật / art criticism"},
+      {"hangul": "평론 (評論)", "meaning": "bình luận / critical essay"},
+      {"hangul": "전시 기획 (展示企劃)", "meaning": "curating triển lãm"},
+      {"hangul": "조형 언어 (造形言語)", "meaning": "ngôn ngữ tạo hình"},
+      {"hangul": "평면성 (平面性)", "meaning": "tính phẳng / flatness (modernism)"},
+      {"hangul": "행위의 흔적 (行爲의 痕跡)", "meaning": "dấu vết của hành vi (performance)"},
+      {"hangul": "관객 참여 (觀客參與)", "meaning": "sự tham gia của khán giả"},
+      {"hangul": "현대미술 (現代美術)", "meaning": "mỹ thuật đương đại"},
+      {"hangul": "전위 (前衛)", "meaning": "avant-garde / tiền vệ"},
+      {"hangul": "작가론 (作家論)", "meaning": "chuyên khảo về nghệ sĩ / artist monograph"}
+    ],
+    "sentences": [
+      {"korean": "박서보의 '묘법' 연작에서 반복되는 연필선은, 단순한 제스처가 아니라 몸과 시간을 캔버스에 새기는 수행적 행위로 읽힌다.", "romanized": "Bakseobo-ui 'myobeop' yeonjageseo banbok-doeneun yeonpilseoneun, dansunhan jeseucheoga anira momgwa siganeul kaenbeoseue saegineun suhaengjeok haengwiro ilkhinda.", "en": "The repeated pencil lines in Park Seo-Bo's 'Ecriture' series read not as simple gesture but as performative acts inscribing body and time onto the canvas.", "vi": "Những đường chì lặp lại trong loạt 'Écriture' của Park Seo-Bo được đọc không phải như cử chỉ đơn thuần, mà như hành vi trình diễn khắc thân thể và thời gian lên toan."},
+      {"korean": "이우환의 '관계항' 개념은, 작품이 홀로 존재하는 것이 아니라 관객과의 관계 속에서 비로소 성립한다는 점을 이론화한 것이다.", "romanized": "Iuhwan-ui 'gwangyehang' gaenyeomeun, jakpumi hollo jonjaehaneun geosi anira gwangaekgwaui gwangye sogeseo biroso seongnip-handaneun jeomeul ironhwa-han geosida.", "en": "Lee Ufan's concept of 'relatum' theorized the point that the work does not exist alone but comes into being only within its relation to the viewer.", "vi": "Khái niệm 'quan hệ hạng' của Lee Ufan đã lý thuyết hóa điểm rằng tác phẩm không tồn tại đơn độc, mà chỉ thành lập trong quan hệ với người xem."},
+      {"korean": "한국 현대미술 비평은 1980년대 민중미술 논쟁을 거치며, 형식주의와 현실주의 사이의 긴장을 핵심 과제로 삼아 왔다.", "romanized": "Hanguk hyeondae-misul bipyeongeun 1980-nyeondae minjung-misul nonjaengeul geochimyeo, hyeongsikjuuiwa hyeonsiljuui saiui ginjangeul haeksim gwajero sama watda.", "en": "Korean contemporary art criticism, passing through the Minjung art debates of the 1980s, has taken the tension between formalism and realism as its core problematic.", "vi": "Phê bình mỹ thuật đương đại Hàn Quốc, trải qua tranh luận mỹ thuật dân chúng những năm 1980, đã lấy sự căng thẳng giữa chủ nghĩa hình thức và chủ nghĩa hiện thực làm vấn đề cốt lõi."},
+      {"korean": "비평은 작품을 '좋다/나쁘다'로 판정하는 행위가 아니다. 작품이 의존하고 있는 전제 자체를 가시화하는 작업이다.", "romanized": "Bipyeongeun jakpumeul 'jota/nappeuda'ro panjeong-haneun haengwiga anida. Jakpumi uijon-hago inneun jeonje jachereul gasihwa-haneun jageob-ida.", "en": "Criticism is not the act of judging a work as 'good/bad.' It is the work of making visible the very premises upon which the work depends.", "vi": "Phê bình không phải là hành vi phán định tác phẩm 'tốt / xấu'. Đó là công việc làm cho thấy được chính những tiền đề mà tác phẩm nương tựa."},
+      {"korean": "윤석남의 작업은 여성의 몸이 공적 담론에서 배제되어 온 방식을 문제 삼으며, 그 배제의 구조를 설치와 회화를 통해 가시화한다.", "romanized": "Yunseoknam-ui jageobeun yeoseong-ui momi gongjeok damnoneseo baeje-doeeo on bangsigeul munje sameumyeo, geu baeje-ui gujoreul seolchiwa hwahwareul tonghae gasihwa-handa.", "en": "Yun Suk-nam's work problematizes the way women's bodies have been excluded from public discourse, visualizing the structure of that exclusion through installation and painting.", "vi": "Tác phẩm của Yun Suk-nam nêu vấn đề về cách thân thể phụ nữ bị loại trừ khỏi diễn ngôn công cộng, trực quan hóa cấu trúc của sự loại trừ đó qua sắp đặt và hội họa."}
+    ],
+    "dialogue": [
+      {"speaker": "A", "hangul": "한국 현대미술을 논할 때, 단색화와 민중미술, 어느 쪽을 중심축으로 삼아야 합니까?", "meaning": "When discussing Korean contemporary art, which should be taken as the central axis — Dansaekhwa or Minjung art?"},
+      {"speaker": "B", "hangul": "둘 중 하나를 선택할 필요는 없습니다. 두 흐름은 '한국적 현대성이란 무엇인가'라는 동일한 질문에 대한 서로 다른 응답으로 보아야 합니다.", "meaning": "There is no need to choose one. The two currents should be seen as different answers to the same question: 'What is Korean modernity?'"},
+      {"speaker": "A", "hangul": "서구 이론으로 한국 미술을 분석하는 것의 한계는 어디에 있다고 보십니까?", "meaning": "Where do you see the limits of analyzing Korean art with Western theory?"},
+      {"speaker": "B", "hangul": "서구 이론은 '분석했다고 착각하게 만드는' 데 한계가 있습니다. 한국 미술의 특수성은 이론의 틀로 포착되지 않는 잉여에 있다고 사료됩니다.", "meaning": "The limit of Western theory is that it 'makes one mistakenly think one has analyzed it.' The specificity of Korean art, I judge, lies in the surplus not captured by the theoretical frame."}
+    ],
+    "dialogue_long": [
+      {"speaker": "A", "hangul": "안녕하십니까. 오늘은 박서보의 '묘법' 연작에 대한 비평을 시도하고자 합니다.", "meaning": "Hello. Today I will attempt a criticism of Park Seo-Bo's 'Ecriture' series.", "vi": "Xin chào quý vị. Hôm nay tôi sẽ thử phê bình loạt 'Écriture' của Park Seo-Bo."},
+      {"speaker": "B", "hangul": "어떤 관점에서 접근하시겠습니까?", "meaning": "From what angle will you approach it?", "vi": "Anh/chị tiếp cận từ góc độ nào?"},
+      {"speaker": "A", "hangul": "'행위의 흔적'이라는 개념을 중심으로, 반복과 수행성의 측면에서 분석하겠습니다.", "meaning": "Centering on the concept of 'trace of the act,' I will analyze from the aspect of repetition and performativity.", "vi": "Lấy khái niệm 'dấu vết của hành vi' làm trung tâm, tôi sẽ phân tích từ khía cạnh tính lặp và tính trình diễn."},
+      {"speaker": "B", "hangul": "반복이 어떻게 의미를 생산하는지, 구체적인 증거를 텍스트에서 제시해야 합니다.", "meaning": "You must present concrete evidence from the text for how repetition produces meaning.", "vi": "Anh/chị phải trình bày chứng cứ cụ thể từ văn bản về cách sự lặp sản sinh nghĩa."},
+      {"speaker": "A", "hangul": "동일한 듯 보이는 각 선은 미세하게 다릅니다. 그 차이의 누적이 '균질성'에 대한 환상을 깨뜨리는 — 이것이 제 논점입니다.", "meaning": "Each line that appears identical is minutely different. The accumulation of that difference shatters the illusion of 'homogeneity' — that is my point.", "vi": "Mỗi đường có vẻ giống hệt nhau lại khác biệt tinh vi. Sự tích lũy của khác biệt đó phá vỡ ảo tưởng về 'tính đồng nhất' — đó là luận điểm của tôi."}
+    ],
+    "roleplay_prompts": [
+      "Viết critique ngắn về một tác phẩm sắp đặt Hàn Quốc đương đại. Vào bằng một quan sát cụ thể về vật liệu, phân tích 2 trục (물질성 + 공간), đưa ra đánh giá có lý do. Dùng 구어체/문어체 pha trộn.",
+      "Trong hội thảo, đồng nghiệp phê phán bạn '서구 이론에 지나치게 의존'. Phản bác: thừa nhận 한계, nhưng chỉ ra cách bạn bổ sung lý thuyết bản địa (이우환의 관계항 / 민중미술론)."
+    ],
+    "register_notes": "C2 미술비평 문체: 기본적으로 문어체 — '~다' / '~는다' 종결. Khi lập luận: '~로 읽힌다', '~로 사료된다'. Khi phê phán: '~라는 한계를 갖는다', '~에는 신중을 기해야 한다'. Khi so sánh với lý thuyết Tây: '서구 이론의 틀로는 포착되지 않는 ~'. Hạn chế dùng cảm thán từ hoặc tính từ đánh giá rỗng (훌륭하다, 아름답다).",
+    "idiom_glosses": [
+      {"idiom": "단색화 (單色畫 / Dansaekhwa)", "literal": "Tranh đơn sắc", "meaning": "Trường phái hội họa Hàn Quốc 1970s: tranh đơn sắc, lặp đi lặp lại cử chỉ vẽ, nhấn mạnh quá trình và vật liệu — Park Seo-Bo, Ha Chong-Hyun, Yun Hyong-Keun.", "example": "단색화는 한국 현대미술이 국제적 담론에 진입한 최초의 사례로 평가되지만, 그 '한국성'을 둘러싼 논쟁은 현재진행형이다."},
+      {"idiom": "민중미술 (民衆美術)", "literal": "Mỹ thuật dân chúng", "meaning": "Phong trào mỹ thuật chính trị 1980s Hàn, gắn với phong trào dân chủ hóa. Phê phán chủ nghĩa hình thức, nhấn mạnh nội dung hiện thực và sự tham gia của quần chúng.", "example": "민중미술은 '예술의 사회적 책임'이라는 물음을 한국 현대미술의 중심 의제로 삼았다."}
+    ],
+    "cultural_notes_vi": "PHÊ BÌNH MỸ THUẬT HÀN:\n(1) DANSAEKHWA (1970s): Park Seo-Bo, Ha Chong-Hyun. Tranh đơn sắc + lặp cử chỉ. Được Joan Kee (2013) đưa vào canon toàn cầu.\n(2) MINJUNG ART (1980s): mỹ thuật dân chúng — gắn với phong trào dân chủ hóa Gwangju 1980. Phê phán formalism. Oh Yoon, Lim Ok-sang.\n(3) LEE UFAN (1936-): người Hàn-Nhật, triết gia và họa sĩ, lý thuyết gia Mono-ha. Tác phẩm tối giản, nhấn mạnh 'quan hệ'.\n(4) ĐƯƠNG ĐẠI: Yang Haegue (sắp đặt), Lee Bul (cyborg feminism), Do Ho Suh (nhà ở / di dân).\n(5) PHÊ BÌNH GIA: Oh Kwang-su (lịch sử), Yoon Nan-ji (nữ quyền), Kim Hong-hee (bảo tàng).",
+    "tip_advice_vi": "Viết phê bình mỹ thuật Hàn C2: (1) Mô tả chính xác tác phẩm — chất liệu, kích thước, không gian. (2) Phân tích 2 trục: 물질 (vật chất) + 맥락 (bối cảnh lịch sử / chính trị). (3) Đặt trong lịch sử mỹ thuật Hàn. (4) Đối thoại với ít nhất một nhà phê bình Hàn. (5) Đánh giá có lập luận, kết thúc bằng '~로 사료된다'.",
+    "exercises": [
+      {"type": "fill-blank", "question": "박서보의 '묘법' 연작에서 반복되는 연필선은, 단순한 제스처가 아니라 몸과 시간을 캔버스에 새기는 ___ 행위로 읽힌다.", "answer": "수행적"},
+      {"type": "matching", "pairs": [{"hangul": "단색화", "meaning": "Dansaekhwa — tranh đơn sắc"}, {"hangul": "민중미술", "meaning": "Minjung art — mỹ thuật dân chúng"}, {"hangul": "관계항", "meaning": "Relatum — khái niệm của Lee Ufan"}, {"hangul": "전위", "meaning": "Avant-garde / tiền vệ"}], "instruction": "Nối thuật ngữ mỹ thuật Hàn với nghĩa"},
+      {"type": "translation", "vietnamese": "Phê bình không phải là hành vi phán định tác phẩm 'tốt / xấu'. Đó là công việc làm cho thấy được chính những tiền đề mà tác phẩm nương tựa.", "hangul": "비평은 작품을 '좋다/나쁘다'로 판정하는 행위가 아니다. 작품이 의존하고 있는 전제 자체를 가시화하는 작업이다."}
+    ]
+  },
+  {
+    "id": 113,
+    "level": "C2",
+    "title_vi": "Phê bình điện ảnh (영화 비평)",
+    "title_en": "Film criticism",
+    "intro_vi": "영화 비평 (film criticism) Hàn Quốc phát triển trong bối cảnh đặc biệt: chế độ kiểm duyệt quân sự (1961-1987), phong trào dân chủ hóa, sự trỗi dậy của New Korean Cinema (1990s), và gần đây là sự công nhận toàn cầu (Parasite 2019, Oscar). C2 đòi hỏi phân biệt giữa 저널리즘 비평 (báo chí, Cine21) và 학술 비평 (đại học, Korean Journal of Cinema Studies). Điện ảnh Hàn là một trong số ít nền điện ảnh nơi phim thương mại và phim nghệ thuật cùng tồn tại trong cùng một không gian phê bình sôi động.",
+    "vocabulary": [
+      {"hangul": "영화 비평 (映畫批評)", "meaning": "phê bình điện ảnh / film criticism"},
+      {"hangul": "미장센 (mise en scène)", "meaning": "dàn dựng / mise en scène"},
+      {"hangul": "롱테이크 (long take)", "meaning": "cú máy dài / plan-séquence"},
+      {"hangul": "편집 (編輯)", "meaning": "dựng phim / editing"},
+      {"hangul": "프레임 밖 (off-screen)", "meaning": "ngoại cảnh / off-screen"},
+      {"hangul": "작가주의 (作家主義)", "meaning": "chính sách tác giả / auteur theory"},
+      {"hangul": "응시의 정치학 (凝視의 政治學)", "meaning": "chính trị của cái nhìn"},
+      {"hangul": "사운드 디자인 (sound design)", "meaning": "thiết kế âm thanh"},
+      {"hangul": "디스토피아 (dystopia)", "meaning": "phản địa đàng / dystopia"},
+      {"hangul": "한국형 블록버스터", "meaning": "blockbuster kiểu Hàn"}
+    ],
+    "sentences": [
+      {"korean": "봉준호의 프레임은, 단순히 이야기를 전달하는 도구가 아니라, 계급적 시선의 구조 자체를 물질화하는 장치이다.", "romanized": "Bongjunho-ui peureimeun, dansunhi iyagireul jeondal-haneun doguga anira, gyegupjeok siseon-ui gujo jachereul muljilhwa-haneun jangchi-ida.", "en": "Bong Joon-ho's frame is not simply a tool for conveying story but a device that materializes the very structure of class-determined seeing.", "vi": "Khung hình của Bong Joon-ho không đơn giản là công cụ truyền tải câu chuyện, mà là một thiết bị vật chất hóa chính cấu trúc của cái nhìn mang tính giai cấp."},
+      {"korean": "박찬욱의 편집은, 서사의 연속성보다 정서의 충돌을 우선시한다. 그 충돌이야말로 그의 영화가 관객에게 요구하는 윤리적 태도이다.", "romanized": "Bakchanuk-ui pyeonjibeun, seosa-ui yeonsokseongboda jeongseo-ui chungdoreul useonsi-handa. Geu chungdoriyamallo geuui yeonghwaga gwangaek-ege yogu-haneun yullijeok taedo-ida.", "en": "Park Chan-wook's editing prioritizes the collision of affects over narrative continuity. That very collision is the ethical stance his films demand of the audience.", "vi": "Việc dựng phim của Park Chan-wook ưu tiên sự va chạm của cảm xúc hơn tính liên tục tự sự. Chính sự va chạm đó là thái độ đạo đức mà phim của ông đòi hỏi ở khán giả."},
+      {"korean": "홍상수의 롱테이크는 관객을 '기다리게' 하지 않는다. 오히려 관객이 스스로 '바라보기'를 선택하게 만든다. 여기에 그의 윤리가 있다.", "romanized": "Hongsangsu-ui longteikeuneun gwangaekeul 'gidarige' haji anneunda. Ohiryeo gwangaeki seuseuro 'barabogi'reul seontaek-hage mandeunda. Yeogie geuui yulliga itda.", "en": "Hong Sang-soo's long takes do not make the audience 'wait.' Rather, they make the audience choose to 'look' for themselves. Here lies his ethics.", "vi": "Cú máy dài của Hong Sang-soo không bắt khán giả 'chờ đợi'. Đúng hơn, chúng khiến khán giả tự mình chọn 'nhìn'. Đây là luân lý của ông."},
+      {"korean": "한국 영화 비평의 전통은, 저널리즘 비평과 학술 비평 사이의 긴장을 동력으로 삼아 왔다고 사료된다.", "romanized": "Hanguk yeonghwa bipyeong-ui jeontongeun, jeoneollijeum bipyeonggwa haksul bipyeong saiui ginjangeul dongnyeogeuro sama watdago saryo-doenda.", "en": "The tradition of Korean film criticism, I judge, has taken the tension between journalistic criticism and academic criticism as its driving force.", "vi": "Truyền thống phê bình điện ảnh Hàn Quốc, theo tôi, đã lấy sự căng thẳng giữa phê bình báo chí và phê bình học thuật làm động lực."},
+      {"korean": "『기생충』의 공간 설계는, 지상과 반지하의 수직 구도를 통해 계급적 위계를 시각화할 뿐 아니라, 그 경계의 침투 불가능성을 냄새라는 비가시적 감각으로 전치시킨다.", "romanized": "Gisaengchung-ui gonggan seolgyeneun, jisanggwa banjiha-ui sujik gudoreul tonghae gyegupjeok wigyereul sigakhwa-hal ppun anira, geu gyeonggye-ui chimtu burgeungseongeul naemsaeraneun bigasijeok gamgageuro jeonchi-sikinda.", "en": "The spatial design of 'Parasite' not only visualizes class hierarchy through the vertical composition of above-ground and semi-basement, but transposes the impenetrability of that boundary into the invisible sense of smell.", "vi": "Thiết kế không gian của 'Parasite' không chỉ trực quan hóa hệ thống giai cấp qua cấu trúc thẳng đứng trên mặt đất / bán hầm, mà còn chuyển vị tính không thể thâm nhập của ranh giới đó vào giác quan vô hình là mùi."}
+    ],
+    "dialogue": [
+      {"speaker": "A", "hangul": "봉준호의 영화를 계급 비평으로만 읽는 것은 환원주의가 아닐까요?", "meaning": "Isn't reading Bong Joon-ho's films only through class critique a reductionism?"},
+      {"speaker": "B", "hangul": "계급 비평을 '환원주의'로 치부하는 것도 하나의 환원입니다. 문제는 계급을 '무엇으로' 읽느냐이지, 계급을 읽느냐 마느냐가 아닙니다.", "meaning": "Dismissing class critique as 'reductionism' is also a reduction. The issue is 'as what' one reads class, not whether one reads class."},
+      {"speaker": "A", "hangul": "한국 영화에서 '한국적인 것'이란 무엇이라고 정의할 수 있을까요?", "meaning": "How can one define 'the Korean' in Korean cinema?"},
+      {"speaker": "B", "hangul": "그 질문 자체가 함정입니다. '한국적인 것'은 본질이 아니라, 매 작품마다 새롭게 구성되는 무엇입니다.", "meaning": "That very question is a trap. 'The Korean' is not an essence but something newly constituted with each work."}
+    ],
+    "dialogue_long": [
+      {"speaker": "A", "hangul": "졸업 논문에서 홍상수 영화의 '우연성'에 대해 논하고자 합니다.", "meaning": "For my graduation thesis, I want to discuss 'contingency' in Hong Sang-soo's films.", "vi": "Trong luận văn tốt nghiệp, tôi muốn bàn về 'tính ngẫu nhiên' trong phim Hong Sang-soo."},
+      {"speaker": "B", "hangul": "홍상수의 우연성은 단순한 즉흥이 아닙니다. 그가 통제하는 것은 '우연이 발생할 수 있는 조건'이지, 우연 자체가 아닙니다.", "meaning": "Hong Sang-soo's contingency is not simple improvisation. What he controls is the 'conditions under which contingency can arise,' not contingency itself.", "vi": "Tính ngẫu nhiên của Hong Sang-soo không phải là ngẫu hứng đơn giản. Cái ông kiểm soát là 'điều kiện để cái ngẫu nhiên có thể phát sinh', không phải bản thân cái ngẫu nhiên."},
+      {"speaker": "A", "hangul": "구체적으로 말하면, 줌과 소주가 그 조건이라는 말씀이신가요?", "meaning": "Concretely, do you mean the zoom and the soju are those conditions?", "vi": "Nói cụ thể, ý thầy là zoom và rượu soju là những điều kiện đó?"},
+      {"speaker": "B", "hangul": "맞습니다. 줌은 시선을, 소주는 대화를 예측 불가능하게 만듭니다. 이 두 장치가 '우연'의 발생 조건입니다.", "meaning": "Correct. The zoom makes the gaze unpredictable; the soju makes dialogue unpredictable. These two devices are the conditions of occurrence of 'contingency.'", "vi": "Đúng. Zoom khiến cái nhìn, soju khiến đối thoại trở nên không thể dự đoán. Hai thiết bị này là điều kiện phát sinh của 'cái ngẫu nhiên'."}
+    ],
+    "roleplay_prompts": [
+      "Viết critique về một bộ phim Hàn gần đây. Vào bằng một shot cụ thể, phân tích 미장센 và 편집, đặt trong lịch sử điện ảnh Hàn. Đánh giá có lập luận.",
+      "Trong hội thảo, có người nói '한국 영화는 할리우드 공식의 복제일 뿐'. Phản bác: nêu ví dụ Bong Joon-ho hoặc Park Chan-wook — chỉ ra cách họ chiếm dụng好莱坞 코드 và 변형. Dùng '~로 사료된다'."
+    ],
+    "register_notes": "C2 영화비평: 문어체 '~다' / '~는다'. Khi phân tích kỹ thuật: 외래어 phổ biến (미장센, 롱테이크, 사운드 디자인) — Hàn ngữ hóa thuật ngữ điện ảnh. Khi đánh giá: '~로 읽힌다', '~로 사료된다'. Tránh khen rỗng (훌륭한 영화, 감동적이다) — thay bằng phân tích hiệu ứng: '~라는 효과를 낳는다'. Cite nhà phê bình Hàn: 김소영, 이효인, 정성일.",
+    "idiom_glosses": [
+      {"idiom": "봉준호의 프레임", "literal": "Khung hình của Bong Joon-ho", "meaning": "Phân tích lớp học qua không gian — Bong Joon-ho nổi tiếng với việc dùng kiến trúc (thẳng đứng / ngầm) để biểu đạt giai cấp.", "example": "봉준호의 프레임은 계급을 '보이게' 만드는 것이 아니라, 계급이 어떻게 '보이지 않게' 작동하는지를 드러낸다."},
+      {"idiom": "한국형 블록버스터 (Hangukhyeong beullokbeoseuteo)", "literal": "Blockbuster kiểu Hàn", "meaning": "Term chỉ các phim thương mại quy mô lớn của Hàn từ 1990s (Shiri, 1999) kết hợp Hollywood spectacle với sentiment Hàn. Thường mang yếu tố 민족주의.", "example": "한국형 블록버스터는 할리우드의 공식을 차용하면서도, 그 서사적 정서에서는 철저히 한국적이다."}
+    ],
+    "cultural_notes_vi": "PHÊ BÌNH ĐIỆN ẢNH HÀN:\n(1) KIỂM DUYỆT (1961-1987): dưới Park Chung-hee và Chun Doo-hwan, phim bị kiểm duyệt gắt gao. Phê bình cũng bị giới hạn.\n(2) NEW KOREAN CINEMA (1990s): sau dân chủ hóa 1987, bùng nổ sáng tạo. Park Chan-wook, Bong Joon-ho, Kim Ki-duk, Hong Sang-soo, Lee Chang-dong.\n(3) CINE21 (1995-): tạp chí điện ảnh hàng đầu — nơi phê bình báo chí chuyên nghiệp phát triển.\n(4) TOÀN CẦU HÓA: Parasite (2019) giành Oscar — đưa phê bình điện ảnh Hàn ra toàn cầu.\n(5) ĐẶC THÙ: Phê bình Hàn không dùng từ vựng nặng lý thuyết Âu-Mỹ như Pháp. Thiên về phân tích narrative và 사회적 맥락 hơn là hình thức thuần túy.",
+    "tip_advice_vi": "C2 영화비평 작성: (1) Chọn một shot cụ thể — phân tích 미장센 (camera, ánh sáng, diễn xuất). (2) Phân tích 편집 (nhịp, elip). (3) Đặt trong 필모그래피 của đạo diễn. (4) Liên hệ với 사회적 맥락 (giai cấp, lịch sử, giới). (5) Đưa ra 평가 có lập luận. Tránh: tóm tắt cốt truyện dài, ý kiến cảm tính.",
+    "exercises": [
+      {"type": "fill-blank", "question": "봉준호의 프레임은, 계급적 시선의 구조 자체를 ___하는 장치이다.", "answer": "물질화"},
+      {"type": "matching", "pairs": [{"hangul": "미장센", "meaning": "Mise en scène — dàn dựng"}, {"hangul": "롱테이크", "meaning": "Long take — cú máy dài"}, {"hangul": "작가주의", "meaning": "Auteur theory"}, {"hangul": "응시의 정치학", "meaning": "Politics of the gaze"}], "instruction": "Nối thuật ngữ phê bình điện ảnh với nghĩa"},
+      {"type": "translation", "vietnamese": "Việc dựng phim của Park Chan-wook ưu tiên sự va chạm của cảm xúc hơn tính liên tục tự sự. Chính sự va chạm đó là thái độ đạo đức mà phim của ông đòi hỏi ở khán giả.", "hangul": "박찬욱의 편집은, 서사의 연속성보다 정서의 충돌을 우선시한다. 그 충돌이야말로 그의 영화가 관객에게 요구하는 윤리적 태도이다."}
+    ]
+  }  ,
+  {
+    "id": 114, "level": "C2",
+    "title_vi": "Phân tích diễn văn chính trị (정치 담화 분석)", "title_en": "Analyzing political discourse",
+    "intro_vi": "정치 담화 분석 (political discourse analysis) ở Hàn Quốc có đặc thù riêng: sự phân cực chính trị gay gắt (진보 vs 보수), vai trò của các biểu tượng lịch sử (광주, 제주 4.3, 촛불혁명), và sự bùng nổ của 정치 유튜브 (political YouTube) từ 2010s. C2 đòi hỏi phân biệt giữa 연설 (formal speech), 토론 (debate), và SNS 정치 담화. Phân tích tập trung vào: 대명사 (pronouns — 우리/그들), 역사적 참조 (historical references), và 감정적 호소 (emotional appeals).",
+    "vocabulary": [
+      {"hangul": "정치 담화 (政治談話)", "meaning": "diễn ngôn chính trị / political discourse"},
+      {"hangul": "대통령 연설 (大統領演說)", "meaning": "bài phát biểu tổng thống"},
+      {"hangul": "국회 연설 (國會演說)", "meaning": "bài phát biểu quốc hội"},
+      {"hangul": "수사 분석 (修辭分析)", "meaning": "phân tích tu từ"},
+      {"hangul": "대명사 정치학 (代名詞政治學)", "meaning": "chính trị học đại từ"},
+      {"hangul": "감정적 호소 (感情的呼訴)", "meaning": "kêu gọi cảm xúc / pathos"},
+      {"hangul": "역사적 정당성 (歷史的正當性)", "meaning": "tính chính danh lịch sử"},
+      {"hangul": "포퓰리즘 (populism)", "meaning": "chủ nghĩa dân túy"},
+      {"hangul": "양극화 (兩極化)", "meaning": "sự phân cực / polarization"},
+      {"hangul": "공론장 (公論場)", "meaning": "không gian công luận (Habermas)"}
+    ],
+    "sentences": [
+      {"korean": "한국 정치 담화의 특징은, '우리'와 '그들'이라는 대명사가 이념적 경계를 구축하는 핵심 장치로 기능한다는 점이다.", "romanized": "Hanguk jeongchi damhwa-ui teukjing-eun, 'uri'wa 'geudeul'iraneun daemyeongsaga inyeomjeok gyeonggyereul guchuk-haneun haeksim jangchiro gineung-handaneun jeom-ida.", "en": "A characteristic of Korean political discourse is that the pronouns 'we' and 'they' function as the core device for constructing ideological boundaries.", "vi": "Đặc trưng của diễn ngôn chính trị Hàn Quốc là các đại từ 'chúng ta' và 'chúng nó' vận hành như thiết bị cốt lõi để kiến tạo ranh giới ý thức hệ."},
+      {"korean": "김대중의 '햇볕정책' 연설은, 적대자를 '형제'로 재명명함으로써, 정치적 상상력 자체를 변환시키려 한 시도였다고 평가된다.", "romanized": "Gimdaejung-ui 'haetbyeot-jeongchaek' yeonseoreun, jeokdaejareul 'hyeongje'ro jaemyeongmyeong-hameurosseo, jeongchijeok sangsangnyeok jachereul byeonhwan-sikiryeo han sidoyeotdago pyeongga-doenda.", "en": "Kim Dae-jung's 'Sunshine Policy' speech is assessed as an attempt to transform political imagination itself by renaming the enemy as 'brother.'", "vi": "Diễn văn 'Chính sách ánh dương' của Kim Dae-jung được đánh giá là một nỗ lực biến đổi chính trí tưởng tượng chính trị bằng cách định danh lại kẻ thù thành 'anh em'."},
+      {"korean": "촛불혁명 이후의 정치 담화는, '국민'이라는 단어의 사용 빈도가 급증하고, 그 의미 또한 '저항하는 주체'에서 '심판하는 주권자'로 이동한 것이 두드러진 특징이다.", "romanized": "Chotbul-hyeongmyeong ihuui jeongchi damhwaneun, 'gungmin'iraneun daneo-ui sayong bindoga geupjeung-hago, geu uimi ttohan 'jeohang-haneun juche'eseo 'simpan-haneun jugwonja'ro idong-han geosi dudeureojin teukjing-ida.", "en": "A salient feature of political discourse after the Candlelight Revolution is that the frequency of the word 'the people' surged, and its meaning shifted from 'resisting subject' to 'sovereign who judges.'", "vi": "Đặc điểm nổi bật của diễn ngôn chính trị hậu Cách mạng Nến là tần suất từ 'quốc dân' tăng vọt, và nghĩa của nó cũng dịch chuyển từ 'chủ thể kháng cự' sang 'chủ quyền phán xét'."},
+      {"korean": "한국 정치 연설에서 '역사적 정당성'에 대한 호소는 거의 필수적이다. 문제는, 어느 쪽도 자신의 '역사'를 절대화한다는 데 있다.", "romanized": "Hanguk jeongchi yeonseoreseo 'yeoksajeok jeongdangseong'e daehan hosoneun geoui pilsujeog-ida. Munjeneun, eoneu jjokdo jasinui 'yeoksa'reul jeoldaehwa-handaneun de itda.", "en": "In Korean political speeches, an appeal to 'historical legitimacy' is almost mandatory. The problem is that each side absolutizes its own 'history.'", "vi": "Trong diễn văn chính trị Hàn Quốc, sự kêu gọi đến 'tính chính danh lịch sử' hầu như là bắt buộc. Vấn đề là bên nào cũng tuyệt đối hóa 'lịch sử' của mình."},
+      {"korean": "문재인의 연설문은, 긴 문장과 복문을 통해 복잡한 현실을 그대로 담아내려는 문체적 특성을 보인다. 이는 박근혜의 짧고 단정적인 문체와 극명하게 대비된다.", "romanized": "Mun-jaein-ui yeonseol-muneun, gin munjanggwa bongmun-eul tonghae bokjap-han hyeonsireul geudaero damanaeryeoneun munchejeok teukseong-eul boinda. I-neun Bak-Geunhye-ui jjalgo danjeongjeo-gin munchewa geungmyeong-hage daebi-doenda.", "en": "Moon Jae-in's speeches display a stylistic characteristic that attempts to capture complex reality as it is through long sentences and complex clauses. This contrasts starkly with Park Geun-hye's short, declarative style.", "vi": "Diễn văn của Moon Jae-in thể hiện đặc trưng văn phong muốn nắm bắt thực tại phức tạp như nó là qua câu dài và câu phức. Điều này tương phản rõ rệt với văn phong ngắn và quyết đoán của Park Geun-hye."}
+    ],
+    "dialogue": [
+      {"speaker": "A", "hangul": "한국 대통령 연설문의 수사적 특징을 가장 잘 보여주는 예는 무엇일까요?", "meaning": "What example best shows the rhetorical characteristics of Korean presidential speeches?"},
+      {"speaker": "B", "hangul": "김대중 대통령의 2000년 6.15 남북정상회담 기자회견문을 추천합니다. '적'에서 '형제'로의 명명 전환이 단적으로 드러나는 텍스트입니다.", "meaning": "I recommend President Kim Dae-jung's press conference statement at the June 15, 2000 Inter-Korean Summit. It is a text where the shift in naming from 'enemy' to 'brother' appears in concentrated form."}
+    ],
+    "dialogue_long": [
+      {"speaker": "A", "hangul": "박사 논문에서 한국 대통령 연설문의 '국민' 용례 변천을 추적하고자 합니다.", "meaning": "In my doctoral dissertation, I want to trace the evolution of the usage of 'the people' in Korean presidential speeches.", "vi": "Trong luận án tiến sĩ, tôi muốn truy vết sự biến thiên của cách dùng từ 'quốc dân' trong diễn văn tổng thống Hàn Quốc."},
+      {"speaker": "B", "hangul": "시기를 구분하는 것이 중요합니다. 군사정권 시기, 민주화 이후, 그리고 촛불혁명 이후 — 각 시기마다 '국민'의 수사적 기능이 근본적으로 다릅니다.", "meaning": "It is important to periodize. The military regime period, post-democratization, and post-Candlelight Revolution — in each period, the rhetorical function of 'the people' is fundamentally different.", "vi": "Việc phân kỳ rất quan trọng. Thời kỳ chính quyền quân sự, hậu dân chủ hóa, và hậu Cách mạng Nến — mỗi thời kỳ, chức năng tu từ của 'quốc dân' khác nhau về căn bản."}
+    ],
+    "roleplay_prompts": [
+      "Phân tích một bài 연설 chính trị Hàn gần đây. Chú ý: (1) '우리' vs '그들' phân cực, (2) 역사적 참조 (광주, 제주, IMF, 촛불), (3) 문체 (긴 문장 / 짧은 문장). Kết luận hedge: '~로 사료된다'.",
+      "So sánh 연설 phong cách của hai tổng thống Hàn. Điểm khác biệt chính về 문체 (câu dài vs câu ngắn), 감정적 호소 (pathos nhiều vs ít), và 역사적 정당성 (ai được viện dẫn?)."
+    ],
+    "register_notes": "C2 정치 담화 분석: 문어체 '~다' / '~는다'. Khi phân tích: '~로 읽힌다', '~로 기능한다', '~로 사료된다'. Khi chỉ ra chiến lược: '~라는 수사적 전략은...을 겨냥한 것이다'. Tránh phán xét chính trị ('이 연설은 거짓이다') — phân tích cơ chế tu từ.",
+    "idiom_glosses": [
+      {"idiom": "촛불혁명 (Candlelight Revolution)", "literal": "Cách mạng Nến", "meaning": "Cuộc biểu tình toàn quốc 2016-2017 dẫn đến luận tội Park Geun-hye. Từ này đã trở thành mốc lịch sử trong chính trị Hàn và xuất hiện dày đặc trong diễn văn chính trị hậu-2017.", "example": "촛불혁명 이후, '국민'이라는 말은 더 이상 통치의 대상이 아니라, 통치를 심판하는 주권자를 의미하게 되었다."}
+    ],
+    "cultural_notes_vi": "DIỄN NGÔN CHÍNH TRỊ HÀN:\n(1) KIM DAE-JUNG (1998-2003): 햇볕정책 — đại từ '형제' thay '적'. Nobel Hòa bình 2000.\n(2) ROH MOO-HYUN (2003-2008): phong cách 'người bình thường', 자유주의. '권력의 국민 환원'.\n(3) PARK GEUN-HYE (2013-2017): câu ngắn, quyết đoán, ít tu từ. Bị luận tội 2017.\n(4) MOON JAE-IN (2017-2022): câu dài, phức hợp, nhấn mạnh 대화와 타협. Cựu luật sư nhân quyền.\n(5) PHÂN CỰC: 진보 (민주당 계열) vs 보수 (국민의힘 계열) — hai hệ từ vựng chính trị gần như không giao nhau.",
+    "tip_advice_vi": "C2 정치 담화 분석: (1) Đếm 대명사: 우리 / 그들 / 국민 / 국민 여러분. (2) Phân tích 역사적 참조: mỗi phe có 'lịch sử' riêng. (3) Đo 문장 길이: câu dài = 복잡성 인정; câu ngắn = 단정. (4) Xác định 감정 동원: 자랑 (niềm tự hào), 분노 (giận dữ), 희망 (hy vọng), 공포 (sợ hãi).",
+    "exercises": [
+      {"type": "fill-blank", "question": "한국 정치 담화에서 '___'과(와) '그들'이라는 대명사는 이념적 경계를 구축하는 핵심 장치이다.", "answer": "우리"},
+      {"type": "matching", "pairs": [{"hangul": "정치 담화", "meaning": "diễn ngôn chính trị"}, {"hangul": "포퓰리즘", "meaning": "chủ nghĩa dân túy"}, {"hangul": "양극화", "meaning": "phân cực"}, {"hangul": "공론장", "meaning": "không gian công luận"}], "instruction": "Nối thuật ngữ chính trị Hàn với nghĩa"},
+      {"type": "translation", "vietnamese": "Đặc trưng của diễn ngôn chính trị Hàn Quốc là các đại từ 'chúng ta' và 'chúng nó' vận hành như thiết bị cốt lõi để kiến tạo ranh giới ý thức hệ.", "hangul": "한국 정치 담화의 특징은, '우리'와 '그들'이라는 대명사가 이념적 경계를 구축하는 핵심 장치로 기능한다는 점이다."}
+    ]
+  },
+  {
+    "id": 115, "level": "C2",
+    "title_vi": "Thảo luận công dân và lý tính công cộng (시민 토론과 공적 이성)", "title_en": "Citizen deliberation and public reason",
+    "intro_vi": "시민 토론 (citizen deliberation) ở Hàn Quốc có lịch sử đặc biệt: từ các cuộc họp dân chủ hóa những năm 1980, qua các diễn đàn 공론화 (public deliberation) về các vấn đề gây tranh cãi như hạt nhân (신고리 5·6호기 공론화, 2017), đến các nền tảng 온라인 토론 (online debate platforms). C2 đòi hỏi sinh viên phân tích cách thức tổ chức và tham gia thảo luận công dân trong bối cảnh phân cực chính trị cực đoan.",
+    "vocabulary": [
+      {"hangul": "시민 토론 (市民討論)", "meaning": "thảo luận công dân"},
+      {"hangul": "공론화 (公論化)", "meaning": "đưa ra công luận / public deliberation"},
+      {"hangul": "숙의 민주주의 (熟議民主主義)", "meaning": "dân chủ thảo luận / deliberative democracy"},
+      {"hangul": "이해관계자 (利害關係者)", "meaning": "các bên liên quan / stakeholder"},
+      {"hangul": "합의 형성 (合意形成)", "meaning": "hình thành đồng thuận"},
+      {"hangul": "의견 수렴 (意見收斂)", "meaning": "thu thập ý kiến"},
+      {"hangul": "갈등 조정 (葛藤調整)", "meaning": "hòa giải xung đột"},
+      {"hangul": "소수 의견 존중 (少數意見尊重)", "meaning": "tôn trọng ý kiến thiểu số"},
+      {"hangul": "팩트체크 (fact-check)", "meaning": "kiểm tra sự thật / fact-checking"},
+      {"hangul": "공공선 (公共善)", "meaning": "thiện ích công cộng / common good"}
+    ],
+    "sentences": [
+      {"korean": "신고리 5·6호기 공론화 과정은, 무작위 추출된 시민들이 전문가 설명을 듣고 토론을 거쳐 입장을 변경할 수 있음을 보여준 대표 사례이다.", "romanized": "Sringori 5·6-hogi gongnonhwa gwajeong-eun, mujakwi chuchul-doen simindeuri jeonmunga seolmyeong-eul deutgo toron-eul geochyeo ipjang-eul byeon-gyeong-hal su itseum-eul boyeojun daepyo sarye-ida.", "en": "The public deliberation process on Shin-Kori reactors 5 & 6 is a representative case that showed that randomly selected citizens, after hearing expert explanations and passing through discussion, can change their positions.", "vi": "Quá trình công luận hóa về lò phản ứng Shin-Kori 5 & 6 là một trường hợp tiêu biểu cho thấy các công dân được chọn ngẫu nhiên, sau khi nghe chuyên gia giải thích và trải qua thảo luận, có thể thay đổi lập trường."},
+      {"korean": "한국에서 '토론'은 종종 '논쟁'이나 '말싸움'으로 오인되지만, 숙의 민주주의가 가정하는 토론은 상대방의 논증을 이해하고 자신의 입장을 수정할 가능성을 열어두는 절차이다.", "romanized": "Hangugeseo 'toron'eun jongjong 'nonjaeng'ina 'malssaum'euro oin-doejiman, sugwi minjujuuiga gajeong-haneun toroneun sangdaebang-ui nonjeung-eul ihae-hago jasin-ui ipjang-eul sujeong-hal ganeungsong-eul yeoreoduneun jeolcha-ida.", "en": "In Korea, 'debate' is often mistaken for 'argument' or 'verbal fight,' but the debate assumed by deliberative democracy is a procedure that understands the other's reasoning and leaves open the possibility of revising one's own position.", "vi": "Ở Hàn Quốc, 'tranh luận' thường bị nhầm là 'cãi vã' hay 'đấu khẩu', nhưng tranh luận mà dân chủ thảo luận giả định là một quy trình hiểu lập luận của đối phương và để mở khả năng sửa đổi lập trường của chính mình."},
+      {"korean": "시민 토론의 성패를 가르는 것은, '누가 옳은가'가 아니라 '어떤 절차로 결정할 것인가'에 대한 사전 합의다.", "romanized": "Simin toron-ui seongpaereul gareuneun geoseun, 'nuga oreunga'ga anira 'eotteon jeolcharo gyeoljeong-hal geosinga'e daehan sajeon habui-da.", "en": "What determines the success or failure of citizen deliberation is not 'who is right' but prior agreement on 'by what procedure we will decide.'", "vi": "Cái quyết định thành bại của thảo luận công dân không phải là 'ai đúng', mà là sự nhất trí trước về 'sẽ quyết định theo quy trình nào'."}
+    ],
+    "dialogue": [
+      {"speaker": "A", "hangul": "시민 토론이 실제 정책 결정에 영향을 미친 사례가 있나요?", "meaning": "Are there cases where citizen deliberation actually influenced policy decisions?"},
+      {"speaker": "B", "hangul": "신고리 공론화가 대표적입니다. 시민참여단의 권고에 따라 정부가 실제로 건설 재개를 결정했습니다. 논란은 여전하지만, 절차의 정당성은 확보된 셈이지요.", "meaning": "The Shin-Kori deliberation is representative. Following the recommendation of the citizen panel, the government actually decided to resume construction. The controversy remains, but the procedural legitimacy was secured."}
+    ],
+    "dialogue_long": [
+      {"speaker": "A", "hangul": "지역 주민 토론회에서 가장 어려운 점은, 참가자들이 이미 '답'을 정해놓고 온다는 것입니다.", "meaning": "The hardest thing about local resident discussion forums is that participants come with their 'answers' already decided.", "vi": "Điều khó nhất trong các diễn đàn thảo luận cư dân địa phương là những người tham gia đến với 'câu trả lời' đã định sẵn."},
+      {"speaker": "B", "hangul": "맞습니다. 그래서 토론의 첫 단계는 '답'을 보류하는 것입니다. '나는 이 문제에 대해 확신이 없다'라고 말할 수 있는 분위기를 만드는 것이 사회자의 역할입니다.", "meaning": "Correct. That's why the first stage of deliberation is to suspend 'answers.' The facilitator's role is to create an atmosphere where one can say 'I am not certain about this issue.'", "vi": "Đúng vậy. Vì thế bước đầu của thảo luận là hoãn lại 'câu trả lời'. Vai trò của người điều hành là tạo ra bầu không khí có thể nói 'tôi không chắc chắn về vấn đề này'."}
+    ],
+    "roleplay_prompts": [
+      "Bạn điều hành một 시민 토론회 về chính sách môi trường. Một người tham gia khăng khăng '과학이 모든 것을 해결할 것이다!' Phản hồi: 인정 (khoa học quan trọng) + 확장 (nhưng quyết định còn cần 가치 판단 — giá trị nào ưu tiên?).",
+      "Bạn phân tích so sánh 신고리 공론화 (Hàn Quốc, 2017) và Bürgerdialog Stuttgart 21 (Đức). Điểm giống / khác về 절차, 대표성, 영향력."
+    ],
+    "register_notes": "C2 시민 토론: 존댓말 (합니다/합니다) bắt buộc. Khi phản bác: '말씀하신 점 이해합니다만...' > '틀렸습니다'. Khi chất vấn: '~에 대해 구체적인 데이터를 제시해 주실 수 있습니까?'. Tránh: 감정적 공격, 단정 ('이것은 무조건 잘못이다'), 소수 의견 무시.",
+    "cultural_notes_vi": "THẢO LUẬN CÔNG DÂN HÀN:\n(1) 1980s: các cuộc họp dân chủ hóa — 공청회 (public hearing) trở thành công cụ của phong trào dân chủ.\n(2) 2017: 신고리 5·6호기 공론화 — mô hình deliberative polling đầu tiên ở cấp quốc gia. 471 công dân được chọn ngẫu nhiên, thảo luận 3 ngày, bỏ phiếu.\n(3) ONLINE: từ 2010s, 정치 유튜브 bùng nổ — cả tích cực (thông tin) lẫn tiêu cực (확증 편향, phân cực).\n(4) VẤN ĐỀ: phân cực chính trị cực đoan làm xói mòn niềm tin vào '중립적 절차'.",
+    "tip_advice_vi": "Tham gia 시민 토론 Hàn C2: (1) Xác định tiền đề chung trước khi tranh luận. (2) Yêu cầu 데이터 khi có 주장 không 근거. (3) 인정 điểm mạnh của đối phương. (4) Kết thúc bằng đề xuất 절차 thay vì kết luận nội dung.",
+    "exercises": [
+      {"type": "fill-blank", "question": "시민 토론의 성패를 가르는 것은, '누가 옳은가'가 아니라 '어떤 ___ 결정할 것인가'에 대한 사전 합의다.", "answer": "절차로"},
+      {"type": "matching", "pairs": [{"hangul": "숙의 민주주의", "meaning": "dân chủ thảo luận"}, {"hangul": "공론화", "meaning": "đưa ra công luận"}, {"hangul": "이해관계자", "meaning": "các bên liên quan"}, {"hangul": "팩트체크", "meaning": "kiểm tra sự thật"}], "instruction": "Nối thuật ngữ với nghĩa"},
+      {"type": "translation", "vietnamese": "Tranh luận mà dân chủ thảo luận giả định là quy trình hiểu lập luận của đối phương và để mở khả năng sửa đổi lập trường của mình.", "hangul": "숙의 민주주의가 가정하는 토론은 상대방의 논증을 이해하고 자신의 입장을 수정할 가능성을 열어두는 절차이다."}
+    ]
+  }
+  ,
+  {
+    "id": 116, "level": "C2",
+    "title_vi": "Viết tiểu luận học thuật (학술 에세이 작성)", "title_en": "Writing the academic essay",
+    "intro_vi": "학술 에세이 (academic essay) ở bậc C2 đòi hỏi sinh viên làm chủ được cấu trúc 논증 (lập luận) và biết cách tự phê phán (자기 비판). Khác với 논문 (thesis) vốn có cấu trúc cứng, 에세이 cho phép linh hoạt hơn nhưng vẫn đòi hỏi 계산된 구성 (bố cục được tính toán).",
+    "vocabulary": [
+      {"hangul": "논증 (論證)", "meaning": "lập luận / argumentation"},
+      {"hangul": "서론·본론·결론 (序論·本論·結論)", "meaning": "mở bài - thân bài - kết luận"},
+      {"hangul": "문제 제기 (問題提起)", "meaning": "đặt vấn đề"},
+      {"hangul": "반론 (反論)", "meaning": "phản luận / counterargument"},
+      {"hangul": "자기 비판 (自己批判)", "meaning": "tự phê phán"},
+      {"hangul": "유보 (留保)", "meaning": "bảo lưu / qualification"},
+      {"hangul": "논지 전개 (論旨展開)", "meaning": "triển khai luận điểm"}
+    ],
+    "sentences": [
+      {"korean": "좋은 학술 에세이는 결론의 참신함이 아니라, 결론에 이르는 논증의 투명성으로 평가된다.", "romanized": "Joeun haksul eseineun gyeollon-ui chamsinham-i anira, gyeollon-e ireuneun nonjeung-ui tumyeongseong-euro pyeongga-doenda.", "en": "A good academic essay is evaluated not by the novelty of its conclusion but by the transparency of the argumentation leading to it.", "vi": "Một tiểu luận học thuật tốt được đánh giá không phải bởi tính mới lạ của kết luận, mà bởi tính minh bạch của lập luận dẫn đến kết luận."},
+      {"korean": "자기 논증의 한계를 스스로 지적하는 '유보'는, 약점이 아니라 비판적 사고의 징표다.", "romanized": "Jagi nonjeung-ui hangyereul seuseuro jijeok-haneun 'yubo'neun, yakjeom-i anira bipanjeok sago-ui jingpyo-da.", "en": "The 'qualification' that points out the limits of one's own argument is not a weakness but a sign of critical thinking.", "vi": "Sự 'bảo lưu' tự chỉ ra giới hạn của lập luận mình không phải là điểm yếu, mà là dấu hiệu của tư duy phê phán."}
+    ],
+    "exercises": [
+      {"type": "fill-blank", "question": "좋은 학술 에세이는 결론의 참신함이 아니라, 결론에 이르는 ___의 투명성으로 평가된다.", "answer": "논증"},
+      {"type": "matching", "pairs": [{"hangul": "서론·본론·결론", "meaning": "mở-thân-kết"}, {"hangul": "반론", "meaning": "phản luận"}, {"hangul": "유보", "meaning": "bảo lưu / qualification"}, {"hangul": "문제 제기", "meaning": "đặt vấn đề"}], "instruction": "Nối thuật ngữ"}
+    ]
+  },
+  {
+    "id": 117, "level": "C2",
+    "title_vi": "Bảo vệ luận văn (논문 구술 심사)", "title_en": "Thesis oral defense",
+    "intro_vi": "논문 구술 심사 (oral defense) ở Hàn Quốc thường diễn ra trong không khí trang trọng nhưng ít nghi lễ hơn so với Pháp. 심사위원 (hội đồng) thường gồm 3-5 người. Thời gian: 1-2 giờ. Trọng tâm: 논리적 일관성 (tính nhất quán logic) và 연구 윤리 (đạo đức nghiên cứu).",
+    "vocabulary": [
+      {"hangul": "구술 심사 (口述審査)", "meaning": "thi vấn đáp / oral defense"},
+      {"hangul": "심사위원 (審査委員)", "meaning": "hội đồng chấm thi"},
+      {"hangul": "질의응답 (質疑應答)", "meaning": "hỏi-đáp / Q&A"},
+      {"hangul": "연구 윤리 (硏究倫理)", "meaning": "đạo đức nghiên cứu"},
+      {"hangul": "한계 인정 (限界認定)", "meaning": "thừa nhận giới hạn"}
+    ],
+    "sentences": [
+      {"korean": "구술 심사의 목적은 응시자를 곤경에 빠뜨리는 것이 아니라, 논문의 논리를 함께 검증하는 데 있다.", "romanized": "Gusul simsa-ui mokjeogeun eungsijareul gongyeong-e ppatteurineun geosi anira, nonmun-ui nollireul hamkke geomjeung-haneun de itda.", "en": "The purpose of the oral defense is not to put the candidate in a difficult position but to verify the logic of the thesis together.", "vi": "Mục đích của thi vấn đáp không phải là đẩy thí sinh vào tình thế khó, mà là cùng nhau kiểm chứng logic của luận văn."},
+      {"korean": "'모르겠습니다'라고 답하는 것은 부끄러운 일이 아니다. 모르는 것을 아는 체하는 것이야말로 학문의 정신에 반한다.", "romanized": "'Moreugetseumnida'rago dap-haneun geoseun bukkeureoun iri anida. Moreuneun geoseul aneun che-haneun geosiyamallo hangmunui jeongsine banhanda.", "en": "Answering 'I don't know' is not shameful. Pretending to know what one does not know is what goes against the spirit of scholarship.", "vi": "Trả lời 'tôi không biết' không phải là điều đáng xấu hổ. Giả vờ biết điều mình không biết mới là điều phản lại tinh thần học thuật."}
+    ],
+    "exercises": [
+      {"type": "fill-blank", "question": "구술 심사의 목적은 응시자를 곤경에 빠뜨리는 것이 아니라, 논문의 논리를 함께 ___하는 데 있다.", "answer": "검증"},
+      {"type": "matching", "pairs": [{"hangul": "구술 심사", "meaning": "thi vấn đáp / oral defense"}, {"hangul": "심사위원", "meaning": "hội đồng chấm thi"}, {"hangul": "질의응답", "meaning": "Q&A"}, {"hangul": "연구 윤리", "meaning": "đạo đức nghiên cứu"}], "instruction": "Nối thuật ngữ"}
+    ]
   }
 ];
 

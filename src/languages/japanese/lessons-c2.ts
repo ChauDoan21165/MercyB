@@ -2344,6 +2344,251 @@ export const lessons: JapaneseLesson[] = [
         "japanese": "解釈の正当性は、単一の決定的証拠ではなく、複数の傍証の収束によって支えられる。"
       }
     ]
+  }  ,
+  {
+    "id": 112,
+    "title": "Cultural criticism — art criticism",
+    "title_vi": "Phê bình văn hóa — Phê bình mỹ thuật",
+    "title_en": "Cultural criticism — art criticism",
+    "category": "arts_criticism",
+    "level": "C2",
+    "vocabulary": [
+      {"japanese": "美術批評 (びじゅつひひょう)", "english": "art criticism"},
+      {"japanese": "造形言語 (ぞうけいげんご)", "english": "plastic language / visual idiom"},
+      {"japanese": "物質性 (ぶっしつせい)", "english": "materiality"},
+      {"japanese": "支持体 (しじたい)", "english": "support / substrate (of painting)"},
+      {"japanese": "筆触 (ひっしょく)", "english": "brushstroke"},
+      {"japanese": "展示空間 (てんじくうかん)", "english": "exhibition space"},
+      {"japanese": "観者 (かんじゃ)", "english": "viewer / beholder"},
+      {"japanese": "物質への還元 (ぶっしつへのかんげん)", "english": "reduction to materiality"},
+      {"japanese": "前衛 (ぜんえい)", "english": "avant-garde"},
+      {"japanese": "具象／抽象 (ぐしょう／ちゅうしょう)", "english": "figurative / abstract"}
+    ],
+    "examples": [
+      {"japanese": "もの派の作家たちは、素材を加工するのではなく、素材そのものの「ありよう」を提示することを企てた。", "english": "The Mono-ha artists undertook not to process materials but to present the very 'way of being' of the materials themselves."},
+      {"japanese": "李禹煥の「関係項」という概念は、作品が単独で存在するのではなく、観者との関係のうちに成立することを理論化した。", "english": "Lee Ufan's concept of 'relatum' theorized that the work does not exist in isolation but comes into being within its relation to the viewer."},
+      {"japanese": "具体美術協会の前衛性は、絵画を「行為の痕跡」へと還元した点にこそあると言えよう。", "english": "The avant-garde character of the Gutai Art Association, it can be said, lies precisely in its reduction of painting to the 'trace of an act.'"},
+      {"japanese": "批評家の役割は、作品を「良い／悪い」と裁断することではなく、作品が依って立つ前提そのものを可視化することにほかならない。", "english": "The critic's role is not to judge a work as 'good/bad' but is nothing other than making visible the very premises on which the work rests."},
+      {"japanese": "戦後日本美術の歩みを振り返るとき、欧米の理論の受容と、自国の伝統との接合という二重の課題が、つねに批評の地平を規定してきた。", "english": "When looking back on the trajectory of postwar Japanese art, the dual task of receiving Western theory and joining it with native tradition has constantly defined the horizon of criticism."},
+      {"japanese": "瀧口修造の批評言語は、理論的厳密さよりも詩的喚起力を重視する点で、フランスのシュルレアリスム批評と共鳴しつつも、独自の文体を確立している。", "english": "Takiguchi Shūzō's critical language, in prioritizing poetic evocativeness over theoretical rigor, while resonating with French surrealist criticism, nevertheless establishes a distinctive style."}
+    ],
+    "dialogue": [
+      {"speaker": "院生", "japanese": "戦後日本美術を論じる際、もの派と具体、いずれを基準として設定すべきでしょうか。", "english": "When discussing postwar Japanese art, which should one set as benchmark — Mono-ha or Gutai?"},
+      {"speaker": "指導教員", "japanese": "二者択一は危うい。両者は同一の問い — 「物質とは何か」 — を異なる角度から追及したと捉えるべきでしょう。", "english": "Either-or is dangerous. One should grasp the two as having pursued the same question — 'What is materiality?' — from different angles."},
+      {"speaker": "院生", "japanese": "西洋の理論枠組みで日本美術を論じることの限界は、どこにあるとお考えですか。", "english": "Where do you see the limits of discussing Japanese art through Western theoretical frameworks?"},
+      {"speaker": "指導教員", "japanese": "限界は、「分析できたつもりになる」点です。日本の「間」や「余白」は、西欧の二元論では捉えきれない残余を常に含んでいる。", "english": "The limit is the point of 'thinking one has analyzed it.' Japanese concepts like ma and yohaku always contain a remainder that cannot be captured by Western dualism."}
+    ],
+    "dialogue_long": [
+      {"speaker": "院生", "japanese": "本日は、李禹煥の絵画作品における「余白」の機能について、ご指導いただきたく存じます。", "english": "Today, I would like to receive guidance on the function of 'blank space' in Lee Ufan's paintings."},
+      {"speaker": "指導教員", "japanese": "李禹煥にとって余白は、単なる「空白」ではない。むしろ、余白こそが「見る」という行為の発生する場である、と申せましょう。", "english": "For Lee Ufan, blank space is not mere 'emptiness.' Rather, it is precisely the blank space, one might say, that is the site where the act of 'seeing' arises."},
+      {"speaker": "院生", "japanese": "西欧のミニマリズムとの差異は、どのあたりに認められますか。", "english": "Where can the difference from Western Minimalism be recognized?"},
+      {"speaker": "指導教員", "japanese": "西欧のミニマリズムが「客体」の純粋化をめざしたのに対し、李禹煥の「余白」は、客体と観者とが「出会う」場を開くものです。", "english": "Whereas Western Minimalism aimed at the purification of the 'object,' Lee Ufan's 'blank space' opens a site where object and viewer 'encounter' each other."},
+      {"speaker": "院生", "japanese": "その「出会い」を批評言語で記述することは可能でしょうか。", "english": "Is it possible to describe that 'encounter' in the language of criticism?"},
+      {"speaker": "指導教員", "japanese": "そこが批評の最大の難所です。「出会い」は一回性の出来事であり、言語化によって一般化を被る。だが、その不可能性を自覚しつつなお書く — それが批評という営為の核心です。", "english": "That is the greatest difficulty of criticism. 'Encounter' is a one-time event, suffering generalization through verbalization. Yet, writing while being aware of that impossibility — that is the core of the enterprise called criticism."}
+    ],
+    "roleplay_prompts": [
+      "Bạn viết critique về một triển lãm của một nghệ sĩ đương đại Nhật (chọn một tên cụ thể). Cấu trúc: (1) 作品記述 cụ thể — một tác phẩm, (2) 分析: 物質性 + 空間, (3) 評価 kèm lý do. Dùng 〜と言えよう / 〜にほかならない.",
+      "Trong seminar, đồng nghiệp chỉ trích bạn '西欧理論の枠にはめすぎ'. Phản bác bằng thừa nhận giới hạn (確かに...恐れがある) + cho thấy cách bạn bổ sung lý thuyết Nhật (もの派の「関係項」で補完している)."
+    ],
+    "register_notes": "C2 美術批評 tiếng Nhật: dùng 文語的余韻 (〜と言えよう, 〜にほかならない, 〜と申せましょう). Khi mô tả tác phẩm: 〜が施されている, 〜を呈している. Khi phân tích: 〜に着目すれば, 〜として捉えるべきである. Khi phê phán: 〜にはなお議論の余地がある, 〜という限界を否めない. Tránh: 美しい, 素晴らしい — thay bằng phân tích hiệu ứng: 〜という効果を生んでいる.",
+    "idiom_glosses": [
+      {"idiom": "もの派 (ものは)", "literal": "Trường phái Vật", "meaning": "Mono-ha — trường phái nghệ thuật Nhật cuối 1960s: vật liệu tự nhiên không gia công, nhấn mạnh quan hệ giữa vật và không gian.", "example": "もの派の登場によって、日本の現代美術は初めて国際的な批評言語を獲得したと言えよう。"},
+      {"idiom": "余白の力学 (よはくのりきがく)", "literal": "Động lực học của khoảng trống", "meaning": "Dynamics of blank space — khái niệm thẩm mỹ Nhật: cái không vẽ quan trọng không kém cái được vẽ.", "example": "李禹煥の作品においては、描かれた線よりも、描かれなかった余白の力学こそが本質的である。"}
+    ],
+    "cultural_notes_vi": "PHÊ BÌNH MỸ THUẬT NHẬT:\n(1) MONO-HA (もの派, 1968-1975): Lee Ufan, Sekine Nobuo — phản ứng chống pop art và industrial modernism. Dùng đá, gỗ, thép thô, không gia công. Triết lý: 'để vật là chính nó'.\n(2) GUTAI (具体, 1954-1972): Shiraga Kazuo, Murakami Saburō. Tiền thân của performance art: vẽ bằng chân, đấm vào bùn. Yoshihara Jirō lãnh đạo.\n(3) TAKIGUCHI SHŪZŌ (1903-1979): nhà phê bình, kết nối Nhật với surrealisme Pháp.\n(4) LEE UFAN (1936-): người Hàn-Nhật, triết gia và họa sĩ, lý thuyết gia của Mono-ha. Tác phẩm: 'Từ điểm', 'Từ đường'.\n(5) ĐẶC THÙ: mỹ thuật Nhật luôn đối thoại với mỹ học cổ điển (wabi-sabi, ma, yohaku) ngay cả trong avant-garde.",
+    "tip_advice_vi": "Viết phê bình mỹ thuật Nhật C2: (1) Mô tả tác phẩm bằng hiện tại — 〜が用いられている. (2) Phân tích 2-3 trục: 素材, 空間, 観者. (3) Đặt trong lịch sử mỹ thuật Nhật: tiền chiến → 戦後 → 高度成長 → 現代. (4) Trích dẫn ít nhất một nhà phê bình Nhật (Takiguchi, Haryū, Tatehata). (5) Đưa ra đánh giá có lý do, kết thúc bằng 〜と言えよう.",
+    "exercises": [
+      {"type": "fill-blank", "question": "もの派の作家たちは、素材そのものの「___」を提示することを企てた。", "answer": "ありよう"},
+      {"type": "matching", "instruction": "Nối thuật ngữ mỹ thuật với nghĩa:", "pairs": [{"japanese": "もの派", "english": "Mono-ha — trường phái vật liệu tự nhiên"}, {"japanese": "余白", "english": "khoảng trống / blank space"}, {"japanese": "支持体", "english": "giá đỡ / substrate"}, {"japanese": "前衛", "english": "avant-garde"}]},
+      {"type": "translation", "vietnamese": "Vai trò của nhà phê bình không phải là phán xét tác phẩm 'tốt / xấu', mà là làm cho thấy được chính những tiền đề mà tác phẩm dựa vào.", "japanese": "批評家の役割は、作品を「良い／悪い」と裁断することではなく、作品が依って立つ前提そのものを可視化することにほかならない。"}
+    ]
+  },
+  {
+    "id": 113,
+    "title": "Cultural criticism — film criticism",
+    "title_vi": "Phê bình văn hóa — Phê bình điện ảnh",
+    "title_en": "Cultural criticism — film criticism",
+    "category": "arts_criticism",
+    "level": "C2",
+    "vocabulary": [
+      {"japanese": "映画批評 (えいがひひょう)", "english": "film criticism"},
+      {"japanese": "画面構成 (がめんこうせい)", "english": "shot composition / mise en scène"},
+      {"japanese": "長回し (ながまわし)", "english": "long take / plan-séquence"},
+      {"japanese": "編集／モンタージュ (へんしゅう)", "english": "editing / montage"},
+      {"japanese": "音響設計 (おんきょうせっけい)", "english": "sound design"},
+      {"japanese": "画面外 (がめんがい)", "english": "off-screen space"},
+      {"japanese": "作家主義 (さっかしゅぎ)", "english": "auteur theory"},
+      {"japanese": "視線の政治学 (しせんのせいじがく)", "english": "politics of the gaze"},
+      {"japanese": "長編デビュー作 (ちょうへんデビューさく)", "english": "feature debut"},
+      {"japanese": "映像倫理 (えいぞうりんり)", "english": "ethics of the image"}
+    ],
+    "examples": [
+      {"japanese": "小津安二郎のロー・ポジション撮影は、単なる様式ではなく、世界を見る態度そのものを表明している。", "english": "Ozu Yasujirō's low-position cinematography is not mere style — it declares the very attitude through which the world is seen."},
+      {"japanese": "濱口竜介の長回しは、観客に「待つ」ことを強いる。その待機の時間のなかで、ことばにできない感情が立ち現れる。", "english": "Hamaguchi Ryūsuke's long takes force the audience to 'wait.' Within that waiting-time, emotions that cannot be put into words come to appearance."},
+      {"japanese": "黒澤明の編集は、時に文法を無視するほど性急だが、その性急さそのものが戦後の焦燥を体現していると言えよう。", "english": "Kurosawa Akira's editing is at times so impatient as to disregard grammar, but that very impatience, one may say, embodies postwar anxiety."},
+      {"japanese": "批評とは、監督の意図をなぞることではない。映像が意図を超えて提示してしまっているもの — それを言語化する作業にほかならない。", "english": "Criticism is not tracing a director's intention. It is nothing other than the work of verbalizing what the image has presented beyond intention."},
+      {"japanese": "日本映画批評の伝統は、蓮實重彦の登場によって決定的な転回を遂げた。作品の「深層」ではなく「表層」を読む — この方法は今なお有効である。", "english": "The tradition of Japanese film criticism underwent a decisive turn with the appearance of Hasumi Shigehiko. Reading not the 'deep strata' but the 'surface' of a work — this method remains effective even now."},
+      {"japanese": "国際映画祭において評価される「日本的なるもの」が、しばしば日本人批評家の見る「日本映画」と乖離することは、批評の政治性を考える上で避けて通れない問題である。", "english": "That the 'Japaneseness' valued at international film festivals often diverges from the 'Japanese cinema' seen by Japanese critics is an unavoidable problem in considering the politics of criticism."}
+    ],
+    "dialogue": [
+      {"speaker": "院生", "japanese": "濱口竜介の『ドライブ・マイ・カー』における長回しの機能を分析したいのですが、どの観点から切り込むべきでしょうか。", "english": "I want to analyze the function of the long take in Hamaguchi's 'Drive My Car' — from what angle should I cut in?"},
+      {"speaker": "指導教員", "japanese": "長回しの「長さ」ではなく、長回しの「あいだ」に何が起きているかに着目しなさい。濱口の場合、ことばの「ずれ」が可視化される時間がそれです。", "english": "Focus not on the 'length' of the long take but on what happens in the 'interval' of the long take. In Hamaguchi's case, that is the time in which the 'slippage' of language becomes visible."},
+      {"speaker": "院生", "japanese": "蓮實重彦の表層批評を、現代の日本映画にそのまま適用することは可能でしょうか。", "english": "Is it possible to apply Hasumi Shigehiko's surface criticism directly to contemporary Japanese cinema?"},
+      {"speaker": "指導教員", "japanese": "可能ですが、蓮實の方法を「固有名詞」としてではなく、「表層を読む態度」として継承することが肝要です。", "english": "Possible, but it is essential to inherit Hasumi's method not as a 'proper noun' but as an 'attitude of reading the surface.'"}
+    ],
+    "dialogue_long": [
+      {"speaker": "院生", "japanese": "卒業論文で、是枝裕和の作品における「不在の演出」について論じたいと考えております。", "english": "For my graduation thesis, I am considering discussing the 'direction of absence' in Kore-eda Hirokazu's works."},
+      {"speaker": "指導教員", "japanese": "「不在の演出」とは、具体的にどのような映像操作を指していますか。", "english": "What specific cinematic operation does 'direction of absence' refer to?"},
+      {"speaker": "院生", "japanese": "たとえば『万引き家族』における、家族の「解体」の場面です。決定的な瞬間を映さず、その直前と直後だけを提示することで、かえって喪失の重みが増幅されています。", "english": "For instance, the scene of the family's 'dissolution' in 'Shoplifters.' By not showing the decisive moment and presenting only the before and after, the weight of loss is paradoxically amplified."},
+      {"speaker": "指導教員", "japanese": "良い着眼です。しかし「不在」という概念は、ともすれば印象批評に堕する危険があります。各場面のフレーム、音響、編集を、具体的に記述しなさい。", "english": "A good eye. But the concept of 'absence' risks falling into impressionistic criticism if you're not careful. Concretely describe the frame, sound, and editing of each scene."}
+    ],
+    "roleplay_prompts": [
+      "Bạn viết critique về một bộ phim Nhật gần đây. Vào bằng một cảnh cụ thể, phân tích 画面構成 và 編集. Đặt trong dòng phim Nhật. Đưa ra đánh giá có lý do, kết thúc bằng 〜と言えよう."
+    ],
+    "register_notes": "C2 映画批評: dùng 〜と言えよう, 〜にほかならない, 〜と申せましょう. Khi phân tích kỹ thuật: 〜が施されている, 〜が用いられている. Khi phê phán: 〜にはなお課題が残る, 〜という危うさを孕んでいる. Tránh: 感動した, 涙が出た → đó không phải critique. Trích dẫn: 蓮實重彦 (表層批評), 佐藤忠男 (lịch sử điện ảnh Nhật), 四方田犬彦 (văn hóa học điện ảnh).",
+    "idiom_glosses": [
+      {"idiom": "画面の外 (がめんのそと)", "literal": "Bên ngoài khung hình", "meaning": "Off-screen — không gian không được quay nhưng hàm nghĩa mạnh. Đặc biệt quan trọng trong phân tích Ozu và Kore-eda.", "example": "小津の画面の外には、つねに「見守る誰か」の視線が想定されている。"}
+    ],
+    "cultural_notes_vi": "PHÊ BÌNH ĐIỆN ẢNH NHẬT:\n(1) OZU (1903-1963): low angle, pillow shots, ellipsis. Không kể drama — quan sát đời thường.\n(2) KUROSAWA (1910-1998): montage nhanh, ảnh hưởng Ford + kabuki. Gate to the West.\n(3) HASUMI SHIGEHIKO (1936-): bậc thầy phê bình. Ozu, Naruse, Kurosawa. 表層批評.\n(4) HAMAGUCHI (1978-): 'Drive My Car', 'Happy Hour' — thời gian và ngôn ngữ.\n(5) ĐẶC THÙ: Japanese film criticism luôn song hành với lý thuyết điện ảnh Pháp (Bazin, Deleuze) nhưng biến đổi qua mỹ học Nhật (ma, maai, yohaku).",
+    "tip_advice_vi": "Khi viết phê bình điện ảnh Nhật C2: (1) Chọn MỘT cảnh làm trung tâm — không tóm tắt toàn phim. (2) Phân tích cụ thể: frame, camera distance, length of take, sound, editing. (3) Đặt trong lịch sử: tiền chiến → 戦後 occupation → New Wave → J-horror → đương đại. (4) Đối thoại với ít nhất một nhà phê bình Nhật.",
+    "exercises": [
+      {"type": "fill-blank", "question": "濱口竜介の長回しは、観客に「___」ことを強いる。", "answer": "待つ"},
+      {"type": "matching", "instruction": "Nối thuật ngữ với nghĩa:", "pairs": [{"japanese": "長回し", "english": "long take / plan-séquence"}, {"japanese": "作家主義", "english": "auteur theory"}, {"japanese": "画面外", "english": "off-screen space"}, {"japanese": "表層批評", "english": "surface criticism (Hasumi)"}]},
+      {"type": "translation", "vietnamese": "Phê bình không phải là lần theo ý đồ của đạo diễn. Đó là công việc ngôn ngữ hóa cái mà hình ảnh đã trình hiện vượt ra ngoài ý đồ.", "japanese": "批評とは、監督の意図をなぞることではない。映像が意図を超えて提示してしまっているもの — それを言語化する作業にほかならない。"}
+    ]
+  }  ,
+  {
+    "id": 114, "level": "C2", "category": "civic_discourse",
+    "title": "Civic discourse — analyzing political speech", "title_vi": "Diễn ngôn công dân — Phân tích diễn văn chính trị", "title_en": "Civic discourse — analyzing political speech",
+    "vocabulary": [
+      {"japanese": "政治演説 (せいじえんぜつ)", "english": "political speech"},
+      {"japanese": "所信表明演説 (しょしんひょうめいえんぜつ)", "english": "policy speech (Prime Minister)"},
+      {"japanese": "修辞分析 (しゅうじぶんせき)", "english": "rhetorical analysis"},
+      {"japanese": "代名詞の政治学 (だいめいしのせいじがく)", "english": "politics of pronouns"},
+      {"japanese": "空疎な言葉 (くうそなことば)", "english": "empty rhetoric / hollow words"},
+      {"japanese": "説得力 (せっとくりょく)", "english": "persuasiveness"},
+      {"japanese": "大衆煽動 (たいしゅうせんどう)", "english": "demagoguery"},
+      {"japanese": "熟議 (じゅくぎ)", "english": "deliberation"},
+      {"japanese": "公的理性 (こうてきりせい)", "english": "public reason"},
+      {"japanese": "熟議民主主義 (じゅくぎみんしゅしゅぎ)", "english": "deliberative democracy"}
+    ],
+    "examples": [
+      {"japanese": "日本の政治演説は、しばしば「熟議」よりも「空気」によって動かされる。この「空気」を分析することこそ、修辞分析の課題である。", "english": "Japanese political speech is often moved by 'atmosphere' rather than 'deliberation.' Analyzing this 'atmosphere' is precisely the task of rhetorical analysis."},
+      {"japanese": "首相の所信表明演説において、「わたくし」ではなく「私」が用いられる時、話者は個人としてではなく「公的人間」として語っている。", "english": "When in the Prime Minister's policy speech 'watakushi' rather than 'watashi' is used, the speaker is speaking not as an individual but as a 'public person.'"},
+      {"japanese": "戦後日本の国会演説における最大の転換点は、一九九五年の村山首相による「植民地支配と侵略」への謝罪表明であった。この一言が、半世紀にわたる修辞的回避に終止符を打ったのである。", "english": "The greatest turning point in postwar Japanese parliamentary speech was Prime Minister Murayama's 1995 apology for 'colonial rule and aggression.' This single phrase put an end to half a century of rhetorical evasion."},
+      {"japanese": "日本の政治演説に特徴的なのは、「〜ではないか」「〜と考えております」などの断定回避表現である。これらは単なる語癖ではなく、責任の所在を曖昧化する修辞戦略にほかならない。", "english": "Characteristic of Japanese political speech are assertion-avoiding expressions like 'is it not...' and 'I am thinking that...' These are not mere verbal habits; they are nothing other than a rhetorical strategy for obscuring where responsibility lies."},
+      {"japanese": "街頭演説においては、話者と聴衆との距離が、国会演説とは根本的に異なる。その距離が近いほど、「われわれ」という代名詞の求心力が強く働く。", "english": "In street speeches, the distance between speaker and audience differs fundamentally from parliamentary speech. The closer that distance, the more strongly the centripetal force of the pronoun 'we' operates."}
+    ],
+    "dialogue": [
+      {"speaker": "院生", "japanese": "日本の総理の所信表明演説を修辞分析する際、何に着目すべきでしょうか。", "english": "When rhetorically analyzing a Japanese Prime Minister's policy speech, what should one focus on?"},
+      {"speaker": "指導教員", "japanese": "まず代名詞です。「私」「わたくし」「我々」「国民の皆様」—それぞれの出現頻度と文脈が、話者の権力観を露呈します。", "english": "First, pronouns. 'I,' 'I (formal),' 'we,' 'everyone of the nation' — the frequency and context of each exposes the speaker's conception of power."}
+    ],
+    "dialogue_long": [
+      {"speaker": "院生", "japanese": "卒業論文で、村山談話の修辞分析を行いたいと考えております。", "english": "For my graduation thesis, I wish to conduct a rhetorical analysis of the Murayama Statement."},
+      {"speaker": "指導教員", "japanese": "良いテーマです。一九九五年八月十五日、村山富市首相は「植民地支配と侵略」という言葉を初めて用いました。この言葉に至るまでの五十年間の「迂言的表現」の系譜をまず整理しなさい。", "english": "A good topic. On August 15, 1995, Prime Minister Murayama Tomiichi used the words 'colonial rule and aggression' for the first time. First, organize the genealogy of 'circumlocutory expressions' over the fifty years leading to those words."}
+    ],
+    "roleplay_prompts": [
+      "Bạn phân tích một bài diễn văn quốc hội Nhật gần đây. Dùng 3 trục: 代名詞 (pronouns), 断定回避 (assertion avoidance), 歴史的参照 (historical references). Kết luận: この演説が構築する「日本」とは...",
+      "Trong seminar, bạn so sánh 修辞 chiến lược của hai thủ tướng Nhật. Chỉ ra sự khác biệt giữa '強いリーダーシップ' rhetoric (Abe) và '熟議' rhetoric (Kan)."
+    ],
+    "register_notes": "C2 政治演説分析: 文語的余韻 (〜にほかならない, 〜と言えよう). 断定回避表現の分析が中心: 〜ではないか, 〜と考えております, 〜ではないでしょうか. Khi phê phán: 〜という修辞戦略は、〜という効果を狙ったものである. Tránh: phán xét chính trị cá nhân.",
+    "cultural_notes_vi": "DIỄN VĂN CHÍNH TRỊ NHẬT:\n(1) 村山談話 (1995): Thủ tướng Murayama lần đầu dùng từ 'xâm lược' và 'cai trị thuộc địa' — bước ngoặt ngôn ngữ trong chính trị Nhật.\n(2) 安倍 (Abe): phong cách 'mạnh mẽ' — 断言 nhiều, 曖昧さ ít hơn. '美しい国' (đất nước tươi đẹp).\n(3) ĐẶC THÙ: Diễn văn chính trị Nhật dùng rất nhiều 敬語 và 断定回避. Phân tích phải chú ý đến 空気 (bầu không khí) và 建前/本音 (bề ngoài / thực tâm).",
+    "tip_advice_vi": "Phân tích diễn văn chính trị Nhật C2: (1) Đếm đại từ (私/わたくし/我々/国民). (2) Đếm断定回避表現. (3) Xác định 歴史的参照 (Meiji / chiến tranh / hòa bình). (4) Phân tích 空気 — điều không nói ra.",
+    "exercises": [
+      {"type": "fill-blank", "question": "日本の政治演説に特徴的なのは、「〜ではないか」「〜と考えております」などの___表現である。", "answer": "断定回避"},
+      {"type": "matching", "instruction": "Nối thuật ngữ:", "pairs": [{"japanese": "所信表明演説", "english": "policy speech (PM)"}, {"japanese": "熟議", "english": "deliberation"}, {"japanese": "空疎な言葉", "english": "empty rhetoric"}, {"japanese": "大衆煽動", "english": "demagoguery"}]},
+      {"type": "translation", "vietnamese": "Phân tích 'bầu không khí' trong diễn văn chính trị Nhật — chính điều không được nói ra mới thường là điều quan trọng nhất.", "japanese": "日本の政治演説における「空気」を分析すること — 語られないことこそが、しばしば最も重要なのである。"}
+    ]
+  },
+  {
+    "id": 115, "level": "C2", "category": "civic_discourse",
+    "title": "Civic discourse — citizen deliberation and public reason", "title_vi": "Diễn ngôn công dân — Thảo luận công dân và lý tính công cộng", "title_en": "Civic discourse — citizen deliberation and public reason",
+    "vocabulary": [
+      {"japanese": "市民参加 (しみんさんか)", "english": "citizen participation"},
+      {"japanese": "公聴会 (こうちょうかい)", "english": "public hearing"},
+      {"japanese": "討論型世論調査 (とうろんがたよろんちょうさ)", "english": "deliberative polling"},
+      {"japanese": "合意形成 (ごういけいせい)", "english": "consensus building"},
+      {"japanese": "意見集約 (いけんしゅうやく)", "english": "opinion aggregation"},
+      {"japanese": "少数意見の尊重 (しょうすういけんのそんちょう)", "english": "respect for minority opinions"},
+      {"japanese": "根回し (ねまわし)", "english": "prior consensus-building / nemawashi"},
+      {"japanese": "熟議の場 (じゅくぎのば)", "english": "forum for deliberation"},
+      {"japanese": "世論 (よろん／せろん)", "english": "public opinion"},
+      {"japanese": "付度 (そんたく)", "english": "surmising superior's intent / sontaku"}
+    ],
+    "examples": [
+      {"japanese": "日本社会において、公式の「議論」の前に「根回し」が行われることは、しばしば非民主的と批判される。しかし、「根回し」がなければ合意形成そのものが不可能になる場合も少なくない。", "english": "In Japanese society, the fact that 'nemawashi' is conducted before formal 'debate' is often criticized as undemocratic. Yet there are not few cases where consensus-building itself becomes impossible without nemawashi."},
+      {"japanese": "「忖度」という言葉が二〇一七年に流行語となった背景には、公的議論の場で語られる「建前」と、場の外で交わされる「本音」との乖離がある。", "english": "The background to 'sontaku' becoming a buzzword in 2017 is the divergence between the 'tatemae' spoken in public forums and the 'honne' exchanged outside them."},
+      {"japanese": "討論型世論調査は、無作為抽出された市民が、専門家の説明を受け、討論を経て意見を変化させるプロセスを可視化する。この手法は、通常の世論調査が見落とす「熟議」の可能性を示している。", "english": "Deliberative polling visualizes the process in which randomly selected citizens, receiving expert explanations and passing through discussion, change their opinions. This method shows the possibility of 'deliberation' that ordinary opinion polls overlook."}
+    ],
+    "dialogue": [
+      {"speaker": "市民A", "japanese": "どうせ私たちの意見は政策に反映されない。公聴会に行っても意味がない。", "english": "Our opinions are never reflected in policy anyway. There's no point going to public hearings."},
+      {"speaker": "Linh", "japanese": "お気持ちは理解できます。しかし、声をあげなければ「なかったこと」にされる。それに対して、声をあげれば「あったこと」になる — その差は小さくないと存じます。", "english": "I understand your feeling. But if you don't raise your voice, it becomes 'something that never happened.' Whereas if you raise your voice, it becomes 'something that happened' — that difference, I believe, is not small."}
+    ],
+    "dialogue_long": [
+      {"speaker": "ファシリテーター", "japanese": "本日は、この地域のまちづくり計画について、市民の皆様のご意見を伺います。ルールは一つです：人の意見を遮らないこと。", "english": "Today we will hear the opinions of citizens regarding the town development plan for this area. There is one rule: do not interrupt others' opinions."},
+      {"speaker": "Linh", "japanese": "まず確認したいのは、この計画の「前提」です。人口減少を前提としたコンパクトシティなのか、それとも子育て支援による人口維持を前提とするのか — この前提を共有しなければ、その先の議論は噛み合いません。", "english": "First, I want to confirm the 'premise' of this plan. Is it a compact city premised on population decline, or is it premised on population maintenance through child-rearing support? Unless we share this premise, further discussion will not mesh."}
+    ],
+    "roleplay_prompts": [
+      "Bạn điều hành một 市民討論会 về chính sách năng lượng hạt nhân. Một công dân nói '原発は絶対にダメだ！' — hãy trả lời: công nhận cảm xúc, nhưng mời đối thoại dựa trên dữ liệu cụ thể về an toàn và chi phí.",
+      "Bạn phân tích so sánh 根回し (Nhật) và Bürgerdialog (Đức). Chỉ ra điểm mạnh / yếu của mỗi mô hình. Kết luận: 両者は「合意形成」の異なる二つの文化であり、一方が他方より「民主的」とは一概に言えない。"
+    ],
+    "register_notes": "C2 市民討論: 敬語 (です・ます体) bắt buộc trong bối cảnh công. Khi phản bác: 'おっしゃることは理解できますが...' > '違います'. Khi chất vấn người có thẩm quyền: '〜について、もう少し詳しくご説明いただけますか.' Tránh: 断定, 感情的な反論, 遮り.",
+    "cultural_notes_vi": "THẢO LUẬN CÔNG DÂN NHẬT:\n(1) 根回し — nemawashi: bàn bạc không chính thức trước khi có quyết định chính thức. Bị chỉ trích là thiếu minh bạch, nhưng là chất bôi trơn xã hội.\n(2) 忖度 — sontaku: 'đoán ý trên'. Từ này thành buzzword 2017 sau bê bối Moritomo.\n(3) 討論型世論調査: mô hình Mỹ (James Fishkin) được áp dụng ở Nhật từ 2000s.\n(4) 公聴会: formal nhưng ít quyền lực thực sự — thường bị coi là hình thức.",
+    "tip_advice_vi": "Tham gia 市民討論 Nhật C2: (1) Nêu tiền đề trước khi lập luận. (2) Dùng です・ます thể hiện tôn trọng. (3) Nhận ra 空気 nhưng không bị nó chi phối. (4) Biết khi nào 根回し cần và khi nào cần minh bạch.",
+    "exercises": [
+      {"type": "fill-blank", "question": "公式の「議論」の前に「___」が行われることは、日本社会の合意形成に不可欠なプロセスである。", "answer": "根回し"},
+      {"type": "matching", "instruction": "Nối thuật ngữ:", "pairs": [{"japanese": "根回し", "english": "prior informal consensus"}, {"japanese": "忖度", "english": "surmising superior's intent"}, {"japanese": "討論型世論調査", "english": "deliberative polling"}, {"japanese": "合意形成", "english": "consensus building"}]},
+      {"type": "translation", "vietnamese": "Nếu không lên tiếng thì sẽ bị coi là 'không có chuyện đó'. Lên tiếng thì thành 'có chuyện đó' — sự khác biệt này không hề nhỏ.", "japanese": "声をあげなければ「なかったこと」にされ、声をあげれば「あったこと」になる — その差は小さくない。"}
+    ]
+  }
+  ,
+  {
+    "id": 116, "level": "C2", "category": "rhetoric_capstone",
+    "title": "Rhetoric capstone — writing the critical essay", "title_vi": "Viết tiểu luận phê bình — 評論執筆", "title_en": "Rhetoric capstone — writing the critical essay",
+    "vocabulary": [
+      {"japanese": "評論 (ひょうろん)", "english": "critical essay / critique"},
+      {"japanese": "論証 (ろんしょう)", "english": "argumentation / proof"},
+      {"japanese": "起承転結 (きしょうてんけつ)", "english": "four-part structure (classical)"},
+      {"japanese": "序論・本論・結論 (じょろん・ほんろん・けつろん)", "english": "introduction-body-conclusion"},
+      {"japanese": "問題提起 (もんだいていき)", "english": "problem statement"},
+      {"japanese": "批判的検討 (ひはんてきけんとう)", "english": "critical examination"},
+      {"japanese": "留保 (りゅうほ)", "english": "reservation / qualification"},
+      {"japanese": "敷衍 (ふえん)", "english": "elaboration / exposition"}
+    ],
+    "examples": [
+      {"japanese": "すぐれた評論とは、結論の正しさではなく、結論に至る道筋の明晰さによって評価される。", "english": "An excellent critical essay is evaluated not by the correctness of its conclusion but by the clarity of the path leading to it."},
+      {"japanese": "起承転結は漢詩由来の構成法であるが、現代の学術論文においても、「転」—すなわち視点の転換—が論証の核心をなすことに変わりはない。", "english": "Kishōtenketsu is a compositional method derived from Chinese poetry, but even in modern academic papers, the 'ten' — that is, the shift of viewpoint — remains the core of argumentation."},
+      {"japanese": "「留保」は弱さではない。自説の限界を自ら指摘することは、批判的思考の最も高度な形態の一つである。", "english": "'Qualification' is not weakness. Pointing out the limits of one's own argument oneself is one of the highest forms of critical thinking."}
+    ],
+    "dialogue": [
+      {"speaker": "院生", "japanese": "論文と評論の違いは何でしょうか。", "english": "What is the difference between a thesis and a critical essay?"},
+      {"speaker": "指導教員", "japanese": "論文は「証明」、評論は「照明」です。論文はある命題が真であることを示し、評論はある対象の見えていなかった側面に光を当てる。", "english": "A thesis 'proves'; a critique 'illuminates.' A thesis shows that a proposition is true; a critique sheds light on an unseen aspect of an object."}
+    ],
+    "exercises": [
+      {"type": "fill-blank", "question": "すぐれた評論とは、結論の正しさではなく、結論に至る___の明晰さによって評価される。", "answer": "道筋"},
+      {"type": "matching", "instruction": "Nối:", "pairs": [{"japanese": "起承転結", "english": "four-part structure"}, {"japanese": "留保", "english": "reservation / qualification"}, {"japanese": "問題提起", "english": "problem statement"}, {"japanese": "敷衍", "english": "elaboration"}]}
+    ]
+  },
+  {
+    "id": 117, "level": "C2", "category": "rhetoric_capstone",
+    "title": "Rhetoric capstone — oral defense", "title_vi": "Bảo vệ luận văn — 口頭試問", "title_en": "Rhetoric capstone — oral defense",
+    "vocabulary": [
+      {"japanese": "口頭試問 (こうとうしもん)", "english": "oral examination / defense"},
+      {"japanese": "副査 (ふくさ)", "english": "secondary examiner"},
+      {"japanese": "質疑応答 (しつぎおうとう)", "english": "Q&A session"},
+      {"japanese": "主旨説明 (しゅしせつめい)", "english": "summary of main argument"},
+      {"japanese": "今後の課題 (こんごのかだい)", "english": "future research questions"},
+      {"japanese": "謙虚さ (けんきょさ)", "english": "humility"}
+    ],
+    "examples": [
+      {"japanese": "口頭試問の目的は、執筆者を貶めることではなく、論文の論理を共に検証することにある。", "english": "The purpose of the oral defense is not to denigrate the author but to verify the logic of the thesis together."},
+      {"japanese": "「わかりません」と答えることは恥ではない。わかっていないことを「わかっている」と装うことこそが、考究の精神に反する。", "english": "Answering 'I don't know' is no shame. Pretending to know what one does not know is what goes against the spirit of inquiry."},
+      {"japanese": "審査員の質問をまず自分の言葉で言い換えること — この一手間が、防御ではなく対話の姿勢を示す。", "english": "First restate the examiner's question in your own words — this single step shows an attitude of dialogue, not defense."}
+    ],
+    "exercises": [
+      {"type": "fill-blank", "question": "口頭試問の目的は、執筆者を貶めることではなく、論文の論理を共に___することにある。", "answer": "検証"},
+      {"type": "matching", "instruction": "Nối:", "pairs": [{"japanese": "口頭試問", "english": "oral defense"}, {"japanese": "質疑応答", "english": "Q&A session"}, {"japanese": "副査", "english": "secondary examiner"}, {"japanese": "今後の課題", "english": "future research"}]}
+    ]
   }
 ];
 
