@@ -12,9 +12,9 @@
  * learners preparing TOEIC for jobs and promotions.
  */
 
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { ChevronRight, Clock3, Headphones, BookOpen, AlertTriangle } from "lucide-react";
+import { ChevronRight, Clock3, Headphones, BookOpen, AlertTriangle, Volume2, Square, RotateCcw } from "lucide-react";
 
 import {
   TOEIC_LISTENING_ITEMS,
@@ -24,6 +24,7 @@ import {
   type TOEICTopic,
   type TOEICTargetBand,
 } from "@/data/exam-prep/toeic/practice-items";
+import { useAudioUrl } from "@/hooks/useAudioUrl";
 
 type TabId = "listening" | "reading";
 
@@ -432,10 +433,118 @@ function Pill({ children, tone = "part" }: { children: React.ReactNode; tone?: "
   );
 }
 
+// Part 1 items voice the photo description only — we deliberately did not
+// generate audio for them (a recorded description without the photo would
+// mislead learners). The audio script writes nothing to Supabase for these.
+function isPart1Photo(item: TOEICPracticeItem): boolean {
+  return item.section === "listening" && item.part === 1;
+}
+
+function ListeningAudioPlayer({ itemId, hasAudio }: { itemId: string; hasAudio: boolean }) {
+  const { url, loading } = useAudioUrl(hasAudio ? `toeic-listening/${itemId}.mp3` : null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const [playing, setPlaying] = useState(false);
+  const [errored, setErrored] = useState(false);
+
+  // Auto-play when URL becomes available (treated as user gesture: detail
+  // panel opened by click). Silently ignore if browser blocks auto-play.
+  useEffect(() => {
+    if (!url) return;
+    setErrored(false);
+    const audio = audioRef.current;
+    if (!audio) return;
+    audio.currentTime = 0;
+    audio.play().then(() => setPlaying(true)).catch(() => setPlaying(false));
+  }, [url]);
+
+  const togglePlay = () => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    if (playing) {
+      audio.pause();
+      setPlaying(false);
+    } else {
+      audio.play().then(() => setPlaying(true)).catch(() => setPlaying(false));
+    }
+  };
+
+  const replay = () => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    audio.currentTime = 0;
+    audio.play().then(() => setPlaying(true)).catch(() => setPlaying(false));
+  };
+
+  if (!hasAudio) {
+    return (
+      <div style={{ padding: "8px 12px", borderRadius: 10, background: "rgba(248,250,252,0.95)", border: "1px solid rgba(0,0,0,0.06)", fontSize: 12, color: "rgba(0,0,0,0.6)" }}>
+        🖼️ Part 1 — yêu cầu ảnh thực tế. Bài tự luyện không kèm âm thanh; hãy đọc kỹ phần mô tả ảnh và 4 lựa chọn.
+      </div>
+    );
+  }
+
+  if (loading) {
+    return (
+      <div style={{ padding: "8px 12px", borderRadius: 10, background: "rgba(248,250,252,0.95)", border: "1px solid rgba(0,0,0,0.06)", fontSize: 12, color: "rgba(0,0,0,0.6)" }}>
+        Đang tải âm thanh…
+      </div>
+    );
+  }
+
+  if (errored || !url) {
+    return (
+      <div style={{ padding: "8px 12px", borderRadius: 10, background: "rgba(254,242,242,0.95)", border: "1px solid rgba(252,165,165,0.40)", fontSize: 12, color: "rgba(127,29,29,0.86)" }}>
+        Audio unavailable
+      </div>
+    );
+  }
+
+  return (
+    <div style={{ display: "flex", alignItems: "center", gap: 10, padding: "8px 12px", borderRadius: 10, background: "rgba(239,246,255,0.95)", border: "1px solid rgba(59,130,246,0.30)" }}>
+      <button
+        type="button"
+        onClick={togglePlay}
+        aria-label={playing ? "Stop" : "Play"}
+        style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", width: 36, height: 36, borderRadius: 8, border: "1px solid rgba(59,130,246,0.40)", background: "rgba(255,255,255,0.96)", color: "rgba(29,78,216,0.96)", cursor: "pointer" }}
+      >
+        {playing ? <Square size={16} /> : <Volume2 size={16} />}
+      </button>
+      <button
+        type="button"
+        onClick={replay}
+        aria-label="Replay"
+        style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", width: 36, height: 36, borderRadius: 8, border: "1px solid rgba(59,130,246,0.40)", background: "rgba(255,255,255,0.96)", color: "rgba(29,78,216,0.96)", cursor: "pointer" }}
+      >
+        <RotateCcw size={16} />
+      </button>
+      <span style={{ fontSize: 12, fontWeight: 600, color: "rgba(29,78,216,0.86)" }}>
+        Phát lời thoại · Listen to the audio
+      </span>
+      <audio
+        ref={audioRef}
+        src={url}
+        onPlay={() => setPlaying(true)}
+        onPause={() => setPlaying(false)}
+        onEnded={() => setPlaying(false)}
+        onError={() => {
+          setErrored(true);
+          setPlaying(false);
+        }}
+        preload="auto"
+      />
+    </div>
+  );
+}
+
 function PracticeItemDetail({ item }: { item: TOEICPracticeItem }) {
   const passageHeader = item.section === "listening" ? "Audio script · Lời thoại" : "Passage · Đoạn văn";
+  const showListeningAudio = item.section === "listening";
+  const hasAudio = showListeningAudio && !isPart1Photo(item);
   return (
     <div style={{ padding: "0 16px 18px", display: "flex", flexDirection: "column", gap: 14, borderTop: "1px solid rgba(0,0,0,0.06)" }}>
+      {showListeningAudio ? (
+        <ListeningAudioPlayer itemId={item.id} hasAudio={hasAudio} />
+      ) : null}
       <Section title={passageHeader}>
         <pre
           style={{
