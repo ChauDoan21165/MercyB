@@ -224,6 +224,10 @@ const TOEICPracticePackPage  = lazyWithRetry(() => import("@/pages/exam-prep/toe
 const IELTSSpeakingContentPage      = lazyWithRetry(() => import("@/pages/exam-prep/ielts/Speaking"));
 const IELTSSpeakingTopicPage        = lazyWithRetry(() => import("@/pages/exam-prep/ielts/SpeakingTopic"));
 const IELTSListeningContentPage     = lazyWithRetry(() => import("@/pages/exam-prep/ielts/Listening"));
+const IELTSReadingContentPage     = lazyWithRetry(() => import("@/pages/exam-prep/ielts/Reading"));
+const IELTSReadingPassagePage     = lazyWithRetry(() => import("@/pages/exam-prep/ielts/ReadingPassage"));
+const IELTSWritingContentPage     = lazyWithRetry(() => import("@/pages/exam-prep/ielts/Writing"));
+const IELTSWritingTopicPage       = lazyWithRetry(() => import("@/pages/exam-prep/ielts/WritingTopic"));
 const IELTSListeningItemPage        = lazyWithRetry(() => import("@/pages/exam-prep/ielts/ListeningItem"));
 
 const CorporateDashboardPage = lazyWithRetry(() => import("@/pages/corporate/CorporateDashboardPage"));
@@ -1315,6 +1319,26 @@ export default function AppRouter() {
           />
           <Route path="/exam-prep/ielts/listening/:itemId"
             element={<LazyPage><IELTSListeningItemPage /></LazyPage>}
+          />
+
+                    {/* IELTS Reading content pack — open marketing surface. Lists all
+             reading passages with topic/band filters. Each card links to the
+             detail page with full passage + questions + VN explanations. */}
+          <Route path="/exam-prep/ielts/reading"
+            element={<LazyPage><IELTSReadingContentPage /></LazyPage>}
+          />
+          <Route path="/exam-prep/ielts/reading/:passageId"
+            element={<LazyPage><IELTSReadingPassagePage /></LazyPage>}
+          />
+
+          {/* IELTS Writing content pack — open marketing surface. Lists all
+             Task 2 topics with type labels. Each card links to the detail
+             page with prompt, approach outline, tips, and vocabulary. */}
+          <Route path="/exam-prep/ielts/writing"
+            element={<LazyPage><IELTSWritingContentPage /></LazyPage>}
+          />
+          <Route path="/exam-prep/ielts/writing/:topicId"
+            element={<LazyPage><IELTSWritingTopicPage /></LazyPage>}
           />
 
           {/* TOEIC prep (Step 11 — premium-gated; gate is inside the page) */}

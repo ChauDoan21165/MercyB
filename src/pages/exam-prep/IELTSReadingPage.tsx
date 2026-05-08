@@ -1,105 +1,70 @@
 // src/pages/exam-prep/IELTSReadingPage.tsx — /exam/ielts/reading
 //
-// Lightweight reading practice. Renders the passage + the same
-// self-grading question pattern as Listening, since the answer-check
-// logic is the same shape.
+// Premium-gated IELTS Reading practice. Lists all real reading passages
+// from reading-passages.ts with topic/band filters. Each card links to the
+// interactive detail page. Replaces the old sample-questions.json stub.
 
-import React, { useState } from "react";
+import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import { CheckCircle2, XCircle } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { BookOpen, ChevronLeft } from "lucide-react";
+import {
+  IELTS_READING_PASSAGES,
+  listIeltsReadingPassages,
+  type IELTSReadingBand,
+  type IELTSReadingPassage,
+  type IELTSReadingTopicFamily,
+} from "@/data/exam-prep/ielts/reading-passages";
 import { PremiumGate } from "@/components/exam-prep/ielts/PremiumGate";
 import { IELTS_COPY } from "@/components/exam-prep/ielts/ieltsCopy";
-import samples from "@/data/exam-prep/ielts/sample-questions.json";
+import { Button } from "@/components/ui/button";
 
-function normalize(s: string): string {
-  return s.trim().toLowerCase().replace(/\s+/g, " ");
+type TopicFilter = "all" | IELTSReadingTopicFamily;
+type BandFilter = "all" | IELTSReadingBand;
+
+const TOPIC_LABELS: Record<string, string> = {
+  history: "Lịch sử", economics: "Kinh tế",
+  earth_science: "Khoa học trái đất",
+  atmospheric_science: "Khí quyển",
+  life_science: "Sinh học", medical_science: "Y học",
+  agriculture: "Nông nghiệp", ecology: "Sinh thái",
+};
+const BAND_BADGE: Record<number, string> = { 5.5:"bg-emerald-100 text-emerald-800 border-emerald-200", 6.5:"bg-amber-100 text-amber-800 border-amber-200", 7.5:"bg-sky-100 text-sky-800 border-sky-200", 8.5:"bg-violet-100 text-violet-800 border-violet-200"};
+
+function PassageCard({ passage }: { passage: IELTSReadingPassage }) {
+  return (
+    <Link to={"/exam-prep/ielts/reading/" + passage.id} className="block rounded-xl border border-slate-200 bg-white p-4 shadow-sm transition hover:border-slate-300 hover:shadow">
+      <div className="mb-1 flex items-center gap-2"><span className={"inline-block rounded-full border px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider " + (BAND_BADGE[passage.band] ?? "bg-slate-100 text-slate-700 border-slate-200")}>Band {passage.band}</span><span className="text-[11px] font-bold uppercase tracking-wider text-slate-500">{passage.topic_family.replace(/_/g," ")}</span><span className="ml-auto text-[11px] font-semibold text-slate-500">{passage.time_minutes} min · {passage.questions.length} Q</span></div>
+      <h3 className="text-base font-bold text-slate-900">{passage.title_vi}</h3><p className="text-xs text-slate-500">{passage.title_en}</p><p className="mt-1 text-xs leading-relaxed text-slate-600 line-clamp-2">{passage.summary_vi}</p>
+    </Link>
+  );
 }
 
 export default function IELTSReadingPage() {
-  const r = (samples as typeof samples).reading;
-  const [answers, setAnswers] = useState<Record<string, string>>({});
-  const [revealed, setRevealed] = useState(false);
-
-  const correctCount = r.questions.reduce((acc, q) => {
-    return normalize(answers[q.id] ?? "") === normalize(q.answer)
-      ? acc + 1
-      : acc;
-  }, 0);
+  const allPassages = useMemo(() => listIeltsReadingPassages(), []);
+  const [topicFilter, setTopicFilter] = useState<TopicFilter>("all");
+  const [bandFilter, setBandFilter] = useState<BandFilter>("all");
+  const topicFamilies = useMemo(() => [...new Set(allPassages.map((p) => p.topic_family))], [allPassages]);
+  const visiblePassages = useMemo(() => {
+    let items = allPassages;
+    if (topicFilter !== "all") items = items.filter((p) => p.topic_family === topicFilter);
+    if (bandFilter !== "all") items = items.filter((p) => p.band === bandFilter);
+    return items;
+  }, [allPassages, topicFilter, bandFilter]);
 
   return (
     <div className="mx-auto w-full max-w-3xl px-4 py-6">
       <header className="mb-4 flex items-center justify-between">
-        <h1 className="text-2xl font-semibold text-foreground">
-          {IELTS_COPY.readingTitle.vi}
-        </h1>
-        <Button asChild size="sm" variant="ghost">
-          <Link to="/exam/ielts">{IELTS_COPY.backToOverview.vi}</Link>
-        </Button>
+        <h1 className="text-2xl font-semibold text-foreground">{IELTS_COPY.readingTitle.vi}</h1>
+        <Button asChild size="sm" variant="ghost"><Link to="/exam/ielts">{IELTS_COPY.backToOverview.vi}</Link></Button>
       </header>
-
       <PremiumGate>
-        <div className="space-y-3">
-          <div className="rounded-xl border border-primary/15 bg-white/80 p-4">
-            <p className="text-sm font-semibold text-foreground">{r.title_vi}</p>
-            <p className="mt-2 whitespace-pre-line text-sm leading-relaxed text-foreground">
-              {r.passage_en}
-            </p>
-          </div>
-
-          {r.questions.map((q) => (
-            <div
-              key={q.id}
-              className="rounded-lg border border-primary/10 bg-white/80 p-3"
-            >
-              <p className="text-sm text-foreground">{q.prompt_vi}</p>
-              <p className="mt-0.5 text-xs italic text-muted-foreground">
-                {q.prompt_en}
-              </p>
-              <Input
-                value={answers[q.id] ?? ""}
-                onChange={(e) =>
-                  setAnswers((prev) => ({ ...prev, [q.id]: e.target.value }))
-                }
-                className="mt-2 max-w-sm"
-              />
-              {revealed && (
-                <p className="mt-2 flex items-center gap-1 text-xs">
-                  {normalize(answers[q.id] ?? "") === normalize(q.answer) ? (
-                    <>
-                      <CheckCircle2 size={12} className="text-primary" />
-                      <span className="text-primary">{q.answer}</span>
-                    </>
-                  ) : (
-                    <>
-                      <XCircle size={12} className="text-destructive" />
-                      <span className="text-muted-foreground">
-                        Đáp án:{" "}
-                        <span className="text-foreground">{q.answer}</span>
-                      </span>
-                    </>
-                  )}
-                </p>
-              )}
-            </div>
-          ))}
-
-          <div className="flex items-center justify-between">
-            <Button
-              type="button"
-              variant={revealed ? "ghost" : "default"}
-              onClick={() => setRevealed((x) => !x)}
-            >
-              {revealed ? "Ẩn đáp án" : "Kiểm tra đáp án"}
-            </Button>
-            {revealed && (
-              <p className="text-xs text-muted-foreground">
-                {correctCount} / {r.questions.length} đúng
-              </p>
-            )}
-          </div>
+        <div className="mb-3 flex flex-wrap gap-2">
+          <button type="button" onClick={() => setTopicFilter("all")} className={"rounded-full border px-3 py-1 text-xs font-semibold " + (topicFilter === "all" ? "border-amber-600 bg-amber-600 text-white" : "border-slate-300 bg-white text-slate-700 hover:bg-slate-50")}>Tất cả chủ đề</button>
+          {topicFamilies.map((tf) => (<button key={tf} type="button" onClick={() => setTopicFilter(tf)} className={"rounded-full border px-3 py-1 text-xs font-semibold " + (topicFilter === tf ? "border-amber-600 bg-amber-600 text-white" : "border-slate-300 bg-white text-slate-700 hover:bg-slate-50")}>{TOPIC_LABELS[tf] ?? tf}</button>))}
         </div>
+        <div className="mb-4 flex flex-wrap items-center gap-2"><span className="text-xs font-semibold uppercase tracking-wider text-slate-500">Band:</span>{(["all", 5.5, 6.5, 7.5, 8.5] as const).map((b) => (<button key={b} type="button" onClick={() => setBandFilter(b)} className={"rounded-full border px-3 py-0.5 text-[11px] font-semibold " + (bandFilter === b ? "border-amber-600 bg-amber-600 text-white" : "border-slate-300 bg-white text-slate-700 hover:bg-slate-50")}>{b === "all" ? "tất cả" : b.toFixed(1)}</button>))}</div>
+        <div className="text-xs text-slate-500 mb-3">Hiển thị {visiblePassages.length} / {allPassages.length} bài.</div>
+        <div className="space-y-3">{visiblePassages.map((p) => <PassageCard key={p.id} passage={p} />)}</div>
       </PremiumGate>
     </div>
   );
