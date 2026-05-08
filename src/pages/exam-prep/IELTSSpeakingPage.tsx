@@ -6,9 +6,16 @@ import { Button } from "@/components/ui/button";
 import { IELTSSpeakingPractice } from "@/components/exam-prep/ielts/IELTSSpeakingPractice";
 import { PremiumGate } from "@/components/exam-prep/ielts/PremiumGate";
 import { IELTS_COPY } from "@/components/exam-prep/ielts/ieltsCopy";
+import { IELTS_SPEAKING_TOPICS } from "@/data/exam-prep/ielts/speaking-topics";
 import samples from "@/data/exam-prep/ielts/sample-questions.json";
 
 type Part = "part_1" | "part_2" | "part_3";
+
+const FIRST_TOPIC_BY_PART = {
+  part_1: IELTS_SPEAKING_TOPICS.find((topic) => topic.part === 1),
+  part_2: IELTS_SPEAKING_TOPICS.find((topic) => topic.part === 2),
+  part_3: IELTS_SPEAKING_TOPICS.find((topic) => topic.part === 3),
+} as const;
 
 export default function IELTSSpeakingPage() {
   const [active, setActive] = useState<Part>("part_1");
@@ -55,6 +62,8 @@ export default function IELTSSpeakingPage() {
             partTitle={IELTS_COPY.speakingPart1.vi}
             prompts_vi={s.part_1.prompts_vi}
             prompts_en={s.part_1.prompts_en}
+            sample_answer_band_7={FIRST_TOPIC_BY_PART.part_1?.sample_strong_answer_band_7}
+            sample_answer_band_5={FIRST_TOPIC_BY_PART.part_1?.sample_weak_answer_band_5}
           />
         )}
 
@@ -64,6 +73,8 @@ export default function IELTSSpeakingPage() {
             prompts_vi={[s.part_2.prompt_vi]}
             prompts_en={[s.part_2.prompt_en]}
             countdownSec={s.part_2.preparation_sec + s.part_2.speaking_sec}
+            sample_answer_band_7={FIRST_TOPIC_BY_PART.part_2?.sample_strong_answer_band_7}
+            sample_answer_band_5={FIRST_TOPIC_BY_PART.part_2?.sample_weak_answer_band_5}
           />
         )}
 
@@ -72,6 +83,8 @@ export default function IELTSSpeakingPage() {
             partTitle={IELTS_COPY.speakingPart3.vi}
             prompts_vi={s.part_3.prompts_vi}
             prompts_en={s.part_3.prompts_en}
+            sample_answer_band_7={FIRST_TOPIC_BY_PART.part_3?.sample_strong_answer_band_7}
+            sample_answer_band_5={FIRST_TOPIC_BY_PART.part_3?.sample_weak_answer_band_5}
           />
         )}
       </PremiumGate>
