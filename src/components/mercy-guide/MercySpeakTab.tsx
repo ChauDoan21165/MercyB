@@ -23,6 +23,154 @@ import {
 } from '@/lib/pronunciation/sessionAttempts';
 import { captureWaveform, type Waveform } from '@/lib/pronunciation/audioComparison';
 import { fetchCloudTtsUrl } from '@/lib/mercyVoice';
+import { getPage4LessonByKey } from './kids/kidPage4Data';
+import { getPage5LessonByKey } from './kids/kidPage5Data';
+import { getPage6LessonByKey } from './kids/kidPage6Data';
+import { getPage7LessonByKey } from './kids/kidPage7Data';
+import { getPage8LessonByKey } from './kids/kidPage8Data';
+import { getPage9LessonByKey } from './kids/kidPage9Data';
+import { getKidPage11Item } from './kids/kidPage11Data';
+import { getKidPage12Item } from './kids/kidPage12Data';
+import { getKidPage13Item } from './kids/kidPage13Data';
+import { getKidPage14Item } from './kids/kidPage14Data';
+import { getKidPage15Item } from './kids/kidPage15Data';
+import { getKidPage16Item } from './kids/kidPage16Data';
+import { getKidPage17Item } from './kids/kidPage17Data';
+import { getKidPage18Item } from './kids/kidPage18Data';
+import { getKidPage19Item } from './kids/kidPage19Data';
+import { getKidPage20Item } from './kids/kidPage20Data';
+import { getKidPage21Item } from './kids/kidPage21Data';
+import { getKidPage22Item } from './kids/kidPage22Data';
+import { getKidPage23Item } from './kids/kidPage23Data';
+import { getKidPage24Item } from './kids/kidPage24Data';
+import { getKidPage25Item } from './kids/kidPage25Data';
+import { getKidPage26Item } from './kids/kidPage26Data';
+import { getKidPage27Item } from './kids/kidPage27Data';
+import { KID_PAGE_28_ITEMS } from './kids/kidPage28Data';
+import { KID_PAGE_29_ITEMS } from './kids/kidPage29Data';
+import { KID_PAGE_30_ITEMS } from './kids/kidPage30Data';
+import { KID_PAGE_31_ITEMS } from './kids/kidPage31Data';
+import { KID_PAGE_32_ITEMS } from './kids/kidPage32Data';
+import { KID_PAGE_33_ITEMS } from './kids/kidPage33Data';
+import { KID_PAGE_34_ITEMS } from './kids/kidPage34Data';
+import { awardSpeakPoints } from '@/services/pointsService';
+import { resolveRoomAudioUrl } from '@/lib/roomAudioResolver';
+import { deriveWordChips } from './wordChips';
+import { useFeatureFlag } from '@/hooks/useFeatureFlag';
+import { useMercyVoice } from '@/hooks/useMercyVoice';
+import { scoreCloud } from '@/lib/pronunciation/cloudScorer';
+import { useStreamingPronunciation } from '@/lib/pronunciation/useStreamingPronunciation';
+import StreamingFeedback from '@/components/pronunciation/StreamingFeedback';
+import { breadcrumbSpeakAttempt } from '@/lib/monitoring/breadcrumbs';
+import { captureError } from '@/lib/monitoring/captureException';
+import type { WordScore } from '@/lib/pronunciation/scorer';
+import {
+  GENERIC_LOW_HINT,
+  LOW_PHONEME_THRESHOLD,
+  getPhonemeHint,
+} from '@/lib/pronunciation/phonemeHints';
+import PhonemePlayButton from '@/components/speech/PhonemePlayButton';
+import { supabase } from '@/lib/supabaseClient';
+import type { StudentMercyMemoryUpdate, LearningSupportMode } from './types';
+import type {
+  SpeechRecognitionLike as BaseSpeechRecognitionLike,
+  SpeechRecognitionErrorEventLike,
+  SpeechRecognitionAlternativeLike,
+  SpeechRecognitionResultLike,
+} from '@/types/speech-recognition';
+
+type SpeechRecognitionLike = BaseSpeechRecognitionLike & {
+  abort?: () => void;
+};
+
+type PronunciationLaunchPayload = {
+  sourceText: string;
+  correctedText?: string;
+  enhancedText?: string;
+};
+
+type MercySpeakTabProps = {
+  roomId?: string;
+  roomTitle?: string;
+  contentEn?: string;
+  profile?: {
+    preferred_name?: string | null;
+    english_level?: string | null;
+  } | null;
+  troubleWords?: Array<string | { word?: string | null }>;
+  speakPractice?: unknown;
+  launchPayload?: PronunciationLaunchPayload | null;
+  pendingPayload?: PronunciationLaunchPayload | null;
+  pendingPronunciationPayload?: PronunciationLaunchPayload | null;
+  onMemoryUpdate?: (patch: StudentMercyMemoryUpdate) => void;
+  onOpenEnglishLogic?: () => void;
+  learningSupportMode?: LearningSupportMode;
+  isKidsMode?: boolean;
+  kidsModeAgeBand?: string | null;
+  preferTapAndRepeat?: boolean;
+  teacherLabel?: string | null;
+  selectedKidsObjectKey?: string | null;
+  /**
+   * Pre-fill the practice textarea with this line on mount. Used by the
+   * Home "Try one word — no signup" card to land anonymous users on a
+   * ready-to-record sentence ("Hello, how are you?") so they can reach
+   * a pronunciation score in ~12 seconds.
+   */
+  initialPracticeLine?: string;
+};
+
+type PracticeVariant = 'custom' | 'corrected' | 'enhanced' | 'source';
+
+type BrowserWindowWithSpeechRecognition = Window & {
+  webkitSpeechRecognition?: new () => SpeechRecognitionLike;
+  SpeechRecognition?: new () => SpeechRecognitionLike;
+};
+
+type KidsObjectCard = {
+  key: string;
+  label: string;
+  sentence: string;
+  imageSrc: string;
+  aliases: string[];
+};
+
+type KidsLessonCard = {
+  key: string;
+  label: string;
+  sentence: string;
+  imageSrc: string;
+  dialogue?: string[];
+};
+
+const KIDS_OBJECT_KEYS = [
+  'airplane','apple','bag','ball','banana','bathtub','bed','bicycle','bird','blanket',
+  'boat','book','bottle','bus','cat','chair','clock','cloud','cup','dog',
+  'doll','door','duck','fish','flower','hat','house','key','leaf','milk',
+  'moon','orange','pencil','phone','pillow','plate','rainbow','shirt','shoes','soap',
+  'sock','spoon','star','sun','table','teddy-bear','toothbrush','toy-car','tree','window',
+  'ant','baby-bib','backpack','balloon','bee','bell','block','butterfly','cake','candle',
+  'carrot','cookie','cow','crayon','dinosaur','elephant','envelope','frog','gift-box','grapes',
+  'hammer','helicopter','ice-cream','jar','kite','lamp','lion','lollipop','monkey','mouse',
+  'mushroom','pear','pig','pizza','rabbit','rocket','sandwich','sheep','strawberry','train',
+  'truck','turtle','watermelon','whistle','mitten','scarf','drum','bear-face','juice-box','juice',
+] as const;
+
+const KIDS_UNCOUNTABLE_KEYS = new Set<string>([
+  'milk','soap','juice','ice-cream',
+]);
+
+const KIDS_EXTRA_ALIASES: Record<string, string[]> = {
+  'teddy-bear': ['teddy bear', 'bear'],
+  'toy-car': ['toy car', 'car'],
+  'baby-bib': ['baby bib', 'bib'],
+  backpack: ['back pack'],
+  'gift-box': ['gift box', 'gift'],
+  'ice-cream': ['ice cream'],
+  'juice-box': ['juice box'],
+  'bear-face': ['bear face', 'bear'],
+};
+
+function toKidsLabel(key: string): string {
   return key.split('-').map((part) => part.charAt(0).toUpperCase() + part.slice(1)).join(' ');
 }
 
