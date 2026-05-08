@@ -59,6 +59,7 @@ export default function IELTSSpeakingPage() {
 
         {active === "part_1" && (
           <IELTSSpeakingPractice
+            topicId={FIRST_TOPIC_BY_PART.part_1?.id}
             partTitle={IELTS_COPY.speakingPart1.vi}
             prompts_vi={s.part_1.prompts_vi}
             prompts_en={s.part_1.prompts_en}
@@ -69,6 +70,7 @@ export default function IELTSSpeakingPage() {
 
         {active === "part_2" && (
           <IELTSSpeakingPractice
+            topicId={FIRST_TOPIC_BY_PART.part_2?.id}
             partTitle={IELTS_COPY.speakingPart2.vi}
             prompts_vi={[s.part_2.prompt_vi]}
             prompts_en={[s.part_2.prompt_en]}
@@ -80,6 +82,7 @@ export default function IELTSSpeakingPage() {
 
         {active === "part_3" && (
           <IELTSSpeakingPractice
+            topicId={FIRST_TOPIC_BY_PART.part_3?.id}
             partTitle={IELTS_COPY.speakingPart3.vi}
             prompts_vi={s.part_3.prompts_vi}
             prompts_en={s.part_3.prompts_en}

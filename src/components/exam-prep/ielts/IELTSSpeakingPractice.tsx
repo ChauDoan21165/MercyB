@@ -1,20 +1,22 @@
 // src/components/exam-prep/ielts/IELTSSpeakingPractice.tsx
 //
 // Shell for the three Speaking parts. Microphone capture + transcription
-// is intentionally out of scope tonight — daytime work integrates STT.
-// This component renders the prompts + a simple stopwatch so users can
-// practise reading-aloud-and-timing themselves.
+// is intentionally out of scope. This component renders the prompts +
+// a stopwatch so users can practise reading-aloud-and-timing themselves,
+// plus pre-generated sample audio for band 5 and band 7 answers.
 
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { Mic, Play, Square, Volume2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useMercyVoice } from "@/hooks/useMercyVoice";
+import { useAudioUrl } from "@/hooks/useAudioUrl";
 import { IELTS_COPY } from "./ieltsCopy";
 
 interface IELTSSpeakingPracticeProps {
   partTitle: string;
   prompts_vi: string[];
   prompts_en?: string[];
+  /** Stable topic id from speaking-topics.ts — used to build the pre-generated audio key. */
+  topicId?: string;
   /** Optional countdown — used by Part 2 (60s prep + 120s speaking). */
   countdownSec?: number;
   sample_answer_band_7?: string;
@@ -30,74 +32,104 @@ function formatMMSS(secs: number): string {
   return `${m.toString().padStart(2, "0")}:${r.toString().padStart(2, "0")}`;
 }
 
-function stripAnnotations(text: string): string {
-  return text.replace(/\[[^\]]*\]/g, "").replace(/\s+/g, " ").trim();
-}
-
 export function IELTSSpeakingPractice({
   partTitle,
   prompts_vi,
   prompts_en,
+  topicId,
   countdownSec,
   sample_answer_band_7,
   sample_answer_band_5,
 }: IELTSSpeakingPracticeProps) {
-  const mercyVoice = useMercyVoice();
+  // Build deterministic pre-generated audio keys matching the files
+  // uploaded to Supabase room-audio by scripts/generate-ielts-speaking-audio.ts
+  const band7Key = topicId ? `ielts-speaking/${topicId}/band7.mp3` : null;
+  const band5Key = topicId ? `ielts-speaking/${topicId}/band5.mp3` : null;
+  const { url: band7Url, loading: band7Loading, error: band7Error } = useAudioUrl(band7Key);
+  const { url: band5Url, loading: band5Loading, error: band5Error } = useAudioUrl(band5Key);
+
   const [running, setRunning] = useState(false);
   const [seconds, setSeconds] = useState<number>(countdownSec ?? 0);
   const [samplesOpen, setSamplesOpen] = useState(false);
   const [playingSample, setPlayingSample] = useState<SampleBand | null>(null);
+  const [audioFailed, setAudioFailed] = useState<SampleBand | null>(null);
   const tickRef = useRef<number | null>(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
   const hasSampleAnswers = Boolean(sample_answer_band_7 || sample_answer_band_5);
 
-  const stopSamplePlayback = useCallback(() => {
-    mercyVoice.cancel();
-    if (typeof window !== "undefined" && window.speechSynthesis) {
-      window.speechSynthesis.cancel();
+  // Cleanup audio on unmount
+  useEffect(() => {
+    return () => {
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current = null;
+      }
+    };
+  }, []);
+
+  const stopAudioPlayback = useCallback(() => {
+    if (audioRef.current) {
+      audioRef.current.pause();
+      audioRef.current.currentTime = 0;
+      audioRef.current = null;
     }
     setPlayingSample(null);
-  }, [mercyVoice]);
-
-  const browserFallback = useCallback(
-    (text: string) =>
-      new Promise<void>((resolve) => {
-        if (typeof window === "undefined" || !window.speechSynthesis) {
-          resolve();
-          return;
-        }
-        const utterance = new SpeechSynthesisUtterance(text);
-        utterance.lang = "en-US";
-        utterance.rate = 0.95;
-        utterance.onend = () => resolve();
-        utterance.onerror = () => resolve();
-        window.speechSynthesis.cancel();
-        window.speechSynthesis.speak(utterance);
-      }),
-    [],
-  );
+  }, []);
 
   const handleSamplePlayback = useCallback(
-    async (band: SampleBand, answerText: string) => {
+    (band: SampleBand) => {
+      // Toggle: if same band is playing, pause it
       if (playingSample === band) {
-        stopSamplePlayback();
+        stopAudioPlayback();
         return;
       }
 
-      stopSamplePlayback();
-      setPlayingSample(band);
-      const textToSpeak = band === "band5" ? stripAnnotations(answerText) : answerText;
+      // Stop any previous playback
+      stopAudioPlayback();
+      setAudioFailed(null);
 
-      try {
-        await mercyVoice.speak({
-          text: textToSpeak,
-          language: "en",
-          browserFallback,
-        });
-      } finally {
-        setPlayingSample((current) => (current === band ? null : current));
+      const url = band === "band7" ? band7Url : band5Url;
+      const loading = band === "band7" ? band7Loading : band5Loading;
+      const error = band === "band7" ? band7Error : band5Error;
+
+      // Still resolving the Supabase public URL — show playing state
+      if (loading || !url) {
+        setPlayingSample(band);
+        return;
       }
+
+      // Pre-generated file may not exist yet — mark as failed rather
+      // than burning live TTS quota
+      if (error) {
+        setAudioFailed(band);
+        setPlayingSample(null);
+        return;
+      }
+
+      const audio = new Audio(url);
+      audio.preload = "metadata";
+
+      setPlayingSample(band);
+
+      audio.onended = () => {
+        setPlayingSample(null);
+        audioRef.current = null;
+      };
+      audio.onerror = () => {
+        setPlayingSample(null);
+        setAudioFailed(band);
+        audioRef.current = null;
+      };
+
+      audio.play().catch(() => {
+        setPlayingSample(null);
+        setAudioFailed(band);
+        audioRef.current = null;
+      });
+
+      audioRef.current = audio;
     },
-    [browserFallback, mercyVoice, playingSample, stopSamplePlayback],
+    [playingSample, stopAudioPlayback, band7Url, band5Url, band7Loading, band5Loading, band7Error, band5Error],
   );
 
   useEffect(() => {
@@ -155,20 +187,37 @@ export function IELTSSpeakingPractice({
                       <Button
                         type="button"
                         size="sm"
-                        variant="outline"
-                        onClick={() => handleSamplePlayback("band7", sample_answer_band_7)}
+                        variant={audioFailed === "band7" ? "ghost" : "outline"}
+                        onClick={() => handleSamplePlayback("band7")}
+                        disabled={band7Loading}
                       >
                         {playingSample === "band7" ? (
-                          <Square className="mr-2 h-4 w-4" />
+                          band7Loading ? null : <Square className="mr-2 h-4 w-4" />
                         ) : (
                           <Volume2 className="mr-2 h-4 w-4" />
                         )}
-                        {playingSample === "band7" ? "Dừng" : "Nghe"}
+                        {band7Loading ? "Đang tải…" : playingSample === "band7" ? "Dừng" : "Nghe"}
                       </Button>
                     </div>
                     <p className="whitespace-pre-wrap text-sm leading-6 text-foreground">
                       {sample_answer_band_7}
                     </p>
+                    {audioFailed === "band7" && (
+                      <p className="mt-2 flex items-center gap-1 text-xs text-amber-700">
+                        <span>🔊</span>
+                        <span>
+                          Audio đang được chuẩn bị — vui lòng thử lại sau.
+                        </span>
+                      </p>
+                    )}
+                    {band7Error && !band7Loading && (
+                      <p className="mt-2 flex items-center gap-1 text-xs text-amber-700">
+                        <span>🔊</span>
+                        <span>
+                          Audio đang được chuẩn bị — vui lòng thử lại sau.
+                        </span>
+                      </p>
+                    )}
                   </div>
                 )}
 
@@ -181,20 +230,37 @@ export function IELTSSpeakingPractice({
                       <Button
                         type="button"
                         size="sm"
-                        variant="outline"
-                        onClick={() => handleSamplePlayback("band5", sample_answer_band_5)}
+                        variant={audioFailed === "band5" ? "ghost" : "outline"}
+                        onClick={() => handleSamplePlayback("band5")}
+                        disabled={band5Loading}
                       >
                         {playingSample === "band5" ? (
-                          <Square className="mr-2 h-4 w-4" />
+                          band5Loading ? null : <Square className="mr-2 h-4 w-4" />
                         ) : (
                           <Volume2 className="mr-2 h-4 w-4" />
                         )}
-                        {playingSample === "band5" ? "Dừng" : "Nghe"}
+                        {band5Loading ? "Đang tải…" : playingSample === "band5" ? "Dừng" : "Nghe"}
                       </Button>
                     </div>
                     <p className="whitespace-pre-wrap text-sm leading-6 text-foreground">
                       {sample_answer_band_5}
                     </p>
+                    {audioFailed === "band5" && (
+                      <p className="mt-2 flex items-center gap-1 text-xs text-amber-700">
+                        <span>🔊</span>
+                        <span>
+                          Audio đang được chuẩn bị — vui lòng thử lại sau.
+                        </span>
+                      </p>
+                    )}
+                    {band5Error && !band5Loading && (
+                      <p className="mt-2 flex items-center gap-1 text-xs text-amber-700">
+                        <span>🔊</span>
+                        <span>
+                          Audio đang được chuẩn bị — vui lòng thử lại sau.
+                        </span>
+                      </p>
+                    )}
                   </div>
                 )}
               </div>
