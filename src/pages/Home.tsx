@@ -677,7 +677,7 @@ export default function Home() {
               letterSpacing: -0.3,
             }}
           >
-            VSTEP — Kỳ thi tiếng Anh quốc gia
+            Chinh phục B2 VSTEP
           </div>
           <div style={{ fontSize: z(12), fontWeight: 700, color: "rgba(127,29,29,0.55)", marginTop: 2 }}>
             Chinh phục B2 VSTEP
