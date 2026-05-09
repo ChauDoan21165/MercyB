@@ -56,6 +56,10 @@ export interface VstepSpeakingTopic {
   key_vocabulary: VstepVocabularyItem[];
   estimated_time_minutes: number;
   typical_band_descriptors: VstepBandDescriptor[];
+  /** Supabase storage key for the topic intro narration (vstep-speaking/{id}/intro.mp3). */
+  audioIntroKey: string;
+  /** Supabase storage keys for each sample question (vstep-speaking/{id}/q1.mp3 …). */
+  audioQuestionKeys: string[];
 }
 
 // ─────────────────────────────────────────────────────────────────────
@@ -166,6 +170,8 @@ export const VSTEP_SPEAKING_TOPICS: VstepSpeakingTopic[] = [
     ],
     estimated_time_minutes: 3,
     typical_band_descriptors: B1_BAND_DESCRIPTORS,
+    audioIntroKey: "vstep-speaking/vstep_b1_speaking_family/intro.mp3",
+    audioQuestionKeys: ["vstep-speaking/vstep_b1_speaking_family/q1.mp3", "vstep-speaking/vstep_b1_speaking_family/q2.mp3", "vstep-speaking/vstep_b1_speaking_family/q3.mp3", "vstep-speaking/vstep_b1_speaking_family/q4.mp3", "vstep-speaking/vstep_b1_speaking_family/q5.mp3"],
   },
   {
     id: "vstep_b1_speaking_hobbies",
@@ -199,6 +205,8 @@ export const VSTEP_SPEAKING_TOPICS: VstepSpeakingTopic[] = [
     ],
     estimated_time_minutes: 3,
     typical_band_descriptors: B1_BAND_DESCRIPTORS,
+    audioIntroKey: "vstep-speaking/vstep_b1_speaking_hobbies/intro.mp3",
+    audioQuestionKeys: ["vstep-speaking/vstep_b1_speaking_hobbies/q1.mp3", "vstep-speaking/vstep_b1_speaking_hobbies/q2.mp3", "vstep-speaking/vstep_b1_speaking_hobbies/q3.mp3", "vstep-speaking/vstep_b1_speaking_hobbies/q4.mp3", "vstep-speaking/vstep_b1_speaking_hobbies/q5.mp3"],
   },
   {
     id: "vstep_b1_speaking_hometown",
@@ -232,6 +240,8 @@ export const VSTEP_SPEAKING_TOPICS: VstepSpeakingTopic[] = [
     ],
     estimated_time_minutes: 3,
     typical_band_descriptors: B1_BAND_DESCRIPTORS,
+    audioIntroKey: "vstep-speaking/vstep_b1_speaking_hometown/intro.mp3",
+    audioQuestionKeys: ["vstep-speaking/vstep_b1_speaking_hometown/q1.mp3", "vstep-speaking/vstep_b1_speaking_hometown/q2.mp3", "vstep-speaking/vstep_b1_speaking_hometown/q3.mp3", "vstep-speaking/vstep_b1_speaking_hometown/q4.mp3", "vstep-speaking/vstep_b1_speaking_hometown/q5.mp3"],
   },
   {
     id: "vstep_b1_speaking_daily_routine",
@@ -265,6 +275,8 @@ export const VSTEP_SPEAKING_TOPICS: VstepSpeakingTopic[] = [
     ],
     estimated_time_minutes: 3,
     typical_band_descriptors: B1_BAND_DESCRIPTORS,
+    audioIntroKey: "vstep-speaking/vstep_b1_speaking_daily_routine/intro.mp3",
+    audioQuestionKeys: ["vstep-speaking/vstep_b1_speaking_daily_routine/q1.mp3", "vstep-speaking/vstep_b1_speaking_daily_routine/q2.mp3", "vstep-speaking/vstep_b1_speaking_daily_routine/q3.mp3", "vstep-speaking/vstep_b1_speaking_daily_routine/q4.mp3", "vstep-speaking/vstep_b1_speaking_daily_routine/q5.mp3"],
   },
   {
     id: "vstep_b1_speaking_food",
@@ -298,6 +310,8 @@ export const VSTEP_SPEAKING_TOPICS: VstepSpeakingTopic[] = [
     ],
     estimated_time_minutes: 3,
     typical_band_descriptors: B1_BAND_DESCRIPTORS,
+    audioIntroKey: "vstep-speaking/vstep_b1_speaking_food/intro.mp3",
+    audioQuestionKeys: ["vstep-speaking/vstep_b1_speaking_food/q1.mp3", "vstep-speaking/vstep_b1_speaking_food/q2.mp3", "vstep-speaking/vstep_b1_speaking_food/q3.mp3", "vstep-speaking/vstep_b1_speaking_food/q4.mp3", "vstep-speaking/vstep_b1_speaking_food/q5.mp3"],
   },
   {
     id: "vstep_b1_speaking_weather",
@@ -331,6 +345,8 @@ export const VSTEP_SPEAKING_TOPICS: VstepSpeakingTopic[] = [
     ],
     estimated_time_minutes: 3,
     typical_band_descriptors: B1_BAND_DESCRIPTORS,
+    audioIntroKey: "vstep-speaking/vstep_b1_speaking_weather/intro.mp3",
+    audioQuestionKeys: ["vstep-speaking/vstep_b1_speaking_weather/q1.mp3", "vstep-speaking/vstep_b1_speaking_weather/q2.mp3", "vstep-speaking/vstep_b1_speaking_weather/q3.mp3", "vstep-speaking/vstep_b1_speaking_weather/q4.mp3", "vstep-speaking/vstep_b1_speaking_weather/q5.mp3"],
   },
   {
     id: "vstep_b1_speaking_travel",
@@ -364,6 +380,8 @@ export const VSTEP_SPEAKING_TOPICS: VstepSpeakingTopic[] = [
     ],
     estimated_time_minutes: 3,
     typical_band_descriptors: B1_BAND_DESCRIPTORS,
+    audioIntroKey: "vstep-speaking/vstep_b1_speaking_travel/intro.mp3",
+    audioQuestionKeys: ["vstep-speaking/vstep_b1_speaking_travel/q1.mp3", "vstep-speaking/vstep_b1_speaking_travel/q2.mp3", "vstep-speaking/vstep_b1_speaking_travel/q3.mp3", "vstep-speaking/vstep_b1_speaking_travel/q4.mp3", "vstep-speaking/vstep_b1_speaking_travel/q5.mp3"],
   },
 
   // ════════════════════════════════════════════════════════════════
@@ -401,6 +419,8 @@ export const VSTEP_SPEAKING_TOPICS: VstepSpeakingTopic[] = [
     ],
     estimated_time_minutes: 4,
     typical_band_descriptors: B1_BAND_DESCRIPTORS,
+    audioIntroKey: "vstep-speaking/vstep_b1_speaking_school_problems/intro.mp3",
+    audioQuestionKeys: ["vstep-speaking/vstep_b1_speaking_school_problems/q1.mp3", "vstep-speaking/vstep_b1_speaking_school_problems/q2.mp3", "vstep-speaking/vstep_b1_speaking_school_problems/q3.mp3", "vstep-speaking/vstep_b1_speaking_school_problems/q4.mp3", "vstep-speaking/vstep_b1_speaking_school_problems/q5.mp3"],
   },
   {
     id: "vstep_b1_speaking_family_decisions",
@@ -434,6 +454,8 @@ export const VSTEP_SPEAKING_TOPICS: VstepSpeakingTopic[] = [
     ],
     estimated_time_minutes: 4,
     typical_band_descriptors: B1_BAND_DESCRIPTORS,
+    audioIntroKey: "vstep-speaking/vstep_b1_speaking_family_decisions/intro.mp3",
+    audioQuestionKeys: ["vstep-speaking/vstep_b1_speaking_family_decisions/q1.mp3", "vstep-speaking/vstep_b1_speaking_family_decisions/q2.mp3", "vstep-speaking/vstep_b1_speaking_family_decisions/q3.mp3", "vstep-speaking/vstep_b1_speaking_family_decisions/q4.mp3", "vstep-speaking/vstep_b1_speaking_family_decisions/q5.mp3"],
   },
   {
     id: "vstep_b1_speaking_time_management",
@@ -467,6 +489,8 @@ export const VSTEP_SPEAKING_TOPICS: VstepSpeakingTopic[] = [
     ],
     estimated_time_minutes: 4,
     typical_band_descriptors: B1_BAND_DESCRIPTORS,
+    audioIntroKey: "vstep-speaking/vstep_b1_speaking_time_management/intro.mp3",
+    audioQuestionKeys: ["vstep-speaking/vstep_b1_speaking_time_management/q1.mp3", "vstep-speaking/vstep_b1_speaking_time_management/q2.mp3", "vstep-speaking/vstep_b1_speaking_time_management/q3.mp3", "vstep-speaking/vstep_b1_speaking_time_management/q4.mp3", "vstep-speaking/vstep_b1_speaking_time_management/q5.mp3"],
   },
 
   // ════════════════════════════════════════════════════════════════
@@ -504,6 +528,8 @@ export const VSTEP_SPEAKING_TOPICS: VstepSpeakingTopic[] = [
     ],
     estimated_time_minutes: 5,
     typical_band_descriptors: B1_BAND_DESCRIPTORS,
+    audioIntroKey: "vstep-speaking/vstep_b1_speaking_education_importance/intro.mp3",
+    audioQuestionKeys: ["vstep-speaking/vstep_b1_speaking_education_importance/q1.mp3", "vstep-speaking/vstep_b1_speaking_education_importance/q2.mp3", "vstep-speaking/vstep_b1_speaking_education_importance/q3.mp3", "vstep-speaking/vstep_b1_speaking_education_importance/q4.mp3", "vstep-speaking/vstep_b1_speaking_education_importance/q5.mp3"],
   },
   {
     id: "vstep_b1_speaking_role_of_parents",
@@ -537,6 +563,8 @@ export const VSTEP_SPEAKING_TOPICS: VstepSpeakingTopic[] = [
     ],
     estimated_time_minutes: 5,
     typical_band_descriptors: B1_BAND_DESCRIPTORS,
+    audioIntroKey: "vstep-speaking/vstep_b1_speaking_role_of_parents/intro.mp3",
+    audioQuestionKeys: ["vstep-speaking/vstep_b1_speaking_role_of_parents/q1.mp3", "vstep-speaking/vstep_b1_speaking_role_of_parents/q2.mp3", "vstep-speaking/vstep_b1_speaking_role_of_parents/q3.mp3", "vstep-speaking/vstep_b1_speaking_role_of_parents/q4.mp3", "vstep-speaking/vstep_b1_speaking_role_of_parents/q5.mp3"],
   },
   {
     id: "vstep_b1_speaking_free_time",
@@ -570,6 +598,8 @@ export const VSTEP_SPEAKING_TOPICS: VstepSpeakingTopic[] = [
     ],
     estimated_time_minutes: 5,
     typical_band_descriptors: B1_BAND_DESCRIPTORS,
+    audioIntroKey: "vstep-speaking/vstep_b1_speaking_free_time/intro.mp3",
+    audioQuestionKeys: ["vstep-speaking/vstep_b1_speaking_free_time/q1.mp3", "vstep-speaking/vstep_b1_speaking_free_time/q2.mp3", "vstep-speaking/vstep_b1_speaking_free_time/q3.mp3", "vstep-speaking/vstep_b1_speaking_free_time/q4.mp3", "vstep-speaking/vstep_b1_speaking_free_time/q5.mp3"],
   },
   {
     id: "vstep_b1_speaking_friendship",
@@ -603,6 +633,8 @@ export const VSTEP_SPEAKING_TOPICS: VstepSpeakingTopic[] = [
     ],
     estimated_time_minutes: 5,
     typical_band_descriptors: B1_BAND_DESCRIPTORS,
+    audioIntroKey: "vstep-speaking/vstep_b1_speaking_friendship/intro.mp3",
+    audioQuestionKeys: ["vstep-speaking/vstep_b1_speaking_friendship/q1.mp3", "vstep-speaking/vstep_b1_speaking_friendship/q2.mp3", "vstep-speaking/vstep_b1_speaking_friendship/q3.mp3", "vstep-speaking/vstep_b1_speaking_friendship/q4.mp3", "vstep-speaking/vstep_b1_speaking_friendship/q5.mp3"],
   },
   {
     id: "vstep_b1_speaking_health_lifestyle",
@@ -636,6 +668,8 @@ export const VSTEP_SPEAKING_TOPICS: VstepSpeakingTopic[] = [
     ],
     estimated_time_minutes: 5,
     typical_band_descriptors: B1_BAND_DESCRIPTORS,
+    audioIntroKey: "vstep-speaking/vstep_b1_speaking_health_lifestyle/intro.mp3",
+    audioQuestionKeys: ["vstep-speaking/vstep_b1_speaking_health_lifestyle/q1.mp3", "vstep-speaking/vstep_b1_speaking_health_lifestyle/q2.mp3", "vstep-speaking/vstep_b1_speaking_health_lifestyle/q3.mp3", "vstep-speaking/vstep_b1_speaking_health_lifestyle/q4.mp3", "vstep-speaking/vstep_b1_speaking_health_lifestyle/q5.mp3"],
   },
 
   // ════════════════════════════════════════════════════════════════
@@ -673,6 +707,8 @@ export const VSTEP_SPEAKING_TOPICS: VstepSpeakingTopic[] = [
     ],
     estimated_time_minutes: 3,
     typical_band_descriptors: B2_BAND_DESCRIPTORS,
+    audioIntroKey: "vstep-speaking/vstep_b2_speaking_career_goals/intro.mp3",
+    audioQuestionKeys: ["vstep-speaking/vstep_b2_speaking_career_goals/q1.mp3", "vstep-speaking/vstep_b2_speaking_career_goals/q2.mp3", "vstep-speaking/vstep_b2_speaking_career_goals/q3.mp3", "vstep-speaking/vstep_b2_speaking_career_goals/q4.mp3", "vstep-speaking/vstep_b2_speaking_career_goals/q5.mp3"],
   },
   {
     id: "vstep_b2_speaking_technology_use",
@@ -706,6 +742,8 @@ export const VSTEP_SPEAKING_TOPICS: VstepSpeakingTopic[] = [
     ],
     estimated_time_minutes: 3,
     typical_band_descriptors: B2_BAND_DESCRIPTORS,
+    audioIntroKey: "vstep-speaking/vstep_b2_speaking_technology_use/intro.mp3",
+    audioQuestionKeys: ["vstep-speaking/vstep_b2_speaking_technology_use/q1.mp3", "vstep-speaking/vstep_b2_speaking_technology_use/q2.mp3", "vstep-speaking/vstep_b2_speaking_technology_use/q3.mp3", "vstep-speaking/vstep_b2_speaking_technology_use/q4.mp3", "vstep-speaking/vstep_b2_speaking_technology_use/q5.mp3"],
   },
   {
     id: "vstep_b2_speaking_environmental_issues",
@@ -739,6 +777,8 @@ export const VSTEP_SPEAKING_TOPICS: VstepSpeakingTopic[] = [
     ],
     estimated_time_minutes: 3,
     typical_band_descriptors: B2_BAND_DESCRIPTORS,
+    audioIntroKey: "vstep-speaking/vstep_b2_speaking_environmental_issues/intro.mp3",
+    audioQuestionKeys: ["vstep-speaking/vstep_b2_speaking_environmental_issues/q1.mp3", "vstep-speaking/vstep_b2_speaking_environmental_issues/q2.mp3", "vstep-speaking/vstep_b2_speaking_environmental_issues/q3.mp3", "vstep-speaking/vstep_b2_speaking_environmental_issues/q4.mp3", "vstep-speaking/vstep_b2_speaking_environmental_issues/q5.mp3"],
   },
   {
     id: "vstep_b2_speaking_health_fitness",
@@ -772,6 +812,8 @@ export const VSTEP_SPEAKING_TOPICS: VstepSpeakingTopic[] = [
     ],
     estimated_time_minutes: 3,
     typical_band_descriptors: B2_BAND_DESCRIPTORS,
+    audioIntroKey: "vstep-speaking/vstep_b2_speaking_health_fitness/intro.mp3",
+    audioQuestionKeys: ["vstep-speaking/vstep_b2_speaking_health_fitness/q1.mp3", "vstep-speaking/vstep_b2_speaking_health_fitness/q2.mp3", "vstep-speaking/vstep_b2_speaking_health_fitness/q3.mp3", "vstep-speaking/vstep_b2_speaking_health_fitness/q4.mp3", "vstep-speaking/vstep_b2_speaking_health_fitness/q5.mp3"],
   },
   {
     id: "vstep_b2_speaking_learning_english",
@@ -805,6 +847,8 @@ export const VSTEP_SPEAKING_TOPICS: VstepSpeakingTopic[] = [
     ],
     estimated_time_minutes: 3,
     typical_band_descriptors: B2_BAND_DESCRIPTORS,
+    audioIntroKey: "vstep-speaking/vstep_b2_speaking_learning_english/intro.mp3",
+    audioQuestionKeys: ["vstep-speaking/vstep_b2_speaking_learning_english/q1.mp3", "vstep-speaking/vstep_b2_speaking_learning_english/q2.mp3", "vstep-speaking/vstep_b2_speaking_learning_english/q3.mp3", "vstep-speaking/vstep_b2_speaking_learning_english/q4.mp3", "vstep-speaking/vstep_b2_speaking_learning_english/q5.mp3"],
   },
   {
     id: "vstep_b2_speaking_family_changes",
@@ -838,6 +882,8 @@ export const VSTEP_SPEAKING_TOPICS: VstepSpeakingTopic[] = [
     ],
     estimated_time_minutes: 3,
     typical_band_descriptors: B2_BAND_DESCRIPTORS,
+    audioIntroKey: "vstep-speaking/vstep_b2_speaking_family_changes/intro.mp3",
+    audioQuestionKeys: ["vstep-speaking/vstep_b2_speaking_family_changes/q1.mp3", "vstep-speaking/vstep_b2_speaking_family_changes/q2.mp3", "vstep-speaking/vstep_b2_speaking_family_changes/q3.mp3", "vstep-speaking/vstep_b2_speaking_family_changes/q4.mp3", "vstep-speaking/vstep_b2_speaking_family_changes/q5.mp3"],
   },
 
   // ════════════════════════════════════════════════════════════════
@@ -875,6 +921,8 @@ export const VSTEP_SPEAKING_TOPICS: VstepSpeakingTopic[] = [
     ],
     estimated_time_minutes: 4,
     typical_band_descriptors: B2_BAND_DESCRIPTORS,
+    audioIntroKey: "vstep-speaking/vstep_b2_speaking_workplace_conflict/intro.mp3",
+    audioQuestionKeys: ["vstep-speaking/vstep_b2_speaking_workplace_conflict/q1.mp3", "vstep-speaking/vstep_b2_speaking_workplace_conflict/q2.mp3", "vstep-speaking/vstep_b2_speaking_workplace_conflict/q3.mp3", "vstep-speaking/vstep_b2_speaking_workplace_conflict/q4.mp3", "vstep-speaking/vstep_b2_speaking_workplace_conflict/q5.mp3"],
   },
   {
     id: "vstep_b2_speaking_urban_vs_rural",
@@ -908,6 +956,8 @@ export const VSTEP_SPEAKING_TOPICS: VstepSpeakingTopic[] = [
     ],
     estimated_time_minutes: 4,
     typical_band_descriptors: B2_BAND_DESCRIPTORS,
+    audioIntroKey: "vstep-speaking/vstep_b2_speaking_urban_vs_rural/intro.mp3",
+    audioQuestionKeys: ["vstep-speaking/vstep_b2_speaking_urban_vs_rural/q1.mp3", "vstep-speaking/vstep_b2_speaking_urban_vs_rural/q2.mp3", "vstep-speaking/vstep_b2_speaking_urban_vs_rural/q3.mp3", "vstep-speaking/vstep_b2_speaking_urban_vs_rural/q4.mp3", "vstep-speaking/vstep_b2_speaking_urban_vs_rural/q5.mp3"],
   },
   {
     id: "vstep_b2_speaking_traditional_vs_modern",
@@ -941,6 +991,8 @@ export const VSTEP_SPEAKING_TOPICS: VstepSpeakingTopic[] = [
     ],
     estimated_time_minutes: 4,
     typical_band_descriptors: B2_BAND_DESCRIPTORS,
+    audioIntroKey: "vstep-speaking/vstep_b2_speaking_traditional_vs_modern/intro.mp3",
+    audioQuestionKeys: ["vstep-speaking/vstep_b2_speaking_traditional_vs_modern/q1.mp3", "vstep-speaking/vstep_b2_speaking_traditional_vs_modern/q2.mp3", "vstep-speaking/vstep_b2_speaking_traditional_vs_modern/q3.mp3", "vstep-speaking/vstep_b2_speaking_traditional_vs_modern/q4.mp3", "vstep-speaking/vstep_b2_speaking_traditional_vs_modern/q5.mp3"],
   },
 
   // ════════════════════════════════════════════════════════════════
@@ -978,6 +1030,8 @@ export const VSTEP_SPEAKING_TOPICS: VstepSpeakingTopic[] = [
     ],
     estimated_time_minutes: 5,
     typical_band_descriptors: B2_BAND_DESCRIPTORS,
+    audioIntroKey: "vstep-speaking/vstep_b2_speaking_globalization/intro.mp3",
+    audioQuestionKeys: ["vstep-speaking/vstep_b2_speaking_globalization/q1.mp3", "vstep-speaking/vstep_b2_speaking_globalization/q2.mp3", "vstep-speaking/vstep_b2_speaking_globalization/q3.mp3", "vstep-speaking/vstep_b2_speaking_globalization/q4.mp3", "vstep-speaking/vstep_b2_speaking_globalization/q5.mp3"],
   },
   {
     id: "vstep_b2_speaking_social_media_impact",
@@ -1011,6 +1065,8 @@ export const VSTEP_SPEAKING_TOPICS: VstepSpeakingTopic[] = [
     ],
     estimated_time_minutes: 5,
     typical_band_descriptors: B2_BAND_DESCRIPTORS,
+    audioIntroKey: "vstep-speaking/vstep_b2_speaking_social_media_impact/intro.mp3",
+    audioQuestionKeys: ["vstep-speaking/vstep_b2_speaking_social_media_impact/q1.mp3", "vstep-speaking/vstep_b2_speaking_social_media_impact/q2.mp3", "vstep-speaking/vstep_b2_speaking_social_media_impact/q3.mp3", "vstep-speaking/vstep_b2_speaking_social_media_impact/q4.mp3", "vstep-speaking/vstep_b2_speaking_social_media_impact/q5.mp3"],
   },
   {
     id: "vstep_b2_speaking_education_reform",
@@ -1044,6 +1100,8 @@ export const VSTEP_SPEAKING_TOPICS: VstepSpeakingTopic[] = [
     ],
     estimated_time_minutes: 5,
     typical_band_descriptors: B2_BAND_DESCRIPTORS,
+    audioIntroKey: "vstep-speaking/vstep_b2_speaking_education_reform/intro.mp3",
+    audioQuestionKeys: ["vstep-speaking/vstep_b2_speaking_education_reform/q1.mp3", "vstep-speaking/vstep_b2_speaking_education_reform/q2.mp3", "vstep-speaking/vstep_b2_speaking_education_reform/q3.mp3", "vstep-speaking/vstep_b2_speaking_education_reform/q4.mp3", "vstep-speaking/vstep_b2_speaking_education_reform/q5.mp3"],
   },
   {
     id: "vstep_b2_speaking_work_life_balance",
@@ -1077,6 +1135,8 @@ export const VSTEP_SPEAKING_TOPICS: VstepSpeakingTopic[] = [
     ],
     estimated_time_minutes: 5,
     typical_band_descriptors: B2_BAND_DESCRIPTORS,
+    audioIntroKey: "vstep-speaking/vstep_b2_speaking_work_life_balance/intro.mp3",
+    audioQuestionKeys: ["vstep-speaking/vstep_b2_speaking_work_life_balance/q1.mp3", "vstep-speaking/vstep_b2_speaking_work_life_balance/q2.mp3", "vstep-speaking/vstep_b2_speaking_work_life_balance/q3.mp3", "vstep-speaking/vstep_b2_speaking_work_life_balance/q4.mp3", "vstep-speaking/vstep_b2_speaking_work_life_balance/q5.mp3"],
   },
   {
     id: "vstep_b2_speaking_role_of_government",
@@ -1110,6 +1170,8 @@ export const VSTEP_SPEAKING_TOPICS: VstepSpeakingTopic[] = [
     ],
     estimated_time_minutes: 5,
     typical_band_descriptors: B2_BAND_DESCRIPTORS,
+    audioIntroKey: "vstep-speaking/vstep_b2_speaking_role_of_government/intro.mp3",
+    audioQuestionKeys: ["vstep-speaking/vstep_b2_speaking_role_of_government/q1.mp3", "vstep-speaking/vstep_b2_speaking_role_of_government/q2.mp3", "vstep-speaking/vstep_b2_speaking_role_of_government/q3.mp3", "vstep-speaking/vstep_b2_speaking_role_of_government/q4.mp3", "vstep-speaking/vstep_b2_speaking_role_of_government/q5.mp3"],
   },
   {
     id: "vstep_b2_speaking_future_of_cities",
@@ -1143,6 +1205,8 @@ export const VSTEP_SPEAKING_TOPICS: VstepSpeakingTopic[] = [
     ],
     estimated_time_minutes: 5,
     typical_band_descriptors: B2_BAND_DESCRIPTORS,
+    audioIntroKey: "vstep-speaking/vstep_b2_speaking_future_of_cities/intro.mp3",
+    audioQuestionKeys: ["vstep-speaking/vstep_b2_speaking_future_of_cities/q1.mp3", "vstep-speaking/vstep_b2_speaking_future_of_cities/q2.mp3", "vstep-speaking/vstep_b2_speaking_future_of_cities/q3.mp3", "vstep-speaking/vstep_b2_speaking_future_of_cities/q4.mp3", "vstep-speaking/vstep_b2_speaking_future_of_cities/q5.mp3"],
   },
 ];
 

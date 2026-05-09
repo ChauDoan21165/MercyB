@@ -73,6 +73,21 @@ describe("VSTEP_SPEAKING_TOPICS catalogue shape", () => {
     }
   });
 
+  it("every topic has audioIntroKey matching vstep-speaking/{id}/intro.mp3", () => {
+    for (const t of VSTEP_SPEAKING_TOPICS) {
+      expect(t.audioIntroKey).toBe(`vstep-speaking/${t.id}/intro.mp3`);
+    }
+  });
+
+  it("every topic has audioQuestionKeys matching vstep-speaking/{id}/qN.mp3 with correct count", () => {
+    for (const t of VSTEP_SPEAKING_TOPICS) {
+      expect(t.audioQuestionKeys).toHaveLength(t.sample_questions.length);
+      for (let i = 0; i < t.sample_questions.length; i++) {
+        expect(t.audioQuestionKeys[i]).toBe(`vstep-speaking/${t.id}/q${i + 1}.mp3`);
+      }
+    }
+  });
+
   it("every topic provides bilingual band descriptors", () => {
     for (const t of VSTEP_SPEAKING_TOPICS) {
       expect(t.typical_band_descriptors.length).toBeGreaterThanOrEqual(3);
