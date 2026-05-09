@@ -89,13 +89,7 @@ export const IELTS_COPY = {
   },
   // Listening
   listeningTitle: { vi: "Bài Nghe", en: "Listening" },
-  listeningAudioPlaceholder: {
-    vi:
-      "File âm thanh đang được chuẩn bị. Hiện tại bạn có thể đọc transcript để luyện vocabulary.",
-    en:
-      "Audio is in preparation. For now, study the transcript below to build vocabulary.",
-  },
-  listeningTranscriptLabel: { vi: "Transcript", en: "Transcript" },
+
   // Reading
   readingTitle: { vi: "Bài Đọc", en: "Reading" },
   // Estimator
