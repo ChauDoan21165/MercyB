@@ -64,5 +64,4 @@ audio-manifest.json
 audio-progress.json
 .deepseek/
 audit_tmp/
-public/audio/manifest.json
 reports/chau-report-*.md

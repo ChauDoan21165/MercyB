@@ -29,7 +29,10 @@
 import { config as loadDotenv } from "dotenv";
 import { existsSync } from "node:fs";
 import { createClient } from "@supabase/supabase-js";
-import { VIETNAMESE_LESSONS } from "../src/languages/vietnamese/lessons";
+import {
+  VIETNAMESE_LESSONS,
+  loadAllVietnameseLessons,
+} from "../src/languages/vietnamese/lessons";
 
 for (const p of [".env.local", ".env"]) {
   if (existsSync(p)) loadDotenv({ path: p });
@@ -62,46 +65,41 @@ type Entry = {
   voice: string;
 };
 
-// Build manifest
+// Build manifest. VIETNAMESE_LESSONS is a lazy registry — it's an empty
+// array at module init and gets backfilled when loadAllVietnameseLessons()
+// resolves. Without the await below the iteration sees zero lessons.
 const entries: Entry[] = [];
-const filteredLessons = LEVEL_FILTER
-  ? VIETNAMESE_LESSONS.filter((l) => (l as { level?: string }).level === LEVEL_FILTER)
-  : VIETNAMESE_LESSONS;
-for (const lesson of filteredLessons) {
-  // Storage prefix follows the lesson's own CEFR level so each batch
-  // lands under the right segment (a1/vi/..., b1/vi/..., etc).
-  const levelPrefix = String((lesson as { level?: string }).level ?? "a1").toLowerCase();
-  // Phrases: alternate voices by index
-  lesson.phrases.forEach((ph, i) => {
-    if (!ph.vietnamese?.trim()) return;
-    entries.push({
-      storage_key: `${levelPrefix}/vi/l${lesson.id}/phrase_${i + 1}.mp3`,
-      text: ph.vietnamese.trim().length < 3 ? ph.vietnamese.trim() + "." : ph.vietnamese.trim(),
-      voice: VOICES[i % 2]!,
-    });
-  });
-  // Dialogue: alternate voices by speaker order
-  if (lesson.dialogue) {
-    lesson.dialogue.forEach((line, i) => {
-      if (!line.vietnamese?.trim()) return;
+
+async function buildManifest(): Promise<void> {
+  await loadAllVietnameseLessons();
+  const filteredLessons = LEVEL_FILTER
+    ? VIETNAMESE_LESSONS.filter((l) => (l as { level?: string }).level === LEVEL_FILTER)
+    : VIETNAMESE_LESSONS;
+  for (const lesson of filteredLessons) {
+    // Storage prefix follows the lesson's own CEFR level so each batch
+    // lands under the right segment (a1/vi/..., b1/vi/..., etc).
+    const levelPrefix = String((lesson as { level?: string }).level ?? "a1").toLowerCase();
+    // Phrases: alternate voices by index
+    lesson.phrases.forEach((ph, i) => {
+      if (!ph.vietnamese?.trim()) return;
       entries.push({
-        storage_key: `${levelPrefix}/vi/l${lesson.id}/dialogue_${i + 1}.mp3`,
-        text: line.vietnamese.trim().length < 3 ? line.vietnamese.trim() + "." : line.vietnamese.trim(),
+        storage_key: `${levelPrefix}/vi/l${lesson.id}/phrase_${i + 1}.mp3`,
+        text: ph.vietnamese.trim().length < 3 ? ph.vietnamese.trim() + "." : ph.vietnamese.trim(),
         voice: VOICES[i % 2]!,
       });
     });
+    // Dialogue: alternate voices by speaker order
+    if (lesson.dialogue) {
+      lesson.dialogue.forEach((line, i) => {
+        if (!line.vietnamese?.trim()) return;
+        entries.push({
+          storage_key: `${levelPrefix}/vi/l${lesson.id}/dialogue_${i + 1}.mp3`,
+          text: line.vietnamese.trim().length < 3 ? line.vietnamese.trim() + "." : line.vietnamese.trim(),
+          voice: VOICES[i % 2]!,
+        });
+      });
+    }
   }
-}
-
-console.log(`[manifest] total entries: ${entries.length}`);
-console.log(`[manifest] total chars: ${entries.reduce((s, e) => s + e.text.length, 0)}`);
-
-if (DRY_RUN) {
-  console.log("\n[DRY-RUN] first 5 entries:");
-  for (const e of entries.slice(0, 5)) {
-    console.log(`  ${e.storage_key}  voice=${e.voice}  chars=${e.text.length}  text="${e.text}"`);
-  }
-  process.exit(0);
 }
 
 async function existsInBucket(key: string): Promise<boolean> {
@@ -157,6 +155,19 @@ async function uploadToSupabase(key: string, buf: Buffer): Promise<boolean> {
 }
 
 (async () => {
+  await buildManifest();
+
+  console.log(`[manifest] total entries: ${entries.length}`);
+  console.log(`[manifest] total chars: ${entries.reduce((s, e) => s + e.text.length, 0)}`);
+
+  if (DRY_RUN) {
+    console.log("\n[DRY-RUN] first 5 entries:");
+    for (const e of entries.slice(0, 5)) {
+      console.log(`  ${e.storage_key}  voice=${e.voice}  chars=${e.text.length}  text="${e.text}"`);
+    }
+    process.exit(0);
+  }
+
   let done = 0,
     skipped = 0,
     failed = 0,
