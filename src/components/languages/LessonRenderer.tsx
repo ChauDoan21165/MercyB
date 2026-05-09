@@ -41,6 +41,7 @@ import { LessonAudioButton } from "./LessonAudioButton";
 import {
   lessonAudioKey,
   dialogueShortSpeakerLetter,
+  isPhonicsOnly,
 } from "@/lib/lessonAudio";
 
 interface LessonRendererProps {
@@ -208,7 +209,7 @@ export function LessonRenderer({ lesson, theme }: LessonRendererProps) {
               <div className="mt-2 grid grid-cols-2 gap-1">
                 {lesson.vocabulary.map((v, vi) => (
                   <div key={vi} className="text-xs flex items-start gap-1.5">
-                    {lesson.audioBase && (
+                    {lesson.audioBase && !isPhonicsOnly(v.native) && (
                       <LessonAudioButton
                         audioKey={lessonAudioKey(lesson.audioBase, {
                           kind: "vocab",

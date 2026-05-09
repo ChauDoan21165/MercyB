@@ -85,3 +85,25 @@ export function lessonAudioKey(audioBase: string, unit: LessonAudioUnit): string
 export function dialogueShortSpeakerLetter(speaker: string | undefined | null): "A" | "B" {
   return (speaker ?? "").trim().toUpperCase().startsWith("B") ? "B" : "A";
 }
+
+// ── Phonics-skip filter ─────────────────────────────────────────────────
+//
+// Single-codepoint Japanese hiragana/katakana and Korean jamo are
+// deliberately excluded from audio generation (they synthesize poorly
+// through TTS and the local kids/* phonics bundle covers them).
+//
+// This is the same filter used by scripts/build-audio-manifest.ts.
+// Keep the two copies in sync; if the manifest builder's ranges change,
+// this function must change too.
+//
+// Ranges:
+//   U+3040–U+309F  Hiragana
+//   U+30A0–U+30FF  Katakana
+//   U+3130–U+318F  Hangul Compatibility Jamo (ㄱ ㄴ ㅏ ㅑ)
+//   U+1100–U+11FF  Hangul Jamo (modern initial/medial/final)
+
+const SINGLE_PHONICS_RE = /^[぀-ゟ゠-ヿ㄰-㆏ᄀ-ᇿ]$/;
+
+export function isPhonicsOnly(text: string): boolean {
+  return text.length === 1 && SINGLE_PHONICS_RE.test(text);
+}
