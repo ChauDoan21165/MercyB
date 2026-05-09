@@ -25,6 +25,7 @@
 import OpenAI from "openai";
 import { createClient } from "@supabase/supabase-js";
 import { toFile } from "openai/uploads"; // OpenAI Node SDK helper
+import { alertApiFailure } from "@/lib/apiFailureAlert";
 
 /* =========================================================
    CLIENTS
@@ -542,11 +543,20 @@ async function logPronunciationAttempt(params: {
 
 async function transcribeAudio(audioBuffer: Buffer) {
   const file = await toFile(audioBuffer, "speech.webm");
-  const transcript = await client.audio.transcriptions.create({
-    file,
-    model: "whisper-1",
-  });
-  return String((transcript as any)?.text ?? "").trim();
+  try {
+    const transcript = await client.audio.transcriptions.create({
+      file,
+      model: "whisper-1",
+    });
+    return String((transcript as any)?.text ?? "").trim();
+  } catch (err) {
+    await alertApiFailure(err, {
+      provider: "openai",
+      model: "whisper-1",
+      operation: "whisper_transcription",
+    });
+    throw err;
+  }
 }
 
 /* =========================================================
@@ -576,18 +586,27 @@ async function callChatModel(params: {
     });
   }
 
-  const completion = await client.chat.completions.create({
-    model,
-    temperature,
-    messages,
-    ...(forceJsonObject ? { response_format: { type: "json_object" } as any } : {}),
-  });
+  try {
+    const completion = await client.chat.completions.create({
+      model,
+      temperature,
+      messages,
+      ...(forceJsonObject ? { response_format: { type: "json_object" } as any } : {}),
+    });
 
-  return {
-    content: completion.choices?.[0]?.message?.content ?? "",
-    usage: completion.usage ?? null,
-    model,
-  };
+    return {
+      content: completion.choices?.[0]?.message?.content ?? "",
+      usage: completion.usage ?? null,
+      model,
+    };
+  } catch (err) {
+    await alertApiFailure(err, {
+      provider: "openai",
+      model,
+      operation: forceJsonObject ? "chat_completion_pronunciation" : "chat_completion_default",
+    });
+    throw err;
+  }
 }
 
 /* =========================================================
@@ -651,15 +670,25 @@ INVALID_OUTPUT_2:
 ${stripMarkdownCodeFences(params.rawOutputs.secondRaw).slice(0, 6000)}
 `.trim();
 
-  const completion = await client.chat.completions.create({
-    model: params.model,
-    temperature: 0,
-    messages: [
-      { role: "system", content: repairSystem },
-      { role: "system", content: repairInstruction },
-    ],
-    response_format: { type: "json_object" } as any,
-  });
+  let completion: OpenAI.Chat.Completions.ChatCompletion;
+  try {
+    completion = await client.chat.completions.create({
+      model: params.model,
+      temperature: 0,
+      messages: [
+        { role: "system", content: repairSystem },
+        { role: "system", content: repairInstruction },
+      ],
+      response_format: { type: "json_object" } as any,
+    });
+  } catch (err) {
+    await alertApiFailure(err, {
+      provider: "openai",
+      model: params.model,
+      operation: "chat_completion_self_heal",
+    });
+    throw err;
+  }
 
   const content = completion.choices?.[0]?.message?.content ?? "";
   const usage = completion.usage ?? null;
