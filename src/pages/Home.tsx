@@ -168,6 +168,11 @@ export default function Home() {
   const isDesktopTop      = viewportWidth >= 960;
   const isPhone           = viewportWidth < 640;
   const mobileHeadlineSize = viewportWidth <= 360 ? 19 : viewportWidth <= 400 ? 21 : 24;
+  // Secondary cards get softer visual weight on mobile
+  const secIconSize   = isPhone ? 44 : 52;
+  const secTitleSize  = isPhone ? z(17) : z(20);
+  const secBorderColor = isPhone ? "rgba(0,0,0,0.07)" : undefined; // use per-card default on desktop
+  const secShadow      = isPhone ? "0 4px 16px rgba(0,0,0,0.04)" : undefined;
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -491,12 +496,12 @@ export default function Home() {
         boxShadow: "0 10px 28px rgba(20,184,166,0.08)",
         display: "flex", alignItems: "center", gap: 16, textAlign: "left",
       }}>
-        <div style={{ width: 52, height: 52, borderRadius: 9999, background: "linear-gradient(180deg, #34D399 0%, #14B8A6 100%)", display: "grid", placeItems: "center", boxShadow: "0 8px 20px rgba(20,184,166,0.20)", flexShrink: 0 }}>
-          <LibraryBig size={24} color="white" />
+        <div style={{ width: secIconSize, height: secIconSize, borderRadius: 9999, background: "linear-gradient(180deg, #34D399 0%, #14B8A6 100%)", display: "grid", placeItems: "center", boxShadow: isPhone ? "0 4px 12px rgba(20,184,166,0.14)" : "0 8px 20px rgba(20,184,166,0.20)", flexShrink: 0 }}>
+          <LibraryBig size={isPhone ? 20 : 24} color="white" />
         </div>
 
         <div style={{ minWidth: 0, flex: 1 }}>
-          <div style={{ fontSize: isPhone ? z(18) : z(20), fontWeight: 900, color: "rgba(0,80,70,0.92)", letterSpacing: -0.3 }}>Library</div>
+          <div style={{ fontSize: secTitleSize, fontWeight: 900, color: "rgba(0,80,70,0.92)", letterSpacing: -0.3 }}>Library</div>
           {!isPhone && <div style={{ fontSize: z(12), fontWeight: 700, color: "rgba(0,100,85,0.52)", marginTop: 2 }}>Thư viện</div>}
           <div style={{ marginTop: isPhone ? 4 : 6, fontSize: z(14), fontWeight: 700, color: "rgba(0,0,0,0.62)", lineHeight: 1.45 }}>
             {isPhone ? "Đọc. Nghe. Tiến bộ từng ngày." : "Đọc. Nghe. Suy ngẫm. Tiến bộ từng ngày."}
@@ -531,12 +536,12 @@ export default function Home() {
         boxShadow: "0 10px 28px rgba(99,102,241,0.10)",
         display: "flex", alignItems: "center", gap: 16, textAlign: "left",
       }}>
-        <div style={{ width: 52, height: 52, borderRadius: 9999, background: "linear-gradient(180deg, #818CF8 0%, #6366F1 100%)", display: "grid", placeItems: "center", boxShadow: "0 8px 20px rgba(99,102,241,0.22)", flexShrink: 0 }}>
-          <GraduationCap size={24} color="white" />
+        <div style={{ width: secIconSize, height: secIconSize, borderRadius: 9999, background: "linear-gradient(180deg, #818CF8 0%, #6366F1 100%)", display: "grid", placeItems: "center", boxShadow: isPhone ? "0 4px 12px rgba(99,102,241,0.16)" : "0 8px 20px rgba(99,102,241,0.22)", flexShrink: 0 }}>
+          <GraduationCap size={isPhone ? 20 : 24} color="white" />
         </div>
 
         <div style={{ minWidth: 0, flex: 1 }}>
-          <div style={{ fontSize: isPhone ? z(18) : z(20), fontWeight: 900, color: "rgba(55,48,163,0.94)", letterSpacing: -0.3 }}>
+          <div style={{ fontSize: secTitleSize, fontWeight: 900, color: "rgba(55,48,163,0.94)", letterSpacing: -0.3 }}>
             Luyện TOEIC
           </div>
           {!isPhone && (
@@ -576,12 +581,12 @@ export default function Home() {
         boxShadow: "0 10px 28px rgba(16,185,129,0.10)",
         display: "flex", alignItems: "center", gap: 16, textAlign: "left",
       }}>
-        <div style={{ width: 52, height: 52, borderRadius: 9999, background: "linear-gradient(180deg, #34D399 0%, #10B981 100%)", display: "grid", placeItems: "center", boxShadow: "0 8px 20px rgba(16,185,129,0.22)", flexShrink: 0 }}>
-          <GraduationCap size={24} color="white" />
+        <div style={{ width: secIconSize, height: secIconSize, borderRadius: 9999, background: "linear-gradient(180deg, #34D399 0%, #10B981 100%)", display: "grid", placeItems: "center", boxShadow: isPhone ? "0 4px 12px rgba(16,185,129,0.16)" : "0 8px 20px rgba(16,185,129,0.22)", flexShrink: 0 }}>
+          <GraduationCap size={isPhone ? 20 : 24} color="white" />
         </div>
 
         <div style={{ minWidth: 0, flex: 1 }}>
-          <div style={{ fontSize: isPhone ? z(18) : z(20), fontWeight: 900, color: "rgba(6,95,70,0.94)", letterSpacing: -0.3 }}>
+          <div style={{ fontSize: secTitleSize, fontWeight: 900, color: "rgba(6,95,70,0.94)", letterSpacing: -0.3 }}>
             IELTS Speaking
           </div>
           {!isPhone && (
@@ -620,12 +625,12 @@ export default function Home() {
         boxShadow: "0 10px 28px rgba(14,165,233,0.08)",
         display: "flex", alignItems: "center", gap: 16, textAlign: "left",
       }}>
-        <div style={{ width: 52, height: 52, borderRadius: 9999, background: "linear-gradient(180deg, #38BDF8 0%, #0EA5E9 100%)", display: "grid", placeItems: "center", boxShadow: "0 8px 20px rgba(14,165,233,0.20)", flexShrink: 0 }}>
-          <Compass size={24} color="white" />
+        <div style={{ width: secIconSize, height: secIconSize, borderRadius: 9999, background: "linear-gradient(180deg, #38BDF8 0%, #0EA5E9 100%)", display: "grid", placeItems: "center", boxShadow: isPhone ? "0 4px 12px rgba(14,165,233,0.14)" : "0 8px 20px rgba(14,165,233,0.20)", flexShrink: 0 }}>
+          <Compass size={isPhone ? 20 : 24} color="white" />
         </div>
 
         <div style={{ minWidth: 0, flex: 1 }}>
-          <div style={{ fontSize: isPhone ? z(18) : z(20), fontWeight: 900, color: "rgba(7,89,133,0.92)", letterSpacing: -0.3 }}>Placement test</div>
+          <div style={{ fontSize: secTitleSize, fontWeight: 900, color: "rgba(7,89,133,0.92)", letterSpacing: -0.3 }}>Placement test</div>
           {!isPhone && <div style={{ fontSize: z(12), fontWeight: 700, color: "rgba(7,89,133,0.55)", marginTop: 2 }}>Bài đánh giá trình độ</div>}
           <div style={{ marginTop: isPhone ? 4 : 6, fontSize: z(14), fontWeight: 700, color: "rgba(0,0,0,0.62)", lineHeight: 1.45 }}>
             {isPhone ? "Biết chính xác trình độ của bạn — 6 phút." : "Biết chính xác trình độ thật của bạn. 6–9 phút."}
@@ -673,23 +678,23 @@ export default function Home() {
       >
         <div
           style={{
-            width: 52,
-            height: 52,
+            width: secIconSize,
+            height: secIconSize,
             borderRadius: 9999,
             background: "linear-gradient(180deg, #DC2626 0%, #B45309 100%)",
             display: "grid",
             placeItems: "center",
-            boxShadow: "0 8px 20px rgba(185,28,28,0.22)",
+            boxShadow: isPhone ? "0 4px 12px rgba(185,28,28,0.16)" : "0 8px 20px rgba(185,28,28,0.22)",
             flexShrink: 0,
           }}
         >
-          <GraduationCap size={24} color="white" />
+          <GraduationCap size={isPhone ? 20 : 24} color="white" />
         </div>
 
         <div style={{ minWidth: 0, flex: 1 }}>
           <div
             style={{
-              fontSize: isPhone ? z(18) : z(20),
+              fontSize: secTitleSize,
               fontWeight: 900,
               color: "rgba(127,29,29,0.94)",
               letterSpacing: -0.3,
@@ -774,10 +779,34 @@ export default function Home() {
               pill preserved inside the card. */}
           {teacherCard}
 
-          {/* Try one word — no signup. Lowest-friction first action,
-              promoted to sit immediately under the hero so brand-new
-              visitors have one obvious starting point. */}
-          {tryOneWordCard}
+          {/* Try one word — no signup. On desktop: standalone card.
+              On mobile: compact chip nested under Teacher Mercy so the
+              primary action stays dominant. */}
+          {isPhone ? (
+            <button
+              type="button"
+              onClick={handleTryOneWord}
+              aria-label="Try pronunciation — no signup"
+              style={{
+                width: "100%", background: "none", border: "none", padding: 0, cursor: "pointer",
+                marginTop: -2,
+              }}
+            >
+              <div style={{
+                display: "flex", alignItems: "center", gap: 8,
+                padding: "10px 16px", borderRadius: 14,
+                background: "rgba(14,116,144,0.06)", border: "1px solid rgba(14,116,144,0.10)",
+              }}>
+                <Mic size={16} style={{ color: "rgba(14,116,144,0.60)", flexShrink: 0 }} />
+                <span style={{ fontSize: z(13), fontWeight: 700, color: "rgba(8,75,90,0.78)", flex: 1, textAlign: "left" }}>
+                  Thử phát âm ngay — không cần đăng nhập
+                </span>
+                <ChevronRight size={14} style={{ color: "rgba(14,116,144,0.45)", flexShrink: 0 }} />
+              </div>
+            </button>
+          ) : (
+            tryOneWordCard
+          )}
 
           {/* ── 3. Progress ──────────────────────────────────────────────
               Weekly progress widget renders only for signed-in users
@@ -804,10 +833,14 @@ export default function Home() {
               Self-gates on its own feature flag + 24h cooldown. */}
           <RecommendedDrillCard />
 
-          {/* Section label — visually groups the secondary entry points
-              (Library + exam-prep) under one header so the eye knows
-              everything below is "more options," not the main action. */}
-          <div style={{ marginTop: isPhone ? 10 : 14, fontSize: z(11), fontWeight: 700, letterSpacing: 0.8, textTransform: "uppercase", color: "rgba(0,0,0,0.42)" }}>
+          {/* Section divider — signals shift from primary actions to
+              discovery content. Stronger visual break on mobile. */}
+          <div style={{
+            marginTop: isPhone ? 14 : 14,
+            paddingTop: isPhone ? 10 : 0,
+            borderTop: isPhone ? "1px solid rgba(0,0,0,0.06)" : "none",
+            fontSize: z(11), fontWeight: 700, letterSpacing: 0.8, textTransform: "uppercase", color: "rgba(0,0,0,0.42)",
+          }}>
             Explore more · Khám phá thêm
           </div>
 
