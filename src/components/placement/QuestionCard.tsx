@@ -8,8 +8,13 @@
 // component surfaces selection state via the controlled `selectedOptionId`
 // prop; parent decides when to commit (via Next).
 
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import type { PlacementQuestion } from '@/lib/placement/questions';
+import { useAudioUrl } from '@/hooks/useAudioUrl';
+
+// Audio key for pre-recorded question instruction narration.
+// Tap-to-hear only — no autoplay. Resolved via Supabase room-audio bucket.
+const INSTRUCTION_AUDIO_KEY = 'placement/test-instruction.mp3';
 
 type Props = {
   question: PlacementQuestion;
@@ -170,7 +175,28 @@ export function QuestionCard({
   onViRevealChange,
 }: Props) {
   const [viRevealed, setViRevealed] = useState(false);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const [audioPlaying, setAudioPlaying] = useState(false);
+  const { url: instructionAudioUrl } = useAudioUrl(INSTRUCTION_AUDIO_KEY);
   const isReading = question.type === 'reading_comprehension';
+
+  const handleToggleAudio = () => {
+    if (!audioRef.current) {
+      if (!instructionAudioUrl) return;
+      const a = new Audio(instructionAudioUrl);
+      a.preload = 'metadata';
+      a.onplay = () => setAudioPlaying(true);
+      a.onpause = () => setAudioPlaying(false);
+      a.onended = () => setAudioPlaying(false);
+      a.onerror = () => setAudioPlaying(false);
+      audioRef.current = a;
+      a.play().catch(() => setAudioPlaying(false));
+    } else if (audioRef.current.paused) {
+      audioRef.current.play().catch(() => {});
+    } else {
+      audioRef.current.pause();
+    }
+  };
 
   const handleToggle = () => {
     const next = !viRevealed;
@@ -207,9 +233,35 @@ export function QuestionCard({
       ) : null}
 
       <div style={cardStyle}>
-        <div style={instructionLabel}>
-          Choose the best answer
-          <span style={instructionVi}>Chọn đáp án đúng nhất</span>
+        <div style={{ ...instructionLabel, display: 'flex', alignItems: 'flex-start', gap: 8 }}>
+          <span style={{ flex: 1 }}>
+            Choose the best answer
+            <span style={instructionVi}>Chọn đáp án đúng nhất</span>
+          </span>
+          <button
+            type="button"
+            onClick={handleToggleAudio}
+            style={{
+              flex: '0 0 auto',
+              width: 28,
+              height: 28,
+              borderRadius: 9999,
+              border: '1px solid rgba(0,0,0,0.10)',
+              background: 'white',
+              display: 'inline-flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              cursor: 'pointer',
+              padding: 0,
+              color: 'rgba(0,0,0,0.50)',
+              fontSize: 12,
+              transition: 'background 0.15s, color 0.15s',
+            }}
+            aria-label={audioPlaying ? 'Pause instruction audio' : 'Listen to instruction'}
+            title={audioPlaying ? 'Pause' : 'Listen'}
+          >
+            {audioPlaying ? '⏸' : '🔊'}
+          </button>
         </div>
 
         <p style={promptStyle}>{question.prompt.en}</p>
