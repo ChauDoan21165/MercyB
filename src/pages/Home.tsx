@@ -357,10 +357,10 @@ export default function Home() {
         </div>
 
         <div style={{ marginTop: 14, fontSize: isPhone ? z(14) : z(16), fontWeight: 700, color: "rgba(80,20,45,0.78)", lineHeight: 1.6, maxWidth: "min(340px, 100%)", margin: "14px auto 0" }}>
-          Your English teacher. Grammar, pronunciation, writing — all in one place.
+          Hỏi — Mercy trả lời. Sửa lỗi — Mercy giải thích. Tiến bộ mỗi ngày.
         </div>
         <div style={{ marginTop: 6, fontSize: z(13), fontWeight: 600, color: "rgba(140,60,90,0.58)", lineHeight: 1.5 }}>
-          Ngữ pháp, phát âm, luyện viết — tất cả ở một nơi.
+          Ask. Get corrected. Understand why. Improve daily.
         </div>
 
         <div style={{ marginTop: 18, display: "inline-flex", alignItems: "center", gap: 8, padding: "10px 20px", borderRadius: 9999, background: "rgba(180,60,100,0.10)", border: "1px solid rgba(180,60,100,0.18)", color: "rgba(120,30,60,0.90)", fontWeight: 900, fontSize: z(14) }}>
@@ -493,10 +493,10 @@ export default function Home() {
           <div style={{ fontSize: isPhone ? z(18) : z(20), fontWeight: 900, color: "rgba(0,80,70,0.92)", letterSpacing: -0.3 }}>Library</div>
           <div style={{ fontSize: z(12), fontWeight: 700, color: "rgba(0,100,85,0.52)", marginTop: 2 }}>Thư viện</div>
           <div style={{ marginTop: 6, fontSize: z(14), fontWeight: 700, color: "rgba(0,0,0,0.62)", lineHeight: 1.45 }}>
-            Browse rooms. Read, listen, reflect.
+            Đọc. Nghe. Suy ngẫm. Tiến bộ từng ngày.
           </div>
           <div style={{ marginTop: 3, fontSize: z(12), fontWeight: 600, color: "rgba(0,0,0,0.40)", lineHeight: 1.4 }}>
-            Vào phòng học để đọc, nghe, suy ngẫm.
+            Read, listen, reflect — build a real English habit.
           </div>
         </div>
 
@@ -532,13 +532,13 @@ export default function Home() {
             Luyện TOEIC
           </div>
           <div style={{ fontSize: z(12), fontWeight: 700, color: "rgba(67,56,202,0.55)", marginTop: 2 }}>
-            TOEIC practice pack
+            TOEIC 450 → 750+
           </div>
           <div style={{ marginTop: 6, fontSize: z(14), fontWeight: 700, color: "rgba(0,0,0,0.62)", lineHeight: 1.45 }}>
-            Luyện TOEIC theo định dạng chính thức. Giải thích bằng tiếng Việt.
+            Luyện đúng định dạng. Hiểu sâu nhờ giải thích tiếng Việt.
           </div>
           <div style={{ marginTop: 3, fontSize: z(12), fontWeight: 600, color: "rgba(0,0,0,0.40)", lineHeight: 1.4 }}>
-            30 items, official format, Vietnamese explanations.
+            Official format, Vietnamese explanations — built for the score you need.
           </div>
         </div>
 
@@ -573,13 +573,13 @@ export default function Home() {
             IELTS Speaking
           </div>
           <div style={{ fontSize: z(12), fontWeight: 700, color: "rgba(15,118,110,0.55)", marginTop: 2 }}>
-            30 topics — Part 1, 2, 3
+            Band 5 → Band 7
           </div>
           <div style={{ marginTop: 6, fontSize: z(14), fontWeight: 700, color: "rgba(0,0,0,0.62)", lineHeight: 1.45 }}>
-            Luyện IELTS Speaking với phản hồi tiếng Việt — biết band hiện tại và cách nâng lên.
+            Biết band hiện tại. Biết chính xác cách nâng lên.
           </div>
           <div style={{ marginTop: 3, fontSize: z(12), fontWeight: 600, color: "rgba(0,0,0,0.40)", lineHeight: 1.4 }}>
-            Vietnamese-language strategies, vocabulary by band, sample answers band 7 + band 5.
+            Chiến lược riêng cho người Việt, từ vựng theo band, bài mẫu band 5 + band 7.
           </div>
         </div>
 
@@ -610,12 +610,12 @@ export default function Home() {
 
         <div style={{ minWidth: 0, flex: 1 }}>
           <div style={{ fontSize: isPhone ? z(18) : z(20), fontWeight: 900, color: "rgba(7,89,133,0.92)", letterSpacing: -0.3 }}>Placement test</div>
-          <div style={{ fontSize: z(12), fontWeight: 700, color: "rgba(7,89,133,0.55)", marginTop: 2 }}>Bài đánh giá</div>
+          <div style={{ fontSize: z(12), fontWeight: 700, color: "rgba(7,89,133,0.55)", marginTop: 2 }}>Bài đánh giá trình độ</div>
           <div style={{ marginTop: 6, fontSize: z(14), fontWeight: 700, color: "rgba(0,0,0,0.62)", lineHeight: 1.45 }}>
-            Find your starting level. About 6–9 minutes.
+            Biết chính xác trình độ thật của bạn. 6–9 phút.
           </div>
           <div style={{ marginTop: 3, fontSize: z(12), fontWeight: 600, color: "rgba(0,0,0,0.40)", lineHeight: 1.4 }}>
-            Tìm điểm bắt đầu phù hợp. Khoảng 6–9 phút.
+            Know exactly where you stand. About 6–9 minutes.
           </div>
         </div>
 
@@ -680,10 +680,10 @@ export default function Home() {
             VSTEP — Kỳ thi tiếng Anh quốc gia
           </div>
           <div style={{ fontSize: z(12), fontWeight: 700, color: "rgba(127,29,29,0.55)", marginTop: 2 }}>
-            Vietnamese Standardized Test of English Proficiency
+            Chinh phục B2 VSTEP
           </div>
           <div style={{ marginTop: 6, fontSize: z(14), fontWeight: 700, color: "rgba(0,0,0,0.62)", lineHeight: 1.45 }}>
-            Học VSTEP theo đúng định dạng Bộ Giáo dục.
+            Học đúng định dạng Bộ Giáo dục. Đạt chuẩn đầu ra.
           </div>
           <div style={{ marginTop: 3, fontSize: z(12), fontWeight: 600, color: "rgba(0,0,0,0.40)", lineHeight: 1.4 }}>
             Speaking B1 + B2, 30 chủ đề, mẹo riêng cho người Việt.
@@ -725,10 +725,10 @@ export default function Home() {
             English for real <span style={{ color: "rgba(13,148,136,0.92)" }}>life</span>.
           </div>
           <div style={{ marginTop: 6, fontSize: z(13), fontWeight: 600, color: "rgba(0,0,0,0.48)", lineHeight: 1.4 }}>
-            New here? Try the 12-second pronunciation test below.
+            See your pronunciation score in 12 seconds — no signup.
           </div>
           <div style={{ marginTop: 2, fontSize: z(12), fontWeight: 500, color: "rgba(0,0,0,0.40)", lineHeight: 1.4 }}>
-            Mới bắt đầu? Thử bài kiểm tra phát âm 12 giây bên dưới.
+            Xem điểm phát âm của bạn trong 12 giây — không cần đăng nhập.
           </div>
         </section>
 
