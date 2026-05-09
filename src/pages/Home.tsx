@@ -658,7 +658,7 @@ export default function Home() {
   const vstepCard = (
     <button
       type="button"
-      onClick={() => nav("/exam/vstep/speaking")}
+      onClick={() => nav("/exam/vstep")}
       aria-label="VSTEP — Vietnamese national English exam prep"
       style={{ width: "100%", background: "none", border: "none", padding: 0, cursor: "pointer" }}
     >
