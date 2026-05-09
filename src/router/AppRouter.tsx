@@ -129,6 +129,10 @@ const IELTSListeningPage  = lazyWithRetry(() => import("@/pages/exam-prep/IELTSL
 const IELTSReadingPage    = lazyWithRetry(() => import("@/pages/exam-prep/IELTSReadingPage"));
 const IELTSEstimatorPage  = lazyWithRetry(() => import("@/pages/exam-prep/IELTSEstimatorPage"));
 const VSTEPSpeakingPage   = lazyWithRetry(() => import("@/pages/exam-prep/VSTEPSpeakingPage"));
+const VSTEPIndexPage     = lazyWithRetry(() => import("@/pages/exam-prep/VSTEPIndexPage"));
+const VSTEPListeningPage = lazyWithRetry(() => import("@/pages/exam-prep/VSTEPListeningPage"));
+const VSTEPReadingPage   = lazyWithRetry(() => import("@/pages/exam-prep/VSTEPReadingPage"));
+const VSTEPWritingPage   = lazyWithRetry(() => import("@/pages/exam-prep/VSTEPWritingPage"));
 
 // SEO landing pages — Vietnamese-keyword targeted, public, no auth required.
 const SeoHocTiengAnhChoNguoiVietPage = lazyWithRetry(() => import("@/pages/seo/HocTiengAnhChoNguoiVietPage"));
@@ -981,18 +985,18 @@ export default function AppRouter() {
             }
           />
 
-          {/* VSTEP (Vietnamese national English exam) Speaking — kept public
-              so the Vietnamese-only moat is visible to anonymous visitors.
-              Practice features (recording, scoring) gate inside the page if
-              they require auth. */}
-          <Route
-            path="/exam/vstep/speaking"
-            element={
-              <LazyPage>
-                <VSTEPSpeakingPage />
-              </LazyPage>
-            }
-          />
+          {/* VSTEP (Vietnamese national English exam) — kept public
+              so the Vietnamese-only moat is visible to anonymous visitors. */}
+          <Route path="/exam/vstep"
+            element={<LazyPage><VSTEPIndexPage /></LazyPage>} />
+          <Route path="/exam/vstep/speaking"
+            element={<LazyPage><VSTEPSpeakingPage /></LazyPage>} />
+          <Route path="/exam/vstep/listening"
+            element={<LazyPage><VSTEPListeningPage /></LazyPage>} />
+          <Route path="/exam/vstep/reading"
+            element={<LazyPage><VSTEPReadingPage /></LazyPage>} />
+          <Route path="/exam/vstep/writing"
+            element={<LazyPage><VSTEPWritingPage /></LazyPage>} />
 
           {/* Public roadmap (Step 11 / Trust moat) — visible to anyone signed in;
               vote button degrades to "sign in to vote" for anon users. */}
