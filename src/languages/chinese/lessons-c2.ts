@@ -3496,6 +3496,64 @@ export const lessons: ChineseLesson[] = [
   }
   ,
   {
+    "id": 118, "level": "C2", "category": "rhetoric_capstone",
+    "title": "哲学思维与抽象推理", "pinyin": "zhe xue si wei yu chou xiang tui li",
+    "topic": "Philosophical thinking and abstract reasoning",
+    "title_vi": "Tư duy triết học và lập luận trừu tượng", "title_en": "Philosophical thinking and abstract reasoning",
+    "vocab": [
+      {"chinese": "超越论", "pinyin": "chao yue lun", "english": "transcendental", "vi": "siêu việt luận"},
+      {"chinese": "归谬法", "pinyin": "gui miu fa", "english": "reductio ad absurdum", "vi": "quy mậu"},
+      {"chinese": "二律背反", "pinyin": "er lü bei fan", "english": "antinomy", "vi": "nhị luật bội phản"},
+      {"chinese": "思想实验", "pinyin": "si xiang shi yan", "english": "thought experiment", "vi": "thí nghiệm tư tưởng"},
+      {"chinese": "概念分析", "pinyin": "gai nian fen xi", "english": "conceptual analysis", "vi": "phân tích khái niệm"},
+      {"chinese": "悖论", "pinyin": "bei lun", "english": "paradox", "vi": "nghịch lý"},
+      {"chinese": "先验", "pinyin": "xian yan", "english": "a priori", "vi": "tiên nghiệm"},
+      {"chinese": "范畴", "pinyin": "fan chou", "english": "category", "vi": "phạm trù"}
+    ],
+    "sentences": [
+      {"chinese": "康德之超越论方法，非问「X是否为真」，而问「X在何种条件下方为可能」。此一问之转换，即从经验思维到哲学思维之飞跃。", "pinyin": "Kangde zhi chaoyuelun fangfa， fei wen 「X shifou wei zhen」， er wen 「X zai he zhong tiaojian xia fang wei keneng」。 Ci yi wen zhi zhuanhuan， ji cong jingyan siwei dao zhexue siwei zhi feiyue。", "english": "Kants transcendental method asks not whether X is true but under what conditions X is possible at all. This turn of the question is the leap from empirical to philosophical thinking.", "vi": "Phương pháp siêu việt của Kant không hỏi X có đúng không， mà hỏi X khả hữu trong điều kiện nào。 Cú chuyển câu hỏi này là cú nhảy từ tư duy kinh nghiệm sang tư duy triết học。", "pronunciation_focus": ["超越论 → chaoyuelun", "转换 → zhuanhuan", "飞跃 → feiyue"]},
+      {"chinese": "抽象非逃避现实，而是提取个别事例背后之共通结构，以更深地理解现实之不可或缺之操作。", "pinyin": "Chouxiang fei taobi xianshi， er shi tiqu gebie shili beihou zhi gongtong jiegou， yi geng shen de lijie xianshi zhi bukehuoque zhi caozuo。", "english": "Abstraction is not escape from reality but extracting the common structure behind individual cases to understand reality more deeply.", "vi": "Trừu tượng không phải trốn chạy hiện thực， mà là thao tác không thể thiếu để hiểu hiện thực sâu hơn bằng cách rút ra cấu trúc chung đằng sau các trường hợp cá biệt。", "pronunciation_focus": ["抽象 → chouxiang", "不可或缺 → bukehuoque (thành ngữ)"]}
+    ],
+    "dialogue": [
+      {"speaker": "研究生", "chinese": "在哲学论文中，可否说「我认为」？", "pinyin": "Zai zhexue lunwen zhong， kefou shuo 「wo renwei」？", "english": "In a philosophy paper, can one say I think?", "vi": "Trong luận văn triết học， có thể nói tôi cho rằng không？"},
+      {"speaker": "教授", "chinese": "不可。哲学非意见之表达，而是论证之建构。非「我认为」，而是「基于某理由，不得不如此结论」。", "pinyin": "Buke。 Zhexue fei yijian zhi biaoda， er shi lunzheng zhi jiangou。 Fei 「wo renwei」， er shi 「jiyu mou liyou， budebu ruci jielun」。", "english": "No. Philosophy is not expressing opinions but constructing arguments. Not I think but Based on such reasons, one cannot but conclude thus.", "vi": "Không thể。 Triết học không phải biểu đạt ý kiến， mà là kiến tạo luận chứng。 Không phải tôi cho rằng， mà là dựa trên lý do như thế， không thể không kết luận như vậy。"}
+    ],
+    "exercises": [
+      {"type": "fill-blank", "question": "康德之超越论方法，非问「X是否为真」，而问「X在何种___下方为可能」。", "answer": "条件"},
+      {"type": "matching", "pairs": [{"chinese": "超越论", "pinyin": "chao yue lun", "english": "transcendental"}, {"chinese": "归谬法", "pinyin": "gui miu fa", "english": "reductio ad absurdum"}, {"chinese": "悖论", "pinyin": "bei lun", "english": "paradox"}, {"chinese": "先验", "pinyin": "xian yan", "english": "a priori"}], "instruction": "Nối thuật ngữ triết học với nghĩa"},
+      {"type": "translation", "vietnamese": "Trừu tượng không phải trốn chạy hiện thực， mà là thao tác không thể thiếu để hiểu hiện thực sâu hơn。", "chinese": "抽象非逃避现实，而是以更深地理解现实之不可或缺之操作。", "pinyin": "Chouxiang fei taobi xianshi， er shi yi geng shen de lijie xianshi zhi bukehuoque zhi caozuo。"}
+    ]
+  },
+  {
+    "id": 119, "level": "C2", "category": "rhetoric_capstone",
+    "title": "说服理论与修辞策略", "pinyin": "shuo fu li lun yu xiu ci ce lüe",
+    "topic": "Persuasion theory and rhetorical strategy",
+    "title_vi": "Lý thuyết thuyết phục và chiến lược tu từ", "title_en": "Persuasion theory and rhetorical strategy",
+    "vocab": [
+      {"chinese": "说服", "pinyin": "shuo fu", "english": "persuasion", "vi": "thuyết phục"},
+      {"chinese": "修辞", "pinyin": "xiu ci", "english": "rhetoric", "vi": "tu từ"},
+      {"chinese": "听众", "pinyin": "ting zhong", "english": "audience", "vi": "thính chúng"},
+      {"chinese": "论据", "pinyin": "lun ju", "english": "argument / evidence", "vi": "luận cứ"},
+      {"chinese": "共识", "pinyin": "gong shi", "english": "consensus / common ground", "vi": "cộng thức"},
+      {"chinese": "反驳", "pinyin": "fan bo", "english": "rebuttal", "vi": "phản bác"},
+      {"chinese": "让步", "pinyin": "rang bu", "english": "concession", "vi": "nhượng bộ"},
+      {"chinese": "三段论", "pinyin": "san duan lun", "english": "syllogism", "vi": "tam đoạn luận"}
+    ],
+    "sentences": [
+      {"chinese": "亚里士多德以降，说服之艺术由三柱支撑：理性论证、言者品格、情感诉求。三者之配比，视听众与场合而定。", "pinyin": "Yalishiduode yijiang， shuofu zhi yishu you san zhu zhicheng： lixing lunzheng、 yanzhe pinge、 qinggan suqiu。 Sanzhe zhi peibi， shi tingzhong yu changhe er ding。", "english": "Since Aristotle, the art of persuasion rests on three pillars: logical argument, speaker credibility, and emotional appeal. The proportion depends on audience and occasion.", "vi": "Từ Aristotle trở đi， nghệ thuật thuyết phục do ba cột chống đỡ： luận chứng lý tính、 phẩm cách người nói、 kêu gọi cảm xúc。 Tỷ lệ giữa ba yếu tố tùy thuộc thính chúng và trường hợp。", "pronunciation_focus": ["说服 → shuofu", "三柱 → san zhu", "配比 → peibi"]},
+      {"chinese": "佩雷尔曼之新修辞学指出，论证之目的非在证明真理，而在获得听众之认同。故修辞之要义，在认识听众之所信，并以此为基础建构论证。", "pinyin": "Peleierman zhi xin xiucixue zhichu， lunzheng zhi mudi fei zai zhengming zhenli， er zai huode tingzhong zhi rentong。 Gu xiuci zhi yaoyi， zai renshi tingzhong zhi suo xin， bing yici wei jichu jiangou lunzheng。", "english": "Perelmans New Rhetoric shows that arguments aim not at proving truth but at gaining audience adherence. The key is knowing what the audience believes and building on that.", "vi": "Tân tu từ học của Perelman chỉ ra rằng mục đích luận chứng không phải chứng minh chân lý， mà là đạt được sự tán đồng của thính chúng。 Cho nên yếu quyết của tu từ là nhận biết điều thính chúng tin， và lấy đó làm nền kiến tạo luận chứng。", "pronunciation_focus": ["佩雷尔曼 → Peileierman", "论证 → lunzheng", "认同 → rentong"]}
+    ],
+    "dialogue": [
+      {"speaker": "研究生", "chinese": "这么说来，好的论证不取决于逻辑是否严密，而取决于听众是否接受？", "pinyin": "Zheme shuolai， hao de lunzheng bu qujue yu luoji shifou yanmi， er qujue yu tingzhong shifou jieshou？", "english": "So a good argument depends on whether the audience accepts it, not on logical rigor?", "vi": "Vậy luận chứng tốt không phụ thuộc vào lô-gic chặt chẽ， mà phụ thuộc vào thính chúng có tiếp nhận không？"},
+      {"speaker": "教授", "chinese": "非也。逻辑不严，终会被人发现。但逻辑虽严而听众不信，则论证亦归无效。二者不可偏废。", "pinyin": "Fei ye。 Luoji bu yan， zhong hui bei ren faxian。 Dan luoji sui yan er tingzhong bu xin， ze lunzheng yi gui wuxiao。 Erzhe buke pianfei。", "english": "No. Bad logic will eventually be discovered. But good logic without audience belief is still ineffective. Neither can be neglected.", "vi": "Không phải。 Lô-gic không chặt sẽ bị phát hiện。 Nhưng lô-gic dù chặt mà thính chúng không tin， luận chứng cũng vô hiệu。 Cả hai không thể bỏ bên nào。"}
+    ],
+    "exercises": [
+      {"type": "fill-blank", "question": "亚里士多德以降，说服之艺术由三柱支撑：理性论证、言者品格、___诉求。", "answer": "情感"},
+      {"type": "matching", "pairs": [{"chinese": "说服", "pinyin": "shuo fu", "english": "persuasion"}, {"chinese": "让步", "pinyin": "rang bu", "english": "concession"}, {"chinese": "反驳", "pinyin": "fan bo", "english": "rebuttal"}, {"chinese": "共识", "pinyin": "gong shi", "english": "consensus"}], "instruction": "Nối thuật ngữ tu từ học với nghĩa"},
+      {"type": "translation", "vietnamese": "Mục đích của luận chứng không phải chứng minh chân lý， mà là đạt sự tán đồng của thính chúng。", "chinese": "论证之目的非在证明真理，而在获得听众之认同。", "pinyin": "Lunzheng zhi mudi fei zai zhengming zhenli， er zai huode tingzhong zhi rentong。"}
+    ]
+  },
+  {
     "id": 120, "level": "C2", "category": "arts_criticism",
     "title": "媒体批评与新闻话语分析", "pinyin": "méi tǐ pī píng yǔ xīn wén huà yǔ fēn xī",
     "topic": "Media criticism and journalistic discourse analysis",
