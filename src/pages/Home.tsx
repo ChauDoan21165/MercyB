@@ -86,6 +86,10 @@ export default function Home() {
   const [tryOneWordRequestId, setTryOneWordRequestId] = useState(0);
   const TRY_ONE_WORD_LINE = "Hello, how are you?";
 
+  // Progressive disclosure: only one secondary card expanded at a time on mobile.
+  // null = all collapsed. Desktop is unaffected — cards render full content.
+  const [expandedCardId, setExpandedCardId] = useState<string | null>(null);
+
   const stageRef = useRef<HTMLDivElement | null>(null);
 
   const trialEndedMessage    = access.accessAnnouncement || DEFAULT_TRIAL_ENDED_MESSAGE;
@@ -330,6 +334,116 @@ export default function Home() {
 
     // Backwards-compat custom event (no current listener; kept for future).
     window.dispatchEvent(new CustomEvent("mercy-guide:focus"));
+  };
+
+  // ── Progressive disclosure wrapper for secondary cards ──────────────────
+  // On mobile: collapsed by default (title + short line + "Preview" chip).
+  // Tap once to expand (shows full detail + "Start" CTA inside the card).
+  // Tap again to collapse. Desktop is unaffected — cards render full content.
+  const ProgressiveDisclosureCard: React.FC<{
+    cardId: string;
+    title: string;
+    shortLine: string;
+    accentColor: string;
+    iconBg: string;
+    iconEl: React.ReactNode;
+    children: React.ReactNode;
+    onStart: () => void;
+    startLabel: string;
+  }> = ({ cardId, title, shortLine, accentColor, iconBg, iconEl, children, onStart, startLabel }) => {
+    const isExpanded = expandedCardId === cardId;
+    const collapsible = isPhone;
+
+    if (!collapsible) {
+      // Desktop: render children directly (existing behavior)
+      return <>{children}</>;
+    }
+
+    // Mobile: collapsed or expanded
+    const toggle = () => setExpandedCardId(isExpanded ? null : cardId);
+
+    return (
+      <div
+        role="button"
+        tabIndex={0}
+        aria-expanded={isExpanded}
+        aria-label={title}
+        onClick={toggle}
+        onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); toggle(); } }}
+        style={{
+          borderRadius: 20,
+          padding: isPhone ? "16px 18px" : "18px 20px",
+          background: `linear-gradient(150deg, ${iconBg}, rgba(255,255,255,0.94))`,
+          border: `1px solid ${accentColor}22`,
+          boxShadow: isExpanded
+            ? `0 10px 28px ${accentColor}14`
+            : "0 4px 16px rgba(0,0,0,0.04)",
+          display: "flex",
+          flexDirection: isExpanded ? "column" : "row",
+          alignItems: isExpanded ? "stretch" : "center",
+          gap: isExpanded ? 10 : 16,
+          cursor: "pointer",
+          transition: "box-shadow 0.15s ease, padding 0.15s ease",
+        }}
+      >
+        {!isExpanded ? (
+          // ── Collapsed state ──
+          <>
+            <div style={{
+              width: secIconSize, height: secIconSize, borderRadius: 9999,
+              display: "grid", placeItems: "center",
+              background: `linear-gradient(180deg, ${accentColor}CC, ${accentColor})`,
+              boxShadow: `0 4px 12px ${accentColor}22`,
+              flexShrink: 0,
+            }}>
+              {iconEl}
+            </div>
+            <div style={{ minWidth: 0, flex: 1 }}>
+              <div style={{ fontSize: secTitleSize, fontWeight: 900, letterSpacing: -0.3, color: "rgba(0,0,0,0.90)" }}>
+                {title}
+              </div>
+              <div style={{ marginTop: 2, fontSize: z(13), fontWeight: 700, color: "rgba(0,0,0,0.55)", lineHeight: 1.35 }}>
+                {shortLine}
+              </div>
+            </div>
+            <div style={{ flexShrink: 0, fontSize: z(11), fontWeight: 700, color: "rgba(0,0,0,0.30)", display: "flex", alignItems: "center", gap: 3 }}>
+              Preview <ChevronRight size={12} />
+            </div>
+          </>
+        ) : (
+          // ── Expanded state ──
+          <>
+            {/* Full detail — render the children */}
+            {children}
+
+            {/* Start CTA */}
+            <button
+              type="button"
+              onClick={(e) => { e.stopPropagation(); onStart(); }}
+              style={{
+                marginTop: 6,
+                width: "100%",
+                padding: "12px 16px",
+                borderRadius: 14,
+                border: `1px solid ${accentColor}33`,
+                background: `${accentColor}14`,
+                color: accentColor,
+                fontWeight: 900,
+                fontSize: z(14),
+                cursor: "pointer",
+              }}
+            >
+              {startLabel}
+            </button>
+
+            {/* Collapse hint */}
+            <div style={{ textAlign: "center", fontSize: z(11), fontWeight: 600, color: "rgba(0,0,0,0.28)", marginTop: 2 }}>
+              Tap to close
+            </div>
+          </>
+        )}
+      </div>
+    );
   };
 
   // ── Teacher Mercy hero card ────────────────────────────────────────────────
@@ -845,7 +959,18 @@ export default function Home() {
               Start here · Bắt đầu từ đây
             </div>
           )}
-          {placementCard}
+          <ProgressiveDisclosureCard
+            cardId="placement"
+            title="Placement test"
+            shortLine={isPhone ? "Biết chính xác trình độ — 6 phút." : "Biết chính xác trình độ thật của bạn. 6–9 phút."}
+            accentColor="#0EA5E9"
+            iconBg="rgba(236,246,255,0.96)"
+            iconEl={<Compass size={isPhone ? 20 : 24} color="white" />}
+            onStart={() => nav("/placement")}
+            startLabel="Start placement test →"
+          >
+            {placementCard}
+          </ProgressiveDisclosureCard>
 
           {/* ── Intent group: "Prepare for exams" ─────────────────────
               Goal-oriented learners scan for their exam. Grouped so the
@@ -860,9 +985,42 @@ export default function Home() {
               Prepare for exams · Luyện thi
             </div>
           )}
-          {ieltsSpeakingCard}
-          {toeicCard}
-          {vstepCard}
+          <ProgressiveDisclosureCard
+            cardId="ielts"
+            title="IELTS Speaking"
+            shortLine="Band 5 → Band 7"
+            accentColor="#10B981"
+            iconBg="rgba(236,253,245,0.96)"
+            iconEl={<GraduationCap size={isPhone ? 20 : 24} color="white" />}
+            onStart={() => nav("/exam-prep/ielts/speaking")}
+            startLabel="Open IELTS Speaking →"
+          >
+            {ieltsSpeakingCard}
+          </ProgressiveDisclosureCard>
+          <ProgressiveDisclosureCard
+            cardId="toeic"
+            title="Luyện TOEIC"
+            shortLine="TOEIC 450 → 750+"
+            accentColor="#6366F1"
+            iconBg="rgba(238,242,255,0.96)"
+            iconEl={<GraduationCap size={isPhone ? 20 : 24} color="white" />}
+            onStart={() => nav("/exam-prep/toeic")}
+            startLabel="Open TOEIC practice →"
+          >
+            {toeicCard}
+          </ProgressiveDisclosureCard>
+          <ProgressiveDisclosureCard
+            cardId="vstep"
+            title="Chinh phục B2 VSTEP"
+            shortLine="Đúng định dạng Bộ. Đạt chuẩn đầu ra."
+            accentColor="#B91C1C"
+            iconBg="rgba(254,242,242,0.96)"
+            iconEl={<GraduationCap size={isPhone ? 20 : 24} color="white" />}
+            onStart={() => nav("/exam/vstep")}
+            startLabel="Open VSTEP prep →"
+          >
+            {vstepCard}
+          </ProgressiveDisclosureCard>
 
           {/* ── Intent group: "Explore & improve" ────────────────────
               Browsing, practice, and discovery. Everything below this
@@ -877,7 +1035,18 @@ export default function Home() {
               Explore & improve · Khám phá
             </div>
           )}
-          {libraryCard}
+          <ProgressiveDisclosureCard
+            cardId="library"
+            title="Library"
+            shortLine="Đọc. Nghe. Tiến bộ từng ngày."
+            accentColor="#14B8A6"
+            iconBg="rgba(236,255,252,0.96)"
+            iconEl={<LibraryBig size={isPhone ? 20 : 24} color="white" />}
+            onStart={handleLibrary}
+            startLabel="Open Library →"
+          >
+            {libraryCard}
+          </ProgressiveDisclosureCard>
           <FocusAreasCard />
 
           {/* Weekly leaderboard — retention card (feature-flagged). */}
