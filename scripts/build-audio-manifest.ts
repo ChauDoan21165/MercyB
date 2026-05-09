@@ -114,7 +114,7 @@ const OUTPUT_PATH = resolve("audio-manifest.json");
 
 const SINGLE_PHONICS_CHAR_REGEX = /^[぀-ゟ゠-ヿ㄰-㆏ᄀ-ᇿ]$/;
 
-function isPhonicsOnly(text: string): boolean {
+export function isPhonicsOnly(text: string): boolean {
   // Only skip single-codepoint phonics characters.
   // Multi-character kana strings (real words) are kept.
   return text.length === 1 && SINGLE_PHONICS_CHAR_REGEX.test(text);
@@ -157,7 +157,7 @@ function pickTwoVoices(seedKey: string): [string, string] {
 
 // ─── Lesson-id → storage slug ─────────────────────────────────────────────
 
-function lessonStorageSlug(lang: LangKey, lessonId: string | number, level: Level): string {
+export function lessonStorageSlug(lang: LangKey, lessonId: string | number, level: Level): string {
   if (typeof lessonId === "number") return `l${lessonId}`;
   // String IDs:
   //   "french_b2_salary_negotiation"  → "lsalary_negotiation"
@@ -232,7 +232,7 @@ function pushEntry(
   return true;
 }
 
-function extractFrenchOrGerman(
+export function extractFrenchOrGerman(
   lang: LangKey,
   lesson: Lesson,
   lessonIndex: number,
@@ -370,7 +370,7 @@ function extractFrenchOrGerman(
   return out;
 }
 
-function extractAsianLang(
+export function extractAsianLang(
   lang: LangKey,
   lesson: Lesson,
   lessonIndex: number,
@@ -657,7 +657,15 @@ async function main(): Promise<void> {
   console.log(`  empty:   ${emptySkipped.length}`);
 }
 
-main().catch((err) => {
-  console.error("[manifest] failed:", err);
-  process.exit(1);
-});
+// Run main() only when this file is invoked directly as a CLI script.
+// Guarded so the test suite can import the exported helpers above without
+// triggering the full manifest build (which writes audio-manifest.json and
+// calls process.exit on failure). CLI behavior is unchanged: when invoked
+// via `npx tsx scripts/build-audio-manifest.ts`, process.argv[1] resolves
+// to this file and the guard passes.
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+  main().catch((err) => {
+    console.error("[manifest] failed:", err);
+    process.exit(1);
+  });
+}
