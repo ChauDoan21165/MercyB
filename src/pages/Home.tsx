@@ -359,9 +359,11 @@ export default function Home() {
         <div style={{ marginTop: 14, fontSize: isPhone ? z(14) : z(16), fontWeight: 700, color: "rgba(80,20,45,0.78)", lineHeight: 1.6, maxWidth: "min(340px, 100%)", margin: "14px auto 0" }}>
           Hỏi — Mercy trả lời. Sửa lỗi — Mercy giải thích. Tiến bộ mỗi ngày.
         </div>
-        <div style={{ marginTop: 6, fontSize: z(13), fontWeight: 600, color: "rgba(140,60,90,0.58)", lineHeight: 1.5 }}>
-          Ask. Get corrected. Understand why. Improve daily.
-        </div>
+        {!isPhone && (
+          <div style={{ marginTop: 6, fontSize: z(13), fontWeight: 600, color: "rgba(140,60,90,0.58)", lineHeight: 1.5 }}>
+            Ask. Get corrected. Understand why. Improve daily.
+          </div>
+        )}
 
         <div style={{ marginTop: 18, display: "inline-flex", alignItems: "center", gap: 8, padding: "10px 20px", borderRadius: 9999, background: "rgba(180,60,100,0.10)", border: "1px solid rgba(180,60,100,0.18)", color: "rgba(120,30,60,0.90)", fontWeight: 900, fontSize: z(14) }}>
           {!access.isAuthenticated
@@ -456,15 +458,19 @@ export default function Home() {
           <div style={{ fontSize: isPhone ? z(18) : z(20), fontWeight: 900, color: "rgba(8,75,90,0.94)", letterSpacing: -0.3 }}>
             Try one word — no signup
           </div>
-          <div style={{ fontSize: z(12), fontWeight: 700, color: "rgba(8,75,90,0.55)", marginTop: 2 }}>
-            Thử phát âm — không cần đăng nhập
+          {!isPhone && (
+            <div style={{ fontSize: z(12), fontWeight: 700, color: "rgba(8,75,90,0.55)", marginTop: 2 }}>
+              Thử phát âm — không cần đăng nhập
+            </div>
+          )}
+          <div style={{ marginTop: isPhone ? 4 : 6, fontSize: z(14), fontWeight: 700, color: "rgba(0,0,0,0.62)", lineHeight: 1.45 }}>
+            {isPhone ? "Get a pronunciation score in 12 seconds." : "Hear how MercyBlade scores your pronunciation in 12 seconds."}
           </div>
-          <div style={{ marginTop: 6, fontSize: z(14), fontWeight: 700, color: "rgba(0,0,0,0.62)", lineHeight: 1.45 }}>
-            Hear how MercyBlade scores your pronunciation in 12 seconds.
-          </div>
-          <div style={{ marginTop: 3, fontSize: z(12), fontWeight: 600, color: "rgba(0,0,0,0.40)", lineHeight: 1.4 }}>
-            Nhận điểm phát âm từ MercyBlade chỉ trong 12 giây.
-          </div>
+          {!isPhone && (
+            <div style={{ marginTop: 3, fontSize: z(12), fontWeight: 600, color: "rgba(0,0,0,0.40)", lineHeight: 1.4 }}>
+              Nhận điểm phát âm từ MercyBlade chỉ trong 12 giây.
+            </div>
+          )}
         </div>
 
         <div style={{ color: "rgba(14,116,144,0.70)", flexShrink: 0 }}>
@@ -491,13 +497,15 @@ export default function Home() {
 
         <div style={{ minWidth: 0, flex: 1 }}>
           <div style={{ fontSize: isPhone ? z(18) : z(20), fontWeight: 900, color: "rgba(0,80,70,0.92)", letterSpacing: -0.3 }}>Library</div>
-          <div style={{ fontSize: z(12), fontWeight: 700, color: "rgba(0,100,85,0.52)", marginTop: 2 }}>Thư viện</div>
-          <div style={{ marginTop: 6, fontSize: z(14), fontWeight: 700, color: "rgba(0,0,0,0.62)", lineHeight: 1.45 }}>
-            Đọc. Nghe. Suy ngẫm. Tiến bộ từng ngày.
+          {!isPhone && <div style={{ fontSize: z(12), fontWeight: 700, color: "rgba(0,100,85,0.52)", marginTop: 2 }}>Thư viện</div>}
+          <div style={{ marginTop: isPhone ? 4 : 6, fontSize: z(14), fontWeight: 700, color: "rgba(0,0,0,0.62)", lineHeight: 1.45 }}>
+            {isPhone ? "Đọc. Nghe. Tiến bộ từng ngày." : "Đọc. Nghe. Suy ngẫm. Tiến bộ từng ngày."}
           </div>
-          <div style={{ marginTop: 3, fontSize: z(12), fontWeight: 600, color: "rgba(0,0,0,0.40)", lineHeight: 1.4 }}>
-            Read, listen, reflect — build a real English habit.
-          </div>
+          {!isPhone && (
+            <div style={{ marginTop: 3, fontSize: z(12), fontWeight: 600, color: "rgba(0,0,0,0.40)", lineHeight: 1.4 }}>
+              Read, listen, reflect — build a real English habit.
+            </div>
+          )}
         </div>
 
         <div style={{ color: "rgba(20,184,166,0.70)", flexShrink: 0 }}>
@@ -531,15 +539,19 @@ export default function Home() {
           <div style={{ fontSize: isPhone ? z(18) : z(20), fontWeight: 900, color: "rgba(55,48,163,0.94)", letterSpacing: -0.3 }}>
             Luyện TOEIC
           </div>
-          <div style={{ fontSize: z(12), fontWeight: 700, color: "rgba(67,56,202,0.55)", marginTop: 2 }}>
-            TOEIC 450 → 750+
+          {!isPhone && (
+            <div style={{ fontSize: z(12), fontWeight: 700, color: "rgba(67,56,202,0.55)", marginTop: 2 }}>
+              TOEIC 450 → 750+
+            </div>
+          )}
+          <div style={{ marginTop: isPhone ? 4 : 6, fontSize: z(14), fontWeight: 700, color: "rgba(0,0,0,0.62)", lineHeight: 1.45 }}>
+            {isPhone ? "Luyện đúng định dạng, giải thích bằng tiếng Việt." : "Luyện đúng định dạng. Hiểu sâu nhờ giải thích tiếng Việt."}
           </div>
-          <div style={{ marginTop: 6, fontSize: z(14), fontWeight: 700, color: "rgba(0,0,0,0.62)", lineHeight: 1.45 }}>
-            Luyện đúng định dạng. Hiểu sâu nhờ giải thích tiếng Việt.
-          </div>
-          <div style={{ marginTop: 3, fontSize: z(12), fontWeight: 600, color: "rgba(0,0,0,0.40)", lineHeight: 1.4 }}>
-            Official format, Vietnamese explanations — built for the score you need.
-          </div>
+          {!isPhone && (
+            <div style={{ marginTop: 3, fontSize: z(12), fontWeight: 600, color: "rgba(0,0,0,0.40)", lineHeight: 1.4 }}>
+              Official format, Vietnamese explanations — built for the score you need.
+            </div>
+          )}
         </div>
 
         <div style={{ color: "rgba(99,102,241,0.70)", flexShrink: 0 }}>
@@ -572,15 +584,19 @@ export default function Home() {
           <div style={{ fontSize: isPhone ? z(18) : z(20), fontWeight: 900, color: "rgba(6,95,70,0.94)", letterSpacing: -0.3 }}>
             IELTS Speaking
           </div>
-          <div style={{ fontSize: z(12), fontWeight: 700, color: "rgba(15,118,110,0.55)", marginTop: 2 }}>
-            Band 5 → Band 7
+          {!isPhone && (
+            <div style={{ fontSize: z(12), fontWeight: 700, color: "rgba(15,118,110,0.55)", marginTop: 2 }}>
+              Band 5 → Band 7
+            </div>
+          )}
+          <div style={{ marginTop: isPhone ? 4 : 6, fontSize: z(14), fontWeight: 700, color: "rgba(0,0,0,0.62)", lineHeight: 1.45 }}>
+            {isPhone ? "Biết band hiện tại, biết cách nâng lên." : "Biết band hiện tại. Biết chính xác cách nâng lên."}
           </div>
-          <div style={{ marginTop: 6, fontSize: z(14), fontWeight: 700, color: "rgba(0,0,0,0.62)", lineHeight: 1.45 }}>
-            Biết band hiện tại. Biết chính xác cách nâng lên.
-          </div>
-          <div style={{ marginTop: 3, fontSize: z(12), fontWeight: 600, color: "rgba(0,0,0,0.40)", lineHeight: 1.4 }}>
-            Chiến lược riêng cho người Việt, từ vựng theo band, bài mẫu band 5 + band 7.
-          </div>
+          {!isPhone && (
+            <div style={{ marginTop: 3, fontSize: z(12), fontWeight: 600, color: "rgba(0,0,0,0.40)", lineHeight: 1.4 }}>
+              Chiến lược riêng cho người Việt, từ vựng theo band, bài mẫu band 5 + band 7.
+            </div>
+          )}
         </div>
 
         <div style={{ color: "rgba(16,185,129,0.70)", flexShrink: 0 }}>
@@ -610,13 +626,15 @@ export default function Home() {
 
         <div style={{ minWidth: 0, flex: 1 }}>
           <div style={{ fontSize: isPhone ? z(18) : z(20), fontWeight: 900, color: "rgba(7,89,133,0.92)", letterSpacing: -0.3 }}>Placement test</div>
-          <div style={{ fontSize: z(12), fontWeight: 700, color: "rgba(7,89,133,0.55)", marginTop: 2 }}>Bài đánh giá trình độ</div>
-          <div style={{ marginTop: 6, fontSize: z(14), fontWeight: 700, color: "rgba(0,0,0,0.62)", lineHeight: 1.45 }}>
-            Biết chính xác trình độ thật của bạn. 6–9 phút.
+          {!isPhone && <div style={{ fontSize: z(12), fontWeight: 700, color: "rgba(7,89,133,0.55)", marginTop: 2 }}>Bài đánh giá trình độ</div>}
+          <div style={{ marginTop: isPhone ? 4 : 6, fontSize: z(14), fontWeight: 700, color: "rgba(0,0,0,0.62)", lineHeight: 1.45 }}>
+            {isPhone ? "Biết chính xác trình độ của bạn — 6 phút." : "Biết chính xác trình độ thật của bạn. 6–9 phút."}
           </div>
-          <div style={{ marginTop: 3, fontSize: z(12), fontWeight: 600, color: "rgba(0,0,0,0.40)", lineHeight: 1.4 }}>
-            Know exactly where you stand. About 6–9 minutes.
-          </div>
+          {!isPhone && (
+            <div style={{ marginTop: 3, fontSize: z(12), fontWeight: 600, color: "rgba(0,0,0,0.40)", lineHeight: 1.4 }}>
+              Know exactly where you stand. About 6–9 minutes.
+            </div>
+          )}
         </div>
 
         <div style={{ color: "rgba(14,165,233,0.70)", flexShrink: 0 }}>
@@ -679,15 +697,19 @@ export default function Home() {
           >
             Chinh phục B2 VSTEP
           </div>
-          <div style={{ fontSize: z(12), fontWeight: 700, color: "rgba(127,29,29,0.55)", marginTop: 2 }}>
-            Chinh phục B2 VSTEP
+          {!isPhone && (
+            <div style={{ fontSize: z(12), fontWeight: 700, color: "rgba(127,29,29,0.55)", marginTop: 2 }}>
+              VSTEP — Kỳ thi năng lực ngoại ngữ Việt Nam
+            </div>
+          )}
+          <div style={{ marginTop: isPhone ? 4 : 6, fontSize: z(14), fontWeight: 700, color: "rgba(0,0,0,0.62)", lineHeight: 1.45 }}>
+            {isPhone ? "Đúng định dạng Bộ. Đạt chuẩn đầu ra." : "Học đúng định dạng Bộ Giáo dục. Đạt chuẩn đầu ra."}
           </div>
-          <div style={{ marginTop: 6, fontSize: z(14), fontWeight: 700, color: "rgba(0,0,0,0.62)", lineHeight: 1.45 }}>
-            Học đúng định dạng Bộ Giáo dục. Đạt chuẩn đầu ra.
-          </div>
-          <div style={{ marginTop: 3, fontSize: z(12), fontWeight: 600, color: "rgba(0,0,0,0.40)", lineHeight: 1.4 }}>
-            Speaking B1 + B2, 30 chủ đề, mẹo riêng cho người Việt.
-          </div>
+          {!isPhone && (
+            <div style={{ marginTop: 3, fontSize: z(12), fontWeight: 600, color: "rgba(0,0,0,0.40)", lineHeight: 1.4 }}>
+              Speaking B1 + B2, 30 chủ đề, mẹo riêng cho người Việt.
+            </div>
+          )}
         </div>
 
         <div style={{ color: "rgba(185,28,28,0.70)", flexShrink: 0 }}>
@@ -724,12 +746,14 @@ export default function Home() {
           <div style={subline}>
             English for real <span style={{ color: "rgba(13,148,136,0.92)" }}>life</span>.
           </div>
-          <div style={{ marginTop: 6, fontSize: z(13), fontWeight: 600, color: "rgba(0,0,0,0.48)", lineHeight: 1.4 }}>
-            See your pronunciation score in 12 seconds — no signup.
+          <div style={{ marginTop: isPhone ? 4 : 6, fontSize: z(13), fontWeight: 600, color: isPhone ? "rgba(0,0,0,0.35)" : "rgba(0,0,0,0.48)", lineHeight: 1.4 }}>
+            {isPhone ? "See your pronunciation score in 12 seconds." : "See your pronunciation score in 12 seconds — no signup."}
           </div>
-          <div style={{ marginTop: 2, fontSize: z(12), fontWeight: 500, color: "rgba(0,0,0,0.40)", lineHeight: 1.4 }}>
-            Xem điểm phát âm của bạn trong 12 giây — không cần đăng nhập.
-          </div>
+          {!isPhone && (
+            <div style={{ marginTop: 2, fontSize: z(12), fontWeight: 500, color: "rgba(0,0,0,0.40)", lineHeight: 1.4 }}>
+              Xem điểm phát âm của bạn trong 12 giây — không cần đăng nhập.
+            </div>
+          )}
         </section>
 
         {/* Main content — hierarchy:
@@ -737,7 +761,7 @@ export default function Home() {
               2. Teacher Mercy (the hero relationship)
               3. Progress (returning users see momentum)
               4. Secondary learning paths (recommendations + entry points + exam prep) */}
-        <section ref={stageRef} style={{ marginTop: 14, display: "flex", flexDirection: "column", gap: 12 }} aria-label="Homepage choices">
+        <section ref={stageRef} style={{ marginTop: isPhone ? 10 : 14, display: "flex", flexDirection: "column", gap: isPhone ? 10 : 12 }} aria-label="Homepage choices">
           {/* Daily pronunciation challenge — sits at the very top
               when active. Self-gates on the daily_challenge_enabled
               feature flag and hides itself once the user has a
@@ -783,7 +807,7 @@ export default function Home() {
           {/* Section label — visually groups the secondary entry points
               (Library + exam-prep) under one header so the eye knows
               everything below is "more options," not the main action. */}
-          <div style={{ marginTop: 14, fontSize: z(11), fontWeight: 700, letterSpacing: 0.8, textTransform: "uppercase", color: "rgba(0,0,0,0.42)" }}>
+          <div style={{ marginTop: isPhone ? 10 : 14, fontSize: z(11), fontWeight: 700, letterSpacing: 0.8, textTransform: "uppercase", color: "rgba(0,0,0,0.42)" }}>
             Explore more · Khám phá thêm
           </div>
 
