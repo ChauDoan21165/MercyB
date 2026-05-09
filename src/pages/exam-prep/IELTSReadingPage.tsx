@@ -6,9 +6,7 @@
 
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import { BookOpen, ChevronLeft } from "lucide-react";
 import {
-  IELTS_READING_PASSAGES,
   listIeltsReadingPassages,
   type IELTSReadingBand,
   type IELTSReadingPassage,

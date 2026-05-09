@@ -6,7 +6,6 @@
 
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import { Headphones, ChevronLeft } from "lucide-react";
 import { IELTS_LISTENING_ITEMS, IELTS_LISTENING_BY_SECTION, type IELTSListeningSection, type IELTSListeningItem } from "@/data/exam-prep/ielts/listening-items";
 import { PremiumGate } from "@/components/exam-prep/ielts/PremiumGate";
 import { IELTS_COPY } from "@/components/exam-prep/ielts/ieltsCopy";
@@ -16,7 +15,6 @@ type SectionFilter = "all" | IELTSListeningSection;
 type DiffFilter = "all" | 5.5 | 6.5 | 7.5 | 8.5;
 
 const SECTION_BADGE: Record<IELTSListeningSection, string> = { 1: "bg-emerald-100 text-emerald-800 border-emerald-200", 2: "bg-amber-100 text-amber-800 border-amber-200", 3: "bg-sky-100 text-sky-800 border-sky-200", 4: "bg-violet-100 text-violet-800 border-violet-200" };
-const SECTION_LABEL: Record<IELTSListeningSection, { vi: string; en: string }> = { 1: { vi: "Phần 1 — Đối thoại đời sống", en: "Section 1 — Social conversation" }, 2: { vi: "Phần 2 — Độc thoại đời sống", en: "Section 2 — Social monologue" }, 3: { vi: "Phần 3 — Thảo luận học thuật", en: "Section 3 — Academic discussion" }, 4: { vi: "Phần 4 — Bài giảng học thuật", en: "Section 4 — Academic lecture" } };
 
 function ItemCard({ item }: { item: IELTSListeningItem }) { return ( <Link to={"/exam-prep/ielts/listening/" + item.id} className="block rounded-xl border border-slate-200 bg-white p-4 shadow-sm transition hover:border-slate-300 hover:shadow"><div className="mb-1 flex items-center gap-2"><span className={"inline-block rounded-full border px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider " + SECTION_BADGE[item.section]}>Section {item.section}</span><span className="text-[11px] font-bold uppercase tracking-wider text-slate-500">{item.context}</span><span className="ml-auto text-[11px] font-semibold text-slate-500">{item.estimated_time_minutes} min · Band {item.difficulty_band}</span></div><h3 className="text-base font-bold text-slate-900">{item.topic_title_vi}</h3><p className="text-xs text-slate-500">{item.topic_title_en}</p></Link> ); }
 

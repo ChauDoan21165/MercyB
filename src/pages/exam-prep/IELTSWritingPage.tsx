@@ -1,6 +1,6 @@
 // src/pages/exam-prep/IELTSWritingPage.tsx — /exam/ielts/writing
 
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { IELTSWritingTask } from "@/components/exam-prep/ielts/IELTSWritingTask";

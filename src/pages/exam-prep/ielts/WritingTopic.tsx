@@ -3,7 +3,7 @@
 import { useMemo } from "react";
 import { Link, useParams } from "react-router-dom";
 import { ChevronLeft, Clock, BookOpen, Lightbulb } from "lucide-react";
-import { IELTS_WRITING_TOPICS, findIeltsWritingTopicById, type IeltsVocabularyItem } from "@/data/exam-prep/ielts/writing-topics";
+import { findIeltsWritingTopicById, type IeltsVocabularyItem } from "@/data/exam-prep/ielts/writing-topics";
 
 export default function WritingTopic() {
   const { topicId } = useParams<{ topicId: string }>();
