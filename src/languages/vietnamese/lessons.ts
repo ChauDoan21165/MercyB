@@ -7,7 +7,7 @@
 // Types and the loadLessonsForLevel() API are stable; the per-level
 // files carry the actual lesson arrays.
 
-export type VietnameseCefrLevel = "A1" | "A1+" | "A2" | "B1" | "B2";
+export type VietnameseCefrLevel = "A1" | "A1+" | "A2" | "B1" | "B2" | "C1" | "C2";
 
 export type VietnamesePhrase = {
   english: string;
@@ -48,6 +48,9 @@ const _importers: Record<
   A2: () => import("./lessons-a2"),
   B1: () => import("./lessons-b1"),
   B2: () => import("./lessons-b2"),
+  C1: () => import("./lessons-c1"),
+  C2: () => import("./lessons-c2"),
+  
 };
 
 export async function loadVietnameseLessonsForLevel(
@@ -61,7 +64,7 @@ export async function loadVietnameseLessonsForLevel(
 }
 
 export async function loadAllVietnameseLessons(): Promise<VietnameseLesson[]> {
-  const levels: VietnameseCefrLevel[] = ["A1", "A2", "B1", "B2"];
+  const levels: VietnameseCefrLevel[] = ["A1", "A2", "B1", "B2", "C1", "C2"];
   const arrays = await Promise.all(levels.map(loadVietnameseLessonsForLevel));
   return arrays.flat();
 }
@@ -115,4 +118,4 @@ const _origLoadLevel = loadVietnameseLessonsForLevel;
 };
 
 /** Total lesson count across every level. Keep in sync with per-level files. */
-export const VIETNAMESE_TOTAL_LESSONS = 436;
+export const VIETNAMESE_TOTAL_LESSONS = 509;
