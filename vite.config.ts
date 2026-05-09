@@ -141,6 +141,12 @@ export default defineConfig({
         // ~2.12 MB and growing as content lands; chunk-splitting is
         // separate tech debt.
         maximumFileSizeToCacheInBytes: 5 * 1024 * 1024,
+        // Perf fix #3 — exclude code-split lesson chunks from precache.
+        // 36 lessons-{lang}-{level}.js chunks (~9.5 MB) were precached
+        // on every first visit, even for languages the user never opens.
+        // Moved to runtime CacheFirst — only cached after first actual
+        // lesson load.
+        globIgnores: ['**/lessons-*.js'],
         // Offline Lite v2 — when the browser does an SPA navigation
         // (e.g. user refreshes /room/foo while offline), serve the
         // cached index.html so the app shell boots and the in-app
@@ -229,6 +235,19 @@ export default defineConfig({
           //   learner about what Teacher Mercy "said"
           // If a specific /api/* endpoint ever needs offline tolerance,
           // add it back as a narrowly-scoped rule, not a catch-all.
+          {
+            // Perf fix #3 — code-split lesson JS chunks. CacheFirst so
+            // previously-visited language levels load instantly from
+            // cache. Not precached — first lesson visit pays the network
+            // cost once, then served from cache for 30 days.
+            urlPattern: /\/assets\/lessons-.*\.js$/,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'lesson-js',
+              expiration: { maxEntries: 100, maxAgeSeconds: 60 * 60 * 24 * 30 },
+              cacheableResponse: { statuses: [0, 200] },
+            },
+          },
           {
             // Step 8 — lesson content (room JSON + auxiliary lesson assets).
             // Stale-while-revalidate so the page paints instantly from cache
