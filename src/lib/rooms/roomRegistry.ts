@@ -23,9 +23,9 @@ import { normalizeTier, TierId, ALL_TIER_IDS } from "@/lib/constants/tiers";
 import { getDomainCategory, type DomainCategory } from "@/lib/teacher-mercy/domainMap";
 import { tierFromRoomId } from "@/lib/tierFromRoomId";
 
-// NOTE: This import is intentionally here so tests can vi.mock it.
-// In runtime, it can exist but may be empty depending on build mode.
-import { roomDataMap } from "@/lib/roomDataImports";
+// NOTE: Legacy roomDataImports.ts has been removed.
+// The registry now bootstraps from roomFetcher (async) at runtime.
+// Tests should mock fetchAllRooms instead of roomDataMap.
 
 /**
  * Normalized room metadata for search and discovery
@@ -169,71 +169,13 @@ function inferTier(roomId: string, roomData: any): TierId {
   return inferred ?? "level0";
 }
 
-/**
- * 🔥 Critical fix:
- * Build registry synchronously from roomDataMap (if present) so anything computed
- * at module-import time (coverageReport/search index) sees a populated registry.
- */
-function ensureRegistryFromRoomDataMapSync(): void {
-  if (roomRegistryCache) return;
-
-  if (!roomDataMap || typeof roomDataMap !== "object") return;
-
-  const entries = Object.entries(roomDataMap as Record<string, any>);
-  if (!entries.length) return;
-
-  const rooms: RoomMeta[] = [];
-
-  for (const [mapId, roomData] of entries) {
-    try {
-      const rawId = String(roomData?.id ?? mapId ?? "").trim();
-      if (!rawId) continue;
-
-      const id = normalizeRoomId(rawId);
-
-      const { en: title_en, vi: title_vi } = pickTitles(roomData);
-
-      // NOTE: For sync map bootstrap (tests/coverage), do NOT skip missing titles.
-      // Coverage expects 1:1 with manifest/map.
-      const tier = inferTier(id, roomData);
-      const domain = getDomainCategory(id, (roomData as any)?.domain);
-      const { en: keywords_en, vi: keywords_vi } = pickKeywords(roomData);
-      const tags = pickTags(roomData);
-
-      rooms.push({
-        id,
-        tier,
-        domain,
-        title_en: title_en || "",
-        title_vi: title_vi || "",
-        keywords_en,
-        keywords_vi,
-        tags,
-        hasData: Boolean(roomData?.hasData ?? roomData?.has_data ?? true),
-      });
-    } catch (error) {
-      console.error(
-        `[RoomRegistry] Error processing room ${String(mapId)}:`,
-        error,
-      );
-    }
-  }
-
-  roomRegistryCache = rooms.sort((a, b) => a.id.localeCompare(b.id));
-  roomByIdCache = new Map(roomRegistryCache.map((r) => [r.id, r]));
-}
+// Legacy sync bootstrap removed. Registry now loads async via roomFetcher.
+// Callers that need rooms at import time should await getAllRoomsAsync().
 
 /**
- * Build registry from roomDataMap (sync source) OR fetcher (async source)
+ * Build registry from roomFetcher (async).
  */
 async function getRawRooms(): Promise<any[]> {
-  // Prefer roomDataMap when it exists and is non-empty (tests)
-  if (roomDataMap && typeof roomDataMap === "object") {
-    const values = Object.values(roomDataMap as Record<string, any>);
-    if (values.length > 0) return values as any[];
-  }
-
-  // Runtime fallback
   return (await fetchAllRooms()) as any[];
 }
 
@@ -294,8 +236,6 @@ async function buildRegistryAsync(): Promise<RoomMeta[]> {
  * Get all rooms from the registry (async, cached)
  */
 export async function getAllRoomsAsync(): Promise<RoomMeta[]> {
-  // Ensure sync bootstrap first (helps tests even when they call async)
-  ensureRegistryFromRoomDataMapSync();
   if (roomRegistryCache) return roomRegistryCache;
 
   if (!roomRegistryPromise) {
@@ -313,7 +253,6 @@ export async function getAllRoomsAsync(): Promise<RoomMeta[]> {
  * Get all rooms (sync)
  */
 export function getAllRooms(): RoomMeta[] {
-  ensureRegistryFromRoomDataMapSync();
   if (!roomRegistryCache) {
     // Trigger async load in background for runtime
     getAllRoomsAsync().catch(console.error);
@@ -350,7 +289,6 @@ export function getRoomsByDomain(domain: DomainCategory): RoomMeta[] {
  * Get a room by ID (sync, cached lookup)
  */
 export function getRoomById(id: string): RoomMeta | undefined {
-  ensureRegistryFromRoomDataMapSync();
   if (!roomByIdCache) {
     getAllRoomsAsync().catch(console.error);
     return undefined;
@@ -418,6 +356,5 @@ export function getTotalRoomCount(): number {
   return getAllRooms().length;
 }
 
-// Optional: eagerly bootstrap in test/manifest contexts
-// so import-time computations see rooms immediately.
-ensureRegistryFromRoomDataMapSync();
+// Registry bootstraps lazily on first call to getAllRoomsAsync() / getAllRooms().
+// No eager bootstrap — roomDataImports.ts has been removed.

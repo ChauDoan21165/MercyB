@@ -11,8 +11,6 @@
  *
  * Generates:
  * A) src/lib/roomManifest.ts        -> PUBLIC_ROOM_MANIFEST: canonicalId -> "data/REAL_FILENAME.json"
- * B) src/lib/roomDataImports.ts     -> roomDataMap (metadata)
- * C) src/lib/roomList.ts            -> ROOM_IDS + getRoomList() (optional helper)
  *
  * Run: node scripts/generate-room-registry.mjs
  *
@@ -179,7 +177,6 @@ function scanAllRooms() {
     .sort();
 
   const manifest = {};
-  const roomDataMap = {};
   const warnings = [];
 
   // Detect collisions: two different filenames map to same canonicalId
@@ -235,15 +232,6 @@ function scanAllRooms() {
     const titleEn = pickTitleEn(json, fallbackTitle);
     const titleVi = pickTitleVi(json, titleEn);
 
-    roomDataMap[canonicalId] = {
-      id: canonicalId,
-      title_en: String(titleEn),
-      title_vi: String(titleVi),
-      // IMPORTANT: may be undefined (unknown)
-      tier,
-      hasData: true,
-    };
-
     if (json?.__parse_error) {
       warnings.push("PARSE_ERROR " + filename + ": " + json.__parse_error);
     } else if (json?.id && String(json.id) !== canonicalId) {
@@ -251,7 +239,7 @@ function scanAllRooms() {
     }
   }
 
-  return { filesCount: files.length, manifest, roomDataMap, warnings };
+  return { filesCount: files.length, manifest, warnings };
 }
 
 /* ---------------- Writers ---------------- */
@@ -329,7 +317,7 @@ export function getRoomList(): RoomListItem[] {
 /* ---------------- Main ---------------- */
 
 try {
-  const { filesCount, manifest, roomDataMap, warnings } = scanAllRooms();
+  const { filesCount, manifest, warnings } = scanAllRooms();
 
   console.log("Total JSON files: " + filesCount);
   console.log("Warnings (non-fatal): " + warnings.length);
@@ -337,14 +325,6 @@ try {
   writeFile(
     path.join(projectRoot, "src/lib/roomManifest.ts"),
     generateRoomManifestTs(manifest)
-  );
-  writeFile(
-    path.join(projectRoot, "src/lib/roomDataImports.ts"),
-    generateRoomDataImportsTs(roomDataMap)
-  );
-  writeFile(
-    path.join(projectRoot, "src/lib/roomList.ts"),
-    generateRoomListTs(roomDataMap)
   );
 
   // Print a small sample of warnings so you can see what's happening
