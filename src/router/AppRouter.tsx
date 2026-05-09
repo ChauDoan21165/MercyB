@@ -217,8 +217,13 @@ const TOEICIndexPage         = lazyWithRetry(() => import("@/pages/exam-prep/TOE
 const TOEICPracticePage      = lazyWithRetry(() => import("@/pages/exam-prep/TOEICPracticePage"));
 const TOEICEstimatorPage     = lazyWithRetry(() => import("@/pages/exam-prep/TOEICEstimatorPage"));
 
-// TOEFL iBT prep (Step 11 — scaffolding; premium gate is in-page, auth-required).
+// TOEFL iBT prep (Step 11 — premium gate is in-page, auth-required).
 const TOEFLIndexPage         = lazyWithRetry(() => import("@/pages/exam-prep/TOEFLIndexPage"));
+const TOEFLReadingPage       = lazyWithRetry(() => import("@/pages/exam-prep/TOEFLReadingPage"));
+const TOEFLListeningPage     = lazyWithRetry(() => import("@/pages/exam-prep/TOEFLListeningPage"));
+const TOEFLWritingPage       = lazyWithRetry(() => import("@/pages/exam-prep/TOEFLWritingPage"));
+const TOEFLSpeakingPage      = lazyWithRetry(() => import("@/pages/exam-prep/TOEFLSpeakingPage"));
+const TOEFLEstimatorPage     = lazyWithRetry(() => import("@/pages/exam-prep/TOEFLEstimatorPage"));
 const TOEICPracticePackPage  = lazyWithRetry(() => import("@/pages/exam-prep/toeic/Practice"));
 const IELTSSpeakingContentPage      = lazyWithRetry(() => import("@/pages/exam-prep/ielts/Speaking"));
 const IELTSSpeakingTopicPage        = lazyWithRetry(() => import("@/pages/exam-prep/ielts/SpeakingTopic"));
@@ -1357,13 +1362,41 @@ export default function AppRouter() {
               </RequireAuth>
             }
           />
-          {/* TODO(TOEFL): Add routes when built:
-              /exam/toefl/reading
-              /exam/toefl/listening
-              /exam/toefl/speaking
-              /exam/toefl/writing
-              /exam/toefl/estimator
-          */}
+          <Route path="/exam/toefl/reading"
+            element={
+              <RequireAuth>
+                <LazyPage><TOEFLReadingPage /></LazyPage>
+              </RequireAuth>
+            }
+          />
+          <Route path="/exam/toefl/listening"
+            element={
+              <RequireAuth>
+                <LazyPage><TOEFLListeningPage /></LazyPage>
+              </RequireAuth>
+            }
+          />
+          <Route path="/exam/toefl/speaking"
+            element={
+              <RequireAuth>
+                <LazyPage><TOEFLSpeakingPage /></LazyPage>
+              </RequireAuth>
+            }
+          />
+          <Route path="/exam/toefl/writing"
+            element={
+              <RequireAuth>
+                <LazyPage><TOEFLWritingPage /></LazyPage>
+              </RequireAuth>
+            }
+          />
+          <Route path="/exam/toefl/estimator"
+            element={
+              <RequireAuth>
+                <LazyPage><TOEFLEstimatorPage /></LazyPage>
+              </RequireAuth>
+            }
+          />
           <Route path="/exam/toeic/practice/:sectionId"
             element={
               <RequireAuth>
