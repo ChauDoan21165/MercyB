@@ -53,7 +53,7 @@ export function LessonRenderer({ lesson, theme }: LessonRendererProps) {
   const [open, setOpen] = useState(false);
 
   const vocabCount = lesson.vocabulary?.length ?? 0;
-  const sentCount = lesson.sentences.length;
+  const sentCount = lesson.sentences?.length ?? 0;
   const dialCount = lesson.dialogue?.length ?? 0;
   const exerCount = lesson.exercises?.length ?? 0;
 

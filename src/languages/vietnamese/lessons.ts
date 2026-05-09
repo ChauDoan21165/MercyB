@@ -118,4 +118,4 @@ const _origLoadLevel = loadVietnameseLessonsForLevel;
 };
 
 /** Total lesson count across every level. Keep in sync with per-level files. */
-export const VIETNAMESE_TOTAL_LESSONS = 532;
+export const VIETNAMESE_TOTAL_LESSONS = 536;

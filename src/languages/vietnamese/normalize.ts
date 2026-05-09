@@ -23,7 +23,7 @@ export function normalizeVietnameseLesson(
       en: lesson.subtitle,
     },
     intro: lesson.intro,
-    sentences: lesson.phrases.map((phrase) => ({
+    sentences: (lesson.phrases ?? []).map((phrase) => ({
       native: phrase.vietnamese,
       romanization: phrase.pronunciation,
       en: phrase.english,
