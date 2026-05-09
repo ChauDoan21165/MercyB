@@ -16,7 +16,27 @@
  * of truth for "registry size" and compute a fallback health score when needed.
  */
 
-import { describe, it, expect, beforeAll } from "vitest";
+import { describe, it, expect, beforeAll, vi } from "vitest";
+
+// Mock the async room fetcher so the registry hydrates without Supabase.
+// The legacy sync roomDataMap bootstrap has been removed; roomRegistry now
+// loads rooms via roomFetcher.getAllRooms() → Supabase. In the test
+// environment we inject mock summaries instead.
+vi.mock("@/lib/roomFetcher", () => ({
+  getAllRooms: vi.fn().mockResolvedValue([
+    { id: "adhd_support_level3", tier: "level3", title_en: "ADHD Support", title_vi: "Hỗ trợ ADHD" },
+    { id: "anxiety_relief_level3", tier: "level3", title_en: "Anxiety Relief", title_vi: "Giảm Lo Âu" },
+    { id: "depression_support_level3", tier: "level3", title_en: "Depression Support", title_vi: "Hỗ trợ Trầm Cảm" },
+    { id: "writing_mastery_level2", tier: "level2", title_en: "Writing Mastery", title_vi: "Làm Chủ Kỹ Năng Viết" },
+    { id: "adhd_strategies_level1", tier: "level1", title_en: "ADHD Strategies", title_vi: "Chiến Lược ADHD" },
+    { id: "anxiety_toolkit_level2", tier: "level2", title_en: "Anxiety Toolkit", title_vi: "Bộ Công Cụ Lo Âu" },
+    { id: "english_speaking_level1", tier: "level1", title_en: "English Speaking Practice", title_vi: "Luyện Nói Tiếng Anh" },
+    { id: "kids_animals_l1", tier: "level0", title_en: "Animals for Kids", title_vi: "Động Vật Cho Bé" },
+    { id: "kids_colors_l2", tier: "level0", title_en: "Colors for Kids", title_vi: "Màu Sắc Cho Bé" },
+    { id: "general_vocabulary_level0", tier: "level0", title_en: "General Vocabulary", title_vi: "Từ Vựng Tổng Hợp" },
+  ]),
+}));
+
 import {
   getRoomCoverageReport,
   validateRoomInRegistry,

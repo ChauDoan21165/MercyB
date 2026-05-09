@@ -1,18 +1,38 @@
 /**
  * Room Search Tests
  *
- * This version DOES NOT replace the 3,500-line auto-generated roomDataImports.ts.
- * It uses the real generated `roomDataMap` and only asserts on stable invariants.
- *
- * FILE: roomSearch.test.ts
- * PATH: src/lib/__tests__/roomSearch.test.ts   (adjust if your repo uses a different tests folder)
+ * Uses a mocked roomFetcher instead of the deleted roomDataImports.
+ * Asserts on stable search invariants against known test data.
  */
 
-import { describe, it, expect, beforeEach } from "vitest";
+import { describe, it, expect, beforeEach, beforeAll, vi } from "vitest";
 
-import { roomDataMap } from "@/lib/roomDataImports";
+// Mock Supabase so the room fetcher can hydrate the registry
+// without a real database connection.
+const MOCK_ROOMS = [
+  { id: "adhd_support_free", tier: "level0", title_en: "ADHD Support", title_vi: "Hỗ trợ ADHD" },
+  { id: "adhd_support_vip3", tier: "level3", title_en: "ADHD Support VIP", title_vi: "Hỗ trợ ADHD Cao Cấp" },
+  { id: "anxiety_relief_free", tier: "level0", title_en: "Anxiety Relief", title_vi: "Giảm Lo Âu" },
+  { id: "anxiety_relief_vip3", tier: "level3", title_en: "Anxiety Relief VIP", title_vi: "Giảm Lo Âu Cao Cấp" },
+  { id: "depression_support_vip3", tier: "level3", title_en: "Depression Support", title_vi: "Hỗ trợ Trầm Cảm" },
+  { id: "english_speaking_level1", tier: "level1", title_en: "English Speaking", title_vi: "Luyện Nói Tiếng Anh" },
+  { id: "writing_mastery_level2", tier: "level2", title_en: "Writing Mastery", title_vi: "Làm Chủ Viết" },
+];
+vi.mock("@/lib/supabaseClient", () => {
+  const chain = {
+    select: () => chain,
+    returns: () => Promise.resolve({ data: MOCK_ROOMS, error: null }),
+  };
+  return {
+    supabase: {
+      from: () => chain,
+    },
+  };
+});
+
 import {
   getAllRooms,
+  getAllRoomsAsync,
   getRoomById,
   getRoomsByTier,
   refreshRegistry,
@@ -31,30 +51,28 @@ const KNOWN_IDS = {
   depressionVip3: "depression_support_vip3",
 } as const;
 
-function expectRoomExists(id: string) {
-  // Ensure the generated map contains the id (fast failure with clear message)
-  expect(roomDataMap as Record<string, unknown>).toHaveProperty(id);
-}
-
-describe("roomRegistry (real generated roomDataMap)", () => {
-  beforeEach(() => {
+describe("roomRegistry (mocked roomFetcher)", () => {
+  beforeAll(async () => {
     refreshRegistry();
+    await getAllRoomsAsync();
+  });
+  beforeEach(async () => {
+    refreshRegistry();
+    await getAllRoomsAsync();
   });
 
-  it("should load rooms from roomDataMap (non-empty)", () => {
+  it("should load rooms from roomFetcher (non-empty)", () => {
     const rooms = getAllRooms();
     expect(Array.isArray(rooms)).toBe(true);
     expect(rooms.length).toBeGreaterThan(0);
   });
 
   it("should get a room by id and preserve production fields", () => {
-    expectRoomExists(KNOWN_IDS.adhdFree);
-
     const room = getRoomById(KNOWN_IDS.adhdFree);
     expect(room).toBeDefined();
     expect(room?.id).toBe(KNOWN_IDS.adhdFree);
 
-    // Production schema (from your generated file)
+    // Production schema
     expect(room).toHaveProperty("title_en");
     expect(room).toHaveProperty("title_vi");
     expect(room).toHaveProperty("tier");
@@ -78,16 +96,20 @@ describe("roomRegistry (real generated roomDataMap)", () => {
     expect(freeRooms.every((r) => r.tier === "level0")).toBe(true);
 
     const vip3Rooms = getRoomsByTier("level3");
-    // vip tiers might exist or not depending on build, so only assert if present
     if (vip3Rooms.length > 0) {
       expect(vip3Rooms.every((r) => r.tier === "level3")).toBe(true);
     }
   });
 });
 
-describe("searchRooms (real dataset)", () => {
-  beforeEach(() => {
+describe("searchRooms (mocked dataset)", () => {
+  beforeAll(async () => {
     refreshRegistry();
+    await getAllRoomsAsync();
+  });
+  beforeEach(async () => {
+    refreshRegistry();
+    await getAllRoomsAsync();
   });
 
   it("should return empty array for empty/whitespace query", () => {
@@ -96,51 +118,29 @@ describe("searchRooms (real dataset)", () => {
   });
 
   it("should find rooms by English title tokens (e.g., ADHD)", () => {
-    expectRoomExists(KNOWN_IDS.adhdFree);
-    expectRoomExists(KNOWN_IDS.adhdVip3);
-
     const results = searchRooms("ADHD");
     const ids = new Set(results.map((r) => r.id));
-
     expect(ids.has(KNOWN_IDS.adhdFree) || ids.has(KNOWN_IDS.adhdVip3)).toBe(true);
   });
 
   it("should find rooms by Vietnamese text (diacritics)", () => {
-    expectRoomExists(KNOWN_IDS.depressionVip3);
-
     const results = searchRooms("trầm cảm");
     const ids = new Set(results.map((r) => r.id));
-
-    // We at least expect the depression support room to show up (exists in your snippet)
     expect(ids.has(KNOWN_IDS.depressionVip3)).toBe(true);
   });
 
   it("should find Vietnamese matches without diacritics if normalization exists", () => {
-    // If your implementation supports diacritic-insensitive search, this should pass.
-    // If not, change to a softer assertion (see comment below).
-    expectRoomExists(KNOWN_IDS.anxietyVip3);
-
     const results = searchRooms("lo au");
     const ids = new Set(results.map((r) => r.id));
-
-    // Soft expectation: at least one anxiety-related room
     expect(
       Array.from(ids).some((id) => id.includes("anxiety")) ||
         ids.has(KNOWN_IDS.anxietyVip3)
     ).toBe(true);
-
-    // If your search DOES NOT normalize diacritics, replace the above with:
-    // expect(results.length).toBeGreaterThanOrEqual(0);
   });
 
-  it("should support tier-aware searching (does not assume rank/ordering)", () => {
-    expectRoomExists(KNOWN_IDS.adhdFree);
-    expectRoomExists(KNOWN_IDS.adhdVip3);
-
+  it("should support tier-aware searching", () => {
     const results = searchRooms("ADHD", { tier: "level3" });
     const ids = new Set(results.map((r) => r.id));
-
-    // Do NOT assert exact ordering; just ensure relevant rooms can appear.
     expect(ids.has(KNOWN_IDS.adhdFree) || ids.has(KNOWN_IDS.adhdVip3)).toBe(true);
   });
 
@@ -156,9 +156,14 @@ describe("searchRooms (real dataset)", () => {
   });
 });
 
-describe("getSearchSuggestions (real dataset)", () => {
-  beforeEach(() => {
+describe("getSearchSuggestions (mocked dataset)", () => {
+  beforeAll(async () => {
     refreshRegistry();
+    await getAllRoomsAsync();
+  });
+  beforeEach(async () => {
+    refreshRegistry();
+    await getAllRoomsAsync();
   });
 
   it("should return empty array for empty prefix", () => {
@@ -168,10 +173,7 @@ describe("getSearchSuggestions (real dataset)", () => {
 
   it("should return suggestions for a meaningful prefix", () => {
     const suggestions = getSearchSuggestions("Anx");
-    // Suggestions behavior varies by implementation; just verify type/shape
     expect(Array.isArray(suggestions)).toBe(true);
-
-    // If there are suggestions, they should be strings
     if (suggestions.length > 0) {
       expect(typeof suggestions[0]).toBe("string");
     }
@@ -183,9 +185,14 @@ describe("getSearchSuggestions (real dataset)", () => {
   });
 });
 
-describe("hasSearchResults (real dataset)", () => {
-  beforeEach(() => {
+describe("hasSearchResults (mocked dataset)", () => {
+  beforeAll(async () => {
     refreshRegistry();
+    await getAllRoomsAsync();
+  });
+  beforeEach(async () => {
+    refreshRegistry();
+    await getAllRoomsAsync();
   });
 
   it("should return false for empty query", () => {
@@ -194,7 +201,6 @@ describe("hasSearchResults (real dataset)", () => {
   });
 
   it("should return true for known matching query", () => {
-    // Using stable tokens from your generated map snippet
     expect(hasSearchResults("ADHD")).toBe(true);
     expect(hasSearchResults("Anxiety")).toBe(true);
   });
