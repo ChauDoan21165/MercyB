@@ -833,37 +833,51 @@ export default function Home() {
               Self-gates on its own feature flag + 24h cooldown. */}
           <RecommendedDrillCard />
 
-          {/* Section divider — signals shift from primary actions to
-              discovery content. Stronger visual break on mobile. */}
-          <div style={{
-            marginTop: isPhone ? 14 : 14,
-            paddingTop: isPhone ? 10 : 0,
-            borderTop: isPhone ? "1px solid rgba(0,0,0,0.06)" : "none",
-            fontSize: z(11), fontWeight: 700, letterSpacing: 0.8, textTransform: "uppercase", color: "rgba(0,0,0,0.42)",
-          }}>
-            Explore more · Khám phá thêm
-          </div>
-
-          {/* Library — browse rooms. */}
-          {libraryCard}
-
-          {/* Placement test — invitation card (always visible; /placement
-              route still gates auth). */}
+          {/* ── Intent group: "Start here" ────────────────────────────
+              Placement lives right after Teacher Mercy so new visitors
+              have two clear guided paths: chat (Mercy) or assess
+              (Placement). One is relational, one is diagnostic. */}
+          {isPhone && (
+            <div style={{
+              marginTop: 4, fontSize: z(10), fontWeight: 700, letterSpacing: 1.2,
+              textTransform: "uppercase", color: "rgba(0,0,0,0.32)",
+            }}>
+              Start here · Bắt đầu từ đây
+            </div>
+          )}
           {placementCard}
 
-          {/* VSTEP — Vietnamese national exam prep (Vietnamese-only moat). */}
+          {/* ── Intent group: "Prepare for exams" ─────────────────────
+              Goal-oriented learners scan for their exam. Grouped so the
+              eye can skip the whole block if not exam-prepping. */}
+          {isPhone && (
+            <div style={{
+              marginTop: 12, paddingTop: 10,
+              borderTop: "1px solid rgba(0,0,0,0.06)",
+              fontSize: z(10), fontWeight: 700, letterSpacing: 1.2,
+              textTransform: "uppercase", color: "rgba(0,0,0,0.32)",
+            }}>
+              Prepare for exams · Luyện thi
+            </div>
+          )}
+          {ieltsSpeakingCard}
+          {toeicCard}
           {vstepCard}
 
-          {/* TOEIC practice pack — Vietnamese corporate vertical.
-              Marketing surface for /exam-prep/toeic (open, no paywall). */}
-          {toeicCard}
-
-          {/* IELTS Speaking content pack — closes the IELTS funnel
-              alongside Writing/Listening/Reading. Marketing surface for
-              /exam-prep/ielts/speaking (open, no paywall). */}
-          {ieltsSpeakingCard}
-
-          {/* Focus areas — tertiary (feature-flagged). */}
+          {/* ── Intent group: "Explore & improve" ────────────────────
+              Browsing, practice, and discovery. Everything below this
+              label is supplementary — not the main path. */}
+          {isPhone && (
+            <div style={{
+              marginTop: 12, paddingTop: 10,
+              borderTop: "1px solid rgba(0,0,0,0.06)",
+              fontSize: z(10), fontWeight: 700, letterSpacing: 1.2,
+              textTransform: "uppercase", color: "rgba(0,0,0,0.32)",
+            }}>
+              Explore & improve · Khám phá
+            </div>
+          )}
+          {libraryCard}
           <FocusAreasCard />
 
           {/* Weekly leaderboard — retention card (feature-flagged). */}
