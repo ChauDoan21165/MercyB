@@ -17,27 +17,7 @@ import {
   Sparkles,
   Target,
 } from 'lucide-react';
-import { KID_PAGE_14_ITEMS } from './kids/kidPage14Data';
-import { KID_PAGE_15_ITEMS } from './kids/kidPage15Data';
-import { KID_PAGE_16_ITEMS } from './kids/kidPage16Data';
-import { KID_PAGE_17_ITEMS } from './kids/kidPage17Data';
-import { KID_PAGE_18_ITEMS } from './kids/kidPage18Data';
-import { KID_PAGE_19_ITEMS } from './kids/kidPage19Data';
-import { KID_PAGE_20_ITEMS } from './kids/kidPage20Data';
-import { KID_PAGE_21_ITEMS } from './kids/kidPage21Data';
-import { KID_PAGE_22_ITEMS } from './kids/kidPage22Data';
-import { KID_PAGE_23_ITEMS } from './kids/kidPage23Data';
-import { KID_PAGE_24_ITEMS } from './kids/kidPage24Data';
-import { KID_PAGE_25_ITEMS } from './kids/kidPage25Data';
-import { KID_PAGE_26_ITEMS } from './kids/kidPage26Data';
-import { KID_PAGE_27_ITEMS } from './kids/kidPage27Data';
-import { KID_PAGE_28_ITEMS } from './kids/kidPage28Data';
-import { KID_PAGE_29_ITEMS } from './kids/kidPage29Data';
-import { KID_PAGE_30_ITEMS } from './kids/kidPage30Data';
-import { KID_PAGE_31_ITEMS } from './kids/kidPage31Data';
-import { KID_PAGE_32_ITEMS } from './kids/kidPage32Data';
-import { KID_PAGE_33_ITEMS } from './kids/kidPage33Data';
-import { KID_PAGE_34_ITEMS } from './kids/kidPage34Data';
+import { loadKidsItemsForPages } from './kidsDataLoader';
 import type {
   GrammarApiResponse,
   GrammarWritingTeacherState,
@@ -975,48 +955,8 @@ function resolveCurrentPageItems(page: KidsPageId): KidsLessonCard[] {
       return buildGenericPageItems(PAGE_12_KEYS, '/images/mercy-kids-page-12');
     case 'page13':
       return buildGenericPageItems(PAGE_13_KEYS, '/images/mercy-kids-page-13');
-    case 'page14':
-      return buildMappedPageItems(KID_PAGE_14_ITEMS);
-    case 'page15':
-      return buildMappedPageItems(KID_PAGE_15_ITEMS);
-    case 'page16':
-      return buildMappedPageItems(KID_PAGE_16_ITEMS);
-    case 'page17':
-      return buildMappedPageItems(KID_PAGE_17_ITEMS);
-    case 'page18':
-      return buildMappedPageItems(KID_PAGE_18_ITEMS);
-    case 'page19':
-      return buildMappedPageItems(KID_PAGE_19_ITEMS);
-    case 'page20':
-      return buildMappedPageItems(KID_PAGE_20_ITEMS);
-    case 'page21':
-      return buildMappedPageItems(KID_PAGE_21_ITEMS);
-    case 'page22':
-      return buildMappedPageItems(KID_PAGE_22_ITEMS);
-    case 'page23':
-      return buildMappedPageItems(KID_PAGE_23_ITEMS);
-    case 'page24':
-      return buildMappedPageItems(KID_PAGE_24_ITEMS);
-    case 'page25':
-      return buildMappedPageItems(KID_PAGE_25_ITEMS);
-    case 'page26':
-      return buildMappedPageItems(KID_PAGE_26_ITEMS);
-    case 'page27':
-      return buildMappedPageItems(KID_PAGE_27_ITEMS);
-    case 'page28':
-      return buildMappedPageItems(KID_PAGE_28_ITEMS);
-    case 'page29':
-      return buildMappedPageItems(KID_PAGE_29_ITEMS);
-    case 'page30':
-      return buildMappedPageItems(KID_PAGE_30_ITEMS);
-    case 'page31':
-      return buildMappedPageItems(KID_PAGE_31_ITEMS);
-    case 'page32':
-      return buildMappedPageItems(KID_PAGE_32_ITEMS);
-    case 'page33':
-      return buildMappedPageItems(KID_PAGE_33_ITEMS);
-    case 'page34':
-      return buildMappedPageItems(KID_PAGE_34_ITEMS);
+    // Pages 14-34: loaded dynamically via loadKidsItemsForPages in useEffect
+    // (static imports removed for bundle size — these pages lazy-load on demand)
     default:
       return buildPage1Items();
   }
@@ -1300,10 +1240,44 @@ export function MercyTeacherTab({
       : 'Gợi ý ngắn: mở Grammar trước.',
   );
 
+  // Sync items for pages 1-13 (inline data)
   const currentPageItems = useMemo(
     () => resolveCurrentPageItems(selectedKidsPage),
     [selectedKidsPage],
   );
+
+  // Async items for pages 14-34 (dynamically imported on demand)
+  const [lazyPageItems, setLazyPageItems] = useState<KidsLessonCard[]>([]);
+  const [lazyPageItemsLoading, setLazyPageItemsLoading] = useState(false);
+
+  useEffect(() => {
+    const pageNumber = parseInt(selectedKidsPage.replace('page', ''), 10);
+    if (pageNumber < 14 || pageNumber > 34 || Number.isNaN(pageNumber)) {
+      setLazyPageItems([]);
+      setLazyPageItemsLoading(false);
+      return;
+    }
+    let cancelled = false;
+    setLazyPageItemsLoading(true);
+    void (async () => {
+      const map = await loadKidsItemsForPages([pageNumber]);
+      if (cancelled) return;
+      const items = map.get(pageNumber) ?? [];
+      setLazyPageItems(items.map((item) => ({
+        key: item.key,
+        label: item.label,
+        imageSrc: item.image,
+      })));
+      setLazyPageItemsLoading(false);
+    })();
+    return () => { cancelled = true; };
+  }, [selectedKidsPage]);
+
+  const displayablePageItems: KidsLessonCard[] = useMemo(() => {
+    const pageNumber = parseInt(selectedKidsPage.replace('page', ''), 10);
+    if (pageNumber >= 14 && pageNumber <= 34) return lazyPageItems;
+    return currentPageItems;
+  }, [selectedKidsPage, currentPageItems, lazyPageItems]);
 
   const handlePageSelect = (page: KidsPageId) => {
     if (page === selectedKidsPage) return;
@@ -1342,7 +1316,7 @@ export function MercyTeacherTab({
             />
 
             <KidsImageGrid
-              items={currentPageItems}
+              items={displayablePageItems}
               selectedKey={selectedKidsObjectKey}
               onSelect={onSelectKidsObject}
             />
