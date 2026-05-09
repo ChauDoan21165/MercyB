@@ -3,12 +3,12 @@
  * Path: src/pages/Home.tsx
  */
 
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { Suspense, useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { BookOpen, ChevronRight, Compass, GraduationCap, LibraryBig, Mic } from "lucide-react";
 
 import BottomMusicBar from "@/components/audio/BottomMusicBar";
-import { MercyGuide } from "@/components/MercyGuide";
+import { lazyWithRetry } from "@/lib/lazyWithRetry";
 import { useUserAccess } from "@/hooks/useUserAccess";
 import { useAuth } from "@/providers/AuthProvider";
 import { useFeatureFlag } from "@/hooks/useFeatureFlag";
@@ -23,6 +23,8 @@ import LeaderboardCard from "@/components/leaderboard/LeaderboardCard";
 import { StreakBadge } from "@/components/streak/StreakBadge";
 import { XPBadge } from "@/components/xp/XPBadge";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
+
+const MercyGuide = lazyWithRetry(() => import("@/components/MercyGuide"));
 
 const PAGE_MAX = 980;
 const LS_ZOOM  = "mb.ui.zoom";
@@ -821,14 +823,16 @@ export default function Home() {
           {sharedReady ? (
             <React.Fragment key={sharedKey}>
               {isTeacherMercyAllowed ? (
-                <MercyGuide
-                  // Only inject Try-one-word props after the user has
-                  // clicked the card (id > 0). Pre-click, leave undefined
-                  // so MercyGuide keeps its existing default tab.
-                  initialTab={tryOneWordRequestId > 0 ? "pronunciation" : undefined}
-                  initialPracticeLine={tryOneWordRequestId > 0 ? TRY_ONE_WORD_LINE : undefined}
-                  openRequestId={tryOneWordRequestId}
-                />
+                <Suspense fallback={null}>
+                  <MercyGuide
+                    // Only inject Try-one-word props after the user has
+                    // clicked the card (id > 0). Pre-click, leave undefined
+                    // so MercyGuide keeps its existing default tab.
+                    initialTab={tryOneWordRequestId > 0 ? "pronunciation" : undefined}
+                    initialPracticeLine={tryOneWordRequestId > 0 ? TRY_ONE_WORD_LINE : undefined}
+                    openRequestId={tryOneWordRequestId}
+                  />
+                </Suspense>
               ) : null}
             </React.Fragment>
           ) : null}
