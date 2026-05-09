@@ -269,7 +269,7 @@ declare global {
 // ── Guards ────────────────────────────────────────────────────────────────────
 
 /**
- * Redirect unauthenticated users to /signin with a `next=` param
+ * Redirect unauthenticated users to /signin with a `returnTo=` param
  * so they return to the intended page after signing in.
  * Shows nothing while auth is still loading.
  */
@@ -301,7 +301,7 @@ function RequireAuth({ children }: { children: React.ReactNode }) {
     const next = encodeURIComponent(
       `${location.pathname}${location.search}${location.hash}`,
     );
-    return <Navigate to={`/signin?next=${next}`} replace />;
+    return <Navigate to={`/signin?returnTo=${next}`} replace />;
   }
 
   return <>{children}</>;
