@@ -224,6 +224,14 @@ const TOEFLListeningPage     = lazyWithRetry(() => import("@/pages/exam-prep/TOE
 const TOEFLWritingPage       = lazyWithRetry(() => import("@/pages/exam-prep/TOEFLWritingPage"));
 const TOEFLSpeakingPage      = lazyWithRetry(() => import("@/pages/exam-prep/TOEFLSpeakingPage"));
 const TOEFLEstimatorPage     = lazyWithRetry(() => import("@/pages/exam-prep/TOEFLEstimatorPage"));
+const TOEFLReadingContentPage     = lazyWithRetry(() => import("@/pages/exam-prep/toefl/Reading"));
+const TOEFLReadingPassagePage     = lazyWithRetry(() => import("@/pages/exam-prep/toefl/ReadingPassage"));
+const TOEFLListeningContentPage   = lazyWithRetry(() => import("@/pages/exam-prep/toefl/Listening"));
+const TOEFLListeningItemPage      = lazyWithRetry(() => import("@/pages/exam-prep/toefl/ListeningItem"));
+const TOEFLWritingContentPage     = lazyWithRetry(() => import("@/pages/exam-prep/toefl/Writing"));
+const TOEFLWritingTopicPage       = lazyWithRetry(() => import("@/pages/exam-prep/toefl/WritingTopic"));
+const TOEFLSpeakingContentPage    = lazyWithRetry(() => import("@/pages/exam-prep/toefl/Speaking"));
+const TOEFLSpeakingTopicPage      = lazyWithRetry(() => import("@/pages/exam-prep/toefl/SpeakingTopic"));
 const TOEICPracticePackPage  = lazyWithRetry(() => import("@/pages/exam-prep/toeic/Practice"));
 const IELTSSpeakingContentPage      = lazyWithRetry(() => import("@/pages/exam-prep/ielts/Speaking"));
 const IELTSSpeakingTopicPage        = lazyWithRetry(() => import("@/pages/exam-prep/ielts/SpeakingTopic"));
@@ -1343,6 +1351,45 @@ export default function AppRouter() {
           />
           <Route path="/exam-prep/ielts/writing/:topicId"
             element={<LazyPage><IELTSWritingTopicPage /></LazyPage>}
+          />
+
+          {/* TOEFL Speaking content pack — open marketing surface. 8 topics
+              across all 4 task types with VN-speaker strategies, vocabulary
+              by band, and band-7/band-5 sample answers. */}
+          <Route path="/exam-prep/toefl/speaking"
+            element={<LazyPage><TOEFLSpeakingContentPage /></LazyPage>}
+          />
+          <Route path="/exam-prep/toefl/speaking/:topicId"
+            element={<LazyPage><TOEFLSpeakingTopicPage /></LazyPage>}
+          />
+
+          {/* TOEFL Listening content pack — open marketing surface. 4 items
+              (2 conversations + 2 lectures) with VN-listener strategies,
+              vocab, and full scripts. */}
+          <Route path="/exam-prep/toefl/listening"
+            element={<LazyPage><TOEFLListeningContentPage /></LazyPage>}
+          />
+          <Route path="/exam-prep/toefl/listening/:itemId"
+            element={<LazyPage><TOEFLListeningItemPage /></LazyPage>}
+          />
+
+          {/* TOEFL Reading content pack — open marketing surface. Lists all
+              reading passages with topic/band filters. Each card links to the
+              detail page with full passage + questions + VN explanations. */}
+          <Route path="/exam-prep/toefl/reading"
+            element={<LazyPage><TOEFLReadingContentPage /></LazyPage>}
+          />
+          <Route path="/exam-prep/toefl/reading/:passageId"
+            element={<LazyPage><TOEFLReadingPassagePage /></LazyPage>}
+          />
+
+          {/* TOEFL Writing content pack — open marketing surface. Lists all
+              Task 1 (Integrated) and Task 2 (Academic Discussion) topics. */}
+          <Route path="/exam-prep/toefl/writing"
+            element={<LazyPage><TOEFLWritingContentPage /></LazyPage>}
+          />
+          <Route path="/exam-prep/toefl/writing/:topicId"
+            element={<LazyPage><TOEFLWritingTopicPage /></LazyPage>}
           />
 
           {/* TOEIC prep (Step 11 — premium-gated; gate is inside the page) */}
