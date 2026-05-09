@@ -3040,6 +3040,116 @@ export const lessons: KoreanLesson[] = [
       {"type": "matching", "pairs": [{"hangul": "구술 심사", "meaning": "thi vấn đáp / oral defense"}, {"hangul": "심사위원", "meaning": "hội đồng chấm thi"}, {"hangul": "질의응답", "meaning": "Q&A"}, {"hangul": "연구 윤리", "meaning": "đạo đức nghiên cứu"}], "instruction": "Nối thuật ngữ"}
     ]
   }
+  ,
+  {
+    "id": 118, "level": "C2",
+    "title_vi": "Tư duy triết học và lập luận trừu tượng (철학적 사고와 추상적 추론)", "title_en": "Philosophical thinking and abstract reasoning",
+    "intro_vi": "철학적 사고 (philosophical thinking) ở bậc C2 đòi hỏi sinh viên phân biệt được 경험적 사고 (tư duy kinh nghiệm) và 초월론적 사고 (tư duy siêu nghiệm). 칸트의 질문 — 'X가 참인가?'가 아니라 'X는 어떤 조건 아래서 비로소 가능한가?' — 은 철학적 전회의 핵심이다. 추상은 현실 도피가 아니라, 개별 사례들의 배후에 놓인 공통 구조를 추출함으로써 현실을 더 깊이 이해하기 위한 조작이다.",
+    "vocabulary": [
+      {"hangul": "초월론적 (超越論的)", "meaning": "siêu nghiệm / transcendental (Kant)"},
+      {"hangul": "개념 분석 (槪念分析)", "meaning": "phân tích khái niệm"},
+      {"hangul": "전제 (前提)", "meaning": "tiền đề / presupposition"},
+      {"hangul": "귀류법 (歸謬法)", "meaning": "phép quy giản về phi lý / reductio ad absurdum"},
+      {"hangul": "딜레마 (dilemma)", "meaning": "song đề / thế lưỡng nan"},
+      {"hangul": "사고 실험 (思考實驗)", "meaning": "thí nghiệm tư duy / thought experiment"},
+      {"hangul": "추상 (抽象)", "meaning": "trừu tượng / abstraction"},
+      {"hangul": "보편 (普遍)", "meaning": "phổ biến / universal"},
+      {"hangul": "논박 (論駁)", "meaning": "luận bác / refutation"},
+      {"hangul": "언어 게임 (言語 game)", "meaning": "trò chơi ngôn ngữ (Wittgenstein)"}
+    ],
+    "sentences": [
+      {"korean": "훌륭한 철학 논문은 결론의 참신함이 아니라, 자신의 주장에 대한 반론을 얼마나 진지하게 검토했는가로 평가된다.", "romanized": "Hullyung-han cheolhak nonmun-eun gyeollon-ui chamsinham-i anira, jasin-ui jujang-e daehan ballon-eul eolmana jinji-hage geomto-haenneunga-ro pyeongga-doenda.", "en": "An excellent philosophy paper is evaluated not by the novelty of its conclusion but by how seriously it examines objections to its own argument.", "vi": "Một luận văn triết học xuất sắc được đánh giá không phải bởi tính mới lạ của kết luận, mà bởi nó đã xem xét các phản bác chống lại lập luận của chính mình nghiêm túc đến mức nào."},
+      {"korean": "칸트의 초월론적 방법은 'X는 참인가'가 아니라 'X가 어떤 조건 아래서 비로소 가능한가'를 묻는다. 이 물음의 전환이야말로 경험적 사고에서 철학적 사고로의 도약이다.", "romanized": "Kanteu-ui chowollonjeok bangbeob-eun 'X-neun cham-inga'-ga anira 'X-ga eotteon jogeon alaeseo biroso ganeung-hanga'-reul mutneunda. I mureum-ui jeonhwan-iyamallo gyeongheomjeok sago-eseo cheolhakjeok sago-ro-ui doyak-ida.", "en": "Kant's transcendental method asks not 'Is X true?' but 'Under what conditions is X possible at all?' This turn of the question is the leap from empirical to philosophical thinking.", "vi": "Phương pháp siêu nghiệm của Kant không hỏi 'X có đúng không' mà hỏi 'X khả thể dưới những điều kiện nào'. Chính sự chuyển hướng câu hỏi này là cú nhảy từ tư duy kinh nghiệm sang tư duy triết học."},
+      {"korean": "추상은 현실 도피가 아니다. 개별 사례들의 배후에 놓인 공통 구조를 추출함으로써, 현실을 더 깊이 이해하기 위한 불가결한 조작이다.", "romanized": "Chusang-eun hyeonsil dopi-ga anida. Gaebyeol sarye-deurui baehu-e noin gongtong gujo-reul chuchul-hameurosseo, hyeonsil-eul deo gipi ihae-hagi wihan bulgagyeol-han jojag-ida.", "en": "Abstraction is not an escape from reality. It is an indispensable operation for understanding reality more deeply by extracting the common structure behind individual cases.", "vi": "Trừu tượng không phải là trốn chạy thực tại. Đó là một thao tác không thể thiếu để hiểu thực tại sâu hơn bằng cách trích xuất cấu trúc chung nằm sau các trường hợp cá biệt."}
+    ],
+    "dialogue": [
+      {"speaker": "A", "hangul": "철학 논문에서 '제 의견으로는'이라고 써도 됩니까?", "meaning": "In a philosophy paper, is it OK to write 'in my opinion'?"},
+      {"speaker": "B", "hangul": "쓰면 안 됩니다. 철학은 의견의 표명이 아니라 논증의 구축입니다. '나는 ~라고 생각한다'가 아니라 '~라는 이유로 ~라고 결론짓지 않을 수 없다'라고 써야 합니다.", "meaning": "You must not. Philosophy is not the expression of opinion but the construction of argument. Not 'I think that...' but 'For reasons X, Y, Z, one cannot but conclude that...'"}
+    ],
+    "exercises": [
+      {"type": "fill-blank", "question": "칸트의 초월론적 방법은 'X가 어떤 ___ 아래서 비로소 가능한가'를 묻는다.", "answer": "조건"},
+      {"type": "matching", "pairs": [{"hangul": "초월론적", "meaning": "siêu nghiệm / transcendental"}, {"hangul": "귀류법", "meaning": "reductio ad absurdum"}, {"hangul": "사고 실험", "meaning": "thought experiment"}, {"hangul": "논박", "meaning": "refutation"}], "instruction": "Nối thuật ngữ triết học"}
+    ]
+  },
+  {
+    "id": 119, "level": "C2",
+    "title_vi": "Lý thuyết thuyết phục và tu từ học (설득 이론과 수사학)", "title_en": "Persuasion theory and classical rhetoric",
+    "intro_vi": "설득 (persuasion)은 조작 (manipulation)과 다르다. 아리스토텔레스 이후 설득의 기술은 세 기둥에 의해 지탱되어 왔다: 로고스 (논리), 에토스 (화자의 신뢰성), 파토스 (청중의 감정). 이 삼자의 균형이야말로 윤리적 설득의 조건이다. 계산된 양보 — 약한 논점을 스스로 인정하는 것 — 는 약점이 아니라, 화자의 지적 정직성을 보여주고 남은 주장의 무게를 증가시키는 전략이다.",
+    "vocabulary": [
+      {"hangul": "설득 (說得)", "meaning": "thuyết phục / persuasion"},
+      {"hangul": "로고스 (logos)", "meaning": "lập luận logic"},
+      {"hangul": "에토스 (ethos)", "meaning": "độ tin cậy của người nói"},
+      {"hangul": "파토스 (pathos)", "meaning": "kêu gọi cảm xúc"},
+      {"hangul": "생략삼단논법 (省略三段論法)", "meaning": "enthymeme — tam đoạn luận tu từ"},
+      {"hangul": "청중 (聽衆)", "meaning": "cử tọa / audience"},
+      {"hangul": "계산된 양보 (計算된 讓步)", "meaning": "sự nhượng bộ có tính toán"}
+    ],
+    "sentences": [
+      {"korean": "계산된 양보 — 약한 논점을 스스로 인정하는 것 — 는 단순한 약점이 아니다. 오히려 화자의 지적 정직성을 보여주고, 남은 주장의 무게를 증가시키는 전략이다.", "romanized": "Gyesan-doen yangbo — yakhan nonjeom-eul seuseuro injeong-haneun geot — neun dansun-han yakjeom-i anida. Ohiryeo hwaja-ui jijeok jeongjikseong-eul boyeojugo, nameun jujang-ui mugereul jeungga-sikineun jeollyag-ida.", "en": "The calculated concession — admitting a weak point oneself — is not mere weakness. Rather, it is a strategy that demonstrates the speaker's intellectual honesty and increases the weight of the remaining claims.", "vi": "Sự nhượng bộ có tính toán — tự mình thừa nhận một luận điểm yếu — không phải là điểm yếu đơn thuần. Đúng hơn, đó là chiến lược cho thấy sự chính trực trí tuệ của người nói và làm tăng trọng lượng của các lập luận còn lại."},
+      {"korean": "설득이 조작과 다른 점은, 로고스를 결여한 파토스에의 호소만이 조작이라 불린다는 데 있다. 세 기둥의 균형이야말로 윤리적 설득의 조건이다.", "romanized": "Seoldeug-i jojag-gwa dareun jeom-eun,rogoseu-reul gyeoryeo-han patoseu-e-ui hosoman-i jojag-ira bullindaneun de itda. Se gidung-ui gyunhyeong-iyamallo yullijeok seoldeug-ui jogeon-ida.", "en": "Persuasion differs from manipulation in that only an appeal to pathos lacking logos is called manipulation. The balance of the three pillars is the condition of ethical persuasion.", "vi": "Thuyết phục khác thao túng ở chỗ chỉ có sự kêu gọi pathos thiếu logos mới bị gọi là thao túng. Sự cân bằng của ba trụ cột chính là điều kiện của thuyết phục có đạo đức."}
+    ],
+    "dialogue": [
+      {"speaker": "A", "hangul": "설득과 조작의 경계선은 어디에 있습니까?", "meaning": "Where is the boundary between persuasion and manipulation?"},
+      {"speaker": "B", "hangul": "로고스의 유무입니다. 상대의 이성에 호소하지 않고 감정만을 움직이려는 것이 조작입니다. 이성과 감정과 신뢰 모두에 균형 있게 호소하는 것이 설득입니다.", "meaning": "It is the presence or absence of logos. To try to move only emotion without appealing to the other's reason is manipulation. To appeal in a balanced way to reason, emotion, and trust — all three — is persuasion."}
+    ],
+    "exercises": [
+      {"type": "fill-blank", "question": "아리스토텔레스 이후 설득의 기술은 로고스, 에토스, ___의 세 기둥에 의해 지탱되어 왔다.", "answer": "파토스"},
+      {"type": "matching", "pairs": [{"hangul": "로고스", "meaning": "lập luận logic"}, {"hangul": "에토스", "meaning": "độ tin cậy của người nói"}, {"hangul": "파토스", "meaning": "kêu gọi cảm xúc"}, {"hangul": "생략삼단논법", "meaning": "enthymeme"}], "instruction": "Nối thuật ngữ tu từ học"}
+    ]
+  },
+  {
+    "id": 120, "level": "C2",
+    "title_vi": "Phê bình truyền thông và phân tích ngôn ngữ báo chí (미디어 비평과 언론 분석)", "title_en": "Media criticism and journalistic language analysis",
+    "intro_vi": "미디어 비평 (media criticism) ở bậc C2 không phải là hô hào '언론은 편향되어 있다', mà là phân tích 구체적 프레임 (framing), 기사 제목 (headline choices), 인용 동사 (reporting verbs), 그리고 정보원 선택 (source selection)이 어떻게 독자의 해석을 유도하는지 밝히는 작업이다.",
+    "vocabulary": [
+      {"hangul": "미디어 비평 (media批評)", "meaning": "phê bình truyền thông"},
+      {"hangul": "보도 (報道)", "meaning": "tường thuật / news reporting"},
+      {"hangul": "논평 (論評)", "meaning": "bình luận / commentary"},
+      {"hangul": "프레이밍 (framing)", "meaning": "đóng khung / framing"},
+      {"hangul": "표제 (標題)", "meaning": "tít báo / headline"},
+      {"hangul": "익명 정보원 (匿名情報源)", "meaning": "nguồn ẩn danh"},
+      {"hangul": "보도 태도 (報道態度)", "meaning": "thái độ tường thuật / editorial stance"},
+      {"hangul": "객관성 (客觀性)", "meaning": "tính khách quan / objectivity"}
+    ],
+    "sentences": [
+      {"korean": "훌륭한 미디어 비평은 '이 기사는 편향되었다'고 외치는 대신, 어떤 표제가 어떤 정보원을 선택했고 어떤 동사로 인용했는지를 구체적으로 지적한다.", "romanized": "Hullyung-han midieo bipyeong-eun 'i gisa-neun pyeonhyang-doeeotda'-go oechineun daesin, eotteon pyoje-ga eotteon jeongbowon-eul seontaek-haetgo eotteon donsa-ro inyong-haenneunji-reul guchejeok-euro jijeok-handa.", "en": "Good media criticism does not shout 'this article is biased' but concretely points out which headline chose which source and with which verb it quoted.", "vi": "Phê bình truyền thông tốt không hô hào 'bài báo này thiên vị', mà chỉ ra cụ thể tít báo nào đã chọn nguồn tin nào và trích dẫn bằng động từ nào."},
+      {"korean": "같은 기자회견이라도 표제가 '대통령, 개혁 강조'가 되느냐 '대통령, 구체적 언급 회피'가 되느냐에 따라 독자의 해석은 근본적으로 달라진다.", "romanized": "Gateun gija-hoegyeon-irado pyoje-ga 'daetongnyeong, gaehyeok gangjo'-ga doeneunya 'daetongnyeong, guchejeok eongeup hoepi'-ga doeneunya-e ttara dokja-ui haeseok-eun geunbonjeog-euro dallajinda.", "en": "From the same press conference, whether the headline becomes 'President emphasizes reform' or 'President avoids specific mention' fundamentally changes the reader's interpretation.", "vi": "Cùng một cuộc họp báo, tít báo thành 'Tổng thống nhấn mạnh cải cách' hay 'Tổng thống tránh đề cập cụ thể' khiến diễn giải của độc giả khác nhau về căn bản."}
+    ],
+    "dialogue": [
+      {"speaker": "A", "hangul": "기사가 '보도'인지 '논평'인지 어떻게 구별합니까?", "meaning": "How do you distinguish whether an article is 'reporting' or 'commentary'?"},
+      {"speaker": "B", "hangul": "동사입니다. '밝혔다', '전했다'는 보도. '주장했다', '불과하다'는 논평입니다. 형용사의 유무도 중요한 지표입니다.", "meaning": "It is the verbs. 'Revealed,' 'conveyed' are reporting. 'Claimed,' 'merely' are commentary. The presence of adjectives is also an important indicator."}
+    ],
+    "exercises": [
+      {"type": "fill-blank", "question": "같은 기자회견이라도 ___가 어떻게 달라지느냐에 따라 독자의 해석이 근본적으로 달라진다.", "answer": "표제"},
+      {"type": "matching", "pairs": [{"hangul": "보도", "meaning": "news reporting"}, {"hangul": "논평", "meaning": "commentary"}, {"hangul": "익명 정보원", "meaning": "anonymous source"}, {"hangul": "객관성", "meaning": "objectivity"}], "instruction": "Nối thuật ngữ"}
+    ]
+  },
+  {
+    "id": 121, "level": "C2",
+    "title_vi": "Ngôn ngữ ngoại giao và diễn ngôn quốc tế (외교 언어와 국제 담론)", "title_en": "Diplomatic language and international discourse",
+    "intro_vi": "외교 언어 (diplomatic language)의 본질은 정확한 모호성의 기술이다 — 구속하기에 충분한 말을 하면서도, 고정되기에는 충분하지 않은 말을 하는 것. '비난 (condemn)'과 '유감 (regret)' 사이에는 일반 독자에게는 보이지 않지만 외교관에게는 결정적인 차이가 존재한다.",
+    "vocabulary": [
+      {"hangul": "외교 언어 (外交言語)", "meaning": "ngôn ngữ ngoại giao"},
+      {"hangul": "공동 성명 (共同聲明)", "meaning": "tuyên bố chung / joint statement"},
+      {"hangul": "비난 (非難)", "meaning": "lên án / condemnation"},
+      {"hangul": "유감 (遺憾)", "meaning": "lấy làm tiếc / regret"},
+      {"hangul": "전략적 모호성 (戰略的模糊性)", "meaning": "tính mơ hồ chiến lược"},
+      {"hangul": "다자간 협의 (多者間協議)", "meaning": "đàm phán đa phương"},
+      {"hangul": "건설적 대화 (建設的對話)", "meaning": "đối thoại xây dựng"}
+    ],
+    "sentences": [
+      {"korean": "외교 언어의 본질은 구속하기에 충분한 말을 하면서도 고정되기에는 충분하지 않은 말을 하는, 정확한 모호성의 기술이다.", "romanized": "Oegyo eoneo-ui bonjil-eun gusok-hagi-e chungbun-han mal-eul hamyeonseodo gojeong-doegi-eneun chungbun-haji aneun mal-eul haneun, jeonghwak-han mohoseong-ui gisur-ida.", "en": "The essence of diplomatic language is the art of precise ambiguity: saying enough to commit but not enough to be pinned down.", "vi": "Bản chất của ngôn ngữ ngoại giao là kỹ thuật của sự mơ hồ chính xác: nói đủ để ràng buộc nhưng không đủ để bị cố định."},
+      {"korean": "'유감을 표명한다'와 '비난한다' 사이에는 일반 독자에게는 보이지 않지만 외교관에게는 결정적인 차이가 존재한다.", "romanized": "'Yugam-eul pyomyeong-handa'-wa 'binan-handa' sai-eneun ilban dokja-egeneun boiji anchiman oegyogwan-egeneun gyeoljeongjeo-gin chai-ga jonjae-handa.", "en": "Between 'expressing regret' and 'condemning,' a decisive difference exists, invisible to the ordinary reader but clear to diplomats.", "vi": "Giữa 'bày tỏ lấy làm tiếc' và 'lên án', tồn tại một sự khác biệt quyết định, vô hình với độc giả thường nhưng rõ ràng với nhà ngoại giao."}
+    ],
+    "dialogue": [
+      {"speaker": "A", "hangul": "공동 성명에서 '비난'과 '유감' 중 어느 것을 선택해야 합니까?", "meaning": "In the joint statement, should we choose 'condemn' or 'express regret'?"},
+      {"speaker": "B", "hangul": "'유감'입니다. '비난'은 다음 회담의 문을 닫습니다. '유감'은 불일치를 표명하면서도 출구를 남깁니다.", "meaning": "'Express regret.' 'Condemn' closes the door to the next meeting. 'Regret' expresses disagreement while leaving an exit."}
+    ],
+    "exercises": [
+      {"type": "fill-blank", "question": "'건설적이고 솔직한 의견 교환이 이루어졌다'는 외교적 표현은 '___에 이르지 못했다'는 의미이다.", "answer": "합의"},
+      {"type": "matching", "pairs": [{"hangul": "비난", "meaning": "lên án"}, {"hangul": "유감", "meaning": "lấy làm tiếc"}, {"hangul": "전략적 모호성", "meaning": "tính mơ hồ chiến lược"}, {"hangul": "건설적 대화", "meaning": "đối thoại xây dựng"}], "instruction": "Nối thuật ngữ"}
+    ]
+  }
 ];
 
 export default lessons;

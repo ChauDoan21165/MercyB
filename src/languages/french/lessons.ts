@@ -185,4 +185,4 @@ export function getLessonById(id: number | string): FrenchLesson | undefined {
 // Total lesson count across every level. Kept manually in sync with the
 // per-level files; updated by scripts/install-lessons-registry.mjs at
 // generation time.
-export const FRENCH_TOTAL_LESSONS = 147;
+export const FRENCH_TOTAL_LESSONS = 151;

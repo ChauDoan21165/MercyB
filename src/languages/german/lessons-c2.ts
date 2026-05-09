@@ -3655,6 +3655,163 @@ export const lessons: GermanLesson[] = [
         {"prompt": "Erst im ___ zeigt sich, ob man den Anderen wirklich verstanden hat.", "answer": "Reformulieren"}
       ]}
     ]
+  },
+  {
+    "id": "lrhet_philosophie",
+    "level": "C2",
+    "category": "rhetoric_capstone",
+    "title_vi": "Tư duy triết học và lập luận trừu tượng — Philosophisches Denken",
+    "title_en": "Philosophical thinking and abstract reasoning",
+    "sentences": [
+      {"en": "Das philosophische Denken beginnt nicht mit Antworten, sondern mit der Kunst, eine Selbstverständlichkeit so lange zu befragen, bis sie ihre verborgene Voraussetzungsstruktur preisgibt.", "vi": "Tư duy triết học không bắt đầu bằng các câu trả lời, mà bằng nghệ thuật chất vấn một điều hiển nhiên cho đến khi nó tiết lộ cấu trúc tiền giả định ẩn giấu của mình.", "pronunciation_focus": ["Selbstverständlichkeit → ZELPST-fe-shten-tlikh-kait", "Voraussetzungsstruktur → FO-raos-zét-tsungs-shtruk-tua", "preisgibt → PRAIS-gipt"]},
+      {"en": "Kants transzendentale Methode fragt nicht: 'Ist X wahr?', sondern: 'Unter welchen Bedingungen ist X überhaupt möglich?' — diese Wendung der Fragestellung ist der entscheidende Schritt aus dem empirischen in das philosophische Register.", "vi": "Phương pháp siêu nghiệm của Kant không hỏi: 'X có đúng không?', mà: 'Dưới những điều kiện nào X mới khả thể?' — sự chuyển hướng câu hỏi này là bước quyết định từ bình diện kinh nghiệm sang bình diện triết học.", "pronunciation_focus": ["transzendental → trans-tsen-đen-TAL", "Bedingungen → bê-ĐING-ung-ần", "Wendung → VEN-đung", "empirisch → em-PI-rish"]},
+      {"en": "Ein philosophischer Essay von Rang zeichnet sich nicht durch die Kühnheit seiner Thesen aus, sondern durch die Redlichkeit, mit der er die Einwände gegen die eigene Position durchdenkt, bevor er sie entkräftet.", "vi": "Một tiểu luận triết học đẳng cấp không nổi bật bởi sự táo bạo của các luận đề, mà bởi sự chính trực mà nó suy nghĩ thấu đáo các phản bác chống lại lập trường của chính mình trước khi hóa giải chúng.", "pronunciation_focus": ["Kühnheit → KUYN-hait", "Redlichkeit → RÊT-likh-kait", "Einwände → AIN-ven-đê", "entkräftet → ent-KREF-têt"]},
+      {"en": "Die Unterscheidung zwischen Begriff und Anschauung, zwischen dem Allgemeinen und dem Besonderen, ist nicht das Ende des Denkens, sondern sein Anfang — wer sie nicht vollzieht, denkt nicht philosophisch, sondern assoziativ.", "vi": "Sự phân biệt giữa khái niệm và trực quan, giữa cái tổng quát và cái đặc thù, không phải là kết thúc của tư duy, mà là khởi đầu của nó — ai không thực hiện nó, không tư duy triết học, mà tư duy liên tưởng.", "pronunciation_focus": ["Unterscheidung → UN-tơ-shai-đung", "Anschauung → AN-shao-ung", "Allgemeinen → AL-gê-mai-nần", "assoziativ → a-so-tsi-a-TIF"]},
+      {"en": "Es wäre ein Fehlschluss, aus der Unmöglichkeit eines lückenlosen Beweises auf die Beliebigkeit aller Positionen zu schließen — zwischen Beweis und Beliebigkeit liegt das Feld des begründeten Arguments.", "vi": "Sẽ là một ngụy biện nếu từ tính bất khả của một chứng minh không kẽ hở mà suy ra tính tùy tiện của mọi lập trường — giữa chứng minh và tùy tiện là cánh đồng của lập luận có cơ sở.", "pronunciation_focus": ["Fehlschluss → FÊL-shlus", "lückenlos → LUY-kần-lôs", "Beliebigkeit → bê-LI-bikh-kait", "begründet → bê-GRUYN-đêt"]}
+    ],
+    "cultural_notes_vi": "TƯ DUY TRIẾT HỌC TRONG TRUYỀN THỐNG ĐỨC:\n\n(1) KANT (1724-1804): 'Kritik der reinen Vernunft' (1781/1787) — cuộc cách mạng Copernic trong triết học. Không hỏi 'nhận thức của ta phải tuân theo đối tượng như thế nào?' mà hỏi 'đối tượng phải tuân theo nhận thức của ta như thế nào?'. Phương pháp: transzendentale Deduktion.\n\n(2) HEGEL (1770-1831): 'Phänomenologie des Geistes' (1807) — tư duy không phải là sự phản ánh tĩnh tại mà là sự vận động biện chứng. These → Antithese → Synthese là công thức phổ thông hóa; thực tế phức tạp hơn.\n\n(3) WITTGENSTEIN (1889-1951): dù viết bằng tiếng Đức, ảnh hưởng toàn cầu. 'Tractatus' (1921): 'Wovon man nicht sprechen kann, darüber muss man schweigen.' 'Philosophische Untersuchungen' (1953): ý nghĩa là cách dùng (Sprachspiel).\n\n(4) ADORNO (1903-1969): 'Negative Dialektik' (1966) — chống lại mọi hệ thống triết học đóng kín. Tư duy phải tự phê phán.\n\n(5) ĐẶC THÙ ĐỨC: Triết học Đức nổi tiếng về độ khó ngôn ngữ. Kant và Hegel viết những câu dài đến mức người Đức bản xứ cũng phải đọc đi đọc lại. Nhưng 'khó' của triết học Đức không phải là sự tối tăm cố ý — đó là hệ quả của việc cố gắng diễn đạt chính xác những ý niệm phức tạp. Sinh viên C2 nên đọc nguyên bản, không đọc dịch.",
+    "tip_advice_vi": "PHƯƠNG PHÁP VIẾT ESSAY TRIẾT HỌC C2:\n\n1. BEGRIFFSANALYSE (Phân tích khái niệm): Định nghĩa mọi Begriff (khái niệm) trong đề bài. Phân biệt Alltagsbedeutung (nghĩa hàng ngày) và philosophische Bedeutung (nghĩa triết học).\n\n2. VORAUSSETZUNGEN FREILEGEN (Phơi bày tiền giả định): Mỗi câu hỏi triết học đều có tiền giả định ẩn. Nhiệm vụ đầu tiên là làm cho chúng hiển lộ.\n\n3. THESEN ENTWICKELN (Phát triển luận đề): không 'trả lời' câu hỏi, mà đề xuất một These và phát triển nó qua 2-3 bước lập luận.\n\n4. EINWÄNDE DURCHDENKEN (Suy nghĩ thấu đáo phản bác): Tự đưa ra phản bác mạnh nhất chống lại lập trường của mình, rồi trả lời.\n\n5. KONZEPTUELLE KLARHEIT (Sự rõ ràng khái niệm): Mỗi Begriff chỉ dùng với MỘT nghĩa trong toàn bài.\n\nCỤM HỮU ÍCH:\n- 'Es wäre zu fragen, ob...' (cần hỏi liệu...)\n- 'Unter der Voraussetzung, dass...' (dưới tiền giả định rằng...)\n- 'Dem ließe sich entgegenhalten, dass...' (có thể phản bác rằng...)\n- 'Die entscheidende Unterscheidung ist die zwischen...' (sự phân biệt quyết định là giữa...)\n\nTRÁNH:\n- 'Meiner Meinung nach...' → triết học không phải ý kiến cá nhân\n- 'Schon immer haben die Menschen...' → tổng quát hóa rỗng\n- Từ vựng mơ hồ: 'irgendwie', 'gewissermaßen', 'eigentlich' (khi không cần thiết)",
+    "vocabulary": [
+      {"word": "die Voraussetzung", "en": "presupposition / premise", "vi": "tiền giả định", "pos": "noun (f)", "pronunciation_vi": "đi FO-raos-zét-tsung"},
+      {"word": "transzendental", "en": "transcendental (Kant)", "vi": "siêu nghiệm (Kant)", "pos": "adj.", "pronunciation_vi": "trans-tsen-đen-TAL"},
+      {"word": "der Fehlschluss", "en": "fallacy / false conclusion", "vi": "ngụy biện / kết luận sai", "pos": "noun (m)", "pronunciation_vi": "đe FÊL-shlus"},
+      {"word": "die Redlichkeit", "en": "intellectual honesty", "vi": "sự chính trực trí tuệ", "pos": "noun (f)", "pronunciation_vi": "đi RÊT-likh-kait"},
+      {"word": "der Einwand", "en": "objection", "vi": "phản bác", "pos": "noun (m)", "pronunciation_vi": "đe AIN-vant"},
+      {"word": "entkräften", "en": "to refute / invalidate", "vi": "hóa giải / bác bỏ", "pos": "verb", "pronunciation_vi": "ent-KREF-tần"},
+      {"word": "begrifflich", "en": "conceptual", "vi": "thuộc về khái niệm", "pos": "adj.", "pronunciation_vi": "bê-GRIF-likh"},
+      {"word": "die Anschauung", "en": "intuition (Kant)", "vi": "trực quan (Kant)", "pos": "noun (f)", "pronunciation_vi": "đi AN-shao-ung"},
+      {"word": "die Beliebigkeit", "en": "arbitrariness", "vi": "tính tùy tiện", "pos": "noun (f)", "pronunciation_vi": "đi bê-LI-bikh-kait"},
+      {"word": "das Sprachspiel", "en": "language-game (Wittgenstein)", "vi": "trò chơi ngôn ngữ (Wittgenstein)", "pos": "noun (n)", "pronunciation_vi": "đas SHPRAKH-shpil"}
+    ],
+    "dialogue": [
+      {"speaker": "Doktorand", "text": "Was genau meint Kant mit 'transzendental'?", "vi": "Chính xác Kant có ý gì với 'siêu nghiệm'?"},
+      {"speaker": "Professor", "text": "Transzendental ist eine Erkenntnis, die sich nicht mit Gegenständen, sondern mit unserer Erkenntnisart von Gegenständen befasst, sofern diese a priori möglich sein soll. Nicht was wir erkennen, sondern wie wir erkennen — das ist die transzendentale Frage.", "vi": "Siêu nghiệm là một nhận thức không bàn về các đối tượng, mà bàn về cách thức nhận thức của ta về các đối tượng, trong chừng mực cách thức đó phải khả thể một cách tiên nghiệm. Không phải ta nhận thức cái gì, mà ta nhận thức như thế nào — đó là câu hỏi siêu nghiệm."}
+    ],
+    "exercises": [
+      {"type": "fill_blank", "instruction_vi": "Điền từ triết học C2:", "pronunciation_focus": [], "items": [
+        {"prompt": "Kants transzendentale Methode fragt: 'Unter welchen ___ ist X überhaupt möglich?'", "answer": "Bedingungen"},
+        {"prompt": "Zwischen Beweis und Beliebigkeit liegt das Feld des ___ Arguments.", "answer": "begründeten"},
+        {"prompt": "Ein philosophischer Essay zeichnet sich durch die ___ aus, mit der er Einwände durchdenkt.", "answer": "Redlichkeit"},
+        {"prompt": "Die Unterscheidung zwischen ___ und Anschauung ist der Anfang des philosophischen Denkens.", "answer": "Begriff"}
+      ]},
+      {"type": "matching", "instruction_vi": "Nối thuật ngữ triết học Đức:", "pronunciation_focus": [], "items": [
+        {"prompt": "transzendental", "answer": "Siêu nghiệm (Kant) — điều kiện khả thể của nhận thức"},
+        {"prompt": "Sprachspiel", "answer": "Trò chơi ngôn ngữ (Wittgenstein)"},
+        {"prompt": "Fehlschluss", "answer": "Ngụy biện / kết luận sai"},
+        {"prompt": "Voraussetzung", "answer": "Tiền giả định / premise"}
+      ]}
+    ]
+  },
+  {
+    "id": "lrhet_persuasion",
+    "level": "C2",
+    "category": "rhetoric_capstone",
+    "title_vi": "Lý thuyết thuyết phục — Persuasionstheorie und Rhetorik",
+    "title_en": "Persuasion theory and rhetoric",
+    "sentences": [
+      {"en": "Die antike Rhetorik — von Aristoteles bis Cicero — unterscheidet drei Wirkungsdimensionen: logos (das Argument), ethos (die Glaubwürdigkeit des Redners) und pathos (die emotionale Bewegung des Publikums). Diese Trias ist bis heute das Fundament jeder seriösen Persuasionstheorie.", "vi": "Tu từ học cổ đại — từ Aristotle đến Cicero — phân biệt ba chiều kích tác động: logos (lập luận), ethos (độ tin cậy của người nói) và pathos (sự lay động cảm xúc của công chúng). Bộ ba này đến nay vẫn là nền tảng của mọi lý thuyết thuyết phục nghiêm túc.", "pronunciation_focus": ["Aristoteles → a-ris-TO-tê-les", "Glaubwürdigkeit → GLAOP-vuy-dikh-kait", "Bewegung → bê-VÊ-gung", "Trias → TRI-as"]},
+      {"en": "Perelmans Neue Rhetorik bricht mit dem kartesischen Ideal der Evidenz: sie zeigt, dass die meisten menschlichen Entscheidungen nicht im Reich des Beweisbaren, sondern im Reich des Plausiblen getroffen werden — und dass dieses Reich seine eigene Rationalität besitzt.", "vi": "Tân Tu từ học của Perelman đoạn tuyệt với lý tưởng hiển nhiên kiểu Descartes: nó cho thấy hầu hết các quyết định của con người không được đưa ra trong vương quốc của cái có thể chứng minh, mà trong vương quốc của cái hợp lý — và vương quốc này có tính lý tính riêng của nó.", "pronunciation_focus": ["Perelman → PE-rêl-man", "kartesisch → kar-TÊ-zish", "Evidenz → ê-vi-ĐENZ", "Plausiblen → plao-ZI-blần"]},
+      {"en": "Der gezielte Verzicht auf ein schwaches Argument — die 'kalkulierte Konzession' — ist eine der wirkungsvollsten rhetorischen Figuren: sie signalisiert intellektuelle Redlichkeit und stärkt den ethos des Sprechers für die verbleibenden, stärkeren Argumente.", "vi": "Sự từ bỏ có chủ đích một lập luận yếu — 'sự nhượng bộ có tính toán' — là một trong những hình thái tu từ hiệu quả nhất: nó báo hiệu sự chính trực trí tuệ và củng cố ethos của người nói cho các lập luận còn lại, mạnh hơn.", "pronunciation_focus": ["Verzicht → fe-TSIKHT", "kalkuliert → kal-ku-LI-ơt", "Konzession → kon-tses-si-ÔN", "signalisiert → zi-gna-li-ZI-ơt"]},
+      {"en": "Die Rhetorik ist keine Waffe der Manipulation, sondern das unverzichtbare Handwerkszeug jeder demokratischen Öffentlichkeit — wer sie denen überlässt, die sie missbrauchen, gibt die Demokratie preis.", "vi": "Tu từ học không phải là vũ khí của thao túng, mà là công cụ không thể thiếu của mọi không gian công cộng dân chủ — ai để nó cho những kẻ lạm dụng nó, kẻ đó từ bỏ dân chủ.", "pronunciation_focus": ["unverzichtbar → un-fe-TSIKHT-ba", "Handwerkszeug → HANT-veks-tsoig", "missbrauchen → MIS-brao-khần", "preisgibt → PRAIS-gipt"]},
+      {"en": "Mithin wäre zu fragen, ob die in Deutschland verbreitete Rhetorik-Skepsis nicht selbst eine rhetorische Figur ist — die Figur des 'ehrlichen Mannes', der vorgibt, auf Rhetorik zu verzichten, und gerade dadurch ethos gewinnt.", "vi": "Do đó cần hỏi liệu sự hoài nghi tu từ học phổ biến ở Đức không chính là một hình thái tu từ — hình thái của 'người đàn ông trung thực', kẻ giả vờ từ bỏ tu từ học, và chính nhờ đó mà đạt được ethos.", "pronunciation_focus": ["Rhetorik-Skepsis → rê-TO-rik-SKEP-sis", "vorgibt → FO-gipt", "verzichtet → fe-TSIKH-têt"]}
+    ],
+    "cultural_notes_vi": "PERSUASIONSTHEORIE TRONG TRUYỀN THỐNG ĐỨC:\n\n(1) ARISTOTELES: 'Rhetorik' — ba phương tiện thuyết phục (pisteis): logos, ethos, pathos. Aristotle nhấn mạnh: ethos là phương tiện mạnh nhất, vì ta tin người ta kính trọng.\n\n(2) CICERO: 'De oratore' — nhà hùng biện lý tưởng phải kết hợp sapientia (tri thức) và eloquentia (tài hùng biện).\n\n(3) PERELMAN (1912-1984): 'Traité de l'argumentation' (1958, với Olbrechts-Tyteca). Dù viết bằng tiếng Pháp, được tiếp nhận mạnh mẽ trong ngành Rhetorik Đức. Khái niệm 'auditoire universel' (cử tọa phổ quát) là trung tâm.\n\n(4) HABERMAS: lý thuyết về 'herrschaftsfreier Diskurs' (diễn ngôn không bị thống trị) — điều kiện lý tưởng cho sự thuyết phục hợp lý: mọi người tham gia bình đẳng, chỉ có sức mạnh của lập luận mới quyết định.\n\n(5) RHETORIK-SKEPSIS Ở ĐỨC: Có một truyền thống hoài nghi tu từ học ở Đức, từ Kant ('Rhetorik ist die Kunst, die Schwäche der Menschen zu ihrem Vorteil zu nutzen') đến Habermas (phân biệt 'kommunikatives Handeln' với 'strategisches Handeln'). Nhưng sự hoài nghi này tự nó cũng là một vị thế tu từ.\n\n(6) ỨNG DỤNG: Luật (Plädoyer), chính trị (Bundestagsrede), kinh doanh (Pitch). Đặc thù Đức: ưa sự kiện và số liệu (logos), nghi ngờ cảm xúc (pathos), đánh giá cao sự thành thật (ethos).",
+    "tip_advice_vi": "GRILLE PHÂN TÍCH PERSUASION C2:\n\n1. LOGOS: Welche Argumente werden vorgebracht? Sind es Fakten, Statistiken, logische Schlüsse? Gibt es unausgesprochene Prämissen (Enthymeme)?\n\n2. ETHOS: Wie konstruiert der Redner seine Glaubwürdigkeit? Durch Kompetenzsignale, Bescheidenheitssignale, oder durch Angriffe auf die Glaubwürdigkeit des Gegners?\n\n3. PATHOS: Welche Emotionen werden angesprochen? Angst, Hoffnung, Empörung, Stolz? An welcher Stelle im Text?\n\n4. STRUKTUR: Exordium (Einleitung), Narratio (Sachverhalt), Argumentatio (Beweisführung), Peroratio (Schlussappell).\n\nCỤM HỮU ÍCH:\n- 'Die Rede appelliert hier vorwiegend an den logos, indem...'\n- 'Der ethos des Sprechers wird durch... aufgebaut.'\n- 'Der pathos-Appell in der Peroratio zielt darauf ab...'\n- 'Diese Konzession ist eine rhetorische Figur, die den ethos stärkt.'",
+    "vocabulary": [
+      {"word": "die Glaubwürdigkeit", "en": "credibility / ethos", "vi": "độ tin cậy / ethos", "pos": "noun (f)", "pronunciation_vi": "đi GLAOP-vuy-dikh-kait"},
+      {"word": "die Überzeugungskraft", "en": "persuasive power", "vi": "sức thuyết phục", "pos": "noun (f)", "pronunciation_vi": "đi uy-bơ-TSOI-gungs-kraft"},
+      {"word": "das Enthymem", "en": "enthymeme (rhetorical syllogism)", "vi": "enthymeme — tam đoạn luận tu từ", "pos": "noun (n)", "pronunciation_vi": "đas en-tuy-MÊM"},
+      {"word": "der Appell", "en": "appeal", "vi": "lời kêu gọi / appeal", "pos": "noun (m)", "pronunciation_vi": "đe a-PEL"},
+      {"word": "die Konzession", "en": "concession", "vi": "sự nhượng bộ", "pos": "noun (f)", "pronunciation_vi": "đi kon-tses-si-ÔN"},
+      {"word": "das Publikum", "en": "audience / public", "vi": "công chúng / cử tọa", "pos": "noun (n)", "pronunciation_vi": "đas PU-bli-kum"},
+      {"word": "das Plädoyer", "en": "pleading / closing argument", "vi": "bài biện hộ / lời bào chữa", "pos": "noun (n)", "pronunciation_vi": "đas ple-đoa-YÊ"},
+      {"word": "die Beweisführung", "en": "argumentation / proof", "vi": "sự dẫn chứng / lập luận", "pos": "noun (f)", "pronunciation_vi": "đi bê-VAIS-fuy-rung"}
+    ],
+    "dialogue": [
+      {"speaker": "Student", "text": "Ist Rhetorik nicht einfach Manipulation?", "vi": "Tu từ học không đơn giản là thao túng sao?"},
+      {"speaker": "Professor", "text": "Diese Frage ist selbst eine rhetorische Figur — sie appelliert an das Ethos des ehrlichen Skeptikers. Rhetorik ist ein Werkzeug; ob sie manipuliert oder aufklärt, hängt vom Verwender ab, nicht vom Werkzeug.", "vi": "Chính câu hỏi này là một hình thái tu từ — nó kêu gọi đến ethos của người hoài nghi trung thực. Tu từ học là một công cụ; nó thao túng hay khai sáng tùy thuộc vào người dùng, không phải vào công cụ."}
+    ],
+    "exercises": [
+      {"type": "fill_blank", "instruction_vi": "Điền từ Persuasionstheorie C2:", "pronunciation_focus": [], "items": [
+        {"prompt": "Die antike Rhetorik unterscheidet drei Wirkungsdimensionen: logos, ethos und ___.", "answer": "pathos"},
+        {"prompt": "Perelmans Neue Rhetorik zeigt, dass Entscheidungen im Reich des ___ getroffen werden.", "answer": "Plausiblen"},
+        {"prompt": "Die kalkulierte ___ stärkt den ethos des Sprechers.", "answer": "Konzession"},
+        {"prompt": "Rhetorik ist das unverzichtbare ___ jeder demokratischen Öffentlichkeit.", "answer": "Handwerkszeug"}
+      ]},
+      {"type": "matching", "instruction_vi": "Nối thuật ngữ:", "pronunciation_focus": [], "items": [
+        {"prompt": "logos", "answer": "Lập luận logic"},
+        {"prompt": "ethos", "answer": "Độ tin cậy của người nói"},
+        {"prompt": "pathos", "answer": "Sự lay động cảm xúc"},
+        {"prompt": "Enthymem", "answer": "Tam đoạn luận tu từ"}
+      ]}
+    ]
+  },
+  {
+    "id": "larts_medienkritik",
+    "level": "C2",
+    "category": "arts_criticism",
+    "title_vi": "Phê bình truyền thông — Medienkritik und journalistische Sprache",
+    "title_en": "Media criticism and journalistic language analysis",
+    "sentences": [
+      {"en": "Die Medienkritik fragt nicht: 'Ist diese Nachricht wahr oder falsch?', sondern: 'Welche redaktionellen Entscheidungen — in der Themenauswahl, der Quellenwahl, der sprachlichen Gestaltung — haben diese Nachricht in genau diese Form gebracht?'", "vi": "Phê bình truyền thông không hỏi: 'Tin này đúng hay sai?', mà hỏi: 'Những quyết định biên tập nào — trong việc chọn chủ đề, chọn nguồn, tạo hình ngôn ngữ — đã đưa tin này vào chính xác hình thức này?'", "pronunciation_focus": ["Medienkritik → MÊ-đi-ên-kri-tik", "redaktionell → rê-dak-tsi-o-NEL", "Themenauswahl → TÊ-mần-aos-val"]},
+      {"en": "Die Wahl des Berichtsverbs — 'behaupten', 'einräumen', 'zugeben' — ist niemals neutral: sie codiert den Grad der Zustimmung, den der Journalist dem Berichteten entgegenbringt.", "vi": "Việc chọn động từ tường thuật — 'khẳng định', 'thừa nhận', 'công nhận' — không bao giờ trung tính: nó mã hóa mức độ tán thành mà nhà báo dành cho điều được tường thuật.", "pronunciation_focus": ["Berichtsverb → bê-RIKHTS-feb", "behaupten → bê-HAOP-tần", "einräumen → AIN-roi-mần"]},
+      {"en": "Die Unterscheidung zwischen Nachricht und Kommentar — das Fundament des seriösen Journalismus — ist in der deutschen Pressetradition durch den 'Trennungsgrundsatz' institutionell verankert, doch die Praxis weicht oft von der Norm ab.", "vi": "Sự phân biệt giữa tin tức và bình luận — nền tảng của báo chí nghiêm túc — trong truyền thống báo chí Đức được neo về mặt thể chế qua 'nguyên tắc tách biệt', nhưng thực tiễn thường lệch khỏi chuẩn mực.", "pronunciation_focus": ["Trennungsgrundsatz → TREN-nungs-grunt-zats", "institutionell → in-sti-tu-tsi-o-NEL", "verankert → fe-AN-kơt"]},
+      {"en": "Die Öffentlich-Rechtlichen — ARD, ZDF, Deutschlandradio — unterliegen einem Programmauftrag zur Ausgewogenheit, der sie von privaten Anbietern unterscheidet; doch auch sie treffen täglich redaktionelle Entscheidungen, die das Bild der Welt formen, das sie vermitteln.", "vi": "Các đài công — ARD, ZDF, Deutschlandradio — chịu sự ủy nhiệm chương trình về tính cân bằng, phân biệt chúng với các nhà cung cấp tư nhân; nhưng cả chúng cũng hàng ngày đưa ra các quyết định biên tập định hình bức tranh thế giới mà chúng truyền tải.", "pronunciation_focus": ["Öffentlich-Rechtlichen → Ơ-fần-likh-REKHT-li-khần", "Ausgewogenheit → AOS-gê-vô-gần-hait"]}
+    ],
+    "cultural_notes_vi": "MEDIENKRITIK TRONG TRUYỀN THỐNG ĐỨC: (1) TRENNUNGSGRUNDSATZ: nguyên tắc tách biệt giữa Nachricht (tin) và Kommentar (bình luận) — cột trụ của báo chí Đức. (2) PRESSEKODEX: bộ quy tắc báo chí Đức do Presserat ban hành. (3) ÖFFENTLICH-RECHTLICHE: ARD, ZDF — được tài trợ bởi phí truyền hình bắt buộc (Rundfunkbeitrag). Nhiệm vụ: Grundversorgung (cung cấp cơ bản) thông tin cân bằng. (4) FAZ, SZ, ZEIT, taz, BILD — từ báo chất lượng đến báo lá cải. Medienlandschaft Đức đa dạng.",
+    "tip_advice_vi": "ANALYSE MEDIEN C2: (1) Trennungsgrundsatz: Nachricht oder Kommentar? (2) Berichtsverben: 'behaupten' vs 'mitteilen' vs 'einräumen'. (3) Quellen: genannt oder anonym? (4) Themenauswahl: Was wird berichtet, was nicht?",
+    "vocabulary": [
+      {"word": "der Trennungsgrundsatz", "en": "separation principle (news vs opinion)", "vi": "nguyên tắc tách biệt", "pos": "noun (m)", "pronunciation_vi": "đe TREN-nungs-grunt-zats"},
+      {"word": "die Ausgewogenheit", "en": "balance / impartiality", "vi": "tính cân bằng", "pos": "noun (f)", "pronunciation_vi": "đi AOS-gê-vô-gần-hait"},
+      {"word": "das Berichtsverb", "en": "reporting verb", "vi": "động từ tường thuật", "pos": "noun (n)", "pronunciation_vi": "đas bê-RIKHTS-feb"},
+      {"word": "die Themenauswahl", "en": "topic selection / agenda-setting", "vi": "sự chọn chủ đề", "pos": "noun (f)", "pronunciation_vi": "đi TÊ-mần-aos-val"},
+      {"word": "der Programmauftrag", "en": "public-service broadcasting mandate", "vi": "sự ủy nhiệm chương trình", "pos": "noun (m)", "pronunciation_vi": "đe pro-GRAM-aof-trag"},
+      {"word": "die Nachricht", "en": "news item", "vi": "tin tức", "pos": "noun (f)", "pronunciation_vi": "đi NAKH-rikht"},
+      {"word": "der Kommentar", "en": "opinion piece / commentary", "vi": "bình luận", "pos": "noun (m)", "pronunciation_vi": "đe ko-men-TA"},
+      {"word": "der Presserat", "en": "German Press Council", "vi": "Hội đồng Báo chí Đức", "pos": "noun (m)", "pronunciation_vi": "đe PRE-sê-rat"}
+    ],
+    "dialogue": [
+      {"speaker": "Student", "text": "Woran erkenne ich, ob ein Artikel Nachricht oder Kommentar ist?", "vi": "Làm sao tôi nhận ra một bài báo là tin tức hay bình luận?"},
+      {"speaker": "Dozent", "text": "An den Berichtsverben und Adjektiven. 'Der Minister teilte mit' = Nachricht. 'Der Minister behauptete' = Kommentar, denn 'behaupten' impliziert Zweifel.", "vi": "Qua động từ tường thuật và tính từ. 'Bộ trưởng thông báo' = tin tức. 'Bộ trưởng khẳng định' (với sắc thái nghi ngờ) = bình luận, vì nó hàm ý hoài nghi."}
+    ],
+    "exercises": [
+      {"type": "fill_blank", "instruction_vi": "Điền từ:", "pronunciation_focus": [], "items": [
+        {"prompt": "Der ___ verlangt die Trennung von Nachricht und Kommentar.", "answer": "Trennungsgrundsatz"},
+        {"prompt": "Die Wahl des ___ codiert den Grad der Zustimmung des Journalisten.", "answer": "Berichtsverbs"},
+        {"prompt": "ARD und ZDF unterliegen einem ___ zur Ausgewogenheit.", "answer": "Programmauftrag"}
+      ]}
+    ]
+  },
+  {
+    "id": "lcivic_diplomatie",
+    "level": "C2",
+    "category": "civic_discourse",
+    "title_vi": "Ngôn ngữ ngoại giao — Diplomatische Sprache",
+    "title_en": "Diplomatic language and international discourse",
+    "sentences": [
+      {"en": "Die diplomatische Sprache ist eine Technologie der präzisen Unschärfe — sie sagt genug, um zu verpflichten, aber nicht genug, um festgelegt zu werden.", "vi": "Ngôn ngữ ngoại giao là một công nghệ của sự không rõ ràng chính xác — nó nói đủ để ràng buộc, nhưng không đủ để bị cố định.", "pronunciation_focus": ["diplomatisch → di-plo-MA-tish", "Unschärfe → UN-she-fê", "verpflichten → fe-PFLIKH-tần"]},
+      {"en": "Der Unterschied zwischen 'verurteilen' und 'bedauern', zwischen 'fordern' und 'anregen', macht die gesamte Diplomatie aus — diese verbalen Nuancen sind die Grammatik der internationalen Beziehungen.", "vi": "Sự khác biệt giữa 'lên án' và 'lấy làm tiếc', giữa 'yêu cầu' và 'khuyến khích', làm nên toàn bộ ngoại giao — những sắc thái động từ này là ngữ pháp của quan hệ quốc tế.", "pronunciation_focus": ["verurteilen → fe-U-tai-lần", "bedauern → bê-DAO-ần", "fordern → FO-đần"]},
+      {"en": "Die Formulierung 'konstruktiver und offener Meinungsaustausch' bedeutet im diplomatischen Code, dass keine Einigung erzielt wurde — aber beide Seiten das Gespräch fortsetzen wollen.", "vi": "Công thức 'trao đổi ý kiến xây dựng và cởi mở' trong mật mã ngoại giao có nghĩa là không đạt được nhất trí nào — nhưng cả hai bên muốn tiếp tục đối thoại.", "pronunciation_focus": ["Meinungsaustausch → MAI-nungs-aos-taush", "Einigung → AI-ni-gung"]}
+    ],
+    "cultural_notes_vi": "DIPLOMATISCHE SPRACHE: (1) Diplomatische Skala: verurteilen > bedauern > mit Sorge betrachten > zur Kenntnis nehmen > keinen Kommentar abgeben. (2) Formeln: 'konstruktiver Meinungsaustausch' = Dissens. 'Die Gespräche werden fortgesetzt' = keine Einigung. (3) Deutschland als Vermittler: deutsche Diplomatie betont 'leise Töne' und Vermittlerrolle.",
+    "vocabulary": [
+      {"word": "verurteilen", "en": "to condemn", "vi": "lên án", "pos": "verb", "pronunciation_vi": "fe-U-tai-lần"},
+      {"word": "bedauern", "en": "to deplore / regret", "vi": "lấy làm tiếc", "pos": "verb", "pronunciation_vi": "bê-DAO-ần"},
+      {"word": "der Meinungsaustausch", "en": "exchange of views", "vi": "trao đổi ý kiến", "pos": "noun (m)", "pronunciation_vi": "đe MAI-nungs-aos-taush"},
+      {"word": "die Vermittlerrolle", "en": "mediator role", "vi": "vai trò trung gian hòa giải", "pos": "noun (f)", "pronunciation_vi": "đi fe-MIT-lơ-ro-lê"},
+      {"word": "zur Kenntnis nehmen", "en": "to take note of", "vi": "ghi nhận", "pos": "phrase", "pronunciation_vi": "tsu KENT-nis nê-mần"}
+    ],
+    "dialogue": [
+      {"speaker": "Diplomat", "text": "Sollen wir 'verurteilen' oder 'bedauern' schreiben?", "vi": "Ta nên viết 'lên án' hay 'lấy làm tiếc'?"},
+      {"speaker": "Linh", "text": "'Bedauern'. 'Verurteilen' würde die Tür für das nächste Treffen verschließen. 'Bedauern' drückt den Dissens aus und lässt einen Ausweg offen.", "vi": "'Lấy làm tiếc'. 'Lên án' sẽ đóng cửa cuộc gặp tới. 'Lấy làm tiếc' biểu đạt bất đồng và để ngỏ lối ra."}
+    ],
+    "exercises": [
+      {"type": "fill_blank", "instruction_vi": "Điền từ:", "pronunciation_focus": [], "items": [
+        {"prompt": "'Konstruktiver ___' bedeutet im diplomatischen Code: keine Einigung.", "answer": "Meinungsaustausch"},
+        {"prompt": "Der Unterschied zwischen 'verurteilen' und '___' macht die gesamte Diplomatie aus.", "answer": "bedauern"}
+      ]}
+    ],
+  "tip_advice_vi": "SKALA DIPLOMATISCHER VERBEN (stark → schwach): verurteilen > bedauern > Kenntnis nehmen > nicht kommentieren. ‚Konstruktiver Meinungsaustausch‘ = Dissens. ‚Fortsetzung des Dialogs vereinbart‘ = kein Ergebnis. IMMER: Kommuniqués doppelt lesen — eine öffentliche und eine Fachlesart.",
   }
 ];
 

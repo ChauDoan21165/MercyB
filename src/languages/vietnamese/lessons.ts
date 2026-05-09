@@ -45,7 +45,7 @@ const _importers: Record<
 > = {
   A1: () => import("./lessons-a1"),
   "A1+": () => import("./lessons-a1"),   // A1+ not yet split; reuses A1
-  A2: () => import("./lessons-a1"),       // A2 not yet split; reuses A1
+  A2: () => import("./lessons-a2"),
   B1: () => import("./lessons-b1"),
   B2: () => import("./lessons-b2"),
 };
@@ -61,7 +61,7 @@ export async function loadVietnameseLessonsForLevel(
 }
 
 export async function loadAllVietnameseLessons(): Promise<VietnameseLesson[]> {
-  const levels: VietnameseCefrLevel[] = ["A1", "B1", "B2"];
+  const levels: VietnameseCefrLevel[] = ["A1", "A2", "B1", "B2"];
   const arrays = await Promise.all(levels.map(loadVietnameseLessonsForLevel));
   return arrays.flat();
 }
@@ -115,4 +115,4 @@ const _origLoadLevel = loadVietnameseLessonsForLevel;
 };
 
 /** Total lesson count across every level. Keep in sync with per-level files. */
-export const VIETNAMESE_TOTAL_LESSONS = 386;
+export const VIETNAMESE_TOTAL_LESSONS = 436;

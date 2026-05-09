@@ -3494,6 +3494,65 @@ export const lessons: ChineseLesson[] = [
       {"type": "matching", "pairs": [{"chinese": "答辩", "pinyin": "dá biàn", "english": "defense"}, {"chinese": "质疑", "pinyin": "zhì yí", "english": "to question"}, {"chinese": "致谢", "pinyin": "zhì xiè", "english": "express thanks"}, {"chinese": "陈述", "pinyin": "chén shù", "english": "presentation"}], "instruction": "Nối thuật ngữ đáp biện"}
     ]
   }
+  ,
+  {
+    "id": 120, "level": "C2", "category": "arts_criticism",
+    "title": "媒体批评与新闻话语分析", "pinyin": "méi tǐ pī píng yǔ xīn wén huà yǔ fēn xī",
+    "topic": "Media criticism and journalistic discourse analysis",
+    "title_vi": "Phê bình truyền thông và phân tích diễn ngôn báo chí", "title_en": "Media criticism and journalistic discourse analysis",
+    "vocab": [
+      {"chinese": "框架分析", "pinyin": "kuàng jià fēn xī", "english": "framing analysis", "vi": "phân tích khung / framing"},
+      {"chinese": "标题", "pinyin": "biāo tí", "english": "headline", "vi": "tít báo"},
+      {"chinese": "引语动词", "pinyin": "yǐn yǔ dòng cí", "english": "reporting verb", "vi": "động từ dẫn lời"},
+      {"chinese": "匿名信源", "pinyin": "nì míng xìn yuán", "english": "anonymous source", "vi": "nguồn ẩn danh"},
+      {"chinese": "社论", "pinyin": "shè lùn", "english": "editorial", "vi": "xã luận"},
+      {"chinese": "客观性", "pinyin": "kè guān xìng", "english": "objectivity", "vi": "tính khách quan"},
+      {"chinese": "议程设置", "pinyin": "yì chéng shè zhì", "english": "agenda-setting", "vi": "thiết lập chương trình nghị sự"},
+      {"chinese": "舆论导向", "pinyin": "yú lùn dǎo xiàng", "english": "public opinion guidance", "vi": "định hướng dư luận"}
+    ],
+    "sentences": [
+      {"chinese": "优秀之媒体批评, 不呼'此报道有偏向', 而具体指出: 何种标题选择了何种信源, 以何种动词加以引用。", "pinyin": "Yōuxiù zhī méitǐ pīpíng, bù hū 'cǐ bàodào yǒu piānxiàng', ér jùtǐ zhǐchū: hé zhǒng biāotí xuǎnzéle hé zhǒng xìnyuán, yǐ hé zhǒng dòngcí jiā yǐ yǐnyòng.", "english": "Good media criticism does not shout 'this report is biased' but concretely points out: which headline chose which source, and with which verb it quoted.", "vi": "Phê bình truyền thông xuất sắc không hô 'bài này thiên vị', mà chỉ ra cụ thể: tít nào chọn nguồn nào, dùng động từ nào để dẫn."},
+      {"chinese": "同一记者会, 标题为'总理强调改革'抑或'总理回避具体承诺', 读者之解读截然不同 — 此即框架之力量也。", "pinyin": "Tóng yī jìzhěhuì, biāotí wéi 'zǒnglǐ qiángdiào gǎigé' yìhuò 'zǒnglǐ huíbì jùtǐ chéngnuò', dúzhě zhī jiědú jiérán bùtóng — cǐ jí kuàngjià zhī lìliàng yě.", "english": "From the same press conference, whether the headline is 'PM emphasizes reform' or 'PM avoids specific commitments' — the reader's interpretation differs utterly. This is the power of framing.", "vi": "Cùng một cuộc họp báo, tít là 'Thủ tướng nhấn mạnh cải cách' hay 'Thủ tướng tránh cam kết cụ thể', diễn giải của độc giả khác hẳn — đó chính là sức mạnh của framing."},
+      {"chinese": "引语动词之选择 — '指出'、'声称'、'承认'、'辩称' — 从来不是中立的: 每一动词皆暗含报道者对所言之事的态度。", "pinyin": "Yǐnyǔ dòngcí zhī xuǎnzé — 'zhǐchū', 'shēngchēng', 'chéngrèn', 'biànchēng' — cónglái bùshì zhōnglì de: měi yī dòngcí jiē ànhán bàodàozhě duì suǒ yán zhī shì de tàidù.", "english": "The choice of reporting verb — 'point out,' 'claim,' 'admit,' 'argue' — is never neutral: each verb implicitly contains the reporter's attitude toward what is said.", "vi": "Việc chọn động từ dẫn lời — 'chỉ ra', 'tuyên bố', 'thừa nhận', 'biện xưng' — không bao giờ trung lập: mỗi động từ đều ngầm chứa thái độ của người tường thuật đối với điều được nói."}
+    ],
+    "dialogue": [
+      {"speaker": "研究生", "chinese": "如何辨别一篇文章是'报道'还是'评论'?", "pinyin": "Rúhé biànbié yī piān wénzhāng shì 'bàodào' háishì 'pínglùn'?", "english": "How to distinguish whether an article is 'reporting' or 'commentary'?", "vi": "Làm sao phân biệt một bài là 'tường thuật' hay 'bình luận'?"},
+      {"speaker": "教授", "chinese": "看动词和形容词。'表示'、'宣布'、'据'是报道。'声称'、'不过'、'令人遗憾'是评论。动词的选择就是立场的选择。", "pinyin": "Kàn dòngcí hé xíngróngcí. 'Biǎoshì', 'xuānbù', 'jù' shì bàodào. 'Shēngchēng', 'bùguò', 'lìngrén yíhàn' shì pínglùn. Dòngcí de xuǎnzé jiùshì lìchǎng de xuǎnzé.", "english": "Look at verbs and adjectives. 'Indicated,' 'announced,' 'according to' are reporting. 'Claimed,' 'merely,' 'regrettably' are commentary. The choice of verb is the choice of stance.", "vi": "Nhìn động từ và tính từ. 'Cho biết', 'tuyên bố', 'theo' là tường thuật. 'Tự nhận', 'chỉ là', 'đáng tiếc' là bình luận. Chọn động từ chính là chọn lập trường."}
+    ],
+    "exercises": [
+      {"type": "fill-blank", "question": "引语动词之选择 — '指出'、'___'、'承认'、'辩称' — 从来不是中立的。", "answer": "声称"},
+      {"type": "matching", "pairs": [{"chinese": "框架", "pinyin": "kuàng jià", "english": "framing"}, {"chinese": "社论", "pinyin": "shè lùn", "english": "editorial"}, {"chinese": "匿名信源", "pinyin": "nì míng xìn yuán", "english": "anonymous source"}, {"chinese": "议程设置", "pinyin": "yì chéng shè zhì", "english": "agenda-setting"}], "instruction": "Nối thuật ngữ"}
+    ]
+  },
+  {
+    "id": 121, "level": "C2", "category": "civic_discourse",
+    "title": "外交语言与国际话语", "pinyin": "wài jiāo yǔ yán yǔ guó jì huà yǔ",
+    "topic": "Diplomatic language and international discourse",
+    "title_vi": "Ngôn ngữ ngoại giao và diễn ngôn quốc tế", "title_en": "Diplomatic language and international discourse",
+    "vocab": [
+      {"chinese": "外交辞令", "pinyin": "wài jiāo cí lìng", "english": "diplomatic language / parlance", "vi": "ngoại giao từ lệnh"},
+      {"chinese": "联合公报", "pinyin": "lián hé gōng bào", "english": "joint communiqué", "vi": "thông cáo chung"},
+      {"chinese": "谴责", "pinyin": "qiǎn zé", "english": "to condemn", "vi": "khiển trách / lên án"},
+      {"chinese": "表示遗憾", "pinyin": "biǎo shì yí hàn", "english": "to express regret", "vi": "biểu thị lấy làm tiếc"},
+      {"chinese": "战略模糊", "pinyin": "zhàn lüè mó hú", "english": "strategic ambiguity", "vi": "mơ hồ chiến lược"},
+      {"chinese": "建设性对话", "pinyin": "jiàn shè xìng duì huà", "english": "constructive dialogue", "vi": "đối thoại xây dựng"},
+      {"chinese": "多边协商", "pinyin": "duō biān xié shāng", "english": "multilateral consultation", "vi": "hiệp thương đa phương"},
+      {"chinese": "关切", "pinyin": "guān qiè", "english": "concern (diplomatic)", "vi": "quan thiết / quan ngại"}
+    ],
+    "sentences": [
+      {"chinese": "外交语言之本质, 乃精确模糊之艺术: 所言足以示姿态, 而不至于受约束。", "pinyin": "Wàijiāo yǔyán zhī běnzhì, nǎi jīngquè móhú zhī yìshù: suǒ yán zúyǐ shì zītài, ér bù zhìyú shòu yuēshù.", "english": "The essence of diplomatic language is the art of precise ambiguity: what is said is sufficient to signal a stance but not enough to be bound by it.", "vi": "Bản chất của ngôn ngữ ngoại giao là nghệ thuật của sự mơ hồ chính xác: điều được nói đủ để biểu thị tư thái, nhưng không đến mức bị ràng buộc."},
+      {"chinese": "'表示遗憾'与'予以谴责'之间, 有一般读者所不见、而外交官所必察之巨大鸿沟。", "pinyin": "'Biǎoshì yíhàn' yǔ 'yǔyǐ qiǎnzé' zhījiān, yǒu yībān dúzhě suǒ bùjiàn, ér wàijiāoguān suǒ bì chá zhī jùdà hónggōu.", "english": "Between 'expressing regret' and 'condemning,' there is an enormous gulf invisible to the ordinary reader but necessarily perceived by diplomats.", "vi": "Giữa 'biểu thị lấy làm tiếc' và 'lên án', có một hố sâu khổng lồ mà độc giả thường không thấy nhưng nhà ngoại giao ắt phải nhận ra."},
+      {"chinese": "联合公报中若出现'进行了建设性而坦率的意见交换', 在外交密码中即意味着: 未达成任何协议, 但双方均愿保持对话。", "pinyin": "Liánhé gōngbào zhōng ruò chūxiàn 'jìnxíngle jiànshèxìng ér tǎnshuài de yìjiàn jiāohuàn', zài wàijiāo mìmǎ zhōng jí yìwèizhe: wèi dáchéng rènhé xiéyì, dàn shuāngfāng jūn yuàn bǎochí duìhuà.", "english": "If 'a constructive and frank exchange of views took place' appears in a joint communiqué, in diplomatic code this means: no agreement was reached, but both sides wish to maintain dialogue.", "vi": "Nếu trong thông cáo chung xuất hiện 'đã tiến hành trao đổi ý kiến xây dựng và thẳng thắn', trong mật mã ngoại giao điều đó có nghĩa: không đạt được thỏa thuận nào, nhưng hai bên đều muốn duy trì đối thoại."}
+    ],
+    "dialogue": [
+      {"speaker": "外交官", "chinese": "联合公报中, 用'谴责'还是'表示遗憾'?", "pinyin": "Liánhé gōngbào zhōng, yòng 'qiǎnzé' háishì 'biǎoshì yíhàn'?", "english": "In the joint communiqué, use 'condemn' or 'express regret'?", "vi": "Trong thông cáo chung, dùng 'lên án' hay 'biểu thị lấy làm tiếc'?"},
+      {"speaker": "Linh", "chinese": "'表示遗憾'。'谴责'会关闭下次会谈之门。'表示遗憾'在表达分歧的同时, 留下了出口。", "pinyin": "'Biǎoshì yíhàn'. 'Qiǎnzé' huì guānbì xià cì huìtán zhī mén. 'Biǎoshì yíhàn' zài biǎodá fēnqí de tóngshí, liúxiàle chūkǒu.", "english": "'Express regret.' 'Condemn' would close the door to the next meeting. 'Express regret' expresses disagreement while leaving an exit.", "vi": "'Biểu thị lấy làm tiếc'. 'Lên án' sẽ đóng cửa cuộc họp tiếp theo. 'Biểu thị lấy làm tiếc' biểu đạt bất đồng trong khi vẫn để lại lối ra."}
+    ],
+    "exercises": [
+      {"type": "fill-blank", "question": "'表示遗憾'与'予以___'之间, 有一般读者所不见之外交鸿沟。", "answer": "谴责"},
+      {"type": "matching", "pairs": [{"chinese": "谴责", "pinyin": "qiǎn zé", "english": "condemn"}, {"chinese": "表示遗憾", "pinyin": "biǎo shì yí hàn", "english": "express regret"}, {"chinese": "战略模糊", "pinyin": "zhàn lüè mó hú", "english": "strategic ambiguity"}, {"chinese": "建设性对话", "pinyin": "jiàn shè xìng duì huà", "english": "constructive dialogue"}], "instruction": "Nối thuật ngữ"}
+    ]
+  }
 ];
 
 export default lessons;
