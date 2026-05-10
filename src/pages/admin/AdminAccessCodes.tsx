@@ -35,7 +35,6 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 
 interface AccessCode {
   id: string;
-  app_id?: string | null;
   code: string;
   tier_id: string;
   days: number;
@@ -47,24 +46,11 @@ interface AccessCode {
   created_at: string;
 }
 
-interface SubscriptionTier {
-  id: string;
-  name: string;
-  app_id?: string | null;
-  display_order?: number | null;
-}
-
-const DEFAULT_APP_ID = "mercy_blade";
-
 export default function AdminAccessCodes() {
   const [codes, setCodes] = useState<AccessCode[]>([]);
-  const [tiers, setTiers] = useState<SubscriptionTier[]>([]);
   const [loading, setLoading] = useState(true);
 
   const [searchQuery, setSearchQuery] = useState("");
-
-  // Ecosystem-ready (later you can make this a dropdown)
-  const [appId] = useState<string>(DEFAULT_APP_ID);
 
   const [createDialogOpen, setCreateDialogOpen] = useState(false);
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
@@ -75,7 +61,6 @@ export default function AdminAccessCodes() {
 
   // Form state
   const [newCode, setNewCode] = useState({
-    tierId: "",
     days: 30,
     maxUses: 1,
     notes: "",
@@ -97,10 +82,12 @@ export default function AdminAccessCodes() {
     }
   }
 
+  // Default tier ID — fetched silently. All codes use the first active tier.
+  const [defaultTierId, setDefaultTierId] = useState<string>("");
+
   useEffect(() => {
     fetchAll();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [appId]);
+  }, []);
 
   async function fetchAll() {
     await Promise.all([fetchTiers(), fetchCodes()]);
@@ -109,12 +96,9 @@ export default function AdminAccessCodes() {
   async function fetchCodes() {
     setLoading(true);
     try {
-      // NOTE: if your table doesn't have app_id yet, remove `.eq("app_id", appId)`
-      // and we can add it in schema later.
       const { data, error } = await supabase
         .from("access_codes")
         .select("*")
-        .eq("app_id", appId)
         .order("created_at", { ascending: false });
 
       if (error) throw error;
@@ -130,19 +114,21 @@ export default function AdminAccessCodes() {
 
   async function fetchTiers() {
     try {
-      // NOTE: if subscription_tiers is global (no app_id), remove the eq().
+      // Silently resolve the default tier for access code creation.
+      // Tier selection is no longer user-facing — all codes use the first active tier.
       const { data, error } = await supabase
         .from("subscription_tiers")
-        .select("id, name, app_id, display_order")
-        .eq("app_id", appId)
-        .order("display_order", { ascending: true });
+        .select("id")
+        .eq("is_active", true)
+        .order("display_order", { ascending: true })
+        .limit(1)
+        .maybeSingle();
 
       if (error) throw error;
-      setTiers((data ?? []) as SubscriptionTier[]);
+      setDefaultTierId((data as any)?.id ?? "");
     } catch (error: any) {
-      console.error("Error fetching tiers:", error);
-      // Don't toast here; tiers can be empty while you’re building schema.
-      setTiers([]);
+      console.error("Error fetching default tier:", error);
+      setDefaultTierId("");
     }
   }
 
@@ -157,8 +143,8 @@ export default function AdminAccessCodes() {
   }
 
   async function createCode() {
-    if (!newCode.tierId) {
-      toast.error("Please select a tier");
+    if (!defaultTierId) {
+      toast.error("No active subscription tier found. Contact admin.");
       return;
     }
 
@@ -172,9 +158,8 @@ export default function AdminAccessCodes() {
 
       const days = Number.isFinite(newCode.days) ? newCode.days : 30;
       const payload: any = {
-        app_id: appId,
         code,
-        tier_id: newCode.tierId,
+        tier_id: defaultTierId,
         days,
         max_uses: Number.isFinite(newCode.maxUses) ? newCode.maxUses : 1,
         notes: newCode.notes?.trim() ? newCode.notes.trim() : null,
@@ -196,7 +181,7 @@ export default function AdminAccessCodes() {
       }
 
       setCreateDialogOpen(false);
-      setNewCode({ tierId: "", days: 30, maxUses: 1, notes: "" });
+      setNewCode({ days: 30, maxUses: 1, notes: "" });
       await fetchCodes();
     } catch (error: any) {
       console.error("Error creating code:", error);
@@ -261,15 +246,10 @@ export default function AdminAccessCodes() {
 
     return codes.filter((c) => {
       const hay =
-        `${c.code} ${c.notes || ""} ${c.tier_id || ""} ${c.app_id || ""}`.toLowerCase();
+        `${c.code} ${c.notes || ""} ${c.tier_id || ""}`.toLowerCase();
       return hay.includes(q);
     });
   }, [codes, searchQuery]);
-
-  const getTierName = (tierId: string) => {
-    const tier = tiers.find((t) => t.id === tierId);
-    return tier?.name ?? tierId.slice(0, 8);
-  };
 
   return (
     <div className="space-y-6">
@@ -278,8 +258,7 @@ export default function AdminAccessCodes() {
         <div>
           <h1 className="text-3xl font-bold text-foreground">Access Codes</h1>
           <p className="text-muted-foreground">
-            Generate and manage subscription access codes{" "}
-            <span className="font-mono text-xs opacity-70">({appId})</span>
+            Generate and manage subscription access codes
           </p>
         </div>
 
@@ -306,30 +285,6 @@ export default function AdminAccessCodes() {
               </DialogHeader>
 
               <div className="space-y-4 py-4">
-                <div className="space-y-2">
-                  <Label className="text-foreground">Subscription Tier</Label>
-                  <Select
-                    value={newCode.tierId}
-                    onValueChange={(value) => setNewCode({ ...newCode, tierId: value })}
-                  >
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select a tier" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {tiers.map((tier) => (
-                        <SelectItem key={tier.id} value={tier.id}>
-                          {tier.name}
-                        </SelectItem>
-                      ))}
-                      {!tiers.length && (
-                        <SelectItem value="__no_tiers__" disabled>
-                          No tiers found (check subscription_tiers table)
-                        </SelectItem>
-                      )}
-                    </SelectContent>
-                  </Select>
-                </div>
-
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <Label className="text-foreground">Duration</Label>
@@ -380,7 +335,7 @@ export default function AdminAccessCodes() {
                 <Button variant="outline" onClick={() => setCreateDialogOpen(false)}>
                   Cancel
                 </Button>
-                <Button onClick={createCode} disabled={creating || !newCode.tierId}>
+                <Button onClick={createCode} disabled={creating}>
                   {creating ? "Creating..." : "Create Code"}
                 </Button>
               </DialogFooter>
@@ -422,7 +377,6 @@ export default function AdminAccessCodes() {
               <TableHeader>
                 <TableRow>
                   <TableHead>Code</TableHead>
-                  <TableHead>Tier</TableHead>
                   <TableHead>Duration</TableHead>
                   <TableHead>Uses</TableHead>
                   <TableHead>Status</TableHead>
@@ -434,7 +388,7 @@ export default function AdminAccessCodes() {
               <TableBody>
                 {filteredCodes.length === 0 ? (
                   <TableRow>
-                    <TableCell colSpan={7} className="text-center text-muted-foreground">
+                    <TableCell colSpan={6} className="text-center text-muted-foreground">
                       No access codes found
                     </TableCell>
                   </TableRow>
@@ -461,10 +415,6 @@ export default function AdminAccessCodes() {
                             {code.notes}
                           </div>
                         ) : null}
-                      </TableCell>
-
-                      <TableCell>
-                        <Badge variant="outline">{getTierName(code.tier_id)}</Badge>
                       </TableCell>
 
                       <TableCell>
