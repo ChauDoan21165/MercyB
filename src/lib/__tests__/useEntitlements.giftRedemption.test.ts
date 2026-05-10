@@ -131,6 +131,64 @@ describe("useEntitlements — gift redemption overlay", () => {
     expect(ent?.expires_at).toBe("2027-01-01T00:00:00Z");
   });
 
+  // Defensive: me-entitlement may return is_premium as undefined or
+  // null on partial / FAIL_CLOSED responses. The overlay condition
+  // uses a truthy check (!backendEnt.is_premium) so those shapes
+  // still trigger the gift overlay. A strict `=== false` check
+  // (the original PR #363 form) would skip the overlay here.
+  it("overlays even when is_premium is undefined (non-strict truthy check)", async () => {
+    fetchCurrentEntitlement.mockResolvedValue({
+      // is_premium intentionally omitted — simulates partial response.
+      source: null,
+      status: "inactive",
+      expires_at: null,
+      current_period_end: null,
+      plan_name: null,
+      tier_id: null,
+      price_id: null,
+      cancel_at_period_end: null,
+    } as never);
+    fetchActiveGiftSubscription.mockResolvedValue({
+      tier_id: "a2863250-1798-443e-b1d3-d20e3db06281",
+      current_period_end: "2027-05-10T15:58:10.285802+00:00",
+      vip_key: "vip9",
+      plan_name: "One Year",
+    });
+
+    const { result } = renderHook(() => useEntitlements());
+    await waitFor(() => expect(result.current.loading).toBe(false));
+
+    expect(result.current.ent?.is_premium).toBe(true);
+    expect(result.current.ent?.source).toBe("gift_code");
+    expect(result.current.ent?.tier_id).toBe("vip9");
+  });
+
+  it("overlays even when is_premium is null (non-strict truthy check)", async () => {
+    fetchCurrentEntitlement.mockResolvedValue({
+      is_premium: null as unknown as boolean,
+      source: null,
+      status: "inactive",
+      expires_at: null,
+      current_period_end: null,
+      plan_name: null,
+      tier_id: null,
+      price_id: null,
+      cancel_at_period_end: null,
+    });
+    fetchActiveGiftSubscription.mockResolvedValue({
+      tier_id: "a2863250-1798-443e-b1d3-d20e3db06281",
+      current_period_end: "2027-05-10T15:58:10.285802+00:00",
+      vip_key: "vip9",
+      plan_name: "One Year",
+    });
+
+    const { result } = renderHook(() => useEntitlements());
+    await waitFor(() => expect(result.current.loading).toBe(false));
+
+    expect(result.current.ent?.is_premium).toBe(true);
+    expect(result.current.ent?.source).toBe("gift_code");
+  });
+
   it("stays non-premium when there is no active gift subscription", async () => {
     fetchCurrentEntitlement.mockResolvedValue({
       is_premium: false,

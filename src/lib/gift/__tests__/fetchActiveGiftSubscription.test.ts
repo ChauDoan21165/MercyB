@@ -21,7 +21,7 @@ function makeClient(resolver: MockResolver) {
   for (const m of [
     "select",
     "eq",
-    "or",
+    "gt",
     "order",
     "limit",
   ] as const) {
@@ -59,15 +59,22 @@ describe("fetchActiveGiftSubscription", () => {
     await fetchActiveGiftSubscription(client, USER_ID);
 
     expect(from).toHaveBeenCalledWith("user_subscriptions");
+    // No space before `(` — PostgREST treats `relation ( ... )` (with
+    // a trailing space) as a column, not an embedded relation, and
+    // rejects the query.
     expect(chain.select).toHaveBeenCalledWith(
-      "tier_id, current_period_end, subscription_tiers ( vip_key, name )",
+      "tier_id, current_period_end, subscription_tiers(vip_key, name)",
     );
     expect(chain.eq).toHaveBeenCalledWith("user_id", USER_ID);
     expect(chain.eq).toHaveBeenCalledWith("status", "active");
     expect(chain.eq).toHaveBeenCalledWith("is_gift_redemption", true);
-    // current_period_end must allow null OR future timestamp.
-    const orArg = (chain.or as ReturnType<typeof vi.fn>).mock.calls[0]?.[0];
-    expect(orArg).toMatch(/^current_period_end\.is\.null,current_period_end\.gt\./);
+    // .gt() with an ISO timestamp — chosen over .or() because
+    // PostgREST's .or() splits each filter on dots and ISO strings
+    // contain dots (e.g. ".123Z") that confuse the parser.
+    const gtCall = (chain.gt as ReturnType<typeof vi.fn>).mock.calls[0];
+    expect(gtCall?.[0]).toBe("current_period_end");
+    expect(typeof gtCall?.[1]).toBe("string");
+    expect(gtCall?.[1]).toMatch(/^\d{4}-\d{2}-\d{2}T/); // ISO-shaped
     expect(chain.order).toHaveBeenCalledWith("current_period_end", {
       ascending: false,
       nullsFirst: false,
