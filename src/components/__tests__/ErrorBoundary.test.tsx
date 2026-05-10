@@ -53,10 +53,10 @@ describe("<ErrorBoundary />", () => {
     // surfacing through a state update), then renders normally.
     // The ErrorBoundary should suppress the crash screen and force
     // a clean remount via the authLockRecovery key.
-    let thrown = false;
+    const thrownRef = { current: false };
     const LockBomb = (): ReactElement => {
-      if (!thrown) {
-        thrown = true;
+      if (!thrownRef.current) {
+        thrownRef.current = true;
         const err = new DOMException(
           "Lock broken by another request with the 'steal' option",
           "AbortError",
