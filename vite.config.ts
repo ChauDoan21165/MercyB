@@ -328,6 +328,25 @@ export default defineConfig({
   },
 
   build: {
+    // Perf fix #5 — stop modulepreloading MercyGuide tab chunks on the
+    // homepage (344 KB combined: speak, teacher, grammar, logic tabs).
+    // These chunks are React.lazy-loaded inside MercyGuidePanel and only
+    // needed when the user opens a tab — they shouldn't compete for
+    // initial homepage bandwidth. The manualChunks above still names them
+    // for stable chunk hashes; this filter just removes the preload hints.
+    modulePreload: {
+      resolveDependencies(_filename, deps) {
+        return deps.filter(
+          (dep) =>
+            !dep.includes('mercy-speak-tab') &&
+            !dep.includes('mercy-teacher-tab') &&
+            !dep.includes('mercy-grammar-tab') &&
+            !dep.includes('mercy-logic-tab') &&
+            !dep.includes('mercy-french-tab') &&
+            !dep.includes('mercy-german-tab'),
+        );
+      },
+    },
     // Source maps are generated as "hidden" only when Sentry upload is
     // configured — this writes .map files to dist for upload, but the
     // emitted JS bundle has no //# sourceMappingURL= comment, so the
