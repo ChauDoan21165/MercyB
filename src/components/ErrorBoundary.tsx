@@ -58,15 +58,24 @@ function normalizeError(err: unknown) {
   };
 }
 
+function isAuthLockAbortError(err: unknown): boolean {
+  return (
+    err instanceof DOMException &&
+    err.name === "AbortError" &&
+    err.message.includes("Lock broken by another request with the 'steal' option")
+  );
+}
+
 type Props = { children: React.ReactNode };
 
 type State = {
   hasError: boolean;
+  authLockRecovery: number;
   err?: ReturnType<typeof normalizeError>;
 };
 
 export class ErrorBoundary extends React.Component<Props, State> {
-  state: State = { hasError: false };
+  state: State = { hasError: false, authLockRecovery: 0 };
 
   static getDerivedStateFromError(error: unknown) {
     return { hasError: true, err: normalizeError(error) };
@@ -74,6 +83,33 @@ export class ErrorBoundary extends React.Component<Props, State> {
 
   componentDidCatch(error: unknown, info: unknown) {
     const n = normalizeError(error);
+
+    // Auth-lock AbortError is a legitimate cross-tab lock handoff from the
+    // Web Locks API (Supabase auth internal lock). The newer tab/client
+    // has taken over auth state — the older tab should silently recover
+    // by re-rendering children rather than showing the white crash screen.
+    // We force a clean remount via authLockRecovery key to avoid a
+    // re-throw loop, and log to Sentry as a warning for frequency tracking.
+    if (isAuthLockAbortError(error)) {
+      console.warn(
+        "[ErrorBoundary] auth-lock AbortError (silent recovery)",
+        error,
+      );
+      this.setState((prev) => ({
+        hasError: false,
+        authLockRecovery: prev.authLockRecovery + 1,
+      }));
+      captureError(error instanceof Error ? error : new Error(n.message || n.name), {
+        kind: "authLockAbort",
+        name: n.name,
+        level: "warning",
+        componentStack:
+          info && typeof info === "object" && "componentStack" in info
+            ? String((info as { componentStack?: unknown }).componentStack ?? "")
+            : undefined,
+      });
+      return;
+    }
 
     // Log BOTH raw + normalized so we can see what the app really threw.
     console.group("❌ ErrorBoundary (v2025-12-14-01)");
@@ -99,7 +135,11 @@ export class ErrorBoundary extends React.Component<Props, State> {
   }
 
   render() {
-    if (!this.state.hasError) return this.props.children;
+    if (!this.state.hasError) return (
+      <React.Fragment key={`authLock-${this.state.authLockRecovery}`}>
+        {this.props.children}
+      </React.Fragment>
+    );
 
     const e = this.state.err;
     const msg = e?.message?.trim() ? e?.message : "(empty message)";

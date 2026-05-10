@@ -120,22 +120,70 @@ const isNativeShell =
       ?.isNativePlatform?.(),
   );
 
-// Android Chrome can surface Supabase auth's Web Locks contention as an
-// unhandled production AbortError: "Lock broken by another request with the
-// 'steal' option." In MercyBlade, avoiding that fatal browser lock path is safer
-// than crashing the app during anonymous/home auth bootstrap.
-const isAndroidChrome =
-  typeof navigator !== "undefined" &&
-  /Android/i.test(navigator.userAgent) &&
-  /Chrome/i.test(navigator.userAgent);
-
-const shouldBypassAuthLock = isNativeShell || isAndroidChrome;
-
-const noopAuthLock = <R,>(
-  _name: string,
-  _acquireTimeout: number,
+// Create a custom Web Locks wrapper that serialises legitimate concurrent
+// auth operations (PKCE code-verifier writes, session-token persistence)
+// across tabs, but absorbs the AbortError thrown when a newer tab/client
+// steals the lock. The steal is itself correct behaviour — the newer tab
+// should take over. The older tab simply yields without propagating the
+// AbortError up to the React ErrorBoundary.
+function createAuthLock(): <R>(
+  name: string,
+  acquireTimeout: number,
   fn: () => Promise<R>,
-): Promise<R> => fn();
+) => Promise<R> {
+  const noopLock = <R,>(
+    _name: string,
+    _acquireTimeout: number,
+    fn: () => Promise<R>,
+  ): Promise<R> => fn();
+
+  // navigator.locks may be unavailable in older browsers, private-mode
+  // restrictions, or some WebView contexts. Fall through to noop lock.
+  if (
+    typeof navigator === "undefined" ||
+    typeof navigator.locks?.request !== "function"
+  ) {
+    return noopLock;
+  }
+
+  return <R,>(
+    name: string,
+    acquireTimeout: number,
+    fn: () => Promise<R>,
+  ): Promise<R> =>
+    new Promise<R>((resolve, reject) => {
+      navigator.locks.request(name, { mode: "exclusive", steal: false, ifAvailable: false }, (lock) => {
+        if (lock === null) {
+          // ifAvailable would return null — not our case, but defensive.
+          resolve(fn());
+          return new Promise<void>((r) => r());
+        }
+        return new Promise<void>((innerResolve) => {
+          fn().then(resolve, reject).finally(() => innerResolve());
+        });
+      }).catch((err: unknown) => {
+        // AbortError with "steal" = another tab/client legitimately took
+        // over the lock. Resolve silently — do NOT reject. The steal is
+        // correct behaviour. The older tab recovers by re-rendering; any
+        // desynced auth state surfaces cleanly on the next user action.
+        if (
+          err instanceof DOMException &&
+          err.name === "AbortError" &&
+          err.message.includes("Lock broken by another request with the 'steal' option")
+        ) {
+          console.warn(
+            "[supabaseClient] auth lock stolen by another client — silent recovery",
+          );
+          resolve(fn());
+          return;
+        }
+        // Any other lock error propagates normally.
+        reject(err);
+      });
+    });
+}
+
+const customAuthLock = createAuthLock();
 
 export const supabase: SupabaseClient = createClient(
   supabaseUrl,
@@ -148,7 +196,7 @@ export const supabase: SupabaseClient = createClient(
       storageKey,
       storage,
       flowType: "pkce",
-      ...(shouldBypassAuthLock ? { lock: noopAuthLock } : {}),
+      lock: customAuthLock,
     },
   },
 );
