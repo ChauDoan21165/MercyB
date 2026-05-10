@@ -1,0 +1,25 @@
+# .github/workflows/weekly-progress-email.yml
+#
+# Sends weekly learning summary emails every Monday at 01:00 UTC
+# (08:00 Vietnam time). Calls the weekly-progress-email Edge Function
+# via Supabase Functions invoke.
+#
+# Requires secret: CRON_SECRET — shared between the function and
+# this workflow for mutual authentication. Set in GitHub repo secrets.
+
+name: Weekly Progress Email
+
+on:
+  schedule:
+    - cron: "0 1 * * 1" # Monday 01:00 UTC = 08:00 Vietnam
+  workflow_dispatch: # manual trigger for testing
+
+jobs:
+  send-weekly-emails:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Invoke weekly-progress-email Edge Function
+        run: |
+          curl -f -X POST "${{ secrets.SUPABASE_FUNCTIONS_URL }}/weekly-progress-email" \
+            -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}" \
+            -H "Content-Type: application/json"
