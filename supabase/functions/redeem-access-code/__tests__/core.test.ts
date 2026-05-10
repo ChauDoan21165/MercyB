@@ -31,6 +31,7 @@ function makeDeps(overrides: Partial<Deps> = {}): Deps {
         valid_until: "2027-05-10T05:48:08.075431+00:00",
       },
     } satisfies RedeemRpcResult),
+    sendWelcomeEmail: vi.fn().mockResolvedValue(undefined),
     ...overrides,
   };
 }
@@ -357,5 +358,41 @@ describe("handleRequest — CORS + method", () => {
     expect(res.status).toBe(200);
     const body = await res.json();
     expect(body.ok).toBe(false);
+  });
+});
+
+// ── welcome email ──────────────────────────────────────────────────
+
+describe("handleRequest — welcome email", () => {
+  it("calls sendWelcomeEmail on successful redemption", async () => {
+    const deps = makeDeps();
+    await handleRequest(postReq({ code: "GIFT1Y-52340F" }), deps);
+    expect(deps.sendWelcomeEmail).toHaveBeenCalledWith("user-1", {
+      tier_name: "Mercy 1y",
+      days: 365,
+      is_lifetime: false,
+      valid_until: "2027-05-10T05:48:08.075431+00:00",
+    });
+  });
+
+  it("returns ok:true even when sendWelcomeEmail throws", async () => {
+    const deps = makeDeps({
+      sendWelcomeEmail: vi.fn().mockRejectedValue(new Error("Resend is down")),
+    });
+    const res = await handleRequest(postReq({ code: "GIFT1Y-52340F" }), deps);
+    expect(res.status).toBe(200);
+    const body = await res.json();
+    expect(body.ok).toBe(true);
+    expect(body.tier).toBe("Mercy 1y");
+  });
+
+  it("never calls sendWelcomeEmail on failed redemption", async () => {
+    const deps = makeDeps({
+      redeemAtomic: vi.fn().mockResolvedValue({
+        ok: false, pgCode: "P0001", message: "CODE_NOT_FOUND",
+      } satisfies RedeemRpcResult),
+    });
+    await handleRequest(postReq({ code: "X" }), deps);
+    expect(deps.sendWelcomeEmail).not.toHaveBeenCalled();
   });
 });

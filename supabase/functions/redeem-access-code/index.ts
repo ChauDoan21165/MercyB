@@ -5,12 +5,15 @@
 // and use injected Deps so they don't need Deno or Postgres.
 
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.75.1";
-import { handleRequest, type Deps, type RedeemRpcResult } from "./core.ts";
+import { Resend } from "https://esm.sh/resend@2.0.0";
+import { handleRequest, renderWelcomeEmailHtml, type Deps, type RedeemRpcResult } from "./core.ts";
 
 const supabase = createClient(
   Deno.env.get("SUPABASE_URL") ?? "",
   Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") ?? "",
 );
+
+const FROM_ADDRESS = "MercyBlade <noreply@mercyblade.com>";
 
 const deps: Deps = {
   async getUserFromAuthHeader(authHeader) {
@@ -52,6 +55,32 @@ const deps: Deps = {
         valid_until: row.valid_until,
       },
     };
+  },
+
+  async sendWelcomeEmail(userId, row) {
+    try {
+      const { data: userData, error: userError } = await supabase.auth.admin.getUserById(userId);
+      if (userError || !userData?.user?.email) {
+        console.warn("[redeem-access-code] cannot send welcome email — no email for user", userId);
+        return;
+      }
+
+      const resendApiKey = Deno.env.get("RESEND_API_KEY");
+      if (!resendApiKey) {
+        console.warn("[redeem-access-code] RESEND_API_KEY not configured — skipping welcome email");
+        return;
+      }
+
+      const resend = new Resend(resendApiKey);
+      await resend.emails.send({
+        from: FROM_ADDRESS,
+        to: [userData.user.email],
+        subject: "Chào mừng bạn đến với MercyBlade! / Welcome to MercyBlade!",
+        html: renderWelcomeEmailHtml(row),
+      });
+    } catch (err) {
+      console.error("[redeem-access-code] welcome email failed:", err);
+    }
   },
 };
 
