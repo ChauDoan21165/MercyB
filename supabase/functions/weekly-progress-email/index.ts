@@ -142,18 +142,16 @@ Deno.serve(async (req) => {
   }
 
   try {
-    // Auth — CRON_SECRET is required on every request. This function
-    // sends email to all active users; it must not be callable by anyone
-    // who discovers the URL.
+    // Auth — CRON_SECRET is required on every request. The Supabase
+    // gateway handles the Authorization header (JWT / anon key); we
+    // read our own secret from x-cron-secret so the two don't collide.
     const cronSecret = Deno.env.get("CRON_SECRET");
     if (!cronSecret) {
       console.error("[weekly-progress-email] CRON_SECRET not set — refusing all requests");
       return send({ ok: false, error: "CRON_SECRET not configured" });
     }
-    const auth = req.headers.get("Authorization") ?? "";
-    const token = auth.replace("Bearer ", "");
-    if (token !== cronSecret) {
-      console.warn("[weekly-progress-email] Invalid or missing Authorization header");
+    if (req.headers.get("x-cron-secret") !== cronSecret) {
+      console.warn("[weekly-progress-email] Invalid or missing x-cron-secret header");
       return send({ ok: false, error: "Unauthorized" });
     }
 
