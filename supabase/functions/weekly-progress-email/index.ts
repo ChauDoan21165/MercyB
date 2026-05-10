@@ -31,16 +31,16 @@ function send(data: Record<string, unknown>) {
 
 // ── Date helpers ──────────────────────────────────────────────────────
 
-function todayUTC(): string {
-  const d = new Date();
-  return `${d.getUTCFullYear()}-${String(d.getUTCMonth() + 1).padStart(2, "0")}-${String(d.getUTCDate()).padStart(2, "0")}`;
-}
-
-function mondayOfCurrentWeekUTC(): string {
+/** Monday of the *previous* week. The cron fires Monday 01:00 UTC to
+ *  summarize the week that just ended (Mon–Sun). */
+function mondayOfPreviousWeekUTC(): string {
   const now = new Date();
   const day = now.getUTCDay(); // 0=Sun, 1=Mon...
-  const diff = day === 0 ? -6 : -(day - 1); // back to Monday
+  // Monday of *current* week:
+  const diff = day === 0 ? -6 : -(day - 1);
   const mon = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate() + diff));
+  // Go back 7 more days for the previous Monday:
+  mon.setUTCDate(mon.getUTCDate() - 7);
   return `${mon.getUTCFullYear()}-${String(mon.getUTCMonth() + 1).padStart(2, "0")}-${String(mon.getUTCDate()).padStart(2, "0")}`;
 }
 
@@ -173,7 +173,7 @@ Deno.serve(async (req) => {
     });
     const resend = new Resend(resendApiKey);
 
-    const weekStart = mondayOfCurrentWeekUTC();
+    const weekStart = mondayOfPreviousWeekUTC();
 
     // 1. Get active users who haven't unsubscribed.
     // We fetch from auth.users (source of truth for email) joined via
