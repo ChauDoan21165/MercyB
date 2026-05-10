@@ -8,6 +8,10 @@ import {
   resolveEntitlementTier,
   type BackendEntitlement,
 } from "@/lib/authService";
+import {
+  fetchActiveGiftSubscription,
+  type ActiveGiftSubscription,
+} from "@/lib/gift/fetchActiveGiftSubscription";
 import { supabase } from "@/lib/supabaseClient";
 import { useAuth } from "@/providers/AuthProvider";
 
@@ -92,6 +96,36 @@ function buildFeatures(
   } as Record<string, unknown>;
 }
 
+/**
+ * Overlay an active gift-code subscription onto a non-premium
+ * entitlement. The redeem-access-code RPC writes to
+ * `user_subscriptions` only; the me-entitlement Edge Function reads
+ * from the unified `subscriptions` table only. Until those are
+ * bridged server-side, gift redeemers would otherwise show as Free.
+ *
+ * The synthesized entitlement deliberately puts the legacy VIP key
+ * (e.g. "vip9") into `tier_id`. `resolveEntitlementTier` and
+ * `tierToRank` both expect that field to carry one of `premium_year`,
+ * `premium_month`, or `vipN` — matching the contract those resolvers
+ * already understand. If `vip_key` is missing we leave `tier_id`
+ * untouched so the resolver falls back to text-based inference.
+ */
+function applyGiftSubscriptionOverlay(
+  base: BackendEntitlement,
+  giftSub: ActiveGiftSubscription,
+): BackendEntitlement {
+  return {
+    ...base,
+    is_premium: true,
+    status: "active",
+    source: "gift_code",
+    expires_at: giftSub.current_period_end,
+    current_period_end: giftSub.current_period_end,
+    plan_name: giftSub.plan_name ?? base.plan_name ?? null,
+    tier_id: giftSub.vip_key ?? base.tier_id ?? null,
+  };
+}
+
 function buildEntitlement(entitlement: BackendEntitlement): Ent {
   const resolvedTier = normalizeTier(resolveEntitlementTier(entitlement));
   const vipRank = tierToRank(resolvedTier, entitlement);
@@ -138,13 +172,26 @@ export function useEntitlements() {
     setLoading(true);
 
     try {
-      // Pass supabase explicitly — consistent with authService contract
-      const backendEnt =
-        (await fetchCurrentEntitlement(supabase)) ?? FAIL_CLOSED_ENTITLEMENT;
+      // Pass supabase explicitly — consistent with authService contract.
+      // Fetch the legacy entitlement (Stripe path) and the gift-code
+      // subscription state in parallel so the page never pays for two
+      // sequential round trips. If me-entitlement reports non-premium
+      // but the user has an active gift redemption in user_subscriptions,
+      // we overlay the gift-side state onto the entitlement.
+      const [backendEntRaw, giftSub] = await Promise.all([
+        fetchCurrentEntitlement(supabase),
+        fetchActiveGiftSubscription(supabase, userRef.current?.id ?? ""),
+      ]);
 
       if (requestIdRef.current !== requestId) return;
 
-      setData(buildEntitlement(backendEnt));
+      const backendEnt = backendEntRaw ?? FAIL_CLOSED_ENTITLEMENT;
+      const finalEnt =
+        backendEnt.is_premium === false && giftSub
+          ? applyGiftSubscriptionOverlay(backendEnt, giftSub)
+          : backendEnt;
+
+      setData(buildEntitlement(finalEnt));
     } catch {
       if (requestIdRef.current !== requestId) return;
 
