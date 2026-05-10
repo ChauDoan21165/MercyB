@@ -47,4 +47,47 @@ describe("<ErrorBoundary />", () => {
     expect(goHome).toBeInstanceOf(HTMLAnchorElement);
     expect((goHome as HTMLAnchorElement).getAttribute("href")).toBe("/");
   });
+
+  it("suppresses auth-lock AbortError crash screen", () => {
+    // Simulate a component that throws once (like a lock-steal abort
+    // surfacing through a state update), then renders normally.
+    // The ErrorBoundary should suppress the crash screen and force
+    // a clean remount via the authLockRecovery key.
+    let thrown = false;
+    const LockBomb = (): ReactElement => {
+      if (!thrown) {
+        thrown = true;
+        const err = new DOMException(
+          "Lock broken by another request with the 'steal' option",
+          "AbortError",
+        );
+        throw err;
+      }
+      return <div data-testid="survived">recovered</div>;
+    };
+
+    render(
+      <ErrorBoundary>
+        <LockBomb />
+      </ErrorBoundary>,
+    );
+
+    // After the first throw + recovery, children render normally
+    expect(screen.getByTestId("survived")).toBeInTheDocument();
+    expect(screen.queryByText("Something went wrong")).not.toBeInTheDocument();
+  });
+
+  it("still shows crash screen on non-auth-lock errors", () => {
+    const OtherBomb = (): ReactElement => {
+      throw new Error("real error — should crash");
+    };
+
+    render(
+      <ErrorBoundary>
+        <OtherBomb />
+      </ErrorBoundary>,
+    );
+
+    expect(screen.getByText("Something went wrong")).toBeInTheDocument();
+  });
 });
