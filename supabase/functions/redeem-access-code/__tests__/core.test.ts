@@ -66,6 +66,38 @@ describe("handleRequest — success", () => {
     expect(deps.redeemAtomic).toHaveBeenCalledWith("user-1", "GIFT1Y-52340F");
   });
 
+  // Regression test for the trigger-chain bug fixed in
+  // 20260510010000_fix_sync_profile_tier_trigger.sql. Before that
+  // migration, the AFTER INSERT trigger on payment_transactions
+  // raised "column st.key does not exist" inside the RPC's transaction,
+  // which surfaced as a generic ERROR back to the Edge Function. This
+  // pins the contract that a CLEAN happy-path RPC return (i.e., trigger
+  // chain succeeded) produces ok:true with a tier — so a regression
+  // that re-introduces the column-name mismatch would fail at the RPC
+  // level and be caught here as a non-ok result.
+  it("returns ok:true when the RPC + trigger chain completes (st.vip_key fix)", async () => {
+    const deps = makeDeps({
+      redeemAtomic: vi.fn().mockResolvedValue({
+        ok: true,
+        row: {
+          tier_name: "Level 1",
+          days: 365,
+          is_lifetime: false,
+          valid_until: "2027-05-10T05:48:08.075431+00:00",
+        },
+      } satisfies RedeemRpcResult),
+    });
+    const res = await handleRequest(postReq({ code: "GIFT1Y-B9E247" }), deps);
+    expect(res.status).toBe(200);
+    const body = await res.json();
+    expect(body.ok).toBe(true);
+    expect(body.tier).toBe("Level 1");
+    expect(body.days).toBe(365);
+    // No SQL leak in success body.
+    expect(JSON.stringify(body)).not.toMatch(/st\./);
+    expect(JSON.stringify(body)).not.toMatch(/column.*does not exist/);
+  });
+
   it("formats lifetime grants distinctly", async () => {
     const deps = makeDeps({
       redeemAtomic: vi.fn().mockResolvedValue({
@@ -180,19 +212,42 @@ describe("handleRequest — RPC error mapping", () => {
     });
   }
 
-  it("passes through unknown RPC error messages verbatim", async () => {
+  it("hides unknown RPC error messages behind a generic message (no SQL leak)", async () => {
     const deps = makeDeps({
       redeemAtomic: vi.fn().mockResolvedValue({
         ok: false,
-        pgCode: "23514",
-        message: 'new row violates check constraint "payment_transactions_payment_method_check"',
+        pgCode: "42703",
+        message: "column st.key does not exist",
       } satisfies RedeemRpcResult),
     });
     const res = await handleRequest(postReq({ code: "X" }), deps);
     expect(res.status).toBe(200);
     const body = await res.json();
     expect(body.ok).toBe(false);
-    expect(body.error).toMatch(/payment_method_check/);
+    // User-facing string MUST be generic.
+    expect(body.error).toMatch(/something went wrong/i);
+    expect(body.error).not.toMatch(/st\.key/);
+    expect(body.error).not.toMatch(/column.*does not exist/);
+    // Raw error survives in pg_code + internal_message for debugging.
+    expect(body.pg_code).toBe("42703");
+    expect(body.internal_message).toBe("column st.key does not exist");
+  });
+
+  it("hides unknown CHECK constraint violations behind a generic message", async () => {
+    const deps = makeDeps({
+      redeemAtomic: vi.fn().mockResolvedValue({
+        ok: false,
+        pgCode: "23514",
+        message:
+          'new row violates check constraint "payment_transactions_payment_method_check"',
+      } satisfies RedeemRpcResult),
+    });
+    const res = await handleRequest(postReq({ code: "X" }), deps);
+    const body = await res.json();
+    expect(body.ok).toBe(false);
+    expect(body.error).toMatch(/something went wrong/i);
+    expect(body.error).not.toMatch(/payment_method_check/);
+    expect(body.error).not.toMatch(/check constraint/);
     expect(body.pg_code).toBe("23514");
   });
 });

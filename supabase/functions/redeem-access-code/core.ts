@@ -51,6 +51,14 @@ export interface Deps {
 // The RPC raises these via `RAISE EXCEPTION '...' USING ERRCODE = 'P000N'`.
 // We map them to user-facing copy here so the Edge Function stays
 // language-agnostic on the database side.
+//
+// IMPORTANT: any RPC error message NOT in this whitelist is treated as
+// an internal/platform error and surfaced to the user as GENERIC_ERROR.
+// The raw Postgres error text never reaches the client. This prevents
+// leaks like "column st.key does not exist" from reaching the redeem
+// dialog. The raw message + pg_code still go to Edge Function logs and
+// to the response's `pg_code` / `internal_message` fields for engineers
+// debugging from network tab — UI code MUST display `error`, not those.
 
 const ERROR_MESSAGES: Record<string, string> = {
   CODE_NOT_FOUND: "Invalid or inactive access code",
@@ -58,6 +66,9 @@ const ERROR_MESSAGES: Record<string, string> = {
   CODE_FULLY_REDEEMED: "This access code has been fully redeemed",
   ALREADY_REDEEMED: "You have already redeemed this access code",
 };
+
+const GENERIC_ERROR =
+  "Something went wrong, please try again. / Có lỗi xảy ra, vui lòng thử lại.";
 
 function ok(body: Record<string, unknown>): Response {
   return new Response(JSON.stringify({ ok: true, success: true, ...body }), {
@@ -107,9 +118,21 @@ export async function handleRequest(
   const result = await deps.redeemAtomic(user.id, code);
 
   if (!result.ok) {
-    // RPC raised a stable error message — translate to user-facing copy.
-    const userFacing = ERROR_MESSAGES[result.message] ?? result.message;
-    return fail(userFacing, { pg_code: result.pgCode });
+    const friendly = ERROR_MESSAGES[result.message];
+    if (friendly) {
+      return fail(friendly, { pg_code: result.pgCode });
+    }
+    // Unknown error — log raw, hide from user. Engineers can still see
+    // pg_code + internal_message in the network tab / function logs.
+    console.error(
+      "[redeem-access-code] internal error:",
+      result.pgCode,
+      result.message,
+    );
+    return fail(GENERIC_ERROR, {
+      pg_code: result.pgCode,
+      internal_message: result.message,
+    });
   }
 
   const { row } = result;
