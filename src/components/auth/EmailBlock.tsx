@@ -29,7 +29,7 @@ export default function EmailBlock({
   onAuthed: () => Promise<void>;
   onSignupCreated: (email: string, message: string) => void;
 }) {
-  const [mode, setMode] = useState<EmailMode>("password_signin");
+  const [mode, setMode] = useState<EmailMode>("code_email");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPw, setShowPw] = useState(false);
@@ -635,14 +635,6 @@ export default function EmailBlock({
       <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
         <button
           type="button"
-          onClick={() => setMode("password_signin")}
-          disabled={disabled}
-          style={UI.segBtn(mode === "password_signin", disabled)}
-        >
-          Đăng nhập · Sign in
-        </button>
-        <button
-          type="button"
           onClick={() => {
             setMode("code_email");
             setCodeStep("email");
@@ -655,11 +647,11 @@ export default function EmailBlock({
         </button>
         <button
           type="button"
-          onClick={() => setMode("reset")}
+          onClick={() => setMode("password_signin")}
           disabled={disabled}
-          style={UI.segBtn(mode === "reset", disabled)}
+          style={UI.segBtn(mode === "password_signin", disabled)}
         >
-          Quên mật khẩu · Forgot password
+          Đăng nhập · Sign in
         </button>
       </div>
 
@@ -729,6 +721,16 @@ export default function EmailBlock({
           <div style={{ marginTop: 8, ...UI.small }}>
             Tối thiểu 6 ký tự. · Minimum 6 characters.
           </div>
+          <div style={{ marginTop: 8, ...UI.small }}>
+            <button
+              type="button"
+              onClick={() => setMode("reset")}
+              disabled={disabled}
+              style={UI.linkBtn(disabled)}
+            >
+              Quên mật khẩu? · Forgot password?
+            </button>
+          </div>
         </div>
       )}
 
@@ -751,23 +753,14 @@ export default function EmailBlock({
       </div>
 
       <div style={{ marginTop: 10, ...UI.small }}>
-        {mode === "password_signin" ? (
-          <>
-            Chưa có tài khoản? · New here?{" "}
-            <button
-              type="button"
-              onClick={() => {
-                setMode("code_email");
-                setCodeStep("email");
-              }}
-              disabled={disabled}
-              style={UI.linkBtn(disabled)}
-            >
-              Tạo tài khoản bằng mã qua email · Create an account with email code
-            </button>
-            .
-          </>
-        ) : mode === "code_email" ? (
+        {/* On password_signin we omit a "create an account" cross-link.
+            The page-level heading already says
+            "Đăng nhập hoặc tạo tài khoản · Sign in or create account"
+            and the Email-code tab is right above this body, so a third
+            CTA pointing at the same flow is redundant noise. We keep
+            the reverse link below (code_email → password_signin) since
+            "I already have a password" is a less obvious affordance. */}
+        {mode === "code_email" ? (
           <>
             Đã có tài khoản? · Already have an account?{" "}
             <button

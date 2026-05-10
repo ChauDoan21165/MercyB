@@ -424,10 +424,9 @@ export default function LoginPage() {
             </button>
           </div>
 
-          <h1 style={UI.title}>Sign in</h1>
+          <h1 style={UI.title}>Đăng nhập hoặc tạo tài khoản · Sign in or create account</h1>
           <p style={UI.subtitle}>
-            Choose a sign-in method. After signing in, we’ll take you to the
-            right place.
+            Nhập email — chúng tôi sẽ gửi mã đăng nhập hoặc tạo tài khoản mới cho bạn · Enter your email — we&apos;ll send a code to sign you in or create your account
           </p>
 
           <div
