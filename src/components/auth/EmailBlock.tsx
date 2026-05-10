@@ -1,7 +1,6 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import {
-  alreadyRegisteredStatusText,
   ensureSessionOrThrow,
   humanizeAuthError,
   type EmailMode,
@@ -14,6 +13,8 @@ import {
   listMfaFactors,
   verifyChallenge,
 } from "@/lib/security/mfaClient";
+
+type CodeStep = "email" | "code";
 
 export default function EmailBlock({
   emailRedirectTo,
@@ -36,10 +37,19 @@ export default function EmailBlock({
   const [busy, setBusy] = useState(false);
   const statusRef = useRef<HTMLDivElement | null>(null);
 
+  // Code-first email flow state. After the user submits their email and
+  // we successfully send the OTP, step transitions to "code" and the
+  // form swaps to a 6-digit code input. verifyOtp() then completes the
+  // sign-in directly — no link click, no PKCE, no browser swap.
+  const [codeStep, setCodeStep] = useState<CodeStep>("email");
+  const [otpCode, setOtpCode] = useState("");
+  const [otpVerifying, setOtpVerifying] = useState(false);
+  const [codeEmail, setCodeEmail] = useState("");
+
   // 2FA Phase 1 — TOTP challenge state. After a successful password
-  // step, if the user has any verified TOTP factors we hold them
-  // here until they enter their 6-digit code. onAuthed() is NOT
-  // called until the challenge verifies. See
+  // step (or verifyOtp), if the user has any verified TOTP factors we
+  // hold them here until they enter their 6-digit code. onAuthed() is
+  // NOT called until the challenge verifies. See
   // reports/2fa-design-decisions-2026-04-27.md § Decision 5.
   const [totpStep, setTotpStep] = useState<{
     factorId: string;
@@ -56,7 +66,34 @@ export default function EmailBlock({
     statusRef.current?.scrollIntoView({ behavior: "smooth", block: "nearest" });
   }, [status]);
 
-  const sendMagicLink = useCallback(async () => {
+  // After any successful primary auth (password or verifyOtp), check
+  // whether the user has a verified TOTP factor and gate the redirect
+  // on it. Returns true if MFA is required and the caller should NOT
+  // call onAuthed yet; false if the user is fully authenticated.
+  const maybeBeginTotpStep = useCallback(async (): Promise<boolean> => {
+    try {
+      const factors = await listMfaFactors();
+      const totp = findFirstVerifiedTotp(factors);
+      if (!totp) return false;
+      const { challengeId } = await challengeFactor(totp.id);
+      setTotpStep({ factorId: totp.id, challengeId });
+      setStatus(null);
+      return true;
+    } catch (mfaErr) {
+      // If the MFA list call fails we fall through to the no-MFA
+      // path. The user is signed in regardless; the worst case is
+      // they slip past a 2FA gate they enrolled but the API is
+      // briefly unreachable. Log so we can find this in Sentry but
+      // don't block sign-in on a transient API hiccup.
+      if (import.meta.env.DEV) {
+        console.warn("[mfa] listFactors failed during sign-in:", mfaErr);
+      }
+      return false;
+    }
+  }, []);
+
+  // ── Code-first email flow: send code ───────────────────────────────
+  const sendEmailCode = useCallback(async () => {
     if (disabled) return;
     setBusy(true);
     setStatus(null);
@@ -64,27 +101,109 @@ export default function EmailBlock({
     try {
       const clean = cleanEmail();
       if (!clean || !clean.includes("@")) {
-        setStatus("Please enter a valid email.");
+        setStatus("Vui lòng nhập email hợp lệ.\nPlease enter a valid email.");
         return;
       }
 
+      // shouldCreateUser: true so the same path covers both new and
+      // returning users — they receive a 6-digit code by email and type
+      // it back in here. The PKCE link is still in the email and works
+      // as a silent fallback if the user clicks it in the same browser
+      // (detectSessionInUrl on the supabase client handles that path).
       const { error } = await supabase.auth.signInWithOtp({
         email: clean,
         options: {
           emailRedirectTo,
-          shouldCreateUser: false,
+          shouldCreateUser: true,
         },
       });
 
       if (error) throw error;
 
-      setStatus("✅ Email link sent. Open your email and click the link.");
+      setCodeEmail(clean);
+      setOtpCode("");
+      setCodeStep("code");
+      setStatus(
+        "✅ Đã gửi mã 6 chữ số tới email của bạn. Hãy mở email và nhập mã vào ô bên dưới.\n6-digit code sent. Open your email and enter the code below.",
+      );
+      onSignupCreated(clean, "Đã gửi mã. Code sent.");
     } catch (e) {
-      setStatus(humanizeAuthError(e, mode));
+      setStatus(humanizeAuthError(e, "code_email"));
     } finally {
       setBusy(false);
     }
-  }, [cleanEmail, disabled, emailRedirectTo, mode]);
+  }, [cleanEmail, disabled, emailRedirectTo, onSignupCreated]);
+
+  // ── Code-first email flow: verify code ────────────────────────────
+  const verifyEmailCode = useCallback(async () => {
+    if (disabled || otpVerifying) return;
+    if (!/^\d{6}$/.test(otpCode)) {
+      setStatus(
+        "Nhập đủ 6 chữ số trong email.\nEnter the 6-digit code from your email.",
+      );
+      return;
+    }
+    setOtpVerifying(true);
+    setStatus(null);
+
+    try {
+      const { error } = await supabase.auth.verifyOtp({
+        email: codeEmail,
+        token: otpCode,
+        type: "email",
+      });
+      if (error) throw error;
+
+      await ensureSessionOrThrow();
+
+      const mfaPending = await maybeBeginTotpStep();
+      if (mfaPending) return; // TOTP UI takes over.
+
+      setStatus(
+        "✅ Đã đăng nhập. Đang chuyển trang…\nSigned in. Redirecting…",
+      );
+      await onAuthed();
+    } catch (e) {
+      setStatus(humanizeAuthError(e, "code_email"));
+    } finally {
+      setOtpVerifying(false);
+    }
+  }, [
+    codeEmail,
+    disabled,
+    maybeBeginTotpStep,
+    onAuthed,
+    otpCode,
+    otpVerifying,
+  ]);
+
+  const resendEmailCode = useCallback(async () => {
+    if (disabled) return;
+    setBusy(true);
+    setStatus(null);
+    try {
+      const { error } = await supabase.auth.signInWithOtp({
+        email: codeEmail,
+        options: { emailRedirectTo, shouldCreateUser: true },
+      });
+      if (error) throw error;
+      setOtpCode("");
+      setStatus(
+        "✅ Đã gửi lại mã. Kiểm tra email.\nNew code sent. Check your email.",
+      );
+    } catch (e) {
+      setStatus(humanizeAuthError(e, "code_email"));
+    } finally {
+      setBusy(false);
+    }
+  }, [codeEmail, disabled, emailRedirectTo]);
+
+  const cancelCodeStep = useCallback(() => {
+    setCodeStep("email");
+    setOtpCode("");
+    setCodeEmail("");
+    setStatus(null);
+  }, []);
 
   const signInWithPassword = useCallback(async () => {
     if (disabled) return;
@@ -94,11 +213,13 @@ export default function EmailBlock({
     try {
       const clean = cleanEmail();
       if (!clean || !clean.includes("@")) {
-        setStatus("Please enter a valid email.");
+        setStatus("Vui lòng nhập email hợp lệ.\nPlease enter a valid email.");
         return;
       }
       if (!password || password.length < 6) {
-        setStatus("Password must be at least 6 characters.");
+        setStatus(
+          "Mật khẩu cần tối thiểu 6 ký tự.\nPassword must be at least 6 characters.",
+        );
         return;
       }
 
@@ -110,45 +231,28 @@ export default function EmailBlock({
 
       await ensureSessionOrThrow();
 
-      // 2FA Phase 1 — does this user have a verified TOTP factor?
-      // If yes, hold the redirect and prompt for a 6-digit code. The
-      // session is already established (aal=1) but onAuthed() is the
-      // post-redirect contract — we don't fire it until aal=2.
-      try {
-        const factors = await listMfaFactors();
-        const totp = findFirstVerifiedTotp(factors);
-        if (totp) {
-          const { challengeId } = await challengeFactor(totp.id);
-          setTotpStep({ factorId: totp.id, challengeId });
-          setStatus(null);
-          return; // Don't call onAuthed yet — wait for TOTP verify.
-        }
-      } catch (mfaErr) {
-        // If the MFA list call fails we fall through to the no-MFA
-        // path. The user is signed in regardless; the worst case is
-        // they slip past a 2FA gate they enrolled but the API is
-        // briefly unreachable. Log so we can find this in Sentry but
-        // don't block sign-in on a transient API hiccup.
-        if (import.meta.env.DEV) {
-          console.warn("[mfa] listFactors failed during sign-in:", mfaErr);
-        }
-      }
+      const mfaPending = await maybeBeginTotpStep();
+      if (mfaPending) return; // Don't call onAuthed yet — wait for TOTP verify.
 
-      setStatus("✅ Signed in. Redirecting...");
+      setStatus(
+        "✅ Đã đăng nhập. Đang chuyển trang…\nSigned in. Redirecting…",
+      );
       await onAuthed();
     } catch (e) {
       setStatus(humanizeAuthError(e, mode));
     } finally {
       setBusy(false);
     }
-  }, [cleanEmail, disabled, mode, onAuthed, password]);
+  }, [cleanEmail, disabled, maybeBeginTotpStep, mode, onAuthed, password]);
 
   // 2FA Phase 1 — TOTP challenge submit handler. Called from the
   // separate code-entry UI rendered below when totpStep is non-null.
   const verifyTotpStep = useCallback(async () => {
     if (!totpStep) return;
     if (!/^\d{6}$/.test(totpCode)) {
-      setStatus("Enter the 6-digit code from your authenticator app.");
+      setStatus(
+        "Nhập đủ 6 chữ số từ ứng dụng xác thực.\nEnter the 6-digit code from your authenticator app.",
+      );
       return;
     }
     setTotpVerifying(true);
@@ -156,7 +260,9 @@ export default function EmailBlock({
     try {
       await verifyChallenge(totpStep.factorId, totpStep.challengeId, totpCode);
       // Success — session is now aal=2. Hand off to onAuthed().
-      setStatus("✅ Signed in. Redirecting...");
+      setStatus(
+        "✅ Đã đăng nhập. Đang chuyển trang…\nSigned in. Redirecting…",
+      );
       await onAuthed();
     } catch (err) {
       const friendly = humanizeMfaError(err);
@@ -185,40 +291,6 @@ export default function EmailBlock({
     }
   }, []);
 
-  const signUpWithMagicLink = useCallback(async () => {
-    if (disabled) return;
-    setBusy(true);
-    setStatus(null);
-
-    try {
-      const clean = cleanEmail();
-      if (!clean || !clean.includes("@")) {
-        setStatus("Please enter a valid email.");
-        return;
-      }
-
-      const { error } = await supabase.auth.signInWithOtp({
-        email: clean,
-        options: {
-          emailRedirectTo,
-          shouldCreateUser: true,
-        },
-      });
-
-      if (error) throw error;
-
-      const createdMsg =
-        "✅ Check your email to create your account.\n\nWe sent you a sign-in link. Your Mercy account will only become usable after you open that email and click the link.";
-
-      setStatus(createdMsg);
-      onSignupCreated(clean, createdMsg);
-    } catch (e) {
-      setStatus(humanizeAuthError(e, mode));
-    } finally {
-      setBusy(false);
-    }
-  }, [cleanEmail, disabled, emailRedirectTo, mode, onSignupCreated]);
-
   const sendResetPasswordEmail = useCallback(async () => {
     if (disabled) return;
     setBusy(true);
@@ -227,7 +299,7 @@ export default function EmailBlock({
     try {
       const clean = cleanEmail();
       if (!clean || !clean.includes("@")) {
-        setStatus("Please enter a valid email.");
+        setStatus("Vui lòng nhập email hợp lệ.\nPlease enter a valid email.");
         return;
       }
 
@@ -236,7 +308,9 @@ export default function EmailBlock({
       });
       if (error) throw error;
 
-      setStatus("✅ Password reset email sent.\n\nOpen your email and follow the link.");
+      setStatus(
+        "✅ Đã gửi email đặt lại mật khẩu. Mở email và làm theo hướng dẫn.\nPassword reset email sent. Open your email and follow the link.",
+      );
     } catch (e) {
       setStatus(humanizeAuthError(e, mode));
     } finally {
@@ -248,32 +322,28 @@ export default function EmailBlock({
 
   const primaryActionLabel =
     mode === "password_signin"
-      ? "Sign in"
-      : mode === "password_signup"
-        ? "Create account with email link"
-        : mode === "magic"
-          ? "Send email link"
-          : "Send reset email";
+      ? "Đăng nhập · Sign in"
+      : mode === "code_email"
+        ? "Gửi mã · Send code"
+        : "Gửi email đặt lại · Send reset email";
 
   const onPrimary = useCallback(() => {
     if (disabled) return;
     if (mode === "password_signin") void signInWithPassword();
-    else if (mode === "password_signup") void signUpWithMagicLink();
-    else if (mode === "magic") void sendMagicLink();
+    else if (mode === "code_email") void sendEmailCode();
     else void sendResetPasswordEmail();
   }, [
     disabled,
     mode,
-    sendMagicLink,
+    sendEmailCode,
     sendResetPasswordEmail,
     signInWithPassword,
-    signUpWithMagicLink,
   ]);
 
-  // 2FA Phase 1 — when the password step succeeded but a TOTP factor
-  // is enrolled, render ONLY the code-entry step. Hide the email/
-  // password form so a confused user can't accidentally re-submit
-  // their password while we're holding their session at aal=1.
+  // 2FA Phase 1 — when the password / OTP step succeeded but a TOTP
+  // factor is enrolled, render ONLY the code-entry step. Hide the
+  // primary form so a confused user can't accidentally re-submit while
+  // we're holding their session at aal=1.
   if (totpStep) {
     return (
       <div style={UI.block} data-testid="email-block-totp-step">
@@ -410,6 +480,156 @@ export default function EmailBlock({
     );
   }
 
+  // Code-first email flow — code entry step.
+  if (mode === "code_email" && codeStep === "code") {
+    return (
+      <div style={UI.block} data-testid="email-block-code-step">
+        <h3
+          style={{
+            fontSize: 16,
+            fontWeight: 800,
+            margin: "0 0 6px",
+            color: "rgba(10,10,10,0.92)",
+          }}
+        >
+          Nhập mã 6 chữ số
+          <span
+            style={{
+              display: "block",
+              fontSize: 12,
+              fontWeight: 500,
+              color: "rgba(0,0,0,0.55)",
+              marginTop: 2,
+            }}
+          >
+            Enter the 6-digit code
+          </span>
+        </h3>
+        <p
+          style={{
+            fontSize: 13,
+            color: "rgba(0,0,0,0.62)",
+            lineHeight: 1.5,
+            margin: "8px 0 14px",
+          }}
+        >
+          Mã đã được gửi tới <b>{codeEmail}</b>. Mở email và nhập 6 chữ số vào
+          ô bên dưới.
+          <br />
+          <span style={{ color: "rgba(0,0,0,0.45)" }}>
+            Code sent to <b>{codeEmail}</b>. Open your email and enter the 6
+            digits below.
+          </span>
+        </p>
+        <input
+          type="text"
+          inputMode="numeric"
+          pattern="[0-9]*"
+          autoComplete="one-time-code"
+          maxLength={6}
+          value={otpCode}
+          onChange={(e) => {
+            const next = e.target.value.replace(/\D/g, "").slice(0, 6);
+            setOtpCode(next);
+            if (status) setStatus(null);
+          }}
+          placeholder="123456"
+          aria-label="6-digit code from your email"
+          data-testid="signin-email-otp-input"
+          disabled={otpVerifying || disabled}
+          style={{
+            width: "100%",
+            padding: "12px 14px",
+            fontSize: 18,
+            fontWeight: 700,
+            letterSpacing: 4,
+            textAlign: "center",
+            borderRadius: 10,
+            border: "1px solid #cbd5e1",
+            outline: "none",
+            fontVariantNumeric: "tabular-nums",
+            fontFamily: "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace",
+          }}
+        />
+
+        {status ? (
+          <div
+            ref={statusRef}
+            role="alert"
+            data-testid="signin-email-otp-status"
+            style={UI.status}
+          >
+            {status}
+          </div>
+        ) : null}
+
+        <div style={{ marginTop: 14, display: "flex", gap: 8, flexWrap: "wrap" }}>
+          <button
+            type="button"
+            onClick={() => void verifyEmailCode()}
+            disabled={otpVerifying || disabled || otpCode.length !== 6}
+            data-testid="signin-email-otp-submit"
+            style={{
+              background: "#111827",
+              color: "white",
+              borderRadius: 9999,
+              minHeight: 44,
+              padding: "0 22px",
+              fontWeight: 700,
+              fontSize: 14,
+              border: "none",
+              cursor: "pointer",
+              opacity:
+                otpVerifying || disabled || otpCode.length !== 6 ? 0.6 : 1,
+            }}
+          >
+            {otpVerifying
+              ? "Đang xác minh… · Verifying…"
+              : "Xác nhận · Verify"}
+          </button>
+          <button
+            type="button"
+            onClick={() => void resendEmailCode()}
+            disabled={otpVerifying || disabled}
+            data-testid="signin-email-otp-resend"
+            style={{
+              background: "white",
+              color: "#1e3a8a",
+              borderRadius: 9999,
+              minHeight: 44,
+              padding: "0 18px",
+              fontWeight: 700,
+              fontSize: 13,
+              border: "1px solid rgba(0,0,0,0.12)",
+              cursor: "pointer",
+            }}
+          >
+            Gửi lại mã · Resend code
+          </button>
+          <button
+            type="button"
+            onClick={cancelCodeStep}
+            disabled={otpVerifying}
+            data-testid="signin-email-otp-cancel"
+            style={{
+              background: "white",
+              color: "#475569",
+              borderRadius: 9999,
+              minHeight: 44,
+              padding: "0 18px",
+              fontWeight: 700,
+              fontSize: 13,
+              border: "1px solid rgba(0,0,0,0.12)",
+              cursor: "pointer",
+            }}
+          >
+            Đổi email · Change email
+          </button>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div style={UI.block}>
       <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
@@ -419,15 +639,19 @@ export default function EmailBlock({
           disabled={disabled}
           style={UI.segBtn(mode === "password_signin", disabled)}
         >
-          Sign in
+          Đăng nhập · Sign in
         </button>
         <button
           type="button"
-          onClick={() => setMode("password_signup")}
+          onClick={() => {
+            setMode("code_email");
+            setCodeStep("email");
+          }}
           disabled={disabled}
-          style={UI.segBtn(mode === "password_signup", disabled)}
+          style={UI.segBtn(mode === "code_email", disabled)}
+          data-testid="signin-mode-code-email"
         >
-          Sign up
+          Mã qua email · Email code
         </button>
         <button
           type="button"
@@ -435,15 +659,7 @@ export default function EmailBlock({
           disabled={disabled}
           style={UI.segBtn(mode === "reset", disabled)}
         >
-          Forgot password
-        </button>
-        <button
-          type="button"
-          onClick={() => setMode("magic")}
-          disabled={disabled}
-          style={UI.segBtn(mode === "magic", disabled)}
-        >
-          Email link
+          Quên mật khẩu · Forgot password
         </button>
       </div>
 
@@ -461,7 +677,7 @@ export default function EmailBlock({
 
       {showPasswordField && (
         <div style={{ marginTop: 12 }}>
-          <label style={UI.label}>Password</label>
+          <label style={UI.label}>Mật khẩu · Password</label>
           <div
             style={{
               position: "relative",
@@ -510,46 +726,57 @@ export default function EmailBlock({
               {showPw ? "🙈" : "👁️"}
             </button>
           </div>
-          <div style={{ marginTop: 8, ...UI.small }}>Minimum 6 characters.</div>
+          <div style={{ marginTop: 8, ...UI.small }}>
+            Tối thiểu 6 ký tự. · Minimum 6 characters.
+          </div>
         </div>
       )}
 
-      {mode === "password_signup" && (
+      {mode === "code_email" && (
         <div style={{ marginTop: 12, ...UI.small }}>
-          New accounts use a verification email link. We only let the account become active after the link in the real inbox is clicked.
+          Chúng tôi sẽ gửi một mã 6 chữ số tới email của bạn. Bạn nhập mã ngay
+          tại trang này — không cần bấm vào link trong email.
+          <br />
+          <span style={{ color: "rgba(0,0,0,0.45)" }}>
+            We&apos;ll email you a 6-digit code. Type it in here — you don&apos;t
+            need to click the link in the email.
+          </span>
         </div>
       )}
 
       <div style={{ marginTop: 12 }}>
         <button type="button" onClick={onPrimary} disabled={disabled} style={UI.primaryBtn(disabled)}>
-          {disabled ? "Please wait..." : primaryActionLabel}
+          {disabled ? "Đang xử lý… · Please wait..." : primaryActionLabel}
         </button>
       </div>
 
       <div style={{ marginTop: 10, ...UI.small }}>
         {mode === "password_signin" ? (
           <>
-            New here?{" "}
+            Chưa có tài khoản? · New here?{" "}
             <button
               type="button"
-              onClick={() => setMode("password_signup")}
+              onClick={() => {
+                setMode("code_email");
+                setCodeStep("email");
+              }}
               disabled={disabled}
               style={UI.linkBtn(disabled)}
             >
-              Create an account
+              Tạo tài khoản bằng mã qua email · Create an account with email code
             </button>
             .
           </>
-        ) : mode === "password_signup" ? (
+        ) : mode === "code_email" ? (
           <>
-            Already have an account?{" "}
+            Đã có tài khoản? · Already have an account?{" "}
             <button
               type="button"
               onClick={() => setMode("password_signin")}
               disabled={disabled}
               style={UI.linkBtn(disabled)}
             >
-              Sign in
+              Đăng nhập bằng mật khẩu · Sign in with password
             </button>
             .
           </>

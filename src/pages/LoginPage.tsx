@@ -9,7 +9,8 @@ import {
   humanizeAuthError,
 } from "@/lib/authHelpers";
 import {
-  readOAuthErrorFromSearch,
+  mapAuthRedirectError,
+  readAuthRedirectError,
   readSearchFlag,
   resolveAppFromReturnTo,
   safeParseReturnTo,
@@ -135,9 +136,11 @@ export default function LoginPage() {
     () => resolveAppFromReturnTo(returnToRaw),
     [returnToRaw],
   );
-  const oauthSearchError = useMemo(
-    () => readOAuthErrorFromSearch(search),
-    [search],
+  const hash =
+    typeof window !== "undefined" ? window.location.hash || "" : "";
+  const authRedirectError = useMemo(
+    () => readAuthRedirectError(search, hash),
+    [search, hash],
   );
 
   const IS_DEV = import.meta.env.DEV;
@@ -258,10 +261,10 @@ export default function LoginPage() {
   }, [IS_DEV, nav, safeReturnPath]);
 
   useEffect(() => {
-    if (hasSession && sessionBooted && !oauthSearchError) {
+    if (hasSession && sessionBooted && !authRedirectError) {
       void routeAfterAuth();
     }
-  }, [hasSession, oauthSearchError, routeAfterAuth, sessionBooted]);
+  }, [hasSession, authRedirectError, routeAfterAuth, sessionBooted]);
 
   useEffect(() => {
     if (readSearchFlag(search, "logged_out")) {
@@ -282,15 +285,11 @@ export default function LoginPage() {
   }, [search]);
 
   useEffect(() => {
-    if (!oauthSearchError) return;
-    const msg =
-      `OAuth sign-in failed.\n${
-        oauthSearchError.error ? `error: ${oauthSearchError.error}` : ""
-      }\n${
-        oauthSearchError.desc ? `details: ${oauthSearchError.desc}` : ""
-      }`.trim();
-    setNotice({ tone: "error", message: msg });
-  }, [oauthSearchError]);
+    const mapped = mapAuthRedirectError(authRedirectError);
+    if (!mapped) return;
+    // VI-first per house style; EN underneath for non-Vietnamese users.
+    setNotice({ tone: "error", message: `${mapped.vi}\n${mapped.en}` });
+  }, [authRedirectError]);
 
   useEffect(() => {
     if (notice?.tone === "error") {

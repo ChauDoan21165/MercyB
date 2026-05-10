@@ -93,16 +93,101 @@ export function readSearchFlag(search: string, key: string): boolean {
   }
 }
 
-export function readOAuthErrorFromSearch(
+/**
+ * Auth-redirect error envelope. Supabase routes failures from the email
+ * link / OAuth provider back via either the query string or the URL
+ * fragment, so we check both. `code` carries the discriminator we care
+ * about (e.g. `otp_expired`, `access_denied`); `error` is the broader
+ * category; `desc` is the human-readable text from the provider.
+ */
+export type AuthRedirectError = {
+  error: string;
+  code: string;
+  desc: string;
+};
+
+function parseErrorFromParams(
+  sp: URLSearchParams,
+): AuthRedirectError | null {
+  const e = (sp.get("error") || "").trim();
+  const c = (sp.get("error_code") || "").trim();
+  const d = (sp.get("error_description") || "").trim();
+  if (!e && !c && !d) return null;
+  return { error: e, code: c, desc: d };
+}
+
+export function readAuthRedirectError(
   search: string,
-): { error: string; desc: string } | null {
+  hash?: string,
+): AuthRedirectError | null {
   try {
-    const sp = new URLSearchParams(search || "");
-    const e = (sp.get("error") || "").trim();
-    const d = (sp.get("error_description") || "").trim();
-    if (!e && !d) return null;
-    return { error: e, desc: d };
+    const fromQuery = parseErrorFromParams(new URLSearchParams(search || ""));
+    if (fromQuery) return fromQuery;
+
+    // Supabase sometimes returns errors in the URL fragment (#error=...).
+    const rawHash = (hash || "").replace(/^#/, "");
+    if (rawHash) return parseErrorFromParams(new URLSearchParams(rawHash));
+
+    return null;
   } catch {
     return null;
   }
+}
+
+/**
+ * Bilingual user-facing copy for an auth-redirect error. Vietnamese first
+ * because the primary user base is Vietnamese.
+ *
+ * Returns { vi, en } so callers can render either side or both.
+ */
+export function mapAuthRedirectError(
+  err: AuthRedirectError | null,
+): { vi: string; en: string } | null {
+  if (!err) return null;
+
+  const code = err.code.toLowerCase();
+  const error = err.error.toLowerCase();
+  const descLower = err.desc.toLowerCase();
+
+  const looksExpired =
+    code === "otp_expired" ||
+    descLower.includes("invalid or has expired") ||
+    descLower.includes("expired");
+
+  const looksAccessDenied = error === "access_denied";
+
+  if (looksExpired) {
+    return {
+      vi: "Link đã hết hạn hoặc đã được dùng. Hãy yêu cầu mã mới và nhập trực tiếp vào trang này.",
+      en: "Link expired or already used. Request a new code and type it in here.",
+    };
+  }
+
+  if (looksAccessDenied) {
+    return {
+      vi: "Đăng nhập chưa hoàn tất. Hãy yêu cầu mã mới và nhập trực tiếp vào trang này.",
+      en: "Sign-in didn't complete. Request a new code and type it in here.",
+    };
+  }
+
+  // Fallback: surface whatever the provider sent without the misleading
+  // "OAuth" prefix. Vietnamese first, English on the next line.
+  const detail = err.desc || err.error || err.code;
+  return {
+    vi: `Đăng nhập gặp lỗi.${detail ? ` Chi tiết: ${detail}` : ""}`,
+    en: `Sign-in failed.${detail ? ` Details: ${detail}` : ""}`,
+  };
+}
+
+/**
+ * @deprecated use {@link readAuthRedirectError}. Kept for any external
+ * caller that imports the old name; reads only query string, only the
+ * legacy two fields.
+ */
+export function readOAuthErrorFromSearch(
+  search: string,
+): { error: string; desc: string } | null {
+  const parsed = readAuthRedirectError(search);
+  if (!parsed) return null;
+  return { error: parsed.error, desc: parsed.desc };
 }
