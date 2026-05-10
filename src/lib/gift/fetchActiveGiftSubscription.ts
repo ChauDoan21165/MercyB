@@ -57,18 +57,25 @@ export async function fetchActiveGiftSubscription(
 
   // PostgREST embed: pull the joined subscription_tiers in one round
   // trip. `tier_id` is a NOT NULL FK to subscription_tiers(id) so the
-  // join always resolves; using `subscription_tiers (...)` (no !inner)
-  // mirrors the project's existing access_codes/subscription_tiers
-  // pattern in the prior redeem-access-code function.
+  // join always resolves. NO space between the relation name and `(`
+  // — PostgREST treats `subscription_tiers ( ... )` (with the trailing
+  // space) as a column name and rejects the query. Mirrors the
+  // project's existing access_codes select pattern: `subscription_tiers(*)`.
+  //
+  // The redeem RPC always populates current_period_end (either +days or
+  // +100 years for lifetime). We use a plain .gt() rather than an
+  // .or(...is.null, ...gt.<iso>) chain because PostgREST `.or()` parses
+  // each filter as `column.op.value` split on dots, and ISO timestamps
+  // contain dots (e.g. ".123Z") which can confuse the parser.
   const { data, error } = await client
     .from("user_subscriptions")
     .select(
-      "tier_id, current_period_end, subscription_tiers ( vip_key, name )",
+      "tier_id, current_period_end, subscription_tiers(vip_key, name)",
     )
     .eq("user_id", userId)
     .eq("status", "active")
     .eq("is_gift_redemption", true)
-    .or(`current_period_end.is.null,current_period_end.gt.${nowIso}`)
+    .gt("current_period_end", nowIso)
     .order("current_period_end", { ascending: false, nullsFirst: false })
     .limit(1)
     .maybeSingle();

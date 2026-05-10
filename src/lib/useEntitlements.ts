@@ -186,8 +186,13 @@ export function useEntitlements() {
       if (requestIdRef.current !== requestId) return;
 
       const backendEnt = backendEntRaw ?? FAIL_CLOSED_ENTITLEMENT;
+      // Use !backendEnt.is_premium (truthy check) instead of strict
+      // === false — me-entitlement can return is_premium as undefined
+      // or null on partial responses (FAIL_CLOSED_ENTITLEMENT paths,
+      // shape drift). Strict equality would skip the overlay for those
+      // cases even though the user clearly isn't premium.
       const finalEnt =
-        backendEnt.is_premium === false && giftSub
+        !backendEnt.is_premium && giftSub
           ? applyGiftSubscriptionOverlay(backendEnt, giftSub)
           : backendEnt;
 
