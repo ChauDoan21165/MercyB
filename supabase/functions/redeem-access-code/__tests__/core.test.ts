@@ -75,6 +75,42 @@ describe("handleRequest — success", () => {
   // chain succeeded) produces ok:true with a tier — so a regression
   // that re-introduces the column-name mismatch would fail at the RPC
   // level and be caught here as a non-ok result.
+  // Regression test for the constraint fix in
+  // 20260510020000_fix_gift_subscription_constraint.sql. The
+  // active_requires_stripe_for_paid_tiers CHECK previously blocked any
+  // active paid-tier user_subscriptions row that lacked a
+  // stripe_subscription_id, which silently degraded gift redemptions
+  // to the Free tier. After the fix, the RPC sets
+  // is_gift_redemption=true on the user_subscriptions write, the
+  // constraint passes, and the Edge Function returns the paid tier in
+  // its success payload.
+  //
+  // This test pins the contract: when the RPC reports a paid tier
+  // (e.g. "One Year", vip_key vip9) for a 365-day code, the Edge
+  // Function passes that tier through to the client unchanged. A
+  // regression where the constraint re-tightens — silently downgrading
+  // the redemption to Free — would surface here as tier !== "One Year".
+  it("returns paid One Year tier when gift code redemption succeeds without Stripe", async () => {
+    const deps = makeDeps({
+      redeemAtomic: vi.fn().mockResolvedValue({
+        ok: true,
+        row: {
+          tier_name: "One Year",
+          days: 365,
+          is_lifetime: false,
+          valid_until: "2027-05-10T15:58:10.285802+00:00",
+        },
+      } satisfies RedeemRpcResult),
+    });
+    const res = await handleRequest(postReq({ code: "GIFT1Y-DB4433" }), deps);
+    expect(res.status).toBe(200);
+    const body = await res.json();
+    expect(body.ok).toBe(true);
+    expect(body.tier).toBe("One Year");
+    expect(body.days).toBe(365);
+    expect(body.tier).not.toBe("Free");
+  });
+
   it("returns ok:true when the RPC + trigger chain completes (st.vip_key fix)", async () => {
     const deps = makeDeps({
       redeemAtomic: vi.fn().mockResolvedValue({
