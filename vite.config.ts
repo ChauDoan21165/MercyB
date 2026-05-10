@@ -365,6 +365,34 @@ export default defineConfig({
           if (isReactPath(s)) return 'react';
           if (s.includes('/node_modules/@supabase/')) return 'supabase';
 
+          // Sentry: @sentry/* packages (react, browser, core, replay,
+          // tracing, feedback, capacitor wrapper, internal helpers).
+          //
+          // Why a dedicated bucket:
+          //   src/lib/monitoring/sentryInit.ts uses `await import("@sentry/react")`
+          //   so Rollup would naturally split it into a lazy chunk. Without
+          //   this rule, the `node_modules → vendor` catch-all below
+          //   re-merges the whole SDK back into vendor.js — which loads on
+          //   every page render, including the homepage with no DSN
+          //   configured. That dragged ~83 KiB gzip of Session Replay code
+          //   into the initial bundle even though Replay is currently OFF
+          //   (see sentryInit.ts header). Splitting here restores the
+          //   intended behavior: Sentry only ships when initSentry() runs.
+          //
+          // Stays a separate chunk even if Replay is later re-enabled —
+          // the integration is still loaded after the first paint.
+          //
+          // @sentry-internal/* are sibling packages (replay, replay-canvas,
+          // feedback, browser-utils) that @sentry/react pulls in. Without
+          // matching them here, they fall into `vendor` and create a
+          // `sentry -> vendor -> sentry` circular chunk warning.
+          if (
+            s.includes('/node_modules/@sentry/') ||
+            s.includes('/node_modules/@sentry-internal/')
+          ) {
+            return 'sentry';
+          }
+
           // Charts: recharts + transitive d3/decimal/immer/redux that
           // recharts hauls in. Keeping these out of `vendor` saves ~210 KB
           // gzip on the home/landing critical path — these libs are only
