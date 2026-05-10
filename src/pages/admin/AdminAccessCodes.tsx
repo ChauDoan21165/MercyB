@@ -81,6 +81,22 @@ export default function AdminAccessCodes() {
     notes: "",
   });
 
+  // Duration preset: maps to days. "lifetime" → -1 (sentinel for no expiration).
+  type DurationPreset = "1m" | "6m" | "1y" | "lifetime";
+  const DURATION_OPTIONS: { value: DurationPreset; label: string; days: number }[] = [
+    { value: "1m", label: "1 month", days: 30 },
+    { value: "6m", label: "6 months", days: 180 },
+    { value: "1y", label: "1 year", days: 365 },
+    { value: "lifetime", label: "Lifetime", days: -1 },
+  ];
+
+  function setDurationPreset(preset: DurationPreset) {
+    const option = DURATION_OPTIONS.find((o) => o.value === preset);
+    if (option) {
+      setNewCode((prev) => ({ ...prev, days: option.days }));
+    }
+  }
+
   useEffect(() => {
     fetchAll();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -154,15 +170,18 @@ export default function AdminAccessCodes() {
 
       const code = generateCodeString();
 
+      const days = Number.isFinite(newCode.days) ? newCode.days : 30;
       const payload: any = {
         app_id: appId,
         code,
         tier_id: newCode.tierId,
-        days: Number.isFinite(newCode.days) ? newCode.days : 30,
+        days,
         max_uses: Number.isFinite(newCode.maxUses) ? newCode.maxUses : 1,
         notes: newCode.notes?.trim() ? newCode.notes.trim() : null,
         created_by: userRes.user.id,
         is_active: true,
+        // Lifetime sentinel: -1 days → expires_at null (no expiration)
+        ...(days === -1 && { expires_at: null }),
       };
 
       const { error } = await supabase.from("access_codes").insert(payload);
@@ -313,18 +332,22 @@ export default function AdminAccessCodes() {
 
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <Label className="text-foreground">Duration (days)</Label>
-                    <Input
-                      type="number"
-                      min={1}
-                      value={newCode.days}
-                      onChange={(e) =>
-                        setNewCode({
-                          ...newCode,
-                          days: parseInt(e.target.value, 10) || 30,
-                        })
-                      }
-                    />
+                    <Label className="text-foreground">Duration</Label>
+                    <Select
+                      value={DURATION_OPTIONS.find((o) => o.days === newCode.days)?.value ?? ""}
+                      onValueChange={(value) => setDurationPreset(value as DurationPreset)}
+                    >
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select duration" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {DURATION_OPTIONS.map((opt) => (
+                          <SelectItem key={opt.value} value={opt.value}>
+                            {opt.label}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
                   </div>
 
                   <div className="space-y-2">
@@ -444,7 +467,13 @@ export default function AdminAccessCodes() {
                         <Badge variant="outline">{getTierName(code.tier_id)}</Badge>
                       </TableCell>
 
-                      <TableCell>{code.days} days</TableCell>
+                      <TableCell>
+                        {code.days === -1
+                          ? "Lifetime"
+                          : code.days >= 365
+                            ? `${Math.round(code.days / 30)} months`
+                            : `${code.days} days`}
+                      </TableCell>
 
                       <TableCell>
                         {(code.used_count ?? 0)} / {code.max_uses}

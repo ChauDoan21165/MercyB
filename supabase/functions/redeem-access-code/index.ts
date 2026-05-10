@@ -86,8 +86,15 @@ Deno.serve(async (req) => {
       ? new Date(existingSub.current_period_end)
       : new Date();
     
+    const days = accessCode.days ?? 30;
+    const isLifetime = days === -1;
     const endDate = new Date(startDate);
-    endDate.setDate(endDate.getDate() + accessCode.days);
+    if (isLifetime) {
+      // Lifetime: set expiration 100 years from now (effectively permanent)
+      endDate.setFullYear(endDate.getFullYear() + 100);
+    } else {
+      endDate.setDate(endDate.getDate() + days);
+    }
 
     let subscriptionId = existingSub?.id;
 
@@ -189,10 +196,12 @@ Deno.serve(async (req) => {
     return new Response(
       JSON.stringify({
         success: true,
-        message: 'Access code redeemed successfully',
+        message: isLifetime
+          ? 'Lifetime access code redeemed successfully'
+          : 'Access code redeemed successfully',
         tier: accessCode.subscription_tiers?.name,
-        days: accessCode.days,
-        valid_until: endDate.toISOString()
+        days: isLifetime ? 'lifetime' : days,
+        valid_until: isLifetime ? 'never' : endDate.toISOString()
       }),
       { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
     );
