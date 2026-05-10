@@ -278,7 +278,7 @@ export default function AdminAccessCodes() {
               </Button>
             </DialogTrigger>
 
-            <DialogContent>
+            <DialogContent className="bg-white dark:bg-neutral-900 text-foreground border-border">
               <DialogHeader>
                 <DialogTitle>Create Access Code</DialogTitle>
                 <DialogDescription>
@@ -288,7 +288,7 @@ export default function AdminAccessCodes() {
 
               <div className="space-y-4 py-4">
                 <div className="space-y-2">
-                  <Label>Subscription Tier</Label>
+                  <Label className="text-foreground">Subscription Tier</Label>
                   <Select
                     value={newCode.tierId}
                     onValueChange={(value) => setNewCode({ ...newCode, tierId: value })}
@@ -313,7 +313,7 @@ export default function AdminAccessCodes() {
 
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <Label>Duration (days)</Label>
+                    <Label className="text-foreground">Duration (days)</Label>
                     <Input
                       type="number"
                       min={1}
@@ -328,7 +328,7 @@ export default function AdminAccessCodes() {
                   </div>
 
                   <div className="space-y-2">
-                    <Label>Max Uses</Label>
+                    <Label className="text-foreground">Max Uses</Label>
                     <Input
                       type="number"
                       min={1}
@@ -344,7 +344,7 @@ export default function AdminAccessCodes() {
                 </div>
 
                 <div className="space-y-2">
-                  <Label>Notes (optional)</Label>
+                  <Label className="text-foreground">Notes (optional)</Label>
                   <Textarea
                     placeholder="Internal notes about this code..."
                     value={newCode.notes}
@@ -487,7 +487,7 @@ export default function AdminAccessCodes() {
 
       {/* Delete confirm (no window.confirm) */}
       <Dialog open={deleteDialogOpen} onOpenChange={setDeleteDialogOpen}>
-        <DialogContent>
+        <DialogContent className="bg-white dark:bg-neutral-900 text-foreground border-border">
           <DialogHeader>
             <DialogTitle>Delete access code</DialogTitle>
             <DialogDescription>
@@ -495,7 +495,7 @@ export default function AdminAccessCodes() {
             </DialogDescription>
           </DialogHeader>
 
-          <div className="text-sm">
+          <div className="text-sm text-foreground">
             <div className="font-semibold">Code</div>
             <div className="mt-1 font-mono text-xs opacity-80">
               {pendingDelete?.code || "—"}
