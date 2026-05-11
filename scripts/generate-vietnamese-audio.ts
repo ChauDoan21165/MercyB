@@ -6,7 +6,7 @@
  * Generates audio ONLY for Vietnamese text — never English, never
  * pronunciation guides.
  *
- * Provider: Google Cloud Text-to-Speech, WaveNet voices (vi-VN-Wavenet-A / B).
+ * Provider: Google Cloud Text-to-Speech, WaveNet voices (vi-VN-Wavenet-A / D).
  * Free tier: 4M chars/month for WaveNet — full Vietnamese corpus
  * (~200K chars) fits comfortably.
  *
@@ -149,12 +149,13 @@ async function getGoogleAuth(): Promise<import("google-auth-library").GoogleAuth
 
 async function googleGenerate(voice: string, text: string): Promise<Buffer | null> {
   // Google Cloud Text-to-Speech, WaveNet voices for Vietnamese.
-  // vi-VN-Wavenet-A = female, vi-VN-Wavenet-B = male.
+  // vi-VN-Wavenet-A = female, vi-VN-Wavenet-D = male.
+  // Chau auditioned both -A and -D and approved this pair specifically.
   // Free tier covers 4M chars/month — the full Vietnamese corpus
   // (~200K chars) costs nothing.
   const speakerName = voice === "thuminh"
     ? "vi-VN-Wavenet-A"
-    : "vi-VN-Wavenet-B";
+    : "vi-VN-Wavenet-D";
 
   // The retry-on-429 logic that wrapped the Zalo call is removed —
   // Google's quota is per-minute and well above what this script
