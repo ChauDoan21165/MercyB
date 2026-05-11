@@ -92,24 +92,24 @@ export function normalizeKoreanLesson(
     level: lesson.level,
     title: { vi: lesson.title_vi, en: lesson.title_en },
     intro: lesson.intro_vi,
-    sentences: lesson.sentences.map((s) => ({
+    sentences: (lesson.sentences ?? []).map((s) => ({
       native: s.korean,
       romanization: s.romanized,
       en: s.en,
       vi: s.vi,
       pronunciationFocus: s.pronunciation_focus,
     })),
-    vocabulary: lesson.vocabulary.map((v) => ({
+    vocabulary: (lesson.vocabulary ?? []).map((v) => ({
       native: v.hangul,
       vi: v.meaning,
     })),
-    dialogue: lesson.dialogue.map((d) => ({
+    dialogue: (lesson.dialogue ?? []).map((d) => ({
       speaker: d.speaker,
       native: d.hangul ?? d.text_ko ?? "",
       en: d.text_en,
       vi: d.text_vi ?? d.meaning,
     })),
-    exercises: lesson.exercises.map(normalizeKoreanExercise),
+    exercises: (lesson.exercises ?? []).map(normalizeKoreanExercise),
     culturalNotesVi: (lesson as any).cultural_notes_vi,
     tipAdviceVi: (lesson as any).tip_advice_vi,
     dialogueLong: (lesson as any).dialogue_long?.map((line: any) => ({

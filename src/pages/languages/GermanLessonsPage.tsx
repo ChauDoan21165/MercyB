@@ -186,13 +186,24 @@ function CategorySection({
         </span>
       </header>
       <ol className="space-y-2">
-        {lessons.map((lesson, idx) => {
-          const normalized = normalizeGermanLesson(lesson, idx + 1);
-          return (
+        {lessons.flatMap((lesson, idx) => {
+          // Defensive: skip rows whose content is malformed rather than
+          // crash the whole category.
+          let normalized;
+          try {
+            normalized = normalizeGermanLesson(lesson, idx + 1);
+          } catch (err) {
+            console.warn(
+              "[GermanLessonsPage] skipping malformed lesson:",
+              err,
+            );
+            return [];
+          }
+          return [
             <li key={lesson.id}>
               <LessonRenderer lesson={normalized} theme={theme} />
-            </li>
-          );
+            </li>,
+          ];
         })}
       </ol>
     </section>
@@ -202,7 +213,8 @@ function CategorySection({
 // ── Phase 2 pilot: per-lesson Supabase fetch ────────────────────────
 
 function FeaturedB2Lesson() {
-  const { lesson, loading, error } = useLessonData("german", "b2", 0);
+  // 1-based lesson_index — matches DB storage. See useLessonData top comment.
+  const { lesson, loading, error } = useLessonData("german", "b2", 1);
   const theme = lessonThemes.german;
 
   if (loading) {
@@ -231,10 +243,17 @@ function FeaturedB2Lesson() {
     );
   }
 
-  const normalized = normalizeGermanLesson(
-    lesson as unknown as GermanLesson,
-    1,
-  );
+  let normalized;
+  try {
+    normalized = normalizeGermanLesson(lesson as unknown as GermanLesson, 1);
+  } catch (err) {
+    console.warn("[FeaturedB2Lesson] malformed lesson content:", err);
+    return (
+      <div className="rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm text-amber-800">
+        Could not render lesson. Please try again.
+      </div>
+    );
+  }
 
   return (
     <div>

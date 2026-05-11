@@ -64,7 +64,18 @@ export default function KoreanLessonsPage() {
     };
   }, [level]);
 
-  const normalized = (lessons ?? []).map((l) => normalizeKoreanLesson(l));
+  // Defensive: one malformed lesson row must not crash the whole level.
+  type Normalized = ReturnType<typeof normalizeKoreanLesson>;
+  const normalized = (lessons ?? [])
+    .map((l): Normalized | null => {
+      try {
+        return normalizeKoreanLesson(l);
+      } catch (err) {
+        console.warn("[KoreanLessonsPage] skipping malformed lesson:", err);
+        return null;
+      }
+    })
+    .filter((x): x is Normalized => x !== null);
 
   return (
     <div className="mx-auto w-full max-w-3xl px-4 py-6">

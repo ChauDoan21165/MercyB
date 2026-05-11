@@ -91,12 +91,12 @@ export function normalizeJapaneseLesson(
     level: lesson.level,
     // Japanese data has only one `title` field; both halves fall back to it.
     title: { vi: lesson.title, en: lesson.title },
-    sentences: lesson.examples.map((e) => ({
+    sentences: (lesson.examples ?? []).map((e) => ({
       native: e.japanese,
       en: e.english,
       pronunciationFocus: e.pronunciation_focus,
     })),
-    vocabulary: lesson.vocabulary.map((v) => ({
+    vocabulary: (lesson.vocabulary ?? []).map((v) => ({
       native: v.japanese,
       en: v.english,
     })),

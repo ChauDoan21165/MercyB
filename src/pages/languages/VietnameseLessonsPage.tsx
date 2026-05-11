@@ -45,13 +45,27 @@ export default function VietnameseLessonsPage() {
 
   const normalized = useMemo(() => {
     if (!lessons) return [];
-    return lessons.map((lesson) => normalizeVietnameseLesson(lesson));
+    // Defensive: one malformed lesson row must not crash the whole level.
+    type Normalized = ReturnType<typeof normalizeVietnameseLesson>;
+    return lessons
+      .map((lesson): Normalized | null => {
+        try {
+          return normalizeVietnameseLesson(lesson);
+        } catch (err) {
+          console.warn(
+            "[VietnameseLessonsPage] skipping malformed lesson:",
+            err,
+          );
+          return null;
+        }
+      })
+      .filter((x): x is Normalized => x !== null);
   }, [lessons]);
 
   const stats = useMemo(() => {
     if (!lessons) return null;
     const phraseCount = lessons.reduce(
-      (sum, lesson) => sum + lesson.phrases.length,
+      (sum, lesson) => sum + (lesson.phrases?.length ?? 0),
       0,
     );
     const dialogueCount = lessons.filter(
