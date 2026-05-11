@@ -98,27 +98,27 @@ export function normalizeChineseLesson(
       native: lesson.title,
       romanization: lesson.pinyin,
     },
-    sentences: lesson.sentences.map((s) => ({
+    sentences: (lesson.sentences ?? []).map((s) => ({
       native: s.chinese,
       romanization: s.pinyin,
       en: s.english,
       vi: s.vi,
       pronunciationFocus: s.pronunciation_focus,
     })),
-    vocabulary: lesson.vocab.map((v) => ({
+    vocabulary: (lesson.vocab ?? []).map((v) => ({
       native: v.chinese,
       romanization: v.pinyin,
       en: v.english,
       vi: v.vi,
     })),
-    dialogue: lesson.dialogue.map((d) => ({
+    dialogue: (lesson.dialogue ?? []).map((d) => ({
       speaker: d.speaker,
       native: d.chinese,
       romanization: d.pinyin,
       en: d.english,
       vi: d.vi,
     })),
-    exercises: lesson.exercises.map(normalizeChineseExercise),
+    exercises: (lesson.exercises ?? []).map(normalizeChineseExercise),
     culturalNotesVi: (lesson as any).cultural_notes_vi,
     tipAdviceVi: (lesson as any).tip_advice_vi,
     dialogueLong: (lesson as any).dialogue_long?.map((line: any) => ({

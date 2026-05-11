@@ -1,5 +1,15 @@
 // src/hooks/useLessonData.ts
 // Fetch lessons from public.lessons. Caches per (language,level,index).
+//
+// Index convention: callers use 1-based lesson_index matching DB storage.
+// The unified rule kills the off-by-one + cache-collision class of bugs:
+//   - `useLessonData(lang, lvl, n)` queries `.eq("lesson_index", n)` directly.
+//   - `fetchLessonsBatch` caches each row under its own `lesson_index`.
+//   - So both fetchers share the same cache namespace; passing `1` always
+//     hits the first lesson whether it came from a batch or a single fetch.
+// The hook returns `row.content` (the JSONB payload), not the raw row.
+// Callers get lesson fields at the top level — no `.content` indirection
+// downstream.
 
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
@@ -45,7 +55,7 @@ export function useLessonData<T = LessonContent>(
           .select("*")
           .eq("language", language)
           .eq("level", level)
-          .eq("lesson_index", index + 1)
+          .eq("lesson_index", index)
           .maybeSingle();
         if (cancelled) return;
         if (queryError) {
@@ -60,7 +70,7 @@ export function useLessonData<T = LessonContent>(
           setLoading(false);
           return;
         }
-        const lessonContent = data as unknown as T;
+        const lessonContent = (data as { content: T }).content;
         lessonCache.set(key, lessonContent as LessonContent);
         setLesson(lessonContent);
         setLoading(false);
@@ -89,7 +99,7 @@ export async function fetchLessonsBatch<T = LessonContent>(
     .eq("language", language)
     .eq("level", level)
     .order("lesson_index", { ascending: true })
-    .limit(500);
+    .limit(1000);
 
   if (error) {
     console.warn("[useLessonData] batch fetch error:", error);
@@ -99,12 +109,15 @@ export async function fetchLessonsBatch<T = LessonContent>(
   if (!data || data.length === 0) return cached;
 
   for (const row of data) {
-    const rowData = row as { language: string; level: string; lesson_index: number };
-    const idx = rowData.lesson_index - 1; // DB is 1-based, cache key is 0-based
+    const rowData = row as { lesson_index: number; content: T };
+    const idx = rowData.lesson_index;
     if (idx != null) {
+      // 1-based key, matching the hook's caller convention. The content
+      // payload is what callers want; the wrapping row metadata
+      // (id, language, level, lesson_index) stays out of the cache.
       const k = cacheKey(language, level, idx);
-      lessonCache.set(k, row as unknown as LessonContent);
-      cached.push(row as unknown as T);
+      lessonCache.set(k, rowData.content as LessonContent);
+      cached.push(rowData.content);
     }
   }
   return cached;

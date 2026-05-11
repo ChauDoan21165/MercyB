@@ -175,14 +175,25 @@ function CategorySection({
         </span>
       </header>
       <ol className="space-y-2">
-        {lessons.map((lesson, i) => (
-          <li key={lesson.id}>
-            <LessonRenderer
-              lesson={normalizeFrenchLesson(lesson, i + 1)}
-              theme={theme}
-            />
-          </li>
-        ))}
+        {lessons.flatMap((lesson, i) => {
+          // Defensive: skip rows whose content is malformed rather than
+          // crash the whole category.
+          let normalized;
+          try {
+            normalized = normalizeFrenchLesson(lesson, i + 1);
+          } catch (err) {
+            console.warn(
+              "[FrenchLessonsPage] skipping malformed lesson:",
+              err,
+            );
+            return [];
+          }
+          return [
+            <li key={lesson.id}>
+              <LessonRenderer lesson={normalized} theme={theme} />
+            </li>,
+          ];
+        })}
       </ol>
     </section>
   );

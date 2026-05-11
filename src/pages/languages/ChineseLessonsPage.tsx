@@ -65,7 +65,18 @@ export default function ChineseLessonsPage() {
     };
   }, [level]);
 
-  const normalized = (lessons ?? []).map((l) => normalizeChineseLesson(l));
+  // Defensive: one malformed lesson row must not crash the whole level.
+  type Normalized = ReturnType<typeof normalizeChineseLesson>;
+  const normalized = (lessons ?? [])
+    .map((l): Normalized | null => {
+      try {
+        return normalizeChineseLesson(l);
+      } catch (err) {
+        console.warn("[ChineseLessonsPage] skipping malformed lesson:", err);
+        return null;
+      }
+    })
+    .filter((x): x is Normalized => x !== null);
 
   return (
     <div className="mx-auto w-full max-w-3xl px-4 py-6">

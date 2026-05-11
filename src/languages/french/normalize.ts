@@ -95,7 +95,7 @@ export function normalizeFrenchLesson(
     id: id ?? hashStringId(lesson.id),
     level: lesson.level,
     title: { vi: lesson.title_vi, en: lesson.title_en },
-    sentences: lesson.sentences.map((s) => ({
+    sentences: (lesson.sentences ?? []).map((s) => ({
       // French content lives in s.en for historical reasons
       native: s.en,
       vi: s.vi,
