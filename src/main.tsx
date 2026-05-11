@@ -66,6 +66,7 @@ import "@/index.css";
 import { supabase } from "@/lib/supabaseClient";
 import { AuthProvider } from "@/providers/AuthProvider";
 import { initSentry, stringLooksLikeExternalNoise } from "@/lib/monitoring/sentryInit";
+import { runConfigHealthCheck } from "@/lib/configHealth";
 import { initializeWebVitals } from "@/lib/perf/webVitalsTracking";
 import { looksLikeChunkLoadFailure as sharedLooksLikeChunkLoadFailure } from "@/lib/chunkLoadError";
 
@@ -90,6 +91,11 @@ try { window.__MB_ENTRY_VERSION__ = MB_ENTRY_VERSION; } catch { /* ignore */ }
 // Sentry — DSN-gated. No-op when VITE_SENTRY_DSN is unset (default today).
 // Called first so the boot IIFEs below are inside the error-capture window.
 initSentry();
+
+// Check external service configuration on startup (non-blocking).
+// Logs to console.warn in dev, sends to Sentry as warning in prod.
+// Catching here so a misbehaving config module can't crash the app.
+void runConfigHealthCheck().catch(() => {});
 
 // Core Web Vitals collection (LCP/FID/CLS/TTFB/FCP/INP). No-op in tests.
 // Records to web_vitals_events + emits a Sentry breadcrumb per metric.
