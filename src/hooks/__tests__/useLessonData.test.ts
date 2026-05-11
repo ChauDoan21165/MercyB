@@ -48,4 +48,21 @@ describe("useLessonData", () => {
     expect(result.current.lesson).toBeNull();
     expect(result.current.error).toBe("Could not load lesson. Please try again.");
   });
+
+  it("returns cached result on second call without hitting Supabase", async () => {
+    const mockLesson = { id: "german_b2_test", title_en: "Test" };
+    mockMaybeSingle.mockResolvedValue({ data: mockLesson, error: null });
+
+    const { result, rerender } = renderHook(() =>
+      useLessonData("german", "b2", 0),
+    );
+
+    await waitFor(() => expect(result.current.loading).toBe(false));
+    expect(result.current.lesson).toEqual(mockLesson);
+
+    rerender();
+
+    // Supabase only called once — second render hits cache
+    expect(mockMaybeSingle).toHaveBeenCalledTimes(1);
+  });
 });
