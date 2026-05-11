@@ -416,6 +416,44 @@ export default function AccountPage() {
     borderColor: "#111827",
   };
 
+  // Amber-accented variant for the gift-code CTA when the user is on
+  // the free tier — makes redemption an obvious next step. Falls back
+  // to the regular button look for premium users (no urgency).
+  const giftPrimaryButton: React.CSSProperties = {
+    ...buttonBase,
+    background: "#fef3c7",
+    color: "#78350f",
+    borderColor: "#f59e0b",
+  };
+
+  // Secondary row container — sits below the primary actions, smaller
+  // gap to signal lower hierarchy.
+  const secondaryActionsStyle: React.CSSProperties = {
+    display: "flex",
+    alignItems: "center",
+    gap: 14,
+    flexWrap: "wrap",
+    marginTop: 12,
+  };
+
+  // Text-link style for low-frequency / troubleshooting actions
+  // (Refresh access, Notification preferences). Smaller, no border,
+  // muted color — visible but doesn't compete with the primary row.
+  const secondaryLink: React.CSSProperties = {
+    background: "transparent",
+    border: "none",
+    color: "#6b7280",
+    fontWeight: 600,
+    fontSize: 12,
+    padding: "4px 2px",
+    cursor: "pointer",
+    appearance: "none",
+    WebkitAppearance: "none",
+    textAlign: "left",
+    textDecoration: "underline",
+    textUnderlineOffset: 3,
+  };
+
   const grid: React.CSSProperties = {
     display: "grid",
     // 2 cols on tablet+, 1 col on phones. CSS media query override applied
@@ -499,28 +537,30 @@ export default function AccountPage() {
               </p>
             </div>
 
+            {/* Primary actions: redeem-gift-code goes first and gets
+                an amber accent for free users (urgency CTA). Billing
+                is a single merged entry (was Billing + Manage billing
+                — the in-app billing page already exposes the manage
+                flow). Pricing + Sign out keep their existing slots.
+                Flag-gated buttons (placement, pronunciation, progress)
+                stay in their original order. */}
             <div style={actionsStyle}>
-              <button type="button" style={buttonBase}
-                onClick={handleRefreshClick} disabled={entitlementLoading}>
-                <BiLabel
-                  en={entitlementLoading ? "Refreshing…" : "Refresh access"}
-                  vi={entitlementLoading ? "Đang làm mới…" : "Làm mới quyền truy cập"}
-                />
+              <button
+                type="button"
+                style={isPremium ? buttonBase : giftPrimaryButton}
+                onClick={() => {
+                  // Defer one tick so this click finishes bubbling before Radix
+                  // mounts the Dialog overlay — otherwise Radix's pointer-down-
+                  // outside handler fires on the same event and closes it.
+                  setTimeout(() => setShowGiftModal(true), 0);
+                }}
+              >
+                <BiLabel en="Redeem gift code" vi="Kích hoạt mã quà tặng" />
               </button>
 
               <button type="button" style={buttonBase}
                 onClick={handleBillingClick} aria-label="Open billing page">
                 <BiLabel en="Billing" vi="Thanh toán" />
-              </button>
-
-              <button type="button" style={buttonBase}
-                onClick={handleManageBillingClick}
-                disabled={isOpeningBilling}
-                aria-label="Open billing portal">
-                <BiLabel
-                  en={isOpeningBilling ? "Opening…" : "Manage billing"}
-                  vi={isOpeningBilling ? "Đang mở…" : "Quản lý thanh toán"}
-                />
               </button>
 
               <button type="button" style={buttonBase} onClick={handlePricingClick}>
@@ -559,19 +599,6 @@ export default function AccountPage() {
                 </button>
               ) : null}
 
-              <button
-                type="button"
-                style={buttonBase}
-                onClick={() => nav("/account/notifications")}
-                aria-label="Notification preferences"
-                data-testid="account-notification-prefs-link"
-              >
-                <BiLabel
-                  en="Notification preferences"
-                  vi="Tùy chọn email"
-                />
-              </button>
-
               {pronunciationFlagEnabled ? (
                 <button
                   type="button"
@@ -598,27 +625,6 @@ export default function AccountPage() {
                   />
                 </button>
               ) : null}
-              {downloadError ? (
-                <p
-                  role="alert"
-                  style={{ color: "#991b1b", fontSize: 12, margin: 0 }}
-                >
-                  {downloadError}
-                </p>
-              ) : null}
-
-              <button
-                type="button"
-                style={buttonBase}
-                onClick={() => {
-                  // Defer one tick so this click finishes bubbling before Radix
-                  // mounts the Dialog overlay — otherwise Radix's pointer-down-
-                  // outside handler fires on the same event and closes it.
-                  setTimeout(() => setShowGiftModal(true), 0);
-                }}
-              >
-                <BiLabel en="Redeem gift code" vi="Kích hoạt mã quà tặng" />
-              </button>
 
               <button type="button" style={primaryButton}
                 onClick={() => void handleSignOut()} disabled={isSigningOut}>
@@ -627,6 +633,47 @@ export default function AccountPage() {
                   vi={isSigningOut ? "Đang đăng xuất…" : "Đăng xuất"}
                 />
               </button>
+            </div>
+
+            {/* Secondary row: low-frequency / troubleshooting actions.
+                Refresh access is a debug affordance; notification
+                preferences is a once-per-user setting. Both demoted
+                to text-link style so they don't compete with the
+                primary actions above. */}
+            <div style={secondaryActionsStyle}>
+              <button
+                type="button"
+                style={secondaryLink}
+                onClick={handleRefreshClick}
+                disabled={entitlementLoading}
+              >
+                <BiLabel
+                  en={entitlementLoading ? "Refreshing…" : "Refresh access"}
+                  vi={entitlementLoading ? "Đang làm mới…" : "Làm mới quyền truy cập"}
+                />
+              </button>
+
+              <button
+                type="button"
+                style={secondaryLink}
+                onClick={() => nav("/account/notifications")}
+                aria-label="Notification preferences"
+                data-testid="account-notification-prefs-link"
+              >
+                <BiLabel
+                  en="Notification preferences"
+                  vi="Tùy chọn email"
+                />
+              </button>
+
+              {downloadError ? (
+                <p
+                  role="alert"
+                  style={{ color: "#991b1b", fontSize: 12, margin: 0 }}
+                >
+                  {downloadError}
+                </p>
+              ) : null}
             </div>
           </div>
         </div>
