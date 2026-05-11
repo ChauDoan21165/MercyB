@@ -1,5 +1,5 @@
 /**
- * Generate Vietnamese lesson audio via FPT.AI and upload to Supabase Storage.
+ * Generate Vietnamese lesson audio via Zalo AI TTS and upload to Supabase Storage.
  *
  * Reads src/languages/vietnamese/lessons.ts directly (different schema from other languages).
  * Generates audio ONLY for Vietnamese text — never English, never pronunciation guides.
@@ -15,7 +15,7 @@
  * so each batch lands under the right prefix without manual config.
  *
  * Required env (.env.local then .env):
- *   FPT_API_KEY
+ *   ZALO_API_KEY
  *   VITE_SUPABASE_URL
  *   SUPABASE_SERVICE_ROLE_KEY
  *
@@ -38,12 +38,12 @@ for (const p of [".env.local", ".env"]) {
   if (existsSync(p)) loadDotenv({ path: p });
 }
 
-const FPT_KEY = process.env.FPT_API_KEY;
+const ZALO_KEY = process.env.ZALO_API_KEY;
 const SUPA_URL = process.env.VITE_SUPABASE_URL;
 const SUPA_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
-if (!FPT_KEY || !SUPA_URL || !SUPA_KEY) {
-  console.error("Missing env: FPT_API_KEY, VITE_SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY");
+if (!ZALO_KEY || !SUPA_URL || !SUPA_KEY) {
+  console.error("Missing env: ZALO_API_KEY, VITE_SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY");
   process.exit(1);
 }
 
@@ -113,33 +113,34 @@ async function existsInBucket(key: string): Promise<boolean> {
   return !!data?.find((f) => f.name === file);
 }
 
-async function fptGenerate(voice: string, text: string): Promise<Buffer | null> {
-  const res = await fetch("https://api.fpt.ai/hmi/tts/v5", {
+async function zaloGenerate(voice: string, text: string): Promise<Buffer | null> {
+  // Zalo AI TTS — synchronous, no polling needed.
+  // speaker_id: 2 = female Northern (thuminh), 4 = male Northern (leminh)
+  const voiceId = voice === "thuminh" ? 2 : 4;
+  const res = await fetch("https://api.zalo.ai/v1/tts/synthesize", {
     method: "POST",
     headers: {
-      "api-key": FPT_KEY!,
-      voice,
-      speed: "0",
-      "Content-Type": "text/plain",
+      "apikey": ZALO_KEY!,
+      "Content-Type": "application/json",
     },
-    body: text,
+    body: JSON.stringify({
+      input: text,
+      speaker_id: voiceId,
+      speed: 1.0,
+    }),
   });
   if (!res.ok) {
-    console.error(`  FPT ${res.status}: ${await res.text()}`);
+    console.error(`  Zalo ${res.status}: ${await res.text().slice(0, 200)}`);
     return null;
   }
-  const json: { async?: string } = await res.json();
-  if (!json.async) {
-    console.error(`  FPT no async URL`);
+  const json: { data?: { url?: string } } = await res.json();
+  if (!json.data?.url) {
+    console.error(`  Zalo no audio URL in response`);
     return null;
   }
-  for (let i = 0; i < 20; i++) {
-    await new Promise((r) => setTimeout(r, 1000));
-    const mp3 = await fetch(json.async);
-    if (mp3.ok) return Buffer.from(await mp3.arrayBuffer());
-  }
-  console.error(`  FPT timeout`);
-  return null;
+  const mp3 = await fetch(json.data.url);
+  if (!mp3.ok) return null;
+  return Buffer.from(await mp3.arrayBuffer());
 }
 
 async function uploadToSupabase(key: string, buf: Buffer): Promise<boolean> {
@@ -179,7 +180,7 @@ async function uploadToSupabase(key: string, buf: Buffer): Promise<boolean> {
     if (await existsInBucket(e.storage_key)) {
       skipped++;
     } else {
-      const buf = await fptGenerate(e.voice, e.text);
+      const buf = await zaloGenerate(e.voice, e.text);
       if (!buf) {
         failed++;
       } else if (await uploadToSupabase(e.storage_key, buf)) {
