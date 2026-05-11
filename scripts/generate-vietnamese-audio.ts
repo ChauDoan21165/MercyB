@@ -20,10 +20,11 @@
  *   SUPABASE_SERVICE_ROLE_KEY
  *
  * Usage:
- *   npx tsx scripts/generate-vietnamese-audio.ts            — full run, all levels
- *   npx tsx scripts/generate-vietnamese-audio.ts --dry-run  — list what would run
- *   npx tsx scripts/generate-vietnamese-audio.ts --limit=5  — first 5 entries
- *   npx tsx scripts/generate-vietnamese-audio.ts --level=B1 — only lessons with level==="B1"
+ *   npx tsx scripts/generate-vietnamese-audio.ts              — full run, all levels
+ *   npx tsx scripts/generate-vietnamese-audio.ts --dry-run    — list what would run
+ *   npx tsx scripts/generate-vietnamese-audio.ts --limit=5    — first 5 entries
+ *   npx tsx scripts/generate-vietnamese-audio.ts --level=B1   — only lessons with level==="B1"
+ *   npx tsx scripts/generate-vietnamese-audio.ts --delay=2000 — ms between successful calls (default 2000)
  */
 
 import { config as loadDotenv } from "dotenv";
@@ -52,6 +53,15 @@ const LIMIT_ARG = args.find((a) => a.startsWith("--limit="));
 const LIMIT = LIMIT_ARG ? parseInt(LIMIT_ARG.split("=")[1]!, 10) : Infinity;
 const LEVEL_ARG = args.find((a) => a.startsWith("--level="));
 const LEVEL_FILTER = LEVEL_ARG ? LEVEL_ARG.split("=")[1]!.trim() : null;
+
+// Per-call throttle in milliseconds, applied after each successful
+// Zalo generation. Default 2000ms — at 2806 manifest entries that's a
+// ~93-minute floor for a full run, which keeps the script well under
+// Zalo's rate-limit ceiling. Override with --delay=<ms> for tuning;
+// values < 0 are clamped to 0 (effectively disables the throttle).
+const DELAY_ARG = args.find((a) => a.startsWith("--delay="));
+const PARSED_DELAY = DELAY_ARG ? parseInt(DELAY_ARG.split("=")[1]!, 10) : 2000;
+const DELAY_MS = Number.isFinite(PARSED_DELAY) && PARSED_DELAY > 0 ? PARSED_DELAY : 0;
 
 const VOICES = ["thuminh", "leminh"] as const;
 
@@ -147,7 +157,10 @@ async function zaloGenerate(voice: string, text: string): Promise<Buffer | null>
   // are honoured because Zalo sometimes returns the error in the body
   // with HTTP 200 and sometimes at the status-code layer.
   const MAX_ATTEMPTS = 3;
-  const RETRY_DELAY_MS = 2000;
+  // 5 s between retries — Zalo's rate-limit window typically clears in
+  // a few seconds; flat 5 s gives the bucket time to refill without
+  // stretching the script's tail latency past tolerance.
+  const RETRY_DELAY_MS = 5000;
   for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt++) {
     const res = await fetch("https://api.zalo.ai/v1/tts/synthesize", {
       method: "POST",
@@ -237,11 +250,12 @@ async function uploadToSupabase(key: string, buf: Buffer): Promise<boolean> {
       } else if (await uploadToSupabase(e.storage_key, buf)) {
         done++;
         chars += e.text.length;
-        // Throttle: 500ms gap after each successful Zalo call. Keeps
-        // the script under Zalo's rate-limit threshold and gives the
-        // server breathing room. Only after success — skip and fail
-        // paths cost nothing on Zalo's side.
-        await new Promise((r) => setTimeout(r, 500));
+        // Throttle: DELAY_MS gap after each successful Zalo call.
+        // Default 2000 ms; override with --delay=<ms>. Only after
+        // success — skip and fail paths cost nothing on Zalo's side.
+        if (DELAY_MS > 0) {
+          await new Promise((r) => setTimeout(r, DELAY_MS));
+        }
       } else {
         failed++;
       }
