@@ -233,6 +233,56 @@ export const TOEFL_WRITING_TOPICS: TOEFLWritingTopic[] = [
     recommended_minutes: 20,
     min_words: 150,
   },
+  {
+    id: "integrated_bee_colony_collapse",
+    task_type: "integrated",
+    topic_title_vi: "Suy giảm quần thể ong và nguyên nhân",
+    topic_title_en: "Bee colony collapse and its causes",
+    description_vi:
+      "Bài đọc đề xuất ba nguyên nhân chính cho việc suy giảm quần thể ong mật. Bài giảng phản biện từng nguyên nhân.",
+    description_en:
+      "The reading proposes three main causes of honeybee colony decline. The lecture challenges each one in turn.",
+    prompt_vi:
+      "Tóm tắt các điểm chính trong bài giảng và giải thích cách chúng phản biện ba nguyên nhân được nêu trong bài đọc.",
+    prompt_en:
+      "Summarize the main points in the lecture, explaining how they challenge the three causes proposed in the reading.",
+    integrated: {
+      reading_passage:
+        "Since around 2006, beekeepers across North America and Europe have reported sudden, large-scale losses of honeybee colonies — a phenomenon often called Colony Collapse Disorder, or CCD. Three main causes are widely cited. First, neonicotinoid pesticides, introduced in the 1990s, are toxic to bees and have been correlated with population declines wherever they are heavily used. Second, the parasitic Varroa mite, which spread globally in the late twentieth century, weakens individual bees and transmits viruses through colonies. Third, large-scale agricultural monoculture has reduced the diversity of flowering plants available to bees, leaving them with limited and seasonally uneven food sources. The reading argues that targeted action against these three causes — banning the most harmful pesticides, controlling Varroa infestations, and restoring floral diversity — would substantially reverse the decline.",
+      lecture_transcript:
+        "The reading's three-cause framework, while widely repeated in the popular press, oversimplifies what is actually happening with honeybee populations.\n\nTake the neonicotinoid argument first. The European Union banned the most contested neonicotinoids — clothianidin, imidacloprid, and thiamethoxam — for outdoor agricultural use in 2018. If pesticides were the primary driver of colony losses, we would expect bee populations in Europe to have rebounded substantially in the years since. The actual data are far more mixed. Some regions have seen modest improvements, others have continued to decline, and overall European colony loss rates have not changed dramatically. So while neonicotinoids are a real stressor, they cannot be the dominant cause the reading suggests.\n\nThe Varroa mite point is also more complicated than the reading admits. Varroa has been present in commercial beekeeping for over thirty years, well before the dramatic CCD losses began around 2006. Beekeepers had already developed working management strategies — chemical treatments, hygienic queen bee strains, monitoring protocols. So while Varroa contributes to baseline colony losses, it doesn't explain the surge in losses that occurred after 2006.\n\nFinally, monoculture. The reading is right that floral diversity matters, but the most affected colonies in CCD are not those of small backyard beekeepers in agricultural landscapes — they are commercial operations whose bees are TRUCKED in massive numbers from one monoculture to another. The migratory stress, the constant exposure to mixed pesticide cocktails at multiple sites, and the spread of pathogens between colonies during transport may matter more than the monoculture diet itself.\n\nSo what's the alternative view? Most current research suggests that CCD is best understood not as the result of three discrete causes, but as a chronic interaction effect: bees stressed by Varroa, malnourished from poor forage, and weakened by sublethal pesticide exposure become unusually vulnerable to viral epidemics that healthy colonies would survive. Targeted action on any single factor — banning one pesticide, treating one mite — produces only modest gains, because the underlying problem is the combination, not any single cause.",
+      lecture_relationship: "challenges",
+      prompt_question:
+        "Summarize the points made in the lecture, explaining how they challenge the specific causes and policy recommendations made in the reading.",
+    },
+    writing_instruction_vi:
+      "Viết bài tóm tắt 150–225 từ. Không đưa ý kiến cá nhân.",
+    writing_instruction_en:
+      "Write a summary of 150–225 words. Do not give your personal opinion.",
+    approach_outline_vi: [
+      "Đoạn 1 (Intro): Reading nêu 3 nguyên nhân CCD: neonicotinoids, Varroa mite, monoculture. Lecture phản biện từng cái và đề xuất framework khác (interaction effect).",
+      "Đoạn 2: Reading nói neonicotinoids là driver chính → Lecture: EU ban từ 2018 nhưng colony losses không giảm đáng kể, nên neonicotinoids không phải nguyên nhân thống trị.",
+      "Đoạn 3: Reading nhấn mạnh Varroa → Lecture: Varroa có >30 năm, trước cả CCD 2006, nên không giải thích được surge sau 2006.",
+      "Đoạn 4: Reading dùng monoculture → Lecture chỉ ra commercial operations migratory + pesticide cocktails + pathogen spread quan trọng hơn diet.",
+      "Đoạn 5 (kết luận): Lecture cho rằng CCD là interaction effect (Varroa + malnutrition + sublethal pesticide → viral epidemics), không phải 3 nguyên nhân riêng biệt.",
+    ],
+    vietnamese_speaker_tips: [
+      TIP_POINT_BY_POINT,
+      TIP_NOT_OPINION,
+      "'Sublethal' (dưới ngưỡng gây chết) là từ kỹ thuật C1 — hữu ích để mô tả pesticide effect.",
+      "Cấu trúc 'X is best understood not as A but as B' — diễn đạt sự thay đổi paradigm rất hay.",
+      "Khi reading liệt kê các điểm và lecture phản biện từng cái, dùng 'In response to the first claim…', 'On the second point…', 'Regarding the third…'.",
+    ],
+    key_vocabulary: [
+      { word: "neonicotinoid", translation_vi: "thuốc trừ sâu nhóm neonicotinoid", pronunciation_ipa: "/ˌniː.oʊˈnɪk.ə.t̬ə.nɔɪd/", level: "C1" },
+      { word: "monoculture", translation_vi: "canh tác độc canh (một loại cây)", pronunciation_ipa: "/ˈmɑː.noʊˌkʌl.tʃɚ/", level: "C1" },
+      { word: "sublethal", translation_vi: "dưới ngưỡng gây chết", pronunciation_ipa: "/ˌsʌbˈliː.θəl/", level: "C1" },
+      { word: "infestation", translation_vi: "sự nhiễm (sâu, ký sinh)", pronunciation_ipa: "/ˌɪn.fɛsˈteɪ.ʃən/", level: "C1" },
+      { word: "rebound", translation_vi: "hồi phục, bật lại", pronunciation_ipa: "/rɪˈbaʊnd/", level: "B2" },
+    ],
+    recommended_minutes: 20,
+    min_words: 150,
+  },
 
   // ═══ Task 2 — Academic Discussion ═══
   {

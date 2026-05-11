@@ -428,6 +428,186 @@ export const TOEFL_SPEAKING_TOPICS: TOEFLSpeakingTopic[] = [
       { word: "skeptic", translation_vi: "người hoài nghi", pronunciation_ipa: "/ˈskɛp.tɪk/", level: "C1" },
     ],
   },
+
+  // ═══ Task 1 — Independent Speaking (added) ═══
+  {
+    id: "speaking_task1_university_pe_requirement",
+    task_number: 1,
+    task_type: "independent",
+    topic_title_vi: "Đại học có nên bắt buộc môn thể dục?",
+    topic_title_en: "Should universities require physical education?",
+    description_vi:
+      "Một số đại học bắt buộc tất cả sinh viên hoàn thành ít nhất một học kỳ thể dục. Bạn đồng ý hay phản đối?",
+    description_en:
+      "Some universities require all students to complete at least one semester of physical education. Do you agree or disagree?",
+    prompt_vi:
+      "Một số đại học có quy định bắt buộc tất cả sinh viên phải hoàn thành ít nhất một học kỳ thể dục để tốt nghiệp. Bạn đồng ý hay phản đối quy định này? Giải thích lý do với ví dụ cụ thể.",
+    prompt_en:
+      "Some universities require all students to complete at least one semester of physical education in order to graduate. Do you agree or disagree with this requirement? Explain with specific reasons and examples.",
+    preparation_seconds: 15,
+    speaking_seconds: 45,
+    sample_response_en:
+      "I disagree with making physical education a graduation requirement, for two reasons. First, university students are adults, and they should be trusted to manage their own health choices. Forcing them to take a class they didn't choose can actually create resentment toward exercise rather than enthusiasm for it. Second, the time and tuition spent on a required PE course would, for many students, be better spent on courses directly related to their major or career goals. A computer science student paying for a semester of badminton, for example, is paying real money for something they could practice for free at the campus gym in their own time. I do think universities should make exercise opportunities widely available — free gym access, intramural leagues, fitness classes — but availability is different from mandate. Respecting students' autonomy is more likely to produce healthy adults than compelling them.",
+    sample_response_band5_en:
+      "I disagree this rule. Because students already very busy. They have many homework, projects, exams. Adding PE class is too much. Also, students can do exercise by themself. They can go gym, play sport with friends. Don't need teacher tell them. So university should not require this class. Students should have freedom to choose what they want to study.",
+    band5_error_notes_vi: [
+      "'I disagree this rule' — thiếu giới từ: 'I disagree WITH this rule'.",
+      "'students already very busy' — thiếu động từ to be: 'students are already very busy'.",
+      "'many homework' — homework là uncountable, đúng là 'a lot of homework'.",
+      "'do exercise by themself' — 'themselves' số nhiều, không phải 'themself'.",
+      "'go gym' — thiếu mạo từ và giới từ: 'go to the gym'.",
+    ],
+    vietnamese_speaker_tips: [
+      TIP_TEMPLATE,
+      TIP_FINAL_CONSONANTS,
+      "'Mandate' và 'requirement' là từ học thuật cao — dùng được sẽ tăng điểm vocabulary.",
+      "Cấu trúc nâng cao: 'X is different from Y' — 'availability is different from mandate' nghe sang hơn 'X and Y are not the same'.",
+    ],
+    key_vocabulary: [
+      { word: "mandate", translation_vi: "quy định bắt buộc", pronunciation_ipa: "/ˈmæn.deɪt/", level: "C1" },
+      { word: "autonomy", translation_vi: "quyền tự chủ", pronunciation_ipa: "/ɔːˈtɑː.nə.mi/", level: "C1" },
+      { word: "intramural", translation_vi: "(thể thao) nội bộ trường", pronunciation_ipa: "/ˌɪn.trəˈmjʊr.əl/", level: "C1" },
+      { word: "compel", translation_vi: "ép buộc", pronunciation_ipa: "/kəmˈpɛl/", level: "B2" },
+    ],
+  },
+
+  // ═══ Task 2 — Integrated: Campus Situation (added) ═══
+  {
+    id: "speaking_task2_campus_solar_panels",
+    task_number: 2,
+    task_type: "integrated_campus",
+    topic_title_vi: "Lắp tấm pin mặt trời trên mái ký túc xá",
+    topic_title_en: "Solar panels on dormitory roofs",
+    description_vi:
+      "Đọc thông báo của trường và nghe hai sinh viên thảo luận. Tóm tắt ý kiến của sinh viên nam và lý do.",
+    description_en:
+      "Read the university announcement and listen to two students discussing it. Summarize the male student's opinion and the reasons he gives.",
+    prompt_vi:
+      "Bài đọc: Trường vừa công bố kế hoạch lắp tấm pin mặt trời trên mái tất cả các ký túc xá vào mùa hè tới. Bài nghe: hai sinh viên thảo luận. Tóm tắt ý kiến của sinh viên nam và hai lý do anh ấy đưa ra.",
+    prompt_en:
+      "Reading: The university has announced a plan to install solar panels on the roofs of all dormitories next summer. Listening: two students discuss the announcement. Summarize the male student's opinion of the plan and the two reasons he gives for that opinion.",
+    reading_passage:
+      "ANNOUNCEMENT FROM THE OFFICE OF SUSTAINABILITY: As part of the university's commitment to reducing its carbon footprint, solar panels will be installed on the roofs of all 14 residential dormitories during the upcoming summer break. The installation is projected to cover approximately 35 percent of the dormitories' annual electricity demand and is expected to pay for itself through reduced utility costs within 12 years. The project is funded by a state grant for renewable energy infrastructure and will not result in any increase to student housing fees. Some construction noise during the summer is anticipated; students remaining on campus over the summer should expect roof-area work between 8:00 a.m. and 4:00 p.m. on weekdays.",
+    listening_transcript:
+      "FEMALE STUDENT: Hey, did you see the email about solar panels going on all the dorms?\nMALE STUDENT: Yeah, I'm actually really pleased about it. I've been wondering when they'd do something visible like this.\nFEMALE STUDENT: You think it's a good idea?\nMALE STUDENT: Definitely. Two main reasons. First — the email talks about reducing the carbon footprint, but I think the more important effect is symbolic. When a thousand prospective students tour campus next fall and see solar panels everywhere, that sends a message about what the university actually values. It's not just a marketing brochure claim about sustainability — it's a visible commitment.\nFEMALE STUDENT: Hm, I hadn't thought about it that way.\nMALE STUDENT: And the second reason is the financial part. They said it pays for itself in twelve years through utility savings, and the installation is funded by a state grant. So it's not coming out of housing fees. The university gets cheaper electricity for decades after that — money that can go into financial aid or research. It's the kind of decision that looks expensive in year one but pays off enormously over twenty or thirty years.\nFEMALE STUDENT: I'm a little worried about the construction noise this summer, though.\nMALE STUDENT: Sure, that part is annoying for anyone staying on campus. But it's a one-time cost for a benefit that lasts decades. Hard to see that as a real downside.",
+    preparation_seconds: 30,
+    speaking_seconds: 60,
+    sample_response_en:
+      "The university has announced that solar panels will be installed on all 14 dormitory roofs this summer, funded by a state grant. The male student is strongly in favor of the plan, and he gives two reasons. First, he believes the symbolic value of the panels matters even more than the carbon reduction itself. He thinks that when prospective students visit campus and see visible solar infrastructure, it demonstrates that the university's commitment to sustainability is real, not just a marketing claim. Second, he sees it as a sound financial decision. The installation is funded externally by a state grant, so housing fees won't increase, and the panels will pay for themselves in twelve years. After that, the university benefits from decades of reduced electricity costs, which can be redirected to financial aid or research. He acknowledges the summer construction noise will be inconvenient but considers it a one-time cost for a benefit lasting decades.",
+    sample_response_band5_en:
+      "The university plan to put solar panel on all dormitory roof. The man student agree with this plan. He give two reason. First reason is symbolic. When other students come visit, they see the panel and think university care about environment. Second reason is money. The panel pay for itself in twelve year. Also the government give money for install. So student no need pay more. The man student think it is good idea, even there is noise in summer.",
+    band5_error_notes_vi: [
+      "'plan to put solar panel' — thiếu mạo từ + thiếu plural: 'plans to put solar panels'.",
+      "'The man student' — không tự nhiên. Đúng: 'The male student'.",
+      "'agree with' đúng nhưng 'agree with this plan' nên thay bằng 'is in favor of the plan'.",
+      "'He give two reason' — sai chia động từ + plural: 'He gives two reasons'.",
+      "'pay for itself in twelve year' — thiếu plural và article: 'will pay for itself within twelve years'.",
+    ],
+    vietnamese_speaker_tips: [
+      TIP_SUMMARIZE,
+      TIP_TIME_MANAGEMENT,
+      "Task 2 luôn cần đề cập CẢ READING + LISTENING. Nhiều sinh viên Việt chỉ nói LISTENING — bị trừ điểm vì thiếu summary của reading.",
+      "Cấu trúc 'in favor of' nghe học thuật hơn 'agree with'. Tập dùng các collocation chính: 'in favor of', 'opposed to', 'concerned about', 'enthusiastic about'.",
+    ],
+    key_vocabulary: [
+      { word: "carbon footprint", translation_vi: "dấu chân carbon (lượng phát thải)", pronunciation_ipa: "/ˈkɑːr.bən ˈfʊt.prɪnt/", level: "B2" },
+      { word: "infrastructure", translation_vi: "cơ sở hạ tầng", pronunciation_ipa: "/ˈɪn.frəˌstrʌk.tʃɚ/", level: "B2" },
+      { word: "symbolic", translation_vi: "có tính biểu tượng", pronunciation_ipa: "/sɪmˈbɑː.lɪk/", level: "B2" },
+      { word: "redirect", translation_vi: "chuyển hướng (tài nguyên)", pronunciation_ipa: "/ˌriː.dəˈrɛkt/", level: "B2" },
+    ],
+  },
+
+  // ═══ Task 3 — Integrated: Academic (added) ═══
+  {
+    id: "speaking_task3_framing_effect",
+    task_number: 3,
+    task_type: "integrated_academic",
+    topic_title_vi: "Hiệu ứng đóng khung (framing effect)",
+    topic_title_en: "The framing effect",
+    description_vi:
+      "Đọc đoạn về hiệu ứng đóng khung và nghe ví dụ của giáo sư. Giải thích khái niệm bằng các ví dụ trong bài giảng.",
+    description_en:
+      "Read about the framing effect and listen to the professor's examples. Explain the concept using the examples from the lecture.",
+    prompt_vi:
+      "Bài đọc giới thiệu khái niệm 'framing effect' trong kinh tế học hành vi. Giáo sư đưa ra hai ví dụ minh họa. Giải thích framing effect bằng các ví dụ giáo sư đã đưa.",
+    prompt_en:
+      "The reading introduces the concept of the 'framing effect' in behavioral economics. The professor gives two examples. Explain the framing effect using the examples the professor provides.",
+    reading_passage:
+      "THE FRAMING EFFECT. The framing effect is a cognitive bias in which people's choices are influenced by HOW information is presented rather than by the underlying facts themselves. Two descriptions that are mathematically equivalent can produce systematically different decisions if one is phrased in terms of gains and the other in terms of losses, or if one emphasizes a different reference point. The framing effect challenges classical economic theory, which assumes that rational decision-makers respond only to the substance of information, not its presentation.",
+    listening_transcript:
+      "PROFESSOR: Let me give you two clean examples that show the framing effect in action.\n\nThe first comes from medical decision-making. Imagine you're considering a surgery for a serious condition, and the doctor says, 'Of patients who undergo this surgery, ninety percent are alive five years later.' Most people would consent. Now imagine the doctor says, 'Of patients who undergo this surgery, ten percent die within five years.' These two statements describe exactly the same outcome. But experimental studies show that patients are significantly less likely to consent to surgery when the second framing is used — even when they're explicitly told the statistics are identical. The 'die' frame triggers a stronger emotional response than the 'alive' frame, and that emotional response shifts the decision.\n\nThe second example comes from a classic study by Tversky and Kahneman about a hypothetical disease outbreak. Subjects were told that an unusual disease was expected to kill 600 people, and asked to choose between two programs. Half the subjects saw the choice framed as gains: Program A would save 200 lives for sure; Program B has a one-third chance of saving all 600 and a two-thirds chance of saving none. Most chose Program A — the certain gain. The other half of subjects saw the same choice framed as losses: Program A would result in 400 deaths for sure; Program B has a one-third chance that nobody dies and a two-thirds chance that 600 die. Now most chose Program B — the gamble. The two scenarios are mathematically identical. But framing the same outcomes as 'lives saved' versus 'lives lost' completely flipped the preference.",
+    preparation_seconds: 30,
+    speaking_seconds: 60,
+    sample_response_en:
+      "The framing effect is a cognitive bias where people's decisions change based on how information is presented, even when the underlying facts are identical. The professor illustrates this with two examples. The first involves a medical decision. When a doctor says ninety percent of surgery patients are alive after five years, most patients agree to the surgery. But when the same outcome is described as ten percent dying within five years, far fewer agree — even though the statistics are mathematically the same. The 'death' framing produces a stronger emotional reaction. The second example is from a famous Tversky and Kahneman experiment about a disease outbreak. When the choice was framed as 'lives saved,' people preferred a certain gain — Program A saving 200 for sure. When the same choice was framed as 'lives lost,' people preferred to gamble — Program B with a chance no one dies. The mathematics is identical in both versions, but the framing — gains versus losses — completely reverses the preference. Together, these examples show how framing, not facts, often drives real decisions.",
+    sample_response_band5_en:
+      "Framing effect mean people decide different by how information present. Professor give two example. First example is doctor talk about surgery. If doctor say ninety percent live, patient agree. If doctor say ten percent die, patient not agree. But same number. Second example is disease. People can choose program A or B. If frame as save life, people choose A safe option. If frame as lose life, people choose B gamble. Same situation but different choice. So framing very important.",
+    band5_error_notes_vi: [
+      "'Framing effect mean' — sai số: 'The framing effect MEANS' (chủ ngữ số ít cần -s).",
+      "'how information present' — thiếu trợ động từ: 'how information IS presented'.",
+      "'Professor give two example' — sai chia động từ + plural: 'The professor gives two examples'.",
+      "'doctor talk about' — sai chia động từ: 'the doctor talks about'.",
+      "'patient not agree' — thiếu trợ động từ: 'the patient DOES NOT agree' hoặc 'patients do not agree'.",
+    ],
+    vietnamese_speaker_tips: [
+      TIP_SUMMARIZE,
+      TIP_TIME_MANAGEMENT,
+      "Task 3 academic concept yêu cầu định nghĩa concept TRƯỚC, rồi mới giải thích bằng ví dụ. Đừng nhảy thẳng vào ví dụ.",
+      "'Mathematically equivalent' / 'mathematically identical' là collocation hữu ích cho concept-explanation tasks.",
+      "Khi nói về psychology experiment, dùng cấu trúc 'Researchers found that…' hoặc 'Studies showed that…' — chuẩn academic.",
+    ],
+    key_vocabulary: [
+      { word: "cognitive bias", translation_vi: "thiên kiến nhận thức", pronunciation_ipa: "/ˈkɑːɡ.nə.t̬ɪv ˈbaɪ.əs/", level: "C1" },
+      { word: "frame", translation_vi: "đóng khung, trình bày (theo cách nào đó)", pronunciation_ipa: "/freɪm/", level: "B2" },
+      { word: "consent", translation_vi: "đồng ý (chính thức)", pronunciation_ipa: "/kənˈsɛnt/", level: "B2" },
+      { word: "gamble", translation_vi: "đánh bạc, lựa chọn rủi ro", pronunciation_ipa: "/ˈɡæm.bəl/", level: "B2" },
+    ],
+  },
+
+  // ═══ Task 4 — Integrated: Lecture-only (added) ═══
+  {
+    id: "speaking_task4_dark_energy",
+    task_number: 4,
+    task_type: "integrated_lecture",
+    topic_title_vi: "Năng lượng tối",
+    topic_title_en: "Dark energy",
+    description_vi:
+      "Nghe đoạn giảng về năng lượng tối. Tóm tắt khái niệm và bằng chứng giáo sư đưa ra.",
+    description_en:
+      "Listen to a short lecture about dark energy. Summarize the concept and the evidence the professor presents.",
+    prompt_vi:
+      "Sử dụng các điểm chính từ bài giảng, giải thích năng lượng tối là gì và bằng chứng nào đã dẫn các nhà khoa học đến giả thuyết này.",
+    prompt_en:
+      "Using the points from the lecture, explain what dark energy is and what evidence led scientists to propose it.",
+    listening_transcript:
+      "PROFESSOR: Until 1998, almost every astronomer assumed that the expansion of the universe — first observed by Edwin Hubble in the 1920s — must be slowing down over time. The reasoning seemed straightforward. Gravity pulls all matter together. So even though the universe is expanding from the Big Bang, gravity should be acting as a brake, gradually decelerating that expansion.\n\nThen, in 1998, two independent research teams measured the brightness of distant Type 1a supernovae — extremely bright stellar explosions whose intrinsic luminosity is well known, which makes them excellent distance markers across the universe. The teams expected to find that the most distant supernovae appeared a little brighter than they would in a steadily expanding universe — because the universe should have been expanding faster in the past, before gravity slowed it down. Instead, they found the opposite. The distant supernovae were FAINTER than expected. This meant that the expansion of the universe was not slowing down at all. It was speeding up.\n\nThis was one of the most surprising discoveries in modern physics. To explain it, theorists proposed that some unknown energy must be filling all of space, exerting a kind of negative pressure that overpowers gravity at the largest scales. They called it dark energy — 'dark' because we cannot detect it directly, only its effects. Independent measurements since 1998 — from the cosmic microwave background, from large-scale galaxy surveys, from gravitational lensing — have all converged on the same conclusion: roughly sixty-eight percent of the total energy content of the universe consists of this mysterious dark energy. Yet despite a quarter century of effort, we still don't know what it actually IS. It remains one of the largest unsolved problems in physics.",
+    preparation_seconds: 20,
+    speaking_seconds: 60,
+    sample_response_en:
+      "The professor explains dark energy as a mysterious form of energy that fills all of space and causes the universe's expansion to accelerate, rather than slow down. Until 1998, scientists assumed the expansion would gradually decelerate because gravity pulls matter together. The key evidence came that year, when two research teams measured the brightness of distant Type 1a supernovae. These supernovae have a known intrinsic brightness, so they work as cosmic distance markers. The teams expected the most distant supernovae to appear slightly brighter than predicted — because the universe should have been expanding faster in the past. Instead, the supernovae appeared FAINTER than expected, meaning the expansion was actually accelerating. To explain this, scientists proposed that an unknown energy fills space and exerts a negative pressure that overpowers gravity at large scales. They named it dark energy because its effects are visible but the energy itself cannot be detected directly. Subsequent measurements from the cosmic microwave background and galaxy surveys have confirmed that dark energy makes up about sixty-eight percent of the universe's total energy content, although its true nature remains unknown.",
+    sample_response_band5_en:
+      "Dark energy is energy in space. Before, scientists think universe expand slow down because gravity. But in 1998, scientist measure supernova and see they are not bright enough. So expansion is fast, not slow. Scientists not understand why, so they call this energy dark energy. Other measurement also support this idea. Dark energy is sixty-eight percent of universe but we don't know what it is. It is big mystery in physics.",
+    band5_error_notes_vi: [
+      "'scientists think universe expand' — sai chia động từ và thiếu mạo từ: 'scientists thought the universe was expanding'.",
+      "'see they are not bright enough' — câu cụt ý: 'and saw that they were not as bright as expected'.",
+      "'expansion is fast, not slow' — quá đơn giản: 'the expansion was actually accelerating, not decelerating'.",
+      "'scientists not understand' — thiếu trợ động từ: 'scientists do not understand' hoặc 'did not understand'.",
+      "'big mystery' — thiếu mạo từ + nâng cấp vocab: 'one of the largest unsolved problems in physics'.",
+    ],
+    vietnamese_speaker_tips: [
+      TIP_SUMMARIZE,
+      TIP_TIME_MANAGEMENT,
+      "Task 4 chỉ có lecture (không có reading), nên cấu trúc thường là: concept → evidence → consequence. Theo dõi 3 lớp này khi note.",
+      "Số liệu khoa học (1998, 68%) và tên kỹ thuật (Type 1a supernovae) là điểm cộng — ghi và dùng lại trong response.",
+      "'Counterintuitive' / 'unexpected' / 'surprising' là từ tốt khi mô tả phát hiện khoa học bất ngờ.",
+    ],
+    key_vocabulary: [
+      { word: "decelerate", translation_vi: "giảm tốc, chậm lại", pronunciation_ipa: "/ˌdiːˈsɛl.ə.reɪt/", level: "C1" },
+      { word: "supernova", translation_vi: "siêu tân tinh (vụ nổ sao)", pronunciation_ipa: "/ˌsuː.pɚˈnoʊ.və/", level: "C1" },
+      { word: "intrinsic", translation_vi: "vốn có, nội tại", pronunciation_ipa: "/ɪnˈtrɪn.zɪk/", level: "C1" },
+      { word: "converge", translation_vi: "hội tụ, đồng quy", pronunciation_ipa: "/kənˈvɝːdʒ/", level: "C1" },
+    ],
+  },
 ];
 
 export function findTOEFLSpeakingTopicById(
