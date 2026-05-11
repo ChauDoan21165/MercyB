@@ -45,7 +45,7 @@ export function useLessonData<T = LessonContent>(
           .select("*")
           .eq("language", language)
           .eq("level", level)
-          .eq("lesson_index", index)
+          .eq("lesson_index", index + 1)
           .maybeSingle();
         if (cancelled) return;
         if (queryError) {
@@ -100,7 +100,7 @@ export async function fetchLessonsBatch<T = LessonContent>(
 
   for (const row of data) {
     const rowData = row as { language: string; level: string; lesson_index: number };
-    const idx = rowData.lesson_index;
+    const idx = rowData.lesson_index - 1; // DB is 1-based, cache key is 0-based
     if (idx != null) {
       const k = cacheKey(language, level, idx);
       lessonCache.set(k, row as unknown as LessonContent);
