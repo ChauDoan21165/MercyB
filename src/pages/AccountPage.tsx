@@ -521,6 +521,92 @@ export default function AccountPage() {
       `}</style>
       <div style={container}>
 
+        {/* Free-tier gift-code banner. Shown only when the entitlement
+            has resolved AND the user is non-premium so it doesn't
+            flash in for premium users while loading. Tapping the CTA
+            opens the same GiftCodeModal as the in-card button below;
+            the setTimeout(0) defers the open so this click finishes
+            bubbling before Radix mounts the Dialog overlay. */}
+        {!entitlementLoading && !isPremium ? (
+          <div
+            role="region"
+            aria-label="Have a gift code"
+            data-testid="account-gift-banner"
+            style={{
+              borderRadius: 16,
+              padding: "14px 16px",
+              marginBottom: 12,
+              background:
+                "linear-gradient(135deg, #fef3c7 0%, #fde68a 100%)",
+              border: "1px solid #f59e0b",
+              display: "flex",
+              alignItems: "center",
+              gap: 12,
+              flexWrap: "wrap",
+            }}
+          >
+            <div
+              aria-hidden="true"
+              style={{
+                fontSize: 28,
+                lineHeight: 1,
+                flexShrink: 0,
+              }}
+            >
+              🎁
+            </div>
+            <div style={{ flex: "1 1 220px", minWidth: 0 }}>
+              <p
+                style={{
+                  margin: 0,
+                  fontWeight: 800,
+                  fontSize: 15,
+                  color: "#78350f",
+                  lineHeight: 1.3,
+                }}
+              >
+                Bạn có mã quà tặng?
+              </p>
+              <p
+                style={{
+                  margin: "2px 0 0",
+                  fontWeight: 600,
+                  fontSize: 13,
+                  color: "#92400e",
+                  lineHeight: 1.3,
+                }}
+              >
+                Have a gift code?
+              </p>
+            </div>
+            <button
+              type="button"
+              onClick={() => {
+                setTimeout(() => setShowGiftModal(true), 0);
+              }}
+              data-testid="account-gift-banner-cta"
+              style={{
+                borderRadius: 10,
+                border: "1px solid #78350f",
+                background: "#78350f",
+                color: "#fffbeb",
+                fontWeight: 800,
+                fontSize: 13,
+                padding: "10px 16px",
+                minHeight: 40,
+                cursor: "pointer",
+                appearance: "none",
+                WebkitAppearance: "none",
+                userSelect: "none",
+                whiteSpace: "nowrap",
+                flexShrink: 0,
+              }}
+            >
+              Kích hoạt ngay · Redeem now
+            </button>
+          </div>
+        ) : null}
+
         {/* ── Header card ─────────────────────────────────────── */}
         <div style={card}>
           <div style={headerRow}>
