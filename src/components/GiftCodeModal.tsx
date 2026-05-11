@@ -115,9 +115,9 @@ export function GiftCodeModal({
 
       if (data?.ok || data?.success) {
         toast({
-          title: "🎁 Gift code applied!",
+          title: "🎁 Mã quà tặng đã được kích hoạt! / Gift code applied!",
           description:
-            data.message || `Welcome to your new tier: ${data.tier} 💛`,
+            data.message || `Chào mừng bạn đến với ${data.row?.tier_name ?? "Premium"}! / Welcome to ${data.row?.tier_name ?? "Premium"}! 💛`,
         });
 
         setCode("");
