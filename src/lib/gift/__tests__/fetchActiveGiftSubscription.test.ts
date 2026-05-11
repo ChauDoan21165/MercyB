@@ -88,7 +88,7 @@ describe("fetchActiveGiftSubscription", () => {
         data: {
           tier_id: "a2863250-1798-443e-b1d3-d20e3db06281",
           current_period_end: "2027-05-10T15:58:10.285802+00:00",
-          subscription_tiers: { vip_key: "vip9", name: "One Year" },
+          subscription_tiers: { vip_key: "vip9", name: "Premium Access" },
         },
         error: null,
       }),
@@ -98,7 +98,7 @@ describe("fetchActiveGiftSubscription", () => {
       tier_id: "a2863250-1798-443e-b1d3-d20e3db06281",
       current_period_end: "2027-05-10T15:58:10.285802+00:00",
       vip_key: "vip9",
-      plan_name: "One Year",
+      plan_name: "Premium Access",
     } satisfies ActiveGiftSubscription);
   });
 
@@ -108,14 +108,14 @@ describe("fetchActiveGiftSubscription", () => {
         data: {
           tier_id: "a2863250-1798-443e-b1d3-d20e3db06281",
           current_period_end: "2027-05-10T15:58:10.285802+00:00",
-          subscription_tiers: [{ vip_key: "vip9", name: "One Year" }],
+          subscription_tiers: [{ vip_key: "vip9", name: "Premium Access" }],
         },
         error: null,
       }),
     );
     const result = await fetchActiveGiftSubscription(client, USER_ID);
     expect(result?.vip_key).toBe("vip9");
-    expect(result?.plan_name).toBe("One Year");
+    expect(result?.plan_name).toBe("Premium Access");
   });
 
   it("returns null on query error and does not throw", async () => {

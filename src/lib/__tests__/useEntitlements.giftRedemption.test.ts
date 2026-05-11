@@ -75,7 +75,7 @@ describe("useEntitlements — gift redemption overlay", () => {
       tier_id: "a2863250-1798-443e-b1d3-d20e3db06281",
       current_period_end: "2027-05-10T15:58:10.285802+00:00",
       vip_key: "vip9",
-      plan_name: "One Year",
+      plan_name: "Premium Access",
     });
 
     const { result } = renderHook(() => useEntitlements());
@@ -85,13 +85,13 @@ describe("useEntitlements — gift redemption overlay", () => {
     expect(ent?.is_premium).toBe(true);
     expect(ent?.status).toBe("active");
     expect(ent?.source).toBe("gift_code");
-    expect(ent?.plan_name).toBe("One Year");
+    expect(ent?.plan_name).toBe("Premium Access");
     expect(ent?.expires_at).toBe("2027-05-10T15:58:10.285802+00:00");
     expect(ent?.current_period_end).toBe(
       "2027-05-10T15:58:10.285802+00:00",
     );
     // tier_id carries the legacy VIP key. resolveEntitlementTier maps
-    // "One Year" plan_name → "level9" via the text-fallback path; the
+    // "Premium Access" plan_name → "level9" via the text-fallback path; the
     // hook stores both the original VIP key on the entitlement and
     // is_premium=true on the features map. (Mapping levelN → vipRank
     // numerically is a separate pre-existing concern in tierToRank
@@ -116,7 +116,7 @@ describe("useEntitlements — gift redemption overlay", () => {
       tier_id: "a2863250-1798-443e-b1d3-d20e3db06281",
       current_period_end: "2099-12-31T00:00:00Z",
       vip_key: "vip9",
-      plan_name: "One Year",
+      plan_name: "Premium Access",
     });
 
     const { result } = renderHook(() => useEntitlements());
@@ -152,7 +152,7 @@ describe("useEntitlements — gift redemption overlay", () => {
       tier_id: "a2863250-1798-443e-b1d3-d20e3db06281",
       current_period_end: "2027-05-10T15:58:10.285802+00:00",
       vip_key: "vip9",
-      plan_name: "One Year",
+      plan_name: "Premium Access",
     });
 
     const { result } = renderHook(() => useEntitlements());
@@ -179,7 +179,7 @@ describe("useEntitlements — gift redemption overlay", () => {
       tier_id: "a2863250-1798-443e-b1d3-d20e3db06281",
       current_period_end: "2027-05-10T15:58:10.285802+00:00",
       vip_key: "vip9",
-      plan_name: "One Year",
+      plan_name: "Premium Access",
     });
 
     const { result } = renderHook(() => useEntitlements());
