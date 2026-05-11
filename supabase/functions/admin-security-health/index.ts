@@ -109,10 +109,59 @@ Deno.serve(async (req) => {
       }
     }
 
-    // Check RLS on key tables
+    // Check RLS on key tables (the historical hardcoded list).
     const rlsTables = ["lessons", "user_subscriptions", "access_codes"];
     for (const table of rlsTables) {
       checks.push(await checkRls(table));
+    }
+
+    // Dynamic check: every public table that holds a `user_id` column
+    // must have RLS enabled. Catches new user-data tables that ship
+    // without RLS — a class of regression the hardcoded list above
+    // can't see. Requires the helper RPC at
+    // supabase/migrations/20260511190000_list_user_data_tables_rls_status.sql.
+    if (adminClient) {
+      try {
+        const { data, error } = await adminClient.rpc(
+          "list_user_data_tables_rls_status",
+        );
+        if (error) {
+          checks.push({
+            name: "RLS on all user_id tables",
+            status: "fail",
+            detail:
+              error.message ||
+              "list_user_data_tables_rls_status RPC not deployed",
+          });
+        } else {
+          const rows = (data ?? []) as Array<{
+            table_name: string;
+            rls_enabled: boolean;
+          }>;
+          const offenders = rows.filter((r) => r.rls_enabled === false);
+          checks.push({
+            name: "RLS on all user_id tables",
+            status: offenders.length === 0 ? "ok" : "fail",
+            detail:
+              offenders.length === 0
+                ? `All ${rows.length} user-data tables have RLS enabled`
+                : `RLS DISABLED on: ${offenders.map((o) => o.table_name).join(", ")} (${offenders.length} of ${rows.length})`,
+          });
+        }
+      } catch (e) {
+        checks.push({
+          name: "RLS on all user_id tables",
+          status: "fail",
+          detail:
+            e instanceof Error ? e.message : "Unexpected error",
+        });
+      }
+    } else {
+      checks.push({
+        name: "RLS on all user_id tables",
+        status: "fail",
+        detail: "Cannot connect to database",
+      });
     }
 
     // Check environment secrets
