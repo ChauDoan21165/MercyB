@@ -32,7 +32,7 @@ export function renderWelcomeEmailHtml(row: RedeemRpcRow): string {
   const tier = row.tier_name ?? "Premium";
   const duration = row.is_lifetime
     ? "trọn đời / lifetime"
-    : `${row.days} ngày / ${row.days} days`;
+    : row.days >= 365 ? "1 năm / 1 year" : `${row.days} ngày / ${row.days} days`;
   const expiryLine = row.is_lifetime
     ? "Không giới hạn thời gian / No expiry"
     : `Có hiệu lực đến ${row.valid_until} / Valid until ${row.valid_until}`;
