@@ -8,8 +8,13 @@
 // (lessons-a1.ts ... lessons-c2.ts) on demand and groups them into
 // categories at render time.
 
+// Phase 2 pilot: a FeaturedB2Lesson component at the top of the B2
+// view fetches a single lesson from Supabase via useLessonData.
+// The rest of the B2 lessons still load via the lazy import.
+
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
+import { useLessonData } from "@/hooks/useLessonData";
 
 import {
   GERMAN_CATEGORIES,
@@ -19,7 +24,6 @@ import {
   type GermanCefrLevel,
   type GermanLesson,
 } from "@/languages/german/lessons";
-import { fetchLessonsBatch } from "@/hooks/useLessonData";
 import { normalizeGermanLesson } from "@/languages/german/normalize";
 import { LessonRenderer } from "@/components/languages/LessonRenderer";
 import {
@@ -48,13 +52,7 @@ export default function GermanLessonsPage() {
 
   useEffect(() => {
     let cancelled = false;
-    // Phase 2 pilot: German B2 uses Supabase instead of static import
-    const loader =
-      level === "B2"
-        ? fetchLessonsBatch("german", "b2")
-        : loadLessonsForLevel(level).then((arr) => arr);
-    setLessons(null);
-    loader
+    loadLessonsForLevel(level)
       .then((arr) => {
         if (!cancelled) setLessons(arr);
       })
@@ -83,6 +81,17 @@ export default function GermanLessonsPage() {
 
   return (
     <div className="mx-auto w-full max-w-3xl px-4 py-6">
+      {/* Phase 2 pilot: per-lesson Supabase fetch demonstrated on
+          the first B2 lesson only. Other levels / lessons unchanged. */}
+      {level === "B2" && (
+        <div className="mb-5 rounded-xl border border-red-100 bg-red-50/60 p-4">
+          <p className="text-xs font-semibold text-red-700 mb-2">
+            Phase 2 pilot · Supabase per-lesson fetch (index 0)
+          </p>
+          <FeaturedB2Lesson />
+        </div>
+      )}
+
       <header className="mb-6 rounded-2xl border border-red-200 bg-gradient-to-br from-red-50 via-rose-50 to-amber-50 p-5">
         <p className="text-xs font-semibold uppercase tracking-wider text-red-600">
           Tiếng Đức · German
@@ -187,5 +196,49 @@ function CategorySection({
         })}
       </ol>
     </section>
+  );
+}
+
+// ── Phase 2 pilot: per-lesson Supabase fetch ────────────────────────
+
+function FeaturedB2Lesson() {
+  const { lesson, loading, error } = useLessonData("german", "b2", 0);
+  const theme = lessonThemes.german;
+
+  if (loading) {
+    return (
+      <div className="rounded-lg bg-slate-100 animate-pulse h-20 flex items-center justify-center">
+        <span className="text-sm text-slate-400">
+          Loading lesson from Supabase…
+        </span>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm text-amber-800">
+        Could not load lesson. Please try again.
+      </div>
+    );
+  }
+
+  if (!lesson) {
+    return (
+      <div className="rounded-lg border border-slate-200 bg-white p-3 text-sm text-slate-500">
+        Lesson not found in database.
+      </div>
+    );
+  }
+
+  const normalized = normalizeGermanLesson(
+    lesson as unknown as GermanLesson,
+    1,
+  );
+
+  return (
+    <div>
+      <LessonRenderer lesson={normalized} theme={theme} />
+    </div>
   );
 }
