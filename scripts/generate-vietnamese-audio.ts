@@ -29,10 +29,6 @@
 import { config as loadDotenv } from "dotenv";
 import { existsSync } from "node:fs";
 import { createClient } from "@supabase/supabase-js";
-import {
-  VIETNAMESE_LESSONS,
-  loadAllVietnameseLessons,
-} from "../src/languages/vietnamese/lessons";
 
 for (const p of [".env.local", ".env"]) {
   if (existsSync(p)) loadDotenv({ path: p });
@@ -65,17 +61,34 @@ type Entry = {
   voice: string;
 };
 
-// Build manifest. VIETNAMESE_LESSONS is a lazy registry — it's an empty
-// array at module init and gets backfilled when loadAllVietnameseLessons()
-// resolves. Without the await below the iteration sees zero lessons.
+// Build manifest from Supabase lessons table (not the TS stub which is
+// now empty after the lessons migration to DB).
 const entries: Entry[] = [];
 
 async function buildManifest(): Promise<void> {
-  await loadAllVietnameseLessons();
-  const filteredLessons = LEVEL_FILTER
-    ? VIETNAMESE_LESSONS.filter((l) => (l as { level?: string }).level === LEVEL_FILTER)
-    : VIETNAMESE_LESSONS;
-  for (const lesson of filteredLessons) {
+  let query = supabase
+    .from("lessons")
+    .select("content")
+    .eq("language", "vietnamese")
+    .order("level", { ascending: true })
+    .order("lesson_index", { ascending: true });
+
+  if (LEVEL_FILTER) {
+    query = query.eq("level", LEVEL_FILTER.toLowerCase());
+  }
+
+  const { data: lessonRows, error } = await query;
+
+  if (error || !lessonRows) {
+    console.error("Failed to load lessons from Supabase:", error);
+    process.exit(1);
+  }
+
+  const allLessons = lessonRows.map(
+    (row) => row.content as { id: number; level: string; phrases: Array<{ vietnamese?: string }>; dialogue?: Array<{ vietnamese?: string }> },
+  );
+
+  for (const lesson of allLessons) {
     // Storage prefix follows the lesson's own CEFR level so each batch
     // lands under the right segment (a1/vi/..., b1/vi/..., etc).
     const levelPrefix = String((lesson as { level?: string }).level ?? "a1").toLowerCase();
