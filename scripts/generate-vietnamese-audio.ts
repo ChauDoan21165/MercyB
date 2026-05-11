@@ -142,25 +142,56 @@ async function zaloGenerate(voice: string, text: string): Promise<Buffer | null>
   params.append("speed", "1.0");
   params.append("encode_type", "1");
 
-  const res = await fetch("https://api.zalo.ai/v1/tts/synthesize", {
-    method: "POST",
-    headers: {
-      "apikey": ZALO_KEY!,
-    },
-    body: params,
-  });
-  if (!res.ok) {
-    console.error(`  Zalo ${res.status}: ${await res.text()}`);
-    return null;
+  // Retry up to 3 times on rate-limit signals (HTTP 429 OR a Zalo
+  // body `error_code: 429`). Wait 2 s between attempts — both signals
+  // are honoured because Zalo sometimes returns the error in the body
+  // with HTTP 200 and sometimes at the status-code layer.
+  const MAX_ATTEMPTS = 3;
+  const RETRY_DELAY_MS = 2000;
+  for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt++) {
+    const res = await fetch("https://api.zalo.ai/v1/tts/synthesize", {
+      method: "POST",
+      headers: {
+        "apikey": ZALO_KEY!,
+      },
+      body: params,
+    });
+    if (res.status === 429) {
+      console.warn(
+        `  Zalo 429 (attempt ${attempt}/${MAX_ATTEMPTS}) — backing off ${RETRY_DELAY_MS}ms`,
+      );
+      if (attempt < MAX_ATTEMPTS) {
+        await new Promise((r) => setTimeout(r, RETRY_DELAY_MS));
+        continue;
+      }
+      console.error(`  Zalo 429: retries exhausted`);
+      return null;
+    }
+    if (!res.ok) {
+      console.error(`  Zalo ${res.status}: ${await res.text()}`);
+      return null;
+    }
+    const json: { error_code?: number; data?: { url?: string } } = await res.json();
+    if (json.error_code === 429) {
+      console.warn(
+        `  Zalo body error_code=429 (attempt ${attempt}/${MAX_ATTEMPTS}) — backing off ${RETRY_DELAY_MS}ms`,
+      );
+      if (attempt < MAX_ATTEMPTS) {
+        await new Promise((r) => setTimeout(r, RETRY_DELAY_MS));
+        continue;
+      }
+      console.error(`  Zalo error_code=429: retries exhausted`);
+      return null;
+    }
+    if (json.error_code !== 0 || !json.data?.url) {
+      console.error(`  Zalo error: ${json.error_code}`);
+      return null;
+    }
+    const mp3 = await fetch(json.data.url);
+    if (!mp3.ok) return null;
+    return Buffer.from(await mp3.arrayBuffer());
   }
-  const json: { error_code?: number; data?: { url?: string } } = await res.json();
-  if (json.error_code !== 0 || !json.data?.url) {
-    console.error(`  Zalo error: ${json.error_code}`);
-    return null;
-  }
-  const mp3 = await fetch(json.data.url);
-  if (!mp3.ok) return null;
-  return Buffer.from(await mp3.arrayBuffer());
+  return null;
 }
 
 async function uploadToSupabase(key: string, buf: Buffer): Promise<boolean> {
@@ -206,6 +237,11 @@ async function uploadToSupabase(key: string, buf: Buffer): Promise<boolean> {
       } else if (await uploadToSupabase(e.storage_key, buf)) {
         done++;
         chars += e.text.length;
+        // Throttle: 500ms gap after each successful Zalo call. Keeps
+        // the script under Zalo's rate-limit threshold and gives the
+        // server breathing room. Only after success — skip and fail
+        // paths cost nothing on Zalo's side.
+        await new Promise((r) => setTimeout(r, 500));
       } else {
         failed++;
       }
