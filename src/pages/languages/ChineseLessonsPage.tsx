@@ -16,11 +16,11 @@ import { Link } from "react-router-dom";
 
 import {
   CHINESE_TOTAL_LESSONS,
-  loadLessonsForLevel,
   type ChineseCefrLevel,
   type ChineseLesson,
 } from "@/languages/chinese/lessons";
 import { normalizeChineseLesson } from "@/languages/chinese/normalize";
+import { fetchLessonsBatch } from "@/hooks/useLessonData";
 import { LessonRenderer } from "@/components/languages/LessonRenderer";
 import {
   lessonThemes,
@@ -50,13 +50,13 @@ export default function ChineseLessonsPage() {
   useEffect(() => {
     let cancelled = false;
     setLessons(null);
-    loadLessonsForLevel(level)
+    fetchLessonsBatch<ChineseLesson>("chinese", level.toLowerCase())
       .then((arr) => {
         if (!cancelled) setLessons(arr);
       })
       .catch((err) => {
         if (!cancelled) {
-          console.error("[ChineseLessonsPage] level load failed", level, err);
+          console.error("[ChineseLessonsPage] fetch failed", level, err);
           setLessons([]);
         }
       });

@@ -1,11 +1,12 @@
 // src/hooks/useLessonData.ts
-// Fetch a single lesson from public.lessons. Caches per (language,level,index).
+// Fetch lessons from public.lessons. Caches per (language,level,index).
 
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
-import type { GermanLesson } from "@/languages/german/lessons";
 
-export type LessonContent = GermanLesson;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type LessonContent = Record<string, any>;
+
 type CacheKey = string;
 
 const lessonCache = new Map<CacheKey, LessonContent | null>();
@@ -14,22 +15,22 @@ function cacheKey(language: string, level: string, index: number): CacheKey {
   return `${language}-${level}-${index}`;
 }
 
-export interface UseLessonDataResult {
-  lesson: LessonContent | null;
+export interface UseLessonDataResult<T = LessonContent> {
+  lesson: T | null;
   loading: boolean;
   error: string | null;
 }
 
-export function useLessonData(
+export function useLessonData<T = LessonContent>(
   language: string,
   level: string,
   index: number,
-): UseLessonDataResult {
+): UseLessonDataResult<T> {
   const key = cacheKey(language, level, index);
 
-  const [lesson, setLesson] = useState<LessonContent | null>(() => {
+  const [lesson, setLesson] = useState<T | null>(() => {
     const cached = lessonCache.get(key);
-    return cached ?? null;
+    return (cached as T) ?? null;
   });
   const [loading, setLoading] = useState<boolean>(!lessonCache.has(key));
   const [error, setError] = useState<string | null>(null);
@@ -59,10 +60,11 @@ export function useLessonData(
           setLoading(false);
           return;
         }
-        lessonCache.set(key, data as LessonContent);
-        setLesson(data as LessonContent);
+        const lessonContent = data as unknown as T;
+        lessonCache.set(key, lessonContent as LessonContent);
+        setLesson(lessonContent);
         setLoading(false);
-      } catch (err) {
+      } catch {
         if (cancelled) return;
         lessonCache.set(key, null);
         setError("Could not load lesson. Please try again.");
@@ -76,19 +78,18 @@ export function useLessonData(
 }
 
 /** Batch-fetch all lessons for (language, level). Caches individually. */
-export async function fetchLessonsBatch(
+export async function fetchLessonsBatch<T = LessonContent>(
   language: string,
   level: string,
-): Promise<LessonContent[]> {
-  const cached: LessonContent[] = [];
-  // Scan existing cache first — if all indexed lessons present, skip fetch
+): Promise<T[]> {
+  const cached: T[] = [];
   const { data, error } = await supabase
     .from("lessons")
     .select("*")
     .eq("language", language)
     .eq("level", level)
     .order("lesson_index", { ascending: true })
-    .limit(100);
+    .limit(500);
 
   if (error) {
     console.warn("[useLessonData] batch fetch error:", error);
@@ -98,11 +99,12 @@ export async function fetchLessonsBatch(
   if (!data || data.length === 0) return cached;
 
   for (const row of data) {
-    const idx = (row as { lesson_index: number }).lesson_index;
+    const rowData = row as { language: string; level: string; lesson_index: number };
+    const idx = rowData.lesson_index;
     if (idx != null) {
       const k = cacheKey(language, level, idx);
-      lessonCache.set(k, row as LessonContent);
-      cached.push(row as LessonContent);
+      lessonCache.set(k, row as unknown as LessonContent);
+      cached.push(row as unknown as T);
     }
   }
   return cached;

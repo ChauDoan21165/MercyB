@@ -12,11 +12,11 @@ import { Link } from "react-router-dom";
 
 import {
   JAPANESE_TOTAL_LESSONS,
-  loadLessonsForLevel,
   type JapaneseCefrLevel,
   type JapaneseLesson,
 } from "@/languages/japanese/lessons";
 import { normalizeJapaneseLesson } from "@/languages/japanese/normalize";
+import { fetchLessonsBatch } from "@/hooks/useLessonData";
 import { LessonRenderer } from "@/components/languages/LessonRenderer";
 import {
   lessonThemes,
@@ -46,13 +46,13 @@ export default function JapaneseLessonsPage() {
   useEffect(() => {
     let cancelled = false;
     setLessons(null);
-    loadLessonsForLevel(level)
+    fetchLessonsBatch<JapaneseLesson>("japanese", level.toLowerCase())
       .then((arr) => {
         if (!cancelled) setLessons(arr);
       })
       .catch((err) => {
         if (!cancelled) {
-          console.error("[JapaneseLessonsPage] level load failed", level, err);
+          console.error("[JapaneseLessonsPage] fetch failed", level, err);
           setLessons([]);
         }
       });

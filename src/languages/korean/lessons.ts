@@ -90,34 +90,16 @@ export type KoreanLesson = {
 // imports only the level the user selects, so the initial chunk shrinks
 // dramatically as more C1/C2/etc rounds ship.
 
-const _cache = new Map<KoreanCefrLevel, KoreanLesson[]>();
-
-const _importers: Record<
-  KoreanCefrLevel,
-  () => Promise<{ default: KoreanLesson[] }>
-> = {
-  A1: () => import("./lessons-a1"),
-  A2: () => import("./lessons-a2"),
-  B1: () => import("./lessons-b1"),
-  B2: () => import("./lessons-b2"),
-  C1: () => import("./lessons-c1"),
-  C2: () => import("./lessons-c2"),
-};
-
+// Phase 3: lesson data now fetched from Supabase via useLessonData / fetchLessonsBatch.
+// These stubs preserve the exported API surface for backward compat.
+const _cache = new Map<string, KoreanLesson[]>();
 export async function loadLessonsForLevel(
-  level: KoreanCefrLevel,
+  _level: KoreanCefrLevel,
 ): Promise<KoreanLesson[]> {
-  const cached = _cache.get(level);
-  if (cached) return cached;
-  const mod = await _importers[level]();
-  _cache.set(level, mod.default);
-  return mod.default;
+  return [];
 }
-
 export async function loadAllLessons(): Promise<KoreanLesson[]> {
-  const levels: KoreanCefrLevel[] = ["A1", "A2", "B1", "B2", "C1", "C2"];
-  const arrays = await Promise.all(levels.map(loadLessonsForLevel));
-  return arrays.flat();
+  return [];
 }
 
 // Sync helpers — operate on whatever's currently in the cache. Callers
