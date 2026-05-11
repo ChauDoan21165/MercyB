@@ -20,19 +20,16 @@
  *   SUPABASE_SERVICE_ROLE_KEY
  *
  * Usage:
- *   npx tsx scripts/generate-vietnamese-audio.ts            — full run, all levels
- *   npx tsx scripts/generate-vietnamese-audio.ts --dry-run  — list what would run
- *   npx tsx scripts/generate-vietnamese-audio.ts --limit=5  — first 5 entries
- *   npx tsx scripts/generate-vietnamese-audio.ts --level=B1 — only lessons with level==="B1"
+ *   npx tsx scripts/generate-vietnamese-audio.ts              — full run, all levels
+ *   npx tsx scripts/generate-vietnamese-audio.ts --dry-run    — list what would run
+ *   npx tsx scripts/generate-vietnamese-audio.ts --limit=5    — first 5 entries
+ *   npx tsx scripts/generate-vietnamese-audio.ts --level=B1   — only lessons with level==="B1"
+ *   npx tsx scripts/generate-vietnamese-audio.ts --delay=2000 — ms between successful calls (default 2000)
  */
 
 import { config as loadDotenv } from "dotenv";
 import { existsSync } from "node:fs";
 import { createClient } from "@supabase/supabase-js";
-import {
-  VIETNAMESE_LESSONS,
-  loadAllVietnameseLessons,
-} from "../src/languages/vietnamese/lessons";
 
 for (const p of [".env.local", ".env"]) {
   if (existsSync(p)) loadDotenv({ path: p });
@@ -57,6 +54,15 @@ const LIMIT = LIMIT_ARG ? parseInt(LIMIT_ARG.split("=")[1]!, 10) : Infinity;
 const LEVEL_ARG = args.find((a) => a.startsWith("--level="));
 const LEVEL_FILTER = LEVEL_ARG ? LEVEL_ARG.split("=")[1]!.trim() : null;
 
+// Per-call throttle in milliseconds, applied after each successful
+// Zalo generation. Default 2000ms — at 2806 manifest entries that's a
+// ~93-minute floor for a full run, which keeps the script well under
+// Zalo's rate-limit ceiling. Override with --delay=<ms> for tuning;
+// values < 0 are clamped to 0 (effectively disables the throttle).
+const DELAY_ARG = args.find((a) => a.startsWith("--delay="));
+const PARSED_DELAY = DELAY_ARG ? parseInt(DELAY_ARG.split("=")[1]!, 10) : 2000;
+const DELAY_MS = Number.isFinite(PARSED_DELAY) && PARSED_DELAY > 0 ? PARSED_DELAY : 0;
+
 const VOICES = ["thuminh", "leminh"] as const;
 
 type Entry = {
@@ -65,17 +71,34 @@ type Entry = {
   voice: string;
 };
 
-// Build manifest. VIETNAMESE_LESSONS is a lazy registry — it's an empty
-// array at module init and gets backfilled when loadAllVietnameseLessons()
-// resolves. Without the await below the iteration sees zero lessons.
+// Build manifest from Supabase lessons table (not the TS stub which is
+// now empty after the lessons migration to DB).
 const entries: Entry[] = [];
 
 async function buildManifest(): Promise<void> {
-  await loadAllVietnameseLessons();
-  const filteredLessons = LEVEL_FILTER
-    ? VIETNAMESE_LESSONS.filter((l) => (l as { level?: string }).level === LEVEL_FILTER)
-    : VIETNAMESE_LESSONS;
-  for (const lesson of filteredLessons) {
+  let query = supabase
+    .from("lessons")
+    .select("content")
+    .eq("language", "vietnamese")
+    .order("level", { ascending: true })
+    .order("lesson_index", { ascending: true });
+
+  if (LEVEL_FILTER) {
+    query = query.eq("level", LEVEL_FILTER.toLowerCase());
+  }
+
+  const { data: lessonRows, error } = await query;
+
+  if (error || !lessonRows) {
+    console.error("Failed to load lessons from Supabase:", error);
+    process.exit(1);
+  }
+
+  const allLessons = lessonRows.map(
+    (row) => row.content as { id: number; level: string; phrases: Array<{ vietnamese?: string }>; dialogue?: Array<{ vietnamese?: string }> },
+  );
+
+  for (const lesson of allLessons) {
     // Storage prefix follows the lesson's own CEFR level so each batch
     // lands under the right segment (a1/vi/..., b1/vi/..., etc).
     const levelPrefix = String((lesson as { level?: string }).level ?? "a1").toLowerCase();
@@ -115,32 +138,73 @@ async function existsInBucket(key: string): Promise<boolean> {
 
 async function zaloGenerate(voice: string, text: string): Promise<Buffer | null> {
   // Zalo AI TTS — synchronous, no polling needed.
+  // The API expects application/x-www-form-urlencoded, NOT JSON. The
+  // previous JSON-body / "Content-Type: application/json" form
+  // produced HTTP 401 "Invalid authentication credentials" — Zalo's
+  // auth check happens after request parsing, so a malformed body
+  // surfaces as an auth error rather than a 415.
   // speaker_id: 2 = female Northern (thuminh), 4 = male Northern (leminh)
-  const voiceId = voice === "thuminh" ? 2 : 4;
-  const res = await fetch("https://api.zalo.ai/v1/tts/synthesize", {
-    method: "POST",
-    headers: {
-      "apikey": ZALO_KEY!,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      input: text,
-      speaker_id: voiceId,
-      speed: 1.0,
-    }),
-  });
-  if (!res.ok) {
-    console.error(`  Zalo ${res.status}: ${await res.text().slice(0, 200)}`);
-    return null;
+  // encode_type=1 → MP3.
+  const speakerId = voice === "thuminh" ? 2 : 4;
+  const params = new URLSearchParams();
+  params.append("input", text);
+  params.append("speaker_id", String(speakerId));
+  params.append("speed", "1.0");
+  params.append("encode_type", "1");
+
+  // Retry up to 3 times on rate-limit signals (HTTP 429 OR a Zalo
+  // body `error_code: 429`). Wait 2 s between attempts — both signals
+  // are honoured because Zalo sometimes returns the error in the body
+  // with HTTP 200 and sometimes at the status-code layer.
+  const MAX_ATTEMPTS = 3;
+  // 5 s between retries — Zalo's rate-limit window typically clears in
+  // a few seconds; flat 5 s gives the bucket time to refill without
+  // stretching the script's tail latency past tolerance.
+  const RETRY_DELAY_MS = 5000;
+  for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt++) {
+    const res = await fetch("https://api.zalo.ai/v1/tts/synthesize", {
+      method: "POST",
+      headers: {
+        "apikey": ZALO_KEY!,
+      },
+      body: params,
+    });
+    if (res.status === 429) {
+      console.warn(
+        `  Zalo 429 (attempt ${attempt}/${MAX_ATTEMPTS}) — backing off ${RETRY_DELAY_MS}ms`,
+      );
+      if (attempt < MAX_ATTEMPTS) {
+        await new Promise((r) => setTimeout(r, RETRY_DELAY_MS));
+        continue;
+      }
+      console.error(`  Zalo 429: retries exhausted`);
+      return null;
+    }
+    if (!res.ok) {
+      console.error(`  Zalo ${res.status}: ${await res.text()}`);
+      return null;
+    }
+    const json: { error_code?: number; data?: { url?: string } } = await res.json();
+    if (json.error_code === 429) {
+      console.warn(
+        `  Zalo body error_code=429 (attempt ${attempt}/${MAX_ATTEMPTS}) — backing off ${RETRY_DELAY_MS}ms`,
+      );
+      if (attempt < MAX_ATTEMPTS) {
+        await new Promise((r) => setTimeout(r, RETRY_DELAY_MS));
+        continue;
+      }
+      console.error(`  Zalo error_code=429: retries exhausted`);
+      return null;
+    }
+    if (json.error_code !== 0 || !json.data?.url) {
+      console.error(`  Zalo error: ${json.error_code}`);
+      return null;
+    }
+    const mp3 = await fetch(json.data.url);
+    if (!mp3.ok) return null;
+    return Buffer.from(await mp3.arrayBuffer());
   }
-  const json: { data?: { url?: string } } = await res.json();
-  if (!json.data?.url) {
-    console.error(`  Zalo no audio URL in response`);
-    return null;
-  }
-  const mp3 = await fetch(json.data.url);
-  if (!mp3.ok) return null;
-  return Buffer.from(await mp3.arrayBuffer());
+  return null;
 }
 
 async function uploadToSupabase(key: string, buf: Buffer): Promise<boolean> {
@@ -186,6 +250,12 @@ async function uploadToSupabase(key: string, buf: Buffer): Promise<boolean> {
       } else if (await uploadToSupabase(e.storage_key, buf)) {
         done++;
         chars += e.text.length;
+        // Throttle: DELAY_MS gap after each successful Zalo call.
+        // Default 2000 ms; override with --delay=<ms>. Only after
+        // success — skip and fail paths cost nothing on Zalo's side.
+        if (DELAY_MS > 0) {
+          await new Promise((r) => setTimeout(r, DELAY_MS));
+        }
       } else {
         failed++;
       }

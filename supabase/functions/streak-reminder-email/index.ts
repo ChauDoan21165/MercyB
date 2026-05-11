@@ -200,12 +200,22 @@ Deno.serve(async (req) => {
       const subject =
         "🔥 Đừng để streak bị mất! / Don\u2019t lose your streak!";
 
+      // One-click unsubscribe per RFC 8058. Token is a base64url-style
+      // encoding of the user_id — v1 / functional only; rotate to a
+      // signed HMAC token once /unsubscribe is implemented server-side.
+      const unsubToken = btoa(prof.id).replace(/=/g, "");
+      const unsubUrl = `https://mercyblade.com/unsubscribe?token=${unsubToken}`;
+
       try {
         const { error: sendErr } = await resend.emails.send({
           from: EMAIL_CONFIG.from,
           to: [email],
           subject,
           html,
+          headers: {
+            "List-Unsubscribe": `<${unsubUrl}>`,
+            "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",
+          },
         });
 
         if (sendErr) {
