@@ -23,6 +23,7 @@ import {
 } from '@/lib/pronunciation/sessionAttempts';
 import { captureWaveform, type Waveform } from '@/lib/pronunciation/audioComparison';
 import { fetchCloudTtsUrl } from '@/lib/mercyVoice';
+import { isVoiceConfigured } from '@/config/mercyVoices';
 import { loadKidsLessonByKey } from './kidsDataLoader';
 import { awardSpeakPoints } from '@/services/pointsService';
 import { resolveRoomAudioUrl } from '@/lib/roomAudioResolver';
@@ -1866,8 +1867,14 @@ export function MercySpeakTab({
             />
           ) : null}
 
-          {/* Speech-vs-reference waveform overlay (lazy on user expand). */}
-          {transcript && recordedAudioUrl ? (
+          {/* Speech-vs-reference waveform overlay (lazy on user expand).
+              Gated on isVoiceConfigured("en") because the comparison
+              needs an audio BLOB from cloud TTS — speechSynthesis can
+              only play, not produce a blob — so when voice IDs are
+              still "placeholder" the feature has no viable fallback.
+              Better to hide the affordance than show a button that
+              opens to an error. */}
+          {transcript && recordedAudioUrl && isVoiceConfigured("en") ? (
             <div className="rounded-[20px] md:rounded-[24px] border border-slate-200 bg-white shadow-sm">
               {!comparisonOpen ? (
                 <button
