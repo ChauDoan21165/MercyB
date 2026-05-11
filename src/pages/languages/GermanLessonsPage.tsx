@@ -19,6 +19,7 @@ import {
   type GermanCefrLevel,
   type GermanLesson,
 } from "@/languages/german/lessons";
+import { fetchLessonsBatch } from "@/hooks/useLessonData";
 import { normalizeGermanLesson } from "@/languages/german/normalize";
 import { LessonRenderer } from "@/components/languages/LessonRenderer";
 import {
@@ -47,8 +48,13 @@ export default function GermanLessonsPage() {
 
   useEffect(() => {
     let cancelled = false;
+    // Phase 2 pilot: German B2 uses Supabase instead of static import
+    const loader =
+      level === "B2"
+        ? fetchLessonsBatch("german", "b2")
+        : loadLessonsForLevel(level).then((arr) => arr);
     setLessons(null);
-    loadLessonsForLevel(level)
+    loader
       .then((arr) => {
         if (!cancelled) setLessons(arr);
       })
