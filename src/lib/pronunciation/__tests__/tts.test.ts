@@ -7,6 +7,16 @@
 
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 
+// Force the browser-TTS path. The production `speak()` tries cloud TTS
+// first at default rate; with real voice IDs in src/config/mercyVoices.ts
+// (us is configured) that path would resolve via supabase.functions.invoke,
+// which we don't want to exercise here — these tests are about the
+// browser speechSynthesis wrapper specifically. Returning null forces
+// `speak()` to fall through to the browser stub installed below.
+vi.mock('@/lib/mercyVoice', () => ({
+  fetchCloudTtsUrl: vi.fn().mockResolvedValue(null),
+}));
+
 import { isSupported, speak, cancelSpeech } from '../tts';
 
 type OnEnd = (() => void) | null;
