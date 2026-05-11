@@ -37,36 +37,18 @@ export type VietnameseLesson = {
 
 // ── Lazy lesson registry ────────────────────────────────────────────────
 
+// Phase 3: lesson data now fetched from Supabase via useLessonData / fetchLessonsBatch.
+// These stubs preserve the exported API surface for backward compat.
 const _cache = new Map<VietnameseCefrLevel, VietnameseLesson[]>();
 
-const _importers: Record<
-  VietnameseCefrLevel,
-  () => Promise<{ default: VietnameseLesson[] }>
-> = {
-  A1: () => import("./lessons-a1"),
-  "A1+": () => import("./lessons-a1"),   // A1+ not yet split; reuses A1
-  A2: () => import("./lessons-a2"),
-  B1: () => import("./lessons-b1"),
-  B2: () => import("./lessons-b2"),
-  C1: () => import("./lessons-c1"),
-  C2: () => import("./lessons-c2"),
-  
-};
-
 export async function loadVietnameseLessonsForLevel(
-  level: VietnameseCefrLevel,
+  _level: VietnameseCefrLevel,
 ): Promise<VietnameseLesson[]> {
-  const cached = _cache.get(level);
-  if (cached) return cached;
-  const mod = await _importers[level]();
-  _cache.set(level, mod.default);
-  return mod.default;
+  return [];
 }
 
 export async function loadAllVietnameseLessons(): Promise<VietnameseLesson[]> {
-  const levels: VietnameseCefrLevel[] = ["A1", "A2", "B1", "B2", "C1", "C2"];
-  const arrays = await Promise.all(levels.map(loadVietnameseLessonsForLevel));
-  return arrays.flat();
+  return [];
 }
 
 // Sync helpers — operate on whatever's currently in the cache. Callers
@@ -99,23 +81,7 @@ function _syncBackfill(lessons: VietnameseLesson[]) {
   VIETNAMESE_LESSONS.push(...lessons);
 }
 
-// Patch the load functions to also backfill the legacy export
-const _origLoadAll = loadAllVietnameseLessons;
-(loadAllVietnameseLessons as any) = async () => {
-  const result = await _origLoadAll();
-  _syncBackfill(result);
-  return result;
-};
 
-const _origLoadLevel = loadVietnameseLessonsForLevel;
-(loadVietnameseLessonsForLevel as any) = async (level: VietnameseCefrLevel) => {
-  const result = await _origLoadLevel(level);
-  // Merge all cached levels into VIETNAMESE_LESSONS
-  const all: VietnameseLesson[] = [];
-  for (const arr of _cache.values()) all.push(...arr);
-  _syncBackfill(all);
-  return result;
-};
 
 /** Total lesson count across every level. Keep in sync with per-level files. */
 export const VIETNAMESE_TOTAL_LESSONS = 536;

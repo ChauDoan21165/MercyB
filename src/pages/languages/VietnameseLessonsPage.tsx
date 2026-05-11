@@ -4,10 +4,8 @@ import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 
 import type { VietnameseLesson, VietnameseCefrLevel } from "@/languages/vietnamese/lessons";
-import {
-  loadAllVietnameseLessons,
-} from "@/languages/vietnamese/lessons";
 import { normalizeVietnameseLesson } from "@/languages/vietnamese/normalize";
+import { fetchLessonsBatch } from "@/hooks/useLessonData";
 import { LessonRenderer } from "@/components/languages/LessonRenderer";
 import {
   lessonThemes,
@@ -27,13 +25,19 @@ export default function VietnameseLessonsPage() {
 
   useEffect(() => {
     let cancelled = false;
-    loadAllVietnameseLessons()
-      .then((all) => {
+    const loadAll = async () => {
+      try {
+        const all: VietnameseLesson[] = [];
+        for (const lvl of VIETNAMESE_LEVELS) {
+          const batch = await fetchLessonsBatch<VietnameseLesson>("vietnamese", lvl.toLowerCase());
+          all.push(...batch);
+        }
         if (!cancelled) setLessons(all);
-      })
-      .catch((err) => {
-        if (!cancelled) setError(String(err?.message ?? err));
-      });
+      } catch (err) {
+        if (!cancelled) setError(String((err as Error)?.message ?? err));
+      }
+    };
+    loadAll();
     return () => {
       cancelled = true;
     };

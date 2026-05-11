@@ -15,12 +15,12 @@ import { Link } from "react-router-dom";
 import {
   FRENCH_CATEGORIES,
   FRENCH_TOTAL_LESSONS,
-  loadLessonsForLevel,
   type FrenchCategoryMeta,
   type FrenchCefrLevel,
   type FrenchLesson,
 } from "@/languages/french/lessons";
 import { normalizeFrenchLesson } from "@/languages/french/normalize";
+import { fetchLessonsBatch } from "@/hooks/useLessonData";
 import { LessonRenderer } from "@/components/languages/LessonRenderer";
 import {
   lessonThemes,
@@ -50,13 +50,13 @@ export default function FrenchLessonsPage() {
   useEffect(() => {
     let cancelled = false;
     setLessons(null);
-    loadLessonsForLevel(level)
+    fetchLessonsBatch<FrenchLesson>("french", level.toLowerCase())
       .then((arr) => {
         if (!cancelled) setLessons(arr);
       })
       .catch((err) => {
         if (!cancelled) {
-          console.error("[FrenchLessonsPage] level load failed", level, err);
+          console.error("[FrenchLessonsPage] fetch failed", level, err);
           setLessons([]);
         }
       });

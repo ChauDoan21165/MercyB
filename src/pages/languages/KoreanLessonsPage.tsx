@@ -15,11 +15,11 @@ import { Link } from "react-router-dom";
 
 import {
   KOREAN_TOTAL_LESSONS,
-  loadLessonsForLevel,
   type KoreanCefrLevel,
   type KoreanLesson,
 } from "@/languages/korean/lessons";
 import { normalizeKoreanLesson } from "@/languages/korean/normalize";
+import { fetchLessonsBatch } from "@/hooks/useLessonData";
 import { LessonRenderer } from "@/components/languages/LessonRenderer";
 import {
   lessonThemes,
@@ -49,13 +49,13 @@ export default function KoreanLessonsPage() {
   useEffect(() => {
     let cancelled = false;
     setLessons(null);
-    loadLessonsForLevel(level)
+    fetchLessonsBatch<KoreanLesson>("korean", level.toLowerCase())
       .then((arr) => {
         if (!cancelled) setLessons(arr);
       })
       .catch((err) => {
         if (!cancelled) {
-          console.error("[KoreanLessonsPage] level load failed", level, err);
+          console.error("[KoreanLessonsPage] fetch failed", level, err);
           setLessons([]);
         }
       });

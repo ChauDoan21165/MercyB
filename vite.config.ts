@@ -236,6 +236,18 @@ export default defineConfig({
           // If a specific /api/* endpoint ever needs offline tolerance,
           // add it back as a narrowly-scoped rule, not a catch-all.
           {
+            // Phase 3 — cache lesson data fetched from Supabase (public.lessons).
+            // NetworkFirst so offline users still get cached lessons after
+            // their first visit to a language page.
+            urlPattern: /\/rest\/v1\/lessons/,
+            handler: 'NetworkFirst',
+            options: {
+              cacheName: 'lessons-cache',
+              expiration: { maxEntries: 500, maxAgeSeconds: 60 * 60 * 24 * 30 },
+              cacheableResponse: { statuses: [0, 200] },
+            },
+          },
+          {
             // Perf fix #3 — code-split lesson JS chunks. CacheFirst so
             // previously-visited language levels load instantly from
             // cache. Not precached — first lesson visit pays the network

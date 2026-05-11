@@ -19,12 +19,12 @@ import { useLessonData } from "@/hooks/useLessonData";
 import {
   GERMAN_CATEGORIES,
   GERMAN_TOTAL_LESSONS,
-  loadLessonsForLevel,
   type GermanCategoryMeta,
   type GermanCefrLevel,
   type GermanLesson,
 } from "@/languages/german/lessons";
 import { normalizeGermanLesson } from "@/languages/german/normalize";
+import { fetchLessonsBatch } from "@/hooks/useLessonData";
 import { LessonRenderer } from "@/components/languages/LessonRenderer";
 import {
   lessonThemes,
@@ -52,13 +52,13 @@ export default function GermanLessonsPage() {
 
   useEffect(() => {
     let cancelled = false;
-    loadLessonsForLevel(level)
+    fetchLessonsBatch<GermanLesson>("german", level.toLowerCase())
       .then((arr) => {
         if (!cancelled) setLessons(arr);
       })
       .catch((err) => {
         if (!cancelled) {
-          console.error("[GermanLessonsPage] level load failed", level, err);
+          console.error("[GermanLessonsPage] fetch failed", level, err);
           setLessons([]);
         }
       });
