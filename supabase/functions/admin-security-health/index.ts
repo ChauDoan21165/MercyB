@@ -78,40 +78,34 @@ Deno.serve(async (req) => {
       });
     }
 
-    // Helper: check RLS on a table
+    // Helper: check RLS on a table via the check_rls_enabled RPC.
+    // Requires the SQL function created by the migration at:
+    // supabase/migrations_manual/20260511000000_create_check_rls_function.sql
     async function checkRls(table: string): Promise<CheckResult> {
       if (!adminClient) {
         return { name: `RLS enabled on ${table}`, status: "fail", detail: "Cannot connect to database" };
       }
       try {
-        // Query pg_tables to check rowsecurity flag
         const { data, error } = await adminClient
-          .rpc("check_rls", { tbl: table })
+          .rpc("check_rls_enabled", { table_name: table })
           .maybeSingle();
+
         if (error) {
-          // Fallback — try direct query
-          const { data: d2, error: e2 } = await adminClient
-            .from("pg_tables")
-            .select("rowsecurity")
-            .eq("tablename", table)
-            .eq("schemaname", "public")
-            .maybeSingle();
-          if (e2 || !d2) {
-            return { name: `RLS enabled on ${table}`, status: "fail", detail: `Query failed: ${e2?.message ?? "unknown"}` };
-          }
           return {
             name: `RLS enabled on ${table}`,
-            status: (d2 as any).rowsecurity ? "ok" : "fail",
-            detail: (d2 as any).rowsecurity ? "RLS is enabled" : "RLS is NOT enabled",
+            status: "fail",
+            detail: error.message || "RPC not deployed. Run migrations_manual/20260511000000_create_check_rls_function.sql",
           };
         }
+
+        const rlsOn = data === true || (data as any)?.check_rls_enabled === true;
         return {
           name: `RLS enabled on ${table}`,
-          status: (data as any)?.rowsecurity ? "ok" : "fail",
-          detail: (data as any)?.rowsecurity ? "RLS is enabled" : "RLS is NOT enabled",
+          status: rlsOn ? "ok" : "fail",
+          detail: rlsOn ? "Enabled" : "NOT enabled",
         };
       } catch (e: any) {
-        return { name: `RLS enabled on ${table}`, status: "fail", detail: `Error: ${e.message}` };
+        return { name: `RLS enabled on ${table}`, status: "fail", detail: e.message };
       }
     }
 
