@@ -39,8 +39,12 @@ vi.mock("@/lib/supabaseClient", () => {
 });
 
 vi.mock("@/lib/mercyVoice", () => {
+  // Default to a resolved-null promise so the production code's
+  // `.then(res => ...)` chain doesn't blow up when this mock is called
+  // by the now-configured `us` accent path. Individual tests that
+  // exercise the cloud path override with `.mockResolvedValueOnce(...)`.
   return {
-    fetchCloudTtsUrl: vi.fn(),
+    fetchCloudTtsUrl: vi.fn().mockResolvedValue(null),
   };
 });
 
@@ -204,6 +208,16 @@ describe("useAccentPreference", () => {
 describe("multiAccentTTS.playReferenceAudio", () => {
   beforeEach(async () => {
     vi.clearAllMocks();
+    // Re-apply the resolved-null default. clearAllMocks resets call
+    // history but Vitest 3 also wipes mockResolvedValue defaults set in
+    // the factory in some module graphs — easier to re-assert here so
+    // the production `.then(res => ...)` chain in getOrFetchCloudUrl
+    // never receives an undefined return when an earlier test left a
+    // .mockResolvedValueOnce in place.
+    const mercyVoice = await import("@/lib/mercyVoice");
+    (mercyVoice.fetchCloudTtsUrl as ReturnType<typeof vi.fn>)
+      .mockReset()
+      .mockResolvedValue(null);
     const { __resetMultiAccentTTSCacheForTests } = await import(
       "@/lib/pronunciation/multiAccentTTS"
     );

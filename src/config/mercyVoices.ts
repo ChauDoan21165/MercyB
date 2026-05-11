@@ -3,35 +3,46 @@
 // Voice IDs and settings for the ElevenLabs cloud TTS path
 // (supabase/functions/mercy-tts + src/hooks/useMercyVoice).
 //
-// Chau picks the actual voice IDs from
-// https://elevenlabs.io/app/voice-library after signing up for the
-// Creator plan, then replaces the 'placeholder' strings below. While
-// the IDs are 'placeholder' the cloud path returns 4xx and the hook
-// falls back to window.speechSynthesis automatically — so it is safe
-// to merge this file with placeholders.
-//
 // VOICE_SETTINGS is intentionally duplicated in
 // supabase/functions/mercy-tts/index.ts (no module sharing across the
 // Deno function boundary). Keep them in sync if either changes.
+//
+// US voice ID is the canonical "primary" voice from the rotation pool
+// already used by the bulk audio generators (scripts/build-audio-manifest.ts
+// VOICE_IDS[0], scripts/generate-ielts-speaking-audio.ts VOICE_BAND_7).
+// Reusing the same voice keeps the Speak-tab cloud TTS consistent with
+// the thousands of pre-generated lesson clips users already hear in
+// the app — same character voice across the product.
+//
+// uk / au / ca are intentionally left as "placeholder" — the rotation
+// pool wasn't tagged by accent and we don't have ground truth for which
+// pool member matches which accent. Leaving them placeholder makes
+// isAccentVoiceConfigured("en", "uk"|"au"|"ca") return false, which
+// causes the multi-accent TTS path to skip cleanly to browser TTS
+// instead of speaking with the wrong accent. Replace these only after
+// listening + confirming the accent match.
+//
+// VIETNAMESE_VOICE_ID is also left as "placeholder". No production
+// surface today calls fetchCloudTtsUrl({language:'vi'}) — Vietnamese
+// audio is pre-generated via FPT.AI in scripts/generate-vietnamese-audio.ts.
+// If/when on-demand Vietnamese TTS is needed, replace with a voice
+// from the ElevenLabs library that pronounces Vietnamese cleanly.
 
 export const VIETNAMESE_VOICE_ID = "placeholder";
 
 /**
- * Per-accent ElevenLabs voice IDs. Defaults all to "placeholder" so the
- * cloud TTS path returns a 4xx and the hook falls back to
- * window.speechSynthesis with the right BCP-47 lang code. Chau replaces
- * each value with a real voice id from
- * https://elevenlabs.io/app/voice-library after picking a voice that
- * matches the accent.
+ * Per-accent ElevenLabs voice IDs.
  *
- * Picking guidance (for Chau):
- *   us — General American, neutral newscaster register
+ * `us` is the canonical primary voice used by the bulk audio generators.
+ * Other accents stay as "placeholder" — isAccentVoiceConfigured returns
+ * false for them, so multi-accent TTS falls back to browser TTS rather
+ * than speaking in the wrong accent. Picking guidance for future fills:
  *   uk — RP / standard British, clear consonants
  *   au — General Australian (not strong outback)
  *   ca — General Canadian (often interchangeable with US in casting)
  */
 export const ENGLISH_VOICE_IDS = {
-  us: "placeholder",
+  us: "hpp4J3VqNfWAUOO0d1Us",
   uk: "placeholder",
   au: "placeholder",
   ca: "placeholder",
