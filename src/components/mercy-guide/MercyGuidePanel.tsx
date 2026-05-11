@@ -824,7 +824,7 @@ function TeacherModePicker({
         <div className="flex min-w-0 items-center gap-1.5">
           <span className={`h-2.5 w-2.5 rounded-full ${styles.dot}`} />
           <div className="min-w-0">
-            <div className={compact ? 'truncate text-[13px] font-semibold' : 'truncate text-sm font-semibold'}>
+            <div className={compact ? 'text-[13px] font-semibold whitespace-nowrap' : 'text-sm font-semibold whitespace-nowrap'}>
               {compact
                 ? value === 'kids'
                   ? 'Kids'
