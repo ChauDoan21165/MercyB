@@ -17,44 +17,16 @@ import { WeeklyLeaderboardOptInPanel } from "@/components/leaderboard/WeeklyLead
 import { ReferralLeaderboardOptInPanel } from "@/components/leaderboard/ReferralLeaderboardOptInPanel";
 import { exportAttemptsCsv } from "@/lib/analytics/speechProgress";
 
-function formatDateTime(value: string | null | undefined): string {
+function formatDate(value: string | null | undefined): string {
   if (!value) return "—";
   const d = new Date(value);
   if (Number.isNaN(d.getTime())) return "—";
-  return d.toLocaleString();
-}
-
-function getStatusLabel(status: string | null | undefined): { en: string; vi: string } {
-  switch (status) {
-    case "active":
-      return { en: "Active",              vi: "Đang hoạt động" };
-    case "trialing":
-      return { en: "Active (trial)",      vi: "Đang dùng thử" };
-    case "grace_period":
-      return { en: "Grace period",        vi: "Trong thời gian gia hạn" };
-    case "past_due":
-      return { en: "Past due",            vi: "Quá hạn thanh toán" };
-    case "paused":
-      return { en: "Paused",              vi: "Đã tạm dừng" };
-    case "expired":
-      return { en: "Expired",             vi: "Đã hết hạn" };
-    case "revoked":
-      return { en: "Revoked",             vi: "Đã bị thu hồi" };
-    case "canceled":
-      return { en: "Canceled",            vi: "Đã hủy" };
-    case "inactive":
-    default:
-      return { en: "Inactive",            vi: "Chưa kích hoạt" };
-  }
+  return d.toLocaleDateString();
 }
 
 function getExpiryValue(ent: any): string | null {
   if (!ent) return null;
   return ent.current_period_end || ent.expires_at || ent.expiry_at || ent.period_end || null;
-}
-
-function getCancelAtPeriodEnd(ent: any): boolean {
-  return Boolean(ent?.cancel_at_period_end);
 }
 
 function getIsPaidStatus(ent: any): boolean {
@@ -112,7 +84,6 @@ export default function AccountPage() {
 
   const [isSigningOut, setIsSigningOut]       = useState(false);
   const [didRedirectToSignin, setDidRedirectToSignin] = useState(false);
-  const [isOpeningBilling, setIsOpeningBilling] = useState(false);
   const [showGiftModal, setShowGiftModal]     = useState(false);
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
   const [deleteConfirmText, setDeleteConfirmText] = useState("");
@@ -125,9 +96,8 @@ export default function AccountPage() {
   const [resetMemorySuccess, setResetMemorySuccess]         = useState(false);
   const [downloadError, setDownloadError]                   = useState<string | null>(null);
 
-  // Ref-based in-flight guards — prevent duplicate taps even before state updates
-  const signingOutRef     = useRef(false);
-  const openingBillingRef = useRef(false);
+  // Ref-based in-flight guard — prevents duplicate sign-out taps before state settles.
+  const signingOutRef = useRef(false);
 
   useEffect(() => {
     if (isLoading) return;
@@ -148,64 +118,10 @@ export default function AccountPage() {
     return ent?.is_premium === true || getIsPaidStatus(ent);
   }, [ent, entitlementLoading]);
 
-  const accessLabel = useMemo((): { en: string; vi: string } => {
-    if (entitlementLoading) return { en: "Loading…", vi: "Đang tải…" };
-    if (!isPremium) return { en: "Free access", vi: "Truy cập miễn phí" };
-
-    if (typeof ent?.plan_name === "string" && ent.plan_name.trim()) {
-      return { en: ent.plan_name.trim(), vi: "Đã kích hoạt premium" };
-    }
-
-    return { en: "Premium access", vi: "Đã kích hoạt premium" };
-  }, [ent, entitlementLoading, isPremium]);
-
-  const entitlementStatusLabels = useMemo(() => {
-    if (entitlementLoading) return { en: "Loading…", vi: "Đang tải…" };
-    return getStatusLabel(ent?.status);
-  }, [ent?.status, entitlementLoading]);
-
   const expiryText = useMemo(() => {
-    if (entitlementLoading) return "Loading…";
-    return formatDateTime(getExpiryValue(ent));
+    if (entitlementLoading) return "—";
+    return formatDate(getExpiryValue(ent));
   }, [ent, entitlementLoading]);
-
-  const cancelAtPeriodEnd = useMemo(() => {
-    if (entitlementLoading) return false;
-    return getCancelAtPeriodEnd(ent);
-  }, [ent, entitlementLoading]);
-
-  const sessionLabel = isLoading ? "Checking…" : user ? "Active" : "Redirecting…";
-  const sessionViLabel = isLoading ? "Đang kiểm tra…" : user ? "Đang hoạt động" : "Đang chuyển hướng…";
-
-  const handleSignOut = useCallback(async () => {
-    if (signingOutRef.current) return;
-    signingOutRef.current = true;
-    setIsSigningOut(true);
-    try {
-      await signOut();
-      nav("/signin", { replace: true });
-    } finally {
-      signingOutRef.current = false;
-      setIsSigningOut(false);
-    }
-  }, [nav, signOut]);
-
-  const handleBillingClick = useCallback((): void => {
-    nav("/billing");
-  }, [nav]);
-
-  const handleManageBillingClick = useCallback((): void => {
-    // Hard guard — ignore duplicate taps
-    if (openingBillingRef.current) return;
-    openingBillingRef.current = true;
-    setIsOpeningBilling(true);
-    // Navigate — page unloads so ref/state cleanup is not needed
-    nav("/billing");
-  }, [nav]);
-
-  const handlePricingClick = useCallback((): void => {
-    nav("/pricing");
-  }, [nav]);
 
   // ── Placement test (feature-flagged) ──────────────────────────────
   const { enabled: placementFlagEnabled } = useFeatureFlag(
@@ -250,9 +166,18 @@ export default function AccountPage() {
     };
   }, [placementFlagEnabled, user?.id]);
 
-  const handlePlacementClick = useCallback((): void => {
-    nav("/placement");
-  }, [nav]);
+  const handleSignOut = useCallback(async () => {
+    if (signingOutRef.current) return;
+    signingOutRef.current = true;
+    setIsSigningOut(true);
+    try {
+      await signOut();
+      nav("/signin", { replace: true });
+    } finally {
+      signingOutRef.current = false;
+      setIsSigningOut(false);
+    }
+  }, [nav, signOut]);
 
   const handleRefreshClick = useCallback((): void => {
     void refreshEntitlements();
@@ -329,7 +254,7 @@ export default function AccountPage() {
   // ── Styles ──────────────────────────────────────────────────────────────────
   const wrap: React.CSSProperties = { width: "100%", minHeight: "100vh", background: "white" };
 
-  const container: React.CSSProperties = { maxWidth: 980, margin: "0 auto", padding: "24px 16px 80px" };
+  const container: React.CSSProperties = { maxWidth: 720, margin: "0 auto", padding: "24px 16px 80px" };
 
   const card: React.CSSProperties = {
     border: "1px solid rgba(0,0,0,0.10)",
@@ -339,18 +264,9 @@ export default function AccountPage() {
     boxShadow: "0 10px 30px rgba(0,0,0,0.04)",
   };
 
-  const headerRow: React.CSSProperties = {
-    display: "flex",
-    alignItems: "flex-start",
-    justifyContent: "space-between",
-    gap: 14,
-    flexWrap: "wrap",
-  };
-
   const h1: React.CSSProperties = {
     margin: 0,
-    // clamp down to 22px on the narrowest phones; full 34px on tablet+
-    fontSize: "clamp(22px, 5.5vw, 34px)",
+    fontSize: "clamp(22px, 5.5vw, 30px)",
     fontWeight: 950,
     letterSpacing: -0.8,
     color: "rgba(0,0,0,0.86)",
@@ -365,32 +281,238 @@ export default function AccountPage() {
     letterSpacing: 0,
   };
 
-  const subtitle: React.CSSProperties = {
-    marginTop: 6,
-    marginBottom: 0,
-    fontSize: 14,
-    lineHeight: 1.6,
+  const emailLine: React.CSSProperties = {
+    marginTop: 14,
+    fontSize: 13,
     color: "rgba(0,0,0,0.55)",
-    maxWidth: 520,
-  };
-
-  const subtitleVi: React.CSSProperties = {
-    marginTop: 2,
-    marginBottom: 0,
-    fontSize: 12,
     lineHeight: 1.5,
-    color: "#94a3b8",
-    maxWidth: 520,
   };
 
-  const actionsStyle: React.CSSProperties = {
+  // Primary action row — only 3 buttons. Equal flex so they sit
+  // comfortably on 414px viewports without wrapping.
+  const primaryActionsStyle: React.CSSProperties = {
     display: "flex",
-    alignItems: "center",
+    alignItems: "stretch",
     gap: 10,
     flexWrap: "wrap",
+    marginTop: 18,
   };
 
-  const buttonBase: React.CSSProperties = {
+  const primaryButtonBase: React.CSSProperties = {
+    flex: "1 1 140px",
+    borderRadius: 12,
+    minHeight: 48,
+    padding: "10px 14px",
+    border: "1px solid rgba(0,0,0,0.10)",
+    background: "#fff",
+    color: "#111827",
+    fontWeight: 800,
+    cursor: "pointer",
+    display: "inline-flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    appearance: "none",
+    WebkitAppearance: "none",
+    userSelect: "none",
+    textAlign: "center",
+  };
+
+  // Amber gift CTA — always shown amber per brief (most prominent).
+  const giftButton: React.CSSProperties = {
+    ...primaryButtonBase,
+    background: "#fef3c7",
+    color: "#78350f",
+    borderColor: "#f59e0b",
+  };
+
+  const darkButton: React.CSSProperties = {
+    ...primaryButtonBase,
+    background: "#111827",
+    color: "#fff",
+    borderColor: "#111827",
+  };
+
+  // Secondary row — small underlined text links, lower hierarchy.
+  // Houses Billing, pronunciation history, progress, CSV download,
+  // placement, refresh access, notification preferences. Each item
+  // is gated independently so the row stays sparse for users with
+  // no feature flags enabled.
+  const secondaryLinksStyle: React.CSSProperties = {
+    display: "flex",
+    flexWrap: "wrap",
+    gap: "10px 16px",
+    marginTop: 16,
+    paddingTop: 14,
+    borderTop: "1px solid rgba(0,0,0,0.06)",
+  };
+
+  const secondaryLink: React.CSSProperties = {
+    background: "transparent",
+    border: "none",
+    color: "#6b7280",
+    fontWeight: 600,
+    fontSize: 13,
+    padding: "2px 0",
+    cursor: "pointer",
+    appearance: "none",
+    WebkitAppearance: "none",
+    textAlign: "left",
+    textDecoration: "underline",
+    textUnderlineOffset: 3,
+  };
+
+  const secondaryLinkVi: React.CSSProperties = {
+    display: "block",
+    fontSize: 11,
+    fontWeight: 400,
+    color: "#94a3b8",
+    marginTop: 1,
+    textDecoration: "none",
+  };
+
+  const SecondaryLink = ({
+    en,
+    vi,
+    onClick,
+    disabled = false,
+    testId,
+  }: {
+    en: string;
+    vi: string;
+    onClick: () => void;
+    disabled?: boolean;
+    testId?: string;
+  }) => (
+    <button
+      type="button"
+      style={{ ...secondaryLink, opacity: disabled ? 0.5 : 1 }}
+      onClick={onClick}
+      disabled={disabled}
+      data-testid={testId}
+    >
+      {en}
+      <span style={secondaryLinkVi}>{vi}</span>
+    </button>
+  );
+
+  // ── Simplified status card ───────────────────────────────────────
+  // Free: amber/warm. Premium: emerald. One sentence VI + EN,
+  // plus a single contextual CTA (Upgrade vs expiry date).
+  const statusCardFree: React.CSSProperties = {
+    ...card,
+    marginTop: 18,
+    background: "linear-gradient(180deg, #fffbeb 0%, #ffffff 100%)",
+    borderColor: "#fde68a",
+  };
+
+  const statusCardPremium: React.CSSProperties = {
+    ...card,
+    marginTop: 18,
+    background: "linear-gradient(180deg, #ecfdf5 0%, #ffffff 100%)",
+    borderColor: "#a7f3d0",
+  };
+
+  const statusHeadlineVi: React.CSSProperties = {
+    fontSize: 18,
+    fontWeight: 800,
+    color: "#111827",
+    margin: 0,
+    lineHeight: 1.35,
+  };
+
+  const statusHeadlineEn: React.CSSProperties = {
+    fontSize: 14,
+    fontWeight: 500,
+    color: "rgba(0,0,0,0.55)",
+    margin: "4px 0 0",
+  };
+
+  const statusBody: React.CSSProperties = {
+    marginTop: 12,
+    fontSize: 13,
+    color: "rgba(0,0,0,0.60)",
+    lineHeight: 1.5,
+  };
+
+  const upgradeCta: React.CSSProperties = {
+    display: "inline-flex",
+    alignItems: "center",
+    gap: 6,
+    marginTop: 14,
+    padding: "12px 22px",
+    borderRadius: 9999,
+    background: "#111827",
+    color: "#fff",
+    fontWeight: 800,
+    fontSize: 14,
+    textDecoration: "none",
+    cursor: "pointer",
+    border: "none",
+  };
+
+  // ── Collapsible <details> styles ─────────────────────────────────
+  const detailsCard: React.CSSProperties = {
+    ...card,
+    marginTop: 14,
+    padding: 0,
+    overflow: "hidden",
+  };
+
+  const summaryStyle: React.CSSProperties = {
+    padding: "16px 22px",
+    cursor: "pointer",
+    fontWeight: 700,
+    fontSize: 14,
+    color: "#111827",
+    listStyle: "none",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    gap: 12,
+    userSelect: "none",
+  };
+
+  const summaryVi: React.CSSProperties = {
+    display: "block",
+    fontSize: 11,
+    fontWeight: 400,
+    color: "#94a3b8",
+    marginTop: 2,
+  };
+
+  const detailsBody: React.CSSProperties = {
+    padding: "0 22px 22px",
+  };
+
+  // Section spacing utility for content stacked below the status card.
+  const section: React.CSSProperties = { marginTop: 18 };
+
+  // ── Legal card styles (reused from prior version) ────────────────
+  const labelStyle: React.CSSProperties = {
+    fontSize: 11,
+    fontWeight: 800,
+    textTransform: "uppercase",
+    letterSpacing: 0.6,
+    color: "rgba(0,0,0,0.40)",
+    marginBottom: 8,
+  };
+
+  const subStyle: React.CSSProperties = {
+    marginTop: 8,
+    fontSize: 13,
+    lineHeight: 1.6,
+    color: "rgba(0,0,0,0.55)",
+  };
+
+  const subViStyle: React.CSSProperties = {
+    marginTop: 3,
+    fontSize: 11,
+    lineHeight: 1.5,
+    color: "#94a3b8",
+  };
+
+  const legalButtonBase: React.CSSProperties = {
     borderRadius: 12,
     minHeight: 44,
     padding: "10px 16px",
@@ -408,360 +530,179 @@ export default function AccountPage() {
     userSelect: "none",
     textAlign: "center",
   };
-
-  const primaryButton: React.CSSProperties = {
-    ...buttonBase,
-    background: "#111827",
-    color: "#fff",
-    borderColor: "#111827",
-  };
-
-  // Amber-accented variant for the gift-code CTA when the user is on
-  // the free tier — makes redemption an obvious next step. Falls back
-  // to the regular button look for premium users (no urgency).
-  const giftPrimaryButton: React.CSSProperties = {
-    ...buttonBase,
-    background: "#fef3c7",
-    color: "#78350f",
-    borderColor: "#f59e0b",
-  };
-
-  // Secondary row container — sits below the primary actions, smaller
-  // gap to signal lower hierarchy.
-  const secondaryActionsStyle: React.CSSProperties = {
-    display: "flex",
-    alignItems: "center",
-    gap: 14,
-    flexWrap: "wrap",
-    marginTop: 12,
-  };
-
-  // Text-link style for low-frequency / troubleshooting actions
-  // (Refresh access, Notification preferences). Smaller, no border,
-  // muted color — visible but doesn't compete with the primary row.
-  const secondaryLink: React.CSSProperties = {
-    background: "transparent",
-    border: "none",
-    color: "#6b7280",
-    fontWeight: 600,
-    fontSize: 12,
-    padding: "4px 2px",
-    cursor: "pointer",
-    appearance: "none",
-    WebkitAppearance: "none",
-    textAlign: "left",
-    textDecoration: "underline",
-    textUnderlineOffset: 3,
-  };
-
-  const grid: React.CSSProperties = {
-    display: "grid",
-    // 2 cols on tablet+, 1 col on phones. CSS media query override applied
-    // via the .mb-account-grid class below so the layout is driven by the
-    // viewport, not by runtime JS state.
-    gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
-    gap: 16,
-    marginTop: 18,
-  };
-
-  const panel = (span = 1): React.CSSProperties => ({
-    ...card,
-    gridColumn: span === 2 ? "span 2" : "span 1",
-  });
-
-  const labelStyle: React.CSSProperties = {
-    fontSize: 11,
-    fontWeight: 800,
-    textTransform: "uppercase",
-    letterSpacing: 0.6,
-    color: "rgba(0,0,0,0.40)",
-    marginBottom: 8,
-  };
-
-  const valueStyle: React.CSSProperties = {
-    fontSize: 22,
-    fontWeight: 900,
-    color: "rgba(0,0,0,0.86)",
-    lineHeight: 1.2,
-  };
-
-  const valueViStyle: React.CSSProperties = {
-    display: "block",
-    fontSize: 12,
-    fontWeight: 400,
-    color: "#94a3b8",
-    marginTop: 3,
-  };
-
-  const subStyle: React.CSSProperties = {
-    marginTop: 8,
-    fontSize: 13,
-    lineHeight: 1.6,
-    color: "rgba(0,0,0,0.55)",
-  };
-
-  const subViStyle: React.CSSProperties = {
-    marginTop: 3,
-    fontSize: 11,
-    lineHeight: 1.5,
-    color: "#94a3b8",
-  };
   // ────────────────────────────────────────────────────────────────────────────
 
   if (!user && !isLoading) return null;
 
   return (
     <div style={wrap}>
-      {/* Collapse the 2-col grid to a single column on phones so card content
-          doesn't get squeezed into ~140px at 320/375px viewports. */}
       <style>{`
-        @media (max-width: 640px) {
-          .mb-account-grid { grid-template-columns: 1fr !important; }
-        }
+        details[open] > summary .mb-chevron { transform: rotate(180deg); }
+        summary::-webkit-details-marker { display: none; }
       `}</style>
       <div style={container}>
 
-        {/* ── Header card ─────────────────────────────────────── */}
+        {/* ── Header card: title + email + 3 primary buttons + secondary links ── */}
         <div style={card}>
-          <div style={headerRow}>
-            <div>
-              <h1 style={h1}>
-                Account
-                <span style={h1Vi}>Tài khoản của bạn</span>
-              </h1>
-              <p style={subtitle}>
-                Manage your subscription and billing in one place.
-              </p>
-              <p style={subtitleVi}>
-                Quản lý gói đăng ký và thanh toán của bạn tại đây.
-              </p>
-            </div>
+          <h1 style={h1}>
+            Account
+            <span style={h1Vi}>Tài khoản của bạn</span>
+          </h1>
+          <p style={emailLine}>{email || "—"}</p>
 
-            {/* Primary actions: redeem-gift-code goes first and gets
-                an amber accent for free users (urgency CTA). Billing
-                is a single merged entry (was Billing + Manage billing
-                — the in-app billing page already exposes the manage
-                flow). Pricing + Sign out keep their existing slots.
-                Flag-gated buttons (placement, pronunciation, progress)
-                stay in their original order. */}
-            <div style={actionsStyle}>
-              <button
-                type="button"
-                style={isPremium ? buttonBase : giftPrimaryButton}
-                onClick={() => {
-                  // Defer one tick so this click finishes bubbling before Radix
-                  // mounts the Dialog overlay — otherwise Radix's pointer-down-
-                  // outside handler fires on the same event and closes it.
-                  setTimeout(() => setShowGiftModal(true), 0);
-                }}
-              >
-                <BiLabel en="Redeem gift code" vi="Kích hoạt mã quà tặng" />
-              </button>
+          {/* Three primary actions only — gift code (amber), pricing, sign out. */}
+          <div style={primaryActionsStyle}>
+            <button
+              type="button"
+              style={giftButton}
+              onClick={() => {
+                // Defer one tick so this click finishes bubbling before Radix
+                // mounts the Dialog overlay — otherwise Radix's pointer-down-
+                // outside handler fires on the same event and closes it.
+                setTimeout(() => setShowGiftModal(true), 0);
+              }}
+            >
+              <BiLabel en="Redeem gift code" vi="Kích hoạt mã quà tặng" />
+            </button>
 
-              <button type="button" style={buttonBase}
-                onClick={handleBillingClick} aria-label="Open billing page">
-                <BiLabel en="Billing" vi="Thanh toán" />
-              </button>
+            <button
+              type="button"
+              style={primaryButtonBase}
+              onClick={() => nav("/pricing")}
+            >
+              <BiLabel en="Pricing" vi="Bảng giá" />
+            </button>
 
-              <button type="button" style={buttonBase} onClick={handlePricingClick}>
-                <BiLabel en="Pricing" vi="Bảng giá" />
-              </button>
-
-              {placementFlagEnabled ? (
-                <button
-                  type="button"
-                  style={buttonBase}
-                  onClick={handlePlacementClick}
-                  aria-label="Placement test"
-                >
-                  {placementInfo?.completedAt ? (
-                    <BiLabel
-                      en={`Retake placement test${placementInfo.cefr ? ` · last result ${placementInfo.cefr}` : ""}`}
-                      vi={`Làm lại bài đánh giá${placementInfo.cefr ? ` · kết quả ${placementInfo.cefr}` : ""}`}
-                    />
-                  ) : (
-                    <BiLabel en="Take placement test" vi="Làm bài đánh giá" />
-                  )}
-                </button>
-              ) : null}
-
-              {pronunciationFlagEnabled ? (
-                <button
-                  type="button"
-                  style={buttonBase}
-                  onClick={() => nav("/speech/history")}
-                  aria-label="My pronunciation history"
-                >
-                  <BiLabel
-                    en="My pronunciation history"
-                    vi="Lịch sử phát âm của tôi"
-                  />
-                </button>
-              ) : null}
-
-              {pronunciationFlagEnabled ? (
-                <button
-                  type="button"
-                  style={buttonBase}
-                  onClick={() => nav("/progress")}
-                  aria-label="My progress dashboard"
-                  data-testid="account-progress-link"
-                >
-                  <BiLabel en="My progress" vi="Tiến độ của tôi" />
-                </button>
-              ) : null}
-
-              {pronunciationFlagEnabled ? (
-                <button
-                  type="button"
-                  style={buttonBase}
-                  onClick={() => void downloadProgressCsv(setDownloadError)}
-                  aria-label="Download my progress data"
-                  data-testid="account-progress-download"
-                >
-                  <BiLabel
-                    en="Download my progress data"
-                    vi="Tải dữ liệu tiến độ"
-                  />
-                </button>
-              ) : null}
-
-              <button type="button" style={primaryButton}
-                onClick={() => void handleSignOut()} disabled={isSigningOut}>
-                <BiLabel
-                  en={isSigningOut ? "Signing out…" : "Sign out"}
-                  vi={isSigningOut ? "Đang đăng xuất…" : "Đăng xuất"}
-                />
-              </button>
-            </div>
-
-            {/* Secondary row: low-frequency / troubleshooting actions.
-                Refresh access is a debug affordance; notification
-                preferences is a once-per-user setting. Both demoted
-                to text-link style so they don't compete with the
-                primary actions above. */}
-            <div style={secondaryActionsStyle}>
-              <button
-                type="button"
-                style={secondaryLink}
-                onClick={handleRefreshClick}
-                disabled={entitlementLoading}
-              >
-                <BiLabel
-                  en={entitlementLoading ? "Refreshing…" : "Refresh access"}
-                  vi={entitlementLoading ? "Đang làm mới…" : "Làm mới quyền truy cập"}
-                />
-              </button>
-
-              <button
-                type="button"
-                style={secondaryLink}
-                onClick={() => nav("/account/notifications")}
-                aria-label="Notification preferences"
-                data-testid="account-notification-prefs-link"
-              >
-                <BiLabel
-                  en="Notification preferences"
-                  vi="Tùy chọn email"
-                />
-              </button>
-
-              {downloadError ? (
-                <p
-                  role="alert"
-                  style={{ color: "#991b1b", fontSize: 12, margin: 0 }}
-                >
-                  {downloadError}
-                </p>
-              ) : null}
-            </div>
+            <button
+              type="button"
+              style={darkButton}
+              onClick={() => void handleSignOut()}
+              disabled={isSigningOut}
+            >
+              <BiLabel
+                en={isSigningOut ? "Signing out…" : "Sign out"}
+                vi={isSigningOut ? "Đang đăng xuất…" : "Đăng xuất"}
+              />
+            </button>
           </div>
+
+          {/* Secondary row — text-link style; less visual weight. */}
+          <div style={secondaryLinksStyle}>
+            <SecondaryLink
+              en="Billing"
+              vi="Thanh toán"
+              onClick={() => nav("/billing")}
+            />
+
+            {pronunciationFlagEnabled ? (
+              <SecondaryLink
+                en="My progress"
+                vi="Tiến độ của tôi"
+                onClick={() => nav("/progress")}
+                testId="account-progress-link"
+              />
+            ) : null}
+
+            {pronunciationFlagEnabled ? (
+              <SecondaryLink
+                en="My pronunciation history"
+                vi="Lịch sử phát âm"
+                onClick={() => nav("/speech/history")}
+              />
+            ) : null}
+
+            {pronunciationFlagEnabled ? (
+              <SecondaryLink
+                en="Download my progress data"
+                vi="Tải dữ liệu tiến độ"
+                onClick={() => void downloadProgressCsv(setDownloadError)}
+                testId="account-progress-download"
+              />
+            ) : null}
+
+            {placementFlagEnabled ? (
+              <SecondaryLink
+                en={
+                  placementInfo?.completedAt
+                    ? `Retake placement test${placementInfo.cefr ? ` · ${placementInfo.cefr}` : ""}`
+                    : "Take placement test"
+                }
+                vi={
+                  placementInfo?.completedAt
+                    ? `Làm lại bài đánh giá${placementInfo.cefr ? ` · ${placementInfo.cefr}` : ""}`
+                    : "Làm bài đánh giá"
+                }
+                onClick={() => nav("/placement")}
+              />
+            ) : null}
+
+            <SecondaryLink
+              en={entitlementLoading ? "Refreshing…" : "Refresh access"}
+              vi={entitlementLoading ? "Đang làm mới…" : "Làm mới quyền truy cập"}
+              onClick={handleRefreshClick}
+              disabled={entitlementLoading}
+            />
+
+            <SecondaryLink
+              en="Notification preferences"
+              vi="Tùy chọn email"
+              onClick={() => nav("/account/notifications")}
+              testId="account-notification-prefs-link"
+            />
+          </div>
+
+          {downloadError ? (
+            <p
+              role="alert"
+              style={{ color: "#991b1b", fontSize: 12, marginTop: 10 }}
+            >
+              {downloadError}
+            </p>
+          ) : null}
         </div>
 
-        {/* ── Info grid ───────────────────────────────────────── */}
-        <div className="mb-account-grid" style={grid}>
-
-          <div style={panel()}>
-            <div style={labelStyle}>Email</div>
-            <div style={{ ...valueStyle, fontSize: 18 }}>{email || "—"}</div>
-            <p style={subStyle}>Your authenticated account email.</p>
-            <p style={subViStyle}>Email tài khoản đã xác thực của bạn.</p>
-          </div>
-
-          <div style={panel()}>
-            <div style={labelStyle}>Session</div>
-            <div style={valueStyle}>
-              {sessionLabel}
-              <span style={valueViStyle}>{sessionViLabel}</span>
-            </div>
-            <p style={subStyle}>Current session state.</p>
-            <p style={subViStyle}>Trạng thái phiên hiện tại.</p>
-          </div>
-
-          <div style={panel()}>
-            <div style={labelStyle}>Current access</div>
-            <div style={valueStyle}>
-              {accessLabel.en}
-              <span style={valueViStyle}>{accessLabel.vi}</span>
-            </div>
-            <p style={subStyle}>
-              {entitlementLoading
-                ? "Checking your subscription…"
-                : isPremium
-                  ? `Premium is active — status: ${ent?.status || "active"}.`
-                  : "Free access — no active premium subscription found."}
-            </p>
-            <p style={subViStyle}>
-              {entitlementLoading
-                ? "Đang kiểm tra gói đăng ký…"
-                : isPremium
-                  ? "Premium đang hoạt động."
-                  : "Chưa có gói premium nào đang hoạt động."}
-            </p>
-          </div>
-
-          <div style={panel()}>
-            <div style={labelStyle}>Subscription status</div>
-            <div style={valueStyle}>
-              {entitlementStatusLabels.en}
-              <span style={valueViStyle}>{entitlementStatusLabels.vi}</span>
-            </div>
-            <p style={subStyle}>
-              Source: <b>{ent?.source || "—"}</b>
-              {" · "}
-              Renews: <b>{expiryText}</b>
-              {" · "}
-              Cancel at period end: <b>{cancelAtPeriodEnd ? "Yes" : "No"}</b>
-            </p>
-            <p style={subViStyle}>
-              Nguồn: <b>{ent?.source || "—"}</b>
-              {" · "}
-              Gia hạn: <b>{expiryText}</b>
-              {" · "}
-              Hủy cuối kỳ: <b>{cancelAtPeriodEnd ? "Có" : "Không"}</b>
-            </p>
-          </div>
-
-          <div style={panel(2)}>
-            <div style={labelStyle}>About your subscription</div>
-            <p style={subStyle}>
-              Your subscription is managed through Stripe. Use{" "}
-              <strong>Manage billing</strong> to update your payment method,
-              switch plans, or cancel. Changes take effect immediately or at
-              the end of the current billing period.
-            </p>
-            <p style={subViStyle}>
-              Gói đăng ký của bạn được quản lý qua Stripe. Nhấn{" "}
-              <strong>Quản lý thanh toán</strong> để cập nhật phương thức thanh
-              toán, chuyển gói hoặc hủy đăng ký.
-            </p>
-          </div>
-
+        {/* ── Simplified subscription status ──────────────────────── */}
+        <div style={isPremium ? statusCardPremium : statusCardFree}>
+          {isPremium ? (
+            <>
+              <p style={statusHeadlineVi}>⭐ Premium đang hoạt động</p>
+              <p style={statusHeadlineEn}>Premium active</p>
+              <p style={statusBody}>
+                {expiryText !== "—"
+                  ? <>Gia hạn vào <b>{expiryText}</b> · Renews on <b>{expiryText}</b></>
+                  : <>Bạn có quyền truy cập đầy đủ. / You have full access.</>}
+              </p>
+            </>
+          ) : (
+            <>
+              <p style={statusHeadlineVi}>🔓 Bạn đang dùng bản miễn phí</p>
+              <p style={statusHeadlineEn}>You're on the free plan</p>
+              <p style={statusBody}>
+                Mở khóa toàn bộ bài học, luyện thi, và phản hồi phát âm.
+                <br />
+                Unlock every lesson, exam prep set, and pronunciation feedback.
+              </p>
+              <button
+                type="button"
+                style={upgradeCta}
+                onClick={() => nav("/pricing")}
+                aria-label="Upgrade to premium"
+              >
+                Nâng cấp · Upgrade →
+              </button>
+            </>
+          )}
         </div>
 
-        {/* ── Admin link (level 9+ only) ─────────────────────── */}
+        {/* ── My Progress (streaks + certificates) ─────────────────── */}
+        <div style={section}>
+          <StreakHistoryPanel />
+        </div>
+        <CertificatesAccountEntry />
+
+        {/* ── Admin link (level 9+ only) ───────────────────────────── */}
         {!admin.loading && admin.permissions.level >= 9 ? (
-          <div style={{ marginTop: 18 }}>
+          <div style={section}>
             <a
               href="/admin/analytics"
               data-testid="account-admin-dashboard-link"
@@ -784,33 +725,41 @@ export default function AccountPage() {
           </div>
         ) : null}
 
-        {/* ── My Progress (streaks) ────────────────────────────── */}
-        <div style={{ marginTop: 18 }}>
-          <StreakHistoryPanel />
-        </div>
+        {/* ── Referral (collapsed by default) ──────────────────────── */}
+        <details style={detailsCard}>
+          <summary style={summaryStyle}>
+            <span>
+              Chia sẻ mã giới thiệu
+              <span style={summaryVi}>Share referral code</span>
+            </span>
+            <span className="mb-chevron" style={{ transition: "transform 0.2s", color: "#94a3b8" }} aria-hidden>▾</span>
+          </summary>
+          <div style={detailsBody}>
+            <ReferralCard userId={user?.id} />
+            <div style={{ marginTop: 12 }}>
+              <ApplyReferralCodeForm userId={user?.id} />
+            </div>
+          </div>
+        </details>
 
-        {/* ── A3 — Progress certificates entry (gated by flag) ─── */}
-        <CertificatesAccountEntry />
+        {/* ── Leaderboard settings (collapsed by default) ──────────── */}
+        <details style={detailsCard}>
+          <summary style={summaryStyle}>
+            <span>
+              Bảng xếp hạng & tùy chọn
+              <span style={summaryVi}>Leaderboard settings</span>
+            </span>
+            <span className="mb-chevron" style={{ transition: "transform 0.2s", color: "#94a3b8" }} aria-hidden>▾</span>
+          </summary>
+          <div style={detailsBody}>
+            <WeeklyLeaderboardOptInPanel />
+            <div style={{ marginTop: 12 }}>
+              <ReferralLeaderboardOptInPanel />
+            </div>
+          </div>
+        </details>
 
-        {/* ── Referral (Step 5 Marketing) ──────────────────────── */}
-        <div style={{ marginTop: 18 }}>
-          <ReferralCard userId={user?.id} />
-        </div>
-        <div style={{ marginTop: 12 }}>
-          <ApplyReferralCodeForm userId={user?.id} />
-        </div>
-
-        {/* ── Public weekly leaderboard opt-in ──────────────────── */}
-        <div style={{ marginTop: 18 }}>
-          <WeeklyLeaderboardOptInPanel />
-        </div>
-
-        {/* ── Public monthly referral leaderboard opt-in ──────────── */}
-        <div style={{ marginTop: 12 }}>
-          <ReferralLeaderboardOptInPanel />
-        </div>
-
-        {/* ── Legal + account deletion ─────────────────────────── */}
+        {/* ── Legal + account deletion ─────────────────────────────── */}
         <div style={{ ...card, marginTop: 18 }}>
           <div style={labelStyle}>Legal & account</div>
           <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginTop: 8 }}>
@@ -818,7 +767,7 @@ export default function AccountPage() {
               href="/privacy"
               target="_blank"
               rel="noopener noreferrer"
-              style={{ ...buttonBase, textDecoration: "none" } as React.CSSProperties}
+              style={{ ...legalButtonBase, textDecoration: "none" } as React.CSSProperties}
             >
               <BiLabel en="Privacy Policy" vi="Chính sách bảo mật" />
             </a>
@@ -826,14 +775,14 @@ export default function AccountPage() {
               href="/terms"
               target="_blank"
               rel="noopener noreferrer"
-              style={{ ...buttonBase, textDecoration: "none" } as React.CSSProperties}
+              style={{ ...legalButtonBase, textDecoration: "none" } as React.CSSProperties}
             >
               <BiLabel en="Terms of Use" vi="Điều khoản sử dụng" />
             </a>
             <button
               type="button"
               style={{
-                ...buttonBase,
+                ...legalButtonBase,
                 background: "#fff",
                 color: "#92400e",
                 borderColor: "#fde68a",
@@ -850,7 +799,7 @@ export default function AccountPage() {
             <button
               type="button"
               style={{
-                ...buttonBase,
+                ...legalButtonBase,
                 background: "#fff",
                 color: "#b91c1c",
                 borderColor: "#fecaca",
@@ -926,7 +875,7 @@ export default function AccountPage() {
                 <button
                   type="button"
                   style={{
-                    ...buttonBase,
+                    ...legalButtonBase,
                     background: "#b45309",
                     color: "#fff",
                     borderColor: "#b45309",
@@ -947,7 +896,7 @@ export default function AccountPage() {
                 </button>
                 <button
                   type="button"
-                  style={buttonBase}
+                  style={legalButtonBase}
                   disabled={isResettingMemory}
                   onClick={() => {
                     setShowResetMemoryConfirm(false);
@@ -1008,7 +957,7 @@ export default function AccountPage() {
                 <button
                   type="button"
                   style={{
-                    ...buttonBase,
+                    ...legalButtonBase,
                     background: "#b91c1c",
                     color: "#fff",
                     borderColor: "#b91c1c",
@@ -1026,7 +975,7 @@ export default function AccountPage() {
                 </button>
                 <button
                   type="button"
-                  style={buttonBase}
+                  style={legalButtonBase}
                   disabled={isDeleting}
                   onClick={() => { setShowDeleteConfirm(false); setDeleteConfirmText(""); }}
                 >
