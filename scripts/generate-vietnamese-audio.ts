@@ -128,28 +128,34 @@ async function existsInBucket(key: string): Promise<boolean> {
 
 async function zaloGenerate(voice: string, text: string): Promise<Buffer | null> {
   // Zalo AI TTS — synchronous, no polling needed.
+  // The API expects application/x-www-form-urlencoded, NOT JSON. The
+  // previous JSON-body / "Content-Type: application/json" form
+  // produced HTTP 401 "Invalid authentication credentials" — Zalo's
+  // auth check happens after request parsing, so a malformed body
+  // surfaces as an auth error rather than a 415.
   // speaker_id: 2 = female Northern (thuminh), 4 = male Northern (leminh)
-  const voiceId = voice === "thuminh" ? 2 : 4;
+  // encode_type=1 → MP3.
+  const speakerId = voice === "thuminh" ? 2 : 4;
+  const params = new URLSearchParams();
+  params.append("input", text);
+  params.append("speaker_id", String(speakerId));
+  params.append("speed", "1.0");
+  params.append("encode_type", "1");
+
   const res = await fetch("https://api.zalo.ai/v1/tts/synthesize", {
     method: "POST",
     headers: {
       "apikey": ZALO_KEY!,
-      "Content-Type": "application/json",
     },
-    body: JSON.stringify({
-      input: text,
-      speaker_id: voiceId,
-      speed: 1.0,
-    }),
+    body: params,
   });
   if (!res.ok) {
-    const errText = await res.text().catch(() => "");
-    console.error(`  Zalo ${res.status}: ${String(errText).slice(0, 200)}`);
+    console.error(`  Zalo ${res.status}: ${await res.text()}`);
     return null;
   }
-  const json: { data?: { url?: string } } = await res.json();
-  if (!json.data?.url) {
-    console.error(`  Zalo no audio URL in response`);
+  const json: { error_code?: number; data?: { url?: string } } = await res.json();
+  if (json.error_code !== 0 || !json.data?.url) {
+    console.error(`  Zalo error: ${json.error_code}`);
     return null;
   }
   const mp3 = await fetch(json.data.url);
