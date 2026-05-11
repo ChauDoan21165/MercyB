@@ -1,8 +1,14 @@
 /**
- * Generate Vietnamese lesson audio via Zalo AI TTS and upload to Supabase Storage.
+ * Generate Vietnamese lesson audio via Google Cloud TTS and upload to Supabase Storage.
  *
- * Reads src/languages/vietnamese/lessons.ts directly (different schema from other languages).
- * Generates audio ONLY for Vietnamese text — never English, never pronunciation guides.
+ * Loads Vietnamese lessons from the public.lessons Supabase table (the
+ * src/languages/vietnamese/lessons.ts stub is empty post-migration).
+ * Generates audio ONLY for Vietnamese text — never English, never
+ * pronunciation guides.
+ *
+ * Provider: Google Cloud Text-to-Speech, WaveNet voices (vi-VN-Wavenet-A / D).
+ * Free tier: 4M chars/month for WaveNet — full Vietnamese corpus
+ * (~200K chars) fits comfortably.
  *
  * Voice rotation:
  *   - phrases: alternate thuminh / leminh by phrase index
@@ -11,11 +17,8 @@
  * Storage key pattern: {level}/vi/l{id}/phrase_{n}.mp3,
  *                       {level}/vi/l{id}/dialogue_{n}.mp3
  *
- * The level segment is derived per-lesson from lesson.level.toLowerCase()
- * so each batch lands under the right prefix without manual config.
- *
  * Required env (.env.local then .env):
- *   ZALO_API_KEY
+ *   GOOGLE_APPLICATION_CREDENTIALS   — path to GCP service-account JSON
  *   VITE_SUPABASE_URL
  *   SUPABASE_SERVICE_ROLE_KEY
  *
@@ -24,23 +27,24 @@
  *   npx tsx scripts/generate-vietnamese-audio.ts --dry-run    — list what would run
  *   npx tsx scripts/generate-vietnamese-audio.ts --limit=5    — first 5 entries
  *   npx tsx scripts/generate-vietnamese-audio.ts --level=B1   — only lessons with level==="B1"
- *   npx tsx scripts/generate-vietnamese-audio.ts --delay=2000 — ms between successful calls (default 2000)
  */
 
 import { config as loadDotenv } from "dotenv";
-import { existsSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { createClient } from "@supabase/supabase-js";
 
 for (const p of [".env.local", ".env"]) {
   if (existsSync(p)) loadDotenv({ path: p });
 }
 
-const ZALO_KEY = process.env.ZALO_API_KEY;
+const GOOGLE_KEY_PATH = process.env.GOOGLE_APPLICATION_CREDENTIALS;
 const SUPA_URL = process.env.VITE_SUPABASE_URL;
 const SUPA_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
-if (!ZALO_KEY || !SUPA_URL || !SUPA_KEY) {
-  console.error("Missing env: ZALO_API_KEY, VITE_SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY");
+if (!GOOGLE_KEY_PATH || !SUPA_URL || !SUPA_KEY) {
+  console.error(
+    "Missing env: GOOGLE_APPLICATION_CREDENTIALS, VITE_SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY",
+  );
   process.exit(1);
 }
 
@@ -53,15 +57,6 @@ const LIMIT_ARG = args.find((a) => a.startsWith("--limit="));
 const LIMIT = LIMIT_ARG ? parseInt(LIMIT_ARG.split("=")[1]!, 10) : Infinity;
 const LEVEL_ARG = args.find((a) => a.startsWith("--level="));
 const LEVEL_FILTER = LEVEL_ARG ? LEVEL_ARG.split("=")[1]!.trim() : null;
-
-// Per-call throttle in milliseconds, applied after each successful
-// Zalo generation. Default 2000ms — at 2806 manifest entries that's a
-// ~93-minute floor for a full run, which keeps the script well under
-// Zalo's rate-limit ceiling. Override with --delay=<ms> for tuning;
-// values < 0 are clamped to 0 (effectively disables the throttle).
-const DELAY_ARG = args.find((a) => a.startsWith("--delay="));
-const PARSED_DELAY = DELAY_ARG ? parseInt(DELAY_ARG.split("=")[1]!, 10) : 2000;
-const DELAY_MS = Number.isFinite(PARSED_DELAY) && PARSED_DELAY > 0 ? PARSED_DELAY : 0;
 
 const VOICES = ["thuminh", "leminh"] as const;
 
@@ -136,75 +131,78 @@ async function existsInBucket(key: string): Promise<boolean> {
   return !!data?.find((f) => f.name === file);
 }
 
-async function zaloGenerate(voice: string, text: string): Promise<Buffer | null> {
-  // Zalo AI TTS — synchronous, no polling needed.
-  // The API expects application/x-www-form-urlencoded, NOT JSON. The
-  // previous JSON-body / "Content-Type: application/json" form
-  // produced HTTP 401 "Invalid authentication credentials" — Zalo's
-  // auth check happens after request parsing, so a malformed body
-  // surfaces as an auth error rather than a 415.
-  // speaker_id: 2 = female Northern (thuminh), 4 = male Northern (leminh)
-  // encode_type=1 → MP3.
-  const speakerId = voice === "thuminh" ? 2 : 4;
-  const params = new URLSearchParams();
-  params.append("input", text);
-  params.append("speaker_id", String(speakerId));
-  params.append("speed", "1.0");
-  params.append("encode_type", "1");
+// Google Cloud TTS client cache. Auth/credentials parsing happens once
+// per run rather than on every entry; the GoogleAuth client manages
+// access-token refresh internally so we just hand it the cached
+// instance per call.
+let _googleAuth: import("google-auth-library").GoogleAuth | null = null;
+async function getGoogleAuth(): Promise<import("google-auth-library").GoogleAuth> {
+  if (_googleAuth) return _googleAuth;
+  const { GoogleAuth } = await import("google-auth-library");
+  const credentials = JSON.parse(readFileSync(GOOGLE_KEY_PATH!, "utf-8"));
+  _googleAuth = new GoogleAuth({
+    credentials,
+    scopes: ["https://www.googleapis.com/auth/cloud-platform"],
+  });
+  return _googleAuth;
+}
 
-  // Retry up to 3 times on rate-limit signals (HTTP 429 OR a Zalo
-  // body `error_code: 429`). Wait 2 s between attempts — both signals
-  // are honoured because Zalo sometimes returns the error in the body
-  // with HTTP 200 and sometimes at the status-code layer.
-  const MAX_ATTEMPTS = 3;
-  // 5 s between retries — Zalo's rate-limit window typically clears in
-  // a few seconds; flat 5 s gives the bucket time to refill without
-  // stretching the script's tail latency past tolerance.
-  const RETRY_DELAY_MS = 5000;
-  for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt++) {
-    const res = await fetch("https://api.zalo.ai/v1/tts/synthesize", {
-      method: "POST",
-      headers: {
-        "apikey": ZALO_KEY!,
+async function googleGenerate(voice: string, text: string): Promise<Buffer | null> {
+  // Google Cloud Text-to-Speech, WaveNet voices for Vietnamese.
+  // vi-VN-Wavenet-A = female, vi-VN-Wavenet-D = male.
+  // Chau auditioned both -A and -D and approved this pair specifically.
+  // Free tier covers 4M chars/month — the full Vietnamese corpus
+  // (~200K chars) costs nothing.
+  const speakerName = voice === "thuminh"
+    ? "vi-VN-Wavenet-A"
+    : "vi-VN-Wavenet-D";
+
+  // The retry-on-429 logic that wrapped the Zalo call is removed —
+  // Google's quota is per-minute and well above what this script
+  // requires. We DO keep a try/catch around the fetch so a transient
+  // connection failure (DNS, TCP reset, etc.) returns null instead
+  // of bubbling an unhandled ConnectTimeoutError that would kill
+  // a multi-hour batch — that's the crash we hit on the prior
+  // Zalo run.
+  try {
+    const auth = await getGoogleAuth();
+    const client = await auth.getClient();
+    const token = await client.getAccessToken();
+    if (!token.token) {
+      console.error("  Google TTS: no access token");
+      return null;
+    }
+    const res = await fetch(
+      "https://texttospeech.googleapis.com/v1/text:synthesize",
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token.token}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          input: { text },
+          voice: { languageCode: "vi-VN", name: speakerName },
+          audioConfig: { audioEncoding: "MP3" },
+        }),
       },
-      body: params,
-    });
-    if (res.status === 429) {
-      console.warn(
-        `  Zalo 429 (attempt ${attempt}/${MAX_ATTEMPTS}) — backing off ${RETRY_DELAY_MS}ms`,
-      );
-      if (attempt < MAX_ATTEMPTS) {
-        await new Promise((r) => setTimeout(r, RETRY_DELAY_MS));
-        continue;
-      }
-      console.error(`  Zalo 429: retries exhausted`);
-      return null;
-    }
+    );
     if (!res.ok) {
-      console.error(`  Zalo ${res.status}: ${await res.text()}`);
+      console.error(`  Google TTS ${res.status}: ${await res.text()}`);
       return null;
     }
-    const json: { error_code?: number; data?: { url?: string } } = await res.json();
-    if (json.error_code === 429) {
-      console.warn(
-        `  Zalo body error_code=429 (attempt ${attempt}/${MAX_ATTEMPTS}) — backing off ${RETRY_DELAY_MS}ms`,
-      );
-      if (attempt < MAX_ATTEMPTS) {
-        await new Promise((r) => setTimeout(r, RETRY_DELAY_MS));
-        continue;
-      }
-      console.error(`  Zalo error_code=429: retries exhausted`);
+    const json: { audioContent?: string } = await res.json();
+    if (!json.audioContent) {
+      console.error("  Google TTS: response missing audioContent");
       return null;
     }
-    if (json.error_code !== 0 || !json.data?.url) {
-      console.error(`  Zalo error: ${json.error_code}`);
-      return null;
-    }
-    const mp3 = await fetch(json.data.url);
-    if (!mp3.ok) return null;
-    return Buffer.from(await mp3.arrayBuffer());
+    return Buffer.from(json.audioContent, "base64");
+  } catch (err) {
+    console.error(
+      `  Google TTS fetch failed: ${err instanceof Error ? err.message : String(err)}`,
+    );
+    return null;
   }
-  return null;
 }
 
 async function uploadToSupabase(key: string, buf: Buffer): Promise<boolean> {
@@ -244,18 +242,12 @@ async function uploadToSupabase(key: string, buf: Buffer): Promise<boolean> {
     if (await existsInBucket(e.storage_key)) {
       skipped++;
     } else {
-      const buf = await zaloGenerate(e.voice, e.text);
+      const buf = await googleGenerate(e.voice, e.text);
       if (!buf) {
         failed++;
       } else if (await uploadToSupabase(e.storage_key, buf)) {
         done++;
         chars += e.text.length;
-        // Throttle: DELAY_MS gap after each successful Zalo call.
-        // Default 2000 ms; override with --delay=<ms>. Only after
-        // success — skip and fail paths cost nothing on Zalo's side.
-        if (DELAY_MS > 0) {
-          await new Promise((r) => setTimeout(r, DELAY_MS));
-        }
       } else {
         failed++;
       }
