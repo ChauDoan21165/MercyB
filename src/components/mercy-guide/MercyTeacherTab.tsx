@@ -1,9 +1,14 @@
 // Path: src/components/mercy-guide/MercyTeacherTab.tsx
 // File: MercyTeacherTab.tsx
 
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Button } from '@/components/ui/button';
+import {
+  AIDisclosureModal,
+  readAIDisclosureAccepted,
+  writeAIDisclosureAccepted,
+} from '@/components/mercy/AIDisclosureModal';
 import {
   ArrowRight,
   BookmarkPlus,
@@ -1299,6 +1304,23 @@ export function MercyTeacherTab({
     setSavePopup({ itemType, contentEn: trimmed });
   };
 
+  // Apple Guideline 5.1.1 — Teacher Mercy entry. Most learners reach
+  // Mercy through this tab (the multi-tab classic surface mounted by
+  // MercyGuidePanel), NOT through UnifiedMercyChat. PR #388 wired the
+  // disclosure only on UnifiedMercyChat, which meant TestFlight users
+  // and Apple's own reviewer never saw it. The localStorage key is
+  // shared with UnifiedMercyChat — once accepted on either surface,
+  // neither shows again. Hooks declared above the `isKidsMode` early
+  // return per Rules of Hooks; kids mode is offline and doesn't
+  // dispatch to the AI, so the modal stays out of that path.
+  const [aiDisclosureAccepted, setAIDisclosureAccepted] = useState<boolean>(
+    () => readAIDisclosureAccepted(),
+  );
+  const handleAcceptAIDisclosure = useCallback(() => {
+    writeAIDisclosureAccepted();
+    setAIDisclosureAccepted(true);
+  }, []);
+
   if (isKidsMode) {
     return (
       <div className="m-0 flex h-full min-h-0 flex-1 overflow-hidden">
@@ -1700,6 +1722,10 @@ export function MercyTeacherTab({
           contentEn={savePopup.contentEn}
           source="teacher"
         />
+      ) : null}
+
+      {!aiDisclosureAccepted ? (
+        <AIDisclosureModal onAccept={handleAcceptAIDisclosure} />
       ) : null}
     </div>
   );
