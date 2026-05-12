@@ -20,6 +20,10 @@ import * as sessionClient from "@/lib/mercy/sessionClient";
 
 beforeEach(() => {
   vi.clearAllMocks();
+  // Most flow tests assume the AI disclosure modal is out of the way.
+  // Seed localStorage so the modal is treated as previously accepted.
+  // The disclosure-specific tests below clear/override this explicitly.
+  window.localStorage.setItem("mercy_ai_disclosure_accepted", "1");
 });
 
 function type(text: string) {
@@ -260,5 +264,44 @@ describe("UnifiedMercyChat — snapshot", () => {
     send();
     const stream = within(screen.getByTestId("unified-mercy-stream"));
     expect(stream.getAllByTestId("unified-mercy-bubble-learner")[0]).toMatchSnapshot();
+  });
+});
+
+describe("UnifiedMercyChat — AI disclosure (Apple 5.1.1)", () => {
+  it("renders the disclosure modal on first visit (no localStorage flag)", () => {
+    window.localStorage.removeItem("mercy_ai_disclosure_accepted");
+    render(<UnifiedMercyChat initialSessionType="unified" />);
+    expect(screen.getByTestId("mercy-ai-disclosure")).toBeInTheDocument();
+    expect(screen.getByText(/Giáo viên Mercy dùng AI/i)).toBeInTheDocument();
+    expect(screen.getByText(/Teacher Mercy uses AI/i)).toBeInTheDocument();
+  });
+
+  it("blocks send until the user accepts the disclosure", () => {
+    window.localStorage.removeItem("mercy_ai_disclosure_accepted");
+    render(<UnifiedMercyChat initialSessionType="unified" />);
+    // Type a message, then click send — nothing should happen because
+    // the send button is disabled by the disclosure gate.
+    type("Hi Mercy");
+    expect(screen.getByTestId("unified-mercy-send")).toBeDisabled();
+    // No bubbles rendered yet.
+    expect(screen.queryByTestId("unified-mercy-bubble-learner")).toBeNull();
+  });
+
+  it("accepting the disclosure unlocks send and persists to localStorage", () => {
+    window.localStorage.removeItem("mercy_ai_disclosure_accepted");
+    render(<UnifiedMercyChat initialSessionType="unified" />);
+    fireEvent.click(screen.getByTestId("mercy-ai-disclosure-accept"));
+    expect(screen.queryByTestId("mercy-ai-disclosure")).toBeNull();
+    expect(window.localStorage.getItem("mercy_ai_disclosure_accepted")).toBe("1");
+    // Now the send flow works.
+    type("Hi Mercy");
+    send();
+    expect(screen.getAllByTestId("unified-mercy-bubble-learner")).toHaveLength(1);
+  });
+
+  it("does not show the modal when localStorage flag is already set", () => {
+    window.localStorage.setItem("mercy_ai_disclosure_accepted", "1");
+    render(<UnifiedMercyChat initialSessionType="unified" />);
+    expect(screen.queryByTestId("mercy-ai-disclosure")).toBeNull();
   });
 });
