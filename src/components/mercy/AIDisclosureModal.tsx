@@ -69,10 +69,11 @@ export function AIDisclosureModal({ onAccept }: AIDisclosureModalProps) {
       aria-modal="true"
       aria-labelledby="mercy-ai-disclosure-title"
       aria-describedby="mercy-ai-disclosure-body"
-      // Mobile-first: bottom sheet on phones (items-end), centered on tablet+.
-      className="fixed inset-0 z-50 flex items-end justify-center bg-black/50 p-3 sm:items-center sm:p-6"
+      // Centered on all viewports — bottom sheets on phones get clipped by
+      // the audio player bar, making the accept button unreachable on iPhone.
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-3 sm:p-6"
     >
-      <div className="w-full max-w-md rounded-2xl bg-white p-5 shadow-2xl dark:bg-slate-900 sm:p-6">
+      <div className="w-full max-w-md max-h-[90vh] overflow-y-auto rounded-2xl bg-white p-5 shadow-2xl dark:bg-slate-900 sm:p-6">
         <h2
           id="mercy-ai-disclosure-title"
           className="text-lg font-bold leading-tight text-slate-900 dark:text-slate-100"
