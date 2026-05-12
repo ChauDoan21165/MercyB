@@ -42,9 +42,9 @@ jobs:
       - name: Generate and verify room registry
         run: |
           echo "🔄 Generating room registry..."
-          node scripts/generate-room-registry.js
+          node scripts/generate-room-registry.mjs
           if [ -n "$(git status --porcelain src/lib/roomManifest.ts src/lib/roomDataImports.ts)" ]; then
-            echo "❌ Registry files are out of sync! Run 'node scripts/generate-room-registry.js' locally and commit."
+            echo "❌ Registry files are out of sync! Run 'node scripts/generate-room-registry.mjs' locally and commit."
             git diff src/lib/roomManifest.ts src/lib/roomDataImports.ts
             exit 1
           else

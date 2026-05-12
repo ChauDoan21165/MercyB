@@ -22,7 +22,12 @@ jobs:
           node-version: '20'
       
       - name: Install dependencies
-        run: npm ci
+        run: |
+          for i in 1 2 3; do
+            npm ci --legacy-peer-deps && break
+            echo "Install attempt $i failed, retrying..."
+            sleep 5
+          done
       
       - name: Run RoomMaster validation
         run: node scripts/roommaster-validate.js
