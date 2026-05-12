@@ -79,24 +79,10 @@ jobs:
   #         NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
   #         NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
 
-  deploy-vercel:
-    name: Deploy to Vercel
-    runs-on: ubuntu-latest
-    needs: build-preview
-    if: github.event.pull_request && github.actor != 'dependabot[bot]'
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Deploy to Vercel
-        uses: amondnet/vercel-action@v25
-        with:
-          vercel-token: ${{ secrets.VERCEL_TOKEN }}
-          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
-          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
-          github-comment: true
-          alias-domains: pr-${{ github.event.pull_request.number }}.mercy-blade.vercel.app
+  # deploy-vercel job removed: the Vercel-for-GitHub native integration
+  # already deploys preview builds. The amondnet/vercel-action@v25 step
+  # pulled an outdated CLI (25.1.0) that the Vercel API now rejects (≥47.2.2
+  # required), and duplicated work the platform already does.
 
   pr-comment:
     name: Comment on PR

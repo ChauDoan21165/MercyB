@@ -81,7 +81,7 @@ Deno.serve(async (req) => {
     // Helper: check RLS on a table via the check_rls_enabled RPC.
     // Requires the SQL function created by the migration at:
     // supabase/migrations_manual/20260511000000_create_check_rls_function.sql
-    async function checkRls(table: string): Promise<CheckResult> {
+    const checkRls = async (table: string): Promise<CheckResult> => {
       if (!adminClient) {
         return { name: `RLS enabled on ${table}`, status: "fail", detail: "Cannot connect to database" };
       }
@@ -107,7 +107,7 @@ Deno.serve(async (req) => {
       } catch (e: any) {
         return { name: `RLS enabled on ${table}`, status: "fail", detail: e.message };
       }
-    }
+    };
 
     // Check RLS on key tables (the historical hardcoded list).
     const rlsTables = ["lessons", "user_subscriptions", "access_codes"];
