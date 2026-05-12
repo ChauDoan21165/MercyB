@@ -18,6 +18,7 @@ const supabaseMock = (SupaMod as any).__mock;
 import {
   REFERRAL_CODE_ALPHABET,
   REFERRAL_CODE_LENGTH,
+  __resetReferralClientForTests,
   applyReferralCode,
   buildShareUrl,
   generateCode,
@@ -26,6 +27,8 @@ import {
   isValidReferralCodeShape,
   normalizeReferralCode,
   readReferralCodeFromUrl,
+  resetReferralRetryDedupe,
+  retryReferralRewardOnAuth,
 } from "../referralClient";
 
 describe("alphabet + shape", () => {
@@ -238,6 +241,70 @@ describe("getReferralStats", () => {
     });
     expect(usesEq1).toHaveBeenCalledWith("code", "ABC234");
     expect(usesEq2).toHaveBeenCalledWith("reward_granted_owner", false);
+  });
+});
+
+describe("retryReferralRewardOnAuth — per-userId dedupe", () => {
+  beforeEach(() => {
+    vi.clearAllMocks();
+    __resetReferralClientForTests();
+  });
+
+  it("queries referral_uses only once for the same userId across rapid auth events", async () => {
+    // Build a chain where .select().eq().eq().maybeSingle() resolves to "no row".
+    const sharedChain: any = {};
+    sharedChain.select = vi.fn(() => sharedChain);
+    sharedChain.eq = vi.fn(() => sharedChain);
+    sharedChain.maybeSingle = vi
+      .fn()
+      .mockResolvedValue({ data: null, error: null });
+    supabaseMock.from.mockReturnValue(sharedChain);
+
+    // Fire 5 times — Supabase Auth can emit INITIAL_SESSION, SIGNED_IN,
+    // TOKEN_REFRESHED, USER_UPDATED, and re-fires on focus / visibility.
+    for (let i = 0; i < 5; i++) {
+      await retryReferralRewardOnAuth("user-A");
+    }
+
+    // The first call goes through; the next four are short-circuited
+    // before the from('referral_uses') select runs.
+    expect(supabaseMock.from).toHaveBeenCalledTimes(1);
+    expect(supabaseMock.from).toHaveBeenCalledWith("referral_uses");
+  });
+
+  it("a different userId is not deduped by the previous user's entry", async () => {
+    const sharedChain: any = {};
+    sharedChain.select = vi.fn(() => sharedChain);
+    sharedChain.eq = vi.fn(() => sharedChain);
+    sharedChain.maybeSingle = vi
+      .fn()
+      .mockResolvedValue({ data: null, error: null });
+    supabaseMock.from.mockReturnValue(sharedChain);
+
+    await retryReferralRewardOnAuth("user-A");
+    await retryReferralRewardOnAuth("user-A");
+    await retryReferralRewardOnAuth("user-B");
+
+    expect(supabaseMock.from).toHaveBeenCalledTimes(2);
+  });
+
+  it("resetReferralRetryDedupe re-arms the retry path (e.g. after sign-out)", async () => {
+    const sharedChain: any = {};
+    sharedChain.select = vi.fn(() => sharedChain);
+    sharedChain.eq = vi.fn(() => sharedChain);
+    sharedChain.maybeSingle = vi
+      .fn()
+      .mockResolvedValue({ data: null, error: null });
+    supabaseMock.from.mockReturnValue(sharedChain);
+
+    await retryReferralRewardOnAuth("user-A");
+    await retryReferralRewardOnAuth("user-A");
+    expect(supabaseMock.from).toHaveBeenCalledTimes(1);
+
+    resetReferralRetryDedupe();
+
+    await retryReferralRewardOnAuth("user-A");
+    expect(supabaseMock.from).toHaveBeenCalledTimes(2);
   });
 });
 
