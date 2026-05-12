@@ -147,6 +147,64 @@ export default defineConfig({
         // Moved to runtime CacheFirst — only cached after first actual
         // lesson load.
         globIgnores: ['**/lessons-*.js'],
+        // PR #392 — precache JS allowlist.
+        //
+        // Before: 276 JS chunks (~5.8 MB) precached on first launch,
+        // including admin pages, blog posts, every exam-prep variant,
+        // every language lesson page, certificates, leaderboards, and
+        // dozens of rarely-visited routes that are already React.lazy.
+        // Service-worker install hammered the network on first load,
+        // defeating the whole point of code-splitting.
+        //
+        // After: only the chunks every user needs in the first ~10s of
+        // arriving at the site. Everything else is fetched on demand
+        // when the user navigates to the route, served from the
+        // browser HTTP cache on repeat visits (the assets are hashed
+        // and immutable, so browser caching is durable and correct).
+        //
+        // Allowlist:
+        //   index     — app shell entry
+        //   react     — React core
+        //   ui        — UI primitives (shadcn/radix)
+        //   vendor    — common vendor bundle
+        //   supabase  — supabase-js client (used by auth on landing)
+        //   sentry    — error reporting wires up on first paint
+        //   Home      — landing route
+        //   LoginPage — auth route reached from landing
+        //
+        // The list is intentionally tiny. The acceptance bar is < 30
+        // precached JS chunks; everything beyond the eight above is
+        // a route the median user may never visit. If a chunk turns
+        // out to be hot enough that runtime-fetching it hurts a real
+        // user flow, add it here (one line, one rebuild) — don't
+        // expand the list pre-emptively.
+        manifestTransforms: [
+          async (manifest) => {
+            const PRECACHE_JS_STEMS = new Set([
+              "index",
+              "react",
+              "ui",
+              "vendor",
+              "supabase",
+              "sentry",
+              "Home",
+              "LoginPage",
+            ]);
+            const HASHED_JS = /assets\/([^/]+?)-[A-Za-z0-9_-]{8,}\.js$/;
+            const filtered = manifest.filter((entry) => {
+              // Keep every non-JS asset (html, css, json, icons, fonts,
+              // theme-loader.js at the dist root, the room JSON files
+              // injected via additionalManifestEntries, etc).
+              if (!entry.url.endsWith(".js")) return true;
+              // Keep root-level JS (theme-loader.js) — the regex only
+              // matches hashed bundles under /assets/.
+              const m = entry.url.match(HASHED_JS);
+              if (!m) return true;
+              return PRECACHE_JS_STEMS.has(m[1]);
+            });
+            return { manifest: filtered, warnings: [] };
+          },
+        ],
         // Offline Lite v2 — when the browser does an SPA navigation
         // (e.g. user refreshes /room/foo while offline), serve the
         // cached index.html so the app shell boots and the in-app
