@@ -29,6 +29,17 @@ function getJSONFiles() {
     .map(file => path.join(DATA_DIR, file));
 }
 
+// Audio refs may be a string ("foo.mp3") or a localized object
+// ({ en: "foo_en.mp3", vi: "foo_vi.mp3" }) for VIP-tier rooms with
+// multilingual variants. Return all string refs.
+function extractAudioRefs(audio) {
+  if (typeof audio === 'string') return [audio];
+  if (typeof audio === 'object' && audio !== null) {
+    return Object.values(audio).filter(v => typeof v === 'string');
+  }
+  return [];
+}
+
 // Get all audio files recursively
 function getAudioFiles(dir = AUDIO_DIR, audioFiles = []) {
   const entries = fs.readdirSync(dir, { withFileTypes: true });
@@ -95,10 +106,11 @@ function validateAudio() {
       let entryFound = 0;
       
       for (const entry of content.entries) {
-        if (entry.audio) {
-          const audioRef = entry.audio.replace(/^\//, '');
+        const audioRefs = extractAudioRefs(entry.audio);
+        for (const rawRef of audioRefs) {
+          const audioRef = rawRef.replace(/^\//, '');
           const audioRefLower = audioRef.toLowerCase();
-          
+
           if (!audioSet.has(audioRefLower)) {
             entryMissing++;
             issues.missingAudio.push({
@@ -108,7 +120,7 @@ function validateAudio() {
             });
           } else {
             entryFound++;
-            
+
             // Check if naming follows convention: {slug}_{tier}.mp3
             const expectedName = `${entry.slug}_${fileTier}.mp3`;
             if (audioRefLower !== expectedName.toLowerCase()) {
