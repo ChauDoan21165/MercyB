@@ -16,18 +16,29 @@ export const AI_DISCLOSURE_STORAGE_KEY = "mercy_ai_disclosure_accepted";
 
 /**
  * Read the current acceptance state from localStorage. Defaults to
- * `true` when the storage API is unavailable (private browsing, SSR,
- * jsdom in some configs) so we never wedge the chat in those edge
- * cases — Apple-review compliance is achieved by the modal showing
- * to the 99.9% of users with working storage, not by punishing the
- * tiny minority who don't.
+ * `false` (i.e. show the modal) when the storage API is unavailable
+ * (SSR, private browsing, iOS WebView storage racing initial render,
+ * jsdom in some configs).
+ *
+ * The earlier default-true behaviour silently *hid* the disclosure
+ * whenever storage was uncertain — the opposite of the Apple 5.1.1
+ * compliance goal. Apple reviewers run TestFlight on real devices
+ * where WebView storage can fail during initial render; defaulting
+ * to "accepted" would let the chat dispatch a first message without
+ * ever showing the disclosure, which is exactly the rejection.
+ *
+ * Defaulting to `false` means: if storage truly never works for a
+ * given user, they will see the modal every session. That's annoying
+ * for the tiny minority who hit it, but it's the right side to err
+ * on — Apple-review compliance requires *showing* the disclosure,
+ * not hiding it.
  */
 export function readAIDisclosureAccepted(): boolean {
-  if (typeof window === "undefined") return true;
+  if (typeof window === "undefined") return false;
   try {
     return window.localStorage.getItem(AI_DISCLOSURE_STORAGE_KEY) === "1";
   } catch {
-    return true;
+    return false;
   }
 }
 
