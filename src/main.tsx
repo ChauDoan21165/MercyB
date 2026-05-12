@@ -65,6 +65,8 @@ import { AccessibleToaster } from "@/components/a11y/AccessibleToast";
 import "@/index.css";
 import { supabase } from "@/lib/supabaseClient";
 import { AuthProvider } from "@/providers/AuthProvider";
+import { QueryClientProvider } from "@tanstack/react-query";
+import { queryClient } from "@/lib/queries/client";
 import { initSentry, stringLooksLikeExternalNoise } from "@/lib/monitoring/sentryInit";
 import { runConfigHealthCheck } from "@/lib/configHealth";
 import { initializeWebVitals } from "@/lib/perf/webVitalsTracking";
@@ -421,17 +423,23 @@ if (!w.__MB_REACT_ROOT__ || w.__MB_REACT_ROOT_EL__ !== root) {
 w.__MB_REACT_ROOT__.render(
   <ErrorBoundary>
     <BrowserRouter>
-      <AuthProvider>
-        <SentryUserBinding />
-        <OfflineIndicator />
-        <GlobalNavigationShortcuts />
-        <ShortcutHelpOverlay />
-        <Toaster />
-        <AccessibleToaster />
-        <LanguageProgressProvider>
-          <AppRouter />
-        </LanguageProgressProvider>
-      </AuthProvider>
+      {/* QueryClientProvider sits OUTSIDE AuthProvider so auth-dependent
+          queries (entitlement, profile, gift subscription, etc.) can read
+          the auth context. Behavior change for this PR: none — feature
+          code is migrated to useQuery in follow-ups (A2–A6). */}
+      <QueryClientProvider client={queryClient}>
+        <AuthProvider>
+          <SentryUserBinding />
+          <OfflineIndicator />
+          <GlobalNavigationShortcuts />
+          <ShortcutHelpOverlay />
+          <Toaster />
+          <AccessibleToaster />
+          <LanguageProgressProvider>
+            <AppRouter />
+          </LanguageProgressProvider>
+        </AuthProvider>
+      </QueryClientProvider>
     </BrowserRouter>
   </ErrorBoundary>,
 );
