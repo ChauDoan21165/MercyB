@@ -5,7 +5,7 @@ on:
     branches: ['main', 'develop']
     paths:
       - 'public/data/**/*.json'
-      - 'scripts/generate-room-registry.js'
+      - 'scripts/generate-room-registry.mjs'
   pull_request:
     branches: ['main', 'develop']
     paths:
@@ -64,7 +64,7 @@ jobs:
       - name: Generate room registry
         run: |
           echo "🔄 Generating room registry..."
-          node scripts/generate-room-registry.js
+          node scripts/generate-room-registry.mjs
           
           # Verify registry was created
           if [ ! -f "src/lib/roomManifest.ts" ] || [ ! -f "src/lib/roomDataImports.ts" ]; then

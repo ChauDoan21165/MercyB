@@ -48,7 +48,7 @@ jobs:
           fi
 
       - name: Generate registry
-        run: node scripts/generate-room-registry.js
+        run: node scripts/generate-room-registry.mjs
 
       - name: Check for changes
         run: |
