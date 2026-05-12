@@ -437,11 +437,21 @@ Deno.serve(async (req) => {
       const lowerBoundMs = Math.max(superMinMs, cutoffMs);
 
       if (lowerBoundMs <= superMaxMs) {
+        // Authoritative dedup gate: profiles.trial_expiry_notified_at.
+        // The email_events check below is kept as defence-in-depth,
+        // but the profiles-column filter is what stops a user from
+        // ever receiving more than one trial-expiry email across runs.
+        // A previous bug shipped 10+ emails to the same trial users
+        // because the email_events dedup was bypassed under concurrent
+        // cron invocations (no atomic claim). Filtering at the SQL
+        // layer removes the candidate from the pool before any send
+        // call — much harder to race.
         const { data: candidates, error: candidatesError } = await adminClient
           .from("profiles")
-          .select("id, email, created_at")
+          .select("id, email, created_at, trial_expiry_notified_at")
           .gte("created_at", new Date(lowerBoundMs).toISOString())
-          .lte("created_at", new Date(superMaxMs).toISOString());
+          .lte("created_at", new Date(superMaxMs).toISOString())
+          .is("trial_expiry_notified_at", null);
 
         if (candidatesError) {
           errors.push(`Trial-candidates query failed: ${candidatesError.message}`);
@@ -513,6 +523,25 @@ Deno.serve(async (req) => {
                     type,
                     status: "sent",
                   });
+                  // Mark the profile as notified. Single column gates BOTH
+                  // trial_ending_soon and trial_expired — a user receives
+                  // at most one trial-expiry email, ever. This is stricter
+                  // than the old "one per type" behaviour but is the right
+                  // bias for now: the user-facing bug was email spam, and
+                  // the marketing value of sending BOTH D-1 and D+1 to the
+                  // same user is small compared to the trust damage of
+                  // duplicate sends. If the D-1/D+1 split is needed later,
+                  // promote this to two columns.
+                  const { error: markErr } = await adminClient
+                    .from("profiles")
+                    .update({ trial_expiry_notified_at: new Date().toISOString() })
+                    .eq("id", t.id);
+                  if (markErr) {
+                    console.error(
+                      "[email-automations] failed to mark trial_expiry_notified_at",
+                      { user_id: t.id, type, error: markErr.message },
+                    );
+                  }
                 }
               } catch (err) {
                 console.error(`Exception sending ${type}:`, err);
