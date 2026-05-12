@@ -78,7 +78,7 @@ jobs:
       - run: npm ci
       - run: npm run build
       - name: Run Lighthouse CI
-        uses: treosh/lighthouse-ci-action@v9
+        uses: treosh/lighthouse-ci-action@v12
         with:
           # Static-dir mode (issue #56 option 2): no live server needed.
           # Lighthouse spins up an internal static server over `./dist`,
@@ -86,5 +86,12 @@ jobs:
           # deprecated /vip/vip1 URL reference; that route cleanup lands
           # separately under the VIP-audit issue (#60).
           staticDistDir: ./dist
-          uploadArtifacts: true
+          uploadArtifacts: false
           temporaryPublicStorage: true
+      - name: Upload Lighthouse results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lighthouse-${{ github.run_id }}
+          path: .lighthouseci/
+          if-no-files-found: ignore
