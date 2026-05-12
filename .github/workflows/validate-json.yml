@@ -16,4 +16,4 @@ jobs:
           node-version: 20
       - run: npm install
       - run: node scripts/validate-rooms-ci.js
-      - run: node scripts/validate-room-links.js
+      - run: node scripts/validate-room-links.cjs
