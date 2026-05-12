@@ -33,6 +33,8 @@ export interface TOEFLListeningVocab {
 
 export interface TOEFLListeningItem {
   id: string;
+  /** Supabase storage key for the passage narration (toefl-listening/{id}.mp3). */
+  audioKey?: string;
   type: TOEFLListeningItemType;
   section_label: string;
   topic_title_vi: string;
@@ -63,6 +65,7 @@ const STRAT_TRANSITIONS =
 
 const CONVO_ADVISOR: TOEFLListeningItem = {
   id: "toefl_listening_advisor_prereqs",
+  audioKey: "toefl-listening/toefl_listening_advisor_prereqs.mp3",
   type: "conversation",
   section_label: "Conversation 1",
   topic_title_vi: "Gặp cố vấn học tập về đăng ký môn",
@@ -115,6 +118,7 @@ STUDENT: I'll think about it. Thanks for the advice.`,
 
 const CONVO_LIBRARY: TOEFLListeningItem = {
   id: "toefl_listening_library_fine",
+  audioKey: "toefl-listening/toefl_listening_library_fine.mp3",
   type: "conversation",
   section_label: "Conversation 2",
   topic_title_vi: "Tranh luận về tiền phạt thư viện",
@@ -164,6 +168,7 @@ STUDENT: That's fair. I'll do that. Thanks for your help.`,
 
 const LECTURE_FERMI: TOEFLListeningItem = {
   id: "toefl_listening_fermi_paradox",
+  audioKey: "toefl-listening/toefl_listening_fermi_paradox.mp3",
   type: "lecture",
   section_label: "Lecture 1",
   topic_title_vi: "Nghịch lý Fermi",
@@ -205,6 +210,7 @@ const LECTURE_FERMI: TOEFLListeningItem = {
 
 const LECTURE_MYCORRHIZAL: TOEFLListeningItem = {
   id: "toefl_listening_mycorrhizal_networks",
+  audioKey: "toefl-listening/toefl_listening_mycorrhizal_networks.mp3",
   type: "lecture",
   section_label: "Lecture 2",
   topic_title_vi: "Mạng lưới nấm rễ (Wood Wide Web)",
@@ -246,6 +252,7 @@ const LECTURE_MYCORRHIZAL: TOEFLListeningItem = {
 
 const CONVO_LAB_PARTNER: TOEFLListeningItem = {
   id: "toefl_listening_lab_partner_conflict",
+  audioKey: "toefl-listening/toefl_listening_lab_partner_conflict.mp3",
   type: "conversation",
   section_label: "Conversation 3",
   topic_title_vi: "Mâu thuẫn với bạn cùng nhóm thí nghiệm",
@@ -298,6 +305,7 @@ STUDENT: That makes sense. Thank you, Professor.`,
 
 const LECTURE_BYSTANDER: TOEFLListeningItem = {
   id: "toefl_listening_bystander_effect",
+  audioKey: "toefl-listening/toefl_listening_bystander_effect.mp3",
   type: "lecture",
   section_label: "Lecture 3",
   topic_title_vi: "Hiệu ứng người ngoài cuộc",
@@ -339,6 +347,7 @@ const LECTURE_BYSTANDER: TOEFLListeningItem = {
 
 const LECTURE_PRINTING_PRESS: TOEFLListeningItem = {
   id: "toefl_listening_printing_press",
+  audioKey: "toefl-listening/toefl_listening_printing_press.mp3",
   type: "lecture",
   section_label: "Lecture 4",
   topic_title_vi: "Máy in và cuộc cách mạng thông tin",
@@ -380,6 +389,7 @@ const LECTURE_PRINTING_PRESS: TOEFLListeningItem = {
 
 const LECTURE_PERSPECTIVE: TOEFLListeningItem = {
   id: "toefl_listening_linear_perspective",
+  audioKey: "toefl-listening/toefl_listening_linear_perspective.mp3",
   type: "lecture",
   section_label: "Lecture 5",
   topic_title_vi: "Phối cảnh tuyến tính thời Phục Hưng",
@@ -421,6 +431,7 @@ const LECTURE_PERSPECTIVE: TOEFLListeningItem = {
 
 const LECTURE_MICROBIOME: TOEFLListeningItem = {
   id: "toefl_listening_human_microbiome",
+  audioKey: "toefl-listening/toefl_listening_human_microbiome.mp3",
   type: "lecture",
   section_label: "Lecture 6",
   topic_title_vi: "Hệ vi sinh vật người",

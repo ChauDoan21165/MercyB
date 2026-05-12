@@ -53,9 +53,9 @@ export default function Listening() {
           <h1 className="text-2xl font-extrabold text-slate-900">TOEFL Listening · Luyện nghe</h1>
         </div>
         <p className="mt-2 text-sm leading-relaxed text-slate-700">
-          TOEFL Listening — luyện với giọng Bắc Mỹ chuẩn TOEFL. Phản hồi tiếng Việt cho từng câu. 2 hội thoại campus + 2 bài giảng học thuật.
+          TOEFL Listening — luyện với giọng Bắc Mỹ chuẩn TOEFL. Phản hồi tiếng Việt cho từng câu. 3 hội thoại campus + 6 bài giảng học thuật.
         </p>
-        <p className="mt-1 text-xs text-slate-500">4 practice items. Original scripts based on the public TOEFL iBT test specification.</p>
+        <p className="mt-1 text-xs text-slate-500">{TOEFL_LISTENING_ITEMS.length} practice items. Original scripts based on the public TOEFL iBT test specification.</p>
       </header>
       <div className="mb-3 flex flex-wrap gap-2">
         {(["all", "conversation", "lecture"] as const).map((t) => (
