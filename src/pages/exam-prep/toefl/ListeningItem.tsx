@@ -6,8 +6,9 @@
 
 import { useMemo, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { ChevronLeft, Volume2 } from "lucide-react";
+import { ChevronLeft, Headphones, Volume2 } from "lucide-react";
 import { getTOEFLListeningItemById, type TOEFLListeningQuestion } from "@/data/exam-prep/toefl/listening-items";
+import { useAudioUrl } from "@/hooks/useAudioUrl";
 
 function answerMatches(given: string, expected: string): boolean {
   const norm = (s: string) => s.trim().toLowerCase().replace(/\s+/g, " ").replace(/[.,;:!?]/g, "");
@@ -42,6 +43,11 @@ export default function ListeningItem() {
   const [answers, setAnswers] = useState<Record<number, string>>({});
   const [submitted, setSubmitted] = useState(false);
 
+  // All hooks must run unconditionally before the `if (!item)` early return
+  // (Rules of Hooks). useAudioUrl tolerates a null filename, so we feed it
+  // item?.audioKey ?? null even when the item lookup misses.
+  const audio = useAudioUrl(item?.audioKey ?? null);
+
   const score = useMemo(() => {
     if (!item || !submitted) return null;
     const correctCount = item.questions.reduce((n, q) => (answerMatches(answers[q.number] ?? "", q.correct_answer) ? n + 1 : n), 0);
@@ -75,6 +81,31 @@ export default function ListeningItem() {
         <button type="button" onClick={() => setShowKey((v) => !v)}
           className="rounded-full border border-slate-300 bg-white px-3 py-1 text-xs font-semibold text-slate-700">{showKey ? "Ẩn đáp án" : "Xem đáp án"}</button>
       </div>
+
+      {item.audioKey ? (
+        <section className="mt-4 rounded-xl border border-sky-200 bg-sky-50/70 p-4">
+          <h2 className="mb-2 flex items-center gap-1 text-xs font-bold uppercase tracking-wider text-sky-800">
+            <Headphones size={12} />Nghe bài · Listen to the passage
+          </h2>
+          {audio.url ? (
+            <audio
+              controls
+              preload="none"
+              src={audio.url}
+              className="w-full"
+              data-testid="toefl-listening-audio"
+            >
+              Trình duyệt không hỗ trợ phát audio · Your browser doesn't support audio playback.
+            </audio>
+          ) : audio.loading ? (
+            <p className="text-xs text-slate-600">Đang tải audio · Loading audio…</p>
+          ) : (
+            <p className="text-xs text-rose-700">
+              Audio chưa khả dụng · Audio not available yet.
+            </p>
+          )}
+        </section>
+      ) : null}
 
       <section className="mt-4 rounded-xl border border-slate-200 bg-slate-50 p-4">
         <h2 className="mb-1 flex items-center gap-1 text-xs font-bold uppercase tracking-wider text-slate-500"><Volume2 size={12} />Transcript · Bản ghi âm thanh</h2>
