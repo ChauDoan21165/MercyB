@@ -71,6 +71,39 @@ export default function Privacy() {
         ký, lịch sử luyện tập trước đó sẽ được gắn vào tài khoản mới.
       </p>
 
+      <h2>2b. AI Processing in Teacher Mercy</h2>
+      <p>
+        Teacher Mercy uses third-party artificial-intelligence services
+        to generate responses to your chat messages. When you send a
+        message to Teacher Mercy, the text of that message is transmitted
+        to an AI provider so the provider can return a reply. Messages
+        sent to the AI provider are processed for the purpose of
+        generating a response and are not retained by us for long-term
+        storage tied to your identity. We never share your messages
+        with advertisers and do not use them to train external models.
+      </p>
+      <p>
+        Before your first message in Teacher Mercy, the app shows a
+        one-time disclosure notice describing this. By tapping
+        <em> "I understand"</em> on that notice you acknowledge that
+        chat messages will be processed by an AI service. You can
+        avoid sending content to the AI by simply not sending messages
+        to Teacher Mercy — the rest of the app (lessons, audio, exam
+        prep) does not transmit your input to the AI provider.
+      </p>
+      <p>
+        <strong>Tiếng Việt — AI trong Teacher Mercy:</strong> Khi bạn
+        nhắn cho Teacher Mercy, nội dung tin nhắn được gửi tới dịch vụ
+        trí tuệ nhân tạo (AI) của bên thứ ba để tạo phản hồi. Tin nhắn
+        không được lưu trữ lâu dài, không chia sẻ với nhà quảng cáo,
+        và không dùng để huấn luyện mô hình bên ngoài. Lần đầu mở
+        Teacher Mercy, ứng dụng hiển thị một thông báo một lần để bạn
+        xác nhận trước khi gửi tin nhắn đầu tiên. Bạn có thể tránh
+        gửi nội dung tới AI bằng cách không nhắn cho Teacher Mercy —
+        các phần còn lại của ứng dụng (bài học, audio, luyện thi) không
+        truyền nội dung của bạn tới AI.
+      </p>
+
       <h2>3. Payments and Subscriptions</h2>
       <p>
         Payments and subscriptions may be processed by third-party providers

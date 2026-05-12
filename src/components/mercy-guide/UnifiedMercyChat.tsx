@@ -35,6 +35,11 @@ import {
   setSessionType,
   type MercySessionType,
 } from "@/lib/mercy/sessionClient";
+import {
+  AIDisclosureModal,
+  readAIDisclosureAccepted,
+  writeAIDisclosureAccepted,
+} from "@/components/mercy/AIDisclosureModal";
 
 const VI_PLACEHOLDER =
   "Nhắn cho Mercy — phát âm, ngữ pháp, bài học, hoặc tâm sự…";
@@ -103,6 +108,12 @@ export function UnifiedMercyChat(props: UnifiedMercyChatProps) {
     props.initialSessionType ?? "unified",
   );
   const [showSettings, setShowSettings] = useState(false);
+  // Apple Guideline 5.1.1 — must disclose AI processing before the
+  // first message is sent. Seeded lazily from localStorage so the
+  // modal does not flash for returning learners who already accepted.
+  const [aiDisclosureAccepted, setAIDisclosureAccepted] = useState<boolean>(
+    () => readAIDisclosureAccepted(),
+  );
   const scrollRef = useRef<HTMLDivElement | null>(null);
 
   // Hydrate session from Supabase on mount (fire-and-forget; default is fine).
@@ -121,9 +132,18 @@ export function UnifiedMercyChat(props: UnifiedMercyChatProps) {
     }
   }, [state.messages.length, state.inline.kind]);
 
+  const handleAcceptAIDisclosure = useCallback(() => {
+    writeAIDisclosureAccepted();
+    setAIDisclosureAccepted(true);
+  }, []);
+
   const handleSend = useCallback(() => {
     const text = state.draft.trim();
     if (!text) return;
+    // Apple 5.1.1 gate: refuse to dispatch the message until the user
+    // has acknowledged the AI disclosure. The modal is rendered below
+    // (over the chat surface) whenever this flag is false.
+    if (!aiDisclosureAccepted) return;
 
     const intent = detectIntent(text);
     const learnerMessage: ChatMessage = {
@@ -163,7 +183,7 @@ export function UnifiedMercyChat(props: UnifiedMercyChatProps) {
     dispatch({ type: "mercyResponded", message: replyMessage });
 
     void patchContext({ lastIntent: intent.intent, lastSentence: text });
-  }, [state.draft]);
+  }, [state.draft, aiDisclosureAccepted]);
 
   const handleClassic = useCallback(async () => {
     setLocalType("classic");
@@ -363,13 +383,17 @@ export function UnifiedMercyChat(props: UnifiedMercyChatProps) {
             size="sm"
             aria-label="Send"
             data-testid="unified-mercy-send"
-            disabled={!state.draft.trim()}
+            disabled={!state.draft.trim() || !aiDisclosureAccepted}
             onClick={handleSend}
           >
             <ArrowUp className="h-4 w-4" />
           </Button>
         </div>
       </div>
+
+      {!aiDisclosureAccepted ? (
+        <AIDisclosureModal onAccept={handleAcceptAIDisclosure} />
+      ) : null}
     </div>
   );
 }
