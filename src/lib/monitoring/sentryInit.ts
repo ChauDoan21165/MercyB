@@ -118,6 +118,10 @@ export function initSentry(): void {
           //    browser-extension stacks, third-party SDK CDNs). These
           //    crashes don't originate in our code and we can't fix them.
           if (looksLikeExternalNoise(scrubbed)) return null;
+          // 2b. Drop DOM-mutation noise from Translate / Grammarly /
+          //    similar extensions. AND-gated: top frame inside react-*.js
+          //    AND message is the removeChild / NotFoundError family.
+          if (looksLikeDomMutationExtensionNoise(scrubbed)) return null;
           // 3. Enrich with classification + context tags so the Sentry
           //    UI can sort and alert on what actually matters. Also
           //    sets event.level + event.fingerprint based on priority.
@@ -334,6 +338,49 @@ export function looksLikeExternalNoise(event: SentryEventLike): boolean {
  *  that don't have a structured Sentry event yet. */
 export function stringLooksLikeExternalNoise(s: string): boolean {
   return NOISE_PATTERNS.some((re) => re.test(s));
+}
+
+// DOM-mutation extension noise. Google Translate, Grammarly, the Chrome
+// translator, and a handful of accessibility extensions rewrite the DOM
+// out-of-band; React then tries to remove a node it still believes it
+// owns and the host browser throws `NotFoundError` / "The object can
+// not be found" / `removeChild` errors that originate inside our React
+// bundle. The bug is in the third-party extension, not our code — we
+// can't fix it from inside our page and it's pure noise in Sentry.
+//
+// The drop is AND-gated to keep the surface tight:
+//   1. The TOP frame (most recent call — the last entry in Sentry's
+//      oldest→newest frame ordering) sits inside our react-*.js chunk,
+//      AND
+//   2. The error message matches one of the three known DOM-mutation
+//      tells: removeChild, "The object can not be found", NotFoundError.
+//
+// Two conditions together mean we don't accidentally swallow a real
+// React render bug whose message happens to contain "NotFoundError",
+// nor a third-party extension crash whose frame is in our bundle for
+// unrelated reasons.
+const DOM_MUTATION_NOISE_MESSAGE_RE =
+  /removeChild|The object can not be found|NotFoundError/i;
+const REACT_BUNDLE_RE = /\breact-[^/\\]+\.js\b/i;
+
+export function looksLikeDomMutationExtensionNoise(
+  event: SentryEventLike,
+): boolean {
+  const ex = event.exception?.values?.[0];
+  if (!ex) return false;
+
+  const frames = ex.stacktrace?.frames;
+  if (!Array.isArray(frames) || frames.length === 0) return false;
+
+  // "Top frame" = most recent call. Sentry serializes stack frames in
+  // oldest→newest order, so the top is the LAST entry.
+  const topFrame = frames[frames.length - 1];
+  const filename =
+    typeof topFrame?.filename === "string" ? topFrame.filename : "";
+  if (!REACT_BUNDLE_RE.test(filename)) return false;
+
+  const message = typeof ex.value === "string" ? ex.value : "";
+  return DOM_MUTATION_NOISE_MESSAGE_RE.test(message);
 }
 
 /**
