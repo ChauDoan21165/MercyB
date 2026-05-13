@@ -5,7 +5,7 @@ on:
     branches: ['main', 'develop']
     paths:
       - 'public/data/**/*.json'
-      - 'scripts/generate-room-registry.js'
+      - 'scripts/generate-room-registry.mjs'
   pull_request:
     branches: ['main', 'develop']
     paths:
@@ -64,10 +64,10 @@ jobs:
       - name: Generate room registry
         run: |
           echo "🔄 Generating room registry..."
-          node scripts/generate-room-registry.js
+          node scripts/generate-room-registry.mjs
           
           # Verify registry was created
-          if [ ! -f "src/lib/roomManifest.ts" ] || [ ! -f "src/lib/roomDataImports.ts" ]; then
+          if [ ! -f "src/lib/roomManifest.ts" ]; then
             echo "❌ Registry generation failed"
             exit 1
           fi
@@ -104,13 +104,13 @@ jobs:
       - name: Check for registry changes
         id: registry_check
         run: |
-          if git diff --exit-code src/lib/roomManifest.ts src/lib/roomDataImports.ts; then
+          if git diff --exit-code src/lib/roomManifest.ts; then
             echo "changed=false" >> $GITHUB_OUTPUT
             echo "ℹ️  No registry changes detected"
           else
             echo "changed=true" >> $GITHUB_OUTPUT
             echo "📝 Registry changes detected"
-            git diff src/lib/roomManifest.ts src/lib/roomDataImports.ts
+            git diff src/lib/roomManifest.ts
           fi
 
       - name: Commit and push registry changes
@@ -118,7 +118,7 @@ jobs:
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add src/lib/roomManifest.ts src/lib/roomDataImports.ts
+          git add src/lib/roomManifest.ts
           git commit -m "chore: auto-update room registry [skip ci]
 
           - Updated registry with $(grep -c '".*": "data/.*\.json"' src/lib/roomManifest.ts) room entries

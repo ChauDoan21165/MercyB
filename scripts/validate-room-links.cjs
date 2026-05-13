@@ -11,7 +11,7 @@
  *     steps:
  *       ...
  *       - run: node scripts/validate-rooms-ci.js
- *       - run: node scripts/validate-room-links.js  # <-- Add this
+ *       - run: node scripts/validate-room-links.cjs  # <-- Add this
  */
 
 const fs = require('fs');

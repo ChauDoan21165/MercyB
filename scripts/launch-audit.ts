@@ -66,7 +66,7 @@ async function main() {
   // 3) ROOM LINK + TIER ROUTE CHECK
   //  - broken links, orphan files, naming mismatches
   results.push(
-    runCmd("3. Room Link & Route Validation", "node", ["scripts/validate-room-links.js"]),
+    runCmd("3. Room Link & Route Validation", "node", ["scripts/validate-room-links.cjs"]),
   );
 
   // 4) SUPABASE TIER & ROOM CONSISTENCY
