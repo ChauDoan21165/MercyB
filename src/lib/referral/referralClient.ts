@@ -13,6 +13,15 @@
 
 import { supabase } from "@/lib/supabaseClient";
 
+// Per-userId dedupe for the auth-event-driven retry path. Supabase Auth
+// emits multiple onAuthStateChange events per page-load (INITIAL_SESSION,
+// SIGNED_IN, TOKEN_REFRESHED, plus focus / visibility re-fires) and the
+// AuthProvider routes each one into `retryReferralRewardOnAuth`. Without
+// dedupe, a single page-load can fire 5–10 SELECT round-trips against
+// `referral_uses` for one logical "did this user already redeem a code?"
+// question. The set lives at module scope and is cleared on sign-out.
+const retriedReferralUserIds = new Set<string>();
+
 export const REFERRAL_CODE_ALPHABET = "23456789ABCDEFGHJKLMNPQRSTUVWXYZ";
 export const REFERRAL_CODE_LENGTH = 6;
 const REFERRAL_CODE_REGEX = /^[2-9A-HJ-NP-Z]{6}$/;
@@ -386,12 +395,31 @@ export async function applyPendingReferralOnAuth(
 export async function retryReferralRewardOnAuth(
   userId: string,
 ): Promise<GrantRewardResult | null> {
+  // Per-session dedupe — see `retriedReferralUserIds` at module top.
+  // Once we've attempted retry for a userId, every subsequent auth-event
+  // refire is a no-op until sign-out clears the set.
+  if (retriedReferralUserIds.has(userId)) return null;
+  retriedReferralUserIds.add(userId);
+
   // Cheap pre-check: if there's no referral_uses row for this user the
   // RPC will return 'no_referral_use'. Skipping the RPC entirely when
   // we know there's no row keeps the boot path quiet.
   const exists = await hasPendingReferralUse(userId);
   if (!exists) return null;
   return await grantReferralReward(userId);
+}
+
+/**
+ * Clear the in-memory retry-dedupe set. Called by AuthProvider on
+ * sign-out so the next signed-in session re-checks referral state once.
+ */
+export function resetReferralRetryDedupe(): void {
+  retriedReferralUserIds.clear();
+}
+
+/** Test-only hook. */
+export function __resetReferralClientForTests(): void {
+  retriedReferralUserIds.clear();
 }
 
 type ExistsRow = { id: string } | null;

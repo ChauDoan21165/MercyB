@@ -27,6 +27,15 @@ import { classifyDevice, type WebVitalName } from "@/config/perfBudget";
 
 let initialized = false;
 
+// Per-metric.id dedupe set. web-vitals v4 assigns a stable id per metric
+// per page-lifecycle (see https://github.com/GoogleChrome/web-vitals#metric)
+// — but BFCache restores and bfcache-style page-show events can cause
+// the same metric to re-emit, and any caller that ignores the default
+// once-per-pageload contract can fire duplicates. The set keeps writes
+// to one row per (metric.id, route) so /admin/frontend-perf never sees
+// the same observation counted twice.
+const recordedVitalIds = new Set<string>();
+
 /**
  * Boot the Web Vitals listeners. Idempotent; safe to call multiple
  * times. Caller: src/main.tsx, just after initSentry().
@@ -109,6 +118,11 @@ async function recordVital(metric: Metric): Promise<void> {
   // we record it under its true name (no FID synthesis).
   const name = metric.name as WebVitalName;
   const route = bucketRoute(typeof window === "undefined" ? "/" : window.location.pathname);
+
+  // Dedupe by (metric.id, route). One row per observation per page.
+  const dedupeKey = `${metric.id ?? name}::${route}`;
+  if (recordedVitalIds.has(dedupeKey)) return;
+  recordedVitalIds.add(dedupeKey);
   const deviceClass =
     typeof window === "undefined" ? "desktop" : classifyDevice(window.innerWidth);
   const value = metric.value;
@@ -147,6 +161,7 @@ async function recordVital(metric: Metric): Promise<void> {
 
 export function __resetForTests(): void {
   initialized = false;
+  recordedVitalIds.clear();
 }
 
 // Re-export bucketRoute and recordVital for unit tests. recordVital is

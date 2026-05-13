@@ -28,7 +28,10 @@ vi.mock("@/lib/featureFlags", () => ({
   }),
 }));
 
-import { recordSpeechAttempt } from "../speechAttempts";
+import {
+  recordSpeechAttempt,
+  __resetSpeechAttemptsDedupe,
+} from "../speechAttempts";
 import type { ScoreResult } from "@/lib/pronunciation/scorer";
 
 const SAMPLE_SCORE: ScoreResult = {
@@ -54,6 +57,7 @@ beforeEach(() => {
   mockFrom.mockClear();
   mockGetUser.mockReset();
   mockFlags.SPEECH_PERSISTENCE_ENABLED = true;
+  __resetSpeechAttemptsDedupe();
 });
 
 describe("recordSpeechAttempt — feature-flag behaviour", () => {
@@ -141,11 +145,15 @@ describe("recordSpeechAttempt — happy path", () => {
     });
     expect(mockInsert.mock.calls[0][0].overall_score).toBe(100);
 
+    // Different elapsedMs so the dedupe key doesn't collide with the
+    // first call. (Identical {user, target, transcript, elapsedMs}
+    // fired in quick succession is treated as a re-fire and skipped —
+    // see speechAttempts.ts.)
     await recordSpeechAttempt({
       target: "x",
       recognized: "x",
       score: { ...SAMPLE_SCORE, overallScore: -10 },
-      elapsedMs: 1,
+      elapsedMs: 2,
     });
     expect(mockInsert.mock.calls[1][0].overall_score).toBe(0);
   });
@@ -188,6 +196,61 @@ describe("recordSpeechAttempt — happy path", () => {
       elapsedMs: 100,
     });
     expect(SAMPLE_SCORE.wordScores).toHaveLength(snapshotLen);
+  });
+});
+
+describe("recordSpeechAttempt — idempotency", () => {
+  it("skips a second identical attempt fired in quick succession", async () => {
+    mockGetUser.mockResolvedValue({ data: { user: { id: "u" } } });
+    mockInsertSingle.mockResolvedValue({ data: { id: "x" }, error: null });
+
+    const args = {
+      target: "Hello there",
+      recognized: "hello there",
+      score: SAMPLE_SCORE,
+      elapsedMs: 1234,
+    };
+
+    const first = await recordSpeechAttempt(args);
+    const second = await recordSpeechAttempt(args);
+
+    expect(first).toEqual({ ok: true, skipped: false, id: "x" });
+    expect(second).toEqual({ ok: true, skipped: true, reason: "duplicate" });
+    expect(mockInsert).toHaveBeenCalledTimes(1);
+  });
+
+  it("does not dedupe when the user_id differs", async () => {
+    mockInsertSingle.mockResolvedValue({ data: { id: "x" }, error: null });
+    mockGetUser
+      .mockResolvedValueOnce({ data: { user: { id: "u-A" } } })
+      .mockResolvedValueOnce({ data: { user: { id: "u-B" } } });
+    const args = {
+      target: "shared target",
+      recognized: "shared transcript",
+      score: SAMPLE_SCORE,
+      elapsedMs: 500,
+    };
+    await recordSpeechAttempt(args);
+    await recordSpeechAttempt(args);
+    expect(mockInsert).toHaveBeenCalledTimes(2);
+  });
+
+  it("does not dedupe when the transcript differs (legitimate retry)", async () => {
+    mockGetUser.mockResolvedValue({ data: { user: { id: "u" } } });
+    mockInsertSingle.mockResolvedValue({ data: { id: "x" }, error: null });
+    await recordSpeechAttempt({
+      target: "hello world",
+      recognized: "hello word",
+      score: SAMPLE_SCORE,
+      elapsedMs: 500,
+    });
+    await recordSpeechAttempt({
+      target: "hello world",
+      recognized: "hello world",
+      score: SAMPLE_SCORE,
+      elapsedMs: 500,
+    });
+    expect(mockInsert).toHaveBeenCalledTimes(2);
   });
 });
 

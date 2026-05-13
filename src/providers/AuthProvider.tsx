@@ -36,6 +36,7 @@ import {
 import { heartbeatSession, logUserSession } from "@/services/userSessions";
 import {
   applyPendingReferralOnAuth,
+  resetReferralRetryDedupe,
   retryReferralRewardOnAuth,
 } from "@/lib/referral/referralClient";
 
@@ -257,6 +258,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       // safeSetSession(null) pattern that clears UI in both try + catch.
       // Fire-and-forget; no-op on web.
       void syncRevenueCatOnAuth(null);
+      // Drop the in-memory referral retry dedupe so the next signed-in
+      // session re-checks referral state once.
+      resetReferralRetryDedupe();
     }
   }, [safeSetLoading, safeSetSession]);
 
