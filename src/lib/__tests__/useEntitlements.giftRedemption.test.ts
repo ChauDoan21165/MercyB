@@ -13,8 +13,10 @@
 //   2. Already-premium entitlement → gift sub fetch is a no-op.
 //   3. Non-premium entitlement + no gift sub → stays non-premium.
 
+import React from "react";
 import { renderHook, waitFor } from "@testing-library/react";
 import { describe, it, expect, vi, beforeEach } from "vitest";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 vi.mock("@/lib/supabaseClient", async () => {
   const mod = await vi.importActual<any>("@/test/mocks/supabaseMock");
@@ -50,6 +52,17 @@ const fetchActiveGiftSubscription =
   giftMod.fetchActiveGiftSubscription as unknown as ReturnType<typeof vi.fn>;
 const useAuthMock = useAuth as unknown as ReturnType<typeof vi.fn>;
 
+function makeWrapper() {
+  // Fresh QueryClient per test so cached entitlement results don't
+  // bleed between scenarios. Disable retry so failure paths resolve
+  // immediately without exponential backoff.
+  const client = new QueryClient({
+    defaultOptions: { queries: { retry: false } },
+  });
+  return ({ children }: { children: React.ReactNode }) =>
+    React.createElement(QueryClientProvider, { client }, children);
+}
+
 beforeEach(() => {
   vi.clearAllMocks();
   useAuthMock.mockReturnValue({
@@ -78,7 +91,9 @@ describe("useEntitlements — gift redemption overlay", () => {
       plan_name: "Premium Access",
     });
 
-    const { result } = renderHook(() => useEntitlements());
+    const { result } = renderHook(() => useEntitlements(), {
+      wrapper: makeWrapper(),
+    });
     await waitFor(() => expect(result.current.loading).toBe(false));
 
     const ent = result.current.ent;
@@ -119,7 +134,9 @@ describe("useEntitlements — gift redemption overlay", () => {
       plan_name: "Premium Access",
     });
 
-    const { result } = renderHook(() => useEntitlements());
+    const { result } = renderHook(() => useEntitlements(), {
+      wrapper: makeWrapper(),
+    });
     await waitFor(() => expect(result.current.loading).toBe(false));
 
     const ent = result.current.ent;
@@ -155,7 +172,9 @@ describe("useEntitlements — gift redemption overlay", () => {
       plan_name: "Premium Access",
     });
 
-    const { result } = renderHook(() => useEntitlements());
+    const { result } = renderHook(() => useEntitlements(), {
+      wrapper: makeWrapper(),
+    });
     await waitFor(() => expect(result.current.loading).toBe(false));
 
     expect(result.current.ent?.is_premium).toBe(true);
@@ -182,7 +201,9 @@ describe("useEntitlements — gift redemption overlay", () => {
       plan_name: "Premium Access",
     });
 
-    const { result } = renderHook(() => useEntitlements());
+    const { result } = renderHook(() => useEntitlements(), {
+      wrapper: makeWrapper(),
+    });
     await waitFor(() => expect(result.current.loading).toBe(false));
 
     expect(result.current.ent?.is_premium).toBe(true);
@@ -203,7 +224,9 @@ describe("useEntitlements — gift redemption overlay", () => {
     });
     fetchActiveGiftSubscription.mockResolvedValue(null);
 
-    const { result } = renderHook(() => useEntitlements());
+    const { result } = renderHook(() => useEntitlements(), {
+      wrapper: makeWrapper(),
+    });
     await waitFor(() => expect(result.current.loading).toBe(false));
 
     const ent = result.current.ent;
@@ -227,7 +250,7 @@ describe("useEntitlements — gift redemption overlay", () => {
     });
     fetchActiveGiftSubscription.mockResolvedValue(null);
 
-    renderHook(() => useEntitlements());
+    renderHook(() => useEntitlements(), { wrapper: makeWrapper() });
 
     await waitFor(() =>
       expect(fetchCurrentEntitlement).toHaveBeenCalledTimes(1),
