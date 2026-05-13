@@ -104,14 +104,15 @@ export const PRODUCT_CONFIG = {
  * support button (src/components/support/ChatSupportButton.tsx) and the
  * /support page surface all three.
  *
- * Placeholders: zalo + messenger handles below are launch placeholders
- * Chau will swap for the real OA / Page handles before announce. The
- * surfaces themselves are wired and will work the moment the URLs are
- * updated — no code change needed.
+ * Zalo points to Chau's Vietnamese number (0913229579); Messenger
+ * points to his personal Facebook handle. These are direct lines,
+ * not an OA / Page — small enough audience that personal handles
+ * are the right shape for now. Swap to an OA / Page later if
+ * support volume outgrows direct messaging.
  */
 export const SUPPORT_CHANNELS = {
-  zalo_url: "https://zalo.me/chaudoan",
-  messenger_url: "https://m.me/mercyblade",
+  zalo_url: "https://zalo.me/0913229579",
+  messenger_url: "https://m.me/ChauDoan21165",
   email: "admin@mercyblade.com",
 } as const;
 
