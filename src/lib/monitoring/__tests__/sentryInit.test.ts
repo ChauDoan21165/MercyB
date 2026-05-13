@@ -25,6 +25,7 @@ import {
   looksLikeExternalNoise,
   looksLikeDomMutationExtensionNoise,
   runsInsideZaloIab,
+  buildSentryOptions,
   __resetForTest,
 } from "../sentryInit";
 import {
@@ -574,5 +575,79 @@ describe("runsInsideZaloIab — Zalo IAB user-agent drop", () => {
     // unrelated tokens that happen to contain "zalo" as a substring.
     setUserAgent("Mozilla/5.0 (compatible; GazaLogisticsBot/1.0)");
     expect(runsInsideZaloIab()).toBe(false);
+  });
+});
+
+describe("buildSentryOptions — Session Replay platform fork", () => {
+  // Pins the contract that web init gets Replay (10% baseline / 100%
+  // on-error, masked text / blocked media) and native (Capacitor) init
+  // does not. @sentry/capacitor has no Replay support; wiring it on
+  // the native branch would silently no-op at best and surface as a
+  // confusing "integration registered" log at worst.
+  const SHARED = { dsn: "https://x@y/0", tracesSampleRate: 0.1 };
+
+  it("web init includes the Replay integration with Sentry's privacy defaults + sample rates", () => {
+    const replayInstance = { __id: "replay-instance" };
+    const replayFactory = vi.fn(() => replayInstance);
+
+    const opts = buildSentryOptions({
+      shared: SHARED,
+      isNativeCapacitor: false,
+      replayIntegrationFactory: replayFactory,
+    });
+
+    // Sample rates: 10% baseline, 100% on-error.
+    expect(opts.replaysSessionSampleRate).toBe(0.1);
+    expect(opts.replaysOnErrorSampleRate).toBe(1.0);
+
+    // Replay factory called once with the safe defaults.
+    expect(replayFactory).toHaveBeenCalledTimes(1);
+    expect(replayFactory).toHaveBeenCalledWith({
+      maskAllText: true,
+      blockAllMedia: true,
+    });
+
+    // Resulting integrations array contains exactly the replay instance.
+    expect(opts.integrations).toEqual([replayInstance]);
+
+    // Shared options are still present.
+    expect(opts.dsn).toBe(SHARED.dsn);
+    expect(opts.tracesSampleRate).toBe(SHARED.tracesSampleRate);
+  });
+
+  it("native (Capacitor) init does NOT include Replay or replay sample rates", () => {
+    // Even if a factory is somehow available on native, buildSentryOptions
+    // must not wire it — @sentry/capacitor has no replay support.
+    const replayFactory = vi.fn(() => ({ __id: "replay-instance" }));
+
+    const opts = buildSentryOptions({
+      shared: SHARED,
+      isNativeCapacitor: true,
+      replayIntegrationFactory: replayFactory,
+    });
+
+    expect(replayFactory).not.toHaveBeenCalled();
+    expect(opts.integrations).toBeUndefined();
+    expect(opts.replaysSessionSampleRate).toBeUndefined();
+    expect(opts.replaysOnErrorSampleRate).toBeUndefined();
+
+    // Shared options are still present.
+    expect(opts.dsn).toBe(SHARED.dsn);
+    expect(opts.tracesSampleRate).toBe(SHARED.tracesSampleRate);
+  });
+
+  it("web init falls back gracefully if replayIntegration factory is missing", () => {
+    // Defensive: future @sentry/react versions could rename or drop the
+    // export. Init must still succeed — without Replay — rather than throw.
+    const opts = buildSentryOptions({
+      shared: SHARED,
+      isNativeCapacitor: false,
+      replayIntegrationFactory: undefined,
+    });
+
+    expect(opts.integrations).toBeUndefined();
+    expect(opts.replaysSessionSampleRate).toBeUndefined();
+    expect(opts.replaysOnErrorSampleRate).toBeUndefined();
+    expect(opts.dsn).toBe(SHARED.dsn);
   });
 });

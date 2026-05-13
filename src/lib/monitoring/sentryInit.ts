@@ -35,7 +35,11 @@
  *   - beforeBreadcrumb (`scrubBreadcrumb`) drops `ui.input` breadcrumbs
  *     entirely — they capture raw text typed by the user, which is the
  *     single highest-risk source of PII leakage.
- *   - Session Replay is currently OFF on all platforms.
+ *   - Session Replay (web only — @sentry/capacitor does not support
+ *     Replay): 10% baseline session sampling, 100% on-error sampling.
+ *     `maskAllText: true` and `blockAllMedia: true` are kept at the
+ *     Sentry-recommended privacy defaults; loosening either requires
+ *     an explicit privacy review.
  */
 
 import { stripPII } from "@/lib/security/piiProtection";
@@ -152,8 +156,13 @@ export function initSentry(): void {
 
       if (isNativeCapacitor) {
         const SentryCap = await import("@sentry/capacitor");
+        const nativeOptions = buildSentryOptions({
+          shared: sharedOptions,
+          isNativeCapacitor: true,
+          replayIntegrationFactory: undefined,
+        });
         SentryCap.init(
-          sharedOptions as Parameters<typeof SentryCap.init>[0],
+          nativeOptions as Parameters<typeof SentryCap.init>[0],
           SentryReact.init,
         );
         sentryModule = SentryCap;
@@ -172,8 +181,15 @@ export function initSentry(): void {
         // Web: skip the Capacitor wrapper entirely; its sdkInit awaits a
         // native bridge promise that doesn't resolve outside a Capacitor
         // shell, leaving no browser client bound.
+        const webOptions = buildSentryOptions({
+          shared: sharedOptions,
+          isNativeCapacitor: false,
+          replayIntegrationFactory: (
+            SentryReact as { replayIntegration?: (opts: unknown) => unknown }
+          ).replayIntegration,
+        });
         SentryReact.init(
-          sharedOptions as Parameters<typeof SentryReact.init>[0],
+          webOptions as Parameters<typeof SentryReact.init>[0],
         );
         sentryModule = SentryReact;
         try {
@@ -194,6 +210,68 @@ export function initSentry(): void {
       );
     }
   })();
+}
+
+// ── Per-platform options builder (exported for unit tests) ─────────────
+//
+// Composes the per-platform Sentry init options so the replay wiring
+// can be unit-tested without booting the SDK. The web branch adds
+// Session Replay (10% baseline / 100% on-error sampling, all text
+// masked, all media blocked); the native (Capacitor) branch leaves it
+// off because @sentry/capacitor doesn't ship a replay integration.
+
+export type ReplayIntegrationFactory =
+  | ((opts: { maskAllText: boolean; blockAllMedia: boolean }) => unknown)
+  | undefined;
+
+export type SentryPlatformOptions = Record<string, unknown> & {
+  integrations?: unknown[];
+  replaysSessionSampleRate?: number;
+  replaysOnErrorSampleRate?: number;
+};
+
+export function buildSentryOptions(args: {
+  shared: Record<string, unknown>;
+  isNativeCapacitor: boolean;
+  replayIntegrationFactory: ReplayIntegrationFactory;
+}): SentryPlatformOptions {
+  const { shared, isNativeCapacitor, replayIntegrationFactory } = args;
+
+  // Native: pass shared options through unchanged. Replay isn't
+  // available on @sentry/capacitor and the sample-rate fields would be
+  // inert anyway — keeping them off means the native init payload
+  // stays small and there's no risk of confusion in the dashboard.
+  if (isNativeCapacitor) {
+    return { ...shared };
+  }
+
+  // Web: enable Replay if the SDK exposes the factory. (Defensive — if
+  // a future @sentry/react drops or renames replayIntegration the init
+  // still succeeds without it instead of throwing.)
+  if (typeof replayIntegrationFactory !== "function") {
+    return { ...shared };
+  }
+
+  return {
+    ...shared,
+    // 10% of regular sessions get a replay buffer; 100% of sessions
+    // that hit an error do — that's the high-value sample. Conservative
+    // baseline so we stay inside the Sentry free-tier replay quota.
+    replaysSessionSampleRate: 0.1,
+    replaysOnErrorSampleRate: 1.0,
+    integrations: [
+      replayIntegrationFactory({
+        // Sentry-recommended privacy defaults. maskAllText hides every
+        // text node (including user-entered text); blockAllMedia stops
+        // images/video/audio from being recorded. Loosening either
+        // requires a privacy review — Vietnamese learners are an
+        // anonymous-heavy cohort but we still treat session content as
+        // PII by default.
+        maskAllText: true,
+        blockAllMedia: true,
+      }),
+    ],
+  };
 }
 
 // ── PII scrubbers (exported for unit tests) ─────────────────────────────

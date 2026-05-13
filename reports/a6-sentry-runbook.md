@@ -69,7 +69,7 @@ If you instead see `[sentry] disabled — VITE_SENTRY_DSN not set`, the env var 
 | Phone-like strings          | Replaced with `[PHONE_REDACTED]`.                        |
 | UUIDs                       | Replaced with `[ID_REDACTED]`.                           |
 | 16-digit card-like strings  | Replaced with `[CARD_REDACTED]`.                         |
-| Session replays             | Off by default. Error-only replays at 10% sample rate.   |
+| Session replays             | **Web only.** 10% baseline session sampling, 100% on-error sampling. `maskAllText: true`, `blockAllMedia: true`. Capacitor native build is unaffected — `@sentry/capacitor` does not support Replay. To watch a replay: open the Sentry issue → top of the event detail page → "Replay" section. Loosening either privacy default requires a privacy-policy update first. |
 
 The PII regexes are the same ones in `src/lib/security/piiProtection.ts` — keep both in sync if you tune one.
 
