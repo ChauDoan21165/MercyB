@@ -78,6 +78,13 @@ function normalizeKey(raw: string): string {
 
 function eventKey(event: KeyboardEvent): string {
   const k = event.key;
+  // Chrome Mobile iOS 148+ / iOS 26.4.2 can synthesize keydown events
+  // with `key === undefined` (observed via Sentry WEB-9 / WEB-X — 48+
+  // events on /signin in one week). Reading .length / .toLowerCase()
+  // on that throws. Returning "" makes matchesStep() reject the event
+  // so the global-shortcuts handler is a no-op for these synthetic
+  // events rather than crashing the page.
+  if (!k) return "";
   if (k === "Escape") return "escape";
   if (k.length === 1) return k.toLowerCase();
   return k.toLowerCase();
