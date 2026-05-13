@@ -127,14 +127,15 @@ function validateFilename(filename, report) {
     return false;
   }
 
-  // Must end with tier suffix
+  // Tier suffix is advisory — production has many naming patterns
+  // (_free, _vipN, _kids_lN, _a1_aNNN, _b1_bNNN, vip6_*, etc.)
+  // Filename parsing isn't used by the app; room manifest is the source of truth.
   const tierMatch = filename.match(/_(free|vip\d+(_ii)?|kidslevel\d+)\.json$/);
   if (!tierMatch) {
-    report.addError('Filename must end with tier suffix (e.g., _vip9.json)');
-    return false;
+    report.addInfo(`ℹ️  Non-standard tier suffix: ${filename} (advisory only)`);
+  } else {
+    report.addInfo(`✓ Filename format correct`);
   }
-
-  report.addInfo(`✓ Filename format correct`);
   return true;
 }
 
