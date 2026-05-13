@@ -24,6 +24,7 @@ import {
   isSentryEnabled,
   looksLikeExternalNoise,
   looksLikeDomMutationExtensionNoise,
+  looksLikeAnonymousStackOverflow,
   runsInsideZaloIab,
   __resetForTest,
 } from "../sentryInit";
@@ -492,6 +493,144 @@ describe("looksLikeDomMutationExtensionNoise — extension DOM-mutation drop", (
           ],
         },
       }),
+    ).toBe(false);
+  });
+});
+
+// ── Anonymous-frame stack-overflow drop (WEB-R/Q/C) ───────────────────────
+// AND-gate: exception value is "Maximum call stack size exceeded" AND no
+// stack frame names a real source. The shape comes from Chrome Mobile iOS
+// (and similar in-app browsers) injecting scripts that recursively overflow;
+// the host page sees one frame at `undefined:30:70` and no app code in the
+// stack. A genuine app recursion still has react-*.js / app frames, so it
+// must keep reaching Sentry.
+describe("looksLikeAnonymousStackOverflow — injected-script stack overflow drop", () => {
+  it("drops the WEB-R/Q/C shape: single frame with undefined filename", () => {
+    expect(
+      looksLikeAnonymousStackOverflow({
+        exception: {
+          values: [
+            {
+              value: "Maximum call stack size exceeded.",
+              stacktrace: { frames: [{ filename: "undefined" }] },
+            },
+          ],
+        },
+      }),
+    ).toBe(true);
+  });
+
+  it("drops when exception has no stacktrace frames at all", () => {
+    expect(
+      looksLikeAnonymousStackOverflow({
+        exception: {
+          values: [{ value: "RangeError: Maximum call stack size exceeded." }],
+        },
+      }),
+    ).toBe(true);
+  });
+
+  it("drops when frames array is empty", () => {
+    expect(
+      looksLikeAnonymousStackOverflow({
+        exception: {
+          values: [
+            {
+              value: "Maximum call stack size exceeded",
+              stacktrace: { frames: [] },
+            },
+          ],
+        },
+      }),
+    ).toBe(true);
+  });
+
+  it("drops when every frame has empty / missing / <anonymous> filename", () => {
+    expect(
+      looksLikeAnonymousStackOverflow({
+        exception: {
+          values: [
+            {
+              value: "Maximum call stack size exceeded",
+              stacktrace: {
+                frames: [
+                  { filename: "" },
+                  { filename: "<anonymous>" },
+                  { filename: "undefined" },
+                  {},
+                ],
+              },
+            },
+          ],
+        },
+      }),
+    ).toBe(true);
+  });
+
+  it("does NOT drop a stack overflow whose stack reaches our bundle", () => {
+    // The whole point of this filter is to spare real recursion bugs.
+    // Any frame with a real filename means we want to see it.
+    expect(
+      looksLikeAnonymousStackOverflow({
+        exception: {
+          values: [
+            {
+              value: "Maximum call stack size exceeded",
+              stacktrace: {
+                frames: [
+                  { filename: "undefined" },
+                  {
+                    filename:
+                      "https://mercyblade.com/assets/RoomRenderer-AbCd.js",
+                  },
+                ],
+              },
+            },
+          ],
+        },
+      }),
+    ).toBe(false);
+  });
+
+  it("does NOT drop a different RangeError variant", () => {
+    // Only "Maximum call stack size exceeded" is the injected-script
+    // fingerprint. Other RangeError messages must pass through.
+    expect(
+      looksLikeAnonymousStackOverflow({
+        exception: {
+          values: [
+            {
+              value: "RangeError: Invalid array length",
+              stacktrace: { frames: [] },
+            },
+          ],
+        },
+      }),
+    ).toBe(false);
+  });
+
+  it("does NOT drop a different error with anonymous frames", () => {
+    // Anonymous frames alone aren't enough — must AND with the stack
+    // overflow message. (Anonymous frames are normal for eval / blob
+    // scripts; we'd over-filter without the message gate.)
+    expect(
+      looksLikeAnonymousStackOverflow({
+        exception: {
+          values: [
+            {
+              value: "TypeError: Cannot read property 'foo' of undefined",
+              stacktrace: { frames: [{ filename: "undefined" }] },
+            },
+          ],
+        },
+      }),
+    ).toBe(false);
+  });
+
+  it("returns false on events with no exception", () => {
+    expect(looksLikeAnonymousStackOverflow({})).toBe(false);
+    expect(
+      looksLikeAnonymousStackOverflow({ message: "Maximum call stack size exceeded" }),
     ).toBe(false);
   });
 });
