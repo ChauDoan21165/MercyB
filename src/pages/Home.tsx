@@ -455,10 +455,29 @@ export default function Home() {
 
         {/* Avatar */}
         <div style={{ width: isPhone ? 100 : 120, height: isPhone ? 100 : 120, borderRadius: 9999, margin: "0 auto", overflow: "hidden", border: "3px solid rgba(255,255,255,0.95)", boxShadow: "0 12px 32px rgba(160,60,100,0.18)" }}>
-          <img src="/teacher-mercy.png" alt="Teacher Mercy"
-            onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }}
-            style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 20%" }}
-          />
+          {/* LCP image. AVIF + WebP variants are 480×480 (covers up to @4
+              DPR on the 120px-displayed avatar circle) at ~11 KB each;
+              PNG fallback is the original 1024×1024 at 822 KB and only
+              served to browsers without AVIF/WebP support. width/height
+              attributes match the PNG's natural dimensions so the
+              browser can reserve a 1:1 aspect-ratio box before paint —
+              CSS overrides for final rendering. fetchpriority="high"
+              flags this as the LCP candidate for the homepage. */}
+          <picture>
+            <source srcSet="/teacher-mercy.avif" type="image/avif" />
+            <source srcSet="/teacher-mercy.webp" type="image/webp" />
+            <img
+              src="/teacher-mercy.png"
+              alt="Teacher Mercy"
+              width={1024}
+              height={1024}
+              fetchPriority="high"
+              loading="eager"
+              decoding="async"
+              onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }}
+              style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 20%" }}
+            />
+          </picture>
         </div>
 
         <div style={{ marginTop: 16, fontSize: isPhone ? z(22) : z(30), fontWeight: 950, letterSpacing: -0.5, color: "rgba(100,30,60,0.94)", lineHeight: 1.15 }}>
