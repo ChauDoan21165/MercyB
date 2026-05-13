@@ -65,3 +65,4 @@ audio-progress.json
 .deepseek/
 audit_tmp/
 reports/chau-report-*.md
+node_modules

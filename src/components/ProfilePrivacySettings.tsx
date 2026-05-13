@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { supabase } from '@/lib/supabaseClient';
+import { useAuth } from '@/providers/AuthProvider';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
@@ -10,6 +11,8 @@ import { useToast } from '@/hooks/use-toast';
 type ProfileVisibility = 'private' | 'vip3_only' | 'public';
 
 export function ProfilePrivacySettings() {
+  const { user } = useAuth();
+  const userId = user?.id ?? null;
   const [visibility, setVisibility] = useState<ProfileVisibility>('vip3_only');
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
@@ -17,17 +20,20 @@ export function ProfilePrivacySettings() {
 
   useEffect(() => {
     loadPrivacySettings();
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [userId]);
 
   const loadPrivacySettings = async () => {
     try {
-      const { data: { user } } = await supabase.auth.getUser();
-      if (!user) return;
+      if (!userId) {
+        setLoading(false);
+        return;
+      }
 
       const { data, error } = await supabase
         .from('user_knowledge_profile')
         .select('profile_visibility')
-        .eq('user_id', user.id)
+        .eq('user_id', userId)
         .maybeSingle();
 
       if (error && error.code !== 'PGRST116') {
@@ -52,13 +58,12 @@ export function ProfilePrivacySettings() {
   const savePrivacySettings = async () => {
     setSaving(true);
     try {
-      const { data: { user } } = await supabase.auth.getUser();
-      if (!user) throw new Error('Not authenticated');
+      if (!userId) throw new Error('Not authenticated');
 
       const { error } = await supabase
         .from('user_knowledge_profile')
         .upsert({
-          user_id: user.id,
+          user_id: userId,
           profile_visibility: visibility,
           updated_at: new Date().toISOString(),
         }, {

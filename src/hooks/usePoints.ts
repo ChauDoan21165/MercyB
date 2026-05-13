@@ -1,24 +1,24 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
+import { useAuth } from "@/providers/AuthProvider";
 import { disableSupabaseSync, isSupabaseSyncDisabled } from "@/services/pointsService";
 
 export const usePoints = () => {
+  const { user } = useAuth();
+  const userId = user?.id ?? null;
   const [totalPoints, setTotalPoints] = useState<number>(0);
   const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    fetchPoints();
-  }, []);
-
-  const fetchPoints = async () => {
+  const fetchPoints = useCallback(async () => {
+    if (!userId) {
+      setIsLoading(false);
+      return;
+    }
     try {
-      const { data: { user } } = await supabase.auth.getUser();
-      if (!user) return;
-
       const { data, error } = await supabase
         .from("user_points")
         .select("total_points")
-        .eq("user_id", user.id)
+        .eq("user_id", userId)
         .maybeSingle();
 
       if (error) throw error;
@@ -28,7 +28,11 @@ export const usePoints = () => {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [userId]);
+
+  useEffect(() => {
+    void fetchPoints();
+  }, [fetchPoints]);
 
   const awardPoints = async (
     points: number,
@@ -37,12 +41,10 @@ export const usePoints = () => {
     roomId?: string
   ) => {
     if (isSupabaseSyncDisabled()) return;
+    if (!userId) return;
     try {
-      const { data: { user } } = await supabase.auth.getUser();
-      if (!user) return;
-
       const { error } = await supabase.rpc("award_points", {
-        _user_id: user.id,
+        _user_id: userId,
         _points: points,
         _transaction_type: transactionType,
         _description: description,

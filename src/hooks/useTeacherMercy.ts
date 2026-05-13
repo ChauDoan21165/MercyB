@@ -14,6 +14,7 @@
 
 import { useState, useEffect, useCallback, useMemo, createElement } from 'react';
 import { supabase } from '@/lib/supabaseClient';
+import { useAuth } from '@/providers/AuthProvider';
 import { useMbTheme } from '@/hooks/useMbTheme';
 import {
   wasGreetingShown,
@@ -71,30 +72,30 @@ export function useTeacherMercy(config: TeacherMercyConfig): TeacherMercyEngine 
   // Get tier script
   const tierScript = useMemo(() => getTierScript(roomTier), [roomTier]);
 
+  const { user } = useAuth();
+
   // Fetch user profile
   useEffect(() => {
+    if (!user) return;
     const fetchUserName = async () => {
       try {
-        const { data: { user } } = await supabase.auth.getUser();
-        if (user) {
-          const { data: profile } = await supabase
-            .from('profiles')
-            .select('full_name, username')
-            .eq('id', user.id)
-            .single();
+        const { data: profile } = await supabase
+          .from('profiles')
+          .select('full_name, username')
+          .eq('id', user.id)
+          .single();
 
-          if (profile) {
-            const name = profile.full_name || profile.username || user.email?.split('@')[0];
-            setUserName(name || null);
-          }
+        if (profile) {
+          const name = profile.full_name || profile.username || user.email?.split('@')[0];
+          setUserName(name || null);
         }
       } catch (error) {
         console.warn('[useTeacherMercy] Failed to fetch user profile:', error);
       }
     };
 
-    fetchUserName();
-  }, []);
+    void fetchUserName();
+  }, [user]);
 
   // Check for return after long inactivity
   const checkInactiveReturn = useCallback((): boolean => {

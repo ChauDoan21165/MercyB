@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 
 import { supabase } from "@/lib/supabaseClient";
+import { useAuth } from "@/providers/AuthProvider";
 import { FEATURE_FLAGS } from "@/lib/featureFlags";
 import { setCachedStreak, type CachedStreak } from "@/lib/streakCache";
 
@@ -40,6 +41,8 @@ const DISABLED: ServerStreakState = {
  * `pointsService.getStreakDays()` can serve recent server values.
  */
 export function useServerStreak(): ServerStreakState {
+  const { user } = useAuth();
+  const userId = user?.id ?? null;
   const [state, setState] = useState<ServerStreakState>(
     FEATURE_FLAGS.SERVER_STREAKS_ENABLED ? EMPTY : DISABLED,
   );
@@ -48,8 +51,8 @@ export function useServerStreak(): ServerStreakState {
     if (!FEATURE_FLAGS.SERVER_STREAKS_ENABLED) return;
     let alive = true;
 
-    async function load(userId: string | null) {
-      if (!userId) {
+    async function load(uid: string | null) {
+      if (!uid) {
         if (alive) setState({ ...DISABLED });
         return;
       }
@@ -57,7 +60,7 @@ export function useServerStreak(): ServerStreakState {
       const { data, error } = await supabase
         .from("profiles")
         .select("streak_current, streak_longest, streak_last_studied_date")
-        .eq("id", userId)
+        .eq("id", uid)
         .maybeSingle();
 
       if (!alive) return;
@@ -93,19 +96,12 @@ export function useServerStreak(): ServerStreakState {
       });
     }
 
-    void supabase.auth.getUser().then(({ data }) => {
-      void load(data.user?.id ?? null);
-    });
-
-    const { data: sub } = supabase.auth.onAuthStateChange((_event, session) => {
-      void load(session?.user?.id ?? null);
-    });
+    void load(userId);
 
     return () => {
       alive = false;
-      sub?.subscription?.unsubscribe();
     };
-  }, []);
+  }, [userId]);
 
   return state;
 }

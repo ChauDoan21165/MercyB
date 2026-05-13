@@ -5,6 +5,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
+import { useAuth } from "@/providers/AuthProvider";
 
 export type AdminRole = "admin";
 
@@ -153,6 +154,7 @@ async function fetchAdminRoleByRpc(
  * - RPCs may be missing, stale, or depend on a different role system
  */
 export function useAdminAccess() {
+  const { user } = useAuth();
   const [state, setState] = useState<AdminAccessState>({
     loading: true,
     permissions: defaultPermissions,
@@ -165,13 +167,6 @@ export function useAdminAccess() {
     setState((s) => ({ ...s, loading: true, error: null }));
 
     try {
-      const {
-        data: { user },
-        error: userErr,
-      } = await supabase.auth.getUser();
-
-      if (userErr) throw userErr;
-
       if (!user) {
         setState({
           loading: false,
@@ -247,7 +242,7 @@ export function useAdminAccess() {
         error: e?.message || "Admin check failed",
       });
     }
-  }, []);
+  }, [user]);
 
   useEffect(() => {
     void refresh();

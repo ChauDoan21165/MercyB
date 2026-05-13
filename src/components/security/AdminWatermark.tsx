@@ -5,30 +5,34 @@
 
 import { useEffect, useState } from 'react';
 import { supabase } from '@/lib/supabaseClient';
+import { useAuth } from '@/providers/AuthProvider';
 import { ShieldCheck } from 'lucide-react';
 
 export const AdminWatermark = () => {
+  const { user } = useAuth();
   const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
-    const checkAdmin = async () => {
+    if (!user) {
+      setIsAdmin(false);
+      return;
+    }
+    let cancelled = false;
+    (async () => {
       try {
-        const { data: { user } } = await supabase.auth.getUser();
-        if (!user) return;
-
         const { data } = await supabase.rpc('has_role', {
           _role: 'admin',
           _user_id: user.id,
         });
-
-        setIsAdmin(!!data);
+        if (!cancelled) setIsAdmin(!!data);
       } catch (error) {
         console.error('Admin check failed:', error);
       }
+    })();
+    return () => {
+      cancelled = true;
     };
-
-    checkAdmin();
-  }, []);
+  }, [user]);
 
   if (!isAdmin) return null;
 

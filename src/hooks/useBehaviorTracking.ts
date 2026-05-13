@@ -1,74 +1,62 @@
 import { useEffect, useCallback } from 'react';
 import { supabase } from '@/lib/supabaseClient';
+import { useAuth } from '@/providers/AuthProvider';
 
 export const useBehaviorTracking = (roomId: string) => {
+  const { user } = useAuth();
+  const userId = user?.id ?? null;
+
   // Track room visit
   useEffect(() => {
-    const trackVisit = async () => {
-      const { data: { user } } = await supabase.auth.getUser();
-      if (!user) return;
-
-      await supabase.from('user_behavior_tracking').insert({
-        user_id: user.id,
-        room_id: roomId,
-        interaction_type: 'visited',
-        interaction_data: { timestamp: new Date().toISOString() }
-      });
-    };
-
-    trackVisit();
-  }, [roomId]);
+    if (!userId) return;
+    void supabase.from('user_behavior_tracking').insert({
+      user_id: userId,
+      room_id: roomId,
+      interaction_type: 'visited',
+      interaction_data: { timestamp: new Date().toISOString() }
+    });
+  }, [roomId, userId]);
 
   // Track message sent
   const trackMessage = useCallback(async (messageContent: string) => {
-    const { data: { user } } = await supabase.auth.getUser();
-    if (!user) return;
-
+    if (!userId) return;
     await supabase.from('user_behavior_tracking').insert({
-      user_id: user.id,
+      user_id: userId,
       room_id: roomId,
       interaction_type: 'message_sent',
-      interaction_data: { 
+      interaction_data: {
         message_length: messageContent.length,
         timestamp: new Date().toISOString()
       }
     });
-  }, [roomId]);
+  }, [roomId, userId]);
 
   // Track keyword triggered
   const trackKeyword = useCallback(async (keyword: string) => {
-    const { data: { user } } = await supabase.auth.getUser();
-    if (!user) return;
-
+    if (!userId) return;
     await supabase.from('user_behavior_tracking').insert({
-      user_id: user.id,
+      user_id: userId,
       room_id: roomId,
       interaction_type: 'keyword_triggered',
-      interaction_data: { 
+      interaction_data: {
         keyword,
         timestamp: new Date().toISOString()
       }
     });
-
-    // Update knowledge profile with new interest
-    await updateKnowledgeProfile(user.id, keyword);
-  }, [roomId]);
+    await updateKnowledgeProfile(userId, keyword);
+  }, [roomId, userId]);
 
   // Track room completion
   const trackCompletion = useCallback(async () => {
-    const { data: { user } } = await supabase.auth.getUser();
-    if (!user) return;
-
+    if (!userId) return;
     await supabase.from('user_behavior_tracking').insert({
-      user_id: user.id,
+      user_id: userId,
       room_id: roomId,
       interaction_type: 'completed',
       interaction_data: { timestamp: new Date().toISOString() }
     });
-
-    // Update knowledge profile
-    await updateCompletedTopics(user.id, roomId);
-  }, [roomId]);
+    await updateCompletedTopics(userId, roomId);
+  }, [roomId, userId]);
 
   return { trackMessage, trackKeyword, trackCompletion };
 };
