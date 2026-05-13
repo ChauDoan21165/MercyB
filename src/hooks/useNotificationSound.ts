@@ -1,24 +1,26 @@
 import { useCallback, useRef } from 'react';
 import { supabase } from '@/lib/supabaseClient';
+import { useAuth } from '@/providers/AuthProvider';
 
 type AlertTone = 'alert' | 'warning' | 'chime' | 'bell';
 
 export const useNotificationSound = () => {
+  const { user } = useAuth();
+  const userId = user?.id ?? null;
   const audioContextRef = useRef<AudioContext | null>(null);
 
-  const checkIfSoundEnabled = async (): Promise<{ enabled: boolean; tone: AlertTone }> => {
+  const checkIfSoundEnabled = useCallback(async (): Promise<{ enabled: boolean; tone: AlertTone }> => {
     try {
-      const { data: { user } } = await supabase.auth.getUser();
-      if (!user) return { enabled: false, tone: 'alert' };
+      if (!userId) return { enabled: false, tone: 'alert' };
 
       const { data } = await supabase
         .from('admin_notification_settings')
         .select('sound_enabled, alert_tone')
-        .eq('admin_user_id', user.id)
+        .eq('admin_user_id', userId)
         .single();
 
       if (!data) return { enabled: true, tone: 'alert' }; // Default to enabled
-      
+
       return {
         enabled: data.sound_enabled,
         tone: (data.alert_tone as AlertTone) || 'alert',
@@ -27,7 +29,7 @@ export const useNotificationSound = () => {
       console.error('Error checking sound preferences:', error);
       return { enabled: true, tone: 'alert' }; // Default to enabled on error
     }
-  };
+  }, [userId]);
 
   const playNotificationSound = useCallback(async (overrideTone?: AlertTone) => {
     try {
@@ -89,7 +91,7 @@ export const useNotificationSound = () => {
     } catch (error) {
       console.error('Error playing notification sound:', error);
     }
-  }, []);
+  }, [checkIfSoundEnabled]);
 
   return { playNotificationSound };
 };

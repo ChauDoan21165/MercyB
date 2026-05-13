@@ -1,5 +1,5 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import { supabase } from '@/lib/supabaseClient';
+import { useAuth } from '@/providers/AuthProvider';
 import * as pathsService from '@/services/paths';
 import type { Path, PathDay, UserPathProgress, PathWithProgress } from '@/types/paths';
 
@@ -40,47 +40,43 @@ export function usePathDay(pathId: string | undefined, dayIndex: number | undefi
 
 // Hook to get user progress
 export function useUserPathProgress(pathId: string | undefined) {
+  const { user } = useAuth();
+  const userId = user?.id ?? null;
   return useQuery({
-    queryKey: ['user-path-progress', pathId],
-    queryFn: async () => {
-      const { data: { user } } = await supabase.auth.getUser();
-      if (!user || !pathId) return null;
-      return pathsService.getUserProgress(user.id, pathId);
-    },
-    enabled: !!pathId,
+    queryKey: ['user-path-progress', pathId, userId],
+    queryFn: () => (userId && pathId ? pathsService.getUserProgress(userId, pathId) : null),
+    enabled: !!pathId && !!userId,
   });
 }
 
 // Hook to get all user progress
 export function useAllUserPathProgress() {
+  const { user } = useAuth();
+  const userId = user?.id ?? null;
   return useQuery({
-    queryKey: ['user-path-progress-all'],
-    queryFn: async () => {
-      const { data: { user } } = await supabase.auth.getUser();
-      if (!user) return [];
-      return pathsService.getAllUserProgress(user.id);
-    },
+    queryKey: ['user-path-progress-all', userId],
+    queryFn: () => (userId ? pathsService.getAllUserProgress(userId) : []),
+    enabled: !!userId,
   });
 }
 
 // Hook to get paths with progress
 export function usePathsWithProgress() {
+  const { user } = useAuth();
+  const userId = user?.id ?? null;
   return useQuery({
-    queryKey: ['paths-with-progress'],
-    queryFn: async () => {
-      const { data: { user } } = await supabase.auth.getUser();
-      return pathsService.getPathsWithProgress(user?.id || null);
-    },
+    queryKey: ['paths-with-progress', userId],
+    queryFn: () => pathsService.getPathsWithProgress(userId),
   });
 }
 
 // Hook to start a path
 export function useStartPath() {
   const queryClient = useQueryClient();
+  const { user } = useAuth();
 
   return useMutation({
     mutationFn: async (pathId: string) => {
-      const { data: { user } } = await supabase.auth.getUser();
       if (!user) throw new Error('Not authenticated');
       return pathsService.startPath(user.id, pathId);
     },
@@ -95,10 +91,10 @@ export function useStartPath() {
 // Hook to complete a day
 export function useCompleteDay() {
   const queryClient = useQueryClient();
+  const { user } = useAuth();
 
   return useMutation({
     mutationFn: async ({ pathId, dayIndex, totalDays }: { pathId: string; dayIndex: number; totalDays: number }) => {
-      const { data: { user } } = await supabase.auth.getUser();
       if (!user) throw new Error('Not authenticated');
       return pathsService.completeDay(user.id, pathId, dayIndex, totalDays);
     },
@@ -113,10 +109,10 @@ export function useCompleteDay() {
 // Hook to reset a path
 export function useResetPath() {
   const queryClient = useQueryClient();
+  const { user } = useAuth();
 
   return useMutation({
     mutationFn: async (pathId: string) => {
-      const { data: { user } } = await supabase.auth.getUser();
       if (!user) throw new Error('Not authenticated');
       return pathsService.resetPath(user.id, pathId);
     },

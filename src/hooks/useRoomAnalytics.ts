@@ -1,30 +1,33 @@
 import { useEffect, useRef } from "react";
 import { supabase } from "@/lib/supabaseClient";
+import { useAuth } from "@/providers/AuthProvider";
 import { usePoints } from "./usePoints";
 
 export const useRoomAnalytics = (roomId: string) => {
+  const { user } = useAuth();
+  const userId = user?.id ?? null;
   const sessionIdRef = useRef<string | null>(null);
   const startTimeRef = useRef<number>(Date.now());
   const messageCountRef = useRef<number>(0);
   const { awardPoints } = usePoints();
 
   useEffect(() => {
-    initSession();
+    void initSession();
 
     return () => {
-      endSession();
+      void endSession();
     };
-  }, [roomId]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [roomId, userId]);
 
   const initSession = async () => {
     try {
-      const { data: { user } } = await supabase.auth.getUser();
-      if (!user) return;
+      if (!userId) return;
 
       const { data, error } = await supabase
         .from("room_usage_analytics")
         .insert({
-          user_id: user.id,
+          user_id: userId,
           room_id: roomId,
           session_start: new Date().toISOString(),
         })

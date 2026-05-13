@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
+import { useAuth } from "@/providers/AuthProvider";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "./ui/dialog";
@@ -16,6 +17,7 @@ interface CreditLimitModalProps {
 }
 
 export const CreditLimitModal = ({ open, onClose, onSuccess, questionsUsed, questionsLimit }: CreditLimitModalProps) => {
+  const { user } = useAuth();
   const [promoCode, setPromoCode] = useState("");
   const [isRedeeming, setIsRedeeming] = useState(false);
 
@@ -27,7 +29,6 @@ export const CreditLimitModal = ({ open, onClose, onSuccess, questionsUsed, ques
 
     setIsRedeeming(true);
     try {
-      const { data: { user } } = await supabase.auth.getUser();
       if (!user) {
         toast.error("Please login first");
         return;

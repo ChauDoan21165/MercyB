@@ -1,6 +1,7 @@
 // src/hooks/useMercyRoomIntro.ts — MB-BLUE-93.7 — 2025-12-24 (+0700)
 import { useState, useCallback, useEffect, useRef } from "react";
 import { supabase } from "@/lib/supabaseClient";
+import { useAuth } from "@/providers/AuthProvider";
 import { getCompanionEnabled } from "./useCompanionSession";
 
 export type IntroState =
@@ -92,6 +93,8 @@ export function useMercyRoomIntro({
   userName = "friend",
 }: UseMercyRoomIntroProps) {
   const player = (null as any) as PlayerLike;
+  const { user } = useAuth();
+  const userId = user?.id ?? null;
 
   const [state, setState] = useState<IntroState>("idle");
   const [visible, setVisible] = useState(false);
@@ -127,13 +130,9 @@ export function useMercyRoomIntro({
   const logEvent = useCallback(
     async (eventType: string, metadata?: Record<string, any>) => {
       try {
-        const {
-          data: { user },
-        } = await supabase.auth.getUser();
-        if (!user) return;
-
+        if (!userId) return;
         await supabase.from("companion_events").insert({
-          user_id: user.id,
+          user_id: userId,
           room_id: roomId,
           event_type: eventType,
           metadata: metadata || {},
@@ -142,7 +141,7 @@ export function useMercyRoomIntro({
         console.error("Failed to log companion event:", err);
       }
     },
-    [roomId]
+    [roomId, userId]
   );
 
   const goToAskFeeling = useCallback(() => {

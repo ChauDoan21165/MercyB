@@ -1,6 +1,7 @@
 import { Music, Settings } from "lucide-react";
 import { useMusicPlayer } from "@/contexts/MusicPlayerContext";
 import { useUserAccess } from "@/hooks/useUserAccess";
+import { useAuth } from "@/providers/AuthProvider";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
@@ -10,6 +11,8 @@ import { Badge } from "@/components/ui/badge";
 export const GlobalPlayingIndicator = () => {
   const { isPlaying, currentTrackName } = useMusicPlayer();
   const { isAdmin } = useUserAccess();
+  const { user } = useAuth();
+  const userId = user?.id ?? null;
   const navigate = useNavigate();
   const isDev = import.meta.env.DEV;
   const [versionIndicator, setVersionIndicator] = useState('A');
@@ -17,8 +20,8 @@ export const GlobalPlayingIndicator = () => {
 
   useEffect(() => {
     fetchVersionIndicator();
-    if (isAdmin) fetchUnreadCount();
-  }, [isAdmin]);
+    if (isAdmin && userId) fetchUnreadCount(userId);
+  }, [isAdmin, userId]);
 
   const fetchVersionIndicator = async () => {
     try {
@@ -31,14 +34,12 @@ export const GlobalPlayingIndicator = () => {
     } catch {}
   };
 
-  const fetchUnreadCount = async () => {
+  const fetchUnreadCount = async (uid: string) => {
     try {
-      const { data: { user } } = await supabase.auth.getUser();
-      if (!user) return;
       const { count: notificationCount } = await supabase
         .from('admin_notifications')
         .select('*', { count: 'exact', head: true })
-        .eq('admin_user_id', user.id)
+        .eq('admin_user_id', uid)
         .eq('is_read', false);
       const { count: feedbackCount } = await supabase
         .from('feedback')

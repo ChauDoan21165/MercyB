@@ -8,8 +8,9 @@
 
 import React, { createContext, useContext, useState, useCallback, useEffect, useMemo, useRef } from 'react';
 import { supabase } from '@/lib/supabaseClient';
-import { 
-  createMercyEngine, 
+import { useAuth } from '@/providers/AuthProvider';
+import {
+  createMercyEngine,
   initialEngineState,
   type MercyEngineState,
   type MercyEngine
@@ -112,41 +113,34 @@ export function TeacherMercyProvider({
     }
   }, [state.silenceMode, state.isEnabled, getState]);
   
-  // Fetch user profile on mount
+  // Fetch user profile when the auth user changes
+  const { user } = useAuth();
   useEffect(() => {
-    const fetchUserProfile = async () => {
+    if (!user) {
+      actions.setUserName(null);
+      return;
+    }
+    let cancelled = false;
+    (async () => {
       try {
-        const { data: { user } } = await supabase.auth.getUser();
-        if (user) {
-          const { data: profile } = await supabase
-            .from('profiles')
-            .select('full_name, username')
-            .eq('id', user.id)
-            .single();
-          
-          if (profile) {
-            const name = profile.full_name || profile.username || user.email?.split('@')[0];
-            actions.setUserName(name || null);
-          }
+        const { data: profile } = await supabase
+          .from('profiles')
+          .select('full_name, username')
+          .eq('id', user.id)
+          .single();
+        if (cancelled) return;
+        if (profile) {
+          const name = profile.full_name || profile.username || user.email?.split('@')[0];
+          actions.setUserName(name || null);
         }
       } catch (error) {
         console.warn('[TeacherMercyProvider] Failed to fetch user profile:', error);
       }
+    })();
+    return () => {
+      cancelled = true;
     };
-    
-    fetchUserProfile();
-    
-    // Listen for auth changes
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
-      if (event === 'SIGNED_IN' && session?.user) {
-        fetchUserProfile();
-      } else if (event === 'SIGNED_OUT') {
-        actions.setUserName(null);
-      }
-    });
-    
-    return () => subscription.unsubscribe();
-  }, [actions]);
+  }, [user, actions]);
   
   // Initialize engine
   useEffect(() => {
