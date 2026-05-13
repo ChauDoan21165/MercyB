@@ -122,6 +122,12 @@ export function initSentry(): void {
           //    similar extensions. AND-gated: top frame inside react-*.js
           //    AND message is the removeChild / NotFoundError family.
           if (looksLikeDomMutationExtensionNoise(scrubbed)) return null;
+          // 2c. Drop anonymous-frame stack overflows captured by
+          //    window.onerror. AND-gated: message is "Maximum call
+          //    stack size exceeded" AND no stack frame names a real
+          //    source. Real app recursion produces dozens of frames
+          //    inside our bundle, never a single `undefined:30:70`.
+          if (looksLikeAnonymousStackOverflow(scrubbed)) return null;
           // 3. Enrich with classification + context tags so the Sentry
           //    UI can sort and alert on what actually matters. Also
           //    sets event.level + event.fingerprint based on priority.
@@ -381,6 +387,51 @@ export function looksLikeDomMutationExtensionNoise(
 
   const message = typeof ex.value === "string" ? ex.value : "";
   return DOM_MUTATION_NOISE_MESSAGE_RE.test(message);
+}
+
+// Anonymous-frame stack overflow. Chrome Mobile iOS (and a couple of
+// in-app browsers) inject scripts into the page that occasionally hit
+// `RangeError: Maximum call stack size exceeded`. Because the injected
+// script has no host-visible source, `window.onerror` reports the
+// filename as null — Sentry serializes that single frame as
+// `undefined:<line>:<col>`. There is no React or app frame anywhere
+// in the stack. We can't fix code we can't see; the events are pure
+// noise.
+//
+// The drop is AND-gated:
+//   1. The exception value matches "Maximum call stack size exceeded",
+//      AND
+//   2. NO stack frame names a real source — either the frame list is
+//      empty, or every frame's filename is missing / empty / the
+//      literal string "undefined" / "<anonymous>".
+//
+// A genuine in-app recursion produces tens to hundreds of frames
+// pointing at our react-*.js / app chunks; that case keeps reaching
+// Sentry because at least one frame has a real filename.
+const STACK_OVERFLOW_MESSAGE_RE = /Maximum call stack size exceeded/i;
+
+function frameLooksAnonymous(frame: { filename?: string }): boolean {
+  const fn = typeof frame?.filename === "string" ? frame.filename : "";
+  return fn === "" || fn === "undefined" || fn === "<anonymous>";
+}
+
+export function looksLikeAnonymousStackOverflow(
+  event: SentryEventLike,
+): boolean {
+  const ex = event.exception?.values?.[0];
+  if (!ex) return false;
+
+  const message = typeof ex.value === "string" ? ex.value : "";
+  if (!STACK_OVERFLOW_MESSAGE_RE.test(message)) return false;
+
+  const frames = ex.stacktrace?.frames;
+  // No frames at all → top-level onerror catch with no caller info.
+  // Always the injected-script shape.
+  if (!Array.isArray(frames) || frames.length === 0) return true;
+
+  // Every frame anonymous → same shape as the no-frames case but
+  // Sentry surfaced a placeholder entry for the onerror line/col.
+  return frames.every(frameLooksAnonymous);
 }
 
 /**
