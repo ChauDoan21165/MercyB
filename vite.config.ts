@@ -103,14 +103,17 @@ export default defineConfig({
             authToken: process.env.SENTRY_AUTH_TOKEN,
             org: process.env.SENTRY_ORG,
             project: process.env.SENTRY_PROJECT,
-            // Inject the build's release id as `import.meta.env.SENTRY_RELEASE`
-            // so client code can tag events with it if we ever want to.
+            // Opt out of plugin telemetry; the sourcemap upload itself
+            // still goes through. No data leaves the build host except
+            // the sourcemaps.
             telemetry: false,
-            sourcemaps: {
-              // Strip the local filesystem prefix so uploaded paths
-              // align with the deployed bundle's stack frames.
-              filesToDeleteAfterUpload: ['./dist/**/*.map'],
-            },
+            // Delete every .map file produced by the build once upload
+            // completes, so they never ship to clients. Top-level (not
+            // nested under `sourcemaps`) is the canonical option in
+            // @sentry/vite-plugin v3+; the glob is intentionally rooted
+            // at the project so dist outputs are matched cleanly
+            // regardless of outDir resolution.
+            filesToDeleteAfterUpload: ['**/*.map'],
           }),
         ]
       : []),
