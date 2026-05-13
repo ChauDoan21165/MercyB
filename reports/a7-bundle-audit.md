@@ -192,3 +192,112 @@ The visualizer plugin is conditional in `vite.config.ts` on `MB_BUNDLE_VIZ=1`, s
 - `reports/a7-bundle-audit.md` — this file.
 
 No application code was modified.
+
+---
+
+# 2026-05-13 — re-audit after Session Replay
+
+**Branch:** `perf/bundle-audit-post-replay`
+**Trigger:** Homepage LCP at 14.9 s on Slow 4G; PR #415 cut ~2 s via hero image; remaining LCP is JS-bound. Session Replay landed in PR #411; need to confirm it didn't regress critical-path JS.
+
+## TL;DR — what shipped this round
+
+**Recon-only.** No `manualChunks` edit, no lazy-load applied. The plausible easy-win (lazy-import `MercyGuide` from `AppShell.tsx`) was tried in this branch and reverted because it moved zero bytes off the critical path — the `mercy-guide` chunk is anchored by ~18 KB gz of shared utilities (sentryInit, AuthProvider, supabaseClient, etc.) that Rollup absorbed into it. The fix needs a bundler-config refactor that introduced a circular-chunk warning on first attempt; flagged as deferred medium work below.
+
+## Critical-path JS today (every visitor on `/`)
+
+`dist/index.html` modulepreload list:
+
+| chunk           | raw      | gzipped | vs 2026-04-25 |
+|-----------------|---------:|--------:|--------------:|
+| `index` (entry) | 113 KB   | 33 KB   | (was ~47 KB raw — the entry chunk grew with App router additions) |
+| `react`         | 146 KB   | 47 KB   | flat |
+| `vendor`        | 282 KB   | 85 KB   | **+63 KB raw / +20 KB gz** (was 219 / 65) |
+| `ui`            | 154 KB   | 43 KB   | **+29 KB raw** (was 125) |
+| `supabase`      | 192 KB   | 51 KB   | flat |
+| `mercy-guide`   | 112 KB   | 36 KB   | **NEW on critical path** (was eagerly imported by `AppShell` last round too, but the previous audit didn't break out per-feature chunks) |
+| **TOTAL**       | **999 KB** | **295 KB** | up from 679 KB raw / ~210 KB gz |
+
+`sentry` (473 KB raw / 156 KB gz) is **NOT** in the modulepreload list — it's lazy-loaded after first paint via the existing `await import("@sentry/react")` in `sentryInit.ts`. Session Replay added ~83 KB gz to the sentry chunk; that's fine, it stays off LCP path.
+
+## Vendor regrowth — top contributors (gzipped)
+
+```
+gz:  29 KB   zod                   (flat vs 04-25)
+gz:  26 KB   date-fns              (flat)
+gz:  23 KB   es-toolkit            (was 17 — +6)
+gz:  19 KB   @tanstack/query-core  (NEW — landed with React Query infra in PR #393)
+gz:  13 KB   sonner                (NEW in top contributors)
+gz:  10 KB   @remix-run/router
+gz:  18 KB   @floating-ui/{dom,core,utils,react-dom}  (Radix peer dep, falls into vendor)
+gz:   9 KB   @revenuecat/{purchases-typescript-internal-esm,capacitor}
+gz:   6 KB   @capacitor/core
+gz:   3 KB   iceberg-js            (NEW)
+```
+
+Biggest growth: `@tanstack/query-core` + `sonner` together account for ~32 KB gz of the vendor regrowth. Both are statically imported and used app-wide; carving them out wouldn't reduce critical-path total bytes (just rename the chunk that owns them).
+
+## The mercy-guide chunk problem
+
+`mercy-guide-CsIjKonf.js` (112 KB raw / 36 KB gz) is in the homepage modulepreload list because the entry chunk has a **static** `import { ... } from "./mercy-guide-CsIjKonf.js"`. Visualizer breakdown of that chunk:
+
+| file                                                | gz     | rendered |
+|-----------------------------------------------------|-------:|---------:|
+| `components/mercy-guide/MercyGuidePanel.tsx`        | 10 KB  | 52 KB    |
+| `components/MercyGuide.tsx`                         |  7 KB  | 36 KB    |
+| `components/mercy-guide/UnifiedMercyChat.tsx`       |  4 KB  | 14 KB    |
+| `lib/monitoring/sentryInit.ts`                      |  4 KB  | 13 KB    |
+| `components/mercy-guide/hooks/useMercyMemory.ts`    |  3 KB  | 11 KB    |
+| `lib/mercy/intentDetection.ts`                      |  2 KB  |  6 KB    |
+| `components/mercy-guide/tabs/LanguageLessonsView.tsx`| 2 KB  | 10 KB    |
+| `hooks/useUserAccess.ts`                            |  2 KB  |  8 KB    |
+| `lib/referral/referralClient.ts`                    |  2 KB  |  6 KB    |
+| `providers/AuthProvider.tsx`                        |  2 KB  |  6 KB    |
+| `lib/streakMigration.ts`, `lib/supabaseClient.ts`,<br>`lib/authService.ts`, `services/pointsService.ts`,<br>`services/behaviorTrackingFlag.ts`, `lib/featureFlags.ts`,<br>`lib/auth/anonymousBootstrap.ts`, `lib/chunkLoadError.ts`, …| ~10 KB combined | |
+
+About **57 KB rendered / 18 KB gz** of the chunk is **shared utilities the entry needs eagerly** (sentryInit + AuthProvider + supabaseClient + authService + featureFlags + chunkLoadError + anonymousBootstrap + pointsService + behaviorTrackingFlag + supplements). Rollup put them here because mercy-guide was the largest static consumer; the manualChunks function returns `undefined` for app code, so Rollup decides the bucket via import-graph weight.
+
+Net: even if `<MercyGuide />` is converted to a dynamic import in `AppShell.tsx`, the chunk stays critical-path because the entry static-imports it for sentryInit/AuthProvider/etc. **Verified empirically** in this branch: lazy-importing MercyGuide kept the same `mercy-guide-CsIjKonf.js` hash and same modulepreload entry.
+
+## Easy wins applied this round
+
+**None.** Two attempts this branch:
+
+1. `AppShell.tsx`: `import { MercyGuide }` → `lazyWithRetry(() => import("@/components/MercyGuide"))` with `Suspense fallback={null}`. Rebuild: identical chunk hashes, modulepreload still lists `mercy-guide`. **Reverted.**
+2. `vite.config.ts`: added a manual `app-shared` chunk catching `lib/monitoring/`, `lib/auth/`, `lib/queries/`, `lib/security/`, `lib/{featureFlags,supabaseClient,authService,streakCache,streakMigration,chunkLoadError,lazyWithRetry,utils,platform}.ts`, `lib/referral/`, `services/`, `providers/AuthProvider`. Rebuild surfaced **`Circular chunk: app-shared -> vendor -> app-shared`** warning, and critical-path gz went UP (mercy-guide shrank from 36 → 26 KB gz but the new app-shared added 21 KB gz — net +11 KB gz). **Reverted.**
+
+Both attempts confirmed: this is a structural problem with how `manualChunks` returns `undefined` for app code, not a single-rule fix.
+
+## Deferred work (medium / big — separate PRs)
+
+### Medium
+
+1. **Split `mercy-guide` chunk into `mercy-guide-feature` + `app-shared`.** The right shape: a manualChunks rule that explicitly enumerates the shared utilities AND avoids the circular dep with vendor (probably by also moving the relevant @supabase/@tanstack/sonner usage out of vendor or by changing import order). Estimated win: ~13–18 KB gz off critical path. Risk: circular-chunk warning needs careful resolution; touches a load-bearing config.
+
+2. **Lazy-load MercyGuide from `AppShell.tsx`** — should ship together with the chunk split above. On its own, no effect (proved this round).
+
+3. **Audit `ChatHub.tsx` for its eager `MercyGuide` import** — ChatHub is a route-lazy chunk so this doesn't hit `/` LCP, but ChatHub's chunk is bloated by it. Lazy import inside ChatHub would let the route code load before the panel UI.
+
+4. **`ui` chunk grew 29 KB raw / ~9 KB gz** since 2026-04-25 (125 → 154 KB). Worth checking whether new `@radix-ui/*` packages were pulled in (e.g. by recent feature work) and whether any of them are now used on only one or two non-critical pages — those could be hoisted into per-route chunks.
+
+### Big
+
+1. **Sentry chunk is 473 KB raw / 156 KB gz** — lazy-loaded but as a single 156 KB blob ~600 ms after first paint. Splitting `@sentry-internal/replay` and `@sentry-internal/replay-canvas` into a separate lazy chunk that loads only when an error occurs (not on every session) would shed ~50 KB gz from the post-LCP bundle. Sentry's docs do support a deferred-replay pattern, but it's a refactor of `sentryInit.ts` and needs a careful test-coverage update.
+
+2. **Three feature chunks now exceed 100 KB raw** (route-only, not critical-path):
+   - `professional-scenarios` 121 KB
+   - `reading-passages` 114 KB
+   - `listening-items` 109 KB
+   These are content-heavy data files. Per-section split (e.g. one chunk per CEFR level, or one chunk per category) would mean a route-level user only pays for the section they open. Brief discussion with content owners required to know the right split axis.
+
+3. **`charts` chunk is 362 KB raw / 105 KB gz** — admin-only, unchanged since 2026-04-25 baseline. Still acceptable: only loaded when an admin opens analytics.
+
+## Estimated LCP impact of deferred medium item (1) on Slow 4G
+
+Rule of thumb: 100 KB of critical-path JS on Slow 4G ≈ 250 ms parse + download. Removing ~13–18 KB gz from critical path ≈ ~30–45 ms improvement. **Small.** The bigger LCP wins are in the deferred big items, especially Sentry replay deferral.
+
+## Files changed this round
+
+- `reports/a7-bundle-audit.md` — this section.
+
+**No code changes shipped.** The manualChunks experiment + AppShell lazy-import were reverted after empirical measurement showed they didn't deliver wins under the existing chunking shape.
