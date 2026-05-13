@@ -52,9 +52,9 @@ jobs:
 
       - name: Check for changes
         run: |
-          if [[ -n $(git status --porcelain src/lib/roomManifest.ts src/lib/roomDataImports.ts) ]]; then
+          if [[ -n $(git status --porcelain src/lib/roomManifest.ts) ]]; then
             echo "⚠️ Registry files would be updated"
-            git diff src/lib/roomManifest.ts src/lib/roomDataImports.ts
+            git diff src/lib/roomManifest.ts
           else
             echo "✅ Registry files are up to date"
           fi
