@@ -6,7 +6,7 @@ export default function Privacy() {
       <h1>Privacy Policy</h1>
 
       <p>
-        <strong>Last updated:</strong> April 26, 2026
+        <strong>Last updated:</strong> May 13, 2026
       </p>
 
       <p>
@@ -169,6 +169,59 @@ export default function Privacy() {
         <strong>admin@mercyblade.com</strong>. Cơ sở pháp lý cho việc xử
         lý này là lợi ích chính đáng trong việc giúp người học cải thiện
         phát âm.
+      </p>
+
+      <h2>4b. Web Session Replay (Sentry)</h2>
+      <p>
+        When you use the web version of Mercy Blade, a small fraction of
+        sessions — approximately 10% of all sessions, plus 100% of
+        sessions in which an error occurs — are recorded as
+        &ldquo;session replays&rdquo; and sent to{" "}
+        <strong>Sentry</strong>, our error monitoring provider, so we
+        can see what happened in the moments before a crash. We use
+        these recordings only to diagnose and fix bugs.
+      </p>
+      <p>These recordings:</p>
+      <ul>
+        <li>
+          <strong>Do not capture text you type.</strong> All text
+          content is masked in your browser before any data leaves your
+          device.
+        </li>
+        <li>
+          <strong>Do not capture images, video, or files</strong> —
+          only clicks, scrolls, and navigation are recorded.
+        </li>
+        <li>
+          <strong>Have no audio and no camera.</strong>
+        </li>
+        <li>
+          Are retained by Sentry for approximately 30 days under our
+          current plan, then deleted automatically.
+        </li>
+      </ul>
+      <p>
+        Session replay runs only on the web version of Mercy Blade —
+        the iOS and Android apps do not record session replays.
+        Masking is enabled by default; no action is required on your
+        part.
+      </p>
+      <p style={{ fontStyle: "italic", color: "#475569" }}>
+        <strong>Tiếng Việt — Ghi lại phiên truy cập web (Sentry):</strong>{" "}
+        Khi bạn dùng phiên bản web của Mercy Blade, một phần nhỏ phiên
+        truy cập (khoảng 10%, và 100% các phiên có lỗi xảy ra) sẽ được
+        ghi lại dưới dạng &ldquo;session replay&rdquo; và gửi tới{" "}
+        <strong>Sentry</strong> — đối tác giám sát lỗi của chúng tôi —
+        để chúng tôi xem được điều gì đã xảy ra trước khi gặp sự cố.
+        Bản ghi này: không lưu chữ bạn nhập (toàn bộ nội dung văn bản
+        đều được che ẩn ngay trên trình duyệt của bạn trước khi rời
+        khỏi máy); không lưu hình ảnh, video, file (chỉ ghi lại các
+        thao tác bấm/cuộn/điều hướng); không có âm thanh, không có
+        camera; và được Sentry tự động xoá sau khoảng 30 ngày theo
+        gói dịch vụ hiện tại. Tính năng này chỉ chạy trên phiên bản
+        web — ứng dụng iOS và Android không ghi lại phiên truy cập.
+        Chúng tôi dùng dữ liệu này chỉ để khắc phục lỗi. Bạn không
+        cần làm gì để được bảo vệ — việc che ẩn được bật mặc định.
       </p>
 
       <h2>5. Data Retention</h2>
