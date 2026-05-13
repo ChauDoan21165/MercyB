@@ -4,7 +4,8 @@
  */
 
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { supabase } from '@/lib/supabaseClient';
+import { useAuth } from '@/providers/AuthProvider';
+import { useProfileQuery } from '@/lib/queries/useProfileQuery';
 import { getTotalPoints, getStreakDays, getStreakEmoji, getPointsDisplay, loadPointsFromSupabase } from '@/services/pointsService';
 import { cn } from '@/lib/utils';
 import { useMercyGuide } from '@/hooks/useMercyGuide';
@@ -1121,33 +1122,25 @@ export function MercyGuide({
     setProfile(nextProfile);
   }, []);
 
-  // Load profile from Supabase on mount to get student name
+  // Load student name from the shared profile cache.
+  // `english_level` lives on `companion_state`, not `profiles`
+  // (fetched separately via getCompanionProfile) — only safe profile
+  // columns are read here.
+  const { user: authUser } = useAuth();
+  const { data: profileRow } = useProfileQuery(authUser?.id ?? null);
   useEffect(() => {
-    let alive = true;
-    void (async () => {
-      try {
-        const { data: { user } } = await supabase.auth.getUser();
-        if (!user || !alive) return;
-        // `english_level` lives on `companion_state`, not `profiles`
-        // (fetched separately via getCompanionProfile). Keeping it in
-        // this select was returning 400 Bad Request from PostgREST
-        // because the column does not exist on `profiles`.
-        const { data } = await supabase
-          .from('profiles')
-          .select('preferred_name, full_name, email')
-          .eq('id', user.id)
-          .single();
-        if (!data || !alive) return;
-        setProfile(prev => ({
-          ...prev,
-          preferred_name: data.preferred_name || data.full_name || data.email?.split('@')[0] || null,
-        } as CompanionProfile));
-      } catch {
-        // ignore
-      }
-    })();
-    return () => { alive = false; };
-  }, []);
+    if (!profileRow) return;
+    const row = profileRow as {
+      preferred_name?: string | null;
+      full_name?: string | null;
+      email?: string | null;
+    };
+    const fallback = row.email?.split('@')[0] ?? null;
+    setProfile(prev => ({
+      ...prev,
+      preferred_name: row.preferred_name || row.full_name || fallback,
+    } as CompanionProfile));
+  }, [profileRow]);
 
   // Load points from Supabase on mount
   useEffect(() => {

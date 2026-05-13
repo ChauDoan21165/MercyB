@@ -14,6 +14,7 @@ import { Link } from "react-router-dom";
 
 import { useAuth } from "@/providers/AuthProvider";
 import { supabase } from "@/lib/supabaseClient";
+import { useProfileQuery } from "@/lib/queries/useProfileQuery";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Download, Share2, Copy } from "lucide-react";
@@ -37,20 +38,20 @@ export default function ShareProgressPage(): React.ReactElement {
   const svgRef = useRef<SVGSVGElement | null>(null);
   const { toast } = useToast();
 
+  const { data: profileRow, isFetched: profileFetched } = useProfileQuery(
+    user?.id ?? null,
+  );
+
   useEffect(() => {
     if (!user) {
       setLoading(false);
       return;
     }
+    if (!profileFetched) return;
     let cancelled = false;
     setLoading(true);
 
     void Promise.all([
-      supabase
-        .from("profiles")
-        .select("username, display_name, streak_current")
-        .eq("id", user.id)
-        .maybeSingle(),
       supabase
         .from("user_xp")
         .select("total_xp")
@@ -61,20 +62,20 @@ export default function ShareProgressPage(): React.ReactElement {
         .select("room_id", { count: "exact", head: true })
         .eq("user_id", user.id)
         .gte("progress_pct", 100),
-    ]).then(([profileRes, xpRes, lessonsRes]) => {
+    ]).then(([xpRes, lessonsRes]) => {
       if (cancelled) return;
-      const profileRow = (profileRes.data ?? null) as {
+      const row = profileRow as {
         username?: string | null;
         display_name?: string | null;
         streak_current?: number | null;
-      } | null;
+      } | null | undefined;
       const xpRow = (xpRes.data ?? null) as {
         total_xp?: number | null;
       } | null;
       setStats({
-        username: profileRow?.username ?? null,
-        display_name: profileRow?.display_name ?? null,
-        streak_current: profileRow?.streak_current ?? 0,
+        username: row?.username ?? null,
+        display_name: row?.display_name ?? null,
+        streak_current: row?.streak_current ?? 0,
         total_xp: xpRow?.total_xp ?? 0,
         lessons_completed: lessonsRes.count ?? 0,
       });
@@ -84,7 +85,7 @@ export default function ShareProgressPage(): React.ReactElement {
     return () => {
       cancelled = true;
     };
-  }, [user]);
+  }, [user, profileFetched, profileRow]);
 
   const headline = useMemo(() => {
     if (!stats) return "";

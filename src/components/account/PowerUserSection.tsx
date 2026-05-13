@@ -7,11 +7,11 @@
 // Self-contained — picks up streak/display name from profiles so the
 // AccountPage host doesn't need to wire any extra props.
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 import { exportToCsv, exportToJson } from "@/lib/export/progressExport";
-import { supabase } from "@/lib/supabaseClient";
+import { useProfileQuery } from "@/lib/queries/useProfileQuery";
 import ShareableStreakCard from "@/components/share/ShareableStreakCard";
 import { useToast } from "@/hooks/use-toast";
 
@@ -51,28 +51,15 @@ export default function PowerUserSection({
 }: PowerUserSectionProps): React.ReactElement {
   const [busy, setBusy] = useState<"csv" | "json" | null>(null);
   const [showStreak, setShowStreak] = useState(false);
-  const [streak, setStreak] = useState<number>(0);
-  const [longestStreak, setLongestStreak] = useState<number>(0);
   const { toast } = useToast();
 
-  useEffect(() => {
-    if (!userId) return;
-    let cancelled = false;
-    void supabase
-      .from("profiles")
-      .select("streak_current, streak_longest")
-      .eq("id", userId)
-      .maybeSingle()
-      .then(({ data }) => {
-        if (cancelled || !data) return;
-        const row = data as { streak_current?: number; streak_longest?: number };
-        setStreak(row.streak_current ?? 0);
-        setLongestStreak(row.streak_longest ?? 0);
-      });
-    return () => {
-      cancelled = true;
-    };
-  }, [userId]);
+  const { data: profile } = useProfileQuery(userId);
+  const streak = Number(
+    (profile as { streak_current?: number } | null | undefined)?.streak_current ?? 0,
+  );
+  const longestStreak = Number(
+    (profile as { streak_longest?: number } | null | undefined)?.streak_longest ?? 0,
+  );
 
   async function handleExport(format: "csv" | "json"): Promise<void> {
     if (!userId) return;
