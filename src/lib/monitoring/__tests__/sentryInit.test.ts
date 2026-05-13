@@ -23,6 +23,7 @@ import {
   scrubBreadcrumb,
   isSentryEnabled,
   looksLikeExternalNoise,
+  runsInsideZaloIab,
   __resetForTest,
 } from "../sentryInit";
 import {
@@ -362,5 +363,86 @@ describe("looksLikeExternalNoise — IAB / extension / SDK CDN drop list", () =>
         ],
       },
     })).toBe(false);
+  });
+});
+
+// ── Zalo in-app browser drop (WEB-3) ───────────────────────────────────────
+// Pins the UA-based filter that drops every event when the page is running
+// inside the Zalo IAB. The check sits at the very top of beforeSend, so a
+// regression here means Zalo bridge-script errors flood Sentry again.
+describe("runsInsideZaloIab — Zalo IAB user-agent drop", () => {
+  // Save the jsdom-provided navigator so we can restore it cleanly. We
+  // can't just delete `globalThis.navigator` and let the next test see
+  // whatever happens — other tests rely on jsdom's defaults.
+  const realNavigator = globalThis.navigator;
+
+  function setUserAgent(ua: string | undefined) {
+    if (ua === undefined) {
+      // Simulate non-browser environment: navigator entirely absent.
+      // (e.g. SSR, edge function, node script that loads sentryInit.)
+      Object.defineProperty(globalThis, "navigator", {
+        value: undefined,
+        configurable: true,
+        writable: true,
+      });
+      return;
+    }
+    Object.defineProperty(globalThis, "navigator", {
+      value: { userAgent: ua },
+      configurable: true,
+      writable: true,
+    });
+  }
+
+  afterEach(() => {
+    Object.defineProperty(globalThis, "navigator", {
+      value: realNavigator,
+      configurable: true,
+      writable: true,
+    });
+  });
+
+  it("returns true for a real Zalo IAB user agent (drops the event)", () => {
+    setUserAgent(
+      "Mozilla/5.0 (Linux; Android 10; SM-G960F) AppleWebKit/537.36 " +
+      "(KHTML, like Gecko) Version/4.0 Chrome/87.0.4280.141 " +
+      "Mobile Safari/537.36 Zalo/22.06.01 ZaloTheme/light ZaloLanguage/vi",
+    );
+    expect(runsInsideZaloIab()).toBe(true);
+  });
+
+  it("returns false for a normal Chrome user agent (event passes through)", () => {
+    setUserAgent(
+      "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 " +
+      "(KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+    );
+    expect(runsInsideZaloIab()).toBe(false);
+  });
+
+  it("returns false for an empty user agent (event passes through)", () => {
+    setUserAgent("");
+    expect(runsInsideZaloIab()).toBe(false);
+  });
+
+  it("returns false when navigator is undefined (SSR / non-browser)", () => {
+    setUserAgent(undefined);
+    expect(runsInsideZaloIab()).toBe(false);
+  });
+
+  it("matches a UA with only the ZaloTheme token (no bare Zalo/version)", () => {
+    // Defensive: covers older / variant Zalo builds that drop the
+    // "Zalo/<ver>" token but keep "ZaloTheme/<value>".
+    setUserAgent(
+      "Mozilla/5.0 (Linux; Android 11; ...) Chrome/100.0 Mobile " +
+      "Safari/537.36 ZaloTheme/dark",
+    );
+    expect(runsInsideZaloIab()).toBe(true);
+  });
+
+  it("does NOT false-positive on substrings like 'GazaLogistics'", () => {
+    // Word-boundary anchor in ZALO_IAB_UA_RE protects against
+    // unrelated tokens that happen to contain "zalo" as a substring.
+    setUserAgent("Mozilla/5.0 (compatible; GazaLogisticsBot/1.0)");
+    expect(runsInsideZaloIab()).toBe(false);
   });
 });

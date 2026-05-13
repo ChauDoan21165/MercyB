@@ -104,6 +104,13 @@ export function initSentry(): void {
         tracesSampleRate: isProd ? 0.1 : 1.0,
         beforeSend(event: unknown) {
           const e = event as SentryEventLike;
+          // 0. Drop EVERY event when the page is running inside the Zalo
+          //    in-app browser. The Zalo IAB injects scripts whose errors
+          //    look like ours but originate in their bridge — not fixable
+          //    from our page, pure noise in Sentry. Drop wholesale rather
+          //    than try to catch every variant in NOISE_PATTERNS.
+          //    Done before PII scrubbing for efficiency.
+          if (runsInsideZaloIab()) return null;
           // 1. Strip PII from message / exception / breadcrumbs / request.
           const scrubbed = scrubEvent(e);
           if (scrubbed === null) return null;
@@ -327,6 +334,33 @@ export function looksLikeExternalNoise(event: SentryEventLike): boolean {
  *  that don't have a structured Sentry event yet. */
 export function stringLooksLikeExternalNoise(s: string): boolean {
   return NOISE_PATTERNS.some((re) => re.test(s));
+}
+
+/**
+ * True when the page is running inside the Zalo in-app browser
+ * (zalo.me / Zalo Android / iOS embed). The Zalo IAB injects scripts
+ * whose runtime errors look like ours but originate in their bridge
+ * code — we can't fix the host environment from inside our page, and
+ * the resulting Sentry events are pure noise. Rather than try to
+ * enumerate every Zalo-injected error in NOISE_PATTERNS, drop ALL
+ * events from sessions running inside the IAB.
+ *
+ * Matches the canonical Zalo UA tokens — "Zalo/<version>" and
+ * "ZaloTheme/<value>" — both of which appear in production Zalo IAB
+ * user-agents, e.g.
+ *   ".../Chrome/87.0... Mobile Safari/537.36
+ *    Zalo/22.06.01 ZaloTheme/light ZaloLanguage/vi"
+ *
+ * Word-boundary anchored so "Zalopay-style" tokens or unrelated
+ * substrings ("zaloft", "GazaLogistics") don't false-positive.
+ */
+const ZALO_IAB_UA_RE = /\bZalo(Theme)?\b/;
+
+export function runsInsideZaloIab(): boolean {
+  if (typeof navigator === "undefined") return false;
+  const ua = navigator.userAgent ?? "";
+  if (!ua) return false;
+  return ZALO_IAB_UA_RE.test(ua);
 }
 
 export type FeatureArea = "auth" | "billing" | "room" | "mercy" | "audio" | "other";
