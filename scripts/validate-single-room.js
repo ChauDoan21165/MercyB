@@ -188,11 +188,11 @@ function validateJsonStructure(data, filename, report) {
     report.addError(`Too few entries: ${entryCount} (minimum 2)`);
     return false;
   }
-  if (entryCount > 8) {
-    report.addError(`Too many entries: ${entryCount} (maximum 8)`);
+  if (entryCount > 20) {
+    report.addError(`Too many entries: ${entryCount} (maximum 20)`);
     return false;
   }
-  report.addInfo(`✓ Entry count: ${entryCount} (within 2-8 range)`);
+  report.addInfo(`✓ Entry count: ${entryCount} (within 2-20 range)`);
 
   // Validate each entry
   let hasEntryErrors = false;
