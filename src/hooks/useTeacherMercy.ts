@@ -13,8 +13,8 @@
  */
 
 import { useState, useEffect, useCallback, useMemo, createElement } from 'react';
-import { supabase } from '@/lib/supabaseClient';
 import { useAuth } from '@/providers/AuthProvider';
+import { useProfileQuery } from '@/lib/queries/useProfileQuery';
 import { useMbTheme } from '@/hooks/useMbTheme';
 import {
   wasGreetingShown,
@@ -73,29 +73,15 @@ export function useTeacherMercy(config: TeacherMercyConfig): TeacherMercyEngine 
   const tierScript = useMemo(() => getTierScript(roomTier), [roomTier]);
 
   const { user } = useAuth();
+  const { data: profile } = useProfileQuery(user?.id ?? null);
 
   // Fetch user profile
   useEffect(() => {
-    if (!user) return;
-    const fetchUserName = async () => {
-      try {
-        const { data: profile } = await supabase
-          .from('profiles')
-          .select('full_name, username')
-          .eq('id', user.id)
-          .single();
-
-        if (profile) {
-          const name = profile.full_name || profile.username || user.email?.split('@')[0];
-          setUserName(name || null);
-        }
-      } catch (error) {
-        console.warn('[useTeacherMercy] Failed to fetch user profile:', error);
-      }
-    };
-
-    void fetchUserName();
-  }, [user]);
+    if (!user || !profile) return;
+    const row = profile as { full_name?: string | null; username?: string | null };
+    const name = row.full_name || row.username || user.email?.split('@')[0];
+    setUserName(name || null);
+  }, [user, profile]);
 
   // Check for return after long inactivity
   const checkInactiveReturn = useCallback((): boolean => {

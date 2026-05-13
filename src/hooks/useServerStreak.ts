@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo } from "react";
 
-import { supabase } from "@/lib/supabaseClient";
 import { useAuth } from "@/providers/AuthProvider";
 import { FEATURE_FLAGS } from "@/lib/featureFlags";
+import { useProfileQuery } from "@/lib/queries/useProfileQuery";
 import { setCachedStreak, type CachedStreak } from "@/lib/streakCache";
 
 export type ServerStreakState = {
@@ -11,14 +11,6 @@ export type ServerStreakState = {
   lastStudiedDate: string | null;
   loading: boolean;
   error: string | null;
-};
-
-const EMPTY: ServerStreakState = {
-  current: 0,
-  longest: 0,
-  lastStudiedDate: null,
-  loading: true,
-  error: null,
 };
 
 const DISABLED: ServerStreakState = {
@@ -43,65 +35,73 @@ const DISABLED: ServerStreakState = {
 export function useServerStreak(): ServerStreakState {
   const { user } = useAuth();
   const userId = user?.id ?? null;
-  const [state, setState] = useState<ServerStreakState>(
-    FEATURE_FLAGS.SERVER_STREAKS_ENABLED ? EMPTY : DISABLED,
-  );
+  const flagOn = FEATURE_FLAGS.SERVER_STREAKS_ENABLED;
 
-  useEffect(() => {
-    if (!FEATURE_FLAGS.SERVER_STREAKS_ENABLED) return;
-    let alive = true;
+  // Pass null when the flag is off so useProfileQuery is disabled and
+  // never hits the network — preserves the original zero-fetch contract.
+  const profileQuery = useProfileQuery(flagOn ? userId : null);
 
-    async function load(uid: string | null) {
-      if (!uid) {
-        if (alive) setState({ ...DISABLED });
-        return;
-      }
-
-      const { data, error } = await supabase
-        .from("profiles")
-        .select("streak_current, streak_longest, streak_last_studied_date")
-        .eq("id", uid)
-        .maybeSingle();
-
-      if (!alive) return;
-      if (error) {
-        setState({
-          current: 0,
-          longest: 0,
-          lastStudiedDate: null,
-          loading: false,
-          error: error.message,
-        });
-        return;
-      }
-
-      const row = (data ?? {}) as {
-        streak_current?: number;
-        streak_longest?: number;
-        streak_last_studied_date?: string | null;
-      };
-      const next: CachedStreak = {
-        current: row.streak_current ?? 0,
-        longest: row.streak_longest ?? 0,
-        lastStudiedDate: row.streak_last_studied_date ?? null,
-        updatedAt: Date.now(),
-      };
-      setCachedStreak(next);
-      setState({
-        current: next.current,
-        longest: next.longest,
-        lastStudiedDate: next.lastStudiedDate,
-        loading: false,
+  const state = useMemo<ServerStreakState>(() => {
+    if (!flagOn) return DISABLED;
+    if (!userId) return DISABLED;
+    if (profileQuery.isLoading) {
+      return {
+        current: 0,
+        longest: 0,
+        lastStudiedDate: null,
+        loading: true,
         error: null,
-      });
+      };
     }
-
-    void load(userId);
-
-    return () => {
-      alive = false;
+    if (profileQuery.error) {
+      return {
+        current: 0,
+        longest: 0,
+        lastStudiedDate: null,
+        loading: false,
+        error: (profileQuery.error as Error).message,
+      };
+    }
+    const row = (profileQuery.data ?? {}) as {
+      streak_current?: number;
+      streak_longest?: number;
+      streak_last_studied_date?: string | null;
     };
-  }, [userId]);
+    return {
+      current: row.streak_current ?? 0,
+      longest: row.streak_longest ?? 0,
+      lastStudiedDate: row.streak_last_studied_date ?? null,
+      loading: false,
+      error: null,
+    };
+  }, [
+    flagOn,
+    userId,
+    profileQuery.isLoading,
+    profileQuery.error,
+    profileQuery.data,
+  ]);
+
+  // Mirror the loaded server values into streakCache so the synchronous
+  // pointsService.getStreakDays() reader can see them.
+  useEffect(() => {
+    if (!flagOn || !userId || state.loading || state.error) return;
+    const next: CachedStreak = {
+      current: state.current,
+      longest: state.longest,
+      lastStudiedDate: state.lastStudiedDate,
+      updatedAt: Date.now(),
+    };
+    setCachedStreak(next);
+  }, [
+    flagOn,
+    userId,
+    state.loading,
+    state.error,
+    state.current,
+    state.longest,
+    state.lastStudiedDate,
+  ]);
 
   return state;
 }

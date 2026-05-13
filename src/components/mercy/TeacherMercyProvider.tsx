@@ -7,8 +7,8 @@
  */
 
 import React, { createContext, useContext, useState, useCallback, useEffect, useMemo, useRef } from 'react';
-import { supabase } from '@/lib/supabaseClient';
 import { useAuth } from '@/providers/AuthProvider';
+import { useProfileQuery } from '@/lib/queries/useProfileQuery';
 import {
   createMercyEngine,
   initialEngineState,
@@ -115,32 +115,17 @@ export function TeacherMercyProvider({
   
   // Fetch user profile when the auth user changes
   const { user } = useAuth();
+  const { data: profile } = useProfileQuery(user?.id ?? null);
   useEffect(() => {
     if (!user) {
       actions.setUserName(null);
       return;
     }
-    let cancelled = false;
-    (async () => {
-      try {
-        const { data: profile } = await supabase
-          .from('profiles')
-          .select('full_name, username')
-          .eq('id', user.id)
-          .single();
-        if (cancelled) return;
-        if (profile) {
-          const name = profile.full_name || profile.username || user.email?.split('@')[0];
-          actions.setUserName(name || null);
-        }
-      } catch (error) {
-        console.warn('[TeacherMercyProvider] Failed to fetch user profile:', error);
-      }
-    })();
-    return () => {
-      cancelled = true;
-    };
-  }, [user, actions]);
+    if (!profile) return;
+    const row = profile as { full_name?: string | null; username?: string | null };
+    const name = row.full_name || row.username || user.email?.split('@')[0];
+    actions.setUserName(name || null);
+  }, [user, actions, profile]);
   
   // Initialize engine
   useEffect(() => {
