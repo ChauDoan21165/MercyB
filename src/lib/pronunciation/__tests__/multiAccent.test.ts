@@ -15,8 +15,10 @@
 // @/lib/mercyVoice, and we inject test factories where the production
 // path uses globals (Audio, speechSynthesis, fetch).
 
+import React from "react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { act, renderHook } from "@testing-library/react";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 import {
   ACCENT_METADATA,
@@ -27,6 +29,17 @@ import {
   normaliseAccent,
   type Accent,
 } from "@/data/pronunciation/multiAccentReferences";
+
+// useAccentPreference now reads the profile through useProfileQuery
+// (the shared react-query hook). Tests that mount it need a
+// QueryClientProvider in scope.
+function makeQueryWrapper() {
+  const client = new QueryClient({
+    defaultOptions: { queries: { retry: false } },
+  });
+  return ({ children }: { children: React.ReactNode }) =>
+    React.createElement(QueryClientProvider, { client }, children);
+}
 
 // ─── Mocks ──────────────────────────────────────────────────────────────
 
@@ -137,7 +150,9 @@ describe("useAccentPreference", () => {
     const { useAccentPreference } = await import(
       "@/lib/pronunciation/useAccentPreference"
     );
-    const { result } = renderHook(() => useAccentPreference(null));
+    const { result } = renderHook(() => useAccentPreference(null), {
+      wrapper: makeQueryWrapper(),
+    });
     expect(result.current.accent).toBe("uk");
   });
 
@@ -145,7 +160,9 @@ describe("useAccentPreference", () => {
     const { useAccentPreference } = await import(
       "@/lib/pronunciation/useAccentPreference"
     );
-    const { result } = renderHook(() => useAccentPreference(null));
+    const { result } = renderHook(() => useAccentPreference(null), {
+      wrapper: makeQueryWrapper(),
+    });
     expect(result.current.accent).toBe("us");
   });
 
@@ -153,7 +170,9 @@ describe("useAccentPreference", () => {
     const { useAccentPreference } = await import(
       "@/lib/pronunciation/useAccentPreference"
     );
-    const { result } = renderHook(() => useAccentPreference(null));
+    const { result } = renderHook(() => useAccentPreference(null), {
+      wrapper: makeQueryWrapper(),
+    });
     act(() => result.current.setAccent("au"));
     expect(result.current.accent).toBe("au");
     expect(window.localStorage.getItem(LOCAL_KEY)).toBe("au");
@@ -163,7 +182,9 @@ describe("useAccentPreference", () => {
     const { useAccentPreference } = await import(
       "@/lib/pronunciation/useAccentPreference"
     );
-    const { result } = renderHook(() => useAccentPreference(null));
+    const { result } = renderHook(() => useAccentPreference(null), {
+      wrapper: makeQueryWrapper(),
+    });
     // Cast bypasses TS for the test — production callers can't pass this,
     // but defensive normalisation should still kick in if they do.
     act(() => result.current.setAccent("klingon" as unknown as Accent));
@@ -190,7 +211,7 @@ describe("useAccentPreference", () => {
     );
     const { result, rerender } = renderHook(
       ({ uid }: { uid: string | null }) => useAccentPreference(uid),
-      { initialProps: { uid: "user-123" } },
+      { initialProps: { uid: "user-123" }, wrapper: makeQueryWrapper() },
     );
 
     // Tick microtasks so the hydration promise resolves.

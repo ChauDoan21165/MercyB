@@ -12,7 +12,7 @@ import { lazyWithRetry } from "@/lib/lazyWithRetry";
 import { useUserAccess } from "@/hooks/useUserAccess";
 import { useAuth } from "@/providers/AuthProvider";
 import { useFeatureFlag } from "@/hooks/useFeatureFlag";
-import { supabase } from "@/lib/supabaseClient";
+import { useProfileQuery } from "@/lib/queries/useProfileQuery";
 import DailyChallengeCard from "@/components/home/DailyChallengeCard";
 import FocusAreasCard from "@/components/home/FocusAreasCard";
 import PracticeRecommendationCard from "@/components/home/PracticeRecommendationCard";
@@ -144,30 +144,23 @@ export default function Home() {
   // skipped the goal-capture flow get redirected to /onboarding on
   // first visit. Legacy users — created earlier — are unaffected:
   // their onboarded_at stays NULL and this date filter lets them
-  // pass through. Single self-fetch; failures never block Home.
+  // pass through. Reads from the shared profile cache; failures never
+  // block Home.
+  const { data: onboardingProfile } = useProfileQuery(
+    access.isAuthenticated && !access.loading ? user?.id ?? null : null,
+  );
   useEffect(() => {
-    if (!access.isAuthenticated || access.loading || !user?.id) return;
-    let cancelled = false;
+    const row = onboardingProfile as
+      | { onboarded_at?: string | null; created_at?: string | null }
+      | null
+      | undefined;
+    if (!row) return;
     const ONBOARDING_COHORT_CUTOFF = "2026-04-27T00:00:00Z";
-    void (async () => {
-      try {
-        const { data, error } = await supabase
-          .from("profiles")
-          .select("onboarded_at, created_at")
-          .eq("id", user.id)
-          .maybeSingle();
-        if (cancelled || error || !data) return;
-        const row = data as { onboarded_at: string | null; created_at: string | null };
-        if (row.onboarded_at) return;
-        if (!row.created_at) return;
-        if (row.created_at < ONBOARDING_COHORT_CUTOFF) return;
-        nav("/onboarding", { replace: true });
-      } catch {
-        // ignore — never block Home on onboarding gate failure
-      }
-    })();
-    return () => { cancelled = true; };
-  }, [access.isAuthenticated, access.loading, nav, user?.id]);
+    if (row.onboarded_at) return;
+    if (!row.created_at) return;
+    if (row.created_at < ONBOARDING_COHORT_CUTOFF) return;
+    nav("/onboarding", { replace: true });
+  }, [onboardingProfile, nav]);
 
   const isDesktopTop      = viewportWidth >= 960;
   const isPhone           = viewportWidth < 640;

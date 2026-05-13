@@ -9,6 +9,7 @@ import { useAdminAccess } from "@/hooks/admin/useAdminAccess";
 import { GiftCodeModal } from "@/components/GiftCodeModal";
 import PowerUserSection from "@/components/account/PowerUserSection";
 import { supabase } from "@/lib/supabaseClient";
+import { useProfileQuery } from "@/lib/queries/useProfileQuery";
 import { StreakHistoryPanel } from "@/components/streak/StreakHistoryPanel";
 import { ReferralCard } from "@/components/referral/ReferralCard";
 import { CertificatesAccountEntry } from "@/components/certificates/CertificatesAccountEntry";
@@ -138,33 +139,20 @@ export default function AccountPage() {
     cefr: string | null;
   } | null>(null);
 
+  const { data: placementProfile } = useProfileQuery(
+    placementFlagEnabled ? user?.id ?? null : null,
+  );
   useEffect(() => {
     if (!placementFlagEnabled || !user?.id) return;
-    let cancelled = false;
-    (async () => {
-      const { data, error } = await supabase
-        .from("profiles")
-        .select("placement_completed_at, placement_cefr")
-        .eq("id", user.id)
-        .maybeSingle();
-      if (cancelled) return;
-      if (error) {
-        console.warn("[AccountPage] placement info fetch:", error.message);
-        return;
-      }
-      setPlacementInfo({
-        completedAt:
-          (data as { placement_completed_at?: string | null } | null)
-            ?.placement_completed_at ?? null,
-        cefr:
-          (data as { placement_cefr?: string | null } | null)
-            ?.placement_cefr ?? null,
-      });
-    })();
-    return () => {
-      cancelled = true;
-    };
-  }, [placementFlagEnabled, user?.id]);
+    const row = placementProfile as
+      | { placement_completed_at?: string | null; placement_cefr?: string | null }
+      | null
+      | undefined;
+    setPlacementInfo({
+      completedAt: row?.placement_completed_at ?? null,
+      cefr: row?.placement_cefr ?? null,
+    });
+  }, [placementFlagEnabled, user?.id, placementProfile]);
 
   const handleSignOut = useCallback(async () => {
     if (signingOutRef.current) return;

@@ -18,6 +18,7 @@
 import { useCallback, useEffect, useState } from "react";
 
 import { supabase } from "@/lib/supabaseClient";
+import { useProfileQuery } from "@/lib/queries/useProfileQuery";
 import {
   DEFAULT_ACCENT,
   normaliseAccent,
@@ -41,22 +42,6 @@ function writeLocalAccent(accent: Accent): void {
     window.localStorage.setItem(LOCAL_STORAGE_KEY, accent);
   } catch {
     /* private mode / quota — silently no-op */
-  }
-}
-
-async function readSupabaseAccent(userId: string): Promise<Accent | null> {
-  try {
-    const { data, error } = await supabase
-      .from("profiles")
-      .select("preferred_accent")
-      .eq("id", userId)
-      .maybeSingle();
-    if (error || !data) return null;
-    const raw = (data as { preferred_accent?: string | null }).preferred_accent;
-    if (!raw) return null;
-    return normaliseAccent(raw);
-  } catch {
-    return null;
   }
 }
 
@@ -90,28 +75,28 @@ export function useAccentPreference(userId?: string | null): UseAccentPreference
   const [accent, setAccentState] = useState<Accent>(() => readLocalAccent());
   const [ready, setReady] = useState(false);
 
+  const { data: profileRow, isFetched } = useProfileQuery(userId ?? null);
+
   useEffect(() => {
-    let cancelled = false;
     if (!userId) {
       setReady(true);
       return;
     }
-    void readSupabaseAccent(userId).then((remote) => {
-      if (cancelled) return;
-      if (remote && remote !== accent) {
-        writeLocalAccent(remote);
-        setAccentState(remote);
-      }
-      setReady(true);
-    });
-    return () => {
-      cancelled = true;
-    };
-    // We intentionally only re-run this effect when userId changes —
-    // not on every accent change, to avoid clobbering an in-flight
-    // local update with a stale remote read.
+    if (!isFetched) return;
+    const raw =
+      (profileRow as { preferred_accent?: string | null } | null | undefined)
+        ?.preferred_accent ?? null;
+    const remote = raw ? normaliseAccent(raw) : null;
+    if (remote && remote !== accent) {
+      writeLocalAccent(remote);
+      setAccentState(remote);
+    }
+    setReady(true);
+    // Only react to userId / fetch completion. Re-running on every accent
+    // change would clobber an in-flight local update with a stale remote
+    // value.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [userId]);
+  }, [userId, isFetched, profileRow]);
 
   const setAccent = useCallback(
     (next: Accent) => {
