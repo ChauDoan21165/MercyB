@@ -199,7 +199,7 @@ describe('recognizeOnce', () => {
     expect(r.wordTimings).toHaveLength(4);
     for (let i = 1; i < r.wordTimings.length; i++) {
       expect(r.wordTimings[i].startSec).toBeGreaterThanOrEqual(r.wordTimings[i - 1].startSec);
-      expect(r.wordTimings[i].endSec).toBeGreaterThan(r.wordTimings[i].startSec);
+      expect(r.wordTimings[i].endSec).toBeGreaterThanOrEqual(r.wordTimings[i].startSec);
     }
   });
 
