@@ -1,10 +1,10 @@
 // PATH: src/lib/useEntitlements.ts
 // File: useEntitlements.ts
 
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useMemo } from "react";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import {
   FAIL_CLOSED_ENTITLEMENT,
-  fetchCurrentEntitlement,
   resolveEntitlementTier,
   type BackendEntitlement,
 } from "@/lib/authService";
@@ -13,6 +13,8 @@ import {
   type ActiveGiftSubscription,
 } from "@/lib/gift/fetchActiveGiftSubscription";
 import { supabase } from "@/lib/supabaseClient";
+import { qk } from "@/lib/queries/keys";
+import { useEntitlementQuery } from "@/lib/queries/useEntitlementQuery";
 import { useAuth } from "@/providers/AuthProvider";
 
 type Ent = BackendEntitlement & {
@@ -142,80 +144,58 @@ function buildEntitlement(entitlement: BackendEntitlement): Ent {
 
 export function useEntitlements() {
   const { user, isLoading: authLoading } = useAuth();
+  const queryClient = useQueryClient();
+  const userId = user?.id ?? null;
 
-  const [data, setData] = useState<Ent | null>(null);
-  const [loading, setLoading] = useState(true);
+  // Both fetches run via react-query so all 28 callers across the page
+  // share one me-entitlement and one giftSubscription request. Keys
+  // include userId so anonymous users / sign-out flips invalidate the
+  // cache automatically.
+  const entitlementQuery = useEntitlementQuery(userId);
 
-  const requestIdRef = useRef(0);
+  const giftQuery = useQuery<ActiveGiftSubscription | null>({
+    queryKey: qk.giftSubscription(userId ?? ""),
+    enabled: Boolean(userId),
+    queryFn: () => fetchActiveGiftSubscription(supabase, userId ?? ""),
+  });
 
-  // Stable refs for user and authLoading so refreshEntitlements
-  // does not get recreated on every auth state change
-  const userRef = useRef(user);
-  const authLoadingRef = useRef(authLoading);
-  userRef.current = user;
-  authLoadingRef.current = authLoading;
+  const data = useMemo<Ent | null>(() => {
+    if (!userId) return null;
+    if (entitlementQuery.isLoading || giftQuery.isLoading) return null;
+
+    const backendEnt = entitlementQuery.data ?? FAIL_CLOSED_ENTITLEMENT;
+    const giftSub = giftQuery.data ?? null;
+
+    // Use !backendEnt.is_premium (truthy check) instead of strict
+    // === false — me-entitlement can return is_premium as undefined
+    // or null on partial responses (FAIL_CLOSED_ENTITLEMENT paths,
+    // shape drift). Strict equality would skip the overlay for those
+    // cases even though the user clearly isn't premium.
+    const finalEnt =
+      !backendEnt.is_premium && giftSub
+        ? applyGiftSubscriptionOverlay(backendEnt, giftSub)
+        : backendEnt;
+
+    return buildEntitlement(finalEnt);
+  }, [
+    userId,
+    entitlementQuery.data,
+    entitlementQuery.isLoading,
+    giftQuery.data,
+    giftQuery.isLoading,
+  ]);
+
+  const loading =
+    authLoading ||
+    (Boolean(userId) && (entitlementQuery.isLoading || giftQuery.isLoading));
 
   const refreshEntitlements = useCallback(async () => {
-    const requestId = ++requestIdRef.current;
-
-    if (authLoadingRef.current) {
-      setLoading(true);
-      return;
-    }
-
-    if (!userRef.current) {
-      setData(null);
-      setLoading(false);
-      return;
-    }
-
-    setLoading(true);
-
-    try {
-      // Pass supabase explicitly — consistent with authService contract.
-      // Fetch the legacy entitlement (Stripe path) and the gift-code
-      // subscription state in parallel so the page never pays for two
-      // sequential round trips. If me-entitlement reports non-premium
-      // but the user has an active gift redemption in user_subscriptions,
-      // we overlay the gift-side state onto the entitlement.
-      const [backendEntRaw, giftSub] = await Promise.all([
-        fetchCurrentEntitlement(supabase),
-        fetchActiveGiftSubscription(supabase, userRef.current?.id ?? ""),
-      ]);
-
-      if (requestIdRef.current !== requestId) return;
-
-      const backendEnt = backendEntRaw ?? FAIL_CLOSED_ENTITLEMENT;
-      // Use !backendEnt.is_premium (truthy check) instead of strict
-      // === false — me-entitlement can return is_premium as undefined
-      // or null on partial responses (FAIL_CLOSED_ENTITLEMENT paths,
-      // shape drift). Strict equality would skip the overlay for those
-      // cases even though the user clearly isn't premium.
-      const finalEnt =
-        !backendEnt.is_premium && giftSub
-          ? applyGiftSubscriptionOverlay(backendEnt, giftSub)
-          : backendEnt;
-
-      setData(buildEntitlement(finalEnt));
-    } catch {
-      if (requestIdRef.current !== requestId) return;
-
-      setData(buildEntitlement(FAIL_CLOSED_ENTITLEMENT));
-    } finally {
-      if (requestIdRef.current === requestId) {
-        setLoading(false);
-      }
-    }
-  }, []); // stable — reads user/authLoading via refs
-
-  // Re-fetch when user identity or auth loading state changes.
-  // Key on user?.id (primitive) — using `user` re-fires on every Supabase
-  // auth event (TOKEN_REFRESHED, USER_UPDATED) because the session/user
-  // reference changes even when the logical identity is unchanged,
-  // causing pending me-entitlement calls to stack up across consumers.
-  useEffect(() => {
-    void refreshEntitlements();
-  }, [user?.id, authLoading, refreshEntitlements]);
+    if (!userId) return;
+    await Promise.all([
+      queryClient.invalidateQueries({ queryKey: qk.entitlement(userId) }),
+      queryClient.invalidateQueries({ queryKey: qk.giftSubscription(userId) }),
+    ]);
+  }, [queryClient, userId]);
 
   const features = useMemo(
     () => (data?.features ?? {}) as Record<string, unknown>,
