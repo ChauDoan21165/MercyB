@@ -23,6 +23,7 @@ import {
   scrubBreadcrumb,
   isSentryEnabled,
   looksLikeExternalNoise,
+  looksLikeDomMutationExtensionNoise,
   runsInsideZaloIab,
   __resetForTest,
 } from "../sentryInit";
@@ -363,6 +364,135 @@ describe("looksLikeExternalNoise — IAB / extension / SDK CDN drop list", () =>
         ],
       },
     })).toBe(false);
+  });
+});
+
+// ── DOM-mutation extension noise (Translate / Grammarly / etc.) ────────────
+// AND-gate: top frame inside our react-*.js bundle AND message is the
+// removeChild / NotFoundError family. Anything that's only one half of the
+// pair must pass through (could be a real React bug, or unrelated extension
+// noise we already cover elsewhere).
+describe("looksLikeDomMutationExtensionNoise — extension DOM-mutation drop", () => {
+  // Build a Sentry event with the given top-frame filename + exception value.
+  // Stack frames are ordered oldest→newest; the top frame is the LAST entry.
+  function eventWith(topFrameFilename: string, exceptionValue: string) {
+    return {
+      exception: {
+        values: [
+          {
+            value: exceptionValue,
+            stacktrace: {
+              frames: [
+                { filename: "https://mercyblade.com/assets/index-AbCdEf.js" },
+                { filename: topFrameFilename },
+              ],
+            },
+          },
+        ],
+      },
+    };
+  }
+
+  it("drops removeChild error when top frame is in react-*.js", () => {
+    expect(
+      looksLikeDomMutationExtensionNoise(
+        eventWith(
+          "https://mercyblade.com/assets/react-k4FrTbjO.js",
+          "NotFoundError: Failed to execute 'removeChild' on 'Node'",
+        ),
+      ),
+    ).toBe(true);
+  });
+
+  it("drops 'The object can not be found here' when top frame is in react-*.js", () => {
+    expect(
+      looksLikeDomMutationExtensionNoise(
+        eventWith(
+          "https://mercyblade.com/assets/react-k4FrTbjO.js",
+          "NotFoundError: The object can not be found here.",
+        ),
+      ),
+    ).toBe(true);
+  });
+
+  it("drops bare NotFoundError when top frame is in react-*.js", () => {
+    expect(
+      looksLikeDomMutationExtensionNoise(
+        eventWith(
+          "https://mercyblade.com/assets/react-7XyZ.js",
+          "NotFoundError",
+        ),
+      ),
+    ).toBe(true);
+  });
+
+  it("does NOT drop the same message when the top frame is NOT in react-*.js", () => {
+    // Same message, but the top frame is in our own app code — this could
+    // be a real bug we want to see.
+    expect(
+      looksLikeDomMutationExtensionNoise(
+        eventWith(
+          "https://mercyblade.com/assets/RoomRenderer-AbCd.js",
+          "NotFoundError: Failed to execute 'removeChild' on 'Node'",
+        ),
+      ),
+    ).toBe(false);
+  });
+
+  it("does NOT drop a react-*.js frame whose message is unrelated", () => {
+    // Top frame is in react-*.js but the error isn't a DOM-mutation tell —
+    // this is a normal React error that should reach Sentry.
+    expect(
+      looksLikeDomMutationExtensionNoise(
+        eventWith(
+          "https://mercyblade.com/assets/react-k4FrTbjO.js",
+          "TypeError: Cannot read property 'foo' of undefined",
+        ),
+      ),
+    ).toBe(false);
+  });
+
+  it("does NOT drop when react-*.js appears in a non-top frame only", () => {
+    // react-*.js shows up earlier in the stack (called by something else
+    // on top). The brief is specific: only the TOP frame counts.
+    const event = {
+      exception: {
+        values: [
+          {
+            value: "NotFoundError: Failed to execute 'removeChild' on 'Node'",
+            stacktrace: {
+              frames: [
+                { filename: "https://mercyblade.com/assets/react-k4FrTbjO.js" },
+                { filename: "https://example-extension.com/inject.js" },
+              ],
+            },
+          },
+        ],
+      },
+    };
+    expect(looksLikeDomMutationExtensionNoise(event)).toBe(false);
+  });
+
+  it("returns false on events with no exception", () => {
+    expect(looksLikeDomMutationExtensionNoise({})).toBe(false);
+    expect(
+      looksLikeDomMutationExtensionNoise({ message: "something" }),
+    ).toBe(false);
+  });
+
+  it("returns false on events with empty frames", () => {
+    expect(
+      looksLikeDomMutationExtensionNoise({
+        exception: {
+          values: [
+            {
+              value: "NotFoundError",
+              stacktrace: { frames: [] },
+            },
+          ],
+        },
+      }),
+    ).toBe(false);
   });
 });
 
