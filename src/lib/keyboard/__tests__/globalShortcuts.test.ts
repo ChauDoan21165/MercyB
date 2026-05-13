@@ -94,6 +94,26 @@ describe("matchesStep", () => {
     // Without shift the matcher would see lowercase g; with shift it's still g
     // but the modifier mismatch keeps it from firing — that's the correct guard.
   });
+
+  it("does not throw when event.key is undefined (Chrome Mobile iOS 148+)", () => {
+    // Sentry WEB-9 + WEB-X: Chrome Mobile iOS 148 / iOS 26.4.2 dispatches
+    // synthetic keydown events with `event.key === undefined`. The previous
+    // implementation called `.length` / `.toLowerCase()` on the undefined
+    // value and threw, blowing up the global-shortcuts handler. eventKey
+    // should now return "" and matchesStep should reject the event without
+    // crashing.
+    //
+    // Building a real KeyboardEvent with key=undefined is awkward (the
+    // constructor coerces to ""), so we cast and fabricate the field
+    // directly to mirror the actual production payload.
+    const rawEvent: Partial<KeyboardEvent> = { ctrlKey: false, metaKey: false, shiftKey: false, altKey: false };
+    Object.defineProperty(rawEvent, "key", { value: undefined, enumerable: true });
+    const event = rawEvent as KeyboardEvent;
+
+    const step = parseShortcutStep("n");
+    expect(() => matchesStep(event, step)).not.toThrow();
+    expect(matchesStep(event, step)).toBe(false);
+  });
 });
 
 describe("shouldIgnoreEvent (focus guard)", () => {
