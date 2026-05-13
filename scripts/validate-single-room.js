@@ -219,10 +219,9 @@ function validateJsonStructure(data, filename, report) {
       hasEntryErrors = true;
     }
 
-    // Check title
-    const hasBilingualTitle = (entry.title?.en && entry.title?.vi) || entry.title;
-    if (!hasBilingualTitle) {
-      report.addError(`Entry ${entryNum}: Missing title`);
+    // Check slug (production identifier)
+    if (!entry.slug || typeof entry.slug !== "string") {
+      report.addError(`Entry ${entryNum}: Missing slug`);
       hasEntryErrors = true;
     }
   });
