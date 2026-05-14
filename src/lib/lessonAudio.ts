@@ -8,12 +8,12 @@
 // Path scheme:
 //   ${level.toLowerCase()}/${lang}/${slug}/${unit}_${i+1}[_${speaker}].mp3
 //
-// `lang` is the ISO short code (fr/de/ja/ko/zh/vi).
+// `lang` is the ISO short code (fr/de/ja/ko/zh/vi/es).
 // `slug`:
 //   - numeric lesson ids (Asian languages, Vietnamese) → `l${id}`
-//   - string lesson ids   (French / German)            → `l<id-with-prefix-stripped>`
+//   - string lesson ids   (French / German / Spanish)  → `l<id-with-prefix-stripped>`
 
-export type LessonAudioLang = "fr" | "de" | "ja" | "ko" | "zh" | "vi";
+export type LessonAudioLang = "fr" | "de" | "ja" | "ko" | "zh" | "vi" | "es";
 
 export type LessonAudioLevel = "A1" | "A1+" | "A2" | "B1" | "B2" | "C1" | "C2";
 
@@ -24,6 +24,7 @@ const LANG_LONG_NAME: Record<LessonAudioLang, string> = {
   ko: "korean",
   zh: "chinese",
   vi: "vietnamese",
+  es: "spanish",
 };
 
 export function lessonStorageSlug(

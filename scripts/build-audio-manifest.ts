@@ -84,6 +84,7 @@ const LANG_CODES = {
   japanese: "ja",
   korean: "ko",
   chinese: "zh",
+  spanish: "es",
 } as const;
 
 type LangKey = keyof typeof LANG_CODES;
@@ -370,6 +371,159 @@ export function extractFrenchOrGerman(
   return out;
 }
 
+// ─── Spanish extractor ───────────────────────────────────────────────────
+//
+// Spanish lessons use a different field name convention than French/German
+// (sentences[].spanish vs sentences[].en, dialogue[].spanish vs .text,
+// idiom_glosses[].example as in French). Dialogue speaker labels are Spanish
+// role names ("Camarero", "Tú", "Mesera") — alternate A/B by index when
+// the label isn't an explicit "A" / "B".
+export function extractSpanish(
+  lesson: Lesson,
+  lessonIndex: number,
+  level: Level,
+): ManifestEntry[] {
+  const lang: LangKey = "spanish";
+  const out: ManifestEntry[] = [];
+  const lessonId = lesson.id as string;
+  const slug = lessonStorageSlug(lang, lessonId, level);
+  const langCode = LANG_CODES[lang];
+  const levelPrefix = level.toLowerCase();
+  const dialogueVoices = pickTwoVoices(`${langCode}/${slug}`);
+
+  const sentences = (lesson.sentences as Array<{ spanish?: string }>) ?? [];
+  sentences.forEach((s, i) => {
+    const text = asText(s.spanish);
+    const key = `${levelPrefix}/${langCode}/${slug}/sentence_${i + 1}.mp3`;
+    pushEntry(
+      out,
+      {
+        storage_key: key,
+        text,
+        voice_id: pickVoice(key),
+        language: langCode,
+        level,
+        lesson_id: lessonId,
+        lesson_index: lessonIndex,
+        unit_kind: "sentence",
+        unit_index: i + 1,
+        char_count: text.length,
+      },
+      langCode,
+      level,
+    );
+  });
+
+  const pickSpanishSpeakerLetter = (
+    speaker: string | undefined,
+    i: number,
+  ): "A" | "B" => {
+    const raw = (speaker ?? "").trim().toUpperCase();
+    if (raw === "A") return "A";
+    if (raw === "B") return "B";
+    // Role names (Camarero / Tú / Mesera / etc.) — alternate by index.
+    return i % 2 === 0 ? "A" : "B";
+  };
+
+  const dialogue = (lesson.dialogue as Array<{ spanish?: string; speaker?: string }>) ?? [];
+  dialogue.forEach((d, i) => {
+    const text = asText(d.spanish);
+    const speakerLetter = pickSpanishSpeakerLetter(d.speaker, i);
+    const key = `${levelPrefix}/${langCode}/${slug}/dialogue_short_${i + 1}_${speakerLetter}.mp3`;
+    pushEntry(
+      out,
+      {
+        storage_key: key,
+        text,
+        voice_id: speakerLetter === "A" ? dialogueVoices[0] : dialogueVoices[1],
+        language: langCode,
+        level,
+        lesson_id: lessonId,
+        lesson_index: lessonIndex,
+        unit_kind: "dialogue_short",
+        unit_index: i + 1,
+        speaker: speakerLetter,
+        char_count: text.length,
+      },
+      langCode,
+      level,
+    );
+  });
+
+  const dialogueLong = (lesson.dialogue_long as Array<{ spanish?: string; speaker?: string }>) ?? [];
+  dialogueLong.forEach((d, i) => {
+    const text = asText(d.spanish);
+    const speakerLetter = pickSpanishSpeakerLetter(d.speaker, i);
+    const key = `${levelPrefix}/${langCode}/${slug}/dialogue_long_${i + 1}_${speakerLetter}.mp3`;
+    pushEntry(
+      out,
+      {
+        storage_key: key,
+        text,
+        voice_id: speakerLetter === "A" ? dialogueVoices[0] : dialogueVoices[1],
+        language: langCode,
+        level,
+        lesson_id: lessonId,
+        lesson_index: lessonIndex,
+        unit_kind: "dialogue_long",
+        unit_index: i + 1,
+        speaker: speakerLetter,
+        char_count: text.length,
+      },
+      langCode,
+      level,
+    );
+  });
+
+  const vocab = (lesson.vocabulary as Array<{ word?: string }>) ?? [];
+  vocab.forEach((v, i) => {
+    const text = asText(v.word);
+    const key = `${levelPrefix}/${langCode}/${slug}/vocab_${i + 1}.mp3`;
+    pushEntry(
+      out,
+      {
+        storage_key: key,
+        text,
+        voice_id: pickVoice(key),
+        language: langCode,
+        level,
+        lesson_id: lessonId,
+        lesson_index: lessonIndex,
+        unit_kind: "vocab",
+        unit_index: i + 1,
+        char_count: text.length,
+      },
+      langCode,
+      level,
+    );
+  });
+
+  const idioms = (lesson.idiom_glosses as Array<{ example?: string }>) ?? [];
+  idioms.forEach((idiom, i) => {
+    const text = asText(idiom.example);
+    const key = `${levelPrefix}/${langCode}/${slug}/idiom_${i + 1}.mp3`;
+    pushEntry(
+      out,
+      {
+        storage_key: key,
+        text,
+        voice_id: pickVoice(key),
+        language: langCode,
+        level,
+        lesson_id: lessonId,
+        lesson_index: lessonIndex,
+        unit_kind: "idiom",
+        unit_index: i + 1,
+        char_count: text.length,
+      },
+      langCode,
+      level,
+    );
+  });
+
+  return out;
+}
+
 export function extractAsianLang(
   lang: LangKey,
   lesson: Lesson,
@@ -583,6 +737,8 @@ async function main(): Promise<void> {
             vocab: "chinese",
             vocabKey: "vocab",
           });
+        } else if (lang === "spanish") {
+          entries = extractSpanish(lesson, idx, level);
         }
         allEntries.push(...entries);
         clips += entries.length;

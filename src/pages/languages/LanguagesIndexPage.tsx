@@ -23,7 +23,7 @@ type Card = {
   flag: string;
   blurb_vi: string;
   href: string;
-  accent: "blue" | "red" | "crimson" | "amber" | "violet" | "green";
+  accent: "blue" | "red" | "crimson" | "amber" | "violet" | "green" | "rose";
 };
 
 const CARDS: Card[] = [
@@ -87,6 +87,16 @@ const CARDS: Card[] = [
     href: "/languages/vietnamese",
     accent: "green",
   },
+  {
+    slug: "spanish",
+    title_vi: "Spanish for English Speakers",
+    title_en: "Español — A1 to C2",
+    flag: "🇪🇸",
+    blurb_vi:
+      "110 lessons built for English speakers. Ser vs estar, por vs para, subjunctive — explained the way you actually need to hear them. Peninsular and Latin American variants throughout.",
+    href: "/languages/spanish",
+    accent: "rose",
+  },
 ];
 
 const ACCENT_CLASSES: Record<string, { border: string; bg: string; icon: string }> = {
@@ -119,6 +129,11 @@ const ACCENT_CLASSES: Record<string, { border: string; bg: string; icon: string 
     border: "border-green-200",
     bg: "bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50",
     icon: "text-green-700",
+  },
+  rose: {
+    border: "border-rose-200",
+    bg: "bg-gradient-to-br from-rose-50 via-red-50 to-amber-50",
+    icon: "text-rose-600",
   },
 };
 
