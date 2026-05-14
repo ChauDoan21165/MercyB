@@ -100,7 +100,7 @@ Not a vanilla create-react-app boot. Includes:
 - Legacy path normalization (`/upgrade` → `/pricing`)
 - Session-storage deep-link restore for auth redirects
 - `window.__mbResolveAudioSrc` seam (older code path; modern path is `useAudioUrl`)
-- **PWA service worker registration is intentionally disabled** (`registerPwaServiceWorker` IIFE is a no-op). Workbox still builds `dist/sw.js`. Re-enable only when shipping PWA offline for real.
+- **PWA service worker IS registered in production.** `registerPwaServiceWorker` IIFE in `src/main.tsx` calls `navigator.serviceWorker.register("/sw.js")` on `window load`. Disabled only in dev (so HMR + the grammar-server proxy aren't intercepted). The SW config uses `skipWaiting:false / clientsClaim:false` so new deploys land as a waiting SW and don't break mid-session tabs. When a user is stuck on a stale precached `index.html` after a deploy, `scheduleOneTimeChunkReload` in main.tsx calls `unregisterAllServiceWorkers()` from `@/lib/swRecovery` before the recovery reload so the reload hits origin and picks up the fresh shell. See `reports/a9-route-recovery-diagnosis.md` for the failure trace.
 
 ### Supabase
 
