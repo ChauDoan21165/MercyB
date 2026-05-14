@@ -19,6 +19,11 @@ export const lessons: GermanLesson[] = [
           "Büro → BUY-rô — 'ü' tròn môi",
           "Stadt → SHTÁT",
           "ch → khờ nhẹ"
+        ],
+        "pronunciation_focus_en": [
+          "Büro → BUE-roh — round your lips for 'oo' but say 'ee' (the 'ü' sound)",
+          "Stadt → SHTAHT — 'st' at the start of a word is 'sht'",
+          "soft ch (ich-Laut) — like a whispered 'h' in 'huge'"
         ]
       },
       {
@@ -28,6 +33,11 @@ export const lessons: GermanLesson[] = [
           "Schreibtisch → SHRAI-bờ-tish",
           "ei → ai",
           "Fenster → PHEN-stờ"
+        ],
+        "pronunciation_focus_en": [
+          "Schreibtisch → SHRYBE-tish — 'sch' = 'sh', 'ei' = 'eye'",
+          "ei → 'eye' sound (rhymes with 'high')",
+          "Fenster → FEN-stah — 'F' is breathy, 'er' ending = 'ah'"
         ]
       },
       {
@@ -37,6 +47,11 @@ export const lessons: GermanLesson[] = [
           "beginne → bờ-GHIN-nờ",
           "neun → nóin",
           "siebzehn → ZÍP-tsên"
+        ],
+        "pronunciation_focus_en": [
+          "beginne → buh-GHIN-uh — short 'i', hard 'g'",
+          "neun → NOYN — 'eu' = 'oy' as in 'boy'",
+          "siebzehn → ZEEP-tsayn — 's' before vowel = 'z', 'z' = 'ts'"
         ]
       },
       {
@@ -46,6 +61,11 @@ export const lessons: GermanLesson[] = [
           "jeden → IÊ-đần",
           "Montag → MÔN-tác",
           "Besprechung → bờ-SHPRÊ-khung"
+        ],
+        "pronunciation_focus_en": [
+          "jeden → YAY-den — 'j' = English 'y'",
+          "Montag → MOHN-tahk — final 'g' devoices to 'k'",
+          "Besprechung → buh-SHPRESH-oong — 'sp' inside word = 'shp'"
         ]
       },
       {
@@ -55,81 +75,98 @@ export const lessons: GermanLesson[] = [
           "Kollege → cô-LÊ-gờ",
           "hilft → HIN-phờ",
           "Computer → côm-PIU-tờ"
+        ],
+        "pronunciation_focus_en": [
+          "Kollege → koh-LAY-guh — hard 'g', stress on middle",
+          "hilft → HILFT — final cluster, no schwa",
+          "Computer → kom-PYOO-tah — borrowed word, German stress"
         ]
       }
     ],
     "cultural_notes_vi": "Văn phòng Đức coi trọng đúng giờ tuyệt đối. Đến trễ 5 phút đã bị coi là thiếu chuyên nghiệp. Người Đức gõ cửa trước khi vào phòng đồng nghiệp, kể cả khi cửa mở. Xưng hô: dùng 'Sie' (ngài/bà) với đồng nghiệp mới và sếp cho đến khi được mời chuyển sang 'du'.",
+    "cultural_notes_en": "German offices treat punctuality as non-negotiable. Five minutes late is already unprofessional. Germans knock before entering a colleague's office even if the door is open. Address: use 'Sie' (formal you) with new colleagues and your boss until they invite you to switch to 'du' — this invitation is a real moment, not a formality.",
     "tip_advice_vi": "Học giống danh từ cùng với từ vựng — der/die/das luôn đi kèm. 'der Chef' (sếp nam) vs 'die Chefin' (sếp nữ) — tiếng Đức phân giới tính nghề nghiệp rõ ràng. Khi không chắc giới tính, dùng dạng nam như mặc định.",
+    "tip_advice_en": "Learn each noun WITH its article — der/die/das is part of the word, not extra information. 'der Chef' (male boss) vs 'die Chefin' (female boss) — German marks gender on most job titles. When you don't know the person's gender, default to the masculine form.",
     "vocabulary": [
       {
         "word": "das Büro",
         "en": "office",
         "vi": "văn phòng",
         "pos": "noun (n)",
-        "pronunciation_vi": "đát BUY-rô — 'ü' tròn môi"
+        "pronunciation_vi": "đát BUY-rô — 'ü' tròn môi",
+        "pronunciation_en": "dahs BUE-roh — round your lips for 'oo' but say 'ee'"
       },
       {
         "word": "der Schreibtisch",
         "en": "desk",
         "vi": "bàn làm việc",
         "pos": "noun (m)",
-        "pronunciation_vi": "đe-a SHRAI-bờ-tish"
+        "pronunciation_vi": "đe-a SHRAI-bờ-tish",
+        "pronunciation_en": "dayr SHRYBE-tish — 'sch' = 'sh', 'ei' = 'eye'"
       },
       {
         "word": "der Computer",
         "en": "computer",
         "vi": "máy tính",
         "pos": "noun (m)",
-        "pronunciation_vi": "đe-a côm-PIU-tờ"
+        "pronunciation_vi": "đe-a côm-PIU-tờ",
+        "pronunciation_en": "dayr kom-PYOO-tah — borrowed from English but German stress"
       },
       {
         "word": "der Kollege",
         "en": "colleague (m)",
         "vi": "đồng nghiệp nam",
         "pos": "noun (m)",
-        "pronunciation_vi": "đe-a cô-LÊ-gờ"
+        "pronunciation_vi": "đe-a cô-LÊ-gờ",
+        "pronunciation_en": "dayr koh-LAY-guh — male colleague"
       },
       {
         "word": "die Kollegin",
         "en": "colleague (f)",
         "vi": "đồng nghiệp nữ",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi cô-LÊ-ghin"
+        "pronunciation_vi": "đi cô-LÊ-ghin",
+        "pronunciation_en": "dee koh-LAY-gin — '-in' suffix marks female"
       },
       {
         "word": "die Besprechung",
         "en": "meeting",
         "vi": "cuộc họp",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi bờ-SHPRÊ-khung"
+        "pronunciation_vi": "đi bờ-SHPRÊ-khung",
+        "pronunciation_en": "dee buh-SHPRESH-oong — 'sp' inside word = 'shp'"
       },
       {
         "word": "der Chef",
         "en": "boss (m)",
         "vi": "sếp nam",
         "pos": "noun (m)",
-        "pronunciation_vi": "đe-a SHEPH"
+        "pronunciation_vi": "đe-a SHEPH",
+        "pronunciation_en": "dayr SHEF — short, like the English chef"
       },
       {
         "word": "die Chefin",
         "en": "boss (f)",
         "vi": "sếp nữ",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi SHE-phin"
+        "pronunciation_vi": "đi SHE-phin",
+        "pronunciation_en": "dee SHEF-in — '-in' suffix marks female"
       },
       {
         "word": "arbeiten",
         "en": "to work",
         "vi": "làm việc",
         "pos": "verb",
-        "pronunciation_vi": "A-bai-tần"
+        "pronunciation_vi": "A-bai-tần",
+        "pronunciation_en": "AR-bye-ten — German 'r' is uvular, 'ei' = 'eye'"
       },
       {
         "word": "anfangen",
         "en": "to start",
         "vi": "bắt đầu",
         "pos": "verb (separable)",
-        "pronunciation_vi": "AN-phan-gần"
+        "pronunciation_vi": "AN-phan-gần",
+        "pronunciation_en": "AHN-fan-gen — separable verb (an + fangen)"
       }
     ],
     "dialogue": [
@@ -158,6 +195,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "fill_blank",
         "instruction_vi": "Điền từ về văn phòng:",
+        "instruction_en": "Fill in the office vocabulary:",
         "pronunciation_focus": [
           "chú ý giống danh từ"
         ],
@@ -179,6 +217,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "matching",
         "instruction_vi": "Nối từ tiếng Đức với nghĩa tiếng Việt:",
+        "instruction_en": "Match the German word with its English meaning:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -202,6 +241,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "translation",
         "instruction_vi": "Dịch sang tiếng Đức:",
+        "instruction_en": "Translate into German:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -234,6 +274,11 @@ export const lessons: GermanLesson[] = [
           "schreibe → SHRAI-bờ",
           "Ihnen → I-nần — 'Sie' lịch sự",
           "Termins → TE-mins"
+        ],
+        "pronunciation_focus_en": [
+          "schreibe → SHRYBE-uh — 'sch' = 'sh', 'ei' = 'eye'",
+          "Ihnen → EE-nen — capitalised, marks formal 'you'",
+          "Termins → tair-MEENS — stress on second syllable"
         ]
       },
       {
@@ -243,6 +288,11 @@ export const lessons: GermanLesson[] = [
           "freundlichen → PHROIN-lị-khần",
           "Grüßen → GRUY-sần — 'ß' = ss",
           "ü → uy tròn"
+        ],
+        "pronunciation_focus_en": [
+          "freundlichen → FROYND-lish-en — 'eu' = 'oy', soft ch",
+          "Grüßen → GRUE-sen — 'ß' = 'ss', 'ü' rounded 'ee'",
+          "ü → round your lips for 'oo' but say 'ee'"
         ]
       },
       {
@@ -252,6 +302,11 @@ export const lessons: GermanLesson[] = [
           "Können → KƠN-nần — 'ö' tròn",
           "zurückrufen → tsu-RUYC-ru-phần",
           "ü → uy"
+        ],
+        "pronunciation_focus_en": [
+          "Können → KUR-nen — 'ö' is rounded 'eh' (lips for 'oh', say 'eh')",
+          "zurückrufen → tsoo-REWK-roo-fen — 'ü' rounded, 'z' = 'ts'",
+          "ü → rounded 'ee'"
         ]
       },
       {
@@ -261,6 +316,11 @@ export const lessons: GermanLesson[] = [
           "rufe → RU-phờ",
           "später → SHPÊ-tờ",
           "anrufen tách ra: rufe ... an"
+        ],
+        "pronunciation_focus_en": [
+          "rufe → ROO-fuh — long 'oo' as in 'food'",
+          "später → SHPAY-tah — 'sp' = 'shp', 'ä' = long 'ay'",
+          "anrufen splits in use: rufe ... an (separable verb)"
         ]
       },
       {
@@ -270,81 +330,98 @@ export const lessons: GermanLesson[] = [
           "senden → ZEN-đần",
           "Datei → đa-TAI",
           "Email → Ê-mây — đọc gần như tiếng Anh"
+        ],
+        "pronunciation_focus_en": [
+          "senden → ZEN-den — 's' before vowel = 'z'",
+          "Datei → dah-TYE — 'ei' = 'eye'",
+          "Email → AY-mayl — close to English but with German vowels"
         ]
       }
     ],
     "cultural_notes_vi": "Email công việc Đức rất trang trọng. Mở đầu bằng 'Sehr geehrte/r' (kính gửi) cho người chưa quen, 'Liebe/r' (thân mến) cho đồng nghiệp. Kết thúc luôn dùng 'Mit freundlichen Grüßen' (trân trọng) — cụm này gần như bắt buộc. Người Đức trả lời email trong giờ làm việc, hiếm khi cuối tuần.",
+    "cultural_notes_en": "German work email is formal. Open with 'Sehr geehrte/r' (literally 'highly honored') for someone you don't know, 'Liebe/r' (dear) for colleagues. Always close with 'Mit freundlichen Grüßen' (best regards) — this is almost mandatory, not optional flourish. Germans answer email during business hours; weekend replies are rare and not expected.",
     "tip_advice_vi": "Động từ tách (separable verbs) như 'anrufen', 'zurückrufen' khi chia: 'Ich rufe an', 'Sie ruft zurück' — phần 'an'/'zurück' nhảy ra cuối câu. Đây là đặc điểm độc đáo của tiếng Đức, cần luyện nhiều.",
+    "tip_advice_en": "Separable verbs like 'anrufen' or 'zurückrufen' split when conjugated: 'Ich rufe an' (I call), 'Sie ruft zurück' (she calls back) — the 'an' / 'zurück' jumps to the end of the clause. This is one of German's signature features and takes real practice. The infinitive is what you see in dictionaries; the conjugated form is what you'll actually say.",
     "vocabulary": [
       {
         "word": "die Email",
         "en": "email",
         "vi": "email",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi Ê-mây"
+        "pronunciation_vi": "đi Ê-mây",
+        "pronunciation_en": "dee AY-mayl — close to English"
       },
       {
         "word": "das Telefon",
         "en": "telephone",
         "vi": "điện thoại",
         "pos": "noun (n)",
-        "pronunciation_vi": "đát tê-lê-PHÔN"
+        "pronunciation_vi": "đát tê-lê-PHÔN",
+        "pronunciation_en": "dahs tay-leh-FOHN — French-style stress on last syllable"
       },
       {
         "word": "der Termin",
         "en": "appointment",
         "vi": "cuộc hẹn",
         "pos": "noun (m)",
-        "pronunciation_vi": "đe-a TE-min"
+        "pronunciation_vi": "đe-a TE-min",
+        "pronunciation_en": "dayr tair-MEEN — stress on second syllable"
       },
       {
         "word": "die Datei",
         "en": "file",
         "vi": "file/tệp",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi đa-TAI"
+        "pronunciation_vi": "đi đa-TAI",
+        "pronunciation_en": "dee dah-TYE — 'ei' = 'eye'"
       },
       {
         "word": "die Nachricht",
         "en": "message",
         "vi": "tin nhắn",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi NÁC-rịt"
+        "pronunciation_vi": "đi NÁC-rịt",
+        "pronunciation_en": "dee NAHKH-rikht — hard ch (Scottish 'loch') in middle"
       },
       {
         "word": "schreiben",
         "en": "to write",
         "vi": "viết",
         "pos": "verb",
-        "pronunciation_vi": "SHRAI-bần"
+        "pronunciation_vi": "SHRAI-bần",
+        "pronunciation_en": "SHRYBE-en — 'sch' = 'sh', 'ei' = 'eye'"
       },
       {
         "word": "anrufen",
         "en": "to call",
         "vi": "gọi điện",
         "pos": "verb (separable)",
-        "pronunciation_vi": "AN-ru-phần"
+        "pronunciation_vi": "AN-ru-phần",
+        "pronunciation_en": "AHN-roo-fen — separable (an + rufen)"
       },
       {
         "word": "zurückrufen",
         "en": "to call back",
         "vi": "gọi lại",
         "pos": "verb (separable)",
-        "pronunciation_vi": "tsu-RUYC-ru-phần"
+        "pronunciation_vi": "tsu-RUYC-ru-phần",
+        "pronunciation_en": "tsoo-REWK-roo-fen — 'ü' rounded 'ee'"
       },
       {
         "word": "senden",
         "en": "to send",
         "vi": "gửi",
         "pos": "verb",
-        "pronunciation_vi": "ZEN-đần"
+        "pronunciation_vi": "ZEN-đần",
+        "pronunciation_en": "ZEN-den — 's' before vowel = 'z'"
       },
       {
         "word": "antworten",
         "en": "to reply",
         "vi": "trả lời",
         "pos": "verb",
-        "pronunciation_vi": "ANT-vo-tần"
+        "pronunciation_vi": "ANT-vo-tần",
+        "pronunciation_en": "AHNT-vor-ten — final 'd' devoices to 't'"
       }
     ],
     "dialogue": [
@@ -373,6 +450,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "fill_blank",
         "instruction_vi": "Điền động từ phù hợp:",
+        "instruction_en": "Fill in the appropriate verb:",
         "pronunciation_focus": [
           "động từ tách (separable verbs)"
         ],
@@ -394,6 +472,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "matching",
         "instruction_vi": "Nối từ tiếng Đức với nghĩa tiếng Việt:",
+        "instruction_en": "Match the German word with its English meaning:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -417,6 +496,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "translation",
         "instruction_vi": "Dịch sang tiếng Đức:",
+        "instruction_en": "Translate into German:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -449,6 +529,11 @@ export const lessons: GermanLesson[] = [
           "Besprechung → bờ-SHPRÊ-khung",
           "beginnt → bờ-GHINT",
           "zehn → tsên"
+        ],
+        "pronunciation_focus_en": [
+          "Besprechung → buh-SHPRESH-oong — 'sp' inside word = 'shp'",
+          "beginnt → buh-GHINT — short 'i', no final 'e'",
+          "zehn → TSAYN — 'z' = 'ts', long 'ay'"
         ]
       },
       {
@@ -458,6 +543,11 @@ export const lessons: GermanLesson[] = [
           "möchte → MƠỊC-tờ — 'ö' tròn ngắn",
           "Punkt → PUNG-kt",
           "hinzufügen → HIN-tsu-phuy-gần"
+        ],
+        "pronunciation_focus_en": [
+          "möchte → MUERSH-tuh — short 'ö' (rounded 'eh'), soft ch",
+          "Punkt → POONKT — short 'oo' as in 'put'",
+          "hinzufügen → HIN-tsoo-fue-gen — separable (hinzu + fügen), 'ü' rounded"
         ]
       },
       {
@@ -467,6 +557,11 @@ export const lessons: GermanLesson[] = [
           "alle → A-lờ",
           "einverstanden → AIN-phờ-shtan-đần",
           "ei → ai"
+        ],
+        "pronunciation_focus_en": [
+          "alle → AH-luh — short 'a', clear 'l' on each side",
+          "einverstanden → AYN-fair-shtahn-den — 'ein' = 'eye-n'",
+          "ei → 'eye' sound"
         ]
       },
       {
@@ -476,6 +571,11 @@ export const lessons: GermanLesson[] = [
           "müssen → MUYS-sần — 'ü' tròn",
           "Entscheidung → ent-SHAI-đung",
           "treffen → TRE-phần"
+        ],
+        "pronunciation_focus_en": [
+          "müssen → MUE-sen — 'ü' rounded 'ee'",
+          "Entscheidung → ent-SHY-doong — 'sch' = 'sh', 'ei' = 'eye'",
+          "treffen → TREF-en — flat 'e', double 'f'"
         ]
       },
       {
@@ -485,81 +585,98 @@ export const lessons: GermanLesson[] = [
           "Sitzung → ZÍT-tsung",
           "beendet → bờ-ÊN-đết",
           "Vielen Dank → PHÍ-lần đank"
+        ],
+        "pronunciation_focus_en": [
+          "Sitzung → ZIT-tsoong — 's' before vowel = 'z', 'tz' = 'ts'",
+          "beendet → buh-EN-det — three syllables: buh + EN + det",
+          "Vielen Dank → FEE-len DAHNK — 'V' = 'f', stress on 'FEE'"
         ]
       }
     ],
     "cultural_notes_vi": "Họp hành ở Đức luôn có chương trình (Tagesordnung) gửi trước. Mọi người chuẩn bị kỹ và phát biểu thẳng vào vấn đề — không vòng vo. Bất đồng ý kiến được coi là bình thường và lành mạnh, không phải xung đột cá nhân. Ghi biên bản (Protokoll) là chuẩn mực.",
+    "cultural_notes_en": "German meetings always have an agenda (Tagesordnung) sent in advance. People come prepared and speak straight to the point — no warm-up small talk. Disagreement is treated as healthy and normal, not personal conflict; pushing back on an idea isn't seen as attacking the person. Minutes (Protokoll) are standard. If you're new to a German team, expect more 'this is wrong because…' than you're used to — it's the engineering culture, not hostility.",
     "tip_advice_vi": "'Ich bin einverstanden' (tôi đồng ý) lịch sự hơn 'Ja'. Trong họp công việc, dùng cách diễn đạt formal: 'Ich möchte vorschlagen' (tôi muốn đề xuất) thay vì 'Ich will' (tôi muốn). Tránh 'will' trong văn cảnh formal — nghe ra mệnh lệnh.",
+    "tip_advice_en": "'Ich bin einverstanden' (I agree) is more polite than just 'Ja'. In work meetings use formal phrasing: 'Ich möchte vorschlagen' (I'd like to suggest) instead of 'Ich will' (I want). Avoid 'will' in formal contexts — it lands as a command rather than a request.",
     "vocabulary": [
       {
         "word": "die Sitzung",
         "en": "session/meeting",
         "vi": "phiên họp",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi ZÍT-tsung"
+        "pronunciation_vi": "đi ZÍT-tsung",
+        "pronunciation_en": "dee ZIT-tsoong — 's' before vowel = 'z'"
       },
       {
         "word": "die Tagesordnung",
         "en": "agenda",
         "vi": "chương trình họp",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi TÁ-gờs-ót-nung"
+        "pronunciation_vi": "đi TÁ-gờs-ót-nung",
+        "pronunciation_en": "dee TAH-ges-ord-noong — compound: Tag + es + Ordnung"
       },
       {
         "word": "der Vorschlag",
         "en": "suggestion",
         "vi": "đề xuất",
         "pos": "noun (m)",
-        "pronunciation_vi": "đe-a PHÔ-shlác"
+        "pronunciation_vi": "đe-a PHÔ-shlác",
+        "pronunciation_en": "dayr FOR-shlahk — final 'g' devoices to 'k'"
       },
       {
         "word": "die Entscheidung",
         "en": "decision",
         "vi": "quyết định",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi ent-SHAI-đung"
+        "pronunciation_vi": "đi ent-SHAI-đung",
+        "pronunciation_en": "dee ent-SHY-doong — 'sch' = 'sh', 'ei' = 'eye'"
       },
       {
         "word": "die Frage",
         "en": "question",
         "vi": "câu hỏi",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi PHRA-gờ"
+        "pronunciation_vi": "đi PHRA-gờ",
+        "pronunciation_en": "dee FRAH-guh — long 'ah'"
       },
       {
         "word": "diskutieren",
         "en": "to discuss",
         "vi": "thảo luận",
         "pos": "verb",
-        "pronunciation_vi": "đi-scu-TI-rần"
+        "pronunciation_vi": "đi-scu-TI-rần",
+        "pronunciation_en": "dis-koo-TEER-en — borrowed, stress on third syllable"
       },
       {
         "word": "vorschlagen",
         "en": "to suggest",
         "vi": "đề xuất",
         "pos": "verb (separable)",
-        "pronunciation_vi": "PHÔ-shla-gần"
+        "pronunciation_vi": "PHÔ-shla-gần",
+        "pronunciation_en": "FOR-shlah-gen — separable (vor + schlagen)"
       },
       {
         "word": "zustimmen",
         "en": "to agree",
         "vi": "đồng ý",
         "pos": "verb (separable)",
-        "pronunciation_vi": "TSU-shtim-mần"
+        "pronunciation_vi": "TSU-shtim-mần",
+        "pronunciation_en": "TSOO-shtim-en — separable, 'z' = 'ts'"
       },
       {
         "word": "ablehnen",
         "en": "to reject",
         "vi": "từ chối",
         "pos": "verb (separable)",
-        "pronunciation_vi": "AP-lê-nần"
+        "pronunciation_vi": "AP-lê-nần",
+        "pronunciation_en": "AHP-lay-nen — separable (ab + lehnen)"
       },
       {
         "word": "einverstanden",
         "en": "agreed",
         "vi": "đồng ý",
         "pos": "adjective",
-        "pronunciation_vi": "AIN-phờ-shtan-đần"
+        "pronunciation_vi": "AIN-phờ-shtan-đần",
+        "pronunciation_en": "AYN-fair-shtahn-den — 'ein' = 'eye-n'"
       }
     ],
     "dialogue": [
@@ -588,6 +705,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "fill_blank",
         "instruction_vi": "Điền từ vựng họp hành:",
+        "instruction_en": "Fill in the meetings vocabulary:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -607,6 +725,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "matching",
         "instruction_vi": "Nối động từ với nghĩa:",
+        "instruction_en": "Match the verb with its meaning:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -630,6 +749,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "translation",
         "instruction_vi": "Dịch sang tiếng Đức:",
+        "instruction_en": "Translate into German:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -662,6 +782,11 @@ export const lessons: GermanLesson[] = [
           "interessiere → in-tê-RES-si-rờ",
           "Stelle → SHTE-lờ",
           "Ingenieur → in-djê-NIƠA"
+        ],
+        "pronunciation_focus_en": [
+          "interessiere → in-tair-RES-see-ruh — long word, stress on third",
+          "Stelle → SHTEL-uh — 'st' at start = 'sht'",
+          "Ingenieur → in-zhuh-NYUHR — French loan, soft 'g' = 'zh'"
         ]
       },
       {
@@ -671,6 +796,11 @@ export const lessons: GermanLesson[] = [
           "fünf → PHUYNF — 'ü' tròn",
           "Jahre → IÁ-rờ",
           "Berufserfahrung → bờ-RUPHS-ê-pha-rung"
+        ],
+        "pronunciation_focus_en": [
+          "fünf → FUENF — 'ü' rounded 'ee', no schwa after final 'f'",
+          "Jahre → YAH-ruh — 'j' = 'y', long 'ah'",
+          "Berufserfahrung → buh-ROOFS-air-fah-roong — compound noun"
         ]
       },
       {
@@ -680,6 +810,11 @@ export const lessons: GermanLesson[] = [
           "Stärken → SHTE-kần — 'ä' = e",
           "Teamarbeit → TIM-a-bait",
           "Pünktlichkeit → PUYNG-lị-khait"
+        ],
+        "pronunciation_focus_en": [
+          "Stärken → SHTAIR-ken — 'ä' = long 'ay/eh'",
+          "Teamarbeit → TEAM-ar-bite — borrowed 'team' + native 'Arbeit'",
+          "Pünktlichkeit → PUENKT-lish-kite — 'ü' rounded, soft ch"
         ]
       },
       {
@@ -689,6 +824,11 @@ export const lessons: GermanLesson[] = [
           "Wann → vAN",
           "anfangen → AN-phan-gần",
           "động từ tách"
+        ],
+        "pronunciation_focus_en": [
+          "Wann → VAHN — 'w' = English 'v'",
+          "anfangen → AHN-fan-gen — separable (an + fangen)",
+          "separable verb — 'an' jumps to clause end when conjugated"
         ]
       },
       {
@@ -698,81 +838,98 @@ export const lessons: GermanLesson[] = [
           "Vielen → PHÍ-lần",
           "Gespräch → gơ-SHPREỊC — 'ä' = e",
           "Dank → đank"
+        ],
+        "pronunciation_focus_en": [
+          "Vielen → FEE-len — 'V' = 'f'",
+          "Gespräch → guh-SHPRESH — 'sp' = 'shp', 'ä' = long 'eh'",
+          "Dank → DAHNK — short 'a', clear final consonants"
         ]
       }
     ],
     "cultural_notes_vi": "Người Đức trong phỏng vấn coi trọng sự thật trên hết. Đừng phóng đại kinh nghiệm hay kỹ năng — họ sẽ kiểm tra. Câu hỏi 'Stärken und Schwächen' (điểm mạnh, điểm yếu) gần như chắc chắn xuất hiện. Trả lời điểm yếu phải thật, kèm cách bạn đang khắc phục.",
+    "cultural_notes_en": "Germans in interviews prize honesty above almost everything. Don't oversell experience or skills — they will check, and they will follow up. The 'Stärken und Schwächen' (strengths and weaknesses) question is almost guaranteed. Your weakness answer should be a real one with a concrete plan for how you're working on it. American-style 'my weakness is that I work too hard' lands as evasive at best.",
     "tip_advice_vi": "Tiếng Đức formal trong phỏng vấn: dùng 'Sie' (ngài/bà), không bao giờ 'du'. Bắt tay khi vào và ra. Đến trước 5-10 phút (không sớm hơn). 'Ich freue mich auf Ihre Rückmeldung' (tôi mong nhận được phản hồi) là câu kết thúc lịch sự.",
+    "tip_advice_en": "Interview German is formal: use 'Sie', never 'du'. Shake hands on the way in and the way out. Arrive 5–10 minutes early, but not earlier (it puts pressure on the interviewer). 'Ich freue mich auf Ihre Rückmeldung' (I look forward to your reply) is the polite closing line.",
     "vocabulary": [
       {
         "word": "die Stelle",
         "en": "position/job",
         "vi": "vị trí công việc",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi SHTE-lờ"
+        "pronunciation_vi": "đi SHTE-lờ",
+        "pronunciation_en": "dee SHTEL-uh — 'st' at start = 'sht'"
       },
       {
         "word": "der Beruf",
         "en": "profession",
         "vi": "nghề nghiệp",
         "pos": "noun (m)",
-        "pronunciation_vi": "đe-a bờ-RUPH"
+        "pronunciation_vi": "đe-a bờ-RUPH",
+        "pronunciation_en": "dayr buh-ROOF — stress on second syllable"
       },
       {
         "word": "die Erfahrung",
         "en": "experience",
         "vi": "kinh nghiệm",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi ê-PHA-rung"
+        "pronunciation_vi": "đi ê-PHA-rung",
+        "pronunciation_en": "dee air-FAH-roong — long 'ah' in middle"
       },
       {
         "word": "die Stärke",
         "en": "strength",
         "vi": "điểm mạnh",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi SHTE-cờ"
+        "pronunciation_vi": "đi SHTE-cờ",
+        "pronunciation_en": "dee SHTAIR-kuh — 'ä' = long 'eh'"
       },
       {
         "word": "die Schwäche",
         "en": "weakness",
         "vi": "điểm yếu",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi SHVE-khờ"
+        "pronunciation_vi": "đi SHVE-khờ",
+        "pronunciation_en": "dee SHVESH-uh — 'sch' = 'sh', 'w' = 'v'"
       },
       {
         "word": "der Lebenslauf",
         "en": "CV/resume",
         "vi": "sơ yếu lý lịch",
         "pos": "noun (m)",
-        "pronunciation_vi": "đe-a LÊ-bần-lao-phờ"
+        "pronunciation_vi": "đe-a LÊ-bần-lao-phờ",
+        "pronunciation_en": "dayr LAY-bens-lowf — compound: Leben + Lauf, 'au' = 'ow'"
       },
       {
         "word": "die Bewerbung",
         "en": "application",
         "vi": "đơn xin việc",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi bờ-VEA-bung"
+        "pronunciation_vi": "đi bờ-VEA-bung",
+        "pronunciation_en": "dee buh-VAIR-boong — long 'ai/ay' in middle"
       },
       {
         "word": "das Gespräch",
         "en": "conversation/interview",
         "vi": "buổi trò chuyện/phỏng vấn",
         "pos": "noun (n)",
-        "pronunciation_vi": "đát gơ-SHPREỊC"
+        "pronunciation_vi": "đát gơ-SHPREỊC",
+        "pronunciation_en": "dahs guh-SHPRESH — 'sp' = 'shp', 'ä' = long 'eh'"
       },
       {
         "word": "sich bewerben",
         "en": "to apply",
         "vi": "ứng tuyển",
         "pos": "reflexive verb",
-        "pronunciation_vi": "zịc bờ-VEA-bần"
+        "pronunciation_vi": "zịc bờ-VEA-bần",
+        "pronunciation_en": "zish buh-VAIR-ben — reflexive verb (sich = oneself)"
       },
       {
         "word": "anfangen",
         "en": "to start",
         "vi": "bắt đầu",
         "pos": "verb (separable)",
-        "pronunciation_vi": "AN-phan-gần"
+        "pronunciation_vi": "AN-phan-gần",
+        "pronunciation_en": "AHN-fan-gen — separable (an + fangen)"
       }
     ],
     "dialogue": [
@@ -801,6 +958,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "fill_blank",
         "instruction_vi": "Điền từ về phỏng vấn:",
+        "instruction_en": "Fill in the interview vocabulary:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -820,6 +978,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "matching",
         "instruction_vi": "Nối từ với nghĩa:",
+        "instruction_en": "Match the word with its meaning:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -843,6 +1002,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "translation",
         "instruction_vi": "Dịch sang tiếng Đức:",
+        "instruction_en": "Translate into German:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -875,6 +1035,11 @@ export const lessons: GermanLesson[] = [
           "heute → HÔI-tờ",
           "viel → PHÍN",
           "zu tun → tsu TUN"
+        ],
+        "pronunciation_focus_en": [
+          "heute → HOY-tuh — 'eu' = 'oy' as in 'boy'",
+          "viel → FEEL — 'V' = 'f', long 'ee'",
+          "zu tun → tsoo TOON — 'z' = 'ts', long 'oo'"
         ]
       },
       {
@@ -884,6 +1049,11 @@ export const lessons: GermanLesson[] = [
           "Drucker → ĐRUC-cờ",
           "funktioniert → phung-tsi-Ô-nịt",
           "nicht → nịt"
+        ],
+        "pronunciation_focus_en": [
+          "Drucker → DROOK-er — long 'oo' as in 'food'",
+          "funktioniert → foonk-tsyoh-NEERT — '-tion' = 'tsyohn'",
+          "nicht → NIKHT — soft ch (ich-Laut)"
         ]
       },
       {
@@ -893,6 +1063,11 @@ export const lessons: GermanLesson[] = [
           "leider → LAI-đờ",
           "Termin → TE-min",
           "halten → HAN-tần"
+        ],
+        "pronunciation_focus_en": [
+          "leider → LYE-dah — 'ei' = 'eye', '-er' = 'ah'",
+          "Termin → tair-MEEN — stress on second syllable",
+          "halten → HAHL-ten — short 'a', clear 'l'"
         ]
       },
       {
@@ -902,6 +1077,11 @@ export const lessons: GermanLesson[] = [
           "Können → KƠN-nần",
           "Problem → prô-BLÊM",
           "helfen → HEN-phần"
+        ],
+        "pronunciation_focus_en": [
+          "Können → KUR-nen — 'ö' rounded 'eh' (lips for 'oh', say 'eh')",
+          "Problem → proh-BLAYM — stress on second syllable",
+          "helfen → HEL-fen — flat 'e', clear 'f'"
         ]
       },
       {
@@ -911,81 +1091,98 @@ export const lessons: GermanLesson[] = [
           "Tut mir leid → TÚT mia LAI",
           "Fehler → PHÊ-lờ",
           "gemacht → gơ-MÁCT"
+        ],
+        "pronunciation_focus_en": [
+          "Tut mir leid → TOOT mere LYDE — 'ei' = 'eye'",
+          "Fehler → FAY-lah — long 'ay'",
+          "gemacht → guh-MAHKHT — hard ch (Scottish 'loch') at end"
         ]
       }
     ],
     "cultural_notes_vi": "Người Đức công sở nói thẳng vấn đề — không vòng vo. Mắc lỗi, hãy thừa nhận sớm và đề xuất cách khắc phục: 'Ich habe einen Fehler gemacht. Wie kann ich es korrigieren?' (Tôi đã mắc lỗi. Tôi có thể sửa thế nào?). Che giấu lỗi bị coi là tệ hơn lỗi gốc.",
+    "cultural_notes_en": "German work culture talks straight about problems — no soft-pedaling. If you make a mistake, name it early and propose the fix: 'Ich habe einen Fehler gemacht. Wie kann ich es korrigieren?' (I made a mistake. How can I fix it?). Hiding a mistake is treated as worse than the mistake itself. The instinct to spin or minimize, common in some other workplace cultures, reads as untrustworthy here.",
     "tip_advice_vi": "'Tut mir leid' (xin lỗi) cho lỗi nhỏ hàng ngày. 'Es tut mir sehr leid' (rất xin lỗi) cho lỗi nghiêm trọng. Với cấp trên hoặc tình huống formal, dùng 'Ich entschuldige mich' (tôi xin lỗi). Đừng dùng 'Sorry' — người Đức coi đó là không nghiêm túc.",
+    "tip_advice_en": "'Tut mir leid' (sorry) is for everyday small mistakes. 'Es tut mir sehr leid' (very sorry) is for serious ones. With a manager or formal situation, use 'Ich entschuldige mich' (I apologize). Don't use 'Sorry' in German workplaces — Germans hear it as not serious, even though they understand the word.",
     "vocabulary": [
       {
         "word": "das Problem",
         "en": "problem",
         "vi": "vấn đề",
         "pos": "noun (n)",
-        "pronunciation_vi": "đát prô-BLÊM"
+        "pronunciation_vi": "đát prô-BLÊM",
+        "pronunciation_en": "dahs proh-BLAYM — stress on second syllable"
       },
       {
         "word": "der Fehler",
         "en": "mistake",
         "vi": "lỗi",
         "pos": "noun (m)",
-        "pronunciation_vi": "đe-a PHÊ-lờ"
+        "pronunciation_vi": "đe-a PHÊ-lờ",
+        "pronunciation_en": "dayr FAY-lah — long 'ay'"
       },
       {
         "word": "der Stress",
         "en": "stress",
         "vi": "căng thẳng",
         "pos": "noun (m)",
-        "pronunciation_vi": "đe-a SHTRES"
+        "pronunciation_vi": "đe-a SHTRES",
+        "pronunciation_en": "dayr SHTRESS — borrowed, no schwa"
       },
       {
         "word": "die Verspätung",
         "en": "delay",
         "vi": "trễ giờ",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi phê-SHPÊ-tung"
+        "pronunciation_vi": "đi phê-SHPÊ-tung",
+        "pronunciation_en": "dee fair-SHPAY-toong — 'sp' = 'shp', 'ä' = long 'ay'"
       },
       {
         "word": "die Frist",
         "en": "deadline",
         "vi": "hạn chót",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi PHRIST"
+        "pronunciation_vi": "đi PHRIST",
+        "pronunciation_en": "dee FRIST — short 'i', single syllable"
       },
       {
         "word": "helfen",
         "en": "to help",
         "vi": "giúp đỡ",
         "pos": "verb",
-        "pronunciation_vi": "HEN-phần"
+        "pronunciation_vi": "HEN-phần",
+        "pronunciation_en": "HEL-fen — flat 'e'"
       },
       {
         "word": "funktionieren",
         "en": "to function",
         "vi": "hoạt động",
         "pos": "verb",
-        "pronunciation_vi": "phung-tsi-Ô-ni-rần"
+        "pronunciation_vi": "phung-tsi-Ô-ni-rần",
+        "pronunciation_en": "foonk-tsyoh-NEER-en — '-tion' = 'tsyohn'"
       },
       {
         "word": "reparieren",
         "en": "to repair",
         "vi": "sửa chữa",
         "pos": "verb",
-        "pronunciation_vi": "rê-pa-RI-rần"
+        "pronunciation_vi": "rê-pa-RI-rần",
+        "pronunciation_en": "ray-pah-REER-en — borrowed, stress on third syllable"
       },
       {
         "word": "krank",
         "en": "sick",
         "vi": "ốm",
         "pos": "adjective",
-        "pronunciation_vi": "krank"
+        "pronunciation_vi": "krank",
+        "pronunciation_en": "KRAHNK — single syllable, clear final 'k'"
       },
       {
         "word": "müde",
         "en": "tired",
         "vi": "mệt",
         "pos": "adjective",
-        "pronunciation_vi": "MUY-đờ — 'ü' tròn"
+        "pronunciation_vi": "MUY-đờ — 'ü' tròn",
+        "pronunciation_en": "MUE-duh — 'ü' rounded 'ee'"
       }
     ],
     "dialogue": [
@@ -1014,6 +1211,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "fill_blank",
         "instruction_vi": "Điền từ về vấn đề:",
+        "instruction_en": "Fill in the problem-related vocabulary:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -1033,6 +1231,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "matching",
         "instruction_vi": "Nối từ với nghĩa:",
+        "instruction_en": "Match the word with its meaning:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -1056,6 +1255,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "translation",
         "instruction_vi": "Dịch sang tiếng Đức:",
+        "instruction_en": "Translate into German:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -1088,6 +1288,11 @@ export const lessons: GermanLesson[] = [
           "möchte → MƠỊC-tờ",
           "Konto → CÔN-tô",
           "eröffnen → ê-RƠPH-nần — 'ö' tròn"
+        ],
+        "pronunciation_focus_en": [
+          "möchte → MUERSH-tuh — short 'ö' (rounded 'eh'), soft ch",
+          "Konto → KON-toh — short 'o', long 'oh'",
+          "eröffnen → air-URF-nen — 'ö' rounded 'eh'"
         ]
       },
       {
@@ -1097,6 +1302,11 @@ export const lessons: GermanLesson[] = [
           "nächste → NEỊC-stờ",
           "Geldautomat → GHEN-au-tô-mát",
           "ä → e"
+        ],
+        "pronunciation_focus_en": [
+          "nächste → NEK-stuh — 'ä' = short 'eh'",
+          "Geldautomat → GELT-ow-toh-maht — compound: Geld + Automat",
+          "ä → short 'eh' (or long, depending on word)"
         ]
       },
       {
@@ -1106,6 +1316,11 @@ export const lessons: GermanLesson[] = [
           "brauche → BRAO-khờ",
           "Termin → TE-min",
           "Berater → bờ-RA-tờ"
+        ],
+        "pronunciation_focus_en": [
+          "brauche → BROWKH-uh — 'au' = 'ow', hard ch in middle",
+          "Termin → tair-MEEN — stress on second syllable",
+          "Berater → buh-RAH-tah — long 'ah'"
         ]
       },
       {
@@ -1115,6 +1330,11 @@ export const lessons: GermanLesson[] = [
           "fünfzig → PHUYNF-tsịc — 'ü' tròn",
           "wechseln → VEK-zần",
           "ch → khờ nhẹ"
+        ],
+        "pronunciation_focus_en": [
+          "fünfzig → FUENF-tsikh — 'ü' rounded 'ee', '-ig' often 'ikh'",
+          "wechseln → VEK-seln — 'w' = 'v', 'chs' = 'ks'",
+          "soft ch (ich-Laut) — like a whispered 'h'"
         ]
       },
       {
@@ -1124,81 +1344,98 @@ export const lessons: GermanLesson[] = [
           "Geld → GHEN-t",
           "Sparkonto → SHPÁ-côn-tô",
           "auf dem → ao-phờ đêm"
+        ],
+        "pronunciation_focus_en": [
+          "Geld → GELT — final 'd' devoices to 't'",
+          "Sparkonto → SHPAR-kon-toh — 'sp' = 'shp', compound noun",
+          "auf dem → owf daym — 'au' = 'ow'"
         ]
       }
     ],
     "cultural_notes_vi": "Đức vẫn dùng nhiều tiền mặt hơn các nước phát triển khác — nhiều quán cafe, tiệm bánh chỉ nhận tiền mặt (Bargeld). Mở tài khoản ngân hàng cần Ausweis (giấy tờ tuỳ thân) và Anmeldung (đăng ký cư trú). EC-Karte (thẻ ghi nợ) phổ biến hơn thẻ tín dụng.",
+    "cultural_notes_en": "Germany still uses cash more than most developed countries — many cafes and bakeries are cash-only (Bargeld). Opening a bank account requires Ausweis (ID) and Anmeldung (proof of registered address). Debit cards (EC-Karte / Girocard) are everywhere; credit cards are noticeably less common than in the US or UK, and not universally accepted.",
     "tip_advice_vi": "Số tiền lớn nói theo cấu trúc Đức: 'fünfzig Euro' (50 euro), 'hundert Euro' (100 euro). Số 21 trở lên đảo: 'einundzwanzig' (1 và 20 = 21). Quen với cách đảo này khi đọc số tiền sẽ giúp bạn tự tin hơn.",
+    "tip_advice_en": "Read large amounts the German way: 'fünfzig Euro' (50 euro), 'hundert Euro' (100 euro). Numbers from 21 onward flip: 'einundzwanzig' is literally 'one-and-twenty' = 21. Get used to that flip when you hear prices — it'll keep tripping you until you stop translating in your head.",
     "vocabulary": [
       {
         "word": "die Bank",
         "en": "bank",
         "vi": "ngân hàng",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi BANK"
+        "pronunciation_vi": "đi BANK",
+        "pronunciation_en": "dee BAHNK — short 'a', single syllable"
       },
       {
         "word": "das Konto",
         "en": "account",
         "vi": "tài khoản",
         "pos": "noun (n)",
-        "pronunciation_vi": "đát CÔN-tô"
+        "pronunciation_vi": "đát CÔN-tô",
+        "pronunciation_en": "dahs KON-toh — short 'o', long 'oh'"
       },
       {
         "word": "das Geld",
         "en": "money",
         "vi": "tiền",
         "pos": "noun (n)",
-        "pronunciation_vi": "đát GHEN-t"
+        "pronunciation_vi": "đát GHEN-t",
+        "pronunciation_en": "dahs GELT — final 'd' devoices to 't'"
       },
       {
         "word": "der Geldautomat",
         "en": "ATM",
         "vi": "máy ATM",
         "pos": "noun (m)",
-        "pronunciation_vi": "đe-a GHEN-au-tô-mát"
+        "pronunciation_vi": "đe-a GHEN-au-tô-mát",
+        "pronunciation_en": "dayr GELT-ow-toh-maht — compound noun"
       },
       {
         "word": "die Karte",
         "en": "card",
         "vi": "thẻ",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi CÁ-tờ"
+        "pronunciation_vi": "đi CÁ-tờ",
+        "pronunciation_en": "dee KAR-tuh — uvular 'r' between vowels"
       },
       {
         "word": "die Überweisung",
         "en": "transfer",
         "vi": "chuyển khoản",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi UY-bờ-vai-zung"
+        "pronunciation_vi": "đi UY-bờ-vai-zung",
+        "pronunciation_en": "dee UE-bah-vye-zoong — 'ü' rounded, 'ei' = 'eye'"
       },
       {
         "word": "der Berater",
         "en": "advisor",
         "vi": "nhân viên tư vấn",
         "pos": "noun (m)",
-        "pronunciation_vi": "đe-a bờ-RA-tờ"
+        "pronunciation_vi": "đe-a bờ-RA-tờ",
+        "pronunciation_en": "dayr buh-RAH-tah — long 'ah'"
       },
       {
         "word": "eröffnen",
         "en": "to open",
         "vi": "mở",
         "pos": "verb (separable)",
-        "pronunciation_vi": "ê-RƠPH-nần"
+        "pronunciation_vi": "ê-RƠPH-nần",
+        "pronunciation_en": "air-URF-nen — 'ö' rounded 'eh'"
       },
       {
         "word": "wechseln",
         "en": "to exchange",
         "vi": "đổi",
         "pos": "verb",
-        "pronunciation_vi": "VEK-zần"
+        "pronunciation_vi": "VEK-zần",
+        "pronunciation_en": "VEK-seln — 'w' = 'v', 'chs' = 'ks'"
       },
       {
         "word": "abheben",
         "en": "to withdraw",
         "vi": "rút (tiền)",
         "pos": "verb (separable)",
-        "pronunciation_vi": "AP-hê-bần"
+        "pronunciation_vi": "AP-hê-bần",
+        "pronunciation_en": "AHP-hay-ben — separable (ab + heben)"
       }
     ],
     "dialogue": [
@@ -1227,6 +1464,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "fill_blank",
         "instruction_vi": "Điền từ ngân hàng:",
+        "instruction_en": "Fill in the banking vocabulary:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -1246,6 +1484,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "matching",
         "instruction_vi": "Nối từ với nghĩa:",
+        "instruction_en": "Match the word with its meaning:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -1269,6 +1508,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "translation",
         "instruction_vi": "Dịch sang tiếng Đức:",
+        "instruction_en": "Translate into German:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -1301,6 +1541,11 @@ export const lessons: GermanLesson[] = [
           "Paket → pa-KÊT",
           "Vietnam → VI-ết-nam",
           "schicken → SHIK-kần"
+        ],
+        "pronunciation_focus_en": [
+          "Paket → pah-KAYT — stress on second syllable",
+          "Vietnam → VEE-et-nahm — German pronunciation of the country name",
+          "schicken → SHIK-en — 'sch' = 'sh'"
         ]
       },
       {
@@ -1310,6 +1555,11 @@ export const lessons: GermanLesson[] = [
           "Wie → VI",
           "kostet → CÔS-tết",
           "es → es"
+        ],
+        "pronunciation_focus_en": [
+          "Wie → VEE — 'w' = 'v'",
+          "kostet → KOS-tet — short 'o'",
+          "es → ES — short, no schwa"
         ]
       },
       {
@@ -1319,6 +1569,11 @@ export const lessons: GermanLesson[] = [
           "fünf → PHUYNF",
           "Briefmarken → BRÍPH-mác-cần",
           "ie → i dài"
+        ],
+        "pronunciation_focus_en": [
+          "fünf → FUENF — 'ü' rounded 'ee'",
+          "Briefmarken → BREEF-mar-ken — 'ie' = long 'ee'",
+          "ie → long 'ee' as in 'see'"
         ]
       },
       {
@@ -1328,6 +1583,11 @@ export const lessons: GermanLesson[] = [
           "Wann → vAN",
           "ankommen tách: kommt ... an",
           "Paket → pa-KÊT"
+        ],
+        "pronunciation_focus_en": [
+          "Wann → VAHN — 'w' = 'v'",
+          "ankommen splits in use: kommt ... an (separable verb)",
+          "Paket → pah-KAYT — stress on second syllable"
         ]
       },
       {
@@ -1337,81 +1597,98 @@ export const lessons: GermanLesson[] = [
           "Luftpost → LUPHT-pôst",
           "dauert → ĐAO-ợt",
           "Woche → VÔ-khờ"
+        ],
+        "pronunciation_focus_en": [
+          "Luftpost → LOOFT-post — compound: Luft + Post",
+          "dauert → DOW-ert — 'au' = 'ow'",
+          "Woche → VOKH-uh — hard ch in middle"
         ]
       }
     ],
     "cultural_notes_vi": "Deutsche Post (DHL) là dịch vụ bưu chính chính ở Đức. Gửi quốc tế cần khai báo hải quan (Zollerklärung) cho gói hàng. Bưu điện Đức đóng cửa Chủ nhật và đóng sớm thứ Bảy. Nhiều bưu điện nhỏ nằm trong hiệu sách hoặc cửa hàng tạp hóa.",
+    "cultural_notes_en": "Deutsche Post (and its parcel arm DHL) handles most German mail. International parcels need a customs declaration (Zollerklärung). German post offices close on Sundays and close early on Saturdays. Many smaller post offices aren't standalone buildings — they live inside bookshops, stationery stores, or supermarkets, often labeled 'Postfiliale'.",
     "tip_advice_vi": "'Per Luftpost' (đường máy bay) nhanh nhưng đắt. 'Standard' rẻ hơn nhưng chậm 2-4 tuần đi châu Á. Khi điền địa chỉ Đức: tên đường + số nhà cùng dòng, mã bưu điện 5 số đứng trước tên thành phố ('10115 Berlin').",
+    "tip_advice_en": "'Per Luftpost' (airmail) is fast but expensive. 'Standard' is cheaper but takes 2–4 weeks to Asia. German addresses have a specific shape: street name + house number on the same line, then the 5-digit postal code BEFORE the city ('10115 Berlin'). This is the opposite of US format and the reverse of UK format.",
     "vocabulary": [
       {
         "word": "die Post",
         "en": "post office/mail",
         "vi": "bưu điện/thư từ",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi PÔST"
+        "pronunciation_vi": "đi PÔST",
+        "pronunciation_en": "dee POST — short, single syllable"
       },
       {
         "word": "das Paket",
         "en": "package",
         "vi": "gói hàng",
         "pos": "noun (n)",
-        "pronunciation_vi": "đát pa-KÊT"
+        "pronunciation_vi": "đát pa-KÊT",
+        "pronunciation_en": "dahs pah-KAYT — stress on second syllable"
       },
       {
         "word": "der Brief",
         "en": "letter",
         "vi": "thư",
         "pos": "noun (m)",
-        "pronunciation_vi": "đe-a BRÍPH"
+        "pronunciation_vi": "đe-a BRÍPH",
+        "pronunciation_en": "dayr BREEF — long 'ee', single syllable"
       },
       {
         "word": "die Briefmarke",
         "en": "stamp",
         "vi": "tem",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi BRÍPH-mác-cờ"
+        "pronunciation_vi": "đi BRÍPH-mác-cờ",
+        "pronunciation_en": "dee BREEF-mar-kuh — compound: Brief + Marke"
       },
       {
         "word": "die Adresse",
         "en": "address",
         "vi": "địa chỉ",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi a-ĐRES-sờ"
+        "pronunciation_vi": "đi a-ĐRES-sờ",
+        "pronunciation_en": "dee ah-DRES-uh — borrowed, German stress"
       },
       {
         "word": "der Absender",
         "en": "sender",
         "vi": "người gửi",
         "pos": "noun (m)",
-        "pronunciation_vi": "đe-a AP-zen-đờ"
+        "pronunciation_vi": "đe-a AP-zen-đờ",
+        "pronunciation_en": "dayr AHP-zen-dah — separable (ab + Sender)"
       },
       {
         "word": "der Empfänger",
         "en": "recipient",
         "vi": "người nhận",
         "pos": "noun (m)",
-        "pronunciation_vi": "đe-a em-PHEN-gờ"
+        "pronunciation_vi": "đe-a em-PHEN-gờ",
+        "pronunciation_en": "dayr emp-FENG-ah — stress on second syllable"
       },
       {
         "word": "schicken",
         "en": "to send",
         "vi": "gửi",
         "pos": "verb",
-        "pronunciation_vi": "SHIK-kần"
+        "pronunciation_vi": "SHIK-kần",
+        "pronunciation_en": "SHIK-en — 'sch' = 'sh'"
       },
       {
         "word": "ankommen",
         "en": "to arrive",
         "vi": "đến nơi",
         "pos": "verb (separable)",
-        "pronunciation_vi": "AN-côm-mần"
+        "pronunciation_vi": "AN-côm-mần",
+        "pronunciation_en": "AHN-kom-en — separable (an + kommen)"
       },
       {
         "word": "wiegen",
         "en": "to weigh",
         "vi": "cân",
         "pos": "verb",
-        "pronunciation_vi": "VI-gần"
+        "pronunciation_vi": "VI-gần",
+        "pronunciation_en": "VEE-gen — 'w' = 'v', long 'ee'"
       }
     ],
     "dialogue": [
@@ -1440,6 +1717,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "fill_blank",
         "instruction_vi": "Điền từ bưu điện:",
+        "instruction_en": "Fill in the post office vocabulary:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -1459,6 +1737,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "matching",
         "instruction_vi": "Nối từ với nghĩa:",
+        "instruction_en": "Match the word with its meaning:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -1482,6 +1761,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "translation",
         "instruction_vi": "Dịch sang tiếng Đức:",
+        "instruction_en": "Translate into German:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -1514,6 +1794,11 @@ export const lessons: GermanLesson[] = [
           "Termin → TE-min",
           "zehn → tsên",
           "Uhr → UA"
+        ],
+        "pronunciation_focus_en": [
+          "Termin → tair-MEEN — stress on second syllable",
+          "zehn → TSAYN — 'z' = 'ts', long 'ay'",
+          "Uhr → OOR — long 'oo', uvular 'r'"
         ]
       },
       {
@@ -1523,6 +1808,11 @@ export const lessons: GermanLesson[] = [
           "Hals → HALS",
           "tut → TÚT",
           "weh → VÊ"
+        ],
+        "pronunciation_focus_en": [
+          "Hals → HAHLS — short 'a', clear 'l'",
+          "tut → TOOT — long 'oo'",
+          "weh → VAY — 'w' = 'v', long 'ay'"
         ]
       },
       {
@@ -1532,6 +1822,11 @@ export const lessons: GermanLesson[] = [
           "seit → ZAIT",
           "drei → ĐRAI",
           "Fieber → PHÍ-bờ"
+        ],
+        "pronunciation_focus_en": [
+          "seit → ZYTE — 's' before vowel = 'z', 'ei' = 'eye'",
+          "drei → DRY — 'ei' = 'eye'",
+          "Fieber → FEE-bah — 'ie' = long 'ee'"
         ]
       },
       {
@@ -1541,6 +1836,11 @@ export const lessons: GermanLesson[] = [
           "Können → KƠN-nần",
           "Rezept → rê-TSEPT",
           "geben → GHÊ-bần"
+        ],
+        "pronunciation_focus_en": [
+          "Können → KUR-nen — 'ö' rounded 'eh'",
+          "Rezept → ray-TSEPT — 'z' = 'ts', stress on second syllable",
+          "geben → GAY-ben — long 'ay'"
         ]
       },
       {
@@ -1550,81 +1850,98 @@ export const lessons: GermanLesson[] = [
           "Krankmeldung → CRANG-men-đung",
           "brauche → BRAO-khờ",
           "ng → cuối lưỡi"
+        ],
+        "pronunciation_focus_en": [
+          "Krankmeldung → KRAHNK-mel-doong — compound noun",
+          "brauche → BROWKH-uh — 'au' = 'ow', hard ch in middle",
+          "ng → like 'ng' in 'sing', back of mouth"
         ]
       }
     ],
     "cultural_notes_vi": "Đi khám ở Đức cần Versichertenkarte (thẻ bảo hiểm y tế) — luôn mang theo. Đặt Termin (hẹn) trước, đến đợi không hẹn (Sprechstunde) chỉ khi khẩn cấp. Krankmeldung (giấy nghỉ ốm) bắt buộc nếu ốm hơn 3 ngày — chủ lao động yêu cầu. Hausarzt (bác sĩ gia đình) là người đầu tiên bạn liên hệ, họ sẽ giới thiệu chuyên khoa nếu cần.",
+    "cultural_notes_en": "Going to the doctor in Germany requires your Versichertenkarte (insurance card) — always bring it. Book a Termin (appointment) in advance; walk-in slots (Sprechstunde) are only for emergencies. A Krankmeldung (sick note) is mandatory if you're out sick more than 3 days — your employer requires it. Your Hausarzt (family doctor) is your first stop and will refer you to a specialist if needed; you can't usually self-refer to specialists the way you can in the US.",
     "tip_advice_vi": "'Tut weh' (đau) đi với phần cơ thể: 'Mein Kopf tut weh' (đầu đau), 'Mein Bauch tut weh' (bụng đau). 'Schmerzen' (cơn đau) đi với danh từ ghép: 'Halsschmerzen' (đau họng), 'Kopfschmerzen' (đau đầu). Cả hai cấu trúc đều dùng được.",
+    "tip_advice_en": "'Tut weh' (hurts) takes a body part: 'Mein Kopf tut weh' (my head hurts), 'Mein Bauch tut weh' (my stomach hurts). 'Schmerzen' (pains) takes a compound noun: 'Halsschmerzen' (sore throat), 'Kopfschmerzen' (headache). Both structures are correct and used interchangeably.",
     "vocabulary": [
       {
         "word": "der Arzt",
         "en": "doctor (m)",
         "vi": "bác sĩ nam",
         "pos": "noun (m)",
-        "pronunciation_vi": "đe-a A-tst"
+        "pronunciation_vi": "đe-a A-tst",
+        "pronunciation_en": "dayr ARTST — final cluster, no schwa"
       },
       {
         "word": "die Ärztin",
         "en": "doctor (f)",
         "vi": "bác sĩ nữ",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi E-tstin — 'ä' = e"
+        "pronunciation_vi": "đi E-tstin — 'ä' = e",
+        "pronunciation_en": "dee ERTS-tin — '-in' suffix marks female, 'ä' = short 'eh'"
       },
       {
         "word": "die Praxis",
         "en": "doctor's office",
         "vi": "phòng khám",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi PRA-xis"
+        "pronunciation_vi": "đi PRA-xis",
+        "pronunciation_en": "dee PRAHK-sis — 'x' = 'ks'"
       },
       {
         "word": "das Rezept",
         "en": "prescription",
         "vi": "đơn thuốc",
         "pos": "noun (n)",
-        "pronunciation_vi": "đát rê-TSEPT"
+        "pronunciation_vi": "đát rê-TSEPT",
+        "pronunciation_en": "dahs ray-TSEPT — 'z' = 'ts', stress on second syllable"
       },
       {
         "word": "die Schmerzen",
         "en": "pain",
         "vi": "cơn đau",
         "pos": "noun (pl)",
-        "pronunciation_vi": "đi SHMEA-tsần"
+        "pronunciation_vi": "đi SHMEA-tsần",
+        "pronunciation_en": "dee SHMAIR-tsen — 'sch' = 'sh', 'z' = 'ts'"
       },
       {
         "word": "das Fieber",
         "en": "fever",
         "vi": "sốt",
         "pos": "noun (n)",
-        "pronunciation_vi": "đát PHÍ-bờ"
+        "pronunciation_vi": "đát PHÍ-bờ",
+        "pronunciation_en": "dahs FEE-bah — 'ie' = long 'ee'"
       },
       {
         "word": "die Krankmeldung",
         "en": "sick note",
         "vi": "giấy nghỉ ốm",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi CRANG-men-đung"
+        "pronunciation_vi": "đi CRANG-men-đung",
+        "pronunciation_en": "dee KRAHNK-mel-doong — compound: krank + Meldung"
       },
       {
         "word": "untersuchen",
         "en": "to examine",
         "vi": "khám",
         "pos": "verb",
-        "pronunciation_vi": "un-tờ-ZU-khần"
+        "pronunciation_vi": "un-tờ-ZU-khần",
+        "pronunciation_en": "oon-tah-ZOOKH-en — three syllables, hard ch in middle"
       },
       {
         "word": "wehtun",
         "en": "to hurt",
         "vi": "đau",
         "pos": "verb (separable)",
-        "pronunciation_vi": "VÊ-tun"
+        "pronunciation_vi": "VÊ-tun",
+        "pronunciation_en": "VAY-toon — 'w' = 'v', separable (weh + tun)"
       },
       {
         "word": "krank",
         "en": "sick",
         "vi": "ốm",
         "pos": "adjective",
-        "pronunciation_vi": "CRANK"
+        "pronunciation_vi": "CRANK",
+        "pronunciation_en": "KRAHNK — short 'a', single syllable"
       }
     ],
     "dialogue": [
@@ -1653,6 +1970,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "fill_blank",
         "instruction_vi": "Điền từ về sức khoẻ:",
+        "instruction_en": "Fill in the health vocabulary:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -1672,6 +1990,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "matching",
         "instruction_vi": "Nối từ với nghĩa:",
+        "instruction_en": "Match the word with its meaning:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -1695,6 +2014,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "translation",
         "instruction_vi": "Dịch sang tiếng Đức:",
+        "instruction_en": "Translate into German:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -1727,6 +2047,11 @@ export const lessons: GermanLesson[] = [
           "gegen → GHÊ-gần",
           "Kopfschmerzen → CỐP-shmea-tsần",
           "ch → khờ"
+        ],
+        "pronunciation_focus_en": [
+          "gegen → GAY-gen — hard 'g'",
+          "Kopfschmerzen → KOPF-shmair-tsen — compound noun",
+          "soft ch (ich-Laut) — whispered 'h'"
         ]
       },
       {
@@ -1736,6 +2061,11 @@ export const lessons: GermanLesson[] = [
           "Tabletten → ta-BLET-tần",
           "dreimal → ĐRAI-mal",
           "täglich → TEỊC-lị — 'ä' = e"
+        ],
+        "pronunciation_focus_en": [
+          "Tabletten → tah-BLET-en — borrowed, stress on second syllable",
+          "dreimal → DRY-mahl — 'ei' = 'eye'",
+          "täglich → TAYK-lish — 'ä' long 'ay', soft ch ending"
         ]
       },
       {
@@ -1745,6 +2075,11 @@ export const lessons: GermanLesson[] = [
           "Medikament → mê-đi-ka-MENT",
           "rezeptpflichtig → rê-TSEPT-phlị-tịc",
           "pf → kết hợp p+ph"
+        ],
+        "pronunciation_focus_en": [
+          "Medikament → may-dee-kah-MENT — stress on last syllable",
+          "rezeptpflichtig → ray-TSEPT-pflish-tikh — compound, soft ch",
+          "pf → cluster pronounced 'pf' (both letters sounded)"
         ]
       },
       {
@@ -1754,6 +2089,11 @@ export const lessons: GermanLesson[] = [
           "brauche → BRAO-khờ",
           "etwas → ET-vas",
           "Husten → HÚS-tần"
+        ],
+        "pronunciation_focus_en": [
+          "brauche → BROWKH-uh — 'au' = 'ow', hard ch in middle",
+          "etwas → ET-vahs — 'w' = 'v'",
+          "Husten → HOOS-ten — long 'oo'"
         ]
       },
       {
@@ -1763,81 +2103,98 @@ export const lessons: GermanLesson[] = [
           "lesen → LÊ-zần",
           "Packungsbeilage → PA-cungs-bai-la-gờ",
           "ei → ai"
+        ],
+        "pronunciation_focus_en": [
+          "lesen → LAY-zen — 's' before vowel = 'z'",
+          "Packungsbeilage → PAH-koongs-bye-lah-guh — long compound",
+          "ei → 'eye' sound"
         ]
       }
     ],
     "cultural_notes_vi": "Apotheke (hiệu thuốc) ở Đức tách biệt với drogerie (cửa hàng đồ vệ sinh cá nhân như dm, Rossmann). Thuốc kê đơn và nhiều thuốc thông thường (kể cả paracetamol, ibuprofen) chỉ bán ở Apotheke. Apotheke đóng cửa Chủ nhật, nhưng luôn có 'Notdienst' (hiệu thuốc trực) — danh sách dán ngoài cửa hoặc tra trên app.",
+    "cultural_notes_en": "Apotheke (pharmacy) in Germany is separate from drogerie (toiletries shops like dm or Rossmann). Prescription drugs AND most over-the-counter drugs you'd grab off a shelf in the US — including paracetamol and ibuprofen — are only sold at Apotheke, behind the counter, by a pharmacist. Apotheke close on Sundays, but there's always a 'Notdienst' (on-call pharmacy) — the rotating list is posted on the door or in the apo.de app.",
     "tip_advice_vi": "Người Đức thường hỏi dược sĩ tư vấn trước khi mua thuốc — họ là chuyên gia và sẽ giới thiệu thuốc phù hợp. 'Haben Sie etwas gegen ___?' (Bạn có thuốc gì cho ___?) là câu mở đầu chuẩn. Đừng ngại hỏi liều lượng và tác dụng phụ.",
+    "tip_advice_en": "Germans typically ask the pharmacist for advice before buying medication — they're trained to recommend appropriate products. 'Haben Sie etwas gegen ___?' (Do you have something for ___?) is the standard opener. Don't be shy about asking dosage and side effects; the conversation is expected, not an imposition.",
     "vocabulary": [
       {
         "word": "die Apotheke",
         "en": "pharmacy",
         "vi": "hiệu thuốc",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi a-pô-TÊ-cờ"
+        "pronunciation_vi": "đi a-pô-TÊ-cờ",
+        "pronunciation_en": "dee ah-poh-TAY-kuh — borrowed, German stress"
       },
       {
         "word": "das Medikament",
         "en": "medicine",
         "vi": "thuốc",
         "pos": "noun (n)",
-        "pronunciation_vi": "đát mê-đi-ka-MENT"
+        "pronunciation_vi": "đát mê-đi-ka-MENT",
+        "pronunciation_en": "dahs may-dee-kah-MENT — stress on last syllable"
       },
       {
         "word": "die Tablette",
         "en": "tablet/pill",
         "vi": "thuốc viên",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi ta-BLET-tờ"
+        "pronunciation_vi": "đi ta-BLET-tờ",
+        "pronunciation_en": "dee tah-BLET-uh — borrowed, stress on second syllable"
       },
       {
         "word": "der Hustensaft",
         "en": "cough syrup",
         "vi": "siro ho",
         "pos": "noun (m)",
-        "pronunciation_vi": "đe-a HÚS-tần-zaph-tờ"
+        "pronunciation_vi": "đe-a HÚS-tần-zaph-tờ",
+        "pronunciation_en": "dayr HOOS-ten-zaft — compound: Husten + Saft"
       },
       {
         "word": "die Salbe",
         "en": "ointment",
         "vi": "thuốc mỡ",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi ZAN-bờ"
+        "pronunciation_vi": "đi ZAN-bờ",
+        "pronunciation_en": "dee ZAHL-buh — 's' before vowel = 'z'"
       },
       {
         "word": "die Kopfschmerzen",
         "en": "headache",
         "vi": "đau đầu",
         "pos": "noun (pl)",
-        "pronunciation_vi": "đi CỐP-shmea-tsần"
+        "pronunciation_vi": "đi CỐP-shmea-tsần",
+        "pronunciation_en": "dee KOPF-shmair-tsen — compound: Kopf + Schmerzen"
       },
       {
         "word": "der Husten",
         "en": "cough",
         "vi": "ho",
         "pos": "noun (m)",
-        "pronunciation_vi": "đe-a HÚS-tần"
+        "pronunciation_vi": "đe-a HÚS-tần",
+        "pronunciation_en": "dayr HOOS-ten — long 'oo'"
       },
       {
         "word": "die Erkältung",
         "en": "cold",
         "vi": "cảm lạnh",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi ê-CEL-tung"
+        "pronunciation_vi": "đi ê-CEL-tung",
+        "pronunciation_en": "dee air-KEL-toong — 'ä' = short 'eh'"
       },
       {
         "word": "nehmen",
         "en": "to take",
         "vi": "uống/dùng",
         "pos": "verb",
-        "pronunciation_vi": "NÊ-mần"
+        "pronunciation_vi": "NÊ-mần",
+        "pronunciation_en": "NAY-men — long 'ay'"
       },
       {
         "word": "rezeptpflichtig",
         "en": "prescription required",
         "vi": "cần đơn",
         "pos": "adjective",
-        "pronunciation_vi": "rê-TSEPT-phlị-tịc"
+        "pronunciation_vi": "rê-TSEPT-phlị-tịc",
+        "pronunciation_en": "ray-TSEPT-pflish-tikh — long compound, soft ch ending"
       }
     ],
     "dialogue": [
@@ -1866,6 +2223,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "fill_blank",
         "instruction_vi": "Điền từ về thuốc:",
+        "instruction_en": "Fill in the medication vocabulary:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -1885,6 +2243,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "matching",
         "instruction_vi": "Nối từ với nghĩa:",
+        "instruction_en": "Match the word with its meaning:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -1908,6 +2267,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "translation",
         "instruction_vi": "Dịch sang tiếng Đức:",
+        "instruction_en": "Translate into German:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -1940,6 +2300,11 @@ export const lessons: GermanLesson[] = [
           "Termin → TE-min",
           "vereinbaren → phờ-AIN-ba-rần",
           "ei → ai"
+        ],
+        "pronunciation_focus_en": [
+          "Termin → tair-MEEN — stress on second syllable",
+          "vereinbaren → fair-AYN-bah-ren — 'ei' = 'eye', 'V' = 'f'",
+          "ei → 'eye' sound"
         ]
       },
       {
@@ -1949,6 +2314,11 @@ export const lessons: GermanLesson[] = [
           "nächste → NEỊC-stờ — 'ä' = e",
           "Woche → VÔ-khờ",
           "Zeit → TSAIT"
+        ],
+        "pronunciation_focus_en": [
+          "nächste → NEK-stuh — 'ä' = short 'eh'",
+          "Woche → VOKH-uh — hard ch in middle",
+          "Zeit → TSYTE — 'z' = 'ts', 'ei' = 'eye'"
         ]
       },
       {
@@ -1958,6 +2328,11 @@ export const lessons: GermanLesson[] = [
           "Mittwoch → MÍT-vô-khờ",
           "vierzehn → PHÍA-tsên",
           "Uhr → UA"
+        ],
+        "pronunciation_focus_en": [
+          "Mittwoch → MIT-vokh — compound: Mitt + Woch, hard ch",
+          "vierzehn → FEER-tsayn — 'V' = 'f', long 'ee'",
+          "Uhr → OOR — long 'oo', uvular 'r'"
         ]
       },
       {
@@ -1967,6 +2342,11 @@ export const lessons: GermanLesson[] = [
           "Leider → LAI-đờ",
           "muss → mUS",
           "verschieben → phờ-SHÍ-bần"
+        ],
+        "pronunciation_focus_en": [
+          "Leider → LYE-dah — 'ei' = 'eye', '-er' = 'ah'",
+          "muss → MOOS — short 'oo' as in 'put'",
+          "verschieben → fair-SHEE-ben — 'sch' = 'sh', long 'ee'"
         ]
       },
       {
@@ -1976,81 +2356,98 @@ export const lessons: GermanLesson[] = [
           "bestätigen → bờ-SHTEỊ-ti-gần — 'ä' = e",
           "Email → Ê-mây",
           "per → pe-a"
+        ],
+        "pronunciation_focus_en": [
+          "bestätigen → buh-SHTAY-tee-gen — 'sp' nope here ('st' inside), 'ä' long 'ay'",
+          "Email → AY-mayl — close to English with German vowels",
+          "per → PAYR — long 'ay', uvular 'r'"
         ]
       }
     ],
     "cultural_notes_vi": "Người Đức đặt hẹn cho mọi thứ — bác sĩ, ngân hàng, gặp bạn bè, thậm chí thăm nhà. Đến trễ dù chỉ 5 phút bị coi là thiếu tôn trọng. Nếu cần huỷ, hãy báo càng sớm càng tốt — tối thiểu 24h trước. Một số phòng khám tính phí 'Ausfallhonorar' nếu huỷ trễ.",
+    "cultural_notes_en": "Germans book appointments for everything — the doctor, the bank, meeting friends, even visiting someone's home. Showing up 5 minutes late is read as disrespectful, not casual. If you need to cancel, do it as early as possible — at minimum 24 hours in advance. Some clinics charge an 'Ausfallhonorar' (no-show fee) for late cancellations.",
     "tip_advice_vi": "Hỏi về thời gian: 'Geht es am ___?' (Có được không vào ___?) lịch sự hơn 'Können wir am ___?'. Trả lời 'Das passt' (phù hợp) hoặc 'Das passt mir nicht' (không phù hợp với tôi). Thứ trong tuần: Montag, Dienstag, Mittwoch, Donnerstag, Freitag, Samstag, Sonntag.",
+    "tip_advice_en": "Asking about timing: 'Geht es am ___?' (Does ___ work?) is more polite than 'Können wir am ___?'. Reply with 'Das passt' (that works) or 'Das passt mir nicht' (that doesn't work for me). Days of the week: Montag, Dienstag, Mittwoch, Donnerstag, Freitag, Samstag, Sonntag.",
     "vocabulary": [
       {
         "word": "der Termin",
         "en": "appointment",
         "vi": "cuộc hẹn",
         "pos": "noun (m)",
-        "pronunciation_vi": "đe-a TE-min"
+        "pronunciation_vi": "đe-a TE-min",
+        "pronunciation_en": "dayr tair-MEEN — stress on second syllable"
       },
       {
         "word": "die Uhrzeit",
         "en": "time of day",
         "vi": "giờ",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi UA-tsait"
+        "pronunciation_vi": "đi UA-tsait",
+        "pronunciation_en": "dee OOR-tsyte — compound: Uhr + Zeit"
       },
       {
         "word": "das Datum",
         "en": "date",
         "vi": "ngày",
         "pos": "noun (n)",
-        "pronunciation_vi": "đát ĐA-tum"
+        "pronunciation_vi": "đát ĐA-tum",
+        "pronunciation_en": "dahs DAH-toom — long 'ah', short 'oo'"
       },
       {
         "word": "die Woche",
         "en": "week",
         "vi": "tuần",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi VÔ-khờ"
+        "pronunciation_vi": "đi VÔ-khờ",
+        "pronunciation_en": "dee VOKH-uh — hard ch in middle"
       },
       {
         "word": "vereinbaren",
         "en": "to arrange",
         "vi": "đặt/sắp xếp",
         "pos": "verb",
-        "pronunciation_vi": "phờ-AIN-ba-rần"
+        "pronunciation_vi": "phờ-AIN-ba-rần",
+        "pronunciation_en": "fair-AYN-bah-ren — 'ei' = 'eye'"
       },
       {
         "word": "verschieben",
         "en": "to postpone",
         "vi": "dời lại",
         "pos": "verb",
-        "pronunciation_vi": "phờ-SHÍ-bần"
+        "pronunciation_vi": "phờ-SHÍ-bần",
+        "pronunciation_en": "fair-SHEE-ben — 'sch' = 'sh', long 'ee'"
       },
       {
         "word": "absagen",
         "en": "to cancel",
         "vi": "huỷ",
         "pos": "verb (separable)",
-        "pronunciation_vi": "AP-za-gần"
+        "pronunciation_vi": "AP-za-gần",
+        "pronunciation_en": "AHP-zah-gen — separable (ab + sagen)"
       },
       {
         "word": "bestätigen",
         "en": "to confirm",
         "vi": "xác nhận",
         "pos": "verb",
-        "pronunciation_vi": "bờ-SHTEỊ-ti-gần"
+        "pronunciation_vi": "bờ-SHTEỊ-ti-gần",
+        "pronunciation_en": "buh-SHTAY-tee-gen — 'ä' long 'ay'"
       },
       {
         "word": "passen",
         "en": "to fit/suit",
         "vi": "phù hợp",
         "pos": "verb",
-        "pronunciation_vi": "PA-sần"
+        "pronunciation_vi": "PA-sần",
+        "pronunciation_en": "PAH-sen — short 'a'"
       },
       {
         "word": "frei",
         "en": "free/available",
         "vi": "rảnh",
         "pos": "adjective",
-        "pronunciation_vi": "PHRAI"
+        "pronunciation_vi": "PHRAI",
+        "pronunciation_en": "FRY — 'ei' = 'eye', single syllable"
       }
     ],
     "dialogue": [
@@ -2079,6 +2476,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "fill_blank",
         "instruction_vi": "Điền từ về cuộc hẹn:",
+        "instruction_en": "Fill in the appointment vocabulary:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -2098,6 +2496,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "matching",
         "instruction_vi": "Nối từ với nghĩa:",
+        "instruction_en": "Match the word with its meaning:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -2121,6 +2520,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "translation",
         "instruction_vi": "Dịch sang tiếng Đức:",
+        "instruction_en": "Translate into German:",
         "pronunciation_focus": [],
         "items": [
           {
