@@ -220,10 +220,22 @@ export default defineConfig({
         // see the network error rather than HTML where they expected
         // JSON. Cross-origin (supabase.co) requests aren't navigations
         // and don't need to be denylisted here.
+        //
+        // /assets/ is also denylisted: when a stale index.html holds
+        // an old chunk hash and the new deploy removed that file,
+        // Workbox would otherwise serve the precached index.html as
+        // the response body for the chunk request. The browser sees
+        // HTML where it expected JS/CSS, the module-script parse
+        // fails silently, and the user lands on a blank page with
+        // no error to recover from. Excluding /assets/ from the
+        // fallback lets the 404 surface so the preload-failure
+        // recovery in src/lib/preloadRecovery.ts can trigger a
+        // one-time reload to pick up the new index.html.
         navigateFallbackDenylist: [
           /^\/api\//,
           /^\/functions\/v1\//,
           /\/storage\/v1\//,
+          /^\/assets\//,
         ],
         // Belt-and-suspenders: keep the new SW from snatching control
         // away from active tabs. Default with `registerType: 'prompt'`,
