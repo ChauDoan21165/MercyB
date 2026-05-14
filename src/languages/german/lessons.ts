@@ -125,6 +125,8 @@ export type Exercise = {
   /** English mirror of instruction_vi. */
   instruction_en?: string;
   pronunciation_focus: string[];
+  /** English mirror of pronunciation_focus. Same length / ordering as VI. */
+  pronunciation_focus_en?: string[];
   items: ExerciseItem[];
 };
 
