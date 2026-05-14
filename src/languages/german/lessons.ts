@@ -78,10 +78,22 @@ export const GERMAN_CATEGORIES: ReadonlyArray<GermanCategoryMeta> = [
   { id: "fluency", title_vi: "Nói trôi chảy", title_en: "Fluency", expected_count: 5 },
 ];
 
+// Bilingual pedagogy fields. Every Vietnamese-language pedagogy slot has
+// an optional `_en` mirror so the same lesson serves both Vietnamese
+// learners (default) and English learners (when LessonRenderer is
+// invoked with uiLanguage="en"). Mirrors are optional so existing
+// six-language content compiles unchanged while the German→English
+// translation work rolls out level by level (A1 first; A2-C2 follow).
+
 export type LessonSentence = {
   en: string;
   vi: string;
   pronunciation_focus: string[];
+  /** English-speaker-calibrated phonological hints. Same length /
+   *  same ordering as pronunciation_focus when present. Anchored to
+   *  English phonology (e.g. "g → hard 'g' as in 'go'") rather than
+   *  Vietnamese phonology ("g → g cứng"). */
+  pronunciation_focus_en?: string[];
 };
 
 export type VocabEntry = {
@@ -90,6 +102,9 @@ export type VocabEntry = {
   vi: string;
   pos: string;
   pronunciation_vi: string;
+  /** English-speaker-friendly phonetic spelling. Uppercase stressed
+   *  syllable, hyphens between syllables, anchored to English vowels. */
+  pronunciation_en?: string;
 };
 
 export type DialogueLine = {
@@ -107,11 +122,24 @@ export type ExerciseItem = {
 export type Exercise = {
   type: "fill_blank" | "matching" | "translation";
   instruction_vi: string;
+  /** English mirror of instruction_vi. */
+  instruction_en?: string;
   pronunciation_focus: string[];
   items: ExerciseItem[];
 };
 
 export type GermanCefrLevel = "A1" | "A2" | "B1" | "B2" | "C1" | "C2";
+
+export type GermanIdiomGloss = {
+  idiom: string;
+  literal: string;
+  meaning: string;
+  /** English mirror of meaning. B2+ packs. */
+  meaning_en?: string;
+  example: string;
+  /** English mirror of example. B2+ packs. */
+  example_en?: string;
+};
 
 export type GermanLesson = {
   id: string;
@@ -121,7 +149,13 @@ export type GermanLesson = {
   title_en: string;
   sentences: LessonSentence[];
   cultural_notes_vi: string;
+  /** English mirror of cultural_notes_vi. Same facts, calibrated for
+   *  an English-speaking audience (Vietnamese-comparison framing
+   *  swapped for English/Anglophone-comparison where appropriate). */
+  cultural_notes_en?: string;
   tip_advice_vi: string;
+  /** English mirror of tip_advice_vi. */
+  tip_advice_en?: string;
   vocabulary?: VocabEntry[];
   dialogue?: DialogueLine[];
   exercises?: Exercise[];
@@ -129,7 +163,9 @@ export type GermanLesson = {
   dialogue_long?: DialogueLine[];
   roleplay_prompts?: string[];
   register_notes?: string;
-  idiom_glosses?: { idiom: string; literal: string; meaning: string; example: string }[];
+  /** English mirror of register_notes. B2+ only. */
+  register_notes_en?: string;
+  idiom_glosses?: GermanIdiomGloss[];
 };
 
 // ── 1. Greetings ────────────────────────────────────────────────────────
