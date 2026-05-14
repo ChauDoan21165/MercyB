@@ -27,6 +27,10 @@ export const RoomLayout = ({ children, bgColor }: RoomLayoutProps) => (
   // "NotFoundError: Failed to execute 'removeChild' on 'Node'".
   // Sentry c00051fff1674c729840c824069bd77b. Foreign-language room content is
   // the learning material — it shouldn't be auto-translated to Vietnamese anyway.
+  //
+  // PRIMARY mitigation is now <meta name="google" content="notranslate" />
+  // in index.html (site-wide). This attribute stays as defence-in-depth in
+  // case Chrome ever ignores the meta tag or a browser extension bypasses it.
   <main translate="no" className="min-h-screen" style={{ background: bgColor || "hsl(var(--background))" }}>
     {/* ✅ Match Home: PAGE_MAX=980 + 16px padding */}
     <div className="mx-auto max-w-[980px] px-4 py-6 pb-24">
