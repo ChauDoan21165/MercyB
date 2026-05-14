@@ -189,8 +189,8 @@ export type SpanishRegionalVariant = {
 export type SpanishIdiomGloss = {
   idiom: string;
   literal: string;
-  meaning: string;
-  example: string;
+  figurative: string;
+  usage: string;
   region?: string;
 };
 
