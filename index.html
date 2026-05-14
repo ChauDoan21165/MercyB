@@ -18,6 +18,14 @@
     <link rel="manifest" href="/manifest.webmanifest" />
     <meta name="theme-color" content="#0a0a0a" />
 
+    <!-- Block Chrome auto-translate site-wide. Triggers React reconciliation
+         crashes on Vietnamese-locale Chrome Mobile users when <font>/<b>
+         wrappers desync React's cached DOM positions. App is bilingual VI/EN
+         by design — users don't need browser-level translation.
+         Closes MERCYBLADE-WEB-Y. Related: WEB-G, WEB-K, WEB-V, WEB-H.
+         See reports/a13-web-y-react-crash-diagnosis.md. -->
+    <meta name="google" content="notranslate" />
+
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="apple-mobile-web-app-title" content="Mercy Blade" />

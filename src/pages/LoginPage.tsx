@@ -397,6 +397,10 @@ export default function LoginPage() {
     // translate="no" prevents Chrome/Google Translate from wrapping
     // React-managed auth text nodes and triggering removeChild NotFoundError
     // during signin state changes or OAuth redirects.
+    //
+    // PRIMARY mitigation is now <meta name="google" content="notranslate" />
+    // in index.html (site-wide). This attribute stays as defence-in-depth in
+    // case Chrome ever ignores the meta tag or a browser extension bypasses it.
     <div translate="no" className="mb-login-shell" style={UI.page}>
       {/* Responsive collapse: at <= 980px the two-column shell becomes a
           single column and the marketing panel is hidden via display:none.
