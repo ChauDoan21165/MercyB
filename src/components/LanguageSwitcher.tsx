@@ -15,6 +15,7 @@ function barColor(id: LearningLanguage): string {
   const map: Record<LearningLanguage, string> = {
     french: "#3B82F6",
     german: "#EF4444",
+    spanish: "#E11D48",
     japanese: "#F59E0B",
     chinese: "#DC2626",
     korean: "#8B5CF6",

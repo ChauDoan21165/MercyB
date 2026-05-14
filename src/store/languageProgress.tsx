@@ -33,7 +33,7 @@ import {
   type ReactNode,
 } from "react";
 
-export type LearningLanguage = "french" | "german" | "japanese" | "chinese" | "korean" | "vietnamese";
+export type LearningLanguage = "french" | "german" | "japanese" | "chinese" | "korean" | "vietnamese" | "spanish";
 
 export const TOTAL_LESSONS_PER_LANGUAGE = 50;
 
@@ -49,6 +49,7 @@ export interface LanguageMeta {
 export const LANGUAGES: LanguageMeta[] = [
   { id: "french", category: "european", name: "French", nameVi: "Tiếng Pháp", flag: "🇫🇷" },
   { id: "german", category: "european", name: "German", nameVi: "Tiếng Đức", flag: "🇩🇪" },
+  { id: "spanish", category: "european", name: "Spanish", nameVi: "Tiếng Tây Ban Nha", flag: "🇪🇸", totalLessons: 110 },
   { id: "japanese", category: "asian", name: "Japanese", nameVi: "Tiếng Nhật", flag: "🇯🇵" },
   { id: "chinese", category: "asian", name: "Chinese", nameVi: "Tiếng Trung", flag: "🇨🇳" },
   { id: "korean", category: "asian", name: "Korean", nameVi: "Tiếng Hàn", flag: "🇰🇷" },
@@ -66,7 +67,7 @@ const LS_SELECTED = "mb.selectedLearningLanguage";
 type CompletedMap = Record<LearningLanguage, number[]>;
 
 function defaultCompleted(): CompletedMap {
-  return { french: [], german: [], japanese: [], chinese: [], korean: [], vietnamese: [] };
+  return { french: [], german: [], japanese: [], chinese: [], korean: [], vietnamese: [], spanish: [] };
 }
 
 function validateIds(ids: unknown): number[] {
