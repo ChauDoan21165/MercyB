@@ -85,6 +85,7 @@ import { initSentry, stringLooksLikeExternalNoise } from "@/lib/monitoring/sentr
 // observe / report; neither is needed for first paint.
 import { looksLikeChunkLoadFailure as sharedLooksLikeChunkLoadFailure } from "@/lib/chunkLoadError";
 import { attachPreloadFailureRecovery } from "@/lib/preloadRecovery";
+import { unregisterAllServiceWorkers } from "@/lib/swRecovery";
 
 declare global {
   interface Window {
@@ -187,7 +188,21 @@ function clearChunkRecoveryAttempt(): void {
 function scheduleOneTimeChunkReload(): boolean {
   if (hasAlreadyAttemptedChunkRecovery()) return false;
   markChunkRecoveryAttempted();
-  window.setTimeout(() => {
+  // Defer 900 ms so any chained chunk errors collapse into a single
+  // recovery cycle, then unregister the SW before reloading. The SW
+  // — if installed from a prior deploy — would otherwise intercept
+  // the reload navigation and serve the same stale precached
+  // index.html, leaving the page blank because the one-shot session
+  // gate above prevents a second recovery attempt. See
+  // reports/a9-route-recovery-diagnosis.md for the full failure
+  // trace this addresses. The SW re-registers on the next page load
+  // via the existing `registerPwaServiceWorker` IIFE below, so this
+  // only kills it for the recovery reload — healthy users never
+  // reach this code path.
+  window.setTimeout(async () => {
+    try {
+      await unregisterAllServiceWorkers();
+    } catch { /* never block reload on unregister failure */ }
     try { window.location.reload(); } catch { /* ignore */ }
   }, 900);
   return true;
