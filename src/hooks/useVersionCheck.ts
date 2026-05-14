@@ -1,6 +1,7 @@
 // src/hooks/useVersionCheck.ts
 
 import { useState, useEffect, useCallback, useRef } from "react";
+import { unregisterAllServiceWorkers } from "@/lib/swRecovery";
 
 interface VersionInfo {
   version: string;
@@ -108,7 +109,8 @@ export function useVersionCheck() {
       localStorage.removeItem(VERSION_STORAGE_KEY);
     }
 
-    // 2. Tell the service worker to activate the new version immediately
+    // 2. Tell the waiting service worker to activate the new version.
+    //    Works when a new SW has reached `waiting` (the normal case).
     try {
       if ("serviceWorker" in navigator) {
         const reg = await navigator.serviceWorker.getRegistration();
@@ -117,10 +119,18 @@ export function useVersionCheck() {
         }
       }
     } catch {
-      // ignore — fall through to reload
+      // ignore — fall through to unregister + reload
     }
 
-    // 3. Hard reload to pick up the new bundle
+    // 3. Belt-and-suspenders: also unregister all SWs. If the new SW
+    //    never reached `waiting` (e.g. the old SW is intercepting /sw.js
+    //    and the browser hasn't seen an update yet), this guarantees
+    //    the reload below hits origin directly and pulls a fresh
+    //    index.html + JS. The SW re-registers on next page load via
+    //    registerPwaServiceWorker in main.tsx.
+    try { await unregisterAllServiceWorkers(); } catch { /* ignore */ }
+
+    // 4. Hard reload to pick up the new bundle
     window.location.reload();
   }, [latestVersion]);
 

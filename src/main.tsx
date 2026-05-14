@@ -403,25 +403,61 @@ function scheduleOneTimeChunkReload(): boolean {
 })();
 
 (function registerPwaServiceWorker() {
-  // Offline Lite v2 — register the Workbox-built /sw.js so a refresh
-  // while offline serves the cached app shell (navigateFallback in
-  // vite.config.ts) instead of the Chrome dino, and runtime-cached
-  // assets (room JSON, audio, kids/music) are usable cold.
+  // Register the Workbox-built /sw.js. The SW's job:
+  //   - Network-first HTML so the latest shell ships on every deploy.
+  //   - Cache-first hashed JS/CSS chunks for instant repeat loads.
+  //   - Runtime caches for audio / room JSON / kids assets.
   //
-  // Manual registration on purpose: we do NOT pull in the
-  // virtual:pwa-register helper, because the SW is configured with
-  // skipWaiting:false / clientsClaim:false. New deploys land as a
-  // waiting SW; the user picks up the new version on their next full
-  // reload, not mid-session. The chunk-recovery code above already
-  // handles the stale-chunk case if that timing is wrong.
+  // Deploy propagation: workbox builds /sw.js with skipWaiting:true +
+  // clientsClaim:true. On a new deploy, the browser fetches /sw.js,
+  // installs the new SW, then (because of the message handlers below)
+  // tells it to skipWaiting immediately. clientsClaim makes the new SW
+  // take ownership of the open tab. `controllerchange` then fires once,
+  // and we reload exactly once so the page itself runs the new bundle
+  // instead of just having its future fetches served by the new SW.
   //
   // Skipped in dev so HMR + the grammar-server proxy aren't intercepted.
   try {
     if (!import.meta.env.PROD) return;
     if (typeof navigator === "undefined" || !("serviceWorker" in navigator)) return;
+
+    // Snapshot whether the page was loaded under an existing controller.
+    // If yes, a later `controllerchange` event means "the new SW just
+    // took over from the old one" — we should reload to pick up the
+    // matching HTML+JS. If no, the page is a fresh visitor and the
+    // first controllerchange is the initial activation, NOT an update
+    // — we must NOT reload in that case (would loop on first visit).
+    const hadInitialController = Boolean(navigator.serviceWorker.controller);
+    let didReload = false;
+    navigator.serviceWorker.addEventListener("controllerchange", () => {
+      if (!hadInitialController) return;
+      if (didReload) return;
+      didReload = true;
+      try { window.location.reload(); } catch { /* ignore */ }
+    });
+
     window.addEventListener("load", () => {
       navigator.serviceWorker
         .register("/sw.js")
+        .then((registration) => {
+          // When a new SW finishes installing AND an old SW is still
+          // the controller, force the new one to skip waiting. The new
+          // SW (built with skipWaiting:true) already listens for this
+          // message via workbox-build; postMessage triggers it.
+          registration.addEventListener("updatefound", () => {
+            const newWorker = registration.installing;
+            if (!newWorker) return;
+            newWorker.addEventListener("statechange", () => {
+              if (
+                newWorker.state === "installed" &&
+                navigator.serviceWorker.controller
+              ) {
+                try { newWorker.postMessage({ type: "SKIP_WAITING" }); }
+                catch { /* ignore */ }
+              }
+            });
+          });
+        })
         .catch((err) => devLog("[MB SW] register failed", err));
     });
   } catch { /* never block boot on SW registration */ }

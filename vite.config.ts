@@ -119,12 +119,13 @@ export default defineConfig({
       : []),
 
     VitePWA({
-      // Offline Lite v2 — `prompt` mode means the new SW does NOT
-      // skipWaiting / clientsClaim on its own. Active tabs keep using
-      // the old SW (and the old cached chunks) until the user does a
-      // full reload. This is the "no aggressive auto-refresh, no
-      // breaking current users mid-session" rule from the v2 brief.
-      registerType: 'prompt',
+      // Returning users were stuck on the prior deploy because the SW
+      // ran with skipWaiting:false / clientsClaim:false AND served the
+      // precached index.html for every navigation. New SWs sat in
+      // `waiting` until all tabs closed, so old HTML kept coming back.
+      // The fix below (network-first HTML, immediate SW takeover) is
+      // documented in reports/sw-stale-html-diagnosis-2026-05-14.md.
+      registerType: 'autoUpdate',
       // Disable the plugin's auto-injected registerSW.js. The default
       // ('auto') ships a tiny script that calls navigator.serviceWorker
       // .register('/sw.js') with NO `.catch`, so any rejection (private
@@ -149,7 +150,14 @@ export default defineConfig({
         // on every first visit, even for languages the user never opens.
         // Moved to runtime CacheFirst — only cached after first actual
         // lesson load.
-        globIgnores: ['**/lessons-*.js'],
+        //
+        // Also exclude index.html. If it sits in precache, Workbox's
+        // PrecacheRoute / NavigationRoute serves the cached copy for
+        // every navigation, which is exactly the stale-HTML bug we are
+        // fixing. The runtime NetworkFirst rule below handles `/` and
+        // every other navigation request, with its own `pages` cache
+        // for offline fallback.
+        globIgnores: ['**/lessons-*.js', 'index.html'],
         // PR #392 — precache JS allowlist.
         //
         // Before: 276 JS chunks (~5.8 MB) precached on first launch,
@@ -208,41 +216,28 @@ export default defineConfig({
             return { manifest: filtered, warnings: [] };
           },
         ],
-        // Offline Lite v2 — when the browser does an SPA navigation
-        // (e.g. user refreshes /room/foo while offline), serve the
-        // cached index.html so the app shell boots and the in-app
-        // router + roomJsonResolver offline branch can take over.
-        // Without this, an offline refresh of a deep URL hits the
-        // network and falls through to the Chrome dino.
-        navigateFallback: 'index.html',
-        // Make sure live API endpoints don't get the SPA shell when
-        // hit as a navigation; they should fail loudly so callers
-        // see the network error rather than HTML where they expected
-        // JSON. Cross-origin (supabase.co) requests aren't navigations
-        // and don't need to be denylisted here.
-        //
-        // /assets/ is also denylisted: when a stale index.html holds
-        // an old chunk hash and the new deploy removed that file,
-        // Workbox would otherwise serve the precached index.html as
-        // the response body for the chunk request. The browser sees
-        // HTML where it expected JS/CSS, the module-script parse
-        // fails silently, and the user lands on a blank page with
-        // no error to recover from. Excluding /assets/ from the
-        // fallback lets the 404 surface so the preload-failure
-        // recovery in src/lib/preloadRecovery.ts can trigger a
-        // one-time reload to pick up the new index.html.
-        navigateFallbackDenylist: [
-          /^\/api\//,
-          /^\/functions\/v1\//,
-          /\/storage\/v1\//,
-          /^\/assets\//,
-        ],
-        // Belt-and-suspenders: keep the new SW from snatching control
-        // away from active tabs. Default with `registerType: 'prompt'`,
-        // but spelled out so a future change to registerType doesn't
-        // silently flip the update behavior.
-        skipWaiting: false,
-        clientsClaim: false,
+        // Explicit null — vite-plugin-pwa defaults navigateFallback
+        // to 'index.html', which would register a NavigationRoute that
+        // takes priority over runtime caching rules. We want the
+        // NetworkFirst navigation rule below to own all page loads
+        // instead, so the SW can't ever serve a stale precached shell.
+        // index.html is also excluded from precache (see globIgnores).
+        // Tradeoff: an offline refresh of a deep URL that was never
+        // visited online has no shell to fall back to — accepted per
+        // reports/sw-stale-html-diagnosis-2026-05-14.md. The runtime
+        // `pages` cache (filled by NetworkFirst on every online visit)
+        // still serves cached HTML for offline refresh of `/` and any
+        // URL the user previously reloaded.
+        navigateFallback: null,
+
+        // Take over immediately on deploy. With these flipped, the new
+        // SW activates as soon as it installs and claims the open page,
+        // instead of sitting in `waiting` until every tab closes. The
+        // accompanying main.tsx changes message SKIP_WAITING + reload
+        // once on controllerchange so the page itself runs the new
+        // bundle, not just future fetches.
+        skipWaiting: true,
+        clientsClaim: true,
         // Step 8 — pre-cache the core 50 room JSON files so first-time
         // offline visitors can still open a familiar lesson. Audio files
         // are intentionally NOT precached (size budget); they ride the
@@ -252,6 +247,27 @@ export default defineConfig({
           revision: null,
         })),
         runtimeCaching: [
+          {
+            // Network-first for every HTML navigation. This is the
+            // single most important rule in the file: it stops the SW
+            // from ever serving a stale `index.html` for `/`, `/room/x`,
+            // `/account`, etc. Online users always get the latest shell
+            // from Vercel; offline users fall back to the `pages` cache
+            // (populated from prior online visits). Must be registered
+            // before any other rule that could match navigations.
+            //
+            // /assets/, /api/, /functions/v1/, /storage/v1/ are matched
+            // by their own request types (script/fetch/etc, not navigate),
+            // so this matcher only catches actual page-load navigations.
+            urlPattern: ({ request }: { request: Request }) => request.mode === 'navigate',
+            handler: 'NetworkFirst',
+            options: {
+              cacheName: 'pages',
+              networkTimeoutSeconds: 3,
+              cacheableResponse: { statuses: [0, 200] },
+              expiration: { maxEntries: 10, maxAgeSeconds: 60 * 60 * 24 },
+            },
+          },
           {
             urlPattern: /\/audio\/kids\/.*\.mp3$/,
             handler: 'CacheFirst',
