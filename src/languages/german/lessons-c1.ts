@@ -19,6 +19,11 @@ export const lessons: GermanLesson[] = [
           "These → TÊ-zê",
           "Hybridität → huy-bri-đi-TÊT",
           "konzeptualisieren → kôn-tsép-tu-a-li-ZI-rần"
+        ],
+        "pronunciation_focus_en": [
+          "These → TAY-zuh (long 'ay' as in 'they')",
+          "Hybridität → hue-bree-dee-TATE (final stress, 'ä' = 'eh' as in 'fed')",
+          "konzeptualisieren → kon-tsep-too-ah-lee-ZEE-ren ('z' is always 'ts')"
         ]
       },
       {
@@ -28,6 +33,11 @@ export const lessons: GermanLesson[] = [
           "Hypothese → huy-pô-TÊ-zê",
           "systematisch → zys-tê-MA-tish",
           "rekonstruieren → rê-kôn-stru-I-rần"
+        ],
+        "pronunciation_focus_en": [
+          "Hypothese → hue-poh-TAY-zuh (rhymes with 'gay-zuh', not 'pose')",
+          "systematisch → zoos-teh-MAH-tish (initial 's' before vowel = 'z' sound)",
+          "rekonstruieren → reh-kon-stroo-EE-ren ('ie' = 'ee' as in 'see')"
         ]
       },
       {
@@ -37,6 +47,11 @@ export const lessons: GermanLesson[] = [
           "argumentieren → ar-gu-mân-TI-rần",
           "zugunsten → tsu-GUN-stần",
           "vernachlässigt → fe-NAKH-lê-sikht"
+        ],
+        "pronunciation_focus_en": [
+          "argumentieren → ar-goo-men-TEE-ren (stress on -TEE-)",
+          "zugunsten → tsoo-GOON-sten ('z' = 'ts'; means 'in favor of')",
+          "vernachlässigt → fer-NAHKH-leh-sikht ('ch' here = hard back-of-throat sound, like Scottish 'loch')"
         ]
       },
       {
@@ -46,6 +61,11 @@ export const lessons: GermanLesson[] = [
           "mithin → mit-HIN",
           "Forschungslücke → FÔ-shungs-luy-kê",
           "methodisch → mê-TÔ-đish"
+        ],
+        "pronunciation_focus_en": [
+          "mithin → mit-HIN (stress on second syllable; formal 'therefore')",
+          "Forschungslücke → FOR-shungs-loo-kuh ('ü' = rounded 'oo' — lips for 'oo', say 'ee')",
+          "methodisch → meh-TOH-dish ('th' is just a 't' in German — no English 'th' sound)"
         ]
       },
       {
@@ -55,81 +75,98 @@ export const lessons: GermanLesson[] = [
           "theoretischer Rahmen → tê-Ô-rê-ti-shờ RA-mần",
           "umreißen → UM-rai-sần",
           "Vorgehensweise → FÔ-gê-ầns-vai-zê"
+        ],
+        "pronunciation_focus_en": [
+          "theoretischer Rahmen → tay-oh-REH-tish-er RAH-men (every vowel sounded)",
+          "umreißen → UM-rye-sen (separable verb: 'ei' = 'eye' sound; 'ß' = 'ss')",
+          "Vorgehensweise → FOR-gay-ens-vye-zuh ('w' = 'v' always)"
         ]
       }
     ],
     "cultural_notes_vi": "Trình bày luận điểm trong Doktorandenkolloquium (hội thảo nghiên cứu sinh) hoặc Kolloquium (xê-mi-na chuyên đề) ở đại học Đức tuân theo ba quy ước cốt lõi khác hẳn văn hóa học thuật Việt Nam. (1) THESE TRƯỚC, BIOGRAFIE SAU: người Đức expect bạn vào thẳng nội dung nghiên cứu trong 30 giây đầu — KHÔNG dành 5 phút giới thiệu bản thân, kể quá trình học. Câu mở chuẩn: 'Die zentrale These meiner Arbeit besteht darin...' hoặc 'Im Zentrum meiner Untersuchung steht...'. Tiểu sử cá nhân chỉ xuất hiện nếu có người hỏi cụ thể. (2) HEDGING ≠ THIẾU TỰ TIN: ngôn ngữ học thuật Đức dùng Konjunktiv II ('es ließe sich argumentieren', 'dürfte', 'vermutlich') như dấu hiệu CẨN TRỌNG TRI THỨC, không phải lưỡng lự. Câu khẳng định mạnh ('das ist eindeutig...', 'es steht außer Frage') BỊ XEM là thiếu chín chắn ở cấp tiến sĩ. Vietnamese-trained scholars có xu hướng nói cứng do văn hóa khẳng định trong luận văn — phải re-train. (3) EINWÄNDE WILLKOMMEN: ở Kolloquium, giáo sư/đồng nghiệp sẽ challenge ngay tại chỗ — đó là culture, không phải attack. Câu trả lời chuẩn: 'Das ist ein berechtigter Einwand — ich würde wie folgt darauf antworten...' (đó là phản đối có cơ sở — tôi sẽ trả lời như sau).\n\nKhác Việt Nam: ở VN, presentation thường kết bằng 'em xin lắng nghe ý kiến của thầy cô' — gợi ý sự khiêm tốn. Ở Đức, kết bằng 'Damit komme ich zum Schluss und freue mich auf Ihre Fragen' — formal, neutral, ngang hàng intellectually.\n\nMột chi tiết quan trọng: Funktionsverbgefüge (cụm động từ chức năng) là dấu hiệu C1 chuẩn của Wissenschaftssprache. Thay vì 'wir analysieren X', nói 'X wird einer Analyse unterzogen'. Thay vì 'wir verwenden methode Y', nói 'Methode Y kommt zur Anwendung'. Đây không phải pretentious — đây là chuẩn academic. Học thuộc 20-30 cụm này trước Kolloquium đầu tiên.\n\nVề cấu trúc: Doktorandenkolloquium điển hình kéo dài 90 phút. Format: 20-30 phút trình bày + 30-60 phút thảo luận. Slides nên có Handout 2 trang phát đầu — người Đức appreciate Handout vì có thể ghi chú trực tiếp.",
+    "cultural_notes_en": "Presenting your thesis at a German Doktorandenkolloquium (doctoral seminar) or Kolloquium (research workshop) follows three conventions that often catch English-speaking academics off-guard, especially those trained in the US or UK. (1) THESIS FIRST, BIO LATER: Germans expect you to dive into your research content within the first 30 seconds — do NOT spend five minutes on personal introduction, academic background, or thanks. The canonical opener is 'Die zentrale These meiner Arbeit besteht darin...' (the central thesis of my work is...) or 'Im Zentrum meiner Untersuchung steht...' (at the centre of my investigation lies...). Personal biography only surfaces if someone explicitly asks. (2) HEDGING ≠ LACK OF CONFIDENCE: German academic language uses Konjunktiv II ('es ließe sich argumentieren', 'dürfte', 'vermutlich' — 'one could argue', 'might', 'presumably') as a marker of EPISTEMIC CAUTION, not hesitation. Strong assertions ('that is unambiguously...', 'it is beyond question') are READ AS academic immaturity at doctoral level. English-trained scholars often arrive in Germany used to direct, confident phrasing — re-training toward hedged Konjunktiv II is essential. (3) OBJECTIONS ARE WELCOME: at a Kolloquium, professors and peers will challenge you on the spot — that's the culture, not an attack. The standard reply: 'Das ist ein berechtigter Einwand — ich würde wie folgt darauf antworten...' (that is a legitimate objection — I would respond as follows).\n\nContrast with US/UK norms: in many English-speaking academic cultures, presentations end with an invitation like 'I welcome your feedback' — softly deferential. In Germany, the equivalent close is 'Damit komme ich zum Schluss und freue mich auf Ihre Fragen' (with that I conclude and look forward to your questions) — formal, neutral, intellectually peer-to-peer. Don't soften it.\n\nOne crucial detail: Funktionsverbgefüge (function-verb constructions) are the canonical marker of C1 Wissenschaftssprache (academic German). Instead of 'wir analysieren X' (we analyse X), say 'X wird einer Analyse unterzogen' (X is subjected to an analysis). Instead of 'wir verwenden Methode Y' (we use method Y), say 'Methode Y kommt zur Anwendung' (method Y comes into application). This isn't pretentious — it's the academic standard. Memorise 20–30 of these constructions before your first Kolloquium.\n\nOn structure: a typical Doktorandenkolloquium runs 90 minutes — 20–30 minutes of presentation plus 30–60 minutes of discussion. Distribute a 2-page handout at the start; Germans appreciate the handout because they can annotate directly while you speak.",
     "tip_advice_vi": "Trước Kolloquium (1 tuần): (1) Soạn Handout 2 trang A4 — gồm These, Forschungsfrage, methodischer Rahmen, vorläufige Ergebnisse, offene Fragen. Photocopy 15-20 bản. (2) Luyện đọc to phần mở đầu (3 phút) — cho đến khi không cần liếc slide. (3) Chuẩn bị 5-7 câu trả lời cho Standardeinwände: 'Warum diese Methode?', 'Warum dieser Korpus?', 'Wie generalisierbar?', 'Was ist neu?', 'Welche Theorie?'.\n\nTrong khi trình bày: (1) Tốc độ chậm — 100-120 từ/phút (slower than VN academic style). (2) Nhấn mạnh các 'Gliederungssignale' (tín hiệu cấu trúc): 'Im Folgenden...', 'Sodann...', 'Abschließend lässt sich festhalten...'. Người nghe ghi chép theo signals này. (3) Khi quote nguồn, dùng Konjunktiv I: 'Bourdieu (1991) zufolge sei...' (theo Bourdieu thì...).\n\nNgôn ngữ trình bày luận điểm chuẩn:\n- 'Die zentrale These der vorliegenden Arbeit besteht darin...' (luận điểm trung tâm của công trình này là...)\n- 'Daraus ergibt sich die Hypothese, dass...' (từ đó nảy sinh giả thuyết rằng...)\n- 'Es ließe sich argumentieren, dass...' (có thể lập luận rằng... — Konjunktiv II hedging)\n- 'Mein Beitrag zielt darauf ab, ... zu ...' (đóng góp của tôi nhằm...)\n- 'Im Folgenden möchte ich ... darlegen / umreißen / erläutern' (tiếp theo tôi sẽ trình bày/phác thảo/giải thích)\n- 'Damit komme ich zum Schluss' (đến đây tôi đi đến kết luận)\n\nKhi bị phản đối:\n- 'Das ist ein berechtigter Einwand' (đó là phản đối có cơ sở)\n- 'Diese Frage berührt einen wesentlichen Punkt' (câu hỏi này chạm đến một điểm cốt yếu)\n- 'Darauf möchte ich differenziert eingehen' (tôi muốn trả lời điều này một cách phân biệt)\n- 'In dieser Allgemeinheit würde ich der Aussage nicht zustimmen, allerdings...' (ở mức độ khái quát này tôi không đồng ý, tuy nhiên...)\n\nKhi không biết: 'Das übersteigt den Rahmen meiner gegenwärtigen Untersuchung — ich nehme die Anregung gern auf' (điều đó vượt khỏi khuôn khổ nghiên cứu hiện tại của tôi — tôi xin tiếp thu gợi ý). KHÔNG bịa.\n\nMẹo cuối: ghi âm Kolloquium đầu tiên (xin phép trước) — nghe lại để phát hiện các điểm 'Vietnamese-flavored' trong tiếng Đức học thuật của bạn (ví dụ: thiếu Genitiv, dùng Akkusativ thay Dativ sau giới từ). C1 academic đòi hỏi structural precision cao hơn B2 conversational.",
+    "tip_advice_en": "One week before the Kolloquium: (1) Draft a 2-page A4 handout — These (thesis), Forschungsfrage (research question), methodischer Rahmen (methodological framework), vorläufige Ergebnisse (preliminary results), offene Fragen (open questions). Photocopy 15–20 copies. (2) Read your opening aloud (3 minutes) until you no longer need to glance at the slide. (3) Prepare 5–7 stock answers for Standardeinwände (standard objections): 'Warum diese Methode?' (why this method?), 'Warum dieser Korpus?' (why this corpus?), 'Wie generalisierbar?' (how generalisable?), 'Was ist neu?' (what's new?), 'Welche Theorie?' (which theory?).\n\nDuring the presentation: (1) Slow pace — 100–120 words per minute (noticeably slower than the brisk delivery many English-speaking academics default to). (2) Foreground the Gliederungssignale (structural signals): 'Im Folgenden...' (in what follows), 'Sodann...' (next), 'Abschließend lässt sich festhalten...' (in closing it can be noted that...). Listeners take notes by these signals. (3) When citing sources, use Konjunktiv I: 'Bourdieu (1991) zufolge sei...' (according to Bourdieu, it is...) — this is the academic equivalent of English reported speech, but more rigorous.\n\nCanonical thesis-presentation language:\n- 'Die zentrale These der vorliegenden Arbeit besteht darin...' (the central thesis of the present work is...)\n- 'Daraus ergibt sich die Hypothese, dass...' (from this arises the hypothesis that...)\n- 'Es ließe sich argumentieren, dass...' (one could argue that... — Konjunktiv II hedging)\n- 'Mein Beitrag zielt darauf ab, ... zu ...' (my contribution aims to...)\n- 'Im Folgenden möchte ich ... darlegen / umreißen / erläutern' (in what follows I will set out / outline / explain)\n- 'Damit komme ich zum Schluss' (with that I come to my conclusion)\n\nWhen challenged:\n- 'Das ist ein berechtigter Einwand' (that's a legitimate objection)\n- 'Diese Frage berührt einen wesentlichen Punkt' (this question touches on an essential point)\n- 'Darauf möchte ich differenziert eingehen' (I'd like to address that in a nuanced way)\n- 'In dieser Allgemeinheit würde ich der Aussage nicht zustimmen, allerdings...' (at that level of generality I wouldn't agree with the statement; however...)\n\nWhen you don't know: 'Das übersteigt den Rahmen meiner gegenwärtigen Untersuchung — ich nehme die Anregung gern auf' (that exceeds the scope of my current investigation — I'm glad to take up the suggestion). DON'T fabricate.\n\nFinal tip: record your first Kolloquium (with permission) — listen back to catch the patterns in your academic German that betray your L1 (typical issues: missing Genitiv, Akkusativ where Dativ is required after a preposition). C1 academic German demands a noticeably higher level of structural precision than B2 conversational German.",
     "vocabulary": [
       {
         "word": "die These",
         "en": "thesis, central claim",
         "vi": "luận điểm",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi TÊ-zê"
+        "pronunciation_vi": "đi TÊ-zê",
+        "pronunciation_en": "dee TAY-zuh — long 'ay' as in 'they'; rhymes with English 'gaze-uh'"
       },
       {
         "word": "die Hypothese",
         "en": "hypothesis",
         "vi": "giả thuyết",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi huy-pô-TÊ-zê"
+        "pronunciation_vi": "đi huy-pô-TÊ-zê",
+        "pronunciation_en": "dee hue-poh-TAY-zuh — initial 'Hy-' rhymes with 'view', not 'high'"
       },
       {
         "word": "der Forschungsstand",
         "en": "state of the art (research)",
         "vi": "tình trạng nghiên cứu hiện tại",
         "pos": "noun (m)",
-        "pronunciation_vi": "đe FÔ-shungs-shtant"
+        "pronunciation_vi": "đe FÔ-shungs-shtant",
+        "pronunciation_en": "dayr FOR-shungs-shtahnt — 'st' at start of a word/syllable = 'sht'; final 'd' devoices to 't'"
       },
       {
         "word": "die Forschungslücke",
         "en": "research gap",
         "vi": "khoảng trống nghiên cứu",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi FÔ-shungs-luy-kê"
+        "pronunciation_vi": "đi FÔ-shungs-luy-kê",
+        "pronunciation_en": "dee FOR-shungs-loo-kuh — 'ü' = rounded 'oo' (lips for 'oo', say 'ee')"
       },
       {
         "word": "der theoretische Rahmen",
         "en": "theoretical framework",
         "vi": "khung lý thuyết",
         "pos": "noun phrase",
-        "pronunciation_vi": "đe tê-Ô-rê-ti-shê RA-mần"
+        "pronunciation_vi": "đe tê-Ô-rê-ti-shê RA-mần",
+        "pronunciation_en": "dayr tay-oh-REH-tish-er RAH-men — German 'th' is just 't', no English 'th' sound"
       },
       {
         "word": "die Vorgehensweise",
         "en": "methodological approach",
         "vi": "phương pháp tiến hành",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi FÔ-gê-ầns-vai-zê"
+        "pronunciation_vi": "đi FÔ-gê-ầns-vai-zê",
+        "pronunciation_en": "dee FOR-gay-ens-vye-zuh — 'w' is always 'v'; 'ei' = 'eye' sound"
       },
       {
         "word": "umreißen",
         "en": "to outline (in broad strokes)",
         "vi": "phác thảo (rộng)",
         "pos": "verb (sep.)",
-        "pronunciation_vi": "UM-rai-sần"
+        "pronunciation_vi": "UM-rai-sần",
+        "pronunciation_en": "UM-rye-sen — separable verb; 'ß' = 'ss', 'ei' = 'eye'"
       },
       {
         "word": "darlegen",
         "en": "to set forth, expound",
         "vi": "trình bày (chi tiết)",
         "pos": "verb (sep.)",
-        "pronunciation_vi": "ĐA-lê-gần"
+        "pronunciation_vi": "ĐA-lê-gần",
+        "pronunciation_en": "DAR-lay-gen — separable: 'legen ... dar' in main clauses"
       },
       {
         "word": "konzeptualisieren",
         "en": "to conceptualize",
         "vi": "khái niệm hóa",
         "pos": "verb",
-        "pronunciation_vi": "kôn-tsép-tu-a-li-ZI-rần"
+        "pronunciation_vi": "kôn-tsép-tu-a-li-ZI-rần",
+        "pronunciation_en": "kon-tsep-too-ah-lee-ZEE-ren — final-syllable stress; 'z' is always 'ts'"
       },
       {
         "word": "der Beitrag (zu)",
         "en": "contribution (to a field)",
         "vi": "đóng góp (cho lĩnh vực)",
         "pos": "noun (m)",
-        "pronunciation_vi": "đe BAI-trak"
+        "pronunciation_vi": "đe BAI-trak",
+        "pronunciation_en": "dayr BYE-trahk — 'ei' = 'eye'; final '-g' devoices to '-k'"
       }
     ],
     "dialogue": [
@@ -247,36 +284,46 @@ export const lessons: GermanLesson[] = [
       "Một đồng nghiệp postdoc đặt câu hỏi về tính khái quát của nghiên cứu. Đáp bằng Funktionsverbgefüge + tự giới hạn formal: 'meine Studie erhebt keinen Anspruch auf statistische Repräsentativität' — không defensive, không apologetic."
     ],
     "register_notes": "Trình bày luận điểm C1 academic: 'Sie' tuyệt đối với tất cả participants kể cả đồng nghiệp postdoc gặp lần đầu. Konjunktiv II cho hedging luận điểm: 'es ließe sich argumentieren', 'dürfte', 'wäre denkbar'. Konjunktiv I cho citing nguồn: 'Bourdieu zufolge sei...', 'Nach Auer handle es sich um...'. Funktionsverbgefüge bắt buộc: 'zur Anwendung kommen' (= angewendet werden), 'in Frage stellen' (= bezweifeln), 'Bezug nehmen auf' (= sich beziehen auf), 'in Erwägung ziehen' (= überlegen). Connectors C1 chuẩn: 'mithin' (do đó, formal hơn 'also'), 'demzufolge' (theo đó), 'gleichwohl' (tuy nhiên, formal), 'insofern als' (xét rằng), 'sodann' (tiếp đó). KHÔNG dùng 'und so' / 'aber' / 'auch' đơn lẻ — colloquial. Genitiv bắt buộc với: 'aufgrund', 'hinsichtlich', 'zugunsten', 'ungeachtet'. Khi không biết: 'Das übersteigt den Rahmen meiner gegenwärtigen Untersuchung' — không bịa, không 'ich weiß nicht' đơn lẻ.",
+    "register_notes_en": "C1 academic presentation register: 'Sie' is absolute with every participant — including postdoc peers you've just met. Konjunktiv II for thesis-hedging: 'es ließe sich argumentieren' (one could argue), 'dürfte' (might/should), 'wäre denkbar' (would be conceivable). Konjunktiv I for citing sources: 'Bourdieu zufolge sei...' (according to Bourdieu, it is...), 'Nach Auer handle es sich um...' (according to Auer it concerns...). Funktionsverbgefüge are required: 'zur Anwendung kommen' (= 'angewendet werden' — to be applied), 'in Frage stellen' (= 'bezweifeln' — to call into question), 'Bezug nehmen auf' (= 'sich beziehen auf' — to refer to), 'in Erwägung ziehen' (= 'überlegen' — to consider). C1 connectors: 'mithin' (therefore, more formal than 'also'), 'demzufolge' (consequently), 'gleichwohl' (nonetheless, formal), 'insofern als' (insofar as), 'sodann' (then, next). DO NOT use bare 'und so' / 'aber' / 'auch' as connectors — that reads as colloquial. Genitiv is required after: 'aufgrund' (due to), 'hinsichtlich' (regarding), 'zugunsten' (in favour of), 'ungeachtet' (despite). When you don't know: 'Das übersteigt den Rahmen meiner gegenwärtigen Untersuchung' (that exceeds the scope of my current investigation) — never fabricate, never bare 'ich weiß nicht'.",
     "idiom_glosses": [
       {
         "idiom": "den Nagel auf den Kopf treffen",
         "literal": "đóng đinh ngay vào đầu",
         "meaning": "nói trúng tâm điểm vấn đề (gehoben/standardsprachlich)",
-        "example": "Mit dieser Beobachtung haben Sie den Nagel auf den Kopf getroffen — das ist genau die Forschungslücke, die ich adressiere."
+        "meaning_en": "to hit the nail on the head — pinpoint the heart of the matter (elevated/standard register)",
+        "example": "Mit dieser Beobachtung haben Sie den Nagel auf den Kopf getroffen — das ist genau die Forschungslücke, die ich adressiere.",
+        "example_en": "Mit dieser Beobachtung haben Sie den Nagel auf den Kopf getroffen — das ist genau die Forschungslücke, die ich adressiere. ('With that observation you've hit the nail on the head — that's exactly the research gap I'm addressing.')"
       },
       {
         "idiom": "etwas auf den Punkt bringen",
         "literal": "đưa điều gì đến đúng điểm",
         "meaning": "tóm gọn vào trọng tâm cốt lõi (standardsprachlich)",
-        "example": "Wenn ich meine These auf den Punkt bringen darf: sprachliche Hybridität ist Ressource, nicht Defizit."
+        "meaning_en": "to bring something to a point — sum it up at its essential core (standard register)",
+        "example": "Wenn ich meine These auf den Punkt bringen darf: sprachliche Hybridität ist Ressource, nicht Defizit.",
+        "example_en": "Wenn ich meine These auf den Punkt bringen darf: sprachliche Hybridität ist Ressource, nicht Defizit. ('If I may bring my thesis to a point: linguistic hybridity is a resource, not a deficit.')"
       },
       {
         "idiom": "ein zweischneidiges Schwert sein",
         "literal": "là một thanh kiếm hai lưỡi",
         "meaning": "có cả mặt lợi và mặt hại (gehoben)",
-        "example": "Die quantitative Methode ist ein zweischneidiges Schwert — sie bringt Repräsentativität, aber auf Kosten der Tiefenschärfe."
+        "meaning_en": "to be a double-edged sword — cuts both ways (elevated register)",
+        "example": "Die quantitative Methode ist ein zweischneidiges Schwert — sie bringt Repräsentativität, aber auf Kosten der Tiefenschärfe.",
+        "example_en": "Die quantitative Methode ist ein zweischneidiges Schwert — sie bringt Repräsentativität, aber auf Kosten der Tiefenschärfe. ('The quantitative method is a double-edged sword — it brings representativeness, but at the cost of analytical depth.')"
       },
       {
         "idiom": "Wasser auf jemandes Mühle sein",
         "literal": "là nước cho cối xay của ai đó",
         "meaning": "ủng hộ luận điểm của ai đó (gehoben)",
-        "example": "Die jüngsten Befunde von Pennycook sind Wasser auf meine Mühle — sie bestätigen meinen Ressourcenansatz."
+        "meaning_en": "to be water on someone's mill — to support/play into someone's argument (elevated register; closest English equivalent: 'grist to one's mill')",
+        "example": "Die jüngsten Befunde von Pennycook sind Wasser auf meine Mühle — sie bestätigen meinen Ressourcenansatz.",
+        "example_en": "Die jüngsten Befunde von Pennycook sind Wasser auf meine Mühle — sie bestätigen meinen Ressourcenansatz. ('Pennycook's latest findings are grist to my mill — they confirm my resource-based approach.')"
       }
     ],
     "exercises": [
       {
         "type": "fill_blank",
         "instruction_vi": "Điền cấu trúc trình bày luận điểm C1:",
+        "instruction_en": "Fill in the C1 thesis-presentation structure:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -300,6 +347,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "matching",
         "instruction_vi": "Nối Funktionsverbgefüge Đức với động từ tương đương đơn giản:",
+        "instruction_en": "Match each German Funktionsverbgefüge (function-verb construction) to its simple-verb equivalent:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -323,6 +371,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "translation",
         "instruction_vi": "Dịch sang tiếng Đức học thuật C1 (Funktionsverbgefüge + Konjunktiv II khi cần):",
+        "instruction_en": "Translate into C1 academic German (use Funktionsverbgefüge and Konjunktiv II where appropriate):",
         "pronunciation_focus": [
           "thesis presentation"
         ],
@@ -361,6 +410,11 @@ export const lessons: GermanLesson[] = [
           "Bourdieu → bu-ĐI-uy",
           "zufolge → tsu-FÔL-gê",
           "Anerkennung → AN-e-ken-nung"
+        ],
+        "pronunciation_focus_en": [
+          "Bourdieu → boor-DYUH (French name; final stress, soft 'r')",
+          "zufolge → tsoo-FOL-guh ('z' = 'ts'; means 'according to')",
+          "Anerkennung → AHN-er-ken-nung (initial stress; 'recognition / acknowledgement')"
         ]
       },
       {
@@ -370,6 +424,11 @@ export const lessons: GermanLesson[] = [
           "Anlehnung → AN-lê-nung",
           "kommunikative → kô-mu-ni-ka-TI-vê",
           "dergestalt → đe-gê-SHTAL-t"
+        ],
+        "pronunciation_focus_en": [
+          "Anlehnung → AHN-lay-nung ('following / leaning on'; initial stress)",
+          "kommunikative → ko-moo-nee-kah-TEE-vuh ('v' is pronounced 'v' here, not 'f', in this Latin-derived word)",
+          "dergestalt → dair-guh-SHTAHLT ('such that / in such a way')"
         ]
       },
       {
@@ -379,6 +438,11 @@ export const lessons: GermanLesson[] = [
           "verweist → fe-VAIST",
           "ethnomethodologisch → êt-nô-mê-tô-đô-LÔ-gish",
           "Prämissen → PRÊ-mi-sần"
+        ],
+        "pronunciation_focus_en": [
+          "verweist → fer-VYESTE ('ei' = 'eye' sound; 'v' = 'f')",
+          "ethnomethodologisch → et-no-meh-toh-doh-LOH-gish (academic mouthful — six syllables)",
+          "Prämissen → PRAY-miss-en ('ä' = 'eh' as in 'fed')"
         ]
       },
       {
@@ -388,6 +452,11 @@ export const lessons: GermanLesson[] = [
           "ausgeführt → AOS-gê-fuyt",
           "vgl. → fe-glaikh-ê",
           "unumstritten → un-um-SHTRI-tần"
+        ],
+        "pronunciation_focus_en": [
+          "ausgeführt → OWS-guh-fuert ('au' = 'ow' as in 'how'; 'ü' = rounded 'oo')",
+          "vgl. → read aloud as 'vergleiche' = fer-GLY-khuh ('cf.' equivalent)",
+          "unumstritten → oon-oom-SHTRIT-ten ('not uncontested' — note 'st' = 'sht' word-internally here)"
         ]
       },
       {
@@ -397,81 +466,98 @@ export const lessons: GermanLesson[] = [
           "stützen sich → SHTUY-tsần zikh",
           "maßgeblich → MAS-gê-blikh",
           "anschließen → AN-shli-sần"
+        ],
+        "pronunciation_focus_en": [
+          "stützen sich → SHTUET-sen zikh ('ü' = rounded 'oo'; reflexive verb)",
+          "maßgeblich → MAHSS-gay-blikh ('ß' = 'ss'; 'decisively / significantly')",
+          "anschließen → AHN-shlee-sen (separable: 'schließen ... an'; 'to join / agree with')"
         ]
       }
     ],
     "cultural_notes_vi": "Trích dẫn nguồn trong học thuật Đức tuân theo những quy ước tinh tế khác văn hóa Anh-Mỹ và Việt Nam. (1) KONJUNKTIV I CHO INDIREKTE REDE: khi tường thuật quan điểm tác giả khác, dùng Konjunktiv I bắt buộc để TÁCH ý kiến của họ khỏi quan điểm của bạn. 'Bourdieu sagt, dass X ist' SAI ở C1 — phải là 'Bourdieu zufolge sei X' hoặc 'Nach Bourdieu handle es sich um X'. Đây là dấu hiệu wissenschaftliche Distanzierung. (2) BẮT BUỘC trang số: 'Bourdieu (1991, S. 47)' — khác Anh-Mỹ thường chỉ ghi năm. Trích nguyên văn (direkte Zitate) phải có trang. Nếu là paraphrase, có thể (S. xx-yy). (3) CITATION STYLES KHÁC VIỆT NAM: ở Đức Geisteswissenschaften thường dùng harvard-style 'Müller (2019)' inline + Bibliografie cuối; Naturwissenschaften thường dùng số '[1]'. Mỗi Lehrstuhl có Stilrichtlinien riêng — HỎI Doktorvater/-mutter trước khi viết.\n\nKhác Việt Nam: ở VN, trích dẫn thường có yếu tố 'tôn trọng học giả lớn' — trích nhiều, không tranh luận. Ở Đức, trích là để TRANH LUẬN với tác giả, đồng tình hoặc không đồng tình một cách rõ ràng. 'In Anlehnung an X, jedoch...' (dựa theo X, song...) là cấu trúc chuẩn — trích để định vị bản thân, không trích để xưng tụng.\n\nSelbstplagiarismus (tự đạo văn): nếu bạn đã publish một đoạn ở Hausarbeit cũ hoặc bài hội thảo, KHÔNG được copy nguyên văn vào luận văn mà không trích chính mình. 'Wie bereits an anderer Stelle ausgeführt wurde (vgl. Verfasserin 2023)...' — bắt buộc.\n\nMột chi tiết quan trọng: cụm từ 'vgl.' (vergleiche = so sánh) ≠ trích nguyên văn. Dùng 'vgl.' khi paraphrase + chỉ tham chiếu. Dùng nguyên văn '...' với trang chính xác khi quote literal. Lẫn hai cái = vi phạm hàn lâm nghiêm trọng có thể bị rút bằng (ví dụ vụ Karl-Theodor zu Guttenberg).\n\nVề DSGVO: trích nguồn từ social media, blog cá nhân của người sống — có ràng buộc bảo vệ dữ liệu cá nhân. Tham khảo Datenschutzbeauftragte của trường trước khi đưa vào luận văn.\n\nVề trích nguồn tiếng Việt trong văn bản tiếng Đức: dùng tên tác giả gốc + (Übersetzung der Verfasserin) sau bản dịch. KHÔNG translit ngẫu hứng — theo bảng UTF-8 chuẩn quốc tế.",
+    "cultural_notes_en": "Citation in German academia follows subtler conventions than the US/UK or Vietnamese traditions. (1) KONJUNKTIV I FOR REPORTED SPEECH: when reporting another author's view, German requires Konjunktiv I to MARK A DISTANCE between their view and yours. 'Bourdieu sagt, dass X ist' (Bourdieu says X is...) is WRONG at C1 — it must be 'Bourdieu zufolge sei X' (according to Bourdieu, it is X) or 'Nach Bourdieu handle es sich um X' (according to Bourdieu, it concerns X). This is the signal of wissenschaftliche Distanzierung (scholarly distance). (2) PAGE NUMBERS ARE OBLIGATORY: 'Bourdieu (1991, S. 47)' — differing from much US/UK practice where year alone often suffices. Direct quotations MUST carry a page number; paraphrases may use (S. xx–yy). (3) CITATION STYLES VARY BY FIELD: in the German humanities (Geisteswissenschaften), Harvard-style 'Müller (2019)' in-text plus a final Bibliografie is standard; the natural sciences (Naturwissenschaften) typically use numbered '[1]'-style. Each Lehrstuhl (departmental chair) has its own Stilrichtlinien — ASK your Doktorvater/-mutter before writing.\n\nContrast with English-speaking norms: in many US/UK humanities cultures, citations serve to acknowledge predecessors. In Germany, citation is for ARGUMENT — to agree or disagree with the author explicitly. 'In Anlehnung an X, jedoch...' (following X, but...) is the standard structure — you cite to POSITION yourself, not to pay homage.\n\nSelbstplagiarismus (self-plagiarism): if you've already published a passage in an earlier Hausarbeit (term paper) or conference paper, you are NOT permitted to copy it verbatim into your dissertation without citing yourself. The required form: 'Wie bereits an anderer Stelle ausgeführt wurde (vgl. Verfasserin 2023)...' (as set out elsewhere, cf. the author 2023).\n\nOne crucial detail: 'vgl.' (vergleiche — 'cf.', compare) is NOT a verbatim quotation marker. Use 'vgl.' for paraphrase and reference. Use literal quotation marks (German style: ‚…' or „…\") with an exact page number for direct quotes. Confusing the two is a serious academic violation that can lead to a doctorate being revoked — the high-profile Karl-Theodor zu Guttenberg case (2011) ended a federal minister's career exactly here.\n\nOn DSGVO (the EU GDPR): citing personal social-media posts or blogs of living people carries data-protection obligations. Consult your university's Datenschutzbeauftragte (data-protection officer) before including such material in a dissertation.\n\nOn citing Vietnamese sources in a German text: use the original author's name plus '(Übersetzung der Verfasserin)' (translation by the author) after the translated passage. DO NOT transliterate ad hoc — follow the international UTF-8 standard.",
     "tip_advice_vi": "Trước khi trích:\n1. KIỂM TRA SOURCE TRỰC TIẾP — không trích lại từ secondary source mà không note. Nếu phải dùng secondary: 'X (1985, zit. nach Y 2010, S. 23)' — bắt buộc dấu 'zit. nach'.\n2. CHECK trang chính xác — Citavi/Zotero làm sạch tự động, nhưng verify ở bản in/PDF gốc.\n3. KIỂM TRA Sekundärliteratur — khoa học Đức expect bạn đọc cả các critic của tác giả gốc. Trích Bourdieu mà không đọc Wacquant về Bourdieu = thiếu sót.\n\nCấu trúc trích dẫn formal:\n- 'X zufolge sei Y' — Konjunktiv I, formal nhất\n- 'Nach X handle es sich um Y' — Konjunktiv I, formal\n- 'X (Jahr) argumentiert, dass Y sei' — Konjunktiv I in subordinate clause\n- 'In Anlehnung an X' — dựa theo (đồng tình)\n- 'Im Anschluss an X' — tiếp theo X (đồng tình)\n- 'Im Unterschied zu X' — khác với X\n- 'In Abgrenzung von X' — phân biệt với X (formal hơn)\n- 'Entgegen der Auffassung von X' — trái với quan điểm của X\n- 'Wie bereits ... ausgeführt wurde (vgl. X Jahr)' — như đã nói (paraphrase tự trích)\n- 'Bekanntlich verweist X darauf, dass...' — như được biết, X chỉ ra rằng (formal)\n\nKhi không đồng ý với tác giả:\n- 'Diese Position erscheint mir aus zwei Gründen problematisch' (formal)\n- 'In dieser Allgemeinheit lässt sich der Aussage nicht zustimmen'\n- 'Gegen diese Lesart spricht jedoch...'\n- KHÔNG: 'X liegt falsch' / 'X ist Unsinn' (colloquial + thiếu register)\n\nKhi nguồn cũ nhưng vẫn relevant:\n- 'Auch wenn die Studie aus dem Jahr 1985 stammt, behält ihre Argumentation Gültigkeit, da...'\n\nKhi nguồn primary inaccessible:\n- 'Für eine umfassende Diskussion vgl. Y (Jahr)' — chuyển reader sang secondary\n\nMẹo cuối: viết 1 trang Begründung (justification) cho mỗi nguồn quan trọng — TẠI SAO bạn trích Bourdieu mà không Foucault? Doktorvater sẽ hỏi. Có sẵn = Verteidigung dễ hơn nhiều. Citavi có chức năng note này — dùng từ ngày đầu PhD.",
+    "tip_advice_en": "Before citing:\n1. CHECK THE SOURCE DIRECTLY — don't requote from secondary sources without marking it. If you have to use secondary: 'X (1985, zit. nach Y 2010, S. 23)' — the 'zit. nach' marker is mandatory.\n2. VERIFY exact page numbers — Citavi/Zotero auto-format, but always confirm against the original print or PDF.\n3. CHECK Sekundärliteratur (secondary literature) — German academia expects you to read the critics of your primary source. Citing Bourdieu without reading Wacquant on Bourdieu is a noticeable gap.\n\nFormal citation structures:\n- 'X zufolge sei Y' — Konjunktiv I, the most formal frame\n- 'Nach X handle es sich um Y' — Konjunktiv I, formal\n- 'X (Jahr) argumentiert, dass Y sei' — Konjunktiv I inside the subordinate clause\n- 'In Anlehnung an X' — following X (agreement)\n- 'Im Anschluss an X' — picking up from X (agreement)\n- 'Im Unterschied zu X' — in contrast with X\n- 'In Abgrenzung von X' — distinguishing from X (more formal)\n- 'Entgegen der Auffassung von X' — against the view of X\n- 'Wie bereits ... ausgeführt wurde (vgl. X Jahr)' — as already noted (paraphrase self-citation)\n- 'Bekanntlich verweist X darauf, dass...' — as is well known, X points out that... (formal)\n\nWhen you disagree with an author:\n- 'Diese Position erscheint mir aus zwei Gründen problematisch' (this position seems problematic to me for two reasons — formal)\n- 'In dieser Allgemeinheit lässt sich der Aussage nicht zustimmen' (at this level of generality, one cannot agree with the statement)\n- 'Gegen diese Lesart spricht jedoch...' (against this reading, however, speaks...)\n- DON'T USE: 'X liegt falsch' / 'X ist Unsinn' (X is wrong / X is nonsense — colloquial, wrong register)\n\nWhen a source is old but still relevant:\n- 'Auch wenn die Studie aus dem Jahr 1985 stammt, behält ihre Argumentation Gültigkeit, da...' (even though the study is from 1985, its argument retains validity because…)\n\nWhen the primary source is inaccessible:\n- 'Für eine umfassende Diskussion vgl. Y (Jahr)' (for a comprehensive discussion, cf. Y year) — point the reader to a secondary source\n\nFinal tip: write a 1-page Begründung (justification) for each major source — WHY are you citing Bourdieu rather than Foucault? Your Doktorvater will ask. Having it pre-written makes your defence much easier. Citavi has a built-in note function — use it from day one of your PhD.",
     "vocabulary": [
       {
         "word": "das Zitat",
         "en": "quotation, citation",
         "vi": "trích dẫn",
         "pos": "noun (n)",
-        "pronunciation_vi": "đát tsi-TAT"
+        "pronunciation_vi": "đát tsi-TAT",
+        "pronunciation_en": "dahs tsee-TAHT — 'z' = 'ts'; final stress"
       },
       {
         "word": "die Quelle",
         "en": "source",
         "vi": "nguồn",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi KVÊ-lê"
+        "pronunciation_vi": "đi KVÊ-lê",
+        "pronunciation_en": "dee KVEH-luh — 'qu' = 'kv', not 'kw' like English"
       },
       {
         "word": "zufolge (+ Dat)",
         "en": "according to",
         "vi": "theo (formal)",
         "pos": "preposition (Dat)",
-        "pronunciation_vi": "tsu-FÔL-gê"
+        "pronunciation_vi": "tsu-FÔL-gê",
+        "pronunciation_en": "tsoo-FOL-guh — 'z' = 'ts'; takes Dativ case"
       },
       {
         "word": "in Anlehnung an",
         "en": "in accordance with, following",
         "vi": "dựa theo",
         "pos": "phrase",
-        "pronunciation_vi": "in AN-lê-nung an"
+        "pronunciation_vi": "in AN-lê-nung an",
+        "pronunciation_en": "in AHN-lay-nung ahn — stress on 'AHN-'; followed by Akkusativ"
       },
       {
         "word": "verweisen auf",
         "en": "to refer to",
         "vi": "dẫn chiếu đến",
         "pos": "verb (sep.)",
-        "pronunciation_vi": "fe-VAI-zần aof"
+        "pronunciation_vi": "fe-VAI-zần aof",
+        "pronunciation_en": "fer-VYE-zen owf — 'v' = 'f'; 'ei' = 'eye'; 'au' = 'ow' as in 'how'"
       },
       {
         "word": "die Anmerkung / Fußnote",
         "en": "footnote, annotation",
         "vi": "chú thích / cước chú",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi AN-mê-kung / FUS-nô-tê"
+        "pronunciation_vi": "đi AN-mê-kung / FUS-nô-tê",
+        "pronunciation_en": "dee AHN-mer-kung / FOOSS-noh-tuh — 'ß' = 'ss'"
       },
       {
         "word": "vgl. (vergleiche)",
         "en": "cf. (compare)",
         "vi": "xem / so sánh (cước chú)",
         "pos": "abbreviation",
-        "pronunciation_vi": "fe-glai-khê"
+        "pronunciation_vi": "fe-glai-khê",
+        "pronunciation_en": "fer-GLY-khuh — abbreviation written 'vgl.' but spoken in full"
       },
       {
         "word": "ebd. (ebenda)",
         "en": "ibid.",
         "vi": "cùng nguồn (như trên)",
         "pos": "abbreviation",
-        "pronunciation_vi": "ê-bên-đa"
+        "pronunciation_vi": "ê-bên-đa",
+        "pronunciation_en": "AY-ben-dah — written 'ebd.' but spoken in full"
       },
       {
         "word": "der/die Verfasser/-in",
         "en": "author",
         "vi": "tác giả",
         "pos": "noun (m/f)",
-        "pronunciation_vi": "đe fe-FA-sờ"
+        "pronunciation_vi": "đe fe-FA-sờ",
+        "pronunciation_en": "dayr fer-FAH-ser — 'v' = 'f'; feminine form takes '-in'"
       },
       {
         "word": "die Sekundärliteratur",
         "en": "secondary literature",
         "vi": "tài liệu thứ cấp",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi zê-kun-ĐÊ-li-tê-ra-tu"
+        "pronunciation_vi": "đi zê-kun-ĐÊ-li-tê-ra-tu",
+        "pronunciation_en": "dee zay-koon-DAYR-lee-teh-rah-toor — 'ä' = 'eh'"
       }
     ],
     "dialogue": [
@@ -584,36 +670,46 @@ export const lessons: GermanLesson[] = [
       "Hỏi về Selbstzitation: bạn đã viết một đoạn trong Konferenzpapier 2023, giờ muốn dùng lại trong luận án. Doktormutter giải thích bắt buộc tự trích — diễn đạt câu chuẩn 'Wie bereits an anderer Stelle ausgeführt wurde'."
     ],
     "register_notes": "Trích dẫn C1 academic: Konjunktiv I bắt buộc cho indirekte Rede. 'Bourdieu sagt, X ist' SAI; phải là 'Bourdieu zufolge sei X' / 'Nach Bourdieu handle es sich um X'. Khi quote literal: dấu ‚...' (Anführungszeichen Đức) hoặc Anführungszeichen kép + trang chính xác. Khi paraphrase: 'vgl. X (Jahr, S. xx-yy)'. Funktionsverbgefüge: 'Bezug nehmen auf' (= sich beziehen auf), 'in Anlehnung an' (= sich anlehnen), 'in Abgrenzung von' (= sich abgrenzen). Connectors: 'andernfalls' (nếu không), 'gleichwohl' (tuy nhiên formal), 'insofern als' (xét rằng). Khi không đồng ý: 'In dieser Allgemeinheit lässt sich der Aussage nicht zustimmen' / 'Gegen diese Lesart spricht jedoch...' — KHÔNG 'X ist falsch' / 'X liegt daneben'. Selbstzitation bắt buộc: 'wie bereits an anderer Stelle ausgeführt wurde (vgl. Verfasserin Jahr, S. xx)'. Sekundärliteratur ('zit. nach') khi không tiếp cận được nguồn gốc — formal phải đánh dấu rõ.",
+    "register_notes_en": "C1 academic citation register: Konjunktiv I is obligatory for indirekte Rede (reported speech). 'Bourdieu sagt, X ist' (Bourdieu says X is) is WRONG; it must be 'Bourdieu zufolge sei X' (according to Bourdieu, X is) or 'Nach Bourdieu handle es sich um X' (according to Bourdieu, it concerns X). For literal quotation: German-style quotation marks ‚…' (or \"…\") plus an exact page number. For paraphrase: 'vgl. X (Jahr, S. xx–yy)'. Funktionsverbgefüge: 'Bezug nehmen auf' (= sich beziehen auf, to refer to), 'in Anlehnung an' (= sich anlehnen, following), 'in Abgrenzung von' (= sich abgrenzen, distinguishing from). Connectors: 'andernfalls' (otherwise), 'gleichwohl' (nonetheless, formal), 'insofern als' (insofar as). When disagreeing: 'In dieser Allgemeinheit lässt sich der Aussage nicht zustimmen' (at that level of generality, one cannot agree) / 'Gegen diese Lesart spricht jedoch…' (against this reading, however, speaks…) — NEVER 'X ist falsch' / 'X liegt daneben' (X is wrong / X misses the mark) which read colloquial. Self-citation is mandatory: 'wie bereits an anderer Stelle ausgeführt wurde (vgl. Verfasserin Jahr, S. xx)'. Use 'zit. nach' for secondary citation when the primary source is inaccessible — at formal register this must be explicitly marked.",
     "idiom_glosses": [
       {
         "idiom": "auf den Schultern von Riesen stehen",
         "literal": "đứng trên vai của những người khổng lồ",
         "meaning": "kế thừa và xây dựng trên thành tựu của các học giả lớn (gehoben)",
-        "example": "Mit dieser Untersuchung stehe ich auf den Schultern von Riesen — Bourdieu, Habermas, Garfinkel haben den Weg geebnet."
+        "meaning_en": "to stand on the shoulders of giants — to build on the achievements of great predecessors (elevated register; the English original from Bernard of Chartres / Newton works equally in German)",
+        "example": "Mit dieser Untersuchung stehe ich auf den Schultern von Riesen — Bourdieu, Habermas, Garfinkel haben den Weg geebnet.",
+        "example_en": "Mit dieser Untersuchung stehe ich auf den Schultern von Riesen — Bourdieu, Habermas, Garfinkel haben den Weg geebnet. ('With this investigation I stand on the shoulders of giants — Bourdieu, Habermas, Garfinkel paved the way.')"
       },
       {
         "idiom": "den Stein des Anstoßes liefern",
         "literal": "cung cấp viên đá gây vấp",
         "meaning": "đưa ra điểm gây tranh luận quyết định (gehoben)",
-        "example": "Wacquants Kritik (2014) lieferte den Stein des Anstoßes für meine Modifikation des Habitus-Begriffs."
+        "meaning_en": "to provide the stone of offence — to deliver the decisive point of contention/disagreement (elevated register)",
+        "example": "Wacquants Kritik (2014) lieferte den Stein des Anstoßes für meine Modifikation des Habitus-Begriffs.",
+        "example_en": "Wacquants Kritik (2014) lieferte den Stein des Anstoßes für meine Modifikation des Habitus-Begriffs. ('Wacquant's critique (2014) provided the catalyst for my modification of the habitus concept.')"
       },
       {
         "idiom": "ins selbe Horn stoßen",
         "literal": "thổi cùng một cái sừng (gốc săn bắn)",
         "meaning": "đồng tình với quan điểm của ai đó (gehoben)",
-        "example": "García & Wei (2014) stoßen ins selbe Horn wie Pennycook — beide plädieren für eine ressourcenorientierte Lesart."
+        "meaning_en": "to blow the same horn (origin: hunting) — to agree with someone's position, to take the same line (elevated register)",
+        "example": "García & Wei (2014) stoßen ins selbe Horn wie Pennycook — beide plädieren für eine ressourcenorientierte Lesart.",
+        "example_en": "García & Wei (2014) stoßen ins selbe Horn wie Pennycook — beide plädieren für eine ressourcenorientierte Lesart. ('García & Wei (2014) take the same line as Pennycook — both argue for a resource-oriented reading.')"
       },
       {
         "idiom": "der rote Faden",
         "literal": "sợi chỉ đỏ",
         "meaning": "chủ đề xuyên suốt, mạch lập luận trung tâm (standardsprachlich)",
-        "example": "Bourdieus Begriff der symbolischen Macht bildet den roten Faden meiner Argumentation."
+        "meaning_en": "the red thread — the through-line, the central thread of an argument (standard register; closest English equivalent: 'the common thread' or 'through-line')",
+        "example": "Bourdieus Begriff der symbolischen Macht bildet den roten Faden meiner Argumentation.",
+        "example_en": "Bourdieus Begriff der symbolischen Macht bildet den roten Faden meiner Argumentation. ('Bourdieu's concept of symbolic power forms the through-line of my argument.')"
       }
     ],
     "exercises": [
       {
         "type": "fill_blank",
         "instruction_vi": "Điền cấu trúc trích dẫn formal Đức:",
+        "instruction_en": "Fill in the formal German citation structure:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -637,6 +733,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "matching",
         "instruction_vi": "Nối thuật ngữ trích dẫn Đức với chức năng:",
+        "instruction_en": "Match each German citation term to its function:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -660,6 +757,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "translation",
         "instruction_vi": "Dịch sang tiếng Đức học thuật C1 (Konjunktiv I cho citation):",
+        "instruction_en": "Translate into C1 academic German (use Konjunktiv I for citation):",
         "pronunciation_focus": [
           "citation"
         ],
@@ -8285,24 +8383,35 @@ export const lessons: GermanLesson[] = [
       {
         "en": "Meine Damen und Herren, vielen Dank, dass Sie so kurzfristig gekommen sind. Ich beginne mit den gesicherten Fakten und komme danach zu Ihren Fragen.",
         "vi": "Thưa quý vị, cảm ơn vì đã đến trong thời gian ngắn như vậy. Tôi bắt đầu bằng các sự kiện đã được xác nhận rồi sau đó đến câu hỏi của quý vị.",
-        "pronunciation_focus": ["gesicherten Fakten", "kurzfristig", "danach"]
+        "pronunciation_focus": ["gesicherten Fakten", "kurzfristig", "danach"],
+        "pronunciation_focus_en": [
+          "gesicherten Fakten → guh-ZIKH-er-ten FAHK-ten (verified facts)",
+          "kurzfristig → KOORTS-fris-tikh (at short notice; 'z' = 'ts')",
+          "danach → dah-NAHKH (afterwards; stress on second syllable)"
+        ]
       },
       {
         "en": "Was noch geprüft wird, werden wir nicht als Tatsache darstellen.",
         "vi": "Điều còn đang được kiểm tra, chúng tôi sẽ không trình bày như sự thật đã xác lập.",
-        "pronunciation_focus": ["geprüft wird", "als Tatsache darstellen"]
+        "pronunciation_focus": ["geprüft wird", "als Tatsache darstellen"],
+        "pronunciation_focus_en": [
+          "geprüft wird → guh-PREUFT virt ('ü' = rounded 'oo'; passive: 'is being checked')",
+          "als Tatsache darstellen → ahls TAHT-zah-khuh DAR-shtel-len ('to present as fact')"
+        ]
       }
     ],
     "vocabulary": [
-      { "word": "die Pressekonferenz", "en": "press conference", "vi": "họp báo", "pos": "noun (f)", "pronunciation_vi": "PRES-sê-kon-fê-rents" },
-      { "word": "gesichert", "en": "verified / established", "vi": "đã được xác nhận", "pos": "adjective", "pronunciation_vi": "gê-zí-khơt" }
+      { "word": "die Pressekonferenz", "en": "press conference", "vi": "họp báo", "pos": "noun (f)", "pronunciation_vi": "PRES-sê-kon-fê-rents", "pronunciation_en": "dee PRES-suh-kon-feh-rents — 'z' = 'ts'" },
+      { "word": "gesichert", "en": "verified / established", "vi": "đã được xác nhận", "pos": "adjective", "pronunciation_vi": "gê-zí-khơt", "pronunciation_en": "guh-ZIKH-ert — 'ch' here is the soft front-of-mouth sound (like 'ich')" }
     ],
     "dialogue": [
       { "speaker": "Pressesprecherin", "text": "Ich werde zunächst drei Punkte darstellen, anschließend öffnen wir die Fragerunde.", "vi": "Trước hết tôi sẽ trình bày ba điểm, sau đó chúng ta mở phần hỏi đáp." },
       { "speaker": "Journalist", "text": "Wird die Geschäftsführung selbst Fragen beantworten?", "vi": "Ban điều hành sẽ tự trả lời câu hỏi chứ?" }
     ],
     "cultural_notes_vi": "Mở họp báo tiếng Đức cần rõ, có thứ tự, không màu mè. Gesicherte Fakten là cụm rất quan trọng.",
+    "cultural_notes_en": "Opening a German press conference calls for clarity, order, and no flourishes. 'Gesicherte Fakten' (verified facts) is a key phrase — the audience listens for what's marked as confirmed versus what's still being checked.",
     "tip_advice_vi": "Công thức: Dank → gesicherte Fakten → Prüfstatus → Fragerunde.",
+    "tip_advice_en": "Formula: Thanks (Dank) → verified facts (gesicherte Fakten) → status of what's still being reviewed (Prüfstatus) → Q&A (Fragerunde).",
     "register_notes": "German press-conference openings prize procedural clarity. Avoid unsupported certainty; mark what is geprüft versus gesichert."
   },
   {
@@ -8315,24 +8424,36 @@ export const lessons: GermanLesson[] = [
       {
         "en": "Eine Pressemitteilung beginnt mit der überprüfbaren Nachricht, nicht mit der Selbstdarstellung des Unternehmens.",
         "vi": "Một thông cáo báo chí bắt đầu bằng tin có thể kiểm chứng, không phải sự tự trình diễn của doanh nghiệp.",
-        "pronunciation_focus": ["Pressemitteilung", "überprüfbar", "Selbstdarstellung"]
+        "pronunciation_focus": ["Pressemitteilung", "überprüfbar", "Selbstdarstellung"],
+        "pronunciation_focus_en": [
+          "Pressemitteilung → PRES-suh-mit-tye-lung ('ei' = 'eye'; press release)",
+          "überprüfbar → UE-ber-preuf-bar ('ü' = rounded 'oo'; 'verifiable')",
+          "Selbstdarstellung → ZELPST-dar-shtel-lung ('self-presentation')"
+        ]
       },
       {
         "en": "Nach Angaben des Unternehmens werde die neue Plattform zunächst in drei Städten getestet.",
         "vi": "Theo thông tin từ công ty, nền tảng mới sẽ trước tiên được thử nghiệm tại ba thành phố.",
-        "pronunciation_focus": ["Konjunktiv I: werde", "Nach Angaben", "zunächst"]
+        "pronunciation_focus": ["Konjunktiv I: werde", "Nach Angaben", "zunächst"],
+        "pronunciation_focus_en": [
+          "Konjunktiv I: werde → VER-duh (reported-speech form of 'wird')",
+          "Nach Angaben → nahkh AHN-gah-ben ('according to statements')",
+          "zunächst → tsoo-NEHKHST ('initially / first'; 'z' = 'ts')"
+        ]
       }
     ],
     "vocabulary": [
-      { "word": "die Pressemitteilung", "en": "press release", "vi": "thông cáo báo chí", "pos": "noun (f)", "pronunciation_vi": "PRES-sê-mit-tai-lung" },
-      { "word": "nach Angaben", "en": "according to statements", "vi": "theo thông tin", "pos": "phrase", "pronunciation_vi": "nakh AP-ga-bơn" }
+      { "word": "die Pressemitteilung", "en": "press release", "vi": "thông cáo báo chí", "pos": "noun (f)", "pronunciation_vi": "PRES-sê-mit-tai-lung", "pronunciation_en": "dee PRES-suh-mit-tye-lung — 'ei' = 'eye' sound" },
+      { "word": "nach Angaben", "en": "according to statements", "vi": "theo thông tin", "pos": "phrase", "pronunciation_vi": "nakh AP-ga-bơn", "pronunciation_en": "nahkh AHN-gah-ben — set phrase that often triggers Konjunktiv I in the following clause" }
     ],
     "dialogue": [
       { "speaker": "Redakteur", "text": "Die Überschrift klingt nach Werbung. Schreiben Sie lieber, was tatsächlich neu ist.", "vi": "Tiêu đề nghe như quảng cáo. Hãy viết điều thực sự mới." },
       { "speaker": "Kommunikationsmanager", "text": "Verstanden. Ich stelle die überprüfbare Nachricht an den Anfang.", "vi": "Hiểu rồi. Tôi sẽ đặt tin có thể kiểm chứng lên đầu." }
     ],
     "cultural_notes_vi": "Thông cáo báo chí tiếng Đức thích sự kiểm chứng và Konjunktiv I khi tường thuật tuyên bố.",
+    "cultural_notes_en": "German press releases value verifiability and reach for Konjunktiv I when reporting company claims — it puts a small linguistic distance between the press office and the claim itself.",
     "tip_advice_vi": "Dùng nach Angaben + Konjunktiv I để báo chí hóa thông tin nguồn.",
+    "tip_advice_en": "Use 'nach Angaben' + Konjunktiv I to journalism-frame source statements: 'Nach Angaben des Unternehmens werde …'.",
     "register_notes": "German press releases should avoid marketing superlatives unless substantiated by evidence."
   },
   {
@@ -8345,24 +8466,36 @@ export const lessons: GermanLesson[] = [
       {
         "en": "Ein Gastbeitrag für die FAZ, die Süddeutsche Zeitung oder Die Zeit braucht eine klare These und eine faire Darstellung der Gegenposition.",
         "vi": "Một bài op-ed cho FAZ, Süddeutsche Zeitung hoặc Die Zeit cần một luận điểm rõ và cách trình bày công bằng về lập trường đối lập.",
-        "pronunciation_focus": ["Gastbeitrag", "klare These", "Gegenposition"]
+        "pronunciation_focus": ["Gastbeitrag", "klare These", "Gegenposition"],
+        "pronunciation_focus_en": [
+          "Gastbeitrag → GAHST-bye-trahk ('ei' = 'eye'; 'op-ed / guest piece')",
+          "klare These → KLAH-ruh TAY-zuh ('clear thesis')",
+          "Gegenposition → GAY-gen-poh-zee-tsyohn ('opposing position'; 'z' = 'ts')"
+        ]
       },
       {
         "en": "M. E. überzeugt der Text erst dann, wenn er Streitkultur nicht scheut, aber die Gegenseite nicht karikiert.",
         "vi": "Theo tôi, bài viết chỉ thuyết phục khi không né tránh văn hóa tranh luận nhưng cũng không biếm họa phía đối lập.",
-        "pronunciation_focus": ["m.E.", "Streitkultur", "karikiert"]
+        "pronunciation_focus": ["m.E.", "Streitkultur", "karikiert"],
+        "pronunciation_focus_en": [
+          "m.E. → spoken as 'meines Erachtens' = MY-nes er-AHKH-tens ('in my view'; written 'm.E.')",
+          "Streitkultur → SHTRYTE-kool-toor ('ei' = 'eye'; 'culture of disagreement')",
+          "karikiert → kah-ree-KEERT ('caricatured'; final-syllable stress)"
+        ]
       }
     ],
     "vocabulary": [
-      { "word": "der Gastbeitrag", "en": "op-ed / guest essay", "vi": "bài quan điểm", "pos": "noun (m)", "pronunciation_vi": "GAST-bai-trak" },
-      { "word": "die Streitkultur", "en": "culture of argument", "vi": "văn hóa tranh luận", "pos": "noun (f)", "pronunciation_vi": "SHTRAIT-kul-tua" }
+      { "word": "der Gastbeitrag", "en": "op-ed / guest essay", "vi": "bài quan điểm", "pos": "noun (m)", "pronunciation_vi": "GAST-bai-trak", "pronunciation_en": "dayr GAHST-bye-trahk — 'ei' = 'eye'; final '-g' devoices to '-k'" },
+      { "word": "die Streitkultur", "en": "culture of argument", "vi": "văn hóa tranh luận", "pos": "noun (f)", "pronunciation_vi": "SHTRAIT-kul-tua", "pronunciation_en": "dee SHTRYTE-kool-toor — distinctly German concept: principled, public disagreement" }
     ],
     "dialogue": [
       { "speaker": "Ressortleiterin", "text": "Ihre These ist stark, aber die Gegenposition wirkt noch wie eine Karikatur.", "vi": "Luận điểm của anh/chị mạnh, nhưng phía đối lập vẫn bị vẽ như biếm họa." },
       { "speaker": "Autor", "text": "Ich schärfe den Widerspruch, ohne die Gegenseite lächerlich zu machen.", "vi": "Tôi sẽ làm sắc mâu thuẫn mà không biến phía đối lập thành trò cười." }
     ],
     "cultural_notes_vi": "Op-ed Đức có thể tranh luận mạnh. Streitkultur không có nghĩa là công kích cá nhân.",
+    "cultural_notes_en": "German op-eds can argue hard. 'Streitkultur' (the culture of vigorous disagreement) does NOT mean personal attack — it means sharp contestation of arguments while keeping the opposing side recognisable, not caricatured.",
     "tip_advice_vi": "Dùng m.E. để đánh dấu lập trường: m.E. überzeugt der Text...",
+    "tip_advice_en": "Use 'm.E.' (meines Erachtens — 'in my view') to flag your stance: 'M.E. überzeugt der Text erst dann, wenn...'. It signals an opinion without slipping into 'ich finde' (too casual for an op-ed).",
     "register_notes": "German opinion writing values explicit disagreement plus fair reconstruction of the opposing argument."
   },
   {
@@ -8375,24 +8508,36 @@ export const lessons: GermanLesson[] = [
       {
         "en": "Im Podcast darf der Ton persönlicher sein; die Grenze zwischen Erfahrung und gesicherter Aussage muss dennoch klar bleiben.",
         "vi": "Trong podcast, giọng có thể cá nhân hơn; nhưng ranh giới giữa trải nghiệm và phát biểu đã xác minh vẫn phải rõ.",
-        "pronunciation_focus": ["persönlicher", "Grenze", "gesicherter Aussage"]
+        "pronunciation_focus": ["persönlicher", "Grenze", "gesicherter Aussage"],
+        "pronunciation_focus_en": [
+          "persönlicher → per-ZEUN-likh-er ('ö' = rounded 'eh'; 'more personal')",
+          "Grenze → GREN-tsuh ('z' = 'ts'; 'boundary / line')",
+          "gesicherter Aussage → guh-ZIKH-er-ter OWS-zah-guh ('verified statement')"
+        ]
       },
       {
         "en": "Womöglich ist das der richtige Eindruck, aber ich würde ihn gern präzisieren.",
         "vi": "Có thể đó là ấn tượng đúng, nhưng tôi muốn làm nó chính xác hơn.",
-        "pronunciation_focus": ["womöglich", "Eindruck", "präzisieren"]
+        "pronunciation_focus": ["womöglich", "Eindruck", "präzisieren"],
+        "pronunciation_focus_en": [
+          "womöglich → voh-MEUK-likh ('w' = 'v'; 'ö' = rounded 'eh'; 'possibly')",
+          "Eindruck → INE-drook ('ei' = 'eye'; 'impression')",
+          "präzisieren → preh-tsee-ZEE-ren ('ä' = 'eh'; 'to make precise')"
+        ]
       }
     ],
     "vocabulary": [
-      { "word": "womöglich", "en": "possibly", "vi": "có thể", "pos": "adverb", "pronunciation_vi": "vô-mơk-likh" },
-      { "word": "präzisieren", "en": "to make precise", "vi": "làm rõ chính xác", "pos": "verb", "pronunciation_vi": "prê-tsi-zi-rơn" }
+      { "word": "womöglich", "en": "possibly", "vi": "có thể", "pos": "adverb", "pronunciation_vi": "vô-mơk-likh", "pronunciation_en": "voh-MEUK-likh — 'w' = 'v'; 'ö' = rounded 'eh' (lips for 'oh', say 'eh')" },
+      { "word": "präzisieren", "en": "to make precise", "vi": "làm rõ chính xác", "pos": "verb", "pronunciation_vi": "prê-tsi-zi-rơn", "pronunciation_en": "preh-tsee-ZEE-ren — final-syllable stress; 'z' = 'ts'" }
     ],
     "dialogue": [
       { "speaker": "Moderator", "text": "Heißt das, Sie wussten intern schon lange Bescheid?", "vi": "Có nghĩa là nội bộ các anh/chị đã biết từ lâu?" },
       { "speaker": "Gast", "text": "Womöglich entsteht dieser Eindruck. Präzise gesagt: Wir hatten ein Signal, aber noch keine belastbare Diagnose.", "vi": "Có thể tạo ra ấn tượng đó. Nói chính xác: chúng tôi có một tín hiệu, nhưng chưa có chẩn đoán đủ vững." }
     ],
     "cultural_notes_vi": "Podcast Đức có thể tự nhiên hơn nhưng vẫn thích sự chính xác khái niệm.",
+    "cultural_notes_en": "German podcasts let you sound more relaxed than in a press conference, but the audience still expects conceptual precision — vague answers register as evasion, not warmth.",
     "tip_advice_vi": "Hedge hữu dụng: womöglich + präzise gesagt.",
+    "tip_advice_en": "Useful hedge combo: 'Womöglich entsteht dieser Eindruck. Präzise gesagt: …' (Possibly that impression arises. To put it precisely: …) — concedes the appearance, then corrects without contradicting the host head-on.",
     "register_notes": "German podcast speech may be warmer, but a representative still needs conceptual precision."
   },
   {
@@ -8405,24 +8550,36 @@ export const lessons: GermanLesson[] = [
       {
         "en": "Im Live-Interview zählt nicht Vollständigkeit, sondern eine belastbare Antwort in kurzen Sätzen.",
         "vi": "Trong phỏng vấn trực tiếp, điều quan trọng không phải sự đầy đủ mà là câu trả lời vững trong các câu ngắn.",
-        "pronunciation_focus": ["Live-Interview", "belastbare Antwort", "kurzen Sätzen"]
+        "pronunciation_focus": ["Live-Interview", "belastbare Antwort", "kurzen Sätzen"],
+        "pronunciation_focus_en": [
+          "Live-Interview → LIVE (English-style) -in-tervyoo (English loanword; pronunciation retained)",
+          "belastbare Antwort → buh-LAHST-bah-ruh AHNT-vort ('robust / reliable answer')",
+          "kurzen Sätzen → KOOR-tsen ZEHT-sen ('short sentences'; 'ä' = 'eh')"
+        ]
       },
       {
         "en": "Ich werde hier keine pauschale Zusage machen; gegebenenfalls kann ich aber den Zeitplan nennen.",
         "vi": "Tôi sẽ không đưa cam kết chung chung ở đây; nếu phù hợp, tôi có thể nêu lịch trình.",
-        "pronunciation_focus": ["pauschale Zusage", "gegebenenfalls", "Zeitplan"]
+        "pronunciation_focus": ["pauschale Zusage", "gegebenenfalls", "Zeitplan"],
+        "pronunciation_focus_en": [
+          "pauschale Zusage → POW-shah-luh TSOO-zah-guh ('au' = 'ow'; 'blanket commitment')",
+          "gegebenenfalls → guh-GAY-buh-nen-fahls (a single word; 'if applicable')",
+          "Zeitplan → TSITE-plahn ('ei' = 'eye'; 'z' = 'ts'; 'timeline')"
+        ]
       }
     ],
     "vocabulary": [
-      { "word": "belastbar", "en": "robust / reliable", "vi": "vững, đáng tin", "pos": "adjective", "pronunciation_vi": "bê-LAST-ba" },
-      { "word": "gegebenenfalls", "en": "if applicable", "vi": "nếu phù hợp", "pos": "adverb", "pronunciation_vi": "gê-GÊ-bơ-nơn-fals" }
+      { "word": "belastbar", "en": "robust / reliable", "vi": "vững, đáng tin", "pos": "adjective", "pronunciation_vi": "bê-LAST-ba", "pronunciation_en": "buh-LAHST-bar — key C1 word: 'able to bear weight' (literally), 'verifiable / defensible' (figuratively)" },
+      { "word": "gegebenenfalls", "en": "if applicable", "vi": "nếu phù hợp", "pos": "adverb", "pronunciation_vi": "gê-GÊ-bơ-nơn-fals", "pronunciation_en": "guh-GAY-buh-nen-fahls — five-syllable single word; the formal hedge for 'if applicable / where appropriate'" }
     ],
     "dialogue": [
       { "speaker": "Moderatorin", "text": "Können Sie heute Abend garantieren, dass so etwas nicht wieder passiert?", "vi": "Tối nay ông/bà có thể đảm bảo rằng việc này không lặp lại không?" },
       { "speaker": "Sprecher", "text": "Eine Garantie wäre unseriös. Belastbar zusagen kann ich: Der Prüfbericht kommt am Freitag.", "vi": "Đảm bảo như vậy sẽ thiếu nghiêm túc. Điều tôi có thể cam kết vững là: báo cáo rà soát ra vào thứ Sáu." }
     ],
     "cultural_notes_vi": "Trên truyền hình Đức, câu trả lời tốt thường thẳng, ngắn, không hứa quá.",
+    "cultural_notes_en": "On German live TV, a good answer is typically direct, short, and refuses to over-promise. The audience reads vague reassurance as evasion; honest 'we don't know yet, here's when we will' lands better than a soothing soundbite.",
     "tip_advice_vi": "Từ khóa C1: belastbar. Dùng để phân biệt lời hứa có căn cứ và lời hứa rỗng.",
+    "tip_advice_en": "Key C1 word: 'belastbar'. Use it to distinguish a grounded commitment from an empty one — 'belastbar zusagen kann ich…' (what I can commit to with backing is…).",
     "register_notes": "German live TV rewards concise accountability and punishes vague reassurance."
   },
   {
@@ -8435,24 +8592,36 @@ export const lessons: GermanLesson[] = [
       {
         "en": "Wir bitten alle Betroffenen ausdrücklich um Entschuldigung; diese Belastung hätte nicht entstehen dürfen.",
         "vi": "Chúng tôi xin lỗi rõ ràng tất cả những người bị ảnh hưởng; gánh nặng này lẽ ra không được phát sinh.",
-        "pronunciation_focus": ["ausdrücklich um Entschuldigung", "Betroffenen", "hätte nicht"]
+        "pronunciation_focus": ["ausdrücklich um Entschuldigung", "Betroffenen", "hätte nicht"],
+        "pronunciation_focus_en": [
+          "ausdrücklich um Entschuldigung → OWS-dreuk-likh oom ent-SHOOL-dee-gung ('au' = 'ow'; 'ü' = rounded 'oo'; 'explicitly for apology')",
+          "Betroffenen → buh-TROFF-en-en ('the affected'; treated as a noun)",
+          "hätte nicht → HET-tuh nikht (Konjunktiv II 'should not have'; 'ä' = 'eh')"
+        ]
       },
       {
         "en": "Zur Verantwortung gehört, dass wir nicht nur Bedauern ausdrücken, sondern Abhilfe, Zuständigkeit und Fristen benennen.",
         "vi": "Trách nhiệm bao gồm việc không chỉ bày tỏ tiếc nuối mà còn nêu biện pháp khắc phục, người phụ trách và thời hạn.",
-        "pronunciation_focus": ["Verantwortung", "Abhilfe", "Fristen benennen"]
+        "pronunciation_focus": ["Verantwortung", "Abhilfe", "Fristen benennen"],
+        "pronunciation_focus_en": [
+          "Verantwortung → fer-AHNT-vor-tung ('v' = 'f'; 'w' = 'v'; 'responsibility')",
+          "Abhilfe → AHP-hil-fuh ('remedy / corrective measure')",
+          "Fristen benennen → FRIS-ten buh-NEN-nen ('to name deadlines')"
+        ]
       }
     ],
     "vocabulary": [
-      { "word": "die Abhilfe", "en": "remedy", "vi": "biện pháp khắc phục", "pos": "noun (f)", "pronunciation_vi": "AP-hil-fơ" },
-      { "word": "die Zuständigkeit", "en": "responsibility / remit", "vi": "trách nhiệm phụ trách", "pos": "noun (f)", "pronunciation_vi": "TSU-shten-dikh-kait" }
+      { "word": "die Abhilfe", "en": "remedy", "vi": "biện pháp khắc phục", "pos": "noun (f)", "pronunciation_vi": "AP-hil-fơ", "pronunciation_en": "dee AHP-hil-fuh — final 'b' devoices to 'p' before 'h'" },
+      { "word": "die Zuständigkeit", "en": "responsibility / remit", "vi": "trách nhiệm phụ trách", "pos": "noun (f)", "pronunciation_vi": "TSU-shten-dikh-kait", "pronunciation_en": "dee TSOO-shten-dikh-kite — 'z' = 'ts'; 'ei' = 'eye'; 'remit / area of responsibility'" }
     ],
     "dialogue": [
       { "speaker": "Vorstand", "text": "Ich beginne mit der Entschuldigung. Danach nennen wir die konkreten Abhilfemaßnahmen und Fristen.", "vi": "Tôi bắt đầu bằng lời xin lỗi. Sau đó chúng tôi nêu biện pháp khắc phục và thời hạn cụ thể." },
       { "speaker": "Journalistin", "text": "Wer übernimmt die operative Verantwortung?", "vi": "Ai nhận trách nhiệm vận hành?" }
     ],
     "cultural_notes_vi": "Xin lỗi tổ chức bằng tiếng Đức cần Entschuldigung + Verantwortung + Fristen. Bedauern một mình là yếu.",
+    "cultural_notes_en": "A German institutional apology needs Entschuldigung (apology) + Verantwortung (responsibility) + Fristen (deadlines). 'Bedauern' (regret) alone is weak — German audiences read 'wir bedauern' without further action as PR-speak.",
     "tip_advice_vi": "Không chỉ nói es tut uns leid; nêu Abhilfe và Fristen.",
+    "tip_advice_en": "Don't stop at 'es tut uns leid' (we're sorry). Name the Abhilfe (remedy), the Zuständigkeit (who's responsible), and the Fristen (deadlines). Credibility is built by specificity, not by sentiment.",
     "register_notes": "German institutional apology is credible when it names responsibility and repair mechanisms."
   },
   {
@@ -8465,24 +8634,36 @@ export const lessons: GermanLesson[] = [
       {
         "en": "Vorab zum Rahmen: Dieses Hintergrundgespräch ist nicht zur direkten Zitierung bestimmt.",
         "vi": "Trước hết về khung trao đổi: cuộc trao đổi bối cảnh này không dành cho trích dẫn trực tiếp.",
-        "pronunciation_focus": ["Vorab zum Rahmen", "Hintergrundgespräch", "Zitierung"]
+        "pronunciation_focus": ["Vorab zum Rahmen", "Hintergrundgespräch", "Zitierung"],
+        "pronunciation_focus_en": [
+          "Vorab zum Rahmen → for-AHP tsoom RAH-men ('v' = 'f'; 'first, regarding the framing')",
+          "Hintergrundgespräch → HIN-ter-groont-guh-shprekh ('ä' = 'eh'; 'background conversation')",
+          "Zitierung → tsee-TEE-rung ('z' = 'ts'; 'quotation / citing')"
+        ]
       },
       {
         "en": "Es soll die Chronologie erklären, nicht eine bestimmte Lesart in die Berichterstattung drücken.",
         "vi": "Nó nhằm giải thích trình tự thời gian, không phải ép một cách đọc nhất định vào tin bài.",
-        "pronunciation_focus": ["Chronologie", "Lesart", "Berichterstattung"]
+        "pronunciation_focus": ["Chronologie", "Lesart", "Berichterstattung"],
+        "pronunciation_focus_en": [
+          "Chronologie → kroh-noh-loh-GEE (final stress; 'ch' = 'k' in Greek loans)",
+          "Lesart → LAYS-art ('reading / interpretation')",
+          "Berichterstattung → buh-RIKHT-er-shtah-toong ('coverage / reporting')"
+        ]
       }
     ],
     "vocabulary": [
-      { "word": "das Hintergrundgespräch", "en": "background briefing", "vi": "trao đổi bối cảnh", "pos": "noun (n)", "pronunciation_vi": "HIN-tơ-grunt-gơ-shprekh" },
-      { "word": "die Zitierung", "en": "quotation", "vi": "trích dẫn", "pos": "noun (f)", "pronunciation_vi": "tsi-TI-rung" }
+      { "word": "das Hintergrundgespräch", "en": "background briefing", "vi": "trao đổi bối cảnh", "pos": "noun (n)", "pronunciation_vi": "HIN-tơ-grunt-gơ-shprekh", "pronunciation_en": "dahs HIN-ter-groont-guh-shprekh — compound: Hintergrund (background) + Gespräch (conversation)" },
+      { "word": "die Zitierung", "en": "quotation", "vi": "trích dẫn", "pos": "noun (f)", "pronunciation_vi": "tsi-TI-rung", "pronunciation_en": "dee tsee-TEE-rung — 'z' = 'ts'; the act of quoting (vs. das Zitat = the quote itself)" }
     ],
     "dialogue": [
       { "speaker": "Pressereferent", "text": "Diese Einordnung ist als Hintergrund gedacht, nicht als namentliches Zitat.", "vi": "Phần phân loại này là thông tin bối cảnh, không phải trích dẫn kèm tên." },
       { "speaker": "Journalist", "text": "Kann ich die Chronologie ohne Namensnennung verwenden?", "vi": "Tôi có thể dùng trình tự thời gian mà không nêu tên không?" }
     ],
     "cultural_notes_vi": "Trong báo chí Đức, Hintergrundgespräch phải rõ quy tắc trích dẫn trước khi nói nội dung nhạy cảm.",
+    "cultural_notes_en": "In German journalism, a Hintergrundgespräch (background briefing) requires the attribution rules to be set EXPLICITLY before any sensitive content is shared. The English equivalents — 'off the record', 'on background', 'deep background' — map roughly but the German practice tends to be more formally stated up front.",
     "tip_advice_vi": "Phrase: nicht zur direkten Zitierung bestimmt.",
+    "tip_advice_en": "Set phrase: 'nicht zur direkten Zitierung bestimmt' (not intended for direct quotation). State it BEFORE the substance, not after.",
     "register_notes": "German background briefings depend on explicit attribution rules and trust over time."
   },
   {
@@ -8495,24 +8676,36 @@ export const lessons: GermanLesson[] = [
       {
         "en": "Ich halte die Prämisse Ihrer Frage für falsch, beantworte aber gern den sachlichen Kern.",
         "vi": "Tôi cho rằng tiền đề câu hỏi của anh/chị là sai, nhưng sẵn sàng trả lời phần cốt lõi về nội dung.",
-        "pronunciation_focus": ["Prämisse", "sachlicher Kern", "beantworte gern"]
+        "pronunciation_focus": ["Prämisse", "sachlicher Kern", "beantworte gern"],
+        "pronunciation_focus_en": [
+          "Prämisse → PRAY-miss-uh ('ä' = 'eh'; 'premise')",
+          "sachlicher Kern → ZAHKH-likh-er kern ('substantive core'; 's' before vowel = 'z')",
+          "beantworte gern → buh-AHNT-vor-tuh gern ('happy to answer'; 'w' = 'v')"
+        ]
       },
       {
         "en": "Streitkultur bedeutet nicht, schärfer zu klingen, sondern präziser zu unterscheiden.",
         "vi": "Văn hóa tranh luận không có nghĩa là nghe gắt hơn, mà là phân biệt chính xác hơn.",
-        "pronunciation_focus": ["Streitkultur", "präziser", "unterscheiden"]
+        "pronunciation_focus": ["Streitkultur", "präziser", "unterscheiden"],
+        "pronunciation_focus_en": [
+          "Streitkultur → SHTRYTE-kool-toor ('ei' = 'eye'; 'culture of disagreement')",
+          "präziser → preh-TSEE-zer ('ä' = 'eh'; 'more precise')",
+          "unterscheiden → oon-ter-SHY-den ('ei' = 'eye'; 'to distinguish')"
+        ]
       }
     ],
     "vocabulary": [
-      { "word": "die Prämisse", "en": "premise", "vi": "tiền đề", "pos": "noun (f)", "pronunciation_vi": "prê-MIS-sơ" },
-      { "word": "der sachliche Kern", "en": "substantive core", "vi": "cốt lõi nội dung", "pos": "noun phrase", "pronunciation_vi": "ZAKH-likh-er kern" }
+      { "word": "die Prämisse", "en": "premise", "vi": "tiền đề", "pos": "noun (f)", "pronunciation_vi": "prê-MIS-sơ", "pronunciation_en": "dee PRAY-miss-uh — 'ä' = 'eh' as in 'fed'" },
+      { "word": "der sachliche Kern", "en": "substantive core", "vi": "cốt lõi nội dung", "pos": "noun phrase", "pronunciation_vi": "ZAKH-likh-er kern", "pronunciation_en": "dayr ZAHKH-likh-er kern — 'sachlich' (substantive / on the matter) is the C1 alternative to 'inhaltlich'" }
     ],
     "dialogue": [
       { "speaker": "Journalist", "text": "Sie haben doch erst reagiert, als der öffentliche Druck zu groß wurde.", "vi": "Các ông/bà chỉ phản ứng khi áp lực công chúng quá lớn thôi mà." },
       { "speaker": "Sprecherin", "text": "Diese Prämisse teile ich nicht. M. E. ist aber richtig: Unsere erste Kommunikation war nicht präzise genug.", "vi": "Tôi không chia sẻ tiền đề đó. Theo tôi, điểm đúng là: truyền thông đầu tiên của chúng tôi chưa đủ chính xác." }
     ],
     "cultural_notes_vi": "Streitkultur Đức cho phép phản đối trực tiếp, miễn là phản đối vào tiền đề hoặc nội dung, không vào con người.",
+    "cultural_notes_en": "Germany's Streitkultur (culture of disagreement) permits direct contradiction, as long as the contradiction targets the premise or the substance — never the person. 'Ich halte Ihre Prämisse für falsch' is acceptable; 'Sie liegen falsch' (you're wrong) is not.",
     "tip_advice_vi": "Formula: Diese Prämisse teile ich nicht. M.E. ist aber richtig...",
+    "tip_advice_en": "Formula: 'Diese Prämisse teile ich nicht. M.E. ist aber richtig: …' (I don't share that premise. In my view, the correct point is: …). Reject the framing, then offer the part you DO agree with.",
     "register_notes": "Hostile German Q&A can be direct; precision and fairness keep it professional."
   },
   {
@@ -8525,24 +8718,36 @@ export const lessons: GermanLesson[] = [
       {
         "en": "Die Aufgabe eines Pressesprechers besteht darin, verlässlich zu sagen, was gesagt werden kann, und offen zu markieren, was noch geprüft wird.",
         "vi": "Nhiệm vụ của người phát ngôn là nói đáng tin điều có thể nói và đánh dấu rõ điều còn đang kiểm tra.",
-        "pronunciation_focus": ["Pressesprecher", "verlässlich", "markieren"]
+        "pronunciation_focus": ["Pressesprecher", "verlässlich", "markieren"],
+        "pronunciation_focus_en": [
+          "Pressesprecher → PRES-suh-shpre-kher ('st' = 'sht' at start of stem; 'spokesperson')",
+          "verlässlich → fer-LESS-likh ('v' = 'f'; 'ä' = 'eh'; 'reliable / trustworthy')",
+          "markieren → mar-KEE-ren (final-syllable stress; 'to mark / flag')"
+        ]
       },
       {
         "en": "Zu diesem Punkt gibt es keinen neuen Stand; gegebenenfalls reichen wir bis Freitag eine schriftliche Ergänzung nach.",
         "vi": "Về điểm này chưa có tình trạng mới; nếu phù hợp, chúng tôi sẽ gửi bổ sung bằng văn bản trước thứ Sáu.",
-        "pronunciation_focus": ["neuer Stand", "gegebenenfalls", "schriftliche Ergänzung"]
+        "pronunciation_focus": ["neuer Stand", "gegebenenfalls", "schriftliche Ergänzung"],
+        "pronunciation_focus_en": [
+          "neuer Stand → NOY-er shtahnt ('eu' = 'oy'; 'latest status')",
+          "gegebenenfalls → guh-GAY-buh-nen-fahls ('if applicable'; single word despite length)",
+          "schriftliche Ergänzung → SHRIFT-likh-uh er-GEN-tsung ('written supplement')"
+        ]
       }
     ],
     "vocabulary": [
-      { "word": "der Pressesprecher", "en": "spokesperson", "vi": "người phát ngôn", "pos": "noun (m)", "pronunciation_vi": "PRES-sê-shpre-khơ" },
-      { "word": "der neue Stand", "en": "latest status", "vi": "tình trạng mới", "pos": "noun phrase", "pronunciation_vi": "NOY-ơ shtant" }
+      { "word": "der Pressesprecher", "en": "spokesperson", "vi": "người phát ngôn", "pos": "noun (m)", "pronunciation_vi": "PRES-sê-shpre-khơ", "pronunciation_en": "dayr PRES-suh-shpre-kher — 'sp' at start of stem 'sprechen' = 'shp'" },
+      { "word": "der neue Stand", "en": "latest status", "vi": "tình trạng mới", "pos": "noun phrase", "pronunciation_vi": "NOY-ơ shtant", "pronunciation_en": "dayr NOY-er shtahnt — 'eu' = 'oy' as in 'boy'" }
     ],
     "dialogue": [
       { "speaker": "Pressesprecher", "text": "Ich beginne mit zwei bestätigten Updates und markiere anschließend die offenen Punkte.", "vi": "Tôi bắt đầu bằng hai cập nhật đã xác nhận rồi đánh dấu các điểm còn mở." },
       { "speaker": "Journalistin", "text": "Warum gibt es zu dem Vorfall noch keinen neuen Stand?", "vi": "Vì sao sự cố đó vẫn chưa có trạng thái mới?" }
     ],
     "cultural_notes_vi": "Briefing Đức thích sự lặp lại ổn định: confirmed update, offener Punkt, schriftliche Ergänzung.",
+    "cultural_notes_en": "German briefings prize stable, predictable repetition: confirmed update, open question, written supplement. The audience (regular beat reporters) is tracking changes across weeks — the wording stability is the feature, not a bug.",
     "tip_advice_vi": "Useful hedge: gegebenenfalls reichen wir ... nach.",
+    "tip_advice_en": "Useful hedge: 'gegebenenfalls reichen wir … nach' (we'll follow up with … if applicable). Buys time without conceding more than you should.",
     "register_notes": "The spokesperson register is repetitive because institutional trust is built through stable wording."
   },
   {
@@ -8555,24 +8760,36 @@ export const lessons: GermanLesson[] = [
       {
         "en": "Eine offizielle Stellungnahme auf Social Media darf knapp sein, aber nicht beiläufig wirken.",
         "vi": "Một tuyên bố chính thức trên mạng xã hội có thể ngắn, nhưng không được có vẻ tùy tiện.",
-        "pronunciation_focus": ["offizielle Stellungnahme", "knapp", "beiläufig"]
+        "pronunciation_focus": ["offizielle Stellungnahme", "knapp", "beiläufig"],
+        "pronunciation_focus_en": [
+          "offizielle Stellungnahme → off-ee-TSYELL-uh SHTEL-lung-nah-muh ('z' = 'ts'; 'official statement')",
+          "knapp → knahp (the 'k' is fully voiced; 'concise / terse')",
+          "beiläufig → BYE-loy-fikh ('ei' = 'eye', 'äu' = 'oy'; 'casual / incidental')"
+        ]
       },
       {
         "en": "Der erste Satz benennt die Position, der zweite die Maßnahme, der dritte den Ort weiterer Informationen.",
         "vi": "Câu đầu nêu lập trường, câu hai nêu biện pháp, câu ba nêu nơi có thông tin tiếp theo.",
-        "pronunciation_focus": ["benennt", "Maßnahme", "weitere Informationen"]
+        "pronunciation_focus": ["benennt", "Maßnahme", "weitere Informationen"],
+        "pronunciation_focus_en": [
+          "benennt → buh-NENT ('names / specifies')",
+          "Maßnahme → MAHSS-nah-muh ('ß' = 'ss'; 'measure / action')",
+          "weitere Informationen → VYE-teh-ruh in-for-mah-tsyoh-nen ('w' = 'v'; 'ei' = 'eye')"
+        ]
       }
     ],
     "vocabulary": [
-      { "word": "die Stellungnahme", "en": "statement", "vi": "tuyên bố / phát biểu lập trường", "pos": "noun (f)", "pronunciation_vi": "SHTEL-lung-nah-mơ" },
-      { "word": "beiläufig", "en": "casual / incidental", "vi": "tùy tiện, tiện miệng", "pos": "adjective", "pronunciation_vi": "BAI-loy-fikh" }
+      { "word": "die Stellungnahme", "en": "statement", "vi": "tuyên bố / phát biểu lập trường", "pos": "noun (f)", "pronunciation_vi": "SHTEL-lung-nah-mơ", "pronunciation_en": "dee SHTEL-lung-nah-muh — 'st' at word start = 'sht'; literally 'position-taking'" },
+      { "word": "beiläufig", "en": "casual / incidental", "vi": "tùy tiện, tiện miệng", "pos": "adjective", "pronunciation_vi": "BAI-loy-fikh", "pronunciation_en": "BYE-loy-fikh — 'ei' = 'eye'; 'äu' = 'oy' as in 'boy'; tone-killer in formal contexts" }
     ],
     "dialogue": [
       { "speaker": "Social-Media-Redakteur", "text": "Die Antwort klingt zu spontan für einen offiziellen Kanal.", "vi": "Câu trả lời nghe quá ứng biến đối với một kênh chính thức." },
       { "speaker": "Kommunikationsleiterin", "text": "Dann formulieren wir es als kurze Stellungnahme: Position, Maßnahme, Link zum Update.", "vi": "Vậy ta diễn đạt như một tuyên bố ngắn: lập trường, biện pháp, link tới cập nhật." }
     ],
     "cultural_notes_vi": "Social media tiếng Đức vẫn có thể rất gọn, nhưng tài khoản chính thức cần giọng đáng tin và không 'chatty'.",
+    "cultural_notes_en": "German social copy can be brief, but an official account needs a trustworthy voice — never 'chatty'. The line between concise and casual is the line readers use to assess credibility.",
     "tip_advice_vi": "Three-line pattern: Position → Maßnahme → Link.",
+    "tip_advice_en": "Three-line pattern for an official post: Position (where we stand) → Maßnahme (what we're doing about it) → Link (where to find the full update).",
     "register_notes": "German official social copy should be concise, legally careful, and screenshot-proof."
   }
 ];
