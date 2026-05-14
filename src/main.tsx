@@ -71,6 +71,7 @@ import { initSentry, stringLooksLikeExternalNoise } from "@/lib/monitoring/sentr
 import { runConfigHealthCheck } from "@/lib/configHealth";
 import { initializeWebVitals } from "@/lib/perf/webVitalsTracking";
 import { looksLikeChunkLoadFailure as sharedLooksLikeChunkLoadFailure } from "@/lib/chunkLoadError";
+import { attachPreloadFailureRecovery } from "@/lib/preloadRecovery";
 
 declare global {
   interface Window {
@@ -305,6 +306,17 @@ function scheduleOneTimeChunkReload(): boolean {
   window.addEventListener("unhandledrejection", (e: PromiseRejectionEvent) => {
     if (window.__MB_FATAL_OVERLAY_SHOWN__) return;
     handleGlobalFatal("[MB FATAL] unhandledrejection", e.reason);
+  });
+})();
+
+(function wirePreloadFailureRecovery() {
+  // Stale-deploy recovery — second layer of defence beneath the
+  // vercel.json `Cache-Control: no-cache, must-revalidate` headers
+  // on `/` and `/index.html`. See src/lib/preloadRecovery.ts for the
+  // full rationale. Catches silent modulepreload / module-script
+  // 404s that don't surface to the existing window.error handler.
+  attachPreloadFailureRecovery(() => {
+    scheduleOneTimeChunkReload();
   });
 })();
 
