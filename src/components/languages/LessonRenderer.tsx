@@ -44,12 +44,61 @@ import {
   isPhonicsOnly,
 } from "@/lib/lessonAudio";
 
+// Renderer chrome labels.
+//
+// Until 2026-05, all language modules used Vietnamese as the source/UI
+// language (lesson titles, study tips, cultural notes were Vietnamese;
+// the foreign language was the *target*). The Spanish-for-English-
+// speakers module is the first vertical where the source language is
+// English, so the static chrome (section headings, audio aria-labels,
+// count-chip units) needs to follow.
+//
+// Existing six language pages don't pass `uiLanguage`, so they inherit
+// the "vi" default and render identically. Default is enforced via
+// TypeScript so it's hard to regress.
+const RENDERER_LABELS = {
+  vi: {
+    vocabChip: "từ vựng",
+    sentenceChip: "câu",
+    dialogueChip: "hội thoại",
+    exerciseChip: "bài tập",
+    sentenceAudioAria: "Phát âm câu",
+    vocabAudioAria: "Phát âm",
+    dialogueAudioAria: "Phát âm hội thoại",
+    dialogueHeading: "Hội thoại",
+    cultureHeading: "Văn hoá",
+    tipHeading: "Mẹo học",
+    grammarHeading: "Ngữ pháp",
+  },
+  en: {
+    vocabChip: "vocab",
+    sentenceChip: "sentences",
+    dialogueChip: "dialogues",
+    exerciseChip: "exercises",
+    sentenceAudioAria: "Play sentence",
+    vocabAudioAria: "Play",
+    dialogueAudioAria: "Play dialogue",
+    dialogueHeading: "Dialogue",
+    cultureHeading: "Culture",
+    tipHeading: "Study tip",
+    grammarHeading: "Grammar",
+  },
+} as const;
+
 interface LessonRendererProps {
   lesson: NormalizedLesson;
   theme: LessonTheme;
+  /**
+   * UI / chrome language for headings, count-chip units, and audio
+   * aria-labels. Defaults to "vi" so existing six language pages don't
+   * regress. Pass "en" from English-source modules like
+   * SpanishLessonsPage where the surrounding UI is already English.
+   */
+  uiLanguage?: "vi" | "en";
 }
 
-export function LessonRenderer({ lesson, theme }: LessonRendererProps) {
+export function LessonRenderer({ lesson, theme, uiLanguage = "vi" }: LessonRendererProps) {
+  const labels = RENDERER_LABELS[uiLanguage];
   const [open, setOpen] = useState(false);
 
   const vocabCount = lesson.vocabulary?.length ?? 0;
@@ -102,22 +151,22 @@ export function LessonRenderer({ lesson, theme }: LessonRendererProps) {
             <div className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] text-slate-400">
               {vocabCount > 0 && (
                 <span className="inline-flex items-center gap-1">
-                  <BookOpen className="h-3 w-3" /> {vocabCount} từ vựng
+                  <BookOpen className="h-3 w-3" /> {vocabCount} {labels.vocabChip}
                 </span>
               )}
               {sentCount > 0 && (
                 <span className="inline-flex items-center gap-1">
-                  <MessageCircle className="h-3 w-3" /> {sentCount} câu
+                  <MessageCircle className="h-3 w-3" /> {sentCount} {labels.sentenceChip}
                 </span>
               )}
               {dialCount > 0 && (
                 <span className="inline-flex items-center gap-1">
-                  <Sparkles className="h-3 w-3" /> {dialCount} hội thoại
+                  <Sparkles className="h-3 w-3" /> {dialCount} {labels.dialogueChip}
                 </span>
               )}
               {exerCount > 0 && (
                 <span className="inline-flex items-center gap-1">
-                  <PenLine className="h-3 w-3" /> {exerCount} bài tập
+                  <PenLine className="h-3 w-3" /> {exerCount} {labels.exerciseChip}
                 </span>
               )}
             </div>
@@ -160,7 +209,7 @@ export function LessonRenderer({ lesson, theme }: LessonRendererProps) {
                             ? { kind: "phrase", index: i + 1 }
                             : { kind: "sentence", index: i + 1 },
                         )}
-                        ariaLabel={`Phát âm câu: ${s.native}`}
+                        ariaLabel={`${labels.sentenceAudioAria}: ${s.native}`}
                         accent={theme.accent}
                       />
                     )}
@@ -215,7 +264,7 @@ export function LessonRenderer({ lesson, theme }: LessonRendererProps) {
                           kind: "vocab",
                           index: vi + 1,
                         })}
-                        ariaLabel={`Phát âm: ${v.native}`}
+                        ariaLabel={`${labels.vocabAudioAria}: ${v.native}`}
                         accent={theme.accent}
                       />
                     )}
@@ -249,7 +298,7 @@ export function LessonRenderer({ lesson, theme }: LessonRendererProps) {
             <div className="rounded-lg border border-purple-100 bg-purple-50/60 p-3">
               <p className="inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wide text-purple-700">
                 <Sparkles className="h-3 w-3" />
-                Hội thoại
+                {labels.dialogueHeading}
               </p>
               <div className="mt-2 space-y-2">
                 {lesson.dialogue.map((d, di) => (
@@ -266,7 +315,7 @@ export function LessonRenderer({ lesson, theme }: LessonRendererProps) {
                                 speaker: dialogueShortSpeakerLetter(d.speaker),
                               },
                         )}
-                        ariaLabel={`Phát âm hội thoại: ${d.native}`}
+                        ariaLabel={`${labels.dialogueAudioAria}: ${d.native}`}
                         accent={theme.accent}
                       />
                     )}
@@ -312,7 +361,7 @@ export function LessonRenderer({ lesson, theme }: LessonRendererProps) {
             <div className="rounded-lg border border-blue-100 bg-blue-50/60 p-3">
               <p className="inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wide text-blue-700">
                 <Sparkles className="h-3 w-3" />
-                Văn hoá
+                {labels.cultureHeading}
               </p>
               <p className="mt-1 text-xs leading-relaxed text-slate-700">
                 {lesson.culturalNotesVi}
@@ -324,7 +373,7 @@ export function LessonRenderer({ lesson, theme }: LessonRendererProps) {
             <div className="rounded-lg border border-amber-100 bg-amber-50/60 p-3">
               <p className="inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wide text-amber-700">
                 <Lightbulb className="h-3 w-3" />
-                Mẹo học
+                {labels.tipHeading}
               </p>
               <p className="mt-1 text-xs leading-relaxed text-slate-700">
                 {lesson.tipAdviceVi}
@@ -336,7 +385,7 @@ export function LessonRenderer({ lesson, theme }: LessonRendererProps) {
             <div className="rounded-lg border border-violet-100 bg-violet-50/60 p-3">
               <p className="inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wide text-violet-700">
                 <GraduationCap className="h-3 w-3" />
-                Ngữ pháp
+                {labels.grammarHeading}
               </p>
               <ul className="mt-1.5 space-y-1.5">
                 {lesson.grammar.map((g, gi) => (
