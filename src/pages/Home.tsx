@@ -13,19 +13,13 @@ import { useUserAccess } from "@/hooks/useUserAccess";
 import { useAuth } from "@/providers/AuthProvider";
 import { useFeatureFlag } from "@/hooks/useFeatureFlag";
 import { useProfileQuery } from "@/lib/queries/useProfileQuery";
-// Below-the-fold home cards — lazy-loaded so they don't gate initial
-// render. Each is wrapped in <Suspense fallback={<CardSkeleton .../>}>
-// at its render site with a height tuned to approximate the real card,
-// so CLS stays under 0.1 when the chunk hydrates. Above-the-fold cards
-// (hero, Teacher Mercy, placement test, music bar) stay eager.
-const DailyChallengeCard = lazyWithRetry(() => import("@/components/home/DailyChallengeCard"));
-const FocusAreasCard = lazyWithRetry(() => import("@/components/home/FocusAreasCard"));
-const PracticeRecommendationCard = lazyWithRetry(() => import("@/components/home/PracticeRecommendationCard"));
-const RecommendedDrillCard = lazyWithRetry(() => import("@/components/home/RecommendedDrillCard"));
-const WeeklyProgressWidget = lazyWithRetry(() => import("@/components/home/WeeklyProgressWidget"));
-const StoryPromptCard = lazyWithRetry(() => import("@/components/home/StoryPromptCard"));
-const LeaderboardCard = lazyWithRetry(() => import("@/components/leaderboard/LeaderboardCard"));
-import CardSkeleton from "@/components/home/CardSkeleton";
+import DailyChallengeCard from "@/components/home/DailyChallengeCard";
+import FocusAreasCard from "@/components/home/FocusAreasCard";
+import PracticeRecommendationCard from "@/components/home/PracticeRecommendationCard";
+import RecommendedDrillCard from "@/components/home/RecommendedDrillCard";
+import WeeklyProgressWidget from "@/components/home/WeeklyProgressWidget";
+import StoryPromptCard from "@/components/home/StoryPromptCard";
+import LeaderboardCard from "@/components/leaderboard/LeaderboardCard";
 import { StreakBadge } from "@/components/streak/StreakBadge";
 import { XPBadge } from "@/components/xp/XPBadge";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
@@ -903,9 +897,7 @@ export default function Home() {
               when active. Self-gates on the daily_challenge_enabled
               feature flag and hides itself once the user has a
               completion for today. */}
-          <Suspense fallback={<CardSkeleton className="h-[120px]" />}>
-            <DailyChallengeCard isPhone={isPhone} />
-          </Suspense>
+          <DailyChallengeCard isPhone={isPhone} />
 
           {/* ── 2. Teacher Mercy ─────────────────────────────────────────
               Hero card. Same handler as before (auth → bubble open;
@@ -949,12 +941,8 @@ export default function Home() {
               eligibility (paid, 21+ days, 50+ attempts, sustained
               improvement) AND a 30-day cooldown, so it renders nothing
               for new or struggling learners. */}
-          <Suspense fallback={<CardSkeleton className="h-[120px]" />}>
-            <WeeklyProgressWidget />
-          </Suspense>
-          <Suspense fallback={<CardSkeleton className="h-[140px]" />}>
-            <StoryPromptCard />
-          </Suspense>
+          <WeeklyProgressWidget />
+          <StoryPromptCard />
 
           {/* ── 4. Secondary learning paths ──────────────────────────────
               Mercy-flavoured recommendations, alternative entry points,
@@ -964,16 +952,12 @@ export default function Home() {
           {/* Practice recommendation — Mercy's "what should I practice
               tonight?" card. Self-fetching, hidden when the feature flag
               is off, the user is anonymous, or no rule fires. */}
-          <Suspense fallback={<CardSkeleton className="h-[120px]" />}>
-            <PracticeRecommendationCard />
-          </Suspense>
+          <PracticeRecommendationCard />
 
           {/* Targeted phoneme drill — surfaced when a weak phoneme has
               both signal (5+ attempts) and a hand-curated drill pack.
               Self-gates on its own feature flag + 24h cooldown. */}
-          <Suspense fallback={<CardSkeleton className="h-[120px]" />}>
-            <RecommendedDrillCard />
-          </Suspense>
+          <RecommendedDrillCard />
 
           {/* ── Intent group: "Start here" ────────────────────────────
               Placement lives right after Teacher Mercy so new visitors
@@ -1075,16 +1059,10 @@ export default function Home() {
           >
             {libraryCard}
           </ProgressiveDisclosureCard>
-          <Suspense fallback={<CardSkeleton className="h-[200px]" />}>
-            <FocusAreasCard />
-          </Suspense>
+          <FocusAreasCard />
 
           {/* Weekly leaderboard — retention card (feature-flagged). */}
-          {leaderboardEnabled && Boolean(user) && (
-            <Suspense fallback={<CardSkeleton className="h-[220px]" />}>
-              <LeaderboardCard />
-            </Suspense>
-          )}
+          {leaderboardEnabled && Boolean(user) && <LeaderboardCard />}
 
           {/* Language switcher — European + Asian language cards.
               At the very bottom so core learning paths are surfaced
