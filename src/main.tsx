@@ -49,27 +49,40 @@ if (typeof Uint8Array !== "undefined" && !(Uint8Array.prototype as any).at) {
   }
 }
 
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 
 import AppRouter from "@/router/AppRouter";
 import { LanguageProgressProvider } from "@/store/languageProgress";
 import OfflineIndicator from "@/components/offline/OfflineIndicator";
-import ShortcutHelpOverlay from "@/components/keyboard/ShortcutHelpOverlay";
-import GlobalNavigationShortcuts from "@/components/keyboard/GlobalNavigationShortcuts";
+// Keyboard surfaces are only reached when the user actually presses a key
+// (focus shortcuts, "?" help overlay). Lazy-loading them out of the critical
+// path saves boot bytes without changing user-visible behaviour — Suspense
+// renders nothing while they hydrate, which is exactly what an unpressed
+// keyboard listener looks like anyway.
+const ShortcutHelpOverlay = lazy(() => import("@/components/keyboard/ShortcutHelpOverlay"));
+const GlobalNavigationShortcuts = lazy(() => import("@/components/keyboard/GlobalNavigationShortcuts"));
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 import { SentryUserBinding } from "@/components/monitoring/SentryUserBinding";
-import { Toaster } from "@/components/ui/toaster";
-import { AccessibleToaster } from "@/components/a11y/AccessibleToast";
+// Toasters are passive surfaces that only paint once a toast actually fires.
+// Lazy + fallback={null} keeps them out of first paint; the first useToast
+// caller waits one microtask while the module loads.
+const Toaster = lazy(() =>
+  import("@/components/ui/toaster").then((m) => ({ default: m.Toaster })),
+);
+const AccessibleToaster = lazy(() =>
+  import("@/components/a11y/AccessibleToast").then((m) => ({ default: m.AccessibleToaster })),
+);
 import "@/index.css";
 import { supabase } from "@/lib/supabaseClient";
 import { AuthProvider } from "@/providers/AuthProvider";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { queryClient } from "@/lib/queries/client";
 import { initSentry, stringLooksLikeExternalNoise } from "@/lib/monitoring/sentryInit";
-import { runConfigHealthCheck } from "@/lib/configHealth";
-import { initializeWebVitals } from "@/lib/perf/webVitalsTracking";
+// runConfigHealthCheck and initializeWebVitals are imported dynamically
+// from inside an idle-callback below — see `deferNonCriticalBootWork`. Both
+// observe / report; neither is needed for first paint.
 import { looksLikeChunkLoadFailure as sharedLooksLikeChunkLoadFailure } from "@/lib/chunkLoadError";
 import { attachPreloadFailureRecovery } from "@/lib/preloadRecovery";
 
@@ -95,14 +108,33 @@ try { window.__MB_ENTRY_VERSION__ = MB_ENTRY_VERSION; } catch { /* ignore */ }
 // Called first so the boot IIFEs below are inside the error-capture window.
 initSentry();
 
-// Check external service configuration on startup (non-blocking).
-// Logs to console.warn in dev, sends to Sentry as warning in prod.
-// Catching here so a misbehaving config module can't crash the app.
-void runConfigHealthCheck().catch(() => {});
-
-// Core Web Vitals collection (LCP/FID/CLS/TTFB/FCP/INP). No-op in tests.
-// Records to web_vitals_events + emits a Sentry breadcrumb per metric.
-initializeWebVitals();
+// Defer two pieces of non-critical boot work out of the synchronous path:
+//   - runConfigHealthCheck: probes external services and reports to Sentry.
+//   - initializeWebVitals: subscribes to LCP/FID/CLS/TTFB/FCP/INP observers.
+// Both are observability / reporting concerns; neither affects what the
+// user sees on first paint. Pushing them into requestIdleCallback (with a
+// setTimeout fallback for Safari < 16.4 / older Firefox) saves their
+// bundled cost from the critical path AND frees the main thread during
+// hydration. The functions themselves still run — just after the user can
+// already interact.
+(function deferNonCriticalBootWork() {
+  const run = () => {
+    void import("@/lib/configHealth")
+      .then((m) => m.runConfigHealthCheck())
+      .catch(() => {});
+    void import("@/lib/perf/webVitalsTracking")
+      .then((m) => m.initializeWebVitals())
+      .catch(() => {});
+  };
+  // `requestIdleCallback` exists in Chrome/Edge/Firefox; Safari shipped
+  // it in 16.4. setTimeout(1) is the universal fallback — still off the
+  // critical path even if not strictly idle.
+  if (typeof window !== "undefined" && typeof window.requestIdleCallback === "function") {
+    window.requestIdleCallback(run, { timeout: 2000 });
+  } else {
+    setTimeout(run, 1);
+  }
+})();
 
 const devLog = (...args: unknown[]) => {
   if (import.meta.env.DEV) console.log(...args);
@@ -443,10 +475,16 @@ w.__MB_REACT_ROOT__.render(
         <AuthProvider>
           <SentryUserBinding />
           <OfflineIndicator />
-          <GlobalNavigationShortcuts />
-          <ShortcutHelpOverlay />
-          <Toaster />
-          <AccessibleToaster />
+          {/* Keyboard surfaces + toasters are lazy-loaded out of the critical
+              path. fallback={null} is correct: a keyboard listener that
+              hasn't loaded yet is indistinguishable from an unpressed key,
+              and a toaster that hasn't loaded yet has nothing to render. */}
+          <Suspense fallback={null}>
+            <GlobalNavigationShortcuts />
+            <ShortcutHelpOverlay />
+            <Toaster />
+            <AccessibleToaster />
+          </Suspense>
           <LanguageProgressProvider>
             <AppRouter />
           </LanguageProgressProvider>
