@@ -4,7 +4,7 @@
 
 import type { FrenchLesson } from "./lessons";
 
-export const lessons: FrenchLesson[] =       [
+export const lessons: FrenchLesson[] =         [
     {
       "id": "lthesis_presentation",
       "level": "C1",
@@ -9514,6 +9514,12 @@ export const lessons: FrenchLesson[] =       [
             "invitée → an-vi-té",
             "esquisser → ès-ki-sé",
             "réunit → ré-u-ni"
+          ],
+          "pronunciation_focus_en": [
+            "céder → 'say-DAY' — 'céder la parole' = to give the floor; '-er' = 'ay'",
+            "invitée → 'an-vee-TAY' — feminine guest; nasal 'in'; '-ée' = 'ay'",
+            "esquisser → 'es-kee-SAY' — 'to sketch (a question)'; double 'ss' = 's'",
+            "réunit → 'ray-u-NEE' — 'réunir' 3rd person; final 't' silent"
           ]
         },
         {
@@ -9524,6 +9530,12 @@ export const lessons: FrenchLesson[] =       [
             "transnationale → trãn-na-sio-nal",
             "appelle → a-pèl",
             "collectif → ko-lèk-tif"
+          ],
+          "pronunciation_focus_en": [
+            "circulation → 'seer-ku-lah-SYON' — 'u' rounded; '-tion' = 'syon'",
+            "transnationale → 'trahnz-nah-syo-NAL' — nasal 'an'; final 'l' pronounced",
+            "appelle → 'ah-PEL' — 'appeler' 3rd person; double 'll' = 'l'",
+            "collectif → 'koh-lek-TEEF' — 'un travail collectif'; final 'f' pronounced"
           ]
         },
         {
@@ -9534,6 +9546,12 @@ export const lessons: FrenchLesson[] =       [
             "simple → san-plơ",
             "apparence → a-pa-rãns",
             "exactement → èg-zak-tơ-mã"
+          ],
+          "pronunciation_focus_en": [
+            "sans plus tarder → 'sahn plu tar-DAY' — 'without further delay'; nasal 'an'",
+            "simple → 'SAN-pluh' — nasal 'im'; final '-le' barely voiced",
+            "apparence → 'ah-pah-RAHNSS' — double 'pp' = 'p'; nasal '-ence'",
+            "exactement → 'eg-zakt-MAHN' — 'x' = 'gz'; '-ment' nasal"
           ]
         },
         {
@@ -9544,6 +9562,12 @@ export const lessons: FrenchLesson[] =       [
             "imparti → an-par-ti",
             "soulevé → sul-vé",
             "médiateurs → mé-dia-tơr"
+          ],
+          "pronunciation_focus_en": [
+            "épuisions → 'ay-pwee-ZYON' — subjunctive of épuiser; 'avant que nous n'épuisions'",
+            "imparti → 'an-par-TEE' — 'le temps imparti' = the allotted time; final 'i' = 'ee'",
+            "soulevé → 'sool-VAY' — 'soulever' past participle; '-é' = 'ay'",
+            "médiateurs → 'may-dyah-TUR' — '-eurs' rounded; 'mediators'"
           ]
         },
         {
@@ -9554,6 +9578,12 @@ export const lessons: FrenchLesson[] =       [
             "synthèse → san-tèz",
             "tranché → trãn-shé",
             "consacrée → kõn-sa-kré"
+          ],
+          "pronunciation_focus_en": [
+            "clore → 'KLOR' — 'clore la séance' = to close the session; final '-e' silent",
+            "synthèse → 'san-TEZ' — nasal 'yn'; final '-e' silent",
+            "tranché → 'trahn-SHAY' — 'trancher' past participle; 'rien n'est tranché'",
+            "consacrée → 'kohn-sah-KRAY' — feminine past participle; nasal 'on'"
           ]
         }
       ],
@@ -9565,91 +9595,105 @@ export const lessons: FrenchLesson[] =       [
           "en": "a research seminar",
           "vi": "séminaire nghiên cứu",
           "pos": "n.m.",
-          "pronunciation_vi": "an sé-mi-nèr dơ rơ-shèrsh"
+          "pronunciation_vi": "an sé-mi-nèr dơ rơ-shèrsh",
+          "pronunciation_en": "UN say-mee-NEHR duh ruh-SHEHRSH — 'un séminaire de recherche' = a research seminar"
         },
         {
           "word": "animer un séminaire",
           "en": "to animate / chair a seminar",
           "vi": "điều phối một séminaire",
           "pos": "v.",
-          "pronunciation_vi": "a-ni-mé an sé-mi-nèr"
+          "pronunciation_vi": "a-ni-mé an sé-mi-nèr",
+          "pronunciation_en": "ah-nee-MAY UN say-mee-NEHR — 'animer un séminaire' = to chair a seminar"
         },
         {
           "word": "céder la parole",
           "en": "to give the floor",
           "vi": "nhường lời",
           "pos": "loc. v.",
-          "pronunciation_vi": "sé-dé la pa-rol"
+          "pronunciation_vi": "sé-dé la pa-rol",
+          "pronunciation_en": "say-DAY lah pah-ROL — 'céder la parole' = to give the floor"
         },
         {
           "word": "esquisser une question",
           "en": "to sketch a question",
           "vi": "phác thảo một câu hỏi",
           "pos": "v.",
-          "pronunciation_vi": "ès-ki-sé un kès-tion"
+          "pronunciation_vi": "ès-ki-sé un kès-tion",
+          "pronunciation_en": "es-kee-SAY ün kes-TYON — 'esquisser une question' = to sketch a question"
         },
         {
           "word": "le temps imparti",
           "en": "the allotted time",
           "vi": "thời gian quy định",
           "pos": "n.m.",
-          "pronunciation_vi": "lơ tã an-par-ti"
+          "pronunciation_vi": "lơ tã an-par-ti",
+          "pronunciation_en": "luh TAHN an-par-TEE — 'le temps imparti' = the allotted time"
         },
         {
           "word": "soulever un point",
           "en": "to raise a point",
           "vi": "nêu một điểm",
           "pos": "v.",
-          "pronunciation_vi": "su-lơ-vé an poan"
+          "pronunciation_vi": "su-lơ-vé an poan",
+          "pronunciation_en": "sool-VAY UN PWAN — 'soulever un point' = to raise a point; 'oi'... 'oin' = 'wan'"
         },
         {
           "word": "l'avocat du diable",
           "en": "the devil's advocate",
           "vi": "luật sư của quỷ",
           "pos": "n.m.",
-          "pronunciation_vi": "la-vo-ka du diab-lơ"
+          "pronunciation_vi": "la-vo-ka du diab-lơ",
+          "pronunciation_en": "lah-voh-KAH du DYAH-bluh — 'l'avocat du diable' = the devil's advocate"
         },
         {
           "word": "trancher une question",
           "en": "to settle a question",
           "vi": "phân định một câu hỏi",
           "pos": "v.",
-          "pronunciation_vi": "trãn-shé un kès-tion"
+          "pronunciation_vi": "trãn-shé un kès-tion",
+          "pronunciation_en": "trahn-SHAY ün kes-TYON — 'trancher une question' = to settle a question"
         },
         {
           "word": "clore la séance",
           "en": "to close the session",
           "vi": "kết thúc phiên",
           "pos": "loc. v.",
-          "pronunciation_vi": "klor la sé-ãns"
+          "pronunciation_vi": "klor la sé-ãns",
+          "pronunciation_en": "KLOR lah say-AHNSS — 'clore la séance' = to close the session"
         },
         {
           "word": "une synthèse en trois points",
           "en": "a three-point synthesis",
           "vi": "tổng hợp ba điểm",
           "pos": "n.f.",
-          "pronunciation_vi": "un san-tèz ã troa poan"
+          "pronunciation_vi": "un san-tèz ã troa poan",
+          "pronunciation_en": "ün san-TEZ ahn TRWAH PWAN — 'une synthèse en trois points'; 'oi' = 'wah'"
         }
       ],
       "dialogue": [
         {
           "speaker": "Linh (animatrice du séminaire)",
           "text": "Avant de céder la parole à notre invitée, je voudrais l'introduire brièvement. Madame Sapiro est directrice de recherche au CNRS, elle a publié notamment La Sociologie de la littérature en 2014. Aujourd'hui, elle nous parle de la circulation transnationale des œuvres.",
+          "en": "Before I give the floor to our guest, I'd like to introduce her briefly. Ms. Sapiro is a research director at the CNRS; she has published notably La Sociologie de la littérature in 2014. Today she speaks to us about the transnational circulation of works.",
           "vi": "Trước khi nhường lời cho khách mời, tôi muốn giới thiệu ngắn gọn. Cô Sapiro là directrice de recherche tại CNRS, đã xuất bản đáng chú ý cuốn La Sociologie de la littérature năm 2014. Hôm nay, cô nói với chúng ta về sự lưu chuyển xuyên quốc gia của các tác phẩm."
         },
         {
           "speaker": "Linh",
           "text": "Madame, je vous cède la parole. Vous disposez de quarante-cinq minutes, et nous aurons ensuite quarante-cinq minutes de discussion.",
+          "en": "Madame, I give you the floor. You have forty-five minutes, and we'll then have forty-five minutes of discussion.",
           "vi": "Cô Sapiro, tôi nhường lời. Cô có 45 phút, sau đó chúng ta có 45 phút thảo luận."
         },
         {
           "speaker": "Pr. Sapiro (après son exposé)",
           "text": "Je vous remercie. Je suis maintenant à votre disposition pour les questions.",
+          "en": "Thank you. I am now at your disposal for questions.",
           "vi": "Cảm ơn quý vị. Tôi xin sẵn sàng nhận câu hỏi."
         },
         {
           "speaker": "Linh",
           "text": "Je me permets d'ouvrir la discussion par une question. Vous avez avancé que la circulation se fait par des médiateurs institutionnels. Comment articulez-vous cela avec le rôle des médiateurs informels — traducteurs indépendants, agents littéraires — qui semble passer au second plan dans votre exposé ?",
+          "en": "Let me open the discussion with a question. You argued that circulation happens through institutional mediators. How do you articulate that with the role of informal mediators — independent translators, literary agents — which seems to recede into the background in your talk?",
           "vi": "Cho phép tôi mở thảo luận bằng một câu hỏi. Cô vừa nói rằng lưu chuyển diễn ra qua các trung gian thiết chế. Cô khớp điều đó với vai trò của các trung gian không chính thức — dịch giả độc lập, agent văn học — vốn dường như đứng hàng hai trong bài, ra sao?"
         }
       ],
@@ -9657,61 +9701,73 @@ export const lessons: FrenchLesson[] =       [
         {
           "speaker": "Linh (animatrice, ouverture)",
           "text": "Bonsoir à tous. Je suis heureuse d'ouvrir cette séance du séminaire annuel 'Circulations transnationales des savoirs', qui se tient depuis octobre dans cet amphithéâtre de l'EHESS. Aujourd'hui, nous accueillons Madame Gisèle Sapiro, directrice de recherche au CNRS, professeure à l'EHESS. Madame Sapiro a publié, entre autres, La Sociologie de la littérature en deux mille quatorze et Les Écrivains et la politique en France en deux mille dix-huit.",
+          "en": "Good evening, everyone. I'm pleased to open this session of the annual seminar 'Transnational Circulations of Knowledge', held since October in this EHESS lecture hall. Today we welcome Ms. Gisèle Sapiro, research director at the CNRS, professor at the EHESS. Ms. Sapiro has published, among others, La Sociologie de la littérature in two thousand fourteen and Les Écrivains et la politique en France in two thousand eighteen.",
           "vi": "Xin chào tất cả. Tôi vui mừng khai mạc phiên séminaire năm 'Circulations transnationales des savoirs', diễn ra từ tháng 10 tại giảng đường này của EHESS. Hôm nay chúng ta đón Cô Gisèle Sapiro, directrice de recherche CNRS, professeure EHESS. Cô đã xuất bản, trong số khác, La Sociologie de la littérature 2014 và Les Écrivains et la politique en France 2018."
         },
         {
           "speaker": "Linh",
           "text": "Le thème de notre séminaire — la circulation transnationale des savoirs — appelle, par sa nature même, un travail collectif: aucune discipline ne le couvre seule. Nous avons commencé l'année par la circulation des sciences dures, puis par la circulation des théories juridiques. Aujourd'hui, avec Madame Sapiro, nous abordons la circulation des œuvres littéraires, qui présente, je le crois, des spécificités que la discussion permettra d'éclaircir. Madame, je vous cède la parole. Vous disposez de quarante-cinq minutes, suivies d'une discussion ouverte d'une durée équivalente.",
+          "en": "The theme of our seminar — the transnational circulation of knowledge — calls, by its very nature, for collective work: no discipline covers it alone. We began the year with the circulation of the hard sciences, then with the circulation of legal theories. Today, with Ms. Sapiro, we address the circulation of literary works, which presents, I believe, specificities the discussion will clarify. Madame, I give you the floor. You have forty-five minutes, followed by an open discussion of equivalent length.",
           "vi": "Chủ đề séminaire — sự lưu chuyển xuyên quốc gia của tri thức — chính bởi bản chất của nó đòi hỏi một công việc tập thể: không ngành nào tự phủ kín được. Chúng ta đã bắt đầu năm bằng lưu chuyển khoa học cứng, rồi lưu chuyển lý thuyết pháp lý. Hôm nay, với Cô Sapiro, chúng ta đề cập lưu chuyển các tác phẩm văn học, theo tôi tin, có đặc thù mà thảo luận sẽ làm rõ. Thưa Cô, tôi nhường lời. Cô có 45 phút, tiếp theo là thảo luận mở 45 phút."
         },
         {
           "speaker": "Pr. Sapiro (après son exposé de 45 min)",
           "text": "Je vous remercie pour votre attention. Je suis à votre disposition pour les questions.",
+          "en": "Thank you for your attention. I am at your disposal for questions.",
           "vi": "Cảm ơn quý vị đã lắng nghe. Tôi sẵn sàng nhận câu hỏi."
         },
         {
           "speaker": "Linh",
           "text": "Madame, merci pour cet exposé qui ouvre plusieurs pistes. Avant que nous n'ouvrions au public, je me permets d'ouvrir la discussion par une question d'animatrice. Vous avez avancé que la circulation transnationale se fait principalement par des médiateurs institutionnels — agents, éditeurs, festivals. Quoique cet argument soit fortement étayé pour le cas français-anglais, je m'interroge sur les cas asymétriques: comment articulez-vous votre cadre avec les médiateurs informels — traducteurs indépendants, agents littéraires solitaires — qui semblent passer au second plan dans votre exposé ?",
+          "en": "Madame, thank you for a talk that opens several avenues. Before we open to the public, let me open the discussion with an animator's question. You argued that transnational circulation happens mainly through institutional mediators — agents, publishers, festivals. Although this argument is strongly substantiated for the French-English case, I wonder about asymmetric cases: how do you articulate your framework with informal mediators — independent translators, solitary literary agents — who seem to recede into the background in your talk?",
           "vi": "Thưa Cô, cảm ơn về bài trình bày mở ra nhiều hướng. Trước khi mở cho công chúng, cho phép tôi đặt một câu hỏi với tư cách animatrice. Cô vừa nói rằng lưu chuyển xuyên quốc gia chủ yếu diễn ra qua các trung gian thiết chế — agent, biên tập, festival. Mặc dù lập luận này được hỗ trợ mạnh cho trường hợp Pháp-Anh, tôi tự hỏi về các trường hợp bất đối xứng: Cô khớp khung của Cô với các trung gian không chính thức — dịch giả độc lập, agent văn học cô đơn — vốn dường như đứng hàng hai, ra sao?"
         },
         {
           "speaker": "Pr. Sapiro",
           "text": "Question pertinente. Vous touchez à un point réel. Mon cadre privilégie les médiateurs institutionnels parce que les sources que j'ai mobilisées — archives d'agents, contrats d'édition, données IPSTEC — les rendent visibles. Les médiateurs informels sont plus difficiles à saisir empiriquement. Mais vous avez raison: dans des cas asymétriques comme la France-Vietnam, le poids relatif des informels est probablement supérieur. C'est un point que je n'ai pas exploré.",
+          "en": "A pertinent question. You touch on a real point. My framework privileges institutional mediators because the sources I mobilized — agents' archives, publishing contracts, IPSTEC data — make them visible. Informal mediators are harder to grasp empirically. But you're right: in asymmetric cases like France-Vietnam, the relative weight of the informal ones is probably greater. It's a point I haven't explored.",
           "vi": "Câu hỏi xác đáng. Cô chạm vào một điểm thật. Khung của tôi ưu tiên các trung gian thiết chế bởi nguồn tôi huy động — lưu trữ agent, hợp đồng xuất bản, dữ liệu IPSTEC — làm chúng hiện ra. Các trung gian không chính thức khó nắm bắt empirically. Nhưng cô đúng: trong các trường hợp bất đối xứng như Pháp-Việt, trọng số của không chính thức có thể cao hơn. Đó là điểm tôi chưa khai thác."
         },
         {
           "speaker": "Linh",
           "text": "Merci de cette ouverture. J'ouvre maintenant au public — je vois plusieurs mains levées. Madame Lemaire, vous étiez la première.",
+          "en": "Thank you for that openness. I now open to the public — I see several raised hands. Ms. Lemaire, you were first.",
           "vi": "Cảm ơn sự cởi mở. Tôi mở cho công chúng — tôi thấy nhiều tay giơ. Cô Lemaire, cô là người đầu."
         },
         {
           "speaker": "Pr. Lemaire (membre du séminaire)",
           "text": "Madame Sapiro, vous citez régulièrement Bourdieu — Les Règles de l'art — comme cadre de référence. Mais Bourdieu lui-même a été critique de la sociologie de la traduction de Casanova. Comment vous positionnez-vous dans ce débat ?",
+          "en": "Ms. Sapiro, you regularly cite Bourdieu — Les Règles de l'art — as your reference framework. But Bourdieu himself was critical of Casanova's sociology of translation. How do you position yourself in that debate?",
           "vi": "Cô Sapiro, cô thường trích Bourdieu — Les Règles de l'art — làm khung quy chiếu. Nhưng chính Bourdieu đã phê bình xã hội học dịch của Casanova. Cô định vị mình thế nào trong tranh luận đó?"
         },
         {
           "speaker": "Pr. Sapiro",
           "text": "Question délicate. Je continue Bourdieu sur le concept de champ, je nuance Casanova sur la centralité parisienne. La méridienne géographique de Casanova me paraît surdéterminée — j'opte pour une géographie polycentrique.",
+          "en": "A delicate question. I continue Bourdieu on the concept of field; I nuance Casanova on Parisian centrality. Casanova's geographical meridian seems overdetermined to me — I opt for a polycentric geography.",
           "vi": "Câu hỏi nhạy. Tôi tiếp tục Bourdieu về khái niệm champ, tôi điều chỉnh Casanova về tính trung tâm Paris. Đường meridian địa lý của Casanova theo tôi quá xác định — tôi chọn địa lý đa trung tâm."
         },
         {
           "speaker": "Linh",
           "text": "Si je peux reformuler pour le séminaire: vous gardez la grille bourdieusienne mais vous décentrez le champ — Paris n'est plus la méridienne. C'est une position plus proche de Lahire que de Casanova, je crois ?",
+          "en": "If I may reformulate for the seminar: you keep the Bourdieusian grid but decentre the field — Paris is no longer the meridian. That's a position closer to Lahire than to Casanova, I believe?",
           "vi": "Nếu tôi diễn đạt lại cho séminaire: cô giữ khung Bourdieu nhưng cô phi-trung tâm hóa champ — Paris không còn là đường meridian. Đây là vị trí gần Lahire hơn Casanova, tôi nghĩ vậy?"
         },
         {
           "speaker": "Pr. Sapiro",
           "text": "Reformulation juste, oui. Je suis effectivement plus proche de Lahire sur ce point précis.",
+          "en": "A correct reformulation, yes. I am indeed closer to Lahire on this precise point.",
           "vi": "Diễn đạt lại đúng. Tôi quả thật gần Lahire hơn ở điểm cụ thể này."
         },
         {
           "speaker": "Linh",
           "text": "Merci. Monsieur Schmitt, vous aviez la main levée ensuite.",
+          "en": "Thank you. Mr. Schmitt, you had your hand up next.",
           "vi": "Cảm ơn. Thầy Schmitt, thầy có giơ tay sau đó."
         },
         {
           "speaker": "Linh (clôture, après 45 min de discussion)",
           "text": "Nous arrivons au terme du temps imparti. Pour clore la séance, je propose une synthèse en trois points. Premièrement, le cadre de Madame Sapiro, qui privilégie les médiateurs institutionnels, semble robuste pour les flux symétriques mais demande à être complété pour les flux asymétriques — ce point reviendra dans la séance du quinze mai consacrée précisément à ces flux. Deuxièmement, le débat avec Casanova sur la méridienne parisienne reste ouvert et nourrira le travail de notre groupe. Troisièmement, la question des médiateurs informels — soulevée par Madame Lemaire et Monsieur Dubois — sera l'objet d'une séance dédiée que je co-organiserai avec Monsieur Dubois en juin. Madame Sapiro, je vous remercie chaleureusement pour la générosité de votre présence et la qualité de cet échange.",
+          "en": "We're reaching the end of the allotted time. To close the session, I propose a synthesis in three points. First, Ms. Sapiro's framework, which privileges institutional mediators, seems robust for symmetric flows but needs to be complemented for asymmetric ones — a point that will return in the May fifteenth session devoted precisely to those flows. Second, the debate with Casanova on the Parisian meridian remains open and will feed our group's work. Third, the question of informal mediators — raised by Ms. Lemaire and Mr. Dubois — will be the object of a dedicated session I'll co-organize with Mr. Dubois in June. Ms. Sapiro, I thank you warmly for the generosity of your presence and the quality of this exchange.",
           "vi": "Chúng ta đến cuối thời gian. Để kết thúc, tôi đề xuất tổng hợp ba điểm. Thứ nhất, khung của Cô Sapiro, ưu tiên các trung gian thiết chế, vững cho luồng đối xứng nhưng cần bổ sung cho luồng bất đối xứng — điểm này sẽ trở lại ở phiên 15/5. Thứ hai, tranh luận với Casanova về đường meridian Paris vẫn mở. Thứ ba, câu hỏi về các trung gian không chính thức — do Cô Lemaire và Thầy Dubois nêu — sẽ là chủ đề một phiên riêng tôi đồng tổ chức với Thầy Dubois tháng 6. Thưa Cô Sapiro, tôi xin chân thành cảm ơn về sự rộng lượng và chất lượng trao đổi."
         }
       ],
@@ -9725,25 +9781,33 @@ export const lessons: FrenchLesson[] =       [
         {
           "idiom": "Céder la parole (académique)",
           "literal": "Nhường lời nói",
+          "literal_en": "to cede the speech",
           "meaning": "Nhường lời — formule animateur standard.",
+          "meaning_en": "to give the floor — the standard animator's formula",
           "example": "Je vous cède la parole, Madame Sapiro. Vous disposez de quarante-cinq minutes."
         },
         {
           "idiom": "Esquisser une question (intellectuel)",
           "literal": "Phác họa một câu hỏi",
+          "literal_en": "to sketch a question",
           "meaning": "Đặt một câu hỏi tổng quát, ngắn gọn — pour ouvrir un séminaire.",
+          "meaning_en": "to pose a brief, general framing question — used to open a seminar",
           "example": "Avant de céder la parole, permettez-moi d'esquisser la question qui nous réunit aujourd'hui."
         },
         {
           "idiom": "Jouer l'avocat du diable (idiomatique)",
           "literal": "Đóng vai luật sư của quỷ",
+          "literal_en": "to play the devil's advocate",
           "meaning": "Đặt phản biện cố ý — formule pour annoncer une provocation intellectuelle.",
+          "meaning_en": "to deliberately raise a counter-argument — a formula for announcing an intellectual provocation",
           "example": "Je joue l'avocat du diable un instant: et si la circulation se faisait surtout par les médiateurs informels ?"
         },
         {
           "idiom": "Trancher une question (formel)",
           "literal": "Chặt một câu hỏi",
+          "literal_en": "to slice a question",
           "meaning": "Phân định dứt khoát — souvent au négatif: « rien n'est tranché ».",
+          "meaning_en": "to settle a question definitively — often used negatively: « rien n'est tranché »",
           "example": "À l'issue de cette séance, rien n'est tranché — la discussion reprendra le quinze mai."
         }
       ],
@@ -9751,35 +9815,47 @@ export const lessons: FrenchLesson[] =       [
         {
           "type": "fill-blank",
           "question": "Avant que nous n'___ le temps imparti, je voudrais qu'on revienne sur un point soulevé en passant.",
-          "answer": "épuisions"
+          "answer": "épuisions",
+          "hint_vi": "subjonctif của épuiser — sau « Avant que nous n' » (+ ne explétif)",
+          "hint_en": "subjunctive of épuiser — after « Avant que nous n' » (which takes the subjunctive + the expletive 'ne')"
         },
         {
           "type": "matching",
           "pairs": [
             [
               "céder la parole",
-              "nhường lời"
+              "nhường lời (to give the floor)"
             ],
             [
               "esquisser une question",
-              "phác họa một câu hỏi"
+              "phác họa một câu hỏi (to sketch a question)"
             ],
             [
               "l'avocat du diable",
-              "luật sư của quỷ"
+              "luật sư của quỷ (the devil's advocate)"
             ],
             [
               "clore la séance",
-              "kết thúc phiên"
+              "kết thúc phiên (to close the session)"
             ]
           ],
-          "instruction": "Nối thuật ngữ animation séminaire với nghĩa Việt"
+          "instruction": "Nối thuật ngữ animation séminaire với nghĩa Việt",
+          "instruction_en": "Match each seminar-animation term with its Vietnamese meaning"
         },
         {
           "type": "translation",
           "vietnamese": "Để kết thúc phiên, tôi đề xuất một tổng hợp ba điểm, đồng thời lưu ý rằng không có gì đã được phân định.",
+          "english": "To close the session, I propose a synthesis in three points, noting that nothing is settled.",
           "french": "Pour clore la séance, je propose une synthèse en trois points, en notant que rien n'est tranché."
         }
+      ],
+      "cultural_notes_en": "« Le séminaire de recherche » is a central institution of French intellectual life, distinct from « le cours » and « la conférence ». The COURS is one-directional (professor teaches, students take notes). The CONFÉRENCE/TABLE RONDE is a one-off event, large audience, limited exchange. THE SÉMINAIRE is collective, periodic, participants are researchers or advanced doctoral students, and the exchange is the main object. Typical structure: an animateur opens, a guest or lab researcher presents (30-50 min), open discussion (45-60 min), closing synthesis. Duration 1h30-2h, weekly or fortnightly. Institutions to know: the EHESS seminars (emblematic — each tenured researcher may run an annual public seminar), the ENS seminars, the UMR/EA seminars. THE ANIMATOR'S ROLE is key: present the guest (5 min max), sketch the question, cede the floor, PROVOKE the discussion with a TARGETED first question (not generic — the animator has read the guest's publications), distribute the floor, reformulate vague questions, synthesize at the end. WHY THE ANIMATOR IS DIRECT: in the French tradition (inherited from the salons + medieval disputatio), the animator is NOT a neutral moderator like a TV-panel host. They are an intellectual among others, with their own viewpoint, who asks the hard questions. The 'animator's first question' is often the rudest — it sets the tone. Unlike the Anglo model (neutral facilitator), a French animator can say « je conteste votre lecture de Bourdieu » openly. The guest takes this directness as a sign of seriousness, not rudeness. GUIDANCE: tutoiement is absolutely forbidden — vouvoiement among all, even close colleagues; the seminar is a space of disagreement; argued dissent is welcomed.",
+      "tip_advice_en": "Eight-step protocol for animating a research seminar: (1) PREPARATION — read at least 3 recent publications of the guest, identify 2 tension zones in their work, prepare 4-5 questions (1 hard 'first question' + 3-4 follow-ups). (2) OPENING — 5 min max: present the guest (trajectory, key publications, link to the annual theme), sketch the uniting question, cede the floor with precise timing. (3) ACTIVE LISTENING during the talk — note 3-5 discussion points. (4) THE FIRST QUESTION — the seminar's key moment: precise not generic, addressed DIRECTLY to the guest, touching the core. (5) DISCUSSION MANAGEMENT — keep a mental list of speakers, balance seniors/juniors/doctoral students, reformulate confused questions. (6) PROVOKE WHEN NECESSARY — if the guest evades, re-ask with firmness; if consensus forms too fast, play devil's advocate; this directness is EXPECTED of the animator. (7) TIME MANAGEMENT — flag '10 minutes for two last questions', refuse to overrun. (8) CLOSING — a 3-5 min synthesis in three points, indicate what stays open, announce the next session, thank the guest warmly but briefly. Avoid: monopolizing the floor (the guest should have 50%+ of total time), hyperbolic guest introductions ('sommité internationale'), avoiding hard questions out of politeness. Guidance for Vietnamese speakers: the worry 'I'll look disrespectful if I ask a hard question' is a mistake — in French seminar culture, respect is shown THROUGH the hard question.",
+      "register_notes_en": "Seminar animation = an INTERMEDIATE academic register — elevated but flexible enough to manage debate. (1) OPENING FORMULAS — « Bonsoir à tous, je suis heureuse d'ouvrir cette séance... », « Avant de céder la parole à notre invité(e)... », « Permettez-moi de la / le situer brièvement... ». (2) FLOOR-CEDING FORMULAS — « Je vous cède la parole. Vous disposez de N minutes. », « Madame X, vous étiez la première à lever la main. ». (3) INTELLECTUAL-PROVOCATION FORMULAS — « Je me permets d'ouvrir par une question difficile... », « À titre de débat, je formule l'objection suivante: ... », « Permettez que je joue l'avocat du diable... ». (4) REFORMULATION — « Si je vous comprends bien, vous me dites que... », « Pour que ce soit clair: votre position est donc... ? » — a moderation act, used when a question is confused. (5) TIME-MANAGEMENT FORMULAS — « Nous avons une dizaine de minutes pour deux dernières questions. », « Le temps imparti touche à sa fin. ». (6) CLOSING FORMULAS — « Pour clore la séance, je propose une synthèse en trois points. », « Ce qui n'est pas tranché, c'est X — sera l'objet d'une séance ultérieure. ». (7) SUBJUNCTIVE in temporal subordinates — « Avant que nous n'épuisions le temps imparti... » (avant que + subjunctive + ne explétif), « Pourvu que nous parvenions à conclure... ». Avoid: hyperbole in the guest presentation, a generic question, monopolizing the floor, tutoiement (even if you tu the guest in private), concluding in the guest's place when you disagree.",
+      "roleplay_prompts_en": [
+        "Open a seminar in 4 minutes: presentation of the guest (3 sentences) + sketch of the annual question (1 sentence) + cession of the floor with precise timing. Use « céder la parole », « esquisser », « le temps imparti ».",
+        "An animator's first question to a guest whose thesis you CONTEST. Structure: acknowledge the argument's solidity + pivot to the tension zone + a direct question. Avoid the generic « pourriez-vous développer ? ».",
+        "Moderate an exchange that becomes a duel between two participants. Intervene politely but firmly: « Permettez-moi de rouvrir au reste de la salle. Madame X, vous aviez la main levée depuis cinq minutes. » Then reformulate what was said to regain control."
       ]
     },
     {
@@ -9797,6 +9873,12 @@ export const lessons: FrenchLesson[] =       [
             "désaccord → dé-za-kor",
             "idéologique → i-dé-o-lo-jik",
             "confondent → kõn-fõnd"
+          ],
+          "pronunciation_focus_en": [
+            "d'emblée → 'dahn-BLAY' — 'from the outset'; nasal 'em'; '-ée' = 'ay'",
+            "désaccord → 'day-zah-KOR' — 's' = 'z'; final 'd' silent",
+            "idéologique → 'ee-day-oh-loh-ZHEEK' — 'g' = 'zh'; final '-que' = 'k'",
+            "confondent → 'kohn-FOHND' — 'confondre' 3rd plural; final '-ent' silent"
           ]
         },
         {
@@ -9807,6 +9889,12 @@ export const lessons: FrenchLesson[] =       [
             "télévisuelle → té-lé-vi-zu-èl",
             "concision → kõn-si-zion",
             "dégrade → dé-grad"
+          ],
+          "pronunciation_focus_en": [
+            "Quoique → 'KWAH-kuh' — 'oi' = 'wah'; triggers the subjunctive",
+            "télévisuelle → 'tay-lay-vee-zu-EL' — 's' between vowels = 'z'; '-elle' = 'el'",
+            "concision → 'kohn-see-ZYON' — 's' = 'z'; '-sion' = 'zyon'; nasal final",
+            "dégrade → 'day-GRAD' — 'dégrader' 3rd person; final '-e' silent"
           ]
         },
         {
@@ -9817,6 +9905,12 @@ export const lessons: FrenchLesson[] =       [
             "manifeste → ma-ni-fèst",
             "intervention → an-tèr-vãn-sion",
             "accès → ak-sè"
+          ],
+          "pronunciation_focus_en": [
+            "tribune → 'tree-BUN' — 'la tribune' = the op-ed; 'u' rounded",
+            "manifeste → 'mah-nee-FEST' — 'un manifeste politique'; final '-e' silent",
+            "intervention → 'an-tehr-vahn-SYON' — nasal 'in' + nasal 'en'; '-tion' = 'syon'",
+            "accès → 'ak-SEH' — 'en accès libre' = open access; final 's' silent"
           ]
         },
         {
@@ -9827,6 +9921,12 @@ export const lessons: FrenchLesson[] =       [
             "polémiste → po-lé-mist",
             "disqualifier → dis-ka-li-fié",
             "divergences → di-vèr-jãns"
+          ],
+          "pronunciation_focus_en": [
+            "étiquette → 'ay-tee-KET' — 'l'étiquette de polémiste' = the label of polemicist",
+            "polémiste → 'poh-lay-MEEST' — 'a polemicist'; final '-e' silent",
+            "disqualifier → 'dees-kah-lee-FYAY' — 'to disqualify'; '-ier' = 'yay'",
+            "divergences → 'dee-vehr-ZHAHNSS' — 'g' = 'zh'; final '-es' silent"
           ]
         },
         {
@@ -9837,6 +9937,12 @@ export const lessons: FrenchLesson[] =       [
             "contraint → kõn-tran",
             "présentateur → pré-zãn-ta-tơr",
             "perdue → pèr-du"
+          ],
+          "pronunciation_focus_en": [
+            "Bien que → 'byan kuh' — nasal 'ien'; triggers the subjunctive",
+            "contraint → 'kohn-TRAN' — nasal 'on' + nasal 'ain'; final 't' silent",
+            "présentateur → 'pray-zahn-tah-TUR' — 's' = 'z'; '-eur' rounded; the TV host",
+            "perdue → 'pehr-DU' — feminine past participle of perdre; rounded final 'u'"
           ]
         }
       ],
@@ -9848,91 +9954,105 @@ export const lessons: FrenchLesson[] =       [
           "en": "an op-ed",
           "vi": "bài tribune báo chí",
           "pos": "n.f.",
-          "pronunciation_vi": "un tri-bun"
+          "pronunciation_vi": "un tri-bun",
+          "pronunciation_en": "ün tree-BUN — 'une tribune (presse)' = an op-ed; 'u' rounded"
         },
         {
           "word": "un billet d'humeur",
           "en": "a column / brief opinion piece",
           "vi": "billet d'humeur",
           "pos": "n.m.",
-          "pronunciation_vi": "an bi-yè du-mơr"
+          "pronunciation_vi": "an bi-yè du-mơr",
+          "pronunciation_en": "UN bee-YEH du-MUR — 'un billet d'humeur' = a brief opinion column"
         },
         {
           "word": "une lettre ouverte",
           "en": "an open letter",
           "vi": "thư ngỏ",
           "pos": "n.f.",
-          "pronunciation_vi": "un lè-trơ u-vèrt"
+          "pronunciation_vi": "un lè-trơ u-vèrt",
+          "pronunciation_en": "ün LET-truh oo-VEHRT — 'une lettre ouverte' = an open letter"
         },
         {
           "word": "le débat d'idées",
           "en": "the debate of ideas",
           "vi": "tranh luận tư tưởng",
           "pos": "n.m.",
-          "pronunciation_vi": "lơ dé-ba di-dé"
+          "pronunciation_vi": "lơ dé-ba di-dé",
+          "pronunciation_en": "luh day-BAH dee-DAY — 'le débat d'idées' = the debate of ideas"
         },
         {
           "word": "un polémiste",
           "en": "a polemicist",
           "vi": "polémiste — người gây tranh cãi",
           "pos": "n.",
-          "pronunciation_vi": "an po-lé-mist"
+          "pronunciation_vi": "an po-lé-mist",
+          "pronunciation_en": "UN poh-lay-MEEST — 'un polémiste' = a polemicist (pejorative)"
         },
         {
           "word": "disqualifier l'adversaire",
           "en": "to disqualify the opponent",
           "vi": "hạ uy tín đối thủ",
           "pos": "v.",
-          "pronunciation_vi": "dis-ka-li-fié lad-vèr-sèr"
+          "pronunciation_vi": "dis-ka-li-fié lad-vèr-sèr",
+          "pronunciation_en": "dees-kah-lee-FYAY lad-vehr-SEHR — 'disqualifier l'adversaire' = to disqualify the opponent"
         },
         {
           "word": "préciser une divergence",
           "en": "to clarify a divergence",
           "vi": "làm rõ một sự khác biệt",
           "pos": "v.",
-          "pronunciation_vi": "pré-si-zé un di-vèr-jãns"
+          "pronunciation_vi": "pré-si-zé un di-vèr-jãns",
+          "pronunciation_en": "pray-see-ZAY ün dee-vehr-ZHAHNSS — 'préciser une divergence' = to clarify a divergence"
         },
         {
           "word": "le format télévisuel",
           "en": "the TV format",
           "vi": "format truyền hình",
           "pos": "n.m.",
-          "pronunciation_vi": "lơ for-mat té-lé-vi-zu-èl"
+          "pronunciation_vi": "lơ for-mat té-lé-vi-zu-èl",
+          "pronunciation_en": "luh for-MAH tay-lay-vee-zu-EL — 'le format télévisuel' = the TV format"
         },
         {
           "word": "la simplification",
           "en": "simplification",
           "vi": "sự đơn giản hóa",
           "pos": "n.f.",
-          "pronunciation_vi": "la san-pli-fi-ka-sion"
+          "pronunciation_vi": "la san-pli-fi-ka-sion",
+          "pronunciation_en": "lah san-plee-fee-kah-SYON — 'la simplification'; '-tion' = 'syon'"
         },
         {
           "word": "l'instrumentalisation",
           "en": "instrumentalization",
           "vi": "sự công cụ hóa",
           "pos": "n.f.",
-          "pronunciation_vi": "lan-stru-mãn-ta-li-za-sion"
+          "pronunciation_vi": "lan-stru-mãn-ta-li-za-sion",
+          "pronunciation_en": "lan-stru-mahn-tah-lee-zah-SYON — 'l'instrumentalisation'; long noun; '-tion' = 'syon'"
         }
       ],
       "dialogue": [
         {
           "speaker": "M. Lefranc (présentateur radio, France Culture)",
           "text": "Madame Tran, vous signez ce matin une tribune dans Le Monde. Avec votre tribune vous êtes-vous transformée en militante ?",
+          "en": "Ms. Tran, you sign an op-ed in Le Monde this morning. Has your op-ed turned you into an activist?",
           "vi": "Cô Trần, sáng nay cô ký một tribune trên Le Monde. Với bài tribune đó cô có biến thành nhà hoạt động không?"
         },
         {
           "speaker": "Linh",
           "text": "Je tiens à distinguer d'emblée. La tribune que je signe n'est pas un manifeste politique: c'est une intervention de scientifique, fondée sur les conclusions de mon travail de recherche, dont les références sont disponibles en accès libre sur HAL. Je ne deviens pas militante en publiant cette tribune — j'apporte au débat public un savoir construit méthodologiquement.",
+          "en": "I want to distinguish at the outset. The op-ed I sign is not a political manifesto: it's a scientist's intervention, grounded in the conclusions of my research, whose references are openly available on HAL. I don't become an activist by publishing this op-ed — I bring to public debate a methodologically constructed knowledge.",
           "vi": "Tôi muốn phân biệt ngay. Bài tribune tôi ký không phải tuyên ngôn chính trị: là một can thiệp của nhà khoa học, dựa trên kết luận công trình nghiên cứu, tài liệu tham khảo có thể truy cập tự do trên HAL. Tôi không trở thành nhà hoạt động khi xuất bản bài này — tôi đưa vào débat công một tri thức được xây dựng có phương pháp."
         },
         {
           "speaker": "M. Lefranc",
           "text": "Mais votre prise de position pourra être instrumentalisée par tel ou tel parti politique. Comment l'évitez-vous ?",
+          "en": "But your stance could be instrumentalized by some political party. How do you avoid that?",
           "vi": "Nhưng quan điểm của cô có thể bị partisan này nọ instrumentaliser. Cô tránh thế nào?"
         },
         {
           "speaker": "Linh",
           "text": "Je ne peux pas l'éviter complètement — c'est inhérent à toute prise de parole publique. Ce que je peux faire: ancrer rigoureusement mon argument dans le travail scientifique, refuser les amalgames, et répondre aux objections argumentées sans suivre les disqualifications personnelles.",
+          "en": "I can't avoid it completely — it's inherent to any public statement. What I can do: rigorously anchor my argument in scientific work, refuse the amalgams, and respond to argued objections without following the personal disqualifications.",
           "vi": "Tôi không tránh được hoàn toàn — đó là điều cố hữu của mọi phát biểu công khai. Điều tôi làm được: cắm chặt lập luận vào công trình khoa học, từ chối các amalgam, và đáp các phản biện có lập luận mà không theo các disqualification cá nhân."
         }
       ],
@@ -9940,61 +10060,73 @@ export const lessons: FrenchLesson[] =       [
         {
           "speaker": "M. Lefranc (présentateur, plateau TV France 5, 'C dans l'air')",
           "text": "Madame Tran, bonsoir. Vous êtes maître de conférences, sociolinguiste, et vous publiez ce matin dans Le Monde une tribune sur la place du français au Vietnam. Première question simple: pourquoi cette tribune maintenant ?",
+          "en": "Ms. Tran, good evening. You're a senior lecturer, a sociolinguist, and you publish this morning in Le Monde an op-ed on the place of French in Vietnam. First simple question: why this op-ed now?",
           "vi": "Cô Trần, chào cô. Cô là maître de conférences, sociolinguiste, và sáng nay đăng một tribune trên Le Monde về vị trí tiếng Pháp ở Việt Nam. Câu hỏi đầu đơn giản: tại sao tribune này, lúc này?"
         },
         {
           "speaker": "Linh",
           "text": "Bonsoir, Monsieur Lefranc. La tribune répond à une actualité: la décision annoncée la semaine dernière par le ministère de l'Éducation vietnamien de rendre l'apprentissage du français optionnel dès la classe de sixième, qui aura des effets durables sur le bilinguisme du pays. J'apporte une contribution à ce débat sur la base d'un travail de recherche en cours.",
+          "en": "Good evening, Mr. Lefranc. The op-ed responds to a current event: the Vietnamese Education Ministry's decision announced last week to make learning French optional from sixth grade, which will have lasting effects on the country's bilingualism. I'm contributing to this debate on the basis of ongoing research.",
           "vi": "Chào Thầy. Bài tribune đáp một thời sự: quyết định công bố tuần trước của Bộ Giáo dục Việt Nam đưa việc học tiếng Pháp thành tùy chọn ngay từ lớp 6, sẽ có hệ quả lâu dài cho song ngữ của đất nước. Tôi đóng góp vào tranh luận này trên cơ sở một công trình nghiên cứu đang triển khai."
         },
         {
           "speaker": "M. Lefranc",
           "text": "Mais cette décision est souveraine du Vietnam. Êtes-vous en train de juger les choix d'un État souverain ?",
+          "en": "But that decision is sovereign to Vietnam. Are you judging the choices of a sovereign state?",
           "vi": "Nhưng quyết định đó thuộc chủ quyền Việt Nam. Cô đang phán xét lựa chọn của một quốc gia có chủ quyền?"
         },
         {
           "speaker": "Linh",
           "text": "Je ne juge pas la souveraineté — qui est un fait. Je propose une analyse des conséquences sociolinguistiques de cette décision, en m'appuyant sur des données comparatives: que se passe-t-il ailleurs quand une langue d'enseignement précoce devient optionnelle ? Mon rôle d'analyste n'est pas de dire au Vietnam ce qu'il doit faire — c'est d'éclairer les enjeux de ce qu'il décide.",
+          "en": "I'm not judging sovereignty — which is a fact. I propose an analysis of the sociolinguistic consequences of this decision, drawing on comparative data: what happens elsewhere when an early-taught language becomes optional? My role as an analyst is not to tell Vietnam what to do — it's to illuminate the stakes of what it decides.",
           "vi": "Tôi không phán xét chủ quyền — vốn là một sự thật. Tôi đề xuất một phân tích hệ quả ngôn ngữ-xã hội của quyết định này, dựa trên dữ liệu so sánh: điều gì xảy ra ở nơi khác khi một ngôn ngữ giảng dạy sớm thành tùy chọn? Vai trò nhà phân tích của tôi không phải nói cho Việt Nam phải làm gì — mà làm rõ các bối cảnh của điều họ quyết định."
         },
         {
           "speaker": "M. Lefranc",
           "text": "Mais avouons-le: vous êtes vietnamienne, vous écrivez en France, vous vivez en France. Vous êtes en porte-à-faux ?",
+          "en": "But let's admit it: you're Vietnamese, you write in France, you live in France. Aren't you in an awkward position?",
           "vi": "Nhưng phải thừa nhận: cô là người Việt, cô viết ở Pháp, sống ở Pháp. Cô không bị mâu thuẫn?"
         },
         {
           "speaker": "Linh",
           "text": "Je ne suis pas en porte-à-faux. Je m'inscris en faux contre l'idée qu'une chercheuse vietnamienne en France ne pourrait parler du Vietnam que depuis une position assignée. Mon expertise — sociolinguistique du bilinguisme — est précisément située au croisement des deux espaces, et c'est cette position qui me permet une analyse que ni un sociolinguiste exclusivement français ni un sociolinguiste exclusivement vietnamien ne pourrait formuler.",
+          "en": "I'm not in an awkward position. I firmly disagree with the idea that a Vietnamese researcher in France could only speak about Vietnam from an assigned position. My expertise — the sociolinguistics of bilingualism — is precisely situated at the crossroads of the two spaces, and it's that position that allows me an analysis that neither an exclusively French nor an exclusively Vietnamese sociolinguist could formulate.",
           "vi": "Tôi không bị mâu thuẫn. Tôi phản bác ý kiến cho rằng một nhà nghiên cứu Việt ở Pháp chỉ có thể nói về Việt Nam từ một vị trí gán sẵn. Chuyên môn của tôi — sociolinguistique du bilinguisme — chính nằm ở giao điểm hai không gian, và chính vị trí này cho phép tôi một phân tích mà một sociolinguiste thuần Pháp hoặc thuần Việt không thể formuler."
         },
         {
           "speaker": "M. Lefranc",
           "text": "Vous êtes accusée — par certains commentateurs sur les réseaux sociaux — d'être l'agent d'une nostalgie coloniale, de défendre la francophonie comme un héritage à préserver. Que répondez-vous ?",
+          "en": "You're accused — by some commentators on social media — of being the agent of a colonial nostalgia, of defending the Francophonie as a heritage to be preserved. What do you respond?",
           "vi": "Cô bị cáo buộc — bởi một số bình luận trên mạng xã hội — là agent của một nostalgie thuộc địa, bảo vệ francophonie như một di sản. Cô đáp gì?"
         },
         {
           "speaker": "Linh",
           "text": "Je réponds avec netteté. Premièrement, je n'ai jamais défendu la francophonie comme un héritage colonial — j'ai défendu le bilinguisme comme un atout cognitif et social, qu'il s'agisse de français-vietnamien, anglais-vietnamien ou chinois-vietnamien. Deuxièmement, l'accusation de nostalgie coloniale est, en l'occurrence, un effet rhétorique de disqualification — précisément ce que la polémique fait, et ce que je refuse. Troisièmement, je n'accepte pas l'étiquette qu'on m'attribue: la polémique vise à disqualifier l'adversaire, le débat vise à préciser les divergences pour mieux travailler ensemble. Je débats; je ne polémique pas.",
+          "en": "I respond with firmness. First, I have never defended the Francophonie as a colonial heritage — I defended bilingualism as a cognitive and social asset, whether French-Vietnamese, English-Vietnamese or Chinese-Vietnamese. Second, the accusation of colonial nostalgia is, in this instance, a rhetorical disqualification effect — precisely what polemic does, and what I refuse. Third, I don't accept the label assigned to me: polemic aims to disqualify the opponent, debate aims to clarify divergences to work better together. I debate; I don't polemicize.",
           "vi": "Tôi đáp dứt khoát. Một, tôi chưa bao giờ bảo vệ francophonie như di sản thuộc địa — tôi bảo vệ song ngữ như một lợi thế nhận thức và xã hội, dù là Pháp-Việt, Anh-Việt hay Trung-Việt. Hai, cáo buộc nostalgie thuộc địa, trong trường hợp này, là hiệu ứng tu từ disqualification — chính điều mà polémique làm, và là điều tôi từ chối. Ba, tôi không chấp nhận nhãn người ta gắn: polémique nhằm hạ uy tín đối thủ, débat nhằm làm rõ những khác biệt để cùng làm việc tốt hơn. Tôi débats; tôi không polémique."
         },
         {
           "speaker": "M. Lefranc",
           "text": "Le format de l'émission ne nous laisse plus que deux minutes. Une dernière question: est-ce le rôle d'un universitaire de signer une tribune dans Le Monde ?",
+          "en": "The format of the show leaves us only two minutes. A last question: is it the role of an academic to sign an op-ed in Le Monde?",
           "vi": "Format chương trình chỉ còn 2 phút. Câu cuối: ký một tribune trên Le Monde có phải vai trò của một học giả?"
         },
         {
           "speaker": "Linh",
           "text": "Bien que le format soit contraint, je voudrais répondre précisément. Oui, c'est le rôle d'un universitaire — depuis Zola en mille huit cent quatre-vingt-dix-huit. À condition de respecter trois règles: ancrer la prise de parole dans son champ d'expertise, ne pas confondre le statut de chercheur et le statut de citoyen, et accepter la critique argumentée qui suivra. C'est ce que je fais, ce que mes prédécesseurs ont fait, et ce qui maintient l'intellectuel comme figure publique en France — distincte du commentateur d'opinion.",
+          "en": "Although the format is constrained, I'd like to answer precisely. Yes, it's an academic's role — since Zola in eighteen ninety-eight. On condition that three rules are respected: anchor the statement in one's field of expertise, not confuse the researcher status with the citizen status, and accept the argued criticism that will follow. That's what I do, what my predecessors did, and what maintains the intellectual as a public figure in France — distinct from the opinion commentator.",
           "vi": "Mặc dù format bị giới hạn, tôi muốn trả lời cụ thể. Đúng, đó là vai trò của một học giả — từ Zola năm 1898. Với ba điều kiện: cắm phát biểu vào lĩnh vực chuyên môn, không lẫn lộn statut nhà nghiên cứu với statut công dân, và chấp nhận phê phán có lập luận theo sau. Đó là điều tôi làm, các tiền nhân đã làm, và là điều duy trì người trí thức như một nhân vật công ở Pháp — phân biệt với commentateur d'opinion."
         },
         {
           "speaker": "M. Lefranc",
           "text": "Madame Tran, je vous remercie.",
+          "en": "Ms. Tran, thank you.",
           "vi": "Cô Trần, cảm ơn cô."
         },
         {
           "speaker": "Linh",
           "text": "Je vous remercie également.",
+          "en": "Thank you as well.",
           "vi": "Tôi cũng cảm ơn Thầy."
         }
       ],
@@ -10008,25 +10140,33 @@ export const lessons: FrenchLesson[] =       [
         {
           "idiom": "D'emblée (formel)",
           "literal": "Ngay từ đầu",
+          "literal_en": "from the outset",
           "meaning": "Ngay từ đầu — formule pour signaler une distinction initiale.",
+          "meaning_en": "from the very start — a formula for signalling an initial distinction",
           "example": "Je tiens à distinguer d'emblée le désaccord scientifique du désaccord idéologique."
         },
         {
           "idiom": "Être en porte-à-faux (formel)",
           "literal": "Ở trong tình thế đỡ sai",
+          "literal_en": "to be off-square (off-balance)",
           "meaning": "Ở trong vị trí mâu thuẫn — formule de débat pour signaler une accusation d'incohérence.",
+          "meaning_en": "to be in a contradictory/untenable position — a debate formula for an accusation of inconsistency",
           "example": "On me reproche d'être en porte-à-faux ; je conteste cette lecture."
         },
         {
           "idiom": "Couper court à un débat (idiomatique)",
           "literal": "Cắt ngắn một tranh luận",
+          "literal_en": "to cut a debate short",
           "meaning": "Đóng một tranh luận sớm — souvent négatif, accusation contre un présentateur.",
+          "meaning_en": "to close a debate prematurely — often negative, an accusation against a host",
           "example": "En coupant court au débat, le présentateur a ramené la complexité à un slogan."
         },
         {
           "idiom": "L'effet rhétorique de disqualification (académique)",
           "literal": "Hiệu ứng tu từ hạ uy tín",
+          "literal_en": "the rhetorical effect of disqualification",
           "meaning": "Hiệu ứng tu từ nhằm phế bỏ đối thủ — analyse standard de la polémique.",
+          "meaning_en": "a rhetorical move designed to discredit the opponent — the standard analysis of polemic",
           "example": "L'accusation de nostalgie coloniale est, en l'occurrence, un effet rhétorique de disqualification."
         }
       ],
@@ -10034,35 +10174,47 @@ export const lessons: FrenchLesson[] =       [
         {
           "type": "fill-blank",
           "question": "Quoique la formule télévisuelle ___ la concision, je refuse que la simplification dégrade la rigueur du propos.",
-          "answer": "impose"
+          "answer": "impose",
+          "hint_vi": "subjonctif của imposer — sau « Quoique » (la formule ___ la concision)",
+          "hint_en": "subjunctive of imposer — after « Quoique » (although the TV format ___ concision)"
         },
         {
           "type": "matching",
           "pairs": [
             [
               "une tribune",
-              "bài tribune báo chí"
+              "bài tribune báo chí (a press op-ed)"
             ],
             [
               "un polémiste",
-              "polémiste"
+              "người gây tranh cãi (a polemicist)"
             ],
             [
               "d'emblée",
-              "ngay từ đầu"
+              "ngay từ đầu (from the outset)"
             ],
             [
               "disqualifier l'adversaire",
-              "hạ uy tín đối thủ"
+              "hạ uy tín đối thủ (to disqualify the opponent)"
             ]
           ],
-          "instruction": "Nối thuật ngữ débat public với nghĩa Việt"
+          "instruction": "Nối thuật ngữ débat public với nghĩa Việt",
+          "instruction_en": "Match each public-debate term with its Vietnamese meaning"
         },
         {
           "type": "translation",
           "vietnamese": "Tôi không chấp nhận nhãn polémiste mà người ta gắn cho tôi: polémique nhằm hạ uy tín đối thủ, débat nhằm làm rõ những khác biệt.",
+          "english": "I don't accept the polemicist label assigned to me: polemic aims to disqualify the opponent, debate aims to clarify divergences.",
           "french": "Je n'accepte pas l'étiquette de polémiste qu'on m'attribue: la polémique vise à disqualifier l'adversaire, le débat vise à préciser les divergences."
         }
+      ],
+      "cultural_notes_en": "« Le débat d'idées » and more broadly « la vie intellectuelle française » form a specific public space with no real equivalent in most other cultures. THE INTELLECTUAL — A RECOGNIZED FRENCH STATUS: the figure goes back to Émile Zola, « J'accuse...! » (L'Aurore, 13 January 1898), during the Dreyfus affair. From then, « intellectuel » becomes a public status in France: a person trained in the academic or literary field who intervenes in public debate on political, social or ethical questions. Lineage: Zola → Sartre/Aron/Camus → Bourdieu/Foucault/Derrida → Onfray/Badiou/Sapiro/Lordon. FORMATS: la tribune (a 3000-5000-character op-ed in a major daily — Le Monde, Libération, Le Figaro, La Croix), the billet d'humeur, the open letter, the general-public book, the interview, the TV/radio panel. A CRITICAL DISTINCTION: DÉBAT vs POLÉMIQUE — debate aims to clarify divergences to advance collective thought (argued, fact-based, reversible); polemic aims to disqualify the opponent (personal, rhetorical, irreversible). A serious intellectual refuses the 'polemicist' label. RISKS for the intellectual: media-ization (becoming a 'media intellectual' with no new work behind it — Bourdieu's critique in Sur la télévision), simplification, instrumentalization by a party, the slide into polemic. GUIDANCE FOR VIETNAMESE INTELLECTUALS IN FRANCE: knowing these debates = belonging to the field; the intellectual status is not self-conferred — it comes from work + peer recognition + public use; for a non-French intellectual, the tribune is accessible but works best addressed to questions where your perspective adds something (Asia, post-colonialism). Don't confuse « intellectuel » (a status, speaking for public values) with « expert » (a competence, speaking for disciplinary knowledge). This is not legal or career advice — verify current editorial policies before pitching a tribune.",
+      "tip_advice_en": "Nine-step protocol to intervene publicly as an intellectual without losing rigor: (1) DECIDE WHEN — do you have a contribution others can't make (grounded in your research, field, language)? If the subject is outside your expertise, abstain. (2) CHOOSE THE FORMAT — tribune for a stable argued thesis; collective open letter for an institutional call; interview for a substantive subject; TV panel only with mastery of both subject AND format. (3) WRITE THE TRIBUNE — a clear thesis in the first sentence, 4-6 argument paragraphs, an owned personal position, scientific referencing, a conclusion that opens. (4) DON'T CONFUSE TRIBUNE AND MANIFESTO. (5) DEFEND NUANCE ON AIR — « Permettez-moi de préciser, parce que la formulation que vous me prêtez n'est pas exactement la mienne. ». (6) DISTINGUISH DEBATE FROM POLEMIC — don't follow a slide into polemic; refuse the ad hominem. (7) PROTECT THE SCIENTIFIC WORK — keep a reasonable frequency (2-3 tribunes/year, not /month). (8) OWN THE RECEPTION — a published tribune means public criticism; respond only to argued objections, ignore the noise. (9) PROTOCOL IN PROLONGED CONTROVERSY — short written reply on factual arguments, no reply to personal attacks, if needed a communiqué via your institution. Avoid: becoming a 'media personality' with no new output, accepting TV without preparation, confusing your expert and citizen statuses, refusing all debate (which = refusing the intellectual status). Not legal/career advice — public participation has professional consequences; discuss with your unit direction in advance.",
+      "register_notes_en": "Public intellectual discourse = an academic register ADAPTED to media constraints — elevated but accessible, short but rigorous. (1) CONCEPTUAL-DISTINCTION FORMULAS — key in debate: « Je tiens à distinguer d'emblée le X du Y. », « Il convient de ne pas confondre A et B. », « Le débat vise X ; la polémique vise Y. » — distinguishing signals you keep rigor even in a constrained format. (2) SCIENTIFIC-ANCHORING FORMULAS — « ...fondé(e) sur les conclusions de mon travail de recherche... », « ...dont les références sont disponibles en accès libre sur HAL. » — distinguishes expert speech from opinion speech. (3) LABEL-REFUSAL FORMULAS — « Je n'accepte pas l'étiquette de polémiste. », « Je m'inscris en faux contre l'amalgame entre X et Y. ». (4) TIME-REQUEST FORMULAS — « Bien que le format soit contraint, je voudrais répondre précisément. », « Permettez-moi de finir cet argument. ». (5) ATTACK-RESPONSE FORMULAS — « Je réponds avec netteté. », « Premièrement... Deuxièmement... Troisièmement... », « C'est, en l'occurrence, un effet rhétorique de disqualification — ce que je refuse. ». (6) SUBJUNCTIVE — « Quoique la formule télévisuelle impose la concision... », « Je refuse que la simplification dégrade la rigueur. ». (7) MEDIA-REGISTER ADAPTATION — no jargon ('formation discursive') but keep precision ('le bilinguisme cognitif' rather than 'parler deux langues'). Avoid: over-pedagogy (condescending), following the polemic into ad hominem, unkeepable promises, refusing all debate, confusing the researcher and citizen statuses without specifying.",
+      "roleplay_prompts_en": [
+        "A TV host tries to simplify your argument into a slogan. Respond: refuse the simplification without rebuffing; reformulate while staying concise. « Permettez-moi de préciser, parce que la formulation que vous me prêtez n'est pas exactement la mienne. »",
+        "You're accused on a panel of being a « polémiste ». Respond with a conceptual distinction: debate (clarify divergences to advance) vs polemic (disqualify the opponent). Refuse the label without escalating.",
+        "Trick question: « Mais vous êtes étrangère, comment osez-vous critiquer la politique X ? » Respond: contest the idea that the assigned position determines analytical legitimacy; situate your expertise at the crossroads; refuse the slide into ad hominem."
       ]
     },
     {
