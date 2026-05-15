@@ -20,6 +20,12 @@ export const lessons: FrenchLesson[] = [
           "Lanson → lãn-sõn",
           "exige → èg-zij",
           "interroger → an-tè-ro-jé"
+        ],
+        "pronunciation_focus_en": [
+          "explication → 'eks-plee-kah-SYOHN' — -tion is 'syohn', not English 'shun'; stress on the last syllable",
+          "Lanson → 'lahn-SOHN' — proper name (Gustave Lanson); two nasals; final -n never pronounced",
+          "exige → 'eg-ZEEZH' — 'x' before a vowel is 'gz'; final -ge is soft 'zh'; final -e silent",
+          "interroger → 'an-teh-roh-ZHAY' — nasal -in; double-r is one French throat r; -ger is 'zhay'. Note the rare literary construction 'avant que d'interroger' — archaic 'de' before infinitive, marks high written register"
         ]
       },
       {
@@ -30,6 +36,12 @@ export const lessons: FrenchLesson[] = [
           "commentateur → ko-mãn-ta-tơr",
           "oreille → o-rèy",
           "demi → dơ-mi"
+        ],
+        "pronunciation_focus_en": [
+          "encore → 'ahn-KOR' — nasal -en; final -e silent; here it opens the inversion 'Encore faut-il que' = 'and yet it still requires that'",
+          "commentateur → 'koh-mahn-tah-TUR' — double-m one clean 'm'; nasal -en; final -eur is 'ur' with rounded lips",
+          "oreille → 'oh-RAY-yuh' — -eille is 'ay-y'; 'avoir l'oreille fine' = to have a discerning ear (idiomatic)",
+          "demi → 'duh-MEE' — schwa 'de'; 'à demi' = 'by halves / half'; literary register"
         ]
       },
       {
@@ -40,6 +52,12 @@ export const lessons: FrenchLesson[] = [
           "anodine → a-no-din",
           "recèle → rơ-sèl",
           "rythmique → rit-mik"
+        ],
+        "pronunciation_focus_en": [
+          "apparence → 'ah-pah-RAHNS' — double-p one clean 'p'; nasal -en; final -ce is 'ahns'",
+          "anodine → 'ah-noh-DEEN' — feminine of 'anodin'; means 'innocuous/trivial', not English 'anodyne' (a soothing drug) — false friend",
+          "recèle → 'ruh-SEL' — è with grave opens to 'eh'; literary verb 'receler' = to harbor/conceal a hidden meaning",
+          "rythmique → 'reet-MEEK' — final -ique is 'eek'; the -th- is just 't'"
         ]
       },
       {
@@ -50,6 +68,12 @@ export const lessons: FrenchLesson[] = [
           "préférable → pré-fé-ra-blơ",
           "procédât → pro-sé-da",
           "inverse → an-vèrs"
+        ],
+        "pronunciation_focus_en": [
+          "eût → 'EW' — rounded French 'u' (German ü); subjunctive imperfect of 'avoir'; 'il eût été' = literary form of 'it would have been'",
+          "préférable → 'pray-fay-RAH-bluh' — final -ble is a quick 'bluh', not English 'bull'",
+          "procédât → 'proh-say-DAH' — subjunctive imperfect of 'procéder'; final -t silent. This tense marks elevated written/academic French — would sound pretentious in speech",
+          "inverse → 'an-VAIRS' — nasal -in; final -e silent; 'l'inverse' = 'the reverse'"
         ]
       },
       {
@@ -60,160 +84,193 @@ export const lessons: FrenchLesson[] = [
           "thèmes → tèm",
           "restituer → rès-ti-tu-é",
           "singularité → san-gu-la-ri-té"
+        ],
+        "pronunciation_focus_en": [
+          "réduire → 'ray-DWEER' — 'ui' glides into 'wee'; final -e silent; 'loin de réduire' = 'far from reducing'",
+          "thèmes → 'TEM' — -th- is just 't'; è opens to 'eh'; plural -s silent",
+          "restituer → 'res-tee-tew-AY' — 'u' rounded 'ew'; final -er is 'ay'; literary 'to render/give back faithfully'",
+          "singularité → 'san-gew-lah-ree-TAY' — nasal -in; 'u' rounded; final -té is 'tay'"
         ]
       }
     ],
     "cultural_notes_vi": "« EXPLICATION DE TEXTE » là một thực hành đặc thù của giáo dục Pháp — không có tương đương trực tiếp ở Việt Nam và khác cả « close reading » của Anh-Mỹ. Đây là hạt nhân của khoa văn học Pháp từ Lanson cuối thế kỷ XIX, được củng cố bởi Compagnon (Le Démon de la théorie, 1998) và Riffaterre.\n\nQUY ƯỚC CƠ BẢN: bạn được giao một đoạn văn (10-30 dòng) và bạn phải nói liền 30 phút (oral d'agrégation), hoặc viết 3-5 trang (devoir surveillé). Nguyên tắc tối thượng: BẠN BÌNH GIẢNG ĐOẠN ĐÓ, KHÔNG TÁC PHẨM. Sa vào tóm tắt cốt truyện = mất điểm ngay.\n\nCẤU TRÚC CHUẨN ba phần (jamais quatre):\n\n(1) INTRODUCTION (10%):\n- Situer (tác giả, tác phẩm, vị trí của đoạn trong tác phẩm)\n- Caractériser (thể loại con của đoạn — diễn biến, hồi ký, tả cảnh, monologue intérieur)\n- Annoncer une problématique (câu hỏi văn học mà đoạn này đặt ra)\n- Annoncer le plan (3 axes de lecture)\n\n(2) ANALYSE (80%):\n- Mỗi axe = một góc đọc cho phép kéo dài cả đoạn\n- KHÔNG đọc tuần tự « câu một…, câu hai… »\n- Chứng cứ luôn TRÍCH NGUYÊN VĂN, đặt trong dấu « guillemets français »\n- Mỗi citation kèm bình luận tu từ (« cette anaphore en début de phrase souligne… »)\n\n(3) CONCLUSION (10%):\n- Bilan (tổng hợp 3 axes)\n- Ouverture (kết nối với toàn tác phẩm, hoặc một văn bản khác)\n\nKHÁC BIỆT GIỮA EXPLICATION ET COMMENTAIRE COMPOSÉ:\n- Explication: tuần tự văn bản, oral, agrégation\n- Commentaire composé: phi-tuần tự, viết, bac et licence\n\nĐIỂM TỐI QUAN TRỌNG: tradition Pháp đặt giá trị TỐI CAO vào lecture LITTÉRALE — bạn KHÔNG được phóng chiếu lý thuyết lên văn bản. KHÔNG « ce passage est une critique du capitalisme » trừ khi văn bản bản thân chứa các éléments cụ thể cho phép nói vậy. Một phê bình thường gặp dành cho thí sinh người Việt: « plaquage théorique » (dán lý thuyết lên văn bản từ ngoài). Tránh: bắt đầu với Bourdieu / Foucault rồi tìm chứng cứ — bạn ngược lại, bắt đầu với chứng cứ rồi mới đến lý thuyết.\n\nBẪY ĐẶC THÙ NGƯỜI VIỆT: hệ thống giáo dục Việt dạy phân tích văn theo cách giảng « ý nghĩa nội dung » + « biểu hiện nghệ thuật ». Pháp KHÔNG tách như vậy — phân tích Pháp cho rằng FORME LÀ CHỨA NGHĨA. Một phép ẩn dụ KHÔNG « biểu hiện nghệ thuật » của một « ý nghĩa »; nó SẢN SINH ý nghĩa qua chính hình thức của nó.",
+    "cultural_notes_en": "« EXPLICATION DE TEXTE » is a practice specific to French education — it has no direct equivalent in anglophone schooling and differs even from Anglo-American 'close reading'. It is the nucleus of French literary studies, formalized by Gustave Lanson at the end of the 19th century and reinforced by Antoine Compagnon (Le Démon de la théorie, 1998) and Michael Riffaterre.\n\nBASIC CONVENTION: you are given a passage (10-30 lines) and you must speak continuously for 30 minutes (oral d'agrégation), or write 3-5 pages (devoir surveillé). The supreme principle: YOU EXPLICATE THE PASSAGE, NOT THE WORK. Lapsing into plot summary = immediate loss of points. Anglophone students trained to 'discuss the novel' must unlearn this reflex completely.\n\nSTANDARD THREE-PART STRUCTURE (never four):\n\n(1) INTRODUCTION (10%):\n- Situer (author, work, the passage's position in the work)\n- Caractériser (the passage's sub-genre — narration, recollection, description, interior monologue)\n- Annoncer une problématique (the literary question this passage raises)\n- Annoncer le plan (3 axes de lecture)\n\n(2) ANALYSE (80%):\n- Each axe = a reading angle that can be sustained across the whole passage\n- DO NOT read sequentially 'sentence one…, sentence two…'\n- Evidence is always QUOTED VERBATIM, in French guillemets « … »\n- Each citation comes with rhetorical commentary ('cette anaphore en début de phrase souligne…')\n\n(3) CONCLUSION (10%):\n- Bilan (synthesis of the 3 axes)\n- Ouverture (link to the whole work, or to another text)\n\nDIFFERENCE BETWEEN EXPLICATION AND COMMENTAIRE COMPOSÉ:\n- Explication: sequential through the text, oral, agrégation\n- Commentaire composé: non-sequential, written, bac and licence\n\nCRUCIAL POINT: the French tradition places SUPREME value on the LITERAL reading — you may NOT project theory onto the text. NOT 'this passage is a critique of capitalism' unless the text itself contains specific elements that license such a claim. A frequent criticism leveled at anglophone candidates: 'plaquage théorique' (slapping theory onto the text from outside). Avoid: starting with Bourdieu/Foucault and then hunting for evidence — you do the reverse, starting with evidence and only then reaching theory.\n\nA TRAP FOR ANGLOPHONE STUDENTS: anglophone literary training often separates 'theme/content' from 'literary devices/technique', as if devices were ornaments illustrating a pre-existing meaning. French analysis does NOT separate this way — it holds that FORM CONTAINS MEANING. A metaphor is NOT an 'artistic expression' OF a 'meaning'; it PRODUCES meaning through its very form. This is the single hardest conceptual shift for anglophone students entering French literary studies.",
     "tip_advice_vi": "QUY TRÌNH 6 BƯỚC để chuẩn bị một explication de texte (cho oral 30 phút, chuẩn bị 1 giờ):\n\nBƯỚC 1 (5 phút) — ĐỌC YÊN LẶNG hai lần. Lần đầu cho ấn tượng tổng quát; lần hai chú ý các chi tiết bất thường.\n\nBƯỚC 2 (10 phút) — ANNOTATION DENSE: gạch dưới mọi figure de style (anaphore, métaphore, antithèse, hyperbate), mọi từ « marqué » (lexique chuyên môn, archaïsme, néologisme), mọi rupture (changement de temps, changement de focalisation, hapax dans l'œuvre).\n\nBƯỚC 3 (10 phút) — IDENTIFIER 3 AXES DE LECTURE: ba câu hỏi văn học cho phép kéo dài cả đoạn. Ví dụ: (a) cấu trúc nhịp điệu, (b) jeu sur les voix narratives, (c) charge ironique. KHÔNG « les personnages », « le décor », « l'action » — đây là phân loại nội dung, không phải axes de lecture.\n\nBƯỚC 4 (10 phút) — DISTRIBUER LES CITATIONS theo 3 axes. Mỗi axe có 3-4 citations với bình luận tu từ.\n\nBƯỚC 5 (10 phút) — RÉDIGER L'INTRODUCTION đầy đủ (3-5 câu) và CONCLUSION (3-5 câu). Phần analyse có thể nói tự do từ notes.\n\nBƯỚC 6 (5 phút) — RELIRE LE TEXTE LENTEMENT một lần nữa. Souvent một détail bị bỏ sót sẽ xuất hiện ở lần đọc cuối.\n\nCỤM HỮU ÍCH:\n\nĐỂ MỞ ĐẦU EXPLICATION:\n- « Le passage que nous allons commenter est extrait de [tác phẩm], paru en [năm]. »\n- « Cet extrait se situe à un moment-clé du récit — [bối cảnh ngắn]. »\n- « Nous nous demanderons en quoi cette page constitue [problématique]. »\n- « Notre analyse se déploiera selon trois axes: [axe 1]; [axe 2]; [axe 3]. »\n\nĐỂ CITER ET COMMENTER:\n- « L'auteur écrit, à la ligne X: « [citation] ». Cette formulation appelle plusieurs remarques. »\n- « On notera, dans cette même phrase, le glissement de l'imparfait au passé simple — glissement chargé de sens. »\n- « Cette anaphore — répétition de X en début de trois phrases consécutives — confère au passage une cadence presque incantatoire. »\n\nĐỂ ANALYSER LA STYLISTIQUE:\n- « L'écart stylistique est ici manifeste: [observation]. »\n- « Le travail rythmique repose sur une opposition entre phrases longues et phrases brèves. »\n- « Ce choix énonciatif n'est pas anodin: il [effet produit]. »\n\nĐỂ CONCLURE:\n- « Cette page, à première vue descriptive, recèle en réalité [synthèse]. »\n- « Loin d'être un simple ornement narratif, ce passage constitue [enjeu]. »\n- « Cette analyse pourrait être prolongée par la lecture de [autre texte], qui présente une mise en œuvre comparable. »\n\nTRÁNH:\n- « Dans ce passage, l'auteur veut nous faire comprendre que… » → intentionnalisme naïf\n- « C'est très beau » / « c'est intéressant » → jugement non analytique\n- Tóm tắt cốt truyện thay vì bình giảng\n- Plaquage theórique — bắt đầu từ Bourdieu rồi mới đọc văn bản",
+    "tip_advice_en": "6-STEP PROCESS to prepare an explication de texte (for a 30-minute oral, 1 hour of prep):\n\nSTEP 1 (5 min) — SILENT READING twice. First for the overall impression; second attending to anything unusual.\n\nSTEP 2 (10 min) — DENSE ANNOTATION: underline every figure de style (anaphora, metaphor, antithesis, hyperbaton), every 'marked' word (technical lexicon, archaism, neologism), every rupture (tense change, change of focalization, hapax within the work).\n\nSTEP 3 (10 min) — IDENTIFY 3 AXES DE LECTURE: three literary questions that can be sustained across the whole passage. E.g.: (a) rhythmic structure, (b) play on narrative voices, (c) ironic charge. NOT 'the characters', 'the setting', 'the action' — these are content categories, not reading axes. This is the step anglophone students most often get wrong: they default to content categories.\n\nSTEP 4 (10 min) — DISTRIBUTE THE CITATIONS across the 3 axes. Each axe has 3-4 citations with rhetorical commentary.\n\nSTEP 5 (10 min) — WRITE OUT THE INTRODUCTION fully (3-5 sentences) and the CONCLUSION (3-5 sentences). The analysis itself can be delivered freely from notes.\n\nSTEP 6 (5 min) — REREAD THE TEXT SLOWLY one more time. Often a detail missed earlier will surface on the final reading.\n\nUSEFUL PHRASES:\n\nTO OPEN THE EXPLICATION:\n- 'Le passage que nous allons commenter est extrait de [work], paru en [year].'\n- 'Cet extrait se situe à un moment-clé du récit — [brief context].'\n- 'Nous nous demanderons en quoi cette page constitue [problématique].'\n- 'Notre analyse se déploiera selon trois axes: [axe 1]; [axe 2]; [axe 3].'\n\nTO QUOTE AND COMMENT:\n- 'L'auteur écrit, à la ligne X: « [citation] ». Cette formulation appelle plusieurs remarques.'\n- 'On notera, dans cette même phrase, le glissement de l'imparfait au passé simple — glissement chargé de sens.'\n- 'Cette anaphore — répétition de X en début de trois phrases consécutives — confère au passage une cadence presque incantatoire.'\n\nTO ANALYZE THE STYLISTICS:\n- 'L'écart stylistique est ici manifeste: [observation].'\n- 'Le travail rythmique repose sur une opposition entre phrases longues et phrases brèves.'\n- 'Ce choix énonciatif n'est pas anodin: il [effect produced].'\n\nTO CONCLUDE:\n- 'Cette page, à première vue descriptive, recèle en réalité [synthesis].'\n- 'Loin d'être un simple ornement narratif, ce passage constitue [stake].'\n- 'Cette analyse pourrait être prolongée par la lecture de [other text], qui présente une mise en œuvre comparable.'\n\nAVOID:\n- 'Dans ce passage, l'auteur veut nous faire comprendre que…' → naive intentionalism (see register notes on Barthes)\n- 'C'est très beau' / 'c'est intéressant' → non-analytical judgment\n- Plot summary instead of explication\n- Plaquage théorique — starting from Bourdieu before reading the text",
     "vocabulary": [
       {
         "word": "l'explication de texte",
         "en": "close reading (French tradition)",
         "vi": "bình giảng văn bản chi tiết",
         "pos": "n.f.",
-        "pronunciation_vi": "èk-spli-ka-sion dơ tèkst"
+        "pronunciation_vi": "èk-spli-ka-sion dơ tèkst",
+        "pronunciation_en": "lehks-plee-kah-SYOHN duh TEKST — -tion is 'syohn' not 'shun'; the term itself is untranslatable, hence kept in French even in English-language criticism"
       },
       {
         "word": "un commentaire composé",
         "en": "a structured commentary",
         "vi": "bình luận có cấu trúc",
         "pos": "n.m.",
-        "pronunciation_vi": "ko-mãn-tèr kõm-po-zé"
+        "pronunciation_vi": "ko-mãn-tèr kõm-po-zé",
+        "pronunciation_en": "uhn koh-mahn-TEHR kohm-poh-ZAY — nasal -en in 'commentaire'; 'composé' ends 'zay' (past participle); a written, non-sequential analysis (distinct from explication)"
       },
       {
         "word": "un axe de lecture",
         "en": "a line of interpretation",
         "vi": "một trục đọc",
         "pos": "n.m.",
-        "pronunciation_vi": "aks dơ lèk-tur"
+        "pronunciation_vi": "aks dơ lèk-tur",
+        "pronunciation_en": "uhn AKS duh lek-TUR — 'axe' = 'aks' (the -e silent), NOT English 'axe/axis'; -ure ends 'ur' with rounded lips; an interpretive thread sustained across the whole passage"
       },
       {
         "word": "l'écart stylistique",
         "en": "stylistic divergence",
         "vi": "sự lệch về phong cách",
         "pos": "n.m.",
-        "pronunciation_vi": "é-kar sti-lis-tik"
+        "pronunciation_vi": "é-kar sti-lis-tik",
+        "pronunciation_en": "lay-KAHR stee-lees-TEEK — 'écart' final -t silent ('ay-KAHR'); 'stylistique' ends '-teek'; the measurable gap between a phrasing and the neutral norm — a key analytic concept"
       },
       {
         "word": "un choix énonciatif",
         "en": "an enunciative choice",
         "vi": "một lựa chọn phát ngôn",
         "pos": "n.m.",
-        "pronunciation_vi": "shoa é-nõn-sia-tif"
+        "pronunciation_vi": "shoa é-nõn-sia-tif",
+        "pronunciation_en": "uhn SHWAH ay-nohn-syah-TEEF — 'choix' = 'shwah' (the -x silent, sg. and pl. identical); 'énonciative' from énonciation = the speaker's positioning in the utterance (a discourse-analysis term)"
       },
       {
         "word": "recéler un sens",
         "en": "to harbor a meaning",
         "vi": "ẩn chứa một ý nghĩa",
         "pos": "v.",
-        "pronunciation_vi": "rơ-sé-lé an sãns"
+        "pronunciation_vi": "rơ-sé-lé an sãns",
+        "pronunciation_en": "ruh-say-LAY uhn SAHNS — schwa 're'; literary verb 'receler' (to harbor/conceal), accent shifts: 'il recèle' = 'ruh-SEL'; 'sens' final -s silent → 'sahns'"
       },
       {
         "word": "en filigrane",
         "en": "as a watermark / implicitly",
         "vi": "ngầm ẩn (littéraire)",
         "pos": "loc.",
-        "pronunciation_vi": "ã fi-li-gran"
+        "pronunciation_vi": "ã fi-li-gran",
+        "pronunciation_en": "ahn fee-lee-GRAHN — nasal 'en'; the literal sense is the watermark in paper held to the light; figuratively 'implicitly, beneath the surface' — no idiomatic single-word English equivalent"
       },
       {
         "word": "une anaphore",
         "en": "an anaphora",
         "vi": "phép điệp ngữ đầu câu",
         "pos": "n.f.",
-        "pronunciation_vi": "a-na-for"
+        "pronunciation_vi": "a-na-for",
+        "pronunciation_en": "uhn ah-nah-FOR — final -e silent ('ah-nah-FOR', not English 'a-NA-phor-a'); the rhetorical repetition of a word at the start of successive clauses"
       },
       {
         "word": "une hyperbate",
         "en": "a hyperbaton",
         "vi": "phép đảo ngữ tu từ",
         "pos": "n.f.",
-        "pronunciation_vi": "i-pèr-bat"
+        "pronunciation_vi": "i-pèr-bat",
+        "pronunciation_en": "uhn ee-pehr-BAT — silent h; 'hy' = 'ee'; final -e silent ('ee-pehr-BAT', cf. English 'hy-PER-ba-ton'); a syntactic dislocation that defers or displaces an expected element"
       },
       {
         "word": "un hapax",
         "en": "a hapax (single occurrence)",
         "vi": "hapax — từ xuất hiện duy nhất một lần",
         "pos": "n.m.",
-        "pronunciation_vi": "a-paks"
+        "pronunciation_vi": "a-paks",
+        "pronunciation_en": "uhn ah-PAKS — Greek loanword, final -x pronounced ('ah-PAKS'); a word or form occurring only once in a given corpus — a high-value clue in close reading"
       }
     ],
     "dialogue": [
       {
         "speaker": "Pr. Compagnon",
         "text": "Madame Tran, vous tirez le texte vers une lecture politique avant d'avoir épuisé sa lettre. Reprenez par le rythme.",
-        "vi": "Cô Trần, cô kéo văn bản về một cách đọc chính trị trước khi vắt kiệt văn tự. Cô bắt đầu lại bằng nhịp điệu."
+        "vi": "Cô Trần, cô kéo văn bản về một cách đọc chính trị trước khi vắt kiệt văn tự. Cô bắt đầu lại bằng nhịp điệu.",
+        "en": "Madame Tran, you are pulling the text toward a political reading before you have exhausted its letter. Start over from the rhythm. ['tirer le texte vers' = to drag the text toward a preconceived reading — a standard reproach; 'la lettre' = the literal surface, opposed to 'le sens']"
       },
       {
         "speaker": "Linh",
         "text": "Vous avez raison — j'ai plaqué une grille avant d'écouter la phrase.",
-        "vi": "Thầy đúng — tôi đã dán một lưới trước khi lắng nghe câu văn."
+        "vi": "Thầy đúng — tôi đã dán một lưới trước khi lắng nghe câu văn.",
+        "en": "You're right — I slapped a grid onto it before listening to the sentence. ['plaquer une grille' = to impose a ready-made theoretical framework; this is the cardinal sin of 'plaquage théorique']"
       },
       {
         "speaker": "Pr. Compagnon",
         "text": "Lisez à voix haute la première phrase, lentement. Qu'est-ce qui frappe l'oreille ?",
-        "vi": "Cô đọc to câu đầu, chậm. Điều gì đập vào tai?"
+        "vi": "Cô đọc to câu đầu, chậm. Điều gì đập vào tai?",
+        "en": "Read the first sentence aloud, slowly. What strikes the ear? ['frapper l'oreille' = to strike the ear — reading aloud to detect rhythm is a core explication technique]"
       },
       {
         "speaker": "Linh",
         "text": "L'alternance entre une protase courte et une apodose étirée — la phrase se déséquilibre vers la fin.",
-        "vi": "Sự xen kẽ giữa một protase ngắn và một apodose kéo dài — câu mất cân bằng về cuối."
+        "vi": "Sự xen kẽ giữa một protase ngắn và một apodose kéo dài — câu mất cân bằng về cuối.",
+        "en": "The alternation between a short protasis and a stretched-out apodosis — the sentence loses its balance toward the end. ['protase/apodose' = the rising then falling clauses of a periodic sentence; rhetorical-prosody vocabulary, untranslated even in English criticism]"
       }
     ],
     "dialogue_long": [
       {
         "speaker": "Pr. Compagnon (séminaire d'agrégation, Sorbonne)",
         "text": "Madame Tran, vous avez vingt minutes pour expliquer cet extrait des Comices agricoles, dans Madame Bovary. Allez-y.",
-        "vi": "Cô Trần, cô có 20 phút để bình giảng đoạn Comices agricoles trong Madame Bovary. Cô bắt đầu."
+        "vi": "Cô Trần, cô có 20 phút để bình giảng đoạn Comices agricoles trong Madame Bovary. Cô bắt đầu.",
+        "en": "Madame Tran, you have twenty minutes to explicate this extract from the Comices agricoles, in Madame Bovary. Go ahead. ['les Comices agricoles' = the agricultural fair scene, ch. VIII of Part II — one of the most famous set-pieces in the French novel; left untranslated as a fixed reference]"
       },
       {
         "speaker": "Linh",
         "text": "Le passage proposé se situe au cœur du chapitre VIII de la deuxième partie, dans cette scène fameuse où Flaubert fait alterner le discours du conseiller et les paroles d'amour de Rodolphe à Emma. C'est, selon le mot de Thibaudet, l'un des sommets de l'écriture flaubertienne.",
-        "vi": "Đoạn được giao nằm ở giữa chương VIII phần hai, trong cảnh nổi tiếng Flaubert xen kẽ diễn văn của ủy viên và lời tỏ tình của Rodolphe với Emma. Đó, theo Thibaudet, là một trong các đỉnh cao của lối viết Flaubert."
+        "vi": "Đoạn được giao nằm ở giữa chương VIII phần hai, trong cảnh nổi tiếng Flaubert xen kẽ diễn văn của ủy viên và lời tỏ tình của Rodolphe với Emma. Đó, theo Thibaudet, là một trong các đỉnh cao của lối viết Flaubert.",
+        "en": "The set passage lies at the heart of chapter VIII of the second part, in that famous scene where Flaubert interleaves the councillor's speech with Rodolphe's words of love to Emma. It is, in Thibaudet's phrase, one of the summits of Flaubertian writing. ['selon le mot de X' = 'in X's phrase' — the standard way to attribute a critical formula; Albert Thibaudet = the canonical Flaubert critic]"
       },
       {
         "speaker": "Linh",
         "text": "Notre problématique sera la suivante: comment ce contrepoint, en apparence simple procédé de juxtaposition, parvient-il à produire l'ironie la plus radicale du roman, sans jamais que le narrateur n'intervienne en son nom propre ?",
-        "vi": "Vấn đề nghiên cứu của chúng tôi: làm sao đối điểm này, thoạt trông là thủ pháp đơn giản đặt cạnh nhau, có thể sản sinh ra sự châm biếm triệt để nhất của tiểu thuyết, mà người trần thuật không bao giờ xen vào nhân danh mình?"
+        "vi": "Vấn đề nghiên cứu của chúng tôi: làm sao đối điểm này, thoạt trông là thủ pháp đơn giản đặt cạnh nhau, có thể sản sinh ra sự châm biếm triệt để nhất của tiểu thuyết, mà người trần thuật không bao giờ xen vào nhân danh mình?",
+        "en": "Our problematic will be the following: how does this counterpoint — to all appearances a simple device of juxtaposition — manage to produce the most radical irony of the novel, without the narrator ever intervening in his own name? ['une problématique' = the governing critical question, NOT English 'a problem'; false friend. 'en son nom propre' = speaking 'in his own name', i.e. as an overt authorial voice]"
       },
       {
         "speaker": "Linh",
         "text": "Trois axes structureront l'analyse: d'abord, la mécanique du contrepoint — comment Flaubert orchestre l'alternance; ensuite, le travail du discours indirect libre — qui rend l'ironie indécidable; enfin, la thématique sous-jacente du langage dévoyé, où la rhétorique politique et la rhétorique amoureuse se révèlent symétriques dans leur creux.",
-        "vi": "Ba trục cấu trúc phân tích: trước tiên, cơ chế đối điểm — Flaubert dàn dựng sự xen kẽ thế nào; tiếp đến, công việc của discours indirect libre — làm châm biếm trở nên không quyết định được; cuối, chủ đề ngôn ngữ bị lệch, nơi tu từ chính trị và tu từ tình yêu lộ ra đối xứng trong sự rỗng."
+        "vi": "Ba trục cấu trúc phân tích: trước tiên, cơ chế đối điểm — Flaubert dàn dựng sự xen kẽ thế nào; tiếp đến, công việc của discours indirect libre — làm châm biếm trở nên không quyết định được; cuối, chủ đề ngôn ngữ bị lệch, nơi tu từ chính trị và tu từ tình yêu lộ ra đối xứng trong sự rỗng.",
+        "en": "Three axes will structure the analysis: first, the mechanics of the counterpoint — how Flaubert orchestrates the alternation; next, the working of free indirect discourse — which renders the irony undecidable; finally, the underlying theme of corrupted language, where political rhetoric and amorous rhetoric prove symmetrical in their hollowness. ['le discours indirect libre' = free indirect discourse — the canonical Genette/Bally term, used in French even in English-language narratology; 'dévoyé' = led astray, corrupted (of language)]"
       },
       {
         "speaker": "Linh",
         "text": "Premier axe — la mécanique du contrepoint. Flaubert ne sépare pas les deux discours par un signe typographique fort: pas de chapitre nouveau, pas même de retour à la ligne systématique. Les répliques s'enchâssent les unes dans les autres, parfois au sein d'une même phrase. Cette continuité formelle produit un effet précis: le lecteur est forcé d'entendre les deux voix simultanément, comme un orchestre dont chaque instrument exposerait la même mélodie en clé différente.",
-        "vi": "Trục thứ nhất — cơ chế đối điểm. Flaubert không tách hai diễn ngôn bằng dấu typographique mạnh: không chương mới, không cả xuống dòng hệ thống. Các lời thoại lồng vào nhau, đôi khi trong cùng một câu. Sự liên tục hình thức này sản sinh hiệu ứng cụ thể: độc giả buộc phải nghe đồng thời hai giọng, như một dàn nhạc trong đó mỗi nhạc cụ trình bày cùng giai điệu nhưng khác giọng điệu."
+        "vi": "Trục thứ nhất — cơ chế đối điểm. Flaubert không tách hai diễn ngôn bằng dấu typographique mạnh: không chương mới, không cả xuống dòng hệ thống. Các lời thoại lồng vào nhau, đôi khi trong cùng một câu. Sự liên tục hình thức này sản sinh hiệu ứng cụ thể: độc giả buộc phải nghe đồng thời hai giọng, như một dàn nhạc trong đó mỗi nhạc cụ trình bày cùng giai điệu nhưng khác giọng điệu.",
+        "en": "First axis — the mechanics of the counterpoint. Flaubert does not separate the two discourses by any strong typographic marker: no new chapter, not even a systematic line break. The utterances are embedded within one another, sometimes within a single sentence. This formal continuity produces a precise effect: the reader is forced to hear the two voices simultaneously, like an orchestra in which each instrument states the same melody in a different key. ['s'enchâsser' = to be nested/embedded one inside another — a precise structural verb, no neat English single-word equivalent]"
       },
       {
         "speaker": "Linh",
         "text": "Second axe — le travail du discours indirect libre, qui constitue à mon sens la signature flaubertienne par excellence. Lorsque Rodolphe murmure ses banalités amoureuses, le narrateur les rapporte sans guillemets, sans verbe introducteur, en sorte qu'on ne sait jamais s'il les valide ou s'il les démolit. Cette indécision n'est pas une faiblesse: elle est le ressort même de l'ironie. Comme l'a montré Genette dans Figures III, le discours indirect libre suspend le contrat de véracité — et c'est précisément ce que Flaubert exploite ici.",
-        "vi": "Trục hai — công việc của discours indirect libre, theo tôi là chữ ký Flaubert tuyệt đối. Khi Rodolphe thì thầm các câu sáo rỗng yêu đương, người trần thuật thuật lại không guillemets, không động từ giới thiệu, sao cho ta không bao giờ biết ông xác nhận hay phá hủy chúng. Sự không quyết định này không phải yếu: nó là chính lò xo của châm biếm. Như Genette đã chứng minh trong Figures III, discours indirect libre treo lại hợp đồng chân thực — và chính đó là điều Flaubert khai thác."
+        "vi": "Trục hai — công việc của discours indirect libre, theo tôi là chữ ký Flaubert tuyệt đối. Khi Rodolphe thì thầm các câu sáo rỗng yêu đương, người trần thuật thuật lại không guillemets, không động từ giới thiệu, sao cho ta không bao giờ biết ông xác nhận hay phá hủy chúng. Sự không quyết định này không phải yếu: nó là chính lò xo của châm biếm. Như Genette đã chứng minh trong Figures III, discours indirect libre treo lại hợp đồng chân thực — và chính đó là điều Flaubert khai thác.",
+        "en": "Second axis — the working of free indirect discourse, which is, to my mind, the Flaubertian signature par excellence. When Rodolphe murmurs his amorous platitudes, the narrator reports them without quotation marks, without an introducing verb, so that one never knows whether he endorses them or demolishes them. This indecision is not a weakness: it is the very mainspring of the irony. As Genette showed in Figures III, free indirect discourse suspends the contract of veracity — and that is precisely what Flaubert exploits here. ['le ressort même de' = the very mainspring/driving force of; 'le contrat de véracité' = the implicit truth-pact between narrator and reader, a narratological term]"
       },
       {
         "speaker": "Linh",
         "text": "Troisième axe — la thématique sous-jacente du langage dévoyé. Si l'on prête l'oreille aux deux discours, on observe qu'ils partagent une même structure: une rhétorique creuse, des formules toutes faites, une absence radicale de référent réel. Le conseiller exalte des abstractions agricoles sans jamais nommer un cultivateur précis; Rodolphe parle de passion sans aucune émotion réelle. Le contrepoint révèle, sans dire, que les deux registres sont également dévoyés. C'est, je crois, la pointe critique du chapitre.",
-        "vi": "Trục ba — chủ đề ngôn ngữ bị lệch. Nếu lắng tai hai diễn ngôn, ta quan sát chúng chia sẻ cùng cấu trúc: một tu từ rỗng, các công thức làm sẵn, sự vắng mặt triệt để của référent thật. Ủy viên ca ngợi các trừu tượng nông nghiệp mà không bao giờ gọi tên một người cấy cụ thể; Rodolphe nói về đam mê mà không có cảm xúc thật. Đối điểm để lộ, không nói, rằng hai cấp độ đều bị lệch như nhau. Đó, tôi tin, là mũi nhọn phê phán của chương."
+        "vi": "Trục ba — chủ đề ngôn ngữ bị lệch. Nếu lắng tai hai diễn ngôn, ta quan sát chúng chia sẻ cùng cấu trúc: một tu từ rỗng, các công thức làm sẵn, sự vắng mặt triệt để của référent thật. Ủy viên ca ngợi các trừu tượng nông nghiệp mà không bao giờ gọi tên một người cấy cụ thể; Rodolphe nói về đam mê mà không có cảm xúc thật. Đối điểm để lộ, không nói, rằng hai cấp độ đều bị lệch như nhau. Đó, tôi tin, là mũi nhọn phê phán của chương.",
+        "en": "Third axis — the underlying theme of corrupted language. If one lends an ear to the two discourses, one observes that they share a single structure: a hollow rhetoric, ready-made formulas, a radical absence of any real referent. The councillor extols agricultural abstractions without ever naming a particular farmer; Rodolphe speaks of passion without any real emotion. The counterpoint reveals, without stating, that the two registers are equally corrupted. That, I believe, is the critical point of the chapter. ['la pointe critique' = the sharp critical thrust/point — 'pointe' here is the cutting tip of an argument, not a 'point' in the English list sense]"
       },
       {
         "speaker": "Linh",
         "text": "En conclusion: cette page exemplifie ce que Roland Barthes, dans Le Degré zéro de l'écriture (1953), appelait l'écriture comme valeur en soi. L'ironie n'est pas, ici, un procédé ajouté à un contenu: elle est consubstantielle au geste d'écrire. C'est en quoi Madame Bovary marque, dans l'histoire du roman, un tournant — celui d'une littérature qui ne croit plus en sa propre rhétorique tout en continuant d'écrire.",
-        "vi": "Kết luận: trang này thể hiện điều Roland Barthes, trong Le Degré zéro de l'écriture (1953), gọi là lối viết như giá trị tự thân. Châm biếm không phải, ở đây, thủ pháp thêm vào nội dung: nó cùng thực với động tác viết. Vì thế Madame Bovary đánh dấu, trong lịch sử tiểu thuyết, một bước ngoặt — bước ngoặt của một văn chương không còn tin vào tu từ của chính mình mà vẫn tiếp tục viết."
+        "vi": "Kết luận: trang này thể hiện điều Roland Barthes, trong Le Degré zéro de l'écriture (1953), gọi là lối viết như giá trị tự thân. Châm biếm không phải, ở đây, thủ pháp thêm vào nội dung: nó cùng thực với động tác viết. Vì thế Madame Bovary đánh dấu, trong lịch sử tiểu thuyết, một bước ngoặt — bước ngoặt của một văn chương không còn tin vào tu từ của chính mình mà vẫn tiếp tục viết.",
+        "en": "In conclusion: this page exemplifies what Roland Barthes, in Le Degré zéro de l'écriture (1953), called writing as a value in itself. The irony is not, here, a device added to a content: it is consubstantial with the act of writing. This is why Madame Bovary marks, in the history of the novel, a turning point — that of a literature that no longer believes in its own rhetoric while continuing to write. ['consubstantiel à' = consubstantial with — a theological term Barthesian criticism borrows; means 'of one and the same substance as', not merely 'linked to']"
       },
       {
         "speaker": "Pr. Compagnon",
         "text": "Bien — explication solide, problématique tenue, lecture de Genette intégrée sans plaquage. Une réserve cependant: la référence à Barthes gagnerait à être précisée par un numéro de page dans la version écrite.",
-        "vi": "Tốt — bình giảng vững, vấn đề được giữ, đọc Genette tích hợp không plaquage. Một dè dặt: tham chiếu Barthes sẽ tốt hơn nếu kèm số trang trong bản viết."
+        "vi": "Tốt — bình giảng vững, vấn đề được giữ, đọc Genette tích hợp không plaquage. Một dè dặt: tham chiếu Barthes sẽ tốt hơn nếu kèm số trang trong bản viết.",
+        "en": "Good — a solid explication, the problematic held throughout, the Genette reading integrated without plaquage. One reservation, however: the reference to Barthes would gain from being pinned to a page number in the written version. ['problématique tenue' = a problematic that is 'held', i.e. sustained and not abandoned mid-analysis; 'une réserve' here = a qualifying objection, not English 'reserve']"
       },
       {
         "speaker": "Linh",
         "text": "Vous avez raison — la précision bibliographique fait partie de la rigueur littéraire à ce niveau. Je l'intègre.",
-        "vi": "Thầy đúng — chính xác thư mục là một phần của nghiêm cẩn văn học ở cấp độ này. Tôi đưa vào."
+        "vi": "Thầy đúng — chính xác thư mục là một phần của nghiêm cẩn văn học ở cấp độ này. Tôi đưa vào.",
+        "en": "You're right — bibliographic precision is part of literary rigor at this level. I'll incorporate it. ['la rigueur littéraire' = scholarly exactitude in literary work; 'l'intègre' here = present-tense 'je l'intègre', a clipped academic-speech form = 'I'm folding it in']"
       },
       {
         "speaker": "Pr. Compagnon",
         "text": "Voilà. Reprenez, on passe au texte suivant.",
-        "vi": "Đó. Cô tiếp tục, mình sang văn bản tiếp."
+        "vi": "Đó. Cô tiếp tục, mình sang văn bản tiếp.",
+        "en": "There we are. Carry on, we move to the next text. ['Voilà' as a standalone = a verbal full stop, 'there we are / that settles it'; 'on passe au' = 'we move on to', informal-academic register even within a formal seminar]"
       }
     ],
     "roleplay_prompts": [
@@ -221,30 +278,44 @@ export const lessons: FrenchLesson[] = [
       "Trong séminaire, bạn bị professeur trách « plaquage théorique » (đã đem Foucault vào trước khi đọc văn bản). Phản hồi: thừa nhận, đề xuất reprendre par la lettre du texte — démarche concrète.",
       "Một élève de licence hỏi bạn cách phân biệt explication de texte với commentaire composé. Soạn câu trả lời 4 câu — chính xác, không « bằng nhau »."
     ],
+    "roleplay_prompts_en": [
+      "You are assigned a 30-minute oral d'agrégation on the opening (incipit) of Camus's L'Étranger. Compose the introduction (1 minute) + the announcement of the plan (3 axes de lecture) — do NOT lapse into plot summary. Remember: 'situer, caractériser, problématiser, annoncer le plan' — in that order.",
+      "In a seminar, the professor reproaches you with 'plaquage théorique' (you brought Foucault in before reading the text). Respond: acknowledge it, then propose to 'reprendre par la lettre du texte' — a concrete move back to the verbatim evidence. Use the register of conceded error, not defensiveness ('Vous avez raison — j'ai…').",
+      "A licence student asks you how to tell explication de texte apart from commentaire composé. Compose a 4-sentence answer — precise, not 'they're the same'. Cover at least: sequential vs. non-sequential progression through the text; oral (agrégation) vs. written (bac/licence)."
+    ],
     "register_notes": "L'EXPLICATION DE TEXTE đòi hỏi register littéraire trong từng câu. Phân biệt với register học thuật chung (C1):\n\nC1 (général): « L'auteur montre que… »\nC2 (littéraire): « L'auteur, par ce détour stylistique, donne à entendre que… »\n\nC1: « Cette phrase est ironique. »\nC2: « Cette phrase relève de l'ironie indirecte, qui suspend le contrat de véracité du narrateur. »\n\nĐỘNG TỪ ĐẶC TRƯNG D'EXPLICATION DE TEXTE:\n- « donner à entendre » (cho nghe ngầm)\n- « se déployer » (triển khai)\n- « recéler » (ẩn chứa)\n- « se dérober » (lánh đi)\n- « en filigrane » (ngầm ẩn)\n- « culminer » (đạt đỉnh)\n- « suspendre le sens » (treo lại nghĩa)\n\nCỤM TRANSITION C2 ĐẶC THÙ:\n- « Encore faut-il que… » (vẫn cần)\n- « Force est de constater que… » (phải thừa nhận)\n- « Il n'en demeure pas moins que… » (dù sao)\n- « C'est en quoi… » (vì thế)\n- « Pour ainsi dire » (có thể nói như vậy)\n\nSUBJONCTIF IMPARFAIT — dấu hiệu phân biệt C2 với C1:\n- « Il eût été préférable que l'analyse procédât du détail vers le système. »\n- « On l'eût souhaitée plus nuancée. »\n- « Bien que le texte fût bref, il offrait matière à un long commentaire. »\n\nKHÔNG sử dụng subjonctif imparfait dans contextes informels — bị đọc là pédantesque. CHỈ trong séminaire littéraire, agrégation, écriture critique soutenue.\n\nINVERSION DANS LES PROPOSITIONS DÉPENDANTES:\n- « Peut-être l'auteur a-t-il voulu… »\n- « Aussi le narrateur évoque-t-il… »\n- « Sans doute la phrase finale fait-elle écho à… »\n\nIDIOMS ĐẶC TRƯNG TRADITION CRITIQUE:\n- « lire entre les lignes » (đọc giữa các dòng — courant)\n- « la lettre du texte » (văn tự — soutenu)\n- « le grain du style » (hạt của phong cách — littéraire)\n- « tirer le texte de son côté » (kéo văn bản về phía mình — critique)\n\nMỘT TINH TẾ ĐẶC THÙ: không bao giờ nói « l'auteur veut dire que… » — intentionnalisme naïf bị tránh. Thay bằng « le texte donne à entendre… », « la phrase produit l'effet de… ». Pháp critique từ Barthes (La Mort de l'auteur, 1968) phân biệt l'auteur empirique (con người sống) với l'instance énonciative du texte (tiếng nói trong văn bản). Hai thực thể khác nhau.",
+    "register_notes_en": "EXPLICATION DE TEXTE demands a literary register in every sentence. Contrast it with the general academic register (C1):\n\nC1 (general): 'L'auteur montre que…' (the author shows that…)\nC2 (literary): 'L'auteur, par ce détour stylistique, donne à entendre que…' (the author, through this stylistic detour, lets it be heard that…)\n\nC1: 'Cette phrase est ironique.' (this sentence is ironic)\nC2: 'Cette phrase relève de l'ironie indirecte, qui suspend le contrat de véracité du narrateur.' (this sentence belongs to indirect irony, which suspends the narrator's contract of veracity)\n\nThe C2 jump is NOT longer sentences — it is (a) naming the device precisely, and (b) stating what the device DOES to the reading pact. Anglophone close reading often stops at 'this is ironic'; French explication requires the mechanism.\n\nCHARACTERISTIC VERBS OF EXPLICATION DE TEXTE (most have no clean English single-word equivalent):\n- 'donner à entendre' (to let be heard / imply without stating)\n- 'se déployer' (to unfold/develop across the passage)\n- 'recéler' (to harbor a concealed meaning)\n- 'se dérober' (to slip away, evade — of a meaning that resists fixing)\n- 'en filigrane' (as a watermark — present but only against the light)\n- 'culminer' (to reach its peak)\n- 'suspendre le sens' (to hold meaning in suspension, undecided)\n\nCHARACTERISTIC C2 TRANSITIONS:\n- 'Encore faut-il que…' (and yet it still requires that… — note the obligatory subject-verb inversion after 'encore')\n- 'Force est de constater que…' (one is compelled to observe that…)\n- 'Il n'en demeure pas moins que…' (it nonetheless remains the case that…)\n- 'C'est en quoi…' (it is in this respect that… — NOT 'this is why'; subtler, = 'this is the respect in which')\n- 'Pour ainsi dire' (so to speak)\n\nIMPERFECT SUBJUNCTIVE — the single clearest marker separating C2 from C1:\n- 'Il eût été préférable que l'analyse procédât du détail vers le système.' (it would have been preferable that the analysis proceed from detail toward system)\n- 'On l'eût souhaitée plus nuancée.' (one would have wished it more nuanced)\n- 'Bien que le texte fût bref, il offrait matière à un long commentaire.' (although the text was brief, it offered matter for a long commentary)\n\nDo NOT use the imperfect subjunctive in informal contexts — it reads as pédantesque (pretentious). ONLY in a literary seminar, the agrégation, or sustained critical writing. This is the inverse of English: in English, elevated tense forms are rare everywhere; in French, this specific form is REQUIRED in one register and ABSURD in all others.\n\nINVERSION IN MAIN CLAUSES after a fronted adverb (mandatory, not optional):\n- 'Peut-être l'auteur a-t-il voulu…' (perhaps the author wanted… — note 'a-t-il', not 'il a')\n- 'Aussi le narrateur évoque-t-il…' (and so the narrator evokes…)\n- 'Sans doute la phrase finale fait-elle écho à…' (the closing sentence doubtless echoes…)\nForgetting this inversion is the commonest tell of an anglophone writing French criticism.\n\nIDIOMS CHARACTERISTIC OF THE CRITICAL TRADITION:\n- 'lire entre les lignes' (to read between the lines — common register)\n- 'la lettre du texte' (the letter/literal surface of the text — elevated; opposed to 'l'esprit')\n- 'le grain du style' (the grain of the style — literary; cf. Barthes's 'le grain de la voix')\n- 'tirer le texte de son côté' (to drag the text to one's own side — critical, pejorative)\n\nONE CRUCIAL SUBTLETY: never say 'l'auteur veut dire que…' (the author means that…) — naive intentionalism is to be avoided. Replace with 'le texte donne à entendre…' (the text lets it be heard…), 'la phrase produit l'effet de…' (the sentence produces the effect of…). Since Barthes (La Mort de l'auteur, 1968), French criticism distinguishes l'auteur empirique (the living human being) from l'instance énonciative du texte (the voice speaking within the text). These are two different entities — collapsing them ('the author is telling us…') instantly marks a reading as pre-theoretical to a French examiner.",
     "idiom_glosses": [
       {
         "idiom": "Lire entre les lignes (courant)",
         "literal": "Đọc giữa các dòng",
+        "literal_en": "To read between the lines",
         "meaning": "Hiểu điều ngầm — không công thức học thuật cao.",
+        "meaning_en": "To grasp the implicit. The one entry here with a near-exact English equivalent ('read between the lines') — common register, NOT a marker of literary sophistication. Using only this phrase in an explication signals C1, not C2.",
         "example": "Madame Bovary se lit aussi entre les lignes — l'ironie y est rarement explicite."
       },
       {
         "idiom": "En filigrane (littéraire)",
         "literal": "Như hình ngầm trên giấy",
+        "literal_en": "Like a watermark (in paper)",
         "meaning": "Ẩn ngầm dưới bề mặt — formel littéraire.",
+        "meaning_en": "Present beneath the surface, visible only when held to the light. NO idiomatic English equivalent — 'implicitly' is too flat, 'between the lines' is the wrong image. English criticism often just borrows the French 'en filigrane'. Higher register than 'lire entre les lignes'.",
         "example": "En filigrane de cette page descriptive, on lit déjà le drame qui s'annonce."
       },
       {
         "idiom": "Faire entendre (littéraire)",
         "literal": "Làm cho nghe",
+        "literal_en": "To make heard",
         "meaning": "Để lộ ngầm — sản sinh ý nghĩa qua hình thức.",
+        "meaning_en": "To let something be understood without stating it — meaning produced THROUGH the form, not asserted by it. The verb of choice for describing how a text means without telling. English 'to imply' is too logical/propositional; 'donner à entendre' is the fuller variant. This phrase encodes the whole anti-intentionalist stance (see register notes on Barthes).",
         "example": "Le narrateur fait entendre, sans jamais le dire, son désaccord avec son personnage."
       },
       {
         "idiom": "Tirer le texte de son côté (soutenu critique)",
         "literal": "Kéo văn bản về phía mình",
+        "literal_en": "To pull the text to one's own side",
         "meaning": "Áp đặt cách đọc lên văn bản — phê bình một thực hành sai.",
+        "meaning_en": "To force a text to confirm a reading you brought to it — the precise charge behind 'plaquage théorique'. Pejorative, scholarly register. Closest English is 'to read into the text' / 'cherry-pick to fit a thesis', but the French is a single fixed idiom an examiner will use as a verdict. The whole methodology of explication exists to prevent exactly this.",
         "example": "Cette lecture sociologique tire le texte de son côté — Flaubert n'est pas un sociologue."
       }
     ],
@@ -252,30 +323,34 @@ export const lessons: FrenchLesson[] = [
       {
         "type": "fill-blank",
         "question": "Encore faut-il que le commentateur ___ l'oreille assez fine pour entendre ce que le texte ne dit qu'à demi.",
-        "answer": "ait"
+        "answer": "ait",
+        "hint_vi": "« Encore faut-il que » luôn kéo theo subjonctif. Chia « avoir » ở subjonctif présent, ngôi thứ ba số ít.",
+        "hint_en": "'Encore faut-il que' (and yet it still requires that) always triggers the subjunctive. Conjugate 'avoir' in the present subjunctive, 3rd person singular — NOT the indicative 'a'. The whole point of the construction is the modal uncertainty the subjunctive carries."
       },
       {
         "type": "matching",
         "pairs": [
           [
-            "en filigrane",
+            "en filigrane (as a watermark / implicitly)",
             "ngầm ẩn"
           ],
           [
-            "l'écart stylistique",
+            "l'écart stylistique (stylistic divergence from the norm)",
             "sự lệch về phong cách"
           ],
           [
-            "recéler un sens",
+            "recéler un sens (to harbor a concealed meaning)",
             "ẩn chứa một ý nghĩa"
           ]
         ],
-        "instruction": "Nối thuật ngữ critique với nghĩa Việt"
+        "instruction": "Nối thuật ngữ critique với nghĩa Việt",
+        "instruction_en": "Match each critical term with its Vietnamese meaning. (English glosses are given in parentheses for reference.)"
       },
       {
         "type": "translation",
         "vietnamese": "Khác hẳn quy giảm văn bản về các chủ đề, sự bình giảng phải khôi phục tính độc đáo của hình thức.",
-        "french": "Loin de réduire le texte à ses thèmes, l'explication doit en restituer la singularité formelle."
+        "french": "Loin de réduire le texte à ses thèmes, l'explication doit en restituer la singularité formelle.",
+        "english": "Far from reducing the text to its themes, the explication must restore the singularity of its form. ['loin de + infinitive' = 'far from + gerund', a standard concessive opener; 'restituer' = to render/give back faithfully, stronger than 'restore'; 'la singularité formelle' encodes the FORM-CARRIES-MEANING axiom of the whole lesson]"
       }
     ]
   },
@@ -294,6 +369,12 @@ export const lessons: FrenchLesson[] = [
           "narrative → na-ra-tiv",
           "focalisation → fo-ka-li-za-sion",
           "préalable → pré-a-la-blơ"
+        ],
+        "pronunciation_focus_en": [
+          "voix → 'VWAH' — 'oi' is 'wah'; final -x silent; identical singular/plural; 'la voix narrative' is the Genette term, not 'narrative voice' generically",
+          "narrative → 'nah-rah-TEEV' — here an ADJECTIVE ('la voix narrative'); single 'r'; final -e silent",
+          "focalisation → 'foh-kah-lee-zah-SYOHN' — -tion is 'syohn'; technical Genette coinage, kept untranslated in English narratology too",
+          "préalable → 'pray-ah-LAH-bluh' — both é = 'ay'; final -ble a quick 'bluh'; 'le préalable de' = 'the prerequisite for', a formal-register noun"
         ]
       },
       {
@@ -304,6 +385,12 @@ export const lessons: FrenchLesson[] = [
           "sans → sã",
           "autant → ô-tã",
           "confondre → kõn-fõn-drơ"
+        ],
+        "pronunciation_focus_en": [
+          "intradiégétique → 'an-trah-dyay-zhay-TEEK' — nasal 'in'; -gé- is 'zhay'; final -ique 'eek'; means 'within the narrative level', a Genette term",
+          "sans → 'SAHN' — nasal; final -s silent; here in 'sans qu'on puisse' = 'without one's being able to' (triggers subjunctive 'puisse')",
+          "autant → 'oh-TAHN' — nasal -an; final -t silent; 'pour autant' = 'for all that / even so', a concessive connector, not 'as much'",
+          "confondre → 'kohn-FOHN-druh' — two nasals; final -dre a quick 'druh'; 'confondre X avec Y' = to conflate X with Y (here: narrator with author — the cardinal error)"
         ]
       },
       {
@@ -314,6 +401,12 @@ export const lessons: FrenchLesson[] = [
           "focalisation → fo-ka-li-za-sion",
           "éthique → é-tik",
           "perception → pèr-sèp-sion"
+        ],
+        "pronunciation_focus_en": [
+          "peut-être → 'puh-TET-ruh' — 'eu' rounded schwa; sentence-initial 'Peut-être' forces inversion 'a-t-il' (see register notes — mandatory at C2)",
+          "focalisation → 'foh-kah-lee-zah-SYOHN' — recurring Genette term; -tion 'syohn'",
+          "éthique → 'ay-TEEK' — silent h; é = 'ay'; final -que 'eek'; adjective here ('jugement éthique' = ethical judgment), not the noun 'ethics'",
+          "perception → 'pehr-sep-SYOHN' — -tion 'syohn'; 'une perception nue' = a 'bare/unmediated' perception, a phenomenological register"
         ]
       },
       {
@@ -324,6 +417,12 @@ export const lessons: FrenchLesson[] = [
           "omniscient → om-ni-siã",
           "borné → bor-né",
           "hasard → a-zar"
+        ],
+        "pronunciation_focus_en": [
+          "fût → 'FEW' — rounded French 'u' (German ü); circumflex marks the imperfect subjunctive of 'être'; 'Que le narrateur fût…' = 'That the narrator was…' — pure C2, would be absurd in speech",
+          "omniscient → 'ohm-nee-SYAHN' — nasal final -ent ('syahn'); the -sc- is 's'; describes focalisation zéro, NOT a voice",
+          "borné → 'bor-NAY' — final -é = 'ay'; 'borné à' = 'restricted/confined to' (a character's view); not the colloquial 'borné' = narrow-minded",
+          "hasard → 'ah-ZAR' — H is silent and non-aspirate; single 's' between vowels = 'z'; final -d silent; 'le fruit du hasard' = 'the product of chance'"
         ]
       },
       {
@@ -334,150 +433,181 @@ export const lessons: FrenchLesson[] = [
           "Bakhtine → bak-tin",
           "disputent → dis-put",
           "parole → pa-rol"
+        ],
+        "pronunciation_focus_en": [
+          "polyphonie → 'poh-lee-foh-NEE' — stress final; 'la polyphonie narrative' = Bakhtin's term, the coexistence of irreducible voices",
+          "Bakhtine → 'bak-TEEN' — French transliteration of Bakhtin; nasal-free here, final -e silent; the -in is 'EEN' (the name is foreign, not a French nasal)",
+          "disputent → 'dees-PUT' — 3rd person plural -ent is SILENT ('dees-PUT', not '-tent'); 'se disputer la parole' = to vie for the floor",
+          "parole → 'pah-ROL' — final -e silent; 'la parole' = speech/the floor (the right to speak), distinct from 'le mot' (the word) and 'la langue' (langue, Saussure)"
         ]
       }
     ],
     "cultural_notes_vi": "NARRATOLOGIE PHÁP — chủ yếu là di sản của Gérard Genette (Figures III, 1972; Nouveau discours du récit, 1983) — đã PHÂN BIỆT một cách triệt để hai khái niệm vốn bị nhầm lẫn:\n\n(1) VOIX (giọng): AI nói? Người trần thuật có ở trong câu chuyện không?\n- Hétérodiégétique: ở ngoài (« il alla, elle dit »)\n- Homodiégétique: ở trong, làm nhân vật phụ\n- Autodiégétique: ở trong, làm nhân vật chính (kể đời mình)\n\n(2) FOCALISATION (điểm nhìn): qua MẮT AI người đọc tiếp cận thế giới?\n- Focalisation zéro: không qua ai cụ thể — narrateur omniscient classique (Balzac, Tolstoï)\n- Focalisation interne: qua mắt một nhân vật cụ thể — accès limité (Camus L'Étranger, James)\n- Focalisation externe: behaviorist — không qua mắt ai, chỉ thấy hành động bên ngoài (Hemingway, Robbe-Grillet)\n\nTẠI SAO PHÂN BIỆT NÀY QUAN TRỌNG: trước Genette, critique nói chuyện về « narrateur omniscient » một cách lẫn lộn — thực ra omniscience là về focalisation, không phải về voix. Một narrateur autodiégétique (« je ») có thể vẫn omniscient (Proust kể đời mình với khoảng cách hậu nghiệm cho phép biết tất); một narrateur hétérodiégétique (« il/elle ») có thể bị giới hạn vào focalisation interne (Madame Bovary, où narrateur ngoài câu chuyện nhưng nhìn qua mắt Emma trong nhiều đoạn).\n\nÁP DỤNG VÀO BA TÁC PHẨM CANONICAL:\n\nL'ÉTRANGER (Camus, 1942): voix homodiégétique (Meursault kể), focalisation interne stricte. Hệ quả: ta không bao giờ ra khỏi tri giác Meursault. Famous incipit (« Aujourd'hui, maman est morte. Ou peut-être hier, je ne sais pas. ») là minh chứng cho tri giác giới hạn — không có omniscience nào sẽ nói « je ne sais pas ».\n\nÀ LA RECHERCHE (Proust, 1913-1927): voix autodiégétique (« Marcel »), focalisation kép — focalisation interne au moment du récit (Marcel-narrateur kể) ET focalisation interne au moment de la diégèse (Marcel-personnage trải nghiệm). Cấu trúc kép này là cốt lõi của « décalage temporel » Proustien.\n\nMADAME BOVARY (Flaubert, 1857): voix hétérodiégétique (narrateur ngoài), focalisation BIẾN ĐỔI — đôi khi externe, đôi khi interne (Emma, Charles, Homais), đôi khi zéro. Sự biến đổi này, kết hợp với discours indirect libre, tạo nên ironie flaubertienne.\n\nBẪY PHỔ BIẾN: Việt Nam thường nói « người kể chuyện ngôi thứ ba » — nhưng « ngôi thứ ba » KHÔNG cho biết focalisation. Một narrateur ngôi ba có thể omniscient (Balzac) hoặc giới hạn (Flaubert tại các đoạn focalisation interne sur Emma). Khi viết phân tích bằng tiếng Pháp ở C2, KHÔNG dùng « narrateur à la troisième personne » — dùng « narrateur hétérodiégétique » + nói rõ focalisation.",
+    "cultural_notes_en": "FRENCH NARRATOLOGY — essentially the legacy of Gérard Genette (Figures III, 1972; Nouveau discours du récit, 1983) — radically DISTINGUISHED two concepts that anglophone criticism still routinely conflates:\n\n(1) VOIX (voice): WHO speaks? Is the narrator inside the story?\n- Hétérodiégétique: outside it ('il alla, elle dit' — 'he went, she said')\n- Homodiégétique: inside it, as a secondary character\n- Autodiégétique: inside it, as the protagonist (telling their own life)\n\n(2) FOCALISATION (point of view): through WHOSE EYES does the reader reach the world?\n- Focalisation zéro: through no one in particular — the classic omniscient narrator (Balzac, Tolstoy)\n- Focalisation interne: through one specific character's eyes — limited access (Camus, L'Étranger; Henry James)\n- Focalisation externe: behaviorist — through no one's eyes, only outward actions seen (Hemingway, Robbe-Grillet)\n\nWHY THIS DISTINCTION MATTERS: before Genette, criticism spoke of 'the omniscient narrator' confusingly — but omniscience is about focalisation, NOT about voix. An autodiegetic narrator ('je') can still be omniscient (Proust narrating his own life with a retrospective distance that lets him know everything); a heterodiegetic narrator ('il/elle') can be confined to internal focalization (Madame Bovary, where the narrator stands outside the story but sees through Emma's eyes in many passages). The English phrase 'third-person omniscient' fuses two independent axes and is, by French standards, a category error.\n\nAPPLIED TO THREE CANONICAL WORKS:\n\nL'ÉTRANGER (Camus, 1942): homodiegetic voice (Meursault narrates), strictly internal focalization. Consequence: we never leave Meursault's perception. The famous incipit ('Aujourd'hui, maman est morte. Ou peut-être hier, je ne sais pas.' — 'Today, mother died. Or maybe yesterday, I don't know.') proves the limited perception — no omniscience would ever say 'I don't know'.\n\nÀ LA RECHERCHE (Proust, 1913-1927): autodiegetic voice ('Marcel'), double focalization — internal focalization at the moment of narration (Marcel-as-narrator telling) AND internal focalization at the moment of the diegesis (Marcel-as-character experiencing). This doubled structure is the core of the Proustian 'décalage temporel' (temporal gap).\n\nMADAME BOVARY (Flaubert, 1857): heterodiegetic voice (narrator outside), VARIABLE focalization — sometimes external, sometimes internal (Emma, Charles, Homais), sometimes zero. This variability, combined with free indirect discourse, generates the Flaubertian irony.\n\nTHE COMMON ANGLOPHONE TRAP: English-language criticism habitually says 'third-person narrator' — but 'third person' tells you NOTHING about focalisation. A third-person narrator can be omniscient (Balzac) or restricted (Flaubert in the internally-focalized passages on Emma). When writing analysis in French at C2, do NOT write 'narrateur à la troisième personne' — write 'narrateur hétérodiégétique' AND state the focalisation explicitly. Examiners read 'third-person narrator' as a sign the candidate has not internalized Genette.",
     "tip_advice_vi": "GRILLE D'ANALYSE Genettien complète pour un texte donné:\n\n(1) VOIX:\n- Personne grammaticale (je / il-elle / nous — rare)\n- Position du narrateur (homo / hétéro / auto-diégétique)\n- Niveau narratif (extra / intra / méta-diégétique)\n- Temps du récit (passé simple = distance; présent = immédiateté; passé composé = familier)\n\n(2) FOCALISATION:\n- Type (zéro / interne / externe)\n- Constance ou variations\n- Si interne: identification du focalisateur (qui voit ?)\n- Cohérence avec la voix\n\n(3) MODE:\n- Discours rapporté (direct / indirect / indirect libre)\n- Sommaire vs scène (vitesse narrative)\n- Récit itératif vs singulatif (fréquence)\n\nCỤM HỮU ÍCH:\n\nPOUR DÉCRIRE LA VOIX:\n- « Le narrateur, ici autodiégétique, raconte une expérience dont il fut le protagoniste. »\n- « Le récit s'organise depuis une instance hétérodiégétique qui ne se met jamais en scène. »\n- « La voix narrative oscille entre l'omniscience apparente et la limitation à la conscience d'Emma. »\n\nPOUR DÉCRIRE LA FOCALISATION:\n- « La focalisation, strictement interne, restreint la perception au point de vue de Meursault. »\n- « On observe ici un changement de focalisation: le narrateur abandonne le regard d'Emma pour adopter celui de Charles. »\n- « La focalisation externe — ou, pour reprendre Genette, behavioriste — interdit tout accès aux pensées des personnages. »\n\nPOUR ANALYSER LE DISCOURS INDIRECT LIBRE:\n- « Le passage glisse insensiblement du discours du narrateur au discours du personnage, sans verbe introducteur. »\n- « Cette indistinction énonciative est la signature flaubertienne par excellence. »\n- « L'ironie naît précisément de l'indécision: parle-t-il en son nom ou rapporte-t-il celui d'Emma ? »\n\nPOUR LA POLYPHONIE BAKHTINIENNE:\n- « Le roman, comme l'a montré Bakhtine, est un espace polyphonique où plusieurs consciences se font entendre. »\n- « Cette pluralité de voix, irréductible à un seul point de vue, constitue le dialogisme du genre romanesque. »\n\nTRÁNH:\n- « Le narrateur sait tout. » → flou; précisez focalisation zéro\n- « Le personnage pense que… » → vérifier si c'est focalisation interne ou monologue rapporté\n- « L'auteur dit que… » → confusion auteur empirique / narrateur\n- « Ce texte est subjectif. » → terme non technique; dire « focalisation interne »",
+    "tip_advice_en": "COMPLETE GENETTIAN ANALYSIS GRID for a given text:\n\n(1) VOIX:\n- Grammatical person (je / il-elle / nous — rare)\n- Position of the narrator (homo- / hetero- / auto-diegetic)\n- Narrative level (extra- / intra- / meta-diegetic)\n- Tense of the narration (passé simple = distance; présent = immediacy; passé composé = familiar/oral)\n\n(2) FOCALISATION:\n- Type (zero / internal / external)\n- Constant or variable\n- If internal: identify the focalizer (who sees?)\n- Coherence with the voice\n\n(3) MODE:\n- Reported discourse (direct / indirect / free indirect)\n- Summary vs scene (narrative speed)\n- Iterative vs singulative narrative (frequency)\n\nUSEFUL PHRASES:\n\nTO DESCRIBE THE VOICE:\n- 'Le narrateur, ici autodiégétique, raconte une expérience dont il fut le protagoniste.' (the narrator, here autodiegetic, recounts an experience of which he was the protagonist)\n- 'Le récit s'organise depuis une instance hétérodiégétique qui ne se met jamais en scène.' (the narrative is organized from a heterodiegetic instance that never stages itself)\n- 'La voix narrative oscille entre l'omniscience apparente et la limitation à la conscience d'Emma.' (the narrative voice oscillates between apparent omniscience and confinement to Emma's consciousness)\n\nTO DESCRIBE THE FOCALIZATION:\n- 'La focalisation, strictement interne, restreint la perception au point de vue de Meursault.'\n- 'On observe ici un changement de focalisation: le narrateur abandonne le regard d'Emma pour adopter celui de Charles.'\n- 'La focalisation externe — ou, pour reprendre Genette, behavioriste — interdit tout accès aux pensées des personnages.'\n\nTO ANALYZE FREE INDIRECT DISCOURSE:\n- 'Le passage glisse insensiblement du discours du narrateur au discours du personnage, sans verbe introducteur.' (the passage slides imperceptibly from the narrator's discourse to the character's, with no introducing verb)\n- 'Cette indistinction énonciative est la signature flaubertienne par excellence.'\n- 'L'ironie naît précisément de l'indécision: parle-t-il en son nom ou rapporte-t-il celui d'Emma ?'\n\nFOR BAKHTINIAN POLYPHONY:\n- 'Le roman, comme l'a montré Bakhtine, est un espace polyphonique où plusieurs consciences se font entendre.'\n- 'Cette pluralité de voix, irréductible à un seul point de vue, constitue le dialogisme du genre romanesque.'\n\nAVOID:\n- 'Le narrateur sait tout.' (the narrator knows everything) → vague; specify focalisation zéro\n- 'Le personnage pense que…' → check whether this is internal focalization or reported monologue\n- 'L'auteur dit que…' → conflation of empirical author / narrator (the cardinal Genette/Barthes error)\n- 'Ce texte est subjectif.' → non-technical term; say 'focalisation interne'",
     "vocabulary": [
       {
         "word": "un narrateur autodiégétique",
         "en": "an autodiegetic narrator",
         "vi": "người trần thuật tự kể đời mình",
         "pos": "n.m.",
-        "pronunciation_vi": "na-ra-tơr ô-to-dié-jé-tik"
+        "pronunciation_vi": "na-ra-tơr ô-to-dié-jé-tik",
+        "pronunciation_en": "uhn nah-rah-TUR oh-toh-dyay-zhay-TEEK — 'narrateur' final -eur 'ur' (rounded); 'auto-' = 'oh-toh'; the narrator IS the protagonist of his own story (Proust's Marcel)"
       },
       {
         "word": "un narrateur hétérodiégétique",
         "en": "a heterodiegetic narrator",
         "vi": "người trần thuật ngoài câu chuyện",
         "pos": "n.m.",
-        "pronunciation_vi": "é-té-ro-dié-jé-tik"
+        "pronunciation_vi": "é-té-ro-dié-jé-tik",
+        "pronunciation_en": "uhn nah-rah-TUR ay-tay-roh-dyay-zhay-TEEK — 'hétéro-' the h is silent, é = 'ay'; the narrator is OUTSIDE the story (Flaubert) — NOT the same as English 'third-person', which says nothing about focalisation"
       },
       {
         "word": "la focalisation interne",
         "en": "internal focalization",
         "vi": "điểm nhìn nội tại",
         "pos": "n.f.",
-        "pronunciation_vi": "fo-ka-li-za-sion an-tèrn"
+        "pronunciation_vi": "fo-ka-li-za-sion an-tèrn",
+        "pronunciation_en": "lah foh-kah-lee-zah-SYOHN an-TEHRN — 'interne' nasal 'in', final -e silent ('an-TEHRN'); the world is filtered through ONE character's consciousness (Meursault)"
       },
       {
         "word": "la focalisation zéro",
         "en": "zero focalization (omniscient)",
         "vi": "điểm nhìn zéro / toàn tri",
         "pos": "n.f.",
-        "pronunciation_vi": "fo-ka-li-za-sion zé-ro"
+        "pronunciation_vi": "fo-ka-li-za-sion zé-ro",
+        "pronunciation_en": "lah foh-kah-lee-zah-SYOHN zay-ROH — 'zéro' = 'zay-ROH' (not English 'ZEER-oh'); = the classical omniscient stance (Balzac) — Genette's preferred term over the vague 'omniscient narrator'"
       },
       {
         "word": "le discours indirect libre",
         "en": "free indirect discourse",
         "vi": "discours indirect libre / lời nửa trực tiếp",
         "pos": "n.m.",
-        "pronunciation_vi": "dis-kur an-di-rèkt li-brơ"
+        "pronunciation_vi": "dis-kur an-di-rèkt li-brơ",
+        "pronunciation_en": "luh dees-KOOR an-dee-REKT LEE-bruh — 'discours' final -s silent ('dees-KOOR'); 'libre' = 'LEE-bruh'; the Bally/Genette term — anglophone narratology often keeps the French rather than 'free indirect speech'"
       },
       {
         "word": "la diégèse",
         "en": "the diegesis",
         "vi": "thế giới câu chuyện",
         "pos": "n.f.",
-        "pronunciation_vi": "dié-jèz"
+        "pronunciation_vi": "dié-jèz",
+        "pronunciation_en": "lah dyay-ZHEZ — 'di-é-' = 'dyay'; -gè- soft 'zh'; final -se 'z' then silent -e; the fictional WORLD, distinct from 'l'histoire' (the sequence of events) and 'le récit' (the text)"
       },
       {
         "word": "la polyphonie narrative",
         "en": "narrative polyphony",
         "vi": "sự đa âm trần thuật",
         "pos": "n.f.",
-        "pronunciation_vi": "po-li-fo-ni na-ra-tiv"
+        "pronunciation_vi": "po-li-fo-ni na-ra-tiv",
+        "pronunciation_en": "lah poh-lee-foh-NEE nah-rah-TEEV — Bakhtin's concept ('polyphonie'); the irreducible coexistence of distinct consciousnesses, NOT merely 'many characters'"
       },
       {
         "word": "l'instance énonciative",
         "en": "the enunciating instance",
         "vi": "thực thể phát ngôn",
         "pos": "n.f.",
-        "pronunciation_vi": "an-stãns é-nõn-sia-tiv"
+        "pronunciation_vi": "an-stãns é-nõn-sia-tiv",
+        "pronunciation_en": "lan-STAHNS ay-nohn-syah-TEEV — 'instance' nasal -an, final -ce 'ahns'; the abstract speaking source within the text — NOT the flesh-and-blood author (post-Barthes distinction)"
       },
       {
         "word": "un récit itératif",
         "en": "an iterative narrative",
         "vi": "tự sự lặp lại",
         "pos": "n.m.",
-        "pronunciation_vi": "ré-si i-té-ra-tif"
+        "pronunciation_vi": "ré-si i-té-ra-tif",
+        "pronunciation_en": "uhn ray-SEE ee-tay-rah-TEEF — 'récit' final -t silent ('ray-SEE'); Genette's frequency category: ONE telling of what happened repeatedly ('every Sunday we would…')"
       },
       {
         "word": "la vitesse narrative",
         "en": "narrative pace",
         "vi": "vận tốc trần thuật",
         "pos": "n.f.",
-        "pronunciation_vi": "vi-tès na-ra-tiv"
+        "pronunciation_vi": "vi-tès na-ra-tiv",
+        "pronunciation_en": "lah vee-TES nah-rah-TEEV — 'vitesse' final -sse 'es' then silent -e; the ratio of story-time to text-space (summary speeds up, scene runs in real time, ellipsis = infinite speed)"
       }
     ],
     "dialogue": [
       {
         "speaker": "Pr. Compagnon",
         "text": "Madame Tran, vous parlez de « narrateur omniscient » à propos de Madame Bovary. Précisez.",
-        "vi": "Cô Trần, cô nói về « narrateur omniscient » liên quan Madame Bovary. Cô làm rõ."
+        "vi": "Cô Trần, cô nói về « narrateur omniscient » liên quan Madame Bovary. Cô làm rõ.",
+        "en": "Madame Tran, you speak of an 'omniscient narrator' apropos of Madame Bovary. Be precise. ['Précisez' = imperative 'specify/sharpen that' — a standard seminar prod demanding a Genettian, not impressionistic, term]"
       },
       {
         "speaker": "Linh",
         "text": "En réalité, l'omniscience flaubertienne est intermittente — par moments le narrateur sait tout, à d'autres il se restreint à la conscience d'Emma.",
-        "vi": "Thực ra, omniscience của Flaubert là gián đoạn — có lúc người trần thuật biết tất, có lúc giới hạn vào ý thức Emma."
+        "vi": "Thực ra, omniscience của Flaubert là gián đoạn — có lúc người trần thuật biết tất, có lúc giới hạn vào ý thức Emma.",
+        "en": "In reality, Flaubertian omniscience is intermittent — at moments the narrator knows everything, at others he restricts himself to Emma's consciousness. ['intermittente' is the key C2 word: the point is the variation, not the omniscience itself]"
       },
       {
         "speaker": "Pr. Compagnon",
         "text": "Voilà — c'est précisément cette modulation qui est intéressante, pas l'omniscience pleine.",
-        "vi": "Đó — chính sự modulation này thú vị, không phải omniscience đầy."
+        "vi": "Đó — chính sự modulation này thú vị, không phải omniscience đầy.",
+        "en": "Exactly — it is precisely this modulation that is interesting, not full omniscience. ['Voilà' as approval = 'exactly, that's it'; 'c'est … qui' is a cleft sentence isolating 'cette modulation' for emphasis — a core French focusing device]"
       },
       {
         "speaker": "Linh",
         "text": "Genette parlerait d'une focalisation variable, ce qui est plus juste.",
-        "vi": "Genette sẽ gọi đó là focalisation variable, chính xác hơn."
+        "vi": "Genette sẽ gọi đó là focalisation variable, chính xác hơn.",
+        "en": "Genette would speak of a variable focalization, which is more accurate. ['parlerait' = conditional, 'would speak' — the polite scholarly move of attributing the precise term to its authority rather than asserting it flatly; 'plus juste' = more apt/exact, not 'more fair']"
       }
     ],
     "dialogue_long": [
       {
         "speaker": "Pr. Compagnon (cours d'agrégation)",
         "text": "Aujourd'hui: Genette, Figures III, l'opposition voix / focalisation. Madame Tran, vous nous présentez le concept appliqué à L'Étranger ?",
-        "vi": "Hôm nay: Genette, Figures III, đối lập voix / focalisation. Cô Trần, cô trình bày khái niệm áp dụng vào L'Étranger?"
+        "vi": "Hôm nay: Genette, Figures III, đối lập voix / focalisation. Cô Trần, cô trình bày khái niệm áp dụng vào L'Étranger?",
+        "en": "Today: Genette, Figures III, the voix / focalisation opposition. Madame Tran, will you present the concept applied to L'Étranger? ['vous nous présentez … ?' = a present-tense question functioning as a courteous imperative — standard French seminar register]"
       },
       {
         "speaker": "Linh",
         "text": "L'Étranger constitue, à mon sens, le cas d'école pour comprendre l'enjeu de la distinction. La voix est homodiégétique — Meursault parle en son nom, à la première personne. La focalisation est strictement interne — nous n'accédons jamais qu'à ce que perçoit Meursault. Et cette double restriction produit l'effet le plus singulier du roman.",
-        "vi": "L'Étranger là, theo tôi, trường hợp mẫu để hiểu vấn đề của sự phân biệt. Voix là homodiégétique — Meursault nói nhân danh mình, ngôi thứ nhất. Focalisation nghiêm ngặt interne — chúng ta không bao giờ tiếp cận hơn điều Meursault tri giác. Và sự giới hạn kép này sản sinh hiệu ứng độc đáo nhất của tiểu thuyết."
+        "vi": "L'Étranger là, theo tôi, trường hợp mẫu để hiểu vấn đề của sự phân biệt. Voix là homodiégétique — Meursault nói nhân danh mình, ngôi thứ nhất. Focalisation nghiêm ngặt interne — chúng ta không bao giờ tiếp cận hơn điều Meursault tri giác. Và sự giới hạn kép này sản sinh hiệu ứng độc đáo nhất của tiểu thuyết.",
+        "en": "L'Étranger is, to my mind, the textbook case for grasping what is at stake in the distinction. The voice is homodiegetic — Meursault speaks in his own name, in the first person. The focalization is strictly internal — we never access anything beyond what Meursault perceives. And this double restriction produces the most singular effect of the novel. ['le cas d'école' = the textbook/copybook case, a fixed expression; 'l'enjeu de la distinction' = what hinges on the distinction]"
       },
       {
         "speaker": "Linh",
         "text": "L'incipit en témoigne: « Aujourd'hui, maman est morte. Ou peut-être hier, je ne sais pas. » Aucun narrateur omniscient ne pourrait dire « je ne sais pas » — l'incertitude prouve que nous sommes enfermés dans une conscience particulière, finie, qui ne maîtrise pas même la chronologie de sa propre histoire.",
-        "vi": "Incipit chứng minh: « Hôm nay, mẹ tôi đã chết. Hay có lẽ hôm qua, tôi không biết. » Không người trần thuật toàn tri nào có thể nói « tôi không biết » — sự không chắc chứng minh chúng ta bị giam trong một ý thức riêng biệt, hữu hạn, không làm chủ được cả niên đại của câu chuyện của mình."
+        "vi": "Incipit chứng minh: « Hôm nay, mẹ tôi đã chết. Hay có lẽ hôm qua, tôi không biết. » Không người trần thuật toàn tri nào có thể nói « tôi không biết » — sự không chắc chứng minh chúng ta bị giam trong một ý thức riêng biệt, hữu hạn, không làm chủ được cả niên đại của câu chuyện của mình.",
+        "en": "The incipit attests to it: 'Aujourd'hui, maman est morte. Ou peut-être hier, je ne sais pas.' ('Today, mother died. Or maybe yesterday, I don't know.') No omniscient narrator could say 'I don't know' — the uncertainty proves we are locked inside a particular, finite consciousness that does not even master the chronology of its own story. ['l'incipit' = the opening words (Latin, technical term, masculine); 'en témoigne' = bears witness to it, the inverted pronominal 'en' fronted for emphasis]"
       },
       {
         "speaker": "Linh",
         "text": "Cette focalisation interne stricte produit, on le sait, le célèbre « ton blanc » du roman. Sartre, dès 1943, l'analysait dans « Explication de L'Étranger »: la phrase courte, l'absence de subordination, le passé composé au lieu du passé simple, tout converge vers une perception non-organisée du monde. Ce n'est pas un choix esthétique gratuit — c'est la traduction stylistique d'une position philosophique sur l'absurde.",
-        "vi": "Focalisation interne nghiêm ngặt này sản sinh, ta biết rõ, « giọng trắng » nổi tiếng của tiểu thuyết. Sartre, ngay từ 1943, đã phân tích trong « Explication de L'Étranger »: câu ngắn, vắng subordination, passé composé thay passé simple, tất cả hội tụ về một tri giác không tổ chức về thế giới. Không phải lựa chọn thẩm mỹ vô cớ — là dịch chuyển phong cách của một lập trường triết học về absurde."
+        "vi": "Focalisation interne nghiêm ngặt này sản sinh, ta biết rõ, « giọng trắng » nổi tiếng của tiểu thuyết. Sartre, ngay từ 1943, đã phân tích trong « Explication de L'Étranger »: câu ngắn, vắng subordination, passé composé thay passé simple, tất cả hội tụ về một tri giác không tổ chức về thế giới. Không phải lựa chọn thẩm mỹ vô cớ — là dịch chuyển phong cách của một lập trường triết học về absurde.",
+        "en": "This strictly internal focalization produces, as is well known, the famous 'ton blanc' (blank/neutral tone) of the novel. Sartre, as early as 1943, analyzed it in 'Explication de L'Étranger': the short sentence, the absence of subordination, the passé composé instead of the passé simple — all converge toward an unorganized perception of the world. It is not a gratuitous aesthetic choice — it is the stylistic translation of a philosophical position on the absurd. ['le ton blanc' = the affectless 'white' tone, a fixed critical label; 'dès 1943' = 'as early as 1943' — 'dès' marks notable earliness, no neat English single word]"
       },
       {
         "speaker": "Pr. Compagnon",
         "text": "Bien. Mais une difficulté surgit en seconde partie du roman, lorsque Meursault, en prison, repense à sa vie. Comment articulez-vous cela avec la focalisation interne stricte ?",
-        "vi": "Tốt. Nhưng một khó khăn xuất hiện ở phần hai tiểu thuyết, khi Meursault, trong tù, nghĩ lại đời mình. Cô khớp nối điều đó với focalisation interne nghiêm ngặt thế nào?"
+        "vi": "Tốt. Nhưng một khó khăn xuất hiện ở phần hai tiểu thuyết, khi Meursault, trong tù, nghĩ lại đời mình. Cô khớp nối điều đó với focalisation interne nghiêm ngặt thế nào?",
+        "en": "Good. But a difficulty arises in the second part of the novel, when Meursault, in prison, reflects back on his life. How do you articulate that with the strictly internal focalization? ['articuler X avec Y' = to logically join/reconcile X with Y — a standard academic verb, NOT 'to articulate' in the English 'express clearly' sense; false friend]"
       },
       {
         "speaker": "Linh",
         "text": "Question juste. En seconde partie, on observe un léger glissement: Meursault commence à réfléchir, à conceptualiser, à formuler ce qui restait jusque-là pure perception. La focalisation reste interne — nous restons dans sa tête — mais le mode change: nous passons d'une perception immédiate à une réflexion. C'est précisément ce changement, à mes yeux, qui produit l'épiphanie finale, dans la cellule, sur « la tendre indifférence du monde ».",
-        "vi": "Câu hỏi đúng. Ở phần hai, ta quan sát một sự trượt nhẹ: Meursault bắt đầu suy ngẫm, khái niệm hóa, phát biểu điều cho đến giờ vẫn là tri giác thuần túy. Focalisation vẫn interne — ta vẫn trong đầu ông — nhưng mode thay đổi: ta chuyển từ tri giác trực tiếp sang suy ngẫm. Chính sự thay đổi này, theo tôi, sản sinh epiphany cuối, trong xà lim, về « sự lạnh lùng dịu dàng của thế giới »."
+        "vi": "Câu hỏi đúng. Ở phần hai, ta quan sát một sự trượt nhẹ: Meursault bắt đầu suy ngẫm, khái niệm hóa, phát biểu điều cho đến giờ vẫn là tri giác thuần túy. Focalisation vẫn interne — ta vẫn trong đầu ông — nhưng mode thay đổi: ta chuyển từ tri giác trực tiếp sang suy ngẫm. Chính sự thay đổi này, theo tôi, sản sinh epiphany cuối, trong xà lim, về « sự lạnh lùng dịu dàng của thế giới ».",
+        "en": "A fair question. In the second part, one observes a slight slippage: Meursault begins to reflect, to conceptualize, to formulate what until then had remained pure perception. The focalization stays internal — we remain inside his head — but the mode changes: we move from immediate perception to reflection. It is precisely this change, in my view, that produces the final epiphany, in the cell, on 'la tendre indifférence du monde' (the tender indifference of the world). ['un glissement' = a slippage/imperceptible shift; 'jusque-là' = 'up to that point'; note the Genettian move of holding focalisation constant while the MODE shifts]"
       },
       {
         "speaker": "Pr. Compagnon",
         "text": "Excellent — vous mobilisez non seulement le couple voix / focalisation, mais aussi la troisième catégorie genettienne, celle du mode. C'est exactement ce que demande Figures III. Une dernière question: peut-on appliquer la même grille à À la recherche du temps perdu ?",
-        "vi": "Xuất sắc — cô huy động không chỉ cặp voix / focalisation, mà cả phạm trù thứ ba của Genette, mode. Đó chính là điều Figures III đòi hỏi. Một câu hỏi cuối: có thể áp dụng cùng lưới này vào À la recherche du temps perdu không?"
+        "vi": "Xuất sắc — cô huy động không chỉ cặp voix / focalisation, mà cả phạm trù thứ ba của Genette, mode. Đó chính là điều Figures III đòi hỏi. Một câu hỏi cuối: có thể áp dụng cùng lưới này vào À la recherche du temps perdu không?",
+        "en": "Excellent — you mobilize not only the voix / focalisation pair, but also Genette's third category, that of mode. That is exactly what Figures III demands. One last question: can the same grid be applied to À la recherche du temps perdu? ['mobiliser' = to bring into play / deploy (a concept) — standard academic French, stronger than 'use'; 'la grille' = the analytic grid (here Genette's), a fixed pedagogical metaphor]"
       },
       {
         "speaker": "Linh",
         "text": "Oui, mais avec une complication décisive. Proust met en scène un narrateur autodiégétique — Marcel — qui raconte sa propre vie avec un décalage temporel énorme. Cela produit une focalisation kép, ou plutôt feuilletée: focalisation interne du Marcel-personnage au moment où il vit l'épisode, et focalisation interne du Marcel-narrateur qui, depuis le présent du récit, comprend ce que le personnage ne comprenait pas. Ces deux instances se distinguent par le célèbre « décalage » que Genette nomme « focalisation interne fixe avec paralipse ».",
-        "vi": "Có, nhưng với một phức tạp quyết định. Proust dàn dựng một người trần thuật autodiégétique — Marcel — kể đời mình với khoảng cách thời gian khổng lồ. Điều đó sản sinh một focalisation kép, hay đúng hơn lớp lớp: focalisation interne của Marcel-nhân vật ở thời điểm sống đoạn ấy, và focalisation interne của Marcel-người trần thuật, từ hiện tại trần thuật, hiểu điều nhân vật không hiểu. Hai thực thể này phân biệt bằng « décalage » nổi tiếng mà Genette gọi là « focalisation interne fixe avec paralipse »."
+        "vi": "Có, nhưng với một phức tạp quyết định. Proust dàn dựng một người trần thuật autodiégétique — Marcel — kể đời mình với khoảng cách thời gian khổng lồ. Điều đó sản sinh một focalisation kép, hay đúng hơn lớp lớp: focalisation interne của Marcel-nhân vật ở thời điểm sống đoạn ấy, và focalisation interne của Marcel-người trần thuật, từ hiện tại trần thuật, hiểu điều nhân vật không hiểu. Hai thực thể này phân biệt bằng « décalage » nổi tiếng mà Genette gọi là « focalisation interne fixe avec paralipse ».",
+        "en": "Yes, but with one decisive complication. Proust stages an autodiegetic narrator — Marcel — who recounts his own life across an enormous temporal gap. This produces a double, or rather layered, focalization: the internal focalization of Marcel-as-character at the moment he lives the episode, and the internal focalization of Marcel-as-narrator who, from the present of the narration, understands what the character did not. These two instances are separated by the famous 'décalage' (gap/lag) that Genette names 'fixed internal focalization with paralipsis'. ['mettre en scène' = to stage/dramatize (a narrator), the literal theatrical metaphor; 'le décalage temporel' = the time-lag between living and narrating, the Proustian engine itself]"
       },
       {
         "speaker": "Pr. Compagnon",
         "text": "Excellent — vous touchez là à l'apport le plus subtil de Genette. La paralipse, c'est le moment où le narrateur omet sciemment ce qu'il sait, pour préserver l'expérience du personnage en train de vivre. Concept rare et puissant.",
-        "vi": "Xuất sắc — cô chạm đến đóng góp tinh tế nhất của Genette. Paralipse, đó là khoảnh khắc người trần thuật bỏ đi cố ý điều mình biết, để giữ trải nghiệm của nhân vật đang sống. Khái niệm hiếm và mạnh."
+        "vi": "Xuất sắc — cô chạm đến đóng góp tinh tế nhất của Genette. Paralipse, đó là khoảnh khắc người trần thuật bỏ đi cố ý điều mình biết, để giữ trải nghiệm của nhân vật đang sống. Khái niệm hiếm và mạnh.",
+        "en": "Excellent — you touch there on Genette's subtlest contribution. Paralipsis is the moment when the narrator knowingly omits what he knows, in order to preserve the experience of the character in the act of living. A rare and powerful concept. ['vous touchez là à' = 'you touch there upon' — 'là' is a deictic pointing back at the just-named idea; 'l'apport' = the contribution/input (of a theorist), a key academic noun]"
       }
     ],
     "roleplay_prompts": [
@@ -485,30 +615,44 @@ export const lessons: FrenchLesson[] = [
       "Trong séminaire, một collègue affirme « Madame Bovary, c'est un roman écrit du point de vue d'Emma ». Phản hồi avec précision genettienne — distinguer voix hétérodiégétique de la focalisation interne intermittente.",
       "Soạn 5 câu pour expliquer la « paralipse » à un étudiant de M1 qui n'a pas encore lu Genette — citer un exemple chez Proust ou un autre auteur."
     ],
+    "roleplay_prompts_en": [
+      "You are assigned an explication of the first page of L'Étranger. Identify voix + focalisation + mode + one major stylistic effect — in 5 minutes. Do not say 'first-person narrator'; say 'narrateur homodiégétique, focalisation interne stricte'.",
+      "In a seminar, a colleague asserts 'Madame Bovary is a novel written from Emma's point of view.' Respond with Genettian precision — distinguish the heterodiegetic VOICE from the intermittent internal FOCALIZATION. Use the polite-correction register: 'En réalité, il conviendrait de distinguer…'",
+      "Compose 5 sentences to explain 'paralipsis' to a first-year master's student who has not yet read Genette — cite one example from Proust or another author. Define it as the narrator's deliberate omission of what he knows, to preserve the character's lived experience."
+    ],
     "register_notes": "NARRATOLOGIE GENETTIENNE — vocabulaire à maîtriser AU MOT PRÈS:\n\nKHÔNG CONFONDRE:\n- Voix ≠ focalisation (Genette dixit)\n- Narrateur ≠ auteur (Barthes, La Mort de l'auteur)\n- Discours indirect libre ≠ discours indirect (un guillemet de différence change tout)\n- Diégèse ≠ histoire (la diégèse est l'univers; l'histoire est la suite des événements)\n- Récit ≠ narration (le récit est le texte; la narration est l'acte de raconter)\n\nQUATRE CATÉGORIES GENETTIENNES:\n\n(1) ORDRE: chronologie diégétique vs ordre narratif (analepse, prolepse)\n(2) DURÉE: rapport temps narré / temps de narration (sommaire, scène, ellipse, pause)\n(3) FRÉQUENCE: récit singulatif / itératif / répétitif\n(4) MODE: distance (sommaire vs scène), perspective (focalisation)\n+ VOIX (instance narrative, niveau, temps)\n\nCONJUGAISON DES TEMPS — analyse C2 doit identifier:\n- Passé simple = distance, écriture classique\n- Imparfait = arrière-plan, durée, descriptif\n- Passé composé = présent du locuteur, oral, Camus\n- Présent intemporel = vérité générale, narration moderne (Duras, Modiano)\n- Conditionnel = futur dans le passé, modalisation\n\nLEXIQUE TECHNIQUE C2 (à utiliser sans hésitation):\n- une analepse / une prolepse (flashback / flashforward)\n- un sommaire (résumé narratif rapide)\n- une scène (récit en temps réel)\n- une ellipse (saut temporel non raconté)\n- une pause descriptive (interruption du récit pour décrire)\n- une paralipse (omission volontaire d'un fait connu du narrateur)\n- une métalepse (transgression de niveau narratif)\n- un récit enchâssé (récit dans le récit)\n\nINVERSION ET SUBJONCTIF IMPARFAIT — marqueurs C2 dans l'analyse narratologique:\n- « Que le narrateur fût parfois omniscient n'est pas le fruit du hasard. »\n- « Peut-être l'auteur a-t-il voulu, par cette focalisation, suspendre tout jugement. »\n- « Encore conviendrait-il que la focalisation reçût une analyse séparée. »\n\nMỘT TINH TẾ ĐẶC THÙ: viết « narrateur » au masculin par convention narratologique, même si l'auteur est une femme. Ce n'est pas un sexisme implicite — c'est l'usage technique. « La narratrice » s'utilise seulement pour distinguer un narrateur féminin diégétiquement marqué (Marguerite Duras dans L'Amant, où la narratrice est explicitement femme).",
+    "register_notes_en": "GENETTIAN NARRATOLOGY — vocabulary to master TO THE EXACT WORD:\n\nDO NOT CONFLATE:\n- Voix ≠ focalisation (Genette's foundational cut)\n- Narrateur ≠ auteur (Barthes, La Mort de l'auteur)\n- Discours indirect libre ≠ discours indirect (one quotation mark of difference changes everything)\n- Diégèse ≠ histoire (the diegesis is the universe; the histoire is the sequence of events)\n- Récit ≠ narration (the récit is the text; the narration is the act of telling)\n\nThese five distinctions ARE the C2 competence in this domain. An anglophone analysis that says 'the story' for all of histoire/récit/diégèse signals a pre-Genettian reading to a French examiner.\n\nFOUR GENETTIAN CATEGORIES:\n\n(1) ORDRE: diegetic chronology vs narrative order (analepsis = flashback, prolepsis = flashforward)\n(2) DURÉE: ratio of narrated time / time of narration (sommaire, scène, ellipse, pause)\n(3) FRÉQUENCE: singulative / iterative / repetitive narrative\n(4) MODE: distance (summary vs scene), perspective (focalisation)\n+ VOIX (narrative instance, level, tense)\n\nTENSES — a C2 analysis must identify:\n- Passé simple = distance, classical writing\n- Imparfait = background, duration, description\n- Passé composé = the speaker's present, oral, Camus\n- Présent intemporel = general truth, modern narration (Duras, Modiano)\n- Conditionnel = future-in-the-past, modalization\n\nTECHNICAL LEXICON C2 (to use without hesitation; most stay in French in English criticism):\n- une analepse / une prolepse (flashback / flashforward)\n- un sommaire (rapid narrative summary)\n- une scène (narration in real time)\n- une ellipse (an un-narrated temporal jump)\n- une pause descriptive (the narrative halts to describe)\n- une paralipse (deliberate omission of a fact the narrator knows)\n- une métalepse (transgression of a narrative level — e.g. the author 'entering' the story)\n- un récit enchâssé (a story-within-a-story)\n\nINVERSION AND IMPERFECT SUBJUNCTIVE — C2 markers in narratological analysis:\n- 'Que le narrateur fût parfois omniscient n'est pas le fruit du hasard.' (subjunctive 'fût' after a fronted nominal clause)\n- 'Peut-être l'auteur a-t-il voulu, par cette focalisation, suspendre tout jugement.' (mandatory 'a-t-il' inversion after 'peut-être')\n- 'Encore conviendrait-il que la focalisation reçût une analyse séparée.' ('reçût' = imperfect subjunctive of 'recevoir')\nForgetting either of these is the surest anglophone tell.\n\nONE CRUCIAL SUBTLETY: write 'narrateur' in the masculine by narratological convention, even when the author is a woman. This is NOT implicit sexism — it is technical usage (the narrateur is a textual function, not a person). 'La narratrice' is used ONLY to mark a diegetically female narrator (Marguerite Duras in L'Amant, where the narratrice is explicitly a woman). An anglophone instinct to 'correct' this to match the author's gender misreads the category.",
     "idiom_glosses": [
       {
         "idiom": "Tirer les ficelles (courant)",
         "literal": "Kéo các sợi dây",
+        "literal_en": "To pull the strings",
         "meaning": "Điều khiển từ hậu trường — utilisé pour le narrateur omniscient.",
+        "meaning_en": "To control everything from behind the scenes — exactly the English 'to pull the strings' (the puppeteer image is shared). Applied to the omniscient narrator who controls every destiny (Balzac). One of the few here with a clean English equivalent — common register.",
         "example": "Le narrateur balzacien tire les ficelles de tous les destins du roman."
       },
       {
         "idiom": "Donner la parole à (soutenu)",
         "literal": "Cho lời",
+        "literal_en": "To give the speech/floor to",
         "meaning": "Cấp giọng nói cho — analyse de la polyphonie.",
+        "meaning_en": "To grant a voice / cede the floor to (a character) — the analytic verb for polyphony. English 'to give voice to' is close but vaguer; 'la parole' here carries the specific sense of the right-to-speak being handed over, central to Bakhtinian analysis. Elevated register.",
         "example": "Flaubert donne la parole à ses personnages tout en s'en distanciant."
       },
       {
         "idiom": "Effacer les traces de l'énonciation (littéraire)",
         "literal": "Xóa dấu vết của phát ngôn",
+        "literal_en": "To erase the traces of the enunciation",
         "meaning": "Làm tan biến sự hiện diện của người trần thuật — idéal réaliste.",
+        "meaning_en": "To make the narrator's presence vanish — the realist ideal (Flaubert's 'l'auteur partout présent et nulle part visible'). NO English idiom; 'effacement of the narrating voice' is a clumsy calque. 'L'énonciation' = the act of stating (Benveniste's term), distinct from 'l'énoncé' (the statement). Literary register.",
         "example": "L'écriture flaubertienne s'efforce d'effacer les traces de l'énonciation."
       },
       {
         "idiom": "Tenir la dragée haute à (soutenu rare)",
         "literal": "Giữ viên kẹo cao",
+        "literal_en": "To hold the sugared almond high (out of reach)",
         "meaning": "Giữ khoảng cách — narrateur ironique avec ses personnages.",
+        "meaning_en": "To keep someone at a deliberate distance / make them wait for what they want — applied to the ironic narrator who refuses to let a character have dignity. The image (dangling a treat above a child) is wholly opaque to English; no equivalent idiom — explain it, never translate it word-for-word. Rare, elevated register.",
         "example": "Voltaire tient la dragée haute à Candide, ce qui produit l'ironie philosophique du conte."
       }
     ],
@@ -516,30 +660,34 @@ export const lessons: FrenchLesson[] = [
       {
         "type": "fill-blank",
         "question": "Que le narrateur ___ parfois omniscient, parfois borné à un personnage, n'est pas, chez Flaubert, le fruit du hasard.",
-        "answer": "fût"
+        "answer": "fût",
+        "hint_vi": "Mệnh đề danh từ « Que… » làm chủ ngữ luôn kéo theo subjonctif. Vì register littéraire C2, dùng subjonctif IMPARFAIT của « être », ngôi thứ ba số ít (có dấu circonflexe).",
+        "hint_en": "A fronted nominal clause 'Que…' functioning as the subject always takes the subjunctive. Because this is C2 literary register, use the IMPERFECT subjunctive of 'être', 3rd person singular — note the circumflex (it distinguishes 'fût' from indicative 'fut'). The present subjunctive 'soit' would be grammatically possible but would break the elevated register."
       },
       {
         "type": "matching",
         "pairs": [
           [
-            "focalisation interne",
+            "focalisation interne (internal focalization — world filtered through one character)",
             "điểm nhìn nội tại"
           ],
           [
-            "narrateur autodiégétique",
+            "narrateur autodiégétique (autodiegetic narrator — protagonist of his own story)",
             "người trần thuật tự kể đời mình"
           ],
           [
-            "paralipse",
+            "paralipse (paralipsis — narrator's deliberate omission of what he knows)",
             "omission volontaire du narrateur"
           ]
         ],
-        "instruction": "Nối thuật ngữ narratologie với nghĩa Việt"
+        "instruction": "Nối thuật ngữ narratologie với nghĩa Việt",
+        "instruction_en": "Match each narratology term with its Vietnamese meaning. (English glosses are given in parentheses for reference.)"
       },
       {
         "type": "translation",
         "vietnamese": "Phân biệt giọng trần thuật khỏi điểm nhìn cấu thành tiền đề cho mọi phân tích nghiêm cẩn về tự sự.",
-        "french": "Distinguer la voix narrative de la focalisation constitue le préalable de toute analyse rigoureuse du récit."
+        "french": "Distinguer la voix narrative de la focalisation constitue le préalable de toute analyse rigoureuse du récit.",
+        "english": "Distinguishing narrative voice from focalization constitutes the prerequisite for any rigorous analysis of the narrative. ['constituer le préalable de' = 'to constitute the prerequisite for' — heavier and more formal than English 'is the first step'; 'le récit' here = narrative-as-text, the Genettian sense, not 'the story']"
       }
     ]
   },
