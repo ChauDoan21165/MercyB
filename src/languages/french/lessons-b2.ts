@@ -4835,6 +4835,12 @@ export const lessons: FrenchLesson[] = [
           "Hô-Chi-Minh → ô-shi-min",
           "s'est → sè",
           "bien passé → biain pa-sé"
+        ],
+        "pronunciation_focus_en": [
+          "bienvenue → 'byan-vuh-NOO' — nasal 'ien' = 'yan'; French 'u' rounded",
+          "Hô-Chi-Minh → 'oh-shee-MEEN' — 'ch' = 'sh' (NOT English 'ch' as in 'cheese')",
+          "s'est → 'SEH' — 's''est' = 'has' (auxiliary); final 't' silent",
+          "bien passé → 'byan pah-SAY' — nasal 'ien'; '-é' = 'ay'"
         ]
       },
       {
@@ -4845,6 +4851,12 @@ export const lessons: FrenchLesson[] = [
           "programme → pro-gram",
           "ajustable → a-jys-tabl",
           "fatigue → fa-tig"
+        ],
+        "pronunciation_focus_en": [
+          "préparé → 'pray-pah-RAY' — three 'ay' sounds in a row",
+          "programme → 'pro-GRAM' — final '-e' silent; French uses double 'mm' but pronounces single 'm'",
+          "ajustable → 'ah-zhoo-STAH-bluh' — 'j' = 'zh'; final '-le' barely voiced",
+          "fatigue → 'fah-TEEG' — final 'gue' = 'g' alone; final '-e' silent"
         ]
       },
       {
@@ -4855,6 +4867,12 @@ export const lessons: FrenchLesson[] = [
           "disposition → dis-po-zi-sion",
           "séjour → sé-jur",
           "liaison à‿votre → a-vô-tr"
+        ],
+        "pronunciation_focus_en": [
+          "équipe → 'ay-KEEP' — '-ipe' = 'eep'; final '-e' silent",
+          "disposition → 'dees-poh-zee-SYON' — '-tion' = 'syon'",
+          "séjour → 'say-ZHOOR' — 'j' = 'zh'; means a stay/visit (not the trip itself)",
+          "liaison 'à votre' → 'ah-VOH-truh' — 'à' links smoothly to 'votre' with no pause"
         ]
       },
       {
@@ -4865,6 +4883,12 @@ export const lessons: FrenchLesson[] = [
           "propose → pro-poz",
           "traditionnels → tra-di-sio-nèl",
           "Sud → syud"
+        ],
+        "pronunciation_focus_en": [
+          "déjeuner → 'day-zhuh-NAY' — 'j' = 'zh'; means lunch (NOT breakfast)",
+          "propose → 'pro-POHZ' — 's' between vowels = 'z'; final '-e' silent",
+          "traditionnels → 'trah-dee-syoh-NEL' — '-tion' = 'syon'; final '-els' silent",
+          "Sud → 'SOOD' — rounded French 'u'; final 'd' IS sounded in 'sud'"
         ]
       },
       {
@@ -4874,102 +4898,123 @@ export const lessons: FrenchLesson[] = [
           "n'hésitez → né-zi-té",
           "quelque chose → kèl-kơ shoz",
           "convient → kon-viain"
+        ],
+        "pronunciation_focus_en": [
+          "n'hésitez → 'nay-zee-TAY' — silent 'h'; the 'ne' contracts to 'n''",
+          "quelque chose → 'KEL-kuh SHOZ' — 'qu' = 'k'; 'ch' = 'sh'; final '-e' silent",
+          "convient → 'kohn-VYAN' — nasal 'on' + nasal 'ien'; final 't' silent"
         ]
       }
     ],
     "cultural_notes_vi": "Khi sếp Pháp sang thăm văn phòng ở Việt Nam, vai trò của bạn vừa là « hôte » (chủ nhà) vừa là cấp dưới — một thế cân bằng tế nhị mà người Việt thường xử lý sai theo hai hướng. Hướng thứ nhất: quá khúm núm — coi mình hoàn toàn là cấp dưới đang phục vụ, mất luôn vai chủ nhà. Sếp Pháp sẽ thấy lúng túng vì họ đang ở « lãnh thổ » của bạn nhưng không được bạn dẫn dắt đúng cách. Hướng thứ hai: quá thân thiện kiểu « anh em một nhà » — quên mất cấp bậc nghề nghiệp. Cả hai đều bất lợi.\n\nGiọng đúng: bạn là người dẫn đường có thẩm quyền (về Việt Nam, về văn phòng địa phương) nhưng vẫn dùng « vous » và giữ register chuyên nghiệp. Người Pháp đặc biệt đánh giá cao một « hôte » chủ động — biết hỏi sớm về sở thích ăn uống, dị ứng, tốc độ chương trình, mà không đợi sếp tự đề xuất. Khi sếp khen điều gì đó (món ăn, văn phòng, đội ngũ), bạn nhận lời cảm ơn nhưng đừng « phồng to » thành tiệc tùng — người Pháp khó chịu khi cảm thấy mình là « lý do để ăn mừng quá mức ».",
+    "cultural_notes_en": "When your French boss visits the Vietnam office, you're simultaneously the « hôte » (host) and the subordinate — a delicate balance Vietnamese hosts often get wrong in one of two directions. First trap: too deferential — collapsing entirely into 'subordinate serving the boss' and losing the host role. The French boss feels disoriented because they're on YOUR territory but aren't being led the way they expect. Second trap: too familiar — 'we're all family here' — which forgets professional hierarchy. Both backfire.\n\nThe right register: you're the authoritative guide (you know Vietnam, you know the local office) while still using « vous » and keeping a professional tone. The French value an active host — one who asks about dietary preferences, allergies, and program pace early, without waiting for the boss to volunteer them. When the boss compliments something (the food, the office, the team), accept the thanks and pivot back to substance — don't inflate it into a celebration. The French specifically dislike feeling they are 'the reason for an over-the-top party' — that reads as obsequious in their cultural frame.",
     "tip_advice_vi": "Trước chuyến thăm: gửi email cho sếp trước 7 ngày kèm lịch trình dạng PDF (giờ, địa điểm, dress code, người dự), kèm câu hỏi mở « Y a-t-il des contraintes alimentaires ou des préférences à intégrer ? ». Trong ngày đầu: đón ở sân bay nếu khoảng cách dưới 30 km và sếp ở cấp đáng đón (giám đốc trở lên); cấp thấp hơn thì xe taxi/Grab công ty đặt sẵn là đủ. Khi vào văn phòng: giới thiệu từng thành viên đội bằng tên + vai trò, không chỉ tên. Trong các bữa ăn: bạn order trước hoặc đề xuất món, không bắt sếp tự chọn từ menu tiếng Việt. Cuối chuyến: hỏi sếp một câu phản hồi cụ thể về gì có thể làm tốt hơn cho lần sau — đừng chờ phản hồi tự đến.",
+    "tip_advice_en": "Before the visit: send the boss a PDF program seven days ahead (times, addresses, dress code, attendees), with an open-ended question: « Y a-t-il des contraintes alimentaires ou des préférences à intégrer ? » (Any dietary constraints or preferences to factor in?). Day one: meet them at the airport if it's under 30 km and they're senior enough to warrant it (director and up); for more junior visitors a pre-booked company car/Grab is enough. Walking into the office: introduce every team member with name AND role, not just name. At meals: you order in advance or propose dishes — don't make the boss decode a Vietnamese menu. End of the trip: ask the boss ONE specific question about what could be better next time — don't wait for feedback to land on its own; French managers tend not to volunteer it unless invited.",
     "vocabulary": [
       {
         "word": "un séjour professionnel",
         "en": "a business stay",
         "vi": "chuyến công tác",
         "pos": "n.m.",
-        "pronunciation_vi": "sé-jur pro-fè-sio-nèl"
+        "pronunciation_vi": "sé-jur pro-fè-sio-nèl",
+        "pronunciation_en": "uhn say-ZHOOR pro-feh-syoh-NEL — 'j' = 'zh'; visit lasting multiple days"
       },
       {
         "word": "un programme de visite",
         "en": "a visit program",
         "vi": "lịch trình thăm",
         "pos": "n.m.",
-        "pronunciation_vi": "pro-gram dơ vi-zit"
+        "pronunciation_vi": "pro-gram dơ vi-zit",
+        "pronunciation_en": "uhn pro-GRAM duh vee-ZEET — final '-e' silent in both nouns"
       },
       {
         "word": "être à votre disposition",
         "en": "to be at your service",
         "vi": "luôn sẵn sàng phục vụ",
         "pos": "expr.",
-        "pronunciation_vi": "é-trơ a vô-trơ dis-po-zi-sion"
+        "pronunciation_vi": "é-trơ a vô-trơ dis-po-zi-sion",
+        "pronunciation_en": "EH-truh ah VOH-truh dees-poh-zee-SYON — frozen polite idiom; never literal"
       },
       {
         "word": "un hôte",
         "en": "a host",
         "vi": "chủ nhà / người đón tiếp",
         "pos": "n.m.",
-        "pronunciation_vi": "ôt"
+        "pronunciation_vi": "ôt",
+        "pronunciation_en": "uhn OAT — silent 'h'; same spelling means both 'host' AND 'guest' depending on context"
       },
       {
         "word": "des contraintes alimentaires",
         "en": "dietary restrictions",
         "vi": "hạn chế ăn uống",
         "pos": "n.f. pl.",
-        "pronunciation_vi": "kon-trant a-li-mãn-tèr"
+        "pronunciation_vi": "kon-trant a-li-mãn-tèr",
+        "pronunciation_en": "day kohn-TRANT ah-lee-mahn-TAIR — nasal 'ain'; '-aires' = 'air'"
       },
       {
         "word": "le décalage horaire",
         "en": "jet lag / time difference",
         "vi": "chênh lệch múi giờ",
         "pos": "n.m.",
-        "pronunciation_vi": "dé-ka-laj o-rer"
+        "pronunciation_vi": "dé-ka-laj o-rer",
+        "pronunciation_en": "luh day-kah-LAHZH oh-RAIR — silent 'h'; covers both time zone diff AND jet-lag feeling"
       },
       {
         "word": "un point d'étape",
         "en": "a check-in point",
         "vi": "điểm kiểm tra giữa lịch trình",
         "pos": "n.m.",
-        "pronunciation_vi": "pwã dé-tap"
+        "pronunciation_vi": "pwã dé-tap",
+        "pronunciation_en": "uhn PWAN day-TAHP — nasal 'oin' = 'wan'; a scheduled pulse-check moment"
       },
       {
         "word": "ajuster le rythme",
         "en": "to adjust the pace",
         "vi": "điều chỉnh tốc độ chương trình",
         "pos": "expr.",
-        "pronunciation_vi": "a-jys-té lơ rit-mơ"
+        "pronunciation_vi": "a-jys-té lơ rit-mơ",
+        "pronunciation_en": "ah-zhoo-STAY luh REET-muh — 'j' = 'zh'; 'rythme' final '-e' barely voiced"
       },
       {
         "word": "se mettre à la disposition de",
         "en": "to make oneself available to",
         "vi": "sẵn sàng phục vụ ai",
         "pos": "v.",
-        "pronunciation_vi": "sơ mè-trơ a la dis-po-zi-sion dơ"
+        "pronunciation_vi": "sơ mè-trơ a la dis-po-zi-sion dơ",
+        "pronunciation_en": "suh MET-truh ah lah dees-poh-zee-SYON duh — reflexive; more service-oriented than 'être à dispo'"
       },
       {
         "word": "un point récapitulatif",
         "en": "a wrap-up summary",
         "vi": "buổi tóm lược cuối",
         "pos": "n.m.",
-        "pronunciation_vi": "pwã ré-ka-pi-tu-la-tif"
+        "pronunciation_vi": "pwã ré-ka-pi-tu-la-tif",
+        "pronunciation_en": "uhn PWAN ray-kah-pee-too-lah-TEEF — final 'f' sounded; close-out review of a visit or meeting"
       }
     ],
     "dialogue": [
       {
         "speaker": "Mme Laurent",
         "text": "Quel accueil chaleureux ! Le bureau a beaucoup changé depuis ma dernière visite.",
+        "en": "What a warm welcome! The office has changed a lot since my last visit.",
         "vi": "Đón tiếp ấm áp quá! Văn phòng thay đổi nhiều so với lần ghé trước."
       },
       {
         "speaker": "Linh",
         "text": "Merci. Nous avons réaménagé l'espace en novembre dernier pour accueillir l'équipe data.",
+        "en": "Thank you. We reorganized the space last November to accommodate the data team.",
         "vi": "Cảm ơn bà. Chúng em sắp xếp lại không gian từ tháng 11 năm ngoái để đón đội data."
       },
       {
         "speaker": "Mme Laurent",
         "text": "Très bien pensé. Et le programme de cette semaine ?",
+        "en": "Well thought out. And the program for this week?",
         "vi": "Suy nghĩ rất kỹ. Và lịch trình tuần này thế nào?"
       },
       {
         "speaker": "Linh",
         "text": "Trois jours : visite des équipes lundi, déplacement à l'usine de Bình Dương mardi, et atelier stratégie mercredi matin.",
+        "en": "Three days: team visits on Monday, a trip to the Bình Dương factory on Tuesday, and a strategy workshop Wednesday morning.",
         "vi": "Ba ngày: thứ hai gặp các đội, thứ ba xuống nhà máy Bình Dương, sáng thứ tư workshop chiến lược."
       }
     ],
@@ -4977,76 +5022,91 @@ export const lessons: FrenchLesson[] = [
       {
         "speaker": "Linh (à l'aéroport)",
         "text": "Madame Laurent, bienvenue à Hô-Chi-Minh-Ville. Je suis Linh, du bureau local — nous avons échangé plusieurs fois par mail.",
+        "en": "Ms Laurent, welcome to Hô-Chi-Minh-Ville. I'm Linh from the local office — we've exchanged several emails.",
         "vi": "Bà Laurent, chào mừng bà đến TP.HCM. Em là Linh ở văn phòng tại đây — mình đã trao đổi qua email nhiều lần."
       },
       {
         "speaker": "Mme Laurent",
         "text": "Bonjour Linh, ravie de vous rencontrer enfin en personne. Le vol était long mais sans turbulence.",
+        "en": "Hello Linh, delighted to finally meet you in person. The flight was long but smooth.",
         "vi": "Chào Linh, rất vui cuối cùng được gặp em trực tiếp. Chuyến bay dài nhưng không có nhiễu động."
       },
       {
         "speaker": "Linh",
         "text": "Je vous ai prévu une voiture pour aller directement à l'hôtel, où vous pourrez vous reposer deux heures. Notre première réunion est à 15 heures.",
+        "en": "I have a car ready to take you directly to the hotel, where you can rest for two hours. Our first meeting is at 3 p.m.",
         "vi": "Em đã chuẩn bị xe đưa bà thẳng đến khách sạn, ở đó bà có thể nghỉ hai tiếng. Cuộc họp đầu lúc 15 giờ."
       },
       {
         "speaker": "Mme Laurent",
         "text": "Très bien. Je préfère travailler le premier jour pour éviter de m'endormir trop tôt — c'est ma méthode contre le décalage.",
+        "en": "Very good. I prefer to work on day one to avoid falling asleep too early — that's my way of beating jet lag.",
         "vi": "Tốt. Tôi thích làm việc ngay ngày đầu để tránh ngủ quá sớm — cách tôi chống lệch múi giờ."
       },
       {
         "speaker": "Linh",
         "text": "Compris. Le programme est imprimé dans la pochette de bienvenue, avec adresses, contacts d'urgence, et numéro local que je vous activerai dès l'hôtel.",
+        "en": "Understood. The schedule is printed in your welcome folder — addresses, emergency contacts, and a local phone number I'll activate as soon as we reach the hotel.",
         "vi": "Em hiểu. Lịch trình đã in trong gói chào mừng, kèm địa chỉ, số liên lạc khẩn cấp, và số điện thoại địa phương em sẽ kích hoạt ngay khi đến khách sạn."
       },
       {
         "speaker": "Mme Laurent",
         "text": "Vous pensez à tout. Une question pratique : aurai-je le temps de marcher un peu en ville en fin de journée ?",
+        "en": "You think of everything. Practical question: will I have time to walk around the city at the end of the day?",
         "vi": "Em nghĩ thật chu đáo. Một câu hỏi: tôi có thời gian đi bộ trong thành phố cuối ngày không?"
       },
       {
         "speaker": "Linh",
         "text": "Tout à fait — j'ai laissé chaque soirée libre après 19 heures. Si vous voulez, je peux vous proposer trois itinéraires courts adaptés à votre énergie.",
+        "en": "Absolutely — I've kept every evening free after 7 p.m. If you'd like, I can propose three short walking routes calibrated to your energy level.",
         "vi": "Hoàn toàn được — em để mỗi tối tự do sau 19 giờ. Nếu bà muốn, em có thể đề xuất ba lộ trình ngắn phù hợp với mức năng lượng của bà."
       },
       {
         "speaker": "Mme Laurent",
         "text": "Excellente idée. Et pour les repas ? Je suis flexible mais j'évite les fruits de mer crus à cause d'une allergie.",
+        "en": "Excellent idea. And for meals? I'm flexible but I avoid raw seafood because of an allergy.",
         "vi": "Ý hay. Còn các bữa ăn? Tôi linh hoạt nhưng tránh hải sản sống vì dị ứng."
       },
       {
         "speaker": "Linh",
         "text": "C'est noté — je préviens chaque restaurant à l'avance. Demain midi, j'ai réservé un restaurant traditionnel du Sud, pas trop pimenté, avec une option végétarienne pour notre collègue Anh-Tuấn.",
+        "en": "Noted — I'll flag every restaurant ahead. Tomorrow at noon I've booked a traditional Southern restaurant, not too spicy, with a vegetarian option for our colleague Anh-Tuấn.",
         "vi": "Em ghi rồi — em sẽ báo trước cho từng nhà hàng. Trưa mai em đặt một nhà hàng truyền thống miền Nam, không quá cay, có món chay cho đồng nghiệp Anh Tuấn."
       },
       {
         "speaker": "Mme Laurent",
         "text": "Vous êtes une hôtesse très organisée. Comment se sent l'équipe avant ma visite ? Honnêtement.",
+        "en": "You're a very organized host. How does the team feel ahead of my visit? Honestly.",
         "vi": "Em là một chủ nhà rất ngăn nắp. Đội cảm thấy thế nào trước chuyến thăm của tôi? Thật lòng đi."
       },
       {
         "speaker": "Linh",
         "text": "Honnêtement, il y a un peu de tension chez les juniors — votre dernière visite remonte à dix-huit mois et le contexte budgétaire les inquiète. J'ai pensé qu'il valait mieux que vous le sachiez avant la réunion.",
+        "en": "Honestly, there's some tension among the juniors — your last visit was 18 months ago and the budget context worries them. I thought you'd want to know before the meeting.",
         "vi": "Thật lòng, có chút căng thẳng ở các bạn junior — lần cuối bà ghé đã 18 tháng và bối cảnh ngân sách khiến họ lo. Em nghĩ bà nên biết trước cuộc họp."
       },
       {
         "speaker": "Mme Laurent",
         "text": "Merci pour cette franchise — c'est exactement ce dont j'ai besoin. Je consacrerai dix minutes en début de réunion à clarifier la situation budgétaire pour qu'ils n'imaginent pas le pire.",
+        "en": "Thank you for the candor — that's exactly what I need. I'll spend ten minutes at the start of the meeting clarifying the budget so they don't imagine the worst.",
         "vi": "Cảm ơn em đã thẳng thắn — đó chính là điều tôi cần. Tôi sẽ dành 10 phút đầu cuộc họp để làm rõ tình hình ngân sách để họ không tưởng tượng điều xấu nhất."
       },
       {
         "speaker": "Linh",
         "text": "Excellent. Je préviens l'équipe que vous voulez ouvrir par ce point — ça évitera les questions tendues en milieu de réunion.",
+        "en": "Great. I'll let the team know you want to open on that point — it'll prevent tense questions mid-meeting.",
         "vi": "Tuyệt. Em sẽ báo đội rằng bà muốn mở đầu bằng điểm này — sẽ tránh các câu hỏi căng giữa cuộc họp."
       },
       {
         "speaker": "Mme Laurent",
         "text": "Parfait. On se voit à 15 heures. Je vais essayer de tenir jusqu'à 22 heures ce soir.",
+        "en": "Perfect. See you at 3 p.m. I'll try to stay up until 10 p.m. tonight.",
         "vi": "Hoàn hảo. Mình gặp lúc 15 giờ. Tôi sẽ cố thức đến 22 giờ tối nay."
       },
       {
         "speaker": "Linh",
         "text": "Je vous laisse vous installer. Mon numéro est sur la pochette — n'hésitez pas, même pour les petites choses.",
+        "en": "I'll let you settle in. My number is in the folder — don't hesitate, even for small things.",
         "vi": "Em để bà ổn định. Số em trong gói tài liệu — bà cứ liên hệ, kể cả việc nhỏ."
       }
     ],
@@ -5055,30 +5115,44 @@ export const lessons: FrenchLesson[] = [
       "Trong bữa tối với sếp, một bạn junior nói chuyện riêng với sếp về một quyết định nội bộ mà bạn chưa được duyệt. Khéo léo can thiệp giữ vai chủ nhà — không cấm bạn junior nhưng giữ thông tin trong khuôn khổ.",
       "Ngày cuối, sếp khen ngợi đội và đề nghị tổ chức buổi tiệc lớn để chia tay. Lịch sự đề xuất một format gọn nhẹ hơn (ăn trưa thay vì tiệc tối) — viện lý do cụ thể (thứ sáu nhiều người về quê) mà không từ chối thẳng."
     ],
+    "roleplay_prompts_en": [
+      "Your French boss visits the office and admits to jet-lag fatigue mid-meeting. Propose an on-the-spot schedule adjustment — don't cancel anything critical but defer secondary parts, and check briefly with the team before announcing.",
+      "At dinner with the boss, a junior team member starts privately discussing an internal decision you haven't been briefed on. Step in gracefully as host — don't shut the junior down but steer the conversation back into shared scope.",
+      "On the last day, the boss compliments the team and proposes a big farewell party. Politely propose a lighter format (lunch instead of an evening event) — give a concrete reason (it's Friday and many people leave for their hometowns) without refusing outright."
+    ],
     "register_notes": "Khi đón sếp Pháp ở Việt Nam, register là « vouvoiement chuyên nghiệp + giọng chủ nhà ấm áp ». Khác với phỏng vấn (vouvoiement xa cách) và khác với gặp đồng nghiệp Pháp (có thể tutoyer sau thời gian dài). Tránh ba sai lầm phổ biến của người Việt: (1) gọi sếp bằng « anh/chị » trong câu tiếng Pháp — phải là « Madame/Monsieur + tên họ »; (2) cười khúm núm sau mỗi câu — người Pháp coi đó là dấu thiếu tự tin; (3) không dám đưa ra ý kiến (« comme vous voulez, comme vous voulez ») — sếp Pháp expect bạn dẫn dắt vì đây là « terrain » của bạn. Khi sếp khen, đáp « Merci, c'est gentil » + một câu chuyển sang nội dung — đừng « ah ce n'est rien, vous exagérez » kiểu Việt-tự-hạ-thấp.",
+    "register_notes_en": "Hosting a French boss in Vietnam runs in « professional vouvoiement + warm host voice » — different from interview-distance vouvoiement and from peer-colleague tutoiement (which only becomes appropriate after extended working together). Three common Vietnamese mistakes: (1) calling the boss « anh » or « chị » in French sentences — French requires « Madame » / « Monsieur » + last name; (2) the nervous after-every-sentence smile — French readers parse it as lack of confidence; (3) refusing to offer your own opinion (« comme vous voulez, comme vous voulez ») — your boss expects YOU to lead because this is your turf. When the boss compliments something, respond « Merci, c'est gentil » + one substantive sentence — don't go into « ah ce n'est rien, vous exagérez » self-deprecation; that lands as awkward in French.",
     "idiom_glosses": [
       {
         "idiom": "Mettre les petits plats dans les grands",
         "literal": "Đặt các đĩa nhỏ trong các đĩa lớn",
+        "literal_en": "to put the small dishes in the big ones",
         "meaning": "Chuẩn bị tiếp đón long trọng, không tiếc công sức.",
+        "meaning_en": "to pull out all the stops in welcoming someone — go all-in on hospitality",
         "example": "Pour la visite de la directrice, on a mis les petits plats dans les grands."
       },
       {
         "idiom": "Avoir le sens de l'accueil",
         "literal": "Có giác quan đón tiếp",
+        "literal_en": "to have the sense of welcome",
         "meaning": "Biết đón tiếp khéo léo, làm khách thoải mái.",
+        "meaning_en": "to have an instinct for hosting — knowing how to make guests comfortable",
         "example": "Linh a vraiment le sens de l'accueil — Madame Laurent l'a remarqué tout de suite."
       },
       {
         "idiom": "Faire les honneurs",
         "literal": "Làm các vinh dự",
+        "literal_en": "to do the honors",
         "meaning": "Đích thân giới thiệu / dẫn khách thăm.",
+        "meaning_en": "to personally show guests around / do the introductions — same idiom as English",
         "example": "C'est moi qui ferai les honneurs du bureau lundi matin."
       },
       {
         "idiom": "Recevoir à bras ouverts",
         "literal": "Đón bằng đôi tay mở rộng",
+        "literal_en": "to welcome with open arms",
         "meaning": "Đón tiếp nồng nhiệt, cởi mở.",
+        "meaning_en": "to welcome with open arms — same idiom and warmth as English",
         "example": "L'équipe l'a reçue à bras ouverts malgré le décalage horaire."
       }
     ],
@@ -5086,6 +5160,7 @@ export const lessons: FrenchLesson[] = [
       {
         "type": "fill-blank",
         "instruction_vi": "Điền cụm còn thiếu vào câu đón tiếp lịch sự.",
+        "instruction_en": "Fill in the missing phrase in the polite hosting sentence.",
         "items": [
           {
             "prompt": "Notre équipe est à votre ___ tout au long du séjour.",
@@ -5108,6 +5183,7 @@ export const lessons: FrenchLesson[] = [
       {
         "type": "matching",
         "instruction_vi": "Nối thành ngữ với nghĩa đón tiếp.",
+        "instruction_en": "Match each hosting idiom with its meaning.",
         "items": [
           {
             "prompt": "Mettre les petits plats dans les grands",
@@ -5130,6 +5206,7 @@ export const lessons: FrenchLesson[] = [
       {
         "type": "translation",
         "instruction_vi": "Dịch sang tiếng Pháp lịch sự B2 — vai chủ nhà chuyên nghiệp.",
+        "instruction_en": "Translate into polite B2 French — professional host register.",
         "items": [
           {
             "prompt": "Em đã chuẩn bị lịch trình nhưng có thể điều chỉnh tùy bà.",
@@ -5162,6 +5239,12 @@ export const lessons: FrenchLesson[] = [
           "ravis → ra-vi",
           "recevoir → rơ-sơ-vwar",
           "usine → u-zin"
+        ],
+        "pronunciation_focus_en": [
+          "sommes → 'SOM' — double 'mm' is one 'm'; final '-es' silent (verb inflection)",
+          "ravis → 'rah-VEE' — final 's' silent; 'we are delighted'",
+          "recevoir → 'ruh-suh-VWAR' — 'oi' = 'wah'; soft uvular 'r' twice",
+          "usine → 'oo-ZEEN' — French 'u' rounded; 's' between vowels = 'z'"
         ]
       },
       {
@@ -5171,6 +5254,11 @@ export const lessons: FrenchLesson[] = [
           "durera → du-rơ-ra",
           "suivie → swi-vi",
           "exploitation → ex-plwa-ta-sion"
+        ],
+        "pronunciation_focus_en": [
+          "durera → 'doo-ruh-RAH' — French 'u' rounded; future tense '-era' = 'uh-RAH'",
+          "suivie → 'swee-VEE' — 'ui' = 'wee'; feminine past participle",
+          "exploitation → 'ek-splwah-tah-SYON' — 'x' = 'ks'; 'oi' = 'wah'; '-tion' = 'syon'"
         ]
       },
       {
@@ -5181,6 +5269,12 @@ export const lessons: FrenchLesson[] = [
           "sécurité → sé-ku-ri-té",
           "gilet → ji-lè",
           "casque → kask"
+        ],
+        "pronunciation_focus_en": [
+          "raisons → 'reh-ZOHN' — 's' between vowels = 'z'; nasal 'on'",
+          "sécurité → 'say-koo-ree-TAY' — French 'u' rounded in 'cu'",
+          "gilet → 'zhee-LEH' — 'g' before 'i' = 'zh'; final 't' silent; means vest/jacket",
+          "casque → 'KASK' — 'qu' = 'k'; final '-e' silent; means helmet"
         ]
       },
       {
@@ -5190,6 +5284,11 @@ export const lessons: FrenchLesson[] = [
           "techniques → tèk-nik",
           "n'hésitez → né-zi-té",
           "chef → shèf"
+        ],
+        "pronunciation_focus_en": [
+          "techniques → 'tek-NEEK' — 'ch' here = 'k' (Greek root); '-ique' = 'eek'",
+          "n'hésitez → 'nay-zee-TAY' — silent 'h'; 'ne' contracts to 'n''",
+          "chef → 'SHEF' — 'ch' = 'sh'; final 'f' sounded; means 'head/boss' (NOT just kitchen)"
         ]
       },
       {
@@ -5200,102 +5299,124 @@ export const lessons: FrenchLesson[] = [
           "réservé → ré-zer-vé",
           "fleuve → flơv",
           "clore → klor"
+        ],
+        "pronunciation_focus_en": [
+          "soir → 'SWAR' — 'oi' = 'wah'; final 'r' soft French uvular",
+          "réservé → 'ray-zair-VAY' — 's' between vowels = 'z'; final '-é' = 'ay'",
+          "fleuve → 'FLUHV' — 'eu' is a rounded sound, lips for 'oh' but tongue for 'ay'; final '-e' silent",
+          "clore → 'KLOR' — final '-e' silent; literary verb meaning 'to close/end'"
         ]
       }
     ],
     "cultural_notes_vi": "Tiếp khách hàng Pháp tại Việt Nam khác hẳn tiếp khách Việt — vì khách hàng Pháp đến với « checklist » rõ ràng (thăm nhà máy để xem điều kiện sản xuất, gặp đội kỹ thuật để đánh giá năng lực, ăn tối để đánh giá chemistry với đối tác). Sai lầm phổ biến của doanh nghiệp Việt: « over-deliver » trong tiếp đãi (tiệc lớn, nhiều rượu, karaoke, quà cáp) trong khi « under-deliver » trong nội dung công việc (chỉ cho khách thấy phần « đẹp » của nhà máy, tránh các câu hỏi khó). Người Pháp đi về sẽ nhớ bạn đãi tiệc to, nhưng hợp đồng có thể không ký vì họ không có đủ dữ liệu để thuyết phục hội đồng quản trị bên Pháp.\n\nCông thức đúng: dành 70% thời gian cho nội dung công việc nghiêm túc (số liệu, quy trình, gặp gỡ trực tiếp đội ngũ), 30% cho hospitality vừa phải. Khách Pháp thích bữa tối có 4-6 người ngồi cùng bàn nói chuyện thực sự, hơn là tiệc 30 người với MC. Quà tặng nên nhỏ và mang tính văn hóa (hộp trà sen, sách ảnh Việt Nam, không phải vật giá trị cao có thể vi phạm chính sách anti-corruption của công ty Pháp). Karaoke và rượu mạnh thường không phù hợp — nên hỏi trước hoặc tránh hẳn lần đầu gặp.",
+    "cultural_notes_en": "Hosting a French client in Vietnam is structurally different from hosting a Vietnamese one — French clients arrive with a clear checklist (factory tour to verify production conditions, technical-team meeting to assess capability, dinner to assess chemistry). The common Vietnamese-side trap: over-delivering on hospitality (big banquets, lots of alcohol, karaoke, expensive gifts) while under-delivering on business content (only showing the 'nice' parts of the factory, avoiding hard questions). The French client goes home remembering a great party but doesn't sign because they don't have enough hard data to defend the deal to their head office.\n\nThe right ratio is roughly 70% serious business content (KPIs, processes, direct contact with the team), 30% modest hospitality. French clients prefer a 4-6 person dinner with real conversation over a 30-seat banquet with an MC. Gifts should be small and culturally meaningful (a box of lotus tea, a Vietnamese photo book) — not high-value items that may violate the company's anti-corruption policy. Karaoke and hard liquor often misfire — ask in advance or skip them entirely on a first visit. The candor that signals 'serious supplier' is also stronger than charm.",
     "tip_advice_vi": "Trước khi khách đến: gửi PDF safety briefing nếu có thăm nhà máy (Pháp rất chặt về OHS); hỏi rõ về dietary restrictions và dị ứng (Pháp hay có dị ứng gluten/lactose/hải sản); đặt khách sạn 4-5 sao có lift, không phải boutique. Trong ngày: đến đón đúng giờ, không sớm hơn 10 phút (Pháp coi sớm quá là làm phiền họ chuẩn bị); cầm theo nước đóng chai, ô (mưa Sài Gòn), wet wipes. Khi giới thiệu nhà máy: nói số liệu cụ thể (sản lượng/tháng, số lao động, chứng chỉ ISO), không kể chuyện. Bữa ăn: order trước cho khách, đề xuất 3 món, không bắt khách chọn từ menu tiếng Việt; không ép rượu (« cạn ly » sai văn hóa Pháp lớn — họ uống chậm, một ly có thể kéo dài cả tối). Cuối ngày: gửi email tóm tắt 3 bullet points đã thống nhất — không phải lễ phép, mà để có vết.",
+    "tip_advice_en": "Before the visit: send a PDF safety briefing if a factory tour is on the program (France is strict on OHS); ask explicitly about dietary restrictions and allergies (gluten/lactose/seafood allergies are common in France); book a 4-5 star hotel with an elevator, not a boutique. On the day: arrive on time, not more than 10 minutes early (the French read early-arrival as imposing on their prep time); bring bottled water, an umbrella (Saigon rain), and wet wipes. When introducing the factory: lead with specific numbers (output/month, headcount, ISO certifications) — not anecdotes. Meals: pre-order or propose three dishes, don't make the client decode a Vietnamese menu; never pressure drinks. The 'cạn ly' bottoms-up culture is a major French cultural mismatch — they sip slowly, one glass can last the whole evening. End of day: send an email summarizing three bullet points you both agreed — not just courtesy, but to create a paper trail.",
     "vocabulary": [
       {
         "word": "un client",
         "en": "a client",
         "vi": "khách hàng",
         "pos": "n.m.",
-        "pronunciation_vi": "kli-ãn"
+        "pronunciation_vi": "kli-ãn",
+        "pronunciation_en": "uhn klee-AHN — nasal 'an'; final 't' silent"
       },
       {
         "word": "une visite d'usine",
         "en": "a factory tour",
         "vi": "buổi thăm nhà máy",
         "pos": "n.f.",
-        "pronunciation_vi": "vi-zit du-zin"
+        "pronunciation_vi": "vi-zit du-zin",
+        "pronunciation_en": "yoon vee-ZEET doo-ZEEN — 's' between vowels = 'z'; final '-e' silent in both"
       },
       {
         "word": "un atelier de production",
         "en": "production workshop",
         "vi": "xưởng sản xuất",
         "pos": "n.m.",
-        "pronunciation_vi": "a-tơ-li-é dơ pro-dyk-sion"
+        "pronunciation_vi": "a-tơ-li-é dơ pro-dyk-sion",
+        "pronunciation_en": "uhn ah-tuh-LYAY duh pro-dook-SYON — '-ier' = 'yay'; '-tion' = 'syon'"
       },
       {
         "word": "des règles de sécurité",
         "en": "safety rules",
         "vi": "quy định an toàn",
         "pos": "n.f. pl.",
-        "pronunciation_vi": "rè-glơ dơ sé-ku-ri-té"
+        "pronunciation_vi": "rè-glơ dơ sé-ku-ri-té",
+        "pronunciation_en": "day REH-gluh duh say-koo-ree-TAY — final '-le' barely voiced"
       },
       {
         "word": "un gilet de sécurité",
         "en": "safety vest",
         "vi": "áo bảo hộ",
         "pos": "n.m.",
-        "pronunciation_vi": "ji-lè dơ sé-ku-ri-té"
+        "pronunciation_vi": "ji-lè dơ sé-ku-ri-té",
+        "pronunciation_en": "uhn zhee-LEH duh say-koo-ree-TAY — 'g' before 'i' = 'zh'"
       },
       {
         "word": "un cahier des charges",
         "en": "specifications brief",
         "vi": "bản đặc tả yêu cầu",
         "pos": "n.m.",
-        "pronunciation_vi": "ka-yé dé sharj"
+        "pronunciation_vi": "ka-yé dé sharj",
+        "pronunciation_en": "uhn kah-YAY day SHARZH — 'ch' = 'sh'; 'g' before silent 'e' = 'zh'; standard French B2B contract term"
       },
       {
         "word": "la traçabilité",
         "en": "traceability",
         "vi": "khả năng truy xuất nguồn gốc",
         "pos": "n.f.",
-        "pronunciation_vi": "tra-sa-bi-li-té"
+        "pronunciation_vi": "tra-sa-bi-li-té",
+        "pronunciation_en": "lah trah-sah-bee-lee-TAY — 'ç' = 's'; quality-control buzzword"
       },
       {
         "word": "un audit qualité",
         "en": "quality audit",
         "vi": "đợt kiểm tra chất lượng",
         "pos": "n.m.",
-        "pronunciation_vi": "o-dit ka-li-té"
+        "pronunciation_vi": "o-dit ka-li-té",
+        "pronunciation_en": "uhn oh-DEET kah-lee-TAY — 'audit' is the English word, French-pronounced; final 't' IS sounded"
       },
       {
         "word": "un dîner d'affaires",
         "en": "business dinner",
         "vi": "bữa tối làm việc",
         "pos": "n.m.",
-        "pronunciation_vi": "di-né da-fer"
+        "pronunciation_vi": "di-né da-fer",
+        "pronunciation_en": "uhn dee-NAY dah-FAIR — 'dîner' final '-r' silent here; '-aires' = 'air'"
       },
       {
         "word": "un compte rendu",
         "en": "a meeting report",
         "vi": "biên bản tổng kết",
         "pos": "n.m.",
-        "pronunciation_vi": "kont rãn-du"
+        "pronunciation_vi": "kont rãn-du",
+        "pronunciation_en": "uhn KOHN-truh RAHN-doo — nasal 'on'; the standard written summary after a meeting"
       }
     ],
     "dialogue": [
       {
         "speaker": "M. Mercier",
         "text": "Bonjour, le voyage entre l'hôtel et l'usine s'est très bien passé.",
+        "en": "Hello, the trip from the hotel to the factory went very smoothly.",
         "vi": "Chào em, chuyến từ khách sạn đến nhà máy rất êm ả."
       },
       {
         "speaker": "Phú",
         "text": "Tant mieux. Avant la visite, voici quelques règles de sécurité.",
+        "en": "Glad to hear it. Before the tour, here are a few safety rules.",
         "vi": "Tốt quá. Trước khi vào, đây là một vài quy định an toàn."
       },
       {
         "speaker": "M. Mercier",
         "text": "Bien sûr. C'est exactement ce que j'attends d'un fournisseur sérieux.",
+        "en": "Of course. That's exactly what I expect from a serious supplier.",
         "vi": "Tất nhiên. Đó chính là điều tôi mong đợi từ một nhà cung cấp nghiêm túc."
       },
       {
         "speaker": "Phú",
         "text": "Notre directeur d'exploitation vous accompagnera tout au long de l'atelier.",
+        "en": "Our operations director will accompany you throughout the workshop tour.",
         "vi": "Giám đốc vận hành của bên em sẽ đi cùng anh suốt buổi thăm xưởng."
       }
     ],
@@ -5303,76 +5424,91 @@ export const lessons: FrenchLesson[] = [
       {
         "speaker": "Phú",
         "text": "Bonjour Monsieur Mercier, bienvenue à l'usine de Bình Dương. Je suis Phú, le responsable comptes export pour les marchés européens.",
+        "en": "Hello Mr Mercier, welcome to the Bình Dương factory. I'm Phú, the export-accounts manager for European markets.",
         "vi": "Chào anh Mercier, chào mừng anh đến nhà máy Bình Dương. Em là Phú, phụ trách tài khoản xuất khẩu thị trường châu Âu."
       },
       {
         "speaker": "M. Mercier",
         "text": "Enchanté Phú. J'ai apprécié la note préparatoire que vous m'avez envoyée hier — c'est rare d'avoir autant de détails avant une première visite.",
+        "en": "Pleased to meet you, Phú. I appreciated the prep note you sent me yesterday — it's rare to get that much detail before a first visit.",
         "vi": "Hân hạnh Phú. Tôi đánh giá cao bản tóm tắt em gửi tôi hôm qua — hiếm khi có nhiều chi tiết trước chuyến thăm đầu."
       },
       {
         "speaker": "Phú",
         "text": "Merci. J'ai pensé que ça vous ferait gagner du temps. Pour ce matin, le programme : briefing sécurité de quinze minutes, puis tour de l'atelier d'environ une heure trente, et déjeuner avec Madame Phương, notre directrice d'exploitation.",
+        "en": "Thank you. I thought it would save you time. This morning's program: a 15-minute safety briefing, then about a 90-minute tour of the workshop, then lunch with Ms Phương, our operations director.",
         "vi": "Cảm ơn anh. Em nghĩ làm vậy giúp anh tiết kiệm thời gian. Sáng nay: brief an toàn 15 phút, sau đó thăm xưởng khoảng 1h30, rồi ăn trưa với chị Phương, giám đốc vận hành."
       },
       {
         "speaker": "M. Mercier",
         "text": "Parfait. Mon objectif principal est de vérifier la cohérence entre votre cahier des charges et la réalité de production. Je vais poser des questions techniques précises — surtout sur la traçabilité des matières premières.",
+        "en": "Perfect. My main goal is to verify the alignment between your specifications and actual production. I'm going to ask specific technical questions — especially on raw-material traceability.",
         "vi": "Hoàn hảo. Mục tiêu chính của tôi là kiểm tra sự nhất quán giữa cahier des charges và thực tế sản xuất. Tôi sẽ đặt câu hỏi kỹ thuật cụ thể — đặc biệt về truy xuất nguồn gốc nguyên liệu."
       },
       {
         "speaker": "Phú",
         "text": "Tout à fait. Notre chef de production, M. Hùng, parle anglais et pourra répondre techniquement. Je suis là pour traduire si nécessaire et pour les questions commerciales.",
+        "en": "Absolutely. Our production head, Mr Hùng, speaks English and can answer technical questions directly. I'm here to translate if needed and to handle commercial questions.",
         "vi": "Hoàn toàn. Trưởng sản xuất bên em, anh Hùng, nói tiếng Anh và có thể trả lời kỹ thuật. Em ở đây để dịch nếu cần và xử lý câu hỏi thương mại."
       },
       {
         "speaker": "M. Mercier",
         "text": "Très bonne organisation. Avant qu'on commence, une question franche : est-ce que tout ce que je vais voir aujourd'hui correspond à la production réelle pour notre commande, ou est-ce un atelier vitrine ?",
+        "en": "Very well organized. Before we start, a frank question: does everything I'm about to see correspond to the actual production for our order, or is this a showroom workshop?",
         "vi": "Tổ chức rất tốt. Trước khi bắt đầu, một câu hỏi thẳng: tất cả những gì tôi sẽ thấy hôm nay có khớp với sản xuất thực cho đơn của tôi, hay đây là xưởng « mặt tiền »?"
       },
       {
         "speaker": "Phú",
         "text": "Question légitime. Je vous garantis que c'est l'atelier qui produirait votre commande — c'est aussi pour ça que j'ai prévu deux heures et pas trente minutes. Vous verrez les machines en marche, les opératrices au travail, et les zones de stockage matières premières.",
+        "en": "Fair question. I guarantee this is the workshop that would produce your order — that's also why I budgeted two hours, not thirty minutes. You'll see the machines running, operators working, and the raw-material storage zones.",
         "vi": "Câu hỏi chính đáng. Em đảm bảo đây là xưởng sẽ sản xuất đơn của anh — cũng vì thế em dành 2 giờ chứ không phải 30 phút. Anh sẽ thấy máy đang chạy, công nhân đang làm, và khu lưu kho nguyên liệu."
       },
       {
         "speaker": "M. Mercier",
         "text": "C'est exactement la réponse que j'attendais. La plupart des fournisseurs auraient évité la question. Allons-y.",
+        "en": "That's exactly the answer I was looking for. Most suppliers would have dodged the question. Let's go.",
         "vi": "Đó đúng là câu trả lời tôi mong đợi. Đa số nhà cung cấp tránh câu hỏi này. Mình đi nhé."
       },
       {
         "speaker": "Phú (après la visite, au déjeuner)",
         "text": "Madame Phương, voici M. Mercier. Madame Phương dirige l'exploitation depuis huit ans et connaît chaque ligne de production par cœur.",
+        "en": "(After the tour, at lunch) Ms Phương, this is Mr Mercier. Ms Phương has run operations for eight years and knows every production line by heart.",
         "vi": "Chị Phương, đây là anh Mercier. Chị Phương phụ trách vận hành đã 8 năm và thuộc lòng từng dây chuyền."
       },
       {
         "speaker": "Mme Phương",
         "text": "Enchantée Monsieur. J'ai préparé un document avec nos indicateurs de performance des trois dernières années — taux de défaut, taux de livraison à temps, et notre certification ISO 9001.",
+        "en": "Pleased to meet you. I've prepared a document with our performance indicators for the past three years — defect rate, on-time delivery rate, and our ISO 9001 certification.",
         "vi": "Hân hạnh anh. Em đã chuẩn bị tài liệu các chỉ số hiệu suất 3 năm qua — tỷ lệ lỗi, tỷ lệ giao đúng hạn, và chứng chỉ ISO 9001."
       },
       {
         "speaker": "M. Mercier",
         "text": "Excellent. Je vois que votre taux de défaut est passé de 2,3 à 0,8 pour cent. Comment ?",
+        "en": "Excellent. I see your defect rate dropped from 2.3% to 0.8%. How?",
         "vi": "Xuất sắc. Tôi thấy tỷ lệ lỗi giảm từ 2.3 xuống 0.8 phần trăm. Bằng cách nào?"
       },
       {
         "speaker": "Mme Phương",
         "text": "En 2024, on a investi dans deux machines de contrôle optique automatique et formé seize opératrices à leur usage. L'investissement s'est rentabilisé en quatorze mois.",
+        "en": "In 2024, we invested in two automated optical inspection machines and trained sixteen operators on them. The investment paid back in fourteen months.",
         "vi": "Năm 2024, em đầu tư hai máy kiểm tra quang học tự động và đào tạo 16 công nhân vận hành. Vốn thu hồi sau 14 tháng."
       },
       {
         "speaker": "M. Mercier",
         "text": "Très convaincant. Pour la suite : je rentre à Paris vendredi avec une recommandation au comité d'investissement. Quand pouvez-vous me confirmer une capacité ferme pour 50 000 unités d'ici juin ?",
+        "en": "Very convincing. Next step: I fly back to Paris Friday with a recommendation for our investment committee. When can you confirm firm capacity for 50,000 units by June?",
         "vi": "Rất thuyết phục. Tiếp theo: tôi về Paris thứ sáu với đề xuất cho hội đồng đầu tư. Khi nào em xác nhận được năng lực cứng cho 50 000 đơn vị trước tháng 6?"
       },
       {
         "speaker": "Phú",
         "text": "D'ici lundi soir, par email, après vérification interne avec Madame Phương et notre planning. Je vous joindrai le tableau capacité-prix-délai en format que votre comité utilise habituellement.",
+        "en": "By Monday evening, via email, after internal verification with Ms Phương and our production schedule. I'll attach the capacity-price-lead-time table in the format your committee usually uses.",
         "vi": "Trước tối thứ hai, qua email, sau khi kiểm tra nội bộ với chị Phương và lịch sản xuất. Em sẽ kèm bảng năng lực-giá-thời hạn theo format hội đồng anh hay dùng."
       },
       {
         "speaker": "M. Mercier",
         "text": "Parfait. Vous êtes le premier fournisseur à proposer ça spontanément — d'habitude je dois demander.",
+        "en": "Perfect. You're the first supplier to propose that unprompted — usually I have to ask.",
         "vi": "Hoàn hảo. Em là nhà cung cấp đầu tiên tự đề xuất việc này — thường tôi phải yêu cầu."
       }
     ],
@@ -5381,30 +5517,44 @@ export const lessons: FrenchLesson[] = [
       "Trong bữa tối, bạn quan sát khách Pháp hơi khó chịu khi sếp người Việt liên tục đề xuất cạn ly. Khéo léo can thiệp — đổi chủ đề, đề xuất uống nước, không làm sếp mất mặt.",
       "Cuối chuyến, khách hỏi: « Honnêtement, est-ce que je peux vous faire confiance pour respecter le délai de juin ? ». Trả lời thật — không « yes yes » Việt-style, không né tránh; nếu có rủi ro thì nêu cụ thể và đề xuất plan B."
     ],
+    "roleplay_prompts_en": [
+      "The French client visits the factory and asks to see the raw-material storage area that wasn't on your tour (because that area is under repair). Politely propose an alternative — don't lie, don't hide; pivot to a different piece of evidence for traceability.",
+      "At dinner, you notice the French client looking uncomfortable as your Vietnamese boss repeatedly proposes 'bottoms-up'. Smoothly step in — change the subject, suggest water, without making your boss lose face.",
+      "End of the trip, the client asks: « Honnêtement, est-ce que je peux vous faire confiance pour respecter le délai de juin ? » (Honestly, can I trust you to meet the June deadline?). Answer truthfully — no Vietnamese-style 'yes yes' deflection; if there's risk, name it concretely and propose plan B."
+    ],
     "register_notes": "Khi tiếp khách hàng Pháp ở vai trò « fournisseur » (nhà cung cấp), register là « vouvoiement chuyên nghiệp + chủ động đề xuất ». Tránh hai sai lầm: (1) khúm núm kiểu « nhà cung cấp Việt cổ điển » — gọi khách « notre cher client », hứa mọi thứ, không dám phản biện; (2) ngược lại, quá thân thiện kiểu « anh em » — vỗ vai, gọi tên thân mật ngay từ phút đầu. Giọng đúng: tự tin về năng lực kỹ thuật của mình, sẵn lòng trả lời câu hỏi khó (« est-ce un atelier vitrine ? »), và proactive trong việc cung cấp dữ liệu (KPI, ISO, traceability). Khi khách hỏi câu nhạy cảm, không né — câu né bị Pháp đọc là dấu giấu thông tin. Khi không biết câu trả lời ngay, nói rõ « Je vous confirme par email d'ici X » thay vì đoán. Tutoiement chỉ áp dụng khi khách chủ động sau nhiều lần gặp.",
+    "register_notes_en": "Hosting a French client as the « fournisseur » (supplier) runs in « professional vouvoiement + proactive offering ». Avoid two opposite traps: (1) the classic obsequious Vietnamese-supplier register — addressing the client as « notre cher client », promising everything, not pushing back when needed; (2) the over-familiar « we're all friends » register — back-pats, first-name basis from minute one. The right tone: confidence about your technical capability, willingness to engage with hard questions (« est-ce un atelier vitrine ? » — is this a showroom workshop?), and proactivity on data (KPIs, ISO certs, traceability proof). When the client asks something sensitive, don't dodge — evasion reads as hiding information. When you don't have the answer ready, say so explicitly: « Je vous confirme par email d'ici X » (I'll confirm by email by X). Tutoiement only kicks in once the client initiates it after multiple meetings.",
     "idiom_glosses": [
       {
         "idiom": "Tenir parole",
         "literal": "Giữ lời",
+        "literal_en": "to hold word",
         "meaning": "Giữ đúng cam kết.",
+        "meaning_en": "to keep one's word — honor a commitment exactly as stated",
         "example": "Si vous tenez parole sur le délai de juin, on signera un contrat de trois ans."
       },
       {
         "idiom": "Jouer cartes sur table",
         "literal": "Đặt bài lên bàn",
+        "literal_en": "to play cards on the table",
         "meaning": "Nói thẳng, minh bạch toàn bộ thông tin.",
+        "meaning_en": "to be transparent — lay all the information out openly, same as English 'cards on the table'",
         "example": "M. Mercier joue cartes sur table — il préfère ça au charme commercial."
       },
       {
         "idiom": "Mettre en confiance",
         "literal": "Đặt vào lòng tin",
+        "literal_en": "to put into trust",
         "meaning": "Tạo cảm giác an toàn / tin cậy cho ai đó.",
+        "meaning_en": "to put someone at ease — establish the trust that makes them want to work with you",
         "example": "La transparence de Madame Phương a immédiatement mis le client en confiance."
       },
       {
         "idiom": "Faire la différence",
         "literal": "Tạo ra sự khác biệt",
+        "literal_en": "to make the difference",
         "meaning": "Là yếu tố quyết định trong cạnh tranh.",
+        "meaning_en": "to be the deciding factor in a competition — what tips the scale over rivals",
         "example": "C'est notre traçabilité qui fait la différence avec les concurrents chinois."
       }
     ],
@@ -5412,6 +5562,7 @@ export const lessons: FrenchLesson[] = [
       {
         "type": "fill-blank",
         "instruction_vi": "Điền cụm vào câu đón khách công tác.",
+        "instruction_en": "Fill in the missing phrase in the business-host sentence.",
         "items": [
           {
             "prompt": "Pour des raisons de sécurité, je vous prie de mettre ce ___.",
@@ -5434,6 +5585,7 @@ export const lessons: FrenchLesson[] = [
       {
         "type": "matching",
         "instruction_vi": "Nối thuật ngữ kinh doanh với nghĩa.",
+        "instruction_en": "Match each business term with its meaning.",
         "items": [
           {
             "prompt": "un cahier des charges",
@@ -5456,6 +5608,7 @@ export const lessons: FrenchLesson[] = [
       {
         "type": "translation",
         "instruction_vi": "Dịch sang tiếng Pháp B2 — vai chủ nhà chuyên nghiệp.",
+        "instruction_en": "Translate into B2 French — professional host register.",
         "items": [
           {
             "prompt": "Em đảm bảo đây là xưởng sẽ sản xuất đơn của anh.",
