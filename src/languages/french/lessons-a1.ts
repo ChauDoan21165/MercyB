@@ -20,6 +20,12 @@ export const lessons: FrenchLesson[] = [
           "nasal in",
           "silent -e",
           "elle → èl"
+        ],
+        "pronunciation_focus_en": [
+          "nasal 'on' in bonjour — no English equivalent; the 'n' isn't pronounced, the vowel is held through the nose",
+          "nasal 'in' (m'appelle has none, but the technique transfers) — practice with the French word itself",
+          "silent final '-e' — the 'e' at the end of 'appelle' is not pronounced",
+          "elle → 'el' as in 'bell'; double 'l' is one sound"
         ]
       },
       {
@@ -30,6 +36,12 @@ export const lessons: FrenchLesson[] = [
           "nasal an",
           "é → ê",
           "silent -re"
+        ],
+        "pronunciation_focus_en": [
+          "nasal 'en' in enchanté — no English equivalent; lips relaxed, sound goes through the nose",
+          "nasal 'an' in connaissance — same nasal mouth shape as 'en'",
+          "é (with the acute accent) → 'ay' as in 'say' but shorter and crisper",
+          "silent final '-re' on votre and faire — the 'r' is barely whispered, the 'e' is dropped"
         ]
       },
       {
@@ -40,6 +52,12 @@ export const lessons: FrenchLesson[] = [
           "ez → ê",
           "u → uy",
           "hui → u-i"
+        ],
+        "pronunciation_focus_en": [
+          "nasal 'ent' in Comment — the 't' is silent, the 'en' is the same nasal as in enchanté",
+          "verb ending -ez → 'ay' as in 'say' (the 'z' is silent)",
+          "French u → round your lips like 'oo' (boot) but try to say 'ee' (see) — no English equivalent",
+          "hui → 'wee' run together with a quick 'u' first; practice slowly as 'oo-ee'"
         ]
       },
       {
@@ -49,6 +67,11 @@ export const lessons: FrenchLesson[] = [
           "nasal en",
           "silent -s",
           "er → ê"
+        ],
+        "pronunciation_focus_en": [
+          "nasal 'en' in bien — practice with the French word itself; no English equivalent",
+          "silent final -s on vais and vous — French rarely pronounces a word-final 's'",
+          "-er ending on merci/parler → 'ay' as in 'say'"
         ]
       },
       {
@@ -59,11 +82,19 @@ export const lessons: FrenchLesson[] = [
           "oi → oa",
           "ou → u",
           "ée → ê"
+        ],
+        "pronunciation_focus_en": [
+          "au → 'oh' as in 'go'",
+          "oi → 'wa' as in 'water' (revoir sounds like 'ruh-vwar')",
+          "ou → 'oo' as in 'boot' (NOT the 'ow' of 'house')",
+          "-ée → 'ay' as in 'say'; the second 'e' just signals a stressed final vowel"
         ]
       }
     ],
     "cultural_notes_vi": "Người Pháp chào bằng 'bonjour' suốt cả ngày đến tầm 6 giờ tối mới chuyển sang 'bonsoir'. Dùng 'salut' với bạn bè thân, không dùng với người lớn tuổi hay lần đầu gặp. 'Enchanté' (nam) / 'Enchantée' (nữ) là câu lịch sự chuẩn khi gặp lần đầu.",
-    "tip_advice_vi": "Khi gặp người Pháp, luôn nói 'bonjour' TRƯỚC khi hỏi bất cứ điều gì — kể cả hỏi đường. Vào tiệm bánh mà không chào 'bonjour' là bị coi là bất lịch sự. Tập phát âm âm mũi (bonjour, enchanté, bien) — đó là điểm yếu nhất của người Việt học tiếng Pháp."
+    "cultural_notes_en": "In France, *bonjour* covers the entire day until roughly 6 PM, when it switches to *bonsoir*. Unlike English — where 'good morning' / 'good afternoon' / 'good evening' have fairly strict windows — *bonjour* is the all-purpose daytime greeting; you'd use it walking into a bakery at 4 PM. Save *salut* for close friends; never use it with older strangers or in a first meeting. *Enchanté* (male speaker) / *Enchantée* (female speaker) is the standard polite line for 'pleased to meet you' — the spelling changes but it sounds identical.",
+    "tip_advice_vi": "Khi gặp người Pháp, luôn nói 'bonjour' TRƯỚC khi hỏi bất cứ điều gì — kể cả hỏi đường. Vào tiệm bánh mà không chào 'bonjour' là bị coi là bất lịch sự. Tập phát âm âm mũi (bonjour, enchanté, bien) — đó là điểm yếu nhất của người Việt học tiếng Pháp.",
+    "tip_advice_en": "Always say *bonjour* BEFORE you ask anything — even asking for directions on the street. Walking into a bakery and going straight to 'do you have…?' lands as rude; it's the single most common faux pas tourists commit. The French nasal vowels in *bonjour*, *enchanté*, *bien* have no real English equivalent, and they're the first thing native speakers notice if you get them wrong — drill them with the French words themselves, not by trying to find an English analogue."
   },
   {
     "id": "french_numbers_1_20",
@@ -80,6 +111,12 @@ export const lessons: FrenchLesson[] = [
           "eu → ơ",
           "oi → oa",
           "silent -s"
+        ],
+        "pronunciation_focus_en": [
+          "nasal 'un' → no real English equivalent; like a nasalized 'uh' through the nose (the 'n' isn't pronounced)",
+          "eu (in deux) → rounded vowel: shape your lips for 'oo' (boot) but try to say 'eh' (bed)",
+          "oi (in trois) → 'wa' as in 'water' — 'trois' sounds like 'twa'",
+          "silent -s on vous, plaît — the 's' is not pronounced"
         ]
       },
       {
@@ -90,6 +127,12 @@ export const lessons: FrenchLesson[] = [
           "nasal in",
           "x → s",
           "silent -nts"
+        ],
+        "pronunciation_focus_en": [
+          "quatre → 'KAT' (the '-re' is barely whispered; nothing like English 'quatre')",
+          "nasal 'in' in cinq → no English equivalent; relaxed lips, sound through the nose",
+          "x in six → 'ss' as in 'kiss' when counting; before a vowel it shifts to 'z'",
+          "silent -nts ending on croissants — the final cluster is not pronounced"
         ]
       },
       {
@@ -100,6 +143,12 @@ export const lessons: FrenchLesson[] = [
           "h muet",
           "eu → ơ",
           "f final"
+        ],
+        "pronunciation_focus_en": [
+          "sept → 'set' (the 'p' is silent)",
+          "h muet (silent h) on huit — never pronounce a French 'h'; 'huit' sounds like 'weet'",
+          "eu in neuf → rounded vowel, lips for 'oo' but say 'eh'",
+          "the final 'f' in neuf IS pronounced — unusual; most word-final consonants are silent"
         ]
       },
       {
@@ -110,6 +159,12 @@ export const lessons: FrenchLesson[] = [
           "nasal on",
           "ou → u",
           "silent -s"
+        ],
+        "pronunciation_focus_en": [
+          "dix on its own → 'deess' (the x → 'ss'); before a consonant it can become 'dee'",
+          "nasal 'on' in onze → same nasal as bonjour, no English equivalent",
+          "ou in douze → 'oo' as in 'boot' (NOT the 'ow' in 'house')",
+          "silent final -s on personnes"
         ]
       },
       {
@@ -119,11 +174,18 @@ export const lessons: FrenchLesson[] = [
           "ei → e",
           "ze → d",
           "in → ang nasal"
+        ],
+        "pronunciation_focus_en": [
+          "ei in treize/seize → 'eh' as in 'bed'",
+          "-ze at the end → ends like a soft 'z' (treize = 'trez')",
+          "nasal 'in' in quinze → no English equivalent; same nasal mouth shape as cinq"
         ]
       }
     ],
     "cultural_notes_vi": "Số Pháp 70-99 nổi tiếng phức tạp: 70 = soixante-dix (60+10), 80 = quatre-vingts (4x20), 90 = quatre-vingt-dix (4x20+10). Người Bỉ và Thụy Sĩ dùng 'septante', 'huitante', 'nonante' đơn giản hơn — nhưng người Pháp thì không.",
-    "tip_advice_vi": "Khi trả tiền ở Pháp, đừng chỉ giơ thẻ — hãy nói số tiền bằng tiếng Pháp. Người Pháp đánh giá cao nỗ lực nói tiếng Pháp, dù chỉ là đọc số."
+    "cultural_notes_en": "French numbers above 69 are famously baroque: 70 = *soixante-dix* (literally 'sixty-ten'), 80 = *quatre-vingts* ('four-twenties'), 90 = *quatre-vingt-dix* ('four-twenty-ten'). Belgian and Swiss French simplified the system long ago and use *septante*, *huitante*, *nonante* — but mainland French sticks with the vigesimal vestige. You don't need 70+ for A1, but it's worth knowing the joke is real.",
+    "tip_advice_vi": "Khi trả tiền ở Pháp, đừng chỉ giơ thẻ — hãy nói số tiền bằng tiếng Pháp. Người Pháp đánh giá cao nỗ lực nói tiếng Pháp, dù chỉ là đọc số.",
+    "tip_advice_en": "When you're paying at a counter in France, don't just hand over the card silently — say the price aloud in French. The French notice and appreciate any visible effort to use their language, even if it's just reading a number off the till."
   },
   {
     "id": "french_common_travel",
@@ -140,6 +202,12 @@ export const lessons: FrenchLesson[] = [
           "nasal on",
           "oi → oa",
           "silent -es"
+        ],
+        "pronunciation_focus_en": [
+          "où (with grave accent) → 'oo' as in 'boot'",
+          "nasal 'on' in sont → no English equivalent",
+          "oi in toilettes → 'wa' as in 'water' (toilettes ≈ 'twa-let')",
+          "silent -es on toilettes — the ending is not pronounced"
         ]
       },
       {
@@ -150,6 +218,12 @@ export const lessons: FrenchLesson[] = [
           "ou → u",
           "û → u",
           "silent -e"
+        ],
+        "pronunciation_focus_en": [
+          "nasal 'ien' in combien → no English equivalent; sounds like a nasalised 'yan'",
+          "ou → 'oo' as in 'boot'",
+          "û (with circumflex) → same 'oo' sound, slightly drawn out",
+          "silent final -e on coûte"
         ]
       },
       {
@@ -160,6 +234,12 @@ export const lessons: FrenchLesson[] = [
           "ai → e",
           "silent -t",
           "r uvulaire"
+        ],
+        "pronunciation_focus_en": [
+          "ou in voudrais/pour → 'oo' as in 'boot'",
+          "ai → 'eh' as in 'bed'",
+          "silent final -t on billet — billet sounds like 'bee-yay'",
+          "uvular 'r' → soft gargled 'r' from the back of the throat, like the French 'r' in 'Paris' (not the English tongue-tip 'r')"
         ]
       },
       {
@@ -170,6 +250,12 @@ export const lessons: FrenchLesson[] = [
           "ou → u",
           "nasal an",
           "silent -s"
+        ],
+        "pronunciation_focus_en": [
+          "verb ending -ez → 'ay' as in 'say'",
+          "ou in vous → 'oo' as in 'boot'",
+          "nasal 'an' in anglais → no English equivalent; relaxed lips, sound through the nose",
+          "silent final -s on vous and anglais"
         ]
       },
       {
@@ -180,11 +266,19 @@ export const lessons: FrenchLesson[] = [
           "nasal on",
           "ez → ê",
           "é → ê"
+        ],
+        "pronunciation_focus_en": [
+          "nasal 'en' in comprends → no English equivalent",
+          "nasal 'on' in pouvez-vous (liaison context) — practice both nasals back-to-back",
+          "-ez → 'ay' as in 'say'",
+          "é (acute) → 'ay' as in 'say' but crisper; répéter = 'ray-pay-tay'"
         ]
       }
     ],
     "cultural_notes_vi": "Ở Pháp, hỏi 'Parlez-vous anglais?' TRƯỚC khi nói tiếng Anh là phép lịch sự tối thiểu. Nếu bạn nhảy thẳng vào tiếng Anh, nhiều người Pháp sẽ giả vờ không hiểu. 'Je voudrais' lịch sự hơn 'Je veux' (nghe như ra lệnh).",
-    "tip_advice_vi": "Học thuộc 5 câu này trước khi đi Pháp. Người Pháp sẽ nói tiếng Anh với bạn nếu bạn thể hiện đã cố gắng nói tiếng Pháp trước."
+    "cultural_notes_en": "Asking *Parlez-vous anglais?* BEFORE switching to English is the minimum courtesy. If you barrel straight into English, many French speakers will conveniently 'not understand' — the reputation for snootiness around language is at least half a polite-protocol issue, not a language-skill one. *Je voudrais* ('I'd like') is noticeably more polite than *Je veux* ('I want'), which lands closer to an order; the Konjunktiv-style softening is part of basic civility, not formality.",
+    "tip_advice_vi": "Học thuộc 5 câu này trước khi đi Pháp. Người Pháp sẽ nói tiếng Anh với bạn nếu bạn thể hiện đã cố gắng nói tiếng Pháp trước.",
+    "tip_advice_en": "Memorise these five lines before you travel. Once you've visibly tried in French, most French speakers will happily switch to English — but the order matters: French first, English second. It's a test of effort, not skill."
   },
   {
     "id": "french_grammar_gender",
@@ -202,6 +296,13 @@ export const lessons: FrenchLesson[] = [
           "nasal on",
           "silent -t",
           "e muet"
+        ],
+        "pronunciation_focus_en": [
+          "le → 'luh' — a quick schwa (the soft 'uh' in 'sofa')",
+          "la → 'lah'",
+          "nasal 'on' in garçon → no English equivalent",
+          "silent final -t on petit — the masculine form ends in a vowel sound",
+          "e muet (silent e) on petite → the final 'e' is silent BUT it makes the 't' audible: 'puh-TEET'"
         ]
       },
       {
@@ -212,6 +313,12 @@ export const lessons: FrenchLesson[] = [
           "nasal on",
           "bon → bon nasal",
           "bonne → bon"
+        ],
+        "pronunciation_focus_en": [
+          "nasal 'un' → no English equivalent; relaxed lips, sound through the nose",
+          "nasal 'on' in bon → no English equivalent",
+          "masculine bon → nasal vowel, no 'n' sound at the end",
+          "feminine bonne → the double 'n' un-nasalises the vowel; says like 'bun' with a clear 'n'"
         ]
       },
       {
@@ -222,6 +329,12 @@ export const lessons: FrenchLesson[] = [
           "oi → oa",
           "ou → u",
           "r uvulaire"
+        ],
+        "pronunciation_focus_en": [
+          "le vs la — both are quick; the vowel is the only difference (le = 'luh', la = 'lah')",
+          "oi in voiture/noir → 'wa' as in 'water'",
+          "ou in rouge → 'oo' as in 'boot'",
+          "uvular r → soft gargled 'r' from the back of the throat (the French 'r' in 'Paris')"
         ]
       },
       {
@@ -232,6 +345,12 @@ export const lessons: FrenchLesson[] = [
           "mon → mon nasal",
           "amie → a-mi",
           "liaison mon‿ami"
+        ],
+        "pronunciation_focus_en": [
+          "nasal 'on' in mon → no English equivalent",
+          "mon → nasal 'on'; no 'n' sound on its own",
+          "amie → 'ah-MEE'; the 'e' at the end is silent",
+          "liaison: mon ami → 'mon-NAH-mee' — the silent 'n' becomes audible when followed by a vowel"
         ]
       },
       {
@@ -242,11 +361,19 @@ export const lessons: FrenchLesson[] = [
           "nasal en",
           "nasal on",
           "gentils → jan-ti"
+        ],
+        "pronunciation_focus_en": [
+          "les → 'lay' — the plural article",
+          "nasal 'en' in enfants → no English equivalent",
+          "nasal 'on' in sont → no English equivalent",
+          "gentils → 'zhahn-TEE' — the 'g' is a soft 'zh' (like the 's' in 'measure'); -ils is silent"
         ]
       }
     ],
     "cultural_notes_vi": "Tiếng Pháp chia mọi danh từ thành giống đực (le/un) hoặc giống cái (la/une). Không có quy tắc tuyệt đối — phải học thuộc từng từ. Mẹo: từ kết thúc bằng -tion, -sion, -té thường là giống cái. Từ kết thúc bằng -age, -ment thường là giống đực.",
-    "tip_advice_vi": "Đừng sợ sai giống đực/cái — người Pháp vẫn hiểu bạn. Tập thói quen học mỗi danh từ KÈM mạo từ: không học 'pain' mà học 'LE pain'."
+    "cultural_notes_en": "Every French noun is masculine (*le/un*) or feminine (*la/une*) — German learners will find this familiar; English speakers usually find it unsettling. There's no absolute rule; you mostly memorise it word by word. Useful heuristic: words ending in *-tion*, *-sion*, *-té* are almost always feminine. Words ending in *-age*, *-ment* are almost always masculine. The article carries more grammatical weight in French than in English — getting it wrong doesn't break understanding, but it instantly marks you as a learner.",
+    "tip_advice_vi": "Đừng sợ sai giống đực/cái — người Pháp vẫn hiểu bạn. Tập thói quen học mỗi danh từ KÈM mạo từ: không học 'pain' mà học 'LE pain'.",
+    "tip_advice_en": "Don't be afraid of getting gender wrong — French speakers will still understand you. The single best habit: never learn a French noun alone — learn it WITH its article. Don't memorise *pain* ('bread'); memorise *LE pain*. The article is part of the word for retention purposes."
   },
   {
     "id": "french_food_ordering",
@@ -263,6 +390,12 @@ export const lessons: FrenchLesson[] = [
           "ai → e",
           "nasal un",
           "silent -t"
+        ],
+        "pronunciation_focus_en": [
+          "ou in voudrais/vous → 'oo' as in 'boot'",
+          "ai → 'eh' as in 'bed'",
+          "nasal 'un' → no English equivalent; relaxed lips, sound through the nose",
+          "silent final -t on plaît — the 't' is not pronounced"
         ]
       },
       {
@@ -273,6 +406,12 @@ export const lessons: FrenchLesson[] = [
           "baguette → ba-get",
           "ui → u-i",
           "silent -e"
+        ],
+        "pronunciation_focus_en": [
+          "French u → round lips for 'oo' (boot) but say 'ee' (see); no English equivalent",
+          "baguette → 'bah-GET' — hard 'g', 'tte' is a clear 't' because the silent 'e' brings it out",
+          "ui in cuite → 'wee' run together with a quick 'u' first — try 'koo-EET' tightened",
+          "silent final -e on cuite — but it brings the 't' to life"
         ]
       },
       {
@@ -283,6 +422,12 @@ export const lessons: FrenchLesson[] = [
           "e muet",
           "ez → ê",
           "silent -z"
+        ],
+        "pronunciation_focus_en": [
+          "qu' → just 'k'; the 'u' is silent (qu'est-ce que = 'kess-kuh')",
+          "e muet (silent e) → swallowed schwa; 'que' sounds like 'kuh'",
+          "-ez → 'ay' as in 'say'",
+          "silent final -z — French rarely pronounces a word-final 'z'"
         ]
       },
       {
@@ -292,6 +437,11 @@ export const lessons: FrenchLesson[] = [
           "l'addition → la-di-sion",
           "silent -n",
           "ai → e"
+        ],
+        "pronunciation_focus_en": [
+          "l'addition → 'lah-dee-SYON' — '-tion' is 'syon' (NOT English 'shun')",
+          "nasal 'on' in addition → no English equivalent; the 'n' is not a consonant here",
+          "ai in plaît → 'eh' as in 'bed'"
         ]
       },
       {
@@ -302,11 +452,19 @@ export const lessons: FrenchLesson[] = [
           "eu → ơ",
           "ou → u",
           "silent -p"
+        ],
+        "pronunciation_focus_en": [
+          "é (acute) → 'ay' as in 'say'; c'était sounds like 'say-tay'",
+          "eu in délicieux → rounded vowel, lips for 'oo' but say 'eh'",
+          "ou in beaucoup → 'oo' as in 'boot'",
+          "silent final -p on beaucoup"
         ]
       }
     ],
     "cultural_notes_vi": "Ở nhà hàng Pháp, đừng gọi 'garçon' để gọi bồi bàn — ngày nay bị coi là thô lỗ. Tiền tip đã bao gồm trong giá ('service compris'). Đừng gọi hóa đơn khi chưa ăn xong — người Pháp coi bữa ăn là thời gian thư giãn.",
-    "tip_advice_vi": "Khi vào tiệm bánh, chào 'bonjour' rồi chỉ tay vào bánh và nói 'je voudrais ça'. Từ 'délicieux' làm người Pháp cười — dùng nó nhiều vào."
+    "cultural_notes_en": "In a French restaurant, do NOT shout *garçon!* for the waiter — it's a holdover from old novels and reads as rude today. Just catch eye contact and say *s'il vous plaît*. Service is already included in the bill (*service compris*), so the US-style 15-20% tip is unnecessary; rounding up or leaving a euro or two is plenty. Don't ask for the bill before you've finished — for the French, lingering after a meal is the meal. Servers won't bring the bill until you signal you want it.",
+    "tip_advice_vi": "Khi vào tiệm bánh, chào 'bonjour' rồi chỉ tay vào bánh và nói 'je voudrais ça'. Từ 'délicieux' làm người Pháp cười — dùng nó nhiều vào.",
+    "tip_advice_en": "When you walk into a bakery, the script is: *bonjour* → point at the pastry → *je voudrais ça, s'il vous plaît* ('I'd like that, please'). That's the whole transaction. The word *délicieux* ('delicious') lands really well in France — it visibly pleases people. Use it liberally."
   },
   {
     "id": "french_family_intro",
@@ -323,6 +481,12 @@ export const lessons: FrenchLesson[] = [
           "père → pe-r",
           "sœur → sơr",
           "r uvulaire"
+        ],
+        "pronunciation_focus_en": [
+          "mère → 'mehr' — 'è' (grave accent) is 'eh' as in 'bed'",
+          "père → 'pehr' — same 'eh' sound",
+          "sœur → 'suhr' — œ is a rounded vowel: lips for 'oo' but say 'uh'",
+          "uvular r → soft gargled 'r' from the back of the throat (the French 'r' in 'Paris')"
         ]
       },
       {
@@ -333,6 +497,12 @@ export const lessons: FrenchLesson[] = [
           "deux → đơ",
           "frères → phre-r",
           "sœur → sơr"
+        ],
+        "pronunciation_focus_en": [
+          "j'ai → 'zhay' — 'j' is the soft 'zh' as in 'measure'",
+          "deux → 'duh' — eu is the rounded vowel (lips for 'oo', say 'uh'); x is silent",
+          "frères → 'frehr' — open 'eh', soft uvular 'r'",
+          "sœur → 'suhr' — same rounded vowel as deux"
         ]
       },
       {
@@ -342,6 +512,11 @@ export const lessons: FrenchLesson[] = [
           "grands-parents → grăn-pa-răn",
           "habitent → a-bít",
           "nasal an"
+        ],
+        "pronunciation_focus_en": [
+          "grands-parents → 'grahn-pah-RAHN' — both nasals; final -s on grands and -ts on parents are silent",
+          "habitent → 'ah-BEET' — silent 'h' (always); the verb ending -ent is silent",
+          "nasal 'an' in parents/campagne → no English equivalent"
         ]
       },
       {
@@ -351,6 +526,11 @@ export const lessons: FrenchLesson[] = [
           "oncle → ong-klơ",
           "tante → tăngt",
           "médecin → mét-xăng"
+        ],
+        "pronunciation_focus_en": [
+          "oncle → 'ohn-kluh' — nasal 'on'; the 'cle' is a quick 'kluh'",
+          "tante → 'tahnt' — nasal 'an'; final 'e' is silent but brings the 't' to life",
+          "médecin → 'med-SAN' — last syllable is a nasal 'in', no English equivalent"
         ]
       },
       {
@@ -361,11 +541,19 @@ export const lessons: FrenchLesson[] = [
           "sommes → xom",
           "grande → grăngđ",
           "famille → pha-miy"
+        ],
+        "pronunciation_focus_en": [
+          "nous → 'noo' — 'oo' as in 'boot'",
+          "sommes → 'som' — the -mes ending is just a short 'm'",
+          "grande → 'grahnd' — nasal 'an', then a clear 'd' because the silent 'e' brings it out",
+          "famille → 'fah-MEE-yuh' — 'ill' is 'ee-yuh', NOT the English 'ill'"
         ]
       }
     ],
     "cultural_notes_vi": "Gia đình Pháp thường nhỏ (1-3 con). Ông bà thường sống riêng, không ở chung 3 thế hệ như Việt Nam. Ngày Chủ Nhật là 'jour de famille' — cả nhà ăn trưa cùng nhau, có thể kéo dài 3-4 tiếng.",
+    "cultural_notes_en": "French families tend to be small (1–3 children) and the grandparents usually live separately rather than three-generations-under-one-roof. Sundays are *jour de famille* — the family gathers for lunch that can easily run 3–4 hours: apéro, starter, main, cheese, dessert, coffee, sometimes a digestif. It's culturally serious; declining a Sunday family lunch invitation needs an actual reason.",
     "tip_advice_vi": "Khi giới thiệu gia đình với người Pháp, nói 'voici' (đây là) thay vì 'c'est'. Đừng dịch 'anh/chị/em' sang tiếng Pháp — dùng 'frère' hoặc 'sœur' và thêm 'grand/petit' cho hơn/kém tuổi.",
+    "tip_advice_en": "When you introduce family in French, use *voici* ('here is/are') rather than *c'est* — it sounds more natural for in-person introductions. French collapses 'older/younger brother/sister' into *frère* and *sœur*; if age matters, add *grand* (older) or *petit* (younger). English speakers often want a separate word for 'older sister' — there isn't one.",
     "vocabulary": [
       {
         "word": "la mère",
@@ -464,9 +652,14 @@ export const lessons: FrenchLesson[] = [
       {
         "type": "fill_blank",
         "instruction_vi": "Điền từ đúng vào chỗ trống (mère / père / frère / sœur):",
+        "instruction_en": "Fill in the right family word (mère / père / frère / sœur):",
         "pronunciation_focus": [
           "è → e mở",
           "r uvulaire"
+        ],
+        "pronunciation_focus_en": [
+          "è (grave accent) → 'eh' as in 'bed'",
+          "uvular r → soft gargled 'r' from the back of the throat (the French 'r' in 'Paris')"
         ],
         "items": [
           {
@@ -504,8 +697,12 @@ export const lessons: FrenchLesson[] = [
       {
         "type": "matching",
         "instruction_vi": "Nối từ tiếng Pháp với nghĩa tiếng Việt:",
+        "instruction_en": "Match each French family word with its meaning:",
         "pronunciation_focus": [
           "famille → pha-miy"
+        ],
+        "pronunciation_focus_en": [
+          "famille → 'fah-MEE-yuh' — '-ille' is 'ee-yuh', NOT the English 'ill'"
         ],
         "items": [
           {
@@ -529,8 +726,12 @@ export const lessons: FrenchLesson[] = [
       {
         "type": "translation",
         "instruction_vi": "Dịch sang tiếng Pháp:",
+        "instruction_en": "Translate into French:",
         "pronunciation_focus": [
           "possessifs mon/ma/mes"
+        ],
+        "pronunciation_focus_en": [
+          "possessives mon/ma/mes — agree with the gender (and number) of the noun, NOT with the speaker"
         ],
         "items": [
           {
@@ -564,6 +765,12 @@ export const lessons: FrenchLesson[] = [
           "réveille → rê-vay",
           "six → xít",
           "heures → ơr"
+        ],
+        "pronunciation_focus_en": [
+          "je → 'zhuh' — 'j' is the soft 'zh' as in 'measure'; the 'e' is a quick schwa",
+          "réveille → 'ray-VAY' — '-ille' is 'ay' here (a reflex of 'eille')",
+          "six on its own → 'seess'; before a vowel it links as 'seez'",
+          "heures → 'uhr' — silent 'h', 'eu' is the rounded vowel (lips for 'oo', say 'uh')"
         ]
       },
       {
@@ -573,6 +780,11 @@ export const lessons: FrenchLesson[] = [
           "prends → prăn",
           "petit → pơ-ti",
           "déjeuner → đê-dơ-nê"
+        ],
+        "pronunciation_focus_en": [
+          "prends → 'prahn' — nasal 'en'; -ds is silent",
+          "petit → 'puh-TEE' — silent final -t; the 'e' is a quick schwa",
+          "déjeuner → 'day-zhuh-NAY' — 'j' is soft 'zh'; 'eu' is the rounded vowel"
         ]
       },
       {
@@ -582,6 +794,11 @@ export const lessons: FrenchLesson[] = [
           "brosse → brot",
           "dents → đăn",
           "après → a-pre"
+        ],
+        "pronunciation_focus_en": [
+          "brosse → 'bross' — short 'o' as in 'lot'; silent final -e brings out the 'ss'",
+          "dents → 'dahn' — nasal 'en'; -ts is silent",
+          "après → 'ah-PREH' — è (grave accent) is 'eh' as in 'bed'; silent final -s"
         ]
       },
       {
@@ -592,6 +809,12 @@ export const lessons: FrenchLesson[] = [
           "au → ô",
           "travail → tra-vay",
           "huit → u-ít"
+        ],
+        "pronunciation_focus_en": [
+          "vais → 'veh' — 'ai' is 'eh' as in 'bed'; -s is silent",
+          "au → 'oh' as in 'go'",
+          "travail → 'trah-VAI' — '-ail' is 'eye' (rhymes with 'eye')",
+          "huit → 'weet' — silent 'h', 'ui' is a quick 'wee'"
         ]
       },
       {
@@ -602,11 +825,19 @@ export const lessons: FrenchLesson[] = [
           "vers → ve-r",
           "onze → ongz",
           "soir → xoa"
+        ],
+        "pronunciation_focus_en": [
+          "couche → 'koosh' — 'ou' is 'oo'; 'ch' is the English 'sh'",
+          "vers → 'vehr' — 'eh', silent final -s, soft uvular 'r'",
+          "onze → 'ohnz' — nasal 'on', then a clear 'z'",
+          "soir → 'swahr' — 'oi' is 'wa', soft uvular 'r'"
         ]
       }
     ],
     "cultural_notes_vi": "Người Pháp thường ăn sáng nhẹ: bánh mì bơ hoặc croissant + cà phê. Bữa trưa (déjeuner) là bữa chính, thường kéo dài 1-2 tiếng từ 12h-14h. Bữa tối (dîner) ăn muộn, sau 19h30. Các cửa hàng thường đóng cửa 12h-14h để nghỉ trưa.",
+    "cultural_notes_en": "Breakfast in France is light: bread with butter or a croissant plus coffee — not the bacon-and-eggs of US/UK tradition. Lunch (*déjeuner*) is the main meal, often running 1-2 hours between noon and 2 PM. Dinner (*dîner*) is late by Anglo standards — typically after 7:30 PM, often closer to 8. Many shops still close for an hour or two over lunch, especially outside big cities; the routine is built around stopping to eat properly, not eating at your desk.",
     "tip_advice_vi": "Học nhanh các động từ phản thân (se réveiller, se laver, se coucher) là chìa khóa để nói về sinh hoạt hàng ngày. Tập nói trước gương một ngày mẫu: 'Je me réveille... je me lave... je prends...'",
+    "tip_advice_en": "Reflexive verbs (*se réveiller*, *se laver*, *se coucher*) are the key to talking about your daily routine — English collapses these into one verb ('I wake up', 'I wash', 'I go to bed'), but French requires the 'me/te/se' pronoun. Practice in front of the mirror as a script: 'Je me réveille... je me lave... je prends...' Repetition fixes the pronoun habit faster than memorising a table.",
     "vocabulary": [
       {
         "word": "se réveiller",
@@ -705,9 +936,14 @@ export const lessons: FrenchLesson[] = [
       {
         "type": "fill_blank",
         "instruction_vi": "Điền động từ phản thân đúng:",
+        "instruction_en": "Fill in the right reflexive verb:",
         "pronunciation_focus": [
           "se réveiller",
           "se lever"
+        ],
+        "pronunciation_focus_en": [
+          "se réveiller → 'suh ray-vay-YAY' — '-eiller' is 'ay-YAY'",
+          "se lever → 'suh luh-VAY' — quick schwa, then 'ay'"
         ],
         "items": [
           {
@@ -727,8 +963,12 @@ export const lessons: FrenchLesson[] = [
       {
         "type": "matching",
         "instruction_vi": "Nối hoạt động với thời gian:",
+        "instruction_en": "Match each activity with the time it usually happens:",
         "pronunciation_focus": [
           "heures → ơr"
+        ],
+        "pronunciation_focus_en": [
+          "heures → 'uhr' — silent 'h', 'eu' is the rounded vowel; final -s is silent"
         ],
         "items": [
           {
@@ -752,8 +992,12 @@ export const lessons: FrenchLesson[] = [
       {
         "type": "translation",
         "instruction_vi": "Dịch sang tiếng Pháp:",
+        "instruction_en": "Translate into French:",
         "pronunciation_focus": [
           "verbes pronominaux"
+        ],
+        "pronunciation_focus_en": [
+          "reflexive (pronominal) verbs — me / te / se / nous / vous / se must agree with the subject"
         ],
         "items": [
           {
@@ -787,6 +1031,12 @@ export const lessons: FrenchLesson[] = [
           "temps → tăm",
           "il → in",
           "hui → u-i"
+        ],
+        "pronunciation_focus_en": [
+          "quel → 'kel' — 'qu' is just 'k'; -el is 'el' as in 'bell'",
+          "temps → 'tahn' — nasal 'en'; -ps is silent",
+          "il → 'eel' (a short 'ee' with a clear 'l')",
+          "hui in aujourd'hui → 'wee' run together with a quick 'u' first"
         ]
       },
       {
@@ -796,6 +1046,11 @@ export const lessons: FrenchLesson[] = [
           "beau → bô",
           "soleil → xô-lay",
           "il y a → in-li-a"
+        ],
+        "pronunciation_focus_en": [
+          "beau → 'boh' — 'eau' is always 'oh' as in 'go'",
+          "soleil → 'so-LAY' — '-eil' is 'eye' (but here closer to 'ay' through the 'l')",
+          "il y a → 'eel-ya' run together as one word (means 'there is/are')"
         ]
       },
       {
@@ -805,6 +1060,11 @@ export const lessons: FrenchLesson[] = [
           "pleut → plơ",
           "beaucoup → bô-cu",
           "automne → ô-tôn"
+        ],
+        "pronunciation_focus_en": [
+          "pleut → 'pluh' — eu is the rounded vowel (lips for 'oo', say 'uh'); -t silent",
+          "beaucoup → 'boh-KOO' — 'eau' is 'oh', 'ou' is 'oo'; final -p silent",
+          "automne → 'oh-TUN' — the 'm' is silent; 'tomne' sounds like 'tun'"
         ]
       },
       {
@@ -815,6 +1075,12 @@ export const lessons: FrenchLesson[] = [
           "très → tre",
           "chaud → sô",
           "degrés → đơ-grê"
+        ],
+        "pronunciation_focus_en": [
+          "été → 'ay-TAY' — both é's are 'ay' as in 'say'",
+          "très → 'treh' — 'eh' as in 'bed'; final -s silent",
+          "chaud → 'shoh' — 'ch' is 'sh', 'aud' is 'oh'; -d silent",
+          "degrés → 'duh-GRAY' — schwa, then 'ay'"
         ]
       },
       {
@@ -824,11 +1090,18 @@ export const lessons: FrenchLesson[] = [
           "hiver → i-ve-r",
           "neige → ne-d",
           "montagnes → mon-tan-nhơ"
+        ],
+        "pronunciation_focus_en": [
+          "hiver → 'ee-VEHR' — silent 'h', open 'eh' on -ver",
+          "neige → 'nehzh' — 'ei' is 'eh', 'ge' is the soft 'zh' as in 'measure'",
+          "montagnes → 'mohn-TAH-nyuh' — 'gn' is the 'ny' sound as in 'canyon'; final -es silent"
         ]
       }
     ],
     "cultural_notes_vi": "Người Pháp thường mở đầu câu chuyện bằng thời tiết — câu 'Quel temps!' (Thời tiết gì thế này!) là câu cửa miệng. Mùa hè ở Paris có thể rất nóng (35-40°C), và nhiều nhà không có điều hòa. Mùa đông ở miền Bắc nước Pháp lạnh và ẩm.",
+    "cultural_notes_en": "The French open conversations with weather just like the British do — *Quel temps!* ('What weather!') is a national tic. One real difference for Anglo visitors: Parisian summers have been hitting 35-40°C in recent years, and most apartments don't have air conditioning — heat waves can be brutal. Northern winters are wet and grey rather than freezing.",
     "tip_advice_vi": "Học cấu trúc 'Il fait + tính từ' (trời...): Il fait beau / chaud / froid / gris (xám xịt) / doux (dễ chịu). Và 'Il y a + du/de la/des': du soleil (nắng), du vent (gió), des nuages (mây).",
+    "tip_advice_en": "Two patterns do most of the work for weather. *Il fait + adjective*: *il fait beau* (nice), *chaud* (hot), *froid* (cold), *gris* (grey/overcast), *doux* (mild). And *il y a + du/de la/des + noun*: *du soleil* (sun), *du vent* (wind), *des nuages* (clouds), *de la pluie* (rain). Note 'it' is *il* (literally 'he') — French has no neuter pronoun.",
     "vocabulary": [
       {
         "word": "le soleil",
@@ -927,9 +1200,14 @@ export const lessons: FrenchLesson[] = [
       {
         "type": "fill_blank",
         "instruction_vi": "Điền từ về thời tiết:",
+        "instruction_en": "Fill in the right weather word:",
         "pronunciation_focus": [
           "il fait",
           "il y a"
+        ],
+        "pronunciation_focus_en": [
+          "il fait → 'eel feh' — 'ai' is 'eh'; final -t silent",
+          "il y a → 'eel-ya' run together as one word"
         ],
         "items": [
           {
@@ -949,8 +1227,12 @@ export const lessons: FrenchLesson[] = [
       {
         "type": "matching",
         "instruction_vi": "Nối mùa với thời tiết:",
+        "instruction_en": "Match each season with its typical weather:",
         "pronunciation_focus": [
           "saisons"
+        ],
+        "pronunciation_focus_en": [
+          "saisons → 'seh-ZOHN' — 'ai' is 'eh'; nasal 'on' at the end"
         ],
         "items": [
           {
@@ -974,9 +1256,14 @@ export const lessons: FrenchLesson[] = [
       {
         "type": "translation",
         "instruction_vi": "Dịch sang tiếng Pháp:",
+        "instruction_en": "Translate into French:",
         "pronunciation_focus": [
           "quel temps",
           "il fait"
+        ],
+        "pronunciation_focus_en": [
+          "quel temps → 'kel tahn' — nasal 'en'; silent -ps",
+          "il fait → 'eel feh' — silent -t"
         ],
         "items": [
           {
@@ -1010,6 +1297,12 @@ export const lessons: FrenchLesson[] = [
           "heure → ơr",
           "trois → thoa",
           "quart → ka-r"
+        ],
+        "pronunciation_focus_en": [
+          "quelle → 'kel' — 'qu' is just 'k'",
+          "heure → 'uhr' — silent 'h', rounded vowel (lips for 'oo', say 'uh')",
+          "trois → 'twa' — 'oi' is 'wa'; silent -s",
+          "quart → 'kar' — silent -t, soft uvular 'r'"
         ]
       },
       {
@@ -1019,6 +1312,11 @@ export const lessons: FrenchLesson[] = [
           "rendez-vous → răn-đê-vu",
           "dix → đít",
           "demie → đơ-mi"
+        ],
+        "pronunciation_focus_en": [
+          "rendez-vous → 'rahn-day-VOO' — nasal 'en', then 'ay', then 'oo'",
+          "dix before consonant → 'dee' (silent x)",
+          "demie → 'duh-MEE' — schwa, then 'ee'"
         ]
       },
       {
@@ -1028,6 +1326,11 @@ export const lessons: FrenchLesson[] = [
           "quel → ken",
           "jour → dua",
           "lundi → lăng-đi"
+        ],
+        "pronunciation_focus_en": [
+          "quel → 'kel' — 'qu' is just 'k'",
+          "jour → 'zhoor' — soft 'zh' (as in 'measure'); 'ou' is 'oo'",
+          "lundi → 'lun-DEE' — nasal 'un' (no English equivalent), then 'dee'"
         ]
       },
       {
@@ -1037,6 +1340,11 @@ export const lessons: FrenchLesson[] = [
           "anniversaire → a-ni-ve-xe-r",
           "quinze → kăngz",
           "mars → ma-r"
+        ],
+        "pronunciation_focus_en": [
+          "anniversaire → 'ah-nee-ver-SEHR' — open 'eh' on the -saire",
+          "quinze → 'kanz' — nasal 'in', then a clear 'z'",
+          "mars → 'mars' — final -s IS pronounced for the month name"
         ]
       },
       {
@@ -1047,11 +1355,19 @@ export const lessons: FrenchLesson[] = [
           "ouvre → u-vrơ",
           "neuf → nớph",
           "matin → ma-tăng"
+        ],
+        "pronunciation_focus_en": [
+          "magasin → 'mah-gah-ZAN' — 's' between vowels is 'z'; nasal 'in' at the end",
+          "ouvre → 'OOV-ruh' — 'ou' is 'oo'; '-re' is barely whispered",
+          "neuf → 'nuhf' — rounded vowel; final 'f' IS pronounced",
+          "matin → 'mah-TAN' — nasal 'in', no English equivalent"
         ]
       }
     ],
     "cultural_notes_vi": "Người Pháp dùng đồng hồ 24h trong lịch trình chính thức: '14h' thay vì '2h chiều'. Ngày viết là ngày/tháng/năm (DD/MM). Thứ Hai là ngày đầu tuần. Hầu hết cửa hàng đóng cửa Chủ Nhật, trừ siêu thị buổi sáng và tiệm bánh.",
+    "cultural_notes_en": "France uses the 24-hour clock for any official schedule — '14h' rather than '2 PM'. Dates are written DD/MM (so 05/07 is the 5th of July, not the 7th of May — a common US-French confusion). The week starts on Monday in France, not Sunday. Most shops close on Sundays; supermarkets often open Sunday morning only, and bakeries open most days. Public holidays (*jours fériés*) are honored strictly — almost everything shuts.",
     "tip_advice_vi": "Học cách nói giờ dạng 12h trước: 'Il est ... heures'. Sau đó tập dạng 24h. Cụm 'et quart' (15 phút), 'et demie' (30 phút), 'moins le quart' (kém 15) là ba cụm phổ biến nhất khi nói giờ.",
+    "tip_advice_en": "Learn the 12-hour form first: *Il est … heures*. Layer the 24-hour version on top once that's automatic. The three phrases you'll use constantly: *et quart* (quarter past), *et demie* (half past), *moins le quart* (quarter to). Note 'half past' uses *demie* (not 'thirty') — closer to British 'half past' than to 'four thirty'.",
     "vocabulary": [
       {
         "word": "l'heure",
@@ -1150,8 +1466,12 @@ export const lessons: FrenchLesson[] = [
       {
         "type": "fill_blank",
         "instruction_vi": "Điền giờ đúng:",
+        "instruction_en": "Fill in the right time word:",
         "pronunciation_focus": [
           "heures"
+        ],
+        "pronunciation_focus_en": [
+          "heures → 'uhr' — silent 'h', rounded 'eu' vowel; final -s silent"
         ],
         "items": [
           {
@@ -1171,8 +1491,12 @@ export const lessons: FrenchLesson[] = [
       {
         "type": "matching",
         "instruction_vi": "Nối ngày tiếng Pháp với tiếng Việt:",
+        "instruction_en": "Match each French day of the week to its meaning:",
         "pronunciation_focus": [
           "jours de la semaine"
+        ],
+        "pronunciation_focus_en": [
+          "jours de la semaine → 'zhoor duh lah suh-MEN' — days of the week; -di ending in most days = 'dee'"
         ],
         "items": [
           {
@@ -1196,8 +1520,12 @@ export const lessons: FrenchLesson[] = [
       {
         "type": "translation",
         "instruction_vi": "Dịch sang tiếng Pháp:",
+        "instruction_en": "Translate into French:",
         "pronunciation_focus": [
           "quelle heure"
+        ],
+        "pronunciation_focus_en": [
+          "quelle heure → 'kel-uhr' — liaison drags the 'l' into 'heure'"
         ],
         "items": [
           {
@@ -1230,6 +1558,11 @@ export const lessons: FrenchLesson[] = [
           "quelle → ken",
           "couleur → cu-lơr",
           "voiture → voa-tuy-r"
+        ],
+        "pronunciation_focus_en": [
+          "quelle → 'kel' — 'qu' is just 'k'",
+          "couleur → 'koo-LUHR' — 'ou' is 'oo'; '-eur' is the rounded vowel + soft 'r'",
+          "voiture → 'vwa-TUER' — 'oi' is 'wa'; 'u' is the French rounded u (no English equivalent)"
         ]
       },
       {
@@ -1239,6 +1572,11 @@ export const lessons: FrenchLesson[] = [
           "rouge → ru-d",
           "tienne → ti-en",
           "silent -e"
+        ],
+        "pronunciation_focus_en": [
+          "rouge → 'roozh' — 'ou' is 'oo'; 'ge' is the soft 'zh' as in 'measure'",
+          "tienne → 'tyen' — 'ie' glides quickly; final 'e' is silent but brings out the 'n'",
+          "silent final -e on rouge — the 'e' is not pronounced but it makes the 'g' audible"
         ]
       },
       {
@@ -1248,6 +1586,11 @@ export const lessons: FrenchLesson[] = [
           "j'adore → da-đo-r",
           "bleu → blơ",
           "clair → cle-r"
+        ],
+        "pronunciation_focus_en": [
+          "j'adore → 'zha-DOR' — soft 'zh' on 'j'; open 'oh' on -dore",
+          "bleu → 'bluh' — rounded vowel: lips for 'oo' but say 'uh'",
+          "clair → 'klehr' — 'ai' is 'eh'; soft uvular 'r'"
         ]
       },
       {
@@ -1257,6 +1600,11 @@ export const lessons: FrenchLesson[] = [
           "préfères → prê-fe-r",
           "vert → ve-r",
           "jaune → dôn"
+        ],
+        "pronunciation_focus_en": [
+          "préfères → 'pray-FEHR' — é is 'ay', then open 'eh' on -fère",
+          "vert → 'vehr' — final -t silent",
+          "jaune → 'zhohn' — soft 'zh'; 'au' is 'oh'; -ne is silent but brings the 'n'"
         ]
       },
       {
@@ -1266,11 +1614,18 @@ export const lessons: FrenchLesson[] = [
           "noir → noa",
           "blanc → blăng",
           "classique → cla-xíc"
+        ],
+        "pronunciation_focus_en": [
+          "noir → 'nwahr' — 'oi' is 'wa'; soft uvular 'r'",
+          "blanc → 'blahn' — nasal 'an'; final -c silent",
+          "classique → 'kla-SEEK' — final -ue is silent"
         ]
       }
     ],
     "cultural_notes_vi": "Trong tiếng Pháp, tính từ màu sắc đứng SAU danh từ và phải hợp giống/số: 'une robe blanche' (một cái váy trắng) khác 'un mur blanc' (một bức tường trắng). Màu sắc kết hợp (bleu marine, vert pomme) không đổi giống.",
+    "cultural_notes_en": "French puts colour adjectives AFTER the noun and makes them agree with gender/number: *une robe blanche* ('a white dress') vs *un mur blanc* ('a white wall'). For English speakers this is a double-switch — word order AND agreement — that takes a while to feel natural. Compound colours (*bleu marine* 'navy blue', *vert pomme* 'apple green') don't change form at all.",
     "tip_advice_vi": "Học 6 màu cơ bản trước (rouge, bleu, vert, jaune, noir, blanc). Sau đó học quy tắc: thêm -e cho giống cái, thêm -s cho số nhiều. 'Marron' (nâu) và 'orange' (cam) không đổi — là ngoại lệ quan trọng.",
+    "tip_advice_en": "Learn the six basics first: *rouge*, *bleu*, *vert*, *jaune*, *noir*, *blanc*. Then the agreement rule: add -e for feminine, -s for plural (so *blanc* → *blanche*, *noirs* for plural). Two important exceptions that don't change form at all: *marron* (brown) and *orange* — they're invariable because they're really 'chestnut' and the fruit, used as colour names.",
     "vocabulary": [
       {
         "word": "rouge",
@@ -1369,8 +1724,12 @@ export const lessons: FrenchLesson[] = [
       {
         "type": "fill_blank",
         "instruction_vi": "Điền màu sắc đúng (hợp giống nếu cần):",
+        "instruction_en": "Fill in the right colour (agree gender if needed):",
         "pronunciation_focus": [
           "accord des couleurs"
+        ],
+        "pronunciation_focus_en": [
+          "colour adjective agreement — adds -e for feminine and -s for plural; some are invariable"
         ],
         "items": [
           {
@@ -1390,8 +1749,12 @@ export const lessons: FrenchLesson[] = [
       {
         "type": "matching",
         "instruction_vi": "Nối màu tiếng Pháp với nghĩa:",
+        "instruction_en": "Match each French colour with its meaning:",
         "pronunciation_focus": [
           "couleurs"
+        ],
+        "pronunciation_focus_en": [
+          "couleurs → 'koo-LUHR' — 'ou' is 'oo'; rounded '-eur' + soft 'r'"
         ],
         "items": [
           {
@@ -1415,8 +1778,12 @@ export const lessons: FrenchLesson[] = [
       {
         "type": "translation",
         "instruction_vi": "Dịch sang tiếng Pháp:",
+        "instruction_en": "Translate into French:",
         "pronunciation_focus": [
           "de quelle couleur"
+        ],
+        "pronunciation_focus_en": [
+          "de quelle couleur → 'duh kel koo-LUHR' — 'what colour?' is asked with this fixed phrase"
         ],
         "items": [
           {
@@ -1449,6 +1816,11 @@ export const lessons: FrenchLesson[] = [
           "cherche → se-r-s",
           "chemise → sơ-miz",
           "taille → tay"
+        ],
+        "pronunciation_focus_en": [
+          "cherche → 'shersh' — 'ch' is 'sh'",
+          "chemise → 'shuh-MEEZ' — 'ch' is 'sh'; 's' between vowels is 'z'; silent final -e",
+          "taille → 'tahy' — '-aille' is 'eye'; double 'l' is silent"
         ]
       },
       {
@@ -1458,6 +1830,11 @@ export const lessons: FrenchLesson[] = [
           "où → u",
           "cabines → ca-bín",
           "essayage → ê-xê-ya-d"
+        ],
+        "pronunciation_focus_en": [
+          "où → 'oo' as in 'boot'",
+          "cabines → 'kah-BEEN' — silent final -es",
+          "essayage → 'eh-say-AHZH' — final 'ge' is the soft 'zh' (as in 'measure')"
         ]
       },
       {
@@ -1467,6 +1844,11 @@ export const lessons: FrenchLesson[] = [
           "pantalon → păng-ta-lông",
           "serré → xê-rê",
           "grande → grăngđ"
+        ],
+        "pronunciation_focus_en": [
+          "pantalon → 'pahn-tah-LOHN' — two nasals",
+          "serré → 'seh-RAY' — open 'eh', then 'ay'",
+          "grande → 'grahnd' — nasal 'an' followed by a clear 'd' (silent 'e' brings it out)"
         ]
       },
       {
@@ -1476,6 +1858,11 @@ export const lessons: FrenchLesson[] = [
           "combien → coong-bi-ăng",
           "coûte → cút",
           "robe → róp"
+        ],
+        "pronunciation_focus_en": [
+          "combien → 'kohm-BYAN' — nasal 'om', then nasal 'ien' (a 'yan' through the nose)",
+          "coûte → 'koot' — 'ou' is 'oo'; silent final -e but the 't' is audible",
+          "robe → 'rob' — short 'o'; silent -e brings out the 'b'"
         ]
       },
       {
@@ -1485,11 +1872,18 @@ export const lessons: FrenchLesson[] = [
           "prends → prăn",
           "pull → puyn",
           "écharpe → ê-sác-p"
+        ],
+        "pronunciation_focus_en": [
+          "prends → 'prahn' — nasal 'en'; -ds silent",
+          "pull → 'pewl' — French 'u' (lips for 'oo', say 'ee'); double 'l' is one sound",
+          "écharpe → 'ay-SHARP' — é is 'ay'; 'ch' is 'sh'"
         ]
       }
     ],
     "cultural_notes_vi": "Ở Pháp, nhân viên bán hàng thường không theo bạn trong cửa hàng — họ để bạn tự do xem. Nếu cần giúp, bạn phải chủ động hỏi. Các đợt giảm giá lớn (les soldes) diễn ra tháng 1 và tháng 7, kéo dài 4-6 tuần. Cỡ quần áo Pháp nhỏ hơn Mỹ khoảng 1-2 size.",
+    "cultural_notes_en": "French shop staff don't shadow you the way US/UK staff sometimes do — they let you browse undisturbed. If you need help, you have to flag them down. The big nationwide sale periods (*les soldes*) happen in January and July and run 4-6 weeks; outside those, discounts are tightly regulated. French sizing runs 1-2 sizes smaller than US — what's a US 8 is roughly a French 38-40; check the *tableau de tailles* (size chart).",
     "tip_advice_vi": "Luôn học từ 'taille' (cỡ/size). Các cụm quan trọng: 'trop grand/petit' (quá to/nhỏ), 'ça me va' (vừa với tôi), 'je peux essayer ?' (tôi thử được không?). Khi vào tiệm, chào 'bonjour' với nhân viên rồi mới xem hàng.",
+    "tip_advice_en": "Memorise *taille* ('size') early. Three phrases do most of the work in a fitting room: *trop grand/petit* (too big/small), *ça me va* (it fits me / it suits me), *je peux essayer ?* (can I try it on?). And — same rule as everywhere else — say *bonjour* to the staff when you walk in, before you start touching anything.",
     "vocabulary": [
       {
         "word": "la chemise",
@@ -1588,8 +1982,12 @@ export const lessons: FrenchLesson[] = [
       {
         "type": "fill_blank",
         "instruction_vi": "Điền từ chỉ quần áo:",
+        "instruction_en": "Fill in the right clothing word:",
         "pronunciation_focus": [
           "vêtements"
+        ],
+        "pronunciation_focus_en": [
+          "vêtements → 'vet-MAHN' — ê (circumflex) is open 'eh'; final -ents is a nasal 'ahn'"
         ],
         "items": [
           {
@@ -1609,8 +2007,12 @@ export const lessons: FrenchLesson[] = [
       {
         "type": "matching",
         "instruction_vi": "Nối đồ vật với bộ phận cơ thể:",
+        "instruction_en": "Match each item with the body part it goes on:",
         "pronunciation_focus": [
           "accessoires"
+        ],
+        "pronunciation_focus_en": [
+          "accessoires → 'ak-seh-SWAR' — 'oi' is 'wa'; silent final -es"
         ],
         "items": [
           {
@@ -1634,8 +2036,12 @@ export const lessons: FrenchLesson[] = [
       {
         "type": "translation",
         "instruction_vi": "Dịch sang tiếng Pháp:",
+        "instruction_en": "Translate into French:",
         "pronunciation_focus": [
           "je cherche"
+        ],
+        "pronunciation_focus_en": [
+          "je cherche → 'zhuh shersh' — soft 'zh', then 'ch' = 'sh'"
         ],
         "items": [
           {
@@ -1668,6 +2074,11 @@ export const lessons: FrenchLesson[] = [
           "station → xta-xi-ông",
           "métro → mê-trô",
           "proche → prót-s"
+        ],
+        "pronunciation_focus_en": [
+          "station → 'sta-SYON' — '-tion' is 'syon' (NOT English 'shun')",
+          "métro → 'may-TROH' — é is 'ay'",
+          "proche → 'prosh' — short 'o'; 'ch' is 'sh'"
         ]
       },
       {
@@ -1677,6 +2088,11 @@ export const lessons: FrenchLesson[] = [
           "ticket → ti-ke",
           "aller-retour → a-lê-rơ-tua",
           "Lyon → li-ông"
+        ],
+        "pronunciation_focus_en": [
+          "ticket → 'tee-KEH' — final -t silent (yes, even in 'ticket')",
+          "aller-retour → 'al-LAY ruh-TOOR' — 'ay' then 'oo'",
+          "Lyon → 'lyon' — one nasal syllable, NOT English 'LIE-on'"
         ]
       },
       {
@@ -1686,6 +2102,11 @@ export const lessons: FrenchLesson[] = [
           "bus → buyt",
           "numéro → nuy-mê-rô",
           "arrête → a-rét"
+        ],
+        "pronunciation_focus_en": [
+          "bus → 'buess' — French 'u' (lips for 'oo', say 'ee'); the 's' IS pronounced here",
+          "numéro → 'nue-may-ROH' — French 'u', then 'ay', then 'oh'",
+          "arrête → 'ah-RET' — ê (circumflex) is open 'eh'; final -e silent but brings the 't'"
         ]
       },
       {
@@ -1695,6 +2116,11 @@ export const lessons: FrenchLesson[] = [
           "quelle → ken",
           "part → pa-r",
           "prochain → prô-săng"
+        ],
+        "pronunciation_focus_en": [
+          "quelle → 'kel' — 'qu' is just 'k'",
+          "part → 'par' — silent -t",
+          "prochain → 'pro-SHAN' — 'ch' is 'sh'; final nasal 'ain' has no English equivalent"
         ]
       },
       {
@@ -1704,11 +2130,18 @@ export const lessons: FrenchLesson[] = [
           "est-ce que → ét-xkơ",
           "taxi → tăc-xi",
           "libre → líp-rờ"
+        ],
+        "pronunciation_focus_en": [
+          "est-ce que → 'es-kuh' — fixed question-opener; says like 'ESS-kuh'",
+          "taxi → 'tahk-SEE' — same word, French stress on the second syllable",
+          "libre → 'LEE-bruh' — '-re' is a soft schwa with a whispered 'r'"
         ]
       }
     ],
     "cultural_notes_vi": "Tàu điện ngầm Paris (métro) có 16 tuyến, rất dày đặc. Mua vé 'carnet' 10 vé rẻ hơn mua lẻ. Xe buýt cần bấm nút 'arrêt demandé' để xuống. TGV (tàu cao tốc) nối các thành phố lớn, nên đặt vé trước trên sncf-connect.com. Taxi ở Paris đắt và khó bắt ngoài đường.",
+    "cultural_notes_en": "The Paris Métro has 16 lines and very dense coverage — comparable to the London Tube but with a different ticketing system. A *carnet* (a 10-ticket bundle) used to be cheaper per ride than single tickets, though the city is shifting toward the rechargeable Navigo card. On a city bus, you need to press the *arrêt demandé* (stop request) button before your stop; the driver doesn't stop automatically. The TGV (high-speed train) connects all major cities; book in advance on sncf-connect.com — prices climb sharply close to departure. Hailing a taxi on the Paris street is hard; use a stand (*station de taxis*) or an app.",
     "tip_advice_vi": "Các câu quan trọng: 'un ticket, s'il vous plaît' (một vé), 'c'est direct ?' (có đi thẳng không?), 'je descends à la prochaine' (tôi xuống trạm tới). Học số tuyến metro/bus bằng tiếng Pháp — tài xế Pháp nói số rất nhanh.",
+    "tip_advice_en": "Three lines do most of the work: *un ticket, s'il vous plaît* (one ticket, please), *c'est direct ?* (is it direct?), *je descends à la prochaine* (I'm getting off at the next stop). Drill the numbers in French so you can recognise *ligne quarante-deux* (line 42) when a driver rattles it off at speed — they will not slow down for you.",
     "vocabulary": [
       {
         "word": "le métro",
@@ -1807,8 +2240,12 @@ export const lessons: FrenchLesson[] = [
       {
         "type": "fill_blank",
         "instruction_vi": "Điền từ chỉ phương tiện:",
+        "instruction_en": "Fill in the right transport word:",
         "pronunciation_focus": [
           "transports"
+        ],
+        "pronunciation_focus_en": [
+          "transports → 'trahn-SPOR' — nasal 'an'; final -ts is silent"
         ],
         "items": [
           {
@@ -1828,8 +2265,12 @@ export const lessons: FrenchLesson[] = [
       {
         "type": "matching",
         "instruction_vi": "Nối phương tiện với địa điểm:",
+        "instruction_en": "Match each form of transport with where you catch it:",
         "pronunciation_focus": [
           "où"
+        ],
+        "pronunciation_focus_en": [
+          "où → 'oo' as in 'boot' (with grave accent to distinguish from 'ou' = 'or')"
         ],
         "items": [
           {
@@ -1853,8 +2294,12 @@ export const lessons: FrenchLesson[] = [
       {
         "type": "translation",
         "instruction_vi": "Dịch sang tiếng Pháp:",
+        "instruction_en": "Translate into French:",
         "pronunciation_focus": [
           "transports"
+        ],
+        "pronunciation_focus_en": [
+          "transports → 'trahn-SPOR' — silent final -ts"
         ],
         "items": [
           {
@@ -1887,6 +2332,11 @@ export const lessons: FrenchLesson[] = [
           "j'habite → da-bít",
           "appartement → a-pa-rtơ-măn",
           "troisième → troa-di-em"
+        ],
+        "pronunciation_focus_en": [
+          "j'habite → 'zha-BEET' — silent 'h'; soft 'zh' on j",
+          "appartement → 'ah-par-tuh-MAHN' — final nasal 'ent' is 'ahn'",
+          "troisième → 'twa-ZYEM' — 'oi' is 'wa'; -ième is 'yem'"
         ]
       },
       {
@@ -1897,6 +2347,12 @@ export const lessons: FrenchLesson[] = [
           "gauche → gô-s",
           "salle → san",
           "droite → đoát"
+        ],
+        "pronunciation_focus_en": [
+          "cuisine → 'kwee-ZEEN' — 'ui' is 'wee'; 's' between vowels is 'z'",
+          "gauche → 'gohsh' — 'au' is 'oh'; 'ch' is 'sh'",
+          "salle → 'sal' — short 'a'; silent final -e brings the 'l'",
+          "droite → 'drwat' — 'oi' is 'wa'; silent -e but the 't' is audible"
         ]
       },
       {
@@ -1906,6 +2362,11 @@ export const lessons: FrenchLesson[] = [
           "grande → grăngđ",
           "fenêtre → phơ-né-trơ",
           "salon → xa-lông"
+        ],
+        "pronunciation_focus_en": [
+          "grande → 'grahnd' — nasal 'an' followed by a clear 'd'",
+          "fenêtre → 'fuh-NET-ruh' — schwa, then ê = open 'eh', then a whispered '-re'",
+          "salon → 'sah-LOHN' — final nasal 'on'"
         ]
       },
       {
@@ -1915,6 +2376,11 @@ export const lessons: FrenchLesson[] = [
           "chambre → săm-brơ",
           "donne → đon",
           "jardin → da-đăng"
+        ],
+        "pronunciation_focus_en": [
+          "chambre → 'SHAHM-bruh' — 'ch' is 'sh'; nasal 'am'; whispered '-re'",
+          "donne → 'don' — short 'o'; double 'n' un-nasalises the vowel",
+          "jardin → 'zhar-DAN' — soft 'zh' on j; final nasal 'in'"
         ]
       },
       {
@@ -1925,11 +2391,19 @@ export const lessons: FrenchLesson[] = [
           "coûte → cút",
           "euros → ơ-rô",
           "mois → moa"
+        ],
+        "pronunciation_focus_en": [
+          "loyer → 'lwa-YAY' — 'oy' is 'wa-y'; final -er is 'ay'",
+          "coûte → 'koot' — 'ou' is 'oo'; silent -e but 't' audible",
+          "euros → 'uh-ROH' — rounded 'eu' then 'oh'; silent -s",
+          "mois → 'mwa' — 'oi' is 'wa'; silent -s"
         ]
       }
     ],
     "cultural_notes_vi": "Người Pháp thích sống trong căn hộ hơn nhà riêng, đặc biệt ở thành phố. 'Appartement' thường được mô tả bằng số phòng: 'un trois-pièces' = căn hộ 3 phòng (không tính bếp và tắm). Tầng trệt gọi là 'rez-de-chaussée', tầng 1 là lên 1 cầu thang. Nhà vệ sinh và phòng tắm thường tách riêng ở Pháp.",
+    "cultural_notes_en": "City French live in apartments much more than houses. Apartments are described by room count: *un trois-pièces* = a 3-room apartment (the count does NOT include kitchen or bathroom). The ground floor is called *rez-de-chaussée*; the 'first floor' (*premier étage*) is up one flight — the same UK system, opposite of the US where ground = 1st floor. The toilet and the bathroom are usually separate rooms in France (a quirk most US visitors find inconvenient); *toilettes* is its own little room, *salle de bain* has the bathtub.",
     "tip_advice_vi": "Khi mô tả nhà, dùng 'il y a' (có) + danh từ. Khác biệt quan trọng: 'la salle de bain' (phòng tắm có bồn tắm) ≠ 'la salle d'eau' (phòng tắm chỉ có vòi sen). 'Les toilettes' luôn là danh từ số nhiều giống cái.",
+    "tip_advice_en": "Describing your place uses *il y a* ('there is/are') + noun. Two distinctions worth knowing: *la salle de bain* (bathroom with a bathtub) vs *la salle d'eau* (bathroom with just a shower) — rental listings care about the difference. And *les toilettes* is always a feminine plural in French, even though there's one toilet — quirk you just memorise.",
     "vocabulary": [
       {
         "word": "la maison",
@@ -2028,8 +2502,12 @@ export const lessons: FrenchLesson[] = [
       {
         "type": "fill_blank",
         "instruction_vi": "Điền tên phòng:",
+        "instruction_en": "Fill in the name of the room:",
         "pronunciation_focus": [
           "pièces de la maison"
+        ],
+        "pronunciation_focus_en": [
+          "pièces de la maison → 'pyess duh lah meh-ZOHN' — 'rooms of the house'"
         ],
         "items": [
           {
@@ -2049,8 +2527,12 @@ export const lessons: FrenchLesson[] = [
       {
         "type": "matching",
         "instruction_vi": "Nối phòng với đồ đạc:",
+        "instruction_en": "Match each room with a piece of furniture you'd find there:",
         "pronunciation_focus": [
           "meubles"
+        ],
+        "pronunciation_focus_en": [
+          "meubles → 'MUH-bluh' — rounded 'eu'; whispered '-ble'"
         ],
         "items": [
           {
@@ -2074,8 +2556,12 @@ export const lessons: FrenchLesson[] = [
       {
         "type": "translation",
         "instruction_vi": "Dịch sang tiếng Pháp:",
+        "instruction_en": "Translate into French:",
         "pronunciation_focus": [
           "logement"
+        ],
+        "pronunciation_focus_en": [
+          "logement → 'lozh-MAHN' — soft 'zh'; final nasal 'ent'"
         ],
         "items": [
           {
@@ -2109,6 +2595,12 @@ export const lessons: FrenchLesson[] = [
           "aimes → em",
           "temps → tăm",
           "libre → líp-r"
+        ],
+        "pronunciation_focus_en": [
+          "qu'est-ce que → 'kess-kuh' — fixed question-opener",
+          "aimes → 'em' — short open 'e', silent -s",
+          "temps → 'tahn' — nasal 'en'; silent -ps",
+          "libre → 'LEE-bruh' — short whispered '-re'"
         ]
       },
       {
@@ -2118,6 +2610,11 @@ export const lessons: FrenchLesson[] = [
           "j'adore → da-đo-r",
           "lire → li-r",
           "musique → muy-díc"
+        ],
+        "pronunciation_focus_en": [
+          "j'adore → 'zha-DOR' — soft 'zh'; open 'oh'",
+          "lire → 'leer' — long 'ee'; short '-re'",
+          "musique → 'mue-ZEEK' — French 'u' (lips for 'oo', say 'ee')"
         ]
       },
       {
@@ -2127,6 +2624,11 @@ export const lessons: FrenchLesson[] = [
           "joue → du",
           "foot → phút",
           "samedis → xam-đi"
+        ],
+        "pronunciation_focus_en": [
+          "joue → 'zhoo' — soft 'zh'; 'ou' is 'oo'",
+          "foot → 'foot' — English loan; final -t silent",
+          "samedis → 'sahm-DEE' — silent final -s for plurals"
         ]
       },
       {
@@ -2135,6 +2637,10 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_focus": [
           "peinture → pang-tuy-r",
           "photo → phô-tô"
+        ],
+        "pronunciation_focus_en": [
+          "peinture → 'pan-TUER' — nasal 'ein' (no English equivalent); French 'u' + soft 'r'",
+          "photo → 'foh-TOH' — 'ph' is 'f'"
         ]
       },
       {
@@ -2144,11 +2650,18 @@ export const lessons: FrenchLesson[] = [
           "voyager → voa-ya-dê",
           "découvrir → đê-cu-vri-r",
           "nouveaux → nu-vô"
+        ],
+        "pronunciation_focus_en": [
+          "voyager → 'vwa-ya-ZHAY' — 'oy' is 'wa-y'; soft 'zh'",
+          "découvrir → 'day-koo-VREER' — 'ou' is 'oo'; soft uvular 'r'",
+          "nouveaux → 'noo-VOH' — 'eaux' is 'oh'; silent -x"
         ]
       }
     ],
     "cultural_notes_vi": "Người Pháp rất coi trọng thời gian rảnh (loisirs). Các sở thích phổ biến: đọc sách, xem phim, đi bảo tàng, nấu ăn, chơi thể thao. 'Faire du sport' là cụm chung cho chơi thể thao. 'Jouer à + môn thể thao' (bóng đá, tennis) và 'faire de + hoạt động' (bơi, trượt tuyết, yoga).",
+    "cultural_notes_en": "*Loisirs* (leisure time) is taken seriously in France — not a residual category after work but a real cultural value. Common hobbies include reading, cinema, museum-going, cooking and sport. *Faire du sport* is the generic 'to do sport'. Two prepositional patterns to internalise: *jouer à* + sport/game (*jouer au foot* — play football) and *faire de* + activity (*faire de la natation* — go swimming). Getting that distinction wrong is the most common A1 hobby-related mistake.",
     "tip_advice_vi": "Phân biệt 'jouer à' (chơi môn thể thao/trò chơi) và 'jouer de' (chơi nhạc cụ): 'je joue au tennis' nhưng 'je joue du piano'. Học 5-6 động từ sở thích (aimer, adorer, détester, préférer) để mô tả gu của mình.",
+    "tip_advice_en": "Memorise this one rule: *jouer à* + sport/game (*je joue au tennis* — I play tennis); *jouer de* + musical instrument (*je joue du piano* — I play the piano). Different prepositions for different categories. Stock a small vocabulary of intensity verbs — *aimer* (like), *adorer* (love), *détester* (hate), *préférer* (prefer) — to describe your taste without sounding flat.",
     "vocabulary": [
       {
         "word": "lire",
@@ -2247,8 +2760,12 @@ export const lessons: FrenchLesson[] = [
       {
         "type": "fill_blank",
         "instruction_vi": "Điền giới từ đúng (à / de):",
+        "instruction_en": "Fill in the right preposition (à / de) — sport vs instrument:",
         "pronunciation_focus": [
           "jouer à / de"
+        ],
+        "pronunciation_focus_en": [
+          "jouer à / de — sport/game uses à; musical instrument uses de"
         ],
         "items": [
           {
@@ -2280,8 +2797,12 @@ export const lessons: FrenchLesson[] = [
       {
         "type": "matching",
         "instruction_vi": "Nối động từ với sở thích:",
+        "instruction_en": "Match each verb with its hobby/activity:",
         "pronunciation_focus": [
           "loisirs"
+        ],
+        "pronunciation_focus_en": [
+          "loisirs → 'lwa-ZEER' — 'oi' is 'wa'; silent final -s"
         ],
         "items": [
           {
@@ -2305,8 +2826,12 @@ export const lessons: FrenchLesson[] = [
       {
         "type": "translation",
         "instruction_vi": "Dịch sang tiếng Pháp:",
+        "instruction_en": "Translate into French:",
         "pronunciation_focus": [
           "loisirs"
+        ],
+        "pronunciation_focus_en": [
+          "loisirs → 'lwa-ZEER' — leisure activities"
         ],
         "items": [
           {
@@ -2339,6 +2864,11 @@ export const lessons: FrenchLesson[] = [
           "sens → săn",
           "mal → man",
           "tête → tét"
+        ],
+        "pronunciation_focus_en": [
+          "sens → 'sahn' — nasal 'en'; silent -s",
+          "mal → 'mal' — short 'a'; final 'l' pronounced",
+          "tête → 'tet' — ê (circumflex) is open 'eh'; final -e silent"
         ]
       },
       {
@@ -2348,6 +2878,11 @@ export const lessons: FrenchLesson[] = [
           "où → u",
           "avez → a-vê",
           "ventre → văng-trơ"
+        ],
+        "pronunciation_focus_en": [
+          "où → 'oo' as in 'boot' (with grave accent)",
+          "avez → 'ah-VAY' — -ez is 'ay'",
+          "ventre → 'VAHN-truh' — nasal 'en'; whispered '-re'"
         ]
       },
       {
@@ -2357,6 +2892,11 @@ export const lessons: FrenchLesson[] = [
           "dois → đoa",
           "rendez-vous → răn-đê-vu",
           "médecin → mét-xăng"
+        ],
+        "pronunciation_focus_en": [
+          "dois → 'dwa' — 'oi' is 'wa'; silent -s",
+          "rendez-vous → 'rahn-day-VOO' — nasal 'en', then 'ay', then 'oo'",
+          "médecin → 'med-SAN' — final nasal 'in', no English equivalent"
         ]
       },
       {
@@ -2366,6 +2906,11 @@ export const lessons: FrenchLesson[] = [
           "il faut → in phô",
           "boire → boa-r",
           "beaucoup → bô-cu"
+        ],
+        "pronunciation_focus_en": [
+          "il faut → 'eel foh' — silent -t; means 'one must / it is necessary'",
+          "boire → 'bwahr' — 'oi' is 'wa'; soft uvular 'r'",
+          "beaucoup → 'boh-KOO' — 'eau' is 'oh'; 'ou' is 'oo'; silent -p"
         ]
       },
       {
@@ -2375,11 +2920,18 @@ export const lessons: FrenchLesson[] = [
           "fatigué → fa-ti-ghê",
           "dormi → đoa-mi",
           "bien → bi-ăng"
+        ],
+        "pronunciation_focus_en": [
+          "fatigué → 'fah-tee-GAY' — hard 'g'; final é is 'ay'",
+          "dormi → 'dor-MEE' — long 'ee'",
+          "bien → 'byan' — nasal 'ien'; the 'y' glides quickly"
         ]
       }
     ],
     "cultural_notes_vi": "Hệ thống y tế Pháp được đánh giá tốt nhất thế giới. Mọi người có 'carte vitale' (thẻ bảo hiểm y tế). Khi đi khám, bạn trả tiền trước rồi được hoàn lại sau. Nhà thuốc (pharmacie) có đèn chữ thập xanh bên ngoài, mở cửa cả Chủ Nhật theo lịch luân phiên.",
+    "cultural_notes_en": "France's healthcare system has been ranked best in the world by the WHO. Everyone in the system has a *carte vitale* (the green health-insurance card); at a doctor's visit you pay up front (typically €25-30 for a GP) and the state reimburses most of it later. Pharmacies (*pharmacies*) are marked by a green neon cross outside; pharmacists can advise on minor issues directly, so for cold/flu you often start there rather than at a GP. Pharmacies rotate Sunday duty (*pharmacie de garde*) — there's always one open in town.",
     "tip_advice_vi": "Cấu trúc quan trọng: 'avoir mal à + bộ phận cơ thể' (bị đau...). 'J'ai mal à la tête / au ventre / au dos / aux dents'. Đừng dịch 'I have a headache' thành 'J'ai un mal de tête' — nói 'J'ai mal à la tête' tự nhiên hơn.",
+    "tip_advice_en": "The key construction: *avoir mal à* + body part = 'to hurt there' / 'to have a sore X'. *J'ai mal à la tête* (headache), *au ventre* (stomach ache), *au dos* (backache), *aux dents* (toothache). Don't translate 'I have a headache' word-for-word as *J'ai un mal de tête* — that's grammatical but no native speaker says it. *J'ai mal à la tête* is the natural form.",
     "vocabulary": [
       {
         "word": "la tête",
@@ -2478,8 +3030,12 @@ export const lessons: FrenchLesson[] = [
       {
         "type": "fill_blank",
         "instruction_vi": "Điền bộ phận cơ thể:",
+        "instruction_en": "Fill in the right body part:",
         "pronunciation_focus": [
           "avoir mal à"
+        ],
+        "pronunciation_focus_en": [
+          "avoir mal à → 'av-WAR mal ah' — construction for 'to have a sore (X)'"
         ],
         "items": [
           {
@@ -2499,8 +3055,12 @@ export const lessons: FrenchLesson[] = [
       {
         "type": "matching",
         "instruction_vi": "Nối triệu chứng với lời khuyên:",
+        "instruction_en": "Match each symptom with the matching piece of advice:",
         "pronunciation_focus": [
           "santé"
+        ],
+        "pronunciation_focus_en": [
+          "santé → 'sahn-TAY' — nasal 'an'; final é is 'ay'; means 'health'"
         ],
         "items": [
           {
@@ -2524,8 +3084,12 @@ export const lessons: FrenchLesson[] = [
       {
         "type": "translation",
         "instruction_vi": "Dịch sang tiếng Pháp:",
+        "instruction_en": "Translate into French:",
         "pronunciation_focus": [
           "avoir mal"
+        ],
+        "pronunciation_focus_en": [
+          "avoir mal → 'av-WAR mal' — pair with à + le/la for body parts"
         ],
         "items": [
           {
@@ -2558,6 +3122,11 @@ export const lessons: FrenchLesson[] = [
           "qu'est-ce que → két-xkơ",
           "faites → phét",
           "vie → vi"
+        ],
+        "pronunciation_focus_en": [
+          "qu'est-ce que → 'kess-kuh' — standard question-opener",
+          "faites → 'fet' — 'ai' is 'eh'; silent -es",
+          "vie → 'vee' — long 'ee'; silent -e"
         ]
       },
       {
@@ -2566,6 +3135,10 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_focus": [
           "ingénieur → anh-dê-ni-ơr",
           "entreprise → ăng-trờ-priz"
+        ],
+        "pronunciation_focus_en": [
+          "ingénieur → 'an-zhay-NYUHR' — nasal 'in', soft 'zh', rounded '-eur'",
+          "entreprise → 'ahn-truh-PREEZ' — nasal 'en'; 's' between vowels is 'z'"
         ]
       },
       {
@@ -2575,6 +3148,11 @@ export const lessons: FrenchLesson[] = [
           "travaille → tra-vay",
           "plein → plang",
           "temps → tăm"
+        ],
+        "pronunciation_focus_en": [
+          "travaille → 'trah-VAI' — '-aille' is 'eye'",
+          "plein → 'plan' — nasal 'ein', no English equivalent",
+          "temps → 'tahn' — nasal 'en'; silent -ps"
         ]
       },
       {
@@ -2583,6 +3161,10 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_focus": [
           "intéressant → anh-tê-rê-xăng",
           "stressant → xtrê-xăng"
+        ],
+        "pronunciation_focus_en": [
+          "intéressant → 'an-tay-reh-SAHN' — initial nasal 'in', then final nasal 'an'",
+          "stressant → 'streh-SAHN' — final nasal 'an'"
         ]
       },
       {
@@ -2592,11 +3174,18 @@ export const lessons: FrenchLesson[] = [
           "cherche → se-r-s",
           "emploi → ăng-ploa",
           "marketing → ma-r-kờ-ting"
+        ],
+        "pronunciation_focus_en": [
+          "cherche → 'shersh' — 'ch' is 'sh'",
+          "emploi → 'ahn-PLWA' — nasal 'em'; 'oi' is 'wa'",
+          "marketing → 'mar-kuh-TING' — English loan but French stress on the final syllable"
         ]
       }
     ],
     "cultural_notes_vi": "Tuần làm việc ở Pháp là 35 giờ theo luật. Nghỉ phép có lương tối thiểu 5 tuần/năm. Người Pháp không nói về lương khi mới gặp — đó là chủ đề riêng tư. Phỏng vấn xin việc ở Pháp thường có 'lettre de motivation' (thư xin việc) bắt buộc kèm CV.",
+    "cultural_notes_en": "The legal French working week is 35 hours — overtime exists but it's negotiated. Paid holiday is a minimum of 5 weeks per year by law, not a perk. Unlike US small-talk, the French do NOT ask 'so what do you do?' as an opening icebreaker — and salary is firmly private; don't ask, don't volunteer. A French job application requires a *lettre de motivation* (cover letter) alongside the CV — and the letter is taken seriously, not skimmed.",
     "tip_advice_vi": "Phân biệt 'un métier' (nghề) và 'un travail' (công việc cụ thể). Khi giới thiệu nghề, nói 'Je suis + nghề' (không có mạo từ): 'Je suis médecin'. Nếu là nữ, một số nghề thêm -e: 'Je suis avocate' (nữ luật sư).",
+    "tip_advice_en": "Distinguish *un métier* (a profession/trade — the type of work) from *un travail* (a specific job — the role you currently hold). When stating your profession, French drops the article: *Je suis médecin* (lit. 'I am doctor', not 'I am a doctor') — totally different from English. For female speakers some professions add -e: *Je suis avocate* (female lawyer).",
     "vocabulary": [
       {
         "word": "le travail",
@@ -2695,8 +3284,12 @@ export const lessons: FrenchLesson[] = [
       {
         "type": "fill_blank",
         "instruction_vi": "Điền nghề nghiệp:",
+        "instruction_en": "Fill in the right profession:",
         "pronunciation_focus": [
           "métiers"
+        ],
+        "pronunciation_focus_en": [
+          "métiers → 'may-TYAY' — é is 'ay'; silent final -s"
         ],
         "items": [
           {
@@ -2716,8 +3309,12 @@ export const lessons: FrenchLesson[] = [
       {
         "type": "matching",
         "instruction_vi": "Nối nghề với nơi làm việc:",
+        "instruction_en": "Match each profession with its workplace:",
         "pronunciation_focus": [
           "professions"
+        ],
+        "pronunciation_focus_en": [
+          "professions → 'pro-feh-SYON' — final '-ssion' is 'syon'"
         ],
         "items": [
           {
@@ -2741,8 +3338,12 @@ export const lessons: FrenchLesson[] = [
       {
         "type": "translation",
         "instruction_vi": "Dịch sang tiếng Pháp:",
+        "instruction_en": "Translate into French:",
         "pronunciation_focus": [
           "travail"
+        ],
+        "pronunciation_focus_en": [
+          "travail → 'trah-VAI' — '-ail' is 'eye'"
         ],
         "items": [
           {
@@ -2775,6 +3376,11 @@ export const lessons: FrenchLesson[] = [
           "réserver → rê-de-r-vê",
           "chambre → săm-brơ",
           "nuits → nuy"
+        ],
+        "pronunciation_focus_en": [
+          "réserver → 'ray-zer-VAY' — é is 'ay'; 's' between vowels is 'z'",
+          "chambre → 'SHAHM-bruh' — 'ch' is 'sh'; nasal 'am'",
+          "nuits → 'nwee' — 'ui' is 'wee'; silent -ts"
         ]
       },
       {
@@ -2784,6 +3390,11 @@ export const lessons: FrenchLesson[] = [
           "avez → a-vê",
           "vue → vuy",
           "mer → me-r"
+        ],
+        "pronunciation_focus_en": [
+          "avez → 'ah-VAY' — -ez is 'ay'",
+          "vue → 'vue' — French 'u' (lips for 'oo', say 'ee'); silent -e",
+          "mer → 'mehr' — open 'eh'; soft uvular 'r'"
         ]
       },
       {
@@ -2793,6 +3404,11 @@ export const lessons: FrenchLesson[] = [
           "aéroport → a-ê-rô-po-r",
           "loin → loang",
           "ici → i-xi"
+        ],
+        "pronunciation_focus_en": [
+          "aéroport → 'ah-ay-roh-POR' — separate the 'a' and 'é'; silent -t",
+          "loin → 'lwan' — nasal 'oin'; sounds like a quick 'lwa' through the nose",
+          "ici → 'ee-SEE' — long 'ee' twice"
         ]
       },
       {
@@ -2802,6 +3418,11 @@ export const lessons: FrenchLesson[] = [
           "louer → lu-ê",
           "voiture → voa-tuy-r",
           "semaine → sờ-men"
+        ],
+        "pronunciation_focus_en": [
+          "louer → 'loo-AY' — 'ou' is 'oo'; -er is 'ay'",
+          "voiture → 'vwa-TUER' — 'oi' is 'wa'; French 'u'",
+          "semaine → 'suh-MEN' — schwa, then open 'eh'; silent -e brings out the 'n'"
         ]
       },
       {
@@ -2810,11 +3431,17 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_focus": [
           "recommander → rơ-co-măng-đê",
           "restaurant → ré-xtô-răng"
+        ],
+        "pronunciation_focus_en": [
+          "recommander → 'ruh-koh-mahn-DAY' — final nasal 'an'; -er is 'ay'",
+          "restaurant → 'reh-stoh-RAHN' — final nasal 'an'; silent -t"
         ]
       }
     ],
     "cultural_notes_vi": "Pháp là nước đón nhiều khách du lịch nhất thế giới (>80 triệu/năm). Khách sạn Pháp phân hạng sao (1-5 étoiles), nhưng nhà nghỉ B&B (chambres d'hôtes) cũng rất phổ biến. Khi vào nhà hàng, đợi được chỉ bàn — không tự ý ngồi. Ở nhiều nơi, bạn phải yêu cầu hóa đơn, nhà hàng sẽ không tự động mang ra.",
+    "cultural_notes_en": "France is the most-visited country in the world (>80 million tourists a year). French hotels are star-rated (1-5 *étoiles*), but B&Bs (*chambres d'hôtes*) are also extremely common and often better value outside the cities. In restaurants, WAIT to be seated — don't grab a table yourself. And the bill won't come unless you ask: *l'addition, s'il vous plaît*. Servers leave you alone partly out of courtesy; what feels like neglect to a US visitor is actually politeness.",
     "tip_advice_vi": "Học cách đặt phòng qua điện thoại: nói rõ ngày đến (arrivée), ngày đi (départ), số người, loại giường (un grand lit = giường đôi, deux lits simples = hai giường đơn). Hỏi giá 'petit-déjeuner inclus ?' (có gồm bữa sáng không?) vì nhiều khách sạn tính riêng.",
+    "tip_advice_en": "When you book a room (by phone or in person), have these details ready: *date d'arrivée* (arrival), *date de départ* (departure), number of people, bed type (*un grand lit* = one double bed; *deux lits simples* = two singles). Always ask *petit-déjeuner inclus ?* (is breakfast included?) — many French hotels charge it separately and it can be €10-20 per person on top.",
     "vocabulary": [
       {
         "word": "l'hôtel",
@@ -2913,8 +3540,12 @@ export const lessons: FrenchLesson[] = [
       {
         "type": "fill_blank",
         "instruction_vi": "Điền từ du lịch:",
+        "instruction_en": "Fill in the right travel word:",
         "pronunciation_focus": [
           "voyage"
+        ],
+        "pronunciation_focus_en": [
+          "voyage → 'vwa-YAHZH' — 'oy' is 'wa-y'; final 'ge' is soft 'zh'"
         ],
         "items": [
           {
@@ -2934,8 +3565,12 @@ export const lessons: FrenchLesson[] = [
       {
         "type": "matching",
         "instruction_vi": "Nối địa điểm với hoạt động:",
+        "instruction_en": "Match each place with the activity you do there:",
         "pronunciation_focus": [
           "tourisme"
+        ],
+        "pronunciation_focus_en": [
+          "tourisme → 'too-REEZM' — 'ou' is 'oo'; final '-isme' ends crisply"
         ],
         "items": [
           {
@@ -2959,8 +3594,12 @@ export const lessons: FrenchLesson[] = [
       {
         "type": "translation",
         "instruction_vi": "Dịch sang tiếng Pháp:",
+        "instruction_en": "Translate into French:",
         "pronunciation_focus": [
           "hôtel"
+        ],
+        "pronunciation_focus_en": [
+          "hôtel → 'oh-TEL' — silent 'h'; ô (circumflex) is long 'oh'"
         ],
         "items": [
           {
@@ -2993,6 +3632,11 @@ export const lessons: FrenchLesson[] = [
           "comment → co-măng",
           "sens → săn",
           "aujourd'hui → ô-dua-đuy"
+        ],
+        "pronunciation_focus_en": [
+          "comment → 'koh-MAHN' — nasal 'en'; silent -t",
+          "sens → 'sahn' — nasal 'en'; silent -s",
+          "aujourd'hui → 'oh-zhoor-DWEE' — soft 'zh'; 'ui' is 'wee'"
         ]
       },
       {
@@ -3002,6 +3646,11 @@ export const lessons: FrenchLesson[] = [
           "content → công-tăng",
           "parce que → pa-rx-kơ",
           "beau → bô"
+        ],
+        "pronunciation_focus_en": [
+          "content → 'kohn-TAHN' — two nasals; silent -t",
+          "parce que → 'PAR-skuh' — final 'que' is a quick schwa",
+          "beau → 'boh' — 'eau' is always 'oh'"
         ]
       },
       {
@@ -3011,6 +3660,11 @@ export const lessons: FrenchLesson[] = [
           "triste → trí-xt",
           "cause → cô-d",
           "mauvais → mô-ve"
+        ],
+        "pronunciation_focus_en": [
+          "triste → 'treest' — 'i' is 'ee'; silent -e but the 'st' is audible",
+          "cause → 'kohz' — 'au' is 'oh'; 's' between vowels is 'z'",
+          "mauvais → 'moh-VEH' — 'au' is 'oh'; 'ai' is 'eh'; silent -s"
         ]
       },
       {
@@ -3020,6 +3674,11 @@ export const lessons: FrenchLesson[] = [
           "stressé → xtrê-xê",
           "avant → a-văng",
           "examen → ég-da-măng"
+        ],
+        "pronunciation_focus_en": [
+          "stressé → 'streh-SAY' — final é is 'ay'",
+          "avant → 'ah-VAHN' — nasal 'an'; silent -t",
+          "examen → 'eg-zah-MAN' — final nasal 'in'; the 'x' becomes 'gz'"
         ]
       },
       {
@@ -3029,11 +3688,18 @@ export const lessons: FrenchLesson[] = [
           "inquiète → anh-ki-ét",
           "tout → tu",
           "passer → pa-xê"
+        ],
+        "pronunciation_focus_en": [
+          "inquiète → 'an-kyet' — nasal 'in'; the rest tightens to 'kyet'",
+          "tout → 'too' — 'ou' is 'oo'; silent -t",
+          "passer → 'pah-SAY' — -er is 'ay'"
         ]
       }
     ],
     "cultural_notes_vi": "Người Pháp thể hiện cảm xúc khá trực tiếp — họ không ngại nói 'je suis triste' hay 'je suis en colère'. Hôn má (la bise) là cách chào hỏi hàng ngày, kể cả giữa nam giới. Người Pháp hay phàn nàn (râler) — đó gần như là môn thể thao quốc gia, không nhất thiết nghĩa là họ thực sự khó chịu.",
+    "cultural_notes_en": "The French name emotions directly — *je suis triste*, *je suis en colère* — without the Anglo softening of 'a bit sad' or 'kind of annoyed'. Cheek-kissing (*la bise*) is the standard daily greeting, including between adult men in some regions. And the French complain (*râler*) as a kind of national pastime — a colleague grumbling about the weather or the métro is not actually unhappy; they're just being French. Distinguish performative complaint from genuine distress by tone, not content.",
     "tip_advice_vi": "Phân biệt 'être + tính từ' (trạng thái tạm thời: 'je suis fatigué') với 'être + danh từ' (bản chất: 'je suis une personne calme'). Học cặp cảm xúc đối lập: content/triste (vui/buồn), calme/énervé (bình tĩnh/bực), enthousiaste/déçu (hào hứng/thất vọng).",
+    "tip_advice_en": "Distinguish *être* + adjective (a temporary state: *je suis fatigué* = I'm tired right now) from *être* + noun (a character trait: *je suis une personne calme* = I'm a calm person). English collapses these into 'I am'; French keeps them apart. Learn emotion pairs as opposites: *content/triste* (happy/sad), *calme/énervé* (calm/irritated), *enthousiaste/déçu* (enthusiastic/disappointed) — pairs stick in memory better than single words.",
     "vocabulary": [
       {
         "word": "content(e)",
@@ -3132,8 +3798,12 @@ export const lessons: FrenchLesson[] = [
       {
         "type": "fill_blank",
         "instruction_vi": "Điền cảm xúc phù hợp:",
+        "instruction_en": "Fill in the right emotion:",
         "pronunciation_focus": [
           "émotions"
+        ],
+        "pronunciation_focus_en": [
+          "émotions → 'ay-moh-SYON' — é is 'ay'; '-tion' is 'syon'"
         ],
         "items": [
           {
@@ -3153,8 +3823,12 @@ export const lessons: FrenchLesson[] = [
       {
         "type": "matching",
         "instruction_vi": "Nối cảm xúc với tình huống:",
+        "instruction_en": "Match each emotion with the situation that triggers it:",
         "pronunciation_focus": [
           "sentiments"
+        ],
+        "pronunciation_focus_en": [
+          "sentiments → 'sahn-tee-MAHN' — two nasals; silent -ts"
         ],
         "items": [
           {
@@ -3178,8 +3852,12 @@ export const lessons: FrenchLesson[] = [
       {
         "type": "translation",
         "instruction_vi": "Dịch sang tiếng Pháp:",
+        "instruction_en": "Translate into French:",
         "pronunciation_focus": [
           "être + adjectif"
+        ],
+        "pronunciation_focus_en": [
+          "être + adjective — like English 'to be + adjective'; agreement with subject's gender required"
         ],
         "items": [
           {
@@ -3212,6 +3890,11 @@ export const lessons: FrenchLesson[] = [
           "hier → y-e",
           "mangé → măng-dê",
           "au → ô"
+        ],
+        "pronunciation_focus_en": [
+          "hier → 'yehr' — silent 'h'; -ier is 'yehr'",
+          "mangé → 'mahn-ZHAY' — nasal 'an'; soft 'zh'; final é is 'ay'",
+          "au → 'oh' as in 'go'"
         ]
       },
       {
@@ -3221,6 +3904,11 @@ export const lessons: FrenchLesson[] = [
           "qu'est-ce que → két-xkơ",
           "fait → phe",
           "dernier → đe-r-niê"
+        ],
+        "pronunciation_focus_en": [
+          "qu'est-ce que → 'kess-kuh' — standard question opener",
+          "fait → 'feh' — 'ai' is 'eh'; silent -t",
+          "dernier → 'dehr-NYAY' — open 'eh'; -ier is 'yay'"
         ]
       },
       {
@@ -3230,6 +3918,11 @@ export const lessons: FrenchLesson[] = [
           "allés → a-lê",
           "cinéma → xi-nê-ma",
           "vu → vuy"
+        ],
+        "pronunciation_focus_en": [
+          "allés → 'ah-LAY' — plural agreement with masculine subject; silent -s",
+          "cinéma → 'see-nay-MAH' — é is 'ay'",
+          "vu → 'vue' — French 'u' (lips for 'oo', say 'ee')"
         ]
       },
       {
@@ -3238,6 +3931,10 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_focus": [
           "née → nê",
           "Marseille → ma-xây"
+        ],
+        "pronunciation_focus_en": [
+          "née → 'nay' — feminine agreement (-e) added to the past participle 'né'",
+          "Marseille → 'mar-SAY' — '-eille' is 'ay'; double 'l' is silent"
         ]
       },
       {
@@ -3247,11 +3944,18 @@ export const lessons: FrenchLesson[] = [
           "déjà → đê-da",
           "visité → vi-di-tê",
           "encore → ăng-co-r"
+        ],
+        "pronunciation_focus_en": [
+          "déjà → 'day-ZHA' — é is 'ay'; soft 'zh' on 'j'",
+          "visité → 'vee-zee-TAY' — 's' between vowels is 'z'; é is 'ay'",
+          "encore → 'ahn-KOR' — nasal 'en'; silent -e"
         ]
       }
     ],
     "cultural_notes_vi": "Tiếng Pháp có hai thì quá khứ chính: 'passé composé' (hành động đã hoàn thành) và 'imparfait' (mô tả / thói quen trong quá khứ). Trong hội thoại hàng ngày, 'passé composé' được dùng nhiều nhất. Hầu hết động từ dùng 'avoir' làm trợ động từ; khoảng 17 động từ dùng 'être' (đi, đến, sinh, chết, ở lại, lên, xuống...).",
+    "cultural_notes_en": "French has two main past tenses: the *passé composé* (completed actions — closest to English 'I did' / 'I have done') and the *imparfait* (description, habits, background — 'I was doing', 'I used to do'). Everyday speech uses *passé composé* most of the time. Most verbs form it with *avoir* as the auxiliary; about 17 movement and state-change verbs use *être* instead (go, come, be born, die, stay, go up, go down...). Same auxiliary distinction exists in German (haben/sein) and Italian — if you know one of those, the pattern transfers.",
     "tip_advice_vi": "Công thức passé composé: (avoir/être hiện tại) + (quá khứ phân từ). Mẹo nhớ động từ 'être': DR MRS VANDERTRAMP (Devenir, Revenir, Monter, Rester, Sortir, Venir, Aller, Naître, Descendre, Entrer, Rentrer, Tomber, Retourner, Arriver, Mourir, Partir). Với 'être', quá khứ phân từ phải hợp giống số với chủ ngữ: 'elle est allée' (thêm -e cho nữ).",
+    "tip_advice_en": "Formula for *passé composé*: present-tense *avoir* or *être* + past participle. The mnemonic for the 17 *être*-verbs that English speakers use is **DR MRS VANDERTRAMP** (Devenir, Revenir, Monter, Rester, Sortir, Venir, Aller, Naître, Descendre, Entrer, Rentrer, Tomber, Retourner, Arriver, Mourir, Partir). With *être*, the past participle agrees with the subject in gender/number: *il est allé* / *elle est allée* / *ils sont allés* / *elles sont allées*. With *avoir*, no agreement with the subject (different rule for direct objects).",
     "vocabulary": [
       {
         "word": "hier",
@@ -3350,8 +4054,12 @@ export const lessons: FrenchLesson[] = [
       {
         "type": "fill_blank",
         "instruction_vi": "Điền trợ động từ đúng (avoir / être):",
+        "instruction_en": "Fill in the right auxiliary (avoir / être):",
         "pronunciation_focus": [
           "passé composé"
+        ],
+        "pronunciation_focus_en": [
+          "passé composé → 'pah-SAY kom-poh-ZAY' — the 'compound past' tense"
         ],
         "items": [
           {
@@ -3371,8 +4079,12 @@ export const lessons: FrenchLesson[] = [
       {
         "type": "matching",
         "instruction_vi": "Nối nguyên mẫu với quá khứ phân từ:",
+        "instruction_en": "Match each infinitive with its past participle:",
         "pronunciation_focus": [
           "participes passés"
+        ],
+        "pronunciation_focus_en": [
+          "participes passés → 'par-tee-SEEP pah-SAY' — past participles"
         ],
         "items": [
           {
@@ -3396,8 +4108,12 @@ export const lessons: FrenchLesson[] = [
       {
         "type": "translation",
         "instruction_vi": "Dịch sang tiếng Pháp (dùng passé composé):",
+        "instruction_en": "Translate into French (use passé composé):",
         "pronunciation_focus": [
           "passé composé"
+        ],
+        "pronunciation_focus_en": [
+          "passé composé — compound past = present-tense auxiliary + past participle"
         ],
         "items": [
           {
@@ -3431,6 +4147,12 @@ export const lessons: FrenchLesson[] = [
           "vas → va",
           "faire → phe-r",
           "soir → xoa"
+        ],
+        "pronunciation_focus_en": [
+          "qu'est-ce que → 'kess-kuh' — fixed question-opener",
+          "vas → 'va' — short 'a'; silent -s",
+          "faire → 'fehr' — open 'eh'; soft uvular 'r'",
+          "soir → 'swahr' — 'oi' is 'wa'"
         ]
       },
       {
@@ -3440,6 +4162,11 @@ export const lessons: FrenchLesson[] = [
           "vais → ve",
           "regarder → rơ-ga-đê",
           "reposer → rơ-pô-dê"
+        ],
+        "pronunciation_focus_en": [
+          "vais → 'veh' — 'ai' is 'eh'; silent -s",
+          "regarder → 'ruh-gar-DAY' — schwa, then 'ar', then 'ay'",
+          "reposer → 'ruh-poh-ZAY' — 's' between vowels is 'z'"
         ]
       },
       {
@@ -3448,6 +4175,10 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_focus": [
           "prochaine → prô-sen",
           "déménager → đê-mê-na-dê"
+        ],
+        "pronunciation_focus_en": [
+          "prochaine → 'pro-SHEN' — 'ch' is 'sh'; '-aine' is open 'en'",
+          "déménager → 'day-may-nah-ZHAY' — three 'ay's; soft 'zh' on 'g'"
         ]
       },
       {
@@ -3456,6 +4187,10 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_focus": [
           "étudier → ê-tuy-đi-ê",
           "sérieusement → xê-ri-ơ-do-măng"
+        ],
+        "pronunciation_focus_en": [
+          "étudier → 'ay-tue-DYAY' — French 'u'; -ier is 'yay'",
+          "sérieusement → 'say-ree-uhz-MAHN' — final nasal 'ent'"
         ]
       },
       {
@@ -3465,11 +4200,18 @@ export const lessons: FrenchLesson[] = [
           "partir → pa-ti-r",
           "vacances → va-căng-x",
           "quand → kăng"
+        ],
+        "pronunciation_focus_en": [
+          "partir → 'par-TEER' — soft uvular 'r'; long 'ee'",
+          "vacances → 'vah-KAHNSS' — nasal 'an'; final 'ce' is 's'",
+          "quand → 'kahn' — 'qu' is 'k'; nasal 'an'; silent -d"
         ]
       }
     ],
     "cultural_notes_vi": "Người Pháp thường dùng 'futur proche' (aller + nguyên mẫu) thay vì 'futur simple' trong hội thoại hàng ngày. Đó là cấu trúc dễ học nhất để nói về tương lai gần. 'Futur simple' (je parlerai, tu finiras...) dùng trong văn viết và kế hoạch xa hơn. Người Pháp lên kế hoạch nghỉ hè (grandes vacances) từ rất sớm — thường đặt từ tháng 1-2 cho tháng 7-8.",
+    "cultural_notes_en": "In everyday French, the *futur proche* (*aller* + infinitive) is far more common than the *futur simple* — exactly like English uses 'I'm going to' more than 'I will' in speech. The *futur simple* (*je parlerai*, *tu finiras*...) is mostly for writing and for plans further out. One detail worth knowing: the French plan summer holiday (*les grandes vacances*) seriously early — bookings often go out in January or February for July/August. If you're trying to rent a coastal place in May for August, you'll be looking at leftovers.",
     "tip_advice_vi": "Công thức futur proche cực đơn giản: 'aller' (chia theo chủ ngữ) + động từ nguyên mẫu. Je vais + manger = tôi sẽ ăn. Không cần học cách chia mới cho động từ chính! Dùng cho mọi kế hoạch ngắn hạn: 'je vais...', 'tu vas...', 'on va...'",
+    "tip_advice_en": "The *futur proche* formula is wonderfully simple: conjugate *aller* (to go) for your subject, then add the main verb in the infinitive — *je vais + manger* = 'I'm going to eat'. You don't have to learn a new conjugation for the main verb, which is why A1 learners reach for it for everything. Memorise the *aller* forms: *je vais, tu vas, il/elle va, nous allons, vous allez, ils/elles vont* — and you can express any near-future plan.",
     "vocabulary": [
       {
         "word": "ce soir",
@@ -3568,8 +4310,12 @@ export const lessons: FrenchLesson[] = [
       {
         "type": "fill_blank",
         "instruction_vi": "Điền dạng đúng của 'aller':",
+        "instruction_en": "Fill in the right form of 'aller':",
         "pronunciation_focus": [
           "futur proche"
+        ],
+        "pronunciation_focus_en": [
+          "futur proche → 'fue-TUER prosh' — French 'u'; 'near future' tense"
         ],
         "items": [
           {
@@ -3589,8 +4335,12 @@ export const lessons: FrenchLesson[] = [
       {
         "type": "matching",
         "instruction_vi": "Nối câu hỏi với câu trả lời:",
+        "instruction_en": "Match each question with its answer:",
         "pronunciation_focus": [
           "projets"
+        ],
+        "pronunciation_focus_en": [
+          "projets → 'pro-ZHAY' — soft 'zh'; silent -ts"
         ],
         "items": [
           {
@@ -3614,8 +4364,12 @@ export const lessons: FrenchLesson[] = [
       {
         "type": "translation",
         "instruction_vi": "Dịch sang tiếng Pháp (dùng futur proche):",
+        "instruction_en": "Translate into French (use futur proche):",
         "pronunciation_focus": [
           "aller + infinitif"
+        ],
+        "pronunciation_focus_en": [
+          "aller + infinitive — like English 'going to + verb'; expresses near-future plans"
         ],
         "items": [
           {
