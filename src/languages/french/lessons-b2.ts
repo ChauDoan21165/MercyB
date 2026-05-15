@@ -7289,6 +7289,12 @@ export const lessons: FrenchLesson[] =           [
             "asseyez → a-sè-yé",
             "servir → ser-vir",
             "traditionnelle → tra-di-sio-nèl"
+          ],
+          "pronunciation_focus_en": [
+            "bienvenue → byah(n)-vuh-NEW (nasal first syllable; final 'nue' has the French 'u' — purse lips, say 'ee')",
+            "asseyez → ah-say-YAY (three syllables, final 'ez' rhymes with English 'pay')",
+            "servir → sair-VEER (final 'r' rolled in the throat, not English-r)",
+            "traditionnelle → trah-dee-syo-NEL (final 'nelle' rhymes with English 'bell')"
           ]
         },
         {
@@ -7299,6 +7305,12 @@ export const lessons: FrenchLesson[] =           [
             "plats → pla",
             "centre → sãn-trơ",
             "individuel → an-di-vi-du-èl"
+          ],
+          "pronunciation_focus_en": [
+            "partage → par-TAHZH (final 'ge' = 'zh' like the 's' in 'measure')",
+            "plats → PLAH (final 'ts' silent — rhymes with English 'pah')",
+            "centre → SAH(n)-truh (nasal first syllable; final 'tre' is a barely-there 'truh')",
+            "individuel → ah(n)-dee-vee-doo-EL (five syllables; the 'u' is rounded French 'u')"
           ]
         },
         {
@@ -7309,6 +7321,12 @@ export const lessons: FrenchLesson[] =           [
             "sans → sãn",
             "ensuite → ãn-swit",
             "expliquerai → èk-spli-kơ-ré"
+          ],
+          "pronunciation_focus_en": [
+            "goûtez → goo-TAY (the 'û' is a long 'oo' — like English 'goo')",
+            "sans → SAH(n) (one nasal syllable; no real 's' or 'n' sound — just a nasalized vowel)",
+            "ensuite → ah(n)-SWEET (nasal first; final 'suite' rhymes with English 'sweet')",
+            "expliquerai → eks-plee-kuh-RAY (futur simple ending '-rai' = 'RAY', like English 'pay')"
           ]
         },
         {
@@ -7319,6 +7337,12 @@ export const lessons: FrenchLesson[] =           [
             "obligés → o-bli-jé",
             "laisser → lè-sé",
             "signifie → si-gni-fi"
+          ],
+          "pronunciation_focus_en": [
+            "sentez → sah(n)-TAY (nasal first; rhymes with English 'pay')",
+            "obligés → oh-blee-ZHAY ('zh' = the 's' in 'measure'; final 'gés' = 'zhay')",
+            "laisser → leh-SAY (the 'ai' = open 'e' like English 'air' without 'r')",
+            "signifie → see-nyee-FEE ('gn' = 'ny' like the Spanish ñ; three syllables)"
           ]
         },
         {
@@ -7329,102 +7353,124 @@ export const lessons: FrenchLesson[] =           [
             "piment → pi-mã",
             "adapte → a-dapt",
             "facilement → fa-sil-mã"
+          ],
+          "pronunciation_focus_en": [
+            "supportez → soo-por-TAY (initial 'su' has the rounded French 'u'; not English 'soup')",
+            "piment → pee-MAH(n) (nasal final; no 't' — air through nose; very different from English 'pigment')",
+            "adapte → ah-DAHPT (one syllable feel; final 'pte' is a hard 'pt')",
+            "facilement → fah-seel-MAH(n) (adverb ending '-ment' = nasal 'MAH(n)', not English 'ment')"
           ]
         }
       ],
       "cultural_notes_vi": "Ăn tối với khách Pháp ở Việt Nam khác hẳn với khách Việt vì hai lý do: (1) cấu trúc bữa ăn — Pháp quen 3 phần (entrée-plat-dessert) ăn tuần tự, Việt là « mâm » với mọi món lên cùng lúc và chia sẻ; (2) protocol gắp — Pháp mỗi người dao nĩa và đĩa riêng, không lấy từ đĩa chung; Việt mọi người đều gắp từ tô/đĩa chung, dùng đôi đũa của mình. Nhiều khách Pháp lúng túng ở phút đầu vì không biết gắp từ giữa bàn có lịch sự không, và họ ngầm muốn đợi chủ nhà gắp cho họ.\n\nVai trò của bạn: dẫn dắt rõ ràng. Đừng để khách tự đoán — gắp một ít vào bát của họ ngay phút đầu để họ biết « yes, c'est OK de prendre au centre ». Giải thích vai trò của nước chấm (mắm, tương ớt, chanh, rau sống) — người Pháp coi gia vị là « topping tự chọn » nên có thể bỏ qua nếu không được hướng dẫn. Tránh thúc ép ăn nhiều (« ăn đi ăn đi! ») — Pháp coi ép ăn là vi phạm autonomie cá nhân. Chỉ cần đặt món gần khách và nói « c'est à votre disposition ».\n\nMột chú ý quan trọng: Pháp KHÔNG « cạn ly » — họ uống chậm, một ly có thể kéo dài cả tối. Việc liên tục đề xuất uống cạn ly sẽ khiến khách phòng thủ hoặc đáp lễ vài lần rồi xin nghỉ. Một « santé » ở đầu bữa và một lần giữa bữa là đủ. Karaoke sau bữa thường KHÔNG được khách Pháp đánh giá cao trong lần gặp đầu — đợi mối quan hệ đã thân.",
+      "cultural_notes_en": "Hosting a French guest at a Vietnamese table is a different proposition from hosting them at a US/UK table, and the differences are bigger than most anglophone learners expect. Two structural mismatches drive the awkwardness in the first 10 minutes: (1) French meals are sequenced (entrée → plat → dessert), Vietnamese meals are simultaneous (everything lands at once on a shared table); (2) French place settings give each person an individual plate with no expectation of taking from a central dish, while Vietnamese practice is for everyone to pick from shared bowls and plates with their own chopsticks. French guests new to Vietnam often freeze briefly at the start, unsure whether reaching into the middle of the table is polite. They are not being rude — they are waiting for permission.\n\nYour job as host is to give that permission immediately and concretely. Don't make them guess. Within the first minute, place a small portion on their bowl yourself ('je vous mets un peu de chả giò pour commencer') — this single gesture tells them 'yes, taking from the center is normal here.' Then explain the role of nuoc-cham, herbs, and chili condiments in 1–2 sentences each. French guests often treat condiments as optional toppings (the way you'd treat ketchup or HP sauce in the US/UK) and skip them entirely if you don't make it clear they're integral. The result is they eat the food in a flat, unconfigured form and politely report 'c'était bon' — having missed half the dish.\n\nThree calibration warnings: (1) Do not push food. The Vietnamese 'ăn đi ăn đi!' has no good French equivalent — pushing reads as a violation of personal autonomy. Place dishes within reach and say 'c'est à votre disposition'. (2) French guests do NOT cạn ly. They sip slowly; one glass can last an entire meal. Repeated 'cạn ly!' calls will make them defensive or force them to comply a few times then quietly switch to water. One 'santé' at the start and one mid-meal is the ceiling. (3) Skip the post-dinner karaoke on a first visit. It works with French guests who already know Vietnam well; it overwhelms a first-time guest. Save it for visit #3.",
       "tip_advice_vi": "Trước bữa: hỏi khách về dị ứng, sở thích chay/mặn, mức độ chịu cay (vai « Phở Hà Nội ngọt » vs « bún bò Huế cay nồng »). Đề xuất 4-6 món đa dạng (canh, mặn, xào, gỏi, tráng miệng) thay vì 10-12 món gây áp lực ăn. Sắp xếp chỗ ngồi: khách Pháp ngồi đối diện hoặc bên cạnh chủ nhà, không ở « ghế cuối » nơi khó tham gia trò chuyện. Trong bữa: gắp một miếng cho khách phút đầu để mở (« je vous mets un peu de chả giò pour commencer »); giải thích từng món bằng 1-2 câu (« le bún chả est un plat hanoïen — viande grillée trempée dans un bouillon de poisson sucré-salé »); hỏi feedback giữa bữa (« vous aimez ? trop épicé ? »). Sau bữa: không nhồi tráng miệng — chè Việt có thể quá ngọt với khẩu vị Pháp; trái cây tươi (xoài, vải) là lựa chọn an toàn. Không tặng quà mang về (món còn) trong lần đầu — Pháp coi là « doggy bag », không thoải mái.",
+      "tip_advice_en": "Before the meal: ask about allergies, vegetarian preferences, and spice tolerance ('Hanoi pho mild' vs 'Hue beef noodle fiery'). Plan 4–6 varied dishes (soup, savory main, stir-fry, salad, dessert) instead of 10–12, which pressure-eats your guest. Seating: place the French guest opposite or adjacent to the main host — not at the 'end seat' where they can't follow conversation. During the meal: serve a small portion onto their plate in the first minute to break the 'is it OK to take from the middle?' freeze ('je vous mets un peu de chả giò pour commencer'); explain each dish in 1–2 sentences ('le bún chả est un plat hanoïen — grilled pork in a sweet-savory fish broth'); check in mid-meal ('vous aimez ? trop épicé ?'). After the meal: don't push dessert — Vietnamese chè can be too sweet for French palates; fresh fruit (mango, lychee, longan) is the safe call. Don't send leftovers home on a first visit — the French read this as a 'doggy bag' and it makes a formal first dinner feel like a casual restaurant. A US/UK calibration note: in Vietnamese homes, refilling a guest's bowl is a constant expression of warmth; for French guests, ask once before refilling ('je vous en remets?') and respect 'non merci, ça va bien' the first time — don't repeat the offer three times the way you might with Vietnamese family.",
       "vocabulary": [
         {
           "word": "un repas vietnamien",
           "en": "a Vietnamese meal",
           "vi": "bữa cơm Việt",
           "pos": "n.m.",
-          "pronunciation_vi": "rơ-pa vi-èt-na-miain"
+          "pronunciation_vi": "rơ-pa vi-èt-na-miain",
+          "pronunciation_en": "ruh-PAH vyet-nah-MYA(n) (the 'mien' suffix is nasal — like English 'myan' through the nose)"
         },
         {
           "word": "un plat à partager",
           "en": "a shared dish",
           "vi": "món ăn chung",
           "pos": "n.m.",
-          "pronunciation_vi": "pla a par-ta-jé"
+          "pronunciation_vi": "pla a par-ta-jé",
+          "pronunciation_en": "PLAH ah par-tah-ZHAY ('plat' = 'PLAH', final 't' silent; final 'ger' = 'zhay')"
         },
         {
           "word": "la sauce nuoc-cham",
           "en": "nuoc-cham sauce",
           "vi": "nước chấm",
           "pos": "n.f.",
-          "pronunciation_vi": "sos nuok-shãm"
+          "pronunciation_vi": "sos nuok-shãm",
+          "pronunciation_en": "SOHS nwok-SHAH(m) (French speakers approximate Vietnamese 'nước chấm' as 'nwok-shahm' — final nasal)"
         },
         {
           "word": "le piment",
           "en": "chili",
           "vi": "ớt",
           "pos": "n.m.",
-          "pronunciation_vi": "pi-mã"
+          "pronunciation_vi": "pi-mã",
+          "pronunciation_en": "pee-MAH(n) (nasal final, no 't' sound; very different from English 'pigment')"
         },
         {
           "word": "des herbes fraîches",
           "en": "fresh herbs",
           "vi": "rau thơm",
           "pos": "n.f. pl.",
-          "pronunciation_vi": "erb frè-shơ"
+          "pronunciation_vi": "erb frè-shơ",
+          "pronunciation_en": "DEZ-airb FRESH (liaison: 'des' becomes 'dez' before vowel; 'h' of 'herbes' is silent)"
         },
         {
           "word": "la convivialité",
           "en": "conviviality / shared joy",
           "vi": "không khí ấm cúng",
           "pos": "n.f.",
-          "pronunciation_vi": "kon-vi-vi-a-li-té"
+          "pronunciation_vi": "kon-vi-vi-a-li-té",
+          "pronunciation_en": "ko(n)-vee-vyah-lee-TAY (a culturally weighted French word: the warmth of sharing a meal, not just 'conviviality')"
         },
         {
           "word": "trinquer",
           "en": "to clink glasses",
           "vi": "chạm ly",
           "pos": "v.",
-          "pronunciation_vi": "train-ké"
+          "pronunciation_vi": "train-ké",
+          "pronunciation_en": "tra(n)-KAY (nasal first syllable; specifically the gesture of clinking glasses with eye contact — important French custom)"
         },
         {
           "word": "se resservir",
           "en": "to help oneself again",
           "vi": "lấy thêm",
           "pos": "v.",
-          "pronunciation_vi": "sơ rơ-ser-vir"
+          "pronunciation_vi": "sơ rơ-ser-vir",
+          "pronunciation_en": "suh ruh-sair-VEER (reflexive 'se' = 'suh'; rolled 'r' on '-vir')"
         },
         {
           "word": "un dessert traditionnel",
           "en": "traditional dessert",
           "vi": "tráng miệng truyền thống",
           "pos": "n.m.",
-          "pronunciation_vi": "dè-ser tra-di-sio-nèl"
+          "pronunciation_vi": "dè-ser tra-di-sio-nèl",
+          "pronunciation_en": "deh-SAIR trah-dee-syo-NEL (note: 'dessert' has stress on 2nd syllable in French, unlike English 'DESSert')"
         },
         {
           "word": "l'art de recevoir",
           "en": "the art of hosting",
           "vi": "nghệ thuật đón tiếp",
           "pos": "n.m.",
-          "pronunciation_vi": "lar dơ rơ-sơ-vwar"
+          "pronunciation_vi": "lar dơ rơ-sơ-vwar",
+          "pronunciation_en": "LAR duh ruh-suh-VWAR (a French cultural concept: the 'art' of receiving guests — closer to 'hospitality as craft' than to English 'hosting')"
         }
       ],
       "dialogue": [
         {
           "speaker": "M. Bertrand",
           "text": "Tout sent merveilleusement bon ! Comment je commence ?",
+          "en": "Everything smells wonderful! How do I start?",
           "vi": "Mọi thứ thơm tuyệt vời! Em bắt đầu thế nào?"
         },
         {
           "speaker": "Linh",
           "text": "On commence par la soupe. Ensuite, prenez ce que vous voulez au centre — c'est à partager.",
+          "en": "We start with the soup. After that, take whatever you'd like from the center — it's all to share.",
           "vi": "Bắt đầu bằng canh. Sau đó, anh lấy gì tùy ý ở giữa — là để chia sẻ."
         },
         {
           "speaker": "M. Bertrand",
           "text": "Je peux servir directement avec mes baguettes ?",
+          "en": "Can I serve myself directly with my chopsticks?",
           "vi": "Anh có thể gắp trực tiếp bằng đũa của mình không?"
         },
         {
           "speaker": "Linh",
           "text": "Oui, c'est tout à fait normal chez nous. Je vous mets un peu de chả giò pour commencer.",
+          "en": "Yes — completely normal here. Let me put a bit of chả giò on your plate to get you started.",
           "vi": "Vâng, hoàn toàn bình thường bên em. Em gắp anh ít chả giò để bắt đầu."
         }
       ],
@@ -7432,91 +7478,109 @@ export const lessons: FrenchLesson[] =           [
         {
           "speaker": "Linh",
           "text": "Bonsoir Monsieur Bertrand, bienvenue chez nous. Marc et moi sommes ravis de vous recevoir ce soir.",
+          "en": "Good evening Mr. Bertrand, welcome to our home. Marc and I are delighted to have you tonight.",
           "vi": "Chào tối anh Bertrand, chào mừng anh đến nhà em. Marc và em rất vui được tiếp anh tối nay."
         },
         {
           "speaker": "M. Bertrand",
           "text": "Bonsoir Linh, bonsoir Marc. Merci pour l'invitation. J'avoue que je suis curieux — c'est mon premier vrai dîner vietnamien chez l'habitant.",
+          "en": "Good evening Linh, good evening Marc. Thank you for having me. I admit I'm curious — this is my first real Vietnamese home dinner.",
           "vi": "Chào tối Linh, chào tối Marc. Cảm ơn vì lời mời. Em thừa nhận em tò mò — đây là bữa ăn Việt thật đầu tiên ở nhà dân."
         },
         {
           "speaker": "Linh",
           "text": "On a préparé un repas du Nord, pas trop pimenté. Je vais expliquer chaque plat au fur et à mesure pour que vous sachiez quoi faire avec quoi.",
+          "en": "We've prepared a northern-style meal, not too spicy. I'll explain each dish as we go so you know what pairs with what.",
           "vi": "Em chuẩn bị bữa ăn miền Bắc, không quá cay. Em sẽ giải thích từng món để anh biết dùng gì với gì."
         },
         {
           "speaker": "M. Bertrand",
           "text": "Excellent — j'aurais pu être perdu sans guide. À Paris, dans les restaurants vietnamiens, on me sert tout d'un coup et je ne sais jamais l'ordre.",
+          "en": "Excellent — I could've been lost without a guide. In Paris, at Vietnamese restaurants they serve everything at once and I never know the order.",
           "vi": "Tuyệt — không có người dẫn em sẽ lạc. Ở Paris, trong nhà hàng Việt, người ta dọn tất cả cùng lúc và em không biết thứ tự."
         },
         {
           "speaker": "Linh",
           "text": "C'est typique. Chez nous c'est un peu pareil — tout arrive ensemble, mais avec une logique : on commence souvent par la soupe, puis on alterne entre un plat sec et un plat plus humide. Voici la canh chua — soupe aigre-douce du Sud.",
+          "en": "That's typical. Here it's similar — everything arrives together, but with a logic: usually start with soup, then alternate between a dry dish and a wetter one. Here's canh chua — sweet-and-sour soup from the South.",
           "vi": "Là điển hình. Bên em cũng vậy — tất cả lên cùng, nhưng có logic: thường bắt đầu bằng canh, sau đó luân phiên giữa món khô và món có nước. Đây là canh chua — canh chua-ngọt miền Nam."
         },
         {
           "speaker": "M. Bertrand (après une cuillère)",
           "text": "C'est extraordinaire. Je sens l'ananas, la tomate… qu'est-ce qui donne cette acidité ?",
+          "en": "This is extraordinary. I can taste pineapple, tomato… what gives it that tang?",
           "vi": "Tuyệt vời. Em cảm thấy có dứa, cà chua… gì tạo ra vị chua này?"
         },
         {
           "speaker": "Marc",
           "text": "Le tamarin — me bạc hà. C'est ce qui distingue la canh chua sud d'autres soupes asiatiques. Allez-y, n'hésitez pas à vous resservir.",
+          "en": "Tamarind — 'me bạc hà'. That's what sets southern canh chua apart from other Asian soups. Go ahead, don't hesitate to help yourself to more.",
           "vi": "Me — me bạc hà. Đó là điểm phân biệt canh chua miền Nam với các canh châu Á khác. Anh cứ tự nhiên, đừng ngần ngại lấy thêm."
         },
         {
           "speaker": "Linh",
           "text": "Maintenant, voici les rouleaux de printemps — gỏi cuốn. Vous trempez dans cette sauce, le nuoc-cham. Goûtez d'abord sans, vous verrez la différence.",
+          "en": "Now, here are the fresh spring rolls — gỏi cuốn. Dip them in this sauce, the nuoc-cham. Try them plain first — you'll see the difference.",
           "vi": "Giờ đây là gỏi cuốn. Anh chấm vào nước này, nuoc-cham. Thử trước không chấm, anh sẽ thấy khác biệt."
         },
         {
           "speaker": "M. Bertrand",
           "text": "Sans la sauce, c'est frais et léger. Avec… ah, c'est complètement différent. C'est ça la magie ?",
+          "en": "Without the sauce it's fresh and light. With it… ah, completely different. Is that the magic?",
           "vi": "Không nước chấm, tươi và nhẹ. Có nước chấm… à, hoàn toàn khác. Đó là điều kỳ diệu à?"
         },
         {
           "speaker": "Linh",
           "text": "Voilà. La sauce n'est pas un accompagnement, c'est un partenaire. Au Vietnam, on dit qu'un plat sans sa bonne sauce est comme un poème sans rime.",
+          "en": "Exactly. The sauce isn't a condiment, it's a partner. In Vietnam, we say a dish without its proper sauce is like a poem without rhyme.",
           "vi": "Đúng. Nước chấm không phải đồ ăn kèm, mà là đối tác. Ở Việt Nam, người ta nói một món không có nước chấm phù hợp giống bài thơ không vần."
         },
         {
           "speaker": "M. Bertrand",
           "text": "Joli. Et cette herbe-là, c'est de la coriandre ?",
+          "en": "Beautiful. And that herb — is that coriander?",
           "vi": "Hay. Còn rau này là rau mùi à?"
         },
         {
           "speaker": "Marc",
           "text": "Du périlla — tía tô. Ça va avec presque tout. Goûtez avec le bún chả qui arrive maintenant.",
+          "en": "Perilla — tía tô. It goes with almost everything. Try it with the bún chả that's coming up.",
           "vi": "Tía tô. Hợp với gần như tất cả. Anh thử với bún chả đang lên đây."
         },
         {
           "speaker": "Linh",
           "text": "Le bún chả est un plat hanoïen emblématique. Viande de porc grillée, vermicelles de riz, herbes, et bouillon sucré-salé. Vous mélangez tout dans le bol.",
+          "en": "Bún chả is a signature Hanoi dish. Grilled pork, rice vermicelli, herbs, and a sweet-savory broth. You mix everything together in the bowl.",
           "vi": "Bún chả là món biểu tượng Hà Nội. Thịt heo nướng, bún, rau, nước dùng ngọt-mặn. Anh trộn tất cả trong bát."
         },
         {
           "speaker": "M. Bertrand",
           "text": "C'est complet — viande, féculent, légumes, bouillon. En France on apprend qu'un repas équilibré a tout ça séparé. Là c'est tout dans un bol et c'est plus harmonieux.",
+          "en": "It's complete — meat, starch, vegetables, broth. In France we're taught a balanced meal keeps them separate. Here it's all in one bowl, and it's more harmonious.",
           "vi": "Đầy đủ — thịt, bột, rau, nước. Ở Pháp dạy bữa cân bằng phải có riêng. Đây tất cả trong một bát và hài hòa hơn."
         },
         {
           "speaker": "Linh",
           "text": "Notre nutritionniste dirait pareil — mais à la française. Une dernière chose : ne vous sentez pas obligé de tout finir. Chez nous, laisser un peu signifie qu'on a bien mangé.",
+          "en": "Our nutritionist would say the same — just in a French way. One last thing: don't feel obliged to finish everything. Here, leaving a little means you've eaten well.",
           "vi": "Chuyên gia dinh dưỡng bên em sẽ nói giống — nhưng theo kiểu Pháp. Một điều cuối: anh không cần ăn hết. Bên em, để lại một ít nghĩa là đã ăn đủ."
         },
         {
           "speaker": "M. Bertrand",
           "text": "Inverse de la France où finir l'assiette est poli ! Je note. Et pour le dessert, qu'est-ce qui m'attend ?",
+          "en": "The opposite of France, where cleaning your plate is polite! Noted. And for dessert — what's waiting for me?",
           "vi": "Ngược với Pháp ở đó ăn hết là lịch sự! Em ghi. Còn tráng miệng, gì đang chờ em?"
         },
         {
           "speaker": "Linh",
           "text": "Des fruits frais — mangue mûre du Sud, et longanes. Pas trop sucré, pour ne pas couper la digestion.",
+          "en": "Fresh fruit — ripe southern mango and longan. Not too sweet, so it doesn't disrupt your digestion.",
           "vi": "Trái cây tươi — xoài chín miền Nam và nhãn. Không quá ngọt, để không cắt tiêu hóa."
         },
         {
           "speaker": "M. Bertrand",
           "text": "Parfait. Merci à vous deux — c'est la meilleure introduction culinaire que j'aurais pu rêver.",
+          "en": "Perfect. Thank you both — this is the best culinary introduction I could have hoped for.",
           "vi": "Hoàn hảo. Cảm ơn cả hai em — là intro ẩm thực tuyệt nhất em có thể mơ."
         }
       ],
@@ -7525,30 +7589,44 @@ export const lessons: FrenchLesson[] =           [
         "Trong bữa, một thành viên gia đình bạn (cô/dì) liên tục đề xuất khách « cạn ly! cạn ly! » và khách bắt đầu phòng thủ. Khéo léo can thiệp — đổi sang nước hoặc trà, không làm cô/dì mất mặt.",
         "Khách Pháp khen một món rất nhiều và hỏi công thức. Quyết định: cho công thức ngay, hứa gửi sau, hay chỉ chia sẻ « trick » chính? Trả lời theo cách giữ relationship và không « gatekeep » văn hóa Việt một cách kỳ thị."
       ],
+      "roleplay_prompts_en": [
+        "A French guest comes to your home for dinner for the first time and freezes — they're not sure if it's polite to reach into the shared dishes. Guide them naturally without saying 'in Vietnam everyone takes from the middle' (which feels lecturing); instead, proactively place a portion on their plate to set the tone. (US/UK parallel: hosting someone unfamiliar with potluck-style eating — same move, less talking, more leading by example.)",
+        "Mid-meal, a family member of yours (an aunt or older relative) keeps urging the French guest 'cạn ly! cạn ly!' (bottoms up!) and you can see the guest getting defensive. Step in tactfully — redirect to water or tea, don't make your aunt lose face, and signal to the guest that they're free to pace themselves. (Anglophone parallel: a relative pushing alcohol on a guest who's politely declining — same recovery skill.)",
+        "A French guest praises a dish lavishly and asks for the recipe. Decide: give it on the spot, promise to send it later, or share only the key 'trick'? Answer in a way that preserves the relationship and doesn't 'gatekeep' Vietnamese culture — the French value of cuisine-as-shared-craft works for you here."
+      ],
       "register_notes": "Bữa tối với khách Pháp ở nhà cá nhân: tutoiement nếu đã thân, vouvoiement nếu mới quen. Trong gia đình mở rộng (có ông bà, cô dì), chuyển sang vouvoiement với khách dù trước đó tutoiement — vì các thế hệ trên expect formality khi có khách. Tránh: nói « ngon không? » bằng tiếng Việt rồi dịch — gây cảm giác không tự nhiên; thay bằng « vous aimez ? » trực tiếp tiếng Pháp. Khi khách khen, đáp « Merci, ça me fait plaisir » + một câu chuyển sang nội dung — đừng « ah ce n'est rien » (tự hạ thấp Việt) hoặc kéo dài cảm ơn. Khi khách từ chối thêm món, chấp nhận ngay không ép — « Pas de souci, vous me direz si vous voulez plus tard ». Cụm hữu ích: « Je vous mets un peu pour commencer » (gắp cho khách); « Vous trempez dans cette sauce » (hướng dẫn dùng nước chấm); « Ne vous sentez pas obligé » (giảm áp lực ăn hết).",
+      "register_notes_en": "Hosting a French guest at your home: use tu (tutoiement) if you're already close, vous (vouvoiement) if you've just met. Watch the multi-generational dynamic: if grandparents, aunts, or uncles are at the table, switch to vouvoiement with the guest even if you'd normally use tu — the older generation expects formality when there's an outside guest, and your switch signals respect to both sides. One register failure mode for anglophones: don't translate Vietnamese hospitality phrases word-for-word into French ('ngon không?' rendered as 'is it tasty?' feels childish); use the natural French equivalent 'vous aimez?' directly. When the guest praises your cooking, respond with 'Merci, ça me fait plaisir' + a sentence about the dish — don't say 'ah ce n'est rien' (which sounds like you're disparaging Vietnamese cuisine) and don't milk the thanks with three rounds of 'oh really, you think so?'.\n\nThe single biggest register failure: pushing food after a 'non merci'. Anglophones — especially Americans — sometimes mirror the Vietnamese 'ăn đi ăn đi!' insistence, thinking it's hospitable. In French, one 'non merci' is final. Accept it immediately ('pas de souci, vous me direz si vous voulez plus tard'). If you push past it, the guest will eat a few forced bites and quietly decide your hospitality is more about you than about them. Useful phrases worth memorizing: 'Je vous mets un peu pour commencer' (let me serve you a bit to start), 'Vous trempez dans cette sauce' (you dip in this sauce), 'Ne vous sentez pas obligé' (don't feel obligated).",
       "idiom_glosses": [
         {
           "idiom": "Mettre les petits plats dans les grands",
           "literal": "Đặt đĩa nhỏ trong đĩa lớn",
+          "literal_en": "To put the small dishes inside the big ones",
           "meaning": "Chuẩn bị tiếp đón long trọng.",
+          "meaning_en": "To pull out all the stops / go all-out when welcoming a guest. The image is of nested serving dishes — bringing out the full formal table service rather than everyday plates. English equivalent: 'to roll out the red carpet'.",
           "example": "Linh a vraiment mis les petits plats dans les grands pour ce dîner."
         },
         {
           "idiom": "À la fortune du pot",
           "literal": "Theo may rủi của nồi",
+          "literal_en": "At the fortune of the pot",
           "meaning": "Ăn gì có nấy, không cầu kỳ.",
+          "meaning_en": "An invitation to share whatever happens to be in the pot — casual, no special preparation, 'come as you are'. Anglophone equivalent: 'pot luck' (in its original sense, not the bring-a-dish version).",
           "example": "On vous invite à la fortune du pot — pas de cérémonie."
         },
         {
           "idiom": "Avoir l'eau à la bouche",
           "literal": "Có nước trong miệng",
+          "literal_en": "To have water in the mouth",
           "meaning": "Thèm chảy nước miếng.",
+          "meaning_en": "To have one's mouth water (same image as English) — to anticipate something so strongly your mouth literally waters.",
           "example": "Rien que de sentir le bún chả, j'ai déjà l'eau à la bouche."
         },
         {
           "idiom": "Manger à sa faim",
           "literal": "Ăn đến no",
+          "literal_en": "To eat to one's hunger",
           "meaning": "Ăn đủ, đến mức thoải mái.",
+          "meaning_en": "To eat one's fill — to eat enough to be comfortably satisfied. Different from 'eating until stuffed'; signals satiation, not excess.",
           "example": "Servez-vous, l'important c'est que vous mangiez à votre faim."
         }
       ],
@@ -7556,62 +7634,86 @@ export const lessons: FrenchLesson[] =           [
         {
           "type": "fill-blank",
           "instruction_vi": "Điền cụm vào câu mời ăn.",
+          "instruction_en": "Fill in each blank with the missing word from a hosting phrase.",
           "items": [
             {
               "prompt": "Au Vietnam, on ___ tous les plats au centre.",
-              "answer": "partage"
+              "answer": "partage",
+              "hint_vi": "động từ « chia sẻ »",
+              "hint_en": "verb 'to share' (3rd-person singular, present tense)"
             },
             {
               "prompt": "___ d'abord sans nuoc-cham.",
-              "answer": "Goûtez"
+              "answer": "Goûtez",
+              "hint_vi": "động từ mệnh lệnh « thử »",
+              "hint_en": "imperative form of 'to taste' (vous-form, 'taste it' as an instruction)"
             },
             {
               "prompt": "Ne vous sentez pas ___ de tout finir.",
-              "answer": "obligés"
+              "answer": "obligés",
+              "hint_vi": "tính từ « bị ép buộc » (số nhiều)",
+              "hint_en": "past participle of 'obliger' used as adjective — plural agreement with multiple guests"
             },
             {
               "prompt": "Si vous ne ___ pas le piment, dites-le sans hésiter.",
-              "answer": "supportez"
+              "answer": "supportez",
+              "hint_vi": "động từ « chịu được » (vous-form)",
+              "hint_en": "verb 'to tolerate / handle' in vous-form, present tense"
             }
           ]
         },
         {
           "type": "matching",
           "instruction_vi": "Nối thành ngữ với chiến lược tiếp đãi.",
+          "instruction_en": "Match each idiom with the hosting strategy it captures.",
           "items": [
             {
               "prompt": "Mettre les petits plats dans les grands",
-              "answer": "chuẩn bị tiếp đón long trọng (pull out all the stops in welcoming someone)"
+              "answer": "chuẩn bị tiếp đón long trọng (pull out all the stops in welcoming someone)",
+              "english": "Mettre les petits plats dans les grands → pull out all the stops / roll out the red carpet for a guest"
             },
             {
               "prompt": "À la fortune du pot",
-              "answer": "ăn gì có nấy, không cầu kỳ (whatever the pot offers, no fuss)"
+              "answer": "ăn gì có nấy, không cầu kỳ (whatever the pot offers, no fuss)",
+              "english": "À la fortune du pot → 'pot luck' — share whatever is in the pot, no special preparation"
             },
             {
               "prompt": "Avoir l'eau à la bouche",
-              "answer": "thèm chảy nước miếng (make one's mouth water)"
+              "answer": "thèm chảy nước miếng (make one's mouth water)",
+              "english": "Avoir l'eau à la bouche → to have one's mouth water (in anticipation)"
             },
             {
               "prompt": "Manger à sa faim",
-              "answer": "ăn đến no thoải mái (eat one’s fill comfortably)"
+              "answer": "ăn đến no thoải mái (eat one's fill comfortably)",
+              "english": "Manger à sa faim → eat one's fill — comfortably satisfied, not stuffed"
             }
           ]
         },
         {
           "type": "translation",
           "instruction_vi": "Dịch sang tiếng Pháp B2 — vai chủ nhà ấm áp.",
+          "instruction_en": "Translate each Vietnamese sentence into B2-level French in the voice of a warm host.",
           "items": [
             {
               "prompt": "Em gắp anh một ít chả giò để bắt đầu.",
-              "answer": "Je vous mets un peu de chả giò pour commencer."
+              "answer": "Je vous mets un peu de chả giò pour commencer.",
+              "english": "Let me put a bit of chả giò on your plate to get you started.",
+              "hint_vi": "« je vous mets » = em gắp cho anh; vouvoiement",
+              "hint_en": "'je vous mets' literally 'I put for you' = the natural French way to serve a guest"
             },
             {
               "prompt": "Để lại một ít nghĩa là mình đã ăn đủ.",
-              "answer": "Laisser un peu signifie qu'on a bien mangé."
+              "answer": "Laisser un peu signifie qu'on a bien mangé.",
+              "english": "Leaving a little means we've eaten well.",
+              "hint_vi": "động từ « signifie » (3rd singular) + « qu'on a »",
+              "hint_en": "'signifie que' (means that) + 'on a' (one has)"
             },
             {
               "prompt": "Một món không có nước chấm phù hợp giống bài thơ không vần.",
-              "answer": "Un plat sans sa bonne sauce est comme un poème sans rime."
+              "answer": "Un plat sans sa bonne sauce est comme un poème sans rime.",
+              "english": "A dish without its proper sauce is like a poem without rhyme.",
+              "hint_vi": "« sans » + « est comme »",
+              "hint_en": "'sans' (without) + 'est comme' (is like) — classic French analogy structure"
             }
           ]
         }
@@ -7632,6 +7734,12 @@ export const lessons: FrenchLesson[] =           [
             "nouvel → nu-vèl",
             "lunaire → lu-nèr",
             "importante → an-por-tãnt"
+          ],
+          "pronunciation_focus_en": [
+            "Tết → TET (Vietnamese loan in French — most French speakers say it with a short flat 'e', rhymes with English 'pet')",
+            "nouvel → noo-VEL (final 'el' rhymes with English 'bell')",
+            "lunaire → lyu-NAIR (the 'u' is the French rounded 'u' — purse lips, say 'ee'; ends with rolled 'r')",
+            "importante → ah(n)-por-TAH(n)T (two nasals; final 'te' silent — air through nose)"
           ]
         },
         {
@@ -7642,6 +7750,12 @@ export const lessons: FrenchLesson[] =           [
             "Noël → no-èl",
             "étalés → é-ta-lé",
             "sept → sèt"
+          ],
+          "pronunciation_focus_en": [
+            "imaginez → ee-mah-zhee-NAY ('zh' = the 's' in 'measure'; final 'ez' rhymes with English 'pay')",
+            "Noël → noh-EL (two distinct syllables because of the diaeresis on 'ë' — NOT one syllable like English 'Noel')",
+            "étalés → ay-tah-LAY (final 'lés' = 'lay', rhymes with English 'pay')",
+            "sept → SET (the 'p' is silent — rhymes with English 'set')"
           ]
         },
         {
@@ -7652,6 +7766,12 @@ export const lessons: FrenchLesson[] =           [
             "village → vi-laj",
             "natal → na-tal",
             "kilomètres → ki-lo-mè-trơ"
+          ],
+          "pronunciation_focus_en": [
+            "rentre → RAH(n)-truh (nasal first syllable; final 'tre' is a soft, half-swallowed 'truh')",
+            "village → vee-LAHZH (final 'ge' = 'zh' like 's' in 'measure', different from English 'village')",
+            "natal → nah-TAL (final 'l' pronounced — rhymes with English 'pal')",
+            "kilomètres → kee-loh-MEH-truh (final 'tres' = soft 'truh'; stress on 3rd syllable, not the English 'kil-LOM-eter')"
           ]
         },
         {
@@ -7662,6 +7782,12 @@ export const lessons: FrenchLesson[] =           [
             "fermé → fer-mé",
             "sacré → sa-kré",
             "dérange → dé-rãnj"
+          ],
+          "pronunciation_focus_en": [
+            "pendant → pah(n)-DAH(n) (two nasals back-to-back — air through nose for both syllables)",
+            "fermé → fair-MAY (final 'é' = 'ay', rhymes with English 'pay')",
+            "sacré → sah-KRAY (rolled 'r'; final 'cré' = 'kray', stress on 2nd syllable)",
+            "dérange → day-RAH(n)ZH (nasal third syllable; final 'ge' = 'zh')"
           ]
         },
         {
@@ -7672,102 +7798,124 @@ export const lessons: FrenchLesson[] =           [
             "reçoivent → rơ-swav",
             "enveloppe → ãn-vlop",
             "codifié → ko-di-fié"
+          ],
+          "pronunciation_focus_en": [
+            "enfants → ah(n)-FAH(n) (two nasals; very different from English 'infants')",
+            "reçoivent → ruh-SWAHV (the 'oi' diphthong = 'wah'; final '-vent' is just 'v' — the '-ent' is silent in 3rd-plural)",
+            "enveloppe → ah(n)v-LOHP (nasal first; final 'pe' silent — rhymes with English 'lope')",
+            "codifié → ko-dee-FYAY (four syllables; 'ifié' = 'ee-fyay'; final syllable rhymes with 'pay')"
           ]
         }
       ],
       "cultural_notes_vi": "Giải thích Tết cho người Pháp khó vì Tết KHÔNG có equivalent trong văn hóa Pháp. Mistakes phổ biến: (1) gọi Tết là « nouvel an chinois » — sai, gây offense vì gộp Tết Việt với Tết Trung; (2) mô tả Tết như « festival » (lễ hội) — sai, vì Tết không phải để xem mà để sống; (3) nhấn mạnh phần « mê tín » (xông đất, tránh quét nhà) làm nó trở thành « exotique » thay vì là cấu trúc xã hội nghiêm túc. Cách hiệu quả: cho mental model bằng cách kết hợp các yếu tố Pháp đã biết (« Noël + 14 juillet + Toussaint pour les ancêtres »), sau đó thêm sự khác biệt cụ thể.\n\nGia đình Việt cũng cần giải thích cẩn thận. Cấu trúc gia đình Việt KHÔNG phải « famille élargie » của Pháp — nó là một đơn vị sinh hoạt, kinh tế, đạo đức tích hợp vào nhau theo cách Pháp đã từng có (trước thế kỷ 20) nhưng đã rời. Người Pháp có thể « romanticize » cấu trúc này (« ah, vous êtes plus chaleureux que nous ») hoặc « critique » nó (« vous n'avez pas d'autonomie individuelle »). Cả hai phản ứng đều miss the point. Cách đúng: trình bày nó như một hệ thống có lợi và có giá phải trả — nhiều người Việt trẻ giờ đang điều chỉnh nó, không phải bỏ nó.\n\nKhi giải thích phong tục cụ thể (lì xì, xông đất, kiêng quét nhà), cho lý do văn hóa-tâm lý ngắn — không kéo dài thành lecture. Người Pháp thích biết « pourquoi » nhưng không muốn lecture 10 phút. Format hiệu quả: « Le rituel X consiste à Y. La logique culturelle : Z ».",
+      "cultural_notes_en": "Explaining Tết to a French (or US/UK) interlocutor is difficult precisely because there's no clean equivalent in Western calendars. Three traps anglophones often fall into when they try to explain it to other anglophones, and that show up in French too: (1) calling Tết the 'Chinese New Year' — this is wrong and faintly offensive, because it collapses Vietnamese, Korean, and Singaporean Lunar New Year traditions into the Chinese one. Tết is the Vietnamese Lunar New Year, with its own foods (bánh chưng, mứt), its own rituals (xông đất, lì xì), and its own cultural weight. (2) Calling it a 'festival' — Western 'festival' suggests something you go to and watch; Tết is something you go home to and live. (3) Leading with the 'superstitious' parts (avoid sweeping the floor on day one, who steps into the house first) — that frames Tết as exotic folklore rather than a serious social structure on par with US Thanksgiving or UK Christmas in significance, but bigger in scale.\n\nThe effective frame for an anglophone or French audience: give a mental model by stacking familiar reference points ('imagine Christmas + Fourth of July + All Saints' Day for the ancestors, all in one week, with the whole country shut down'), then list 2–3 concrete differences. This works far better than starting from zero. It also defuses the romanticization reflex — Western listeners sometimes react with 'wow, you're so much warmer than us' (idealizing) or 'wow, you don't have individual autonomy' (critiquing) — both miss the point.\n\nOn Vietnamese family structure: present it as a system with benefits AND costs that many young Vietnamese are now actively recalibrating, not abandoning. The 1950s-era American 'extended family' image (Sunday dinners, three generations under one roof) is the closest analogue but it understates the economic and moral integration of the Vietnamese unit. For specific customs (lì xì, xông đất, the no-sweeping rule), give the cultural-psychological reason in one short clause and stop. The format 'Le rituel X consiste à Y. La logique culturelle : Z' (the X ritual consists of Y; the cultural logic is Z) works repeatedly without ever sounding like a lecture.",
       "tip_advice_vi": "Format giải thích Tết trong 3 phút: (1) Equivalent Pháp gần nhất (« Noël + 14 juillet + Toussaint »); (2) Một sự khác biệt then chốt (« mais on fait ça ensemble en famille élargie, pas chacun chez soi »); (3) Một câu chuyện cá nhân (« quand j'avais 7 ans, ma grand-mère m'a expliqué que… »); (4) Một invitation cụ thể nếu có (« si tu es à Hanoï en février, viens chez nous »). Tránh: liệt kê 10 phong tục một lần — quá tải; nói « c'est notre culture » để chốt thảo luận — gượng. Khi người Pháp hỏi câu hơi gây hấn (« vous donnez vraiment de l'argent aux enfants ? c'est étrange »), không phòng thủ — hỏi lại « qu'est-ce qui te paraît étrange ? » rồi mới giải thích. Cấu trúc gia đình: dùng « beaucoup de Vietnamiens » thay « les Vietnamiens » để tránh generalize.",
+      "tip_advice_en": "The 3-minute Tết explanation format that works on both French and anglophone audiences: (1) Nearest Western equivalent ('Christmas + Independence Day + All Saints' Day' for French; 'Christmas + Thanksgiving + Memorial Day' for US listeners — adjust the mental anchor to the listener's calendar). (2) One key difference ('but we do it together as an extended family, not each at our own house'). (3) One personal anecdote ('when I was 7, my grandmother explained that…') — anecdotes carry more weight than generalizations. (4) A specific invitation if appropriate ('if you're in Hanoi in February, come over on day two or three').\n\nWhat to avoid: dumping 10 customs at once (overwhelms the listener and they remember none), and using 'c'est notre culture' or 'it's our culture' to end a discussion (sounds defensive, reads as 'don't ask further'). When a French or anglophone interlocutor asks a slightly aggressive question ('do you really give kids money? isn't that weird?'), don't get defensive — ask back 'qu'est-ce qui te paraît étrange?' (what strikes you as strange about it?) before answering. This shifts you from 'cultural ambassador on defense' to 'two adults comparing notes'.\n\nOn family structure: use 'many Vietnamese' ('beaucoup de Vietnamiens') instead of 'the Vietnamese' ('les Vietnamiens') to avoid generalizing — this is also good practice when talking about anglophone cultures back the other way. A US/UK-specific calibration: anglophones often expect a 'colorful traditions' tone when asking about Asian holidays; resist matching it. The right register is matter-of-fact, the way a Frenchman explains Christmas to a Vietnamese friend — without exoticism in either direction.",
       "vocabulary": [
         {
           "word": "le Tết (nouvel an lunaire)",
           "en": "Tết (Lunar New Year)",
           "vi": "Tết Nguyên Đán",
           "pos": "n.m.",
-          "pronunciation_vi": "tét"
+          "pronunciation_vi": "tét",
+          "pronunciation_en": "TET (Vietnamese loanword; short flat 'e', rhymes with English 'pet')"
         },
         {
           "word": "un village natal",
           "en": "hometown",
           "vi": "quê",
           "pos": "n.m.",
-          "pronunciation_vi": "vi-laj na-tal"
+          "pronunciation_vi": "vi-laj na-tal",
+          "pronunciation_en": "vee-LAHZH nah-TAL ('the village where one was born' — closer to English 'hometown' than 'birthplace'; carries weight in both French and Vietnamese culture)"
         },
         {
           "word": "l'enveloppe rouge / lì xì",
           "en": "red envelope (lucky money)",
           "vi": "lì xì",
           "pos": "n.f.",
-          "pronunciation_vi": "ãn-vlop ruj"
+          "pronunciation_vi": "ãn-vlop ruj",
+          "pronunciation_en": "lah(n)v-LOHP ROOZH (nasal first; final 'rouge' = 'roozh' with the 'measure' s-sound)"
         },
         {
           "word": "le culte des ancêtres",
           "en": "ancestor veneration",
           "vi": "thờ cúng tổ tiên",
           "pos": "n.m.",
-          "pronunciation_vi": "kult dé-z-ãn-sè-trơ"
+          "pronunciation_vi": "kult dé-z-ãn-sè-trơ",
+          "pronunciation_en": "luh KULT day-zah(n)-SEH-truh (liaison 'des ancêtres' = 'day-zah(n)'; final '-tre' = soft 'truh')"
         },
         {
           "word": "la famille élargie",
           "en": "extended family",
           "vi": "đại gia đình",
           "pos": "n.f.",
-          "pronunciation_vi": "fa-miy é-lar-ji"
+          "pronunciation_vi": "fa-miy é-lar-ji",
+          "pronunciation_en": "fah-MEE-yuh ay-lar-ZHEE (final '-mille' = 'mee-yuh', a key tricky French ending; 'élargie' ends with 'zhee')"
         },
         {
           "word": "un repas réunion",
           "en": "a reunion meal",
           "vi": "bữa cơm sum họp",
           "pos": "n.m.",
-          "pronunciation_vi": "rơ-pa ré-u-nion"
+          "pronunciation_vi": "rơ-pa ré-u-nion",
+          "pronunciation_en": "ruh-PAH ray-yoo-NYO(n) (final '-nion' = 'nyo(n)' with nasal; weighty word, used for the central Tết family meal)"
         },
         {
           "word": "un rituel",
           "en": "a ritual",
           "vi": "nghi thức",
           "pos": "n.m.",
-          "pronunciation_vi": "ri-tu-èl"
+          "pronunciation_vi": "ri-tu-èl",
+          "pronunciation_en": "ree-too-EL (three syllables; the 'u' is the French rounded 'u'; rhymes with English 'ell')"
         },
         {
           "word": "la piété filiale",
           "en": "filial piety",
           "vi": "chữ hiếu",
           "pos": "n.f.",
-          "pronunciation_vi": "pi-é-té fi-li-al"
+          "pronunciation_vi": "pi-é-té fi-li-al",
+          "pronunciation_en": "pyay-TAY fee-LYAL (the Confucian concept of filial piety — central to Vietnamese family structure; French has the term but it's used much less in everyday French than Vietnamese 'chữ hiếu')"
         },
         {
           "word": "la cohésion familiale",
           "en": "family cohesion",
           "vi": "sự gắn kết gia đình",
           "pos": "n.f.",
-          "pronunciation_vi": "ko-é-zion fa-mi-li-al"
+          "pronunciation_vi": "ko-é-zion fa-mi-li-al",
+          "pronunciation_en": "koh-ay-ZYO(n) fah-mee-LYAL (nasal '-sion'; useful neutral phrasing when discussing Vietnamese family structure with French speakers — less loaded than 'piété filiale')"
         },
         {
           "word": "la fête traditionnelle",
           "en": "traditional holiday",
           "vi": "lễ truyền thống",
           "pos": "n.f.",
-          "pronunciation_vi": "fèt tra-di-sio-nèl"
+          "pronunciation_vi": "fèt tra-di-sio-nèl",
+          "pronunciation_en": "FET trah-dee-syo-NEL ('fête' rhymes with English 'fete' but shorter and crisper; final 'nelle' = 'nel')"
         }
       ],
       "dialogue": [
         {
           "speaker": "Julien",
           "text": "Le Tết, c'est comme le nouvel an chinois, c'est ça ?",
+          "en": "Tết — that's like Chinese New Year, right?",
           "vi": "Tết giống Tết Trung Quốc đúng không?"
         },
         {
           "speaker": "Mai",
           "text": "Pas tout à fait — même calendrier lunaire, mais traditions et plats différents.",
+          "en": "Not quite — same lunar calendar, but different traditions and foods.",
           "vi": "Không hẳn — cùng âm lịch, nhưng truyền thống và món khác."
         },
         {
           "speaker": "Julien",
           "text": "Ah, désolé, je faisais le raccourci. Qu'est-ce qui distingue le Tết ?",
+          "en": "Ah, sorry — I was taking a shortcut. What makes Tết distinct?",
           "vi": "À, xin lỗi, anh nói tắt. Điều gì làm Tết khác biệt?"
         },
         {
           "speaker": "Mai",
           "text": "Le bánh chưng — un gâteau de riz carré qui symbolise la terre. Très vietnamien.",
+          "en": "Bánh chưng — a square sticky-rice cake that symbolizes the earth. Very Vietnamese.",
           "vi": "Bánh chưng — bánh gạo hình vuông tượng trưng cho đất. Rất Việt Nam."
         }
       ],
@@ -7775,91 +7923,109 @@ export const lessons: FrenchLesson[] =           [
         {
           "speaker": "Julien",
           "text": "Mai, j'ai vu que tu prends une semaine de congés en février. C'est pour le Tết ?",
+          "en": "Mai, I noticed you're taking a week off in February. Is that for Tết?",
           "vi": "Mai, anh thấy em nghỉ một tuần tháng hai. Vì Tết à?"
         },
         {
           "speaker": "Mai",
           "text": "Oui — neuf jours en fait. Pour beaucoup de Vietnamiens, c'est le seul moment de l'année où on rentre vraiment chez les parents.",
+          "en": "Yes — nine days actually. For many Vietnamese, it's the only time of year we really go back home to our parents.",
           "vi": "Vâng — thật ra chín ngày. Với nhiều người Việt, đó là dịp duy nhất trong năm thực sự về với bố mẹ."
         },
         {
           "speaker": "Julien",
           "text": "Neuf jours ! En France, on a juste le 1er janvier. Explique-moi vraiment ce que c'est, parce que je connais juste « nouvel an chinois ».",
+          "en": "Nine days! In France we just get January 1st. Really explain it to me — all I know is 'Chinese New Year'.",
           "vi": "Chín ngày! Ở Pháp chỉ có ngày 1/1. Giải thích cho anh thật kỹ là gì, vì anh chỉ biết « Tết Trung Quốc »."
         },
         {
           "speaker": "Mai",
           "text": "D'abord, ce n'est pas le nouvel an chinois — beaucoup d'Occidentaux font cette confusion. C'est le nouvel an lunaire, célébré dans plusieurs pays asiatiques avec des traditions très différentes. Au Vietnam, on l'appelle « Tết Nguyên Đán », ou simplement Tết.",
+          "en": "First of all, it's not Chinese New Year — many Westerners make that mix-up. It's the Lunar New Year, celebrated across several Asian countries with very different traditions. In Vietnam we call it 'Tết Nguyên Đán', or simply Tết.",
           "vi": "Đầu tiên, không phải Tết Trung Quốc — nhiều người phương Tây nhầm. Là Tết âm lịch, các nước châu Á đều ăn nhưng truyền thống rất khác. Ở Việt Nam, gọi là « Tết Nguyên Đán », hay đơn giản là Tết."
         },
         {
           "speaker": "Julien",
           "text": "OK, je note. Et qu'est-ce qui se passe pendant ces neuf jours ?",
+          "en": "OK, noted. So what actually happens over those nine days?",
           "vi": "OK, anh ghi. Và chín ngày này diễn ra gì?"
         },
         {
           "speaker": "Mai",
           "text": "Si tu veux un repère français : imagine Noël, le 14 juillet, et la Toussaint pour les ancêtres, tous étalés sur une semaine, et tout le pays s'arrête en même temps.",
+          "en": "If you want a French reference point: imagine Christmas, Bastille Day, and All Saints' Day for the ancestors, all stretched across one week — and the whole country shuts down at the same time.",
           "vi": "Nếu anh muốn điểm neo Pháp: tưởng tượng Giáng sinh, 14/7, và Toussaint cho tổ tiên, tất cả trong một tuần, và cả nước đồng loạt dừng."
         },
         {
           "speaker": "Julien",
           "text": "Tout le pays s'arrête, vraiment ?",
+          "en": "The whole country shuts down, really?",
           "vi": "Cả nước dừng, thật sao?"
         },
         {
           "speaker": "Mai",
           "text": "Vraiment. Les usines ferment, les écoles ferment, beaucoup de restaurants ferment. Si tu es touriste à Hanoï pendant le Tết, c'est vide. Les Vietnamiens rentrent dans leur village natal — même si on travaille à 1500 km à Hô-Chi-Minh-Ville, on prend le train ou l'avion pour rentrer.",
+          "en": "Really. Factories close, schools close, many restaurants close. If you're a tourist in Hanoi during Tết, it's empty. Vietnamese people go back to their hometown — even if you work 1500 km away in Ho Chi Minh City, you take the train or fly home.",
           "vi": "Thật. Nhà máy đóng, trường đóng, nhiều nhà hàng đóng. Nếu anh là du khách ở Hà Nội dịp Tết, vắng tanh. Người Việt về quê — kể cả làm cách 1500 km ở TP.HCM, mình bay hoặc đi tàu để về."
         },
         {
           "speaker": "Julien",
           "text": "C'est massif. Et quand vous rentrez, qu'est-ce que vous faites concrètement ?",
+          "en": "That's massive. And once you're home, what do you actually do?",
           "vi": "Quy mô lớn. Và khi về, các em làm gì cụ thể?"
         },
         {
           "speaker": "Mai",
           "text": "La veille du Tết, on prépare l'autel des ancêtres avec des plats — il faut qu'ils « rentrent fêter avec nous ». Le matin du Tết, premier visiteur dans la maison est très important — c'est le « xông đất », il porte chance pour l'année. Ensuite, on rend visite aux aînés de la famille, dans l'ordre — d'abord les grands-parents, puis les oncles aînés, puis les autres.",
+          "en": "The night before Tết, we set up the ancestor altar with dishes — they need to 'come back and celebrate with us'. On Tết morning, the first visitor into the house is extremely important — that's the 'xông đất', who brings luck for the year. Then we visit family elders in order — first the grandparents, then the senior uncles, then the rest.",
           "vi": "Đêm giao thừa, chuẩn bị bàn thờ tổ tiên với các món — họ « về ăn Tết với mình ». Sáng mùng một, người đầu tiên đến nhà rất quan trọng — gọi là « xông đất », mang vận may cho cả năm. Sau đó, đi thăm các cụ trong họ, theo thứ tự — đầu tiên ông bà, rồi bác lớn, rồi các bác khác."
         },
         {
           "speaker": "Julien",
           "text": "L'ordre est précis. Et l'enveloppe rouge dont j'ai entendu parler ?",
+          "en": "The order is strict. And what about the red envelope I've heard about?",
           "vi": "Thứ tự chính xác. Còn phong bì đỏ anh nghe nói?"
         },
         {
           "speaker": "Mai",
           "text": "Lì xì. Les aînés donnent une enveloppe rouge avec de l'argent aux enfants et aux jeunes célibataires. C'est très codifié — on ne donne pas n'importe quel montant, et on dit toujours une formule : « je te souhaite la santé et la réussite cette année ». L'argent compte moins que la formule.",
+          "en": "Lì xì. Elders give a red envelope with money to children and unmarried young adults. It's tightly codified — you don't give just any amount, and you always say a set phrase: 'I wish you health and success this year'. The money matters less than the words.",
           "vi": "Lì xì. Các cụ cho phong bì đỏ có tiền cho trẻ con và người chưa lập gia đình. Rất quy tắc — không cho bừa số nào, và luôn nói câu chúc: « chúc cháu mạnh khỏe và thành công năm nay ». Tiền ít quan trọng hơn câu chúc."
         },
         {
           "speaker": "Julien",
           "text": "Et la famille au sens large ? Tu m'as déjà dit que tes oncles, tantes, cousins vivent tous proches.",
+          "en": "And the extended family? You once told me your uncles, aunts, and cousins all live close together.",
           "vi": "Và gia đình rộng? Em đã nói các chú, cô, anh em họ sống gần nhau."
         },
         {
           "speaker": "Mai",
           "text": "Oui. Pendant le Tết, on voit jusqu'à 30-40 personnes de la famille élargie en trois jours. C'est intense, parfois fatigant honnêtement. Mais c'est aussi le seul moment où ma cousine de Saigon, ma tante de Đà Nẵng, et mon oncle de Hanoï sont au même endroit.",
+          "en": "Yes. During Tết, we see up to 30-40 extended-family members in three days. It's intense — honestly, sometimes exhausting. But it's also the only moment when my cousin from Saigon, my aunt from Đà Nẵng, and my uncle from Hanoi are all in the same place.",
           "vi": "Đúng. Trong Tết, mình gặp 30-40 người đại gia đình trong ba ngày. Cường độ cao, đôi khi mệt thật lòng. Nhưng cũng là dịp duy nhất chị họ em ở Sài Gòn, dì em ở Đà Nẵng, và chú em ở Hà Nội cùng một chỗ."
         },
         {
           "speaker": "Julien",
           "text": "En France, on perd ces moments-là. Beaucoup de mes cousins, je ne les vois qu'aux enterrements maintenant.",
+          "en": "In France, we've lost moments like that. Many of my cousins, I only see them at funerals now.",
           "vi": "Ở Pháp, mình mất những khoảnh khắc đó. Nhiều anh em họ anh, anh chỉ gặp ở đám tang giờ."
         },
         {
           "speaker": "Mai",
           "text": "Tu touches un point réel. Les jeunes Vietnamiens commencent à le perdre aussi — surtout ceux qui partent à l'étranger. Le Tết tient encore, mais pour combien de temps, on ne sait pas.",
+          "en": "You're touching on something real. Young Vietnamese are starting to lose it too — especially those who move abroad. Tết still holds, but for how long, nobody knows.",
           "vi": "Anh chạm điểm thật. Người Việt trẻ cũng bắt đầu mất — đặc biệt những người ra nước ngoài. Tết còn giữ được, nhưng đến bao giờ thì không biết."
         },
         {
           "speaker": "Julien",
           "text": "Si je suis à Hanoï pendant le Tết l'année prochaine, est-ce que je peux venir, en touriste curieux et respectueux ?",
+          "en": "If I'm in Hanoi during Tết next year, could I come over — as a curious, respectful guest?",
           "vi": "Nếu năm sau anh ở Hà Nội dịp Tết, anh có thể đến, kiểu du khách tò mò và tôn trọng được không?"
         },
         {
           "speaker": "Mai",
           "text": "Bien sûr. Mais pas le matin du premier jour — c'est strictement réservé à la famille proche et au xông đất. Le deuxième ou troisième jour, viens, je te ferai visiter le cycle des visites familiales.",
+          "en": "Of course. But not the morning of day one — that's strictly reserved for close family and the xông đất. Day two or three, come over — I'll walk you through the cycle of family visits.",
           "vi": "Tất nhiên. Nhưng không phải sáng mùng một — dành riêng gia đình gần và người xông đất. Mùng hai hoặc ba, anh đến, em sẽ dẫn anh đi chu trình thăm họ."
         }
       ],
@@ -7868,30 +8034,44 @@ export const lessons: FrenchLesson[] =           [
         "Bạn Pháp đến Hà Nội đúng dịp Tết và phàn nàn « tout est fermé, c'est ennuyeux ». Phản hồi vừa thừa nhận khó cho du khách, vừa giúp họ thấy đẹp khác (đường phố vắng, không khí khác hẳn) — đề xuất hoạt động phù hợp.",
         "Người Pháp hỏi: « C'est quoi un xông đất ? Vous choisissez vraiment qui entre dans votre maison en premier ? ». Giải thích phong tục mà không làm nó nghe « mê tín lạc hậu » — nêu lý do tâm lý-xã hội đằng sau."
       ],
+      "roleplay_prompts_en": [
+        "A French colleague asks: 'Why do you give kids money? Here it's frowned on — it creates materialism.' Explain lì xì without getting defensive: acknowledge the fair point in the French view, then add the cultural nuance (it's about the spoken blessing, not the bill). Anglophone parallel: a US/UK colleague asking 'isn't that just bribing children?' — same recovery move applies.",
+        "A French friend arrives in Hanoi right at Tết and complains 'everything is closed, this is boring.' Acknowledge that it's genuinely hard for a tourist, then help them see what's beautifully different (empty streets, altered atmosphere, family-only intimacy) — and propose Tết-compatible activities (a quiet walk by Hoàn Kiếm Lake, a visit on day 3 to a family that's open). (US/UK parallel: explaining to a tourist why most US cities are dead on Christmas Day morning.)",
+        "A French acquaintance asks: 'What's xông đất? Do you really choose who comes into your house first?' Explain the custom without making it sound like 'backward superstition' — give the social-psychological logic (the first person sets the emotional tone for the year, so the family invests deliberately in that choice). Anglophone parallel: explaining 'first-footing' in Scotland, which has nearly the same logic."
+      ],
       "register_notes": "Khi giải thích Tết cho người Pháp, dùng tutoiement với bạn thân, vouvoiement với cấp trên/khách. Tránh hai sai lầm: (1) translit Việt-Pháp literal — « la cérémonie de l'esprit de la terre » (cho « xông đất ») gượng và sai; cứ giữ tên Việt « le xông đất » + giải thích; (2) « gatekeep » văn hóa — không phải mọi phong tục đều phải giữ bí mật. Khi đối phương quan tâm thật, chia sẻ — bao gồm cả những phần đang biến đổi (« beaucoup de jeunes Vietnamiens ne font plus le xông đất aussi strictement »). Cụm hữu ích: « Si tu veux un repère français… » (cho mental model); « C'est très codifié » (báo có quy tắc); « Tu touches un point réel » (thừa nhận critique). Khi mời đến nhà ăn Tết, nói rõ ngày cụ thể (« mùng hai mùng ba », không phải « pendant le Tết » mơ hồ) và format (gia đình quây quần, không phải tiệc).",
+      "register_notes_en": "When explaining Tết to a French speaker, use tu with friends, vous with seniors or unknown guests. Two register failures to avoid: (1) Don't literally translate Vietnamese custom names into French — 'la cérémonie de l'esprit de la terre' for 'xông đất' sounds awkward and is also wrong (the term means 'breaking the ground', not 'spirit of the earth'). Keep the Vietnamese name and add an explanation: 'le xông đất, c'est-à-dire le premier visiteur du matin'. This is the same register move anglophone speakers should use in English: say 'xông đất' or 'lì xì' and explain — don't translate them into pseudo-English phrases like 'first-foot ceremony' or 'red lucky money'. (2) Don't 'gatekeep' culture. You're not betraying Vietnam by sharing customs in detail, including the parts that are changing ('beaucoup de jeunes Vietnamiens ne font plus le xông đất aussi strictement'). Showing evolution rather than a frozen 'authentic' version is more credible and more respectful to your own generation.\n\nUseful framing phrases: 'Si tu veux un repère français…' (if you want a French reference point — gives a mental anchor); 'C'est très codifié' (signals there are rules without lecturing); 'Tu touches un point réel' (acknowledges a fair critique without conceding the whole argument). When inviting someone to your family's Tết, be specific about the day ('day 2 or 3', not vaguely 'during Tết') and the format (family gathering, not a party). A US/UK calibration tip: anglophones often expect 'come over anytime during Tết' to be a real open-ended invitation. Be more directive than you'd be with Vietnamese family — give an exact day and time, or they'll show up on day one and embarrass everyone.",
       "idiom_glosses": [
         {
           "idiom": "Faire le tour de la famille",
           "literal": "Đi vòng gia đình",
+          "literal_en": "To do the round of the family",
           "meaning": "Đi thăm hết người thân theo chu trình.",
+          "meaning_en": "To make the family rounds — visit every relative in sequence over a holiday. The image is literally going from house to house in a loop.",
           "example": "Au Tết, on fait le tour de la famille en trois jours."
         },
         {
           "idiom": "Tomber à pic",
           "literal": "Rơi đúng đỉnh",
+          "literal_en": "To fall on the peak",
           "meaning": "Đến đúng lúc, hợp thời.",
+          "meaning_en": "To arrive at exactly the right moment — perfect timing. Anglophone equivalent: 'right on cue' or 'just in time'.",
           "example": "Ton invitation tombe à pic — je suis à Hanoï pour le Tết."
         },
         {
           "idiom": "Garder les coutumes",
           "literal": "Giữ các phong tục",
+          "literal_en": "To keep the customs",
           "meaning": "Duy trì truyền thống.",
+          "meaning_en": "To preserve / keep up traditions, often despite generational or geographic pressure to drop them. Used in diaspora contexts a lot.",
           "example": "Ma génération essaie de garder les coutumes du Tết, même à l'étranger."
         },
         {
           "idiom": "Renouer avec ses racines",
           "literal": "Nối lại với gốc rễ của mình",
+          "literal_en": "To retie with one's roots",
           "meaning": "Kết nối lại với nguồn gốc.",
+          "meaning_en": "To reconnect with one's roots — reestablish a tie with one's origin culture, family, or hometown. Anglophone equivalent: 'to reconnect with one's roots' (same image).",
           "example": "Le Tết, c'est l'occasion de renouer avec ses racines."
         }
       ],
@@ -7899,62 +8079,86 @@ export const lessons: FrenchLesson[] =           [
         {
           "type": "fill-blank",
           "instruction_vi": "Điền cụm vào câu giải thích Tết.",
+          "instruction_en": "Fill in each blank with the missing word in a sentence explaining Tết.",
           "items": [
             {
               "prompt": "Le Tết, c'est notre nouvel an ___.",
-              "answer": "lunaire"
+              "answer": "lunaire",
+              "hint_vi": "tính từ « âm lịch »",
+              "hint_en": "adjective 'lunar' — relating to the lunar calendar"
             },
             {
               "prompt": "On rentre dans son village ___.",
-              "answer": "natal"
+              "answer": "natal",
+              "hint_vi": "tính từ « nơi sinh ra »",
+              "hint_en": "adjective meaning 'native / where one was born' — describes a hometown"
             },
             {
               "prompt": "C'est sacré, on ne ___ personne.",
-              "answer": "dérange"
+              "answer": "dérange",
+              "hint_vi": "động từ « làm phiền »",
+              "hint_en": "verb 'to bother / disturb' (3rd-person singular, present)"
             },
             {
               "prompt": "Les enfants reçoivent une ___ rouge avec de l'argent.",
-              "answer": "enveloppe"
+              "answer": "enveloppe",
+              "hint_vi": "danh từ « phong bì »",
+              "hint_en": "noun 'envelope' — what holds the lucky money (lì xì)"
             }
           ]
         },
         {
           "type": "matching",
           "instruction_vi": "Nối thuật ngữ Tết với định nghĩa.",
+          "instruction_en": "Match each Tết term with its definition.",
           "items": [
             {
               "prompt": "le xông đất",
-              "answer": "người đầu tiên đến nhà sáng mùng một (first-foot visitor on Lunar New Year morning)"
+              "answer": "người đầu tiên đến nhà sáng mùng một (first-foot visitor on Lunar New Year morning)",
+              "english": "le xông đất → the first visitor to enter the house on the morning of Lunar New Year — believed to set the family's luck for the year"
             },
             {
               "prompt": "lì xì",
-              "answer": "phong bì đỏ chúc Tết có tiền (red envelope with money for Lunar New Year)"
+              "answer": "phong bì đỏ chúc Tết có tiền (red envelope with money for Lunar New Year)",
+              "english": "lì xì → red envelope with money, given by elders to children and unmarried young adults during Tết, accompanied by a spoken blessing"
             },
             {
               "prompt": "le bánh chưng",
-              "answer": "bánh gạo vuông biểu tượng đất (square sticky-rice cake symbolising the earth)"
+              "answer": "bánh gạo vuông biểu tượng đất (square sticky-rice cake symbolising the earth)",
+              "english": "le bánh chưng → square sticky-rice cake symbolizing the earth — the signature Tết food, requires hours of cooking"
             },
             {
               "prompt": "l'autel des ancêtres",
-              "answer": "bàn thờ tổ tiên (ancestor altar)"
+              "answer": "bàn thờ tổ tiên (ancestor altar)",
+              "english": "l'autel des ancêtres → ancestor altar — a household shrine where offerings are made to deceased family members, central to Vietnamese family religion"
             }
           ]
         },
         {
           "type": "translation",
           "instruction_vi": "Dịch sang tiếng Pháp B2 — giọng kể chuyện.",
+          "instruction_en": "Translate each Vietnamese sentence into B2 narrative French.",
           "items": [
             {
               "prompt": "Người Việt về quê kể cả nếu làm cách 1500 km.",
-              "answer": "Les Vietnamiens rentrent dans leur village natal, même s'ils travaillent à 1500 km."
+              "answer": "Les Vietnamiens rentrent dans leur village natal, même s'ils travaillent à 1500 km.",
+              "english": "Vietnamese people go back to their hometown even if they work 1500 km away.",
+              "hint_vi": "« rentrer dans » + « même si » (kể cả nếu)",
+              "hint_en": "use 'rentrer dans' (to return to) + 'même si' (even if)"
             },
             {
               "prompt": "Tiền ít quan trọng hơn câu chúc.",
-              "answer": "L'argent compte moins que la formule."
+              "answer": "L'argent compte moins que la formule.",
+              "english": "The money matters less than the formula (the spoken blessing).",
+              "hint_vi": "« compter moins que » = ít quan trọng hơn",
+              "hint_en": "'compter moins que' = to count for less than / matter less than"
             },
             {
               "prompt": "Đó cũng là dịp duy nhất chị họ em ở Sài Gòn cùng nhà với chú em ở Hà Nội.",
-              "answer": "C'est aussi le seul moment où ma cousine de Saigon est au même endroit que mon oncle de Hanoï."
+              "answer": "C'est aussi le seul moment où ma cousine de Saigon est au même endroit que mon oncle de Hanoï.",
+              "english": "It's also the only time my cousin from Saigon is in the same place as my uncle from Hanoi.",
+              "hint_vi": "« le seul moment où » + « au même endroit que »",
+              "hint_en": "'le seul moment où' (the only time when) + 'au même endroit que' (in the same place as)"
             }
           ]
         }
