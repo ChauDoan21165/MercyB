@@ -34,6 +34,8 @@ import type {
 
 export type LanguageCode = "french" | "german";
 
+export type LessonUiLang = "vi" | "en";
+
 type AnyLevel = FrenchCefrLevel | GermanCefrLevel;
 type AnyLesson = FrenchLesson | GermanLesson;
 
@@ -71,9 +73,10 @@ const ACCENT_COLORS: Record<string, { light: string; medium: string; dark: strin
 
 type Props = {
   config: LanguageLessonsConfig;
+  uiLang?: LessonUiLang;
 };
 
-export default function LanguageLessonsView({ config }: Props) {
+export default function LanguageLessonsView({ config, uiLang = "vi" }: Props) {
   const colors = ACCENT_COLORS[config.accent];
   const [showVocab, setShowVocab] = useState(false);
   const [level, setLevel] = useState<AnyLevel>("A1");
@@ -217,7 +220,7 @@ export default function LanguageLessonsView({ config }: Props) {
               <ol className="space-y-1.5">
                 {catLessons.map((lesson) => (
                   <li key={lesson.id}>
-                    <LessonTile lesson={lesson} colors={colors} />
+                    <LessonTile lesson={lesson} colors={colors} uiLang={uiLang} />
                   </li>
                 ))}
               </ol>
@@ -229,14 +232,47 @@ export default function LanguageLessonsView({ config }: Props) {
   );
 }
 
+function FallbackBadge() {
+  // Shown when uiLang === "en" but the lesson has no EN translation for
+  // this section; the renderer falls back to the Vietnamese text. The
+  // badge sets the right expectation rather than silently hiding the gap.
+  return (
+    <span className="ml-1 inline-flex items-center rounded-sm bg-slate-200 px-1 py-px text-[9px] font-semibold uppercase tracking-wide text-slate-600">
+      VI
+    </span>
+  );
+}
+
+// EN pedagogy fields exist on the German Lesson type today (PR #439) and
+// are being rolled out to French (PR #451). We read them through a narrow
+// structural cast so this UI lands cleanly regardless of merge order; the
+// `??` fallback below handles lessons that haven't been bilingualized yet.
+type LessonEnFields = {
+  cultural_notes_en?: string;
+  tip_advice_en?: string;
+};
+type SentenceEnFields = {
+  pronunciation_focus_en?: string[];
+};
+
 function LessonTile({
   lesson,
   colors,
+  uiLang,
 }: {
   lesson: FrenchLesson | GermanLesson;
   colors: { dark: string; light: string; medium: string };
+  uiLang: LessonUiLang;
 }) {
   const [open, setOpen] = useState(false);
+  const isEn = uiLang === "en";
+  const lessonEn = lesson as LessonEnFields;
+  const culturalEn = lessonEn.cultural_notes_en;
+  const tipEn = lessonEn.tip_advice_en;
+  const culturalText = isEn ? (culturalEn ?? lesson.cultural_notes_vi) : lesson.cultural_notes_vi;
+  const tipText = isEn ? (tipEn ?? lesson.tip_advice_vi) : lesson.tip_advice_vi;
+  const culturalFallback = isEn && !culturalEn;
+  const tipFallback = isEn && !tipEn;
   return (
     <article className="overflow-hidden rounded-lg border border-slate-200 bg-white">
       <button
@@ -261,40 +297,50 @@ function LessonTile({
       {open && (
         <div className="border-t border-slate-100 bg-slate-50/60 px-3 py-2 space-y-2">
           <ol className="space-y-1.5">
-            {lesson.sentences.map((s, i) => (
-              <li
-                key={i}
-                className="rounded-lg border border-slate-200 bg-white p-2"
-              >
-                <p className="text-xs font-medium text-slate-900">{s.en}</p>
-                <p className="mt-0.5 text-[10px] text-slate-600">{s.vi}</p>
-                {s.pronunciation_focus.length > 0 && (
-                  <p className={`mt-0.5 inline-flex items-center gap-1 text-[10px] text-${colors.dark}`}>
-                    <Volume2 className="h-2.5 w-2.5" />
-                    {s.pronunciation_focus.join(" · ")}
-                  </p>
-                )}
-              </li>
-            ))}
+            {lesson.sentences.map((s, i) => {
+              const sEn = s as SentenceEnFields;
+              const pronFocus = isEn
+                ? (sEn.pronunciation_focus_en ?? s.pronunciation_focus)
+                : s.pronunciation_focus;
+              const pronFallback = isEn && !sEn.pronunciation_focus_en;
+              return (
+                <li
+                  key={i}
+                  className="rounded-lg border border-slate-200 bg-white p-2"
+                >
+                  <p className="text-xs font-medium text-slate-900">{s.en}</p>
+                  <p className="mt-0.5 text-[10px] text-slate-600">{s.vi}</p>
+                  {pronFocus.length > 0 && (
+                    <p className={`mt-0.5 inline-flex items-center gap-1 text-[10px] text-${colors.dark}`}>
+                      <Volume2 className="h-2.5 w-2.5" />
+                      {pronFocus.join(" · ")}
+                      {pronFallback && <FallbackBadge />}
+                    </p>
+                  )}
+                </li>
+              );
+            })}
           </ol>
 
           <div className={`rounded-lg border border-${colors.medium} bg-${colors.light}/60 p-2`}>
             <p className={`inline-flex items-center gap-1 text-[10px] font-semibold uppercase tracking-wide text-${colors.dark}`}>
               <Sparkles className="h-2.5 w-2.5" />
-              Văn hoá
+              {isEn ? "Culture" : "Văn hoá"}
+              {culturalFallback && <FallbackBadge />}
             </p>
             <p className="mt-0.5 text-[10px] leading-relaxed text-slate-700">
-              {lesson.cultural_notes_vi}
+              {culturalText}
             </p>
           </div>
 
           <div className="rounded-lg border border-amber-100 bg-amber-50/60 p-2">
             <p className="inline-flex items-center gap-1 text-[10px] font-semibold uppercase tracking-wide text-amber-700">
               <Lightbulb className="h-2.5 w-2.5" />
-              Mẹo học
+              {isEn ? "Tip" : "Mẹo học"}
+              {tipFallback && <FallbackBadge />}
             </p>
             <p className="mt-0.5 text-[10px] leading-relaxed text-slate-700">
-              {lesson.tip_advice_vi}
+              {tipText}
             </p>
           </div>
         </div>

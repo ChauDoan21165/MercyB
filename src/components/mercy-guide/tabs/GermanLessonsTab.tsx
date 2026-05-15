@@ -8,6 +8,7 @@
 import LanguageLessonsView, {
   type LanguageLessonsConfig,
 } from "./LanguageLessonsView";
+import LessonUiLangToggle, { useLessonUiLang } from "./LessonUiLangToggle";
 import {
   GERMAN_CATEGORIES,
   loadLessonsForLevel,
@@ -29,5 +30,13 @@ const GERMAN_CONFIG: LanguageLessonsConfig = {
 };
 
 export default function GermanLessonsTab() {
-  return <LanguageLessonsView config={GERMAN_CONFIG} />;
+  const [uiLang, setUiLang] = useLessonUiLang();
+  return (
+    <div className="space-y-2">
+      <div className="flex justify-end px-1 pt-1">
+        <LessonUiLangToggle value={uiLang} onChange={setUiLang} />
+      </div>
+      <LanguageLessonsView config={GERMAN_CONFIG} uiLang={uiLang} />
+    </div>
+  );
 }
