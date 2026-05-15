@@ -268,14 +268,29 @@ export function LessonRenderer({ lesson, theme, uiLanguage = "vi" }: LessonRende
                       {s.romanization}
                     </p>
                   )}
-                  {(() => {
-                    const gloss = pick(uiLanguage, s.en, s.vi);
-                    return gloss ? (
-                      <p className="mt-0.5 text-xs font-medium text-slate-700">
-                        {gloss}
-                      </p>
-                    ) : null;
-                  })()}
+                  {uiLanguage === "en" ? (
+                    <>
+                      {s.en && (
+                        <p className="mt-0.5 text-xs font-medium text-slate-700">
+                          {s.en}
+                        </p>
+                      )}
+                      {s.vi && (
+                        <p className="mt-0.5 text-xs text-slate-500">{s.vi}</p>
+                      )}
+                    </>
+                  ) : (
+                    <>
+                      {s.vi && (
+                        <p className="mt-0.5 text-xs font-medium text-slate-700">
+                          {s.vi}
+                        </p>
+                      )}
+                      {s.en && (
+                        <p className="mt-0.5 text-xs text-slate-500">{s.en}</p>
+                      )}
+                    </>
+                  )}
                   {(() => {
                     const focus = pick(
                       uiLanguage,
