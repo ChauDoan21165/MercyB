@@ -2497,6 +2497,12 @@ export const lessons: FrenchLesson[] = [
           "rendez-vous → rãn-dé-vu",
           "étudiant → é-tu-diãn",
           "rentrée → rãn-tré"
+        ],
+        "pronunciation_focus_en": [
+          "objet → 'ob-ZHEH' — final 't' silent; 'j' = 'zh' (as in 'pleasure')",
+          "rendez-vous → 'rahn-day-VOO' — nasal 'en'; 'ou' = 'oo' in 'boot'",
+          "étudiant → 'ay-too-DYAHN' — final 'an' nasal; French 'u' rounded (lips for 'oo', say 'ee')",
+          "rentrée → 'rahn-TRAY' — nasal 'en'; '-ée' = 'ay'"
         ]
       },
       {
@@ -2506,6 +2512,11 @@ export const lessons: FrenchLesson[] = [
           "solliciter → so-li-si-té",
           "au sujet → o sy-jè",
           "dossier → do-sié"
+        ],
+        "pronunciation_focus_en": [
+          "solliciter → 'soh-lee-see-TAY' — double 'll' is one 'l'; '-er' = 'ay'",
+          "au sujet → 'oh soo-ZHEH' — 'au' = 'oh'; 'j' = 'zh'; final 't' silent",
+          "dossier → 'doh-SYAY' — '-ier' = 'yay'; final 'r' silent here"
         ]
       },
       {
@@ -2515,6 +2526,11 @@ export const lessons: FrenchLesson[] = [
           "attestation → a-tes-ta-sion",
           "validée → va-li-dé",
           "mars → mars"
+        ],
+        "pronunciation_focus_en": [
+          "attestation → 'ah-tes-tah-SYON' — French '-tion' = 'syon' (NOT 'shun')",
+          "validée → 'vah-lee-DAY' — feminine past participle; '-ée' = 'ay'",
+          "mars → 'MARSS' — final 's' IS sounded here (exception); 'a' = 'ah'"
         ]
       },
       {
@@ -2525,6 +2541,12 @@ export const lessons: FrenchLesson[] = [
           "créneau → kré-no",
           "disponible → dis-po-nibl",
           "en ligne → ãn lin-iơ"
+        ],
+        "pronunciation_focus_en": [
+          "faute → 'foht' — 'au' = 'oh'; final '-e' silent",
+          "créneau → 'kray-NOH' — '-eau' = 'oh' (one syllable)",
+          "disponible → 'dees-poh-NEEBL' — final '-le' barely voiced",
+          "en ligne → 'ahn LEEN-yuh' — nasal 'en'; 'gn' = 'ny' as in 'canyon'"
         ]
       },
       {
@@ -2534,102 +2556,123 @@ export const lessons: FrenchLesson[] = [
           "agréer → a-gré-é",
           "salutations → sa-lu-ta-sion",
           "distinguées → dis-tan-gé"
+        ],
+        "pronunciation_focus_en": [
+          "agréer → 'ah-gray-AY' — two distinct 'ay' sounds at the end",
+          "salutations → 'sah-loo-tah-SYON' — French 'u' rounded; '-tion' = 'syon'",
+          "distinguées → 'dees-tan-GAY' — nasal 'in'; 'gu' = hard 'g' before 'é'"
         ]
       }
     ],
     "cultural_notes_vi": "Email hành chính Pháp khác hẳn email ở Việt Nam: phải có « objet » (tiêu đề ngắn, súc tích), một câu mở « Madame, Monsieur, » (không « Dear Sir/Madam », không « Bonjour »), thân email trong 4-6 câu, và một câu kết chuẩn « Je vous prie d'agréer… ». Sai một bước trong cấu trúc này sẽ làm email của bạn bị xếp xuống cuối hàng — lãnh sự xử lý hàng trăm email/ngày, họ cần nhận diện format quen thuộc trong 5 giây. Đừng nhầm với email công ty Pháp (cũng formal nhưng linh hoạt hơn) hay email cá nhân (tự do). Lãnh sự, prefecture, CAF, Sécurité sociale — tất cả dùng register này. Đặc biệt với visa: nhân viên lãnh sự là gatekeeper của giấc mơ du học, nên đầu tư 20 phút để viết một email đúng chuẩn còn quan trọng hơn nội dung.",
+    "cultural_notes_en": "French administrative email is its own register and looks nothing like the casual 'Hi John,' / 'Best,' style most US/UK English speakers default to. The rules are rigid: every email needs a precise « objet » (subject line, terse and specific), an opening « Madame, Monsieur, » with the comma (not « Dear Sir/Madam » — that's translation-from-English; not « Bonjour » — too informal for officialdom), a body in 4-6 sentences (one idea per sentence), and a fixed closing formula « Je vous prie d'agréer… ». Skip a step and you get triaged to the bottom of the queue — consulate staff process hundreds of emails a day and they're scanning for familiar format in 5 seconds. The same register applies to préfectures, CAF (family benefits), Sécurité sociale, and university administration. For visa staff specifically: they are the gatekeepers of your study-abroad plan, so the 20 minutes you spend making your email format-perfect matters more than the content of the request itself.",
     "tip_advice_vi": "Cấu trúc bắt buộc: (1) Objet rõ ràng — bao gồm loại visa và năm học. (2) Salutation « Madame, Monsieur, » với dấu phẩy. (3) Thân email — viết theo nguyên tắc một câu một ý: tự giới thiệu, lý do email, tình trạng hiện tại, đề xuất giải pháp. (4) Câu chốt « Je vous prie d'agréer, Madame, Monsieur, l'expression de mes salutations distinguées. ». (5) Chữ ký họ tên đầy đủ, mã số dossier Études en France nếu có. Tránh : emoji, dấu chấm than, viết tắt, đoạn dài quá 4 dòng. Đính kèm chỉ những gì cần — đừng spam đính kèm. Gửi từ một địa chỉ email professionnelle (họ.tên@) chứ không phải tieucongchua99@.",
+    "tip_advice_en": "Mandatory structure: (1) Clear « objet » — include visa type and academic year (e.g. « Demande de rendez-vous visa étudiant — rentrée 2026 »). (2) Greeting « Madame, Monsieur, » with the comma — this is the gendered-neutral default when you don't know the recipient. (3) Body — one idea per sentence: self-introduction, reason for emailing, current status, proposed resolution. (4) Closing « Je vous prie d'agréer, Madame, Monsieur, l'expression de mes salutations distinguées. ». (5) Full name in the signature, plus your Études en France dossier number if you have one. Avoid: emoji, exclamation marks, contractions like « d'mande », paragraphs over 4 lines. Attach only essentials — no resume spam. Send from a professional address (firstname.lastname@) — not your old Hotmail handle from age 14. The format itself signals « I take this seriously » before they've read a single line.",
     "vocabulary": [
       {
         "word": "un dossier de visa",
         "en": "a visa file",
         "vi": "hồ sơ visa",
         "pos": "n.m.",
-        "pronunciation_vi": "do-sié dơ vi-za"
+        "pronunciation_vi": "do-sié dơ vi-za",
+        "pronunciation_en": "uhn doh-SYAY duh vee-ZAH — 'visa' has the French 'a' = 'ah'"
       },
       {
         "word": "une attestation Campus France",
         "en": "Campus France attestation",
         "vi": "giấy chứng nhận Campus France",
         "pos": "n.f.",
-        "pronunciation_vi": "a-tes-ta-sion kãm-pyus frãns"
+        "pronunciation_vi": "a-tes-ta-sion kãm-pyus frãns",
+        "pronunciation_en": "ah-tes-tah-SYON kahm-pyoos frahns — '-tion' = 'syon'; nasal 'an' at end of 'France'"
       },
       {
         "word": "un créneau (de rendez-vous)",
         "en": "appointment slot",
         "vi": "khung giờ hẹn",
         "pos": "n.m.",
-        "pronunciation_vi": "kré-no"
+        "pronunciation_vi": "kré-no",
+        "pronunciation_en": "kray-NOH — '-eau' = 'oh' (one syllable, not 'ee-oh')"
       },
       {
         "word": "se permettre de",
         "en": "to take the liberty of",
         "vi": "xin phép",
         "pos": "v.",
-        "pronunciation_vi": "sơ pèr-mè-trơ dơ"
+        "pronunciation_vi": "sơ pèr-mè-trơ dơ",
+        "pronunciation_en": "suh pair-MET-truh duh — soft uvular 'r'; final '-re' barely voiced"
       },
       {
         "word": "solliciter",
         "en": "to formally request",
         "vi": "liên hệ chính thức",
         "pos": "v.",
-        "pronunciation_vi": "so-li-si-té"
+        "pronunciation_vi": "so-li-si-té",
+        "pronunciation_en": "soh-lee-see-TAY — false friend, NOT 'solicit' (sales sense); means formal request"
       },
       {
         "word": "une plateforme de prise de rendez-vous",
         "en": "appointment booking platform",
         "vi": "trang đặt lịch hẹn",
         "pos": "n.f.",
-        "pronunciation_vi": "pla-tform dơ priz dơ rãn-dé-vu"
+        "pronunciation_vi": "pla-tform dơ priz dơ rãn-dé-vu",
+        "pronunciation_en": "plat-FORM duh PREEZ duh rahn-day-VOO — French 'r' uvular throughout"
       },
       {
         "word": "la rentrée universitaire",
         "en": "academic start (September)",
         "vi": "kỳ nhập học",
         "pos": "n.f.",
-        "pronunciation_vi": "rãn-tré u-ni-ver-si-ter"
+        "pronunciation_vi": "rãn-tré u-ni-ver-si-ter",
+        "pronunciation_en": "lah rahn-TRAY oo-nee-vair-see-TAIR — 'rentrée' is THE September moment in French life"
       },
       {
         "word": "sous huitaine",
         "en": "within a week",
         "vi": "trong vòng tám ngày",
         "pos": "expr.",
-        "pronunciation_vi": "su uy-tèn"
+        "pronunciation_vi": "su uy-tèn",
+        "pronunciation_en": "soo wee-TEN — admin idiom; 'huitaine' = 8-day period (NOT exactly 7)"
       },
       {
         "word": "agréer",
         "en": "to accept (formal)",
         "vi": "chấp nhận (lịch thiệp)",
         "pos": "v.",
-        "pronunciation_vi": "a-gré-é"
+        "pronunciation_vi": "a-gré-é",
+        "pronunciation_en": "ah-gray-AY — only used in fossilized formula 'agréer mes salutations'"
       },
       {
         "word": "l'expression de mes salutations distinguées",
         "en": "my distinguished salutations (closing)",
         "vi": "lời chào trân trọng",
         "pos": "expr.",
-        "pronunciation_vi": "lex-prè-sion dơ mé sa-lu-ta-sion dis-tan-gé"
+        "pronunciation_vi": "lex-prè-sion dơ mé sa-lu-ta-sion dis-tan-gé",
+        "pronunciation_en": "lex-press-YON duh may sah-loo-tah-SYON dees-tan-GAY — memorize as one block"
       }
     ],
     "dialogue": [
       {
         "speaker": "Em (gọi điện hotline)",
         "text": "Bonjour, j'ai envoyé un email il y a dix jours sans réponse.",
+        "en": "Hello, I sent an email ten days ago and haven't heard back.",
         "vi": "Chào, em đã gửi email mười ngày trước không có phản hồi."
       },
       {
         "speaker": "Agent",
         "text": "Quel est l'objet précis et la date d'envoi ?",
+        "en": "What was the exact subject line and the send date?",
         "vi": "Tiêu đề chính xác và ngày gửi?"
       },
       {
         "speaker": "Em",
         "text": "« Demande de rendez-vous visa étudiant rentrée 2026 », envoyé le 5 mai.",
+        "en": "« Request for student-visa appointment, September 2026 intake », sent on May 5th.",
         "vi": "« Xin lịch hẹn visa du học kỳ 2026 », gửi ngày 5 tháng 5."
       },
       {
         "speaker": "Agent",
         "text": "Je vois votre dossier. Un créneau s'est libéré pour le 22 mai à 9h30.",
+        "en": "I can see your file. A slot has opened up for May 22nd at 9:30 a.m.",
         "vi": "Tôi thấy hồ sơ rồi. Có một khung giờ trống ngày 22/5 lúc 9h30."
       }
     ],
@@ -2637,61 +2680,73 @@ export const lessons: FrenchLesson[] = [
       {
         "speaker": "Em (rédigeant l'email)",
         "text": "Premier essai. Objet : « Demande de rendez-vous pour visa étudiant — rentrée septembre 2026 ».",
+        "en": "First draft. Subject: « Request for student-visa appointment — September 2026 intake ».",
         "vi": "Lần thử đầu. Objet: « Xin lịch hẹn visa du học — kỳ nhập học tháng 9 năm 2026 »."
       },
       {
         "speaker": "Em",
         "text": "Madame, Monsieur,",
+        "en": "Madam, Sir,",
         "vi": "Kính gửi quý vị,"
       },
       {
         "speaker": "Em",
         "text": "Je me permets de vous solliciter au sujet de mon dossier de visa long séjour pour études.",
+        "en": "I take the liberty of contacting you regarding my long-stay student-visa file.",
         "vi": "Em xin phép liên hệ về hồ sơ visa du học dài hạn của em."
       },
       {
         "speaker": "Em",
         "text": "Je suis Madame Trần Mai, de nationalité vietnamienne, admise en master « IA et Société » à l'Université Paris-Saclay pour la rentrée universitaire 2026.",
+        "en": "I am Trần Mai, a Vietnamese national, admitted to the Master's program « AI and Society » at Université Paris-Saclay for the 2026 academic year.",
         "vi": "Em là chị Trần Mai, quốc tịch Việt Nam, đã trúng tuyển master « AI và Xã hội » tại Đại học Paris-Saclay cho kỳ 2026."
       },
       {
         "speaker": "Em",
         "text": "Mon attestation Campus France a été validée le 15 mars 2026 (numéro de dossier EEF-2026-VN-04781).",
+        "en": "My Campus France attestation was validated on March 15, 2026 (file number EEF-2026-VN-04781).",
         "vi": "Giấy chứng nhận Campus France của em đã được duyệt ngày 15/3/2026 (số dossier EEF-2026-VN-04781)."
       },
       {
         "speaker": "Em",
         "text": "Faute de créneau disponible sur la plateforme de prise de rendez-vous depuis trois semaines, je n'ai pu prendre rendez-vous pour le dépôt physique de mon dossier au consulat.",
+        "en": "With no slot available on the booking platform for the past three weeks, I have been unable to schedule the in-person submission of my file at the consulate.",
         "vi": "Vì không có khung giờ trống trên trang đặt lịch trong ba tuần qua, em chưa đặt được lịch nộp trực tiếp tại lãnh sự."
       },
       {
         "speaker": "Em",
         "text": "La date de début des cours étant fixée au 1er septembre, je vous serais très reconnaissante de bien vouloir m'indiquer une solution — soit en m'attribuant un créneau exceptionnel, soit en me précisant la date d'ouverture de nouveaux créneaux.",
+        "en": "As classes begin on September 1st, I would be very grateful if you could indicate a way forward — either by allocating me an exceptional slot, or by specifying when new slots will open.",
         "vi": "Ngày khai giảng là 1/9, em rất biết ơn nếu quý vị có thể chỉ cho em một giải pháp — hoặc cấp một khung giờ ngoại lệ, hoặc cho em biết ngày mở khung mới."
       },
       {
         "speaker": "Em",
         "text": "Je reste à votre disposition pour tout complément d'information.",
+        "en": "I remain at your disposal for any further information.",
         "vi": "Em luôn sẵn sàng nếu quý vị cần thêm thông tin."
       },
       {
         "speaker": "Em",
         "text": "Je vous prie d'agréer, Madame, Monsieur, l'expression de mes salutations distinguées.",
+        "en": "Please accept, Madam, Sir, my distinguished salutations.",
         "vi": "Trân trọng kính chào quý vị."
       },
       {
         "speaker": "Em",
         "text": "Trần Thị Mai — Numéro de dossier Études en France : EEF-2026-VN-04781 — Téléphone : +84 ...",
+        "en": "Trần Thị Mai — Études en France file number: EEF-2026-VN-04781 — Phone: +84 ...",
         "vi": "Trần Thị Mai — Số dossier Études en France: EEF-2026-VN-04781 — Số điện thoại: +84 ..."
       },
       {
         "speaker": "(Réponse 5 jours plus tard)",
         "text": "Madame, Suite à votre demande, un créneau exceptionnel vous est attribué le 22 mai à 9h30. Merci de vous présenter au consulat avec votre dossier complet (liste jointe). Cordialement, Service des visas.",
+        "en": "(Reply 5 days later) Madam, Following your request, you have been allocated an exceptional slot on May 22nd at 9:30 a.m. Please present yourself at the consulate with your complete file (list attached). Kind regards, Visa Department.",
         "vi": "(Phản hồi 5 ngày sau) Kính chị, theo yêu cầu của chị, một khung giờ ngoại lệ đã được cấp cho ngày 22/5 lúc 9h30. Đề nghị chị có mặt tại lãnh sự với hồ sơ đầy đủ (danh sách đính kèm). Cordialement, Phòng visa."
       },
       {
         "speaker": "Em (répond)",
         "text": "Madame, Monsieur, je vous remercie vivement pour ce créneau. Je confirme ma présence le 22 mai à 9h30 avec l'ensemble des pièces requises. Cordialement, Trần Thị Mai.",
+        "en": "Em (reply) Madam, Sir, thank you very much for this slot. I confirm my attendance on May 22nd at 9:30 a.m. with all required documents. Kind regards, Trần Thị Mai.",
         "vi": "Em (trả lời) Kính gửi quý vị, em chân thành cảm ơn về khung giờ này. Em xác nhận có mặt ngày 22/5 lúc 9h30 với đầy đủ giấy tờ yêu cầu. Cordialement, Trần Thị Mai."
       }
     ],
@@ -2700,30 +2755,44 @@ export const lessons: FrenchLesson[] = [
       "Lãnh sự trả lời rằng tất cả các khung giờ tháng 7 đã hết, sớm nhất là tháng 9 (sau khai giảng). Trả lời email với một đề xuất cụ thể (nộp hồ sơ qua bưu điện đăng ký, hoặc xin thư tạm cho trường hoãn ngày khai giảng).",
       "Viết email cảm ơn sau khi visa được cấp — ngắn gọn, đúng register hành chính, không nịnh hót."
     ],
+    "roleplay_prompts_en": [
+      "You need to email the French consulate to request an urgent visa appointment — your Campus France file is complete and the September 1st start date is closing in. Write a six-line email following the strict French administrative structure.",
+      "The consulate replies that all July slots are booked and the earliest opening is in September (after your classes begin). Reply with a concrete proposal — for example, submitting the file by registered mail, or requesting a provisional letter so your university can defer your start date.",
+      "Write a thank-you email after the visa is granted. Keep it short, in administrative register, no flattery — French formality, not American warmth."
+    ],
     "register_notes": "Email hành chính Pháp với cơ quan công quyền (lãnh sự, préfecture, CAF, sécurité sociale, université): luôn « Madame, Monsieur, » với dấu phẩy ở đầu — không « Bonjour », không « Cher Monsieur ». Câu kết « Je vous prie d'agréer, Madame, Monsieur, l'expression de mes salutations distinguées. » là chuẩn cho lần đầu hoặc khi đề nghị quan trọng. Với email tiếp theo trong cùng chuỗi có thể dùng « Cordialement » ngắn hơn. Tránh: « salut », « hi », emoji, « lol », ba dấu chấm than, viết hoa toàn câu (LIKE THIS — bị xem là hét). Đừng dùng « tu » với cơ quan công quyền dù bạn nói chuyện với một nhân viên trẻ qua hotline — họ không phản đối nhưng đó là tín hiệu thiếu trang trọng.",
+    "register_notes_en": "French administrative email to a public-sector body (consulate, préfecture, CAF, Sécurité sociale, université): always open with « Madame, Monsieur, » followed by a comma — never « Bonjour » (too casual for a formal request to an institution), never « Cher Monsieur » (too personal, presumes acquaintance). The closing « Je vous prie d'agréer, Madame, Monsieur, l'expression de mes salutations distinguées. » is the default for a first contact or any significant request. On follow-up emails in the same thread, the shorter « Cordialement » is acceptable. Avoid: « salut », « hi », emoji, « lol », triple exclamation marks, ALL-CAPS sentences (read as shouting in French as much as in English). Don't shift to « tu » even when you're chatting with a young hotline agent on the phone — they won't push back, but it telegraphs that you don't know the register and it can subtly cost you goodwill.",
     "idiom_glosses": [
       {
         "idiom": "Faute de mieux",
         "literal": "Thiếu cái tốt hơn",
+        "literal_en": "for lack of better",
         "meaning": "Vì không có lựa chọn nào khác.",
+        "meaning_en": "for want of a better option — used when settling for the only available choice",
         "example": "Faute de mieux, j'ai envoyé l'email au standard générique."
       },
       {
         "idiom": "Sous huitaine",
         "literal": "Trong tám ngày",
+        "literal_en": "within eight days",
         "meaning": "Trong vòng một tuần (cụm hành chính).",
+        "meaning_en": "within a week — fossilized administrative phrasing, used in commitments and deadlines",
         "example": "L'administration s'engage à répondre sous huitaine."
       },
       {
         "idiom": "Prendre langue avec",
         "literal": "Cầm lưỡi với",
+        "literal_en": "to take tongue with",
         "meaning": "Liên hệ chính thức để bắt đầu thảo luận.",
+        "meaning_en": "to make formal first contact in order to open a discussion — a polished administrative idiom",
         "example": "J'ai pris langue avec le consulat la semaine dernière."
       },
       {
         "idiom": "Faire le tour de la question",
         "literal": "Đi quanh câu hỏi",
+        "literal_en": "to go around the question",
         "meaning": "Xử lý hết các khía cạnh của vấn đề.",
+        "meaning_en": "to address every angle of an issue thoroughly before deciding or replying",
         "example": "Faisons d'abord le tour de la question avant d'envoyer l'email."
       }
     ],
@@ -2731,6 +2800,7 @@ export const lessons: FrenchLesson[] = [
       {
         "type": "fill-blank",
         "instruction_vi": "Điền cụm vào email hành chính.",
+        "instruction_en": "Fill in the missing phrase in the administrative email.",
         "items": [
           {
             "prompt": "Je me ___ de vous solliciter au sujet de mon dossier.",
@@ -2753,28 +2823,30 @@ export const lessons: FrenchLesson[] = [
       {
         "type": "matching",
         "instruction_vi": "Nối cụm với register phù hợp.",
+        "instruction_en": "Match each closing formula with the right register.",
         "items": [
           {
             "prompt": "Je vous prie d'agréer mes salutations distinguées",
-            "answer": "très formel — première fois / autorité"
+            "answer": "très formel — première fois / autorité (most formal — first contact / authority)"
           },
           {
             "prompt": "Cordialement",
-            "answer": "formel neutre — emails suivants"
+            "answer": "formel neutre — emails suivants (neutral formal — follow-up emails)"
           },
           {
             "prompt": "Bien à vous",
-            "answer": "formel chaleureux — collègue connu"
+            "answer": "formel chaleureux — collègue connu (warm formal — known colleague)"
           },
           {
             "prompt": "Salut",
-            "answer": "informel — proche / ami (interdit avec autorité)"
+            "answer": "informel — proche / ami (informel — close friend; NEVER to authority)"
           }
         ]
       },
       {
         "type": "translation",
         "instruction_vi": "Dịch sang tiếng Pháp hành chính chuẩn.",
+        "instruction_en": "Translate into standard French administrative register.",
         "items": [
           {
             "prompt": "Em xin phép liên hệ về hồ sơ visa của em.",
