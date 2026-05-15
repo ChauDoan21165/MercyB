@@ -19,6 +19,11 @@ export const lessons: FrenchLesson[] = [
           "allô → a-lô",
           "nasal on",
           "silent -s"
+        ],
+        "pronunciation_focus_en": [
+          "allô → 'ah-LOH' (drop the 'h')",
+          "nasal -on in 'Dupont' — close your mouth toward the 'on' in 'song' but never actually pronounce the n",
+          "silent -s on 'pourrais' (no hiss at the end)"
         ]
       },
       {
@@ -28,6 +33,11 @@ export const lessons: FrenchLesson[] = [
           "eu → ơ",
           "ou → u",
           "silent -s"
+        ],
+        "pronunciation_focus_en": [
+          "no 'eu' here, but watch 'je' — like 'zh' in 'measure' + a short 'uh'",
+          "ou in 'vous' → 'oo' as in 'boot' (never 'ow' in 'house')",
+          "silent -s endings on 'pas' and 'vous'"
         ]
       },
       {
@@ -37,6 +47,11 @@ export const lessons: FrenchLesson[] = [
           "ou → u",
           "ez → ê",
           "nasal in"
+        ],
+        "pronunciation_focus_en": [
+          "ou in 'pourriez/vous' → 'oo' as in 'boot'",
+          "-ez ending → 'ay' in 'day' (the z is silent)",
+          "nasal -in in 'dans' — no English equivalent; aim for 'ahn' but never finish the n"
         ]
       },
       {
@@ -46,6 +61,11 @@ export const lessons: FrenchLesson[] = [
           "nasal in",
           "ée → ê",
           "ez → ê"
+        ],
+        "pronunciation_focus_en": [
+          "-igne in 'ligne' → 'lee-nyuh' (the gn is like 'ny' in 'canyon')",
+          "-ée in 'occupée' → 'ay' in 'day'",
+          "-ez in 'veuillez' → 'ay' in 'day'"
         ]
       },
       {
@@ -55,132 +75,157 @@ export const lessons: FrenchLesson[] = [
           "er → ê",
           "ou → u",
           "ée → ê"
+        ],
+        "pronunciation_focus_en": [
+          "-er in 'merci' → French 'air-see', not English 'er' (no r-color)",
+          "no 'ou' in this sentence — instead, watch 'journée': 'zhoor-NAY'",
+          "-ée → 'ay' in 'day'"
         ]
       }
     ],
     "cultural_notes_vi": "Ở Pháp, gọi công việc luôn bắt đầu 'Allô, bonjour' + tên. Không gọi thẳng vấn đề. Kết thúc 'Merci, au revoir'. Tránh 12h-14h.",
+    "cultural_notes_en": "In France a business call opens with 'Allô, bonjour' plus a name — never jump straight to the issue, or you'll sound rude. Always close with 'Merci, au revoir'. Avoid the 12:00–14:00 lunch window; calling then is the French equivalent of phoning a US office at 7 a.m.",
     "tip_advice_vi": "Tập 'Pourriez-vous répéter ?' — người Pháp nói nhanh. Nếu không nghe rõ: 'Pouvez-vous parler plus lentement ?'.",
+    "tip_advice_en": "Drill one phrase until it's automatic: 'Pourriez-vous répéter ?' ('Could you repeat?'). Native French is fast — asking for a repeat is expected, not embarrassing. If you still can't catch it, escalate to 'Pouvez-vous parler plus lentement ?' ('Can you speak more slowly?').",
     "vocabulary": [
       {
         "word": "décrocher",
         "en": "to pick up",
         "vi": "nhấc máy",
         "pos": "v.",
-        "pronunciation_vi": "đê-crô-sê"
+        "pronunciation_vi": "đê-crô-sê",
+        "pronunciation_en": "day-kroh-SHAY — final -cher is a soft 'sh' (like 'shy', not 'choo')"
       },
       {
         "word": "raccrocher",
         "en": "to hang up",
         "vi": "gác máy",
         "pos": "v.",
-        "pronunciation_vi": "ra-crô-sê"
+        "pronunciation_vi": "ra-crô-sê",
+        "pronunciation_en": "rah-kroh-SHAY — the double-r is still one French throat 'r', not a rolled trill"
       },
       {
         "word": "le combiné",
         "en": "handset",
         "vi": "ống nghe",
         "pos": "n.m.",
-        "pronunciation_vi": "côm-bi-nê"
+        "pronunciation_vi": "côm-bi-nê",
+        "pronunciation_en": "kohm-bee-NAY — 'om' is nasal (don't close the m); stress on the last syllable"
       },
       {
         "word": "composer",
         "en": "to dial",
         "vi": "bấm số",
         "pos": "v.",
-        "pronunciation_vi": "côm-pô-zê"
+        "pronunciation_vi": "côm-pô-zê",
+        "pronunciation_en": "kohm-poh-ZAY — nasal 'om' opening; final -er = 'ay' in 'day'"
       },
       {
         "word": "le répondeur",
         "en": "answering machine",
         "vi": "máy trả lời",
         "pos": "n.m.",
-        "pronunciation_vi": "rê-pôn-đơ"
+        "pronunciation_vi": "rê-pôn-đơ",
+        "pronunciation_en": "ray-pohn-DUHR — final -eur sounds like 'ur' in 'fur' but with rounded lips, no English r-color"
       },
       {
         "word": "la messagerie",
         "en": "voicemail",
         "vi": "hộp thư thoại",
         "pos": "n.f.",
-        "pronunciation_vi": "mê-sa-giơ-ri"
+        "pronunciation_vi": "mê-sa-giơ-ri",
+        "pronunciation_en": "may-sah-zhuh-REE — the -ge- is a soft 'zh' (like 's' in 'measure')"
       },
       {
         "word": "patienter",
         "en": "to wait/hold",
         "vi": "chờ máy",
         "pos": "v.",
-        "pronunciation_vi": "pa-xiăng-tê"
+        "pronunciation_vi": "pa-xiăng-tê",
+        "pronunciation_en": "pah-syahn-TAY — 'ti' before -er softens to 'sy', and 'en' is nasal (don't close the n)"
       },
       {
         "word": "le standard",
         "en": "switchboard",
         "vi": "tổng đài",
         "pos": "n.m.",
-        "pronunciation_vi": "xtăng-đa"
+        "pronunciation_vi": "xtăng-đa",
+        "pronunciation_en": "stahn-DAHR — nasal 'an'; final -d is silent (don't say it)"
       },
       {
         "word": "transférer",
         "en": "to transfer",
         "vi": "chuyển máy",
         "pos": "v.",
-        "pronunciation_vi": "trăng-xfê-rê"
+        "pronunciation_vi": "trăng-xfê-rê",
+        "pronunciation_en": "trahns-fay-RAY — nasal 'an'; both -er endings are 'ay'; the final r is throat-trilled, not rolled"
       },
       {
         "word": "joindre",
         "en": "to reach",
         "vi": "liên lạc được",
         "pos": "v.",
-        "pronunciation_vi": "joanh-đrơ"
+        "pronunciation_vi": "joanh-đrơ",
+        "pronunciation_en": "ZHWAHN-druh — starts with soft 'zh' (measure); 'oin' is nasal, like 'wan' without finishing the n"
       }
     ],
     "dialogue": [
       {
         "speaker": "A",
         "text": "Allô, Société Martin, je voudrais parler à Mme Lefèvre.",
-        "en": "Hello, Martin Company, I'd like to speak to Mrs. Lefèvre."
+        "en": "Hello, Martin Company, I'd like to speak to Mrs. Lefèvre.",
+        "vi": "A lô, công ty Martin, tôi muốn nói chuyện với bà Lefèvre."
       },
       {
         "speaker": "B",
         "text": "Ne quittez pas, je vous la passe.",
-        "en": "Hold on, I'll transfer you."
+        "en": "Hold on, I'll transfer you.",
+        "vi": "Xin giữ máy, tôi nối máy cho anh ngay."
       },
       {
         "speaker": "A",
         "text": "Merci beaucoup.",
-        "en": "Thank you very much."
+        "en": "Thank you very much.",
+        "vi": "Cảm ơn nhiều ạ."
       },
       {
         "speaker": "B",
         "text": "Désolé, elle est en réunion. Voulez-vous laisser un message ?",
-        "en": "Sorry, she's in a meeting. Leave a message?"
+        "en": "Sorry, she's in a meeting. Leave a message?",
+        "vi": "Xin lỗi, cô ấy đang họp. Anh có muốn để lại lời nhắn không?"
       }
     ],
     "exercises": [
       {
         "type": "fill-blank",
         "question": "Je voudrais parler ___ directeur.",
-        "answer": "au"
+        "answer": "au",
+        "hint_vi": "à + le → ?",
+        "hint_en": "preposition à + le → ?"
       },
       {
         "type": "matching",
         "pairs": [
           [
             "décrocher",
-            "nhấc máy"
+            "nhấc máy (pick up)"
           ],
           [
             "raccrocher",
-            "gác máy"
+            "gác máy (hang up)"
           ],
           [
             "le répondeur",
-            "máy trả lời"
+            "máy trả lời (answering machine)"
           ]
         ],
-        "instruction": "Nối từ Pháp với nghĩa Việt"
+        "instruction": "Nối từ Pháp với nghĩa Việt",
+        "instruction_en": "Match the French word with its meaning"
       },
       {
         "type": "translation",
         "vietnamese": "Xin lỗi, tôi không nghe rõ, nói chậm lại được không?",
+        "english": "Sorry, I can't hear you well, could you speak more slowly?",
         "french": "Désolé, je n'entends pas bien, pouvez-vous parler plus lentement ?"
       }
     ]
@@ -199,6 +244,11 @@ export const lessons: FrenchLesson[] = [
           "écris → ê-cri",
           "ez → ê",
           "nasal on"
+        ],
+        "pronunciation_focus_en": [
+          "écris → 'ay-KREE' (final -s is silent)",
+          "no -ez ending here — but watch 'rendez-vous': 'rahn-day-VOO', -ez = 'ay'",
+          "nasal -on in 'confirmer/notre' is light; nasal -en in 'rendez' is the bigger one"
         ]
       },
       {
@@ -208,6 +258,11 @@ export const lessons: FrenchLesson[] = [
           "eu → ơ",
           "ez → ê",
           "é → ê"
+        ],
+        "pronunciation_focus_en": [
+          "eu in 'veuillez' → like 'u' in 'put' but with rounded lips ('vuh-yay')",
+          "-ez again → 'ay' in 'day'",
+          "é in 'demandé' → sharp 'ay', not the lazy 'eh' of English"
         ]
       },
       {
@@ -217,6 +272,11 @@ export const lessons: FrenchLesson[] = [
           "n'hésitez → nê-zi-tê",
           "ez → ê",
           "nasal in"
+        ],
+        "pronunciation_focus_en": [
+          "n'hésitez → 'nay-zee-TAY' (the h is always silent in French)",
+          "-ez → 'ay'",
+          "nasal -in in 'informations' — sound 'an' without closing the n"
         ]
       },
       {
@@ -226,6 +286,11 @@ export const lessons: FrenchLesson[] = [
           "remercie → rơ-me-xi",
           "nasal an",
           "silent -e"
+        ],
+        "pronunciation_focus_en": [
+          "remercie → 'ruh-mer-SEE' — the first 'e' is a soft 'uh'",
+          "nasal -an in 'avance' — like 'on' in 'song' without finishing the n",
+          "silent final -e on 'remercie/réponse' (don't add a vowel)"
         ]
       },
       {
@@ -235,132 +300,157 @@ export const lessons: FrenchLesson[] = [
           "nasal an",
           "ou → u",
           "r uvulaire"
+        ],
+        "pronunciation_focus_en": [
+          "nasal -an in 'dans/attente' — open mouth, no final n",
+          "ou in 'retour' → 'oo' as in 'boot'",
+          "the French r at the end of 'retour' is a soft gargle in the throat, not the English tongue-r"
         ]
       }
     ],
     "cultural_notes_vi": "Email Pháp: chào → nội dung → kết. Dùng 'Bonjour' + tên. Kết 'Cordialement'. Không viết tắt.",
+    "cultural_notes_en": "French work emails follow a strict shape: greeting → body → sign-off. Open with 'Bonjour' plus the person's first name (or Madame/Monsieur + last name if formal). Close with 'Cordialement' for most cases. Never use texting shorthand or all-lowercase — it reads as careless.",
     "tip_advice_vi": "Luôn dùng 'vous'. Đọc lại 2 lần trước gửi. Tiêu đề phải rõ ràng.",
+    "tip_advice_en": "Default to 'vous' for any work contact you haven't been told to tutoyer — over-formality won't offend, but tutoiement too early will. Re-read every email twice before sending. The subject line ('Objet') must be specific: 'Question' is bad, 'Question sur la facture 2024-03' is good.",
     "vocabulary": [
       {
         "word": "l'objet",
         "en": "subject",
         "vi": "tiêu đề",
         "pos": "n.m.",
-        "pronunciation_vi": "ôb-giê"
+        "pronunciation_vi": "ôb-giê",
+        "pronunciation_en": "ohb-ZHAY — final -t is silent; the j is the soft 'zh' of 'measure'"
       },
       {
         "word": "le destinataire",
         "en": "recipient",
         "vi": "người nhận",
         "pos": "n.m.",
-        "pronunciation_vi": "đe-sti-na-te"
+        "pronunciation_vi": "đe-sti-na-te",
+        "pronunciation_en": "deh-stee-nah-TAIR — final -aire = 'air' as in 'fair' but no English r-color"
       },
       {
         "word": "ci-joint",
         "en": "attached",
         "vi": "đính kèm",
         "pos": "adj.",
-        "pronunciation_vi": "xi-joanh"
+        "pronunciation_vi": "xi-joanh",
+        "pronunciation_en": "see-ZHWAHN — 'oin' is a nasal vowel; never pronounce the final n or t"
       },
       {
         "word": "la pièce jointe",
         "en": "attachment",
         "vi": "tập tin đính kèm",
         "pos": "n.f.",
-        "pronunciation_vi": "pi-è-xe joanh-tơ"
+        "pronunciation_vi": "pi-è-xe joanh-tơ",
+        "pronunciation_en": "pyess ZHWAHNT — 'pièce' is one syllable; 'jointe' uses the same nasal 'oin' as ci-joint"
       },
       {
         "word": "envoyer",
         "en": "to send",
         "vi": "gửi",
         "pos": "v.",
-        "pronunciation_vi": "ăng-voa-iê"
+        "pronunciation_vi": "ăng-voa-iê",
+        "pronunciation_en": "ahn-vwah-YAY — nasal 'en' opening; 'oy' becomes 'wah'"
       },
       {
         "word": "recevoir",
         "en": "to receive",
         "vi": "nhận",
         "pos": "v.",
-        "pronunciation_vi": "rơ-xơ-voa"
+        "pronunciation_vi": "rơ-xơ-voa",
+        "pronunciation_en": "ruh-suh-VWAHR — two soft 'uh' sounds; -oir = 'wahr' with a throat r"
       },
       {
         "word": "répondre",
         "en": "to reply",
         "vi": "trả lời",
         "pos": "v.",
-        "pronunciation_vi": "rê-pôn-đrơ"
+        "pronunciation_vi": "rê-pôn-đrơ",
+        "pronunciation_en": "ray-POHN-druh — nasal -on; the final -dre is one syllable, not 'der'"
       },
       {
         "word": "transférer",
         "en": "to forward",
         "vi": "chuyển tiếp",
         "pos": "v.",
-        "pronunciation_vi": "trăng-xfê-rê"
+        "pronunciation_vi": "trăng-xfê-rê",
+        "pronunciation_en": "trahns-fay-RAY — same shape as the 'transfer' lesson 1, but in email context = 'forward'"
       },
       {
         "word": "la signature",
         "en": "signature",
         "vi": "chữ ký",
         "pos": "n.f.",
-        "pronunciation_vi": "xi-nha-tuya"
+        "pronunciation_vi": "xi-nha-tuya",
+        "pronunciation_en": "see-nyah-TUHR — '-gn-' = 'ny' (canyon); final -ure = 'ur' with rounded lips, not 'yur'"
       },
       {
         "word": "cordialement",
         "en": "best regards",
         "vi": "trân trọng",
         "pos": "adv.",
-        "pronunciation_vi": "co-đi-a-lơ-măng"
+        "pronunciation_vi": "co-đi-a-lơ-măng",
+        "pronunciation_en": "kor-dyah-luh-MAHN — final -ment is nasal 'ahn', no t pronounced"
       }
     ],
     "dialogue": [
       {
         "speaker": "A",
         "text": "Bonjour Marie, je t'envoie le rapport pour la réunion.",
-        "en": "Hi Marie, sending the report for the meeting."
+        "en": "Hi Marie, sending the report for the meeting.",
+        "vi": "Chào Marie, mình gửi báo cáo cho cuộc họp nhé."
       },
       {
         "speaker": "B",
         "text": "Merci Paul, je l'ai bien reçu. Tu as les chiffres ?",
-        "en": "Thanks Paul, received. Got the numbers?"
+        "en": "Thanks Paul, received. Got the numbers?",
+        "vi": "Cảm ơn Paul, mình nhận rồi. Số liệu đâu rồi?"
       },
       {
         "speaker": "A",
         "text": "Oui, je les ajoute en pièce jointe.",
-        "en": "Yes, adding as attachment."
+        "en": "Yes, adding as attachment.",
+        "vi": "Có, mình đính kèm luôn đây."
       },
       {
         "speaker": "B",
         "text": "Parfait, à demain !",
-        "en": "Perfect, see you tomorrow!"
+        "en": "Perfect, see you tomorrow!",
+        "vi": "Tuyệt, hẹn mai gặp nhé!"
       }
     ],
     "exercises": [
       {
         "type": "fill-blank",
         "question": "Veuillez trouver ci-___ le document.",
-        "answer": "joint"
+        "answer": "joint",
+        "hint_vi": "cụm cố định 'ci-?' nghĩa là đính kèm",
+        "hint_en": "fixed phrase 'ci-?' meaning 'attached herewith'"
       },
       {
         "type": "matching",
         "pairs": [
           [
             "l'objet",
-            "tiêu đề"
+            "tiêu đề (subject line)"
           ],
           [
             "envoyer",
-            "gửi"
+            "gửi (to send)"
           ],
           [
             "cordialement",
-            "trân trọng"
+            "trân trọng (best regards)"
           ]
         ],
-        "instruction": "Nối từ với nghĩa"
+        "instruction": "Nối từ với nghĩa",
+        "instruction_en": "Match the French word with its meaning"
       },
       {
         "type": "translation",
         "vietnamese": "Tôi viết email này để xác nhận cuộc họp ngày mai.",
+        "english": "I'm writing this email to confirm tomorrow's meeting.",
         "french": "Je vous écris pour confirmer la réunion de demain."
       }
     ]
@@ -379,6 +469,11 @@ export const lessons: FrenchLesson[] = [
           "réunion → rê-u-ni-on",
           "nasal en",
           "eu → ơ"
+        ],
+        "pronunciation_focus_en": [
+          "réunion → 'ray-oo-nyohn' — four syllables, with a nasal 'on' at the end",
+          "nasal -en in 'commence' — sound 'ahn' without finishing the n",
+          "no 'eu' in this sentence — but watch 'heures': 'UHR' (rounded-lip 'uh' + soft throat r)"
         ]
       },
       {
@@ -388,6 +483,11 @@ export const lessons: FrenchLesson[] = [
           "ordre → o-đrơ",
           "ou → u",
           "jour → giua"
+        ],
+        "pronunciation_focus_en": [
+          "ordre → 'OHR-druh' (one and a half syllables, throat r)",
+          "ou in 'du/jour' → 'oo' as in 'boot'",
+          "jour → 'zhoor' — soft 'zh' opening like the 's' in 'measure'"
         ]
       },
       {
@@ -397,6 +497,11 @@ export const lessons: FrenchLesson[] = [
           "ou → u",
           "ez → ê",
           "nasal en"
+        ],
+        "pronunciation_focus_en": [
+          "ou in 'pouvez/vous' → 'oo' as in 'boot'",
+          "-ez ending → 'ay' in 'day'",
+          "nasal -en in 'prendre' — keep mouth open, no final n"
         ]
       },
       {
@@ -406,6 +511,11 @@ export const lessons: FrenchLesson[] = [
           "propose → prô-pô-z",
           "nasal an",
           "suivant → xu-i-văng"
+        ],
+        "pronunciation_focus_en": [
+          "propose → 'proh-POHZ' — the final -e is silent, the s sounds like z",
+          "nasal -an in 'passer/suivant' — open mouth shape",
+          "suivant → 'swee-VAHN' — 'ui' merges into 'wee', then nasal 'ahn'"
         ]
       },
       {
@@ -415,132 +525,157 @@ export const lessons: FrenchLesson[] = [
           "eu → ơ",
           "ai → e",
           "prochaine → prô-chen"
+        ],
+        "pronunciation_focus_en": [
+          "eu in 'retrouve' → 'uh' with rounded lips",
+          "ai in 'semaine' → 'eh' as in 'bed', not 'ay' or 'eye'",
+          "prochaine → 'proh-SHEN' — final -e is silent; -aine ends in 'en' as in 'pen'"
         ]
       }
     ],
     "cultural_notes_vi": "Người Pháp họp muộn 5-10 phút. Luôn có 'ordre du jour' và 'compte rendu'. Bắt tay tất cả. 'Non' là khởi đầu tranh luận.",
+    "cultural_notes_en": "French meetings start 5–10 minutes late by convention — show up on time and you'll wait alone. Every formal meeting has an 'ordre du jour' (agenda) handed out beforehand and a 'compte rendu' (minutes) circulated after. Handshakes with everyone on arrival. 'Non' isn't a wall — it's the opening of a debate.",
     "tip_advice_vi": "Chuẩn bị vài câu đóng góp. Dùng 'À mon avis...' để phát biểu.",
+    "tip_advice_en": "Walk in with 2–3 sentences ready. The French value a clear point of view — silence reads as weakness, not politeness. Open contributions with 'À mon avis...' ('In my opinion...') or 'Je pense que...' ('I think...').",
     "vocabulary": [
       {
         "word": "la réunion",
         "en": "meeting",
         "vi": "cuộc họp",
         "pos": "n.f.",
-        "pronunciation_vi": "rê-u-ni-on"
+        "pronunciation_vi": "rê-u-ni-on",
+        "pronunciation_en": "ray-oo-nyohn — four syllables; final 'on' is nasal (don't finish the n)"
       },
       {
         "word": "l'ordre du jour",
         "en": "agenda",
         "vi": "chương trình",
         "pos": "n.m.",
-        "pronunciation_vi": "lo-đrơ đu giua"
+        "pronunciation_vi": "lo-đrơ đu giua",
+        "pronunciation_en": "LOHR-druh doo ZHOOR — link 'l'ordre' as one word; 'jour' starts with the soft 'zh' of 'measure'"
       },
       {
         "word": "le compte rendu",
         "en": "minutes",
         "vi": "biên bản",
         "pos": "n.m.",
-        "pronunciation_vi": "côm-tơ răng-đu"
+        "pronunciation_vi": "côm-tơ răng-đu",
+        "pronunciation_en": "kohnt rahn-DOO — nasal 'om' then nasal 'an'; the final 't' of 'compte' is silent"
       },
       {
         "word": "le participant",
         "en": "participant",
         "vi": "người tham dự",
         "pos": "n.m.",
-        "pronunciation_vi": "pa-ti-xi-păng"
+        "pronunciation_vi": "pa-ti-xi-păng",
+        "pronunciation_en": "par-tee-see-PAHN — final 'ant' is nasal 'ahn', the t is silent"
       },
       {
         "word": "l'objectif",
         "en": "objective",
         "vi": "mục tiêu",
         "pos": "n.m.",
-        "pronunciation_vi": "lôb-giéc-tif"
+        "pronunciation_vi": "lôb-giéc-tif",
+        "pronunciation_en": "lohb-zhek-TEEF — final -tif you do pronounce (unlike most consonants)"
       },
       {
         "word": "le budget",
         "en": "budget",
         "vi": "ngân sách",
         "pos": "n.m.",
-        "pronunciation_vi": "bu-giê"
+        "pronunciation_vi": "bu-giê",
+        "pronunciation_en": "boo-ZHAY — looks English but the d is silent and the t is silent; soft 'zh' for the j"
       },
       {
         "word": "le délai",
         "en": "deadline",
         "vi": "thời hạn",
         "pos": "n.m.",
-        "pronunciation_vi": "đê-le"
+        "pronunciation_vi": "đê-le",
+        "pronunciation_en": "day-LAY — both syllables are 'ay' like 'day'"
       },
       {
         "word": "reporter",
         "en": "to postpone",
         "vi": "hoãn lại",
         "pos": "v.",
-        "pronunciation_vi": "rơ-po-tê"
+        "pronunciation_vi": "rơ-po-tê",
+        "pronunciation_en": "ruh-por-TAY — false friend: it means 'to postpone', NOT 'to report' (which is 'rapporter')"
       },
       {
         "word": "valider",
         "en": "to approve",
         "vi": "phê duyệt",
         "pos": "v.",
-        "pronunciation_vi": "va-li-đê"
+        "pronunciation_vi": "va-li-đê",
+        "pronunciation_en": "vah-lee-DAY — final -er = 'ay'"
       },
       {
         "word": "prendre des notes",
         "en": "to take notes",
         "vi": "ghi chép",
         "pos": "v.",
-        "pronunciation_vi": "prăng-đrơ đê nôt"
+        "pronunciation_vi": "prăng-đrơ đê nôt",
+        "pronunciation_en": "PRAHN-druh day NOHT — three words ridden together; nasal 'an' in 'prendre'"
       }
     ],
     "dialogue": [
       {
         "speaker": "A",
         "text": "Bonjour à tous. Commençons par le budget marketing.",
-        "en": "Hello everyone. Let's start with marketing budget."
+        "en": "Hello everyone. Let's start with marketing budget.",
+        "vi": "Chào cả nhóm. Mình bắt đầu với ngân sách marketing nhé."
       },
       {
         "speaker": "B",
         "text": "J'ai préparé les chiffres. Le budget a augmenté de 15%.",
-        "en": "I've prepared figures. Budget up 15%."
+        "en": "I've prepared figures. Budget up 15%.",
+        "vi": "Mình chuẩn bị số liệu rồi. Ngân sách tăng 15%."
       },
       {
         "speaker": "A",
         "text": "Merci. Y a-t-il des questions ?",
-        "en": "Thank you. Any questions?"
+        "en": "Thank you. Any questions?",
+        "vi": "Cảm ơn. Có ai có câu hỏi gì không?"
       },
       {
         "speaker": "B",
         "text": "Oui, je propose de revoir la répartition des régions.",
-        "en": "Yes, let's review regional distribution."
+        "en": "Yes, let's review regional distribution.",
+        "vi": "Có, tôi đề nghị xem lại phân bổ theo vùng."
       }
     ],
     "exercises": [
       {
         "type": "fill-blank",
         "question": "La réunion commence ___ neuf heures.",
-        "answer": "à"
+        "answer": "à",
+        "hint_vi": "giới từ chỉ giờ trong tiếng Pháp",
+        "hint_en": "the preposition French uses for clock time"
       },
       {
         "type": "matching",
         "pairs": [
           [
             "le compte rendu",
-            "biên bản"
+            "biên bản (minutes)"
           ],
           [
             "reporter",
-            "hoãn"
+            "hoãn (to postpone)"
           ],
           [
             "valider",
-            "phê duyệt"
+            "phê duyệt (to approve)"
           ]
         ],
-        "instruction": "Nối từ với nghĩa"
+        "instruction": "Nối từ với nghĩa",
+        "instruction_en": "Match the French word with its meaning"
       },
       {
         "type": "translation",
         "vietnamese": "Tôi đề nghị chuyển sang mục tiếp theo.",
+        "english": "I propose we move to the next item.",
         "french": "Je propose de passer au point suivant."
       }
     ]
@@ -559,6 +694,11 @@ export const lessons: FrenchLesson[] = [
           "vais → ve",
           "ez → ê",
           "nasal en"
+        ],
+        "pronunciation_focus_en": [
+          "vais → 'veh' as in 'bed', not 'vay'",
+          "no -ez here — but 'présenter' has -er ending → 'tay'",
+          "nasal -en in 'présenter' and 'trimestre' — open mouth, no final n"
         ]
       },
       {
@@ -568,6 +708,11 @@ export const lessons: FrenchLesson[] = [
           "graphique → gra-fíc",
           "nasal on",
           "é → ê"
+        ],
+        "pronunciation_focus_en": [
+          "graphique → 'grah-FEEK' — -ique always = 'eek'",
+          "nasal -on in 'montre' — keep your mouth in 'oh' shape, no n",
+          "é in 'évolution' → sharp 'ay'"
         ]
       },
       {
@@ -577,6 +722,11 @@ export const lessons: FrenchLesson[] = [
           "n'hésitez → nê-zi-tê",
           "ez → ê",
           "nasal on"
+        ],
+        "pronunciation_focus_en": [
+          "n'hésitez → 'nay-zee-TAY' (silent h)",
+          "-ez ending → 'ay'",
+          "nasal -on in 'm'interrompre' — sound 'ohn' without finishing the n"
         ]
       },
       {
@@ -586,6 +736,11 @@ export const lessons: FrenchLesson[] = [
           "passons → pa-xon",
           "nasal an",
           "suivante → xu-i-văng-tơ"
+        ],
+        "pronunciation_focus_en": [
+          "passons → 'pah-SOHN' — final -ons is nasal",
+          "nasal -an/-aint in 'maintenant' (twice!) — both stay open-mouthed",
+          "suivante → 'swee-VAHNT' — 'ui' becomes 'wee', then nasal 'ahnt'"
         ]
       },
       {
@@ -595,132 +750,157 @@ export const lessons: FrenchLesson[] = [
           "conclure → côn-cluya",
           "ai → e",
           "silent -s"
+        ],
+        "pronunciation_focus_en": [
+          "conclure → 'kohn-KLUR' — nasal 'on' + rounded 'ur'",
+          "no 'ai' here, but watch 'perspectives' — three syllables, not four: 'per-spek-TEEV'",
+          "silent -s on plurals 'perspectives/bonnes'"
         ]
       }
     ],
     "cultural_notes_vi": "Slide ít chữ, nhiều hình. Người Pháp thích số liệu. Bắt đầu 'Bonjour à tous', kết 'Merci de votre attention'.",
+    "cultural_notes_en": "French audiences expect clean slides — minimal text, plenty of charts. They love precise numbers (the more decimals, the better). Always open with 'Bonjour à tous' and close with 'Merci de votre attention' — these are non-negotiable bookends.",
     "tip_advice_vi": "Luyện phát âm số và phần trăm thật kỹ. Dùng tay chỉ slide.",
+    "tip_advice_en": "Drill numbers and percentages out loud — French numbers (especially 70/80/90) trip up English speakers and you can't recover mid-slide. Use your hand to point at the slide rather than a laser — French presentation style favors the gesture.",
     "vocabulary": [
       {
         "word": "présenter",
         "en": "to present",
         "vi": "trình bày",
         "pos": "v.",
-        "pronunciation_vi": "prê-dăng-tê"
+        "pronunciation_vi": "prê-dăng-tê",
+        "pronunciation_en": "pray-zahn-TAY — three syllables; middle 'en' is nasal"
       },
       {
         "word": "le diaporama",
         "en": "slideshow",
         "vi": "bài trình chiếu",
         "pos": "n.m.",
-        "pronunciation_vi": "đi-a-pô-ra-ma"
+        "pronunciation_vi": "đi-a-pô-ra-ma",
+        "pronunciation_en": "dyah-poh-rah-MAH — all open vowels, stress on the last syllable"
       },
       {
         "word": "la diapositive",
         "en": "slide",
         "vi": "trang chiếu",
         "pos": "n.f.",
-        "pronunciation_vi": "đi-a-pô-di-tiv"
+        "pronunciation_vi": "đi-a-pô-di-tiv",
+        "pronunciation_en": "dyah-poh-zee-TEEV — same 'dia-' start as diaporama"
       },
       {
         "word": "le graphique",
         "en": "chart",
         "vi": "biểu đồ",
         "pos": "n.m.",
-        "pronunciation_vi": "gra-fíc"
+        "pronunciation_vi": "gra-fíc",
+        "pronunciation_en": "grah-FEEK — -ique = 'eek'; the ph is just 'f'"
       },
       {
         "word": "les données",
         "en": "data",
         "vi": "dữ liệu",
         "pos": "n.f.pl.",
-        "pronunciation_vi": "đô-nê"
+        "pronunciation_vi": "đô-nê",
+        "pronunciation_en": "doh-NAY — silent plural -s; treated as feminine plural"
       },
       {
         "word": "la conclusion",
         "en": "conclusion",
         "vi": "kết luận",
         "pos": "n.f.",
-        "pronunciation_vi": "côn-clu-di-on"
+        "pronunciation_vi": "côn-clu-di-on",
+        "pronunciation_en": "kohn-klu-ZYOHN — three nasals shaping the word; 'si' before -on softens to 'zy'"
       },
       {
         "word": "l'auditoire",
         "en": "audience",
         "vi": "khán giả",
         "pos": "n.m.",
-        "pronunciation_vi": "lô-đi-toa"
+        "pronunciation_vi": "lô-đi-toa",
+        "pronunciation_en": "loh-dee-TWAHR — 'au' = 'oh'; -oire = 'wahr' with throat r"
       },
       {
         "word": "le pourcentage",
         "en": "percentage",
         "vi": "phần trăm",
         "pos": "n.m.",
-        "pronunciation_vi": "pu-xăng-ta-giơ"
+        "pronunciation_vi": "pu-xăng-ta-giơ",
+        "pronunciation_en": "poor-sahn-TAHZH — final -age has the soft 'zh' of 'measure'"
       },
       {
         "word": "l'évolution",
         "en": "trend",
         "vi": "phát triển",
         "pos": "n.f.",
-        "pronunciation_vi": "lê-vô-lu-xi-on"
+        "pronunciation_vi": "lê-vô-lu-xi-on",
+        "pronunciation_en": "lay-voh-loo-SYOHN — 'ti' before -on softens to 'sy'"
       },
       {
         "word": "convaincre",
         "en": "to convince",
         "vi": "thuyết phục",
         "pos": "v.",
-        "pronunciation_vi": "côn-vanh-crơ"
+        "pronunciation_vi": "côn-vanh-crơ",
+        "pronunciation_en": "kohn-VAN-kruh — nasal 'on' then nasal 'ain' (like 'an' in 'sang' without the g)"
       }
     ],
     "dialogue": [
       {
         "speaker": "A",
         "text": "Bonjour à tous. Aujourd'hui je présente notre nouveau projet.",
-        "en": "Hello everyone. Today I present our new project."
+        "en": "Hello everyone. Today I present our new project.",
+        "vi": "Chào cả nhà. Hôm nay tôi trình bày dự án mới của chúng ta."
       },
       {
         "speaker": "B",
         "text": "Quel est l'objectif principal ?",
-        "en": "What's the main objective?"
+        "en": "What's the main objective?",
+        "vi": "Mục tiêu chính là gì ạ?"
       },
       {
         "speaker": "A",
         "text": "Augmenter notre part de marché de 10% en six mois.",
-        "en": "Increase market share 10% in six months."
+        "en": "Increase market share 10% in six months.",
+        "vi": "Tăng thị phần thêm 10% trong sáu tháng."
       },
       {
         "speaker": "B",
         "text": "Très intéressant. Avez-vous un calendrier ?",
-        "en": "Very interesting. Do you have a timeline?"
+        "en": "Very interesting. Do you have a timeline?",
+        "vi": "Rất thú vị. Anh có lịch trình cụ thể chưa?"
       }
     ],
     "exercises": [
       {
         "type": "fill-blank",
         "question": "Je vais vous ___ les résultats.",
-        "answer": "présenter"
+        "answer": "présenter",
+        "hint_vi": "động từ nguyên mẫu sau 'aller' (futur proche)",
+        "hint_en": "infinitive verb following 'aller' (near future construction)"
       },
       {
         "type": "matching",
         "pairs": [
           [
             "le diaporama",
-            "bài trình chiếu"
+            "bài trình chiếu (slideshow)"
           ],
           [
             "convaincre",
-            "thuyết phục"
+            "thuyết phục (to convince)"
           ],
           [
             "l'auditoire",
-            "khán giả"
+            "khán giả (audience)"
           ]
         ],
-        "instruction": "Nối từ với nghĩa"
+        "instruction": "Nối từ với nghĩa",
+        "instruction_en": "Match the French word with its meaning"
       },
       {
         "type": "translation",
         "vietnamese": "Cảm ơn sự chú ý. Có câu hỏi nào không?",
+        "english": "Thank you for your attention. Any questions?",
         "french": "Merci de votre attention. Avez-vous des questions ?"
       }
     ]
@@ -739,6 +919,11 @@ export const lessons: FrenchLesson[] = [
           "devons → đơ-von",
           "nasal on",
           "com→côm"
+        ],
+        "pronunciation_focus_en": [
+          "devons → 'duh-VOHN' — nasal -on ending",
+          "nasal -on appears 3 times here (devons, compromis, un) — keep mouth in 'oh' shape, no n",
+          "com- in 'compromis' → 'kohm' with nasal 'om'"
         ]
       },
       {
@@ -747,6 +932,10 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_focus": [
           "augmentez → ô-gơ-măng-tê",
           "baisserons → be-xơ-ron"
+        ],
+        "pronunciation_focus_en": [
+          "augmentez → 'oh-guh-mahn-TAY' — 'au' = 'oh'; nasal 'en' in the middle",
+          "baisserons → 'bes-uh-ROHN' — 'ai' = 'eh' as in 'bed'; nasal 'on' ending"
         ]
       },
       {
@@ -756,6 +945,11 @@ export const lessons: FrenchLesson[] = [
           "proposition → prô-pô-xi-on",
           "ai → e",
           "é → ê"
+        ],
+        "pronunciation_focus_en": [
+          "proposition → 'proh-poh-zee-SYOHN' — 'si' before -on softens to 'sy'",
+          "no 'ai' here, but watch 'intéressante' — nasal 'in' opening, then a sharp 'ay'",
+          "é in 'réfléchis' → sharp 'ay', twice"
         ]
       },
       {
@@ -765,6 +959,11 @@ export const lessons: FrenchLesson[] = [
           "d'accord → đa-co",
           "nasal in",
           "prix → pri"
+        ],
+        "pronunciation_focus_en": [
+          "d'accord → 'dah-KOR' — final -d is silent, throat r",
+          "nasal -in in 'principe' — open 'an' shape, no n closure",
+          "prix → 'PREE' — final -x is silent"
         ]
       },
       {
@@ -773,132 +972,156 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_focus": [
           "d'accord → đa-co",
           "conclu → côn-clu"
+        ],
+        "pronunciation_focus_en": [
+          "d'accord → 'dah-KOR' (silent d)",
+          "conclu → 'kohn-KLU' — nasal 'on'; final -u is the rounded 'u' (like German 'ü')"
         ]
       }
     ],
     "cultural_notes_vi": "Đàm phán Pháp: không chấp nhận đề nghị đầu. Bữa trưa quan trọng. 'Non' = 'chưa đồng ý điều kiện này'.",
+    "cultural_notes_en": "French negotiation rule one: never accept the first offer. It signals you didn't try. Long business lunches are part of the negotiation — most deals shift over dessert. When the French side says 'Non', read it as 'not yet under these terms' — keep talking.",
     "tip_advice_vi": "Chuẩn bị 3 mức giá. Dùng 'Si... alors...' cho đề nghị có điều kiện.",
+    "tip_advice_en": "Walk in with three prices ready (ideal / target / walkaway). Frame conditional offers with 'Si... alors...' ('If... then...') — it sounds professional and keeps your fallback intact: 'Si vous commandez 500, alors je peux baisser de 5%.'",
     "vocabulary": [
       {
         "word": "négocier",
         "en": "to negotiate",
         "vi": "đàm phán",
         "pos": "v.",
-        "pronunciation_vi": "nê-gô-xi-ê"
+        "pronunciation_vi": "nê-gô-xi-ê",
+        "pronunciation_en": "nay-goh-SYAY — 'ci' before -er softens to 'sy'"
       },
       {
         "word": "le compromis",
         "en": "compromise",
         "vi": "thỏa hiệp",
         "pos": "n.m.",
-        "pronunciation_vi": "côm-prô-mi"
+        "pronunciation_vi": "côm-prô-mi",
+        "pronunciation_en": "kohm-proh-MEE — silent final -s; nasal 'om' opening"
       },
       {
         "word": "la concession",
         "en": "concession",
         "vi": "nhượng bộ",
         "pos": "n.f.",
-        "pronunciation_vi": "côn-xe-xi-on"
+        "pronunciation_vi": "côn-xe-xi-on",
+        "pronunciation_en": "kohn-seh-SYOHN — two nasals (-on twice); 'ssi' before -on softens to 'sy'"
       },
       {
         "word": "convaincre",
         "en": "to convince",
         "vi": "thuyết phục",
         "pos": "v.",
-        "pronunciation_vi": "côn-vanh-crơ"
+        "pronunciation_vi": "côn-vanh-crơ",
+        "pronunciation_en": "kohn-VAN-kruh — same as in the presentation lesson; nasal 'on' then nasal 'ain'"
       },
       {
         "word": "l'argument",
         "en": "argument",
         "vi": "lý lẽ",
         "pos": "n.m.",
-        "pronunciation_vi": "la-ghu-măng"
+        "pronunciation_vi": "la-ghu-măng",
+        "pronunciation_en": "lar-goo-MAHN — final -ment is nasal 'ahn', no t"
       },
       {
         "word": "la marge",
         "en": "margin",
         "vi": "biên lợi nhuận",
         "pos": "n.f.",
-        "pronunciation_vi": "ma-giơ"
+        "pronunciation_vi": "ma-giơ",
+        "pronunciation_en": "MAHRZH — one syllable; final -ge has the soft 'zh' of 'measure'"
       },
       {
         "word": "réduire",
         "en": "to reduce",
         "vi": "giảm",
         "pos": "v.",
-        "pronunciation_vi": "rê-đuiya"
+        "pronunciation_vi": "rê-đuiya",
+        "pronunciation_en": "ray-DWEER — 'ui' merges into 'wee'; final -re is a throat r"
       },
       {
         "word": "accepter",
         "en": "to accept",
         "vi": "chấp nhận",
         "pos": "v.",
-        "pronunciation_vi": "ác-xép-tê"
+        "pronunciation_vi": "ác-xép-tê",
+        "pronunciation_en": "ak-sep-TAY — three syllables; final -er = 'ay'"
       },
       {
         "word": "refuser",
         "en": "to refuse",
         "vi": "từ chối",
         "pos": "v.",
-        "pronunciation_vi": "rơ-phu-dê"
+        "pronunciation_vi": "rơ-phu-dê",
+        "pronunciation_en": "ruh-fyu-ZAY — middle 'u' is rounded-lip (like German 'ü'), not 'oo'"
       },
       {
         "word": "la remise",
         "en": "discount",
         "vi": "chiết khấu",
         "pos": "n.f.",
-        "pronunciation_vi": "rơ-mi-dơ"
+        "pronunciation_vi": "rơ-mi-dơ",
+        "pronunciation_en": "ruh-MEEZ — final -e silent; the s sounds like z between vowels"
       }
     ],
     "dialogue": [
       {
         "speaker": "A",
         "text": "Votre prix est trop élevé. Pouvez-vous faire un geste ?",
-        "en": "Your price is too high. Can you make a gesture?"
+        "en": "Your price is too high. Can you make a gesture?",
+        "vi": "Giá của anh cao quá. Anh giảm chút được không?"
       },
       {
         "speaker": "B",
         "text": "Si vous commandez 1000 unités, je peux offrir 10%.",
-        "en": "If you order 1000 units, I can offer 10%."
+        "en": "If you order 1000 units, I can offer 10%.",
+        "vi": "Nếu anh đặt 1000 đơn vị, tôi có thể giảm 10%."
       },
       {
         "speaker": "A",
         "text": "Et si on disait 800 unités pour 8% ?",
-        "en": "What about 800 units for 8%?"
+        "en": "What about 800 units for 8%?",
+        "vi": "Vậy 800 đơn vị, giảm 8% được không?"
       },
       {
         "speaker": "B",
         "text": "D'accord, marché conclu.",
-        "en": "Agreed, deal."
+        "en": "Agreed, deal.",
+        "vi": "Đồng ý, chốt."
       }
     ],
     "exercises": [
       {
         "type": "fill-blank",
         "question": "Si vous ___ la commande, nous baisserons le prix.",
-        "answer": "augmentez"
+        "answer": "augmentez",
+        "hint_vi": "động từ 'tăng' chia ngôi 'vous'",
+        "hint_en": "the verb 'to increase' conjugated for 'vous'"
       },
       {
         "type": "matching",
         "pairs": [
           [
             "le compromis",
-            "thỏa hiệp"
+            "thỏa hiệp (compromise)"
           ],
           [
             "réduire",
-            "giảm"
+            "giảm (to reduce)"
           ],
           [
             "refuser",
-            "từ chối"
+            "từ chối (to refuse)"
           ]
         ],
-        "instruction": "Nối từ với nghĩa"
+        "instruction": "Nối từ với nghĩa",
+        "instruction_en": "Match the French word with its meaning"
       },
       {
         "type": "translation",
         "vietnamese": "Chúng tôi giảm 5% nếu đặt trước thứ Sáu.",
+        "english": "We can reduce by 5% if you order before Friday.",
         "french": "Nous pouvons réduire de 5% si vous commandez avant vendredi."
       }
     ]
@@ -917,6 +1140,11 @@ export const lessons: FrenchLesson[] = [
           "voudrais → vu-đre",
           "ouvrir → u-vrir",
           "compte → côm-tơ"
+        ],
+        "pronunciation_focus_en": [
+          "voudrais → 'voo-DREH' — 'ai' = 'eh' (bed), not 'ay'",
+          "ouvrir → 'oo-VREER' — 'ou' = 'oo' (boot); final r is a throat r",
+          "compte → 'KOHNT' — nasal 'om'; the p and final t are silent"
         ]
       },
       {
@@ -926,6 +1154,11 @@ export const lessons: FrenchLesson[] = [
           "documents → đô-cu-măng",
           "ou → u",
           "je → giơ"
+        ],
+        "pronunciation_focus_en": [
+          "documents → 'doh-koo-MAHN' — final -ents is nasal 'ahn', no t",
+          "ou in 'fournir' → 'oo' (boot)",
+          "je → 'zhuh' — soft 'zh' (measure) + a quick 'uh'"
         ]
       },
       {
@@ -935,6 +1168,11 @@ export const lessons: FrenchLesson[] = [
           "souhaite → xu-ét",
           "virement → vi-rơ-măng",
           "eu → ơ"
+        ],
+        "pronunciation_focus_en": [
+          "souhaite → 'sweht' — 'ou' + 'ai' merges; final -e silent",
+          "virement → 'veer-MAHN' — final -ment is nasal 'ahn'",
+          "eu in 'euros' → 'uh' with rounded lips ('UH-roh', not 'YOO-roh')"
         ]
       },
       {
@@ -944,6 +1182,11 @@ export const lessons: FrenchLesson[] = [
           "ou → u",
           "ez → ê",
           "relevé → rơ-lơ-vê"
+        ],
+        "pronunciation_focus_en": [
+          "ou in 'pouvez/vous' → 'oo' (boot)",
+          "-ez → 'ay'",
+          "relevé → 'ruh-luh-VAY' — two soft 'uh' sounds then sharp 'ay'"
         ]
       },
       {
@@ -953,132 +1196,157 @@ export const lessons: FrenchLesson[] = [
           "taux → tô",
           "d'intérêt → danh-tê-rê",
           "actuel → ắc-tu-en"
+        ],
+        "pronunciation_focus_en": [
+          "taux → 'TOH' — final -x is silent",
+          "d'intérêt → 'dan-tay-REH' — nasal 'in' opening, then sharp 'ay', then 'eh'",
+          "actuel → 'ak-too-EL' — final -el = 'el' as in 'bell'"
         ]
       }
     ],
     "cultural_notes_vi": "Ngân hàng Pháp đóng 12h-14h và thứ Hai. Cần 'justificatif de domicile' và 'pièce d'identité'. 'RIB' là giấy quan trọng nhất.",
+    "cultural_notes_en": "French banks close 12:00–14:00 and most are closed Mondays. To open anything you need a 'justificatif de domicile' (proof of address — recent utility bill) and a 'pièce d'identité' (photo ID). The 'RIB' (bank-account ID slip) is the single most important paper in French life — you'll be asked for it constantly.",
     "tip_advice_vi": "Học thuộc: 'RIB', 'virement', 'prélèvement'. Đặt lịch hẹn trước.",
+    "tip_advice_en": "Memorize three words and you survive: 'RIB' (your bank-details slip), 'virement' (transfer in), 'prélèvement' (auto-debit out). Always book an appointment online before going in — walking in cold often means being turned away.",
     "vocabulary": [
       {
         "word": "le compte",
         "en": "account",
         "vi": "tài khoản",
         "pos": "n.m.",
-        "pronunciation_vi": "côm-tơ"
+        "pronunciation_vi": "côm-tơ",
+        "pronunciation_en": "KOHNT — one syllable; nasal 'om'; the p and final t are silent"
       },
       {
         "word": "le virement",
         "en": "transfer",
         "vi": "chuyển khoản",
         "pos": "n.m.",
-        "pronunciation_vi": "vi-rơ-măng"
+        "pronunciation_vi": "vi-rơ-măng",
+        "pronunciation_en": "veer-MAHN — final -ment is nasal 'ahn', no t pronounced"
       },
       {
         "word": "le relevé",
         "en": "statement",
         "vi": "sao kê",
         "pos": "n.m.",
-        "pronunciation_vi": "rơ-lơ-vê"
+        "pronunciation_vi": "rơ-lơ-vê",
+        "pronunciation_en": "ruh-luh-VAY — two soft 'uh' sounds, stress on the final 'ay'"
       },
       {
         "word": "le guichet",
         "en": "counter",
         "vi": "quầy",
         "pos": "n.m.",
-        "pronunciation_vi": "ghi-chê"
+        "pronunciation_vi": "ghi-chê",
+        "pronunciation_en": "gee-SHAY — 'gu' = hard g (not 'goo'); -et = 'ay'"
       },
       {
         "word": "le RIB",
         "en": "bank details",
         "vi": "thông tin NH",
         "pos": "n.m.",
-        "pronunciation_vi": "rìb"
+        "pronunciation_vi": "rìb",
+        "pronunciation_en": "REEB — said as one syllable, like the English word 'rib' but with a French throat r"
       },
       {
         "word": "le découvert",
         "en": "overdraft",
         "vi": "thấu chi",
         "pos": "n.m.",
-        "pronunciation_vi": "đê-cu-ve"
+        "pronunciation_vi": "đê-cu-ve",
+        "pronunciation_en": "day-koo-VAIR — final -t is silent; -vert ends like 'air'"
       },
       {
         "word": "le prélèvement",
         "en": "direct debit",
         "vi": "ghi nợ tự động",
         "pos": "n.m.",
-        "pronunciation_vi": "prê-le-vơ-măng"
+        "pronunciation_vi": "prê-le-vơ-măng",
+        "pronunciation_en": "pray-LEHV-mahn — final -ment is nasal 'ahn'; 'è' is open 'eh' (bed)"
       },
       {
         "word": "déposer",
         "en": "to deposit",
         "vi": "gửi tiền",
         "pos": "v.",
-        "pronunciation_vi": "đê-pô-dê"
+        "pronunciation_vi": "đê-pô-dê",
+        "pronunciation_en": "day-poh-ZAY — the s sounds like z between vowels"
       },
       {
         "word": "retirer",
         "en": "to withdraw",
         "vi": "rút tiền",
         "pos": "v.",
-        "pronunciation_vi": "rơ-ti-rê"
+        "pronunciation_vi": "rơ-ti-rê",
+        "pronunciation_en": "ruh-tee-RAY — three syllables; both r's are throat r's"
       },
       {
         "word": "le taux",
         "en": "rate",
         "vi": "lãi suất",
         "pos": "n.m.",
-        "pronunciation_vi": "tô"
+        "pronunciation_vi": "tô",
+        "pronunciation_en": "TOH — one syllable; final -aux is silent except the 'oh'"
       }
     ],
     "dialogue": [
       {
         "speaker": "A",
         "text": "Bonjour, je voudrais ouvrir un compte courant.",
-        "en": "Hello, I'd like to open a current account."
+        "en": "Hello, I'd like to open a current account.",
+        "vi": "Chào anh, tôi muốn mở tài khoản thanh toán."
       },
       {
         "speaker": "B",
         "text": "Bien sûr. Avez-vous une pièce d'identité ?",
-        "en": "Of course. Do you have an ID?"
+        "en": "Of course. Do you have an ID?",
+        "vi": "Vâng. Anh có giấy tờ tùy thân không ạ?"
       },
       {
         "speaker": "A",
         "text": "Oui, voici mon passeport et ma facture.",
-        "en": "Yes, here is my passport and bill."
+        "en": "Yes, here is my passport and bill.",
+        "vi": "Có, đây hộ chiếu và hóa đơn điện của tôi."
       },
       {
         "speaker": "B",
         "text": "Parfait. Vous recevrez votre carte sous huit jours.",
-        "en": "Perfect. Card within a week."
+        "en": "Perfect. Card within a week.",
+        "vi": "Tuyệt. Anh sẽ nhận thẻ trong vòng tám ngày."
       }
     ],
     "exercises": [
       {
         "type": "fill-blank",
         "question": "Je voudrais ouvrir un ___ bancaire.",
-        "answer": "compte"
+        "answer": "compte",
+        "hint_vi": "danh từ chỉ 'tài khoản'",
+        "hint_en": "the noun for 'account'"
       },
       {
         "type": "matching",
         "pairs": [
           [
             "le virement",
-            "chuyển khoản"
+            "chuyển khoản (transfer)"
           ],
           [
             "retirer",
-            "rút tiền"
+            "rút tiền (to withdraw)"
           ],
           [
             "le guichet",
-            "quầy"
+            "quầy (counter)"
           ]
         ],
-        "instruction": "Nối từ với nghĩa"
+        "instruction": "Nối từ với nghĩa",
+        "instruction_en": "Match the French word with its meaning"
       },
       {
         "type": "translation",
         "vietnamese": "Tôi muốn chuyển 200 euro vào tài khoản này.",
+        "english": "I'd like to transfer 200 euros into this account.",
         "french": "Je voudrais virer 200 euros sur ce compte."
       }
     ]
@@ -1097,6 +1365,11 @@ export const lessons: FrenchLesson[] = [
           "envoyer → ăng-voa-iê",
           "colis → cô-li",
           "nasal an"
+        ],
+        "pronunciation_focus_en": [
+          "envoyer → 'ahn-vwah-YAY' — nasal 'en' + 'oy' → 'wah'",
+          "colis → 'koh-LEE' — final -s is silent",
+          "nasal -an in 'envoyer' — open mouth, no n closure"
         ]
       },
       {
@@ -1106,6 +1379,11 @@ export const lessons: FrenchLesson[] = [
           "tarif → ta-rif",
           "envoi → ăng-voa",
           "prioritaire → pri-o-ri-te"
+        ],
+        "pronunciation_focus_en": [
+          "tarif → 'tah-REEF' — both syllables short and crisp",
+          "envoi → 'ahn-VWAH' — same 'wah' shape as 'envoyer'",
+          "prioritaire → 'pree-or-ee-TAIR' — -aire = 'air' (like 'fair')"
         ]
       },
       {
@@ -1115,6 +1393,11 @@ export const lessons: FrenchLesson[] = [
           "timbre → tanh-brơ",
           "nasal an",
           "internationale → anh-te-na-xi-ô-nal"
+        ],
+        "pronunciation_focus_en": [
+          "timbre → 'TAN-bruh' — nasal 'im' shapes like 'an' in 'sang', no m closure",
+          "nasal -an in 'internationale' opening — same open vowel",
+          "internationale → 'an-ter-nah-syoh-NAL' — 'ti' before -on softens to 'sy'"
         ]
       },
       {
@@ -1123,6 +1406,10 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_focus": [
           "trouve → tru-vơ",
           "boîte → boát"
+        ],
+        "pronunciation_focus_en": [
+          "trouve → 'TROOV' — 'ou' = 'oo' (boot); final -e silent",
+          "boîte → 'BWAHT' — 'oî' = 'wah'; final -e silent"
         ]
       },
       {
@@ -1132,132 +1419,157 @@ export const lessons: FrenchLesson[] = [
           "temps → tăm",
           "livraison → li-vre-don",
           "nasal on"
+        ],
+        "pronunciation_focus_en": [
+          "temps → 'TAHN' — final -ps is silent; nasal vowel only",
+          "livraison → 'lee-vreh-ZOHN' — 'ai' = 'eh'; -son ends nasal",
+          "nasal -on appears in 'combien/livraison' — keep mouth in 'oh' shape, no n"
         ]
       }
     ],
     "cultural_notes_vi": "Bưu điện Pháp (La Poste) cũng là ngân hàng. Tem mua ở quán cà phê-tabac. 'Chronopost' là chuyển phát nhanh.",
+    "cultural_notes_en": "La Poste is also a bank — many French keep accounts there. You can buy stamps at any tabac (corner café/tobacco shop) and skip the post-office queue entirely. 'Chronopost' = fast express; 'Colissimo' = standard parcel with tracking.",
     "tip_advice_vi": "Chọn 'Colissimo' để có tracking. Khai hải quan nếu trên 45€.",
+    "tip_advice_en": "Always pay the few extra euros for 'Colissimo' if you want tracking — base shipping has none. Anything valued over 45€ leaving the EU needs a customs declaration ('déclaration douanière') — fill it in clearly or your parcel sits in customs for weeks.",
     "vocabulary": [
       {
         "word": "le timbre",
         "en": "stamp",
         "vi": "tem",
         "pos": "n.m.",
-        "pronunciation_vi": "tanh-brơ"
+        "pronunciation_vi": "tanh-brơ",
+        "pronunciation_en": "TAN-bruh — nasal 'im' (like 'an' in 'sang' without g); final -e silent"
       },
       {
         "word": "le colis",
         "en": "parcel",
         "vi": "bưu kiện",
         "pos": "n.m.",
-        "pronunciation_vi": "cô-li"
+        "pronunciation_vi": "cô-li",
+        "pronunciation_en": "koh-LEE — final -s silent"
       },
       {
         "word": "la lettre",
         "en": "letter",
         "vi": "thư",
         "pos": "n.f.",
-        "pronunciation_vi": "lét-trơ"
+        "pronunciation_vi": "lét-trơ",
+        "pronunciation_en": "LET-truh — 'tre' is a single sound, not 'ter'"
       },
       {
         "word": "l'enveloppe",
         "en": "envelope",
         "vi": "phong bì",
         "pos": "n.f.",
-        "pronunciation_vi": "lăng-vơ-lốp"
+        "pronunciation_vi": "lăng-vơ-lốp",
+        "pronunciation_en": "lahn-VLOHP — nasal 'en' opening; double-l = single l sound"
       },
       {
         "word": "envoyer",
         "en": "to send",
         "vi": "gửi",
         "pos": "v.",
-        "pronunciation_vi": "ăng-voa-iê"
+        "pronunciation_vi": "ăng-voa-iê",
+        "pronunciation_en": "ahn-vwah-YAY — same shape as the email lesson; 'oy' → 'wah'"
       },
       {
         "word": "le recommandé",
         "en": "registered mail",
         "vi": "thư bảo đảm",
         "pos": "n.m.",
-        "pronunciation_vi": "rơ-cô-măng-đê"
+        "pronunciation_vi": "rơ-cô-măng-đê",
+        "pronunciation_en": "ruh-koh-mahn-DAY — middle 'an' is nasal; final -é = 'ay'"
       },
       {
         "word": "la livraison",
         "en": "delivery",
         "vi": "giao hàng",
         "pos": "n.f.",
-        "pronunciation_vi": "li-vre-don"
+        "pronunciation_vi": "li-vre-don",
+        "pronunciation_en": "lee-vreh-ZOHN — 'ai' = 'eh'; nasal -son ending"
       },
       {
         "word": "le facteur",
         "en": "mail carrier",
         "vi": "người đưa thư",
         "pos": "n.m.",
-        "pronunciation_vi": "fắc-tơ"
+        "pronunciation_vi": "fắc-tơ",
+        "pronunciation_en": "fak-TUHR — final -eur = rounded-lip 'uhr', soft throat r"
       },
       {
         "word": "le code postal",
         "en": "postal code",
         "vi": "mã bưu chính",
         "pos": "n.m.",
-        "pronunciation_vi": "cô-đơ pô-xtan"
+        "pronunciation_vi": "cô-đơ pô-xtan",
+        "pronunciation_en": "kohd poh-STAL — French zip codes are 5 digits: e.g., 75001 for Paris"
       },
       {
         "word": "la boîte aux lettres",
         "en": "mailbox",
         "vi": "hòm thư",
         "pos": "n.f.",
-        "pronunciation_vi": "boát ô lét-trơ"
+        "pronunciation_vi": "boát ô lét-trơ",
+        "pronunciation_en": "BWAHT oh LET-truh — three short words; 'aux' = 'oh'"
       }
     ],
     "dialogue": [
       {
         "speaker": "A",
         "text": "Bonjour, je voudrais envoyer ce colis au Vietnam.",
-        "en": "Hello, I'd like to send this parcel to Vietnam."
+        "en": "Hello, I'd like to send this parcel to Vietnam.",
+        "vi": "Chào chị, tôi muốn gửi gói hàng này về Việt Nam."
       },
       {
         "speaker": "B",
         "text": "Bien sûr. Quel type d'envoi ?",
-        "en": "Of course. What type of shipping?"
+        "en": "Of course. What type of shipping?",
+        "vi": "Vâng. Anh chọn hình thức gửi nào ạ?"
       },
       {
         "speaker": "A",
         "text": "Quelle est l'option la plus économique ?",
-        "en": "What's the cheapest option?"
+        "en": "What's the cheapest option?",
+        "vi": "Loại nào rẻ nhất ạ?"
       },
       {
         "speaker": "B",
         "text": "Colissimo international, 26 euros pour moins de 2 kg.",
-        "en": "International Colissimo, 26 euros under 2 kg."
+        "en": "International Colissimo, 26 euros under 2 kg.",
+        "vi": "Colissimo quốc tế, 26 euro cho dưới 2 kg."
       }
     ],
     "exercises": [
       {
         "type": "fill-blank",
         "question": "Je voudrais un ___ pour une lettre.",
-        "answer": "timbre"
+        "answer": "timbre",
+        "hint_vi": "vật nhỏ dán trên phong bì",
+        "hint_en": "the small adhesive paid-postage square stuck on an envelope"
       },
       {
         "type": "matching",
         "pairs": [
           [
             "le colis",
-            "bưu kiện"
+            "bưu kiện (parcel)"
           ],
           [
             "envoyer",
-            "gửi"
+            "gửi (to send)"
           ],
           [
             "le facteur",
-            "người đưa thư"
+            "người đưa thư (mail carrier)"
           ]
         ],
-        "instruction": "Nối từ với nghĩa"
+        "instruction": "Nối từ với nghĩa",
+        "instruction_en": "Match the French word with its meaning"
       },
       {
         "type": "translation",
         "vietnamese": "Gói hàng này đến Việt Nam mất bao lâu?",
+        "english": "How long will this parcel take to reach Vietnam?",
         "french": "Combien de temps ce colis mettra-t-il pour arriver au Vietnam ?"
       }
     ]
@@ -1276,6 +1588,11 @@ export const lessons: FrenchLesson[] = [
           "cherche → se-sơ",
           "appartement → a-pa-tơ-măng",
           "louer → lu-ê"
+        ],
+        "pronunciation_focus_en": [
+          "cherche → 'SHERSH' — both 'ch' sounds are soft 'sh' (never the 'ch' of 'church')",
+          "appartement → 'ah-par-tuh-MAHN' — final -ment is nasal 'ahn'",
+          "louer → 'loo-AY' — 'ou' = 'oo' (boot); -er = 'ay'"
         ]
       },
       {
@@ -1284,6 +1601,10 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_focus": [
           "montant → mon-tăng",
           "loyer → loa-iê"
+        ],
+        "pronunciation_focus_en": [
+          "montant → 'mohn-TAHN' — TWO nasals back-to-back ('on' then 'an'); the t at the end is silent",
+          "loyer → 'lwah-YAY' — 'oy' splits into 'wah' + 'yay'"
         ]
       },
       {
@@ -1292,6 +1613,10 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_focus": [
           "inclut → anh-clu",
           "charges → sa-giơ"
+        ],
+        "pronunciation_focus_en": [
+          "inclut → 'an-KLU' — nasal 'in'; final -t is silent",
+          "charges → 'SHARZH' — 'ch' = soft 'sh'; final -ges has the 'zh' of 'measure'"
         ]
       },
       {
@@ -1300,6 +1625,10 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_focus": [
           "puis → puy",
           "visiter → vi-zi-tê"
+        ],
+        "pronunciation_focus_en": [
+          "puis → 'PWEE' — one syllable; 'ui' merges into 'wee'",
+          "visiter → 'vee-zee-TAY' — the s between vowels sounds like z"
         ]
       },
       {
@@ -1308,132 +1637,156 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_focus": [
           "justificatifs → giu-sti-fi-ca-tif",
           "nécessaires → nê-xe-se"
+        ],
+        "pronunciation_focus_en": [
+          "justificatifs → 'zhoos-tee-fee-kah-TEEF' — five syllables; final -ifs you DO pronounce",
+          "nécessaires → 'nay-seh-SAIR' — -aires = 'air' (like 'fair')"
         ]
       }
     ],
     "cultural_notes_vi": "Thuê nhà Pháp rất khó. Cần 3 tháng lương, CDI, garant. 'Caution' 1-2 tháng. Phân biệt 'CC' (gồm phí) và 'HC' (chưa gồm).",
+    "cultural_notes_en": "Renting in France is brutal: landlords typically demand income equal to 3x the rent, a permanent contract ('CDI'), and a French guarantor ('garant'). Deposit ('caution') is 1–2 months. Always check whether a listing is 'CC' (charges comprises — utilities included) or 'HC' (hors charges — utilities extra) before you compare prices.",
     "tip_advice_vi": "Tìm nhà qua Leboncoin, SeLoger. Chuẩn bị sẵn 'dossier de location'.",
+    "tip_advice_en": "Search on Leboncoin and SeLoger (the French equivalents of Craigslist + Zillow). Have a complete 'dossier de location' ready as a single PDF before you visit: ID, last 3 payslips, work contract, last tax notice, guarantor's papers. Whoever submits first usually wins.",
     "vocabulary": [
       {
         "word": "louer",
         "en": "to rent",
         "vi": "thuê",
         "pos": "v.",
-        "pronunciation_vi": "lu-ê"
+        "pronunciation_vi": "lu-ê",
+        "pronunciation_en": "loo-AY — same verb means both 'to rent from' and 'to rent out'; context tells which"
       },
       {
         "word": "le loyer",
         "en": "rent",
         "vi": "tiền thuê",
         "pos": "n.m.",
-        "pronunciation_vi": "loa-iê"
+        "pronunciation_vi": "loa-iê",
+        "pronunciation_en": "lwah-YAY — two syllables; 'oy' splits into 'wah' + 'yay'"
       },
       {
         "word": "la caution",
         "en": "deposit",
         "vi": "cọc",
         "pos": "n.f.",
-        "pronunciation_vi": "cô-xi-on"
+        "pronunciation_vi": "cô-xi-on",
+        "pronunciation_en": "koh-SYOHN — 'ti' before -on softens to 'sy'; NOT 'caution' as in English warning"
       },
       {
         "word": "le propriétaire",
         "en": "landlord",
         "vi": "chủ nhà",
         "pos": "n.m.",
-        "pronunciation_vi": "prô-pri-ê-te"
+        "pronunciation_vi": "prô-pri-ê-te",
+        "pronunciation_en": "proh-pree-ay-TAIR — four syllables; -aire = 'air'"
       },
       {
         "word": "le locataire",
         "en": "tenant",
         "vi": "người thuê",
         "pos": "n.m.",
-        "pronunciation_vi": "lô-ca-te"
+        "pronunciation_vi": "lô-ca-te",
+        "pronunciation_en": "loh-kah-TAIR — same -aire ending as propriétaire ('air' like 'fair')"
       },
       {
         "word": "le bail",
         "en": "lease",
         "vi": "hợp đồng",
         "pos": "n.m.",
-        "pronunciation_vi": "bai"
+        "pronunciation_vi": "bai",
+        "pronunciation_en": "BAH-y — one syllable; 'ail' = 'ah-y' (like the start of 'eye')"
       },
       {
         "word": "les charges",
         "en": "utilities",
         "vi": "phí dịch vụ",
         "pos": "n.f.pl.",
-        "pronunciation_vi": "sa-giơ"
+        "pronunciation_vi": "sa-giơ",
+        "pronunciation_en": "SHARZH — silent plural -s; covers building maintenance + sometimes water/heat"
       },
       {
         "word": "meublé",
         "en": "furnished",
         "vi": "có nội thất",
         "pos": "adj.",
-        "pronunciation_vi": "mơ-blê"
+        "pronunciation_vi": "mơ-blê",
+        "pronunciation_en": "muh-BLAY — 'eu' = rounded-lip 'uh' (like 'put' with pursed lips)"
       },
       {
         "word": "la superficie",
         "en": "area",
         "vi": "diện tích",
         "pos": "n.f.",
-        "pronunciation_vi": "xu-pe-fi-xi"
+        "pronunciation_vi": "xu-pe-fi-xi",
+        "pronunciation_en": "soo-pair-fee-SEE — 'ci' at the end softens to 'see'; in m² in French listings"
       },
       {
         "word": "l'état des lieux",
         "en": "inventory",
         "vi": "biên bản hiện trạng",
         "pos": "n.m.",
-        "pronunciation_vi": "lê-ta đê liơ"
+        "pronunciation_vi": "lê-ta đê liơ",
+        "pronunciation_en": "lay-TAH day LYUH — 'eux' = rounded 'uh', no English equivalent"
       }
     ],
     "dialogue": [
       {
         "speaker": "A",
         "text": "Bonjour, je vous appelle au sujet de l'annonce pour l'appartement.",
-        "en": "Hello, calling about the apartment listing."
+        "en": "Hello, calling about the apartment listing.",
+        "vi": "Chào chị, tôi gọi về tin đăng cho thuê căn hộ ạ."
       },
       {
         "speaker": "B",
         "text": "Oui, il est toujours disponible. Voulez-vous le visiter ?",
-        "en": "Yes, still available. Want to visit?"
+        "en": "Yes, still available. Want to visit?",
+        "vi": "Vâng, vẫn còn trống. Anh có muốn đến xem không?"
       },
       {
         "speaker": "A",
         "text": "Avec plaisir. Le loyer inclut-il les charges ?",
-        "en": "With pleasure. Does rent include utilities?"
+        "en": "With pleasure. Does rent include utilities?",
+        "vi": "Rất sẵn lòng. Tiền thuê đã bao gồm phí chưa ạ?"
       },
       {
         "speaker": "B",
         "text": "Oui, l'eau et le chauffage sont compris.",
-        "en": "Yes, water and heating included."
+        "en": "Yes, water and heating included.",
+        "vi": "Có, đã bao gồm tiền nước và sưởi rồi."
       }
     ],
     "exercises": [
       {
         "type": "fill-blank",
         "question": "Je cherche un appartement ___ louer.",
-        "answer": "à"
+        "answer": "à",
+        "hint_vi": "giới từ trước động từ nguyên mẫu chỉ mục đích",
+        "hint_en": "preposition before an infinitive verb to express purpose ('to rent')"
       },
       {
         "type": "matching",
         "pairs": [
           [
             "le loyer",
-            "tiền thuê"
+            "tiền thuê (rent)"
           ],
           [
             "la caution",
-            "cọc"
+            "cọc (deposit)"
           ],
           [
             "meublé",
-            "có nội thất"
+            "có nội thất (furnished)"
           ]
         ],
-        "instruction": "Nối từ với nghĩa"
+        "instruction": "Nối từ với nghĩa",
+        "instruction_en": "Match the French word with its meaning"
       },
       {
         "type": "translation",
         "vietnamese": "Tiền thuê đã bao gồm điện nước chưa?",
+        "english": "Does the rent include utilities?",
         "french": "Est-ce que le loyer inclut les charges ?"
       }
     ]
@@ -1451,6 +1804,10 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_focus": [
           "réclamation → rê-cla-ma-xi-on",
           "ai → e"
+        ],
+        "pronunciation_focus_en": [
+          "réclamation → 'ray-klah-mah-SYOHN' — 'ti' before -on softens to 'sy'; final -on nasal",
+          "ai in 'faire' → 'eh' (bed), not 'ay'"
         ]
       },
       {
@@ -1460,6 +1817,11 @@ export const lessons: FrenchLesson[] = [
           "défectueux → đê-féc-tu-ơ",
           "eu → ơ",
           "er → ê"
+        ],
+        "pronunciation_focus_en": [
+          "défectueux → 'day-fek-too-UH' — final -eux is the rounded 'uh' (no English equivalent)",
+          "eu appears twice — both rounded-lip 'uh'",
+          "no -er at end of words here, but 'retourne' has soft 'uh' in -tourne"
         ]
       },
       {
@@ -1468,6 +1830,10 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_focus": [
           "ticket → ti-kê",
           "caisse → két-xơ"
+        ],
+        "pronunciation_focus_en": [
+          "ticket → 'tee-KAY' — final -t silent (NOT like English 'ticket')",
+          "caisse → 'KESS' — 'ai' = 'eh' (bed); double-s = single 's' sound"
         ]
       },
       {
@@ -1476,6 +1842,10 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_focus": [
           "remboursement → răm-bu-xơ-măng",
           "échange → ê-săng-giơ"
+        ],
+        "pronunciation_focus_en": [
+          "remboursement → 'rahm-boors-MAHN' — nasal 'em' + 'ou' (oo) + nasal 'ent'",
+          "échange → 'ay-SHAHNZH' — middle 'an' nasal; final -ge soft 'zh'"
         ]
       },
       {
@@ -1484,132 +1854,156 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_focus": [
           "délai → đê-le",
           "rétractation → rê-trắc-ta-xi-on"
+        ],
+        "pronunciation_focus_en": [
+          "délai → 'day-LAY' — 'ai' here uniquely sounds like 'ay' (because of the accent)",
+          "rétractation → 'ray-trak-tah-SYOHN' — five syllables; 'ti' before -on softens to 'sy'"
         ]
       }
     ],
     "cultural_notes_vi": "Pháp bảo vệ người tiêu dùng mạnh. Online: đổi 14 ngày. Sản phẩm lỗi: bảo hành 2 năm. Luôn giữ 'ticket de caisse'.",
+    "cultural_notes_en": "French consumer law is strong and shopkeepers know it. Online purchases have a 14-day no-questions-asked return window. Defective products are covered for 2 years of legal warranty ('garantie légale de conformité') — separate from any extended warranty. Always keep the 'ticket de caisse' (receipt) — without it you have no leverage.",
     "tip_advice_vi": "Dùng giọng lịch sự nhưng rõ ràng. Câu thần chú: 'Qu'est-ce que vous pouvez faire pour moi ?'",
+    "tip_advice_en": "Stay polite but firm — French staff respond well to clear, direct complaints, badly to apologetic mumbling. Memorize one magic phrase: 'Qu'est-ce que vous pouvez faire pour moi ?' ('What can you do for me?'). It puts the ball in their court without escalating.",
     "vocabulary": [
       {
         "word": "la réclamation",
         "en": "complaint",
         "vi": "khiếu nại",
         "pos": "n.f.",
-        "pronunciation_vi": "rê-cla-ma-xi-on"
+        "pronunciation_vi": "rê-cla-ma-xi-on",
+        "pronunciation_en": "ray-klah-mah-SYOHN — 'ti' before -on softens to 'sy'; nasal ending"
       },
       {
         "word": "défectueux",
         "en": "defective",
         "vi": "bị lỗi",
         "pos": "adj.",
-        "pronunciation_vi": "đê-féc-tu-ơ"
+        "pronunciation_vi": "đê-féc-tu-ơ",
+        "pronunciation_en": "day-fek-too-UH — final -eux is rounded 'uh' (no English equivalent — pucker your lips)"
       },
       {
         "word": "rembourser",
         "en": "to refund",
         "vi": "hoàn tiền",
         "pos": "v.",
-        "pronunciation_vi": "răm-bu-xê"
+        "pronunciation_vi": "răm-bu-xê",
+        "pronunciation_en": "rahm-boor-SAY — nasal 'em' opening; final -er = 'ay'"
       },
       {
         "word": "échanger",
         "en": "to exchange",
         "vi": "đổi",
         "pos": "v.",
-        "pronunciation_vi": "ê-săng-giê"
+        "pronunciation_vi": "ê-săng-giê",
+        "pronunciation_en": "ay-shahn-ZHAY — middle 'an' nasal; final -ger = 'zhay' (soft 'zh')"
       },
       {
         "word": "le ticket de caisse",
         "en": "receipt",
         "vi": "hóa đơn",
         "pos": "n.m.",
-        "pronunciation_vi": "ti-kê đơ két-xơ"
+        "pronunciation_vi": "ti-kê đơ két-xơ",
+        "pronunciation_en": "tee-KAY duh KESS — three quick syllables; final -t in ticket is silent"
       },
       {
         "word": "la facture",
         "en": "invoice",
         "vi": "hóa đơn",
         "pos": "n.f.",
-        "pronunciation_vi": "fắc-tuya"
+        "pronunciation_vi": "fắc-tuya",
+        "pronunciation_en": "fak-TUHR — -ure = rounded 'ur', no English r-color"
       },
       {
         "word": "la garantie",
         "en": "warranty",
         "vi": "bảo hành",
         "pos": "n.f.",
-        "pronunciation_vi": "ga-răng-ti"
+        "pronunciation_vi": "ga-răng-ti",
+        "pronunciation_en": "gah-rahn-TEE — hard g; nasal 'an' in the middle"
       },
       {
         "word": "annuler",
         "en": "to cancel",
         "vi": "hủy",
         "pos": "v.",
-        "pronunciation_vi": "a-nu-lê"
+        "pronunciation_vi": "a-nu-lê",
+        "pronunciation_en": "ah-nu-LAY — middle 'u' is rounded (German 'ü'), not 'oo'"
       },
       {
         "word": "le service client",
         "en": "customer service",
         "vi": "dịch vụ KH",
         "pos": "n.m.",
-        "pronunciation_vi": "se-vi-xơ cli-ăng"
+        "pronunciation_vi": "se-vi-xơ cli-ăng",
+        "pronunciation_en": "sair-VEES klee-AHN — final -ent in 'client' is nasal 'ahn', no t"
       },
       {
         "word": "le remboursement",
         "en": "refund",
         "vi": "hoàn tiền",
         "pos": "n.m.",
-        "pronunciation_vi": "răm-bu-xơ-măng"
+        "pronunciation_vi": "răm-bu-xơ-măng",
+        "pronunciation_en": "rahm-boors-MAHN — same shape as the verb 'rembourser', plus nasal -ment ending"
       }
     ],
     "dialogue": [
       {
         "speaker": "A",
         "text": "Bonjour, ce téléphone acheté la semaine dernière ne marche plus.",
-        "en": "Hello, this phone bought last week doesn't work."
+        "en": "Hello, this phone bought last week doesn't work.",
+        "vi": "Chào chị, chiếc điện thoại tôi mua tuần trước không dùng được nữa."
       },
       {
         "speaker": "B",
         "text": "Avez-vous le ticket de caisse ?",
-        "en": "Do you have the receipt?"
+        "en": "Do you have the receipt?",
+        "vi": "Anh có hóa đơn không ạ?"
       },
       {
         "speaker": "A",
         "text": "Oui, voici la facture et la garantie.",
-        "en": "Yes, here's invoice and warranty."
+        "en": "Yes, here's invoice and warranty.",
+        "vi": "Có, đây hóa đơn và phiếu bảo hành."
       },
       {
         "speaker": "B",
         "text": "Très bien, on peut vous le rembourser ou l'échanger.",
-        "en": "Very well, we can refund or exchange it."
+        "en": "Very well, we can refund or exchange it.",
+        "vi": "Vâng, chúng tôi có thể hoàn tiền hoặc đổi cho anh."
       }
     ],
     "exercises": [
       {
         "type": "fill-blank",
         "question": "Ce produit est défectueux, je voudrais le ___.",
-        "answer": "retourner"
+        "answer": "retourner",
+        "hint_vi": "động từ nguyên mẫu nghĩa 'trả lại'",
+        "hint_en": "the infinitive verb meaning 'to return (something)'"
       },
       {
         "type": "matching",
         "pairs": [
           [
             "rembourser",
-            "hoàn tiền"
+            "hoàn tiền (to refund)"
           ],
           [
             "échanger",
-            "đổi"
+            "đổi (to exchange)"
           ],
           [
             "la garantie",
-            "bảo hành"
+            "bảo hành (warranty)"
           ]
         ],
-        "instruction": "Nối từ với nghĩa"
+        "instruction": "Nối từ với nghĩa",
+        "instruction_en": "Match the French word with its meaning"
       },
       {
         "type": "translation",
         "vietnamese": "Tôi muốn hoàn tiền. Đây là hóa đơn.",
+        "english": "I'd like a refund. Here's the receipt.",
         "french": "Je voudrais être remboursé. Voici ma facture."
       }
     ]
@@ -1628,6 +2022,11 @@ export const lessons: FrenchLesson[] = [
           "excusez → éc-xcu-dê",
           "ez → ê",
           "gare → ga"
+        ],
+        "pronunciation_focus_en": [
+          "excusez → 'ek-skoo-ZAY' — middle 'u' is rounded (German 'ü')",
+          "-ez ending → 'ay'",
+          "gare → 'GAHR' — short 'ah'; throat r at the end"
         ]
       },
       {
@@ -1637,6 +2036,11 @@ export const lessons: FrenchLesson[] = [
           "continuez → côn-ti-nu-ê",
           "droit → đroa",
           "feu → fơ"
+        ],
+        "pronunciation_focus_en": [
+          "continuez → 'kohn-tee-noo-AY' — four syllables; final -ez = 'ay'",
+          "droit → 'DRWAH' — silent -t; 'oi' = 'wah'",
+          "feu → 'FUH' — rounded-lip 'uh' (no English equivalent)"
         ]
       },
       {
@@ -1646,6 +2050,11 @@ export const lessons: FrenchLesson[] = [
           "tournez → tua-nê",
           "gauche → gô-sơ",
           "carrefour → ca-rơ-fua"
+        ],
+        "pronunciation_focus_en": [
+          "tournez → 'toor-NAY' — 'ou' = 'oo' (boot); -ez = 'ay'",
+          "gauche → 'GOHSH' — 'au' = 'oh'; 'ch' = soft 'sh'",
+          "carrefour → 'kar-uh-FOOR' — silent r in the middle; throat r at end"
         ]
       },
       {
@@ -1654,6 +2063,10 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_focus": [
           "environ → ăng-vi-ron",
           "pied → pi-ê"
+        ],
+        "pronunciation_focus_en": [
+          "environ → 'ahn-vee-ROHN' — both 'en' and 'on' are nasal",
+          "pied → 'pyay' — one syllable; final -d silent"
         ]
       },
       {
@@ -1663,132 +2076,157 @@ export const lessons: FrenchLesson[] = [
           "pharmacie → fa-ma-xi",
           "face → fát-xơ",
           "boulangerie → bu-lăng-giơ-ri"
+        ],
+        "pronunciation_focus_en": [
+          "pharmacie → 'far-mah-SEE' — ph = f; final -cie = 'see'",
+          "face → 'FASS' — short, with silent final -e",
+          "boulangerie → 'boo-lahn-zhuh-REE' — nasal 'an' in the middle; soft 'zh' for the -ge-"
         ]
       }
     ],
     "cultural_notes_vi": "Người Pháp dùng điểm mốc: 'à côté de la boulangerie'. Dùng thời gian làm khoảng cách. Paris: câu trả lời cộc lốc là bình thường.",
+    "cultural_notes_en": "French directions use landmarks, not street numbers: 'à côté de la boulangerie' ('next to the bakery') beats '50m on the right'. Distances are given in minutes on foot, not meters. In Paris, expect a curt 'tout droit' and a wave — that's not rudeness, just speed.",
     "tip_advice_vi": "Học thuộc: 'à droite', 'à gauche', 'tout droit', 'en face'. Luôn bắt đầu 'Excusez-moi'.",
+    "tip_advice_en": "Burn four phrases into muscle memory: 'à droite' (right), 'à gauche' (left), 'tout droit' (straight), 'en face' (across from). Always open with 'Excusez-moi' — without it, the response rate drops to zero.",
     "vocabulary": [
       {
         "word": "tout droit",
         "en": "straight",
         "vi": "đi thẳng",
         "pos": "adv.",
-        "pronunciation_vi": "tu đroa"
+        "pronunciation_vi": "tu đroa",
+        "pronunciation_en": "TOO DRWAH — both 't's are silent at the end; 'oi' = 'wah'"
       },
       {
         "word": "à gauche",
         "en": "left",
         "vi": "trái",
         "pos": "adv.",
-        "pronunciation_vi": "a gô-sơ"
+        "pronunciation_vi": "a gô-sơ",
+        "pronunciation_en": "ah GOHSH — 'au' = 'oh'; 'ch' = soft 'sh'"
       },
       {
         "word": "à droite",
         "en": "right",
         "vi": "phải",
         "pos": "adv.",
-        "pronunciation_vi": "a đroát"
+        "pronunciation_vi": "a đroát",
+        "pronunciation_en": "ah DRWAHT — 'oi' = 'wah'; final -te is pronounced (unlike 'droit' alone)"
       },
       {
         "word": "le carrefour",
         "en": "intersection",
         "vi": "ngã tư",
         "pos": "n.m.",
-        "pronunciation_vi": "ca-rơ-fua"
+        "pronunciation_vi": "ca-rơ-fua",
+        "pronunciation_en": "kar-uh-FOOR — 'ou' = 'oo'; throat r at end"
       },
       {
         "word": "le feu",
         "en": "traffic light",
         "vi": "đèn giao thông",
         "pos": "n.m.",
-        "pronunciation_vi": "fơ"
+        "pronunciation_vi": "fơ",
+        "pronunciation_en": "FUH — rounded 'uh' (pucker your lips and say 'eh')"
       },
       {
         "word": "traverser",
         "en": "to cross",
         "vi": "băng qua",
         "pos": "v.",
-        "pronunciation_vi": "tra-ve-xê"
+        "pronunciation_vi": "tra-ve-xê",
+        "pronunciation_en": "trah-vair-SAY — three syllables; final -er = 'ay'"
       },
       {
         "word": "le trottoir",
         "en": "sidewalk",
         "vi": "vỉa hè",
         "pos": "n.m.",
-        "pronunciation_vi": "trô-toa"
+        "pronunciation_vi": "trô-toa",
+        "pronunciation_en": "troh-TWAHR — 'oi' = 'wah'; throat r at end"
       },
       {
         "word": "le plan",
         "en": "map",
         "vi": "bản đồ",
         "pos": "n.m.",
-        "pronunciation_vi": "plăng"
+        "pronunciation_vi": "plăng",
+        "pronunciation_en": "PLAHN — one syllable; nasal 'an'; silent final -n"
       },
       {
         "word": "proche",
         "en": "near",
         "vi": "gần",
         "pos": "adj.",
-        "pronunciation_vi": "prô-sơ"
+        "pronunciation_vi": "prô-sơ",
+        "pronunciation_en": "PROHSH — 'ch' = soft 'sh'; final -e silent"
       },
       {
         "word": "loin",
         "en": "far",
         "vi": "xa",
         "pos": "adv.",
-        "pronunciation_vi": "loanh"
+        "pronunciation_vi": "loanh",
+        "pronunciation_en": "LWAN — 'oi' = 'wah' + nasal 'in' (no English equivalent for the nasal)"
       }
     ],
     "dialogue": [
       {
         "speaker": "A",
         "text": "Pardon, pour aller au Musée d'Orsay ?",
-        "en": "Excuse me, how to get to Musée d'Orsay?"
+        "en": "Excuse me, how to get to Musée d'Orsay?",
+        "vi": "Xin lỗi, đến bảo tàng Orsay thế nào ạ?"
       },
       {
         "speaker": "B",
         "text": "Continuez tout droit, puis tournez à gauche après le pont.",
-        "en": "Go straight, then left after the bridge."
+        "en": "Go straight, then left after the bridge.",
+        "vi": "Đi thẳng, rồi rẽ trái sau cầu nhé."
       },
       {
         "speaker": "A",
         "text": "C'est loin d'ici ?",
-        "en": "Is it far?"
+        "en": "Is it far?",
+        "vi": "Có xa đây không ạ?"
       },
       {
         "speaker": "B",
         "text": "Non, c'est à quinze minutes à pied.",
-        "en": "No, about fifteen minutes on foot."
+        "en": "No, about fifteen minutes on foot.",
+        "vi": "Không, khoảng mười lăm phút đi bộ thôi."
       }
     ],
     "exercises": [
       {
         "type": "fill-blank",
         "question": "Tournez ___ gauche au prochain carrefour.",
-        "answer": "à"
+        "answer": "à",
+        "hint_vi": "giới từ đi với 'gauche/droite' chỉ hướng",
+        "hint_en": "the preposition that pairs with 'gauche/droite' to mean 'to the left/right'"
       },
       {
         "type": "matching",
         "pairs": [
           [
             "tout droit",
-            "thẳng"
+            "thẳng (straight)"
           ],
           [
             "à gauche",
-            "trái"
+            "trái (left)"
           ],
           [
             "traverser",
-            "băng qua"
+            "băng qua (to cross)"
           ]
         ],
-        "instruction": "Nối từ với nghĩa"
+        "instruction": "Nối từ với nghĩa",
+        "instruction_en": "Match the French word with its meaning"
       },
       {
         "type": "translation",
         "vietnamese": "Xin lỗi, nhà ga ở đâu ạ?",
+        "english": "Excuse me, where is the train station?",
         "french": "Excusez-moi, où se trouve la gare ?"
       }
     ]
