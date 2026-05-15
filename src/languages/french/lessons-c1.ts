@@ -1843,6 +1843,12 @@ export const lessons: FrenchLesson[] = [
           "quantitative → kãn-ti-ta-tiv",
           "qualitative → ka-li-ta-tiv",
           "s'opposent → so-poz"
+        ],
+        "pronunciation_focus_en": [
+          "approche → 'ah-PROSH' — final -che is 'sh' (soft, like 'shoe'); final -e silent",
+          "quantitative → 'kahn-tee-tah-TEEV' — nasal 'an'; final -ive is 'eev'; stress on the last syllable",
+          "qualitative → 'kah-lee-tah-TEEV' — parallel to 'quantitative'; same -ive ending pattern",
+          "s'opposent → 'soh-POZ' — 's' between vowels would sound like 'z' but here double-p keeps it as 's'; final -ent silent"
         ]
       },
       {
@@ -1853,6 +1859,12 @@ export const lessons: FrenchLesson[] = [
           "statistique → sta-tis-tik",
           "ampleur → ãm-plơr",
           "texture → tèk-stur"
+        ],
+        "pronunciation_focus_en": [
+          "enquête → 'ahn-KET' — nasal -en; circumflex on the -ê opens to 'eh'",
+          "statistique → 'stah-tees-TEEK' — final -ique is 'eek'; stress on the last syllable",
+          "ampleur → 'ahn-PLUR' — nasal 'am'; final -eur is 'ur' with rounded lips",
+          "texture → 'teks-TEWR' — final -ure is 'ewr' with rounded 'u'; final -e silent"
         ]
       },
       {
@@ -1863,6 +1875,12 @@ export const lessons: FrenchLesson[] = [
           "réside → ré-zid",
           "saisir → sé-zir",
           "attribuent → a-tri-bü"
+        ],
+        "pronunciation_focus_en": [
+          "inconvénient → 'an-kohn-vay-NYAHN' — nasal -in + nasal -on + nasal -ient; final -t silent",
+          "réside → 'ray-ZEED' — 's' between vowels sounds like 'z'; final -e silent",
+          "saisir → 'say-ZEER' — 's' between vowels sounds like 'z'; final -ir is 'eer'",
+          "attribuent → 'ah-tree-BEW' — double-t one clean 't'; final -uent is rounded 'ew' (3rd-person plural ending)"
         ]
       },
       {
@@ -1873,6 +1891,12 @@ export const lessons: FrenchLesson[] = [
           "risque → risk",
           "hâtive → a-tiv",
           "restreint → rès-tran"
+        ],
+        "pronunciation_focus_en": [
+          "inverse → 'an-VAIRS' — nasal -in; -erse is 'airs'; final -e silent",
+          "risque → 'REESK' — final -que is 'k'; final -e silent",
+          "hâtive → 'ah-TEEV' — silent h; final -ive is 'eev'; circumflex on the 'â' just lengthens",
+          "restreint → 'res-TRAN' — nasal -ein; final -t silent; the -tr cluster is sounded but quick"
         ]
       },
       {
@@ -1883,160 +1907,193 @@ export const lessons: FrenchLesson[] = [
           "articulant → ar-ti-ku-lã",
           "séquentielle → sé-kãn-siel",
           "féconde → fé-kõnd"
+        ],
+        "pronunciation_focus_en": [
+          "démarche → 'day-MARSH' — final -che is 'sh'; final -e silent",
+          "articulant → 'ar-tee-kew-LAHN' — 'u' rounded; nasal -ant; final -t silent",
+          "séquentielle → 'say-kahn-SYEL' — nasal -en; -tielle is 'syel'; double-l one clean 'l'",
+          "féconde → 'fay-KOHND' — nasal -on; final -e silent but the -d is sounded"
         ]
       }
     ],
     "cultural_notes_vi": "TRANH LUẬN PHƯƠNG PHÁP LUẬN ở Pháp có một lịch sử CĂNG THẲNG, đặc biệt giữa truyền thống định lượng (thừa kế Durkheim, Bourdieu) và truyền thống định tính (thừa kế người-quan-sát-tham-gia, ethnologie). Hai « clans » đôi khi nói chuyện với nhau bằng giọng khá thù địch: định lượng cáo buộc định tính « unscientific », định tính cáo buộc định lượng « positiviste plat ».\n\nTRONG NHỮNG NĂM 2000-2020, khoảng cách thu hẹp dần qua « méthodes mixtes » (mixed methods) — nhập từ Anh-Mỹ, được Pháp hóa qua các tác giả như Beaud, Weber, Lemieux. Tuy vậy, mỗi đại học vẫn có « école » nghiêng về một bên — biết « école » của hội đồng giúp bạn điều chỉnh tone.\n\nKHI SO SÁNH HAI PHƯƠNG PHÁP, người Việt mới hội nhập dễ rơi hai bẫy:\n\n(1) « QUANTI = SCIENTIFIQUE, QUALI = SUBJECTIF » — nhập khẩu định kiến từ training Anh-Mỹ. Pháp sẽ đọc bạn là không cập nhật. Định tính chuẩn ở Pháp (Beaud-Weber, ethnographie politique) có rigueur méthodologique cao bằng định lượng; chỉ là rigueur ấy có hình thức khác.\n\n(2) NGƯỢC LẠI: « QUALI = AUTHENTIQUE, QUANTI = RÉDUCTEUR » — định kiến của một số « school » người dân tộc học cổ điển. Cũng bị Pháp ngày nay đọc là đơn giản hóa.\n\nTHÁI ĐỘ ĐÚNG ở C1: HAI cách tiếp cận trả lời HAI loại câu hỏi khác nhau, KHÔNG cạnh tranh. Định lượng trả lời « combien », « avec quelle ampleur », « selon quelle distribution ». Định tính trả lời « comment », « pourquoi », « selon quel sens ». Một câu nghiên cứu thường cần CẢ HAI — điều biện minh cho « méthodes mixtes ».\n\nTRƯỜNG HỢP ĐẶC BIỆT — định lượng SỬ DỤNG ĐỊNH TÍNH:\n- ĐIỀU TRA SƠ BỘ định tính → xây dựng câu hỏi questionnaire định lượng;\n- KIỂM ĐỊNH định tính → đặt nghi vấn các kết quả định lượng « bất thường »;\n- INTERPRÉTATION định tính → đọc các trends số liệu trong ngữ cảnh.\n\nTHẢO LUẬN PHƯƠNG PHÁP LUẬN trong séminaire / soutenance đòi hỏi cú pháp tinh tế: KHÔNG « cette méthode est meilleure », mà « cette méthode est plus appropriée à la question posée ». Khẳng định một méthode hơn cái khác trong tuyệt đối = bị tấn công ngay.",
+    "cultural_notes_en": "METHODOLOGICAL DEBATES in France have a HISTORICALLY TENSE backstory, especially between the quantitative tradition (heir to Durkheim and Bourdieu) and the qualitative tradition (heir to participant observation and ethnologie). The two 'clans' sometimes addressed each other in fairly hostile tones: the quantis accused the qualis of being 'unscientific', the qualis accused the quantis of being 'flat positivists'.\n\nIN THE 2000s–2020s, the gap has narrowed via 'méthodes mixtes' (mixed methods) — imported from anglophone scholarship and Frenchified by authors like Beaud, Weber, Lemieux. Still, each French university leans one way or the other — knowing the committee's 'école' helps you calibrate tone.\n\nWHEN COMPARING METHODS, anglophone academics often fall into two traps:\n\n(1) 'QUANTI = SCIENTIFIC, QUALI = SUBJECTIVE' — an imported prejudice from Anglo-American training. The French will read you as out of date. Rigorous French qualitative work (Beaud-Weber, ethnographie politique) has methodological rigor every bit as demanding as the quantitative side; the form of the rigor is just different.\n\n(2) THE REVERSE: 'QUALI = AUTHENTIC, QUANTI = REDUCTIVE' — the prejudice of some classical anthropologists. Also read in contemporary France as oversimplifying.\n\nTHE RIGHT C1 STANCE: the two approaches answer TWO DIFFERENT kinds of questions, and DON'T compete. Quanti answers 'how much', 'with what magnitude', 'in what distribution'. Quali answers 'how', 'why', 'in what sense'. A serious research question often needs BOTH — which is precisely what justifies 'méthodes mixtes'.\n\nSPECIFIC CASE — QUALI SUPPORTING QUANTI:\n- Qualitative scoping → builds the questionnaire items for the quantitative survey;\n- Qualitative auditing → interrogates unexpected quantitative results;\n- Qualitative interpretation → reads trends in context.\n\nMETHODOLOGICAL DISCUSSION in a seminar or defense demands precise syntax: NEVER 'cette méthode est meilleure' (this method is better), but 'cette méthode est plus appropriée à la question posée' (this method is more appropriate to the question at hand). Asserting one method superior in absolute terms invites immediate attack — your interlocutor will demand to know better for WHICH research question.",
     "tip_advice_vi": "CẤU TRÚC 5 PHẦN để so sánh hai phương pháp trong section méthodologique:\n\n(1) NỀN TẢNG ÉPISTÉMOLOGIQUE — mỗi phương pháp dựa trên giả định gì về thực tại? Định lượng presupposes regularités mesurables; định tính presupposes sens réflexif. KHÔNG bỏ qua bước này — hội đồng C1 đọc nó.\n\n(2) ƯU ĐIỂM CỦA MỖI — neutralement. « L'enquête statistique permet de… »; « L'enquête ethnographique permet de… ». KHÔNG « est meilleure que ».\n\n(3) GIỚI HẠN CỦA MỖI — neutralement. Mỗi phương pháp có un trou aveugle (điểm mù). Nêu rõ.\n\n(4) ARTICULATION possible — mixed methods. « En articulant les deux dans un dispositif séquentiel… »\n\n(5) CHOIX JUSTIFIÉ — phương pháp bạn chọn, KÈM lý do liên quan đến câu hỏi nghiên cứu cụ thể của bạn. KHÔNG « j'ai choisi le qualitatif parce que c'est mieux » — câu này tự sát.\n\nCỤM HỮU ÍCH SO SÁNH:\n\nĐỂ SONG SONG HAI PHƯƠNG PHÁP:\n- « Là où X permet de…, Y permet de… » (Nơi X cho phép…, Y cho phép…)\n- « Tandis que X mesure l'ampleur, Y restitue la texture. » (Trong khi X đo tầm vóc, Y khôi phục kết cấu)\n- « D'un côté…, de l'autre… » (Một mặt…, mặt khác…)\n- « X et Y, loin de s'opposer, se complètent. » (X và Y, khác hẳn đối lập, bổ sung lẫn nhau)\n\nĐỂ NÊU GIỚI HẠN MỘT BÊN:\n- « Le risque de cette approche réside dans… » (Rủi ro của cách tiếp cận này nằm ở)\n- « L'inconvénient majeur consiste en… » (Bất lợi chính nằm ở)\n- « Cette méthode achoppe lorsque… » (Phương pháp này vấp khi)\n- « Elle peine à saisir… » (Nó khó nắm bắt)\n\nĐỂ CHỌN VÀ BIỆN MINH:\n- « Compte tenu de la nature de mon objet, j'opte pour… » (Xét bản chất đối tượng, tôi chọn)\n- « La spécificité de ma question oriente le choix vers… » (Tính đặc thù câu hỏi định hướng chọn)\n- « Sans dénier la pertinence de X, c'est Y qui semble ici le mieux adapté. » (Không phủ nhận sự thích hợp của X, ở đây Y có vẻ phù hợp nhất)\n\nTRÁNH:\n- « Cette méthode est mieux que celle-là. » → quá tuyệt đối, không định ngữ cảnh\n- « J'ai choisi le qualitatif parce que je n'aime pas les chiffres. » → cá nhân hóa, không khoa học\n- « Le quantitatif est dépassé. » → tuyên truyền, không lập luận\n- Bỏ qua nền tảng épistémologique — đọc B2 chưa lên C1",
+    "tip_advice_en": "Five-part structure for comparing two methodologies in a methods section:\n\n(1) EPISTEMOLOGICAL FOUNDATION — what does each method presuppose about reality? Quanti presupposes measurable regularities; quali presupposes reflexive meaning. DO NOT skip this step — a C1 committee reads for it specifically.\n\n(2) STRENGTHS OF EACH — neutrally. 'L'enquête statistique permet de…'; 'L'enquête ethnographique permet de…'. NEVER 'est meilleure que'.\n\n(3) LIMITS OF EACH — neutrally. Each method has a 'trou aveugle' (blind spot). State explicitly.\n\n(4) POSSIBLE ARTICULATION — mixed methods. 'En articulant les deux dans un dispositif séquentiel…'\n\n(5) JUSTIFIED CHOICE — the method you chose, WITH a reason tied to YOUR specific research question. NEVER 'j'ai choisi le qualitatif parce que c'est mieux' — that's career suicide.\n\nUSEFUL COMPARATIVE PHRASES:\n\nTO PARALLEL TWO METHODS:\n- 'Là où X permet de…, Y permet de…' (Where X allows…, Y allows…)\n- 'Tandis que X mesure l'ampleur, Y restitue la texture.' (While X measures the scale, Y renders the texture)\n- 'D'un côté…, de l'autre…' (On one hand…, on the other…)\n- 'X et Y, loin de s'opposer, se complètent.' (X and Y, far from opposing each other, complement each other)\n\nTO NAME A LIMIT:\n- 'Le risque de cette approche réside dans…' (The risk of this approach lies in…)\n- 'L'inconvénient majeur consiste en…' (The major drawback consists of…)\n- 'Cette méthode achoppe lorsque…' (This method stumbles when…)\n- 'Elle peine à saisir…' (It struggles to capture…)\n\nTO CHOOSE AND JUSTIFY:\n- 'Compte tenu de la nature de mon objet, j'opte pour…' (Given the nature of my object, I opt for…)\n- 'La spécificité de ma question oriente le choix vers…' (The specificity of my question orients the choice toward…)\n- 'Sans dénier la pertinence de X, c'est Y qui semble ici le mieux adapté.' (Without denying the relevance of X, Y seems best adapted here)\n\nAVOID:\n- 'Cette méthode est mieux que celle-là.' → too absolute, no contextualization\n- 'J'ai choisi le qualitatif parce que je n'aime pas les chiffres.' → personalizes, not scientific\n- 'Le quantitatif est dépassé.' → polemic, not argument\n- Skipping the epistemological foundation — reads B2, not C1",
     "vocabulary": [
       {
         "word": "une approche méthodologique",
         "en": "a methodological approach",
         "vi": "một cách tiếp cận phương pháp luận",
         "pos": "n.f.",
-        "pronunciation_vi": "a-prosh mé-to-do-lo-jik"
+        "pronunciation_vi": "a-prosh mé-to-do-lo-jik",
+        "pronunciation_en": "ewn ah-PROSH may-toh-doh-loh-ZHEEK — 'gique' is 'zheek'; stress on the last syllable"
       },
       {
         "word": "l'approche quantitative",
         "en": "the quantitative approach",
         "vi": "cách tiếp cận định lượng",
         "pos": "n.f.",
-        "pronunciation_vi": "a-prosh kãn-ti-ta-tiv"
+        "pronunciation_vi": "a-prosh kãn-ti-ta-tiv",
+        "pronunciation_en": "lah-PROSH kahn-tee-tah-TEEV — nasal 'an' in 'quantitative'; final -ive is 'eev'"
       },
       {
         "word": "l'approche qualitative",
         "en": "the qualitative approach",
         "vi": "cách tiếp cận định tính",
         "pos": "n.f.",
-        "pronunciation_vi": "a-prosh ka-li-ta-tiv"
+        "pronunciation_vi": "a-prosh ka-li-ta-tiv",
+        "pronunciation_en": "lah-PROSH kah-lee-tah-TEEV — parallel construction to 'quantitative'; the qu- is always just 'k'"
       },
       {
         "word": "saisir le sens",
         "en": "to grasp the meaning",
         "vi": "nắm bắt ý nghĩa",
         "pos": "v.",
-        "pronunciation_vi": "sé-zir lơ sãns"
+        "pronunciation_vi": "sé-zir lơ sãns",
+        "pronunciation_en": "say-ZEER luh SAHNS — 's' between vowels sounds like 'z'; nasal -ens; the qualitative researcher's primary task"
       },
       {
         "word": "un dispositif séquentiel",
         "en": "a sequential design",
         "vi": "một thiết kế tuần tự",
         "pos": "n.m.",
-        "pronunciation_vi": "dis-po-zi-tif sé-kãn-siel"
+        "pronunciation_vi": "dis-po-zi-tif sé-kãn-siel",
+        "pronunciation_en": "ehn dees-poh-zee-TEEF say-kahn-SYEL — 'dispositif' is the French research-design term, used widely; -tiel is 'syel'"
       },
       {
         "word": "des méthodes mixtes",
         "en": "mixed methods",
         "vi": "phương pháp hỗn hợp",
         "pos": "n.f. pl.",
-        "pronunciation_vi": "mé-tod mikst"
+        "pronunciation_vi": "mé-tod mikst",
+        "pronunciation_en": "day may-TOD MEEKST — anglophone import accepted into French; final -tes pronounced 'kst' (the -e silent but consonant cluster sounded)"
       },
       {
         "word": "restituer la texture",
         "en": "to render the texture",
         "vi": "khôi phục kết cấu",
         "pos": "v.",
-        "pronunciation_vi": "rès-ti-tu-é la tèk-stur"
+        "pronunciation_vi": "rès-ti-tu-é la tèk-stur",
+        "pronunciation_en": "res-tee-tew-AY lah teks-TEWR — 'u' rounded; key phrase for what ethnographic work delivers: not measurement, but feel"
       },
       {
         "word": "un échantillon restreint",
         "en": "a limited sample",
         "vi": "một mẫu hạn chế",
         "pos": "n.m.",
-        "pronunciation_vi": "é-shãn-tiy-õn rès-tran"
+        "pronunciation_vi": "é-shãn-tiy-õn rès-tran",
+        "pronunciation_en": "ehn ay-shahn-tee-YOHN res-TRAN — three nasals across the phrase; admitting your sample is 'restreint' protects against generalization attacks"
       },
       {
         "word": "féconde",
         "en": "productive / fruitful",
         "vi": "phong phú / sinh sản tốt",
         "pos": "adj.",
-        "pronunciation_vi": "fé-kõnd"
+        "pronunciation_vi": "fé-kõnd",
+        "pronunciation_en": "fay-KOHND — nasal -on; final -e silent but the -d sounded; the academic compliment for an approach that generates many results"
       },
       {
         "word": "se compléter",
         "en": "to complement each other",
         "vi": "bổ sung lẫn nhau",
         "pos": "v.",
-        "pronunciation_vi": "sơ kõm-plé-té"
+        "pronunciation_vi": "sơ kõm-plé-té",
+        "pronunciation_en": "suh kohm-play-TAY — reflexive verb; the central claim of mixed-methods justification"
       }
     ],
     "dialogue": [
       {
         "speaker": "Pr. Lefèvre",
         "text": "Madame Tran, pourquoi avez-vous opté pour le qualitatif plutôt que le quantitatif ?",
-        "vi": "Cô Trần, tại sao cô chọn định tính thay vì định lượng?"
+        "vi": "Cô Trần, tại sao cô chọn định tính thay vì định lượng?",
+        "en": "Ms. Tran, why did you opt for qualitative rather than quantitative?"
       },
       {
         "speaker": "Linh",
         "text": "Compte tenu de ma question — comprendre comment les bilingues précoces vivent subjectivement leur compétence — le qualitatif me paraissait plus adapté.",
-        "vi": "Xét câu hỏi của tôi — hiểu cách người song ngữ sớm sống một cách chủ quan với năng lực của họ — định tính có vẻ phù hợp hơn."
+        "vi": "Xét câu hỏi của tôi — hiểu cách người song ngữ sớm sống một cách chủ quan với năng lực của họ — định tính có vẻ phù hợp hơn.",
+        "en": "Given my question — understanding how early bilinguals subjectively experience their competence — qualitative seemed better adapted."
       },
       {
         "speaker": "Pr. Lefèvre",
         "text": "Bonne formulation. Mais ne risquez-vous pas une généralisation hâtive ?",
-        "vi": "Diễn đạt tốt. Nhưng cô có nguy cơ khái quát hóa vội vã không?"
+        "vi": "Diễn đạt tốt. Nhưng cô có nguy cơ khái quát hóa vội vã không?",
+        "en": "Well phrased. But aren't you risking a hasty generalization?"
       },
       {
         "speaker": "Linh",
         "text": "Je m'en garde. Mes conclusions seront formulées comme heuristiques, pas comme généralisations.",
-        "vi": "Tôi tránh điều đó. Kết luận của tôi sẽ được phát biểu như tìm tòi, không phải khái quát hóa."
+        "vi": "Tôi tránh điều đó. Kết luận của tôi sẽ được phát biểu như tìm tòi, không phải khái quát hóa.",
+        "en": "I'm guarding against that. My conclusions will be framed as heuristic, not as generalizations."
       }
     ],
     "dialogue_long": [
       {
         "speaker": "Pr. Lefèvre (séminaire méthodologique, M2)",
         "text": "Madame Tran, votre dispositif est mixte mais pas suffisamment articulé. Le quantitatif et le qualitatif coexistent sans dialoguer. Expliquez-moi comment vous comptez les faire dialoguer dans la version finale.",
-        "vi": "Cô Trần, thiết kế của cô là hỗn hợp nhưng chưa khớp nối đủ. Định lượng và định tính cùng tồn tại nhưng không đối thoại. Giải thích cô tính làm chúng đối thoại thế nào trong bản chính thức."
+        "vi": "Cô Trần, thiết kế của cô là hỗn hợp nhưng chưa khớp nối đủ. Định lượng và định tính cùng tồn tại nhưng không đối thoại. Giải thích cô tính làm chúng đối thoại thế nào trong bản chính thức.",
+        "en": "Ms. Tran, your design is mixed but not sufficiently articulated. Quantitative and qualitative coexist without dialoguing. Explain how you plan to make them dialogue in the final version."
       },
       {
         "speaker": "Linh",
         "text": "Je propose une articulation séquentielle en trois temps. Premier temps: quarante entretiens semi-directifs ouverts pour dégager les profils-types. Deuxième temps: passation d'une batterie de tests cognitifs sur les mêmes participants. Troisième temps: retour qualitatif sur les cas où les tests donnent des résultats inattendus.",
-        "vi": "Tôi đề xuất một khớp nối tuần tự ba pha. Pha đầu: 40 phỏng vấn bán cấu trúc mở để rút ra các loại hình. Pha hai: thực hiện loạt bài kiểm tra nhận thức trên cùng người tham gia. Pha ba: trở lại định tính ở các trường hợp test cho kết quả bất ngờ."
+        "vi": "Tôi đề xuất một khớp nối tuần tự ba pha. Pha đầu: 40 phỏng vấn bán cấu trúc mở để rút ra các loại hình. Pha hai: thực hiện loạt bài kiểm tra nhận thức trên cùng người tham gia. Pha ba: trở lại định tính ở các trường hợp test cho kết quả bất ngờ.",
+        "en": "I propose a sequential articulation in three phases. Phase one: forty open semi-structured interviews to extract typical profiles. Phase two: administering a battery of cognitive tests to the same participants. Phase three: qualitative return on cases where the tests produced unexpected results."
       },
       {
         "speaker": "Pr. Lefèvre",
         "text": "C'est exactement la logique mixed methods telle que la pense Lemieux. Pourquoi ne l'avez-vous pas explicité ainsi dès le départ ?",
-        "vi": "Đó chính là logic mixed methods như Lemieux nghĩ. Tại sao cô không nêu rõ vậy từ đầu?"
+        "vi": "Đó chính là logic mixed methods như Lemieux nghĩ. Tại sao cô không nêu rõ vậy từ đầu?",
+        "en": "That's exactly the mixed-methods logic as Lemieux conceives it. Why didn't you make it explicit that way from the start?"
       },
       {
         "speaker": "Linh",
         "text": "Honnêtement, parce que j'avais peur que le jury de M1 — plus quanti — me reproche de me cacher derrière le qualitatif. J'ai sous-vendu mon dispositif.",
-        "vi": "Thành thật, vì tôi sợ hội đồng M1 — nghiêng định lượng hơn — trách tôi trốn sau định tính. Tôi đã bán dưới giá thiết kế."
+        "vi": "Thành thật, vì tôi sợ hội đồng M1 — nghiêng định lượng hơn — trách tôi trốn sau định tính. Tôi đã bán dưới giá thiết kế.",
+        "en": "Honestly, because I was afraid that the M1 jury — more quanti-leaning — would accuse me of hiding behind the qualitative. I undersold my design."
       },
       {
         "speaker": "Pr. Lefèvre",
         "text": "Erreur stratégique courante. Au M2, l'enjeu est inverse — défendez votre dispositif comme une articulation pensée, pas comme un compromis honteux. Question deux: l'épistémologie sous-jacente. Sur quoi repose votre conviction que ces deux registres peuvent se parler ?",
-        "vi": "Lỗi chiến lược thường gặp. Ở M2, vấn đề ngược — bảo vệ thiết kế như khớp nối có chủ ý, không phải thỏa hiệp xấu hổ. Câu hỏi hai: nền tảng nhận thức luận. Cô dựa trên cái gì để tin hai cấp độ này có thể nói chuyện với nhau?"
+        "vi": "Lỗi chiến lược thường gặp. Ở M2, vấn đề ngược — bảo vệ thiết kế như khớp nối có chủ ý, không phải thỏa hiệp xấu hổ. Câu hỏi hai: nền tảng nhận thức luận. Cô dựa trên cái gì để tin hai cấp độ này có thể nói chuyện với nhau?",
+        "en": "A common strategic error. At M2, the stakes are inverted — defend your design as a deliberate articulation, not as a shameful compromise. Question two: the underlying epistemology. What grounds your conviction that these two registers can speak to each other?"
       },
       {
         "speaker": "Linh",
         "text": "Je m'inscris dans la perspective réaliste critique de Bhaskar — il existe une réalité indépendante de notre observation, mais notre accès à elle est nécessairement médiatisé. Le quanti saisit les régularités structurelles; le quali, les mécanismes générateurs. Les deux niveaux sont compatibles parce qu'ils décrivent des couches différentes du même réel.",
-        "vi": "Tôi đứng trong viễn cảnh hiện thực phê phán của Bhaskar — có một thực tại độc lập với quan sát của chúng tôi, nhưng tiếp cận với nó nhất thiết được trung gian hóa. Định lượng nắm các quy luật cấu trúc; định tính, các cơ chế sinh sản. Hai cấp độ tương thích vì chúng mô tả các lớp khác nhau của cùng thực tại."
+        "vi": "Tôi đứng trong viễn cảnh hiện thực phê phán của Bhaskar — có một thực tại độc lập với quan sát của chúng tôi, nhưng tiếp cận với nó nhất thiết được trung gian hóa. Định lượng nắm các quy luật cấu trúc; định tính, các cơ chế sinh sản. Hai cấp độ tương thích vì chúng mô tả các lớp khác nhau của cùng thực tại.",
+        "en": "I situate myself within Bhaskar's critical realist perspective — there is a reality independent of our observation, but our access to it is necessarily mediated. The quantitative grasps structural regularities; the qualitative, generative mechanisms. The two levels are compatible because they describe different layers of the same real."
       },
       {
         "speaker": "Pr. Lefèvre",
         "text": "Très solide. Vous voyez — quand vous expliquez l'épistémologie, votre dispositif devient légitime. Sans cela, c'est une juxtaposition. Question trois: les limites — soyez explicite sur ce que ni l'un ni l'autre ne saisit.",
-        "vi": "Rất chắc. Cô thấy — khi cô giải thích nhận thức luận, thiết kế trở nên hợp pháp. Không có nó, là chắp nối. Câu hỏi ba: giới hạn — cô minh bạch về điều cả hai không nắm được."
+        "vi": "Rất chắc. Cô thấy — khi cô giải thích nhận thức luận, thiết kế trở nên hợp pháp. Không có nó, là chắp nối. Câu hỏi ba: giới hạn — cô minh bạch về điều cả hai không nắm được.",
+        "en": "Very solid. You see — once you explain the epistemology, your design becomes legitimate. Without that, it's just juxtaposition. Question three: limits — be explicit about what neither approach captures."
       },
       {
         "speaker": "Linh",
         "text": "Trois zones d'ombre. Premièrement, ni l'un ni l'autre ne capte la dimension diachronique — comment la compétence évolue sur trente ans. Pour cela, il faudrait du longitudinal, hors budget de thèse. Deuxièmement, l'effet de désirabilité sociale dans les entretiens et les tests — toujours présent, jamais éliminable. Troisièmement, ma propre position de chercheuse vietnamienne étudiant des Vietnamiens — risque de biais de proximité.",
-        "vi": "Ba vùng tối. Thứ nhất, cả hai không nắm được chiều kích lịch đại — năng lực tiến triển thế nào trong 30 năm. Cần longitudinal, ngoài ngân sách thèse. Thứ hai, hiệu ứng mong muốn xã hội trong phỏng vấn và bài kiểm tra — luôn có, không thể loại bỏ. Thứ ba, vị trí của riêng tôi với tư cách nhà nghiên cứu Việt nghiên cứu người Việt — rủi ro thiên kiến gần."
+        "vi": "Ba vùng tối. Thứ nhất, cả hai không nắm được chiều kích lịch đại — năng lực tiến triển thế nào trong 30 năm. Cần longitudinal, ngoài ngân sách thèse. Thứ hai, hiệu ứng mong muốn xã hội trong phỏng vấn và bài kiểm tra — luôn có, không thể loại bỏ. Thứ ba, vị trí của riêng tôi với tư cách nhà nghiên cứu Việt nghiên cứu người Việt — rủi ro thiên kiến gần.",
+        "en": "Three blind spots. First, neither captures the diachronic dimension — how competence evolves over thirty years. For that, a longitudinal design would be required, beyond a thesis budget. Second, the social-desirability effect in interviews and tests — always present, never eliminable. Third, my own position as a Vietnamese researcher studying Vietnamese subjects — a risk of proximity bias."
       },
       {
         "speaker": "Pr. Lefèvre",
         "text": "La troisième est intéressante. Comment la traitez-vous ?",
-        "vi": "Cái thứ ba thú vị. Cô xử lý thế nào?"
+        "vi": "Cái thứ ba thú vị. Cô xử lý thế nào?",
+        "en": "The third one is interesting. How do you address it?"
       },
       {
         "speaker": "Linh",
         "text": "Trois mesures. Un journal de réflexivité tenu pendant toute l'enquête. Un binôme de recherche avec une chercheuse française — qui me relit et signale les zones où ma proximité culturelle me ferme à des dimensions visibles d'ailleurs. Et une réflexion explicite, en discussion finale, sur ce que ma position permet et ce qu'elle ferme.",
-        "vi": "Ba biện pháp. Một nhật ký phản tỉnh giữ trong toàn bộ điều tra. Một cặp nghiên cứu với một nhà nghiên cứu Pháp — đọc lại tôi và báo các vùng mà sự gần văn hóa khiến tôi đóng các chiều kích nhìn từ chỗ khác. Và một phản tư rõ ràng, trong phần thảo luận cuối, về điều vị trí của tôi cho phép và điều nó đóng."
+        "vi": "Ba biện pháp. Một nhật ký phản tỉnh giữ trong toàn bộ điều tra. Một cặp nghiên cứu với một nhà nghiên cứu Pháp — đọc lại tôi và báo các vùng mà sự gần văn hóa khiến tôi đóng các chiều kích nhìn từ chỗ khác. Và một phản tư rõ ràng, trong phần thảo luận cuối, về điều vị trí của tôi cho phép và điều nó đóng.",
+        "en": "Three measures. A reflexivity journal kept throughout the fieldwork. A research pairing with a French colleague — who re-reads me and flags zones where my cultural proximity blinds me to dimensions visible from elsewhere. And an explicit reflection, in the final discussion, on what my position enables and what it forecloses."
       },
       {
         "speaker": "Pr. Lefèvre",
         "text": "Excellent. Réécrivez votre chapitre méthodologique en intégrant ces trois éléments — l'articulation séquentielle, l'épistémologie réaliste critique, et le traitement explicite du biais de position. Le tout en quinze pages maximum. C'est ainsi qu'on défend un dispositif mixte au M2.",
-        "vi": "Xuất sắc. Cô viết lại chương phương pháp luận tích hợp ba yếu tố — khớp nối tuần tự, nhận thức luận hiện thực phê phán, và xử lý rõ ràng thiên kiến vị trí. Tất cả tối đa 15 trang. Đó là cách bảo vệ thiết kế hỗn hợp ở M2."
+        "vi": "Xuất sắc. Cô viết lại chương phương pháp luận tích hợp ba yếu tố — khớp nối tuần tự, nhận thức luận hiện thực phê phán, và xử lý rõ ràng thiên kiến vị trí. Tất cả tối đa 15 trang. Đó là cách bảo vệ thiết kế hỗn hợp ở M2.",
+        "en": "Excellent. Rewrite your methods chapter integrating these three elements — the sequential articulation, the critical-realist epistemology, and the explicit treatment of position bias. All in fifteen pages maximum. That's how you defend a mixed design at M2."
       }
     ],
     "roleplay_prompts": [
@@ -2044,30 +2101,44 @@ export const lessons: FrenchLesson[] = [
       "Một colleague propose un dispositif uniquement quanti pour étudier l'expérience subjective de l'isolement chez les étudiants étrangers. Phản hồi: nêu vấn đề về nền tảng épistémologique, đề xuất articulation mixed methods phù hợp.",
       "Trong soutenance, một membre du jury nói: « Vos quarante entretiens ne permettent aucune généralisation. » Đáp với cú pháp tinh tế — thừa nhận giới hạn quantitative, định lại ambition heuristique của thèse, không bị đẩy về thế phòng thủ."
     ],
+    "roleplay_prompts_en": [
+      "You've been invited to present at a methodological seminar. Topic: 'Pourquoi le quali n'est pas moins rigoureux que le quanti' (Why qualitative is no less rigorous than quantitative). Prepare a 5-minute talk following the 5-part structure (epistemology / strengths / limits / articulation / justified choice).",
+      "A colleague proposes a purely quantitative design to study the subjective experience of isolation among international students. Respond: raise the epistemological foundation issue, propose an appropriate mixed-methods articulation. Frame it as a methodological-fit problem, not a 'wrong choice' problem.",
+      "In a defense, a committee member says: 'Vos quarante entretiens ne permettent aucune généralisation.' Respond with C1 precision — acknowledge the quantitative limit, restate the heuristic ambition of the thesis, refuse to be pushed into a defensive corner. Use 'analytical generalization' versus 'statistical generalization' if the moment fits."
+    ],
     "register_notes": "PHÂN BIỆT TỪ VỰNG QUAN TRỌNG ở méthodologie:\n\n« RECHERCHE » KHÔNG ĐỒNG NGHĨA « ÉTUDE »:\n- « la recherche » (lĩnh vực, nghiên cứu chung)\n- « une étude » (một công trình cụ thể)\n- « une enquête » (điều tra — thường empirique)\n\n« RÉSULTAT » KHÔNG ĐỒNG NGHĨA « CONCLUSION »:\n- « les résultats » (data thô, observations)\n- « les conclusions » (interprétation các résultats)\n- « les implications » (hệ quả lý thuyết / thực tiễn)\n\n« VARIABLE » KHÔNG ĐỒNG NGHĨA « FACTEUR »:\n- « la variable » (technique, en stat)\n- « le facteur » (logic, có thể causal)\n- « le paramètre » (technique, en modélisation)\n\nĐỘNG TỪ ĐẶC TRƯNG MÉTHODO:\n- « opérationnaliser » (thao tác hóa)\n- « articuler » (khớp nối)\n- « trianguler » (sử dụng nhiều nguồn để xác minh)\n- « saturer » (đạt điểm bão hòa thông tin)\n- « stabiliser une catégorie » (ổn định một phạm trù)\n\nCONTEXTE PRÉCIS:\n- « la saturation théorique » (điểm bão hòa lý thuyết — quali)\n- « la puissance statistique » (sức mạnh thống kê — quanti)\n- « la généralisation analytique » (khái quát phân tích — quali)\n- « la généralisation statistique » (khái quát thống kê — quanti)\n\nCỤM TRANSITION:\n- « D'un point de vue purement méthodologique, … » (quan điểm thuần phương pháp luận)\n- « Sur le plan empirique, … » (về mặt thực nghiệm)\n- « Sur le plan théorique, … » (về mặt lý thuyết)\n- « En toute rigueur, … » (chặt chẽ ra)\n\nTRÁNH ở méthodologie:\n- « scientifique » dùng tuyệt đối — chưa định ngữ « scientifique au sens de »\n- « objectif » — déjà connoté positivement; thay « rigoureux », « systématique »\n- « biais » dùng nhẹ — phải được définir et traité",
+    "register_notes_en": "CRITICAL VOCABULARY DISTINCTIONS in methodology:\n\n'RECHERCHE' IS NOT SYNONYMOUS WITH 'ÉTUDE':\n- 'la recherche' (the field, research in general)\n- 'une étude' (a specific study)\n- 'une enquête' (an investigation — usually empirical)\n\n'RÉSULTAT' IS NOT SYNONYMOUS WITH 'CONCLUSION':\n- 'les résultats' (raw data, observations)\n- 'les conclusions' (interpretation of the results)\n- 'les implications' (theoretical or practical consequences)\n\n'VARIABLE' IS NOT SYNONYMOUS WITH 'FACTEUR':\n- 'la variable' (technical, in statistics)\n- 'le facteur' (logical, possibly causal)\n- 'le paramètre' (technical, in modeling)\n\nCHARACTERISTIC METHODOLOGY VERBS:\n- 'opérationnaliser' (to operationalize)\n- 'articuler' (to articulate/join)\n- 'trianguler' (to triangulate — use multiple sources)\n- 'saturer' (to reach theoretical saturation)\n- 'stabiliser une catégorie' (to stabilize a category)\n\nPRECISION TERMINOLOGY:\n- 'la saturation théorique' (theoretical saturation — quali)\n- 'la puissance statistique' (statistical power — quanti)\n- 'la généralisation analytique' (analytical generalization — quali)\n- 'la généralisation statistique' (statistical generalization — quanti)\n\nTRANSITION PHRASES:\n- 'D'un point de vue purement méthodologique, …' (From a purely methodological standpoint…)\n- 'Sur le plan empirique, …' (Empirically…)\n- 'Sur le plan théorique, …' (Theoretically…)\n- 'En toute rigueur, …' (Strictly speaking…)\n\nAVOID in methodology sections:\n- 'scientifique' used absolutely — must be qualified as 'scientifique au sens de'\n- 'objectif' — already positively connoted in French; substitute 'rigoureux', 'systématique'\n- 'biais' used casually — must be defined and addressed, not just named\n\nFALSE FRIEND: 'objectif' in French is a stronger claim than English 'objective' — it implies near-impossibility of bias, which is a claim few methodologists endorse. Anglophones use 'objective' more loosely; in French academia, that looseness reads as either naive empiricism or careless writing.",
     "idiom_glosses": [
       {
         "idiom": "Faire flèche de tout bois (soutenu)",
         "literal": "Làm mũi tên từ mọi cây gỗ",
+        "literal_en": "To make arrows from all wood",
         "meaning": "Sử dụng tất cả nguồn dữ liệu hiện có — tinh thần méthodes mixtes.",
+        "meaning_en": "To use every available resource — the spirit of mixed methods. English equivalent: 'to leave no stone unturned' or 'to use every tool in the box'. A pragmatic methodological stance against purism.",
         "example": "Sur un sujet aussi complexe, il faut faire flèche de tout bois — ne se priver d'aucune méthode."
       },
       {
         "idiom": "Triangler les sources (jargon)",
         "literal": "Tam giác hóa các nguồn",
+        "literal_en": "To triangulate the sources",
         "meaning": "Đối chiếu nhiều nguồn / phương pháp để xác minh kết quả.",
+        "meaning_en": "To cross-check multiple sources or methods to validate results. The same term and concept exist in English methodological literature ('triangulation' — Denzin's term); used identically.",
         "example": "Trianguler les sources renforce la validité des conclusions tirées d'une seule méthode."
       },
       {
         "idiom": "Avoir le compas dans l'œil (courant)",
         "literal": "Có compa trong mắt",
+        "literal_en": "To have a compass in the eye",
         "meaning": "Cảm nhận tốt độ lớn / tỷ lệ — utile pour le quanti exploratoire.",
+        "meaning_en": "To have an intuitive sense of magnitude or proportion — useful for exploratory quantitative work. Closest English: 'to have a good eye for it' or 'to have an instinct for numbers'. Praises a researcher who can detect when a sample is too small before running the math.",
         "example": "Le bon enquêteur quanti a le compas dans l'œil — il sent quand un effectif sera trop faible."
       },
       {
         "idiom": "Ne pas mettre tous ses œufs dans le même panier (courant)",
         "literal": "Không đặt tất cả trứng vào một giỏ",
+        "literal_en": "Not to put all one's eggs in the same basket",
         "meaning": "Không phụ thuộc vào một phương pháp duy nhất — biện minh cho mixed methods.",
+        "meaning_en": "Don't put all your eggs in one basket — same idiom and meaning as English. Used here to justify methodological diversification: relying on a single method makes the whole study fragile to that method's blind spots.",
         "example": "En sciences sociales, mieux vaut ne pas mettre tous ses œufs dans le même panier méthodologique."
       }
     ],
@@ -2075,29 +2146,33 @@ export const lessons: FrenchLesson[] = [
       {
         "type": "fill-blank",
         "question": "Là où l'enquête statistique permet de mesurer l'ampleur, l'enquête ethnographique en ___ la texture.",
-        "answer": "restitue"
+        "answer": "restitue",
+        "hint_vi": "động từ 'restituer' (khôi phục, trả lại) ở présent ngôi 3 số ít — cụm cố định trong tranh luận quanti/quali",
+        "hint_en": "verb 'restituer' (to render, to give back) in 3rd person singular present — fixed contrast with 'mesurer'; what ethnographic work delivers in lieu of measurement"
       },
       {
         "type": "matching",
         "pairs": [
           [
             "méthodes mixtes",
-            "phương pháp hỗn hợp"
+            "phương pháp hỗn hợp (mixed methods — anglo import)"
           ],
           [
             "dispositif séquentiel",
-            "thiết kế tuần tự"
+            "thiết kế tuần tự (sequential design)"
           ],
           [
             "féconde",
-            "phong phú"
+            "phong phú (productive / fruitful — academic compliment)"
           ]
         ],
-        "instruction": "Nối thuật ngữ phương pháp luận với nghĩa Việt"
+        "instruction": "Nối thuật ngữ phương pháp luận với nghĩa Việt",
+        "instruction_en": "Match the methodological term with its meaning"
       },
       {
         "type": "translation",
         "vietnamese": "Cách tiếp cận định lượng và định tính không đối lập đến mức không trả lời cùng những câu hỏi nghiên cứu.",
+        "english": "The quantitative and qualitative approaches don't oppose each other to the extent that they don't answer the same research questions.",
         "french": "L'approche quantitative et l'approche qualitative ne s'opposent pas tant qu'elles ne répondent pas aux mêmes questions de recherche."
       }
     ]
@@ -2117,6 +2192,12 @@ export const lessons: FrenchLesson[] = [
           "indéniable → an-dé-nia-blơ",
           "portée → por-té",
           "présupposé → pré-su-po-zé"
+        ],
+        "pronunciation_focus_en": [
+          "apport → 'ah-POR' — double-p one clean 'p'; final -t silent",
+          "indéniable → 'an-day-NYAH-bluh' — nasal -in; -ia glides to 'yah'; final -ble is a quick 'bluh'",
+          "portée → 'por-TAY' — past participle '-ée' is 'ay'; means 'scope' or 'reach' in academic register",
+          "présupposé → 'pray-sew-poh-ZAY' — 'u' rounded 'ew'; the academic word for 'assumption' — key critique target"
         ]
       },
       {
@@ -2127,6 +2208,12 @@ export const lessons: FrenchLesson[] = [
           "dispositif → dis-po-zi-tif",
           "interprétatif → an-tèr-pré-ta-tif",
           "discussion → dis-ku-sion"
+        ],
+        "pronunciation_focus_en": [
+          "empirique → 'ahn-pee-REEK' — nasal 'em' opening; final -ique is 'eek'",
+          "dispositif → 'dees-poh-zee-TEEF' — the French research-design term; broader than English 'apparatus'",
+          "interprétatif → 'an-tair-pray-tah-TEEF' — nasal -in; -tatif is 'tah-teef'; final -f sounded",
+          "discussion → 'dees-kew-SYOHN' — 'u' rounded 'ew'; -ssion is 'syohn', not English 'shun'"
         ]
       },
       {
@@ -2137,6 +2224,12 @@ export const lessons: FrenchLesson[] = [
           "silence → si-lãns",
           "pan → pã",
           "mérité → mé-ri-té"
+        ],
+        "pronunciation_focus_en": [
+          "passe → 'PAHS' — one syllable; final -e silent; here verb 'to pass over'",
+          "silence → 'see-LAHNS' — nasal -en; final -ce sounds 'ahns'",
+          "pan → 'PAHN' — nasal -an; final -n never finished; means 'large section' here (a 'pan' of literature)",
+          "mérité → 'may-ree-TAY' — past participle; final -é is 'ay'"
         ]
       },
       {
@@ -2147,6 +2240,12 @@ export const lessons: FrenchLesson[] = [
           "ailleurs → a-yơr",
           "absence → ab-sãns",
           "approfondie → a-pro-fõn-di"
+        ],
+        "pronunciation_focus_en": [
+          "regrettera → 'ruh-greh-tuh-RAH' — future tense; opening 're' is schwa 'ruh'; '-ra' is 'rah'",
+          "ailleurs → 'ah-YUR' — 'ill' is 'y' glide; final -eurs is 'ur' with rounded lips",
+          "absence → 'ab-SAHNS' — nasal -en; final -ce is 'ahns'",
+          "approfondie → 'ah-proh-fohn-DEE' — nasal 'on'; past participle feminine -ie is 'ee'; final -e silent"
         ]
       },
       {
@@ -2157,165 +2256,199 @@ export const lessons: FrenchLesson[] = [
           "enlèvent → ãn-lèv",
           "contribution → kõn-tri-bu-sion",
           "demeure → dơ-mơr"
+        ],
+        "pronunciation_focus_en": [
+          "réserves → 'ray-ZERV' — 's' between vowels sounds like 'z'; plural -s silent",
+          "enlèvent → 'ahn-LEV' — nasal -en; final -ent silent (3rd-person plural verb ending)",
+          "contribution → 'kohn-tree-bew-SYOHN' — nasal 'on'; 'u' rounded; -tion is 'syohn'",
+          "demeure → 'duh-MUR' — opening 'de' is schwa 'duh'; final -eure is 'ur' with rounded lips"
         ]
       }
     ],
     "cultural_notes_vi": "PHÊ BÌNH MỘT CÔNG TRÌNH (compte rendu critique, recension) là một thể loại tu từ cụ thể trong học thuật Pháp. Khác Việt Nam (nơi phê bình thường được giữ riêng tư để tránh va chạm), Pháp xem PHÊ BÌNH CÔNG KHAI là một dịch vụ học thuật cần thiết — và một « livre non recensé » là một « livre invisible ».\n\nQUY TẮC TỐI THƯỢNG: BẰNG HỌC THUẬT, PHÊ BÌNH = ĐÓNG GÓP. Nếu bạn chỉ nói « ce livre est mauvais », bạn KHÔNG phê bình — bạn chỉ chỉ trích. Phê bình thực sự đòi hỏi bạn:\n\n(1) NÊU ĐÚNG luận điểm trung tâm của tác giả — KHÔNG phỉ báng.\n(2) THỪA NHẬN đóng góp — kể cả khi bạn không đồng ý cuối cùng.\n(3) CHỈ RA điểm yếu CỤ THỂ — kèm chứng cứ, kèm trang.\n(4) ĐỀ XUẤT một góc nhìn khác — không chỉ phá, mà mở.\n\nMỘT NGUYÊN TẮC ĐẠO ĐỨC TỐI QUAN TRỌNG: phê bình MẠNH ở Pháp không có nghĩa là phê bình ĐỘC ÁC. « Critique acerbe » (phê bình sắc) được tôn trọng; « critique méchante » (phê bình ác ý) bị từ chối. Khoảng cách hẹp nhưng quan trọng. Cú pháp Pháp giúp giữ khoảng cách: « il est regrettable que… » thay « l'auteur a tort »; « on aurait souhaité que… » thay « l'auteur n'a pas fait son travail ».\n\nKHI BẠN PHÊ BÌNH MỘT NGƯỜI HƯỚNG DẪN MÌNH (directeur de thèse) hoặc một tên tuổi lớn trong lĩnh vực: tu từ phải càng tinh tế. KHÔNG « contrairement à X qui se trompe », mà « en m'écartant respectueusement de la lecture proposée par X ». KHÔNG xuống tone; chỉ điều chỉnh giọng. Bạn vẫn nói rõ điểm bất đồng — nhưng cú pháp tôn trọng vị trí học thuật của họ.\n\nMỘT PHÊ BÌNH ĐẶC BIỆT KHÓ: phê bình một công trình SAI VỀ DỮ LIỆU. Cần thận trọng: dữ liệu được trích sai có thể là LỖI ĐÁNH MÁY của bạn, không phải lỗi của tác giả. KIỂM TRA HAI LẦN trước khi viết phê bình về data error. Nếu chắc chắn: « il y a, page 45, une erreur factuelle qui mérite d'être signalée. » — và bạn cung cấp source xác minh kèm theo.\n\nVỀ KHỐI LƯỢNG PHÊ BÌNH: trong một compte rendu chuẩn (1500-3000 từ), tỷ lệ thường là 60% mô tả + 40% phê bình. Nếu phê bình > 60%, đọc là « écrasement » — quá hung dữ. Nếu phê bình < 20%, đọc là « complaisance » — quá nịnh nọt.",
+    "cultural_notes_en": "CRITIQUING A SCHOLARLY WORK (compte rendu critique, recension) is a specific rhetorical genre in French academia. Unlike the anglophone instinct to soften disagreement or the Vietnamese tendency to keep critique private to avoid friction, France treats PUBLIC CRITIQUE as a necessary academic service — and an unreviewed book is, in effect, an invisible book.\n\nTHE PRIME RULE: in academic culture, CRITIQUE = CONTRIBUTION. If you only say 'ce livre est mauvais', you have NOT critiqued — you have merely complained. Real critique requires you to:\n\n(1) STATE the author's central thesis ACCURATELY — no straw-manning.\n(2) ACKNOWLEDGE the contribution — even if you ultimately disagree.\n(3) IDENTIFY weaknesses CONCRETELY — with evidence and page numbers.\n(4) PROPOSE an alternative perspective — don't just demolish, open something up.\n\nA CRITICAL ETHICAL PRINCIPLE: STRONG critique in France is NOT MEAN-SPIRITED critique. 'Critique acerbe' (sharp critique) is respected; 'critique méchante' (malicious critique) is rejected. The line is narrow but important. French syntax keeps the distance: 'il est regrettable que…' instead of 'l'auteur a tort'; 'on aurait souhaité que…' instead of 'l'auteur n'a pas fait son travail'.\n\nWHEN CRITIQUING YOUR THESIS SUPERVISOR or a major name in your field: the rhetoric must be even more refined. Not 'contrairement à X qui se trompe', but 'en m'écartant respectueusement de la lecture proposée par X'. Don't lower the substance; only adjust the tone. You still name the disagreement clearly — but the syntax respects their academic position.\n\nA PARTICULARLY DELICATE CRITIQUE: pointing out factual errors in someone's data. Be cautious — the cited number could be a typo in YOUR notes, not theirs. CHECK TWICE before writing a critique about data error. If certain: 'il y a, page 45, une erreur factuelle qui mérite d'être signalée.' — and you provide the verifying source alongside.\n\nON CRITIQUE PROPORTION: in a standard compte rendu (1500-3000 words), the typical balance is 60% description + 40% critique. If critique exceeds 60%, it reads as 'écrasement' (crushing the work). If critique falls below 20%, it reads as 'complaisance' (flattery). Anglophones tend toward complaisance; the C1 standard is the middle.",
     "tip_advice_vi": "CẤU TRÚC 5 PHẦN cho một compte rendu critique chuẩn:\n\n(1) PRÉSENTATION (15-20%): nêu tác giả, công trình, ngữ cảnh, luận điểm trung tâm. KHÔNG đưa phê bình ở phần này — vẫn neutralement mô tả.\n\n(2) RECONSTITUTION (20-25%): trình bày lập luận của tác giả CẨN THẬN, theo cấu trúc của họ. Mục tiêu: cho độc giả thấy bạn đã ĐỌC kỹ và HIỂU đúng.\n\n(3) APPRÉCIATION POSITIVE (15-20%): nêu đóng góp chính. Cụ thể, không tâng bốc trống rỗng. « L'apport principal réside dans X, qui était jusqu'ici peu traité. »\n\n(4) RÉSERVES (25-30%): phê bình. Có thể tổ chức theo 3 cấp: méthodologique / théorique / textuel. Mỗi réserve KÈM trang cụ thể.\n\n(5) MISE EN PERSPECTIVE (10-15%): kết luận — đặt công trình trong tranh luận hiện tại; gợi mở. KHÔNG « bon livre » / « mauvais livre » — đánh giá kiểu phổ thông, không học thuật.\n\nCỤM HỮU ÍCH:\n\nĐỂ RECONSTITUER TRUNG THÀNH:\n- « L'auteur soutient que… » (tác giả bảo vệ rằng)\n- « La thèse centrale du livre peut se résumer ainsi: … » (luận điểm trung tâm có thể tóm tắt thế này)\n- « L'argumentation se déploie en trois temps: d'abord…, ensuite…, enfin… » (lập luận triển khai trong ba phần)\n\nĐỂ TÔN TRỌNG ĐÓNG GÓP:\n- « L'apport majeur du livre réside dans… » (đóng góp lớn nằm ở)\n- « On saluera tout particulièrement… » (đặc biệt phải hoan nghênh)\n- « Ce travail comble un manque réel dans la littérature française. » (công trình này lấp một khoảng trống thực trong tài liệu Pháp)\n\nĐỂ NÊU PHÊ BÌNH NHẸ:\n- « On aurait souhaité que… » (người ta lẽ ra mong muốn)\n- « Il est regrettable que… » (đáng tiếc là)\n- « L'auteur passe rapidement sur… » (tác giả lướt nhanh qua)\n- « Ce point aurait mérité davantage d'attention. » (điểm này lẽ ra đáng được chú ý hơn)\n\nĐỂ NÊU PHÊ BÌNH MẠNH:\n- « L'argumentation, sur ce point, ne convainc pas. » (lập luận, ở điểm này, không thuyết phục)\n- « Le présupposé qui sous-tend cette thèse demeure problématique. » (tiền đề ngầm vẫn có vấn đề)\n- « L'auteur passe sous silence un pan entier de la littérature. » (tác giả im lặng về cả một mảng tài liệu)\n- « Cette interprétation force le sens des données. » (cách diễn giải này ép nghĩa của dữ liệu)\n\nĐỂ KẾT LUẬN CÂN BẰNG:\n- « Ces réserves n'enlèvent rien à l'importance de la contribution. » (các dè dặt không lấy đi tầm quan trọng)\n- « En dépit de ces points discutables, le livre constitue désormais une référence. » (bất kể các điểm tranh luận, sách giờ là một quy chiếu)\n- « Le travail ouvre plus de questions qu'il n'en clôt — ce qui, en sciences sociales, est plutôt une qualité. » (công trình mở nhiều câu hỏi hơn đóng — phẩm chất trong khoa học xã hội)",
+    "tip_advice_en": "5-PART STRUCTURE for a standard compte rendu critique:\n\n(1) PRESENTATION (15-20%): name the author, work, context, central thesis. NO critique in this section — stay neutrally descriptive.\n\n(2) RECONSTITUTION (20-25%): present the author's argument CAREFULLY, following their structure. Goal: show the reader you have READ closely and UNDERSTOOD accurately.\n\n(3) POSITIVE APPRECIATION (15-20%): name the main contribution. Specific, not empty praise. 'L'apport principal réside dans X, qui était jusqu'ici peu traité.'\n\n(4) RESERVATIONS (25-30%): the critique. Can be organized in three tiers: methodological / theoretical / textual. Each réserve WITH a specific page.\n\n(5) PERSPECTIVE (10-15%): conclusion — situate the work in the current debate; open up. NOT 'good book' / 'bad book' — that's popular-press evaluation, not academic.\n\nUSEFUL PHRASES:\n\nTO RECONSTITUTE FAITHFULLY:\n- 'L'auteur soutient que…' (The author argues that…)\n- 'La thèse centrale du livre peut se résumer ainsi: …' (The book's central thesis can be summarized thus: …)\n- 'L'argumentation se déploie en trois temps: d'abord…, ensuite…, enfin…' (The argument unfolds in three phases…)\n\nTO ACKNOWLEDGE CONTRIBUTION:\n- 'L'apport majeur du livre réside dans…' (The major contribution lies in…)\n- 'On saluera tout particulièrement…' (One must particularly commend…)\n- 'Ce travail comble un manque réel dans la littérature française.' (This work fills a real gap in the French-language literature)\n\nTO STATE A LIGHT CRITIQUE:\n- 'On aurait souhaité que…' (One would have wished that…)\n- 'Il est regrettable que…' (It's regrettable that…)\n- 'L'auteur passe rapidement sur…' (The author moves quickly past…)\n- 'Ce point aurait mérité davantage d'attention.' (This point would have warranted more attention)\n\nTO STATE A FIRM CRITIQUE:\n- 'L'argumentation, sur ce point, ne convainc pas.' (The argument, on this point, does not convince)\n- 'Le présupposé qui sous-tend cette thèse demeure problématique.' (The assumption underlying this thesis remains problematic)\n- 'L'auteur passe sous silence un pan entier de la littérature.' (The author passes over an entire strand of literature in silence)\n- 'Cette interprétation force le sens des données.' (This interpretation strains the meaning of the data)\n\nTO CLOSE WITH BALANCE:\n- 'Ces réserves n'enlèvent rien à l'importance de la contribution.' (These reservations do not detract from the contribution's importance)\n- 'En dépit de ces points discutables, le livre constitue désormais une référence.' (Despite these debatable points, the book now constitutes a reference)\n- 'Le travail ouvre plus de questions qu'il n'en clôt — ce qui, en sciences sociales, est plutôt une qualité.' (The work opens more questions than it closes — which, in social science, is rather a virtue)",
     "vocabulary": [
       {
         "word": "un compte rendu critique",
         "en": "a critical review",
         "vi": "một bài phê bình",
         "pos": "n.m.",
-        "pronunciation_vi": "kõnt rãn-du kri-tik"
+        "pronunciation_vi": "kõnt rãn-du kri-tik",
+        "pronunciation_en": "ehn KOHNT rahn-DEW kree-TEEK — three nasals; 'rendu' has rounded 'u'; the genre name in French academia"
       },
       {
         "word": "l'apport d'un travail",
         "en": "the contribution of a work",
         "vi": "đóng góp của một công trình",
         "pos": "n.m.",
-        "pronunciation_vi": "a-por dan tra-vay"
+        "pronunciation_vi": "a-por dan tra-vay",
+        "pronunciation_en": "lah-POR dan trah-VAHY — final -t of 'apport' silent; preferred academic term for 'contribution'"
       },
       {
         "word": "un présupposé",
         "en": "a presupposition",
         "vi": "một tiền đề ngầm",
         "pos": "n.m.",
-        "pronunciation_vi": "pré-su-po-zé"
+        "pronunciation_vi": "pré-su-po-zé",
+        "pronunciation_en": "pray-sew-poh-ZAY — 'u' rounded 'ew'; the hidden assumption a critique targets; flagging one is a classic move"
       },
       {
         "word": "passer sous silence",
         "en": "to pass over in silence",
         "vi": "im lặng về",
         "pos": "v.",
-        "pronunciation_vi": "pa-sé su si-lãns"
+        "pronunciation_vi": "pa-sé su si-lãns",
+        "pronunciation_en": "pah-SAY soo see-LAHNS — a sharp critique formula; saying an author 'passes X in silence' implies wilful omission"
       },
       {
         "word": "forcer le sens",
         "en": "to force the meaning",
         "vi": "ép nghĩa",
         "pos": "v.",
-        "pronunciation_vi": "for-sé lơ sãns"
+        "pronunciation_vi": "for-sé lơ sãns",
+        "pronunciation_en": "for-SAY luh SAHNS — strong critique: accusing an author of distorting their data to fit a preferred interpretation"
       },
       {
         "word": "des réserves",
         "en": "reservations",
         "vi": "các dè dặt",
         "pos": "n.f. pl.",
-        "pronunciation_vi": "ré-zerv"
+        "pronunciation_vi": "ré-zerv",
+        "pronunciation_en": "day ray-ZERV — 's' between vowels sounds like 'z'; plural -s silent; the polite frame for critique points"
       },
       {
         "word": "une critique acerbe",
         "en": "a sharp critique",
         "vi": "một phê bình sắc",
         "pos": "n.f.",
-        "pronunciation_vi": "kri-tik a-sèrb"
+        "pronunciation_vi": "kri-tik a-sèrb",
+        "pronunciation_en": "ewn kree-TEEK ah-SERB — 'acerbe' is acid/cutting but respectable; distinguish from 'méchante' (malicious, rejected in French academia)"
       },
       {
         "word": "prêter à discussion",
         "en": "to invite discussion",
         "vi": "dễ gây tranh luận",
         "pos": "v.",
-        "pronunciation_vi": "prè-té a dis-ku-sion"
+        "pronunciation_vi": "prè-té a dis-ku-sion",
+        "pronunciation_en": "preh-TAY ah dees-kew-SYOHN — softer than 'être contestable'; signals a point is debatable without yet attacking"
       },
       {
         "word": "combler un manque",
         "en": "to fill a gap",
         "vi": "lấp một khoảng trống",
         "pos": "v.",
-        "pronunciation_vi": "kõm-blé an mãnk"
+        "pronunciation_vi": "kõm-blé an mãnk",
+        "pronunciation_en": "kohn-BLAY ehn MAHNK — two nasals (om + an); standard formula for praising a work that addresses an underexplored area"
       },
       {
         "word": "un argument fragile",
         "en": "a fragile argument",
         "vi": "một lập luận yếu",
         "pos": "n.m.",
-        "pronunciation_vi": "ar-gu-mã fra-jil"
+        "pronunciation_vi": "ar-gu-mã fra-jil",
+        "pronunciation_en": "ehn ar-gew-MAHN frah-ZHEEL — 'u' rounded; final -gile is 'zheel' (soft 'zh'); softer than 'mauvais argument'"
       }
     ],
     "dialogue": [
       {
         "speaker": "Pr. Roussel",
         "text": "Madame Tran, votre compte rendu du livre de Beaud est trop indulgent. Vous mentionnez les forces, jamais les faiblesses.",
-        "vi": "Cô Trần, bài phê bình của cô về sách của Beaud quá nhẹ. Cô nêu các điểm mạnh, không bao giờ điểm yếu."
+        "vi": "Cô Trần, bài phê bình của cô về sách của Beaud quá nhẹ. Cô nêu các điểm mạnh, không bao giờ điểm yếu.",
+        "en": "Ms. Tran, your review of Beaud's book is too indulgent. You mention the strengths, never the weaknesses."
       },
       {
         "speaker": "Linh",
         "text": "Vous avez raison. Je craignais de paraître arrogante face à un auteur établi.",
-        "vi": "Thầy đúng. Tôi sợ tỏ ra kiêu ngạo trước một tác giả đã khẳng định."
+        "vi": "Thầy đúng. Tôi sợ tỏ ra kiêu ngạo trước một tác giả đã khẳng định.",
+        "en": "You're right. I was afraid of seeming arrogant in front of an established author."
       },
       {
         "speaker": "Pr. Roussel",
         "text": "L'humilité, à votre niveau, c'est de prendre l'auteur au sérieux — donc de le critiquer sérieusement.",
-        "vi": "Khiêm tốn, ở cấp độ của cô, là xem tác giả nghiêm túc — nghĩa là phê bình nghiêm túc."
+        "vi": "Khiêm tốn, ở cấp độ của cô, là xem tác giả nghiêm túc — nghĩa là phê bình nghiêm túc.",
+        "en": "Humility, at your level, means taking the author seriously — therefore critiquing them seriously."
       },
       {
         "speaker": "Linh",
         "text": "Compris. Je reprends avec deux ou trois réserves substantielles, étayées par les pages.",
-        "vi": "Hiểu. Tôi viết lại với hai ba dè dặt thực chất, có chứng cứ trang."
+        "vi": "Hiểu. Tôi viết lại với hai ba dè dặt thực chất, có chứng cứ trang.",
+        "en": "Understood. I'll redo it with two or three substantive reservations, backed up by page references."
       }
     ],
     "dialogue_long": [
       {
         "speaker": "Pr. Roussel (séminaire de lecture, doctorat)",
         "text": "Madame Tran, vous avez choisi de présenter le dernier livre de Stéphane Beaud. Je vous écoute — vingt minutes, puis discussion.",
-        "vi": "Cô Trần, cô đã chọn trình bày quyển sách mới nhất của Stéphane Beaud. Tôi nghe — 20 phút, rồi thảo luận."
+        "vi": "Cô Trần, cô đã chọn trình bày quyển sách mới nhất của Stéphane Beaud. Tôi nghe — 20 phút, rồi thảo luận.",
+        "en": "Ms. Tran, you've chosen to present Stéphane Beaud's latest book. I'm listening — twenty minutes, then discussion."
       },
       {
         "speaker": "Linh",
         "text": "Merci. Le livre, paru chez La Découverte en 2023, prolonge la trajectoire entamée par Beaud depuis Pays de malheur. La thèse centrale: la trajectoire scolaire des enfants d'ouvriers issus de l'immigration ne se comprend qu'en articulant trois plans — la transformation du marché du travail, l'évolution des dispositifs scolaires, et la dynamique familiale propre.",
-        "vi": "Cảm ơn. Quyển sách, xuất bản tại La Découverte năm 2023, tiếp tục quỹ đạo Beaud bắt đầu từ Pays de malheur. Luận điểm trung tâm: quỹ đạo học đường của con em công nhân di cư chỉ hiểu được khi khớp nối ba bình diện — biến đổi thị trường lao động, tiến hóa thiết chế học đường, và động lực gia đình riêng."
+        "vi": "Cảm ơn. Quyển sách, xuất bản tại La Découverte năm 2023, tiếp tục quỹ đạo Beaud bắt đầu từ Pays de malheur. Luận điểm trung tâm: quỹ đạo học đường của con em công nhân di cư chỉ hiểu được khi khớp nối ba bình diện — biến đổi thị trường lao động, tiến hóa thiết chế học đường, và động lực gia đình riêng.",
+        "en": "Thank you. The book, published by La Découverte in 2023, extends the trajectory Beaud began with Pays de malheur. The central thesis: the school trajectory of working-class children of immigrant background can only be understood by articulating three planes — the transformation of the labor market, the evolution of school structures, and the family's own dynamics."
       },
       {
         "speaker": "Linh",
         "text": "L'apport principal du livre réside, selon moi, dans deux dimensions. D'abord, l'enquête longitudinale: Beaud suit cinquante familles sur quinze ans, ce qui demeure rare en sociologie française contemporaine. Ensuite, l'écriture: il restitue la voix des enquêtés sans la trahir, tout en l'analysant — équilibre que peu de chercheurs maîtrisent.",
-        "vi": "Đóng góp chính của sách, theo tôi, nằm ở hai chiều. Trước tiên, điều tra lịch đại: Beaud theo dõi 50 gia đình trong 15 năm, điều vẫn hiếm trong xã hội học Pháp đương đại. Tiếp đến, lối viết: ông khôi phục giọng của người được điều tra mà không phản bội, đồng thời phân tích — cân bằng ít nhà nghiên cứu làm chủ."
+        "vi": "Đóng góp chính của sách, theo tôi, nằm ở hai chiều. Trước tiên, điều tra lịch đại: Beaud theo dõi 50 gia đình trong 15 năm, điều vẫn hiếm trong xã hội học Pháp đương đại. Tiếp đến, lối viết: ông khôi phục giọng của người được điều tra mà không phản bội, đồng thời phân tích — cân bằng ít nhà nghiên cứu làm chủ.",
+        "en": "The book's main contribution, in my view, lies in two dimensions. First, the longitudinal investigation: Beaud follows fifty families over fifteen years, which remains rare in contemporary French sociology. Second, the writing: he renders the voice of the interviewees without betraying it, while still analyzing it — a balance few researchers master."
       },
       {
         "speaker": "Linh",
         "text": "Cela étant, je formulerai trois réserves substantielles. La première porte sur le présupposé sociologique. Beaud opère avec un cadre néo-bourdieusien classique — capital culturel, héritage, reproduction — sans interroger ce que ce cadre lui ferme à voir. Or, plusieurs trajectoires qu'il décrit comme « atypiques » deviendraient lisibles dans un autre cadre, par exemple celui des « bifurcations biographiques » de Bessin. Beaud passe sous silence ce courant, qui aurait pourtant constitué un dialogue fécond.",
-        "vi": "Dù vậy, tôi sẽ phát biểu ba dè dặt thực chất. Cái đầu tiên về tiền đề xã hội học. Beaud hoạt động với một khung tân-Bourdieu cổ điển — vốn văn hóa, di sản, tái sản xuất — mà không tra hỏi điều khung này đóng ông không thấy. Tuy nhiên, nhiều quỹ đạo ông mô tả là « không điển hình » sẽ trở nên đọc được trong một khung khác, ví dụ « rẽ nhánh tiểu sử » của Bessin. Beaud im lặng về dòng này, vốn lẽ ra cấu thành một đối thoại phong phú."
+        "vi": "Dù vậy, tôi sẽ phát biểu ba dè dặt thực chất. Cái đầu tiên về tiền đề xã hội học. Beaud hoạt động với một khung tân-Bourdieu cổ điển — vốn văn hóa, di sản, tái sản xuất — mà không tra hỏi điều khung này đóng ông không thấy. Tuy nhiên, nhiều quỹ đạo ông mô tả là « không điển hình » sẽ trở nên đọc được trong một khung khác, ví dụ « rẽ nhánh tiểu sử » của Bessin. Beaud im lặng về dòng này, vốn lẽ ra cấu thành một đối thoại phong phú.",
+        "en": "That said, I'll formulate three substantive reservations. The first concerns the sociological assumption. Beaud operates with a classical neo-Bourdieusian frame — cultural capital, inheritance, reproduction — without interrogating what this frame closes him off from seeing. Several trajectories he describes as 'atypical' would become legible in another frame, for instance Bessin's 'biographical bifurcations'. Beaud passes over this current in silence, though it would have constituted a fruitful dialogue."
       },
       {
         "speaker": "Pr. Roussel",
         "text": "Réserve solide. Vous donnez les pages où ce silence est le plus problématique ?",
-        "vi": "Dè dặt vững. Cô đưa trang nơi sự im lặng này thấy rõ nhất chứ?"
+        "vi": "Dè dặt vững. Cô đưa trang nơi sự im lặng này thấy rõ nhất chứ?",
+        "en": "Solid reservation. Can you give the pages where this silence is most problematic?"
       },
       {
         "speaker": "Linh",
         "text": "Pages 142-156, où Beaud présente le cas de Mohamed — trajectoire en zigzag, classée par lui comme « accident sociologique », alors que toute la grille bifurcationniste l'aurait éclairée différemment. C'est, à mon sens, l'angle mort le plus visible du livre.",
-        "vi": "Trang 142-156, nơi Beaud trình bày trường hợp Mohamed — quỹ đạo zigzag, ông xếp loại là « tai nạn xã hội học », trong khi toàn bộ lưới rẽ nhánh sẽ làm sáng tỏ nó khác. Đó, theo tôi, là góc mù rõ nhất của sách."
+        "vi": "Trang 142-156, nơi Beaud trình bày trường hợp Mohamed — quỹ đạo zigzag, ông xếp loại là « tai nạn xã hội học », trong khi toàn bộ lưới rẽ nhánh sẽ làm sáng tỏ nó khác. Đó, theo tôi, là góc mù rõ nhất của sách.",
+        "en": "Pages 142-156, where Beaud presents Mohamed's case — a zigzag trajectory, classed by him as a 'sociological accident', while the entire bifurcationist grid would have illuminated it differently. That is, in my view, the most visible blind spot of the book."
       },
       {
         "speaker": "Linh",
         "text": "Deuxième réserve: la temporalité. Beaud écrit comme si les transformations qu'il décrit étaient achevées en 2010-2015, période de son enquête principale. Or, l'on observe depuis 2018, notamment via les travaux de Pasquali sur la même tranche d'âge, des inflexions importantes — moins de mobilité ascendante, plus de précarité subie. Le livre risque, lu en 2024, de paraître daté sans le savoir.",
-        "vi": "Dè dặt thứ hai: thời tính. Beaud viết như thể các biến đổi ông mô tả đã hoàn thành ở 2010-2015, thời kỳ điều tra chính. Tuy nhiên, từ 2018, đặc biệt qua công trình của Pasquali trên cùng nhóm tuổi, người ta quan sát các sự thay đổi quan trọng — ít di chuyển thăng tiến hơn, nhiều bấp bênh chịu đựng hơn. Quyển sách có nguy cơ, đọc năm 2024, tỏ ra lỗi thời mà không biết."
+        "vi": "Dè dặt thứ hai: thời tính. Beaud viết như thể các biến đổi ông mô tả đã hoàn thành ở 2010-2015, thời kỳ điều tra chính. Tuy nhiên, từ 2018, đặc biệt qua công trình của Pasquali trên cùng nhóm tuổi, người ta quan sát các sự thay đổi quan trọng — ít di chuyển thăng tiến hơn, nhiều bấp bênh chịu đựng hơn. Quyển sách có nguy cơ, đọc năm 2024, tỏ ra lỗi thời mà không biết.",
+        "en": "Second reservation: temporality. Beaud writes as if the transformations he describes were complete in 2010-2015, the period of his main fieldwork. Since 2018, however — notably via Pasquali's work on the same age cohort — we observe important inflections: less upward mobility, more endured precarity. The book risks, read in 2024, appearing dated without knowing it."
       },
       {
         "speaker": "Pr. Roussel",
         "text": "Critique fine. Vous restez juste — ce n'est pas le défaut de Beaud, c'est l'effet du temps sur tout livre empirique.",
-        "vi": "Phê bình tinh tế. Cô giữ công bằng — không phải lỗi của Beaud, mà hiệu ứng của thời gian lên mọi sách thực nghiệm."
+        "vi": "Phê bình tinh tế. Cô giữ công bằng — không phải lỗi của Beaud, mà hiệu ứng của thời gian lên mọi sách thực nghiệm.",
+        "en": "Fine critique. You stay fair — it's not Beaud's fault, it's the effect of time on every empirical book."
       },
       {
         "speaker": "Linh",
         "text": "Troisième et dernière réserve, plus mineure: l'absence de discussion sur la dimension genrée. Beaud suit majoritairement des trajectoires masculines, sans expliciter ce choix. Les sœurs des enquêtés sont mentionnées, mais jamais étudiées comme protagonistes. C'est un angle mort qui mériterait au moins d'être nommé en introduction.",
-        "vi": "Dè dặt thứ ba và cuối, nhẹ hơn: vắng mặt thảo luận về chiều kích giới. Beaud chủ yếu theo dõi quỹ đạo nam, không làm rõ lựa chọn này. Các chị em của người được điều tra được nhắc, nhưng chưa bao giờ được nghiên cứu như nhân vật chính. Đó là góc mù lẽ ra cần được nêu tên ít nhất ở phần dẫn nhập."
+        "vi": "Dè dặt thứ ba và cuối, nhẹ hơn: vắng mặt thảo luận về chiều kích giới. Beaud chủ yếu theo dõi quỹ đạo nam, không làm rõ lựa chọn này. Các chị em của người được điều tra được nhắc, nhưng chưa bao giờ được nghiên cứu như nhân vật chính. Đó là góc mù lẽ ra cần được nêu tên ít nhất ở phần dẫn nhập.",
+        "en": "Third and final reservation, more minor: the absence of any discussion of the gendered dimension. Beaud follows predominantly male trajectories without explicitly justifying this choice. The interviewees' sisters are mentioned but never studied as protagonists. That's a blind spot that should at minimum be named in the introduction."
       },
       {
         "speaker": "Pr. Roussel",
         "text": "Conclusion ?",
-        "vi": "Kết luận?"
+        "vi": "Kết luận?",
+        "en": "Conclusion?"
       },
       {
         "speaker": "Linh",
         "text": "Ces réserves n'enlèvent rien à l'importance du livre, qui demeure une référence pour quiconque travaille sur les trajectoires populaires immigrées. Mais elles signalent les fronts qu'un travail futur — peut-être le mien, partiellement — devra reprendre. Beaud trace une carte; il revient à la génération suivante de la prolonger là où il s'est arrêté.",
-        "vi": "Các dè dặt này không lấy đi tầm quan trọng của sách, vẫn là một quy chiếu cho ai làm việc về các quỹ đạo dân di cư. Nhưng chúng báo các mặt trận một công trình tương lai — có thể của tôi, một phần — sẽ phải tiếp tục. Beaud vẽ một bản đồ; thế hệ tiếp theo phải kéo dài nó nơi ông dừng lại."
+        "vi": "Các dè dặt này không lấy đi tầm quan trọng của sách, vẫn là một quy chiếu cho ai làm việc về các quỹ đạo dân di cư. Nhưng chúng báo các mặt trận một công trình tương lai — có thể của tôi, một phần — sẽ phải tiếp tục. Beaud vẽ một bản đồ; thế hệ tiếp theo phải kéo dài nó nơi ông dừng lại.",
+        "en": "These reservations take nothing away from the book's importance — it remains a reference for anyone working on the trajectories of immigrant working-class populations. But they signal the fronts a future work — perhaps mine, in part — will have to take up. Beaud draws a map; it falls to the next generation to extend it where he stopped."
       },
       {
         "speaker": "Pr. Roussel",
         "text": "Compte rendu juste, exigeant, respectueux. Voilà comment on critique un grand auteur sans le démolir. Reprenez par écrit en 2500 mots — ce sera votre première publication.",
-        "vi": "Bài phê bình đúng, đòi hỏi, tôn trọng. Đó là cách phê bình một tác giả lớn mà không phá. Cô viết lại 2500 từ — sẽ là bài đăng đầu tiên của cô."
+        "vi": "Bài phê bình đúng, đòi hỏi, tôn trọng. Đó là cách phê bình một tác giả lớn mà không phá. Cô viết lại 2500 từ — sẽ là bài đăng đầu tiên của cô.",
+        "en": "A fair, demanding, respectful review. That's how you critique a major author without demolishing them. Rewrite it in 2500 words — it'll be your first publication."
       }
     ],
     "roleplay_prompts": [
@@ -2323,30 +2456,44 @@ export const lessons: FrenchLesson[] = [
       "Một colleague chia sẻ bản thảo bài báo trước khi nộp. Bạn thấy có lỗi méthodologique nghiêm trọng. Soạn email phản hồi: nêu vấn đề rõ, đề xuất giải pháp, không hạ thấp công trình.",
       "Bạn được mời làm rapporteur cho thèse của một bạn cùng phòng thí nghiệm. Bạn thấy chương 4 yếu hơn các chương khác. Soạn câu hỏi soutenance: làm rõ điểm yếu, mở khả năng tác giả phòng thủ, không tấn công cá nhân."
     ],
+    "roleplay_prompts_en": [
+      "You've been asked to write a review for Revue française de sociologie of a book you don't fully agree with — but the author is your thesis supervisor. Draft 5 critique sentences that are tactful enough to preserve the relationship while substantive enough to hold your scholarly position. Use the 'en m'écartant respectueusement de la lecture proposée par X' framing.",
+      "A colleague shares a paper draft before submission. You spot a serious methodological flaw. Draft an email response: name the issue clearly, propose a remedy, do not diminish the work overall. Anglophone instinct here is to bury the critique under praise; resist that — French academic colleagues prefer a clear naming of the problem alongside a clear acknowledgment of the strengths.",
+      "You've been invited to act as rapporteur for a labmate's thesis defense. You find chapter 4 weaker than the others. Draft a defense question that surfaces the weakness, opens space for the author to defend, and avoids personal attack. Structure: 'Je vous accorde X (genuine strength), mais ne pensez-vous pas que Y (specific weakness)…'"
+    ],
     "register_notes": "PHÂN BIỆT CÁC TỪ PHÊ BÌNH theo cường độ:\n\nNHẸ — diễn đạt sự tiếc nuối, gợi ý cải thiện:\n- « L'auteur aurait gagné à… » (tác giả lẽ ra có lợi nếu)\n- « On aurait souhaité que… » (người ta mong muốn)\n- « Ce point aurait mérité davantage d'attention. » (điểm này đáng được chú ý hơn)\n- « Il est dommage que… » (đáng tiếc là)\n\nTRUNG BÌNH — định danh điểm yếu cụ thể:\n- « L'argumentation s'affaiblit lorsque… » (lập luận yếu khi)\n- « Cette interprétation prête à discussion. » (cách diễn giải gây tranh luận)\n- « Le présupposé qui sous-tend cette thèse mérite d'être interrogé. » (tiền đề đáng được tra hỏi)\n- « L'auteur passe rapidement sur un point qui mériterait pourtant développement. » (lướt qua điểm đáng phát triển)\n\nMẠNH — phê bình thực chất, kèm chứng cứ:\n- « L'argumentation, sur ce point, ne convainc pas. » (không thuyết phục)\n- « Cette analyse force le sens des données. » (ép nghĩa)\n- « L'auteur passe sous silence un pan entier de la littérature. » (im lặng về cả mảng)\n- « Le présupposé qui sous-tend cette thèse demeure profondément problématique. » (tiền đề có vấn đề sâu sắc)\n\nRẤT MẠNH (cẩn thận, dùng khi có chứng cứ chắc):\n- « L'ouvrage souffre d'une faiblesse méthodologique structurelle. » (yếu phương pháp luận có cấu trúc)\n- « La démonstration s'effondre lorsque… » (chứng minh sụp đổ khi)\n- « L'auteur s'engage dans un raisonnement circulaire. » (lập luận tuần hoàn)\n\nBẪY CẦN TRÁNH:\n- KHÔNG « ce livre est mauvais » — phổ thông, không học thuật\n- KHÔNG « l'auteur a tort » — đặt mình ngang vai trò xét xử\n- KHÔNG attaque ad hominem (« l'auteur est connu pour… »)\n- KHÔNG ironie ngầm (« l'auteur, dans sa grande sagesse, … »)\n\nMỘT CÚ PHÁP TINH TẾ ĐẶC BIỆT C1: « ce que [auteur] gagne en X, il le perd en Y ». Cú pháp này cho phép balance critique-éloge trong một câu duy nhất, dấu hiệu rõ của discours critique trưởng thành.",
+    "register_notes_en": "TIERS OF CRITIQUE VERBS by intensity:\n\nLIGHT — expressing regret, suggesting improvement:\n- 'L'auteur aurait gagné à…' (The author would have benefited from…)\n- 'On aurait souhaité que…' (One would have wished that…)\n- 'Ce point aurait mérité davantage d'attention.' (This point would have warranted more attention)\n- 'Il est dommage que…' (It's a pity that…)\n\nMEDIUM — naming a specific weakness:\n- 'L'argumentation s'affaiblit lorsque…' (The argument weakens when…)\n- 'Cette interprétation prête à discussion.' (This interpretation invites discussion)\n- 'Le présupposé qui sous-tend cette thèse mérite d'être interrogé.' (The assumption underlying this thesis warrants interrogation)\n- 'L'auteur passe rapidement sur un point qui mériterait pourtant développement.' (The author moves quickly past a point that warrants development)\n\nFIRM — substantive critique with evidence:\n- 'L'argumentation, sur ce point, ne convainc pas.' (The argument, on this point, does not convince)\n- 'Cette analyse force le sens des données.' (This analysis strains the meaning of the data)\n- 'L'auteur passe sous silence un pan entier de la littérature.' (The author passes over an entire strand of literature in silence)\n- 'Le présupposé qui sous-tend cette thèse demeure profondément problématique.' (The assumption underlying this thesis remains deeply problematic)\n\nVERY FIRM (cautious, use when evidence is solid):\n- 'L'ouvrage souffre d'une faiblesse méthodologique structurelle.' (The work suffers from a structural methodological weakness)\n- 'La démonstration s'effondre lorsque…' (The demonstration collapses when…)\n- 'L'auteur s'engage dans un raisonnement circulaire.' (The author engages in circular reasoning)\n\nTRAPS TO AVOID:\n- NEVER 'ce livre est mauvais' — popular, not academic\n- NEVER 'l'auteur a tort' — claims a judge's position\n- NEVER ad hominem attacks ('l'auteur est connu pour…')\n- NEVER implicit irony ('l'auteur, dans sa grande sagesse, …')\n\nA POLISHED C1 SYNTAX: 'ce que [author] gagne en X, il le perd en Y' (what [author] gains in X, they lose in Y). This construction lets you balance critique and praise in a single sentence — a clear marker of mature critical discourse.",
     "idiom_glosses": [
       {
         "idiom": "Faire la part belle à (soutenu)",
         "literal": "Làm phần đẹp cho",
+        "literal_en": "To make the fine share for",
         "meaning": "Dành chỗ rộng / ưu tiên — phê bình ngầm về sự ưu ái không cân bằng.",
+        "meaning_en": "To give pride of place to — used as implicit critique of an unbalanced privileging. English equivalent: 'to give disproportionate weight to' or 'to favor at the expense of'. Signals that an author has skewed coverage in a way that distorts the overall picture.",
         "example": "L'ouvrage fait la part belle aux hommes politiques, au détriment des mouvements sociaux."
       },
       {
         "idiom": "Tomber à plat (courant)",
         "literal": "Rơi bằng phẳng",
+        "literal_en": "To fall flat",
         "meaning": "Không gây hiệu ứng — lập luận / chương sách tệ.",
+        "meaning_en": "To fall flat — same idiom and meaning as English. Used to describe an argument or chapter that, after promising buildup, fails to land. Mild critique.",
         "example": "La conclusion, après un développement brillant, tombe à plat."
       },
       {
         "idiom": "Mettre le doigt sur (courant)",
         "literal": "Đặt ngón tay lên",
+        "literal_en": "To put one's finger on",
         "meaning": "Nhận ra chính xác / chỉ ra điểm cốt yếu.",
+        "meaning_en": "To put one's finger on something — pinpoint precisely. Same idiom and meaning as English. Used as praise when an author identifies a previously unnamed phenomenon or dynamic.",
         "example": "L'auteur met le doigt sur une dynamique souvent négligée par la sociologie classique."
       },
       {
         "idiom": "Ne pas faire l'unanimité (formel)",
         "literal": "Không tạo nhất trí",
+        "literal_en": "Not to make unanimity",
         "meaning": "Gây tranh luận trong giới — diplomatically marquer le désaccord.",
+        "meaning_en": "Not to enjoy unanimous support — a diplomatic way to signal disagreement in the field. English equivalent: 'to be controversial' or 'not to be without its critics'. The polite frame that lets you flag debate without taking sides yourself.",
         "example": "Cette thèse, à juste titre influente, ne fait pourtant pas l'unanimité dans le champ."
       }
     ],
@@ -2354,29 +2501,33 @@ export const lessons: FrenchLesson[] = [
       {
         "type": "fill-blank",
         "question": "L'auteur ___ sous silence tout un pan de la littérature qui aurait pourtant mérité d'être discuté.",
-        "answer": "passe"
+        "answer": "passe",
+        "hint_vi": "động từ 'passer' ở présent ngôi 3 số ít — cụm cố định 'passer sous silence' nghĩa 'im lặng về'",
+        "hint_en": "verb 'passer' in 3rd person singular present — part of the fixed expression 'passer sous silence' (to pass over in silence — implies willful omission)"
       },
       {
         "type": "matching",
         "pairs": [
           [
             "l'apport d'un travail",
-            "đóng góp của một công trình"
+            "đóng góp của một công trình (the contribution of a work)"
           ],
           [
             "passer sous silence",
-            "im lặng về"
+            "im lặng về (to pass over in silence — sharp critique formula)"
           ],
           [
             "des réserves",
-            "các dè dặt"
+            "các dè dặt (reservations — polite frame for critique points)"
           ]
         ],
-        "instruction": "Nối thuật ngữ phê bình với nghĩa Việt"
+        "instruction": "Nối thuật ngữ phê bình với nghĩa Việt",
+        "instruction_en": "Match the critique term with its meaning"
       },
       {
         "type": "translation",
         "vietnamese": "Các dè dặt này không lấy đi gì tầm quan trọng của đóng góp.",
+        "english": "These reservations take nothing away from the importance of the contribution.",
         "french": "Ces réserves n'enlèvent rien à l'importance de la contribution."
       }
     ]
