@@ -1374,6 +1374,12 @@ export const lessons: FrenchLesson[] = [
           "Berman → bèr-man",
           "irrécupérable → i-ré-ku-pé-ra-blơ",
           "déplorer → dé-plo-ré"
+        ],
+        "pronunciation_focus_en": [
+          "traduction → 'trah-dewk-SYOHN' — 'u' rounded 'ew'; -tion 'syohn'; the written art (NOT 'interprétation', which is oral — see register notes)",
+          "Berman → 'behr-MAN' — proper name (Antoine Berman, translation theorist); final -n pronounced (foreign name, not a French nasal)",
+          "irrécupérable → 'ee-ray-kew-pay-RAH-bluh' — double-r one throat r; 'u' rounded 'ew'; final -ble 'bluh'; 'un déplacement irrécupérable' = a shift that cannot be recovered/undone",
+          "déplorer → 'day-ploh-RAY' — final -er 'ay'; 'non de déplorer' = 'not to deplore' — the thesis: analyze the shift, don't lament it"
         ]
       },
       {
@@ -1384,6 +1390,12 @@ export const lessons: FrenchLesson[] = [
           "révèle → ré-vèl",
           "infidélité → an-fi-dé-li-té",
           "esthétiques → ès-té-tik"
+        ],
+        "pronunciation_focus_en": [
+          "versions → 'vehr-SYOHN' — -sion 'syohn'; 'deux versions françaises' = 'two French versions' (of the same foreign text)",
+          "révèle → 'ray-VEL' — é-then-è: 'ray-VEL', the grave è opens; final -e silent; 'révéler' (accent shifts in conjugation)",
+          "infidélité → 'an-fee-day-lee-TAY' — nasal 'in'; final -té 'tay'; 'l'infidélité de l'une' = the unfaithfulness of one (version) — the 'belle infidèle' debate",
+          "esthétiques → 'es-tay-TEEK' — silent h; é = 'ay'; final -ques 'teek'; here adjective 'choix esthétiques' = aesthetic choices, the analytic object (not 'errors')"
         ]
       },
       {
@@ -1394,6 +1406,12 @@ export const lessons: FrenchLesson[] = [
           "proustien → prus-tian",
           "entière → ãn-tièr",
           "défi → dé-fi"
+        ],
+        "pronunciation_focus_en": [
+          "rythme → 'REETM' — -th- is just 't', final -e silent ('REETM', one syllable); the central category for Meschonnic — rhythm IS meaning",
+          "proustien → 'proos-TYAN' — adjective from Proust; final -ien nasal 'TYAN'; 'le rythme proustien' = the Proustian sentence-rhythm",
+          "entière → 'ahn-TYEHR' — nasal 'en'; final -ère 'yehr'; 'sur une page entière' = 'across a whole page' (a Proustian sentence can run that long)",
+          "défi → 'day-FEE' — é = 'ay', final -i 'ee'; 'un défi structurel' = 'a structural challenge', not a defiance — for Vietnamese which favors short clauses"
         ]
       },
       {
@@ -1404,6 +1422,12 @@ export const lessons: FrenchLesson[] = [
           "mesuré → mơ-zu-ré",
           "écart → é-kar",
           "économies → é-ko-no-mi"
+        ],
+        "pronunciation_focus_en": [
+          "faudrait → 'foh-DREH' — conditional of 'falloir'; 'Encore faudrait-il que…' = 'it would still be necessary that…' — note the obligatory inversion after 'Encore'",
+          "mesuré → 'muh-zew-RAY' — schwa 'me'; 's' between vowels = 'z'; 'u' rounded 'ew'; here past participle: 'que le traducteur eût mesuré' = pluperfect subjunctive ('eût' + past part.)",
+          "écart → 'ay-KAR' — é = 'ay', final -t silent ('ay-KAR'); 'l'écart entre les économies syntaxiques' = the gap between the two languages' syntactic economies",
+          "économies → 'ay-koh-noh-MEE' — all é = 'ay', stress final; here 'les économies syntaxiques' = the differing syntactic 'economies' (resource-systems) of two languages, a technical sense"
         ]
       },
       {
@@ -1414,140 +1438,169 @@ export const lessons: FrenchLesson[] = [
           "appris → a-pri",
           "fidélité → fi-dé-li-té",
           "restitution → rès-ti-tu-sion"
+        ],
+        "pronunciation_focus_en": [
+          "Meschonnic → 'meh-shoh-NEEK' — proper name (Henri Meschonnic, rhythm theorist); 'ch' = 'sh'; final -c pronounced ('NEEK')",
+          "appris → 'ah-PREE' — double-p one 'p'; past participle of 'apprendre', final -s silent; 'nous a appris à juger' = 'taught us to judge'",
+          "fidélité → 'fee-day-lee-TAY' — all é = 'ay'; final -té 'tay'; 'la fidélité au sens' = fidelity to meaning — which Meschonnic subordinates to rhythm",
+          "restitution → 'res-tee-tew-SYOHN' — 'u' rounded 'ew'; -tion 'syohn'; 'la restitution du rythme' = the giving-back of rhythm — for Meschonnic, the true test of a translation"
         ]
       }
     ],
     "cultural_notes_vi": "PHÊ BÌNH DỊCH THUẬT trong tradition Pháp est un champ riche, structuré par trois grands théoriciens contemporains:\n\n(1) ANTOINE BERMAN (1942-1991): L'Épreuve de l'étranger (1984), La Traduction et la lettre (1985), Pour une critique des traductions: John Donne (1995). Berman défend la traduction « éthique » qui respecte l'étrangeté du texte source au lieu de la naturaliser. Il identifie 13 « tendances déformantes » que les traducteurs subissent (rationalisation, clarification, allongement, ennoblissement, appauvrissement qualitatif, appauvrissement quantitatif, homogénéisation, etc.). Lecture obligatoire en master de traduction.\n\n(2) HENRI MESCHONNIC (1932-2009): Pour la poétique I-V (1970-78), Critique du rythme (1982), Poétique du traduire (1999). Meschonnic centralise le RYTHME comme catégorie centrale: traduire, c'est rendre le rythme du texte source, non son sens. Sa formule fameuse: « le rythme est l'organisation du sens dans le discours, donc le sens même ». Critique sévère de la traduction « belle infidèle » classique.\n\n(3) BARBARA CASSIN (née 1947): Vocabulaire européen des philosophies. Dictionnaire des intraduisibles (2004). Pose la question des INTRADUISIBLES — concepts qui résistent au transfert d'une langue à l'autre (« mind » en anglais, « Geist » en allemand, « esprit » en français — pas synonymes).\n\nQUATRE TYPES DE COMPARAISONS courantes en M2 / agrégation de lettres modernes:\n\n(a) DEUX TRADUCTIONS FRANÇAISES D'UN MÊME TEXTE ÉTRANGER. Ex: comparer la traduction de Madame Bovary en anglais par Lydia Davis (2010) avec celle de Geoffrey Wall (1992) — ou plus pertinent pour un public vietnamien: comparer plusieurs traductions vietnamiennes de Madame Bovary (Bùi Hữu Tải, Trần Phong Giao, etc.).\n\n(b) UNE TRADUCTION COMPARÉE AU TEXTE SOURCE. Ex: examiner comment la traduction française de Beloved de Toni Morrison (par Hortense Chabrier et Sylviane Rué, 1989) rend le vernaculaire afro-américain.\n\n(c) DEUX TRADUCTIONS DU MÊME TEXTE PAR UN MÊME TRADUCTEUR à des époques différentes. Ex: les deux versions de Don Quichotte par Aline Schulman.\n\n(d) AUTO-TRADUCTION ET RÉ-ÉCRITURE. Ex: Beckett, qui s'auto-traduisait du français à l'anglais, n'a jamais produit deux versions identiques — la « traduction » devient ré-écriture.\n\nENJEU SPÉCIFIQUE POUR PUBLIC VIETNAMIEN-FRANÇAIS:\n\n(1) RYTHME PROUSTIEN. La phrase de Proust, qui peut courir sur une page entière, déborde les capacités syntaxiques du vietnamien moderne — qui privilégie les phrases courtes et la coordination. Les traductions vietnamiennes existantes (notamment celle de Dương Tường, partielle) ont dû INVENTER une syntaxe vietnamienne nouvelle pour rendre le souffle proustien. Comparer deux solutions vietnamiennes pour le célèbre incipit de la Recherche est un exercice d'agrégation classique.\n\n(2) DENSITÉ POÉTIQUE. La poésie française du XIXe-XXe (Baudelaire, Mallarmé, Apollinaire, Char) repose sur une densité lexicale et rythmique que le vietnamien — langue à tons, à monosyllabes — restitue de manière toujours partielle. Les traductions vietnamiennes de Baudelaire (par Vũ Đình Liên, par Tế Hanh) sont devenues, par leur singularité, des œuvres en soi.\n\n(3) NIVEAUX DE LANGUE. Le français littéraire utilise des registres soutenus (passé simple, subjonctif imparfait) qui n'ont aucun équivalent grammatical en vietnamien. Le traducteur doit COMPENSER par d'autres marques (lexique soutenu, archaïsmes, structure rare). C'est précisément cette compensation qu'analyse une critique de traduction.",
+    "cultural_notes_en": "TRANSLATION CRITICISM in the French tradition is a rich field, structured by three major contemporary theorists. (Note: French academia treats translation criticism as a discipline in its own right — 'traductologie' — far more institutionalized than its anglophone counterpart, where it sits closer to comparative literature.)\n\n(1) ANTOINE BERMAN (1942-1991): L'Épreuve de l'étranger (1984), La Traduction et la lettre (1985), Pour une critique des traductions: John Donne (1995). Berman defends the 'ethical' translation that respects the source text's strangeness instead of naturalizing it. He identifies 13 'deforming tendencies' translators succumb to (rationalization, clarification, expansion, ennoblement, qualitative impoverishment, quantitative impoverishment, homogenization, etc.). Required reading in a master's in translation.\n\n(2) HENRI MESCHONNIC (1932-2009): Pour la poétique I-V (1970-78), Critique du rythme (1982), Poétique du traduire (1999). Meschonnic makes RHYTHM the central category: to translate is to render the source text's rhythm, not its meaning. His famous formula: 'rhythm is the organization of meaning in discourse, therefore meaning itself'. A severe critic of the classical 'belle infidèle' translation.\n\n(3) BARBARA CASSIN (b. 1947): Vocabulaire européen des philosophies. Dictionnaire des intraduisibles (2004). Poses the question of the UNTRANSLATABLES — concepts that resist transfer from one language to another (English 'mind', German 'Geist', French 'esprit' — not synonyms).\n\nFOUR TYPES OF COMPARISON common at M2 / agrégation level in modern letters:\n\n(a) TWO FRENCH TRANSLATIONS OF THE SAME FOREIGN TEXT. E.g. comparing Lydia Davis's translation of Madame Bovary (2010) with Geoffrey Wall's (1992) — or, more relevant for a Vietnamese audience, comparing several Vietnamese translations of Madame Bovary (Bùi Hữu Tải, Trần Phong Giao, etc.).\n\n(b) A TRANSLATION COMPARED TO THE SOURCE TEXT. E.g. examining how the French translation of Toni Morrison's Beloved (by Hortense Chabrier and Sylviane Rué, 1989) renders African-American vernacular.\n\n(c) TWO TRANSLATIONS OF THE SAME TEXT BY THE SAME TRANSLATOR at different periods. E.g. Aline Schulman's two versions of Don Quixote.\n\n(d) SELF-TRANSLATION AND RE-WRITING. E.g. Beckett, who self-translated from French to English, never produced two identical versions — 'translation' becomes re-writing.\n\nSPECIFIC STAKES FOR A VIETNAMESE-FRENCH AUDIENCE:\n\n(1) PROUSTIAN RHYTHM. Proust's sentence, which can run for a whole page, overflows the syntactic capacities of modern Vietnamese — which favors short sentences and coordination. Existing Vietnamese translations (notably Dương Tường's, partial) had to INVENT a new Vietnamese syntax to render the Proustian breath. Comparing two Vietnamese solutions for the famous incipit of the Recherche is a classic agrégation exercise.\n\n(2) POETIC DENSITY. 19th-20th-century French poetry (Baudelaire, Mallarmé, Apollinaire, Char) rests on a lexical and rhythmic density that Vietnamese — a tonal, monosyllabic language — always renders only partially. The Vietnamese translations of Baudelaire (by Vũ Đình Liên, by Tế Hanh) have become, through their singularity, works in their own right.\n\n(3) LEVELS OF LANGUAGE. Literary French uses elevated registers (passé simple, imperfect subjunctive) that have NO grammatical equivalent in Vietnamese. The translator must COMPENSATE with other markers (elevated lexicon, archaisms, rare structures). It is precisely this compensation that a translation critique analyzes. Note for the anglophone learner: English shares this problem (no passé-simple/imperfect-subjunctive system), so an English-speaker can feel the same compensation pressure — useful intuition to bring to the analysis.",
     "tip_advice_vi": "GRILLE D'ANALYSE pour comparer deux traductions:\n\n(1) CHOISIR UN PASSAGE COURT — 5 à 15 phrases, dense, représentatif du texte source. Travail détaillé impossible sur plus.\n\n(2) ÉTABLIR LE TEXTE SOURCE EN COLONNE CENTRALE, les deux traductions de part et d'autre. Numéroter chaque ligne pour faciliter la référence.\n\n(3) ANALYSER POINT PAR POINT:\n- Lexique: chaque mot du source rendu comment?\n- Syntaxe: phrase coupée, fusionnée, restructurée?\n- Temps verbaux: respect ou modulation?\n- Rythme: cadence préservée?\n- Connotations: registre maintenu?\n- Effets sonores: allitérations, assonances, rimes internes?\n- Niveaux de langue: soutenu / courant / familier?\n\n(4) IDENTIFIER UN CHOIX TRADUCTOLOGIQUE GLOBAL chez chaque traducteur — souvent une grille fait apparaître une cohérence: l'un naturalise (cible), l'autre étrangéise (source).\n\n(5) ÉVALUER NON L'ERREUR mais LA STRATÉGIE — chaque choix a un coût et un bénéfice. Une critique C2 ne dit pas « cette traduction est mauvaise »; elle dit « cette traduction privilégie X au détriment de Y ».\n\nCỤM HỮU ÍCH:\n\nPOUR INTRODUIRE LA COMPARAISON:\n- « La confrontation des deux versions fait apparaître non tant un meilleur et un moins bon que deux stratégies divergentes. »\n- « Chaque traducteur opère, face au même original, un arbitrage différent entre les exigences contradictoires de la fidélité. »\n\nPOUR DÉCRIRE UN ÉCART:\n- « Là où l'original use d'un imparfait à valeur durative, la traduction X opte pour un présent qui en accélère le tempo. »\n- « Le rythme ternaire de l'original est rendu, dans la version Y, par une cadence binaire — choix qui appauvrit la dimension lyrique. »\n- « L'allitération en [s] de la phrase source disparaît purement et simplement dans la traduction Z. »\n\nPOUR ÉVALUER UNE STRATÉGIE:\n- « La stratégie de naturalisation est ici poussée à un point qui efface la singularité de la voix originale. »\n- « À l'inverse, la stratégie étrangéisante préserve la défamiliarisation — au prix d'une lecture plus exigeante. »\n- « Aucune des deux versions ne saurait prétendre à l'exhaustivité; chacune éclaire un aspect que l'autre laisse dans l'ombre. »\n\nPOUR CONCLURE:\n- « Cette comparaison illustre le théorème bermanien selon lequel toute traduction est nécessairement déplacement. »\n- « C'est précisément ce que Meschonnic appelait l'épreuve du rythme: ce qui résiste, dans la traduction, à la pure équivalence sémantique. »\n\nTRÁNH:\n- « Cette traduction est meilleure que celle-là. » → jugement non analytique\n- « Le traducteur a fait une erreur. » → distinguer erreur (lapsus) et choix (stratégie)\n- « Le vietnamien ne peut rendre cela. » → toujours faux; nuancer en disant « le vietnamien rend cela par d'autres moyens »\n- Comparer sans citer ligne par ligne — vague et invérifiable",
+    "tip_advice_en": "ANALYSIS GRID for comparing two translations:\n\n(1) CHOOSE A SHORT PASSAGE — 5 to 15 sentences, dense, representative of the source text. Detailed work on more is impossible.\n\n(2) SET THE SOURCE TEXT IN A CENTER COLUMN, the two translations on either side. Number each line for easy reference.\n\n(3) ANALYZE POINT BY POINT:\n- Lexicon: how is each source word rendered?\n- Syntax: sentence cut, fused, restructured?\n- Verb tenses: respected or modulated?\n- Rhythm: cadence preserved?\n- Connotations: register maintained?\n- Sound effects: alliteration, assonance, internal rhyme?\n- Levels of language: elevated / standard / colloquial?\n\n(4) IDENTIFY AN OVERALL TRANSLATORIAL CHOICE in each translator — a grid often reveals a coherence: one naturalizes (target), the other foreignizes (source).\n\n(5) EVALUATE NOT THE ERROR but THE STRATEGY — every choice has a cost and a benefit. A C2 critique does not say 'this translation is bad'; it says 'this translation privileges X at the expense of Y'.\n\nUSEFUL PHRASES:\n\nTO INTRODUCE THE COMPARISON:\n- 'La confrontation des deux versions fait apparaître non tant un meilleur et un moins bon que deux stratégies divergentes.' (the confrontation of the two versions reveals not so much a better and a worse as two divergent strategies)\n- 'Chaque traducteur opère, face au même original, un arbitrage différent entre les exigences contradictoires de la fidélité.'\n\nTO DESCRIBE A DIVERGENCE:\n- 'Là où l'original use d'un imparfait à valeur durative, la traduction X opte pour un présent qui en accélère le tempo.'\n- 'Le rythme ternaire de l'original est rendu, dans la version Y, par une cadence binaire — choix qui appauvrit la dimension lyrique.'\n- 'L'allitération en [s] de la phrase source disparaît purement et simplement dans la traduction Z.'\n\nTO EVALUATE A STRATEGY:\n- 'La stratégie de naturalisation est ici poussée à un point qui efface la singularité de la voix originale.'\n- 'À l'inverse, la stratégie étrangéisante préserve la défamiliarisation — au prix d'une lecture plus exigeante.'\n- 'Aucune des deux versions ne saurait prétendre à l'exhaustivité; chacune éclaire un aspect que l'autre laisse dans l'ombre.'\n\nTO CONCLUDE:\n- 'Cette comparaison illustre le théorème bermanien selon lequel toute traduction est nécessairement déplacement.'\n- 'C'est précisément ce que Meschonnic appelait l'épreuve du rythme: ce qui résiste, dans la traduction, à la pure équivalence sémantique.'\n\nAVOID:\n- 'Cette traduction est meilleure que celle-là.' (this translation is better than that one) → a non-analytical judgment\n- 'Le traducteur a fait une erreur.' → distinguish error (a slip) from choice (a strategy)\n- 'Le vietnamien ne peut rendre cela.' (Vietnamese cannot render this) → always false; nuance it as 'Vietnamese renders this by other means'\n- Comparing without quoting line by line — vague and unverifiable",
     "vocabulary": [
       {
         "word": "la traductologie",
         "en": "translation studies",
         "vi": "dịch học",
         "pos": "n.f.",
-        "pronunciation_vi": "tra-duk-to-lo-ji"
+        "pronunciation_vi": "tra-duk-to-lo-ji",
+        "pronunciation_en": "lah trah-dewk-toh-loh-ZHEE — 'u' rounded 'ew'; final -gie soft 'zhee'; 'translation studies' — but in French a far more institutionalized academic discipline than the anglophone equivalent"
       },
       {
         "word": "un déplacement traductologique",
         "en": "a translative displacement",
         "vi": "một sự dịch chuyển dịch thuật",
         "pos": "n.m.",
-        "pronunciation_vi": "dé-plas-mã tra-duk-to-lo-jik"
+        "pronunciation_vi": "dé-plas-mã tra-duk-to-lo-jik",
+        "pronunciation_en": "uhn day-plahs-MAHN trah-dewk-toh-loh-ZHEEK — 'déplacement' final -ment nasal 'MAHN'; -gique 'zheek'; Berman's idea: every translation IS a shift, to be analyzed not lamented"
       },
       {
         "word": "la naturalisation",
         "en": "domestication",
         "vi": "sự nội địa hóa (dịch)",
         "pos": "n.f.",
-        "pronunciation_vi": "na-tu-ra-li-za-sion"
+        "pronunciation_vi": "na-tu-ra-li-za-sion",
+        "pronunciation_en": "lah nah-tew-rah-lee-zah-SYOHN — 'u' rounded 'ew'; -tion 'syohn'; = Venuti's 'domestication' — bringing the text toward the target reader (opposite of étrangéisation)"
       },
       {
         "word": "l'étrangéisation",
         "en": "foreignization",
         "vi": "sự giữ tính lạ",
         "pos": "n.f.",
-        "pronunciation_vi": "é-trãn-jé-i-za-sion"
+        "pronunciation_vi": "é-trãn-jé-i-za-sion",
+        "pronunciation_en": "lay-trahn-zhay-ee-zah-SYOHN — é = 'ay', nasal 'an', -gé- soft 'zhay'; = Venuti's 'foreignization' — keeping the source text's strangeness; Berman's ethical preference"
       },
       {
         "word": "une tendance déformante",
         "en": "a deforming tendency (Berman)",
         "vi": "một khuynh hướng làm méo (Berman)",
         "pos": "n.f.",
-        "pronunciation_vi": "tãn-dãns dé-for-mãnt"
+        "pronunciation_vi": "tãn-dãns dé-for-mãnt",
+        "pronunciation_en": "ewn tahn-DAHNS day-for-MAHNT — 'tendance' two nasals; 'déformante' final -ante nasal 'MAHNT'; Berman's term — one of his 13 systematic distortions (rationalization, clarification, etc.)"
       },
       {
         "word": "la fidélité au sens",
         "en": "fidelity to meaning",
         "vi": "sự trung thành với nghĩa",
         "pos": "n.f.",
-        "pronunciation_vi": "fi-dé-li-té ô sãns"
+        "pronunciation_vi": "fi-dé-li-té ô sãns",
+        "pronunciation_en": "lah fee-day-lee-TAY oh SAHNS — 'fidélité' final -té 'tay'; 'au sens' = 'oh sahns' (sens final -s silent); fidelity to MEANING — which Meschonnic deliberately subordinates to fidelity to rhythm"
       },
       {
         "word": "la restitution du rythme",
         "en": "the restitution of rhythm",
         "vi": "sự khôi phục nhịp điệu",
         "pos": "n.f.",
-        "pronunciation_vi": "rès-ti-tu-sion du ritm"
+        "pronunciation_vi": "rès-ti-tu-sion du ritm",
+        "pronunciation_en": "lah res-tee-tew-SYOHN dew REETM — 'u' rounded 'ew'; -tion 'syohn'; 'rythme' = 'REETM' (one syllable); Meschonnic's criterion: a translation is judged on this, not on semantic fidelity"
       },
       {
         "word": "un intraduisible",
         "en": "an untranslatable",
         "vi": "một khái niệm không dịch được",
         "pos": "n.m.",
-        "pronunciation_vi": "an-tra-du-i-zi-blơ"
+        "pronunciation_vi": "an-tra-du-i-zi-blơ",
+        "pronunciation_en": "uhn an-trah-dwee-ZEE-bluh — nasal 'in'; 'ui' = 'wee'; final -ble 'bluh'; Cassin's term — an 'untranslatable' is NOT what one fails to translate but what one never stops re-translating"
       },
       {
         "word": "une auto-traduction",
         "en": "a self-translation",
         "vi": "sự tự dịch",
         "pos": "n.f.",
-        "pronunciation_vi": "ô-to tra-duk-sion"
+        "pronunciation_vi": "ô-to tra-duk-sion",
+        "pronunciation_en": "ewn oh-toh trah-dewk-SYOHN — 'auto-' = 'oh-toh'; -tion 'syohn'; self-translation — Beckett's case, where it becomes re-writing rather than rendering"
       },
       {
         "word": "un calque",
         "en": "a calque (loan translation)",
         "vi": "sự dịch sao (calque)",
         "pos": "n.m.",
-        "pronunciation_vi": "kalk"
+        "pronunciation_vi": "kalk",
+        "pronunciation_en": "uhn KALK — one syllable, final -que 'k' ('KALK'); a loan-translation that copies the source structure ('gratte-ciel' calqued on 'skyscraper') — Vinay & Darbelnet's procedure"
       }
     ],
     "dialogue": [
       {
         "speaker": "Pr. Compagnon",
         "text": "Madame Tran, vous comparez deux traductions vietnamiennes de Madame Bovary. Sur quelle phrase précise ?",
-        "vi": "Cô Trần, cô so sánh hai bản dịch tiếng Việt của Madame Bovary. Trên câu cụ thể nào?"
+        "vi": "Cô Trần, cô so sánh hai bản dịch tiếng Việt của Madame Bovary. Trên câu cụ thể nào?",
+        "en": "Madame Tran, you are comparing two Vietnamese translations of Madame Bovary. On which precise sentence? ['Sur quelle phrase précise ?' — the examiner immediately demands line-level specificity; comparing 'in general' is the cardinal sin of translation criticism]"
       },
       {
         "speaker": "Linh",
         "text": "Sur l'incipit du chapitre VI, partie I — le passage sur les lectures romantiques d'Emma adolescente.",
-        "vi": "Trên incipit của chương VI, phần I — đoạn về các cuốn tiểu thuyết lãng mạn Emma đọc tuổi thiếu nữ."
+        "vi": "Trên incipit của chương VI, phần I — đoạn về các cuốn tiểu thuyết lãng mạn Emma đọc tuổi thiếu nữ.",
+        "en": "On the incipit of chapter VI, Part I — the passage on the adolescent Emma's romantic reading. ['l'incipit' = the opening (Latin technical term); 'les lectures … d'Emma' = 'Emma's reading(s)' — French pluralizes 'lecture' for 'the things one reads']"
       },
       {
         "speaker": "Pr. Compagnon",
         "text": "Bon choix — passage à discours indirect libre intense. Comment chacune rend-elle l'ironie flaubertienne ?",
-        "vi": "Lựa chọn tốt — đoạn discours indirect libre mạnh. Mỗi bản rendre châm biếm Flaubert thế nào?"
+        "vi": "Lựa chọn tốt — đoạn discours indirect libre mạnh. Mỗi bản rendre châm biếm Flaubert thế nào?",
+        "en": "Good choice — a passage of intense free indirect discourse. How does each render the Flaubertian irony? ['rend-elle' = inversion of 'elle rend' for the question; 'rendre' = the translator's verb par excellence: 'to render/carry over', not 'give back']"
       },
       {
         "speaker": "Linh",
         "text": "L'une l'efface en choisissant un présent narratif neutre; l'autre la préserve en restituant l'imparfait à valeur ironique.",
-        "vi": "Một bản xóa nó bằng cách chọn một présent narratif trung lập; bản kia giữ bằng cách khôi phục imparfait có giá trị châm biếm."
+        "vi": "Một bản xóa nó bằng cách chọn một présent narratif trung lập; bản kia giữ bằng cách khôi phục imparfait có giá trị châm biếm.",
+        "en": "One effaces it by choosing a neutral narrative present; the other preserves it by restoring the imperfect with its ironic value. ['l'imparfait à valeur ironique' = the imperfect tense carrying an ironic charge — a tense English lacks, so its loss in translation is the very object of analysis; 'restituer' = render faithfully, give back]"
       }
     ],
     "dialogue_long": [
       {
         "speaker": "Pr. Compagnon (séminaire de traductologie)",
         "text": "Madame Tran, vous nous présentez aujourd'hui une comparaison de deux traductions vietnamiennes du célèbre incipit de la Recherche du temps perdu — la phrase qui ouvre Du côté de chez Swann (1913).",
-        "vi": "Cô Trần, cô trình bày hôm nay so sánh hai bản dịch tiếng Việt của incipit nổi tiếng Recherche du temps perdu — câu mở đầu Du côté de chez Swann (1913)."
+        "vi": "Cô Trần, cô trình bày hôm nay so sánh hai bản dịch tiếng Việt của incipit nổi tiếng Recherche du temps perdu — câu mở đầu Du côté de chez Swann (1913).",
+        "en": "Madame Tran, you present to us today a comparison of two Vietnamese translations of the famous incipit of the Recherche du temps perdu — the sentence that opens Du côté de chez Swann (1913). ['la Recherche' = the standard short form for À la recherche du temps perdu; titles left in French as fixed references]"
       },
       {
         "speaker": "Linh",
         "text": "L'incipit proustien — « Longtemps, je me suis couché de bonne heure » — pose au traducteur vietnamien un défi triple. D'abord, le rythme: la phrase, brève en apparence, se prolonge dans tout le paragraphe par une syntaxe à embranchements. Ensuite, le passé composé: « je me suis couché » a une valeur stylistique très spécifique en français — pas un présent, pas un passé simple, mais ce passé composé qui installe le souvenir dans une présence persistante. Enfin, le « longtemps » initial: adverbe placé en hyperbate, qui charge dès le premier mot le tempo de toute la Recherche.",
-        "vi": "Incipit Proust — « Longtemps, je me suis couché de bonne heure » — đặt cho người dịch tiếng Việt một thách thức ba. Trước tiên, nhịp điệu: câu, ngắn thoạt nhìn, kéo dài cả đoạn qua một cú pháp phân nhánh. Tiếp đến, passé composé: « je me suis couché » có giá trị phong cách rất cụ thể trong tiếng Pháp — không phải présent, không passé simple, mà passé composé này đặt hồi ức trong một sự hiện diện kéo dài. Cuối, « longtemps » đầu tiên: adverbe đặt en hyperbate, từ chữ đầu đã nạp tempo cho toàn Recherche."
+        "vi": "Incipit Proust — « Longtemps, je me suis couché de bonne heure » — đặt cho người dịch tiếng Việt một thách thức ba. Trước tiên, nhịp điệu: câu, ngắn thoạt nhìn, kéo dài cả đoạn qua một cú pháp phân nhánh. Tiếp đến, passé composé: « je me suis couché » có giá trị phong cách rất cụ thể trong tiếng Pháp — không phải présent, không passé simple, mà passé composé này đặt hồi ức trong một sự hiện diện kéo dài. Cuối, « longtemps » đầu tiên: adverbe đặt en hyperbate, từ chữ đầu đã nạp tempo cho toàn Recherche.",
+        "en": "The Proustian incipit — 'Longtemps, je me suis couché de bonne heure' ('For a long time, I went to bed early') — poses the Vietnamese translator a triple challenge. First, the rhythm: the sentence, brief in appearance, prolongs itself through the whole paragraph by a branching syntax. Next, the passé composé: 'je me suis couché' has a very specific stylistic value in French — not a present, not a passé simple, but this passé composé that installs the memory in a persistent presence. Finally, the initial 'longtemps': an adverb placed in hyperbaton, which from the very first word loads the tempo of the whole Recherche. [the famous incipit is left in French — its tense and word order ARE the analysis; English has no passé-composé/passé-simple contrast, so the loss is structurally similar to Vietnamese]"
       },
       {
         "speaker": "Linh",
         "text": "Première version vietnamienne — celle d'un traducteur des années 1990, dont je tairai le nom car il est encore vivant — choisit une formule qu'on peut rétro-traduire en français comme: « pendant longtemps j'ai eu l'habitude d'aller au lit tôt ». Cette traduction RÉSOUT chacun des trois défis par une voie de naturalisation maximale: « j'ai eu l'habitude » lisse l'aspect verbal du français en concept lexical; « pendant » substitue à l'hyperbate proustien une formule canonique vietnamienne; « tôt » rend « de bonne heure » sans en restituer la légère préciosité. Le résultat est lisible, fluide — et perd, à mon sens, ce qui faisait Proust.",
-        "vi": "Bản đầu tiếng Việt — của một người dịch những năm 1990, tôi sẽ giấu tên vì ông còn sống — chọn một công thức có thể dịch ngược sang tiếng Pháp là: « trong thời gian dài tôi có thói quen đi ngủ sớm ». Bản dịch này GIẢI QUYẾT từng thách thức bằng đường nội địa hóa tối đa: « có thói quen » làm phẳng aspect verbal của tiếng Pháp thành khái niệm từ vựng; « trong » thay hyperbate Proust bằng một công thức chuẩn tiếng Việt; « sớm » rendre « de bonne heure » không khôi phục tính cầu kỳ nhẹ. Kết quả dễ đọc, mượt — và mất, theo tôi, điều làm nên Proust."
+        "vi": "Bản đầu tiếng Việt — của một người dịch những năm 1990, tôi sẽ giấu tên vì ông còn sống — chọn một công thức có thể dịch ngược sang tiếng Pháp là: « trong thời gian dài tôi có thói quen đi ngủ sớm ». Bản dịch này GIẢI QUYẾT từng thách thức bằng đường nội địa hóa tối đa: « có thói quen » làm phẳng aspect verbal của tiếng Pháp thành khái niệm từ vựng; « trong » thay hyperbate Proust bằng một công thức chuẩn tiếng Việt; « sớm » rendre « de bonne heure » không khôi phục tính cầu kỳ nhẹ. Kết quả dễ đọc, mượt — và mất, theo tôi, điều làm nên Proust.",
+        "en": "The first Vietnamese version — by a translator of the 1990s, whose name I will withhold since he is still living — chooses a formula one can back-translate into French as 'pendant longtemps j'ai eu l'habitude d'aller au lit tôt' ('for a long time I was in the habit of going to bed early'). This translation RESOLVES each of the three challenges by a route of maximal naturalization: 'j'ai eu l'habitude' flattens the verbal aspect of the French into a lexical concept; 'pendant' substitutes a canonical Vietnamese formula for the Proustian hyperbaton; 'tôt' renders 'de bonne heure' without restoring its slight preciosity. The result is readable, fluid — and loses, to my mind, what made it Proust. ['rétro-traduire' = to back-translate (for analytic display); 'je tairai le nom' = future of 'taire', 'I will pass over the name in silence' — scholarly discretion toward a living translator]"
       },
       {
         "speaker": "Linh",
         "text": "Seconde version — plus récente, celle d'un universitaire formé en France, parue dans la revue Văn học (avec autorisation) — opte pour la voie inverse, étrangéisante. La phrase commence directement par « Đã từ rất lâu » — équivalent du « longtemps » placé en tête, créant le même déséquilibre rythmique que l'original. Le « je me suis couché » est rendu non par « j'ai eu l'habitude » mais par une formule qui préserve l'aspect résultatif — quelque chose comme « tôi vẫn lên giường ». Le « de bonne heure » devient « lúc giờ còn sớm » — formule légèrement archaïque, qui restitue la préciosité.",
-        "vi": "Bản thứ hai — mới hơn, của một nhà đại học đào tạo ở Pháp, đăng trên tạp chí Văn học (với phép) — chọn đường ngược, étrangéisante. Câu bắt đầu trực tiếp bằng « Đã từ rất lâu » — tương đương « longtemps » đặt đầu, tạo sự mất cân bằng nhịp điệu giống nguyên bản. « Je me suis couché » được rendre không bằng « có thói quen » mà bằng công thức giữ aspect résultatif — gì đó như « tôi vẫn lên giường ». « De bonne heure » thành « lúc giờ còn sớm » — công thức hơi cổ, khôi phục cầu kỳ."
+        "vi": "Bản thứ hai — mới hơn, của một nhà đại học đào tạo ở Pháp, đăng trên tạp chí Văn học (với phép) — chọn đường ngược, étrangéisante. Câu bắt đầu trực tiếp bằng « Đã từ rất lâu » — tương đương « longtemps » đặt đầu, tạo sự mất cân bằng nhịp điệu giống nguyên bản. « Je me suis couché » được rendre không bằng « có thói quen » mà bằng công thức giữ aspect résultatif — gì đó như « tôi vẫn lên giường ». « De bonne heure » thành « lúc giờ còn sớm » — công thức hơi cổ, khôi phục cầu kỳ.",
+        "en": "The second version — more recent, by an academic trained in France, published in the journal Văn học (with permission) — takes the opposite route, the foreignizing one. The sentence begins directly with 'Đã từ rất lâu' — the equivalent of 'longtemps' placed at the head, creating the same rhythmic imbalance as the original. 'Je me suis couché' is rendered not by 'I was in the habit' but by a formula that preserves the resultative aspect — something like 'tôi vẫn lên giường'. 'De bonne heure' becomes 'lúc giờ còn sớm' — a slightly archaic formula that restores the preciosity. ['aspect résultatif' = the resultative aspect (a verbal-aspect category); 'étrangéisante' = foreignizing — the strategy that keeps the source's strangeness, Berman's ethical choice]"
       },
       {
         "speaker": "Pr. Compagnon",
         "text": "Très bien. Verdict ?",
-        "vi": "Rất tốt. Phán quyết?"
+        "vi": "Rất tốt. Phán quyết?",
+        "en": "Very good. Verdict? [the bare one-word 'Verdict ?' is a deliberate seminar prod — the examiner is testing whether the candidate will resist delivering a simplistic 'better/worse' ruling]"
       },
       {
         "speaker": "Linh",
         "text": "Pas de verdict simple. La première version privilégie l'ACCESSIBILITÉ au lecteur vietnamien moyen — elle remplit la fonction de présentation, à laquelle Proust a longtemps résisté en français même. La seconde version privilégie la RESTITUTION DU GESTE PROUSTIEN — elle exige davantage du lecteur mais préserve la singularité formelle. Berman aurait soutenu la seconde au nom de l'éthique de la traduction; Meschonnic l'aurait soutenue au nom du rythme. Mais on aurait tort de juger la première « ratée »: elle relève d'une autre conception de la traduction — celle de l'introduction d'un auteur dans une langue qui ne le connaît pas encore. Les deux gestes sont légitimes; ils répondent à des moments différents de l'histoire de la traduction.",
-        "vi": "Không có phán quyết đơn giản. Bản đầu ưu tiên TIẾP CẬN với độc giả Việt trung bình — nó làm chức năng giới thiệu, điều Proust đã kháng cự lâu trong chính tiếng Pháp. Bản hai ưu tiên KHÔI PHỤC ĐỘNG TÁC PROUSTIEN — đòi hỏi nhiều hơn từ độc giả nhưng giữ được tính độc đáo hình thức. Berman sẽ ủng hộ bản hai nhân danh đạo đức dịch thuật; Meschonnic sẽ ủng hộ nhân danh nhịp điệu. Nhưng sẽ sai khi phán bản đầu « hỏng »: nó thuộc về một quan niệm khác về dịch thuật — quan niệm giới thiệu một tác giả vào một ngôn ngữ chưa biết ông. Hai động tác đều hợp pháp; chúng đáp ứng các thời khắc khác nhau của lịch sử dịch thuật."
+        "vi": "Không có phán quyết đơn giản. Bản đầu ưu tiên TIẾP CẬN với độc giả Việt trung bình — nó làm chức năng giới thiệu, điều Proust đã kháng cự lâu trong chính tiếng Pháp. Bản hai ưu tiên KHÔI PHỤC ĐỘNG TÁC PROUSTIEN — đòi hỏi nhiều hơn từ độc giả nhưng giữ được tính độc đáo hình thức. Berman sẽ ủng hộ bản hai nhân danh đạo đức dịch thuật; Meschonnic sẽ ủng hộ nhân danh nhịp điệu. Nhưng sẽ sai khi phán bản đầu « hỏng »: nó thuộc về một quan niệm khác về dịch thuật — quan niệm giới thiệu một tác giả vào một ngôn ngữ chưa biết ông. Hai động tác đều hợp pháp; chúng đáp ứng các thời khắc khác nhau của lịch sử dịch thuật.",
+        "en": "No simple verdict. The first version privileges ACCESSIBILITY for the average Vietnamese reader — it fulfils a function of presentation, which Proust himself long resisted in French. The second version privileges THE RESTITUTION OF THE PROUSTIAN GESTURE — it demands more of the reader but preserves the formal singularity. Berman would have backed the second in the name of the ethics of translation; Meschonnic would have backed it in the name of rhythm. But one would be wrong to judge the first 'a failure': it belongs to another conception of translation — that of introducing an author into a language that does not yet know him. Both gestures are legitimate; they answer different moments in the history of translation. ['Pas de verdict simple' = the mature refusal of a binary ruling — exactly what the bare 'Verdict ?' was testing; 'on aurait tort de juger … « ratée »' = 'one would be wrong to judge it a failure', the conditional of measured dissent]"
       },
       {
         "speaker": "Pr. Compagnon",
         "text": "Réponse mature. Vous évitez à la fois le purisme bermanien (qui condamnerait toute naturalisation) et le pragmatisme paresseux (qui validerait n'importe quelle traduction sous prétexte d'accessibilité). C'est exactement la position de Cassin dans le Vocabulaire européen des philosophies — l'intraduisible est ce qu'on n'arrête jamais de traduire.",
-        "vi": "Câu trả lời trưởng thành. Cô tránh được cả purisme Berman (sẽ kết án mọi nội địa hóa) và pragmatisme lười (sẽ chấp nhận bất cứ bản dịch nào với lý do tiếp cận). Chính là lập trường của Cassin trong Vocabulaire européen des philosophies — intraduisible là điều ta không bao giờ ngừng dịch."
+        "vi": "Câu trả lời trưởng thành. Cô tránh được cả purisme Berman (sẽ kết án mọi nội địa hóa) và pragmatisme lười (sẽ chấp nhận bất cứ bản dịch nào với lý do tiếp cận). Chính là lập trường của Cassin trong Vocabulaire européen des philosophies — intraduisible là điều ta không bao giờ ngừng dịch.",
+        "en": "A mature answer. You avoid both Bermanian purism (which would condemn all naturalization) and lazy pragmatism (which would validate any translation under the pretext of accessibility). That is exactly Cassin's position in the Vocabulaire européen des philosophies — the untranslatable is what one never stops translating. ['le purisme bermanien' = doctrinaire fidelity to Berman; the Cassin definition is the lesson's intellectual payoff — the untranslatable is a perpetual task, not a wall]"
       }
     ],
     "roleplay_prompts": [
@@ -1555,30 +1608,44 @@ export const lessons: FrenchLesson[] = [
       "Trong séminaire, một collègue affirme « la traduction est toujours une trahison ». Phản hồi avec rigueur — distinguer la trahison comme cliché et le déplacement comme objet d'analyse, mobiliser Berman.",
       "Soạn 5 câu pour un commentaire publié dans une postface — comparer deux traductions vietnamiennes d'un poème de Baudelaire. Nommer chaque traducteur, dater chaque version, préciser une stratégie."
     ],
+    "roleplay_prompts_en": [
+      "You are commissioned to write a translation review (a 1500-word report) for the journal Translittérature. Subject: two French translations of the same Pessoa poem. Compose the introduction (200 words) — situate + problématique + plan. Do NOT rank them 'better/worse'; frame as two divergent strategies.",
+      "In a seminar, a colleague asserts 'translation is always a betrayal'. Respond with rigor — distinguish betrayal as a cliché ('traduttore, traditore') from displacement as an object of analysis; mobilize Berman ('tout déplacement n'est pas une trahison; c'en est l'objet').",
+      "Compose 5 sentences for a commentary published in an afterword — comparing two Vietnamese translations of a Baudelaire poem. Name each translator, date each version, and specify one strategy (naturalization vs. foreignization) per version. Quote at least one line verbatim."
+    ],
     "register_notes": "VOCABULAIRE TRADUCTOLOGIQUE — termes techniques à connaître:\n\nDIRECTIONS:\n- texte source / texte cible (TS / TC)\n- langue source / langue cible (LS / LC)\n- public source / public cible\n\nSTRATÉGIES (Venuti, terminologie reprise par Berman):\n- naturalisation / domestication: rapprocher du lecteur cible\n- étrangéisation / foreignization: rapprocher du texte source\n- équivalence dynamique (Nida) vs équivalence formelle\n\nPROCÉDÉS (Vinay & Darbelnet, Stylistique comparée du français et de l'anglais, 1958):\n- emprunt (garder le mot étranger: « le sushi »)\n- calque (copier la structure: « gratte-ciel » de skyscraper)\n- traduction littérale\n- transposition (changement de classe grammaticale)\n- modulation (changement de point de vue)\n- équivalence (idiome rendu par idiome équivalent)\n- adaptation (changement de référent culturel)\n\nTENDANCES DÉFORMANTES (Berman, La Traduction et la lettre, 1985):\n- rationalisation\n- clarification\n- allongement\n- ennoblissement / vulgarisation\n- appauvrissement qualitatif / quantitatif\n- homogénéisation\n- destruction des rythmes\n- destruction des réseaux signifiants sous-jacents\n- destruction des systématismes textuels\n- destruction (ou exotisation) des réseaux langagiers vernaculaires\n- destruction des locutions et idiotismes\n- effacement des superpositions de langues\n- destruction des systématismes\n\nCRITIQUES MAJEURS DE LA TRADUCTION:\n- Antoine Berman: éthique de la traduction\n- Henri Meschonnic: rythme comme catégorie centrale\n- Barbara Cassin: intraduisibles\n- Lawrence Venuti (anglais, traduit): visibilité du traducteur\n- George Steiner (anglais, traduit): Après Babel (1975)\n\nIDIOMS LITTÉRAIRES SUR LA TRADUCTION:\n- « les belles infidèles » (cụm cổ về dịch tự do — courant)\n- « passer la main » (chuyển bản — courant)\n- « rendre à César » (trả về — soutenu critique)\n- « sourcier vs cibliste » (hai trường phái — jargon)\n\nMỘT TINH TẾ ĐẶC THÙ: dans la critique de traduction française, on évite « interprétation » comme synonyme de « traduction ». L'interprétation est l'oral (interprétariat); la traduction est l'écrit. Confondre = mark amateur.",
+    "register_notes_en": "TRANSLATION-STUDIES VOCABULARY — technical terms to know:\n\nDIRECTIONS:\n- texte source / texte cible (source text / target text — TS / TC)\n- langue source / langue cible (source language / target language — LS / LC)\n- public source / public cible (source / target readership)\n\nSTRATEGIES (Venuti, terminology taken up by Berman):\n- naturalisation / domestication: bring the text toward the target reader\n- étrangéisation / foreignization: bring the reader toward the source text\n- dynamic equivalence (Nida) vs formal equivalence\n\nPROCEDURES (Vinay & Darbelnet, Stylistique comparée du français et de l'anglais, 1958 — note this canonical reference contrasts French and English specifically):\n- emprunt (borrowing: keep the foreign word, 'le sushi')\n- calque (copy the structure: 'gratte-ciel' from 'skyscraper')\n- traduction littérale (literal translation)\n- transposition (change of grammatical class)\n- modulation (change of point of view)\n- équivalence (an idiom rendered by an equivalent idiom)\n- adaptation (change of cultural referent)\n\nDEFORMING TENDENCIES (Berman, La Traduction et la lettre, 1985):\n- rationalization\n- clarification\n- expansion\n- ennoblement / vulgarization\n- qualitative / quantitative impoverishment\n- homogenization\n- destruction of rhythms\n- destruction of underlying signifying networks\n- destruction of linguistic patternings\n- destruction (or exoticization) of vernacular networks\n- destruction of expressions and idioms\n- effacement of the superimposition of languages\n\nMAJOR CRITICS OF TRANSLATION:\n- Antoine Berman: ethics of translation\n- Henri Meschonnic: rhythm as the central category\n- Barbara Cassin: untranslatables\n- Lawrence Venuti (English, translated): the translator's (in)visibility\n- George Steiner (English, translated): After Babel (1975)\n\nLITERARY IDIOMS ON TRANSLATION:\n- 'les belles infidèles' (the beautiful unfaithful ones — common, historical)\n- 'passer la main' (to hand over — common)\n- 'rendre à César' (to render unto Caesar — elevated, critical)\n- 'sourcier vs cibliste' (source-er vs target-er — the two schools, jargon)\n\nONE CRUCIAL SUBTLETY: in French translation criticism, one AVOIDS 'interprétation' as a synonym for 'traduction'. Interpreting is oral (interprétariat); translation is written. Conflating them marks an amateur. This is a sharper distinction than in English, where 'interpret/interpretation' drifts freely between the oral act and the act of construing meaning — at C2 keep 'traduction' for the written art.",
     "idiom_glosses": [
       {
         "idiom": "Les belles infidèles (courant historique)",
         "literal": "Những cô gái đẹp bất trung",
+        "literal_en": "The beautiful unfaithful (women)",
         "meaning": "Truyền thống dịch tự do thế kỷ XVII-XVIII — đẹp văn nhưng không trung thành.",
+        "meaning_en": "The 17th-18th-c. tradition of free, elegant translations 'beautiful but unfaithful'. From Ménage's quip that a translation was 'like a woman: either beautiful or faithful'. NO English equivalent — anglophone scholarship simply borrows the French 'les belles infidèles'. The gendered metaphor is now itself an object of critique. Common/historical register.",
         "example": "Les belles infidèles, comme la traduction de Lucain par Brébeuf, ont été critiquées dès le XIXe siècle."
       },
       {
         "idiom": "Sourcier vs cibliste (jargon traductologique)",
         "literal": "Người tìm nguồn vs người bám đích",
+        "literal_en": "Source-er vs target-er",
         "meaning": "Hai trường phái dịch — gần văn nguồn vs gần văn đích.",
+        "meaning_en": "The two camps of translators: 'sourcier' stays close to the source text, 'cibliste' close to the target reader. 'Sourcier' puns on the French for 'water-diviner' (source = spring) — untranslatable wordplay; English uses the plain 'source-oriented / target-oriented'. Discipline jargon — using it signals insider fluency.",
         "example": "Berman était ouvertement sourcier — il défendait la priorité du texte source contre les ciblistes."
       },
       {
         "idiom": "Faire passer en français (courant)",
         "literal": "Làm cho qua trong tiếng Pháp",
+        "literal_en": "To make (it) pass into French",
         "meaning": "Dịch sang tiếng Pháp — dùng cho dịch văn học.",
+        "meaning_en": "To carry a work over into French (literary translation). 'Faire passer X en Y' = the translator's idiom for getting a text across the language border; English 'to bring X over into Y / to render X in Y' is close but flatter. Common register; note the construction 'faire + infinitive' (causative).",
         "example": "Faire passer Mallarmé en vietnamien sans en perdre la densité tient du défi structurel."
       },
       {
         "idiom": "Rendre la lettre et l'esprit (soutenu)",
         "literal": "Trả văn tự và tinh thần",
+        "literal_en": "To render the letter and the spirit",
         "meaning": "Khôi phục cả hình thức và ý nghĩa — yêu cầu tối đa.",
+        "meaning_en": "To carry over BOTH the literal form AND the meaning — the maximal demand on a translation. English 'the letter and the spirit' exists (Biblical/legal origin), so this one DOES have a near-equivalent — but in translation criticism it is a precise programmatic phrase (Berman's 'la lettre' = the source's literal texture, not mere wording). Elevated register.",
         "example": "Une grande traduction rend la lettre et l'esprit — la plupart se contentent de l'esprit."
       }
     ],
@@ -1586,30 +1653,34 @@ export const lessons: FrenchLesson[] = [
       {
         "type": "fill-blank",
         "question": "Encore faudrait-il que le traducteur ___ mesuré, avant de commencer, l'écart entre les économies syntaxiques des deux langues.",
-        "answer": "eût"
+        "answer": "eût",
+        "hint_vi": "« Encore faudrait-il que » + một action ANTÉRIEURE (« avant de commencer ») → cần plus-que-parfait du subjonctif: subjonctif imparfait của auxiliaire « avoir » (« eût ») + participe passé (« mesuré »). Ngôi thứ ba số ít, có circonflexe để phân biệt với « eut » (passé simple).",
+        "hint_en": "'Encore faudrait-il que' + an action prior to another ('avant de commencer') calls for the PLUPERFECT subjunctive: imperfect subjunctive of the auxiliary 'avoir' ('eût') + past participle ('mesuré'). 3rd person singular; the circumflex on 'eût' distinguishes the subjunctive from 'eut' (passé simple indicative). 'Ait mesuré' (present-subjunctive auxiliary) would be grammatically possible but breaks the literary concordance after the conditional 'faudrait'."
       },
       {
         "type": "matching",
         "pairs": [
           [
-            "la naturalisation",
+            "la naturalisation (domestication — toward the target reader)",
             "sự nội địa hóa"
           ],
           [
-            "l'étrangéisation",
+            "l'étrangéisation (foreignization — keep the source's strangeness)",
             "sự giữ tính lạ"
           ],
           [
-            "un intraduisible",
+            "un intraduisible (an untranslatable — never stops being re-translated)",
             "khái niệm không dịch được"
           ]
         ],
-        "instruction": "Nối thuật ngữ traductologique với nghĩa Việt"
+        "instruction": "Nối thuật ngữ traductologique với nghĩa Việt",
+        "instruction_en": "Match each translation-studies term with its Vietnamese meaning. (English glosses are given in parentheses for reference.)"
       },
       {
         "type": "translation",
         "vietnamese": "Mọi bản dịch thực hiện một sự dịch chuyển không thể khôi phục mà phê bình phải phân tích, chứ không than vãn.",
-        "french": "Toute traduction opère un déplacement irrécupérable que la critique se doit d'analyser, non de déplorer."
+        "french": "Toute traduction opère un déplacement irrécupérable que la critique se doit d'analyser, non de déplorer.",
+        "english": "Every translation operates an irrecoverable displacement that criticism owes it to itself to analyze, not to deplore. ['se devoir de + inf.' = 'to owe it to oneself to / be duty-bound to' — stronger and more reflexive than 'must'; 'non de déplorer' = the balanced 'X, non Y' contrast = the Bermanian thesis of the whole lesson in one clause]"
       }
     ]
   },
