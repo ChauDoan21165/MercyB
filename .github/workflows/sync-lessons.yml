@@ -1,0 +1,56 @@
+name: Sync Lessons to Supabase
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - "src/languages/**/lessons-*.ts"
+      - "src/languages/**/lessons.ts"
+      - "scripts/sync-lessons-to-supabase.ts"
+
+  # Allow manual triggers from the Actions tab for catch-up runs.
+  workflow_dispatch:
+    inputs:
+      language:
+        description: "Optional: only sync one language (e.g. french)"
+        required: false
+        type: string
+      level:
+        description: "Optional: only sync one level (e.g. a1)"
+        required: false
+        type: string
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    env:
+      VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+      SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run lesson sync
+        run: |
+          if [ -n "${{ inputs.language }}" ] && [ -n "${{ inputs.level }}" ]; then
+            echo "Manual run: language=${{ inputs.language }} level=${{ inputs.level }}"
+            npx tsx scripts/sync-lessons-to-supabase.ts \
+              --language=${{ inputs.language }} \
+              --level=${{ inputs.level }}
+          elif [ -n "${{ inputs.language }}" ]; then
+            echo "Manual run: language=${{ inputs.language }} (all levels)"
+            npx tsx scripts/sync-lessons-to-supabase.ts \
+              --language=${{ inputs.language }}
+          else
+            echo "Automatic run on merge to main: syncing all lesson files"
+            npx tsx scripts/sync-lessons-to-supabase.ts
+          fi
