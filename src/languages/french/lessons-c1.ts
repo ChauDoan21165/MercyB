@@ -20,6 +20,12 @@ export const lessons: FrenchLesson[] = [
           "postule → pos-tul",
           "variable → va-ria-blơ",
           "significative → sig-ni-fi-ka-tiv"
+        ],
+        "pronunciation_focus_en": [
+          "hypothèse → 'ee-poh-TEZ' (silent h, sharp final 'z')",
+          "postule → 'pos-TYUL' (rounded 'u' like German ü, not 'oo')",
+          "variable → 'vah-RYAH-bluh' (three syllables, not four — 'ia' glides into one)",
+          "significative → 'see-nyee-fee-kah-TEEV' (gn = 'ny' as in 'canyon')"
         ]
       },
       {
@@ -30,6 +36,12 @@ export const lessons: FrenchLesson[] = [
           "prolongement → pro-lõn-jơ-mã",
           "démarquant → dé-mar-kã",
           "méthodologique → mé-to-do-lo-jik"
+        ],
+        "pronunciation_focus_en": [
+          "démarche → 'day-MARSH' (final -che is soft 'sh' like 'shoe')",
+          "prolongement → 'proh-lohn-zhuh-MAHN' (two nasal vowels: 'on' + 'ent')",
+          "démarquant → 'day-mar-KAHN' (nasal final 'ant', no t pronounced)",
+          "méthodologique → 'may-toh-doh-loh-ZHEEK' (final -ique always = 'eek')"
         ]
       },
       {
@@ -40,6 +52,12 @@ export const lessons: FrenchLesson[] = [
           "constater → kõs-ta-té",
           "conjointement → kõn-juant-mã",
           "dimensions → di-mãn-sion"
+        ],
+        "pronunciation_focus_en": [
+          "force → 'FORSS' (throat r, sharp final s — academic register opener)",
+          "constater → 'kohn-stah-TAY' (nasal 'on', final -er = 'ay')",
+          "conjointement → 'kohn-zhwahnt-MAHN' (two nasals back-to-back; mouthful but key C1 connector)",
+          "dimensions → 'dee-mahn-SYOHN' (plural -s silent; final -on nasal)"
         ]
       },
       {
@@ -50,6 +68,12 @@ export const lessons: FrenchLesson[] = [
           "empirique → ãn-pi-rik",
           "corrélation → kor-ré-la-sion",
           "hasard → a-zar"
+        ],
+        "pronunciation_focus_en": [
+          "réserve → 'ray-ZERV' (s = z between vowels)",
+          "empirique → 'ahn-pee-REEK' (nasal 'em' opening; final -ique = 'eek')",
+          "corrélation → 'kor-ray-lah-SYOHN' (the 'ti' before -on softens to 'sy')",
+          "hasard → 'ah-ZAR' (silent h; silent final -d; throat r)"
         ]
       },
       {
@@ -60,165 +84,199 @@ export const lessons: FrenchLesson[] = [
           "nuancer → nu-ãn-sé",
           "conclusions → kõn-klu-zion",
           "échantillon → é-shãn-tiy-õn"
+        ],
+        "pronunciation_focus_en": [
+          "étant → 'ay-TAHN' (nasal -ant ending; no t pronounced)",
+          "nuancer → 'nwahn-SAY' ('ua' merges into 'wah'; nasal 'an')",
+          "conclusions → 'kohn-kloo-ZYOHN' (silent plural -s; final nasal)",
+          "échantillon → 'ay-shahn-TEE-yohn' (the -ill- = 'yee'; double nasal)"
         ]
       }
     ],
     "cultural_notes_vi": "Trong giới đại học Pháp, việc trình bày một « thèse » hoặc « hypothèse de recherche » đi theo một kịch bản tu từ rất chặt chẽ — khác hẳn cách thuyết trình kết quả ở Việt Nam thường thiên về liệt kê thành tựu. Người Pháp KỲ VỌNG nghiên cứu sinh:\n\n(1) BẮT ĐẦU BẰNG « ÉTAT DE L'ART » (tổng quan tài liệu) — nêu rõ ai đã làm gì, kết luận họ đến đâu, lỗ hổng còn lại. Không có phần này, hội đồng đọc bạn là chưa làm bài đọc hoặc tự cao.\n\n(2) ĐỊNH VỊ MÌNH BẰNG « S'INSCRIRE DANS / SE DÉMARQUER DE » — nói rõ bạn nối tiếp dòng nào và rời khỏi dòng nào, ở chính xác điểm nào. Câu kiểu « tôi nghiên cứu X » mà không định vị bị xem là sinh viên năm hai, không phải doctorant.\n\n(3) PHÁT BIỂU GIẢ THUYẾT bằng « postuler que », « avancer que », « faire l'hypothèse selon laquelle » — KHÔNG « je pense que », « à mon avis ». Học thuật Pháp xóa cái « je » cảm xúc và thay bằng « je » lý trí có khoảng cách.\n\n(4) HEDGE ngay từ đầu: « il semblerait que », « tout porte à croire que », « sous réserve de ». Trình bày một giả thuyết KHÔNG hedge ở C1 = giáo điều = bị hội đồng tấn công ngay câu hỏi đầu.\n\nNgười Việt mới hội nhập đại học Pháp dễ rơi vào hai bẫy: (a) over-confident — phát biểu kết luận chắc nịch như một chứng minh toán, làm hội đồng cảnh giác; (b) over-modest — « je ne suis qu'un débutant, mes résultats sont peut-être faux » — đẩy hội đồng vào vai trò trấn an, làm mất thời gian. Khoảng giữa = giọng « assertion mesurée »: nói thẳng giả thuyết, gắn liền với điều kiện kiểm chứng, sẵn sàng từ bỏ nếu dữ liệu phản bác. Đó mới là tonus học thuật chuẩn Pháp.",
+    "cultural_notes_en": "Presenting a thesis or research hypothesis in French academia follows a rhetorical script that differs sharply from Anglo-American norms — and the differences matter even more than in casual speech. French academic culture expects you to (1) open with a tight 'état de l'art' (literature review): who did what, where they landed, what gap remains. Skip this and the panel reads you as underprepared or arrogant. (2) Position yourself explicitly with 's'inscrire dans...' / 'se démarquer de...' — name the tradition you follow and the precise point where you depart. Saying 'I study X' without that positioning marks you as a second-year undergrad, not a doctoral candidate. (3) State hypotheses with 'postuler que', 'avancer que', 'faire l'hypothèse selon laquelle' — NEVER 'je pense que' or 'à mon avis'. French academic prose strips the emotional 'I' and substitutes a detached, rational 'I'. (4) Hedge from the first sentence: 'il semblerait que', 'tout porte à croire que', 'sous réserve de'. An unhedged C1 hypothesis reads as dogmatic and invites immediate attack at Q&A.\n\nTwo traps anglophone academics often fall into: (a) over-confidence — stating conclusions like a math proof; the French panel will distrust you. (b) over-modesty — 'this is my first project, I might be wrong' — forcing the panel into reassurance mode wastes everyone's time. The middle voice — 'assertion mesurée' — means stating the hypothesis cleanly, tying it to falsifiable conditions, and signaling willingness to abandon it if data refutes. That's the standard French academic tonus, more austere than the typical US/UK presentation register.",
     "tip_advice_vi": "Cấu trúc chuẩn để trình bày một « hypothèse de recherche » trong 3-5 phút (séminaire, soutenance):\n\n(1) PHRASE D'AMORCE: « Mon travail s'inscrit dans le champ de X et porte plus précisément sur Y. » — định danh trường + đối tượng cụ thể, một câu.\n\n(2) ÉTAT DE L'ART CONDENSÉ: « La littérature antérieure — notamment les travaux de A (année), B (année) et C (année) — a établi que… Cela étant, un point demeure peu exploré: Z. » — nêu 3 tên (không hơn cho oral), kết luận chung, lỗ hổng cụ thể.\n\n(3) FORMULATION DE L'HYPOTHÈSE: « C'est précisément à cette zone d'ombre que je souhaite m'attaquer. Mon hypothèse de travail est la suivante: [phát biểu]. » — câu chuyển + giả thuyết được giới thiệu rõ.\n\n(4) MÉTHODOLOGIE EN UNE PHRASE: « Pour la mettre à l'épreuve, j'ai constitué un corpus de N [unités] que j'ai analysé sous l'angle de [framework]. »\n\n(5) ANTICIPATION DE L'OBJECTION: « On pourrait m'objecter que [reproche prévisible]. À cela je répondrais que [réponse en germe]. » — câu này sang số học thuật C1 ngay; thiếu nó = bị hỏi câu đầu sát ván.\n\nTRÁNH:\n- « Je vais vous parler de… » → quá thân mật cho oral học thuật; dùng « Mon travail porte sur… »\n- « C'est très intéressant parce que… » → trống rỗng; nêu lý do cụ thể\n- « Comme l'a dit Foucault… » → chỉ trích một người không có ngữ cảnh; nêu công trình + năm + ý cụ thể\n- Đọc slide → KHÔNG; slide là điểm tựa, lời nói là sản phẩm chính\n- Vượt thời gian quy định → mất điểm méthodologie ngay khi chưa vào nội dung\n\nLuyện ở nhà: viết 5 câu trên (amorce, état, hypothèse, méthodo, objection) và đọc to đến khi nói được trong 3 phút mà không nhìn giấy. Đó là « pitch académique » — kỹ năng được đánh giá riêng ở M2 và doctorat Pháp.",
+    "tip_advice_en": "Standard structure for presenting a research hypothesis in 3–5 minutes (seminar or defense):\n\n(1) OPENING SENTENCE ('phrase d'amorce'): 'Mon travail s'inscrit dans le champ de X et porte plus précisément sur Y.' — name the field + the specific object in one sentence. Notice the formal nominalization: 's'inscrit dans' is far more academic than 'is about'.\n\n(2) CONDENSED LITERATURE REVIEW: name THREE authors max (more clutters oral delivery), state the consensus they reached, then the precise gap: 'La littérature antérieure — notamment les travaux de A (année), B (année) et C (année) — a établi que… Cela étant, un point demeure peu exploré: Z.'\n\n(3) HYPOTHESIS FORMULATION: 'C'est précisément à cette zone d'ombre que je souhaite m'attaquer. Mon hypothèse de travail est la suivante: [statement].' The 'zone d'ombre' (blind spot) metaphor is C1-register gold; use it.\n\n(4) METHODOLOGY IN ONE SENTENCE: 'Pour la mettre à l'épreuve, j'ai constitué un corpus de N [units] que j'ai analysé sous l'angle de [framework].'\n\n(5) ANTICIPATING THE OBJECTION: 'On pourrait m'objecter que [predictable critique]. À cela je répondrais que [seed of an answer].' This single sentence catapults you to C1-academic register; skip it and the first Q&A question will be brutal.\n\nAVOID:\n- 'Je vais vous parler de…' — too casual for academic oral; use 'Mon travail porte sur…'\n- 'C'est très intéressant parce que…' — empty filler; give the concrete reason\n- 'Comme l'a dit Foucault…' — citing a name without context; give work + year + specific idea\n- Reading slides verbatim — slides are scaffolding, your voice is the product\n- Going over time — French academia penalizes méthodologie immediately, before they even hear the substance\n\nPractice at home: write all five sentences (amorce / état / hypothèse / méthodo / objection) and read them aloud until you can deliver them in three minutes without notes. This 'pitch académique' is evaluated as a distinct skill at M2 and doctoral level in France — anglophone academics with strong substance often underperform here purely because they never drilled the form.",
     "vocabulary": [
       {
         "word": "une hypothèse de recherche",
         "en": "a research hypothesis",
         "vi": "một giả thuyết nghiên cứu",
         "pos": "n.f.",
-        "pronunciation_vi": "i-po-tèz dơ rơ-shèrsh"
+        "pronunciation_vi": "i-po-tèz dơ rơ-shèrsh",
+        "pronunciation_en": "ee-poh-TEZ duh ruh-SHERSH — both 'h's silent; final -s of 'recherche' is silent"
       },
       {
         "word": "postuler que",
         "en": "to posit that",
         "vi": "đặt giả định rằng",
         "pos": "v.",
-        "pronunciation_vi": "pos-tu-lé kơ"
+        "pronunciation_vi": "pos-tu-lé kơ",
+        "pronunciation_en": "pos-tyu-LAY kuh — rounded 'u' (German ü); final 'que' is a soft 'kuh'"
       },
       {
         "word": "la variable indépendante",
         "en": "the independent variable",
         "vi": "biến độc lập",
         "pos": "n.f.",
-        "pronunciation_vi": "va-ria-blơ an-dé-pãn-dãnt"
+        "pronunciation_vi": "va-ria-blơ an-dé-pãn-dãnt",
+        "pronunciation_en": "vah-RYAH-bluh an-day-pahn-DAHNT — final -ante pronounced (feminine adjective), unlike -ant which would be silent"
       },
       {
         "word": "s'inscrire dans la continuité de",
         "en": "to follow on from",
         "vi": "nối tiếp công trình của",
         "pos": "v.",
-        "pronunciation_vi": "san-skri-rơ dã la kõn-ti-nu-i-té dơ"
+        "pronunciation_vi": "san-skri-rơ dã la kõn-ti-nu-i-té dơ",
+        "pronunciation_en": "san-SKREER dahn lah kon-tee-nyu-ee-TAY duh — nasal 'in' opening; the 'gn' would be 'ny' (canyon)"
       },
       {
         "word": "se démarquer de",
         "en": "to distinguish oneself from",
         "vi": "tách khỏi / khác biệt với",
         "pos": "v.",
-        "pronunciation_vi": "sơ dé-mar-ké dơ"
+        "pronunciation_vi": "sơ dé-mar-ké dơ",
+        "pronunciation_en": "suh day-mar-KAY duh — final -er = 'ay'; the 'qu' = hard 'k', never 'kw'"
       },
       {
         "word": "en l'occurrence",
         "en": "in this particular case",
         "vi": "trong trường hợp cụ thể này",
         "pos": "loc.",
-        "pronunciation_vi": "ã lô-ku-rãns"
+        "pronunciation_vi": "ã lô-ku-rãns",
+        "pronunciation_en": "ahn loh-koo-RAHNS — formal C1 connector; double-r is one French throat r, not a rolled trill"
       },
       {
         "word": "force est de constater que",
         "en": "one cannot but observe that",
         "vi": "phải thừa nhận rằng",
         "pos": "loc.",
-        "pronunciation_vi": "fors è dơ kõs-ta-té kơ"
+        "pronunciation_vi": "fors è dơ kõs-ta-té kơ",
+        "pronunciation_en": "FORSS eh duh kohn-stah-TAY kuh — academic-register opener; nasal 'on' in 'constater'"
       },
       {
         "word": "sous réserve de",
         "en": "subject to / pending",
         "vi": "với điều kiện",
         "pos": "prep.",
-        "pronunciation_vi": "su ré-zerv dơ"
+        "pronunciation_vi": "su ré-zerv dơ",
+        "pronunciation_en": "soo ray-ZERV duh — 'ou' = 'oo' (boot); the s of 'réserve' sounds like z between vowels"
       },
       {
         "word": "nuancer une conclusion",
         "en": "to qualify a conclusion",
         "vi": "làm rõ sắc thái cho kết luận",
         "pos": "v.",
-        "pronunciation_vi": "nu-ãn-sé un kõn-klu-zion"
+        "pronunciation_vi": "nu-ãn-sé un kõn-klu-zion",
+        "pronunciation_en": "nwahn-SAY oon kohn-kloo-ZYOHN — false friend: NOT 'to nuance' as in English ('shading'); means to add qualifications/caveats"
       },
       {
         "word": "l'échantillon",
         "en": "the sample",
         "vi": "mẫu nghiên cứu",
         "pos": "n.m.",
-        "pronunciation_vi": "é-shãn-tiy-õn"
+        "pronunciation_vi": "é-shãn-tiy-õn",
+        "pronunciation_en": "lay-shahn-TEE-yohn — the 'ill' sequence = 'ee-y'; two nasal vowels back-to-back"
       }
     ],
     "dialogue": [
       {
         "speaker": "Pr. Lefèvre (directeur de thèse)",
         "text": "Madame Tran, pourriez-vous nous exposer en quelques minutes l'hypothèse centrale de votre travail ?",
-        "vi": "Cô Trần, cô có thể trình bày trong vài phút giả thuyết trung tâm của công trình không?"
+        "vi": "Cô Trần, cô có thể trình bày trong vài phút giả thuyết trung tâm của công trình không?",
+        "en": "Ms. Tran, could you set out the central hypothesis of your work for us in a few minutes?"
       },
       {
         "speaker": "Linh",
         "text": "Volontiers. Mon hypothèse postule qu'il existe un lien causal entre l'exposition précoce à une L2 et la flexibilité métalinguistique observée à l'âge adulte.",
-        "vi": "Vâng. Giả thuyết của tôi đặt giả định có một mối liên hệ nhân quả giữa việc tiếp xúc sớm với ngôn ngữ thứ hai và sự linh hoạt siêu ngôn ngữ quan sát được ở tuổi trưởng thành."
+        "vi": "Vâng. Giả thuyết của tôi đặt giả định có một mối liên hệ nhân quả giữa việc tiếp xúc sớm với ngôn ngữ thứ hai và sự linh hoạt siêu ngôn ngữ quan sát được ở tuổi trưởng thành.",
+        "en": "Gladly. My hypothesis posits a causal link between early exposure to an L2 and the metalinguistic flexibility observed in adulthood."
       },
       {
         "speaker": "Pr. Lefèvre",
         "text": "Sur quel corpus vous appuyez-vous pour étayer cette intuition ?",
-        "vi": "Cô dựa trên ngữ liệu nào để củng cố trực giác này?"
+        "vi": "Cô dựa trên ngữ liệu nào để củng cố trực giác này?",
+        "en": "What corpus are you drawing on to back up this intuition?"
       },
       {
         "speaker": "Linh",
         "text": "Sur un corpus de quatre-vingts entretiens semi-directifs, complété par une batterie de tests cognitifs.",
-        "vi": "Trên một ngữ liệu gồm tám mươi cuộc phỏng vấn bán cấu trúc, bổ sung bằng một loạt bài kiểm tra nhận thức."
+        "vi": "Trên một ngữ liệu gồm tám mươi cuộc phỏng vấn bán cấu trúc, bổ sung bằng một loạt bài kiểm tra nhận thức.",
+        "en": "A corpus of eighty semi-structured interviews, supplemented by a battery of cognitive tests."
       }
     ],
     "dialogue_long": [
       {
         "speaker": "Pr. Lefèvre (séminaire de M2)",
         "text": "Madame Tran, le séminaire vous écoute. Vous avez quinze minutes — exposé puis questions.",
-        "vi": "Cô Trần, hội thảo đang nghe cô. Cô có 15 phút — trình bày rồi hỏi đáp."
+        "vi": "Cô Trần, hội thảo đang nghe cô. Cô có 15 phút — trình bày rồi hỏi đáp.",
+        "en": "Ms. Tran, the seminar is yours. You have fifteen minutes — presentation, then questions."
       },
       {
         "speaker": "Linh",
         "text": "Merci. Mon travail s'inscrit dans le champ de la sociolinguistique du bilinguisme et porte plus précisément sur l'effet de l'âge d'acquisition d'une L2 sur les capacités métalinguistiques adultes.",
-        "vi": "Cảm ơn thầy. Công trình của tôi nằm trong lĩnh vực ngôn ngữ học xã hội về song ngữ, và cụ thể nhắm tới ảnh hưởng của tuổi tiếp thu ngôn ngữ thứ hai lên năng lực siêu ngôn ngữ ở tuổi trưởng thành."
+        "vi": "Cảm ơn thầy. Công trình của tôi nằm trong lĩnh vực ngôn ngữ học xã hội về song ngữ, và cụ thể nhắm tới ảnh hưởng của tuổi tiếp thu ngôn ngữ thứ hai lên năng lực siêu ngôn ngữ ở tuổi trưởng thành.",
+        "en": "Thank you. My work sits within the sociolinguistics of bilingualism, and focuses specifically on the effect of age of L2 acquisition on adult metalinguistic abilities."
       },
       {
         "speaker": "Linh",
         "text": "La littérature antérieure — notamment les travaux de Bialystok (2001), Cummins (1979) et, plus récemment, Costa et Sebastián-Gallés (2014) — a solidement établi un avantage cognitif chez les bilingues précoces. Cela étant, un point demeure relativement peu exploré: la mesure dans laquelle cet avantage subsiste lorsque la L2 est acquise dans un contexte non scolaire.",
-        "vi": "Tài liệu trước đó — đặc biệt các công trình của Bialystok (2001), Cummins (1979) và gần đây hơn của Costa và Sebastián-Gallés (2014) — đã xác lập vững chắc một lợi thế nhận thức ở người song ngữ sớm. Tuy vậy, có một điểm còn ít được khai thác: mức độ lợi thế đó còn duy trì khi ngôn ngữ thứ hai được tiếp thu trong môi trường ngoài học đường."
+        "vi": "Tài liệu trước đó — đặc biệt các công trình của Bialystok (2001), Cummins (1979) và gần đây hơn của Costa và Sebastián-Gallés (2014) — đã xác lập vững chắc một lợi thế nhận thức ở người song ngữ sớm. Tuy vậy, có một điểm còn ít được khai thác: mức độ lợi thế đó còn duy trì khi ngôn ngữ thứ hai được tiếp thu trong môi trường ngoài học đường.",
+        "en": "Prior literature — notably the work of Bialystok (2001), Cummins (1979), and more recently Costa and Sebastián-Gallés (2014) — has firmly established a cognitive advantage in early bilinguals. That said, one point remains relatively underexplored: the extent to which this advantage holds when the L2 is acquired outside a formal school context."
       },
       {
         "speaker": "Linh",
         "text": "C'est précisément à cette zone d'ombre que je souhaite m'attaquer. Mon hypothèse de travail est la suivante: l'avantage métalinguistique observé chez les bilingues précoces serait, en partie au moins, indépendant du cadre formel d'acquisition.",
-        "vi": "Chính tại vùng tối này, tôi muốn đặt câu hỏi. Giả thuyết làm việc của tôi là: lợi thế siêu ngôn ngữ quan sát được ở người song ngữ sớm có lẽ, ít nhất một phần, độc lập với bối cảnh tiếp thu chính quy."
+        "vi": "Chính tại vùng tối này, tôi muốn đặt câu hỏi. Giả thuyết làm việc của tôi là: lợi thế siêu ngôn ngữ quan sát được ở người song ngữ sớm có lẽ, ít nhất một phần, độc lập với bối cảnh tiếp thu chính quy.",
+        "en": "It's precisely this blind spot that I aim to tackle. My working hypothesis is the following: the metalinguistic advantage observed in early bilinguals would be, at least in part, independent of the formal acquisition setting."
       },
       {
         "speaker": "Linh",
         "text": "Pour la mettre à l'épreuve, j'ai constitué un corpus de quatre-vingts entretiens semi-directifs auprès de Vietnamiens ayant migré en France entre cinq et douze ans, complétés par une batterie de tests métalinguistiques standardisés.",
-        "vi": "Để kiểm chứng, tôi đã xây dựng một ngữ liệu gồm tám mươi cuộc phỏng vấn bán cấu trúc với người Việt đã sang Pháp từ 5 đến 12 tuổi, bổ sung bằng các bài kiểm tra siêu ngôn ngữ chuẩn hóa."
+        "vi": "Để kiểm chứng, tôi đã xây dựng một ngữ liệu gồm tám mươi cuộc phỏng vấn bán cấu trúc với người Việt đã sang Pháp từ 5 đến 12 tuổi, bổ sung bằng các bài kiểm tra siêu ngôn ngữ chuẩn hóa.",
+        "en": "To test it, I built a corpus of eighty semi-structured interviews with Vietnamese speakers who migrated to France between ages five and twelve, supplemented by a battery of standardized metalinguistic tests."
       },
       {
         "speaker": "Linh",
         "text": "On pourrait, à juste titre, m'objecter que la taille de cet échantillon ne permet pas une généralisation forte. À cela je répondrais que mon ambition n'est pas généralisante, mais plutôt heuristique: il s'agit de produire des hypothèses fines pour des études quantitatives ultérieures.",
-        "vi": "Người ta có thể, một cách chính đáng, phản đối rằng kích thước mẫu không cho phép tổng quát mạnh. Tôi sẽ đáp rằng tham vọng của tôi không phải tổng quát hóa, mà là tìm tòi: mục tiêu là tạo ra các giả thuyết tinh tế cho các nghiên cứu định lượng về sau."
+        "vi": "Người ta có thể, một cách chính đáng, phản đối rằng kích thước mẫu không cho phép tổng quát mạnh. Tôi sẽ đáp rằng tham vọng của tôi không phải tổng quát hóa, mà là tìm tòi: mục tiêu là tạo ra các giả thuyết tinh tế cho các nghiên cứu định lượng về sau.",
+        "en": "One could rightly object that the size of this sample doesn't permit strong generalization. To that I would reply that my ambition isn't generalizing but rather heuristic: the aim is to generate fine-grained hypotheses for later quantitative studies."
       },
       {
         "speaker": "Pr. Lefèvre",
         "text": "Très clair, merci. Première question, et je laisse ensuite la salle: comment articulez-vous précisément la dimension qualitative et la dimension quantitative de votre dispositif ?",
-        "vi": "Rất rõ, cảm ơn cô. Câu hỏi đầu tiên, sau đó tôi nhường cho phòng: cô khớp nối cụ thể như thế nào giữa chiều kích định tính và chiều kích định lượng của thiết kế?"
+        "vi": "Rất rõ, cảm ơn cô. Câu hỏi đầu tiên, sau đó tôi nhường cho phòng: cô khớp nối cụ thể như thế nào giữa chiều kích định tính và chiều kích định lượng của thiết kế?",
+        "en": "Very clear, thank you. First question — then I'll open the floor: how exactly do you articulate the qualitative and quantitative dimensions of your design?"
       },
       {
         "speaker": "Linh",
         "text": "L'articulation est séquentielle. Les entretiens, traités par analyse thématique, m'ont permis de dégager cinq profils-types. Ces profils servent ensuite de variables d'entrée pour les tests cognitifs, eux-mêmes traités statistiquement. Autrement dit, le qualitatif nourrit la grille du quantitatif.",
-        "vi": "Khớp nối là tuần tự. Phỏng vấn, được xử lý bằng phân tích chủ đề, đã giúp tôi rút ra năm loại hình. Các loại hình này sau đó làm biến đầu vào cho bài kiểm tra nhận thức, được xử lý thống kê. Nói cách khác, định tính nuôi lưới của định lượng."
+        "vi": "Khớp nối là tuần tự. Phỏng vấn, được xử lý bằng phân tích chủ đề, đã giúp tôi rút ra năm loại hình. Các loại hình này sau đó làm biến đầu vào cho bài kiểm tra nhận thức, được xử lý thống kê. Nói cách khác, định tính nuôi lưới của định lượng.",
+        "en": "The articulation is sequential. The interviews, processed via thematic analysis, allowed me to derive five typical profiles. Those profiles then serve as input variables for the cognitive tests, which are themselves analyzed statistically. Put differently, the qualitative feeds the grid of the quantitative."
       },
       {
         "speaker": "Pr. Lefèvre",
         "text": "Bien. Et concernant l'opérationnalisation de la « flexibilité métalinguistique » — terme par essence flou — quel arbitrage avez-vous fait ?",
-        "vi": "Tốt. Và về cách thao tác hóa khái niệm « linh hoạt siêu ngôn ngữ » — vốn dĩ mơ hồ — cô đã có lựa chọn gì?"
+        "vi": "Tốt. Và về cách thao tác hóa khái niệm « linh hoạt siêu ngôn ngữ » — vốn dĩ mơ hồ — cô đã có lựa chọn gì?",
+        "en": "Good. And on the operationalization of 'metalinguistic flexibility' — a fuzzy concept by nature — what trade-off did you make?"
       },
       {
         "speaker": "Linh",
         "text": "J'ai retenu trois indicateurs convergents: la rapidité de jugement de grammaticalité, la capacité de paraphrase intra-langue, et la conscience métalinguistique mesurée par tâche de Stroop adaptée. Ce choix est, j'en conviens, partiellement arbitraire — mais il s'aligne sur les protocoles dominants depuis les années deux mille dix.",
-        "vi": "Tôi đã giữ ba chỉ báo hội tụ: tốc độ phán đoán tính ngữ pháp, khả năng diễn đạt lại trong cùng một ngôn ngữ, và ý thức siêu ngôn ngữ đo bằng bài Stroop điều chỉnh. Tôi thừa nhận lựa chọn này một phần là tùy ý — nhưng nó khớp với các quy trình chủ đạo từ những năm 2010."
+        "vi": "Tôi đã giữ ba chỉ báo hội tụ: tốc độ phán đoán tính ngữ pháp, khả năng diễn đạt lại trong cùng một ngôn ngữ, và ý thức siêu ngôn ngữ đo bằng bài Stroop điều chỉnh. Tôi thừa nhận lựa chọn này một phần là tùy ý — nhưng nó khớp với các quy trình chủ đạo từ những năm 2010.",
+        "en": "I retained three convergent indicators: speed of grammaticality judgment, intra-language paraphrase ability, and metalinguistic awareness measured by an adapted Stroop task. I grant that this choice is partially arbitrary — but it aligns with the dominant protocols of the last decade or so."
       },
       {
         "speaker": "Pr. Lefèvre",
         "text": "Très bien — réponse honnête, ce qui est rare. Je passe la parole à la salle.",
-        "vi": "Rất tốt — câu trả lời trung thực, điều hiếm gặp. Tôi nhường lời cho phòng."
+        "vi": "Rất tốt — câu trả lời trung thực, điều hiếm gặp. Tôi nhường lời cho phòng.",
+        "en": "Very good — an honest answer, which is rare. I'll hand over to the floor."
       },
       {
         "speaker": "Linh",
         "text": "Avec plaisir.",
-        "vi": "Sẵn lòng."
+        "vi": "Sẵn lòng.",
+        "en": "With pleasure."
       }
     ],
     "roleplay_prompts": [
@@ -226,30 +284,44 @@ export const lessons: FrenchLesson[] = [
       "Một thành viên hội đồng nói: « Votre hypothèse semble difficilement falsifiable. » Đáp lại: thừa nhận điểm hợp lý của lời phản biện, sau đó định lại điều kiện kiểm chứng cụ thể của giả thuyết.",
       "Bạn đang trình bày séminaire doctoral. Một sinh viên năm trên hỏi: « En quoi votre travail se démarque-t-il de la thèse de X soutenue l'an dernier ? » Đáp bằng cú pháp « Le travail de X portait sur… ; le mien, en revanche, se concentre sur… »"
     ],
+    "roleplay_prompts_en": [
+      "You've just submitted your thesis proposal to the M2 review committee. Present the central hypothesis for 3 minutes — strictly following the 5-part structure (amorce / état de l'art / hypothèse / méthodo / anticipated objection).",
+      "A committee member says: 'Votre hypothèse semble difficilement falsifiable.' Respond: acknowledge the legitimate point in the critique, then re-specify the concrete falsification conditions of your hypothesis.",
+      "You're presenting at a doctoral seminar. A senior student asks: 'En quoi votre travail se démarque-t-il de la thèse de X soutenue l'an dernier ?' Reply using the formula 'Le travail de X portait sur… ; le mien, en revanche, se concentre sur…'"
+    ],
     "register_notes": "Discours académique C1 đòi hỏi loại bỏ gần như hoàn toàn cái « je » cảm xúc. Thay « je pense que » bằng « il me semble que », « tout porte à croire que », « il y a lieu de penser que ». Thay « c'est intéressant » bằng « ce point mérite d'être souligné », « cette dimension n'a pas été suffisamment explorée ».\n\nNominalization là dấu hiệu C1 rõ nhất: « l'acquisition de la L2 » thay « apprendre une L2 »; « la falsifiabilité de l'hypothèse » thay « savoir si l'hypothèse peut être fausse »; « la robustesse des résultats » thay « si les résultats tiennent ».\n\nSubjonctif sau biểu thức nghi vấn / cần thiết: « il convient que les données soient retraitées », « on ne saurait affirmer que cette corrélation soit causale » — thiếu subjonctif ở các điểm này = đọc B2.\n\nHedge phải tinh: KHÔNG « peut-être que » (B1), KHÔNG « je ne suis pas sûr » (A2). DÙNG: « il semblerait que », « tout porte à croire que », « sous réserve d'une validation ultérieure », « dans la mesure où les données disponibles le permettent ».\n\nCụm chuyển C1 đáng nhớ:\n- « Cela étant, … » (= dù vậy)\n- « Par ailleurs, … » (= ngoài ra)\n- « En l'occurrence, … » (= cụ thể trong trường hợp này)\n- « Force est de constater que … » (= phải thừa nhận rằng)\n- « Il n'en demeure pas moins que … » (= dù sao thì)\n- « En dernière analyse, … » (= xét đến cùng)\n\nTRÁNH ở oral hội thảo: « du coup », « en gros », « voilà », « grosso modo », « truc » — colloquialisms này khiến hội đồng đọc bạn là sinh viên năm hai.",
+    "register_notes_en": "C1 academic discourse requires near-total elimination of the emotional 'I'. Replace 'je pense que' with 'il me semble que', 'tout porte à croire que', or 'il y a lieu de penser que'. Replace 'c'est intéressant' with 'ce point mérite d'être souligné' or 'cette dimension n'a pas été suffisamment explorée' — the latter sounds vague to anglophone ears but is the precise academic French signal that an under-explored zone exists.\n\nNominalization is the single clearest marker of C1 register. Write 'l'acquisition de la L2' rather than 'apprendre une L2'; 'la falsifiabilité de l'hypothèse' rather than 'savoir si l'hypothèse peut être fausse'; 'la robustesse des résultats' rather than 'si les résultats tiennent'. Anglophones often resist this because the equivalent in English ('the acquisition of the L2') sounds bureaucratic — in French it sounds educated. Trust the form.\n\nSubjunctive after expressions of doubt, necessity, or formal claim: 'il convient que les données soient retraitées', 'on ne saurait affirmer que cette corrélation soit causale'. Missing the subjunctive at these specific anchor points reads as B2, not C1.\n\nHedging must be precise: NOT 'peut-être que' (B1 level), NOT 'je ne suis pas sûr' (A2). USE: 'il semblerait que', 'tout porte à croire que', 'sous réserve d'une validation ultérieure', 'dans la mesure où les données disponibles le permettent'.\n\nMemorize these C1 connectors:\n- 'Cela étant,…' (≈ that said,…)\n- 'Par ailleurs,…' (≈ moreover,…)\n- 'En l'occurrence,…' (≈ in this particular case,…)\n- 'Force est de constater que…' (≈ one cannot but observe that…)\n- 'Il n'en demeure pas moins que…' (≈ it nonetheless remains the case that…)\n- 'En dernière analyse,…' (≈ in the final analysis,…)\n\nAVOID in seminar speech: 'du coup', 'en gros', 'voilà', 'grosso modo', 'truc' — these colloquialisms make the panel read you as a second-year undergrad, regardless of the substance of your work.",
     "idiom_glosses": [
       {
         "idiom": "Faire l'hypothèse selon laquelle (soutenu)",
         "literal": "Đưa ra giả thuyết theo đó",
+        "literal_en": "To make the hypothesis according to which",
         "meaning": "Đặt một giả thuyết một cách trang trọng — chuẩn học thuật.",
+        "meaning_en": "To posit a hypothesis in formal register — the academic standard. English equivalent is roughly 'to hypothesize that', but the French construction is heavier and more frequent in scholarly writing.",
         "example": "L'auteur fait l'hypothèse selon laquelle l'inégalité scolaire reproduit l'inégalité sociale."
       },
       {
         "idiom": "Force est de constater que (formel)",
         "literal": "Sức mạnh là quan sát rằng",
+        "literal_en": "Force is to observe that",
         "meaning": "Phải thừa nhận một sự thật khó khăn — tu từ học thuật cao.",
+        "meaning_en": "To be forced to acknowledge an uncomfortable truth — high academic rhetoric. Closest English equivalent: 'one cannot but observe that…' or 'it must be acknowledged that…'. Used to signal that the evidence pushes you somewhere you didn't want to go.",
         "example": "Force est de constater que les résultats infirment partiellement notre hypothèse initiale."
       },
       {
         "idiom": "Sous réserve de (formel)",
         "literal": "Dưới sự dè dặt của",
+        "literal_en": "Under the reservation of",
         "meaning": "Với điều kiện tiên quyết — phòng ngừa kết luận quá sớm.",
+        "meaning_en": "With the precondition that — a hedge that protects you from over-claiming. Closer to English 'subject to' or 'pending' than 'in reserve'. Essential for any C1 claim about empirical results.",
         "example": "Sous réserve d'une réplication sur un échantillon plus large, ces conclusions tiennent."
       },
       {
         "idiom": "En l'occurrence (soutenu)",
         "literal": "Trong sự xảy ra ấy",
+        "literal_en": "In the occurrence (of this case)",
         "meaning": "Cụ thể trong trường hợp đang bàn — chuyển sự chú ý vào ví dụ.",
+        "meaning_en": "In this particular case — used to pivot from general discussion to the specific example at hand. English 'in this case' is functionally similar but two register-levels lower; the French marks academic precision.",
         "example": "Plusieurs auteurs ont traité ce point — en l'occurrence, Bourdieu et Passeron en 1970."
       }
     ],
@@ -257,29 +329,33 @@ export const lessons: FrenchLesson[] = [
       {
         "type": "fill-blank",
         "question": "___ est de constater qu'aucune étude antérieure n'a traité conjointement ces deux dimensions.",
-        "answer": "Force"
+        "answer": "Force",
+        "hint_vi": "Mở đầu công thức « ___ est de constater que… » (chuẩn học thuật)",
+        "hint_en": "Opening word of the academic-register formula '___ est de constater que…' (one cannot but observe that)"
       },
       {
         "type": "matching",
         "pairs": [
           [
             "postuler que",
-            "đặt giả định rằng"
+            "đặt giả định rằng (to posit that)"
           ],
           [
             "sous réserve de",
-            "với điều kiện"
+            "với điều kiện (subject to / pending)"
           ],
           [
             "en l'occurrence",
-            "trong trường hợp cụ thể này"
+            "trong trường hợp cụ thể này (in this particular case)"
           ]
         ],
-        "instruction": "Nối thuật ngữ học thuật với nghĩa Việt"
+        "instruction": "Nối thuật ngữ học thuật với nghĩa Việt",
+        "instruction_en": "Match the academic-register expression with its meaning"
       },
       {
         "type": "translation",
         "vietnamese": "Với điều kiện được kiểm chứng thực nghiệm sâu hơn, có vẻ như tương quan này không phải ngẫu nhiên thuần túy.",
+        "english": "Subject to further empirical validation, it would appear that this correlation does not stem from mere chance.",
         "french": "Sous réserve d'une validation empirique plus poussée, il semblerait que cette corrélation ne relève pas du simple hasard."
       }
     ]
@@ -8410,25 +8486,38 @@ export const lessons: FrenchLesson[] = [
       {
         "en": "Mesdames et Messieurs, merci d'être présents. Je commencerai par les faits établis, puis je répondrai à vos questions.",
         "vi": "Thưa quý vị, cảm ơn vì đã có mặt. Tôi sẽ bắt đầu bằng các sự kiện đã xác lập, rồi trả lời câu hỏi của quý vị.",
-        "pronunciation_focus": ["faits établis", "je commencerai", "questions"]
+        "pronunciation_focus": ["faits établis", "je commencerai", "questions"],
+        "pronunciation_focus_en": [
+          "faits établis → 'feh zay-tah-BLEE' (the 't' of faits is silent except in liaison with 'établis')",
+          "je commencerai → 'zhuh koh-mahn-suh-RAY' (future tense, stress on the final 'rai')",
+          "questions → 'kes-TYOHN' (silent plural -s; nasal -on)"
+        ]
       },
       {
         "en": "Ce qui n'est pas encore vérifié ne sera pas présenté comme une certitude.",
         "vi": "Điều chưa được xác minh sẽ không được trình bày như một điều chắc chắn.",
-        "pronunciation_focus": ["vérifié", "certitude", "ne sera pas"]
+        "pronunciation_focus": ["vérifié", "certitude", "ne sera pas"],
+        "pronunciation_focus_en": [
+          "vérifié → 'vay-ree-FYAY' (final -é = sharp 'ay')",
+          "certitude → 'sair-tee-TUHD' (rounded final 'u', not 'oo')",
+          "ne sera pas → 'nuh suh-RAH pah' (negation envelope; final -s of pas silent)"
+        ]
       }
     ],
     "vocabulary": [
-      { "word": "les faits établis", "en": "established facts", "vi": "sự kiện đã xác lập", "pos": "noun phrase", "pronunciation_vi": "lê fe za-ta-bli" },
-      { "word": "une conférence de presse", "en": "press conference", "vi": "họp báo", "pos": "noun", "pronunciation_vi": "kon-fê-rongs đơ press" }
+      { "word": "les faits établis", "en": "established facts", "vi": "sự kiện đã xác lập", "pos": "noun phrase", "pronunciation_vi": "lê fe za-ta-bli", "pronunciation_en": "lay feh zay-tah-BLEE — the liaison 'fe-za' is mandatory; plural -s of faits is silent except in this liaison context" },
+      { "word": "une conférence de presse", "en": "press conference", "vi": "họp báo", "pos": "noun", "pronunciation_vi": "kon-fê-rongs đơ press", "pronunciation_en": "oon kohn-fay-RAHNS duh PRESS — nasal 'on' in conférence; 'presse' rhymes with English 'press' but with a softer final consonant" }
     ],
     "dialogue": [
-      { "speaker": "Porte-parole", "text": "Je ferai d'abord une déclaration liminaire de quatre minutes, puis nous ouvrirons les questions.", "vi": "Tôi sẽ phát biểu mở đầu bốn phút, rồi chúng ta mở phần câu hỏi." },
-      { "speaker": "Journaliste", "text": "La direction répondra-t-elle aussi aux questions techniques ?", "vi": "Ban lãnh đạo cũng sẽ trả lời các câu hỏi kỹ thuật chứ?" }
+      { "speaker": "Porte-parole", "text": "Je ferai d'abord une déclaration liminaire de quatre minutes, puis nous ouvrirons les questions.", "vi": "Tôi sẽ phát biểu mở đầu bốn phút, rồi chúng ta mở phần câu hỏi.", "en": "I'll first give a four-minute opening statement, then we'll open the floor to questions." },
+      { "speaker": "Journaliste", "text": "La direction répondra-t-elle aussi aux questions techniques ?", "vi": "Ban lãnh đạo cũng sẽ trả lời các câu hỏi kỹ thuật chứ?", "en": "Will the leadership also respond to technical questions?" }
     ],
     "cultural_notes_vi": "Mở họp báo kiểu Pháp cần rõ và thẳng: faits établis trước, questions sau. Lịch sự nhưng không vòng vo.",
+    "cultural_notes_en": "French press-conference openings prize clarity and controlled directness — quite different from the warm, narrative openings common in US press conferences. The expected sequence is: courteous greeting → scope of verified facts → boundary on what won't be discussed today → invitation to questions. Skip any of these and journalists will probe the gap immediately. Sentimental openings ('we share your pain') sound out of place; the French register reads them as evasive padding before the substance.",
     "tip_advice_vi": "Cấu trúc: merci d'être présents → faits établis → périmètre → questions.",
-    "register_notes": "French press-conference opening favors clarity and controlled directness. Avoid sentimental openings; state the scope of verified facts."
+    "tip_advice_en": "Memorize the four-beat opening: (1) 'Mesdames et Messieurs, merci d'être présents' — courteous welcome; (2) 'Je commencerai par les faits établis' — set the scope of what's verified; (3) 'Ce qui n'est pas encore vérifié ne sera pas présenté comme une certitude' — bound what you won't claim; (4) 'puis je répondrai à vos questions' — open the floor. This four-beat is read as professional in France; deviating from it reads as either amateur or evasive.",
+    "register_notes": "French press-conference opening favors clarity and controlled directness. Avoid sentimental openings; state the scope of verified facts.",
+    "register_notes_en": "French press-conference opening favors clarity and controlled directness. Avoid sentimental openings; state the scope of verified facts. The register here is institutional-formal: full 'Mesdames et Messieurs' rather than 'Bonjour à tous', future tense ('je commencerai', 'je répondrai') rather than present, and explicit boundary-setting on what falls outside today's scope."
   },
   {
     "id": "lpress_release_writing",
@@ -8440,25 +8529,38 @@ export const lessons: FrenchLesson[] = [
       {
         "en": "Un communiqué de presse commence par l'information vérifiable: qui fait quoi, quand, où et pourquoi cela compte.",
         "vi": "Một thông cáo báo chí bắt đầu bằng thông tin có thể xác minh: ai làm gì, khi nào, ở đâu và vì sao điều đó quan trọng.",
-        "pronunciation_focus": ["communiqué de presse", "vérifiable", "pourquoi cela compte"]
+        "pronunciation_focus": ["communiqué de presse", "vérifiable", "pourquoi cela compte"],
+        "pronunciation_focus_en": [
+          "communiqué de presse → 'koh-myu-nee-KAY duh PRESS' (final -é = sharp 'ay'; the 'u' is rounded German-ü)",
+          "vérifiable → 'vay-ree-FYAH-bluh' (silent final -e; -able = 'AH-bluh')",
+          "pourquoi cela compte → 'poor-KWAH suh-lah KOHNT' (silent final -e on cela; 'compte' = nasal 'ohnt')"
+        ]
       },
       {
         "en": "Les adjectifs promotionnels affaiblissent le texte s'ils ne sont pas soutenus par des chiffres ou une citation précise.",
         "vi": "Các tính từ quảng bá làm yếu văn bản nếu không được chống đỡ bằng số liệu hoặc trích dẫn cụ thể.",
-        "pronunciation_focus": ["adjectifs promotionnels", "soutenus", "citation précise"]
+        "pronunciation_focus": ["adjectifs promotionnels", "soutenus", "citation précise"],
+        "pronunciation_focus_en": [
+          "adjectifs promotionnels → 'ad-zhek-TEEF proh-moh-syoh-NEL' (the -if ending DOES sound the final 'f', unlike most consonants)",
+          "soutenus → 'soo-tuh-NU' (rounded final 'u'; the s is silent in the plural)",
+          "citation précise → 'see-tah-SYOHN pray-SEEZ' (the -ti before -on softens to 'sy'; final -se = 'z')"
+        ]
       }
     ],
     "vocabulary": [
-      { "word": "un communiqué", "en": "press release", "vi": "thông cáo", "pos": "noun", "pronunciation_vi": "ko-muy-ni-kê" },
-      { "word": "une citation", "en": "quote", "vi": "trích dẫn", "pos": "noun", "pronunciation_vi": "si-ta-sion" }
+      { "word": "un communiqué", "en": "press release", "vi": "thông cáo", "pos": "noun", "pronunciation_vi": "ko-muy-ni-kê", "pronunciation_en": "uhn koh-myu-nee-KAY — rounded 'u' (German ü); final -é = sharp 'ay'" },
+      { "word": "une citation", "en": "quote", "vi": "trích dẫn", "pos": "noun", "pronunciation_vi": "si-ta-sion", "pronunciation_en": "oon see-tah-SYOHN — 'ti' before -on softens to 'sy'; nasal final" }
     ],
     "dialogue": [
-      { "speaker": "Rédactrice", "text": "Le titre promet trop. Donnons plutôt l'information concrète dès la première ligne.", "vi": "Tiêu đề hứa quá nhiều. Hãy đưa thông tin cụ thể ngay dòng đầu." },
-      { "speaker": "Responsable communication", "text": "D'accord, je retire « révolutionnaire » et j'ajoute le chiffre d'usage réel.", "vi": "Đồng ý, tôi bỏ từ 'mang tính cách mạng' và thêm số liệu sử dụng thực tế." }
+      { "speaker": "Rédactrice", "text": "Le titre promet trop. Donnons plutôt l'information concrète dès la première ligne.", "vi": "Tiêu đề hứa quá nhiều. Hãy đưa thông tin cụ thể ngay dòng đầu.", "en": "The headline promises too much. Let's lead with the concrete information from the first line." },
+      { "speaker": "Responsable communication", "text": "D'accord, je retire « révolutionnaire » et j'ajoute le chiffre d'usage réel.", "vi": "Đồng ý, tôi bỏ từ 'mang tính cách mạng' và thêm số liệu sử dụng thực tế.", "en": "Agreed — I'll cut 'revolutionary' and add the real usage figure." }
     ],
     "cultural_notes_vi": "Thông cáo Pháp mạnh khi chính xác. Từ hoa mỹ dễ bị nhà báo bỏ qua nếu không có số liệu.",
+    "cultural_notes_en": "French press releases earn coverage through precision, not enthusiasm. Anglo-American releases often open with a punchy adjective-rich claim ('groundbreaking', 'industry-leading') — French journalists strip those out as marketing noise and look for the concrete fact: who, what, when, where, and the verifiable figure. A French release with 'révolutionnaire' or 'inédit' in the lead without a hard number gets binned. Lead with the data; let the journalist supply the enthusiasm — if it deserves any.",
     "tip_advice_vi": "Lead phải trả lời: qui, quoi, quand, où, pourquoi.",
-    "register_notes": "French press releases should be concrete and media-usable, not brochure-like."
+    "tip_advice_en": "The first paragraph (the 'chapeau') must answer the classic 5W: qui (who), quoi (what), quand (when), où (where), pourquoi cela compte (why it matters). Every promotional adjective in your draft is a candidate for cutting — replace it with a number, a name, or a direct quote. The litmus test: read the chapeau aloud and ask 'would Le Monde print this paragraph verbatim?' If not, tighten.",
+    "register_notes": "French press releases should be concrete and media-usable, not brochure-like.",
+    "register_notes_en": "French press releases should be concrete and media-usable, not brochure-like. Nominalization works ('le lancement d'une plateforme' is stronger than 'une plateforme a été lancée'); passive voice without an agent is usually a sign the release is hiding something and will be rewritten by the journalist. Quoted statements ('citations') should be one short sentence in formal register attributed to a named executive."
   },
   {
     "id": "ltribune_major_papers",
@@ -8470,25 +8572,38 @@ export const lessons: FrenchLesson[] = [
       {
         "en": "Une tribune destinée au Monde, à Libération ou au Figaro doit transformer une expérience particulière en question publique.",
         "vi": "Một tribune gửi Le Monde, Libération hoặc Le Figaro phải biến một kinh nghiệm cụ thể thành vấn đề công.",
-        "pronunciation_focus": ["tribune", "question publique", "Le Monde"]
+        "pronunciation_focus": ["tribune", "question publique", "Le Monde"],
+        "pronunciation_focus_en": [
+          "tribune → 'tree-BYUN' (rounded 'u'; NOT the English 'tribune' meaning a stand)",
+          "question publique → 'kes-TYOHN pyu-BLEEK' (rounded 'u' in both words)",
+          "Le Monde → 'luh MOHND' (nasal 'on'; silent final -e)"
+        ]
       },
       {
         "en": "Bien que l'auteur défende une position nette, il faut qu'il anticipe l'objection principale.",
         "vi": "Dù tác giả bảo vệ một lập trường rõ, anh ấy/cô ấy phải dự liệu phản bác chính.",
-        "pronunciation_focus": ["Bien que + subjonctif", "défende", "il faut qu'il anticipe"]
+        "pronunciation_focus": ["Bien que + subjonctif", "défende", "il faut qu'il anticipe"],
+        "pronunciation_focus_en": [
+          "Bien que → 'byan kuh' (concessive trigger requiring subjunctive — C1 hallmark)",
+          "défende → 'day-FAHND' (subjunctive form; nasal -en)",
+          "il faut qu'il anticipe → 'eel foh keel ahn-tee-SEEP' (necessity trigger requiring subjunctive)"
+        ]
       }
     ],
     "vocabulary": [
-      { "word": "une tribune", "en": "op-ed", "vi": "bài quan điểm / tribune", "pos": "noun", "pronunciation_vi": "tri-bun" },
-      { "word": "une objection", "en": "objection", "vi": "phản bác", "pos": "noun", "pronunciation_vi": "ốp-zhek-sion" }
+      { "word": "une tribune", "en": "op-ed", "vi": "bài quan điểm / tribune", "pos": "noun", "pronunciation_vi": "tri-bun", "pronunciation_en": "oon tree-BYUN — false friend: NOT the speaker's stand; means an argued op-ed in a newspaper" },
+      { "word": "une objection", "en": "objection", "vi": "phản bác", "pos": "noun", "pronunciation_vi": "ốp-zhek-sion", "pronunciation_en": "oon ohb-zhek-SYOHN — soft 'zh' (measure); 'ti' before -on softens to 'sy'" }
     ],
     "dialogue": [
-      { "speaker": "Éditorialiste", "text": "Votre angle est fort, mais il manque l'objection que le lecteur formulera spontanément.", "vi": "Góc nhìn của bạn mạnh, nhưng còn thiếu phản bác mà độc giả sẽ tự nêu ra." },
-      { "speaker": "Autrice", "text": "Je vais l'intégrer dès le troisième paragraphe, afin que la thèse ne paraisse pas fermée.", "vi": "Tôi sẽ đưa nó vào ngay đoạn ba để luận điểm không có vẻ đóng kín." }
+      { "speaker": "Éditorialiste", "text": "Votre angle est fort, mais il manque l'objection que le lecteur formulera spontanément.", "vi": "Góc nhìn của bạn mạnh, nhưng còn thiếu phản bác mà độc giả sẽ tự nêu ra.", "en": "Your angle is strong, but you're missing the objection the reader will form on their own." },
+      { "speaker": "Autrice", "text": "Je vais l'intégrer dès le troisième paragraphe, afin que la thèse ne paraisse pas fermée.", "vi": "Tôi sẽ đưa nó vào ngay đoạn ba để luận điểm không có vẻ đóng kín.", "en": "I'll fold it in by the third paragraph, so the thesis doesn't read as closed." }
     ],
     "cultural_notes_vi": "Truyền thống tribune ở Pháp cho phép giọng trực diện, nhưng phải có cấu trúc lập luận và dự liệu phản biện.",
+    "cultural_notes_en": "The French 'tribune' tradition (Le Monde, Libération, Le Figaro) is closer to the British leader-column than the US op-ed: an argued public stance with literary economy and clear intellectual stakes. The author's voice is direct but never the protagonist — the issue is. Expected structure: hook from a concrete case → state the public question → make the argument → anticipate the strongest objection → close with what's at stake. Skipping the objection step is the most common amateur mistake; without it the piece reads as advocacy, not analysis.",
     "tip_advice_vi": "Dùng concessive subjunctive: Bien que je défende..., il faut que...",
-    "register_notes": "A French tribune is not neutral reportage. It is an argued public stance with literary economy and intellectual pressure."
+    "tip_advice_en": "Master the concessive subjunctive — it's the rhetorical engine of the French tribune. 'Bien que je défende cette position…' (Though I defend this position…) shows intellectual movement; the reader senses that you've considered the alternative. Pair with a necessity-trigger subjunctive ('il faut que…', 'il convient que…') to anchor the call-to-action at the close. Two subjunctives bracketing the piece is the unmistakable mark of competent French opinion writing.",
+    "register_notes": "A French tribune is not neutral reportage. It is an argued public stance with literary economy and intellectual pressure.",
+    "register_notes_en": "A French tribune is not neutral reportage. It is an argued public stance with literary economy and intellectual pressure. Sentences run longer than in US op-eds; subordination is welcomed; the first-person 'je' appears but is detached and analytical, not confessional. The register sits between essai and journalism — closer to Camus's 'Combat' editorials than to a HuffPost opinion piece."
   },
   {
     "id": "lpodcast_talk_show_appearance",
@@ -8500,25 +8615,38 @@ export const lessons: FrenchLesson[] = [
       {
         "en": "Dans un podcast, le ton peut être plus conversationnel, à condition que les faits restent strictement tenus.",
         "vi": "Trong podcast, giọng có thể trò chuyện hơn, miễn là sự kiện vẫn được giữ thật chặt.",
-        "pronunciation_focus": ["conversationnel", "à condition que", "restent"]
+        "pronunciation_focus": ["conversationnel", "à condition que", "restent"],
+        "pronunciation_focus_en": [
+          "conversationnel → 'kohn-vair-sah-syoh-NEL' (final -el = 'el' as in 'bell')",
+          "à condition que → 'ah kohn-dee-SYOHN kuh' (triggers subjunctive on the following verb)",
+          "restent → 'REST' (final -ent of 3rd-person plural is silent)"
+        ]
       },
       {
         "en": "Je comprends la question, mais je préfère distinguer ce que nous savons de ce que nous supposons.",
         "vi": "Tôi hiểu câu hỏi, nhưng tôi muốn phân biệt điều chúng tôi biết với điều chúng tôi đang giả định.",
-        "pronunciation_focus": ["je comprends", "je préfère distinguer", "supposons"]
+        "pronunciation_focus": ["je comprends", "je préfère distinguer", "supposons"],
+        "pronunciation_focus_en": [
+          "je comprends → 'zhuh kohn-PRAHN' (silent final -ds; nasal 'en')",
+          "je préfère distinguer → 'zhuh pray-FAIR dees-tan-GHAY' (note 'gu' = hard g, never 'gw')",
+          "supposons → 'soo-poh-ZOHN' (1st-person plural; nasal -ons ending)"
+        ]
       }
     ],
     "vocabulary": [
-      { "word": "conversationnel", "en": "conversational", "vi": "có tính trò chuyện", "pos": "adjective", "pronunciation_vi": "kon-vehr-sa-sio-nel" },
-      { "word": "supposer", "en": "to suppose", "vi": "giả định", "pos": "verb", "pronunciation_vi": "su-po-zê" }
+      { "word": "conversationnel", "en": "conversational", "vi": "có tính trò chuyện", "pos": "adjective", "pronunciation_vi": "kon-vehr-sa-sio-nel", "pronunciation_en": "kohn-vair-sah-syoh-NEL — five syllables; final -el like 'bell'" },
+      { "word": "supposer", "en": "to suppose", "vi": "giả định", "pos": "verb", "pronunciation_vi": "su-po-zê", "pronunciation_en": "soo-poh-ZAY — final -er = 'ay'; s between vowels sounds like z" }
     ],
     "dialogue": [
-      { "speaker": "Animateur", "text": "En clair, vous saviez que le problème existait ?", "vi": "Nói thẳng ra, các anh chị biết vấn đề tồn tại rồi?" },
-      { "speaker": "Invitée", "text": "Je comprends la formulation, mais elle va plus loin que les faits. Ce que nous savions, c'était l'existence d'un signal faible.", "vi": "Tôi hiểu cách đặt câu, nhưng nó đi xa hơn sự kiện. Điều chúng tôi biết là có một tín hiệu yếu." }
+      { "speaker": "Animateur", "text": "En clair, vous saviez que le problème existait ?", "vi": "Nói thẳng ra, các anh chị biết vấn đề tồn tại rồi?", "en": "Plainly put — you knew the problem existed?" },
+      { "speaker": "Invitée", "text": "Je comprends la formulation, mais elle va plus loin que les faits. Ce que nous savions, c'était l'existence d'un signal faible.", "vi": "Tôi hiểu cách đặt câu, nhưng nó đi xa hơn sự kiện. Điều chúng tôi biết là có một tín hiệu yếu.", "en": "I understand the framing, but it goes beyond the facts. What we knew was the existence of a weak signal." }
     ],
     "cultural_notes_vi": "Podcast Pháp cho phép tự nhiên hơn, nhưng khách mời đại diện tổ chức vẫn phải phân biệt faits và suppositions.",
+    "cultural_notes_en": "French podcasts and talk shows allow a warmer, faster, more conversational register than press conferences — but the boundary between 'what we know' (faits) and 'what we suppose' (suppositions) remains non-negotiable when you represent an institution. The host will push for a sharper claim; the discipline is to stay personable while preserving epistemic precision. A casual 'oui, probably' that gets clipped and shared can outlive a thoroughly accurate four-minute answer.",
     "tip_advice_vi": "Câu hữu dụng: Je comprends la question, mais je préfère distinguer...",
-    "register_notes": "French talk-show register can be warm and fast, but precise boundary-setting remains essential."
+    "tip_advice_en": "Keep one phrase loaded for hostile reframings: 'Je comprends la question, mais je préfère distinguer ce que nous savons de ce que nous supposons.' It acknowledges the host without ceding the framing — and it gives you a structured two-part follow-up (the known fact, then the supposed inference). Drill it until it sounds spontaneous, because under live pressure it has to.",
+    "register_notes": "French talk-show register can be warm and fast, but precise boundary-setting remains essential.",
+    "register_notes_en": "French talk-show register can be warm and fast, but precise boundary-setting remains essential. Tutoyer the host only if invited; use first names if used to you; keep institutional vocabulary ('notre dispositif', 'le périmètre actuel') even in casual moments, because the journalist's notes outlast the laughter."
   },
   {
     "id": "ltv_news_live_interview",
@@ -8530,25 +8658,38 @@ export const lessons: FrenchLesson[] = [
       {
         "en": "En direct, une réponse efficace tient en deux phrases: reconnaître la question, puis donner le fait vérifié.",
         "vi": "Trên sóng trực tiếp, câu trả lời hiệu quả nằm trong hai câu: thừa nhận câu hỏi, rồi đưa sự kiện đã xác minh.",
-        "pronunciation_focus": ["en direct", "deux phrases", "fait vérifié"]
+        "pronunciation_focus": ["en direct", "deux phrases", "fait vérifié"],
+        "pronunciation_focus_en": [
+          "en direct → 'ahn dee-REKT' (the -ct cluster IS sounded; unlike most final consonants)",
+          "deux phrases → 'duh FRAZ' (rounded 'eu'; silent plural -s)",
+          "fait vérifié → 'feh vay-ree-FYAY' (silent -t in 'fait'; sharp final 'ay')"
+        ]
       },
       {
         "en": "Je ne vais pas vous donner une promesse de plateau; je peux en revanche vous donner un calendrier.",
         "vi": "Tôi sẽ không đưa một lời hứa cho đẹp trên sóng; ngược lại tôi có thể đưa một lịch trình.",
-        "pronunciation_focus": ["promesse de plateau", "en revanche", "calendrier"]
+        "pronunciation_focus": ["promesse de plateau", "en revanche", "calendrier"],
+        "pronunciation_focus_en": [
+          "promesse de plateau → 'proh-MESS duh plah-TOH' (idiom — see vocab)",
+          "en revanche → 'ahn ruh-VAHNSH' (formal-register pivot; nasal twice)",
+          "calendrier → 'kah-lahn-DRYAY' (no English r-color; throat r)"
+        ]
       }
     ],
     "vocabulary": [
-      { "word": "en direct", "en": "live", "vi": "trực tiếp", "pos": "adverbial phrase", "pronunciation_vi": "ong đi-rekt" },
-      { "word": "un plateau", "en": "TV studio set", "vi": "trường quay", "pos": "noun", "pronunciation_vi": "pla-tô" }
+      { "word": "en direct", "en": "live", "vi": "trực tiếp", "pos": "adverbial phrase", "pronunciation_vi": "ong đi-rekt", "pronunciation_en": "ahn dee-REKT — the -ct cluster IS pronounced (rare in French)" },
+      { "word": "un plateau", "en": "TV studio set", "vi": "trường quay", "pos": "noun", "pronunciation_vi": "pla-tô", "pronunciation_en": "uhn plah-TOH — used in 'promesse de plateau' = an empty TV promise made for the camera" }
     ],
     "dialogue": [
-      { "speaker": "Présentateur", "text": "Pouvez-vous promettre ce soir que cela ne se reproduira pas ?", "vi": "Tối nay ông/bà có thể hứa rằng việc này sẽ không lặp lại không?" },
-      { "speaker": "Porte-parole", "text": "Je ne ferai pas une promesse de plateau. Je peux vous dire que l'audit sera publié vendredi.", "vi": "Tôi sẽ không hứa cho đẹp trên sóng. Tôi có thể nói rằng báo cáo rà soát sẽ được công bố thứ Sáu." }
+      { "speaker": "Présentateur", "text": "Pouvez-vous promettre ce soir que cela ne se reproduira pas ?", "vi": "Tối nay ông/bà có thể hứa rằng việc này sẽ không lặp lại không?", "en": "Can you promise tonight that this won't happen again?" },
+      { "speaker": "Porte-parole", "text": "Je ne ferai pas une promesse de plateau. Je peux vous dire que l'audit sera publié vendredi.", "vi": "Tôi sẽ không hứa cho đẹp trên sóng. Tôi có thể nói rằng báo cáo rà soát sẽ được công bố thứ Sáu.", "en": "I won't make a TV-set promise. What I can tell you is that the audit will be published on Friday." }
     ],
     "cultural_notes_vi": "Phỏng vấn truyền hình Pháp thường trực diện. Câu trả lời phải ngắn, có lực, nhưng không được bluff.",
+    "cultural_notes_en": "French live TV interviews — France 2's 20h, France Inter, BFM debates — prize crisp confrontation. The anchor asks pointed yes/no questions and expects substantive responses delivered in 30–60 seconds. The British or US instinct to soften with 'well, that's a great question' lands as evasion. Acknowledge briefly ('je comprends la question'), then either give the verified fact or refuse cleanly with a reason. A controlled, named refusal ('je ne ferai pas une promesse de plateau') sounds more credible to the French viewer than a soft non-answer.",
     "tip_advice_vi": "Dùng formule mạnh nhưng có trách nhiệm: Je ne ferai pas une promesse de plateau.",
-    "register_notes": "French live-news interviews prize crisp confrontation. A controlled refusal can sound more credible than a soft non-answer."
+    "tip_advice_en": "Drill the 'controlled refusal + concrete substitute' pattern: 'Je ne ferai pas X. En revanche, je peux Y.' Where X is the unrealistic ask and Y is something verifiable and dated. This pattern is the single most useful tool for live French TV — it preserves your integrity, hands the journalist something printable, and doesn't read as stonewalling.",
+    "register_notes": "French live-news interviews prize crisp confrontation. A controlled refusal can sound more credible than a soft non-answer.",
+    "register_notes_en": "French live-news interviews prize crisp confrontation. A controlled refusal can sound more credible than a soft non-answer. Future tense ('je dirai', 'l'audit sera publié') signals commitment; conditional ('je pourrais', 'on pourrait') signals hedging — which the audience reads as either prudent or weak depending on context. Avoid 'on verra' on live TV; it's read as buck-passing."
   },
   {
     "id": "linstitutional_apology_press_conference",
@@ -8560,25 +8701,38 @@ export const lessons: FrenchLesson[] = [
       {
         "en": "Nous présentons nos excuses aux personnes affectées; cette erreur n'aurait pas dû se produire.",
         "vi": "Chúng tôi xin lỗi những người bị ảnh hưởng; sai sót này lẽ ra không được xảy ra.",
-        "pronunciation_focus": ["présentons nos excuses", "personnes affectées", "n'aurait pas dû"]
+        "pronunciation_focus": ["présentons nos excuses", "personnes affectées", "n'aurait pas dû"],
+        "pronunciation_focus_en": [
+          "présentons nos excuses → 'pray-zahn-TOHN noh zek-SKYUZ' (liaison 'noh-zek' is mandatory; rounded 'u' in 'excuses')",
+          "personnes affectées → 'pair-SUN ah-fek-TAY' (silent plural -s; liaison '-ne-z-af' optional)",
+          "n'aurait pas dû → 'noh-REH pah DYU' (past conditional; 'dû' has the rounded 'u', NOT 'doo')"
+        ]
       },
       {
         "en": "Quoique l'enquête interne soit encore en cours, nous assumons déjà notre responsabilité opérationnelle.",
         "vi": "Dù cuộc điều tra nội bộ vẫn đang diễn ra, chúng tôi đã nhận trách nhiệm vận hành của mình.",
-        "pronunciation_focus": ["Quoique + subjonctif", "soit", "responsabilité opérationnelle"]
+        "pronunciation_focus": ["Quoique + subjonctif", "soit", "responsabilité opérationnelle"],
+        "pronunciation_focus_en": [
+          "Quoique → 'KWAH-kuh' (concessive trigger requiring subjunctive — formal alternative to 'bien que')",
+          "soit → 'SWAH' (3rd-person singular subjunctive of être)",
+          "responsabilité opérationnelle → 'res-pohn-sah-bee-lee-TAY oh-pay-rah-syoh-NEL' (long but every syllable open)"
+        ]
       }
     ],
     "vocabulary": [
-      { "word": "présenter ses excuses", "en": "to apologize", "vi": "xin lỗi", "pos": "verb phrase", "pronunciation_vi": "prê-zong-tê se zex-kuz" },
-      { "word": "assumer", "en": "to take responsibility", "vi": "nhận trách nhiệm", "pos": "verb", "pronunciation_vi": "a-su-mê" }
+      { "word": "présenter ses excuses", "en": "to apologize", "vi": "xin lỗi", "pos": "verb phrase", "pronunciation_vi": "prê-zong-tê se zex-kuz", "pronunciation_en": "pray-zahn-TAY say zek-SKYUZ — formal-register apology; literally 'present one's excuses'" },
+      { "word": "assumer", "en": "to take responsibility", "vi": "nhận trách nhiệm", "pos": "verb", "pronunciation_vi": "a-su-mê", "pronunciation_en": "ah-syu-MAY — false friend: NOT 'to assume' as in 'suppose'; means 'to own/accept responsibility for'" }
     ],
     "dialogue": [
-      { "speaker": "Directrice générale", "text": "Je veux être claire: nous ne sommes pas ici pour minimiser l'erreur, mais pour l'assumer et la réparer.", "vi": "Tôi muốn nói rõ: chúng tôi không ở đây để giảm nhẹ sai sót, mà để nhận và sửa nó." },
-      { "speaker": "Journaliste", "text": "Qui, précisément, portera la responsabilité de cette défaillance ?", "vi": "Chính xác thì ai sẽ chịu trách nhiệm về sự cố này?" }
+      { "speaker": "Directrice générale", "text": "Je veux être claire: nous ne sommes pas ici pour minimiser l'erreur, mais pour l'assumer et la réparer.", "vi": "Tôi muốn nói rõ: chúng tôi không ở đây để giảm nhẹ sai sót, mà để nhận và sửa nó.", "en": "Let me be clear: we're not here to minimize the error, but to own it and put it right." },
+      { "speaker": "Journaliste", "text": "Qui, précisément, portera la responsabilité de cette défaillance ?", "vi": "Chính xác thì ai sẽ chịu trách nhiệm về sự cố này?", "en": "Who, exactly, will bear responsibility for this failure?" }
     ],
     "cultural_notes_vi": "Xin lỗi tổ chức bằng tiếng Pháp phải trực diện. Nếu chỉ nói regret mà không nói responsabilité, nghe như né tránh.",
+    "cultural_notes_en": "A French institutional public apology must be direct. Saying you 'regret' the situation without naming responsibility lands as evasion — the corporate-speak that 'mistakes were made' is heard for what it is. The French public expects: explicit excuses to a named affected group, frank acknowledgment of fault, a name or function that owns the failure, and a concrete remediation timeline. Vague apologies generate more press cycles than honest ones.",
     "tip_advice_vi": "Apology sequence: excuses → erreur → responsabilité → réparation → calendrier.",
-    "register_notes": "French public apology rewards frank responsibility. Avoid bureaucratic fog."
+    "tip_advice_en": "Memorize the five-beat apology sequence: (1) excuses (apology to the named affected group), (2) erreur (specific fault named), (3) responsabilité (who or what owns it), (4) réparation (concrete remediation), (5) calendrier (timeline). Skip any beat and the press conference will be remembered for what was missing, not what was said.",
+    "register_notes": "French public apology rewards frank responsibility. Avoid bureaucratic fog.",
+    "register_notes_en": "French public apology rewards frank responsibility. Avoid bureaucratic fog. Use present indicative for ownership ('nous assumons') rather than future or conditional, which sound like deferral. Past conditional ('n'aurait pas dû') for the error itself is correct because it acknowledges the failure as a deviation from what should have happened."
   },
   {
     "id": "lbackground_briefing_off_record",
@@ -8590,25 +8744,38 @@ export const lessons: FrenchLesson[] = [
       {
         "en": "Avant de commencer, je précise le cadre: ceci est en background, non attribuable directement.",
         "vi": "Trước khi bắt đầu, tôi nói rõ khung: phần này là thông tin bối cảnh, không gán trực tiếp.",
-        "pronunciation_focus": ["je précise le cadre", "background", "non attribuable"]
+        "pronunciation_focus": ["je précise le cadre", "background", "non attribuable"],
+        "pronunciation_focus_en": [
+          "je précise le cadre → 'zhuh pray-SEEZ luh KAH-druh' (final -e silent on 'précise' and 'cadre')",
+          "background → 'BAK-grownd' (used as an English borrowing in French press argot)",
+          "non attribuable → 'nohn nah-tree-byu-AH-bluh' (liaison 'non-na'; rounded 'u')"
+        ]
       },
       {
         "en": "L'objectif n'est pas de faire fuiter une version, mais de vous donner les éléments de contexte nécessaires.",
         "vi": "Mục tiêu không phải rò rỉ một phiên bản, mà là đưa cho quý vị các yếu tố bối cảnh cần thiết.",
-        "pronunciation_focus": ["faire fuiter", "éléments de contexte", "nécessaires"]
+        "pronunciation_focus": ["faire fuiter", "éléments de contexte", "nécessaires"],
+        "pronunciation_focus_en": [
+          "faire fuiter → 'FAIR fwee-TAY' (fuiter = to leak; informal-register verb)",
+          "éléments de contexte → 'ay-lay-MAHN duh kohn-TEKST' (silent final -ts on éléments)",
+          "nécessaires → 'nay-seh-SAIR' (silent plural -s; -aires = 'air' as in fair)"
+        ]
       }
     ],
     "vocabulary": [
-      { "word": "non attribuable", "en": "not attributable", "vi": "không gán nguồn trực tiếp", "pos": "adjective", "pronunciation_vi": "non na-tri-buy-apl" },
-      { "word": "le contexte", "en": "context", "vi": "bối cảnh", "pos": "noun", "pronunciation_vi": "kon-tekst" }
+      { "word": "non attribuable", "en": "not attributable", "vi": "không gán nguồn trực tiếp", "pos": "adjective", "pronunciation_vi": "non na-tri-buy-apl", "pronunciation_en": "nohn nah-tree-byu-AH-bluh — press-relations term meaning the source must remain unidentified" },
+      { "word": "le contexte", "en": "context", "vi": "bối cảnh", "pos": "noun", "pronunciation_vi": "kon-tekst", "pronunciation_en": "luh kohn-TEKST — the -xt cluster IS pronounced (rare); nasal 'on'" }
     ],
     "dialogue": [
-      { "speaker": "Conseiller presse", "text": "Cette partie peut éclairer votre papier, mais elle ne doit pas être citée comme déclaration officielle.", "vi": "Phần này có thể giúp bài viết sáng rõ hơn, nhưng không được trích như tuyên bố chính thức." },
-      { "speaker": "Journaliste", "text": "Je peux donc utiliser le raisonnement, mais pas vous l'attribuer nommément.", "vi": "Vậy tôi có thể dùng logic lập luận, nhưng không gán tên ông/bà." }
+      { "speaker": "Conseiller presse", "text": "Cette partie peut éclairer votre papier, mais elle ne doit pas être citée comme déclaration officielle.", "vi": "Phần này có thể giúp bài viết sáng rõ hơn, nhưng không được trích như tuyên bố chính thức.", "en": "This part can inform your piece, but it mustn't be quoted as an official statement." },
+      { "speaker": "Journaliste", "text": "Je peux donc utiliser le raisonnement, mais pas vous l'attribuer nommément.", "vi": "Vậy tôi có thể dùng logic lập luận, nhưng không gán tên ông/bà.", "en": "So I can use the reasoning but not attribute it to you by name." }
     ],
     "cultural_notes_vi": "Trong quan hệ báo chí Pháp, phải định nghĩa rõ on/off/background trước khi nói nội dung nhạy cảm.",
+    "cultural_notes_en": "French press relations distinguish four explicit modes: 'on the record' (citable with name), 'off the record' (not citable, period), 'background' (reasoning usable but not attributable), and 'deep background' (usable only for orientation, not even paraphrasable). These boundaries must be set BEFORE sensitive content is shared — relying on implied understanding the way some Anglo journalists do leads to predictable mishaps. State the cadre verbally and, for high-stakes briefings, in writing.",
     "tip_advice_vi": "Phrase clé: je précise le cadre.",
-    "register_notes": "Off-the-record French requires explicit attribution boundaries; do not rely on implied understandings."
+    "tip_advice_en": "Memorize one phrase: 'Je précise le cadre' ('Let me set the framing'). Use it BEFORE you say anything sensitive, then specify which of the four modes applies. If the journalist agrees, proceed; if not, don't speak. Resetting attribution mid-conversation rarely works — the prior part is already heard.",
+    "register_notes": "Off-the-record French requires explicit attribution boundaries; do not rely on implied understandings.",
+    "register_notes_en": "Off-the-record French requires explicit attribution boundaries; do not rely on implied understandings. 'Background' and 'off' are used as borrowed English terms in French press argot — say them clearly. The negative imperative 'ne pas citer' is heavier in French than 'don't quote me' in English; use it without hedging when you mean it."
   },
   {
     "id": "lhostile_journalist_qa_public_scrutiny",
@@ -8620,25 +8787,38 @@ export const lessons: FrenchLesson[] = [
       {
         "en": "Je conteste votre prémisse, mais je réponds à la question de fond.",
         "vi": "Tôi phản đối tiền đề của anh/chị, nhưng tôi trả lời câu hỏi cốt lõi.",
-        "pronunciation_focus": ["je conteste", "prémisse", "question de fond"]
+        "pronunciation_focus": ["je conteste", "prémisse", "question de fond"],
+        "pronunciation_focus_en": [
+          "je conteste → 'zhuh kohn-TEST' (nasal 'on'; silent final -e)",
+          "prémisse → 'pray-MEESS' (singular; final -e silent; double-s pronounced as single s)",
+          "question de fond → 'kes-TYOHN duh FOHN' (the deep/substantive question vs. surface framing)"
+        ]
       },
       {
         "en": "Même si la critique est dure, elle oblige l'institution à répondre précisément, pas à se réfugier dans la langue de bois.",
         "vi": "Dù phê bình gay gắt, nó buộc tổ chức phải trả lời chính xác, không núp sau ngôn ngữ sáo rỗng.",
-        "pronunciation_focus": ["Même si", "répondre précisément", "langue de bois"]
+        "pronunciation_focus": ["Même si", "répondre précisément", "langue de bois"],
+        "pronunciation_focus_en": [
+          "Même si → 'mem SEE' (concessive — does NOT require subjunctive, unlike bien que)",
+          "répondre précisément → 'ray-POHN-druh pray-seez-eh-MAHN' (the adverb -ment is nasal)",
+          "langue de bois → 'LAHNG duh BWAH' (literally 'wooden language' — idiom)"
+        ]
       }
     ],
     "vocabulary": [
-      { "word": "contester une prémisse", "en": "to challenge a premise", "vi": "phản đối một tiền đề", "pos": "verb phrase", "pronunciation_vi": "kon-tes-tê un prê-mis" },
-      { "word": "la langue de bois", "en": "evasive bureaucratic language", "vi": "ngôn ngữ sáo rỗng né tránh", "pos": "idiom", "pronunciation_vi": "long đơ boa" }
+      { "word": "contester une prémisse", "en": "to challenge a premise", "vi": "phản đối một tiền đề", "pos": "verb phrase", "pronunciation_vi": "kon-tes-tê un prê-mis", "pronunciation_en": "kohn-tes-TAY oon pray-MEESS — formal-register pushback; less aggressive than 'rejeter'" },
+      { "word": "la langue de bois", "en": "evasive bureaucratic language", "vi": "ngôn ngữ sáo rỗng né tránh", "pos": "idiom", "pronunciation_vi": "long đơ boa", "pronunciation_en": "lah LAHNG duh BWAH — literally 'wooden language'; the standard French slur for empty bureaucratic speech" }
     ],
     "dialogue": [
-      { "speaker": "Journaliste", "text": "Vous avez attendu que l'affaire explose pour admettre l'échec, c'est bien cela ?", "vi": "Các ông/bà đợi vụ việc bùng lên mới thừa nhận thất bại, đúng không?" },
-      { "speaker": "Porte-parole", "text": "Non, je conteste cette prémisse. En revanche, vous avez raison sur un point: notre communication initiale a été insuffisante.", "vi": "Không, tôi phản đối tiền đề đó. Ngược lại, anh/chị đúng ở một điểm: truyền thông ban đầu của chúng tôi chưa đủ." }
+      { "speaker": "Journaliste", "text": "Vous avez attendu que l'affaire explose pour admettre l'échec, c'est bien cela ?", "vi": "Các ông/bà đợi vụ việc bùng lên mới thừa nhận thất bại, đúng không?", "en": "You waited for the affair to blow up before admitting the failure — is that right?" },
+      { "speaker": "Porte-parole", "text": "Non, je conteste cette prémisse. En revanche, vous avez raison sur un point: notre communication initiale a été insuffisante.", "vi": "Không, tôi phản đối tiền đề đó. Ngược lại, anh/chị đúng ở một điểm: truyền thông ban đầu của chúng tôi chưa đủ.", "en": "No, I challenge that premise. That said, you're right on one point: our initial communication was insufficient." }
     ],
     "cultural_notes_vi": "French hostile interview cho phép phản đối trực tiếp hơn. Truyền thống Pujadas/Demorand/Bocquet coi trọng câu trả lời rõ và khả năng chịu va chạm.",
+    "cultural_notes_en": "The French hostile-interview tradition — David Pujadas, Léa Salamé, Apolline de Malherbe, the BFM Bocquet-style segment — expects direct confrontation in both directions. Anchors push; spokespersons push back. A flat 'no, I disagree' is acceptable if paired with substantive response. The British or US instinct to deflect ('let me redirect that question') is read as weak in France. The discipline: challenge the framing, then immediately offer the substance. Refusing to do the second half is what marks an interview as failed.",
     "tip_advice_vi": "Direct-disagreement formula: Non, je conteste cette prémisse. En revanche...",
-    "register_notes": "In the French hostile-interview tradition, a direct correction can be legitimate if paired with a substantive answer."
+    "tip_advice_en": "Drill the two-beat counter: 'Non, je conteste cette prémisse. En revanche, [substantive truth].' First beat protects you from accepting a hostile framing; second beat shows you're not stonewalling. The 'en revanche' pivot is the C1 academic-register version of 'however' — heavier, more rhetorical, harder to interrupt.",
+    "register_notes": "In the French hostile-interview tradition, a direct correction can be legitimate if paired with a substantive answer.",
+    "register_notes_en": "In the French hostile-interview tradition, a direct correction can be legitimate if paired with a substantive answer. Use formal 'vous' even under pressure; first-name informality on hostile TV is read as either patronizing or rattled. Acknowledge legitimate points explicitly ('vous avez raison sur un point: …') — this disarms more effectively than blanket denial."
   },
   {
     "id": "lspokesperson_weekly_press_briefing",
@@ -8650,25 +8830,38 @@ export const lessons: FrenchLesson[] = [
       {
         "en": "Le rôle du porte-parole n'est pas de tout dire, mais de dire de manière stable ce qui peut l'être.",
         "vi": "Vai trò người phát ngôn không phải nói hết mọi thứ, mà là nói một cách ổn định những gì có thể nói.",
-        "pronunciation_focus": ["porte-parole", "de manière stable", "ce qui peut l'être"]
+        "pronunciation_focus": ["porte-parole", "de manière stable", "ce qui peut l'être"],
+        "pronunciation_focus_en": [
+          "porte-parole → 'PORT-pah-ROHL' (compound noun, two stressed syllables; silent final -e)",
+          "de manière stable → 'duh mah-NYAIR STAH-bluh' (the -ière ending = 'yair')",
+          "ce qui peut l'être → 'suh kee puh LEH-truh' (formal nominalization; final -re silent)"
+        ]
       },
       {
         "en": "Sur ce point, nous n'avons pas d'élément nouveau; une mise à jour écrite sera envoyée vendredi.",
         "vi": "Về điểm này, chúng tôi chưa có yếu tố mới; cập nhật bằng văn bản sẽ được gửi thứ Sáu.",
-        "pronunciation_focus": ["élément nouveau", "mise à jour écrite", "vendredi"]
+        "pronunciation_focus": ["élément nouveau", "mise à jour écrite", "vendredi"],
+        "pronunciation_focus_en": [
+          "élément nouveau → 'ay-lay-MAHN noo-VOH' (silent final -t on élément; 'eau' = 'oh')",
+          "mise à jour écrite → 'MEEZ ah ZHOOR ay-KREET' (liaison '-r-é-' makes 'ZHOO-ray')",
+          "vendredi → 'VAHN-druh-DEE' (nasal 'en' opening; throat r)"
+        ]
       }
     ],
     "vocabulary": [
-      { "word": "un porte-parole", "en": "spokesperson", "vi": "người phát ngôn", "pos": "noun", "pronunciation_vi": "port-pa-rol" },
-      { "word": "une mise à jour", "en": "update", "vi": "cập nhật", "pos": "noun", "pronunciation_vi": "mi za zhur" }
+      { "word": "un porte-parole", "en": "spokesperson", "vi": "người phát ngôn", "pos": "noun", "pronunciation_vi": "port-pa-rol", "pronunciation_en": "uhn PORT-pah-ROHL — invariant in gender; same form for male and female spokesperson" },
+      { "word": "une mise à jour", "en": "update", "vi": "cập nhật", "pos": "noun", "pronunciation_vi": "mi za zhur", "pronunciation_en": "oon MEEZ ah ZHOOR — literally 'put-to-day'; standard institutional term" }
     ],
     "dialogue": [
-      { "speaker": "Porte-parole", "text": "Je vous propose de commencer par les trois mises à jour confirmées cette semaine.", "vi": "Tôi đề nghị bắt đầu bằng ba cập nhật đã xác nhận trong tuần này." },
-      { "speaker": "Journaliste", "text": "Pourquoi refusez-vous de répondre sur le dossier encore ouvert ?", "vi": "Vì sao ông/bà từ chối trả lời về hồ sơ còn mở?" }
+      { "speaker": "Porte-parole", "text": "Je vous propose de commencer par les trois mises à jour confirmées cette semaine.", "vi": "Tôi đề nghị bắt đầu bằng ba cập nhật đã xác nhận trong tuần này.", "en": "I suggest we start with the three updates confirmed this week." },
+      { "speaker": "Journaliste", "text": "Pourquoi refusez-vous de répondre sur le dossier encore ouvert ?", "vi": "Vì sao ông/bà từ chối trả lời về hồ sơ còn mở?", "en": "Why are you refusing to answer on the still-open file?" }
     ],
     "cultural_notes_vi": "Briefing hằng tuần kiểu Pháp cần đều, rõ và không quá phòng thủ. Nói 'chưa có yếu tố mới' được, nếu có lịch cập nhật.",
+    "cultural_notes_en": "French weekly briefings — Elysée, Matignon, large ministries — run on rhythm. Predictable structure: opening rundown of confirmed updates, then Q&A. Saying 'we have no new element on this point' is acceptable IF you commit to a future update date. Saying it without a date is read as stonewalling. The institutional discipline is to be repetitive across weeks — repeating the same message verbatim signals stability, not paucity.",
     "tip_advice_vi": "Stable phrase: nous n'avons pas d'élément nouveau; une mise à jour écrite sera envoyée...",
-    "register_notes": "The spokesperson voice is institutional, repetitive by design, and accountable over time."
+    "tip_advice_en": "Build one stable phrase you can repeat across briefings without sounding evasive: 'Sur ce point, nous n'avons pas d'élément nouveau à ce stade; une mise à jour écrite sera envoyée [date].' The 'à ce stade' is load-bearing — it acknowledges that information will evolve, and the dated future tense closes the loop.",
+    "register_notes": "The spokesperson voice is institutional, repetitive by design, and accountable over time.",
+    "register_notes_en": "The spokesperson voice is institutional, repetitive by design, and accountable over time. Use 'nous' rather than 'je' for institutional positions; reserve 'je' for personal acknowledgments. Future tense for commitments ('sera envoyée'); present tense for current institutional fact ('nous n'avons pas'). Avoid the conditional unless you genuinely mean 'this is contingent'."
   },
   {
     "id": "lofficial_social_media_statement",
@@ -8680,25 +8873,38 @@ export const lessons: FrenchLesson[] = [
       {
         "en": "Un message officiel sur les réseaux sociaux doit être court, mais jamais improvisé.",
         "vi": "Một thông điệp chính thức trên mạng xã hội phải ngắn, nhưng không bao giờ được ứng biến tùy tiện.",
-        "pronunciation_focus": ["réseaux sociaux", "court", "jamais improvisé"]
+        "pronunciation_focus": ["réseaux sociaux", "court", "jamais improvisé"],
+        "pronunciation_focus_en": [
+          "réseaux sociaux → 'ray-ZOH soh-SYOH' (silent plural -x; 'eau' = 'oh')",
+          "court → 'KOOR' (silent final -t; 'ou' = 'oo' like 'boot')",
+          "jamais improvisé → 'zhah-MEH an-proh-vee-ZAY' (silent -s on jamais; sharp final 'ay')"
+        ]
       },
       {
         "en": "La première phrase pose la position, la deuxième annonce l'action, la troisième indique où suivre la suite.",
         "vi": "Câu đầu đặt lập trường, câu hai thông báo hành động, câu ba chỉ nơi theo dõi tiếp.",
-        "pronunciation_focus": ["pose la position", "annonce l'action", "suivre la suite"]
+        "pronunciation_focus": ["pose la position", "annonce l'action", "suivre la suite"],
+        "pronunciation_focus_en": [
+          "pose la position → 'POHZ lah poh-zee-SYOHN' (the verb 'pose' has silent final -e; the noun ends nasal)",
+          "annonce l'action → 'ah-NOHNS lak-SYOHN' (liaison 'l'action' makes one syllable; 'ti' → 'sy')",
+          "suivre la suite → 'SWEE-vruh lah SWEET' (ui in suivre = 'wee'; silent -re ending)"
+        ]
       }
     ],
     "vocabulary": [
-      { "word": "les réseaux sociaux", "en": "social media", "vi": "mạng xã hội", "pos": "noun phrase", "pronunciation_vi": "rê-zô sô-si-ô" },
-      { "word": "improvisé", "en": "improvised", "vi": "ứng biến tùy tiện", "pos": "adjective", "pronunciation_vi": "anh-pro-vi-zê" }
+      { "word": "les réseaux sociaux", "en": "social media", "vi": "mạng xã hội", "pos": "noun phrase", "pronunciation_vi": "rê-zô sô-si-ô", "pronunciation_en": "lay ray-ZOH soh-SYOH — standard French; 'social media' is sometimes borrowed but 'réseaux sociaux' is preferred in institutional copy" },
+      { "word": "improvisé", "en": "improvised", "vi": "ứng biến tùy tiện", "pos": "adjective", "pronunciation_vi": "anh-pro-vi-zê", "pronunciation_en": "an-proh-vee-ZAY — past participle; in this context carries the negative sense of 'unplanned/sloppy'" }
     ],
     "dialogue": [
-      { "speaker": "Community manager", "text": "Cette réponse est trop familière pour un compte officiel.", "vi": "Câu trả lời này quá thân mật đối với tài khoản chính thức." },
-      { "speaker": "Directrice communication", "text": "Gardons trois phrases: position, action, lien vers la mise à jour complète.", "vi": "Giữ ba câu: lập trường, hành động, link tới bản cập nhật đầy đủ." }
+      { "speaker": "Community manager", "text": "Cette réponse est trop familière pour un compte officiel.", "vi": "Câu trả lời này quá thân mật đối với tài khoản chính thức.", "en": "This reply is too informal for an official account." },
+      { "speaker": "Directrice communication", "text": "Gardons trois phrases: position, action, lien vers la mise à jour complète.", "vi": "Giữ ba câu: lập trường, hành động, link tới bản cập nhật đầy đủ.", "en": "Let's keep it to three sentences: position, action, link to the full update." }
     ],
     "cultural_notes_vi": "Tài khoản chính thức tiếng Pháp có thể ngắn, nhưng không được nghe như tranh luận bình luận.",
+    "cultural_notes_en": "French official accounts (ministries, large companies, public figures) operate under a tighter register than US equivalents. The line is: institutional voice that any of your communications team would have approved before posting. No memes, no banter, no engagement with low-quality replies. Screenshots are forever; a clever quip during a crisis becomes the headline in tomorrow's papers. Short doesn't mean casual.",
     "tip_advice_vi": "Công thức ba câu: position → action → lien.",
-    "register_notes": "French official social copy should be terse, composed, and screenshot-proof."
+    "tip_advice_en": "Use the three-sentence template: (1) sentence 1 states the position, (2) sentence 2 announces a concrete action, (3) sentence 3 points to where the full update lives (URL, press conference, official communiqué). This structure protects against both over-explaining and under-informing — and it produces copy that survives being screenshotted.",
+    "register_notes": "French official social copy should be terse, composed, and screenshot-proof.",
+    "register_notes_en": "French official social copy should be terse, composed, and screenshot-proof. Use complete sentences and standard punctuation; avoid emoji unless your house style explicitly allows them. Prefer 'nous' to 'on'; avoid contractions even when grammatically permitted. Imperative voice is reserved for citizen-facing institutions (e.g., a ministry telling people what to do); private companies use indicative."
   }
 ];
 

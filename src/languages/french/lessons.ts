@@ -130,8 +130,17 @@ export type FrenchLesson = {
   // B2 calibration fields — optional passthrough; consumed by normalizer + renderer
   dialogue_long?: DialogueLine[];
   roleplay_prompts?: string[];
+  roleplay_prompts_en?: string[];
   register_notes?: string;
-  idiom_glosses?: { idiom: string; literal: string; meaning: string; example: string }[];
+  register_notes_en?: string;
+  idiom_glosses?: {
+    idiom: string;
+    literal: string;
+    literal_en?: string;
+    meaning: string;
+    meaning_en?: string;
+    example: string;
+  }[];
 };
 
 // ── 1. Greetings ────────────────────────────────────────────────────────
