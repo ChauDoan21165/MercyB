@@ -13242,6 +13242,11 @@ export const lessons: GermanLesson[] = [
           "nächste → NEKH-stê",
           "fliegst → FLI-kst",
           "Australien → aos-TRA-li-ần"
+        ],
+        "pronunciation_focus_en": [
+          "nächste → NEKH-stuh ('ä' = English short 'e')",
+          "fliegst → FLEE-kst",
+          "Australien → ow-STRAH-lee-en"
         ]
       },
       {
@@ -13251,6 +13256,11 @@ export const lessons: GermanLesson[] = [
           "geprägt → gê-PRÊK-t",
           "vorstellen → FÔ-shtêl-lần",
           "letzten → LET-stần"
+        ],
+        "pronunciation_focus_en": [
+          "geprägt → guh-PRAYG-t ('ä' = short 'e')",
+          "vorstellen → FOR-shtel-en",
+          "letzten → LETS-ten ('z' = 'ts')"
         ]
       },
       {
@@ -13260,6 +13270,11 @@ export const lessons: GermanLesson[] = [
           "Sonntags-Spaziergänge → ZÔN-taks shpa-TSI-gên-gê",
           "unendlich → un-EN-likh",
           "vermissen → fe-MI-sần"
+        ],
+        "pronunciation_focus_en": [
+          "Sonntags-Spaziergänge → ZON-tahgs shpah-TSEER-geng-uh",
+          "unendlich → un-END-likh (soft 'ich-Laut')",
+          "vermissen → fair-MISS-en"
         ]
       },
       {
@@ -13269,6 +13284,11 @@ export const lessons: GermanLesson[] = [
           "versprechen → fe-SHPRÊ-khần",
           "Kontakt → kôn-TAKT",
           "Zeitzonen → TSAIT-tsô-nần"
+        ],
+        "pronunciation_focus_en": [
+          "versprechen → fair-SHPRE-khen",
+          "Kontakt → kon-TAKT",
+          "Zeitzonen → TSITE-tsoh-nen ('ei' = 'eye')"
         ]
       },
       {
@@ -13278,81 +13298,98 @@ export const lessons: GermanLesson[] = [
           "fehlen → FÊ-lần",
           "freue mich → FROI-ê mikh",
           "riesig → RI-zikh"
+        ],
+        "pronunciation_focus_en": [
+          "fehlen → FAY-len",
+          "freue mich → FROY-uh mikh ('eu' = 'oy')",
+          "riesig → REE-zikh (final '-ig' as soft ich-Laut)"
         ]
       }
     ],
     "cultural_notes_vi": "Lời chia tay vĩnh viễn (vĩnh biệt hoặc xa lâu) trong văn hóa Đức khác Việt Nam ở ba điểm. (1) DIRECT EMOTION: người Đức được coi là 'kühl' (lạnh) trong cuộc sống hàng ngày, NHƯNG trong khoảnh khắc chia tay quan trọng, họ EXPRESS cảm xúc rất trực tiếp: 'Du wirst mir fehlen' (mình sẽ nhớ cậu), 'Du hast mich geprägt' (cậu đã định hình mình). KHÔNG vòng vo. KHÔNG joke để 'làm nhẹ không khí'. Sự nghiêm túc cảm xúc là tôn trọng. (2) SPECIFIC MEMORIES > GENERIC PHRASES: 'Ich werde dich vermissen' đơn lẻ generic. Người Đức expect specific: 'Ich werde unsere Sonntags-Spaziergänge am See vermissen' / 'Ich werde dein Lachen vermissen, wenn jemand schlechte Witze macht'. Càng cụ thể càng có sức nặng. (3) BOTH-AND: 'Du wirst mir fehlen — und ich freue mich für dich' (mình sẽ nhớ — và mình mừng cho cậu). Cả 2 cảm xúc cùng tồn tại. KHÔNG 'be brave' (giả vờ chỉ vui). KHÔNG 'be sad' (chỉ buồn). Cả 2.\n\nKhác Việt Nam: ở VN, chia tay thường có yếu tố 'hứa gặp lại sớm' để giảm cảm xúc nặng. Ở Đức, đặc biệt với chia tay xa thực sự (di cư, chuyển sang lục địa khác), không pretend. 'Wir wissen nicht, wann wir uns wiedersehen — und das ist okay'. Sự acknowledge thực tế = tôn trọng cảm xúc.\n\nMột chi tiết quan trọng: chia tay cuối với bạn (không phải romantic break-up) thường KHÔNG có nước mắt to ở chốn công cộng — Đức kín đáo. NHƯNG có thể có ôm chặt rất lâu (lange Umarmung), bàn tay nắm chặt. Body language quan trọng hơn lời.\n\nAbschiedsgeschenk (quà chia tay): nhỏ, ý nghĩa, không đắt. Một album ảnh, một quyển sách có ghi chú, một vật kỷ niệm chung. KHÔNG đắt tiền (gây áp lực reciprocity).\n\nKhi tình bạn KẾT THÚC (không phải xa thể chất, mà rạn nứt): conversation khác. Vẫn cần specific + thẳng thắn: 'Ich glaube, unsere Wege trennen sich hier — und ich respektiere das' (mình nghĩ đường đi của tụi mình tách ra ở đây — và mình tôn trọng). KHÔNG drama, KHÔNG public statement.\n\nNach dem Abschied: viết một thư tay (Brief) trong vòng 1 tuần — sẽ đến tay khi họ đã tới nơi mới + đang lonely. Có sức nặng cảm xúc rất lớn.",
+    "cultural_notes_en": "Permanent goodbyes (a long-distance move, or a friendship that is ending) work differently in German culture than in Vietnamese in three ways. (1) DIRECT EMOTION: Germans are often read as 'kühl' (cool) in everyday life, BUT in a serious farewell moment they express feeling very directly: 'Du wirst mir fehlen' (I'll miss you), 'Du hast mich geprägt' (you've shaped me). No hedging. No jokes to 'lighten the mood'. Emotional seriousness is the form respect takes. (2) SPECIFIC MEMORIES BEAT GENERIC PHRASES: a standalone 'Ich werde dich vermissen' reads as generic. Germans expect specifics: 'Ich werde unsere Sonntags-Spaziergänge am See vermissen' / 'Ich werde dein Lachen vermissen, wenn jemand schlechte Witze macht'. The more concrete, the more weight it carries. (3) BOTH-AND: 'Du wirst mir fehlen — und ich freue mich für dich' (I'll miss you — and I'm happy for you). Both feelings sit side by side. Don't 'be brave' (pretend only joy). Don't 'be sad' (pretend only sadness). Both.\n\nWhere this diverges from Vietnamese practice: in Vietnam, goodbyes usually include a 'see you soon' element to soften the heaviness. In Germany, especially for a real long-distance goodbye (emigration, moving to another continent), there's no pretending. 'Wir wissen nicht, wann wir uns wiedersehen — und das ist okay'. Acknowledging the reality IS the respect.\n\nOne important detail: a permanent goodbye with a friend (not a romantic breakup) usually does NOT involve dramatic crying in a public space — Germans are reserved that way. But you'll see long, tight hugs (lange Umarmung) and hands held tightly. Body language carries more than words.\n\nAbschiedsgeschenk (farewell gift): small, meaningful, not expensive. A photo album, a book with a handwritten note, a shared memento. NOT pricey (that creates reciprocity pressure).\n\nWhen a friendship is ENDING (not physical distance, just a falling out): the conversation is different. Still specific + direct: 'Ich glaube, unsere Wege trennen sich hier — und ich respektiere das' (I think our paths separate here — and I respect that). No drama, no public statement.\n\nNach dem Abschied (after the goodbye): write a handwritten letter within a week — it arrives just after they've landed in the new place and are lonely. It carries enormous emotional weight.",
     "tip_advice_vi": "Trước cuộc chia tay: (1) CHỌN ĐỊA ĐIỂM ý nghĩa — không nhà hàng ồn ào. Café yên tĩnh, công viên, đi dạo. (2) DÀNH ĐỦ THỜI GIAN — không 30 phút giữa các meetings. 2-3 giờ tối thiểu. (3) NOTE 3-5 KỶ NIỆM CỤ THỂ bạn muốn nhắc đến — đừng tin trí nhớ trong lúc xúc động.\n\nTrong cuộc trò chuyện:\n1. NHẮC KỶ NIỆM cụ thể: 'Weißt du noch, als wir zusammen...?'\n2. ACKNOWLEDGE tác động: 'Du hast mich geprägt — besonders durch [cụ thể]'\n3. EXPRESS cảm xúc trực tiếp: 'Du wirst mir fehlen'\n4. THỰC TẾ về tương lai: 'Wir wissen nicht, wann wir uns wiedersehen'\n5. PROMISE ít, GIỮ LIÊN LẠC nhiều: 'Lass uns einmal im Monat videotelefonieren' (1 lần/tháng video) — cụ thể.\n\nNgôn ngữ chia tay cảm xúc:\n- 'Du hast mich geprägt' (cậu đã định hình mình)\n- 'Du wirst mir fehlen' (mình sẽ nhớ cậu)\n- 'Ich werde [cụ thể] vermissen' (mình sẽ nhớ [cụ thể])\n- 'Es ist schwer und schön zugleich' (vừa khó vừa đẹp)\n- 'Lass uns den Kontakt halten' (giữ liên lạc nhé)\n- 'Komm gut an' (đến nơi an toàn nhé — câu chuẩn khi tiễn đi)\n- 'Pass auf dich auf' (giữ gìn nhé)\n\nKhi bạn khóc: KHÔNG xin lỗi ('tut mir leid, ich heule jetzt'). Cảm xúc đúng đắn. Câu chuẩn: 'Tränen sind okay — wir verlieren etwas Wichtiges'.\n\nKhi bạn họ khóc: KHÔNG cố làm dịu. Im lặng cùng. Có thể cầm tay/ôm tự nhiên — không 'comforting platitudes'.\n\nKhi tình bạn KẾT THÚC (không tiếp tục):\n- Specific reason: 'Ich glaube, wir wollen verschiedene Dinge im Leben'\n- KHÔNG đổ lỗi: 'Es liegt nicht an dir' (như break-up — quá personal cho tình bạn). Tốt hơn: 'Ich glaube, unsere Wege trennen sich'.\n- Acknowledge giá trị quá khứ: 'Die Zeit mit dir war wertvoll für mich'.\n- Wishes tốt: 'Ich wünsche dir wirklich alles Gute'.\n\nSau cuộc chia tay:\n- Schreib einen Brief (viết thư) trong 1 tuần\n- Gửi 1 ảnh kỷ niệm cụ thể qua Whatsapp\n- KHÔNG ngay lập tức xóa contact (drama)\n- Cho không gian tự nhiên — lần đầu họ liên lạc, đáp lại bình thường\n\nMẹo cuối: nếu bạn người Đức tặng bạn một vật kỷ niệm (Andenken), giá trị THẬT của vật đó là TÂM SỨC họ đặt vào, không phải giá tiền. Cảm ơn cụ thể: 'Das hat eine besondere Bedeutung für mich, weil...' (vật này có ý nghĩa đặc biệt với mình vì...).",
+    "tip_advice_en": "Before the conversation: (1) PICK A MEANINGFUL PLACE — not a noisy restaurant. A quiet café, a park, a walk together. (2) GIVE IT REAL TIME — not 30 minutes between meetings. Two to three hours minimum. (3) NOTE 3–5 SPECIFIC MEMORIES you want to bring up — don't trust your memory when you're emotional.\n\nDuring the conversation:\n1. NAME SPECIFIC MEMORIES: 'Weißt du noch, als wir zusammen…?' (do you remember when we…?)\n2. ACKNOWLEDGE THE IMPACT: 'Du hast mich geprägt — besonders durch [the specific thing]'\n3. EXPRESS FEELING DIRECTLY: 'Du wirst mir fehlen' (I'll miss you)\n4. BE REALISTIC ABOUT THE FUTURE: 'Wir wissen nicht, wann wir uns wiedersehen' (we don't know when we'll see each other again)\n5. PROMISE LESS, COMMIT MORE: 'Lass uns einmal im Monat videotelefonieren' (let's video-call once a month) — concrete.\n\nThe language of an emotional goodbye:\n- 'Du hast mich geprägt' (you've shaped me)\n- 'Du wirst mir fehlen' (I'll miss you)\n- 'Ich werde [specific] vermissen' (I'll miss [specific])\n- 'Es ist schwer und schön zugleich' (it's hard and beautiful at the same time)\n- 'Lass uns den Kontakt halten' (let's stay in touch)\n- 'Komm gut an' (get there safely — the standard line as someone leaves)\n- 'Pass auf dich auf' (take care of yourself)\n\nIf you start crying: do NOT apologise ('tut mir leid, ich heule jetzt'). The feeling is correct. The standard line is: 'Tränen sind okay — wir verlieren etwas Wichtiges' (tears are okay — we're losing something important).\n\nIf they start crying: don't try to smooth it over. Just be quiet with them. You can take their hand or hug naturally — no comforting platitudes.\n\nWhen a friendship is ENDING (not continuing):\n- Give a specific reason: 'Ich glaube, wir wollen verschiedene Dinge im Leben' (I think we want different things in life)\n- DON'T blame: 'Es liegt nicht an dir' (the breakup line — too personal for a friendship). Better: 'Ich glaube, unsere Wege trennen sich'.\n- Acknowledge what the past was worth: 'Die Zeit mit dir war wertvoll für mich' (my time with you mattered to me).\n- Wish them well: 'Ich wünsche dir wirklich alles Gute' (I truly wish you all the best).\n\nAfter the conversation:\n- Write a letter within a week\n- Send one specific shared memory via WhatsApp\n- Do NOT immediately delete their contact (drama)\n- Give space naturally — the first time they reach out, respond like normal\n\nFinal tip: if a German friend gives you a memento (Andenken), the real value is the thought they put in, not the price. Say thanks specifically: 'Das hat eine besondere Bedeutung für mich, weil…' (this means something special to me because…).",
     "vocabulary": [
       {
         "word": "der Abschied",
         "en": "farewell, goodbye",
         "vi": "lời chia tay",
         "pos": "noun (m)",
-        "pronunciation_vi": "đe AB-shit"
+        "pronunciation_vi": "đe AB-shit",
+        "pronunciation_en": "dair AB-sheet — farewell, goodbye"
       },
       {
         "word": "Abschied nehmen",
         "en": "to say goodbye",
         "vi": "chia tay (động từ ghép)",
         "pos": "verb phrase",
-        "pronunciation_vi": "AB-shit NÊ-mần"
+        "pronunciation_vi": "AB-shit NÊ-mần",
+        "pronunciation_en": "AB-sheet NAY-men — to say goodbye (separable verb)"
       },
       {
         "word": "vermissen",
         "en": "to miss (someone)",
         "vi": "nhớ (ai đó)",
         "pos": "verb",
-        "pronunciation_vi": "fe-MI-sần"
+        "pronunciation_vi": "fe-MI-sần",
+        "pronunciation_en": "fair-MISS-en — to miss someone"
       },
       {
         "word": "fehlen",
         "en": "to be missing, to be missed",
         "vi": "thiếu, được nhớ",
         "pos": "verb",
-        "pronunciation_vi": "FÊ-lần"
+        "pronunciation_vi": "FÊ-lần",
+        "pronunciation_en": "FAY-len — to be missing / to be missed"
       },
       {
         "word": "prägen",
         "en": "to shape, to influence deeply",
         "vi": "định hình, ảnh hưởng sâu sắc",
         "pos": "verb",
-        "pronunciation_vi": "PRÊ-gần"
+        "pronunciation_vi": "PRÊ-gần",
+        "pronunciation_en": "PRAY-gen — to shape, to leave a lasting mark on ('ä' = short 'e')"
       },
       {
         "word": "die Erinnerung",
         "en": "memory",
         "vi": "kỷ niệm",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi e-IN-nê-rung"
+        "pronunciation_vi": "đi e-IN-nê-rung",
+        "pronunciation_en": "dee air-IN-air-oong — memory; rolled 'r', stress on second syllable"
       },
       {
         "word": "der Kontakt",
         "en": "contact",
         "vi": "liên lạc",
         "pos": "noun (m)",
-        "pronunciation_vi": "đe kôn-TAKT"
+        "pronunciation_vi": "đe kôn-TAKT",
+        "pronunciation_en": "dair kon-TAKT — contact"
       },
       {
         "word": "die Umarmung",
         "en": "hug, embrace",
         "vi": "cái ôm",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi um-A-mung"
+        "pronunciation_vi": "đi um-A-mung",
+        "pronunciation_en": "dee oom-AR-moong — hug, embrace"
       },
       {
         "word": "das Andenken",
         "en": "keepsake, memento",
         "vi": "vật kỷ niệm",
         "pos": "noun (n)",
-        "pronunciation_vi": "đát AN-đen-kần"
+        "pronunciation_vi": "đát AN-đen-kần",
+        "pronunciation_en": "das AN-den-ken — keepsake, memento"
       },
       {
         "word": "die Wege trennen sich",
         "en": "the paths separate",
         "vi": "đường đi tách ra",
         "pos": "phrase",
-        "pronunciation_vi": "đi VÊ-gê TRÊN-nần zikh"
+        "pronunciation_vi": "đi VÊ-gê TRÊN-nần zikh",
+        "pronunciation_en": "dee VAY-guh TREN-en zikh — the paths separate (idiom)"
       }
     ],
     "dialogue": [
@@ -13475,36 +13512,46 @@ export const lessons: GermanLesson[] = [
       "Hứa giữ liên lạc CỤ THỂ (Videocall 1 lần/tháng, Chủ nhật đầu tháng) — không vague 'wir bleiben in Kontakt'. Kết bằng câu chuẩn 'Komm gut an' + 'Pass auf dich auf'."
     ],
     "register_notes": "Chia tay cuối với bạn thân Đức: 'Du'. Câu mở đầu acknowledge thực tế: 'Ich kann gar nicht glauben, dass...'. Konjunktiv II không cần ở đây — Indikativ trực tiếp + cảm xúc. Câu cảm xúc trực tiếp: 'Du hast mich geprägt' (cậu đã định hình mình), 'Du wirst mir fehlen' (mình sẽ nhớ cậu) — không hedging, không vòng vo. Câu acknowledge cả vui và buồn: 'Es ist schwer und schön zugleich' / 'Beides darf da sein'. Câu chuẩn tiễn đi: 'Komm gut an' (đến nơi an toàn) + 'Pass auf dich auf' (giữ gìn). Cụ thể KỶ NIỆM (Sonntags-Spaziergänge am Schlachtensee) > generic ('die schöne Zeit'). Khi tình bạn KẾT THÚC (không xa thể chất): 'Ich glaube, unsere Wege trennen sich hier' (đường đi tách ra) — không 'Es liegt nicht an dir' (quá break-up).",
+    "register_notes_en": "Permanent goodbye with a close German friend (Du): the opener acknowledges the reality directly: 'Ich kann gar nicht glauben, dass…' (I can't believe…). Konjunktiv II isn't needed here — use direct Indikativ + feeling. Direct emotion lines: 'Du hast mich geprägt' (you've shaped me), 'Du wirst mir fehlen' (I'll miss you) — no hedging, no softeners. Lines that hold both joy and sadness together: 'Es ist schwer und schön zugleich' / 'Beides darf da sein' (both are allowed to be here). The standard send-off pair: 'Komm gut an' (get there safely) + 'Pass auf dich auf' (take care of yourself). Use SPECIFIC memories (Sonntags-Spaziergänge am Schlachtensee) over generic ones ('die schöne Zeit'). When a friendship is ENDING (not physical distance): 'Ich glaube, unsere Wege trennen sich hier' (our paths separate here) — avoid 'Es liegt nicht an dir' (too breakup-coded for a friendship).",
     "idiom_glosses": [
       {
         "idiom": "die Wege trennen sich",
         "literal": "đường đi tách ra",
         "meaning": "rẽ hướng khác nhau, kết thúc đường chung",
-        "example": "Manchmal merken Freunde, dass sich ihre Wege trennen — das ist okay."
+        "meaning_en": "the paths separate — to go different ways, to end a shared journey",
+        "example": "Manchmal merken Freunde, dass sich ihre Wege trennen — das ist okay.",
+        "example_en": "Sometimes friends realise that their paths separate — and that's okay."
       },
       {
         "idiom": "Komm gut an",
         "literal": "đến nơi tốt đẹp",
         "meaning": "đến nơi an toàn (formula chia tay khi tiễn đi xa)",
-        "example": "Komm gut an, Marie — schreib mir, sobald du gelandet bist."
+        "meaning_en": "the standard German farewell formula when seeing someone off to a distant place — literally 'arrive well'",
+        "example": "Komm gut an, Marie — schreib mir, sobald du gelandet bist.",
+        "example_en": "Get there safely, Marie — message me as soon as you've landed."
       },
       {
         "idiom": "etwas im Herzen tragen",
         "literal": "mang điều gì đó trong tim",
         "meaning": "giữ kỷ niệm/người mãi trong lòng",
-        "example": "Egal wo du bist — ich trage unsere Freundschaft im Herzen."
+        "meaning_en": "to carry something in one's heart — to keep a memory or person alive inside you",
+        "example": "Egal wo du bist — ich trage unsere Freundschaft im Herzen.",
+        "example_en": "Wherever you are — I carry our friendship in my heart."
       },
       {
         "idiom": "Spuren hinterlassen",
         "literal": "để lại dấu chân",
         "meaning": "ảnh hưởng lâu dài, để lại dấu ấn",
-        "example": "Marie hat in meinem Leben tiefe Spuren hinterlassen."
+        "meaning_en": "to leave traces / footprints — to have a lasting influence, to make a mark on someone",
+        "example": "Marie hat in meinem Leben tiefe Spuren hinterlassen.",
+        "example_en": "Marie has left deep traces on my life."
       }
     ],
     "exercises": [
       {
         "type": "fill_blank",
         "instruction_vi": "Điền cấu trúc chia tay cảm xúc:",
+        "instruction_en": "Fill in the structure of an emotional goodbye:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -13528,6 +13575,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "matching",
         "instruction_vi": "Nối formula Đức với chức năng:",
+        "instruction_en": "Match each German formula to its function:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -13551,7 +13599,11 @@ export const lessons: GermanLesson[] = [
       {
         "type": "translation",
         "instruction_vi": "Dịch sang tiếng Đức (Du, cảm xúc trực tiếp):",
+        "instruction_en": "Translate into German (Du form, direct emotion):",
         "pronunciation_focus": [
+          "permanent goodbye"
+        ],
+        "pronunciation_focus_en": [
           "permanent goodbye"
         ],
         "items": [
@@ -13589,6 +13641,11 @@ export const lessons: GermanLesson[] = [
           "aufgefallen → AOF-gê-fal-lần",
           "still → SHTIL",
           "wirklich → VIK-likh"
+        ],
+        "pronunciation_focus_en": [
+          "aufgefallen → OWF-guh-fal-en",
+          "still → SHTIL",
+          "wirklich → VEERK-likh (final '-ich' as soft ich-Laut)"
         ]
       },
       {
@@ -13598,6 +13655,11 @@ export const lessons: GermanLesson[] = [
           "erklären → e-KLE-rần",
           "möchtest → MƠKH-tệst",
           "falls → FALS"
+        ],
+        "pronunciation_focus_en": [
+          "erklären → air-KLAY-ren ('ä' = short 'e')",
+          "möchtest → MURKH-test ('ö' = round lips for 'oh', say 'eh')",
+          "falls → FAHLS"
         ]
       },
       {
@@ -13607,6 +13669,11 @@ export const lessons: GermanLesson[] = [
           "klingt → KLINK-t",
           "Druck → ĐRUK",
           "Streit → SHTRAIT"
+        ],
+        "pronunciation_focus_en": [
+          "klingt → KLINKT",
+          "Druck → DROOK",
+          "Streit → SHTRITE ('ei' = 'eye')"
         ]
       },
       {
@@ -13616,6 +13683,11 @@ export const lessons: GermanLesson[] = [
           "Lösung → LƠ-zung",
           "hilft → HILF-t",
           "zuhört → TSU-hơt"
+        ],
+        "pronunciation_focus_en": [
+          "Lösung → LUR-zoong ('ö' = round lips, say 'eh')",
+          "hilft → HILFT",
+          "zuhört → TSOO-hurt ('ö' = round lips)"
         ]
       },
       {
@@ -13625,81 +13697,98 @@ export const lessons: GermanLesson[] = [
           "würde → VUY-đê",
           "Spaziergang → shpa-TSI-gang",
           "Stille → SHTI-lê"
+        ],
+        "pronunciation_focus_en": [
+          "würde → VUER-duh ('ü' = round lips, say 'ee')",
+          "Spaziergang → shpah-TSEER-gang",
+          "Stille → SHTI-luh"
         ]
       }
     ],
     "cultural_notes_vi": "Hỗ trợ bạn đang trong giai đoạn khó (work stress + family + exhaustion) trong văn hóa Đức khác Việt Nam ở ba điểm. (1) PROAKTIV ASKEN, NICHT WARTEN: người Đức không hay 'kêu cứu' trực tiếp. Họ trở nên im lặng (still werden), hủy hẹn, ngừng trả lời tin nhắn lâu hơn. ĐÓ là tín hiệu. Bạn nên CHỦ ĐỘNG hỏi: 'Mir ist aufgefallen, dass...' (mình để ý thấy...) — không chờ họ nói. (2) ZUHÖREN > LÖSEN: người Đức trẻ (đặc biệt thế hệ 25-35) coi việc 'đưa ra giải pháp' không được mời là PATERNALISTISCH (trịch thượng). Câu chuẩn: 'Ich muss dir keine Lösung geben — ich höre nur zu' (mình không cần đưa giải pháp — mình chỉ lắng nghe). KHÁC với culture VN nơi 'lời khuyên' là một dạng quan tâm. (3) PRACTICAL > EMOTIONAL: sau khi lắng nghe, đề nghị support CỤ THỂ + thực tế: 'Soll ich dir morgen Mittagessen bringen?' / 'Wollen wir Sonntag laufen gehen?'. Người Đức appreciate hành động cụ thể hơn những câu sáo rỗng kiểu 'es wird alles wieder gut'.\n\nKhác Việt Nam: ở VN, 'lời khuyên' từ người lớn/bạn được coi là quan tâm. Ở Đức, đặc biệt với người 30+ trở xuống, lời khuyên KHÔNG ĐƯỢC MỜI bị xem là 'mansplaining' / 'tôi biết rõ hơn cuộc đời cậu'. ASK FIRST: 'Möchtest du nur reden, oder möchtest du auch meine Sicht hören?' (cậu chỉ muốn nói, hay muốn nghe góc nhìn của mình?).\n\nMột chi tiết quan trọng: KHÔNG dùng các câu kiểu 'Es gibt Schlimmeres' (có chuyện tệ hơn) hoặc 'Andere haben es härter' (người khác còn khổ hơn) — bị xem là minimize cảm xúc. Cảm xúc của họ valid, KHÔNG cần so sánh.\n\nKhái niệm 'Burnout' / 'Belastung' (overload): rất bình thường nói ở Đức. KHÔNG stigma kiểu Việt Nam ('mạnh mẽ lên', 'người khác làm được sao mình không làm được'). Người Đức đi Therapie (trị liệu) tâm lý tự nhiên — bạn có thể GỢI Ý nếu phù hợp: 'Hast du schon mal überlegt, mit jemandem Professionelles zu sprechen?' — KHÔNG ép buộc, KHÔNG chẩn đoán.\n\nKhi gợi ý chuyên môn: tài nguyên Đức cụ thể nếu phù hợp:\n- Hausarzt — bước đầu tiên, có thể referral đến Therapeut\n- Therapeutische Praxis (cần Termin, có thể chờ vài tháng cho gesetzlich)\n- Telefonseelsorge: 0800 111 0 111 (miễn phí, 24/7) — chỉ nếu thực sự khẩn — KHÔNG đẩy bạn vào nếu chỉ stress thông thường\n\nTuy nhiên: vai trò của BẠN là LẮNG NGHE, không phải therapist. Đừng tự đặt áp lực 'fix' bạn.",
+    "cultural_notes_en": "Supporting a friend through a rough patch (work stress + family + exhaustion) plays out differently in German culture than in Vietnamese in three ways. (1) ASK PROACTIVELY, DON'T WAIT TO BE TOLD: Germans rarely ask for help directly. They go quiet (still werden), cancel plans, stop replying to messages on the usual timing. THAT is the signal. You should reach out concretely: 'Mir ist aufgefallen, dass…' (I've noticed that…). Don't wait for them to bring it up. (2) LISTEN BEFORE FIXING: younger Germans (especially the 25–35 generation that grew up around therapy talk) treat 'unsolicited solutions' as PATERNALISTISCH (condescending). The standard line is: 'Ich muss dir keine Lösung geben — ich höre nur zu' (I don't need to give you a solution — I'll just listen). This differs from Vietnamese culture, where giving advice is a form of care. (3) CONCRETE OVER ABSTRACT: after listening, offer support that is CONCRETE + practical: 'Soll ich dir morgen Mittagessen bringen?' / 'Wollen wir Sonntag laufen gehen?'. Germans appreciate specific actions far more than reassuring platitudes like 'es wird alles wieder gut'.\n\nWhere this diverges from Vietnamese practice: in Vietnam, advice from an elder or friend is read as care. In Germany, especially from people under 30 or so, UNSOLICITED advice can read as 'mansplaining' / 'I know your life better than you do'. ASK FIRST: 'Möchtest du nur reden, oder möchtest du auch meine Sicht hören?' (do you just want to talk, or also want to hear my perspective?).\n\nOne important detail: AVOID minimising lines like 'Es gibt Schlimmeres' (there's worse) or 'Andere haben es härter' (others have it harder) — these read as dismissive. Their feelings are valid without needing to be compared.\n\nThe concept of 'Burnout' / 'Belastung' (overload): completely normalised in Germany. There's no Vietnamese-style stigma ('toughen up', 'others manage, why can't you?'). Germans take psychotherapy (Therapie) as a matter of course — you can gently suggest it if it fits: 'Hast du schon mal überlegt, mit jemandem Professionelles zu sprechen?' (have you ever thought about talking to someone professional?) — no pushing, no diagnosing.\n\nIf you do bring up professional resources, here's the German-specific stack:\n- Hausarzt (general practitioner) — the first stop; they can refer you to a Therapeut\n- Therapeutische Praxis (you need an appointment; waitlists can run several months on statutory insurance)\n- Telefonseelsorge: 0800 111 0 111 (free, 24/7) — only for actual crises — don't push your friend toward it for ordinary stress\n\nThat said: your role is TO LISTEN, not to be their therapist. Don't put pressure on yourself to 'fix' your friend.",
     "tip_advice_vi": "Khi nhận thấy bạn không ổn:\n1. Tiếp cận RIÊNG (không nhóm) — bữa cà phê, đi dạo, không Whatsapp\n2. Mở đầu CỤ THỂ — không 'wie geht's' generic. 'Mir ist aufgefallen, dass du in den letzten Wochen ziemlich still geworden bist'\n3. Cho space để TỪ CHỐI — 'Du musst mir nichts erzählen — ich frage nur'\n\nKhi họ bắt đầu mở lòng:\n- LẮNG NGHE > NÓI. Nguyên tắc 80/20: họ nói 80%, bạn 20%.\n- KHÔNG cắt ngang để 'tôi cũng vậy' — câu chuyện của họ trước.\n- Active listening: 'Verstehe ich das richtig: du fühlst dich [cụ thể]?'\n- Reflect cảm xúc: 'Das klingt sehr belastend' / 'Das klingt einsam'\n\nNgôn ngữ lắng nghe empathetic:\n- 'Mir ist aufgefallen, dass...' (mình để ý thấy...)\n- 'Das klingt nach viel' (nghe có vẻ nặng)\n- 'Wie geht's dir wirklich?' (cậu thực sự thế nào? — nhấn 'wirklich')\n- 'Ich muss dir keine Lösung geben' (mình không cần đưa giải pháp)\n- 'Was würde dir gerade helfen?' (giờ điều gì sẽ giúp cậu?)\n- 'Ich bin da' (mình ở đây)\n\nKhi họ khóc:\n- KHÔNG 'nicht weinen'\n- Khăn giấy + im lặng\n- KHÔNG bỏ đi\n\nKhi họ không muốn nói chi tiết:\n- TÔN TRỌNG. 'Du musst mir nichts erzählen — ich bin trotzdem da'\n- Có thể đi dạo cùng/nấu cùng — sự hiện diện không cần lời\n\nĐề nghị support CỤ THỂ (không vague 'sag wenn du was brauchst'):\n- 'Soll ich morgen Mittagessen vorbeibringen?' (mai mình mang bữa trưa)\n- 'Wollen wir Sonntag spazieren gehen?' (Chủ nhật đi dạo nhé?)\n- 'Brauchst du Hilfe bei [cụ thể]?' (cần giúp việc cụ thể nào?)\n- 'Soll ich dich zum Hausarzt begleiten?' (mình đi cùng đến bác sĩ gia đình nhé?)\n\nKhi gợi ý chuyên môn (CHỈ khi phù hợp + nhẹ):\n- 'Hast du schon mal überlegt, mit deinem Hausarzt zu sprechen?'\n- 'Manchmal hilft es, mit jemandem Außenstehenden zu reden — z.B. einem Therapeuten'\n- KHÔNG: 'Du musst zum Therapeuten' (ép buộc)\n- KHÔNG: chẩn đoán ('du hast Burnout')\n\nKhi cuộc trò chuyện kết thúc:\n- 'Danke, dass du mit mir geredet hast' (cám ơn đã nói chuyện)\n- 'Schreib mir wann du willst — auch nachts' (nhắn mình bất cứ lúc nào — kể cả đêm) — nếu bạn thật sự sẵn sàng\n- Theo dõi 2-3 ngày sau: 'Wie war's seit unserem Gespräch?' (từ buổi nói chuyện đến giờ thế nào?)\n\nMẹo cuối: lưu ý sức khỏe TINH THẦN của BẢN THÂN. Nếu bạn đang lắng nghe nhiều mà cũng cảm thấy quá tải, OK để nói: 'Ich höre dir gerne zu — gleichzeitig brauche ich auch eine Pause heute Abend. Wollen wir morgen weiterreden?'. Tự chăm sóc không phải ích kỷ.",
+    "tip_advice_en": "When you notice your friend is struggling:\n1. Approach them IN PRIVATE (not in a group) — coffee, a walk, not WhatsApp\n2. Open SPECIFICALLY — not a generic 'wie geht's'. 'Mir ist aufgefallen, dass du in den letzten Wochen ziemlich still geworden bist' (I've noticed you've gone pretty quiet the last few weeks)\n3. Give them ROOM TO DECLINE — 'Du musst mir nichts erzählen — ich frage nur' (you don't have to tell me anything — I'm just asking)\n\nWhen they start opening up:\n- LISTEN MORE THAN YOU SPEAK. 80/20 rule: they speak 80%, you 20%.\n- DON'T cut in with 'me too' — their story first.\n- Active listening: 'Verstehe ich das richtig: du fühlst dich [specific]?' (am I understanding this correctly: you feel [specific]?)\n- Reflect the feeling: 'Das klingt sehr belastend' / 'Das klingt einsam' (that sounds very heavy / that sounds lonely)\n\nThe language of empathetic listening:\n- 'Mir ist aufgefallen, dass…' (I've noticed that…)\n- 'Das klingt nach viel' (that sounds like a lot)\n- 'Wie geht's dir wirklich?' (how are you really? — stress on 'wirklich')\n- 'Ich muss dir keine Lösung geben' (I don't need to give you a solution)\n- 'Was würde dir gerade helfen?' (what would help you right now?)\n- 'Ich bin da' (I'm here)\n\nWhen they cry:\n- DON'T say 'nicht weinen' (don't cry)\n- Tissues + silence\n- DON'T leave the room\n\nWhen they don't want to go into details:\n- RESPECT IT. 'Du musst mir nichts erzählen — ich bin trotzdem da' (you don't have to tell me — I'm here anyway)\n- You can walk together / cook together — presence without words counts\n\nOffer SPECIFIC support (not a vague 'sag wenn du was brauchst'):\n- 'Soll ich morgen Mittagessen vorbeibringen?' (should I bring lunch over tomorrow?)\n- 'Wollen wir Sonntag spazieren gehen?' (want to take a walk on Sunday?)\n- 'Brauchst du Hilfe bei [specific thing]?' (do you need help with [specific thing]?)\n- 'Soll ich dich zum Hausarzt begleiten?' (should I come with you to the GP?)\n\nWhen suggesting professional help (ONLY if it fits + done gently):\n- 'Hast du schon mal überlegt, mit deinem Hausarzt zu sprechen?' (have you considered talking to your GP?)\n- 'Manchmal hilft es, mit jemandem Außenstehenden zu reden — z.B. einem Therapeuten' (sometimes it helps to talk to an outside person — e.g. a therapist)\n- DON'T: 'Du musst zum Therapeuten' (you have to go to therapy — pressure)\n- DON'T diagnose ('du hast Burnout')\n\nWhen the conversation winds down:\n- 'Danke, dass du mit mir geredet hast' (thanks for talking with me)\n- 'Schreib mir wann du willst — auch nachts' (message me whenever — even at night) — only if you actually mean it\n- Check in 2–3 days later: 'Wie war's seit unserem Gespräch?' (how have things been since we talked?)\n\nFinal tip: watch your OWN mental load. If you've been doing a lot of listening and feel overwhelmed yourself, it's OK to say: 'Ich höre dir gerne zu — gleichzeitig brauche ich auch eine Pause heute Abend. Wollen wir morgen weiterreden?' (I'm happy to listen — and I also need a break tonight. Can we pick this up tomorrow?). Self-care isn't selfish.",
     "vocabulary": [
       {
         "word": "still werden",
         "en": "to become quiet, withdrawn",
         "vi": "trở nên im lặng (rút khỏi xã hội)",
         "pos": "verb phrase",
-        "pronunciation_vi": "SHTIL VÊ-đần"
+        "pronunciation_vi": "SHTIL VÊ-đần",
+        "pronunciation_en": "SHTIL VAIR-den — to go quiet, to withdraw socially"
       },
       {
         "word": "die Belastung",
         "en": "burden, strain, overload",
         "vi": "gánh nặng, quá tải",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi bê-LAS-tung"
+        "pronunciation_vi": "đi bê-LAS-tung",
+        "pronunciation_en": "dee buh-LAS-toong — burden, strain, overload"
       },
       {
         "word": "der Druck",
         "en": "pressure",
         "vi": "áp lực",
         "pos": "noun (m)",
-        "pronunciation_vi": "đe ĐRUK"
+        "pronunciation_vi": "đe ĐRUK",
+        "pronunciation_en": "dair DROOK — pressure"
       },
       {
         "word": "die Erschöpfung",
         "en": "exhaustion",
         "vi": "kiệt sức",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi e-SHƠ-pfung"
+        "pronunciation_vi": "đi e-SHƠ-pfung",
+        "pronunciation_en": "dee air-SHURP-foong — exhaustion ('ö' = round lips, say 'eh')"
       },
       {
         "word": "die Einsamkeit",
         "en": "loneliness, isolation",
         "vi": "sự cô đơn",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi AIN-zam-kait"
+        "pronunciation_vi": "đi AIN-zam-kait",
+        "pronunciation_en": "dee EYE-n-zam-kite — loneliness, isolation"
       },
       {
         "word": "zuhören",
         "en": "to listen actively",
         "vi": "lắng nghe",
         "pos": "verb (sep.)",
-        "pronunciation_vi": "TSU-hơ-rần"
+        "pronunciation_vi": "TSU-hơ-rần",
+        "pronunciation_en": "TSOO-hur-en — to listen actively (separable; 'ö' = round lips)"
       },
       {
         "word": "die Lösung",
         "en": "solution",
         "vi": "giải pháp",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi LƠ-zung"
+        "pronunciation_vi": "đi LƠ-zung",
+        "pronunciation_en": "dee LUR-zoong — solution ('ö' = round lips)"
       },
       {
         "word": "der/die Therapeut/-in",
         "en": "therapist",
         "vi": "chuyên gia trị liệu tâm lý",
         "pos": "noun (m/f)",
-        "pronunciation_vi": "đe tê-ra-PÔI-t"
+        "pronunciation_vi": "đe tê-ra-PÔI-t",
+        "pronunciation_en": "dair / dee tair-ah-POYT / -in — therapist ('eu' = 'oy')"
       },
       {
         "word": "der/die Hausarzt/-ärztin",
         "en": "general practitioner",
         "vi": "bác sĩ gia đình",
         "pos": "noun (m/f)",
-        "pronunciation_vi": "đe HAOS-atst"
+        "pronunciation_vi": "đe HAOS-atst",
+        "pronunciation_en": "dair / dee HOWS-artst / -ertstin — general practitioner"
       },
       {
         "word": "professionelle Hilfe",
         "en": "professional help",
         "vi": "sự trợ giúp chuyên môn",
         "pos": "noun phrase",
-        "pronunciation_vi": "prô-fê-sô-NÊ-lê HIL-fê"
+        "pronunciation_vi": "prô-fê-sô-NÊ-lê HIL-fê",
+        "pronunciation_en": "pro-fes-yo-NEL-uh HIL-fuh — professional help"
       }
     ],
     "dialogue": [
@@ -13817,36 +13906,46 @@ export const lessons: GermanLesson[] = [
       "Khi Lukas mô tả mất ngủ + kiệt sức, gợi ý NHẸ về Hausarzt — không ép buộc, không chẩn đoán. Đề nghị đi cùng đến phòng khám: 'Du musst nicht alleine hingehen'."
     ],
     "register_notes": "Hỗ trợ bạn đang khó khăn (Du): Konjunktiv II vẫn dùng cho hedging gentle: 'Hast du schon mal überlegt...?', 'Was würde dir helfen?'. Câu mở 'Mir ist aufgefallen, dass...' (mình để ý thấy) — proaktiv không waiting. 'Wie geht's dir wirklich?' (nhấn 'wirklich') — distinguish khỏi 'wie geht's' generic. Active listening: 'Das klingt nach...' (nghe có vẻ...) — phản ánh không diagnose. Khi gợi ý chuyên môn: 'Hast du schon mal überlegt, mit deinem Hausarzt zu sprechen?' — gentle, NICHT 'du musst' (ép buộc), NICHT 'du hast Burnout' (chẩn đoán). Phân biệt 'krank genug' fallacy: 'man muss nicht krank genug sein, um Hilfe zu bekommen'. Đề nghị support CỤ THỂ: 'Ich kann dich begleiten' (đi cùng) > 'sag wenn du was brauchst' (vague). Câu kết: 'Du brauchst dich für nichts zu bedanken' + 'Ich bin da'.",
+    "register_notes_en": "Supporting a struggling friend (Du): use Konjunktiv II for gentle hedging: 'Hast du schon mal überlegt…?' (have you ever considered…?), 'Was würde dir helfen?' (what would help you?). Opener 'Mir ist aufgefallen, dass…' (I've noticed that…) — proactive, not waiting. 'Wie geht's dir wirklich?' (with stress on 'wirklich') — distinguishes from the throwaway 'wie geht's'. Active-listening frame: 'Das klingt nach…' (that sounds like…) — reflecting, not diagnosing. When suggesting professional help: 'Hast du schon mal überlegt, mit deinem Hausarzt zu sprechen?' — gentle. NEVER 'du musst' (pressure), NEVER 'du hast Burnout' (diagnosing). Push back on the 'krank genug' fallacy: 'man muss nicht krank genug sein, um Hilfe zu bekommen' (you don't have to be sick enough to deserve help). Offer support CONCRETELY: 'Ich kann dich begleiten' (I can come with you) over 'sag wenn du was brauchst' (vague). Close with 'Du brauchst dich für nichts zu bedanken' + 'Ich bin da' (you don't have to thank me for anything + I'm here).",
     "idiom_glosses": [
       {
         "idiom": "am Limit sein",
         "literal": "đang ở giới hạn",
         "meaning": "kiệt sức, quá tải",
-        "example": "Lukas ist seit zwei Monaten am Limit — 55 Stunden pro Woche."
+        "meaning_en": "to be at the limit — to be running on empty, completely overloaded",
+        "example": "Lukas ist seit zwei Monaten am Limit — 55 Stunden pro Woche.",
+        "example_en": "Lukas has been at the limit for two months now — 55 hours a week."
       },
       {
         "idiom": "alles wächst über den Kopf",
         "literal": "tất cả lớn vượt đầu",
         "meaning": "mọi thứ vượt khả năng đối phó",
-        "example": "Manchmal wächst einem alles über den Kopf — und das ist okay zuzugeben."
+        "meaning_en": "everything grows over your head — everything is too much to cope with at once",
+        "example": "Manchmal wächst einem alles über den Kopf — und das ist okay zuzugeben.",
+        "example_en": "Sometimes everything just grows over your head — and that's okay to admit."
       },
       {
         "idiom": "ein offenes Ohr haben",
         "literal": "có cái tai mở",
         "meaning": "sẵn sàng lắng nghe",
-        "example": "Ich habe immer ein offenes Ohr für dich — auch nachts."
+        "meaning_en": "to have an open ear — to be available to listen",
+        "example": "Ich habe immer ein offenes Ohr für dich — auch nachts.",
+        "example_en": "I always have an open ear for you — even at night."
       },
       {
         "idiom": "jemandem den Rücken stärken",
         "literal": "làm mạnh lưng ai đó",
         "meaning": "support ai đó về mặt tinh thần/thực tế",
-        "example": "Ich möchte dir den Rücken stärken — was würde dir helfen?"
+        "meaning_en": "to strengthen someone's back — to back them up emotionally or practically",
+        "example": "Ich möchte dir den Rücken stärken — was würde dir helfen?",
+        "example_en": "I want to back you up — what would help you?"
       }
     ],
     "exercises": [
       {
         "type": "fill_blank",
         "instruction_vi": "Điền cấu trúc lắng nghe empathetic:",
+        "instruction_en": "Fill in the structure of empathetic listening:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -13870,6 +13969,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "matching",
         "instruction_vi": "Nối kỹ thuật listening Đức với chức năng:",
+        "instruction_en": "Match each German listening technique to its function:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -13893,7 +13993,11 @@ export const lessons: GermanLesson[] = [
       {
         "type": "translation",
         "instruction_vi": "Dịch sang tiếng Đức (Du, gentle hedging):",
+        "instruction_en": "Translate into German (Du form, gentle hedging):",
         "pronunciation_focus": [
+          "empathetic listening"
+        ],
+        "pronunciation_focus_en": [
           "empathetic listening"
         ],
         "items": [
@@ -13931,6 +14035,11 @@ export const lessons: GermanLesson[] = [
           "Unangenehmes → UN-an-gê-nê-mês",
           "geliehen → gê-LI-ần",
           "März → MÊTS"
+        ],
+        "pronunciation_focus_en": [
+          "Unangenehmes → OON-an-guh-nay-mes",
+          "geliehen → guh-LEE-en",
+          "März → MAIRTS ('ä' = short 'e', 'z' = 'ts')"
         ]
       },
       {
@@ -13940,6 +14049,11 @@ export const lessons: GermanLesson[] = [
           "Geld → GELT",
           "Versicherung → fe-ZÍ-khê-rung",
           "zahlen → TSA-lần"
+        ],
+        "pronunciation_focus_en": [
+          "Geld → GELT",
+          "Versicherung → fair-ZIKH-air-oong (soft ich-Laut)",
+          "zahlen → TSAH-len ('z' = 'ts')"
         ]
       },
       {
@@ -13949,6 +14063,11 @@ export const lessons: GermanLesson[] = [
           "Rückzahlungsplan → RUYK-tsa-lungs-plan",
           "vereinbaren → fe-AIN-ba-rần",
           "Raten → RA-tần"
+        ],
+        "pronunciation_focus_en": [
+          "Rückzahlungsplan → RUEK-tsah-loongs-plahn ('ü' = round lips, say 'ee')",
+          "vereinbaren → fair-EYE-n-bah-ren ('ei' = 'eye')",
+          "Raten → RAH-ten"
         ]
       },
       {
@@ -13958,6 +14077,11 @@ export const lessons: GermanLesson[] = [
           "zwischen → TSVI-shần",
           "Freundschaft → FROIN-shaft",
           "belasten → bê-LAS-tần"
+        ],
+        "pronunciation_focus_en": [
+          "zwischen → TSVI-shen",
+          "Freundschaft → FROYND-shaft ('eu' = 'oy')",
+          "belasten → buh-LAS-ten"
         ]
       },
       {
@@ -13967,81 +14091,98 @@ export const lessons: GermanLesson[] = [
           "schwierig → SHVI-rikh",
           "ehrlich → ÊR-likh",
           "Lösung → LƠ-zung"
+        ],
+        "pronunciation_focus_en": [
+          "schwierig → SHVEE-rikh (final '-ig' as soft ich-Laut)",
+          "ehrlich → AIR-likh",
+          "Lösung → LUR-zoong ('ö' = round lips, say 'eh')"
         ]
       }
     ],
     "cultural_notes_vi": "Tiền/nợ với bạn trong văn hóa Đức khác Việt Nam ở ba điểm. (1) GELD UND FREUNDSCHAFT — nguyên tắc 'Trennung': người Đức rất muốn tách bạch tiền và tình cảm. Có câu chuẩn: 'Bei Geld hört die Freundschaft auf' (đến tiền là tình bạn dừng) — không phải lạnh lùng, mà là CẢNH BÁO rằng tiền có thể PHÁ HỦY tình bạn nếu không xử lý sạch sẽ. Nguyên tắc: ghi rõ số tiền + ngày, có thể qua Whatsapp ('300 Euro, geliehen am 12.03.', để có dấu vết). (2) SCHRIFTLICHKEIT (văn bản): với số tiền lớn (>500 EUR), người Đức có thể yêu cầu một Schuldschein đơn giản (giấy nhận nợ — không cần công chứng) hoặc IOU qua tin nhắn. KHÔNG có nghĩa là không tin — mà là CHUYÊN NGHIỆP. (3) DIRECT ASKING > AVOIDING: nếu bạn cho mượn và đến hạn không thấy trả lại, NGƯỜI ĐỨC SẼ HỎI THẲNG sau 1-2 tuần — không sợ awkward. Im lặng đợi 6 tháng = tự gây stress + làm chuyện trở nên tệ hơn.\n\nKhác Việt Nam: ở VN, đòi nợ bạn có thể bị xem là 'không nể tình' hoặc 'tham tiền'. Ở Đức, đòi nợ ĐÚNG HẸN là TÔN TRỌNG cả 2 phía — bạn được trả, người mượn không bị 'guilt' kéo dài. Việc né tránh chuyện tiền BỊ XEM là thiếu chuyên nghiệp.\n\nMột chi tiết quan trọng: nếu bạn người Đức nói 'Ich muss kurz nachschauen, ob ich dir das schon zurückgezahlt habe' — đó KHÔNG phải họ chối, mà là họ muốn check chính xác. Tôn trọng — đợi họ check.\n\nNếu bạn KHÔNG THỂ trả: nói NGAY, không né. Câu chuẩn: 'Ich kann das gerade nicht zurückzahlen — können wir einen Plan finden?' (mình giờ không trả được — tìm phương án nhé?). Người Đức appreciate honesty hơn ghosting.\n\nKhi chia bill nhà hàng: 'getrennt zahlen' (chia riêng) — người Đức trẻ thường mỗi người trả phần mình, đến euro xu (cả centime!). KHÔNG xem là keo kiệt — đó là Fairness. App như Splitwise/Tricount rất phổ biến.\n\nKhi bạn mượn không bao giờ trả: sau 2-3 lần nhắc nhẹ + 1 lần thẳng, người Đức có thể đứt liên lạc. KHÔNG drama — chỉ acknowledge: 'Ich glaube, das Vertrauen ist hier verletzt'.",
+    "cultural_notes_en": "Money and debt between friends works differently in German culture than in Vietnamese in three ways. (1) GELD UND FREUNDSCHAFT — the principle of 'Trennung' (separation): Germans want a clean separation between money and feelings. There's even a saying: 'Bei Geld hört die Freundschaft auf' (where money begins, friendship ends) — not cold but a WARNING that money can DESTROY a friendship if it isn't handled cleanly. The norm: note the amount + date clearly, ideally over WhatsApp ('300 Euro, geliehen am 12.03.') so there's a record. (2) PUT IT IN WRITING: for larger sums (over €500), it's normal to ask for a simple Schuldschein (a one-page IOU — no notary required) or even just an SMS/WhatsApp acknowledgment. That doesn't mean 'I don't trust you' — it means 'we're being professional'. (3) ASK DIRECTLY INSTEAD OF AVOIDING: if you've lent money and the deadline slips, GERMANS WILL BRING IT UP STRAIGHT after a week or two — they don't fear the awkwardness. Sitting on it for six months silently = you stress yourself out + the situation gets worse.\n\nWhere this diverges from Vietnamese practice: in Vietnam, asking a friend to repay you can read as 'không nể tình' (not caring about the relationship) or 'tham tiền' (money-hungry). In Germany, asking ON TIME shows respect for both sides — you get repaid, and the borrower isn't carrying a guilty conscience for months. Avoiding money talk is read as unprofessional.\n\nOne important detail: if a German friend says 'Ich muss kurz nachschauen, ob ich dir das schon zurückgezahlt habe' (let me just check whether I've already paid you back) — that's NOT denial, that's them wanting to be precise. Respect it — let them check.\n\nIf YOU can't repay: say so RIGHT AWAY, don't dodge. Standard line: 'Ich kann das gerade nicht zurückzahlen — können wir einen Plan finden?' (I can't repay you right now — can we work out a plan?). Germans much prefer honesty to ghosting.\n\nSplitting a restaurant bill: 'getrennt zahlen' (paying separately) — younger Germans usually each pay their own share, down to the cent. It is NOT seen as stingy — it's read as Fairness. Apps like Splitwise / Tricount are very widely used.\n\nWhen a friend borrows and never pays back: after 2–3 gentle reminders + one direct one, Germans may quietly let the friendship drop. No drama — just an acknowledgment: 'Ich glaube, das Vertrauen ist hier verletzt' (the trust has been damaged here).",
     "tip_advice_vi": "Khi cho mượn:\n1. SỐ TIỀN nhỏ (<50 EUR): có thể bằng miệng. Note vào điện thoại của BẠN.\n2. SỐ TIỀN trung bình (50-500 EUR): GHI Whatsapp confirm: '300 Euro, geliehen am 12.03., Rückzahlung bis Ende Mai'. Cả 2 đồng ý qua text.\n3. SỐ TIỀN lớn (>500 EUR): Schuldschein giấy hoặc PDF — có chữ ký, ngày, số tiền, lịch trả. Tải template miễn phí từ Verbraucherzentrale.\n4. KHÔNG cho mượn nếu BẠN thực sự cần tiền — câu chuẩn để từ chối: 'Ich helfe dir gerne — aber gerade selbst nicht in der Lage' (mình muốn giúp — nhưng giờ chính mình không đủ).\n\nKhi cần đòi nợ:\n1. Thời điểm: TRÁNH bữa ăn nhóm/party. Riêng tư + có cuộc trò chuyện riêng.\n2. Mở đầu acknowledge awkward: 'Ich möchte etwas Unangenehmes ansprechen' (mình muốn nói chuyện khó nói).\n3. CỤ THỂ: 'die 300 Euro vom 12. März' — số + ngày.\n4. LÝ DO của bạn (không obligatory nhưng giúp): 'Ich brauche es für meine Versicherung'.\n5. ĐỀ XUẤT GIẢI PHÁP: 'Wäre ein Rückzahlungsplan in zwei Raten möglich?'.\n6. SPACE để họ nói: 'Falls es bei dir schwierig ist — sag's mir ehrlich'.\n\nKhi BẠN bị đòi nợ:\n1. KHÔNG defensive: 'aber du hast doch...'  — không lợi.\n2. Acknowledge: 'Du hast Recht — ich habe das vergessen' / 'Ich hatte das verdrängt'.\n3. Honest về situation: nếu khó, nói. 'Ich kann gerade keine 300 zurückzahlen — wäre 100 jetzt + 200 in zwei Wochen okay?'.\n4. KHÔNG ghosting. Worst response = im lặng.\n5. Nếu thực sự không trả được: 'Ich brauche mehr Zeit — können wir nochmal in 4 Wochen reden?'. Cụ thể.\n\nNgôn ngữ tiền/nợ formal lịch sự:\n- 'Ich möchte etwas Unangenehmes ansprechen' (chuyện khó nói)\n- 'die [số] Euro, die ich dir [tháng/năm] geliehen habe' (cụ thể)\n- 'Wäre ein Rückzahlungsplan möglich?' (Konjunktiv II)\n- 'in [N] Raten' (chia [N] đợt)\n- 'Falls es schwierig ist — sag's mir ehrlich' (cho space)\n- 'Geld soll unsere Freundschaft nicht belasten' (giá trị tình bạn)\n- 'Bei Geld hört die Freundschaft auf' (cảnh báo, dùng cẩn thận)\n\nKhi không hợp tác — escalation:\n1. Nhắn lại 1 lần qua Whatsapp với deadline rõ.\n2. Nếu vẫn không phản hồi: gặp mặt 1 lần cuối — formal hơn.\n3. >1.000 EUR + bị im lặng: có thể gửi Mahnung qua Inkassobüro hoặc Rechtsanwalt — but tự đánh giá: tình bạn đã chết hay chưa? Pháp lý kết thúc tình bạn 100%.\n\nMẹo cuối: với chi phí chung trong nhóm bạn (đám tiệc, du lịch), DÙNG APP Splitwise/Tricount/PayPal-Me/Paypal Send Money. KHÔNG cố nhớ trong đầu. Hệ thống = ít drama hơn.",
+    "tip_advice_en": "When you lend money:\n1. SMALL AMOUNTS (<€50): a verbal agreement is fine. Note it on YOUR phone.\n2. MID-SIZED (€50–500): GET A WHATSAPP CONFIRMATION: '300 Euro, geliehen am 12.03., Rückzahlung bis Ende Mai'. Both of you confirm in text.\n3. LARGE (>€500): a Schuldschein on paper or PDF — with signature, date, amount, and a repayment schedule. Free templates are available from Verbraucherzentrale.\n4. DON'T LEND if YOU actually need the money. Standard line to decline: 'Ich helfe dir gerne — aber gerade selbst nicht in der Lage' (I'd like to help — but I'm not in a position to right now).\n\nWhen you need to ask for the money back:\n1. Timing: AVOID a group dinner or party. One-on-one, private conversation.\n2. Open by acknowledging the awkwardness: 'Ich möchte etwas Unangenehmes ansprechen' (I want to bring something awkward up).\n3. BE SPECIFIC: 'die 300 Euro vom 12. März' — amount + date.\n4. YOUR REASON (not obligatory, but it helps): 'Ich brauche es für meine Versicherung' (I need it for my insurance).\n5. PROPOSE A SOLUTION: 'Wäre ein Rückzahlungsplan in zwei Raten möglich?' (would a two-installment repayment plan work?).\n6. LEAVE SPACE for them: 'Falls es bei dir schwierig ist — sag's mir ehrlich' (if things are tight on your end — tell me honestly).\n\nWhen YOU'RE the one being asked to repay:\n1. DON'T get defensive: 'aber du hast doch…' — never helps.\n2. Acknowledge: 'Du hast Recht — ich habe das vergessen' / 'Ich hatte das verdrängt' (you're right — I forgot / I pushed that out of my mind).\n3. Be honest about your situation: if it's tight, say so. 'Ich kann gerade keine 300 zurückzahlen — wäre 100 jetzt + 200 in zwei Wochen okay?' (I can't pay back 300 right now — would 100 now + 200 in two weeks be okay?).\n4. NO ghosting. The worst response is silence.\n5. If you genuinely can't pay: 'Ich brauche mehr Zeit — können wir nochmal in 4 Wochen reden?' (I need more time — can we talk again in 4 weeks?). Concrete.\n\nThe language of polite, formal money-talk:\n- 'Ich möchte etwas Unangenehmes ansprechen' (I want to raise something awkward)\n- 'die [amount] Euro, die ich dir [month/year] geliehen habe' (specific)\n- 'Wäre ein Rückzahlungsplan möglich?' (Konjunktiv II)\n- 'in [N] Raten' (in [N] installments)\n- 'Falls es schwierig ist — sag's mir ehrlich' (give space)\n- 'Geld soll unsere Freundschaft nicht belasten' (money shouldn't weigh on our friendship)\n- 'Bei Geld hört die Freundschaft auf' (warning idiom — use carefully)\n\nWhen they don't cooperate — escalation:\n1. Send one WhatsApp follow-up with a clear deadline.\n2. If no response: one final in-person meeting — more formal in tone.\n3. >€1,000 + total silence: you can send a Mahnung through an Inkassobüro or a Rechtsanwalt — but be honest with yourself: is this friendship already dead? Going legal ends it 100%.\n\nFinal tip: for shared costs in a group of friends (parties, trips), USE AN APP — Splitwise / Tricount / PayPal-Me / PayPal Send Money. Don't try to remember it in your head. A system = less drama.",
     "vocabulary": [
       {
         "word": "leihen / verleihen",
         "en": "to borrow / to lend",
         "vi": "mượn / cho mượn",
         "pos": "verb",
-        "pronunciation_vi": "LAI-ần / fe-LAI-ần"
+        "pronunciation_vi": "LAI-ần / fe-LAI-ần",
+        "pronunciation_en": "LYE-en / fair-LYE-en — to borrow / to lend"
       },
       {
         "word": "die Schuld",
         "en": "debt; guilt (context-dependent)",
         "vi": "khoản nợ; tội (tùy ngữ cảnh)",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi SHULT"
+        "pronunciation_vi": "đi SHULT",
+        "pronunciation_en": "dee SHULT — debt; also 'guilt' (context-dependent)"
       },
       {
         "word": "der Schuldschein",
         "en": "IOU, written acknowledgment of debt",
         "vi": "giấy nhận nợ",
         "pos": "noun (m)",
-        "pronunciation_vi": "đe SHULT-shain"
+        "pronunciation_vi": "đe SHULT-shain",
+        "pronunciation_en": "dair SHULT-shine — IOU, written acknowledgment of debt"
       },
       {
         "word": "der Rückzahlungsplan",
         "en": "repayment plan",
         "vi": "lịch trả nợ",
         "pos": "noun (m)",
-        "pronunciation_vi": "đe RUYK-tsa-lungs-plan"
+        "pronunciation_vi": "đe RUYK-tsa-lungs-plan",
+        "pronunciation_en": "dair RUEK-tsah-loongs-plahn — repayment plan ('ü' = round lips, say 'ee')"
       },
       {
         "word": "die Rate",
         "en": "installment",
         "vi": "đợt trả góp",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi RA-tê"
+        "pronunciation_vi": "đi RA-tê",
+        "pronunciation_en": "dee RAH-tuh — installment"
       },
       {
         "word": "vereinbaren",
         "en": "to agree on, to arrange",
         "vi": "thỏa thuận",
         "pos": "verb",
-        "pronunciation_vi": "fe-AIN-ba-rần"
+        "pronunciation_vi": "fe-AIN-ba-rần",
+        "pronunciation_en": "fair-EYE-n-bah-ren — to agree on, to arrange"
       },
       {
         "word": "zurückzahlen",
         "en": "to pay back",
         "vi": "trả lại (tiền)",
         "pos": "verb (sep.)",
-        "pronunciation_vi": "tsu-RUYK-tsa-lần"
+        "pronunciation_vi": "tsu-RUYK-tsa-lần",
+        "pronunciation_en": "tsoo-RUEK-tsah-len — to pay back (separable verb)"
       },
       {
         "word": "die Mahnung",
         "en": "formal payment reminder",
         "vi": "thư đòi nợ chính thức",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi MA-nung"
+        "pronunciation_vi": "đi MA-nung",
+        "pronunciation_en": "dee MAH-noong — formal payment reminder"
       },
       {
         "word": "getrennt zahlen",
         "en": "to split the bill",
         "vi": "chia bill",
         "pos": "verb phrase",
-        "pronunciation_vi": "gê-TRÊN-t TSA-lần"
+        "pronunciation_vi": "gê-TRÊN-t TSA-lần",
+        "pronunciation_en": "guh-TRENT TSAH-len — to split the bill"
       },
       {
         "word": "die Auslage",
         "en": "outlay, money advanced for someone",
         "vi": "khoản ứng tiền hộ",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi AOS-la-gê"
+        "pronunciation_vi": "đi AOS-la-gê",
+        "pronunciation_en": "dee OWS-lah-guh — outlay, money fronted for someone"
       }
     ],
     "dialogue": [
@@ -14154,36 +14295,46 @@ export const lessons: GermanLesson[] = [
       "Thỏa thuận xong: 150 EUR cuối tuần + 150 EUR ngày 15 tháng sau. Đề nghị ghi qua Whatsapp ('damit wir beide den gleichen Überblick haben'). Acknowledge tình bạn quan trọng hơn tiền."
     ],
     "register_notes": "Trao đổi tiền với bạn Đức (Du): câu mở đầu acknowledge awkward 'Ich möchte etwas Unangenehmes ansprechen'. CỤ THỂ: số tiền + ngày + ngữ cảnh ('die 300 Euro vom 12. März, als deine Waschmaschine kaputtgegangen ist'). Konjunktiv II cho hedging: 'Wäre ein Rückzahlungsplan möglich?', 'Meinetwegen in zwei Raten' (mình ok 2 đợt). Cho space để honest: 'Falls es bei dir schwierig ist — sag's mir ehrlich'. Văn bản hóa qua Whatsapp ('damit wir beide den gleichen Überblick haben') — chuyên nghiệp, không thiếu tin tưởng. Câu chốt 'Bei Geld hört die Freundschaft auf' = idiom cảnh báo, dùng để giải thích TẠI SAO cần rõ ràng. Khi BẠN bị đòi: 'Du hast Recht' (cậu đúng) + 'Ich hatte das verdrängt' (mình không nhớ) — KHÔNG defensive 'aber'. Nếu khó trả: COUNTER-OFFER cụ thể, không ghosting.",
+    "register_notes_en": "Money talk with a German friend (Du): open by acknowledging the awkwardness: 'Ich möchte etwas Unangenehmes ansprechen'. Be SPECIFIC: amount + date + context ('die 300 Euro vom 12. März, als deine Waschmaschine kaputtgegangen ist'). Use Konjunktiv II for hedging: 'Wäre ein Rückzahlungsplan möglich?', 'Meinetwegen in zwei Raten' (two installments works for me). Leave room for honesty: 'Falls es bei dir schwierig ist — sag's mir ehrlich'. Move it to text — 'damit wir beide den gleichen Überblick haben' (so we both have the same overview) — professional, not a lack of trust. The closer 'Bei Geld hört die Freundschaft auf' = a warning-idiom; use it to explain WHY you want clarity. When YOU'RE being asked: 'Du hast Recht' (you're right) + 'Ich hatte das verdrängt' (I'd pushed it out of mind) — never start with a defensive 'aber'. If you can't pay, COUNTER-OFFER concretely. Don't go silent.",
     "idiom_glosses": [
       {
         "idiom": "Bei Geld hört die Freundschaft auf",
         "literal": "Đến tiền là tình bạn dừng",
         "meaning": "Tiền có thể phá vỡ tình bạn — cảnh báo cần rõ ràng",
-        "example": "Bei Geld hört die Freundschaft auf — deshalb möchte ich das jetzt klären, bevor es ein Problem wird."
+        "meaning_en": "where money begins, friendship ends — a warning that money can break a friendship; reason to be clear",
+        "example": "Bei Geld hört die Freundschaft auf — deshalb möchte ich das jetzt klären, bevor es ein Problem wird.",
+        "example_en": "Where money begins, friendship ends — that's why I want to sort this out now, before it becomes a problem."
       },
       {
         "idiom": "in den roten Zahlen sein",
         "literal": "đang ở số đỏ",
         "meaning": "tài khoản âm, hết tiền",
-        "example": "Mein Konto ist diesen Monat in den roten Zahlen — ich kann nicht alles auf einmal zurückzahlen."
+        "meaning_en": "to be in the red — to be overdrawn, out of money",
+        "example": "Mein Konto ist diesen Monat in den roten Zahlen — ich kann nicht alles auf einmal zurückzahlen.",
+        "example_en": "My account is in the red this month — I can't pay everything back at once."
       },
       {
         "idiom": "die Rechnung begleichen",
         "literal": "cân bằng hóa đơn",
         "meaning": "trả nợ, thanh toán",
-        "example": "Ich werde die Rechnung in zwei Raten begleichen — ist das okay für dich?"
+        "meaning_en": "to settle the bill — to pay off a debt",
+        "example": "Ich werde die Rechnung in zwei Raten begleichen — ist das okay für dich?",
+        "example_en": "I'll settle the bill in two installments — is that okay with you?"
       },
       {
         "idiom": "etwas auf die lange Bank schieben",
         "literal": "đẩy điều gì đó lên ghế dài",
         "meaning": "trì hoãn, để lâu",
-        "example": "Ich habe das Thema Geld zu lange auf die lange Bank geschoben — heute spreche ich es an."
+        "meaning_en": "to push something onto the long bench — to keep putting it off, to procrastinate",
+        "example": "Ich habe das Thema Geld zu lange auf die lange Bank geschoben — heute spreche ich es an.",
+        "example_en": "I've put the money topic onto the long bench for too long — today I'm bringing it up."
       }
     ],
     "exercises": [
       {
         "type": "fill_blank",
         "instruction_vi": "Điền cấu trúc trao đổi tiền lịch sự:",
+        "instruction_en": "Fill in the structure of a polite money conversation:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -14207,6 +14358,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "matching",
         "instruction_vi": "Nối thuật ngữ Đức với chức năng:",
+        "instruction_en": "Match each German term to its function:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -14230,7 +14382,11 @@ export const lessons: GermanLesson[] = [
       {
         "type": "translation",
         "instruction_vi": "Dịch sang tiếng Đức (Du, Konjunktiv II khi cần):",
+        "instruction_en": "Translate into German (Du, Konjunktiv II where needed):",
         "pronunciation_focus": [
+          "money conversation"
+        ],
+        "pronunciation_focus_en": [
           "money conversation"
         ],
         "items": [
@@ -14268,6 +14424,11 @@ export const lessons: GermanLesson[] = [
           "spannend → SHPÁ-nầnt",
           "Kirche → KIR-khê",
           "bedeutet → bê-ĐOI-tệt"
+        ],
+        "pronunciation_focus_en": [
+          "spannend → SHPAH-nent",
+          "Kirche → KEER-khuh (soft ich-Laut)",
+          "bedeutet → buh-DOY-tet ('eu' = 'oy')"
         ]
       },
       {
@@ -14277,6 +14438,11 @@ export const lessons: GermanLesson[] = [
           "Ahnenverehrung → A-nần-fe-ê-rung",
           "Altar → AL-ta",
           "Großeltern → GRÔS-en-tờn"
+        ],
+        "pronunciation_focus_en": [
+          "Ahnenverehrung → AH-nen-fair-AY-roong",
+          "Altar → ahl-TAR",
+          "Großeltern → GROHS-el-tern ('ß' = 'ss')"
         ]
       },
       {
@@ -14286,6 +14452,11 @@ export const lessons: GermanLesson[] = [
           "religiös → rê-li-GIƠS",
           "bezeichnen → bê-TSAI-khê-nần",
           "spirituell → shpi-ri-tu-ÊL"
+        ],
+        "pronunciation_focus_en": [
+          "religiös → ray-li-GYURS ('ö' = round lips, say 'eh')",
+          "bezeichnen → buh-TSIKE-nen ('ei' = 'eye', 'z' = 'ts')",
+          "spirituell → shpee-ree-too-EL"
         ]
       },
       {
@@ -14295,6 +14466,11 @@ export const lessons: GermanLesson[] = [
           "Respekt → rê-SPÊKT",
           "Glauben → GLAU-bần",
           "anders → AN-đờs"
+        ],
+        "pronunciation_focus_en": [
+          "Respekt → ray-SPEKT",
+          "Glauben → GLOW-ben ('au' = 'ow' as in 'how')",
+          "anders → AHN-ders"
         ]
       },
       {
@@ -14304,81 +14480,98 @@ export const lessons: GermanLesson[] = [
           "überzeugen → uy-bờ-TSOI-gần",
           "ohne → Ô-nê",
           "anderen → AN-đê-rần"
+        ],
+        "pronunciation_focus_en": [
+          "überzeugen → ue-bair-TSOY-gen ('ü' = round lips, 'eu' = 'oy')",
+          "ohne → OH-nuh",
+          "anderen → AHN-dair-en"
         ]
       }
     ],
     "cultural_notes_vi": "Tín ngưỡng / niềm tin trong văn hóa Đức khác Việt Nam ở ba điểm. (1) DEUTSCHLAND IST WELTLICH (THẾ TỤC): khoảng 38-40% người Đức không thuộc tôn giáo nào (konfessionslos), 25% Katholisch, 23% Evangelisch, 6-7% muslim, còn lại các tôn giáo khác. Người trẻ ở thành phố lớn (Berlin, Hamburg) thường hoàn toàn weltlich. KHÁC VN nơi tâm linh (Phật giáo, thờ tổ tiên) phổ biến ngay cả khi không 'theo đạo' chính thức. (2) KIRCHENSTEUER (THUẾ NHÀ THỜ): nếu bạn khai 'Katholisch' / 'Evangelisch' khi đăng ký Anmeldung, bạn TRẢ THUẾ ~8-9% trên thuế thu nhập cho nhà thờ. Nhiều người trẻ Austritt (rút khỏi) chính thức để khỏi trả. Đó là LÝ DO PRAKTISCH thường xuyên — không nhất thiết là mất niềm tin. (3) RESPECT > DEBATE: người Đức coi Glaube (niềm tin) là PRIVATE — không hỏi 'Glaubst du an Gott?' giữa party. Nếu chủ đề được mời lên, cuộc trò chuyện thường tôn trọng + hiếu kỳ — KHÔNG persuasion. Câu chuẩn: 'Ich respektiere deinen Glauben — auch wenn ich es anders sehe'.\n\nKhác Việt Nam: ở VN, Ahnenverehrung (thờ tổ tiên) là cultural practice — không cần 'theo đạo Phật' để có bàn thờ ông bà. Khi giải thích cho bạn Đức: nhấn 'kulturelle Praxis' (thực hành văn hóa) hơn 'religion'. Họ sẽ hiểu nó tương đương với việc Đức đặt hoa lên mộ vào Tag der Verstorbenen / Allerheiligen.\n\nTừ vựng tinh tế:\n- 'religiös' = mộ đạo, theo tôn giáo có tổ chức\n- 'gläubig' = có đức tin (rộng hơn)\n- 'spirituell' = tâm linh (không gắn tổ chức)\n- 'praktizierend' = thực hành nghi lễ (đi nhà thờ, cầu nguyện đều)\n- 'konfessionslos' = không thuộc giáo phái nào (status hành chính Đức)\n\nCác chủ đề NHẠY CẢM ở Đức:\n- Ngôn từ Phản-Do-Thái (Antisemitismus): TUYỆT ĐỐI tránh joke về Holocaust, do lịch sử Đức.\n- Hồi giáo: nhạy cảm chính trị (AfD, di cư debate). Tôn trọng người Hồi giáo Đức khi thảo luận.\n- Catholic vs Evangelisch: ở Bayern (Cát-tô-lích chiếm đa số) và Brandenburg (Tin Lành chiếm đa số), có thể có tension lịch sử nhẹ — TRÁNH joke 'wer ist die richtige Christen'.\n\nKhi giải thích Phật giáo / Ahnenverehrung VN:\n- 'Bei uns gibt es Ahnenverehrung — wir ehren unsere Großeltern und Vorfahren mit einem Altar'\n- 'Es ist mehr eine kulturelle Praxis als eine Religion im westlichen Sinn'\n- 'Wir glauben, dass die Verstorbenen uns schützen, wenn wir uns ihrer erinnern'\n\nMột chi tiết quan trọng: nếu bạn người Đức mời bạn đến nhà thờ vào Christmas Eve (Heiligabend) — đó thường là kulturelles Erlebnis (trải nghiệm văn hóa), không phải nỗ lực thuyết phục. Đi cùng = tôn trọng văn hóa của họ. KHÔNG cần convert.\n\nNgược lại: bạn có thể mời bạn Đức đến nhà ăn Tết, thấy bàn thờ — họ sẽ hiếu kỳ + tôn trọng.",
+    "cultural_notes_en": "Religion and belief work differently in German culture than in Vietnamese in three ways. (1) GERMANY IS LARGELY SECULAR: roughly 38–40% of Germans belong to no religion (konfessionslos), about 25% Catholic, 23% Protestant (Evangelisch), 6–7% Muslim, the rest other faiths. Younger people in big cities (Berlin, Hamburg) are often fully weltlich (secular). Different from Vietnam, where spirituality (Buddhism, ancestor veneration) is widespread even among people who don't formally 'belong to a religion'. (2) KIRCHENSTEUER (CHURCH TAX): if you declare 'Katholisch' or 'Evangelisch' when you register your address (Anmeldung), you pay ABOUT 8–9% ON TOP OF your income tax to the church. Many younger people formally exit (Austritt) just to stop paying. So a German friend leaving the church is often a PRACTICAL decision — not necessarily a loss of faith. (3) RESPECT OVER DEBATE: Germans treat Glaube (belief) as PRIVATE — you don't ask 'Glaubst du an Gott?' (do you believe in God?) at a party. If the topic does come up, the conversation is usually respectful and curious — not about persuasion. Standard line: 'Ich respektiere deinen Glauben — auch wenn ich es anders sehe' (I respect your faith — even if I see things differently).\n\nWhere this diverges from Vietnamese practice: in Vietnam, Ahnenverehrung (ancestor veneration) is a cultural practice — you don't need to 'follow Buddhism' to keep an altar to your grandparents. When you explain this to a German friend, lean on 'kulturelle Praxis' (cultural practice) rather than 'religion'. They'll map it onto the German custom of bringing flowers to a grave on Tag der Verstorbenen / Allerheiligen.\n\nSubtle vocabulary distinctions:\n- 'religiös' = devout, follows an organised religion\n- 'gläubig' = believing (broader)\n- 'spirituell' = spiritual (not tied to an institution)\n- 'praktizierend' = practising (goes to church, prays regularly)\n- 'konfessionslos' = no religious affiliation (this is a German administrative status)\n\nSENSITIVE topics in Germany:\n- Antisemitismus / language about Jewish people: ABSOLUTELY avoid Holocaust jokes — German history makes this a hard line.\n- Islam: politically sensitive (AfD, migration debate). Be respectful of German Muslims in any discussion.\n- Catholic vs. Evangelisch: in Bayern (mostly Catholic) and Brandenburg (mostly Protestant) there can be light historical tension — avoid 'who are the real Christians' jokes.\n\nExplaining Vietnamese Buddhism / Ahnenverehrung:\n- 'Bei uns gibt es Ahnenverehrung — wir ehren unsere Großeltern und Vorfahren mit einem Altar' (we practise ancestor veneration — we honour our grandparents and forebears with an altar)\n- 'Es ist mehr eine kulturelle Praxis als eine Religion im westlichen Sinn' (it's more a cultural practice than a religion in the Western sense)\n- 'Wir glauben, dass die Verstorbenen uns schützen, wenn wir uns ihrer erinnern' (we believe the deceased protect us when we remember them)\n\nOne important detail: if a German friend invites you to church on Christmas Eve (Heiligabend), that is usually a CULTURAL invitation, not an attempt to convert you. Going along = respecting their culture. No conversion expected.\n\nThe reverse works too: you can invite a German friend over for Tết, show them the altar — they'll be curious + respectful.",
     "tip_advice_vi": "Khi chủ đề tín ngưỡng được mời lên:\n1. KHÔNG cắt ngang để 'mình không tin' — để họ kể.\n2. Hỏi mở: 'Was bedeutet dir das?' (điều đó nghĩa gì với cậu?) — không 'Glaubst du wirklich an Gott?' (cậu thực sự tin Chúa à?).\n3. Lắng nghe TÌNH CẢM, không TÍN ĐIỀU. Nhiều người Đức đi nhà thờ vì gia đình, truyền thống, sự kết nối — không nhất thiết tin literal.\n\nKhi bạn chia sẻ tín ngưỡng VN:\n- Câu mở: 'Bei mir zu Hause war/ist [thực hành] wichtig'\n- Cụ thể: 'wir haben einen Altar für meine Großeltern' / 'wir gehen jedes Jahr zu Tét an deren Grab'\n- Giải thích context: 'Es ist mehr eine kulturelle Praxis als eine Religion'\n- Không cần defensive: bạn không cần 'biện minh' với người Đức.\n\nNgôn ngữ tôn trọng cross-faith:\n- 'Was bedeutet dir das?' (điều đó nghĩa gì với cậu?)\n- 'Wie ist das bei dir entstanden?' (việc này phát triển ở cậu thế nào?)\n- 'Ich respektiere deinen Glauben — auch wenn ich anders sehe'\n- 'Können wir darüber reden, ohne dass einer den anderen überzeugen muss?'\n- 'Bei mir ist es eher [cụ thể]'\n- 'Ich finde es spannend, wie unterschiedlich Menschen das erleben'\n\nKhi không đồng ý:\n- KHÔNG 'das ist Quatsch' (vớ vẩn).\n- DÙNG: 'Ich kann das für mich nicht so übernehmen' (mình không thể tiếp nhận điều đó cho mình).\n- 'Aus meiner Sicht...' (theo góc nhìn của mình...).\n\nKhi bạn được mời tham dự lễ tôn giáo của họ (Taufe, Hochzeit Kirche, Weihnachtsgottesdienst):\n- Đi nếu được — tôn trọng văn hóa.\n- Mặc kín đáo (dunkel, kein knappes Outfit für Kirche).\n- KHÔNG cần làm nghi lễ Cát-tô-lích nếu không phải Cát-tô-lích (KHÔNG xếp hàng nhận Eucharistie nếu bạn không chịu Erstkommunion).\n- Khi mọi người cầu nguyện: đứng/ngồi yên, đầu hơi cúi — tôn trọng không participation.\n\nKhi mời bạn Đức đến lễ VN:\n- Tết: giải thích context trước (ngày, ý nghĩa, mặc gì).\n- Đến mộ ngày giỗ: nhấn 'Ahnen ehren' (tôn vinh tổ tiên) — concept dễ hiểu.\n- Đốt vàng mã: giải thích 'symbolische Geste, nicht buchstäblich' (cử chỉ tượng trưng).\n\nTránh:\n- KHÔNG so sánh 'Đạo Phật better than Christianity' (hoặc ngược lại).\n- KHÔNG hỏi 'why don't you believe X' về tín ngưỡng cá nhân của họ.\n- KHÔNG joke về Holocaust / Antisemitismus / Islam — không safe.\n\nKhi conversation đến bế tắc:\n- 'Ich glaube, hier sehen wir es einfach unterschiedlich — und das ist okay'.\n- Đề nghị topic khác: 'Wollen wir was Anderes essen / einen Spaziergang machen?'.\n\nMẹo cuối: đọc qua Wikipedia 'Religion in Deutschland' để biết landscape — giúp bạn hiểu context khi friends mention 'Bayern' (Cát-tô-lích majority), 'Brandenburg' (sehr säkular) hoặc 'evangelisch im Norden'. Knowledge of context = tôn trọng.",
+    "tip_advice_en": "When the topic of belief comes up:\n1. DON'T jump in with 'I don't believe' — let them tell their story.\n2. Ask open questions: 'Was bedeutet dir das?' (what does that mean to you?) — not 'Glaubst du wirklich an Gott?' (do you really believe in God?).\n3. Listen for FEELING, not DOCTRINE. Plenty of Germans go to church for family, tradition, community — not for literal belief.\n\nWhen you share your own Vietnamese practice:\n- Open with: 'Bei mir zu Hause war/ist [practice] wichtig' (at my house, [practice] was/is important)\n- Be specific: 'wir haben einen Altar für meine Großeltern' / 'wir gehen jedes Jahr zu Tét an deren Grab' (we have an altar for my grandparents / each year at Tết we go to their grave)\n- Frame the context: 'Es ist mehr eine kulturelle Praxis als eine Religion' (it's more a cultural practice than a religion)\n- You don't need to be defensive — you don't have to 'justify' your practice to a German.\n\nThe language of cross-faith respect:\n- 'Was bedeutet dir das?' (what does that mean to you?)\n- 'Wie ist das bei dir entstanden?' (how did this come to be a part of your life?)\n- 'Ich respektiere deinen Glauben — auch wenn ich anders sehe' (I respect your faith — even if I see things differently)\n- 'Können wir darüber reden, ohne dass einer den anderen überzeugen muss?' (can we talk about it without either of us having to convince the other?)\n- 'Bei mir ist es eher [specific]' (for me, it's more like [specific])\n- 'Ich finde es spannend, wie unterschiedlich Menschen das erleben' (I find it fascinating how differently people experience it)\n\nWhen you don't agree:\n- DON'T say 'das ist Quatsch' (that's nonsense).\n- USE: 'Ich kann das für mich nicht so übernehmen' (I can't take that on for myself in that form).\n- 'Aus meiner Sicht…' (from my perspective…).\n\nWhen they invite you to one of their religious occasions (Taufe, Hochzeit Kirche, Weihnachtsgottesdienst):\n- Go if you can — respecting culture.\n- Dress modestly (dark, not revealing — for a church setting).\n- DON'T perform the Catholic ritual if you're not Catholic (DON'T queue for the Eucharist if you haven't had Erstkommunion).\n- During communal prayer: stand or sit quietly, head slightly lowered — respect without participation.\n\nWhen you invite a German friend to a Vietnamese observance:\n- Tết: explain the context first (date, meaning, what to wear).\n- A grave visit on the death anniversary: frame it as 'Ahnen ehren' (honouring the ancestors) — easy to grasp.\n- Burning votive papers (vàng mã): explain it as 'symbolische Geste, nicht buchstäblich' (a symbolic gesture, not literal).\n\nAvoid:\n- DON'T claim 'Buddhism is better than Christianity' (or the reverse).\n- DON'T ask 'why don't you believe X' about someone's personal belief.\n- DON'T joke about the Holocaust / antisemitism / Islam — not safe.\n\nWhen the conversation hits a dead end:\n- 'Ich glaube, hier sehen wir es einfach unterschiedlich — und das ist okay' (I think we just see this differently here — and that's okay).\n- Move on to another topic: 'Wollen wir was Anderes essen / einen Spaziergang machen?'.\n\nFinal tip: read the Wikipedia article 'Religion in Deutschland' to learn the landscape — it helps you place comments friends make about 'Bayern' (Catholic majority), 'Brandenburg' (very secular), or 'evangelisch im Norden' (Protestant in the north). Context knowledge = respect.",
     "vocabulary": [
       {
         "word": "der Glaube",
         "en": "faith, belief",
         "vi": "đức tin",
         "pos": "noun (m)",
-        "pronunciation_vi": "đe GLAU-bê"
+        "pronunciation_vi": "đe GLAU-bê",
+        "pronunciation_en": "dair GLOW-buh — faith, belief"
       },
       {
         "word": "die Religion",
         "en": "religion",
         "vi": "tôn giáo",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi rê-li-GI-ôn"
+        "pronunciation_vi": "đi rê-li-GI-ôn",
+        "pronunciation_en": "dee ray-li-gee-OHN — religion (stress on final syllable)"
       },
       {
         "word": "religiös / spirituell",
         "en": "religious / spiritual",
         "vi": "mộ đạo / tâm linh",
         "pos": "adjective",
-        "pronunciation_vi": "rê-li-GIƠS / shpi-ri-tu-ÊL"
+        "pronunciation_vi": "rê-li-GIƠS / shpi-ri-tu-ÊL",
+        "pronunciation_en": "ray-li-GYURS / shpee-ree-too-EL — religious / spiritual ('ö' = round lips)"
       },
       {
         "word": "konfessionslos",
         "en": "without religious affiliation",
         "vi": "không thuộc giáo phái",
         "pos": "adjective",
-        "pronunciation_vi": "kôn-fê-si-ÔNS-lôs"
+        "pronunciation_vi": "kôn-fê-si-ÔNS-lôs",
+        "pronunciation_en": "kon-fess-yohns-LOHS — without religious affiliation (German administrative status)"
       },
       {
         "word": "die Kirche",
         "en": "church",
         "vi": "nhà thờ",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi KIR-khê"
+        "pronunciation_vi": "đi KIR-khê",
+        "pronunciation_en": "dee KEER-khuh — church (soft ich-Laut at end)"
       },
       {
         "word": "die Ahnenverehrung",
         "en": "ancestor veneration",
         "vi": "thờ cúng tổ tiên",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi A-nần-fe-ê-rung"
+        "pronunciation_vi": "đi A-nần-fe-ê-rung",
+        "pronunciation_en": "dee AH-nen-fair-AY-roong — ancestor veneration"
       },
       {
         "word": "der Altar",
         "en": "altar",
         "vi": "bàn thờ",
         "pos": "noun (m)",
-        "pronunciation_vi": "đe AL-ta"
+        "pronunciation_vi": "đe AL-ta",
+        "pronunciation_en": "dair ahl-TAR — altar"
       },
       {
         "word": "überzeugen",
         "en": "to convince",
         "vi": "thuyết phục",
         "pos": "verb",
-        "pronunciation_vi": "uy-bờ-TSOI-gần"
+        "pronunciation_vi": "uy-bờ-TSOI-gần",
+        "pronunciation_en": "ue-bair-TSOY-gen — to convince ('ü' = round lips, 'eu' = 'oy')"
       },
       {
         "word": "der Respekt",
         "en": "respect",
         "vi": "sự tôn trọng",
         "pos": "noun (m)",
-        "pronunciation_vi": "đe rê-SPÊKT"
+        "pronunciation_vi": "đe rê-SPÊKT",
+        "pronunciation_en": "dair ray-SPEKT — respect"
       },
       {
         "word": "die kulturelle Praxis",
         "en": "cultural practice",
         "vi": "thực hành văn hóa",
         "pos": "noun phrase",
-        "pronunciation_vi": "đi kul-tu-RÊ-lê PRA-xis"
+        "pronunciation_vi": "đi kul-tu-RÊ-lê PRA-xis",
+        "pronunciation_en": "dee kool-too-REL-uh PRAHK-sis — cultural practice"
       }
     ],
     "dialogue": [
@@ -14501,36 +14694,46 @@ export const lessons: GermanLesson[] = [
       "Mời nhau đến lễ của bên kia (Tét + Christmette) — đặt frame 'bereichernd' (làm phong phú). Câu chốt 'Können wir darüber reden, ohne dass einer den anderen überzeugen muss?'."
     ],
     "register_notes": "Trao đổi tín ngưỡng (Du): Konjunktiv II hữu ích cho hedging: 'Ich würde mich nicht als religiös bezeichnen', 'Ich würde sagen, ich glaube an etwas — aber...'. Câu mở mở: 'Was bedeutet dir das?' (KHÔNG 'glaubst du wirklich?'). Phân biệt 'religiös' / 'gläubig' / 'spirituell' / 'konfessionslos' / 'praktizierend'. Khi giải thích thực hành VN: 'Es ist mehr eine kulturelle Praxis als eine Religion im westlichen Sinn' — formula chuẩn. Câu tôn trọng: 'Ich respektiere deinen Glauben — auch wenn ich anders sehe'. Câu de-escalate: 'Können wir darüber reden, ohne dass einer den anderen überzeugen muss?'. KHÔNG 'das ist Quatsch' / 'das ist primitiv' — TUYỆT ĐỐI tránh. Khi không đồng ý: 'Ich kann das für mich nicht so übernehmen' / 'Aus meiner Sicht...'.",
+    "register_notes_en": "Cross-faith conversation (Du): Konjunktiv II is useful for hedging: 'Ich würde mich nicht als religiös bezeichnen' (I wouldn't describe myself as religious), 'Ich würde sagen, ich glaube an etwas — aber…' (I'd say I believe in something — but…). Open with an OPEN question: 'Was bedeutet dir das?' (NOT 'glaubst du wirklich?'). Hold the distinctions between 'religiös' / 'gläubig' / 'spirituell' / 'konfessionslos' / 'praktizierend'. When you explain a Vietnamese practice: 'Es ist mehr eine kulturelle Praxis als eine Religion im westlichen Sinn' — standard framing. Respect line: 'Ich respektiere deinen Glauben — auch wenn ich anders sehe'. De-escalation line: 'Können wir darüber reden, ohne dass einer den anderen überzeugen muss?'. ABSOLUTELY avoid 'das ist Quatsch' / 'das ist primitiv'. When you disagree: 'Ich kann das für mich nicht so übernehmen' / 'Aus meiner Sicht…'.",
     "idiom_glosses": [
       {
         "idiom": "den Glauben verlieren",
         "literal": "mất đức tin",
         "meaning": "thôi tin (tôn giáo hoặc nói chung)",
-        "example": "Manche Menschen verlieren ihren Glauben nach einem schweren Verlust — das ist menschlich."
+        "meaning_en": "to lose one's faith — to stop believing (religious, or more general)",
+        "example": "Manche Menschen verlieren ihren Glauben nach einem schweren Verlust — das ist menschlich.",
+        "example_en": "Some people lose their faith after a severe loss — that's human."
       },
       {
         "idiom": "auf Sand bauen",
         "literal": "xây trên cát",
         "meaning": "đặt nền móng trên thứ không vững (gốc Kinh Thánh)",
-        "example": "Eine Beziehung auf Lügen ist auf Sand gebaut — sie wird nicht halten."
+        "meaning_en": "to build on sand — to base something on shaky ground (biblical origin: Sermon on the Mount)",
+        "example": "Eine Beziehung auf Lügen ist auf Sand gebaut — sie wird nicht halten.",
+        "example_en": "A relationship built on lies is built on sand — it won't hold."
       },
       {
         "idiom": "der Glaube versetzt Berge",
         "literal": "đức tin di chuyển núi",
         "meaning": "niềm tin có sức mạnh lớn (gốc Kinh Thánh)",
-        "example": "Ich bin nicht religiös — aber 'der Glaube versetzt Berge' stimmt für mich auch in einem säkularen Sinn."
+        "meaning_en": "faith moves mountains — belief carries great power (biblical origin)",
+        "example": "Ich bin nicht religiös — aber 'der Glaube versetzt Berge' stimmt für mich auch in einem säkularen Sinn.",
+        "example_en": "I'm not religious — but 'faith moves mountains' rings true for me even in a secular sense."
       },
       {
         "idiom": "leben und leben lassen",
         "literal": "sống và để người khác sống",
         "meaning": "tôn trọng cách sống của người khác",
-        "example": "Bei Religion gilt für mich: leben und leben lassen — solange niemand verletzt wird."
+        "meaning_en": "live and let live — respect other people's ways of living",
+        "example": "Bei Religion gilt für mich: leben und leben lassen — solange niemand verletzt wird.",
+        "example_en": "When it comes to religion, my rule is: live and let live — as long as no one gets hurt."
       }
     ],
     "exercises": [
       {
         "type": "fill_blank",
         "instruction_vi": "Điền cấu trúc trao đổi tín ngưỡng tôn trọng:",
+        "instruction_en": "Fill in the structure of a respectful cross-faith conversation:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -14554,6 +14757,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "matching",
         "instruction_vi": "Nối thuật ngữ Đức với chức năng:",
+        "instruction_en": "Match each German term to its function:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -14577,7 +14781,11 @@ export const lessons: GermanLesson[] = [
       {
         "type": "translation",
         "instruction_vi": "Dịch sang tiếng Đức (Du, hedging Konjunktiv II):",
+        "instruction_en": "Translate into German (Du, Konjunktiv II hedging):",
         "pronunciation_focus": [
+          "faith conversation"
+        ],
+        "pronunciation_focus_en": [
           "faith conversation"
         ],
         "items": [
@@ -14615,6 +14823,11 @@ export const lessons: GermanLesson[] = [
           "höre → HƠ-rê",
           "erzählen → e-TSÊ-lần",
           "anfühlt → AN-fuyl-t"
+        ],
+        "pronunciation_focus_en": [
+          "höre → HUR-uh ('ö' = round lips, say 'eh')",
+          "erzählen → air-TSAY-len ('ä' = short 'e', 'z' = 'ts')",
+          "anfühlt → AHN-fuelt ('ü' = round lips, say 'ee')"
         ]
       },
       {
@@ -14624,6 +14837,11 @@ export const lessons: GermanLesson[] = [
           "anvertraust → AN-fe-traost",
           "selbstverständlich → ZELPS-fe-shten-likh",
           "danke → ĐAN-kê"
+        ],
+        "pronunciation_focus_en": [
+          "anvertraust → AHN-fair-trowst ('au' = 'ow')",
+          "selbstverständlich → ZELPS-t-fair-shtent-likh",
+          "danke → DAHN-kuh"
         ]
       },
       {
@@ -14633,6 +14851,11 @@ export const lessons: GermanLesson[] = [
           "erklären → e-KLE-rần",
           "versuchen → fe-ZU-khần",
           "reparieren → rê-pa-RI-rần"
+        ],
+        "pronunciation_focus_en": [
+          "erklären → air-KLAY-ren ('ä' = short 'e')",
+          "versuchen → fair-ZOO-khen (soft ach-Laut after 'oo')",
+          "reparieren → ray-pah-REE-ren"
         ]
       },
       {
@@ -14642,6 +14865,11 @@ export const lessons: GermanLesson[] = [
           "beschreibst → bê-SHRAIB-st",
           "schwer → SHVÊ",
           "ahnen → A-nần"
+        ],
+        "pronunciation_focus_en": [
+          "beschreibst → buh-SHRIBE-st ('ei' = 'eye')",
+          "schwer → SHVAIR",
+          "ahnen → AH-nen"
         ]
       },
       {
@@ -14651,81 +14879,98 @@ export const lessons: GermanLesson[] = [
           "bleibe → BLAI-bê",
           "ändert → EN-đệt",
           "sehe → ZÊ-ê"
+        ],
+        "pronunciation_focus_en": [
+          "bleibe → BLY-buh ('ei' = 'eye')",
+          "ändert → EN-dert ('ä' = short 'e')",
+          "sehe → ZAY-uh"
         ]
       }
     ],
     "cultural_notes_vi": "Lắng nghe bạn kể về điều khó từ quá khứ trong văn hóa Đức khác Việt Nam ở ba điểm. (1) VERTRAUEN ALS GESCHENK: chia sẻ điều khó khăn với ai đó được coi là một MÓN QUÀ tin tưởng (Vertrauensgeschenk), không phải 'Ihnen aufzubürden' (làm phiền). Câu chuẩn của người nghe: 'Danke, dass du mir das anvertraust' (cám ơn đã tin tưởng kể) — nhận GIFT đúng cách. (2) NICHT REPARIEREN: người Đức (đặc biệt thế hệ trẻ + đã qua trải nghiệm Therapie) coi việc cố 'fix' câu chuyện của ai đó là PATERNALISTISCH. Câu chuẩn: 'Ich werde nicht versuchen, es zu reparieren' (mình sẽ không cố sửa). Vai trò người nghe = NHẬN, không SỬA. (3) NICHT TIEFER FRAGEN ALS EINGELADEN: nguyên tắc 'so viel wie eingeladen' (chỉ hỏi đến mức được mời). KHÔNG hỏi 'Was genau ist passiert?' nếu họ chưa cụ thể. KHÔNG 'Wie alt warst du?' / 'Wer war das?' / 'Hast du Anzeige erstattet?'. Để họ dẫn dắt mức cụ thể.\n\nKhác Việt Nam: ở VN, 'lời khuyên' và 'chia sẻ kinh nghiệm tương tự' là cách quan tâm. Ở Đức (nhất là sau psycho-Aufklärung gần đây), điều này có thể bị xem là 'centering yourself' (tự đặt mình ở trung tâm) hoặc 'comparing pain' (so sánh đau khổ). Câu cấm: 'Bei mir war es viel schlimmer' / 'Ich verstehe genau, ich habe auch...'. Story của họ trước.\n\nMột chi tiết quan trọng: KHÔNG đặt câu hỏi 'WHY' về tình huống ('Warum hast du nichts gesagt?', 'Warum hast du nicht weggegangen?'). Câu hỏi WHY có thể implies họ làm gì sai. Tốt hơn: 'Es klingt, als wäre es damals sehr kompliziert gewesen'.\n\nKhi họ kể: respect TIMING của họ. Có thể họ kể 5 phút rồi muốn dừng — KHÔNG ép thêm. Câu chuẩn: 'Wenn du irgendwann mehr erzählen möchtest — ich bin da. Aber du musst nicht'.\n\nKhi câu chuyện include trải nghiệm tổn thương nghiêm trọng (BẠO LỰC, MẤT NGƯỜI THÂN ĐỘT NGỘT, etc.):\n- Người Đức có khái niệm 'professionelle Hilfe' rõ ràng — Therapie là chuyện bình thường, không stigma.\n- KHÔNG ép họ đi: 'du musst zum Therapeuten' = pressure.\n- ĐỀ NGHỊ NHẸ: 'Hast du schon einmal mit jemandem darüber gesprochen, der das professionell begleiten kann? Manchen hilft das'.\n- Tài nguyên: Hausarzt là entry point. Therapeutische Praxis có wartelist dài (3-6 tháng cho gesetzlich Versicherte).\n- TÔN TRỌNG nếu họ NÓI 'ich bin nicht bereit': bereitness là quyết định của họ.\n\nKhi họ DỪNG kể giữa chừng và muốn topic khác: tôn trọng. Câu chuẩn: 'Lass uns Pause machen — wollen wir spazieren gehen?'. KHÔNG đẩy họ tiếp tục.\n\nVAI TRÒ CỦA BẠN không phải 'Helfer-Held' (người hùng cứu giúp) — mà là 'Zeuge' (nhân chứng). Họ kể, bạn nghe, bạn xác nhận: 'Ich habe gehört, was du gesagt hast — und das wird zwischen uns bleiben'.",
+    "cultural_notes_en": "Listening to a friend share something hard from their past works differently in German culture than in Vietnamese in three ways. (1) TRUST AS A GIFT: in German culture, telling someone something hard is treated as a GIFT of trust (Vertrauensgeschenk), not as 'burdening them'. The standard listener line is: 'Danke, dass du mir das anvertraust' (thank you for confiding this in me) — you receive the gift correctly. (2) DON'T TRY TO FIX IT: Germans (especially younger generations and those familiar with therapy) treat trying to 'solve' someone's story as PATERNALISTISCH (condescending). Standard line: 'Ich werde nicht versuchen, es zu reparieren' (I'm not going to try to repair this). The listener's role is to RECEIVE, not to FIX. (3) DON'T PROBE DEEPER THAN INVITED: the rule is 'so viel wie eingeladen' (only as much as you've been invited into). DON'T ask 'Was genau ist passiert?' (what exactly happened?) if they haven't given specifics. DON'T ask 'Wie alt warst du?' (how old were you?) / 'Wer war das?' (who was it?) / 'Hast du Anzeige erstattet?' (did you press charges?). Let them set the level of detail.\n\nWhere this diverges from Vietnamese practice: in Vietnam, sharing 'similar experiences' or 'advice' is read as care. In Germany (especially after the recent wave of mental-health awareness), this can read as 'centering yourself' or 'comparing pain'. Forbidden lines: 'Bei mir war es viel schlimmer' (it was much worse for me) / 'Ich verstehe genau, ich habe auch…' (I know exactly, I've also…). Their story first.\n\nOne important detail: DO NOT ask 'WHY' questions about the situation ('Warum hast du nichts gesagt?' / 'Warum hast du nicht weggegangen?'). 'Why' can imply they did something wrong. Better: 'Es klingt, als wäre es damals sehr kompliziert gewesen' (it sounds like it was very complicated back then).\n\nWhen they tell you: respect THEIR TIMING. They may share for five minutes and then want to stop — DON'T push for more. Standard line: 'Wenn du irgendwann mehr erzählen möchtest — ich bin da. Aber du musst nicht' (if you ever want to share more — I'm here. But you don't have to).\n\nWhen the story involves serious trauma (VIOLENCE, SUDDEN LOSS, etc.):\n- Germans have a clear concept of 'professionelle Hilfe' (professional help) — therapy is normalised, no stigma.\n- DO NOT push them to go: 'du musst zum Therapeuten' = pressure.\n- Suggest GENTLY: 'Hast du schon einmal mit jemandem darüber gesprochen, der das professionell begleiten kann? Manchen hilft das' (have you ever spoken with someone who can support this professionally? It helps some people).\n- Resources: Hausarzt is the entry point. Therapeutische Praxis has long waitlists (3–6 months on statutory insurance).\n- RESPECT IT if they say 'ich bin nicht bereit' (I'm not ready): readiness is their call.\n\nWhen they pause mid-telling and want to change the subject: respect it. Standard line: 'Lass uns Pause machen — wollen wir spazieren gehen?' (let's take a break — want to go for a walk?). DON'T push them to continue.\n\nYOUR ROLE is NOT 'Helfer-Held' (helper-hero) — it's 'Zeuge' (witness). They tell, you listen, you confirm: 'Ich habe gehört, was du gesagt hast — und das wird zwischen uns bleiben' (I've heard what you've said — and it stays between us).",
     "tip_advice_vi": "Khi bạn bắt đầu kể:\n1. NGỒI YÊN. Tắt phone. Eye contact.\n2. KHÔNG cắt ngang. KHÔNG 'Oh ja, ich verstehe' cứ vài câu — để họ kể đầy đủ.\n3. Body language: nếu phù hợp, có thể đặt tay nhẹ lên tay họ — nhưng quan sát: nếu họ rút lại, KHÔNG ép physical contact.\n\nNgôn ngữ lắng nghe câu chuyện khó:\n- 'Ich höre dir zu' (mình đang nghe cậu)\n- 'Du musst nicht mehr erzählen, als sich gut anfühlt' (cậu không cần kể nhiều hơn mức ổn)\n- 'Danke, dass du mir das anvertraust' (cám ơn đã tin tưởng kể)\n- 'Was du beschreibst, klingt schwer' (điều cậu kể nghe thật nặng)\n- 'Ich kann nur ahnen, wie das war' (mình chỉ có thể đoán)\n- 'Ich werde nicht versuchen, es zu reparieren' (sẽ không cố sửa)\n- 'Ich bleibe — das ändert nichts an, wie ich dich sehe' (mình ở lại — không thay đổi cách nhìn cậu)\n\nKhi không biết nói gì: IM LẶNG. Câu chuẩn nếu silence kéo dài: 'Ich finde gerade keine Worte — aber ich bin hier'.\n\nKhi họ khóc:\n- KHÔNG 'nicht weinen'\n- Khăn giấy + nước\n- KHÔNG bỏ đi\n- Có thể nói: 'Tränen sind okay'\n\nCác câu CẤM tuyệt đối:\n- ❌ 'Bei mir war es viel schlimmer'\n- ❌ 'Warum hast du nichts gesagt?'\n- ❌ 'Du musst es loslassen'\n- ❌ 'Alles passiert aus einem Grund'\n- ❌ 'Was wäre, wenn du... gemacht hättest?'\n- ❌ 'Bist du sicher, dass du dich richtig erinnerst?'\n- ❌ 'Ich kann mir das nicht vorstellen' (gaslighty)\n\nCác câu phù hợp:\n- ✅ 'Was du erlebt hast, war nicht okay' (validation)\n- ✅ 'Du hast getan, was du in dem Moment tun konntest'\n- ✅ 'Ich glaube dir'\n- ✅ 'Das wird zwischen uns bleiben'\n- ✅ 'Du bist hier sicher'\n\nKhi họ cảm thấy 'shame' (Scham):\n- 'Du hast nichts falsch gemacht'\n- 'Was passiert ist, war nicht deine Schuld'\n- 'Es braucht Mut, das auszusprechen'\n\nĐề nghị support sau khi kể:\n- 'Soll ich heute Abend bei dir bleiben?' (mình ngủ lại tối nay nhé?)\n- 'Wollen wir morgen einen Spaziergang machen?'\n- 'Brauchst du etwas Konkretes — Essen, Tee, Stille?'\n\nKhi gợi ý professional help (CHỈ khi phù hợp — sau khi họ kể, KHÔNG trong giữa kể):\n- 'Manche Menschen finden es hilfreich, mit einem Therapeuten zu sprechen — nicht weil mit dir was 'falsch' ist, sondern weil das ein sicherer Raum ist'\n- 'Wenn du irgendwann magst — ich kann dich begleiten, einen Termin zu suchen'\n- KHÔNG: 'du brauchst Therapie' / 'du hast Trauma'\n\nKhi cuộc trò chuyện kết thúc:\n- Acknowledge: 'Danke, dass du mir das gesagt hast — das wird zwischen uns bleiben'\n- Reaffirm: 'Du bist immer noch derselbe Mensch, den ich kenne'\n- Practical: 'Schreib mir, wann du willst — auch nachts'\n\nNgày hôm sau:\n- KHÔNG act như 'gestern war was anders'.\n- Có thể check-in NHẸ: 'Wie geht's dir nach gestern?'\n- KHÔNG nói chuyện đó với người thứ ba — TUYỆT ĐỐI confidentiality.\n\nMẹo cuối: ngôn từ 'Trauma' / 'PTSD' nên DÙNG CẨN THẬN. Bạn không phải therapist — KHÔNG diagnose. Câu của bạn: 'Was du erlebt hast, war schwer'. Để họ tự label nếu họ muốn.",
+    "tip_advice_en": "When your friend starts telling you:\n1. SIT STILL. Phone away. Eye contact.\n2. DO NOT cut in. DO NOT say 'oh yes, I understand' every few lines — let them tell it through.\n3. Body language: if it fits, you can lay a hand gently on theirs — but watch: if they pull back, DO NOT force physical contact.\n\nThe language of listening to a hard story:\n- 'Ich höre dir zu' (I'm listening)\n- 'Du musst nicht mehr erzählen, als sich gut anfühlt' (you don't have to share more than feels right)\n- 'Danke, dass du mir das anvertraust' (thank you for confiding this in me)\n- 'Was du beschreibst, klingt schwer' (what you're describing sounds heavy)\n- 'Ich kann nur ahnen, wie das war' (I can only guess what that was like)\n- 'Ich werde nicht versuchen, es zu reparieren' (I'm not going to try to fix it)\n- 'Ich bleibe — das ändert nichts an, wie ich dich sehe' (I'm staying — this doesn't change how I see you)\n\nWhen you don't know what to say: STAY SILENT. If the silence stretches: 'Ich finde gerade keine Worte — aber ich bin hier' (I'm not finding words right now — but I'm here).\n\nWhen they cry:\n- DON'T say 'nicht weinen' (don't cry)\n- Tissues + water\n- DO NOT leave\n- You can say: 'Tränen sind okay' (tears are okay)\n\nABSOLUTELY FORBIDDEN lines:\n- ❌ 'Bei mir war es viel schlimmer' (mine was much worse)\n- ❌ 'Warum hast du nichts gesagt?' (why didn't you say anything?)\n- ❌ 'Du musst es loslassen' (you have to let it go)\n- ❌ 'Alles passiert aus einem Grund' (everything happens for a reason)\n- ❌ 'Was wäre, wenn du… gemacht hättest?' (what if you had done…?)\n- ❌ 'Bist du sicher, dass du dich richtig erinnerst?' (are you sure you remember it correctly?)\n- ❌ 'Ich kann mir das nicht vorstellen' (I can't even imagine — reads as gaslighting)\n\nLines that work:\n- ✅ 'Was du erlebt hast, war nicht okay' (what you went through was not okay — validation)\n- ✅ 'Du hast getan, was du in dem Moment tun konntest' (you did what you could in that moment)\n- ✅ 'Ich glaube dir' (I believe you)\n- ✅ 'Das wird zwischen uns bleiben' (this stays between us)\n- ✅ 'Du bist hier sicher' (you are safe here)\n\nWhen they feel shame (Scham):\n- 'Du hast nichts falsch gemacht' (you did nothing wrong)\n- 'Was passiert ist, war nicht deine Schuld' (what happened wasn't your fault)\n- 'Es braucht Mut, das auszusprechen' (it takes courage to say this out loud)\n\nOffer support after the story:\n- 'Soll ich heute Abend bei dir bleiben?' (should I stay with you tonight?)\n- 'Wollen wir morgen einen Spaziergang machen?' (shall we take a walk tomorrow?)\n- 'Brauchst du etwas Konkretes — Essen, Tee, Stille?' (do you need something concrete — food, tea, silence?)\n\nWhen suggesting professional help (ONLY after they've shared, NEVER in the middle):\n- 'Manche Menschen finden es hilfreich, mit einem Therapeuten zu sprechen — nicht weil mit dir was 'falsch' ist, sondern weil das ein sicherer Raum ist' (some people find it helpful to talk to a therapist — not because something is 'wrong' with you, but because it's a safe space)\n- 'Wenn du irgendwann magst — ich kann dich begleiten, einen Termin zu suchen' (whenever you're ready — I can come with you to find an appointment)\n- DON'T say: 'du brauchst Therapie' / 'du hast Trauma'\n\nWhen the conversation ends:\n- Acknowledge: 'Danke, dass du mir das gesagt hast — das wird zwischen uns bleiben' (thank you for telling me — this stays between us)\n- Reaffirm: 'Du bist immer noch derselbe Mensch, den ich kenne' (you're still the same person I know)\n- Practical: 'Schreib mir, wann du willst — auch nachts' (message me whenever — even at night)\n\nThe next day:\n- DO NOT act as if 'something was different yesterday'.\n- A gentle check-in is fine: 'Wie geht's dir nach gestern?' (how are you doing after yesterday?)\n- NEVER share what you heard with a third party — strict confidentiality.\n\nFinal tip: use the words 'Trauma' / 'PTSD' VERY CAREFULLY. You aren't a therapist — don't diagnose. Your line is: 'Was du erlebt hast, war schwer' (what you went through was hard). Let them label it themselves if they want to.",
     "vocabulary": [
       {
         "word": "anvertrauen",
         "en": "to confide in someone",
         "vi": "tin tưởng kể (chuyện riêng)",
         "pos": "verb (sep.)",
-        "pronunciation_vi": "AN-fe-trao-ần"
+        "pronunciation_vi": "AN-fe-trao-ần",
+        "pronunciation_en": "AHN-fair-trow-en — to confide in someone (separable verb)"
       },
       {
         "word": "das Vertrauen",
         "en": "trust",
         "vi": "niềm tin",
         "pos": "noun (n)",
-        "pronunciation_vi": "đát fe-TRAU-ần"
+        "pronunciation_vi": "đát fe-TRAU-ần",
+        "pronunciation_en": "das fair-TROW-en — trust"
       },
       {
         "word": "die Scham",
         "en": "shame",
         "vi": "sự xấu hổ",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi SHAM"
+        "pronunciation_vi": "đi SHAM",
+        "pronunciation_en": "dee SHAHM — shame"
       },
       {
         "word": "die Schuld (Gefühl)",
         "en": "guilt (feeling)",
         "vi": "cảm giác có lỗi",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi SHULT"
+        "pronunciation_vi": "đi SHULT",
+        "pronunciation_en": "dee SHULT — guilt (feeling) / debt (depending on context)"
       },
       {
         "word": "das Mitgefühl",
         "en": "empathy, compassion",
         "vi": "sự đồng cảm",
         "pos": "noun (n)",
-        "pronunciation_vi": "đát MIT-gê-fuyl"
+        "pronunciation_vi": "đát MIT-gê-fuyl",
+        "pronunciation_en": "das MIT-guh-fuel — empathy, compassion ('ü' = round lips)"
       },
       {
         "word": "die Vertraulichkeit",
         "en": "confidentiality",
         "vi": "tính bảo mật",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi fe-TRAU-likh-kait"
+        "pronunciation_vi": "đi fe-TRAU-likh-kait",
+        "pronunciation_en": "dee fair-TROW-likh-kite — confidentiality"
       },
       {
         "word": "der Zeuge / die Zeugin",
         "en": "witness",
         "vi": "nhân chứng (vai trò người nghe)",
         "pos": "noun (m/f)",
-        "pronunciation_vi": "đe TSOI-gê"
+        "pronunciation_vi": "đe TSOI-gê",
+        "pronunciation_en": "dair TSOY-guh / dee TSOY-gin — witness ('eu' = 'oy') — used here for the listener's role"
       },
       {
         "word": "der/die Therapeut/-in",
         "en": "therapist",
         "vi": "chuyên gia trị liệu tâm lý",
         "pos": "noun (m/f)",
-        "pronunciation_vi": "đe tê-ra-PÔI-t"
+        "pronunciation_vi": "đe tê-ra-PÔI-t",
+        "pronunciation_en": "dair / dee tair-ah-POYT / -in — therapist ('eu' = 'oy')"
       },
       {
         "word": "professionelle Hilfe",
         "en": "professional help",
         "vi": "sự trợ giúp chuyên môn",
         "pos": "noun phrase",
-        "pronunciation_vi": "prô-fê-sô-NÊ-lê HIL-fê"
+        "pronunciation_vi": "prô-fê-sô-NÊ-lê HIL-fê",
+        "pronunciation_en": "pro-fes-yo-NEL-uh HIL-fuh — professional help"
       },
       {
         "word": "begleiten",
         "en": "to accompany, to walk alongside",
         "vi": "đồng hành",
         "pos": "verb",
-        "pronunciation_vi": "bê-GLAI-tần"
+        "pronunciation_vi": "bê-GLAI-tần",
+        "pronunciation_en": "buh-GLY-ten — to accompany, to walk alongside ('ei' = 'eye')"
       }
     ],
     "dialogue": [
@@ -14853,36 +15098,46 @@ export const lessons: GermanLesson[] = [
       "Sau khi cô ấy kể, validate ('was du erlebt hast, war nicht okay — nicht deine Schuld') + đề nghị support cụ thể (ngủ lại) + gợi ý NHẸ về Therapie ('wenn du soweit bist'). KHÔNG ép."
     ],
     "register_notes": "Lắng nghe câu chuyện khó (Du): câu mở 'Ich höre dir zu' — không Konjunktiv II ở đây, Indikativ direct + present. 'Du musst nicht mehr erzählen, als sich gut anfühlt' — KEY câu để cho space. 'Danke, dass du mir das anvertraust' — nhận GIFT. Validation: 'Was du erlebt hast, war nicht okay' / 'Es war nicht deine Schuld'. KHÔNG diagnose ('du hast Trauma'), KHÔNG fix ('ich werde nicht versuchen, es zu reparieren'). Câu hỏi WHY (warum hast du nicht...) = CẤM. Câu hỏi WHAT (was genau ist passiert) = CHỈ khi họ mời. Khi gợi ý Therapie: 'manche Menschen finden es hilfreich, mit einem Therapeuten zu reden — nicht weil mit dir was falsch ist'. Khi end: 'das bleibt zwischen uns' (confidentiality formal). Body language quan trọng hơn lời.",
+    "register_notes_en": "Listening to a hard story (Du): opener 'Ich höre dir zu' — no Konjunktiv II here, direct Indikativ + present. 'Du musst nicht mehr erzählen, als sich gut anfühlt' — the KEY line for giving them room. 'Danke, dass du mir das anvertraust' — receive the gift. Validation: 'Was du erlebt hast, war nicht okay' / 'Es war nicht deine Schuld'. NO diagnosing ('du hast Trauma'), NO fixing ('ich werde nicht versuchen, es zu reparieren'). 'Why' questions ('warum hast du nicht…') = FORBIDDEN. 'What' questions ('was genau ist passiert') = ONLY if they invite them. When suggesting therapy: 'manche Menschen finden es hilfreich, mit einem Therapeuten zu reden — nicht weil mit dir was falsch ist'. At the end: 'das bleibt zwischen uns' (formal confidentiality). Body language matters more than words.",
     "idiom_glosses": [
       {
         "idiom": "ein offenes Ohr haben",
         "literal": "có cái tai mở",
         "meaning": "sẵn sàng lắng nghe",
-        "example": "Wenn du irgendwann reden möchtest — ich habe immer ein offenes Ohr."
+        "meaning_en": "to have an open ear — to be available to listen",
+        "example": "Wenn du irgendwann reden möchtest — ich habe immer ein offenes Ohr.",
+        "example_en": "Whenever you want to talk — I always have an open ear."
       },
       {
         "idiom": "etwas auf dem Herzen haben",
         "literal": "có điều gì đó trên trái tim",
         "meaning": "có điều quan trọng muốn chia sẻ",
-        "example": "Du hast etwas auf dem Herzen — ich höre zu, ohne zu drängen."
+        "meaning_en": "to have something on one's heart — to have something important you want to share",
+        "example": "Du hast etwas auf dem Herzen — ich höre zu, ohne zu drängen.",
+        "example_en": "You have something on your heart — I'm listening, without pushing."
       },
       {
         "idiom": "sich vom Herzen reden",
         "literal": "nói từ trái tim",
         "meaning": "kể ra hết cảm xúc/chuyện đè nặng",
-        "example": "Manchmal hilft es, sich etwas vom Herzen zu reden — selbst wenn man keine Lösung sucht."
+        "meaning_en": "to talk something off your heart — to get an emotional weight out, just by speaking it",
+        "example": "Manchmal hilft es, sich etwas vom Herzen zu reden — selbst wenn man keine Lösung sucht.",
+        "example_en": "Sometimes it helps to talk something off your heart — even when you're not looking for a solution."
       },
       {
         "idiom": "die Seele baumeln lassen",
         "literal": "để tâm hồn lủng lẳng",
         "meaning": "thư giãn, không nghĩ ngợi",
-        "example": "Nach so einem Gespräch braucht man Zeit, die Seele baumeln zu lassen."
+        "meaning_en": "to let the soul dangle — to unwind, to stop thinking, to recover",
+        "example": "Nach so einem Gespräch braucht man Zeit, die Seele baumeln zu lassen.",
+        "example_en": "After a conversation like that, you need time to let your soul dangle."
       }
     ],
     "exercises": [
       {
         "type": "fill_blank",
         "instruction_vi": "Điền cấu trúc lắng nghe câu chuyện khó:",
+        "instruction_en": "Fill in the structure of listening to a hard story:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -14906,6 +15161,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "matching",
         "instruction_vi": "Nối câu Đức với chức năng listener:",
+        "instruction_en": "Match each German line to its listening function:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -14929,7 +15185,11 @@ export const lessons: GermanLesson[] = [
       {
         "type": "translation",
         "instruction_vi": "Dịch sang tiếng Đức (Du, lắng nghe empathetic):",
+        "instruction_en": "Translate into German (Du, empathetic listening):",
         "pronunciation_focus": [
+          "empathetic listening"
+        ],
+        "pronunciation_focus_en": [
           "empathetic listening"
         ],
         "items": [
@@ -14967,6 +15227,11 @@ export const lessons: GermanLesson[] = [
           "sprechen → SHPRÊ-khần",
           "Herzen → HÊ-tsần",
           "letzter → LET-stờ"
+        ],
+        "pronunciation_focus_en": [
+          "sprechen → SHPRE-khen",
+          "Herzen → HAIR-tsen ('z' = 'ts')",
+          "letzter → LETS-ter"
         ]
       },
       {
@@ -14976,6 +15241,11 @@ export const lessons: GermanLesson[] = [
           "gemerkt → gê-MÊK-t",
           "Treffen → TRÊF-fần",
           "erschöpft → e-SHƠ-pft"
+        ],
+        "pronunciation_focus_en": [
+          "gemerkt → guh-MAIRKT",
+          "Treffen → TREF-en",
+          "erschöpft → air-SHURP-ft ('ö' = round lips, say 'eh')"
         ]
       },
       {
@@ -14985,6 +15255,11 @@ export const lessons: GermanLesson[] = [
           "Gegenseitigkeit → gê-gần-ZAI-tikh-kait",
           "Krisenmodus → KRI-zần-mô-đu-s",
           "Freundschaft → FROIN-shaft"
+        ],
+        "pronunciation_focus_en": [
+          "Gegenseitigkeit → GAY-gen-zye-tikh-kite",
+          "Krisenmodus → KREE-zen-moh-doos",
+          "Freundschaft → FROYND-shaft ('eu' = 'oy')"
         ]
       },
       {
@@ -14994,6 +15269,11 @@ export const lessons: GermanLesson[] = [
           "persönlich → pe-ZƠN-likh",
           "Grenze → GREN-tsê",
           "brauche → BRAU-khê"
+        ],
+        "pronunciation_focus_en": [
+          "persönlich → pair-ZURN-likh ('ö' = round lips, say 'eh')",
+          "Grenze → GREN-tsuh ('z' = 'ts')",
+          "brauche → BROW-khuh ('au' = 'ow')"
         ]
       },
       {
@@ -15003,81 +15283,98 @@ export const lessons: GermanLesson[] = [
           "Mitternacht → MI-tờ-nakht",
           "anrufen → AN-ru-fần",
           "Limit → LI-mit"
+        ],
+        "pronunciation_focus_en": [
+          "Mitternacht → MIT-er-nakht (hard ach-Laut)",
+          "anrufen → AHN-roo-fen",
+          "Limit → LEE-mit"
         ]
       }
     ],
     "cultural_notes_vi": "Đặt ranh giới (Grenze setzen) trong văn hóa Đức khác Việt Nam ở ba điểm. (1) GRENZE ALS GESUNDHEIT: trong văn hóa Đức gần đây (đặc biệt ảnh hưởng từ psycho-Aufklärung và 'Selbstfürsorge' = self-care), đặt ranh giới được coi là DẤU HIỆU SỨC KHỎE, không phải egoism. Câu chuẩn: 'Eine Grenze zu setzen ist Selbstfürsorge, nicht Selbstsucht' (đặt ranh giới là tự chăm sóc, không phải ích kỷ). (2) DIRECT > HINTING: người Đức KHÔNG hint subtle để hy vọng đối phương 'hiểu ý'. Ranh giới được nói THẲNG: 'Ich kann dich um Mitternacht nicht mehr anrufen lassen'. KHÁC VN nơi hint + 'tự hiểu' phổ biến. Hint không có tác dụng + làm tình bạn ngày càng tệ. (3) BOUNDARIES ≠ ULTIMATEN: ranh giới không phải tối hậu thư. Câu chuẩn: 'Es ist nicht persönlich gegen dich — es ist etwas, das ich für mich brauche'. Grenze là về BẠN cần gì, không phải về ĐỐI PHƯƠNG sai gì.\n\nKhác Việt Nam: ở VN, ranh giới với bạn lâu năm có thể bị xem là 'lạnh lùng', 'không tình nghĩa'. Ở Đức, ranh giới rõ ràng = bạn TÔN TRỌNG cả mình + bạn — vì friendship không bền vững nếu một bên kiệt sức. Nguyên tắc: 'Eine Freundschaft, in der ich nicht ich selbst sein kann, ist auf Dauer nicht haltbar'.\n\nMột chi tiết quan trọng: phản ứng của bạn người Đức với ranh giới có thể là defensive ngay đầu — 'Du machst aus einer Mücke einen Elefanten' (cậu phóng đại) hoặc 'Ich habe nichts falsch gemacht'. ĐÓ LÀ NORMAL — không có nghĩa là họ không respect lâu dài. Giữ vững. Nhắc lại: 'Es geht nicht um falsch oder richtig — es geht um das, was ich brauche'.\n\nCác MỨC độ Grenze:\n1. NHẸ — communication preference: 'Ich antworte abends nicht mehr auf Whatsapp'\n2. TRUNG BÌNH — frequency: 'Ich kann uns nicht mehr 3-mal pro Woche treffen — einmal alle zwei Wochen ist machbar'\n3. NẶNG — content: 'Ich kann nicht mehr deine einzige Anlaufstelle für Krisen sein — du brauchst auch andere Unterstützung'\n4. NGẮT — relationship: 'Ich brauche eine Pause von unserer Freundschaft — ich melde mich, wenn ich soweit bin'\n\nKhi Grenze bị vi phạm liên tục:\n- 1ST: Nhắc nhẹ 'Erinnerst du dich, was wir besprochen haben?'\n- 2ND: Nhắc rõ + consequence: 'Wenn das wieder passiert, kann ich nicht mehr abnehmen'.\n- 3RD: Implement consequence — KHÔNG bluff.\n\nHealthy Freundschaft Đức:\n- Gegenseitigkeit (qua lại): cả 2 give + take\n- Respekt vor Privatsphäre (tôn trọng riêng tư): không 24/7 availability\n- Verschiedene Interessen okay: không cần share tất cả\n- 'Nein' sagen ist okay (nói KHÔNG là được)\n\nKhi cuối cùng phải end Freundschaft (nếu Grenze bị vi phạm liên tục): Câu formal: 'Ich glaube, unsere Freundschaft tut uns beiden nicht mehr gut. Ich wünsche dir alles Gute — aber ich brauche Abstand'. KHÔNG drama. Không posting public.\n\nWichtig: Therapeut/-in kann helfen, wenn Sie wiederholt Mühe haben, Grenzen zu setzen — das ist ein häufiges Thema in der Therapie und wird ohne Stigma behandelt.",
+    "cultural_notes_en": "Setting a boundary (Grenze setzen) works differently in German culture than in Vietnamese in three ways. (1) GRENZE AS HEALTH: in current German culture (especially after the wave of psycho-Aufklärung and 'Selbstfürsorge' = self-care), setting a boundary is read as a SIGN OF HEALTH, not as selfishness. The standard line is: 'Eine Grenze zu setzen ist Selbstfürsorge, nicht Selbstsucht' (setting a boundary is self-care, not selfishness). (2) DIRECT OVER HINTING: Germans DON'T drop subtle hints and hope the other person 'gets it'. Boundaries get said STRAIGHT: 'Ich kann dich um Mitternacht nicht mehr anrufen lassen' (I can't have you calling me at midnight any more). This differs from Vietnamese culture, where hinting + 'reading between the lines' is common. Hints don't work + the friendship gets worse over time. (3) BOUNDARIES ARE NOT ULTIMATUMS: a boundary isn't an ultimatum. Standard line: 'Es ist nicht persönlich gegen dich — es ist etwas, das ich für mich brauche' (it isn't personal against you — it's something I need for myself). A Grenze is about what YOU need, not about what the other person did wrong.\n\nWhere this diverges from Vietnamese practice: in Vietnam, drawing a hard line with an old friend can read as 'lạnh lùng' (cold) or 'không tình nghĩa' (loveless). In Germany, a clear boundary = you respect both yourself + your friend, because a friendship doesn't survive when one side is running on empty. The underlying principle: 'Eine Freundschaft, in der ich nicht ich selbst sein kann, ist auf Dauer nicht haltbar' (a friendship in which I can't be myself isn't sustainable long-term).\n\nOne important detail: a German friend's first reaction to a boundary may be defensive — 'Du machst aus einer Mücke einen Elefanten' (you're making a mountain out of a molehill) or 'Ich habe nichts falsch gemacht' (I didn't do anything wrong). THAT'S NORMAL — it doesn't mean they won't respect it in the long run. Hold steady. Repeat: 'Es geht nicht um falsch oder richtig — es geht um das, was ich brauche' (this isn't about right or wrong — it's about what I need).\n\nThe LEVELS of a Grenze:\n1. LIGHT — communication preference: 'Ich antworte abends nicht mehr auf Whatsapp' (I don't reply to WhatsApp in the evening any more)\n2. MEDIUM — frequency: 'Ich kann uns nicht mehr 3-mal pro Woche treffen — einmal alle zwei Wochen ist machbar' (I can't see you three times a week any more — every two weeks is doable)\n3. HEAVY — content: 'Ich kann nicht mehr deine einzige Anlaufstelle für Krisen sein — du brauchst auch andere Unterstützung' (I can't be your only crisis line any more — you need other support too)\n4. PAUSE — relationship: 'Ich brauche eine Pause von unserer Freundschaft — ich melde mich, wenn ich soweit bin' (I need a break from our friendship — I'll be in touch when I'm ready)\n\nWhen the Grenze is repeatedly crossed:\n- 1ST time: gentle reminder 'Erinnerst du dich, was wir besprochen haben?' (do you remember what we agreed?)\n- 2ND time: explicit reminder + consequence: 'Wenn das wieder passiert, kann ich nicht mehr abnehmen' (if this happens again, I won't be able to pick up).\n- 3RD time: implement the consequence — DON'T bluff.\n\nA healthy German Freundschaft looks like:\n- Gegenseitigkeit (reciprocity): both sides give + take\n- Respect for Privatsphäre (privacy): no expectation of 24/7 availability\n- Different interests are okay: you don't have to share everything\n- 'Nein' sagen ist okay (it's okay to say no)\n\nWhen you finally have to end a Freundschaft (after repeated boundary violations): the formal line is 'Ich glaube, unsere Freundschaft tut uns beiden nicht mehr gut. Ich wünsche dir alles Gute — aber ich brauche Abstand' (I don't think this friendship is good for either of us any more. I wish you all the best — but I need distance). No drama. No public posting.\n\nWichtig: a Therapeut/-in can help if you repeatedly struggle to set boundaries — this is a common topic in therapy and carries no stigma.",
     "tip_advice_vi": "Trước khi đặt ranh giới:\n1. CỤ THỂ điều bạn cần: 'weniger Anrufe nach 22 Uhr' không 'weniger Drama'.\n2. NOTE pattern: ghi 3-5 ví dụ cụ thể 2 tháng qua — không 'gefühlt zu viel'.\n3. CHỌN MOMENT bình tĩnh: KHÔNG đặt ranh giới giữa cuộc tranh cãi.\n\nCẤU TRÚC GRENZE-SETTING (4 bước):\n1. ICH-MESSAGE: 'Ich habe gemerkt, dass...'  (mình nhận ra...)\n2. SPECIFIC: 'In den letzten Wochen hast du mich [X-mal] nach Mitternacht angerufen' (cụ thể)\n3. NEED: 'Ich brauche [cụ thể]' — KHÔNG 'du musst aufhören'\n4. WHAT YOU CAN OFFER: 'Was möglich ist: [cụ thể]'\n\nNgôn ngữ ranh giới Đức:\n- 'Ich möchte mit dir über etwas sprechen, das mir auf dem Herzen liegt'\n- 'Ich habe gemerkt, dass [pattern cụ thể]'\n- 'Ich brauche [cụ thể] in einer Freundschaft'\n- 'Es ist nicht persönlich gegen dich'\n- 'Es ist eine Grenze, die ich für mich brauche'\n- 'Was möglich ist: [cụ thể alternative]'\n- 'Ich verstehe, wenn das schwer zu hören ist'\n\nTránh:\n- ❌ 'du nimmst zu viel' (kết tội)\n- ❌ 'du bist anstrengend' (cá nhân)\n- ❌ 'alle anderen finden auch...' (gaslighting)\n\nKhi họ defensive:\n- KHÔNG đầu hàng. 'Ich verstehe, dass das schwer zu hören ist — und gleichzeitig brauche ich das'\n- KHÔNG escalate: nói cùng tone\n- Nhắc lại 1-2 lần, không 5 lần\n\nKhi họ khóc / guilt-trip:\n- Validation cảm xúc: 'Ich sehe, dass dich das verletzt — und das war nicht meine Absicht'\n- Reaffirm Grenze: 'Aber meine Grenze bleibt'\n- KHÔNG rút lại Grenze để 'cho qua'\n\nKhi họ cố negotiate:\n- 'Was, wenn ich...?' — bạn có thể flex CỤ THỂ điểm nhỏ, KHÔNG core boundary\n- VÍ DỤ: nếu Grenze là 'không gọi sau 22h', có thể flex 'okay khi khẩn thực sự — và emergency = 110 hoặc 112, không tôi'\n\nSau cuộc trò chuyện:\n- KHÔNG check-in liên tục để đảm bảo họ ok — đó là rút Grenze\n- Để space tự nhiên — họ cần thời gian process\n- Lần đầu họ liên lạc: trả lời bình thường\n\nKhi pattern lặp lại (Grenze bị vi phạm):\n- Nhắc lại 1 lần: 'Erinnerst du dich an unsere Vereinbarung?'\n- Nếu tiếp tục: implement consequence (không trả tin nhắn sau 22h, không gặp 3 lần/tuần)\n- KHÔNG bluff — bluff = Grenze chết\n\nKhi cần END friendship:\n- Cụ thể: 'Ich habe gemerkt, dass diese Freundschaft mir mehr nimmt, als sie mir gibt'\n- Reasonable: 'Ich brauche Abstand — wie viel und wie lange, weiß ich noch nicht'\n- Final: 'Ich wünsche dir alles Gute'\n- KHÔNG public statement\n- KHÔNG 'final goodbye text' dramatic\n\nMẹo cuối: Selbstfürsorge (self-care) là từ rất phổ biến ở Đức gần đây — không cringe để dùng. Câu: 'Das ist Selbstfürsorge für mich — und letztendlich auch besser für unsere Freundschaft'. Reframe Grenze là FORHARMONIE, không gegen sie.",
+    "tip_advice_en": "Before you set a boundary:\n1. KNOW SPECIFICALLY what you need: 'fewer calls after 10 p.m.', not 'less drama'.\n2. NOTE THE PATTERN: 3–5 concrete examples from the last two months — not 'it feels like too much'.\n3. CHOOSE A CALM MOMENT: never set a boundary in the middle of a fight.\n\nSTRUCTURE OF BOUNDARY-SETTING (4 steps):\n1. I-MESSAGE: 'Ich habe gemerkt, dass…' (I've noticed that…)\n2. SPECIFIC: 'In den letzten Wochen hast du mich [X-mal] nach Mitternacht angerufen' (in the last few weeks you've called me [N] times after midnight)\n3. NEED: 'Ich brauche [specific]' — NOT 'du musst aufhören' (you have to stop)\n4. WHAT YOU CAN OFFER: 'Was möglich ist: [specific alternative]' (what works for me is: [specific])\n\nThe language of German boundary-setting:\n- 'Ich möchte mit dir über etwas sprechen, das mir auf dem Herzen liegt' (I want to talk to you about something on my mind)\n- 'Ich habe gemerkt, dass [specific pattern]'\n- 'Ich brauche [specific] in einer Freundschaft'\n- 'Es ist nicht persönlich gegen dich' (it's not personal against you)\n- 'Es ist eine Grenze, die ich für mich brauche' (it's a boundary I need for myself)\n- 'Was möglich ist: [concrete alternative]'\n- 'Ich verstehe, wenn das schwer zu hören ist' (I get that this is hard to hear)\n\nAvoid:\n- ❌ 'du nimmst zu viel' (you take too much — accusation)\n- ❌ 'du bist anstrengend' (you're exhausting — personal)\n- ❌ 'alle anderen finden auch…' (everyone else also thinks… — gaslighting)\n\nWhen they get defensive:\n- DON'T fold. 'Ich verstehe, dass das schwer zu hören ist — und gleichzeitig brauche ich das' (I get that it's hard to hear — and I still need it)\n- DON'T escalate: match their tone\n- Repeat once or twice, not five times\n\nWhen they cry or guilt-trip:\n- Validate the feeling: 'Ich sehe, dass dich das verletzt — und das war nicht meine Absicht' (I see this is hurting you — and it wasn't my intention)\n- Reaffirm the Grenze: 'Aber meine Grenze bleibt' (but my boundary stands)\n- DON'T take it back just to 'smooth things over'\n\nWhen they try to negotiate:\n- 'Was, wenn ich…?' — you can flex a SPECIFIC small detail, NOT the core boundary\n- EXAMPLE: if the Grenze is 'no calls after 10 p.m.', you can flex 'okay in a real emergency — and a real emergency is 110 or 112, not me'\n\nAfter the conversation:\n- DON'T constantly check in to make sure they're okay — that's undoing the Grenze\n- Give space naturally — they need time to process\n- The first time they reach out, reply normally\n\nWhen the pattern continues (boundary violated again):\n- Remind once: 'Erinnerst du dich an unsere Vereinbarung?' (remember our agreement?)\n- If it continues: implement the consequence (don't reply after 10 p.m., don't meet 3x a week)\n- DON'T bluff — a bluff = a dead boundary\n\nWhen you need to END the friendship:\n- Be specific: 'Ich habe gemerkt, dass diese Freundschaft mir mehr nimmt, als sie mir gibt' (I've realised this friendship takes more from me than it gives)\n- Be reasonable: 'Ich brauche Abstand — wie viel und wie lange, weiß ich noch nicht' (I need distance — how much and how long, I don't know yet)\n- Final: 'Ich wünsche dir alles Gute' (I wish you all the best)\n- NO public statement\n- NO dramatic 'final goodbye text'\n\nFinal tip: Selbstfürsorge (self-care) is a very common word in current German — not cringe to use. Try: 'Das ist Selbstfürsorge für mich — und letztendlich auch besser für unsere Freundschaft' (this is self-care for me — and ultimately better for our friendship too). Reframe the Grenze as FOR the relationship, not against it.",
     "vocabulary": [
       {
         "word": "die Grenze",
         "en": "boundary, limit",
         "vi": "ranh giới",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi GREN-tsê"
+        "pronunciation_vi": "đi GREN-tsê",
+        "pronunciation_en": "dee GREN-tsuh — boundary, limit ('z' = 'ts')"
       },
       {
         "word": "Grenze setzen",
         "en": "to set a boundary",
         "vi": "đặt ranh giới",
         "pos": "verb phrase",
-        "pronunciation_vi": "GREN-tsê ZÉT-tsần"
+        "pronunciation_vi": "GREN-tsê ZÉT-tsần",
+        "pronunciation_en": "GREN-tsuh ZETS-en — to set a boundary"
       },
       {
         "word": "die Selbstfürsorge",
         "en": "self-care",
         "vi": "tự chăm sóc bản thân",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi ZELP-st-fuy-zô-gê"
+        "pronunciation_vi": "đi ZELP-st-fuy-zô-gê",
+        "pronunciation_en": "dee ZELP-st-fuer-zor-guh — self-care ('ü' = round lips, say 'ee')"
       },
       {
         "word": "die Gegenseitigkeit",
         "en": "mutuality, reciprocity",
         "vi": "sự qua lại",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi gê-gần-ZAI-tikh-kait"
+        "pronunciation_vi": "đi gê-gần-ZAI-tikh-kait",
+        "pronunciation_en": "dee GAY-gen-zye-tikh-kite — mutuality, reciprocity ('ei' = 'eye')"
       },
       {
         "word": "der Krisenmodus",
         "en": "crisis mode",
         "vi": "chế độ khủng hoảng",
         "pos": "noun (m)",
-        "pronunciation_vi": "đe KRI-zần-mô-đu-s"
+        "pronunciation_vi": "đe KRI-zần-mô-đu-s",
+        "pronunciation_en": "dair KREE-zen-moh-doos — crisis mode"
       },
       {
         "word": "erschöpft",
         "en": "exhausted",
         "vi": "kiệt sức",
         "pos": "adjective",
-        "pronunciation_vi": "e-SHƠ-pft"
+        "pronunciation_vi": "e-SHƠ-pft",
+        "pronunciation_en": "air-SHURP-ft — exhausted ('ö' = round lips, say 'eh')"
       },
       {
         "word": "die Anlaufstelle",
         "en": "go-to point of contact",
         "vi": "địa chỉ liên hệ chính",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi AN-laof-shtê-lê"
+        "pronunciation_vi": "đi AN-laof-shtê-lê",
+        "pronunciation_en": "dee AHN-lowf-shtel-uh — go-to point of contact ('au' = 'ow')"
       },
       {
         "word": "die Vereinbarung",
         "en": "agreement",
         "vi": "thỏa thuận",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi fe-AIN-ba-rung"
+        "pronunciation_vi": "đi fe-AIN-ba-rung",
+        "pronunciation_en": "dee fair-EYE-n-bah-roong — agreement"
       },
       {
         "word": "der Abstand",
         "en": "distance, space",
         "vi": "khoảng cách",
         "pos": "noun (m)",
-        "pronunciation_vi": "đe AB-shtant"
+        "pronunciation_vi": "đe AB-shtant",
+        "pronunciation_en": "dair AHB-shtant — distance, space"
       },
       {
         "word": "auf dem Herzen liegen",
         "en": "to weigh on one's heart, to be on one's mind",
         "vi": "đè nặng trong lòng",
         "pos": "phrase",
-        "pronunciation_vi": "aof đêm HÊ-tsần LI-gần"
+        "pronunciation_vi": "aof đêm HÊ-tsần LI-gần",
+        "pronunciation_en": "owf daym HAIR-tsen LEE-gen — to weigh on one's heart, to be on one's mind (idiom)"
       }
     ],
     "dialogue": [
@@ -15205,36 +15502,46 @@ export const lessons: GermanLesson[] = [
       "Đặt Grenze cụ thể: 'keine Anrufe nach Mitternacht' + alternative ('1x/Woche, je halb deine/meine Themen'). Khi Anna hỏi 'echte Krise nachts?', cung cấp Telefonseelsorge 0800 111 0 111. Tham khảo cuối: re-evaluate sau 1 tuần."
     ],
     "register_notes": "Đặt Grenze với bạn Đức (Du): câu mở 'Mir liegt etwas auf dem Herzen' (formal, signal cuộc trò chuyện quan trọng). Konjunktiv II không cần ở đây — Indikativ direct. Cấu trúc: ICH-MESSAGE ('Ich habe gemerkt, dass') → SPECIFIC (số liệu cụ thể) → NEED ('Ich brauche') → ALTERNATIVE ('Was möglich ist'). Câu reframe key: 'Es ist nicht persönlich gegen dich — es ist eine Grenze, die ich für mich brauche'. Khi defensive: 'Es geht nicht um falsch oder richtig — es geht um das, was ich brauche'. Khi guilt-trip: 'Ich verstehe, dass das schwer zu hören ist — und gleichzeitig brauche ich das'. KHÔNG escalate, KHÔNG rút lại. Câu reframe Grenze là healthy: 'Eine Freundschaft, in der ich erschöpft bin, ist auf Dauer nicht haltbar' / 'Es ist Selbstfürsorge'. Khi đối phương hỏi alternative cho khủng hoảng đêm: cung cấp Telefonseelsorge 0800 111 0 111 (resource thực tế).",
+    "register_notes_en": "Boundary-setting with a German friend (Du): opener 'Mir liegt etwas auf dem Herzen' (something is on my heart — formal, signals an important conversation). Konjunktiv II isn't needed — direct Indikativ. Structure: I-MESSAGE ('Ich habe gemerkt, dass') → SPECIFIC (numbers, concrete) → NEED ('Ich brauche') → ALTERNATIVE ('Was möglich ist'). Key reframe line: 'Es ist nicht persönlich gegen dich — es ist eine Grenze, die ich für mich brauche'. When they go defensive: 'Es geht nicht um falsch oder richtig — es geht um das, was ich brauche'. When they guilt-trip: 'Ich verstehe, dass das schwer zu hören ist — und gleichzeitig brauche ich das'. DON'T escalate, DON'T retreat. Reframe the Grenze as healthy: 'Eine Freundschaft, in der ich erschöpft bin, ist auf Dauer nicht haltbar' / 'Es ist Selbstfürsorge'. If they ask for an alternative for genuine crisis nights: hand them Telefonseelsorge 0800 111 0 111 (a real resource).",
     "idiom_glosses": [
       {
         "idiom": "aus einer Mücke einen Elefanten machen",
         "literal": "biến con muỗi thành con voi",
         "meaning": "phóng đại vấn đề",
-        "example": "Du machst aus einer Mücke einen Elefanten — ich habe doch nur dreimal angerufen."
+        "meaning_en": "to make an elephant out of a mosquito — to make a mountain out of a molehill, to blow something out of proportion",
+        "example": "Du machst aus einer Mücke einen Elefanten — ich habe doch nur dreimal angerufen.",
+        "example_en": "You're making an elephant out of a mosquito — I only called three times."
       },
       {
         "idiom": "die Reißleine ziehen",
         "literal": "kéo dây kéo cứu (parachute)",
         "meaning": "stop khẩn cấp khi tình huống đi quá xa",
-        "example": "Bei dieser Freundschaft musste ich die Reißleine ziehen — sonst wäre ich zusammengebrochen."
+        "meaning_en": "to pull the rip-cord (parachute) — to make an emergency stop when a situation has gone too far",
+        "example": "Bei dieser Freundschaft musste ich die Reißleine ziehen — sonst wäre ich zusammengebrochen.",
+        "example_en": "With this friendship I had to pull the rip-cord — otherwise I would have collapsed."
       },
       {
         "idiom": "auf eigene Kappe nehmen",
         "literal": "nhận lên mũ của chính mình",
         "meaning": "chịu trách nhiệm về điều gì đó",
-        "example": "Diese Grenze nehme ich auf meine eigene Kappe — auch wenn andere es nicht verstehen."
+        "meaning_en": "to take it onto one's own cap — to take responsibility for something yourself",
+        "example": "Diese Grenze nehme ich auf meine eigene Kappe — auch wenn andere es nicht verstehen.",
+        "example_en": "I'm taking this boundary onto my own cap — even if others don't understand."
       },
       {
         "idiom": "den Knoten durchschlagen",
         "literal": "chém đứt nút thắt (gốc Alexander Đại đế)",
         "meaning": "giải quyết vấn đề phức tạp dứt khoát",
-        "example": "Mit diesem Gespräch haben wir den Knoten durchgeschlagen — endlich Klarheit."
+        "meaning_en": "to cut through the knot (the Gordian knot of Alexander the Great) — to resolve a tangled problem decisively",
+        "example": "Mit diesem Gespräch haben wir den Knoten durchgeschlagen — endlich Klarheit.",
+        "example_en": "With this conversation we cut through the knot — finally some clarity."
       }
     ],
     "exercises": [
       {
         "type": "fill_blank",
         "instruction_vi": "Điền cấu trúc đặt Grenze:",
+        "instruction_en": "Fill in the structure of setting a boundary:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -15258,6 +15565,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "matching",
         "instruction_vi": "Nối khái niệm Đức với chức năng:",
+        "instruction_en": "Match each German concept to its function:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -15281,7 +15589,11 @@ export const lessons: GermanLesson[] = [
       {
         "type": "translation",
         "instruction_vi": "Dịch sang tiếng Đức (Du, Grenze formal):",
+        "instruction_en": "Translate into German (Du, formal boundary-setting):",
         "pronunciation_focus": [
+          "setting boundaries"
+        ],
+        "pronunciation_focus_en": [
           "setting boundaries"
         ],
         "items": [
