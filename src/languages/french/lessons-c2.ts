@@ -4,7 +4,7 @@
 
 import type { FrenchLesson } from "./lessons";
 
-export const lessons: FrenchLesson[] =   [
+export const lessons: FrenchLesson[] =     [
     {
       "id": "lclose_reading",
       "level": "C2",
@@ -3337,6 +3337,12 @@ export const lessons: FrenchLesson[] =   [
             "instituée → an-sti-tu-é",
             "conscience → kõn-siãns",
             "neutralité → nơ-tra-li-té"
+          ],
+          "pronunciation_focus_en": [
+            "laïcité → 'lah-ee-see-TAY' — four syllables; the untranslatable key concept",
+            "instituée → 'an-stee-too-AY' — feminine past participle; 'established'",
+            "conscience → 'kohn-SYAHNSS' — nasal 'on' + nasal '-ence'",
+            "neutralité → 'nuh-trah-lee-TAY' — 'eu' rounded; '-té' = 'tay'"
           ]
         },
         {
@@ -3347,6 +3353,12 @@ export const lessons: FrenchLesson[] =   [
             "juridique → ju-ri-dik",
             "identitaire → i-dãn-ti-tèr",
             "passionnel → pa-sio-nèl"
+          ],
+          "pronunciation_focus_en": [
+            "eût → 'U' — imperfect subjunctive of avoir; literary register marker",
+            "juridique → 'zhoo-ree-DEEK' — 'j' = 'zh'; 'legal' (the legal plane)",
+            "identitaire → 'ee-dahn-tee-TEHR' — 'identity-' (adj.); '-aire' = 'air'",
+            "passionnel → 'pah-syo-NEL' — double 'nn' = 'n'; 'belonging to the passionate register'"
           ]
         },
         {
@@ -3357,6 +3369,12 @@ export const lessons: FrenchLesson[] =   [
             "signifiant → si-ni-fiãn",
             "flottant → flo-tãn",
             "investit → an-vès-ti"
+          ],
+          "pronunciation_focus_en": [
+            "constater → 'kohn-stah-TAY' — 'force est de constater' = 'one is forced to note'",
+            "signifiant → 'see-nyee-FYAHN' — Saussurean term; nasal final 'an'",
+            "flottant → 'floh-TAHN' — 'floating'; nasal '-ant'; final 't' silent",
+            "investit → 'an-ves-TEE' — 'investir d'un sens' = to invest with a meaning"
           ]
         },
         {
@@ -3367,6 +3385,12 @@ export const lessons: FrenchLesson[] =   [
             "excèdent → èk-sèd",
             "antagonistes → ãn-ta-go-nist",
             "égalité → é-ga-li-té"
+          ],
+          "pronunciation_focus_en": [
+            "cristallise → 'krees-tah-LEEZ' — 'crystallizes'; final '-e' silent",
+            "excèdent → 'ek-SED' — 'excéder' = to exceed; final '-ent' silent",
+            "antagonistes → 'ahn-tah-goh-NEEST' — nasal 'an'; final '-es' silent",
+            "égalité → 'ay-gah-lee-TAY' — 'equality'; one of the Republic's three words"
           ]
         },
         {
@@ -3377,6 +3401,12 @@ export const lessons: FrenchLesson[] =   [
             "caricaturer → ka-ri-ka-tu-ré",
             "énoncer → é-nõn-sé",
             "arène → a-rèn"
+          ],
+          "pronunciation_focus_en": [
+            "adverse → 'ad-VEHRSS' — 'la position adverse' = the opposing position",
+            "caricaturer → 'kah-ree-kah-tu-RAY' — 'to caricature'; '-er' = 'ay'",
+            "énoncer → 'ay-nohn-SAY' — 'to state'; nasal 'on'; '-er' = 'ay'",
+            "arène → 'ah-REN' — 'l'arène médiatique' = the media arena"
           ]
         }
       ],
@@ -3388,91 +3418,105 @@ export const lessons: FrenchLesson[] =   [
           "en": "secularism (French model)",
           "vi": "chủ nghĩa thế tục kiểu Pháp",
           "pos": "n.f.",
-          "pronunciation_vi": "la-i-si-té"
+          "pronunciation_vi": "la-i-si-té",
+          "pronunciation_en": "lah lah-ee-see-TAY — the French model of secularism; no English equivalent"
         },
         {
           "word": "la liberté de conscience",
           "en": "freedom of conscience",
           "vi": "tự do lương tâm",
           "pos": "n.f.",
-          "pronunciation_vi": "li-bèr-té dơ kõn-siãns"
+          "pronunciation_vi": "li-bèr-té dơ kõn-siãns",
+          "pronunciation_en": "lah lee-behr-TAY duh kohn-SYAHNSS — 'liberté de conscience' (1905, Article 1)"
         },
         {
           "word": "la neutralité de l'État",
           "en": "state neutrality",
           "vi": "tính trung lập của Nhà nước",
           "pos": "n.f.",
-          "pronunciation_vi": "nơ-tra-li-té dơ lé-ta"
+          "pronunciation_vi": "nơ-tra-li-té dơ lé-ta",
+          "pronunciation_en": "lah nuh-trah-lee-TAY duh lay-TAH — 'neutralité de l'État'"
         },
         {
           "word": "un signe religieux ostensible",
           "en": "conspicuous religious symbol",
           "vi": "biểu tượng tôn giáo lộ liễu",
           "pos": "n.m.",
-          "pronunciation_vi": "si-niơ rơ-li-ji-ơ os-tãn-si-blơ"
+          "pronunciation_vi": "si-niơ rơ-li-ji-ơ os-tãn-si-blơ",
+          "pronunciation_en": "UN SEE-nyuh ruh-lee-ZHYUH os-tahn-SEE-bluh — 'conspicuous religious symbol' (2004 law)"
         },
         {
           "word": "le prosélytisme",
           "en": "proselytism",
           "vi": "sự truyền giáo tích cực",
           "pos": "n.m.",
-          "pronunciation_vi": "pro-zé-li-tismơ"
+          "pronunciation_vi": "pro-zé-li-tismơ",
+          "pronunciation_en": "luh pro-zay-lee-TEEZM — 'proselytism'; 's' = 'z'; final '-isme' = 'eezm'"
         },
         {
           "word": "le vivre-ensemble",
           "en": "living together / social cohesion",
           "vi": "sống chung / cộng đồng",
           "pos": "n.m.",
-          "pronunciation_vi": "vivr-ãn-sãn-blơ"
+          "pronunciation_vi": "vivr-ãn-sãn-blơ",
+          "pronunciation_en": "luh VEEVR-ahn-SAHN-bluh — 'le vivre-ensemble' = social cohesion; hyphenated nominal"
         },
         {
           "word": "le communautarisme",
           "en": "communitarianism (pejorative)",
           "vi": "chủ nghĩa cộng đồng khép kín",
           "pos": "n.m.",
-          "pronunciation_vi": "ko-mu-nô-ta-rismơ"
+          "pronunciation_vi": "ko-mu-nô-ta-rismơ",
+          "pronunciation_en": "luh koh-mu-noh-tah-REEZM — 'communautarisme' (pejorative); NOT neutral 'communitarianism'"
         },
         {
           "word": "un signifiant flottant",
           "en": "a floating signifier",
           "vi": "cái biểu đạt trôi nổi",
           "pos": "n.m.",
-          "pronunciation_vi": "si-ni-fiãn flo-tãn"
+          "pronunciation_vi": "si-ni-fiãn flo-tãn",
+          "pronunciation_en": "UN see-nyee-FYAHN floh-TAHN — 'floating signifier' (Lacan/Lévi-Strauss)"
         },
         {
           "word": "la sphère publique",
           "en": "the public sphere",
           "vi": "không gian công cộng",
           "pos": "n.f.",
-          "pronunciation_vi": "sfèr pu-blik"
+          "pronunciation_vi": "sfèr pu-blik",
+          "pronunciation_en": "lah SFEHR pu-BLEEK — 'la sphère publique' = the public sphere"
         },
         {
           "word": "séculier / séculière",
           "en": "secular (adj.)",
           "vi": "thế tục (tính từ)",
           "pos": "adj.",
-          "pronunciation_vi": "sé-ku-lié"
+          "pronunciation_vi": "sé-ku-lié",
+          "pronunciation_en": "say-ku-LYAY — 'séculier' (adj.) = secular; false friend caution vs 'laïque'"
         }
       ],
       "dialogue": [
         {
           "speaker": "Interlocuteur",
           "text": "La laïcité, pour vous, est-ce d'abord un principe juridique ou une valeur identitaire?",
+          "en": "Laïcité, for you — is it first a legal principle or an identity value?",
           "vi": "Laïcité, với bạn, trước hết là nguyên lý pháp lý hay giá trị bản sắc?"
         },
         {
           "speaker": "Linh",
           "text": "Juridique, sans hésitation. La loi de 1905 a tranché: l'État ne connaît pas les cultes, il les ignore institutionnellement, mais il les protège tous également.",
+          "en": "Legal, without hesitation. The 1905 law settled it: the State doesn't know religions, it ignores them institutionally, but it protects all of them equally.",
           "vi": "Pháp lý, không do dự. Luật 1905 đã phân xử: Nhà nước không biết đến các tín ngưỡng, bỏ qua chúng về mặt thể chế, nhưng bảo vệ tất cả như nhau."
         },
         {
           "speaker": "Interlocuteur",
           "text": "Mais cette neutralité n'est-elle pas, en pratique, une fiction? L'État finance l'entretien des églises d'avant 1905.",
+          "en": "But isn't that neutrality, in practice, a fiction? The State funds the upkeep of pre-1905 churches.",
           "vi": "Nhưng tính trung lập đó trong thực tế không phải là hư cấu sao? Nhà nước tài trợ bảo trì nhà thờ xây trước 1905."
         },
         {
           "speaker": "Linh",
           "text": "Vous touchez juste — c'est le paradoxe concordataire qui subsiste en Alsace-Moselle. Mais l'exception confirme la règle, elle ne l'invalide pas.",
+          "en": "You're right — that's the concordat paradox still surviving in Alsace-Moselle. But the exception confirms the rule, it doesn't invalidate it.",
           "vi": "Bạn chạm đúng — đó là nghịch lý concordat còn tồn tại ở Alsace-Moselle. Nhưng ngoại lệ xác nhận quy tắc, không phủ nhận nó."
         }
       ],
@@ -3480,41 +3524,49 @@ export const lessons: FrenchLesson[] =   [
         {
           "speaker": "Modérateur (émission 'Du grain à moudre', France Culture)",
           "text": "Nous recevons ce soir trois invités pour débattre de la laïcité à l'école. Madame Tran, vous êtes doctorante en droit public. Votre position?",
+          "en": "We have three guests tonight to debate laïcité in schools. Ms. Tran, you're a doctoral student in public law. Your position?",
           "vi": "Tối nay chúng tôi tiếp ba khách mời tranh luận về laïcité ở trường học. Bà Trần, bà là nghiên cứu sinh công pháp. Lập trường của bà?"
         },
         {
           "speaker": "Linh",
           "text": "Je pars du texte de 1905, qui me semble trop souvent invoqué sans être lu. L'article premier garantit la liberté de conscience — c'est le principe. La neutralité de l'État en découle, elle n'est pas le principe premier.",
+          "en": "I start from the 1905 text, which I think is too often invoked without being read. Article one guarantees freedom of conscience — that's the principle. State neutrality follows from it; it isn't the first principle.",
           "vi": "Tôi xuất phát từ văn bản 1905, vốn theo tôi quá thường được viện dẫn mà không được đọc. Điều một bảo đảm tự do lương tâm — đó là nguyên lý. Tính trung lập của Nhà nước hệ quả từ đó, không phải nguyên lý hàng đầu."
         },
         {
           "speaker": "Invité 2 (essayiste)",
           "text": "Vous faites du droit sans voir la réalité sociologique: la laïcité est aujourd'hui menacée par l'entrisme communautariste dans les écoles.",
+          "en": "You do law without seeing the sociological reality: laïcité is today threatened by communitarian entryism into schools.",
           "vi": "Bà làm luật mà không thấy thực tại xã hội học: laïcité ngày nay bị đe dọa bởi sự xâm nhập của chủ nghĩa cộng đồng vào các trường học."
         },
         {
           "speaker": "Linh",
           "text": "Votre terme 'entrisme' mérite d'être interrogé. De quel entrisme parlez-vous exactement? Avez-vous des données chiffrées, ou s'agit-il d'une impression?",
+          "en": "Your term 'entryism' deserves to be questioned. What entryism exactly are you talking about? Do you have figures, or is this an impression?",
           "vi": "Thuật ngữ 'xâm nhập' của ông xứng đáng bị chất vấn. Chính xác ông nói về sự xâm nhập nào? Ông có dữ liệu định lượng không, hay đây là một ấn tượng?"
         },
         {
           "speaker": "Invité 2",
           "text": "Je parle de faits — des jeunes filles qui arrivent voilées en cours d'EPS, des menus hallal imposés...",
+          "en": "I'm talking about facts — girls arriving veiled in PE class, imposed halal menus...",
           "vi": "Tôi nói về các sự kiện — các cô gái trẻ đến giờ thể dục với khăn trùm đầu, thực đơn halal bị áp đặt..."
         },
         {
           "speaker": "Linh",
           "text": "Vous mélangez trois registres: le voile à l'école (tranché par la loi de 2004), la restauration scolaire (qui relève du pouvoir discrétionnaire des collectivités), et un sentiment d'insécurité culturelle. Mélanger ces registres, c'est précisément ce qui empêche un débat rationnel.",
+          "en": "You're mixing three registers: the veil in school (settled by the 2004 law), school catering (which falls under local authorities' discretionary power), and a feeling of cultural insecurity. Mixing these registers is precisely what prevents a rational debate.",
           "vi": "Ông trộn ba bình diện: khăn trùm ở trường (đã được luật 2004 phân xử), phục vụ ăn uống trường học (thuộc quyền tùy nghi của chính quyền địa phương), và một cảm giác bất an văn hóa. Trộn các bình diện này, chính là điều ngăn cản tranh luận lý tính."
         },
         {
           "speaker": "Modérateur",
           "text": "Madame Tran, on vous sent attachée au droit. Mais le droit n'est-il pas toujours en retard sur le réel?",
+          "en": "Ms. Tran, you seem attached to the law. But isn't the law always behind reality?",
           "vi": "Bà Trần, chúng tôi thấy bà gắn bó với luật. Nhưng luật không phải luôn chậm hơn thực tại sao?"
         },
         {
           "speaker": "Linh",
           "text": "Le droit est en retard, c'est entendu. Mais c'est précisément parce qu'il est en retard qu'il nous oblige à la lenteur du raisonnement — et c'est cette lenteur qui protège du jugement hâtif.",
+          "en": "The law is behind, granted. But it's precisely because it lags that it forces us into the slowness of reasoning — and it's that slowness which protects us from hasty judgment.",
           "vi": "Luật chậm hơn, đã rõ. Nhưng chính vì nó chậm hơn mà nó buộc ta vào sự chậm rãi của suy lý — và chính sự chậm rãi đó bảo vệ khỏi phán xét vội vàng."
         }
       ],
@@ -3527,13 +3579,17 @@ export const lessons: FrenchLesson[] =   [
         {
           "idiom": "Un signifiant flottant",
           "literal": "Cái biểu đạt trôi nổi",
+          "literal_en": "a floating signifier",
           "meaning": "Thuật ngữ mượn từ Lacan / Lévi-Strauss: một từ mà nghĩa trở nên bất định vì mỗi phe gán cho nó một nội dung khác. Trong tranh luận laïcité, 'laïcité' chính là signifiant flottant.",
+          "meaning_en": "a term (from Lacan/Lévi-Strauss) whose meaning becomes unstable because each side fills it with different content — in the laïcité debate, 'laïcité' itself is the floating signifier",
           "example": "Le mot 'laïcité' est devenu un signifiant flottant — chacun y met ce qu'il veut, et c'est précisément ce qui rend le débat si difficile."
         },
         {
           "idiom": "La loi dispose que...",
           "literal": "Luật quy định rằng...",
+          "literal_en": "the law provides that...",
           "meaning": "Công thức pháp lý chuẩn để trích dẫn luật — tín hiệu cho thấy bạn nói từ văn bản, không từ ý kiến cá nhân.",
+          "meaning_en": "the standard legal formula for quoting a statute — a signal that you speak from the text, not from personal opinion",
           "example": "La loi de 1905 dispose que la République ne reconnaît aucun culte — cela ne signifie pas qu'elle les ignore, mais qu'elle ne les institutionnalise pas."
         }
       ],
@@ -3541,35 +3597,46 @@ export const lessons: FrenchLesson[] =   [
         {
           "type": "fill-blank",
           "question": "La laïcité, telle que la loi de 1905 l'a ___, ne saurait être confondue avec une hostilité envers le fait religieux.",
-          "answer": "instituée"
+          "answer": "instituée",
+          "hint_vi": "quá khứ phân từ giống cái của 'instituer' — 'đã thiết lập'",
+          "hint_en": "feminine past participle of 'instituer' — 'established' (la loi l'a ___)"
         },
         {
           "type": "matching",
           "pairs": [
             [
               "la loi de 1905",
-              "luật tách Giáo hội khỏi Nhà nước"
+              "luật tách Giáo hội khỏi Nhà nước (the 1905 separation law)"
             ],
             [
               "la liberté de conscience",
-              "tự do lương tâm"
+              "tự do lương tâm (freedom of conscience)"
             ],
             [
               "le communautarisme",
-              "chủ nghĩa cộng đồng khép kín"
+              "chủ nghĩa cộng đồng khép kín (communitarianism, pejorative)"
             ],
             [
               "un signifiant flottant",
-              "cái biểu đạt trôi nổi"
+              "cái biểu đạt trôi nổi (a floating signifier)"
             ]
           ],
-          "instruction": "Nối thuật ngữ tranh luận laïcité với nghĩa Việt"
+          "instruction": "Nối thuật ngữ tranh luận laïcité với nghĩa Việt",
+          "instruction_en": "Match each laïcité-debate term with its Vietnamese meaning"
         },
         {
           "type": "translation",
           "vietnamese": "Một cuộc tranh luận xứng đáng với tên gọi đòi hỏi ta biết lắng nghe lập trường đối phương mà không biếm họa nó.",
+          "english": "A debate worthy of the name requires that one know how to listen to the opposing position without caricaturing it.",
           "french": "Un débat digne de ce nom exige que l'on sache écouter la position adverse sans la caricaturer."
         }
+      ],
+      "cultural_notes_en": "Laïcité is a French concept with no direct English equivalent. (1) The 1905 LAW (separation of Church and State): Article 1 — 'the Republic ensures freedom of conscience; it guarantees the free exercise of religions'. Article 2 — 'the Republic recognizes, salaries, and subsidizes no religion'. (2) TWO TRADITIONS: 'laïcité ouverte' (Jaurès, Briand) — state neutrality without hostility; 'laïcité de combat' (Combes, early 1900s) — actively pushing religious influence out of public space. (3) DIFFERENCE FROM ANGLO SECULARISM: Anglo-American secularism is 'the state doesn't interfere with religion' (negative liberty). French laïcité is 'the state protects the individual from religious pressure' (positive liberty through the state). (4) The 2004 law bans 'conspicuous religious symbols' in state schools; 2010 bans face-covering in public — both internationally contested. (5) Today the debate splits three ways: 'historical laïcité' (faithful to 1905), 'identitarian laïcité' (laïcité as 'French identity' against Islam — often accused of being disguised Islamophobia), 'inclusive laïcité' (adapting 1905 to a religiously diverse society). (6) CRUCIAL FOR VIETNAMESE SPEAKERS: Vietnam has its own 'tam giáo đồng nguyên' tradition plus a socialist state's religious policy. Do NOT impose the French laïcité frame on Vietnamese reality. But when debating in French, master the three distinctions: legal vs political vs identitarian laïcité.",
+      "tip_advice_en": "C2 laïcité-debate speech structure: (1) POSITION YOUR CAMP immediately ('Je me réclame de la laïcité historique de 1905...'). (2) DISTINGUISH THE LEVELS: the legal plane (what the law says), the political plane (what the law should say), the sociological plane (what people actually do). (3) CITE THE LAW, NOT OPINION: 'L'article 1 de la loi de 1905 dispose que...' beats 'À mon avis...'. (4) ACKNOWLEDGE COMPLEXITY: 'La question est complexe et ne saurait se réduire à...'. (5) CONCEDE A POINT before making yours: 'Je concède que... Cependant...'. Avoid: 'la laïcité, c'est l'interdiction de...' (abusive simplification), 'tous les croyants pensent que...' (generalization), and a passionate tone ('c'est scandaleux!') — which is disqualifying in a republican debate.",
+      "register_notes_en": "C2 laïcité debate register: calm, analytical, never impassioned — the French prize 'la raison' in laïcité debate above all. Obligatory lexicon: 'distinguer' / 'il importe de distinguer', 'sur le plan juridique / politique / sociologique', 'la loi dispose que...' (the law provides that...), 'le législateur a voulu...' (the lawmaker intended...). Hedging: 'Il me semble que...', 'On peut soutenir que...', 'La question mérite d'être posée autrement.' Avoid: an indignant tone ('C'est une honte!'), amalgam ('Les musulmans pensent que...' — always distinguish 'certains musulmans'), and anachronism (projecting contemporary categories onto 1905).",
+      "roleplay_prompts_en": [
+        "You take part in a televised debate on laïcité. Your opponent says: 'La laïcité, c'est l'interdiction du religieux dans l'espace public.' Rebut: distinguish 'banning religion' from 'state neutrality', cite the 1905 law. Structure: concession ('Je comprends votre préoccupation') + legal correction + concrete example.",
+        "In a seminar, defend the thesis: 'The 2004 law on religious symbols in schools was necessary but insufficient.' Explain why necessary + why insufficient + propose a complementary solution. Use the academic register."
       ]
     },
     {
@@ -3587,6 +3654,12 @@ export const lessons: FrenchLesson[] =   [
             "performatif → pèr-for-ma-tif",
             "institue → an-sti-tu",
             "locuteur → lo-ku-tơr"
+          ],
+          "pronunciation_focus_en": [
+            "discours → 'dees-KOOR' — final 's' silent; 'speech'",
+            "performatif → 'pehr-for-mah-TEEF' — Austin's term; final 'f' pronounced",
+            "institue → 'an-stee-TU' — 'instituer' = to institute; rounded final 'u'",
+            "locuteur → 'loh-ku-TUR' — 'the speaker' (discourse-analysis term); '-eur' rounded"
           ]
         },
         {
@@ -3597,6 +3670,12 @@ export const lessons: FrenchLesson[] =   [
             "pronoms → pro-nõn",
             "rhétorique → ré-to-rik",
             "légitimité → lé-ji-ti-mi-té"
+          ],
+          "pronunciation_focus_en": [
+            "explicite → 'eks-plee-SEET' — 'explicit'; final '-e' silent",
+            "pronoms → 'pro-NOHN' — nasal '-om'; 'pronouns'; final 's' silent",
+            "rhétorique → 'ray-toh-REEK' — 'h' silent; final '-que' = 'k'",
+            "légitimité → 'lay-zhee-tee-mee-TAY' — 'g' = 'zh'; 'legitimacy'"
           ]
         },
         {
@@ -3607,6 +3686,12 @@ export const lessons: FrenchLesson[] =   [
             "Mitterrand → Mi-tê-rãn",
             "Macron → Ma-krõn",
             "englobe → ãn-glob"
+          ],
+          "pronunciation_focus_en": [
+            "de Gaulle → 'duh GOHL' — 'au' = 'oh'; '-lle' = 'l'",
+            "Mitterrand → 'mee-teh-RAHN' — nasal final 'an'; final 'd' silent",
+            "Macron → 'mah-KROHN' — nasal '-on'",
+            "englobe → 'ahn-GLOB' — nasal 'en'; 'to encompass'; final '-e' silent"
           ]
         },
         {
@@ -3617,6 +3702,12 @@ export const lessons: FrenchLesson[] =   [
             "hypotaxique → i-po-tak-sik",
             "Clémenceau → Klé-mãn-sô",
             "parataxique → pa-ra-tak-sik"
+          ],
+          "pronunciation_focus_en": [
+            "Jaurès → 'zhoh-RESS' — 'J' = 'zh'; final 's' pronounced (proper name)",
+            "hypotaxique → 'ee-poh-tak-SEEK' — 'h' silent; subordinating syntax (adj.)",
+            "Clémenceau → 'klay-mahn-SOH' — nasal 'en'; '-eau' = 'oh'",
+            "parataxique → 'pah-rah-tak-SEEK' — coordinating/juxtaposing syntax (adj.)"
           ]
         },
         {
@@ -3627,6 +3718,12 @@ export const lessons: FrenchLesson[] =   [
             "rassurer → ra-su-ré",
             "mobiliser → mo-bi-li-zé",
             "adjectifs → ad-jèk-tif"
+          ],
+          "pronunciation_focus_en": [
+            "équilibriste → 'ay-kee-lee-BREEST' — 'tightrope walker'; final '-e' silent",
+            "rassurer → 'rah-su-RAY' — 'to reassure'; '-er' = 'ay'",
+            "mobiliser → 'moh-bee-lee-ZAY' — 'to mobilize'; 's' = 'z'",
+            "adjectifs → 'ad-zhek-TEEF' — 'g'... 'j' = 'zh'; final 's' silent"
           ]
         }
       ],
@@ -3638,91 +3735,105 @@ export const lessons: FrenchLesson[] =   [
           "en": "a platform speech",
           "vi": "diễn văn cương lĩnh",
           "pos": "n.m.",
-          "pronunciation_vi": "dis-kur pro-gram"
+          "pronunciation_vi": "dis-kur pro-gram",
+          "pronunciation_en": "UN dees-KOOR-pro-GRAHM — 'discours-programme' = a platform speech"
         },
         {
           "word": "le pronom 'nous'",
           "en": "the pronoun 'we'",
           "vi": "đại từ 'chúng ta'",
           "pos": "n.m.",
-          "pronunciation_vi": "pro-nõn nu"
+          "pronunciation_vi": "pro-nõn nu",
+          "pronunciation_en": "luh pro-NOHN NOO — 'le pronom nous' = the pronoun 'we'"
         },
         {
           "word": "une anaphore",
           "en": "anaphora (rhetorical)",
           "vi": "phép điệp ngữ đầu câu",
           "pos": "n.f.",
-          "pronunciation_vi": "a-na-for"
+          "pronunciation_vi": "a-na-for",
+          "pronunciation_en": "ün ah-nah-FOR — 'anaphora' (rhetorical repetition at clause openings)"
         },
         {
           "word": "l'allocution",
           "en": "formal address / speech",
           "vi": "bài phát biểu chính thức",
           "pos": "n.f.",
-          "pronunciation_vi": "a-lo-ku-sion"
+          "pronunciation_vi": "a-lo-ku-sion",
+          "pronunciation_en": "lah-loh-ku-SYON — 'l'allocution' = a formal address; '-tion' = 'syon'"
         },
         {
           "word": "la performativité",
           "en": "performativity (Austin)",
           "vi": "tính ngôn hành",
           "pos": "n.f.",
-          "pronunciation_vi": "pèr-for-ma-ti-vi-té"
+          "pronunciation_vi": "pèr-for-ma-ti-vi-té",
+          "pronunciation_en": "lah pehr-for-mah-tee-vee-TAY — 'performativity' (Austin)"
         },
         {
           "word": "l'éloquence",
           "en": "eloquence",
           "vi": "tài hùng biện",
           "pos": "n.f.",
-          "pronunciation_vi": "é-lo-kãns"
+          "pronunciation_vi": "é-lo-kãns",
+          "pronunciation_en": "lay-loh-KAHNSS — 'l'éloquence' = eloquence; nasal '-ence'"
         },
         {
           "word": "la tribune",
           "en": "the rostrum / platform",
           "vi": "bục diễn đàn",
           "pos": "n.f.",
-          "pronunciation_vi": "tri-bun"
+          "pronunciation_vi": "tri-bun",
+          "pronunciation_en": "lah tree-BUN — 'la tribune' = the rostrum / platform"
         },
         {
           "word": "le clivage",
           "en": "cleavage / divide",
           "vi": "sự chia rẽ / phân tuyến",
           "pos": "n.m.",
-          "pronunciation_vi": "kli-vaj"
+          "pronunciation_vi": "kli-vaj",
+          "pronunciation_en": "luh klee-VAHZH — 'le clivage' = cleavage/divide; final '-age' = 'ahzh'"
         },
         {
           "word": "rassembleur / rassembleuse",
           "en": "unifying (adj.)",
           "vi": "tập hợp / đoàn kết",
           "pos": "adj.",
-          "pronunciation_vi": "ra-sãn-blơr"
+          "pronunciation_vi": "ra-sãn-blơr",
+          "pronunciation_en": "rah-sahn-BLUR — 'rassembleur' (adj.) = unifying; '-eur' rounded"
         },
         {
           "word": "un slogan",
           "en": "a slogan",
           "vi": "khẩu hiệu",
           "pos": "n.m.",
-          "pronunciation_vi": "slo-gãn"
+          "pronunciation_vi": "slo-gãn",
+          "pronunciation_en": "UN sloh-GAHN — 'slogan'; anglicism; nasal final 'an'"
         }
       ],
       "dialogue": [
         {
           "speaker": "Étudiant",
           "text": "Comment analyser le 'nous' dans un discours de Macron?",
+          "en": "How do you analyze the 'we' in a Macron speech?",
           "vi": "Phân tích chữ 'nous' trong diễn văn Macron thế nào?"
         },
         {
           "speaker": "Prof. Maingueneau",
           "text": "Demandez-vous: ce 'nous' inclut-il l'auditoire présent? Le pays entier? L'humanité? La réponse change selon le paragraphe — et c'est cette variation qu'il faut cartographier.",
+          "en": "Ask yourself: does this 'we' include the present audience? The whole country? Humanity? The answer changes by paragraph — and it's that variation you must map.",
           "vi": "Hãy tự hỏi: 'nous' này có bao gồm cử tọa hiện diện? Toàn đất nước? Nhân loại? Câu trả lời thay đổi theo từng đoạn — và chính sự biến đổi đó cần được vẽ bản đồ."
         },
         {
           "speaker": "Étudiant",
           "text": "Et si 'nous' est ambigu?",
+          "en": "And if 'we' is ambiguous?",
           "vi": "Nếu 'nous' mơ hồ thì sao?"
         },
         {
           "speaker": "Prof. Maingueneau",
           "text": "L'ambiguïté n'est pas un défaut — c'est une ressource rhétorique. Un 'nous' qui peut être lu comme 'les Français' OU 'mon gouvernement' permet de parler à deux publics en même temps.",
+          "en": "Ambiguity isn't a flaw — it's a rhetorical resource. A 'we' that can be read as 'the French' OR 'my government' lets you speak to two publics at once.",
           "vi": "Sự mơ hồ không phải là khiếm khuyết — đó là tài nguyên tu từ. Một 'nous' có thể được đọc là 'người Pháp' HOẶC 'chính phủ của tôi' cho phép nói với hai công chúng cùng một lúc."
         }
       ],
@@ -3730,36 +3841,43 @@ export const lessons: FrenchLesson[] =   [
         {
           "speaker": "Prof. Maingueneau (séminaire d'analyse du discours, Paris 3)",
           "text": "Mademoiselle Tran, vous avez choisi d'analyser le discours d'investiture de François Mitterrand, 21 mai 1981. Pourquoi ce discours?",
+          "en": "Ms. Tran, you chose to analyze François Mitterrand's inaugural speech, May 21, 1981. Why this speech?",
           "vi": "Cô Trần, cô đã chọn phân tích diễn văn nhậm chức của François Mitterrand, 21 tháng 5 năm 1981. Vì sao diễn văn này?"
         },
         {
           "speaker": "Linh",
           "text": "Parce que c'est un discours de basculement — la gauche arrive au pouvoir pour la première fois sous la Ve République. La rhétorique doit accomplir une double tâche: rassurer ceux qui ont peur, et mobiliser ceux qui espèrent.",
+          "en": "Because it's a speech of reversal — the left comes to power for the first time under the Fifth Republic. The rhetoric must do a double task: reassure those who fear, and mobilize those who hope.",
           "vi": "Vì đó là một diễn văn bước ngoặt — phe tả lên nắm quyền lần đầu dưới nền Đệ Ngũ Cộng hòa. Tu từ phải hoàn thành nhiệm vụ kép: trấn an những người sợ, và huy động những người hy vọng."
         },
         {
           "speaker": "Prof. Maingueneau",
           "text": "Bien. Commencez par les pronoms — que trouvez-vous?",
+          "en": "Good. Start with the pronouns — what do you find?",
           "vi": "Tốt. Bắt đầu bằng các đại từ — cô thấy gì?"
         },
         {
           "speaker": "Linh",
           "text": "Le 'je' domine le premier tiers — Mitterrand s'institue comme sujet de l'action. Puis le 'nous' prend le relais, mais un 'nous' qui exclut la droite: 'nous, la gauche', 'nous, le peuple de gauche'. Ce n'est pas le 'nous' gaullien qui englobe la France entière.",
+          "en": "The 'je' dominates the first third — Mitterrand institutes himself as the subject of action. Then 'nous' takes over, but a 'nous' that excludes the right: 'we, the left', 'we, the people of the left'. It's not the Gaullian 'nous' that encompasses all of France.",
           "vi": "Cái 'je' chi phối một phần ba đầu — Mitterrand thiết lập mình như chủ thể hành động. Rồi 'nous' tiếp quản, nhưng là 'nous' loại trừ phe hữu: 'chúng ta, phe tả', 'chúng ta, nhân dân cánh tả'. Đó không phải là 'nous' của de Gaulle bao trùm toàn nước Pháp."
         },
         {
           "speaker": "Prof. Maingueneau",
           "text": "Très juste. Et les temps verbaux?",
+          "en": "Very accurate. And the verb tenses?",
           "vi": "Rất đúng. Còn thì động từ?"
         },
         {
           "speaker": "Linh",
           "text": "Alternance entre futur ('je proposerai', 'nous construirons') et présent de vérité générale ('la justice est la condition de la paix'). Le passé est presque absent — aucune nostalgie, aucune référence à Giscard. L'ennemi n'est pas nommé, il est effacé.",
+          "en": "An alternation between future ('je proposerai', 'nous construirons') and the present of general truth ('la justice est la condition de la paix'). The past is almost absent — no nostalgia, no reference to Giscard. The enemy isn't named, he's erased.",
           "vi": "Xen kẽ giữa futur ('tôi sẽ đề xuất', 'chúng ta sẽ xây dựng') và présent chân lý tổng quát ('công lý là điều kiện của hòa bình'). Quá khứ hầu như vắng mặt — không hoài niệm, không tham chiếu đến Giscard. Kẻ thù không được gọi tên, nó bị xóa đi."
         },
         {
           "speaker": "Prof. Maingueneau",
           "text": "L'effacement de l'adversaire — c'est une trouvaille. Développez pour la semaine prochaine.",
+          "en": "The erasure of the adversary — that's a find. Develop it for next week.",
           "vi": "Sự xóa bỏ đối thủ — đó là một phát hiện. Triển khai cho tuần sau."
         }
       ],
@@ -3772,7 +3890,9 @@ export const lessons: FrenchLesson[] =   [
         {
           "idiom": "Un morceau d'anthologie",
           "literal": "Một đoạn hợp tuyển",
+          "literal_en": "a piece of anthology",
           "meaning": "Một đoạn văn / diễn văn xuất sắc đến mức xứng đáng được đưa vào sách giáo khoa — khen discours politique.",
+          "meaning_en": "a passage or speech so outstanding it deserves to be anthologized — a critic's praise for political oratory",
           "example": "Le 'Je vous ai compris' du général de Gaulle à Alger, en 1958, est un morceau d'anthologie de l'ambiguïté politique assumée."
         }
       ],
@@ -3780,35 +3900,46 @@ export const lessons: FrenchLesson[] =   [
         {
           "type": "fill-blank",
           "question": "Le discours politique est un acte ___ qui institue le locuteur en représentant de la nation.",
-          "answer": "performatif"
+          "answer": "performatif",
+          "hint_vi": "tính từ (Austin) — hành vi ngôn ngữ vừa nói vừa làm",
+          "hint_en": "adjective (Austin) — a speech act that does what it says ('performatif')"
         },
         {
           "type": "matching",
           "pairs": [
             [
               "une anaphore",
-              "phép điệp ngữ đầu câu"
+              "phép điệp ngữ đầu câu (anaphora — clause-initial repetition)"
             ],
             [
               "l'allocution",
-              "bài phát biểu chính thức"
+              "bài phát biểu chính thức (a formal address)"
             ],
             [
               "le clivage",
-              "sự chia rẽ / phân tuyến"
+              "sự chia rẽ / phân tuyến (cleavage / political divide)"
             ],
             [
               "l'éloquence",
-              "tài hùng biện"
+              "tài hùng biện (eloquence)"
             ]
           ],
-          "instruction": "Nối thuật ngữ phân tích diễn ngôn với nghĩa Việt"
+          "instruction": "Nối thuật ngữ phân tích diễn ngôn với nghĩa Việt",
+          "instruction_en": "Match each discourse-analysis term with its Vietnamese meaning"
         },
         {
           "type": "translation",
           "vietnamese": "Phân tích diễn ngôn chính trị đòi hỏi chú ý ít hơn đến nội dung hiển ngôn mà nhiều hơn đến các dấu hiệu hình thức: đại từ, thì động từ, các hình thái tu từ.",
+          "english": "The analysis of political discourse requires that one pay attention less to the explicit content than to the formal markers: the pronouns, the verb tenses, the rhetorical figures.",
           "french": "L'analyse du discours politique exige qu'on prête attention moins au contenu explicite qu'aux marqueurs formels: les pronoms, les temps verbaux, les figures de rhétorique."
         }
+      ],
+      "cultural_notes_en": "Analyzing French political speech draws on a specific heritage. (1) JAURÈS (1859-1914): a master orator — long sentences, hypotaxis, oratorical rhythm. (2) DE GAULLE (1890-1970): a 'republican monarch' style; 'nous' encompassing the whole nation; short sentences, sacred adjectives ('la France éternelle'). (3) MITTERRAND (1916-1996): 'rhetoric of the left'; 'nous' meaning only the left camp; a literary style quoting Lamartine, Hugo. (4) MACRON (2017-): the 'en même temps' style — juxtaposing two contrasting clauses in the same sentence. (5) ANALYTIC TOOLS: French 'analyse du discours' (Pêcheux, Maingueneau) differs from Anglo critical discourse analysis (Fairclough, van Dijk) — it foregrounds énonciation (who speaks to whom, from what position) over ideology critique. (6) GENRES: inaugural address, December 31 wishes, crisis address, runoff televised debate — each with its own rhetorical rules.",
+      "tip_advice_en": "C2 grid for analyzing a political speech (7 axes): (1) ÉNONCIATION — who speaks? from where? to whom? (2) PRONOUNS — Je/Nous/On/Ils, each draws a political map. (3) VERB TENSES — present (general truth), future (promise), passé composé (record), imperfect (nostalgia). (4) FIGURES — anaphora, metaphor, antithesis, rhetorical question. (5) LEXICAL FIELD — abstract (République, Nation, Peuple) vs concrete (salaire, hôpital). (6) SYNTAX — long hypotactic sentence (Jaurès) vs short paratactic (Clémenceau). (7) SILENCES — what's not said, the avoided themes. Useful phrases: 'Le locuteur se construit ici comme...', 'L'usage du pronom X révèle...', 'Le choix du passé composé n'est pas anodin: il...', 'Cette anaphore scande...'",
+      "register_notes_en": "C2 political-discourse analysis: obligatory metalanguage — 'énonciation', 'locuteur', 'allocutaire', 'pronom', 'marqueur', 'modalité', 'ethos discursif'. When quoting a speech, always give date + context + paragraph. When analyzing: 'Le choix de X plutôt que Y révèle...' over 'X veut dire...'. When concluding: 'Ce discours construit un ethos de...' (this speech constructs a moral persona of...). Avoid political judgment ('ce discours est démagogique') — stay in formal analysis.",
+      "roleplay_prompts_en": [
+        "Analyze a contemporary French political speech (pick a specific one). Use the 7-axis grid (énonciation, pronouns, tenses, figures, lexicon, syntax, silences). Conclude: 'Ce discours révèle une conception du pouvoir qui...'",
+        "In a seminar, you're criticized: 'Votre analyse est trop formaliste, vous ignorez le contexte politique.' Respond: concede, then show how formal analysis ILLUMINATES the political context ('c'est précisément par l'analyse des pronoms que l'on voit comment le locuteur construit son adversaire')."
       ]
     },
     {
