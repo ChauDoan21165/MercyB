@@ -3642,6 +3642,12 @@ export const lessons: FrenchLesson[] = [
           "salariale → sa-la-rial",
           "responsabilités → rès-põn-sa-bi-li-té",
           "légitime → lé-ji-tim"
+        ],
+        "pronunciation_focus_en": [
+          "fourchette → 'foor-SHET' — 'ou' is 'oo'; 'ch' is 'sh'; literally 'fork' but here 'range' (salary)",
+          "salariale → 'sah-lah-RYAHL' — feminine of 'salarial'; -iale glides into 'yahl'",
+          "responsabilités → 'res-pohn-sah-bee-lee-TAY' — six syllables; nasal 'on'; final -tés is 'tay'",
+          "légitime → 'lay-zhee-TEEM' — 'g' is soft 'zh'; final -ime is 'eem'"
         ]
       },
       {
@@ -3652,6 +3658,12 @@ export const lessons: FrenchLesson[] = [
           "variable → va-ria-blơ",
           "bonus → bo-nus",
           "examiner → èg-za-mi-né"
+        ],
+        "pronunciation_focus_en": [
+          "au-delà → 'oh-duh-LAH' — 'au' is 'oh'; schwa 'de'; means 'beyond'",
+          "variable → 'vah-RYAH-bluh' — 'ia' glides to 'yah'; final -ble is a quick 'bluh'",
+          "bonus → 'boh-NEWS' — English loanword pronounced French-style; 'u' rounded; final -s sounded (rare for French)",
+          "examiner → 'eg-zah-mee-NAY' — opening 'x' between vowels sounds 'gz'; final -er is 'ay'"
         ]
       },
       {
@@ -3662,6 +3674,12 @@ export const lessons: FrenchLesson[] = [
           "clarification → kla-ri-fi-ka-sion",
           "indicateurs → an-di-ka-tơr",
           "finaliser → fi-na-li-zé"
+        ],
+        "pronunciation_focus_en": [
+          "réserve → 'ray-ZERV' — 's' between vowels sounds like 'z'; final -e silent",
+          "clarification → 'klah-ree-fee-kah-SYOHN' — five syllables; -tion is 'syohn'",
+          "indicateurs → 'an-dee-kah-TUR' — nasal -in; final -eurs is 'ur' with rounded lips; plural -s silent",
+          "finaliser → 'fee-nah-lee-ZAY' — 's' between vowels sounds like 'z'; final -er is 'ay'"
         ]
       },
       {
@@ -3672,6 +3690,12 @@ export const lessons: FrenchLesson[] = [
           "sensible → sãn-si-blơ",
           "marché → mar-shé",
           "formulée → for-mu-lé"
+        ],
+        "pronunciation_focus_en": [
+          "écart → 'ay-KAR' — final -t silent; means 'gap'",
+          "sensible → 'sahn-SEE-bluh' — nasal -en; final -ble is a quick 'bluh'. False friend: NOT English 'sensible' — means 'significant' or 'sensitive' here",
+          "marché → 'mar-SHAY' — 'ch' is 'sh'; final -é is 'ay'",
+          "formulée → 'for-mew-LAY' — 'u' rounded 'ew'; past participle feminine -ée is 'ay'"
         ]
       },
       {
@@ -3682,175 +3706,211 @@ export const lessons: FrenchLesson[] = [
           "cohérence → ko-é-rãns",
           "interne → an-tèrn",
           "enchère → ãn-shèr"
+        ],
+        "pronunciation_focus_en": [
+          "souligner → 'soo-lee-NYAY' — 'ou' is 'oo'; -gn- is 'ny' as in 'canyon'; final -er is 'ay'",
+          "cohérence → 'koh-ay-RAHNS' — nasal -en; the 'h' is silent (always in French)",
+          "interne → 'an-TAIRN' — nasal -in; final -e silent; means 'internal'",
+          "enchère → 'ahn-SHAIR' — nasal -en; 'ch' is 'sh'; final -ère is 'air'; means 'bid' (auction)"
         ]
       }
     ],
     "cultural_notes_vi": "Thương lượng lương trong doanh nghiệp Pháp tuân theo những quy ước rất khác Mỹ và Việt Nam. Hiểu sai có thể khiến bạn vừa mất lương vừa mất uy tín ở vòng đầu.\n\n(1) TIỀN LÀ CHỦ ĐỀ NHẠY CẢM. Người Pháp KHÔNG thoải mái nói thẳng về tiền như người Mỹ. Câu kiểu « Combien tu gagnes ? » giữa đồng nghiệp = bất lịch sự nặng. Trong négociation, bạn KHÔNG vào ngay con số ở câu đầu — bạn dẫn qua « périmètre du poste », « responsabilités », « fourchette du marché » TRƯỚC khi đến chiffre.\n\n(2) « PACKAGE » KHÔNG CHỈ LÀ FIXE. Lương Pháp gồm nhiều thành phần: salaire brut annuel (BFA — chuẩn), part variable (bonus sur objectifs, % du fixe), 13e voire 14e mois (truyền thống ở banque, assurance), participation/intéressement (bắt buộc cho doanh nghiệp >50 nhân viên), tickets restaurant (~9-11 EUR/jour), mutuelle santé (souvent 50-100% prise en charge), prévoyance, retraite supplémentaire (PERO, PERCO), CE (comité d'entreprise, désormais CSE), véhicule de fonction, plan d'actionnariat. Người Việt mới sang Pháp thường chỉ négocier le fixe — bỏ qua 20-30% giá trị thật.\n\n(3) FOURCHETTE EST UN OUTIL. Dans les premiers échanges, on parle « fourchette » (entre X et Y EUR) plutôt que chiffre unique. Cela permet de tester le marché sans s'engager. Quand l'employeur donne sa fourchette, la règle classique: viser le HAUT de la fourchette, justifier par responsabilités spécifiques.\n\n(4) ARGUMENTAIRE EXIGÉ. Demander une augmentation sans justification = refus immédiat. Le supérieur français attend: bilan chiffré des résultats des 12 derniers mois, comparaison avec la fourchette du marché (sources crédibles: APEC, Cadremploi, étude Robert Half, Hays), évolution du périmètre du poste, nouvelles compétences acquises. Le « parce que je le mérite » sans argumentaire CHIFFRÉ ne marche pas.\n\n(5) RYTHME DES NÉGOCIATIONS. En France, les augmentations annuelles s'inscrivent dans le cycle des entretiens annuels (souvent novembre-février). Demander une augmentation hors cycle = inhabituel; il faut une raison forte (changement de périmètre, offre concurrente, prise de responsabilité non rétribuée). La revalorisation à l'embauche est plus facilement négociable que les revalorisations annuelles.\n\n(6) BONUS SUR OBJECTIFS — PIÈGE FRÉQUENT. Beaucoup de bonus français sont conditionnels: « jusqu'à 15% du fixe sur atteinte des objectifs ». Le piège: les objectifs sont souvent fixés UNILATÉRALEMENT par le manager APRÈS l'embauche, et peuvent être inatteignables. Toujours négocier en amont: critères chiffrés, méthode de calcul, partie GARANTIE (« plancher » de bonus indépendant de l'atteinte).\n\n(7) NE PAS MENTIR SUR L'OFFRE CONCURRENTE. La tentation existe d'inventer une offre concurrente pour faire monter. Risque: le marché RH français est petit (à Paris surtout); votre interlocuteur connaît parfois le recruteur de l'entreprise « concurrente » et peut vérifier. Réputation ruinée pour gain ponctuel = mauvais calcul.\n\n(8) LE SILENCE EST UN OUTIL. Après avoir formulé votre demande, TAISEZ-VOUS. Le silence pousse l'autre à proposer. Erreur fréquente du candidat débutant: meubler le silence en justifiant sa demande, ce qui affaiblit la position. Règle: dire le chiffre, puis se taire 5-10 secondes, regarder calmement.",
+    "cultural_notes_en": "Salary negotiation at French firms follows conventions that diverge sharply from the US model anglophone candidates often default to.\n\n(1) MONEY IS A SENSITIVE TOPIC. The French are NOT comfortable speaking directly about money the way Americans are. 'How much do you earn?' between colleagues = a serious breach of manners. In negotiation, you do NOT lead with the number — you build up through 'périmètre du poste' (scope of the position), 'responsabilités', 'fourchette du marché' (market range) BEFORE arriving at a figure.\n\n(2) 'PACKAGE' IS NOT JUST THE FIXED SALARY. A French compensation package includes: salaire brut annuel (BFA — the standard), part variable (performance bonus, % of fixed), 13th or even 14th month payment (traditional in banking, insurance), participation/intéressement (mandatory for firms >50 employees), tickets restaurant (~9-11 EUR/day meal vouchers), mutuelle santé (often 50-100% employer-covered), prévoyance, retraite supplémentaire (PERO, PERCO retirement plans), CSE (works-council benefits), véhicule de fonction (company car), stock-option/RSU plans. Anglophone candidates often negotiate only the fixed and miss 20-30% of the actual value.\n\n(3) FOURCHETTE IS A TOOL. In early exchanges, both sides speak of 'fourchette' (between X and Y EUR) rather than a single number. This tests the market without locking in. When the employer gives their range, the classic rule: aim for the TOP of the range, justify by specific responsibilities.\n\n(4) AN ARGUMENTAIRE IS REQUIRED. Asking for a raise without justification = immediate refusal. The French manager expects: quantified bilan of the last 12 months' results, comparison with market range (credible sources: APEC, Cadremploi, Robert Half studies, Hays), evolution of the role's scope, new competencies acquired. The 'because I deserve it' argument without QUANTIFIED basis does not work.\n\n(5) NEGOTIATION RHYTHM. In France, annual raises are tied to the annual review cycle (often November-February). Asking for a raise off-cycle = unusual; you need a strong reason (scope change, competing offer, taking on unpaid responsibility). The hiring-time negotiation is more easily moved than the annual-cycle one.\n\n(6) OBJECTIVE-BASED BONUS — A COMMON TRAP. Many French bonuses are conditional: 'up to 15% of the fixed salary on hitting targets'. The trap: targets are often set UNILATERALLY by the manager AFTER hiring, and can be unreachable. Always negotiate upstream: quantified criteria, calculation method, GUARANTEED portion ('plancher' or floor independent of target achievement).\n\n(7) DON'T LIE ABOUT A COMPETING OFFER. The temptation exists to invent a competing offer to push the number up. Risk: the French HR market is small (especially in Paris); your interlocutor sometimes knows the recruiter at the supposed 'competing' firm and can verify. Reputation ruined for a one-time gain = bad math.\n\n(8) SILENCE IS A TOOL. After making your ask, GO QUIET. Silence pushes the other side to offer. A frequent beginner mistake: filling the silence by justifying the ask, which weakens the position. Rule: state the figure, then stay quiet for 5-10 seconds, look calm.",
     "tip_advice_vi": "Cấu trúc 6 bước cho buổi négociation salariale (1 heure typiquement):\n\n(1) PRÉPARATION (1-2 jours avant): collecte des données du marché — APEC, Cadremploi, Robert Half. Définir 3 chiffres: votre PLANCHER (en dessous, vous refusez), votre CIBLE (réaliste-haut), votre PLAFOND (idéal). Préparer un argumentaire écrit avec 3-5 réalisations chiffrées.\n\n(2) OUVERTURE (5 min): remercier de l'opportunité d'échanger, situer le poste, exprimer l'engagement envers l'entreprise. NE PAS attaquer sur le chiffre. Donner le ton « partenaire, pas demandeur ».\n\n(3) DÉMONSTRATION DE VALEUR (15 min): rappeler les responsabilités du poste, présenter les réalisations chiffrées (chiffre d'affaires généré, économies réalisées, équipes managées, projets livrés). Lier chaque chiffre à une compétence rare ou stratégique.\n\n(4) FORMULATION DE LA DEMANDE (5 min): donner la fourchette cible, justifier par référence au marché et aux responsabilités. Phrase clé: « Compte tenu de [responsabilités], et au regard de la fourchette du marché qui se situe entre X et Y, je viserais Z. »\n\n(5) NÉGOCIATION (20 min): écouter la contre-proposition, ne pas réagir immédiatement. Si la contre-proposition est en dessous, demander à comprendre les contraintes. Proposer des leviers alternatifs si le fixe ne bouge pas: bonus garanti, télétravail, formation, prise en charge déménagement, RTT supplémentaires, congé sabbatique au bout de 5 ans.\n\n(6) CONCLUSION (10 min): si accord, demander une formalisation écrite par mail dans les 48h (« Pour mémoire, voici ce que nous avons convenu… »). Si désaccord, ne PAS rompre brutalement — proposer un délai de réflexion (« je vais y réfléchir, je vous reviens vendredi »).\n\nCỤM HỮU ÍCH:\n\nĐỂ MỞ ĐỒNG VỊ:\n- « Je vous remercie de me recevoir pour aborder ce point. »\n- « Avant d'entrer dans le chiffre, j'aimerais qu'on rappelle ensemble le périmètre du poste. »\n- « Mon souhait est qu'on parvienne à un accord équilibré pour les deux parties. »\n\nĐỂ JUSTIFIER LA DEMANDE:\n- « Au regard du marché pour ce profil, la fourchette se situe entre X et Y. »\n- « Mes douze derniers mois ont permis [réalisation chiffrée]. »\n- « Le périmètre tel que défini suppose [compétences rares], qui justifient une revalorisation. »\n\nĐỂ NÉGOCIER LES LEVIERS ALTERNATIFS:\n- « Si le fixe ne peut bouger à ce stade, seriez-vous ouvert à [levier alternatif] ? »\n- « Pourrait-on envisager une clause de revoyure à six mois ? »\n- « Un bonus plancher garanti permettrait de sécuriser une partie du package. »\n\nĐỂ CONCLURE:\n- « Si je résume, nous serions sur [récapitulatif]. Je reviens vers vous pour confirmation. »\n- « Pourriez-vous me formaliser l'accord par mail dans la semaine ? »\n- « Je vous remercie pour cet échange constructif. »\n\nTRÁNH:\n- « Je veux X EUR, c'est mon dernier mot » → ultimatum prématuré, ferme la discussion\n- « Si vous ne pouvez pas, j'ai une offre ailleurs » sans preuve → bluff facilement détecté\n- « C'est pas assez » → enfantin, sans argumentaire\n- Accepter la première offre sans contre-proposer → perte de 5-15% systématique\n- Négocier devant un tiers (collègue, RH junior) → préférer un échange en bilatéral",
+    "tip_advice_en": "Six-step structure for a salary negotiation meeting (typically 1 hour):\n\n(1) PREPARATION (1-2 days before): gather market data — APEC, Cadremploi, Robert Half. Define 3 figures: your FLOOR (below which you refuse), your TARGET (realistic-high), your CEILING (ideal). Prepare a written argumentaire with 3-5 quantified achievements.\n\n(2) OPENING (5 min): thank for the chance to discuss, situate the role, express commitment to the firm. DO NOT lead with the figure. Set the tone of 'partner, not petitioner'.\n\n(3) VALUE DEMONSTRATION (15 min): restate the role's responsibilities, present quantified achievements (revenue generated, savings, teams managed, projects delivered). Tie every figure to a rare or strategic competency.\n\n(4) STATING THE ASK (5 min): give the target range, justify by reference to market and responsibilities. Key sentence: 'Compte tenu de [responsibilities], et au regard de la fourchette du marché qui se situe entre X et Y, je viserais Z.'\n\n(5) NEGOTIATION (20 min): listen to the counter-proposal, do NOT react immediately. If the counter is below, ask to understand the constraints. Propose alternative levers if the fixed won't move: guaranteed bonus floor, remote-work expansion, training budget, relocation coverage, additional RTT days, sabbatical at 5 years.\n\n(6) CONCLUSION (10 min): if agreed, request written formalization by email within 48h ('Pour mémoire, voici ce que nous avons convenu…'). If disagreed, do NOT break off abruptly — propose a reflection delay ('I'll think about it, I'll come back to you Friday').\n\nUSEFUL PHRASES:\n\nTO SET THE FRAME:\n- 'Je vous remercie de me recevoir pour aborder ce point.' (Thank you for receiving me to discuss this)\n- 'Avant d'entrer dans le chiffre, j'aimerais qu'on rappelle ensemble le périmètre du poste.' (Before getting to the number, I'd like us to recall the scope of the position)\n- 'Mon souhait est qu'on parvienne à un accord équilibré pour les deux parties.' (My wish is that we reach an agreement balanced for both parties)\n\nTO JUSTIFY THE ASK:\n- 'Au regard du marché pour ce profil, la fourchette se situe entre X et Y.' (In light of the market for this profile, the range is between X and Y)\n- 'Mes douze derniers mois ont permis [quantified achievement].' (My last twelve months have produced [quantified achievement])\n- 'Le périmètre tel que défini suppose [rare competencies], qui justifient une revalorisation.' (The scope as defined assumes [rare competencies] that justify an upgrade)\n\nTO NEGOTIATE ALTERNATIVE LEVERS:\n- 'Si le fixe ne peut bouger à ce stade, seriez-vous ouvert à [alternative lever] ?'\n- 'Pourrait-on envisager une clause de revoyure à six mois ?' (Could we consider a revisit clause at six months?)\n- 'Un bonus plancher garanti permettrait de sécuriser une partie du package.' (A guaranteed bonus floor would secure part of the package)\n\nTO CONCLUDE:\n- 'Si je résume, nous serions sur [recap]. Je reviens vers vous pour confirmation.'\n- 'Pourriez-vous me formaliser l'accord par mail dans la semaine ?'\n- 'Je vous remercie pour cet échange constructif.'\n\nAVOID:\n- 'Je veux X EUR, c'est mon dernier mot' → premature ultimatum, closes the discussion\n- 'Si vous ne pouvez pas, j'ai une offre ailleurs' without proof → easily-detected bluff\n- 'C'est pas assez' → childish, no argumentaire\n- Accepting the first offer without counter-proposing → systematic 5-15% loss\n- Negotiating in front of a third party (colleague, junior HR) → prefer a bilateral exchange",
     "vocabulary": [
       {
         "word": "une fourchette salariale",
         "en": "a salary range",
         "vi": "khung lương",
         "pos": "n.f.",
-        "pronunciation_vi": "fur-shèt sa-la-rial"
+        "pronunciation_vi": "fur-shèt sa-la-rial",
+        "pronunciation_en": "ewn foor-SHET sah-lah-RYAHL — 'ou' is 'oo'; the tool of choice for opening a salary negotiation"
       },
       {
         "word": "le salaire brut annuel",
         "en": "gross annual salary",
         "vi": "lương gộp hàng năm",
         "pos": "n.m.",
-        "pronunciation_vi": "sa-lèr brut a-nu-èl"
+        "pronunciation_vi": "sa-lèr brut a-nu-èl",
+        "pronunciation_en": "luh sah-LAIR BREWT ah-new-EL — 'u' rounded in 'brut' and 'annuel'; the standard reference figure in French job offers"
       },
       {
         "word": "la part variable",
         "en": "the variable component",
         "vi": "phần biến đổi",
         "pos": "n.f.",
-        "pronunciation_vi": "par va-ria-blơ"
+        "pronunciation_vi": "par va-ria-blơ",
+        "pronunciation_en": "lah par vah-RYAH-bluh — 'ia' glides to 'yah'; the performance-based portion of a French compensation package"
       },
       {
         "word": "un bonus sur objectifs",
         "en": "a performance-based bonus",
         "vi": "thưởng theo mục tiêu",
         "pos": "n.m.",
-        "pronunciation_vi": "bo-nus sur ob-jèk-tif"
+        "pronunciation_vi": "bo-nus sur ob-jèk-tif",
+        "pronunciation_en": "ehn boh-NEWS sewr ob-zhek-TEEF — 'sur' rounded 'u'; -tif final f sounded; conditional bonus tied to KPIs"
       },
       {
         "word": "une revalorisation",
         "en": "a salary upgrade",
         "vi": "sự tăng lương",
         "pos": "n.f.",
-        "pronunciation_vi": "rơ-va-lo-ri-za-sion"
+        "pronunciation_vi": "rơ-va-lo-ri-za-sion",
+        "pronunciation_en": "ewn ruh-vah-loh-ree-zah-SYOHN — schwa 're'; -tion is 'syohn'; signals an off-cycle raise tied to scope change"
       },
       {
         "word": "le périmètre du poste",
         "en": "the scope of the position",
         "vi": "phạm vi của vị trí",
         "pos": "n.m.",
-        "pronunciation_vi": "pé-ri-mè-trơ du post"
+        "pronunciation_vi": "pé-ri-mè-trơ du post",
+        "pronunciation_en": "luh pay-ree-MEH-truh dew POHST — è with grave opens to 'eh'; 'du' rounded 'ew'; the polite framing for what your job actually covers"
       },
       {
         "word": "une clause de revoyure",
         "en": "a revisit clause",
         "vi": "điều khoản xem xét lại",
         "pos": "n.f.",
-        "pronunciation_vi": "kloz dơ rơ-voa-yur"
+        "pronunciation_vi": "kloz dơ rơ-voa-yur",
+        "pronunciation_en": "ewn KLOHZ duh ruh-vwa-YEWR — 'oi' is 'wah'; final -yure rounded 'ewr'; the contractual hook for revisiting terms later"
       },
       {
         "word": "le plancher de bonus",
         "en": "guaranteed minimum bonus",
         "vi": "mức thưởng tối thiểu",
         "pos": "n.m.",
-        "pronunciation_vi": "plãn-shé dơ bo-nus"
+        "pronunciation_vi": "plãn-shé dơ bo-nus",
+        "pronunciation_en": "luh plahn-SHAY duh boh-NEWS — nasal -an; 'ch' is 'sh'; literally 'the floor of the bonus' = guaranteed minimum"
       },
       {
         "word": "un argumentaire chiffré",
         "en": "a quantified case",
         "vi": "lập luận có số liệu",
         "pos": "n.m.",
-        "pronunciation_vi": "ar-gu-mãn-tèr shi-fré"
+        "pronunciation_vi": "ar-gu-mãn-tèr shi-fré",
+        "pronunciation_en": "ehn ar-gew-mahn-TAIR shee-FRAY — 'u' rounded; nasal -an; the prepared evidence package — without it, no raise gets granted"
       },
       {
         "word": "des leviers alternatifs",
         "en": "alternative levers",
         "vi": "các đòn bẩy thay thế",
         "pos": "n.m. pl.",
-        "pronunciation_vi": "lơ-vié al-tèr-na-tif"
+        "pronunciation_vi": "lơ-vié al-tèr-na-tif",
+        "pronunciation_en": "day luh-VYAY al-tair-nah-TEEF — final -ifs is 'eef', s silent; what to ask for when the fixed salary won't move"
       }
     ],
     "dialogue": [
       {
         "speaker": "Linh",
         "text": "Madame Lefèvre, je vous remercie de me recevoir pour aborder ma rémunération.",
-        "vi": "Bà Lefèvre, tôi cảm ơn bà đã tiếp tôi để bàn về thù lao."
+        "vi": "Bà Lefèvre, tôi cảm ơn bà đã tiếp tôi để bàn về thù lao.",
+        "en": "Mrs. Lefèvre, thank you for meeting with me to discuss my compensation."
       },
       {
         "speaker": "DRH",
         "text": "Avec plaisir. Vous avez douze mois d'ancienneté — vous souhaitez parler du dispositif de revalorisation ?",
-        "vi": "Sẵn lòng. Cô có 12 tháng thâm niên — cô muốn bàn về cơ chế tăng lương?"
+        "vi": "Sẵn lòng. Cô có 12 tháng thâm niên — cô muốn bàn về cơ chế tăng lương?",
+        "en": "With pleasure. You have twelve months of tenure — you want to discuss the raise process?"
       },
       {
         "speaker": "Linh",
         "text": "C'est cela. Au regard de l'élargissement du périmètre depuis avril, je voudrais qu'on revienne sur la fourchette.",
-        "vi": "Đúng vậy. Xét sự mở rộng phạm vi từ tháng tư, tôi muốn xem lại khung lương."
+        "vi": "Đúng vậy. Xét sự mở rộng phạm vi từ tháng tư, tôi muốn xem lại khung lương.",
+        "en": "That's it. Given the scope expansion since April, I'd like us to revisit the salary range."
       },
       {
         "speaker": "DRH",
         "text": "Très bien. Quels chiffres avez-vous en tête, et sur quels comparables vous appuyez-vous ?",
-        "vi": "Rất tốt. Cô có những con số nào trong đầu, và dựa vào những so sánh nào?"
+        "vi": "Rất tốt. Cô có những con số nào trong đầu, và dựa vào những so sánh nào?",
+        "en": "Very well. What figures do you have in mind, and what comparables are you drawing on?"
       }
     ],
     "dialogue_long": [
       {
         "speaker": "Linh (entretien annuel, bureau de la DRH)",
         "text": "Madame Lefèvre, merci de me recevoir. J'aimerais qu'on aborde aujourd'hui la question de la revalorisation salariale, dans la continuité du périmètre élargi qui m'a été confié en avril.",
-        "vi": "Bà Lefèvre, cảm ơn bà tiếp tôi. Hôm nay tôi muốn bàn câu hỏi tăng lương, tiếp nối phạm vi mở rộng được giao cho tôi từ tháng tư."
+        "vi": "Bà Lefèvre, cảm ơn bà tiếp tôi. Hôm nay tôi muốn bàn câu hỏi tăng lương, tiếp nối phạm vi mở rộng được giao cho tôi từ tháng tư.",
+        "en": "Mrs. Lefèvre, thank you for meeting with me. I'd like us to address today the question of a salary upgrade, in line with the expanded scope I was assigned in April."
       },
       {
         "speaker": "DRH",
         "text": "Je vous écoute. Posez-moi le contexte tel que vous le voyez.",
-        "vi": "Tôi nghe cô. Cô đặt bối cảnh như cô thấy."
+        "vi": "Tôi nghe cô. Cô đặt bối cảnh như cô thấy.",
+        "en": "I'm listening. Lay out the context as you see it."
       },
       {
         "speaker": "Linh",
         "text": "Quand j'ai été embauchée en septembre dernier, le poste couvrait deux marchés — France et Belgique. Depuis avril, le périmètre intègre la Suisse romande et le Luxembourg, ce qui représente trente pour cent de chiffre d'affaires en plus. J'ai pris en charge ces deux nouveaux marchés sans que la rémunération n'ait été ajustée.",
-        "vi": "Khi tôi được tuyển tháng chín năm ngoái, vị trí phụ trách hai thị trường — Pháp và Bỉ. Từ tháng tư, phạm vi tích hợp Thụy Sĩ Pháp ngữ và Luxembourg, tương ứng 30% doanh thu thêm. Tôi đã đảm nhận hai thị trường mới này mà thù lao chưa được điều chỉnh."
+        "vi": "Khi tôi được tuyển tháng chín năm ngoái, vị trí phụ trách hai thị trường — Pháp và Bỉ. Từ tháng tư, phạm vi tích hợp Thụy Sĩ Pháp ngữ và Luxembourg, tương ứng 30% doanh thu thêm. Tôi đã đảm nhận hai thị trường mới này mà thù lao chưa được điều chỉnh.",
+        "en": "When I was hired last September, the role covered two markets — France and Belgium. Since April, the scope has integrated French-speaking Switzerland and Luxembourg, which represents thirty percent additional revenue. I've taken on these two new markets without the compensation being adjusted."
       },
       {
         "speaker": "DRH",
         "text": "C'est exact. Quels résultats sur ces nouveaux marchés ?",
-        "vi": "Đúng. Kết quả nào trên các thị trường mới này?"
+        "vi": "Đúng. Kết quả nào trên các thị trường mới này?",
+        "en": "That's accurate. What results on these new markets?"
       },
       {
         "speaker": "Linh",
         "text": "Sur la Suisse, j'ai signé deux comptes stratégiques au S1 — un total de huit cent mille euros sur trois ans. Sur le Luxembourg, le pipeline est en cours de constitution; deux RFP en lice pour septembre. Au-delà des chiffres bruts, j'ai mis en place une équipe de trois commerciaux locaux que je manage à distance.",
-        "vi": "Tại Thụy Sĩ, tôi đã ký hai khách hàng chiến lược ở H1 — tổng 800 nghìn euro trên 3 năm. Tại Luxembourg, pipeline đang xây; hai RFP cạnh tranh cho tháng chín. Ngoài các con số thô, tôi đã thiết lập đội ba commerciaux địa phương mà tôi quản lý từ xa."
+        "vi": "Tại Thụy Sĩ, tôi đã ký hai khách hàng chiến lược ở H1 — tổng 800 nghìn euro trên 3 năm. Tại Luxembourg, pipeline đang xây; hai RFP cạnh tranh cho tháng chín. Ngoài các con số thô, tôi đã thiết lập đội ba commerciaux địa phương mà tôi quản lý từ xa.",
+        "en": "In Switzerland, I closed two strategic accounts in H1 — a total of eight hundred thousand euros over three years. In Luxembourg, the pipeline is being built; two RFPs in play for September. Beyond the raw numbers, I set up a team of three local salespeople that I manage remotely."
       },
       {
         "speaker": "DRH",
         "text": "Je note tout cela. Et concernant le marché de référence pour ce nouveau périmètre ?",
-        "vi": "Tôi ghi tất cả. Và về thị trường tham chiếu cho phạm vi mới này?"
+        "vi": "Tôi ghi tất cả. Và về thị trường tham chiếu cho phạm vi mới này?",
+        "en": "I'm noting all of that. And regarding the reference market for this new scope?"
       },
       {
         "speaker": "Linh",
         "text": "Selon l'étude APEC 2025 et l'enquête Robert Half que j'ai croisées, un Key Account Manager senior couvrant quatre marchés européens se situe entre soixante-quinze et quatre-vingt-cinq mille euros bruts annuels, hors variable. Mon fixe actuel est à soixante-huit. Je me permets de viser quatre-vingts, soit le milieu de la fourchette.",
-        "vi": "Theo nghiên cứu APEC 2025 và khảo sát Robert Half tôi đã đối chiếu, một Key Account Manager senior phụ trách bốn thị trường châu Âu nằm trong khoảng 75 đến 85 nghìn euro gộp hàng năm, không tính phần biến đổi. Lương cố định hiện tại của tôi là 68. Tôi xin nhắm 80, tức giữa khung lương."
+        "vi": "Theo nghiên cứu APEC 2025 và khảo sát Robert Half tôi đã đối chiếu, một Key Account Manager senior phụ trách bốn thị trường châu Âu nằm trong khoảng 75 đến 85 nghìn euro gộp hàng năm, không tính phần biến đổi. Lương cố định hiện tại của tôi là 68. Tôi xin nhắm 80, tức giữa khung lương.",
+        "en": "According to the APEC 2025 study and the Robert Half survey I cross-checked, a senior Key Account Manager covering four European markets sits between seventy-five and eighty-five thousand euros gross annual, excluding variable. My current fixed is at sixty-eight. I'd allow myself to aim for eighty, the midpoint of the range."
       },
       {
         "speaker": "DRH",
         "text": "L'écart est substantiel. Notre enveloppe annuelle d'augmentations est plafonnée à trois pour cent. Aller à douze pour cent en une seule fois sortirait du cadre habituel.",
-        "vi": "Khoảng cách đáng kể. Ngân sách tăng lương hàng năm của chúng tôi giới hạn ở 3%. Lên 12% một lần sẽ ra khỏi khung thông thường."
+        "vi": "Khoảng cách đáng kể. Ngân sách tăng lương hàng năm của chúng tôi giới hạn ở 3%. Lên 12% một lần sẽ ra khỏi khung thông thường.",
+        "en": "The gap is substantial. Our annual raise envelope is capped at three percent. Going to twelve percent in a single step would fall outside the usual framework."
       },
       {
         "speaker": "Linh",
         "text": "Je le comprends. Cela étant, ma demande ne s'inscrit pas dans la logique d'une augmentation annuelle, mais dans celle d'une revalorisation liée à un changement de périmètre. Ce sont deux dispositifs distincts dans la plupart des conventions collectives — y compris la nôtre, je crois.",
-        "vi": "Tôi hiểu. Tuy nhiên, yêu cầu của tôi không thuộc logic tăng lương hàng năm, mà thuộc logic điều chỉnh liên quan đến thay đổi phạm vi. Đó là hai cơ chế khác biệt trong hầu hết các thỏa ước tập thể — kể cả của chúng ta, tôi tin."
+        "vi": "Tôi hiểu. Tuy nhiên, yêu cầu của tôi không thuộc logic tăng lương hàng năm, mà thuộc logic điều chỉnh liên quan đến thay đổi phạm vi. Đó là hai cơ chế khác biệt trong hầu hết các thỏa ước tập thể — kể cả của chúng ta, tôi tin.",
+        "en": "I understand that. That said, my request doesn't fall under the logic of an annual raise, but under that of a scope-driven upgrade. These are two distinct mechanisms in most collective agreements — including ours, I believe."
       },
       {
         "speaker": "DRH",
         "text": "Vous avez raison sur le principe. Concrètement, je peux porter votre cas au comité de rémunération. Je préfère partir avec une fourchette plutôt qu'un chiffre fixe — êtes-vous flexible entre soixante-seize et quatre-vingts ?",
-        "vi": "Bà đúng về nguyên tắc. Cụ thể, tôi có thể đưa trường hợp cô lên ủy ban thù lao. Tôi thích đi với một khung hơn một con số cố định — cô linh hoạt giữa 76 và 80?"
+        "vi": "Bà đúng về nguyên tắc. Cụ thể, tôi có thể đưa trường hợp cô lên ủy ban thù lao. Tôi thích đi với một khung hơn một con số cố định — cô linh hoạt giữa 76 và 80?",
+        "en": "You're right in principle. Concretely, I can take your case to the compensation committee. I prefer to go in with a range rather than a fixed figure — are you flexible between seventy-six and eighty?"
       },
       {
         "speaker": "Linh",
         "text": "Je suis ouverte à cette fourchette, à condition qu'on rediscute le bonus en parallèle. Aujourd'hui, mon plafond bonus est à dix pour cent du fixe. Pour un poste à quatre marchés, douze à quinze pour cent serait plus aligné sur le marché. Et idéalement, un plancher garanti de trois pour cent pour sécuriser le passage.",
-        "vi": "Tôi mở cho khung này, với điều kiện thảo luận song song về thưởng. Hiện tại, trần thưởng của tôi là 10% lương cố định. Cho vị trí bốn thị trường, 12 đến 15% sẽ phù hợp thị trường hơn. Và lý tưởng, một mức tối thiểu đảm bảo 3% để bảo đảm bước chuyển."
+        "vi": "Tôi mở cho khung này, với điều kiện thảo luận song song về thưởng. Hiện tại, trần thưởng của tôi là 10% lương cố định. Cho vị trí bốn thị trường, 12 đến 15% sẽ phù hợp thị trường hơn. Và lý tưởng, một mức tối thiểu đảm bảo 3% để bảo đảm bước chuyển.",
+        "en": "I'm open to that range, on condition we revisit the bonus in parallel. Today, my bonus cap is at ten percent of fixed. For a four-market role, twelve to fifteen percent would be more market-aligned. And ideally, a guaranteed floor of three percent to secure the transition."
       },
       {
         "speaker": "DRH",
         "text": "Le plancher de bonus est plus simple à défendre auprès du comité que la hausse du plafond. Je propose qu'on parte sur cette base: revalorisation du fixe dans la fourchette qu'on vient d'évoquer, plancher de bonus à trois pour cent, et clause de revoyure à six mois pour ajuster si les résultats Suisse-Luxembourg le justifient.",
-        "vi": "Mức tối thiểu thưởng dễ bảo vệ trước ủy ban hơn việc tăng trần. Tôi đề xuất mình bắt đầu từ cơ sở này: điều chỉnh lương cố định trong khung vừa nêu, mức tối thiểu thưởng 3%, và điều khoản xem xét lại 6 tháng để điều chỉnh nếu kết quả Thụy Sĩ-Luxembourg biện minh."
+        "vi": "Mức tối thiểu thưởng dễ bảo vệ trước ủy ban hơn việc tăng trần. Tôi đề xuất mình bắt đầu từ cơ sở này: điều chỉnh lương cố định trong khung vừa nêu, mức tối thiểu thưởng 3%, và điều khoản xem xét lại 6 tháng để điều chỉnh nếu kết quả Thụy Sĩ-Luxembourg biện minh.",
+        "en": "The bonus floor is easier to defend at committee than raising the cap. I propose we start from this base: fixed-salary upgrade within the range we just discussed, three-percent bonus floor, and a six-month revisit clause to adjust if the Switzerland-Luxembourg results justify it."
       },
       {
         "speaker": "Linh",
         "text": "Cette proposition me convient. Pourriez-vous me formaliser l'accord par mail d'ici vendredi, avec les chiffres précis et la date d'effet ? Cela permet de fermer le sujet proprement.",
-        "vi": "Đề xuất này phù hợp với tôi. Bà có thể chính thức hóa thỏa thuận bằng email trước thứ sáu không, với các con số chính xác và ngày hiệu lực? Điều đó giúp đóng chủ đề gọn gàng."
+        "vi": "Đề xuất này phù hợp với tôi. Bà có thể chính thức hóa thỏa thuận bằng email trước thứ sáu không, với các con số chính xác và ngày hiệu lực? Điều đó giúp đóng chủ đề gọn gàng.",
+        "en": "That proposal works for me. Could you formalize the agreement by email by Friday, with the precise figures and effective date? That closes the matter cleanly."
       },
       {
         "speaker": "DRH",
         "text": "Vous l'aurez avant vendredi. Bon cycle de fin d'année — et félicitations pour la Suisse, c'est une vraie performance.",
-        "vi": "Cô sẽ có trước thứ sáu. Chúc cuối năm tốt — và xin chúc mừng về Thụy Sĩ, đó là thành tích thật."
+        "vi": "Cô sẽ có trước thứ sáu. Chúc cuối năm tốt — và xin chúc mừng về Thụy Sĩ, đó là thành tích thật.",
+        "en": "You'll have it before Friday. Good end-of-year cycle — and congratulations on Switzerland, that's a real performance."
       }
     ],
     "roleplay_prompts": [
@@ -3858,30 +3918,44 @@ export const lessons: FrenchLesson[] = [
       "DRH trả lời: « Le budget annuel est gelé cette année. » Phản hồi: thừa nhận constraint, đề xuất 3 leviers alternatifs (clause de revoyure, plancher de bonus, télétravail élargi).",
       "Trong hành trình recrutement, recruteur Pháp hỏi: « Quelles sont vos prétentions ? » Đáp lại trong vòng 30 giây — fourchette + justification + question retour, không tự engagé sur un chiffre fermé."
     ],
+    "roleplay_prompts_en": [
+      "You've just been promoted from Senior Consultant to Manager without a salary adjustment. Draft 5 sentences to open the HR discussion — avoid sounding like a petitioner; frame the issue as a package-vs-scope coherence question. Anglophone instinct here is to lead with achievements; the French frame leads with structural fairness instead.",
+      "HR responds: 'Le budget annuel est gelé cette année.' Respond: acknowledge the constraint, propose 3 alternative levers (revisit clause, guaranteed bonus floor, expanded remote work). Refuse to push on the frozen fixed; pivot to elements that don't compete with the locked envelope.",
+      "During a recruitment process, a French recruiter asks: 'Quelles sont vos prétentions ?' Reply in under 30 seconds — fourchette + justification + question back to them, without locking yourself into a single closed figure. The anglophone temptation is to give a precise number; resist and give a range."
+    ],
     "register_notes": "Le vocabulaire de la négociation salariale en France obéit à des codes que le candidat vietnamien doit maîtriser:\n\nPHRASES À PRIVILÉGIER:\n- « Je voudrais qu'on aborde la question de la rémunération » (formel, neutre)\n- « Au regard du marché pour ce profil… » (référence externe, dépersonnalise)\n- « Compte tenu des responsabilités élargies… » (justifie sans réclamer)\n- « Je me permets de viser X » (poli, ferme)\n- « Cette proposition me convient, sous réserve de Y » (accepte sous condition)\n\nPHRASES À ÉVITER:\n- « Je veux gagner X » → trop direct, infantile\n- « Si vous ne pouvez pas, je pars » → ultimatum, sauf si vous avez vraiment l'offre\n- « C'est pas beaucoup » → familier, jugement non argumenté\n- « Tout le monde gagne plus que moi » → comparaison hors-sujet, ne mentionne jamais les collègues\n\nCONDITIONNEL OBLIGATOIRE pour les demandes:\n- « Je viserais quatre-vingts » (pas « je vise »)\n- « Pourriez-vous reconsidérer ? » (pas « pouvez-vous »)\n- « Il me paraîtrait juste que… » (pas « il est juste que »)\n- « J'aimerais qu'on examine… » (pas « je veux qu'on examine »)\n\nCỤM HEDGE TINH TẾ POUR FAIRE DESCENDRE LA TENSION:\n- « Si je peux me permettre une suggestion… »\n- « Au-delà du chiffre, ce qui compte pour moi, c'est… »\n- « Je ne veux pas qu'on s'enferme sur le fixe seul; il y a d'autres leviers possibles. »\n- « Mon souhait est qu'on parvienne à un accord équilibré pour les deux parties. »\n\nUN POINT CULTUREL CLÉ: en France, OUVRIR avec « combien gagnez-vous actuellement ? » de la part du recruteur est une pratique courante mais légalement contestable. Vous N'ÊTES PAS OBLIGÉ DE RÉPONDRE. Réponse type acceptable: « Je préfère parler du package que vous proposez pour le poste, plutôt que de mon historique salarial. » Cela ferme la porte poliment sans rompre l'échange.\n\nLE TUTOIEMENT EST EXCLU dans une négociation salariale, même avec un manager habituellement en « tu ». La négociation crée un cadre formel — repassez en « vous » pendant l'échange.",
+    "register_notes_en": "Salary-negotiation vocabulary in France follows codes anglophone candidates must master:\n\nPHRASES TO PREFER:\n- 'Je voudrais qu'on aborde la question de la rémunération' (formal, neutral)\n- 'Au regard du marché pour ce profil…' (external reference, depersonalizes)\n- 'Compte tenu des responsabilités élargies…' (justifies without claiming)\n- 'Je me permets de viser X' (polite, firm)\n- 'Cette proposition me convient, sous réserve de Y' (accepts conditionally)\n\nPHRASES TO AVOID:\n- 'Je veux gagner X' → too direct, infantile\n- 'Si vous ne pouvez pas, je pars' → ultimatum unless you really have the offer\n- 'C'est pas beaucoup' → colloquial, unargued judgment\n- 'Tout le monde gagne plus que moi' → off-topic comparison; never mention colleagues' salaries\n\nMANDATORY CONDITIONAL for demands:\n- 'Je viserais quatre-vingts' (not 'je vise')\n- 'Pourriez-vous reconsidérer ?' (not 'pouvez-vous')\n- 'Il me paraîtrait juste que…' (not 'il est juste que')\n- 'J'aimerais qu'on examine…' (not 'je veux qu'on examine')\n\nREFINED HEDGES TO DROP TENSION:\n- 'Si je peux me permettre une suggestion…'\n- 'Au-delà du chiffre, ce qui compte pour moi, c'est…'\n- 'Je ne veux pas qu'on s'enferme sur le fixe seul; il y a d'autres leviers possibles.'\n- 'Mon souhait est qu'on parvienne à un accord équilibré pour les deux parties.'\n\nA KEY CULTURAL POINT: in France, when a recruiter opens with 'combien gagnez-vous actuellement ?' it's a common but legally contestable practice. You ARE NOT OBLIGED TO ANSWER. Acceptable response: 'Je préfère parler du package que vous proposez pour le poste, plutôt que de mon historique salarial.' This closes the door politely without breaking the exchange. Anglophone candidates often answer reflexively; French candidates increasingly don't.\n\nTUTOIEMENT IS EXCLUDED in a salary negotiation, even with a manager you'd otherwise address as 'tu'. The negotiation creates a formal frame — switch back to 'vous' for the exchange. This signals the importance of the conversation; staying in 'tu' reads as treating the negotiation casually, which weakens you.",
     "idiom_glosses": [
       {
         "idiom": "Mettre les pieds dans le plat (courant)",
         "literal": "Đặt chân vào đĩa",
+        "literal_en": "To put one's feet in the dish",
         "meaning": "Dấn vào chủ đề tế nhị mà không vòng vo — utile quand on veut couper court à des sous-entendus.",
+        "meaning_en": "To address a sensitive topic head-on without circling — useful when you want to cut through subtext. English equivalent: 'to address the elephant in the room'. Used as a deliberate rhetorical move, not as a gaffe.",
         "example": "À un moment, j'ai mis les pieds dans le plat: « Soixante-huit, c'est en dessous du marché. Je viserai quatre-vingts. »"
       },
       {
         "idiom": "Tirer son épingle du jeu (courant)",
         "literal": "Rút chiếc kim ra khỏi trò chơi",
+        "literal_en": "To pull one's pin out of the game",
         "meaning": "Thoát khỏi tình huống một cách có lợi — résultat d'une bonne négo.",
+        "meaning_en": "To come out of a situation favorably — the outcome of a well-handled negotiation. English equivalent: 'to come out ahead' or 'to land on one's feet'. Used to describe someone who navigated a tricky setup with skill.",
         "example": "Avec sa préparation chiffrée, elle a su tirer son épingle du jeu malgré le budget gelé."
       },
       {
         "idiom": "Mettre la barre haut (courant)",
         "literal": "Đặt thanh xà cao",
+        "literal_en": "To set the bar high",
         "meaning": "Đặt mục tiêu cao — anchor stratégique en début de négo.",
+        "meaning_en": "To set the bar high — direct equivalent in English. In negotiation, a strategic anchoring move: start above your target so the negotiation drift lands you near it. Anglophones call this 'anchoring high'.",
         "example": "Je préfère mettre la barre haut au départ — il est toujours possible de redescendre."
       },
       {
         "idiom": "Couper la poire en deux (courant)",
         "literal": "Cắt quả lê làm đôi",
+        "literal_en": "To cut the pear in two",
         "meaning": "Tìm điểm trung gian — formule classique de compromis salarial.",
+        "meaning_en": "To split the difference — the classic compromise formula. English equivalent: 'to meet in the middle' or 'to split the difference'. Often offered by the side that wants the negotiation to close; accepting it gives away half of any anchored gap.",
         "example": "Vous voulez quatre-vingts, je propose soixante-quinze; coupons la poire en deux à soixante-dix-sept et demi."
       }
     ],
@@ -3889,20 +3963,24 @@ export const lessons: FrenchLesson[] = [
       {
         "type": "fill-blank",
         "question": "Compte tenu des responsabilités élargies, il me paraît légitime de revenir sur la ___ salariale initialement proposée.",
-        "answer": "fourchette"
+        "answer": "fourchette",
+        "hint_vi": "danh từ giống cái nghĩa 'khung lương', literal 'cái nĩa'",
+        "hint_en": "feminine noun meaning 'range / bracket' — literally 'fork'; the standard term for a salary range"
       },
       {
         "type": "matching",
         "pairs": [
-          ["la part variable", "phần biến đổi"],
-          ["un plancher de bonus", "mức thưởng tối thiểu"],
-          ["une clause de revoyure", "điều khoản xem xét lại"]
+          ["la part variable", "phần biến đổi (the variable component — performance bonus portion)"],
+          ["un plancher de bonus", "mức thưởng tối thiểu (a bonus floor — guaranteed minimum)"],
+          ["une clause de revoyure", "điều khoản xem xét lại (a revisit clause)"]
         ],
-        "instruction": "Nối thuật ngữ thù lao với nghĩa Việt"
+        "instruction": "Nối thuật ngữ thù lao với nghĩa Việt",
+        "instruction_en": "Match the compensation term with its meaning"
       },
       {
         "type": "translation",
         "vietnamese": "Sous réserve d'une clarification sur les indicateurs de performance, je suis ouverte à finaliser l'accord cette semaine.",
+        "english": "Subject to clarification on the performance indicators, I'm open to finalizing the agreement this week.",
         "french": "Sous réserve d'une clarification sur les indicateurs de performance, je suis ouverte à finaliser l'accord cette semaine."
       }
     ]
@@ -3922,6 +4000,12 @@ export const lessons: FrenchLesson[] = [
           "non-concurrence → nõn kõn-ku-rãns",
           "rédigée → ré-di-jé",
           "disproportionnée → dis-pro-por-sio-né"
+        ],
+        "pronunciation_focus_en": [
+          "clause → 'KLOHZ' — final -se sounds like 'z'; final -e silent",
+          "non-concurrence → 'nohn kohn-kew-RAHNS' — two nasals (on + on); 'u' rounded 'ew'",
+          "rédigée → 'ray-dee-ZHAY' — soft 'g' = 'zh' (measure); feminine past participle -ée is 'ay'",
+          "disproportionnée → 'dees-proh-por-syoh-NAY' — long word; -tionnée is 'syoh-NAY'"
         ]
       },
       {
@@ -3932,6 +4016,12 @@ export const lessons: FrenchLesson[] = [
           "pénalités → pé-na-li-té",
           "contrepartie → kõn-trơ-par-ti",
           "approvisionnement → a-pro-vi-zion-mã"
+        ],
+        "pronunciation_focus_en": [
+          "saurais → 'soh-RAY' — conditional of 'savoir'; '-rais' is 'ray', s silent; 'au' is 'oh'",
+          "pénalités → 'pay-nah-lee-TAY' — final -tés is 'tay'; plural -s silent",
+          "contrepartie → 'kohn-truh-par-TEE' — nasal 'on'; schwa 'tre'; final -ie is 'ee'",
+          "approvisionnement → 'ah-proh-vee-zyohn-MAHN' — six syllables; nasal -ion + final nasal -ment"
         ]
       },
       {
@@ -3942,6 +4032,12 @@ export const lessons: FrenchLesson[] = [
           "plafonner → pla-fo-né",
           "responsabilité → rès-põn-sa-bi-li-té",
           "montant → mõn-tã"
+        ],
+        "pronunciation_focus_en": [
+          "conviendrait → 'kohn-vyan-DRAY' — nasal 'on' + nasal -ien; conditional '-ait' is 'ay'",
+          "plafonner → 'plah-foh-NAY' — double-n one clean 'n'; final -er is 'ay'",
+          "responsabilité → 'res-pohn-sah-bee-lee-TAY' — six syllables; nasal 'on'; final -té is 'tay'",
+          "montant → 'mohn-TAHN' — two nasals (on + an); final -t silent; means 'amount'"
         ]
       },
       {
@@ -3952,6 +4048,12 @@ export const lessons: FrenchLesson[] = [
           "rédaction → ré-dak-sion",
           "alternative → al-tèr-na-tiv",
           "sécurise → sé-ku-riz"
+        ],
+        "pronunciation_focus_en": [
+          "permets → 'pair-MEH' — final -ts silent; 1st-person of 'permettre'",
+          "rédaction → 'ray-dak-SYOHN' — -tion is 'syohn'; means 'wording / drafting'",
+          "alternative → 'al-tair-nah-TEEV' — final -ive is 'eev'; stress on the last syllable",
+          "sécurise → 'say-kew-REEZ' — 'u' rounded; final -se sounds like 'z'; final -e silent"
         ]
       },
       {
@@ -3962,180 +4064,217 @@ export const lessons: FrenchLesson[] = [
           "obligations → o-bli-ga-sion",
           "respectives → rès-pèk-tiv",
           "acceptable → ak-sèp-ta-blơ"
+        ],
+        "pronunciation_focus_en": [
+          "déséquilibre → 'day-zay-kee-LEE-bruh' — five syllables; 's' between vowels sounds like 'z'; final -bre quick 'bruh'",
+          "obligations → 'oh-blee-gah-SYOHN' — -tions is 'syohn'; plural -s silent",
+          "respectives → 'res-pek-TEEV' — final -ives is 'eev'; plural -s silent",
+          "acceptable → 'ak-sep-TAH-bluh' — double-c is 'ks'; final -ble is a quick 'bluh'"
         ]
       }
     ],
     "cultural_notes_vi": "Trong văn hóa hợp đồng Pháp, sự phản đối các điều khoản KHÔNG bị xem là dấu hiệu của thiếu thiện chí — ngược lại, là dấu hiệu của sự trưởng thành chuyên nghiệp. Người Pháp expect rằng cả hai bên sẽ négocier rédaction trước khi ký. Nhận ngay hợp đồng version 1 = bị xem là junior hoặc desperate.\n\n(1) HỢP ĐỒNG PHÁP — DENSE ET DÉTAILLÉ. Khác Mỹ (contrat long avec disclaimers redondants) et Vietnam (contrat parfois succinct), contrat français cherche un équilibre: précis mais sans surcharge. Mỗi clause est négociable, mais on négocie par PROPOSITION de rédaction alternative, pas par refus pur.\n\n(2) CLAUSES SENSITIVES À NÉGOCIER systématiquement:\n\n- CLAUSE DE NON-CONCURRENCE: durée (12-24 mois max raisonnable en cadres), périmètre géographique (souvent toute la France — négocier réduction par région ou secteur), contrepartie financière OBLIGATOIRE (Cour de cassation 2002 — sans contrepartie, la clause est NULLE; minimum 30% du salaire mensuel).\n\n- CLAUSE DE PROPRIÉTÉ INTELLECTUELLE: distinguer création « dans le cadre du poste » (cession automatique légale) vs « hors poste » (négociable). Pour les profils créatifs, négocier l'exception du portfolio personnel.\n\n- CLAUSE DE MOBILITÉ: ATTENTION — si elle est trop large (« toute la France »), employeur peut vous muter unilatéralement. Négocier: zone géographique précise (Île-de-France + grandes villes), préavis de 3 mois minimum.\n\n- CLAUSE D'EXCLUSIVITÉ: vous interdit toute activité parallèle. Pour cadres, négocier exception pour: enseignement, conseils ponctuels, propriété intellectuelle personnelle.\n\n- PÉRIODE D'ESSAI: cadres = 4 mois, renouvelable une fois (8 mois total max). Refusez le renouvellement systématique.\n\n- CONFIDENTIALITÉ: durée limitée (3-5 ans après départ), périmètre précis. Les NDAs « life-long » sont illégitimes.\n\n(3) DANS UN CONTRAT COMMERCIAL B2B, clauses critiques:\n\n- LIMITATION DE RESPONSABILITÉ: plafonner à hauteur du contrat (1x ou 2x le montant); exclure dommages indirects (perte de chance, perte de chiffre d'affaires).\n\n- PÉNALITÉS DE RETARD: vérifier équilibre — ne JAMAIS signer un contrat où vous payez pénalités lourdes mais le client n'a aucune obligation symétrique. Négocier réciprocité.\n\n- DROIT APPLICABLE / JURIDICTION: pour PME française travaillant avec un grand groupe, refuser un droit étranger si le contrat est exécuté en France.\n\n- CLAUSE DE RÉSILIATION: durée de préavis, motifs admis, indemnités. La résiliation unilatérale sans motif doit être bornée par préavis long.\n\n- INDEXATION DES PRIX: pour contrats pluriannuels, prévoir indexation INSEE ou similaire. Sans cela, l'inflation érode la marge.\n\n(4) MÉTHODE DE NÉGOCIATION: ne jamais refuser une clause sans PROPOSER une rédaction alternative. La phrase magique: « Je propose la rédaction suivante: [texte alternatif]. Cela permettrait de [bénéfice pour les deux parties]. »\n\n(5) FAIRE RELIRE PAR UN AVOCAT — pour tout contrat > 100K EUR ou clauses sensibles. Les frais (1-3K EUR) sont insignifiants au regard du risque. Le candidat vietnamien qui signe sans avocat est une cible facile.\n\n(6) NÉGOCIATION ÉCRITE > NÉGOCIATION ORALE pour les clauses contractuelles. Toujours envoyer un document marqué (track changes) avec votre rédaction proposée. Cela force l'autre à répondre par écrit, ce qui crée une trace.\n\nBẪY ĐẶC THÙ NGƯỜI VIỆT: politesse excessive (« je ne voudrais pas vous embêter ») qui affaiblit la position. En France, négocier un contrat = professionnalisme attendu, pas impolitesse. Affirmez vos demandes courtoisement mais fermement.",
+    "cultural_notes_en": "In French contract culture, pushing back on clauses is NOT read as bad faith — on the contrary, it's read as a marker of professional maturity. The French expect both sides to renegotiate the wording before signing. Accepting version 1 of a contract verbatim = read as junior or desperate. Anglophones from US contract culture sometimes default to either signing as-is or pushing back too aggressively; the French expect the middle path.\n\n(1) FRENCH CONTRACTS — DENSE AND DETAILED. Unlike the US (long contracts with redundant disclaimers) or Vietnam (sometimes succinct contracts), French contracts aim for an equilibrium: precise but not overloaded. Every clause is negotiable, but you negotiate by PROPOSING alternative wording, not by pure refusal.\n\n(2) SENSITIVE CLAUSES TO NEGOTIATE systematically:\n\n- NON-COMPETE CLAUSE: duration (12-24 months max reasonable for cadres), geographic scope (often the whole of France — negotiate down to region or sector), MANDATORY financial counterpart (Cour de cassation 2002 — without counterpart, the clause is NULL AND VOID; minimum 30% of monthly salary).\n\n- IP CLAUSE: distinguish 'in-scope' creation (automatic legal assignment) vs 'out-of-scope' (negotiable). For creative profiles, negotiate a personal-portfolio exception.\n\n- MOBILITY CLAUSE: CAREFUL — if it's too broad ('all of France'), the employer can transfer you unilaterally. Negotiate: precise geographic zone (Île-de-France + major cities), minimum 3-month notice period.\n\n- EXCLUSIVITY CLAUSE: bans any parallel activity. For cadres, negotiate exceptions for: teaching, occasional consulting, personal IP.\n\n- PROBATION PERIOD: cadres = 4 months, renewable once (8 months max total). Refuse automatic renewal.\n\n- CONFIDENTIALITY: bounded duration (3-5 years post-departure), precise scope. 'Lifelong' NDAs are illegitimate.\n\n(3) IN A B2B COMMERCIAL CONTRACT, critical clauses:\n\n- LIABILITY LIMITATION: cap at 1x or 2x the contract value; exclude indirect damages (loss of chance, loss of revenue).\n\n- LATE-DELIVERY PENALTIES: verify balance — NEVER sign a contract where you pay heavy penalties but the client has no symmetric obligation. Negotiate reciprocity.\n\n- GOVERNING LAW / JURISDICTION: for a French SME working with a multinational, refuse foreign law if the contract is performed in France.\n\n- TERMINATION CLAUSE: notice period, allowable grounds, indemnities. Unilateral termination without cause should be bounded by a long notice period.\n\n- PRICE INDEXATION: for multi-year contracts, build in INSEE or similar indexation. Without it, inflation erodes the margin.\n\n(4) NEGOTIATION METHOD: never refuse a clause without PROPOSING alternative wording. The magic sentence: 'Je propose la rédaction suivante: [alternative text]. Cela permettrait de [benefit for both parties].'\n\n(5) HAVE A LAWYER REVIEW — for any contract > 100K EUR or with sensitive clauses. The fees (1-3K EUR) are insignificant against the risk. An anglophone candidate who signs without a lawyer is an easy target.\n\n(6) WRITTEN NEGOTIATION > ORAL NEGOTIATION for contract clauses. Always send a track-changes document with your proposed wording. This forces the other side to respond in writing, creating a paper trail.\n\nANGLOPHONE-SPECIFIC TRAP: excessive politeness ('I wouldn't want to be a bother') weakens the position. In France, negotiating a contract = expected professionalism, not rudeness. State your demands courteously but firmly. The French respect firm-and-prepared negotiators; they look down on 'good students' who sign everything without question.",
     "tip_advice_vi": "PROCESSUS EN 5 ÉTAPES pour pousser sur un contrat:\n\n(1) LECTURE INTÉGRALE en surlignant 3 catégories — VERT (clauses acceptables), ORANGE (clauses négociables), ROUGE (clauses inacceptables en l'état). Ne jamais signer un contrat sans cette lecture catégorisée.\n\n(2) PRIORISATION: les 3-5 clauses ROUGES méritent un push systématique. Les clauses ORANGES servent de monnaie d'échange — vous pouvez en lâcher 1-2 pour gagner sur les rouges.\n\n(3) PRÉPARATION DES RÉDACTIONS ALTERNATIVES: pour chaque clause à négocier, ÉCRIRE le texte exact que vous voulez voir apparaître. Format: « Là où le contrat dit X, je propose Y. »\n\n(4) ENVOI EN UN SEUL BLOC, pas en goutte-à-goutte. Une liste de 5-10 modifications envoyée d'un coup est plus efficace que 5 emails séparés. Sinon l'autre partie se lasse et claque la porte.\n\n(5) NÉGOCIATION ITÉRATIVE: une, voire deux rondes d'allers-retours. Au-delà, vous épuisez la patience et le contrat risque de capoter.\n\nCỤM HỮU ÍCH:\n\nPOUR INTRODUIRE UNE OBJECTION:\n- « Sur ce point précis, je me permets une réserve. »\n- « Telle qu'elle est rédigée, cette clause me paraît [problème]. »\n- « Il y aurait, me semble-t-il, matière à reformulation. »\n- « Ce point appelle, à mon sens, une clarification. »\n\nPOUR PROPOSER UNE ALTERNATIVE:\n- « Je propose la rédaction suivante: [texte]. »\n- « Une formulation qui me semblerait plus équilibrée serait: [texte]. »\n- « Pourrait-on remplacer X par Y, qui sécurise les deux parties ? »\n- « Je suggère d'ajouter à cette clause un membre de phrase précisant que [protection]. »\n\nPOUR FAIRE PRESSION SANS ROMPRE:\n- « En l'état, je ne pourrais pas engager ma signature. »\n- « Cette rédaction crée un déséquilibre que je ne peux laisser passer. »\n- « Je crains que cette clause, telle quelle, ne soit pas tenable juridiquement. »\n- « Je préférerais qu'on retravaille ce passage avant de finaliser. »\n\nPOUR PROTÉGER UNE CONCESSION:\n- « J'accepte ce point, à condition que [contrepartie]. »\n- « Si vous tenez à cette rédaction, il faudrait alors qu'en regard, [autre clause modifiée]. »\n- « Cette concession suppose que vous accédiez à [autre demande]. »\n\nTRÁNH:\n- « C'est inacceptable » sans alternative → jugement sec, ferme la discussion\n- « Mon avocat dit que… » → cache derrière un tiers, affaiblit votre voix\n- Refus en bloc d'une clause → préférez réécrire le texte vous-même\n- Accepter pour finir vite → vous payez 5 ans après",
+    "tip_advice_en": "5-STEP PROCESS for pushing back on a contract:\n\n(1) FULL READING with three-color highlighting — GREEN (acceptable clauses), ORANGE (negotiable), RED (unacceptable as-is). Never sign a contract without this categorized read.\n\n(2) PRIORITIZATION: the 3-5 RED clauses deserve systematic push. The ORANGE clauses serve as trading currency — you can give up 1-2 of these to win on the reds.\n\n(3) PREPARE ALTERNATIVE WORDINGS: for each clause to negotiate, WRITE the exact text you want to see appear. Format: 'Where the contract says X, I propose Y.'\n\n(4) SEND IN ONE BLOCK, not drip-fed. A list of 5-10 modifications sent at once is more effective than 5 separate emails. Otherwise the other party gets tired and shuts down.\n\n(5) ITERATIVE NEGOTIATION: one, maybe two rounds of back-and-forth. Beyond that, you exhaust patience and the contract may collapse.\n\nUSEFUL PHRASES:\n\nTO INTRODUCE AN OBJECTION:\n- 'Sur ce point précis, je me permets une réserve.' (On this specific point, I allow myself a reservation)\n- 'Telle qu'elle est rédigée, cette clause me paraît [problem].' (As drafted, this clause seems to me [problem])\n- 'Il y aurait, me semble-t-il, matière à reformulation.' (There would be, it seems to me, grounds for reformulation)\n- 'Ce point appelle, à mon sens, une clarification.' (This point calls, in my view, for clarification)\n\nTO PROPOSE AN ALTERNATIVE:\n- 'Je propose la rédaction suivante: [text].'\n- 'Une formulation qui me semblerait plus équilibrée serait: [text].'\n- 'Pourrait-on remplacer X par Y, qui sécurise les deux parties ?'\n- 'Je suggère d'ajouter à cette clause un membre de phrase précisant que [protection].'\n\nTO PRESS WITHOUT BREAKING:\n- 'En l'état, je ne pourrais pas engager ma signature.' (As it stands, I couldn't commit my signature)\n- 'Cette rédaction crée un déséquilibre que je ne peux laisser passer.' (This wording creates an imbalance I can't let pass)\n- 'Je crains que cette clause, telle quelle, ne soit pas tenable juridiquement.' (I fear this clause, as is, won't hold up legally)\n- 'Je préférerais qu'on retravaille ce passage avant de finaliser.' (I'd prefer we rework this passage before finalizing)\n\nTO PROTECT A CONCESSION:\n- 'J'accepte ce point, à condition que [counterpart].' (I accept this point, provided that [counterpart])\n- 'Si vous tenez à cette rédaction, il faudrait alors qu'en regard, [other clause modified].' (If you insist on this wording, then in exchange [other clause modified])\n- 'Cette concession suppose que vous accédiez à [other demand].' (This concession assumes you grant [other demand])\n\nAVOID:\n- 'C'est inacceptable' without an alternative → dry judgment, closes discussion\n- 'My lawyer says…' → hides behind a third party, weakens your voice\n- Wholesale refusal of a clause → prefer rewriting the text yourself\n- Accepting to finish fast → you pay 5 years later",
     "vocabulary": [
       {
         "word": "une clause de non-concurrence",
         "en": "a non-compete clause",
         "vi": "điều khoản không cạnh tranh",
         "pos": "n.f.",
-        "pronunciation_vi": "kloz dơ nõn kõn-ku-rãns"
+        "pronunciation_vi": "kloz dơ nõn kõn-ku-rãns",
+        "pronunciation_en": "ewn KLOHZ duh nohn kohn-kew-RAHNS — two nasals; the most frequently negotiated clause in cadre contracts"
       },
       {
         "word": "une contrepartie financière",
         "en": "a financial counterpart",
         "vi": "khoản đối ứng tài chính",
         "pos": "n.f.",
-        "pronunciation_vi": "kõn-trơ-par-ti fi-nãn-sièr"
+        "pronunciation_vi": "kõn-trơ-par-ti fi-nãn-sièr",
+        "pronunciation_en": "ewn kohn-truh-par-TEE fee-nahn-SYAIR — required by French case law for non-compete to be valid; minimum 30% of monthly salary"
       },
       {
         "word": "plafonner une clause",
         "en": "to cap a clause",
         "vi": "giới hạn một điều khoản",
         "pos": "v.",
-        "pronunciation_vi": "pla-fo-né un kloz"
+        "pronunciation_vi": "pla-fo-né un kloz",
+        "pronunciation_en": "plah-foh-NAY ewn KLOHZ — literally 'to put a ceiling on'; the key verb for limiting liability exposure"
       },
       {
         "word": "des pénalités de retard",
         "en": "late penalties",
         "vi": "phạt chậm trễ",
         "pos": "n.f. pl.",
-        "pronunciation_vi": "pé-na-li-té dơ rơ-tar"
+        "pronunciation_vi": "pé-na-li-té dơ rơ-tar",
+        "pronunciation_en": "day pay-nah-lee-TAY duh ruh-TAR — final -d silent in 'retard'; always demand reciprocity in B2B contracts"
       },
       {
         "word": "une clause résolutoire",
         "en": "a termination clause",
         "vi": "điều khoản chấm dứt",
         "pos": "n.f.",
-        "pronunciation_vi": "kloz ré-zo-lu-toar"
+        "pronunciation_vi": "kloz ré-zo-lu-toar",
+        "pronunciation_en": "ewn KLOHZ ray-zoh-lew-TWAR — 's' between vowels sounds like 'z'; 'oi' is 'wah'; allows unilateral termination on specified events"
       },
       {
         "word": "la responsabilité limitée",
         "en": "limited liability",
         "vi": "trách nhiệm giới hạn",
         "pos": "n.f.",
-        "pronunciation_vi": "rès-põn-sa-bi-li-té li-mi-té"
+        "pronunciation_vi": "rès-põn-sa-bi-li-té li-mi-té",
+        "pronunciation_en": "lah res-pohn-sah-bee-lee-TAY lee-mee-TAY — six syllables then four; capping liability at contract value (1x or 2x) is standard"
       },
       {
         "word": "une rédaction alternative",
         "en": "an alternative wording",
         "vi": "cách viết thay thế",
         "pos": "n.f.",
-        "pronunciation_vi": "ré-dak-sion al-tèr-na-tiv"
+        "pronunciation_vi": "ré-dak-sion al-tèr-na-tiv",
+        "pronunciation_en": "ewn ray-dak-SYOHN al-tair-nah-TEEV — 'rédaction' means the wording itself, not the editorial board; the cornerstone of constructive pushback"
       },
       {
         "word": "un déséquilibre contractuel",
         "en": "a contractual imbalance",
         "vi": "sự mất cân bằng hợp đồng",
         "pos": "n.m.",
-        "pronunciation_vi": "dé-zé-ki-li-brơ kõn-trak-tu-èl"
+        "pronunciation_vi": "dé-zé-ki-li-brơ kõn-trak-tu-èl",
+        "pronunciation_en": "ehn day-zay-kee-LEE-bruh kohn-trak-TWEL — five syllables; the polite term for 'this contract is rigged against me'"
       },
       {
         "word": "la clause de mobilité",
         "en": "the mobility clause",
         "vi": "điều khoản di chuyển nơi làm việc",
         "pos": "n.f.",
-        "pronunciation_vi": "kloz dơ mo-bi-li-té"
+        "pronunciation_vi": "kloz dơ mo-bi-li-té",
+        "pronunciation_en": "lah KLOHZ duh moh-bee-lee-TAY — French employment-law term; lets employer geographically relocate you; always restrict scope"
       },
       {
         "word": "un préavis",
         "en": "a notice period",
         "vi": "thời hạn báo trước",
         "pos": "n.m.",
-        "pronunciation_vi": "pré-a-vi"
+        "pronunciation_vi": "pré-a-vi",
+        "pronunciation_en": "ehn pray-ah-VEE — final -s silent; the legally-required notice before termination or transfer"
       }
     ],
     "dialogue": [
       {
         "speaker": "Linh",
         "text": "Maître Dubois, j'ai relu le projet. Trois clauses appellent une discussion avant que je signe.",
-        "vi": "Luật sư Dubois, tôi đã đọc lại dự thảo. Ba điều khoản cần thảo luận trước khi tôi ký."
+        "vi": "Luật sư Dubois, tôi đã đọc lại dự thảo. Ba điều khoản cần thảo luận trước khi tôi ký.",
+        "en": "Counsel Dubois, I've re-read the draft. Three clauses call for discussion before I sign."
       },
       {
         "speaker": "Avocat",
         "text": "Je vous écoute. Lesquelles ?",
-        "vi": "Tôi nghe bạn. Những điều khoản nào?"
+        "vi": "Tôi nghe bạn. Những điều khoản nào?",
+        "en": "I'm listening. Which ones?"
       },
       {
         "speaker": "Linh",
         "text": "La non-concurrence à vingt-quatre mois sans contrepartie, le plafond de responsabilité illimité, et la clause de mobilité couvrant toute la France.",
-        "vi": "Điều không cạnh tranh 24 tháng không đối ứng, trần trách nhiệm vô hạn, và điều khoản di chuyển bao trùm toàn nước Pháp."
+        "vi": "Điều không cạnh tranh 24 tháng không đối ứng, trần trách nhiệm vô hạn, và điều khoản di chuyển bao trùm toàn nước Pháp.",
+        "en": "The twenty-four-month non-compete without counterpart, the unlimited liability cap, and the mobility clause covering all of France."
       },
       {
         "speaker": "Avocat",
         "text": "Trois points légitimes. Vous avez préparé des rédactions alternatives ?",
-        "vi": "Ba điểm hợp lý. Bạn đã chuẩn bị các cách viết thay thế chưa?"
+        "vi": "Ba điểm hợp lý. Bạn đã chuẩn bị các cách viết thay thế chưa?",
+        "en": "Three legitimate points. Have you prepared alternative wordings?"
       }
     ],
     "dialogue_long": [
       {
         "speaker": "Linh (rendez-vous avec l'avocat de l'entreprise française qui l'embauche)",
         "text": "Maître Dubois, merci de m'accorder ce rendez-vous. J'ai relu le projet de contrat de travail en détail; trois clauses appellent une discussion avant que je puisse engager ma signature.",
-        "vi": "Luật sư Dubois, cảm ơn ông đã sắp xếp buổi gặp này. Tôi đã đọc lại dự thảo hợp đồng lao động chi tiết; ba điều khoản cần thảo luận trước khi tôi có thể ký."
+        "vi": "Luật sư Dubois, cảm ơn ông đã sắp xếp buổi gặp này. Tôi đã đọc lại dự thảo hợp đồng lao động chi tiết; ba điều khoản cần thảo luận trước khi tôi có thể ký.",
+        "en": "Counsel Dubois, thank you for granting me this meeting. I've re-read the draft employment contract in detail; three clauses call for discussion before I can commit my signature."
       },
       {
         "speaker": "Avocat",
         "text": "Allons-y point par point. Lesquelles vous posent problème ?",
-        "vi": "Mình đi từng điểm. Điều nào làm bạn lo?"
+        "vi": "Mình đi từng điểm. Điều nào làm bạn lo?",
+        "en": "Let's go point by point. Which ones are giving you trouble?"
       },
       {
         "speaker": "Linh",
         "text": "Premier point: la clause de non-concurrence. Elle est fixée à vingt-quatre mois après mon départ, couvre toute l'Union européenne, et ne prévoit aucune contrepartie financière. La jurisprudence Cour de cassation 2002 rend cette dernière partie nulle de plein droit, mais je préfère qu'on la corrige avant signature plutôt que de découvrir le problème en sortie.",
-        "vi": "Điểm thứ nhất: điều không cạnh tranh. Quy định 24 tháng sau khi tôi rời, bao trùm toàn EU, và không có đối ứng tài chính nào. Án lệ Tòa Phá án 2002 làm phần cuối này vô hiệu hoàn toàn, nhưng tôi muốn sửa trước khi ký hơn là phát hiện vấn đề lúc ra đi."
+        "vi": "Điểm thứ nhất: điều không cạnh tranh. Quy định 24 tháng sau khi tôi rời, bao trùm toàn EU, và không có đối ứng tài chính nào. Án lệ Tòa Phá án 2002 làm phần cuối này vô hiệu hoàn toàn, nhưng tôi muốn sửa trước khi ký hơn là phát hiện vấn đề lúc ra đi.",
+        "en": "First point: the non-compete clause. It's set at twenty-four months after my departure, covers the entire European Union, and provides no financial counterpart. The 2002 Cour de cassation jurisprudence makes that last part null and void by operation of law, but I'd prefer to fix it before signing rather than discover the problem on the way out."
       },
       {
         "speaker": "Avocat",
         "text": "Vous connaissez la jurisprudence — c'est rare. Que proposez-vous concrètement ?",
-        "vi": "Bạn biết án lệ — hiếm. Cụ thể bạn đề xuất gì?"
+        "vi": "Bạn biết án lệ — hiếm. Cụ thể bạn đề xuất gì?",
+        "en": "You know the case law — that's rare. What concretely do you propose?"
       },
       {
         "speaker": "Linh",
         "text": "Je propose: durée ramenée à douze mois — cohérente avec la majorité des contrats cadres en France; périmètre géographique limité à la France métropolitaine et au Benelux — où l'entreprise opère réellement; contrepartie financière à hauteur de trente pour cent du dernier salaire mensuel pendant la durée d'application — minimum jurisprudentiel.",
-        "vi": "Tôi đề xuất: thời hạn giảm còn 12 tháng — phù hợp đa số hợp đồng cadres ở Pháp; phạm vi địa lý giới hạn ở Pháp lục địa và Benelux — nơi công ty thực sự hoạt động; đối ứng tài chính ở mức 30% lương tháng cuối trong suốt thời gian áp dụng — tối thiểu theo án lệ."
+        "vi": "Tôi đề xuất: thời hạn giảm còn 12 tháng — phù hợp đa số hợp đồng cadres ở Pháp; phạm vi địa lý giới hạn ở Pháp lục địa và Benelux — nơi công ty thực sự hoạt động; đối ứng tài chính ở mức 30% lương tháng cuối trong suốt thời gian áp dụng — tối thiểu theo án lệ.",
+        "en": "I propose: duration reduced to twelve months — consistent with most cadre contracts in France; geographic scope limited to mainland France and the Benelux — where the firm actually operates; financial counterpart at thirty percent of the last monthly salary throughout the application period — the legal minimum."
       },
       {
         "speaker": "Avocat",
         "text": "Acceptable, je porte cela au comité de direction. Deuxième point ?",
-        "vi": "Chấp nhận được, tôi đưa lên ủy ban giám đốc. Điểm thứ hai?"
+        "vi": "Chấp nhận được, tôi đưa lên ủy ban giám đốc. Điểm thứ hai?",
+        "en": "Acceptable. I'll take that to the executive committee. Second point?"
       },
       {
         "speaker": "Linh",
         "text": "L'article quinze prévoit une responsabilité personnelle illimitée en cas de manquement aux obligations professionnelles. Cette rédaction est dangereuse — elle me rendrait personnellement responsable de pertes potentielles sans plafond. Pour un poste salarié, c'est juridiquement contestable et économiquement insoutenable.",
-        "vi": "Điều 15 quy định trách nhiệm cá nhân vô hạn khi vi phạm nghĩa vụ nghề nghiệp. Cách viết này nguy hiểm — sẽ làm tôi chịu trách nhiệm cá nhân với các tổn thất tiềm năng không giới hạn. Cho vị trí làm công, đó là điều có thể tranh cãi pháp lý và không thể chịu được về kinh tế."
+        "vi": "Điều 15 quy định trách nhiệm cá nhân vô hạn khi vi phạm nghĩa vụ nghề nghiệp. Cách viết này nguy hiểm — sẽ làm tôi chịu trách nhiệm cá nhân với các tổn thất tiềm năng không giới hạn. Cho vị trí làm công, đó là điều có thể tranh cãi pháp lý và không thể chịu được về kinh tế.",
+        "en": "Article fifteen provides for unlimited personal liability in case of breach of professional obligations. This wording is dangerous — it would make me personally responsible for potential losses without a cap. For a salaried position, that's legally contestable and economically untenable."
       },
       {
         "speaker": "Avocat",
         "text": "Cette rédaction est en effet problématique. C'est probablement un copier-coller d'un modèle inadapté. Vous proposez ?",
-        "vi": "Cách viết này thực sự có vấn đề. Có lẽ là copier-coller từ mẫu không phù hợp. Bạn đề xuất?"
+        "vi": "Cách viết này thực sự có vấn đề. Có lẽ là copier-coller từ mẫu không phù hợp. Bạn đề xuất?",
+        "en": "That wording is indeed problematic. It's probably a copy-paste from an inappropriate template. What do you propose?"
       },
       {
         "speaker": "Linh",
         "text": "Limiter la responsabilité personnelle aux cas de faute lourde ou intentionnelle, plafonnée à six mois de rémunération brute. C'est la rédaction standard dans les contrats cadres équilibrés.",
-        "vi": "Giới hạn trách nhiệm cá nhân ở các trường hợp lỗi nặng hoặc cố ý, giới hạn ở mức 6 tháng lương gộp. Đó là cách viết chuẩn trong các hợp đồng cadres cân bằng."
+        "vi": "Giới hạn trách nhiệm cá nhân ở các trường hợp lỗi nặng hoặc cố ý, giới hạn ở mức 6 tháng lương gộp. Đó là cách viết chuẩn trong các hợp đồng cadres cân bằng.",
+        "en": "Limit personal liability to cases of gross or intentional fault, capped at six months of gross compensation. That's the standard wording in balanced cadre contracts."
       },
       {
         "speaker": "Avocat",
         "text": "Très bien. Troisième point ?",
-        "vi": "Rất tốt. Điểm thứ ba?"
+        "vi": "Rất tốt. Điểm thứ ba?",
+        "en": "Very well. Third point?"
       },
       {
         "speaker": "Linh",
         "text": "L'article dix-huit instaure une clause de mobilité géographique sur l'ensemble du territoire français. Cela permettrait à l'employeur de me muter à Marseille ou Lille du jour au lendemain. J'ai accepté un poste à Paris; cette clause vide cet engagement de sa substance.",
-        "vi": "Điều 18 đưa ra điều khoản di chuyển địa lý trên toàn lãnh thổ Pháp. Điều này cho phép employeur điều tôi đến Marseille hay Lille trong một đêm. Tôi đã nhận vị trí ở Paris; điều khoản này làm cam kết đó rỗng."
+        "vi": "Điều 18 đưa ra điều khoản di chuyển địa lý trên toàn lãnh thổ Pháp. Điều này cho phép employeur điều tôi đến Marseille hay Lille trong một đêm. Tôi đã nhận vị trí ở Paris; điều khoản này làm cam kết đó rỗng.",
+        "en": "Article eighteen establishes a geographic mobility clause covering the entire French territory. That would let the employer transfer me to Marseille or Lille overnight. I accepted a Paris position; this clause empties that commitment of its substance."
       },
       {
         "speaker": "Avocat",
         "text": "Légitime. Vous proposez de circonscrire ?",
-        "vi": "Hợp lý. Bạn đề xuất giới hạn?"
+        "vi": "Hợp lý. Bạn đề xuất giới hạn?",
+        "en": "Legitimate. You propose to scope it down?"
       },
       {
         "speaker": "Linh",
         "text": "Limiter la zone à l'Île-de-France, avec préavis de trois mois minimum et prise en charge intégrale des frais de déménagement et d'installation. Au-delà de l'Île-de-France, avenant signé des deux parties — pas de mutation unilatérale.",
-        "vi": "Giới hạn khu vực ở Île-de-France, với báo trước tối thiểu 3 tháng và trả toàn bộ chi phí di dời và lắp đặt. Ngoài Île-de-France, phụ lục ký bởi cả hai bên — không thay đổi đơn phương."
+        "vi": "Giới hạn khu vực ở Île-de-France, với báo trước tối thiểu 3 tháng và trả toàn bộ chi phí di dời và lắp đặt. Ngoài Île-de-France, phụ lục ký bởi cả hai bên — không thay đổi đơn phương.",
+        "en": "Limit the zone to the Île-de-France, with a minimum three-month notice and full coverage of relocation and installation costs. Beyond the Île-de-France, an amendment signed by both parties — no unilateral transfer."
       },
       {
         "speaker": "Avocat",
         "text": "Ces trois propositions sont raisonnables et défendables. Je les porte au DRH cet après-midi. Vous aurez la version révisée d'ici vendredi. Une remarque de fin: vous êtes la première candidate cette année à pousser proprement sur ces trois clauses. La plupart signent sans rien dire — c'est dommage pour eux.",
-        "vi": "Ba đề xuất này hợp lý và có thể bảo vệ. Tôi đưa cho DRH chiều nay. Bạn sẽ có bản sửa trước thứ sáu. Một nhận xét cuối: bạn là ứng viên đầu tiên năm nay đẩy gọn gàng trên ba điều khoản này. Đa số ký không nói gì — thiệt cho họ."
+        "vi": "Ba đề xuất này hợp lý và có thể bảo vệ. Tôi đưa cho DRH chiều nay. Bạn sẽ có bản sửa trước thứ sáu. Một nhận xét cuối: bạn là ứng viên đầu tiên năm nay đẩy gọn gàng trên ba điều khoản này. Đa số ký không nói gì — thiệt cho họ.",
+        "en": "These three proposals are reasonable and defensible. I'll take them to HR this afternoon. You'll have the revised version by Friday. A closing remark: you're the first candidate this year to push back cleanly on these three clauses. Most sign without a word — it's a shame for them."
       },
       {
         "speaker": "Linh",
         "text": "Je vous remercie. Je préfère négocier maintenant pendant qu'on est tous bienveillants, plutôt que de découvrir les implications dans deux ans.",
-        "vi": "Tôi cảm ơn ông. Tôi thích đàm phán ngay khi tất cả còn thiện chí, hơn là phát hiện hậu quả trong 2 năm."
+        "vi": "Tôi cảm ơn ông. Tôi thích đàm phán ngay khi tất cả còn thiện chí, hơn là phát hiện hậu quả trong 2 năm.",
+        "en": "Thank you. I prefer to negotiate now while we're all in good faith, rather than discover the implications in two years."
       }
     ],
     "roleplay_prompts": [
@@ -4143,30 +4282,44 @@ export const lessons: FrenchLesson[] = [
       "Trong đàm phán, đối tác nói: « Cette clause est non négociable, c'est notre standard. » Phản hồi avec 3 stratégies — demander la justification métier, proposer rédaction édulcorée, sortir un contre-exemple récent.",
       "Soạn 5 câu pour expliquer à un collègue vietnamien junior pourquoi accepter un contrat sans le négocier est une erreur professionnelle, même si l'offre semble bonne."
     ],
+    "roleplay_prompts_en": [
+      "You've just received a service-provision contract with a major French group. The contract has 5%/day late-delivery penalties on you but no symmetric penalties on the client. Draft an email negotiating reciprocity — courtesy + firmness. Frame it as standard practice, not as a special concession.",
+      "In a negotiation, the counterparty says: 'Cette clause est non négociable, c'est notre standard.' Respond with 3 strategies — ask for the business justification, propose a softened wording, surface a recent counter-example. Anglophone instinct here is to back off; the French expect you to keep pushing politely.",
+      "Draft 5 sentences explaining to a junior anglophone colleague why accepting a contract without negotiating is a professional error, even when the offer seems good. The French read non-negotiation as either inexperience or desperation; both hurt you in subsequent reviews."
+    ],
     "register_notes": "VOCABULAIRE TECHNIQUE pour la négociation contractuelle:\n\nVERBES PRÉCIS À UTILISER:\n- « plafonner » (giới hạn trên) — clause de responsabilité, montant\n- « circonscrire » (khoanh vùng) — périmètre, zone géographique\n- « édulcorer » (làm nhẹ) — formulation trop dure\n- « assortir » (kèm theo) — clause + contrepartie\n- « subordonner » (đặt làm điều kiện) — acceptation à condition\n- « formaliser » (chính thức hóa) — par écrit, par avenant\n\nFORMULES TYPES POUR REJETER UN PROJET DE RÉDACTION:\n- « Cette rédaction crée un déséquilibre que je ne peux laisser passer. »\n- « En l'état, cette clause m'expose à un risque disproportionné. »\n- « Telle quelle, cette formulation pourrait être contestée juridiquement. »\n- « Je crains que cette rédaction ne soit pas tenable. »\n\nFORMULES POUR PROPOSER:\n- « Je propose la rédaction suivante: [texte]. »\n- « Une formulation plus équilibrée serait: [texte]. »\n- « Pourrait-on remplacer X par Y ? »\n- « Je suggère d'ajouter un membre de phrase précisant [protection]. »\n\nFORMULES POUR ÉCHANGER (concession contre contrepartie):\n- « J'accepte ce point, à condition que [contrepartie]. »\n- « Si vous tenez à cette clause, il faudrait en regard que [autre]. »\n- « Cette concession suppose que vous accédiez à [autre demande]. »\n- « Je suis prête à lâcher sur X si vous bougez sur Y. »\n\nDISTINCTIONS LEXICALES:\n- « contrat » / « avenant » / « addendum » — l'avenant modifie un contrat existant; l'addendum y ajoute\n- « résiliation » (par l'une des parties) / « rupture » (commune accord ou imputable à l'une) / « résolution » (de plein droit)\n- « jurisprudence » (décisions judiciaires) / « doctrine » (commentaires juridiques)\n- « cadre » (en France, statut + rémunération supérieurs) / « non-cadre » / « cadre dirigeant » (statut très spécifique, hors 35h)\n\nUNE RÈGLE D'OR: ne JAMAIS signer un contrat à votre détriment pour « ne pas faire de vagues ». Le coût économique ou juridique 5 ans après est immense; le coût social de négocier proprement à l'embauche est nul. Les Français RESPECTENT les négociateurs durs et préparés — ils méprisent les « bons élèves » qui signent tout sans rien dire.",
+    "register_notes_en": "TECHNICAL VOCABULARY for contract negotiation:\n\nPRECISE VERBS TO USE:\n- 'plafonner' (to cap — set an upper limit) — liability clause, amount\n- 'circonscrire' (to circumscribe) — scope, geographic zone\n- 'édulcorer' (to soften) — overly harsh wording\n- 'assortir' (to pair with) — clause + counterpart\n- 'subordonner' (to make conditional on) — acceptance subject to\n- 'formaliser' (to formalize) — in writing, by amendment\n\nFORMULAS FOR REJECTING A DRAFT WORDING:\n- 'Cette rédaction crée un déséquilibre que je ne peux laisser passer.' (This wording creates an imbalance I cannot let pass.)\n- 'En l'état, cette clause m'expose à un risque disproportionné.' (As it stands, this clause exposes me to disproportionate risk.)\n- 'Telle quelle, cette formulation pourrait être contestée juridiquement.' (As written, this formulation could be legally contested.)\n- 'Je crains que cette rédaction ne soit pas tenable.' (I fear this wording won't hold.)\n\nFORMULAS FOR PROPOSING:\n- 'Je propose la rédaction suivante: [text].'\n- 'Une formulation plus équilibrée serait: [text].'\n- 'Pourrait-on remplacer X par Y ?'\n- 'Je suggère d'ajouter un membre de phrase précisant [protection].'\n\nFORMULAS FOR TRADING (concession for counterpart):\n- 'J'accepte ce point, à condition que [counterpart].' (I accept this point, provided that [counterpart].)\n- 'Si vous tenez à cette clause, il faudrait en regard que [other].' (If you insist on this clause, in exchange we'd need [other].)\n- 'Cette concession suppose que vous accédiez à [other demand].' (This concession assumes you grant [other demand].)\n- 'Je suis prête à lâcher sur X si vous bougez sur Y.' (I'm ready to give up on X if you move on Y.)\n\nLEXICAL DISTINCTIONS:\n- 'contrat' / 'avenant' / 'addendum' — the 'avenant' modifies an existing contract; the 'addendum' adds to it\n- 'résiliation' (by one party) / 'rupture' (mutual agreement or attributable to one) / 'résolution' (by operation of law)\n- 'jurisprudence' (judicial decisions) / 'doctrine' (legal commentary)\n- 'cadre' (in France, a status + higher pay tier) / 'non-cadre' / 'cadre dirigeant' (very specific status, outside 35-hour rules)\n\nA GOLDEN RULE: NEVER sign a contract to your detriment 'to avoid making waves'. The economic or legal cost 5 years later is enormous; the social cost of negotiating cleanly at hiring is zero. The French RESPECT firm and prepared negotiators — they look down on 'good students' who sign everything without a word.",
     "idiom_glosses": [
       {
         "idiom": "Mettre un garde-fou (courant)",
         "literal": "Đặt rào chắn",
+        "literal_en": "To put up a guard-rail",
         "meaning": "Đặt giới hạn để bảo vệ — utile pour clauses de responsabilité.",
+        "meaning_en": "To set up a safeguard — install a limit to protect. English equivalent: 'to put a guardrail in place' or 'to establish a safety net'. The contractual version of building a fence before the cliff.",
         "example": "Le plafond à six mois de rémunération sert de garde-fou contre toute exposition disproportionnée."
       },
       {
         "idiom": "Faire un pas vers l'autre (soutenu)",
         "literal": "Bước về phía nhau",
+        "literal_en": "To take a step toward the other",
         "meaning": "Lùi một bước trong đàm phán — geste de bonne foi.",
+        "meaning_en": "To meet the other halfway — a good-faith gesture. English equivalent: 'to meet in the middle' or 'to take a step toward each other'. Used to invite reciprocal concession.",
         "example": "J'accepte de réduire ma demande sur la clause A si vous faites un pas vers nous sur la clause B."
       },
       {
         "idiom": "Mettre les choses au clair (courant)",
         "literal": "Đặt mọi thứ rõ ràng",
+        "literal_en": "To put things into the clear",
         "meaning": "Làm rõ kỳ vọng — préalable à toute négociation contractuelle.",
+        "meaning_en": "To clarify expectations — a prerequisite for any contractual negotiation. English equivalent: 'to set the record straight' or 'to put cards on the table'. Said before a frank exchange about misaligned assumptions.",
         "example": "Avant de poursuivre, je voudrais qu'on mette les choses au clair sur la durée d'engagement."
       },
       {
         "idiom": "Parler franchement (courant)",
         "literal": "Nói thẳng",
+        "literal_en": "To speak frankly",
         "meaning": "Nói thẳng vấn đề — apprécié dans le monde des affaires français.",
+        "meaning_en": "To speak frankly — direct equivalent in English. Valued in French business culture as a sign of seriousness, not rudeness. Often opens a critical moment in a negotiation.",
         "example": "Je vais vous parler franchement: en l'état, je ne pourrais pas engager ma signature."
       }
     ],
@@ -4174,20 +4327,24 @@ export const lessons: FrenchLesson[] = [
       {
         "type": "fill-blank",
         "question": "Il conviendrait, me semble-t-il, de ___ cette clause de responsabilité à hauteur du montant du contrat.",
-        "answer": "plafonner"
+        "answer": "plafonner",
+        "hint_vi": "động từ nguyên mẫu nghĩa 'đặt trần / giới hạn trên'",
+        "hint_en": "infinitive verb meaning 'to cap' (set an upper limit) — the key verb for limiting liability exposure"
       },
       {
         "type": "matching",
         "pairs": [
-          ["une clause de non-concurrence", "điều khoản không cạnh tranh"],
-          ["plafonner une clause", "giới hạn một điều khoản"],
-          ["un déséquilibre contractuel", "sự mất cân bằng hợp đồng"]
+          ["une clause de non-concurrence", "điều khoản không cạnh tranh (a non-compete clause)"],
+          ["plafonner une clause", "giới hạn một điều khoản (to cap a clause — set an upper limit)"],
+          ["un déséquilibre contractuel", "sự mất cân bằng hợp đồng (a contractual imbalance)"]
         ],
-        "instruction": "Nối thuật ngữ hợp đồng với nghĩa Việt"
+        "instruction": "Nối thuật ngữ hợp đồng với nghĩa Việt",
+        "instruction_en": "Match the contract term with its meaning"
       },
       {
         "type": "translation",
         "vietnamese": "Trên điểm cụ thể này, tôi xin phép đề xuất một cách viết thay thế giúp bảo đảm cho cả hai bên.",
+        "english": "On this specific point, I take the liberty of proposing alternative wording that secures both parties.",
         "french": "Sur ce point précis, je me permets de proposer une rédaction alternative qui sécurise les deux parties."
       }
     ]
