@@ -1,9 +1,9 @@
 // src/components/mercy-guide/tabs/LanguageLessonsView.tsx
 //
 // Pure rendering body for the per-language lesson tabs inside the Mercy
-// guide panel. Takes its language data via props so each per-language
-// wrapper (FrenchLessonsTab / GermanLessonsTab) can import only the data
-// it needs.
+// guide panel. Takes its language data via props as a canonical
+// NormalizedLesson[] so the view never reaches into per-language field
+// aliases.
 //
 // Lazy-load split: the view loads only the user's selected level via
 // the language's per-level loader, so opening the tab no longer pulls
@@ -19,40 +19,55 @@ import {
   Globe,
 } from "lucide-react";
 
-import type { FrenchVocabEntry } from "@/languages/french/vocabulary";
-import type { GermanVocabEntry } from "@/languages/german/vocabulary";
 import type {
-  FrenchCategoryMeta,
-  FrenchLesson,
-  FrenchCefrLevel,
-} from "@/languages/french/lessons";
-import type {
-  GermanCategoryMeta,
-  GermanLesson,
-  GermanCefrLevel,
-} from "@/languages/german/lessons";
-
-export type LanguageCode = "french" | "german";
+  CefrLevel,
+  NormalizedLesson,
+} from "@/components/languages/LessonRenderer.types";
 
 export type LessonUiLang = "vi" | "en";
 
-type AnyLevel = FrenchCefrLevel | GermanCefrLevel;
-type AnyLesson = FrenchLesson | GermanLesson;
+// Compact vocab shape for the side panel's "50 từ vựng" toggle.
+// Both French and German vocab arrays satisfy this shape; the wrapper
+// tabs map their per-language vocab into this shape at the boundary so
+// the view doesn't import per-language vocab types.
+export type SidePanelVocabEntry = {
+  /** Headword in the foreign language (e.g. "bonjour", "guten Morgen"). */
+  word: string;
+  /** Vietnamese gloss. */
+  vi: string;
+  /** English gloss — optional; displayed when uiLang === "en". */
+  en?: string;
+};
 
 export type LanguageLessonsConfig = {
-  code: LanguageCode;
   label: string;
   labelVi: string;
   flag: string;
   accent: "blue" | "red";
-  vocab: ReadonlyArray<FrenchVocabEntry | GermanVocabEntry>;
-  categories: ReadonlyArray<FrenchCategoryMeta | GermanCategoryMeta>;
-  loadLessonsForLevel: (level: AnyLevel) => Promise<AnyLesson[]>;
+  vocab: ReadonlyArray<SidePanelVocabEntry>;
+  /** Localized category metadata for grouping lessons under headings. */
+  categories: ReadonlyArray<{
+    id: string;
+    title_vi: string;
+    title_en: string;
+  }>;
+  /** Async loader returning lessons normalized to the canonical shape. */
+  loadLessonsForLevel: (level: CefrLevel) => Promise<NormalizedLesson[]>;
 };
 
-const LEVELS: ReadonlyArray<AnyLevel> = ["A1", "A2", "B1", "B2", "C1", "C2"];
+const LEVELS: ReadonlyArray<CefrLevel> = ["A1", "A2", "B1", "B2", "C1", "C2"];
 
-const ACCENT_COLORS: Record<string, { light: string; medium: string; dark: string; border: string; bg: string; activeBg: string }> = {
+const ACCENT_COLORS: Record<
+  string,
+  {
+    light: string;
+    medium: string;
+    dark: string;
+    border: string;
+    bg: string;
+    activeBg: string;
+  }
+> = {
   blue: {
     light: "blue-50",
     medium: "blue-100",
@@ -79,8 +94,8 @@ type Props = {
 export default function LanguageLessonsView({ config, uiLang = "vi" }: Props) {
   const colors = ACCENT_COLORS[config.accent];
   const [showVocab, setShowVocab] = useState(false);
-  const [level, setLevel] = useState<AnyLevel>("A1");
-  const [lessons, setLessons] = useState<AnyLesson[] | null>(null);
+  const [level, setLevel] = useState<CefrLevel>("A1");
+  const [lessons, setLessons] = useState<NormalizedLesson[] | null>(null);
 
   useEffect(() => {
     let cancelled = false;
@@ -102,7 +117,7 @@ export default function LanguageLessonsView({ config, uiLang = "vi" }: Props) {
   }, [config, level]);
 
   const lessonsByCategory = useMemo(() => {
-    const map = new Map<string, AnyLesson[]>();
+    const map = new Map<string, NormalizedLesson[]>();
     if (!lessons) return map;
     for (const lesson of lessons) {
       const cat =
@@ -128,7 +143,9 @@ export default function LanguageLessonsView({ config, uiLang = "vi" }: Props) {
           </div>
         </div>
         <p className="mt-2 text-xs leading-relaxed text-slate-600">
-          Phát âm viết riêng cho người Việt. Âm khó, ngữ pháp, văn hoá — giải thích theo cách người Việt hiểu.
+          {uiLang === "en"
+            ? "Pronunciation hints written for English-speaking learners. Tricky sounds, grammar, and culture — explained in ways that fit how you already think about language."
+            : "Phát âm viết riêng cho người Việt. Âm khó, ngữ pháp, văn hoá — giải thích theo cách người Việt hiểu."}
         </p>
 
         {/* Vocab toggle */}
@@ -138,7 +155,7 @@ export default function LanguageLessonsView({ config, uiLang = "vi" }: Props) {
           className={`mt-2 inline-flex items-center gap-1 rounded-full border ${colors.border} bg-white/80 px-3 py-1 text-xs font-medium text-slate-700 transition hover:bg-white`}
         >
           <Globe className="h-3 w-3" />
-          50 từ vựng
+          {uiLang === "en" ? "50 vocab words" : "50 từ vựng"}
           {showVocab ? (
             <ChevronUp className="h-3 w-3" />
           ) : (
@@ -149,21 +166,22 @@ export default function LanguageLessonsView({ config, uiLang = "vi" }: Props) {
         {showVocab && (
           <div className="mt-2 max-h-40 overflow-y-auto rounded-lg border border-slate-200 bg-white p-2">
             <div className="grid grid-cols-2 gap-x-3 gap-y-0.5">
-              {config.vocab.map((entry, i) => (
-                <div key={i} className="flex items-baseline gap-1.5 rounded px-1.5 py-0.5 text-xs hover:bg-slate-50">
-                  <span className="font-medium text-slate-900">
-                    {config.code === "french"
-                      ? (entry as FrenchVocabEntry).fr
-                      : (entry as GermanVocabEntry).de}
-                  </span>
-                  <span className="text-slate-400">—</span>
-                  <span className="text-slate-600">
-                    {config.code === "french"
-                      ? (entry as FrenchVocabEntry).vi
-                      : (entry as GermanVocabEntry).vi}
-                  </span>
-                </div>
-              ))}
+              {config.vocab.map((entry, i) => {
+                const gloss =
+                  uiLang === "en" ? (entry.en ?? entry.vi) : entry.vi;
+                return (
+                  <div
+                    key={i}
+                    className="flex items-baseline gap-1.5 rounded px-1.5 py-0.5 text-xs hover:bg-slate-50"
+                  >
+                    <span className="font-medium text-slate-900">
+                      {entry.word}
+                    </span>
+                    <span className="text-slate-400">—</span>
+                    <span className="text-slate-600">{gloss}</span>
+                  </div>
+                );
+              })}
             </div>
           </div>
         )}
@@ -171,7 +189,7 @@ export default function LanguageLessonsView({ config, uiLang = "vi" }: Props) {
 
       {/* Level selector */}
       <nav
-        aria-label="Chọn cấp độ"
+        aria-label={uiLang === "en" ? "Choose level" : "Chọn cấp độ"}
         className="flex flex-wrap gap-1.5"
       >
         {LEVELS.map((lv) => {
@@ -197,11 +215,15 @@ export default function LanguageLessonsView({ config, uiLang = "vi" }: Props) {
       {/* Lessons */}
       {lessons === null ? (
         <p className="rounded-lg border border-slate-200 bg-white px-3 py-3 text-xs text-slate-500">
-          Đang tải bài học cấp độ {level}…
+          {uiLang === "en"
+            ? `Loading ${level} lessons…`
+            : `Đang tải bài học cấp độ ${level}…`}
         </p>
       ) : lessons.length === 0 ? (
         <p className="rounded-lg border border-slate-200 bg-white px-3 py-3 text-xs text-slate-500">
-          Chưa có bài học cho cấp độ này.
+          {uiLang === "en"
+            ? "No lessons available for this level yet."
+            : "Chưa có bài học cho cấp độ này."}
         </p>
       ) : (
         config.categories.map((cat) => {
@@ -211,16 +233,22 @@ export default function LanguageLessonsView({ config, uiLang = "vi" }: Props) {
             <section key={cat.id}>
               <header className="mb-1.5 flex items-baseline justify-between">
                 <h3 className="text-xs font-semibold uppercase tracking-wide text-slate-600">
-                  {cat.title_vi}
+                  {uiLang === "en" ? cat.title_en : cat.title_vi}
                 </h3>
                 <span className="text-[10px] text-slate-400">
-                  {cat.title_en} · {catLessons.length} bài
+                  {uiLang === "en"
+                    ? `${cat.title_vi} · ${catLessons.length} ${catLessons.length === 1 ? "lesson" : "lessons"}`
+                    : `${cat.title_en} · ${catLessons.length} bài`}
                 </span>
               </header>
               <ol className="space-y-1.5">
                 {catLessons.map((lesson) => (
                   <li key={lesson.id}>
-                    <LessonTile lesson={lesson} colors={colors} uiLang={uiLang} />
+                    <LessonTile
+                      lesson={lesson}
+                      colors={colors}
+                      uiLang={uiLang}
+                    />
                   </li>
                 ))}
               </ol>
@@ -232,47 +260,23 @@ export default function LanguageLessonsView({ config, uiLang = "vi" }: Props) {
   );
 }
 
-function FallbackBadge() {
-  // Shown when uiLang === "en" but the lesson has no EN translation for
-  // this section; the renderer falls back to the Vietnamese text. The
-  // badge sets the right expectation rather than silently hiding the gap.
-  return (
-    <span className="ml-1 inline-flex items-center rounded-sm bg-slate-200 px-1 py-px text-[9px] font-semibold uppercase tracking-wide text-slate-600">
-      VI
-    </span>
-  );
-}
-
-// EN pedagogy fields exist on the German Lesson type today (PR #439) and
-// are being rolled out to French (PR #451). We read them through a narrow
-// structural cast so this UI lands cleanly regardless of merge order; the
-// `??` fallback below handles lessons that haven't been bilingualized yet.
-type LessonEnFields = {
-  cultural_notes_en?: string;
-  tip_advice_en?: string;
-};
-type SentenceEnFields = {
-  pronunciation_focus_en?: string[];
-};
-
 function LessonTile({
   lesson,
   colors,
   uiLang,
 }: {
-  lesson: FrenchLesson | GermanLesson;
+  lesson: NormalizedLesson;
   colors: { dark: string; light: string; medium: string };
   uiLang: LessonUiLang;
 }) {
   const [open, setOpen] = useState(false);
-  const isEn = uiLang === "en";
-  const lessonEn = lesson as LessonEnFields;
-  const culturalEn = lessonEn.cultural_notes_en;
-  const tipEn = lessonEn.tip_advice_en;
-  const culturalText = isEn ? (culturalEn ?? lesson.cultural_notes_vi) : lesson.cultural_notes_vi;
-  const tipText = isEn ? (tipEn ?? lesson.tip_advice_vi) : lesson.tip_advice_vi;
-  const culturalFallback = isEn && !culturalEn;
-  const tipFallback = isEn && !tipEn;
+
+  const title =
+    uiLang === "en"
+      ? (lesson.title.en ?? lesson.title.vi)
+      : (lesson.title.vi ?? lesson.title.en);
+  const subtitle = uiLang === "en" ? lesson.title.vi : lesson.title.en;
+
   return (
     <article className="overflow-hidden rounded-lg border border-slate-200 bg-white">
       <button
@@ -282,10 +286,10 @@ function LessonTile({
         className="flex w-full items-center justify-between gap-2 px-3 py-2 text-left transition hover:bg-slate-50"
       >
         <div className="min-w-0 flex-1">
-          <p className="text-xs font-medium text-slate-900">
-            {lesson.title_vi}
-          </p>
-          <p className="text-[10px] text-slate-500">{lesson.title_en}</p>
+          <p className="text-xs font-medium text-slate-900">{title}</p>
+          {subtitle && subtitle !== title && (
+            <p className="text-[10px] text-slate-500">{subtitle}</p>
+          )}
         </div>
         {open ? (
           <ChevronUp className="h-3 w-3 shrink-0 text-slate-400" />
@@ -298,23 +302,29 @@ function LessonTile({
         <div className="border-t border-slate-100 bg-slate-50/60 px-3 py-2 space-y-2">
           <ol className="space-y-1.5">
             {lesson.sentences.map((s, i) => {
-              const sEn = s as SentenceEnFields;
-              const pronFocus = isEn
-                ? (sEn.pronunciation_focus_en ?? s.pronunciation_focus)
-                : s.pronunciation_focus;
-              const pronFallback = isEn && !sEn.pronunciation_focus_en;
+              const gloss =
+                uiLang === "en" ? (s.en ?? s.vi) : (s.vi ?? s.en);
+              const focus =
+                uiLang === "en"
+                  ? (s.pronunciationFocusEn ?? s.pronunciationFocus)
+                  : (s.pronunciationFocus ?? s.pronunciationFocusEn);
               return (
                 <li
                   key={i}
                   className="rounded-lg border border-slate-200 bg-white p-2"
                 >
-                  <p className="text-xs font-medium text-slate-900">{s.en}</p>
-                  <p className="mt-0.5 text-[10px] text-slate-600">{s.vi}</p>
-                  {pronFocus.length > 0 && (
-                    <p className={`mt-0.5 inline-flex items-center gap-1 text-[10px] text-${colors.dark}`}>
+                  <p className="text-xs font-medium text-slate-900">
+                    {s.native}
+                  </p>
+                  {gloss && (
+                    <p className="mt-0.5 text-[10px] text-slate-600">{gloss}</p>
+                  )}
+                  {focus && focus.length > 0 && (
+                    <p
+                      className={`mt-0.5 inline-flex items-center gap-1 text-[10px] text-${colors.dark}`}
+                    >
                       <Volume2 className="h-2.5 w-2.5" />
-                      {pronFocus.join(" · ")}
-                      {pronFallback && <FallbackBadge />}
+                      {focus.join(" · ")}
                     </p>
                   )}
                 </li>
@@ -322,27 +332,47 @@ function LessonTile({
             })}
           </ol>
 
-          <div className={`rounded-lg border border-${colors.medium} bg-${colors.light}/60 p-2`}>
-            <p className={`inline-flex items-center gap-1 text-[10px] font-semibold uppercase tracking-wide text-${colors.dark}`}>
-              <Sparkles className="h-2.5 w-2.5" />
-              {isEn ? "Culture" : "Văn hoá"}
-              {culturalFallback && <FallbackBadge />}
-            </p>
-            <p className="mt-0.5 text-[10px] leading-relaxed text-slate-700">
-              {culturalText}
-            </p>
-          </div>
+          {(() => {
+            const text =
+              uiLang === "en"
+                ? (lesson.culturalNotesEn ?? lesson.culturalNotesVi)
+                : (lesson.culturalNotesVi ?? lesson.culturalNotesEn);
+            if (!text) return null;
+            return (
+              <div
+                className={`rounded-lg border border-${colors.medium} bg-${colors.light}/60 p-2`}
+              >
+                <p
+                  className={`inline-flex items-center gap-1 text-[10px] font-semibold uppercase tracking-wide text-${colors.dark}`}
+                >
+                  <Sparkles className="h-2.5 w-2.5" />
+                  {uiLang === "en" ? "Culture" : "Văn hoá"}
+                </p>
+                <p className="mt-0.5 text-[10px] leading-relaxed text-slate-700">
+                  {text}
+                </p>
+              </div>
+            );
+          })()}
 
-          <div className="rounded-lg border border-amber-100 bg-amber-50/60 p-2">
-            <p className="inline-flex items-center gap-1 text-[10px] font-semibold uppercase tracking-wide text-amber-700">
-              <Lightbulb className="h-2.5 w-2.5" />
-              {isEn ? "Tip" : "Mẹo học"}
-              {tipFallback && <FallbackBadge />}
-            </p>
-            <p className="mt-0.5 text-[10px] leading-relaxed text-slate-700">
-              {tipText}
-            </p>
-          </div>
+          {(() => {
+            const text =
+              uiLang === "en"
+                ? (lesson.tipAdviceEn ?? lesson.tipAdviceVi)
+                : (lesson.tipAdviceVi ?? lesson.tipAdviceEn);
+            if (!text) return null;
+            return (
+              <div className="rounded-lg border border-amber-100 bg-amber-50/60 p-2">
+                <p className="inline-flex items-center gap-1 text-[10px] font-semibold uppercase tracking-wide text-amber-700">
+                  <Lightbulb className="h-2.5 w-2.5" />
+                  {uiLang === "en" ? "Tip" : "Mẹo học"}
+                </p>
+                <p className="mt-0.5 text-[10px] leading-relaxed text-slate-700">
+                  {text}
+                </p>
+              </div>
+            );
+          })()}
         </div>
       )}
     </article>
