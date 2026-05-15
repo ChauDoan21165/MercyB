@@ -4,6 +4,13 @@
 // All 5 language modules normalize their per-language lesson shape
 // to NormalizedLesson at the page-module boundary; the renderer is
 // field-name-pure and never reads per-language field aliases.
+//
+// Bilingual pedagogy fields: Vietnamese-suffixed (`*Vi`) and English-
+// suffixed (`*En`) fields are independent siblings, not translations
+// of each other. Each is authored for its language's audience. The
+// renderer picks which to display based on its `uiLanguage` prop,
+// with fallback when one is missing. NEVER assume a `*En` value is a
+// translation of its `*Vi` counterpart — they share intent, not wording.
 
 export type CefrLevel = "A1" | "A1+" | "A2" | "B1" | "B2" | "C1" | "C2";
 
@@ -12,7 +19,11 @@ export type NormalizedSentence = {
   romanization?: string;
   en?: string;
   vi?: string;
+  /** Pronunciation hints calibrated for Vietnamese-speaker learners. */
   pronunciationFocus?: string[];
+  /** Pronunciation hints calibrated for English-speaker learners.
+   *  Independent sibling — NOT a translation of pronunciationFocus. */
+  pronunciationFocusEn?: string[];
   note?: string;
 };
 
@@ -21,7 +32,11 @@ export type NormalizedVocabEntry = {
   romanization?: string;
   en?: string;
   vi?: string;
+  /** Phonetic hint calibrated for Vietnamese-speaker learners. */
   phonetic?: string;
+  /** Phonetic hint calibrated for English-speaker learners.
+   *  Independent sibling — NOT a translation of phonetic. */
+  phoneticEn?: string;
 };
 
 export type NormalizedDialogueLine = {
@@ -36,17 +51,29 @@ export type NormalizedExerciseFillBlank = {
   kind: "fill-blank";
   question: string;
   answer: string;
+  /** Optional contextual hint shown to the learner, in Vietnamese. */
+  hint?: string;
+  /** Optional contextual hint shown to the learner, in English. */
+  hintEn?: string;
 };
 
 export type NormalizedExerciseMatching = {
   kind: "matching";
+  /** Instruction calibrated for Vietnamese-speaker learners. */
   instruction?: string;
+  /** Instruction calibrated for English-speaker learners. */
+  instructionEn?: string;
   pairs: Array<{ a: string; b: string }>;
 };
 
 export type NormalizedExerciseTranslation = {
   kind: "translation";
+  /** Source prompt in Vietnamese; learner translates this into native. */
   vi: string;
+  /** Source prompt in English; learner translates this into native.
+   *  Optional — falls back to vi when missing. */
+  en?: string;
+  /** Target answer in the language being learned. */
   native: string;
   romanization?: string;
 };
@@ -85,8 +112,16 @@ export type NormalizedLesson = {
   vocabulary?: NormalizedVocabEntry[];
   dialogue?: NormalizedDialogueLine[];
   exercises?: NormalizedExercise[];
+  /** Cultural notes calibrated for Vietnamese-speaker learners. */
   culturalNotesVi?: string;
+  /** Cultural notes calibrated for English-speaker learners.
+   *  Independent sibling — NOT a translation of culturalNotesVi. */
+  culturalNotesEn?: string;
+  /** Study tip calibrated for Vietnamese-speaker learners. */
   tipAdviceVi?: string;
+  /** Study tip calibrated for English-speaker learners.
+   *  Independent sibling — NOT a translation of tipAdviceVi. */
+  tipAdviceEn?: string;
   grammar?: NormalizedGrammarPoint[];
   // Storage prefix for the lesson's audio in the Supabase `room-audio` bucket,
   // e.g. "a1/de/lgreetings_intro" or "a1/ja/l21". Append "/sentence_${i+1}.mp3"
