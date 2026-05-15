@@ -12317,6 +12317,10 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_focus": [
             "excusez-moi → èk-sky-zé mwa",
             "commandé → ko-mãn-dé"
+          ],
+          "pronunciation_focus_en": [
+            "excusez-moi → ek-skoo-zay-MWAH (the 'u' is rounded; the standard polite attention-getter — NEVER 'garçon!')",
+            "commandé → koh-mah(n)-DAY (nasal middle; 'j'avais commandé' = pluperfect 'I had ordered')"
           ]
         },
         {
@@ -12326,6 +12330,11 @@ export const lessons: FrenchLesson[] =           [
             "demandé → dơ-mãn-dé",
             "filet de bar → fi-lè dơ bar",
             "saumon → so-mõ"
+          ],
+          "pronunciation_focus_en": [
+            "demandé → duh-mah(n)-DAY (nasal middle; 'demander' = to ask for/request, not 'to demand' — false friend!)",
+            "filet de bar → fee-LEH duh BAR ('bar' here = sea bass, the fish, not a drinking bar; final 't' of 'filet' silent)",
+            "saumon → soh-MO(n) (final 'n' nasal, no real 'n' sound; the 'au' = 'oh')"
           ]
         },
         {
@@ -12336,6 +12345,12 @@ export const lessons: FrenchLesson[] =           [
             "froid → frwa",
             "rapporter → ra-por-té",
             "cuisine → kwi-zin"
+          ],
+          "pronunciation_focus_en": [
+            "plat → PLAH (final 't' silent; 'le plat' = the dish/course — rhymes with English 'pah')",
+            "froid → FRWAH (the 'oi' = 'wah'; final 'd' silent; means 'cold')",
+            "rapporter → rah-por-TAY (final '-er' = 'TAY'; 'rapporter en cuisine' = send back to the kitchen)",
+            "cuisine → kwee-ZEEN (final 'e' silent; means both 'kitchen' and 'cooking/cuisine')"
           ]
         },
         {
@@ -12345,6 +12360,11 @@ export const lessons: FrenchLesson[] =           [
             "addition → a-di-sion",
             "dessert → dè-sèr",
             "pris → pri"
+          ],
+          "pronunciation_focus_en": [
+            "addition → ah-dee-SYO(n) (nasal final; means 'the bill/check' in a restaurant — NOT 'addition' the math)",
+            "dessert → deh-SAIR (stress on the 2nd syllable, unlike English 'DESSert'; both s's, soft)",
+            "pris → PREE (final 's' silent; past participle of 'prendre' — 'que je n'ai pas pris' = that I didn't have/take)"
           ]
         },
         {
@@ -12354,102 +12374,123 @@ export const lessons: FrenchLesson[] =           [
             "pourriez → pu-rié",
             "vérifier → vé-ri-fié",
             "addition → a-di-sion"
+          ],
+          "pronunciation_focus_en": [
+            "pourriez → poor-YAY (conditional 'could you?' — the polite request form)",
+            "vérifier → vay-ree-FYAY (final '-ier' = 'FYAY'; 'to check/verify')",
+            "addition → ah-dee-SYO(n) (the restaurant bill; 's'il vous plaît' tacked on = 'please', literally 'if it pleases you')"
           ]
         }
       ],
       "cultural_notes_vi": "Khiếu nại nhà hàng ở Pháp khác Việt Nam ở một điểm văn hóa quan trọng: tại Pháp, khách hàng KHÔNG luôn « có quyền ». Nhân viên có quyền không phục vụ một khách thô lỗ — và sẽ làm. La lối, đập bàn, gọi quản lý « tout de suite! » là cách chắc chắn để có một bữa ăn tệ và bị nhớ mặt cho lần sau. Cách hiệu quả: bình tĩnh, gọi nhân viên bằng « Excusez-moi », mô tả vấn đề cụ thể, đề xuất giải pháp. Nhân viên Pháp đánh giá cao khách hàng có gout — nếu bạn chỉ ra món nấu sai (rượu sai cặp, sốt nguội), họ tôn trọng. Nếu bạn la lối vì « plat trop épicé » trong nhà hàng Pháp truyền thống — họ sẽ ngầm coi thường.\n\nLỗi hóa đơn (« addition ») khá phổ biến — không phải gian lận, thường là nhân viên ấn nhầm. Cách kiểm tra: bao giờ cũng yêu cầu « l'addition détaillée » (hóa đơn chi tiết), không « le total »; đối chiếu từng dòng với những gì bạn gọi. Nếu phát hiện sai: gọi serveur, chỉ cụ thể (« sur cette ligne, je vois un dessert que je n'ai pas pris »). Họ sẽ sửa ngay không tranh cãi nếu lỗi rõ ràng.\n\nTip culture (pourboire) ở Pháp: dịch vụ đã tính trong giá (« service compris »). Tip thêm 5-10% nếu hài lòng, không bắt buộc. KHÔNG tip khi món sai/nguội/dịch vụ tệ — đó là tín hiệu rõ ràng cho restaurant. Tránh: yêu cầu « doggy bag » (mang đồ về) — ở Pháp coi là kỳ; chỉ một số restaurant có. Tránh: chia hóa đơn « par tête » bằng máy tính (« faisons l'addition au prorata ») với người Pháp lần đầu gặp — họ thường tự gộp và chia trung bình.",
+      "cultural_notes_en": "Complaining at a French restaurant rests on one cultural fact that contradicts a deep American assumption: in France, the customer is NOT always right. Staff have the social standing — and will use it — to refuse to serve a rude customer, and the relationship is closer to host/guest than vendor/client. Shouting, banging the table, demanding the manager 'tout de suite!' is the reliable way to get a bad meal and be remembered next time. This is the inverse of the US 'I'd like to speak to your manager' move, which sometimes works stateside and never works in France. The effective approach: stay calm, get attention with 'Excusez-moi' (never 'Garçon!', which is dated and insulting), describe the problem specifically, propose a solution. French staff respect a customer with discernment — if you point out a genuine fault (wrong wine pairing, a sauce gone cold), they take it seriously and often comp it. If you loudly complain that a dish in a traditional French restaurant is 'trop épicé' (too spicy), they will privately file you as someone who doesn't understand the cuisine.\n\nBilling errors on 'l'addition' are common and almost never fraud — usually a server tapped the wrong table on the terminal. The defense: always ask for 'l'addition détaillée' (the itemized bill), not just 'le total', and check each line against what you ordered. If you find an error, call the server and point to the exact line ('sur cette ligne, je vois un dessert que je n'ai pas pris'). They'll fix it instantly without argument if it's clearly an error — no need to act wronged.\n\nTipping (pourboire): service is legally included in the price ('service compris'). An extra 5–10% if you were happy is appreciated but genuinely optional — this is the opposite of the US, where 18–20% is socially mandatory regardless. Do NOT tip when the food was wrong, cold, or service was bad — in France, leaving nothing is a clear, legitimate signal, not an insult. Two more anglophone traps: asking for a 'doggy bag' is still mildly odd in many French restaurants (improving, but not the norm as in the US); and proposing to split the bill itemized 'par tête' with French acquaintances on a first meeting reads as petty — the French default is to lump it and divide evenly, and only itemize among close friends.",
       "tip_advice_vi": "Khi chọn nhà hàng: kiểm tra reviews trên Tripadvisor/Google chú ý điểm 1-2 sao gần đây — không quá tin điểm trung bình. Đến nhà hàng: nếu không đặt trước, hỏi « Avez-vous une table libre pour deux ? ». Khi gọi món: chỉ menu + nói rõ « Je prendrai… » — không « I want… »; hỏi « Qu'est-ce qui se passe avec le plat du jour ? » nếu món lạ. Nếu món đến sai: gọi serveur ngay, đừng ăn trước rồi than. Câu hữu ích: « Excusez-moi, ce n'est pas ce que j'avais commandé — j'avais demandé X ». Nhân viên thường thay món miễn phí. Nếu món nguội: « C'est froid — pourriez-vous le rapporter en cuisine ? » — đa số restaurant tốt sẽ làm lại miễn phí. Khi nhận hóa đơn: kiểm tra TỪNG dòng (món, đơn giá, số lượng); kiểm tra « Service » đã tính chưa (đa số có); nếu có món bạn không gọi: chỉ cụ thể, không nói « ça doit être une erreur » mơ hồ. Đóng tiền: thẻ ngân hàng phổ biến hơn tiền mặt; máy thường ở quầy; chip-and-PIN, không sign. Nếu bị tip pressure (phổ biến với khu du lịch Paris/Riviera): từ chối lịch sự — « Le service est compris, je m'en tiendrai à ça » và rời.",
+      "tip_advice_en": "Choosing a restaurant: check Tripadvisor/Google reviews and pay attention to recent 1–2 star reviews specifically, not just the average — a high average with a cluster of recent bad reviews means a place that's slipping. Arriving: if you didn't book, ask 'Avez-vous une table libre pour deux?' (Do you have a free table for two?). Ordering: point at the menu and say 'Je prendrai…' (I'll have…) — never the calque 'Je veux…' (I want…), which sounds blunt and childish in French. If a dish is unfamiliar, ask 'Qu'est-ce qu'il y a dans le plat du jour?' (What's in the dish of the day?). If the wrong dish arrives: call the server immediately — do NOT eat it first and complain after, which forfeits your standing. Useful line: 'Excusez-moi, ce n'est pas ce que j'avais commandé — j'avais demandé X.' Staff usually swap it free. If a dish is cold: 'C'est froid — pourriez-vous le rapporter en cuisine?' — most good restaurants will remake it free. With the bill: check EVERY line (item, unit price, quantity); check whether 'Service' is already included (it almost always is — so don't add a US-style 20% on top out of habit); if there's an item you didn't order, point to it specifically rather than vaguely saying 'ça doit être une erreur'. Payment: card is more common than cash; the terminal is often brought to the table or at the counter; chip-and-PIN, no signing (this surprises Americans used to signing). If you hit tip pressure (common in tourist zones — Paris hotspots, the Riviera): decline politely with 'Le service est compris, je m'en tiendrai à ça' (Service is included, I'll stick with that) and leave — you are on solid ground, the law is on your side, and you owe no apology for it.",
       "vocabulary": [
         {
           "word": "l'addition",
           "en": "the bill / check",
           "vi": "hóa đơn",
           "pos": "n.f.",
-          "pronunciation_vi": "a-di-sion"
+          "pronunciation_vi": "a-di-sion",
+          "pronunciation_en": "lah-dee-SYO(n) (false friend — in a restaurant it means 'the bill/check', NOT a math 'addition'; ask 'l'addition, s'il vous plaît')"
         },
         {
           "word": "une commande",
           "en": "an order",
           "vi": "đơn gọi món",
           "pos": "n.f.",
-          "pronunciation_vi": "ko-mãnd"
+          "pronunciation_vi": "ko-mãnd",
+          "pronunciation_en": "koh-MAH(n)D (nasal final; the order you placed — 'prendre la commande' = to take an order)"
         },
         {
           "word": "un serveur / une serveuse",
           "en": "waiter / waitress",
           "vi": "phục vụ nam/nữ",
           "pos": "n.m./n.f.",
-          "pronunciation_vi": "sèr-vơr / sèr-vơz"
+          "pronunciation_vi": "sèr-vơr / sèr-vơz",
+          "pronunciation_en": "sair-VUHR / sair-VUHZ (the 'eu' is rounded; address them as 'Monsieur/Madame' or 'Excusez-moi', never 'serveur!')"
         },
         {
           "word": "un plat froid",
           "en": "a cold dish",
           "vi": "món nguội",
           "pos": "n.m.",
-          "pronunciation_vi": "pla frwa"
+          "pronunciation_vi": "pla frwa",
+          "pronunciation_en": "PLAH FRWAH (both final consonants silent; the specific complaint 'le plat est froid' = the dish is cold)"
         },
         {
           "word": "un service compris",
           "en": "service included",
           "vi": "phí dịch vụ đã tính",
           "pos": "n.m.",
-          "pronunciation_vi": "sèr-vis kõm-pri"
+          "pronunciation_vi": "sèr-vis kõm-pri",
+          "pronunciation_en": "sair-VEES ko(n)-PREE (the key phrase: service charge is already in the price — no US-style 20% expected on top)"
         },
         {
           "word": "un pourboire",
           "en": "a tip",
           "vi": "tiền tip",
           "pos": "n.m.",
-          "pronunciation_vi": "pur-bwar"
+          "pronunciation_vi": "pur-bwar",
+          "pronunciation_en": "poor-BWAR (literally 'for-drink'; an optional extra in France, NOT the socially-mandatory US tip)"
         },
         {
           "word": "rapporter en cuisine",
           "en": "to send back to kitchen",
           "vi": "mang lại bếp",
           "pos": "v.",
-          "pronunciation_vi": "ra-por-té ã kwi-zin"
+          "pronunciation_vi": "ra-por-té ã kwi-zin",
+          "pronunciation_en": "rah-por-TAY ah(n) kwee-ZEEN (the polite way to ask for a dish to be returned/redone)"
         },
         {
           "word": "une note erronée",
           "en": "an erroneous bill",
           "vi": "hóa đơn sai",
           "pos": "n.f.",
-          "pronunciation_vi": "not é-ro-né"
+          "pronunciation_vi": "not é-ro-né",
+          "pronunciation_en": "NOT ay-roh-NAY ('note' = a bill/tab, esp. in a hotel/bar; 'erronée' = mistaken — neutral, doesn't imply fraud)"
         },
         {
           "word": "déduire un plat",
           "en": "to deduct an item",
           "vi": "trừ một món",
           "pos": "v.",
-          "pronunciation_vi": "dé-dwir an pla"
+          "pronunciation_vi": "dé-dwir an pla",
+          "pronunciation_en": "day-DWEER uh(n) PLAH (the action you ask for: 'pourriez-vous déduire ce plat?' = could you take this item off?)"
         },
         {
           "word": "refaire un plat",
           "en": "to remake a dish",
           "vi": "làm lại một món",
           "pos": "v.",
-          "pronunciation_vi": "rơ-fèr an pla"
+          "pronunciation_vi": "rơ-fèr an pla",
+          "pronunciation_en": "ruh-FAIR uh(n) PLAH (to remake a dish from scratch — what you want for a cold/wrong dish, not just a reheat)"
         }
       ],
       "dialogue": [
         {
           "speaker": "Linh",
           "text": "Excusez-moi, ce n'est pas ce que j'avais commandé.",
+          "en": "Excuse me, this isn't what I'd ordered.",
           "vi": "Xin lỗi, đây không phải món em gọi."
         },
         {
           "speaker": "Serveur",
           "text": "Pardon ? Vous aviez pris quoi ?",
+          "en": "Sorry? What had you ordered?",
           "vi": "Xin lỗi? Cô gọi gì?"
         },
         {
           "speaker": "Linh",
           "text": "Le filet de bar — celui-ci est du saumon.",
+          "en": "The sea bass fillet — this one is salmon.",
           "vi": "Cá vược — món này là cá hồi."
         },
         {
           "speaker": "Serveur",
           "text": "Toutes mes excuses, je rapporte en cuisine immédiatement.",
+          "en": "My apologies, I'll take it back to the kitchen immediately.",
           "vi": "Em xin lỗi, em mang lại bếp ngay."
         }
       ],
@@ -12457,91 +12498,109 @@ export const lessons: FrenchLesson[] =           [
         {
           "speaker": "Linh (au moment où le serveur dépose le plat)",
           "text": "Excusez-moi — ce n'est pas ce que j'avais commandé.",
+          "en": "Excuse me — this isn't what I'd ordered. [flagged immediately, before eating]",
           "vi": "Xin lỗi — đây không phải món em gọi."
         },
         {
           "speaker": "Serveur",
           "text": "Ah ? Vous aviez commandé quoi exactement ?",
+          "en": "Oh? What exactly had you ordered?",
           "vi": "À? Cô gọi cụ thể gì?"
         },
         {
           "speaker": "Linh",
           "text": "Le filet de bar grillé avec sauce vierge, accompagné de légumes de saison. Là je vois un saumon avec sauce hollandaise.",
+          "en": "The grilled sea bass fillet with sauce vierge, with seasonal vegetables. Here I see salmon with hollandaise sauce.",
           "vi": "Filet de bar nướng sốt vierge, kèm rau theo mùa. Đây em thấy cá hồi sốt hollandaise."
         },
         {
           "speaker": "Serveur",
           "text": "Pardon Madame, c'est le plat de la dame à la table d'à côté. Confusion en cuisine. Je rapporte celui-ci et je vous fais préparer le bar tout de suite — ça prendra environ 10 minutes.",
+          "en": "My apologies, ma'am, this is the dish for the lady at the next table. A mix-up in the kitchen. I'll take this back and have the sea bass prepared for you right away — it'll take about 10 minutes.",
           "vi": "Xin lỗi cô, đó là món của cô bàn bên. Bếp nhầm. Em mang lại cái này và bảo bếp chuẩn bị cá vược ngay — mất khoảng 10 phút."
         },
         {
           "speaker": "Linh",
           "text": "D'accord, ça me va. Pendant ce temps, mon ami a déjà reçu son plat — pourriez-vous lui dire de commencer sans moi ?",
+          "en": "OK, that works for me. In the meantime, my friend already has his dish — could you tell him to start without me?",
           "vi": "Vâng, được. Trong lúc đó, bạn em đã có món rồi — anh/chị có thể bảo bạn ấy ăn trước không?"
         },
         {
           "speaker": "Serveur",
           "text": "Bien sûr. Je préviens votre ami. Et en compensation pour l'attente, je vous offrirai un verre de vin blanc qui accompagne bien le bar.",
+          "en": "Of course. I'll let your friend know. And to make up for the wait, I'll offer you a glass of white wine that pairs well with the sea bass.",
           "vi": "Tất nhiên. Em báo bạn cô. Và để bù chờ đợi, em mời cô một ly vang trắng đi với cá vược."
         },
         {
           "speaker": "Linh",
           "text": "C'est très aimable, merci beaucoup.",
+          "en": "That's very kind, thank you very much.",
           "vi": "Anh/chị tử tế quá, cảm ơn nhiều."
         },
         {
           "speaker": "Serveur (10 minutes plus tard)",
           "text": "Madame, votre filet de bar — vraiment désolé pour l'attente. Et le verre de vin blanc, comme promis.",
+          "en": "Ma'am, your sea bass fillet — really sorry for the wait. And the glass of white wine, as promised.",
           "vi": "Cô, filet de bar của cô — em thực sự xin lỗi vì chờ. Và ly vang trắng như đã hứa."
         },
         {
           "speaker": "Linh",
           "text": "Ça a l'air parfait. Merci.",
+          "en": "It looks perfect. Thank you.",
           "vi": "Trông rất hoàn hảo. Cảm ơn."
         },
         {
           "speaker": "Serveur (à la fin du repas, en présentant l'addition)",
           "text": "Voici l'addition.",
+          "en": "Here's the bill.",
           "vi": "Đây là hóa đơn."
         },
         {
           "speaker": "Linh (après vérification)",
           "text": "Excusez-moi, je vois un dessert tiramisu sur l'addition — on n'a pas pris de dessert.",
+          "en": "Excuse me, I see a tiramisu dessert on the bill — we didn't have any dessert.",
           "vi": "Xin lỗi, em thấy có món tiramisu trên hóa đơn — bọn em không gọi tráng miệng."
         },
         {
           "speaker": "Serveur",
           "text": "Vous avez raison de vérifier. Donnez-moi un instant — je regarde la commande dans le système.",
+          "en": "You're right to check. Give me a moment — I'll look at the order in the system.",
           "vi": "Cô đúng khi kiểm tra. Cho em một lát — em xem đơn trong hệ thống."
         },
         {
           "speaker": "Serveur (revient)",
           "text": "Effectivement, le tiramisu était pour la table 7, pas la vôtre. C'est ma collègue qui a saisi sur le mauvais ticket. Je le déduis tout de suite. Nouvelle addition.",
+          "en": "Indeed, the tiramisu was for table 7, not yours. My colleague entered it on the wrong ticket. I'll take it off right away. Here's the new bill.",
           "vi": "Đúng vậy, tiramisu là của bàn 7, không phải bàn cô. Đồng nghiệp em nhập sai ticket. Em trừ ngay. Hóa đơn mới."
         },
         {
           "speaker": "Linh",
           "text": "Merci. Je vois aussi que le service est compris ?",
+          "en": "Thank you. I also see service is included?",
           "vi": "Cảm ơn. Em cũng thấy phí dịch vụ đã tính?"
         },
         {
           "speaker": "Serveur",
           "text": "Oui, 15 % service compris. Si vous voulez laisser un pourboire en plus, c'est apprécié, mais pas obligatoire.",
+          "en": "Yes, 15% service included. If you want to leave an extra tip, it's appreciated, but not required.",
           "vi": "Có, 15% phí dịch vụ. Nếu cô muốn để thêm tip, em rất quý, nhưng không bắt buộc."
         },
         {
           "speaker": "Linh",
           "text": "Je laisse 5 euros en plus pour le geste avec le verre de vin et la rapidité de correction de l'addition. C'était très bien géré.",
+          "en": "I'll leave 5 euros extra for the gesture with the glass of wine and how quickly the bill was corrected. It was very well handled.",
           "vi": "Em để thêm 5 euro vì ly vang miễn phí và việc sửa hóa đơn nhanh. Anh/chị xử lý rất tốt."
         },
         {
           "speaker": "Serveur",
           "text": "Merci beaucoup Madame, ça me touche. À très bientôt j'espère.",
+          "en": "Thank you very much, ma'am, that means a lot. I hope to see you again soon.",
           "vi": "Cảm ơn cô rất nhiều, em cảm động. Hẹn sớm gặp lại."
         },
         {
           "speaker": "Linh",
           "text": "Bonne soirée à vous.",
+          "en": "Have a good evening.",
           "vi": "Chúc anh/chị tối tốt lành."
         }
       ],
@@ -12550,30 +12609,44 @@ export const lessons: FrenchLesson[] =           [
         "Hóa đơn 65 EUR cho 2 cốc bia tại quầy bar — đáng ngờ. Yêu cầu chi tiết hóa đơn từng dòng, đối chiếu menu giá; nếu nhân viên không hợp tác, đề xuất gọi quản lý.",
         "Sau khi ăn, dạ dày bạn đau — nghi ngờ thực phẩm. Quay lại nhà hàng ngày sau, không buộc tội mà nói thông báo lịch sự để họ kiểm tra; lưu hóa đơn làm bằng chứng."
       ],
+      "roleplay_prompts_en": [
+        "You ordered your steak 'bien cuit' (well done) but received 'saignant' (rare). Request a remake politely — do NOT send back a piece you've already cut into (you forfeit the right to a free remake); describe the problem clearly and ask for a fully new dish. Note the doneness vocabulary: bleu (very rare) → saignant (rare) → à point (medium) → bien cuit (well done). 'À point' is the French default, not 'medium-rare' as in the US.",
+        "A €65 bill for 2 beers at a bar counter — suspicious. Ask for the itemized bill line by line and compare against the posted price list; if the staff won't cooperate, propose calling the manager ('Pourriez-vous appeler le responsable?'). Stay factual: 'sur le tarif affiché, la bière est à 6 euros — pourriez-vous m'expliquer ce total?' Anglophone calibration: tourist-trap overcharging exists everywhere; the defense is the same — request the itemized breakdown, point to the posted price, stay calm.",
+        "After eating, your stomach is upset — you suspect the food. Return to the restaurant the next day, do NOT accuse — give a polite factual notice so they can check ('Je voulais vous signaler, sans accuser, que j'ai été malade après le repas d'hier'); keep the receipt as evidence. The non-accusatory framing is what keeps them cooperative rather than defensive — same principle in any country."
+      ],
       "register_notes": "Khiếu nại nhà hàng dùng vouvoiement với serveur — kể cả serveur trẻ. Bắt đầu bằng « Excusez-moi » + dừng cho họ chú ý, rồi vào vấn đề. Tránh: gọi serveur « garçon! » (lỗi thời và xúc phạm); búng tay (rất thô lỗ); chỉ trỏ vào món (không lịch sự — chỉ vào menu trong tay đủ). Mô tả vấn đề: cụ thể, không cảm xúc — « C'est froid » thay vì « C'est dégueulasse »; « Ce n'est pas ce que j'avais commandé » thay vì « C'est faux! ». Khi đề nghị giải pháp: « pourriez-vous… » thay vì « il faut que vous… ». Sau khi giải pháp được làm: cảm ơn (« Merci, c'est gentil »), không « it's about time! » kiểu Anh-Mỹ. Nếu serveur không hợp tác: « Pourriez-vous me mettre en contact avec votre responsable ? » — câu lịch sự để escalate. Cuối: nếu hài lòng với cách xử lý, để tip thêm là tín hiệu rõ; nếu không hài lòng, không để tip + viết review online sau. Tránh: chia tay với « cảm ơn » dài dòng quá đậm — gượng; một « Merci, bonne soirée » đủ.",
+      "register_notes_en": "Restaurant complaints use vouvoiement with the server — even a young server. Open with 'Excusez-moi' + a pause for them to attend, then state the issue. Avoid: calling the server 'garçon!' (archaic and insulting — never do this, despite old phrasebooks), snapping your fingers (very rude), or pointing at the dish (impolite — pointing at the menu in your hand is enough). Describe the problem specifically and unemotionally: 'C'est froid' (it's cold), not 'C'est dégueulasse' (it's disgusting — too crude); 'Ce n'est pas ce que j'avais commandé' (this isn't what I ordered), not 'C'est faux!' (that's wrong! — accusatory). Propose the solution with 'pourriez-vous…' rather than 'il faut que vous…' (you must…), which sounds like an order. When the fix is done, thank them ('Merci, c'est gentil') — do NOT do the American 'well, it's about time!' which French staff read as ungracious and which guarantees worse service for the rest of the meal.\n\nIf the server won't cooperate: 'Pourriez-vous me mettre en contact avec votre responsable?' (Could you put me in touch with the manager?) — the polite escalation, with no implied threat. The single biggest register difference from the US: in France, the bill itself is your feedback channel. If you were satisfied with how a problem was handled, an extra tip is a clear positive signal; if you were not, leaving no extra tip (service is already included) plus a calm online review later is the legitimate, expected channel — there is no social obligation to tip a poor experience, unlike in the US where stiffing is read as aggressive. At the end, don't over-thank with an effusive multi-line goodbye (it reads as nervous in French) — one 'Merci, bonne soirée' is the correct register and closes cleanly.",
       "idiom_glosses": [
         {
           "idiom": "Y avoir une erreur",
           "literal": "Có một sai lầm",
+          "literal_en": "There to be a mistake",
           "meaning": "Có lỗi cần sửa.",
+          "meaning_en": "(For there) to be a mistake/error. The neutral, non-accusatory framing — 'il y a une erreur' implies a slip, not fraud; preferred over 'vous vous êtes trompé' (you got it wrong).",
           "example": "Il y a une erreur sur l'addition — un dessert que je n'ai pas pris."
         },
         {
           "idiom": "Faire le service",
           "literal": "Làm dịch vụ",
+          "literal_en": "To do the service",
           "meaning": "Phục vụ khách trong nhà hàng.",
+          "meaning_en": "To wait tables / run the floor service in a restaurant. Note the related but distinct 'le service est compris' = the service charge is included.",
           "example": "Le serveur fait le service avec attention — c'est rare."
         },
         {
           "idiom": "Couper court à",
           "literal": "Cắt ngắn",
+          "literal_en": "To cut short to",
           "meaning": "Kết thúc nhanh điều gì.",
+          "meaning_en": "To cut something short / end it quickly. Anglophone equivalent: 'to cut it short' — useful when an error is obvious and you don't want a long back-and-forth.",
           "example": "J'ai coupé court à la discussion sur le prix — l'erreur était claire."
         },
         {
           "idiom": "Se rattraper sur",
           "literal": "Bù lại trên",
+          "literal_en": "To catch oneself up on",
           "meaning": "Bù đắp lỗi qua hành động khác.",
+          "meaning_en": "To make up for a fault through some other gesture. Anglophone equivalent: 'to make it up to (someone)' — what the restaurant does with the free wine here.",
           "example": "L'équipe s'est rattrapée sur le service — verre offert et addition corrigée."
         }
       ],
@@ -12581,7 +12654,10 @@ export const lessons: FrenchLesson[] =           [
         {
           "type": "fill-blank",
           "question": "J'avais demandé le ___ de bar, et on m'a apporté le saumon.",
-          "answer": "filet"
+          "question_en": "I had ordered the sea bass ___, and they brought me salmon.",
+          "answer": "filet",
+          "hint_vi": "danh từ « phi lê » (miếng cá lọc xương)",
+          "hint_en": "noun 'fillet' — a boneless cut; 'filet de bar' = sea bass fillet (final 't' silent)"
         },
         {
           "type": "matching",
@@ -12599,12 +12675,30 @@ export const lessons: FrenchLesson[] =           [
               "tiền tip"
             ]
           ],
-          "instruction": "Nối thuật ngữ với nghĩa Việt"
+          "pairs_en": [
+            [
+              "l'addition",
+              "the bill/check (false friend — not a math 'addition')"
+            ],
+            [
+              "un service compris",
+              "service charge already included in the price — no US-style 20% expected on top"
+            ],
+            [
+              "un pourboire",
+              "a tip — optional in France (5-10% if pleased), not socially mandatory as in the US"
+            ]
+          ],
+          "instruction": "Nối thuật ngữ với nghĩa Việt",
+          "instruction_en": "Match each French restaurant term with its English explanation."
         },
         {
           "type": "translation",
           "vietnamese": "Trên hóa đơn, em thấy món tráng miệng em không gọi.",
-          "french": "Sur l'addition, je vois un dessert que je n'ai pas pris."
+          "french": "Sur l'addition, je vois un dessert que je n'ai pas pris.",
+          "english": "On the bill, I see a dessert that I didn't have.",
+          "hint_vi": "« sur l'addition » + « que je n'ai pas pris »",
+          "hint_en": "'sur l'addition' = on the bill; 'que je n'ai pas pris' = that I didn't take/have (relative clause with negation)"
         }
       ]
     },
@@ -12622,6 +12716,11 @@ export const lessons: FrenchLesson[] =           [
             "itinéraire → i-ti-né-rèr",
             "plus long → plyu lõ",
             "nécessaire → né-sè-sèr"
+          ],
+          "pronunciation_focus_en": [
+            "itinéraire → ee-tee-nay-RAIR (four syllables; final 'aire' = 'AIR'; means route/itinerary)",
+            "plus long → ploo LO(n) (here the 's' of 'plus' IS pronounced before a vowel-less comparison; 'long' is nasal)",
+            "nécessaire → nay-seh-SAIR (final 'aire' = 'SAIR'; 'plus long que nécessaire' = longer than necessary)"
           ]
         },
         {
@@ -12631,6 +12730,11 @@ export const lessons: FrenchLesson[] =           [
             "compteur → kõn-tơr",
             "affiche → a-fish",
             "élevé → é-lơ-vé"
+          ],
+          "pronunciation_focus_en": [
+            "compteur → ko(n)-TUHR (nasal first; final 'eur' = 'UHR' rounded; 'le compteur' = the meter)",
+            "affiche → ah-FEESH (final 'e' silent; 'affiche' = displays/shows on a screen)",
+            "élevé → ay-luh-VAY ('ça me semble élevé' = that seems high to me — the calm, non-accusatory phrasing)"
           ]
         },
         {
@@ -12641,6 +12745,12 @@ export const lessons: FrenchLesson[] =           [
             "expliquer → èk-spli-ké",
             "tarif de nuit → ta-rif dơ nwi",
             "plein après-midi → plain a-prè mi-di"
+          ],
+          "pronunciation_focus_en": [
+            "pourriez → poor-YAY (conditional 'could you?' — keeps the challenge polite)",
+            "expliquer → ek-splee-KAY (final '-er' = 'KAY'; 'm'expliquer' = explain to me)",
+            "tarif de nuit → tah-REEF duh NWEE ('nuit' = 'nwee'; the night-rate tariff — illegal to apply by day)",
+            "plein après-midi → PLA(n) ah-preh-mee-DEE ('en plein après-midi' = right in the middle of the afternoon)"
           ]
         },
         {
@@ -12650,6 +12760,11 @@ export const lessons: FrenchLesson[] =           [
             "reçu → rơ-su",
             "détaillé → dé-ta-yé",
             "licence → li-sãns"
+          ],
+          "pronunciation_focus_en": [
+            "reçu → ruh-SOO (the 'ç' = 's' sound; the 'u' is rounded; means 'receipt')",
+            "détaillé → day-tah-YAY ('illé' = 'ah-YAY'; means itemized/detailed)",
+            "licence → lee-SAH(n)SS (nasal middle + hissed final 's'; the taxi's official license number — a legal requirement on request)"
           ]
         },
         {
@@ -12659,102 +12774,123 @@ export const lessons: FrenchLesson[] =           [
             "accord → a-kor",
             "contacterai → kõn-tak-tơ-ré",
             "préfecture → pré-fèk-tur"
+          ],
+          "pronunciation_focus_en": [
+            "accord → ah-KOR (final 'd' silent; 'trouver un accord' = to reach an agreement)",
+            "contacterai → ko(n)-tak-tuh-RAY (futur simple ending '-rai' = 'RAY'; 'I will contact')",
+            "préfecture → pray-fek-TOOR (the police prefecture — the real regulatory authority for taxis; naming it is genuine leverage)"
           ]
         }
       ],
       "cultural_notes_vi": "Taxi ở Paris có hai loại: TAXI G7/Bleus (đăng ký chính thức, có biển vàng « TAXI » trên nóc, đồng hồ taximètre) và VTC/Uber (xe sedan đen, app-based). Cả hai đều bị regulated. Sai phạm phổ biến: tài xế làm vòng đường dài hơn (« faire un détour »); áp tarif đêm vào giờ ngày; tính giá fixed mà không bật đồng hồ; từ chối thẻ ngân hàng (luật bắt buộc taxi nhận thẻ trên 10 EUR). Khi gặp: ghi chú số licence (4 chữ số trên ngoài cửa và bên trong), đề nghị tài xế bật taximètre nếu chưa bật, yêu cầu reçu chi tiết. Nếu tranh chấp tại chỗ: thanh toán đúng số đồng hồ hiển thị (không hơn không kém), yêu cầu reçu, sau đó gửi khiếu nại đến: G7/Hailo qua app; Uber qua app + email; taxi tự do qua préfecture de police (paris.gouv.fr → service taxis).\n\nỞ Pháp tỉnh / Quebec / Belgique: tổng đài taxi (Taxis Bleus, Taxi 51, Taxi Bruxelles) thường dễ kiểm soát hơn — gọi tổng đài thay vì vẫy ngoài đường giảm rủi ro. Lyon, Nice có vấn đề tài xế lừa khách quốc tế — sử dụng Uber/Bolt/Heetch app-based an toàn hơn.\n\nKhi không nói tiếng Pháp tốt: tài xế dễ « lợi dụng » bằng cách nói nhanh, viện dẫn « tarif spécial », đẩy hóa đơn lên. Cách phòng: trước khi lên xe, hỏi giá ước tính (« Combien estimez-vous le trajet jusqu'à X ? »); chụp ảnh số licence và đồng hồ ban đầu; mở Google Maps trên điện thoại của bạn theo dõi tuyến đường — tài xế biết họ bị giám sát thì ít chơi gian.",
+      "cultural_notes_en": "Paris has two regulated ride types: official TAXIS (G7/Bleus — registered, a yellow lit 'TAXI' sign on the roof, a working taximètre) and VTC/Uber (black sedans, app-based). The common abuses are predictable: padding the route ('faire un détour'); applying the night tariff during the day; quoting a 'fixed price' instead of running the meter; and refusing card payment (illegal — taxis must accept cards above €10). The defense: note the 4-digit license number (posted on the outside door AND inside), ask the driver to start the taximètre if it isn't running, and request an itemized receipt. If there's a dispute on arrival, pay exactly what the meter shows — not more, not less — get the receipt, then complain afterward via the right channel: G7 through their app; Uber through the app + email; an independent taxi through the préfecture de police (paris.gouv.fr → service taxis).\n\nThis is one of the clearer France-vs-US contrasts. In the US, an Uber price is locked in the app and disputes go through the platform; the 'will the driver scam me' worry barely exists. In France, the random street-hailed or airport-rank taxi is exactly where tourists get overcharged, so the safe move is the opposite of the American instinct to 'just grab a cab': pre-book through a dispatch line or use an app-based ride. In provincial France, Quebec, and Belgium, dispatch lines (Taxis Bleus, Taxi 51, Taxi Bruxelles) are more accountable than a street hail. Lyon and Nice have known tourist-fleecing problems — app-based Uber/Bolt/Heetch is materially safer there.\n\nThe cross-cultural trap that hits Vietnamese and other non-native speakers hardest: a driver who senses weak French will talk fast, invoke a vague 'tarif spécial', and inflate the total — betting you won't push back. The countermeasures are behavioral, not linguistic: before getting in, ask for an estimate ('Combien estimez-vous le trajet jusqu'à X?'); photograph the license number and the meter at the start; and openly run Google Maps on your own phone. A driver who can see you're tracking the route almost never pads it. Visible monitoring does more than any phrase you can say.",
       "tip_advice_vi": "Phòng ngừa: ưu tiên Uber/Bolt thay vì taxi ngẫu nhiên — app theo dõi tuyến, fix giá trước, không tiền mặt cần thiết. Nếu phải dùng taxi: chỉ taxi có đồng hồ taximètre và biển « TAXI »; tránh xe « pirate » (không biển, không đồng hồ — đặc biệt ở sân bay CDG-Orly khi có người tiếp cận « Taxi Madame? » thẳng cửa Arrivals — đó là VTC giả mạo). Trước khi lên xe: hỏi giá ước tính, kiểm tra biển licence rõ ràng. Trong xe: bật Google Maps trên điện thoại theo lộ trình; nếu thấy tài xế đi sai (vòng tay), nhẹ nhàng nói « Excusez-moi, mais Google indique un itinéraire plus court par X — pourriez-vous le prendre ? ». Nếu tài xế từ chối với lý do « embouteillage » — chấp nhận nếu hợp lý, không nếu vô lý. Khi xuống: yêu cầu reçu chi tiết (« reçu détaillé avec numéro de licence et trajet ») — bắt buộc bằng luật. Trả tiền chính xác đồng hồ — KHÔNG « pourboire pour la peine » nếu dịch vụ tệ. Nếu tài xế đe dọa/chửi: rời ngay, đến đồn cảnh sát gần nhất, mang theo reçu/ảnh đã chụp làm bằng chứng.",
+      "tip_advice_en": "Prevention: prefer Uber/Bolt over a random taxi — the app tracks the route, locks the price up front, and removes the cash-handling friction. If you must take a taxi: only one with a working taximètre and a roof 'TAXI' sign; avoid 'pirate' cars (no sign, no meter — especially at CDG/Orly where someone approaches you with 'Taxi Madame?' right at the Arrivals door; that is an illegal unlicensed VTC, never take it — walk to the official taxi rank). Before getting in: ask for an estimate and check the license plate/number is clearly displayed. In the car: run Google Maps on your phone along the route; if the driver goes wrong (padding), say gently 'Excusez-moi, mais Google indique un itinéraire plus court par X — pourriez-vous le prendre?' If the driver refuses citing 'embouteillage' (traffic jam) — accept it if your map confirms congestion, push back if it clearly doesn't. On arrival: request the itemized receipt ('un reçu détaillé avec numéro de licence et trajet') — it's a legal right on request. Pay exactly what the meter shows — do NOT add a 'pourboire pour la peine' (tip for the trouble) if the service was bad; a tip on top of a padded fare just rewards the behavior, and there is zero social obligation to tip a French taxi (unlike a US cab). If the driver becomes threatening or abusive: leave immediately, go to the nearest police station, and bring your receipt and the photos you took as evidence. The anglophone calibration: in the US your instinct is 'dispute it in the app later'; in France, document at the moment (photo of meter + license) because the after-the-fact complaint to the préfecture only works if you have that evidence in hand.",
       "vocabulary": [
         {
           "word": "un taximètre",
           "en": "taxi meter",
           "vi": "đồng hồ taxi",
           "pos": "n.m.",
-          "pronunciation_vi": "tak-si-mè-trơ"
+          "pronunciation_vi": "tak-si-mè-trơ",
+          "pronunciation_en": "tak-see-MEH-truh (final 'tre' = soft 'truh'; insist it's running: 'pourriez-vous démarrer le taximètre?')"
         },
         {
           "word": "un itinéraire",
           "en": "a route",
           "vi": "lộ trình / tuyến đường",
           "pos": "n.m.",
-          "pronunciation_vi": "i-ti-né-rèr"
+          "pronunciation_vi": "i-ti-né-rèr",
+          "pronunciation_en": "ee-tee-nay-RAIR (route/itinerary — broader than English 'itinerary', covers the driving path too)"
         },
         {
           "word": "un détour",
           "en": "a detour",
           "vi": "đường vòng",
           "pos": "n.m.",
-          "pronunciation_vi": "dé-tur"
+          "pronunciation_vi": "dé-tur",
+          "pronunciation_en": "day-TOOR ('faire un détour' = to take a longer way round — the polite word for what a scamming driver does)"
         },
         {
           "word": "un tarif de jour / de nuit",
           "en": "day / night fare",
           "vi": "giá ngày / đêm",
           "pos": "n.m.",
-          "pronunciation_vi": "ta-rif dơ jur / dơ nwi"
+          "pronunciation_vi": "ta-rif dơ jur / dơ nwi",
+          "pronunciation_en": "tah-REEF duh ZHOOR / duh NWEE (Paris meters show tarif A/B/C; night rate by day is a classic illegal overcharge)"
         },
         {
           "word": "un reçu détaillé",
           "en": "itemized receipt",
           "vi": "hóa đơn chi tiết",
           "pos": "n.m.",
-          "pronunciation_vi": "rơ-su dé-ta-yé"
+          "pronunciation_vi": "rơ-su dé-ta-yé",
+          "pronunciation_en": "ruh-SOO day-tah-YAY (an itemized receipt — a legal right on request; insist on it even if they offer only the standard ticket)"
         },
         {
           "word": "une licence taxi",
           "en": "taxi license",
           "vi": "giấy phép taxi",
           "pos": "n.f.",
-          "pronunciation_vi": "li-sãns tak-si"
+          "pronunciation_vi": "li-sãns tak-si",
+          "pronunciation_en": "lee-SAH(n)SS tak-SEE (the official license number — note it down; the préfecture needs it to act on a complaint)"
         },
         {
           "word": "refuser le paiement par carte",
           "en": "to refuse card payment",
           "vi": "từ chối thanh toán thẻ",
           "pos": "v.",
-          "pronunciation_vi": "rơ-fy-zé lơ pé-mã par kart"
+          "pronunciation_vi": "rơ-fy-zé lơ pé-mã par kart",
+          "pronunciation_en": "ruh-foo-ZAY luh pay-MAH(n) par KART (illegal in France above €10 — 'le terminal est en panne' is the usual false excuse)"
         },
         {
           "word": "déposer une réclamation",
           "en": "to file a complaint",
           "vi": "nộp đơn khiếu nại",
           "pos": "v.",
-          "pronunciation_vi": "dé-po-zé yun ré-kla-ma-sion"
+          "pronunciation_vi": "dé-po-zé yun ré-kla-ma-sion",
+          "pronunciation_en": "day-poh-ZAY oon ray-klah-mah-SYO(n) (to file a consumer complaint — to a company/préfecture, not the police 'plainte')"
         },
         {
           "word": "un VTC (Voiture de Tourisme avec Chauffeur)",
           "en": "app-based ride (Uber/Bolt)",
           "vi": "xe Uber/Bolt",
           "pos": "n.m.",
-          "pronunciation_vi": "vé-té-sé"
+          "pronunciation_vi": "vé-té-sé",
+          "pronunciation_en": "VAY-TAY-SAY (spell the three letters; a licensed private-hire car booked via app — legal, unlike a 'pirate' car)"
         },
         {
           "word": "facturer abusivement",
           "en": "to overcharge",
           "vi": "tính phí quá mức",
           "pos": "v.",
-          "pronunciation_vi": "fak-tu-ré a-by-ziv-mã"
+          "pronunciation_vi": "fak-tu-ré a-by-ziv-mã",
+          "pronunciation_en": "fak-too-RAY ah-boo-zeev-MAH(n) (the 'u' rounded; '-ment' nasal; the formal term for abusive overcharging — used in a written complaint)"
         }
       ],
       "dialogue": [
         {
           "speaker": "Linh",
           "text": "Excusez-moi, vous prenez un itinéraire plus long.",
+          "en": "Excuse me, you're taking a longer route.",
           "vi": "Xin lỗi, anh/chị đang đi đường dài hơn."
         },
         {
           "speaker": "Chauffeur",
           "text": "Il y a un embouteillage sur l'autre route.",
+          "en": "There's a traffic jam on the other route.",
           "vi": "Đường kia kẹt xe."
         },
         {
           "speaker": "Linh",
           "text": "Mon Google Maps n'indique aucun embouteillage. Pourriez-vous prendre la rue de Rivoli ?",
+          "en": "My Google Maps shows no traffic jam. Could you take Rue de Rivoli?",
           "vi": "Google Maps không báo kẹt nào. Anh/chị đi đường Rivoli được không?"
         },
         {
           "speaker": "Chauffeur",
           "text": "D'accord, je vais y aller.",
+          "en": "OK, I'll go that way.",
           "vi": "Vâng, em đi đó."
         }
       ],
@@ -12762,116 +12898,139 @@ export const lessons: FrenchLesson[] =           [
         {
           "speaker": "Linh (en montant à Charles-de-Gaulle)",
           "text": "Bonjour, jusqu'à l'hôtel Mercure à Bercy, s'il vous plaît. Combien estimez-vous le trajet ?",
+          "en": "Hello, to the Hôtel Mercure in Bercy, please. How much do you estimate the trip? [asking for an estimate up front — key prevention move]",
           "vi": "Chào, đến khách sạn Mercure ở Bercy. Anh/chị ước tính giá bao nhiêu?"
         },
         {
           "speaker": "Chauffeur",
           "text": "Bonjour. Environ 60 à 75 euros, selon le trafic.",
+          "en": "Hello. About 60 to 75 euros, depending on traffic.",
           "vi": "Chào. Khoảng 60-75 euro, tùy giao thông."
         },
         {
           "speaker": "Linh",
           "text": "D'accord. Vous avez bien un taximètre ?",
+          "en": "OK. You do have a meter, right?",
           "vi": "Vâng. Anh/chị có đồng hồ taxi không?"
         },
         {
           "speaker": "Chauffeur",
           "text": "Oui, je le démarre maintenant.",
+          "en": "Yes, I'm starting it now.",
           "vi": "Có, em bật bây giờ."
         },
         {
           "speaker": "Linh (15 minutes plus tard, en regardant Google Maps sur son téléphone)",
           "text": "Excusez-moi, je vois sur mon application qu'on aurait pu prendre l'A1 puis le périphérique — c'est plus court que ce qu'on fait là.",
+          "en": "(15 minutes later, looking at Google Maps) Excuse me, I see on my app we could have taken the A1 then the ring road — it's shorter than what we're doing here.",
           "vi": "(15 phút sau, nhìn Google Maps) Xin lỗi, em thấy trên app mình có thể đi A1 rồi périphérique — ngắn hơn đường đang đi."
         },
         {
           "speaker": "Chauffeur",
           "text": "Le périphérique est saturé en ce moment.",
+          "en": "The ring road is jammed right now.",
           "vi": "Périphérique đang tắc."
         },
         {
           "speaker": "Linh",
           "text": "Mon application montre fluide à 65 km/h. Et là on est sur l'A86, qui rallonge le trajet de 12 minutes.",
+          "en": "My app shows it flowing at 65 km/h. And right now we're on the A86, which adds 12 minutes to the trip. [citing specific data, not accusing]",
           "vi": "App em hiển thị thông thoáng 65 km/h. Mà mình đang trên A86, kéo dài lộ trình 12 phút."
         },
         {
           "speaker": "Chauffeur",
           "text": "Bon, je reviens sur le périphérique au prochain échangeur.",
+          "en": "Fine, I'll get back on the ring road at the next interchange.",
           "vi": "Ừ, em quay lại périphérique ở lối ra tiếp."
         },
         {
           "speaker": "Linh",
           "text": "Merci. Pourriez-vous aussi me dire pourquoi le compteur affiche le tarif B — c'est le tarif de nuit, mais il est 14 heures ?",
+          "en": "Thank you. Could you also tell me why the meter shows tariff B — that's the night rate, but it's 2 PM?",
           "vi": "Cảm ơn. Anh/chị cũng có thể nói tại sao đồng hồ hiện tarif B — là giá đêm, mà giờ là 14 giờ không?"
         },
         {
           "speaker": "Chauffeur",
           "text": "Tarif B, c'est pour les zones extérieures à Paris — banlieue.",
+          "en": "Tariff B is for the areas outside Paris — the suburbs.",
           "vi": "Tarif B là cho khu vực ngoài Paris — vùng ngoại ô."
         },
         {
           "speaker": "Linh",
           "text": "D'accord, mais on est sur l'A86 maintenant. Pour le retour à Paris intra-muros, ça repasse en tarif A ?",
+          "en": "OK, but we're on the A86 now. When we get back into inner Paris, does it switch back to tariff A?",
           "vi": "Vâng, nhưng giờ mình đang trên A86. Khi vào Paris intra-muros, sẽ chuyển về tarif A chứ?"
         },
         {
           "speaker": "Chauffeur",
           "text": "Oui, automatiquement, dès qu'on franchit le périphérique.",
+          "en": "Yes, automatically, as soon as we cross the ring road.",
           "vi": "Có, tự động, ngay khi qua périphérique."
         },
         {
           "speaker": "Linh (à l'arrivée)",
           "text": "Le compteur affiche 78 euros. Pourriez-vous me donner un reçu détaillé avec le numéro de licence et l'itinéraire ?",
+          "en": "(On arrival) The meter shows 78 euros. Could you give me an itemized receipt with the license number and the route?",
           "vi": "(đến nơi) Đồng hồ hiện 78 euro. Anh/chị cho em hóa đơn chi tiết kèm số phép và lộ trình được không?"
         },
         {
           "speaker": "Chauffeur",
           "text": "Le reçu standard, oui — mais l'itinéraire détaillé n'est pas sur le ticket.",
+          "en": "The standard receipt, yes — but the detailed route isn't on the ticket.",
           "vi": "Hóa đơn chuẩn được — nhưng lộ trình chi tiết không có trên ticket."
         },
         {
           "speaker": "Linh",
           "text": "Je crois que par la loi, vous devez fournir un reçu détaillé incluant trajet et numéro de licence si je le demande.",
+          "en": "I believe that by law, you have to provide an itemized receipt including the route and license number if I request it. [citing the legal right calmly]",
           "vi": "Em nghĩ theo luật, anh/chị phải cung cấp hóa đơn chi tiết kèm lộ trình và số phép nếu em yêu cầu."
         },
         {
           "speaker": "Chauffeur",
           "text": "… D'accord, je vous remplis un papier manuel avec ces infos.",
+          "en": "… Fine, I'll fill out a manual paper for you with that information.",
           "vi": "… Vâng, em viết tay cho cô tờ giấy có thông tin đó."
         },
         {
           "speaker": "Linh",
           "text": "Merci. Sur le tarif — je paie 78 euros par carte, c'est ça ?",
+          "en": "Thank you. On the fare — I pay 78 euros by card, is that right?",
           "vi": "Cảm ơn. Về giá — em trả 78 euro bằng thẻ, đúng không?"
         },
         {
           "speaker": "Chauffeur",
           "text": "Ah, le terminal carte est en panne aujourd'hui.",
+          "en": "Ah, the card terminal is broken today. [the classic false excuse]",
           "vi": "À, máy thẻ hôm nay hỏng."
         },
         {
           "speaker": "Linh",
           "text": "Légalement, vous êtes obligé d'accepter la carte au-delà de 10 euros. Si le terminal est en panne, je peux payer en liquide, mais je voudrais le noter sur le reçu, et je signalerai à la préfecture pour qu'on vérifie l'équipement.",
+          "en": "Legally, you're required to accept card above 10 euros. If the terminal is broken, I can pay cash, but I'd want it noted on the receipt, and I'll report it to the préfecture so the equipment gets checked. [calm, specific, names the authority]",
           "vi": "Theo luật, anh/chị bắt buộc phải nhận thẻ trên 10 euro. Nếu máy hỏng, em trả tiền mặt, nhưng em muốn ghi lên hóa đơn, và em sẽ báo préfecture để kiểm tra thiết bị."
         },
         {
           "speaker": "Chauffeur",
           "text": "Bon, en fait, le terminal marche. Je vais essayer.",
+          "en": "Well, actually, the terminal works. I'll try it. [the excuse evaporates once the rule is cited]",
           "vi": "Thật ra máy hoạt động. Em thử."
         },
         {
           "speaker": "Linh",
           "text": "Très bien, merci. 78 euros par carte. Et je voudrais bien le reçu papier détaillé en plus du ticket électronique.",
+          "en": "Very good, thank you. 78 euros by card. And I would like the detailed paper receipt in addition to the electronic ticket.",
           "vi": "Tốt, cảm ơn. 78 euro bằng thẻ. Và em vẫn muốn giấy hóa đơn chi tiết ngoài ticket điện tử."
         },
         {
           "speaker": "Chauffeur",
           "text": "Voici le ticket électronique et voici le papier manuel. Bonne journée.",
+          "en": "Here's the electronic ticket and here's the manual paper. Have a good day.",
           "vi": "Đây là ticket điện tử và giấy viết tay. Chúc ngày tốt lành."
         },
         {
           "speaker": "Linh",
           "text": "Bonne journée à vous aussi.",
+          "en": "Have a good day to you too.",
           "vi": "Chúc anh/chị ngày tốt lành."
         }
       ],
@@ -12880,30 +13039,44 @@ export const lessons: FrenchLesson[] =           [
         "Tài xế taxi đến khách sạn 5 sao đề nghị bạn « tarif fixe 100 euros au lieu du compteur ». Từ chối lịch sự — yêu cầu compteur bật, hoặc xuống xe và đặt Uber.",
         "Sau chuyến taxi đắt vô lý (60 EUR cho 3 km), bạn về khách sạn. Soạn tiếng Pháp khiếu nại gửi préfecture de police — kèm photo số licence, ảnh đồng hồ, hóa đơn, mô tả lộ trình thực vs lộ trình hợp lý."
       ],
+      "roleplay_prompts_en": [
+        "You order an Uber and the app quotes €22, but in the car you notice the driver's GPS is off — the driver says he'll do it off-app. Insist the driver run the trip in the app — do NOT get in (or get out) if he refuses, and report to Uber. The off-app ride strips you of the price guarantee and the dispute channel; this is the same scam in any country, and the same firm refusal applies.",
+        "A taxi driver at a 5-star hotel offers you a 'tarif fixe 100 euros au lieu du compteur' (a flat €100 instead of the meter). Decline politely — require the meter on ('je préfère au compteur, s'il vous plaît'), or step out and book an Uber. A flat price offered instead of the meter is the single biggest tell of an overcharge; never accept it from a street/rank taxi (note: legitimate fixed airport fares DO exist in Paris and are publicly posted — know the official CDG/Orly flat rates so you can tell real from fake).",
+        "After an unreasonably expensive taxi ride (€60 for 3 km), you're back at the hotel. Draft a French complaint to the préfecture de police — include a photo of the license number, the meter, the receipt, and a description of the actual route vs. the reasonable route. The evidence-first structure is what makes the complaint actionable; a complaint with no license number and no photos goes nowhere, in France or anywhere."
+      ],
       "register_notes": "Tranh chấp taxi: vouvoiement, giọng điềm tĩnh — la lối với tài xế trong xe có thể nguy hiểm (nhất là đêm khuya). Tránh: gọi tài xế « monsieur le chauffeur » (cứng và đặt cấp bậc); chỉ « Monsieur » đủ. Khi nghi ngờ tuyến đường: « Excusez-moi, je vois sur mon application un itinéraire plus court par X — pourriez-vous le prendre ? » — không « tu fais un détour exprès! ». Khi chỉ ra giá sai: « Pourriez-vous m'expliquer pourquoi le tarif B s'applique ? » — câu hỏi mở cho tài xế giải thích, không buộc tội. Khi đến nơi: trả tiền chính xác đồng hồ + yêu cầu reçu — đó là quyền pháp lý. Câu mở khóa: « Légalement, vous êtes obligé de… » — câu này nhắc tài xế biết bạn nắm luật, thường thay đổi thái độ. Tránh: ở lại trong xe để tranh cãi dài (nguy hiểm); xuống xe mà không trả tiền (vi phạm pháp luật); chụp mặt tài xế (xâm phạm quyền riêng tư — chỉ chụp số licence công khai). Sau cuộc gặp: nếu nghiêm trọng, viết khiếu nại trang web préfecture trong 48h kèm bằng chứng — họ điều tra. Uber/Bolt: khiếu nại qua app trong 7 ngày; refund partial khả thi nếu sai tuyến rõ ràng.",
+      "register_notes_en": "Taxi disputes: vouvoiement, calm voice — shouting at a driver while you're in a moving car can be genuinely dangerous (especially late at night). This is the one complaint context where de-escalation isn't just politeness, it's safety; the American instinct to confront hard does not transfer here. Avoid 'monsieur le chauffeur' (stilted and status-marking) — plain 'Monsieur' is enough. When you suspect the route: 'Excusez-moi, je vois sur mon application un itinéraire plus court par X — pourriez-vous le prendre?' — never the accusatory 'tu fais un détour exprès!' (you're padding it on purpose!), which both insults and uses tu at a stranger. When the fare looks wrong: 'Pourriez-vous m'expliquer pourquoi le tarif B s'applique?' — an open question that lets the driver explain, not an accusation. On arrival: pay exactly what the meter shows and request the receipt — that's your legal right, not a favor. The unlock phrase is 'Légalement, vous êtes obligé de…' (Legally, you're required to…) — calmly signaling you know the rules changes driver behavior more reliably than any volume of complaint, because it tells them you're a documented-complaint risk, not just an annoyed tourist.\n\nThings to avoid: staying in the car to argue at length (unsafe — settle and exit, then complain from outside); leaving without paying (that's an offense, even if the fare was padded — pay the meter, dispute after); and photographing the driver's face (a privacy violation — only photograph the publicly displayed license number and the meter, which you are entitled to do). After the incident: if it was serious, file the complaint on the préfecture website within 48 hours with your evidence — they do investigate. For Uber/Bolt, complain through the app within 7 days; a partial refund is realistic if the route padding is clearly visible in the app's own trip log.",
       "idiom_glosses": [
         {
           "idiom": "Faire un détour",
           "literal": "Đi vòng",
+          "literal_en": "To make a detour",
           "meaning": "Đi đường dài hơn cần thiết.",
+          "meaning_en": "To take a longer way round (here: deliberately, to pad the fare). Same word as English 'detour' but in this context implies intentional overcharging.",
           "example": "Le chauffeur a clairement fait un détour de 5 km."
         },
         {
           "idiom": "Mettre la pression",
           "literal": "Đặt áp lực",
+          "literal_en": "To put the pressure",
           "meaning": "Tạo sức ép để đối phương nhượng bộ.",
+          "meaning_en": "To apply pressure to make someone concede. Anglophone equivalent: 'to put the squeeze on' / 'to lean on someone' — note the lesson's point: cite the law WITHOUT 'mettre la pression'.",
           "example": "Sans mettre la pression, j'ai juste cité la loi sur le paiement par carte."
         },
         {
           "idiom": "Voir clair dans le jeu",
           "literal": "Thấy rõ trong trò chơi",
+          "literal_en": "To see clearly into the game",
           "meaning": "Hiểu mưu mẹo của đối phương.",
+          "meaning_en": "To see through someone's game / read their trick. Anglophone equivalent: 'to see through someone' or 'to see what they're up to'.",
           "example": "J'ai vu clair dans son jeu — le terminal n'était pas en panne."
         },
         {
           "idiom": "Faire valoir ses droits",
           "literal": "Làm có giá trị quyền của mình",
+          "literal_en": "To make one's rights count",
           "meaning": "Đòi quyền lợi pháp lý.",
+          "meaning_en": "To assert / enforce one's legal rights — done here calmly by naming the préfecture rather than raising one's voice.",
           "example": "En citant la préfecture, j'ai fait valoir mes droits sans monter le ton."
         }
       ],
@@ -12911,7 +13084,10 @@ export const lessons: FrenchLesson[] =           [
         {
           "type": "fill-blank",
           "question": "Le compteur affiche déjà 35 euros pour 5 ___ — ça me semble élevé.",
-          "answer": "kilomètres"
+          "question_en": "The meter already shows 35 euros for 5 ___ — that seems high to me.",
+          "answer": "kilomètres",
+          "hint_vi": "đơn vị khoảng cách (km), số nhiều",
+          "hint_en": "the distance unit (km) in plural — France uses kilometers, not miles (5 km ≈ 3 mi)"
         },
         {
           "type": "matching",
@@ -12929,12 +13105,30 @@ export const lessons: FrenchLesson[] =           [
               "hóa đơn chi tiết"
             ]
           ],
-          "instruction": "Nối thuật ngữ với nghĩa Việt"
+          "pairs_en": [
+            [
+              "un taximètre",
+              "the taxi meter — insist it's running; a 'flat price' instead is the main overcharge tell"
+            ],
+            [
+              "un détour",
+              "a detour / the longer way round — here implying deliberate fare-padding"
+            ],
+            [
+              "un reçu détaillé",
+              "an itemized receipt — a legal right on request; demand it even if only the standard ticket is offered"
+            ]
+          ],
+          "instruction": "Nối thuật ngữ với nghĩa Việt",
+          "instruction_en": "Match each French taxi-dispute term with its English explanation."
         },
         {
           "type": "translation",
           "vietnamese": "Em muốn hóa đơn chi tiết kèm số phép kinh doanh của taxi.",
-          "french": "Je voudrais un reçu détaillé avec le numéro de licence du taxi."
+          "french": "Je voudrais un reçu détaillé avec le numéro de licence du taxi.",
+          "english": "I would like an itemized receipt with the taxi's license number.",
+          "hint_vi": "« je voudrais » + « reçu détaillé » + « numéro de licence »",
+          "hint_en": "'je voudrais' = I would like (polite conditional); 'reçu détaillé' = itemized receipt; 'numéro de licence' = license number — the prefecture needs this number to act"
         }
       ]
     },
