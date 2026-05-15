@@ -1109,6 +1109,12 @@ export const lessons: FrenchLesson[] = [
           "croire → kroar",
           "décennie → dé-sè-ni",
           "prolongera → pro-lõn-jơ-ra"
+        ],
+        "pronunciation_focus_en": [
+          "porte → 'PORT' — one syllable; final -e silent; same word as English 'port' but with a French throat r",
+          "croire → 'KRWAHR' — 'oi' is 'wah'; throat r; final -e silent",
+          "décennie → 'day-sen-NEE' — double-n is one clean 'n'; final -ie is 'ee'",
+          "prolongera → 'proh-lohn-zhuh-RAH' — future tense ending '-era' is 'uh-RAH'; nasal -on"
         ]
       },
       {
@@ -1119,6 +1125,12 @@ export const lessons: FrenchLesson[] = [
           "conjoncture → kõn-jõnk-tur",
           "disponibles → dis-po-ni-blơ",
           "trancher → trãn-shé"
+        ],
+        "pronunciation_focus_en": [
+          "lieu → 'LYUH' — one syllable; -ieu glides into 'yuh' with rounded lips",
+          "conjoncture → 'kohn-zhohnk-TEWR' — two nasals (on + on); 'ture' ends in 'tewr' with rounded 'u'",
+          "disponibles → 'dees-poh-NEE-bluh' — final -ble is a quick 'bluh', not English 'bull'; plural -s silent",
+          "trancher → 'trahn-SHAY' — nasal -an; 'ch' is 'sh' (never English 'ch'); final -er is 'ay'"
         ]
       },
       {
@@ -1129,6 +1141,12 @@ export const lessons: FrenchLesson[] = [
           "actuel → ak-tu-èl",
           "causal → kô-zal",
           "variables → va-ria-blơ"
+        ],
+        "pronunciation_focus_en": [
+          "saurait → 'soh-RAY' — conditional of 'savoir'; '-rait' is 'ray', t silent; 'au' is 'oh'",
+          "actuel → 'ak-TWEL' — 'tu' glides into 'tw'; final -el is short 'el'. False friend: NOT English 'actual' — it means 'current'",
+          "causal → 'koh-ZAHL' — 'au' is 'oh'; 's' between vowels sounds like 'z'; final -al is short 'al'",
+          "variables → 'vah-RYAH-bluh' — 'ia' glides into 'yah'; final -ble is a quick 'bluh'; plural -s silent"
         ]
       },
       {
@@ -1139,6 +1157,12 @@ export const lessons: FrenchLesson[] = [
           "séduisante → sé-du-i-zãnt",
           "confirmée → kõn-fir-mé",
           "acquise → a-kiz"
+        ],
+        "pronunciation_focus_en": [
+          "interprétation → 'an-tair-pray-tah-SYOHN' — nasal -in; -tion is 'syohn', not English 'shun'",
+          "séduisante → 'say-dwee-ZAHNT' — 'ui' glides into 'wee'; nasal -an before final t; feminine -e makes the -t sounded",
+          "confirmée → 'kohn-feer-MAY' — nasal 'on'; past participle feminine -ée is 'ay'",
+          "acquise → 'ah-KEEZ' — final -se sounds like 'z'; past participle feminine of 'acquérir'"
         ]
       },
       {
@@ -1149,180 +1173,217 @@ export const lessons: FrenchLesson[] = [
           "tentée → tãn-té",
           "avancer → a-vãn-sé",
           "provisoire → pro-vi-zoar"
+        ],
+        "pronunciation_focus_en": [
+          "préjuger → 'pray-zhew-ZHAY' — two soft 'zh' sounds; 'u' is rounded 'ew'; final -er is 'ay'",
+          "tentée → 'tahn-TAY' — nasal -en; past participle feminine -ée is 'ay'",
+          "avancer → 'ah-vahn-SAY' — nasal -an; final -er is 'ay'; the academic verb for 'to advance (an argument)'",
+          "provisoire → 'proh-vee-ZWAHR' — 's' between vowels sounds like 'z'; 'oi' is 'wah'; final -e silent"
         ]
       }
     ],
     "cultural_notes_vi": "HEDGE (« nuancer », « relativiser ») là DẤU HIỆU TINH TẾ NHẤT phân biệt một « doctorant » với một « doctorant brillant ». Trong học thuật Pháp, tự tin quá mạnh = thiếu trưởng thành; rụt rè quá mức = không có lập trường. Khoảng giữa là một nghệ thuật.\n\nVĂN HÓA HỌC THUẬT PHÁP đặt giá trị cao vào « épistémologie de la modestie » — biết rõ giới hạn của hiểu biết của mình. Một câu khẳng định không hedge ở C1 = bị đọc như sách giáo khoa lycée hoặc bài báo phổ thông. Hedge KHÔNG phải dấu hiệu yếu đuối — là dấu hiệu của một nhà nghiên cứu trưởng thành biết rằng mỗi kết quả luôn có điều kiện.\n\nBA LOẠI HEDGE cần phân biệt:\n\n(1) HEDGE NHẬN THỨC LUẬN (épistémique) — về mức độ chắc chắn của hiểu biết:\n- « Il semblerait que… » (= có vẻ như)\n- « Tout porte à croire que… » (= mọi dấu hiệu cho thấy)\n- « Il y a tout lieu de penser que… » (= có cơ sở để tin)\n- « On ne saurait affirmer que… » (= không thể khẳng định)\n\n(2) HEDGE PHẠM VI (de portée) — về giới hạn áp dụng của kết luận:\n- « Dans la mesure où les données le permettent, … » (= trong giới hạn dữ liệu cho phép)\n- « Sous réserve de [điều kiện], … » (= với điều kiện)\n- « Pour l'échantillon considéré, … » (= với mẫu đang xét)\n- « En l'état actuel des connaissances, … » (= trong tình trạng hiểu biết hiện nay)\n\n(3) HEDGE THỜI GIAN (provisoire) — về tính tạm thời của kết luận:\n- « À titre provisoire, … » (= tạm thời)\n- « Sous toutes réserves d'usage, … » (= với mọi sự dè dặt thông thường)\n- « Avant d'être tenu pour acquis, ce point demande à être… » (= trước khi xem là xác lập, điểm này cần)\n\nTẠI SAO QUAN TRỌNG: trong soutenance, hội đồng SẼ tấn công các kết luận không hedge. Nếu bạn đã hedge tốt, bạn đã « tự rào » — phản biện sẽ tập trung vào nội dung, không vào phong cách. Nếu bạn không hedge, bạn mất 5 phút chỉ để xử lý câu hỏi « comment pouvez-vous être si certaine ? ».\n\nNGUY HIỂM CHO NGƯỜI VIỆT: hedge KHÔNG có nghĩa là « không có lập trường ». Một thèse Việt thường viết « có lẽ… cũng có thể… không loại trừ… » — đó là HEDGE QUÁ MỨC, biểu hiện thiếu cam kết. Hedge Pháp = « assertion mesurée » — bạn KHẲNG ĐỊNH một luận điểm, đồng thời giới hạn rõ điều kiện hợp lệ. Hai chuyển động đi cùng nhau, không thay thế nhau.",
+    "cultural_notes_en": "Hedging ('nuancer', 'relativiser') is the SINGLE FINEST SIGNAL distinguishing a 'doctorant' from a 'doctorant brillant' in French academia. Over-confidence is read as immature; over-timidity is read as having no position. The middle voice is an art — and the French expect you to have mastered it by C1.\n\nFRENCH ACADEMIC CULTURE places high value on 'épistémologie de la modestie' — knowing precisely the limits of your own knowledge. A claim without hedging at C1 reads like a high-school textbook or a popular-science magazine, not scholarly research. Hedging is NOT a sign of weakness — it's the marker of a mature researcher who knows that every result has conditions.\n\nTHREE TYPES OF HEDGE worth distinguishing:\n\n(1) EPISTEMIC HEDGE — about the degree of certainty:\n- 'Il semblerait que…' (it would seem that)\n- 'Tout porte à croire que…' (every indication suggests that)\n- 'Il y a tout lieu de penser que…' (there is every reason to think that)\n- 'On ne saurait affirmer que…' (one cannot affirm that)\n\n(2) SCOPE HEDGE — about the limits of where the conclusion applies:\n- 'Dans la mesure où les données le permettent, …' (insofar as the data permit)\n- 'Sous réserve de [condition], …' (subject to [condition])\n- 'Pour l'échantillon considéré, …' (for the sample under consideration)\n- 'En l'état actuel des connaissances, …' (in the current state of knowledge)\n\n(3) TEMPORAL HEDGE — about the provisional nature of the conclusion:\n- 'À titre provisoire, …' (on a provisional basis)\n- 'Sous toutes réserves d'usage, …' (with all customary reservations)\n- 'Avant d'être tenu pour acquis, ce point demande à être…' (before being taken as established, this point requires…)\n\nWHY THIS MATTERS: at a defense, the committee WILL attack any unhedged claim. If you've hedged well, you've 'pre-fenced' the territory — the critique will focus on substance, not style. If you haven't, you'll waste five minutes just managing the question 'comment pouvez-vous être si certaine ?'\n\nA DIFFERENT TRAP FOR ANGLOPHONES: hedging does NOT mean 'having no position'. Anglophone academics from a more empiricist tradition sometimes write 'this might possibly suggest…' which the French read as no commitment at all. French hedge = 'assertion mesurée' — you ASSERT a claim AND simultaneously bound its conditions of validity. Both moves happen together, not in place of each other. State the claim, then state precisely under what conditions it holds.",
     "tip_advice_vi": "Khung 3 cấp HEDGE để dùng đúng tình huống:\n\nCẤP 1 — HEDGE NHẸ (kết luận rất vững, chỉ giảm tone):\n- « De toute évidence, X est lié à Y. » (Hiển nhiên, X liên hệ Y)\n- « Selon toute vraisemblance, … » (Theo tất cả khả năng)\n- « Comme on pouvait s'y attendre, … » (Như có thể dự đoán)\n\nCẤP 2 — HEDGE TRUNG BÌNH (kết luận có cơ sở nhưng cần thêm điều kiện):\n- « Tout porte à croire que X est lié à Y. »\n- « Il y a de bonnes raisons de penser que… »\n- « Les données convergent vers l'hypothèse selon laquelle… »\n\nCẤP 3 — HEDGE MẠNH (kết luận tạm thời, dễ thay đổi):\n- « Il semblerait que… »\n- « On pourrait, sous toutes réserves, avancer que… »\n- « À titre purement exploratoire, je proposerais… »\n\nQUY TẮC CHỌN CẤP: chọn cấp tương ứng với LƯỢNG CHỨNG CỨ bạn có. Cấp 1 cho kết quả replicable nhiều lần; Cấp 3 cho hypothèse exploratoire trên một échantillon nhỏ.\n\nLỖI THƯỜNG GẶP của người Việt:\n\n(1) HEDGE TOÀN BỘ — tất cả các câu đều cấp 3. Đọc là không có cam kết, không có đóng góp.\n\n(2) KHÔNG HEDGE — viết tất cả ở présent indicatif khẳng định. Đọc là sách giáo khoa, không phải nghiên cứu.\n\n(3) HEDGE Ở CHỖ KHÔNG CẦN — ví dụ « il semblerait que cette étude porte sur 80 entretiens » — KHÔNG, bạn BIẾT nó là 80 entretiens. Hedge dành cho diễn giải / khái quát, KHÔNG cho fact mô tả.\n\n(4) KHÔNG HEDGE Ở CHỖ CẦN — viết « cela prouve que… » với 3 entretiens. Một entretien không « prouve » gì cả; tối đa nó « suggère ».\n\nCỤM TINH TẾ ĐẶC BIỆT C1:\n- « Sans m'engager outre mesure, je dirais que… » (không cam kết quá, tôi sẽ nói)\n- « Si l'on me permet une interprétation libre… » (nếu cho phép một diễn giải tự do)\n- « Je serais tentée d'avancer, à titre d'hypothèse, que… » (tôi tạm đề xuất, như một giả thuyết)\n- « Sans trancher la question, … » (không quyết định câu hỏi)\n- « Il convient de rester prudent quant à… » (nên thận trọng về)",
+    "tip_advice_en": "A 3-level framework for matching hedge intensity to the strength of your evidence:\n\nLEVEL 1 — LIGHT HEDGE (conclusion very solid, just toning down):\n- 'De toute évidence, X est lié à Y.' (Obviously, X is linked to Y)\n- 'Selon toute vraisemblance, …' (In all likelihood)\n- 'Comme on pouvait s'y attendre, …' (As one might have expected)\n\nLEVEL 2 — MEDIUM HEDGE (well-grounded conclusion but requires conditions):\n- 'Tout porte à croire que X est lié à Y.'\n- 'Il y a de bonnes raisons de penser que…'\n- 'Les données convergent vers l'hypothèse selon laquelle…'\n\nLEVEL 3 — STRONG HEDGE (provisional conclusion, easily revisable):\n- 'Il semblerait que…'\n- 'On pourrait, sous toutes réserves, avancer que…'\n- 'À titre purement exploratoire, je proposerais…'\n\nSELECTION RULE: match level to the AMOUNT OF EVIDENCE you have. Level 1 for results replicated many times; Level 3 for an exploratory hypothesis on a small sample.\n\nCOMMON ANGLOPHONE ERRORS:\n\n(1) BLANKET HEDGING — every sentence at Level 3. Reads as having no commitment and no contribution.\n\n(2) NO HEDGE — writing everything in the assertive present indicative. Reads as a textbook, not research.\n\n(3) HEDGING WHERE UNNECESSARY — e.g. 'il semblerait que cette étude porte sur 80 entretiens' — NO. You KNOW it's 80 interviews. Hedging belongs on interpretation and generalization, NOT on descriptive facts.\n\n(4) NOT HEDGING WHERE NEEDED — writing 'cela prouve que…' on the back of three interviews. Three interviews 'prove' nothing; at most they 'suggest'.\n\nESPECIALLY POLISHED C1 PHRASES:\n- 'Sans m'engager outre mesure, je dirais que…' (Without committing beyond measure, I would say that…)\n- 'Si l'on me permet une interprétation libre…' (If I'm permitted a free interpretation…)\n- 'Je serais tentée d'avancer, à titre d'hypothèse, que…' (I would be tempted to advance, as a hypothesis, that…)\n- 'Sans trancher la question, …' (Without settling the question)\n- 'Il convient de rester prudent quant à…' (It is fitting to remain cautious regarding…)",
     "vocabulary": [
       {
         "word": "il semblerait que",
         "en": "it would seem that",
         "vi": "có vẻ như",
         "pos": "loc.",
-        "pronunciation_vi": "il sãm-blơ-rè kơ"
+        "pronunciation_vi": "il sãm-blơ-rè kơ",
+        "pronunciation_en": "eel sahn-bluh-RAY kuh — conditional of 'sembler'; one tier softer than 'il semble que' (which takes subjunctive)"
       },
       {
         "word": "tout porte à croire que",
         "en": "every indication suggests that",
         "vi": "mọi dấu hiệu cho thấy",
         "pos": "loc.",
-        "pronunciation_vi": "tu port a kroar kơ"
+        "pronunciation_vi": "tu port a kroar kơ",
+        "pronunciation_en": "too PORT ah KRWAR kuh — final -t in 'tout' silent; throat r in 'porte' and 'croire'; medium-strength epistemic hedge"
       },
       {
         "word": "il y a tout lieu de penser que",
         "en": "there is every reason to think that",
         "vi": "có cơ sở để tin rằng",
         "pos": "loc.",
-        "pronunciation_vi": "il-i-a tu liơ dơ pãn-sé kơ"
+        "pronunciation_vi": "il-i-a tu liơ dơ pãn-sé kơ",
+        "pronunciation_en": "eel-yah too LYUH duh pahn-SAY kuh — 'lieu' is one syllable 'lyuh'; signals strong reason while leaving room for doubt"
       },
       {
         "word": "on ne saurait affirmer que",
         "en": "one cannot affirm that",
         "vi": "không thể khẳng định",
         "pos": "loc.",
-        "pronunciation_vi": "õn nơ sô-rè a-fir-mé kơ"
+        "pronunciation_vi": "õn nơ sô-rè a-fir-mé kơ",
+        "pronunciation_en": "ohn nuh soh-RAY ah-feer-MAY kuh — nasal 'on'; the 'ne … saurait' construction is more elegant than 'on ne peut pas affirmer'"
       },
       {
         "word": "sous réserve de",
         "en": "subject to",
         "vi": "với điều kiện",
         "pos": "prep.",
-        "pronunciation_vi": "su ré-zerv dơ"
+        "pronunciation_vi": "su ré-zerv dơ",
+        "pronunciation_en": "soo ray-ZERV duh — 'ou' is 'oo'; 's' between vowels sounds like 'z'; canonical scope hedge for empirical claims"
       },
       {
         "word": "trancher une question",
         "en": "to settle a question",
         "vi": "giải quyết dứt khoát một vấn đề",
         "pos": "v.",
-        "pronunciation_vi": "trãn-shé un kès-tion"
+        "pronunciation_vi": "trãn-shé un kès-tion",
+        "pronunciation_en": "trahn-SHAY ewn kes-TYOHN — 'ch' is 'sh'; nasal -an; 'trancher' literally 'to slice' — to deliver a decisive ruling"
       },
       {
         "word": "sans préjuger de",
         "en": "without prejudging",
         "vi": "không kết luận trước về",
         "pos": "loc.",
-        "pronunciation_vi": "sã pré-ju-jé dơ"
+        "pronunciation_vi": "sã pré-ju-jé dơ",
+        "pronunciation_en": "sahn pray-zhew-ZHAY duh — nasal -an; two 'zh' sounds (soft 'j' as in 'measure'); a key signal of intellectual humility"
       },
       {
         "word": "à titre provisoire",
         "en": "on a provisional basis",
         "vi": "tạm thời",
         "pos": "loc.",
-        "pronunciation_vi": "a ti-trơ pro-vi-zoar"
+        "pronunciation_vi": "a ti-trơ pro-vi-zoar",
+        "pronunciation_en": "ah TEE-truh proh-vee-ZWAR — temporal hedge; explicitly marks a claim as subject to later revision"
       },
       {
         "word": "en l'état actuel des connaissances",
         "en": "in the current state of knowledge",
         "vi": "trong tình trạng hiểu biết hiện nay",
         "pos": "loc.",
-        "pronunciation_vi": "ã lé-ta ak-tu-èl dé ko-nè-sãns"
+        "pronunciation_vi": "ã lé-ta ak-tu-èl dé ko-nè-sãns",
+        "pronunciation_en": "ahn lay-TAH ak-TWEL day koh-neh-SAHNS — scope hedge bounding a claim to current knowledge; signals that future evidence could revise it"
       },
       {
         "word": "séduisant",
         "en": "appealing (but to be checked)",
         "vi": "hấp dẫn (chưa kết luận)",
         "pos": "adj.",
-        "pronunciation_vi": "sé-du-i-zã"
+        "pronunciation_vi": "sé-du-i-zã",
+        "pronunciation_en": "say-dwee-ZAHN — nasal -an; 'ui' glides to 'wee'; in academic register, calling a theory 'séduisant' politely signals reservation"
       }
     ],
     "dialogue": [
       {
         "speaker": "Pr. Lefèvre",
         "text": "Madame Tran, vous écrivez « cette étude prouve que… ». N'est-ce pas un peu fort ?",
-        "vi": "Cô Trần, cô viết « nghiên cứu này chứng minh rằng… ». Không phải quá mạnh sao?"
+        "vi": "Cô Trần, cô viết « nghiên cứu này chứng minh rằng… ». Không phải quá mạnh sao?",
+        "en": "Ms. Tran, you write 'this study proves that…'. Isn't that a touch strong?"
       },
       {
         "speaker": "Linh",
         "text": "Vous avez raison. Avec quatre-vingts entretiens, je ne « prouve » rien — au mieux je « suggère fortement ».",
-        "vi": "Thầy đúng. Với 80 cuộc phỏng vấn, tôi không « chứng minh » gì — tốt nhất là « gợi ý mạnh »."
+        "vi": "Thầy đúng. Với 80 cuộc phỏng vấn, tôi không « chứng minh » gì — tốt nhất là « gợi ý mạnh ».",
+        "en": "You're right. With eighty interviews, I don't 'prove' anything — at most I 'strongly suggest'."
       },
       {
         "speaker": "Pr. Lefèvre",
         "text": "Bonne reformulation. Et page douze, « il est évident que… » — pareil, à éviter.",
-        "vi": "Diễn đạt lại tốt. Và trang 12, « hiển nhiên rằng… » — cũng vậy, tránh."
+        "vi": "Diễn đạt lại tốt. Và trang 12, « hiển nhiên rằng… » — cũng vậy, tránh.",
+        "en": "Good rephrasing. And page twelve, 'it is obvious that…' — same, avoid it."
       },
       {
         "speaker": "Linh",
         "text": "Je remplace par « tout porte à croire que… ». Plus juste, plus défendable.",
-        "vi": "Tôi thay bằng « mọi dấu hiệu cho thấy… ». Đúng hơn, dễ bảo vệ hơn."
+        "vi": "Tôi thay bằng « mọi dấu hiệu cho thấy… ». Đúng hơn, dễ bảo vệ hơn.",
+        "en": "I'll replace it with 'every indication suggests that…'. More accurate, more defensible."
       }
     ],
     "dialogue_long": [
       {
         "speaker": "Pr. Lefèvre (relecture intermédiaire)",
         "text": "Madame Tran, sur le plan du contenu, votre chapitre 3 tient bien. Mais sur le plan de l'écriture, j'ai relevé quinze formulations trop affirmatives. Je vous montre cinq exemples — vous corrigerez les autres dans le même esprit.",
-        "vi": "Cô Trần, về nội dung, chương 3 của cô đứng vững. Nhưng về cách viết, tôi đã nhặt 15 cách phát biểu quá khẳng định. Tôi cho cô xem 5 ví dụ — cô sửa các cái còn lại theo cùng tinh thần."
+        "vi": "Cô Trần, về nội dung, chương 3 của cô đứng vững. Nhưng về cách viết, tôi đã nhặt 15 cách phát biểu quá khẳng định. Tôi cho cô xem 5 ví dụ — cô sửa các cái còn lại theo cùng tinh thần.",
+        "en": "Ms. Tran, on substance, your chapter 3 holds well. But on writing, I've flagged fifteen formulations that are too assertive. I'll show you five examples — you'll correct the others in the same spirit."
       },
       {
         "speaker": "Linh",
         "text": "D'accord, je note.",
-        "vi": "Vâng, tôi ghi."
+        "vi": "Vâng, tôi ghi.",
+        "en": "Alright, I'm taking notes."
       },
       {
         "speaker": "Pr. Lefèvre",
         "text": "Page 8, vous écrivez « il est clair que les enfants bilingues précoces réussissent mieux à l'école ». Trois mots posent problème: « clair », « précoces », « mieux ». Aucun n'est défendable au sens strict.",
-        "vi": "Trang 8, cô viết « rõ ràng là trẻ song ngữ sớm học tốt hơn ở trường ». Ba từ có vấn đề: « rõ ràng », « sớm », « tốt hơn ». Không từ nào có thể bảo vệ theo nghĩa chặt chẽ."
+        "vi": "Trang 8, cô viết « rõ ràng là trẻ song ngữ sớm học tốt hơn ở trường ». Ba từ có vấn đề: « rõ ràng », « sớm », « tốt hơn ». Không từ nào có thể bảo vệ theo nghĩa chặt chẽ.",
+        "en": "Page 8, you write 'it is clear that early bilingual children do better at school'. Three words are problems: 'clear', 'early', 'better'. None is defensible in a strict sense."
       },
       {
         "speaker": "Linh",
         "text": "« Clair » est une opinion, pas une démonstration. « Précoces » demande une définition de seuil — avant tel âge précis. « Mieux » suppose un comparateur, qu'il faut nommer.",
-        "vi": "« Rõ ràng » là ý kiến, không phải chứng minh. « Sớm » đòi hỏi định nghĩa ngưỡng — trước tuổi cụ thể nào đó. « Tốt hơn » giả định một điểm so sánh, phải gọi tên."
+        "vi": "« Rõ ràng » là ý kiến, không phải chứng minh. « Sớm » đòi hỏi định nghĩa ngưỡng — trước tuổi cụ thể nào đó. « Tốt hơn » giả định một điểm so sánh, phải gọi tên.",
+        "en": "'Clear' is an opinion, not a demonstration. 'Early' requires a threshold definition — before such-and-such specific age. 'Better' assumes a comparator, which must be named."
       },
       {
         "speaker": "Pr. Lefèvre",
         "text": "Exactement. Reformulez maintenant, à voix haute.",
-        "vi": "Chính xác. Cô diễn đạt lại bây giờ, ra tiếng."
+        "vi": "Chính xác. Cô diễn đạt lại bây giờ, ra tiếng.",
+        "en": "Exactly. Reformulate now, out loud."
       },
       {
         "speaker": "Linh",
         "text": "« Tout porte à croire que les enfants exposés à une L2 avant l'âge de sept ans présentent, par rapport à un groupe contrôle monolingue de profil socio-économique comparable, des performances scolaires supérieures sur les variables X et Y. » Plus longue, mais défendable.",
-        "vi": "« Mọi dấu hiệu cho thấy trẻ được tiếp xúc ngôn ngữ thứ hai trước 7 tuổi, so với nhóm đối chứng đơn ngữ cùng hồ sơ kinh tế-xã hội, có thành tích học tập cao hơn trên các biến X và Y. » Dài hơn, nhưng bảo vệ được."
+        "vi": "« Mọi dấu hiệu cho thấy trẻ được tiếp xúc ngôn ngữ thứ hai trước 7 tuổi, so với nhóm đối chứng đơn ngữ cùng hồ sơ kinh tế-xã hội, có thành tích học tập cao hơn trên các biến X và Y. » Dài hơn, nhưng bảo vệ được.",
+        "en": "'Every indication suggests that children exposed to an L2 before age seven show, relative to a monolingual control group of comparable socio-economic profile, superior school performance on variables X and Y.' Longer, but defensible."
       },
       {
         "speaker": "Pr. Lefèvre",
         "text": "Excellent. Deuxième exemple — page 14: « Cette différence prouve l'effet de l'environnement. » Le verbe « prouve » est trop fort, mais aussi: vous parlez d'un « effet » alors que vos données ne permettent qu'une corrélation.",
-        "vi": "Xuất sắc. Ví dụ thứ hai — trang 14: « Sự khác biệt này chứng minh hiệu ứng của môi trường. » Động từ « chứng minh » quá mạnh, mà còn: cô nói về « hiệu ứng » trong khi dữ liệu chỉ cho phép tương quan."
+        "vi": "Xuất sắc. Ví dụ thứ hai — trang 14: « Sự khác biệt này chứng minh hiệu ứng của môi trường. » Động từ « chứng minh » quá mạnh, mà còn: cô nói về « hiệu ứng » trong khi dữ liệu chỉ cho phép tương quan.",
+        "en": "Excellent. Second example — page 14: 'This difference proves the effect of environment.' The verb 'proves' is too strong, and also: you're speaking of an 'effect' while your data only permit a correlation."
       },
       {
         "speaker": "Linh",
         "text": "Je devrais écrire: « Cette différence est compatible avec l'hypothèse d'un effet environnemental — sans que la causalité puisse être strictement démontrée à ce stade. »",
-        "vi": "Tôi nên viết: « Sự khác biệt này tương thích với giả thuyết về một hiệu ứng môi trường — dù tính nhân quả chưa thể được chứng minh chặt chẽ ở giai đoạn này. »"
+        "vi": "Tôi nên viết: « Sự khác biệt này tương thích với giả thuyết về một hiệu ứng môi trường — dù tính nhân quả chưa thể được chứng minh chặt chẽ ở giai đoạn này. »",
+        "en": "I should write: 'This difference is consistent with the hypothesis of an environmental effect — without the causality being strictly demonstrable at this stage.'"
       },
       {
         "speaker": "Pr. Lefèvre",
         "text": "Excellent. Troisième exemple — page 22, vous écrivez: « Cette tendance se prolongera dans les années à venir. » Vous avez quelles données pour le futur ?",
-        "vi": "Xuất sắc. Ví dụ thứ ba — trang 22, cô viết: « Xu hướng này sẽ tiếp tục trong những năm tới. » Cô có dữ liệu nào cho tương lai?"
+        "vi": "Xuất sắc. Ví dụ thứ ba — trang 22, cô viết: « Xu hướng này sẽ tiếp tục trong những năm tới. » Cô có dữ liệu nào cho tương lai?",
+        "en": "Excellent. Third example — page 22, you write: 'This trend will continue in the years to come.' What data do you have for the future?"
       },
       {
         "speaker": "Linh",
         "text": "Aucune, évidemment. C'est une projection. Je dois écrire: « Tout porte à croire — sous réserve de stabilité des paramètres actuels — que cette tendance se prolongera. »",
-        "vi": "Không có, hiển nhiên. Đó là một dự phóng. Tôi phải viết: « Mọi dấu hiệu cho thấy — với điều kiện các tham số hiện tại ổn định — xu hướng này sẽ tiếp tục. »"
+        "vi": "Không có, hiển nhiên. Đó là một dự phóng. Tôi phải viết: « Mọi dấu hiệu cho thấy — với điều kiện các tham số hiện tại ổn định — xu hướng này sẽ tiếp tục. »",
+        "en": "None, obviously. It's a projection. I have to write: 'Every indication suggests — subject to the stability of current parameters — that this trend will continue.'"
       },
       {
         "speaker": "Pr. Lefèvre",
         "text": "Vous voyez la mécanique. Hedge n'est pas faiblesse — c'est précision épistémologique. Vous gagnez en autorité scientifique en disant exactement ce que vous savez et exactement ce que vous ne savez pas. Quatrième exemple — plus subtil. Page 31, vous écrivez « bien entendu, … ». « Bien entendu » présuppose un accord du lecteur avant qu'il ait raisonné. C'est un coup rhétorique, pas un argument.",
-        "vi": "Cô thấy cơ chế. Hedge không phải yếu đuối — là chính xác nhận thức luận. Cô có uy tín khoa học khi nói chính xác điều cô biết và chính xác điều cô không biết. Ví dụ thứ tư — tinh tế hơn. Trang 31, cô viết « hẳn nhiên, … ». « Hẳn nhiên » giả định sự đồng ý của độc giả trước khi họ suy luận. Đó là chiêu tu từ, không phải lập luận."
+        "vi": "Cô thấy cơ chế. Hedge không phải yếu đuối — là chính xác nhận thức luận. Cô có uy tín khoa học khi nói chính xác điều cô biết và chính xác điều cô không biết. Ví dụ thứ tư — tinh tế hơn. Trang 31, cô viết « hẳn nhiên, … ». « Hẳn nhiên » giả định sự đồng ý của độc giả trước khi họ suy luận. Đó là chiêu tu từ, không phải lập luận.",
+        "en": "You see the mechanic. Hedging isn't weakness — it's epistemological precision. You gain scientific authority by saying exactly what you know and exactly what you don't. Fourth example — subtler. Page 31, you write 'of course, …'. 'Of course' presupposes the reader's agreement before they've reasoned. That's a rhetorical trick, not an argument."
       },
       {
         "speaker": "Linh",
         "text": "Je supprime « bien entendu ». Si l'argument tient, il tiendra sans cette béquille. S'il ne tient pas, « bien entendu » ne le sauvera pas — au contraire, il alertera le lecteur attentif.",
-        "vi": "Tôi xóa « hẳn nhiên ». Nếu lập luận vững, nó sẽ vững không cần cây gậy này. Nếu không vững, « hẳn nhiên » không cứu — ngược lại, sẽ cảnh báo độc giả chú ý."
+        "vi": "Tôi xóa « hẳn nhiên ». Nếu lập luận vững, nó sẽ vững không cần cây gậy này. Nếu không vững, « hẳn nhiên » không cứu — ngược lại, sẽ cảnh báo độc giả chú ý.",
+        "en": "I'm cutting 'of course'. If the argument holds, it'll hold without that crutch. If it doesn't, 'of course' won't save it — on the contrary, it'll alert the attentive reader."
       },
       {
         "speaker": "Pr. Lefèvre",
         "text": "Réflexe parfait. Vous avez compris. Cinquième et dernier — page 35, vous concluez: « Ces résultats ouvrent la voie à une nouvelle compréhension du bilinguisme. » C'est promotionnel, pas scientifique.",
-        "vi": "Phản xạ hoàn hảo. Cô đã hiểu. Ví dụ thứ năm và cuối — trang 35, cô kết luận: « Các kết quả này mở đường cho một cách hiểu mới về song ngữ. » Đó là quảng cáo, không phải khoa học."
+        "vi": "Phản xạ hoàn hảo. Cô đã hiểu. Ví dụ thứ năm và cuối — trang 35, cô kết luận: « Các kết quả này mở đường cho một cách hiểu mới về song ngữ. » Đó là quảng cáo, không phải khoa học.",
+        "en": "Perfect reflex. You've understood. Fifth and last — page 35, you conclude: 'These results open the way to a new understanding of bilingualism.' That's promotional, not scientific."
       },
       {
         "speaker": "Linh",
         "text": "Je reformule: « Ces résultats invitent à reconsidérer un présupposé du modèle dominant — sans prétendre, à ce stade, refonder l'ensemble du champ. » Plus modeste, plus juste.",
-        "vi": "Tôi diễn đạt lại: « Các kết quả này mời gọi xem xét lại một tiền đề của mô hình chủ đạo — mà không tham vọng, ở giai đoạn này, tái lập toàn bộ lĩnh vực. » Khiêm tốn hơn, đúng hơn."
+        "vi": "Tôi diễn đạt lại: « Các kết quả này mời gọi xem xét lại một tiền đề của mô hình chủ đạo — mà không tham vọng, ở giai đoạn này, tái lập toàn bộ lĩnh vực. » Khiêm tốn hơn, đúng hơn.",
+        "en": "I'll rephrase: 'These results invite reconsideration of one presupposition of the dominant model — without claiming, at this stage, to refound the field as a whole.' More modest, more accurate."
       },
       {
         "speaker": "Pr. Lefèvre",
         "text": "Voilà — vous avez la mécanique. Reprenez les autres dans le même esprit. Une thèse hedge est une thèse défendable. Ce n'est qu'à ce prix qu'elle devient une contribution réelle.",
-        "vi": "Đó — cô có cơ chế. Cô làm các cái khác theo cùng tinh thần. Một luận án hedge là luận án bảo vệ được. Chỉ với giá đó nó mới trở thành đóng góp thực sự."
+        "vi": "Đó — cô có cơ chế. Cô làm các cái khác theo cùng tinh thần. Một luận án hedge là luận án bảo vệ được. Chỉ với giá đó nó mới trở thành đóng góp thực sự.",
+        "en": "There — you have the mechanic. Redo the others in the same spirit. A hedged thesis is a defensible thesis. Only at that price does it become a real contribution."
       }
     ],
     "roleplay_prompts": [
@@ -1330,30 +1391,44 @@ export const lessons: FrenchLesson[] = [
       "Trong séminaire, bạn được giao bình luận một bài có nhiều câu kiểu « il est évident que… ». Soạn 3 câu phản hồi nhẹ nhàng nêu vấn đề về over-claim, không tấn công cá nhân tác giả.",
       "Bạn đang đồng tác giả một abstract với một colleague Anh-Mỹ thường viết khẳng định mạnh. Cô ấy đề nghị câu « our results demonstrate that ». Đáp với cú pháp Pháp tương đương phù hợp ngữ cảnh: « our results are consistent with the hypothesis that »."
     ],
+    "roleplay_prompts_en": [
+      "You've just received a paper review saying your conclusions 'manque de prudence' (lack caution). Rewrite three of your conclusion sentences — move from hard assertion to a level-matched 'assertion mesurée'. The goal is to keep your contribution intact while precisely bounding the conditions of validity.",
+      "In a seminar, you've been assigned to discuss a paper full of 'il est évident que…' phrases. Draft three soft-pushback comments raising the over-claim issue without attacking the author personally. Use the French academic separation between PERSON and CLAIM.",
+      "You're co-authoring an abstract with an anglophone colleague who tends to write strong assertions. She proposes the sentence 'our results demonstrate that'. Respond with the French-academic-register equivalent appropriate to the context: 'our results are consistent with the hypothesis that' — explain why the swap matters for francophone reviewers."
+    ],
     "register_notes": "BA NHÓM ĐỘNG TỪ HEDGE phân theo cấp:\n\nMẠNH (tone xuống nhẹ):\n- « démontrer » → « établir » (xác lập, hơi nhẹ hơn « chứng minh »)\n- « prouver » → « confirmer » (xác nhận)\n- « affirmer » → « avancer » (đưa ra)\n\nTRUNG BÌNH:\n- « suggérer » (gợi ý)\n- « indiquer » (chỉ ra)\n- « plaider en faveur de » (đứng về phía)\n- « être compatible avec » (tương thích với)\n\nNHẸ (giả thuyết hoá):\n- « laisser entrevoir » (cho thấy thoáng qua)\n- « ouvrir la possibilité de » (mở khả năng)\n- « ne pas exclure » (không loại trừ)\n\nVAI TRÒ CỦA CONDITIONNEL: « il serait possible de », « on pourrait avancer que », « cette interprétation conviendrait à ». Conditionnel tự động giảm cấp confiance một bậc — kỹ thuật hedge tinh tế nhất.\n\nVAI TRÒ CỦA SUBJONCTIF SAU EXPRESSIONS DE DOUTE: « il n'est pas certain que cela soit le cas », « rien ne garantit que cette tendance se prolonge », « je doute que la corrélation tienne dans toutes les sous-populations ». Thiếu subjonctif sau « il n'est pas certain que », « il est douteux que », « rien ne dit que » = đọc B2 không lên C1.\n\nCỤM ĐẶC BIỆT TINH:\n- « Tout en restant prudent, … » (vẫn thận trọng, …)\n- « Sans tomber dans la spéculation, … » (không sa vào suy đoán)\n- « Quitte à pécher par excès de prudence, … » (kể cả phạm lỗi quá thận trọng)\n- « Sans préjuger de ce que des données ultérieures pourraient révéler, … » (không đoán trước điều dữ liệu sau có thể tiết lộ)\n\nNGUYÊN TẮC VÀNG: nếu một câu trong thèse / article có thể phản biện bằng « comment êtes-vous si certain ? » — câu đó cần hedge thêm. Nếu một câu kết luận của bạn vẫn được giữ NGAY CẢ KHI dữ liệu hơi khác đi một chút — câu đó hedge đúng cấp.",
+    "register_notes_en": "THREE TIERS OF HEDGE-CALIBRATED VERBS:\n\nSTRONG (gently toned down):\n- 'démontrer' → 'établir' (to establish, slightly lighter than 'demonstrate')\n- 'prouver' → 'confirmer' (to confirm)\n- 'affirmer' → 'avancer' (to advance — note: NOT English 'to advance' as in progress; means to put forward a claim)\n\nMEDIUM:\n- 'suggérer' (to suggest)\n- 'indiquer' (to indicate)\n- 'plaider en faveur de' (to argue in favor of)\n- 'être compatible avec' (to be consistent with)\n\nLIGHT (hypothesis-mode):\n- 'laisser entrevoir' (to allow a glimpse of)\n- 'ouvrir la possibilité de' (to open the possibility of)\n- 'ne pas exclure' (not to rule out)\n\nROLE OF THE CONDITIONAL: 'il serait possible de', 'on pourrait avancer que', 'cette interprétation conviendrait à'. The conditional automatically tones down your confidence by one tier — the most elegant hedging device in French.\n\nROLE OF THE SUBJUNCTIVE AFTER EXPRESSIONS OF DOUBT: 'il n'est pas certain que cela soit le cas', 'rien ne garantit que cette tendance se prolonge', 'je doute que la corrélation tienne dans toutes les sous-populations'. Missing the subjunctive after 'il n'est pas certain que', 'il est douteux que', 'rien ne dit que' reads as B2, not C1.\n\nESPECIALLY POLISHED PHRASES:\n- 'Tout en restant prudent, …' (While remaining cautious…)\n- 'Sans tomber dans la spéculation, …' (Without falling into speculation…)\n- 'Quitte à pécher par excès de prudence, …' (Even at the risk of erring on the side of caution…)\n- 'Sans préjuger de ce que des données ultérieures pourraient révéler, …' (Without prejudging what subsequent data might reveal…)\n\nGOLDEN RULE: if a sentence in your thesis or paper can be challenged by 'comment êtes-vous si certain ?' (how can you be so certain?), that sentence needs more hedging. If a conclusion sentence holds EVEN IF the data shift a little — that sentence is hedged at the right level.",
     "idiom_glosses": [
       {
         "idiom": "Sous toutes réserves (formel)",
         "literal": "Dưới mọi sự dè dặt",
+        "literal_en": "Under all reservations",
         "meaning": "Với mọi điều kiện thận trọng cần có — đóng câu khiêm tốn.",
+        "meaning_en": "With all due caution — closes a claim with built-in epistemic humility. English equivalent: 'with all caveats' or 'with the usual disclaimers'. Standard in French scholarly writing to soften any estimate that could be later revised.",
         "example": "Cette estimation, sous toutes réserves, situe l'effet à environ 15 %."
       },
       {
         "idiom": "Garder une longueur d'avance (en rest. courant)",
         "literal": "Giữ một độ dài tiến trước",
+        "literal_en": "To keep a length of lead",
         "meaning": "Giữ chỗ cho khả năng sai và sửa lại — phòng xa.",
+        "meaning_en": "To stay one step ahead — used here in the sense of leaving rhetorical room for revision. Originally a horse-racing metaphor (the 'longueur' is a horse-length of advantage). Closest English: 'to leave oneself room to maneuver'.",
         "example": "En sciences, mieux vaut garder une longueur d'avance que d'avoir à se rétracter."
       },
       {
         "idiom": "Avoir bon dos (courant à familier)",
         "literal": "Có lưng tốt",
+        "literal_en": "To have a good back",
         "meaning": "Bị đổ lỗi cho tất cả — không nên hedge bằng cách đổ lên một biến « tiện lợi ».",
+        "meaning_en": "To take the blame for everything — used critically. A variable that 'has good back' is one that researchers conveniently blame for unexplained results. English equivalent: 'a convenient scapegoat'. Use this idiom to push back on lazy hedging that hides behind catch-all explanations like 'culture' or 'context'.",
         "example": "Le contexte « culturel » a bon dos — il faut chercher des explications plus précises."
       },
       {
         "idiom": "Couper la poire en deux (courant)",
         "literal": "Cắt quả lê làm đôi",
+        "literal_en": "To cut the pear in half",
         "meaning": "Tìm trung điểm — hedge bằng cách giữa hai luận điểm cực.",
+        "meaning_en": "To split the difference — find a midpoint between two extreme positions. English equivalent: 'to meet in the middle'. Useful when summarizing a debate where neither side is fully right and the productive hedge is to credit each partially.",
         "example": "La vérité est sans doute à couper la poire en deux entre les positions de A et de B."
       }
     ],
@@ -1361,29 +1436,33 @@ export const lessons: FrenchLesson[] = [
       {
         "type": "fill-blank",
         "question": "Tout ___ à croire que cette tendance se prolongera dans les années à venir.",
-        "answer": "porte"
+        "answer": "porte",
+        "hint_vi": "động từ 'porter' ở présent ngôi 3 số ít — phần của cụm cố định 'tout ___ à croire que' (hedge trung bình)",
+        "hint_en": "verb 'porter' in 3rd person singular present — part of the fixed medium-strength hedge 'tout ___ à croire que' (every indication suggests that)"
       },
       {
         "type": "matching",
         "pairs": [
           [
             "sous réserve de",
-            "với điều kiện"
+            "với điều kiện (subject to / pending)"
           ],
           [
             "à titre provisoire",
-            "tạm thời"
+            "tạm thời (on a provisional basis)"
           ],
           [
             "sans préjuger de",
-            "không kết luận trước về"
+            "không kết luận trước về (without prejudging)"
           ]
         ],
-        "instruction": "Nối cụm hedge với nghĩa Việt"
+        "instruction": "Nối cụm hedge với nghĩa Việt",
+        "instruction_en": "Match the hedging expression with its meaning"
       },
       {
         "type": "translation",
         "vietnamese": "Trong tình trạng hiểu biết hiện nay, ta không thể nói đến một mối liên hệ nhân quả giữa hai biến này.",
+        "english": "In the current state of knowledge, we cannot speak of a causal link between these two variables.",
         "french": "On ne saurait, en l'état actuel des connaissances, parler d'un lien causal entre ces deux variables."
       }
     ]
@@ -1403,6 +1482,12 @@ export const lessons: FrenchLesson[] = [
           "dispositions → dis-po-zi-sion",
           "socialisation → so-sia-li-za-sion",
           "structurent → struk-tur"
+        ],
+        "pronunciation_focus_en": [
+          "entends → 'ahn-TAHN' — nasal -en, then nasal -ent; both 'an' sounds with no audible n",
+          "dispositions → 'dees-poh-zee-SYOHN' — 's' between vowels sounds like 'z'; -tion is 'syohn'",
+          "socialisation → 'soh-syah-lee-zah-SYOHN' — both -tions are 'syohn'; long word with five syllables",
+          "structurent → 'strewk-TUR' — 'u' is rounded 'ew'; final -ent is silent (3rd-person plural verb ending)"
         ]
       },
       {
@@ -1413,6 +1498,12 @@ export const lessons: FrenchLesson[] = [
           "voisine → voa-zin",
           "habitus → a-bi-tus",
           "réduire → ré-dui-rơ"
+        ],
+        "pronunciation_focus_en": [
+          "confondue → 'kohn-fohn-DEW' — two nasals (on + on); past participle feminine; 'u' rounded",
+          "voisine → 'vwa-ZEEN' — 'oi' is 'wah'; 's' between vowels sounds like 'z'; feminine -e makes the -n sounded",
+          "habitus → 'ah-bee-TEWS' — Latin loanword keeps the -s sounded (rare in French); 'u' rounded",
+          "réduire → 'ray-DWEER' — 'ui' glides into 'wee'; final -e silent; throat r"
         ]
       },
       {
@@ -1423,6 +1514,12 @@ export const lessons: FrenchLesson[] = [
           "convergents → kõn-ver-jã",
           "présenterai → pré-zãn-tơ-rè",
           "section → sèk-sion"
+        ],
+        "pronunciation_focus_en": [
+          "opérationnalise → 'oh-pay-rah-syoh-nah-LEEZ' — six syllables; -tion becomes 'syoh' before -naliser",
+          "convergents → 'kohn-vair-ZHAHN' — nasal 'on'; -gent is 'zhahn', t and s silent",
+          "présenterai → 'pray-zahn-tuh-RAY' — future tense '-erai' is 'uh-RAY'; nasal -en mid-word",
+          "section → 'sek-SYOHN' — -tion is 'syohn'; final nasal"
         ]
       },
       {
@@ -1433,6 +1530,12 @@ export const lessons: FrenchLesson[] = [
           "ajustée → a-jus-té",
           "résistances → ré-zis-tãns",
           "opposera → o-po-zơ-ra"
+        ],
+        "pronunciation_focus_en": [
+          "provisoire → 'proh-vee-ZWAR' — 's' between vowels sounds like 'z'; 'oi' is 'wah'; final -e silent",
+          "ajustée → 'ah-zhew-STAY' — 'j' is soft 'zh'; 'u' rounded; past participle feminine -ée is 'ay'",
+          "résistances → 'ray-zee-STAHNS' — two 's' sounds (first 'z', second 's'); nasal -an before final s",
+          "opposera → 'oh-poh-zuh-RAH' — future tense '-era' is 'uh-RAH'; double-p one clean 'p'"
         ]
       },
       {
@@ -1443,170 +1546,205 @@ export const lessons: FrenchLesson[] = [
           "terminologique → tèr-mi-no-lo-jik",
           "préfère → pré-fè-rơ",
           "expliciter → èk-spli-si-té"
+        ],
+        "pronunciation_focus_en": [
+          "strictement → 'streekt-MAHN' — opening -ict cluster sounded; final -ment is nasal 'mahn'",
+          "terminologique → 'tair-mee-noh-loh-ZHEEK' — five syllables; -gique is 'zheek' (soft 'zh' + 'eek')",
+          "préfère → 'pray-FAIR' — second -è with grave opens to 'air'; final -e silent",
+          "expliciter → 'ek-splee-see-TAY' — opening cluster -xpl sounded; final -er is 'ay'"
         ]
       }
     ],
     "cultural_notes_vi": "ĐỊNH NGHĨA MỘT THUẬT NGỮ trong discours académique Pháp KHÔNG PHẢI là sao chép từ điển. Đó là một động tác có ba bước bắt buộc:\n\n(1) ĐỊNH VỊ thuật ngữ trong một trường truyền thống tư tưởng. « Au sens où Bourdieu l'utilise », « dans la lignée de la tradition durkheimienne », « tel que reformulé par les Cultural Studies » — bạn đặt thuật ngữ vào một « école » cụ thể.\n\n(2) DÉLIMITER (giới hạn) thuật ngữ — nói rõ điều gì NẰM NGOÀI định nghĩa của bạn. Thiếu bước này, hội đồng sẽ tấn công bằng « mais alors, X est-il aussi inclus dans votre concept ? » và bạn vỡ trận. Cú pháp Pháp: « ce concept n'inclut pas… », « j'écarte ici… », « il convient de distinguer X de Y ».\n\n(3) OPÉRATIONNALISER — chỉ rõ làm sao đo / nhận biết / xác định trên thực địa. « En pratique, je repère ce phénomène à travers les indicateurs suivants… ». Đây là bước người Việt thường QUÊN — tin rằng định nghĩa lý thuyết là đủ. Học thuật Pháp đòi hỏi: nếu khái niệm không opérationnalisable, nó là spéculation, không phải khoa học.\n\nMỘT VẤN ĐỀ THUẬT NGỮ ĐẶC BIỆT trong văn cảnh Việt-Pháp: nhiều khái niệm tiếng Pháp KHÔNG có tương đương chính xác trong tiếng Việt học thuật. « Habitus », « champ », « rapport de force », « biopouvoir » — bạn KHÔNG dịch sang tiếng Việt khi viết bằng tiếng Pháp; bạn để nguyên và định nghĩa. Khi viết bằng tiếng Việt, bạn để cụm Pháp trong dấu ngoặc cùng định nghĩa Việt: « tâm-thân-tự (habitus) ». Người Việt mới sang Pháp dễ rơi vào hai lỗi: (a) tự dịch khái niệm Pháp sang Việt không chuẩn, làm hội đồng Việt và Pháp đều không hiểu; (b) ngược lại, để toàn bộ thuật ngữ Pháp không định nghĩa, làm độc giả không chuyên không theo được.\n\nVỀ ĐỊNH NGHĨA NEGATIVE: « Par X, je n'entends pas… ». Đây là kỹ thuật C1 quan trọng — bạn loại trừ hiểu lầm trước khi xảy ra. Ví dụ: « Par « identité culturelle », je n'entends pas une essence figée, mais un ensemble de pratiques en constante reconfiguration. » Định nghĩa NEGATIVE chống được 70% câu hỏi soutenance về thuật ngữ.\n\nVỀ ĐỊNH NGHĨA NHIỀU TÁC GIẢ: « Comme l'écrit X, mais avec l'inflexion donnée par Y, et en m'écartant sur ce point précis de la lecture proposée par Z… ». Cú pháp này cho phép bạn thừa nhận influences đồng thời định vị contribution của riêng bạn.",
+    "cultural_notes_en": "DEFINING A TERM in French academic discourse is NOT copying a dictionary entry. It's a three-step ritual:\n\n(1) POSITION the term within an intellectual tradition. 'Au sens où Bourdieu l'utilise', 'dans la lignée de la tradition durkheimienne', 'tel que reformulé par les Cultural Studies' — you locate the term inside a specific 'école' (school of thought).\n\n(2) DELIMIT the term — explicitly state what FALLS OUTSIDE your definition. Skip this step and the committee will pounce with 'mais alors, X est-il aussi inclus dans votre concept ?' and you'll collapse. French syntax: 'ce concept n'inclut pas…', 'j'écarte ici…', 'il convient de distinguer X de Y'.\n\n(3) OPERATIONALIZE — say HOW you measure, identify, or detect the concept in the field. 'En pratique, je repère ce phénomène à travers les indicateurs suivants…'. This is the step anglophone researchers from theoretical traditions often skip — believing the theoretical definition is sufficient. French academia demands: if a concept can't be operationalized, it's speculation, not science.\n\nA TERMINOLOGY PROBLEM SPECIFIC TO ANGLOPHONES: many French concepts have NO precise English equivalent. 'Habitus', 'champ', 'rapport de force', 'biopouvoir' — you do NOT translate these to English when writing in French; you keep them and define them. When writing in English, leave the French term in italics with the English gloss: 'habitus (dispositions and practical know-how)'. Two opposite traps: (a) translating French concepts into English with the closest dictionary word, which often misses the technical meaning entirely; (b) leaving every French term untranslated and undefined, which loses non-specialist readers.\n\nON NEGATIVE DEFINITION: 'Par X, je n'entends pas…'. This is a critical C1 technique — you preempt misreadings BEFORE they happen. Example: 'Par « identité culturelle », je n'entends pas une essence figée, mais un ensemble de pratiques en constante reconfiguration.' A negative definition deflects roughly 70% of defense questions about terminology.\n\nON MULTI-AUTHOR DEFINITION: 'Comme l'écrit X, mais avec l'inflexion donnée par Y, et en m'écartant sur ce point précis de la lecture proposée par Z…'. This syntax lets you acknowledge influences while simultaneously positioning your own specific contribution. Anglophones often default to 'building on X' which is too vague — the French expect you to name both the inheritance and the divergence.",
     "tip_advice_vi": "Khung 5 phần để định nghĩa một thuật ngữ chuyên môn trong thèse / article:\n\n(1) ANNONCE: « Avant d'aller plus avant, il convient de préciser ce que j'entends par X. »\n\n(2) GÉNÉALOGIE NHANH: « Cette notion, introduite par A en année1 puis reformulée par B en année2, recouvre [3 dòng tóm tắt lịch sử thuật ngữ]. »\n\n(3) DÉFINITION POSITIVE: « Au sens où je l'emploie, X désigne [định nghĩa của bạn]. » Một câu duy nhất, càng cô đọng càng tốt.\n\n(4) DÉFINITION NEGATIVE: « X, en revanche, ne recouvre pas [Y, Z, W — các hiểu lầm có thể]. »\n\n(5) OPÉRATIONNALISATION: « En pratique, je repère X à travers [indicateurs concrets]. »\n\nCỤM HỮU ÍCH PHÂN THEO MỤC ĐÍCH:\n\nĐỂ ĐỊNH VỊ TRUYỀN THỐNG:\n- « Au sens bourdieusien… » (theo nghĩa của Bourdieu)\n- « Dans la tradition de l'école de Francfort… » (trong truyền thống trường Frankfurt)\n- « Tel que reformulé par les études postcoloniales… » (như đã được tái diễn đạt bởi nghiên cứu hậu thuộc địa)\n\nĐỂ PHÂN BIỆT CÁC KHÁI NIỆM GẦN KỀ:\n- « Cette notion ne doit pas être confondue avec… » (không nhầm lẫn với)\n- « À distinguer de… » (cần phân biệt với)\n- « Bien que voisine de X, la notion de Y s'en démarque par… » (gần kề X, khái niệm Y khác ở)\n- « Le glissement entre X et Y est fréquent et trompeur. » (sự trượt giữa X và Y phổ biến và đánh lừa)\n\nĐỂ OPÉRATIONNALISER:\n- « Sur le plan opératoire, X se mesure par… » (về mặt thao tác, X đo bằng)\n- « Je retiens trois critères convergents… » (tôi giữ ba tiêu chí hội tụ)\n- « En pratique, je repère X lorsque… » (trong thực tế, tôi nhận ra X khi)\n\nTRÁNH:\n- Định nghĩa lặp ý chính (« le bilinguisme, c'est le fait d'être bilingue »)\n- Định nghĩa quá rộng làm thuật ngữ vô nghĩa\n- Định nghĩa không opérationnalisable trong thèse empirique\n- Sao chép định nghĩa từ điển không kèm bình luận — đọc là không trưởng thành học thuật",
+    "tip_advice_en": "Five-part frame for defining a technical term in a thesis or article:\n\n(1) ANNOUNCEMENT: 'Avant d'aller plus avant, il convient de préciser ce que j'entends par X.' (Before going further, I should specify what I mean by X.)\n\n(2) QUICK GENEALOGY: 'Cette notion, introduite par A en année1 puis reformulée par B en année2, recouvre [3-line summary of the term's history].'\n\n(3) POSITIVE DEFINITION: 'Au sens où je l'emploie, X désigne [your definition].' One single sentence — the more compact, the better.\n\n(4) NEGATIVE DEFINITION: 'X, en revanche, ne recouvre pas [Y, Z, W — possible misreadings].'\n\n(5) OPERATIONALIZATION: 'En pratique, je repère X à travers [concrete indicators].'\n\nUSEFUL PHRASES BY INTENT:\n\nTO POSITION WITHIN A TRADITION:\n- 'Au sens bourdieusien…' (in the Bourdieusian sense)\n- 'Dans la tradition de l'école de Francfort…' (in the Frankfurt School tradition)\n- 'Tel que reformulé par les études postcoloniales…' (as reformulated by postcolonial studies)\n\nTO DISTINGUISH NEIGHBORING CONCEPTS:\n- 'Cette notion ne doit pas être confondue avec…' (not to be conflated with)\n- 'À distinguer de…' (to be distinguished from)\n- 'Bien que voisine de X, la notion de Y s'en démarque par…' (though adjacent to X, the notion of Y differs in…)\n- 'Le glissement entre X et Y est fréquent et trompeur.' (The slippage between X and Y is frequent and misleading)\n\nTO OPERATIONALIZE:\n- 'Sur le plan opératoire, X se mesure par…' (Operationally, X is measured by…)\n- 'Je retiens trois critères convergents…' (I retain three converging criteria…)\n- 'En pratique, je repère X lorsque…' (In practice, I identify X when…)\n\nAVOID:\n- Definitions that just restate the main idea ('le bilinguisme, c'est le fait d'être bilingue')\n- Definitions so broad the term becomes meaningless\n- Non-operationalizable definitions in an empirical thesis\n- Copying a dictionary definition without commentary — reads as academically immature",
     "vocabulary": [
       {
         "word": "par X, j'entends",
         "en": "by X, I mean",
         "vi": "khi tôi nói X, tôi hiểu",
         "pos": "loc.",
-        "pronunciation_vi": "par X jãn-tã"
+        "pronunciation_vi": "par X jãn-tã",
+        "pronunciation_en": "par … zhahn-TAHN — nasal -ent; canonical formula for opening a technical definition"
       },
       {
         "word": "opérationnaliser un concept",
         "en": "to operationalize a concept",
         "vi": "thao tác hóa một khái niệm",
         "pos": "v.",
-        "pronunciation_vi": "o-pé-ra-sio-na-li-zé an kõn-sèpt"
+        "pronunciation_vi": "o-pé-ra-sio-na-li-zé an kõn-sèpt",
+        "pronunciation_en": "oh-pay-rah-syoh-nah-lee-ZAY ehn kohn-SEPT — long verb, stress on final syllable; the bridge from theory to empirical method"
       },
       {
         "word": "délimiter une notion",
         "en": "to delimit a notion",
         "vi": "giới hạn một khái niệm",
         "pos": "v.",
-        "pronunciation_vi": "dé-li-mi-té un no-sion"
+        "pronunciation_vi": "dé-li-mi-té un no-sion",
+        "pronunciation_en": "day-lee-mee-TAY ewn noh-SYOHN — to draw the boundaries of a concept; says what's IN and what's OUT"
       },
       {
         "word": "un indicateur convergent",
         "en": "a converging indicator",
         "vi": "một chỉ báo hội tụ",
         "pos": "n.m.",
-        "pronunciation_vi": "an-di-ka-tơr kõn-ver-jã"
+        "pronunciation_vi": "an-di-ka-tơr kõn-ver-jã",
+        "pronunciation_en": "an-dee-kah-TUR kohn-vair-ZHAHN — when multiple independent indicators point to the same concept, you have convergent validity"
       },
       {
         "word": "un glissement sémantique",
         "en": "a semantic shift",
         "vi": "một sự trượt nghĩa",
         "pos": "n.m.",
-        "pronunciation_vi": "glis-mã sé-mãn-tik"
+        "pronunciation_vi": "glis-mã sé-mãn-tik",
+        "pronunciation_en": "glees-MAHN say-mahn-TEEK — nasal -an in both words; a key C1 term for diagnosing when an author drifts from their initial definition"
       },
       {
         "word": "voisin mais distinct",
         "en": "adjacent but distinct",
         "vi": "gần kề nhưng riêng biệt",
         "pos": "adj.",
-        "pronunciation_vi": "voa-zan mè dis-tankt"
+        "pronunciation_vi": "voa-zan mè dis-tankt",
+        "pronunciation_en": "vwa-ZAN meh dees-TANKT — 'oi' is 'wah'; key C1 phrase for naming concept-pairs that are easily confused"
       },
       {
         "word": "sur le plan opératoire",
         "en": "at the operational level",
         "vi": "về mặt thao tác",
         "pos": "loc.",
-        "pronunciation_vi": "sur lơ plã o-pé-ra-toar"
+        "pronunciation_vi": "sur lơ plã o-pé-ra-toar",
+        "pronunciation_en": "sewr luh PLAHN oh-pay-rah-TWAR — 'sur' rounded 'u'; nasal -an in 'plan'; signals the transition from theory to method"
       },
       {
         "word": "acception",
         "en": "sense / accepted meaning",
         "vi": "nghĩa được chấp nhận",
         "pos": "n.f.",
-        "pronunciation_vi": "ak-sèp-sion"
+        "pronunciation_vi": "ak-sèp-sion",
+        "pronunciation_en": "ak-sep-SYOHN — false friend: NOT English 'acceptance'! Means the accepted meaning or technical sense of a term"
       },
       {
         "word": "recouvrir une réalité",
         "en": "to cover a reality",
         "vi": "bao trùm một thực tế",
         "pos": "v.",
-        "pronunciation_vi": "rơ-ku-vrir un ré-a-li-té"
+        "pronunciation_vi": "rơ-ku-vrir un ré-a-li-té",
+        "pronunciation_en": "ruh-koo-VREER ewn ray-ah-lee-TAY — what a concept refers to in the world; 'le terme X recouvre Y' = 'the term X covers Y'"
       },
       {
         "word": "un terme polysémique",
         "en": "a polysemous term",
         "vi": "một thuật ngữ đa nghĩa",
         "pos": "n.m.",
-        "pronunciation_vi": "tèrm po-li-sé-mik"
+        "pronunciation_vi": "tèrm po-li-sé-mik",
+        "pronunciation_en": "TAIRM poh-lee-say-MEEK — a word with multiple accepted meanings; flagging a term as polysémique is the first step to defining your specific use"
       }
     ],
     "dialogue": [
       {
         "speaker": "Pr. Mercier",
         "text": "Madame Tran, vous utilisez le mot « identité » trente-quatre fois sans jamais le définir. C'est un problème.",
-        "vi": "Cô Trần, cô dùng từ « bản sắc » 34 lần mà không bao giờ định nghĩa. Đó là một vấn đề."
+        "vi": "Cô Trần, cô dùng từ « bản sắc » 34 lần mà không bao giờ định nghĩa. Đó là một vấn đề.",
+        "en": "Ms. Tran, you use the word 'identity' thirty-four times without ever defining it. That's a problem."
       },
       {
         "speaker": "Linh",
         "text": "Vous avez raison. « Identité » est un terme polysémique — sans définition, le lecteur ne sait pas ce que je vise.",
-        "vi": "Thầy đúng. « Bản sắc » là thuật ngữ đa nghĩa — không có định nghĩa, độc giả không biết tôi nhắm gì."
+        "vi": "Thầy đúng. « Bản sắc » là thuật ngữ đa nghĩa — không có định nghĩa, độc giả không biết tôi nhắm gì.",
+        "en": "You're right. 'Identity' is a polysemous term — without a definition, the reader can't tell what I'm getting at."
       },
       {
         "speaker": "Pr. Mercier",
         "text": "Précisez votre acception en cinq lignes maximum, dès l'introduction.",
-        "vi": "Cô làm rõ nghĩa cô dùng trong tối đa 5 dòng, ngay phần dẫn nhập."
+        "vi": "Cô làm rõ nghĩa cô dùng trong tối đa 5 dòng, ngay phần dẫn nhập.",
+        "en": "Specify your accepted sense in five lines maximum, from the introduction onwards."
       },
       {
         "speaker": "Linh",
         "text": "D'accord. Je délimite par rapport à Hall, j'écarte la lecture essentialiste, et j'opérationnalise par trois marqueurs.",
-        "vi": "Vâng. Tôi giới hạn so với Hall, tôi loại trừ cách đọc duy bản chất, và tôi thao tác hóa qua ba dấu hiệu."
+        "vi": "Vâng. Tôi giới hạn so với Hall, tôi loại trừ cách đọc duy bản chất, và tôi thao tác hóa qua ba dấu hiệu.",
+        "en": "Alright. I'll delimit relative to Hall, rule out the essentialist reading, and operationalize via three markers."
       }
     ],
     "dialogue_long": [
       {
         "speaker": "Pr. Mercier (conseil de relecture, M2)",
         "text": "Madame Tran, votre chapitre 1 a un problème central: vous parlez d'« intégration » sans jamais définir le mot. Et « intégration » est un des mots les plus polémiques de la sociologie française.",
-        "vi": "Cô Trần, chương 1 có một vấn đề trung tâm: cô nói về « hội nhập » mà không bao giờ định nghĩa. Và « hội nhập » là một trong các từ gây tranh cãi nhất của xã hội học Pháp."
+        "vi": "Cô Trần, chương 1 có một vấn đề trung tâm: cô nói về « hội nhập » mà không bao giờ định nghĩa. Và « hội nhập » là một trong các từ gây tranh cãi nhất của xã hội học Pháp.",
+        "en": "Ms. Tran, your chapter 1 has a central problem: you speak of 'intégration' without ever defining the word. And 'intégration' is one of the most polemical words in French sociology."
       },
       {
         "speaker": "Linh",
         "text": "Je suis consciente que le terme est chargé. Comment voudriez-vous que je le traite ?",
-        "vi": "Tôi ý thức rằng thuật ngữ này nặng nề. Thầy muốn tôi xử lý thế nào?"
+        "vi": "Tôi ý thức rằng thuật ngữ này nặng nề. Thầy muốn tôi xử lý thế nào?",
+        "en": "I'm aware the term is loaded. How would you want me to handle it?"
       },
       {
         "speaker": "Pr. Mercier",
         "text": "Sept étapes. Première: nommez la difficulté — dites au lecteur que le terme est polémique, et qu'une définition de travail est nécessaire. Deuxième: faites une généalogie de cinq lignes — Schnapper, Sayad, Tribalat, qui dit quoi.",
-        "vi": "Bảy bước. Thứ nhất: nêu khó khăn — nói với độc giả rằng thuật ngữ gây tranh cãi, và cần một định nghĩa công việc. Thứ hai: làm phả hệ 5 dòng — Schnapper, Sayad, Tribalat, ai nói gì."
+        "vi": "Bảy bước. Thứ nhất: nêu khó khăn — nói với độc giả rằng thuật ngữ gây tranh cãi, và cần một định nghĩa công việc. Thứ hai: làm phả hệ 5 dòng — Schnapper, Sayad, Tribalat, ai nói gì.",
+        "en": "Seven steps. First: name the difficulty — tell the reader the term is polemical, and that a working definition is necessary. Second: write a five-line genealogy — Schnapper, Sayad, Tribalat, who says what."
       },
       {
         "speaker": "Linh",
         "text": "D'accord. Je connais Sayad — sa critique de l'illusion de l'« intégration réussie » comme oubli de la migration. Je peux la résumer.",
-        "vi": "Vâng. Tôi biết Sayad — phê bình của ông về ảo tưởng « hội nhập thành công » như sự quên đi di cư. Tôi có thể tóm tắt."
+        "vi": "Vâng. Tôi biết Sayad — phê bình của ông về ảo tưởng « hội nhập thành công » như sự quên đi di cư. Tôi có thể tóm tắt.",
+        "en": "Alright. I know Sayad — his critique of the illusion of 'successful integration' as a forgetting of migration. I can summarize it."
       },
       {
         "speaker": "Pr. Mercier",
         "text": "Bien. Troisième: positionnez-vous explicitement. Suivez-vous Sayad, Schnapper, ou tracez-vous une troisième voie ? Quatrième: donnez votre définition positive en une phrase — « par intégration, j'entends X ».",
-        "vi": "Tốt. Thứ ba: định vị rõ ràng. Cô theo Sayad, Schnapper, hay vẽ con đường thứ ba? Thứ tư: cho định nghĩa tích cực trong một câu — « khi tôi nói hội nhập, tôi hiểu X »."
+        "vi": "Tốt. Thứ ba: định vị rõ ràng. Cô theo Sayad, Schnapper, hay vẽ con đường thứ ba? Thứ tư: cho định nghĩa tích cực trong một câu — « khi tôi nói hội nhập, tôi hiểu X ».",
+        "en": "Good. Third: position yourself explicitly. Do you follow Sayad, Schnapper, or trace a third path? Fourth: give your positive definition in a single sentence — 'by integration, I mean X'."
       },
       {
         "speaker": "Linh",
         "text": "Ma définition de travail: par intégration, j'entends le processus relationnel — et non l'état accompli — par lequel un individu issu de la migration construit, dans la durée, des liens de réciprocité avec son environnement social d'arrivée. C'est dans la lignée de Sayad, mais avec une inflexion vers la sociologie des liens.",
-        "vi": "Định nghĩa công việc của tôi: khi tôi nói hội nhập, tôi hiểu là quá trình quan hệ — không phải trạng thái hoàn thành — qua đó một cá nhân di cư xây dựng, theo thời gian, các liên kết tương hỗ với môi trường xã hội tiếp nhận. Trong mạch nối tiếp Sayad, nhưng với một xu hướng nghiêng về xã hội học liên kết."
+        "vi": "Định nghĩa công việc của tôi: khi tôi nói hội nhập, tôi hiểu là quá trình quan hệ — không phải trạng thái hoàn thành — qua đó một cá nhân di cư xây dựng, theo thời gian, các liên kết tương hỗ với môi trường xã hội tiếp nhận. Trong mạch nối tiếp Sayad, nhưng với một xu hướng nghiêng về xã hội học liên kết.",
+        "en": "My working definition: by integration, I mean the relational process — and not the accomplished state — through which a person of migrant background builds, over time, ties of reciprocity with their host social environment. In the wake of Sayad, but with an inflection toward the sociology of social ties."
       },
       {
         "speaker": "Pr. Mercier",
         "text": "Très bien — phrase dense, défendable. Cinquième étape: la définition NEGATIVE. Qu'est-ce que vous EXCLUEZ explicitement ?",
-        "vi": "Rất tốt — câu dày đặc, bảo vệ được. Bước thứ năm: định nghĩa NEGATIVE. Cô loại trừ rõ ràng điều gì?"
+        "vi": "Rất tốt — câu dày đặc, bảo vệ được. Bước thứ năm: định nghĩa NEGATIVE. Cô loại trừ rõ ràng điều gì?",
+        "en": "Very good — dense sentence, defensible. Fifth step: the NEGATIVE definition. What do you EXPLICITLY exclude?"
       },
       {
         "speaker": "Linh",
         "text": "J'exclus trois lectures dominantes: l'intégration comme assimilation (perte d'identité d'origine), comme adaptation économique seule (inscription sur le marché du travail), et comme variable individuelle déconnectée du contexte d'accueil. Trois exclusions explicites évitent les malentendus les plus fréquents.",
-        "vi": "Tôi loại trừ ba cách đọc chủ đạo: hội nhập như đồng hóa (mất bản sắc gốc), như chỉ thích nghi kinh tế (ghi danh trên thị trường lao động), và như biến cá nhân tách khỏi bối cảnh tiếp nhận. Ba loại trừ rõ ràng tránh được hiểu lầm thường gặp nhất."
+        "vi": "Tôi loại trừ ba cách đọc chủ đạo: hội nhập như đồng hóa (mất bản sắc gốc), như chỉ thích nghi kinh tế (ghi danh trên thị trường lao động), và như biến cá nhân tách khỏi bối cảnh tiếp nhận. Ba loại trừ rõ ràng tránh được hiểu lầm thường gặp nhất.",
+        "en": "I exclude three dominant readings: integration as assimilation (loss of original identity), as economic adaptation alone (entry into the labor market), and as an individual variable disconnected from the host context. Three explicit exclusions prevent the most frequent misunderstandings."
       },
       {
         "speaker": "Pr. Mercier",
         "text": "Excellent. Sixième: opérationnalisez. Comment, dans vos entretiens, repérez-vous ce que vous appelez « intégration » ?",
-        "vi": "Xuất sắc. Thứ sáu: thao tác hóa. Trong các cuộc phỏng vấn, cô nhận ra điều cô gọi là « hội nhập » thế nào?"
+        "vi": "Xuất sắc. Thứ sáu: thao tác hóa. Trong các cuộc phỏng vấn, cô nhận ra điều cô gọi là « hội nhập » thế nào?",
+        "en": "Excellent. Sixth: operationalize. In your interviews, how do you identify what you call 'integration'?"
       },
       {
         "speaker": "Linh",
         "text": "Trois indicateurs convergents: la densité du réseau social hors-communauté d'origine, la capacité de naviguer entre codes culturels selon contexte, et l'investissement subjectif dans des projets ancrés dans le pays d'arrivée. Si les trois sont présents, je parle d'un processus d'intégration en cours — sans préjuger de son issue.",
-        "vi": "Ba chỉ báo hội tụ: mật độ mạng xã hội ngoài cộng đồng gốc, khả năng di chuyển giữa các mã văn hóa theo ngữ cảnh, và đầu tư chủ quan vào các dự án bám rễ ở nước tiếp nhận. Nếu cả ba đều có, tôi nói đến một quá trình hội nhập đang diễn ra — không kết luận trước về kết cục."
+        "vi": "Ba chỉ báo hội tụ: mật độ mạng xã hội ngoài cộng đồng gốc, khả năng di chuyển giữa các mã văn hóa theo ngữ cảnh, và đầu tư chủ quan vào các dự án bám rễ ở nước tiếp nhận. Nếu cả ba đều có, tôi nói đến một quá trình hội nhập đang diễn ra — không kết luận trước về kết cục.",
+        "en": "Three converging indicators: the density of the social network outside the community of origin, the ability to navigate between cultural codes according to context, and subjective investment in projects anchored in the host country. If all three are present, I speak of an integration process underway — without prejudging its outcome."
       },
       {
         "speaker": "Pr. Mercier",
         "text": "Septième et dernière étape — la plus difficile. Reconnaissez les limites de votre propre définition. Aucune définition n'est neutre; aucune n'épuise le réel. Quelle est la vôtre ?",
-        "vi": "Bước thứ bảy và cuối — khó nhất. Thừa nhận giới hạn của định nghĩa của chính cô. Không định nghĩa nào trung lập; không định nghĩa nào vắt kiệt thực tế. Của cô là gì?"
+        "vi": "Bước thứ bảy và cuối — khó nhất. Thừa nhận giới hạn của định nghĩa của chính cô. Không định nghĩa nào trung lập; không định nghĩa nào vắt kiệt thực tế. Của cô là gì?",
+        "en": "Seventh and final step — the hardest. Acknowledge the limits of your own definition. No definition is neutral; none exhausts the real. What's yours?"
       },
       {
         "speaker": "Linh",
         "text": "Ma définition privilégie le processus relationnel et néglige peut-être la dimension institutionnelle (accès au logement, à l'école, aux droits). Si la dimension relationnelle est, à mon sens, la plus négligée par la littérature dominante, je reconnais qu'elle ne couvre pas tout. Un travail complémentaire, davantage centré sur les institutions, serait nécessaire pour saisir le phénomène dans sa totalité.",
-        "vi": "Định nghĩa của tôi ưu tiên quá trình quan hệ và có lẽ bỏ qua chiều kích thể chế (tiếp cận nhà ở, trường học, quyền). Nếu chiều kích quan hệ, theo tôi, là cái bị tài liệu chủ đạo bỏ qua nhất, tôi thừa nhận nó không bao gồm tất cả. Một công trình bổ sung, tập trung hơn vào thể chế, sẽ cần thiết để nắm bắt hiện tượng trong toàn diện."
+        "vi": "Định nghĩa của tôi ưu tiên quá trình quan hệ và có lẽ bỏ qua chiều kích thể chế (tiếp cận nhà ở, trường học, quyền). Nếu chiều kích quan hệ, theo tôi, là cái bị tài liệu chủ đạo bỏ qua nhất, tôi thừa nhận nó không bao gồm tất cả. Một công trình bổ sung, tập trung hơn vào thể chế, sẽ cần thiết để nắm bắt hiện tượng trong toàn diện.",
+        "en": "My definition privileges the relational process and perhaps neglects the institutional dimension (access to housing, schools, rights). While the relational dimension is, in my view, the one most neglected by mainstream literature, I acknowledge that it doesn't cover everything. A complementary study, more centered on institutions, would be necessary to grasp the phenomenon in its totality."
       },
       {
         "speaker": "Pr. Mercier",
         "text": "Voilà — cette honnêteté épistémologique vous protégera contre 80 % des objections. Reformulez le tout en deux pages au début du chapitre. Le reste du travail s'appuiera sur cette base solide.",
-        "vi": "Đó — sự trung thực nhận thức luận này sẽ bảo vệ cô trước 80 % phản biện. Cô diễn đạt lại tất cả trong 2 trang ở đầu chương. Phần còn lại của công trình sẽ dựa trên nền tảng vững này."
+        "vi": "Đó — sự trung thực nhận thức luận này sẽ bảo vệ cô trước 80 % phản biện. Cô diễn đạt lại tất cả trong 2 trang ở đầu chương. Phần còn lại của công trình sẽ dựa trên nền tảng vững này.",
+        "en": "There — this epistemological honesty will protect you against 80% of objections. Rewrite the whole thing in two pages at the start of the chapter. The rest of the work will rest on this solid foundation."
       }
     ],
     "roleplay_prompts": [
@@ -1614,30 +1752,44 @@ export const lessons: FrenchLesson[] = [
       "Trong soutenance, một membre du jury hỏi: « Vous utilisez « hybridité » sans la définir. Que voulez-vous dire exactement ? » Đáp lại trong 90 giây — lùi về Bhabha, định vị bạn so với ông, opérationnaliser cụ thể.",
       "Bạn đồng tác giả với một chercheur Pháp một bài báo về « précarité ». Cô ấy dùng định nghĩa kinh tế thuần túy; bạn muốn thêm chiều kích chủ quan. Soạn 3 câu để đề xuất tinh chỉnh định nghĩa chung mà không xóa contribution của cô ấy."
     ],
+    "roleplay_prompts_en": [
+      "You're writing the introduction to a chapter on 'identité culturelle' (cultural identity). Draft a 5-part paragraph (annonce / généalogie / positive def / negative def / operationalization) in roughly 200 words. Make every step explicit even if it feels formulaic — French committees grade against that exact structure.",
+      "In a defense, a committee member asks: 'Vous utilisez « hybridité » sans la définir. Que voulez-vous dire exactement ?' Respond in 90 seconds — anchor to Bhabha, position yourself relative to him, and operationalize concretely. Refuse the temptation to hedge endlessly; commit to a definition AND name what it doesn't cover.",
+      "You're co-authoring with a French researcher on a paper about 'précarité'. She uses a purely economic definition; you want to add the subjective dimension. Draft 3 sentences proposing a refinement of the shared definition without erasing her contribution. Use the 'dans la lignée de … mais avec une inflexion vers …' construction."
+    ],
     "register_notes": "BA NHÓM ĐỘNG TỪ ĐỂ ĐỊNH NGHĨA, theo cấp formal:\n\nFORMEL (thèse, article):\n- « Au sens où je l'emploie » (theo nghĩa tôi dùng)\n- « Tel que je le conçois » (như tôi quan niệm)\n- « Dans l'acception qui sera la mienne » (theo nghĩa tôi sẽ dùng)\n- « Par X, j'entends » (khi tôi nói X, tôi hiểu)\n\nNEUTRE (rapport, mémoire):\n- « X désigne » (X chỉ)\n- « X correspond à » (X tương ứng với)\n- « X recouvre » (X bao trùm)\n\nCOURANT (oral, présentation):\n- « X, c'est en gros… » (X về cơ bản là…) — TRÁNH ở thèse\n- « Quand on dit X… » — TRÁNH ở thèse\n\nCẤU TRÚC ĐỊNH NGHĨA NEGATIVE:\n- « X ne recouvre pas Y. » (X không bao trùm Y)\n- « X ne doit pas être confondue avec Y. » (không nhầm với Y)\n- « Il ne s'agit pas de Y, mais de Z. » (không phải Y, mà là Z)\n- « J'écarte ici l'acception courante de X comme… » (tôi loại trừ nghĩa thông dụng của X là)\n\nCẤU TRÚC OPÉRATIONNALISATION:\n- « En pratique, X se manifeste par… » (trong thực tế, X biểu hiện qua)\n- « Je repère X à travers les indicateurs suivants… » (tôi nhận ra X qua các chỉ báo)\n- « X est mesuré ici par… » (X đo ở đây bằng)\n- « Sur le plan empirique, X correspond à… » (về mặt thực nghiệm, X tương ứng với)\n\nCỤM TINH C1:\n- « Sans entrer ici dans le débat sur X, j'en retiens l'acception minimale suivante… » (không đi vào tranh luận về X, tôi giữ nghĩa tối thiểu sau)\n- « Sur le plan strictement terminologique, je préfère X à Y. » (về thuật ngữ thuần túy, tôi thích X hơn Y)\n- « Le glissement entre X et Y, fréquent dans la littérature, mérite ici d'être interrompu. » (sự trượt giữa X và Y, thường gặp trong tài liệu, ở đây xứng đáng được dừng lại)",
+    "register_notes_en": "THREE TIERS OF DEFINING VERBS, by formality:\n\nFORMAL (thesis, article):\n- 'Au sens où je l'emploie' (in the sense I use)\n- 'Tel que je le conçois' (as I conceive it)\n- 'Dans l'acception qui sera la mienne' (in the meaning I'll adopt)\n- 'Par X, j'entends' (by X, I mean)\n\nNEUTRAL (report, master's thesis):\n- 'X désigne' (X refers to)\n- 'X correspond à' (X corresponds to)\n- 'X recouvre' (X covers)\n\nCOLLOQUIAL (oral, presentation):\n- 'X, c'est en gros…' (X is basically…) — AVOID in writing\n- 'Quand on dit X…' (When we say X…) — AVOID in writing\n\nNEGATIVE-DEFINITION STRUCTURES:\n- 'X ne recouvre pas Y.' (X does not cover Y)\n- 'X ne doit pas être confondue avec Y.' (X is not to be conflated with Y)\n- 'Il ne s'agit pas de Y, mais de Z.' (It's not about Y, but Z)\n- 'J'écarte ici l'acception courante de X comme…' (I set aside here the common sense of X as…)\n\nOPERATIONALIZATION STRUCTURES:\n- 'En pratique, X se manifeste par…' (In practice, X manifests as…)\n- 'Je repère X à travers les indicateurs suivants…' (I identify X through the following indicators…)\n- 'X est mesuré ici par…' (X is measured here by…)\n- 'Sur le plan empirique, X correspond à…' (Empirically, X corresponds to…)\n\nPOLISHED C1 PHRASES:\n- 'Sans entrer ici dans le débat sur X, j'en retiens l'acception minimale suivante…' (Without entering into the debate on X here, I retain the following minimal meaning…)\n- 'Sur le plan strictement terminologique, je préfère X à Y.' (Strictly terminologically, I prefer X to Y)\n- 'Le glissement entre X et Y, fréquent dans la littérature, mérite ici d'être interrompu.' (The slippage between X and Y, common in the literature, deserves to be halted here)\n\nFALSE FRIEND ALERT: 'acception' (a technical sense) is NOT 'acceptance'. 'Définir' is broader than English 'define' — it carries a more positional, less lexical sense in academic French.",
     "idiom_glosses": [
       {
         "idiom": "Faire la part des choses (courant à soutenu)",
         "literal": "Làm phần của các sự",
+        "literal_en": "To make the share of things",
         "meaning": "Phân biệt rạch ròi giữa nhiều khía cạnh; tránh trộn lẫn.",
+        "meaning_en": "To distinguish clearly between aspects; avoid conflation. English equivalent: 'to draw a distinction' or 'to keep things in perspective'. Essential when an author has lumped two concepts together — 'il convient de faire la part des choses' signals you're about to unbraid them.",
         "example": "Il convient de faire la part des choses entre la critique de fond et la simple objection rhétorique."
       },
       {
         "idiom": "Couper les cheveux en quatre (courant)",
         "literal": "Cắt tóc làm tư",
+        "literal_en": "To split hairs in four",
         "meaning": "Phân biệt quá tinh tế đến mức vô ích.",
+        "meaning_en": "Hair-splitting — making distinctions too fine to matter. English equivalent: 'to split hairs'. Used either as self-deprecation ('without splitting hairs, we can accept…') or as critique ('don't split hairs over a marginal terminological point').",
         "example": "Sans couper les cheveux en quatre, on peut admettre une certaine porosité entre ces deux notions."
       },
       {
         "idiom": "Border le concept (jargon académique)",
         "literal": "Viền khái niệm",
+        "literal_en": "To border the concept",
         "meaning": "Định nghĩa rõ giới hạn để tránh hiểu lầm.",
+        "meaning_en": "To set the boundaries of a concept precisely — French academic jargon with no direct English equivalent. Closest gloss: 'to delimit the concept' or 'to scope the term'. Used in methods sections to flag a deliberate boundary-drawing step.",
         "example": "Cette section vise à border le concept avant de l'employer dans l'analyse empirique."
       },
       {
         "idiom": "Faire le ménage dans les concepts (familier en académique)",
         "literal": "Dọn dẹp trong các khái niệm",
+        "literal_en": "To do the cleaning in the concepts",
         "meaning": "Loại bỏ các từ thừa, định nghĩa lại — clarifier le vocabulaire.",
+        "meaning_en": "To clean house among the concepts — remove redundant or vague terms, restate definitions. English equivalent: 'to tidy up the vocabulary' or 'to clean up the conceptual apparatus'. Informally academic; signals a methodological discipline applied to the author's own vocabulary.",
         "example": "Avant l'analyse, je fais le ménage dans les concepts pour éviter les ambiguïtés."
       }
     ],
@@ -1645,29 +1797,33 @@ export const lessons: FrenchLesson[] = [
       {
         "type": "fill-blank",
         "question": "Par « capital culturel », j'___, à la suite de Bourdieu, l'ensemble des dispositions acquises par socialisation primaire.",
-        "answer": "entends"
+        "answer": "entends",
+        "hint_vi": "động từ 'entendre' (hiểu / có ý là) ở ngôi thứ nhất số ít, présent — cụm cố định 'par X, j'___'",
+        "hint_en": "verb 'entendre' (to mean, to understand) in 1st person singular present — part of the canonical definition formula 'par X, j'___'"
       },
       {
         "type": "matching",
         "pairs": [
           [
             "opérationnaliser",
-            "thao tác hóa"
+            "thao tác hóa (to operationalize — translate concept into measurable indicators)"
           ],
           [
             "délimiter",
-            "giới hạn"
+            "giới hạn (to delimit — say what's IN and what's OUT)"
           ],
           [
             "acception",
-            "nghĩa được chấp nhận"
+            "nghĩa được chấp nhận (the accepted/technical sense of a term — false friend: NOT 'acceptance')"
           ]
         ],
-        "instruction": "Nối thuật ngữ với nghĩa Việt"
+        "instruction": "Nối thuật ngữ với nghĩa Việt",
+        "instruction_en": "Match the term with its meaning"
       },
       {
         "type": "translation",
         "vietnamese": "Định nghĩa này còn tạm thời và sẽ được điều chỉnh trong quá trình phân tích.",
+        "english": "This definition remains provisional and will be adjusted as the analysis unfolds.",
         "french": "Cette définition demeure provisoire et sera ajustée au fil de l'analyse."
       }
     ]
