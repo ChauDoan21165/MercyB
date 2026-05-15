@@ -16309,6 +16309,12 @@ export const lessons: FrenchLesson[] =           [
             "veux → vơ",
             "choisis → shwa-zi",
             "partager → par-ta-jé"
+          ],
+          "pronunciation_focus_en": [
+            "dire → DEER (one syllable; 'tu n'as pas à me dire' = you don't have to tell me — the line that removes the pressure to tell everything)",
+            "veux → VUH (the 'eu' = English 'her' vowel rounded, final 'x' silent; 'plus que tu ne veux' = more than you want to)",
+            "choisis → shwah-ZEE ('tu choisis' = you choose; the listener follows what THEY choose to share)",
+            "partager → par-tah-ZHAY (final '-er' = 'ZHAY', 'zh' = 's' in 'measure'; 'partager' = to share)"
           ]
         },
         {
@@ -16318,6 +16324,11 @@ export const lessons: FrenchLesson[] =           [
             "confiance → kõn-fi-ãns",
             "évident → é-vi-dã",
             "raconter → ra-kõn-té"
+          ],
+          "pronunciation_focus_en": [
+            "confiance → ko(n)-fee-AH(n)SS (two nasals; 'me faire confiance' = to trust me — what you thank them for, not the content)",
+            "évident → ay-vee-DAH(n) (final '-ent' nasal, no hard 't'; 'pas évident' = not easy/obvious — a soft acknowledgment it's hard to tell)",
+            "raconter → rah-ko(n)-TAY ('raconter' = to recount/tell a story; 'pas évident à raconter' = not easy to put into words)"
           ]
         },
         {
@@ -16327,6 +16338,11 @@ export const lessons: FrenchLesson[] =           [
             "comprendre → kõm-prãn-drơ",
             "présente → pré-zãt",
             "maintenant → main-tơ-nã"
+          ],
+          "pronunciation_focus_en": [
+            "comprendre → ko(n)-PRAH(n)-druh (two nasals; 'tout comprendre' = to understand everything — which you explicitly DON'T need to)",
+            "présente → pray-ZAH(n)T (feminine of 'présent', nasal; 'être présente' = to be present — presence over comprehension)",
+            "maintenant → ma(n)t-NAH(n) (the middle 'e' drops; 'pour toi maintenant' = for you right now)"
           ]
         },
         {
@@ -16336,6 +16352,11 @@ export const lessons: FrenchLesson[] =           [
             "traversé → tra-vèr-sé",
             "longtemps → lõn-tã",
             "après → a-prè"
+          ],
+          "pronunciation_focus_en": [
+            "traversé → trah-vehr-SAY ('ce que tu as traversé' = what you went through — fact-based validation, NOT 'oh you poor thing')",
+            "longtemps → lo(n)-TAH(n) (two nasals; 'longtemps après' = long after — names that old pain stays real)",
+            "après → ah-PREH (final 's' silent; 'même longtemps après' = even long afterward — legitimizes talking about it now)"
           ]
         },
         {
@@ -16345,102 +16366,123 @@ export const lessons: FrenchLesson[] =           [
             "parler → par-lé",
             "personne → pèr-son",
             "entre nous → ãn-trơ nu"
+          ],
+          "pronunciation_focus_en": [
+            "parler → par-LAY ('en parler à personne' = talk about it to anyone — note 'ne… personne' = not… anyone)",
+            "personne → pehr-SUN ('personne' = no one / nobody here; the absolute confidentiality commitment)",
+            "entre nous → ah(n)-truh NOO ('c'est entre nous' = this stays between us — the strongest, simplest pledge)"
           ]
         }
       ],
       "cultural_notes_vi": "Khi một người bạn Pháp chia sẻ điều khó từ quá khứ (mất người thân lâu rồi, một giai đoạn rất khó trong gia đình, một quyết định họ vẫn nghĩ tới), vai trò của bạn KHÔNG phải:\n- Hỏi chi tiết để « hiểu hết »\n- Cho lời khuyên\n- Chia sẻ chuyện tương tự của bạn\n- Đề xuất giải pháp\n- Cố làm họ cảm thấy tốt hơn\n\nVai trò của bạn LÀ:\n- Nghe trọn vẹn, không cắt\n- Cho không gian (im lặng OK)\n- Khẳng định họ được nghe (« je t'entends »)\n- Tôn trọng giới hạn họ chia sẻ\n- Bảo mật\n\nĐây là khái niệm Pháp gọi là « être à l'écoute » — sẵn sàng lắng nghe — khác với « écouter » (nghe). Sự « présence » đủ. Người Pháp đặc biệt đánh giá cao người bạn KHÔNG cố sửa, KHÔNG chuyển focus, KHÔNG khóc hộ họ.\n\nKhác Việt Nam ở một điểm tinh tế. Trong văn hóa Việt, khi nghe chuyện buồn của bạn, biểu lộ « tôi cũng buồn lắm » bằng cảm xúc lớn (khóc, ôm, lặp lại « trời ơi tội nghiệp ») là dấu của empathy. Trong văn hóa Pháp, biểu lộ đậm có thể chuyển focus sang bạn — và làm người chia sẻ phải an ủi BẠN. Tốt hơn: gật đầu nhẹ, im lặng tôn trọng, một câu ngắn (« je t'entends »), tay đặt nhẹ lên tay họ nếu bạn rất thân.\n\nVỀ NGHIÊM TÚC: nếu bạn Pháp chia sẻ điều rất nặng (bạo hành, chấn thương, mất mát thê thảm), hãy tôn trọng nhưng cũng biết giới hạn của bạn. Bạn không phải psy. Sau khi nghe, nếu bạn cảm thấy họ cần hỗ trợ chuyên môn, đề xuất nhẹ: « Si un jour tu veux parler à quelqu'un de plus formé, je peux t'aider à trouver. » KHÔNG ép, KHÔNG đẩy nhanh. Vai trò chính của bạn vẫn là listener tin cậy.\n\nVỀ BẢO MẬT: cuộc trò chuyện này KHÔNG bao giờ được lặp lại — kể cả với chồng/vợ, kể cả với bạn chung. « Je ne vais pas en parler à personne » là cam kết tuyệt đối.",
+      "cultural_notes_en": "When a French friend shares something hard from their past (a long-ago loss, a very difficult family period, a decision they still turn over), your role is NOT to: ask for details to 'fully understand', give advice, share your own similar story, propose solutions, or try to make them feel better. Your role IS to: listen fully without interrupting, give space (silence is OK), confirm they're heard ('je t'entends'), respect the limit of what they share, and keep it confidential. The French concept here is 'être à l'écoute' (being available to listen) — distinct from 'écouter' (to hear). Presence is enough. The French particularly value the friend who does NOT try to fix, does NOT redirect the focus, does NOT cry harder than they do. The cross-cultural trap cuts two ways. In Vietnamese culture, a big visible emotional response (crying, hugging, repeated 'oh you poor thing') signals empathy; in French culture an over-large response shifts the focus onto YOU and makes the sharer comfort you — better is a small nod, respectful silence, one short line ('je t'entends'), a hand lightly on theirs only if you're very close. For anglophones (Americans especially) the trap is the well-meant fix-it / silver-lining reflex — 'at least…', 'have you tried…', 'everything happens for a reason', 'you're so strong for surviving that' — all of which, however kindly meant, take something away from them. On gravity: if a French friend shares something very heavy (abuse, trauma, a devastating loss), respect it but also know your limits — you are not a therapist. After listening, if you sense they need professional support, suggest it gently ('si un jour tu veux parler à quelqu'un de plus formé, je peux t'aider à trouver'); do NOT push or escalate. On confidentiality: this conversation must NEVER be repeated — not to your spouse, not to a mutual friend, not to your own therapist. 'Je ne vais pas en parler à personne' is an absolute commitment, and breaking it 'just to process it with one person' is exactly the breach the French would never forgive.",
       "tip_advice_vi": "Năm câu mở miệng giúp bạn Pháp cảm thấy an toàn chia sẻ:\n(1) « Tu n'as pas à me dire plus que tu ne veux. » → tháo bỏ áp lực kể hết\n(2) « Prends ton temps — il n'y a pas de hâte. » → cho phép im lặng giữa câu\n(3) « Si tu as besoin de pause, on s'arrête. » → giới hạn là OK\n(4) « Je t'entends. » → công nhận đơn giản, mạnh hơn lời khuyên\n(5) « Ce que tu as traversé est dur. » → fact validation, không « tội nghiệp »\n\nNhững gì TRÁNH:\n- Hỏi chi tiết (« ça s'est passé comment? il a fait quoi? »): xâm phạm\n- « Au moins tu as survécu / appris quelque chose / es plus forte »: đẩy positivity\n- « Je sais ce que tu ressens »: giả định\n- Khóc to: chuyển focus\n- Im lặng dài + nhìn xa: làm họ thấy không được nghe\n- « Tu devrais voir un psy »: lecture\n- Sau đó nhắc lại trong cuộc trò chuyện khác: vi phạm trust\n\nNGÔN NGỮ CƠ THỂ:\n- Quay người về phía họ\n- Nhìn vào mắt nhưng không stare\n- Nếu rất thân, đặt tay lên tay họ nếu phù hợp\n- KHÔNG checking điện thoại\n- KHÔNG nhìn đồng hồ\n\nSAU CUỘC TRÒ CHUYỆN:\n- Tin nhắn ngắn 24h sau: « Merci pour ce que tu m'as confié. Je pense à toi. » → công nhận\n- KHÔNG nhắc nội dung qua tin nhắn\n- KHÔNG hỏi « comment tu vas avec ce qu'on s'est dit? » trong tuần sau\n- 2-3 tuần sau: gặp lại bình thường, không « comment tu vas avec X » — họ sẽ nhắc nếu muốn\n- Bảo mật: KHÔNG bao giờ kể cho ai khác, kể cả chồng/vợ\n\nĐỐI VỚI NGƯỜI VIỆT cụ thể: bạn có thể tự thấy sốc nếu bạn Pháp chia sẻ điều rất khó (gia đình tan vỡ, bạo hành, sảy thai). Việt Nam ít nói về những chuyện này công khai. Đừng để cú sốc cá nhân của bạn làm gián đoạn vai trò listener. Sau cuộc trò chuyện, bạn có thể tự xử lý cảm xúc của mình (nói với chồng/vợ về CẢM XÚC bạn cảm thấy chứ không phải nội dung cụ thể bạn nghe; viết nhật ký).",
+      "tip_advice_en": "Five opening lines that help a French friend feel safe sharing:\n(1) 'Tu n'as pas à me dire plus que tu ne veux.' (You don't have to tell me more than you want to.) → removes the pressure to tell everything.\n(2) 'Prends ton temps — il n'y a pas de hâte.' (Take your time — there's no rush.) → permits silence mid-sentence.\n(3) 'Si tu as besoin de pause, on s'arrête.' (If you need a break, we stop.) → limits are OK.\n(4) 'Je t'entends.' (I hear you.) → a simple acknowledgment, stronger than advice.\n(5) 'Ce que tu as traversé est dur.' (What you went through is hard.) → fact-based validation, not 'you poor thing'.\n\nWHAT TO AVOID:\n- Asking for detail ('how did it happen? what did he do?'): intrusive.\n- 'At least you survived / learned something / are stronger': pushes positivity.\n- 'Je sais ce que tu ressens' / 'I know exactly how you feel': a presumption.\n- Crying loudly: shifts the focus.\n- Long silence + a faraway look: makes them feel unheard.\n- 'Tu devrais voir un psy' / 'you should get therapy': a lecture.\n- Bringing it up later in another conversation: breaks trust.\n\nBODY LANGUAGE: turn toward them; meet their eyes without staring; if you're very close, a hand on theirs if it fits; do NOT check your phone; do NOT glance at the time.\n\nAFTER THE CONVERSATION:\n- A short text 24h later: 'Merci pour ce que tu m'as confié. Je pense à toi.' → acknowledges it.\n- Do NOT reference the content by text.\n- Do NOT ask 'comment tu vas avec ce qu'on s'est dit ?' the following week.\n- 2–3 weeks later: meet normally, no 'how are you with X' — they'll raise it if they want.\n- Confidentiality: NEVER tell anyone, including a spouse.\n\nFOR VIETNAMESE SPEAKERS SPECIFICALLY: you may be shocked yourself if a French friend shares something very hard (family rupture, abuse, a miscarriage) — topics less openly discussed in Vietnam. Don't let your own shock interrupt the listener role. Afterward you can process your own feelings (talk to a spouse about the EMOTION you felt, NOT the specific content you heard; or journal it). Anglophone calibration: the American instinct to immediately problem-solve or to share a 'me too' story is exactly what to suppress — bearing witness is the whole job.",
       "vocabulary": [
         {
           "word": "se confier à quelqu'un",
           "en": "to confide in someone",
           "vi": "tâm sự với ai",
           "pos": "v.",
-          "pronunciation_vi": "sơ kõn-fi-é a kèl-kun"
+          "pronunciation_vi": "sơ kõn-fi-é a kèl-kun",
+          "pronunciation_en": "suh ko(n)-fee-AY ah kel-KUH(n) ('se confier' = to confide; 'me faire confiance' is the trust, 'se confier' is the act of telling)"
         },
         {
           "word": "être à l'écoute",
           "en": "to be available to listen",
           "vi": "sẵn sàng lắng nghe",
           "pos": "expr.",
-          "pronunciation_vi": "é-trơ a lé-kut"
+          "pronunciation_vi": "é-trơ a lé-kut",
+          "pronunciation_en": "EH-truh ah lay-KOOT (the key concept of this lesson — being attentively available, NOT just 'écouter'/to hear)"
         },
         {
           "word": "un espace de confiance",
           "en": "a space of trust",
           "vi": "không gian tin cậy",
           "pos": "n.m.",
-          "pronunciation_vi": "ès-pas dơ kõn-fi-ãns"
+          "pronunciation_vi": "ès-pas dơ kõn-fi-ãns",
+          "pronunciation_en": "uh(n)-ess-PASS duh ko(n)-fee-AH(n)SS ('un espace de confiance' = a safe space — what your presence creates, before any words)"
         },
         {
           "word": "un non-jugement",
           "en": "non-judgment",
           "vi": "không phán xét",
           "pos": "n.m.",
-          "pronunciation_vi": "nõ jüj-mã"
+          "pronunciation_vi": "nõ jüj-mã",
+          "pronunciation_en": "uh(n) no(n)-zhoozh-MAH(n) ('zh' = 's' in 'measure', two nasals; the explicit posture: no verdict on what they tell you)"
         },
         {
           "word": "respecter le silence",
           "en": "to respect silence",
           "vi": "tôn trọng im lặng",
           "pos": "v.",
-          "pronunciation_vi": "rès-pèk-té lơ si-lãns"
+          "pronunciation_vi": "rès-pèk-té lơ si-lãns",
+          "pronunciation_en": "res-pek-TAY luh see-LAH(n)SS (letting a pause sit instead of rushing to fill it — a learned skill for anglophones)"
         },
         {
           "word": "laisser quelqu'un parler",
           "en": "to let someone speak",
           "vi": "để ai nói",
           "pos": "v.",
-          "pronunciation_vi": "lè-sé kèl-kun par-lé"
+          "pronunciation_vi": "lè-sé kèl-kun par-lé",
+          "pronunciation_en": "leh-SAY kel-KUH(n) par-LAY (to let someone speak without interrupting or steering — the core action)"
         },
         {
           "word": "un secret partagé",
           "en": "a shared secret",
           "vi": "bí mật chia sẻ",
           "pos": "n.m.",
-          "pronunciation_vi": "sơ-krè par-ta-jé"
+          "pronunciation_vi": "sơ-krè par-ta-jé",
+          "pronunciation_en": "uh(n) suh-KREH par-tah-ZHAY (final 't' of 'secret' silent; once shared, it is yours to guard absolutely — never repeat it)"
         },
         {
           "word": "poser des questions intrusives",
           "en": "to ask intrusive questions",
           "vi": "hỏi xâm phạm",
           "pos": "v.",
-          "pronunciation_vi": "po-zé dé kès-tion an-tru-ziv"
+          "pronunciation_vi": "po-zé dé kès-tion an-tru-ziv",
+          "pronunciation_en": "poh-ZAY day kes-TYO(n) a(n)-trew-ZEEV (exactly what NOT to do — 'how did it happen? what did he do?' pries instead of holding space)"
         },
         {
           "word": "valider un ressenti",
           "en": "to validate a feeling",
           "vi": "công nhận cảm xúc",
           "pos": "v.",
-          "pronunciation_vi": "va-li-dé an rơ-sãn-ti"
+          "pronunciation_vi": "va-li-dé an rơ-sãn-ti",
+          "pronunciation_en": "vah-lee-DAY uh(n) ruh-sah(n)-TEE ('un ressenti' = a felt experience; 'je t'entends' validates it without analyzing it)"
         },
         {
           "word": "garder pour soi",
           "en": "to keep to oneself",
           "vi": "giữ riêng",
           "pos": "v.",
-          "pronunciation_vi": "gar-dé pur swa"
+          "pronunciation_vi": "gar-dé pur swa",
+          "pronunciation_en": "gar-DAY poor SWAH ('garder pour soi' = to keep to oneself — the confidentiality rule, with no 'except my spouse' exception)"
         }
       ],
       "dialogue": [
         {
           "speaker": "Camille",
           "text": "Linh, je peux te dire quelque chose que j'ai jamais dit à personne ?",
+          "en": "Linh, can I tell you something I've never told anyone?",
           "vi": "Linh, em nói bạn nghe điều em chưa bao giờ nói với ai được không?"
         },
         {
           "speaker": "Linh",
           "text": "Bien sûr. Tu n'as pas à me dire plus que tu ne veux — je t'écoute.",
+          "en": "Of course. You don't have to tell me more than you want — I'm listening. [opens the safe space and removes the pressure to tell everything, in one line]",
           "vi": "Tất nhiên. Bạn không phải nói nhiều hơn điều bạn muốn — em nghe."
         },
         {
           "speaker": "Camille",
           "text": "C'est sur ma sœur. Quelque chose qui s'est passé il y a longtemps.",
+          "en": "It's about my sister. Something that happened a long time ago.",
           "vi": "Là về chị em. Điều xảy ra lâu rồi."
         },
         {
           "speaker": "Linh",
           "text": "Prends ton temps. Pas de hâte.",
+          "en": "Take your time. No rush. [permits silence — doesn't fill it with a question]",
           "vi": "Bạn từ từ. Không vội."
         }
       ],
@@ -16448,96 +16490,115 @@ export const lessons: FrenchLesson[] =           [
         {
           "speaker": "Camille (chez Linh, après dîner, ton plus grave)",
           "text": "Linh, je peux te dire quelque chose ? Et tu me promets de ne pas en parler ?",
+          "en": "Linh, can I tell you something? And do you promise not to talk about it?",
           "vi": "Linh, em nói bạn nghe điều được không? Và bạn hứa không nói chứ?"
         },
         {
           "speaker": "Linh",
           "text": "Bien sûr. Ça reste entre nous. Tu n'as pas à me dire plus que tu ne veux.",
+          "en": "Of course. It stays between us. You don't have to tell me more than you want. [confidentiality + the no-pressure clause, up front]",
           "vi": "Tất nhiên. Giữa mình. Bạn không phải nói nhiều hơn điều bạn muốn."
         },
         {
           "speaker": "Camille",
           "text": "C'est sur ma sœur Léa. Quelque chose qui s'est passé quand on était adolescentes — j'avais 16 ans, elle 14. Mes parents n'ont jamais vraiment su.",
+          "en": "It's about my sister Léa. Something that happened when we were teenagers — I was 16, she was 14. My parents never really knew.",
           "vi": "Là về chị Léa. Điều xảy ra khi mình còn vị thành niên — em 16, chị 14. Bố mẹ em không bao giờ thực sự biết."
         },
         {
           "speaker": "Linh",
           "text": "Je t'écoute. Pas pressée.",
+          "en": "I'm listening. No hurry.",
           "vi": "Em nghe. Không vội."
         },
         {
           "speaker": "Camille (long silence)",
           "text": "… elle a traversé une période très, très dure. Pendant presque deux ans. Et je l'ai porté avec elle, en cachette de mes parents — parce qu'elle me faisait jurer que je ne dirais rien.",
+          "en": "… she went through a very, very hard period. For almost two years. And I carried it with her, hidden from my parents — because she made me swear I'd say nothing. [Linh let the long silence sit — she did NOT fill it with a question; that's the skill]",
           "vi": "… chị trải qua giai đoạn rất rất khó. Gần hai năm. Và em đỡ chị, giấu bố mẹ — vì chị bắt em thề không nói."
         },
         {
           "speaker": "Linh",
           "text": "Tu portes ça depuis combien de temps ?",
+          "en": "How long have you been carrying that? [one gentle, open question — not 'what happened exactly?']",
           "vi": "Bạn mang điều đó bao lâu rồi?"
         },
         {
           "speaker": "Camille",
           "text": "Vingt-deux ans cette année. Léa va bien aujourd'hui, mariée, deux enfants. Elle a fait son chemin. Mais moi, je n'en ai jamais reparlé à personne — pas même à elle, depuis qu'elle s'en est sortie. C'est resté coincé.",
+          "en": "Twenty-two years this year. Léa is fine today, married, two kids. She made her way. But me, I never spoke about it to anyone again — not even to her, since she came through it. It stayed stuck.",
           "vi": "22 năm năm nay. Chị Léa giờ ổn, đã cưới, hai con. Chị đã đi qua. Nhưng em, em chưa bao giờ nói lại với ai — kể cả với chị, từ khi chị ra khỏi. Bị kẹt."
         },
         {
           "speaker": "Linh",
           "text": "Ce que tu as porté pendant ces deux années — à 16 ans, sans avoir le droit d'en parler à un adulte — c'était immense. Et c'est immense que tu aies tenu pour elle.",
+          "en": "What you carried during those two years — at 16, without the right to tell an adult — was immense. And it's immense that you held on for her. [fact-based validation, no 'you poor thing', no fix]",
           "vi": "Điều bạn mang trong hai năm đó — 16 tuổi, không có quyền nói với người lớn — quá lớn. Và quá lớn việc bạn đã cầm cự cho chị."
         },
         {
           "speaker": "Camille",
           "text": "Mais aussi égoïstement, ça m'a coûté quelque chose dont je ne mesure que maintenant. Je crois que c'est pour ça que j'ai du mal avec les confidences profondes — j'ai associé « porter le secret de quelqu'un » avec « ne plus pouvoir respirer ».",
+          "en": "But also, selfishly, it cost me something I'm only measuring now. I think that's why I struggle with deep confidences — I associated 'carrying someone's secret' with 'not being able to breathe anymore.'",
           "vi": "Nhưng cũng ích kỷ, nó tốn em điều mà em chỉ giờ mới đo được. Em nghĩ vì thế em khó với những lời tâm sự sâu — em đã liên kết « giữ bí mật của ai đó » với « không thở được »."
         },
         {
           "speaker": "Linh",
           "text": "Ça a un sens absolu. Tu as appris à 16 ans qu'aimer quelqu'un = porter ce qu'elle ne peut pas porter. C'est un poids qu'on n'apprend pas à poser facilement après.",
+          "en": "That makes complete sense. At 16 you learned that loving someone = carrying what they can't carry. That's a weight you don't easily learn to put down afterward. [names what it is — does NOT advise, does NOT redirect]",
           "vi": "Có nghĩa tuyệt đối. Bạn học lúc 16 tuổi rằng yêu ai = mang điều họ không mang nổi. Là gánh không dễ đặt xuống sau."
         },
         {
           "speaker": "Camille",
           "text": "Tu sais quoi, Linh — c'est la première fois en 22 ans que quelqu'un dit ça d'une manière qui résonne. Tu n'as pas dit « il faut que tu le dises à un psy » ou « il faut que tu en parles à ta sœur » ou « tu dois lâcher ». Tu as juste dit ce que c'est.",
+          "en": "You know what, Linh — it's the first time in 22 years someone has said it in a way that resonates. You didn't say 'you have to tell a therapist' or 'you have to talk to your sister' or 'you need to let it go.' You just said what it is.",
           "vi": "Bạn biết không, Linh — đây là lần đầu trong 22 năm có người nói điều theo cách vang lên. Bạn không nói « bạn phải nói với psy » hay « bạn phải nói với chị » hay « bạn phải buông ». Bạn chỉ nói điều đó là gì."
         },
         {
           "speaker": "Linh",
           "text": "Je ne suis pas formée à conseiller — et même si je l'étais, ce n'est pas ce que tu m'as demandé. Ce que tu m'as demandé, c'est qu'on entende. Alors j'entends.",
+          "en": "I'm not trained to advise — and even if I were, that's not what you asked of me. What you asked of me is to be heard. So I hear you. [states the role explicitly: bearing witness, not counseling]",
           "vi": "Em không được đào tạo tư vấn — và kể cả nếu được, đó không phải điều bạn xin em. Điều bạn xin em là được nghe. Vậy em nghe."
         },
         {
           "speaker": "Camille",
           "text": "Merci. Vraiment. Je peux te demander une chose ?",
+          "en": "Thank you. Truly. Can I ask you one thing?",
           "vi": "Cảm ơn. Thật lòng. Em xin bạn một điều được không?"
         },
         {
           "speaker": "Linh",
           "text": "Vas-y.",
+          "en": "Go ahead.",
           "vi": "Bạn nói đi."
         },
         {
           "speaker": "Camille",
           "text": "On peut parler d'autre chose maintenant ? Quelque chose de léger ? J'ai besoin de redescendre.",
+          "en": "Can we talk about something else now? Something light? I need to come back down.",
           "vi": "Mình nói chuyện khác bây giờ được không? Điều gì nhẹ? Em cần xuống lại."
         },
         {
           "speaker": "Linh",
           "text": "Bien sûr. Je commande un dessert qu'on partage et je te raconte la dispute idiote que j'ai eue avec ma belle-mère sur les chrysanthèmes la semaine dernière — c'est le contraire d'important, et c'est ce qu'il te faut là.",
+          "en": "Of course. I'll order a dessert for us to share and I'll tell you about the silly argument I had with my mother-in-law about chrysanthemums last week — it's the opposite of important, and that's exactly what you need right now. [follows her cue to come down, lightly — doesn't cling to the heavy register]",
           "vi": "Tất nhiên. Em gọi tráng miệng mình chia và em kể bạn nghe cuộc cãi nhau ngu của em với mẹ chồng về hoa cúc tuần trước — ngược của quan trọng, và là điều bạn cần lúc này."
         },
         {
           "speaker": "Camille",
           "text": "Parfait. Vas-y.",
+          "en": "Perfect. Go ahead.",
           "vi": "Hoàn hảo. Bạn nói đi."
         },
         {
           "speaker": "Linh (texto, le lendemain)",
           "text": "Camille — merci de m'avoir fait confiance hier. Je pense à toi aujourd'hui. Pas obligée de répondre. Bisous.",
+          "en": "Camille — thank you for trusting me yesterday. I'm thinking of you today. No need to reply. Hugs. [the 24h-after text: acknowledges the trust, NOT the content, and requires no reply]",
           "vi": "(Tin nhắn, hôm sau) Camille — cảm ơn bạn đã tin em hôm qua. Em nghĩ đến bạn hôm nay. Không phải trả lời. Hôn."
         },
         {
           "speaker": "Camille (réponse)",
           "text": "Merci Linh. Tu as été exactement la personne dont j'avais besoin hier soir. Bisous.",
+          "en": "Thank you Linh. You were exactly the person I needed last night. Hugs.",
           "vi": "Cảm ơn Linh. Bạn đã chính xác là người em cần tối qua. Hôn."
         }
       ],
@@ -16546,30 +16607,44 @@ export const lessons: FrenchLesson[] =           [
         "Trong bữa tối, bạn Pháp đột nhiên kể về một mất mát thời thơ ấu. Bạn không lường trước. Lạc hướng đúng cách — chuyển từ chế độ « trò chuyện thường » sang « lắng nghe thật » mà không gây gượng gạo cho cả hai.",
         "Sau cuộc trò chuyện sâu, ngày hôm sau bạn ấy nhắn « est-ce que tu m'en veux pour avoir trop parlé hier? ». Phản hồi xua tan nỗi sợ đó, không quá đậm cảm xúc."
       ],
+      "roleplay_prompts_en": [
+        "A French friend is telling you about an abusive relationship she left 5 years ago. You're shocked because she'd never mentioned it. React correctly — do NOT ask for details, do NOT say 'you should have left sooner', just acknowledge and hold the space. Model: a small nod, then 'Je t'entends. Merci de me faire confiance avec ça.' Then silence, letting her continue or stop. Anglophone calibration: suppress the American 'oh my God, what?? are you OK?? what did he DO?' — the volume and the questions both make it about your reaction, not her.",
+        "At dinner, a French friend suddenly tells you about a childhood loss. You didn't see it coming. Pivot correctly — move from 'normal conversation' mode into 'real listening' mode without making it awkward for either of you. Don't freeze and don't over-react; lower your voice slightly, set down your fork, and say 'Je suis là, prends ton temps.' Let the register shift be quiet, not theatrical.",
+        "After a deep conversation, the next day she texts 'est-ce que tu m'en veux pour avoir trop parlé hier ?' (are you upset with me for having talked too much yesterday?). Respond in a way that dissolves that fear, without being over-emotional. Model: 'Pas du tout — au contraire. Tu ne m'as pas trop parlé, tu m'as fait confiance, et ça compte pour moi. Je suis là, comme hier.' Keep it short and steady; a flood of reassurance would itself signal that something WAS heavy for you, re-loading it onto her."
+      ],
       "register_notes": "Lắng nghe trải nghiệm khó dùng tutoiement nếu đã thân, vouvoiement nếu chưa (vouvoiement có thể tạo distance an toàn). Nếu họ chuyển từ neutral sang chia sẻ sâu trong cuộc trò chuyện, KHÔNG đột ngột chuyển register — giữ nguyên đến khi họ chỉ định khác.\n\nCụm hữu ích:\n- « Tu n'as pas à me dire plus que tu ne veux » → tháo áp lực\n- « Prends ton temps » → cho phép im lặng\n- « Je t'entends » → công nhận đơn giản — câu này hiệu quả hơn « je suis désolée pour toi »\n- « Ça reste entre nous » → cam kết bảo mật\n- « Tu n'as pas à m'expliquer pourquoi » → tôn trọng giới hạn\n\nTránh:\n- « Tu devrais… » trong mọi hình thức\n- « Au moins maintenant tu vas mieux » → ép positivity\n- « Tu es forte d'avoir survécu » → gắn label « strong » có thể đè\n- « Tu peux me parler de tout, vraiment! » → over-promise\n- Nói câu khi không nên: nếu không biết phải nói gì, im lặng tôn trọng đủ\n\nKhi cuộc trò chuyện kết thúc: cám ơn họ đã tin (« merci de m'avoir fait confiance avec ça »), không cảm ơn quá đậm. Sau 24h: tin nhắn ngắn không nhắc nội dung cụ thể (« je pense à toi »). Sau 1-2 tuần: gặp lại bình thường, không nhắc lại. KHÔNG bao giờ kể với người thứ ba — kể cả chồng/vợ, kể cả psy của bạn (thật sự không bao giờ). Nếu bạn cảm thấy quá tải xử lý cảm xúc của mình, viết nhật ký riêng — KHÔNG đi nói cho ai.",
+      "register_notes_en": "Listening to a hard experience uses tutoiement if you're already close, vouvoiement if not (vouvoiement can create a safe distance). If they shift from neutral into deep sharing mid-conversation, do NOT abruptly change register — keep the one you had until they signal otherwise.\n\nUseful phrases: 'Tu n'as pas à me dire plus que tu ne veux' (removes the pressure); 'Prends ton temps' (permits silence); 'Je t'entends' (a simple acknowledgment — more effective than 'je suis désolée pour toi' / 'I'm so sorry'); 'Ça reste entre nous' (the confidentiality pledge); 'Tu n'as pas à m'expliquer pourquoi' (respects the limit).\n\nAvoid:\n- 'Tu devrais…' in any form.\n- 'Au moins maintenant tu vas mieux' → forced positivity.\n- 'Tu es forte d'avoir survécu' → labelling them 'strong' can itself become a weight.\n- 'Tu peux me parler de tout, vraiment !' → over-promising.\n- Saying something when you shouldn't: if you don't know what to say, respectful silence is enough (the hardest, most important rule for anglophones, whose reflex is to fill the gap).\n\nWhen the conversation ends: thank them for trusting you ('merci de m'avoir fait confiance avec ça'), not over-effusively. After 24h: a short text that does NOT reference the content ('je pense à toi'). After 1–2 weeks: meet normally, don't bring it back up. NEVER tell a third party — not a spouse, not even your own therapist (truly never). If you feel overloaded processing your own feelings, keep a private journal — do NOT go and tell someone.",
       "idiom_glosses": [
         {
           "idiom": "Faire confiance à quelqu'un",
           "literal": "Cho lòng tin với ai",
+          "literal_en": "To give trust to someone",
           "meaning": "Tin tưởng ai đủ để chia sẻ điều quan trọng.",
+          "meaning_en": "To trust someone enough to share something important with them. English equivalent: 'to trust someone' / 'to confide in someone' — what you thank them for, not the content itself.",
           "example": "Camille m'a fait confiance avec quelque chose de très lourd hier."
         },
         {
           "idiom": "Garder pour soi",
           "literal": "Giữ cho mình",
+          "literal_en": "To keep for oneself",
           "meaning": "Không nói với ai khác.",
+          "meaning_en": "To keep something to yourself / tell no one else. English equivalent: 'to keep it to yourself' — the absolute confidentiality rule, with no 'except one person' loophole.",
           "example": "Ce qu'elle m'a confié, je le garde pour moi — toujours."
         },
         {
           "idiom": "Lever le voile",
           "literal": "Vén tấm voan",
+          "literal_en": "To lift the veil",
           "meaning": "Tiết lộ điều đã giấu.",
+          "meaning_en": "To reveal something long hidden. Same image as English 'to lift the veil on' / 'to finally open up about' — note it's THEIR veil to lift, on their timeline, never something you pull at.",
           "example": "À 38 ans, elle a enfin levé le voile sur ce qu'elle avait porté à 16."
         },
         {
           "idiom": "Porter le poids de",
           "literal": "Mang sức nặng của",
+          "literal_en": "To carry the weight of",
           "meaning": "Mang gánh nặng cảm xúc / trách nhiệm.",
+          "meaning_en": "To carry an emotional or responsibility burden. Identical image to English 'to carry the weight of' / 'to bear the burden of'.",
           "example": "Camille a porté le poids du secret de sa sœur pendant 22 ans."
         }
       ],
@@ -16577,7 +16652,10 @@ export const lessons: FrenchLesson[] =           [
         {
           "type": "fill-blank",
           "question": "Tu n'as pas à me dire plus que tu ne ___ — j'écoute ce que tu choisis de partager.",
-          "answer": "veux"
+          "question_en": "You don't have to tell me more than you ___ — I listen to what you choose to share.",
+          "answer": "veux",
+          "hint_vi": "động từ « vouloir » (« tu ne ___ », ngôi thứ 2 số ít) = muốn",
+          "hint_en": "the verb 'vouloir' (to want), 2nd-person singular ('tu ne ___') — the 'ne' here is the literary/expletive 'ne', not a negation"
         },
         {
           "type": "matching",
@@ -16595,12 +16673,30 @@ export const lessons: FrenchLesson[] =           [
               "giữ riêng"
             ]
           ],
-          "instruction": "Nối thuật ngữ với nghĩa Việt"
+          "pairs_en": [
+            [
+              "se confier à quelqu'un",
+              "to confide in someone — the act of telling (the trust is 'faire confiance')"
+            ],
+            [
+              "être à l'écoute",
+              "to be available to listen — attentive presence, distinct from just hearing ('écouter')"
+            ],
+            [
+              "garder pour soi",
+              "to keep to oneself — the confidentiality rule, with no 'except my spouse' exception"
+            ]
+          ],
+          "instruction": "Nối thuật ngữ với nghĩa Việt",
+          "instruction_en": "Match each French listening term with its English explanation."
         },
         {
           "type": "translation",
           "vietnamese": "Em sẽ không nói với ai — chỉ giữa mình.",
-          "french": "Je ne vais pas en parler à personne — c'est entre nous."
+          "french": "Je ne vais pas en parler à personne — c'est entre nous.",
+          "english": "I won't talk about it to anyone — it stays between us.",
+          "hint_vi": "« ne… personne » = không… ai; « c'est entre nous » là lời cam kết bảo mật tuyệt đối",
+          "hint_en": "'ne… personne' = not… anyone; 'c'est entre nous' is the absolute confidentiality pledge — it admits no exception"
         }
       ]
     },
@@ -16618,6 +16714,11 @@ export const lessons: FrenchLesson[] =           [
             "pèse → pèz",
             "quelques → kèl-kơ",
             "semaines → sơ-mèn"
+          ],
+          "pronunciation_focus_en": [
+            "pèse → PEZ (from 'peser'/to weigh; 'qui me pèse' = that weighs on me — names YOUR experience, not their fault)",
+            "quelques → KEL-kuh ('quelques semaines' = a few weeks; the silent '-ques' just = 'kuh')",
+            "semaines → suh-MEN ('depuis quelques semaines' = for a few weeks — naming it early, before resentment builds, is the whole point)"
           ]
         },
         {
@@ -16627,6 +16728,11 @@ export const lessons: FrenchLesson[] =           [
             "amitié → a-mi-tié",
             "compte → kõnt",
             "précisément → pré-si-zé-mã"
+          ],
+          "pronunciation_focus_en": [
+            "amitié → ah-mee-TYAY ('notre amitié' = our friendship — the affirmation that must come BEFORE the boundary)",
+            "compte → KO(n)T (from 'compter'/to count/matter; 'compte beaucoup' = matters a lot — final 'pte' = soft 't')",
+            "précisément → pray-see-zay-MAH(n) (four beats, '-ment' nasal; 'précisément pour ça' = precisely for that reason — frames the boundary as protecting the friendship, not threatening it)"
           ]
         },
         {
@@ -16637,6 +16743,12 @@ export const lessons: FrenchLesson[] =           [
             "urgences → ur-jãns",
             "arrive → a-riv",
             "dormir → dor-mir"
+          ],
+          "pronunciation_focus_en": [
+            "minuit → mee-NWEE ('à minuit' = at midnight — a SPECIFIC fact, not 'tu m'appelles tout le temps')",
+            "urgences → oor-ZHAH(n)SS ('zh' = 's' in 'measure', nasal; 'des urgences' = emergencies — note the specific frequency 'trois fois par semaine')",
+            "arrive → ah-REEV ('je n'arrive plus à' = I can no longer manage to — states the impact ON YOU)",
+            "dormir → dor-MEER ('je n'arrive plus à dormir' = I can't sleep anymore — concrete consequence, not an accusation)"
           ]
         },
         {
@@ -16647,6 +16759,12 @@ export const lessons: FrenchLesson[] =           [
             "aider → è-dé",
             "prix → pri",
             "stabilité → sta-bi-li-té"
+          ],
+          "pronunciation_focus_en": [
+            "pouvoir → poo-VWAR ('je veux pouvoir t'aider' = I want to be ABLE to help you — keeps the willingness explicit)",
+            "aider → eh-DAY (final '-er' = 'DAY'; 't'aider' = to help you)",
+            "prix → PREE (final 'x' silent; 'au prix de' = at the cost of — the pivot to the boundary)",
+            "stabilité → stah-bee-lee-TAY ('ma propre stabilité' = my own stability — what the boundary protects; the French frame it as self-preservation, not selfishness)"
           ]
         },
         {
@@ -16657,102 +16775,124 @@ export const lessons: FrenchLesson[] =           [
             "propose → pro-poz",
             "convienne → kõn-vièn",
             "cadre → ka-drơ"
+          ],
+          "pronunciation_focus_en": [
+            "concrètement → ko(n)-kret-MAH(n) ('-ment' nasal; the boundary lands in a concrete proposal, not a vague complaint)",
+            "propose → proh-POHZ ('je propose' = I propose — an offer, not a demand)",
+            "convienne → ko(n)-VYEN (subjunctive of 'convenir'; 'qu'on convienne d'un cadre' = that we agree on a framework — two-sided, negotiated)",
+            "cadre → KAH-druh ('un cadre' = a framework/structure — the key word: you set a 'cadre', a mutually agreed structure, not an ultimatum)"
           ]
         }
       ],
       "cultural_notes_vi": "Đặt ranh giới (« poser un cadre », « mettre des limites ») trong tình bạn ở Pháp được xem là dấu trưởng thành, KHÔNG phải dấu lạnh lùng. Khái niệm tâm lý « limites saines » (giới hạn lành mạnh) đã đi vào ngôn ngữ phổ thông Pháp qua sách self-help và psy populaire trong 10-15 năm gần đây. Bạn Pháp đa số sẽ TÔN TRỌNG khi bạn đặt ranh giới rõ ràng và lịch sự.\n\nKhác Việt Nam, nơi đặt ranh giới với bạn thân có thể bị xem là « bỏ bạn lúc khó », văn hóa Pháp xem ranh giới là điều BẢO VỆ tình bạn lâu dài. Logic: nếu bạn không đặt ranh giới, bạn sẽ ngấm ngầm bực đến khi bùng nổ và phá vỡ tình bạn — đặt ranh giới sớm + lịch sự là cách duy nhất giữ bạn lâu năm.\n\nTuy nhiên, có hai bẫy người Việt thường rơi:\n(1) NÉ TRÁNH ĐẶT RANH GIỚI cho đến khi bùng nổ. Sau đó cuộc trò chuyện không phải « đặt ranh giới » mà là « tôi đã nuốt tức 6 tháng », và bạn Pháp bị shock vì họ không biết.\n(2) ĐẶT RANH GIỚI quá đậm khi đã bực. « Tu m'épuises », « tu prends sans rendre » → Pháp đọc là tấn công, mặc dù đúng nội dung.\n\nCông thức Pháp cho « poser un cadre » với bạn:\n(1) NÊU FACT cụ thể, không generalize. « Quand tu m'appelles à minuit pour des urgences trois fois par semaine » thay vì « tu m'appelles tout le temps ».\n(2) NÊU IMPACT lên BẠN, không buộc tội họ. « Je n'arrive plus à dormir » thay vì « tu fais exprès de me déranger ».\n(3) CÔNG NHẬN giá trị tình bạn. « Notre amitié compte beaucoup pour moi — et c'est précisément pour ça que… » → đặt cuộc trò chuyện trong khung « préserver », không « rompre ».\n(4) ĐỀ XUẤT alternative cụ thể. KHÔNG « j'ai besoin de moins de toi »; thay bằng « pour les vraies urgences nuit, appelle-moi; pour le reste, on peut prendre un café samedi ».\n\nLƯU Ý: « người lấy quá nhiều » thường cũng đang trong khó khăn. Đặt ranh giới đúng cách KHÔNG bỏ rơi họ — chỉ tái cấu trúc cách bạn hỗ trợ. Nếu bạn của bạn đang khủng hoảng nặng, đề xuất nguồn lực chuyên môn (psy, hotline 3114) — bạn không thể là tất cả cho họ.",
+      "cultural_notes_en": "Setting boundaries ('poser un cadre', 'mettre des limites') in a friendship is seen in France as a sign of maturity, NOT coldness. The therapy-derived concept of 'limites saines' (healthy boundaries) has entered everyday French through self-help books and popular psychology over the last 10–15 years — so most French friends will RESPECT a clearly and politely stated boundary. This is different from a Vietnamese instinct where setting a boundary with a close friend can read as 'abandoning them when they're struggling'; French culture sees the boundary as the thing that PROTECTS the long-term friendship. The logic: if you don't set one, you'll quietly resent it until you explode and break the friendship — an early, polite boundary is the only way to keep a friend for years. There are two traps Vietnamese speakers (and many conflict-avoidant anglophones) fall into: (1) AVOIDING the boundary until you explode — by then the conversation isn't 'setting a boundary', it's 'I swallowed this for six months', and the French friend is shocked because they had no idea; (2) setting it TOO HARD once you're already angry — 'tu m'épuises', 'tu prends sans rendre' — which the French read as an attack, even when the content is correct. The French formula for 'poser un cadre' with a friend: (1) STATE A SPECIFIC FACT, not a generalization ('quand tu m'appelles à minuit pour des urgences trois fois par semaine' rather than 'tu m'appelles tout le temps'); (2) STATE THE IMPACT ON YOU, not an accusation of them ('je n'arrive plus à dormir' rather than 'tu fais exprès de me déranger'); (3) AFFIRM THE FRIENDSHIP'S VALUE ('notre amitié compte beaucoup pour moi — et c'est précisément pour ça que…' — frames it as 'preserving', not 'breaking'); (4) PROPOSE A CONCRETE ALTERNATIVE — not 'j'ai besoin de moins de toi' but 'pour les vraies urgences nuit, appelle-moi ; pour le reste, on peut prendre un café samedi'. Anglophone calibration: the American 'I just need some space right now' with no specifics tends to read here as a soft breakup — the French want the specific fact and the concrete alternative, which is paradoxically warmer. Note: the 'person who takes too much' is usually also struggling. A correctly set boundary does NOT abandon them — it restructures how you support them. If your friend is in a serious crisis, suggest professional resources (a psy, the 3114 line) — you can't be everything for them.",
       "tip_advice_vi": "Khung 5 phần cho cuộc trò chuyện đặt ranh giới:\n(1) ĐẶT BUỔI GẶP cụ thể, không « pop out » giữa cuộc trò chuyện ngẫu nhiên. « Tu peux me garder une heure samedi? Je veux qu'on discute calmement. »\n(2) MỞ ĐẦU VỚI INTENT khẳng định tình bạn: « Notre amitié compte beaucoup pour moi — c'est pour ça que je préfère qu'on en parle. »\n(3) FACT + IMPACT: « Quand tu fais X, ça me crée Y. » Cụ thể, không « tu fais toujours… ».\n(4) ALTERNATIVE đề xuất: « Voici ce que je propose: A pour les vraies urgences, B pour le reste. » Cho lựa chọn, không yêu cầu.\n(5) MỜI PHẢN HỒI: « De ton côté, qu'est-ce qui t'embête dans la dynamique actuelle? » Mở cho họ cũng có ranh giới.\n\nDÙ ĐÚNG GIỌNG, ĐÒI HỎI BÀN BẠC HAI BÊN: bạn cũng có thể đang vô ý gây phiền họ. Cuộc trò chuyện đặt ranh giới là CƠ HỘI tái thương lượng tình bạn cho cả hai — không phải bạn đơn phương cấm họ.\n\nTRÁNH:\n- Generalize (« tu m'épuises tout le temps ») → leo thang\n- Đem so sánh với bạn khác (« mes autres amies n'agissent pas comme ça ») → cá nhân\n- Hứa quá (« on continue comme avant! ») → vô hiệu cuộc trò chuyện\n- Đặt ranh giới qua tin nhắn dài → không nhân cảm; phải mặt đối mặt\n- Đặt ranh giới khi đang giận → giọng sẽ leo thang\n\nSAU CUỘC TRÒ CHUYỆN: cám ơn họ đã nghe; gửi tin ngắn 24h sau (« merci pour la discussion d'hier — j'ai apprécié »); không nhắc lại trong 2-3 tuần để cho không gian.\nNẾU HỌ KHÔNG CHẤP NHẬN ranh giới: đó là thông tin về tình bạn. Một người bạn không tôn trọng ranh giới cụ thể, lịch sự, hợp lý — không phải bạn thân thật. Bạn có quyền giảm dần liên lạc.",
+      "tip_advice_en": "Five-part frame for the boundary conversation:\n(1) SCHEDULE A SPECIFIC MEETING, don't 'pop it out' mid-random-conversation. 'Tu peux me garder une heure samedi ? Je veux qu'on discute calmement.' (Can you set aside an hour Saturday? I'd like us to talk calmly.)\n(2) OPEN WITH AN INTENT that affirms the friendship: 'Notre amitié compte beaucoup pour moi — c'est pour ça que je préfère qu'on en parle.'\n(3) FACT + IMPACT: 'Quand tu fais X, ça me crée Y.' Specific, not 'tu fais toujours…'.\n(4) PROPOSE AN ALTERNATIVE: 'Voici ce que je propose : A pour les vraies urgences, B pour le reste.' Give options, don't demand.\n(5) INVITE THEIR SIDE: 'De ton côté, qu'est-ce qui t'embête dans la dynamique actuelle ?' Open the door for them to have boundaries too.\n\nEVEN WITH THE RIGHT TONE, IT MUST BE A TWO-WAY NEGOTIATION: you may also be unintentionally bothering them. A boundary conversation is an OPPORTUNITY to renegotiate the friendship for both — not you unilaterally banning them.\n\nAVOID:\n- Generalizing ('tu m'épuises tout le temps') → escalation.\n- Comparing to other friends ('mes autres amies n'agissent pas comme ça') → makes it personal.\n- Over-promising ('on continue comme avant !') → voids the whole conversation.\n- Setting a boundary by long text → not human enough; it must be face to face.\n- Setting a boundary while angry → the tone will escalate.\n\nAFTER THE CONVERSATION: thank them for hearing it; send a short text 24h later ('merci pour la discussion d'hier — j'ai apprécié'); don't bring it up again for 2–3 weeks, to give space.\nIF THEY DON'T ACCEPT the boundary: that's information about the friendship. A friend who won't respect a specific, polite, reasonable boundary is not a true close friend. You have the right to gradually reduce contact. Anglophone calibration: the goal is not to 'win' the conversation or extract an apology — it's a calm renegotiation; pushing for them to admit they were wrong defeats it.",
       "vocabulary": [
         {
           "word": "poser un cadre",
           "en": "to set a framework",
           "vi": "đặt khung",
           "pos": "v.",
-          "pronunciation_vi": "po-zé an ka-drơ"
+          "pronunciation_vi": "po-zé an ka-drơ",
+          "pronunciation_en": "poh-ZAY uh(n) KAH-druh ('poser un cadre' = to set a framework — the core French move; in France a sign of maturity, not coldness)"
         },
         {
           "word": "mettre des limites",
           "en": "to set limits",
           "vi": "đặt giới hạn",
           "pos": "v.",
-          "pronunciation_vi": "mè-trơ dé li-mit"
+          "pronunciation_vi": "mè-trơ dé li-mit",
+          "pronunciation_en": "MEH-truh day lee-MEET (final 'tes' = soft 't'; 'mettre des limites' = to set limits/boundaries)"
         },
         {
           "word": "des limites saines",
           "en": "healthy boundaries",
           "vi": "giới hạn lành mạnh",
           "pos": "n.f. pl.",
-          "pronunciation_vi": "li-mit sèn"
+          "pronunciation_vi": "li-mit sèn",
+          "pronunciation_en": "lee-MEET SEN ('saines' = healthy, fem. pl.; a now-mainstream French phrase from popular psychology — directly maps to English 'healthy boundaries')"
         },
         {
           "word": "prendre sans rendre",
           "en": "to take without giving back",
           "vi": "lấy không trả",
           "pos": "v.",
-          "pronunciation_vi": "prãn-drơ sãn rãn-drơ"
+          "pronunciation_vi": "prãn-drơ sãn rãn-drơ",
+          "pronunciation_en": "PRAH(n)-druh sah(n) RAH(n)-druh (a near-rhyme pair, both nasal; describes the imbalance — but say it as a fact, not as the accusation 'tu prends sans rendre')"
         },
         {
           "word": "un déséquilibre",
           "en": "an imbalance",
           "vi": "sự mất cân bằng",
           "pos": "n.m.",
-          "pronunciation_vi": "dé-zé-ki-li-brơ"
+          "pronunciation_vi": "dé-zé-ki-li-brơ",
+          "pronunciation_en": "day-zay-kee-LEE-bruh (five beats; 'un déséquilibre dans l'amitié' = an imbalance in the friendship — neutral, structural language)"
         },
         {
           "word": "être épuisé(e) par",
           "en": "to be drained by",
           "vi": "kiệt sức vì",
           "pos": "adj.",
-          "pronunciation_vi": "é-trơ é-pwi-zé par"
+          "pronunciation_vi": "é-trơ é-pwi-zé par",
+          "pronunciation_en": "EH-truh ay-pwee-ZAY par (describe being drained as your own state — say it before you reach the explosion point, not at it)"
         },
         {
           "word": "un comportement envahissant",
           "en": "intrusive behavior",
           "vi": "cách cư xử xâm lấn",
           "pos": "n.m.",
-          "pronunciation_vi": "kõm-por-tơ-mã ãn-va-i-sã"
+          "pronunciation_vi": "kõm-por-tơ-mã ãn-va-i-sã",
+          "pronunciation_en": "ko(n)-por-tuh-MAH(n) ah(n)-vah-ee-SAH(n) (three nasals; 'envahissant' = invasive/overstepping — name the BEHAVIOR, never label the person)"
         },
         {
           "word": "une amitié toxique",
           "en": "a toxic friendship",
           "vi": "tình bạn độc hại",
           "pos": "n.f.",
-          "pronunciation_vi": "a-mi-tié tok-sik"
+          "pronunciation_vi": "a-mi-tié tok-sik",
+          "pronunciation_en": "ah-mee-TYAY tok-SEEK (a strong term — use it in your own head/analysis, NOT as a label thrown at the friend in the conversation)"
         },
         {
           "word": "se préserver",
           "en": "to protect oneself",
           "vi": "tự bảo vệ",
           "pos": "v.",
-          "pronunciation_vi": "sơ pré-zer-vé"
+          "pronunciation_vi": "sơ pré-zer-vé",
+          "pronunciation_en": "suh pray-zer-VAY ('se préserver' = to protect/look after oneself; the French frame the boundary as this, not as selfishness)"
         },
         {
           "word": "renégocier le cadre",
           "en": "to renegotiate the framework",
           "vi": "tái thương lượng khung",
           "pos": "v.",
-          "pronunciation_vi": "rơ-né-go-sié lơ ka-drơ"
+          "pronunciation_vi": "rơ-né-go-sié lơ ka-drơ",
+          "pronunciation_en": "ruh-nay-goh-SYAY luh KAH-druh (the two-way move: a boundary talk renegotiates the friendship for BOTH, not a one-sided ban)"
         }
       ],
       "dialogue": [
         {
           "speaker": "Linh",
           "text": "Camille, tu as une heure samedi ? Je voudrais qu'on parle, calmement.",
+          "en": "Camille, do you have an hour Saturday? I'd like us to talk, calmly. [schedules a specific meeting — does NOT 'pop it out' mid-conversation]",
           "vi": "Camille, bạn có một tiếng thứ bảy không? Em muốn mình nói chuyện, bình tĩnh."
         },
         {
           "speaker": "Camille",
           "text": "Oui, qu'est-ce qui se passe ?",
+          "en": "Yes, what's going on?",
           "vi": "Có, có chuyện gì?"
         },
         {
           "speaker": "Linh",
           "text": "Rien de grave. Notre amitié compte pour moi, et c'est pour ça que je préfère en parler avant que ça pèse.",
+          "en": "Nothing serious. Our friendship matters to me, and that's why I'd rather talk about it before it weighs on things. [pre-frames it as preserving the friendship + raising it EARLY, before resentment]",
           "vi": "Không có gì nghiêm trọng. Tình bạn của mình quan trọng với em, và vì thế em thích nói trước khi nó đè."
         },
         {
           "speaker": "Camille",
           "text": "OK, samedi 15h chez toi.",
+          "en": "OK, Saturday 3 p.m. at your place.",
           "vi": "OK, thứ bảy 15h nhà bạn."
         }
       ],
@@ -16760,86 +16900,103 @@ export const lessons: FrenchLesson[] =           [
         {
           "speaker": "Linh (chez elle, samedi 15h)",
           "text": "Merci d'être venue. Je voulais qu'on en parle en personne, pas par texto.",
+          "en": "Thanks for coming. I wanted us to talk about it in person, not by text. [in person, not a long text — the rule for a boundary conversation]",
           "vi": "Cảm ơn bạn đến. Em muốn mình nói trực diện, không qua tin nhắn."
         },
         {
           "speaker": "Camille",
           "text": "Je t'écoute. Je sens depuis hier que tu as un truc.",
+          "en": "I'm listening. I've sensed since yesterday that something's up with you.",
           "vi": "Em nghe. Em cảm từ hôm qua bạn có điều gì đó."
         },
         {
           "speaker": "Linh",
           "text": "Notre amitié compte beaucoup pour moi — six ans qu'on se connaît, c'est précieux. Et c'est exactement pour ça que je préfère qu'on aborde un point qui me pèse, plutôt que de le laisser pourrir.",
+          "en": "Our friendship matters a lot to me — six years we've known each other, that's precious. And that's exactly why I'd rather we address a point that weighs on me, instead of letting it rot. [the affirmation BEFORE the boundary — frames it as preserving, not breaking]",
           "vi": "Tình bạn của mình rất quan trọng với em — sáu năm mình quen nhau, quý. Và chính vì thế em thích mình nói ra điểm đè em, hơn là để nó hỏng."
         },
         {
           "speaker": "Camille",
           "text": "OK. Vas-y.",
+          "en": "OK. Go ahead.",
           "vi": "OK. Bạn nói đi."
         },
         {
           "speaker": "Linh",
           "text": "Depuis trois mois, tu m'appelles souvent à des heures tardives — minuit, une heure du matin — pour parler de problèmes qui ne sont pas vraiment des urgences. Tu sais que je dors mal, que je travaille tôt, et que mon mari aussi est réveillé par les sonneries.",
+          "en": "For three months, you often call me at late hours — midnight, one in the morning — to talk about problems that aren't really emergencies. You know I sleep badly, that I work early, and that my husband is woken by the ringing too. [FACT (specific time + frequency) + IMPACT — not 'tu m'appelles tout le temps']",
           "vi": "Ba tháng nay, bạn thường gọi em giờ muộn — 12h, 1h sáng — để nói chuyện không phải khẩn cấp thật. Bạn biết em ngủ không tốt, em làm việc sớm, và chồng em cũng bị đánh thức bởi chuông."
         },
         {
           "speaker": "Camille",
           "text": "… je suis désolée. Je n'avais pas réalisé à quel point.",
+          "en": "… I'm sorry. I hadn't realized how much.",
           "vi": "… em xin lỗi. Em không nhận ra đến mức nào."
         },
         {
           "speaker": "Linh",
           "text": "Pas de procès — je sais que tu vis des moments durs. Mais j'ai besoin qu'on convienne d'un cadre qui marche pour nous deux. Voici ce que je propose : pour les vraies urgences nuit — accident, hospitalisation, vraie crise — appelle-moi sans hésiter, n'importe quelle heure. Pour le reste — anxiété générale, dispute avec ton frère, doute sur ton boulot — gardons ça pour les heures normales, ou pour qu'on se voie en personne le week-end. C'est moins immédiat, mais c'est plus tenable.",
+          "en": "No trial here — I know you're going through hard times. But I need us to agree on a framework that works for both of us. Here's what I propose: for real nighttime emergencies — an accident, a hospitalization, a genuine crisis — call me without hesitating, any hour. For the rest — general anxiety, an argument with your brother, doubt about your job — let's keep that for normal hours, or for seeing each other in person on the weekend. It's less immediate, but it's more sustainable. [a CONCRETE alternative with categories — not 'I need less of you']",
           "vi": "Không phải xét xử — em biết bạn đang sống lúc khó. Nhưng em cần mình thỏa thuận một khung hoạt động cho cả hai. Em đề xuất: cho khẩn cấp đêm thật — tai nạn, nhập viện, khủng hoảng thật — bạn gọi em không ngần, bất cứ giờ nào. Cho phần còn lại — lo lắng chung, cãi nhau với em trai, do dự công việc — giữ cho giờ bình thường, hoặc gặp cuối tuần. Ít tức thì hơn, nhưng bền hơn."
         },
         {
           "speaker": "Camille",
           "text": "C'est juste. Et tu as raison de le dire — je crois que je traite mes amies proches comme un service de support 24/24, et c'est pas viable pour vous.",
+          "en": "That's fair. And you're right to say it — I think I treat my close friends like a 24/7 support service, and that's not viable for you.",
           "vi": "Đúng. Và bạn đúng khi nói — em nghĩ em đối xử bạn thân của em như dịch vụ hỗ trợ 24/24, và không bền vững cho các bạn."
         },
         {
           "speaker": "Linh",
           "text": "On est pas un psy. On peut pas être ça. Et — je veux être directe — je pense que tu as besoin d'un vrai psy en parallèle. Pas à la place des amies, en plus.",
+          "en": "We're not a therapist. We can't be that. And — I want to be direct — I think you need a real therapist alongside this. Not instead of friends, in addition. [names the limit of friendship AND that the boundary isn't abandonment — it restructures support]",
           "vi": "Mình không phải psy. Không thể là psy. Và — em thẳng thắn — em nghĩ bạn cần psy thật song song. Không thay bạn bè, mà thêm."
         },
         {
           "speaker": "Camille",
           "text": "J'y ai pensé. J'ai même un nom donné par mon médecin traitant. Je n'ai pas pris le rdv — peur de quoi exactement, je ne sais pas.",
+          "en": "I've thought about it. I even have a name given by my GP. I haven't booked the appointment — afraid of what exactly, I don't know.",
           "vi": "Em đã nghĩ. Em thậm chí có tên do bác sĩ gia đình cho. Em chưa đặt hẹn — sợ gì cụ thể, em không biết."
         },
         {
           "speaker": "Linh",
           "text": "Tu veux que je sois là quand tu prends le rdv ? On peut le faire ensemble, là maintenant si tu veux. C'est pas pour te forcer, c'est pour rendre l'étape moins seule.",
+          "en": "Do you want me to be there when you book the appointment? We can do it together, right now if you want. It's not to force you, it's to make the step less lonely.",
           "vi": "Bạn muốn em ở đó khi bạn đặt hẹn không? Mình có thể làm cùng bây giờ nếu bạn muốn. Không phải ép, mà để bước đó ít cô đơn."
         },
         {
           "speaker": "Camille",
           "text": "… ouais. Là, maintenant, ça me ferait du bien. Tu as l'air d'eau ?",
+          "en": "… yeah. Right now, that would do me good. Do you have any water? [the line as written; she's asking for a glass of water]",
           "vi": "… ờ. Bây giờ, sẽ giúp em. Bạn có nước không?"
         },
         {
           "speaker": "Linh",
           "text": "Tiens. Et de mon côté — est-ce qu'il y a quelque chose dans MA façon de me comporter avec toi qui te pèse, et dont tu n'as pas parlé ?",
+          "en": "Here. And on my side — is there something in MY way of behaving with you that weighs on you, and that you haven't mentioned? [invites HER boundary too — the two-way renegotiation, not a one-sided ban]",
           "vi": "Đây. Và phía em — có điều gì trong cách em cư xử với bạn đè bạn, mà bạn chưa nói không?"
         },
         {
           "speaker": "Camille",
           "text": "Une chose. Quand je te raconte un truc, des fois tu réponds avec un parallèle vietnamien — « chez nous, on ferait comme ça ». Pour moi, ça déplace mon problème vers une comparaison culturelle, et j'ai l'impression que tu m'expliques au lieu de m'écouter.",
+          "en": "One thing. When I tell you something, sometimes you respond with a Vietnamese parallel — 'where I'm from, we'd do it like this.' For me, it shifts my problem toward a cultural comparison, and I feel like you're explaining to me instead of listening to me.",
           "vi": "Một điều. Khi em kể bạn nghe điều, đôi khi bạn trả lời bằng song song Việt — « bên mình mình sẽ làm vậy ». Với em, nó dời vấn đề em sang so sánh văn hóa, và em cảm thấy bạn giải thích cho em hơn là nghe."
         },
         {
           "speaker": "Linh",
           "text": "Aïe. Je l'ai pas vu. Tu as raison — c'est mon réflexe, et je le ferai exprès moins. Note pour moi.",
+          "en": "Ouch. I didn't see that. You're right — it's my reflex, and I'll consciously do it less. Noted, for me. [receives her boundary without defending — modelling what she asked of Camille]",
           "vi": "Ouch. Em chưa thấy. Bạn đúng — là phản xạ của em, và em sẽ cố ý làm ít hơn. Note cho em."
         },
         {
           "speaker": "Camille",
           "text": "On est cool, alors. On a posé le cadre — on appelle le psy, j'évite les minuits sauf urgence vraie, tu réduis les parallèles culturels.",
+          "en": "We're good, then. We've set the framework — we call the therapist, I avoid the midnights except a real emergency, you cut down the cultural parallels.",
           "vi": "Mình ok rồi. Mình đặt khung — gọi psy, em tránh 12h trừ khẩn cấp thật, bạn giảm song song văn hóa."
         },
         {
           "speaker": "Linh",
           "text": "Voilà. Et on en reparle dans deux mois — pas pour faire un bilan, juste pour vérifier qu'on tient le cadre.",
+          "en": "Exactly. And we'll talk about it again in two months — not to do a formal review, just to check we're holding the framework. [closes with a light check-in plan, not an open-ended audit]",
           "vi": "Đó. Và mình nói lại sau 2 tháng — không phải để bilan, chỉ để kiểm tra mình giữ khung."
         }
       ],
@@ -16848,30 +17005,44 @@ export const lessons: FrenchLesson[] =           [
         "Bạn Pháp đăng story Instagram nhắc đến tên bạn nhiều lần một tuần (« mon amie viet me dit que… »). Bạn không thoải mái với phơi bày này. Đặt cuộc trò chuyện — không cấm cô ấy đăng, đề xuất nguyên tắc rõ.",
         "Bạn quá bao bọc bạn Pháp đang khó (làm tất cả cho cô ấy, gọi mỗi sáng kiểm tra). Cô ấy bắt đầu khó chịu. Nhận ra bạn đã vượt ranh giới của họ — đặt cuộc trò chuyện ngược, xin lỗi vì over-care."
       ],
+      "roleplay_prompts_en": [
+        "A French friend constantly texts you for life advice — 5–10 messages a day — and rarely asks about your life. Set up the boundary conversation — NOT 'tu es égoïste' (you're selfish); instead, a concrete rebalancing proposal. Model: schedule it, affirm the friendship, then 'Quand je reçois dix messages de conseil par jour et qu'on ne parle presque jamais de comment moi je vais, ça crée un déséquilibre que je ressens. Voici ce que je propose…' Anglophone calibration: resist the passive US route ('no worries! happy to help anytime!' while quietly resenting it) — the French want the specific fact and the proposed rebalance.",
+        "A French friend posts Instagram stories naming you several times a week ('mon amie viet me dit que…'). You're not comfortable with that exposure. Set up the conversation — don't forbid her from posting, propose a clear principle. Model: 'Je suis touchée que tu parles de moi, mais je ne suis pas à l'aise d'être citée nommément en story. Est-ce qu'on peut convenir que tu me demandes avant, ou que tu ne mettes pas mon prénom ?' Keep it a negotiated 'cadre', not an accusation.",
+        "You've been over-caring for a struggling French friend (doing everything for her, calling every morning to check in). She's starting to bristle. Recognize that YOU overstepped HER boundary — set up the reverse conversation, apologizing for the over-care. Model: 'J'ai réfléchi — je crois que dans ma façon de vouloir t'aider, j'ai un peu envahi ton espace, et je m'en rends compte maintenant. Dis-moi ce qui te conviendrait vraiment, plutôt que ce que MOI j'ai décidé d'être bien pour toi.' Anglophone calibration: this is the same lesson in reverse — even help, unrequested and unbounded, can be the boundary violation."
+      ],
       "register_notes": "Đặt ranh giới dùng tutoiement nếu đã thân, vouvoiement nếu chưa. Giọng quan trọng hơn từ — nói câu cứng với giọng warm OK; nói câu mềm với giọng cold không OK. Tránh:\n- « Tu fais toujours… » → generalize\n- « Tu prends et tu rends rien » → buộc tội\n- « Mes autres amies n'agissent pas comme ça » → so sánh\n- « J'en peux plus » nếu đã không nói trước → bùng nổ\n- Đặt ranh giới khi đang say rượu hoặc giận → leo thang\n\nCụm hữu ích:\n- « Notre amitié compte pour moi — c'est pour ça que… » → khẳng định trước phản biện\n- « Quand tu fais X, ça me crée Y » → fact + impact\n- « Voici ce que je propose » → cho lựa chọn cụ thể\n- « De ton côté, qu'est-ce qui t'embête? » → mở cho họ\n- « On en reparle dans 2 mois pour vérifier » → đóng cuộc trò chuyện với plan kiểm tra\n\nKhi cuộc trò chuyện kết thúc tốt: cảm ơn ngắn (« merci d'avoir reçu ça »); chuyển sang chủ đề khác. KHÔNG nhắc lại trong 2-3 tuần. Nếu cuộc trò chuyện kết thúc xấu (họ giận, từ chối ranh giới): cho không gian, không van xin, không nhắn tin liên tục. Sau 1-2 tuần, một tin ngắn (« j'espère qu'on peut reprendre quand tu veux »). Nếu họ tiếp tục từ chối ranh giới sau cuộc trò chuyện: thông tin quan trọng về tình bạn — bạn có quyền giảm dần.",
+      "register_notes_en": "Setting boundaries uses tutoiement if you're already close, vouvoiement if not. Tone matters more than wording — a firm sentence said with a warm tone is OK; a soft sentence said with a cold tone is not. Avoid:\n- 'Tu fais toujours…' → generalizing.\n- 'Tu prends et tu rends rien' → an accusation.\n- 'Mes autres amies n'agissent pas comme ça' → a comparison.\n- 'J'en peux plus' if you never flagged it earlier → an explosion, not a boundary.\n- Setting a boundary while drunk or angry → escalation.\n\nUseful phrases: 'Notre amitié compte pour moi — c'est pour ça que…' (affirm before the pushback); 'Quand tu fais X, ça me crée Y' (fact + impact); 'Voici ce que je propose' (a concrete option); 'De ton côté, qu'est-ce qui t'embête ?' (open it up for them); 'On en reparle dans 2 mois pour vérifier' (close with a light check-in plan).\n\nWhen the conversation ends well: a short thank-you ('merci d'avoir reçu ça'); switch to another topic. Don't bring it up again for 2–3 weeks. If it ends badly (they get angry, reject the boundary): give space, don't beg, don't text repeatedly. After 1–2 weeks, one short message ('j'espère qu'on peut reprendre quand tu veux'). If they keep refusing the boundary after the conversation: that's important information about the friendship — you have the right to gradually scale back. Anglophone calibration: the American instinct to over-apologize for having raised it ('sorry, I know this is awkward, no big deal really…') undercuts the boundary; state it warmly and let it stand.",
       "idiom_glosses": [
         {
           "idiom": "Poser un cadre",
           "literal": "Đặt khung",
+          "literal_en": "To lay down a frame/framework",
           "meaning": "Thiết lập quy tắc trong mối quan hệ.",
+          "meaning_en": "To set explicit ground rules in a relationship. English equivalent: 'to set a boundary' / 'to establish ground rules' — in France a sign of maturity, done calmly and early, never in anger.",
           "example": "Poser un cadre tôt préserve l'amitié — on ne le fait pas en colère."
         },
         {
           "idiom": "Renvoyer la balle",
           "literal": "Đá trả quả bóng",
+          "literal_en": "To send the ball back",
           "meaning": "Trao đổi qua lại trong tình bạn.",
+          "meaning_en": "To reciprocate / keep the exchange two-way (one gives, the other gives back). English equivalent: 'to return the ball' / 'a give-and-take' — here, the mark of a balanced friendship.",
           "example": "Une amitié saine, c'est qu'on se renvoie la balle — l'un donne, l'autre rend."
         },
         {
           "idiom": "Se préserver",
           "literal": "Tự giữ gìn",
+          "literal_en": "To preserve oneself",
           "meaning": "Bảo vệ năng lượng / sức khỏe của mình.",
+          "meaning_en": "To protect your own energy/health/wellbeing. English equivalent: 'to look after yourself' / 'to protect your own wellbeing' — the French frame this as legitimate, NOT as selfishness.",
           "example": "J'ai dû me préserver — sinon l'amitié allait casser de mon côté."
         },
         {
           "idiom": "Tirer la sonnette d'alarme",
           "literal": "Kéo chuông báo động",
+          "literal_en": "To pull the alarm bell",
           "meaning": "Cảnh báo trước khi quá trễ.",
+          "meaning_en": "To raise the alarm / sound a warning before it's too late. English equivalent: 'to sound the alarm' / 'to raise a red flag' — the point of the lesson: flag it early, not after you've burned out.",
           "example": "J'ai tiré la sonnette d'alarme avant que je sois trop épuisée pour récupérer."
         }
       ],
@@ -16879,7 +17050,10 @@ export const lessons: FrenchLesson[] =           [
         {
           "type": "fill-blank",
           "question": "Je veux pouvoir t'aider — mais pas au ___ de ma propre stabilité.",
-          "answer": "prix"
+          "question_en": "I want to be able to help you — but not at the ___ of my own stability.",
+          "answer": "prix",
+          "hint_vi": "danh từ « giá » trong cụm « au ___ de » = đánh đổi bằng",
+          "hint_en": "the noun 'price' in 'au ___ de' = at the cost of — the pivot from willingness to the boundary"
         },
         {
           "type": "matching",
@@ -16897,12 +17071,30 @@ export const lessons: FrenchLesson[] =           [
               "tự bảo vệ"
             ]
           ],
-          "instruction": "Nối thuật ngữ với nghĩa Việt"
+          "pairs_en": [
+            [
+              "poser un cadre",
+              "to set a framework — done calmly and early, a sign of maturity (not coldness)"
+            ],
+            [
+              "mettre des limites",
+              "to set limits/boundaries — the everyday phrase for it"
+            ],
+            [
+              "se préserver",
+              "to protect oneself — legitimate in French eyes, NOT selfishness"
+            ]
+          ],
+          "instruction": "Nối thuật ngữ với nghĩa Việt",
+          "instruction_en": "Match each French boundary-setting term with its English explanation."
         },
         {
           "type": "translation",
           "vietnamese": "Cụ thể, em đề xuất mình thỏa thuận một khung hoạt động cho cả hai.",
-          "french": "Concrètement, je propose qu'on convienne d'un cadre qui marche pour nous deux."
+          "french": "Concrètement, je propose qu'on convienne d'un cadre qui marche pour nous deux.",
+          "english": "Concretely, I propose that we agree on a framework that works for both of us.",
+          "hint_vi": "« qu'on convienne » dùng subjunctive (convenir = thỏa thuận); « un cadre… pour nous deux » nhấn mạnh tính hai bên",
+          "hint_en": "'qu'on convienne' takes the subjunctive ('convenir' = to agree on); 'un cadre… pour nous deux' stresses it's two-sided, a negotiation not an ultimatum"
         }
       ]
     }
