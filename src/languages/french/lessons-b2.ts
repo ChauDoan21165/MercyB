@@ -6449,6 +6449,12 @@ export const lessons: FrenchLesson[] =           [
             "revenir → rơ-vơ-nir",
             "invitation → an-vi-ta-sion",
             "interprétée → an-tèr-pré-té"
+          ],
+          "pronunciation_focus_en": [
+            "voudrais → voo-DRAY (ends like English 'tray')",
+            "revenir → ruh-vuh-NEER (three short 'uh' syllables, like 'rev-uh-near')",
+            "invitation → ah(n)-vee-tah-SYO(n) (two nasals — no full 'n' sound, just nasalized vowel)",
+            "interprétée → ah(n)-tair-pray-TAY (final 'tée' rhymes with English 'pay')"
           ]
         },
         {
@@ -6459,6 +6465,12 @@ export const lessons: FrenchLesson[] =           [
             "s'agissait → sa-ji-sè",
             "politesse → po-li-tès",
             "vraie → vrè"
+          ],
+          "pronunciation_focus_en": [
+            "pensé → pah(n)-SAY (nasal first syllable, no English equivalent — try saying 'pa' through your nose)",
+            "s'agissait → sah-zhee-SAY ('zh' = the 's' in English 'measure')",
+            "politesse → poh-lee-TESS (final 'tesse' rhymes with English 'less')",
+            "vraie → VREH (one syllable, short open 'e' — like English 'air' without the 'r')"
           ]
         },
         {
@@ -6469,6 +6481,12 @@ export const lessons: FrenchLesson[] =           [
             "maladresse → ma-la-drès",
             "absolument → ab-so-lu-mã",
             "manque → mãnk"
+          ],
+          "pronunciation_focus_en": [
+            "m'excuse → mek-SKEWZ (the 'u' is the French 'u', like pursing lips to say 'ee')",
+            "maladresse → ma-la-DRESS (final 'esse' = English 'dress' without the 'd')",
+            "absolument → ab-so-loo-MAH(n) (nasal final, no real 'n' — air through nose)",
+            "manque → MAH(n)K (one syllable, nasal — like 'mock' said through the nose)"
           ]
         },
         {
@@ -6479,6 +6497,12 @@ export const lessons: FrenchLesson[] =           [
             "tient → tiain",
             "heureuse → ơ-rơz",
             "prochain → pro-shain"
+          ],
+          "pronunciation_focus_en": [
+            "proposition → proh-poh-zee-SYO(n) (nasal final, rhymes with 'on' said through nose)",
+            "tient → TYA(n) (one syllable, nasal — like English 'tian' without the 'n')",
+            "heureuse → uh-RUHZ (the 'eu' has no English equivalent — round lips as if to say 'oo' then say 'eh')",
+            "prochain → proh-SHA(n) (nasal final — like 'shan' through the nose, no full 'n')"
           ]
         },
         {
@@ -6488,102 +6512,123 @@ export const lessons: FrenchLesson[] =           [
             "apprendre → a-prãn-drơ",
             "codes → kod",
             "patience → pa-siãns"
+          ],
+          "pronunciation_focus_en": [
+            "apprendre → ah-PRAH(n)-druh (middle syllable nasal, final 'dre' = soft 'druh')",
+            "codes → KOHD (one syllable, the final 's' is silent — rhymes with English 'mode')",
+            "patience → pah-SYAH(n)SS (nasal middle, hissed final 's' — different from English 'patience')"
           ]
         }
       ],
       "cultural_notes_vi": "Hiểu lầm văn hóa giữa người Việt và người Pháp xảy ra hai chiều, và xin lỗi sau hiểu lầm là một kỹ năng B2 quan trọng. Hai loại hiểu lầm phổ biến: (1) lời mời « giả » của người Việt bị người Pháp hiểu thật — « hôm nào ghé nhà em chơi nhé! » (xã giao) bị bạn Pháp ghi vào lịch và xuất hiện chủ nhật; (2) lời mời « thật » của người Pháp bị người Việt hiểu xã giao — « venez dîner samedi à 20h » (mời thật, đặt nhà hàng) bị từ chối nhẹ vì người Việt nghĩ đó là phép lịch sự thông thường.\n\nKhi xin lỗi, tránh hai sai lầm: (1) « over-apologize » kiểu Việt — « em rất rất rất xin lỗi, em sai hoàn toàn, em không xứng đáng… » — quá đậm sẽ làm người Pháp lúng túng; (2) « under-apologize » kiểu Pháp lý lẽ — « ce n'était qu'un quiproquo culturel » — quá nhẹ sẽ bị xem là không nhận trách nhiệm. Giọng đúng: thừa nhận lỗi cụ thể, không kéo dài, đề xuất giải pháp (lời mời lại, một bữa ăn bù), và nhân tiện học một « code » mới.\n\nQuan trọng: không đổ lỗi cho « sự khác biệt văn hóa » một cách thụ động (« c'est ma culture, on ne peut rien y faire »). Người Pháp coi đó là cách trốn tránh trách nhiệm cá nhân. Tốt hơn: « Je connais cette différence, j'aurais dû la mobiliser, je ne l'ai pas fait — je m'en excuse ».",
+      "cultural_notes_en": "French apology calibration is a minefield for anglophones — particularly Americans, whose default 'I'm so so sorry, this is totally my fault' reads to French ears as either insincere or oddly theatrical. Conversely, British understatement ('terribly sorry about all that') can read as too breezy when something concrete (a booked dinner, a real plan) actually went wrong. The French middle ground: name the specific mistake, take ownership in one clean sentence, propose a concrete repair gesture, then stop. No spiraling, no self-flagellation, no gift-buying — a wrapped present after a small social blunder reads to French people as a transactional move, almost like trying to buy forgiveness.\n\nThe specific scenario in this lesson — declining a 'real' French dinner invitation because you read it as polite filler — happens constantly with Vietnamese, British, and East-Asian-American learners. The cross-cultural trap: in many cultures, 'come over sometime' is a warmth signal, not a calendar entry. In France, when there's a time, a menu, and another guest mentioned, it's a hard commitment with groceries already bought. The repair is to acknowledge the misread explicitly ('j'ai pris ça pour une formule de politesse'), not to invent a vague excuse. French interlocutors strongly prefer 'I misread your code' over 'I was busy' — the honesty resets the relationship, the dodge erodes it.\n\nOne thing to avoid in any French apology: outsourcing blame to 'cultural difference' as a closed loop ('c'est ma culture'). It reads exactly like 'sorry not sorry' does in English — a refusal to own the act. The B2-level move is to acknowledge the cultural gap and your own failure to bridge it: 'I know this difference exists; I didn't apply it in time; that's on me.' That sentence buys you enormous goodwill in any French professional or social setting.",
       "tip_advice_vi": "Khung 4 câu cho lời xin lỗi: (1) Tên cụ thể của lỗi (« j'ai mal interprété l'invitation »); (2) Nguyên nhân ngắn (« j'ai pensé qu'il s'agissait d'une formule de politesse ») — không kéo dài thành tự thanh minh; (3) Trách nhiệm cá nhân (« j'aurais dû demander, je ne l'ai pas fait »); (4) Đề xuất hành động (« si la proposition tient toujours, je suis libre samedi prochain »). Tránh: viết tin nhắn dài 3 đoạn xin lỗi, gửi thư xin lỗi viết tay (Pháp coi quá đậm cho lỗi nhỏ), tặng quà bù (có thể bị hiểu là « brebery »). Một tin nhắn 4 dòng hoặc một cuộc gọi 2 phút là đủ. Sau khi xin lỗi xong, đừng quay lại chủ đề trong các cuộc gặp sau — kéo dài là tự kéo dài cảm giác lúng túng.",
+      "tip_advice_en": "Use the four-line French apology frame: (1) Name the specific mistake — 'I misread the invitation', not 'I was a mess yesterday'. (2) Give the cause in one short clause — 'I took it for a polite formula' — and stop; don't keep explaining, because that reads as self-justification, not contrition. (3) Take personal ownership — 'I should have asked, and I didn't' — without melodrama. (4) Propose a concrete next step — 'if the offer still stands, I'm free next Saturday' — which signals you actually want to repair, not just close the topic. Avoid three-paragraph apology texts (reads as performative), handwritten apology notes for minor blunders (French people reserve those for serious events like funerals or weddings — overkill here), and 'sorry gifts' (in French professional life, a bottle of wine after a no-show can look like a small bribe). One four-line message or one two-minute phone call clears it. Critically: after the apology lands, do not bring it up again in subsequent meetings — looping back to it forces your French interlocutor to keep reassuring you, and the awkwardness compounds. One clean acknowledgment, one proposed fix, then move on as if it never happened.",
       "vocabulary": [
         {
           "word": "un quiproquo",
           "en": "a misunderstanding (humorous)",
           "vi": "hiểu lầm (nhẹ, có thể buồn cười)",
           "pos": "n.m.",
-          "pronunciation_vi": "ki-pro-ko"
+          "pronunciation_vi": "ki-pro-ko",
+          "pronunciation_en": "kee-proh-KOH (three short syllables, final 'o' like English 'go')"
         },
         {
           "word": "un malentendu",
           "en": "a misunderstanding (serious)",
           "vi": "hiểu lầm (nghiêm trọng)",
           "pos": "n.m.",
-          "pronunciation_vi": "ma-lãn-tãn-du"
+          "pronunciation_vi": "ma-lãn-tãn-du",
+          "pronunciation_en": "ma-lah(n)-tah(n)-DOO (two nasal middle syllables; final 'du' = English 'doo' but with pursed lips)"
         },
         {
           "word": "une formule de politesse",
           "en": "a polite formula",
           "vi": "câu xã giao",
           "pos": "n.f.",
-          "pronunciation_vi": "for-mul dơ po-li-tès"
+          "pronunciation_vi": "for-mul dơ po-li-tès",
+          "pronunciation_en": "for-MEWL duh poh-lee-TESS (final 'esse' = English 'tess'; 'mule' has the rounded French 'u')"
         },
         {
           "word": "une maladresse",
           "en": "a clumsy mistake",
           "vi": "sự vụng về",
           "pos": "n.f.",
-          "pronunciation_vi": "ma-la-drès"
+          "pronunciation_vi": "ma-la-drès",
+          "pronunciation_en": "ma-la-DRESS (three syllables, final 'esse' rhymes with English 'dress')"
         },
         {
           "word": "présenter ses excuses",
           "en": "to offer an apology",
           "vi": "đưa lời xin lỗi",
           "pos": "v.",
-          "pronunciation_vi": "pré-zãn-té sé-z-èk-sykuz"
+          "pronunciation_vi": "pré-zãn-té sé-z-èk-sykuz",
+          "pronunciation_en": "pray-zah(n)-TAY say-zek-SKEWZ (note the liaison 'sé-z-èk' — the 's' attaches to the next vowel)"
         },
         {
           "word": "reconnaître ses torts",
           "en": "to admit fault",
           "vi": "thừa nhận sai",
           "pos": "v.",
-          "pronunciation_vi": "rơ-ko-nè-trơ sé tor"
+          "pronunciation_vi": "rơ-ko-nè-trơ sé tor",
+          "pronunciation_en": "ruh-koh-NEH-truh say TOR (final 's' on 'torts' is silent — rhymes with English 'tore')"
         },
         {
           "word": "un faux pas",
           "en": "a social blunder",
           "vi": "sai sót xã giao",
           "pos": "n.m.",
-          "pronunciation_vi": "fô pa"
+          "pronunciation_vi": "fô pa",
+          "pronunciation_en": "FOH PAH (same as the English borrowing — final 'x' and 's' are silent)"
         },
         {
           "word": "se rattraper",
           "en": "to make amends / catch up",
           "vi": "sửa lỗi / bù",
           "pos": "v.",
-          "pronunciation_vi": "sơ ra-tra-pé"
+          "pronunciation_vi": "sơ ra-tra-pé",
+          "pronunciation_en": "suh ra-tra-PAY (final '-er' ending rhymes with English 'pay')"
         },
         {
           "word": "un geste réparateur",
           "en": "a repair gesture",
           "vi": "hành động sửa lỗi",
           "pos": "n.m.",
-          "pronunciation_vi": "jèst ré-pa-ra-tơr"
+          "pronunciation_vi": "jèst ré-pa-ra-tơr",
+          "pronunciation_en": "ZHEST ray-pa-ra-TUHR ('zh' = the 's' in 'measure'; final 'eur' = uh+r, lips rounded)"
         },
         {
           "word": "sans arrière-pensée",
           "en": "without hidden motive",
           "vi": "không có ý đồ ẩn",
           "pos": "expr.",
-          "pronunciation_vi": "sãn a-riè-rơ pãn-sé"
+          "pronunciation_vi": "sãn a-riè-rơ pãn-sé",
+          "pronunciation_en": "sah(n)-zah-RYAIR pah(n)-SAY (liaison 'sans arrière' = sah(n)-zah; final 'pensée' = pah(n)-SAY)"
         }
       ],
       "dialogue": [
         {
           "speaker": "Linh (au téléphone)",
           "text": "Salut Camille, je voulais revenir sur l'invitation de samedi — j'ai compris trop tard que c'était sérieux.",
+          "en": "Hi Camille — I wanted to circle back about Saturday's invitation. I realized too late that you actually meant it.",
           "vi": "Chào Camille, em muốn nói lại về lời mời thứ bảy — em hiểu quá muộn rằng đó là thật."
         },
         {
           "speaker": "Camille",
           "text": "Ah ! J'ai cru que tu avais simplement oublié.",
+          "en": "Oh! I assumed you'd just forgotten.",
           "vi": "À! Anh tưởng em chỉ quên thôi."
         },
         {
           "speaker": "Linh",
           "text": "Non, j'ai pris ça pour une formule de politesse, à la vietnamienne. Je m'en excuse.",
+          "en": "No — I took it as a polite formula, the Vietnamese way. I'm sorry about that.",
           "vi": "Không, em nghĩ là câu xã giao kiểu Việt. Em xin lỗi."
         },
         {
           "speaker": "Camille",
           "text": "Pas de souci, maintenant je comprends. Samedi prochain, ça marche pour toi ?",
+          "en": "No worries — I get it now. Does next Saturday work for you?",
           "vi": "Không sao, giờ anh hiểu rồi. Thứ bảy tới em rảnh không?"
         }
       ],
@@ -6591,76 +6636,91 @@ export const lessons: FrenchLesson[] =           [
         {
           "speaker": "Linh (texto envoyé lundi matin)",
           "text": "Bonjour Camille, j'aimerais te parler quelques minutes ce midi si tu as un moment — c'est au sujet de samedi.",
+          "en": "Hi Camille — could we talk for a few minutes at lunch today if you have a moment? It's about Saturday.",
           "vi": "Chào Camille, em muốn nói chuyện với anh vài phút trưa nay nếu anh có thời gian — về thứ bảy."
         },
         {
           "speaker": "Camille (réponse 30 minutes plus tard)",
           "text": "Salut Linh, oui aucun problème. 12h30 au café d'en bas ?",
+          "en": "Hi Linh — sure, no problem. 12:30 at the café downstairs?",
           "vi": "Chào Linh, không vấn đề. 12h30 ở quán cà phê dưới nhà nhé?"
         },
         {
           "speaker": "Linh (au café)",
           "text": "Camille, merci de te déplacer. Je voulais revenir directement sur samedi.",
+          "en": "Camille, thanks for coming over. I wanted to address Saturday head-on.",
           "vi": "Camille, cảm ơn anh đến. Em muốn nói thẳng về thứ bảy."
         },
         {
           "speaker": "Camille",
           "text": "Vas-y, je t'écoute.",
+          "en": "Go ahead — I'm listening.",
           "vi": "Em nói đi, anh nghe."
         },
         {
           "speaker": "Linh",
           "text": "Quand tu m'as dit jeudi « passe à la maison samedi vers 19 heures pour dîner avec Marc et moi », je l'ai pris pour une formule sympa, comme on dit chez nous « ghé nhà em chơi nhé ». Chez nous, c'est gentil mais ce n'est pas un vrai rendez-vous — c'est une marque d'affection.",
+          "en": "When you told me Thursday 'come by Saturday around 7 to have dinner with Marc and me,' I read it as a friendly formula — the way we say back home 'ghé nhà em chơi nhé.' In Vietnam, it's affectionate but it's not a real appointment — it's a marker of warmth.",
           "vi": "Khi anh nói thứ năm « ghé nhà thứ bảy 19h ăn tối với Marc và anh nhé », em hiểu đó là câu thân thiện, kiểu Việt « ghé nhà em chơi nhé ». Bên em, là dễ thương nhưng không phải hẹn thật — là dấu của tình cảm."
         },
         {
           "speaker": "Camille",
           "text": "Ah ! Je comprends mieux maintenant. Et donc samedi, tu n'es pas venue parce que tu pensais que c'était purement symbolique.",
+          "en": "Ah — that makes more sense now. So on Saturday you didn't come because you thought it was purely symbolic.",
           "vi": "À! Giờ anh hiểu rõ hơn. Vậy thứ bảy em không đến vì em nghĩ đó chỉ là tượng trưng."
         },
         {
           "speaker": "Linh",
           "text": "Exactement. Et c'est seulement dimanche, quand tu as posté la photo de la table avec quatre couverts dont un vide, que j'ai compris ce qui s'était passé. Je m'en excuse — c'était une vraie maladresse.",
+          "en": "Exactly. And it was only on Sunday, when you posted that photo of the table with four place settings — one of them empty — that I understood what had happened. I'm sorry — it was a genuine blunder on my part.",
           "vi": "Chính xác. Và chỉ chủ nhật, khi anh đăng ảnh bàn ăn 4 bộ đồ ăn trong đó một bộ trống, em mới hiểu chuyện gì xảy ra. Em xin lỗi — là sự vụng về thật."
         },
         {
           "speaker": "Camille",
           "text": "Sur le moment, on a été un peu vexés — Marc surtout, parce qu'il avait préparé du bún chả que sa mère lui avait appris. Mais maintenant que tu m'expliques, je vois ça comme un quiproquo culturel, pas comme un rejet.",
+          "en": "At the time we were a bit hurt — Marc especially, because he'd made bún chả the way his mother taught him. But now that you've explained, I see it as a cultural mix-up, not a rejection.",
           "vi": "Lúc đó tụi anh hơi tổn thương — đặc biệt là Marc, vì anh ấy nấu bún chả mà mẹ anh ấy dạy. Nhưng giờ em giải thích, anh xem là hiểu lầm văn hóa, không phải từ chối."
         },
         {
           "speaker": "Linh",
           "text": "Marc avait fait du bún chả ? Maintenant je suis vraiment désolée. La prochaine fois que vous m'invitez, je viendrai même si je ne suis pas sûre que c'est sérieux — quitte à arriver et découvrir qu'il n'y a rien.",
+          "en": "Marc made bún chả? Now I really feel awful. Next time you invite me, I'll come even if I'm not sure it's serious — I'd rather show up and find out there's nothing planned.",
           "vi": "Marc đã nấu bún chả? Giờ em thực sự xin lỗi. Lần sau anh chị mời, em sẽ đến kể cả không chắc là thật — sẵn sàng đến và phát hiện không có gì."
         },
         {
           "speaker": "Camille",
           "text": "Ne sois pas trop dure avec toi-même. Mais oui, en France, quand on dit une heure et un menu, c'est en général qu'on a déjà fait les courses.",
+          "en": "Don't be too hard on yourself. But yes — in France, if someone gives you a time and a menu, it usually means they've already done the grocery shopping.",
           "vi": "Đừng khắt khe với bản thân quá. Nhưng đúng, ở Pháp khi nói một giờ và một menu, thường là đã đi chợ rồi."
         },
         {
           "speaker": "Linh",
           "text": "Je note. Question pratique : est-ce qu'il y a une formule en français qui veut dire « ghé nhà em chơi nhé » sans être un vrai rendez-vous ?",
+          "en": "Noted. Practical question — is there a French expression that means 'drop by sometime' without being an actual plan?",
           "vi": "Em ghi. Câu thực tế: có công thức nào tiếng Pháp nghĩa « ghé nhà em chơi nhé » mà không phải hẹn thật?"
         },
         {
           "speaker": "Camille",
           "text": "« Faut qu'on se voie un de ces quatre » est l'équivalent. C'est volontairement vague — pas de date, pas d'heure. Si on dit « samedi à 19h », c'est une vraie invitation.",
+          "en": "'Faut qu'on se voie un de ces quatre' (we should meet up one of these days) is the equivalent. It's deliberately vague — no date, no time. If someone says 'Saturday at 7,' that's a real invitation.",
           "vi": "« Faut qu'on se voie un de ces quatre » là tương đương. Cố ý mơ hồ — không ngày, không giờ. Nếu nói « samedi à 19h », là mời thật."
         },
         {
           "speaker": "Linh",
           "text": "Très clair. Je m'achète cette grille mentale : avec date et heure = vrai ; sans date = formule. Et pour me rattraper : je vous invite, Marc et toi, à manger samedi prochain. Bún bò Huế cette fois — je te promets que je serai présente.",
+          "en": "Crystal clear. I'm buying the mental shortcut: date and time = real, no date = formula. And to make it up to you — I'm inviting you and Marc over for dinner next Saturday. Bún bò Huế this time, and I promise I'll be there.",
           "vi": "Rất rõ. Em mua cách phân biệt: có ngày giờ = thật; không ngày = xã giao. Và để bù: em mời anh và Marc ăn thứ bảy tới. Bún bò Huế lần này — em hứa em sẽ có mặt."
         },
         {
           "speaker": "Camille",
           "text": "Avec plaisir. Et merci d'être venue m'en parler en face — beaucoup de gens auraient juste laissé passer.",
+          "en": "With pleasure. And thanks for coming to talk to me in person — a lot of people would have just let it slide.",
           "vi": "Sẵn lòng. Và cảm ơn em đã đến nói trực diện — nhiều người chỉ để trôi qua."
         },
         {
           "speaker": "Linh",
           "text": "Chez nous, ne pas en reparler aurait été perçu comme pire. C'est aussi un code à apprendre dans l'autre sens.",
+          "en": "Back home, not bringing it up would have been seen as worse. That's another code to learn — going the other direction.",
           "vi": "Bên em, không nhắc lại bị xem là tệ hơn. Đây cũng là một code phải học theo chiều ngược."
         }
       ],
@@ -6669,30 +6729,44 @@ export const lessons: FrenchLesson[] =           [
         "Đồng nghiệp Pháp đến nhà bạn ăn cơm và thấy bạn lấy đôi đũa cắm thẳng vào bát cơm để đi lấy món khác. Sau bữa, đồng nghiệp im lặng. Bạn đoán có sai sót — hỏi thẳng và nếu cần, giải thích/xin lỗi.",
         "Bạn nói đùa về vợ một đồng nghiệp Pháp trong cuộc nhậu công ty, kiểu hài Việt; họ phản ứng lạnh. Sau cuộc nhậu, gọi xin lỗi mà không over-apologize — thừa nhận đùa quá đà, học được gì."
       ],
+      "roleplay_prompts_en": [
+        "You declined a French coworker's dinner invitation thinking it was just polite filler. Two days later you find out they'd booked a restaurant and invited four other friends specifically to meet you. Call to apologize — keep it short, no spiraling, and propose a concrete way to make it up to them. (US/UK office equivalent: think of the time a manager set up a 'casual coffee' that turned out to be a small surprise team welcome — same calibration, same recovery.)",
+        "A French coworker came over for dinner at your place. They saw you stick your chopsticks straight up in the rice bowl while you went to grab another dish (a serious taboo in Vietnamese culture but invisible to the French). After the meal, your coworker is unusually quiet. You suspect something off — ask directly whether anything bothered them, and if it was something they did, explain and apologize without over-explaining.",
+        "You made a joke about a French coworker's wife at an after-work drinks event, in the Vietnamese teasing style ('cô ấy vẫn chịu nổi anh, ghê thật'). They went visibly cold. Call them after the event to apologize — without over-apologizing — name the specific overstep, what you've learned, and move on. (Anglophone parallel: making a 'roast' joke in a US/UK office context where the person clearly didn't sign up for it.)"
+      ],
       "register_notes": "Lời xin lỗi sau hiểu lầm văn hóa với người Pháp đã thân: tutoiement đúng. Tránh « je suis vraiment vraiment désolée » lặp ba lần — quá đậm; một « je m'en excuse » + tên lỗi cụ thể là đủ. Cụm hữu ích: « j'ai mal interprété » (em hiểu sai), « j'aurais dû demander » (đáng lẽ phải hỏi), « si la proposition tient toujours » (nếu lời mời còn). Tránh đổ lỗi văn hóa thụ động (« c'est culturel »); thay bằng « Je connais cette différence mais je n'ai pas su la mobiliser à temps ». Khi đối phương chấp nhận xin lỗi (« pas de souci », « ne sois pas trop dure avec toi-même »), không tiếp tục xin lỗi — chuyển sang chủ đề khác hoặc đề xuất hành động bù. Trong môi trường công ty (sếp/khách Pháp), giữ vouvoiement và ngắn hơn — một câu thừa nhận, một câu đề xuất giải pháp.",
+      "register_notes_en": "Apologizing to a French friend you're already on tu terms with: stay on tu (tutoiement). Switching to vous mid-apology would actually feel cold and performative, like an English speaker suddenly saying 'sir' to a longtime friend. Avoid stacking intensifiers — 'je suis vraiment vraiment désolée' three times reads as theatrical (over-apologizing as performance) and makes a French listener uncomfortable. One 'je m'en excuse' plus the specific name of the mistake is enough. Useful phrases: 'j'ai mal interprété' (I misread), 'j'aurais dû demander' (I should have asked), 'si la proposition tient toujours' (if the offer still stands). Reject the passive cultural alibi ('c'est culturel') — it reads as 'sorry not sorry'; replace with 'Je connais cette différence mais je n'ai pas su la mobiliser à temps' (I know this difference, I just didn't apply it in time), which keeps ownership intact. The single biggest register failure mode for anglophones is not knowing when to stop: when the other person says 'pas de souci' or 'ne sois pas trop dure avec toi-même,' that's the close — don't keep apologizing. Continuing past that point is what makes the awkwardness compound and forces them to keep reassuring you, which over time damages the relationship more than the original misstep did. In a workplace (French boss or external client), switch to vouvoiement and make it even shorter — one sentence acknowledging the error, one sentence proposing the fix. Long apologies in a professional French setting read as unprofessional, not respectful.",
       "idiom_glosses": [
         {
           "idiom": "Faire amende honorable",
           "literal": "Làm sự đền bù danh dự",
+          "literal_en": "To make honorable amends",
           "meaning": "Công khai thừa nhận sai và sửa.",
+          "meaning_en": "To publicly acknowledge a mistake and take visible steps to make it right — formal and a touch ceremonial.",
           "example": "J'ai fait amende honorable auprès de Camille en lui réinvitant chez moi."
         },
         {
           "idiom": "Tourner la page",
           "literal": "Lật trang",
+          "literal_en": "To turn the page",
           "meaning": "Bỏ qua, không quay lại chủ đề nữa.",
+          "meaning_en": "To move on — close a difficult chapter and not bring it up again (same image as English 'turn the page,' but in French it specifically signals the conversation is now closed).",
           "example": "Maintenant qu'on s'est expliqués, on peut tourner la page."
         },
         {
           "idiom": "Mettre les choses au clair",
           "literal": "Đặt mọi việc cho rõ",
+          "literal_en": "To put things in the clear",
           "meaning": "Giải thích để xóa hiểu lầm.",
+          "meaning_en": "To clear the air — sit down and explicitly explain what happened to dispel a misunderstanding.",
           "example": "J'ai préféré mettre les choses au clair plutôt que laisser le malaise."
         },
         {
           "idiom": "Un de ces quatre",
           "literal": "Một trong những bốn này",
+          "literal_en": "One of these four",
           "meaning": "Một ngày nào đó (cố ý mơ hồ — câu xã giao Pháp).",
+          "meaning_en": "'One of these days' — a deliberately vague French social formula used to express vague warmth without committing to a real date. The French equivalent of English 'we should grab a coffee sometime' or Vietnamese 'ghé nhà em chơi nhé'.",
           "example": "Faut qu'on se voie un de ces quatre — c'est l'équivalent du « ghé nhà em chơi nhé »."
         }
       ],
@@ -6700,62 +6774,86 @@ export const lessons: FrenchLesson[] =           [
         {
           "type": "fill-blank",
           "instruction_vi": "Điền cụm vào lời xin lỗi.",
+          "instruction_en": "Fill in each blank with the missing word from an apology.",
           "items": [
             {
               "prompt": "Je voudrais ___ sur l'invitation de samedi.",
-              "answer": "revenir"
+              "answer": "revenir",
+              "hint_vi": "động từ « quay lại / nói lại về »",
+              "hint_en": "verb meaning 'to come back to / revisit (a topic)'"
             },
             {
               "prompt": "J'ai pensé qu'il s'___ d'une formule de politesse.",
-              "answer": "agissait"
+              "answer": "agissait",
+              "hint_vi": "imparfait của « il s'agit de »",
+              "hint_en": "imparfait of the impersonal 'il s'agit de' (it was a matter of)"
             },
             {
               "prompt": "Je m'excuse pour la ___.",
-              "answer": "maladresse"
+              "answer": "maladresse",
+              "hint_vi": "danh từ « sự vụng về »",
+              "hint_en": "noun meaning 'clumsy mistake / social blunder'"
             },
             {
               "prompt": "Si la proposition tient toujours, je serais ___ de venir.",
-              "answer": "heureuse"
+              "answer": "heureuse",
+              "hint_vi": "tính từ « vui / hạnh phúc » (giống cái)",
+              "hint_en": "feminine adjective for 'happy / glad' (the speaker is female)"
             }
           ]
         },
         {
           "type": "matching",
           "instruction_vi": "Nối thành ngữ với chiến lược sửa lỗi.",
+          "instruction_en": "Match each idiom with the repair strategy it represents.",
           "items": [
             {
               "prompt": "Faire amende honorable",
-              "answer": "công khai thừa nhận và sửa (publicly acknowledge and make amends)"
+              "answer": "công khai thừa nhận và sửa (publicly acknowledge and make amends)",
+              "english": "Faire amende honorable → to publicly acknowledge a mistake and make formal amends"
             },
             {
               "prompt": "Tourner la page",
-              "answer": "không quay lại chủ đề nữa (turn the page, move on)"
+              "answer": "không quay lại chủ đề nữa (turn the page, move on)",
+              "english": "Tourner la page → to move on / close the chapter / not bring it up again"
             },
             {
               "prompt": "Mettre les choses au clair",
-              "answer": "giải thích để xóa hiểu lầm (clear things up to dispel a misunderstanding)"
+              "answer": "giải thích để xóa hiểu lầm (clear things up to dispel a misunderstanding)",
+              "english": "Mettre les choses au clair → to clear the air by explaining what happened"
             },
             {
               "prompt": "Un de ces quatre",
-              "answer": "câu xã giao mơ hồ Pháp (a vague French social formula (\"one of these days\"))"
+              "answer": "câu xã giao mơ hồ Pháp (a vague French social formula (\"one of these days\"))",
+              "english": "Un de ces quatre → 'one of these days' — a deliberately vague French social formula"
             }
           ]
         },
         {
           "type": "translation",
           "instruction_vi": "Dịch sang tiếng Pháp lịch sự B2.",
+          "instruction_en": "Translate each Vietnamese sentence into B2-level polite French.",
           "items": [
             {
               "prompt": "Em đã hiểu sai lời mời — hoàn toàn không phải thiếu tôn trọng.",
-              "answer": "J'ai mal interprété l'invitation — ce n'était absolument pas un manque de respect."
+              "answer": "J'ai mal interprété l'invitation — ce n'était absolument pas un manque de respect.",
+              "english": "I misread the invitation — it absolutely wasn't a lack of respect.",
+              "hint_vi": "dùng « mal interprété » + « absolument pas »",
+              "hint_en": "use 'mal interprété' (misread) and 'absolument pas' (absolutely not) for emphasis"
             },
             {
               "prompt": "Nếu lời mời vẫn còn, em rất vui được đến thứ bảy tới.",
-              "answer": "Si la proposition tient toujours, je serais heureuse de venir samedi prochain."
+              "answer": "Si la proposition tient toujours, je serais heureuse de venir samedi prochain.",
+              "english": "If the offer still stands, I'd be happy to come next Saturday.",
+              "hint_vi": "« la proposition tient toujours » = lời mời vẫn còn; conditional « je serais »",
+              "hint_en": "'la proposition tient toujours' = the offer still stands; use the conditional 'je serais'"
             },
             {
               "prompt": "Em vẫn đang học các luật ngầm của các anh — cảm ơn vì sự kiên nhẫn.",
-              "answer": "Je suis encore en train d'apprendre vos codes — merci de votre patience."
+              "answer": "Je suis encore en train d'apprendre vos codes — merci de votre patience.",
+              "english": "I'm still learning your unwritten rules — thank you for your patience.",
+              "hint_vi": "« en train de » = đang; « vos codes » = các luật ngầm",
+              "hint_en": "'en train de' = in the middle of (an ongoing action); 'vos codes' = your unspoken rules"
             }
           ]
         }
@@ -6776,6 +6874,12 @@ export const lessons: FrenchLesson[] =           [
             "ministère → mi-nis-tèr",
             "charge → sharj",
             "francophones → frãn-ko-fon"
+          ],
+          "pronunciation_focus_en": [
+            "représente → ruh-pray-ZAH(n)T (nasal third syllable; final 'te' is silent — air through nose for 'ãn')",
+            "ministère → mee-nees-TAIR (final 'tère' rhymes with English 'tear' as in 'rip')",
+            "charge → SHARZH (final 'ge' = 'zh' like the 's' in 'measure'; rhymes with English 'large' but with the 'zh' sound)",
+            "francophones → frah(n)-ko-FONE (final 'phones' = English 'phone' + s, but the 's' is silent)"
           ]
         },
         {
@@ -6786,6 +6890,12 @@ export const lessons: FrenchLesson[] =           [
             "attention → a-tãn-sion",
             "travaux → tra-vo",
             "transition → trãn-zi-sion"
+          ],
+          "pronunciation_focus_en": [
+            "délégation → day-lay-gah-SYO(n) (nasal final, rhymes with 'on' said through the nose)",
+            "attention → ah-tah(n)-SYO(n) (two nasals — middle and final; very different from English 'a-TEN-shun')",
+            "travaux → trah-VOH (one-syllable feel; final 'x' silent — rhymes with English 'show')",
+            "transition → trah(n)-zee-SYO(n) (note the 's' becomes 'z' between vowels — 'trah(n)-ZEE' not 'trah(n)-SEE')"
           ]
         },
         {
@@ -6796,6 +6906,12 @@ export const lessons: FrenchLesson[] =           [
             "personnel → pèr-so-nèl",
             "intervention → an-tèr-vãn-sion",
             "éclairante → é-klè-rãnt"
+          ],
+          "pronunciation_focus_en": [
+            "titre → TEE-truh (the final 'tre' is a soft 'truh' — barely there)",
+            "personnel → pair-so-NEL (stress on the last syllable, unlike English 'PER-suh-nul')",
+            "intervention → ah(n)-tair-vah(n)-SYO(n) (three nasals — counts as a 'big French word' that needs slow articulation)",
+            "éclairante → ay-kleh-RAH(n)T (final 'ante' is nasal, 'te' silent — air through nose, mouth open)"
           ]
         },
         {
@@ -6806,6 +6922,12 @@ export const lessons: FrenchLesson[] =           [
             "relation → rơ-la-sion",
             "attaché → a-ta-shé",
             "commercial → ko-mer-si-al"
+          ],
+          "pronunciation_focus_en": [
+            "pourriez → poor-YAY (two syllables, the 'r' is the rolled French 'r' from the back of the throat)",
+            "relation → ruh-lah-SYO(n) (nasal final; very different from English 'reLAYshun')",
+            "attaché → ah-tah-SHAY (same as English borrowing 'attaché' — stress on the final syllable)",
+            "commercial → koh-mair-SYAL (no 'sh' sound — it's 'syal' not 'shul' as in English)"
           ]
         },
         {
@@ -6816,102 +6938,124 @@ export const lessons: FrenchLesson[] =           [
             "prolonger → pro-lõn-jé",
             "échange → é-shãnj",
             "session → sè-sion"
+          ],
+          "pronunciation_focus_en": [
+            "propose → proh-POHZ (final 's' becomes 'z' — rhymes with English 'rose')",
+            "prolonger → proh-loh(n)-ZHAY (nasal middle; final 'ger' = 'zhay' with the 'measure' s-sound)",
+            "échange → ay-SHAH(n)ZH (nasal middle; final 'ge' = 'zh')",
+            "session → seh-SYO(n) (nasal final; different from English 'SEH-shun')"
           ]
         }
       ],
       "cultural_notes_vi": "Tại hội nghị quốc tế, đại biểu Việt Nam thường đối mặt với hai thách thức về register: (1) bên cạnh người Pháp/Bỉ/Thụy Sĩ — phải dùng tiếng Pháp B2-C1 chính xác, không dùng các cấu trúc ngày thường; (2) bên cạnh đại biểu nước châu Phi/Maghreb — họ thường nói tiếng Pháp lưu loát hơn nhưng register khác (giọng nói có thể trực tiếp hơn, có khi ít diplomatic hơn). Là người Việt, bạn nằm ở vị trí trung gian — cần diplomatic nhất, vì truyền thống ngoại giao Việt và phong cách Pháp chính thức trùng nhau ở điểm này.\n\nLỗi phổ biến: (1) « over-formal » đến cứng nhắc — đọc thuộc bài phát biểu, không tự nhiên trong Q&A; (2) « name-dropping » sai cách — kể tên các quan chức Việt Nam mà không ai biết, làm mất thời gian; (3) « apologize » khi nói tiếng Pháp — « excusez mon français » trước khi nói; người Pháp thấy gượng và không cần thiết khi tiếng Pháp của bạn đã B2.\n\nMột nguyên tắc: cá nhân hóa khi có thể. Khi giới thiệu, đừng chỉ nói « le ministère du Plan » — thêm một câu cụ thể về mảng bạn phụ trách (« en charge des partenariats francophones »). Khi nhận xét về panel, đừng dùng các cụm chung chung (« très intéressant ») — nêu một điểm cụ thể đã chạm đến bạn. Sự cụ thể là cách bạn được nhớ và tạo cơ hội networking sau hội nghị.",
+      "cultural_notes_en": "International conferences in French (UN agencies, OECD, OIF, AFD-hosted events) have a register that anglophones often misread in either direction. The American-business default — friendly, first-name, 'so what brings you here?' — feels presumptuous and slightly disrespectful at a Francophone conference, even at the coffee breaks. The British-academic default — dry, ironic, low-key — comes across as standoffish to West African and Maghrebi delegates, who often have a warmer professional register than the French themselves. The B2 sweet spot: formal vouvoiement, a personal-but-specific opener ('I noted your point on X — applicable to my country because Y'), and one concrete proposal for follow-up.\n\nVietnamese delegates have a structural advantage here: the Vietnamese diplomatic tradition (formal, respectful, indirect at first then concrete) maps remarkably well onto French conference protocol. The cross-cultural trap to avoid is over-correcting — sometimes Vietnamese delegates over-formalize ('Excellency, with the utmost humility, may I respectfully suggest…') because they're mapping onto Vietnamese senior-government register. In French, that level reads as either sarcasm or insecurity. Stick to clean B2 forms: 'Monsieur', 'à titre personnel', 'pourriez-vous', 'je vous propose'.\n\nThree mistakes that flag you as inexperienced: (1) Apologizing for your French ('excusez mon français') — once you're at B2 it's unnecessary and reads as fishing for reassurance; just speak. (2) Name-dropping Vietnamese officials nobody knows — wastes airtime and signals you're more concerned with hierarchy than substance. (3) Reading from a printed speech during Q&A — French conference culture treats Q&A as a real conversation; reading instead of speaking marks you as someone who isn't comfortable improvising. Coming from a US/UK academic background you may be used to reading papers verbatim — leave that habit at the door for French Q&A.",
       "tip_advice_vi": "Trước hội nghị: đọc trước chương trình, đánh dấu 5-7 người bạn muốn gặp; chuẩn bị 3 câu giới thiệu (15s, 60s, 3 phút) tùy ngữ cảnh. Trong hội nghị: đến trước khai mạc 15 phút — đó là « golden window » để bắt chuyện không gượng. Mang theo name card (in cả hai mặt: Pháp + Anh, không cần Việt cho audience quốc tế). Ghi note nhanh sau mỗi cuộc gặp — không phải nhớ tất cả, chỉ 2 từ khóa giúp follow-up. Sau hội nghị 24-48 giờ: gửi email cá nhân cho 5-7 người đã trao đổi sâu — không phải spam, chỉ những người có nội dung cụ thể để gửi (tài liệu nhắc đến, lời mời café khi họ qua Hà Nội, một báo cáo bạn đã hứa). Trong các phiên Q&A, nếu phát biểu, mở đầu bằng « Au nom de la délégation vietnamienne… » để khẳng định chính danh.",
+      "tip_advice_en": "Before the conference: read the full program, flag 5–7 people you specifically want to meet, and prepare three versions of your self-introduction (15-second elevator, 60-second standard, 3-minute deep-dive). At the event: arrive 15 minutes before the opening — that's the golden window for unforced introductions before sessions begin. Bring physical business cards printed in French and English (skip Vietnamese for an international audience — it makes the card feel inward-facing). Take quick post-conversation notes — not full notes, just two keywords per person that will help you write a useful follow-up email later. Within 24–48 hours of the conference, send personalized emails to the 5–7 contacts you had real exchanges with — not a bulk newsletter, only people for whom you have something specific to send (a document you mentioned, an offer of coffee when they next pass through Hanoi, a report you promised). In Q&A sessions, if you take the floor on behalf of your delegation, open with 'Au nom de la délégation vietnamienne…' (on behalf of the Vietnamese delegation) — this establishes standing immediately. One US/UK-specific calibration note: in French conference culture, asking a panelist a precise critical question is a sign of respect, not a challenge — anglophones used to gentler 'thank-you-for-your-talk' questions can lean in here.",
       "vocabulary": [
         {
           "word": "une délégation",
           "en": "a delegation",
           "vi": "đoàn đại biểu",
           "pos": "n.f.",
-          "pronunciation_vi": "dé-lé-ga-sion"
+          "pronunciation_vi": "dé-lé-ga-sion",
+          "pronunciation_en": "day-lay-gah-SYO(n) (four syllables, nasal final; rhymes with 'on' said through the nose)"
         },
         {
           "word": "un attaché commercial",
           "en": "trade attaché",
           "vi": "tham tán thương mại",
           "pos": "n.m.",
-          "pronunciation_vi": "a-ta-shé ko-mer-si-al"
+          "pronunciation_vi": "a-ta-shé ko-mer-si-al",
+          "pronunciation_en": "ah-tah-SHAY koh-mair-SYAL (the 'attaché' is the same as the English borrowing — final syllables stressed)"
         },
         {
           "word": "une intervention",
           "en": "a (panel) intervention",
           "vi": "bài phát biểu",
           "pos": "n.f.",
-          "pronunciation_vi": "an-tèr-vãn-sion"
+          "pronunciation_vi": "an-tèr-vãn-sion",
+          "pronunciation_en": "ah(n)-tair-vah(n)-SYO(n) (three nasal vowels; in French conference context this means a panel contribution, not an interruption)"
         },
         {
           "word": "un panel d'experts",
           "en": "expert panel",
           "vi": "phiên chuyên gia",
           "pos": "n.m.",
-          "pronunciation_vi": "pa-nèl dèk-sper"
+          "pronunciation_vi": "pa-nèl dèk-sper",
+          "pronunciation_en": "pah-NEL dek-SPAIR (final 's' on 'experts' silent; 'expert' rhymes with English 'air')"
         },
         {
           "word": "prendre la parole",
           "en": "to take the floor",
           "vi": "phát biểu",
           "pos": "v.",
-          "pronunciation_vi": "prãndr la pa-rol"
+          "pronunciation_vi": "prãndr la pa-rol",
+          "pronunciation_en": "PRAH(n)-druh lah pah-ROHL (nasal first syllable; final 'le' silent on 'parole')"
         },
         {
           "word": "la francophonie",
           "en": "the French-speaking world",
           "vi": "khối Pháp ngữ",
           "pos": "n.f.",
-          "pronunciation_vi": "frãn-ko-fo-ni"
+          "pronunciation_vi": "frãn-ko-fo-ni",
+          "pronunciation_en": "frah(n)-koh-foh-NEE (four syllables; ends with stressed 'NEE' like English 'knee')"
         },
         {
           "word": "un partenariat bilatéral",
           "en": "bilateral partnership",
           "vi": "quan hệ đối tác song phương",
           "pos": "n.m.",
-          "pronunciation_vi": "par-tơ-na-ria bi-la-té-ral"
+          "pronunciation_vi": "par-tơ-na-ria bi-la-té-ral",
+          "pronunciation_en": "par-tuh-nah-RYAH bee-lah-tay-RAL (formal diplomatic register; 'partenariat' is a heavy word — slow it down)"
         },
         {
           "word": "à titre personnel",
           "en": "in a personal capacity",
           "vi": "với tư cách cá nhân",
           "pos": "expr.",
-          "pronunciation_vi": "a ti-trơ pèr-so-nèl"
+          "pronunciation_vi": "a ti-trơ pèr-so-nèl",
+          "pronunciation_en": "ah TEE-truh pair-so-NEL (signal phrase: switches you from official-position mode to personal-opinion mode — a key B2 register move)"
         },
         {
           "word": "une note diplomatique",
           "en": "a diplomatic note",
           "vi": "công hàm",
           "pos": "n.f.",
-          "pronunciation_vi": "not di-plo-ma-tik"
+          "pronunciation_vi": "not di-plo-ma-tik",
+          "pronunciation_en": "NOHT dee-ploh-mah-TEEK (formal written diplomatic communication between governments — heavier than 'a letter')"
         },
         {
           "word": "une feuille de route",
           "en": "a roadmap",
           "vi": "lộ trình hành động",
           "pos": "n.f.",
-          "pronunciation_vi": "fơy dơ rut"
+          "pronunciation_vi": "fơy dơ rut",
+          "pronunciation_en": "FUH-yuh duh ROOT (the 'feuille' = 'fuh-yuh' is one of the hardest French sounds for English speakers — try 'foo-ee' said fast)"
         }
       ],
       "dialogue": [
         {
           "speaker": "M. Diop",
           "text": "Vous représentez quel pays exactement ?",
+          "en": "Which country do you represent, exactly?",
           "vi": "Anh đại diện nước nào cụ thể?"
         },
         {
           "speaker": "Quân",
           "text": "Le Vietnam — délégation du ministère du Plan. Votre intervention de ce matin m'a beaucoup intéressé.",
+          "en": "Vietnam — Ministry of Planning delegation. I found your panel contribution this morning very interesting.",
           "vi": "Việt Nam — đoàn Bộ Kế hoạch. Bài phát biểu sáng nay của ngài rất khiến em quan tâm."
         },
         {
           "speaker": "M. Diop",
           "text": "Merci. Quel point en particulier ?",
+          "en": "Thank you. Which point in particular?",
           "vi": "Cảm ơn. Điểm cụ thể nào?"
         },
         {
           "speaker": "Quân",
           "text": "Votre lecture du financement vert pour les pays à revenu intermédiaire — applicable au Vietnam.",
+          "en": "Your reading of green financing for middle-income countries — directly applicable to Vietnam.",
           "vi": "Cách ngài đọc tài chính xanh cho các nước thu nhập trung bình — áp dụng được cho Việt Nam."
         }
       ],
@@ -6919,66 +7063,79 @@ export const lessons: FrenchLesson[] =           [
         {
           "speaker": "Quân (entre deux sessions, cocktail)",
           "text": "Bonjour, je crois que je vous ai croisé pendant le panel de ce matin — Quân Trần, délégation vietnamienne.",
+          "en": "Hello — I believe I crossed paths with you during this morning's panel. Quân Trần, Vietnamese delegation.",
           "vi": "Chào ngài, em nghĩ mình đã gặp ngài trong panel sáng nay — Quân Trần, đoàn Việt Nam."
         },
         {
           "speaker": "M. Diop",
           "text": "Bonjour Monsieur Trần. Mamadou Diop, ministère sénégalais des Finances. Vous avez posé la question sur la traçabilité des fonds verts, c'est ça ?",
+          "en": "Hello, Mr. Trần. Mamadou Diop, Senegalese Ministry of Finance. You asked the question about traceability of green funds, didn't you?",
           "vi": "Chào anh Trần. Mamadou Diop, Bộ Tài chính Senegal. Anh đã đặt câu hỏi về truy xuất nguồn gốc quỹ xanh, đúng không?"
         },
         {
           "speaker": "Quân",
           "text": "C'est moi. Vous m'avez répondu avec des chiffres précis sur le cas sénégalais — j'ai pris des notes. Pourrions-nous prolonger l'échange quelques minutes ?",
+          "en": "That was me. You answered with specific figures on the Senegalese case — I took notes. Could we extend the exchange for a few minutes?",
           "vi": "Là em. Ngài đã trả lời em với số liệu cụ thể về trường hợp Senegal — em đã ghi chú. Mình có thể kéo dài trao đổi vài phút không?"
         },
         {
           "speaker": "M. Diop",
           "text": "Bien sûr. Quel angle vous intéresse ?",
+          "en": "Of course. Which angle interests you?",
           "vi": "Tất nhiên. Góc nào anh quan tâm?"
         },
         {
           "speaker": "Quân",
           "text": "Au Vietnam, nous avons un dispositif similaire en construction — l'AFD nous accompagne depuis 2023. Mais nous butons sur la même question que celle que vous avez résolue : comment vérifier que les fonds arrivent bien aux PME et pas dans les administrations intermédiaires.",
+          "en": "In Vietnam we have a similar mechanism being built — the AFD has been supporting us since 2023. But we're stuck on the same question you solved: how to verify that the funds actually reach SMEs and not the intermediate administrations.",
           "vi": "Ở Việt Nam, chúng em đang xây dựng cơ chế tương tự — AFD đồng hành từ 2023. Nhưng chúng em vướng cùng câu hỏi mà ngài đã giải quyết: làm sao kiểm tra quỹ thực sự đến DNVVN chứ không phải đọng ở cấp trung gian."
         },
         {
           "speaker": "M. Diop",
           "text": "Question classique. Notre solution a été de passer par une structure tierce — un cabinet d'audit privé qui valide chaque décaissement avant qu'il quitte le compte central. Coût supplémentaire, mais ça a divisé par cinq les irrégularités.",
+          "en": "Classic question. Our solution was to route through a third party — a private audit firm that validates each disbursement before it leaves the central account. There's an extra cost, but it cut irregularities by a factor of five.",
           "vi": "Câu hỏi cổ điển. Giải pháp của chúng tôi là đi qua bên thứ ba — một công ty kiểm toán tư nhân xác nhận mỗi lần giải ngân trước khi rời tài khoản trung tâm. Chi phí thêm, nhưng giảm bất thường xuống 5 lần."
         },
         {
           "speaker": "Quân",
           "text": "Très intéressant. Je peux me permettre une question franche — comment l'audit privé a-t-il été accepté politiquement, sachant que ça touche à des zones sensibles ?",
+          "en": "Very interesting. If I may ask a frank question — how was the private audit accepted politically, given it touches sensitive areas?",
           "vi": "Rất thú vị. Em xin phép hỏi một câu thẳng — kiểm toán tư nhân đã được chấp nhận về chính trị thế nào, biết rằng nó chạm vùng nhạy cảm?"
         },
         {
           "speaker": "M. Diop",
           "text": "Franc, j'apprécie. La clé : faire venir l'idée de l'extérieur. C'est l'AFD qui l'a posée comme condition — donc personne en interne n'a porté politiquement la décision. Si c'était venu d'un ministre sénégalais, ça aurait coincé.",
+          "en": "Frank — I appreciate it. The key: have the idea come from outside. The AFD set it as a condition — so no one internally had to carry the political weight of the decision. If it had come from a Senegalese minister, it would have stalled.",
           "vi": "Anh thẳng, tôi quý. Chìa khóa: để ý tưởng đến từ bên ngoài. AFD đã đặt làm điều kiện — vậy không ai trong nước phải gánh chính trị quyết định. Nếu đến từ một bộ trưởng Senegal, đã kẹt."
         },
         {
           "speaker": "Quân",
           "text": "C'est exactement le mécanisme dont nous avons besoin. Pourriez-vous nous mettre en relation avec votre cabinet d'audit ? Au minimum, qu'on apprenne de leur expérience ?",
+          "en": "That's exactly the mechanism we need. Could you put us in touch with your audit firm? At minimum so we can learn from their experience?",
           "vi": "Đó đúng là cơ chế chúng em cần. Ngài có thể giúp giới thiệu chúng em với công ty kiểm toán không? Ít nhất để học từ kinh nghiệm của họ?"
         },
         {
           "speaker": "M. Diop",
           "text": "Avec plaisir. Donnez-moi votre carte, je vous fais l'introduction par mail demain matin. Et si vous montez un projet pilote au Vietnam, je serais curieux d'avoir un retour dans six mois.",
+          "en": "With pleasure. Give me your card, I'll make the introduction by email tomorrow morning. And if you set up a pilot project in Vietnam, I'd be curious to hear feedback in six months.",
           "vi": "Sẵn lòng. Anh đưa name card, tôi giới thiệu qua email sáng mai. Và nếu anh xây dự án thí điểm ở Việt Nam, tôi muốn nghe phản hồi sau 6 tháng."
         },
         {
           "speaker": "Quân",
           "text": "C'est noté — je vous tiendrai informé. Voici ma carte. À titre personnel, j'aimerais aussi vous proposer un café si vous passez à Hanoï — il y a une délégation sénégalaise attendue en novembre, je crois.",
+          "en": "Noted — I'll keep you informed. Here's my card. On a personal note, I'd also like to invite you for coffee if you pass through Hanoi — I believe a Senegalese delegation is expected in November.",
           "vi": "Em ghi — em sẽ giữ liên lạc. Đây là name card của em. Cá nhân em cũng muốn mời ngài cà phê nếu ngài qua Hà Nội — em nghe có đoàn Senegal sắp đến tháng 11."
         },
         {
           "speaker": "M. Diop",
           "text": "Effectivement, je serai du voyage. Je vous contacte une dizaine de jours avant. Bonne suite de conférence, Monsieur Trần.",
+          "en": "Indeed, I'll be on that trip. I'll contact you about ten days beforehand. Enjoy the rest of the conference, Mr. Trần.",
           "vi": "Đúng vậy, tôi sẽ đi. Tôi liên hệ anh khoảng 10 ngày trước. Chúc anh phần còn lại hội nghị tốt đẹp, anh Trần."
         },
         {
           "speaker": "Quân",
           "text": "Merci, Monsieur Diop. À très bientôt.",
+          "en": "Thank you, Mr. Diop. See you very soon.",
           "vi": "Cảm ơn ngài Diop. Hẹn sớm gặp lại."
         }
       ],
@@ -6987,30 +7144,44 @@ export const lessons: FrenchLesson[] =           [
         "Trong tiệc cocktail, một đại biểu châu Phi nói tiếng Pháp lưu loát kể chuyện đùa về « les Asiatiques qui parlent peu en réunion ». Phản hồi vừa giữ tinh thần vui, vừa đính chính nhẹ — không phòng thủ nhưng không nhân nhượng cliché.",
         "Bạn được mời lên phát biểu thay người dẫn đoàn bị ốm — chỉ có 2 phút chuẩn bị. Cấu trúc phát biểu 90 giây: chào, chính danh, một điểm cụ thể về Việt Nam, một câu hỏi mở cho hội thảo."
       ],
+      "roleplay_prompts_en": [
+        "The French ambassador at the conference walks up and asks: 'Why isn't your country more active in Francophone programs?' Respond diplomatically — acknowledge the fair part of the question, name initiatives that are underway but not yet visible internationally, propose a concrete follow-up. (US/UK office equivalent: a director asking 'why isn't your team showing up at the cross-functional reviews?' — same shape, same calibration: don't deflect, name what's already moving, propose a next step.)",
+        "At a cocktail reception, a fluent French-speaking African delegate tells a joke about 'Asians who barely speak in meetings.' Respond in a way that holds the friendly tone but gently corrects the stereotype — not defensive, but not letting the cliché stand either. (Anglophone parallel: a US colleague making a 'quiet Asian' joke at a work happy hour — same recovery move: light, factual, redirects without escalating.)",
+        "You're asked to take the floor on behalf of your delegation because the head delegate is sick — you have 2 minutes to prepare. Structure a 90-second statement: greeting + identification, one concrete point about Vietnam relevant to the panel topic, one open question for the floor. Keep it tight: at French conferences, 90 seconds well-used is remembered; 4 minutes meandering is forgotten."
+      ],
       "register_notes": "Hội nghị quốc tế dùng vouvoiement tuyệt đối — kể cả với đại biểu cùng tuổi từ nước khác. Khác phỏng vấn việc làm: register hội nghị có thể « warmer » một chút — cho phép câu chuyện cá nhân ngắn (một quote, một ví dụ từ Việt Nam), miễn là dẫn về nội dung. Tránh ba lỗi: (1) đọc thuộc bài phát biểu trong Q&A — bị xem là không tự tin tiếng Pháp; (2) « Excusez mon français » trước khi nói — gượng và không cần; (3) gọi đồng nghiệp Việt cùng đoàn bằng « anh/chị » trong câu tiếng Pháp — phải là « Monsieur/Madame + tên họ ». Khi đề cập Việt Nam, dùng « le Vietnam » (le, không là), « les Vietnamiens » (chữ V hoa). Khi nhắc đến đoàn của mình, ưu tiên « notre délégation », « ma délégation » thay vì « nous » đơn giản — tăng tính trang trọng.",
+      "register_notes_en": "International conferences use vouvoiement absolutely — including with delegates your own age from other countries. Even after a long conversation where things have warmed up, do not switch to tu unless they propose it explicitly ('on peut se tutoyer?'). The conference register is slightly warmer than a French job interview — a brief personal anecdote, a quote, or a specific example from Vietnam is welcome as long as it serves the substance. Three failure modes to avoid: (1) Reading a memorized statement during Q&A — French audiences read this as a sign you're not comfortable in French, which is exactly what you don't want at B2. (2) Opening with 'Excusez mon français' — at B2 it's unnecessary and reads as fishing for reassurance; just begin. (3) Referring to a Vietnamese colleague in your delegation by 'anh/chị' or first name in a French sentence — switch to 'Monsieur/Madame [Family Name]' in French; the Vietnamese forms feel jarring and informal in French context.\n\nWhen referring to Vietnam: 'le Vietnam' (with the article, capital V) and 'les Vietnamiens' (capital V). When referring to your own delegation: prefer 'notre délégation' or 'ma délégation' over a plain 'nous' — it adds the formality the setting expects. A note for anglophones who lean conversational by default: even close colleagues use 'Monsieur Trần' and vouvoiement publicly at a conference, then switch to first names and tu privately at dinner. The two registers coexist; don't try to flatten them.",
       "idiom_glosses": [
         {
           "idiom": "Faire bonne figure",
           "literal": "Tỏ vẻ tốt",
+          "literal_en": "To make a good face",
           "meaning": "Giữ phong độ tốt trong tình huống công khai.",
+          "meaning_en": "To put on a good front / show well in a public situation — implies poise under pressure, not pretense.",
           "example": "Malgré le décalage horaire, notre délégation a fait bonne figure."
         },
         {
           "idiom": "Mettre en relation",
           "literal": "Đặt vào quan hệ",
+          "literal_en": "To put into relation",
           "meaning": "Giới thiệu hai bên với nhau.",
+          "meaning_en": "To introduce two parties to each other (typically professional contacts). The French equivalent of English 'to connect (someone) with (someone)' — a key diplomatic and business networking phrase.",
           "example": "M. Diop va nous mettre en relation avec son cabinet d'audit."
         },
         {
           "idiom": "Ouvrir des portes",
           "literal": "Mở các cánh cửa",
+          "literal_en": "To open doors",
           "meaning": "Tạo cơ hội mới.",
+          "meaning_en": "To open doors / create new opportunities — same image as English; used heavily in French professional and diplomatic contexts.",
           "example": "Cette conférence m'a ouvert des portes en Afrique francophone."
         },
         {
           "idiom": "Prendre langue avec",
           "literal": "Cầm lưỡi với",
+          "literal_en": "To take tongue with",
           "meaning": "Liên hệ chính thức để bắt đầu thảo luận.",
+          "meaning_en": "To formally make contact with (someone) to begin discussions — a slightly elevated diplomatic register, more formal than 'prendre contact'. Anglophone equivalent: 'to open a line of communication with'.",
           "example": "Nous prendrons langue avec leur ministère dès la rentrée."
         }
       ],
@@ -7018,62 +7189,86 @@ export const lessons: FrenchLesson[] =           [
         {
           "type": "fill-blank",
           "instruction_vi": "Điền cụm vào câu hội nghị.",
+          "instruction_en": "Fill in each blank with the missing word from a conference-register sentence.",
           "items": [
             {
               "prompt": "Je ___ le ministère vietnamien du Plan.",
-              "answer": "représente"
+              "answer": "représente",
+              "hint_vi": "động từ « đại diện »",
+              "hint_en": "verb 'to represent' (1st-person singular, present tense)"
             },
             {
               "prompt": "À ___ personnel, j'ai trouvé l'intervention éclairante.",
-              "answer": "titre"
+              "answer": "titre",
+              "hint_vi": "danh từ trong cụm « à ___ personnel » = với tư cách cá nhân",
+              "hint_en": "noun in the phrase 'à ___ personnel' meaning 'in a personal capacity'"
             },
             {
               "prompt": "Pourriez-vous nous mettre en ___ avec votre attaché commercial ?",
-              "answer": "relation"
+              "answer": "relation",
+              "hint_vi": "danh từ trong cụm « mettre en ___ » = giới thiệu",
+              "hint_en": "noun in the phrase 'mettre en ___' meaning 'to put into [X]' / to introduce"
             },
             {
               "prompt": "Notre délégation suit avec ___ les travaux du panel.",
-              "answer": "attention"
+              "answer": "attention",
+              "hint_vi": "danh từ « sự chú ý »",
+              "hint_en": "noun 'attention / close interest'"
             }
           ]
         },
         {
           "type": "matching",
           "instruction_vi": "Nối thành ngữ với chiến lược ngoại giao.",
+          "instruction_en": "Match each idiom with the diplomatic strategy it expresses.",
           "items": [
             {
               "prompt": "Faire bonne figure",
-              "answer": "giữ phong độ trong công khai (put on a good front in public)"
+              "answer": "giữ phong độ trong công khai (put on a good front in public)",
+              "english": "Faire bonne figure → put on a good front / show well in public"
             },
             {
               "prompt": "Mettre en relation",
-              "answer": "giới thiệu hai bên với nhau (introduce two parties to each other)"
+              "answer": "giới thiệu hai bên với nhau (introduce two parties to each other)",
+              "english": "Mettre en relation → introduce two parties to each other professionally"
             },
             {
               "prompt": "Ouvrir des portes",
-              "answer": "tạo cơ hội mới (open new doors / opportunities)"
+              "answer": "tạo cơ hội mới (open new doors / opportunities)",
+              "english": "Ouvrir des portes → open doors / create new opportunities"
             },
             {
               "prompt": "Prendre langue avec",
-              "answer": "liên hệ chính thức bắt đầu thảo luận (formally make contact to start discussions)"
+              "answer": "liên hệ chính thức bắt đầu thảo luận (formally make contact to start discussions)",
+              "english": "Prendre langue avec → formally open a line of communication / begin official discussions"
             }
           ]
         },
         {
           "type": "translation",
           "instruction_vi": "Dịch sang tiếng Pháp B2 ngoại giao.",
+          "instruction_en": "Translate each Vietnamese sentence into B2 diplomatic French.",
           "items": [
             {
               "prompt": "Em đại diện đoàn Việt Nam, phụ trách Pháp ngữ.",
-              "answer": "Je représente la délégation vietnamienne, en charge des affaires francophones."
+              "answer": "Je représente la délégation vietnamienne, en charge des affaires francophones.",
+              "english": "I represent the Vietnamese delegation, in charge of Francophone affairs.",
+              "hint_vi": "« en charge de » = phụ trách",
+              "hint_en": "'en charge de' = in charge of / responsible for"
             },
             {
               "prompt": "Em xin phép hỏi một câu thẳng.",
-              "answer": "Je peux me permettre une question franche."
+              "answer": "Je peux me permettre une question franche.",
+              "english": "May I take the liberty of asking a frank question.",
+              "hint_vi": "« je peux me permettre » = em xin phép",
+              "hint_en": "'je peux me permettre' = may I take the liberty / if I may"
             },
             {
               "prompt": "Em sẽ giữ liên lạc và báo tin trong sáu tháng.",
-              "answer": "Je vous tiendrai informé d'ici six mois."
+              "answer": "Je vous tiendrai informé d'ici six mois.",
+              "english": "I'll keep you informed within six months.",
+              "hint_vi": "futur simple « tiendrai » + « d'ici »",
+              "hint_en": "use futur simple 'tiendrai' + 'd'ici' (within / by)"
             }
           ]
         }
