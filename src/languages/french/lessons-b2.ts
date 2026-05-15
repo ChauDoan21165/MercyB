@@ -8179,6 +8179,12 @@ export const lessons: FrenchLesson[] =           [
             "franchement → frãn-shơ-mã",
             "gêne → jèn",
             "depuis → dơ-pwi"
+          ],
+          "pronunciation_focus_en": [
+            "voudrais → voo-DRAY (conditional 'I would like' — softer than 'je veux'; ends like English 'tray')",
+            "franchement → frah(n)-shuh-MAH(n) (adverb '-ment' ending = nasal 'mah(n)'; signal word for difficult conversations)",
+            "gêne → ZHEN (one syllable; 'zh' = the 's' in 'measure'; final 'e' silent; rhymes with English 'jen')",
+            "depuis → duh-PWEE ('puis' has the rounded 'u' — purse lips, say 'wee'; means 'since' for a duration)"
           ]
         },
         {
@@ -8189,6 +8195,12 @@ export const lessons: FrenchLesson[] =           [
             "quelqu'un → kèl-kun",
             "réunion → ré-u-nion",
             "problème → pro-blèm"
+          ],
+          "pronunciation_focus_en": [
+            "critiquez → kree-tee-KAY (final '-ez' = 'kay', rhymes with English 'pay'; vous-form)",
+            "quelqu'un → kel-KUH(n) (one nasal final; 'someone' — different from English 'kel-kun')",
+            "réunion → ray-yoo-NYO(n) (three syllables; nasal final '-nion' = 'nyo(n)')",
+            "problème → proh-BLEM (final 'me' silent; rhymes with English 'phlegm' without the 'phl')"
           ]
         },
         {
@@ -8200,6 +8212,13 @@ export const lessons: FrenchLesson[] =           [
             "fond → fõn",
             "forme → form",
             "porter → por-té"
+          ],
+          "pronunciation_focus_en": [
+            "dis → DEE (one syllable; final 's' silent; same vowel as English 'see' but shorter)",
+            "tort → TOR (final 't' silent; rhymes with English 'tore'; means 'wrong / fault')",
+            "fond → FO(n) (nasal final, no 'd' sound; means 'substance / the underlying issue')",
+            "forme → FORM (final 'e' silent; means 'form / manner of delivery' — opposed to 'fond')",
+            "porter → por-TAY (final '-er' rhymes with English 'pay'; 'à porter' = 'to bear / take in')"
           ]
         },
         {
@@ -8210,6 +8229,12 @@ export const lessons: FrenchLesson[] =           [
             "marche → marsh",
             "façon → fa-sõn",
             "communiquer → ko-mu-ni-ké"
+          ],
+          "pronunciation_focus_en": [
+            "côté → koh-TAY ('côté' with circumflex = 'side', different from 'coté' (rated/quoted)')",
+            "marche → MARSH (final 'e' silent; rhymes with English 'marsh'; 'ne marche pas' = 'doesn't work')",
+            "façon → fah-SO(n) (the 'ç' = 's' sound; nasal final; means 'way / manner')",
+            "communiquer → koh-myoo-nee-KAY (the 'u' is rounded French 'u'; final '-er' = 'kay')"
           ]
         },
         {
@@ -8220,102 +8245,124 @@ export const lessons: FrenchLesson[] =           [
             "résoudre → ré-zu-drơ",
             "parler → par-lé",
             "début → dé-bu"
+          ],
+          "pronunciation_focus_en": [
+            "va → VAH (one syllable; goes-form of 'aller' for 'on')",
+            "résoudre → ray-ZOO-druh (the 'oud' has the rounded 'u'; final 'dre' is a soft 'druh')",
+            "parler → par-LAY (final '-er' = 'lay'; rolled 'r' on 'par')",
+            "début → day-BYOO (the 'u' is rounded; means 'beginning / a start')"
           ]
         }
       ],
       "cultural_notes_vi": "Cuộc trò chuyện khó (« conversation difficile ») là kỹ năng B2-C1 quan trọng và cũng là nơi người Việt-Pháp dễ trật khớp nhất. Khác biệt cốt lõi: người Pháp coi « conversation difficile » là cách giải quyết vấn đề (« on en parle, on tranche, on avance »), người Việt thường coi đó là cách phá vỡ hoà khí (« nói ra rồi xấu mặt cả hai »). Sai lầm thường gặp của người Việt: né tránh cuộc trò chuyện khó cho đến khi nó nổ ra dưới dạng phẫn uất hoặc nghỉ việc; sai lầm của người Pháp: lao vào cuộc trò chuyện khó quá nhanh, không cho đối phương thời gian chuẩn bị tâm lý.\n\nKỹ năng giao thoa: biết cách MỞ một cuộc trò chuyện khó với một người Pháp đã được luyện sẵn cho format này, mà không « unleash » nó theo cách gây sốc cho phía Việt nếu có người Việt khác trong phòng. Một quy tắc cốt lõi: cuộc trò chuyện khó nên là 1-on-1, không bao giờ trong họp lớn với cả hai phía. Đây là một quy tắc người Việt cần dạy người Pháp khi làm việc tại Việt Nam, và là quy tắc người Việt phải tự áp dụng khi làm việc với sếp Pháp.\n\nMột chú ý quan trọng: « cultural clash » không phải lỗi của một bên — đa số là cấu trúc khác nhau. Khi bạn muốn nêu một vấn đề, hãy bắt đầu bằng « je voudrais qu'on parle franchement » (hai bên cùng nói thẳng), không phải « tu as fait quelque chose de mal » (đổ lỗi). Mở đầu mời gọi sự tham gia hai chiều thay vì lên án một chiều — đó là cốt lõi.",
+      "cultural_notes_en": "The 'difficult conversation' is a real, named workplace genre in France — and the place where French-Vietnamese (and French-Anglophone) collaboration most often misfires. The core cultural mismatch: French professional culture treats a difficult conversation as the standard mechanism for resolving a problem ('on en parle, on tranche, on avance' — we talk, we decide, we move on). Vietnamese and many East Asian cultures treat the same conversation as a rupture of social harmony ('once it's said aloud, both sides lose face'). Anglophones sit somewhere in the middle: Americans lean French (HBR loves a 'tough conversation'), British lean Vietnamese (we'd really rather not, sorry). All three groups misfire differently against the French model.\n\nFor a Vietnamese learner, the typical failure is avoiding the conversation until it explodes — as resentment, as a quiet resignation, or as a passive-aggressive Slack message. For a US/UK reader, the typical failure is the opposite: ambushing your French colleague at the coffee machine with 'hey can we talk about something?' and then unloading immediately. The French expect a scheduled, deliberate 30-minute slot with a stated topic — not a hallway intercept, not a meeting agenda surprise. Anglophone 'just being open' reads as poor self-management to a French colleague; Vietnamese 'just letting it go' reads as a relationship over.\n\nThe cross-cultural skill at B2 is knowing how to OPEN a difficult conversation with a French interlocutor who's been trained in this format for years, without 'unleashing' it in a way that would shock a Vietnamese colleague in the room. The cardinal rule: difficult conversations are 1-on-1, never in a big meeting with both sides watching. This is a rule Vietnamese learners must teach French colleagues working in Vietnam, and a rule Vietnamese learners must apply to themselves when working under a French manager. The opening move is invitational, not accusatory: 'je voudrais qu'on parle franchement' (let's talk frankly, both of us) rather than 'tu as fait quelque chose de mal' (you did something wrong). That single shift changes the conversation from confrontation to joint problem-solving.",
       "tip_advice_vi": "Khung 5 bước cho cuộc trò chuyện khó: (1) Yêu cầu thời gian riêng — không nói chuyện ở hành lang, đặt 30 phút trong phòng họp; (2) Mở đầu bằng intent (« Je voudrais qu'on parle franchement de X. Mon objectif n'est pas de te culpabiliser, mais de trouver une façon de travailler ensemble qui marche pour les deux »); (3) Nêu fact + impact (« Quand tu fais X, ça crée Y pour mon équipe ») — không suy diễn ý đồ; (4) Mời phản hồi (« Comment tu vois ça, toi ? ») — không monologue; (5) Đề xuất thử nghiệm cụ thể (« Pour les deux prochaines semaines, on pourrait essayer Z »). Tránh: nói « tu » giận dữ, lôi quá khứ (« et il y a six mois aussi… »), generalize (« les Français font toujours… »), khóc (làm phía Pháp hoảng và mất năng lực giải quyết). Sau cuộc trò chuyện: gửi tin nhắn « Merci pour cet échange — on revoit dans deux semaines ? ». Không nhắc lại trong các tương tác bình thường — đã giải quyết.",
+      "tip_advice_en": "The five-step frame for a French difficult conversation: (1) Book a private slot — never the hallway, never Slack. Schedule 30 minutes in a real room, stated topic. (2) Open with stated intent: 'Je voudrais qu'on parle franchement de X. Mon objectif n'est pas de te culpabiliser, mais de trouver une façon de travailler ensemble qui marche pour les deux.' This is the single most important sentence in your kit — it defines the conversation as joint problem-solving, not blame. (3) State fact + impact: 'When you do X, it creates Y for my team.' Don't impute motive ('you did this because you don't respect us'); stay on observable behavior and concrete impact. The French 'fait/impact' frame maps directly onto US/UK 'SBI' (Situation/Behavior/Impact) — same skill, slightly different vocabulary. (4) Invite response: 'Comment tu vois ça, toi?' Never monologue past three sentences before pausing. (5) Propose a concrete experiment: 'For the next two weeks, what if we tried Z?' Time-boxed experiments work because they reduce the perceived stakes of any individual change.\n\nThings to avoid: angry 'tu' (you sound out of control), dragging up the past ('and six months ago you also…' — irrelevant and weakens your current point), generalizations ('les Français always…' / 'in France you people…'), and tears (genuinely a problem in French professional contexts — they freeze the other person and stall the conversation rather than evoking sympathy). After the meeting: send a short note 'Merci pour cet échange — on refait un point dans deux semaines?' Then drop the topic in everyday interactions. Looping back to it forces the other person to keep defending themselves, which erases the goodwill the conversation built.",
       "vocabulary": [
         {
           "word": "un malentendu culturel",
           "en": "cultural misunderstanding",
           "vi": "hiểu lầm văn hóa",
           "pos": "n.m.",
-          "pronunciation_vi": "ma-lãn-tãn-du kul-tu-rèl"
+          "pronunciation_vi": "ma-lãn-tãn-du kul-tu-rèl",
+          "pronunciation_en": "ma-lah(n)-tah(n)-DOO kuhl-too-REL (the 'u' in 'culturel' is rounded French 'u'; weighty diplomatic term)"
         },
         {
           "word": "un choc culturel",
           "en": "culture shock",
           "vi": "sốc văn hóa",
           "pos": "n.m.",
-          "pronunciation_vi": "shok kul-tu-rèl"
+          "pronunciation_vi": "shok kul-tu-rèl",
+          "pronunciation_en": "SHOK kuhl-too-REL ('choc' = SHOK, one syllable, like English 'shock')"
         },
         {
           "word": "une critique frontale",
           "en": "direct criticism",
           "vi": "phê bình trực diện",
           "pos": "n.f.",
-          "pronunciation_vi": "kri-tik fron-tal"
+          "pronunciation_vi": "kri-tik fron-tal",
+          "pronunciation_en": "kree-TEEK fro(n)-TAL (direct, head-on criticism — the French default in professional settings)"
         },
         {
           "word": "un cadre hiérarchique",
           "en": "hierarchical framework",
           "vi": "khung cấp bậc",
           "pos": "n.m.",
-          "pronunciation_vi": "ka-drơ i-é-rar-shik"
+          "pronunciation_vi": "ka-drơ i-é-rar-shik",
+          "pronunciation_en": "KAH-druh yay-rar-SHEEK ('cadre' = soft 'kah-druh'; the 'h' in 'hiérarchique' is silent)"
         },
         {
           "word": "un équilibre vie pro / vie perso",
           "en": "work-life balance",
           "vi": "cân bằng công việc-đời sống",
           "pos": "n.m.",
-          "pronunciation_vi": "é-ki-li-brơ vi pro vi pèr-so"
+          "pronunciation_vi": "é-ki-li-brơ vi pro vi pèr-so",
+          "pronunciation_en": "ay-kee-LEE-bruh vee proh vee pair-SOH (very common French workplace term; 'pro' and 'perso' are casual shortenings of 'professionnelle' and 'personnelle')"
         },
         {
           "word": "poser un cadre",
           "en": "to set boundaries",
           "vi": "đặt khung / ranh giới",
           "pos": "v.",
-          "pronunciation_vi": "po-zé an ka-drơ"
+          "pronunciation_vi": "po-zé an ka-drơ",
+          "pronunciation_en": "poh-ZAY uh(n) KAH-druh (literally 'to lay down a frame'; French equivalent of US/UK 'to set boundaries')"
         },
         {
           "word": "désamorcer",
           "en": "to defuse",
           "vi": "hạ nhiệt",
           "pos": "v.",
-          "pronunciation_vi": "dé-za-mor-sé"
+          "pronunciation_vi": "dé-za-mor-sé",
+          "pronunciation_en": "day-zah-mor-SAY (literally 'to remove the primer from (a bomb)'; used for defusing tense situations)"
         },
         {
           "word": "un point de friction",
           "en": "point of friction",
           "vi": "điểm va chạm",
           "pos": "n.m.",
-          "pronunciation_vi": "pwã dơ frik-sion"
+          "pronunciation_vi": "pwã dơ frik-sion",
+          "pronunciation_en": "PWA(n) duh freek-SYO(n) ('point' = nasal 'PWA(n)'; useful neutral term for naming a conflict without escalating)"
         },
         {
           "word": "être sur la même longueur d'onde",
           "en": "to be on the same wavelength",
           "vi": "cùng tần số",
           "pos": "expr.",
-          "pronunciation_vi": "é-trơ syur la mèm lon-gơr dond"
+          "pronunciation_vi": "é-trơ syur la mèm lon-gơr dond",
+          "pronunciation_en": "ETR sur lah MEM lo(n)-GUHR DOH(n)D (same metaphor as English 'on the same wavelength' — radio reference)"
         },
         {
           "word": "trouver un terrain d'entente",
           "en": "to find common ground",
           "vi": "tìm điểm chung",
           "pos": "expr.",
-          "pronunciation_vi": "tru-vé an tè-rãn dãn-tãnt"
+          "pronunciation_vi": "tru-vé an tè-rãn dãn-tãnt",
+          "pronunciation_en": "troo-VAY uh(n) teh-RA(n) dah(n)-TAH(n)T (literally 'a terrain of agreement'; standard French closing phrase for negotiations)"
         }
       ],
       "dialogue": [
         {
           "speaker": "Tâm",
           "text": "Sophie, je peux te demander 30 minutes en aparté cet après-midi ?",
+          "en": "Sophie, can I ask for 30 minutes in private this afternoon?",
           "vi": "Sophie, em có thể xin chị 30 phút nói riêng chiều nay không?"
         },
         {
           "speaker": "Sophie",
           "text": "Bien sûr. Quel est le sujet ?",
+          "en": "Of course. What's the topic?",
           "vi": "Tất nhiên. Chủ đề gì?"
         },
         {
           "speaker": "Tâm",
           "text": "Quelque chose qui me gêne dans nos réunions — je veux qu'on en parle franchement.",
+          "en": "Something that's been bothering me in our meetings — I'd like us to talk about it frankly.",
           "vi": "Một điều khiến em không thoải mái trong các cuộc họp — em muốn mình nói thẳng."
         },
         {
           "speaker": "Sophie",
           "text": "D'accord. 15h30 dans la salle Versailles ?",
+          "en": "Got it. 3:30 PM in the Versailles room?",
           "vi": "Được. 15h30 phòng Versailles?"
         }
       ],
@@ -8323,86 +8370,103 @@ export const lessons: FrenchLesson[] =           [
         {
           "speaker": "Tâm (15h30, salle Versailles)",
           "text": "Merci d'avoir bloqué le créneau. Je voudrais qu'on parle franchement d'un point qui me gêne depuis deux semaines.",
+          "en": "Thanks for blocking off the time. I'd like us to talk frankly about something that's been bothering me for the past two weeks.",
           "vi": "Cảm ơn chị đã chặn khung giờ. Em muốn mình nói thẳng về một điểm khiến em không thoải mái từ hai tuần nay."
         },
         {
           "speaker": "Sophie",
           "text": "Vas-y, je t'écoute. Tu sais que tu peux être direct avec moi.",
+          "en": "Go ahead, I'm listening. You know you can be direct with me.",
           "vi": "Em nói đi, chị nghe. Em biết em có thể thẳng với chị."
         },
         {
           "speaker": "Tâm",
           "text": "Mon objectif n'est pas de te culpabiliser. Je veux juste qu'on trouve une façon de travailler qui marche pour ton style et pour le mien. Voilà le fait : depuis ton arrivée, en réunion d'équipe, tu critiques publiquement le travail des juniors quand tu n'es pas d'accord.",
+          "en": "My goal isn't to make you feel guilty. I just want us to find a way of working that fits both your style and mine. Here's the fact: since you arrived, in team meetings, you publicly critique the junior team members' work when you disagree.",
           "vi": "Mục tiêu em không phải làm chị thấy có lỗi. Em chỉ muốn mình tìm cách làm việc phù hợp với phong cách của chị và của em. Đây là sự thật: từ khi chị đến, trong các cuộc họp đội, chị phê bình công việc các bạn junior công khai khi chị không đồng ý."
         },
         {
           "speaker": "Sophie",
           "text": "Oui — c'est ma façon de fonctionner. En France, je fais ça depuis quinze ans. Personne ne se vexe.",
+          "en": "Yes — that's how I operate. In France, I've been doing this for fifteen years. No one takes offense.",
           "vi": "Đúng — đó là cách chị làm. Ở Pháp chị làm vậy 15 năm rồi. Không ai phật lòng."
         },
         {
           "speaker": "Tâm",
           "text": "Je l'entends. Et je ne dis pas que tu as tort sur le fond — souvent, ce que tu critiques est juste. Je dis que la forme crée un problème ici. Concrètement : trois juniors m'ont parlé en privé en disant qu'ils ont peur de proposer des idées en réunion maintenant.",
+          "en": "I hear you. And I'm not saying you're wrong on the substance — often what you critique is fair. I'm saying the form is creating a problem here. Concretely: three juniors have come to me privately saying they're now afraid to propose ideas in meetings.",
           "vi": "Em hiểu. Và em không nói chị sai về bản chất — thường, điều chị phê bình là đúng. Em nói hình thức tạo vấn đề ở đây. Cụ thể: ba bạn junior nói riêng với em rằng họ sợ đề xuất ý tưởng trong họp giờ."
         },
         {
           "speaker": "Sophie",
           "text": "Trois ? Lesquels ? Pourquoi ils ne me parlent pas directement ?",
+          "en": "Three? Which ones? Why aren't they speaking to me directly?",
           "vi": "Ba người? Ai? Sao họ không nói thẳng với chị?"
         },
         {
           "speaker": "Tâm",
           "text": "Je ne te donne pas les noms — c'était en confidence. Et la raison qu'ils ne te parlent pas directement, c'est précisément ce dont on parle : ils ne se sentent pas en sécurité pour le faire. Pour eux, te dire « je n'aime pas comment tu m'as parlé » serait deux fois plus risqué.",
+          "en": "I won't give you the names — it was told to me in confidence. And the reason they aren't telling you directly is precisely what we're talking about: they don't feel safe to. For them, telling you 'I didn't like how you spoke to me' would be twice as risky.",
           "vi": "Em không đưa tên — là trong sự tin cậy. Và lý do họ không nói thẳng với chị, chính là điều mình đang nói: họ không cảm thấy an toàn để làm vậy. Với họ, nói « tôi không thích cách chị nói với tôi » sẽ rủi ro gấp đôi."
         },
         {
           "speaker": "Sophie",
           "text": "Ça me met dans une position impossible — tu me dis qu'il y a un problème mais je ne peux pas en parler avec eux directement.",
+          "en": "That puts me in an impossible position — you tell me there's a problem but I can't address it with them directly.",
           "vi": "Đặt chị vào thế bí — em nói có vấn đề nhưng chị không nói thẳng với họ được."
         },
         {
           "speaker": "Tâm",
           "text": "Tu as raison que c'est inconfortable. Mais c'est aussi pour ça que je viens te voir — pour qu'on change le système, pas pour gérer chaque cas individuellement. Si on change la dynamique de réunion, le problème disparaît à la racine.",
+          "en": "You're right that it's uncomfortable. But that's also why I'm coming to you — so we change the system rather than handle each case individually. If we change the meeting dynamic, the problem disappears at the root.",
           "vi": "Chị đúng là không thoải mái. Nhưng cũng vì vậy em đến gặp chị — để mình đổi hệ thống, không phải xử lý từng trường hợp. Nếu mình đổi động lực cuộc họp, vấn đề biến mất từ gốc."
         },
         {
           "speaker": "Sophie",
           "text": "Tu as une proposition concrète ?",
+          "en": "Do you have a concrete proposal?",
           "vi": "Em có đề xuất cụ thể không?"
         },
         {
           "speaker": "Tâm",
           "text": "Trois choses. Premièrement : pour les critiques individuelles, on les passe en 1-on-1 — pas en réunion publique. Deuxièmement : en réunion, tu peux critiquer les idées (« cette approche ne va pas marcher parce que… ») sans nommer la personne qui l'a proposée. Troisièmement : à la fin de chaque réunion, je propose qu'on demande à un junior de donner son avis — ça les force à parler dans un cadre safe.",
+          "en": "Three things. First: individual critiques happen in 1-on-1s, not public meetings. Second: in meetings, you can critique ideas ('this approach won't work because…') without naming the person who proposed it. Third: at the end of each meeting, I suggest we ask one junior for their view — it forces them to speak in a safe frame.",
           "vi": "Ba điều. Thứ nhất: phê bình cá nhân chuyển sang 1-on-1 — không trong họp công khai. Thứ hai: trong họp, chị có thể phê bình ý tưởng (« cách này không thành công vì… ») mà không gọi tên người đề xuất. Thứ ba: cuối mỗi cuộc họp, em đề xuất hỏi một bạn junior cho ý kiến — buộc họ phát biểu trong khung an toàn."
         },
         {
           "speaker": "Sophie",
           "text": "Le premier point, je peux faire. Le deuxième, c'est plus dur — la séparation idée/personne est artificielle pour moi. Le troisième, j'aime — donne-moi la liste des juniors et je les solliciterai par rotation.",
+          "en": "The first point, I can do. The second is harder — separating the idea from the person feels artificial to me. The third I like — give me the junior list and I'll rotate through asking them.",
           "vi": "Điểm một, chị làm được. Điểm hai, khó hơn — tách ý tưởng/người là nhân tạo với chị. Điểm ba, chị thích — đưa chị danh sách junior và chị sẽ luân phiên hỏi."
         },
         {
           "speaker": "Tâm",
           "text": "Sur le deuxième point — ça vaut peut-être un essai de deux semaines, et on en reparle. Si ça ne marche pas pour toi, on cherche autre chose.",
+          "en": "On point two — maybe it's worth a two-week trial, and we revisit. If it doesn't work for you, we look for something else.",
           "vi": "Về điểm hai — có lẽ thử hai tuần và mình nói lại. Nếu không hợp với chị, mình tìm cách khác."
         },
         {
           "speaker": "Sophie",
           "text": "D'accord. Et de mon côté — pour qu'on soit honnêtes — qu'est-ce qui ne marche pas dans la façon dont l'équipe vietnamienne communique avec moi ?",
+          "en": "Agreed. And on my side — to be honest both ways — what isn't working in how the Vietnamese team communicates with me?",
           "vi": "Đồng ý. Và phía chị — để mình thành thật — điều gì không ổn trong cách đội Việt giao tiếp với chị?"
         },
         {
           "speaker": "Tâm",
           "text": "Question franche, je vais répondre. Trois choses. Quand tu poses une question fermée (« vous êtes d'accord ? »), on dit oui par habitude — il faut poser des questions ouvertes (« qu'est-ce que vous en pensez ? »). Quand tu envoies un mail à 22h, on se sent obligés de répondre — précise « pas urgent ». Et quand tu nous félicites en réunion, c'est gênant culturellement — fais-le en privé, par mail.",
+          "en": "Frank question, frank answer. Three things. When you ask a closed question ('do you agree?'), we say yes out of habit — ask open questions instead ('what do you think?'). When you send an email at 10 PM, we feel obliged to reply — note 'not urgent' explicitly. And when you praise us in a meeting, it's culturally awkward — do it privately, by email.",
           "vi": "Câu thẳng, em trả lời. Ba điều. Khi chị đặt câu hỏi đóng (« vous êtes d'accord ? »), tụi em nói có theo thói quen — phải đặt câu hỏi mở (« qu'est-ce que vous en pensez ? »). Khi chị gửi mail lúc 22h, tụi em thấy bắt buộc trả lời — ghi rõ « pas urgent ». Và khi chị khen trong họp, gượng về văn hóa — khen riêng, qua email."
         },
         {
           "speaker": "Sophie",
           "text": "Trois points concrets et exécutables. Merci. On se redonne deux semaines et on refait un point ?",
+          "en": "Three concrete, actionable points. Thank you. Shall we give it two weeks and check in again?",
           "vi": "Ba điểm cụ thể và làm được. Cảm ơn. Mình cho hai tuần và họp lại?"
         },
         {
           "speaker": "Tâm",
           "text": "Avec plaisir. Et merci d'avoir reçu cette conversation sans te défendre.",
+          "en": "With pleasure. And thank you for taking this conversation without getting defensive.",
           "vi": "Sẵn lòng. Và cảm ơn chị đã nhận cuộc trò chuyện này mà không phòng thủ."
         }
       ],
@@ -8411,30 +8475,44 @@ export const lessons: FrenchLesson[] =           [
         "Đồng nghiệp Pháp công khai phê bình ý tưởng của bạn trong họp lớn. Sau họp, đặt cuộc trò chuyện riêng — nêu cảm xúc + tác động, không tấn công, đề xuất cách đưa phê bình lần sau.",
         "Sếp Việt yêu cầu bạn làm thêm cuối tuần thường xuyên, sếp Pháp ở chi nhánh quốc tế thúc đẩy work-life balance. Bạn ở giữa. Hẹn nói chuyện riêng với sếp Việt — nêu vấn đề respectful, không đem sếp Pháp ra làm bia, đề xuất giải pháp."
       ],
+      "roleplay_prompts_en": [
+        "Your French manager sends work emails at 11 PM and you feel compelled to reply. Schedule a 1-on-1 — name the issue, propose two concrete protocols (e.g. 'pas urgent' in the subject line, or no work emails after 9 PM except for true emergencies). Stay on the system, not on her character. (Anglophone parallel: same skill works against the 'always-on' US email culture — make it about the protocol, not the person.)",
+        "A French colleague publicly criticizes your idea in a large meeting. After the meeting, book a private conversation — name the impact (not your feelings as the headline; lead with effect on team and on your ability to contribute), don't attack, and propose how feedback should be delivered next time. (US/UK parallel: classic 'praise in public, critique in private' principle — but in France you have to ask for it explicitly, it's not the default.)",
+        "Your Vietnamese boss expects regular weekend work, while your French manager at the international office pushes work-life balance. You're caught in the middle. Book a private conversation with your Vietnamese boss — raise it respectfully, do NOT use the French manager as a stick to beat them with (that escalates), and propose a workable arrangement that respects both sides."
+      ],
       "register_notes": "Cuộc trò chuyện khó luôn dùng « tu » nếu hai bên đã « tu » trước đó — chuyển sang « vous » ở giữa cuộc trò chuyện sẽ tạo cảm giác « phán xét chính thức » và làm đối phương phòng thủ. Tránh các cụm tăng nhiệt: « tu fais toujours… » (generalize), « ça me blesse » (cảm xúc đậm — Pháp coi unprofessional), « les Français… » (generalize văn hóa). Thay bằng các cụm giảm nhiệt: « depuis deux semaines, j'observe que… » (cụ thể, có giới hạn thời gian), « ça crée un problème pour mon équipe » (impact, không cảm xúc), « comment tu vois ça, toi ? » (mời tham gia). Khi đối phương phòng thủ (« je fais ça depuis quinze ans »), không leo thang — thừa nhận (« je l'entends ») rồi quay lại fact + impact. Một câu hữu ích để mở: « Mon objectif n'est pas de te culpabiliser — mon objectif est qu'on trouve un fonctionnement qui marche pour les deux » — câu này định khung là « problem-solving », không phải « blame ».",
+      "register_notes_en": "A difficult conversation always stays on tu if you were on tu before — switching to vous mid-conversation reads as 'formal judgment mode' and makes the other person defensive. This is one of the most surprising register rules for anglophones, because the English instinct is to switch to more formal language when things get serious. In French, the opposite move applies: stay close, stay informal, signal that this is between two humans not a disciplinary procedure.\n\nAvoid escalators: 'tu fais toujours…' (generalizes — never works), 'ça me blesse' (too emotional — reads as unprofessional in French, even though it might be appropriate in a US therapeutic-vocabulary workplace), 'les Français…' (cultural generalization — same as 'all Americans' in reverse). Replace them with de-escalators: 'depuis deux semaines, j'observe que…' (specific and time-bounded, which keeps the conversation tractable), 'ça crée un problème pour mon équipe' (impact-focused, not emotion-focused — works for both French and US managers), 'comment tu vois ça, toi?' (invites participation).\n\nWhen the other person gets defensive ('je fais ça depuis quinze ans' — 'I've been doing this for fifteen years'), don't escalate — acknowledge ('je l'entends' — 'I hear you') and then return to fact + impact. This is the same de-escalation move taught in US 'crucial conversations' training, just phrased differently. The single most useful opening sentence: 'Mon objectif n'est pas de te culpabiliser — mon objectif est qu'on trouve un fonctionnement qui marche pour les deux.' It frames the conversation as problem-solving, not blame, and gives the other person psychological permission to stay engaged rather than defending. For anglophones used to the US 'feedback sandwich' (praise-critique-praise), drop it for French conversations — the French read sandwich praise as insincere; stay with intent + fact + impact + invitation + experiment.",
       "idiom_glosses": [
         {
           "idiom": "Crever l'abcès",
           "literal": "Châm vỡ ổ áp xe",
+          "literal_en": "To lance the abscess",
           "meaning": "Giải quyết vấn đề khó bằng cuộc nói chuyện thẳng.",
+          "meaning_en": "To address a festering problem head-on with a frank conversation — the image is medical: lance the boil so the infection can drain rather than spread.",
           "example": "Il fallait crever l'abcès — on ne pouvait pas continuer à éviter le sujet."
         },
         {
           "idiom": "Mettre les choses au clair",
           "literal": "Đặt mọi việc cho rõ",
+          "literal_en": "To put things in the clear",
           "meaning": "Làm rõ ranh giới và kỳ vọng.",
+          "meaning_en": "To clarify expectations and boundaries between two parties — same image as English 'to clear the air' but more action-oriented.",
           "example": "Cette conversation a permis de mettre les choses au clair entre nous."
         },
         {
           "idiom": "Désamorcer une situation",
           "literal": "Hạ nhiệt một tình huống",
+          "literal_en": "To defuse a situation",
           "meaning": "Giảm căng thẳng trước khi nó nổ.",
+          "meaning_en": "To defuse a tense situation before it escalates — same bomb-disposal image as in English.",
           "example": "En proposant un essai de deux semaines, j'ai désamorcé la situation."
         },
         {
           "idiom": "Trouver un terrain d'entente",
           "literal": "Tìm mảnh đất đồng thuận",
+          "literal_en": "To find a terrain of agreement",
           "meaning": "Đạt một thỏa thuận khả thi cho cả hai.",
+          "meaning_en": "To find common ground / reach a workable agreement that both sides can live with. The standard French closing move for any difficult negotiation.",
           "example": "On n'est pas obligés d'être d'accord sur tout — il faut juste trouver un terrain d'entente."
         }
       ],
@@ -8442,62 +8520,86 @@ export const lessons: FrenchLesson[] =           [
         {
           "type": "fill-blank",
           "instruction_vi": "Điền cụm vào câu mở cuộc trò chuyện khó.",
+          "instruction_en": "Fill in each blank with the missing word in an opening line for a difficult conversation.",
           "items": [
             {
               "prompt": "Je voudrais qu'on parle ___ de quelque chose qui me gêne.",
-              "answer": "franchement"
+              "answer": "franchement",
+              "hint_vi": "trạng từ « thẳng thắn »",
+              "hint_en": "adverb 'frankly / openly'"
             },
             {
               "prompt": "Mon objectif n'est pas de te ___.",
-              "answer": "culpabiliser"
+              "answer": "culpabiliser",
+              "hint_vi": "động từ « làm thấy có lỗi »",
+              "hint_en": "verb 'to make (someone) feel guilty' — the signal that this is NOT a blame conversation"
             },
             {
               "prompt": "Ça crée un ___ pour mon équipe.",
-              "answer": "problème"
+              "answer": "problème",
+              "hint_vi": "danh từ « vấn đề »",
+              "hint_en": "noun 'problem' — neutral, impact-focused framing"
             },
             {
               "prompt": "Comment tu ___ ça, toi ?",
-              "answer": "vois"
+              "answer": "vois",
+              "hint_vi": "động từ « nhìn / thấy » (tu-form)",
+              "hint_en": "verb 'to see' in tu-form, present tense — used to invite the other person's perspective"
             }
           ]
         },
         {
           "type": "matching",
           "instruction_vi": "Nối thành ngữ với chiến lược trò chuyện khó.",
+          "instruction_en": "Match each idiom with the difficult-conversation strategy it represents.",
           "items": [
             {
               "prompt": "Crever l'abcès",
-              "answer": "giải quyết bằng nói thẳng (lance the boil, address it directly)"
+              "answer": "giải quyết bằng nói thẳng (lance the boil, address it directly)",
+              "english": "Crever l'abcès → lance the boil — address a festering problem head-on with a frank conversation"
             },
             {
               "prompt": "Mettre les choses au clair",
-              "answer": "làm rõ ranh giới (set boundaries clearly)"
+              "answer": "làm rõ ranh giới (set boundaries clearly)",
+              "english": "Mettre les choses au clair → clarify expectations and boundaries between parties"
             },
             {
               "prompt": "Désamorcer une situation",
-              "answer": "hạ nhiệt trước khi nổ (defuse a situation before it explodes)"
+              "answer": "hạ nhiệt trước khi nổ (defuse a situation before it explodes)",
+              "english": "Désamorcer une situation → defuse a tense situation before it escalates"
             },
             {
               "prompt": "Trouver un terrain d'entente",
-              "answer": "đạt thỏa thuận khả thi (find common ground / a workable agreement)"
+              "answer": "đạt thỏa thuận khả thi (find common ground / a workable agreement)",
+              "english": "Trouver un terrain d'entente → find common ground — reach a workable agreement both sides can live with"
             }
           ]
         },
         {
           "type": "translation",
           "instruction_vi": "Dịch sang tiếng Pháp B2 — giọng problem-solving, không blame.",
+          "instruction_en": "Translate each Vietnamese sentence into B2 French in a problem-solving (not blame-oriented) voice.",
           "items": [
             {
               "prompt": "Em không nói chị sai về bản chất — em nói hình thức khó chấp nhận ở đây.",
-              "answer": "Je ne dis pas que tu as tort sur le fond — je dis que la forme est difficile à porter ici."
+              "answer": "Je ne dis pas que tu as tort sur le fond — je dis que la forme est difficile à porter ici.",
+              "english": "I'm not saying you're wrong on the substance — I'm saying the form is hard to handle here.",
+              "hint_vi": "« sur le fond » vs « la forme »",
+              "hint_en": "use 'sur le fond' (on the substance) vs 'la forme' (the form / manner of delivery) — a key French distinction"
             },
             {
               "prompt": "Mục tiêu em là tìm cách làm việc phù hợp cho cả hai phong cách.",
-              "answer": "Mon objectif est de trouver une façon de travailler qui marche pour les deux styles."
+              "answer": "Mon objectif est de trouver une façon de travailler qui marche pour les deux styles.",
+              "english": "My goal is to find a way of working that fits both styles.",
+              "hint_vi": "« mon objectif est de » + « qui marche pour »",
+              "hint_en": "'mon objectif est de' (my goal is to) + 'qui marche pour' (that works for)"
             },
             {
               "prompt": "Cảm ơn chị đã nhận cuộc trò chuyện này mà không phòng thủ.",
-              "answer": "Merci d'avoir reçu cette conversation sans te défendre."
+              "answer": "Merci d'avoir reçu cette conversation sans te défendre.",
+              "english": "Thank you for taking this conversation without getting defensive.",
+              "hint_vi": "« merci d'avoir » + infinitive « reçu »",
+              "hint_en": "'merci d'avoir + past participle' = 'thank you for having…'; 'sans te défendre' = 'without defending yourself'"
             }
           ]
         }
@@ -8518,6 +8620,12 @@ export const lessons: FrenchLesson[] =           [
             "depuis → dơ-pwi",
             "combien → kõm-biain",
             "maintenant → main-tơ-nã"
+          ],
+          "pronunciation_focus_en": [
+            "Hanoï → ah-noh-EE (three syllables; the 'ï' with the diaeresis is its own syllable — different from English 'Ha-noi' said in two)",
+            "depuis → duh-PWEE (the 'puis' = 'pwee' with the rounded 'u'; means 'since' for a duration)",
+            "combien → kom-BYA(n) (nasal final; means 'how much / how long' for duration questions)",
+            "maintenant → ma(n)-tuh-NAH(n) (two nasals; 'now / at the moment')"
           ]
         },
         {
@@ -8529,6 +8637,13 @@ export const lessons: FrenchLesson[] =           [
             "montrer → mon-tré",
             "touristes → tu-rist",
             "connaissent → ko-nès"
+          ],
+          "pronunciation_focus_en": [
+            "si → SEE (one syllable; means 'if'; identical to English 'see' but shorter)",
+            "peux → PUH (one syllable; the 'eu' has no English equivalent — round lips as if to say 'oo' then say 'eh')",
+            "montrer → mo(n)-TRAY (nasal first; final '-er' = 'tray', rhymes with English 'tray')",
+            "touristes → too-REEST (the 'u' is rounded French 'u'; final 's' silent on 'touristes')",
+            "connaissent → koh-NESS (the '-ent' on 3rd-plural verbs is silent; sounds like 'connais')"
           ]
         },
         {
@@ -8539,6 +8654,12 @@ export const lessons: FrenchLesson[] =           [
             "prévoie → pré-vwa",
             "s'envoie → sãn-vwa",
             "feeling → fi-ling (anglicisme)"
+          ],
+          "pronunciation_focus_en": [
+            "voit → VWAH (one syllable; the 'oi' = 'wah'; means 'sees')",
+            "prévoie → pray-VWAH (subjunctive of 'prévoir' / to plan; same 'oi' sound)",
+            "s'envoie → sah(n)-VWAH (nasal first syllable; means 'send each other')",
+            "feeling → FEE-ling (English loanword, pronounced almost as in English; 'au feeling' = 'play it by ear' — borrowed from English)"
           ]
         },
         {
@@ -8549,6 +8670,12 @@ export const lessons: FrenchLesson[] =           [
             "poses → poz",
             "questions → kès-tion",
             "hésite → é-zit"
+          ],
+          "pronunciation_focus_en": [
+            "remarqué → ruh-mar-KAY (final '-qué' = 'kay', rhymes with English 'pay')",
+            "poses → POHZ (final 's' becomes 'z' between vowels; rhymes with English 'rose')",
+            "questions → KES-tyo(n) (nasal final '-tions' = 'tyo(n)'; different from English 'KWES-chunz')",
+            "hésite → ay-ZEET (the 'h' is silent; final 'e' silent)"
           ]
         },
         {
@@ -8558,102 +8685,123 @@ export const lessons: FrenchLesson[] =           [
             "amitié → a-mi-tié",
             "lent → lã",
             "solide → so-lid"
+          ],
+          "pronunciation_focus_en": [
+            "amitié → ah-mee-TYAY (four syllables; final 'tié' = 'tyay', rhymes with English 'pay')",
+            "lent → LAH(n) (one nasal syllable; means 'slow'; final 't' silent)",
+            "solide → soh-LEED (final 'e' silent; rhymes with English 'lead' as in the metal)"
           ]
         }
       ],
       "cultural_notes_vi": "Xây dựng tình bạn với người Pháp sống ở Việt Nam (« expat ») khác hẳn với bạn Việt và cũng khác với bạn Pháp ở Pháp. Expat Pháp ở Việt Nam thường ở vị trí transitional — họ ở 2-5 năm rồi về nước hoặc đi nước khác — nên họ có hai mode: (1) « expat bubble » — chỉ chơi với expat khác, hành xử như đang trong một club kín; (2) « immersion » — chủ động kết bạn với người Việt nhưng thường mong tốc độ nhanh kiểu Tây. Cả hai mode đều có thách thức cho người Việt muốn kết bạn thật.\n\nKhác biệt cốt lõi về tình bạn: ở Pháp, bạn có thể « tu » và đi uống bia với một người sau hai lần gặp. Ở Việt Nam, « bạn thân » thường mất 6-12 tháng và bao gồm cả gia đình hai bên. Khi bạn người Pháp expect mức độ thân nhanh (« on est potes maintenant ! »), nhiều người Việt thấy gượng và rút lui. Ngược lại, khi người Việt giữ khoảng cách lịch sự lâu (vẫn còn vouvoiement sau 2 tháng), người Pháp tưởng bạn không quan tâm và rút lui.\n\nCách đúng: nói rõ kỳ vọng và protocol. Người Pháp đánh giá cao sự minh bạch (« chez nous, l'amitié est lente — pas que je ne t'apprécie pas, c'est juste le rythme »). Người Pháp cũng thích invitation cụ thể hơn câu chung chung — « tu veux venir manger samedi à 19h ? » mạnh hơn « on devrait se voir un jour ». Một bài học cho người Việt: nếu muốn kết bạn thật với expat Pháp, phải chủ động hơn bình thường, vì họ không quen đợi 6 tháng.",
+      "cultural_notes_en": "Building real friendship with a French person living in Vietnam (or, with adjustments, an anglophone expat) sits at the intersection of two very different friendship economies. French friendship tempo is fast at the surface (tu after two meetings, beers in the same week) but the depth tier requires real time and shared crisis to unlock. Vietnamese friendship tempo is slow at the surface (formal address for months) but once 'in', it includes family, money, and lifelong loyalty. Anglophones — especially Americans — are often even faster than the French at surface intimacy ('OMG we're best friends now!' after one brunch) but much shallower at the depth tier than Vietnamese friendships ever are. So a Vietnamese learner trying to befriend a French expat is actually solving a three-way calibration problem, not two.\n\nThe French expat population in Vietnam tends to operate in one of two modes: (1) the 'expat bubble' — a small French-speaking social circle of other expats with shared apéros, shared visa anxieties, shared complaints about Vietnamese bureaucracy; relationships are easy but stay surface-level. (2) the 'immersion' mode — actively trying to make Vietnamese friends, but often expecting Western-tempo intimacy, which can feel pushy. Both modes create friction for a Vietnamese person looking for genuine friendship. The cross-cultural skill: recognize which mode your expat friend is in, and meet them where they are while gently moving the tempo.\n\nThe single most useful frame is transparency. French people (and most Western anglophones) genuinely appreciate being told the rules of the game directly. Saying explicitly 'chez nous, l'amitié est lente — c'est pas que je ne t'apprécie pas, c'est juste le rythme' (in Vietnam friendship is slow — it's not that I don't like you, it's just the tempo) removes the worst misreading: that polite Vietnamese distance equals disinterest. Conversely, French expats tend to prefer concrete invitations over open-ended ones — 'tu veux venir manger samedi à 19h?' lands much harder than 'we should hang out sometime'. A US/UK calibration note: 'we should grab a coffee sometime' is even more meaningless in French than it is in English. Replace it with a specific day and time, every time.",
       "tip_advice_vi": "Năm điều giúp xây tình bạn với expat Pháp ở Việt Nam: (1) Đề xuất gặp lần 2 trong vòng 2 tuần sau lần 1 — kéo dài hơn họ tưởng bạn không quan tâm; (2) Mời đến nhà sớm hơn bình thường (sau 3-4 lần gặp ngoài) — Pháp coi mời đến nhà là dấu friendship đáng kể, và họ cũng sẽ mời lại; (3) Chủ động hỏi về cuộc sống cá nhân (gia đình, lý do đến Việt Nam, dự định tương lai) — đừng chờ họ mở; (4) Chấp nhận họ sẽ đi sau 2-5 năm — đừng investment quá nặng nếu họ là transient; tốt hơn xem là cây cầu mở ra mạng lưới dài hạn ở Pháp; (5) Giới thiệu họ vào mạng lưới bạn Việt của bạn — họ rất biết ơn vì khó vào mạng Việt một mình. Tránh: kỳ vọng họ sẽ thay đổi mọi thói quen Pháp khi ở Việt Nam; đối xử với họ như « informant văn hóa » để học tiếng Pháp; đợi họ chủ động (Pháp expect bạn pro-active).",
+      "tip_advice_en": "Five practical moves to build real friendship with a French expat in Vietnam: (1) Propose the second meeting within two weeks of the first — wait longer and they read it as polite disinterest. The French (and US/UK) tempo expects regular recontact; long silences signal 'we're not really doing this'. (2) Invite them to your home sooner than you'd invite a Vietnamese friend — after 3–4 outside meetings is fine. In French culture, a home invitation is a significant friendship marker, and they will reciprocate. Anglophone parallel: same calibration works for British and American expats — the home invite is the inflection point. (3) Proactively ask about personal life — family, the reason they came to Vietnam, what comes next. Don't wait for them to open; French and anglophone expats often appreciate the curiosity. Don't make it an interview, though; share equivalently about yourself. (4) Accept that they will leave in 2–5 years and right-size your investment accordingly. Don't see them as a permanent local friend; see them as a bridge to a long-term Paris/London/Brussels network. Real friendships survive the move home if you build them properly before they go. (5) Bring them into your Vietnamese friend network — it's hard for an expat to enter Vietnamese social circles alone, and they'll be enormously grateful.\n\nThings to avoid: expecting them to drop every French habit upon arriving in Vietnam (they won't, and asking them to is condescending); treating them as your 'cultural informant' to practice your French (you'll feel like a teacher to them, which kills equality); waiting for them to make every move (the French expect you to be proactive — they'll read passivity as disinterest). The single biggest mismatch I see: Vietnamese learners assume the slow-tempo move is more respectful, but to a French or anglophone friend it can read as 'you're not really into this' — counter it by initiating more often than your Vietnamese instincts suggest.",
       "vocabulary": [
         {
           "word": "un expatrié",
           "en": "an expat",
           "vi": "người nước ngoài sinh sống lâu dài",
           "pos": "n.m.",
-          "pronunciation_vi": "èk-spa-tri-é"
+          "pronunciation_vi": "èk-spa-tri-é",
+          "pronunciation_en": "ek-spah-tree-AY (final '-é' = 'ay'; specifically a long-term foreign resident, not a tourist)"
         },
         {
           "word": "l'amitié",
           "en": "friendship",
           "vi": "tình bạn",
           "pos": "n.f.",
-          "pronunciation_vi": "a-mi-tié"
+          "pronunciation_vi": "a-mi-tié",
+          "pronunciation_en": "lah-mee-TYAY (the 'l' attaches; final 'tié' = 'tyay'; rhymes with English 'pay')"
         },
         {
           "word": "un cercle d'amis",
           "en": "a circle of friends",
           "vi": "vòng bạn bè",
           "pos": "n.m.",
-          "pronunciation_vi": "sèr-klơ da-mi"
+          "pronunciation_vi": "sèr-klơ da-mi",
+          "pronunciation_en": "SAIR-kluh dah-MEE (final 'cle' = soft 'kluh'; closer to English 'social circle' than 'friend group')"
         },
         {
           "word": "se voir régulièrement",
           "en": "to meet regularly",
           "vi": "gặp đều đặn",
           "pos": "v.",
-          "pronunciation_vi": "sơ vwar ré-gu-lièr-mã"
+          "pronunciation_vi": "sơ vwar ré-gu-lièr-mã",
+          "pronunciation_en": "suh VWAR ray-gyoo-LYAIR-mah(n) (the '-ment' adverb ending is nasal 'mah(n)'; 'régulièrement' is a long word — slow it down)"
         },
         {
           "word": "un cadre informel",
           "en": "an informal setting",
           "vi": "khung không chính thức",
           "pos": "n.m.",
-          "pronunciation_vi": "ka-drơ an-for-mèl"
+          "pronunciation_vi": "ka-drơ an-for-mèl",
+          "pronunciation_en": "KAH-druh a(n)-for-MEL (nasal middle on 'informel'; useful for proposing low-stakes hangouts)"
         },
         {
           "word": "être au feeling",
           "en": "to play it by ear (anglicism)",
           "vi": "theo cảm xúc / tự nhiên",
           "pos": "expr.",
-          "pronunciation_vi": "é-trơ o fi-ling"
+          "pronunciation_vi": "é-trơ o fi-ling",
+          "pronunciation_en": "ETR oh FEE-ling (English loanword 'feeling' kept; means 'play it by ear / go with the vibe' — very common in casual French)"
         },
         {
           "word": "un coup de cœur",
           "en": "a sudden affinity",
           "vi": "cảm tình tự phát",
           "pos": "n.m.",
-          "pronunciation_vi": "ku dơ kơr"
+          "pronunciation_vi": "ku dơ kơr",
+          "pronunciation_en": "KOO duh KUHR (final 'cœur' has the 'eu' sound — no English equivalent, round lips and say 'er'; means a spontaneous emotional pull)"
         },
         {
           "word": "un point d'ancrage",
           "en": "an anchor point",
           "vi": "điểm neo",
           "pos": "n.m.",
-          "pronunciation_vi": "pwã dãn-kraj"
+          "pronunciation_vi": "pwã dãn-kraj",
+          "pronunciation_en": "PWA(n) dah(n)-KRAHZH (two nasals; 'ancrage' literally an anchor — used metaphorically for a stable person/place in your life)"
         },
         {
           "word": "avoir des affinités",
           "en": "to have things in common",
           "vi": "có điểm chung",
           "pos": "v.",
-          "pronunciation_vi": "a-vwar dé-z-a-fi-ni-té"
+          "pronunciation_vi": "a-vwar dé-z-a-fi-ni-té",
+          "pronunciation_en": "ah-VWAR day-zah-fee-nee-TAY (liaison 'des affinités' = 'day-zah'; means clicking on shared interests/values)"
         },
         {
           "word": "tutoyer / vouvoyer",
           "en": "to use tu / vous",
           "vi": "dùng tu / vous",
           "pos": "v.",
-          "pronunciation_vi": "tu-twa-yé / vu-vwa-yé"
+          "pronunciation_vi": "tu-twa-yé / vu-vwa-yé",
+          "pronunciation_en": "too-twah-YAY / voo-vwah-YAY (verbs for 'to address someone as tu' or 'as vous' — there's no clean English equivalent because English has no T-V distinction)"
         }
       ],
       "dialogue": [
         {
           "speaker": "Antoine",
           "text": "Mai, ça fait trois fois qu'on se voit en café — on passe au tu ?",
+          "en": "Mai, this is the third time we've met for coffee — should we switch to tu?",
           "vi": "Mai, mình gặp ba lần ở quán — chuyển sang « tu » nhé?"
         },
         {
           "speaker": "Mai",
           "text": "Volontiers. Au Vietnam aussi on tutoie les amis, mais souvent plus tard que vous.",
+          "en": "Gladly. In Vietnam we also use tu with friends, but usually later than you do.",
           "vi": "Sẵn lòng. Ở Việt Nam mình cũng « tu » với bạn, nhưng thường muộn hơn các anh."
         },
         {
           "speaker": "Antoine",
           "text": "Ah, intéressant. Du coup, je n'ai pas trop précipité ?",
+          "en": "Ah, interesting. So I haven't rushed it too much?",
           "vi": "À, thú vị. Vậy anh không vội quá chứ?"
         },
         {
           "speaker": "Mai",
           "text": "Non, pas du tout. C'est même plus simple comme ça pour la suite.",
+          "en": "No, not at all. It's actually simpler this way going forward.",
           "vi": "Không, không hề. Thậm chí đơn giản hơn cho sau này."
         }
       ],
@@ -8661,81 +8809,97 @@ export const lessons: FrenchLesson[] =           [
         {
           "speaker": "Antoine",
           "text": "Mai, je voulais te dire — ça fait six mois que je suis à Hanoï, et tu es la seule personne avec qui j'ai vraiment construit un lien.",
+          "en": "Mai, I wanted to tell you — I've been in Hanoi for six months, and you're the only person I've really built a real connection with.",
           "vi": "Mai, anh muốn nói với em — anh ở Hà Nội đã sáu tháng, và em là người duy nhất anh thực sự xây được liên kết."
         },
         {
           "speaker": "Mai",
           "text": "Merci, ça me touche. C'est si difficile à Hanoï pour toi ?",
+          "en": "Thank you, that touches me. Is it really that hard for you in Hanoi?",
           "vi": "Cảm ơn, điều đó cảm động em. Khó vậy ở Hà Nội cho anh?"
         },
         {
           "speaker": "Antoine",
           "text": "Plus que je pensais. Avec les autres expats français, c'est facile mais superficiel — on parle d'apéro et de problèmes de visa. Avec les Vietnamiens au bureau, c'est cordial mais ça ne va jamais au-delà du collègue. Je ne comprends pas ce que je rate.",
+          "en": "More than I expected. With other French expats it's easy but superficial — we just talk about apéros and visa headaches. With Vietnamese colleagues at the office it's cordial but it never goes beyond the colleague level. I don't understand what I'm missing.",
           "vi": "Hơn anh nghĩ. Với các expat Pháp khác, dễ nhưng hời hợt — nói về aperitif và vấn đề visa. Với đồng nghiệp Việt ở văn phòng, lịch sự nhưng không qua mức đồng nghiệp. Anh không hiểu mình bỏ lỡ gì."
         },
         {
           "speaker": "Mai",
           "text": "Je peux être franche avec toi ? L'amitié au Vietnam est lente. Six mois, c'est encore tôt — beaucoup de mes amitiés vraies se sont construites en deux ou trois ans.",
+          "en": "Can I be frank with you? Friendship in Vietnam is slow. Six months is still early — many of my real friendships took two or three years to build.",
           "vi": "Em nói thẳng được không? Tình bạn ở Việt Nam chậm. Sáu tháng vẫn sớm — nhiều tình bạn thật của em xây trong hai-ba năm."
         },
         {
           "speaker": "Antoine",
           "text": "Deux ou trois ans ?! Mais je serai parti dans deux ans !",
+          "en": "Two or three years?! But I'll be gone in two years!",
           "vi": "Hai-ba năm?! Nhưng anh sẽ đi sau hai năm!"
         },
         {
           "speaker": "Mai",
           "text": "C'est exactement le problème. Beaucoup de Vietnamiens sentent que les expats partent — donc ils ne « investissent » pas trop dans la relation. C'est protecteur, pas méchant. Et de votre côté, vous voulez la version 6 mois de l'amitié vietnamienne, qui n'existe pas vraiment.",
+          "en": "That's exactly the problem. Many Vietnamese sense that expats leave — so they don't 'invest' much in the relationship. It's protective, not unkind. And on your side, you want the 6-month version of Vietnamese friendship, which doesn't really exist.",
           "vi": "Đó chính là vấn đề. Nhiều người Việt cảm thấy expat sẽ đi — nên họ không « đầu tư » nhiều vào quan hệ. Là tự bảo vệ, không phải xấu. Và phía các anh, các anh muốn phiên bản 6 tháng của tình bạn Việt, vốn không thực sự tồn tại."
         },
         {
           "speaker": "Antoine",
           "text": "Donc je dois renoncer à avoir de vrais amis vietnamiens ?",
+          "en": "So I should give up on having real Vietnamese friends?",
           "vi": "Vậy anh phải bỏ ý định có bạn Việt thật?"
         },
         {
           "speaker": "Mai",
           "text": "Non — il faut juste recalibrer. Trois conseils. Premièrement : sois explicite sur tes intentions. Dis « j'aimerais qu'on devienne amis » — chez nous, c'est rare et précieux. Deuxièmement : invite chez toi, pas seulement au café. Le seuil de la maison, c'est un seuil émotionnel. Troisièmement : intègre-toi à un groupe stable — équipe de foot, classe de cuisine, association — pas juste rencontres 1-on-1.",
+          "en": "No — just recalibrate. Three pieces of advice. First: be explicit about your intentions. Say 'I'd like us to become friends' — here that's rare and meaningful. Second: invite people to your home, not just to cafés. The threshold of the home is an emotional threshold. Third: join a stable group — soccer team, cooking class, club — not just 1-on-1 meetings.",
           "vi": "Không — chỉ cần điều chỉnh lại. Ba lời khuyên. Thứ nhất: nói rõ ý định. Nói « anh muốn mình trở thành bạn » — bên em, hiếm và quý. Thứ hai: mời về nhà, không chỉ ra quán. Ngưỡng cửa nhà là ngưỡng cảm xúc. Thứ ba: hòa nhập vào một nhóm ổn định — đội bóng, lớp nấu ăn, hội đoàn — không chỉ gặp 1-on-1."
         },
         {
           "speaker": "Antoine",
           "text": "Le premier conseil — dire explicitement « je veux qu'on soit amis » — en France ça serait bizarre. On ne dit jamais ça.",
+          "en": "The first piece of advice — explicitly saying 'I want us to be friends' — in France that would be weird. Nobody says that.",
           "vi": "Lời khuyên đầu — nói rõ « tôi muốn mình là bạn » — ở Pháp gượng. Không ai nói vậy."
         },
         {
           "speaker": "Mai",
           "text": "Au Vietnam non plus dans la première rencontre — mais après quelques mois, ça marque l'engagement. Ça dit « je ne te traite pas comme une connaissance passagère ». Pour les expats, c'est encore plus important parce que par défaut on vous voit comme passagers.",
+          "en": "Not in Vietnam either at first meeting — but after a few months, it marks commitment. It says 'I'm not treating you like a passing acquaintance'. For expats it matters even more, because the default is to see you as passing through.",
           "vi": "Ở Việt Nam cũng không trong lần đầu — nhưng sau vài tháng, nó đánh dấu cam kết. Nói « tôi không đối xử với bạn như người quen vãng lai ». Với expat, càng quan trọng vì mặc định mọi người xem các anh là vãng lai."
         },
         {
           "speaker": "Antoine",
           "text": "Je note. Et si je rentre en France dans deux ans ?",
+          "en": "Noted. And if I go back to France in two years?",
           "vi": "Em ghi. Và nếu anh về Pháp sau hai năm?"
         },
         {
           "speaker": "Mai",
           "text": "Ça ne change rien à la qualité de l'amitié — beaucoup de mes amis vivent à Saigon ou à l'étranger maintenant. Une vraie amitié vietnamienne survit la distance, à condition qu'elle ait été construite solide. Si tu pars sans l'avoir construite, oui ça meurt en six mois.",
+          "en": "It doesn't change the quality of the friendship — many of my friends now live in Saigon or abroad. A real Vietnamese friendship survives distance, provided it was built solid. If you leave without having built it, yes — it dies in six months.",
           "vi": "Không thay đổi chất lượng tình bạn — nhiều bạn em giờ sống ở Sài Gòn hoặc nước ngoài. Tình bạn Việt thật sống sót khoảng cách, với điều kiện đã xây vững. Nếu anh đi mà chưa xây, thì sẽ chết trong sáu tháng."
         },
         {
           "speaker": "Antoine",
           "text": "OK. Concrètement, samedi prochain je t'invite chez moi — je cuisine français, tu verras mon vrai espace. C'est un premier pas ?",
+          "en": "OK. Concretely, next Saturday I'll invite you to my place — I'll cook French, you'll see my real space. Is that a first step?",
           "vi": "OK. Cụ thể, thứ bảy tới anh mời em đến nhà anh — anh nấu Pháp, em sẽ thấy không gian thật của anh. Là bước đầu?"
         },
         {
           "speaker": "Mai",
           "text": "Avec plaisir. Et je viens avec ma sœur cadette si ça ne te dérange pas — chez nous, présenter sa famille est aussi un seuil. Je te fais entrer dans mon cercle vietnamien.",
+          "en": "With pleasure. And I'll bring my younger sister if you don't mind — in Vietnamese culture, introducing family is also a threshold. I'm bringing you into my Vietnamese circle.",
           "vi": "Sẵn lòng. Và em đem em gái em đi cùng nếu không phiền anh — bên em, giới thiệu gia đình cũng là ngưỡng. Em đưa anh vào vòng Việt của em."
         },
         {
           "speaker": "Antoine",
           "text": "Au contraire — c'est exactement ce que je voulais. À samedi.",
+          "en": "On the contrary — that's exactly what I wanted. See you Saturday.",
           "vi": "Ngược lại — chính là điều anh muốn. Hẹn thứ bảy."
         },
         {
           "speaker": "Mai",
           "text": "À samedi, Antoine.",
+          "en": "See you Saturday, Antoine.",
           "vi": "Hẹn thứ bảy, Antoine."
         }
       ],
@@ -8744,30 +8908,44 @@ export const lessons: FrenchLesson[] =           [
         "Bạn Pháp đến Hà Nội 1 năm và đang cân nhắc về sớm vì « cô đơn ». Lắng nghe + đề xuất một bước cụ thể (mời đến nhà, giới thiệu vào nhóm bạn Việt) — không nói thẳng « anh chưa đủ cố gắng ».",
         "Một expat Pháp đề xuất chuyển sang « tu » sau lần gặp thứ hai. Bạn cảm thấy hơi sớm theo nhịp Việt. Phản hồi vừa giữ relationship, vừa nêu nhịp điệu khác — không từ chối thẳng, không nhân nhượng giả vờ."
       ],
+      "roleplay_prompts_en": [
+        "A French colleague has been in Vietnam for 4 months and complains they have no real friends. Suggest 3 concrete actions for them — don't lecture about Vietnamese culture, just give practical, actionable moves (e.g. join a sports team, host one dinner a month, schedule recurring meetings with one person you actually click with). Anglophone parallel: same script works for a US or UK expat saying the same thing.",
+        "A French friend has been in Hanoi for 1 year and is considering leaving early because of 'loneliness'. Listen, then propose a single concrete step — invite them to your home, introduce them to your Vietnamese friend group — without saying 'you haven't tried hard enough', which would shut down the conversation. Anglophone parallel: a US friend on assignment abroad reaching a low point — same listening-first move.",
+        "A French expat proposes switching to 'tu' after the second meeting. You feel it's a bit early by Vietnamese tempo. Respond in a way that preserves the relationship and explains the different rhythm — don't refuse bluntly, don't fake-agree. Useful frame: 'Au Vietnam aussi on tutoie les amis, mais souvent plus tard.' (US/UK parallel: a foreigner using your first name immediately when you'd normally expect Mr/Ms first — same calibration.)"
+      ],
       "register_notes": "Tình bạn với expat Pháp: tutoiement chuyển sang sớm hơn với người Việt khác (sau 2-3 lần gặp thay vì 6 tháng), nhưng nhịp tình cảm vẫn theo Việt. Tránh: gọi expat « foreigner » hoặc « người Tây » trong câu tiếng Pháp — gượng và phân biệt; gọi tên + « expatrié » nếu cần phân biệt context. Khi mời về nhà, nói rõ thời gian + có ai khác hay không (« tu viens manger samedi à 19h, ma sœur sera là » thay vì « passe quand tu veux » mơ hồ). Khi expat hỏi về văn hóa Việt, không lecture — chia sẻ ngắn + một câu chuyện cá nhân. Khi expat đề xuất kế hoạch không phù hợp văn hóa Việt (đến muộn 1 tiếng, đem chai rượu vang đến nhà người không uống), không sửa thẳng — đề xuất alternative gentle. Cụm hữu ích: « Chez nous, l'amitié est lente — c'est juste un autre rythme »; « Le seuil de la maison est un seuil émotionnel »; « Je te fais entrer dans mon cercle ».",
+      "register_notes_en": "Friendship with a French expat moves to tu earlier than with other Vietnamese (after 2–3 meetings instead of 6 months), but the emotional tempo still follows Vietnamese norms. The tu switch is a politeness checkpoint, not a depth milestone — don't read it as 'we're best friends now'. Two register failures to avoid: (1) Don't refer to your expat friend as 'le foreigner' or 'le Tây' in French — both sound dismissive and slightly othering, even if intended affectionately. Use their name, or 'l'expatrié français' only when the context truly requires the distinction. (2) When inviting to your home, be specific about the time AND who else will be there: 'tu viens manger samedi à 19h, ma sœur sera là' (come for dinner Saturday at 7, my sister will be there) lands much better than the vague 'passe quand tu veux' (drop by whenever) — vagueness reads as half-hearted to a French ear.\n\nWhen an expat asks about Vietnamese culture, do not lecture — share a short answer plus one personal anecdote. Anglophones often want a 5-minute essay; resist providing one. Two sentences and a story is the right dose. When an expat proposes a plan that's mildly off — arriving an hour late to a Vietnamese family dinner, bringing wine to a non-drinking household — don't correct head-on. Propose an alternative gently: 'On va plutôt commencer à 19h pile, mes parents sont à la vietnamienne sur ce point' (let's start at 7 sharp instead, my parents are Vietnamese-strict on that point). Useful framing phrases: 'Chez nous, l'amitié est lente — c'est juste un autre rythme' (here friendship is slow — it's just a different pace), 'Le seuil de la maison est un seuil émotionnel' (the home threshold is an emotional threshold), 'Je te fais entrer dans mon cercle' (I'm bringing you into my circle — a meaningful gesture you should only make sincerely).",
       "idiom_glosses": [
         {
           "idiom": "Avoir un atome crochu",
           "literal": "Có một nguyên tử móc câu",
+          "literal_en": "To have a hooked atom (with someone)",
           "meaning": "Có cảm tình tự phát với ai đó.",
+          "meaning_en": "To click with someone — feel an instinctive rapport. The chemistry image is the same as English 'we have chemistry', but more about latching than sparking.",
           "example": "Antoine et moi, on a eu un atome crochu dès la première rencontre."
         },
         {
           "idiom": "Faire le premier pas",
           "literal": "Đi bước đầu",
+          "literal_en": "To take the first step",
           "meaning": "Chủ động khởi đầu mối quan hệ.",
+          "meaning_en": "To make the first move — initiate the relationship rather than wait. Same image as English 'take the first step'.",
           "example": "Au Vietnam, c'est rare que l'expat fasse le premier pas — alors fais-le."
         },
         {
           "idiom": "Tisser des liens",
           "literal": "Dệt các liên kết",
+          "literal_en": "To weave bonds / ties",
           "meaning": "Xây dựng quan hệ chậm rãi và sâu.",
+          "meaning_en": "To build deep, lasting bonds slowly — the weaving image evokes patience and craft, very Vietnamese-compatible. Anglophone equivalent: 'to build bonds' but with a slower, more deliberate connotation.",
           "example": "L'amitié vietnamienne se tisse en années, pas en mois."
         },
         {
           "idiom": "Garder le contact",
           "literal": "Giữ liên lạc",
+          "literal_en": "To keep contact",
           "meaning": "Duy trì liên hệ qua thời gian / khoảng cách.",
+          "meaning_en": "To stay in touch — preserve a relationship across distance and time. Same image as English 'keep in touch'.",
           "example": "Quand tu rentreras à Paris, on gardera le contact — c'est sûr."
         }
       ],
@@ -8775,62 +8953,86 @@ export const lessons: FrenchLesson[] =           [
         {
           "type": "fill-blank",
           "instruction_vi": "Điền cụm vào câu xây tình bạn.",
+          "instruction_en": "Fill in each blank with the missing word in a friendship-building sentence.",
           "items": [
             {
               "prompt": "Tu es à Hanoï ___ combien de temps maintenant ?",
-              "answer": "depuis"
+              "answer": "depuis",
+              "hint_vi": "giới từ « từ / từ khi »",
+              "hint_en": "preposition 'since / for' — used with durations in 'depuis combien de temps' (for how long)"
             },
             {
               "prompt": "Si tu veux, je peux te ___ un café que peu de touristes connaissent.",
-              "answer": "montrer"
+              "answer": "montrer",
+              "hint_vi": "động từ « chỉ / cho xem »",
+              "hint_en": "verb 'to show'; infinitive form after 'je peux te'"
             },
             {
               "prompt": "Tu préfères qu'on ___ ou qu'on s'envoie un message au feeling ?",
-              "answer": "prévoie"
+              "answer": "prévoie",
+              "hint_vi": "subjunctive của « prévoir » (lên kế hoạch)",
+              "hint_en": "subjunctive of 'prévoir' (to plan ahead) — triggered by 'tu préfères que'"
             },
             {
               "prompt": "L'amitié au Vietnam, c'est ___ à construire mais c'est solide.",
-              "answer": "lent"
+              "answer": "lent",
+              "hint_vi": "tính từ « chậm »",
+              "hint_en": "adjective 'slow' — masculine singular, agreeing with 'c'est'"
             }
           ]
         },
         {
           "type": "matching",
           "instruction_vi": "Nối thành ngữ với chiến lược kết bạn.",
+          "instruction_en": "Match each idiom with the friendship-building strategy it describes.",
           "items": [
             {
               "prompt": "Avoir un atome crochu",
-              "answer": "có cảm tình tự phát (have an instinctive rapport)"
+              "answer": "có cảm tình tự phát (have an instinctive rapport)",
+              "english": "Avoir un atome crochu → to click instinctively with someone — chemistry, instant rapport"
             },
             {
               "prompt": "Faire le premier pas",
-              "answer": "chủ động khởi đầu (take the first step)"
+              "answer": "chủ động khởi đầu (take the first step)",
+              "english": "Faire le premier pas → take the first step — initiate the relationship rather than wait"
             },
             {
               "prompt": "Tisser des liens",
-              "answer": "xây quan hệ sâu rãi (build deep, lasting relationships)"
+              "answer": "xây quan hệ sâu rãi (build deep, lasting relationships)",
+              "english": "Tisser des liens → weave bonds / build deep lasting relationships slowly and deliberately"
             },
             {
               "prompt": "Garder le contact",
-              "answer": "giữ liên lạc qua thời gian (stay in touch over time)"
+              "answer": "giữ liên lạc qua thời gian (stay in touch over time)",
+              "english": "Garder le contact → stay in touch — keep the connection alive across distance and time"
             }
           ]
         },
         {
           "type": "translation",
           "instruction_vi": "Dịch sang tiếng Pháp B2 — giọng bạn bè ấm áp.",
+          "instruction_en": "Translate each Vietnamese sentence into warm B2 friendship-tone French.",
           "items": [
             {
               "prompt": "Em đem em gái em đi cùng nếu không phiền anh.",
-              "answer": "Je viens avec ma sœur cadette si ça ne te dérange pas."
+              "answer": "Je viens avec ma sœur cadette si ça ne te dérange pas.",
+              "english": "I'll come with my younger sister, if you don't mind.",
+              "hint_vi": "« ma sœur cadette » + « si ça ne te dérange pas »",
+              "hint_en": "'ma sœur cadette' = my younger sister; 'si ça ne te dérange pas' = if it doesn't bother you"
             },
             {
               "prompt": "Tình bạn ở Việt Nam xây chậm nhưng khi đã có thì rất bền.",
-              "answer": "L'amitié au Vietnam est lente à construire mais une fois en place, c'est solide."
+              "answer": "L'amitié au Vietnam est lente à construire mais une fois en place, c'est solide.",
+              "english": "Friendship in Vietnam is slow to build but once in place, it's solid.",
+              "hint_vi": "« lente à construire » + « une fois en place »",
+              "hint_en": "'lente à construire' = slow to build; 'une fois en place' = once in place"
             },
             {
               "prompt": "Em đưa anh vào vòng Việt của em.",
-              "answer": "Je te fais entrer dans mon cercle vietnamien."
+              "answer": "Je te fais entrer dans mon cercle vietnamien.",
+              "english": "I'm bringing you into my Vietnamese circle.",
+              "hint_vi": "« faire entrer » = đưa vào",
+              "hint_en": "'faire entrer' (causative) = literally 'to make enter' / to bring in"
             }
           ]
         }
