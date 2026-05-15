@@ -4,7 +4,7 @@
 
 import type { FrenchLesson } from "./lessons";
 
-export const lessons: FrenchLesson[] =     [
+export const lessons: FrenchLesson[] =       [
     {
       "id": "lthesis_presentation",
       "level": "C1",
@@ -8778,6 +8778,12 @@ export const lessons: FrenchLesson[] =     [
             "soumis → su-mi",
             "section → sèk-sion",
             "circulation → sir-ku-la-sion"
+          ],
+          "pronunciation_focus_en": [
+            "présent → 'pray-ZAHN' — 'le présent rapport' = the present report; nasal '-ent'",
+            "soumis → 'soo-MEE' — past participle of soumettre; final 's' silent",
+            "section → 'sek-SYON' — 'la section quatorze du CNU'; '-tion' = 'syon'",
+            "circulation → 'seer-ku-lah-SYON' — 'u' rounded; the unifying thread's key term"
           ]
         },
         {
@@ -8788,6 +8794,12 @@ export const lessons: FrenchLesson[] =     [
             "ait connu → è ko-nu",
             "soutenue → su-tơ-nu",
             "demeure → dơ-mơr"
+          ],
+          "pronunciation_focus_en": [
+            "Bien que → 'byan kuh' — nasal 'ien'; triggers the subjunctive",
+            "ait connu → 'eh koh-NU' — pluperfect subjunctive of connaître; '... ait connu une mobilité'",
+            "soutenue → 'soo-tuh-NU' — feminine; here 'sustained' (mobilité soutenue)",
+            "demeure → 'duh-MUR' — 'demeurer' = to remain; '-eure' rounded"
           ]
         },
         {
@@ -8798,6 +8810,12 @@ export const lessons: FrenchLesson[] =     [
             "monographie → mo-no-gra-fi",
             "comité → ko-mi-té",
             "thématique → té-ma-tik"
+          ],
+          "pronunciation_focus_en": [
+            "corpus → 'kor-PUS' — Latinism; final 's' pronounced; 'my body of work'",
+            "monographie → 'moh-noh-grah-FEE' — 'g' hard before 'r'; final '-ie' = 'ee'",
+            "comité → 'koh-mee-TAY' — 'à comité de lecture' = peer-reviewed; '-é' = 'ay'",
+            "thématique → 'tay-mah-TEEK' — 'numéro thématique' = a themed issue; final '-que' = 'k'"
           ]
         },
         {
@@ -8808,6 +8826,12 @@ export const lessons: FrenchLesson[] =     [
             "qualité → ka-li-té",
             "attachée → a-ta-shé",
             "équivalent → é-ki-va-lã"
+          ],
+          "pronunciation_focus_en": [
+            "plan → 'PLAHN' — 'sur le plan pédagogique' = on the pedagogical level; nasal '-an'",
+            "qualité → 'kah-lee-TAY' — 'en qualité d'ATER' = in the capacity of ATER",
+            "attachée → 'ah-tah-SHAY' — feminine; ATER role; double 'tt' = 't'",
+            "équivalent → 'ay-kee-vah-LAHN' — 'heure équivalent TD'; nasal final '-ent'"
           ]
         },
         {
@@ -8818,6 +8842,12 @@ export const lessons: FrenchLesson[] =     [
             "prolonge → pro-lõnj",
             "démarquant → dé-mar-kã",
             "comparatif → kõn-pa-ra-tif"
+          ],
+          "pronunciation_focus_en": [
+            "joins → 'ZHWAN' — 'que je joins' = which I attach; 'oi' = 'wah'; final 's' silent",
+            "prolonge → 'pro-LOHNZH' — 'prolonger' = to extend/continue; 'g' = 'zh'",
+            "démarquant → 'day-mar-KAHN' — 's'en démarquant' = distinguishing itself from it",
+            "comparatif → 'kohn-pah-rah-TEEF' — nasal 'om'; final 'f' pronounced"
           ]
         }
       ],
@@ -8829,91 +8859,105 @@ export const lessons: FrenchLesson[] =     [
           "en": "the National Council of Universities",
           "vi": "Hội đồng Quốc gia các Đại học",
           "pos": "n.m.",
-          "pronunciation_vi": "lơ sé-èn-u"
+          "pronunciation_vi": "lơ sé-èn-u",
+          "pronunciation_en": "luh say-en-U — 'le CNU'; letters spelled (C-N-U) = 'say-en-u'"
         },
         {
           "word": "la qualification",
           "en": "the qualification (CNU)",
           "vi": "qualification — chứng nhận điều kiện",
           "pos": "n.f.",
-          "pronunciation_vi": "la ka-li-fi-ka-sion"
+          "pronunciation_vi": "la ka-li-fi-ka-sion",
+          "pronunciation_en": "lah kah-lee-fee-kah-SYON — 'la qualification' (CNU); '-tion' = 'syon'"
         },
         {
           "word": "une section disciplinaire",
           "en": "a disciplinary section",
           "vi": "section chuyên ngành",
           "pos": "n.f.",
-          "pronunciation_vi": "un sèk-sion di-si-pli-nèr"
+          "pronunciation_vi": "un sèk-sion di-si-pli-nèr",
+          "pronunciation_en": "ün sek-SYON dee-see-plee-NEHR — 'une section disciplinaire'"
         },
         {
           "word": "le rapport sur les travaux",
           "en": "the report on works (qualification dossier)",
           "vi": "báo cáo về các công trình",
           "pos": "n.m.",
-          "pronunciation_vi": "lơ ra-por sur lè tra-vo"
+          "pronunciation_vi": "lơ ra-por sur lè tra-vo",
+          "pronunciation_en": "luh rah-POR sur lay trah-VOH — 'le rapport sur les travaux' = the report on works"
         },
         {
           "word": "Maître de Conférences (MCF)",
           "en": "Associate Professor (French rank)",
           "vi": "Maître de Conférences — phó giáo sư",
           "pos": "n.",
-          "pronunciation_vi": "mè-trơ dơ kõn-fé-rãns"
+          "pronunciation_vi": "mè-trơ dơ kõn-fé-rãns",
+          "pronunciation_en": "MEH-truh duh kohn-fay-RAHNSS — 'Maître de Conférences (MCF)' = Associate Professor"
         },
         {
           "word": "Professeur des Universités (PR)",
           "en": "Full Professor (French rank)",
           "vi": "Professeur des Universités — giáo sư",
           "pos": "n.",
-          "pronunciation_vi": "pro-fè-sơr dè zu-ni-vèr-si-té"
+          "pronunciation_vi": "pro-fè-sơr dè zu-ni-vèr-si-té",
+          "pronunciation_en": "pro-feh-SUR day zu-nee-vehr-see-TAY — 'Professeur des Universités (PR)' = Full Professor"
         },
         {
           "word": "ATER (Attaché Temporaire d'Enseignement et de Recherche)",
           "en": "Temporary Teaching and Research Attaché",
           "vi": "ATER — vị trí giảng dạy và nghiên cứu tạm thời",
           "pos": "n.",
-          "pronunciation_vi": "a-tèr"
+          "pronunciation_vi": "a-tèr",
+          "pronunciation_en": "ah-TEHR — 'ATER'; read as one word; Temporary Teaching & Research Attaché"
         },
         {
           "word": "HEQ TD (heure équivalent travaux dirigés)",
           "en": "tutorial-equivalent hour",
           "vi": "giờ tương đương TD",
           "pos": "n.f.",
-          "pronunciation_vi": "ash-ơ-ku té-dé"
+          "pronunciation_vi": "ash-ơ-ku té-dé",
+          "pronunciation_en": "ash-uh-ku tay-DAY — 'HEQ TD'; letters/abbrev; tutorial-equivalent hour"
         },
         {
           "word": "le fil conducteur",
           "en": "the unifying thread",
           "vi": "sợi chỉ đỏ",
           "pos": "n.m.",
-          "pronunciation_vi": "lơ fil kõn-duk-tơr"
+          "pronunciation_vi": "lơ fil kõn-duk-tơr",
+          "pronunciation_en": "luh FEEL kohn-duk-TUR — 'le fil conducteur' = the unifying thread"
         },
         {
           "word": "se démarquer de",
           "en": "to distinguish oneself from",
           "vi": "tách khỏi / khác biệt với",
           "pos": "v.",
-          "pronunciation_vi": "sơ dé-mar-ké dơ"
+          "pronunciation_vi": "sơ dé-mar-ké dơ",
+          "pronunciation_en": "suh day-mar-KAY duh — 'se démarquer de' = to distinguish oneself from"
         }
       ],
       "dialogue": [
         {
           "speaker": "Pr. Lambert (rapporteur CNU section 14)",
           "text": "Madame Tran, votre rapport mentionne sept articles. Combien dans des revues classées par la section quatorze ?",
+          "en": "Ms. Tran, your report mentions seven articles. How many in journals ranked by section fourteen?",
           "vi": "Cô Trần, báo cáo có nhắc bảy bài báo. Trong đó bao nhiêu thuộc tạp chí xếp hạng bởi section 14?"
         },
         {
           "speaker": "Linh",
           "text": "Quatre, dont deux dans la liste A. Les trois autres relèvent de revues à comité de lecture non classées par la section, mais dont la légitimité disciplinaire est attestée — je pense notamment à la Revue française de pédagogie.",
+          "en": "Four, of which two on list A. The other three are in peer-reviewed journals not ranked by the section, but whose disciplinary legitimacy is attested — I'm thinking notably of the Revue française de pédagogie.",
           "vi": "Bốn, trong đó hai thuộc danh sách A. Ba bài còn lại thuộc tạp chí có comité de lecture không xếp hạng bởi section, nhưng tính hợp pháp ngành đã được khẳng định — tôi nghĩ tới Revue française de pédagogie."
         },
         {
           "speaker": "Pr. Lambert",
           "text": "Et votre projet de recherche prévoit-il une internationalisation des supports de publication ?",
+          "en": "And does your research project plan an internationalization of the publication outlets?",
           "vi": "Còn dự án nghiên cứu có dự định quốc tế hóa kênh xuất bản?"
         },
         {
           "speaker": "Linh",
           "text": "Oui, explicitement. Le projet prévoit deux articles en anglais sur quatre ans, dans Comparative Education et International Review of Education. Je reconnais que mon corpus actuel est encore majoritairement francophone — c'est une faiblesse identifiée à laquelle le projet répond.",
+          "en": "Yes, explicitly. The project plans two English-language articles over four years, in Comparative Education and International Review of Education. I acknowledge that my current corpus is still predominantly French-language — it's an identified weakness the project addresses.",
           "vi": "Vâng, rõ ràng. Dự án dự định hai bài báo tiếng Anh trên bốn năm, trên Comparative Education và International Review of Education. Tôi thừa nhận corpus hiện tại còn chủ yếu tiếng Pháp — đó là điểm yếu được nhận diện mà dự án đáp ứng."
         }
       ],
@@ -8921,61 +8965,73 @@ export const lessons: FrenchLesson[] =     [
         {
           "speaker": "Pr. Lambert (rapporteur CNU section 14, retour informel)",
           "text": "Madame Tran, je suis votre rapporteur pour la section quatorze. Je tenais à vous donner mes premières impressions avant la session plénière. Le rapport est solide ; quelques points méritent qu'on en parle.",
+          "en": "Ms. Tran, I'm your rapporteur for section fourteen. I wanted to give you my first impressions before the plenary session. The report is solid; a few points deserve a discussion.",
           "vi": "Cô Trần, tôi là rapporteur của cô cho section 14. Tôi muốn nói cho cô những ấn tượng đầu trước phiên plénière. Báo cáo vững; vài điểm đáng để bàn."
         },
         {
           "speaker": "Linh",
           "text": "Je vous remercie sincèrement, Monsieur le rapporteur. Je suis preneuse de toute observation.",
+          "en": "I sincerely thank you, Monsieur le rapporteur. I'm open to any observation.",
           "vi": "Tôi xin chân thành cảm ơn. Tôi sẵn sàng tiếp nhận mọi ý kiến."
         },
         {
           "speaker": "Pr. Lambert",
           "text": "Premier point: le fil conducteur est clair, et c'est un atout. Vous le formulez bien — la circulation transnationale des savoirs pédagogiques. Beaucoup de candidats échouent à présenter leur parcours autrement que comme une accumulation. Vous, non. C'est noté positivement.",
+          "en": "First point: the unifying thread is clear, and that's an asset. You formulate it well — the transnational circulation of pedagogical knowledge. Many candidates fail to present their path as anything other than an accumulation. You don't. That's noted positively.",
           "vi": "Điểm đầu: sợi chỉ đỏ rõ, đó là một ưu điểm. Cô diễn đạt tốt — sự lưu chuyển xuyên quốc gia của tri thức sư phạm. Nhiều ứng viên không trình bày được hành trình ngoài việc tích lũy. Cô thì khác. Điều đó được ghi nhận tích cực."
         },
         {
           "speaker": "Pr. Lambert",
           "text": "Deuxième point — et là j'ai un doute. Votre production post-thèse en revues classées est de quatre articles en quatre ans. C'est correct mais pas spectaculaire. Quelle est votre stratégie pour les quatre prochaines années ?",
+          "en": "Second point — and here I have a doubt. Your post-thesis output in ranked journals is four articles in four years. That's correct but not spectacular. What's your strategy for the next four years?",
           "vi": "Điểm hai — và đây tôi có nghi vấn. Sản phẩm hậu luận án của cô trong tạp chí xếp hạng là 4 bài trong 4 năm. Đủ nhưng không xuất sắc. Chiến lược 4 năm tới của cô thế nào?"
         },
         {
           "speaker": "Linh",
           "text": "Je vous remercie de la franchise. Sur la cadence, vous avez raison: quatre articles classés en quatre ans correspond à un rythme moyen pour la section. Ma stratégie post-qualification se structure ainsi: deux articles déjà sous évaluation — un dans Cahiers de la recherche sur l'éducation, un dans Comparative Education ; deux en cours d'écriture issus du projet ANR « Circulations Pédagogiques » ; et la monographie aux Presses universitaires de Rennes prévue pour fin deux mille vingt-sept.",
+          "en": "Thank you for the candor. On the pace, you're right: four ranked articles in four years is an average rhythm for the section. My post-qualification strategy is structured as follows: two articles already under review — one in Cahiers de la recherche sur l'éducation, one in Comparative Education; two in writing from the ANR project « Circulations Pédagogiques »; and the monograph with Presses universitaires de Rennes planned for late two thousand twenty-seven.",
           "vi": "Tôi cảm ơn sự thẳng thắn. Về nhịp, ông đúng: 4 articles classés trong 4 năm là nhịp trung bình cho section. Chiến lược hậu qualification của tôi: 2 bài đã ở giai đoạn đánh giá — một ở Cahiers de la recherche sur l'éducation, một ở Comparative Education; 2 bài đang viết từ dự án ANR « Circulations Pédagogiques »; và chuyên khảo ở NXB ĐH Rennes dự định cuối 2027."
         },
         {
           "speaker": "Pr. Lambert",
           "text": "Très bien — ces éléments concrets, pourquoi ne sont-ils pas dans le rapport sur les travaux ? J'ai dû lire entre les lignes.",
+          "en": "Very good — these concrete elements, why aren't they in the report on works? I had to read between the lines.",
           "vi": "Tốt — vậy sao những yếu tố cụ thể này không có trong báo cáo? Tôi phải đọc giữa các dòng."
         },
         {
           "speaker": "Linh",
           "text": "Vous avez raison, c'est une faiblesse rédactionnelle. J'ai voulu éviter l'effet d'annonce sur des articles non encore acceptés. Mais à l'évidence, j'ai sous-pondéré le projet à venir au profit du bilan. C'est un point que je note pour une éventuelle redéposition, ou pour la prochaine campagne d'auditions de recrutement.",
+          "en": "You're right, that's a writing weakness. I wanted to avoid an announcement effect on articles not yet accepted. But evidently, I under-weighted the future project in favour of the assessment. It's a point I note for a possible re-submission, or for the next recruitment audition campaign.",
           "vi": "Ông đúng, đó là điểm yếu trong soạn thảo. Tôi muốn tránh effet d'annonce với các articles chưa được chấp nhận. Nhưng rõ ràng, tôi đã đánh giá thấp dự án tương lai để ưu tiên bilan. Đây là điểm tôi ghi cho một lần nộp lại có thể, hoặc cho kỳ tuyển dụng tiếp."
         },
         {
           "speaker": "Pr. Lambert",
           "text": "Troisième point: votre service d'enseignement. ATER en France et chargée de cours à Hanoi. Très bien sur le papier. Mais je note que vous mentionnez peu d'innovation pédagogique. Y a-t-il des UE que vous avez créées, des dispositifs ?",
+          "en": "Third point: your teaching service. ATER in France and chargée de cours in Hanoi. Very good on paper. But I note you mention little pedagogical innovation. Are there courses you created, devices?",
           "vi": "Điểm ba: service giảng dạy. ATER ở Pháp và chargée de cours ở Hà Nội. Tốt trên giấy. Nhưng tôi để ý cô ít nói về cải tiến sư phạm. Có UE nào cô tạo, dispositifs nào?"
         },
         {
           "speaker": "Linh",
           "text": "Question légitime. À Aix, en deux mille vingt-trois, j'ai conçu et coordonné une UE de master « Méthodes qualitatives pour les terrains transnationaux », vingt-quatre heures, de l'orientation à l'évaluation. C'est mentionné en annexe trois mais — vous avez raison — pas valorisé dans le corps du rapport. Je le retiens pour l'audition de recrutement.",
+          "en": "A legitimate question. At Aix, in two thousand twenty-three, I designed and coordinated a master's course « Méthodes qualitatives pour les terrains transnationaux », twenty-four hours, from orientation to assessment. It's mentioned in annex three but — you're right — not valorized in the body of the report. I note it for the recruitment audition.",
           "vi": "Câu hỏi xác đáng. Tại Aix, năm 2023, tôi thiết kế và điều phối một UE master « Phương pháp định tính cho terrain xuyên quốc gia », 24 giờ, từ định hướng tới đánh giá. Có ghi trong annexe 3 nhưng — ông đúng — không được valorisé trong thân báo cáo. Tôi ghi nhận cho audition tuyển dụng."
         },
         {
           "speaker": "Pr. Lambert",
           "text": "Bien. Quatrième et dernier point: votre passage par Hanoi. Vous le présentez comme une mobilité positive. C'est un choix juste — mais certains de mes collègues lisent les parcours non strictement français comme un signe de manque d'ancrage. Avez-vous un argument pour répondre à cette objection si elle vient en plénière ?",
+          "en": "Good. Fourth and final point: your time in Hanoi. You present it as a positive mobility. That's a sound choice — but some of my colleagues read non-strictly-French paths as a sign of a lack of anchoring. Do you have an argument to answer that objection if it comes up in plenary?",
           "vi": "Tốt. Điểm bốn và cuối: thời gian ở Hà Nội. Cô trình bày như một mobilité tích cực. Lựa chọn đúng — nhưng vài đồng nghiệp của tôi đọc các parcours không thuần Pháp như dấu hiệu thiếu gốc. Cô có argument để đáp nếu objection ấy đến trong plénière?"
         },
         {
           "speaker": "Linh",
           "text": "Oui, et je tiens à le dire avec netteté. Mon ancrage français est attesté par: une thèse soutenue à Paris Cité, deux contrats ATER, l'inscription dans deux unités françaises, la coordination d'un numéro de la Revue française de pédagogie. Mon passage par Hanoi n'est pas un défaut d'ancrage — c'est un atout méthodologique pour mon objet, qui appelle un terrain symétrique. Je m'inscris en faux contre l'idée que la mobilité asiatique soit un déficit.",
+          "en": "Yes, and I want to say it with firmness. My French anchoring is attested by: a thesis defended at Paris Cité, two ATER contracts, membership in two French units, the coordination of an issue of the Revue française de pédagogie. My time in Hanoi is not a lack of anchoring — it's a methodological asset for my object, which calls for a symmetric field. I firmly disagree with the idea that Asian mobility is a deficit.",
           "vi": "Vâng, và tôi muốn nói rõ. Sự cắm gốc Pháp của tôi được chứng minh bởi: luận án ở Paris Cité, hai hợp đồng ATER, đăng ký tại hai đơn vị Pháp, đồng phụ trách một số chuyên đề Revue française de pédagogie. Thời gian Hà Nội không phải thiếu gốc — đó là một ưu thế phương pháp cho đối tượng của tôi, vốn đòi hỏi terrain đối xứng. Tôi phản bác ý kiến cho rằng mobilité châu Á là sự thiếu hụt."
         },
         {
           "speaker": "Pr. Lambert",
           "text": "Excellente réponse. Gardez exactement cette formulation pour la plénière si la question se pose. Je serai favorable à votre qualification — sans qu'il soit possible de garantir la décision collective bien sûr.",
+          "en": "Excellent answer. Keep exactly that formulation for the plenary if the question arises. I'll be favorable to your qualification — without it being possible to guarantee the collective decision, of course.",
           "vi": "Câu trả lời xuất sắc. Giữ chính xác diễn đạt này cho plénière nếu câu hỏi đặt ra. Tôi sẽ ủng hộ qualification của cô — dĩ nhiên không thể đảm bảo quyết định tập thể."
         }
       ],
@@ -8989,25 +9045,33 @@ export const lessons: FrenchLesson[] =     [
         {
           "idiom": "Un fil conducteur (académique)",
           "literal": "Một sợi chỉ dẫn dắt",
+          "literal_en": "a conducting thread",
           "meaning": "Sợi chỉ đỏ — formule centrale pour articuler une trajectoire.",
+          "meaning_en": "the unifying thread (red thread) — the central formula for articulating a trajectory",
           "example": "Mon parcours s'organise autour d'un fil conducteur unique: la circulation transnationale des savoirs."
         },
         {
           "idiom": "S'inscrire dans la continuité de (formel)",
           "literal": "Đăng ký vào sự liên tục của",
+          "literal_en": "to register oneself in the continuity of",
           "meaning": "Nối tiếp công trình — formule de positionnement.",
+          "meaning_en": "to follow on from / continue prior work — a positioning formula",
           "example": "Mes travaux post-thèse s'inscrivent dans la continuité de la thèse, tout en s'en démarquant sur deux points."
         },
         {
           "idiom": "Mettre en évidence (académique)",
           "literal": "Đặt ra trước mắt",
+          "literal_en": "to put into evidence",
           "meaning": "Làm nổi bật — formule standard pour signaler un résultat.",
+          "meaning_en": "to highlight / bring out — the standard formula for flagging a result",
           "example": "C'est cette cohérence interne que le présent rapport entend mettre en évidence."
         },
         {
           "idiom": "Faire l'objet d'une attention soutenue (institutionnel)",
           "literal": "Là đối tượng của một sự chú ý bền bỉ",
+          "literal_en": "to be the object of sustained attention",
           "meaning": "Được chú ý kỹ — registre formel pour signaler une thématique traitée en profondeur.",
+          "meaning_en": "to be examined in depth — formal register for a thoroughly-treated theme",
           "example": "La dimension pédagogique a fait l'objet d'une attention soutenue tout au long du parcours."
         }
       ],
@@ -9015,35 +9079,47 @@ export const lessons: FrenchLesson[] =     [
         {
           "type": "fill-blank",
           "question": "Bien que ma trajectoire ___ connu une mobilité soutenue, mon objet de recherche demeure stable.",
-          "answer": "ait"
+          "answer": "ait",
+          "hint_vi": "subjonctif passé của connaître — sau « Bien que » (ait + participe)",
+          "hint_en": "auxiliary of the past subjunctive of connaître — after « Bien que » (ma trajectoire ___ connu)"
         },
         {
           "type": "matching",
           "pairs": [
             [
               "le rapport sur les travaux",
-              "báo cáo về các công trình"
+              "báo cáo về các công trình (the report on works)"
             ],
             [
               "le fil conducteur",
-              "sợi chỉ đỏ"
+              "sợi chỉ đỏ (the unifying thread)"
             ],
             [
               "se démarquer de",
-              "tách khỏi"
+              "tách khỏi (to distinguish oneself from)"
             ],
             [
               "s'inscrire dans la continuité de",
-              "nối tiếp công trình của"
+              "nối tiếp công trình của (to follow on from)"
             ]
           ],
-          "instruction": "Nối thuật ngữ CNU với nghĩa Việt"
+          "instruction": "Nối thuật ngữ CNU với nghĩa Việt",
+          "instruction_en": "Match each CNU term with its Vietnamese meaning"
         },
         {
           "type": "translation",
           "vietnamese": "Dự án nghiên cứu tôi đính kèm hồ sơ này tiếp nối hành trình trước đó đồng thời tách khỏi nó.",
+          "english": "The research project I attach to the present dossier continues my prior path while distinguishing itself from it.",
           "french": "Le projet de recherche que je joins au présent dossier prolonge mon parcours antérieur tout en s'en démarquant."
         }
+      ],
+      "cultural_notes_en": "The CNU (Conseil National des Universités) is the French body that regulates academic careers — DISTINCT from recruitment (done by the institution) and from scientific evaluation (HCERES). WHY QUALIFICATION: in France, to apply for a Maître de Conférences (MCF) or Professeur des Universités (PR) post, you must first be 'qualified' by the CNU section corresponding to your discipline. Without qualification, application is impossible (save limited derogatory routes). SECTIONS: ~77 active sections, each ~50-100 members elected for 4 years; each section sovereignly decides its qualification criteria (significant disciplinary variability). The 'rapport sur les travaux' (10-30 pages) is the heart of the dossier — the rapporteurs read it first; structure: introduction (the unifying thread of the scientific trajectory), thesis assessment, post-thesis work, teaching record, research project, (for PR) the capacity to direct research. CULTURE: (a) the CNU is NOT a scientific value judgment — it attests aptitude to apply; non-qualification isn't a condemnation, you can re-submit; (b) 'qualified' ≠ 'recruited' — many qualified candidates never get a post (in SHS, qualified candidates outnumber posts 5-10:1); (c) the rapport must be PERSONAL — avoid a purely bibliographic tone; show reasoning, not just an alignment of publications. This is descriptive of common practice, NOT legal or career advice — CNU rules vary by section and by decree; always consult the official Galaxie site and the advice of recently-qualified colleagues.",
+      "tip_advice_en": "Eight-step protocol for a 'rapport sur les travaux' that passes qualification: (1) IDENTIFY THE UNIFYING THREAD — the first sentence; NOT 'I worked on X then Y' but 'my trajectory is organized around a single question: ...' linking thesis + post-thesis + future project. (2) STRUCTURE IN THREE STAGES — the thesis (methodology + results + reception, balancing positive AND critical), the post-thesis (how publications CONTINUE and NUANCE the thesis, never 'repetition'), the project (how the future fits the thread while marking its evolution). (3) MENTION THE THESIS RAPPORTEURS and their reception. (4) OWN THE MOBILITIES — for international candidates, present mobility as a scientific contribution, not a chaotic path. (5) GIVE THE NUMBERS — N publications, X in ranked journals; N teaching hours; N supervised students. (6) ACKNOWLEDGE THE LIMITS — 'my corpus is still limited in anglophone journals' + a redress plan; lucidity = maturity. (7) THE RESEARCH PROJECT must be realistic — three axes, a 4-year timeline, tied to an identified lab. (8) FORM — 15-25 pages, standard font, pagination, no photo (forbidden — anti-discrimination anonymization). Avoid: a hagiographic self-tone, an uninterpreted publication list, criticism of colleagues, unrealistic promises, confusing HDR with qualification (HDR comes AFTER). This is not legal/career advice; format requirements VARY by CNU section.",
+      "register_notes_en": "CNU discourse is an INSTITUTIONAL-ACADEMIC register — formal, factual, structured. (1) SELF-PRESENTATION FORMULAS — « Le présent rapport, soumis à la section X du CNU... », « Mon parcours s'organise autour d'une question unique: ... », « Mon corpus publié à ce jour comprend... », « Le projet de recherche que je joins prolonge mon parcours antérieur tout en s'en démarquant: ... ». (2) NOMINALIZATION OF THE TRAJECTORY — « la consolidation de mon corpus » rather than « j'ai consolidé », « la mobilité géographique » rather than « j'ai déménagé ». (3) SUBJUNCTIVE in concessives — « Bien que ma trajectoire ait connu une mobilité géographique soutenue... », « Quoique mon corpus en revues anglophones demeure limité... ». (4) LIMIT-RECOGNITION FORMULAS — « Je reconnais que... », « Cette dimension reste à diversifier. » — lucidity valued by CNU rapporteurs. (5) PROJECT FORMULAS — « Le projet prévoit, sur quatre ans, ... », « Trois axes structurent le programme à venir: ... ». (6) ACTIVE/PASSIVE BALANCE — the measured « je » is expected here (unlike the « je » excluded in a soutenance): « j'ai conçu cette UE » rather than « cette UE a été créée par moi ». Avoid: uninterpreted listings, unsupported hyperbole ('rayonnement international'), criticism of colleagues, self-hagiography, confusing HDR / qualification / recruitment.",
+      "roleplay_prompts_en": [
+        "Present in 3 minutes the unifying thread of a fictitious research path. You must articulate thesis + post-thesis + future project around a SINGLE question. Use « se démarquer », « s'inscrire dans la continuité », « prolonger ».",
+        "A rapporteur remarks that your post-thesis output « est correcte mais pas spectaculaire ». Respond: acknowledge the average pace, make the pipeline explicit (articles under review + in progress + monograph) with precise dates. Avoid the announcement effect.",
+        "Trick question: « Votre passage par Hanoi est-il un signe d'éloignement de la science française ? » Respond using the 7-step contestation structure: recognition + contestation + concrete arguments (publications, contracts, host units)."
       ]
     },
     {
@@ -9061,6 +9137,12 @@ export const lessons: FrenchLesson[] =     [
             "audition → o-di-sion",
             "fléché → flé-shé",
             "bilinguisme → bi-lan-guism"
+          ],
+          "pronunciation_focus_en": [
+            "retenu → 'ruh-tuh-NU' — past participle of retenir; 'avoir retenu mon dossier'",
+            "audition → 'oh-dee-SYON' — 'l'audition' = the recruitment hearing; '-tion' = 'syon'",
+            "fléché → 'flay-SHAY' — 'fléché en' = earmarked for; 'ch' = 'sh'",
+            "bilinguisme → 'bee-lan-GWEEZM' — nasal 'in'; final '-isme' = 'eezm'"
           ]
         },
         {
@@ -9071,6 +9153,12 @@ export const lessons: FrenchLesson[] =     [
             "cohérence → ko-é-rãns",
             "profil → pro-fil",
             "insertion → an-sèr-sion"
+          ],
+          "pronunciation_focus_en": [
+            "exposé → 'eks-poh-ZAY' — 'mon exposé' = my presentation; '-é' = 'ay'",
+            "cohérence → 'koh-ay-RAHNSS' — 'la cohérence de mon parcours'; nasal '-ence'",
+            "profil → 'pro-FEEL' — 'le profil du poste'; final 'l' pronounced",
+            "insertion → 'an-sehr-SYON' — nasal 'in'; '-tion' = 'syon'"
           ]
         },
         {
@@ -9081,6 +9169,12 @@ export const lessons: FrenchLesson[] =     [
             "requiert → rơ-kièr",
             "appliquées → a-pli-ké",
             "plurilingues → plu-ri-lan-gơ"
+          ],
+          "pronunciation_focus_en": [
+            "tel qu'il est → 'tel keel EH' — 'as it is (defined)'; final 't' silent",
+            "requiert → 'ruh-KYEHR' — 'requérir' 3rd person; '-iert' = 'yehr'",
+            "appliquées → 'ah-plee-KAY' — feminine plural; double 'pp' = 'p'; '-ées' = 'ay'",
+            "plurilingues → 'plu-ree-LAN-guh' — 'u' rounded; nasal 'in'; 'g' hard before 'u'"
           ]
         },
         {
@@ -9091,6 +9185,12 @@ export const lessons: FrenchLesson[] =     [
             "propose → pro-poz",
             "service → sèr-vis",
             "réparti → ré-par-ti"
+          ],
+          "pronunciation_focus_en": [
+            "pédagogique → 'pay-dah-goh-ZHEEK' — 'g' = 'zh'; final '-que' = 'k'",
+            "propose → 'pro-POHZ' — 'je me propose de' = I propose to; final '-e' silent",
+            "service → 'sehr-VEESS' — 'le service annuel' = the annual teaching load",
+            "réparti → 'ray-par-TEE' — past participle of répartir; final 'i' = 'ee'"
           ]
         },
         {
@@ -9101,6 +9201,12 @@ export const lessons: FrenchLesson[] =     [
             "parachutage → pa-ra-shu-taj",
             "collaborer → ko-la-bo-ré",
             "composition → kõn-po-zi-sion"
+          ],
+          "pronunciation_focus_en": [
+            "insertion → 'an-sehr-SYON' — repeated key term; nasal 'in'",
+            "parachutage → 'pah-rah-shu-TAHZH' — 'ch' = 'sh'; final '-age' = 'ahzh'",
+            "collaborer → 'koh-lah-boh-RAY' — '-er' = 'ay'; double 'll' = 'l'",
+            "composition → 'kohn-poh-zee-SYON' — nasal 'om'; '-tion' = 'syon'"
           ]
         }
       ],
@@ -9112,91 +9218,105 @@ export const lessons: FrenchLesson[] =     [
           "en": "a recruitment audition",
           "vi": "phiên audition tuyển dụng",
           "pos": "n.f.",
-          "pronunciation_vi": "un o-di-sion dơ rơ-kru-tơ-mã"
+          "pronunciation_vi": "un o-di-sion dơ rơ-kru-tơ-mã",
+          "pronunciation_en": "ün oh-dee-SYON duh ruh-kru-tuh-MAHN — 'une audition de recrutement'"
         },
         {
           "word": "le comité de sélection (COS)",
           "en": "the selection committee",
           "vi": "comité tuyển chọn",
           "pos": "n.m.",
-          "pronunciation_vi": "lơ ko-mi-té dơ sé-lèk-sion"
+          "pronunciation_vi": "lơ ko-mi-té dơ sé-lèk-sion",
+          "pronunciation_en": "luh koh-mee-TAY duh say-lek-SYON — 'le comité de sélection (COS)'"
         },
         {
           "word": "la fiche de poste",
           "en": "the position description",
           "vi": "mô tả vị trí",
           "pos": "n.f.",
-          "pronunciation_vi": "la fish dơ post"
+          "pronunciation_vi": "la fish dơ post",
+          "pronunciation_en": "lah FEESH duh POHST — 'la fiche de poste' = the position description"
         },
         {
           "word": "fléché en (un domaine)",
           "en": "earmarked for (a domain)",
           "vi": "fléché về (một lĩnh vực)",
           "pos": "loc.",
-          "pronunciation_vi": "flé-shé ã"
+          "pronunciation_vi": "flé-shé ã",
+          "pronunciation_en": "flay-SHAY ahn — 'fléché en (un domaine)' = earmarked for (a domain)"
         },
         {
           "word": "le profil du poste",
           "en": "the profile of the position",
           "vi": "profil vị trí",
           "pos": "n.m.",
-          "pronunciation_vi": "lơ pro-fil du post"
+          "pronunciation_vi": "lơ pro-fil du post",
+          "pronunciation_en": "luh pro-FEEL du POHST — 'le profil du poste' = the profile of the position"
         },
         {
           "word": "le laboratoire d'accueil",
           "en": "the host laboratory",
           "vi": "laboratoire d'accueil",
           "pos": "n.m.",
-          "pronunciation_vi": "lơ la-bo-ra-toa-rơ da-kơy"
+          "pronunciation_vi": "lơ la-bo-ra-toa-rơ da-kơy",
+          "pronunciation_en": "luh lah-boh-rah-TWAR dah-KUH-yuh — 'le laboratoire d'accueil' = the host lab"
         },
         {
           "word": "l'insertion dans un collectif",
           "en": "insertion into a collective",
           "vi": "hội nhập vào tập thể",
           "pos": "n.f.",
-          "pronunciation_vi": "lan-sèr-sion dã an ko-lèk-tif"
+          "pronunciation_vi": "lan-sèr-sion dã an ko-lèk-tif",
+          "pronunciation_en": "lan-sehr-SYON dahn ZUN koh-lek-TEEF — 'l'insertion dans un collectif'"
         },
         {
           "word": "un parachutage",
           "en": "a parachute drop (forced insertion)",
           "vi": "parachutage — ngã từ trên xuống",
           "pos": "n.m.",
-          "pronunciation_vi": "an pa-ra-shu-taj"
+          "pronunciation_vi": "an pa-ra-shu-taj",
+          "pronunciation_en": "UN pah-rah-shu-TAHZH — 'un parachutage' = a forced/external insertion"
         },
         {
           "word": "le service annuel d'enseignement",
           "en": "the annual teaching service",
           "vi": "service năm về giảng dạy",
           "pos": "n.m.",
-          "pronunciation_vi": "lơ sèr-vis a-nu-èl"
+          "pronunciation_vi": "lơ sèr-vis a-nu-èl",
+          "pronunciation_en": "luh sehr-VEESS ah-nu-EL dahn-sen-yuh-MAHN — 'le service annuel d'enseignement'"
         },
         {
           "word": "un classement",
           "en": "a ranking",
           "vi": "xếp hạng",
           "pos": "n.m.",
-          "pronunciation_vi": "an klas-mã"
+          "pronunciation_vi": "an klas-mã",
+          "pronunciation_en": "UN klahss-MAHN — 'un classement' = a ranking; nasal '-ent'"
         }
       ],
       "dialogue": [
         {
           "speaker": "Pr. Garcia (Présidente du COS)",
           "text": "Madame Tran, vous disposez de vingt minutes. À vous.",
+          "en": "Ms. Tran, you have twenty minutes. Go ahead.",
           "vi": "Cô Trần, cô có hai mươi phút. Mời cô."
         },
         {
           "speaker": "Linh",
           "text": "Madame la Présidente, Mesdames et Messieurs les membres du comité, je vous remercie d'avoir retenu mon dossier. Mon exposé s'articulera en trois temps: la cohérence de mon parcours au regard du profil du poste, mon projet d'enseignement pour les UE listées, et mon insertion projetée dans le laboratoire LSO.",
+          "en": "Madame President, ladies and gentlemen of the committee, thank you for having retained my dossier. My presentation will be structured in three stages: the coherence of my path with regard to the post profile, my teaching project for the listed courses, and my projected insertion into the LSO laboratory.",
           "vi": "Thưa Chủ tịch, thưa quý Cô quý Thầy, tôi cảm ơn đã chọn hồ sơ. Bài trình bày gồm ba phần: nhất quán hành trình so với profil vị trí, dự án giảng dạy cho các UE, và hội nhập dự kiến vào laboratoire LSO."
         },
         {
           "speaker": "Pr. Garcia",
           "text": "Question d'ouverture: pourquoi notre établissement plutôt qu'un autre ?",
+          "en": "Opening question: why our institution rather than another?",
           "vi": "Câu hỏi mở đầu: vì sao đơn vị chúng tôi chứ không phải một nơi khác?"
         },
         {
           "speaker": "Linh",
           "text": "Trois raisons précises. Un: le laboratoire LSO est l'un des deux en France à articuler sociolinguistique du bilinguisme et politiques linguistiques transnationales — c'est exactement mon objet. Deux: l'archive Aix-Sud, accessible dans votre établissement, conditionne l'extension de mes corpus. Trois: les UE listées correspondent à mes domaines d'enseignement antérieurs, ce qui assure une prise de fonction sans rupture pédagogique.",
+          "en": "Three precise reasons. One: the LSO laboratory is one of two in France that articulates sociolinguistics of bilingualism with transnational language policies — exactly my object. Two: the Aix-Sud archive, accessible at your institution, conditions the extension of my corpora. Three: the listed courses match my prior teaching domains, ensuring a take-up of duties without pedagogical rupture.",
           "vi": "Ba lý do cụ thể. Một: laboratoire LSO là một trong hai ở Pháp khớp nối sociolinguistique du bilinguisme và politiques linguistiques transnationales — đúng đối tượng của tôi. Hai: lưu trữ Aix-Sud, tiếp cận được tại đơn vị này, là điều kiện để mở rộng corpus. Ba: các UE liệt kê khớp với lĩnh vực giảng dạy trước đó, đảm bảo nhận nhiệm vụ không gãy."
         }
       ],
@@ -9204,76 +9324,91 @@ export const lessons: FrenchLesson[] =     [
         {
           "speaker": "Pr. Garcia (Présidente du COS, ouverture)",
           "text": "Madame Tran, vous êtes la troisième candidate auditionnée ce matin. Vous disposez de vingt minutes pour votre exposé, suivies d'environ vingt-cinq minutes de questions. Le comité est complet — onze membres aujourd'hui. Nous vous écoutons.",
+          "en": "Ms. Tran, you're the third candidate auditioned this morning. You have twenty minutes for your exposé, followed by about twenty-five minutes of questions. The committee is complete — eleven members today. We're listening.",
           "vi": "Cô Trần, cô là ứng viên thứ ba sáng nay. Cô có 20 phút trình bày, sau đó khoảng 25 phút hỏi đáp. Comité đầy đủ — 11 thành viên hôm nay. Chúng tôi nghe cô."
         },
         {
           "speaker": "Linh",
           "text": "Madame la Présidente, Mesdames et Messieurs les membres du comité, je vous remercie d'avoir retenu mon dossier pour cette audition au poste numéro deux mille vingt-six trait MCF zéro quatre, fléché en sociolinguistique du bilinguisme. Mon exposé s'articulera en trois temps: la cohérence de mon parcours scientifique au regard du profil du poste, mon projet d'enseignement pour les UE listées, et mon insertion projetée dans le laboratoire d'accueil.",
+          "en": "Madame President, ladies and gentlemen of the committee, thank you for having retained my dossier for this audition for post number two thousand twenty-six dash MCF zero four, earmarked for the sociolinguistics of bilingualism. My presentation will be structured in three stages: the coherence of my scientific path with regard to the post profile, my teaching project for the listed courses, and my projected insertion into the host laboratory.",
           "vi": "Thưa Chủ tịch, thưa quý Cô quý Thầy thành viên comité, tôi cảm ơn đã chọn hồ sơ cho audition vị trí 2026-MCF-04, fléché xã hội ngôn ngữ học song ngữ. Bài trình bày gồm ba phần: nhất quán hành trình so với profil vị trí, dự án giảng dạy cho các UE, hội nhập dự kiến vào laboratoire d'accueil."
         },
         {
           "speaker": "Linh",
           "text": "Premier temps: la cohérence. Le profil du poste, tel qu'il est défini dans la fiche, requiert une compétence en méthodes mixtes appliquées à des terrains plurilingues — précisément le cœur de ma formation doctorale et de mes publications post-thèse. Ma thèse, soutenue en deux mille vingt-trois à Paris Cité, portait sur la circulation des modèles pédagogiques entre la France et le Vietnam ; mes quatre articles classés post-thèse en prolongent la méthodologie.",
+          "en": "First stage: coherence. The profile of the post, as it is defined in the fiche, requires a competence in mixed methods applied to plurilingual fields — precisely the core of my doctoral training and my post-thesis publications. My thesis, defended in two thousand twenty-three at Paris Cité, was on the circulation of pedagogical models between France and Vietnam; my four post-thesis ranked articles extend its methodology.",
           "vi": "Phần một: sự nhất quán. Profil vị trí, theo fiche, đòi hỏi năng lực phương pháp hỗn hợp áp dụng cho terrain đa ngôn ngữ — chính là lõi đào tạo doctorat và các publications hậu luận án. Luận án, bảo vệ 2023 ở Paris Cité, về sự lưu chuyển mô hình sư phạm giữa Pháp và Việt; bốn articles classés hậu luận án tiếp nối phương pháp đó."
         },
         {
           "speaker": "Linh",
           "text": "Deuxième temps: le projet d'enseignement. Sur le plan pédagogique, je me propose, dès la première année, d'assurer le service annuel de cent quatre-vingt-douze HEQ TD, réparti ainsi: quarante-huit heures en licence trois pour l'UE 'Sociolinguistique', soixante-douze heures en master un pour l'UE 'Méthodes qualitatives' — listées toutes deux dans la fiche —, et soixante-douze heures en master deux pour une UE nouvelle que je propose de créer: 'Terrains plurilingues comparés'.",
+          "en": "Second stage: the teaching project. Pedagogically, I propose, from the first year, to ensure the annual service of one hundred ninety-two tutorial-equivalent hours, distributed as follows: forty-eight hours in third-year licence for the 'Sociolinguistique' course, seventy-two hours in first-year master for the 'Méthodes qualitatives' course — both listed in the fiche —, and seventy-two hours in second-year master for a new course I propose to create: 'Terrains plurilingues comparés'.",
           "vi": "Phần hai: dự án giảng dạy. Về sư phạm, tôi đề xuất, ngay năm đầu, đảm bảo service năm 192 HEQ TD, phân bổ: 48 giờ licence 3 cho UE 'Sociolinguistique', 72 giờ master 1 cho UE 'Méthodes qualitatives' — cả hai được liệt kê trong fiche —, và 72 giờ master 2 cho một UE mới tôi đề xuất tạo: 'Terrains plurilingues comparés'."
         },
         {
           "speaker": "Linh",
           "text": "Cette UE nouvelle prolonge mon projet de recherche et complète l'offre actuelle du master, qui ne comprend pas, à ma connaissance, de séminaire dédié aux terrains plurilingues d'Asie. Elle s'articulerait avec l'UE 'Politiques linguistiques' coordonnée par Madame Garcia, par une séquence transversale en M2 sur l'évaluation des dispositifs.",
+          "en": "This new course extends my research project and completes the master's current offering, which does not include, to my knowledge, a seminar dedicated to plurilingual fields in Asia. It would articulate with the 'Politiques linguistiques' course coordinated by Ms. Garcia, through a transversal M2 sequence on the evaluation of devices.",
           "vi": "UE mới này tiếp nối dự án nghiên cứu và bổ sung cho offre hiện tại của master, mà theo tôi biết, không có séminaire dành cho terrain đa ngôn ngữ châu Á. Nó sẽ khớp với UE 'Politiques linguistiques' do Cô Garcia điều phối, qua một séquence xuyên suốt M2 về đánh giá dispositifs."
         },
         {
           "speaker": "Linh",
           "text": "Troisième temps: l'insertion. Mon insertion dans le laboratoire LSO ne serait pas un parachutage. J'ai eu l'occasion d'y collaborer en deux mille vingt-quatre dans le cadre du projet ANR coordonné par le professeur Bertrand. La composition actuelle du laboratoire correspond précisément à mon objet: deux MCF travaillent sur l'Asie du Sud-Est, et le séminaire mensuel 'Terrains du plurilinguisme' offre un cadre direct d'inscription.",
+          "en": "Third stage: insertion. My insertion into the LSO laboratory would not be a parachuting-in. I had the opportunity to collaborate there in two thousand twenty-four within the ANR project coordinated by Professor Bertrand. The current composition of the laboratory matches my object precisely: two MCF work on Southeast Asia, and the monthly seminar 'Terrains du plurilinguisme' offers a direct framework for affiliation.",
           "vi": "Phần ba: hội nhập. Hội nhập vào laboratoire LSO sẽ không phải parachutage. Tôi đã có dịp cộng tác năm 2024 trong khuôn khổ dự án ANR do giáo sư Bertrand điều phối. Thành phần hiện tại của laboratoire khớp đúng với đối tượng của tôi: hai MCF làm về Đông Nam Á, và séminaire tháng 'Terrains du plurilinguisme' tạo khung đăng ký trực tiếp."
         },
         {
           "speaker": "Linh",
           "text": "Pour conclure, ma candidature s'inscrit dans une convergence rare entre profil de poste, projet de recherche, projet d'enseignement et collectif d'accueil. Je vous remercie pour votre attention et reste à votre disposition pour vos questions.",
+          "en": "To conclude, my candidacy is part of a rare convergence between post profile, research project, teaching project and host collective. Thank you for your attention; I remain at your disposal for your questions.",
           "vi": "Để kết thúc, ứng cử của tôi nằm trong một sự hội tụ hiếm giữa profil vị trí, dự án nghiên cứu, dự án giảng dạy và collectif d'accueil. Tôi cảm ơn quý vị đã lắng nghe và sẵn sàng trả lời câu hỏi."
         },
         {
           "speaker": "Pr. Garcia",
           "text": "Merci. Madame Lemaire, première question, je vous prie.",
+          "en": "Thank you. Ms. Lemaire, the first question, please.",
           "vi": "Cảm ơn. Cô Lemaire, câu hỏi đầu xin mời."
         },
         {
           "speaker": "Pr. Lemaire (membre interne)",
           "text": "Madame Tran, vous proposez de créer une UE en M2. Comment l'articuleriez-vous avec l'UE 'Anthropologie linguistique' que coordonne mon collègue Pr. Schmitt — risque de redondance ?",
+          "en": "Ms. Tran, you propose to create a course in M2. How would you articulate it with the 'Anthropologie linguistique' course my colleague Pr. Schmitt coordinates — a risk of redundancy?",
           "vi": "Cô Trần, cô đề xuất tạo một UE ở M2. Cô khớp nó với UE 'Anthropologie linguistique' do đồng nghiệp Pr. Schmitt điều phối ra sao — rủi ro trùng lặp?"
         },
         {
           "speaker": "Linh",
           "text": "Question pertinente. J'ai consulté la maquette M2 et lu le syllabus du Pr. Schmitt. La distinction me paraît claire: 'Anthropologie linguistique' s'articule autour des représentations et des idéologies linguistiques, en perspective ethnographique. Mon UE proposée porte sur la comparaison de DISPOSITIFS — politiques publiques, programmes pédagogiques, infrastructures éducatives. Ce sont deux entrées disciplinaires complémentaires, non concurrentes. Une séance commune en milieu de semestre pourrait, du reste, formaliser cette complémentarité.",
+          "en": "A pertinent question. I consulted the M2 syllabus and read Pr. Schmitt's. The distinction seems clear to me: 'Anthropologie linguistique' is built around linguistic representations and ideologies, in an ethnographic perspective. My proposed course addresses the comparison of DEVICES — public policies, pedagogical programmes, educational infrastructures. They are two complementary disciplinary entries, not competing ones. A joint session mid-semester could, moreover, formalize this complementarity.",
           "vi": "Câu hỏi xác đáng. Tôi đã đọc maquette M2 và syllabus Pr. Schmitt. Sự khác biệt theo tôi rõ: 'Anthropologie linguistique' xoay quanh đại diện và hệ tư tưởng ngôn ngữ, góc dân tộc học. UE tôi đề xuất về so sánh DISPOSITIFS — chính sách công, chương trình sư phạm, hạ tầng giáo dục. Hai cửa ngành bổ sung, không cạnh tranh. Một buổi chung giữa học kỳ có thể, hơn nữa, formaliser sự bổ sung đó."
         },
         {
           "speaker": "Pr. Lemaire",
           "text": "Très bien. Avez-vous déjà parlé au Pr. Schmitt de cette articulation ?",
+          "en": "Very good. Have you already spoken to Pr. Schmitt about this articulation?",
           "vi": "Tốt. Cô đã nói với Pr. Schmitt về sự khớp nối này chưa?"
         },
         {
           "speaker": "Linh",
           "text": "Pas formellement, par discrétion procédurale: prendre l'initiative en amont d'une audition aurait pu paraître présomptueux. Mais en cas de succès au concours, ce serait une de mes premières démarches institutionnelles — discuter de l'articulation avant validation par le conseil de département.",
+          "en": "Not formally, out of procedural discretion: taking the initiative ahead of an audition could have seemed presumptuous. But in the event of success in the competition, it would be one of my first institutional steps — to discuss the articulation before validation by the department council.",
           "vi": "Chưa chính thức, vì discrétion thủ tục: chủ động trước audition có thể trông giả định trước. Nhưng nếu thành công ở concours, đó sẽ là một trong démarches đầu — bàn về sự khớp nối trước validation conseil de département."
         },
         {
           "speaker": "Pr. Garcia",
           "text": "Réponse mesurée. Question suivante, M. Dubois.",
+          "en": "A measured answer. Next question, Mr. Dubois.",
           "vi": "Câu trả lời chừng mực. Câu hỏi tiếp, Thầy Dubois."
         },
         {
           "speaker": "Pr. Dubois (membre externe)",
           "text": "Madame Tran, votre formation est principalement franco-vietnamienne. Comment vos compétences se positionnent-elles face à la concurrence en sociolinguistique du bilinguisme, qui est, vous le savez, fortement anglophone ?",
+          "en": "Ms. Tran, your training is mainly Franco-Vietnamese. How do your competences position themselves against the competition in the sociolinguistics of bilingualism, which is, as you know, strongly anglophone?",
           "vi": "Cô Trần, đào tạo cô chủ yếu Pháp-Việt. Năng lực cô định vị thế nào so với cạnh tranh trong sociolinguistique du bilinguisme, mà như cô biết, chủ yếu anglophone?"
         },
         {
           "speaker": "Linh",
           "text": "Je connais le débat. Je l'aborde sans détour. Trois éléments. Un: ma formation est trilingue — vietnamien natif, français de scolarité doctorale, anglais de travail attesté par des publications dans Comparative Education et International Review of Education. Je conteste l'idée que le profil franco-vietnamien soit un déficit en sociolinguistique du bilinguisme — c'est, en réalité, un atout terrain. Deux: la sociolinguistique anglophone est massive mais largement focalisée sur les diasporas américaine et britannique ; le terrain asiatique francophone — Vietnam, Cambodge, Laos — reste sous-théorisé. Trois: le projet de recherche prévoit explicitement deux articles anglophones par cycle de quatre ans, ce qui correspond à un engagement réaliste plutôt qu'à une promesse vide.",
+          "en": "I know the debate. I'll address it without circumlocution. Three elements. One: my training is trilingual — native Vietnamese, doctoral-schooling French, working English attested by publications in Comparative Education and International Review of Education. I contest the idea that the Franco-Vietnamese profile is a deficit in the sociolinguistics of bilingualism — it is, in reality, a field asset. Two: anglophone sociolinguistics is massive but largely focused on American and British diasporas; the francophone Asian field — Vietnam, Cambodia, Laos — remains under-theorized. Three: the research project explicitly plans two anglophone articles per four-year cycle, a realistic commitment rather than an empty promise.",
           "vi": "Tôi biết tranh luận đó. Tôi xử lý không quanh co. Ba yếu tố. Một: đào tạo của tôi tam ngữ — Việt bản ngữ, Pháp đào tạo doctorat, Anh làm việc chứng minh qua publications ở Comparative Education và International Review of Education. Tôi phản bác ý kiến cho rằng profil Pháp-Việt là thiếu hụt trong sociolinguistique du bilinguisme — thực ra là một lợi thế terrain. Hai: sociolinguistique anglophone đồ sộ nhưng chủ yếu tập trung diaspora Mỹ và Anh; terrain châu Á francophone — Việt, Campuchia, Lào — còn ít được lý thuyết hóa. Ba: dự án nghiên cứu dự định rõ hai articles tiếng Anh mỗi 4 năm, là cam kết hiện thực không phải lời hứa rỗng."
         }
       ],
@@ -9287,25 +9422,33 @@ export const lessons: FrenchLesson[] =     [
         {
           "idiom": "Fléché en (un domaine) [institutionnel]",
           "literal": "Có mũi tên về",
+          "literal_en": "earmarked in (a domain)",
           "meaning": "Đánh dấu hướng đến (lĩnh vực) — vocabulaire de la fiche de poste.",
+          "meaning_en": "earmarked for / targeted at (a domain) — fiche-de-poste vocabulary",
           "example": "Le poste est fléché en sociolinguistique du bilinguisme avec section secondaire en sciences de l'éducation."
         },
         {
           "idiom": "Ne pas être un parachutage (institutionnel)",
           "literal": "Không phải sự nhảy dù",
+          "literal_en": "not to be a parachuting-in",
           "meaning": "Không bị áp đặt từ ngoài — argument standard pour candidat externe au labo.",
+          "meaning_en": "not to be an externally imposed appointment — the standard argument for a lab-external candidate",
           "example": "Mon insertion dans le laboratoire ne serait pas un parachutage, puisque j'y collabore depuis 2024."
         },
         {
           "idiom": "Au regard de (formel)",
           "literal": "Trước cái nhìn của",
+          "literal_en": "in regard of",
           "meaning": "So với / khi xét tới — registre administratif-académique.",
+          "meaning_en": "with regard to / in light of — administrative-academic register",
           "example": "La cohérence du parcours, au regard du profil du poste, paraît établie."
         },
         {
           "idiom": "Une convergence rare (institutionnel)",
           "literal": "Một sự hội tụ hiếm",
+          "literal_en": "a rare convergence",
           "meaning": "Sự gặp gỡ hiếm — formule de conclusion d'audition pour synthétiser la pertinence.",
+          "meaning_en": "a rare convergence — an audition-conclusion formula synthesizing the candidacy's fit",
           "example": "Ma candidature s'inscrit dans une convergence rare entre profil de poste et projet de recherche."
         }
       ],
@@ -9313,35 +9456,47 @@ export const lessons: FrenchLesson[] =     [
         {
           "type": "fill-blank",
           "question": "Bien que la concurrence ___ forte, mon profil correspond précisément au profil du poste.",
-          "answer": "soit"
+          "answer": "soit",
+          "hint_vi": "subjonctif của être — sau « Bien que » (la concurrence ___ forte)",
+          "hint_en": "subjunctive of être — after « Bien que » (although the competition ___ strong)"
         },
         {
           "type": "matching",
           "pairs": [
             [
               "la fiche de poste",
-              "mô tả vị trí"
+              "mô tả vị trí (the position description)"
             ],
             [
               "fléché en",
-              "fléché về"
+              "fléché về (earmarked for)"
             ],
             [
               "le laboratoire d'accueil",
-              "laboratoire d'accueil"
+              "phòng thí nghiệm tiếp nhận (the host laboratory)"
             ],
             [
               "un parachutage",
-              "ngã từ trên xuống"
+              "sự áp đặt từ ngoài (a parachuting-in / forced insertion)"
             ]
           ],
-          "instruction": "Nối thuật ngữ audition MCF với nghĩa Việt"
+          "instruction": "Nối thuật ngữ audition MCF với nghĩa Việt",
+          "instruction_en": "Match each MCF-audition term with its Vietnamese meaning"
         },
         {
           "type": "translation",
           "vietnamese": "Hội nhập của tôi vào laboratoire LSO sẽ không phải là parachutage: tôi đã cộng tác trong khuôn khổ dự án ANR năm 2024.",
+          "english": "My insertion into the LSO laboratory would not be a parachuting-in: I collaborated within the ANR project in two thousand twenty-four.",
           "french": "Mon insertion dans le laboratoire LSO ne serait pas un parachutage: j'ai collaboré dans le cadre du projet ANR en deux mille vingt-quatre."
         }
+      ],
+      "cultural_notes_en": "The MCF recruitment audition is the DECISIVE stage of the French recruitment competition — distinct from CNU qualification (a national prerequisite) and from HCERES evaluation (which evaluates the collective). Process: (1) the post is published on Galaxie in Feb-March (the synchronized national campaign); (2) the candidate files a dossier (CV + application report + teaching/research project); (3) a comité de sélection (« COS », 8-12 members, internal/external parity, gender parity mandatory) examines the dossiers; (4) AUDITION (May-June), typically 30-45 min: 15-20 min presentation + 15-25 min questions; (5) the COS ranks the candidates; (6) the top-ranked is appointed by decree. THE 'FICHE DE POSTE' specifies the CNU section(s), the teaching profile (which courses), the research profile (host lab + axes). The candidate MUST prove fit to the profile — that is the basis of recruitment. CULTURE: (a) the 'local insider' advantage (an internal ATER/postdoc) is OFTEN OVERESTIMATED by external candidates — the COS demands a solid dossier regardless; (b) a fully non-French candidate sometimes still needs more French-anchoring signals; (c) the TEACHING PROJECT is crucial and often neglected — the COS always asks 'which courses will you take on, and what innovations?'. This is descriptive of common practice, NOT legal or career advice — recruitment procedures vary by institution and reform; always consult the precise fiche de poste, the institution's procedure, and a recently-recruited mentor in the same section.",
+      "tip_advice_en": "Nine-step protocol for an MCF audition: (1) ANALYZE THE FICHE DE POSTE LINE BY LINE — CNU section(s), research profile (axes, host lab, keywords), teaching profile (listed courses, level), constraints; your exposé must ANSWER POINT-BY-POINT. (2) PREPARE AN 18-MIN EXPOSÉ (margin for 20): parcours in one sentence + thread, research programme tied to the host lab, teaching programme on the listed courses + 1-2 additions, insertion into the collective, synthetic conclusion. (3) DON'T NARRATE YOUR THESIS — the COS read it; two sentences. (4) KNOW THE LAB AND ITS MEMBERS BY NAME — read 3-4 recent publications; the COS will ask 'with whom would you collaborate?'. (5) TEACHING PROJECT — detailed, not generic: listed courses with proposed programmes + 1-2 new courses tied to your research. (6) ANTICIPATE RECURRING QUESTIONS — 'why our institution?', 'with whom in the lab?', 'which courses from September?', 'what will you publish in two years?'. (7) DRESS CODE/FORMAT — formal, arrive 30 min early, bring copies for each COS member. (8) BEHAVIOR — vouvoiement to ALL, scan the whole COS (not just the president). (9) AFTER — a sober thank-you email to the president the same evening. Avoid: a memorized text, comparing yourself to other candidates, unrealistic promises, confusing recruitment audition with thesis defense. Not legal/career advice — procedures vary.",
+      "register_notes_en": "MCF audition = formal academic + INSTITUTIONAL register — close to a soutenance but with a teaching and insertion component. (1) REFERENCES TO THE FICHE DE POSTE are mandatory — « Le profil du poste, tel qu'il est défini dans la fiche, requiert... », « Au regard du profil du poste... »; not showing the fiche = an unprepared application. (2) PEDAGOGICAL-COMMITMENT FORMULAS — « Je me propose, dès la première année, d'assurer... », « Je propose la création d'une UE nouvelle... »; verbs in the CONDITIONAL if nothing is validated yet (the future is presumptuous in an audition). (3) COLLECTIVE-INSERTION FORMULAS — « Mon insertion dans le laboratoire ne serait pas un parachutage... », « Je collaborerais avec [nom précis] sur [sujet précis]... ». (4) PRECISE REASONS FOR THE POST — not « j'ai été attirée par votre université » but « trois raisons précises: un... deux... trois... » + specific arguments. (5) SUBJUNCTIVE in concessives + necessity — « Bien que la concurrence soit forte... », « Il convient que la prise de fonction soit immédiatement opérationnelle. ». Avoid: « Je suis la meilleure candidate » (presumptuous — let the COS judge), nominal comparisons with other candidates, unrealistic promises, « j'aimerais bien... » (weak modal — prefer « je me propose de... »), confusing the CNU section with the post profile.",
+      "roleplay_prompts_en": [
+        "Open an MCF audition in 5 minutes: thanks + a three-stage plan + path/profile coherence. Reference the post NUMBER and its earmarking clearly. Use at least one concessive subjunctive.",
+        "The committee asks: « Avec qui dans le labo collaboreriez-vous concrètement ? » Respond with specific names (2 researchers) + a collaboration topic + a recent reading of one of their articles. Avoid a generic answer.",
+        "Trick question: « Pourquoi nous, et pas le poste équivalent à Lyon publié la semaine dernière ? » Respond with 3 CONCRETE reasons tied to the host lab (composition, archive access, course articulation). Do NOT say « parce que vous m'attirez plus »."
       ]
     },
     {
