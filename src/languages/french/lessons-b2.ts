@@ -9850,6 +9850,11 @@ export const lessons: FrenchLesson[] =           [
             "modifier → mo-di-fié",
             "imprévu → an-pré-vu",
             "professionnel → pro-fè-sio-nèl"
+          ],
+          "pronunciation_focus_en": [
+            "modifier → moh-dee-FYAY (final '-ier' = 'FYAY', rhymes with English 'pay'; the formal verb 'to modify')",
+            "imprévu → a(n)-pray-VYOO (nasal first syllable; the 'u' is rounded French 'u'; means 'an unforeseen event')",
+            "professionnel → proh-feh-syo-NEL (four syllables; stress on the last; final 'nelle' = English 'nell')"
           ]
         },
         {
@@ -9859,6 +9864,11 @@ export const lessons: FrenchLesson[] =           [
             "billet → bi-yè",
             "origine → o-ri-jin",
             "échangeable → é-shãn-jabl"
+          ],
+          "pronunciation_focus_en": [
+            "billet → bee-YEH (final 't' silent; 'illet' = 'ee-yeh' diphthong)",
+            "origine → oh-ree-ZHEEN ('zh' = 's' in 'measure'; final 'e' silent in fast speech)",
+            "échangeable → ay-shah(n)-ZHAH-bluh (nasal middle; final 'ble' soft 'bluh' — means 'exchangeable')"
           ]
         },
         {
@@ -9868,6 +9878,11 @@ export const lessons: FrenchLesson[] =           [
             "frais → frè",
             "changement → shãn-jơ-mã",
             "excessif → èk-sè-sif"
+          ],
+          "pronunciation_focus_en": [
+            "frais → FREH (one syllable; open 'eh' like English 'air' without 'r'; means 'fees / expenses')",
+            "changement → shah(n)-zhuh-MAH(n) (two nasals; '-ment' adverb ending; means 'change / modification')",
+            "excessif → ek-seh-SEEF (three syllables; final 'sif' = English 'seef'; means 'excessive')"
           ]
         },
         {
@@ -9877,6 +9892,11 @@ export const lessons: FrenchLesson[] =           [
             "pourriez → pu-rié",
             "vérifier → vé-ri-fié",
             "coûteuse → ku-tơz"
+          ],
+          "pronunciation_focus_en": [
+            "pourriez → poor-YAY (conditional 'could you?'; the polite formal phrasing for any service request)",
+            "vérifier → vay-ree-FYAY (final '-ier' = 'FYAY'; means 'to check / verify')",
+            "coûteuse → koo-TUHZ (the 'û' is long 'oo'; final 'euse' has the 'eu' sound — round lips and say 'uhz')"
           ]
         },
         {
@@ -9886,102 +9906,123 @@ export const lessons: FrenchLesson[] =           [
             "côté → kô-té",
             "tarif → ta-rif",
             "politique → po-li-tik"
+          ],
+          "pronunciation_focus_en": [
+            "côté → koh-TAY ('côté' with circumflex = 'side / aspect')",
+            "tarif → tah-REEF (final 'f' pronounced; means 'rate / fare')",
+            "politique → poh-lee-TEEK (final 'que' silent on 'e'; means both 'policy' and 'politics' — context disambiguates)"
           ]
         }
       ],
       "cultural_notes_vi": "Đổi vé tại Pháp thường khó khăn hơn các nước Bắc Mỹ vì hệ thống tarif phức tạp: SNCF có 5-6 loại vé (Prem's, Loisir, Pro, Liberté, OuiGo) với điều kiện đổi/hoàn khác nhau. Vé Prem's là rẻ nhất nhưng « non échangeable, non remboursable » — về mặt lý thuyết. Trong thực tế, có « gestes commerciaux » (cử chỉ thương mại) khi khách hàng có lý do hợp lý: tang lễ, bệnh nặng, công việc đổi đột ngột. Sai lầm phổ biến của người Việt: (1) chấp nhận giá đổi vô lý vì nghĩ « luật là luật » — thực ra có thương lượng được; (2) cãi ngay rằng « tôi đã bay với hãng này nhiều năm » — không có ý nghĩa với agent ở quầy; (3) đe dọa kiện cáo — phản tác dụng. Cách hiệu quả: giải thích lý do đổi cụ thể và ngắn, hỏi rõ « est-ce qu'un geste commercial est possible vu ma situation ? » — đó là cụm từ mở khóa potentiellement giảm hoặc miễn phí. Air France/SNCF đặc biệt nhạy với khách hàng « élite » (Frequence Plus, Voyageur Pro) — nếu bạn ở chương trình loyalty, nhắc đến số thẻ ngay từ đầu.",
+      "cultural_notes_en": "Changing a ticket in France is structurally harder than in the US or UK because the SNCF (and Air France) tariff system is genuinely complex: 5–6 ticket tiers (Prem's, Loisir, Pro, Liberté, OuiGo) each with different change/refund conditions. Prem's is the cheapest tier and is labeled 'non échangeable, non remboursable' — but only theoretically. In practice, the French commercial culture has a recognized concept: the 'geste commercial' (commercial gesture / goodwill gesture). When a customer has a legitimate reason — funeral, serious illness, sudden work change — agents have discretion to reduce or waive fees, even on Prem's tickets. This is a feature of the system, not an exception, and US/UK travelers often miss it because they treat the printed terms as absolute.\n\nThree mistakes to avoid: (1) Accepting an unreasonable change fee because you assume 'the rules are the rules' — actually they're negotiable when you have cause. This is the most common Vietnamese/East Asian error. (2) Arguing 'I've flown with this airline for years' — this works at US carriers (which weight loyalty status heavily) but does almost nothing at the SNCF counter. The French equivalent of loyalty leverage is your membership card number, mentioned at the start, not 'I'm a loyal customer'. (3) Threatening to sue or post on social media — counter-productive in France. The French commercial culture interprets escalation threats as weakness, not strength.\n\nThe magic phrase: 'est-ce qu'un geste commercial est possible vu ma situation?' (is a goodwill gesture possible given my situation?) — this is the recognized opener that signals you know the system and you're asking politely. It often unlocks 50–80% fee reduction when you have a real reason. Air France and SNCF are especially responsive to elite-tier customers (Flying Blue / Voyageur Pro members) — if you're in a loyalty program, lead with the membership number, not the appeal. Anglophone calibration: this is broadly similar to how UK rail or US airline gate agents have discretion, but the formality of the French phrasing matters more.",
       "tip_advice_vi": "Trước khi gọi/đến quầy: kiểm tra tarif vé gốc trên email xác nhận đặt vé — biết loại vé giúp đàm phán đúng. In hoặc lưu sẵn: số đặt vé (PNR), email xác nhận, lý do đổi (giấy bệnh viện nếu lý do y tế, email công ty nếu lý do công việc). Trong cuộc trò chuyện: mở bằng câu lịch sự « Bonjour, je voudrais modifier mon billet — j'ai un imprévu » trước khi vào chi tiết. Tránh: nói « je veux changer » (cứng), « c'est trop cher » (cảm xúc), « ce n'est pas juste » (đạo đức). Thay bằng: « pourriez-vous vérifier… », « est-ce qu'un geste commercial est possible vu… ». Nếu agent từ chối: hỏi tên agent (« puis-je avoir votre nom, s'il vous plaît ? ») và mã claim — không để hù dọa, để có dấu vết nếu sau bạn gọi tổng đài. Sau khi đổi xong: yêu cầu xác nhận bằng email tại chỗ — không tin lời nói. Nếu vé đắt (Pro/Liberté), bạn có quyền hoàn tiền hoặc đổi miễn phí — không bị thương lượng. Đừng lẫn lộn loại vé.",
+      "tip_advice_en": "Before you contact the counter or call center: check your original booking confirmation email to identify the exact tariff tier (Prem's, Loisir, Pro, Liberté, OuiGo). Knowing your ticket class lets you negotiate from the right starting point — and prevents agents from claiming restrictions that don't apply to your tier. Have ready: booking reference (PNR), confirmation email, and proof of reason for changing — hospital letter if medical, work email if professional. The phrasing you use matters enormously in French customer service: open politely with 'Bonjour, je voudrais modifier mon billet — j'ai un imprévu' before any details. The 'Bonjour' is not optional; skipping it marks you as rude immediately, and Vietnamese learners especially miss this because in Vietnamese customer-service interactions you often jump straight to the request.\n\nAvoid these phrasings: 'je veux changer' (sounds demanding, 'I want to change'), 'c'est trop cher' (emotional, 'it's too expensive'), 'ce n'est pas juste' (moral framing, 'it's not fair' — never works in French commercial contexts, despite working sometimes in US contexts). Replace with: 'pourriez-vous vérifier…' (could you check…), 'est-ce qu'un geste commercial est possible vu…' (is a goodwill gesture possible given…). If the agent refuses: ask for the agent's name ('puis-je avoir votre nom, s'il vous plaît?') and the claim reference. Don't say this as a threat — say it because you may need to call back later, and the record matters. After the change is made: ask for email confirmation on the spot — don't trust verbal agreement. If your ticket was a higher tier (Pro or Liberté), you have a legal right to a refund or free change — don't accept being negotiated. Don't confuse ticket tiers; the SNCF mobile app shows your exact one.",
       "vocabulary": [
         {
           "word": "un billet non échangeable",
           "en": "a non-changeable ticket",
           "vi": "vé không đổi được",
           "pos": "n.m.",
-          "pronunciation_vi": "bi-yè nõ é-shãn-jabl"
+          "pronunciation_vi": "bi-yè nõ é-shãn-jabl",
+          "pronunciation_en": "bee-YEH no(n) ay-shah(n)-ZHAH-bluh (the 'non' is nasal; literally 'non-exchangeable' — but a 'geste commercial' is often still possible)"
         },
         {
           "word": "des frais de modification",
           "en": "change fees",
           "vi": "phí đổi vé",
           "pos": "n.m.",
-          "pronunciation_vi": "frè dơ mo-di-fi-ka-sion"
+          "pronunciation_vi": "frè dơ mo-di-fi-ka-sion",
+          "pronunciation_en": "FREH duh moh-dee-fee-kah-SYO(n) (the headline cost when you change a booking)"
         },
         {
           "word": "un avoir",
           "en": "a credit voucher",
           "vi": "phiếu tín dụng",
           "pos": "n.m.",
-          "pronunciation_vi": "a-vwar"
+          "pronunciation_vi": "a-vwar",
+          "pronunciation_en": "ah-VWAR (a store credit / voucher; useful when refund isn't possible but you'll travel again — common French/Vietnamese consumer term)"
         },
         {
           "word": "un geste commercial",
           "en": "a goodwill gesture",
           "vi": "cử chỉ thương mại / ưu đãi đặc biệt",
           "pos": "n.m.",
-          "pronunciation_vi": "jèst ko-mer-sial"
+          "pronunciation_vi": "jèst ko-mer-sial",
+          "pronunciation_en": "ZHEST koh-mair-SYAL (THE key phrase for negotiating fee reductions in French customer service — closer to 'discretionary goodwill' than 'gesture')"
         },
         {
           "word": "une politique tarifaire",
           "en": "pricing policy",
           "vi": "chính sách giá",
           "pos": "n.f.",
-          "pronunciation_vi": "po-li-tik ta-ri-fèr"
+          "pronunciation_vi": "po-li-tik ta-ri-fèr",
+          "pronunciation_en": "poh-lee-TEEK tah-ree-FAIR (the company's pricing policy — useful when asking for the rule in writing)"
         },
         {
           "word": "un imprévu",
           "en": "an unforeseen event",
           "vi": "việc đột xuất",
           "pos": "n.m.",
-          "pronunciation_vi": "an-pré-vu"
+          "pronunciation_vi": "an-pré-vu",
+          "pronunciation_en": "a(n)-pray-VYOO (an unforeseen event; the standard reason given for needing a change)"
         },
         {
           "word": "un justificatif",
           "en": "a supporting document",
           "vi": "giấy chứng minh",
           "pos": "n.m.",
-          "pronunciation_vi": "jys-ti-fi-ka-tif"
+          "pronunciation_vi": "jys-ti-fi-ka-tif",
+          "pronunciation_en": "zhoos-tee-fee-kah-TEEF (any supporting document — letter, email, certificate — that backs up your reason)"
         },
         {
           "word": "contester une facture",
           "en": "to contest a bill",
           "vi": "phản đối hóa đơn",
           "pos": "v.",
-          "pronunciation_vi": "kõn-tès-té yun fak-tur"
+          "pronunciation_vi": "kõn-tès-té yun fak-tur",
+          "pronunciation_en": "ko(n)-tes-TAY oon fak-TOOR (formal verb 'to dispute / contest' — used in writing more than in person)"
         },
         {
           "word": "un dédommagement",
           "en": "compensation",
           "vi": "đền bù",
           "pos": "n.m.",
-          "pronunciation_vi": "dé-do-maj-mã"
+          "pronunciation_vi": "dé-do-maj-mã",
+          "pronunciation_en": "day-doh-mahzh-MAH(n) (final '-ment' nasal; formal compensation, often used in legal/insurance contexts)"
         },
         {
           "word": "escalader la demande",
           "en": "to escalate the request",
           "vi": "chuyển yêu cầu lên cấp cao hơn",
           "pos": "v.",
-          "pronunciation_vi": "ès-ka-la-dé la dơ-mãnd"
+          "pronunciation_vi": "ès-ka-la-dé la dơ-mãnd",
+          "pronunciation_en": "es-kah-lah-DAY lah duh-MAH(n)D (to escalate to a supervisor; politer French version: 'parler à un superviseur')"
         }
       ],
       "dialogue": [
         {
           "speaker": "Linh",
           "text": "Bonjour, je voudrais modifier mon billet TGV.",
+          "en": "Hello, I'd like to modify my TGV ticket.",
           "vi": "Chào, em muốn đổi vé TGV."
         },
         {
           "speaker": "Agent",
           "text": "C'est un Prem's — non échangeable. Frais de 110 euros minimum.",
+          "en": "It's a Prem's — non-exchangeable. Minimum 110-euro fee.",
           "vi": "Vé Prem's — không đổi được. Phí tối thiểu 110 euro."
         },
         {
           "speaker": "Linh",
           "text": "J'ai un imprévu professionnel — un geste commercial est-il possible ?",
+          "en": "I have an unforeseen work conflict — would a goodwill gesture be possible?",
           "vi": "Em có việc đột xuất — có thể có ưu đãi không?"
         },
         {
           "speaker": "Agent",
           "text": "Avec un justificatif employeur, je peux ramener à 30 euros.",
+          "en": "With an employer letter, I can bring it down to 30 euros.",
           "vi": "Có giấy của công ty, tôi có thể giảm còn 30 euro."
         }
       ],
@@ -9989,91 +10030,109 @@ export const lessons: FrenchLesson[] =           [
         {
           "speaker": "Linh (au guichet SNCF)",
           "text": "Bonjour, je voudrais modifier mon billet pour Lyon — j'ai un imprévu professionnel.",
+          "en": "Hello, I'd like to modify my ticket to Lyon — I have an unforeseen work conflict.",
           "vi": "Chào, em muốn đổi vé đi Lyon — em có việc đột xuất công việc."
         },
         {
           "speaker": "Agent",
           "text": "Bonjour. Donnez-moi votre numéro de réservation, s'il vous plaît.",
+          "en": "Hello. Could I have your booking reference, please?",
           "vi": "Chào. Cho tôi mã đặt vé."
         },
         {
           "speaker": "Linh",
           "text": "PNR : VRTM-748921. Le billet est pour vendredi prochain à 8h12.",
+          "en": "PNR: VRTM-748921. The ticket is for next Friday at 8:12 AM.",
           "vi": "PNR: VRTM-748921. Vé thứ sáu tới lúc 8h12."
         },
         {
           "speaker": "Agent",
           "text": "Je vois. C'est un Prem's à 49 euros — théoriquement non échangeable, non remboursable.",
+          "en": "I see. It's a Prem's at 49 euros — theoretically non-exchangeable, non-refundable.",
           "vi": "Tôi thấy rồi. Là Prem's giá 49 euro — về nguyên tắc không đổi, không hoàn."
         },
         {
           "speaker": "Linh",
           "text": "Je comprends. Mais je dois absolument être à Lyon mardi au lieu de vendredi — réunion client déplacée. Quelles sont mes options ?",
+          "en": "I understand. But I absolutely need to be in Lyon on Tuesday instead of Friday — a client meeting was rescheduled. What are my options?",
           "vi": "Em hiểu. Nhưng em bắt buộc phải có mặt ở Lyon thứ ba thay vì thứ sáu — họp khách hàng bị dời. Em có lựa chọn gì?"
         },
         {
           "speaker": "Agent",
           "text": "Trois options. Première : annuler et racheter — vous perdez les 49 euros et payez le nouveau billet, environ 95 euros pour mardi prochain. Deuxième : changement avec frais — 110 euros plus la différence tarifaire, soit environ 156 euros au total. Troisième : geste commercial sous condition.",
+          "en": "Three options. First: cancel and rebook — you lose the 49 euros and pay the new ticket, about 95 euros for next Tuesday. Second: change with fee — 110 euros plus the fare difference, about 156 euros total. Third: a conditional goodwill gesture.",
           "vi": "Ba lựa chọn. Một: hủy và mua lại — anh/chị mất 49 euro và trả vé mới, khoảng 95 euro cho thứ ba tới. Hai: đổi với phí — 110 euro cộng chênh lệch giá, tổng khoảng 156 euro. Ba: ưu đãi đặc biệt với điều kiện."
         },
         {
           "speaker": "Linh",
           "text": "Le geste commercial — quelle condition ?",
+          "en": "The goodwill gesture — under what condition?",
           "vi": "Ưu đãi đặc biệt — điều kiện gì?"
         },
         {
           "speaker": "Agent",
           "text": "Si vous me présentez un justificatif de votre employeur attestant le déplacement de la réunion, je peux ramener les frais de modification à 30 euros, et la différence tarifaire reste à votre charge — donc 76 euros au total au lieu de 156.",
+          "en": "If you show me an employer document attesting to the meeting being rescheduled, I can bring the change fee down to 30 euros, and you cover the fare difference — so 76 euros total instead of 156.",
           "vi": "Nếu anh/chị đưa giấy của công ty xác nhận họp bị dời, tôi có thể giảm phí đổi xuống 30 euro, chênh lệch giá vẫn anh/chị chịu — vậy 76 euro tổng thay vì 156."
         },
         {
           "speaker": "Linh",
           "text": "Le justificatif employeur, c'est un email de mon manager qui suffit, ou il faut une lettre signée ?",
+          "en": "The employer document — is an email from my manager enough, or does it need to be a signed letter?",
           "vi": "Giấy xác nhận của công ty là email của sếp đủ không, hay phải thư có ký?"
         },
         {
           "speaker": "Agent",
           "text": "Un email avec en-tête de l'entreprise et signature en pied de page suffit. Vous pouvez me le montrer sur téléphone ou imprimé.",
+          "en": "An email with the company header and a signature block at the bottom is enough. You can show it to me on your phone or printed.",
           "vi": "Email có tiêu đề công ty và chữ ký cuối là đủ. Anh/chị có thể cho tôi xem trên điện thoại hoặc in."
         },
         {
           "speaker": "Linh",
           "text": "Je l'ai sur mon téléphone — voici. C'est mon manager Pierre Dubois, daté de ce matin.",
+          "en": "I have it on my phone — here. It's from my manager Pierre Dubois, dated this morning.",
           "vi": "Em có trên điện thoại — đây ạ. Là sếp em Pierre Dubois, ngày sáng nay."
         },
         {
           "speaker": "Agent",
           "text": "Parfait, c'est conforme. Je traite la modification : annulation Prem's vendredi 8h12, nouveau billet mardi à 7h45 — ça vous va comme horaire ?",
+          "en": "Perfect, that's compliant. I'm processing the change: cancel the Prem's for Friday 8:12, new ticket Tuesday 7:45 — does that time work for you?",
           "vi": "Hoàn hảo, hợp lệ. Tôi xử lý: hủy Prem's thứ sáu 8h12, vé mới thứ ba 7h45 — giờ này được không?"
         },
         {
           "speaker": "Linh",
           "text": "7h45 me convient. Et le coût final ?",
+          "en": "7:45 works for me. And the final cost?",
           "vi": "7h45 phù hợp với em. Còn chi phí cuối?"
         },
         {
           "speaker": "Agent",
           "text": "30 euros de frais réduits + 46 euros de différence tarifaire = 76 euros. Carte bancaire ?",
+          "en": "30 euros reduced fee + 46 euros fare difference = 76 euros. Card?",
           "vi": "30 euro phí giảm + 46 euro chênh lệch = 76 euro. Thẻ ngân hàng?"
         },
         {
           "speaker": "Linh",
           "text": "Oui, carte. Pourriez-vous m'envoyer la confirmation par email tout de suite ?",
+          "en": "Yes, card. Could you send me the confirmation by email right now?",
           "vi": "Vâng, thẻ. Anh có thể gửi xác nhận qua email ngay không?"
         },
         {
           "speaker": "Agent",
           "text": "Bien sûr — je l'envoie à l'adresse de votre compte SNCF Connect.",
+          "en": "Of course — I'm sending it to the email on your SNCF Connect account.",
           "vi": "Tất nhiên — tôi gửi đến địa chỉ tài khoản SNCF Connect."
         },
         {
           "speaker": "Linh",
           "text": "Parfait. Merci beaucoup pour le geste commercial.",
+          "en": "Perfect. Thank you very much for the goodwill gesture.",
           "vi": "Hoàn hảo. Cảm ơn anh rất nhiều về ưu đãi."
         },
         {
           "speaker": "Agent",
           "text": "De rien. Bon voyage mardi.",
+          "en": "You're welcome. Have a good trip Tuesday.",
           "vi": "Không có gì. Chúc anh/chị chuyến đi tốt thứ ba."
         }
       ],
@@ -10082,30 +10141,44 @@ export const lessons: FrenchLesson[] =           [
         "Bạn đến quầy 30 phút trước giờ tàu chạy và phát hiện đặt nhầm ngày (chọn nhầm 12 thay vì 13). Khẩn cấp đổi cùng ngày — đề xuất giải pháp tại chỗ (mua vé mới chuyến sau, tự cancel vé cũ qua app, gọi tổng đài).",
         "Hãng từ chối geste commercial dù bạn có justificatif chính đáng. Lịch sự xin tên agent + mã claim, đề xuất escalate lên supérieur — không to tiếng, không đe dọa kiện."
       ],
+      "roleplay_prompts_en": [
+        "Your Prem's ticket is non-exchangeable, but you've been seriously ill (hospitalized). Request a goodwill gesture — no tears, just produce the hospital certificate and make a specific ask (50% refund OR a credit voucher you can use within 12 months). The hospital paper does most of the work for you. Anglophone parallel: this is exactly how to handle the same situation with a US airline or UK rail company.",
+        "You arrive at the counter 30 minutes before train departure and realize you booked the wrong date (selected the 12th instead of the 13th). Urgent same-day change — propose on-the-spot solutions: buy a new ticket on the next train, self-cancel the old one via the app, or call the central line. Don't melt down; the SNCF clerk has seen this twenty times today and respects calm competence.",
+        "The company refuses your goodwill gesture despite a legitimate justificatif. Politely ask for the agent's name and claim reference, and propose escalating to a supervisor — no raised voice, no lawsuit threats. The phrasing matters: 'Pourriez-vous me mettre en contact avec un superviseur?' lands much better than 'I want to speak to your manager'. (US parallel: 'I want to speak to your manager' is a meme for a reason — the French equivalent done badly is just as off-putting.)"
+      ],
       "register_notes": "Đổi vé tại quầy SNCF/Air France: vouvoiement tuyệt đối. Tránh « je veux » — luôn « je voudrais » hoặc « j'aimerais ». Khi không đồng ý với giá: không nói « c'est trop cher » (cảm xúc) hay « c'est arnaque » (đối đầu); thay bằng « ça me semble élevé pour un changement de date — y a-t-il une option moins coûteuse ? ». Khi cần escalate: « Pourriez-vous me mettre en contact avec un superviseur ? » — câu này politely chuyển vấn đề lên cấp trên mà không làm agent hiện tại mất mặt. Nếu agent đã hết kiên nhẫn, không leo thang — kết thúc « Merci pour votre temps, je vais réfléchir » và gọi tổng đài 36 35 (SNCF) sau khi tạo distance. Khi nhận được geste commercial, không over-cảm ơn (« merci merci merci ») — một « Merci beaucoup » + xác nhận lại giá mới đủ. Khi viết khiếu nại sau (qua trang web): vẫn vouvoiement, nêu fact + ngày + tên agent + yêu cầu cụ thể.",
+      "register_notes_en": "Counter negotiation at SNCF or Air France uses absolute vouvoiement. The single biggest verbal upgrade: replace 'je veux' (I want) with 'je voudrais' (I would like) or 'j'aimerais' (I'd like). 'Je veux' sounds demanding and infantile in French commercial contexts; 'je voudrais' is the formal-polite standard. When you disagree with a price, don't say 'c'est trop cher' (sounds emotional) or 'c'est arnaque' (sounds confrontational — and 'arnaque' means scam, which is escalation). Replace with: 'ça me semble élevé pour un changement de date — y a-t-il une option moins coûteuse?' (that seems high for a date change — is there a less expensive option?). This phrasing keeps you in problem-solving mode and gives the agent room to look.\n\nWhen you need to escalate: 'Pourriez-vous me mettre en contact avec un superviseur?' (could you put me in touch with a supervisor?). This is the polite escalation phrasing that doesn't make the current agent lose face — important, because if you embarrass them, they shut down. If the current agent has clearly run out of patience, do NOT escalate in person — close politely with 'Merci pour votre temps, je vais réfléchir' (thanks for your time, I'll think it over) and call the SNCF central line at 36 35 once you're away from the counter. Distance is a tool.\n\nWhen you receive a 'geste commercial', don't over-thank ('merci merci merci' reads as anxious and embarrassed for the agent). One 'Merci beaucoup' + a confirmation of the new price is enough. When writing a complaint afterward through the website: stay on vouvoiement, lead with the facts + date + agent name + specific requested remedy — emotional letters get filed under 'general complaints' and rarely answered, fact-letters with a specific ask get answered.",
       "idiom_glosses": [
         {
           "idiom": "Geste commercial",
           "literal": "Cử chỉ thương mại",
+          "literal_en": "Commercial gesture",
           "meaning": "Ưu đãi đặc biệt từ hãng cho lý do hợp tình.",
+          "meaning_en": "A discretionary goodwill gesture from a company — a fee reduction or waiver granted because the customer has a legitimate reason. The phrase has no clean English equivalent; closest is 'as a goodwill gesture' or 'a one-time courtesy'.",
           "example": "Le geste commercial m'a sauvé 80 euros sur le changement de billet."
         },
         {
           "idiom": "Faire valoir ses droits",
           "literal": "Làm có giá trị quyền của mình",
+          "literal_en": "To make one's rights count",
           "meaning": "Đòi quyền lợi chính đáng.",
+          "meaning_en": "To assert your rights / claim what you're legally entitled to. Used when you have a clear legal claim, not when you're asking for a goodwill gesture.",
           "example": "Avec un billet Pro, vous pouvez faire valoir vos droits — c'est échangeable sans frais."
         },
         {
           "idiom": "Couper la poire en deux",
           "literal": "Cắt quả lê làm đôi",
+          "literal_en": "To cut the pear in two",
           "meaning": "Thỏa hiệp, mỗi bên nhường một phần.",
+          "meaning_en": "To compromise — split the difference, each side gives a little. Anglophone equivalent: 'meet in the middle'.",
           "example": "On a coupé la poire en deux : 30 euros au lieu de 110, c'est correct."
         },
         {
           "idiom": "Tirer un trait sur",
           "literal": "Vẽ một đường lên",
+          "literal_en": "To draw a line over (something)",
           "meaning": "Bỏ qua / chấp nhận mất.",
+          "meaning_en": "To draw a line under something / write it off — accept the loss and move on. Anglophone equivalent: 'to write it off' or 'to chalk it up'.",
           "example": "Si rien n'est possible, je tire un trait sur les 49 euros et je rachète."
         }
       ],
@@ -10113,7 +10186,10 @@ export const lessons: FrenchLesson[] =           [
         {
           "type": "fill-blank",
           "question": "Pourriez-vous ___ s'il existe une option moins coûteuse ?",
-          "answer": "vérifier"
+          "question_en": "Could you ___ whether a less expensive option exists?",
+          "answer": "vérifier",
+          "hint_vi": "động từ « kiểm tra »",
+          "hint_en": "verb 'to check / verify' — the polite request verb after 'pourriez-vous'"
         },
         {
           "type": "matching",
@@ -10131,12 +10207,30 @@ export const lessons: FrenchLesson[] =           [
               "việc đột xuất"
             ]
           ],
-          "instruction": "Nối thuật ngữ với nghĩa"
+          "pairs_en": [
+            [
+              "un avoir",
+              "a credit voucher / store credit — useful when refund isn't possible"
+            ],
+            [
+              "un geste commercial",
+              "a discretionary goodwill gesture — the key negotiation lever in French customer service"
+            ],
+            [
+              "un imprévu",
+              "an unforeseen event — the standard reason for needing a booking change"
+            ]
+          ],
+          "instruction": "Nối thuật ngữ với nghĩa",
+          "instruction_en": "Match each French commercial term with its English explanation."
         },
         {
           "type": "translation",
           "vietnamese": "Em có việc đột xuất công việc, có thể có ưu đãi không?",
-          "french": "J'ai un imprévu professionnel — un geste commercial est-il possible ?"
+          "french": "J'ai un imprévu professionnel — un geste commercial est-il possible ?",
+          "english": "I have an unforeseen professional conflict — would a goodwill gesture be possible?",
+          "hint_vi": "« j'ai un imprévu » + « un geste commercial est-il possible »",
+          "hint_en": "'j'ai un imprévu' (I have an unforeseen event) + 'un geste commercial est-il possible' (is a goodwill gesture possible) — THE magic negotiation phrase in French customer service"
         }
       ]
     },
@@ -10154,6 +10248,11 @@ export const lessons: FrenchLesson[] =           [
             "mal au ventre → mal o vãn-trơ",
             "fièvre → fièvr",
             "hier soir → ièr swar"
+          ],
+          "pronunciation_focus_en": [
+            "mal au ventre → MAHL oh VAH(n)-truh ('ventre' has the nasal 'an' + soft 'truh' ending)",
+            "fièvre → FYEH-vruh (one syllable feel; final 'vre' = soft 'vruh'; means 'fever')",
+            "hier soir → YAIR SWAR ('hier' = 'yair', rhymes with English 'air'; 'soir' = 'swar', means 'last night')"
           ]
         },
         {
@@ -10163,6 +10262,11 @@ export const lessons: FrenchLesson[] =           [
             "assurance → a-sy-rãns",
             "voyage → vwa-yaj",
             "touriste → tu-rist"
+          ],
+          "pronunciation_focus_en": [
+            "assurance → ah-soo-RAH(n)SS (the 'u' is rounded; final '-ance' has nasal middle + hissed 's')",
+            "voyage → vwah-YAHZH (final 'ge' = 'zh' like 's' in 'measure'; very different from English 'voyage')",
+            "touriste → too-REEST (the 'u' is rounded; final 'e' silent; gendered word: 'touriste' is the same for both masculine/feminine)"
           ]
         },
         {
@@ -10172,6 +10276,11 @@ export const lessons: FrenchLesson[] =           [
             "allergique → a-lèr-jik",
             "pénicilline → pé-ni-si-lin",
             "important → an-por-tã"
+          ],
+          "pronunciation_focus_en": [
+            "allergique → ah-lair-ZHEEK ('zh' = 's' in 'measure'; the 'g' before 'i' is always 'zh' in French)",
+            "pénicilline → pay-nee-see-LEEN (four syllables; final '-line' = 'LEEN' with rolled French 'l')",
+            "important → a(n)-por-TAH(n) (two nasals; final 't' silent — critical safety information; say it slowly and clearly)"
           ]
         },
         {
@@ -10182,6 +10291,12 @@ export const lessons: FrenchLesson[] =           [
             "prescrit → près-kri",
             "antibiotiques → ãn-ti-bio-tik",
             "anti-inflammatoire → ãn-ti-an-fla-ma-twar"
+          ],
+          "pronunciation_focus_en": [
+            "urgentiste → oor-zhah(n)-TEEST (the emergency-medicine doctor; final 'e' silent)",
+            "prescrit → preh-SKREE (final 't' silent; the past participle of 'prescrire')",
+            "antibiotiques → ah(n)-tee-byoh-TEEK (final 's' silent in plural; four syllables)",
+            "anti-inflammatoire → ah(n)-tee-a(n)-flah-mah-TWAR (six syllables; long pharmaceutical word — slow it down)"
           ]
         },
         {
@@ -10191,102 +10306,123 @@ export const lessons: FrenchLesson[] =           [
             "remboursement → rãm-burs-mã",
             "conserver → kõn-ser-vé",
             "justificatifs → jys-ti-fi-ka-tif"
+          ],
+          "pronunciation_focus_en": [
+            "remboursement → rah(n)-boors-MAH(n) (two nasals; final '-ment' nasal; means 'reimbursement')",
+            "conserver → ko(n)-sair-VAY (nasal first; final '-er' = 'VAY', rhymes with English 'pay')",
+            "justificatifs → zhoos-tee-fee-kah-TEEF (final 's' silent; the supporting documents you keep for insurance)"
           ]
         }
       ],
       "cultural_notes_vi": "Hệ thống y tế Pháp khác Việt Nam ở vài điểm quan trọng. (1) « Urgences » (cấp cứu) ở bệnh viện công luôn tiếp nhận tất cả mọi người, kể cả không có bảo hiểm — bạn sẽ được khám trước, hóa đơn gửi sau. Đừng ngại đến vì sợ chi phí — sợ chi phí đến mức không khám là cách chết người. (2) Thanh toán: bệnh viện công thu trước hoặc gửi hóa đơn về địa chỉ; bảo hiểm du lịch (Allianz, AXA, MutuAide) hoàn tiền sau khi bạn nộp hóa đơn + bệnh án. Phải giữ TẤT CẢ giấy tờ gốc — bản sao không được chấp nhận. (3) « Pharmacie de garde » mở 24/24 — gần như mọi quận đều có. (4) Đơn thuốc Pháp có thể không khớp với thuốc Việt Nam — paracétamol = panadol, doliprane = paracétamol; ibuprofène thường được kê thay aspirin cho người trẻ. (5) Kháng sinh ở Pháp KHÔNG bán không đơn — đừng thử yêu cầu pharmacie cấp không có ordonnance. Khác văn hóa Việt: ở Pháp bác sĩ KHÔNG nhận phong bì — vi phạm pháp luật. Đừng làm.",
+      "cultural_notes_en": "The French healthcare system differs from the US in several ways that matter for a traveler from any country. (1) 'Urgences' (emergency rooms) at public hospitals will treat anyone, with or without insurance — you're seen first, billed later. The fee structure is also dramatically lower than US emergency rooms ($145 for a full visit + tests + prescription is typical, not thousands). DO NOT skip the ER because you're worried about cost — that calculation, which is rational in a US context, is dangerous in France. The cost gap between 'go to the ER' and 'don't go' is much smaller here. (2) Payment: public hospitals either charge at the counter or mail you a bill at your address. Travel insurance (Allianz, AXA, MutuAide, World Nomads) reimburses you AFTER you submit the bill plus the medical certificate. You must keep ALL original documents — photocopies are not accepted by most travel insurers. Photograph everything to Google Drive on the spot, then keep the paper too.\n\n(3) 'Pharmacie de garde' (on-call pharmacy) — open 24/7, available in almost every district of any French city. The address is posted on every closed pharmacy's door. (4) French prescriptions may not map 1-to-1 to medications you know: paracétamol = US/UK paracetamol (Tylenol/Panadol), doliprane = the most common paracétamol brand in France, ibuprofène is typically prescribed instead of aspirin for younger patients. Bring the original packaging or English name of any medication you take regularly. (5) Antibiotics in France require a prescription — full stop. Do not try to ask a pharmacist for antibiotics without an ordonnance; it won't work, and you'll mark yourself as a problem customer.\n\nOne cultural difference from Vietnam: in France, doctors do NOT accept envelopes. It's a criminal offense, and any doctor will refuse on the spot and the incident may be reported. Don't try, even as a thank-you. A handwritten card a week later, or a small gift like flowers if it was a long stay, is the right level of appreciation. Anglophone calibration: same applies to the UK NHS and Canadian system — no envelopes, ever.",
       "tip_advice_vi": "Trước chuyến đi: mua bảo hiểm du lịch (Mondial Assistance, Allianz Travel) bao gồm urgences médicales — không phụ thuộc vào hợp đồng tín dụng visa (mức bao thấp). Lưu số khẩn cấp: 15 (SAMU — y tế), 17 (police), 112 (Châu Âu, mọi loại khẩn). Cài đặt tiếng Pháp các từ cơ bản về triệu chứng: « j'ai mal à… » (em đau ở…), « j'ai de la fièvre » (em sốt), « j'ai vomi/des nausées » (em nôn/buồn nôn), « j'ai une éruption cutanée » (em nổi mẩn). Khi đến bệnh viện: cầm sẵn passport + thẻ bảo hiểm + danh sách thuốc đang dùng + dị ứng đã biết (viết trên giấy nhỏ tiếng Pháp). Sau khám: yêu cầu « un certificat médical » + « ordonnance imprimée » + « facture détaillée » — ba thứ này bắt buộc cho hoàn tiền. Lưu ảnh tất cả vào Google Drive ngay tại chỗ — đừng đợi về khách sạn. Nếu bệnh nặng và visa hết hạn sắp tới: liên hệ đại sứ quán + bảo hiểm để xin gia hạn lưu trú vì lý do y tế.",
+      "tip_advice_en": "Before your trip: buy real travel insurance (Mondial Assistance, Allianz Travel, World Nomads) that includes medical emergencies — don't rely on credit-card visa coverage, which usually caps at low amounts and excludes anything 'serious'. Save the emergency numbers: 15 (SAMU — medical emergency in France), 17 (police), 112 (Europe-wide, any emergency type — also works on a phone with no SIM). Memorize the symptom phrases in French ahead of time: 'j'ai mal à…' (I have pain in…), 'j'ai de la fièvre' (I have a fever), 'j'ai vomi / j'ai des nausées' (I vomited / I'm nauseous), 'j'ai une éruption cutanée' (I have a rash). Pain location vocabulary: ventre (belly), tête (head), poitrine (chest), dos (back), gorge (throat).\n\nWhen you arrive at the hospital, have ready: passport + insurance card + a list of medications you currently take + a list of known allergies (write these on a small piece of paper in French — much easier than improvising in French while in pain). After the consultation, ASK for three things explicitly: 'un certificat médical' (medical certificate), 'ordonnance imprimée' (printed prescription), 'facture détaillée' (itemized bill). All three are required for insurance reimbursement; if you walk out without them, you'll spend weeks getting them mailed. Photograph everything to Google Drive before leaving — don't wait until you get back to the hotel. If you're seriously ill and your visa is about to expire, contact both your embassy AND your insurance to extend your stay on medical grounds — this is a recognized process, not a favor.\n\nAnglophone-specific note: in the US, you'd often skip the ER over cost concerns. In France, the cost calculation is very different and skipping the ER is the wrong call. The French ER is closer in cost to a UK NHS A&E (free for residents, modest for tourists) than to a US emergency room. If something feels seriously wrong, GO.",
       "vocabulary": [
         {
           "word": "les urgences",
           "en": "emergency room",
           "vi": "khoa cấp cứu",
           "pos": "n.f. pl.",
-          "pronunciation_vi": "ur-jãns"
+          "pronunciation_vi": "ur-jãns",
+          "pronunciation_en": "lay-zoor-ZHAH(n)SS (liaison 'les urgences' = 'lay-zoor'; the French ER — always plural in French)"
         },
         {
           "word": "un urgentiste",
           "en": "emergency doctor",
           "vi": "bác sĩ cấp cứu",
           "pos": "n.m.",
-          "pronunciation_vi": "ur-jãn-tist"
+          "pronunciation_vi": "ur-jãn-tist",
+          "pronunciation_en": "oor-zhah(n)-TEEST (the ER doctor; specialized title, different from 'généraliste' / GP)"
         },
         {
           "word": "une assurance voyage",
           "en": "travel insurance",
           "vi": "bảo hiểm du lịch",
           "pos": "n.f.",
-          "pronunciation_vi": "a-sy-rãns vwa-yaj"
+          "pronunciation_vi": "a-sy-rãns vwa-yaj",
+          "pronunciation_en": "ah-soo-RAH(n)SS vwah-YAHZH (the document you produce at the ER counter — buy it before traveling)"
         },
         {
           "word": "être allergique à",
           "en": "to be allergic to",
           "vi": "dị ứng với",
           "pos": "v.",
-          "pronunciation_vi": "é-trơ a-lèr-jik a"
+          "pronunciation_vi": "é-trơ a-lèr-jik a",
+          "pronunciation_en": "ETR ah-lair-ZHEEK ah (note the preposition 'à' (to) — not the English 'of'; the key safety phrase before any prescription)"
         },
         {
           "word": "une ordonnance",
           "en": "a prescription",
           "vi": "đơn thuốc",
           "pos": "n.f.",
-          "pronunciation_vi": "or-do-nãns"
+          "pronunciation_vi": "or-do-nãns",
+          "pronunciation_en": "oor-doh-NAH(n)SS (final '-ance' has nasal middle + hissed 's'; the formal French word for prescription)"
         },
         {
           "word": "un certificat médical",
           "en": "medical certificate",
           "vi": "giấy chứng nhận y tế",
           "pos": "n.m.",
-          "pronunciation_vi": "sèr-ti-fi-ka mé-di-kal"
+          "pronunciation_vi": "sèr-ti-fi-ka mé-di-kal",
+          "pronunciation_en": "sair-tee-fee-KAH may-dee-KAL (the doctor's signed letter — required for insurance and for sick leave from work/school)"
         },
         {
           "word": "une facture détaillée",
           "en": "itemized bill",
           "vi": "hóa đơn chi tiết",
           "pos": "n.f.",
-          "pronunciation_vi": "fak-tur dé-ta-yé"
+          "pronunciation_vi": "fak-tur dé-ta-yé",
+          "pronunciation_en": "fak-TOOR day-tah-YAY (itemized invoice — required for insurance reimbursement; not a simple receipt)"
         },
         {
           "word": "le remboursement",
           "en": "reimbursement",
           "vi": "hoàn tiền",
           "pos": "n.m.",
-          "pronunciation_vi": "rãm-burs-mã"
+          "pronunciation_vi": "rãm-burs-mã",
+          "pronunciation_en": "rah(n)-boors-MAH(n) (two nasals; reimbursement of out-of-pocket medical costs by your insurance)"
         },
         {
           "word": "la carte vitale",
           "en": "French health card",
           "vi": "thẻ y tế Pháp",
           "pos": "n.f.",
-          "pronunciation_vi": "kart vi-tal"
+          "pronunciation_vi": "kart vi-tal",
+          "pronunciation_en": "KART vee-TAL (the French national health card — residents only; if you're a tourist, you use travel insurance instead)"
         },
         {
           "word": "se faire ausculter",
           "en": "to be examined",
           "vi": "được khám",
           "pos": "v.",
-          "pronunciation_vi": "sơ fèr os-kul-té"
+          "pronunciation_vi": "sơ fèr os-kul-té",
+          "pronunciation_en": "suh FAIR ohs-kuhl-TAY (reflexive causative; 'ausculter' = to examine medically — listen to chest, palpate, etc.)"
         }
       ],
       "dialogue": [
         {
           "speaker": "Linh",
           "text": "Bonjour, j'ai très mal au ventre depuis hier soir.",
+          "en": "Hello — I've had bad abdominal pain since last night.",
           "vi": "Chào, em đau bụng nhiều từ tối qua."
         },
         {
           "speaker": "Infirmier",
           "text": "Vous avez de la fièvre ? Avez-vous une assurance ?",
+          "en": "Do you have a fever? Do you have insurance?",
           "vi": "Anh/chị có sốt không? Có bảo hiểm không?"
         },
         {
           "speaker": "Linh",
           "text": "39°C ce matin. Voici ma carte d'assurance voyage.",
+          "en": "39°C (102°F) this morning. Here's my travel insurance card.",
           "vi": "39°C sáng nay. Đây là thẻ bảo hiểm du lịch của em."
         },
         {
           "speaker": "Infirmier",
           "text": "Je vous installe en salle d'attente — l'urgentiste vous voit dans 20 minutes.",
+          "en": "I'll put you in the waiting room — the ER doctor will see you in 20 minutes.",
           "vi": "Tôi đưa anh/chị vào phòng chờ — bác sĩ cấp cứu khám trong 20 phút."
         }
       ],
@@ -10294,111 +10430,133 @@ export const lessons: FrenchLesson[] =           [
         {
           "speaker": "Linh (à l'accueil des urgences)",
           "text": "Bonjour, je suis touriste vietnamienne et j'ai très mal au ventre depuis hier soir. J'ai aussi de la fièvre.",
+          "en": "Hello, I'm a Vietnamese tourist and I've had bad stomach pain since last night. I also have a fever.",
           "vi": "Chào, em là khách du lịch Việt Nam và em đau bụng nhiều từ tối qua. Em cũng sốt."
         },
         {
           "speaker": "Infirmier d'accueil",
           "text": "Bonjour Madame. Votre passeport et votre assurance, s'il vous plaît.",
+          "en": "Hello, ma'am. Your passport and insurance, please.",
           "vi": "Chào cô. Hộ chiếu và bảo hiểm của cô."
         },
         {
           "speaker": "Linh",
           "text": "Voici mon passeport et la carte d'assurance Allianz Travel — c'est une assurance vietnamienne valable en France.",
+          "en": "Here's my passport and the Allianz Travel insurance card — it's a Vietnamese insurance valid in France.",
           "vi": "Đây là hộ chiếu và thẻ bảo hiểm Allianz Travel — bảo hiểm Việt Nam hiệu lực tại Pháp."
         },
         {
           "speaker": "Infirmier",
           "text": "Très bien. Vous prenez des médicaments en ce moment ? Avez-vous des allergies connues ?",
+          "en": "Good. Are you currently taking any medications? Do you have any known allergies?",
           "vi": "Tốt. Cô đang uống thuốc gì không? Cô có dị ứng đã biết không?"
         },
         {
           "speaker": "Linh",
           "text": "Pas de médicaments réguliers. Mais je suis allergique à la pénicilline — c'est important.",
+          "en": "No regular medications. But I'm allergic to penicillin — that's important.",
           "vi": "Không có thuốc thường xuyên. Nhưng em dị ứng penicillin — điều này quan trọng."
         },
         {
           "speaker": "Infirmier",
           "text": "Je le note dans votre dossier. Sur une échelle de 1 à 10, à quel niveau évaluez-vous votre douleur ?",
+          "en": "I'm noting it in your file. On a scale of 1 to 10, how would you rate your pain?",
           "vi": "Tôi note vào hồ sơ. Trên thang 1-10, cô đánh giá đau ở mức nào?"
         },
         {
           "speaker": "Linh",
           "text": "À 7 sur 10. C'est dans la partie basse droite du ventre, ça me lance par moments.",
+          "en": "Seven out of ten. It's in the lower right part of my abdomen, with stabbing flashes.",
           "vi": "7 trên 10. Đau phần dưới bên phải bụng, có lúc đau nhói."
         },
         {
           "speaker": "Infirmier",
           "text": "Compris. Je vous mets en triage prioritaire — l'urgentiste vous verra dans environ 30 minutes. Asseyez-vous en salle 2.",
+          "en": "Got it. I'm putting you in priority triage — the ER doctor will see you in about 30 minutes. Please sit in Room 2.",
           "vi": "Hiểu rồi. Tôi xếp ưu tiên — bác sĩ cấp cứu khám cô trong khoảng 30 phút. Cô ngồi phòng 2."
         },
         {
           "speaker": "Dr Lemaire (40 minutes plus tard)",
           "text": "Madame Trần ? Je suis le Dr Lemaire. Racontez-moi ce qui s'est passé.",
+          "en": "Mrs. Trần? I'm Dr. Lemaire. Tell me what happened.",
           "vi": "(40 phút sau) Cô Trần? Tôi là bác sĩ Lemaire. Cô kể tôi nghe chuyện gì xảy ra."
         },
         {
           "speaker": "Linh",
           "text": "Hier soir, après le dîner, j'ai eu une douleur soudaine au ventre. Cette nuit, j'ai vomi deux fois et la douleur s'est intensifiée vers le côté droit.",
+          "en": "Last night, after dinner, I had a sudden pain in my abdomen. Overnight I vomited twice and the pain intensified toward the right side.",
           "vi": "Tối qua, sau bữa ăn, em đau bụng đột ngột. Đêm em nôn hai lần và đau tăng lên phía bên phải."
         },
         {
           "speaker": "Dr Lemaire",
           "text": "Vous avez mangé quelque chose d'inhabituel hier ? Fruits de mer, viande crue ?",
+          "en": "Did you eat anything unusual yesterday? Shellfish, raw meat?",
           "vi": "Cô có ăn gì khác thường hôm qua không? Hải sản, thịt sống?"
         },
         {
           "speaker": "Linh",
           "text": "Des huîtres dans un bistrot près de la place de la République. C'était la première fois.",
+          "en": "Oysters at a bistro near Place de la République. It was my first time.",
           "vi": "Hàu ở một bistrot gần quảng trường République. Đó là lần đầu của em."
         },
         {
           "speaker": "Dr Lemaire",
           "text": "Cela peut être une intoxication alimentaire, mais je veux écarter une appendicite. Je vais palper, puis demander une prise de sang et une échographie.",
+          "en": "This could be food poisoning, but I want to rule out appendicitis. I'll palpate, then order bloodwork and an ultrasound.",
           "vi": "Có thể là ngộ độc thực phẩm, nhưng tôi muốn loại trừ viêm ruột thừa. Tôi sẽ ấn bụng, sau đó yêu cầu xét nghiệm máu và siêu âm."
         },
         {
           "speaker": "Linh",
           "text": "D'accord. Combien de temps ça va prendre, et est-ce que mon assurance couvre ?",
+          "en": "OK. How long will it take, and does my insurance cover it?",
           "vi": "Vâng. Mất bao lâu, và bảo hiểm em có bao không?"
         },
         {
           "speaker": "Dr Lemaire",
           "text": "Comptez deux à trois heures pour les examens et les résultats. Pour l'assurance, gardez tous les documents originaux — facture détaillée, ordonnance, certificat médical. Allianz Travel rembourse en général sous deux à trois semaines.",
+          "en": "Plan on two to three hours for tests and results. For insurance, keep all original documents — itemized bill, prescription, medical certificate. Allianz Travel typically reimburses within two to three weeks.",
           "vi": "Khoảng 2-3 giờ cho xét nghiệm và kết quả. Về bảo hiểm, giữ tất cả giấy tờ gốc — hóa đơn chi tiết, đơn thuốc, giấy chứng nhận y tế. Allianz Travel thường hoàn tiền trong 2-3 tuần."
         },
         {
           "speaker": "Linh (après les examens)",
           "text": "Docteur, les résultats ?",
+          "en": "(After the exams) Doctor, the results?",
           "vi": "(sau khi xét nghiệm) Bác sĩ, kết quả ra sao?"
         },
         {
           "speaker": "Dr Lemaire",
           "text": "Bonne nouvelle : pas d'appendicite. C'est une intoxication alimentaire confirmée par la prise de sang. Je vous prescris des antibiotiques (azithromycine, pas de pénicilline donc pour vous), un anti-spasmodique pour la douleur, et un anti-vomitif.",
+          "en": "Good news: no appendicitis. It's food poisoning, confirmed by bloodwork. I'm prescribing antibiotics (azithromycin — not penicillin, given your allergy), an antispasmodic for the pain, and an anti-emetic.",
           "vi": "Tin tốt: không phải viêm ruột thừa. Là ngộ độc thực phẩm xác nhận qua xét nghiệm máu. Tôi kê cô kháng sinh (azithromycin, không phải penicillin), thuốc giảm co thắt cho đau, và thuốc chống nôn."
         },
         {
           "speaker": "Linh",
           "text": "Parfait — pas de pénicilline, c'est rassurant. Je peux récupérer ces médicaments où ?",
+          "en": "Perfect — no penicillin, that's reassuring. Where can I pick up these medications?",
           "vi": "Tốt — không có penicillin, em yên tâm. Em có thể lấy thuốc ở đâu?"
         },
         {
           "speaker": "Dr Lemaire",
           "text": "Pharmacie de garde, ouverte 24h/24. Il y en a une rue de Bretagne, à dix minutes à pied. Voici l'ordonnance, le certificat médical pour votre assurance, et la facture détaillée.",
+          "en": "The on-call pharmacy, open 24/7. There's one on Rue de Bretagne, ten minutes on foot. Here's the prescription, the medical certificate for your insurance, and the itemized bill.",
           "vi": "Nhà thuốc trực 24/24. Có một quán ở phố Bretagne, đi bộ 10 phút. Đây là đơn thuốc, giấy chứng nhận y tế cho bảo hiểm, và hóa đơn chi tiết."
         },
         {
           "speaker": "Linh",
           "text": "Merci infiniment, Docteur. Combien je dois régler maintenant ?",
+          "en": "Thank you so much, Doctor. How much do I need to pay now?",
           "vi": "Em vô cùng cảm ơn bác sĩ. Em phải trả bao nhiêu bây giờ?"
         },
         {
           "speaker": "Dr Lemaire",
           "text": "Le règlement se fait à l'accueil — 145 euros au total. Gardez le reçu pour Allianz.",
+          "en": "Payment is at reception — 145 euros total. Keep the receipt for Allianz.",
           "vi": "Thanh toán tại quầy — tổng 145 euro. Giữ hóa đơn cho Allianz."
         },
         {
           "speaker": "Linh",
           "text": "Compris. Bonne journée et merci encore.",
+          "en": "Understood. Have a good day and thanks again.",
           "vi": "Hiểu rồi. Chúc bác sĩ ngày tốt lành và cảm ơn lần nữa."
         }
       ],
@@ -10407,30 +10565,44 @@ export const lessons: FrenchLesson[] =           [
         "Bác sĩ kê đơn thuốc có một tên thuốc bạn không biết. Hỏi rõ: tác dụng phụ, có nên uống cùng đồ ăn không, có lái xe được không, có tương tác với thuốc khác bạn đang uống không.",
         "Tại quầy thanh toán, bạn phát hiện hóa đơn có một mục 80 EUR cho « consultation spécialiste » mà bạn không gặp ai chuyên khoa. Lịch sự yêu cầu kiểm tra lại — không cáo buộc nhân viên gian lận, nêu fact và xin giải thích."
       ],
+      "roleplay_prompts_en": [
+        "You arrive at urgences with severe chest pain — possible cardiac event. Describe the symptoms precisely in French: intensity (sur une échelle de 1 à 10), location, time of onset, whether it radiates to your arm. Don't ramble; this is the moment when concise, clinical French saves you minutes. Anglophone calibration: the structure is identical to what US/UK ER nurses ask for — pain scale, location, onset, radiation — just learn the French vocabulary.",
+        "The doctor prescribes a medication name you don't recognize. Ask clearly: side effects ('effets secondaires?'), whether to take with food ('à prendre avec ou sans nourriture?'), driving permitted ('puis-je conduire?'), drug interactions with what you currently take. French doctors expect specific questions and respect informed patients — don't be afraid to ask.",
+        "At the payment counter, you see an 80-euro line item for 'consultation spécialiste' — but you didn't see any specialist. Politely ask for a recheck — don't accuse anyone of fraud, just state the fact ('je ne pense pas avoir vu de spécialiste — pourriez-vous vérifier?') and ask for clarification. Hospital billing errors are common everywhere; calm fact-finding works in France, the US, and the UK alike."
+      ],
       "register_notes": "Tại bệnh viện Pháp: vouvoiement với mọi nhân viên, kể cả y tá trẻ. Bác sĩ thường gọi bệnh nhân « Madame/Monsieur + tên họ » — đáp lại bằng « Docteur » (không gọi tên). Khi mô tả triệu chứng: dùng cấu trúc « j'ai mal à + bộ phận » (em đau ở…), không « ma… fait mal » (cấu trúc Việt). Diễn đạt cường độ: « ça me lance », « c'est lancinant » (đau nhói), « c'est sourd » (đau âm ỉ), « c'est brûlant » (đau rát). Không nói đùa với bác sĩ về triệu chứng — họ ghi vào hồ sơ và có thể ảnh hưởng chẩn đoán. Khi không hiểu thuật ngữ y khoa: « Pourriez-vous m'expliquer en termes simples ? » — bác sĩ Pháp có thói quen dùng từ chuyên môn nhưng sẽ chuyển ngôn ngữ khi yêu cầu. Tránh: cảm ơn bác sĩ bằng quà cáp (vi phạm luật), gọi điện trực tiếp số riêng bác sĩ ngoài giờ (xâm phạm), so sánh « ở Việt Nam bác sĩ khác lắm » (gây khó chịu). Khi xuất viện: « Merci docteur, bonne journée » + lịch sự rời.",
+      "register_notes_en": "At a French hospital: vouvoiement with everyone, including young nurses. The doctor will call you 'Madame/Monsieur + family name' — respond with 'Docteur' (don't use their first name). For symptom description, use 'j'ai mal à + body part' (I have pain in…), not 'mon X fait mal' (Vietnamese/English structure 'my X hurts'). Useful intensity vocabulary: 'ça me lance' / 'c'est lancinant' (stabbing pain), 'c'est sourd' (dull ache), 'c'est brûlant' (burning), 'ça pulse' (throbbing). Never joke with a doctor about symptoms — they're noting it in your file and a misread joke can affect the diagnosis. The American/British tendency to deflect serious symptoms with humor ('I'm probably overreacting, ha ha') doesn't translate; deliver symptoms straight.\n\nIf you don't understand a medical term: 'Pourriez-vous m'expliquer en termes simples?' (could you explain that in simple terms?). French doctors lean technical by habit but will switch register when asked. Things to avoid: thanking the doctor with a gift (it's a criminal offense in France — true even for small gifts; a thank-you card a few days later is fine); calling a doctor's personal number outside hours (intrusive — use SOS Médecins or 15 instead); making 'in Vietnam doctors do X differently' comparisons (lands as criticism even if not intended). When leaving: 'Merci docteur, bonne journée' + a polite exit is the standard. Anglophone calibration: this is closer to how a UK NHS consultant expects to be addressed than how a US doctor does — slightly more formal, slightly less first-name.",
       "idiom_glosses": [
         {
           "idiom": "Avoir une santé de fer",
           "literal": "Có sức khỏe sắt thép",
+          "literal_en": "To have a health of iron",
           "meaning": "Khỏe mạnh, ít ốm.",
+          "meaning_en": "To have robust health — rarely gets sick. Anglophone equivalent: 'to be as fit as a fiddle' or 'to have an iron constitution'.",
           "example": "Avant ce voyage j'avais une santé de fer — ces huîtres ont tout cassé."
         },
         {
           "idiom": "Tomber malade",
           "literal": "Ngã bệnh",
+          "literal_en": "To fall sick",
           "meaning": "Bị bệnh.",
+          "meaning_en": "To get sick / fall ill. Same 'fall' image as in English 'fall ill'.",
           "example": "Je suis tombée malade le deuxième jour de mes vacances."
         },
         {
           "idiom": "Mettre les bouchées doubles",
           "literal": "Cắn miếng đôi",
+          "literal_en": "To put the mouthfuls double",
           "meaning": "Tăng tốc xử lý / chăm sóc gấp đôi.",
+          "meaning_en": "To double the effort — speed up care, redouble the pace. Anglophone equivalent: 'to kick into high gear'.",
           "example": "L'équipe des urgences a mis les bouchées doubles ce soir-là."
         },
         {
           "idiom": "Reprendre du poil de la bête",
           "literal": "Lấy lại lông thú",
+          "literal_en": "To take back hair of the beast",
           "meaning": "Hồi phục sức khỏe sau bệnh.",
+          "meaning_en": "To get back on your feet after illness — recover your strength. Anglophone equivalent: 'to bounce back' or 'to be back on form'. (Despite surface similarity, this is NOT 'hair of the dog' / hangover cure — the meanings have diverged.)",
           "example": "Avec les antibiotiques, j'ai vite repris du poil de la bête."
         }
       ],
@@ -10438,7 +10610,10 @@ export const lessons: FrenchLesson[] =           [
         {
           "type": "fill-blank",
           "question": "Je suis ___ à la pénicilline — c'est important.",
-          "answer": "allergique"
+          "question_en": "I'm ___ to penicillin — that's important.",
+          "answer": "allergique",
+          "hint_vi": "tính từ « dị ứng »",
+          "hint_en": "adjective 'allergic' — the safety word to declare before any prescription"
         },
         {
           "type": "matching",
@@ -10456,12 +10631,30 @@ export const lessons: FrenchLesson[] =           [
               "hoàn tiền"
             ]
           ],
-          "instruction": "Nối thuật ngữ y tế với nghĩa tiếng Việt"
+          "pairs_en": [
+            [
+              "les urgences",
+              "emergency room / ER — always plural in French"
+            ],
+            [
+              "une ordonnance",
+              "a prescription — required for antibiotics and most non-trivial medications in France"
+            ],
+            [
+              "le remboursement",
+              "reimbursement of out-of-pocket medical costs by your travel insurance, after you submit the bill"
+            ]
+          ],
+          "instruction": "Nối thuật ngữ y tế với nghĩa tiếng Việt",
+          "instruction_en": "Match each French medical term with its English explanation."
         },
         {
           "type": "translation",
           "vietnamese": "Để được hoàn tiền, em phải giữ tất cả giấy tờ gốc.",
-          "french": "Pour le remboursement, je dois conserver tous les justificatifs originaux."
+          "french": "Pour le remboursement, je dois conserver tous les justificatifs originaux.",
+          "english": "For the reimbursement, I have to keep all the original supporting documents.",
+          "hint_vi": "« conserver » + « les justificatifs originaux »",
+          "hint_en": "'conserver' (to keep / preserve) + 'les justificatifs originaux' (original supporting documents — never photocopies)"
         }
       ]
     },
