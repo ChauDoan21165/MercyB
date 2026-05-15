@@ -5557,6 +5557,11 @@ export const lessons: GermanLesson[] = [
           "formelle Klärung → fô-MÊ-lê KLE-rung",
           "informelle Gespräche → in-fô-MÊ-lê gê-SHPRÊ-khê",
           "beigelegt → BAI-gê-lê-kt"
+        ],
+        "pronunciation_focus_en": [
+          "formelle Klärung → for-MEL-luh KLAY-rung (formal clarification; 'ä' = 'eh' lengthened)",
+          "informelle Gespräche → in-for-MEL-luh guh-SHPRAY-khuh (informal conversations; 'sp' word-internally is 'shp')",
+          "beigelegt → BYE-guh-laykt (settled / resolved; 'ei' = 'eye'; separable past participle)"
         ]
       },
       {
@@ -5566,6 +5571,11 @@ export const lessons: GermanLesson[] = [
           "Sachebene → ZAKH-ê-bê-nê",
           "Abstimmung → AP-shtim-mung",
           "Schnittstellen → SHNIT-shtê-lần"
+        ],
+        "pronunciation_focus_en": [
+          "Sachebene → ZAHKH-ay-buh-nuh (level of content/facts; literal 'thing-level')",
+          "Abstimmung → AHP-shtim-mung (coordination; 'st' here is 'sht')",
+          "Schnittstellen → SHNIT-shtel-len (interfaces; literal 'cut-points')"
         ]
       },
       {
@@ -5575,6 +5585,11 @@ export const lessons: GermanLesson[] = [
           "dreimal → ĐRAI-mal",
           "Vereinbarungen → fe-AIN-ba-rung-ần",
           "umgesetzt → UM-gê-zê-tst"
+        ],
+        "pronunciation_focus_en": [
+          "dreimal → DRY-mahl (three times; 'ei' = 'eye')",
+          "Vereinbarungen → fer-INE-bah-rung-en (agreements; stress on -INE-)",
+          "umgesetzt → UM-guh-zetst (implemented; final '-tzt' is one clean cluster)"
         ]
       },
       {
@@ -5584,6 +5599,11 @@ export const lessons: GermanLesson[] = [
           "moderierte Aussprache → mô-đê-RI-tê AOS-shpra-khê",
           "Mobbing-Vorwurf → MÔ-bing-fô-vuf",
           "arbeitsrechtlich → AR-baits-rêkht-likh"
+        ],
+        "pronunciation_focus_en": [
+          "moderierte Aussprache → moh-day-REER-tuh OWS-shprah-khuh (moderated discussion; 'au' = 'ow')",
+          "Mobbing-Vorwurf → MOB-bing-FOR-voorf (bullying accusation; 'w' = 'v'; final '-f' devoices)",
+          "arbeitsrechtlich → AR-byts-RAYKHT-likh (labour-law-related; final 'ch' is the soft front-of-mouth 'ich' sound)"
         ]
       },
       {
@@ -5593,81 +5613,98 @@ export const lessons: GermanLesson[] = [
           "Mediation → mê-đi-a-tsi-ÔN",
           "Eskalationsstufe → es-ka-la-tsi-ÔNS-shtu-fê",
           "Betriebsrat → bê-TRIPS-rat"
+        ],
+        "pronunciation_focus_en": [
+          "Mediation → meh-dee-ah-tsee-OHN (mediation; 't' before '-ion' = 'tsee')",
+          "Eskalationsstufe → es-kah-lah-tsee-OHNS-shtoo-fuh (escalation level)",
+          "Betriebsrat → buh-TREEPS-raht (works council; 'ie' = 'ee'; final '-b' devoices to 'p')"
         ]
       }
     ],
     "cultural_notes_vi": "Formelle Streitbeilegung am deutschen Arbeitsplatz tuân theo Stufenmodell rất klar. (1) STUFE 1 — DIREKTGESPRÄCH: erste Anlaufstelle ist immer das direkte Gespräch mit der Konfliktpartei. Mehrfach (2-3 mal). Erst wenn Direktgespräch scheitert, Eskalation. Wer direkt zur HR geht ohne Direktgespräch versucht zu haben, signalisiert Konfliktunfähigkeit. (2) STUFE 2 — VORGESETZTER: nächste Eskalation ist gemeinsamer Termin mit dem Vorgesetzten von beiden Parteien (Disziplinarvorgesetzter, nicht fachlicher Lead). Vorgesetzter moderiert oder eskaliert weiter. (3) STUFE 3 — HR / PERSONALABTEILUNG: wenn Vorgesetzter nicht löst, HR-Beratung. HR ist neutral — KEINE Anwältin der einen Seite. (4) STUFE 4 — BETRIEBSRAT: bei strukturellen Problemen (Mobbing-Verdacht, Diskriminierung, arbeitsrechtliche Verstöße). Betriebsrat ist gewählter Mitarbeitervertretung mit gesetzlichen Rechten. (5) STUFE 5 — ARBEITSGERICHT: letzte Eskalation, professionellem Vermittlungsverfahren oft vorausgehend.\n\nKhác Việt Nam: in vietnamesischen Unternehmen oft direkte Eskalation zum Vorgesetzten (Hierarchie-respect). Wenig institutionalisierte Mediation. Betriebsrat-Konzept (Mitbestimmung) ist deutsche Spezialität — kollegial gewählt, mit Gesetzlichen Rechten nach BetrVG.\n\nMột chi tiết quan trọng: GESICHTSWAHRUNG aller Parteien ist auch in deutscher Kultur wichtig, anders als oft behauptet. Stufenmodell ermöglicht Eskalation ohne öffentliche Demütigung — jede Stufe schützt beide Seiten. Wer direkt mit Mobbing-Vorwurf beim CEO landet, hat Eskalationsbeschleunigung verursacht und meistens beide Karrieren beschädigt.\n\nVề SACHEBENE vs PERSONEBENE: deutsche Streitbeilegung-Kultur unterscheidet strict. Sachebene = Verhalten, Pflichtverletzung, Vereinbarungsbruch — verhandelbar. Personebene = Charakter, Persönlichkeit — NICHT verhandelbar in Mediation. Wer Mediation auf Personebene führt, scheitert.\n\nVề DOKUMENTATION: alle informellen Gespräche schriftlich festhalten (E-Mail-Memo nach Gespräch, ‚zur Zusammenfassung der Vereinbarungen'). Diese Dokumentation ist essential bei späterer Eskalation — ohne Dokumentation hat HR / Betriebsrat keine Grundlage.\n\nVề Mobbing-Vorwurf: schwerer Vorwurf, juristisch definiert (BAG-Rechtsprechung). KEINE leichtfertige Verwendung. Echte Mobbing-Definition: ‚systematisches Anfeinden, Schikanieren, Diskriminieren über längere Zeit'. Einmalige Konflikte = kein Mobbing. Falscher Mobbing-Vorwurf kann Reputations-Schaden für Vorwurfsteller verursachen.\n\nVề Mediation: deutsche Unternehmen ab 200 Mitarbeitern haben oft interne Mediator:innen. Externe Mediation kostenpflichtig (200-400 EUR/Stunde) aber neutral. Mediation ist freiwillig — beide Parteien müssen zustimmen.\n\nVề Whistleblower-Schutz: seit HinSchG 2023 sind Beschäftigte gesetzlich geschützt, wenn sie Compliance-Verstöße melden. Aber: Persönliche Konflikte sind keine Compliance-Verstöße. Whistleblower-Mechanismus nicht für interpersonelle Streits missbrauchen.",
+    "cultural_notes_en": "Formal workplace dispute resolution in a German company follows a strict Stufenmodell (escalation-step model) that often surprises employees coming from English-speaking workplaces. (1) STEP 1 — DIREKTGESPRÄCH (direct conversation): the first port of call is always a direct conversation with the other party — usually two or three attempts. Only after a documented direct conversation has failed should you escalate. Going straight to HR without a direct attempt signals Konfliktunfähigkeit (an inability to handle conflict) and damages your standing more than the conflict itself. (2) STEP 2 — VORGESETZTER (line manager): the next escalation is a joint meeting with the disciplinary line manager of both parties (Disziplinarvorgesetzter, not the technical lead). The manager either moderates or escalates further. (3) STEP 3 — HR / PERSONALABTEILUNG: if the line manager can't resolve it, HR moderation. German HR is structurally neutral — it is NOT an advocate for either side, unlike US 'employee relations' that often implicitly sides with management. (4) STEP 4 — BETRIEBSRAT (works council): for structural issues — suspected Mobbing, discrimination, breaches of labour law. The Betriebsrat is an elected employee representation with statutory rights under the BetrVG (Works Constitution Act); there's no real US equivalent. (5) STEP 5 — ARBEITSGERICHT (labour court): final escalation, usually preceded by formal mediation.\n\nContrast with US/UK norms: in many English-speaking workplaces people escalate to the manager almost immediately (because 'the manager owns the problem'). In Germany this skips a step and reads as immature. Conversely, some Vietnamese-trained professionals escalate too late because hierarchy-respect makes Direktgespräch feel impolite. Calibrate to the German middle.\n\nCrucial detail: GESICHTSWAHRUNG (face-saving) for all parties matters in German conflict culture too — contrary to the stereotype of 'Germans are direct'. The Stufenmodell exists precisely so that escalation is possible without public humiliation; each step protects both sides. Anyone who shows up at the CEO's office with a Mobbing accusation has compressed five steps into one and usually damages two careers — including their own.\n\nOn SACHEBENE vs PERSONEBENE (content level vs personal level): German dispute culture distinguishes these strictly. Sachebene = behaviour, breach of duty, broken agreement — negotiable. Personebene = character, personality — NOT negotiable in mediation, and bringing it in usually wrecks the process. Anyone running mediation on Personebene fails.\n\nOn DOCUMENTATION: capture every informal conversation in writing (an email-memo to the other party after the meeting, headed 'zur Zusammenfassung der Vereinbarungen' — 'to summarise the agreements made'). This documentation is essential if you later escalate; without it, HR and the Betriebsrat have nothing to work with.\n\nOn the Mobbing accusation: this is a serious, legally defined claim (case law from the Federal Labour Court, BAG). The legal definition is 'systematic hostility, harassment, discrimination over an extended period.' Single conflicts are NOT Mobbing. A frivolous Mobbing accusation can damage the accuser's reputation more than the target's.\n\nOn mediation: German companies of 200+ employees often have internal mediators. External mediation costs €200–400/hour but is structurally neutral. Mediation is voluntary — both parties must agree.\n\nOn whistleblower protection: since the HinSchG (Whistleblower Protection Act) of 2023, employees are statutorily protected when reporting compliance breaches. But: personal conflicts are NOT compliance breaches. Don't misuse the whistleblower mechanism for interpersonal disputes.",
     "tip_advice_vi": "Vor formeller Streitbeilegung (Vorbereitung 1 Woche):\n1. CHRONOLOGIE erstellen: Datum, Ereignis, eigene Reaktion, Reaktion der Gegenseite — Tabelle.\n2. DOKUMENTATION sammeln: E-Mails, Memos, Zeugen-Aussagen wenn relevant.\n3. EIGENES VERHALTEN reflektieren: was habe ich beigetragen? Wo war ich nicht klar?\n4. ZIEL definieren: Verhaltensänderung der Gegenseite? Klare Vereinbarung? Trennung der Aufgabenbereiche? Versetzung? Klarheit über Ziel verhindert Eskalation.\n\nIm formellen Verfahren (Stufen):\n1. DIREKTGESPRÄCH (2-3 Versuche, dokumentiert)\n2. VORGESETZTER (gemeinsamer Termin, Protokoll)\n3. HR-MEDIATION (neutral, freiwillig, mit Vereinbarung)\n4. BETRIEBSRAT (bei strukturellen Problemen)\n5. ARBEITSGERICHT (Letzte Stufe, Anwalt erforderlich)\n\nNgôn ngữ Streitbeilegung formal C1:\n- ‚Ich bitte um eine formelle Klärung' (xin sự làm rõ chính thức)\n- ‚Mein Anliegen betrifft die Sachebene — nicht die Person als solche' (mối quan tâm của tôi ở cấp độ nội dung — không phải con người)\n- ‚Ich habe bereits dreimal das direkte Gespräch gesucht' (tôi đã ba lần tìm trao đổi trực tiếp)\n- ‚Die getroffenen Vereinbarungen wurden im Anschluss nicht umgesetzt' (các thỏa thuận đạt được không được triển khai)\n- ‚Mein Wunsch ist eine moderierte Aussprache mit klarem Protokoll' (nguyện vọng là cuộc trao đổi có điều phối với biên bản rõ)\n- ‚Sollte die Mediation scheitern, wäre die nächste Eskalationsstufe X' (nếu hòa giải thất bại, bước escalation tiếp là X)\n- ‚Diese Option möchte ich vermeiden, sehe sie jedoch transparent vor' (lựa chọn này tôi muốn tránh, song nhìn thấy nó minh bạch)\n\nKhi Vorgesetzter zögert:\n- ‚Ich verstehe Ihren Wunsch nach informeller Lösung. Drei Direktgespräche haben aber keine Verhaltensänderung gebracht — eine moderierte Aussprache wäre der nächste Schritt im Stufenmodell.' (tôi hiểu nguyện vọng giải pháp informell. Ba lần direct trao đổi không mang đổi hành vi — moderierte Aussprache là bước tiếp trong stufenmodell.)\n\nKhi HR fragt nach Mobbing-Vorwurf:\n- ‚Es handelt sich nicht um Mobbing im juristischen Sinn — kein systematisches Anfeinden. Es handelt sich um wiederholte Pflichtverletzung bei Schnittstellen-Abstimmung. Sachebene, nicht Personebene.' (không phải mobbing nghĩa pháp lý — không systematic attack. Là vi phạm nghĩa vụ lặp lại ở schnittstellen-Abstimmung. Sachebene, không Personebene.)\n\nKhi Mediation gewünscht:\n- ‚Ich stimme einer Mediation gerne zu, sofern sie ergebnisoffen geführt wird und beide Seiten gleichberechtigt vertreten sind. Wer moderiert?' (tôi đồng thuận hòa giải, miễn là dẫn dắt mở kết quả và cả hai bên đại diện bình đẳng. Ai điều phối?)\n\nNach Mediation — Vereinbarung:\n- ‚Lassen Sie uns das Ergebnis schriftlich festhalten: Verhaltensvereinbarung mit konkreten Pflichten, Eskalationsmechanismus bei Verstößen, Überprüfung in drei Monaten.' (mình ghi kết quả văn bản: thỏa thuận hành vi với nghĩa vụ cụ thể, cơ chế escalation khi vi phạm, kiểm tra sau 3 tháng.)\n\nMẹo cuối: Streitbeilegung ist Marathon, nicht Sprint. 2-6 Monate für komplexere Konflikte ist normal. Geduld + Dokumentation + Sachebene-Disziplin = Erfolg. Wer Eskalation überspringt, schadet eigener Position.",
+    "tip_advice_en": "Before formal dispute resolution (one-week prep):\n1. Build a CHRONOLOGY: date, event, your reaction, the other side's reaction — as a table.\n2. Gather DOCUMENTATION: emails, memos, witness statements where relevant.\n3. Reflect on YOUR OWN BEHAVIOUR: what did you contribute? Where weren't you clear?\n4. Define your GOAL: behaviour change from the other party? A clearer agreement? Separated areas of responsibility? A reassignment? Clarity on the goal prevents in-the-moment escalation.\n\nIn the formal process (steps):\n1. DIREKTGESPRÄCH (2–3 documented attempts)\n2. VORGESETZTER (joint meeting, with minutes)\n3. HR-MEDIATION (neutral, voluntary, with written agreement)\n4. BETRIEBSRAT (for structural issues)\n5. ARBEITSGERICHT (last resort, lawyer required)\n\nC1 formal dispute-resolution language:\n- 'Ich bitte um eine formelle Klärung' (I'm requesting a formal clarification)\n- 'Mein Anliegen betrifft die Sachebene — nicht die Person als solche' (my concern is the substantive level, not the person)\n- 'Ich habe bereits dreimal das direkte Gespräch gesucht' (I have already sought direct conversation three times)\n- 'Die getroffenen Vereinbarungen wurden im Anschluss nicht umgesetzt' (the agreements reached were subsequently not implemented)\n- 'Mein Wunsch ist eine moderierte Aussprache mit klarem Protokoll' (my request is a moderated discussion with a clear record)\n- 'Sollte die Mediation scheitern, wäre die nächste Eskalationsstufe X' (should mediation fail, the next escalation step would be X)\n- 'Diese Option möchte ich vermeiden, sehe sie jedoch transparent vor' (I'd like to avoid this option but I name it transparently)\n\nWhen the manager hesitates:\n- 'Ich verstehe Ihren Wunsch nach informeller Lösung. Drei Direktgespräche haben aber keine Verhaltensänderung gebracht — eine moderierte Aussprache wäre der nächste Schritt im Stufenmodell.' (I understand your wish for an informal solution. But three direct conversations have produced no behavioural change — a moderated discussion would be the next step in the model.)\n\nWhen HR asks about a Mobbing accusation:\n- 'Es handelt sich nicht um Mobbing im juristischen Sinn — kein systematisches Anfeinden. Es handelt sich um wiederholte Pflichtverletzung bei Schnittstellen-Abstimmung. Sachebene, nicht Personebene.' (This is not Mobbing in the legal sense — no systematic hostility. It's repeated breach of duty around interface coordination. Substantive level, not personal level.)\n\nWhen mediation is offered:\n- 'Ich stimme einer Mediation gerne zu, sofern sie ergebnisoffen geführt wird und beide Seiten gleichberechtigt vertreten sind. Wer moderiert?' (I gladly agree to mediation, provided it's run open-endedly and both sides are equally represented. Who will moderate?)\n\nAfter mediation — written agreement:\n- 'Lassen Sie uns das Ergebnis schriftlich festhalten: Verhaltensvereinbarung mit konkreten Pflichten, Eskalationsmechanismus bei Verstößen, Überprüfung in drei Monaten.' (Let's capture the result in writing: a behavioural agreement with concrete duties, an escalation mechanism in case of breach, a review in three months.)\n\nFinal tip: dispute resolution is a marathon, not a sprint. Two to six months for more complex conflicts is normal. Patience + documentation + Sachebene-discipline = success. Anyone who skips an escalation step damages their own standing first.",
     "vocabulary": [
       {
         "word": "die formelle Streitbeilegung",
         "en": "formal dispute resolution",
         "vi": "giải quyết tranh chấp chính thức",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi fô-MÊ-lê SHTRAIT-bai-lê-gung"
+        "pronunciation_vi": "đi fô-MÊ-lê SHTRAIT-bai-lê-gung",
+        "pronunciation_en": "dee for-MEL-luh SHTRYTE-bye-lay-gung — 'ei' = 'eye'; literal 'fight-resolution'"
       },
       {
         "word": "die Sachebene / Personebene",
         "en": "content level / personal level",
         "vi": "cấp độ nội dung / cá nhân",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi ZAKH-ê-bê-nê / pe-ZÔN-ê-bê-nê"
+        "pronunciation_vi": "đi ZAKH-ê-bê-nê / pe-ZÔN-ê-bê-nê",
+        "pronunciation_en": "dee ZAHKH-ay-buh-nuh / per-ZOHN-ay-buh-nuh — content level vs. personal level"
       },
       {
         "word": "die moderierte Aussprache",
         "en": "moderated discussion",
         "vi": "cuộc trao đổi có điều phối",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi mô-đê-RI-tê AOS-shpra-khê"
+        "pronunciation_vi": "đi mô-đê-RI-tê AOS-shpra-khê",
+        "pronunciation_en": "dee moh-day-REER-tuh OWS-shprah-khuh — 'au' = 'ow'; literal 'speaking-out'"
       },
       {
         "word": "der Betriebsrat",
         "en": "works council",
         "vi": "Hội đồng người lao động",
         "pos": "noun (m)",
-        "pronunciation_vi": "đe bê-TRIPS-rat"
+        "pronunciation_vi": "đe bê-TRIPS-rat",
+        "pronunciation_en": "dayr buh-TREEPS-raht — works council; 'ie' = 'ee'; final '-b' devoices to 'p'"
       },
       {
         "word": "die Eskalationsstufe",
         "en": "escalation level",
         "vi": "cấp escalation",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi es-ka-la-tsi-ÔNS-shtu-fê"
+        "pronunciation_vi": "đi es-ka-la-tsi-ÔNS-shtu-fê",
+        "pronunciation_en": "dee es-kah-lah-tsee-OHNS-shtoo-fuh — escalation level; six syllables, stress on -OHNS-"
       },
       {
         "word": "das Mobbing / der Mobbing-Vorwurf",
         "en": "bullying / accusation of bullying",
         "vi": "mobbing / cáo buộc mobbing",
         "pos": "noun (n/m)",
-        "pronunciation_vi": "đát MÔ-bing"
+        "pronunciation_vi": "đát MÔ-bing",
+        "pronunciation_en": "dahs MOB-bing — borrowed English term; in German always means workplace bullying specifically"
       },
       {
         "word": "die Mediation",
         "en": "mediation",
         "vi": "hòa giải",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi mê-đi-a-tsi-ÔN"
+        "pronunciation_vi": "đi mê-đi-a-tsi-ÔN",
+        "pronunciation_en": "dee meh-dee-ah-tsee-OHN — 't' before '-ion' = 'tsee', not 'sh'"
       },
       {
         "word": "ergebnisoffen",
         "en": "open-ended (mediation)",
         "vi": "mở kết quả",
         "pos": "adjective",
-        "pronunciation_vi": "e-GÊP-nis-ô-fân"
+        "pronunciation_vi": "e-GÊP-nis-ô-fân",
+        "pronunciation_en": "er-GAYP-niss-OFF-en — 'open-ended' (literally 'result-open'); standard mediation term"
       },
       {
         "word": "die Verhaltensvereinbarung",
         "en": "behavioral agreement",
         "vi": "thỏa thuận hành vi",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi fe-HAL-tens-fe-ain-ba-rung"
+        "pronunciation_vi": "đi fe-HAL-tens-fe-ain-ba-rung",
+        "pronunciation_en": "dee fer-HAHL-tens-fer-INE-bah-rung — behavioural agreement; long compound, primary stress on -INE-"
       },
       {
         "word": "beilegen",
         "en": "to settle, resolve (a dispute)",
         "vi": "giải quyết (tranh chấp)",
         "pos": "verb (sep.)",
-        "pronunciation_vi": "BAI-lê-gân"
+        "pronunciation_vi": "BAI-lê-gân",
+        "pronunciation_en": "BYE-lay-gen — separable verb 'beilegen'; in main clauses 'legen ... bei'"
       }
     ],
     "dialogue": [
@@ -5785,36 +5822,46 @@ export const lessons: GermanLesson[] = [
       "Đề xuất Mediation als Stufe 3 + transparent über Stufenmodell: ‚Sollte die Mediation scheitern, wäre die nächste Eskalationsstufe der Betriebsrat — diese Option möchte ich vermeiden, sehe sie jedoch transparent vor'."
     ],
     "register_notes": "Streitbeilegung formal C1: ‚Sie' tuyệt đối với HR / Betriebsrat. Konjunktiv II cho Eskalations-Hypothese: ‚Sollte die Mediation scheitern, wäre die nächste Eskalationsstufe X'. Funktionsverbgefüge: ‚das direkte Gespräch suchen' (tìm trao đổi trực tiếp), ‚Vereinbarungen umsetzen' (triển khai thỏa thuận), ‚Sachebene betreffen' (liên quan Sachebene), ‚in Frage stellen' (đặt vấn đề). Sachebene vs Personebene phân biệt strict — không trộn lẫn. Stufenmodell explicit: Direktgespräch → Vorgesetzter → HR-Mediation → Betriebsrat → Arbeitsgericht. Mobbing-Vorwurf NUR khi juristisch erfüllbar (systematisches Anfeinden, Schikanieren) — không leichtfertig. Dokumentation bắt buộc: E-Mail-Memos nach jedem Gespräch, mit Datum + Vereinbarungen. ‚Ergebnisoffen' khi Mediation — beide Parteien gleichberechtigt. Verhaltensvereinbarung schriftlich mit Eskalationsmechanismus.",
+    "register_notes_en": "C1 formal dispute-resolution register: 'Sie' is absolute with HR and the Betriebsrat. Konjunktiv II for hypothetical escalation: 'Sollte die Mediation scheitern, wäre die nächste Eskalationsstufe X' (should the mediation fail, the next step would be X). Funktionsverbgefüge are required: 'das direkte Gespräch suchen' (seek a direct conversation), 'Vereinbarungen umsetzen' (implement agreements), 'Sachebene betreffen' (concern the substantive level), 'in Frage stellen' (call into question). Distinguish Sachebene and Personebene strictly — never mix them. The Stufenmodell is explicit and ordered: Direktgespräch → Vorgesetzter → HR-Mediation → Betriebsrat → Arbeitsgericht. Use a Mobbing accusation ONLY when the legal threshold (systematic hostility, harassment) is met — never frivolously. Documentation is required: email-memos after every conversation, with date and agreed actions. 'Ergebnisoffen' (open-ended) is the expected framing for mediation — both parties on equal footing. Behavioural agreements are written down with an escalation mechanism for breaches.",
     "idiom_glosses": [
       {
         "idiom": "den Stier bei den Hörnern packen",
         "literal": "nắm bò ở sừng",
         "meaning": "đối mặt thẳng vấn đề khó (gehoben/standardsprachlich)",
-        "example": "Nach drei gescheiterten Direktgesprächen muss man den Stier bei den Hörnern packen — formelle Mediation."
+        "meaning_en": "to take the bull by the horns — confront a difficult problem head-on (elevated/standard register; the English idiom is identical)",
+        "example": "Nach drei gescheiterten Direktgesprächen muss man den Stier bei den Hörnern packen — formelle Mediation.",
+        "example_en": "Nach drei gescheiterten Direktgesprächen muss man den Stier bei den Hörnern packen — formelle Mediation. ('After three failed direct conversations you have to take the bull by the horns — formal mediation.')"
       },
       {
         "idiom": "die Wogen glätten",
         "literal": "làm phẳng sóng",
         "meaning": "làm dịu xung đột (gehoben)",
-        "example": "Eine moderierte Aussprache kann die Wogen glätten — wenn beide Seiten ergebnisoffen kommen."
+        "meaning_en": "to smooth the waves — calm a conflict (elevated register; closest English equivalent is 'pour oil on troubled waters')",
+        "example": "Eine moderierte Aussprache kann die Wogen glätten — wenn beide Seiten ergebnisoffen kommen.",
+        "example_en": "Eine moderierte Aussprache kann die Wogen glätten — wenn beide Seiten ergebnisoffen kommen. ('A moderated discussion can smooth the waves — if both sides come open-ended.')"
       },
       {
         "idiom": "vom Hundertsten ins Tausendste kommen",
         "literal": "từ 100 sang 1000",
         "meaning": "leo thang từ chuyện nhỏ sang chuyện lớn (standardsprachlich)",
-        "example": "Wenn man Sachebene und Personebene vermischt, kommt man schnell vom Hundertsten ins Tausendste."
+        "meaning_en": "to go from the hundredth to the thousandth — escalate from a small issue to a sprawling one; lose the thread (standard register)",
+        "example": "Wenn man Sachebene und Personebene vermischt, kommt man schnell vom Hundertsten ins Tausendste.",
+        "example_en": "Wenn man Sachebene und Personebene vermischt, kommt man schnell vom Hundertsten ins Tausendste. ('If you mix the substantive level with the personal level, you quickly drift from the hundredth to the thousandth.')"
       },
       {
         "idiom": "Brücken bauen",
         "literal": "xây cầu",
         "meaning": "tạo kết nối, hòa giải (standardsprachlich)",
-        "example": "Eine erfolgreiche Mediation baut Brücken zwischen den Konfliktparteien — ohne die Differenz zuzukleistern."
+        "meaning_en": "to build bridges — create connections, mediate (standard register; identical English idiom)",
+        "example": "Eine erfolgreiche Mediation baut Brücken zwischen den Konfliktparteien — ohne die Differenz zuzukleistern.",
+        "example_en": "Eine erfolgreiche Mediation baut Brücken zwischen den Konfliktparteien — ohne die Differenz zuzukleistern. ('A successful mediation builds bridges between the conflict parties — without papering over the difference.')"
       }
     ],
     "exercises": [
       {
         "type": "fill_blank",
         "instruction_vi": "Điền cấu trúc Streitbeilegung formal C1:",
+        "instruction_en": "Fill in the C1 formal-dispute-resolution structure:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -5838,6 +5885,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "matching",
         "instruction_vi": "Nối Stufen của formelle Streitbeilegung Đức:",
+        "instruction_en": "Match the steps of the German formal dispute-resolution model (Stufenmodell):",
         "pronunciation_focus": [],
         "items": [
           {
@@ -5861,6 +5909,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "translation",
         "instruction_vi": "Dịch sang tiếng Đức formal C1:",
+        "instruction_en": "Translate into formal C1 German:",
         "pronunciation_focus": ["dispute resolution"],
         "items": [
           {
@@ -5897,6 +5946,11 @@ export const lessons: GermanLesson[] = [
           "transparent → trans-pa-RENT",
           "konkrete Alternative → kôn-KRÊ-tê al-tê-na-TI-vê",
           "Hypothetischen → huy-pô-TÊ-ti-shần"
+        ],
+        "pronunciation_focus_en": [
+          "transparent → trans-pah-RENT (transparent; final-syllable stress)",
+          "konkrete Alternative → kon-KRAY-tuh ahl-ter-nah-TEE-vuh (concrete alternative)",
+          "Hypothetischen → hue-poh-TAY-tish-en (the hypothetical; 'th' is just 't')"
         ]
       },
       {
@@ -5906,6 +5960,11 @@ export const lessons: GermanLesson[] = [
           "Eckwerten → ÊK-vê-tần",
           "Abstand nehmen → AP-shtant nê-mần",
           "Groll → GRÔL"
+        ],
+        "pronunciation_focus_en": [
+          "Eckwerten → EK-vair-ten (anchor values; dative plural of 'Eckwert')",
+          "Abstand nehmen → AHP-shtahnt NAY-men (literally 'take distance from'; idiomatic 'step back from')",
+          "Groll → GROHL (resentment; long, dark 'o')"
         ]
       },
       {
@@ -5915,6 +5974,11 @@ export const lessons: GermanLesson[] = [
           "Walk-Away-Punkt → vôk-ê-VÊI-punkt",
           "Verhandlungstaktik → fe-HAN-đlungs-tak-tik",
           "unwirtschaftlich → un-VIT-shaft-likh"
+        ],
+        "pronunciation_focus_en": [
+          "Walk-Away-Punkt → WOK-uh-WAY-poonkt (English-borrowed compound; German speakers say it almost as in English)",
+          "Verhandlungstaktik → fer-HAHND-lungs-TAHK-tik (negotiation tactic)",
+          "unwirtschaftlich → un-VEERT-shahft-likh (uneconomical; final 'ch' is the soft 'ich' sound)"
         ]
       },
       {
@@ -5924,6 +5988,11 @@ export const lessons: GermanLesson[] = [
           "bedauere → bê-ĐAO-ê-rê",
           "gleichwohl → glaikh-VÔL",
           "Führung → FUY-rung"
+        ],
+        "pronunciation_focus_en": [
+          "bedauere → buh-DOW-uh-ruh ('au' = 'ow'; 'I regret')",
+          "gleichwohl → glykh-VOHL (nonetheless; formal connector)",
+          "Führung → FUE-rung ('ü' = rounded 'oo'; lips for 'oo', say 'ee')"
         ]
       },
       {
@@ -5933,81 +6002,98 @@ export const lessons: GermanLesson[] = [
           "Lage → LA-gê",
           "erneutes → e-NỌI-tệs",
           "zur Verfügung → tsu fe-FUY-gung"
+        ],
+        "pronunciation_focus_en": [
+          "Lage → LAH-guh (situation, position)",
+          "erneutes → er-NOY-tess ('eu' = 'oy'; renewed)",
+          "zur Verfügung → tsoor fer-FUE-gung (literally 'at the disposal'; idiomatic 'available')"
         ]
       }
     ],
     "cultural_notes_vi": "BATNA-Strategie (Walk-Away) trong văn hóa đàm phán Đức tuân theo strenger Sachlichkeit-Norm. (1) BATNA REAL, NICHT BLUFF: deutsche Verhandlungspartner sind sehr empfindlich für Bluffs. Ein angedeuteter Walk-Away ohne reale Alternative wird als unprofessional erkannt — und die counterparty wird future Verhandlungen härter führen. BATNA muss konkret sein: ‚wir haben Angebot von Lieferant X über Y zu Z' — nicht ‚wir können auch woanders kaufen'. (2) WALK-AWAY OHNE GROLL: deutsche Geschäftskultur bewahrt Beziehung auch im Walk-Away. Câu chuẩn: ‚Ich bedauere, dass wir an diesem Punkt nicht weiterkommen — gleichwohl danke ich Ihnen für die offene Führung der Gespräche'. Hostile Walk-Away verbrennt Brücken für 5-10 Jahre. (3) DIE TÜR OFFEN HALTEN: am Ende eines Walk-Away signalisieren Sie Bereitschaft, später wieder zu sprechen. ‚Sollte sich die Lage ändern, stehe ich für ein erneutes Gespräch zur Verfügung'. Diese Geste ist wichtig — Markt-Bedingungen ändern sich, und der Walk-Away kann später revisited werden.\n\nKhác Việt Nam: in vietnamesischer Geschäftskultur, Walk-Away ist oft endgültig — Beziehungs-Schwerpunkt macht Re-Open schwer. In deutscher Kultur, Walk-Away on Sachebene ist akzeptiert und Re-Open möglich, wenn Bedingungen sich ändern.\n\nMột chi tiết quan trọng: TIMING des Walk-Away. Zu früh angekündigt ohne Versuch zur Annäherung = unprofessional. Zu spät angekündigt = ressourcenverschwendend für beide. Sweet spot: nach 2-3 Verhandlungsrunden ohne Konvergenz, Walk-Away klar signalisieren.\n\nVề Eckwerten (mốc giá trị): vor Verhandlung definieren — Wunsch-Punkt (best case), Walk-Away-Punkt (worst acceptable), Mid-Range (realistic target). Ohne diese drei Punkte verliert man Orientierung in hitzigen Verhandlungen.\n\nVề ZOPA (Zone of Possible Agreement): Schnittmenge zwischen Ihrer Akzeptanzzone und der Counterparty-Akzeptanzzone. Wenn ZOPA leer ist, ist Walk-Away rational. Wenn ZOPA existiert aber klein ist, mehr Verhandlung zu finden.\n\nVề Eckwerten kommunizieren: nicht alle Eckwerte preisgeben. Wunsch-Punkt + Walk-Away-Punkt sind Verhandlungsmasse. Was Sie offenlegen: dass Sie eine BATNA haben (zur Glaubwürdigkeit), aber nicht die genaue Zahl der BATNA (zur Verhandlungsmacht).\n\nVề Verhandlungs-Reframing als letzter Versuch: bevor Sie walk-away, ein letztes Reframing versuchen — ‚vielleicht haben wir das Problem falsch zugeschnitten?'. Manchmal liegt die Lösung außerhalb der bisherigen Optionen.\n\nVề schriftlicher Bestätigung: nach mündlichem Walk-Away, kurze E-Mail innerhalb von 24 Stunden — ‚zur Bestätigung unseres heutigen Gesprächs: leider keine Einigung erzielt; danke für die offene Diskussion; bei Veränderung der Lage stehe ich gerne erneut zur Verfügung'. Diese Mail dokumentiert Walk-Away ohne Drama.",
+    "cultural_notes_en": "BATNA strategy (the walk-away) in German negotiation culture follows a strict Sachlichkeit norm. (1) BATNA REAL, NOT BLUFF: German counterparts are very sensitive to bluffs. A hinted walk-away with no real alternative is read as unprofessional — and the counterparty will run future negotiations harder. Your BATNA must be concrete: 'we have an offer from supplier X for Y at price Z' — not 'we can buy elsewhere too'. (2) WALK-AWAY WITHOUT GROLL (resentment): German business culture preserves the relationship even at walk-away. The standard close is 'Ich bedauere, dass wir an diesem Punkt nicht weiterkommen — gleichwohl danke ich Ihnen für die offene Führung der Gespräche' (I regret that we can't get further at this point — nonetheless I thank you for the open conduct of the discussions). A hostile walk-away burns bridges for five to ten years. (3) DIE TÜR OFFEN HALTEN (keep the door open): at the end of a walk-away, signal willingness to talk again later. 'Sollte sich die Lage ändern, stehe ich für ein erneutes Gespräch zur Verfügung' (should the situation change, I am available for a renewed conversation). This gesture matters — market conditions shift, and the walk-away can be revisited.\n\nContrast with US norms: in many US negotiation contexts, walk-away is dramatic and final ('we're done here'). In Germany, walk-away on Sachebene (substantive grounds) is accepted and re-engagement is possible if conditions change. The drama-free walk-away is actually the high-status move.\n\nCrucial detail: TIMING of the walk-away. Announced too early — without an attempt at convergence — reads as unprofessional. Announced too late — wasting both sides' resources — also damages credibility. Sweet spot: after two or three rounds of negotiation without convergence, signal walk-away clearly.\n\nOn Eckwerten (anchor values): define them BEFORE the negotiation — wish point (best case), walk-away point (worst acceptable), mid-range (realistic target). Without these three points you lose orientation in heated negotiations.\n\nOn ZOPA (Zone of Possible Agreement): the intersection of your acceptance zone and your counterpart's. If ZOPA is empty, walk-away is rational. If ZOPA exists but is narrow, more negotiation is required to find it.\n\nOn disclosure of Eckwerten: don't reveal everything. The wish point and walk-away point are negotiation leverage. What you DO reveal: that you have a BATNA (for credibility), but NOT the exact number behind that BATNA (for negotiation power).\n\nOn reframing as a last try: before you walk away, attempt one final reframing — 'maybe we've cut the problem the wrong way?'. Sometimes the solution lies outside the options on the table.\n\nOn written confirmation: after a verbal walk-away, send a short email within 24 hours — 'to confirm today's discussion: unfortunately no agreement reached; thanks for the open discussion; should the situation change, I'm available for a renewed conversation.' This email documents the walk-away without drama.",
     "tip_advice_vi": "Vor BATNA-Walk-Away (Vorbereitung):\n1. BATNA REAL machen: konkrete Alternative — anderer Lieferant, anderes Stellenangebot, alternative Investition. Keine vagen ‚wir machen es selbst' wenn Sie es nicht wirklich machen können.\n2. ECKWERTE definieren: Wunsch-Punkt, Walk-Away-Punkt, Mid-Range. Schriftlich, vor Verhandlung.\n3. ZOPA prüfen: was wissen Sie über die Akzeptanzzone der Counterparty? Wenn ZOPA leer, Walk-Away ist rational.\n4. SCRIPT vorbereiten für Walk-Away-Moment — verhindert Eskalation in der Hitze.\n\nIm Verhandlungsraum (3-Phasen-Walk-Away):\n1. ANKÜNDIGUNG (transparent): ‚Bevor ich fortfahre, möchte ich transparent machen, dass ich eine konkrete Alternative verfolge'\n2. ECKWERTE benennen: Walk-Away-Punkt klar (mit Begründung)\n3. WALK-AWAY ohne Groll: Bedauern + Dank + Tür offen halten\n\nNgôn ngữ BATNA und Walk-Away C1:\n- ‚Bevor ich fortfahre, möchte ich transparent machen, dass ich eine konkrete Alternative zu dieser Vereinbarung verfolge' (trước khi tiếp, tôi muốn minh bạch rằng tôi đang theo đuổi alternative cụ thể)\n- ‚Meine BATNA liegt nicht im Hypothetischen' (BATNA của tôi không ở giả định)\n- ‚Sollten wir uns nicht einigen können, sehe ich mich gezwungen, von der Verhandlung Abstand zu nehmen' (nếu không đồng thuận, tôi buộc rút khỏi đàm phán)\n- ‚Mein Walk-Away-Punkt ist nicht aus Verhandlungstaktik gewählt, sondern entspricht der wirtschaftlichen Realität' (walk-away không từ chiến thuật, mà phù hợp thực tế kinh tế)\n- ‚Ich bedauere, dass wir an diesem Punkt nicht weiterkommen — gleichwohl danke ich Ihnen' (tiếc rằng không tiến tiếp — tuy nhiên cám ơn)\n- ‚Sollte sich die Lage ändern, stehe ich für ein erneutes Gespräch zur Verfügung — die Tür bleibt offen' (nếu tình hình thay đổi, tôi sẵn sàng — cửa vẫn mở)\n\nKhi Counterparty fragt nach BATNA-Details:\n- ‚Ich bestätige nicht jedes Detail meiner BATNA — das wäre Verhandlungsnaivität. Ich bestätige aber, dass sie real ist und mir Walk-Away ermöglicht.' (tôi không xác nhận từng chi tiết BATNA — đó sẽ là ngây thơ đàm phán. Nhưng tôi xác nhận BATNA thật và cho phép tôi walk-away.)\n\nKhi Counterparty Bluff vorwirft:\n- ‚Sie unterstellen mir Bluffen. Lassen Sie es mich sachlich sagen: meine BATNA ist real. Sollten wir keine Einigung finden, gehe ich tatsächlich weg — ohne Drama, aber mit Konsequenz.' (anh nghi tôi bluff. Sachlich nói: BATNA của tôi thật. Nếu không đồng thuận, tôi thật sự đi — không drama, nhưng với consequence.)\n\nKhi letzte Verhandlungsrunde:\n- ‚Bevor wir endgültig auseinandergehen, ein letzter Versuch: vielleicht haben wir das Problem falsch zugeschnitten? Lassen Sie uns für zehn Minuten frei denken — was wären Optionen außerhalb der bisherigen Konditionen?' (trước khi đi hẳn, một thử cuối: có thể mình cắt vấn đề sai? Cho 10 phút free think — option ngoài các điều kiện hiện tại?)\n\nNach Walk-Away — E-Mail (24 Stunden):\n- ‚Sehr geehrter Herr X, vielen Dank für die offene Diskussion gestern. Wie besprochen konnten wir uns auf den Konditionen leider nicht einigen — ich bedauere das. Sollte sich die Marktlage Ihrerseits in den nächsten Wochen verändern, stehe ich gerne für ein erneutes Gespräch zur Verfügung. Mit freundlichen Grüßen, Linh.'\n\nMẹo cuối: BATNA-Walk-Away ist die stärkste Verhandlungsmacht — ABER nur wenn real. Wer als Bluff erwischt wird, verliert nicht nur diese Verhandlung, sondern Reputation für künftige. Lieber kein Walk-Away als ein gebluffter Walk-Away.",
+    "tip_advice_en": "Before a BATNA walk-away (preparation):\n1. Make your BATNA REAL: a concrete alternative — another supplier, another job offer, an alternative investment. No vague 'we'll do it ourselves' if you actually can't.\n2. Define your ECKWERTE (anchor values): wish point, walk-away point, mid-range. In writing, before the negotiation.\n3. Check the ZOPA: what do you know about the counterpart's acceptance zone? If ZOPA is empty, walk-away is rational.\n4. Prepare your SCRIPT for the walk-away moment — prevents in-the-heat escalation.\n\nIn the negotiation room (3-phase walk-away):\n1. ANNOUNCEMENT (transparent): 'Bevor ich fortfahre, möchte ich transparent machen, dass ich eine konkrete Alternative verfolge' (before I continue, I want to make transparent that I'm pursuing a concrete alternative)\n2. NAME the Eckwerten: walk-away point clearly (with reasoning)\n3. WALK-AWAY without Groll: regret + thanks + door open\n\nC1 BATNA / walk-away language:\n- 'Bevor ich fortfahre, möchte ich transparent machen, dass ich eine konkrete Alternative zu dieser Vereinbarung verfolge' (before I continue, I want to make transparent that I'm pursuing a concrete alternative to this agreement)\n- 'Meine BATNA liegt nicht im Hypothetischen' (my BATNA is not hypothetical)\n- 'Sollten wir uns nicht einigen können, sehe ich mich gezwungen, von der Verhandlung Abstand zu nehmen' (should we fail to agree, I see myself forced to step back from the negotiation)\n- 'Mein Walk-Away-Punkt ist nicht aus Verhandlungstaktik gewählt, sondern entspricht der wirtschaftlichen Realität' (my walk-away point isn't chosen as a negotiation tactic but reflects economic reality)\n- 'Ich bedauere, dass wir an diesem Punkt nicht weiterkommen — gleichwohl danke ich Ihnen' (I regret that we can't get further at this point — nonetheless I thank you)\n- 'Sollte sich die Lage ändern, stehe ich für ein erneutes Gespräch zur Verfügung — die Tür bleibt offen' (should the situation change, I'm available for a renewed conversation — the door stays open)\n\nWhen the counterpart asks for BATNA details:\n- 'Ich bestätige nicht jedes Detail meiner BATNA — das wäre Verhandlungsnaivität. Ich bestätige aber, dass sie real ist und mir Walk-Away ermöglicht.' (I won't confirm every detail of my BATNA — that would be negotiation naivety. But I confirm: it is real and enables walk-away.)\n\nWhen the counterpart accuses you of bluffing:\n- 'Sie unterstellen mir Bluffen. Lassen Sie es mich sachlich sagen: meine BATNA ist real. Sollten wir keine Einigung finden, gehe ich tatsächlich weg — ohne Drama, aber mit Konsequenz.' (You're alleging that I'm bluffing. Let me put it factually: my BATNA is real. Should we find no agreement, I will actually leave — without drama, but with follow-through.)\n\nAt the last round:\n- 'Bevor wir endgültig auseinandergehen, ein letzter Versuch: vielleicht haben wir das Problem falsch zugeschnitten? Lassen Sie uns für zehn Minuten frei denken — was wären Optionen außerhalb der bisherigen Konditionen?' (Before we part for good, one last attempt: maybe we've cut the problem the wrong way? Let's think freely for ten minutes — what options exist outside the conditions we've been discussing?)\n\nAfter walk-away — email (24 hours):\n- 'Sehr geehrter Herr X, vielen Dank für die offene Diskussion gestern. Wie besprochen konnten wir uns auf den Konditionen leider nicht einigen — ich bedauere das. Sollte sich die Marktlage Ihrerseits in den nächsten Wochen verändern, stehe ich gerne für ein erneutes Gespräch zur Verfügung. Mit freundlichen Grüßen, Linh.'\n\nFinal tip: a real BATNA is the strongest negotiating leverage you have — but only if real. Anyone caught bluffing loses not only this negotiation but reputation for future ones. Better no walk-away than a bluffed walk-away.",
     "vocabulary": [
       {
         "word": "die BATNA / die beste Alternative",
         "en": "BATNA — best alternative to negotiated agreement",
         "vi": "BATNA — phương án thay thế tốt nhất",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi BAT-na"
+        "pronunciation_vi": "đi BAT-na",
+        "pronunciation_en": "dee BAHT-nah — English-borrowed acronym; 'best alternative to a negotiated agreement', from Fisher & Ury"
       },
       {
         "word": "der Walk-Away-Punkt",
         "en": "walk-away point",
         "vi": "điểm rút lui",
         "pos": "noun (m)",
-        "pronunciation_vi": "đe vôk-ê-VÊI-punkt"
+        "pronunciation_vi": "đe vôk-ê-VÊI-punkt",
+        "pronunciation_en": "dayr WOK-uh-WAY-poonkt — half-borrowed compound; the threshold below which you leave the table"
       },
       {
         "word": "die Eckwerte (pl.)",
         "en": "key parameters, anchor values",
         "vi": "các giá trị mốc",
         "pos": "noun (pl)",
-        "pronunciation_vi": "đi ÊK-vê-tê"
+        "pronunciation_vi": "đi ÊK-vê-tê",
+        "pronunciation_en": "dee EK-vair-tuh — anchor values; from 'Eckpunkt' (corner-point) + 'Wert' (value)"
       },
       {
         "word": "ZOPA / Zone of Possible Agreement",
         "en": "ZOPA — zone of possible agreement",
         "vi": "ZOPA — vùng khả thi đồng thuận",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi TSÔ-pa"
+        "pronunciation_vi": "đi TSÔ-pa",
+        "pronunciation_en": "dee TSOH-pah — English-borrowed acronym; 'zone of possible agreement'; rhymes with 'so far'"
       },
       {
         "word": "Abstand nehmen von",
         "en": "to step back from, withdraw",
         "vi": "rút khỏi",
         "pos": "verb phrase",
-        "pronunciation_vi": "AP-shtant NÊ-mần fôn"
+        "pronunciation_vi": "AP-shtant NÊ-mần fôn",
+        "pronunciation_en": "AHP-shtahnt NAY-men fon — verb phrase; literally 'take distance from'; idiomatic 'step back from / withdraw from'"
       },
       {
         "word": "der Groll",
         "en": "resentment, grudge",
         "vi": "ác cảm",
         "pos": "noun (m)",
-        "pronunciation_vi": "đe GRÔL"
+        "pronunciation_vi": "đe GRÔL",
+        "pronunciation_en": "dayr GROHL — long, dark 'o'; resentment / lingering grudge"
       },
       {
         "word": "unwirtschaftlich",
         "en": "uneconomical",
         "vi": "không kinh tế",
         "pos": "adjective",
-        "pronunciation_vi": "un-VIT-shaft-likh"
+        "pronunciation_vi": "un-VIT-shaft-likh",
+        "pronunciation_en": "un-VEERT-shahft-likh — uneconomical; final 'ch' is the soft 'ich' sound"
       },
       {
         "word": "die Tür offen halten",
         "en": "to keep the door open",
         "vi": "giữ cửa mở",
         "pos": "verb phrase",
-        "pronunciation_vi": "đi TUY Ô-fân HAL-tần"
+        "pronunciation_vi": "đi TUY Ô-fân HAL-tần",
+        "pronunciation_en": "dee TUER OFF-en HAHL-ten — verb phrase; 'ü' = rounded 'oo' (lips for 'oo', say 'ee')"
       },
       {
         "word": "das Bluffen / der Bluff",
         "en": "bluffing / bluff",
         "vi": "bluff",
         "pos": "noun (n/m)",
-        "pronunciation_vi": "đát BLU-fân"
+        "pronunciation_vi": "đát BLU-fân",
+        "pronunciation_en": "dahs BLUFF-en — borrowed English term; pronounced as in English, with German verb ending"
       },
       {
         "word": "die Verhandlungsmacht",
         "en": "negotiating power",
         "vi": "quyền lực đàm phán",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi fe-HAN-đlungs-makht"
+        "pronunciation_vi": "đi fe-HAN-đlungs-makht",
+        "pronunciation_en": "dee fer-HAHND-lungs-mahkht — negotiating power; final 'ch' is the hard 'ach' sound"
       }
     ],
     "dialogue": [
@@ -6125,36 +6211,46 @@ export const lessons: GermanLesson[] = [
       "Halten die Tür offen: ‚Sollte sich die Lage Ihrerseits ändern, stehe ich für ein erneutes Gespräch zur Verfügung — die Tür bleibt offen'. Folgen mit E-Mail-Bestätigung 24 Stunden später."
     ],
     "register_notes": "BATNA / Walk-Away C1: ‚Sie' tuyệt đối. Konjunktiv II cho hypothetische Eskalation: ‚Sollten wir uns nicht einigen können, sehe ich mich gezwungen, von der Verhandlung Abstand zu nehmen'. Funktionsverbgefüge: ‚Abstand nehmen von' (rút khỏi), ‚zur Verfügung stehen' (sẵn sàng), ‚in Frage kommen' (được tính đến), ‚außer Betracht bleiben' (không được tính). Schlüsselformeln:\n- BATNA-Ankündigung: ‚meine BATNA liegt nicht im Hypothetischen'\n- Walk-Away-Begründung: ‚nicht aus Verhandlungstaktik gewählt, sondern entspricht der wirtschaftlichen Realität'\n- Walk-Away-Bedauern: ‚Ich bedauere, dass wir an diesem Punkt nicht weiterkommen — gleichwohl danke ich Ihnen'\n- Tür offen halten: ‚Sollte sich die Lage ändern, stehe ich für ein erneutes Gespräch zur Verfügung'\nKHÔNG bluff (BATNA muss real sein). KHÔNG hostile Walk-Away (verbrennt Brücken). Schriftliche Bestätigung 24h danach Standard.",
+    "register_notes_en": "C1 BATNA / walk-away register: 'Sie' is absolute. Konjunktiv II for hypothetical escalation: 'Sollten wir uns nicht einigen können, sehe ich mich gezwungen, von der Verhandlung Abstand zu nehmen' (should we fail to agree, I see myself forced to step back from the negotiation). Funktionsverbgefüge: 'Abstand nehmen von' (step back from), 'zur Verfügung stehen' (be available), 'in Frage kommen' (come into consideration), 'außer Betracht bleiben' (remain out of consideration).\nKey formulas:\n- BATNA announcement: 'meine BATNA liegt nicht im Hypothetischen'\n- Walk-away justification: 'nicht aus Verhandlungstaktik gewählt, sondern entspricht der wirtschaftlichen Realität'\n- Walk-away regret: 'Ich bedauere, dass wir an diesem Punkt nicht weiterkommen — gleichwohl danke ich Ihnen'\n- Door open: 'Sollte sich die Lage ändern, stehe ich für ein erneutes Gespräch zur Verfügung'\nDON'T bluff (the BATNA must be real). DON'T do a hostile walk-away (it burns bridges). Written confirmation within 24 hours is standard.",
     "idiom_glosses": [
       {
         "idiom": "die Karten auf den Tisch legen",
         "literal": "đặt bài lên bàn",
         "meaning": "minh bạch hóa Position (standardsprachlich)",
-        "example": "Mit der Ankündigung der BATNA lege ich die Karten auf den Tisch — ohne dabei jedes Detail zu zeigen."
+        "meaning_en": "to put the cards on the table — make one's position transparent (standard register; identical English idiom)",
+        "example": "Mit der Ankündigung der BATNA lege ich die Karten auf den Tisch — ohne dabei jedes Detail zu zeigen.",
+        "example_en": "Mit der Ankündigung der BATNA lege ich die Karten auf den Tisch — ohne dabei jedes Detail zu zeigen. ('By announcing the BATNA I put my cards on the table — without showing every detail.')"
       },
       {
         "idiom": "die Reißleine ziehen",
         "literal": "kéo dây kéo dù",
         "meaning": "stop khẩn cấp, walk-away (standardsprachlich)",
-        "example": "Nach drei Verhandlungsrunden ohne Konvergenz war es Zeit, die Reißleine zu ziehen."
+        "meaning_en": "to pull the ripcord — make an emergency stop, walk away (standard register; closer to English 'pull the plug')",
+        "example": "Nach drei Verhandlungsrunden ohne Konvergenz war es Zeit, die Reißleine zu ziehen.",
+        "example_en": "Nach drei Verhandlungsrunden ohne Konvergenz war es Zeit, die Reißleine zu ziehen. ('After three rounds of negotiation without convergence, it was time to pull the ripcord.')"
       },
       {
         "idiom": "Brücken nicht abreißen",
         "literal": "không phá cầu",
         "meaning": "không cắt đứt quan hệ trong walk-away (standardsprachlich)",
-        "example": "Auch beim Walk-Away reißen wir die Brücken nicht ab — der Markt kann sich ändern."
+        "meaning_en": "not to tear down the bridges — preserve the relationship even at walk-away (standard register; the English equivalent is 'don't burn bridges')",
+        "example": "Auch beim Walk-Away reißen wir die Brücken nicht ab — der Markt kann sich ändern.",
+        "example_en": "Auch beim Walk-Away reißen wir die Brücken nicht ab — der Markt kann sich ändern. ('Even at walk-away we don't tear down the bridges — the market can change.')"
       },
       {
         "idiom": "auf Augenhöhe verhandeln",
         "literal": "đàm phán ngang mắt",
         "meaning": "đàm phán bình đẳng (gehoben/standardsprachlich)",
-        "example": "BATNA gibt Ihnen die Macht, auf Augenhöhe zu verhandeln — ohne sie sind Sie strukturell benachteiligt."
+        "meaning_en": "to negotiate at eye level — negotiate as equals (elevated/standard register; the English idiom is 'on a level playing field')",
+        "example": "BATNA gibt Ihnen die Macht, auf Augenhöhe zu verhandeln — ohne sie sind Sie strukturell benachteiligt.",
+        "example_en": "BATNA gibt Ihnen die Macht, auf Augenhöhe zu verhandeln — ohne sie sind Sie strukturell benachteiligt. ('A BATNA gives you the power to negotiate at eye level — without one you are structurally disadvantaged.')"
       }
     ],
     "exercises": [
       {
         "type": "fill_blank",
         "instruction_vi": "Điền cấu trúc BATNA / Walk-Away C1:",
+        "instruction_en": "Fill in the C1 BATNA / walk-away structure:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -6178,6 +6274,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "matching",
         "instruction_vi": "Nối khái niệm BATNA-Strategie với chức năng:",
+        "instruction_en": "Match each BATNA-strategy concept to its function:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -6201,6 +6298,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "translation",
         "instruction_vi": "Dịch sang tiếng Đức formal C1:",
+        "instruction_en": "Translate into formal C1 German:",
         "pronunciation_focus": ["BATNA walk-away"],
         "items": [
           {
@@ -6237,6 +6335,11 @@ export const lessons: GermanLesson[] = [
           "Sorgfalt → ZÔK-falt",
           "ausgearbeitet → AOS-gê-a-bai-tệt",
           "tragfähig → TRAK-fê-ikh"
+        ],
+        "pronunciation_focus_en": [
+          "Sorgfalt → ZORG-fahlt (thoroughness, diligence; final '-t' fully released)",
+          "ausgearbeitet → OWS-guh-AR-by-tet (worked out; 'au' = 'ow', 'ei' = 'eye')",
+          "tragfähig → TRAHK-fay-ikh (viable / load-bearing; final 'ch' is the soft 'ich' sound)"
         ]
       },
       {
@@ -6246,6 +6349,11 @@ export const lessons: GermanLesson[] = [
           "Marktdurchschnitt → MAKT-đukh-shnit",
           "vergleichbare Leistungen → fe-GLAIKH-ba-rê LAI-shtun-gân",
           "Annäherung → AN-nê-ê-rung"
+        ],
+        "pronunciation_focus_en": [
+          "Marktdurchschnitt → MARKT-doorkh-shnit (market average; 'ch' here is the hard 'ach' sound)",
+          "vergleichbare Leistungen → fer-GLYKH-bah-ruh LYE-stung-en (comparable services)",
+          "Annäherung → AHN-nay-er-ung (approximation, convergence; the second 'ä' is just a long 'eh')"
         ]
       },
       {
@@ -6255,6 +6363,11 @@ export const lessons: GermanLesson[] = [
           "mitgestalten → MIT-gê-shtal-tần",
           "rechnet → RÊKH-nệt",
           "Hinhaltung → HIN-hal-tung"
+        ],
+        "pronunciation_focus_en": [
+          "mitgestalten → MIT-guh-shtahl-ten (to co-shape; separable verb)",
+          "rechnet → REKH-net ('it adds up' / 'is profitable'; final 'ch' is hard before 'n')",
+          "Hinhaltung → HIN-hahl-tung (stalling, delay tactic; literally 'holding-off')"
         ]
       },
       {
@@ -6264,6 +6377,11 @@ export const lessons: GermanLesson[] = [
           "Spielraum → SHPIL-raom",
           "gleichwohl → glaikh-VÔL",
           "Anpassung → AN-pa-sung"
+        ],
+        "pronunciation_focus_en": [
+          "Spielraum → SHPEEL-rowm (literally 'play-room'; idiomatic 'leeway / room to manoeuvre')",
+          "gleichwohl → glykh-VOHL (nonetheless; formal connector)",
+          "Anpassung → AHN-pahs-ung (adjustment; from 'anpassen' = adapt)"
         ]
       },
       {
@@ -6273,81 +6391,98 @@ export const lessons: GermanLesson[] = [
           "niedrigschwellig → NI-đrikh-shvê-likh",
           "überarbeitet → uy-bờ-A-bai-tệt",
           "Statussignal → SHTA-tus-zig-nal"
+        ],
+        "pronunciation_focus_en": [
+          "niedrigschwellig → NEED-rikh-shvel-likh (low-threshold; final 'ch' is the soft 'ich' sound)",
+          "überarbeitet → UE-bur-AR-by-tet (revised; 'ü' = rounded 'oo')",
+          "Statussignal → SHTAH-tus-zig-NAHL (status signal; an 's' between vowels here is voiced)"
         ]
       }
     ],
     "cultural_notes_vi": "Niedrige Angebote ablehnen ohne Beziehungsschaden in deutscher Geschäftskultur folgt einem präzisen Muster. (1) ANERKENNUNG der Mühe: bevor man ablehnt, muss man die Mühe der Counterparty würdigen. ‚Vielen Dank für Ihr Angebot — ich schätze die Sorgfalt'. Diese Höflichkeit ist nicht bloße Floskel, sondern signalisiert Respekt für professionelle Arbeit. (2) SACHLICHE BEGRÜNDUNG: Ablehnung muss auf data basieren, nicht auf Geschmack. ‚vierzehn Prozent unter dem Marktdurchschnitt' ist überprüfbar. ‚zu niedrig' ohne Begründung ist unprofessional. (3) TÜR OFFEN HALTEN: niedriges Angebot heute ≠ niemals Geschäft. Markt-Bedingungen ändern sich, Volumina ändern sich, Counterparty-Strategien ändern sich. Schließen Sie nie die Tür, außer Compliance-Verstoß oder schwerer Vertrauensbruch.\n\nKhác Việt Nam: in Vietnam, low offer rejection oft sehr indirekt (‚wir überlegen', ‚wir kommen zurück'). In Deutschland zu indirekt = Counterparty wartet vergeblich, wird frustriert. Direkter (mit Höflichkeit) ist effizienter.\n\nMột chi tiết quan trọng: HÖFLICHE HINHALTUNG (höfliche delays without intent to commit) ist in deutscher Geschäftskultur SCHLIMMER als direkte Ablehnung. Wer Counterparty drei Wochen warten lässt, dann ablehnt, verursacht Reputations-Schaden. Direkte Ablehnung am Tag der Angebots-Empfangs-Prüfung wird respektiert.\n\nVề ‚niedrigschwellige Lösung' (low-threshold solution): einen Pfad für Counterparty zur Re-Engagement, ohne dass sie das Gesicht verliert. ‚Eine niedrigschwellige Lösung wäre, dass Sie einen überarbeiteten Vorschlag in vierzehn Tagen einreichen' — Counterparty kann ohne Konfrontation verbessern. Status-Signal-frei: keine ‚wir geben Ihnen noch eine Chance' (paternalistic).\n\nVề Marktreferenz: rejection-Begründung mit Marktreferenz ist immer stark. ‚vierzehn Prozent unter dem Marktdurchschnitt' (mit konkreter Quelle: Stepstone, Branchenreport, eigene Vergleichsdaten) ist nicht persönlich angreifbar. Counterparty kann mit eigenem Marktreferenz reagieren — Diskussion bleibt sachlich.\n\nVề ‚es rechnet sich nicht': deutsche Wirtschaftssprache verwendet ‚es rechnet sich (nicht)' für ‚it's not economically viable'. Diese Formel ist neutraler als ‚wir können das nicht akzeptieren' — fokussiert auf Wirtschaftlichkeit, nicht auf Ablehnung.\n\nVề Statussignale vermeiden: KEINE ‚wir sind Ihre größere Counterparty' / ‚wir können wo anders kaufen' (impliziter Status-Drohung). Sachlich, höflich, mit Marktreferenz. Status-Signale verbrennen Beziehung.\n\nVề Schriftliche Bestätigung: nach mündlicher Ablehnung E-Mail-Memo binnen 24 Stunden — kurze, höfliche Zusammenfassung. ‚Wie heute besprochen, sehen wir Ihren Vorschlag noch nicht im wirtschaftlich tragfähigen Bereich. Wir freuen uns auf einen überarbeiteten Vorschlag, sollten Sie weitere Spielräume sehen. Mit freundlichen Grüßen.'\n\nVề langfristige Beziehung: niedriges Angebot heute kann morgen Volumen-erhöhen oder marktanpassen. Investieren Sie in Beziehung trotz Ablehnung — Counterparty erinnert sich an höfliche Behandlung in der Niederlage und bietet Vorzugsbehandlung in der nächsten Runde.",
+    "cultural_notes_en": "Rejecting low offers without damaging the business relationship in German commercial culture follows a precise pattern. (1) ACKNOWLEDGE the effort: before rejecting, you must honour the counterpart's effort. 'Vielen Dank für Ihr Angebot — ich schätze die Sorgfalt' (many thanks for your offer — I value the thoroughness). This isn't empty politeness; it signals respect for professional work and is how a serious counterpart expects to be addressed. (2) FACTUAL JUSTIFICATION: rejection must be data-based, not based on taste. 'Vierzehn Prozent unter dem Marktdurchschnitt' (14 percent below the market average) is verifiable. 'Too low' without justification is read as unprofessional. (3) KEEP THE DOOR OPEN: a low offer today ≠ no business ever. Market conditions shift, volumes shift, your counterpart's strategy shifts. Never close the door, except for a compliance breach or a serious breach of trust.\n\nContrast with US/UK norms: in some Anglophone commercial cultures, low-offer rejection is often very indirect ('we'll think about it', 'we'll get back to you'). In Germany, indirectness past one round leaves the counterpart waiting in vain and getting frustrated — direct rejection (with politeness) is more efficient and more respectful. Vietnamese commercial culture similarly tends to indirectness; calibrate to the German middle.\n\nCrucial detail: HÖFLICHE HINHALTUNG (polite stalling, with no real intent to commit) is in German commercial culture WORSE than direct rejection. Anyone who lets a counterpart wait three weeks and then rejects damages their reputation. Direct rejection on the day of the offer-review is respected.\n\nOn 'niedrigschwellige Lösung' (low-threshold solution): a path for the counterpart to re-engage without losing face. 'Eine niedrigschwellige Lösung wäre, dass Sie einen überarbeiteten Vorschlag in vierzehn Tagen einreichen' (a low-threshold solution would be that you submit a revised proposal within fourteen days) — the counterpart can improve without confrontation. Status-signal-free: NO 'we'll give you another chance' (paternalistic).\n\nOn market reference: a rejection grounded in a market reference is always strong. 'Fourteen percent below the market average' (with a concrete source: Stepstone, an industry report, your own comparison data) is not personally attackable. The counterpart can respond with their own market reference — discussion stays factual.\n\nOn 'es rechnet sich nicht': German business language uses 'es rechnet sich (nicht)' to mean 'it's (not) economically viable'. The formula is more neutral than 'we can't accept that' — it focuses on viability, not on rejection.\n\nAvoid status signals: NO 'we're a bigger counterpart' / 'we can buy elsewhere' (implicit status threats). Stay factual, polite, with a market reference. Status signals burn the relationship.\n\nOn written confirmation: after verbal rejection, send an email-memo within 24 hours — short, polite summary. 'As discussed today, we don't yet see your proposal in the economically viable range. We look forward to a revised proposal should you see further leeway. Kind regards.'\n\nOn long-term relationship: a low offer today can become tomorrow's volume increase or market adjustment. Invest in the relationship despite the rejection — the counterpart remembers polite handling in defeat and offers preferential treatment in the next round.",
     "tip_advice_vi": "Vor Ablehnung niedriger Angebote (Vorbereitung):\n1. MARKTREFERENZ besorgen: konkrete Daten zur Marktdurchschnitt — Branchenreport, Stepstone, eigene Vergleichsangebote.\n2. ECKWERTE definieren: was wäre noch akzeptabel? Diese Zahl behalten Sie für sich, aber wissen.\n3. ‚NIEDRIGSCHWELLIGE LÖSUNG' vorbereiten: wie kann Counterparty re-engage ohne Gesichtsverlust?\n4. SCRIPT vorbereiten für Ablehnung — verhindert improvised harshness.\n\nIm Verhandlungsgespräch (4-Phasen-Ablehnung):\n1. ANERKENNUNG: ‚Vielen Dank für Ihr Angebot — ich schätze die Sorgfalt'\n2. SACHLICHE ABLEHNUNG mit Marktreferenz: ‚X Prozent unter dem Marktdurchschnitt'\n3. INTENT signalisieren: ‚wir möchten weiterverhandeln, daher direkte Rückmeldung'\n4. NIEDRIGSCHWELLIGE LÖSUNG: ‚überarbeiteter Vorschlag in 14 Tagen'\n\nNgôn ngữ niedrige Angebote ablehnen C1:\n- ‚Vielen Dank für Ihr Angebot — ich schätze die Sorgfalt, mit der es ausgearbeitet wurde' (cám ơn — tôi trân trọng sự cẩn thận)\n- ‚Sehe es jedoch deutlich unterhalb des Bereichs, der für uns wirtschaftlich tragfähig ist' (song thấy rõ ràng dưới mức kinh tế khả thi)\n- ‚Ihr Vorschlag liegt etwa X Prozent unter dem Marktdurchschnitt' (đề xuất nằm khoảng X% dưới trung bình thị trường)\n- ‚Eine Annäherung wäre erforderlich, damit wir weiterverhandeln können' (sự xích lại cần thiết để tiếp tục đàm phán)\n- ‚Mir ist daran gelegen, dass beide Seiten am Ende eine Vereinbarung mitgestalten, die sich rechnet' (với tôi quan trọng cả hai cùng định hình thỏa thuận có lợi)\n- ‚Daher meine offene Rückmeldung statt höflicher Hinhaltung' (do đó phản hồi cởi mở thay vì lịch sự kéo dài)\n- ‚Eine niedrigschwellige Lösung wäre, dass Sie einen überarbeiteten Vorschlag einreichen' (giải pháp ngưỡng thấp là các vị nộp đề xuất đã chỉnh sửa)\n\nKhi Counterparty pushback (‚das ist unser Maximum'):\n- ‚Ich verstehe Ihre Position. Sollten Sie Ihrerseits keine weiteren Spielräume sehen, müssen wir das so akzeptieren — gleichwohl möchten wir die Tür für eine Anpassung in einer späteren Runde nicht schließen.' (tôi hiểu. Nếu các vị không có dư địa, mình phải chấp nhận — tuy nhiên không đóng cửa cho điều chỉnh sau.)\n\nKhi Counterparty Status-Spiel beginnt (‚dann gehen wir zu Wettbewerber'):\n- ‚Das verstehe ich — Sie müssen tun, was wirtschaftlich für Sie sinnvoll ist. Auch wir suchen die wirtschaftlich beste Lösung. Sollte sich Ihre Lage ändern, stehe ich für ein erneutes Gespräch zur Verfügung.' (tôi hiểu — anh phải làm cái có lợi kinh tế. Chúng tôi cũng tìm giải pháp tốt nhất kinh tế. Nếu lage anh thay đổi, tôi sẵn sàng.)\n\nNach Ablehnung — E-Mail (24 Stunden):\n- ‚Sehr geehrter Herr X, vielen Dank für das heutige Gespräch. Wie besprochen sehen wir Ihren Vorschlag noch nicht im wirtschaftlich tragfähigen Bereich — eine Annäherung um etwa zehn Prozent würde uns Spielraum für eine Einigung geben. Wir freuen uns auf einen überarbeiteten Vorschlag bis zum 15. November. Mit freundlichen Grüßen, Linh.'\n\nKhi langfristige Beziehung wichtig:\n- ‚Auch wenn wir heute keine Einigung finden, schätze ich die professionelle Zusammenarbeit. Lassen Sie uns in drei Monaten erneut in Kontakt treten — die Marktlage wird sich entwickeln.' (dù hôm nay không đồng thuận, tôi trân trọng hợp tác chuyên nghiệp. Mình liên lạc lại sau 3 tháng — tình hình thị trường sẽ phát triển.)\n\nMẹo cuối: Ablehnung mit Würde stärkt Reputation für nächste Runde. Wer ‚nein' professionell sagen kann, wird ernst genommen wenn er ‚ja' sagt. Höfliche Hinhaltung ist langfristig schlechter als sachliche Ablehnung am Tag der Empfangs-Prüfung.",
+    "tip_advice_en": "Before rejecting a low offer (preparation):\n1. Get a MARKET REFERENCE: concrete data on the market average — industry report, Stepstone, your own comparison offers.\n2. Define your ECKWERTE (anchor values): what would still be acceptable? You keep this number to yourself but you know it.\n3. Prepare a 'NIEDRIGSCHWELLIGE LÖSUNG' (low-threshold solution): how can the counterpart re-engage without losing face?\n4. Prepare a SCRIPT for the rejection — prevents improvised harshness.\n\nIn the negotiation conversation (4-phase rejection):\n1. ACKNOWLEDGE: 'Vielen Dank für Ihr Angebot — ich schätze die Sorgfalt'\n2. FACTUAL REJECTION with market reference: 'X percent below the market average'\n3. SIGNAL INTENT: 'wir möchten weiterverhandeln, daher direkte Rückmeldung'\n4. LOW-THRESHOLD SOLUTION: 'überarbeiteter Vorschlag in 14 Tagen'\n\nC1 low-offer rejection language:\n- 'Vielen Dank für Ihr Angebot — ich schätze die Sorgfalt, mit der es ausgearbeitet wurde' (many thanks for your offer — I value the thoroughness with which it was prepared)\n- 'Sehe es jedoch deutlich unterhalb des Bereichs, der für uns wirtschaftlich tragfähig ist' (but see it clearly below the range that is economically viable for us)\n- 'Ihr Vorschlag liegt etwa X Prozent unter dem Marktdurchschnitt' (your proposal sits about X percent below the market average)\n- 'Eine Annäherung wäre erforderlich, damit wir weiterverhandeln können' (a convergence would be required for us to continue negotiating)\n- 'Mir ist daran gelegen, dass beide Seiten am Ende eine Vereinbarung mitgestalten, die sich rechnet' (it matters to me that both sides ultimately co-shape an agreement that pays off)\n- 'Daher meine offene Rückmeldung statt höflicher Hinhaltung' (hence my open feedback rather than polite stalling)\n- 'Eine niedrigschwellige Lösung wäre, dass Sie einen überarbeiteten Vorschlag einreichen' (a low-threshold solution would be that you submit a revised proposal)\n\nWhen the counterpart pushes back ('this is our maximum'):\n- 'Ich verstehe Ihre Position. Sollten Sie Ihrerseits keine weiteren Spielräume sehen, müssen wir das so akzeptieren — gleichwohl möchten wir die Tür für eine Anpassung in einer späteren Runde nicht schließen.' (I understand your position. Should you see no further leeway, we'll have to accept that — nonetheless we don't want to close the door for an adjustment in a later round.)\n\nWhen the counterpart starts a status game ('then we'll go to a competitor'):\n- 'Das verstehe ich — Sie müssen tun, was wirtschaftlich für Sie sinnvoll ist. Auch wir suchen die wirtschaftlich beste Lösung. Sollte sich Ihre Lage ändern, stehe ich für ein erneutes Gespräch zur Verfügung.' (I understand — you have to do what's economically sensible for you. We're also looking for the economically best solution. Should your situation change, I'm available for a renewed conversation.)\n\nAfter rejection — email (24 hours):\n- 'Sehr geehrter Herr X, vielen Dank für das heutige Gespräch. Wie besprochen sehen wir Ihren Vorschlag noch nicht im wirtschaftlich tragfähigen Bereich — eine Annäherung um etwa zehn Prozent würde uns Spielraum für eine Einigung geben. Wir freuen uns auf einen überarbeiteten Vorschlag bis zum 15. November. Mit freundlichen Grüßen, Linh.'\n\nWhen long-term relationship matters:\n- 'Auch wenn wir heute keine Einigung finden, schätze ich die professionelle Zusammenarbeit. Lassen Sie uns in drei Monaten erneut in Kontakt treten — die Marktlage wird sich entwickeln.' (Even if we don't reach agreement today, I value the professional cooperation. Let's get back in touch in three months — the market will evolve.)\n\nFinal tip: rejection with dignity strengthens your reputation for the next round. Anyone who can say 'no' professionally is taken seriously when they say 'yes'. Polite stalling is long-term worse than factual rejection on the day of the offer-review.",
     "vocabulary": [
       {
         "word": "die Sorgfalt",
         "en": "thoroughness, diligence",
         "vi": "sự cẩn thận",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi ZÔK-falt"
+        "pronunciation_vi": "đi ZÔK-falt",
+        "pronunciation_en": "dee ZORG-fahlt — thoroughness; final 't' fully released, not aspirated"
       },
       {
         "word": "wirtschaftlich tragfähig",
         "en": "economically viable",
         "vi": "kinh tế khả thi",
         "pos": "adjective phrase",
-        "pronunciation_vi": "VIT-shaft-likh TRAK-fê-ikh"
+        "pronunciation_vi": "VIT-shaft-likh TRAK-fê-ikh",
+        "pronunciation_en": "VEERT-shahft-likh TRAHK-fay-ikh — adjective phrase; 'economically viable'"
       },
       {
         "word": "der Marktdurchschnitt",
         "en": "market average",
         "vi": "trung bình thị trường",
         "pos": "noun (m)",
-        "pronunciation_vi": "đe MAKT-đukh-shnit"
+        "pronunciation_vi": "đe MAKT-đukh-shnit",
+        "pronunciation_en": "dayr MARKT-doorkh-shnit — market average; 'rk' is one consonant cluster, no inserted vowel"
       },
       {
         "word": "die Annäherung",
         "en": "approximation, convergence",
         "vi": "sự xích lại",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi AN-nê-ê-rung"
+        "pronunciation_vi": "đi AN-nê-ê-rung",
+        "pronunciation_en": "dee AHN-nay-er-ung — approximation / convergence; from 'sich nähern' (to approach)"
       },
       {
         "word": "die Hinhaltung",
         "en": "stalling, delay tactic",
         "vi": "kéo dài, trì hoãn",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi HIN-hal-tung"
+        "pronunciation_vi": "đi HIN-hal-tung",
+        "pronunciation_en": "dee HIN-hahl-tung — stalling; carries a slightly negative connotation in business contexts"
       },
       {
         "word": "der Spielraum",
         "en": "negotiation room, leeway",
         "vi": "dư địa thương lượng",
         "pos": "noun (m)",
-        "pronunciation_vi": "đe SHPIL-raom"
+        "pronunciation_vi": "đe SHPIL-raom",
+        "pronunciation_en": "dayr SHPEEL-rowm — leeway; literally 'play-room'; the most common 'wiggle-room' word"
       },
       {
         "word": "niedrigschwellig",
         "en": "low-threshold",
         "vi": "ngưỡng thấp",
         "pos": "adjective",
-        "pronunciation_vi": "NI-đrikh-shvê-likh"
+        "pronunciation_vi": "NI-đrikh-shvê-likh",
+        "pronunciation_en": "NEED-rikh-shvel-likh — low-threshold; from 'Schwelle' (threshold) — a low entry barrier"
       },
       {
         "word": "es rechnet sich (nicht)",
         "en": "it's (not) economically viable",
         "vi": "có lợi (không) kinh tế",
         "pos": "verb phrase",
-        "pronunciation_vi": "ês RÊKH-nệt zikh"
+        "pronunciation_vi": "ês RÊKH-nệt zikh",
+        "pronunciation_en": "ess REKH-net zikh — verb phrase; 'it adds up' / 'it's profitable'; the most natural German way to say 'it pencils out'"
       },
       {
         "word": "die offene Rückmeldung",
         "en": "open feedback",
         "vi": "phản hồi cởi mở",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi Ô-fê-nê RUYK-mel-đung"
+        "pronunciation_vi": "đi Ô-fê-nê RUYK-mel-đung",
+        "pronunciation_en": "dee OFF-uh-nuh REUK-mel-doong — open feedback; 'ü' = rounded 'oo'"
       },
       {
         "word": "das Statussignal",
         "en": "status signal",
         "vi": "tín hiệu địa vị",
         "pos": "noun (n)",
-        "pronunciation_vi": "đát SHTA-tus-zig-nal"
+        "pronunciation_vi": "đát SHTA-tus-zig-nal",
+        "pronunciation_en": "dahs SHTAH-tus-zig-NAHL — status signal; both 's' sounds are voiceless here"
       }
     ],
     "dialogue": [
@@ -6465,36 +6600,46 @@ export const lessons: GermanLesson[] = [
       "Diễn đạt niedrigschwellige Lösung: ‚überarbeiteter Vorschlag in 14 Tagen — wir bewerten ihn ohne Vorwurf, ohne Statussignal'. Folgen mit ehrlicher Schlussfomula: ‚Auch wenn keine Einigung, professioneller Kontakt für die Zukunft'."
     ],
     "register_notes": "Niedrige Angebote ablehnen C1: ‚Sie' tuyệt đối. Konjunktiv II cho hypothetische Spielräume: ‚Eine Annäherung wäre erforderlich', ‚wenn Sie keinen weiteren Spielraum sehen'. Funktionsverbgefüge: ‚zur Verfügung stehen' (sẵn sàng), ‚in Frage kommen' (được tính), ‚außerhalb des wirtschaftlich tragfähigen Bereichs liegen' (nằm ngoài vùng kinh tế khả thi). Schlüsselformeln:\n- Anerkennung: ‚Vielen Dank für Ihr Angebot — ich schätze die Sorgfalt'\n- Sachliche Ablehnung: ‚X Prozent unter dem Marktdurchschnitt'\n- Intent: ‚daher meine offene Rückmeldung statt höflicher Hinhaltung'\n- Niedrigschwellige Lösung: ‚überarbeiteter Vorschlag in 14 Tagen, ohne Vorwurf, ohne Statussignal'\nKHÔNG ‚das ist zu wenig' (vage). KHÔNG ‚wir gehen zu Wettbewerber' (Status-Drohung). KHÔNG höfliche Hinhaltung (länger schlechter als direkte Ablehnung). Marktreferenz mit konkreter Quelle bắt buộc.",
+    "register_notes_en": "C1 low-offer-rejection register: 'Sie' is absolute. Konjunktiv II for hypothetical leeway: 'Eine Annäherung wäre erforderlich' (a convergence would be required), 'wenn Sie keinen weiteren Spielraum sehen' (if you see no further leeway). Funktionsverbgefüge: 'zur Verfügung stehen' (be available), 'in Frage kommen' (come into consideration), 'außerhalb des wirtschaftlich tragfähigen Bereichs liegen' (lie outside the economically viable range).\nKey formulas:\n- Acknowledgement: 'Vielen Dank für Ihr Angebot — ich schätze die Sorgfalt'\n- Factual rejection: 'X Prozent unter dem Marktdurchschnitt'\n- Intent: 'daher meine offene Rückmeldung statt höflicher Hinhaltung'\n- Low-threshold solution: 'überarbeiteter Vorschlag in 14 Tagen, ohne Vorwurf, ohne Statussignal'\nDON'T say 'das ist zu wenig' (vague). DON'T say 'wir gehen zum Wettbewerber' (status threat). DON'T do polite stalling — that's worse than direct rejection. A market reference with a concrete source is required.",
     "idiom_glosses": [
       {
         "idiom": "die Tür offen halten",
         "literal": "giữ cửa mở",
         "meaning": "duy trì option re-engage future (standardsprachlich)",
-        "example": "Auch bei Ablehnung halten wir die Tür offen — Märkte ändern sich, Bedingungen ändern sich."
+        "meaning_en": "to keep the door open — preserve the option to re-engage in the future (standard register; identical English idiom)",
+        "example": "Auch bei Ablehnung halten wir die Tür offen — Märkte ändern sich, Bedingungen ändern sich.",
+        "example_en": "Auch bei Ablehnung halten wir die Tür offen — Märkte ändern sich, Bedingungen ändern sich. ('Even on rejection we keep the door open — markets change, conditions change.')"
       },
       {
         "idiom": "auf Augenhöhe",
         "literal": "ở mức mắt",
         "meaning": "trên cơ sở bình đẳng (gehoben/standardsprachlich)",
-        "example": "Ich lehne ab auf Augenhöhe — sachlich, mit Marktreferenz, ohne Statussignal."
+        "meaning_en": "at eye level — on equal footing (elevated/standard register; English equivalent is 'on a level playing field')",
+        "example": "Ich lehne ab auf Augenhöhe — sachlich, mit Marktreferenz, ohne Statussignal.",
+        "example_en": "Ich lehne ab auf Augenhöhe — sachlich, mit Marktreferenz, ohne Statussignal. ('I reject at eye level — factually, with a market reference, without a status signal.')"
       },
       {
         "idiom": "den Mantel des Schweigens hüllen",
         "literal": "phủ áo choàng im lặng",
         "meaning": "im lặng về điều khó (gehoben)",
-        "example": "Ich hülle nicht den Mantel des Schweigens über mein Veto — direkte Rückmeldung respektiert die Counterparty."
+        "meaning_en": "to wrap something in the cloak of silence — stay silent on something difficult (elevated register; closer to English 'draw a veil over')",
+        "example": "Ich hülle nicht den Mantel des Schweigens über mein Veto — direkte Rückmeldung respektiert die Counterparty.",
+        "example_en": "Ich hülle nicht den Mantel des Schweigens über mein Veto — direkte Rückmeldung respektiert die Counterparty. ('I don't wrap my veto in the cloak of silence — direct feedback respects the counterparty.')"
       },
       {
         "idiom": "es rechnet sich nicht",
         "literal": "không tính ra (kinh tế)",
         "meaning": "không kinh tế khả thi (standardsprachlich)",
-        "example": "Bei vierzehn Prozent unter Marktdurchschnitt rechnet sich die Vereinbarung für uns nicht — das muss ich offen sagen."
+        "meaning_en": "it doesn't pay off / it doesn't add up — it's not economically viable (standard register; the most natural German way to put this)",
+        "example": "Bei vierzehn Prozent unter Marktdurchschnitt rechnet sich die Vereinbarung für uns nicht — das muss ich offen sagen.",
+        "example_en": "Bei vierzehn Prozent unter Marktdurchschnitt rechnet sich die Vereinbarung für uns nicht — das muss ich offen sagen. ('At fourteen percent below the market average the agreement doesn't pay off for us — I have to say that openly.')"
       }
     ],
     "exercises": [
       {
         "type": "fill_blank",
         "instruction_vi": "Điền cấu trúc niedrige Angebote ablehnen C1:",
+        "instruction_en": "Fill in the C1 low-offer-rejection structure:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -6518,6 +6663,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "matching",
         "instruction_vi": "Nối Phasen của Ablehnung niedriger Angebote:",
+        "instruction_en": "Match the phases of low-offer rejection:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -6541,6 +6687,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "translation",
         "instruction_vi": "Dịch sang tiếng Đức formal C1:",
+        "instruction_en": "Translate into formal C1 German:",
         "pronunciation_focus": ["rejecting low offers"],
         "items": [
           {
@@ -6577,6 +6724,11 @@ export const lessons: GermanLesson[] = [
           "zur Kenntnis nehmen → tsu KÊN-tnis nê-mân",
           "Ton verschärft → TÔN fe-SHÊFT",
           "Sachebene → ZAKH-ê-bê-nê"
+        ],
+        "pronunciation_focus_en": [
+          "zur Kenntnis nehmen → tsoor KEN-tnis NAY-men (formal 'take note of'; the 'tn' cluster is one beat)",
+          "Ton verschärft → TOHN fer-SHARFT (literally 'sharpened the tone'; idiomatic 'raised the temperature')",
+          "Sachebene → ZAHKH-ay-buh-nuh (substantive level; literal 'thing-level')"
         ]
       },
       {
@@ -6586,6 +6738,11 @@ export const lessons: GermanLesson[] = [
           "Rhetorik → rê-TÔ-rik",
           "intensiv → in-tên-ZIF",
           "Mandat → man-ĐAT"
+        ],
+        "pronunciation_focus_en": [
+          "Rhetorik → reh-TOH-rik (rhetoric; stress on -TOH-)",
+          "intensiv → in-ten-ZEEF (intense; final '-iv' = '-eef'; final '-v' devoices to '-f')",
+          "Mandat → mahn-DAHT (mandate; final-syllable stress)"
         ]
       },
       {
@@ -6595,6 +6752,11 @@ export const lessons: GermanLesson[] = [
           "innehalten → IN-nê-hal-tân",
           "Eskalationsstufe → es-ka-la-tsi-ÔNS-shtu-fê",
           "produktiv → prô-đuk-TIF"
+        ],
+        "pronunciation_focus_en": [
+          "innehalten → IN-uh-HAHL-ten (to pause; separable verb; literal 'hold within')",
+          "Eskalationsstufe → es-kah-lah-tsee-OHNS-shtoo-fuh (escalation level)",
+          "produktiv → proh-dook-TEEF (productive; final '-iv' = '-eef'; final '-v' devoices to '-f')"
         ]
       },
       {
@@ -6604,6 +6766,11 @@ export const lessons: GermanLesson[] = [
           "persönliche Angriffe → pe-ZÔN-likh-ê AN-gri-fê",
           "signalisiere → zig-na-li-ZI-rê",
           "weicher / härter → VAI-khê / HÊ-tê"
+        ],
+        "pronunciation_focus_en": [
+          "persönliche Angriffe → per-ZOHN-likh-uh AHN-grif-uh (personal attacks; 'ch' here is the soft 'ich' sound)",
+          "signalisiere → zig-nah-lee-ZEER-uh (I signal)",
+          "weicher / härter → VYE-kher / HAIR-ter (softer / harder; both '-er' endings reduced to schwa)"
         ]
       },
       {
@@ -6613,81 +6780,98 @@ export const lessons: GermanLesson[] = [
           "fünfzehnminütige → FUYNF-tsên-mi-nuy-ti-gê",
           "Pause einlegen → PAO-zê AIN-lê-gân",
           "produktive Diskussion → prô-đuk-TI-vê đis-ku-zi-ÔN"
+        ],
+        "pronunciation_focus_en": [
+          "fünfzehnminütige → FUENF-tsayn-mi-nue-tig-uh ('ü' = rounded 'oo'; fifteen-minute, adjective)",
+          "Pause einlegen → POW-zuh INE-lay-gen (literally 'insert a pause'; idiomatic 'take a break')",
+          "produktive Diskussion → proh-dook-TEE-vuh dis-koos-see-OHN (productive discussion)"
         ]
       }
     ],
     "cultural_notes_vi": "Mit feindlichem Verhandlungspartner umgehen in deutscher Geschäftskultur erfordert spezifische Disziplinen. (1) RUHE BEWAHREN: deutsche Geschäftskultur respektiert Ruhe unter Druck — es ist Beweis von Reife und Verhandlungskompetenz. Wer gegen-aggressiv reagiert, verliert die ‚moralische Position'. Selbst wenn der Counterpart unprofessional agiert, professionelle Antwort bewahrt Ihre Position. (2) SACHEBENE NICHT VERLASSEN: ‚Ich nehme zur Kenntnis, dass Sie den Ton verschärft haben — gleichwohl möchte ich die Sachebene nicht verlassen' ist Schlüsselformel. Refuse to engage on Personebene auch wenn provoziert. (3) PAUSE EINLEGEN: deutsche Verhandlungskultur akzeptiert ‚Pause' als de-escalation tool. Nicht ‚Schwäche' — Stärke. ‚Lassen Sie uns kurz innehalten' kann jederzeit von einer Seite gefordert werden, ohne Gesichtsverlust.\n\nKhác Việt Nam: vietnamesische Reaktion auf hostility oft Rückzug oder Versuch der Harmonisierung. In Deutschland kann Rückzug als Schwäche gelesen werden — aktive Sachebene-Verteidigung wird respektiert. Aber: aktive Sachebene-Verteidigung ≠ Gegen-Aggression.\n\nMột chi tiết quan trọng: NICHT JEDE INTENSITÄT IST FEINDSELIGKEIT. Deutsche Geschäftskultur kann sehr direct sein — was als ‚aggressiv' wahrgenommen wird, ist oft nur ‚direct'. Unterscheiden Sie:\n- DIRECT: ‚Ihr Vorschlag ist zu teuer' (Sachebene, akzeptabel)\n- INTENSIV: ‚Ihr Vorschlag ist absurd teuer' (gehärtete Sachebene, noch akzeptabel)\n- FEINDSELIG: ‚Sie versuchen uns über den Tisch zu ziehen' (Personebene, nicht akzeptabel)\n\nReaktion sollte zur Eskalationsstufe passen.\n\nVề Power-Tactics: feindliche Verhandlungspartner verwenden oft:\n- INTIMIDATION (lautstark sprechen, einschüchtern)\n- DEADLINE-PRESSURE (‚jetzt entscheiden oder Angebot weg')\n- PERSONAL ATTACKS (‚Sie verstehen das Geschäft nicht')\n- WALK-OUT-THREAT (‚dann gehen wir')\n- SILENT TREATMENT (Schweigen als Druck)\n\nFür jede Taktik gibt es professionelle Gegenreaktion, die Sachebene bewahrt.\n\nVề Mandat-Reframing: Schlüsselformel: ‚Ihre Rhetorik mag intensiv sein — sie ändert jedoch nichts an den Eckwerten, die mein Mandat mir vorgibt'. Diese Formel personalisiert die Position WEG vom individuellen Verhandler — die Eckwerten kommen vom Mandanten / Geschäftsführung. Counterparty kann Sie nicht persönlich angreifen, weil Sie nur ‚Mandat ausführen'.\n\nVề Walk-Away als Antwort auf Hostility: wenn Counterparty grenzüberschreitend feindselig wird (Beleidigungen, persönliche Attacken, Tisch-Tipping), ist Walk-Away professionell und sogar erforderlich. Câu chuẩn: ‚Auf dieser Ebene kann ich nicht weiterverhandeln. Ich bin offen für ein Folgegespräch, wenn beide Seiten zur Sachebene zurückkehren.'\n\nVề Schriftliche Eskalation: nach feindseliger Verhandlung E-Mail innerhalb 24 Stunden — sachlich, mit Eskalations-Pfad. ‚Wie heute besprochen, ist eine produktive Verhandlung auf der bisherigen Ebene nicht möglich. Ich biete einen Termin für Folgegespräch am [Datum] an. Bei wiederholter Eskalation behalte ich mir vor, das Mandat an meine Vorgesetzte zu eskalieren.'\n\nVề Selbst-Care: feindselige Verhandlungen sind emotional erschöpfend. Plan in Erholungszeit nach. Niemand verhandelt 8 Stunden hostilities am Tag professionell. Geben Sie sich Zeit zur Recovery.",
+    "cultural_notes_en": "Handling a hostile counterpart in German business culture demands specific disciplines. (1) STAY COMPOSED: German business culture respects composure under pressure — it's seen as evidence of maturity and negotiation competence. Anyone who counter-aggresses loses the 'moral position'. Even when the counterpart acts unprofessionally, a professional response preserves your standing. (2) DON'T LEAVE THE SACHEBENE: 'Ich nehme zur Kenntnis, dass Sie den Ton verschärft haben — gleichwohl möchte ich die Sachebene nicht verlassen' (I note that you've raised the temperature — nonetheless I'd like not to leave the substantive level) is the key formula. Refuse to engage on Personebene even when provoked. (3) CALL A PAUSE: German negotiation culture accepts 'Pause' as a de-escalation tool. It's NOT weakness — it's strength. 'Lassen Sie uns kurz innehalten' (let's pause briefly) can be called by either side at any time, without loss of face.\n\nContrast with other cultures: a Vietnamese-trained reaction to hostility is often retreat or an attempt at harmonisation. In Germany retreat can be read as weakness — active Sachebene defence is respected. But: active Sachebene defence ≠ counter-aggression.\n\nCrucial detail: NOT EVERY INTENSITY IS HOSTILITY. German business culture can be very direct — what reads as 'aggressive' to outsiders is often just 'direct'. Distinguish:\n- DIRECT: 'Ihr Vorschlag ist zu teuer' (your proposal is too expensive — Sachebene, acceptable)\n- INTENSE: 'Ihr Vorschlag ist absurd teuer' (your proposal is absurdly expensive — hardened Sachebene, still acceptable)\n- HOSTILE: 'Sie versuchen uns über den Tisch zu ziehen' (you're trying to pull one over on us — Personebene, not acceptable)\n\nCalibrate your response to the actual escalation level.\n\nOn power tactics: hostile counterparts often use:\n- INTIMIDATION (loud volume, glaring)\n- DEADLINE PRESSURE ('decide now or the offer is gone')\n- PERSONAL ATTACKS ('you don't understand the business')\n- WALK-OUT THREAT ('then we're leaving')\n- SILENT TREATMENT (silence as pressure)\n\nThere's a professional counter for each tactic that preserves the Sachebene.\n\nOn the Mandat reframe: the key formula is 'Ihre Rhetorik mag intensiv sein — sie ändert jedoch nichts an den Eckwerten, die mein Mandat mir vorgibt' (your rhetoric may be intense — but it changes nothing about the parameters my mandate gives me). This formula DEPERSONALISES the position away from the individual negotiator — the parameters come from the principal / management. The counterpart can't attack you personally because you're 'just executing a mandate'.\n\nOn walk-away as a response to hostility: when the counterpart crosses a clear line (insults, personal attacks, table-thumping), walk-away is professional and even required. The standard line: 'Auf dieser Ebene kann ich nicht weiterverhandeln. Ich bin offen für ein Folgegespräch, wenn beide Seiten zur Sachebene zurückkehren.' (At this level I can't continue to negotiate. I'm open to a follow-up conversation if both sides return to the substantive level.)\n\nOn written escalation: after a hostile negotiation, send an email within 24 hours — factual, with an escalation path. 'As discussed today, productive negotiation at the current level is not possible. I am offering a follow-up appointment on [date]. In case of repeated escalation, I reserve the right to escalate the mandate to my superior.'\n\nOn self-care: hostile negotiations are emotionally exhausting. Plan recovery time afterwards. No one negotiates eight hours of hostility a day professionally. Give yourself recovery time.",
     "tip_advice_vi": "Vor feindseliger Verhandlung (Vorbereitung):\n1. ECKWERTE schriftlich vor sich: erinnert an Sachebene-Disziplin in der Hitze.\n2. MANDAT klar: was darf ich nicht ändern? Diese Pflicht erleichtert Verteidigung gegen Druck.\n3. PAUSE-TRIGGER definieren: bei welcher Eskalation rufe ich ‚Pause' aus? Schwellenwert vorher festlegen.\n4. WALK-AWAY-Schwelle definieren: ab welchem Punkt verlasse ich Verhandlung?\n\nIn der feindseligen Verhandlung (5 Reaktionen):\n1. RUHE BEWAHREN: Atmen, langsam sprechen, Tonfall NICHT mitziehen\n2. SACHEBENE-REFRAMING: ‚Ich verstehe, dass Sie das stark empfinden — auf Sachebene...'\n3. MANDAT-VERTEIDIGUNG: ‚Eckwerten kommen vom Mandanten — ich kann nicht von ihnen abweichen'\n4. PAUSE FORDERN bei Eskalation: ‚Lassen Sie uns kurz innehalten'\n5. WALK-AWAY bei Grenzüberschreitung: ‚Auf dieser Ebene kann ich nicht weiterverhandeln'\n\nNgôn ngữ feindlicher Verhandlungspartner C1:\n- ‚Ich nehme zur Kenntnis, dass Sie den Ton verschärft haben — gleichwohl möchte ich die Sachebene nicht verlassen' (tôi ghi nhận anh đã làm gay gắt — song không muốn rời Sachebene)\n- ‚Ihre Rhetorik mag intensiv sein — sie ändert jedoch nichts an den Eckwerten' (hùng biện anh có thể mạnh — song không thay đổi Eckwerten)\n- ‚Eckwerten, die mein Mandat mir vorgibt' (Eckwerten mà ủy nhiệm tôi quy định)\n- ‚Lassen Sie uns kurz innehalten — wir können auf dieser Eskalationsstufe nicht produktiv weiterverhandeln' (hãy dừng — không thể đàm phán năng suất ở cấp này)\n- ‚Wenn Sie persönliche Angriffe als Taktik einsetzen, signalisiere ich Ihnen offen: das wirkt nicht' (nếu anh dùng tấn công cá nhân như chiến thuật, tôi báo thẳng: không hiệu quả)\n- ‚Ich schlage vor, dass wir eine fünfzehnminütige Pause einlegen' (đề xuất nghỉ 15 phút)\n\nKhi Counterparty intimidiert mit Lautstärke:\n- ‚Herr Müller, ich höre Sie auch in normaler Lautstärke. Können wir den Pegel etwas senken? Das hilft uns beiden, sachlich zu bleiben.' (anh Müller, tôi nghe anh ở mức bình thường. Mình giảm âm lượng được không? Giúp cả hai sachlich.)\n\nKhi Counterparty Deadline-Pressure:\n- ‚Sie setzen eine Deadline — verständlich, dass die Zeit für Sie wichtig ist. Ich bin nicht bereit, eine Vereinbarung unter Zeitdruck zu unterzeichnen, die ich nicht ausreichend prüfen konnte. Sollte die Deadline nicht verhandelbar sein, müssten wir das Gespräch verschieben.' (anh đặt deadline — hiểu thời gian quan trọng với anh. Tôi không sẵn sàng ký thỏa thuận dưới áp lực thời gian không đủ kiểm tra. Nếu deadline không thương lượng, mình phải hoãn cuộc trao đổi.)\n\nKhi Counterparty persönlich attackiert:\n- ‚Was Sie über meine Person sagen, gehört nicht in diese Verhandlung. Lassen Sie uns auf die Sachebene zurückkehren — wir verhandeln einen Vertrag, nicht meine Kompetenz.' (cái anh nói về cá nhân tôi không thuộc đàm phán này. Mình quay lại Sachebene — đàm phán hợp đồng, không phải năng lực tôi.)\n\nKhi Counterparty Walk-Out-droht:\n- ‚Wenn Sie die Verhandlung beenden möchten, respektiere ich das. Ich biete einen Folgetermin in der nächsten Woche an — bei beiderseitigem Interesse können wir weitersprechen.' (nếu anh muốn dừng đàm phán, tôi tôn trọng. Tôi đề xuất lịch theo dõi tuần sau — nếu cả hai có quan tâm mình tiếp tục.)\n\nKhi Counterparty Silent Treatment:\n- (langes Schweigen aushalten — 30-60 Sekunden) — ‚Ich nehme das Schweigen als Hinweis, dass Sie nachdenken. Möchten Sie, dass ich den nächsten Punkt vorbringe, oder bevorzugen Sie eine kurze Pause?' (tôi xem im lặng như anh đang suy nghĩ. Anh muốn tôi đưa điểm tiếp hay tạm nghỉ ngắn?)\n\nNach feindseliger Verhandlung — E-Mail (24 Stunden):\n- ‚Sehr geehrter Herr Müller, vielen Dank für die Verhandlung gestern. Wie besprochen ist eine produktive Fortsetzung auf der bisherigen Eskalationsstufe nicht möglich. Ich biete einen Folgetermin am [Datum] an, sofern beide Seiten zur Sachebene zurückkehren. Mit freundlichen Grüßen, Linh.'\n\nMẹo cuối: feindlicher Verhandlungspartner ist oft Test — wenn Sie Ruhe bewahren und Sachebene halten, gewinnen Sie Respekt. Wenn Sie gegen-aggressiv werden, validieren Sie das Spiel und verlieren langfristig.",
+    "tip_advice_en": "Before a hostile negotiation (preparation):\n1. ECKWERTE in writing in front of you: a reminder of Sachebene-discipline in the heat of the moment.\n2. MANDATE clear: what am I not allowed to change? This duty makes it easier to defend against pressure.\n3. Define a PAUSE TRIGGER: at what level of escalation do I call a 'pause'? Set the threshold beforehand.\n4. Define a WALK-AWAY THRESHOLD: from what point do I leave the negotiation?\n\nIn the hostile negotiation (5 reactions):\n1. STAY COMPOSED: breathe, speak slowly, do NOT match the tone\n2. SACHEBENE REFRAMING: 'I understand that you feel strongly about this — on the substantive level...'\n3. MANDATE DEFENCE: 'the parameters come from the principal — I can't deviate from them'\n4. CALL A PAUSE on escalation: 'Lassen Sie uns kurz innehalten'\n5. WALK AWAY on a line crossing: 'Auf dieser Ebene kann ich nicht weiterverhandeln'\n\nC1 hostile-counterpart language:\n- 'Ich nehme zur Kenntnis, dass Sie den Ton verschärft haben — gleichwohl möchte ich die Sachebene nicht verlassen' (I note that you've raised the temperature — nonetheless I'd like not to leave the substantive level)\n- 'Ihre Rhetorik mag intensiv sein — sie ändert jedoch nichts an den Eckwerten' (your rhetoric may be intense — it doesn't change the parameters)\n- 'Eckwerten, die mein Mandat mir vorgibt' (the parameters my mandate gives me)\n- 'Lassen Sie uns kurz innehalten — wir können auf dieser Eskalationsstufe nicht produktiv weiterverhandeln' (let's pause briefly — we can't continue productively at this escalation level)\n- 'Wenn Sie persönliche Angriffe als Taktik einsetzen, signalisiere ich Ihnen offen: das wirkt nicht' (if you're using personal attacks as a tactic, I'm telling you openly: it doesn't work)\n- 'Ich schlage vor, dass wir eine fünfzehnminütige Pause einlegen' (I propose we take a fifteen-minute pause)\n\nWhen the counterpart intimidates with volume:\n- 'Herr Müller, ich höre Sie auch in normaler Lautstärke. Können wir den Pegel etwas senken? Das hilft uns beiden, sachlich zu bleiben.' (Mr. Müller, I can hear you at normal volume too. Can we lower the level a bit? It helps both of us stay factual.)\n\nWhen the counterpart applies deadline pressure:\n- 'Sie setzen eine Deadline — verständlich, dass die Zeit für Sie wichtig ist. Ich bin nicht bereit, eine Vereinbarung unter Zeitdruck zu unterzeichnen, die ich nicht ausreichend prüfen konnte. Sollte die Deadline nicht verhandelbar sein, müssten wir das Gespräch verschieben.' (You're setting a deadline — understandable that time matters to you. I'm not prepared to sign an agreement under time pressure that I couldn't review adequately. Should the deadline not be negotiable, we'd need to postpone the conversation.)\n\nWhen the counterpart attacks personally:\n- 'Was Sie über meine Person sagen, gehört nicht in diese Verhandlung. Lassen Sie uns auf die Sachebene zurückkehren — wir verhandeln einen Vertrag, nicht meine Kompetenz.' (What you're saying about me personally doesn't belong in this negotiation. Let's return to the substantive level — we're negotiating a contract, not my competence.)\n\nWhen the counterpart threatens to walk out:\n- 'Wenn Sie die Verhandlung beenden möchten, respektiere ich das. Ich biete einen Folgetermin in der nächsten Woche an — bei beiderseitigem Interesse können wir weitersprechen.' (If you'd like to end the negotiation, I respect that. I'm offering a follow-up appointment next week — given mutual interest we can keep talking.)\n\nWhen the counterpart uses silent treatment:\n- (let the long silence stand — 30–60 seconds) — 'Ich nehme das Schweigen als Hinweis, dass Sie nachdenken. Möchten Sie, dass ich den nächsten Punkt vorbringe, oder bevorzugen Sie eine kurze Pause?' (I take the silence to mean you're thinking. Would you like me to bring up the next point, or do you prefer a brief pause?)\n\nAfter the hostile negotiation — email (24 hours):\n- 'Sehr geehrter Herr Müller, vielen Dank für die Verhandlung gestern. Wie besprochen ist eine produktive Fortsetzung auf der bisherigen Eskalationsstufe nicht möglich. Ich biete einen Folgetermin am [Datum] an, sofern beide Seiten zur Sachebene zurückkehren. Mit freundlichen Grüßen, Linh.'\n\nFinal tip: a hostile counterpart is often a test — if you stay composed and hold the Sachebene, you earn respect. If you counter-aggress, you validate the game and lose long-term.",
     "vocabulary": [
       {
         "word": "der feindliche Verhandlungspartner",
         "en": "hostile negotiation counterpart",
         "vi": "đối tác đàm phán thù địch",
         "pos": "noun (m)",
-        "pronunciation_vi": "đe FAIN-likh-ê fe-han-đlungs-pat-nê"
+        "pronunciation_vi": "đe FAIN-likh-ê fe-han-đlungs-pat-nê",
+        "pronunciation_en": "dayr FINE-likh-uh fer-HAHND-lungs-PART-ner — hostile negotiation counterpart; long compound, primary stress on FINE-"
       },
       {
         "word": "den Ton verschärfen",
         "en": "to harden the tone",
         "vi": "làm gay gắt giọng",
         "pos": "verb phrase",
-        "pronunciation_vi": "đên TÔN fe-SHE-fân"
+        "pronunciation_vi": "đên TÔN fe-SHE-fân",
+        "pronunciation_en": "den TOHN fer-SHAIR-fen — verb phrase; 'sharpen the tone' / 'raise the temperature'"
       },
       {
         "word": "die Eskalationsstufe",
         "en": "escalation level",
         "vi": "cấp eskalation",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi es-ka-la-tsi-ÔNS-shtu-fê"
+        "pronunciation_vi": "đi es-ka-la-tsi-ÔNS-shtu-fê",
+        "pronunciation_en": "dee es-kah-lah-tsee-OHNS-shtoo-fuh — escalation level; six syllables, stress on -OHNS-"
       },
       {
         "word": "innehalten",
         "en": "to pause, take a break",
         "vi": "dừng, nghỉ",
         "pos": "verb (sep.)",
-        "pronunciation_vi": "IN-nê-hal-tân"
+        "pronunciation_vi": "IN-nê-hal-tân",
+        "pronunciation_en": "IN-uh-HAHL-ten — separable verb; in main clauses 'halten ... inne'"
       },
       {
         "word": "der persönliche Angriff",
         "en": "personal attack",
         "vi": "tấn công cá nhân",
         "pos": "noun (m)",
-        "pronunciation_vi": "đe pe-ZÔN-likh-ê AN-grif"
+        "pronunciation_vi": "đe pe-ZÔN-likh-ê AN-grif",
+        "pronunciation_en": "dayr per-ZOHN-likh-uh AHN-grif — personal attack; 'ö' = rounded 'eh'"
       },
       {
         "word": "das Mandat",
         "en": "mandate, authorization",
         "vi": "ủy nhiệm",
         "pos": "noun (n)",
-        "pronunciation_vi": "đát man-ĐAT"
+        "pronunciation_vi": "đát man-ĐAT",
+        "pronunciation_en": "dahs mahn-DAHT — mandate; final-syllable stress; 't' fully released"
       },
       {
         "word": "die Deadline-Pressure / der Zeitdruck",
         "en": "deadline pressure",
         "vi": "áp lực thời gian",
         "pos": "noun phrase",
-        "pronunciation_vi": "đe TSAIT-đruk"
+        "pronunciation_vi": "đe TSAIT-đruk",
+        "pronunciation_en": "dayr TSYTE-drook — time pressure; 'ei' = 'eye'; final '-ck' = sharp 'k'"
       },
       {
         "word": "die Intimidation / die Einschüchterung",
         "en": "intimidation",
         "vi": "đe dọa",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi AIN-shuy-khê-rung"
+        "pronunciation_vi": "đi AIN-shuy-khê-rung",
+        "pronunciation_en": "dee INE-shue-kher-ung — intimidation; 'ü' = rounded 'oo'; 'ch' is the soft 'ich' sound"
       },
       {
         "word": "die Grenzüberschreitung",
         "en": "boundary violation, overstep",
         "vi": "vượt ranh giới",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi GREN-tsuy-bê-shrai-tung"
+        "pronunciation_vi": "đi GREN-tsuy-bê-shrai-tung",
+        "pronunciation_en": "dee GREN-tsue-ber-SHRYE-tung — boundary violation; 'ü' = rounded 'oo'"
       },
       {
         "word": "Ruhe bewahren",
         "en": "to remain composed",
         "vi": "giữ bình tĩnh",
         "pos": "verb phrase",
-        "pronunciation_vi": "RU-ê bê-VA-rân"
+        "pronunciation_vi": "RU-ê bê-VA-rân",
+        "pronunciation_en": "ROO-uh buh-VAH-ren — verb phrase; 'preserve calm' / 'keep composure'"
       }
     ],
     "dialogue": [
@@ -6800,36 +6984,46 @@ export const lessons: GermanLesson[] = [
       "Sau Eskalation, đề xuất 15-Min-Pause: ‚Wir können auf dieser Eskalationsstufe nicht produktiv weiterverhandeln'. Sau Pause + Counterparty xin lỗi, accept Entschuldigung professionell + reframing zur Sachebene."
     ],
     "register_notes": "Mit feindlichem Verhandlungspartner umgehen C1: ‚Sie' tuyệt đối — auch unter Druck. Funktionsverbgefüge: ‚zur Kenntnis nehmen' (ghi nhận), ‚zur Geltung bringen' (làm có hiệu lực), ‚in Frage stellen' (đặt vấn đề), ‚den Ton verschärfen' (làm gay gắt giọng). Mandat-Reframing als Schutz: ‚Ihre Rhetorik mag intensiv sein — sie ändert jedoch nichts an den Eckwerten, die mein Mandat mir vorgibt' depersonalisiert Position. Pause als de-escalation tool legitim, không Schwäche. Walk-Away bei Grenzüberschreitung möglich aber rare. Schlüsselformel cho personal attacks: ‚Wenn Sie persönliche Angriffe als Verhandlungstaktik einsetzen, signalisiere ich Ihnen offen: das wirkt nicht — meine Position wird dadurch nicht weicher, sondern härter'. KHÔNG gegen-aggressiv. KHÔNG validate hostility durch defensive emotion. KHÔNG Sachebene verlassen.",
+    "register_notes_en": "C1 hostile-counterpart register: 'Sie' is absolute — even under pressure. Funktionsverbgefüge: 'zur Kenntnis nehmen' (take note of), 'zur Geltung bringen' (bring into effect), 'in Frage stellen' (call into question), 'den Ton verschärfen' (sharpen the tone). The Mandat reframe is your shield: 'Ihre Rhetorik mag intensiv sein — sie ändert jedoch nichts an den Eckwerten, die mein Mandat mir vorgibt' depersonalises the position. Pause as a de-escalation tool is legitimate, not weakness. Walk-away on a line crossing is possible but rare. The key formula for personal attacks: 'Wenn Sie persönliche Angriffe als Verhandlungstaktik einsetzen, signalisiere ich Ihnen offen: das wirkt nicht — meine Position wird dadurch nicht weicher, sondern härter' (if you're using personal attacks as a negotiation tactic, I'm telling you openly: it doesn't work — my position doesn't get softer that way, it gets harder). DON'T counter-aggress. DON'T validate hostility through defensive emotion. DON'T leave the Sachebene.",
     "idiom_glosses": [
       {
         "idiom": "ein dickes Fell haben",
         "literal": "có lông da dày",
         "meaning": "kiên cường trước phê phán/tấn công (standardsprachlich)",
-        "example": "In feindseligen Verhandlungen braucht man ein dickes Fell — persönliche Angriffe dürfen nicht durchdringen."
+        "meaning_en": "to have a thick skin / a thick fur — be resilient under criticism or attack (standard register; the English equivalent is 'have thick skin')",
+        "example": "In feindseligen Verhandlungen braucht man ein dickes Fell — persönliche Angriffe dürfen nicht durchdringen.",
+        "example_en": "In feindseligen Verhandlungen braucht man ein dickes Fell — persönliche Angriffe dürfen nicht durchdringen. ('In hostile negotiations you need a thick skin — personal attacks must not get through.')"
       },
       {
         "idiom": "Ruhe bewahren",
         "literal": "giữ yên tĩnh",
         "meaning": "giữ bình tĩnh dưới áp lực (standardsprachlich)",
-        "example": "Wer Ruhe bewahrt, gewinnt im hostile environment — Eskalation belohnt sich nie langfristig."
+        "meaning_en": "to keep one's composure (standard register; literally 'preserve calm')",
+        "example": "Wer Ruhe bewahrt, gewinnt im hostile environment — Eskalation belohnt sich nie langfristig.",
+        "example_en": "Wer Ruhe bewahrt, gewinnt im hostile environment — Eskalation belohnt sich nie langfristig. ('Whoever keeps their composure wins in a hostile environment — escalation never pays off long-term.')"
       },
       {
         "idiom": "den Ball flach halten",
         "literal": "giữ bóng thấp",
         "meaning": "giữ tone bình tĩnh, không leo thang (standardsprachlich)",
-        "example": "Auch wenn Müller laut wird — ich halte den Ball flach. Eskalation würde nur seine Taktik validieren."
+        "meaning_en": "to keep the ball flat / low — keep the tone low, don't escalate (standard register; closer to English 'keep your head down' or 'don't make waves')",
+        "example": "Auch wenn Müller laut wird — ich halte den Ball flach. Eskalation würde nur seine Taktik validieren.",
+        "example_en": "Auch wenn Müller laut wird — ich halte den Ball flach. Eskalation würde nur seine Taktik validieren. ('Even when Müller gets loud, I keep the ball low. Escalation would only validate his tactic.')"
       },
       {
         "idiom": "ins Schwarze treffen",
         "literal": "đánh trúng tâm đen",
         "meaning": "trúng đích chính xác (gehoben/standardsprachlich)",
-        "example": "Mit dem Mandat-Reframing habe ich ins Schwarze getroffen — Müller konnte nicht weiter persönlich werden."
+        "meaning_en": "to hit the bullseye — strike the target precisely (elevated/standard register; identical English idiom)",
+        "example": "Mit dem Mandat-Reframing habe ich ins Schwarze getroffen — Müller konnte nicht weiter persönlich werden.",
+        "example_en": "Mit dem Mandat-Reframing habe ich ins Schwarze getroffen — Müller konnte nicht weiter persönlich werden. ('With the mandate reframe I hit the bullseye — Müller couldn't continue to be personal.')"
       }
     ],
     "exercises": [
       {
         "type": "fill_blank",
         "instruction_vi": "Điền cấu trúc feindlicher Verhandlungspartner C1:",
+        "instruction_en": "Fill in the C1 hostile-counterpart structure:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -6853,6 +7047,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "matching",
         "instruction_vi": "Nối Power-Tactic feindseliger Verhandlung với Gegenreaktion C1:",
+        "instruction_en": "Match each hostile-negotiation power tactic to its C1 counter-response:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -6873,10 +7068,11 @@ export const lessons: GermanLesson[] = [
           }
         ]
       },
-  {
-    "type": "translation",
-    "instruction_vi": "Dịch sang tiếng Đức formal C1 (composure under hostility):",
-    "pronunciation_focus": ["hostile counterpart"],
+      {
+        "type": "translation",
+        "instruction_vi": "Dịch sang tiếng Đức formal C1 (composure under hostility):",
+        "instruction_en": "Translate into formal C1 German (composure under hostility):",
+        "pronunciation_focus": ["hostile counterpart"],
         "items": [
           {
             "prompt": "Tôi ghi nhận anh đã làm gay gắt giọng — tuy nhiên tôi không muốn rời khỏi cấp độ nội dung.",
@@ -6912,6 +7108,11 @@ export const lessons: GermanLesson[] = [
           "zentrale These → tsehn-TRA-lê TÊ-zê",
           "sprachliche Variation → SHPRAKH-likê va-ri-a-TSI-ôn",
           "soziale Positionierung → zô-TSI-a-lê pô-zi-tsi-ô-NI-rung"
+        ],
+        "pronunciation_focus_en": [
+          "zentrale These → tsen-TRAH-luh TAY-zuh (central thesis)",
+          "sprachliche Variation → SHPRAHKH-likh-uh vah-ree-ah-tsee-OHN (linguistic variation)",
+          "soziale Positionierung → zoh-tsee-AH-luh poh-zee-tsee-oh-NEER-ung (social positioning)"
         ]
       },
       {
@@ -6921,6 +7122,11 @@ export const lessons: GermanLesson[] = [
           "berechtigter Einwand → bê-RÊH-ti-khơr AI-nvãnt",
           "eingeschränkt → AYn-gê-SHRENGKT",
           "Gesamtargumentation → gê-ZAMT-ar-gu-men-ta-TSI-ôn"
+        ],
+        "pronunciation_focus_en": [
+          "berechtigter Einwand → buh-REKH-tig-ter INE-vahnt (legitimate objection)",
+          "eingeschränkt → INE-guh-shrenkt (restricted; separable past participle)",
+          "Gesamtargumentation → guh-ZAHMT-ar-goo-men-tah-tsee-OHN (overall argumentation)"
         ]
       },
       {
@@ -6930,6 +7136,11 @@ export const lessons: GermanLesson[] = [
           "Disputation → đis-pu-ta-TSI-ôn",
           "methodische Kritik → mê-tô-DI-shê KRI-tik",
           "Gegenposition → GÊ-gân-pô-zi-tsi-ôn"
+        ],
+        "pronunciation_focus_en": [
+          "Disputation → dis-poo-tah-tsee-OHN (oral defence; final-syllable stress)",
+          "methodische Kritik → meh-TOH-dish-uh KREE-tik (methodological critique)",
+          "Gegenposition → GAY-gen-poh-zee-tsee-ohn (counter-position)"
         ]
       },
       {
@@ -6939,6 +7150,11 @@ export const lessons: GermanLesson[] = [
           "Kolloquium → KÔ-lo-kvi-um",
           "Schwäche → SHVÊ-khê",
           "Gutachten → GU-tak-hân"
+        ],
+        "pronunciation_focus_en": [
+          "Kolloquium → koh-LOH-kvee-um (colloquium; 'qu' = 'kv')",
+          "Schwäche → SHVEH-khuh (weakness; 'ch' here is the soft 'ich' sound)",
+          "Gutachten → GOO-tahkh-ten (expert report; 'ch' here is the hard 'ach' sound)"
         ]
       },
       {
@@ -6948,6 +7164,11 @@ export const lessons: GermanLesson[] = [
           "empirische Präzisierung → em-pi-RI-shê prê-tsi-ZI-rung",
           "bislang → BIs-lang",
           "zu breit gefasst → tsu brrayt gê-FAST"
+        ],
+        "pronunciation_focus_en": [
+          "empirische Präzisierung → em-PEE-rish-uh pray-tsee-ZEER-ung (empirical specification)",
+          "bislang → BIS-lahng (so far; stress on first syllable)",
+          "zu breit gefasst → tsoo BRYTE guh-FAHST (too broadly framed)"
         ]
       }
     ],
@@ -6957,35 +7178,40 @@ export const lessons: GermanLesson[] = [
         "en": "oral defense",
         "vi": "bảo vệ luận án",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi đis-pu-ta-tsi-ôn"
+        "pronunciation_vi": "đi đis-pu-ta-tsi-ôn",
+        "pronunciation_en": "dee dis-poo-tah-tsee-OHN — oral defence; final-syllable stress"
       },
       {
         "word": "der Einwand",
         "en": "objection, criticism",
         "vi": "phản biện, ý kiến phản đối",
         "pos": "noun (m)",
-        "pronunciation_vi": "đe AI-nvãnt"
+        "pronunciation_vi": "đe AI-nvãnt",
+        "pronunciation_en": "dayr INE-vahnt — objection; 'ei' = 'eye'; final '-d' devoices to '-t'"
       },
       {
         "word": "die Gesamtargumentation",
         "en": "overall argumentation",
         "vi": "toàn bộ lập luận",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi gê-ZAMT-ar-gu-men-ta-tsi-ôn"
+        "pronunciation_vi": "đi gê-ZAMT-ar-gu-men-ta-tsi-ôn",
+        "pronunciation_en": "dee guh-ZAHMT-ar-goo-men-tah-tsee-OHN — overall argumentation; long compound, primary stress on -ZAHMT-"
       },
       {
         "word": "das Gutachten",
         "en": "expert report / review",
         "vi": "bản nhận xét chuyên môn",
         "pos": "noun (n)",
-        "pronunciation_vi": "đas GU-tak-hân"
+        "pronunciation_vi": "đas GU-tak-hân",
+        "pronunciation_en": "dahs GOO-tahkh-ten — expert report / referee report; 'ch' here is the hard 'ach' sound"
       },
       {
         "word": "die Präzisierung",
         "en": "specification, refinement",
         "vi": "sự tinh chỉnh, làm rõ",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi prê-tsi-ZI-rung"
+        "pronunciation_vi": "đi prê-tsi-ZI-rung",
+        "pronunciation_en": "dee pray-tsee-ZEER-ung — specification / refinement; from 'präzisieren'"
       }
     ],
     "dialogue": [
@@ -7014,6 +7240,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "fill_blank",
         "instruction_vi": "Điền thuật ngữ phù hợp:",
+        "instruction_en": "Fill in the appropriate term:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -7033,6 +7260,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "translation",
         "instruction_vi": "Dịch sang tiếng Đức formal C1:",
+        "instruction_en": "Translate into formal C1 German:",
         "pronunciation_focus": ["defense language"],
         "items": [
           {
@@ -7047,8 +7275,11 @@ export const lessons: GermanLesson[] = [
       }
     ],
     "cultural_notes_vi": "Disputation ở đại học Đức không phải là thi vấn đáp để 'đọc đúng đáp án', mà là một cuộc kiểm tra năng lực lập luận. Người nghe có quyền cắt ngang, phản biện và yêu cầu bạn thu hẹp hoặc mở rộng câu trả lời. Nghe căng, nhưng đó là văn hóa học thuật bình thường.",
+    "cultural_notes_en": "The Disputation at a German university is not an oral exam where you 'recite the right answer' — it's a test of argumentative competence. Listeners are expected to interrupt, push back, and ask you to narrow or broaden your answer. It feels intense, but it's the normal academic culture. English-speaking candidates often misread the interruptions as hostility; they aren't. The committee is testing whether you can hold a thesis under pressure and calibrate scope on the fly. Konjunktiv II ('ich würde sagen', 'es ließe sich argumentieren') is the standard hedging register — it signals epistemic care, not lack of confidence.",
     "tip_advice_vi": "Khi bị phản biện, hãy trả lời theo ba bước: công nhận câu hỏi, phân biệt phạm vi, rồi quay lại luận điểm chính. Tránh phòng thủ quá dài; một câu công nhận + một câu giới hạn + một câu chốt là đủ.",
-    "register_notes": "C1 Disputation register: dùng 'berechtigter Einwand', 'Gesamtargumentation', 'Präzisierung', 'einzugrenzen'. Không dùng khẩu ngữ kiểu 'ich glaube halt'. Hãy coi mọi câu trả lời như một phần của bài trình bày học thuật, không phải tranh luận cá nhân."
+    "tip_advice_en": "When pushed back, answer in three steps: acknowledge the question, narrow the scope, then return to the central thesis. Avoid long defensive answers — one sentence of acknowledgement + one sentence of limitation + one sentence to close is usually enough. Resist the impulse to over-explain.",
+    "register_notes": "C1 Disputation register: dùng 'berechtigter Einwand', 'Gesamtargumentation', 'Präzisierung', 'einzugrenzen'. Không dùng khẩu ngữ kiểu 'ich glaube halt'. Hãy coi mọi câu trả lời như một phần của bài trình bày học thuật, không phải tranh luận cá nhân.",
+    "register_notes_en": "C1 Disputation register: use 'berechtigter Einwand' (legitimate objection), 'Gesamtargumentation' (overall argumentation), 'Präzisierung' (refinement), 'einzugrenzen' (to narrow). Avoid colloquialisms like 'ich glaube halt' (I just think). Treat every answer as part of an academic presentation, not a personal argument."
   },
   {
     "id": "lhabilitation_probevorlesung",
@@ -7064,6 +7295,11 @@ export const lessons: GermanLesson[] = [
           "Habilitationsverfahren → ha-bi-li-ta-tsi-ÔNS-fêr-fân",
           "didaktisch → đi-ĐAK-tish",
           "strukturieren → shtruk-tu-RI-rân"
+        ],
+        "pronunciation_focus_en": [
+          "Habilitationsverfahren → hah-bee-lee-tah-tsee-OHNS-fer-FAH-ren (habilitation procedure)",
+          "didaktisch → dee-DAHK-tish (pedagogical)",
+          "strukturieren → shtrook-too-REER-en (to structure)"
         ]
       },
       {
@@ -7073,6 +7309,11 @@ export const lessons: GermanLesson[] = [
           "Probevorlesung → PRÔ-bê-fôr-lê-zung",
           "Balance → ba-LAN-tsê",
           "anschlussfähig → AN-shlus-fê-rik"
+        ],
+        "pronunciation_focus_en": [
+          "Probevorlesung → PROH-buh-FOR-lay-zung (trial lecture; literally 'sample lecture')",
+          "Balance → bah-LAHN-suh (loanword from French; pronounced with German vowel quality)",
+          "anschlussfähig → AHN-shloos-FAY-ikh (connectable; 'ch' here is the hard 'ach' sound)"
         ]
       },
       {
@@ -7082,6 +7323,11 @@ export const lessons: GermanLesson[] = [
           "Zielgruppe → tsil-GRU-pê",
           "explizit → ek-spli-ZIT",
           "mitdenken → mit-DEN-kân"
+        ],
+        "pronunciation_focus_en": [
+          "Zielgruppe → TSEEL-groo-puh (target audience; 'ie' = 'ee')",
+          "explizit → eks-plee-TSIT (explicit; 'z' = 'ts')",
+          "mitdenken → MIT-den-ken (to think along with; separable verb)"
         ]
       },
       {
@@ -7091,6 +7337,11 @@ export const lessons: GermanLesson[] = [
           "Habilitationsniveau → ha-bi-li-ta-tsi-ÔNS-ni-vo",
           "gegeneinander → GÊ-gân-ai-nan-dêr",
           "ausspielen → OUTS-shpi-lân"
+        ],
+        "pronunciation_focus_en": [
+          "Habilitationsniveau → hah-bee-lee-tah-tsee-OHNS-nee-VOH (habilitation level; 'niveau' is a French loan)",
+          "gegeneinander → GAY-gen-INE-ahn-der (against each other; 'ei' = 'eye')",
+          "ausspielen → OWS-shpee-len (to play off; separable verb)"
         ]
       },
       {
@@ -7100,6 +7351,11 @@ export const lessons: GermanLesson[] = [
           "zuspitzen → TSU-shpi-tsân",
           "Habilitationsvortrag → ha-bi-li-ta-tsi-ÔNS-fôr-trak",
           "gerade so → GÊ-ra-dê zô"
+        ],
+        "pronunciation_focus_en": [
+          "zuspitzen → TSOO-shpit-sen (to sharpen / bring to a point; separable verb)",
+          "Habilitationsvortrag → hah-bee-lee-tah-tsee-OHNS-FOR-trahk (habilitation lecture; final '-g' devoices to '-k')",
+          "gerade so → guh-RAH-duh zoh (precisely so; 's' before vowel = 'z')"
         ]
       }
     ],
@@ -7109,35 +7365,40 @@ export const lessons: GermanLesson[] = [
         "en": "postdoctoral qualification / habilitation",
         "vi": "học vị/điều kiện habilitation",
         "pos": "noun (f)",
-        "pronunciation_vi": "ha-bi-li-ta-tsi-ôn"
+        "pronunciation_vi": "ha-bi-li-ta-tsi-ôn",
+        "pronunciation_en": "dee hah-bee-lee-tah-tsee-OHN — postdoctoral qualification; the highest German academic teaching qualification"
       },
       {
         "word": "die Probevorlesung",
         "en": "trial lecture",
         "vi": "giờ giảng thử",
         "pos": "noun (f)",
-        "pronunciation_vi": "PRÔ-bê-fôr-lê-zung"
+        "pronunciation_vi": "PRÔ-bê-fôr-lê-zung",
+        "pronunciation_en": "dee PROH-buh-FOR-lay-zung — trial lecture; literally 'sample lecture'"
       },
       {
         "word": "didaktisch",
         "en": "didactic, pedagogically structured",
         "vi": "theo hướng sư phạm",
         "pos": "adjective",
-        "pronunciation_vi": "đi-ĐAK-tish"
+        "pronunciation_vi": "đi-ĐAK-tish",
+        "pronunciation_en": "dee-DAHK-tish — adjective; 'pedagogically structured', not 'didactic' in the negative English sense"
       },
       {
         "word": "anschlussfähig",
         "en": "accessible / connectable to the field",
         "vi": "có tính liên kết, dễ nối vào mạch chuyên ngành",
         "pos": "adjective",
-        "pronunciation_vi": "AN-shlus-fê-rik"
+        "pronunciation_vi": "AN-shlus-fê-rik",
+        "pronunciation_en": "AHN-shloos-FAY-ikh — adjective; 'connectable to the field', i.e. accessible enough to link into ongoing scholarship"
       },
       {
         "word": "die Zielgruppe",
         "en": "target audience",
         "vi": "đối tượng mục tiêu",
         "pos": "noun (f)",
-        "pronunciation_vi": "tsil-GRU-pê"
+        "pronunciation_vi": "tsil-GRU-pê",
+        "pronunciation_en": "dee TSEEL-groo-puh — target audience; 'ie' = 'ee'"
       }
     ],
     "dialogue": [
@@ -7166,6 +7427,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "fill_blank",
         "instruction_vi": "Điền từ học thuật phù hợp:",
+        "instruction_en": "Fill in the appropriate academic term:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -7185,6 +7447,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "translation",
         "instruction_vi": "Dịch sang tiếng Đức formal C1:",
+        "instruction_en": "Translate into formal C1 German:",
         "pronunciation_focus": ["trial lecture"],
         "items": [
           {
@@ -7199,8 +7462,11 @@ export const lessons: GermanLesson[] = [
       }
     ],
     "cultural_notes_vi": "Habilitation ở Đức là một ngưỡng nghề nghiệp học thuật chứ không chỉ là thêm một chứng chỉ. Người nghe muốn thấy bạn có khả năng dạy, cấu trúc tư duy, và chuyển phức tạp thành mạch logic rõ ràng. Nếu bài giảng quá giống seminar paper, bạn sẽ bị chê là chưa đủ 'Lehrfähigkeit'.",
+    "cultural_notes_en": "Habilitation in Germany is a career threshold in academia, not just another credential. The committee wants to see that you can teach, structure thinking, and turn complexity into a clear logical thread. If your trial lecture reads like a seminar paper recited aloud, you'll be marked down for missing 'Lehrfähigkeit' (teaching competence). The system is testing pedagogical aptitude alongside scholarly depth — both are mandatory.",
     "tip_advice_vi": "Trong giờ giảng thử, đừng cố chứng minh mình biết mọi thứ. Hãy chứng minh rằng bạn biết chọn mức độ chi tiết phù hợp với người nghe. Habilitation cần cả nghiên cứu lẫn năng lực sư phạm.",
-    "register_notes": "Dùng 'ich würde', 'ich beginne', 'ich führe ein' để giữ register học thuật. Tránh làm bài giảng giống tranh luận nghiên cứu thuần túy. Người xét Habilitation muốn nghe một người vừa có chuyên môn vừa có khả năng dạy."
+    "tip_advice_en": "In the trial lecture, don't try to prove that you know everything. Prove that you know how to choose the right level of detail for the audience in front of you. Habilitation requires both research depth and pedagogical competence, in that visible balance.",
+    "register_notes": "Dùng 'ich würde', 'ich beginne', 'ich führe ein' để giữ register học thuật. Tránh làm bài giảng giống tranh luận nghiên cứu thuần túy. Người xét Habilitation muốn nghe một người vừa có chuyên môn vừa có khả năng dạy.",
+    "register_notes_en": "Use 'ich würde', 'ich beginne', 'ich führe ein' to keep the academic register. Avoid making the lecture feel like a pure research argument. The Habilitation panel wants to hear someone who is simultaneously a domain expert and a competent teacher."
   },
   {
     "id": "ldfg_antrag_narrativ",
@@ -7216,6 +7482,11 @@ export const lessons: GermanLesson[] = [
           "DFG-Antrag → đê-Ê-fê-CHÊ AN-trak",
           "Forschungsstand → FÔ-shungs-shtant",
           "Erkenntnisinteresse → e-rken-tnis-IN-tê-rê-sê"
+        ],
+        "pronunciation_focus_en": [
+          "DFG-Antrag → DAY-EFF-GAY AHN-trahk (DFG grant application; the abbreviation is spelled out)",
+          "Forschungsstand → FOR-shungs-shtahnt (state of research; final '-d' devoices to '-t')",
+          "Erkenntnisinteresse → er-KENT-nis-IN-ter-es-uh (research interest; literal 'cognitive interest')"
         ]
       },
       {
@@ -7225,6 +7496,11 @@ export const lessons: GermanLesson[] = [
           "Projektbeschreibung → prô-YeKT-bê-shri-bung",
           "Arbeitsprogramm → AR-baits-prô-gram",
           "Originalität → ô-ri-gi-na-li-TÊT"
+        ],
+        "pronunciation_focus_en": [
+          "Projektbeschreibung → proh-YEKT-buh-SHRYE-bung (project description)",
+          "Arbeitsprogramm → AR-byts-proh-GRAHM (work programme; 'ei' = 'eye')",
+          "Originalität → oh-ree-gee-nah-lee-TET (originality; final-syllable stress)"
         ]
       },
       {
@@ -7234,6 +7510,11 @@ export const lessons: GermanLesson[] = [
           "DFG-Hinweisen → đê-Ê-fê-CHÊ HIN-vai-zân",
           "sachlich → ZAKH-likh",
           "trocken → TRÔ-kân"
+        ],
+        "pronunciation_focus_en": [
+          "DFG-Hinweisen → DAY-EFF-GAY HIN-vye-zen (DFG guidelines)",
+          "sachlich → ZAHKH-likh (factual / objective; final 'ch' is soft)",
+          "trocken → TROK-en (dry; short 'o' as in 'pot')"
         ]
       },
       {
@@ -7243,6 +7524,11 @@ export const lessons: GermanLesson[] = [
           "Machbarkeit → MAKH-bat-khait",
           "Zeitplan → TSAYT-plaan",
           "Gutachtenden → GU-tak-hân-dân"
+        ],
+        "pronunciation_focus_en": [
+          "Machbarkeit → MAHKH-bar-kyte (feasibility; final '-keit' = 'kyte')",
+          "Zeitplan → TSYTE-plahn (timeline; 'ei' = 'eye')",
+          "Gutachtenden → GOO-tahkh-ten-den (the reviewers; nominalised participle)"
         ]
       },
       {
@@ -7252,6 +7538,11 @@ export const lessons: GermanLesson[] = [
           "Beitrag → BAI-trak",
           "methodisch → mê-TÔ-dish",
           "zuspitzen → TSU-shpi-tsân"
+        ],
+        "pronunciation_focus_en": [
+          "Beitrag → BYE-trahk (contribution; 'ei' = 'eye'; final '-g' devoices)",
+          "methodisch → meh-TOH-dish (methodologically)",
+          "zuspitzen → TSOO-shpit-sen (to sharpen / focus; separable verb)"
         ]
       }
     ],
@@ -7261,35 +7552,40 @@ export const lessons: GermanLesson[] = [
         "en": "DFG grant application",
         "vi": "đơn xin tài trợ DFG",
         "pos": "noun (m)",
-        "pronunciation_vi": "đê-Ê-fê-CHÊ an-trak"
+        "pronunciation_vi": "đê-Ê-fê-CHÊ an-trak",
+        "pronunciation_en": "dayr DAY-EFF-GAY AHN-trahk — DFG grant application; the abbreviation is always spelled out"
       },
       {
         "word": "die Projektbeschreibung",
         "en": "project description",
         "vi": "mô tả dự án",
         "pos": "noun (f)",
-        "pronunciation_vi": "prô-YeKT-bê-shri-bung"
+        "pronunciation_vi": "prô-YeKT-bê-shri-bung",
+        "pronunciation_en": "dee proh-YEKT-buh-SHRYE-bung — project description; long compound, primary stress on -SHRYE-"
       },
       {
         "word": "die Machbarkeit",
         "en": "feasibility",
         "vi": "tính khả thi",
         "pos": "noun (f)",
-        "pronunciation_vi": "MAKH-bat-khait"
+        "pronunciation_vi": "MAKH-bat-khait",
+        "pronunciation_en": "dee MAHKH-bar-kyte — feasibility; from 'machen' (to do/make) + '-bar' (-able) + '-keit' (-ness)"
       },
       {
         "word": "das Arbeitsprogramm",
         "en": "work programme",
         "vi": "chương trình công việc",
         "pos": "noun (n)",
-        "pronunciation_vi": "AR-baits-prô-gram"
+        "pronunciation_vi": "AR-baits-prô-gram",
+        "pronunciation_en": "dahs AR-byts-proh-GRAHM — work programme; 'ei' = 'eye'; primary stress on -GRAHM"
       },
       {
         "word": "die Originalität",
         "en": "originality",
         "vi": "tính nguyên gốc",
         "pos": "noun (f)",
-        "pronunciation_vi": "ô-ri-gi-na-li-TÊT"
+        "pronunciation_vi": "ô-ri-gi-na-li-TÊT",
+        "pronunciation_en": "dee oh-ree-gee-nah-lee-TET — originality; final-syllable stress on '-TET'"
       }
     ],
     "dialogue": [
@@ -7318,6 +7614,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "fill_blank",
         "instruction_vi": "Điền từ còn thiếu trong ngôn ngữ đơn DFG:",
+        "instruction_en": "Fill in the missing word in DFG application language:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -7337,6 +7634,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "translation",
         "instruction_vi": "Dịch sang tiếng Đức formal C1:",
+        "instruction_en": "Translate into formal C1 German:",
         "pronunciation_focus": ["DFG proposal"],
         "items": [
           {
@@ -7351,8 +7649,11 @@ export const lessons: GermanLesson[] = [
       }
     ],
     "cultural_notes_vi": "Theo hướng DFG, đơn xin tài trợ cần phải 'trong sạch': câu hỏi nghiên cứu rõ, chương trình công việc rõ, và mức độ mới rõ. DFG đánh giá qua quy trình cạnh tranh và phản biện; vì vậy văn phong quá chung chung sẽ yếu ngay từ đầu. Đây là mô tả ngôn ngữ-học thuật, không phải tư vấn xin quỹ từng trường hợp.",
+    "cultural_notes_en": "By DFG (Deutsche Forschungsgemeinschaft) standards, a grant application must be 'clean': a sharp research question, a clear work programme, and a clear claim to novelty. The DFG evaluates through a competitive peer-review process, so vague or overly general prose loses ground immediately. This is academic-language guidance, not case-by-case grant consulting — and it generalises poorly to US NSF / NIH culture, where narrative storytelling and 'broader impacts' carry more weight.",
     "tip_advice_vi": "Khi viết DFG-Antrag, hãy đi theo trật tự: Forschungsstand → Erkenntnisinteresse → Arbeitsprogramm → Zeitplan → erwarteter Erkenntnisgewinn. Nếu bạn thiếu một mắt xích, đơn sẽ nhìn như ý tưởng chưa chín.",
-    "register_notes": "DFG-register: sachlich, exakt, kompetitiv. Thay vì kể câu chuyện cá nhân, hãy cho thấy lỗ hổng nghiên cứu, cách bạn sẽ lấp nó, và tại sao dự án này đáng cạnh tranh. Đừng lạm dụng khẩu hiệu như 'innovativ' mà không có chứng cứ."
+    "tip_advice_en": "When writing a DFG-Antrag, follow the order: Forschungsstand → Erkenntnisinteresse → Arbeitsprogramm → Zeitplan → erwarteter Erkenntnisgewinn. If a link is missing, the application reads as an underdeveloped idea. Each section depends on the one before it.",
+    "register_notes": "DFG-register: sachlich, exakt, kompetitiv. Thay vì kể câu chuyện cá nhân, hãy cho thấy lỗ hổng nghiên cứu, cách bạn sẽ lấp nó, và tại sao dự án này đáng cạnh tranh. Đừng lạm dụng khẩu hiệu như 'innovativ' mà không có chứng cứ.",
+    "register_notes_en": "DFG register: factual, exact, competitive. Instead of telling a personal story, show the research gap, how you'll fill it, and why this project deserves competitive funding. Don't over-use slogans like 'innovativ' (innovative) without evidence — DFG reviewers see the inflation of such words and discount them."
   },
   {
     "id": "ldoktorvater_doktormutter",
@@ -7368,6 +7669,11 @@ export const lessons: GermanLesson[] = [
           "Doktorvater → đốc-tor-FAA-tơ",
           "hierarchisch → hi-rar-KHISH",
           "persönlich geprägt → pe-ZÖN-likh gê-PRÊKT"
+        ],
+        "pronunciation_focus_en": [
+          "Doktorvater → DOK-tor-FAH-ter (doctoral father; literal compound)",
+          "hierarchisch → hee-rar-KHISH (hierarchical; 'ch' here is the hard 'ach' sound)",
+          "persönlich geprägt → per-ZOHN-likh guh-PRAYKT (personally shaped; final '-g' devoices)"
         ]
       },
       {
@@ -7377,6 +7683,11 @@ export const lessons: GermanLesson[] = [
           "Doktormutter → đốc-tor-MU-tơ",
           "Loyalität → loi-a-li-TÊT",
           "Eigenständigkeit → AI-gân-shten-đik-kait"
+        ],
+        "pronunciation_focus_en": [
+          "Doktormutter → DOK-tor-MOO-ter (doctoral mother; literal compound)",
+          "Loyalität → loy-ah-lee-TET (loyalty; final-syllable stress)",
+          "Eigenständigkeit → EYE-gen-shten-dikh-kyte (independence; final '-keit' = 'kyte')"
         ]
       },
       {
@@ -7386,6 +7697,11 @@ export const lessons: GermanLesson[] = [
           "um Rat bitten → um RAAAT bit-tân",
           "verantwortung → fe-ran-tvortung",
           "selbst übernehme → zelpst y-ber-nê-mê"
+        ],
+        "pronunciation_focus_en": [
+          "um Rat bitten → oom RAHT BIT-ten (to ask for advice)",
+          "Verantwortung → fer-AHNT-vor-tung (responsibility; 'w' = 'v')",
+          "selbst übernehme → ZELPST UE-ber-NAY-muh ('ü' = rounded 'oo')"
         ]
       },
       {
@@ -7395,6 +7711,11 @@ export const lessons: GermanLesson[] = [
           "Promotionsphase → prô-mo-tsi-ÔNS-faa-zê",
           "implizit → im-pli-ZIT",
           "festgehalten → fêst-gê-hal-tân"
+        ],
+        "pronunciation_focus_en": [
+          "Promotionsphase → proh-moh-tsee-OHNS-FAH-zuh (doctoral phase; 's' between vowels = 'z')",
+          "implizit → im-plee-TSIT (implicit; 'z' = 'ts')",
+          "festgehalten → FEST-guh-HAHL-ten (laid down / recorded; separable past participle)"
         ]
       },
       {
@@ -7404,6 +7725,11 @@ export const lessons: GermanLesson[] = [
           "fachliche Kritik → FAKH-lik-ê KRI-tik",
           "Kränkung → KREN-kung",
           "strikt unterscheiden → shtRIKT un-shoi-dân"
+        ],
+        "pronunciation_focus_en": [
+          "fachliche Kritik → FAHKH-likh-uh KREE-tik (subject-matter critique; 'ch' here is the soft 'ich' sound)",
+          "Kränkung → KRENK-ung (hurt feeling / offence)",
+          "strikt unterscheiden → SHTRIKT oon-ter-SHYE-den (strictly distinguish)"
         ]
       }
     ],
@@ -7413,35 +7739,40 @@ export const lessons: GermanLesson[] = [
         "en": "doctoral supervisor / advisor",
         "vi": "người hướng dẫn tiến sĩ",
         "pos": "noun phrase",
-        "pronunciation_vi": "đốc-tor-FAA-tơ / đốc-tor-MU-tơ"
+        "pronunciation_vi": "đốc-tor-FAA-tơ / đốc-tor-MU-tơ",
+        "pronunciation_en": "dayr DOK-tor-FAH-ter / dee DOK-tor-MOO-ter — doctoral supervisor; literal compound, gendered forms used routinely"
       },
       {
         "word": "die Eigenständigkeit",
         "en": "independence, self-reliance",
         "vi": "tính độc lập",
         "pos": "noun (f)",
-        "pronunciation_vi": "AI-gân-shten-đik-kait"
+        "pronunciation_vi": "AI-gân-shten-đik-kait",
+        "pronunciation_en": "dee EYE-gen-shten-dikh-kyte — independence / self-reliance; long compound noun, final '-keit' = 'kyte'"
       },
       {
         "word": "die Promotionsphase",
         "en": "doctoral phase",
         "vi": "giai đoạn làm tiến sĩ",
         "pos": "noun (f)",
-        "pronunciation_vi": "prô-mo-tsi-ÔNS-faa-zê"
+        "pronunciation_vi": "prô-mo-tsi-ÔNS-faa-zê",
+        "pronunciation_en": "dee proh-moh-tsee-OHNS-FAH-zuh — doctoral phase; 's' between vowels is voiced (= 'z')"
       },
       {
         "word": "um Rat bitten",
         "en": "to ask for advice",
         "vi": "xin lời khuyên",
         "pos": "verb phrase",
-        "pronunciation_vi": "um RAAAT bit-tân"
+        "pronunciation_vi": "um RAAAT bit-tân",
+        "pronunciation_en": "oom RAHT BIT-ten — verb phrase; 'to ask for advice'; literally 'beg for counsel'"
       },
       {
         "word": "die Kränkung",
         "en": "hurt feelings / offense",
         "vi": "sự tự ái bị tổn thương",
         "pos": "noun (f)",
-        "pronunciation_vi": "KREN-kung"
+        "pronunciation_vi": "KREN-kung",
+        "pronunciation_en": "dee KRENK-ung — hurt feelings / offence; from 'kränken' (to hurt someone's feelings)"
       }
     ],
     "dialogue": [
@@ -7470,6 +7801,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "fill_blank",
         "instruction_vi": "Điền từ phù hợp về quan hệ hướng dẫn:",
+        "instruction_en": "Fill in the appropriate word about the supervision dynamic:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -7489,6 +7821,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "translation",
         "instruction_vi": "Dịch sang tiếng Đức formal C1:",
+        "instruction_en": "Translate into formal C1 German:",
         "pronunciation_focus": ["supervision dynamic"],
         "items": [
           {
@@ -7503,8 +7836,11 @@ export const lessons: GermanLesson[] = [
       }
     ],
     "cultural_notes_vi": "Quan hệ với Doktorvater/Doktormutter ở Đức thường vừa cá nhân vừa thể chế. Bạn cần biết khi nào nên hỏi, khi nào nên tự quyết, và khi nào nên ghi lại mọi thứ bằng văn bản. Ngoài ra, hãy phân biệt rõ giữa góp ý học thuật và áp lực quyền lực.",
+    "cultural_notes_en": "The Doktorvater/Doktormutter relationship in Germany is at once personal and institutional — there is no clean US-style 'arms-length advisor' equivalent. You need to know when to ask, when to decide alone, and when to put everything in writing. Equally, distinguish clearly between academic feedback and power-pressure dynamics — the two can blur, and naming the difference (privately, with a mentor) is part of professional self-protection.",
     "tip_advice_vi": "Trong quan hệ hướng dẫn, câu an toàn là: xin lời khuyên, xác nhận phạm vi trách nhiệm của mình, rồi báo lại quyết định. Điều này giữ được cả sự tôn trọng lẫn tính độc lập.",
-    "register_notes": "Dùng 'um Rat bitten', 'Rücksprache', 'Eigenständigkeit', 'Erwartungen' thay vì than phiền trực tiếp. Trong Đức, một câu nói khéo còn quan trọng hơn việc bạn có đúng ngay lập tức hay không."
+    "tip_advice_en": "In the supervision dynamic, the safe sentence is: ask for advice, confirm the scope of your own responsibility, then report back the decision. This pattern keeps both respect and independence intact — you neither over-defer nor act unilaterally.",
+    "register_notes": "Dùng 'um Rat bitten', 'Rücksprache', 'Eigenständigkeit', 'Erwartungen' thay vì than phiền trực tiếp. Trong Đức, một câu nói khéo còn quan trọng hơn việc bạn có đúng ngay lập tức hay không.",
+    "register_notes_en": "Use 'um Rat bitten' (ask for advice), 'Rücksprache' (consultation), 'Eigenständigkeit' (independence), 'Erwartungen' (expectations) instead of complaining directly. In Germany, a tactfully phrased sentence usually counts for more than being demonstrably right in the moment."
   },
   {
     "id": "lkonjunktiv_i_begutachtung",
@@ -7520,6 +7856,11 @@ export const lessons: GermanLesson[] = [
           "bemerke → bê-MÊ-rkê",
           "theoretische Rahmung → tê-Ô-rê-ti-shê RA-mung",
           "verschaltet → fe-SHAL-tet"
+        ],
+        "pronunciation_focus_en": [
+          "bemerke → buh-MAIR-kuh (Konjunktiv I form of 'bemerken' / 'to remark')",
+          "theoretische Rahmung → tay-oh-RAY-tish-uh RAH-mung (theoretical framing)",
+          "verschaltet → fer-SHAHL-tet (connected up / wired together)"
         ]
       },
       {
@@ -7529,6 +7870,11 @@ export const lessons: GermanLesson[] = [
           "führe aus → FYU-rê OUTS",
           "Vergleichbarkeit → fer-GLAIKH-bat-kait",
           "getroffen worden sei → gê-TRO-fân vor-dân zay"
+        ],
+        "pronunciation_focus_en": [
+          "führe aus → FUE-ruh OWS ('lays out'; 'ü' = rounded 'oo'; separable verb)",
+          "Vergleichbarkeit → fer-GLYKH-bar-kyte (comparability; final '-keit' = 'kyte')",
+          "getroffen worden sei → guh-TROF-en VOR-den zye (passive Konjunktiv I; 'has been taken')"
         ]
       },
       {
@@ -7538,6 +7884,11 @@ export const lessons: GermanLesson[] = [
           "könne → KÖ-nê",
           "Befund → bê-FUNT",
           "enger fasse → Ê-ngơ fa-sê"
+        ],
+        "pronunciation_focus_en": [
+          "könne → KOEN-uh (Konjunktiv I form of 'können' / 'can'; 'ö' = rounded 'eh')",
+          "Befund → buh-FOONT (finding; final '-d' devoices to '-t')",
+          "enger fasse → ENG-er FAH-suh (Konjunktiv I; 'frames more narrowly')"
         ]
       },
       {
@@ -7547,6 +7898,11 @@ export const lessons: GermanLesson[] = [
           "Begutachtung → bê-GU-tak-tung",
           "Distanzierung → đi-săn-tsi-RUNG",
           "fremder Rede → FREM-đơ RÊ-đê"
+        ],
+        "pronunciation_focus_en": [
+          "Begutachtung → buh-GOO-tahkh-tung (review / evaluation)",
+          "Distanzierung → dis-tahn-TSEER-ung (distancing; 'z' = 'ts')",
+          "fremder Rede → FREM-der RAY-duh (someone else's speech; the technical term for reported speech)"
         ]
       },
       {
@@ -7556,6 +7912,11 @@ export const lessons: GermanLesson[] = [
           "referieren → rê-fe-RI-rân",
           "Wiedergabe → VI-đơ-ga-bê",
           "sachliche → ZAKH-lik-ê"
+        ],
+        "pronunciation_focus_en": [
+          "referieren → ref-er-EER-en (to report / summarise; final-syllable stress)",
+          "Wiedergabe → VEE-der-gah-buh (rendering, reproduction; 'ie' = 'ee')",
+          "sachliche → ZAHKH-likh-uh (factual; 'ch' here is the soft 'ich' sound)"
         ]
       }
     ],
@@ -7565,35 +7926,40 @@ export const lessons: GermanLesson[] = [
         "en": "reported speech mood",
         "vi": "thức gián tiếp / trần thuật gián tiếp",
         "pos": "noun phrase",
-        "pronunciation_vi": "kôn-yunk-tif ai"
+        "pronunciation_vi": "kôn-yunk-tif ai",
+        "pronunciation_en": "dayr kon-YOONK-teef AYNS — reported-speech mood; the Roman numeral 'I' is read as 'eins'"
       },
       {
         "word": "die Begutachtung",
         "en": "review / evaluation",
         "vi": "việc thẩm định",
         "pos": "noun (f)",
-        "pronunciation_vi": "bê-GU-tak-tung"
+        "pronunciation_vi": "bê-GU-tak-tung",
+        "pronunciation_en": "dee buh-GOO-tahkh-tung — review / evaluation; 'ch' here is the hard 'ach' sound"
       },
       {
         "word": "die Wiedergabe",
         "en": "rendering, reproduction",
         "vi": "sự tái hiện",
         "pos": "noun (f)",
-        "pronunciation_vi": "VI-đơ-ga-bê"
+        "pronunciation_vi": "VI-đơ-ga-bê",
+        "pronunciation_en": "dee VEE-der-gah-buh — rendering / reproduction; 'ie' = 'ee'"
       },
       {
         "word": "die Distanzierung",
         "en": "distancing",
         "vi": "sự tạo khoảng cách",
         "pos": "noun (f)",
-        "pronunciation_vi": "đi-săn-tsi-RUNG"
+        "pronunciation_vi": "đi-săn-tsi-RUNG",
+        "pronunciation_en": "dee dis-tahn-TSEER-ung — distancing; from 'distanzieren'"
       },
       {
         "word": "referieren",
         "en": "to report, summarize",
         "vi": "thuật lại, tóm tắt",
         "pos": "verb",
-        "pronunciation_vi": "rê-fe-RI-rân"
+        "pronunciation_vi": "rê-fe-RI-rân",
+        "pronunciation_en": "ref-er-EER-en — verb 'to report / summarise'; final-syllable stress"
       }
     ],
     "dialogue": [
@@ -7622,6 +7988,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "fill_blank",
         "instruction_vi": "Điền thức gián tiếp phù hợp:",
+        "instruction_en": "Fill in the appropriate reported-speech form:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -7641,6 +8008,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "translation",
         "instruction_vi": "Dịch sang tiếng Đức formal C1:",
+        "instruction_en": "Translate into formal C1 German:",
         "pronunciation_focus": ["reported critique"],
         "items": [
           {
@@ -7655,8 +8023,11 @@ export const lessons: GermanLesson[] = [
       }
     ],
     "cultural_notes_vi": "Trong phản biện học thuật Đức, Konjunktiv I là công cụ chuẩn để tách lời mình khỏi lời người khác. Nó giúp bạn viết lại comment reviewer hoặc tóm tắt ý kiến mà không làm mất tính khách quan. Dùng sai kiểu trực tiếp quá mức sẽ làm câu trả lời nghe chủ quan hơn mức cần thiết.",
+    "cultural_notes_en": "In German academic feedback, Konjunktiv I is the standard tool for separating your own voice from someone else's. It lets you rewrite a reviewer's comment or summarise an argument without losing objectivity. Over-using direct speech (or worse, the indicative) makes your reply read as more subjective than it needs to be. Anglophone academics often miss this layer — English reported speech doesn't carry the same epistemic-distance signal — but in Germany it is the marker of careful scholarship.",
     "tip_advice_vi": "Khi báo cáo critique, hãy giữ một nhịp: 'der Gutachter bemerke...', 'die Autorin führe aus...', 'laut Bericht könne...'. Mục tiêu là tái hiện nội dung chứ không chen cảm xúc vào câu thuật lại.",
-    "register_notes": "Konjunktiv I rất quan trọng trong reviewer response, minutes, and seminar reports. Đừng trộn nó với khẩu ngữ. Nếu bạn cần một câu an toàn, dùng: 'Der Gutachter bemerke, dass...' hoặc 'Die Autorin führe aus, dass...'."
+    "tip_advice_en": "When reporting critique, keep a steady rhythm: 'der Gutachter bemerke...' (the reviewer remarks...), 'die Autorin führe aus...' (the author lays out...), 'laut Bericht könne...' (according to the report, X could...). The goal is to render the content faithfully without injecting your own emotional reaction.",
+    "register_notes": "Konjunktiv I rất quan trọng trong reviewer response, minutes, and seminar reports. Đừng trộn nó với khẩu ngữ. Nếu bạn cần một câu an toàn, dùng: 'Der Gutachter bemerke, dass...' hoặc 'Die Autorin führe aus, dass...'.",
+    "register_notes_en": "Konjunktiv I is essential in reviewer responses, meeting minutes, and seminar reports. Don't mix it with colloquial speech. If you need a safe sentence, use 'Der Gutachter bemerke, dass...' (the reviewer remarks that...) or 'Die Autorin führe aus, dass...' (the author lays out that...) — both are workhorse formulas in academic German."
   },
   {
     "id": "lwissenschaftlicher_widerspruch",
@@ -7672,6 +8043,11 @@ export const lessons: GermanLesson[] = [
           "m.E. → em Ê",
           "grundsätzlich bestreiten → GRUNT-tsét-slich be-SHTRAI-tân",
           "Herleitung → HÊR-lai-tung"
+        ],
+        "pronunciation_focus_en": [
+          "m.E. → em AY (abbreviation of 'meines Erachtens' = 'in my view')",
+          "grundsätzlich bestreiten → GROONT-zets-likh buh-SHTRYE-ten (fundamentally dispute)",
+          "Herleitung → HAIR-lye-tung (derivation; 'ei' = 'eye')"
         ]
       },
       {
@@ -7681,6 +8057,11 @@ export const lessons: GermanLesson[] = [
           "gegebenenfalls → gê-GÊ-bênên-fals",
           "begrenzen → bê-GREN-tsân",
           "belastbar → bê-LAST-bar"
+        ],
+        "pronunciation_focus_en": [
+          "gegebenenfalls → guh-GAY-ben-en-fahls (if necessary; long six-syllable adverb)",
+          "begrenzen → buh-GREN-tsen (to limit; 'z' = 'ts')",
+          "belastbar → buh-LAHST-bar (robust / load-bearing; literally 'load-able')"
         ]
       },
       {
@@ -7690,6 +8071,11 @@ export const lessons: GermanLesson[] = [
           "womöglich → vo-MÖK-likh",
           "unterschätzt → un-tơ-SHETST",
           "Reichweite → RAIKH-vai-tê"
+        ],
+        "pronunciation_focus_en": [
+          "womöglich → voh-MOEK-likh (possibly; 'ö' = rounded 'eh'; final 'ch' is soft)",
+          "unterschätzt → oon-ter-SHETST (underestimates; sharp final cluster)",
+          "Reichweite → RYKH-vye-tuh (range / reach; 'ei' = 'eye')"
         ]
       },
       {
@@ -7699,6 +8085,11 @@ export const lessons: GermanLesson[] = [
           "Widerspruch → VI-dơ-sprukh",
           "tragfähig → TRAK-fêk",
           "höflich formuliert → HÖF-likh for-mu-LIY-ret"
+        ],
+        "pronunciation_focus_en": [
+          "Widerspruch → VEE-der-shprookh (contradiction / objection; 'ie' = 'ee')",
+          "tragfähig → TRAHK-fay-ikh (robust / sound; literally 'load-bearing')",
+          "höflich formuliert → HOEF-likh for-moo-LEERT (politely formulated; 'ö' = rounded 'eh')"
         ]
       }
     ],
@@ -7708,35 +8099,40 @@ export const lessons: GermanLesson[] = [
         "en": "meines Erachtens / in my view",
         "vi": "theo ý kiến của tôi",
         "pos": "abbreviation",
-        "pronunciation_vi": "em Ê"
+        "pronunciation_vi": "em Ê",
+        "pronunciation_en": "em AY — abbreviation read as letter names: 'em' + 'ay' (long 'ay' as in 'they')"
       },
       {
         "word": "gegebenenfalls",
         "en": "if necessary / where appropriate",
         "vi": "nếu cần / trong trường hợp cần thiết",
         "pos": "adverb",
-        "pronunciation_vi": "gê-GÊ-bênên-fals"
+        "pronunciation_vi": "gê-GÊ-bênên-fals",
+        "pronunciation_en": "guh-GAY-ben-en-fahls — adverb 'if necessary'; six syllables, primary stress on -GAY-"
       },
       {
         "word": "womöglich",
         "en": "possibly, perhaps",
         "vi": "có lẽ, có khả năng",
         "pos": "adverb",
-        "pronunciation_vi": "vo-MÖK-likh"
+        "pronunciation_vi": "vo-MÖK-likh",
+        "pronunciation_en": "voh-MOEK-likh — adverb 'possibly'; 'ö' = rounded 'eh'; final 'ch' is the soft 'ich' sound"
       },
       {
         "word": "belastbar",
         "en": "robust, sound",
         "vi": "đủ vững, có sức nặng",
         "pos": "adjective",
-        "pronunciation_vi": "bê-LAST-bar"
+        "pronunciation_vi": "bê-LAST-bar",
+        "pronunciation_en": "buh-LAHST-bar — adjective 'robust' / 'load-bearing'; from 'Last' (load) + '-bar' (-able)"
       },
       {
         "word": "bestreiten",
         "en": "to dispute, contest",
         "vi": "phản bác, bác bỏ",
         "pos": "verb",
-        "pronunciation_vi": "be-SHTRAI-tân"
+        "pronunciation_vi": "be-SHTRAI-tân",
+        "pronunciation_en": "buh-SHTRYE-ten — verb 'to dispute / contest'; 'ei' = 'eye'"
       }
     ],
     "dialogue": [
@@ -7765,6 +8161,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "fill_blank",
         "instruction_vi": "Điền cách phản biện phù hợp:",
+        "instruction_en": "Fill in the appropriate hedge for academic disagreement:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -7784,6 +8181,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "translation",
         "instruction_vi": "Dịch sang tiếng Đức formal C1:",
+        "instruction_en": "Translate into formal C1 German:",
         "pronunciation_focus": ["hedged disagreement"],
         "items": [
           {
@@ -7798,8 +8196,11 @@ export const lessons: GermanLesson[] = [
       }
     ],
     "cultural_notes_vi": "Trong thảo luận học thuật Đức, phản biện tốt thường đi kèm giảm độ đối đầu: m.E., gegebenenfalls, womöglich. Các từ này giúp bạn giữ thể diện cho đối phương mà vẫn làm rõ điểm yếu của lập luận. Đây là cách phản biện chuyên nghiệp, không phải cách né tránh.",
+    "cultural_notes_en": "In German academic discussion, good critique typically comes wrapped in softeners: m.E. (in my view), gegebenenfalls (if necessary), womöglich (possibly). These adverbs let you preserve the other person's face while still naming the weakness in their argument. This is professional critique, not avoidance — German academia distinguishes carefully between hedged disagreement (high-status) and bare contradiction (low-status, even when correct).",
     "tip_advice_vi": "Khi bất đồng, đừng mở đầu bằng phủ định mạnh. Hãy mở bằng công nhận một phần, rồi thêm m.E. hoặc gegebenenfalls để hạ nhiệt câu nói.",
-    "register_notes": "Ở C1, câu phản biện có trọng lượng hơn khi bạn nói 'Ich würde...' hoặc 'm.E. ...' thay vì 'Das ist falsch'."
+    "tip_advice_en": "When you disagree, don't open with strong negation. Open with partial acknowledgement, then add 'm.E.' or 'gegebenenfalls' to lower the temperature of what follows. This is not weakness — it's the standard register that lets the other side actually hear your point.",
+    "register_notes": "Ở C1, câu phản biện có trọng lượng hơn khi bạn nói 'Ich würde...' hoặc 'm.E. ...' thay vì 'Das ist falsch'.",
+    "register_notes_en": "At C1, a critique sentence carries more weight when you say 'Ich würde...' (I would...) or 'm.E. ...' (in my view ...) rather than 'Das ist falsch' (that is wrong). The hedged form is the high-status academic register; bare contradiction is heard as conversational and less authoritative."
   },
   {
     "id": "lkolloquium_moderation",
@@ -7815,6 +8216,11 @@ export const lessons: GermanLesson[] = [
           "vorschlagen → FÔR-shla-gân",
           "Ausgangsfrage → AOß-gang-s-frA-gê",
           "Positionen bündeln → po-zi-TSI-ô-nən BÜN-dln"
+        ],
+        "pronunciation_focus_en": [
+          "vorschlagen → FOR-shlah-gen (to propose; separable verb)",
+          "Ausgangsfrage → OWS-gahngs-frah-guh (starting question; 'au' = 'ow')",
+          "Positionen bündeln → poh-zee-tsee-OH-nen BUEN-deln (bundle positions; 'ü' = rounded 'oo')"
         ]
       },
       {
@@ -7824,6 +8230,11 @@ export const lessons: GermanLesson[] = [
           "womöglich → vo-MÖK-likh",
           "Blocke teilen → BLÔ-kê TAI-lân",
           "Methode → mê-TÔ-đê"
+        ],
+        "pronunciation_focus_en": [
+          "womöglich → voh-MOEK-likh (possibly; 'ö' = rounded 'eh')",
+          "Blöcke teilen → BLOEK-uh TYE-len (split into blocks; 'ö' = rounded 'eh')",
+          "Methode → meh-TOH-duh (method; the German loanword keeps the final '-e' as a schwa)"
         ]
       },
       {
@@ -7833,6 +8244,11 @@ export const lessons: GermanLesson[] = [
           "Rückfragen → RÜK-fra-gân",
           "gebündelt → ge-BÜN-delt",
           "roter Faden → RÔ-tơ FA-dân"
+        ],
+        "pronunciation_focus_en": [
+          "Rückfragen → RUEK-frah-gen (follow-up questions; 'ü' = rounded 'oo')",
+          "gebündelt → guh-BUEN-delt (bundled; 'ü' = rounded 'oo')",
+          "roter Faden → ROH-ter FAH-den (literally 'red thread'; idiomatic 'guiding thread')"
         ]
       },
       {
@@ -7842,6 +8258,11 @@ export const lessons: GermanLesson[] = [
           "Vorsitzende → FÔR-tsit-sen-dê",
           "strukturieren → shtruk-tu-RI-rân",
           "Austausch → AOß-taush"
+        ],
+        "pronunciation_focus_en": [
+          "Vorsitzende → FOR-zit-sen-duh (chair / presiding person)",
+          "strukturieren → shtrook-too-REER-en (to structure)",
+          "Austausch → OWS-towsh (exchange; both 'au' clusters = 'ow')"
         ]
       }
     ],
@@ -7851,35 +8272,40 @@ export const lessons: GermanLesson[] = [
         "en": "colloquium, academic discussion",
         "vi": "buổi colloquium / thảo luận học thuật",
         "pos": "noun (n)",
-        "pronunciation_vi": "ko-LÔ-kvi-um"
+        "pronunciation_vi": "ko-LÔ-kvi-um",
+        "pronunciation_en": "dahs koh-LOH-kvee-um — colloquium / academic discussion; 'qu' = 'kv'"
       },
       {
         "word": "bündeln",
         "en": "to bundle, consolidate",
         "vi": "gom lại, tập hợp",
         "pos": "verb",
-        "pronunciation_vi": "BÜN-dln"
+        "pronunciation_vi": "BÜN-dln",
+        "pronunciation_en": "BUEN-deln — verb 'to bundle / consolidate'; 'ü' = rounded 'oo'"
       },
       {
         "word": "der rote Faden",
         "en": "the thread, guiding line",
         "vi": "mạch chính",
         "pos": "noun phrase",
-        "pronunciation_vi": "RÔ-tơ FA-dân"
+        "pronunciation_vi": "RÔ-tơ FA-dân",
+        "pronunciation_en": "dayr ROH-ter FAH-den — noun phrase 'the red thread'; the standard idiom for the guiding line of an argument"
       },
       {
         "word": "strukturieren",
         "en": "to structure",
         "vi": "cấu trúc, sắp xếp",
         "pos": "verb",
-        "pronunciation_vi": "shtruk-tu-RI-rân"
+        "pronunciation_vi": "shtruk-tu-RI-rân",
+        "pronunciation_en": "shtrook-too-REER-en — verb 'to structure'; final-syllable stress on -REER-"
       },
       {
         "word": "die Rückfrage",
         "en": "follow-up question",
         "vi": "câu hỏi tiếp theo",
         "pos": "noun (f)",
-        "pronunciation_vi": "RÜK-fra-gê"
+        "pronunciation_vi": "RÜK-fra-gê",
+        "pronunciation_en": "dee RUEK-frah-guh — follow-up question; 'ü' = rounded 'oo'"
       }
     ],
     "dialogue": [
@@ -7908,6 +8334,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "fill_blank",
         "instruction_vi": "Điền từ điều phối phù hợp:",
+        "instruction_en": "Fill in the appropriate moderation word:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -7927,6 +8354,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "translation",
         "instruction_vi": "Dịch sang tiếng Đức formal C1:",
+        "instruction_en": "Translate into formal C1 German:",
         "pronunciation_focus": ["meeting chair"],
         "items": [
           {
@@ -7941,8 +8369,11 @@ export const lessons: GermanLesson[] = [
       }
     ],
     "cultural_notes_vi": "Trong buổi colloquium của Đức, người chủ tọa thường được kỳ vọng giữ nhịp, cắt bớt lan man và bảo vệ mạch tranh luận. Sự lịch sự ở đây nằm ở cách bạn cấu trúc cuộc trao đổi, không phải ở việc nói thật nhiều.",
+    "cultural_notes_en": "At a German colloquium, the chair is expected to keep tempo, cut off tangents, and protect the thread of the discussion. Politeness here lives in HOW you structure the exchange, not in talking the most. A chair who lets every voice run unchecked is read as weak; a chair who cuts in firmly but with a softener like 'Ich würde vorschlagen...' is read as competent. The skill is asymmetric: the chair makes more interventions but each is shorter than the speakers'.",
     "tip_advice_vi": "Nếu bạn phải điều phối nhiều người, hãy dùng câu ngắn, mệnh lệnh mềm và các mốc rõ ràng: erstens, dann, am Ende.",
-    "register_notes": "Giọng C1 khi điều phối hội thảo nên trung tính, rõ, không quá thân mật. Vai trò chủ tọa cần nghe vững chứ không cần nghe áp đặt."
+    "tip_advice_en": "If you're moderating multiple participants, use short sentences, soft commands, and clear markers: erstens (first), dann (then), am Ende (at the end). Listeners take their cues from those signals; without them, the discussion fragments.",
+    "register_notes": "Giọng C1 khi điều phối hội thảo nên trung tính, rõ, không quá thân mật. Vai trò chủ tọa cần nghe vững chứ không cần nghe áp đặt.",
+    "register_notes_en": "C1 chairing voice should be neutral, clear, and not overly familiar. The chair role needs to sound steady, not imposing — soft authority ('Ich würde vorschlagen...') beats hard command ('Wir machen jetzt...') almost every time."
   },
   {
     "id": "lwisszeitvg_reform",
@@ -7958,6 +8389,11 @@ export const lessons: GermanLesson[] = [
           "WissZeitVG → VIS-tsait-fê-gê",
           "Planbarkeit → PLA-nbar-kait",
           "befristeten Druck → bê-FRIS-tê-tân DRUK"
+        ],
+        "pronunciation_focus_en": [
+          "WissZeitVG → VISS-tsyte-FOW-gay (the abbreviation is read letter-by-letter)",
+          "Planbarkeit → PLAHN-bar-kyte (predictability; final '-keit' = 'kyte')",
+          "befristeten Druck → buh-FRIS-tay-ten DROOK (fixed-term pressure)"
         ]
       },
       {
@@ -7967,6 +8403,11 @@ export const lessons: GermanLesson[] = [
           "umstritten → um-SHRIT-tân",
           "Universitäten → u-ni-ve-zi-TÊ-tən",
           "betroffen → bê-TRO-fân"
+        ],
+        "pronunciation_focus_en": [
+          "umstritten → oom-SHTRIT-ten (contested; past participle of 'umstreiten')",
+          "Universitäten → oo-nee-vair-zee-TET-en (universities; 'ä' = 'eh')",
+          "betroffen → buh-TROF-en (affected; past participle)"
         ]
       },
       {
@@ -7976,6 +8417,11 @@ export const lessons: GermanLesson[] = [
           "gegebenenfalls → gê-GÊ-bênên-fals",
           "Personalpolitik → pêr-zo-NAAL-po-li-tik",
           "Realität → rê-a-li-TÊT"
+        ],
+        "pronunciation_focus_en": [
+          "gegebenenfalls → guh-GAY-ben-en-fahls (if necessary; six syllables)",
+          "Personalpolitik → per-zoh-NAHL-poh-lee-tik (HR policy)",
+          "Realität → ray-ah-lee-TET (reality; final-syllable stress)"
         ]
       },
       {
@@ -7985,6 +8431,11 @@ export const lessons: GermanLesson[] = [
           "Rechtsberatung → rếkts-bê-RA-tung",
           "Einordnung → AI-nor-dnung",
           "Diskussionsstands → dis-ku-SIÔNS-shtants"
+        ],
+        "pronunciation_focus_en": [
+          "Rechtsberatung → REKHTS-buh-rah-tung (legal advice; 'ch' here is the hard 'ach' sound)",
+          "Einordnung → INE-ord-nung (classification / framing; 'ei' = 'eye')",
+          "Diskussionsstands → dis-koos-see-OHNS-shtahnts (state of discussion; genitive '-s')"
         ]
       }
     ],
@@ -7994,35 +8445,40 @@ export const lessons: GermanLesson[] = [
         "en": "German Fixed-Term Contracts for Academic Staff Act",
         "vi": "luật hợp đồng có thời hạn cho nhân sự học thuật",
         "pos": "noun phrase",
-        "pronunciation_vi": "VIS-tsait-fê-gê"
+        "pronunciation_vi": "VIS-tsait-fê-gê",
+        "pronunciation_en": "dahs VISS-tsyte-FOW-gay — German Fixed-Term Contracts for Academic Staff Act; the abbreviation is read letter-by-letter"
       },
       {
         "word": "Planbarkeit",
         "en": "predictability",
         "vi": "tính dự đoán được",
         "pos": "noun (f)",
-        "pronunciation_vi": "PLA-nbar-kait"
+        "pronunciation_vi": "PLA-nbar-kait",
+        "pronunciation_en": "PLAHN-bar-kyte — predictability; literally 'plan-ability'"
       },
       {
         "word": "befristet",
         "en": "fixed-term",
         "vi": "có thời hạn",
         "pos": "adjective",
-        "pronunciation_vi": "bê-FRIS-tet"
+        "pronunciation_vi": "bê-FRIS-tet",
+        "pronunciation_en": "buh-FRIS-tet — adjective 'fixed-term'; from 'Frist' (deadline)"
       },
       {
         "word": "einordnen",
         "en": "to contextualize, frame",
         "vi": "đặt vào bối cảnh",
         "pos": "verb",
-        "pronunciation_vi": "AI-nor-dnân"
+        "pronunciation_vi": "AI-nor-dnân",
+        "pronunciation_en": "INE-ord-nen — verb 'to classify / frame / contextualise'; separable verb"
       },
       {
         "word": "der Diskussionsstand",
         "en": "state of the discussion",
         "vi": "tình hình thảo luận hiện tại",
         "pos": "noun (m)",
-        "pronunciation_vi": "dis-ku-SIÔNS-shtant"
+        "pronunciation_vi": "dis-ku-SIÔNS-shtant",
+        "pronunciation_en": "dayr dis-koos-see-OHNS-shtahnt — state of discussion; long compound, primary stress on -OHNS-"
       }
     ],
     "dialogue": [
@@ -8051,6 +8507,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "fill_blank",
         "instruction_vi": "Điền cụm phù hợp về bối cảnh pháp lý:",
+        "instruction_en": "Fill in the appropriate phrase about the legal context:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -8070,6 +8527,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "translation",
         "instruction_vi": "Dịch sang tiếng Đức formal C1:",
+        "instruction_en": "Translate into formal C1 German:",
         "pronunciation_focus": ["academic employment"],
         "items": [
           {
@@ -8084,8 +8542,11 @@ export const lessons: GermanLesson[] = [
       }
     ],
     "cultural_notes_vi": "WissZeitVG là chủ đề pháp lý - nhân sự nhạy cảm trong giới học thuật Đức. Vì vậy nên nói rất rõ: đây là bối cảnh thảo luận, không phải tư vấn pháp lý. Khi viết về nó, hãy giữ khoảng cách, nêu diễn biến tranh luận, và tránh khẳng định như luật sư.",
+    "cultural_notes_en": "WissZeitVG (Wissenschaftszeitvertragsgesetz — the German Fixed-Term Contracts for Academic Staff Act) is a sensitive legal-and-HR topic in academia. So state it clearly: this is discussion context, not legal advice. When writing about it, keep distance, describe the trajectory of the debate, and avoid lawyerly assertions. The reform is a live political issue with structural consequences for early-career researchers, so the language has to be careful.",
     "tip_advice_vi": "Nếu bạn đang viết về cải cách luật, hãy dùng từ khóa như 'Diskussionsstand', 'Einordnung', 'Planbarkeit', 'befristet' để giữ văn phong học thuật và an toàn.",
-    "register_notes": "Mọi câu về WissZeitVG nên gắn nhãn bối cảnh. Không nên chuyển sang ngôn ngữ khẳng định pháp lý nếu bạn không đang viết một văn bản pháp luật."
+    "tip_advice_en": "If you're writing about the reform, use keywords like 'Diskussionsstand' (state of discussion), 'Einordnung' (framing), 'Planbarkeit' (predictability), 'befristet' (fixed-term) to keep an academic voice and stay in safe territory. These words signal you are framing rather than asserting.",
+    "register_notes": "Mọi câu về WissZeitVG nên gắn nhãn bối cảnh. Không nên chuyển sang ngôn ngữ khẳng định pháp lý nếu bạn không đang viết một văn bản pháp luật.",
+    "register_notes_en": "Every sentence about the WissZeitVG should be tagged with its frame (discussion, debate, reform proposals). Don't switch into legal-assertion register unless you're actually drafting a legal text — the line between 'commentary' and 'legal advice' is treated seriously in German academic writing."
   },
   {
     "id": "lpeer_review_antwort",
@@ -8101,6 +8562,11 @@ export const lessons: GermanLesson[] = [
           "Gutachter → GUT-akh-ter",
           "Theoriebezug → tê-o-RI-bê-tsuk",
           "implizit → im-pli-TSIET"
+        ],
+        "pronunciation_focus_en": [
+          "Gutachter → GOO-tahkh-ter (reviewer; 'ch' here is the hard 'ach' sound)",
+          "Theoriebezug → tay-oh-REE-buh-tsook (theoretical link; literally 'theory-reference')",
+          "implizit → im-plee-TSIT (implicit; 'z' = 'ts')"
         ]
       },
       {
@@ -8110,6 +8576,11 @@ export const lessons: GermanLesson[] = [
           "dankbar aufnehmen → DANK-bar auF-NÊ-mân",
           "präzisieren → prê-tsi-ZI-rân",
           "Manuskript → ma-nu-SKRIPT"
+        ],
+        "pronunciation_focus_en": [
+          "dankbar aufnehmen → DAHNK-bar OWF-NAY-men (gratefully take up; 'au' = 'ow')",
+          "präzisieren → pray-tsee-ZEER-en (to specify / refine; final-syllable stress)",
+          "Manuskript → mah-noo-SKRIPT (manuscript; final-syllable stress)"
         ]
       },
       {
@@ -8119,6 +8590,11 @@ export const lessons: GermanLesson[] = [
           "womöglich → vo-MÖK-likh",
           "sachlich → ZAKH-likh",
           "Verteidigung → feR-TAI-di-gung"
+        ],
+        "pronunciation_focus_en": [
+          "womöglich → voh-MOEK-likh (possibly; 'ö' = rounded 'eh')",
+          "sachlich → ZAHKH-likh (factual; 'ch' here is the soft 'ich' sound)",
+          "Verteidigung → fer-TYE-dee-gung (defence; 'ei' = 'eye')"
         ]
       },
       {
@@ -8128,6 +8604,11 @@ export const lessons: GermanLesson[] = [
           "Erwiderung → eR-VI-dơ-rung",
           "Rechtfertigung → RÊKHT-fer-ti-gung",
           "Revision → rê-vi-ZIÔN"
+        ],
+        "pronunciation_focus_en": [
+          "Erwiderung → er-VEE-der-ung (response, rejoinder)",
+          "Rechtfertigung → REKHT-fer-tee-gung (justification; 'ch' here is the hard 'ach' sound)",
+          "Revision → ray-vee-zee-OHN (revision; final-syllable stress)"
         ]
       }
     ],
@@ -8137,35 +8618,40 @@ export const lessons: GermanLesson[] = [
         "en": "response, rejoinder",
         "vi": "phản hồi",
         "pos": "noun (f)",
-        "pronunciation_vi": "eR-VI-dơ-rung"
+        "pronunciation_vi": "eR-VI-dơ-rung",
+        "pronunciation_en": "dee er-VEE-der-ung — response / rejoinder; from 'erwidern' (to respond)"
       },
       {
         "word": "der Einwand",
         "en": "objection",
         "vi": "phản biện, ý kiến phản đối",
         "pos": "noun (m)",
-        "pronunciation_vi": "AIN-vant"
+        "pronunciation_vi": "AIN-vant",
+        "pronunciation_en": "dayr INE-vahnt — objection; 'ei' = 'eye'; final '-d' devoices to '-t'"
       },
       {
         "word": "präzisieren",
         "en": "to specify, make precise",
         "vi": "làm rõ, cụ thể hóa",
         "pos": "verb",
-        "pronunciation_vi": "prê-tsi-ZI-rân"
+        "pronunciation_vi": "prê-tsi-ZI-rân",
+        "pronunciation_en": "pray-tsee-ZEER-en — verb 'to specify / make precise'; final-syllable stress on -ZEER-"
       },
       {
         "word": "revidieren",
         "en": "to revise",
         "vi": "sửa đổi",
         "pos": "verb",
-        "pronunciation_vi": "rê-vi-DI-rân"
+        "pronunciation_vi": "rê-vi-DI-rân",
+        "pronunciation_en": "ray-vee-DEER-en — verb 'to revise'; final-syllable stress"
       },
       {
         "word": "der Theoriebezug",
         "en": "theoretical link",
         "vi": "liên hệ lý thuyết",
         "pos": "noun (m)",
-        "pronunciation_vi": "tê-o-RI-bê-tsuk"
+        "pronunciation_vi": "tê-o-RI-bê-tsuk",
+        "pronunciation_en": "dayr tay-oh-REE-buh-tsook — theoretical link; long compound, primary stress on -REE-"
       }
     ],
     "dialogue": [
@@ -8194,6 +8680,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "fill_blank",
         "instruction_vi": "Điền từ phù hợp cho phản hồi phản biện:",
+        "instruction_en": "Fill in the appropriate word for a reviewer response:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -8213,6 +8700,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "translation",
         "instruction_vi": "Dịch sang tiếng Đức formal C1:",
+        "instruction_en": "Translate into formal C1 German:",
         "pronunciation_focus": ["peer review response"],
         "items": [
           {
@@ -8227,8 +8715,11 @@ export const lessons: GermanLesson[] = [
       }
     ],
     "cultural_notes_vi": "Phản hồi phản biện trong tiếng Đức thường đề cao tính rõ ràng, khiêm tốn và sửa chữa có thể kiểm chứng. Đừng biến reply thành một cuộc tranh cãi cảm xúc. Người đọc muốn thấy bạn hiểu góp ý và đã hành động theo góp ý đó.",
+    "cultural_notes_en": "A peer-review response in German tends to prize clarity, modesty, and verifiable revision. Don't turn the reply into an emotional argument. The reader wants to see that you understood the comment and acted on it, with a concrete pointer to where in the manuscript the change happened. 'I disagree' is acceptable; 'I disagree and here's why, but I've also softened the wording on p. 14' is much stronger.",
     "tip_advice_vi": "Dùng cấu trúc: nhận góp ý, xác nhận điểm sửa, rồi nêu chính xác nơi đã chỉnh trong bản thảo. Ngắn và có kiểm chứng là tốt nhất.",
-    "register_notes": "Trong reviewer response, hãy nói như người chỉnh bản thảo chuyên nghiệp, không phải như người đang tự bào chữa."
+    "tip_advice_en": "Use the structure: receive the comment, confirm the revision, then point to the precise place in the manuscript where you changed it. Short and verifiable is best. Reviewers reward authors who can write a one-line response that tracks back to a one-line edit.",
+    "register_notes": "Trong reviewer response, hãy nói như người chỉnh bản thảo chuyên nghiệp, không phải như người đang tự bào chữa.",
+    "register_notes_en": "In a reviewer response, sound like a professional manuscript editor, not like someone defending themselves. The voice should be calm, factual, and revision-oriented — every comment receives a tracked change in the manuscript, and the response letter is the index to those changes."
   },
   {
     "id": "lbegriffsschaerfe_anschlussfaehigkeit",
@@ -8244,6 +8735,11 @@ export const lessons: GermanLesson[] = [
           "begriffliche Schärfe → bê-GRIF-likhê SHER-fê",
           "Anschlussfähigkeit → AN-shlus-fêk-kait",
           "Originalität → o-ri-gi-na-li-TÊT"
+        ],
+        "pronunciation_focus_en": [
+          "begriffliche Schärfe → buh-GRIF-likh-uh SHAIR-fuh (conceptual sharpness; 'ch' here is the soft 'ich' sound)",
+          "Anschlussfähigkeit → AHN-shloos-FAY-ikh-kyte (connectability; final '-keit' = 'kyte')",
+          "Originalität → oh-ree-gee-nah-lee-TET (originality; final-syllable stress)"
         ]
       },
       {
@@ -8253,6 +8749,11 @@ export const lessons: GermanLesson[] = [
           "zuschneiden → TSU-shnai-dân",
           "theoretischen Rahmen → tê-o-RÊ-ti-shên RA-mân",
           "anschlussfähig → AN-shlus-fêk"
+        ],
+        "pronunciation_focus_en": [
+          "zuschneiden → TSOO-shnye-den (to cut to fit; separable verb; 'ei' = 'eye')",
+          "theoretischen Rahmen → tay-oh-RAY-tish-en RAH-men (theoretical framework)",
+          "anschlussfähig → AHN-shloos-FAY-ikh (connectable)"
         ]
       },
       {
@@ -8262,6 +8763,11 @@ export const lessons: GermanLesson[] = [
           "gegebenenfalls → gê-GÊ-bênên-fals",
           "Fragestellung → FRA-gê-shtel-lung",
           "präziser → prê-TSI-zơ"
+        ],
+        "pronunciation_focus_en": [
+          "gegebenenfalls → guh-GAY-ben-en-fahls (if necessary; six syllables)",
+          "Fragestellung → FRAH-guh-shtel-lung (research question; literally 'question-posing')",
+          "präziser → pray-TSEE-zer (more precise)"
         ]
       },
       {
@@ -8271,6 +8777,11 @@ export const lessons: GermanLesson[] = [
           "Geisteswissenschaft → GAI-stes-vis-sen-shaft",
           "Formulierung → for-mu-LI-rung",
           "tragfähig → TRAK-fêk"
+        ],
+        "pronunciation_focus_en": [
+          "Geisteswissenschaft → GYE-stes-VIS-en-shahft (humanities; 'ei' = 'eye')",
+          "Formulierung → for-moo-LEER-ung (formulation; final-syllable stress before -ung)",
+          "tragfähig → TRAHK-fay-ikh (robust / load-bearing)"
         ]
       }
     ],
@@ -8280,35 +8791,40 @@ export const lessons: GermanLesson[] = [
         "en": "conceptual",
         "vi": "thuộc khái niệm",
         "pos": "adjective",
-        "pronunciation_vi": "bê-GRIF-likh"
+        "pronunciation_vi": "bê-GRIF-likh",
+        "pronunciation_en": "buh-GRIF-likh — adjective 'conceptual'; from 'Begriff' (concept) + '-lich' (-al)"
       },
       {
         "word": "Schärfe",
         "en": "sharpness, precision",
         "vi": "độ sắc, độ chính xác",
         "pos": "noun (f)",
-        "pronunciation_vi": "SHER-fê"
+        "pronunciation_vi": "SHER-fê",
+        "pronunciation_en": "dee SHAIR-fuh — sharpness / precision; from 'scharf' (sharp)"
       },
       {
         "word": "anschlussfähig",
         "en": "connectable, linkable",
         "vi": "có khả năng nối kết",
         "pos": "adjective",
-        "pronunciation_vi": "AN-shlus-fêk"
+        "pronunciation_vi": "AN-shlus-fêk",
+        "pronunciation_en": "AHN-shloos-FAY-ikh — adjective 'connectable / linkable'; from 'Anschluss' (connection) + '-fähig' (-able)"
       },
       {
         "word": "tragfähig",
         "en": "robust, substantial",
         "vi": "có sức nặng, có khả năng đứng vững",
         "pos": "adjective",
-        "pronunciation_vi": "TRAK-fêk"
+        "pronunciation_vi": "TRAK-fêk",
+        "pronunciation_en": "TRAHK-fay-ikh — adjective 'robust / substantial'; literally 'load-bearing'"
       },
       {
         "word": "die Fragestellung",
         "en": "research question",
         "vi": "câu hỏi nghiên cứu",
         "pos": "noun (f)",
-        "pronunciation_vi": "FRA-gê-shtel-lung"
+        "pronunciation_vi": "FRA-gê-shtel-lung",
+        "pronunciation_en": "dee FRAH-guh-shtel-lung — research question; the standard German term for an academic research question"
       }
     ],
     "dialogue": [
@@ -8337,6 +8853,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "fill_blank",
         "instruction_vi": "Điền cụm khái niệm phù hợp:",
+        "instruction_en": "Fill in the appropriate conceptual phrase:",
         "pronunciation_focus": [],
         "items": [
           {
@@ -8356,6 +8873,7 @@ export const lessons: GermanLesson[] = [
       {
         "type": "translation",
         "instruction_vi": "Dịch sang tiếng Đức formal C1:",
+        "instruction_en": "Translate into formal C1 German:",
         "pronunciation_focus": ["conceptual precision"],
         "items": [
           {
@@ -8370,8 +8888,11 @@ export const lessons: GermanLesson[] = [
       }
     ],
     "cultural_notes_vi": "Trong văn viết học thuật Đức, người ta rất coi trọng Begriffsschärfe và Anschlussfähigkeit. Ý tưởng không chỉ cần mới mà còn phải nối được vào cuộc tranh luận đang có. Đây là thước đo thực dụng của sự thuyết phục.",
+    "cultural_notes_en": "In German academic writing, Begriffsschärfe (conceptual precision) and Anschlussfähigkeit (the ability to plug into an existing scholarly conversation) are highly valued. Ideas need to be both new and connectable to a debate already underway. This is the practical measure of whether an idea is taken seriously. A sharp concept that can't be linked to the field is read as eccentric; a connectable concept without sharpness is read as derivative — you need both.",
     "tip_advice_vi": "Nếu muốn viết mạnh ở C1, hãy luôn hỏi: khái niệm này có sắc chưa, và nó nối được vào ai, vào tranh luận nào?",
-    "register_notes": "Các từ như 'tragfähig', 'anschlussfähig', 'begrifflich' nghe rất học thuật. Chúng phù hợp khi bạn muốn viết với tầm vóc, không phải khi nói chuyện thân mật."
+    "tip_advice_en": "If you want strong C1 academic prose, ask two questions of every concept: is it sharp yet, and what existing argument or scholar does it connect to? Both checks need a clean answer before the sentence is ready.",
+    "register_notes": "Các từ như 'tragfähig', 'anschlussfähig', 'begrifflich' nghe rất học thuật. Chúng phù hợp khi bạn muốn viết với tầm vóc, không phải khi nói chuyện thân mật.",
+    "register_notes_en": "Words like 'tragfähig', 'anschlussfähig', and 'begrifflich' carry a strong academic register. They suit writing that wants to claim weight and reach — not familiar conversation. Reach for them in proposals, abstracts, and review responses; avoid them in emails to colleagues unless you're being faintly ironic about the genre."
   },
   {
     "id": "lpressekonferenz_eroeffnen",
