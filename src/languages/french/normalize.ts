@@ -3,80 +3,13 @@
 // Converts FrenchLesson → NormalizedLesson for the shared <LessonRenderer>.
 // French sentences use s.en for the French content (legacy field name);
 // French exercises mix two shapes (lessons 1-20 nested items[], 21-50 flat).
-//
-// Inline type definitions are duplicated here for now; PR-C will replace
-// them with imports from '@/components/languages/LessonRenderer.types'
-// once A1's canonical types file lands.
 
 import type { FrenchLesson } from "./lessons";
+import type {
+  NormalizedExercise,
+  NormalizedLesson,
+} from "@/components/languages/LessonRenderer.types";
 import { lessonAudioBase } from "@/lib/lessonAudio";
-
-// ────────────────────────────────────────────────────────────────────────
-// Inline contract — TODO(PR-C): replace with import from
-// '@/components/languages/LessonRenderer.types'
-// ────────────────────────────────────────────────────────────────────────
-
-type CefrLevel = "A1" | "A2" | "B1" | "B2" | "C1" | "C2";
-
-type NormalizedExercise =
-  | { kind: "fill-blank"; question: string; answer: string }
-  | { kind: "matching"; instruction?: string; pairs: Array<{ a: string; b: string }> }
-  | { kind: "translation"; vi: string; native: string; romanization?: string };
-
-type NormalizedIdiomGloss = {
-  idiom: string;
-  literal: string;
-  meaning: string;
-  example: string;
-};
-
-type NormalizedLesson = {
-  id: number;
-  level: CefrLevel;
-  title: { vi: string; en: string; native?: string; romanization?: string };
-  intro?: string;
-  sentences: Array<{
-    native: string;
-    romanization?: string;
-    en?: string;
-    vi?: string;
-    pronunciationFocus?: string[];
-    note?: string;
-  }>;
-  vocabulary?: Array<{
-    native: string;
-    romanization?: string;
-    en?: string;
-    vi?: string;
-    phonetic?: string;
-  }>;
-  dialogue?: Array<{
-    speaker: string;
-    native: string;
-    romanization?: string;
-    en?: string;
-    vi?: string;
-  }>;
-  exercises?: NormalizedExercise[];
-  culturalNotesVi?: string;
-  tipAdviceVi?: string;
-  grammar?: Array<{ point: string; explanation: string }>;
-  // B2 fields — forward-compatible passthrough; raw data does not yet have these.
-  // Cast access via (lesson as any) until the per-language Lesson types pick them up.
-  dialogueLong?: Array<{
-    speaker: string;
-    native: string;
-    romanization?: string;
-    en?: string;
-    vi?: string;
-  }>;
-  roleplayPrompts?: string[];
-  registerNotes?: string;
-  idiomGlosses?: NormalizedIdiomGloss[];
-  audioBase?: string;
-};
-
-// ────────────────────────────────────────────────────────────────────────
 
 // Stable hash for FrenchLesson string ids ("french_greetings_intro" etc.)
 // so the React key is deterministic without requiring callers to pass an
@@ -116,20 +49,6 @@ export function normalizeFrenchLesson(
     exercises: normalizeFrenchExercises(lesson.exercises),
     culturalNotesVi: lesson.cultural_notes_vi,
     tipAdviceVi: lesson.tip_advice_vi,
-    dialogueLong: (lesson as any).dialogue_long?.map((line: any) => ({
-      speaker: line.speaker,
-      native: line.text,
-      en: line.english,
-      vi: line.vi,
-    })),
-    roleplayPrompts: (lesson as any).roleplay_prompts,
-    registerNotes: (lesson as any).register_notes,
-    idiomGlosses: (lesson as any).idiom_glosses?.map((g: any) => ({
-      idiom: g.idiom,
-      literal: g.literal,
-      meaning: g.meaning,
-      example: g.example,
-    })),
     audioBase: lessonAudioBase("fr", lesson.id, lesson.level),
   };
 }
