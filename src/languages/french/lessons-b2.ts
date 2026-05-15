@@ -10672,6 +10672,11 @@ export const lessons: FrenchLesson[] =           [
             "chambre → shãm-brơ",
             "problème → pro-blèm",
             "signaler → si-nia-lé"
+          ],
+          "pronunciation_focus_en": [
+            "chambre → SHAH(n)-bruh (nasal first syllable; final 'bre' = soft 'bruh', barely voiced)",
+            "problème → proh-BLEM (final 'me' silent; rhymes with English 'phlegm' minus the 'ph')",
+            "signaler → see-nyah-LAY ('gn' = 'ny' like the Spanish ñ; final '-er' = 'LAY', rhymes with 'pay')"
           ]
         },
         {
@@ -10681,6 +10686,11 @@ export const lessons: FrenchLesson[] =           [
             "climatisation → kli-ma-ti-za-sion",
             "fonctionne → fonk-sion",
             "degrés → dơ-gré"
+          ],
+          "pronunciation_focus_en": [
+            "climatisation → klee-mah-tee-zah-SYO(n) (five syllables, nasal final '-tion' = 'SYO(n)')",
+            "fonctionne → fo(n)k-SYON (nasal first syllable; the '-tionne' is 'syon', not English 'shun')",
+            "degrés → duh-GRAY (final 's' silent; rhymes with English 'gray')"
           ]
         },
         {
@@ -10691,6 +10701,12 @@ export const lessons: FrenchLesson[] =           [
             "ce matin → sơ ma-tan",
             "personne → pèr-son",
             "venu → vơ-nu"
+          ],
+          "pronunciation_focus_en": [
+            "déjà → day-ZHAH ('j' = 'zh' like the 's' in 'measure'; same as the English borrowing 'déjà vu')",
+            "ce matin → suh mah-TA(n) (final '-tin' is nasal 'TA(n)', no real 'n' sound)",
+            "personne → pair-SON (here means 'nobody'; final 'e' silent; the negation 'ne…personne')",
+            "venu → vuh-NEW (the 'u' is the rounded French 'u' — purse lips and say 'ee')"
           ]
         },
         {
@@ -10700,6 +10716,11 @@ export const lessons: FrenchLesson[] =           [
             "soit → swa",
             "changer → shãn-jé",
             "dédommagement → dé-do-maj-mã"
+          ],
+          "pronunciation_focus_en": [
+            "soit → SWAH (one syllable; the 'soit…soit…' construction = 'either…or…')",
+            "changer → shah(n)-ZHAY (nasal first; final '-ger' = 'ZHAY' with the 'measure' s-sound)",
+            "dédommagement → day-doh-mahzh-MAH(n) (five syllables; final '-ment' nasal; means 'compensation')"
           ]
         },
         {
@@ -10709,102 +10730,123 @@ export const lessons: FrenchLesson[] =           [
             "inacceptable → i-nak-sèp-tabl",
             "tarif → ta-rif",
             "paie → pè"
+          ],
+          "pronunciation_focus_en": [
+            "inacceptable → ee-nak-sep-TAH-bluh (five syllables; final 'ble' = soft 'bluh')",
+            "tarif → tah-REEF (final 'f' pronounced; means 'rate / price level')",
+            "paie → PEH (one syllable; open 'eh' like English 'pay' without the final glide; from 'payer')"
           ]
         }
       ],
       "cultural_notes_vi": "Khiếu nại khách sạn ở Pháp khác Việt Nam ở giọng điệu. Người Pháp expect khách hàng nêu vấn đề THẲNG nhưng KHÔNG cảm xúc — la lối, đe dọa review xấu sẽ khiến nhân viên đóng cửa hợp tác. Hiệu quả nhất: mô tả vấn đề cụ thể (« la climatisation ne fonctionne pas »), nói tác động (« j'ai dormi très mal »), đề xuất giải pháp cụ thể (« soit changer de chambre, soit un dédommagement »). Khách sạn Pháp có « directeur d'hôtel » hoặc « réception manager » — nhân viên trực ban đêm thường không có quyền giảm giá; phải đến gặp manager sáng hôm sau. Trong trường hợp khẩn (không có nước nóng giữa đêm): yêu cầu chuyển phòng ngay; khách sạn 3 sao trở lên gần như chắc chắn có phòng dự phòng. Tip culture: ở Pháp KHÔNG tip nhân viên khách sạn cho dịch vụ đã trả tiền (giặt là, dọn phòng) — service được tính trong giá. Tip chỉ khi nhân viên giúp việc ngoài phận sự (mang vali nhiều tầng, gọi taxi đêm khuya). Mẹo Việt « bo tiền cho dễ nhờ » phản tác dụng — bị nhìn như hối lộ.",
+      "cultural_notes_en": "Complaining at a French hotel is a register problem before it's a logistics problem, and anglophones get the register wrong in opposite directions. Americans tend to escalate fast — 'this is unacceptable, I want to speak to the manager, I'll be leaving a one-star review' — which in France makes the staff defensive and quietly uncooperative; the threat reads as bullying, not leverage. The British tend to under-state ('sorry to bother you, the air-con seems a touch warm') so much that nothing actually happens. The French sweet spot is direct but unemotional: name the specific defect ('la climatisation ne fonctionne pas'), state the concrete impact ('j'ai très mal dormi deux nuits'), and propose a specific remedy ('soit changer de chambre, soit un dédommagement'). No drama, no apology, no threats — just problem → impact → ask.\n\nTwo structural facts to know: (1) Night-desk staff usually cannot authorize a refund or discount — that's the 'directeur d'hôtel' who arrives in the morning. Asking the night clerk to discount is asking them to do something outside their authority, which dead-ends the conversation. Ask instead for the issue to be logged in writing and escalated. (2) For a genuine emergency (no hot water at midnight, a flooded bathroom), a room change is almost always available at 3-star and above — request it immediately and firmly; don't wait politely until morning.\n\nThe biggest cross-cultural trap for Vietnamese travelers: tipping to grease the wheels. In France you do NOT tip hotel staff to 'resolve things faster' — laundry, housekeeping, and front desk service are priced into the rate. A slipped banknote to make a problem go away reads as a small bribe and damages your standing with the staff, the opposite of what it does in some Vietnamese service contexts. Tip only for genuine extra effort outside the job (carrying heavy bags up several floors, hailing a taxi at 2 a.m.) — and even then modestly.",
       "tip_advice_vi": "Trước khi booking: đọc reviews trên Booking.com/Google chú ý đến « complaints récurrentes » (climatisation, propreté, bruit) — những vấn đề tái phát có nghĩa hệt thống có lỗi. Khi nhận phòng: kiểm tra ngay (5 phút): khóa cửa, nước nóng, máy lạnh/sưởi, wifi, ổ cắm — phát hiện sớm thì đổi dễ hơn. Trong khi ở: chụp ảnh mọi vấn đề kèm timestamp (vết bẩn, hỏng hóc) — bằng chứng cho khiếu nại. Khi khiếu nại: đến quầy lễ tân TRỰC TIẾP, không gọi điện nội bộ (nhân viên có thể « quên ») — yêu cầu cuộc trò chuyện và một « rapport écrit » (báo cáo viết) về vấn đề. Nếu không được giải quyết: yêu cầu nói chuyện với « directeur » hoặc « responsable de garde ». Đe dọa cuối: « Je vais devoir contester via Booking.com et la chambre de tourisme » — câu này có hiệu lực thật vì khách sạn ở Pháp bị cảnh báo bởi cả hai. Sau ở: nếu vấn đề chưa được giải quyết, viết review chi tiết + liên hệ booking site claim hoàn tiền — Booking.com có quy trình mediation chính thức.",
+      "tip_advice_en": "Before booking: read Booking.com/Google reviews and look specifically for recurring complaints (air-con, cleanliness, noise). A one-off bad review is noise; the same problem reported five times means a systemic fault you'll likely hit too. At check-in: do a 5-minute room test immediately — door lock, hot water, AC/heating, wifi, power outlets. Problems caught in the first 5 minutes are much easier to get a room change for than problems raised on night two. During the stay: photograph every issue with a visible timestamp (stains, broken fixtures) — this is your evidence if it comes to a dispute. When complaining: go to the front desk IN PERSON, don't call the internal line (a phone request is easy for staff to 'forget' with no paper trail). Ask for the issue to be logged and request a 'rapport écrit' (written report) of the problem. If it isn't resolved, ask to speak to the 'directeur' or the 'responsable de garde' (duty manager). The effective final lever is 'Je vais devoir contester via Booking.com et la chambre de tourisme' (I'll have to dispute this via Booking.com and the tourism board) — this works in France because hotels are genuinely accountable to both, unlike a vague 'I'll leave a bad review' which French staff hear constantly and discount. Anglophone calibration: this is the same escalation ladder you'd use at a US/UK hotel — front desk → duty manager → booking platform dispute — but in France keep every rung calm and factual; the moment you raise your voice, you lose the room.",
       "vocabulary": [
         {
           "word": "un défaut de chambre",
           "en": "a room defect",
           "vi": "lỗi phòng",
           "pos": "n.m.",
-          "pronunciation_vi": "dé-fo dơ shãm-brơ"
+          "pronunciation_vi": "dé-fo dơ shãm-brơ",
+          "pronunciation_en": "day-FOH duh SHAH(n)-bruh ('défaut' final 't' silent — rhymes with English 'foe'; 'chambre' nasal)"
         },
         {
           "word": "la climatisation",
           "en": "air conditioning",
           "vi": "máy lạnh",
           "pos": "n.f.",
-          "pronunciation_vi": "kli-ma-ti-za-sion"
+          "pronunciation_vi": "kli-ma-ti-za-sion",
+          "pronunciation_en": "klee-mah-tee-zah-SYO(n) (commonly shortened to 'la clim' /klEEM/ in speech)"
         },
         {
           "word": "un dédommagement",
           "en": "compensation",
           "vi": "đền bù",
           "pos": "n.m.",
-          "pronunciation_vi": "dé-do-maj-mã"
+          "pronunciation_vi": "dé-do-maj-mã",
+          "pronunciation_en": "day-doh-mahzh-MAH(n) (final '-ment' nasal; the formal word for monetary compensation for a wrong)"
         },
         {
           "word": "un surclassement",
           "en": "upgrade",
           "vi": "nâng hạng phòng",
           "pos": "n.m.",
-          "pronunciation_vi": "sur-klas-mã"
+          "pronunciation_vi": "sur-klas-mã",
+          "pronunciation_en": "soor-klahs-MAH(n) (the 'sur' has the rounded French 'u'; final '-ment' nasal; means a free room upgrade)"
         },
         {
           "word": "un remboursement partiel",
           "en": "partial refund",
           "vi": "hoàn tiền một phần",
           "pos": "n.m.",
-          "pronunciation_vi": "rãm-burs-mã par-siel"
+          "pronunciation_vi": "rãm-burs-mã par-siel",
+          "pronunciation_en": "rah(n)-boors-MAH(n) par-SYEL (two nasals in 'remboursement'; 'partiel' = 'par-syel', not English 'par-shul')"
         },
         {
           "word": "signaler un incident",
           "en": "to report an incident",
           "vi": "báo sự cố",
           "pos": "v.",
-          "pronunciation_vi": "si-nia-lé an an-si-dã"
+          "pronunciation_vi": "si-nia-lé an an-si-dã",
+          "pronunciation_en": "see-nyah-LAY uh(n) a(n)-see-DAH(n) ('gn' = 'ny'; 'incident' has two nasals, final 't' silent)"
         },
         {
           "word": "un rapport écrit",
           "en": "written report",
           "vi": "báo cáo viết",
           "pos": "n.m.",
-          "pronunciation_vi": "ra-por é-kri"
+          "pronunciation_vi": "ra-por é-kri",
+          "pronunciation_en": "rah-POR ay-KREE (both final consonants silent — 'rapport' ends 'POR', 'écrit' ends 'KREE')"
         },
         {
           "word": "le directeur d'hôtel",
           "en": "hotel manager",
           "vi": "giám đốc khách sạn",
           "pos": "n.m.",
-          "pronunciation_vi": "di-rèk-tơr do-tèl"
+          "pronunciation_vi": "di-rèk-tơr do-tèl",
+          "pronunciation_en": "dee-rek-TUHR doh-TEL (final 'eur' = 'UHR' with rounded lips; the one who can authorize refunds, unlike night staff)"
         },
         {
           "word": "la chambre de tourisme",
           "en": "tourism board",
           "vi": "hội du lịch",
           "pos": "n.f.",
-          "pronunciation_vi": "shãm-brơ dơ tu-rism"
+          "pronunciation_vi": "shãm-brơ dơ tu-rism",
+          "pronunciation_en": "SHAH(n)-bruh duh too-REESM (the regional tourism authority — a real accountability body in France, not just a slogan)"
         },
         {
           "word": "contester sur Booking",
           "en": "to dispute via Booking",
           "vi": "khiếu nại qua Booking",
           "pos": "v.",
-          "pronunciation_vi": "kõn-tès-té sur bu-king"
+          "pronunciation_vi": "kõn-tès-té sur bu-king",
+          "pronunciation_en": "ko(n)-tes-TAY soor BOO-king (formal 'contester' = to dispute / challenge; 'Booking' kept as the English brand)"
         }
       ],
       "dialogue": [
         {
           "speaker": "Linh",
           "text": "Bonjour, je suis dans la 412. La clim ne fonctionne pas.",
+          "en": "Hello, I'm in room 412. The air conditioning isn't working.",
           "vi": "Chào, em ở phòng 412. Máy lạnh không chạy."
         },
         {
           "speaker": "Réceptionniste",
           "text": "Je suis désolée. Vous l'avez signalé quand ?",
+          "en": "I'm sorry. When did you report it?",
           "vi": "Tôi xin lỗi. Cô đã báo lúc nào?"
         },
         {
           "speaker": "Linh",
           "text": "Ce matin à 9 heures. Il fait 30°C dans la chambre.",
+          "en": "This morning at 9. It's 30°C (86°F) in the room.",
           "vi": "Sáng nay 9 giờ. Phòng đang 30°C."
         },
         {
           "speaker": "Réceptionniste",
           "text": "J'envoie immédiatement un technicien — sinon on vous change de chambre.",
+          "en": "I'll send a technician right away — otherwise we'll move you to another room.",
           "vi": "Tôi cử kỹ thuật viên ngay — nếu không, mình đổi phòng cho cô."
         }
       ],
@@ -10812,86 +10854,103 @@ export const lessons: FrenchLesson[] =           [
         {
           "speaker": "Linh (à la réception, après deux nuits sans clim)",
           "text": "Bonjour. Je suis Madame Trần, chambre 412 depuis dimanche. J'ai un problème sérieux à signaler.",
+          "en": "Hello. I'm Mrs. Trần, room 412 since Sunday. I have a serious problem to report.",
           "vi": "Chào. Em là cô Trần, phòng 412 từ chủ nhật. Em có vấn đề nghiêm trọng muốn báo."
         },
         {
           "speaker": "Réceptionniste",
           "text": "Bonjour Madame. Quel est le problème ?",
+          "en": "Hello, ma'am. What's the problem?",
           "vi": "Chào cô. Vấn đề gì?"
         },
         {
           "speaker": "Linh",
           "text": "La climatisation ne fonctionne pas depuis mon arrivée. Il fait 30 degrés dans la chambre. J'ai signalé le problème dimanche soir et lundi matin — un technicien est passé brièvement lundi mais le problème n'est pas réglé.",
+          "en": "The air conditioning hasn't worked since I arrived. It's 30°C in the room. I reported the problem Sunday evening and Monday morning — a technician came by briefly on Monday but the problem isn't fixed.",
           "vi": "Máy lạnh không hoạt động từ khi em đến. Phòng 30 độ. Em đã báo tối chủ nhật và sáng thứ hai — kỹ thuật viên có ghé qua nhanh thứ hai nhưng vấn đề chưa được sửa."
         },
         {
           "speaker": "Réceptionniste",
           "text": "Je suis vraiment désolée. Je vois dans le système qu'un signalement a été fait. Le technicien a noté que la pièce de rechange n'arrive que demain.",
+          "en": "I'm really sorry. I can see in the system that a report was filed. The technician noted that the replacement part doesn't arrive until tomorrow.",
           "vi": "Tôi thực sự xin lỗi. Tôi thấy trong hệ thống có báo cáo. Kỹ thuật viên ghi rằng linh kiện thay thế phải đến mai."
         },
         {
           "speaker": "Linh",
           "text": "Ce qui m'a posé problème, c'est qu'on ne m'a rien dit. J'ai dormi deux nuits dans une chambre à 30 degrés sans savoir qu'on attendait une pièce. Je dois soit changer de chambre, soit obtenir un dédommagement.",
+          "en": "What's bothered me is that no one told me anything. I slept two nights in a 30°C room without knowing a part was on order. I need to either change rooms or get compensation.",
           "vi": "Vấn đề là không ai nói cho em biết. Em đã ngủ hai đêm trong phòng 30 độ mà không biết đang chờ linh kiện. Em phải hoặc đổi phòng, hoặc được đền bù."
         },
         {
           "speaker": "Réceptionniste",
           "text": "Vous avez tout à fait raison. Pour le changement, je vérifie tout de suite. Pour le dédommagement, je dois en parler au directeur, qui arrive à 9 heures.",
+          "en": "You're absolutely right. For the room change, I'll check right now. For the compensation, I have to discuss it with the manager, who arrives at 9.",
           "vi": "Cô hoàn toàn đúng. Về đổi phòng, tôi kiểm tra ngay. Đền bù, tôi phải nói với giám đốc, đến lúc 9 giờ."
         },
         {
           "speaker": "Linh",
           "text": "D'accord. Pour le changement, c'est urgent — j'aimerais déménager ce matin avant ma journée de visite.",
+          "en": "OK. The room change is urgent — I'd like to move this morning before my day of sightseeing.",
           "vi": "Vâng. Đổi phòng là khẩn — em muốn chuyển sáng nay trước khi đi tham quan."
         },
         {
           "speaker": "Réceptionniste",
           "text": "Je vois une chambre 615, supérieure, libre depuis ce matin — clim testée hier. Je peux vous y installer dans 30 minutes, le temps de la préparer.",
+          "en": "I see room 615, a superior room, free since this morning — AC tested yesterday. I can move you in there in 30 minutes, the time it takes to prepare it.",
           "vi": "Tôi thấy phòng 615, hạng trên, trống từ sáng — máy lạnh đã test hôm qua. Tôi có thể chuyển cô đó trong 30 phút, thời gian dọn phòng."
         },
         {
           "speaker": "Linh",
           "text": "Parfait. Et pour les deux nuits déjà passées dans la 412, qu'est-ce que vous proposez ?",
+          "en": "Perfect. And for the two nights already spent in 412, what do you propose?",
           "vi": "Hoàn hảo. Còn hai đêm đã ở phòng 412, anh/chị đề xuất gì?"
         },
         {
           "speaker": "Réceptionniste",
           "text": "Je propose : 50 % de remise sur les deux nuits affectées, soit 175 euros remboursés sur votre carte de crédit. Plus le surclassement gratuit en chambre 615 pour les nuits restantes — c'est normalement 35 euros de plus par nuit.",
+          "en": "I propose: a 50% discount on the two affected nights, that's 175 euros refunded to your credit card. Plus the free upgrade to room 615 for the remaining nights — that's normally 35 euros more per night.",
           "vi": "Tôi đề xuất: giảm 50% hai đêm đó, tức hoàn 175 euro vào thẻ. Cộng nâng phòng miễn phí lên 615 cho đêm còn lại — thường thêm 35 euro mỗi đêm."
         },
         {
           "speaker": "Linh",
           "text": "C'est correct. J'aimerais quand même un courriel récapitulatif avec ces termes — surclassement et remboursement — pour que ce soit officiel.",
+          "en": "That's fair. I'd still like a summary email with these terms — upgrade and refund — so that it's official.",
           "vi": "Hợp lý. Em vẫn muốn email tóm tắt các điều khoản — nâng phòng và hoàn tiền — để có chính thức."
         },
         {
           "speaker": "Réceptionniste",
           "text": "Bien sûr, je vous l'envoie tout de suite à l'adresse de votre réservation. Vous l'aurez avant votre départ pour visite.",
+          "en": "Of course, I'll send it to you right now at the email on your reservation. You'll have it before you leave to go sightseeing.",
           "vi": "Tất nhiên, tôi gửi ngay đến địa chỉ booking. Cô sẽ nhận trước khi đi tham quan."
         },
         {
           "speaker": "Linh",
           "text": "Et au moment du checkout, est-ce que je dois faire quelque chose de particulier pour vérifier que le remboursement a bien été appliqué ?",
+          "en": "And at checkout, do I need to do anything specific to verify the refund was actually applied?",
           "vi": "Và khi check-out, em có cần làm gì đặc biệt để kiểm tra hoàn tiền đã áp dụng không?"
         },
         {
           "speaker": "Réceptionniste",
           "text": "Demandez la facture détaillée et vérifiez les lignes. Si le crédit n'apparaît pas, signalez-le immédiatement — je vais le noter dans votre dossier maintenant pour que ce soit acté.",
+          "en": "Ask for the itemized bill and check the lines. If the credit doesn't appear, flag it immediately — I'll note it in your file now so that it's on record.",
           "vi": "Yêu cầu hóa đơn chi tiết và kiểm tra các dòng. Nếu credit không xuất hiện, báo ngay — tôi note vào hồ sơ cô bây giờ để được ghi nhận."
         },
         {
           "speaker": "Linh",
           "text": "Très bien. Merci d'avoir géré ça rapidement.",
+          "en": "Very good. Thank you for handling this quickly.",
           "vi": "Tốt lắm. Cảm ơn anh/chị đã xử lý nhanh."
         },
         {
           "speaker": "Réceptionniste",
           "text": "Je vous en prie. Encore désolée pour la gêne. Quelqu'un montera vos affaires en 615 dès qu'elle est prête.",
+          "en": "You're welcome. Again, sorry for the inconvenience. Someone will bring your things up to 615 as soon as it's ready.",
           "vi": "Không có gì. Xin lỗi lần nữa vì phiền. Có người sẽ chuyển đồ cô lên phòng 615 ngay khi sẵn sàng."
         },
         {
           "speaker": "Linh",
           "text": "Merci, bonne journée.",
+          "en": "Thank you, have a good day.",
           "vi": "Cảm ơn, chúc anh/chị ngày tốt lành."
         }
       ],
@@ -10900,30 +10959,44 @@ export const lessons: FrenchLesson[] =           [
         "Khách sạn từ chối đổi phòng vì « complet ». Đề xuất alternative: dédommagement + check-out sớm hôm sau (không chịu thêm phí), hoặc gọi Booking.com mediation tại chỗ — không đe dọa kiện cáo.",
         "Khi check-out, hóa đơn không có credit hoàn tiền đã thỏa thuận. Đối chất lịch sự với receptionniste khác (không phải người ban đầu) — dùng email xác nhận đã có làm bằng chứng."
       ],
+      "roleplay_prompts_en": [
+        "The room smells of cigarette smoke even though the hotel advertised non-smoking. Request a room change plus compensation — produce a photo of an old ashtray in the nightstand drawer as evidence, and stay calm; no shouting. (US/UK parallel: same move you'd make at a Marriott or Premier Inn — document the defect, state it flatly, ask for the specific remedy. The evidence does the arguing, not your tone.)",
+        "The hotel refuses a room change citing 'fully booked'. Propose alternatives: compensation plus an early checkout the next day with no penalty, OR call the Booking.com mediation line on the spot — without threatening to sue. (Anglophone calibration: 'I'll dispute this through the platform' is real leverage in France, just as a chargeback threat is in the US/UK; an empty 'I'll destroy you online' is not — French staff hear it daily and tune it out.)",
+        "At checkout, the bill doesn't show the agreed refund credit. Politely confront a different receptionist (not the original one) — use the confirmation email you already obtained as evidence. Lead with the document, not the grievance: 'J'ai un courriel qui confirme un remboursement de 175 euros — il n'apparaît pas sur la facture. Pouvez-vous vérifier ?'"
+      ],
       "register_notes": "Khiếu nại khách sạn dùng vouvoiement, giọng điềm tĩnh. Tránh các cụm cảm xúc: « c'est inadmissible! », « je vais aller sur TripAdvisor! », « je veux le directeur tout de suite! » — đẩy nhân viên vào thế phòng thủ. Thay bằng giọng problem-solving: « j'ai un problème sérieux », « j'aimerais que nous trouvions une solution », « est-ce que vous pouvez vérifier avec le directeur ? ». Khi đã thỏa thuận giải pháp: yêu cầu xác nhận bằng email tại chỗ — không thỏa hiệp với « je vous le confirme par téléphone plus tard ». Khi nhân viên không có quyền: hỏi tên + đề xuất escalate, không cố gắng convince nhân viên cấp dưới làm việc ngoài thẩm quyền. Khi rời quầy mà chưa giải quyết được: « Je reviens dans une heure parler avec votre supérieur » — cho thời gian, đặt áp lực nhẹ. Tránh: gọi nhân viên « jeune fille » hoặc « monsieur » đột ngột nhân viên không quen — dùng tên trên badge nếu thấy được, hoặc « Madame/Monsieur » trung tính. Tip: ở Pháp, KHÔNG tip nhân viên khách sạn để « giải quyết nhanh » — bị xem là hối lộ.",
+      "register_notes_en": "Hotel complaints use vouvoiement and a calm tone throughout — there is never a point where switching to tu or raising your voice helps. Avoid the emotional escalators that come naturally to American speakers: 'c'est inadmissible!' (this is outrageous!), 'je vais aller sur TripAdvisor!' (I'll post on TripAdvisor!), 'je veux le directeur tout de suite!' (I want the manager right now!). All three push French staff into defensive mode, where they do the minimum and nothing extra. Replace with the problem-solving register: 'j'ai un problème sérieux' (I have a serious problem), 'j'aimerais que nous trouvions une solution' (I'd like us to find a solution — note the 'nous', framing it as a joint task), 'est-ce que vous pouvez vérifier avec le directeur?' (can you check with the manager?). Once a remedy is agreed, ask for email confirmation on the spot — do not accept 'je vous le confirme par téléphone plus tard' (I'll confirm by phone later), which is where agreed compensation quietly evaporates.\n\nWhen the staff member genuinely lacks authority (night desk, refund decisions), don't try to argue them into exceeding it — that just dead-ends. Ask their name, ask for the issue logged in writing, and propose escalation to the duty manager. If you leave the desk unresolved, 'Je reviens dans une heure parler avec votre supérieur' (I'll come back in an hour to speak with your supervisor) sets a soft deadline without a threat. One address-form note for anglophones and Vietnamese speakers alike: don't call a staff member 'jeune fille' (young lady) or abruptly 'monsieur/madame' as an attention-getter — use the name on their badge if visible, otherwise a neutral 'Bonjour' to open and 'Madame/Monsieur' sparingly. And the hard rule, opposite to some Vietnamese service habits: do NOT slip money to 'speed things up' — in France that reads as attempted bribery and burns your credibility instantly.",
       "idiom_glosses": [
         {
           "idiom": "En faire une montagne",
           "literal": "Biến thành ngọn núi",
+          "literal_en": "To make a mountain out of it",
           "meaning": "Phóng đại vấn đề.",
+          "meaning_en": "To blow something out of proportion. Almost identical to English 'to make a mountain out of a molehill' — useful for pre-empting the accusation: 'je n'en fais pas une montagne, mais…'.",
           "example": "Je n'en fais pas une montagne, mais deux nuits sans clim, c'est sérieux."
         },
         {
           "idiom": "Tirer au clair",
           "literal": "Kéo ra ánh sáng",
+          "literal_en": "To pull (it) into the clear / into the light",
           "meaning": "Làm rõ vấn đề.",
+          "meaning_en": "To clear something up — get to the bottom of an unclear situation. Anglophone equivalent: 'to get to the bottom of it' or 'to clear the air'.",
           "example": "Tirons au clair la situation avant que je m'engage à rester."
         },
         {
           "idiom": "Trouver un terrain d'entente",
           "literal": "Tìm mảnh đất đồng thuận",
+          "literal_en": "To find a terrain of agreement",
           "meaning": "Đạt thỏa thuận khả thi cho cả hai.",
+          "meaning_en": "To find common ground / reach a workable compromise both sides accept. The standard French phrase for closing any negotiation amicably.",
           "example": "Avec le surclassement et la remise, on a trouvé un terrain d'entente."
         },
         {
           "idiom": "Faire bonne impression",
           "literal": "Tạo ấn tượng tốt",
+          "literal_en": "To make a good impression",
           "meaning": "Để lại cảm giác tích cực.",
+          "meaning_en": "To leave a positive impression. Same image as English 'to make a good impression' — used here for how a hotel can recover reputation through fast handling.",
           "example": "En réglant rapidement, l'hôtel a fait bonne impression malgré le problème initial."
         }
       ],
@@ -10931,7 +11004,10 @@ export const lessons: FrenchLesson[] =           [
         {
           "type": "fill-blank",
           "question": "Je voudrais ___ changer de chambre, ___ obtenir un dédommagement.",
-          "answer": "soit / soit"
+          "question_en": "I'd like to ___ change rooms, ___ get compensation.",
+          "answer": "soit / soit",
+          "hint_vi": "liên từ « hoặc… hoặc… »",
+          "hint_en": "the correlative conjunction 'either…or…' — same word repeated"
         },
         {
           "type": "matching",
@@ -10949,12 +11025,30 @@ export const lessons: FrenchLesson[] =           [
               "báo cáo viết"
             ]
           ],
-          "instruction": "Nối thuật ngữ với nghĩa"
+          "pairs_en": [
+            [
+              "un dédommagement",
+              "compensation — a monetary payment for a wrong (e.g. a refund for two bad nights)"
+            ],
+            [
+              "un surclassement",
+              "an upgrade — being moved to a higher room category, often free as goodwill"
+            ],
+            [
+              "un rapport écrit",
+              "a written report — the logged record of the issue you should always request"
+            ]
+          ],
+          "instruction": "Nối thuật ngữ với nghĩa",
+          "instruction_en": "Match each French hotel-complaint term with its English explanation."
         },
         {
           "type": "translation",
           "vietnamese": "Tình huống này không thể chấp nhận được với giá em đang trả.",
-          "french": "Cette situation est inacceptable pour le tarif que je paie."
+          "french": "Cette situation est inacceptable pour le tarif que je paie.",
+          "english": "This situation is unacceptable for the rate I'm paying.",
+          "hint_vi": "« inacceptable » + « pour le tarif que »",
+          "hint_en": "'inacceptable' (unacceptable) + 'pour le tarif que je paie' (for the rate I'm paying) — firm but not emotional"
         }
       ]
     },
@@ -10972,6 +11066,11 @@ export const lessons: FrenchLesson[] =           [
             "bagage → ba-gaj",
             "soute → sut",
             "tapis → ta-pi"
+          ],
+          "pronunciation_focus_en": [
+            "bagage → bah-GAHZH (final 'ge' = 'zh' like the 's' in 'measure'; not English 'baggage')",
+            "soute → SOOT (one syllable; final 'e' silent; the cargo hold — 'en soute' = checked, not cabin)",
+            "tapis → tah-PEE (final 's' silent; here means the baggage carousel/belt, not 'carpet')"
           ]
         },
         {
@@ -10981,6 +11080,11 @@ export const lessons: FrenchLesson[] =           [
             "billet → bi-yè",
             "étiquette → é-ti-kèt",
             "bagage → ba-gaj"
+          ],
+          "pronunciation_focus_en": [
+            "billet → bee-YEH (final 't' silent; 'illet' = the 'ee-yeh' double-y sound)",
+            "étiquette → ay-tee-KET (final 'te' = 'KET', rhymes with English 'pet'; here means the baggage tag sticker)",
+            "bagage → bah-GAHZH ('ge' = 'zh'; one suitcase = 'un bagage', plural luggage = 'des bagages')"
           ]
         },
         {
@@ -10990,6 +11094,11 @@ export const lessons: FrenchLesson[] =           [
             "valise → va-liz",
             "Samsonite → sam-so-nit",
             "kilos → ki-lo"
+          ],
+          "pronunciation_focus_en": [
+            "valise → vah-LEEZ (final 's' = 'z' sound; rhymes with English 'fleece' but voiced — 'leez')",
+            "Samsonite → sam-so-NEET (French stresses the last syllable; final 'e' makes 'nite' = 'neet')",
+            "kilos → kee-LOH (final 's' silent; French uses kilos, not pounds — 23 kg ≈ 50 lb)"
           ]
         },
         {
@@ -10999,6 +11108,11 @@ export const lessons: FrenchLesson[] =           [
             "pourriez → pu-rié",
             "Property → pro-per-ti",
             "irregularity → i-ré-gu-la-ri-ti"
+          ],
+          "pronunciation_focus_en": [
+            "pourriez → poor-YAY (conditional 'could you?' — the polite formal request form)",
+            "Property → French agents say it roughly 'proh-pair-TEE' (English term kept; they may also just say 'le PIR')",
+            "PIR → spelled out as 'PEE-EE-AIR' in French (the official airline lost-baggage form — ask for it by these letters)"
           ]
         },
         {
@@ -11008,102 +11122,123 @@ export const lessons: FrenchLesson[] =           [
             "en attendant → ã-na-tãn-dã",
             "indemnité → an-dèm-ni-té",
             "première nécessité → prơ-mièr né-sè-si-té"
+          ],
+          "pronunciation_focus_en": [
+            "en attendant → ah(n)-nah-tah(n)-DAH(n) (three nasals; means 'in the meantime / while waiting')",
+            "indemnité → a(n)-dem-nee-TAY (nasal first; 'j'ai droit à une indemnité' = 'I'm entitled to an allowance')",
+            "première nécessité → pruh-MYAIR nay-seh-see-TAY ('de première nécessité' = 'of basic necessity / essential')"
           ]
         }
       ],
       "cultural_notes_vi": "Mất hành lý là một trong những tình huống phổ biến nhất khách quốc tế đối mặt — và một trong những tình huống mà người Việt dễ bị đối xử kém nhất nếu không biết đòi quyền lợi. Quy trình chuẩn của ngành hàng không (IATA): (1) Đến QUẦY HÃNG BAY (không lost-and-found chung) trước khi rời sân bay — sau khi rời, claim có thể bị từ chối; (2) Yêu cầu « PIR » (Property Irregularity Report) với mã số 5 ký tự — đây là vé claim chính thức; (3) Mô tả vali chi tiết: brand, màu, kích cỡ, trọng lượng, dấu hiệu đặc biệt (sticker, dây ruy băng), nội dung tổng quát; (4) Cung cấp địa chỉ + số điện thoại tại Pháp; (5) Yêu cầu « indemnité de première nécessité » — luật EU bắt buộc hãng bay cấp 50-100 EUR để mua đồ ngay (quần áo, đồ vệ sinh) khi vali mất quá 24 giờ. Nhiều người Việt KHÔNG biết quyền này và không yêu cầu — bỏ lỡ tiền đáng có. Nếu vali mất hơn 21 ngày: được tuyên bố « lost » và bồi thường theo Convention de Montréal — tối đa khoảng 1700 EUR. Lưu ý: bồi thường chỉ TỐI ĐA — phải có hóa đơn nội dung. Mẹo cũ « kê giá đồ trong vali cao hơn thực tế » sẽ bị phát hiện và làm hỏng cả claim.",
+      "cultural_notes_en": "Lost luggage is one of the most common situations international travelers face — and one where Vietnamese travelers most often get a worse outcome than they're entitled to, simply because they don't know to ask for their rights. The IATA-standard process is the same at every major airline: (1) Go to the AIRLINE's own counter (not the airport general lost-and-found) BEFORE you leave the airport — once you exit, a claim can be refused. (2) Ask for a 'PIR' (Property Irregularity Report) — the report has a reference code; this is your official claim ticket. (3) Describe the suitcase in detail: brand, color, size, weight, distinctive marks (stickers, ribbon), general contents. (4) Provide an address and phone number in France. (5) Ask explicitly for the 'indemnité de première nécessité' — EU regulation requires the airline to give roughly €50–100 to buy immediate essentials (clothing, toiletries) when the bag is delayed past ~24 hours.\n\nThat last point is the key cross-cultural trap, and it cuts both ways: many Vietnamese travelers don't know this right exists and never ask, leaving real money on the table; many American travelers, by contrast, assume the airline owes them more than it does and over-claim. The correct frame is the EU/Montreal one: you are entitled to a specific, capped allowance, and you claim it by producing receipts — not by negotiating a number out of the agent. If the bag is gone more than 21 days, it's officially declared 'lost' and you can claim under the Montreal Convention — up to roughly €1700. Critically, that's a MAXIMUM, paid against an itemized inventory with receipts where possible. The old instinct (in any culture) to inflate the value of what was in the bag backfires hard: airlines cross-check, and one implausible line item discredits the entire claim. Anglophone calibration: this is the identical process at a US or UK airline (BA, United) — same PIR, same 'interim expenses' allowance, same documented-claim discipline; only the regulatory ceiling differs.",
       "tip_advice_vi": "Phòng ngừa: chụp ảnh nội dung vali trước khi check-in (chứng minh nội dung khi claim); đính tag tên + số điện thoại + email cả bên trong và bên ngoài vali (vé tag bên ngoài có thể rớt); KHÔNG để vật quý (laptop, hộ chiếu, thuốc, máy ảnh) trong vali ký gửi — chỉ trong xách tay. Khi đến sân bay phát hiện mất: ĐỪNG rời terminal — đến quầy hãng bay ngay (Air France: terminal 2E ở CDG, quầy « Lost Baggage »). Mang theo: vé, étiquette de bagage (tag dán khi check-in), passport. Yêu cầu PIR ngay — không rời mà chưa có giấy. Hỏi rõ: thời gian dự kiến tìm thấy, cách liên hệ (SMS, email), số tracker online (LH BagTrack, AF Bagages). Yêu cầu « indemnité » bằng giọng cụ thể: « Quel est le montant de l'indemnité de première nécessité, et comment puis-je l'obtenir ? » — không « est-ce qu'il y a un dédommagement? » mơ hồ. Sau đó: giữ tất cả hóa đơn quần áo/đồ vệ sinh đã mua (tối đa 100 EUR/người); gửi claim hoàn tiền cùng với ảnh nội dung vali ban đầu. Nếu vali tìm được: hãng giao về địa chỉ — KHÔNG phải bạn quay lại sân bay. Yêu cầu giao tận nơi.",
+      "tip_advice_en": "Prevention (do this before you fly): photograph the contents of your suitcase before check-in (this proves contents if you ever claim); put a name + phone + email tag BOTH inside and outside the bag (the external tag can tear off); and never put valuables — laptop, passport, medication, camera — in checked luggage; carry-on only. When you reach the airport and find the bag missing: DON'T leave the terminal — go straight to the airline's counter (Air France: terminal 2E at CDG, 'Lost Baggage' desk). Bring: your ticket, the baggage tag (the sticker applied at check-in), and your passport. Ask for the PIR immediately — do not leave without the paper reference. Ask specifically: estimated time to locate, how they'll contact you (SMS, email), and the online tracker name (e.g. AF Bagages). Request the allowance with a precise question: 'Quel est le montant de l'indemnité de première nécessité, et comment puis-je l'obtenir?' (What's the amount of the basic-necessities allowance, and how do I claim it?) — not the vague 'est-ce qu'il y a un dédommagement?' which invites a vague answer. Then keep ALL receipts for clothing/toiletries you buy (up to ~€100/person/day); submit the reimbursement claim with the original suitcase-contents photos. If the bag is found, the airline delivers it to your address — you do NOT have to go back to the airport; explicitly ask for home/hotel delivery. Anglophone note: this exact playbook works at any US/UK airline counter — the PIR, the interim-expenses receipts, the home delivery — so it's worth memorizing once and reusing everywhere.",
       "vocabulary": [
         {
           "word": "un bagage en soute",
           "en": "checked luggage",
           "vi": "hành lý ký gửi",
           "pos": "n.m.",
-          "pronunciation_vi": "ba-gaj ã sut"
+          "pronunciation_vi": "ba-gaj ã sut",
+          "pronunciation_en": "bah-GAHZH ah(n) SOOT ('en soute' = in the hold, i.e. checked — opposed to 'en cabine')"
         },
         {
           "word": "le tapis (à bagages)",
           "en": "baggage carousel",
           "vi": "băng chuyền hành lý",
           "pos": "n.m.",
-          "pronunciation_vi": "ta-pi"
+          "pronunciation_vi": "ta-pi",
+          "pronunciation_en": "luh tah-PEE (literally 'the carpet/belt'; the rotating baggage claim carousel)"
         },
         {
           "word": "une étiquette de bagage",
           "en": "baggage tag",
           "vi": "tem hành lý",
           "pos": "n.f.",
-          "pronunciation_vi": "é-ti-kèt dơ ba-gaj"
+          "pronunciation_vi": "é-ti-kèt dơ ba-gaj",
+          "pronunciation_en": "ay-tee-KET duh bah-GAHZH (the sticker/receipt stub given at check-in — keep it; it's the claim key)"
         },
         {
           "word": "un PIR (Property Irregularity Report)",
           "en": "PIR — official lost luggage report",
           "vi": "báo cáo hành lý mất chính thức",
           "pos": "n.m.",
-          "pronunciation_vi": "pi-i-èr"
+          "pronunciation_vi": "pi-i-èr",
+          "pronunciation_en": "PEE-EE-AIR (spell the three letters in French; the official airline form — ask for it by name)"
         },
         {
           "word": "une indemnité",
           "en": "compensation allowance",
           "vi": "trợ cấp đền bù",
           "pos": "n.f.",
-          "pronunciation_vi": "an-dèm-ni-té"
+          "pronunciation_vi": "an-dèm-ni-té",
+          "pronunciation_en": "a(n)-dem-nee-TAY (nasal first; a regulated allowance you're entitled to, not a negotiated favor)"
         },
         {
           "word": "de première nécessité",
           "en": "basic necessities",
           "vi": "đồ cần thiết cơ bản",
           "pos": "adj.",
-          "pronunciation_vi": "dơ prơ-mièr né-sè-si-té"
+          "pronunciation_vi": "dơ prơ-mièr né-sè-si-té",
+          "pronunciation_en": "duh pruh-MYAIR nay-seh-see-TAY (set phrase; 'achats de première nécessité' = essential purchases)"
         },
         {
           "word": "déposer un dossier",
           "en": "to file a claim",
           "vi": "nộp hồ sơ",
           "pos": "v.",
-          "pronunciation_vi": "dé-po-zé an do-sié"
+          "pronunciation_vi": "dé-po-zé an do-sié",
+          "pronunciation_en": "day-poh-ZAY uh(n) doh-SYAY ('dossier' = a case file, broader than English 'dossier'; here = a claim file)"
         },
         {
           "word": "être livré à domicile",
           "en": "to be delivered to address",
           "vi": "được giao tận nơi",
           "pos": "v.",
-          "pronunciation_vi": "é-trơ li-vré a do-mi-sil"
+          "pronunciation_vi": "é-trơ li-vré a do-mi-sil",
+          "pronunciation_en": "ETR lee-VRAY ah doh-mee-SEEL ('à domicile' = to your home/hotel — the bag comes to you, you don't return for it)"
         },
         {
           "word": "un préjudice",
           "en": "damage / loss",
           "vi": "thiệt hại",
           "pos": "n.m.",
-          "pronunciation_vi": "pré-ju-dis"
+          "pronunciation_vi": "pré-ju-dis",
+          "pronunciation_en": "pray-zhoo-DEES ('j' = 'zh'; a legal/formal term for harm or loss suffered — heavier than English 'damage')"
         },
         {
           "word": "une réclamation",
           "en": "a formal complaint",
           "vi": "đơn khiếu nại",
           "pos": "n.f.",
-          "pronunciation_vi": "ré-kla-ma-sion"
+          "pronunciation_vi": "ré-kla-ma-sion",
+          "pronunciation_en": "ray-klah-mah-SYO(n) (nasal final; a formal written complaint — 'une plainte' is for police, 'une réclamation' for a company)"
         }
       ],
       "dialogue": [
         {
           "speaker": "Linh",
           "text": "Bonjour, mon bagage n'est pas arrivé sur le tapis.",
+          "en": "Hello, my luggage didn't come out on the carousel.",
           "vi": "Chào, hành lý của em không đến băng chuyền."
         },
         {
           "speaker": "Agent",
           "text": "Bonjour. Votre étiquette de bagage et votre billet, s'il vous plaît.",
+          "en": "Hello. Your baggage tag and your ticket, please.",
           "vi": "Chào. Tem hành lý và vé của cô."
         },
         {
           "speaker": "Linh",
           "text": "Voici. Vol AF1734 de Hô-Chi-Minh-Ville, arrivée 6h.",
+          "en": "Here. Flight AF1734 from Ho Chi Minh City, arrived 6 AM.",
           "vi": "Đây ạ. Chuyến AF1734 từ TP.HCM, đến 6 giờ."
         },
         {
           "speaker": "Agent",
           "text": "Je vais ouvrir un PIR. Décrivez-moi la valise précisément.",
+          "en": "I'll open a PIR. Describe the suitcase to me precisely.",
           "vi": "Tôi sẽ lập PIR. Mô tả cô vali cụ thể đi."
         }
       ],
@@ -11111,111 +11246,133 @@ export const lessons: FrenchLesson[] =           [
         {
           "speaker": "Linh (au comptoir Air France lost baggage)",
           "text": "Bonjour. Je suis Madame Trần — vol AF1734 arrivé de Hô-Chi-Minh-Ville à 6h ce matin. Mon bagage en soute n'est pas arrivé sur le tapis.",
+          "en": "Hello. I'm Mrs. Trần — flight AF1734 arrived from Ho Chi Minh City at 6 AM this morning. My checked bag didn't come out on the carousel.",
           "vi": "Chào. Em là cô Trần — chuyến AF1734 đến từ TP.HCM lúc 6 giờ sáng. Hành lý ký gửi của em không đến băng chuyền."
         },
         {
           "speaker": "Agent",
           "text": "Bonjour Madame. Vous avez votre étiquette de bagage ? Le petit autocollant qu'on vous a donné à l'enregistrement à Hô-Chi-Minh-Ville.",
+          "en": "Hello, ma'am. Do you have your baggage tag? The little sticker they gave you at check-in in Ho Chi Minh City.",
           "vi": "Chào cô. Cô có tem hành lý không? Sticker nhỏ người ta đưa khi check-in ở TP.HCM."
         },
         {
           "speaker": "Linh",
           "text": "Oui, voici. Numéro d'étiquette 0742-AF-038475. Et voici aussi mon billet et mon passeport.",
+          "en": "Yes, here. Tag number 0742-AF-038475. And here are my ticket and passport too.",
           "vi": "Có, đây ạ. Số tem 0742-AF-038475. Và đây cũng là vé và hộ chiếu."
         },
         {
           "speaker": "Agent",
           "text": "Très bien. Je vais ouvrir un Property Irregularity Report — un PIR. D'abord, décrivez-moi votre valise précisément.",
+          "en": "Very good. I'll open a Property Irregularity Report — a PIR. First, describe your suitcase to me precisely.",
           "vi": "Tốt. Tôi sẽ lập Property Irregularity Report — PIR. Đầu tiên, mô tả vali cô chính xác đi."
         },
         {
           "speaker": "Linh",
           "text": "Valise rigide, noire, marque Samsonite, modèle Cosmolite, 4 roues, 75 cm. Étiquette personnelle avec mon nom et numéro de téléphone vietnamien sur la poignée. Un ruban rouge attaché à la poignée pour la repérer.",
+          "en": "Hard-shell suitcase, black, Samsonite brand, Cosmolite model, 4 wheels, 75 cm. Personal tag with my name and Vietnamese phone number on the handle. A red ribbon tied to the handle to spot it.",
           "vi": "Vali cứng, màu đen, hãng Samsonite, model Cosmolite, 4 bánh, 75 cm. Tem cá nhân với tên và số điện thoại Việt Nam ở tay xách. Có dây ruy băng đỏ buộc ở tay xách để dễ nhận."
         },
         {
           "speaker": "Agent",
           "text": "Excellente description, ça aide beaucoup. Le poids ?",
+          "en": "Excellent description, that helps a lot. The weight?",
           "vi": "Mô tả xuất sắc, giúp ích nhiều. Trọng lượng?"
         },
         {
           "speaker": "Linh",
           "text": "22,8 kilos selon le ticket d'enregistrement.",
+          "en": "22.8 kilos according to the check-in receipt.",
           "vi": "22.8 ký theo phiếu check-in."
         },
         {
           "speaker": "Agent",
           "text": "Et le contenu général ?",
+          "en": "And the general contents?",
           "vi": "Và nội dung tổng quát?"
         },
         {
           "speaker": "Linh",
           "text": "Vêtements personnels, chaussures, produits de toilette, quelques cadeaux pour ma famille en France — café vietnamien, thé, boîtes de bánh kẹo. Pas d'objets de valeur — j'ai mis l'ordinateur et l'appareil photo en cabine.",
+          "en": "Personal clothes, shoes, toiletries, some gifts for my family in France — Vietnamese coffee, tea, boxes of bánh kẹo. No valuables — I put the laptop and camera in the cabin.",
           "vi": "Quần áo cá nhân, giày, đồ vệ sinh, vài món quà cho gia đình em ở Pháp — cà phê Việt Nam, trà, hộp bánh kẹo. Không có vật giá trị — laptop và máy ảnh em để cabin."
         },
         {
           "speaker": "Agent",
           "text": "Parfait. Maintenant l'adresse où vous serez les prochains jours, pour qu'on vous livre la valise dès qu'elle est retrouvée.",
+          "en": "Perfect. Now the address where you'll be the next few days, so we can deliver the suitcase to you as soon as it's found.",
           "vi": "Tuyệt. Giờ là địa chỉ cô ở những ngày tới, để giao vali ngay khi tìm thấy."
         },
         {
           "speaker": "Linh",
           "text": "Hôtel Mercure Paris-Bercy, 6 boulevard Vincent Auriol, 75013 Paris. Je suis là jusqu'au 28. Numéro de téléphone vietnamien actif en roaming : +84 90 1234 567.",
+          "en": "Hôtel Mercure Paris-Bercy, 6 boulevard Vincent Auriol, 75013 Paris. I'm there until the 28th. Vietnamese phone number active on roaming: +84 90 1234 567.",
           "vi": "Khách sạn Mercure Paris-Bercy, 6 boulevard Vincent Auriol, 75013 Paris. Em ở đó đến ngày 28. Số điện thoại Việt Nam đang roaming: +84 90 1234 567."
         },
         {
           "speaker": "Agent",
           "text": "Avez-vous un numéro français aussi ? Le SMS de notification arrive plus rapidement sur un numéro local.",
+          "en": "Do you have a French number too? The notification SMS arrives faster on a local number.",
           "vi": "Cô có số Pháp không? SMS thông báo đến nhanh hơn trên số trong nước."
         },
         {
           "speaker": "Linh",
           "text": "Pas encore — j'achète une carte SIM française cet après-midi. Je peux mettre à jour le numéro plus tard ?",
+          "en": "Not yet — I'm buying a French SIM card this afternoon. Can I update the number later?",
           "vi": "Chưa — em mua SIM Pháp chiều nay. Em có thể cập nhật số sau không?"
         },
         {
           "speaker": "Agent",
           "text": "Bien sûr, vous pouvez le faire en ligne sur airfrance.fr/bagages avec le numéro de PIR. Voici votre PIR : code FR-AF-2026-104782. Gardez-le précieusement.",
+          "en": "Of course, you can do it online at airfrance.fr/bagages with the PIR number. Here's your PIR: code FR-AF-2026-104782. Keep it safe.",
           "vi": "Tất nhiên, cô có thể làm online tại airfrance.fr/bagages với số PIR. Đây là PIR của cô: mã FR-AF-2026-104782. Giữ kỹ."
         },
         {
           "speaker": "Linh",
           "text": "Parfait. Et pour les achats de première nécessité — je n'ai plus de vêtements de rechange — j'ai droit à une indemnité ?",
+          "en": "Perfect. And for essential purchases — I have no change of clothes left — am I entitled to an allowance?",
           "vi": "Hoàn hảo. Còn về việc mua đồ cần thiết — em không còn quần áo thay — em có quyền nhận trợ cấp không?"
         },
         {
           "speaker": "Agent",
           "text": "Oui, Air France indemnise jusqu'à 100 euros par jour pour les premières 48 heures, sur présentation des reçus. Vous gardez les originaux des achats — vêtements, sous-vêtements, produits de toilette — et vous soumettez la demande sur le site web avec votre PIR.",
+          "en": "Yes, Air France reimburses up to 100 euros per day for the first 48 hours, on presentation of receipts. You keep the originals of the purchases — clothing, underwear, toiletries — and submit the request on the website with your PIR.",
           "vi": "Có, Air France đền bù đến 100 euro mỗi ngày cho 48 giờ đầu, kèm hóa đơn. Cô giữ hóa đơn gốc các thứ đã mua — quần áo, đồ lót, đồ vệ sinh — và nộp đơn trên website với PIR."
         },
         {
           "speaker": "Linh",
           "text": "Compris. Et si la valise n'est pas retrouvée dans 21 jours ?",
+          "en": "Understood. And if the suitcase isn't found within 21 days?",
           "vi": "Hiểu rồi. Còn nếu vali không tìm thấy trong 21 ngày?"
         },
         {
           "speaker": "Agent",
           "text": "Au-delà de 21 jours, le bagage est officiellement déclaré perdu, et vous pouvez déposer un dossier de remboursement complet selon la Convention de Montréal — jusqu'à environ 1700 euros, avec inventaire détaillé du contenu et justificatifs si possible.",
+          "en": "Beyond 21 days, the bag is officially declared lost, and you can file a full reimbursement claim under the Montreal Convention — up to about 1700 euros, with a detailed inventory of the contents and receipts where possible.",
           "vi": "Quá 21 ngày, hành lý chính thức tuyên bố mất, và cô có thể nộp hồ sơ hoàn tiền đầy đủ theo Convention de Montréal — đến khoảng 1700 euro, kèm bảng kê nội dung chi tiết và hóa đơn nếu có."
         },
         {
           "speaker": "Linh",
           "text": "Très bien. Combien de temps en moyenne pour qu'une valise soit retrouvée ?",
+          "en": "Very good. On average, how long for a suitcase to be located?",
           "vi": "Tốt. Trung bình bao lâu để tìm được vali?"
         },
         {
           "speaker": "Agent",
           "text": "85 % des bagages mal acheminés sont livrés dans les 48 heures. Les vôtres a probablement raté la connexion à Hô-Chi-Minh-Ville et arrivera sur le prochain vol AF1734, demain matin.",
+          "en": "85% of misrouted bags are delivered within 48 hours. Yours probably missed the connection in Ho Chi Minh City and will arrive on the next AF1734 flight, tomorrow morning.",
           "vi": "85% hành lý bị sai tuyến đường được giao trong 48 giờ. Của cô có lẽ trễ chuyến nối ở TP.HCM và sẽ đến chuyến AF1734 tiếp theo, sáng mai."
         },
         {
           "speaker": "Linh",
           "text": "Merci beaucoup pour les explications claires. Je peux partir avec ce papier ?",
+          "en": "Thank you very much for the clear explanations. Can I leave with this paper?",
           "vi": "Cảm ơn anh/chị giải thích rõ. Em có thể đi với giấy này không?"
         },
         {
           "speaker": "Agent",
           "text": "Oui, le PIR vous suit. Vous serez notifiée par SMS ou email dès que la valise est localisée. Bonne continuation à Paris.",
+          "en": "Yes, the PIR stays with you. You'll be notified by SMS or email as soon as the suitcase is located. Enjoy the rest of your time in Paris.",
           "vi": "Vâng, PIR đi theo cô. Cô sẽ được nhận SMS hoặc email ngay khi tìm thấy vali. Chúc cô ở Paris vui vẻ."
         }
       ],
@@ -11224,30 +11381,44 @@ export const lessons: FrenchLesson[] =           [
         "Vali tìm được nhưng có dấu hiệu bị mở (khóa bị bẻ, ổ khóa thay). Khi nhận tại khách sạn, kiểm tra ngay với người giao và lập biên bản tại chỗ — không ký nhận nếu chưa kiểm xong, đòi giấy chứng nhận tình trạng vali.",
         "Sau 21 ngày vali tuyên bố mất. Soạn email claim Convention de Montréal — liệt kê nội dung có giá trị (laptop case, đồng hồ, áo khoác da) kèm hóa đơn gốc khi có; tránh kê thêm món không có để gian lận."
       ],
+      "roleplay_prompts_en": [
+        "Your suitcase has been missing 5 days and the airline still hasn't delivered it. Call the lost-baggage hotline — ask for a specific status update and propose escalation if the agent has no new information: 'Puis-je parler à un superviseur?' (May I speak to a supervisor?). Anglophone calibration: same as a US/UK airline call — stay on the PIR reference, ask for a concrete next-step date, escalate calmly, never just vent.",
+        "The suitcase is found but shows signs of being opened (broken zip, lock replaced). When it's delivered to your hotel, inspect it immediately in front of the courier and document it on the spot — do NOT sign acceptance until you've checked, and demand a written condition report ('un constat d'état'). The principle is the same everywhere: never sign 'received in good condition' before you've verified.",
+        "After 21 days the suitcase is declared lost. Draft a Montreal Convention claim email — list valuable contents (laptop case, watch, leather jacket) with original receipts where you have them; do NOT pad the list with items that weren't there. One implausible line item kills the whole claim — this is true at every airline worldwide, not just Air France."
+      ],
       "register_notes": "Tại quầy lost baggage: vouvoiement bắt buộc. Mô tả vali theo cấu trúc « rigide/souple, couleur, marque, modèle si connu, dimensions, signes distinctifs » — agent đã quen format này, nói lệch sẽ làm họ phải hỏi lại nhiều lần. Khi agent dùng tiếng Anh: bạn có thể đáp tiếng Anh nhưng nên duy trì tiếng Pháp khi có thể — agent đánh giá cao và xử lý kỹ hơn. Câu hỏi quyền lợi: dùng cấu trúc « est-ce que j'ai droit à… » thay vì « est-ce que je peux avoir… » — đầu tiên mạnh hơn về pháp lý. Khi không hiểu thuật ngữ (PIR, Convention de Montréal): yêu cầu giải thích — không gật đầu giả vờ. Cuối cuộc trò chuyện: yêu cầu thông tin hai chiều (số PIR + tên agent xử lý + số điện thoại nội bộ nếu có) — để liên hệ lại nếu cần. Tránh: la lối rằng « c'est inacceptable! » trong trường hợp này (lost luggage là chuyện thường ngành hàng không, không phải lỗi cá nhân agent), nhắc đi nhắc lại « j'ai un événement important demain » (không thay đổi tốc độ xử lý), nhắn tin cho agent qua số riêng (vi phạm quy trình).",
+      "register_notes_en": "At the lost-baggage desk: vouvoiement is mandatory. Describe the suitcase in the standard order the agent expects — 'hard/soft shell, color, brand, model if known, dimensions, distinctive marks'. Agents process this format hundreds of times; following it gets you through fast, while a rambling description forces repeated clarifying questions and slows everything. If the agent switches to English, you may answer in English, but staying in French where you can earns visibly more thorough handling — this is a real, observable effect in French service. For rights questions, use 'est-ce que j'ai droit à…' (am I entitled to…) rather than 'est-ce que je peux avoir…' (can I have…) — the first frames it as a legal entitlement, which it is; the second frames it as a favor, which weakens you. When you don't understand a term (PIR, Convention de Montréal), ask for an explanation — don't nod along; a misunderstood term costs you money later.\n\nAt the end, get two-way information: the PIR reference, the handling agent's name, and an internal contact number if offered — you'll need these to follow up. The biggest register failure for anglophones, especially Americans, is treating this like a grievance: shouting 'c'est inacceptable!' here is misplaced because lost luggage is a routine airline failure, not the individual agent's fault, and the agent you're shouting at is the one person who can help you. Equally useless: repeating 'j'ai un événement important demain' (I have an important event tomorrow) — it does not change processing speed and signals you think the rules don't apply to you. And never text the agent on a personal number, even if offered casually — it bypasses the documented process and your claim loses its paper trail.",
       "idiom_glosses": [
         {
           "idiom": "Faire le nécessaire",
           "literal": "Làm điều cần thiết",
+          "literal_en": "To do the necessary",
           "meaning": "Hoàn thành các bước thủ tục.",
+          "meaning_en": "To take care of what's required — complete all the procedural steps. Anglophone equivalent: 'to do what needs doing' / 'to take care of it'.",
           "example": "L'agent a fait le nécessaire — PIR ouvert, indemnité expliquée."
         },
         {
           "idiom": "En avoir le cœur net",
           "literal": "Có tim sạch",
+          "literal_en": "To have the heart clean (about it)",
           "meaning": "Có câu trả lời rõ ràng / không nghi ngờ.",
+          "meaning_en": "To get a definitive answer / settle a doubt once and for all. Anglophone equivalent: 'to know for sure' or 'to set my mind at rest'.",
           "example": "J'aimerais en avoir le cœur net : ma valise sera-t-elle vraiment livrée demain ?"
         },
         {
           "idiom": "Faire valoir ses droits",
           "literal": "Làm có giá trị quyền của mình",
+          "literal_en": "To make one's rights count",
           "meaning": "Đòi quyền lợi pháp lý.",
+          "meaning_en": "To assert / enforce one's legal rights. Used when you have a clear statutory entitlement (EU air-passenger rights, Montreal Convention) and are invoking it.",
           "example": "En tant que passagère sur vol Schengen, je peux faire valoir mes droits selon le règlement EU."
         },
         {
           "idiom": "Une affaire qui traîne",
           "literal": "Một vụ việc kéo dài",
+          "literal_en": "A matter that drags",
           "meaning": "Vấn đề mãi không giải quyết.",
+          "meaning_en": "A case/issue that drags on unresolved. Anglophone equivalent: 'a matter that's dragging on' or 'a saga'.",
           "example": "Si c'est une affaire qui traîne au-delà de 21 jours, on passe à la procédure de remboursement complet."
         }
       ],
@@ -11255,7 +11426,10 @@ export const lessons: FrenchLesson[] =           [
         {
           "type": "fill-blank",
           "question": "Pourriez-vous me donner un ___ — un Property Irregularity Report ?",
-          "answer": "PIR"
+          "question_en": "Could you give me a ___ — a Property Irregularity Report?",
+          "answer": "PIR",
+          "hint_vi": "viết tắt của Property Irregularity Report",
+          "hint_en": "the 3-letter acronym for the official lost-baggage report (spell it out: P-I-R)"
         },
         {
           "type": "matching",
@@ -11273,12 +11447,30 @@ export const lessons: FrenchLesson[] =           [
               "đơn khiếu nại"
             ]
           ],
-          "instruction": "Nối thuật ngữ với nghĩa tiếng Việt"
+          "pairs_en": [
+            [
+              "un bagage en soute",
+              "checked luggage — placed in the cargo hold, not carried into the cabin"
+            ],
+            [
+              "une indemnité",
+              "a (regulated) compensation allowance — an entitlement you claim with receipts, not a negotiated favor"
+            ],
+            [
+              "une réclamation",
+              "a formal written complaint to a company (distinct from 'une plainte', a police complaint)"
+            ]
+          ],
+          "instruction": "Nối thuật ngữ với nghĩa tiếng Việt",
+          "instruction_en": "Match each French lost-luggage term with its English explanation."
         },
         {
           "type": "translation",
           "vietnamese": "Trong khi chờ, em có quyền nhận trợ cấp cho việc mua đồ cần thiết.",
-          "french": "En attendant, j'ai droit à une indemnité pour les achats de première nécessité."
+          "french": "En attendant, j'ai droit à une indemnité pour les achats de première nécessité.",
+          "english": "In the meantime, I'm entitled to an allowance for essential purchases.",
+          "hint_vi": "« j'ai droit à » + « de première nécessité »",
+          "hint_en": "'j'ai droit à' = I'm entitled to (legal-entitlement framing) + 'de première nécessité' = essential/basic"
         }
       ]
     },
