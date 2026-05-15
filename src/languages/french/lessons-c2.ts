@@ -4,7 +4,7 @@
 
 import type { FrenchLesson } from "./lessons";
 
-export const lessons: FrenchLesson[] =       [
+export const lessons: FrenchLesson[] =         [
     {
       "id": "lclose_reading",
       "level": "C2",
@@ -4429,6 +4429,12 @@ export const lessons: FrenchLesson[] =       [
             "ontologique → õn-to-lo-jik",
             "discours → dis-kur",
             "confondre → kõn-fõn-drơ"
+          ],
+          "pronunciation_focus_en": [
+            "épistémologique → 'ay-pees-tay-moh-loh-ZHEEK' — 'g' = 'zh'; the epistemological plane",
+            "ontologique → 'ohn-toh-loh-ZHEEK' — nasal 'on'; the ontological plane",
+            "discours → 'dees-KOOR' — 'les plans du discours' = the planes of discourse",
+            "confondre → 'kohn-FOHN-druh' — 'to confuse'; nasal 'on' twice"
           ]
         },
         {
@@ -4439,6 +4445,12 @@ export const lessons: FrenchLesson[] =       [
             "kantien → kãn-siãn",
             "condition → kõn-di-sion",
             "possibilité → po-si-bi-li-té"
+          ],
+          "pronunciation_focus_en": [
+            "transcendantal → 'trahn-sahn-dahn-TAL' — Kantian term; three nasal 'an'",
+            "kantien → 'kahn-TYAN' — 'au sens kantien' = in the Kantian sense; nasal final",
+            "condition → 'kohn-dee-SYON' — 'condition de possibilité' = condition of possibility",
+            "possibilité → 'po-see-bee-lee-TAY' — abstract noun; '-té' = 'tay'"
           ]
         },
         {
@@ -4449,6 +4461,12 @@ export const lessons: FrenchLesson[] =       [
             "dilemme → di-lèm",
             "contradictoire → kõn-tra-dik-toar",
             "s'effondre → sé-fõn-drơ"
+          ],
+          "pronunciation_focus_en": [
+            "rigoureux → 'ree-goo-RUH' — 'rigorous'; '-eux' rounded",
+            "dilemme → 'dee-LEM' — double 'm' = 'm'; final '-e' silent",
+            "contradictoire → 'kohn-trah-deek-TWAR' — 'oi' = 'wah'; final '-e' silent",
+            "s'effondre → 'seh-FOHN-druh' — 's'effondrer' = to collapse; nasal 'on'"
           ]
         },
         {
@@ -4459,6 +4477,12 @@ export const lessons: FrenchLesson[] =       [
             "intelligence → an-tè-li-jãns",
             "concept → kõn-sèp",
             "particuliers → par-ti-ku-lié"
+          ],
+          "pronunciation_focus_en": [
+            "abstraction → 'abs-trak-SYON' — 'fuite hors du réel'? — '-tion' = 'syon'",
+            "intelligence → 'an-teh-lee-ZHAHNSS' — 'g' = 'zh'; 'intelligence du réel' = understanding of the real",
+            "concept → 'kohn-SEP' — 's'élever au concept' = to rise to the concept",
+            "particuliers → 'par-tee-ku-LYAY' — 'cas particuliers' = particular cases"
           ]
         },
         {
@@ -4469,6 +4493,12 @@ export const lessons: FrenchLesson[] =       [
             "répète → ré-pèt",
             "prolonge → pro-lõnj",
             "geste → jest"
+          ],
+          "pronunciation_focus_en": [
+            "séminaire → 'say-mee-NEHR' — '-aire' = 'air'; the philosophy seminar",
+            "répète → 'ray-PET' — 'répéter les auteurs' = to repeat the authors",
+            "prolonge → 'pro-LOHNZH' — 'prolonger leur geste' = to extend their gesture",
+            "geste → 'ZHEST' — 'g' = 'zh'; final '-e' silent; here 'intellectual gesture'"
           ]
         }
       ],
@@ -4480,91 +4510,105 @@ export const lessons: FrenchLesson[] =       [
           "en": "a transcendental argument",
           "vi": "lập luận siêu nghiệm",
           "pos": "n.m.",
-          "pronunciation_vi": "ar-gu-mãn trãn-sãn-dãn-tal"
+          "pronunciation_vi": "ar-gu-mãn trãn-sãn-dãn-tal",
+          "pronunciation_en": "UN ar-gu-MAHN trahn-sahn-dahn-TAL — 'argument transcendantal' (Kant)"
         },
         {
           "word": "un dilemme",
           "en": "a dilemma",
           "vi": "song đề / thế lưỡng nan",
           "pos": "n.m.",
-          "pronunciation_vi": "di-lèm"
+          "pronunciation_vi": "di-lèm",
+          "pronunciation_en": "UN dee-LEM — 'un dilemme' = a dilemma; double 'm' = single 'm'"
         },
         {
           "word": "le plan épistémologique",
           "en": "the epistemological level",
           "vi": "bình diện nhận thức luận",
           "pos": "n.m.",
-          "pronunciation_vi": "plãn é-pis-té-mo-lo-jik"
+          "pronunciation_vi": "plãn é-pis-té-mo-lo-jik",
+          "pronunciation_en": "luh PLAHN ay-pees-tay-moh-loh-ZHEEK — 'le plan épistémologique'"
         },
         {
           "word": "le plan ontologique",
           "en": "the ontological level",
           "vi": "bình diện bản thể luận",
           "pos": "n.m.",
-          "pronunciation_vi": "plãn õn-to-lo-jik"
+          "pronunciation_vi": "plãn õn-to-lo-jik",
+          "pronunciation_en": "luh PLAHN ohn-toh-loh-ZHEEK — 'le plan ontologique'"
         },
         {
           "word": "une question de droit",
           "en": "a question of right / principle",
           "vi": "câu hỏi về nguyên lý (≠ thực tế)",
           "pos": "n.f.",
-          "pronunciation_vi": "kès-tion dơ droa"
+          "pronunciation_vi": "kès-tion dơ droa",
+          "pronunciation_en": "ün kes-TYON duh DRWAH — 'une question de droit' (of principle) ≠ 'de fait' (of fact)"
         },
         {
           "word": "la clarification conceptuelle",
           "en": "conceptual clarification",
           "vi": "sự làm sáng tỏ khái niệm",
           "pos": "n.f.",
-          "pronunciation_vi": "kla-ri-fi-ka-sion kõn-sèp-tu-èl"
+          "pronunciation_vi": "kla-ri-fi-ka-sion kõn-sèp-tu-èl",
+          "pronunciation_en": "lah klah-ree-fee-kah-SYON kohn-sep-tu-EL — 'clarification conceptuelle'"
         },
         {
           "word": "un présupposé",
           "en": "a presupposition",
           "vi": "tiền giả định",
           "pos": "n.m.",
-          "pronunciation_vi": "pré-su-po-zé"
+          "pronunciation_vi": "pré-su-po-zé",
+          "pronunciation_en": "UN pray-su-poh-ZAY — 'un présupposé' = a presupposition"
         },
         {
           "word": "une expérience de pensée",
           "en": "a thought experiment",
           "vi": "thí nghiệm tư duy",
           "pos": "n.f.",
-          "pronunciation_vi": "èk-spé-ri-ãns dơ pãn-sé"
+          "pronunciation_vi": "èk-spé-ri-ãns dơ pãn-sé",
+          "pronunciation_en": "ün eks-pay-RYAHNSS duh pahn-SAY — 'expérience de pensée' = thought experiment"
         },
         {
           "word": "la réduction à l'absurde",
           "en": "reductio ad absurdum",
           "vi": "phép quy giản về phi lý",
           "pos": "n.f.",
-          "pronunciation_vi": "ré-duk-sion a lap-surd"
+          "pronunciation_vi": "ré-duk-sion a lap-surd",
+          "pronunciation_en": "lah ray-duk-SYON ah lab-SURD — 'réduction à l'absurde' = reductio ad absurdum"
         },
         {
           "word": "eidétique",
           "en": "eidetic (pertaining to essence)",
           "vi": "thuộc về bản chất (Husserl)",
           "pos": "adj.",
-          "pronunciation_vi": "é-i-dé-tik"
+          "pronunciation_vi": "é-i-dé-tik",
+          "pronunciation_en": "ay-ee-day-TEEK — 'eidétique' (Husserl) = pertaining to essence; false-friend caution"
         }
       ],
       "dialogue": [
         {
           "speaker": "Étudiant",
           "text": "Comment distinguer un argument transcendantal d'un argument logique ordinaire?",
+          "en": "How does one distinguish a transcendental argument from an ordinary logical argument?",
           "vi": "Làm sao phân biệt lập luận siêu nghiệm với lập luận logic thông thường?"
         },
         {
           "speaker": "Professeur",
           "text": "L'argument logique ordinaire déduit une conclusion de prémisses. L'argument transcendantal remonte de la conclusion — qui est un fait indubitable — à ses conditions de possibilité. Le mouvement est inverse.",
+          "en": "An ordinary logical argument deduces a conclusion from premises. A transcendental argument moves back from the conclusion — which is an indubitable fact — to its conditions of possibility. The movement is reversed.",
           "vi": "Lập luận logic thông thường suy diễn kết luận từ tiền đề. Lập luận siêu nghiệm đi ngược từ kết luận — là một sự kiện không thể nghi ngờ — đến các điều kiện khả thể của nó. Chuyển động là ngược lại."
         },
         {
           "speaker": "Étudiant",
           "text": "Pouvez-vous donner un exemple concret?",
+          "en": "Can you give a concrete example?",
           "vi": "Thầy có thể cho một ví dụ cụ thể không?"
         },
         {
           "speaker": "Professeur",
           "text": "Kant: la science newtonienne existe — c'est un fait. Comment est-elle possible? Réponse: parce que l'entendement humain impose ses catégories a priori à l'expérience. L'argument ne prouve pas que les catégories existent; il montre qu'elles sont requises pour que la science soit possible.",
+          "en": "Kant: Newtonian science exists — that's a fact. How is it possible? Answer: because the human understanding imposes its a priori categories on experience. The argument doesn't prove the categories exist; it shows they are required for science to be possible.",
           "vi": "Kant: khoa học Newton tồn tại — đó là một sự kiện. Làm sao nó khả thể? Trả lời: vì giác tính con người áp đặt các phạm trù tiên nghiệm lên kinh nghiệm. Lập luận không chứng minh các phạm trù tồn tại; nó cho thấy chúng được đòi hỏi để khoa học khả thể."
         }
       ],
@@ -4572,21 +4616,25 @@ export const lessons: FrenchLesson[] =       [
         {
           "speaker": "Prof. Renault (séminaire de philosophie, ENS)",
           "text": "Mademoiselle Tran, vous avez choisi de travailler sur le concept de croyance chez Wittgenstein. Quelle est votre thèse?",
+          "en": "Ms. Tran, you've chosen to work on the concept of belief in Wittgenstein. What is your thesis?",
           "vi": "Cô Trần, cô đã chọn làm việc về khái niệm niềm tin ở Wittgenstein. Luận đề của cô là gì?"
         },
         {
           "speaker": "Linh",
           "text": "Je soutiens que Wittgenstein, dans De la certitude, opère un déplacement du problème de la croyance: il ne s'agit plus de justifier nos croyances une par une, mais de décrire le système de croyances qui rend possible toute justification.",
+          "en": "I argue that Wittgenstein, in On Certainty, performs a displacement of the problem of belief: it's no longer about justifying our beliefs one by one, but about describing the system of beliefs that makes any justification possible.",
           "vi": "Tôi chủ trương rằng Wittgenstein, trong De la certitude, thực hiện một sự dịch chuyển vấn đề niềm tin: không còn là biện minh từng niềm tin một, mà là mô tả hệ thống niềm tin khiến mọi sự biện minh trở nên khả thể."
         },
         {
           "speaker": "Prof. Renault",
           "text": "C'est une lecture transcendantale de Wittgenstein. Assumez-vous ce terme?",
+          "en": "That's a transcendental reading of Wittgenstein. Do you own that term?",
           "vi": "Đó là một cách đọc siêu nghiệm Wittgenstein. Cô có nhận thuật ngữ đó không?"
         },
         {
           "speaker": "Linh",
           "text": "Je l'assume, mais avec une nuance: là où Kant cherche les conditions de possibilité de l'expérience, Wittgenstein cherche les conditions de possibilité du doute. On ne peut douter de tout à la fois — certaines certitudes doivent rester en place pour que le doute ait un sens. C'est ce sol que j'appelle 'le transcendantal wittgensteinien'.",
+          "en": "I own it, but with a nuance: where Kant seeks the conditions of possibility of experience, Wittgenstein seeks the conditions of possibility of doubt. One cannot doubt everything at once — certain certainties must stay in place for doubt to have a sense. That ground is what I call 'the Wittgensteinian transcendental'.",
           "vi": "Tôi nhận, nhưng với một sắc thái: chỗ Kant tìm các điều kiện khả thể của kinh nghiệm, Wittgenstein tìm các điều kiện khả thể của sự nghi ngờ. Ta không thể nghi ngờ mọi thứ cùng một lúc — một số xác tín phải ở nguyên chỗ để sự nghi ngờ có nghĩa. Chính nền đất đó tôi gọi là 'cái siêu nghiệm Wittgenstein'."
         }
       ],
@@ -4599,7 +4647,9 @@ export const lessons: FrenchLesson[] =       [
         {
           "idiom": "Faire droit à",
           "literal": "Làm cho đúng / trao quyền cho",
+          "literal_en": "to do right to",
           "meaning": "Reconnaître la légitimité de — en philo: 'faire droit à l'objection', 'faire droit à la complexité du réel'.",
+          "meaning_en": "to acknowledge the legitimacy of — in philosophy, 'faire droit à l'objection' = to take an objection seriously and confront it rather than dodge it",
           "example": "Une philosophie rigoureuse fait droit aux objections les plus fortes — elle ne les esquive pas, elle les affronte."
         }
       ],
@@ -4607,35 +4657,46 @@ export const lessons: FrenchLesson[] =       [
         {
           "type": "fill-blank",
           "question": "Un argument transcendantal ne démontre pas que X ___, mais que X est la condition de possibilité de Y.",
-          "answer": "existe"
+          "answer": "existe",
+          "hint_vi": "động từ — 'tồn tại' (lập luận siêu nghiệm KHÔNG chứng minh X ___)",
+          "hint_en": "verb — 'exists'; a transcendental argument doesn't prove that X ___, but that X is the condition of possibility of Y"
         },
         {
           "type": "matching",
           "pairs": [
             [
               "un dilemme",
-              "song đề / thế lưỡng nan"
+              "song đề / thế lưỡng nan (a dilemma)"
             ],
             [
               "épistémologique",
-              "thuộc nhận thức luận"
+              "thuộc nhận thức luận (epistemological)"
             ],
             [
               "ontologique",
-              "thuộc bản thể luận"
+              "thuộc bản thể luận (ontological)"
             ],
             [
               "une question de droit",
-              "câu hỏi về nguyên lý"
+              "câu hỏi về nguyên lý (a question of principle, not of fact)"
             ]
           ],
-          "instruction": "Nối thuật ngữ triết học với nghĩa Việt"
+          "instruction": "Nối thuật ngữ triết học với nghĩa Việt",
+          "instruction_en": "Match each philosophical term with its Vietnamese meaning"
         },
         {
           "type": "translation",
           "vietnamese": "Sự trừu tượng không phải là trốn chạy khỏi thực tại — nó là chính điều kiện của sự thông hiểu thực tại.",
+          "english": "Abstraction is not a flight from the real — it is the very condition of the understanding of the real.",
           "french": "L'abstraction n'est pas une fuite hors du réel — elle est la condition même de l'intelligence du réel."
         }
+      ],
+      "cultural_notes_en": "Philosophical reasoning in the French tradition. (1) THE TRANSCENDENTAL ARGUMENT: Kant (Critique of Pure Reason, 1781) inaugurates this form — start from a given fact (science, morality) and trace back its conditions of possibility. In France this method is taken up and transformed by Deleuze and Foucault. (2) DISTINGUISHING THE PLANES: a classic student error is to confuse the logical plane (internal coherence of an argument), the epistemological plane (validity of knowledge), and the ontological plane (what really exists). (3) THE DILEMMA AS A TOOL: a powerful refutation figure — show the opponent is caught between two possibilities, both fatal to their thesis (Plato's Euthyphro). (4) ABSTRACTION vs GENERALIZATION: philosophical abstraction is not empirical generalization ('all swans are white'); conceptual abstraction grasps the essence ('what is a swan?'). The first is inductive and fallible; the second eidetic and necessary. (5) PHILOSOPHIZING IN FRENCH: the tradition prizes conceptual clarity (Descartes' 'clear and distinct ideas') and the distinction of orders (Pascal). A French philosopher who writes obscurely is criticized not for depth but for lack of rigor. (6) BERGSON (1859-1941), Nobel in Literature 1927: a model of philosophy written in literary French — start from concrete intuition (duration, laughter, memory) and build concepts that fit reality rather than carving it up.",
+      "tip_advice_en": "Method for an abstract-philosophy dissertation (4 hours): (1) CONCEPTUAL ANALYSIS (45 min) — define each term; distinguish the senses (common, technical, philosophical); identify hidden presuppositions. (2) CONSTRUCT THE PROBLEM (30 min) — don't seek an 'answer' but formulate the problem so as to show why it's insoluble in the terms posed; a good philosophical problem is one whose very formulation is the stake. (3) ARGUMENTATION (120 min) — direct arguments (deduction, modus ponens/tollens), indirect (dilemma, reductio, transcendental argument), counter-arguments you raise against yourself, examples that are thought experiments not anecdotes (Rawls's veil of ignorance, Searle's Chinese room). (4) WRITING (45 min) — Cartesian clarity (one idea per paragraph), logical connectors ('or', 'donc', 'cependant', 'en effet'), citations integrated not pasted. Avoid: 'à mon avis...', 'de tout temps les hommes...', citing a dictionary, quoting without explaining.",
+      "register_notes_en": "C2 abstract philosophy: obligatory academic 'nous'. Present of general truth. Conditional for hypotheses. Connectors: 'or', 'donc', 'cependant', 'néanmoins', 'en effet', 'dès lors', 'par conséquent'. Integrated citations with 'comme l'écrit X...'. Distinguish the planes explicitly: 'sur le plan logique...', 'd'un point de vue épistémologique...'. No 'je', no personal anecdote. Avoid 'à mon avis', 'je pense que'.",
+      "roleplay_prompts_en": [
+        "Defend the thesis: 'Abstraction is not a flight from the real — it is its very condition of intelligibility.' Use at least one concrete example (mathematics, physics, law) and counter the objection 'abstraction is disconnected from life'. Structure: concession + refutation + example.",
+        "In a seminar, a student claims: 'Philosophy is useless.' Build a two-stage response: (1) distinguish 'to be useful for' (utilitarian) and 'to give sense to' (existential); (2) show that the question 'what is X for?' presupposes a utilitarian frame that is not the only possible one."
       ]
     },
     {
@@ -4653,6 +4714,12 @@ export const lessons: FrenchLesson[] =       [
             "Aristote → a-ris-tot",
             "logos → lo-gos",
             "pathos → pa-tos"
+          ],
+          "pronunciation_focus_en": [
+            "rhétorique → 'ray-toh-REEK' — 'h' silent; final '-que' = 'k'",
+            "Aristote → 'ah-rees-TOT' — final '-e' silent; the founder",
+            "logos → 'loh-GOSS' — Greek loanword; final 's' pronounced",
+            "pathos → 'pah-TOSS' — Greek loanword; final 's' pronounced"
           ]
         },
         {
@@ -4663,6 +4730,12 @@ export const lessons: FrenchLesson[] =       [
             "argumentation → ar-gu-mãn-ta-sion",
             "démonstrative → dé-mõns-tra-tiv",
             "adhésion → a-dé-zion"
+          ],
+          "pronunciation_focus_en": [
+            "Perelman → 'puh-rel-MAN' — proper name; nasal final softened",
+            "argumentation → 'ar-gu-mahn-tah-SYON' — nasal 'an'; '-tion' = 'syon'",
+            "démonstrative → 'day-mohn-strah-TEEV' — feminine; final '-e' silent",
+            "adhésion → 'ad-ay-ZYON' — 's' = 'z'; 'l'adhésion des esprits' = the adherence of minds"
           ]
         },
         {
@@ -4673,6 +4746,12 @@ export const lessons: FrenchLesson[] =       [
             "préexistante → pré-èg-zis-tãnt",
             "lexicaux → lèk-si-kô",
             "anticiper → ãn-ti-si-pé"
+          ],
+          "pronunciation_focus_en": [
+            "ethos → 'ay-TOSS' — Greek loanword; final 's' pronounced",
+            "préexistante → 'pray-eg-zees-TAHNT' — 'x' = 'gz'; nasal '-ante'",
+            "lexicaux → 'lek-see-KOH' — masculine plural of 'lexical'; '-aux' = 'oh'",
+            "anticiper → 'ahn-tee-see-PAY' — 'to anticipate'; nasal 'an'"
           ]
         },
         {
@@ -4683,6 +4762,12 @@ export const lessons: FrenchLesson[] =       [
             "concéder → kõn-sé-dé",
             "asséner → a-sé-né",
             "crédibilité → kré-di-bi-li-té"
+          ],
+          "pronunciation_focus_en": [
+            "plaidoirie → 'pleh-dwah-REE' — 'oi' = 'wah'; a lawyer's closing argument",
+            "concéder → 'kohn-say-DAY' — 'to concede'; nasal 'on'",
+            "asséner → 'ah-say-NAY' — 'to land/deliver (a blow, an argument)'",
+            "crédibilité → 'kray-dee-bee-lee-TAY' — abstract noun; '-té' = 'tay'"
           ]
         },
         {
@@ -4693,6 +4778,12 @@ export const lessons: FrenchLesson[] =       [
             "vraisemblable → vrè-sãn-blablơ",
             "domaine → do-mèn",
             "certain → sèr-tan"
+          ],
+          "pronunciation_focus_en": [
+            "cartésienne → 'kar-tay-ZYEN' — feminine of 'cartésien'; the Cartesian tradition",
+            "vraisemblable → 'vreh-sahn-BLAH-bluh' — 'the plausible'; nasal 'em'",
+            "domaine → 'doh-MEN' — '-aine' = 'en'; final '-e' silent",
+            "certain → 'sehr-TAN' — nasal final 'ain'; nominalized 'le certain' = the certain"
           ]
         }
       ],
@@ -4704,91 +4795,105 @@ export const lessons: FrenchLesson[] =       [
           "en": "logos — logical argument",
           "vi": "logos — lập luận logic",
           "pos": "n.m.",
-          "pronunciation_vi": "lo-gos"
+          "pronunciation_vi": "lo-gos",
+          "pronunciation_en": "luh loh-GOSS — 'le logos' = logical argument; final 's' pronounced"
         },
         {
           "word": "l'ethos",
           "en": "ethos — speaker's character",
           "vi": "ethos — tư cách người nói",
           "pos": "n.m.",
-          "pronunciation_vi": "é-tos"
+          "pronunciation_vi": "é-tos",
+          "pronunciation_en": "lay-TOSS — 'l'ethos' = the speaker's projected character; final 's' pronounced"
         },
         {
           "word": "le pathos",
           "en": "pathos — emotional appeal",
           "vi": "pathos — kêu gọi cảm xúc",
           "pos": "n.m.",
-          "pronunciation_vi": "pa-tos"
+          "pronunciation_vi": "pa-tos",
+          "pronunciation_en": "luh pah-TOSS — 'le pathos' = the emotional appeal; final 's' pronounced"
         },
         {
           "word": "l'adhésion des esprits",
           "en": "the adherence of minds",
           "vi": "sự tán thành của tinh thần",
           "pos": "n.f.",
-          "pronunciation_vi": "a-dé-zion dé-zè-spri"
+          "pronunciation_vi": "a-dé-zion dé-zè-spri",
+          "pronunciation_en": "lah-day-ZYON day-zes-PREE — 'l'adhésion des esprits' = the adherence of minds"
         },
         {
           "word": "un enthymème",
           "en": "an enthymeme (rhetorical syllogism)",
           "vi": "enthymème — tam đoạn luận tu từ",
           "pos": "n.m.",
-          "pronunciation_vi": "ãn-ti-mèm"
+          "pronunciation_vi": "ãn-ti-mèm",
+          "pronunciation_en": "UN ahn-tee-MEM — 'un enthymème' = a rhetorical syllogism with a suppressed premise"
         },
         {
           "word": "la captatio benevolentiae",
           "en": "the capturing of goodwill",
           "vi": "chiếm lấy thiện cảm (mở đầu)",
           "pos": "n.f.",
-          "pronunciation_vi": "kap-ta-sio bé-né-vo-lãn-si-é"
+          "pronunciation_vi": "kap-ta-sio bé-né-vo-lãn-si-é",
+          "pronunciation_en": "lah kap-TAH-tsyo bay-nay-voh-LEN-tsyeh — 'captatio benevolentiae' (Latin); the goodwill opening"
         },
         {
           "word": "la péroraison",
           "en": "the peroration (closing appeal)",
           "vi": "lời kết thúc hùng biện",
           "pos": "n.f.",
-          "pronunciation_vi": "pé-ro-rè-zon"
+          "pronunciation_vi": "pé-ro-rè-zon",
+          "pronunciation_en": "lah pay-roh-reh-ZON — 'la péroraison' = the closing appeal"
         },
         {
           "word": "l'auditoire universel",
           "en": "the universal audience (Perelman)",
           "vi": "cử tọa phổ quát",
           "pos": "n.m.",
-          "pronunciation_vi": "ô-di-toar u-ni-vèr-sèl"
+          "pronunciation_vi": "ô-di-toar u-ni-vèr-sèl",
+          "pronunciation_en": "loh-dee-TWAR u-nee-vehr-SEL — 'l'auditoire universel' (Perelman)"
         },
         {
           "word": "le vraisemblable",
           "en": "the plausible / probable",
           "vi": "cái có vẻ đúng / khả tín",
           "pos": "n.m.",
-          "pronunciation_vi": "vrè-sãn-blablơ"
+          "pronunciation_vi": "vrè-sãn-blablơ",
+          "pronunciation_en": "luh vreh-sahn-BLAH-bluh — 'le vraisemblable' = the plausible/probable"
         },
         {
           "word": "une concession calculée",
           "en": "a calculated concession",
           "vi": "sự nhượng bộ có tính toán",
           "pos": "n.f.",
-          "pronunciation_vi": "kõn-sè-sion kal-ku-lé"
+          "pronunciation_vi": "kõn-sè-sion kal-ku-lé",
+          "pronunciation_en": "ün kohn-seh-SYON kal-ku-LAY — 'une concession calculée' = a calculated concession"
         }
       ],
       "dialogue": [
         {
           "speaker": "Étudiant",
           "text": "Quelle est la différence entre convaincre et persuader?",
+          "en": "What's the difference between 'convaincre' and 'persuader'?",
           "vi": "Khác biệt giữa 'convaincre' và 'persuader' là gì?"
         },
         {
           "speaker": "Professeur",
           "text": "Convaincre s'adresse à la raison seule — c'est le domaine du logos. Persuader mobilise la raison, mais aussi l'émotion et la confiance — c'est le domaine des trois piliers: logos, ethos, pathos. On peut être convaincu sans être persuadé, et inversement.",
+          "en": "'Convaincre' addresses reason alone — the domain of logos. 'Persuader' mobilizes reason, but also emotion and trust — the domain of all three pillars: logos, ethos, pathos. One can be convinced without being persuaded, and vice versa.",
           "vi": "'Convaincre' hướng đến lý tính đơn thuần — đó là lĩnh vực của logos. 'Persuader' huy động lý tính, nhưng cả cảm xúc và lòng tin — đó là lĩnh vực của ba trụ cột: logos, ethos, pathos. Có thể bị thuyết phục lý trí mà không bị thuyết phục toàn diện, và ngược lại."
         },
         {
           "speaker": "Étudiant",
           "text": "Donc un bon avocat doit maîtriser les trois?",
+          "en": "So a good lawyer must master all three?",
           "vi": "Vậy một luật sư giỏi phải làm chủ cả ba?"
         },
         {
           "speaker": "Professeur",
           "text": "Exactement. Le logos construit le dossier. L'ethos fait que le jury lui fait confiance. Le pathos fait que le jury se soucie de l'issue. Sans logos, c'est de la manipulation; sans ethos, c'est du sophisme; sans pathos, c'est un cours magistral — pas une plaidoirie.",
+          "en": "Exactly. Logos builds the case. Ethos makes the jury trust him. Pathos makes the jury care about the outcome. Without logos, it's manipulation; without ethos, sophistry; without pathos, a lecture — not a closing argument.",
           "vi": "Chính xác. Logos xây dựng hồ sơ. Ethos khiến bồi thẩm đoàn tin tưởng anh ta. Pathos khiến bồi thẩm đoàn quan tâm đến kết quả. Không có logos, đó là thao túng; không có ethos, đó là ngụy biện; không có pathos, đó là bài giảng — không phải biện hộ."
         }
       ],
@@ -4796,31 +4901,37 @@ export const lessons: FrenchLesson[] =       [
         {
           "speaker": "Maître Dupuis (avocat à la Cour)",
           "text": "Mademoiselle Tran, vous assistez à une plaidoirie pour la première fois. Qu'avez-vous observé?",
+          "en": "Ms. Tran, you're attending a closing argument for the first time. What did you observe?",
           "vi": "Cô Trần, cô dự một phiên biện hộ lần đầu. Cô đã quan sát được gì?"
         },
         {
           "speaker": "Linh",
           "text": "J'ai été frappée par un moment précis. L'avocat de la défense a concédé que son client avait menti sur un point secondaire — puis il a immédiatement recentré le débat sur la question centrale. Cette concession, loin de l'affaiblir, a renforcé sa crédibilité.",
+          "en": "I was struck by one precise moment. The defense lawyer conceded that his client had lied on a secondary point — then immediately recentered the debate on the central question. That concession, far from weakening him, reinforced his credibility.",
           "vi": "Tôi bị ấn tượng bởi một khoảnh khắc. Luật sư bào chữa đã nhượng bộ rằng thân chủ ông đã nói dối về một điểm phụ — rồi ngay lập tức tập trung lại tranh luận vào câu hỏi trung tâm. Sự nhượng bộ này, khác hẳn làm ông yếu đi, đã củng cố độ tin cậy của ông."
         },
         {
           "speaker": "Maître Dupuis",
           "text": "Vous avez identifié un principe fondamental de la rhétorique: la concession calculée. Pourquoi est-elle si puissante?",
+          "en": "You've identified a fundamental principle of rhetoric: the calculated concession. Why is it so powerful?",
           "vi": "Cô đã nhận diện một nguyên lý nền tảng của tu từ học: sự nhượng bộ có tính toán. Vì sao nó mạnh đến vậy?"
         },
         {
           "speaker": "Linh",
           "text": "Parce qu'elle construit l'ethos. En reconnaissant une faiblesse, l'orateur se présente comme raisonnable, honnête, digne de confiance. Et cette honnêteté sur un point secondaire rend son argument principal plus crédible.",
+          "en": "Because it builds ethos. By acknowledging a weakness, the orator presents himself as reasonable, honest, trustworthy. And that honesty on a secondary point makes his main argument more credible.",
           "vi": "Vì nó kiến tạo ethos. Bằng cách thừa nhận một điểm yếu, người nói trình hiện mình như có lý, trung thực, đáng tin. Và sự trung thực này trên một điểm phụ khiến lập luận chính của ông đáng tin hơn."
         },
         {
           "speaker": "Maître Dupuis",
           "text": "Perelman aurait été fier de vous. Maintenant, dites-moi: à quel moment l'avocat a-t-il fait appel au pathos?",
+          "en": "Perelman would have been proud of you. Now tell me: at what moment did the lawyer appeal to pathos?",
           "vi": "Perelman hẳn sẽ tự hào về cô. Giờ, nói tôi nghe: luật sư đã kêu gọi pathos ở khoảnh khắc nào?"
         },
         {
           "speaker": "Linh",
           "text": "Dans la péroraison. Il a quitté le ton technique pour évoquer ce qui arriverait à la famille du prévenu s'il était condamné. Mais — et c'est ce qui m'a frappée — il n'a pas remplacé l'argument par l'émotion; il a fait en sorte que l'émotion donne du poids à l'argument.",
+          "en": "In the peroration. He left the technical tone to evoke what would happen to the defendant's family if he were convicted. But — and this is what struck me — he didn't replace the argument with emotion; he made the emotion give weight to the argument.",
           "vi": "Trong phần kết. Ông đã rời giọng kỹ thuật để gợi lên điều sẽ xảy ra với gia đình bị cáo nếu ông ta bị kết án. Nhưng — và đây là điều gây ấn tượng với tôi — ông không thay thế lập luận bằng cảm xúc; ông làm cho cảm xúc trao trọng lượng cho lập luận."
         }
       ],
@@ -4833,7 +4944,9 @@ export const lessons: FrenchLesson[] =       [
         {
           "idiom": "Faire mouche",
           "literal": "Trúng đích (bắn cung)",
+          "literal_en": "to hit the fly",
           "meaning": "Atteindre exactement son but persuasif — un argument qui 'fait mouche' touche l'auditoire exactement là où il fallait.",
+          "meaning_en": "to hit the bullseye — an argument that 'fait mouche' reaches the audience exactly where it needed to (from archery)",
           "example": "Sa concession sur le point secondaire a fait mouche: le jury, qui était hostile, a soudainement prêté l'oreille."
         }
       ],
@@ -4841,35 +4954,46 @@ export const lessons: FrenchLesson[] =       [
         {
           "type": "fill-blank",
           "question": "La rhétorique articule trois registres: le logos, l'ethos et le ___.",
-          "answer": "pathos"
+          "answer": "pathos",
+          "hint_vi": "thuật ngữ Hy Lạp — kêu gọi cảm xúc của cử tọa (trụ cột thứ ba)",
+          "hint_en": "Greek term — the emotional appeal to the audience; the third pillar after logos and ethos"
         },
         {
           "type": "matching",
           "pairs": [
             [
               "logos",
-              "lập luận logic"
+              "lập luận logic (the logical argument)"
             ],
             [
               "ethos",
-              "tư cách người nói"
+              "tư cách người nói (the speaker's character)"
             ],
             [
               "pathos",
-              "kêu gọi cảm xúc"
+              "kêu gọi cảm xúc (the emotional appeal)"
             ],
             [
               "enthymème",
-              "tam đoạn luận tu từ"
+              "tam đoạn luận tu từ (a rhetorical syllogism)"
             ]
           ],
-          "instruction": "Nối thuật ngữ tu từ học với nghĩa Việt"
+          "instruction": "Nối thuật ngữ tu từ học với nghĩa Việt",
+          "instruction_en": "Match each rhetoric term with its Vietnamese meaning"
         },
         {
           "type": "translation",
           "vietnamese": "Perelman đã đổi mới tu từ học bằng cách cho thấy lập luận không nhắm đến chân lý chứng minh mà nhắm đến sự tán thành của tinh thần.",
+          "english": "Perelman renewed rhetoric by showing that argumentation does not aim at demonstrative truth but at the adherence of minds.",
           "french": "Perelman a renouvelé la rhétorique en montrant que l'argumentation ne vise pas la vérité démonstrative mais l'adhésion des esprits."
         }
+      ],
+      "cultural_notes_en": "Persuasion and rhetoric — the French tradition. (1) ARISTOTLE (384-322 BCE): the Rhetoric, the founding book. The famous triad: logos (the argument itself), ethos (the character the orator projects), pathos (the emotion aroused in the audience). (2) PERELMAN (1912-1984), Belgian Francophone philosopher: with Olbrechts-Tyteca, the Traité de l'argumentation (1958) rehabilitated rhetoric after centuries of Cartesian discredit. Central thesis: argumentation aims at adherence, not demonstration; it addresses a particular audience, not universal reason. (3) DESCARTES vs RHETORIC: Descartes (1637) wanted to ground knowledge on rational evidence, rejecting the merely-plausible; rhetoric, the art of the plausible, was marginalized in France until Perelman. (4) BARTHES (1915-1980): 'L'ancienne rhétorique' (1970) retraces rhetoric's history. (5) CONTEMPORARY USES: the New Rhetoric is used in law, political communication, ethical marketing — the common thread: convincing an audience where absolute proof is impossible. (6) THREE COMMON VIETNAMESE MISTAKES: confusing 'convaincre' (logos) with 'persuader' (logos + ethos + pathos); neglecting ethos (writing 'je pense que' without building credibility weakens the argument); abusing pathos (emotion without logos is manipulation, not persuasion).",
+      "tip_advice_en": "Grid for analyzing a persuasive discourse (after Perelman): (1) LOGOS — the argument: what explicit arguments? implicit ones (enthymemes)? deductive, inductive, or analogical? (2) ETHOS — the orator: how is credibility built? which pronouns? how are objections anticipated? (3) PATHOS — the audience: which emotions (fear, hope, indignation, pride)? is the audience treated as universal or particular? which values are presumed shared? (4) STRUCTURE — exorde (captatio benevolentiae), narration (the facts), argumentation (proofs + refutation), peroration (the final appeal). Useful analytical phrases: 'L'orateur construit son ethos en...', 'Cet argument relève du logos, mais il est renforcé par un appel au pathos qui...', 'La concession au début du paragraphe est une figure de l'ethos.'",
+      "register_notes_en": "C2 persuasion analysis: academic 'nous'; present for analysis. When citing Perelman: 'Perelman montre que...', 'selon la Nouvelle Rhétorique...'. Distinguish 'convaincre' (reason alone) from 'persuader' (reason + emotion + trust). Analyze, don't judge: 'ce discours est manipulateur' → 'ce discours mobilise le pathos de façon prédominante, au détriment du logos'. Technical vocabulary: 'enthymème', 'auditoire universel', 'captatio benevolentiae'.",
+      "roleplay_prompts_en": [
+        "Analyze a famous political speech or closing argument. Use the three-pillar grid (logos/ethos/pathos). Identify: (1) the central argument (logos), (2) how the orator builds credibility (ethos), (3) which emotions are mobilized and when (pathos). Conclude: 'Ce discours est un exemple de...'",
+        "Write a persuasive paragraph on a controversial subject (your choice). Structure: (1) an initial concession, (2) the main argument with data, (3) an appeal to pathos in the peroration. Then self-analyze: where is the logos, the ethos, the pathos?"
       ]
     },
     {
