@@ -89,14 +89,18 @@ export default function FrenchLessonsPage() {
           Tiếng Pháp · French
         </p>
         <h1 className="mt-1 text-2xl font-bold text-slate-900 leading-tight">
-          {HERO_VI}
+          {uiLang === "en" ? HERO_EN : HERO_VI}
         </h1>
-        <p className="mt-1 text-sm font-medium text-slate-600">{HERO_EN}</p>
+        <p className="mt-1 text-sm font-medium text-slate-600">
+          {uiLang === "en" ? HERO_VI : HERO_EN}
+        </p>
         <p className="mt-3 text-sm text-slate-700 leading-relaxed">
-          Phát âm viết riêng cho người Việt. Âm mũi, âm câm, liaison — giải thích theo cách người Việt hiểu.
+          {uiLang === "en"
+            ? "Pronunciation written for English speakers. Nasal vowels, silent letters, and liaison — explained the way English speakers actually need."
+            : "Phát âm viết riêng cho người Việt. Âm mũi, âm câm, liaison — giải thích theo cách người Việt hiểu."}
         </p>
         <p className="mt-3 text-xs text-slate-500">
-          {FRENCH_TOTAL_LESSONS} bài · A1 → C2
+          {FRENCH_TOTAL_LESSONS} {uiLang === "en" ? "lessons" : "bài"} · A1 → C2
         </p>
         <p className="mt-1 text-xs text-slate-500">
           <Link
@@ -113,7 +117,7 @@ export default function FrenchLessonsPage() {
       </div>
 
       <nav
-        aria-label="Chọn cấp độ"
+        aria-label={uiLang === "en" ? "Choose level" : "Chọn cấp độ"}
         className="mb-4 flex flex-wrap gap-2"
       >
         {FRENCH_LEVELS.map((lv) => {
@@ -138,11 +142,15 @@ export default function FrenchLessonsPage() {
 
       {lessons === null ? (
         <p className="rounded-lg border border-slate-200 bg-white px-3 py-4 text-sm text-slate-500">
-          Đang tải bài học cấp độ {cefrPillLabels[level] ?? level}…
+          {uiLang === "en"
+            ? `Loading ${cefrPillLabels[level] ?? level} lessons…`
+            : `Đang tải bài học cấp độ ${cefrPillLabels[level] ?? level}…`}
         </p>
       ) : lessons.length === 0 ? (
         <p className="rounded-lg border border-slate-200 bg-white px-3 py-4 text-sm text-slate-500">
-          Chưa có bài học cho cấp độ này.
+          {uiLang === "en"
+            ? "No lessons available for this level yet."
+            : "Chưa có bài học cho cấp độ này."}
         </p>
       ) : (
         <div className="space-y-5">
@@ -180,10 +188,16 @@ function CategorySection({
     <section>
       <header className="mb-2 flex items-baseline justify-between">
         <h2 className="text-base font-semibold text-slate-900">
-          {category.title_vi}
+          {uiLanguage === "en" ? category.title_en : category.title_vi}
         </h2>
         <span className="text-xs text-slate-500">
-          {category.title_en} · {lessons.length} bài
+          {uiLanguage === "en" ? category.title_vi : category.title_en} ·{" "}
+          {lessons.length}{" "}
+          {uiLanguage === "en"
+            ? lessons.length === 1
+              ? "lesson"
+              : "lessons"
+            : "bài"}
         </span>
       </header>
       <ol className="space-y-2">
