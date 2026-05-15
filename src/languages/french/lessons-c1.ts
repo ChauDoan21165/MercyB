@@ -4364,6 +4364,12 @@ export const lessons: FrenchLesson[] = [
           "rappeler → ra-pơ-lé",
           "mandat → mãn-da",
           "réunit → ré-u-ni"
+        ],
+        "pronunciation_focus_en": [
+          "vif → 'VEEF' — final -f sounded; 'le vif du sujet' = 'the heart of the matter'",
+          "rappeler → 'rah-puh-LAY' — double-p one clean 'p'; final -er is 'ay'",
+          "mandat → 'mahn-DAH' — nasal -an; final -t silent",
+          "réunit → 'ray-ew-NEE' — 'u' rounded 'ew'; final -t silent"
         ]
       },
       {
@@ -4374,6 +4380,12 @@ export const lessons: FrenchLesson[] = [
           "écouterons → é-ku-tơ-rõn",
           "position → po-zi-sion",
           "contradictoire → kõn-tra-dik-toar"
+        ],
+        "pronunciation_focus_en": [
+          "parole → 'pah-ROHL' — final -e silent; literally 'the word' = speaking turn",
+          "écouterons → 'ay-koo-tuh-ROHN' — future tense; nasal -ons",
+          "position → 'poh-zee-SYOHN' — -tion is 'syohn'; 's' between vowels sounds like 'z'",
+          "contradictoire → 'kohn-trah-deek-TWAR' — nasal 'on'; 'oi' is 'wah'; means 'adversarial / hearing-both-sides'"
         ]
       },
       {
@@ -4384,6 +4396,12 @@ export const lessons: FrenchLesson[] = [
           "périmètre → pé-ri-mè-trơ",
           "ordre du jour → ordr du jur",
           "revenons → rơ-vơ-nõn"
+        ],
+        "pronunciation_focus_en": [
+          "recadrer → 'ruh-kah-DRAY' — schwa 're'; final -er is 'ay'; literally 'to re-frame'",
+          "périmètre → 'pay-ree-MEH-truh' — è with grave opens to 'eh'; final -tre is a quick 'truh'",
+          "ordre du jour → 'ORD-ruh dew ZHOOR' — 'du' rounded 'ew'; 'j' is soft 'zh'; means 'the agenda'",
+          "revenons → 'ruh-vuh-NOHN' — two schwas; nasal -on at end"
         ]
       },
       {
@@ -4394,6 +4412,12 @@ export const lessons: FrenchLesson[] = [
           "trancher → trãn-shé",
           "veillerai → vè-yơ-rè",
           "exposer → èk-spo-zé"
+        ],
+        "pronunciation_focus_en": [
+          "rôle → 'ROHL' — circumflex ô lengthens the 'o'; one syllable",
+          "trancher → 'trahn-SHAY' — nasal -an; 'ch' is 'sh'; final -er is 'ay'; 'trancher' = to decide / to slice",
+          "veillerai → 'vay-yuh-RAY' — future tense; -ill- is 'y' glide; -ai is 'ay'",
+          "exposer → 'eks-poh-ZAY' — 's' between vowels sounds like 'z'; final -er is 'ay'"
         ]
       },
       {
@@ -4404,180 +4428,217 @@ export const lessons: FrenchLesson[] = [
           "séance → sé-ãns",
           "délégation → dé-lé-ga-sion",
           "concerter → kõn-sèr-té"
+        ],
+        "pronunciation_focus_en": [
+          "suspende → 'sews-PAHND' — 'u' rounded; nasal -en; subjunctive of 'suspendre'",
+          "séance → 'say-AHNS' — nasal -an; final -ce is 'ahns'",
+          "délégation → 'day-lay-gah-SYOHN' — -tion is 'syohn'; soft 'g' here is 'g' not 'zh'",
+          "concerter → 'kohn-sair-TAY' — nasal 'on'; reflexive 'se concerter' = to confer / discuss internally"
         ]
       }
     ],
     "cultural_notes_vi": "Animer une négociation multi-parties est l'un des exercices les plus exigeants de la vie professionnelle française. Le chair n'est pas un dictateur, ni un greffier — c'est un facilitateur stratégique qui permet à un accord d'émerger sans imposer une issue.\n\n(1) LE RÔLE DU CHAIR EN FRANCE — distinct du modèle anglo-saxon. Aux États-Unis, le chair est souvent décisionnaire (« I rule that… »). En France, le chair est davantage un MODÉRATEUR neutre, dont l'autorité repose sur l'impartialité perçue. Si les parties sentent que le chair penche pour l'une d'elles, le processus s'effondre.\n\n(2) STRUCTURE D'UNE SÉANCE FRANÇAISE classique:\n\n- OUVERTURE (5-10 min): rappel du mandat, du contexte, de l'ordre du jour, des règles de prise de parole.\n- TOUR DE TABLE (15-20 min): chaque partie expose sa position de départ, sans interruption.\n- DÉBAT CONTRADICTOIRE (60-90 min): questions, objections, propositions alternatives.\n- SUSPENSION (15-30 min): chaque partie se concerte en interne, parfois plusieurs fois.\n- CONVERGENCE (30-60 min): formulation d'un projet d'accord, négociation des derniers points.\n- CLÔTURE (10 min): récapitulatif, prochaines étapes, qui rédige le compte-rendu.\n\n(3) DEUX PIÈGES PRINCIPAUX du chair débutant:\n\n- TROP INTERVENIR — le chair qui parle plus que les délégations perd son rôle de facilitateur. Règle: parler 10-15% du temps, pas plus.\n- LAISSER LE CHAOS S'INSTALLER — sans recadrage, la séance dérive. Le chair doit OSER interrompre, recadrer, suspendre.\n\n(4) MAÎTRISE DU TEMPS. La culture professionnelle française est sensible au respect du planning annoncé. Si la séance était prévue de 14h à 17h, dépasser est mal vu. Le chair doit ANNONCER le timing au début (« nous avons trois heures, je propose qu'on en consacre une à l'exposé des positions, une au débat, une à la convergence »), et SUIVRE.\n\n(5) GESTION DES INTERRUPTIONS. Quand quelqu'un coupe la parole, le chair intervient: « Madame X, laissez Monsieur Y terminer; vous aurez la parole juste après. » Sans cela, l'agressivité grandit. Pour les groupes francophones, l'interruption est culturellement plus tolérée qu'en Asie ou Amérique du Nord — mais elle reste à modérer.\n\n(6) UTILISATION DU TABLEAU. Le chair compétent prend des NOTES VISIBLES sur un tableau (paperboard ou écran). Cela permet à toutes les parties de voir où en est la discussion, ce qui est acquis, ce qui reste à trancher. Effet calmant: les parties voient leur position prise en compte par écrit.\n\n(7) FORMULATION DES POINTS D'ACCORD. Le chair reformule régulièrement: « Si je résume, nous serions tous d'accord sur les points A, B, C. Reste à arbitrer D et E. » Cette reformulation crée un sentiment de progression, indispensable pour maintenir l'engagement.\n\n(8) GESTION DES BLOCAGES. Quand une partie campe sur sa position, trois techniques:\n- LA SUSPENSION (« je propose qu'on prenne une pause de quinze minutes »)\n- LE CHANGEMENT DE SUJET (« revenons sur le point trois, peut-être nous reviendrons sur celui-ci à froid »)\n- LE BILATÉRAL HORS-SÉANCE (« Madame X, Monsieur Y, peut-être pourrions-nous échanger en bilatéral pendant que les autres avancent sur le point B »)\n\n(9) NEUTRALITÉ APPARENTE — RÈGLE ABSOLUE. Le chair ne donne JAMAIS son avis sur le fond. Phrases interdites: « je pense que vous avez raison », « cette proposition est meilleure ». Phrases acceptables: « je note que cette proposition recueille l'assentiment de trois parties », « j'observe que ce point reste contesté ».\n\nUNE ERREUR FRÉQUENTE chez le chair vietnamien débutant: confondre POLITESSE et FAIBLESSE. Demander la permission de chaque intervention (« puis-je me permettre… ») affaiblit l'autorité. Le chair doit être COURTOIS mais FERME — il interrompt sans s'excuser longuement, recadre sans hésiter, suspend sans demander la permission. La courtoisie passe par le ton, pas par la multiplication des formules de politesse.",
+    "cultural_notes_en": "Chairing a multi-party negotiation is one of the most demanding exercises in French professional life. The chair is neither a dictator nor a stenographer — they are a strategic facilitator who lets an agreement emerge without imposing an outcome.\n\n(1) THE CHAIR ROLE IN FRANCE — distinct from the Anglo-American model. In the US, the chair often rules ('I rule that…'). In France, the chair is more a neutral MODERATOR, whose authority rests on perceived impartiality. If the parties feel the chair leans one way, the process collapses.\n\n(2) STANDARD FRENCH MEETING STRUCTURE:\n\n- OPENING (5-10 min): recall of the mandate, context, agenda, speaking rules.\n- TOUR DE TABLE (15-20 min): each party states its opening position, without interruption.\n- ADVERSARIAL DEBATE (60-90 min): questions, objections, alternative proposals.\n- SUSPENSION (15-30 min): each party caucuses internally, sometimes multiple times.\n- CONVERGENCE (30-60 min): drafting an agreement framework, negotiating the last points.\n- CLOSING (10 min): recap, next steps, who writes the minutes.\n\n(3) TWO MAIN TRAPS for the novice chair:\n\n- INTERVENING TOO MUCH — a chair who talks more than the delegations loses the facilitator role. Rule: speak 10-15% of the time, no more.\n- LETTING CHAOS SETTLE IN — without re-framing, the session drifts. The chair must DARE to interrupt, refocus, suspend.\n\n(4) TIME MASTERY. French professional culture is sensitive to respecting the announced schedule. If the session was scheduled 2pm-5pm, going over is poorly received. The chair must ANNOUNCE the timing at the start ('we have three hours, I propose we devote one to position-stating, one to debate, one to convergence') and STICK TO IT.\n\n(5) HANDLING INTERRUPTIONS. When someone cuts in, the chair intervenes: 'Madame X, let Monsieur Y finish; you'll have the floor right after.' Without this, aggression escalates. For francophone groups, interruption is more culturally tolerated than in Asia or North America — but it still needs moderating.\n\n(6) USE OF A BOARD. The competent chair takes VISIBLE NOTES on a board (paperboard or screen). This lets all parties see where the discussion stands, what's been agreed, what remains. Calming effect: parties see their position recorded in writing.\n\n(7) FORMULATING POINTS OF AGREEMENT. The chair reformulates regularly: 'If I summarize, we'd all agree on points A, B, C. Remaining to arbitrate: D and E.' This reformulation creates a sense of progress, indispensable for maintaining engagement.\n\n(8) HANDLING DEADLOCKS. When a party digs in, three techniques:\n- SUSPENSION ('I propose a 15-minute break')\n- TOPIC CHANGE ('let's return to point three, perhaps we'll come back to this one fresh')\n- OFF-LINE BILATERAL ('Madame X, Monsieur Y, perhaps we could speak bilaterally while the others advance on point B')\n\n(9) APPARENT NEUTRALITY — AN ABSOLUTE RULE. The chair NEVER gives their opinion on substance. Forbidden phrases: 'I think you're right', 'this proposal is better'. Acceptable: 'I note that this proposal has the agreement of three parties', 'I observe that this point remains contested'.\n\nA FREQUENT ERROR for anglophone novice chairs: confusing POLITENESS with WEAKNESS. Asking permission for every intervention ('may I…') weakens authority. The chair must be COURTEOUS but FIRM — interrupting without lengthy apology, refocusing without hesitation, suspending without asking permission. Courtesy comes through tone, not through stacking politeness formulas.",
     "tip_advice_vi": "PROCESSUS EN 5 ÉTAPES pour préparer et animer une négociation multi-parties:\n\n(1) PRÉPARATION (1-2 jours avant): rédiger un ordre du jour MINUTÉ; identifier les points sensibles; pré-bilatéraliser avec chaque partie pour comprendre leurs lignes rouges; préparer 2-3 propositions de compromis pour chaque point bloquant.\n\n(2) MISE EN SCÈNE: disposition de la salle (table ronde si possible — pas de face-à-face hostile); paperboard ou écran visible par tous; eau, papier, stylos pour chaque délégation.\n\n(3) ANIMATION: respecter le temps annoncé; reformuler régulièrement; utiliser le tableau visible; suspendre quand les tensions montent.\n\n(4) GESTION DES BLOCAGES: identifier le type de blocage (technique, politique, personnel); choisir la technique appropriée (suspension, changement de sujet, bilatéral).\n\n(5) CLÔTURE: récapituler les acquis, lister les points à reprendre, désigner qui rédige le compte-rendu et sous quel délai.\n\nCỤM HỮU ÍCH:\n\nPOUR OUVRIR LA SÉANCE:\n- « Bonjour à tous. Je vous remercie d'être présents. Avant d'entrer dans le vif du sujet… »\n- « Permettez-moi de rappeler le mandat qui nous réunit aujourd'hui. »\n- « Voici l'ordre du jour proposé; y a-t-il des modifications avant que nous commencions ? »\n- « Je propose qu'on convienne d'une règle de fonctionnement: cinq minutes par intervention, pas d'interruption. »\n\nPOUR DONNER LA PAROLE:\n- « Madame Dubois, vous avez la parole. »\n- « Je donne la parole à monsieur Martin pour exposer la position de son équipe. »\n- « Avant de passer à la suivante, je laisse réagir madame Lefèvre. »\n\nPOUR RECADRER:\n- « Permettez-moi de recadrer: nous sortons du périmètre de l'ordre du jour. »\n- « Je vous prie de revenir au point que nous traitons. »\n- « Je vous propose de garder cette question pour l'AOB; revenons à notre point trois. »\n- « Madame X, laissez monsieur Y terminer; vous aurez la parole juste après. »\n\nPOUR REFORMULER UN ACCORD PARTIEL:\n- « Si je résume, nous serions d'accord sur les points A, B, C. Reste à arbitrer D et E. »\n- « J'entends que tout le monde s'accorde sur le principe; le désaccord porte sur les modalités. »\n- « Je note un point de convergence sur X; voulez-vous qu'on le formalise ? »\n\nPOUR SUSPENDRE:\n- « Je propose qu'on suspende quinze minutes pour permettre à chaque délégation de se concerter. »\n- « Reprenons à dix heures précises. »\n- « La séance est suspendue. »\n\nPOUR CONCLURE:\n- « Avant de lever la séance, récapitulons. »\n- « Voici les points actés: [liste]. Voici les points à reprendre lors de la prochaine session: [liste]. »\n- « Madame Tran rédige le compte-rendu et le diffuse sous quarante-huit heures. »\n\nTRÁNH:\n- Donner son avis personnel — perte d'impartialité\n- Laisser une partie monopoliser la parole — frustration des autres\n- Dépasser le temps annoncé — perte de crédibilité\n- Trancher à la place des parties — sortie du rôle de chair",
+    "tip_advice_en": "5-STEP PROCESS for preparing and chairing a multi-party negotiation:\n\n(1) PREPARATION (1-2 days before): draft a MINUTED agenda; identify sensitive points; pre-bilateralize with each party to understand their red lines; prepare 2-3 compromise proposals for each blocking point.\n\n(2) STAGING: room layout (round table if possible — no hostile face-to-face); paperboard or screen visible to all; water, paper, pens for each delegation.\n\n(3) ANIMATION: respect the announced timing; reformulate regularly; use the visible board; suspend when tensions rise.\n\n(4) DEADLOCK MANAGEMENT: identify the type of block (technical, political, personal); choose the appropriate technique (suspension, topic change, bilateral).\n\n(5) CLOSING: recap the gains, list points to revisit, designate who drafts the minutes and by when.\n\nUSEFUL PHRASES:\n\nTO OPEN THE SESSION:\n- 'Bonjour à tous. Je vous remercie d'être présents. Avant d'entrer dans le vif du sujet…'\n- 'Permettez-moi de rappeler le mandat qui nous réunit aujourd'hui.'\n- 'Voici l'ordre du jour proposé; y a-t-il des modifications avant que nous commencions ?'\n- 'Je propose qu'on convienne d'une règle de fonctionnement: cinq minutes par intervention, pas d'interruption.'\n\nTO GIVE THE FLOOR:\n- 'Madame Dubois, vous avez la parole.'\n- 'Je donne la parole à monsieur Martin pour exposer la position de son équipe.'\n- 'Avant de passer à la suivante, je laisse réagir madame Lefèvre.'\n\nTO REFOCUS:\n- 'Permettez-moi de recadrer: nous sortons du périmètre de l'ordre du jour.'\n- 'Je vous prie de revenir au point que nous traitons.'\n- 'Je vous propose de garder cette question pour l'AOB; revenons à notre point trois.'\n- 'Madame X, laissez monsieur Y terminer; vous aurez la parole juste après.'\n\nTO REFORMULATE A PARTIAL AGREEMENT:\n- 'Si je résume, nous serions d'accord sur les points A, B, C. Reste à arbitrer D et E.'\n- 'J'entends que tout le monde s'accorde sur le principe; le désaccord porte sur les modalités.'\n- 'Je note un point de convergence sur X; voulez-vous qu'on le formalise ?'\n\nTO SUSPEND:\n- 'Je propose qu'on suspende quinze minutes pour permettre à chaque délégation de se concerter.'\n- 'Reprenons à dix heures précises.'\n- 'La séance est suspendue.'\n\nTO CONCLUDE:\n- 'Avant de lever la séance, récapitulons.'\n- 'Voici les points actés: [list]. Voici les points à reprendre lors de la prochaine session: [list].'\n- 'Madame Tran rédige le compte-rendu et le diffuse sous quarante-huit heures.'\n\nAVOID:\n- Giving your personal opinion — loss of impartiality\n- Letting one party monopolize the floor — frustration for others\n- Going over the announced time — loss of credibility\n- Deciding in place of the parties — stepping outside the chair role",
     "vocabulary": [
       {
         "word": "animer une séance",
         "en": "to chair a meeting",
         "vi": "chủ trì phiên họp",
         "pos": "v.",
-        "pronunciation_vi": "a-ni-mé un sé-ãns"
+        "pronunciation_vi": "a-ni-mé un sé-ãns",
+        "pronunciation_en": "ah-nee-MAY ewn say-AHNS — 'animer' literally 'to bring to life'; the French verb for facilitating, broader than English 'chair'"
       },
       {
         "word": "donner la parole à",
         "en": "to give the floor to",
         "vi": "nhường lời cho",
         "pos": "v.",
-        "pronunciation_vi": "do-né la pa-rol a"
+        "pronunciation_vi": "do-né la pa-rol a",
+        "pronunciation_en": "doh-NAY lah pah-ROHL ah — literally 'to give the word to'; standard for recognizing a speaker"
       },
       {
         "word": "recadrer un débat",
         "en": "to refocus a debate",
         "vi": "định khung lại tranh luận",
         "pos": "v.",
-        "pronunciation_vi": "rơ-ka-dré an dé-ba"
+        "pronunciation_vi": "rơ-ka-dré an dé-ba",
+        "pronunciation_en": "ruh-kah-DRAY ehn day-BAH — schwa 're'; key chair verb when discussion drifts off-agenda"
       },
       {
         "word": "l'ordre du jour",
         "en": "the agenda",
         "vi": "chương trình nghị sự",
         "pos": "n.m.",
-        "pronunciation_vi": "ordr du jur"
+        "pronunciation_vi": "ordr du jur",
+        "pronunciation_en": "lord-ruh dew ZHOOR — 'du' rounded 'ew'; 'j' is soft 'zh'; literally 'order of the day'"
       },
       {
         "word": "un tour de table",
         "en": "a round of introductions/positions",
         "vi": "vòng phát biểu",
         "pos": "n.m.",
-        "pronunciation_vi": "tur dơ ta-blơ"
+        "pronunciation_vi": "tur dơ ta-blơ",
+        "pronunciation_en": "ehn TOOR duh TAH-bluh — 'ou' is 'oo'; final -ble is a quick 'bluh'; the opening sequence where each party states their position"
       },
       {
         "word": "suspendre la séance",
         "en": "to suspend the session",
         "vi": "tạm dừng phiên họp",
         "pos": "v.",
-        "pronunciation_vi": "sus-pãn-drơ la sé-ãns"
+        "pronunciation_vi": "sus-pãn-drơ la sé-ãns",
+        "pronunciation_en": "sews-PAHN-druh lah say-AHNS — 'u' rounded; nasal -en; formal pause to let parties caucus"
       },
       {
         "word": "parvenir à un consensus",
         "en": "to reach consensus",
         "vi": "đạt đồng thuận",
         "pos": "v.",
-        "pronunciation_vi": "par-vơ-nir a an kõn-sãn-sus"
+        "pronunciation_vi": "par-vơ-nir a an kõn-sãn-sus",
+        "pronunciation_en": "par-vuh-NEER ah ehn kohn-sahn-SEWS — three nasals; the implicit goal of any French multi-party negotiation"
       },
       {
         "word": "un compte-rendu",
         "en": "minutes of meeting",
         "vi": "biên bản",
         "pos": "n.m.",
-        "pronunciation_vi": "kõnt rãn-du"
+        "pronunciation_vi": "kõnt rãn-du",
+        "pronunciation_en": "ehn KOHNT rahn-DEW — 'du' rounded 'ew'; two nasals; the official record drafted post-meeting"
       },
       {
         "word": "un débat contradictoire",
         "en": "an adversarial debate",
         "vi": "tranh luận đối kháng",
         "pos": "n.m.",
-        "pronunciation_vi": "dé-ba kõn-tra-dik-toar"
+        "pronunciation_vi": "dé-ba kõn-tra-dik-toar",
+        "pronunciation_en": "ehn day-BAH kohn-trah-deek-TWAR — 'oi' is 'wah'; not English 'contradictory' — means 'hearing both sides'"
       },
       {
         "word": "trancher un point",
         "en": "to settle a point",
         "vi": "quyết định một điểm",
         "pos": "v.",
-        "pronunciation_vi": "trãn-shé an poan"
+        "pronunciation_vi": "trãn-shé an poan",
+        "pronunciation_en": "trahn-SHAY ehn PWAN — nasal -an; 'oi' is 'wan'; chair generally avoids this — it's for the parties to do"
       }
     ],
     "dialogue": [
       {
         "speaker": "Linh (chair)",
         "text": "Bonjour à tous. Avant d'entrer dans le vif du sujet, je rappelle l'ordre du jour: trois points à traiter en deux heures.",
-        "vi": "Chào tất cả. Trước khi vào trọng tâm, tôi nhắc lại chương trình nghị sự: ba điểm cần xử lý trong hai giờ."
+        "vi": "Chào tất cả. Trước khi vào trọng tâm, tôi nhắc lại chương trình nghị sự: ba điểm cần xử lý trong hai giờ.",
+        "en": "Good morning, everyone. Before getting to the heart of the matter, let me recall the agenda: three points to address in two hours."
       },
       {
         "speaker": "Délégué A",
         "text": "Je voudrais ajouter un quatrième point sur la gouvernance.",
-        "vi": "Tôi muốn thêm điểm thứ tư về quản trị."
+        "vi": "Tôi muốn thêm điểm thứ tư về quản trị.",
+        "en": "I'd like to add a fourth point on governance."
       },
       {
         "speaker": "Linh",
         "text": "Je vous propose de le porter en AOB en fin de séance, plutôt que de remanier l'ordre du jour. Êtes-vous d'accord ?",
-        "vi": "Tôi đề nghị đưa lên AOB cuối phiên, hơn là tổ chức lại chương trình. Bạn đồng ý không?"
+        "vi": "Tôi đề nghị đưa lên AOB cuối phiên, hơn là tổ chức lại chương trình. Bạn đồng ý không?",
+        "en": "I propose we take it under AOB at the end of the session, rather than reshuffling the agenda. Do you agree?"
       },
       {
         "speaker": "Délégué A",
         "text": "Acceptable. Avançons.",
-        "vi": "Chấp nhận được. Mình tiến lên."
+        "vi": "Chấp nhận được. Mình tiến lên.",
+        "en": "Acceptable. Let's move forward."
       }
     ],
     "dialogue_long": [
       {
         "speaker": "Linh (chair, négociation tripartite — entreprise, syndicat, comité de site)",
         "text": "Bonjour à tous. Je vous remercie d'être présents pour cette séance qui s'annonce dense. Permettez-moi de rappeler le mandat: nous devons aboutir aujourd'hui à un projet d'accord sur les conditions de la restructuration du site de Nantes. L'enjeu est connu, les positions de chaque partie le sont aussi. Mon rôle ici est de faciliter l'émergence d'un accord, non de trancher; je veillerai simplement à ce que chacun puisse exposer ses arguments.",
-        "vi": "Chào tất cả. Tôi cảm ơn các bạn đã có mặt cho phiên họp dày này. Cho phép tôi nhắc lại mandate: chúng ta phải đến hôm nay một dự thảo thỏa thuận về điều kiện tái cấu trúc nhà máy Nantes. Vấn đề đã biết, lập trường mỗi bên cũng vậy. Vai trò của tôi ở đây là tạo điều kiện cho thỏa thuận xuất hiện, không quyết định; tôi sẽ đảm bảo mỗi bên có thể trình bày lập luận."
+        "vi": "Chào tất cả. Tôi cảm ơn các bạn đã có mặt cho phiên họp dày này. Cho phép tôi nhắc lại mandate: chúng ta phải đến hôm nay một dự thảo thỏa thuận về điều kiện tái cấu trúc nhà máy Nantes. Vấn đề đã biết, lập trường mỗi bên cũng vậy. Vai trò của tôi ở đây là tạo điều kiện cho thỏa thuận xuất hiện, không quyết định; tôi sẽ đảm bảo mỗi bên có thể trình bày lập luận.",
+        "en": "Hello, everyone. Thank you for being here for what promises to be a dense session. Allow me to recall the mandate: we must arrive today at a draft agreement on the conditions of restructuring the Nantes site. The stakes are known, and so are each party's positions. My role here is to facilitate the emergence of an agreement, not to decide; I'll simply ensure that each of you can present their arguments."
       },
       {
         "speaker": "Linh",
         "text": "Voici l'ordre du jour: un, plan de réorganisation tel que présenté par la direction; deux, conséquences sociales — emploi, mobilité, mesures d'accompagnement; trois, calendrier et clauses de revoyure. Trois heures pour traiter ces trois points; je suspendrai vingt minutes en milieu de séance pour vous laisser vous concerter en interne. Y a-t-il des modifications à proposer avant qu'on commence ?",
-        "vi": "Đây là chương trình nghị sự: 1, kế hoạch tái tổ chức như ban giám đốc trình; 2, hậu quả xã hội — việc làm, di chuyển, biện pháp hỗ trợ; 3, lịch trình và điều khoản xem xét lại. Ba giờ để xử lý ba điểm này; tôi sẽ tạm dừng 20 phút giữa phiên để các bạn thảo luận nội bộ. Có sửa đổi nào đề nghị trước khi mình bắt đầu không?"
+        "vi": "Đây là chương trình nghị sự: 1, kế hoạch tái tổ chức như ban giám đốc trình; 2, hậu quả xã hội — việc làm, di chuyển, biện pháp hỗ trợ; 3, lịch trình và điều khoản xem xét lại. Ba giờ để xử lý ba điểm này; tôi sẽ tạm dừng 20 phút giữa phiên để các bạn thảo luận nội bộ. Có sửa đổi nào đề nghị trước khi mình bắt đầu không?",
+        "en": "Here's the agenda: one, the reorganization plan as presented by management; two, social consequences — employment, mobility, accompanying measures; three, timeline and revisit clauses. Three hours to handle these three points; I'll suspend twenty minutes mid-session to let you caucus internally. Any modifications to propose before we begin?"
       },
       {
         "speaker": "Délégué syndical CGT",
         "text": "Je voudrais qu'on inverse l'ordre — qu'on commence par les conséquences sociales avant de discuter du plan. Sinon on cautionne le plan avant d'en mesurer l'impact.",
-        "vi": "Tôi muốn đảo thứ tự — bắt đầu bằng hậu quả xã hội trước khi bàn về kế hoạch. Nếu không, ta xác nhận kế hoạch trước khi đo tác động."
+        "vi": "Tôi muốn đảo thứ tự — bắt đầu bằng hậu quả xã hội trước khi bàn về kế hoạch. Nếu không, ta xác nhận kế hoạch trước khi đo tác động.",
+        "en": "I'd like the order reversed — start with the social consequences before discussing the plan. Otherwise we endorse the plan before measuring its impact."
       },
       {
         "speaker": "Linh",
         "text": "Je vous entends. Cela étant, comprendre les conséquences suppose qu'on connaisse le plan d'abord; sinon nous discutons d'impacts hors contexte. Je propose un compromis: la direction expose le plan en quinze minutes maximum, sans débat, puis nous traitons longuement les conséquences. Êtes-vous d'accord sur cette séquence ?",
-        "vi": "Tôi nghe bạn. Tuy nhiên, hiểu hậu quả giả định ta biết kế hoạch trước; nếu không mình bàn tác động ngoài bối cảnh. Tôi đề xuất nhân nhượng: giám đốc trình kế hoạch trong tối đa 15 phút, không tranh luận, rồi mình xử lý dài hậu quả. Bạn đồng ý chuỗi này không?"
+        "vi": "Tôi nghe bạn. Tuy nhiên, hiểu hậu quả giả định ta biết kế hoạch trước; nếu không mình bàn tác động ngoài bối cảnh. Tôi đề xuất nhân nhượng: giám đốc trình kế hoạch trong tối đa 15 phút, không tranh luận, rồi mình xử lý dài hậu quả. Bạn đồng ý chuỗi này không?",
+        "en": "I hear you. That said, understanding the consequences assumes we know the plan first; otherwise we're discussing impacts out of context. I propose a compromise: management presents the plan in 15 minutes maximum, without debate, then we'll address the consequences at length. Do you agree to this sequence?"
       },
       {
         "speaker": "Délégué CGT",
         "text": "Acceptable, à condition que les quinze minutes soient strictement respectées.",
-        "vi": "Chấp nhận, với điều kiện 15 phút phải được tuân thủ nghiêm."
+        "vi": "Chấp nhận, với điều kiện 15 phút phải được tuân thủ nghiêm.",
+        "en": "Acceptable, provided the 15 minutes are strictly respected."
       },
       {
         "speaker": "Linh",
         "text": "Je m'y engage. Madame Lefèvre, vous avez la parole pour présenter le plan. Quinze minutes; je vous arrête à quatorze pour vous laisser conclure.",
-        "vi": "Tôi cam kết. Bà Lefèvre, bà có lời để trình bày kế hoạch. 15 phút; tôi dừng bà ở phút 14 để bà kết luận."
+        "vi": "Tôi cam kết. Bà Lefèvre, bà có lời để trình bày kế hoạch. 15 phút; tôi dừng bà ở phút 14 để bà kết luận.",
+        "en": "I commit to that. Mrs. Lefèvre, you have the floor to present the plan. Fifteen minutes; I'll stop you at fourteen to let you conclude."
       },
       {
         "speaker": "Linh (après l'exposé de la direction)",
         "text": "Merci, madame Lefèvre. Avant d'ouvrir le débat, j'ai pris note de trois éléments structurants: première, suppression de cent vingt postes sur le site; deuxième, plan de mobilité interne; troisième, mesures d'accompagnement chiffrées à huit millions d'euros. Si quelqu'un souhaite une clarification factuelle avant qu'on entre dans le débat de fond ?",
-        "vi": "Cảm ơn bà Lefèvre. Trước khi mở tranh luận, tôi đã ghi ba yếu tố cấu trúc: 1, xóa 120 vị trí trên site; 2, kế hoạch di chuyển nội bộ; 3, biện pháp hỗ trợ trị giá 8 triệu euro. Nếu ai muốn làm rõ thực tế trước khi vào tranh luận nội dung?"
+        "vi": "Cảm ơn bà Lefèvre. Trước khi mở tranh luận, tôi đã ghi ba yếu tố cấu trúc: 1, xóa 120 vị trí trên site; 2, kế hoạch di chuyển nội bộ; 3, biện pháp hỗ trợ trị giá 8 triệu euro. Nếu ai muốn làm rõ thực tế trước khi vào tranh luận nội dung?",
+        "en": "Thank you, Mrs. Lefèvre. Before opening the debate, I've noted three structuring elements: first, elimination of 120 positions at the site; second, an internal mobility plan; third, accompanying measures budgeted at eight million euros. Does anyone want a factual clarification before we get into the substantive debate?"
       },
       {
         "speaker": "Délégué FO",
         "text": "Sur les huit millions: c'est brut ou net de charges patronales ?",
-        "vi": "Về 8 triệu: là gộp hay net trừ chi phí chủ?"
+        "vi": "Về 8 triệu: là gộp hay net trừ chi phí chủ?",
+        "en": "On the eight million: is that gross or net of employer charges?"
       },
       {
         "speaker": "Direction",
         "text": "Brut. Net après charges, on serait autour de cinq millions cinq.",
-        "vi": "Gộp. Net sau phí, mình sẽ ở khoảng 5,5 triệu."
+        "vi": "Gộp. Net sau phí, mình sẽ ở khoảng 5,5 triệu.",
+        "en": "Gross. Net of charges, we'd be around 5.5 million."
       },
       {
         "speaker": "Linh",
         "text": "Merci pour cette précision; je l'inscris au tableau. D'autres clarifications factuelles ? Non. Bien, j'ouvre le débat de fond. Monsieur Bernard, CGT, vous souhaitiez la parole en premier ?",
-        "vi": "Cảm ơn sự chính xác này; tôi ghi lên bảng. Có làm rõ nào khác không? Không. Tốt, tôi mở tranh luận nội dung. Ông Bernard, CGT, bạn muốn lên tiếng đầu tiên?"
+        "vi": "Cảm ơn sự chính xác này; tôi ghi lên bảng. Có làm rõ nào khác không? Không. Tốt, tôi mở tranh luận nội dung. Ông Bernard, CGT, bạn muốn lên tiếng đầu tiên?",
+        "en": "Thank you for that clarification; I'm putting it on the board. Any other factual clarifications? No. Good, I'll open the substantive debate. Mr. Bernard, CGT, you wanted the floor first?"
       },
       {
         "speaker": "Délégué CGT",
         "text": "Cent vingt postes supprimés sur six cents — c'est vingt pour cent. Avec un plan de mobilité interne qui ne peut absorber qu'une trentaine de salariés au mieux. La direction propose donc, en réalité, quatre-vingt-dix licenciements secs. Inacceptable en l'état.",
-        "vi": "120 vị trí xóa trên 600 — là 20%. Với kế hoạch di chuyển nội bộ chỉ có thể hấp thụ 30 nhân viên cùng lắm. Giám đốc do đó đề nghị, thực tế, 90 sa thải khô. Không chấp nhận trong tình trạng này."
+        "vi": "120 vị trí xóa trên 600 — là 20%. Với kế hoạch di chuyển nội bộ chỉ có thể hấp thụ 30 nhân viên cùng lắm. Giám đốc do đó đề nghị, thực tế, 90 sa thải khô. Không chấp nhận trong tình trạng này.",
+        "en": "One hundred twenty positions cut out of six hundred — that's twenty percent. With an internal mobility plan that can absorb thirty employees at best. So management is in fact proposing ninety straight layoffs. Unacceptable as it stands."
       },
       {
         "speaker": "Direction",
         "text": "Le plan prévoit aussi des départs volontaires aidés à hauteur de soixante salariés…",
-        "vi": "Kế hoạch cũng dự kiến xuất phát tự nguyện được hỗ trợ ở mức 60 nhân viên…"
+        "vi": "Kế hoạch cũng dự kiến xuất phát tự nguyện được hỗ trợ ở mức 60 nhân viên…",
+        "en": "The plan also provides for assisted voluntary departures up to sixty employees…"
       },
       {
         "speaker": "Délégué CGT (interrompant)",
         "text": "Soixante volontaires sur cent vingt suppressions, ça reste soixante de trop !",
-        "vi": "60 tự nguyện trên 120 xóa, vẫn còn dư 60!"
+        "vi": "60 tự nguyện trên 120 xóa, vẫn còn dư 60!",
+        "en": "Sixty volunteers out of one hundred twenty cuts — that's still sixty too many!"
       },
       {
         "speaker": "Linh",
         "text": "Monsieur Bernard, je vous prie de laisser madame Lefèvre terminer. Vous reprendrez la parole juste après. Madame Lefèvre, poursuivez.",
-        "vi": "Ông Bernard, tôi xin bạn để bà Lefèvre kết thúc. Bạn sẽ lấy lời ngay sau. Bà Lefèvre, tiếp."
+        "vi": "Ông Bernard, tôi xin bạn để bà Lefèvre kết thúc. Bạn sẽ lấy lời ngay sau. Bà Lefèvre, tiếp.",
+        "en": "Mr. Bernard, please let Mrs. Lefèvre finish. You'll have the floor right after. Mrs. Lefèvre, continue."
       },
       {
         "speaker": "Linh (vingt minutes plus tard, après échanges denses)",
         "text": "Je vous arrête un instant. J'observe que les positions se figent et que les arguments se répètent. Je propose une suspension de vingt minutes: chaque partie se concerte en interne, et nous reprenons à onze heures précises. Réfléchissez en interne à ce que vous pouvez bouger. C'est rarement quand on est tendus qu'on trouve les meilleurs compromis.",
-        "vi": "Tôi dừng các bạn một lúc. Tôi quan sát rằng lập trường đang đông cứng và lập luận lặp lại. Tôi đề nghị tạm dừng 20 phút: mỗi bên thảo luận nội bộ, và mình tiếp tục lúc 11h chính xác. Suy nghĩ nội bộ về điều các bạn có thể di chuyển. Hiếm khi căng thẳng mà tìm được nhân nhượng tốt nhất."
+        "vi": "Tôi dừng các bạn một lúc. Tôi quan sát rằng lập trường đang đông cứng và lập luận lặp lại. Tôi đề nghị tạm dừng 20 phút: mỗi bên thảo luận nội bộ, và mình tiếp tục lúc 11h chính xác. Suy nghĩ nội bộ về điều các bạn có thể di chuyển. Hiếm khi căng thẳng mà tìm được nhân nhượng tốt nhất.",
+        "en": "I'm pausing us for a moment. I observe that positions are hardening and arguments are repeating. I propose a twenty-minute suspension: each party caucus internally, and we resume at eleven sharp. Reflect internally on what you can move. It's rare to find the best compromises when tensions are high."
       }
     ],
     "roleplay_prompts": [
@@ -4585,30 +4646,44 @@ export const lessons: FrenchLesson[] = [
       "Trong cuộc đàm phán, một délégué prend la parole pendant 12 minutes sans s'arrêter, alors que vous aviez annoncé 5 minutes par intervention. Phản hồi: interrompre poliment + recadrer + faire respecter le temps.",
       "Soạn email post-séance pour diffuser le compte-rendu — 1 paragraphe résumé des points actés, 1 paragraphe points en suspens, 1 paragraphe prochaines étapes."
     ],
+    "roleplay_prompts_en": [
+      "You've been asked to chair a negotiation between a French client and a Vietnamese supplier — disagreement on deadlines and quality. Draft 5 sentences for the opening: mandate recap, agenda, speaking rules. Resist the anglophone instinct to skip the protocol opening; the French expect a formal frame before substance.",
+      "During the negotiation, a delegate takes the floor for 12 minutes straight, although you'd announced 5 minutes per intervention. Respond: interrupt politely + refocus + enforce timing. Don't apologize at length — courteous but firm interruption preserves the framework for everyone else.",
+      "Draft a post-meeting email to distribute the minutes — 1 paragraph summarizing agreed points, 1 paragraph on open points, 1 paragraph on next steps. The French expect minutes within 48 hours; later than that, the agreement framework starts to fray as memories diverge."
+    ],
     "register_notes": "Le LEXIQUE DU CHAIR est très spécifique en français professionnel:\n\nVERBES À MAÎTRISER:\n- « animer » une séance (chuẩn pour chair)\n- « présider » une séance (plus formel — chairman institutionnel)\n- « modérer » un débat (rôle plus neutre — chercher l'apaisement)\n- « arbitrer » un point (trancher — sort du rôle de pur chair)\n- « recadrer » (remettre dans le périmètre)\n- « réorienter » (rediriger vers un sujet)\n- « suspendre » (pause formelle)\n- « lever » la séance (terminer)\n\nCỤM TYPES POUR CHAQUE PHASE:\n\nOUVERTURE:\n- « Bonjour à tous. Je vous remercie d'être présents. »\n- « Avant d'entrer dans le vif du sujet… »\n- « Permettez-moi de rappeler le mandat… »\n- « Voici l'ordre du jour proposé… »\n\nDISTRIBUTION DE PAROLE:\n- « Madame X, vous avez la parole. »\n- « Je donne la parole à monsieur Y. »\n- « Vous allez nous exposer brièvement votre position. »\n- « Cinq minutes vous suffiront-elles ? »\n\nRECADRAGE:\n- « Permettez-moi de recadrer. »\n- « Je vous prie de revenir au point trois. »\n- « Cette question nous éloigne; je propose de la garder pour l'AOB. »\n- « Madame X, laissez monsieur Y terminer. »\n\nREFORMULATION:\n- « Si je résume, nous serions d'accord sur… »\n- « J'entends qu'il y a convergence sur X et désaccord sur Y. »\n- « Voulez-vous qu'on formalise ce point ? »\n\nSUSPENSION:\n- « Je propose qu'on suspende quinze minutes. »\n- « Reprenons à onze heures précises. »\n- « La séance est suspendue. »\n\nCLÔTURE:\n- « Avant de lever la séance, récapitulons. »\n- « Madame Tran rédige le compte-rendu et le diffuse sous quarante-huit heures. »\n- « Je vous remercie pour ces échanges; à la semaine prochaine. »\n- « La séance est levée. »\n\nUSAGE PERSON-NEUTRE: dans une séance multi-parties, le chair évite « je pense », « à mon avis », « selon moi ». Préférer:\n- « J'observe que… »\n- « Je note que… »\n- « Je constate que… »\n- « Le tableau fait apparaître… »\n\nCes formules MAINTIENNENT la neutralité — vous décrivez ce que vous voyez, vous n'affirmez pas une opinion.\n\nUNE TINH TẾ ĐẶC THÙ: le chair ne dit JAMAIS « vous avez raison » ou « vous avez tort » à une partie pendant la séance. C'est mortel pour la neutralité. Si une partie expose une erreur factuelle, le chair la corrige à voix neutre: « Je note que selon le document distribué, le chiffre est X » — sans dire qui a tort.",
+    "register_notes_en": "The CHAIR'S LEXICON is highly specific in French professional speech:\n\nVERBS TO MASTER:\n- 'animer' a session (standard for chair)\n- 'présider' a session (more formal — institutional chairman)\n- 'modérer' a debate (more neutral role — seeking calm)\n- 'arbitrer' a point (to decide — steps outside pure chair role)\n- 'recadrer' (to put back within scope)\n- 'réorienter' (to redirect to a topic)\n- 'suspendre' (formal pause)\n- 'lever' the session (to end)\n\nTYPED PHRASES BY PHASE:\n\nOPENING:\n- 'Bonjour à tous. Je vous remercie d'être présents.'\n- 'Avant d'entrer dans le vif du sujet…'\n- 'Permettez-moi de rappeler le mandat…'\n- 'Voici l'ordre du jour proposé…'\n\nGIVING THE FLOOR:\n- 'Madame X, vous avez la parole.'\n- 'Je donne la parole à monsieur Y.'\n- 'Vous allez nous exposer brièvement votre position.'\n- 'Cinq minutes vous suffiront-elles ?'\n\nREFOCUSING:\n- 'Permettez-moi de recadrer.'\n- 'Je vous prie de revenir au point trois.'\n- 'Cette question nous éloigne; je propose de la garder pour l'AOB.'\n- 'Madame X, laissez monsieur Y terminer.'\n\nREFORMULATING:\n- 'Si je résume, nous serions d'accord sur…'\n- 'J'entends qu'il y a convergence sur X et désaccord sur Y.'\n- 'Voulez-vous qu'on formalise ce point ?'\n\nSUSPENDING:\n- 'Je propose qu'on suspende quinze minutes.'\n- 'Reprenons à onze heures précises.'\n- 'La séance est suspendue.'\n\nCLOSING:\n- 'Avant de lever la séance, récapitulons.'\n- 'Madame Tran rédige le compte-rendu et le diffuse sous quarante-huit heures.'\n- 'Je vous remercie pour ces échanges; à la semaine prochaine.'\n- 'La séance est levée.'\n\nNEUTRAL-PERSON USAGE: in a multi-party session, the chair avoids 'je pense', 'à mon avis', 'selon moi'. Prefer:\n- 'J'observe que…'\n- 'Je note que…'\n- 'Je constate que…'\n- 'Le tableau fait apparaître…'\n\nThese formulas MAINTAIN neutrality — you describe what you see, you don't assert an opinion.\n\nA REFINED CONVENTION: the chair NEVER says 'you're right' or 'you're wrong' to a party during the session. That's fatal for neutrality. If a party states a factual error, the chair corrects in a neutral voice: 'I note that according to the document distributed, the figure is X' — without saying who was wrong.",
     "idiom_glosses": [
       {
         "idiom": "Tenir les rênes (courant)",
         "literal": "Giữ dây cương",
+        "literal_en": "To hold the reins",
         "meaning": "Kiểm soát mà không can thiệp quá — rôle du chair.",
+        "meaning_en": "To hold the reins — control without over-interfering, the ideal chair posture. Direct English equivalent. The horseman's metaphor: guide, don't pull too hard.",
         "example": "Le bon chair tient les rênes sans tirer trop fort: il oriente sans imposer."
       },
       {
         "idiom": "Calmer le jeu (courant)",
         "literal": "Làm dịu trận đấu",
+        "literal_en": "To calm the game",
         "meaning": "Làm dịu căng thẳng — utile en négo bloquée.",
+        "meaning_en": "To defuse tension — useful when negotiation is deadlocked. English equivalent: 'to de-escalate' or 'to cool things down'. A suspension is the classic move to calm the game.",
         "example": "Quand le ton est monté, le chair a suspendu la séance pour calmer le jeu."
       },
       {
         "idiom": "Prendre du recul (courant à soutenu)",
         "literal": "Lùi lại",
+        "literal_en": "To take a step back",
         "meaning": "Lùi để có cái nhìn rộng — recommandé aux parties bloquées.",
+        "meaning_en": "To take a step back — to get perspective. English equivalent identical. Recommended phrase when delegates are entrenched in detail and missing the bigger picture.",
         "example": "Je vous propose qu'on prenne du recul vingt minutes; nous reprendrons à tête reposée."
       },
       {
         "idiom": "Faire avancer le schmilblick (familier-courant)",
         "literal": "Làm tiến cái schmilblick",
+        "literal_en": "To advance the schmilblick",
         "meaning": "Làm tiến vấn đề — usage familier pour réintroduire le pragmatisme.",
+        "meaning_en": "To move the thing forward — colloquial-but-acceptable usage to inject pragmatism. 'Schmilblick' is a made-up French word from a 1969 comedy sketch, now meaning 'the matter at hand'. Closest English: 'to move the needle'. Use sparingly — signals informality.",
         "example": "Tout cela est intéressant, mais qu'est-ce qui fait avancer le schmilblick concrètement ?"
       }
     ],
@@ -4616,20 +4691,24 @@ export const lessons: FrenchLesson[] = [
       {
         "type": "fill-blank",
         "question": "Je propose qu'on ___ la séance dix minutes pour permettre à chaque délégation de se concerter en interne.",
-        "answer": "suspende"
+        "answer": "suspende",
+        "hint_vi": "động từ 'suspendre' ở subjonctif présent ngôi 3 số ít (sau 'proposer que')",
+        "hint_en": "verb 'suspendre' in 3rd person singular present subjunctive — required after 'proposer que' (subjunctive trigger)"
       },
       {
         "type": "matching",
         "pairs": [
-          ["recadrer un débat", "định khung lại tranh luận"],
-          ["donner la parole à", "nhường lời cho"],
-          ["parvenir à un consensus", "đạt đồng thuận"]
+          ["recadrer un débat", "định khung lại tranh luận (to refocus a debate — pull it back to agenda)"],
+          ["donner la parole à", "nhường lời cho (to give the floor to — recognize a speaker)"],
+          ["parvenir à un consensus", "đạt đồng thuận (to reach consensus)"]
         ],
-        "instruction": "Nối thuật ngữ chair với nghĩa Việt"
+        "instruction": "Nối thuật ngữ chair với nghĩa Việt",
+        "instruction_en": "Match the chairing term with its meaning"
       },
       {
         "type": "translation",
         "vietnamese": "Vai trò của tôi ở đây là tạo điều kiện cho trao đổi, không phải quyết định; tôi sẽ đảm bảo mỗi bên có thể trình bày lập luận.",
+        "english": "My role here is to facilitate the exchange, not to decide; I'll ensure that each party can present their arguments.",
         "french": "Mon rôle ici est de faciliter l'échange, non de trancher; je veillerai à ce que chacun puisse exposer ses arguments."
       }
     ]
@@ -4649,6 +4728,12 @@ export const lessons: FrenchLesson[] = [
           "enveloppe → ãn-vơ-lop",
           "budgétaire → bu-jé-tèr",
           "retravailler → rơ-tra-va-yé"
+        ],
+        "pronunciation_focus_en": [
+          "devis → 'duh-VEE' — schwa 'de'; final -s silent; means 'quote / estimate'",
+          "enveloppe → 'ahn-vuh-LOHP' — nasal -en; double-p one clean 'p'; metaphorically 'budget envelope'",
+          "budgétaire → 'bewd-zhay-TAIR' — 'u' rounded; -gé- is 'zhay'; final -aire is 'air'",
+          "retravailler → 'ruh-trah-vah-YAY' — schwa 're'; -ill- glides to 'y'; final -er is 'ay'"
         ]
       },
       {
@@ -4659,6 +4744,12 @@ export const lessons: FrenchLesson[] = [
           "cale → kal",
           "cahier → ka-yé",
           "définitif → dé-fi-ni-tif"
+        ],
+        "pronunciation_focus_en": [
+          "tarifaire → 'tah-ree-FAIR' — final -aire is 'air'; means 'pricing-related'",
+          "cale → 'KAHL' — one syllable; final -e silent; verb 'caler' = to stabilize / lock in",
+          "cahier → 'kah-YAY' — silent h; -ier ending is 'yay'; 'cahier des charges' = specifications document",
+          "définitif → 'day-fee-nee-TEEF' — final -f sounded; stress on last syllable"
         ]
       },
       {
@@ -4669,6 +4760,12 @@ export const lessons: FrenchLesson[] = [
           "paiement → pè-mã",
           "soixante → soa-sãnt",
           "nets → nèt"
+        ],
+        "pronunciation_focus_en": [
+          "conditions → 'kohn-dee-SYOHN' — nasal 'on'; -tions is 'syohn'; plural -s silent",
+          "paiement → 'peh-MAHN' — nasal -ent; final -t silent",
+          "soixante → 'swah-SAHNT' — 'oi' is 'wah'; nasal -an; final -e silent but -t sounded",
+          "nets → 'NET' — final -s silent; means 'net' (after deductions)"
         ]
       },
       {
@@ -4679,6 +4776,12 @@ export const lessons: FrenchLesson[] = [
           "pannes → pan",
           "critiques → kri-tik",
           "rédhibitoire → ré-di-bi-toar"
+        ],
+        "pronunciation_focus_en": [
+          "service → 'sair-VEES' — final -e silent; the 's' is sounded; stress on last syllable",
+          "pannes → 'PAHN' — final -es silent; double-n one clean 'n'; means 'breakdowns'",
+          "critiques → 'kree-TEEK' — final -ique is 'eek'; plural -s silent",
+          "rédhibitoire → 'ray-dee-bee-TWAR' — silent h; 'oi' is 'wah'; the academic word for 'deal-breaker'"
         ]
       },
       {
@@ -4689,195 +4792,235 @@ export const lessons: FrenchLesson[] = [
           "annuelle → a-nu-èl",
           "INSEE → in-sé",
           "inflation → an-fla-sion"
+        ],
+        "pronunciation_focus_en": [
+          "indexation → 'an-dek-sah-SYOHN' — nasal -in; -tion is 'syohn'",
+          "annuelle → 'ah-NWEL' — 'u' glides to 'w'; double-n one clean 'n'; double-l one clean 'l'",
+          "INSEE → 'an-SAY' — pronounced as letters in French; the national statistics bureau",
+          "inflation → 'an-flah-SYOHN' — nasal -in; -tion is 'syohn'"
         ]
       }
     ],
     "cultural_notes_vi": "Đàm phán với nhà cung cấp Pháp đòi hỏi sự chuẩn bị kỹ lưỡng và hiểu biết về văn hóa B2B Pháp — khác với phong cách Mỹ (transactional, focus prix) hay Nhật (relation longue, bonne foi présumée).\n\n(1) LE CAHIER DES CHARGES EST SACRÉ. Avant tout échange tarifaire, le cahier des charges (CDC) doit être finalisé et signé par les deux parties. Sans CDC précis, toute discussion prix est piégée — le fournisseur sous-tarifie pour gagner, puis facture les avenants. La phrase magique: « Avant d'entrer dans le tarifaire, je voudrais qu'on cale ensemble le CDC définitif. » Sans cela, vous payez 30-40% de plus qu'annoncé.\n\n(2) LE TCO PRIME LE PRIX D'ACHAT. Le TCO (Total Cost of Ownership / Coût Total de Possession) intègre prix d'achat + coûts d'exploitation + maintenance + formation + sortie. Un fournisseur moins cher à l'achat peut coûter 2x plus cher en TCO sur 5 ans. La négociation doit porter sur le TCO, pas seulement sur le prix d'achat.\n\n(3) CONDITIONS DE PAIEMENT — STANDARD FRANÇAIS. La loi LME 2008 plafonne les délais de paiement à 60 jours fin de mois OU 45 jours fin de mois pour les transactions transfrontalières. Au-delà = pénalités légales pour l'acheteur en retard. Standard de marché: « 30 jours nets » (faveur fournisseur) ou « 60 jours fin de mois » (standard B2B). Le client cherche à allonger; le fournisseur cherche à raccourcir. Négociez avec lucidité.\n\n(4) GARANTIE / SAV — POINT CRITIQUE. La garantie légale en France est de 2 ans pour le matériel, mais souvent étendue contractuellement (3-5 ans). Le SAV (Service Après-Vente) doit être chiffré: délai d'intervention sur panne (Time To Repair, TTR), délai de remplacement, conditions de pénalités du fournisseur si non-respect. Sans clauses précises, l'acheteur découvre 6 mois après que « SAV inclus » signifie « réponse sous 30 jours ».\n\n(5) PÉNALITÉS DE RETARD RÉCIPROQUES. Le fournisseur français exigera des pénalités de retard sur vos paiements; vous devez exiger des pénalités de retard sur ses livraisons. Asymétrie = piège. Standard équilibré: 1% par semaine de retard, plafonné à 10% du contrat.\n\n(6) CLAUSE D'INDEXATION sur contrats pluriannuels. Sans indexation, l'inflation érode la marge fournisseur — qui finira par dégrader le service. Avec indexation INSEE plafonnée, vous protégez le fournisseur ET vous-même. Standard: indice INSEE + 0 à 2% selon secteur.\n\n(7) LA RELATION SUR LE LONG TERME compte. Contrairement aux idées reçues, le marché B2B français valorise les RELATIONS DE LONG TERME — pas autant que le Japon, mais bien plus que les États-Unis. Un fournisseur qui sent qu'il sera renouvelé pendant 5-10 ans investira sur votre compte; un fournisseur qui doit re-soumissionner chaque année minimisera son investissement. Le bon acheteur joue sur ce levier: « Si nous nous engageons sur 3 ans, qu'êtes-vous prêt à concéder en regard ? »\n\n(8) RFP / APPEL D'OFFRES. Pour les achats stratégiques, un RFP formel avec 3-5 fournisseurs est la norme. Le RFP impose un cadre de comparaison équitable et permet la concurrence sans casse de relation. À éviter: RFP cosmétique où le choix est déjà fait — les fournisseurs s'en rendent compte et réduisent l'effort.\n\n(9) NÉGOCIATION FINALE — LE BAFC. Best And Final Communication: le dernier round formel où chaque fournisseur revoit son offre une dernière fois. Les Français appellent souvent cela « négociation finale » ou « tour ultime ». Au-delà, l'acheteur tranche.\n\nBẪY ĐẶC THÙ NGƯỜI VIỆT: tendance à se focaliser uniquement sur le prix d'achat, en négligeant le TCO et les conditions de paiement. Résultat: contrat « pas cher » à la signature, désastreux à l'usage. La discipline française du TCO est à apprendre — c'est ce qui distingue un acheteur professionnel d'un négociateur amateur.",
+    "cultural_notes_en": "Negotiating with French suppliers requires careful preparation and knowledge of French B2B culture — distinct from the US style (transactional, price-focused) or Japanese (long relationships, presumed good faith).\n\n(1) THE SPECIFICATIONS DOCUMENT IS SACRED. Before any pricing exchange, the cahier des charges (CDC) must be finalized and signed by both parties. Without a precise CDC, every price discussion is a trap — the vendor underbids to win, then bills the amendments. The magic phrase: 'Avant d'entrer dans le tarifaire, je voudrais qu'on cale ensemble le CDC définitif.' Without it, you'll pay 30-40% more than announced.\n\n(2) TCO TRUMPS PURCHASE PRICE. TCO (Total Cost of Ownership / Coût Total de Possession) integrates purchase price + operating costs + maintenance + training + exit. A vendor cheaper at purchase can cost 2x more in TCO over 5 years. Negotiation should target TCO, not just purchase price.\n\n(3) PAYMENT TERMS — FRENCH STANDARD. The 2008 LME law caps payment delays at 60 days end-of-month OR 45 days end-of-month for cross-border transactions. Beyond = legal penalties for the late buyer. Market standard: '30 jours nets' (vendor-favorable) or '60 jours fin de mois' (B2B standard). The buyer seeks to lengthen; the vendor to shorten. Negotiate with awareness.\n\n(4) WARRANTY / SAV — A CRITICAL POINT. Legal warranty in France is 2 years for equipment, often contractually extended (3-5 years). SAV (after-sales service) must be quantified: response time on breakdown (Time To Repair, TTR), replacement delay, vendor penalty conditions if not met. Without precise clauses, the buyer discovers 6 months in that 'SAV inclus' means 'response within 30 days'.\n\n(5) RECIPROCAL LATE PENALTIES. The French vendor will demand late penalties on your payments; you must demand late penalties on their deliveries. Asymmetry = trap. Balanced standard: 1% per week of delay, capped at 10% of the contract.\n\n(6) INDEXATION CLAUSE on multi-year contracts. Without indexation, inflation erodes vendor margin — who will eventually degrade service. With INSEE-capped indexation, you protect the vendor AND yourself. Standard: INSEE index + 0 to 2% depending on sector.\n\n(7) THE LONG-TERM RELATIONSHIP MATTERS. Contrary to received wisdom, the French B2B market values LONG-TERM RELATIONSHIPS — not as much as Japan, but far more than the US. A vendor who senses they'll be renewed for 5-10 years will invest in your account; one who has to re-bid every year will minimize investment. The good buyer plays this lever: 'If we commit to 3 years, what are you willing to concede in return?'\n\n(8) RFP / CALL FOR TENDER. For strategic purchases, a formal RFP with 3-5 vendors is the norm. The RFP imposes a fair comparison frame and enables competition without breaking the relationship. Avoid: cosmetic RFPs where the choice is already made — vendors notice and reduce effort.\n\n(9) FINAL NEGOTIATION — THE BAFC. Best And Final Communication: the last formal round where each vendor revisits their offer one last time. The French often call this 'négociation finale' or 'tour ultime'. Beyond that, the buyer decides.\n\nANGLOPHONE-SPECIFIC TRAP: tendency to focus solely on purchase price, neglecting TCO and payment terms. Result: 'cheap' contract at signing, disastrous in use. The French TCO discipline is to be learned — it's what distinguishes a professional buyer from an amateur negotiator.",
     "tip_advice_vi": "PROCESSUS EN 6 ÉTAPES pour négocier avec un fournisseur français:\n\n(1) FINALISER LE CAHIER DES CHARGES avant tout échange tarifaire. Document signé par les deux parties.\n\n(2) DEMANDER PLUSIEURS DEVIS (3-5 fournisseurs minimum) sur le même CDC, même format, même date limite. Comparaison équitable.\n\n(3) ANALYSER EN TCO: prix d'achat + maintenance 3 ans + coûts d'exploitation + sortie. Souvent, le fournisseur le moins cher à l'achat est le plus cher en TCO.\n\n(4) PRÉ-NÉGOCIATION BILATÉRALE avec les 2-3 finalistes: comprendre les marges de manœuvre, les contraintes de chacun, les opportunités de personnalisation.\n\n(5) NÉGOCIATION FINALE EN UN SEUL RENDEZ-VOUS, idéalement avec décideur économique côté fournisseur. Préparer la liste des leviers: prix, conditions de paiement, durée du contrat, SAV, formation, exclusivité.\n\n(6) CONTRAT FORMEL avec avocat — toutes les clauses critiques (SAV, pénalités, indexation, résiliation) écrites noir sur blanc.\n\nCỤM HỮU ÍCH:\n\nPOUR DÉMARRER:\n- « Avant d'entrer dans le tarifaire, je voudrais qu'on cale le cahier des charges définitif. »\n- « Pourriez-vous nous présenter votre proposition en détail ? »\n- « Sur quel périmètre exactement votre devis porte-t-il ? »\n\nPOUR PUSHER SUR LE PRIX:\n- « Votre devis dépasse l'enveloppe que nous avions prévue. »\n- « À périmètre équivalent, nous avons reçu des propositions à X. »\n- « Sur quelle base avez-vous chiffré le poste Y ? »\n- « Que pourrait-on simplifier dans le périmètre pour atteindre l'enveloppe ? »\n\nPOUR NÉGOCIER LES CONDITIONS:\n- « Sur les conditions de paiement, j'aimerais qu'on aligne sur le standard du marché. »\n- « Le SAV tel que décrit ne couvre pas les pannes critiques en moins de vingt-quatre heures — point rédhibitoire. »\n- « Pourriez-vous étendre la garantie à trois ans en standard ? »\n- « Sur quels indicateurs de performance êtes-vous prêt à vous engager contractuellement ? »\n\nPOUR ÉCHANGER (concession contre engagement long terme):\n- « Si nous nous engageons sur trois ans plutôt qu'un an, qu'êtes-vous prêt à concéder ? »\n- « Une exclusivité sur ce périmètre justifierait une remise complémentaire. »\n- « En contrepartie d'un acompte plus important, accepteriez-vous de revoir le tarif ? »\n\nPOUR CONCLURE:\n- « Si je résume, nous serions sur [récapitulatif]. »\n- « Pourriez-vous me formaliser cette offre révisée par écrit d'ici vendredi ? »\n- « Sous réserve de validation interne, nous sommes prêts à signer la semaine prochaine. »\n\nTRÁNH:\n- Négocier seulement sur le prix d'achat — perte du TCO\n- Accepter un cahier des charges flou — dérapage budgétaire garanti\n- Ne pas demander de pénalités symétriques — déséquilibre coûteux\n- Annoncer trop tôt votre BATNA — perte du levier de négociation",
+    "tip_advice_en": "6-STEP PROCESS for negotiating with a French vendor:\n\n(1) FINALIZE THE CAHIER DES CHARGES before any pricing exchange. Document signed by both parties.\n\n(2) REQUEST MULTIPLE QUOTES (3-5 vendors minimum) on the same CDC, same format, same deadline. Fair comparison.\n\n(3) ANALYZE IN TCO: purchase price + 3-year maintenance + operating costs + exit. Often the cheapest at purchase is the most expensive in TCO.\n\n(4) BILATERAL PRE-NEGOTIATION with the 2-3 finalists: understand each one's room for movement, constraints, customization opportunities.\n\n(5) FINAL NEGOTIATION IN ONE MEETING, ideally with the economic decision-maker on the vendor side. Prepare the leverage list: price, payment terms, contract duration, SAV, training, exclusivity.\n\n(6) FORMAL CONTRACT with a lawyer — all critical clauses (SAV, penalties, indexation, termination) written explicitly.\n\nUSEFUL PHRASES:\n\nTO START:\n- 'Avant d'entrer dans le tarifaire, je voudrais qu'on cale le cahier des charges définitif.'\n- 'Pourriez-vous nous présenter votre proposition en détail ?'\n- 'Sur quel périmètre exactement votre devis porte-t-il ?'\n\nTO PUSH ON PRICE:\n- 'Votre devis dépasse l'enveloppe que nous avions prévue.'\n- 'À périmètre équivalent, nous avons reçu des propositions à X.'\n- 'Sur quelle base avez-vous chiffré le poste Y ?'\n- 'Que pourrait-on simplifier dans le périmètre pour atteindre l'enveloppe ?'\n\nTO NEGOTIATE TERMS:\n- 'Sur les conditions de paiement, j'aimerais qu'on aligne sur le standard du marché.'\n- 'Le SAV tel que décrit ne couvre pas les pannes critiques en moins de vingt-quatre heures — point rédhibitoire.'\n- 'Pourriez-vous étendre la garantie à trois ans en standard ?'\n- 'Sur quels indicateurs de performance êtes-vous prêt à vous engager contractuellement ?'\n\nTO TRADE (concession for long-term engagement):\n- 'Si nous nous engageons sur trois ans plutôt qu'un an, qu'êtes-vous prêt à concéder ?'\n- 'Une exclusivité sur ce périmètre justifierait une remise complémentaire.'\n- 'En contrepartie d'un acompte plus important, accepteriez-vous de revoir le tarif ?'\n\nTO CONCLUDE:\n- 'Si je résume, nous serions sur [recap].'\n- 'Pourriez-vous me formaliser cette offre révisée par écrit d'ici vendredi ?'\n- 'Sous réserve de validation interne, nous sommes prêts à signer la semaine prochaine.'\n\nAVOID:\n- Negotiating only on purchase price — TCO blind spot\n- Accepting a vague CDC — guaranteed budget overrun\n- Not demanding symmetric penalties — expensive imbalance\n- Announcing your BATNA too early — loss of negotiation leverage",
     "vocabulary": [
       {
         "word": "un cahier des charges",
         "en": "specifications document",
         "vi": "bộ tiêu chí kỹ thuật",
         "pos": "n.m.",
-        "pronunciation_vi": "ka-yé dé sharj"
+        "pronunciation_vi": "ka-yé dé sharj",
+        "pronunciation_en": "ehn kah-YAY day SHARZH — silent h in 'cahier'; final -ges is 'zh' (soft); the sacred B2B document — finalize before pricing"
       },
       {
         "word": "un devis",
         "en": "a quote",
         "vi": "báo giá",
         "pos": "n.m.",
-        "pronunciation_vi": "dơ-vi"
+        "pronunciation_vi": "dơ-vi",
+        "pronunciation_en": "ehn duh-VEE — schwa 'de'; final -s silent; the formal pricing proposal, legally binding for a stated period"
       },
       {
         "word": "le coût total de possession (TCO)",
         "en": "Total Cost of Ownership",
         "vi": "tổng chi phí sở hữu",
         "pos": "n.m.",
-        "pronunciation_vi": "ku to-tal dơ po-sè-sion"
+        "pronunciation_vi": "ku to-tal dơ po-sè-sion",
+        "pronunciation_en": "luh KOO toh-TAHL duh poh-seh-SYOHN — 'ou' is 'oo'; the framework that exposes 'cheap-to-buy, expensive-to-own' traps"
       },
       {
         "word": "les conditions de paiement",
         "en": "payment terms",
         "vi": "điều kiện thanh toán",
         "pos": "n.f. pl.",
-        "pronunciation_vi": "kõn-di-sion dơ pè-mã"
+        "pronunciation_vi": "kõn-di-sion dơ pè-mã",
+        "pronunciation_en": "lay kohn-dee-SYOHN duh peh-MAHN — French B2B standard is 60 days end-of-month; 30 days nets favors the vendor"
       },
       {
         "word": "le service après-vente (SAV)",
         "en": "after-sales service",
         "vi": "dịch vụ sau bán",
         "pos": "n.m.",
-        "pronunciation_vi": "sèr-vis a-prè vãnt"
+        "pronunciation_vi": "sèr-vis a-prè vãnt",
+        "pronunciation_en": "luh sair-VEES ah-preh-VAHNT — nasal -en; literally 'after-sale service'; always demand quantified SLAs"
       },
       {
         "word": "une clause d'indexation",
         "en": "an indexation clause",
         "vi": "điều khoản chỉ số hóa",
         "pos": "n.f.",
-        "pronunciation_vi": "kloz dan-dèk-sa-sion"
+        "pronunciation_vi": "kloz dan-dèk-sa-sion",
+        "pronunciation_en": "ewn KLOHZ dan-dek-sah-SYOHN — nasal -in; ties pricing to inflation index (INSEE) to protect both parties"
       },
       {
         "word": "des pénalités de retard",
         "en": "late penalties",
         "vi": "phạt chậm trễ",
         "pos": "n.f. pl.",
-        "pronunciation_vi": "pé-na-li-té dơ rơ-tar"
+        "pronunciation_vi": "pé-na-li-té dơ rơ-tar",
+        "pronunciation_en": "day pay-nah-lee-TAY duh ruh-TAR — final -d silent in 'retard'; always demand reciprocity"
       },
       {
         "word": "le périmètre du contrat",
         "en": "contract scope",
         "vi": "phạm vi hợp đồng",
         "pos": "n.m.",
-        "pronunciation_vi": "pé-ri-mè-trơ du kõn-tra"
+        "pronunciation_vi": "pé-ri-mè-trơ du kõn-tra",
+        "pronunciation_en": "luh pay-ree-MEH-truh dew kohn-TRAH — 'du' rounded; ambiguous scope = invoice padding"
       },
       {
         "word": "un appel d'offres",
         "en": "a call for tender / RFP",
         "vi": "đấu thầu",
         "pos": "n.m.",
-        "pronunciation_vi": "a-pèl do-frơ"
+        "pronunciation_vi": "a-pèl do-frơ",
+        "pronunciation_en": "ehn ah-PEL DOFR — final -e silent; the formal procurement process for strategic purchases"
       },
       {
         "word": "rédhibitoire",
         "en": "deal-breaker",
         "vi": "bất khả",
         "pos": "adj.",
-        "pronunciation_vi": "ré-di-bi-toar"
+        "pronunciation_vi": "ré-di-bi-toar",
+        "pronunciation_en": "ray-dee-bee-TWAR — silent h; 'oi' is 'wah'; the C1 word for 'absolute deal-breaker' — used sparingly"
       }
     ],
     "dialogue": [
       {
         "speaker": "Linh (acheteuse)",
         "text": "Monsieur Roussel, votre devis arrive à cent vingt mille euros — quinze pour cent au-dessus de notre enveloppe.",
-        "vi": "Ông Roussel, báo giá của ông đến 120 nghìn euro — 15% trên ngân sách của chúng tôi."
+        "vi": "Ông Roussel, báo giá của ông đến 120 nghìn euro — 15% trên ngân sách của chúng tôi.",
+        "en": "Mr. Roussel, your quote comes in at one hundred twenty thousand euros — fifteen percent above our envelope."
       },
       {
         "speaker": "Fournisseur",
         "text": "Le périmètre tel que défini est dense — il y a peu de marge sur le tarif horaire.",
-        "vi": "Phạm vi như định nghĩa là dày — ít margin trên giá giờ."
+        "vi": "Phạm vi như định nghĩa là dày — ít margin trên giá giờ.",
+        "en": "The scope as defined is dense — there's little margin on the hourly rate."
       },
       {
         "speaker": "Linh",
         "text": "Plutôt que rogner sur le tarif, simplifions le périmètre. Le module reporting avancé est-il indispensable au lancement ?",
-        "vi": "Hơn là cắt giá, đơn giản hóa phạm vi. Module reporting nâng cao có cần thiết khi ra mắt không?"
+        "vi": "Hơn là cắt giá, đơn giản hóa phạm vi. Module reporting nâng cao có cần thiết khi ra mắt không?",
+        "en": "Rather than shaving the rate, let's simplify the scope. Is the advanced reporting module essential at launch?"
       },
       {
         "speaker": "Fournisseur",
         "text": "Pas indispensable — on peut le décaler en phase 2. Cela ramène le devis à cent quatre.",
-        "vi": "Không cần — mình có thể dời sang giai đoạn 2. Điều đó đưa báo giá xuống 104."
+        "vi": "Không cần — mình có thể dời sang giai đoạn 2. Điều đó đưa báo giá xuống 104.",
+        "en": "Not essential — we can defer it to phase 2. That brings the quote down to one hundred four."
       }
     ],
     "dialogue_long": [
       {
         "speaker": "Linh (responsable achats, négociation finale avec un éditeur de logiciel français)",
         "text": "Monsieur Roussel, merci de vous être déplacé. Nous avons étudié votre proposition révisée. Trois points appellent une dernière discussion avant que je puisse la défendre devant ma direction: le tarif global, les conditions de paiement, et le SAV. Êtes-vous d'accord pour qu'on les traite dans cet ordre ?",
-        "vi": "Ông Roussel, cảm ơn ông đã đến. Chúng tôi đã nghiên cứu đề xuất sửa đổi của ông. Ba điểm cần thảo luận cuối trước khi tôi có thể bảo vệ trước giám đốc: giá tổng, điều kiện thanh toán, và SAV. Ông đồng ý mình xử lý theo thứ tự đó không?"
+        "vi": "Ông Roussel, cảm ơn ông đã đến. Chúng tôi đã nghiên cứu đề xuất sửa đổi của ông. Ba điểm cần thảo luận cuối trước khi tôi có thể bảo vệ trước giám đốc: giá tổng, điều kiện thanh toán, và SAV. Ông đồng ý mình xử lý theo thứ tự đó không?",
+        "en": "Mr. Roussel, thank you for coming. We've studied your revised proposal. Three points call for a final discussion before I can defend it to my management: overall price, payment terms, and after-sales service. Do you agree to handle them in that order?"
       },
       {
         "speaker": "Fournisseur",
         "text": "Tout à fait. Allons-y point par point.",
-        "vi": "Hoàn toàn. Mình đi từng điểm."
+        "vi": "Hoàn toàn. Mình đi từng điểm.",
+        "en": "Absolutely. Let's go point by point."
       },
       {
         "speaker": "Linh",
         "text": "Premier point — le tarif. Votre proposition est à cent quatre mille euros sur trois ans, après le retrait du module reporting que nous avions évoqué la semaine dernière. Notre enveloppe maximale, validée par la direction financière, est à quatre-vingt-quinze. L'écart résiduel est donc de neuf mille euros. Sur quoi pouvons-nous travailler pour le combler ?",
-        "vi": "Điểm thứ nhất — giá. Đề xuất của ông là 104 nghìn euro trong 3 năm, sau khi loại module reporting mình đã bàn tuần trước. Ngân sách tối đa của chúng tôi, được giám đốc tài chính duyệt, là 95. Khoảng cách dư là 9 nghìn euro. Mình có thể làm việc trên cái gì để bù?"
+        "vi": "Điểm thứ nhất — giá. Đề xuất của ông là 104 nghìn euro trong 3 năm, sau khi loại module reporting mình đã bàn tuần trước. Ngân sách tối đa của chúng tôi, được giám đốc tài chính duyệt, là 95. Khoảng cách dư là 9 nghìn euro. Mình có thể làm việc trên cái gì để bù?",
+        "en": "First point — pricing. Your proposal is at one hundred four thousand euros over three years, after removing the reporting module we discussed last week. Our maximum envelope, validated by finance, is at ninety-five. The residual gap is therefore nine thousand euros. What can we work on to close it?"
       },
       {
         "speaker": "Fournisseur",
         "text": "Sur le tarif horaire des prestations, je peux descendre de cinq pour cent — soit environ trois mille euros sur trois ans. Cela vous laisse encore six mille à trouver.",
-        "vi": "Trên giá giờ dịch vụ, tôi có thể giảm 5% — khoảng 3 nghìn euro trên 3 năm. Còn 6 nghìn để tìm."
+        "vi": "Trên giá giờ dịch vụ, tôi có thể giảm 5% — khoảng 3 nghìn euro trên 3 năm. Còn 6 nghìn để tìm.",
+        "en": "On the hourly rate for services, I can come down five percent — roughly three thousand euros over three years. That still leaves you six thousand to find."
       },
       {
         "speaker": "Linh",
         "text": "Si je m'engage sur cinq ans plutôt que trois, qu'êtes-vous prêt à concéder en supplément ?",
-        "vi": "Nếu tôi cam kết 5 năm thay vì 3, ông sẵn sàng nhân nhượng thêm gì?"
+        "vi": "Nếu tôi cam kết 5 năm thay vì 3, ông sẵn sàng nhân nhượng thêm gì?",
+        "en": "If I commit to five years instead of three, what are you willing to concede in addition?"
       },
       {
         "speaker": "Fournisseur",
         "text": "Cinq ans, cela change la donne pour notre planification. Je peux vous proposer une remise volume supplémentaire de quatre pour cent sur l'ensemble — soit environ quatre mille de plus. Et si vous acceptez d'être référence cliente sur notre site web, j'ajoute mille de plus en remise commerciale.",
-        "vi": "5 năm, thay đổi tình thế cho lập kế hoạch của chúng tôi. Tôi có thể đề xuất giảm volume thêm 4% trên tổng — khoảng 4 nghìn thêm. Và nếu bà chấp nhận làm khách tham chiếu trên website của chúng tôi, tôi thêm 1 nghìn giảm thương mại."
+        "vi": "5 năm, thay đổi tình thế cho lập kế hoạch của chúng tôi. Tôi có thể đề xuất giảm volume thêm 4% trên tổng — khoảng 4 nghìn thêm. Và nếu bà chấp nhận làm khách tham chiếu trên website của chúng tôi, tôi thêm 1 nghìn giảm thương mại.",
+        "en": "Five years changes the picture for our planning. I can offer an additional four percent volume discount on the whole — about four thousand more. And if you agree to be a client reference on our website, I'll add another thousand in commercial discount."
       },
       {
         "speaker": "Linh",
         "text": "Sur la référence cliente, j'aurais besoin de l'aval de notre direction de la communication — je ne peux pas m'engager seule. Mais en posant les chiffres, on serait à quatre-vingt-seize avec la référence, quatre-vingt-quinze sans. Je propose qu'on parte sur quatre-vingt-quinze ferme, en gardant la référence cliente comme option à travailler après signature. Acceptable ?",
-        "vi": "Về khách tham chiếu, tôi cần có sự đồng ý của giám đốc truyền thông — không thể cam kết một mình. Nhưng đặt các con số, mình sẽ ở 96 với tham chiếu, 95 không. Tôi đề xuất bắt đầu ở 95 chắc, giữ khách tham chiếu làm tùy chọn sau ký. Chấp nhận?"
+        "vi": "Về khách tham chiếu, tôi cần có sự đồng ý của giám đốc truyền thông — không thể cam kết một mình. Nhưng đặt các con số, mình sẽ ở 96 với tham chiếu, 95 không. Tôi đề xuất bắt đầu ở 95 chắc, giữ khách tham chiếu làm tùy chọn sau ký. Chấp nhận?",
+        "en": "On the client reference, I'd need clearance from our communications director — I can't commit solo. But laying out the numbers, we'd be at ninety-six with the reference, ninety-five without. I propose we lock in ninety-five firm, keeping the client reference as an option to work on after signing. Acceptable?"
       },
       {
         "speaker": "Fournisseur",
         "text": "Acceptable, à condition que la référence cliente fasse l'objet d'une lettre d'intention dans les six mois — sinon le tarif remonte à quatre-vingt-seize.",
-        "vi": "Chấp nhận, với điều kiện khách tham chiếu có letter of intent trong 6 tháng — nếu không giá lên 96."
+        "vi": "Chấp nhận, với điều kiện khách tham chiếu có letter of intent trong 6 tháng — nếu không giá lên 96.",
+        "en": "Acceptable, provided the client reference is the subject of a letter of intent within six months — otherwise the price rises back to ninety-six."
       },
       {
         "speaker": "Linh",
         "text": "Acté. Deuxième point: les conditions de paiement. Votre proposition est à trente jours nets. Notre standard B2B est soixante jours fin de mois. Je voudrais qu'on s'aligne sur ce standard.",
-        "vi": "Ghi nhận. Điểm thứ hai: điều kiện thanh toán. Đề xuất của ông là 30 ngày thuần. Chuẩn B2B của chúng tôi là 60 ngày cuối tháng. Tôi muốn theo chuẩn này."
+        "vi": "Ghi nhận. Điểm thứ hai: điều kiện thanh toán. Đề xuất của ông là 30 ngày thuần. Chuẩn B2B của chúng tôi là 60 ngày cuối tháng. Tôi muốn theo chuẩn này.",
+        "en": "Noted. Second point: payment terms. Your proposal is at 30 days net. Our B2B standard is 60 days end-of-month. I'd like us to align on that standard."
       },
       {
         "speaker": "Fournisseur",
         "text": "Soixante jours fin de mois, c'est très long pour notre trésorerie. Quarante-cinq jours fin de mois est mon plafond.",
-        "vi": "60 ngày cuối tháng là rất dài cho dòng tiền của chúng tôi. 45 ngày cuối tháng là trần của tôi."
+        "vi": "60 ngày cuối tháng là rất dài cho dòng tiền của chúng tôi. 45 ngày cuối tháng là trần của tôi.",
+        "en": "Sixty days end-of-month is very long for our cash flow. Forty-five days end-of-month is my ceiling."
       },
       {
         "speaker": "Linh",
         "text": "Je peux accepter quarante-cinq jours fin de mois si vous garantissez une facturation mensuelle plutôt que trimestrielle. Cela vous permet d'encaisser plus régulièrement, et nous évite des montants forfaitaires importants.",
-        "vi": "Tôi có thể chấp nhận 45 ngày cuối tháng nếu ông đảm bảo lập hóa đơn hàng tháng thay vì quý. Điều này cho phép ông thu đều hơn, và tránh cho chúng tôi các khoản gộp lớn."
+        "vi": "Tôi có thể chấp nhận 45 ngày cuối tháng nếu ông đảm bảo lập hóa đơn hàng tháng thay vì quý. Điều này cho phép ông thu đều hơn, và tránh cho chúng tôi các khoản gộp lớn.",
+        "en": "I can accept 45 days end-of-month if you guarantee monthly rather than quarterly invoicing. That lets you collect more regularly, and spares us large lump-sum payments."
       },
       {
         "speaker": "Fournisseur",
         "text": "Acceptable. Facturation mensuelle, paiement à quarante-cinq jours fin de mois.",
-        "vi": "Chấp nhận. Hóa đơn hàng tháng, thanh toán 45 ngày cuối tháng."
+        "vi": "Chấp nhận. Hóa đơn hàng tháng, thanh toán 45 ngày cuối tháng.",
+        "en": "Acceptable. Monthly invoicing, payment at 45 days end-of-month."
       },
       {
         "speaker": "Linh",
         "text": "Troisième point — le SAV. Votre proposition couvre les pannes en moins de cinq jours ouvrés. Pour un logiciel critique pour notre exploitation, c'est insuffisant. Nous avons besoin d'une garantie de réponse en moins de quatre heures pour les incidents bloquants, et résolution sous vingt-quatre heures. Sans cela, nous ne pouvons pas signer.",
-        "vi": "Điểm thứ ba — SAV. Đề xuất của ông bao gồm sự cố trong vòng 5 ngày làm việc. Cho phần mềm critique cho vận hành của chúng tôi, không đủ. Chúng tôi cần đảm bảo phản hồi trong vòng 4 giờ cho sự cố chặn, và giải quyết dưới 24 giờ. Không có, chúng tôi không thể ký."
+        "vi": "Điểm thứ ba — SAV. Đề xuất của ông bao gồm sự cố trong vòng 5 ngày làm việc. Cho phần mềm critique cho vận hành của chúng tôi, không đủ. Chúng tôi cần đảm bảo phản hồi trong vòng 4 giờ cho sự cố chặn, và giải quyết dưới 24 giờ. Không có, chúng tôi không thể ký.",
+        "en": "Third point — after-sales service. Your proposal covers breakdowns within five business days. For software critical to our operations, that's insufficient. We need a response guarantee within four hours for blocking incidents, and resolution within twenty-four hours. Without that, we can't sign."
       },
       {
         "speaker": "Fournisseur",
         "text": "Quatre heures de réponse et vingt-quatre de résolution, c'est notre niveau Premium — qui est tarifé à part. Je peux vous le donner inclus en contrepartie de l'engagement cinq ans.",
-        "vi": "4 giờ phản hồi và 24 giờ giải quyết, là cấp Premium — định giá riêng. Tôi có thể cho bạn gồm để đối ứng cam kết 5 năm."
+        "vi": "4 giờ phản hồi và 24 giờ giải quyết, là cấp Premium — định giá riêng. Tôi có thể cho bạn gồm để đối ứng cam kết 5 năm.",
+        "en": "Four-hour response and twenty-four-hour resolution — that's our Premium tier, separately priced. I can include it as a counterpart to the five-year commitment."
       },
       {
         "speaker": "Linh",
         "text": "Avec pénalités contractuelles si non-respect ? Disons un pour cent du tarif annuel par incident non résolu dans les délais.",
-        "vi": "Với phạt hợp đồng nếu không tuân thủ? Cho là 1% giá hàng năm cho mỗi sự cố không giải quyết trong thời hạn."
+        "vi": "Với phạt hợp đồng nếu không tuân thủ? Cho là 1% giá hàng năm cho mỗi sự cố không giải quyết trong thời hạn.",
+        "en": "With contractual penalties if not respected? Let's say one percent of the annual rate per incident not resolved within the SLA."
       },
       {
         "speaker": "Fournisseur",
         "text": "Un pour cent par incident, plafonné à dix pour cent par an. Acceptable.",
-        "vi": "1% mỗi sự cố, giới hạn 10% mỗi năm. Chấp nhận."
+        "vi": "1% mỗi sự cố, giới hạn 10% mỗi năm. Chấp nhận.",
+        "en": "One percent per incident, capped at ten percent per year. Acceptable."
       },
       {
         "speaker": "Linh",
         "text": "Acté. Si je récapitule: quatre-vingt-quinze mille euros sur cinq ans, facturation mensuelle, paiement quarante-cinq jours fin de mois, SAV Premium inclus avec pénalités d'un pour cent par incident plafonnées à dix pour cent annuels, lettre d'intention référence cliente sous six mois. Pourriez-vous me formaliser cette offre par écrit d'ici vendredi ? Je la soumets à validation interne lundi, et nous signons la semaine du quinze.",
-        "vi": "Ghi nhận. Tóm lại: 95 nghìn euro trong 5 năm, lập hóa đơn hàng tháng, thanh toán 45 ngày cuối tháng, SAV Premium gồm với phạt 1% mỗi sự cố giới hạn 10% hàng năm, letter of intent khách tham chiếu trong 6 tháng. Ông có thể chính thức hóa đề nghị này bằng văn bản trước thứ sáu không? Tôi trình duyệt nội bộ thứ hai, và mình ký tuần 15."
+        "vi": "Ghi nhận. Tóm lại: 95 nghìn euro trong 5 năm, lập hóa đơn hàng tháng, thanh toán 45 ngày cuối tháng, SAV Premium gồm với phạt 1% mỗi sự cố giới hạn 10% hàng năm, letter of intent khách tham chiếu trong 6 tháng. Ông có thể chính thức hóa đề nghị này bằng văn bản trước thứ sáu không? Tôi trình duyệt nội bộ thứ hai, và mình ký tuần 15.",
+        "en": "Noted. To recap: ninety-five thousand euros over five years, monthly invoicing, payment at 45 days end-of-month, Premium SAV included with one-percent-per-incident penalties capped at ten percent annually, client-reference letter of intent within six months. Could you formalize this offer in writing by Friday? I'll submit it for internal validation Monday, and we sign the week of the fifteenth."
       },
       {
         "speaker": "Fournisseur",
         "text": "Tu auras le contrat révisé jeudi soir. Excellent échange — vous êtes une négociatrice solide.",
-        "vi": "Bà sẽ có hợp đồng sửa thứ năm tối. Trao đổi xuất sắc — bà là người đàm phán vững."
+        "vi": "Bà sẽ có hợp đồng sửa thứ năm tối. Trao đổi xuất sắc — bà là người đàm phán vững.",
+        "en": "You'll have the revised contract Thursday evening. Excellent exchange — you're a solid negotiator."
       }
     ],
     "roleplay_prompts": [
@@ -4885,30 +5028,44 @@ export const lessons: FrenchLesson[] = [
       "Trong RFP, vous avez trois finalistes. Le moins-disant est aussi le moins crédible. Soạn la position que vous défendez à votre direction: le TCO sur 5 ans + analyse de risque, pas le prix d'achat.",
       "Soạn 5 câu pour répondre à un fournisseur qui vous dit « notre tarif n'est pas négociable, c'est notre catalogue » — proposer 3 leviers alternatifs (volume, durée, périmètre)."
     ],
+    "roleplay_prompts_en": [
+      "You're tasked with negotiating the renewal of a maintenance contract with a long-standing vendor. They're proposing +8% on the rate with no service improvement. Draft 5 sentences to push back: market reference, quantified justification, requested counterpart. The anglophone instinct here is to accept; resist and demand a service-side improvement in exchange.",
+      "In an RFP, you have three finalists. The lowest bidder is also the least credible. Draft the position you defend to your management: 5-year TCO + risk analysis, not purchase price. Make the case that purchase price is a single point in a 5-year cost curve.",
+      "Draft 5 sentences to respond to a vendor who tells you 'our rate isn't negotiable, it's our catalog' — propose 3 alternative levers (volume, duration, scope). Catalogue pricing is rarely truly fixed; the polite move is to find a frame where their non-negotiable becomes a flexible commitment."
+    ],
     "register_notes": "Le LEXIQUE DE LA NÉGOCIATION FOURNISSEUR est très technique en français B2B:\n\nVERBES CLÉS:\n- « caler » un cahier des charges (finaliser, stabiliser)\n- « rogner » sur le tarif (réduire à la marge)\n- « décaler » un module (reporter dans le temps)\n- « plafonner » une clause (limiter par un seuil)\n- « ajuster » un périmètre (modifier ce qui est inclus)\n- « assortir » une concession d'une contrepartie\n- « formaliser » par écrit (mettre sous forme contractuelle)\n\nFORMULES POUR PUSHER:\n- « Votre devis dépasse de X pour cent l'enveloppe que nous avions prévue. »\n- « À périmètre équivalent, nous avons reçu des propositions à Y. »\n- « Sur quelle base avez-vous chiffré le poste Z ? »\n- « Que pourrait-on simplifier dans le périmètre pour atteindre l'enveloppe ? »\n- « Sur ce point précis, c'est rédhibitoire pour nous. »\n\nFORMULES POUR ÉCHANGER:\n- « Si je m'engage sur X, qu'êtes-vous prêt à concéder en regard ? »\n- « Une exclusivité justifierait une remise complémentaire. »\n- « En contrepartie d'un acompte, accepteriez-vous de revoir le tarif ? »\n- « Cette concession suppose que vous accédiez à Y. »\n\nFORMULES POUR FORMALISER:\n- « Si je résume, nous serions sur [récapitulatif]. »\n- « Pourriez-vous me formaliser cette offre révisée par écrit d'ici X ? »\n- « Sous réserve de validation interne, nous sommes prêts à signer. »\n- « Je vous renvoie un mail de synthèse pour mémoire. »\n\nDISTINCTIONS LEXICALES:\n- « devis » (proposition tarifaire formelle, valable un délai défini)\n- « cotation » (idem, plutôt utilisé en industrie)\n- « offre » (proposition globale, peut inclure prestation + tarif)\n- « tarif » (prix unitaire, souvent catalogue)\n- « prix » (montant à payer pour une transaction donnée)\n- « budget » (enveloppe disponible côté acheteur)\n- « enveloppe » (synonyme courant de budget en interne)\n\nUSAGE DU CONDITIONNEL pour atténuer:\n- « J'aimerais qu'on cale… » (au lieu de « je veux qu'on cale »)\n- « Pourriez-vous me formaliser… » (au lieu de « formalisez-moi »)\n- « Seriez-vous ouvert à… » (test d'ouverture, n'engage pas)\n- « Cela faciliterait grandement… » (au lieu de « il faut »)\n\nUNE TINH TẾ: en B2B français, on évite les superlatifs (« c'est génial », « c'est top »). Préférer: « cela fonctionnerait », « cette option me convient », « c'est cohérent avec nos attentes ». Les superlatifs trahissent l'inexpérience commerciale.",
+    "register_notes_en": "VENDOR-NEGOTIATION VOCABULARY is highly technical in French B2B:\n\nKEY VERBS:\n- 'caler' a cahier des charges (to finalize, lock in)\n- 'rogner' on the rate (to trim at the margins)\n- 'décaler' a module (to defer in time)\n- 'plafonner' a clause (to limit by a ceiling)\n- 'ajuster' a scope (to modify what's included)\n- 'assortir' a concession with a counterpart\n- 'formaliser' in writing (to put into contractual form)\n\nPHRASES TO PUSH:\n- 'Votre devis dépasse de X pour cent l'enveloppe que nous avions prévue.'\n- 'À périmètre équivalent, nous avons reçu des propositions à Y.'\n- 'Sur quelle base avez-vous chiffré le poste Z ?'\n- 'Que pourrait-on simplifier dans le périmètre pour atteindre l'enveloppe ?'\n- 'Sur ce point précis, c'est rédhibitoire pour nous.'\n\nPHRASES TO TRADE:\n- 'Si je m'engage sur X, qu'êtes-vous prêt à concéder en regard ?'\n- 'Une exclusivité justifierait une remise complémentaire.'\n- 'En contrepartie d'un acompte, accepteriez-vous de revoir le tarif ?'\n- 'Cette concession suppose que vous accédiez à Y.'\n\nPHRASES TO FORMALIZE:\n- 'Si je résume, nous serions sur [recap].'\n- 'Pourriez-vous me formaliser cette offre révisée par écrit d'ici X ?'\n- 'Sous réserve de validation interne, nous sommes prêts à signer.'\n- 'Je vous renvoie un mail de synthèse pour mémoire.'\n\nLEXICAL DISTINCTIONS:\n- 'devis' (formal price proposal, valid for a stated period)\n- 'cotation' (idem, more common in industry)\n- 'offre' (overall proposal, may include service + pricing)\n- 'tarif' (unit price, often from catalog)\n- 'prix' (amount to pay for a given transaction)\n- 'budget' (envelope available on the buyer side)\n- 'enveloppe' (common synonym for budget internally)\n\nCONDITIONAL USAGE to soften:\n- 'J'aimerais qu'on cale…' (instead of 'I want us to lock in')\n- 'Pourriez-vous me formaliser…' (instead of 'formalize it for me')\n- 'Seriez-vous ouvert à…' (test of openness, doesn't commit)\n- 'Cela faciliterait grandement…' (instead of 'it's necessary')\n\nA REFINED CONVENTION: in French B2B, avoid superlatives ('c'est génial', 'c'est top'). Prefer: 'cela fonctionnerait', 'cette option me convient', 'c'est cohérent avec nos attentes'. Superlatives betray commercial inexperience. Anglophones often default to 'great!' / 'awesome!' — these read as juvenile in a French negotiation room.",
     "idiom_glosses": [
       {
         "idiom": "Faire jouer la concurrence (courant)",
         "literal": "Cho cạnh tranh hoạt động",
+        "literal_en": "To make competition play",
         "meaning": "Sử dụng đối thủ cạnh tranh để có giá tốt hơn — levier achat classique.",
+        "meaning_en": "To leverage competition — get a better price by playing vendors against each other. English equivalent: 'to play the field' or 'to leverage competing bids'. The classic procurement lever.",
         "example": "Sans faire jouer la concurrence, vous payez systématiquement quinze à vingt pour cent de plus."
       },
       {
         "idiom": "Caler les fondamentaux (courant)",
         "literal": "Cố định những điều cơ bản",
+        "literal_en": "To lock in the fundamentals",
         "meaning": "Thống nhất các điểm then chốt trước khi vào chi tiết.",
+        "meaning_en": "To align on the key points before diving into details. English equivalent: 'to nail down the basics'. The discipline that separates professional buyers from amateurs.",
         "example": "Avant d'entrer dans le détail, calons les fondamentaux: périmètre, durée, budget."
       },
       {
         "idiom": "Mettre la pression (courant)",
         "literal": "Đặt áp lực",
+        "literal_en": "To put on pressure",
         "meaning": "Tăng áp lực — tactique classique mais à doser.",
+        "meaning_en": "To put on pressure — direct English equivalent. A classic tactic but one to use sparingly: too much pressure on a key vendor breaks the relationship and you lose long-term value.",
         "example": "Mettre trop de pression dès le début sur un fournisseur clé peut casser la relation."
       },
       {
         "idiom": "Trouver un terrain d'entente (courant à soutenu)",
         "literal": "Tìm vùng đồng thuận",
+        "literal_en": "To find common ground",
         "meaning": "Tìm điểm chung — objectif final de toute négociation.",
+        "meaning_en": "To find common ground — the ultimate goal of any negotiation. Direct English equivalent. Used to describe a successful close.",
         "example": "Après deux heures, nous avons trouvé un terrain d'entente sur le SAV et les pénalités."
       }
     ],
@@ -4916,20 +5073,24 @@ export const lessons: FrenchLesson[] = [
       {
         "type": "fill-blank",
         "question": "Avant d'entrer dans le détail tarifaire, je voudrais qu'on ___ ensemble le cahier des charges définitif.",
-        "answer": "cale"
+        "answer": "cale",
+        "hint_vi": "động từ 'caler' (cố định / khóa lại) ở subjonctif présent ngôi 3 số ít (sau 'vouloir que')",
+        "hint_en": "verb 'caler' (to lock in / stabilize) in 3rd person singular present subjunctive — required after 'vouloir que' trigger"
       },
       {
         "type": "matching",
         "pairs": [
-          ["un cahier des charges", "bộ tiêu chí kỹ thuật"],
-          ["le coût total de possession", "tổng chi phí sở hữu"],
-          ["rédhibitoire", "bất khả"]
+          ["un cahier des charges", "bộ tiêu chí kỹ thuật (specifications document — finalize before pricing)"],
+          ["le coût total de possession", "tổng chi phí sở hữu (Total Cost of Ownership — TCO)"],
+          ["rédhibitoire", "bất khả (deal-breaker — the C1 word for absolute refusal)"]
         ],
-        "instruction": "Nối thuật ngữ achat với nghĩa Việt"
+        "instruction": "Nối thuật ngữ achat với nghĩa Việt",
+        "instruction_en": "Match the procurement term with its meaning"
       },
       {
         "type": "translation",
         "vietnamese": "Tôi đề xuất một điều khoản chỉ số hóa hàng năm giới hạn ở INSEE cộng 2% — cân bằng giữa rủi ro lạm phát của bạn và của chúng tôi.",
+        "english": "I propose an annual indexation clause capped at INSEE plus two percent — a balance between your inflation risk and ours.",
         "french": "Je propose une clause d'indexation annuelle plafonnée à l'INSEE plus deux pour cent — équilibre entre votre risque inflation et le nôtre."
       }
     ]
