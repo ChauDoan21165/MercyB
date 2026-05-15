@@ -28,6 +28,7 @@ export function normalizeJapaneseLesson(
       native: e.japanese,
       en: e.english,
       pronunciationFocus: e.pronunciation_focus,
+      pronunciationFocusEn: e.pronunciation_focus_en,
     })),
     vocabulary: (lesson.vocabulary ?? []).map((v) => ({
       native: v.japanese,
@@ -42,8 +43,10 @@ export function normalizeJapaneseLesson(
     grammar: lesson.grammar,
     // cultural_notes_vi / tip_advice_vi are not yet on JapaneseLesson; passthrough via cast.
     // A5's B2 Japanese sample lessons surface these fields at the top level (matching A3's French template).
-    culturalNotesVi: (lesson as any).cultural_notes_vi,
-    tipAdviceVi: (lesson as any).tip_advice_vi,
+    culturalNotesVi: lesson.cultural_notes_vi,
+    culturalNotesEn: lesson.cultural_notes_en,
+    tipAdviceVi: lesson.tip_advice_vi,
+    tipAdviceEn: lesson.tip_advice_en,
     audioBase: lessonAudioBase("ja", lesson.id, lesson.level),
   };
 }

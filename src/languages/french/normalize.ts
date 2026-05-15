@@ -33,6 +33,7 @@ export function normalizeFrenchLesson(
       native: s.en,
       vi: s.vi,
       pronunciationFocus: s.pronunciation_focus,
+      pronunciationFocusEn: s.pronunciation_focus_en,
     })),
     vocabulary: lesson.vocabulary?.map((v) => ({
       native: v.word,
@@ -48,7 +49,9 @@ export function normalizeFrenchLesson(
     })),
     exercises: normalizeFrenchExercises(lesson.exercises),
     culturalNotesVi: lesson.cultural_notes_vi,
+    culturalNotesEn: lesson.cultural_notes_en,
     tipAdviceVi: lesson.tip_advice_vi,
+    tipAdviceEn: lesson.tip_advice_en,
     audioBase: lessonAudioBase("fr", lesson.id, lesson.level),
   };
 }
@@ -67,6 +70,7 @@ function normalizeFrenchExercises(
         out.push({
           kind: "matching",
           instruction: ex.instruction_vi,
+          instructionEn: ex.instruction_en,
           pairs: ex.items.map((it: any) => ({
             a: String(it.prompt ?? ""),
             b: String(it.answer ?? ""),
@@ -106,6 +110,7 @@ function normalizeFrenchExercises(
       out.push({
         kind: "matching",
         instruction: ex.instruction,
+        instructionEn: ex.instruction_en,
         pairs: raw.map((p: any) =>
           Array.isArray(p)
             ? { a: String(p[0] ?? ""), b: String(p[1] ?? "") }

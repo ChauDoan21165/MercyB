@@ -135,8 +135,12 @@ export function normalizeSpanishLesson(
     })),
     exercises: normalizeSpanishExercises(lesson.exercises),
     grammar: normalizeSpanishGrammar(lesson.grammar),
-    culturalNotesVi: lesson.cultural_note,
-    tipAdviceVi: lesson.tip,
+    // Spanish content is authored in English (the L1 for this module).
+    // SpanishLessonsPage passes uiLanguage="en" so the renderer reads from
+    // the `*En` slots. Storing English here under `*En` is semantically
+    // correct and removes the prior `culturalNotesVi`-stuffing workaround.
+    culturalNotesEn: lesson.cultural_note,
+    tipAdviceEn: lesson.tip,
     audioBase: lessonAudioBase("es", lesson.id, lesson.level),
   };
 }

@@ -18,6 +18,7 @@ export type JapaneseExample = {
   japanese: string;
   english: string;
   pronunciation_focus?: string[];
+  pronunciation_focus_en?: string[];
 };
 
 export type JapaneseDialogueLine = {
@@ -64,7 +65,9 @@ export type JapaneseLesson = {
   dialogue?: JapaneseDialogueLine[];
   exercises?: JapaneseExercise[];
   cultural_notes_vi?: string;
+  cultural_notes_en?: string;
   tip_advice_vi?: string;
+  tip_advice_en?: string;
   // B2 calibration fields — optional passthrough; consumed by normalizer + renderer
   dialogue_long?: JapaneseDialogueLine[];
   roleplay_prompts?: string[];

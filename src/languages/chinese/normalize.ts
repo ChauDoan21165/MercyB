@@ -37,6 +37,7 @@ export function normalizeChineseLesson(
       en: s.english,
       vi: s.vi,
       pronunciationFocus: s.pronunciation_focus,
+      pronunciationFocusEn: s.pronunciation_focus_en,
     })),
     vocabulary: (lesson.vocab ?? []).map((v) => ({
       native: v.chinese,
@@ -52,8 +53,10 @@ export function normalizeChineseLesson(
       vi: d.vi,
     })),
     exercises: (lesson.exercises ?? []).map(normalizeChineseExercise),
-    culturalNotesVi: (lesson as any).cultural_notes_vi,
-    tipAdviceVi: (lesson as any).tip_advice_vi,
+    culturalNotesVi: lesson.cultural_notes_vi,
+    culturalNotesEn: lesson.cultural_notes_en,
+    tipAdviceVi: lesson.tip_advice_vi,
+    tipAdviceEn: lesson.tip_advice_en,
     audioBase: lessonAudioBase("zh", lesson.id, lesson.level),
   };
 }
