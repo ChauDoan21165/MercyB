@@ -2878,6 +2878,11 @@ export const lessons: FrenchLesson[] = [
           "bonjour → bõ-jur",
           "entendez → ãn-tãn-dé",
           "correctement → kor-rek-tơ-mã"
+        ],
+        "pronunciation_focus_en": [
+          "bonjour → 'bohn-ZHOOR' — nasal 'on'; 'j' = 'zh'",
+          "entendez → 'ahn-tahn-DAY' — two nasal 'an' sounds in a row",
+          "correctement → 'kor-rekt-MAHN' — adverb '-ment' = nasal 'MAHN'"
         ]
       },
       {
@@ -2887,6 +2892,11 @@ export const lessons: FrenchLesson[] = [
           "décalage → dé-ka-laj",
           "horaire → o-rer",
           "saison → sé-zon"
+        ],
+        "pronunciation_focus_en": [
+          "décalage → 'day-kah-LAHZH' — 'g' before silent 'e' = 'zh'",
+          "horaire → 'oh-RAIR' — silent 'h'; '-aire' = 'air'",
+          "saison → 'seh-ZOHN' — single 's' between vowels = 'z'; nasal 'on'"
         ]
       },
       {
@@ -2896,6 +2906,11 @@ export const lessons: FrenchLesson[] = [
           "liaison → li-è-zon",
           "coupe → kup",
           "rappelle → ra-pèl"
+        ],
+        "pronunciation_focus_en": [
+          "liaison → 'lee-eh-ZOHN' — three syllables; nasal 'on' at end",
+          "coupe → 'KOOP' — 'ou' = 'oo'; final '-e' silent",
+          "rappelle → 'rah-PEL' — double 'll' is one 'l' sound"
         ]
       },
       {
@@ -2905,6 +2920,11 @@ export const lessons: FrenchLesson[] = [
           "pourriez → pu-rié",
           "répéter → ré-pé-té",
           "haché → a-shé"
+        ],
+        "pronunciation_focus_en": [
+          "pourriez → 'poo-RYAY' — conditional '-iez' = 'yay'",
+          "répéter → 'ray-pay-TAY' — three 'ay' sounds in a row",
+          "haché → 'ah-SHAY' — silent 'h'; 'ch' = 'sh' as in 'shoe'"
         ]
       },
       {
@@ -2914,102 +2934,123 @@ export const lessons: FrenchLesson[] = [
           "remercie → rơ-mer-si",
           "patience → pa-siãns",
           "connexion → ko-nèk-sion"
+        ],
+        "pronunciation_focus_en": [
+          "remercie → 'ruh-mair-SEE' — soft uvular 'r' at the start",
+          "patience → 'pah-SYAHNSS' — '-tience' = 'syahnss' with nasal 'an'",
+          "connexion → 'koh-nek-SYON' — '-xion' = 'ksyon'; nasal 'on' at end"
         ]
       }
     ],
     "cultural_notes_vi": "Phỏng vấn qua điện thoại/video từ Việt Nam sang Pháp khó hơn phỏng vấn trực tiếp ba lý do: (1) chênh lệch múi giờ — tốt nhất họp 14h-16h Việt Nam (8h-10h Pháp); (2) độ trễ kết nối — đừng cắt lời, chờ thêm 1 giây sau khi nhà tuyển dụng nói xong; (3) thiếu ngôn ngữ cơ thể — cần phát âm rõ hơn, nói chậm hơn 10%. Người Pháp khi nghe ứng viên nói qua điện thoại sẽ chú ý đặc biệt đến giọng — nếu giọng rụt rè hoặc nói nhỏ, họ ngầm đánh giá là thiếu tự tin. Hãy ngồi thẳng (giọng phát ra mạnh hơn), mỉm cười (nghe được qua giọng), tránh nền có tiếng người. Khi mất kết nối, người Pháp expect bạn chủ động gọi lại trong 2 phút — không phải chờ họ. Khác với Việt Nam (nơi cấp dưới chờ cấp trên gọi lại), đây là tín hiệu chuyên nghiệp.",
+    "cultural_notes_en": "A Vietnam-to-France phone or video interview is harder than an in-person one for three reasons: (1) time-zone gap — the best window is 14:00–16:00 Vietnam time, which is 8:00–10:00 in France, when everyone is fresh; (2) network latency — don't talk over the interviewer, leave an extra second of silence after they finish; (3) missing body language — you compensate by enunciating more clearly and speaking about 10% slower than you would in person. French interviewers pay disproportionate attention to vocal energy on calls — a tentative or quiet voice reads as a lack of confidence. Sit up straight (it makes the voice carry), smile (it's audible), and clear any background voices. When the call drops, the French expect YOU to call back within two minutes — not to wait for them. This is the opposite of the Vietnamese norm (subordinate waits for senior to call back) and is read as professionalism.",
     "tip_advice_vi": "Trước cuộc gọi: kiểm tra mạng (tải tốc độ ≥ 50 Mbps), tai nghe có mic, chọn phòng yên tĩnh có ánh sáng phía trước (nếu video). Tắt thông báo điện thoại + máy tính. Đặt một cốc nước. Đầu cuộc gọi 30 giây đầu là « audio test » — nói rõ và đợi xác nhận « je vous entends bien ». Trong cuộc gọi: chú ý không nói chồng (« diaphone ») — đợi thêm nửa giây sau khi nhà tuyển dụng dứt câu. Nếu mất kết nối, gọi lại bằng số đã thống nhất, kèm tin nhắn ngắn « Désolée pour la coupure, je vous rappelle ». Sau cuộc gọi: gửi email cảm ơn trong 24 giờ kèm 2-3 điểm chính đã trao đổi.",
+    "tip_advice_en": "Before the call: test your network (≥ 50 Mbps), use a wired headset with mic, pick a quiet room with light in front of you (if video). Silence phone + computer notifications. Have a glass of water within reach. The first 30 seconds are an audio check — speak clearly and wait for the 'je vous entends bien' confirmation. During the call: don't double-talk — wait half a second after the interviewer finishes. If the line drops, call back at the agreed number with a short SMS: « Désolée pour la coupure, je vous rappelle ». After the call: send a thank-you email within 24 hours with 2-3 specific points from the conversation — generic gratitude lands flat in French; specificity signals you were actually present.",
     "vocabulary": [
       {
         "word": "le décalage horaire",
         "en": "time zone difference",
         "vi": "chênh lệch múi giờ",
         "pos": "n.m.",
-        "pronunciation_vi": "dé-ka-laj o-rer"
+        "pronunciation_vi": "dé-ka-laj o-rer",
+        "pronunciation_en": "day-kah-LAHZH oh-RAIR — 'g' before 'e' = 'zh'; silent 'h'"
       },
       {
         "word": "la liaison",
         "en": "connection (audio/video)",
         "vi": "kết nối",
         "pos": "n.f.",
-        "pronunciation_vi": "li-è-zon"
+        "pronunciation_vi": "li-è-zon",
+        "pronunciation_en": "lee-eh-ZOHN — 's' between vowels = 'z'; nasal 'on'"
       },
       {
         "word": "se couper",
         "en": "to cut out / drop",
         "vi": "bị ngắt",
         "pos": "v.",
-        "pronunciation_vi": "sơ ku-pé"
+        "pronunciation_vi": "sơ ku-pé",
+        "pronunciation_en": "suh koo-PAY — reflexive 'se'; 'ou' = 'oo'; '-er' = 'ay'"
       },
       {
         "word": "haché",
         "en": "choppy (audio)",
         "vi": "ngắt quãng",
         "pos": "adj.",
-        "pronunciation_vi": "a-shé"
+        "pronunciation_vi": "a-shé",
+        "pronunciation_en": "ah-SHAY — silent 'h'; 'ch' = 'sh'"
       },
       {
         "word": "rappeler",
         "en": "to call back",
         "vi": "gọi lại",
         "pos": "v.",
-        "pronunciation_vi": "ra-pơ-lé"
+        "pronunciation_vi": "ra-pơ-lé",
+        "pronunciation_en": "rah-puh-LAY — double 'pp' is one 'p'; '-er' = 'ay'"
       },
       {
         "word": "un casque audio",
         "en": "headset",
         "vi": "tai nghe có mic",
         "pos": "n.m.",
-        "pronunciation_vi": "kask o-dio"
+        "pronunciation_vi": "kask o-dio",
+        "pronunciation_en": "uhn KASK oh-DYOH — final 'que' = 'k'; 'audio' keeps a French rhythm"
       },
       {
         "word": "un fond sonore",
         "en": "background noise",
         "vi": "tiếng nền",
         "pos": "n.m.",
-        "pronunciation_vi": "fõ so-nor"
+        "pronunciation_vi": "fõ so-nor",
+        "pronunciation_en": "fohn soh-NOR — nasal 'on'; final 'd' silent"
       },
       {
         "word": "être en visio",
         "en": "to be on video call",
         "vi": "đang gọi video",
         "pos": "expr.",
-        "pronunciation_vi": "é-trơ ãn vi-zio"
+        "pronunciation_vi": "é-trơ ãn vi-zio",
+        "pronunciation_en": "EH-truh ahn vee-ZYOH — 'visio' is a French clipping of 'visioconférence'"
       },
       {
         "word": "figer",
         "en": "to freeze (screen)",
         "vi": "đứng hình",
         "pos": "v.",
-        "pronunciation_vi": "fi-jé"
+        "pronunciation_vi": "fi-jé",
+        "pronunciation_en": "fee-ZHAY — 'g' before 'e' = 'zh'; '-er' = 'ay'"
       },
       {
         "word": "le débit",
         "en": "bandwidth / speed",
         "vi": "tốc độ mạng",
         "pos": "n.m.",
-        "pronunciation_vi": "dé-bi"
+        "pronunciation_vi": "dé-bi",
+        "pronunciation_en": "day-BEE — final 't' silent; same word also means 'flow rate'"
       }
     ],
     "dialogue": [
       {
         "speaker": "Mme Roux",
         "text": "Bonjour, vous m'entendez ?",
+        "en": "Hello, can you hear me?",
         "vi": "Chào em, em nghe rõ chứ?"
       },
       {
         "speaker": "Linh",
         "text": "Oui parfaitement, et vous ?",
+        "en": "Yes, perfectly. And you?",
         "vi": "Vâng rất rõ, còn chị thì sao?"
       },
       {
         "speaker": "Mme Roux",
         "text": "Très bien. Le son hache un peu, mais ça va.",
+        "en": "Very good. The audio is a bit choppy, but it's fine.",
         "vi": "Rất tốt. Âm hơi ngắt quãng, nhưng ổn."
       },
       {
         "speaker": "Linh",
         "text": "Si jamais ça se coupe, je vous rappelle dans les deux minutes.",
+        "en": "If we get disconnected, I'll call you back within two minutes.",
         "vi": "Nếu mất kết nối, em sẽ gọi lại trong 2 phút."
       }
     ],
@@ -3017,76 +3058,91 @@ export const lessons: FrenchLesson[] = [
       {
         "speaker": "Mme Roux",
         "text": "Bonjour Madame Trần. Vous m'entendez bien ?",
+        "en": "Hello Ms Trần. Can you hear me clearly?",
         "vi": "Chào chị Trần. Chị nghe rõ tôi chứ?"
       },
       {
         "speaker": "Linh",
         "text": "Oui, parfaitement, Madame Roux. Et vous ? La qualité audio est correcte de votre côté ?",
+        "en": "Yes, perfectly, Ms Roux. And you? Is the audio quality OK on your end?",
         "vi": "Vâng, rất rõ, chị Roux. Còn chị thì sao? Chất lượng âm thanh phía chị có ổn không?"
       },
       {
         "speaker": "Mme Roux",
         "text": "Très correcte. Avant de commencer, est-ce qu'on est bien sur quarante-cinq minutes comme prévu ?",
+        "en": "Perfectly fine. Before we start, are we still on for the 45 minutes as planned?",
         "vi": "Rất ổn. Trước khi bắt đầu, mình thống nhất 45 phút như đã hẹn nhé?"
       },
       {
         "speaker": "Linh",
         "text": "Oui, c'est noté. Si jamais la liaison se coupe, je vous rappelle dans les deux minutes au numéro fixe que vous m'avez communiqué.",
+        "en": "Yes, noted. If the line ever drops, I'll call you back within two minutes on the landline number you sent me.",
         "vi": "Vâng, em đã note. Nếu kết nối bị ngắt, em sẽ gọi lại trong 2 phút vào số bàn chị đã cho em."
       },
       {
         "speaker": "Mme Roux",
         "text": "Parfait. Première question : présentez-vous en cinq minutes.",
+        "en": "Perfect. First question: introduce yourself in five minutes.",
         "vi": "Hoàn hảo. Câu đầu: chị giới thiệu bản thân trong 5 phút."
       },
       {
         "speaker": "Linh",
         "text": "Bien sûr. Je m'appelle Trần Linh. Je suis...",
+        "en": "Of course. My name is Trần Linh. I am...",
         "vi": "Vâng. Em là Trần Linh. Em..."
       },
       {
         "speaker": "Mme Roux",
         "text": "Pardon, le son vient de se hacher. Pourriez-vous reprendre depuis le début ?",
+        "en": "Sorry, the audio just cut out. Could you start again from the beginning?",
         "vi": "Xin lỗi, âm vừa ngắt quãng. Chị có thể bắt đầu lại từ đầu được không?"
       },
       {
         "speaker": "Linh",
         "text": "Aucun problème. Je vais aussi parler un peu plus lentement. Donc je m'appelle Trần Linh, j'ai vingt-six ans, je suis basée à Hanoï où j'ai obtenu un master en management à l'Université Économique de Hanoï.",
+        "en": "No problem. I'll also speak a bit more slowly. So my name is Trần Linh, I'm 26, I'm based in Hanoi where I earned a Master's in Management at the Hanoi University of Economics.",
         "vi": "Không vấn đề. Em sẽ nói chậm hơn một chút. Vậy em là Trần Linh, 26 tuổi, em hiện sống ở Hà Nội nơi em đã lấy bằng thạc sĩ quản trị tại Đại học Kinh tế Hà Nội."
       },
       {
         "speaker": "Mme Roux",
         "text": "Très bien. Je vous entends parfaitement maintenant.",
+        "en": "Very good. I can hear you perfectly now.",
         "vi": "Rất tốt. Giờ tôi nghe chị rất rõ."
       },
       {
         "speaker": "Linh",
         "text": "Depuis trois ans je travaille comme cheffe de projet chez Vietcombank, où je gère une équipe de cinq personnes sur les financements verts pour PME.",
+        "en": "For the past three years I've been a project manager at Vietcombank, where I lead a team of five on green financing for small and medium businesses.",
         "vi": "Ba năm nay em làm trưởng dự án tại Vietcombank, quản lý đội năm người về tài chính xanh cho doanh nghiệp vừa và nhỏ."
       },
       {
         "speaker": "Mme Roux",
         "text": "Et qu'est-ce qui vous amène à vouloir quitter Vietcombank pour rejoindre notre cabinet à Paris ?",
+        "en": "And what makes you want to leave Vietcombank to join our consulting firm in Paris?",
         "vi": "Và điều gì khiến chị muốn rời Vietcombank để tham gia công ty tư vấn của chúng tôi ở Paris?"
       },
       {
         "speaker": "Linh",
         "text": "Trois raisons. La première : votre cabinet conseille les PME asiatiques sur l'accès au financement européen — c'est exactement le pont que je veux faire. La deuxième : le poste me permet de garder un lien avec le terrain vietnamien tout en montant en compétence sur les standards européens. La troisième : votre équipe est petite et internationale, ce qui correspond à mon style de travail.",
+        "en": "Three reasons. First: your firm advises Asian SMEs on accessing European financing — that's exactly the bridge I want to build. Second: the role lets me keep a connection to the Vietnamese market while learning European standards. Third: your team is small and international, which matches my working style.",
         "vi": "Ba lý do. Thứ nhất: công ty của chị tư vấn cho doanh nghiệp châu Á về tiếp cận tài chính châu Âu — đúng là cây cầu em muốn xây. Thứ hai: vị trí cho em giữ liên kết với thực địa Việt Nam đồng thời nâng năng lực theo chuẩn châu Âu. Thứ ba: đội của chị nhỏ và quốc tế, phù hợp phong cách làm việc của em."
       },
       {
         "speaker": "Mme Roux",
         "text": "Bien argumenté. Avec le décalage horaire, comment imaginez-vous travailler avec l'équipe parisienne ?",
+        "en": "Well argued. With the time-zone gap, how do you see yourself working with the Paris team?",
         "vi": "Lập luận tốt. Với chênh lệch múi giờ, chị tưởng tượng làm việc với đội Paris ra sao?"
       },
       {
         "speaker": "Linh",
         "text": "Si je suis basée à Hanoï temporairement, je propose des plages communes 14h-17h Vietnam, soit 8h-11h Paris. Pour les sujets asynchrones, je documente dans Notion en français pour faciliter la transmission. À terme, je m'installe à Paris pour les six premiers mois pour bâtir les liens internes.",
+        "en": "If I'm temporarily based in Hanoi, I'd propose shared hours 14:00–17:00 Vietnam, which is 8:00–11:00 Paris. For async work I'd document in Notion in French to make hand-offs easy. Long-term, I'd relocate to Paris for the first six months to build internal relationships.",
         "vi": "Nếu em tạm ở Hà Nội, em đề xuất khung chung 14h-17h Việt Nam, tức 8h-11h Paris. Cho việc bất đồng bộ, em document trên Notion bằng tiếng Pháp để dễ chuyển giao. Về lâu dài, em sang Paris 6 tháng đầu để xây liên kết nội bộ."
       },
       {
         "speaker": "Mme Roux",
         "text": "Très concret. On a encore quinze minutes — je vais vous poser un cas pratique...",
+        "en": "Very concrete. We have another 15 minutes — let me give you a case study...",
         "vi": "Rất cụ thể. Còn 15 phút — tôi sẽ cho chị một case thực hành..."
       }
     ],
@@ -3095,30 +3151,44 @@ export const lessons: FrenchLesson[] = [
       "Nhà tuyển dụng nói: « Je vous entends mal, vous pouvez parler plus fort ? ». Phản hồi đúng cách: kiểm tra mic, chuyển sang tai nghe có mic nếu chưa dùng, không la lên, không hoảng loạn.",
       "Cuối phỏng vấn nhà tuyển dụng hỏi: « Vous avez des contraintes liées au visa ? ». Trả lời thẳng và chuyên nghiệp về timeline visa du học → visa làm việc, đề xuất plan B nếu visa chậm."
     ],
+    "roleplay_prompts_en": [
+      "The call drops in the middle of a critical answer. Call back immediately and open — no over-apologizing, no blaming the network, jump straight back to the content from where it cut.",
+      "The interviewer says « Je vous entends mal, vous pouvez parler plus fort ? » (I can barely hear you, can you speak up?). Respond correctly: check the mic, switch to a headset if you weren't using one, don't shout, don't panic.",
+      "At the end the interviewer asks « Vous avez des contraintes liées au visa ? » (Any visa constraints?). Answer directly and professionally — walk through the student-to-work-visa timeline and offer a plan B if visa processing slips."
+    ],
     "register_notes": "Phỏng vấn qua điện thoại/video dùng « vous » luôn — kể cả khi mạng ngắt và bạn lúng túng. Tránh hai cực: (1) « excusez-moi, excusez-moi, excusez-moi » — quá nhiều xin lỗi cho lỗi kỹ thuật làm mất phong độ; (2) im lặng hoặc cười trừ — nhà tuyển dụng nghĩ bạn không chuyên nghiệp. Giọng đúng khi có vấn đề kỹ thuật: thẳng thắn, ngắn gọn, đề xuất giải pháp. « Le son hache un peu, je passe sur l'autre micro » thay vì « Oh non, je suis désolée, je ne sais pas ce qui se passe ». Khi mất kết nối, đừng gửi tin nhắn « SOS » hay emoji — gửi SMS chuẩn « Désolée pour la coupure, je vous rappelle dans 1 minute ».",
+    "register_notes_en": "Phone and video interviews stay on « vous » throughout — even when the line drops and you're flustered. Avoid two opposite traps: (1) « excusez-moi, excusez-moi, excusez-moi » — too many apologies for technical glitches actually costs you composure; (2) silence or nervous laughter — the interviewer reads it as unprofessional. The right tone when there's a problem is direct, short, solution-focused: « Le son hache un peu, je passe sur l'autre micro » (audio's a bit choppy, switching mics) instead of « Oh non, je suis désolée, je ne sais pas ce qui se passe ». When the line drops, don't text « SOS » or send emoji — send a standard SMS: « Désolée pour la coupure, je vous rappelle dans 1 minute ». The composure under glitches is part of what's being evaluated.",
     "idiom_glosses": [
       {
         "idiom": "Tenir le coup",
         "literal": "Cầm cự được cú đánh",
+        "literal_en": "to hold the blow",
         "meaning": "Chịu được áp lực, không gục.",
+        "meaning_en": "to hold up under pressure without breaking down",
         "example": "Avec le décalage horaire, j'ai dû tenir le coup pendant un entretien à 22h."
       },
       {
         "idiom": "Garder son sang-froid",
         "literal": "Giữ máu lạnh",
+        "literal_en": "to keep one's blood cold",
         "meaning": "Bình tĩnh trong tình huống khó.",
+        "meaning_en": "to stay calm under stress — the French equivalent of 'keep your cool'",
         "example": "Quand la connexion s'est coupée, j'ai gardé mon sang-froid et rappelé."
       },
       {
         "idiom": "Couper la poire en deux",
         "literal": "Cắt quả lê làm đôi",
+        "literal_en": "to cut the pear in two",
         "meaning": "Thỏa hiệp, mỗi bên nhường một nửa.",
+        "meaning_en": "to meet halfway — each side concedes the same amount",
         "example": "Pour les horaires, on coupe la poire en deux : 14h-17h Vietnam."
       },
       {
         "idiom": "Tirer son épingle du jeu",
         "literal": "Rút cây ghim khỏi trò chơi",
+        "literal_en": "to pull one's pin out of the game",
         "meaning": "Xoay xở thành công trong tình huống khó.",
+        "meaning_en": "to come out of a tricky situation looking good — close to 'land on your feet'",
         "example": "Malgré la mauvaise liaison, elle a tiré son épingle du jeu."
       }
     ],
@@ -3126,6 +3196,7 @@ export const lessons: FrenchLesson[] = [
       {
         "type": "fill-blank",
         "instruction_vi": "Điền cụm vào câu phỏng vấn từ xa.",
+        "instruction_en": "Fill in the missing phrase in the remote-interview sentence.",
         "items": [
           {
             "prompt": "Le ___ horaire entre Hanoï et Paris est de cinq heures.",
@@ -3148,6 +3219,7 @@ export const lessons: FrenchLesson[] = [
       {
         "type": "matching",
         "instruction_vi": "Nối thành ngữ với nghĩa phù hợp khi phỏng vấn từ xa.",
+        "instruction_en": "Match each idiom with the meaning that fits during a remote interview.",
         "items": [
           {
             "prompt": "Tenir le coup",
@@ -3155,7 +3227,7 @@ export const lessons: FrenchLesson[] = [
           },
           {
             "prompt": "Garder son sang-froid",
-            "answer": "giữ bình tĩnh trong tình huống khó (keep one’s cool in difficult situations)"
+            "answer": "giữ bình tĩnh trong tình huống khó (keep one's cool in difficult situations)"
           },
           {
             "prompt": "Couper la poire en deux",
@@ -3163,13 +3235,14 @@ export const lessons: FrenchLesson[] = [
           },
           {
             "prompt": "Tirer son épingle du jeu",
-            "answer": "xoay xở thành công"
+            "answer": "xoay xở thành công (land on one's feet — come through a tricky situation well)"
           }
         ]
       },
       {
         "type": "translation",
         "instruction_vi": "Dịch sang tiếng Pháp lịch sự B2.",
+        "instruction_en": "Translate into polite B2 French.",
         "items": [
           {
             "prompt": "Nếu mất kết nối, em sẽ gọi lại trong 2 phút.",
