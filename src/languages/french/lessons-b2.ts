@@ -3274,6 +3274,11 @@ export const lessons: FrenchLesson[] = [
           "bonsoir → bõ-swar",
           "crois → krwa",
           "connaissons → ko-nè-sõn"
+        ],
+        "pronunciation_focus_en": [
+          "bonsoir → 'bohn-SWAR' — nasal 'on'; 'oi' = 'wah' compressed",
+          "crois → 'KRWAH' — 'oi' = 'wah'; final 's' silent",
+          "connaissons → 'koh-neh-SOHN' — double 'nn' is one 'n'; nasal 'on' at end"
         ]
       },
       {
@@ -3284,6 +3289,12 @@ export const lessons: FrenchLesson[] = [
           "énergétique → é-ner-jé-tik",
           "côté → kô-té",
           "sud-est → syud-èst"
+        ],
+        "pronunciation_focus_en": [
+          "transition → 'trahn-zee-SYON' — French '-tion' = 'syon'; 'an' nasal",
+          "énergétique → 'ay-nair-zhay-TEEK' — three soft 'ay' sounds; final '-ique' = 'eek'",
+          "côté → 'koh-TAY' — circumflex on 'ô' just lengthens slightly",
+          "sud-est → 'syood-EST' — 'sud' rounded French 'u'; final 't' IS sounded here"
         ]
       },
       {
@@ -3293,6 +3304,11 @@ export const lessons: FrenchLesson[] = [
           "amené → a-mơ-né",
           "cette → sèt",
           "conférence → kõn-fé-rãns"
+        ],
+        "pronunciation_focus_en": [
+          "amené → 'ah-muh-NAY' — past participle; '-é' = 'ay'",
+          "cette → 'SET' — final '-e' silent; 'è' opens like 'pet'",
+          "conférence → 'kohn-fay-RAHNSS' — nasal 'on' + nasal 'ence'"
         ]
       },
       {
@@ -3302,6 +3318,11 @@ export const lessons: FrenchLesson[] = [
           "auriez → o-rié",
           "carte → kart",
           "reprendre → rơ-prãn-drơ"
+        ],
+        "pronunciation_focus_en": [
+          "auriez → 'oh-RYAY' — conditional '-iez' = 'yay'; 'au' = 'oh'",
+          "carte → 'KART' — final '-e' silent; soft uvular 'r'",
+          "reprendre → 'ruh-PRAHN-druh' — nasal 'en'; final '-re' barely voiced"
         ]
       },
       {
@@ -3311,102 +3332,123 @@ export const lessons: FrenchLesson[] = [
           "laisse → lès",
           "profiter → pro-fi-té",
           "enchantée → ãn-shãn-té"
+        ],
+        "pronunciation_focus_en": [
+          "laisse → 'LES' — final '-e' silent; 'ai' = 'eh' as in 'pet'",
+          "profiter → 'proh-fee-TAY' — '-er' = 'ay'",
+          "enchantée → 'ahn-shahn-TAY' — two nasal 'an' sounds; 'ch' = 'sh'"
         ]
       }
     ],
     "cultural_notes_vi": "Networking ở Pháp khác hẳn ở Mỹ và Việt Nam. Khác Mỹ: người Pháp ghét cách « pitch » trực diện 30 giây — nó bị xem là thô và thương mại. Khác Việt Nam: người Pháp không thích trao name card ngay từ phút đầu — name card được trao sau khi đã có 5-10 phút trò chuyện thực sự. Quy tắc bất thành văn: bắt đầu bằng câu hỏi (« Qu'est-ce qui vous amène ? »), không bằng pitch về bản thân. Đợi câu hỏi ngược của họ trước khi giới thiệu mình. Trao name card chỉ khi đã thấy có lý do gặp lại — ép trao card khi chưa có nội dung sẽ bị quên ngay. Người Pháp đặc biệt quý « la conversation » — họ thích trò chuyện thông minh hơn là giao dịch. Một cuộc trò chuyện 15 phút có chiều sâu giá hơn 10 cái card thu được. Email follow-up trong 48 giờ là chuẩn — không nhanh quá (chưa kịp rời sự kiện), không chậm quá (sau 1 tuần họ đã quên mặt).",
+    "cultural_notes_en": "French networking is its own thing — different from both the US elevator-pitch style and the Vietnamese card-first style. American 30-second pitches read as crude and overtly commercial; the French expect a real conversation before any explicit business framing. Vietnamese-style two-handed card exchange in minute one signals you don't know the local code — cards come out after 5-10 minutes of substantive talk, not at the handshake. The unwritten rule: open with a question (« Qu'est-ce qui vous amène ? »), not with a self-pitch. Wait for them to ask about you before you introduce yourself. Only offer a card when there's already a reason to meet again; cards pressed into hands without context get filed in the recycling bin. The French genuinely value « la conversation » — a smart 15-minute exchange beats 10 cards on volume. Follow-up email norm: 24-48 hours later — too fast (« right after the event ») reads as eager; over a week and they've forgotten your face.",
     "tip_advice_vi": "Trước sự kiện: nghiên cứu danh sách diễn giả và 3 người bạn muốn gặp — không phải để stalker mà để có chủ đề mở thoại. Trang phục business smart, không quá trang trọng (suit + tie cho hội nghị tech là sai chỗ). Trong sự kiện: cầm cốc nước/rượu bằng tay trái (để tay phải bắt). Mở thoại bằng câu hỏi mở về sự kiện. Lắng nghe gấp đôi nói. Ghi note nhanh sau mỗi cuộc gặp (2 từ khóa giúp nhớ). Sau sự kiện 24-48 giờ: gửi email LinkedIn cá nhân hóa — nhắc cụ thể chủ đề đã trao đổi, không phải mẫu copy-paste. Đề xuất một bước tiếp theo cụ thể (cà phê 30 phút, tài liệu chia sẻ, giới thiệu người thứ ba).",
+    "tip_advice_en": "Before the event: research the speaker list and pick 3 people you want to meet — not to stalk them, just to have specific openers ready. Dress business-smart, not over-formal (a suit-and-tie at a tech conference reads as 'doesn't know the room'). During the event: hold your drink in your left hand so the right is free to shake. Open with an open-ended question about the event itself. Listen twice as much as you speak. Jot two-keyword notes after each conversation so you remember who said what. 24-48 hours later: send a personalized LinkedIn or email — reference a specific point you discussed, not a copy-paste template. Propose a concrete next step (a 30-minute coffee, a shared document, an intro to a third person). Generic warmth gets nowhere; specificity converts.",
     "vocabulary": [
       {
         "word": "le réseautage",
         "en": "networking",
         "vi": "kết nối nghề nghiệp",
         "pos": "n.m.",
-        "pronunciation_vi": "ré-zô-taj"
+        "pronunciation_vi": "ré-zô-taj",
+        "pronunciation_en": "ray-zoh-TAHZH — French equivalent of 'networking'; less common than the borrowed anglicism 'le networking'"
       },
       {
         "word": "une conférence",
         "en": "a conference",
         "vi": "hội nghị",
         "pos": "n.f.",
-        "pronunciation_vi": "kõn-fé-rãns"
+        "pronunciation_vi": "kõn-fé-rãns",
+        "pronunciation_en": "kohn-fay-RAHNSS — nasal 'on' + nasal 'ence'; false friend, often means a single talk/lecture too"
       },
       {
         "word": "un intervenant",
         "en": "a speaker (panelist)",
         "vi": "diễn giả",
         "pos": "n.m.",
-        "pronunciation_vi": "an-tèr-vơ-nãn"
+        "pronunciation_vi": "an-tèr-vơ-nãn",
+        "pronunciation_en": "an-tair-vuh-NAHN — nasal 'in' + nasal 'ant'; final 't' silent"
       },
       {
         "word": "une carte de visite",
         "en": "business card",
         "vi": "name card",
         "pos": "n.f.",
-        "pronunciation_vi": "kart dơ vi-zit"
+        "pronunciation_vi": "kart dơ vi-zit",
+        "pronunciation_en": "KART duh vee-ZEET — final '-e' silent in both 'carte' and 'visite'"
       },
       {
         "word": "reprendre contact",
         "en": "to reconnect",
         "vi": "liên lạc lại",
         "pos": "expr.",
-        "pronunciation_vi": "rơ-prãn-drơ kon-takt"
+        "pronunciation_vi": "rơ-prãn-drơ kon-takt",
+        "pronunciation_en": "ruh-PRAHN-druh kohn-TAKT — nasal 'en' + nasal 'on'; final 't' in 'contact' IS sounded"
       },
       {
         "word": "un cocktail dînatoire",
         "en": "standing dinner reception",
         "vi": "tiệc đứng",
         "pos": "n.m.",
-        "pronunciation_vi": "kok-tel di-na-twar"
+        "pronunciation_vi": "kok-tel di-na-twar",
+        "pronunciation_en": "kok-TEL dee-nah-TWAR — 'dînatoire' = dinner-substitute reception (a French event genre)"
       },
       {
         "word": "un sponsor",
         "en": "sponsor",
         "vi": "nhà tài trợ",
         "pos": "n.m.",
-        "pronunciation_vi": "spõn-sor"
+        "pronunciation_vi": "spõn-sor",
+        "pronunciation_en": "spohn-SOR — nasal 'on'; English borrowing pronounced with French rhythm"
       },
       {
         "word": "l'écosystème",
         "en": "ecosystem",
         "vi": "hệ sinh thái",
         "pos": "n.m.",
-        "pronunciation_vi": "é-ko-sis-tèm"
+        "pronunciation_vi": "é-ko-sis-tèm",
+        "pronunciation_en": "lay-koh-sees-TEM — 'l'' contracts; final '-è' opens like 'pet'; final '-e' silent"
       },
       {
         "word": "se présenter",
         "en": "to introduce oneself",
         "vi": "giới thiệu bản thân",
         "pos": "v.",
-        "pronunciation_vi": "sơ pré-zãn-té"
+        "pronunciation_vi": "sơ pré-zãn-té",
+        "pronunciation_en": "suh pray-zahn-TAY — reflexive 'se'; nasal 'en'; '-er' = 'ay'"
       },
       {
         "word": "trouver un terrain d'entente",
         "en": "to find common ground",
         "vi": "tìm điểm chung",
         "pos": "expr.",
-        "pronunciation_vi": "tru-vé an tè-rãn dãn-tãnt"
+        "pronunciation_vi": "tru-vé an tè-rãn dãn-tãnt",
+        "pronunciation_en": "troo-VAY uhn tair-AHN dahn-TAHNT — 'd'entente' = 'of agreement'; nasal 'en' three times"
       }
     ],
     "dialogue": [
       {
         "speaker": "Mai",
         "text": "Bonsoir, je vois que vous étiez à la table ronde sur l'hydrogène vert.",
+        "en": "Good evening, I noticed you were on the green-hydrogen panel.",
         "vi": "Chào tối, em thấy anh/chị có mặt ở bàn tròn về hydrogen xanh."
       },
       {
         "speaker": "M. Garnier",
         "text": "Oui, intervenant. Vous travaillez dans le secteur ?",
+        "en": "Yes, as a panelist. Do you work in the sector?",
         "vi": "Vâng, tôi là diễn giả. Cô làm trong lĩnh vực này à?"
       },
       {
         "speaker": "Mai",
         "text": "Côté Asie du Sud-Est, sur l'accompagnement des PME vietnamiennes.",
+        "en": "On the Southeast Asia side, supporting Vietnamese small and medium businesses.",
         "vi": "Phía Đông Nam Á, hỗ trợ doanh nghiệp vừa và nhỏ Việt Nam."
       },
       {
         "speaker": "M. Garnier",
         "text": "Intéressant, on devrait reprendre contact — vous avez une carte ?",
+        "en": "Interesting — we should reconnect. Do you have a card?",
         "vi": "Thú vị, mình nên liên lạc lại — em có name card không?"
       }
     ],
@@ -3414,76 +3456,91 @@ export const lessons: FrenchLesson[] = [
       {
         "speaker": "Mai",
         "text": "Bonsoir. Je crois que nous ne nous connaissons pas — Trần Mai.",
+        "en": "Good evening. I don't think we've met — Trần Mai.",
         "vi": "Chào tối. Em nghĩ mình chưa quen nhau — em là Trần Mai."
       },
       {
         "speaker": "M. Garnier",
         "text": "Bonsoir. Pierre Garnier, ravi. Vous étiez à quelle session aujourd'hui ?",
+        "en": "Good evening. Pierre Garnier, pleasure. Which session were you at today?",
         "vi": "Chào tối. Pierre Garnier, hân hạnh. Em đã dự buổi nào hôm nay?"
       },
       {
         "speaker": "Mai",
         "text": "À votre table ronde sur l'hydrogène vert, justement. Votre point sur le coût caché du transport m'a interpellée.",
+        "en": "Yours, actually — the green-hydrogen panel. Your point about the hidden transport costs stayed with me.",
         "vi": "Đúng là bàn tròn về hydrogen xanh của anh. Điểm anh nêu về chi phí ẩn của vận chuyển khiến em suy nghĩ."
       },
       {
         "speaker": "M. Garnier",
         "text": "Ah, vous avez relevé ce point. La plupart se concentrent sur le coût de production. Vous travaillez dans le secteur ?",
+        "en": "Ah, you caught that point. Most people focus on production cost. Do you work in this sector?",
         "vi": "À, em chú ý điểm đó. Đa số chỉ tập trung vào chi phí sản xuất. Em làm trong ngành này à?"
       },
       {
         "speaker": "Mai",
         "text": "Sur l'accompagnement des PME vietnamiennes dans la transition énergétique. Beaucoup d'usines textiles veulent diversifier vers l'hydrogène mais buttent sur la logistique portuaire.",
+        "en": "I support Vietnamese SMEs in their energy transition. Many textile factories want to diversify into hydrogen but they keep running into port logistics.",
         "vi": "Em hỗ trợ doanh nghiệp vừa và nhỏ Việt Nam chuyển đổi năng lượng. Nhiều nhà máy dệt muốn đa dạng sang hydrogen nhưng vướng logistics cảng."
       },
       {
         "speaker": "M. Garnier",
         "text": "Le port de Hai Phong, c'est ça ? Un de mes anciens collègues y travaille pour ENGIE.",
+        "en": "Hai Phong port, is that it? One of my former colleagues works there for ENGIE.",
         "vi": "Cảng Hải Phòng đúng không? Một đồng nghiệp cũ của tôi làm ở đó cho ENGIE."
       },
       {
         "speaker": "Mai",
         "text": "Exactement. Le sujet est à la fois technique et politique — le projet ENGIE est en pause depuis novembre, en attente d'arbitrage du ministère.",
+        "en": "Exactly. The issue is both technical and political — the ENGIE project has been on hold since November, waiting for a ministerial decision.",
         "vi": "Chính xác. Vấn đề vừa kỹ thuật vừa chính trị — dự án ENGIE đang tạm dừng từ tháng 11, chờ Bộ phán quyết."
       },
       {
         "speaker": "M. Garnier",
         "text": "Je n'avais pas cette information. Comment vous l'obtenez ?",
+        "en": "I didn't have that information. How do you get it?",
         "vi": "Tôi không có thông tin này. Em lấy ở đâu?"
       },
       {
         "speaker": "Mai",
         "text": "Par mon réseau directs sur place — j'étais sur le terrain trois fois cette année. C'est aussi pour ça que je suis venue à cette conférence : croiser les angles européens.",
+        "en": "Through my direct contacts on the ground — I was in the field three times this year. That's also why I came to this conference: to cross-check it against European perspectives.",
         "vi": "Qua mạng lưới trực tiếp tại chỗ — em đã ra thực địa ba lần năm nay. Cũng vì thế em đến hội nghị này: đối chiếu các góc nhìn châu Âu."
       },
       {
         "speaker": "M. Garnier",
         "text": "On devrait vraiment reprendre contact. J'ai un projet d'étude comparée Asie/Europe qui pourrait vous intéresser. Vous avez une carte ?",
+        "en": "We really should stay in touch. I have a comparative Asia/Europe study you might be interested in. Do you have a card?",
         "vi": "Mình nên thực sự liên lạc lại. Tôi có một dự án nghiên cứu so sánh Á/Âu có thể em quan tâm. Em có name card không?"
       },
       {
         "speaker": "Mai",
         "text": "Oui, voici. Je vous envoie un mail demain avec une note de deux pages sur la situation Hai Phong, ça vous donnera de la matière concrète.",
+        "en": "Yes, here you are. I'll send you an email tomorrow with a two-page note on the Hai Phong situation — that'll give you concrete material to work from.",
         "vi": "Vâng, đây ạ. Em sẽ gửi email mai kèm note 2 trang về tình hình Hải Phòng, để anh có dữ liệu cụ thể."
       },
       {
         "speaker": "M. Garnier",
         "text": "Parfait. Voici ma carte aussi. Une dernière chose — vous connaissez Sophie Martin du CNRS ? Elle pilote un projet ANR sur exactement ce sujet.",
+        "en": "Perfect. Here's mine as well. One last thing — do you know Sophie Martin at CNRS? She's leading an ANR project on exactly this topic.",
         "vi": "Hoàn hảo. Đây là name card của tôi. Một điều cuối — em có biết Sophie Martin ở CNRS không? Cô ấy điều phối một dự án ANR đúng chủ đề này."
       },
       {
         "speaker": "Mai",
         "text": "Non, pas encore. Si vous pouviez me la présenter par mail, ce serait précieux.",
+        "en": "No, not yet. If you could introduce me to her by email, that would be invaluable.",
         "vi": "Chưa biết. Nếu anh có thể giới thiệu em qua email, sẽ rất quý."
       },
       {
         "speaker": "M. Garnier",
         "text": "Avec plaisir. Je le ferai dans la semaine. Bon courage pour la suite de la soirée.",
+        "en": "Happy to. I'll do it this week. Enjoy the rest of the evening.",
         "vi": "Với niềm vui. Tôi sẽ làm trong tuần này. Chúc em buổi tối còn lại tốt lành."
       },
       {
         "speaker": "Mai",
         "text": "Merci beaucoup, Pierre. À très bientôt.",
+        "en": "Thank you so much, Pierre. Talk soon.",
         "vi": "Cảm ơn anh nhiều, Pierre. Hẹn sớm gặp lại."
       }
     ],
@@ -3492,30 +3549,44 @@ export const lessons: FrenchLesson[] = [
       "Một CEO Pháp lớn tuổi nói trong 5 phút về thành tựu của ông ấy mà không hỏi bạn câu nào. Khéo léo chuyển hướng cuộc trò chuyện về phía bạn mà không tỏ ra ngắt lời.",
       "Bạn vừa trao đổi tốt 10 phút với một quan chức nhà nước. Đề nghị trao đổi name card một cách đúng đắn — không xin trước khi họ chủ động, nhưng cũng không bỏ qua cơ hội."
     ],
+    "roleplay_prompts_en": [
+      "You arrive at a networking event for the first time and don't know anyone. Approach a group of three people who are mid-conversation — don't interrupt, don't ask the awkward « Excusez-moi, je peux me joindre ? ». Find the natural opening and slip in.",
+      "An older French CEO speaks for five minutes about his accomplishments without asking you anything. Smoothly redirect the conversation toward you without appearing to interrupt.",
+      "You've just had a strong 10-minute exchange with a government official. Propose exchanging cards the right way — don't ask before they initiate, but don't let the opportunity pass either."
+    ],
     "register_notes": "Networking ở Pháp nửa formal nửa decontracté — vouvoiement vẫn chuẩn nhưng giọng có thể nhẹ nhàng hơn. Sai phổ biến của người Việt: (1) gọi « Sir/Madam » bằng tiếng Anh khi quên tên — đúng là phải dùng « Monsieur/Madame » + họ nếu nhớ; (2) name card đưa bằng hai tay kèm cúi đầu kiểu Á — ở Pháp một tay là đủ, không cần cúi; (3) gọi « Pierre » ngay sau khi vừa giới thiệu (« Pierre Garnier ») — phải đợi anh ấy đề nghị « Appelez-moi Pierre » trước. Khi không nhớ tên, đừng gồng — nói thẳng « Pardonnez-moi, je n'ai pas votre prénom en tête » — người Pháp coi đó là honest, không thiếu lịch sự.",
+    "register_notes_en": "French networking lives in a half-formal, half-relaxed register — vouvoiement is still the default but the tone can soften. Common mistakes from Vietnamese (and Asian-trained) speakers: (1) defaulting to English « Sir/Madam » when you forget the name — the correct French is « Monsieur/Madame » + last name when you remember it; (2) two-handed card exchange with a slight bow, Asian-style — in France one hand is enough, no bow needed (the bow actually reads as overcorrecting); (3) jumping to first names immediately after the introduction (« Pierre Garnier » → « Pierre ») — wait for them to invite the switch with « Appelez-moi Pierre ». If you blank on a name, don't fake it — just say « Pardonnez-moi, je n'ai pas votre prénom en tête » (forgive me, I've lost track of your first name). The French read that as honest, not impolite.",
     "idiom_glosses": [
       {
         "idiom": "Briser la glace",
         "literal": "Bẻ gãy lớp băng",
+        "literal_en": "to break the ice",
         "meaning": "Phá vỡ sự ngại ngùng ban đầu.",
+        "meaning_en": "to break the ice — same idiom in English; loosen the initial awkwardness of a new conversation",
         "example": "Pour briser la glace, j'ai commenté la table ronde du matin."
       },
       {
         "idiom": "Avoir l'oreille de quelqu'un",
         "literal": "Có cái tai của ai đó",
+        "literal_en": "to have someone's ear",
         "meaning": "Được ai đó lắng nghe / có ảnh hưởng.",
+        "meaning_en": "to have a senior person's attention and influence over their decisions — same as English 'to have someone's ear'",
         "example": "Sophie Martin a l'oreille du ministre — c'est pour ça que son projet avance."
       },
       {
         "idiom": "Faire jouer son réseau",
         "literal": "Cho mạng lưới của mình hoạt động",
+        "literal_en": "to make one's network play",
         "meaning": "Tận dụng quan hệ để giúp ai đó.",
+        "meaning_en": "to pull strings — activate your contacts to help someone get a meeting, intro, or favor",
         "example": "Pierre va faire jouer son réseau pour me présenter Sophie."
       },
       {
         "idiom": "Tisser des liens",
         "literal": "Dệt các liên kết",
+        "literal_en": "to weave links",
         "meaning": "Xây dựng quan hệ chậm rãi, có chiều sâu.",
+        "meaning_en": "to build relationships slowly and with depth — the French metaphor for the patient, long-game version of networking",
         "example": "Une conférence ne suffit pas — il faut tisser des liens sur plusieurs mois."
       }
     ],
@@ -3523,6 +3594,7 @@ export const lessons: FrenchLesson[] = [
       {
         "type": "fill-blank",
         "instruction_vi": "Điền cụm vào câu networking.",
+        "instruction_en": "Fill in the missing phrase in the networking sentence.",
         "items": [
           {
             "prompt": "Qu'est-ce qui vous a ___ à cette conférence ?",
@@ -3545,6 +3617,7 @@ export const lessons: FrenchLesson[] = [
       {
         "type": "matching",
         "instruction_vi": "Nối thành ngữ với nghĩa networking.",
+        "instruction_en": "Match each networking idiom with its meaning.",
         "items": [
           {
             "prompt": "Briser la glace",
@@ -3552,7 +3625,7 @@ export const lessons: FrenchLesson[] = [
           },
           {
             "prompt": "Avoir l'oreille de quelqu'un",
-            "answer": "được lắng nghe / có ảnh hưởng (have someone’s ear / influence)"
+            "answer": "được lắng nghe / có ảnh hưởng (have someone's ear / influence)"
           },
           {
             "prompt": "Faire jouer son réseau",
@@ -3567,6 +3640,7 @@ export const lessons: FrenchLesson[] = [
       {
         "type": "translation",
         "instruction_vi": "Dịch sang tiếng Pháp lịch sự B2.",
+        "instruction_en": "Translate into polite B2 French.",
         "items": [
           {
             "prompt": "Em sẽ gửi email mai kèm note 2 trang.",
