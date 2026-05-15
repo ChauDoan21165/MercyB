@@ -4,7 +4,7 @@
 
 import type { FrenchLesson } from "./lessons";
 
-export const lessons: FrenchLesson[] =         [
+export const lessons: FrenchLesson[] =           [
     {
       "id": "lthesis_presentation",
       "level": "C1",
@@ -10232,6 +10232,12 @@ export const lessons: FrenchLesson[] =         [
             "associée → a-so-si-é",
             "intervenants → an-tèr-vơ-nã",
             "nourrissent → nu-ris"
+          ],
+          "pronunciation_focus_en": [
+            "modérateur → 'moh-day-rah-TUR' — '-eur' rounded; the moderator",
+            "associée → 'ah-soh-syay-AY' — feminine past participle; double 'ss' = 's'",
+            "intervenants → 'an-tehr-vuh-NAHN' — nasal 'in' + nasal '-ant'; final 's' silent",
+            "nourrissent → 'noo-REESS' — 'nourrir' 3rd plural; final '-ent' silent"
           ]
         },
         {
@@ -10242,6 +10248,12 @@ export const lessons: FrenchLesson[] =         [
             "liminaire → li-mi-nèr",
             "épuiser → é-pui-zé",
             "divergent → di-vèr-jơ"
+          ],
+          "pronunciation_focus_en": [
+            "intervention → 'an-tehr-vahn-SYON' — nasal 'in' + 'en'; '-tion' = 'syon'",
+            "liminaire → 'lee-mee-NEHR' — 'opening (intervention)'; '-aire' = 'air'",
+            "épuiser → 'ay-pwee-ZAY' — 'to exhaust'; 'ui' = 'wee'; '-er' = 'ay'",
+            "divergent → 'dee-VEHRZH' — 'diverger' 3rd plural; final '-ent' silent; 'g' = 'zh'"
           ]
         },
         {
@@ -10252,6 +10264,12 @@ export const lessons: FrenchLesson[] =         [
             "rejoigne → rơ-joa-nhơ",
             "constat → kõn-sta",
             "asymétrie → a-si-mé-tri"
+          ],
+          "pronunciation_focus_en": [
+            "Quoique → 'KWAH-kuh' — 'oi' = 'wah'; triggers the subjunctive",
+            "rejoigne → 'ruh-ZHWAH-nyuh' — subjunctive of rejoindre; 'gn' = 'ny'",
+            "constat → 'kohn-STAH' — 'le constat' = the factual observation; final 't' silent",
+            "asymétrie → 'ah-see-may-TREE' — 'a-' prefix kept; final '-ie' = 'ee'"
           ]
         },
         {
@@ -10262,6 +10280,12 @@ export const lessons: FrenchLesson[] =         [
             "fermement → fèr-mơ-mã",
             "épreuve → é-prơv",
             "évoquer → é-vo-ké"
+          ],
+          "pronunciation_focus_en": [
+            "amicalement → 'ah-mee-kal-MAHN' — 'in a friendly way'; '-ment' nasal",
+            "fermement → 'fehr-muh-MAHN' — 'firmly'; '-ment' nasal at end",
+            "épreuve → 'ay-PRUHV' — 'tenir l'épreuve de' = to withstand the test of; 'eu' rounded",
+            "évoquer → 'ay-voh-KAY' — 'to evoke/mention'; '-er' = 'ay'"
           ]
         },
         {
@@ -10272,6 +10296,12 @@ export const lessons: FrenchLesson[] =         [
             "discussion → dis-ku-sion",
             "articuler → ar-ti-ku-lé",
             "réduire → ré-duir"
+          ],
+          "pronunciation_focus_en": [
+            "conclure → 'kohn-KLUR' — 'to conclude'; rounded final 'u'",
+            "discussion → 'dees-ku-SYON' — 'avant que la discussion ne s'ouvre'; '-sion' = 'syon'",
+            "articuler → 'ar-tee-ku-LAY' — 'to articulate (two dimensions)'; '-er' = 'ay'",
+            "réduire → 'ray-DWEER' — 'ui' = 'wee'; 'sans en réduire l'une à l'autre'"
           ]
         }
       ],
@@ -10283,91 +10313,105 @@ export const lessons: FrenchLesson[] =         [
           "en": "a roundtable",
           "vi": "bàn tròn",
           "pos": "n.f.",
-          "pronunciation_vi": "un ta-blơ rõnd"
+          "pronunciation_vi": "un ta-blơ rõnd",
+          "pronunciation_en": "ün TAH-bluh ROHND — 'une table ronde' = a roundtable; final '-e' silent"
         },
         {
           "word": "une intervention liminaire",
           "en": "an opening intervention",
           "vi": "phát biểu mở đầu",
           "pos": "n.f.",
-          "pronunciation_vi": "un an-tèr-vãn-sion li-mi-nèr"
+          "pronunciation_vi": "un an-tèr-vãn-sion li-mi-nèr",
+          "pronunciation_en": "ün an-tehr-vahn-SYON lee-mee-NEHR — 'une intervention liminaire' = an opening intervention"
         },
         {
           "word": "le modérateur, la modératrice",
           "en": "the moderator",
           "vi": "người điều phối",
           "pos": "n.",
-          "pronunciation_vi": "lơ mo-dé-ra-tơr"
+          "pronunciation_vi": "lơ mo-dé-ra-tơr",
+          "pronunciation_en": "luh moh-day-rah-TUR / lah moh-day-rah-TREESS — m./f. moderator"
         },
         {
           "word": "rejoindre quelqu'un sur",
           "en": "to agree with someone on",
           "vi": "đồng ý với ai về",
           "pos": "v.",
-          "pronunciation_vi": "rơ-joan-drơ kèl-kan sur"
+          "pronunciation_vi": "rơ-joan-drơ kèl-kan sur",
+          "pronunciation_en": "ruh-ZHWAN-druh kel-KAN sur — 'rejoindre quelqu'un sur' = to agree with someone on"
         },
         {
           "word": "se séparer de quelqu'un sur",
           "en": "to disagree with someone on",
           "vi": "tách khỏi ai về",
           "pos": "v.",
-          "pronunciation_vi": "sơ sé-pa-ré dơ kèl-kan sur"
+          "pronunciation_vi": "sơ sé-pa-ré dơ kèl-kan sur",
+          "pronunciation_en": "suh say-pah-RAY duh kel-KAN sur — 'se séparer de quelqu'un sur' = to disagree with someone on"
         },
         {
           "word": "l'angle d'attaque",
           "en": "the angle of attack",
           "vi": "góc tiếp cận",
           "pos": "n.m.",
-          "pronunciation_vi": "lãn-glơ da-tak"
+          "pronunciation_vi": "lãn-glơ da-tak",
+          "pronunciation_en": "LAHN-gluh dah-TAK — 'l'angle d'attaque' = the angle of attack/entry point"
         },
         {
           "word": "la discussion croisée",
           "en": "the cross-discussion",
           "vi": "thảo luận chéo",
           "pos": "n.f.",
-          "pronunciation_vi": "la dis-ku-sion kroa-zé"
+          "pronunciation_vi": "la dis-ku-sion kroa-zé",
+          "pronunciation_en": "lah dees-ku-SYON krwah-ZAY — 'la discussion croisée' = the cross-discussion"
         },
         {
           "word": "tenir l'épreuve de",
           "en": "to withstand the test of",
           "vi": "trụ được trước",
           "pos": "v.",
-          "pronunciation_vi": "tơ-nir lé-prơv dơ"
+          "pronunciation_vi": "tơ-nir lé-prơv dơ",
+          "pronunciation_en": "tuh-NEER lay-PRUHV duh — 'tenir l'épreuve de' = to withstand the test of"
         },
         {
           "word": "le capital symbolique",
           "en": "symbolic capital",
           "vi": "vốn tượng trưng",
           "pos": "n.m.",
-          "pronunciation_vi": "lơ ka-pi-tal san-bo-lik"
+          "pronunciation_vi": "lơ ka-pi-tal san-bo-lik",
+          "pronunciation_en": "luh kah-pee-TAL san-boh-LEEK — 'le capital symbolique' = symbolic capital (Bourdieu)"
         },
         {
           "word": "l'asymétrie structurelle",
           "en": "structural asymmetry",
           "vi": "bất đối xứng cấu trúc",
           "pos": "n.f.",
-          "pronunciation_vi": "la-si-mé-tri struk-tu-rèl"
+          "pronunciation_vi": "la-si-mé-tri struk-tu-rèl",
+          "pronunciation_en": "lah-see-may-TREE struk-tu-REL — 'l'asymétrie structurelle' = structural asymmetry"
         }
       ],
       "dialogue": [
         {
           "speaker": "Pr. Garnier (modérateur de la table ronde)",
           "text": "Madame Tran, vous êtes la troisième à intervenir, vous disposez de huit minutes. Vous avez la parole.",
+          "en": "Ms. Tran, you're the third to speak; you have eight minutes. You have the floor.",
           "vi": "Cô Trần, cô là người thứ ba phát biểu, cô có 8 phút. Mời cô."
         },
         {
           "speaker": "Linh",
           "text": "Je remercie le modérateur, et je salue Madame Sapiro et Monsieur Schmitt dont les interventions précédentes ont magnifiquement posé le décor — quoique sur des bases que je vais discuter. Mon angle d'attaque sera spécifique: la circulation des manuels scolaires français au Vietnam, qui me paraît permettre de trancher entre les deux thèses qui viennent d'être défendues.",
+          "en": "I thank the moderator, and I greet Ms. Sapiro and Mr. Schmitt, whose previous interventions magnificently set the scene — though on bases I'm going to discuss. My angle of attack will be specific: the circulation of French textbooks in Vietnam, which seems to me to allow us to adjudicate between the two theses just defended.",
           "vi": "Tôi cảm ơn người điều phối, và xin chào Cô Sapiro và Thầy Schmitt mà các phát biểu trước đã đặt khung tuyệt đẹp — mặc dù trên cơ sở tôi sắp bàn luận. Góc tiếp cận của tôi sẽ cụ thể: lưu chuyển sách giáo khoa Pháp ở Việt Nam, theo tôi cho phép phân định giữa hai luận điểm vừa được bảo vệ."
         },
         {
           "speaker": "Pr. Garnier",
           "text": "Vous suggérez donc que l'un de vos co-intervenants se trompe ?",
+          "en": "So you're suggesting that one of your co-speakers is mistaken?",
           "vi": "Vậy cô gợi ý rằng một trong các đồng diễn giả sai?"
         },
         {
           "speaker": "Linh",
           "text": "Je ne dirais pas qu'ils se trompent. Je dirais que leurs cadres respectifs, valides dans leurs domaines, ne tiennent pas l'épreuve d'un cas particulier — ce qui est précisément ce que la table ronde cherche à faire émerger. Je rejoins Madame Sapiro sur le constat de l'inégalité; je m'en sépare sur l'interprétation.",
+          "en": "I wouldn't say they're mistaken. I'd say their respective frameworks, valid in their domains, don't withstand the test of a particular case — which is precisely what the roundtable seeks to bring out. I agree with Ms. Sapiro on the observation of inequality; I diverge from her on the interpretation.",
           "vi": "Tôi không nói họ sai. Tôi nói rằng các khung tương ứng của họ, có giá trị trong lĩnh vực riêng, không trụ được trước một trường hợp đặc biệt — chính là điều table ronde tìm cách làm nổi bật. Tôi đồng ý với Cô Sapiro về sự kiện bất bình đẳng; tôi tách khỏi Cô về diễn giải."
         }
       ],
@@ -10375,61 +10419,73 @@ export const lessons: FrenchLesson[] =         [
         {
           "speaker": "Pr. Garnier (modérateur, ouverture)",
           "text": "Bonjour à tous. Cette table ronde clôt notre colloque 'Circulations transnationales des savoirs'. Nous accueillons quatre intervenants en désaccord — c'est précisément ce qui rend cette table ronde intéressante. Madame Sapiro ouvrira, suivie de Monsieur Schmitt, puis de Madame Tran, et enfin de Madame Lemaire. Chacun dispose de huit minutes liminaires, suivies d'une discussion croisée modérée par moi-même, et d'une ouverture au public.",
+          "en": "Good morning, everyone. This roundtable closes our colloquium 'Transnational Circulations of Knowledge'. We have four speakers who disagree — which is precisely what makes this roundtable interesting. Ms. Sapiro will open, followed by Mr. Schmitt, then Ms. Tran, and finally Ms. Lemaire. Each has eight opening minutes, followed by a cross-discussion I'll moderate, and an opening to the public.",
           "vi": "Xin chào tất cả. Table ronde này khép lại colloque 'Circulations transnationales des savoirs'. Chúng ta đón bốn diễn giả bất đồng — chính đó là điều làm bàn này thú vị. Cô Sapiro mở đầu, tiếp theo Thầy Schmitt, rồi Cô Trần, cuối cùng Cô Lemaire. Mỗi người 8 phút mở đầu, tiếp theo thảo luận chéo, và mở cho công chúng."
         },
         {
           "speaker": "Pr. Garnier (après les interventions de Sapiro et Schmitt)",
           "text": "Madame Tran, à vous.",
+          "en": "Ms. Tran, over to you.",
           "vi": "Cô Trần, mời cô."
         },
         {
           "speaker": "Linh",
           "text": "Je remercie le modérateur de m'avoir associée à cette table ronde, et je salue les autres intervenants dont les travaux nourrissent depuis longtemps ma réflexion — Madame Sapiro pour La Sociologie de la littérature, Monsieur Schmitt pour Contrats et culture, Madame Lemaire pour ses travaux sur les politiques linguistiques. L'intervention liminaire que je vais livrer en sept minutes ne prétend nullement épuiser la question, mais propose une entrée par un cas précis: la circulation des manuels scolaires français au Vietnam.",
+          "en": "I thank the moderator for associating me with this roundtable, and I greet the other speakers whose work has long nourished my thinking — Ms. Sapiro for La Sociologie de la littérature, Mr. Schmitt for Contrats et culture, Ms. Lemaire for her work on language policies. The opening intervention I'll deliver in seven minutes in no way claims to exhaust the question, but proposes an entry through a precise case: the circulation of French school textbooks in Vietnam.",
           "vi": "Tôi cảm ơn người điều phối đã mời tôi vào table ronde, và xin chào các diễn giả khác mà công trình từ lâu nuôi suy nghĩ của tôi — Cô Sapiro về La Sociologie de la littérature, Thầy Schmitt về Contrats et culture, Cô Lemaire về các công trình politiques linguistiques. Phát biểu mở đầu của tôi trong 7 phút không hề tham vọng vét cạn câu hỏi, mà đề xuất một cửa vào qua trường hợp cụ thể: lưu chuyển sách giáo khoa Pháp ở Việt Nam."
         },
         {
           "speaker": "Linh",
           "text": "Quoique je rejoigne Madame Sapiro sur le constat — la circulation des œuvres et des manuels est inégale —, je me sépare d'elle sur l'interprétation: l'inégalité ne tient pas seulement aux médiateurs institutionnels comme elle le suggère, mais à une asymétrie structurelle du capital symbolique entre la métropole et les espaces post-coloniaux. Cette asymétrie précède les médiateurs et les surdétermine.",
+          "en": "Although I agree with Ms. Sapiro on the observation — the circulation of works and textbooks is unequal —, I diverge from her on the interpretation: the inequality is not due solely to institutional mediators as she suggests, but to a structural asymmetry of symbolic capital between the metropole and post-colonial spaces. This asymmetry precedes the mediators and over-determines them.",
           "vi": "Mặc dù tôi đồng ý với Cô Sapiro về sự kiện — lưu chuyển bất bình đẳng —, tôi tách khỏi Cô về diễn giải: bất bình đẳng không chỉ do các trung gian thiết chế như Cô gợi ý, mà do bất đối xứng cấu trúc của vốn tượng trưng giữa metropole và không gian hậu thuộc địa. Bất đối xứng này có trước trung gian và surdétermine họ."
         },
         {
           "speaker": "Linh",
           "text": "À Monsieur Schmitt, qui défend la thèse opposée — celle d'une circulation équitable conditionnée par les contrats institutionnels —, je voudrais répondre amicalement mais fermement: votre cadre, brillamment défendu pour le cas franco-allemand, ne tient pas l'épreuve des données vietnamiennes que je vais évoquer. Le contrat franchit la frontière, mais il franchit avec lui des asymétries de prestige que le contrat seul ne neutralise pas.",
+          "en": "To Mr. Schmitt, who defends the opposite thesis — that of an equitable circulation conditioned by institutional contracts —, I'd like to respond in a friendly but firm way: your framework, brilliantly defended for the Franco-German case, doesn't withstand the test of the Vietnamese data I'll evoke. The contract crosses the border, but it carries with it asymmetries of prestige that the contract alone does not neutralize.",
           "vi": "Với Thầy Schmitt, người bảo vệ luận điểm ngược — sự lưu chuyển công bằng được điều kiện hóa bởi hợp đồng thiết chế —, tôi muốn đáp một cách thân thiện nhưng dứt khoát: khung của Thầy, được bảo vệ xuất sắc cho trường hợp Pháp-Đức, không trụ được trước dữ liệu Việt Nam tôi sắp đề cập. Hợp đồng vượt qua biên giới, nhưng nó mang theo các bất đối xứng prestige mà hợp đồng đơn lẻ không trung hòa được."
         },
         {
           "speaker": "Linh",
           "text": "Le cas concret. Entre mille neuf cent cinquante-quatre et deux mille vingt, environ quatre cents manuels français de niveau primaire ont été utilisés au Vietnam, dont la moitié sous contrat avec un éditeur français. Or, l'analyse du contenu — que j'ai conduite sur un échantillon de quatre-vingts manuels — révèle que la voix vietnamienne y est représentée comme objet (ce qu'on enseigne SUR le Vietnam) plutôt que comme sujet (ce que les Vietnamiens disent du français). Le contrat n'a pas neutralisé l'asymétrie ; il l'a institutionnalisée sous une forme contractuelle.",
+          "en": "The concrete case. Between nineteen fifty-four and two thousand twenty, about four hundred French primary-level textbooks were used in Vietnam, half under contract with a French publisher. Yet content analysis — which I conducted on a sample of eighty textbooks — reveals that the Vietnamese voice is represented there as an object (what is taught ABOUT Vietnam) rather than as a subject (what the Vietnamese say about French). The contract didn't neutralize the asymmetry; it institutionalized it in a contractual form.",
           "vi": "Trường hợp cụ thể. Giữa 1954 và 2020, khoảng 400 sách giáo khoa Pháp cấp tiểu học đã được dùng ở Việt Nam, một nửa dưới hợp đồng với editeur Pháp. Tuy nhiên, phân tích nội dung — tôi đã làm trên mẫu 80 sách — cho thấy tiếng nói Việt được đại diện như đối tượng (cái người ta dạy VỀ Việt Nam) hơn là chủ thể (cái người Việt nói về tiếng Pháp). Hợp đồng không trung hòa bất đối xứng; nó thiết chế hóa nó dưới hình thức contractuelle."
         },
         {
           "speaker": "Linh",
           "text": "Pour conclure mon intervention liminaire — et avant que la discussion ne s'ouvre —, je formule une question que je laisse à la table: comment articuler la dimension symbolique et la dimension contractuelle, sans en réduire l'une à l'autre ? Je crois que cette question, qui me sépare à la fois de Madame Sapiro et de Monsieur Schmitt, sera plus féconde que de chercher à trancher entre nos deux cadres. Je vous remercie.",
+          "en": "To conclude my opening intervention — and before the discussion opens —, I formulate a question I leave to the table: how can the symbolic dimension and the contractual dimension be articulated without reducing one to the other? I believe this question, which separates me from both Ms. Sapiro and Mr. Schmitt, will be more fruitful than trying to adjudicate between our two frameworks. Thank you.",
           "vi": "Để kết thúc — và trước khi thảo luận mở ra —, tôi đặt một câu hỏi cho bàn: làm thế nào khớp nối chiều kích tượng trưng và chiều kích hợp đồng, mà không reduce cái này thành cái kia? Tôi tin câu hỏi này, vốn tách tôi khỏi cả Cô Sapiro lẫn Thầy Schmitt, sẽ phong phú hơn việc cố phân định giữa hai khung. Tôi xin cảm ơn."
         },
         {
           "speaker": "Pr. Garnier",
           "text": "Merci, Madame Tran. Avant de donner la parole à Madame Lemaire, Monsieur Schmitt vous a sollicitée d'un signe — voulez-vous lui répondre brièvement ?",
+          "en": "Thank you, Ms. Tran. Before I give the floor to Ms. Lemaire, Mr. Schmitt signalled to you — would you like to respond briefly?",
           "vi": "Cảm ơn cô. Trước khi nhường lời cho Cô Lemaire, Thầy Schmitt vừa giơ tay với cô — cô muốn đáp ngắn gọn không?"
         },
         {
           "speaker": "Pr. Schmitt",
           "text": "Une seule question rapide à Madame Tran. Vous citez l'asymétrie post-coloniale. N'est-ce pas un cadre désormais discrédité, qui essentialise des positions qui ont évolué ?",
+          "en": "Just one quick question to Ms. Tran. You cite post-colonial asymmetry. Isn't that a now-discredited framework that essentializes positions which have evolved?",
           "vi": "Một câu hỏi nhanh duy nhất với Cô Trần. Cô trích bất đối xứng hậu thuộc địa. Đó không phải là khung đã bị bác bỏ, vốn essentialise các vị trí đã tiến triển sao?"
         },
         {
           "speaker": "Linh",
           "text": "Question légitime. Je n'utilise pas le cadre post-colonial dans sa version essentialisante — celle critiquée à juste titre par les travaux récents. J'utilise le concept d'ASYMÉTRIE STRUCTURELLE qui est plus précis, et qui se mesure empiriquement par des indicateurs de circulation des œuvres. Donc, sur ce point précis, je crois que nous parlons de cadres différents — votre objection vise un cadre que je n'utilise pas.",
+          "en": "A legitimate question. I don't use the post-colonial framework in its essentializing version — the one rightly criticized by recent work. I use the concept of STRUCTURAL ASYMMETRY, which is more precise and is measured empirically by indicators of the circulation of works. So, on this precise point, I believe we're talking about different frameworks — your objection targets a framework I don't use.",
           "vi": "Câu hỏi xác đáng. Tôi không dùng khung hậu thuộc địa ở phiên bản essentialisante — phiên bản bị các công trình gần đây phê phán đúng. Tôi dùng khái niệm BẤT ĐỐI XỨNG CẤU TRÚC, chính xác hơn, và được đo empirically qua các chỉ báo lưu chuyển tác phẩm. Vậy, về điểm cụ thể này, tôi tin chúng ta nói về các khung khác — phản biện của Thầy nhắm tới một khung tôi không dùng."
         },
         {
           "speaker": "Pr. Schmitt",
           "text": "Réponse claire — j'en prends note. Nous reviendrons à la discussion croisée.",
+          "en": "A clear answer — I take note. We'll return to it in the cross-discussion.",
           "vi": "Câu trả lời rõ — tôi ghi nhận. Chúng ta sẽ trở lại trong thảo luận chéo."
         },
         {
           "speaker": "Pr. Garnier",
           "text": "Madame Lemaire, à vous pour la dernière intervention liminaire.",
+          "en": "Ms. Lemaire, over to you for the final opening intervention.",
           "vi": "Cô Lemaire, mời cô cho phát biểu mở đầu cuối cùng."
         }
       ],
@@ -10443,25 +10499,33 @@ export const lessons: FrenchLesson[] =         [
         {
           "idiom": "Rejoindre quelqu'un sur (académique)",
           "literal": "Đi cùng ai về",
+          "literal_en": "to rejoin someone on",
           "meaning": "Đồng ý với ai về một điểm — formule de positionnement standard.",
+          "meaning_en": "to agree with someone on a point — the standard positioning formula",
           "example": "Je rejoins Madame Sapiro sur le constat; je m'en sépare sur l'interprétation."
         },
         {
           "idiom": "Tenir l'épreuve de (formel)",
           "literal": "Trụ trước thử thách của",
+          "literal_en": "to hold the test of",
           "meaning": "Trụ được trước — pour évaluer si un cadre tient face aux données.",
+          "meaning_en": "to withstand the test of — used to assess whether a framework holds against the data",
           "example": "Votre cadre, brillant pour le cas franco-allemand, ne tient pas l'épreuve des données vietnamiennes."
         },
         {
           "idiom": "Trancher entre deux thèses (académique)",
           "literal": "Chặt giữa hai luận điểm",
+          "literal_en": "to slice between two theses",
           "meaning": "Phân định giữa hai luận điểm — souvent au négatif: « plus fécond que de trancher ».",
+          "meaning_en": "to adjudicate between two theses — often negative: « plus fécond que de trancher »",
           "example": "Cette question sera plus féconde que de chercher à trancher entre nos deux cadres."
         },
         {
           "idiom": "Amicalement mais fermement (formel)",
           "literal": "Một cách thân thiện nhưng dứt khoát",
+          "literal_en": "in a friendly but firm way",
           "meaning": "Thân thiện nhưng dứt khoát — formule emblématique du désaccord civil.",
+          "meaning_en": "in a friendly but firm way — the emblematic formula of civil disagreement",
           "example": "À Monsieur Schmitt, je voudrais répondre amicalement mais fermement: votre cadre ne tient pas."
         }
       ],
@@ -10469,35 +10533,47 @@ export const lessons: FrenchLesson[] =         [
         {
           "type": "fill-blank",
           "question": "Quoique je ___ Madame Sapiro sur le constat, je me sépare d'elle sur l'interprétation.",
-          "answer": "rejoigne"
+          "answer": "rejoigne",
+          "hint_vi": "subjonctif của rejoindre — sau « Quoique »",
+          "hint_en": "subjunctive of rejoindre — after « Quoique » (although I ___ Ms. Sapiro on the observation)"
         },
         {
           "type": "matching",
           "pairs": [
             [
               "une intervention liminaire",
-              "phát biểu mở đầu"
+              "phát biểu mở đầu (an opening intervention)"
             ],
             [
               "la discussion croisée",
-              "thảo luận chéo"
+              "thảo luận chéo (the cross-discussion)"
             ],
             [
               "l'angle d'attaque",
-              "góc tiếp cận"
+              "góc tiếp cận (the angle of attack)"
             ],
             [
               "tenir l'épreuve de",
-              "trụ được trước"
+              "trụ được trước (to withstand the test of)"
             ]
           ],
-          "instruction": "Nối thuật ngữ table ronde với nghĩa Việt"
+          "instruction": "Nối thuật ngữ table ronde với nghĩa Việt",
+          "instruction_en": "Match each roundtable term with its Vietnamese meaning"
         },
         {
           "type": "translation",
           "vietnamese": "Mặc dù tôi đồng ý với Cô Sapiro về sự kiện, tôi tách khỏi Cô về diễn giải: bất bình đẳng không chỉ do trung gian thiết chế.",
+          "english": "Although I agree with Ms. Sapiro on the observation, I diverge from her on the interpretation: the inequality is not due solely to institutional mediators.",
           "french": "Quoique je rejoigne Madame Sapiro sur le constat, je me sépare d'elle sur l'interprétation: l'inégalité ne tient pas seulement aux médiateurs institutionnels."
         }
+      ],
+      "cultural_notes_en": "« La table ronde scientifique » is a format DISTINCT from the research seminar, the colloquium, and the public debate. The SÉMINAIRE has one guest, intimate audience, long exchange with the public. The COLLOQUE is a multi-session event, individual papers, an additive format. The TABLE RONDE has 3-5 speakers in parallel, a moderator, and the exchange BETWEEN speakers is the main object. Typical structure: the moderator introduces the overall question + the speakers; opening interventions (« interventions liminaires », 7-12 min each, fixed order); cross-discussion between speakers; public Q&A; synthesis. Duration 1h30-2h. CENTRAL CHALLENGE FOR THE SPEAKER: (a) stay DISTINCTIVE — each speaker must bring a SPECIFIC angle, not repeat what others will say; (b) ENGAGE the co-speakers, not just talk about your own work in isolation; (c) MANAGE TIME — moderators cut in a table ronde; (d) be CIVIL but DIRECT — public disagreement with a co-speaker is expected and valued. Specific vocabulary: « l'intervention liminaire » (the short first round), « la discussion croisée » (the exchange between speakers afterward), « l'angle d'attaque » (the speaker's specific entry point). CULTURAL ORIENTATION: (a) DISAGREEMENT IS INSTITUTIONALIZED — the organizer often deliberately invites speakers who disagree; civil disagreement is the horizon; (b) DON'T REPEAT the co-speakers — anticipate what they'll say, take a complementary angle; (c) « JE REJOINS X SUR Y MAIS JE M'EN SÉPARE SUR Z » is the typical French table-ronde formula for articulating proximity and distance; (d) CITE the co-speakers' work by name, book, year — if you haven't read it, it shows. UNLIKE the Anglo table ronde (often more consensual, 'building on what X said'): in France, 'while I share X's diagnosis, I diverge on the interpretation' affirms intellectual individuality, not consensus. This is descriptive — table-ronde conventions vary by institution and discipline; verify the precise format before participating.",
+      "tip_advice_en": "Eight-step protocol for a successful table-ronde intervention: (1) PREPARATION — know the CO-SPEAKERS (read at least 2 recent publications of each), identify what DISTINGUISHES your approach from each, choose ONE angle of attack, prepare a TIMED opening intervention (≤7 min even if given 10). (2) STRUCTURE OF THE LIMINAIRE — 30s greetings + situate co-speakers, 1 min angle + thesis in one sentence, 4 min argument via ONE concrete case (not three), 1 min positioning vs co-speakers (« Je rejoins X sur Y mais je m'en sépare sur Z »), 30s an open question left to the table. (3) STANDARD OPENING FORMULAS — « Je remercie le modérateur de m'avoir associée à cette table ronde. ». (4) CITE THE CO-SPEAKERS — nominally at least once each, with book + year; cite what CONVERGES and what DIVERGES. (5) MANAGE THE CROSS-DISCUSSION — prepare 2-3 possible responses; if interpellated directly, answer briefly (1-2 min) then return the ball. (6) POSITIONING FORMULAS — « Sur le constat, nous convergeons; sur l'interprétation, nous divergeons. ». (7) MANAGE THE MODERATOR — if cut, don't insist, finish the sentence then yield; if misreformulated, correct gently. (8) PUBLIC Q&A — same rules as a seminar. Avoid: repeating a prior co-speaker (the public notices immediately), reading a written text (a table ronde wants freer oral than a colloquium), monopolizing, ignoring the co-speakers, ad hominem disagreement, evading the moderator's hard questions. Conventions vary — confirm the format in advance.",
+      "register_notes_en": "Academic roundtable = a formal + INTERACTIVE academic register — elevated but flexible enough to engage the co-speakers. (1) LIMINAIRE-OPENING FORMULAS — « Je remercie le modérateur de m'avoir associée à cette table ronde. », « Je salue les autres intervenants dont les travaux nourrissent depuis longtemps ma réflexion. », « Je propose une entrée par un cas précis. ». (2) POSITIONING FORMULAS — the CORE of the table ronde: « Je rejoins X sur Y mais je m'en sépare sur Z. », « Sur le constat, nous convergeons; sur l'interprétation, nous divergeons. », « À X qui défend la thèse opposée, je voudrais répondre amicalement mais fermement. ». (3) OPEN-QUESTION FORMULAS to close a liminaire — « Je formule une question que je laisse à la table: ... », « C'est ce point que la discussion croisée pourra approfondir. ». (4) CROSS-DISCUSSION-RESPONSE FORMULAS — « Je remercie X de cette intervention; mon désaccord porte précisément sur... », « Sur le fait, je vous donne raison ; sur l'interprétation, je conteste. ». (5) SUBJUNCTIVES — « Quoique je rejoigne Madame Sapiro sur le constat... », « Avant que la discussion ne s'ouvre... », « ...à condition que les cadres soient clairement distingués. ». (6) ACADEMIC-CIVILITY REMINDERS (typically French) — vouvoiement among ALL speakers even in sharp disagreement; address nominally (« Madame Sapiro », not « ma collègue »); cite books and years; « amicalement mais fermement » is the emblematic formula of civil dissent. Avoid: repetition of a co-speaker, ad hominem disagreement, evasion of a hard question, reading a written text, depreciative nominal mention in absentia.",
+      "roleplay_prompts_en": [
+        "Open an opening intervention in 5 minutes in a roundtable with 3 co-speakers. Greet + situate your angle of attack + a thesis + 1 concrete case + position yourself relative to the 3 co-speakers with « Je rejoins X sur Y mais je m'en sépare sur Z » for each.",
+        "A co-speaker publicly rebuts your thesis during the cross-discussion. Respond with « Je remercie X de cette intervention; mon désaccord porte précisément sur... » + a concrete argument + a question returned to X. Avoid defensiveness.",
+        "The moderator misreformulates your point: « Madame Tran défend donc une approche post-coloniale orthodoxe... » Respond: correct gently (« Si je peux préciser: ce n'est pas exactement ma position. J'utilise plutôt... ») without humiliating the moderator."
       ]
     },
     {
@@ -10515,6 +10591,12 @@ export const lessons: FrenchLesson[] =         [
             "champ → shã",
             "méthodologiquement → mé-to-do-lo-jik-mã",
             "inconfort → an-kõn-for"
+          ],
+          "pronunciation_focus_en": [
+            "minoritaire → 'mee-noh-ree-TEHR' — 'minority (adj.)'; '-aire' = 'air'",
+            "champ → 'SHAHN' — 'le champ' = the field (Bourdieu); nasal '-amp'; final 'p' silent",
+            "méthodologiquement → 'may-toh-doh-loh-zheek-MAHN' — very long adverb; 'g' = 'zh'; '-ment' nasal",
+            "inconfort → 'an-kohn-FOR' — nasal 'in' + 'on'; final 't' silent"
           ]
         },
         {
@@ -10525,6 +10607,12 @@ export const lessons: FrenchLesson[] =         [
             "hétérodoxe → é-té-ro-doks",
             "isolée → i-zo-lé",
             "sous-estimé → su-zès-ti-mé"
+          ],
+          "pronunciation_focus_en": [
+            "explicitement → 'eks-plee-seet-MAHN' — 'x' = 'ks'; '-ment' nasal",
+            "hétérodoxe → 'ay-tay-roh-DOKS' — final 'xe' = 'ks'; the key term",
+            "isolée → 'ee-zoh-LAY' — feminine; 's' between vowels = 'z'; '-ée' = 'ay'",
+            "sous-estimé → 'soo-zes-tee-MAY' — liaison 's' = 'z'; '-é' = 'ay'"
           ]
         },
         {
@@ -10535,6 +10623,12 @@ export const lessons: FrenchLesson[] =         [
             "sache → sash",
             "ralentissement → ra-lãn-tis-mã",
             "invalidité → an-va-li-di-té"
+          ],
+          "pronunciation_focus_en": [
+            "Bien que → 'byan kuh' — nasal 'ien'; triggers the subjunctive",
+            "sache → 'SASH' — subjunctive of savoir; 'ch' = 'sh'; final '-e' silent",
+            "ralentissement → 'rah-lahn-tees-MAHN' — nasal 'en'; '-ment' nasal at end",
+            "invalidité → 'an-vah-lee-dee-TAY' — nasal 'in'; '-té' = 'tay'"
           ]
         },
         {
@@ -10545,6 +10639,12 @@ export const lessons: FrenchLesson[] =         [
             "fondée → fõn-dé",
             "provocatrice → pro-vo-ka-tri-sơ",
             "transgresser → trãns-grè-sé"
+          ],
+          "pronunciation_focus_en": [
+            "radicalement → 'rah-dee-kal-MAHN' — 'radically'; '-ment' nasal",
+            "fondée → 'fohn-DAY' — feminine past participle; nasal 'on'; '-ée' = 'ay'",
+            "provocatrice → 'pro-voh-kah-TREESS' — feminine of provocateur; final '-e' silent",
+            "transgresser → 'trahnz-greh-SAY' — nasal 'an'; double 'ss' = 's'; '-er' = 'ay'"
           ]
         },
         {
@@ -10555,6 +10655,12 @@ export const lessons: FrenchLesson[] =         [
             "mépris → mé-pri",
             "vitalité → vi-ta-li-té",
             "doctrine → dok-trin"
+          ],
+          "pronunciation_focus_en": [
+            "contradicteurs → 'kohn-trah-deek-TUR' — '-eurs' rounded; the orthodox opponents",
+            "mépris → 'may-PREE' — 'le mépris symétrique' = symmetrical contempt; final 's' silent",
+            "vitalité → 'vee-tah-lee-TAY' — abstract noun; '-té' = 'tay'",
+            "doctrine → 'dok-TREEN' — 'se transforme en doctrine'; final '-e' silent"
           ]
         }
       ],
@@ -10566,91 +10672,105 @@ export const lessons: FrenchLesson[] =         [
           "en": "a controversial position",
           "vi": "vị trí gây tranh cãi",
           "pos": "n.f.",
-          "pronunciation_vi": "un po-zi-sion kõn-tro-vèr-sé"
+          "pronunciation_vi": "un po-zi-sion kõn-tro-vèr-sé",
+          "pronunciation_en": "ün poh-zee-SYON kohn-troh-vehr-SAY — 'une position controversée'"
         },
         {
           "word": "l'hétérodoxie",
           "en": "heterodoxy",
           "vi": "sự hétérodoxie / không chính thống",
           "pos": "n.f.",
-          "pronunciation_vi": "lé-té-ro-dok-si"
+          "pronunciation_vi": "lé-té-ro-dok-si",
+          "pronunciation_en": "lay-tay-roh-dok-SEE — 'l'hétérodoxie' = heterodoxy; final '-ie' = 'ee'"
         },
         {
           "word": "minoritaire dans le champ",
           "en": "minoritarian in the field",
           "vi": "thiểu số trong lĩnh vực",
           "pos": "loc.",
-          "pronunciation_vi": "mi-no-ri-tèr dã lơ shã"
+          "pronunciation_vi": "mi-no-ri-tèr dã lơ shã",
+          "pronunciation_en": "mee-noh-ree-TEHR dahn luh SHAHN — 'minoritaire dans le champ' = minority in the field"
         },
         {
           "word": "s'inscrire dans une tradition",
           "en": "to inscribe oneself in a tradition",
           "vi": "đăng ký vào một truyền thống",
           "pos": "v.",
-          "pronunciation_vi": "san-skri-rơ dã un tra-di-sion"
+          "pronunciation_vi": "san-skri-rơ dã un tra-di-sion",
+          "pronunciation_en": "san-SKREER dahn ZUN trah-dee-SYON — 's'inscrire dans une tradition'"
         },
         {
           "word": "le ralentissement de carrière",
           "en": "career slowdown",
           "vi": "chậm tiến độ sự nghiệp",
           "pos": "n.m.",
-          "pronunciation_vi": "lơ ra-lãn-tis-mã dơ ka-rièr"
+          "pronunciation_vi": "lơ ra-lãn-tis-mã dơ ka-rièr",
+          "pronunciation_en": "luh rah-lahn-tees-MAHN duh kah-RYEHR — 'le ralentissement de carrière' = career slowdown"
         },
         {
           "word": "l'isolement institutionnel",
           "en": "institutional isolation",
           "vi": "cô lập thiết chế",
           "pos": "n.m.",
-          "pronunciation_vi": "li-zol-mã an-sti-tu-sio-nèl"
+          "pronunciation_vi": "li-zol-mã an-sti-tu-sio-nèl",
+          "pronunciation_en": "lee-zol-MAHN an-stee-tu-syo-NEL — 'l'isolement institutionnel' = institutional isolation"
         },
         {
           "word": "la posture provocatrice gratuite",
           "en": "the gratuitous provocative posture",
           "vi": "thái độ khiêu khích vô bổ",
           "pos": "n.f.",
-          "pronunciation_vi": "la pos-tur pro-vo-ka-tri-sơ gra-tu-it"
+          "pronunciation_vi": "la pos-tur pro-vo-ka-tri-sơ gra-tu-it",
+          "pronunciation_en": "lah pos-TUR pro-voh-kah-TREESS grah-TWEET — 'la posture provocatrice gratuite'"
         },
         {
           "word": "le droit à l'hétérodoxie",
           "en": "the right to heterodoxy",
           "vi": "quyền hétérodoxie",
           "pos": "n.m.",
-          "pronunciation_vi": "lơ droa a lé-té-ro-dok-si"
+          "pronunciation_vi": "lơ droa a lé-té-ro-dok-si",
+          "pronunciation_en": "luh DRWAH ah lay-tay-roh-dok-SEE — 'le droit à l'hétérodoxie' = the right to heterodoxy"
         },
         {
           "word": "la doctrine",
           "en": "doctrine",
           "vi": "giáo điều",
           "pos": "n.f.",
-          "pronunciation_vi": "la dok-trin"
+          "pronunciation_vi": "la dok-trin",
+          "pronunciation_en": "lah dok-TREEN — 'la doctrine' = doctrine; final '-e' silent"
         },
         {
           "word": "le mépris symétrique",
           "en": "the symmetrical contempt",
           "vi": "sự khinh thị đối xứng",
           "pos": "n.m.",
-          "pronunciation_vi": "lơ mé-pri si-mé-trik"
+          "pronunciation_vi": "lơ mé-pri si-mé-trik",
+          "pronunciation_en": "luh may-PREE see-may-TREEK — 'le mépris symétrique' = symmetrical contempt"
         }
       ],
       "dialogue": [
         {
           "speaker": "Pr. Garnier (séminaire de l'EHESS)",
           "text": "Madame Tran, votre exposé contredit le consensus disciplinaire récent. Êtes-vous consciente du coût intellectuel d'une telle position ?",
+          "en": "Ms. Tran, your talk contradicts the recent disciplinary consensus. Are you aware of the intellectual cost of such a position?",
           "vi": "Cô Trần, bài trình bày của cô mâu thuẫn với consensus ngành gần đây. Cô có ý thức về chi phí trí thức của một vị trí như vậy không?"
         },
         {
           "speaker": "Linh",
           "text": "J'en suis pleinement consciente. La position que je défends est minoritaire dans le champ — et l'objet précis de mon intervention est de montrer en quoi cette minorité tient méthodologiquement, malgré l'inconfort institutionnel qu'elle produit. Je m'inscris explicitement dans une tradition hétérodoxe — celle de Lordon, de Lahire, de Quemada-Diez —, qui n'est ni isolée ni récente.",
+          "en": "I am fully aware of it. The position I defend is a minority one in the field — and the precise object of my intervention is to show how that minority holds methodologically, despite the institutional discomfort it produces. I explicitly inscribe myself in a heterodox tradition — that of Lordon, Lahire, Quemada-Diez — which is neither isolated nor recent.",
           "vi": "Tôi ý thức đầy đủ. Vị trí tôi bảo vệ là thiểu số trong lĩnh vực — và mục đích cụ thể của bài can thiệp là cho thấy thiểu số đó vẫn vững về phương pháp luận, dù sự khó chịu thiết chế nó tạo ra. Tôi đăng ký rõ ràng trong truyền thống hétérodoxe — của Lordon, Lahire, Quemada-Diez —, không cô lập cũng không gần đây."
         },
         {
           "speaker": "Pr. Garnier",
           "text": "Mais à quoi bon l'hétérodoxie si elle vous coûte ?",
+          "en": "But what's the point of heterodoxy if it costs you?",
           "vi": "Nhưng hétérodoxie để làm gì nếu nó tốn kém cho cô?"
         },
         {
           "speaker": "Linh",
           "text": "Je distingue radicalement l'hétérodoxie scientifique — fondée sur des arguments méthodologiques — de la posture provocatrice gratuite. Je ne pratique pas la marginalité comme identité. Je revendique le droit à l'hétérodoxie comme condition de la vitalité scientifique du champ. Sans hétérodoxies internes, un champ se transforme en doctrine — et c'est cela qui m'importe au-delà de ma position propre.",
+          "en": "I radically distinguish scientific heterodoxy — grounded in methodological arguments — from the gratuitous provocative posture. I don't practice marginality as an identity. I claim the right to heterodoxy as a condition of the field's scientific vitality. Without internal heterodoxies, a field turns into doctrine — and that is what matters to me beyond my own position.",
           "vi": "Tôi phân biệt triệt để hétérodoxie khoa học — dựa trên lập luận phương pháp luận — với thái độ khiêu khích vô bổ. Tôi không thực hành sự marginalité như bản sắc. Tôi đòi quyền hétérodoxie như điều kiện cho sức sống khoa học của lĩnh vực. Không có hétérodoxies nội bộ, một lĩnh vực biến thành giáo điều — và đó là điều quan trọng với tôi vượt xa vị trí riêng."
         }
       ],
@@ -10658,51 +10778,61 @@ export const lessons: FrenchLesson[] =         [
         {
           "speaker": "Pr. Garnier (séminaire EHESS, modératrice)",
           "text": "Madame Tran, je vais ouvrir notre séance par une question peu habituelle. Vous avez accepté d'être interviewée parce que vous tenez une position critique vis-à-vis de l'orthodoxie actuelle de la sociolinguistique du bilinguisme. Vous savez le coût de cette posture. Pourquoi tenez-vous ?",
+          "en": "Ms. Tran, I'll open our session with an unusual question. You agreed to be interviewed because you hold a critical position toward the current orthodoxy of the sociolinguistics of bilingualism. You know the cost of that stance. Why do you hold to it?",
           "vi": "Cô Trần, tôi mở phiên này bằng một câu hỏi không thông thường. Cô đồng ý phỏng vấn vì cô có quan điểm phê phán đối với orthodoxie hiện tại của sociolinguistique du bilinguisme. Cô biết chi phí của vị trí ấy. Vì sao cô vẫn giữ?"
         },
         {
           "speaker": "Linh",
           "text": "Je vous remercie de cette question franche, Madame la modératrice. Je tiens parce que les arguments tiennent. La position que je défends n'est pas issue d'une jouissance de la marginalité — c'est une conclusion à laquelle je suis arrivée par accumulation de données empiriques et par réflexion méthodologique. Tant que les arguments tiennent, la position tient. Si demain les données invalidaient ma position, je l'abandonnerais.",
+          "en": "Thank you for that frank question, Madame moderator. I hold to it because the arguments hold. The position I defend doesn't come from an enjoyment of marginality — it's a conclusion I reached through an accumulation of empirical data and methodological reflection. As long as the arguments hold, the position holds. If tomorrow the data invalidated my position, I'd abandon it.",
           "vi": "Tôi cảm ơn câu hỏi thẳng thắn. Tôi giữ vì các lập luận trụ. Vị trí tôi bảo vệ không xuất phát từ sự thỏa mãn của marginalité — đó là một kết luận tôi đạt tới qua tích lũy dữ liệu empirique và suy ngẫm phương pháp luận. Chừng nào lập luận trụ, vị trí trụ. Nếu mai dữ liệu phủ nhận vị trí, tôi sẽ bỏ."
         },
         {
           "speaker": "Pr. Garnier",
           "text": "Soyons concrets. Vous critiquez le cadre de Cummins — référence dominante depuis 1979 — sur la transférabilité des compétences linguistiques. C'est presque une hérésie en sociolinguistique du bilinguisme.",
+          "en": "Let's be concrete. You criticize Cummins's framework — the dominant reference since 1979 — on the transferability of linguistic competences. That's almost a heresy in the sociolinguistics of bilingualism.",
           "vi": "Cụ thể đi. Cô phê phán khung Cummins — quy chiếu chính từ 1979 — về sự transférabilité của năng lực ngôn ngữ. Gần như là dị giáo trong sociolinguistique du bilinguisme."
         },
         {
           "speaker": "Linh",
           "text": "Le mot 'hérésie' est révélateur — et c'est précisément cela qui doit nous interpeller. Quand un champ utilise le vocabulaire religieux pour qualifier un désaccord scientifique, le champ a glissé vers la doctrine. Bien que je sache que cette position me coûtera professionnellement — ralentissement de carrière, isolement institutionnel, refus de tribunes —, je tiens à dire avec netteté que ce coût ne doit pas se confondre avec une invalidité scientifique.",
+          "en": "The word 'heresy' is revealing — and that's precisely what should give us pause. When a field uses religious vocabulary to qualify a scientific disagreement, the field has slid toward doctrine. Although I know this position will cost me professionally — career slowdown, institutional isolation, refusal of tribunes —, I want to say with firmness that this cost must not be conflated with scientific invalidity.",
           "vi": "Từ « hérésie » là hé lộ — và chính đó là điều phải làm chúng ta đặt câu hỏi. Khi một lĩnh vực dùng từ vựng tôn giáo để gọi một bất đồng khoa học, lĩnh vực đã trượt về phía giáo điều. Mặc dù tôi biết vị trí này sẽ tốn kém chuyên môn — chậm sự nghiệp, cô lập thiết chế, bị từ chối tribunes —, tôi muốn nói rõ rằng chi phí ấy không lẫn với sự không hợp lệ khoa học."
         },
         {
           "speaker": "Pr. Garnier",
           "text": "Mais Cummins a soixante ans d'évidence empirique derrière lui. Vous êtes seule contre soixante ans.",
+          "en": "But Cummins has sixty years of empirical evidence behind him. You're alone against sixty years.",
           "vi": "Nhưng Cummins có 60 năm bằng chứng empirique sau lưng. Cô đứng một mình chống 60 năm."
         },
         {
           "speaker": "Linh",
           "text": "Je ne suis pas seule. Je m'inscris explicitement dans une tradition hétérodoxe — celle de Lordon en économie, de Lahire en sociologie, de Quemada-Diez en didactique — qui n'est ni isolée ni récente, et dont l'apport au débat scientifique est, à mon sens, sous-estimé. En sociolinguistique précisément, des chercheurs comme Suresh Canagarajah depuis deux mille treize, ou Ofelia García aux États-Unis, ont avancé des positions analogues — leur cadre du translanguaging conteste l'hypothèse de transférabilité par le bas. Ce que vous appelez 'soixante ans contre moi' est plutôt 'soixante ans dont les vingt dernières voient une fragmentation du paradigme'.",
+          "en": "I'm not alone. I explicitly inscribe myself in a heterodox tradition — that of Lordon in economics, Lahire in sociology, Quemada-Diez in didactics — which is neither isolated nor recent, and whose contribution to scientific debate is, to my mind, underestimated. In sociolinguistics precisely, researchers like Suresh Canagarajah since two thousand thirteen, or Ofelia García in the United States, have advanced analogous positions — their translanguaging framework contests the transferability hypothesis from below. What you call 'sixty years against me' is rather 'sixty years of which the last twenty see a fragmentation of the paradigm'.",
           "vi": "Tôi không một mình. Tôi đăng ký rõ ràng trong truyền thống hétérodoxe — của Lordon trong kinh tế, Lahire trong xã hội học, Quemada-Diez trong didactique — không cô lập cũng không gần đây, và đóng góp vào tranh luận khoa học, theo tôi, bị đánh giá thấp. Trong sociolinguistique cụ thể, các nhà nghiên cứu như Suresh Canagarajah từ 2013, hay Ofelia García ở Mỹ, đã đưa ra vị trí tương tự — khung translanguaging của họ phản bác giả định transférabilité từ dưới. Điều bà gọi '60 năm chống tôi' đúng hơn là '60 năm mà 20 năm cuối thấy paradigm bị fragmentation'."
         },
         {
           "speaker": "Pr. Garnier",
           "text": "On vous accuse cependant — je vous le rapporte parce que les commentaires courent — d'adopter une posture provocatrice par souci de visibilité.",
+          "en": "You're accused, however — I report it because the comments are circulating — of adopting a provocative posture for the sake of visibility.",
           "vi": "Tuy nhiên cô bị cáo buộc — tôi báo cáo vì bình luận đang lan — là adopter một thái độ khiêu khích vì souci visibilité."
         },
         {
           "speaker": "Linh",
           "text": "Je distingue radicalement l'hétérodoxie scientifique — fondée sur des arguments méthodologiques — de la posture provocatrice gratuite, qui se contente de transgresser sans construire. Mon hétérodoxie est argumentée par méthode mixte qualitative-quantitative, sur un échantillon de cent vingt étudiants vietnamiens-français-anglais. Mes données sont disponibles en accès libre sur Nakala. Si quelqu'un peut produire des données qui invalident mes conclusions, je serai la première à reconsidérer ma position. Une provocation gratuite, par définition, ne peut être réfutée par les données — la mienne, oui. C'est la différence.",
+          "en": "I radically distinguish scientific heterodoxy — grounded in methodological arguments — from the gratuitous provocative posture, which merely transgresses without constructing. My heterodoxy is argued through a mixed qualitative-quantitative method, on a sample of one hundred twenty Vietnamese-French-English students. My data are openly available on Nakala. If anyone can produce data that invalidates my conclusions, I'll be the first to reconsider my position. A gratuitous provocation, by definition, cannot be refuted by data — mine can. That's the difference.",
           "vi": "Tôi phân biệt triệt để hétérodoxie khoa học — dựa trên lập luận phương pháp luận — với thái độ khiêu khích vô bổ, vốn chỉ vi phạm mà không xây dựng. Hétérodoxie của tôi được lập luận bởi phương pháp hỗn hợp định tính-định lượng, trên mẫu 120 sinh viên Việt-Pháp-Anh. Dữ liệu của tôi có truy cập tự do trên Nakala. Nếu ai có thể đưa ra dữ liệu phủ nhận kết luận, tôi sẽ là người đầu xem lại. Một provocation gratuite, theo định nghĩa, không thể bị bác bỏ bởi dữ liệu — của tôi, có. Đó là sự khác biệt."
         },
         {
           "speaker": "Pr. Garnier",
           "text": "Question dernière, je tiens à vous la poser franchement: à quoi bon, si l'orthodoxie ne change pas ?",
+          "en": "Last question, I want to ask it frankly: what's the point, if the orthodoxy doesn't change?",
           "vi": "Câu cuối, tôi muốn hỏi thẳng: để làm gì, nếu orthodoxie không thay đổi?"
         },
         {
           "speaker": "Linh",
           "text": "À mes contradicteurs orthodoxes, je n'oppose pas un mépris symétrique. Je revendique le droit à l'hétérodoxie comme condition de la vitalité scientifique, sans quoi un champ se transforme en doctrine. Cet argument dépasse mon cas individuel. Si demain ma position est validée par les données, le champ aura avancé. Si elle est invalidée, le champ aura précisé ses limites — et c'est aussi un progrès. Si elle reste minoritaire pendant trente ans avant d'être prise au sérieux comme l'a été Bourdieu pendant longtemps, alors elle aura nourri silencieusement. Dans tous les cas, le travail scientifique aura gagné. C'est cela qui m'importe.",
+          "en": "To my orthodox opponents, I don't oppose a symmetrical contempt. I claim the right to heterodoxy as a condition of scientific vitality, without which a field turns into doctrine. This argument goes beyond my individual case. If tomorrow my position is validated by the data, the field will have advanced. If it's invalidated, the field will have clarified its limits — also a progress. If it stays a minority for thirty years before being taken seriously, as Bourdieu was for a long time, then it will have nourished silently. In every case, scientific work will have gained. That is what matters to me.",
           "vi": "Với các đối thủ orthodoxe, tôi không đối phó bằng sự khinh thị đối xứng. Tôi đòi quyền hétérodoxie như điều kiện cho sức sống khoa học, nếu không một lĩnh vực biến thành giáo điều. Lập luận này vượt qua trường hợp riêng. Nếu mai vị trí của tôi được dữ liệu xác nhận, lĩnh vực sẽ tiến lên. Nếu bị bác bỏ, lĩnh vực sẽ làm rõ giới hạn — đó cũng là tiến bộ. Nếu vẫn thiểu số 30 năm trước khi được nghiêm túc như Bourdieu đã thế lâu, thì nó vẫn nuôi dưỡng âm thầm. Trong mọi trường hợp, công việc khoa học sẽ thắng. Đó là điều quan trọng với tôi."
         }
       ],
@@ -10716,25 +10846,33 @@ export const lessons: FrenchLesson[] =         [
         {
           "idiom": "S'inscrire dans une tradition (académique)",
           "literal": "Đăng ký vào một truyền thống",
+          "literal_en": "to register oneself in a tradition",
           "meaning": "Đăng ký vào một truyền thống — formule cho ancrage dans une lignée intellectuelle.",
+          "meaning_en": "to anchor oneself in an intellectual lineage — a formula for situating heterodoxy within a tradition",
           "example": "Je m'inscris explicitement dans une tradition hétérodoxe — celle de Lordon, de Lahire, de Quemada-Diez."
         },
         {
           "idiom": "Le droit à l'hétérodoxie (philosophique)",
           "literal": "Quyền hétérodoxie",
+          "literal_en": "the right to heterodoxy",
           "meaning": "Quyền được giữ vị trí không chính thống — argument méta de la vie scientifique.",
+          "meaning_en": "the right to hold a non-orthodox position — a meta-argument for scientific vitality",
           "example": "Je revendique le droit à l'hétérodoxie comme condition de la vitalité scientifique."
         },
         {
           "idiom": "Le mépris symétrique (formel)",
           "literal": "Sự khinh thị đối xứng",
+          "literal_en": "symmetrical contempt",
           "meaning": "Sự khinh thị đối xứng — đặc điểm cần tránh khi bảo vệ vị trí thiểu số.",
+          "meaning_en": "mutual disdain between heterodox and orthodox — the trap to avoid when defending a minority position",
           "example": "À mes contradicteurs orthodoxes, je n'oppose pas un mépris symétrique."
         },
         {
           "idiom": "Le glissement vers la doctrine (philosophique)",
           "literal": "Sự trượt về giáo điều",
+          "literal_en": "the slide toward doctrine",
           "meaning": "Sự trượt về giáo điều — risque que court un champ qui refuse l'hétérodoxie.",
+          "meaning_en": "the drift of a field into dogma — the risk a field runs when it refuses heterodoxy",
           "example": "Quand un champ utilise le vocabulaire religieux pour qualifier un désaccord, le glissement vers la doctrine est en cours."
         }
       ],
@@ -10742,35 +10880,47 @@ export const lessons: FrenchLesson[] =         [
         {
           "type": "fill-blank",
           "question": "Bien que je ___ que cette position me coûtera professionnellement, je tiens à dire avec netteté que ce coût ne doit pas se confondre avec une invalidité scientifique.",
-          "answer": "sache"
+          "answer": "sache",
+          "hint_vi": "subjonctif của savoir — sau « Bien que je »",
+          "hint_en": "subjunctive of savoir — after « Bien que je » (although I ___ that this position will cost me)"
         },
         {
           "type": "matching",
           "pairs": [
             [
               "l'hétérodoxie",
-              "sự không chính thống"
+              "sự không chính thống (heterodoxy)"
             ],
             [
               "s'inscrire dans une tradition",
-              "đăng ký vào một truyền thống"
+              "đăng ký vào một truyền thống (to inscribe oneself in a tradition)"
             ],
             [
               "le droit à l'hétérodoxie",
-              "quyền hétérodoxie"
+              "quyền hétérodoxie (the right to heterodoxy)"
             ],
             [
               "le mépris symétrique",
-              "sự khinh thị đối xứng"
+              "sự khinh thị đối xứng (symmetrical contempt)"
             ]
           ],
-          "instruction": "Nối thuật ngữ position controversée với nghĩa Việt"
+          "instruction": "Nối thuật ngữ position controversée với nghĩa Việt",
+          "instruction_en": "Match each controversial-position term with its Vietnamese meaning"
         },
         {
           "type": "translation",
           "vietnamese": "Tôi đòi quyền hétérodoxie như điều kiện cho sức sống khoa học, nếu không một lĩnh vực biến thành giáo điều.",
+          "english": "Although I know this position will cost me professionally, I want to say with firmness that this cost must not be conflated with scientific invalidity.",
           "french": "Je revendique le droit à l'hétérodoxie comme condition de la vitalité scientifique, sans quoi un champ se transforme en doctrine."
         }
+      ],
+      "cultural_notes_en": "Defending a controversial academic position — « la disputatio moderne » — is a practice with precise rules in the French field. Distinguish: HETERODOXY — legitimate, even valued: a position is « hétérodoxe » when it departs from the dominant disciplinary consensus while remaining grounded in admissible methodological arguments; it may be minority but is SCIENTIFICALLY defensible (e.g. Lordon in economics, Lahire in sociology, Mbembe in post-colonial philosophy). POLEMIC — illegitimate/suspect: polemic aims to disqualify the opponent; heterodoxy ≠ polemic. GRATUITOUS PROVOCATION — illegitimate: transgressing for its own sake, contrarianism without rigor. DOCTRINE — a field's danger: a field becomes 'doctrinaire' when it refuses all internal heterodoxy; scientific vitality requires heterodoxies. COSTS of the heterodox position: career slowdown, institutional isolation, refusal of tribunes, argumentative solitude. BENEFITS (sometimes): greater public visibility, relevance in paradigm crises, continuity with a recognized lineage. TACIT RULES: (a) INSCRIBE YOURSELF IN A LINEAGE — don't present yourself as brilliantly alone; cite heterodox predecessors; (b) DEMONSTRATE RIGOR — your position must be BETTER argued than the orthodox one on this precise point; (c) OWN THE COSTS — don't ask for pity; (d) ACKNOWLEDGE THE ORTHODOXY'S LEGITIMACY — avoid symmetrical contempt; (e) DISTINGUISH what you challenge from what you keep; (f) ANTICIPATE objections; (g) ACCEPT DIALOGUE — the heterodox who refuses dialogue slides into polemic; (h) STAY OPEN — your position can evolve; closure = doctrine. Historical debates to reference: Sartre vs Aron, Bourdieu vs Boudon, Lahire vs Bourdieusian orthodoxy — heterodoxies often end up influencing the mainstream. This is descriptive, NOT legal or career advice — a heterodox position has REAL professional costs; discuss with a mentor in the same tradition beforehand; don't confuse scientific courage with strategic imprudence.",
+      "tip_advice_en": "Nine-step protocol for defending a controversial position: (1) PRELIMINARY DIAGNOSIS — are you really heterodox? (check by reading 5-10 recent reference publications); what is the SOURCE of your divergence — methodology, data, theoretical frame? (2) INSCRIBE IN A TRADITION — cite 2-3 heterodox predecessors; signals reading, humility, anchoring. (3) DEMONSTRATE RIGOR — explicit methodology, empirical data preferred, comparison with the orthodox position on this precise point. (4) KEY DISTINCTIONS — heterodoxy ≠ polemic, ≠ gratuitous provocation, ≠ inverse doctrine; making these explicit shows maturity. (5) ANTICIPATE OBJECTIONS — prepare 3-5 ('you're isolated' → lineage; 'it's ideological' → methodology + data; 'you provoke for its own sake' → the distinction). (6) TYPICAL STRUCTURE — acknowledge the orthodoxy + identify ONE precise divergence + argue via ONE concrete case + inscribe in a lineage + anticipate ONE major objection + reopen to dialogue. (7) MANAGE THE PROFESSIONAL COSTS — don't ask for pity, don't complain about marginality, diversify career paths. (8) STAY OPEN — your position is NOT definitive; read the best adversaries, not the weakest. (9) DEFEND THE RIGHT TO HETERODOXY — a meta-argument: scientific vitality requires heterodoxies, independently of who is right; this protects others too. Avoid: presenting yourself as an isolated genius, contempt for the orthodoxy, sliding into polemic under cover of 'directness', enclosing yourself in a heterodox circle, adopting marginality as an identity, promising your position 'will revolutionize the field'. Not career advice — discuss with a same-tradition mentor BEFORE a strong public stance.",
+      "register_notes_en": "Discourse defending a controversial position = a HIGH academic register — a blend of firmness + measure + openness. (1) HETERODOX SELF-POSITIONING FORMULAS — « La position que je défends est, je le sais, minoritaire dans le champ. », « Je m'inscris explicitement dans une tradition hétérodoxe. », « Je revendique le droit à l'hétérodoxie. ». (2) LINEAGE-ANCHORING FORMULAS (the golden rule) — « ...celle de Lordon en économie, de Lahire en sociologie... », « Une tradition qui n'est ni isolée ni récente. » — cite 2-3 names per discipline; don't invent. (3) KEY DISTINCTIONS — « Je distingue l'hétérodoxie scientifique de la posture provocatrice gratuite. », « La marginalité n'est pas une identité. ». (4) COST-OWNING FORMULAS — « Bien que je sache que cette position me coûtera professionnellement... », « Le coût ne doit pas se confondre avec une invalidité scientifique. » — tone: own it, don't complain. (5) OPENNESS FORMULAS (protect against doctrinaire closure) — « Si demain les données invalident ma position, je l'abandonnerais. », « Mes données sont disponibles en accès libre. ». (6) META-ARGUMENT (defending the RIGHT to heterodoxy) — « Sans hétérodoxies internes, un champ se transforme en doctrine. », « Cet argument dépasse mon cas individuel. » — more powerful than defending your own position. (7) SUBJUNCTIVES — « Bien que je sache que... », « Quoique cette position soit minoritaire... », « Avant que le champ ne se transforme en doctrine... ». Avoid: presenting yourself as an isolated genius, ostentatious contempt for the orthodoxy, sliding into polemic, adopting marginality as an identity, refusing all dialogue, promising your position « va bouleverser » the field — let the field judge.",
+      "roleplay_prompts_en": [
+        "You present a heterodox position in an EHESS seminar. Open in 4 minutes: situate your position relative to the orthodoxy + inscribe yourself in a heterodox lineage (cite 2-3 predecessors) + announce your methodology. Use « Je m'inscris dans une tradition », « hétérodoxe », « consensus disciplinaire ».",
+        "You're accused in discussion of being a « provocateur(rice) gratuit(e) ». Respond with the distinction: argued heterodoxy vs gratuitous provocation. Cite methodology + available data + an invitation to empirical refutation.",
+        "Trick question (in a press interview): « Si vous êtes minoritaire, c'est que vous avez tort ? » Respond: contest the syllogism ('minority = wrong'); cite historical cases (Bourdieu long a minority before recognition); defend the right to heterodoxy as a principle."
       ]
     },
     {
