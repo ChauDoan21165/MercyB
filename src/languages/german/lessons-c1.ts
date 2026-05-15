@@ -738,7 +738,7 @@ export const lessons: GermanLesson[] = [
         "items": [
           {
             "prompt": "vgl.",
-            "answer": "Paraphrase / so sánh tham chiếu"
+            "answer": "Paraphrase / so sánh tham chiếu (paraphrase / \"compare\" reference)"
           },
           {
             "prompt": "ebd.",
@@ -746,7 +746,7 @@ export const lessons: GermanLesson[] = [
           },
           {
             "prompt": "zit. nach",
-            "answer": "Trích lại từ nguồn thứ cấp"
+            "answer": "Trích lại từ nguồn thứ cấp (cited from a secondary source)"
           },
           {
             "prompt": "in Anlehnung an",
@@ -1884,7 +1884,7 @@ export const lessons: GermanLesson[] = [
         "items": [
           {
             "prompt": "Begriffsgeschichte",
-            "answer": "Lịch sử khái niệm"
+            "answer": "Lịch sử khái niệm (conceptual history (history of a term))"
           },
           {
             "prompt": "Arbeitsdefinition",
@@ -1892,11 +1892,11 @@ export const lessons: GermanLesson[] = [
           },
           {
             "prompt": "Operationalisierung",
-            "answer": "Vận hành hóa thành chỉ báo đo được"
+            "answer": "Vận hành hóa thành chỉ báo đo được (operationalisation into measurable indicators)"
           },
           {
             "prompt": "Abgrenzung zu Nachbarbegriffen",
-            "answer": "Phân biệt với khái niệm lân cận"
+            "answer": "Phân biệt với khái niệm lân cận (demarcation from neighbouring concepts)"
           }
         ]
       },
@@ -2668,19 +2668,19 @@ export const lessons: GermanLesson[] = [
         "items": [
           {
             "prompt": "theoretische Kritik",
-            "answer": "Khung lý thuyết / khái niệm"
+            "answer": "Khung lý thuyết / khái niệm (theoretical / conceptual framework)"
           },
           {
             "prompt": "methodische Kritik",
-            "answer": "Phương pháp / thiết kế"
+            "answer": "Phương pháp / thiết kế (method / research design)"
           },
           {
             "prompt": "empirische Kritik",
-            "answer": "Dữ liệu / mẫu"
+            "answer": "Dữ liệu / mẫu (data / sample)"
           },
           {
             "prompt": "interpretative Kritik",
-            "answer": "Diễn giải kết quả"
+            "answer": "Diễn giải kết quả (interpretation of results)"
           }
         ]
       },
@@ -3060,15 +3060,15 @@ export const lessons: GermanLesson[] = [
         "items": [
           {
             "prompt": "Inwiefern ließe sich X absichern?",
-            "answer": "Hỏi về basis/justification"
+            "answer": "Hỏi về basis/justification (asking about the basis / justification)"
           },
           {
             "prompt": "Wie verhält es sich mit X?",
-            "answer": "Hỏi về tình trạng / status"
+            "answer": "Hỏi về tình trạng / status (asking about the current state / status)"
           },
           {
             "prompt": "Ich nehme die Anregung gern auf",
-            "answer": "Acknowledge gợi ý không trả lời được"
+            "answer": "Acknowledge gợi ý không trả lời được (acknowledge a suggestion you can't answer right now)"
           },
           {
             "prompt": "Kurz zur Vorstellung: ich bin X",
@@ -3457,15 +3457,15 @@ export const lessons: GermanLesson[] = [
         "items": [
           {
             "prompt": "Abstract",
-            "answer": "150-250 từ, conference / journal"
+            "answer": "150-250 từ, conference / journal (150-250 words, conference / journal)"
           },
           {
             "prompt": "Zusammenfassung",
-            "answer": "500-1000 từ, Tagungsband"
+            "answer": "500-1000 từ, Tagungsband (500-1000 words, conference proceedings)"
           },
           {
             "prompt": "Kurzfassung",
-            "answer": "~100 từ, Newsletter"
+            "answer": "~100 từ, Newsletter (~100 words, newsletter)"
           },
           {
             "prompt": "Exposé",
@@ -4224,11 +4224,11 @@ export const lessons: GermanLesson[] = [
           },
           {
             "prompt": "Zielvereinbarung",
-            "answer": "Thỏa thuận mục tiêu cho variabler Anteil"
+            "answer": "Thỏa thuận mục tiêu cho variabler Anteil (target agreement for the variable bonus component)"
           },
           {
             "prompt": "Zwischenüberprüfung",
-            "answer": "Rà soát giữa kỳ — alternative khi sofortige Anpassung không khả thi"
+            "answer": "Rà soát giữa kỳ — alternative khi sofortige Anpassung không khả thi (mid-term review — alternative when an immediate adjustment isn't possible)"
           }
         ]
       },
@@ -4596,15 +4596,15 @@ export const lessons: GermanLesson[] = [
         "items": [
           {
             "prompt": "Wettbewerbsverbot",
-            "answer": "Cấm cạnh tranh sau khi rời công ty"
+            "answer": "Cấm cạnh tranh sau khi rời công ty (non-compete clause (after leaving the company))"
           },
           {
             "prompt": "Karenzentschädigung",
-            "answer": "Bồi thường 50% trong thời gian Wettbewerbsverbot"
+            "answer": "Bồi thường 50% trong thời gian Wettbewerbsverbot (compensation: 50% during the non-compete period)"
           },
           {
             "prompt": "Vertraulichkeitsklausel",
-            "answer": "Điều khoản bảo mật thông tin"
+            "answer": "Điều khoản bảo mật thông tin (confidentiality clause)"
           },
           {
             "prompt": "pauschale Überstundenabgeltung",
@@ -4976,19 +4976,19 @@ export const lessons: GermanLesson[] = [
         "items": [
           {
             "prompt": "BATNA",
-            "answer": "Best Alternative — phương án thay thế nếu không có Einigung"
+            "answer": "Best Alternative — phương án thay thế nếu không có Einigung (Best Alternative — fallback option if no agreement is reached)"
           },
           {
             "prompt": "ZOPA",
-            "answer": "Zone of Possible Agreement — vùng khả thi đồng thuận"
+            "answer": "Zone of Possible Agreement — vùng khả thi đồng thuận (Zone of Possible Agreement — the viable agreement zone)"
           },
           {
             "prompt": "Bilateral-Pause / Caucusing",
-            "answer": "Tạm dừng song phương — hai bên làm rõ riêng"
+            "answer": "Tạm dừng song phương — hai bên làm rõ riêng (bilateral pause — the two sides clarify privately)"
           },
           {
             "prompt": "Aggregationsebene heben",
-            "answer": "Nâng từ chi tiết lên nguyên tắc khi Sackgasse"
+            "answer": "Nâng từ chi tiết lên nguyên tắc khi Sackgasse (raise the level of aggregation from detail to principle when stuck)"
           }
         ]
       },
@@ -5361,7 +5361,7 @@ export const lessons: GermanLesson[] = [
         "items": [
           {
             "prompt": "Mengenrabatt + Abnahmezusage",
-            "answer": "Volume discount gắn với commitment"
+            "answer": "Volume discount gắn với commitment (volume discount tied to a purchase commitment)"
           },
           {
             "prompt": "Forecast-Sharing rollierend",
@@ -5751,7 +5751,7 @@ export const lessons: GermanLesson[] = [
         "items": [
           {
             "prompt": "Sache vs Person",
-            "answer": "Tách phê phán quyết định khỏi tấn công cá nhân"
+            "answer": "Tách phê phán quyết định khỏi tấn công cá nhân (separate criticism of the decision from a personal attack)"
           },
           {
             "prompt": "Anliegen vs Forderung",
@@ -5759,7 +5759,7 @@ export const lessons: GermanLesson[] = [
           },
           {
             "prompt": "Disagree and commit",
-            "answer": "Sau Entscheidung — phản đối ngừng, loyalty bắt đầu"
+            "answer": "Sau Entscheidung — phản đối ngừng, loyalty bắt đầu (after the decision — objection ends, loyalty begins)"
           },
           {
             "prompt": "Memo nach Pushback",
@@ -6909,19 +6909,19 @@ export const lessons: GermanLesson[] = [
         "items": [
           {
             "prompt": "BATNA",
-            "answer": "Best Alternative — phương án thay thế nếu không có Einigung"
+            "answer": "Best Alternative — phương án thay thế nếu không có Einigung (Best Alternative — fallback option if no agreement is reached)"
           },
           {
             "prompt": "ZOPA",
-            "answer": "Zone of Possible Agreement — vùng đồng thuận khả thi"
+            "answer": "Zone of Possible Agreement — vùng đồng thuận khả thi (Zone of Possible Agreement — the viable agreement zone)"
           },
           {
             "prompt": "Walk-Away-Punkt",
-            "answer": "Mức tối thiểu — dưới đó rút khỏi"
+            "answer": "Mức tối thiểu — dưới đó rút khỏi (minimum threshold — below it, you walk away)"
           },
           {
             "prompt": "Tür offen halten",
-            "answer": "Walk-Away-Norm — re-open option khi Bedingungen thay đổi"
+            "answer": "Walk-Away-Norm — re-open option khi Bedingungen thay đổi (walk-away norm — keep the re-open option if conditions change)"
           }
         ]
       },

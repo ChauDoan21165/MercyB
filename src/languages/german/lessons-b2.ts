@@ -225,19 +225,19 @@ export const lessons: GermanLesson[] = [
         "items": [
           {
             "prompt": "doch",
-            "answer": "nhấn mạnh/khẩn thiết"
+            "answer": "nhấn mạnh/khẩn thiết (emphasis / urgency particle)"
           },
           {
             "prompt": "mal",
-            "answer": "làm nhẹ câu/đề nghị"
+            "answer": "làm nhẹ câu/đề nghị (softens a request / sentence)"
           },
           {
             "prompt": "denn",
-            "answer": "tò mò trong câu hỏi"
+            "answer": "tò mò trong câu hỏi (curiosity in a question)"
           },
           {
             "prompt": "eben",
-            "answer": "chấp nhận/là vậy"
+            "answer": "chấp nhận/là vậy (acceptance: \"that's just how it is\")"
           }
         ]
       },
@@ -478,19 +478,19 @@ export const lessons: GermanLesson[] = [
         "items": [
           {
             "prompt": "trotzdem",
-            "answer": "tuy vậy"
+            "answer": "tuy vậy (nevertheless)"
           },
           {
             "prompt": "deshalb",
-            "answer": "do đó"
+            "answer": "do đó (therefore)"
           },
           {
             "prompt": "zum Beispiel",
-            "answer": "ví dụ"
+            "answer": "ví dụ (for example)"
           },
           {
             "prompt": "nämlich",
-            "answer": "tức là/vì"
+            "answer": "tức là/vì (namely / that is)"
           }
         ]
       },
@@ -984,7 +984,7 @@ export const lessons: GermanLesson[] = [
         "items": [
           {
             "prompt": "Daumen drücken",
-            "answer": "chúc may mắn"
+            "answer": "chúc may mắn (wish someone good luck (literally \"press thumbs\"))"
           },
           {
             "prompt": "Schwein haben",
@@ -992,11 +992,11 @@ export const lessons: GermanLesson[] = [
           },
           {
             "prompt": "Tomaten auf den Augen",
-            "answer": "không thấy điều rõ"
+            "answer": "không thấy điều rõ (fail to see the obvious (literally \"tomatoes on the eyes\"))"
           },
           {
             "prompt": "Bahnhof verstehen",
-            "answer": "không hiểu gì"
+            "answer": "không hiểu gì (understand nothing (literally \"understand only train station\"))"
           }
         ]
       },
@@ -1237,7 +1237,7 @@ export const lessons: GermanLesson[] = [
         "items": [
           {
             "prompt": "klar",
-            "answer": "rõ rồi/tất nhiên"
+            "answer": "rõ rồi/tất nhiên (sure / of course)"
           },
           {
             "prompt": "genau",
@@ -1245,11 +1245,11 @@ export const lessons: GermanLesson[] = [
           },
           {
             "prompt": "stimmt",
-            "answer": "đúng vậy"
+            "answer": "đúng vậy (that's right / true)"
           },
           {
             "prompt": "Mensch!",
-            "answer": "Trời!"
+            "answer": "Trời! (oh man! / wow!)"
           }
         ]
       },
@@ -1626,19 +1626,19 @@ export const lessons: GermanLesson[] = [
         "items": [
           {
             "prompt": "Ich möchte Klartext reden.",
-            "answer": "Báo hiệu sắp nói thật"
+            "answer": "Báo hiệu sắp nói thật (signal that you're about to speak frankly)"
           },
           {
             "prompt": "Was schlagen Sie vor?",
-            "answer": "Mời đề xuất giải pháp"
+            "answer": "Mời đề xuất giải pháp (invite the other side to propose a solution)"
           },
           {
             "prompt": "Das übernehme ich.",
-            "answer": "Sếp nhận trách nhiệm"
+            "answer": "Sếp nhận trách nhiệm (manager takes responsibility)"
           },
           {
             "prompt": "Ihre Gesundheit geht vor.",
-            "answer": "Ưu tiên sức khỏe nhân viên"
+            "answer": "Ưu tiên sức khỏe nhân viên (employee health takes priority)"
           }
         ]
       },
@@ -2022,7 +2022,7 @@ export const lessons: GermanLesson[] = [
         "items": [
           {
             "prompt": "Was reizt Sie an dieser Position?",
-            "answer": "Hỏi động cơ ứng tuyển"
+            "answer": "Hỏi động cơ ứng tuyển (asking about your motivation for applying)"
           },
           {
             "prompt": "Welche Vorstellung haben Sie?",
@@ -2030,11 +2030,11 @@ export const lessons: GermanLesson[] = [
           },
           {
             "prompt": "Daran arbeite ich aktiv.",
-            "answer": "Thừa nhận điểm yếu + cách khắc phục"
+            "answer": "Thừa nhận điểm yếu + cách khắc phục (acknowledging a weakness + how you're fixing it)"
           },
           {
             "prompt": "Wann ist mit einer Entscheidung zu rechnen?",
-            "answer": "Hỏi timeline phản hồi"
+            "answer": "Hỏi timeline phản hồi (asking about the decision timeline)"
           }
         ]
       },
@@ -2418,15 +2418,15 @@ export const lessons: GermanLesson[] = [
         "items": [
           {
             "prompt": "Mein Forschungsvorhaben befasst sich mit...",
-            "answer": "Mở đầu trình bày đề tài"
+            "answer": "Mở đầu trình bày đề tài (opening line for presenting your research topic)"
           },
           {
             "prompt": "Welchen Beitrag wollen Sie leisten?",
-            "answer": "Hỏi đóng góp sau khi về nước"
+            "answer": "Hỏi đóng góp sau khi về nước (asked about your contribution after returning home)"
           },
           {
             "prompt": "Ich habe noch Eisen im Feuer.",
-            "answer": "Có phương án dự phòng"
+            "answer": "Có phương án dự phòng (have a backup plan (literally \"more iron in the fire\"))"
           },
           {
             "prompt": "Es wäre mir eine Ehre.",
@@ -2813,15 +2813,15 @@ export const lessons: GermanLesson[] = [
         "items": [
           {
             "prompt": "Ihre Veröffentlichung hat mich beeindruckt.",
-            "answer": "Báo hiệu đã đọc bài của GS"
+            "answer": "Báo hiệu đã đọc bài của GS (signal that you've read the professor's work)"
           },
           {
             "prompt": "Ich kann auf eigenen Beinen stehen.",
-            "answer": "Tự lập trong làm việc"
+            "answer": "Tự lập trong làm việc (work independently (literally \"stand on my own feet\"))"
           },
           {
             "prompt": "Welche Erwartungen haben Sie an die Betreuung?",
-            "answer": "GS hỏi kỳ vọng SV"
+            "answer": "GS hỏi kỳ vọng SV (professor asks the student about expectations)"
           },
           {
             "prompt": "Ich drücke Ihnen die Daumen.",
@@ -3208,19 +3208,19 @@ export const lessons: GermanLesson[] = [
         "items": [
           {
             "prompt": "Ich hatte mir 1.500€ vorgestellt.",
-            "answer": "Đề xuất con số có dữ liệu"
+            "answer": "Đề xuất con số có dữ liệu (propose a number backed by data)"
           },
           {
             "prompt": "Lassen Sie mich Rücksprache halten.",
-            "answer": "HR cần consult cấp trên"
+            "answer": "HR cần consult cấp trên (HR needs to consult their superior)"
           },
           {
             "prompt": "Wäre eine Übernahme möglich?",
-            "answer": "Hỏi cơ hội nhận chính thức"
+            "answer": "Hỏi cơ hội nhận chính thức (ask about the chance of being kept on permanently)"
           },
           {
             "prompt": "Eine Hand wäscht die andere.",
-            "answer": "Có đi có lại — kết thúc thoả thuận"
+            "answer": "Có đi có lại — kết thúc thoả thuận (\"one hand washes the other\" — quid pro quo, deal-closing)"
           }
         ]
       },
@@ -3607,15 +3607,15 @@ export const lessons: GermanLesson[] = [
         "items": [
           {
             "prompt": "Ich wende mich an Sie bezüglich...",
-            "answer": "Mở đầu nêu chủ đề"
+            "answer": "Mở đầu nêu chủ đề (opening line stating the topic)"
           },
           {
             "prompt": "Eine Verschiebung würde meinen Studienbeginn gefährden.",
-            "answer": "Nêu hậu quả nếu không xử lý"
+            "answer": "Nêu hậu quả nếu không xử lý (state the consequence if it's not handled)"
           },
           {
             "prompt": "Für Rückfragen stehe ich jederzeit zur Verfügung.",
-            "answer": "Kết — mời tiếp xúc thêm"
+            "answer": "Kết — mời tiếp xúc thêm (closing — invite further contact)"
           },
           {
             "prompt": "Geduld ist eine Tugend.",
@@ -4005,19 +4005,19 @@ export const lessons: GermanLesson[] = [
         "items": [
           {
             "prompt": "Hier spricht Becker.",
-            "answer": "Tự giới thiệu khi gọi"
+            "answer": "Tự giới thiệu khi gọi (introduce yourself when calling)"
           },
           {
             "prompt": "Am Apparat.",
-            "answer": "Xác nhận 'tôi đây' formal"
+            "answer": "Xác nhận 'tôi đây' formal (formal \"speaking\" — confirm it's you)"
           },
           {
             "prompt": "Die Verbindung war kurz schlecht.",
-            "answer": "Báo cáo vấn đề kết nối"
+            "answer": "Báo cáo vấn đề kết nối (report a brief connection problem)"
           },
           {
             "prompt": "Wann darf ich mit Rückmeldung rechnen?",
-            "answer": "Hỏi timeline phản hồi"
+            "answer": "Hỏi timeline phản hồi (ask about the response timeline)"
           }
         ]
       },
@@ -4404,15 +4404,15 @@ export const lessons: GermanLesson[] = [
         "items": [
           {
             "prompt": "Darf ich Sie kurz ansprechen?",
-            "answer": "Mở câu chuyện lịch sự"
+            "answer": "Mở câu chuyện lịch sự (open a conversation politely)"
           },
           {
             "prompt": "Worum geht es konkret?",
-            "answer": "Đối tác hỏi vấn đề chính"
+            "answer": "Đối tác hỏi vấn đề chính (partner asks what it's really about)"
           },
           {
             "prompt": "Hätten Sie Interesse an einem Termin?",
-            "answer": "Đề nghị cuộc gặp tiếp theo"
+            "answer": "Đề nghị cuộc gặp tiếp theo (propose a follow-up meeting)"
           },
           {
             "prompt": "Wir rühren die Werbetrommel.",
@@ -4803,15 +4803,15 @@ export const lessons: GermanLesson[] = [
         "items": [
           {
             "prompt": "Ich respektiere Ihre Entscheidung.",
-            "answer": "Tôn trọng quyết định, không tranh luận"
+            "answer": "Tôn trọng quyết định, không tranh luận (respect the decision without arguing)"
           },
           {
             "prompt": "Würden Sie mir konkretes Feedback geben?",
-            "answer": "Xin feedback lịch sự"
+            "answer": "Xin feedback lịch sự (politely ask for concrete feedback)"
           },
           {
             "prompt": "Ich würde mich freuen, erneut von Ihnen zu hören.",
-            "answer": "Mở cửa cho tương lai"
+            "answer": "Mở cửa cho tương lai (leave the door open for the future)"
           },
           {
             "prompt": "Lassen Sie nicht den Kopf hängen.",
@@ -5600,7 +5600,7 @@ export const lessons: GermanLesson[] = [
         "items": [
           {
             "prompt": "Was ist Ihre Hypothese?",
-            "answer": "GS test depth của candidate"
+            "answer": "GS test depth của candidate (professor tests the candidate's depth)"
           },
           {
             "prompt": "Ich brenne für dieses Thema.",
@@ -5994,15 +5994,15 @@ export const lessons: GermanLesson[] = [
         "items": [
           {
             "prompt": "Falls Sie Lust haben...",
-            "answer": "Đề xuất không ép buộc"
+            "answer": "Đề xuất không ép buộc (no-pressure suggestion (\"if you feel like it...\"))"
           },
           {
             "prompt": "Möchten Sie heute lieber ausruhen?",
-            "answer": "Cho lựa chọn về jet lag"
+            "answer": "Cho lựa chọn về jet lag (give a choice about jet lag)"
           },
           {
             "prompt": "Gibt es Allergien, die ich beachten sollte?",
-            "answer": "Hỏi về thực phẩm trước"
+            "answer": "Hỏi về thực phẩm trước (ask about food allergies in advance)"
           },
           {
             "prompt": "Pünktlichkeit ist die Höflichkeit der Könige.",
@@ -6391,7 +6391,7 @@ export const lessons: GermanLesson[] = [
           },
           {
             "prompt": "Was ist der Engpass?",
-            "answer": "Hỏi về điểm thắt cổ chai"
+            "answer": "Hỏi về điểm thắt cổ chai (ask about the bottleneck)"
           },
           {
             "prompt": "Wir prüfen Sie auf Herz und Nieren.",
@@ -6788,7 +6788,7 @@ export const lessons: GermanLesson[] = [
           },
           {
             "prompt": "Beide Kulturen wollen das Gleiche.",
-            "answer": "Validate cả 2 phía"
+            "answer": "Validate cả 2 phía (validate both sides)"
           },
           {
             "prompt": "Du hast den Nagel auf den Kopf getroffen.",
@@ -7183,15 +7183,15 @@ export const lessons: GermanLesson[] = [
         "items": [
           {
             "prompt": "Beide Kulturen haben ihre Funktion.",
-            "answer": "Validate cả 2 phía"
+            "answer": "Validate cả 2 phía (validate both cultures)"
           },
           {
             "prompt": "Direktheit ist Wertschätzung.",
-            "answer": "Frame directness Đức tích cực"
+            "answer": "Frame directness Đức tích cực (frame German directness positively as a sign of respect)"
           },
           {
             "prompt": "Kritisches Feedback unter vier Augen.",
-            "answer": "Tip cho Đức: critique riêng"
+            "answer": "Tip cho Đức: critique riêng (tip for Germany: deliver critique privately, one-on-one)"
           },
           {
             "prompt": "Ich sehe das anders, weil...",
@@ -7982,7 +7982,7 @@ export const lessons: GermanLesson[] = [
         "items": [
           {
             "prompt": "Eine sehr berechtigte Frage.",
-            "answer": "Mở đầu Q&A response"
+            "answer": "Mở đầu Q&A response (opening line in a Q&A response)"
           },
           {
             "prompt": "Diese Daten habe ich nicht parat.",
@@ -8391,11 +8391,11 @@ export const lessons: GermanLesson[] = [
           },
           {
             "prompt": "Mit den Händen — das ist absolut akzeptabel.",
-            "answer": "Khuyến khích thử cách VN"
+            "answer": "Khuyến khích thử cách VN (encourage the guest to try the Vietnamese way)"
           },
           {
             "prompt": "Eine Alternative wäre...",
-            "answer": "Đề xuất nếu khách không thích"
+            "answer": "Đề xuất nếu khách không thích (propose an alternative if the guest doesn't like it)"
           }
         ]
       },
@@ -8794,7 +8794,7 @@ export const lessons: GermanLesson[] = [
         "items": [
           {
             "prompt": "Tết ist wie Weihnachten, aber 7 Tage.",
-            "answer": "Bridge với familiar Đức"
+            "answer": "Bridge với familiar Đức (bridge to something familiar to a German listener)"
           },
           {
             "prompt": "Der rote Umschlag bringt Glück.",
@@ -8802,11 +8802,11 @@ export const lessons: GermanLesson[] = [
           },
           {
             "prompt": "Am ersten Tag nicht fegen.",
-            "answer": "Tết taboos"
+            "answer": "Tết taboos (a Tết taboo (don't sweep on the first day))"
           },
           {
             "prompt": "Chúc mừng năm mới.",
-            "answer": "Phrase greeting tiếng Việt"
+            "answer": "Phrase greeting tiếng Việt (Vietnamese Lunar New Year greeting)"
           }
         ]
       },
@@ -9195,11 +9195,11 @@ export const lessons: GermanLesson[] = [
         "items": [
           {
             "prompt": "Hast du Zeit für ein offenes Gespräch?",
-            "answer": "Mở đầu lịch sự"
+            "answer": "Mở đầu lịch sự (polite opening for a difficult conversation)"
           },
           {
             "prompt": "Ich habe mich gemaßregelt gefühlt.",
-            "answer": "I-statement về impact"
+            "answer": "I-statement về impact (I-statement about impact (\"I felt scolded\"))"
           },
           {
             "prompt": "Ich verstehe deine Sicht.",
@@ -9997,19 +9997,19 @@ export const lessons: GermanLesson[] = [
         "items": [
           {
             "prompt": "Was ist der Zweck Ihres Aufenthalts?",
-            "answer": "Hỏi mục đích lưu trú"
+            "answer": "Hỏi mục đích lưu trú (asking the purpose of your stay)"
           },
           {
             "prompt": "Wie lange bleiben Sie?",
-            "answer": "Hỏi thời gian lưu trú"
+            "answer": "Hỏi thời gian lưu trú (asking how long you're staying)"
           },
           {
             "prompt": "Haben Sie etwas zu verzollen?",
-            "answer": "Hỏi về hàng cần khai báo"
+            "answer": "Hỏi về hàng cần khai báo (asking whether you have anything to declare)"
           },
           {
             "prompt": "Treten Sie an die gelbe Linie.",
-            "answer": "Yêu cầu đứng vào vạch vàng"
+            "answer": "Yêu cầu đứng vào vạch vàng (instruction to step to the yellow line)"
           }
         ]
       },
@@ -10398,19 +10398,19 @@ export const lessons: GermanLesson[] = [
         "items": [
           {
             "prompt": "Ich möchte Anzeige erstatten.",
-            "answer": "Trình báo cảnh sát"
+            "answer": "Trình báo cảnh sát (file a police report)"
           },
           {
             "prompt": "Hier ist die Bescheinigung.",
-            "answer": "Đưa biên bản"
+            "answer": "Đưa biên bản (hand over the official certificate)"
           },
           {
             "prompt": "Mein Rückflug ist in fünf Tagen.",
-            "answer": "Báo timeline khẩn"
+            "answer": "Báo timeline khẩn (flag an urgent timeline)"
           },
           {
             "prompt": "Ich brauche einen Dolmetscher.",
-            "answer": "Yêu cầu phiên dịch"
+            "answer": "Yêu cầu phiên dịch (request an interpreter)"
           }
         ]
       },
@@ -10794,19 +10794,19 @@ export const lessons: GermanLesson[] = [
         "items": [
           {
             "prompt": "Laut Beförderungsbedingungen...",
-            "answer": "Viện dẫn quyền pháp lý"
+            "answer": "Viện dẫn quyền pháp lý (invoke your legal rights (per the conditions of carriage))"
           },
           {
             "prompt": "Hier ist der Screenshot.",
-            "answer": "Cung cấp evidence"
+            "answer": "Cung cấp evidence (provide evidence (a screenshot))"
           },
           {
             "prompt": "Ich möchte das schriftlich.",
-            "answer": "Yêu cầu văn bản chính thức"
+            "answer": "Yêu cầu văn bản chính thức (request it in writing)"
           },
           {
             "prompt": "Wer ist für Beschwerden zuständig?",
-            "answer": "Tìm bộ phận khiếu nại"
+            "answer": "Tìm bộ phận khiếu nại (find the complaints department)"
           }
         ]
       },
@@ -11195,15 +11195,15 @@ export const lessons: GermanLesson[] = [
         "items": [
           {
             "prompt": "Wann haben die Beschwerden begonnen?",
-            "answer": "Bác sĩ hỏi thời điểm bắt đầu"
+            "answer": "Bác sĩ hỏi thời điểm bắt đầu (doctor asks when symptoms started)"
           },
           {
             "prompt": "Skala eins bis zehn?",
-            "answer": "Hỏi mức độ đau"
+            "answer": "Hỏi mức độ đau (asking about pain level on a 1-10 scale)"
           },
           {
             "prompt": "Allergie gegen Penicillin.",
-            "answer": "Báo dị ứng"
+            "answer": "Báo dị ứng (flag an allergy)"
           },
           {
             "prompt": "Auf Nummer sicher gehen.",
@@ -11590,15 +11590,15 @@ export const lessons: GermanLesson[] = [
         "items": [
           {
             "prompt": "Leider gibt es ein Problem.",
-            "answer": "Mở đầu khiếu nại lịch sự"
+            "answer": "Mở đầu khiếu nại lịch sự (polite opening for a complaint)"
           },
           {
             "prompt": "Hier sind Fotos.",
-            "answer": "Cung cấp evidence"
+            "answer": "Cung cấp evidence (provide evidence (photos))"
           },
           {
             "prompt": "Wäre es möglich, das heute zu lösen?",
-            "answer": "Đặt timeline"
+            "answer": "Đặt timeline (set a timeline for resolution)"
           },
           {
             "prompt": "Das ist eine faire Lösung.",
@@ -11999,11 +11999,11 @@ export const lessons: GermanLesson[] = [
           },
           {
             "prompt": "Beschreiben Sie den Koffer.",
-            "answer": "Nhân viên yêu cầu mô tả"
+            "answer": "Nhân viên yêu cầu mô tả (staff asks for a description)"
           },
           {
             "prompt": "Wäre eine Vorab-Erstattung möglich?",
-            "answer": "Xin tạm ứng"
+            "answer": "Xin tạm ứng (ask for an advance reimbursement)"
           },
           {
             "prompt": "Ich saß auf glühenden Kohlen.",
@@ -12385,11 +12385,11 @@ export const lessons: GermanLesson[] = [
         "items": [
           {
             "prompt": "Anzeige erstatten",
-            "answer": "Trình báo cảnh sát"
+            "answer": "Trình báo cảnh sát (file a police report)"
           },
           {
             "prompt": "Aktenzeichen",
-            "answer": "Số hồ sơ vụ việc"
+            "answer": "Số hồ sơ vụ việc (case file number)"
           },
           {
             "prompt": "Sperrhotline 116 116",
@@ -12397,7 +12397,7 @@ export const lessons: GermanLesson[] = [
           },
           {
             "prompt": "Notpass",
-            "answer": "Hộ chiếu khẩn cấp ĐSQ cấp"
+            "answer": "Hộ chiếu khẩn cấp ĐSQ cấp (emergency passport issued by the embassy)"
           }
         ]
       },
@@ -12784,15 +12784,15 @@ export const lessons: GermanLesson[] = [
           },
           {
             "prompt": "geradeaus",
-            "answer": "đi thẳng"
+            "answer": "đi thẳng (straight ahead)"
           },
           {
             "prompt": "die Kreuzung",
-            "answer": "ngã tư"
+            "answer": "ngã tư (intersection)"
           },
           {
             "prompt": "gegenüber",
-            "answer": "đối diện"
+            "answer": "đối diện (opposite / across from)"
           }
         ]
       },
@@ -13165,11 +13165,11 @@ export const lessons: GermanLesson[] = [
         "items": [
           {
             "prompt": "Es gibt ein Problem mit meiner Bestellung.",
-            "answer": "Mở đầu khiếu nại"
+            "answer": "Mở đầu khiếu nại (opening a complaint)"
           },
           {
             "prompt": "Das hätte so nicht serviert werden dürfen.",
-            "answer": "Kết tội passive"
+            "answer": "Kết tội passive (passive accusation (\"this should not have been served\"))"
           },
           {
             "prompt": "Auf das Haus.",
@@ -13555,7 +13555,7 @@ export const lessons: GermanLesson[] = [
         "items": [
           {
             "prompt": "Taxameter",
-            "answer": "Đồng hồ tính cước"
+            "answer": "Đồng hồ tính cước (taxi meter)"
           },
           {
             "prompt": "Festpreis",
@@ -13563,11 +13563,11 @@ export const lessons: GermanLesson[] = [
           },
           {
             "prompt": "Personenbeförderungsgesetz",
-            "answer": "Luật vận chuyển hành khách"
+            "answer": "Luật vận chuyển hành khách (Passenger Transport Act)"
           },
           {
             "prompt": "Ordnungsamt",
-            "answer": "Cơ quan xử phạt taxi"
+            "answer": "Cơ quan xử phạt taxi (regulatory office that fines taxis)"
           }
         ]
       },
@@ -13940,11 +13940,11 @@ export const lessons: GermanLesson[] = [
         "items": [
           {
             "prompt": "Wir müssen nicht mehr siezen.",
-            "answer": "Lời mời chuyển sang Du"
+            "answer": "Lời mời chuyển sang Du (invitation to switch from formal Sie to informal Du)"
           },
           {
             "prompt": "Ich-messages",
-            "answer": "Nói cảm xúc của bản thân, không kết tội"
+            "answer": "Nói cảm xúc của bản thân, không kết tội (I-messages — speak from your feelings without accusing)"
           },
           {
             "prompt": "auf einen grünen Zweig kommen",
@@ -14330,7 +14330,7 @@ export const lessons: GermanLesson[] = [
         "items": [
           {
             "prompt": "Sache vs Person",
-            "answer": "Tách vấn đề khỏi con người"
+            "answer": "Tách vấn đề khỏi con người (separate the issue from the person)"
           },
           {
             "prompt": "Ja, und",
@@ -14720,15 +14720,15 @@ export const lessons: GermanLesson[] = [
         "items": [
           {
             "prompt": "Mein herzliches Beileid",
-            "answer": "Câu chia buồn formula chuẩn"
+            "answer": "Câu chia buồn formula chuẩn (standard formal condolence formula)"
           },
           {
             "prompt": "Erzähl mir davon",
-            "answer": "Mời người mất kể kỷ niệm"
+            "answer": "Mời người mất kể kỷ niệm (invite them to share memories of the deceased)"
           },
           {
             "prompt": "Soll ich Suppe vorbeibringen?",
-            "answer": "Đề nghị support cụ thể"
+            "answer": "Đề nghị support cụ thể (offer concrete support (e.g. bringing soup))"
           },
           {
             "prompt": "in stillem Mitgefühl",
@@ -15105,11 +15105,11 @@ export const lessons: GermanLesson[] = [
         "items": [
           {
             "prompt": "Erklärung vs Entschuldigung",
-            "answer": "Phân biệt giải thích và biện minh"
+            "answer": "Phân biệt giải thích và biện minh (distinguish explanation from justification)"
           },
           {
             "prompt": "Wiedergutmachung",
-            "answer": "Đền bù qua hành động cụ thể"
+            "answer": "Đền bù qua hành động cụ thể (making amends through concrete action)"
           },
           {
             "prompt": "reinen Tisch machen",
@@ -15898,11 +15898,11 @@ export const lessons: GermanLesson[] = [
         "items": [
           {
             "prompt": "Mir ist aufgefallen, dass...",
-            "answer": "Mở đầu cụ thể không generic"
+            "answer": "Mở đầu cụ thể không generic (specific opening, not a generic line)"
           },
           {
             "prompt": "Das klingt nach...",
-            "answer": "Phản ánh cảm xúc, không diagnose"
+            "answer": "Phản ánh cảm xúc, không diagnose (reflect the feeling without diagnosing)"
           },
           {
             "prompt": "ein offenes Ohr haben",
@@ -16291,11 +16291,11 @@ export const lessons: GermanLesson[] = [
           },
           {
             "prompt": "die Mahnung",
-            "answer": "Thư đòi nợ formal"
+            "answer": "Thư đòi nợ formal (formal payment-demand letter)"
           },
           {
             "prompt": "Bei Geld hört die Freundschaft auf",
-            "answer": "Cảnh báo idiom"
+            "answer": "Cảnh báo idiom (cautionary idiom: \"with money, friendship ends\")"
           },
           {
             "prompt": "in den roten Zahlen sein",
@@ -16690,7 +16690,7 @@ export const lessons: GermanLesson[] = [
           },
           {
             "prompt": "Ahnenverehrung",
-            "answer": "Thờ cúng tổ tiên"
+            "answer": "Thờ cúng tổ tiên (ancestor veneration)"
           },
           {
             "prompt": "leben und leben lassen",
@@ -17090,11 +17090,11 @@ export const lessons: GermanLesson[] = [
         "items": [
           {
             "prompt": "Ich höre dir zu",
-            "answer": "Tín hiệu sẵn sàng lắng nghe"
+            "answer": "Tín hiệu sẵn sàng lắng nghe (signal you're ready to listen)"
           },
           {
             "prompt": "Du hast nichts falsch gemacht",
-            "answer": "Validation chống Scham"
+            "answer": "Validation chống Scham (validation that counters shame)"
           },
           {
             "prompt": "Das bleibt zwischen uns",
@@ -17498,7 +17498,7 @@ export const lessons: GermanLesson[] = [
           },
           {
             "prompt": "Gegenseitigkeit",
-            "answer": "Sự qua lại trong friendship"
+            "answer": "Sự qua lại trong friendship (reciprocity in friendship)"
           },
           {
             "prompt": "aus einer Mücke einen Elefanten machen",

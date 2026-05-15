@@ -220,15 +220,15 @@ export const lessons: GermanLesson[] = [
         "items": [
           {
             "prompt": "der Supermarkt",
-            "answer": "siêu thị"
+            "answer": "siêu thị (supermarket)"
           },
           {
             "prompt": "die Kasse",
-            "answer": "quầy thu ngân"
+            "answer": "quầy thu ngân (cashier / checkout)"
           },
           {
             "prompt": "der Rabatt",
-            "answer": "giảm giá"
+            "answer": "giảm giá (discount)"
           },
           {
             "prompt": "billig",
@@ -473,15 +473,15 @@ export const lessons: GermanLesson[] = [
         "items": [
           {
             "prompt": "die Kreuzung",
-            "answer": "ngã tư"
+            "answer": "ngã tư (intersection)"
           },
           {
             "prompt": "die Ampel",
-            "answer": "đèn giao thông"
+            "answer": "đèn giao thông (traffic light)"
           },
           {
             "prompt": "die U-Bahn",
-            "answer": "tàu điện ngầm"
+            "answer": "tàu điện ngầm (underground / subway)"
           },
           {
             "prompt": "weit",
@@ -726,15 +726,15 @@ export const lessons: GermanLesson[] = [
         "items": [
           {
             "prompt": "die Vorspeise",
-            "answer": "khai vị"
+            "answer": "khai vị (starter / appetiser)"
           },
           {
             "prompt": "der Nachtisch",
-            "answer": "tráng miệng"
+            "answer": "tráng miệng (dessert)"
           },
           {
             "prompt": "das Trinkgeld",
-            "answer": "tiền boa"
+            "answer": "tiền boa (tip / gratuity)"
           },
           {
             "prompt": "lecker",
@@ -979,11 +979,11 @@ export const lessons: GermanLesson[] = [
         "items": [
           {
             "prompt": "Silvester",
-            "answer": "đêm giao thừa"
+            "answer": "đêm giao thừa (New Year's Eve)"
           },
           {
             "prompt": "die Hochzeit",
-            "answer": "đám cưới"
+            "answer": "đám cưới (wedding)"
           },
           {
             "prompt": "das Geschenk",
@@ -991,7 +991,7 @@ export const lessons: GermanLesson[] = [
           },
           {
             "prompt": "schenken",
-            "answer": "tặng"
+            "answer": "tặng (to give as a gift)"
           }
         ]
       },
@@ -1236,15 +1236,15 @@ export const lessons: GermanLesson[] = [
           },
           {
             "prompt": "das Recycling",
-            "answer": "tái chế"
+            "answer": "tái chế (recycling)"
           },
           {
             "prompt": "die Energie",
-            "answer": "năng lượng"
+            "answer": "năng lượng (energy)"
           },
           {
             "prompt": "umweltfreundlich",
-            "answer": "thân thiện môi trường"
+            "answer": "thân thiện môi trường (environmentally friendly)"
           }
         ]
       },
@@ -1485,19 +1485,19 @@ export const lessons: GermanLesson[] = [
         "items": [
           {
             "prompt": "Entschuldigung",
-            "answer": "xin lỗi"
+            "answer": "xin lỗi (sorry / excuse me)"
           },
           {
             "prompt": "die Hilfe",
-            "answer": "sự giúp đỡ"
+            "answer": "sự giúp đỡ (help / assistance)"
           },
           {
             "prompt": "höflich",
-            "answer": "lịch sự"
+            "answer": "lịch sự (polite)"
           },
           {
             "prompt": "freundlich",
-            "answer": "thân thiện"
+            "answer": "thân thiện (friendly)"
           }
         ]
       },
@@ -1738,19 +1738,19 @@ export const lessons: GermanLesson[] = [
         "items": [
           {
             "prompt": "die Meinung",
-            "answer": "ý kiến"
+            "answer": "ý kiến (opinion)"
           },
           {
             "prompt": "vielleicht",
-            "answer": "có thể"
+            "answer": "có thể (maybe)"
           },
           {
             "prompt": "natürlich",
-            "answer": "tất nhiên"
+            "answer": "tất nhiên (of course)"
           },
           {
             "prompt": "widersprechen",
-            "answer": "phản đối"
+            "answer": "phản đối (to disagree / contradict)"
           }
         ]
       },
@@ -1995,7 +1995,7 @@ export const lessons: GermanLesson[] = [
           },
           {
             "prompt": "die Sorge",
-            "answer": "lo lắng"
+            "answer": "lo lắng (worry / concern)"
           },
           {
             "prompt": "weinen",
@@ -2003,7 +2003,7 @@ export const lessons: GermanLesson[] = [
           },
           {
             "prompt": "lachen",
-            "answer": "cười"
+            "answer": "cười (to laugh)"
           }
         ]
       },
@@ -2244,11 +2244,11 @@ export const lessons: GermanLesson[] = [
         "items": [
           {
             "prompt": "der Anruf",
-            "answer": "cuộc gọi"
+            "answer": "cuộc gọi (phone call)"
           },
           {
             "prompt": "die Mailbox",
-            "answer": "hộp thư thoại"
+            "answer": "hộp thư thoại (voicemail)"
           },
           {
             "prompt": "auflegen",
@@ -2256,7 +2256,7 @@ export const lessons: GermanLesson[] = [
           },
           {
             "prompt": "besetzt",
-            "answer": "đang bận"
+            "answer": "đang bận (busy / engaged)"
           }
         ]
       },
@@ -2497,7 +2497,7 @@ export const lessons: GermanLesson[] = [
         "items": [
           {
             "prompt": "der Urlaub",
-            "answer": "kỳ nghỉ"
+            "answer": "kỳ nghỉ (holiday / vacation)"
           },
           {
             "prompt": "das Hobby",
@@ -2505,7 +2505,7 @@ export const lessons: GermanLesson[] = [
           },
           {
             "prompt": "interessant",
-            "answer": "thú vị"
+            "answer": "thú vị (interesting)"
           },
           {
             "prompt": "kennenlernen",
@@ -2752,19 +2752,19 @@ export const lessons: GermanLesson[] = [
         "items": [
           {
             "prompt": "aufstehen",
-            "answer": "thức dậy"
+            "answer": "thức dậy (to wake up / get up)"
           },
           {
             "prompt": "einkaufen",
-            "answer": "đi mua sắm"
+            "answer": "đi mua sắm (to go shopping)"
           },
           {
             "prompt": "mitkommen",
-            "answer": "đi cùng"
+            "answer": "đi cùng (to come along)"
           },
           {
             "prompt": "aufhören",
-            "answer": "dừng lại"
+            "answer": "dừng lại (to stop)"
           }
         ]
       },
@@ -3007,11 +3007,11 @@ export const lessons: GermanLesson[] = [
         "items": [
           {
             "prompt": "gegessen",
-            "answer": "đã ăn"
+            "answer": "đã ăn (eaten (Perfekt))"
           },
           {
             "prompt": "getrunken",
-            "answer": "đã uống"
+            "answer": "đã uống (drunk (Perfekt))"
           },
           {
             "prompt": "gefahren",
@@ -3019,7 +3019,7 @@ export const lessons: GermanLesson[] = [
           },
           {
             "prompt": "geschlafen",
-            "answer": "đã ngủ"
+            "answer": "đã ngủ (slept (Perfekt))"
           }
         ]
       },
@@ -3262,15 +3262,15 @@ export const lessons: GermanLesson[] = [
         "items": [
           {
             "prompt": "können",
-            "answer": "có thể"
+            "answer": "có thể (can / be able to)"
           },
           {
             "prompt": "müssen",
-            "answer": "phải"
+            "answer": "phải (must / have to)"
           },
           {
             "prompt": "dürfen",
-            "answer": "được phép"
+            "answer": "được phép (be allowed to / may)"
           },
           {
             "prompt": "möchten",
@@ -3517,11 +3517,11 @@ export const lessons: GermanLesson[] = [
         "items": [
           {
             "prompt": "obwohl",
-            "answer": "mặc dù"
+            "answer": "mặc dù (although)"
           },
           {
             "prompt": "damit",
-            "answer": "để mà"
+            "answer": "để mà (so that)"
           },
           {
             "prompt": "während",
@@ -3529,7 +3529,7 @@ export const lessons: GermanLesson[] = [
           },
           {
             "prompt": "bevor",
-            "answer": "trước khi"
+            "answer": "trước khi (before)"
           }
         ]
       },
@@ -3772,19 +3772,19 @@ export const lessons: GermanLesson[] = [
         "items": [
           {
             "prompt": "gebaut",
-            "answer": "đã xây"
+            "answer": "đã xây (built (passive past participle))"
           },
           {
             "prompt": "geschrieben",
-            "answer": "đã viết"
+            "answer": "đã viết (written (passive past participle))"
           },
           {
             "prompt": "gesprochen",
-            "answer": "đã nói"
+            "answer": "đã nói (spoken (passive past participle))"
           },
           {
             "prompt": "geöffnet",
-            "answer": "đã mở"
+            "answer": "đã mở (opened (passive past participle))"
           }
         ]
       },

@@ -349,11 +349,11 @@ export const lessons: GermanLesson[] = [
         "items": [
           {
             "prompt": "Werkimmanenz",
-            "answer": "Diễn giải nội tại — chỉ dựa vào tác phẩm"
+            "answer": "Diễn giải nội tại — chỉ dựa vào tác phẩm (work-immanent interpretation — relying only on the text itself)"
           },
           {
             "prompt": "freie indirekte Rede / erlebte Rede",
-            "answer": "Lời thuật tự do gián tiếp"
+            "answer": "Lời thuật tự do gián tiếp (free indirect speech / experienced speech)"
           },
           {
             "prompt": "Leerstelle",
@@ -746,11 +746,11 @@ export const lessons: GermanLesson[] = [
           },
           {
             "prompt": "Reflektor (Stanzel)",
-            "answer": "Nhân vật phối cảnh hóa nội tại"
+            "answer": "Nhân vật phối cảnh hóa nội tại (reflector character (Stanzel) — internal perspective)"
           },
           {
             "prompt": "impliziter Autor (Booth)",
-            "answer": "Tác giả ngầm — figura được gợi từ tổng thể"
+            "answer": "Tác giả ngầm — figura được gợi từ tổng thể (implied author (Booth) — figure inferred from the work as a whole)"
           }
         ]
       },
@@ -3760,7 +3760,7 @@ export const lessons: GermanLesson[] = [
         "items": [
           {
             "prompt": "Steelmanning",
-            "answer": "Tái dựng Gegenposition trong dạng mạnh nhất"
+            "answer": "Tái dựng Gegenposition trong dạng mạnh nhất (reconstruct the opposing view in its strongest form)"
           },
           {
             "prompt": "differenzierte Anerkennung",
@@ -4136,7 +4136,7 @@ export const lessons: GermanLesson[] = [
           },
           {
             "prompt": "erweiterter Kunstbegriff",
-            "answer": "Khái niệm nghệ thuật mở rộng"
+            "answer": "Khái niệm nghệ thuật mở rộng (expanded concept of art (Beuys))"
           }
         ]
       },
@@ -4479,7 +4479,7 @@ export const lessons: GermanLesson[] = [
         "items": [
           {
             "prompt": "Kadrage",
-            "answer": "Khuôn hình / bố cục khung"
+            "answer": "Khuôn hình / bố cục khung (framing / shot composition)"
           },
           {
             "prompt": "Off-Raum",
@@ -4487,11 +4487,11 @@ export const lessons: GermanLesson[] = [
           },
           {
             "prompt": "Plansequenz",
-            "answer": "Cú máy dài không cắt"
+            "answer": "Cú máy dài không cắt (long take — uncut sequence shot)"
           },
           {
             "prompt": "Schauspielführung",
-            "answer": "Chỉ đạo diễn xuất"
+            "answer": "Chỉ đạo diễn xuất (direction of acting performances)"
           }
         ]
       },
@@ -4789,19 +4789,19 @@ export const lessons: GermanLesson[] = [
         "items": [
           {
             "prompt": "Regierungserklärung",
-            "answer": "Tuyên bố chính phủ tại Bundestag"
+            "answer": "Tuyên bố chính phủ tại Bundestag (government statement at the Bundestag)"
           },
           {
             "prompt": "Streitkultur",
-            "answer": "Văn hóa tranh luận dân chủ"
+            "answer": "Văn hóa tranh luận dân chủ (culture of democratic debate)"
           },
           {
             "prompt": "Gedenkrede",
-            "answer": "Diễn văn tưởng niệm"
+            "answer": "Diễn văn tưởng niệm (commemorative speech)"
           },
           {
             "prompt": "Willensbildung",
-            "answer": "Sự hình thành ý chí chính trị"
+            "answer": "Sự hình thành ý chí chính trị (formation of political will)"
           }
         ]
       },
@@ -5066,15 +5066,15 @@ export const lessons: GermanLesson[] = [
           },
           {
             "prompt": "Deliberation",
-            "answer": "Thảo luận / nghị luận dân chủ"
+            "answer": "Thảo luận / nghị luận dân chủ (democratic deliberation)"
           },
           {
             "prompt": "Bürgerbeteiligung",
-            "answer": "Sự tham gia của công dân"
+            "answer": "Sự tham gia của công dân (citizen participation)"
           },
           {
             "prompt": "Konsensfindung",
-            "answer": "Tìm kiếm đồng thuận"
+            "answer": "Tìm kiếm đồng thuận (consensus-building)"
           }
         ]
       },
@@ -5555,11 +5555,11 @@ export const lessons: GermanLesson[] = [
           },
           {
             "prompt": "Fehlschluss",
-            "answer": "Ngụy biện / kết luận sai"
+            "answer": "Ngụy biện / kết luận sai (fallacy / faulty conclusion)"
           },
           {
             "prompt": "Voraussetzung",
-            "answer": "Tiền giả định / premise"
+            "answer": "Tiền giả định / premise (presupposition / premise)"
           }
         ]
       }
@@ -5766,19 +5766,19 @@ export const lessons: GermanLesson[] = [
         "items": [
           {
             "prompt": "logos",
-            "answer": "Lập luận logic"
+            "answer": "Lập luận logic (logical argument)"
           },
           {
             "prompt": "ethos",
-            "answer": "Độ tin cậy của người nói"
+            "answer": "Độ tin cậy của người nói (speaker credibility)"
           },
           {
             "prompt": "pathos",
-            "answer": "Sự lay động cảm xúc"
+            "answer": "Sự lay động cảm xúc (emotional appeal)"
           },
           {
             "prompt": "Enthymem",
-            "answer": "Tam đoạn luận tu từ"
+            "answer": "Tam đoạn luận tu từ (rhetorical syllogism (one premise left implicit))"
           }
         ]
       }

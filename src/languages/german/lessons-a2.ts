@@ -222,19 +222,19 @@ export const lessons: GermanLesson[] = [
         "items": [
           {
             "prompt": "der Schreibtisch",
-            "answer": "bàn làm việc"
+            "answer": "bàn làm việc (desk)"
           },
           {
             "prompt": "die Kollegin",
-            "answer": "đồng nghiệp nữ"
+            "answer": "đồng nghiệp nữ (female colleague)"
           },
           {
             "prompt": "arbeiten",
-            "answer": "làm việc"
+            "answer": "làm việc (to work)"
           },
           {
             "prompt": "anfangen",
-            "answer": "bắt đầu"
+            "answer": "bắt đầu (to begin / start)"
           }
         ]
       },
@@ -477,19 +477,19 @@ export const lessons: GermanLesson[] = [
         "items": [
           {
             "prompt": "die Datei",
-            "answer": "file/tệp"
+            "answer": "file/tệp (file / attachment)"
           },
           {
             "prompt": "der Termin",
-            "answer": "cuộc hẹn"
+            "answer": "cuộc hẹn (appointment)"
           },
           {
             "prompt": "antworten",
-            "answer": "trả lời"
+            "answer": "trả lời (to reply)"
           },
           {
             "prompt": "Mit freundlichen Grüßen",
-            "answer": "trân trọng"
+            "answer": "trân trọng (kind regards (formal email closing))"
           }
         ]
       },
@@ -730,19 +730,19 @@ export const lessons: GermanLesson[] = [
         "items": [
           {
             "prompt": "diskutieren",
-            "answer": "thảo luận"
+            "answer": "thảo luận (to discuss)"
           },
           {
             "prompt": "zustimmen",
-            "answer": "đồng ý"
+            "answer": "đồng ý (to agree)"
           },
           {
             "prompt": "ablehnen",
-            "answer": "từ chối"
+            "answer": "từ chối (to refuse / decline)"
           },
           {
             "prompt": "vorschlagen",
-            "answer": "đề xuất"
+            "answer": "đề xuất (to propose)"
           }
         ]
       },
@@ -983,19 +983,19 @@ export const lessons: GermanLesson[] = [
         "items": [
           {
             "prompt": "der Lebenslauf",
-            "answer": "sơ yếu lý lịch"
+            "answer": "sơ yếu lý lịch (CV / résumé)"
           },
           {
             "prompt": "die Bewerbung",
-            "answer": "đơn xin việc"
+            "answer": "đơn xin việc (job application)"
           },
           {
             "prompt": "der Beruf",
-            "answer": "nghề nghiệp"
+            "answer": "nghề nghiệp (profession / occupation)"
           },
           {
             "prompt": "sich bewerben",
-            "answer": "ứng tuyển"
+            "answer": "ứng tuyển (to apply (for a job))"
           }
         ]
       },
@@ -1240,15 +1240,15 @@ export const lessons: GermanLesson[] = [
           },
           {
             "prompt": "krank",
-            "answer": "ốm"
+            "answer": "ốm (sick)"
           },
           {
             "prompt": "müde",
-            "answer": "mệt"
+            "answer": "mệt (tired)"
           },
           {
             "prompt": "helfen",
-            "answer": "giúp đỡ"
+            "answer": "giúp đỡ (to help)"
           }
         ]
       },
@@ -1493,15 +1493,15 @@ export const lessons: GermanLesson[] = [
           },
           {
             "prompt": "die Überweisung",
-            "answer": "chuyển khoản"
+            "answer": "chuyển khoản (bank transfer)"
           },
           {
             "prompt": "abheben",
-            "answer": "rút tiền"
+            "answer": "rút tiền (to withdraw cash)"
           },
           {
             "prompt": "wechseln",
-            "answer": "đổi"
+            "answer": "đổi (to exchange / change)"
           }
         ]
       },
@@ -1742,19 +1742,19 @@ export const lessons: GermanLesson[] = [
         "items": [
           {
             "prompt": "der Brief",
-            "answer": "thư"
+            "answer": "thư (letter)"
           },
           {
             "prompt": "der Absender",
-            "answer": "người gửi"
+            "answer": "người gửi (sender)"
           },
           {
             "prompt": "der Empfänger",
-            "answer": "người nhận"
+            "answer": "người nhận (recipient)"
           },
           {
             "prompt": "schicken",
-            "answer": "gửi"
+            "answer": "gửi (to send)"
           }
         ]
       },
@@ -2003,11 +2003,11 @@ export const lessons: GermanLesson[] = [
           },
           {
             "prompt": "krank",
-            "answer": "ốm"
+            "answer": "ốm (sick)"
           },
           {
             "prompt": "die Krankmeldung",
-            "answer": "giấy nghỉ ốm"
+            "answer": "giấy nghỉ ốm (sick note (from a doctor))"
           }
         ]
       },
@@ -2248,7 +2248,7 @@ export const lessons: GermanLesson[] = [
         "items": [
           {
             "prompt": "die Apotheke",
-            "answer": "hiệu thuốc"
+            "answer": "hiệu thuốc (pharmacy)"
           },
           {
             "prompt": "der Hustensaft",
@@ -2256,11 +2256,11 @@ export const lessons: GermanLesson[] = [
           },
           {
             "prompt": "die Erkältung",
-            "answer": "cảm lạnh"
+            "answer": "cảm lạnh (a cold (illness))"
           },
           {
             "prompt": "die Salbe",
-            "answer": "thuốc mỡ"
+            "answer": "thuốc mỡ (ointment / cream)"
           }
         ]
       },
@@ -2501,19 +2501,19 @@ export const lessons: GermanLesson[] = [
         "items": [
           {
             "prompt": "vereinbaren",
-            "answer": "đặt/sắp xếp"
+            "answer": "đặt/sắp xếp (to schedule / arrange)"
           },
           {
             "prompt": "absagen",
-            "answer": "huỷ"
+            "answer": "huỷ (to cancel)"
           },
           {
             "prompt": "bestätigen",
-            "answer": "xác nhận"
+            "answer": "xác nhận (to confirm)"
           },
           {
             "prompt": "frei",
-            "answer": "rảnh"
+            "answer": "rảnh (free / available)"
           }
         ]
       },
