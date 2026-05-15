@@ -14,9 +14,17 @@
 //   vocab   : green 2-col grid if lesson.vocabulary
 //   dialogue: purple card if lesson.dialogue
 //   exercises: orange card; type-discriminated render per `kind`
-//   cultural: blue card if lesson.culturalNotesVi
-//   tip     : amber card if lesson.tipAdviceVi
+//   cultural: blue card if lesson.culturalNotesEn / Vi (picks by uiLanguage, falls back)
+//   tip     : amber card if lesson.tipAdviceEn / Vi (picks by uiLanguage, falls back)
 //   grammar : violet card if lesson.grammar (Japanese-specific)
+//
+// Bilingual content selection: every `*Vi` field has an optional `*En`
+// sibling on NormalizedLesson (see LessonRenderer.types.ts). For each
+// section, the renderer picks the language matching the `uiLanguage`
+// prop and falls back to the other when the preferred one is missing.
+// When a fallback occurs, a small muted badge (e.g. "VI") is shown next
+// to the section heading so the learner knows the displayed text isn't
+// in their selected UI language.
 
 import { useState } from "react";
 import {
@@ -69,6 +77,14 @@ const RENDERER_LABELS = {
     cultureHeading: "Văn hoá",
     tipHeading: "Mẹo học",
     grammarHeading: "Ngữ pháp",
+    vocabHeading: "Từ vựng",
+    vocabUnit: "từ",
+    exercisesHeading: "Bài tập",
+    exerciseLabels: {
+      "fill-blank": "Điền vào chỗ trống",
+      matching: "Nối",
+      translation: "Dịch",
+    },
   },
   en: {
     vocabChip: "vocab",
@@ -82,8 +98,38 @@ const RENDERER_LABELS = {
     cultureHeading: "Culture",
     tipHeading: "Study tip",
     grammarHeading: "Grammar",
+    vocabHeading: "Vocabulary",
+    vocabUnit: "words",
+    exercisesHeading: "Exercises",
+    exerciseLabels: {
+      "fill-blank": "Fill in the blank",
+      matching: "Match",
+      translation: "Translate",
+    },
   },
 } as const;
+
+type RendererLabels = typeof RENDERER_LABELS[keyof typeof RENDERER_LABELS];
+
+// Pick the value matching the preferred uiLanguage; fall back to the other
+// when the preferred one is missing. Returns undefined only when both are.
+function pick<T>(uiLang: "vi" | "en", en: T | undefined, vi: T | undefined): T | undefined {
+  return uiLang === "en" ? (en ?? vi) : (vi ?? en);
+}
+
+// True when the displayed value came from the non-preferred language —
+// i.e. the preferred value was missing and we fell back. Drives the badge.
+function isFallback(uiLang: "vi" | "en", en: unknown, vi: unknown): boolean {
+  return uiLang === "en" ? !en && !!vi : !vi && !!en;
+}
+
+function FallbackBadge({ other }: { other: "vi" | "en" }) {
+  return (
+    <span className="ml-1.5 rounded-full bg-slate-100 px-1.5 py-0.5 text-[9px] font-medium uppercase text-slate-400">
+      {other}
+    </span>
+  );
+}
 
 interface LessonRendererProps {
   lesson: NormalizedLesson;
@@ -222,23 +268,39 @@ export function LessonRenderer({ lesson, theme, uiLanguage = "vi" }: LessonRende
                       {s.romanization}
                     </p>
                   )}
-                  {s.en && (
-                    <p className="mt-0.5 text-xs font-medium text-slate-700">
-                      {s.en}
-                    </p>
-                  )}
-                  {s.vi && (
-                    <p className="mt-0.5 text-xs text-slate-600">{s.vi}</p>
-                  )}
-                  {s.pronunciationFocus && s.pronunciationFocus.length > 0 && (
-                    <p
-                      className="mt-1.5 inline-flex items-center gap-1 text-[11px]"
-                      style={{ color: theme.accent }}
-                    >
-                      <Volume2 className="h-3 w-3" />
-                      {s.pronunciationFocus.join(" · ")}
-                    </p>
-                  )}
+                  {(() => {
+                    const gloss = pick(uiLanguage, s.en, s.vi);
+                    return gloss ? (
+                      <p className="mt-0.5 text-xs font-medium text-slate-700">
+                        {gloss}
+                      </p>
+                    ) : null;
+                  })()}
+                  {(() => {
+                    const focus = pick(
+                      uiLanguage,
+                      s.pronunciationFocusEn,
+                      s.pronunciationFocus,
+                    );
+                    if (!focus || focus.length === 0) return null;
+                    const fallback = isFallback(
+                      uiLanguage,
+                      s.pronunciationFocusEn,
+                      s.pronunciationFocus,
+                    );
+                    return (
+                      <p
+                        className="mt-1.5 inline-flex items-center gap-1 text-[11px]"
+                        style={{ color: theme.accent }}
+                      >
+                        <Volume2 className="h-3 w-3" />
+                        {focus.join(" · ")}
+                        {fallback && (
+                          <FallbackBadge other={uiLanguage === "en" ? "vi" : "en"} />
+                        )}
+                      </p>
+                    );
+                  })()}
                   {s.note && (
                     <p className="mt-1 text-[11px] italic text-slate-400">
                       {s.note}
@@ -253,7 +315,7 @@ export function LessonRenderer({ lesson, theme, uiLanguage = "vi" }: LessonRende
             <div className="rounded-lg border border-green-100 bg-green-50/60 p-3">
               <p className="inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wide text-green-700">
                 <BookOpen className="h-3 w-3" />
-                Từ vựng ({lesson.vocabulary.length} từ)
+                {labels.vocabHeading} ({lesson.vocabulary.length} {labels.vocabUnit})
               </p>
               <div className="mt-2 grid grid-cols-2 gap-1">
                 {lesson.vocabulary.map((v, vi) => (
@@ -277,16 +339,20 @@ export function LessonRenderer({ lesson, theme, uiLanguage = "vi" }: LessonRende
                           {v.romanization}
                         </span>
                       )}
-                      {(v.en || v.vi) && (
-                        <span className="text-slate-500 ml-2">
-                          {v.vi ?? v.en}
-                        </span>
-                      )}
-                      {v.phonetic && (
-                        <span className="block text-[10px] text-slate-400">
-                          {v.phonetic}
-                        </span>
-                      )}
+                      {(() => {
+                        const gloss = pick(uiLanguage, v.en, v.vi);
+                        return gloss ? (
+                          <span className="text-slate-500 ml-2">{gloss}</span>
+                        ) : null;
+                      })()}
+                      {(() => {
+                        const phonetic = pick(uiLanguage, v.phoneticEn, v.phonetic);
+                        return phonetic ? (
+                          <span className="block text-[10px] text-slate-400">
+                            {phonetic}
+                          </span>
+                        ) : null;
+                      })()}
                     </div>
                   </div>
                 ))}
@@ -329,11 +395,12 @@ export function LessonRenderer({ lesson, theme, uiLanguage = "vi" }: LessonRende
                           ({d.romanization})
                         </span>
                       )}
-                      {(d.en || d.vi) && (
-                        <div className="text-slate-500 ml-5">
-                          {d.vi ?? d.en}
-                        </div>
-                      )}
+                      {(() => {
+                        const gloss = pick(uiLanguage, d.en, d.vi);
+                        return gloss ? (
+                          <div className="text-slate-500 ml-5">{gloss}</div>
+                        ) : null;
+                      })()}
                     </div>
                   </div>
                 ))}
@@ -345,41 +412,66 @@ export function LessonRenderer({ lesson, theme, uiLanguage = "vi" }: LessonRende
             <div className="rounded-lg border border-orange-100 bg-orange-50/60 p-3">
               <p className="inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wide text-orange-700">
                 <PenLine className="h-3 w-3" />
-                Bài tập
+                {labels.exercisesHeading}
               </p>
               <ol className="mt-2 space-y-2">
                 {lesson.exercises.map((ex, ei) => (
                   <li key={ei} className="text-xs text-slate-700">
-                    <ExerciseRow ex={ex} index={ei} />
+                    <ExerciseRow
+                      ex={ex}
+                      index={ei}
+                      labels={labels}
+                      uiLanguage={uiLanguage}
+                    />
                   </li>
                 ))}
               </ol>
             </div>
           )}
 
-          {lesson.culturalNotesVi && (
-            <div className="rounded-lg border border-blue-100 bg-blue-50/60 p-3">
-              <p className="inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wide text-blue-700">
-                <Sparkles className="h-3 w-3" />
-                {labels.cultureHeading}
-              </p>
-              <p className="mt-1 text-xs leading-relaxed text-slate-700">
-                {lesson.culturalNotesVi}
-              </p>
-            </div>
-          )}
+          {(() => {
+            const text = pick(uiLanguage, lesson.culturalNotesEn, lesson.culturalNotesVi);
+            if (!text) return null;
+            const fallback = isFallback(
+              uiLanguage,
+              lesson.culturalNotesEn,
+              lesson.culturalNotesVi,
+            );
+            return (
+              <div className="rounded-lg border border-blue-100 bg-blue-50/60 p-3">
+                <p className="inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wide text-blue-700">
+                  <Sparkles className="h-3 w-3" />
+                  {labels.cultureHeading}
+                  {fallback && (
+                    <FallbackBadge other={uiLanguage === "en" ? "vi" : "en"} />
+                  )}
+                </p>
+                <p className="mt-1 text-xs leading-relaxed text-slate-700">{text}</p>
+              </div>
+            );
+          })()}
 
-          {lesson.tipAdviceVi && (
-            <div className="rounded-lg border border-amber-100 bg-amber-50/60 p-3">
-              <p className="inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wide text-amber-700">
-                <Lightbulb className="h-3 w-3" />
-                {labels.tipHeading}
-              </p>
-              <p className="mt-1 text-xs leading-relaxed text-slate-700">
-                {lesson.tipAdviceVi}
-              </p>
-            </div>
-          )}
+          {(() => {
+            const text = pick(uiLanguage, lesson.tipAdviceEn, lesson.tipAdviceVi);
+            if (!text) return null;
+            const fallback = isFallback(
+              uiLanguage,
+              lesson.tipAdviceEn,
+              lesson.tipAdviceVi,
+            );
+            return (
+              <div className="rounded-lg border border-amber-100 bg-amber-50/60 p-3">
+                <p className="inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wide text-amber-700">
+                  <Lightbulb className="h-3 w-3" />
+                  {labels.tipHeading}
+                  {fallback && (
+                    <FallbackBadge other={uiLanguage === "en" ? "vi" : "en"} />
+                  )}
+                </p>
+                <p className="mt-1 text-xs leading-relaxed text-slate-700">{text}</p>
+              </div>
+            );
+          })()}
 
           {lesson.grammar && lesson.grammar.length > 0 && (
             <div className="rounded-lg border border-violet-100 bg-violet-50/60 p-3">
@@ -406,20 +498,30 @@ export function LessonRenderer({ lesson, theme, uiLanguage = "vi" }: LessonRende
   );
 }
 
-function ExerciseRow({ ex, index }: { ex: NormalizedExercise; index: number }) {
-  const labelMap: Record<NormalizedExercise["kind"], string> = {
-    "fill-blank": "Điền vào chỗ trống",
-    matching: "Nối",
-    translation: "Dịch",
-  };
+function ExerciseRow({
+  ex,
+  index,
+  labels,
+  uiLanguage,
+}: {
+  ex: NormalizedExercise;
+  index: number;
+  labels: RendererLabels;
+  uiLanguage: "vi" | "en";
+}) {
+  const labelMap = labels.exerciseLabels;
 
   if (ex.kind === "fill-blank") {
+    const hint = pick(uiLanguage, ex.hintEn, ex.hint);
     return (
       <>
         <span className="font-semibold">
           {index + 1}. {labelMap[ex.kind]}:
         </span>{" "}
         <span>{ex.question}</span>
+        {hint && (
+          <span className="block text-[10px] text-slate-500 italic">{hint}</span>
+        )}
         <span className="block text-[10px] text-green-600 mt-0.5">
           → {ex.answer}
         </span>
@@ -428,12 +530,13 @@ function ExerciseRow({ ex, index }: { ex: NormalizedExercise; index: number }) {
   }
 
   if (ex.kind === "matching") {
+    const instruction = pick(uiLanguage, ex.instructionEn, ex.instruction);
     return (
       <>
         <span className="font-semibold">
           {index + 1}. {labelMap[ex.kind]}:
         </span>{" "}
-        {ex.instruction && <span>{ex.instruction}</span>}
+        {instruction && <span>{instruction}</span>}
         <ul className="mt-1 ml-3 space-y-0.5 list-disc list-inside">
           {ex.pairs.map((p, pi) => (
             <li key={pi}>
@@ -447,12 +550,13 @@ function ExerciseRow({ ex, index }: { ex: NormalizedExercise; index: number }) {
   }
 
   // translation
+  const prompt = pick(uiLanguage, ex.en, ex.vi);
   return (
     <>
       <span className="font-semibold">
         {index + 1}. {labelMap[ex.kind]}:
       </span>{" "}
-      <span className="italic">"{ex.vi}"</span>
+      <span className="italic">"{prompt}"</span>
       <span className="block text-[10px] text-green-600 mt-0.5">
         → {ex.native}
         {ex.romanization && (
