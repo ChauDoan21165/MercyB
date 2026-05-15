@@ -14724,6 +14724,11 @@ export const lessons: FrenchLesson[] =           [
             "partes → part",
             "amitié → a-mi-tié",
             "représenté → rơ-pré-zãn-té"
+          ],
+          "pronunciation_focus_en": [
+            "partes → PART (subjunctive after 'avant que'; 'avant que tu partes' = before you leave — the standard formal opener for a farewell)",
+            "amitié → ah-mee-TYAY (final '-tié' = 'TYAY'; 'cette amitié' = this friendship — name the specific relationship, don't generalize)",
+            "représenté → ruh-pray-zah(n)-TAY ('-en-' nasal, no hard 'n'; 'ce que ça a représenté' = what it meant — the past tense signals the chapter is closing)"
           ]
         },
         {
@@ -14733,6 +14738,11 @@ export const lessons: FrenchLesson[] =           [
             "quatre → ka-trơ",
             "court → kur",
             "énormément → é-nor-mé-mã"
+          ],
+          "pronunciation_focus_en": [
+            "quatre → KAT-ruh (the 'tr' soft, final 'e' barely voiced; with liaison 'quatre ans' = 'kat-RAH(n)')",
+            "court → KOOR (final 't' silent; rhymes with English 'tour'; 'c'est court' = it's short)",
+            "énormément → ay-nor-may-MAH(n) (four beats, final '-ment' nasal; the emotional-weight word — it's what makes the short time matter)"
           ]
         },
         {
@@ -14742,6 +14752,11 @@ export const lessons: FrenchLesson[] =           [
             "reverra → rơ-vèr-ra",
             "comme → kom",
             "avant → a-vã"
+          ],
+          "pronunciation_focus_en": [
+            "reverra → ruh-vehr-RAH (future of 'se revoir'; 'on se reverra' = we'll see each other again — said, but honestly only 'en partie' / in part)",
+            "comme → KUM (rhymes with English 'come'; 'comme avant' = like before)",
+            "avant → ah-VAH(n) (nasal final, no hard 't'; 'plus comme avant' = no longer like before — the honest admission the lesson is built on)"
           ]
         },
         {
@@ -14751,6 +14766,11 @@ export const lessons: FrenchLesson[] =           [
             "quitte → kit",
             "prétende → pré-tãnd",
             "change → shãnj"
+          ],
+          "pronunciation_focus_en": [
+            "quitte → KEET (rhymes with English 'feet'; 'se quitter' = to part — the deliberate, clean goodbye)",
+            "prétende → pray-TAH(n)D (subjunctive; 'pas qu'on prétende' = not that we pretend — refusing the comfortable lie)",
+            "change → SHAH(n)ZH (nasal vowel, soft 'zh' end like 's' in 'measure'; 'que rien ne change' = that nothing changes)"
           ]
         },
         {
@@ -14760,102 +14780,123 @@ export const lessons: FrenchLesson[] =           [
             "merci → mer-si",
             "fond → fõ",
             "cœur → kơr"
+          ],
+          "pronunciation_focus_en": [
+            "merci → mehr-SEE (stress the SECOND syllable, unlike English 'MER-cy'; 'merci d'avoir été là' = thank you for being there)",
+            "fond → FO(n) (nasal, final 'd' silent; 'du fond' = from the bottom of)",
+            "cœur → KUR (the 'œu' = the vowel in English 'her' but with rounded lips — no exact English equivalent; 'du fond du cœur' = from the bottom of the heart — sincere, NOT a cliché in French)"
           ]
         }
       ],
       "cultural_notes_vi": "Chào tạm biệt vĩnh viễn (bạn chuyển nước, kết thúc mối quan hệ tình cảm, một chương khép lại) ở Pháp được gọi là « adieu » — khác với « au revoir » thông thường. Chữ « adieu » mang trọng lượng — gốc Latin « à Dieu », ngụ ý « nếu mình không gặp lại trên đời này, gặp lại bên Chúa ». Vì vậy, người Pháp dùng « adieu » rất hiếm, chỉ trong tình huống thực sự cuối cùng. Trong nói thực tế, « au revoir » dùng cho cả tạm biệt vĩnh viễn — sự nặng nề được truyền qua giọng và bối cảnh, không qua chữ.\n\nKhác Việt Nam, nơi tạm biệt thường được làm « nhẹ » để tránh đau buồn (« nói gì đâu, hẹn gặp lại »), Pháp có truyền thống « cérémonie d'adieu » — đầu tư vào lời chia tay tử tế. Đó có thể là:\n- Bữa tối cuối cùng\n- Đi bộ ở nơi có ý nghĩa với hai bên\n- Một bức thư viết tay được trao tay\n- Một « cadeau symbolique » (món quà tượng trưng — không đắt, nhưng có ý nghĩa)\n\nTrong tình huống chia tay tình yêu (cesser une relation amoureuse), Pháp đặt giá trị vào « se quitter proprement » — chia tay sạch. Tránh: ghosting (không trả lời tin nhắn dần dần), cuộc gọi ngắn, tin nhắn trên app. Cách đúng: gặp trực tiếp, nói thẳng, để không gian cho phản ứng. Không cần « lý do hoàn hảo » — đủ để nói « ça ne marche plus pour moi ». Bạn không phải biện minh từng quyết định.\n\nVới bạn chuyển đi nước khác: « cérémonie d'adieu » thường có nhiều bạn đến (« pot de départ »). Là chuyện chung. Nhưng cuộc trò chuyện sâu, 1-on-1, là riêng — và thường để mở cuối cùng (sau pot de départ, bạn ở lại hoặc gặp ngày hôm sau).",
+      "cultural_notes_en": "Saying a permanent goodbye (a friend emigrating, ending a romantic relationship, closing a chapter) has its own word in French: 'adieu' — distinct from the everyday 'au revoir'. 'Adieu' carries real weight: from Latin 'à Dieu' ('to God'), it implies 'if we don't meet again in this life, then in the next'. The French use it rarely, only for a truly final parting; in real speech 'au revoir' covers even permanent goodbyes, the heaviness carried by tone and context rather than the word itself — so don't reach for 'adieu' to sound dramatic. The bigger cross-cultural point for anglophones: where American culture tends to keep goodbyes upbeat and forward-pointing ('we'll definitely stay in touch — come visit!'), the French invest in a 'cérémonie d'adieu', a deliberate farewell ritual — a last dinner, a walk somewhere that meant something to both of you, a handwritten letter handed over, a small symbolic gift. Skipping the ritual to keep things light reads as avoidance, not tact, and tends to leave both people with an unfinished feeling for months. For a romantic ending the French value 'se quitter proprement' (parting cleanly): in person, said plainly, with space left for the other's reaction — the slow-fade or soft-ghost that's quietly common in US dating reads here as cowardice. You do not owe a 'perfect reason'; 'ça ne marche plus pour moi' (this no longer works for me) is enough, and you are not required to justify every decision. Note the layering: the group send-off ('pot de départ') is public and a bit superficial by nature; the deep one-on-one conversation is private and usually kept for separately, after the party — don't try to have the real goodbye in the middle of the crowd.",
       "tip_advice_vi": "Bốn nguyên tắc cho « adieu » tử tế:\n(1) ĐẦU TƯ VÀO HÌNH THỨC. Đừng tin « mình sẽ giữ liên lạc qua WhatsApp » thay thế cho lời chia tay thật. Khi không có nghi thức, sự khép lại không xảy ra — bạn sẽ mang cảm giác « unfinished » trong tháng/năm sau.\n(2) NÓI ĐIỀU BẠN NGHĨ. Đừng để vai « chuyến đi tiếp theo » che đi điều quan trọng: « tu as compté » (bạn quan trọng), « ces moments précis avec toi » (những khoảnh khắc cụ thể), « ce que j'ai appris de toi » (điều em học được từ bạn). Cụ thể, không generic.\n(3) THỪA NHẬN ĐAU BUỒN. Pháp không khóc khi tạm biệt như Việt — nhưng để nước mắt một chút là bình thường, không phải dấu hiệu yếu. « C'est normal d'être triste — c'est la mesure de ce qu'on perd. »\n(4) ĐỪNG HỨA QUÁ. « On se reverra c'est sûr! » nghe đẹp nhưng có thể là lời hứa rỗng. Tốt hơn: « Si la vie nous remet sur le même chemin un jour, on saura. Et sinon, ce qu'on a vécu reste vrai. »\n\nĐối với chia tay tình cảm:\n- Mặt-đối-mặt, không tin nhắn\n- Một câu rõ ràng (« je ne peux plus continuer »), không ambiguous\n- Không kéo dài cuộc trò chuyện qua 1 tiếng — sau đó là tự nhân lên đau buồn\n- Trong 2 tuần đầu sau: không liên lạc (no « comment ça va? » qua tin nhắn) — cho không gian thật\n- Đồ đạc của họ: trả qua một người chung hoặc gửi bưu phẩm; KHÔNG dùng làm cớ gặp lại",
+      "tip_advice_en": "Four principles for a graceful 'adieu':\n(1) INVEST IN THE FORM. Don't let 'we'll keep in touch on WhatsApp' substitute for an actual goodbye. Without a ritual, closure doesn't happen — you'll carry an unfinished feeling for months. (Resist the very American move of reducing the goodbye to logistics: 'I'll DM you, we'll figure out a visit.')\n(2) SAY WHAT YOU ACTUALLY THINK. Don't let the 'next trip' framing crowd out the real content: 'tu as compté' (you mattered), one or two specific moments, what you learned from them. Concrete, not generic — 'you've been an amazing friend' lands as filler here; a precise memory does not.\n(3) ACKNOWLEDGE THE GRIEF. The French don't sob at goodbyes the way Vietnamese culture often does — but letting your eyes go is normal, not weakness. 'C'est normal d'être triste — c'est la mesure de ce qu'on perd' (it's normal to be sad — that's the measure of what we're losing).\n(4) DON'T OVER-PROMISE. 'On se reverra c'est sûr !' sounds warm but is often an empty promise. Better: 'Si la vie nous remet sur le même chemin un jour, on saura. Et sinon, ce qu'on a vécu reste vrai' (if life puts us on the same path again one day, we'll know; and if not, what we lived stays true).\n\nFor a romantic ending: face to face, not by text; one unambiguous sentence ('je ne peux plus continuer' — I can't continue any more), no hedging; don't drag the conversation past an hour (after that it only multiplies the pain); in the first two weeks, no contact at all (no 'comment ça va ?' check-in texts) — give real space; return their belongings through a mutual friend or by post — do NOT use them as a pretext to meet again. Anglophone calibration: the US instinct to 'stay friends right away' or 'leave the door open' reads, to the French, as a way of not actually ending it — the clean cut is the kinder one.",
       "vocabulary": [
         {
           "word": "un adieu",
           "en": "a final farewell",
           "vi": "lời chia tay vĩnh viễn",
           "pos": "n.m.",
-          "pronunciation_vi": "a-diơ"
+          "pronunciation_vi": "a-diơ",
+          "pronunciation_en": "ah-DYUH (the heavy word — from 'à Dieu'; reserve it for a truly final parting, NOT an everyday goodbye)"
         },
         {
           "word": "un pot de départ",
           "en": "a farewell drink/party",
           "vi": "tiệc chia tay",
           "pos": "n.m.",
-          "pronunciation_vi": "po dơ dé-par"
+          "pronunciation_vi": "po dơ dé-par",
+          "pronunciation_en": "POH duh day-PAR (literally 'a leaving drink'; the public group send-off — distinct from the private one-on-one goodbye)"
         },
         {
           "word": "se quitter",
           "en": "to part / break up",
           "vi": "chia tay",
           "pos": "v.",
-          "pronunciation_vi": "sơ ki-té"
+          "pronunciation_vi": "sơ ki-té",
+          "pronunciation_en": "suh kee-TAY (reflexive; 'on se quitte' = we part ways — also the standard verb for ending a romantic relationship)"
         },
         {
           "word": "clore un chapitre",
           "en": "to close a chapter",
           "vi": "khép lại một chương",
           "pos": "v.",
-          "pronunciation_vi": "klor an sha-pi-trơ"
+          "pronunciation_vi": "klor an sha-pi-trơ",
+          "pronunciation_en": "KLOR uh(n) shah-PEE-truh ('clore' is more literary/final than 'fermer'; same image as English 'close a chapter')"
         },
         {
           "word": "laisser une trace",
           "en": "to leave a mark",
           "vi": "để lại dấu ấn",
           "pos": "v.",
-          "pronunciation_vi": "lè-sé yun tras"
+          "pronunciation_vi": "lè-sé yun tras",
+          "pronunciation_en": "leh-SAY oon TRAHSS (final 'ce' = soft 'ss'; 'tu as laissé une trace' = you left a mark — a strong, non-sappy thing to say)"
         },
         {
           "word": "compter pour quelqu'un",
           "en": "to matter to someone",
           "vi": "quan trọng với ai đó",
           "pos": "v.",
-          "pronunciation_vi": "kõn-té pur kèl-kun"
+          "pronunciation_vi": "kõn-té pur kèl-kun",
+          "pronunciation_en": "ko(n)-TAY poor kel-KUH(n) ('compter' here = to count/matter, not to count numbers; 'tu as compté pour moi' = you mattered to me)"
         },
         {
           "word": "garder le contact",
           "en": "to stay in touch",
           "vi": "giữ liên lạc",
           "pos": "v.",
-          "pronunciation_vi": "gar-dé lơ kõn-takt"
+          "pronunciation_vi": "gar-dé lơ kõn-takt",
+          "pronunciation_en": "gar-DAY luh ko(n)-TAKT (final 'ct' both pronounced; say it only if you mean it — an empty 'on garde le contact' is heard as a non-promise)"
         },
         {
           "word": "un cadeau symbolique",
           "en": "a symbolic gift",
           "vi": "món quà tượng trưng",
           "pos": "n.m.",
-          "pronunciation_vi": "ka-do sãm-bo-lik"
+          "pronunciation_vi": "ka-do sãm-bo-lik",
+          "pronunciation_en": "kah-DOH sa(n)-boh-LEEK (a meaningful, NOT expensive, gift — an expensive one creates an obligation to reciprocate)"
         },
         {
           "word": "du fond du cœur",
           "en": "from the bottom of my heart",
           "vi": "từ tận đáy lòng",
           "pos": "expr.",
-          "pronunciation_vi": "du fõ du kơr"
+          "pronunciation_vi": "du fõ du kơr",
+          "pronunciation_en": "doo FO(n) doo KUR ('œu' = English 'her' vowel with rounded lips; the sincere closing thank-you — not a cliché in French)"
         },
         {
           "word": "se quitter proprement",
           "en": "to part cleanly",
           "vi": "chia tay sạch",
           "pos": "v.",
-          "pronunciation_vi": "sơ ki-té pro-prơ-mã"
+          "pronunciation_vi": "sơ ki-té pro-prơ-mã",
+          "pronunciation_en": "suh kee-TAY proh-pruh-MAH(n) ('proprement' = cleanly/properly; the French value for ending a relationship — the opposite of ghosting)"
         }
       ],
       "dialogue": [
         {
           "speaker": "Linh",
           "text": "Camille, je voulais qu'on se voie avant ton départ — pas en groupe.",
+          "en": "Camille, I wanted us to see each other before you leave — not in a group. [the deliberate private goodbye, separate from the public send-off]",
           "vi": "Camille, em muốn mình gặp trước khi bạn đi — không phải nhóm."
         },
         {
           "speaker": "Camille",
           "text": "J'attendais que tu me le proposes. Quand ?",
+          "en": "I was waiting for you to suggest it. When?",
           "vi": "Em chờ bạn đề xuất. Khi nào?"
         },
         {
           "speaker": "Linh",
           "text": "Demain soir, dîner chez moi. Juste nous deux.",
+          "en": "Tomorrow evening, dinner at my place. Just the two of us.",
           "vi": "Tối mai, ăn tối nhà em. Chỉ hai mình."
         },
         {
           "speaker": "Camille",
           "text": "Parfait. Je viens.",
+          "en": "Perfect. I'll come.",
           "vi": "Hoàn hảo. Em đến."
         }
       ],
@@ -14863,96 +14904,115 @@ export const lessons: FrenchLesson[] =           [
         {
           "speaker": "Linh (chez elle, après le dîner)",
           "text": "Camille, je voulais qu'on prenne ce moment juste nous deux avant que tu partes au Canada lundi.",
+          "en": "Camille, I wanted us to take this moment just the two of us before you leave for Canada on Monday.",
           "vi": "Camille, em muốn mình có khoảnh khắc này, chỉ hai mình, trước khi bạn đi Canada thứ hai."
         },
         {
           "speaker": "Camille",
           "text": "Moi aussi. Le pot de départ vendredi, c'est bien — mais c'est superficiel par nature.",
+          "en": "Me too. The send-off party Friday is nice — but it's superficial by nature. [the public 'pot de départ' vs. the real private goodbye — the lesson's core distinction]",
           "vi": "Em cũng vậy. Tiệc chia tay thứ sáu, được — nhưng theo bản chất là hời hợt."
         },
         {
           "speaker": "Linh",
           "text": "Quatre ans qu'on se connaît. C'est court à l'échelle d'une vie, mais c'était dense.",
+          "en": "Four years we've known each other. Short on the scale of a life, but it was dense.",
           "vi": "Bốn năm mình quen nhau. Ngắn so với một đời, nhưng dày."
         },
         {
           "speaker": "Camille",
           "text": "Très dense. Tu te souviens de notre première vraie discussion ? Le jour où je t'ai parlé de ma rupture avec Marc en marchant le long de la Seine.",
+          "en": "Very dense. Do you remember our first real conversation? The day I told you about my breakup with Marc while we walked along the Seine. [a specific shared memory, not a generic 'we had good times' — exactly what a French farewell calls for]",
           "vi": "Rất dày. Bạn nhớ cuộc trò chuyện thật đầu tiên của mình không? Ngày em kể bạn nghe về chia tay với Marc trong khi đi dọc sông Seine."
         },
         {
           "speaker": "Linh",
           "text": "Comme si c'était hier. C'est aussi le moment où j'ai compris que tu allais devenir importante pour moi. Tu as dit quelque chose que je n'oublierai pas — « je préfère pleurer maintenant que faire semblant pendant cinq ans ».",
+          "en": "As if it were yesterday. It's also the moment I understood you were going to become important to me. You said something I'll never forget — 'I'd rather cry now than pretend for five years.'",
           "vi": "Như mới hôm qua. Cũng là khoảnh khắc em hiểu bạn sẽ quan trọng với em. Bạn nói điều em sẽ không quên — « em thích khóc bây giờ hơn giả vờ năm năm »."
         },
         {
           "speaker": "Camille",
           "text": "Je m'en souviens parce que toi tu n'as pas répondu avec un cliché. Tu n'as pas dit « tu vas surmonter ». Tu as juste écouté.",
+          "en": "I remember it because you didn't answer with a cliché. You didn't say 'you'll get over it.' You just listened.",
           "vi": "Em nhớ vì bạn không trả lời bằng cliché. Bạn không nói « em sẽ vượt qua ». Bạn chỉ lắng nghe."
         },
         {
           "speaker": "Linh",
           "text": "Et toi, tu m'as appris quelque chose de très français que je n'avais pas — la capacité de dire non sans culpabiliser. Au Vietnam, on dit oui par défaut. Toi, tu m'as montré qu'on peut dire « ça ne me convient pas » et rester quelqu'un de bien.",
+          "en": "And you taught me something very French that I didn't have — the ability to say no without feeling guilty. In Vietnam, you say yes by default. You showed me you can say 'this doesn't work for me' and still be a good person. [naming what you learned from them — concrete, the opposite of filler]",
           "vi": "Còn bạn, bạn dạy em điều rất Pháp mà em chưa có — khả năng nói không mà không thấy tội. Ở Việt Nam, mặc định nói có. Bạn cho em thấy có thể nói « không hợp với em » và vẫn là người tốt."
         },
         {
           "speaker": "Camille",
           "text": "On va se garder en contact, hein ? WhatsApp, visio, mes retours en France pour Noël ?",
+          "en": "We'll stay in touch, right? WhatsApp, video calls, my trips back to France for Christmas?",
           "vi": "Mình sẽ giữ liên lạc nhé? WhatsApp, gọi video, em về Pháp Giáng sinh?"
         },
         {
           "speaker": "Linh",
           "text": "On va essayer. Et je vais être honnête — je sais qu'on dira ça et qu'au début ça marchera, et qu'à un moment, l'écart de fuseau horaire et nos vies qui s'éloignent feront que les visios deviendront plus rares. C'est normal. C'est la vie.",
+          "en": "We'll try. And I'll be honest — I know we'll say that and at first it'll work, and at some point the time-zone gap and our lives drifting apart will make the calls rarer. That's normal. That's life. [refusing the comfortable over-promise — the honest version is the respectful one here]",
           "vi": "Mình sẽ cố. Và em thẳng thắn — em biết mình sẽ nói vậy và lúc đầu sẽ làm được, và đến lúc, chênh múi giờ và cuộc sống hai bên xa nhau sẽ làm gọi video thưa dần. Là chuyện thường. Là cuộc sống."
         },
         {
           "speaker": "Camille",
           "text": "Tu dis ça parce que tu veux pas qu'on s'illusionne ?",
+          "en": "You're saying that because you don't want us to kid ourselves?",
           "vi": "Bạn nói vậy vì không muốn mình ảo tưởng à?"
         },
         {
           "speaker": "Linh",
           "text": "Voilà. Je préfère qu'on dise vrai aujourd'hui. Si on se reparle dans dix ans, ce sera vrai. Si on ne se reparle pas, ce qu'on a vécu reste vrai aussi. Les deux sont possibles.",
+          "en": "Exactly. I'd rather we say what's true today. If we talk again in ten years, that'll be true. If we don't, what we lived stays true too. Both are possible.",
           "vi": "Đúng. Em thích mình nói thật hôm nay. Nếu mình nói chuyện lại sau 10 năm, sẽ thật. Nếu không, điều mình đã sống vẫn thật. Cả hai có thể."
         },
         {
           "speaker": "Camille",
           "text": "… c'est dur d'entendre ça. Mais c'est juste.",
+          "en": "… that's hard to hear. But it's fair.",
           "vi": "… khó nghe. Nhưng đúng."
         },
         {
           "speaker": "Linh",
           "text": "Tiens — j'ai un petit cadeau. Pas grand-chose. C'est mon vieux carnet de notes — celui que tu m'avais offert pour mon anniversaire en 2024. J'ai recopié dedans les phrases que tu m'as dites au fil des quatre ans qui m'ont marquée. Tu peux le lire dans l'avion.",
+          "en": "Here — I have a small gift. Nothing big. It's my old notebook — the one you gave me for my birthday in 2024. I copied into it the things you said to me over the four years that stayed with me. You can read it on the plane. [a symbolic, personal, inexpensive gift — exactly the register, the opposite of an expensive obligation-creating present]",
           "vi": "Đây — em có món quà nhỏ. Không gì lớn. Là cuốn sổ note cũ của em — cái bạn tặng em sinh nhật 2024. Em đã chép lại trong đó những câu bạn nói với em trong 4 năm khiến em nhớ. Bạn đọc trên máy bay."
         },
         {
           "speaker": "Camille",
           "text": "Linh… (pleure un peu). Je n'ai rien préparé d'aussi beau.",
+          "en": "Linh… (cries a little). I didn't prepare anything this beautiful.",
           "vi": "Linh… (khóc một chút). Em không chuẩn bị gì đẹp như vậy."
         },
         {
           "speaker": "Linh",
           "text": "Tu n'as rien à préparer. Je voulais te laisser quelque chose d'écrit, pas qu'on échange des objets.",
+          "en": "You don't have to prepare anything. I wanted to leave you something written, not for us to swap objects. [the gift is one-directional and about leaving a trace, not a transaction]",
           "vi": "Bạn không phải chuẩn bị gì. Em muốn để lại bạn cái gì đó viết, không phải trao đổi đồ vật."
         },
         {
           "speaker": "Camille",
           "text": "Tu sais, dans cinq ans quand je relirai ce carnet, je vais voir cette soirée différemment. C'est ce qui est beau et triste à la fois.",
+          "en": "You know, in five years when I reread this notebook, I'll see this evening differently. That's what's beautiful and sad at the same time.",
           "vi": "Bạn biết, năm năm nữa khi em đọc lại sổ này, em sẽ thấy tối nay khác. Là điều đẹp và buồn cùng lúc."
         },
         {
           "speaker": "Linh",
           "text": "Tout ce qu'on est en train de vivre est déjà du passé pour ton « toi » de dans cinq ans. C'est étrange à penser.",
+          "en": "Everything we're living right now is already the past for your 'you' five years from now. It's strange to think about.",
           "vi": "Tất cả điều mình đang sống đã là quá khứ cho « em » năm năm nữa. Lạ khi nghĩ vậy."
         },
         {
           "speaker": "Camille",
           "text": "Merci, Linh. Vraiment. Du fond du cœur.",
+          "en": "Thank you, Linh. Truly. From the bottom of my heart.",
           "vi": "Cảm ơn, Linh. Thật lòng. Từ tận đáy lòng."
         },
         {
           "speaker": "Linh",
           "text": "Pareil. Bonne route. Sois heureuse là-bas — c'est ce que tu mérites.",
+          "en": "Same. Safe travels. Be happy over there — that's what you deserve. [a warm close that doesn't load expectation onto them]",
           "vi": "Em cũng vậy. Đi đường tốt. Hạnh phúc ở đó — đó là điều bạn xứng đáng."
         }
       ],
@@ -14961,30 +15021,44 @@ export const lessons: FrenchLesson[] =           [
         "Bạn quyết định kết thúc mối quan hệ tình cảm với người Pháp 2 năm qua. Đặt cuộc trò chuyện — chọn địa điểm, mở câu đầu, tránh ambiguity.",
         "Bạn thân Pháp về Pháp sau 5 năm ở Việt Nam. Trong bữa tối tạm biệt cuối, cô ấy hứa « on se voit une fois par an, c'est sûr ». Bạn biết khả năng cao là không. Phản hồi tử tế nhưng không nhân nhượng — không hứa điều bạn không chắc giữ được."
       ],
+      "roleplay_prompts_en": [
+        "A French colleague has been offered a job in Singapore and leaves in six weeks. You're close but not very close. Propose a 'cérémonie d'adieu' calibrated to that closeness — not too heavy, not too light. A long heartfelt one-on-one letter would over-claim the relationship; a one-line LinkedIn comment under-claims it. Aim for: a small group lunch you organize, plus a short genuine private word and a tiny symbolic gift (a book she'd like). Anglophone calibration: resist the US 'we HAVE to grab drinks before you go!' that everyone says and no one schedules — actually put a date on it.",
+        "You've decided to end a two-year romantic relationship with a French partner. Set up the conversation — choose the place, open the first line, avoid ambiguity. In person (not a text, not a call); somewhere neutral and private (not their flat, not a loud restaurant); open with 'Il faut qu'on parle, et c'est sérieux' then say it plainly: 'je ne peux plus continuer cette relation'. Do NOT soften it into 'maybe we should take a break' if you mean it's over — the French read the soft-ghost / 'let's see how it goes' as cowardice, not kindness.",
+        "A close French friend is moving back to France after 5 years in Vietnam. At the last farewell dinner she promises 'on se voit une fois par an, c'est sûr' (we'll see each other once a year, for sure). You know that's unlikely. Respond warmly but without caving — don't promise something you can't be sure you'll keep. Model: 'J'aimerais vraiment. Et si ça arrive, ce sera génial. Mais même si la vie fait que ça n'arrive pas, ce qu'on a vécu ne s'efface pas.' Anglophone calibration: the US reflex is to enthusiastically agree to keep the moment warm ('yes! every year, promise!') — here the honest version is the one that respects the friendship."
+      ],
       "register_notes": "Lời tạm biệt vĩnh viễn dùng tutoiement nếu đã thân, vouvoiement nếu chưa. « Adieu » là chữ nặng — chỉ dùng khi thực sự là cuối; nói thường dùng « au revoir » + giọng và bối cảnh truyền sự nặng. Tránh:\n- « On se reverra c'est sûr! » → lời hứa rỗng nếu không có kế hoạch cụ thể\n- « Tu vas me manquer » lặp 5 lần → nhường focus về mình; một lần là đủ\n- Im lặng phòng thủ → người Pháp đọc là thiếu cảm xúc, không phải tế nhị\n- Khóc to → Pháp coi là mất kiểm soát; nước mắt nhẹ thì OK\n\nCụm hữu ích:\n- « Avant que tu partes, je voulais te dire » → mở câu chính thức\n- « Tu as compté pour moi » → ngắn, mạnh, không sến\n- « Du fond du cœur » → câu chốt cảm ơn không cliché\n- « Si la vie nous remet sur le même chemin un jour, on saura » → lời hứa thật, không quá\n- « Sois heureux/heureuse là-bas » → câu kết warm + không đè lên họ kỳ vọng\n\nMón quà: nhỏ, mang ý nghĩa cá nhân (sổ note có viết tay, ảnh in, sách yêu thích đề tặng) — KHÔNG đắt tiền (gây áp lực đáp lễ); KHÔNG đồ phải mang qua hải quan (rượu, đồ ăn). Sau khi tạm biệt: KHÔNG nhắn tin trong 1 tuần đầu — cho cả hai khép lại đúng cách. Sau đó tin đầu tiên: ngắn, không nhắc nỗi buồn, hỏi thăm cuộc sống mới.",
+      "register_notes_en": "A permanent goodbye uses tutoiement if you're already close, vouvoiement if not. 'Adieu' is a heavy word — use it only when it truly is the end; in normal speech use 'au revoir' and let tone and context carry the weight (reaching for 'adieu' for effect sounds melodramatic). Avoid:\n- 'On se reverra c'est sûr !' → an empty promise unless there's a concrete plan; the French would rather hear the honest 'maybe, maybe not — and that's OK'.\n- 'Tu vas me manquer' repeated five times → it re-centers the moment on you; once, said plainly, is stronger.\n- Defensive silence → the French read it as a lack of feeling, not as tact — note this is the inverse of the anglophone instinct to 'keep it together'.\n- Loud crying → read as loss of composure; eyes welling up is fine.\n\nUseful phrases: 'Avant que tu partes, je voulais te dire' (the formal opener); 'Tu as compté pour moi' (short, strong, not sappy); 'Du fond du cœur' (sincere thank-you close); 'Si la vie nous remet sur le même chemin un jour, on saura' (an honest promise, not an over-promise); 'Sois heureux/heureuse là-bas' (a warm close that doesn't load expectation onto them).\n\nThe gift: small, personally meaningful (a notebook with something handwritten, a printed photo, an inscribed favourite book) — NOT expensive (an expensive gift creates a reciprocation obligation) and NOT something that has to clear customs (wine, food). After the goodbye: do NOT text in the first week — let both people close it properly. The first message after that: short, doesn't dwell on the sadness, asks about the new life. Anglophone calibration: the American reflex of an immediate 'landed safe?? miss you already!!' text undercuts the closure the ritual just created — give it the week.",
       "idiom_glosses": [
         {
           "idiom": "Faire ses adieux",
           "literal": "Làm các lời tạm biệt của mình",
+          "literal_en": "To make one's farewells",
           "meaning": "Chính thức chia tay vĩnh viễn.",
+          "meaning_en": "To say a formal, final goodbye. Anglophone equivalent: 'to say one's goodbyes' / 'to bid farewell' — but in French it implies a real, ceremonial parting, not a casual 'bye'.",
           "example": "On a fait nos adieux pendant le dîner — pas au pot de départ public."
         },
         {
           "idiom": "Clore un chapitre",
           "literal": "Khép lại một chương",
+          "literal_en": "To close a chapter",
           "meaning": "Kết thúc một giai đoạn cuộc đời.",
+          "meaning_en": "To end a life stage cleanly and deliberately. Same image as English 'to close a chapter' — 'clore' is more literary and final than 'fermer'.",
           "example": "Cette soirée, c'était clore un chapitre proprement."
         },
         {
           "idiom": "Laisser une trace",
           "literal": "Để lại dấu vết",
+          "literal_en": "To leave a trace/mark",
           "meaning": "Có ảnh hưởng lâu dài.",
+          "meaning_en": "To have a lasting effect on someone. English equivalent: 'to leave a mark' / 'to make a lasting impression' — a strong, non-sentimental thing to tell someone at a goodbye.",
           "example": "Tu as laissé une trace sur ces quatre ans, tu le sais."
         },
         {
           "idiom": "Du fond du cœur",
           "literal": "Từ tận đáy của trái tim",
+          "literal_en": "From the bottom of the heart",
           "meaning": "Chân thành nhất.",
+          "meaning_en": "With the deepest sincerity. Identical image to English 'from the bottom of my heart' — but in French it stays sincere and is NOT worn out as a cliché, so it works as a closing line.",
           "example": "Merci du fond du cœur — pas par politesse, vraiment."
         }
       ],
@@ -14992,7 +15066,10 @@ export const lessons: FrenchLesson[] =           [
         {
           "type": "fill-blank",
           "question": "Je veux qu'on se ___ vraiment, pas qu'on prétende que rien ne change.",
-          "answer": "quitte"
+          "question_en": "I want us to ___ for real, not for us to pretend nothing is changing.",
+          "answer": "quitte",
+          "hint_vi": "động từ « chia tay » (« se ___ », thì hiện tại sau « qu'on »)",
+          "hint_en": "the verb 'to part' (reflexive 'se ___', present after 'qu'on') — the deliberate clean break, not the comfortable lie"
         },
         {
           "type": "matching",
@@ -15010,12 +15087,30 @@ export const lessons: FrenchLesson[] =           [
               "từ tận đáy lòng"
             ]
           ],
-          "instruction": "Nối thuật ngữ với nghĩa Việt"
+          "pairs_en": [
+            [
+              "un adieu",
+              "a final farewell — the heavy word; reserve it for a truly final parting"
+            ],
+            [
+              "clore un chapitre",
+              "to close a chapter — end a life stage cleanly and deliberately"
+            ],
+            [
+              "du fond du cœur",
+              "from the bottom of the heart — sincere, and not a worn-out cliché in French"
+            ]
+          ],
+          "instruction": "Nối thuật ngữ với nghĩa Việt",
+          "instruction_en": "Match each French farewell term with its English explanation."
         },
         {
           "type": "translation",
           "vietnamese": "Cảm ơn bạn đã có mặt những năm qua — thật lòng, từ tận đáy lòng.",
-          "french": "Merci d'avoir été là pendant ces années — vraiment, du fond du cœur."
+          "french": "Merci d'avoir été là pendant ces années — vraiment, du fond du cœur.",
+          "english": "Thank you for being there all these years — truly, from the bottom of my heart.",
+          "hint_vi": "« merci d'avoir + participe passé » = cảm ơn vì đã làm gì; « du fond du cœur » là câu chốt chân thành",
+          "hint_en": "'merci d'avoir été là' = thank you for having been there ('d'avoir' + past participle); 'du fond du cœur' is the sincere closing line — not a cliché in French"
         }
       ]
     },
@@ -15033,6 +15128,11 @@ export const lessons: FrenchLesson[] =           [
             "traverses → tra-vèrs",
             "période → pé-riod",
             "concrètement → kõn-krèt-mã"
+          ],
+          "pronunciation_focus_en": [
+            "traverses → trah-VEHRSS (final 's' sounded; 'tu traverses' = you're going through; 'traverser une épreuve' = to go through a hardship)",
+            "période → pay-RYOD (three beats, 'é' = 'ay'; 'une période difficile' = a hard stretch — note: name it, but don't pry into details)",
+            "concrètement → ko(n)-kret-MAH(n) ('-ment' nasal; the load-bearing word — 'concrètement' = concretely; the French want a concrete offer, not 'let me know if you need anything')"
           ]
         },
         {
@@ -15042,6 +15142,11 @@ export const lessons: FrenchLesson[] =           [
             "besoin → bơ-zwã",
             "ça va → sa va",
             "ne va pas → nơ va pa"
+          ],
+          "pronunciation_focus_en": [
+            "besoin → buh-ZWA(n) (nasal final, no hard 'n'; 'tu n'as pas besoin de' = you don't need to)",
+            "ça va → sah VAH (the all-purpose 'I'm fine / it's OK'; here you're explicitly releasing them from having to say it)",
+            "ne va pas → nuh vah PAH ('ça ne va pas' = things are not OK — the line removes the social pressure to perform 'fine')"
           ]
         },
         {
@@ -15051,6 +15156,11 @@ export const lessons: FrenchLesson[] =           [
             "sortir → sor-tir",
             "marcher → mar-shé",
             "appeler → a-plé"
+          ],
+          "pronunciation_focus_en": [
+            "sortir → sor-TEER (final 'r' lightly rolled/uvular; 'sortir' = to go out)",
+            "marcher → mar-SHAY (final '-er' = 'SHAY'; 'marcher' = to walk — a low-demand activity offer, not a heavy talk)",
+            "appeler → ah-PLAY (the middle 'e' drops — 'a-PLAY', not 'a-pe-LAY'; 'm'appeler' = to call me)"
           ]
         },
         {
@@ -15060,6 +15170,11 @@ export const lessons: FrenchLesson[] =           [
             "mille → mil",
             "questions → kès-tion",
             "rythme → rit-mơ"
+          ],
+          "pronunciation_focus_en": [
+            "mille → MEEL (rhymes with English 'meal'; 'mille questions' = a thousand questions — what you promise NOT to ask)",
+            "questions → kes-TYO(n) (the '-tion' here = 'TYO(n)', nasal, not English '-shun')",
+            "rythme → REET-muh (the final 'me' barely voiced; 'à ton rythme' = at your pace — the core of French support: presence, not interrogation)"
           ]
         },
         {
@@ -15069,102 +15184,123 @@ export const lessons: FrenchLesson[] =           [
             "épreuve → é-prơv",
             "toujours → tu-jur",
             "seule → sơl"
+          ],
+          "pronunciation_focus_en": [
+            "épreuve → ay-PRUHV (the 'eu' = English 'her' vowel rounded, no exact English equivalent; 'une épreuve' = a trial/ordeal)",
+            "toujours → too-ZHOOR ('zh' = 's' in 'measure'; 'ne durera pas toujours' = won't last forever — reassurance without a cliché)",
+            "seule → SUHL (feminine 'alone'; 'tu n'es pas seule' = you're not alone — fact-based, not 'poor you')"
           ]
         }
       ],
       "cultural_notes_vi": "Hỗ trợ một người bạn Pháp trong giai đoạn khó (kiệt sức công việc, ly hôn, mất việc, gia đình tan vỡ, cô đơn nặng) khác văn hóa Việt ở vài điểm. Người Pháp đặt giá trị vào sự « pudeur » — sự kín đáo trong đau buồn. Họ KHÔNG kể chi tiết với nhiều người; có 1-2 người « confident(e)s » và phần còn lại không biết.\n\nKhác Việt Nam, nơi gia đình + bạn bè « rally around » đậm trong khủng hoảng (đến nhà mỗi ngày, mang đồ ăn, ngồi cạnh hàng giờ), Pháp expect bạn « être présent en arrière-plan » — có mặt nhưng không xâm phạm. Câu hỏi « comment ça va? » nói nhiều lần một ngày bị xem là gây khó cho người đang khó. Câu hữu ích thay thế: « tu veux qu'on prenne un café cette semaine? » (cụ thể, có lựa chọn, không đè lên).\n\nSai lầm phổ biến của người Việt:\n(1) Quá nhiều lời khuyên (« il faut que tu… »): Pháp coi là không tôn trọng — như họ không có khả năng tự suy nghĩ.\n(2) « Je sais ce que tu ressens » → giả định không thể đúng. Thay bằng « je peux pas savoir exactement, mais je suis là ».\n(3) Kể chuyện của mình để « so sánh »: « Moi aussi j'ai eu des moments durs, en 2019… » → chuyển focus về mình.\n(4) Đẩy positivity (« regarde le bon côté », « ça va aller ») → ép họ mất quyền buồn.\n\nGiọng Pháp đúng: ngắn, hành động cụ thể (« je passe te voir samedi à 15h »), không lecture, không hứa.\n\nLưu ý quan trọng: nếu bạn quan sát thấy bạn bè trong khủng hoảng nghiêm trọng (không ăn nhiều ngày, mất việc và mất nhà sắp tới, cô lập hoàn toàn), gợi ý nguồn lực chuyên môn nhẹ nhàng — nhà tâm lý (« psy »), bác sĩ gia đình (« médecin traitant »), hotline 3114 (Pháp). KHÔNG ép, không lo lắng vô tội vạ; chỉ nói « si tu veux parler à quelqu'un de plus formé que moi, le 3114 c'est 24/24 ».",
+      "cultural_notes_en": "Supporting a French friend through a hard time (work burnout, divorce, job loss, family rupture, deep loneliness) runs against a strong anglophone instinct. The French value 'pudeur' — restraint and privacy around pain. They do NOT broadcast the detail to many people; there are one or two 'confident(e)s' (trusted confidants) and everyone else simply doesn't know. Where Vietnamese culture (and, in its own way, American culture) tends to 'rally around' a crisis — daily visits, food drop-offs, sitting beside someone for hours, a flood of 'thinking of you 🙏' — the French expectation is 'être présent en arrière-plan': present, but not intrusive. Asking 'comment ça va ?' several times a day is experienced as a burden by the person who is struggling, because it makes them perform an answer. A better move is the specific, low-pressure offer: 'tu veux qu'on prenne un café cette semaine ?' (concrete, optional, no weight). Common anglophone errors mirror the Vietnamese ones: too much advice ('you should really…') reads as disrespect, as if they can't think for themselves; 'I know exactly how you feel' presumes what can't be known (say instead 'I can't know exactly, but I'm here'); telling your own comparable story shifts the focus to you; and forced positivity ('look on the bright side', 'it'll all work out', the American 'everything happens for a reason') strips them of the right to feel bad. The correct French register is short, with a concrete action ('je passe te voir samedi à 15h'), no lecture, no over-promise. Important: if you observe a serious crisis (not eating for days, imminent loss of job and home, total isolation), suggest professional resources gently — a 'psy', the 'médecin traitant' (GP), or the French 24/7 line 3114 — framed as 'if you want to talk to someone more trained than me' rather than 'you need help', and never broadcast your worry to mutual friends: pudeur comes first.",
       "tip_advice_vi": "Năm cách hỗ trợ thiết thực, không lecture:\n(1) ĐỀ XUẤT CỤ THỂ thay vì « dis-moi si tu as besoin ». Người trong khủng hoảng KHÔNG có năng lượng nghĩ + yêu cầu. « Je passe samedi à 15h avec une lasagne, ça t'oblige à rien. » → cụ thể, không bắt họ làm gì.\n(2) HÀNH ĐỘNG NHỎ. Mang một bữa ăn nấu sẵn (Pháp coi điều này là quà thực sự); offer giúp việc cụ thể (« je peux faire tes courses cette semaine », « je peux garder ton chien jeudi »); gửi một cuốn sách + lời nhắn ngắn.\n(3) GIỮ CHỖ KHÔNG ÁP LỰC. Khi gặp, KHÔNG yêu cầu họ kể; chấp nhận im lặng; không hỏi « comment tu vas vraiment » liên tục — họ sẽ nói khi sẵn sàng.\n(4) CHECK IN ĐỀU ĐẶN, KHÔNG ÉP. Tin nhắn ngắn 2 lần/tuần (« je pense à toi », « pas obligée de répondre »), không kỳ vọng phản hồi. Sau 1 tháng và 3 tháng vẫn check in — đó là khi nhiều bạn khác đã quên.\n(5) NHẮC NGUỒN LỰC CHUYÊN MÔN nhẹ nhàng. « Si tu veux parler à un psy, je peux t'aider à en trouver un » — KHÔNG « tu devrais voir un psy » (lecture).\n\nTRÁNH:\n- Lời khuyên không được hỏi (« il faut que tu… »): nếu bạn không phải psy, không lecture\n- « Tout va s'arranger » / « ça va aller » / « regarde le bon côté »: ép họ ra khỏi cảm xúc\n- Hỏi chi tiết về tình huống tiền/việc/gia đình: tôn trọng pudeur\n- So sánh với chuyện của bạn: chuyển focus\n- Chia sẻ với bạn chung (« je m'inquiète pour Camille »): vi phạm trust",
+      "tip_advice_en": "Five practical ways to support, without lecturing:\n(1) MAKE A CONCRETE OFFER instead of 'dis-moi si tu as besoin' (let me know if you need anything). A person in crisis has no energy to think up a request AND ask for it. 'Je passe samedi à 15h avec une lasagne, ça t'oblige à rien' (I'll come by Saturday at 3 with a lasagne, it commits you to nothing) → concrete, asks nothing of them. This is the single biggest fix for anglophones: 'let me know if you need anything' feels generous but quietly puts the labor on the person who has none.\n(2) SMALL ACTIONS. Bring a cooked meal (the French treat this as a real gift, not a cliché); offer a specific chore ('je peux faire tes courses cette semaine', 'je peux garder ton chien jeudi'); send a book with a short note.\n(3) HOLD SPACE WITHOUT PRESSURE. When you see them, don't require them to talk; accept silence; don't repeat 'comment tu vas vraiment ?' — they'll speak when ready.\n(4) CHECK IN STEADILY, WITHOUT PRESSURE. Short texts twice a week ('je pense à toi', 'pas obligée de répondre'), no expectation of a reply. Still check in at one month and three months — that's when most other friends have moved on, and it's the most remembered.\n(5) NAME PROFESSIONAL RESOURCES GENTLY. 'Si tu veux parler à un psy, je peux t'aider à en trouver un' — NOT 'tu devrais voir un psy' (that's a lecture).\n\nAVOID:\n- Unrequested advice ('il faut que tu…'): if you're not a therapist, don't lecture.\n- 'Tout va s'arranger' / 'ça va aller' / 'look on the bright side' / 'everything happens for a reason': forced positivity pushes them out of a feeling they're entitled to.\n- Probing for detail about the money/job/family situation: respect pudeur.\n- Comparing it to your own story: shifts the focus.\n- Telling a mutual friend ('je m'inquiète pour Camille'): breaks trust, even when well-meant.",
       "vocabulary": [
         {
           "word": "traverser une épreuve",
           "en": "to go through a hardship",
           "vi": "vượt qua thử thách",
           "pos": "v.",
-          "pronunciation_vi": "tra-vèr-sé yun é-prơv"
+          "pronunciation_vi": "tra-vèr-sé yun é-prơv",
+          "pronunciation_en": "trah-vehr-SAY oon ay-PRUHV ('épreuve' = a trial/ordeal; the neutral, dignified way to name a hard period without prying)"
         },
         {
           "word": "un coup dur",
           "en": "a hard blow",
           "vi": "cú đánh nặng",
           "pos": "n.m.",
-          "pronunciation_vi": "ku dur"
+          "pronunciation_vi": "ku dur",
+          "pronunciation_en": "KOO DOOR (literally 'a hard hit'; English equivalent: 'a hard knock' / 'a rough blow')"
         },
         {
           "word": "être épuisé(e)",
           "en": "to be exhausted",
           "vi": "kiệt sức",
           "pos": "adj.",
-          "pronunciation_vi": "é-trơ é-pwi-zé"
+          "pronunciation_vi": "é-trơ é-pwi-zé",
+          "pronunciation_en": "EH-truh ay-pwee-ZAY (deeper than 'tired/fatigué' — it's 'drained, depleted'; add a silent 'e' sound is unchanged for the feminine)"
         },
         {
           "word": "une période creuse",
           "en": "a low period",
           "vi": "giai đoạn xuống dốc",
           "pos": "n.f.",
-          "pronunciation_vi": "pé-riod krơz"
+          "pronunciation_vi": "pé-riod krơz",
+          "pronunciation_en": "pay-RYOD KRUHZ ('creuse' = hollow/empty; a flat, low stretch — gentler and less clinical than 'depression')"
         },
         {
           "word": "être présent(e)",
           "en": "to be present",
           "vi": "có mặt",
           "pos": "v.",
-          "pronunciation_vi": "é-trơ pré-zã"
+          "pronunciation_vi": "é-trơ pré-zã",
+          "pronunciation_en": "EH-truh pray-ZAH(n) (nasal final; 'être présent en arrière-plan' = to be present in the background — the French support ideal)"
         },
         {
           "word": "prêter une oreille",
           "en": "to lend an ear",
           "vi": "cho mượn cái tai",
           "pos": "v.",
-          "pronunciation_vi": "prè-té yun o-rèy"
+          "pronunciation_vi": "prè-té yun o-rèy",
+          "pronunciation_en": "preh-TAY oon oh-RAY (idiom; exactly the English 'to lend an ear' — to listen without fixing)"
         },
         {
           "word": "laisser respirer",
           "en": "to give space",
           "vi": "cho thở",
           "pos": "v.",
-          "pronunciation_vi": "lè-sé rès-pi-ré"
+          "pronunciation_vi": "lè-sé rès-pi-ré",
+          "pronunciation_en": "leh-SAY res-pee-RAY (literally 'to let breathe'; English equivalent: 'to give someone space / room to breathe')"
         },
         {
           "word": "un confident / une confidente",
           "en": "a trusted confidant",
           "vi": "người tâm sự",
           "pos": "n.m./n.f.",
-          "pronunciation_vi": "kõn-fi-dã / kõn-fi-dãt"
+          "pronunciation_vi": "kõn-fi-dã / kõn-fi-dãt",
+          "pronunciation_en": "ko(n)-fee-DAH(n) / ko(n)-fee-DAH(n)T (the masc. ends nasal, the fem. adds a sounded 't'; the one or two people who actually get told — pudeur means it's a short list)"
         },
         {
           "word": "aller voir un psy",
           "en": "to see a therapist",
           "vi": "đi gặp nhà tâm lý",
           "pos": "v.",
-          "pronunciation_vi": "a-lé vwar an psi"
+          "pronunciation_vi": "a-lé vwar an psi",
+          "pronunciation_en": "ah-LAY VWAR uh(n) PSEE ('psy' = casual for psychologue/psy; in France far less stigmatized than the word 'therapist' can feel — frame it as mature, not last-resort)"
         },
         {
           "word": "être à l'écoute",
           "en": "to be available to listen",
           "vi": "sẵn sàng lắng nghe",
           "pos": "expr.",
-          "pronunciation_vi": "é-trơ a lé-kut"
+          "pronunciation_vi": "é-trơ a lé-kut",
+          "pronunciation_en": "EH-truh ah lay-KOOT (distinct from 'écouter'/to hear — it means being available and attentive; presence over fixing)"
         }
       ],
       "dialogue": [
         {
           "speaker": "Linh (texto)",
           "text": "Camille, je pense à toi. Je sais que ces semaines sont dures.",
+          "en": "Camille, I'm thinking of you. I know these weeks are hard. [a short check-in text, no question to answer — note it does NOT demand a reply]",
           "vi": "Camille, em nghĩ đến bạn. Em biết những tuần này khó."
         },
         {
           "speaker": "Camille",
           "text": "Merci. Je tiens, mais je suis épuisée.",
+          "en": "Thanks. I'm holding on, but I'm exhausted.",
           "vi": "Cảm ơn. Em chịu, nhưng em kiệt sức."
         },
         {
           "speaker": "Linh",
           "text": "Je passe samedi à 15h avec une soupe. Pas obligée de parler — juste être là.",
+          "en": "I'll come by Saturday at 3 with a soup. No need to talk — just being there. [a concrete offer, not 'let me know if you need anything']",
           "vi": "Em ghé thứ bảy 15h với canh. Không bắt buộc nói — chỉ ở đó."
         },
         {
           "speaker": "Camille",
           "text": "OK. Sonne pas fort, je dors peut-être.",
+          "en": "OK. Don't ring loudly, I might be asleep.",
           "vi": "OK. Đừng bấm chuông to, em có thể đang ngủ."
         }
       ],
@@ -15172,91 +15308,109 @@ export const lessons: FrenchLesson[] =           [
         {
           "speaker": "Linh (téléphone, en début de soirée)",
           "text": "Camille, je voulais juste savoir comment tu tiens. Pas de longue conversation, juste un check.",
+          "en": "Camille, I just wanted to know how you're holding up. Not a long conversation, just a check-in. [naming it as a short check-in removes the pressure to 'perform' a long update]",
           "vi": "Camille, em chỉ muốn biết bạn chịu đựng thế nào. Không cuộc trò chuyện dài, chỉ check thôi."
         },
         {
           "speaker": "Camille",
           "text": "Merci d'avoir appelé. Honnêtement — je sais pas. Je suis très fatiguée. Je dors beaucoup mais je me réveille toujours fatiguée.",
+          "en": "Thanks for calling. Honestly — I don't know. I'm very tired. I sleep a lot but I always wake up tired.",
           "vi": "Cảm ơn bạn đã gọi. Thật lòng — em không biết. Em rất mệt. Em ngủ nhiều nhưng dậy luôn mệt."
         },
         {
           "speaker": "Linh",
           "text": "C'est typique des périodes très chargées. Tu manges correctement ?",
+          "en": "That's typical of very heavy periods. Are you eating properly? [one practical question, not a barrage of 'how are you really' questions]",
           "vi": "Đó là điển hình giai đoạn căng thẳng. Bạn ăn ổn không?"
         },
         {
           "speaker": "Camille",
           "text": "Pas trop. J'ai pas envie de cuisiner. Je grignote.",
+          "en": "Not really. I don't feel like cooking. I just snack.",
           "vi": "Không lắm. Em không muốn nấu. Em ăn vặt."
         },
         {
           "speaker": "Linh",
           "text": "D'accord. Question pratique — est-ce que je peux faire tes courses pour la semaine ? Tu me fais une liste, je passe samedi matin avec tout, je range dans ton frigo. Tu n'as pas à sortir.",
+          "en": "OK. Practical question — can I do your grocery shopping for the week? You make me a list, I come by Saturday morning with everything, I put it away in your fridge. You don't have to go out. [a fully concrete offer with the steps spelled out — she only has to say yes]",
           "vi": "Vâng. Câu hỏi thực tế — em đi chợ cho bạn cả tuần được không? Bạn liệt kê cho em, em ghé sáng thứ bảy với tất cả, em xếp vào tủ lạnh. Bạn không phải ra ngoài."
         },
         {
           "speaker": "Camille",
           "text": "Linh, c'est trop. Tu n'as pas à faire ça.",
+          "en": "Linh, that's too much. You don't have to do that.",
           "vi": "Linh, quá nhiều. Bạn không phải làm vậy."
         },
         {
           "speaker": "Linh",
           "text": "Ce n'est pas trop pour moi — j'allais à Carrefour samedi de toute façon. Et c'est plus facile pour moi de te déposer un sac que de regarder de loin et m'inquiéter sans agir.",
+          "en": "It's not too much for me — I was going to Carrefour Saturday anyway. And it's easier for me to drop off a bag than to watch from a distance and worry without doing anything. [lowers the cost on her side so she can accept without feeling like a burden]",
           "vi": "Không quá với em — em đi Carrefour thứ bảy dù sao. Và dễ hơn cho em thả bạn một túi, hơn là nhìn xa và lo mà không làm gì."
         },
         {
           "speaker": "Camille",
           "text": "OK. Je te fais une liste demain. Pas grand-chose — du pain, des œufs, un peu de fruits.",
+          "en": "OK. I'll make you a list tomorrow. Nothing much — bread, eggs, a little fruit.",
           "vi": "OK. Em viết bạn danh sách mai. Không nhiều — bánh mì, trứng, ít trái cây."
         },
         {
           "speaker": "Linh",
           "text": "Ajoute du chocolat noir et un truc qui te fait plaisir, même si tu te dis « non, c'est inutile ». Tu en auras besoin un soir.",
+          "en": "Add some dark chocolate and something that gives you pleasure, even if you tell yourself 'no, it's pointless.' You'll need it some evening.",
           "vi": "Thêm sô cô la đen và món gì làm bạn vui, kể cả nếu bạn tự nói « không, không cần ». Bạn sẽ cần một tối nào đó."
         },
         {
           "speaker": "Camille",
           "text": "D'accord… Linh, est-ce que je peux te dire quelque chose et que tu me promettes de pas en parler ?",
+          "en": "OK… Linh, can I tell you something and you promise not to talk about it?",
           "vi": "Vâng… Linh, em nói bạn nghe điều và bạn hứa không kể được không?"
         },
         {
           "speaker": "Linh",
           "text": "Bien sûr.",
+          "en": "Of course.",
           "vi": "Tất nhiên."
         },
         {
           "speaker": "Camille",
           "text": "Je crois que je devrais voir un psy. Mais j'ai peur que ça veuille dire « j'ai craqué ».",
+          "en": "I think I should see a therapist. But I'm afraid it means 'I cracked.'",
           "vi": "Em nghĩ em nên gặp nhà tâm lý. Nhưng em sợ điều đó có nghĩa « em đã sập »."
         },
         {
           "speaker": "Linh",
           "text": "Voir un psy, c'est exactement le contraire — c'est ne PAS attendre d'avoir craqué. C'est aller chercher des outils avant la crise. C'est mature, pas faible.",
+          "en": "Seeing a therapist is exactly the opposite — it's NOT waiting until you've cracked. It's going to get tools before the crisis. It's mature, not weak. [reframes therapy as preventive and mature — note: not a lecture, an answer to her stated fear]",
           "vi": "Gặp nhà tâm lý, đúng là ngược lại — là KHÔNG đợi sập rồi mới đi. Là đi tìm công cụ trước khủng hoảng. Là trưởng thành, không phải yếu."
         },
         {
           "speaker": "Camille",
           "text": "Tu connais quelqu'un de bien ?",
+          "en": "Do you know someone good?",
           "vi": "Bạn biết ai tốt không?"
         },
         {
           "speaker": "Linh",
           "text": "Je peux te demander à mon médecin traitant — elle a un réseau et donne des recommandations. Je te fais signe demain. En attendant, tu peux aussi appeler le 3114 si une nuit ça pèse trop. Je dis pas ça parce que je pense que tu es en danger — je dis ça parce que c'est gratuit et 24/24, pour les nuits où tu veux pas réveiller un ami.",
+          "en": "I can ask my GP — she has a network and gives recommendations. I'll let you know tomorrow. In the meantime, you can also call 3114 if a night gets too heavy. I'm not saying that because I think you're in danger — I'm saying it because it's free and 24/7, for the nights you don't want to wake a friend. [naming the resource gently, with the disclaimer that it isn't an alarm — the correct French register]",
           "vi": "Em hỏi bác sĩ gia đình — chị có mạng lưới và cho gợi ý. Em báo bạn mai. Trong khi đó, bạn cũng có thể gọi 3114 nếu một đêm quá nặng. Em nói không phải vì nghĩ bạn nguy hiểm — em nói vì miễn phí và 24/24, cho những đêm bạn không muốn đánh thức bạn bè."
         },
         {
           "speaker": "Camille",
           "text": "Je note. Merci, Linh.",
+          "en": "I'll note it. Thanks, Linh.",
           "vi": "Em ghi. Cảm ơn, Linh."
         },
         {
           "speaker": "Linh",
           "text": "Je vais te laisser. Je passe samedi avec les courses. Et je vais pas te poser mille questions à l'avenir — je vais juste être là à intervalles. Tu n'as pas à me rendre la pareille en ce moment, ni à me rassurer sur ton état. C'est moi qui m'aligne sur ton rythme.",
+          "en": "I'll let you go. I'll come Saturday with the groceries. And I won't ask you a thousand questions going forward — I'll just be there at intervals. You don't have to reciprocate right now, or to reassure me about how you're doing. I'm the one who aligns to your pace. [the whole French support model in one turn: present in the background, no demand for performance or reciprocity]",
           "vi": "Em để bạn nghỉ. Em ghé thứ bảy với đồ. Và em sẽ không hỏi bạn nghìn câu trong tương lai — em sẽ chỉ ở đó từng quãng. Bạn không phải đáp lễ em lúc này, cũng không phải trấn an em về tình trạng. Em là người căn theo nhịp bạn."
         },
         {
           "speaker": "Camille",
           "text": "… c'est ce dont j'avais besoin. Merci d'avoir appelé.",
+          "en": "… that's what I needed. Thanks for calling.",
           "vi": "… là điều em cần. Cảm ơn bạn đã gọi."
         }
       ],
@@ -15265,30 +15419,44 @@ export const lessons: FrenchLesson[] =           [
         "Bạn Pháp ly hôn, hiện cô lập trong căn hộ một mình. Bạn không quá thân nhưng từng làm việc cùng. Gửi tin nhắn check-in đầu tiên — không xâm phạm, không đè lên kỳ vọng đáp lại.",
         "Bạn quan sát thấy bạn Pháp đang kiệt sức nặng (làm việc 80h/tuần, không ngủ, mất cân nặng). Đề xuất một « pause » cụ thể — không lecture về sức khỏe, nhưng hành động đề xuất (cuối tuần ngoại ô không điện thoại) giúp họ break."
       ],
+      "roleplay_prompts_en": [
+        "Your French friend lost her job last week and is stressed about money. Offer concrete support — NOT money (it would shame her), but other action: introducing a hiring contact, regular dinner invitations, helping with her CV. Frame the offer as already-decided and low-cost to her: 'Je dîne chez moi jeudi, viens, je fais à manger de toute façon' — not 'tell me if you want to come over sometime'. Anglophone calibration: avoid the US 'do you need anything? anything at all, seriously' — it sounds generous but makes the jobless person do the work of inventing and asking.",
+        "A French friend is divorcing and currently isolating in her flat alone. You're not very close but used to work together. Send the first check-in text — not intrusive, no pressure to reply. Model: 'Je pense à toi en ce moment. Pas besoin de répondre — je voulais juste que tu saches.' Keep it one line; do NOT add 'call me anytime day or night!!' (that re-loads the labor onto her). The not-very-close relationship is exactly why restraint matters here.",
+        "You observe a French friend in severe burnout (working 80h/week, not sleeping, losing weight). Propose a concrete 'pause' — no health lecture, but a proposed action (a phone-free weekend out of the city) that makes the break easy. Model: 'J'ai réservé un truc simple à la campagne samedi-dimanche. Tu n'as rien à organiser, je m'occupe de tout, et on coupe les téléphones. Tu viens.' Anglophone calibration: skip 'you really need to slow down, this isn't sustainable' — it's true but it's a lecture; the booked, zero-effort plan is the help."
+      ],
       "register_notes": "Hỗ trợ trong khó khăn dùng tutoiement nếu đã thân, vouvoiement nếu chưa. Quy tắc cốt lõi: ÍT NÓI, NHIỀU LÀM. Tránh:\n- « Tu vas surmonter » / « ça va aller » → ép positivity\n- « Il faut que tu… » → lecture\n- « Je sais ce que tu ressens » → giả định\n- « Comment tu vas vraiment? » lặp 5 lần → áp lực performance\n- Kể chuyện của mình → chuyển focus\n\nCụm hữu ích:\n- « Je vois bien que tu traverses une période difficile » → công nhận không xâm phạm\n- « Tu n'as pas besoin de me dire ça va si ça ne va pas » → tháo bỏ áp lực performance\n- « Je passe [jour] à [heure] avec [chose] — ça t'oblige à rien » → đề xuất cụ thể không yêu cầu\n- « Je suis là à ton rythme » → tôn trọng nhịp\n- « Cette épreuve ne durera pas toujours » → reassurance không cliché\n\nKhi gợi ý nguồn lực chuyên môn (psy, médecin, hotline 3114): nói nhẹ, không « tu DOIS voir un psy »; thay bằng « si tu veux, je peux t'aider à en trouver un ». Nếu bạn quan sát dấu hiệu nguy hiểm thực sự (kế hoạch tự sát cụ thể, mất hoàn toàn khả năng ăn/ngủ trong nhiều tuần): không tự xử, gọi médecin traitant của họ hoặc 3114, nhưng KHÔNG đăng/share trên mạng xã hội. Pudeur ưu tiên.",
+      "register_notes_en": "Supporting someone through a hard time uses tutoiement if you're already close, vouvoiement if not. The core rule: SAY LESS, DO MORE. Avoid:\n- 'Tu vas surmonter' / 'ça va aller' / 'it'll all work out' → forced positivity.\n- 'Il faut que tu…' → a lecture.\n- 'Je sais ce que tu ressens' / 'I know exactly how you feel' → a presumption; say 'je ne peux pas savoir exactement, mais je suis là'.\n- 'Comment tu vas vraiment ?' repeated five times → performance pressure.\n- Telling your own story → shifts the focus.\n\nUseful phrases: 'Je vois bien que tu traverses une période difficile' (acknowledges without prying); 'Tu n'as pas besoin de me dire ça va si ça ne va pas' (removes the pressure to perform 'fine'); 'Je passe [jour] à [heure] avec [chose] — ça t'oblige à rien' (concrete offer that demands nothing back); 'Je suis là à ton rythme' (respects their pace); 'Cette épreuve ne durera pas toujours' (reassurance that isn't a cliché).\n\nWhen naming professional resources (psy, GP, the 24/7 line 3114): say it lightly, never 'tu DOIS voir un psy'; use 'si tu veux, je peux t'aider à en trouver un'. If you observe genuine danger signs (a specific suicide plan, total loss of the ability to eat/sleep for weeks): don't handle it alone — call their GP or 3114 — but do NOT post or share it on social media. Pudeur comes first. Anglophone calibration: the well-meant US public 'sending love and light to my friend going through it 💔' would be experienced here as exposing them; keep it private and one-to-one.",
       "idiom_glosses": [
         {
           "idiom": "Avoir un coup dur",
           "literal": "Có cú đánh nặng",
+          "literal_en": "To have a hard blow",
           "meaning": "Trải qua sự kiện khó khăn lớn.",
+          "meaning_en": "To go through a sudden, serious setback. English equivalent: 'to take a hard knock' / 'to be going through a rough patch'.",
           "example": "Camille a un coup dur en ce moment — laissons-la respirer."
         },
         {
           "idiom": "Tenir le coup",
           "literal": "Cầm cự cú đánh",
+          "literal_en": "To hold the blow",
           "meaning": "Chịu đựng được trong khó khăn.",
+          "meaning_en": "To hold up / cope under pressure. English equivalent: 'to hang in there' / 'to hold up'. 'Tu tiens le coup ?' = are you holding up? — gentler than 'how are you?'.",
           "example": "Tu tiens le coup ? Pas obligée de me rassurer."
         },
         {
           "idiom": "Être à fleur de peau",
           "literal": "Ở mép da",
+          "literal_en": "To be at skin level / at the surface of the skin",
           "meaning": "Cảm xúc rất nhạy, dễ tổn thương.",
+          "meaning_en": "To be raw / extremely emotionally sensitive, easily set off. English equivalent: 'to be on edge' / 'emotions raw and right at the surface'.",
           "example": "Camille est à fleur de peau ces jours-ci — je marche sur des œufs."
         },
         {
           "idiom": "Voir le bout du tunnel",
           "literal": "Thấy cuối đường hầm",
+          "literal_en": "To see the end of the tunnel",
           "meaning": "Bắt đầu thấy lối ra khỏi giai đoạn khó.",
+          "meaning_en": "To start seeing a way out of a hard period. Identical image to English 'light at the end of the tunnel' — note the French uses 'le bout' (the end), not 'la lumière' (the light).",
           "example": "Tu ne le vois pas encore, mais tu vas voir le bout du tunnel."
         }
       ],
@@ -15296,7 +15464,10 @@ export const lessons: FrenchLesson[] =           [
         {
           "type": "fill-blank",
           "question": "Tu n'as pas besoin de me dire « ça ___ » si ça ne va pas.",
-          "answer": "va"
+          "question_en": "You don't need to tell me 'I'm ___' if you're not OK.",
+          "answer": "va",
+          "hint_vi": "động từ trong cụm « ça ___ » = ổn (đi với « ça »)",
+          "hint_en": "the verb in 'ça ___' — the all-purpose French 'I'm fine / it's OK'; the line releases them from having to say it"
         },
         {
           "type": "matching",
@@ -15314,12 +15485,30 @@ export const lessons: FrenchLesson[] =           [
               "cầm cự được"
             ]
           ],
-          "instruction": "Nối thuật ngữ với nghĩa Việt"
+          "pairs_en": [
+            [
+              "traverser une épreuve",
+              "to go through a hardship — the dignified way to name a hard period without prying"
+            ],
+            [
+              "un coup dur",
+              "a hard blow / a rough knock — a sudden serious setback"
+            ],
+            [
+              "tenir le coup",
+              "to hold up / hang in there — 'tu tiens le coup ?' is gentler than 'how are you?'"
+            ]
+          ],
+          "instruction": "Nối thuật ngữ với nghĩa Việt",
+          "instruction_en": "Match each French support term with its English explanation."
         },
         {
           "type": "translation",
           "vietnamese": "Em không hỏi bạn nghìn câu — em chỉ ở đây, theo nhịp của bạn.",
-          "french": "Je ne vais pas te poser mille questions — je suis juste là, à ton rythme."
+          "french": "Je ne vais pas te poser mille questions — je suis juste là, à ton rythme.",
+          "english": "I'm not going to ask you a thousand questions — I'm just here, at your pace.",
+          "hint_vi": "« poser mille questions » = hỏi dồn; « à ton rythme » = theo nhịp của bạn (cốt lõi của cách hỗ trợ Pháp)",
+          "hint_en": "'poser mille questions' = to fire off a thousand questions; 'à ton rythme' = at your pace — presence over interrogation, the core of French support"
         }
       ]
     },
