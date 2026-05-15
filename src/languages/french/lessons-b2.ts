@@ -13937,6 +13937,12 @@ export const lessons: FrenchLesson[] =           [
             "nouvelle → nu-vèl",
             "profondément → pro-fõn-dé-mã",
             "désolée → dé-zo-lé"
+          ],
+          "pronunciation_focus_en": [
+            "apprendre → ah-PRAH(n)-druh (nasal middle; 'je viens d'apprendre' = I've just learned/heard)",
+            "nouvelle → noo-VEL (final 'e' silent; 'la nouvelle' = the news, used delicately to mean a death)",
+            "profondément → proh-fo(n)-day-MAH(n) (two nasals; '-ment' nasal; means 'deeply')",
+            "désolée → day-zoh-LAY (the extra 'e' marks a female speaker; 'profondément désolée' = deeply sorry)"
           ]
         },
         {
@@ -13946,6 +13952,11 @@ export const lessons: FrenchLesson[] =           [
             "toutes → tut",
             "condoléances → kõn-do-lé-ãns",
             "famille → fa-miy"
+          ],
+          "pronunciation_focus_en": [
+            "toutes → TOOT (final 'es' silent; 'toutes mes condoléances' = the fixed formal condolence phrase — learn it as one block)",
+            "condoléances → ko(n)-doh-lay-AH(n)SS (nasal first + nasal near end; the formal word for condolences)",
+            "famille → fah-MEE-yuh (the tricky '-mille' = 'mee-yuh' ending; means 'family')"
           ]
         },
         {
@@ -13956,6 +13967,12 @@ export const lessons: FrenchLesson[] =           [
             "aider → è-dé",
             "là → la",
             "tout → tu"
+          ],
+          "pronunciation_focus_en": [
+            "sais → SEH (one syllable; from 'savoir'; 'je ne sais pas quoi dire' = I don't know what to say — admitting this is GOOD in French grief register)",
+            "aider → eh-DAY (final '-er' = 'DAY'; 'aider' = to help)",
+            "là → LAH (one syllable; 'je suis là' = I'm here / I'm present — the core of French comforting)",
+            "tout → TOO (final 't' silent; 'c'est tout' = that's all — the deliberate understatement)"
           ]
         },
         {
@@ -13966,6 +13983,12 @@ export const lessons: FrenchLesson[] =           [
             "seule → sơl",
             "appeler → a-plé",
             "n'importe quand → nan-port kã"
+          ],
+          "pronunciation_focus_en": [
+            "parler → par-LAY (final '-er' = 'LAY'; 'si tu veux parler' = if you want to talk — note the offer is optional)",
+            "seule → SUHL (the 'eu' is rounded; final 'e' silent; feminine 'alone' — 'pas être seule' = not be alone)",
+            "appeler → ah-PLAY (the double 'p' is one sound; 'm'appeler' = to call me)",
+            "n'importe quand → na(n)-port KAH(n) (two nasals; means 'any time at all' — removes the 'don't want to bother you' barrier)"
           ]
         },
         {
@@ -13976,102 +13999,124 @@ export const lessons: FrenchLesson[] =           [
             "fort → for",
             "moment → mo-mã",
             "difficile → di-fi-sil"
+          ],
+          "pronunciation_focus_en": [
+            "pense → PAH(n)SS (one nasal syllable + hissed 's'; 'je pense à toi' = I'm thinking of you — the warm-register phrase)",
+            "fort → FOR (final 't' silent; here an adverb 'strongly' — 'je pense fort à toi' = I'm thinking of you a great deal)",
+            "moment → moh-MAH(n) ('-ment' nasal; 'en ce moment difficile' = in this difficult time)",
+            "difficile → dee-fee-SEEL (final 'e' silent; the gentle euphemism for the bereavement period)"
           ]
         }
       ],
       "cultural_notes_vi": "An ủi sau mất mát ở Pháp tuân theo register chính xác, không bằng giọng « cảm xúc lớn » kiểu Việt. Người Pháp đánh giá cao SỰ HIỆN DIỆN và giọng điềm đạm hơn lời nói nhiều. Sai lầm phổ biến của người Việt:\n\n(1) Nói quá nhiều (« tôi rất rất rất buồn cho bạn, gia đình tôi cũng từng… ») — chuyển focus về mình, không phải họ. (2) Đưa lời khuyên không được hỏi (« il faut rester fort », « pense aux beaux souvenirs ») — nghe như giáo huấn. (3) Tránh chủ đề (« on parle d'autre chose, ça te changera les idées ») — Pháp coi là phủ nhận đau buồn. (4) Hỏi chi tiết (« il est mort comment ? il a souffert ? ») — xâm phạm.\n\nCông thức hiệu quả: SHORT + WARM + AVAILABLE.\n- Short: 1-3 câu, không paragraph dài\n- Warm: nói rõ bạn nghĩ đến họ + có ở đó\n- Available: đề xuất hành động cụ thể (« je passe te voir samedi ? », « tu veux qu'on aille au parc ? »), không « dis-moi si tu as besoin »\n\nVề tiền: nếu bạn rất thân, mang đồ ăn đã nấu sẵn (lasagne, soupe — Pháp hay làm thế) hoặc gửi voucher livraison repas. Hoa: hoa cúc trắng (chrysanthèmes blancs) cho đám tang ở Pháp; KHÔNG hoa hồng (tình yêu) hay hoa cẩm chướng đỏ. Card: bưu thiếp ngắn viết tay tốt hơn email — có lưu giữ được. Thời điểm: gửi tin trong 24-48 giờ đầu, không đợi « lúc thích hợp »; sau đó nhắc lại sau 2 tuần (lúc bạn bè thường đã quên trở lại) và tháng kỷ niệm 6 tháng.",
+      "cultural_notes_en": "Comforting after a loss in France follows a precise register, and it is NOT the 'big emotion' mode that comes naturally in Vietnamese — nor the American 'reach out, share your feelings, send a long heartfelt paragraph' mode. The French value PRESENCE and a measured tone far above quantity of words. The common errors cut across cultures: (1) Saying too much ('I'm so so so sorry for you, my own family also went through…') — this shifts the focus onto YOU, not them; the American instinct to relate via your own loss is read as self-centering here. (2) Giving unsolicited advice ('il faut rester fort', 'think of the good memories') — it sounds like a lecture and, worse, implies they're grieving wrong. (3) Avoiding the subject ('let's talk about something else, it'll take your mind off it') — the French read this as denying the grief; you do not have to fix their mood. (4) Asking for details ('how did he die? did he suffer?') — intrusive in any culture, especially here.\n\nThe effective formula is SHORT + WARM + AVAILABLE. Short: 1–3 sentences, never a long paragraph (the long sympathetic paragraph that works in US texting culture reads as performative here). Warm: state plainly that you're thinking of them and that you're there. Available: propose a CONCRETE action ('je passe te voir samedi?' / 'tu veux qu'on aille au parc?'), not the vague 'dis-moi si tu as besoin' (let me know if you need anything) — the vague offer puts the labor of asking on the grieving person, who will never take it up. This 'specific offer beats open offer' principle is the single highest-leverage thing an anglophone can adopt here.\n\nPractical norms: if you're close, bring ready-made food (lasagne, soup — the French do exactly this) or send a meal-delivery voucher. Flowers: white chrysanthemums ('chrysanthèmes blancs') for a French funeral — and never roses (love) or red carnations. In France chrysanthemums are specifically funeral/Toussaint flowers, so do NOT bring them as a cheerful house gift on any other occasion — that mistake is the inverse trap. A short handwritten card beats an email — it can be kept. Timing: send a message within the first 24–48 hours, do not wait for 'the right moment'; then check in again at ~2 weeks (when other friends have drifted back to normal) and around the 6-month mark. That delayed re-contact is, in France, one of the clearest signals of real friendship.",
       "tip_advice_vi": "PHÂN BIỆT 4 cụm cùng có ý « xót xa » nhưng register khác:\n- « Toutes mes condoléances » — formal, dùng khi mới biết tin, đặc biệt với gia đình bạn không quá thân; viết trên thiệp tang chuẩn.\n- « Je suis désolée » — neutral, có thể dùng nói + viết; phù hợp với bạn thân.\n- « Je pense à toi » — warm, nhấn mạnh sự hiện diện cảm xúc; dùng cho bạn rất thân hoặc qua tin nhắn.\n- « Mes pensées (vont) vers toi/vous » — gentle, dùng khi không biết quan hệ tôn giáo của họ (tránh « je prie pour toi » nếu không chắc họ tin).\n\nTránh: « Je sais ce que tu ressens » (không bao giờ đúng); « il/elle est dans un meilleur endroit » (giả định tôn giáo); « le temps guérit tout » (clichéd, vô cảm); « pense aux bons côtés » (ép mất quyền buồn). Đối với mất thú cưng: KHÔNG đưa « ce n'est qu'un chien » — Pháp coi pet là thành viên gia đình. Dùng cùng register an ủi như mất người thân, nhẹ hơn một chút (« condoléances » hơi formal cho pet — « je suis désolée pour Loulou, je sais combien tu l'aimais »).",
+      "tip_advice_en": "Distinguish four phrases that all mean roughly 'I'm sorry for your loss' but sit at different registers — getting the register wrong is the main anglophone error, because English flattens them all into 'so sorry for your loss':\n- 'Toutes mes condoléances' — formal/distant; use when you first hear the news, especially with a family you're not close to; this is what you write on a standard sympathy card.\n- 'Je suis désolé(e)' — neutral; works spoken or written; fine with a close friend.\n- 'Je pense à toi' — warm/intimate; emphasizes emotional presence; for a very close friend or by personal text.\n- 'Mes pensées vont vers toi/vous' — gentle; use when you don't know their religious stance (and avoid 'je prie pour toi' / I'm praying for you unless you're sure they'd welcome it — a key difference from much of the US, where 'praying for you' is a near-default; in secular France it can land wrong).\n\nAvoid these (they feel supportive but aren't): 'Je sais ce que tu ressens' (I know how you feel — you don't, and it's heard that way); 'il/elle est dans un meilleur endroit' (he/she is in a better place — assumes religion); 'le temps guérit tout' (time heals all — clichéd and dismissive); 'pense aux bons côtés' (look on the bright side — strips them of the right to grieve). For the loss of a pet: do NOT say 'ce n'est qu'un chien' (it's only a dog) — the French treat pets as family members, often more openly than in some cultures. Use the same comforting register as for a person, just slightly lighter ('condoléances' is a touch formal for a pet) — and crucially, use the pet's name: 'je suis désolée pour Loulou, je sais combien tu l'aimais' (I'm sorry about Loulou, I know how much you loved him). Naming the pet is what proves you actually registered the loss rather than offering a script.",
       "vocabulary": [
         {
           "word": "présenter ses condoléances",
           "en": "to offer condolences",
           "vi": "đưa lời chia buồn",
           "pos": "v.",
-          "pronunciation_vi": "pré-zãn-té sé kõn-do-lé-ãns"
+          "pronunciation_vi": "pré-zãn-té sé kõn-do-lé-ãns",
+          "pronunciation_en": "pray-zah(n)-TAY say ko(n)-doh-lay-AH(n)SS (the formal action; what you do at the funeral when you greet the family)"
         },
         {
           "word": "un deuil",
           "en": "grief / mourning",
           "vi": "sự tang tóc",
           "pos": "n.m.",
-          "pronunciation_vi": "dơy"
+          "pronunciation_vi": "dơy",
+          "pronunciation_en": "DUH-yuh (one syllable; the 'euil' = 'uh-yuh', a hard French sound; means grief AND the formal state of mourning)"
         },
         {
           "word": "être en deuil",
           "en": "to be grieving",
           "vi": "đang chịu tang",
           "pos": "v.",
-          "pronunciation_vi": "é-trơ ãn dơy"
+          "pronunciation_vi": "é-trơ ãn dơy",
+          "pronunciation_en": "ETR ah(n) DUH-yuh ('en deuil' = in mourning — a recognized state, often with workplace bereavement leave attached)"
         },
         {
           "word": "perdre un proche",
           "en": "to lose a loved one",
           "vi": "mất người thân",
           "pos": "v.",
-          "pronunciation_vi": "pèr-drơ an prosh"
+          "pronunciation_vi": "pèr-drơ an prosh",
+          "pronunciation_en": "PAIR-druh uh(n) PROSH ('un proche' = a close/loved one — broader than 'family', includes close friends)"
         },
         {
           "word": "un enterrement",
           "en": "a funeral",
           "vi": "đám tang",
           "pos": "n.m.",
-          "pronunciation_vi": "ãn-tèr-mã"
+          "pronunciation_vi": "ãn-tèr-mã",
+          "pronunciation_en": "ah(n)-tair-MAH(n) (two nasals; the burial funeral specifically; 'obsèques' is the more formal general term)"
         },
         {
           "word": "une cérémonie d'adieu",
           "en": "a farewell ceremony",
           "vi": "lễ tiễn biệt",
           "pos": "n.f.",
-          "pronunciation_vi": "sé-ré-mo-ni da-diơ"
+          "pronunciation_vi": "sé-ré-mo-ni da-diơ",
+          "pronunciation_en": "say-ray-moh-NEE dah-DYUH (a secular/civil farewell ceremony — increasingly common in secular France, not religious)"
         },
         {
           "word": "être présent(e) pour quelqu'un",
           "en": "to be there for someone",
           "vi": "có mặt vì ai đó",
           "pos": "expr.",
-          "pronunciation_vi": "é-trơ pré-zã pur kèl-kun"
+          "pronunciation_vi": "é-trơ pré-zã pur kèl-kun",
+          "pronunciation_en": "ETR pray-ZAH(n) poor kel-KUH(n) (the core French comforting value — physical/emotional presence over words)"
         },
         {
           "word": "prendre des nouvelles",
           "en": "to check in",
           "vi": "hỏi thăm",
           "pos": "v.",
-          "pronunciation_vi": "prãn-drơ dé nu-vèl"
+          "pronunciation_vi": "prãn-drơ dé nu-vèl",
+          "pronunciation_en": "PRAH(n)-druh day noo-VEL ('prendre des nouvelles' = to check in on someone — the delayed 2-week one matters most)"
         },
         {
           "word": "traverser une épreuve",
           "en": "to go through a hardship",
           "vi": "vượt qua thử thách",
           "pos": "v.",
-          "pronunciation_vi": "tra-vèr-sé yun é-prơv"
+          "pronunciation_vi": "tra-vèr-sé yun é-prơv",
+          "pronunciation_en": "trah-vair-SAY oon ay-PRUHV ('une épreuve' = a trial/ordeal; the dignified word for what they're going through)"
         },
         {
           "word": "laisser le temps",
           "en": "to give time",
           "vi": "cho thời gian",
           "pos": "v.",
-          "pronunciation_vi": "lè-sé lơ tã"
+          "pronunciation_vi": "lè-sé lơ tã",
+          "pronunciation_en": "leh-SAY luh TAH(n) ('laisser le temps' = to allow time — note: NOT 'le temps guérit tout', which is the cliché to avoid)"
         }
       ],
       "dialogue": [
         {
           "speaker": "Linh (texto à 9h, le lendemain)",
           "text": "Camille, je viens d'apprendre pour ton père. Toutes mes condoléances. Je pense à toi.",
+          "en": "Camille, I just heard about your father. My deepest condolences. I'm thinking of you. [short + warm — sent within 24h, no long paragraph]",
           "vi": "Camille, em vừa nghe tin về bố bạn. Em xin chia buồn. Em nghĩ đến bạn."
         },
         {
           "speaker": "Camille",
           "text": "Merci Linh. C'est dur.",
+          "en": "Thank you, Linh. It's hard.",
           "vi": "Cảm ơn Linh. Khó quá."
         },
         {
           "speaker": "Linh",
           "text": "Je passe te voir samedi si tu veux. Pas obligée de parler — juste être là.",
+          "en": "I'll come see you Saturday if you want. No need to talk — just to be there. [a CONCRETE offer, not vague 'let me know if you need anything']",
           "vi": "Em ghé bạn thứ bảy nếu bạn muốn. Không cần nói — chỉ ở đó."
         },
         {
           "speaker": "Camille",
           "text": "Oui — viens, ça me fera du bien.",
+          "en": "Yes — come, it'll do me good.",
           "vi": "Ừ — đến đi, sẽ giúp em."
         }
       ],
@@ -14079,86 +14124,103 @@ export const lessons: FrenchLesson[] =           [
         {
           "speaker": "Linh (texto envoyé le matin du lendemain)",
           "text": "Camille, je viens d'apprendre pour ton papa. Toutes mes condoléances à toi et à ta maman. Je pense fort à vous deux.",
+          "en": "Camille, I just heard about your dad. My deepest condolences to you and your mum. I'm thinking of you both. [sent next morning — no delay waiting for 'the right moment']",
           "vi": "Camille, em vừa nghe tin về bố bạn. Em xin chia buồn với bạn và mẹ bạn. Em rất nghĩ đến hai người."
         },
         {
           "speaker": "Camille (réponse, plusieurs heures après)",
           "text": "Merci Linh. Ça veut dire beaucoup pour moi.",
+          "en": "Thank you, Linh. It means a lot to me.",
           "vi": "Cảm ơn Linh. Có ý nghĩa với em."
         },
         {
           "speaker": "Linh",
           "text": "L'enterrement est quand ? Je veux y être si tu veux que je vienne.",
+          "en": "When is the funeral? I want to be there if you want me to come.",
           "vi": "Đám tang khi nào? Em muốn có mặt nếu bạn muốn em đến."
         },
         {
           "speaker": "Camille",
           "text": "Vendredi à 14h, à Versailles. Tu n'as pas besoin de venir, c'est loin.",
+          "en": "Friday at 2 PM, in Versailles. You don't need to come, it's far.",
           "vi": "Thứ sáu 14h, ở Versailles. Bạn không cần đến, xa lắm."
         },
         {
           "speaker": "Linh",
           "text": "Versailles, c'est faisable. Je viens. Je serai discrète, juste présente.",
+          "en": "Versailles is doable. I'll come. I'll be discreet, just present. [presence over performance — exactly the French value]",
           "vi": "Versailles, làm được. Em sẽ đến. Em sẽ kín đáo, chỉ có mặt."
         },
         {
           "speaker": "Camille",
           "text": "Vraiment, ça me touche. Pas de fleurs s'il te plaît — papa détestait l'idée. Si tu veux, un don à la SPA — il aimait les chiens.",
+          "en": "Really, that touches me. No flowers please — Dad hated the idea. If you'd like, a donation to the SPA (the French animal-welfare society) — he loved dogs.",
           "vi": "Thật lòng, em cảm động. Đừng hoa nhé — bố em ghét ý tưởng đó. Nếu bạn muốn, quyên góp cho SPA — bố yêu chó."
         },
         {
           "speaker": "Linh",
           "text": "Note. Je m'en occupe. Et après vendredi — quand est-ce que tu retournes au travail ?",
+          "en": "Noted. I'll take care of it. And after Friday — when do you go back to work?",
           "vi": "Em note. Em lo. Và sau thứ sáu — khi nào bạn quay lại công việc?"
         },
         {
           "speaker": "Camille",
           "text": "Lundi en huit. J'ai pris une semaine.",
+          "en": "A week from Monday. I've taken a week off.",
           "vi": "Thứ hai tuần sau nữa. Em xin một tuần."
         },
         {
           "speaker": "Linh",
           "text": "D'accord. Pendant cette semaine, je passe quand tu veux. Pas pour parler obligatoirement — pour être là. Pour t'aider à manger si tu veux pas cuisiner. Pour aller marcher si tu veux sortir. Pour rien dire si tu veux du silence à deux.",
+          "en": "OK. During that week, I'll come by whenever you want. Not necessarily to talk — to be there. To help you eat if you don't feel like cooking. To go for a walk if you want to get out. To say nothing if you want shared silence. [multiple concrete options, not one vague offer]",
           "vi": "Vâng. Trong tuần đó, em ghé khi bạn muốn. Không phải bắt buộc nói — để có mặt. Để giúp bạn ăn nếu bạn không muốn nấu. Đi bộ nếu bạn muốn ra ngoài. Im lặng cùng nhau nếu bạn muốn yên."
         },
         {
           "speaker": "Camille",
           "text": "Tu sais quoi, c'est ce dernier point qui me touche le plus. Le « rien dire à deux » — j'ai personne avec qui je peux faire ça en ce moment.",
+          "en": "You know what, it's that last point that touches me most. The 'shared silence' — I have no one I can do that with right now.",
           "vi": "Bạn biết không, chính điều cuối làm em cảm động nhất. « Im lặng cùng nhau » — em không có ai để làm điều đó lúc này."
         },
         {
           "speaker": "Linh",
           "text": "Alors c'est noté. Mardi soir, je viens avec une soupe vietnamienne — pho, ça nourrit sans qu'on ait à mâcher beaucoup. On regardera n'importe quelle série débile à la télé. Pas besoin de parler.",
+          "en": "Then it's settled. Tuesday evening, I'll come with a Vietnamese soup — pho, it nourishes without much chewing. We'll watch some silly series on TV. No need to talk. [practical care: food + presence + no demand to perform grief]",
           "vi": "Vậy đã note. Tối thứ ba, em mang phở Việt — phở, nuôi mà không phải nhai nhiều. Mình xem series ngu nào đó trên TV. Không cần nói."
         },
         {
           "speaker": "Camille",
           "text": "Linh, vraiment, merci. Tu sais ce que je n'arrive pas à supporter en ce moment ? Les gens qui me disent « il faut être forte ». Je suis pas forte là — j'ai juste perdu mon père.",
+          "en": "Linh, really, thank you. You know what I can't stand right now? People telling me 'you have to be strong'. I'm not strong right now — I just lost my father.",
           "vi": "Linh, thật lòng, cảm ơn. Bạn biết em không chịu nổi điều gì lúc này không? Những người nói « phải mạnh mẽ ». Em không mạnh — em vừa mất bố."
         },
         {
           "speaker": "Linh",
           "text": "Tu n'as pas à être forte. Tu as juste à respirer pendant les semaines qui viennent. Le reste viendra plus tard.",
+          "en": "You don't have to be strong. You just have to breathe through the coming weeks. The rest will come later. [validates the grief instead of demanding strength — the opposite of the cliché]",
           "vi": "Bạn không phải mạnh. Bạn chỉ cần thở trong những tuần tới. Còn lại sẽ đến sau."
         },
         {
           "speaker": "Camille",
           "text": "Merci. À mardi. Et merci d'avoir compris.",
+          "en": "Thank you. See you Tuesday. And thank you for understanding.",
           "vi": "Cảm ơn. Hẹn thứ ba. Và cảm ơn vì đã hiểu."
         },
         {
           "speaker": "Linh",
           "text": "À mardi. Si tu as besoin avant — appelle, n'importe quelle heure.",
+          "en": "See you Tuesday. If you need anything before then — call, any hour.",
           "vi": "Hẹn thứ ba. Nếu bạn cần trước đó — gọi, bất cứ giờ nào."
         },
         {
           "speaker": "Linh (deux semaines plus tard, texto)",
           "text": "Je pense à toi aujourd'hui — ça fait deux semaines. Comment tu vas, vraiment ?",
+          "en": "(Two weeks later, text) I'm thinking of you today — it's been two weeks. How are you, really? [the delayed check-in — the strongest signal of real friendship in France]",
           "vi": "(2 tuần sau) Em nghĩ đến bạn hôm nay — đã hai tuần. Bạn thế nào, thật lòng?"
         },
         {
           "speaker": "Camille",
           "text": "C'est dur. Mais ton message me fait du bien. Personne d'autre ne se souvient déjà.",
+          "en": "It's hard. But your message does me good. No one else remembers anymore.",
           "vi": "Khó. Nhưng tin nhắn bạn giúp em. Không ai khác nhớ nữa rồi."
         }
       ],
@@ -14167,30 +14229,44 @@ export const lessons: FrenchLesson[] =           [
         "Bạn Pháp mất chú chó 14 tuổi. Bạn không quá thân nhưng đã thấy bạn ấy thường xuyên dắt chó đi bộ. Gửi tin chia buồn vừa phải — không quá đậm như mất người, không quá nhẹ kiểu « ce n'est qu'un chien ».",
         "Sau đám tang, bạn ghé nhà bạn Pháp đem món ăn. Mở câu đầu khi gặp — đừng « comment tu vas? » (câu hỏi vô nghĩa lúc này), thay bằng câu cụ thể chứng tỏ bạn nghĩ đến họ."
       ],
+      "roleplay_prompts_en": [
+        "A French friend just lost their grandmother — write the first message (within 24h of hearing). Short, warm, with ONE concrete offer (not the vague 'dis-moi si tu as besoin'). Model: 'Je viens d'apprendre pour ta grand-mère. Toutes mes condoléances. Je pense à toi — je peux passer dimanche avec à manger si tu veux.' Anglophone calibration: resist the US instinct to send a long heartfelt paragraph; brevity reads as more sincere here, not less caring.",
+        "A French friend's 14-year-old dog has died. You're not close, but you've often seen them walking the dog. Send a proportionate message — not as heavy as a human loss, not as dismissive as 'ce n'est qu'un chien'. Use the dog's name. Model: 'Je suis désolée pour Réglisse — je sais à quel point il comptait pour toi.' Naming the pet is the whole move; it proves you registered the loss as real.",
+        "After the funeral, you visit your French friend's home with food. Open the first sentence on arrival — do NOT say 'comment tu vas?' (a meaningless question at this moment that forces a fake 'ça va'), instead say something concrete that shows you've been thinking of them: 'Je t'ai fait une soupe — tu n'as pas à parler, je reste juste un moment.' The concrete-act opener is the cross-cultural key; it's the same principle that beats the US 'how are you holding up?'"
+      ],
       "register_notes": "Register an ủi Pháp ưu tiên ngắn + chân thành + có hành động cụ thể. Bốn cụm chính cần phân biệt:\n- « Toutes mes condoléances » → formal/distant, dùng cho gia đình bạn không quá thân hoặc viết thiệp tang\n- « Je suis désolée » → neutral, dùng nói/viết với bạn thân\n- « Je pense à toi » → warm/intimate, dùng tin nhắn cá nhân\n- « Mes pensées vont vers vous » → gentle, dùng khi không biết tôn giáo họ\n\nTránh: « je sais ce que tu ressens » (giả định cảm xúc), « il est dans un meilleur endroit » (tôn giáo), « le temps guérit » (cliché), « il faut être fort » (làm họ thấy không có quyền buồn). Khi đến đám tang Pháp: trang phục đen/xám/navy, không hoa nếu được yêu cầu (đọc thông báo tang), không quay phim/chụp ảnh, đứng im trong 2-3 phút khi đến gặp gia đình thay vì chen vào nói chuyện. Khi sau đám tang: hỏi thăm sau 2 tuần và 1 tháng — lúc bạn bè khác đã quên — đó là dấu hiệu tình bạn thật. Đối với người Việt sang Pháp ăn đám tang gia đình bên: KHÔNG khóc to (kiểu Việt), KHÔNG mặc áo trắng (Pháp coi tang là đen, áo trắng là cưới hỏi). Đối với pet loss: cùng register nhưng nhẹ hơn — « je suis désolée pour Loulou » + nhắc tên thú cưng (rất quan trọng — chứng tỏ bạn nhớ tên).",
+      "register_notes_en": "French comforting register prioritizes short + sincere + a concrete act. Four core phrases to distinguish (English collapses all four into 'so sorry for your loss', which is why anglophones flatten the register):\n- 'Toutes mes condoléances' → formal/distant; for a family you're not close to, or written on a sympathy card.\n- 'Je suis désolé(e)' → neutral; spoken or written, with a close friend.\n- 'Je pense à toi' → warm/intimate; for a personal text to someone you're close to.\n- 'Mes pensées vont vers vous' → gentle; when you don't know their religion (and avoid 'je prie pour toi' unless sure — see note below).\n\nAvoid: 'je sais ce que tu ressens' (presumes you know their feelings), 'il est dans un meilleur endroit' (assumes religion — riskier in secular France than in much of the US, where it's a near-default), 'le temps guérit' (cliché), 'il faut être fort' (tells them they don't have the right to grieve — the most resented line). At a French funeral: wear black/grey/navy; no flowers if the notice requests it (read the faire-part / death notice — 'ni fleurs ni couronnes' means none); no filming or photos; when you reach the family, a silent 2–3-second presence and a handshake or 'toutes mes condoléances' is correct — do NOT launch into conversation. After the funeral: check in again at ~2 weeks and ~1 month, when other friends have moved on — in France this delayed re-contact is THE signal of real friendship, more than anything said at the funeral itself.\n\nTwo specific cross-cultural traps. For a Vietnamese person attending an in-law's French funeral: do NOT wail or cry loudly (the Vietnamese expressive-mourning norm reads as a loss of composure in France, where restraint is the respectful default), and do NOT wear white (in France black = mourning; white reads as a wedding). For pet loss: same register but lighter ('condoléances' is slightly too formal for a pet) — 'je suis désolée pour Loulou' plus the pet's name; using the name is essential, it proves you registered the loss rather than offering a script. Anglophone calibration: the US 'I'm here if you need anything, day or night' is well-meant but, like 'dis-moi si tu as besoin', puts the labor on the bereaved — convert it to a specific, scheduled offer.",
       "idiom_glosses": [
         {
           "idiom": "Être en deuil",
           "literal": "Đang trong tang",
+          "literal_en": "To be in mourning",
           "meaning": "Đang chịu mất mát.",
+          "meaning_en": "To be grieving / in mourning — a recognized social and even legal state in France (bereavement leave attaches to it).",
           "example": "Camille est en deuil — laisse-lui le temps."
         },
         {
           "idiom": "Faire son deuil",
           "literal": "Làm tang của mình",
+          "literal_en": "To do one's mourning",
           "meaning": "Trải qua quá trình chịu mất mát.",
+          "meaning_en": "To go through the grieving process / come to terms with a loss over time. Anglophone equivalent: 'to work through one's grief' — note it's a process, not an event, so never imply it should be quick.",
           "example": "On ne fait pas son deuil en six semaines — c'est un long chemin."
         },
         {
           "idiom": "Présenter ses condoléances",
           "literal": "Trình bày lời chia buồn",
+          "literal_en": "To present one's condolences",
           "meaning": "Đưa lời an ủi chính thức.",
+          "meaning_en": "To formally offer condolences — the fixed action you perform when greeting the family at a funeral. Anglophone equivalent: 'to pay one's respects / offer condolences'.",
           "example": "J'ai présenté mes condoléances à toute la famille à l'enterrement."
         },
         {
           "idiom": "Être là pour quelqu'un",
           "literal": "Có mặt vì ai đó",
+          "literal_en": "To be there for someone",
           "meaning": "Hỗ trợ trong lúc khó khăn.",
+          "meaning_en": "To be there for someone — the core French comforting value, weighted toward physical/quiet presence rather than words. Identical phrase and concept in English.",
           "example": "Je suis là pour toi — pas obligée de parler, juste là."
         }
       ],
@@ -14198,7 +14274,10 @@ export const lessons: FrenchLesson[] =           [
         {
           "type": "fill-blank",
           "question": "___ mes condoléances à toi et à ta famille.",
-          "answer": "Toutes"
+          "question_en": "___ my condolences to you and your family. (the fixed formal condolence phrase)",
+          "answer": "Toutes",
+          "hint_vi": "« ___ mes condoléances » — đại từ chỉ định số nhiều giống cái",
+          "hint_en": "the feminine-plural quantifier in the set phrase 'all my condolences' — learn the whole phrase as one block"
         },
         {
           "type": "matching",
@@ -14216,12 +14295,30 @@ export const lessons: FrenchLesson[] =           [
               "có mặt vì"
             ]
           ],
-          "instruction": "Nối thuật ngữ với nghĩa Việt"
+          "pairs_en": [
+            [
+              "un deuil",
+              "grief / mourning — a recognized state in France, with bereavement leave attached"
+            ],
+            [
+              "perdre un proche",
+              "to lose a loved one ('un proche' is broader than family — includes close friends)"
+            ],
+            [
+              "être présent pour",
+              "to be there for (someone) — presence over words, the core French comforting value"
+            ]
+          ],
+          "instruction": "Nối thuật ngữ với nghĩa Việt",
+          "instruction_en": "Match each French condolence term with its English explanation."
         },
         {
           "type": "translation",
           "vietnamese": "Em không biết nói gì có thể thực sự giúp — em ở đây, vậy thôi.",
-          "french": "Je ne sais pas quoi dire qui pourrait vraiment aider — je suis là, c'est tout."
+          "french": "Je ne sais pas quoi dire qui pourrait vraiment aider — je suis là, c'est tout.",
+          "english": "I don't know what to say that could really help — I'm here, that's all.",
+          "hint_vi": "Thừa nhận « không biết nói gì » là ĐÚNG register Pháp — « je suis là, c'est tout »",
+          "hint_en": "admitting you don't know what to say is GOOD French grief register (not a failure); 'je suis là, c'est tout' = I'm here, that's all — presence over words"
         }
       ]
     },
@@ -14240,6 +14337,12 @@ export const lessons: FrenchLesson[] =           [
             "passé → pa-sé",
             "justifier → jys-ti-fié",
             "reconnaître → rơ-ko-nè-trơ"
+          ],
+          "pronunciation_focus_en": [
+            "voudrais → voo-DREH (conditional 'I would like'; tutoiement here — close friend)",
+            "passé → pah-SAY (final 'é' = 'SAY'; 'ce qui s'est passé' = what happened)",
+            "justifier → zhoos-tee-FYAY (the 'u' rounded; 'pas pour me justifier' = not to justify myself — the key disclaimer)",
+            "reconnaître → ruh-koh-NEH-truh (final 'tre' soft; 'reconnaître' = to acknowledge (fault) — the structural opposite of 'se justifier')"
           ]
         },
         {
@@ -14249,6 +14352,11 @@ export const lessons: FrenchLesson[] =           [
             "blessée → blè-sé",
             "droit → drwa",
             "sentir → sãn-tir"
+          ],
+          "pronunciation_focus_en": [
+            "blessée → bleh-SAY ('ce que j'ai fait t'a blessée' = what I did hurt you — INDICATIVE, a statement of fact, NOT the evasive 'si je t'ai blessée')",
+            "droit → DRWAH (final 't' silent; 'tu avais le droit' = you had the right — validates their reaction)",
+            "sentir → sah(n)-TEER (nasal first; 'te sentir blessée' = to feel hurt)"
           ]
         },
         {
@@ -14258,6 +14366,11 @@ export const lessons: FrenchLesson[] =           [
             "pardonner → par-do-né",
             "tout de suite → tu dơ swit",
             "écouter → é-ku-té"
+          ],
+          "pronunciation_focus_en": [
+            "pardonner → par-doh-NAY (final '-er' = 'NAY'; 'me pardonner' = to forgive me — note you do NOT demand it now)",
+            "tout de suite → TOOT-SWEET (said fast as one unit; means 'right away/immediately')",
+            "écouter → ay-koo-TAY (final '-er' = 'TAY'; asking only to be heard, not forgiven — the respectful ask)"
           ]
         },
         {
@@ -14267,6 +14380,11 @@ export const lessons: FrenchLesson[] =           [
             "voici → vwa-si",
             "concrètement → kõn-krèt-mã",
             "reproduise → rơ-pro-dwiz"
+          ],
+          "pronunciation_focus_en": [
+            "voici → vwah-SEE ('voici ce que' = here is what — introduces the concrete repair plan)",
+            "concrètement → ko(n)-kret-MAH(n) ('-ment' nasal; 'concrètement' = concretely — the word that separates a real apology from an empty one)",
+            "reproduise → ruh-proh-DWEEZ (subjunctive of 'se reproduire'; 'pour que ça ne se reproduise pas' = so it doesn't happen again)"
           ]
         },
         {
@@ -14276,102 +14394,123 @@ export const lessons: FrenchLesson[] =           [
             "besoin → bơ-zwã",
             "prends → prã",
             "prête → prèt"
+          ],
+          "pronunciation_focus_en": [
+            "besoin → buh-ZWA(n) (nasal final; 'si tu as besoin de temps' = if you need time)",
+            "prends → PRA(n) (one nasal syllable; imperative 'prends-le' = take it — gives them permission, doesn't pressure)",
+            "prête → PRET (final 'e' silent; feminine 'ready'; 'quand tu seras prête' = when you're ready — leaves the timeline to them)"
           ]
         }
       ],
       "cultural_notes_vi": "Xin lỗi sau một sai lầm nghiêm trọng (tiết lộ bí mật, hủy kèo phút cuối nhiều lần, nói xấu sau lưng, mượn tiền không trả) ở Pháp khác Việt Nam ở giọng và cấu trúc. Người Pháp KHÔNG đánh giá cao lời xin lỗi đậm cảm xúc, dài, kể cả nếu cảm xúc thật. Họ đánh giá cao:\n\n(1) RECONNAISSANCE — thừa nhận cụ thể điều bạn đã làm sai (không « je suis désolée pour tout »); (2) IMPACT — công nhận tác động lên người kia (không tự nói cảm xúc bạn nhiều); (3) RÉPARATION — đề xuất hành động cụ thể để sửa và để không lặp lại; (4) RESPECT DU TEMPS DE L'AUTRE — không ép họ tha thứ ngay.\n\nSai lầm phổ biến của người Việt:\n- « Je suis vraiment vraiment désolée » lặp 5 lần — nghe như van xin, không trưởng thành\n- Khóc dài, gọi điện đêm khuya — đẩy bạn Pháp vào vai xử lý cảm xúc bạn\n- « Promis je ne le ferai plus » mà không kèm cách cụ thể — Pháp coi promesse rỗng\n- Tặng quà to để « bù lỗi » — bị đọc là cố mua sự tha thứ\n- Bị từ chối tha thứ thì khóc thêm hoặc bùng nổ giận dữ — phá hỏng vĩnh viễn\n\nVăn hóa Pháp về tha thứ (« pardon ») là quá trình, không phải sự kiện. Một « je te pardonne » thật phải đến sau khi đối phương thấy hành vi đã thay đổi — có thể là vài tuần đến vài tháng sau cuộc trò chuyện. Trong khoảng thời gian đó, mối quan hệ ở « entre-deux » — vẫn liên lạc nhưng không thân như trước. Đó là chuyện thường, không phải dấu hiệu mất bạn vĩnh viễn.",
+      "cultural_notes_en": "Apologizing for a serious wrong (revealing a confidence, repeated last-minute cancellations, talking behind someone's back, an unrepaid loan) follows a structure in France that contradicts a strong anglophone instinct — particularly the American one to lead with intensity of feeling. The French do NOT value a long, emotionally heavy apology, even when the emotion is genuine; in fact heavy emotion shifts the focus onto YOUR distress and away from THEIR injury. What they value, in order: (1) RECONNAISSANCE — naming specifically what you did wrong (not a blanket 'je suis désolée pour tout'); (2) IMPACT — acknowledging the effect on the other person (not narrating your own guilt); (3) RÉPARATION — proposing concrete actions to repair and to prevent recurrence; (4) RESPECT FOR THEIR TIME — not pressuring them to forgive now.\n\nCommon errors (the Vietnamese ones, several shared by Americans): repeating 'je suis vraiment vraiment désolée' five times (reads as begging, not maturity); long crying or late-night calls (forces the wronged person to manage YOUR emotions — the inverse of the point); 'promis je ne le ferai plus' with no concrete mechanism (an empty promise — the French want the HOW); a big make-up gift (read as trying to buy forgiveness, the same way 'sorry flowers' can land in a US workplace, only stronger here); and, if forgiveness is withheld, crying more or flaring into anger (this permanently breaks it).\n\nThe single most important cultural point for anglophones: in France, 'pardon' (forgiveness) is a PROCESS, not an event. A genuine 'je te pardonne' comes AFTER the other person has seen your behavior actually change — possibly weeks or months after the conversation. In the interval the relationship sits in an 'entre-deux' (in-between) — still in contact but not as close as before. This is normal and expected; it is NOT a sign you've lost the friend forever. The American expectation of 'we talked it out, so we're good now' does not apply — pushing for closure on the day of the apology is itself a mistake, because it asks the wronged person to perform a forgiveness they don't yet feel. Let time and changed behavior do the work the conversation cannot.",
       "tip_advice_vi": "Khung 4 phần cho lời xin lỗi nghiêm túc:\n(1) MỞ ĐẦU không biện minh: « Je voudrais te parler de X — pas pour me justifier ». Câu này KHÔNG nên có « mais » (« je suis désolée mais… ») — bất cứ « mais » nào sau xin lỗi đều xóa lời xin lỗi.\n(2) TÊN cụ thể của lỗi + tác động: « Quand j'ai dit X devant les autres, ça t'a humiliée. Je le sais. » KHÔNG « si je t'ai blessée » (conditional là né tránh) — phải « ce que j'ai fait t'a blessée » (xác nhận).\n(3) HÀNH ĐỘNG sửa cụ thể: « Voici ce que je change : <action 1>, <action 2> ». Không « je vais essayer » — quá yếu.\n(4) RESPECT TIMING của họ: « Je ne te demande pas de me pardonner aujourd'hui ». Cho họ quyền không tha thứ ngay.\n\nFormat: ưu tiên trực tiếp (gặp mặt) hơn điện thoại; điện thoại hơn tin nhắn dài; tin nhắn dài hơn email. Tránh: gửi tin nhắn audio dài (xâm phạm); xin lỗi trên public (Instagram comment) — nhục nhã đối phương; nhờ bạn chung làm trung gian (« va lui dire que je suis désolée ») — tăng đám đông biết chuyện.\nSau khi xin lỗi: KHÔNG hỏi lại trong 1-2 tuần (« tu m'en veux toujours? ») — cho không gian. Nếu bị từ chối tha thứ ngay: cảm ơn họ đã nghe (« merci de m'avoir écoutée »), không tranh cãi, rút lui lịch sự, để hành động chứng minh thay đổi.",
+      "tip_advice_en": "The four-part frame for a serious apology:\n(1) OPEN without justifying: 'Je voudrais te parler de X — pas pour me justifier' (I want to talk to you about X — not to justify myself). Critically, this opening must NOT contain a 'mais' ('je suis désolée mais…') — ANY 'but' after an apology cancels the apology. This is the single highest-frequency apology error in every language; the French are simply less forgiving of it.\n(2) NAME the specific wrong + its impact: 'Quand j'ai dit X devant les autres, ça t'a humiliée. Je le sais.' (When I said X in front of the others, it humiliated you. I know that.) Do NOT say 'si je t'ai blessée' (IF I hurt you) — the conditional 'si' is evasive and reads as a non-apology in French exactly as 'if I offended anyone' does in English. Use the indicative: 'ce que j'ai fait t'a blessée' (what I did hurt you).\n(3) CONCRETE repair: 'Voici ce que je change : [action 1], [action 2]'. Not 'je vais essayer' (I'll try) — too weak; the French want a mechanism, not an intention.\n(4) RESPECT their timing: 'Je ne te demande pas de me pardonner aujourd'hui' (I'm not asking you to forgive me today). Explicitly grant them the right not to forgive yet.\n\nFormat hierarchy: in person > phone > long text > email. Avoid: long voice/audio messages (intrusive — they can't skim or pause it); a public apology (an Instagram comment) — this humiliates the other person by making the wrong public; and using a mutual friend as a go-between ('go tell her I'm sorry') — it widens the circle of people who know, which compounds the original harm. After apologizing: do NOT follow up within 1–2 weeks ('tu m'en veux toujours?' — do you still hold it against me?) — that re-centers your need for relief over their need for time. If forgiveness is refused on the day: thank them for listening ('merci de m'avoir écoutée'), do not argue, withdraw gracefully, and let your actions over the following months do the proving. Anglophone calibration: the US 'can we just move past this?' is precisely the move to avoid — it asks for closure on your schedule, not theirs.",
       "vocabulary": [
         {
           "word": "reconnaître ses torts",
           "en": "to acknowledge fault",
           "vi": "thừa nhận sai",
           "pos": "v.",
-          "pronunciation_vi": "rơ-ko-nè-trơ sé tor"
+          "pronunciation_vi": "rơ-ko-nè-trơ sé tor",
+          "pronunciation_en": "ruh-koh-NEH-truh say TOR (final 's' of 'torts' silent; the structural OPPOSITE of 'se justifier' — the core of a real apology)"
         },
         {
           "word": "présenter des excuses",
           "en": "to present apologies",
           "vi": "đưa lời xin lỗi",
           "pos": "v.",
-          "pronunciation_vi": "pré-zãn-té dé-z-èk-skuz"
+          "pronunciation_vi": "pré-zãn-té dé-z-èk-skuz",
+          "pronunciation_en": "pray-zah(n)-TAY day-zek-SKUZ (liaison 'des excuses' = 'day-zek'; the formal phrase for offering an apology)"
         },
         {
           "word": "se justifier",
           "en": "to justify oneself",
           "vi": "tự biện minh",
           "pos": "v.",
-          "pronunciation_vi": "sơ jys-ti-fié"
+          "pronunciation_vi": "sơ jys-ti-fié",
+          "pronunciation_en": "suh zhoos-tee-FYAY (the 'u' rounded; what you must explicitly say you're NOT doing — 'pas pour me justifier')"
         },
         {
           "word": "blesser",
           "en": "to hurt",
           "vi": "làm tổn thương",
           "pos": "v.",
-          "pronunciation_vi": "blè-sé"
+          "pronunciation_vi": "blè-sé",
+          "pronunciation_en": "bleh-SAY (to wound emotionally; use the indicative 'je t'ai blessée', NOT the evasive conditional 'si je t'ai blessée')"
         },
         {
           "word": "un geste réparateur",
           "en": "a repair gesture",
           "vi": "hành động sửa lỗi",
           "pos": "n.m.",
-          "pronunciation_vi": "jèst ré-pa-ra-tơr"
+          "pronunciation_vi": "jèst ré-pa-ra-tơr",
+          "pronunciation_en": "ZHEST ray-pah-rah-TUHR ('zh' = 's' in 'measure'; a concrete reparative action — NOT a make-up gift, which reads as buying forgiveness)"
         },
         {
           "word": "un acte manqué",
           "en": "a slip / failed act",
           "vi": "hành vi vô thức",
           "pos": "n.m.",
-          "pronunciation_vi": "akt mãn-ké"
+          "pronunciation_vi": "akt mãn-ké",
+          "pronunciation_en": "AKT mah(n)-KAY (a Freudian-slip / unconscious failed act; do NOT use this to excuse a serious wrong — it reads as evasion)"
         },
         {
           "word": "laisser le temps",
           "en": "to give time",
           "vi": "cho thời gian",
           "pos": "v.",
-          "pronunciation_vi": "lè-sé lơ tã"
+          "pronunciation_vi": "lè-sé lơ tã",
+          "pronunciation_en": "leh-SAY luh TAH(n) (to allow time — forgiveness is a process; you grant the time, you don't request it back)"
         },
         {
           "word": "changer concrètement",
           "en": "to change concretely",
           "vi": "thay đổi cụ thể",
           "pos": "v.",
-          "pronunciation_vi": "shãn-jé kõn-krèt-mã"
+          "pronunciation_vi": "shãn-jé kõn-krèt-mã",
+          "pronunciation_en": "shah(n)-ZHAY ko(n)-kret-MAH(n) ('concrètement' is the load-bearing word — separates a real apology from 'je vais essayer')"
         },
         {
           "word": "un repentir sincère",
           "en": "sincere remorse",
           "vi": "sự ăn năn chân thành",
           "pos": "n.m.",
-          "pronunciation_vi": "rơ-pãn-tir san-sèr"
+          "pronunciation_vi": "rơ-pãn-tir san-sèr",
+          "pronunciation_en": "ruh-pah(n)-TEER sa(n)-SAIR (nasal in both words; sincere remorse — shown through action over time, not stated repeatedly)"
         },
         {
           "word": "ne pas se reproduire",
           "en": "not to recur",
           "vi": "không lặp lại",
           "pos": "v.",
-          "pronunciation_vi": "nơ pa sơ rơ-pro-dwir"
+          "pronunciation_vi": "nơ pa sơ rơ-pro-dwir",
+          "pronunciation_en": "nuh pah suh ruh-proh-DWEER ('pour que ça ne se reproduise pas' = so it doesn't happen again — pair it with the concrete mechanism)"
         }
       ],
       "dialogue": [
         {
           "speaker": "Linh",
           "text": "Camille, est-ce que tu peux m'écouter cinq minutes ?",
+          "en": "Camille, can you listen to me for five minutes?",
           "vi": "Camille, bạn nghe em năm phút được không?"
         },
         {
           "speaker": "Camille",
           "text": "Vas-y.",
+          "en": "Go ahead.",
           "vi": "Em nói đi."
         },
         {
           "speaker": "Linh",
           "text": "Ce que j'ai fait jeudi — révéler ce que tu m'avais dit en privé — c'était inacceptable. Je l'ai fait, je le sais, et tu avais le droit d'être en colère.",
+          "en": "What I did Thursday — revealing what you'd told me in private — was unacceptable. I did it, I know it, and you had every right to be angry. [names the wrong + owns it + validates her anger, no 'but']",
           "vi": "Điều em làm thứ năm — tiết lộ điều bạn đã nói riêng với em — không thể chấp nhận. Em đã làm, em biết, và bạn có quyền giận."
         },
         {
           "speaker": "Camille",
           "text": "OK. Je t'écoute.",
+          "en": "OK. I'm listening.",
           "vi": "OK. Em nghe."
         }
       ],
@@ -14379,81 +14518,97 @@ export const lessons: FrenchLesson[] =           [
         {
           "speaker": "Linh (au café choisi par Camille)",
           "text": "Camille, merci d'être venue. Je voulais te parler en personne, pas par texto.",
+          "en": "Camille, thank you for coming. I wanted to talk to you in person, not by text. [in-person > text for a serious apology; she chose the venue, which respects her control]",
           "vi": "Camille, cảm ơn bạn đến. Em muốn nói trực diện, không qua tin nhắn."
         },
         {
           "speaker": "Camille",
           "text": "D'accord. Je préfère aussi.",
+          "en": "OK. I prefer that too.",
           "vi": "Vâng. Em cũng thích vậy."
         },
         {
           "speaker": "Linh",
           "text": "Ce que j'ai fait jeudi — répéter à Sophie ce que tu m'avais confié sur ta rupture avec Marc — c'était une trahison de ta confiance. Je le dis comme ça, parce que c'est ça.",
+          "en": "What I did Thursday — repeating to Sophie what you'd confided about your breakup with Marc — was a betrayal of your trust. I'm saying it plainly, because that's what it was. [names it exactly, no euphemism, no softening]",
           "vi": "Điều em đã làm thứ năm — kể lại cho Sophie điều bạn đã chia sẻ riêng về vụ chia tay với Marc — là sự phản bội lòng tin của bạn. Em nói thẳng như vậy, vì đó là sự thật."
         },
         {
           "speaker": "Camille",
           "text": "Tu sais ce que tu as fait, alors. C'est déjà ça.",
+          "en": "So you know what you did. That's something, at least.",
           "vi": "Vậy là bạn biết bạn đã làm gì. Ít nhất là vậy."
         },
         {
           "speaker": "Linh",
           "text": "Je le sais. Et je sais aussi que ça t'a blessée à un moment où tu étais déjà fragile. Le timing rend ça pire — tu m'avais demandé explicitement de garder ça pour moi.",
+          "en": "I know it. And I also know it hurt you at a moment when you were already fragile. The timing makes it worse — you'd explicitly asked me to keep it to myself. [acknowledges impact AND the aggravating factor — no minimizing]",
           "vi": "Em biết. Và em cũng biết điều đó làm bạn tổn thương vào lúc bạn đã rất mong manh. Thời điểm làm điều đó tệ hơn — bạn đã yêu cầu em rõ ràng giữ chuyện đó."
         },
         {
           "speaker": "Camille",
           "text": "Pourquoi tu l'as fait ?",
+          "en": "Why did you do it?",
           "vi": "Sao bạn làm vậy?"
         },
         {
           "speaker": "Linh",
           "text": "Pas pour me justifier — juste pour te dire ce que je crois être vrai : Sophie m'a posé une question directe sur Marc, je me suis sentie prise au piège, et au lieu de dire « je ne peux pas en parler », j'ai parlé. C'est moi qui ai failli, pas Sophie qui m'a forcée.",
+          "en": "Not to justify myself — just to tell you what I believe is true: Sophie asked me a direct question about Marc, I felt cornered, and instead of saying 'I can't talk about that', I talked. I'm the one who failed, not Sophie who forced me. [explains WITHOUT excusing — and explicitly refuses to shift blame to Sophie]",
           "vi": "Không phải để biện minh — chỉ nói điều em tin là sự thật: Sophie hỏi em một câu thẳng về Marc, em cảm thấy bị mắc kẹt, và thay vì nói « em không thể nói về chuyện đó », em đã nói. Là em yếu kém, không phải Sophie ép em."
         },
         {
           "speaker": "Camille",
           "text": "Et tu te rends compte que maintenant Marc le sait, lui aussi ?",
+          "en": "And do you realize that now Marc knows too?",
           "vi": "Và bạn có nhận ra giờ Marc cũng biết không?"
         },
         {
           "speaker": "Linh",
           "text": "Oui. Et je peux pas réparer ça — c'est dehors, c'est cassé. Ce que je peux faire, c'est trois choses concrètes. Premièrement : si tu veux que j'appelle Sophie pour mettre les choses au clair sur ma responsabilité, je le fais. Deuxièmement : la prochaine fois qu'on me posera une question sur quelqu'un, j'ai préparé une réponse — « ce n'est pas à moi d'en parler, demande-lui directement ». Je l'ai écrite et je la garde sur mon téléphone, je ne plaisante pas. Troisièmement : si tu veux qu'on prenne distance pendant un temps, je le respecte.",
+          "en": "Yes. And I can't undo that — it's out, it's broken. What I can do is three concrete things. First: if you want me to call Sophie to make my responsibility clear, I'll do it. Second: next time someone asks me a question about someone, I've prepared an answer — 'it's not for me to talk about, ask them directly'. I've written it down and I keep it on my phone, I'm not joking. Third: if you want us to take distance for a while, I respect that. [concrete mechanisms, not 'I'll try harder' — and a real prepared script, not a vague promise]",
           "vi": "Có. Và em không sửa được — đã ra ngoài, đã vỡ. Điều em có thể làm là ba điều cụ thể. Một: nếu bạn muốn em gọi Sophie để làm rõ trách nhiệm em, em làm. Hai: lần sau ai hỏi em về ai đó, em đã chuẩn bị câu trả lời — « không phải em nói, hỏi thẳng họ ». Em đã viết và giữ trên điện thoại, em không đùa. Ba: nếu bạn muốn mình giữ khoảng cách một thời gian, em tôn trọng."
         },
         {
           "speaker": "Camille",
           "text": "… D'accord. Je vais réfléchir. Mais je veux te dire quelque chose : ce qui m'a fait le plus mal, c'est pas tellement que ça soit sorti — c'est que je t'aie pas eu en réflexe protectrice. Je pensais que tu étais ma personne pour ce genre de truc.",
+          "en": "… OK. I'll think about it. But I want to tell you something: what hurt me most isn't so much that it got out — it's that I didn't have you as a protective reflex. I thought you were my person for this kind of thing.",
           "vi": "… Vâng. Em sẽ suy nghĩ. Nhưng em muốn nói: điều làm em đau nhất, không phải là chuyện ra ngoài — mà là em không có bạn như phản xạ bảo vệ. Em tưởng bạn là người của em cho loại chuyện này."
         },
         {
           "speaker": "Linh",
           "text": "Je l'entends, et c'est exactement ce qui me ronge. Tu m'as donné un statut que je n'ai pas tenu. Je peux le redevenir, ce statut, si tu m'en redonnes la chance — mais c'est par mes actes les six prochains mois, pas par cette conversation.",
+          "en": "I hear that, and it's exactly what's eating at me. You gave me a status I didn't live up to. I can become that again, if you give me the chance — but through my actions over the next six months, not through this conversation. [explicitly rejects 'we talked, so we're fine' — forgiveness is a process, proven by time]",
           "vi": "Em nghe, và đó chính là điều ăn em. Bạn đã cho em một vị trí mà em không giữ được. Em có thể trở lại vị trí đó, nếu bạn cho em cơ hội — nhưng qua hành động sáu tháng tới, không qua cuộc trò chuyện này."
         },
         {
           "speaker": "Camille",
           "text": "Je ne te dis pas oui ou non aujourd'hui. Je vais avoir besoin de temps.",
+          "en": "I'm not telling you yes or no today. I'm going to need time.",
           "vi": "Em không nói có hay không hôm nay. Em sẽ cần thời gian."
         },
         {
           "speaker": "Linh",
           "text": "C'est exactement ce que tu dois te donner. Je ne te demande pas de réponse aujourd'hui. Et je ne vais pas te relancer. Si tu veux me parler, tu sais où me trouver.",
+          "en": "That's exactly what you should give yourself. I'm not asking you for an answer today. And I won't chase you. If you want to talk to me, you know where to find me. [grants the time AND commits not to pressure — the hardest, most respected part]",
           "vi": "Đó chính là điều bạn phải cho mình. Em không yêu cầu câu trả lời hôm nay. Và em sẽ không nhắc bạn. Nếu bạn muốn nói, bạn biết tìm em ở đâu."
         },
         {
           "speaker": "Camille",
           "text": "Merci d'avoir reconnu sans te justifier. Beaucoup de gens auraient inventé une excuse.",
+          "en": "Thank you for acknowledging it without justifying yourself. A lot of people would have invented an excuse.",
           "vi": "Cảm ơn bạn đã thừa nhận mà không biện minh. Nhiều người sẽ tự bịa cớ."
         },
         {
           "speaker": "Linh",
           "text": "Tu mérites mieux qu'une excuse. Je te paye le café.",
+          "en": "You deserve better than an excuse. Let me pay for the coffee.",
           "vi": "Bạn xứng đáng hơn một cái cớ. Em trả cà phê."
         },
         {
           "speaker": "Camille",
           "text": "Non — je le paye moi-même aujourd'hui. Mais merci.",
+          "en": "No — I'll pay for mine myself today. But thank you. [she declines the small gesture — accepting it would feel like premature closure; this is normal, not a rejection]",
           "vi": "Không — em tự trả hôm nay. Nhưng cảm ơn."
         }
       ],
@@ -14462,30 +14617,44 @@ export const lessons: FrenchLesson[] =           [
         "Bạn đã nói xấu sếp Pháp với đồng nghiệp, và đồng nghiệp đó đã kể lại với sếp. Sếp gọi bạn vào nói chuyện. Xin lỗi tại chỗ — không phủ nhận, không đổ lỗi đồng nghiệp, đề xuất hành động cụ thể.",
         "Sau khi bạn xin lỗi, bạn của bạn nói « Je ne suis pas prête à te pardonner ». Phản hồi đúng cách — chấp nhận, cảm ơn họ đã nghe, không van xin, không tranh cãi."
       ],
+      "roleplay_prompts_en": [
+        "You forgot a close friend's milestone birthday (their 40th) — and it's not the first time. Write the first 4-line apology message — do NOT call straight away (a call demands her attention on YOUR schedule); the text gives her space to react. Structure: name the wrong (no 'I've been so busy' excuse), acknowledge it's a pattern, one concrete change, no pressure on her reply. Anglophone calibration: resist the US 'OMG I'm the worst friend ever, I feel terrible' spiral — it makes her comfort you.",
+        "You badmouthed your French boss to a colleague, and that colleague repeated it to the boss. The boss calls you in. Apologize on the spot — don't deny it, don't blame the colleague ('she took it out of context' destroys you here), propose a concrete action. Frame: 'Ce que j'ai dit était déplacé et c'était à moi de vous en parler directement si j'avais un problème. Voici ce que je change…' (Acknowledge, own that the right channel was direct, give the mechanism.)",
+        "After you apologize, your friend says 'Je ne suis pas prête à te pardonner' (I'm not ready to forgive you). Respond correctly — accept it, thank them for listening, do NOT beg, do NOT argue. Model: 'Je comprends, et c'est normal. Je ne te demande rien aujourd'hui. Merci de m'avoir écoutée.' Then withdraw. The withheld forgiveness is part of the process, not a verdict — pushing back on it converts a recoverable situation into a permanent one. This is the hardest moment for anglophones, whose instinct is to seek same-day closure."
+      ],
       "register_notes": "Lời xin lỗi cho lỗi nghiêm trọng dùng vouvoiement nếu chưa thân, tutoiement nếu đã thân. Tránh các cụm xóa giá trị xin lỗi:\n- « je suis désolée MAIS… » → bất kỳ « mais » nào xóa lời xin lỗi\n- « SI je t'ai blessée » → « si » biến lỗi thành điều kiện, là né tránh; thay bằng « ce que j'ai fait t'a blessée »\n- « ce n'est pas mon intention » → người Pháp đã biết; nói nó nghĩa né responsibility\n- « je ne le ferai plus » mà không kèm cách cụ thể → promesse rỗng\n\nGiọng đúng: short + concrete + accept-no-forgiveness-today.\nKhi đối phương chấp nhận xin lỗi: cảm ơn (« merci »), không « ouf merci j'ai eu si peur que tu me pardonnes pas » (làm họ thấy phải an ủi bạn). Khi đối phương từ chối tha thứ: « Je comprends, prends le temps qu'il faut » + rút lui — không xin tiếp lần thứ hai.\nKhi xin lỗi qua tin nhắn (lỗi nhỏ hơn): cùng cấu trúc nhưng ngắn hơn (3-4 câu): tên lỗi + tác động + thay đổi cụ thể + không ép thời gian. Sau xin lỗi: KHÔNG hỏi « tu m'en veux encore? » trong 2 tuần — cho không gian.",
+      "register_notes_en": "A serious apology uses vouvoiement if you're not close (e.g. with a boss), tutoiement if you are. Avoid the phrases that silently cancel an apology — these are the same in English, but the French notice them faster and forgive them less:\n- 'je suis désolée MAIS…' → any 'but' after an apology erases the apology entirely.\n- 'SI je t'ai blessée' → the conditional 'si' (if) turns your wrong into a hypothesis; it's evasive, the exact equivalent of English 'if I offended anyone'. Replace with the indicative 'ce que j'ai fait t'a blessée' (what I did hurt you).\n- 'ce n'était pas mon intention' (it wasn't my intention) → they already know; saying it reads as ducking responsibility, not softening it.\n- 'je ne le ferai plus' (I won't do it again) with no concrete mechanism → an empty promise; the French want the HOW, not the vow.\n\nThe correct tone: short + concrete + accept-no-forgiveness-today. When the other person accepts the apology: just say 'merci' — do NOT do 'ouf, merci, j'avais si peur que tu ne me pardonnes pas' (phew, thanks, I was so scared you wouldn't forgive me), which makes them comfort YOU and re-centers your relief. When they refuse to forgive: 'Je comprends, prends le temps qu'il faut' (I understand, take the time you need) + withdraw — do not ask a second time. When apologizing by text for a lesser wrong: same structure, shorter (3–4 sentences): name the wrong + impact + concrete change + no time pressure. After apologizing: do NOT ask 'tu m'en veux encore?' (are you still upset with me?) within 2 weeks — that re-centers your need for resolution over their need for time, and is the single most common way anglophones (especially Americans, conditioned to seek quick closure) re-break a thing they'd just begun to repair.",
       "idiom_glosses": [
         {
           "idiom": "Reconnaître ses torts",
           "literal": "Thừa nhận sự sai của mình",
+          "literal_en": "To recognize one's wrongs",
           "meaning": "Công khai chấp nhận đã làm sai.",
+          "meaning_en": "To openly acknowledge fault / admit you were in the wrong. The structural OPPOSITE of 'se justifier' (to justify oneself) — and the heart of a French apology.",
           "example": "Reconnaître mes torts sans me justifier était la première étape."
         },
         {
           "idiom": "Faire amende honorable",
           "literal": "Làm sự đền bù danh dự",
+          "literal_en": "To make honorable amends",
           "meaning": "Công khai thừa nhận sai và đề xuất sửa.",
+          "meaning_en": "To openly acknowledge a wrong and offer to make it right — formal, slightly ceremonial. Anglophone equivalent: 'to make amends' / 'to eat humble pie' (the latter more colloquial).",
           "example": "Linh a fait amende honorable de manière exemplaire."
         },
         {
           "idiom": "Mettre les pieds dans le plat",
           "literal": "Đặt chân vào đĩa",
+          "literal_en": "To put one's feet in the dish",
           "meaning": "Vô tình hoặc cố ý nói điều không nên — gây vấn đề.",
+          "meaning_en": "To say the wrong thing / blunder into a sensitive topic and cause a problem. Anglophone equivalent: 'to put your foot in it' / 'to put your foot in your mouth'.",
           "example": "En répétant ce que Camille m'avait confié, j'ai mis les pieds dans le plat."
         },
         {
           "idiom": "Tourner la page",
           "literal": "Lật trang",
+          "literal_en": "To turn the page",
           "meaning": "Bỏ qua, không quay lại chủ đề nữa.",
+          "meaning_en": "To move on / close a difficult chapter. Same image as English 'to turn the page' — but the lesson's point is you do NOT get to turn it on the day of the apology; that's the wronged person's call, on their timeline.",
           "example": "On ne tourne pas la page le jour même — il faut du temps."
         }
       ],
@@ -14493,7 +14662,10 @@ export const lessons: FrenchLesson[] =           [
         {
           "type": "fill-blank",
           "question": "Je ne te demande pas de me ___ tout de suite.",
-          "answer": "pardonner"
+          "question_en": "I'm not asking you to ___ me right away.",
+          "answer": "pardonner",
+          "hint_vi": "động từ « tha thứ » (nguyên thể, sau « de me »)",
+          "hint_en": "verb 'to forgive' (infinitive after 'de me') — the key respectful move: you don't demand it now"
         },
         {
           "type": "matching",
@@ -14511,12 +14683,30 @@ export const lessons: FrenchLesson[] =           [
               "sự ăn năn chân thành"
             ]
           ],
-          "instruction": "Nối thuật ngữ với nghĩa Việt"
+          "pairs_en": [
+            [
+              "reconnaître ses torts",
+              "to acknowledge fault — the opposite of justifying yourself; the core of a real apology"
+            ],
+            [
+              "un geste réparateur",
+              "a reparative action (NOT a make-up gift — a gift reads as buying forgiveness)"
+            ],
+            [
+              "un repentir sincère",
+              "sincere remorse — proven through changed behavior over time, not repeated statements"
+            ]
+          ],
+          "instruction": "Nối thuật ngữ với nghĩa Việt",
+          "instruction_en": "Match each French apology term with its English explanation."
         },
         {
           "type": "translation",
           "vietnamese": "Đây là điều em sẽ thay đổi cụ thể, để chuyện không lặp lại.",
-          "french": "Voici ce que je vais changer concrètement, pour que ça ne se reproduise pas."
+          "french": "Voici ce que je vais changer concrètement, pour que ça ne se reproduise pas.",
+          "english": "Here is what I'm going to change concretely, so that it doesn't happen again.",
+          "hint_vi": "« concrètement » là từ then chốt; « pour que ça ne se reproduise pas » dùng subjunctive",
+          "hint_en": "'concrètement' (concretely) is the load-bearing word — separates a real apology from 'I'll try'; 'pour que ça ne se reproduise pas' takes the subjunctive"
         }
       ]
     },
