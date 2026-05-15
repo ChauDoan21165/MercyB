@@ -82,6 +82,7 @@ export type LessonSentence = {
   en: string;
   vi: string;
   pronunciation_focus: string[];
+  pronunciation_focus_en?: string[];
 };
 
 export type VocabEntry = {
@@ -111,7 +112,9 @@ export type FrenchLesson = {
   title_en: string;
   sentences: LessonSentence[];
   cultural_notes_vi: string;
+  cultural_notes_en?: string;
   tip_advice_vi: string;
+  tip_advice_en?: string;
   vocabulary?: VocabEntry[];
   dialogue?: DialogueLine[];
   exercises?: Exercise[];
