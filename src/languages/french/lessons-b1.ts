@@ -1958,6 +1958,11 @@ export const lessons: FrenchLesson[] = [
           "passé→pa-xê",
           "étranger→ê-trăng-giê",
           "incroyable→anh-croa-ia-blơ"
+        ],
+        "pronunciation_focus_en": [
+          "passé 'pah-SAY' — past participle; '-é' = 'ay'",
+          "étranger 'ay-trahn-ZHAY' — nasal 'an'; 'g' before 'e' = 'zh'",
+          "incroyable 'an-krwah-YAH-bluh' — nasal 'in' start; 'oy' = 'wah-y'"
         ]
       },
       {
@@ -1966,6 +1971,10 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_focus": [
           "meilleure→mê-iơ",
           "expérience→éc-xpê-ri-ăng"
+        ],
+        "pronunciation_focus_en": [
+          "meilleure 'meh-YUR' — '-eill' = 'ay-y'; '-eure' = 'ur'",
+          "expérience 'eks-pay-RYAHNSS' — 'x' = 'ks'; nasal 'ence'"
         ]
       },
       {
@@ -1974,6 +1983,10 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_focus": [
           "oublierai→u-bli-ơ-re",
           "voyage→voa-ia-giơ"
+        ],
+        "pronunciation_focus_en": [
+          "oublierai 'oo-blee-yuh-RAY' — future tense of oublier; '-erai' = 'uh-RAY'",
+          "voyage 'vwah-YAHZH' — 'oy' = 'wah-y'; 'g' before silent 'e' = 'zh'"
         ]
       },
       {
@@ -1983,6 +1996,11 @@ export const lessons: FrenchLesson[] = [
           "étais→ê-te",
           "habitais→a-bi-te",
           "campagne→căm-pa-nhơ"
+        ],
+        "pronunciation_focus_en": [
+          "étais 'ay-TEH' — imperfect of être; '-ais' = 'eh'",
+          "habitais 'ah-bee-TEH' — silent 'h'; imperfect '-ais' = 'eh'",
+          "campagne 'kahn-PAH-nyuh' — nasal 'an'; 'gn' = Spanish 'ñ' / English 'ny'"
         ]
       },
       {
@@ -1991,132 +2009,156 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_focus": [
           "rencontre→răng-côn-trơ",
           "changé→săng-giê"
+        ],
+        "pronunciation_focus_en": [
+          "rencontre 'rahn-KOHN-truh' — nasal 'en' + nasal 'on'",
+          "changé 'shahn-ZHAY' — 'ch' = 'sh'; 'g' before 'é' = 'zh'"
         ]
       }
     ],
     "cultural_notes_vi": "Người Pháp thích kể chuyện. Dùng passé composé cho sự kiện, imparfait cho bối cảnh. Thêm cảm xúc: 'C'était magnifique !', 'Quelle surprise !'",
+    "cultural_notes_en": "French is good at storytelling and the grammar supports it: passé composé (j'ai fait, je suis allé) for the event, imparfait (j'étais, j'habitais) for the background. English collapses these two tenses into 'I did' / 'I was doing'; in French the choice carries meaning. Add emotional punctuation freely: 'C'était magnifique !', 'Quelle surprise !', 'Je n'en revenais pas'. Story-telling with no emotional color reads flat in French — closer to a report than a story.",
     "tip_advice_vi": "Mở đầu: 'Laisse-moi te raconter…'. Dùng cử chỉ tay khi kể — người Pháp diễn tả rất nhiều.",
+    "tip_advice_en": "Open with 'Laisse-moi te raconter…' (let me tell you about…) or 'Tu vas pas le croire mais…' (you won't believe this but…). Use your hands — French storytelling is gestural in a way that even British storytelling isn't. Don't apologize for taking the floor; if you've been invited to share an experience, taking 2-3 minutes is normal, not bragging.",
     "vocabulary": [
       {
         "word": "raconter",
         "en": "to tell",
         "vi": "kể",
         "pos": "v.",
-        "pronunciation_vi": "ra-côn-tê"
+        "pronunciation_vi": "ra-côn-tê",
+        "pronunciation_en": "rah-kohn-TAY — nasal 'on'; '-er' = 'ay'"
       },
       {
         "word": "l'expérience",
         "en": "experience",
         "vi": "trải nghiệm",
         "pos": "n.f.",
-        "pronunciation_vi": "léc-xpê-ri-ăng"
+        "pronunciation_vi": "léc-xpê-ri-ăng",
+        "pronunciation_en": "leks-pay-RYAHNSS — 'x' = 'ks'; nasal 'ence'"
       },
       {
         "word": "le souvenir",
         "en": "memory",
         "vi": "kỷ niệm",
         "pos": "n.m.",
-        "pronunciation_vi": "xu-vơ-nia"
+        "pronunciation_vi": "xu-vơ-nia",
+        "pronunciation_en": "soo-vuh-NEER — 'ou' = 'oo'; soft French 'r' at end"
       },
       {
         "word": "inoubliable",
         "en": "unforgettable",
         "vi": "khó quên",
         "pos": "adj.",
-        "pronunciation_vi": "i-nu-bli-a-blơ"
+        "pronunciation_vi": "i-nu-bli-a-blơ",
+        "pronunciation_en": "ee-noo-blee-YAH-bluh — 'ou' = 'oo'; final '-le' barely voiced"
       },
       {
         "word": "voyager",
         "en": "to travel",
         "vi": "du lịch",
         "pos": "v.",
-        "pronunciation_vi": "voa-ia-giê"
+        "pronunciation_vi": "voa-ia-giê",
+        "pronunciation_en": "vwah-yah-ZHAY — 'oy' = 'wah-y'; '-er' = 'ay'"
       },
       {
         "word": "découvrir",
         "en": "to discover",
         "vi": "khám phá",
         "pos": "v.",
-        "pronunciation_vi": "đê-cu-vria"
+        "pronunciation_vi": "đê-cu-vria",
+        "pronunciation_en": "day-koo-VREER — 'ou' = 'oo'; soft French 'r' at end"
       },
       {
         "word": "l'aventure",
         "en": "adventure",
         "vi": "phiêu lưu",
         "pos": "n.f.",
-        "pronunciation_vi": "la-văng-tuya"
+        "pronunciation_vi": "la-văng-tuya",
+        "pronunciation_en": "lah-vahn-TOOR — nasal 'an' middle; '-ure' = 'oor' with rounded French 'u'"
       },
       {
         "word": "l'émotion",
         "en": "emotion",
         "vi": "cảm xúc",
         "pos": "n.f.",
-        "pronunciation_vi": "lê-mô-xi-on"
+        "pronunciation_vi": "lê-mô-xi-on",
+        "pronunciation_en": "lay-moh-SYON — '-tion' = 'syon'; 'l'' contracts"
       },
       {
         "word": "marquant",
         "en": "memorable",
         "vi": "đáng nhớ",
         "pos": "adj.",
-        "pronunciation_vi": "ma-căng"
+        "pronunciation_vi": "ma-căng",
+        "pronunciation_en": "mar-KAHN — nasal 'an' at end; final 't' silent"
       },
       {
         "word": "partager",
         "en": "to share",
         "vi": "chia sẻ",
         "pos": "v.",
-        "pronunciation_vi": "pa-ta-giê"
+        "pronunciation_vi": "pa-ta-giê",
+        "pronunciation_en": "par-tah-ZHAY — 'g' before 'e' = 'zh'; '-er' = 'ay'"
       }
     ],
     "dialogue": [
       {
         "speaker": "A",
         "text": "Raconte-moi ton voyage au Vietnam !",
-        "en": "Tell me about your Vietnam trip!"
+        "en": "Tell me about your Vietnam trip!",
+        "vi": "Kể mình nghe chuyến đi Việt Nam của bạn đi!"
       },
       {
         "speaker": "B",
         "text": "C'était incroyable ! Hanoï, Hoi An, HCM-Ville.",
-        "en": "Incredible! Hanoi, Hoi An, HCMC."
+        "en": "Incredible! Hanoi, Hoi An, HCMC.",
+        "vi": "Tuyệt vời lắm! Hà Nội, Hội An, TP.HCM."
       },
       {
         "speaker": "A",
         "text": "Qu'est-ce qui t'a le plus marqué ?",
-        "en": "What impressed you most?"
+        "en": "What impressed you most?",
+        "vi": "Điều gì gây ấn tượng nhất với bạn?"
       },
       {
         "speaker": "B",
         "text": "La nourriture ! Le phở est inoubliable.",
-        "en": "The food! Pho is unforgettable."
+        "en": "The food! Pho is unforgettable.",
+        "vi": "Ẩm thực! Phở thì khó quên lắm."
       }
     ],
     "exercises": [
       {
         "type": "fill-blank",
         "question": "J'ai passé un mois ___ Vietnam.",
-        "answer": "au"
+        "answer": "au",
+        "hint_vi": "giới từ co lại — 'à' + 'le' (cho nước có quán từ giống đực)",
+        "hint_en": "contraction — 'à' + 'le' (for masculine countries: au Vietnam, au Japon)"
       },
       {
         "type": "matching",
         "pairs": [
           [
             "raconter",
-            "kể"
+            "kể (to tell)"
           ],
           [
             "inoubliable",
-            "khó quên"
+            "khó quên (unforgettable)"
           ],
           [
             "découvrir",
-            "khám phá"
+            "khám phá (to discover)"
           ]
         ],
-        "instruction": "Nối từ với nghĩa"
+        "instruction": "Nối từ với nghĩa",
+        "instruction_en": "Match the word with its meaning"
       },
       {
         "type": "translation",
         "vietnamese": "Tôi không quên lần đầu đến Paris.",
+        "english": "I'll never forget my first time in Paris.",
         "french": "Je n'oublierai jamais la première fois à Paris."
       }
     ]
@@ -2134,6 +2176,10 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_focus": [
           "plus→plu",
           "grand→grăng"
+        ],
+        "pronunciation_focus_en": [
+          "plus 'PLOO' — in comparisons the 's' is usually silent; before vowels it can sound as 'z' for liaison",
+          "grand 'GRAHN' — nasal 'an' at the end; final 'd' silent"
         ]
       },
       {
@@ -2142,6 +2188,10 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_focus": [
           "moins→moanh",
           "cher→se"
+        ],
+        "pronunciation_focus_en": [
+          "moins 'MWAN' — 'oi' = 'wa'; nasal 'in'; final 's' silent",
+          "cher 'SHAIR' — 'ch' = 'sh'; final 'r' soft French uvular"
         ]
       },
       {
@@ -2150,6 +2200,10 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_focus": [
           "aussi→ô-xi",
           "intelligente→anh-te-li-giăng"
+        ],
+        "pronunciation_focus_en": [
+          "aussi 'oh-SEE' — 'au' = 'oh'; double 'ss' keeps 's' clean",
+          "intelligente 'an-tay-lee-ZHAHNT' — nasal 'in' start; feminine '-ente' has 't' sounded"
         ]
       },
       {
@@ -2158,6 +2212,10 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_focus": [
           "meilleur→mê-iơ",
           "film→fìlm"
+        ],
+        "pronunciation_focus_en": [
+          "meilleur 'meh-YUR' — '-eill' = 'ay-y'; '-eur' = 'ur'",
+          "film 'FEELM' — vowel is 'ee' (NOT 'ih' as in English 'film'); borrowed but pronounced French-style"
         ]
       },
       {
@@ -2166,132 +2224,156 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_focus": [
           "pire→pia",
           "solution→xô-lu-xi-on"
+        ],
+        "pronunciation_focus_en": [
+          "pire 'PEER' — final '-e' silent; soft French 'r' at the end",
+          "solution 'soh-loo-SYON' — '-tion' = 'syon'; French 'u' rounded"
         ]
       }
     ],
     "cultural_notes_vi": "So sánh: plus... que (hơn), moins... que (kém), aussi... que (bằng). Bất quy tắc: bon→meilleur, bien→mieux, mauvais→pire.",
+    "cultural_notes_en": "French comparisons follow three frames: 'plus … que' (more … than), 'moins … que' (less … than), 'aussi … que' (as … as). The irregular pairs trip up English speakers: bon → meilleur (adjective 'better'), bien → mieux (adverb 'better'), mauvais → pire (adjective 'worse'). The bon/bien split is a frequent error: 'Le gâteau est BON' (the cake is good) → meilleur. 'Elle chante BIEN' (she sings well) → mieux. Pick the wrong one and it sounds like a beginner.",
     "tip_advice_vi": "'Meilleur' là tính từ, 'mieux' là trạng từ. Lỗi phổ biến nhất: 'Ce gâteau est meilleur' vs 'Elle chante mieux'.",
+    "tip_advice_en": "The cleanest memory hook: 'meilleur' describes a NOUN, 'mieux' modifies a VERB. 'Ce gâteau est meilleur' (this cake is better — describing 'gâteau'). 'Elle chante mieux' (she sings better — modifying 'chante'). 'Le mieux serait de…' is a frozen idiom meaning 'the best thing would be to…' — even though it uses the adverb form, treat it as a fixed expression.",
     "vocabulary": [
       {
         "word": "plus...que",
         "en": "more...than",
         "vi": "hơn",
         "pos": "expr.",
-        "pronunciation_vi": "plu…cơ"
+        "pronunciation_vi": "plu…cơ",
+        "pronunciation_en": "PLOO… kuh — 's' in 'plus' usually silent in comparisons"
       },
       {
         "word": "moins...que",
         "en": "less...than",
         "vi": "kém hơn",
         "pos": "expr.",
-        "pronunciation_vi": "moanh…cơ"
+        "pronunciation_vi": "moanh…cơ",
+        "pronunciation_en": "MWAN… kuh — 'oi' = 'wa'; nasal 'in'"
       },
       {
         "word": "aussi...que",
         "en": "as...as",
         "vi": "bằng",
         "pos": "expr.",
-        "pronunciation_vi": "ô-xi…cơ"
+        "pronunciation_vi": "ô-xi…cơ",
+        "pronunciation_en": "oh-SEE… kuh — 'au' = 'oh'"
       },
       {
         "word": "meilleur",
         "en": "better",
         "vi": "tốt hơn",
         "pos": "adj.",
-        "pronunciation_vi": "mê-iơ"
+        "pronunciation_vi": "mê-iơ",
+        "pronunciation_en": "meh-YUR — '-eill' = 'ay-y'; '-eur' = 'ur'; describes a noun"
       },
       {
         "word": "pire",
         "en": "worse",
         "vi": "tệ hơn",
         "pos": "adj.",
-        "pronunciation_vi": "pia"
+        "pronunciation_vi": "pia",
+        "pronunciation_en": "PEER — final '-e' silent; soft French 'r'"
       },
       {
         "word": "mieux",
         "en": "better (adv)",
         "vi": "tốt hơn",
         "pos": "adv.",
-        "pronunciation_vi": "mi-ơ"
+        "pronunciation_vi": "mi-ơ",
+        "pronunciation_en": "MYUH — 'ieu' is one rounded sound; this one modifies a verb (Elle chante MIEUX)"
       },
       {
         "word": "le meilleur",
         "en": "the best",
         "vi": "tốt nhất",
         "pos": "adj.",
-        "pronunciation_vi": "mê-iơ"
+        "pronunciation_vi": "mê-iơ",
+        "pronunciation_en": "luh meh-YUR — same as 'meilleur' with the definite article for superlative"
       },
       {
         "word": "le pire",
         "en": "the worst",
         "vi": "tệ nhất",
         "pos": "adj.",
-        "pronunciation_vi": "pia"
+        "pronunciation_vi": "pia",
+        "pronunciation_en": "luh PEER — superlative; can also be a noun meaning 'the worst case / the worst of it'"
       },
       {
         "word": "comparer",
         "en": "to compare",
         "vi": "so sánh",
         "pos": "v.",
-        "pronunciation_vi": "côn-pa-rê"
+        "pronunciation_vi": "côn-pa-rê",
+        "pronunciation_en": "kohn-pah-RAY — nasal 'on'; '-er' = 'ay'"
       },
       {
         "word": "égal",
         "en": "equal",
         "vi": "bằng nhau",
         "pos": "adj.",
-        "pronunciation_vi": "ê-gan"
+        "pronunciation_vi": "ê-gan",
+        "pronunciation_en": "ay-GAHL — final 'l' sounded clean; 'a' = 'ah'"
       }
     ],
     "dialogue": [
       {
         "speaker": "A",
         "text": "Lyon ou Marseille, tu préfères ?",
-        "en": "Lyon or Marseille, which do you prefer?"
+        "en": "Lyon or Marseille, which do you prefer?",
+        "vi": "Lyon hay Marseille, bạn thích cái nào hơn?"
       },
       {
         "speaker": "B",
         "text": "Lyon est plus élégante, Marseille plus vivante.",
-        "en": "Lyon is more elegant, Marseille livelier."
+        "en": "Lyon is more elegant, Marseille livelier.",
+        "vi": "Lyon thanh lịch hơn, còn Marseille thì sôi động hơn."
       },
       {
         "speaker": "A",
         "text": "Et pour la nourriture ?",
-        "en": "And for food?"
+        "en": "And for food?",
+        "vi": "Còn về ẩm thực thì sao?"
       },
       {
         "speaker": "B",
         "text": "Lyon est la meilleure pour la gastronomie !",
-        "en": "Lyon is best for gastronomy!"
+        "en": "Lyon is best for gastronomy!",
+        "vi": "Lyon nhất về ẩm thực!"
       }
     ],
     "exercises": [
       {
         "type": "fill-blank",
         "question": "Paris est ___ grand que Marseille.",
-        "answer": "plus"
+        "answer": "plus",
+        "hint_vi": "trạng từ so sánh — 'hơn'",
+        "hint_en": "comparison adverb — 'more' (in comparisons; 's' silent)"
       },
       {
         "type": "matching",
         "pairs": [
           [
             "plus...que",
-            "hơn"
+            "hơn (more...than)"
           ],
           [
             "meilleur",
-            "tốt hơn"
+            "tốt hơn (better, adj.)"
           ],
           [
             "le pire",
-            "tệ nhất"
+            "tệ nhất (the worst)"
           ]
         ],
-        "instruction": "Nối từ với nghĩa"
+        "instruction": "Nối từ với nghĩa",
+        "instruction_en": "Match the word with its meaning"
       },
       {
         "type": "translation",
         "vietnamese": "Phim này hay hơn phim tuần trước.",
+        "english": "This movie is better than last week's.",
         "french": "Ce film est meilleur que celui de la semaine dernière."
       }
     ]
@@ -2309,6 +2391,10 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_focus": [
           "avais→a-ve",
           "voyagerais→voa-ia-giơ-re"
+        ],
+        "pronunciation_focus_en": [
+          "avais 'ah-VEH' — imperfect of avoir; '-ais' = 'eh'",
+          "voyagerais 'vwah-yah-zhuh-REH' — conditional ending '-erais' = 'uh-REH'"
         ]
       },
       {
@@ -2317,6 +2403,10 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_focus": [
           "étudiais→ê-tu-đi-e",
           "réussirais→rê-u-xi-re"
+        ],
+        "pronunciation_focus_en": [
+          "étudiais 'ay-too-DYEH' — imperfect; French 'u' rounded",
+          "réussirais 'ray-oo-see-REH' — 'ss' clean 's'; conditional '-ais' = 'eh'"
         ]
       },
       {
@@ -2325,6 +2415,10 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_focus": [
           "aimerais→ê-mơ-re",
           "montagne→môn-ta-nhơ"
+        ],
+        "pronunciation_focus_en": [
+          "aimerais 'em-uh-REH' — conditional of aimer; soft polite-want",
+          "montagne 'mohn-TAH-nyuh' — nasal 'on'; 'gn' = 'ny' (like Spanish 'ñ')"
         ]
       },
       {
@@ -2333,6 +2427,10 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_focus": [
           "faudrait→phô-đre",
           "souvent→xu-văng"
+        ],
+        "pronunciation_focus_en": [
+          "faudrait 'foh-DREH' — conditional of falloir; 'au' = 'oh'",
+          "souvent 'soo-VAHN' — 'ou' = 'oo'; nasal 'en' at end"
         ]
       },
       {
@@ -2340,132 +2438,155 @@ export const lessons: FrenchLesson[] = [
         "vi": "Ở vị trí bạn, tôi không nhận.",
         "pronunciation_focus": [
           "accepterais→ác-xép-tơ-re"
+        ],
+        "pronunciation_focus_en": [
+          "accepterais 'ak-sep-tuh-REH' — conditional ending '-erais' = 'uh-REH'; 'cc' = 'ks'"
         ]
       }
     ],
     "cultural_notes_vi": "Si + imparfait → conditionnel présent (giả định). Conditionnel dùng: đề nghị lịch sự (Je voudrais), ước muốn (J'aimerais), lời khuyên (Tu devrais).",
+    "cultural_notes_en": "The 'si + imparfait → conditionnel' pattern (Si j'avais, je voyagerais) is the equivalent of English 'if I had, I would travel'. French uses this construction more often than English does — for hypotheticals, soft requests, and polite wishes. The conditional has three big jobs in everyday French: polite requests (Je voudrais un café), wishes (J'aimerais voyager), and advice (Tu devrais te reposer). Mastering the conditional is what makes B1 speech start sounding adult rather than textbook.",
     "tip_advice_vi": "Phân biệt: 'Si j'avais' (giả định) vs 'Quand j'avais' (thực tế). Conditionnel đuôi -ais, -ais, -ait, -ions, -iez, -aient.",
+    "tip_advice_en": "Watch the 'si' vs 'quand' split: 'Si j'avais' (if I had — hypothetical, may not happen) vs 'Quand j'avais' (when I had — actual past). Both use the imparfait, but the meaning is completely different. The conditional endings are -ais, -ais, -ait, -ions, -iez, -aient — same as imparfait endings, attached to the future stem. The future stem is usually the infinitive (voyager → voyagerais); irregular verbs have irregular stems (aller → irais, être → serais, avoir → aurais). Memorize the irregular stems and you have 80% of spoken conditional.",
     "vocabulary": [
       {
         "word": "si",
         "en": "if",
         "vi": "nếu",
         "pos": "conj.",
-        "pronunciation_vi": "xi"
+        "pronunciation_vi": "xi",
+        "pronunciation_en": "SEE — conditional conjunction"
       },
       {
         "word": "le conditionnel",
         "en": "conditional",
         "vi": "thể điều kiện",
         "pos": "n.m.",
-        "pronunciation_vi": "côn-đi-xi-ô-nen"
+        "pronunciation_vi": "côn-đi-xi-ô-nen",
+        "pronunciation_en": "kohn-dee-syoh-NEL — '-tion' = 'syon'; nasal 'on' twice"
       },
       {
         "word": "j'aimerais",
         "en": "I would like",
         "vi": "tôi muốn",
         "pos": "expr.",
-        "pronunciation_vi": "giê-mơ-re"
+        "pronunciation_vi": "giê-mơ-re",
+        "pronunciation_en": "zhem-uh-REH — softer than 'je veux'; closer to English 'I'd love to'"
       },
       {
         "word": "je voudrais",
         "en": "I would like",
         "vi": "tôi muốn",
         "pos": "expr.",
-        "pronunciation_vi": "giơ vu-đre"
+        "pronunciation_vi": "giơ vu-đre",
+        "pronunciation_en": "zhuh voo-DREH — polite 'I would like'; restaurant default"
       },
       {
         "word": "je devrais",
         "en": "I should",
         "vi": "tôi nên",
         "pos": "expr.",
-        "pronunciation_vi": "giơ đơ-vre"
+        "pronunciation_vi": "giơ đơ-vre",
+        "pronunciation_en": "zhuh duh-VREH — conditional of devoir; soft self-advice"
       },
       {
         "word": "imaginer",
         "en": "to imagine",
         "vi": "tưởng tượng",
         "pos": "v.",
-        "pronunciation_vi": "i-ma-gi-nê"
+        "pronunciation_vi": "i-ma-gi-nê",
+        "pronunciation_en": "ee-mah-zhee-NAY — 'g' before 'i' = 'zh'; '-er' = 'ay'"
       },
       {
         "word": "l'hypothèse",
         "en": "hypothesis",
         "vi": "giả thuyết",
         "pos": "n.f.",
-        "pronunciation_vi": "li-pô-te-dơ"
+        "pronunciation_vi": "li-pô-te-dơ",
+        "pronunciation_en": "lee-poh-TEZ — silent 'h'; 'th' = 't'; final 'è' opens like 'pet'; final '-e' silent"
       },
       {
         "word": "irréel",
         "en": "unreal",
         "vi": "không thật",
         "pos": "adj.",
-        "pronunciation_vi": "i-rê-en"
+        "pronunciation_vi": "i-rê-en",
+        "pronunciation_en": "ee-ray-EL — 'rr' is one 'r'; final 'l' sounded"
       },
       {
         "word": "le rêve",
         "en": "dream",
         "vi": "giấc mơ",
         "pos": "n.m.",
-        "pronunciation_vi": "rê-vơ"
+        "pronunciation_vi": "rê-vơ",
+        "pronunciation_en": "REV — final '-e' silent; circumflex on 'ê' lengthens the vowel slightly"
       },
       {
         "word": "supposer",
         "en": "to suppose",
         "vi": "giả sử",
         "pos": "v.",
-        "pronunciation_vi": "xu-pô-dê"
+        "pronunciation_vi": "xu-pô-dê",
+        "pronunciation_en": "soo-poh-ZAY — single 's' between vowels = 'z'; '-er' = 'ay'"
       }
     ],
     "dialogue": [
       {
         "speaker": "A",
         "text": "Si tu gagnais au loto, tu ferais quoi ?",
-        "en": "If you won the lotto, what would you do?"
+        "en": "If you won the lotto, what would you do?",
+        "vi": "Nếu trúng xổ số, bạn sẽ làm gì?"
       },
       {
         "speaker": "B",
         "text": "Je voyagerais partout, j'achèterais une maison.",
-        "en": "I'd travel everywhere, buy a house."
+        "en": "I'd travel everywhere, buy a house.",
+        "vi": "Mình sẽ đi du lịch khắp nơi, mua một căn nhà."
       },
       {
         "speaker": "A",
         "text": "Tu ne travaillerais plus ?",
-        "en": "You wouldn't work anymore?"
+        "en": "You wouldn't work anymore?",
+        "vi": "Bạn sẽ không đi làm nữa à?"
       },
       {
         "speaker": "B",
         "text": "Je travaillerais moins, j'ouvrirais un café.",
-        "en": "I'd work less, open a café."
+        "en": "I'd work less, open a café.",
+        "vi": "Mình sẽ làm ít hơn, mở một quán cà phê."
       }
     ],
     "exercises": [
       {
         "type": "fill-blank",
         "question": "Si j'___ riche, j'achèterais une maison.",
-        "answer": "étais"
+        "answer": "étais",
+        "hint_vi": "imparfait của être — 'là/được'",
+        "hint_en": "imperfect of être — 'were' (in hypothetical 'if I were…')"
       },
       {
         "type": "matching",
         "pairs": [
           [
             "j'aimerais",
-            "tôi muốn"
+            "tôi muốn (I would like)"
           ],
           [
             "le conditionnel",
-            "thể điều kiện"
+            "thể điều kiện (conditional)"
           ],
           [
             "le rêve",
-            "giấc mơ"
+            "giấc mơ (dream)"
           ]
         ],
-        "instruction": "Nối từ với nghĩa"
+        "instruction": "Nối từ với nghĩa",
+        "instruction_en": "Match the word with its meaning"
       },
       {
         "type": "translation",
         "vietnamese": "Nếu có thời gian, tôi học thêm ngôn ngữ.",
+        "english": "If I had time, I'd learn another language.",
         "french": "Si j'avais le temps, j'apprendrais une autre langue."
       }
     ]
