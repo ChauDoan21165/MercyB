@@ -4,7 +4,7 @@
 
 import type { FrenchLesson } from "./lessons";
 
-export const lessons: FrenchLesson[] =     [
+export const lessons: FrenchLesson[] =       [
     {
       "id": "french_fluency_conditional",
       "level": "B2",
@@ -3672,6 +3672,11 @@ export const lessons: FrenchLesson[] =     [
             "remercie → rơ-mer-si",
             "retour → rơ-tur",
             "négatif → né-ga-tif"
+          ],
+          "pronunciation_focus_en": [
+            "remercie → 'ruh-mehr-SEE' — 1st person present of remercier",
+            "retour → 'ruh-TOOR' — 'eu' as schwa here; '-our' = 'oor'",
+            "négatif → 'nay-gah-TEEF' — 'é' = 'ay'; final 'f' pronounced"
           ]
         },
         {
@@ -3681,6 +3686,11 @@ export const lessons: FrenchLesson[] =     [
             "auriez → o-rié",
             "indiquer → an-di-ké",
             "amélioration → a-mé-lio-ra-sion"
+          ],
+          "pronunciation_focus_en": [
+            "auriez → 'oh-RYAY' — conditional polite",
+            "indiquer → 'an-dee-KAY' — nasal 'in'; '-er' = 'ay'",
+            "amélioration → 'ah-may-lyoh-rah-SYON' — '-tion' = 'syon'"
           ]
         },
         {
@@ -3690,6 +3700,11 @@ export const lessons: FrenchLesson[] =     [
             "intéressée → an-té-rè-sé",
             "cabinet → ka-bi-nè",
             "éventuelles → é-vãn-tu-èl"
+          ],
+          "pronunciation_focus_en": [
+            "intéressée → 'an-tay-reh-SAY' — feminine past participle; '-ée' = 'ay'",
+            "cabinet → 'kah-bee-NEH' — final 't' silent",
+            "éventuelles → 'ay-vahn-TWEL' — nasal 'en'; '-elles' = 'el' (feminine plural, final 's' silent)"
           ]
         },
         {
@@ -3699,6 +3714,11 @@ export const lessons: FrenchLesson[] =     [
             "similaire → si-mi-lèr",
             "s'ouvrait → su-vrè",
             "considérée → kon-si-dé-ré"
+          ],
+          "pronunciation_focus_en": [
+            "similaire → 'see-mee-LEHR' — '-aire' = 'air'",
+            "s'ouvrait → 'soo-VREH' — reflexive 'se'; '-ait' = 'eh'",
+            "considérée → 'kohn-see-day-RAY' — feminine; nasal 'on'"
           ]
         },
         {
@@ -3709,6 +3729,12 @@ export const lessons: FrenchLesson[] =     [
             "plein → plã",
             "succès → syuk-sè",
             "choix → shwa"
+          ],
+          "pronunciation_focus_en": [
+            "souhaite → 'SWET' — silent 'h'; '-aite' = 'et'",
+            "plein → 'PLAN' — nasal 'ein'",
+            "succès → 'syuk-SEH' — rounded 'u'; final 's' silent",
+            "choix → 'SHWA' — 'oi' = 'wah'; final 'x' silent"
           ]
         }
       ],
@@ -3720,91 +3746,105 @@ export const lessons: FrenchLesson[] =     [
           "en": "a (negative) reply",
           "vi": "phản hồi (không mong đợi)",
           "pos": "n.m.",
-          "pronunciation_vi": "rơ-tur né-ga-tif"
+          "pronunciation_vi": "rơ-tur né-ga-tif",
+          "pronunciation_en": "UN ruh-TOOR nay-gah-TEEF — masc.; 'a (negative) reply'"
         },
         {
           "word": "des points d'amélioration",
           "en": "areas for improvement",
           "vi": "điểm cần cải thiện",
           "pos": "n.m. pl.",
-          "pronunciation_vi": "pwã da-mé-lio-ra-sion"
+          "pronunciation_vi": "pwã da-mé-lio-ra-sion",
+          "pronunciation_en": "DAY pwan dah-may-lyoh-rah-SYON — 'd'amélioration' contracted"
         },
         {
           "word": "une candidature",
           "en": "an application",
           "vi": "hồ sơ ứng tuyển",
           "pos": "n.f.",
-          "pronunciation_vi": "kãn-di-da-tur"
+          "pronunciation_vi": "kãn-di-da-tur",
+          "pronunciation_en": "ün kahn-dee-dah-TOOR — fem.; '-ure' rounded final 'u'"
         },
         {
           "word": "un poste similaire",
           "en": "a similar position",
           "vi": "vị trí tương tự",
           "pos": "n.m.",
-          "pronunciation_vi": "post si-mi-lèr"
+          "pronunciation_vi": "post si-mi-lèr",
+          "pronunciation_en": "UN POHST see-mee-LEHR — masc.; final '-e' silent on 'poste'"
         },
         {
           "word": "être considérée à nouveau",
           "en": "to be reconsidered",
           "vi": "được xét duyệt lại",
           "pos": "expr.",
-          "pronunciation_vi": "é-trơ kon-si-dé-ré a nu-vô"
+          "pronunciation_vi": "é-trơ kon-si-dé-ré a nu-vô",
+          "pronunciation_en": "EH-truh kohn-see-day-RAY ah noo-VOH — feminine past participle; 'à nouveau' = again"
         },
         {
           "word": "garder la porte ouverte",
           "en": "to keep the door open",
           "vi": "giữ cửa mở (cho cơ hội sau)",
           "pos": "expr.",
-          "pronunciation_vi": "gar-dé la port u-vert"
+          "pronunciation_vi": "gar-dé la port u-vert",
+          "pronunciation_en": "gar-DAY lah PORT oo-VEHRT — feminine 'la porte'"
         },
         {
           "word": "un retour constructif",
           "en": "constructive feedback",
           "vi": "phản hồi xây dựng",
           "pos": "n.m.",
-          "pronunciation_vi": "rơ-tur kon-stryuk-tif"
+          "pronunciation_vi": "rơ-tur kon-stryuk-tif",
+          "pronunciation_en": "UN ruh-TOOR kohn-stryuk-TEEF — masc.; 'constructive feedback'"
         },
         {
           "word": "sans rancune",
           "en": "no hard feelings",
           "vi": "không thù hằn",
           "pos": "expr.",
-          "pronunciation_vi": "sãn rãn-kyun"
+          "pronunciation_vi": "sãn rãn-kyun",
+          "pronunciation_en": "sahn rahn-KOON — 'sans rancune' = no hard feelings"
         },
         {
           "word": "rebondir",
           "en": "to bounce back",
           "vi": "vực dậy",
           "pos": "v.",
-          "pronunciation_vi": "rơ-bõn-dir"
+          "pronunciation_vi": "rơ-bõn-dir",
+          "pronunciation_en": "ruh-bohn-DEER — 'rebondir' = to bounce back; '-ir' verb"
         },
         {
           "word": "l'humilité professionnelle",
           "en": "professional humility",
           "vi": "sự khiêm tốn chuyên nghiệp",
           "pos": "n.f.",
-          "pronunciation_vi": "u-mi-li-té pro-fè-sio-nèl"
+          "pronunciation_vi": "u-mi-li-té pro-fè-sio-nèl",
+          "pronunciation_en": "lyu-mee-lee-TAY pro-feh-syo-NEL — 'l'humilité' silent 'h'"
         }
       ],
       "dialogue": [
         {
           "speaker": "Linh (email envoyé)",
           "text": "Madame Roy, je vous remercie pour votre retour, même s'il n'a pas été en ma faveur.",
+          "en": "Ms. Roy, thank you for your reply, even though it wasn't in my favor.",
           "vi": "Chị Roy, em cảm ơn về phản hồi, dù không theo hướng có lợi cho em."
         },
         {
           "speaker": "Mme Roy (réponse)",
           "text": "Bonjour Linh, votre démarche est appréciée. Avez-vous quinze minutes mardi pour un debrief ?",
+          "en": "Hello Linh, your approach is appreciated. Do you have fifteen minutes Tuesday for a debrief?",
           "vi": "Chào Linh, cách em làm rất đáng quý. Em có 15 phút thứ ba để debrief không?"
         },
         {
           "speaker": "Linh",
           "text": "Avec grand plaisir. Mardi 15h heure de Paris ?",
+          "en": "With great pleasure. Tuesday 3:00 p.m. Paris time?",
           "vi": "Rất sẵn lòng. Thứ ba 15h giờ Paris được không?"
         },
         {
           "speaker": "Mme Roy",
           "text": "C'est noté. Je vous envoie l'invitation.",
+          "en": "Noted. I'll send the invitation.",
           "vi": "Đã note. Tôi sẽ gửi lời mời."
         }
       ],
@@ -3812,61 +3852,73 @@ export const lessons: FrenchLesson[] =     [
         {
           "speaker": "Linh (email J+1)",
           "text": "Objet : Suite à votre réponse — Linh Trần (consultant junior, mars 2026)",
+          "en": "Subject: Following up on your reply — Linh Trần (junior consultant, March 2026)",
           "vi": "Tiêu đề: Tiếp theo phản hồi của chị — Linh Trần (consultant junior, tháng 3/2026)"
         },
         {
           "speaker": "Linh",
           "text": "Bonjour Madame Roy,",
+          "en": "Hello Ms. Roy,",
           "vi": "Chào chị Roy,"
         },
         {
           "speaker": "Linh",
           "text": "Je vous remercie pour votre retour reçu hier, même s'il n'a pas été en ma faveur. Je comprends que le choix s'est porté sur un profil avec davantage d'expérience en conseil pur, et c'est un critère parfaitement légitime.",
+          "en": "Thank you for the reply I received yesterday, even though it wasn't in my favor. I understand the choice went to a profile with more pure-consulting experience, and that's a perfectly legitimate criterion.",
           "vi": "Em cảm ơn về phản hồi nhận hôm qua, dù không theo hướng có lợi cho em. Em hiểu lựa chọn nghiêng về hồ sơ có nhiều kinh nghiệm tư vấn thuần túy hơn, và đó là tiêu chí hoàn toàn hợp lý."
         },
         {
           "speaker": "Linh",
           "text": "Si vous disposez de quelques minutes dans les prochaines semaines, j'apprécierais grandement un retour plus précis sur les points sur lesquels je peux progresser. Cela me serait utile pour mes prochaines candidatures.",
+          "en": "If you can spare a few minutes in the coming weeks, I would greatly appreciate more specific feedback on what I can improve. It would help me with my next applications.",
           "vi": "Nếu chị có vài phút trong những tuần tới, em sẽ rất cảm kích nếu được nghe phản hồi cụ thể về các điểm em có thể cải thiện. Điều đó sẽ giúp em cho các đợt ứng tuyển tới."
         },
         {
           "speaker": "Linh",
           "text": "Par ailleurs, je reste très intéressée par votre cabinet, et notamment par votre activité Asie du Sud-Est. Si un poste similaire s'ouvrait dans les douze prochains mois, je serais ravie d'être considérée à nouveau.",
+          "en": "Separately, I remain very interested in your firm, especially your Southeast Asia activity. If a similar role opens in the next twelve months, I'd be delighted to be considered again.",
           "vi": "Bên cạnh đó, em vẫn rất quan tâm đến công ty, đặc biệt mảng Đông Nam Á. Nếu có vị trí tương tự mở ra trong 12 tháng tới, em rất vui được xét duyệt lại."
         },
         {
           "speaker": "Linh",
           "text": "Je vous souhaite plein succès dans la prise de poste de la candidate retenue.",
+          "en": "I wish you every success with the onboarding of the selected candidate.",
           "vi": "Em chúc chị nhiều thành công với việc tiếp nhận ứng viên được chọn."
         },
         {
           "speaker": "Linh",
           "text": "Cordialement, Trần Linh",
+          "en": "Best regards, Trần Linh",
           "vi": "Cordialement, Trần Linh"
         },
         {
           "speaker": "(Mme Roy répond le lendemain)",
           "text": "Bonjour Linh, je tiens à vous remercier pour ce message, qui dénote une vraie maturité professionnelle. Très peu de candidats prennent le temps de revenir vers nous après un refus.",
+          "en": "(Ms. Roy replies the next day) Hello Linh, I want to thank you for this message, which shows real professional maturity. Very few candidates take the time to come back to us after a rejection.",
           "vi": "(Chị Roy trả lời hôm sau) Chào Linh, tôi muốn cảm ơn em về tin nhắn này, thể hiện sự trưởng thành nghề nghiệp thực sự. Rất ít ứng viên dành thời gian quay lại sau khi bị từ chối."
         },
         {
           "speaker": "Mme Roy",
           "text": "Pour répondre franchement, votre dossier était très solide ; ce qui a fait la différence, c'est qu'au cas pratique l'autre candidate a quantifié l'impact en euros, là où vous êtes restée en pourcentages. C'est un détail, mais ça a pesé.",
+          "en": "To answer frankly: your file was very strong; what made the difference is that on the case study the other candidate quantified impact in euros, where you stayed in percentages. A small detail, but it weighed.",
           "vi": "Trả lời thẳng, hồ sơ của em rất vững; điều tạo khác biệt là trong case thực hành, ứng viên kia đã đo tác động bằng euro, trong khi em dùng phần trăm. Là chi tiết nhỏ, nhưng có tác động."
         },
         {
           "speaker": "Mme Roy",
           "text": "Pour le reste : votre profil franco-vietnamien est rare et précieux. Nous avons un projet de bureau à Hanoï prévu pour fin 2026 — j'ai noté votre nom dans nos contacts prioritaires. Je vous recontacterai dès que ce sera concret.",
+          "en": "Otherwise: your Franco-Vietnamese profile is rare and valuable. We have a Hanoi office project planned for late 2026 — I've added your name to our priority contacts list. I'll reach back out as soon as it firms up.",
           "vi": "Còn lại: hồ sơ Pháp-Việt của em hiếm và quý. Chúng tôi có kế hoạch mở văn phòng Hà Nội cuối 2026 — tôi đã ghi tên em vào danh sách ưu tiên. Tôi sẽ liên lạc lại khi cụ thể."
         },
         {
           "speaker": "Mme Roy",
           "text": "Cordialement, Élise Roy",
+          "en": "Best regards, Élise Roy",
           "vi": "Cordialement, Élise Roy"
         },
         {
           "speaker": "Linh (réponse même jour)",
           "text": "Madame Roy, ce retour est extrêmement précieux — chiffrer en euros plutôt qu'en pourcentages est un point que je vais immédiatement intégrer. Je note avec attention l'ouverture de votre bureau à Hanoï. Bien à vous, Linh.",
+          "en": "(Linh replies same day) Ms. Roy, this feedback is extremely valuable — quantifying in euros rather than percentages is something I'll integrate immediately. I'll watch closely for the Hanoi opening. All the best, Linh.",
           "vi": "Chị Roy, phản hồi này quý vô cùng — định lượng bằng euro thay vì phần trăm là điểm em sẽ ghi nhận ngay. Em chú ý theo dõi việc mở văn phòng Hà Nội. Bien à vous, Linh."
         }
       ],
@@ -3880,25 +3932,33 @@ export const lessons: FrenchLesson[] =     [
         {
           "idiom": "Garder la porte ouverte",
           "literal": "Giữ cửa mở",
+          "literal_en": "to keep the door open",
           "meaning": "Để khả năng quay lại trong tương lai.",
+          "meaning_en": "to leave open the possibility of returning in the future",
           "example": "Mon email a permis de garder la porte ouverte pour 2027."
         },
         {
           "idiom": "Tirer les leçons",
           "literal": "Rút các bài học",
+          "literal_en": "to draw the lessons",
           "meaning": "Học từ thất bại để cải thiện.",
+          "meaning_en": "to learn from failure in order to improve",
           "example": "J'ai tiré les leçons de ce refus — je quantifie en euros maintenant."
         },
         {
           "idiom": "Sans rancune",
           "literal": "Không thù hằn",
+          "literal_en": "without rancor",
           "meaning": "Không giữ ác cảm sau khi bị từ chối.",
+          "meaning_en": "to bear no grudge after being turned down",
           "example": "Sans rancune — je vous souhaite plein succès."
         },
         {
           "idiom": "Rebondir",
           "literal": "Nảy lại",
+          "literal_en": "to bounce back",
           "meaning": "Vực dậy sau cú ngã / thất bại.",
+          "meaning_en": "to recover from a fall or a setback",
           "example": "Ce refus m'a appris à rebondir plus vite."
         }
       ],
@@ -3906,6 +3966,7 @@ export const lessons: FrenchLesson[] =     [
         {
           "type": "fill-blank",
           "instruction_vi": "Điền cụm vào email follow-up.",
+          "instruction_en": "Fill in the missing phrase in the follow-up email.",
           "items": [
             {
               "prompt": "Je vous ___ pour votre retour, même s'il est négatif.",
@@ -3928,6 +3989,7 @@ export const lessons: FrenchLesson[] =     [
         {
           "type": "matching",
           "instruction_vi": "Nối thành ngữ với nghĩa khi đối mặt với thất bại.",
+          "instruction_en": "Match each idiom with its meaning in the context of dealing with rejection.",
           "items": [
             {
               "prompt": "Garder la porte ouverte",
@@ -3950,6 +4012,7 @@ export const lessons: FrenchLesson[] =     [
         {
           "type": "translation",
           "instruction_vi": "Dịch sang tiếng Pháp lịch sự B2.",
+          "instruction_en": "Translate into polite B2 French.",
           "items": [
             {
               "prompt": "Em vẫn rất quan tâm đến công ty cho các cơ hội tương lai.",
@@ -3965,7 +4028,15 @@ export const lessons: FrenchLesson[] =     [
             }
           ]
         }
-      ]
+      ],
+      "cultural_notes_en": "A follow-up email after a rejection is a B2 skill that few Vietnamese speakers handle well — Vietnamese culture isn't trained for 'accepting rejection professionally'. In France, sending a polite email after being turned down is a marker of professional maturity — recruiters remember you for the next opening. A common scenario: a French firm hires three times in 18 months for the same role (turnover, expansion), and the round-one fourth-place candidate gets hired on round three. A follow-up email puts you in the first slice of the silent pipeline. Skipping it reads as immaturity — the recruiter assumes you weren't serious. Don't misread the move: a follow-up isn't begging for reconsideration — it's keeping a door open. For roles at French companies in Vietnam in particular: the market is small, word travels fast, and a courteous email stays remembered for years.",
+      "tip_advice_en": "Four-line email structure: (1) Thanks — not bitter, not begging; (2) Ask for feedback — one open question; (3) Express continued interest — flag future-opportunity openness; (4) Polite close. Avoid: calling the rejection 'unfair', comparing yourself to the chosen candidate, implying the recruiter 'missed talent', emojis, exclamation marks. Send within 24–48 hours of getting the rejection — not so fast they haven't even processed your name, not so slow they've forgotten. If they reply with feedback, thank them, acknowledge, don't argue. If they don't reply, accept the silence — don't double-tap. Save the contact and follow up once more in six months if a similar opening appears.",
+      "roleplay_prompts_en": [
+        "You just received a rejection email from a company you really wanted to join. Write a follow-up email within 24 hours — four lines, professional, no begging to reconsider.",
+        "The recruiter replies with concrete feedback (« votre français à l'écrit est encore perfectible » — your written French still has room to improve). Thank them and propose a concrete action (a course, a certification, a self-improvement plan).",
+        "Six months later, you see the same company is hiring for a similar role again. Write a re-application email — reference the previous interaction gently, no bitterness, mention something new you've improved."
+      ],
+      "register_notes_en": "A follow-up after rejection must be light and short — too long reads as begging. Vouvoiement is mandatory. Avoid: « je suis très déçue » (I'm very disappointed), « je ne comprends pas » (I don't understand), « je pense que vous vous trompez » (I think you've made a mistake). Replace with acceptance + curiosity: « j'apprécierais un retour » (I'd appreciate feedback), « je reste très intéressée » (I remain very interested). A common Vietnamese-speaker mistake: an overly humble tone (« I probably wasn't good enough ») — French recruiters read that as self-deprecation and feel awkward. The right tone is calm, acknowledges the decision, opens the door to the future. The closing phrase « Je vous souhaite plein succès dans votre choix final » is gold — it signals you're not bitter and not envious of the chosen candidate."
     },
     {
       "id": "french_b2_letter_of_recommendation",
@@ -3981,6 +4052,11 @@ export const lessons: FrenchLesson[] =     [
             "cher → shèr",
             "solliciter → so-li-si-té",
             "recommandation → rơ-ko-mãn-da-sion"
+          ],
+          "pronunciation_focus_en": [
+            "cher → 'SHEHR' — masc.; soft French 'r'",
+            "solliciter → 'so-lee-see-TAY' — '-er' = 'ay'",
+            "recommandation → 'ruh-koh-mahn-dah-SYON' — long noun; '-tion' = 'syon'"
           ]
         },
         {
@@ -3990,6 +4066,11 @@ export const lessons: FrenchLesson[] =     [
             "candidate → kãn-di-dat",
             "master → mas-ter",
             "deadline → dèd-lain (anglicisme accepté)"
+          ],
+          "pronunciation_focus_en": [
+            "candidate → 'kahn-dee-DAHT' — 1st-person of candidater; final 't' silent",
+            "master → 'mas-TEHR' — anglicism, accepted in French academia",
+            "deadline → 'ded-LAHYN' — anglicism, pronounced close to English"
           ]
         },
         {
@@ -3999,6 +4080,11 @@ export const lessons: FrenchLesson[] =     [
             "joins → jwã",
             "relevé → rơ-lơ-vé",
             "résumé → ré-zu-mé"
+          ],
+          "pronunciation_focus_en": [
+            "joins → 'ZHWAN' — 'oi' = 'wah'; nasal 'in'; final 's' silent",
+            "relevé → 'ruh-luh-VAY' — '-é' = 'ay'",
+            "résumé → 'ray-zoo-MAY' — 'é' twice = 'ay'; here means 'summary', not CV"
           ]
         },
         {
@@ -4008,6 +4094,11 @@ export const lessons: FrenchLesson[] =     [
             "acceptez → ak-sèp-té",
             "confirmation → kõn-fir-ma-sion",
             "d'ici → di-si"
+          ],
+          "pronunciation_focus_en": [
+            "acceptez → 'ak-sep-TAY' — '-ez' = 'ay'",
+            "confirmation → 'kohn-feer-mah-SYON' — '-tion' = 'syon'",
+            "d'ici → 'dee-SEE' — 'd'ici' = 'within'; short, clipped"
           ]
         },
         {
@@ -4017,6 +4108,11 @@ export const lessons: FrenchLesson[] =     [
             "comprends → kõm-prãn",
             "disponibilités → dis-po-ni-bi-li-té",
             "permettent → pèr-mèt"
+          ],
+          "pronunciation_focus_en": [
+            "comprends → 'kohm-PRAHN' — nasal 'om' + nasal 'en'",
+            "disponibilités → 'dees-poh-nee-bee-lee-TAY' — long noun; '-tés' = 'tay'",
+            "permettent → 'pehr-MET' — final '-ent' silent; double 'tt' = single 't'"
           ]
         }
       ],
@@ -4028,91 +4124,105 @@ export const lessons: FrenchLesson[] =     [
           "en": "letter of recommendation",
           "vi": "thư giới thiệu",
           "pos": "n.f.",
-          "pronunciation_vi": "lè-trơ dơ rơ-ko-mãn-da-sion"
+          "pronunciation_vi": "lè-trơ dơ rơ-ko-mãn-da-sion",
+          "pronunciation_en": "ün LET-truh duh ruh-koh-mahn-dah-SYON — fem.; long noun phrase"
         },
         {
           "word": "un référent",
           "en": "a referrer",
           "vi": "người giới thiệu",
           "pos": "n.m.",
-          "pronunciation_vi": "ré-fé-rãn"
+          "pronunciation_vi": "ré-fé-rãn",
+          "pronunciation_en": "UN ray-fay-RAHN — masc.; nasal final 'an'; final 't' silent"
         },
         {
           "word": "un relevé de notes",
           "en": "transcript",
           "vi": "bảng điểm",
           "pos": "n.m.",
-          "pronunciation_vi": "rơ-lơ-vé dơ not"
+          "pronunciation_vi": "rơ-lơ-vé dơ not",
+          "pronunciation_en": "UN ruh-luh-VAY duh NOHT — masc.; 'relevé de notes' = transcript"
         },
         {
           "word": "une candidature spontanée",
           "en": "unsolicited application",
           "vi": "ứng tuyển tự phát",
           "pos": "n.f.",
-          "pronunciation_vi": "kãn-di-da-tur spõn-ta-né"
+          "pronunciation_vi": "kãn-di-da-tur spõn-ta-né",
+          "pronunciation_en": "ün kahn-dee-dah-TOOR spohn-tah-NAY — 'unsolicited application'"
         },
         {
           "word": "une deadline",
           "en": "deadline (anglicism)",
           "vi": "hạn nộp",
           "pos": "n.f.",
-          "pronunciation_vi": "dèd-lain"
+          "pronunciation_vi": "dèd-lain",
+          "pronunciation_en": "ün DED-lahyn — anglicism; fem."
         },
         {
           "word": "un délai serré",
           "en": "a tight deadline",
           "vi": "hạn gấp",
           "pos": "n.m.",
-          "pronunciation_vi": "dé-lè sè-ré"
+          "pronunciation_vi": "dé-lè sè-ré",
+          "pronunciation_en": "UN day-LEH seh-RAY — 'délai serré' = tight deadline"
         },
         {
           "word": "personnaliser",
           "en": "to personalize",
           "vi": "cá nhân hóa",
           "pos": "v.",
-          "pronunciation_vi": "pèr-so-na-li-zé"
+          "pronunciation_vi": "pèr-so-na-li-zé",
+          "pronunciation_en": "pehr-so-nah-lee-ZAY — '-er' = 'ay'"
         },
         {
           "word": "être en mesure de",
           "en": "to be in a position to",
           "vi": "ở vị trí có thể",
           "pos": "expr.",
-          "pronunciation_vi": "é-trơ ãn mơ-zur dơ"
+          "pronunciation_vi": "é-trơ ãn mơ-zur dơ",
+          "pronunciation_en": "EH-truh ahn muh-ZOOR duh — 'être en mesure de' = to be in a position to"
         },
         {
           "word": "appuyer une candidature",
           "en": "to support an application",
           "vi": "ủng hộ một hồ sơ",
           "pos": "v.",
-          "pronunciation_vi": "a-pyu-ié yun kãn-di-da-tur"
+          "pronunciation_vi": "a-pyu-ié yun kãn-di-da-tur",
+          "pronunciation_en": "ah-pwee-YAY ün kahn-dee-dah-TOOR — 'appuyer' = to support; '-yer' = 'yay'"
         },
         {
           "word": "un jury de sélection",
           "en": "selection jury",
           "vi": "hội đồng xét tuyển",
           "pos": "n.m.",
-          "pronunciation_vi": "jyu-ri dơ sé-lèk-sion"
+          "pronunciation_vi": "jyu-ri dơ sé-lèk-sion",
+          "pronunciation_en": "UN ZHOO-ree duh say-lek-SYON — 'jury de sélection'"
         }
       ],
       "dialogue": [
         {
           "speaker": "Étudiant",
           "text": "Cher Professeur, je me permets de vous solliciter pour une lettre.",
+          "en": "Dear Professor, I'm taking the liberty of asking you for a letter of recommendation.",
           "vi": "Kính thưa thầy, em xin phép liên hệ nhờ thầy viết thư giới thiệu."
         },
         {
           "speaker": "Pr Martin",
           "text": "Bonjour, oui je me souviens de vous. Pour quelle candidature ?",
+          "en": "Hello, yes I remember you. For which application?",
           "vi": "Chào em, có nhớ em chứ. Cho hồ sơ nào?"
         },
         {
           "speaker": "Étudiant",
           "text": "Master à ETH Zürich, deadline le 30 mai.",
+          "en": "Master's at ETH Zürich, deadline May 30.",
           "vi": "Master ở ETH Zürich, hạn 30 tháng 5."
         },
         {
           "speaker": "Pr Martin",
           "text": "D'accord. Envoyez-moi vos pièces et un résumé d'une page.",
+          "en": "Alright. Send me your documents and a one-page summary.",
           "vi": "Được. Gửi cho thầy tài liệu và bản tóm tắt một trang."
         }
       ],
@@ -4120,76 +4230,91 @@ export const lessons: FrenchLesson[] =     [
         {
           "speaker": "Étudiant (email)",
           "text": "Objet : Demande de lettre de recommandation — candidature ETH Zürich (deadline 30 mai)",
+          "en": "Subject: Letter of recommendation request — ETH Zürich application (deadline May 30)",
           "vi": "Tiêu đề: Xin thư giới thiệu — ứng tuyển ETH Zürich (hạn 30/5)"
         },
         {
           "speaker": "Étudiant",
           "text": "Cher Professeur Martin,",
+          "en": "Dear Professor Martin,",
           "vi": "Kính thưa Giáo sư Martin,"
         },
         {
           "speaker": "Étudiant",
           "text": "Je me permets de vous écrire au sujet d'une candidature à un master en Computer Science à l'ETH Zürich, dont la deadline est fixée au 30 mai.",
+          "en": "I'm writing to you about an application to a Computer Science master's program at ETH Zürich, with a deadline of May 30.",
           "vi": "Em xin phép viết thư về việc ứng tuyển master Computer Science tại ETH Zürich, hạn nộp 30/5."
         },
         {
           "speaker": "Étudiant",
           "text": "Vous avez encadré mon mémoire de M1 sur les modèles bayésiens appliqués à la santé publique en 2024-2025 (note finale 17/20). Vous êtes la personne dont la lettre aurait le plus de poids pour défendre ma candidature.",
+          "en": "You supervised my M1 thesis on Bayesian models applied to public health in 2024–2025 (final grade 17/20). You're the person whose letter would carry the most weight in defending my application.",
           "vi": "Thầy đã hướng dẫn luận văn M1 của em về mô hình Bayes ứng dụng vào y tế công cộng năm 2024-2025 (điểm cuối 17/20). Thầy là người mà thư giới thiệu sẽ có sức nặng nhất để bảo vệ hồ sơ em."
         },
         {
           "speaker": "Étudiant",
           "text": "Je joins à ce message mon CV, mon relevé de notes M1, et un résumé d'une page présentant mon projet professionnel et la cohérence avec ETH. Le jury attend la lettre par soumission directe via leur plateforme — je vous transmettrai le lien dès votre accord.",
+          "en": "I'm attaching my CV, my M1 transcript, and a one-page summary of my professional plan and its fit with ETH. The committee wants the letter submitted directly via their platform — I'll send you the link as soon as you agree.",
           "vi": "Em đính kèm CV, bảng điểm M1, và bản tóm tắt một trang về dự án nghề nghiệp và sự phù hợp với ETH. Hội đồng yêu cầu thư nộp trực tiếp qua nền tảng của họ — em sẽ chuyển link ngay khi thầy đồng ý."
         },
         {
           "speaker": "Étudiant",
           "text": "Si vos disponibilités ne le permettent pas, je comprends parfaitement et je solliciterai un autre référent.",
+          "en": "If your schedule doesn't allow it, I completely understand and will reach out to another referrer.",
           "vi": "Nếu thời gian của thầy không cho phép, em hoàn toàn hiểu và sẽ tìm một người giới thiệu khác."
         },
         {
           "speaker": "Étudiant",
           "text": "Je vous remercie par avance pour votre attention. Cordialement, Trần Quang",
+          "en": "Thank you in advance for your attention. Best regards, Trần Quang",
           "vi": "Em xin cảm ơn thầy trước. Cordialement, Trần Quang"
         },
         {
           "speaker": "Pr Martin (réponse)",
           "text": "Bonjour Trần, je me souviens parfaitement de votre mémoire — un travail solide. J'accepte volontiers d'écrire cette lettre.",
+          "en": "(Pr Martin replies) Hello Trần, I remember your thesis perfectly — solid work. I'm happy to write this letter.",
           "vi": "(Pr Martin trả lời) Chào Trần, thầy nhớ rõ luận văn của em — một công trình vững. Thầy sẵn sàng viết thư này."
         },
         {
           "speaker": "Pr Martin",
           "text": "Envoyez-moi le lien de soumission, ainsi qu'une note de quelques lignes sur ce que vous considérez être votre meilleure contribution dans mon cours. Cela m'aide à personnaliser la lettre — les lettres génériques se reconnaissent à dix mètres.",
+          "en": "Send me the submission link and a few lines about what you consider your best contribution to my course. That helps me personalize the letter — generic letters are recognizable from ten meters away.",
           "vi": "Gửi cho thầy link nộp và vài dòng về điều em cho là đóng góp tốt nhất trong khóa của thầy. Điều đó giúp thầy cá nhân hóa thư — thư chung chung dễ nhận ra từ xa."
         },
         {
           "speaker": "Pr Martin",
           "text": "Délai : je m'engage à soumettre d'ici le 25 mai. Je vous confirme par mail dès que c'est fait.",
+          "en": "Timing: I commit to submitting by May 25. I'll confirm by email as soon as it's done.",
           "vi": "Thời hạn: thầy cam kết nộp trước 25/5. Sẽ xác nhận qua mail khi xong."
         },
         {
           "speaker": "Étudiant (réponse)",
           "text": "Cher Professeur, merci infiniment pour votre accord et votre franchise. Je vous transmets le lien et la note ci-jointe.",
+          "en": "(Student replies) Dear Professor, thank you so much for your acceptance and your candor. I'm sending the link and the attached note.",
           "vi": "(Em trả lời) Kính thưa thầy, em vô cùng cảm ơn thầy về sự đồng ý và thẳng thắn. Em chuyển link và bản note đính kèm."
         },
         {
           "speaker": "Étudiant",
           "text": "Pour la note : ma meilleure contribution était mon exposé final sur l'éthique des algorithmes prédictifs en santé, où vous m'aviez fait des retours très constructifs. Si cet angle vous semble pertinent, n'hésitez pas à le mobiliser.",
+          "en": "Note for you: my best contribution was my final presentation on the ethics of predictive algorithms in healthcare, on which you gave me very constructive feedback. If that angle works for you, please feel free to use it.",
           "vi": "Về note: đóng góp tốt nhất của em là bài thuyết trình cuối kỳ về đạo đức thuật toán dự đoán trong y tế, mà thầy đã cho em phản hồi rất xây dựng. Nếu góc đó phù hợp, xin thầy cứ dùng."
         },
         {
           "speaker": "Pr Martin",
           "text": "Note bien reçue, je m'en sers. Bonne continuation, Trần.",
+          "en": "Note well received, I'll use it. All the best, Trần.",
           "vi": "Đã nhận note, thầy sẽ dùng. Chúc em mọi điều tốt đẹp, Trần."
         },
         {
           "speaker": "Étudiant (J+25, après dépôt)",
           "text": "Cher Professeur, je vous écris pour vous remercier — la lettre a bien été soumise, et le jury m'a accusé réception du dossier complet le 28 mai.",
+          "en": "(Student J+25, after submission) Dear Professor, I'm writing to thank you — the letter was submitted, and the committee acknowledged receipt of the complete file on May 28.",
           "vi": "(Em sau J+25, sau khi nộp) Kính thưa thầy, em viết để cảm ơn — thư đã được nộp, và hội đồng đã xác nhận nhận hồ sơ đầy đủ ngày 28/5."
         },
         {
           "speaker": "Étudiant",
           "text": "Je vous tiens informé du résultat début juillet. Cordialement, Trần Quang",
+          "en": "I'll let you know the outcome in early July. Best regards, Trần Quang",
           "vi": "Em sẽ báo kết quả đầu tháng 7. Cordialement, Trần Quang"
         }
       ],
@@ -4203,25 +4328,33 @@ export const lessons: FrenchLesson[] =     [
         {
           "idiom": "Se reconnaître à dix mètres",
           "literal": "Nhận ra từ 10 mét",
+          "literal_en": "to recognize from ten meters",
           "meaning": "Quá rõ ràng, dễ thấy.",
+          "meaning_en": "to be so obvious it's spotted from far away (e.g., a generic letter)",
           "example": "Les lettres génériques se reconnaissent à dix mètres."
         },
         {
           "idiom": "Avoir le bras long",
           "literal": "Có cánh tay dài",
+          "literal_en": "to have a long arm",
           "meaning": "Có ảnh hưởng / quan hệ rộng.",
+          "meaning_en": "to have influence and connections in a particular network",
           "example": "Pr Martin a le bras long dans le réseau ETH ; sa lettre pèse lourd."
         },
         {
           "idiom": "Ne pas y aller par quatre chemins",
           "literal": "Không đi bằng bốn con đường",
+          "literal_en": "not to go by four roads",
           "meaning": "Vào thẳng vấn đề.",
+          "meaning_en": "to get straight to the point without detours",
           "example": "Le professeur n'y est pas allé par quatre chemins : il m'a demandé mon CV tout de suite."
         },
         {
           "idiom": "Mettre un pied dans la porte",
           "literal": "Đặt chân vào cánh cửa",
+          "literal_en": "to get a foot in the door",
           "meaning": "Tạo bước khởi đầu cho mối quan hệ / cơ hội.",
+          "meaning_en": "to create an initial opening for a relationship or opportunity",
           "example": "Cette lettre me met un pied dans la porte d'ETH."
         }
       ],
@@ -4229,6 +4362,7 @@ export const lessons: FrenchLesson[] =     [
         {
           "type": "fill-blank",
           "instruction_vi": "Điền cụm vào email xin thư giới thiệu.",
+          "instruction_en": "Fill in the missing phrase in the recommendation-letter request.",
           "items": [
             {
               "prompt": "Je me ___ de vous solliciter pour une lettre.",
@@ -4251,6 +4385,7 @@ export const lessons: FrenchLesson[] =     [
         {
           "type": "matching",
           "instruction_vi": "Nối thuật ngữ với nghĩa.",
+          "instruction_en": "Match each term with its definition.",
           "items": [
             {
               "prompt": "un référent",
@@ -4273,6 +4408,7 @@ export const lessons: FrenchLesson[] =     [
         {
           "type": "translation",
           "instruction_vi": "Dịch sang tiếng Pháp trang trọng B2.",
+          "instruction_en": "Translate into formal B2 French.",
           "items": [
             {
               "prompt": "Em hiểu thầy bận, nên đã chuẩn bị tài liệu để giúp thầy tiết kiệm thời gian.",
@@ -4288,7 +4424,15 @@ export const lessons: FrenchLesson[] =     [
             }
           ]
         }
-      ]
+      ],
+      "cultural_notes_en": "Asking for a letter of recommendation in France is a ritual that both professors and students take seriously. Unlike the US system — where rec letters are sometimes delegated to a TA — in France, if a professor agrees to sign their name, they write it themselves. That makes them selective: they say yes only to students they actually remember and rate highly. Asking a professor you haven't seen in two years is reasonable but you have to give them a reason (substantive engagement in the course, a strong thesis). The email structure has to include: (1) a formal greeting « Cher Professeur »; (2) a short context paragraph so the professor can place you; (3) a specific ask with a deadline; (4) attached supporting documents; (5) a polite out — let them say no without losing face. Unlike Vietnamese culture — where a professor may say yes out of obligation — French professors say no straight when they don't have the material to write a strong letter. That's a sign of respect for you and for the admissions process.",
+      "tip_advice_en": "Send the request 4–6 weeks before the deadline — five days out is disrespectful. In the email, attach four things: an updated CV, your transcript, a one-page project summary, and 2–3 sentences reminding the professor of your standout moment in their course (« mon mémoire sur X qui a obtenu Y » — my thesis on X that earned Y). State the deadline and submission format clearly (admissions committee, direct email, platform link). If the professor accepts, send a quick thank-you with a one-page summary that helps them personalize the letter. After submission, send a short update — « the letter was submitted, thank you again ». If the application succeeds two months later, send a follow-up — the professor will remember you for next time.",
+      "roleplay_prompts_en": [
+        "You need a recommendation letter from a professor you haven't seen in 18 months. Write the opening email — reference a specific course and a specific piece of work so the professor can place you, no generalities.",
+        "The professor agrees but says they need three weeks to write. Your deadline is in 12 days. Negotiate — propose options (submit a version 1 by deadline then update, defer your application a year, find an additional secondary referrer).",
+        "The professor declines because they're 'not familiar enough with your recent work'. Reply politely, ask for a suggestion of someone else, end the conversation cleanly — you may need to ask again next year."
+      ],
+      "register_notes_en": "A recommendation-letter email always opens with « Cher Professeur » + last name — never « Bonjour », never « Cher Monsieur ». If the professor is female, « Chère Professeure ». Vouvoiement is mandatory, even if your professor « tu »-s you in casual contexts — written official requests stay on « vous ». Avoid: « j'ai vraiment besoin » (I really need), repeating « s'il vous plaît », « je suis désolé de vous déranger » (sorry to bother you) — these all read as begging. The right tone: formal, complete information, an out for refusal. When the professor accepts, don't over-thank (« merci infiniment merci merci ») — one « merci infiniment » is enough. After submission, send a short update — this is a professional French signal that's particularly appreciated. When the outcome arrives, report back — even if it's negative, because the professor invested time in you."
     },
     {
       "id": "french_b2_research_interests",
@@ -4304,6 +4448,11 @@ export const lessons: FrenchLesson[] =     [
             "s'inscrivent → san-skriv",
             "continuité → kõn-ti-nu-i-té",
             "mémoire → mé-mwar"
+          ],
+          "pronunciation_focus_en": [
+            "s'inscrivent → 'san-SKREEV' — reflexive; nasal 'in'; '-ent' silent",
+            "continuité → 'kohn-tee-noo-ee-TAY' — long noun; nasal 'on'",
+            "mémoire → 'may-MWAR' — 'oi' = 'wah'; final '-e' silent"
           ]
         },
         {
@@ -4313,6 +4462,11 @@ export const lessons: FrenchLesson[] =     [
             "intéresse → an-té-rès",
             "intersection → an-tèr-sèk-sion",
             "modélisation → mo-dé-li-za-sion"
+          ],
+          "pronunciation_focus_en": [
+            "intéresse → 'an-tay-RESS' — nasal 'in'; final '-e' silent",
+            "intersection → 'an-tehr-sek-SYON' — nasal 'in'; '-tion' = 'syon'",
+            "modélisation → 'mo-day-lee-zah-SYON' — '-isation' = 'ee-zah-syon'"
           ]
         },
         {
@@ -4322,6 +4476,11 @@ export const lessons: FrenchLesson[] =     [
             "vise → viz",
             "thèse → tèz",
             "cotutelle → ko-tu-tèl"
+          ],
+          "pronunciation_focus_en": [
+            "vise → 'VEEZ' — 1st-person of viser; final '-e' silent",
+            "thèse → 'TEZ' — 'è' opens; final '-e' silent",
+            "cotutelle → 'koh-too-TEL' — '-elle' = 'el'"
           ]
         },
         {
@@ -4331,6 +4490,11 @@ export const lessons: FrenchLesson[] =     [
             "combine → kom-bin",
             "clinique → kli-nik",
             "explicable → èk-spli-kabl"
+          ],
+          "pronunciation_focus_en": [
+            "combine → 'kohm-BEEN' — 3rd-person; nasal 'om'; final '-e' silent",
+            "clinique → 'klee-NEEK' — final '-que' = 'k'",
+            "explicable → 'ek-splee-KAH-bluh' — 'x' = 'ks'; final '-le' barely voiced"
           ]
         },
         {
@@ -4341,6 +4505,12 @@ export const lessons: FrenchLesson[] =     [
             "mixte → mikst",
             "recherche → rơ-shèr-shơ",
             "universitaire → u-ni-ver-si-tèr"
+          ],
+          "pronunciation_focus_en": [
+            "terme → 'TEHRM' — final '-e' silent; soft French 'r'",
+            "mixte → 'MIKST' — final cluster fully pronounced; '-e' silent",
+            "recherche → 'ruh-SHEHRSH' — 'ch' = 'sh' twice",
+            "universitaire → 'oo-nee-vehr-see-TEHR' — 'u' rounded; '-aire' = 'air'"
           ]
         }
       ],
@@ -4352,91 +4522,105 @@ export const lessons: FrenchLesson[] =     [
           "en": "to follow on from",
           "vi": "nối tiếp",
           "pos": "v.",
-          "pronunciation_vi": "san-skrir dãn la kõn-ti-nu-i-té dơ"
+          "pronunciation_vi": "san-skrir dãn la kõn-ti-nu-i-té dơ",
+          "pronunciation_en": "san-SKREER dahn lah kohn-tee-noo-ee-TAY duh — long phrase; idiom 'to follow on from'"
         },
         {
           "word": "l'intersection (entre)",
           "en": "intersection between",
           "vi": "vùng giao thoa",
           "pos": "n.f.",
-          "pronunciation_vi": "an-tèr-sèk-sion ãn-trơ"
+          "pronunciation_vi": "an-tèr-sèk-sion ãn-trơ",
+          "pronunciation_en": "lan-tehr-sek-SYON ahn-truh — fem.; 'between' = 'entre'"
         },
         {
           "word": "une thèse en cotutelle",
           "en": "jointly-supervised PhD",
           "vi": "luận án đồng hướng dẫn",
           "pos": "n.f.",
-          "pronunciation_vi": "tèz ãn ko-tu-tèl"
+          "pronunciation_vi": "tèz ãn ko-tu-tèl",
+          "pronunciation_en": "ün TEZ ahn koh-too-TEL — fem.; 'thèse en cotutelle' = jointly-supervised PhD"
         },
         {
           "word": "l'IA explicable",
           "en": "explainable AI",
           "vi": "AI có thể giải thích",
           "pos": "n.f.",
-          "pronunciation_vi": "i-a èk-spli-kabl"
+          "pronunciation_vi": "i-a èk-spli-kabl",
+          "pronunciation_en": "lyah ek-splee-KAH-bluh — 'IA' = 'i-a' (letter names); 'explainable AI'"
         },
         {
           "word": "à terme",
           "en": "ultimately",
           "vi": "về lâu dài",
           "pos": "expr.",
-          "pronunciation_vi": "a tèrm"
+          "pronunciation_vi": "a tèrm",
+          "pronunciation_en": "ah TEHRM — 'à terme' = ultimately; short phrase"
         },
         {
           "word": "un poste mixte",
           "en": "hybrid position",
           "vi": "vị trí kết hợp",
           "pos": "n.m.",
-          "pronunciation_vi": "post mikst"
+          "pronunciation_vi": "post mikst",
+          "pronunciation_en": "UN POHST MIKST — masc.; 'hybrid position'"
         },
         {
           "word": "une problématique",
           "en": "research question",
           "vi": "câu hỏi nghiên cứu",
           "pos": "n.f.",
-          "pronunciation_vi": "pro-blé-ma-tik"
+          "pronunciation_vi": "pro-blé-ma-tik",
+          "pronunciation_en": "ün proh-blay-mah-TEEK — fem.; key academic term; 'research question'"
         },
         {
           "word": "la faisabilité",
           "en": "feasibility",
           "vi": "tính khả thi",
           "pos": "n.f.",
-          "pronunciation_vi": "fơ-za-bi-li-té"
+          "pronunciation_vi": "fơ-za-bi-li-té",
+          "pronunciation_en": "lah feh-zah-bee-lee-TAY — 'faisabilité' = feasibility"
         },
         {
           "word": "un appel à candidatures",
           "en": "call for applications",
           "vi": "thông báo tuyển ứng viên",
           "pos": "n.m.",
-          "pronunciation_vi": "a-pèl a kãn-di-da-tur"
+          "pronunciation_vi": "a-pèl a kãn-di-da-tur",
+          "pronunciation_en": "UN ah-PEL ah kahn-dee-dah-TOOR — 'call for applications'"
         },
         {
           "word": "un financement doctoral",
           "en": "doctoral funding",
           "vi": "kinh phí tiến sĩ",
           "pos": "n.m.",
-          "pronunciation_vi": "fi-nãns-mã dok-to-ral"
+          "pronunciation_vi": "fi-nãns-mã dok-to-ral",
+          "pronunciation_en": "UN fee-nahns-MAHN dok-toh-RAL — 'doctoral funding'"
         }
       ],
       "dialogue": [
         {
           "speaker": "Candidat",
           "text": "Bonjour Professeur, merci de m'accorder ce premier entretien.",
+          "en": "Hello Professor, thank you for granting me this first interview.",
           "vi": "Chào cô, em cảm ơn cô đã dành cho em buổi đầu này."
         },
         {
           "speaker": "Pr Lefèvre",
           "text": "Présentez-moi en cinq minutes votre projet et pourquoi mon labo.",
+          "en": "Present your project and why you've chosen my lab in five minutes.",
           "vi": "Em trình bày trong 5 phút dự án và lý do chọn lab của tôi."
         },
         {
           "speaker": "Candidat",
           "text": "Mon projet porte sur l'IA explicable appliquée aux dossiers patients vietnamiens.",
+          "en": "My project is on explainable AI applied to Vietnamese patient records.",
           "vi": "Dự án của em về AI có thể giải thích áp dụng cho hồ sơ bệnh nhân Việt Nam."
         },
         {
           "speaker": "Pr Lefèvre",
           "text": "Quelle est votre problématique précise ?",
+          "en": "What's your precise research question?",
           "vi": "Câu hỏi nghiên cứu cụ thể là gì?"
         }
       ],
@@ -4444,66 +4628,79 @@ export const lessons: FrenchLesson[] =     [
         {
           "speaker": "Candidat",
           "text": "Bonjour Professeur Lefèvre, je vous remercie sincèrement pour le temps que vous m'accordez aujourd'hui.",
+          "en": "Hello Professor Lefèvre, I sincerely thank you for the time you're giving me today.",
           "vi": "Chào Giáo sư Lefèvre, em chân thành cảm ơn cô đã dành thời gian cho em hôm nay."
         },
         {
           "speaker": "Pr Lefèvre",
           "text": "Bonjour Monsieur Trần. J'ai parcouru votre dossier hier soir. Votre mémoire de M2 sur la détection précoce des arythmies par réseaux récurrents m'a intéressée.",
+          "en": "Hello Mr. Trần. I went through your file last night. Your M2 thesis on early detection of arrhythmias via recurrent networks caught my attention.",
           "vi": "Chào em Trần. Tôi đã xem hồ sơ tối qua. Luận văn M2 của em về phát hiện sớm rối loạn nhịp tim bằng mạng hồi quy thu hút sự quan tâm của tôi."
         },
         {
           "speaker": "Candidat",
           "text": "Mon mémoire montrait que les modèles atteignaient 92 pour cent de sensibilité, mais qu'ils étaient inutilisables en clinique car les médecins ne pouvaient pas justifier leurs alertes.",
+          "en": "My thesis showed that the models reached 92 percent sensitivity, but were unusable in clinical settings because doctors couldn't justify their alerts.",
           "vi": "Luận văn của em cho thấy các mô hình đạt 92 phần trăm độ nhạy, nhưng không dùng được trên lâm sàng vì bác sĩ không biện minh được cảnh báo."
         },
         {
           "speaker": "Candidat",
           "text": "Je voudrais consacrer ma thèse à combler ce fossé : développer une couche d'explication contrefactuelle adaptée à des dossiers patients hétérogènes, en particulier dans des contextes à faibles ressources comme les hôpitaux provinciaux vietnamiens.",
+          "en": "I'd like to devote my doctorate to closing that gap: developing a counterfactual explanation layer adapted to heterogeneous patient records, particularly in low-resource contexts like Vietnamese provincial hospitals.",
           "vi": "Em muốn dành luận án để lấp khoảng trống đó: phát triển một lớp giải thích phản thực tế phù hợp với hồ sơ bệnh nhân không đồng nhất, đặc biệt trong bối cảnh ít tài nguyên như bệnh viện tỉnh Việt Nam."
         },
         {
           "speaker": "Pr Lefèvre",
           "text": "C'est une vraie problématique. Mais soyons francs : votre projet recouvre potentiellement deux thèses. Soit on creuse la méthode XAI, soit l'adaptation contextuelle vietnamienne. Lequel vous tient le plus à cœur ?",
+          "en": "That's a real research question. But let's be frank: your project potentially spans two theses. Either we dig into the XAI method, or we focus on Vietnamese contextual adaptation. Which matters more to you?",
           "vi": "Đây là câu hỏi nghiên cứu thực sự. Nhưng nói thẳng: dự án của em có khả năng bao gồm hai luận án. Hoặc đào sâu phương pháp XAI, hoặc thích ứng bối cảnh Việt Nam. Cái nào quan trọng với em hơn?"
         },
         {
           "speaker": "Candidat",
           "text": "Si je dois trancher, je pencherais pour la méthode XAI, en utilisant les données vietnamiennes comme cas d'application validant.",
+          "en": "If I have to choose, I'd lean toward the XAI method, using Vietnamese data as a validating application case.",
           "vi": "Nếu phải chọn, em nghiêng về phương pháp XAI, dùng dữ liệu Việt Nam như case ứng dụng kiểm chứng."
         },
         {
           "speaker": "Pr Lefèvre",
           "text": "Bonne lucidité — un raisonnement de doctorant, pas d'étudiant. Parlons financement : avez-vous identifié des bourses ?",
+          "en": "Good clarity — that's PhD-level reasoning, not a student's. Let's talk funding: have you identified any scholarships?",
           "vi": "Sáng suốt — lập luận của nghiên cứu sinh, không phải sinh viên. Nói về tài chính: em đã xác định học bổng nào chưa?"
         },
         {
           "speaker": "Candidat",
           "text": "Trois pistes en parallèle : la bourse Eiffel en cours, une cotutelle avec l'Université de Médecine de Hanoï pour un cofinancement vietnamien, et le contrat doctoral classique en dernier recours.",
+          "en": "Three tracks in parallel: the Eiffel scholarship currently under review, a cotutelle with Hanoi Medical University for joint Vietnamese funding, and the standard doctoral contract as a last resort.",
           "vi": "Ba hướng song song: học bổng Eiffel đang nộp, một cotutelle với Đại học Y Hà Nội cho đồng tài trợ Việt Nam, và hợp đồng tiến sĩ thông thường là phương án cuối."
         },
         {
           "speaker": "Pr Lefèvre",
           "text": "Très bien préparé. Je vais être directe : votre profil m'intéresse, le sujet aussi, et la dimension cotutelle est un atout pour notre labo qui cherche à renforcer son axe Asie du Sud-Est.",
+          "en": "Very well prepared. Let me be direct: your profile interests me, the topic does too, and the cotutelle dimension is an asset for our lab which is looking to strengthen its Southeast Asia line.",
           "vi": "Chuẩn bị tốt. Tôi nói thẳng: hồ sơ của em khiến tôi quan tâm, đề tài cũng vậy, và cotutelle là lợi thế cho lab của chúng tôi vốn đang muốn củng cố trục Đông Nam Á."
         },
         {
           "speaker": "Pr Lefèvre",
           "text": "Je ne peux pas m'engager aujourd'hui — j'ai trois autres entretiens cette semaine — mais je vous donnerai une réponse argumentée d'ici dix jours. Si c'est positif, on enchaîne sur la rédaction conjointe du projet pour l'Eiffel.",
+          "en": "I can't commit today — I have three other interviews this week — but I'll give you a reasoned answer within ten days. If it's positive, we move to jointly drafting the project for the Eiffel.",
           "vi": "Tôi không thể cam kết hôm nay — còn ba phỏng vấn khác tuần này — nhưng tôi sẽ cho em câu trả lời có lý lẽ trong 10 ngày. Nếu tích cực, ta chuyển sang giai đoạn cùng soạn dự án cho Eiffel."
         },
         {
           "speaker": "Candidat",
           "text": "Je vous remercie infiniment pour cette franchise et ce calendrier clair. J'attendrai votre retour sans relancer avant les dix jours.",
+          "en": "Thank you very much for that candor and that clear timeline. I'll wait for your reply without following up before the ten-day mark.",
           "vi": "Em chân thành cảm ơn vì sự thẳng thắn và lịch trình rõ ràng. Em sẽ chờ phản hồi mà không nhắc lại trước thời hạn 10 ngày."
         },
         {
           "speaker": "Candidat",
           "text": "Si entre-temps des questions techniques sur mon mémoire vous viennent, je peux vous envoyer le code et les résultats détaillés — tout est versionné sur un dépôt privé que je peux ouvrir à votre équipe.",
+          "en": "If technical questions about my thesis come up in the meantime, I can send you the code and detailed results — everything is versioned in a private repository I can open to your team.",
           "vi": "Nếu trong thời gian đó cô có câu hỏi kỹ thuật về luận văn, em có thể gửi mã nguồn và kết quả chi tiết — mọi thứ đều quản lý phiên bản trên một kho riêng em có thể mở cho nhóm cô."
         },
         {
           "speaker": "Pr Lefèvre",
           "text": "C'est noté, et c'est apprécié. Bonne continuation, Monsieur Trần.",
+          "en": "Noted, and appreciated. All the best, Mr. Trần.",
           "vi": "Đã ghi nhận, và rất quý. Chúc em mọi điều tốt đẹp, em Trần."
         }
       ],
@@ -4517,25 +4714,33 @@ export const lessons: FrenchLesson[] =     [
         {
           "idiom": "Trancher dans le vif",
           "literal": "Cắt vào thịt sống",
+          "literal_en": "to cut into the living",
           "meaning": "Quyết định khó, dứt khoát.",
+          "meaning_en": "to make a hard, decisive call between options",
           "example": "Si je dois trancher dans le vif, je garde le volet méthodologique."
         },
         {
           "idiom": "En dernier recours",
           "literal": "Trong phương án cuối",
+          "literal_en": "in last resort",
           "meaning": "Như giải pháp cuối cùng.",
+          "meaning_en": "as a last-resort option",
           "example": "Le contrat doctoral classique reste une option en dernier recours."
         },
         {
           "idiom": "Tenir la route",
           "literal": "Giữ được đường",
+          "literal_en": "to hold the road",
           "meaning": "Vững chắc, chịu được xét nét.",
+          "meaning_en": "to stand up to scrutiny; to be solid (a research question that 'holds')",
           "example": "Votre problématique tient la route, mais l'articulation avec le terrain reste à préciser."
         },
         {
           "idiom": "Mettre les pieds dans le plat",
           "literal": "Đặt chân vào đĩa thức ăn",
+          "literal_en": "to put one's feet in the dish",
           "meaning": "Nói thẳng vào chủ đề tế nhị.",
+          "meaning_en": "to address a sensitive topic head-on without dancing around it",
           "example": "Je vais mettre les pieds dans le plat : votre projet recouvre deux thèses."
         }
       ],
@@ -4543,6 +4748,7 @@ export const lessons: FrenchLesson[] =     [
         {
           "type": "fill-blank",
           "instruction_vi": "Điền cụm vào câu trình bày tiến sĩ.",
+          "instruction_en": "Fill in the missing phrase in the doctoral-presentation sentence.",
           "items": [
             {
               "prompt": "Mes travaux ___ dans la continuité de mon mémoire.",
@@ -4565,6 +4771,7 @@ export const lessons: FrenchLesson[] =     [
         {
           "type": "matching",
           "instruction_vi": "Nối thuật ngữ với định nghĩa.",
+          "instruction_en": "Match each term with its definition.",
           "items": [
             {
               "prompt": "une cotutelle",
@@ -4587,6 +4794,7 @@ export const lessons: FrenchLesson[] =     [
         {
           "type": "translation",
           "instruction_vi": "Dịch sang tiếng Pháp B2 học thuật.",
+          "instruction_en": "Translate into academic B2 French.",
           "items": [
             {
               "prompt": "Em chưa thể cam kết hôm nay, nhưng em sẽ trả lời thầy có lý lẽ trong vòng mười ngày.",
@@ -4602,7 +4810,15 @@ export const lessons: FrenchLesson[] =     [
             }
           ]
         }
-      ]
+      ],
+      "cultural_notes_en": "French academics rate doctoral candidates highly when they can show a « problématique propre » — a research question they've thought through, not « please let me join your lab and learn ». Unlike Vietnamese culture (where humility — « please teach me » — is valued), in France that register reads as academically immature. You have to spell it out: what you've read, what you think, where their lab fits, what you want to contribute. Cotutelle (joint Franco-Vietnamese supervision) is encouraged by both countries — it keeps talent in Vietnam while maintaining French network ties. When writing a doctoral « lettre de motivation », don't recap your CV (the professor already has it). Spend 70% on the research question and on why this lab. Avoid clichés like « j'ai toujours été passionné par… » (I've always been passionate about…) — go specific: name one of their papers you've read, a method you want to learn, a Vietnamese dataset you have access to that they don't.",
+      "tip_advice_en": "Your first email to a lab head should be under 350 words. Structure: (1) short context (who you are, what degree); (2) your research question in 1–2 sentences; (3) why their lab, with 1–2 concrete reasons (a paper they wrote, a method they developed); (4) a proposal for a 30-minute online meeting; (5) attach your CV and a one-page research statement. Arrive at the meeting with (a) a research question as narrow as you can make it, (b) questions for the professor about their team, (c) names of 3–4 foundational papers you've read. When the professor pushes back that the project 'spans two theses', choose on the spot — don't stall. Within 24 hours of the meeting, send a thank-you email summarizing three action points.",
+      "roleplay_prompts_en": [
+        "Present your doctoral project in five minutes to a professor you're meeting for the first time. Structure: (1) the research question, (2) what's missing in the literature, (3) why their lab, (4) plan and funding.",
+        "The professor says your project 'spans two theses' and asks you to pick one. Decide on the spot, justify in two sentences, and accept the consequences (giving up one strand) without showing hesitation.",
+        "The professor politely declines because the lab is full for 2026 but suggests a colleague in Lyon. Thank them, ask if they'd be willing to send a one-line introduction, and keep the relationship open for future collaboration."
+      ],
+      "register_notes_en": "Doctoral pre-application interviews stay on vouvoiement until the professor offers tu, which rarely happens at the first meeting. The candidate must be able to (1) argue with concessions (« vous touchez exactement le point… » — you put your finger on exactly the…), (2) commit openly between options (« si je dois trancher, je pencherais pour… » — if I have to choose, I'd lean toward…), and (3) talk money comfortably (French academics discuss doctoral funding openly). Avoid empty intensifiers (« je suis extrêmement passionné »). Favor precision markers: « concrètement » (concretely), « en pratique » (in practice), « si je dois être direct » (if I have to be direct). When you don't understand a question, don't nod — ask « Pourriez-vous reformuler ? » (could you rephrase?) instead of bluffing."
     },
     {
       "id": "french_b2_meeting_french_boss_visiting_vn",
