@@ -4,7 +4,7 @@
 
 import type { FrenchLesson } from "./lessons";
 
-export const lessons: FrenchLesson[] =   [
+export const lessons: FrenchLesson[] =     [
     {
       "id": "lthesis_presentation",
       "level": "C1",
@@ -8060,6 +8060,12 @@ export const lessons: FrenchLesson[] =   [
             "axe → ax",
             "générique → jé-né-rik",
             "sollicite → so-li-sit"
+          ],
+          "pronunciation_focus_en": [
+            "intitulé → 'an-tee-tu-LAY' — nasal 'in'; 'entitled'; '-é' = 'ay'",
+            "axe → 'AKS' — 'l'axe quatre' = axis four; final cluster pronounced",
+            "générique → 'zhay-nay-REEK' — 'g' = 'zh'; final '-que' = 'k'",
+            "sollicite → 'so-lee-SEET' — 'solliciter' = to request/seek; double 'll' = 'l'"
           ]
         },
         {
@@ -8070,6 +8076,12 @@ export const lessons: FrenchLesson[] =   [
             "associe → a-so-si",
             "fabrique → fa-brik",
             "savoir → sa-voar"
+          ],
+          "pronunciation_focus_en": [
+            "consortium → 'kohn-sor-SYOM' — Latinism; final 'm' pronounced",
+            "associe → 'ah-so-SEE' — 'associer' 3rd person; final '-e' silent",
+            "fabrique → 'fah-BREEK' — 'se fabrique' = is fabricated/made; final '-que' = 'k'",
+            "savoir → 'sah-VWAR' — 'oi' = 'wah'; here a noun, 'knowledge'"
           ]
         },
         {
@@ -8080,6 +8092,12 @@ export const lessons: FrenchLesson[] =   [
             "ait fait → è fè",
             "longitudinale → lõn-ji-tu-di-nal",
             "envergure → ãn-vèr-gur"
+          ],
+          "pronunciation_focus_en": [
+            "Quoique → 'KWAH-kuh' — 'oi' = 'wah'; triggers the subjunctive",
+            "ait fait → 'eh FEH' — pluperfect subjunctive of faire ('ait fait l'objet de')",
+            "longitudinale → 'lohn-zhee-tu-dee-NAL' — 'g' = 'zh'; 'longitudinal' (fem.)",
+            "envergure → 'ahn-vehr-GUR' — nasal 'en'; 'd'envergure' = of significant scale"
           ]
         },
         {
@@ -8090,6 +8108,12 @@ export const lessons: FrenchLesson[] =   [
             "monographie → mo-no-gra-fi",
             "Presses → près",
             "archivés → ar-shi-vé"
+          ],
+          "pronunciation_focus_en": [
+            "livrables → 'lee-VRAH-bluh' — 'deliverables'; final '-le' barely voiced",
+            "monographie → 'moh-noh-grah-FEE' — 'g' = hard before 'r'; final '-ie' = 'ee'",
+            "Presses → 'PRESS' — 'Presses universitaires' = university press; final '-es' silent",
+            "archivés → 'ar-shee-VAY' — 'ch' = 'sh'; '-és' = 'ay'"
           ]
         },
         {
@@ -8100,6 +8124,12 @@ export const lessons: FrenchLesson[] =   [
             "ventile → vãn-til",
             "gratifications → gra-ti-fi-ka-sion",
             "environnement → ãn-vi-ron-mã"
+          ],
+          "pronunciation_focus_en": [
+            "soit → 'SWAH' — here 'i.e./namely' (apposition), not the subjunctive of être",
+            "ventile → 'vahn-TEEL' — 'ventiler un budget' = to break a budget down",
+            "gratifications → 'grah-tee-fee-kah-SYON' — '-tion' = 'syon'; doctoral stipends",
+            "environnement → 'ahn-vee-roh-NMAHN' — 'frais d'environnement' = overhead; nasal final"
           ]
         }
       ],
@@ -8111,91 +8141,105 @@ export const lessons: FrenchLesson[] =   [
           "en": "the French National Research Agency",
           "vi": "Cơ quan Quốc gia Pháp về Nghiên cứu",
           "pos": "n.f.",
-          "pronunciation_vi": "lan-ar"
+          "pronunciation_vi": "lan-ar",
+          "pronunciation_en": "lah-EN-AIR — 'l'ANR'; letters spelled (A-N-R) = 'ah-en-air'"
         },
         {
           "word": "un appel à projets (AAP)",
           "en": "a call for proposals",
           "vi": "lời gọi đệ trình dự án",
           "pos": "n.m.",
-          "pronunciation_vi": "an a-pèl a pro-jè"
+          "pronunciation_vi": "an a-pèl a pro-jè",
+          "pronunciation_en": "UN ah-PEL ah pro-ZHEH — 'un appel à projets (AAP)' = a call for proposals"
         },
         {
           "word": "le coordinateur, la coordinatrice",
           "en": "the project coordinator (lead PI)",
           "vi": "điều phối viên dự án",
           "pos": "n.",
-          "pronunciation_vi": "kor-di-na-tơr / kor-di-na-tri-sơ"
+          "pronunciation_vi": "kor-di-na-tơr / kor-di-na-tri-sơ",
+          "pronunciation_en": "luh kor-dee-nah-TUR / lah kor-dee-nah-TREESS — m./f. project coordinator (lead PI)"
         },
         {
           "word": "le verrou scientifique",
           "en": "the scientific bottleneck",
           "vi": "nút thắt khoa học",
           "pos": "n.m.",
-          "pronunciation_vi": "lơ vè-ru sian-ti-fik"
+          "pronunciation_vi": "lơ vè-ru sian-ti-fik",
+          "pronunciation_en": "luh veh-ROO syahn-tee-FEEK — 'le verrou scientifique' = the scientific bottleneck"
         },
         {
           "word": "un livrable",
           "en": "a deliverable",
           "vi": "sản phẩm phải nộp",
           "pos": "n.m.",
-          "pronunciation_vi": "an li-vra-blơ"
+          "pronunciation_vi": "an li-vra-blơ",
+          "pronunciation_en": "UN lee-VRAH-bluh — 'un livrable' = a deliverable; final '-le' barely voiced"
         },
         {
           "word": "un jalon",
           "en": "a milestone",
           "vi": "mốc dự án",
           "pos": "n.m.",
-          "pronunciation_vi": "an ja-lõn"
+          "pronunciation_vi": "an ja-lõn",
+          "pronunciation_en": "UN zhah-LON — 'un jalon' = a milestone; 'j' = 'zh'; nasal '-on'"
         },
         {
           "word": "un work package (WP)",
           "en": "a work package",
           "vi": "gói công việc",
           "pos": "n.m.",
-          "pronunciation_vi": "an wơrk-pak-èj"
+          "pronunciation_vi": "an wơrk-pak-èj",
+          "pronunciation_en": "UN wurk-PAH-kedzh — 'un work package (WP)'; established English term, kept"
         },
         {
           "word": "une unité de recherche (UMR, EA)",
           "en": "a research unit",
           "vi": "đơn vị nghiên cứu",
           "pos": "n.f.",
-          "pronunciation_vi": "u-ni-té dơ rơ-shèrsh"
+          "pronunciation_vi": "u-ni-té dơ rơ-shèrsh",
+          "pronunciation_en": "ün u-nee-TAY duh ruh-SHEHRSH — 'une unité de recherche (UMR, EA)'"
         },
         {
           "word": "ventiler un budget",
           "en": "to break down a budget",
           "vi": "phân bổ kinh phí",
           "pos": "v.",
-          "pronunciation_vi": "vãn-ti-lé an bu-jè"
+          "pronunciation_vi": "vãn-ti-lé an bu-jè",
+          "pronunciation_en": "vahn-tee-LAY UN bu-ZHEH — 'ventiler un budget' = to break down a budget"
         },
         {
           "word": "le frais d'environnement (FE)",
           "en": "indirect overhead costs",
           "vi": "chi phí gián tiếp",
           "pos": "n.m.",
-          "pronunciation_vi": "lơ frè dãn-vi-ron-mã"
+          "pronunciation_vi": "lơ frè dãn-vi-ron-mã",
+          "pronunciation_en": "luh FREH dahn-vee-roh-NMAHN — 'le frais d'environnement (FE)' = indirect overhead"
         }
       ],
       "dialogue": [
         {
           "speaker": "Pr. Dubois (président du comité d'évaluation)",
           "text": "Madame Tran, vous coordonnez ce projet. En une phrase: quel est le verrou scientifique que vous prétendez lever ?",
+          "en": "Ms. Tran, you coordinate this project. In one sentence: what is the scientific bottleneck you claim to break?",
           "vi": "Cô Trần, cô điều phối dự án này. Trong một câu: nút thắt khoa học cô tuyên bố sẽ phá là gì?"
         },
         {
           "speaker": "Linh",
           "text": "Le verrou est le suivant: les modèles existants traitent la circulation pédagogique comme une diffusion top-down depuis la France ; aucun ne rend compte des médiateurs humains qui transforment, en pratique, ces modèles. Notre projet construit un cadre processuel pour modéliser cette transformation.",
+          "en": "The bottleneck is this: existing models treat pedagogical circulation as a top-down diffusion from France; none accounts for the human mediators who transform these models in practice. Our project builds a processual framework to model that transformation.",
           "vi": "Nút thắt là: các mô hình hiện có xem sự lưu chuyển sư phạm như một sự lan tỏa top-down từ Pháp; chưa mô hình nào tính tới các trung gian con người trên thực tế đã biến đổi các mô hình ấy. Dự án xây một khung quá trình để mô hình hóa sự biến đổi đó."
         },
         {
           "speaker": "Pr. Dubois",
           "text": "Pourquoi un consortium tripartite — Paris, Hanoi, EFEO — plutôt qu'un projet purement français ?",
+          "en": "Why a tripartite consortium — Paris, Hanoi, EFEO — rather than a purely French project?",
           "vi": "Vì sao một consortium ba bên — Paris, Hà Nội, EFEO — chứ không phải một dự án thuần Pháp?"
         },
         {
           "speaker": "Linh",
           "text": "Pour une raison méthodologique précise: la circulation suppose un terrain symétrique. Étudier sa moitié française sans accès direct aux archives vietnamiennes produirait un biais structurel. Le partenaire de Hanoi n'est pas optionnel: il est constitutif de l'objet.",
+          "en": "For a precise methodological reason: circulation presupposes a symmetric field. Studying its French half without direct access to Vietnamese archives would produce a structural bias. The Hanoi partner is not optional: it is constitutive of the object.",
           "vi": "Vì một lý do phương pháp cụ thể: lưu chuyển giả định một terrain đối xứng. Nghiên cứu nửa Pháp mà không tiếp cận trực tiếp lưu trữ Việt Nam sẽ tạo lệch cấu trúc. Đối tác Hà Nội không phải tùy chọn: nó thuộc về đối tượng."
         }
       ],
@@ -8203,61 +8247,73 @@ export const lessons: FrenchLesson[] =   [
         {
           "speaker": "Pr. Dubois (président du comité)",
           "text": "Madame Tran, votre projet a passé le filtre de la pré-proposition. Vous disposez de quinze minutes pour le présenter, suivies de quinze minutes de questions. Allez-y.",
+          "en": "Ms. Tran, your project has passed the pre-proposition filter. You have fifteen minutes to present it, followed by fifteen minutes of questions. Go ahead.",
           "vi": "Cô Trần, dự án của cô đã qua được pré-proposition. Cô có 15 phút trình bày, sau đó 15 phút hỏi đáp. Mời cô."
         },
         {
           "speaker": "Linh",
           "text": "Mesdames, Messieurs les membres du comité, je vous remercie de l'attention que vous portez à ce projet. Le présent projet, intitulé « Circulations Pédagogiques Asie-Europe », s'inscrit dans l'axe quatre du programme générique de l'ANR — sciences humaines et sociales — et sollicite un financement sur quarante-deux mois pour un budget total de cent soixante-treize mille euros.",
+          "en": "Ladies and gentlemen of the committee, thank you for the attention you give this project. The present project, entitled « Circulations Pédagogiques Asie-Europe », falls within axis four of the ANR generic programme — humanities and social sciences — and requests funding over forty-two months for a total budget of one hundred seventy-three thousand euros.",
           "vi": "Thưa quý Cô quý Thầy thành viên hội đồng, tôi xin cảm ơn sự quan tâm dành cho dự án. Dự án này, mang tên « Circulations Pédagogiques Asie-Europe », nằm trong trục bốn AAPG ANR — khoa học nhân văn xã hội — xin tài trợ 42 tháng cho ngân sách 173.000 euros."
         },
         {
           "speaker": "Linh",
           "text": "Je commence par le verrou scientifique. La littérature traite habituellement la circulation pédagogique comme un mouvement descendant depuis les centres européens ; or les travaux récents — notamment ceux d'Anne-Marie Chartier — montrent que les médiateurs humains transforment significativement ces modèles. Aucun cadre théorique unifié ne permet, à ce jour, de modéliser cette transformation. C'est ce verrou que nous nous proposons de lever.",
+          "en": "I begin with the scientific bottleneck. The literature usually treats pedagogical circulation as a downward movement from European centres; yet recent work — notably Anne-Marie Chartier's — shows that human mediators significantly transform these models. No unified theoretical framework allows this transformation to be modelled to date. That is the bottleneck we propose to break.",
           "vi": "Tôi bắt đầu bằng verrou khoa học. Tài liệu thường xem sự lưu chuyển sư phạm như một dòng chảy xuống từ trung tâm châu Âu; nhưng công trình gần đây — đặc biệt của Anne-Marie Chartier — cho thấy các trung gian con người biến đổi đáng kể các mô hình ấy. Hiện chưa có khung lý thuyết thống nhất cho phép mô hình hóa sự biến đổi này. Verrou đó là cái dự án muốn phá."
         },
         {
           "speaker": "Linh",
           "text": "Notre consortium associe trois unités: l'UMR huit cent quarante-trois (Paris Cité), pour le volet conceptuel et la coordination ; l'EFEO, pour l'expertise archivistique en Asie ; et l'École doctorale de Hanoi, pour le terrain vietnamien et la collecte d'entretiens. Quoique le terrain vietnamien ait fait l'objet d'études ponctuelles, aucune enquête longitudinale d'envergure n'a, à ce jour, été conduite — ce que ce projet entend précisément combler.",
+          "en": "Our consortium brings together three units: UMR eight hundred forty-three (Paris Cité) for the conceptual strand and coordination; the EFEO for archival expertise in Asia; and the Hanoi doctoral school for the Vietnamese field and interview collection. Although the Vietnamese field has been the object of occasional studies, no large-scale longitudinal survey has been conducted to date — which is precisely what this project intends to fill.",
           "vi": "Consortium gồm ba đơn vị: UMR 8043 (Paris Cité), phần khái niệm và điều phối; EFEO, chuyên môn lưu trữ ở châu Á; và École doctorale Hà Nội, terrain Việt Nam và thu thập phỏng vấn. Cho dù terrain Việt đã được nghiên cứu lẻ tẻ, chưa có khảo sát longitudinal quy mô nào tới nay được thực hiện — đó chính là khoảng trống dự án muốn lấp."
         },
         {
           "speaker": "Linh",
           "text": "Le projet se structure en quatre work packages. Le WP1, coordonné par Paris, porte sur le cadre théorique. Le WP2, coordonné par l'EFEO, sur la collecte archivistique. Le WP3, coordonné par Hanoi, sur les entretiens biographiques. Le WP4, transversal, sur la valorisation. Chaque WP comprend trois jalons sur la durée du projet — au total douze jalons, dont je signale les deux plus critiques: la livraison du cadre théorique consolidé au mois douze, et la mise en accès libre du corpus au mois trente-six.",
+          "en": "The project is structured into four work packages. WP1, coordinated by Paris, addresses the theoretical framework. WP2, coordinated by the EFEO, archival collection. WP3, coordinated by Hanoi, biographical interviews. WP4, transversal, dissemination. Each WP has three milestones over the project's duration — twelve milestones in total, of which I flag the two most critical: delivery of the consolidated theoretical framework at month twelve, and open release of the corpus at month thirty-six.",
           "vi": "Dự án cấu trúc thành bốn work packages. WP1, do Paris điều phối, về khung lý thuyết. WP2, do EFEO điều phối, về thu thập lưu trữ. WP3, do Hà Nội điều phối, về phỏng vấn tiểu sử. WP4, xuyên suốt, về truyền bá. Mỗi WP có ba jalons trong thời lượng dự án — tổng 12 jalons, hai jalon then chốt nhất: giao khung lý thuyết hoàn chỉnh tháng 12, và mở quyền truy cập tự do corpus tháng 36."
         },
         {
           "speaker": "Linh",
           "text": "Les livrables prévus comprennent: trois articles dans des revues classées de rang A — un dans Annales HSS, un dans Revue française de pédagogie, un dans Education and Society —, une monographie aux Presses universitaires de Rennes, et la mise en accès libre d'un corpus de mille deux cents documents archivés sur la plateforme Nakala-Huma-Num.",
+          "en": "The planned deliverables include: three articles in rank-A journals — one in Annales HSS, one in Revue française de pédagogie, one in Education and Society —, a monograph with Presses universitaires de Rennes, and the open release of a corpus of one thousand two hundred archived documents on the Nakala-Huma-Num platform.",
           "vi": "Sản phẩm dự kiến: ba bài báo trên tạp chí xếp hạng A — một trên Annales HSS, một trên Revue française de pédagogie, một trên Education and Society —, một chuyên khảo tại NXB Đại học Rennes, mở truy cập tự do 1.200 tài liệu lưu trữ trên Nakala-Huma-Num."
         },
         {
           "speaker": "Linh",
           "text": "Le budget sollicité, soit cent soixante-treize mille euros, se ventile ainsi: soixante-dix-huit mille euros de gratifications doctorales (deux contrats), quarante-cinq mille de missions, vingt-six mille de prestations, dix-sept mille trois cents de frais d'environnement et six mille sept cents de petit équipement. Cette ventilation respecte la grille standard de l'ANR.",
+          "en": "The requested budget, one hundred seventy-three thousand euros, breaks down as follows: seventy-eight thousand euros of doctoral stipends (two contracts), forty-five thousand of missions, twenty-six thousand of services, seventeen thousand three hundred of overhead and six thousand seven hundred of small equipment. This breakdown follows the standard ANR grid.",
           "vi": "Ngân sách 173.000 euros phân bổ: 78.000 euros gratifications nghiên cứu sinh (hai hợp đồng), 45.000 euros công tác, 26.000 dịch vụ ngoài, 17.300 frais d'environnement, và 6.700 trang thiết bị nhỏ. Phân bổ này theo bảng chuẩn ANR."
         },
         {
           "speaker": "Linh",
           "text": "Pour conclure, je tiens à souligner trois éléments qui justifient la pertinence du projet aujourd'hui. Premièrement, la maturité du consortium: les trois partenaires collaborent informellement depuis deux mille dix-neuf. Deuxièmement, la disponibilité des archives vietnamiennes, récemment ouvertes par le décret de deux mille vingt-trois — fenêtre qui pourrait se refermer. Troisièmement, l'absence de projet équivalent en cours, vérifiée auprès de la base ANR-Horizon Europe.",
+          "en": "To conclude, I want to stress three elements that justify the project's relevance now. First, the maturity of the consortium: the three partners have collaborated informally since two thousand nineteen. Second, the availability of the Vietnamese archives, recently opened by the two thousand twenty-three decree — a window that could close. Third, the absence of an equivalent project under way, verified against the ANR-Horizon Europe database.",
           "vi": "Để kết thúc, tôi muốn nhấn ba yếu tố biện minh cho mức độ thích hợp hôm nay. Thứ nhất, sự trưởng thành của consortium: ba đối tác hợp tác không chính thức từ 2019. Thứ hai, sự sẵn có của lưu trữ Việt, mở gần đây nhờ nghị định 2023 — cửa sổ có thể đóng lại. Thứ ba, không có dự án tương đương đang chạy, đã kiểm tra trên cơ sở dữ liệu ANR-Horizon Europe."
         },
         {
           "speaker": "Pr. Dubois",
           "text": "Merci. Question d'ordre méthodologique: pourquoi avoir écarté Horizon Europe au profit d'un projet ANR national ?",
+          "en": "Thank you. A methodological question: why did you set aside Horizon Europe in favour of a national ANR project?",
           "vi": "Cảm ơn. Câu hỏi phương pháp luận: vì sao gạt Horizon Europe và chọn dự án ANR quốc gia?"
         },
         {
           "speaker": "Linh",
           "text": "Excellente question. Trois raisons. Un: les sources françaises, qui constituent la moitié du corpus, sont concentrées en France — une logique nationale est donc adaptée. Deux: le consortium n'a pas encore atteint la masse critique européenne (cinq partenaires de pays différents) qu'exige Horizon Europe. Trois: le calendrier — Horizon Europe ouvre dans dix-huit mois sur ce thème ; nous prévoyons de candidater à ce moment-là, en capitalisant sur les résultats du présent projet ANR.",
+          "en": "Excellent question. Three reasons. One: the French sources, which make up half the corpus, are concentrated in France — a national logic is therefore appropriate. Two: the consortium has not yet reached the European critical mass (five partners from different countries) that Horizon Europe requires. Three: the timeline — Horizon Europe opens on this theme in eighteen months; we plan to apply then, capitalizing on the results of the present ANR project.",
           "vi": "Câu hỏi rất xác đáng. Ba lý do. Một: nguồn Pháp, chiếm nửa corpus, tập trung tại Pháp — logique quốc gia phù hợp. Hai: consortium chưa đạt khối lượng tới hạn châu Âu (năm đối tác khác nước) mà Horizon Europe yêu cầu. Ba: lịch — Horizon Europe mở trong 18 tháng về chủ đề này; chúng tôi dự định nộp khi đó, tận dụng kết quả ANR hiện thời."
         },
         {
           "speaker": "Pr. Dubois",
           "text": "Réponse claire. Et le risque d'abandon par votre partenaire vietnamien — comment l'avez-vous mitigé ?",
+          "en": "Clear answer. And the risk of your Vietnamese partner withdrawing — how have you mitigated it?",
           "vi": "Câu trả lời rõ. Còn rủi ro đối tác Việt Nam rút lui — cô đã giảm thiểu thế nào?"
         },
         {
           "speaker": "Linh",
           "text": "Risque réel, je le reconnais. Trois mesures: un protocole MoU signé en avril deux mille vingt-six, des jalons de livraison tous les six mois (donc visibilité précoce de tout glissement), et un partenaire vietnamien de secours pré-identifié à l'Université de Da Nang. Le plan B est documenté dans le WP4.",
+          "en": "A real risk, I acknowledge it. Three measures: an MoU signed in April two thousand twenty-six, delivery milestones every six months (so any slippage is visible early), and a backup Vietnamese partner pre-identified at the University of Da Nang. The plan B is documented in WP4.",
           "vi": "Rủi ro thật, tôi thừa nhận. Ba biện pháp: MoU ký tháng 4/2026, các jalons giao mỗi 6 tháng (thấy sớm mọi trượt), và đối tác Việt dự phòng đã được xác định trước tại Đại học Đà Nẵng. Kế hoạch B được tài liệu hóa trong WP4."
         }
       ],
@@ -8271,25 +8327,33 @@ export const lessons: FrenchLesson[] =   [
         {
           "idiom": "Lever un verrou (scientifique)",
           "literal": "Mở một khóa",
+          "literal_en": "to lift a lock",
           "meaning": "Phá một nút thắt khoa học — formule ANR standard.",
+          "meaning_en": "to break a scientific bottleneck — the standard ANR formula ('lever un verrou')",
           "example": "Le verrou que nous nous proposons de lever concerne la modélisation des médiateurs humains."
         },
         {
           "idiom": "Faire l'objet de (formel)",
           "literal": "Làm đối tượng của",
+          "literal_en": "to be the object of",
           "meaning": "Được nghiên cứu / xử lý — registre académique.",
+          "meaning_en": "to be studied / dealt with — academic register for 'has been researched'",
           "example": "Ce terrain a fait l'objet d'études ponctuelles, mais d'aucune enquête longitudinale."
         },
         {
           "idiom": "Combler une lacune (formel)",
           "literal": "Lấp một lỗ trống",
+          "literal_en": "to fill a gap",
           "meaning": "Lấp khoảng trống tài liệu — justification standard de projet.",
+          "meaning_en": "to fill a gap in the literature — a standard project justification",
           "example": "Le présent projet entend combler cette lacune par une enquête longitudinale."
         },
         {
           "idiom": "Capitaliser sur les résultats (institutionnel)",
           "literal": "Vốn hóa trên kết quả",
+          "literal_en": "to capitalize on the results",
           "meaning": "Tận dụng các kết quả — vocabulaire de gestion de projet.",
+          "meaning_en": "to build on the results — project-management vocabulary for leveraging outputs",
           "example": "Nous capitaliserons sur les résultats du présent projet pour candidater ensuite à Horizon Europe."
         }
       ],
@@ -8297,35 +8361,47 @@ export const lessons: FrenchLesson[] =   [
         {
           "type": "fill-blank",
           "question": "Quoique le terrain ___ fait l'objet d'études ponctuelles, aucune enquête longitudinale n'a été conduite.",
-          "answer": "ait"
+          "answer": "ait",
+          "hint_vi": "subjonctif passé của faire — sau « Quoique » (ait + participe)",
+          "hint_en": "auxiliary of the past subjunctive of faire — after « Quoique » (le terrain ___ fait l'objet de)"
         },
         {
           "type": "matching",
           "pairs": [
             [
               "lever un verrou",
-              "phá một nút thắt"
+              "phá một nút thắt (to break a bottleneck)"
             ],
             [
               "un livrable",
-              "sản phẩm phải nộp"
+              "sản phẩm phải nộp (a deliverable)"
             ],
             [
               "un jalon",
-              "mốc dự án"
+              "mốc dự án (a milestone)"
             ],
             [
               "ventiler un budget",
-              "phân bổ kinh phí"
+              "phân bổ kinh phí (to break down a budget)"
             ]
           ],
-          "instruction": "Nối thuật ngữ ANR với nghĩa Việt"
+          "instruction": "Nối thuật ngữ ANR với nghĩa Việt",
+          "instruction_en": "Match each ANR term with its Vietnamese meaning"
         },
         {
           "type": "translation",
           "vietnamese": "Verrou mà chúng tôi đề xuất phá là sự thiếu một khung lý thuyết thống nhất để mô hình hóa các trung gian con người.",
+          "english": "The bottleneck we propose to break is the absence of a unified theoretical framework allowing the human mediators to be modelled.",
           "french": "Le verrou que nous nous proposons de lever est l'absence d'un cadre théorique unifié permettant de modéliser les médiateurs humains."
         }
+      ],
+      "cultural_notes_en": "The ANR (Agence Nationale de la Recherche) is France's main research-funding agency, created in 2005. Understanding ANR submission culture is an essential C1+ skill for a France-based researcher. Programmes (details change yearly): the AAPG (Appel à Projets Générique), annual, divided into 'axes'; specific programmes — JCJC (early-career), PRC (collaborative), PRCE (with a company), PRCI (international). Two-stage submission for the AAPG: (1) a short pre-proposition (~6 pages, March-April) evaluated by an expert committee; (2) the full proposal (~30 pages, July, if the pre-proposition is admitted); (3) sometimes an audition (the coordinator defends, 15 min + 15 min Q&A); (4) decision in autumn. Key vocabulary: le coordinateur (lead PI), le partenaire, l'unité de recherche (UMR/EA), les work packages (WP), les livrables (deliverables), les jalons (milestones), le frais d'environnement (overhead). CRITICAL POINTS FEW VIETNAMESE SPEAKERS KNOW: (a) the ANR does NOT fund the statutory salaries of permanent researchers — it funds postdocs, doctoral stipends, missions, equipment; (b) the AAPG success rate is ~10-15% — a rejected project is the NORM, not the exception; (c) the coordinator must be a statutory researcher in France (MCF, CR/DR) — hence a prior CNU qualification; (d) pre-propositions are evaluated blind — don't over-cite yourself. This is descriptive of common practice, NOT legal advice — ANR rules change yearly; always consult the official 'guide du candidat' for the relevant year.",
+      "tip_advice_en": "Eight-step protocol for defending an ANR project orally (audition): (1) STRUCTURE — 15 min max, ~12 slides (title/acronym/axis, scientific question + state of the art + bottleneck, hypothesis in one sentence, methodology + WPs, consortium, timeline + milestones, deliverables, itemized budget, why now/why us). (2) STRESS « LE VERROU SCIENTIFIQUE » — the conceptual obstacle the project will break, in one clear sentence. (3) DEFEND THE CONSORTIUM COMPOSITION — give a SCIENTIFIC reason for each partner, not merely a practical one. (4) JUSTIFY THE BUDGET LINE BY LINE — never 'a standard budget'. (5) ANTICIPATE RECURRING OBJECTIONS — 'why not Horizon Europe?', 'risk of abandonment?', 'is there an equivalent project?'. (6) PRESENT THE SCIENTIFIC ENVIRONMENT. (7) INSTITUTIONAL COMMITMENT — a support letter is often requested. (8) PROTOCOL FOR A HARD QUESTION — reformulate; if you don't know, say so honestly and propose to come back to it with the relevant partner. Avoid: overloaded slides, vague vocabulary ('innovant', 'prometteur', 'à la pointe' — nominalize instead), promising too many deliverables. This is not career advice; verify the year's audition rules.",
+      "register_notes_en": "ANR discourse (oral and written) uses a high-precision technical-scientific register. (1) INSTITUTIONAL NOMINALIZATION — « la coordination du projet » rather than « celui qui coordonne », « la livraison du jalon » rather than « quand on livrera ». (2) STANDARD PROJECT FORMULAS — « Le présent projet s'inscrit dans... », « Le verrou que nous nous proposons de lever est... », « Le projet se structure en N work packages... », « Le budget sollicité se ventile en... ». (3) SUBJUNCTIVE with necessity expressions — « Il convient que les jalons soient atteints à temps. », « Il importe que le consortium dispose d'un protocole de gouvernance clair. ». (4) ELEVATED CONCESSIVES — « Quoique le terrain ait fait l'objet d'études antérieures... », « Aussi rigoureuse que soit la planification... ». (5) NUMBERS SPOKEN OUT — « cent soixante-treize mille euros » (not '173,000'), « quarante-deux mois » (not '42 mois'). (6) ACRONYMS — first mention in full then the abbreviation: « l'Agence Nationale de la Recherche (ANR) » then « l'ANR ». Avoid: empty buzzwords ('disruptif'), impersonal 'on' for the project (use « le projet », « notre consortium »), English except established terms (work package, milestone).",
+      "roleplay_prompts_en": [
+        "Present in 5 minutes the scientific bottleneck of a fictitious ANR project (choose a field you know). Structure: state of the art in one sentence + bottleneck in one sentence + hypothesis in one sentence + how to break it in three sentences. Use at least one concessive subjunctive.",
+        "The committee asks: « Pourquoi ce consortium et pas un projet purement intra-français ? » Answer with a methodological logic (not a practical one): the external partner is CONSTITUTIVE of the object, not optional.",
+        "The committee notes that the 45,000-euro mission budget « semble élevé ». Justify it line by line: number of missions, destination, duration, unit cost. Don't say « budget standard » — be concrete."
       ]
     },
     {
@@ -8343,6 +8419,12 @@ export const lessons: FrenchLesson[] =   [
             "comprend → kõn-prã",
             "doctorants → dok-to-rã",
             "effectif → è-fèk-tif"
+          ],
+          "pronunciation_focus_en": [
+            "unité → 'u-nee-TAY' — 'l'unité que je dirige' = the unit I direct",
+            "comprend → 'kohn-PRAHN' — 'comprendre' 3rd person; nasal 'om' + 'en'",
+            "doctorants → 'dok-toh-RAHN' — nasal final '-ant'; final 's' silent",
+            "effectif → 'eh-fek-TEEF' — 'un effectif' = a headcount; final 'f' pronounced"
           ]
         },
         {
@@ -8353,6 +8435,12 @@ export const lessons: FrenchLesson[] =   [
             "couvre → ku-vrơ",
             "quinquennal → kan-kè-nal",
             "échéance → é-shé-ãns"
+          ],
+          "pronunciation_focus_en": [
+            "bilan → 'bee-LAHN' — 'le bilan' = the assessment/review; nasal '-an'",
+            "couvre → 'KOO-vruh' — 'couvrir' 3rd person; final '-re' barely voiced",
+            "quinquennal → 'kan-keh-NAL' — 'five-year'; nasal 'in'; final 'l' pronounced",
+            "échéance → 'ay-shay-AHNSS' — 'venir à échéance' = to reach its end; nasal '-ance'"
           ]
         },
         {
@@ -8363,6 +8451,12 @@ export const lessons: FrenchLesson[] =   [
             "reconduits → rơ-kõn-dui",
             "reformulés → rơ-for-mu-lé",
             "humanités → u-ma-ni-té"
+          ],
+          "pronunciation_focus_en": [
+            "axes → 'AKS' — 'les axes scientifiques' = the scientific axes; cluster pronounced",
+            "reconduits → 'ruh-kohn-DWEE' — 'reconduire' past participle; 'ui' = 'wee'",
+            "reformulés → 'ruh-for-mu-LAY' — 'reformuler' = to reformulate; '-és' = 'ay'",
+            "humanités → 'u-mah-nee-TAY' — 'h' silent; 'les humanités numériques' = digital humanities"
           ]
         },
         {
@@ -8373,6 +8467,12 @@ export const lessons: FrenchLesson[] =   [
             "bibliométriques → bi-bli-o-mé-trik",
             "prudence → pru-dãns",
             "croiser → kroa-zé"
+          ],
+          "pronunciation_focus_en": [
+            "indicateurs → 'an-dee-kah-TUR' — nasal 'in'; '-eurs' rounded",
+            "bibliométriques → 'bee-blee-oh-may-TREEK' — final '-que' = 'k'",
+            "prudence → 'pru-DAHNSS' — 'u' rounded; nasal '-ence'",
+            "croiser → 'krwah-ZAY' — 'croiser les données' = to cross-check data; 'oi' = 'wah'"
           ]
         },
         {
@@ -8383,6 +8483,12 @@ export const lessons: FrenchLesson[] =   [
             "demeure → dơ-mơr",
             "déséquilibre → dé-zé-ki-li-brơ",
             "encadrement → ãn-ka-drơ-mã"
+          ],
+          "pronunciation_focus_en": [
+            "Bien que → 'byan kuh' — nasal 'ien'; triggers the subjunctive",
+            "demeure → 'duh-MUR' — 'demeurer' = to remain; '-eure' rounded",
+            "déséquilibre → 'day-zay-kee-LEE-bruh' — 's' = 'z'; final '-re' barely voiced",
+            "encadrement → 'ahn-kah-druh-MAHN' — nasal 'en' + '-ment'; doctoral supervision"
           ]
         }
       ],
@@ -8394,91 +8500,105 @@ export const lessons: FrenchLesson[] =   [
           "en": "the French research and higher education evaluation authority",
           "vi": "Hội đồng cao cấp đánh giá nghiên cứu và đại học",
           "pos": "n.m.",
-          "pronunciation_vi": "lash-sé-rès"
+          "pronunciation_vi": "lash-sé-rès",
+          "pronunciation_en": "lash-say-RESS — 'l'HCERES'; 'H' silent, read as one word 'asseres'"
         },
         {
           "word": "une unité de recherche",
           "en": "a research unit",
           "vi": "đơn vị nghiên cứu",
           "pos": "n.f.",
-          "pronunciation_vi": "un u-ni-té dơ rơ-shèrsh"
+          "pronunciation_vi": "un u-ni-té dơ rơ-shèrsh",
+          "pronunciation_en": "ün u-nee-TAY duh ruh-SHEHRSH — 'une unité de recherche' = a research unit"
         },
         {
           "word": "l'autoévaluation",
           "en": "self-assessment",
           "vi": "tự đánh giá",
           "pos": "n.f.",
-          "pronunciation_vi": "o-to-é-va-lu-a-sion"
+          "pronunciation_vi": "o-to-é-va-lu-a-sion",
+          "pronunciation_en": "loh-toh-ay-vah-lu-ah-SYON — 'l'autoévaluation' = self-assessment"
         },
         {
           "word": "le bilan quinquennal",
           "en": "the five-year assessment",
           "vi": "tổng kết năm năm",
           "pos": "n.m.",
-          "pronunciation_vi": "lơ bi-lã kan-kè-nal"
+          "pronunciation_vi": "lơ bi-lã kan-kè-nal",
+          "pronunciation_en": "luh bee-LAHN kan-keh-NAL — 'le bilan quinquennal' = the five-year assessment"
         },
         {
           "word": "le contrat venant à échéance",
           "en": "the contract reaching its end",
           "vi": "hợp đồng đến hạn",
           "pos": "loc.",
-          "pronunciation_vi": "lơ kõn-tra vơ-nã a é-shé-ãns"
+          "pronunciation_vi": "lơ kõn-tra vơ-nã a é-shé-ãns",
+          "pronunciation_en": "luh kohn-TRAH vuh-NAHN ah ay-shay-AHNSS — 'the contract reaching its end'"
         },
         {
           "word": "un axe scientifique",
           "en": "a scientific axis / theme",
           "vi": "trục khoa học",
           "pos": "n.m.",
-          "pronunciation_vi": "an ax sian-ti-fik"
+          "pronunciation_vi": "an ax sian-ti-fik",
+          "pronunciation_en": "UN AKS syahn-tee-FEEK — 'un axe scientifique' = a scientific axis/theme"
         },
         {
           "word": "les indicateurs bibliométriques",
           "en": "bibliometric indicators",
           "vi": "chỉ báo bibliométrique",
           "pos": "n.m.pl.",
-          "pronunciation_vi": "lè zan-di-ka-tơr bi-bli-o-mé-trik"
+          "pronunciation_vi": "lè zan-di-ka-tơr bi-bli-o-mé-trik",
+          "pronunciation_en": "lay zan-dee-kah-TUR bee-blee-oh-may-TREEK — 'bibliometric indicators'"
         },
         {
           "word": "la science ouverte",
           "en": "open science",
           "vi": "khoa học mở",
           "pos": "n.f.",
-          "pronunciation_vi": "la sians u-vèrt"
+          "pronunciation_vi": "la sians u-vèrt",
+          "pronunciation_en": "lah SYAHNSS oo-VEHRT — 'la science ouverte' = open science"
         },
         {
           "word": "les tutelles",
           "en": "the supervising authorities (CNRS, university…)",
           "vi": "cơ quan giám hộ (CNRS, đại học…)",
           "pos": "n.f.pl.",
-          "pronunciation_vi": "lè tu-tèl"
+          "pronunciation_vi": "lè tu-tèl",
+          "pronunciation_en": "lay tu-TEL — 'les tutelles' = the supervising authorities (CNRS, university)"
         },
         {
           "word": "la phase contradictoire",
           "en": "the right-of-reply phase",
           "vi": "giai đoạn phản biện chính thức",
           "pos": "n.f.",
-          "pronunciation_vi": "la faz kõn-tra-dik-toa-rơ"
+          "pronunciation_vi": "la faz kõn-tra-dik-toa-rơ",
+          "pronunciation_en": "lah FAHZ kohn-trah-deek-TWAR — 'la phase contradictoire' = the right-of-reply phase"
         }
       ],
       "dialogue": [
         {
           "speaker": "Pr. Müller (présidente du comité HCERES)",
           "text": "Madame Tran, vous dirigez l'unité depuis quatre ans. Quel est, à vos yeux, son point d'identité scientifique fort, et quelle est sa principale faiblesse ?",
+          "en": "Ms. Tran, you've directed the unit for four years. In your eyes, what is its strong scientific identity point, and what is its main weakness?",
           "vi": "Cô Trần, cô chỉ đạo đơn vị bốn năm rồi. Trong mắt cô, điểm nhận diện khoa học mạnh là gì, và điểm yếu chính là gì?"
         },
         {
           "speaker": "Linh (directrice d'unité)",
           "text": "Le point fort, je le formule ainsi: une expertise singulière sur la circulation des savoirs entre l'Asie et l'Europe, articulée par cinq chercheurs cœur autour d'un terrain commun. Ce n'est pas l'addition d'individus brillants — c'est un objet partagé.",
+          "en": "The strong point, I'd put it this way: a singular expertise on the circulation of knowledge between Asia and Europe, articulated by five core researchers around a common field. It is not the sum of brilliant individuals — it is a shared object.",
           "vi": "Điểm mạnh, tôi diễn đạt thế này: một chuyên môn riêng biệt về sự lưu chuyển tri thức giữa châu Á và châu Âu, được khớp nối bởi năm nghiên cứu viên cốt lõi quanh một terrain chung. Đây không phải phép cộng các cá nhân xuất sắc — đó là một đối tượng chia sẻ."
         },
         {
           "speaker": "Pr. Müller",
           "text": "Et la principale faiblesse ?",
+          "en": "And the main weakness?",
           "vi": "Còn điểm yếu chính?"
         },
         {
           "speaker": "Linh",
           "text": "Bien que le bilan global soit positif, je tiens à le signaler franchement: notre politique de science ouverte accuse un retard de deux à trois ans par rapport aux unités comparables. Le projet pour le contrat suivant prévoit un poste d'IGR data steward et un protocole de dépôt en HAL d'ici à dix-huit mois.",
+          "en": "Although the overall assessment is positive, I want to flag it frankly: our open-science policy lags two to three years behind comparable units. The next contract's project includes an IGR data-steward post and a HAL-deposit protocol within eighteen months.",
           "vi": "Mặc dù tổng kết tổng quát tích cực, tôi muốn nêu thẳng: chính sách science ouverte của chúng tôi chậm 2-3 năm so với các đơn vị tương đương. Dự án cho hợp đồng tới đặt một vị trí IGR data steward và quy trình nộp HAL trong 18 tháng."
         }
       ],
@@ -8486,61 +8606,73 @@ export const lessons: FrenchLesson[] =   [
         {
           "speaker": "Pr. Müller (présidente du comité)",
           "text": "Madame Tran, le comité a lu le rapport. La séance d'audition de la direction commence — vous avez trente minutes pour présenter le bilan et le projet. Nous avons des questions ensuite.",
+          "en": "Ms. Tran, the committee has read the report. The direction's audition begins — you have thirty minutes to present the assessment and the project. We'll have questions afterward.",
           "vi": "Cô Trần, hội đồng đã đọc báo cáo. Phiên thẩm vấn ban giám đốc bắt đầu — cô có 30 phút trình bày bilan và dự án. Chúng tôi sẽ có câu hỏi sau."
         },
         {
           "speaker": "Linh",
           "text": "Madame la Présidente, Mesdames et Messieurs les membres du comité, je vous remercie d'avoir accepté cette charge. L'unité que je dirige, l'UMR huit cent quarante-trois, comprend trente-deux chercheurs permanents, vingt-huit doctorants, et quatre ingénieurs d'études — soit un effectif total de soixante-quatre personnels au moment de la visite.",
+          "en": "Madame President, ladies and gentlemen of the committee, thank you for accepting this duty. The unit I direct, UMR eight hundred forty-three, comprises thirty-two permanent researchers, twenty-eight doctoral students, and four research engineers — a total headcount of sixty-four at the time of the visit.",
           "vi": "Thưa Chủ tịch, thưa quý Cô quý Thầy, tôi cảm ơn đã nhận trách nhiệm này. Đơn vị tôi chỉ đạo, UMR 8043, gồm 32 nghiên cứu viên cơ hữu, 28 nghiên cứu sinh, và 4 kỹ sư học thuật — tổng nhân lực 64 người tại thời điểm thẩm định."
         },
         {
           "speaker": "Linh",
           "text": "Le bilan que je présente couvre la période de janvier deux mille dix-neuf à décembre deux mille vingt-quatre, soit le contrat quinquennal venant à échéance. Trois éléments structurent le bilan: la consolidation scientifique des axes, l'évolution des ressources, et l'évolution de la composition humaine de l'unité.",
+          "en": "The assessment I present covers January two thousand nineteen to December two thousand twenty-four — the five-year contract reaching its end. Three elements structure it: the scientific consolidation of the axes, the evolution of resources, and the evolution of the unit's human composition.",
           "vi": "Bilan tôi trình bày bao trùm 1/2019–12/2024, tức hợp đồng 5 năm sắp hết hạn. Ba yếu tố cấu trúc bilan: củng cố khoa học của các trục, biến đổi nguồn lực, biến đổi thành phần nhân lực."
         },
         {
           "speaker": "Linh",
           "text": "Sur les six axes scientifiques antérieurs, deux sont reconduits, trois sont reformulés à la suite des recommandations du précédent comité, et un nouveau axe — celui des humanités numériques — est créé en réponse à l'évolution du paysage disciplinaire. La reformulation des trois axes a, je le souligne, été conduite dans la transparence: l'ensemble des chercheurs a été consulté lors de quatre séminaires internes en deux mille vingt-deux et vingt-trois.",
+          "en": "Of the six prior scientific axes, two are renewed, three are reformulated following the previous committee's recommendations, and one new axis — digital humanities — is created in response to the evolving disciplinary landscape. The reformulation of the three axes was, I stress, conducted transparently: all researchers were consulted during four internal seminars in two thousand twenty-two and twenty-three.",
           "vi": "Trong 6 trục khoa học trước, 2 giữ nguyên, 3 tái hình thành theo khuyến nghị hội đồng trước, và 1 trục mới — humanités numériques — được tạo. Việc tái hình thành 3 trục, tôi nhấn mạnh, được thực hiện minh bạch: toàn bộ nghiên cứu viên được tham vấn trong 4 séminaire nội bộ năm 2022–2023."
         },
         {
           "speaker": "Linh",
           "text": "Les indicateurs bibliométriques — que je vais présenter avec la prudence d'usage en SHS — montrent une trajectoire ascendante: cent quarante-huit articles dans des revues à comité de lecture, vingt-quatre ouvrages dont neuf en édition étrangère, et trente-six chapitres dans des collectifs internationaux. Mais je prie le comité de croiser ces données avec l'analyse qualitative du chapitre quatre du rapport: le nombre n'est pas, en lui-même, un indicateur de qualité.",
+          "en": "The bibliometric indicators — which I will present with the prudence customary in SHS — show an upward trajectory: one hundred forty-eight peer-reviewed articles, twenty-four books of which nine in foreign editions, and thirty-six chapters in international collective volumes. But I ask the committee to cross-check this data with the qualitative analysis in chapter four of the report: number is not, in itself, an indicator of quality.",
           "vi": "Chỉ báo bibliométrique — tôi sẽ trình bày với sự thận trọng thường lệ trong SHS — cho thấy quỹ đạo đi lên: 148 bài báo tạp chí có comité de lecture, 24 đầu sách trong đó 9 ở NXB nước ngoài, 36 chương sách collectif quốc tế. Nhưng tôi đề nghị hội đồng đối chiếu với phân tích định tính chương 4 báo cáo: số lượng không tự thân là chỉ báo chất lượng."
         },
         {
           "speaker": "Linh",
           "text": "Sur les faiblesses, je tiens à signaler franchement deux points persistants. Premièrement, le déséquilibre de genre dans l'encadrement doctoral: soixante-douze pour cent des doctorants encadrés sont des femmes, mais seuls quarante-trois pour cent des HDR habilités à les encadrer le sont. Le projet pour le contrat suivant prévoit un soutien à l'HDR de trois MCF femmes, dont les dossiers sont avancés. Deuxièmement, le retard science ouverte: notre taux de dépôt en HAL plafonne à soixante et un pour cent, contre quatre-vingt-cinq pour cent pour les unités comparables. Le projet prévoit un poste d'IGR data steward et un protocole formalisé.",
+          "en": "On the weaknesses, I want to flag two persistent points frankly. First, the gender imbalance in doctoral supervision: seventy-two percent of supervised doctoral students are women, but only forty-three percent of the HDR-holders entitled to supervise them are. The next project includes HDR support for three female MCF. Second, the open-science lag: our HAL-deposit rate plateaus at sixty-one percent, against eighty-five percent for comparable units. The project includes an IGR data-steward post and a formalized protocol.",
           "vi": "Về điểm yếu, tôi muốn thẳng thắn nêu hai điểm dai dẳng. Thứ nhất, mất cân bằng giới trong hướng dẫn nghiên cứu sinh: 72% nghiên cứu sinh được hướng dẫn là nữ, nhưng chỉ 43% HDR có quyền hướng dẫn họ là nữ. Dự án hợp đồng tới đặt hỗ trợ HDR cho 3 MCF nữ. Thứ hai, chậm science ouverte: tỉ lệ nộp HAL của chúng tôi đứng 61%, so với 85% của các đơn vị tương đương. Dự án đặt vị trí IGR data steward và quy trình chính thức."
         },
         {
           "speaker": "Pr. Müller",
           "text": "Merci. Première question: la création de l'axe humanités numériques — est-ce une vraie reconfiguration ou un effet d'affichage ?",
+          "en": "Thank you. First question: the creation of the digital-humanities axis — is it a real reconfiguration or a display effect?",
           "vi": "Cảm ơn. Câu đầu: việc tạo trục humanités numériques — đó có phải là tái cấu trúc thật sự hay chỉ effet d'affichage?"
         },
         {
           "speaker": "Linh",
           "text": "Question légitime. Trois éléments montrent qu'il s'agit d'une reconfiguration réelle, pas d'un affichage. Un: l'unité a recruté en deux mille vingt-deux un MCF spécialiste d'analyse de corpus en TAL — recrutement spécifique à l'axe. Deux: cinq doctorants s'inscrivent désormais sur cet axe, dont trois en cotutelle avec l'INRIA. Trois: nous avons obtenu en deux mille vingt-trois un projet ANR PRC dédié, doté de cent vingt mille euros. L'axe a une masse critique propre.",
+          "en": "A legitimate question. Three elements show it is a real reconfiguration, not a display. One: the unit recruited in two thousand twenty-two an MCF specializing in NLP corpus analysis — a recruitment specific to the axis. Two: five doctoral students now register on this axis, three in cotutelle with INRIA. Three: we obtained in two thousand twenty-three a dedicated ANR PRC project, funded at one hundred twenty thousand euros. The axis has its own critical mass.",
           "vi": "Câu hỏi xác đáng. Ba yếu tố cho thấy đây là tái cấu trúc thật, không phải chỉ trưng bày. Một: đơn vị tuyển 2022 một MCF chuyên gia phân tích corpus TAL — tuyển dụng riêng cho trục. Hai: 5 nghiên cứu sinh hiện đăng ký trục này, trong đó 3 cotutelle với INRIA. Ba: chúng tôi nhận năm 2023 một ANR PRC dành cho trục, 120.000 euros. Trục có khối lượng tới hạn riêng."
         },
         {
           "speaker": "Pr. Müller",
           "text": "Et la dépendance à votre prédécesseur, le professeur Bertrand, qui partait à la retraite en 2025 — comment l'avez-vous mitigée ?",
+          "en": "And the dependence on your predecessor, Professor Bertrand, who retired in 2025 — how did you mitigate it?",
           "vi": "Còn sự lệ thuộc vào người tiền nhiệm của cô, giáo sư Bertrand, nghỉ hưu 2025 — cô đã giảm thiểu thế nào?"
         },
         {
           "speaker": "Linh",
           "text": "Risque réel et anticipé depuis 2022. Trois mesures: un, un transfert progressif de l'encadrement de ses neuf doctorants — six ont déjà soutenu, trois sont en co-encadrement avec deux MCF qui prendront le relais ; deux, un poste de PR ouvert au recrutement pour septembre deux mille vingt-six, fléché sur ses domaines ; trois, le projet d'unité prévoit explicitement la stabilisation collective de son axe par trois MCF — l'identité scientifique ne dépendra plus d'une personne.",
+          "en": "A real risk, anticipated since 2022. Three measures: one, a gradual transfer of the supervision of his nine doctoral students — six have already defended, three are co-supervised with two MCF taking over; two, a PR post opened for recruitment for September two thousand twenty-six, targeted on his domains; three, the unit's project explicitly provides for the collective stabilization of his axis by three MCF — the scientific identity will no longer depend on one person.",
           "vi": "Rủi ro thật, đã anticipate từ 2022. Ba biện pháp: một, chuyển dần việc hướng dẫn 9 nghiên cứu sinh — 6 đã bảo vệ, 3 đang đồng-hướng dẫn với 2 MCF tiếp quản; hai, mở vị trí PR tuyển dụng tháng 9/2026, fléché trên lĩnh vực; ba, dự án đơn vị dự định ổn định tập thể trục này qua 3 MCF — bản sắc khoa học không lệ thuộc vào một người."
         },
         {
           "speaker": "Pr. Müller",
           "text": "Le doctorant que nous avons rencontré ce matin a évoqué une tension dans l'axe trois en deux mille vingt-deux. Pouvez-vous nous éclairer ?",
+          "en": "The doctoral student we met this morning mentioned a tension in axis three in two thousand twenty-two. Can you enlighten us?",
           "vi": "Nghiên cứu sinh chúng tôi gặp sáng nay đề cập một căng thẳng trong trục 3 năm 2022. Cô có thể làm rõ?"
         },
         {
           "speaker": "Linh",
           "text": "Je vous remercie de poser la question franchement. L'unité a connu en deux mille vingt-deux une période de tension autour de l'axe trois — désaccord scientifique sur l'orientation théorique entre deux groupes. La résolution s'est faite par un séminaire de médiation en novembre vingt-deux, animé par un collègue extérieur (le Pr. Lemaire, Lyon 2), aboutissant à la reformulation que vous lisez dans le rapport. Il n'y a pas eu de départ ; deux thèses qui auraient pu être affectées ont été soutenues normalement. Je tiens à dire avec netteté que cette période a été éprouvante mais traitée institutionnellement.",
+          "en": "Thank you for asking the question frankly. The unit went through a period of tension in two thousand twenty-two around axis three — a scientific disagreement on the theoretical orientation between two groups. The resolution came through a mediation seminar in November twenty-two, led by an external colleague (Pr. Lemaire, Lyon 2), leading to the reformulation you read in the report. There was no departure; two theses that could have been affected were defended normally. I want to say with firmness that this period was demanding but handled institutionally.",
           "vi": "Tôi cảm ơn câu hỏi thẳng. Đơn vị có giai đoạn căng thẳng năm 2022 quanh trục 3 — bất đồng khoa học về định hướng lý thuyết giữa hai nhóm. Giải quyết qua một séminaire trung gian tháng 11/2022, do đồng nghiệp ngoài (Pr. Lemaire, Lyon 2) điều phối, dẫn đến việc tái hình thành mà quý vị đọc trong báo cáo. Không có ai rời đi; 2 luận án có thể bị ảnh hưởng đã bảo vệ bình thường. Tôi muốn nói rõ rằng giai đoạn này gian nan nhưng được xử lý ở cấp thiết chế."
         }
       ],
@@ -8554,25 +8686,33 @@ export const lessons: FrenchLesson[] =   [
         {
           "idiom": "Venir à échéance (formel)",
           "literal": "Đến chỗ hết hạn",
+          "literal_en": "to come to maturity (of a term)",
           "meaning": "Tới hạn — vocabulaire institutionnel des contrats.",
+          "meaning_en": "to reach its end / fall due — institutional vocabulary for contracts",
           "example": "Le contrat quinquennal vient à échéance en décembre deux mille vingt-quatre."
         },
         {
           "idiom": "Accuser un retard (institutionnel)",
           "literal": "Cáo buộc một sự chậm trễ",
+          "literal_en": "to accuse a delay",
           "meaning": "Có một sự chậm trễ rõ — formule pour signaler une faiblesse.",
+          "meaning_en": "to have a clear delay — the formula for flagging a weakness ('our policy accuses a delay')",
           "example": "Notre politique de science ouverte accuse un retard de deux à trois ans."
         },
         {
           "idiom": "Croiser les données (méthodologique)",
           "literal": "Bắt chéo dữ liệu",
+          "literal_en": "to cross the data",
           "meaning": "Đối chiếu dữ liệu — méthode SHS standard.",
+          "meaning_en": "to cross-check data — a standard SHS method",
           "example": "Nous prions le comité de croiser ces données avec l'analyse qualitative."
         },
         {
           "idiom": "Atteindre la masse critique (institutionnel)",
           "literal": "Đạt khối lượng tới hạn",
+          "literal_en": "to reach critical mass",
           "meaning": "Đạt đủ ngưỡng để tự duy trì — vocabulaire de gouvernance scientifique.",
+          "meaning_en": "to reach a self-sustaining threshold — scientific-governance vocabulary",
           "example": "L'axe a désormais une masse critique propre, indépendamment de son fondateur."
         }
       ],
@@ -8580,35 +8720,47 @@ export const lessons: FrenchLesson[] =   [
         {
           "type": "fill-blank",
           "question": "Bien que le bilan global ___ positif, je tiens à signaler deux faiblesses.",
-          "answer": "soit"
+          "answer": "soit",
+          "hint_vi": "subjonctif của être — sau « Bien que » (bilan ___ positif)",
+          "hint_en": "subjunctive of être — after « Bien que » (although the overall assessment ___ positive)"
         },
         {
           "type": "matching",
           "pairs": [
             [
               "l'autoévaluation",
-              "tự đánh giá"
+              "tự đánh giá (self-assessment)"
             ],
             [
               "venir à échéance",
-              "đến hạn"
+              "đến hạn (to reach its end / fall due)"
             ],
             [
               "accuser un retard",
-              "có một sự chậm trễ"
+              "có một sự chậm trễ (to have a clear delay)"
             ],
             [
               "les tutelles",
-              "cơ quan giám hộ"
+              "cơ quan giám hộ (the supervising authorities)"
             ]
           ],
-          "instruction": "Nối thuật ngữ HCERES với nghĩa Việt"
+          "instruction": "Nối thuật ngữ HCERES với nghĩa Việt",
+          "instruction_en": "Match each HCERES term with its Vietnamese meaning"
         },
         {
           "type": "translation",
           "vietnamese": "Mặc dù quỹ đạo tập thể của đơn vị vẫn đi lên, tôi muốn thẳng thắn nêu hai điểm yếu dai dẳng.",
+          "english": "Although the collective trajectory of the unit remains upward, I want to flag frankly two persistent weaknesses.",
           "french": "Bien que la trajectoire collective de l'unité demeure ascendante, je tiens à signaler franchement deux faiblesses persistantes."
         }
+      ],
+      "cultural_notes_en": "HCERES (Haut Conseil de l'Évaluation de la Recherche et de l'Enseignement Supérieur) is the independent body that evaluates research and higher education, created in 2014 (succeeding AERES, 2006). HCERES evaluation is SEPARATE from individual evaluation (CNU) and from project evaluation (ANR). It evaluates research units, doctoral schools, institutions. Process for a research unit: (1) self-assessment by the unit (~50-100 pages: bibliometrics, structure, governance, outputs); (2) document collection; (3) an on-site visit by a 4-7 expert committee, chaired by an external expert; (4) interviews (direction, researchers, doctoral students, support staff, partners — each category received separately); (5) evaluation report; (6) the 'contradictoire' (the unit may reply in writing to factual disagreements); (7) publication. NOTE: since 2017 there is NO MORE alphabetical grading (the old A+/A/B/C abolished) — evaluation is now qualitative (a SWOT-style analysis + recommendations). HCERES CULTURE: (a) the self-assessment report MUST NOT be promotional — the committee values lucidity; an 'all is well' report makes the self-assessment suspect; (b) weaknesses announced pre-emptively by the unit = a sign of maturity; weaknesses discovered by the committee = a sign of bad faith; (c) parity and open science are now explicitly evaluated dimensions (since 2020); (d) the committee does NOT negotiate — trying to 'charm' it is counterproductive. This is descriptive of common practice, NOT legal advice — HCERES procedures change by evaluation wave; verify the current référentiel.",
+      "tip_advice_en": "Eight-step protocol for the unit director facing the HCERES committee: (1) PREPARE A 30-MIN PRESENTATION — no more; the committee has read the report, you give the breath, not the detail (context, axes balance — prioritize 2-3 major successes, financial and HR balance, strengths AND weaknesses in equal number, the next contract's project). (2) DESIGNATE WHO SPEAKS in interviews: direction speaks for the collective, never name an individual researcher without prior agreement; doctoral students should speak frankly (it's protected). (3) ANTICIPATE RECURRING QUESTIONS — strong scientific identity point, signature strategy, integration of junior researchers, open-science policy, parity in doctoral supervision, retirement-wave plan. (4) OWN THE WEAKNESSES — the golden rule: announce 2-3 REAL weaknesses with cause + action plan. (5) NEVER SAY « TOUT VA BIEN » — prefer 'globally positive, but we identify three areas for improvement'. (6) PROTOCOL DURING CRITICISM — acknowledge legitimacy, add ONE factual element the committee hasn't seen, don't contest wholesale. (7) FLAG INTERNAL CONFLICTS with tact — better said than hidden. (8) AFTER THE VISIT — in the 'contradictoire' phase, flag FACTUAL errors (not appreciation disagreements). Avoid: presenting the unit as a sum of brilliant individuals (the committee evaluates the COLLECTIVE), naming-and-criticizing a researcher, public comparison with a rival unit. Not career advice — referentials change by wave.",
+      "register_notes_en": "HCERES discourse is a precise INSTITUTIONAL register, close to administrative. (1) STANDARD ASSESSMENT FORMULAS — « Le bilan que je présente couvre la période de... », « La trajectoire collective de l'unité demeure ascendante. », « Les indicateurs bibliométriques doivent être lus avec la prudence d'usage en SHS. » (2) WEAKNESS FORMULAS — fundamental, don't dodge: « Je tiens à signaler franchement... », « Une faiblesse persistante que le projet entend traiter... », « Notre politique de science ouverte accuse un retard de... ». (3) COLLECTIVE MARKERS — the unit speaks for the COLLECTIVE, never individuals: « L'unité a connu... » (never « le professeur X a fait... »); nominal mention of a researcher only to mark a retirement or a Nobel/medal. (4) SUBJUNCTIVE OF INSTITUTIONAL NECESSITY — « Il convient que les recommandations soient mises en œuvre... », « Il importe que la parité fasse l'objet d'un suivi annuel... ». (5) NUMBERS WITH CONTEXT — not '148 articles' alone but 'cent quarante-huit articles, soit en moyenne dix-neuf par an et par chercheur cœur'; comparison + ratio = a sign of analytical maturity. Avoid: « Tout va bien » (betrays a superficial self-assessment), nominal comparison with other units, « on verra » / « bientôt » (commitments must be DATED).",
+      "roleplay_prompts_en": [
+        "Open an HCERES audition in 5 minutes: the unit's key figures (headcount, axes, period) + ANNOUNCE 2 strengths and 2 weaknesses from the start. Use at least one « Bien que ... soit » concessive.",
+        "The committee asks: « Tout va bien dans votre unité ? » Answer while avoiding false positivity: name a real tension (gender imbalance, open-science lag, a PR departure) + an action plan.",
+        "The committee points to a contradiction between the report (« axe consolidé ») and a doctoral interview (« je n'ai pas vu cet axe vivre »). Respond: acknowledge the credibility of the observation + explain the gap between the directorial reality and the doctoral experience + a corrective plan."
       ]
     },
     {
