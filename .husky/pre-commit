@@ -1,23 +1,30 @@
 #!/usr/bin/env sh
-. "$(dirname -- "$0")/_/husky.sh"
+# Pre-commit gate. Refuses the commit on any non-zero step.
+#
+# Order is fail-fast: cheapest reliable signal first. Typecheck catches
+# the bug class most likely to ship (TS errors, wrong types after a
+# rebase, conflict markers); lint catches style + simple correctness;
+# kids-rooms validation and the room-registry regen come last because
+# they're slower and rarely the failing step in practice.
+#
+# Skip with --no-verify only for genuine emergencies. Bypassing this
+# hook was a contributing factor to PR #454's conflict-marker incident.
 
-echo "🔍 Validating kids rooms..."
+set -e
 
-# Run validation first - this will fail the commit if there are issues
+echo "🔎  Typechecking…"
+npm run --silent typecheck
+
+echo "🧹  Linting…"
+npm run --silent lint
+
+echo "🔍  Validating kids rooms…"
 node scripts/validate-kids-rooms.js
 
-# Only proceed if validation passed
-if [ $? -eq 0 ]; then
-  echo "🔄 Auto-generating room registry..."
-  
-  # Always run registry generation to ensure sync
-  node scripts/generate-room-registry.js
-  
-  # Add the generated files to the commit if they changed
-  git add src/lib/roomManifest.ts src/lib/roomDataImports.ts
-  
-  echo "✅ Registry updated and staged"
-else
-  echo "❌ Commit blocked due to validation errors"
-  exit 1
-fi
+echo "🔄  Regenerating room registry…"
+npm run --silent generate:room-registry
+
+# Re-stage the registry if it changed during regen so the commit captures it.
+git add src/lib/roomManifest.ts 2>/dev/null || true
+
+echo "✅  Pre-commit OK"
