@@ -706,6 +706,12 @@ export const lessons: FrenchLesson[] = [
           "allégorie → a-lé-go-ri",
           "renvoie → rãn-voa",
           "épuiser → é-pwi-zé"
+        ],
+        "pronunciation_focus_en": [
+          "symbole → 'san-BOL' — 'sy' is nasal 'san'; final -e silent ('san-BOL', not English 'SYM-bol'); the polysemous open image, NOT a fixed-meaning sign",
+          "allégorie → 'ah-lay-goh-REE' — double-l one clean 'l'; both é = 'ay'; stress final; a narrative with ONE pre-fixed meaning (opposed to 'symbole')",
+          "renvoie → 'rahn-VWAH' — nasal 'en'; 'oi' = 'wah'; 'renvoyer à' = 'to refer/point to', NOT 'to send back'; a key semiotic verb",
+          "épuiser → 'ay-pwee-ZAY' — é = 'ay'; 'ui' glides to 'wee'; 'qu'aucun lexique ne saurait épuiser' uses 'savoir' in the conditional as a literary softened negation = 'could not exhaust'"
         ]
       },
       {
@@ -716,6 +722,12 @@ export const lessons: FrenchLesson[] = [
           "filée → fi-lé",
           "déploie → dé-ploa",
           "analogique → a-na-lo-jik"
+        ],
+        "pronunciation_focus_en": [
+          "métaphore → 'may-tah-FOR' — é = 'ay'; final -e silent ('may-tah-FOR', not English 'MET-a-phor')",
+          "filée → 'fee-LAY' — feminine past participle of 'filer' (to spin/draw out a thread); 'la métaphore filée' = the extended metaphor, the spun-out image",
+          "déploie → 'day-PLWAH' — 'oi' = 'wah'; 'déployer' = to unfurl/spread out (an image across a text)",
+          "analogique → 'ah-nah-loh-ZHEEK' — -gique soft 'zheek'; 'une vision analogique' = a worldview built on correspondences (Baudelaire/Swedenborg)"
         ]
       },
       {
@@ -726,6 +738,12 @@ export const lessons: FrenchLesson[] = [
           "mallarméen → ma-lar-mé-an",
           "prisonnier → pri-zo-nié",
           "impuissance → an-pwi-sãns"
+        ],
+        "pronunciation_focus_en": [
+          "cygne → 'SEEN-yuh' — 'gn' = the 'ny' of 'canyon'; final -e a faint schwa; means 'swan' (homophone-ish of 'signe' = sign — a pun French poetics exploits)",
+          "mallarméen → 'mah-lar-may-AN' — adjective from Mallarmé; final -en nasal 'AN'; 'le cygne mallarméen' = 'Mallarmé's swan' — note French forms adjectives from author names ('proustien', 'flaubertien')",
+          "prisonnier → 'pree-zoh-NYAY' — single 's' between vowels = 'z'; final -ier 'nyay'; here in apposition: 'prisonnier du lac gelé'",
+          "impuissance → 'an-pwee-SAHNS' — nasal 'im' = 'an'; 'ui' = 'wee'; final -ance 'sahns'; 'l'impuissance du poète' = the poet's powerlessness/creative impotence"
         ]
       },
       {
@@ -736,6 +754,12 @@ export const lessons: FrenchLesson[] = [
           "distinguât → dis-tan-ga",
           "comparaison → kõm-pa-rè-zõn",
           "métaphore → mé-ta-for"
+        ],
+        "pronunciation_focus_en": [
+          "conviendrait → 'kohn-vyan-DREH' — conditional of 'convenir'; 'Encore conviendrait-il que…' = 'it would still be fitting that…' — note the mandatory inversion after sentence-initial 'Encore'",
+          "distinguât → 'dees-tan-GAH' — imperfect subjunctive of 'distinguer'; final -ât silent -t ('-GAH'); triggered by 'conviendrait-il que'; pure C2 register",
+          "comparaison → 'kohm-pah-reh-ZOHN' — nasal 'om' and final 'on'; the rhetorical figure WITH a comparison word (comme, tel), distinct from métaphore",
+          "métaphore → 'may-tah-FOR' — recurring term; the figure WITHOUT a comparison word; 'on confond souvent' = 'are often conflated' (the very error C2 must avoid)"
         ]
       },
       {
@@ -746,145 +770,175 @@ export const lessons: FrenchLesson[] = [
           "appris → a-pri",
           "ornement → or-nơ-mã",
           "irréductible → i-ré-duk-ti-blơ"
+        ],
+        "pronunciation_focus_en": [
+          "Bachelard → 'bash-LAR' — proper name (Gaston Bachelard, philosopher of the poetic image); final -d silent; 'ch' = 'sh'",
+          "appris → 'ah-PREE' — double-p one clean 'p'; past participle of 'apprendre', final -s silent; 'nous a appris à' = 'taught us to'",
+          "ornement → 'or-nuh-MAHN' — schwa middle; final -ent nasal 'MAHN'; 'non comme ornement' = 'not as (mere) ornament' — the conception Bachelard overturned",
+          "irréductible → 'ee-ray-dewk-TEE-bluh' — double-r one throat r; 'u' rounded 'ew'; final -ble 'bluh'; 'un mode irréductible de connaissance' = a mode of knowledge that cannot be reduced (to anything else)"
         ]
       }
     ],
     "cultural_notes_vi": "PHÂN BIỆT BIỂU TƯỢNG / ẨN DỤ / NGỤ NGÔN trong tradition critique Pháp đòi hỏi một độ chính xác mà sinh viên Việt thường bỏ qua:\n\n(1) COMPARAISON: A est comme B (kèm từ so sánh: comme, tel, semblable à). « Elle est belle comme le jour. »\n\n(2) MÉTAPHORE: A est B (không kèm từ so sánh; substitution). « Elle est le jour. » Métaphore IN PRÆSENTIA giữ cả hai termes (« cette femme-soleil »); métaphore IN ABSENTIA chỉ giữ vehicle (« le soleil entra dans la pièce » để chỉ người yêu).\n\n(3) MÉTAPHORE FILÉE: chuỗi ẩn dụ liên tiếp khai thác cùng champ sémantique. Baudelaire trong Correspondances filer la métaphore de la « forêt de symboles ».\n\n(4) ALLÉGORIE: récit dont chaque élément renvoie point à point à un sens fixé d'avance. La Fontaine.\n\n(5) SYMBOLE: image ouverte, polysémique, irréductible à un sens unique. Le cygne mallarméen est un symbole — il signifie l'impuissance, l'idéal, l'exil de l'artiste, la blancheur stérile, ET d'autres significations qu'aucune lecture n'épuise.\n\nPHÂN BIỆT QUYẾT ĐỊNH SYMBOLE / ALLÉGORIE: l'allégorie a UN sens; le symbole a une PROFUSION de sens. Confondre les deux = perdre toute finesse interprétative. Une lecture qui réduit Le Cygne de Mallarmé à « la difficulté du poète » l'allégorise — ce qui appauvrit le texte.\n\nÉCOLES CRITIQUES PHÁP SUR LA QUESTION:\n\n(a) GASTON BACHELARD (La Poétique de l'espace, 1957; La Poétique de la rêverie, 1960): l'image poétique est mode de connaissance, non ornement; lecture phénoménologique de la rêverie matérielle (eau, terre, air, feu).\n\n(b) ROLAND BARTHES (Mythologies, 1957): le mythe est une parole second-degré — un signifié devient signifiant pour un nouveau sens. Application critique au-delà de la littérature stricte.\n\n(c) PAUL RICŒUR (La Métaphore vive, 1975): la métaphore n'est pas substitution mais innovation sémantique — elle crée du sens nouveau, irréductible à une paraphrase.\n\n(d) GÉRARD GENETTE (Figures, 1966): retour aux distinctions rhétoriques classiques avec rigueur sémiologique; influence du structuralisme.\n\nBẪY NGƯỜI VIỆT: thường lẫn lộn « biểu tượng » và « ẩn dụ », hoặc dùng « biểu tượng » cho mọi hình ảnh có ý nghĩa. Discipline C2 đòi hỏi phân biệt rạch ròi. Một con sông trong văn bản KHÔNG phải toujours « biểu tượng cho cuộc đời »; có khi đó chỉ là một sông thật, có khi là métaphore filée, có khi là leitmotiv structural — phải chứng minh từ văn bản trước khi nói « biểu tượng ».\n\nMỘT QUY TẮC TỐI THƯỢNG: chứng minh tính BIỂU TƯỢNG đòi hỏi (1) sự lặp lại của hình ảnh trong tác phẩm, (2) sự đa nghĩa qua các xuất hiện, (3) sự kháng cự đối với một paraphrase đơn giản. Thiếu ba dấu hiệu này, bạn không có biểu tượng — bạn có một hình ảnh thuần túy mô tả.",
+    "cultural_notes_en": "DISTINGUISHING SYMBOL / METAPHOR / ALLEGORY in the French critical tradition demands a precision anglophone students routinely skip (English usage lets 'symbolic', 'metaphorical' and 'figurative' blur together):\n\n(1) COMPARAISON: A is LIKE B (with a comparison word: comme, tel, semblable à). 'Elle est belle comme le jour.' (she is beautiful as the day) — English 'simile'.\n\n(2) MÉTAPHORE: A IS B (no comparison word; substitution). 'Elle est le jour.' Métaphore IN PRÆSENTIA keeps both terms ('cette femme-soleil' = this sun-woman); métaphore IN ABSENTIA keeps only the vehicle ('le soleil entra dans la pièce' to mean the beloved).\n\n(3) MÉTAPHORE FILÉE: a chain of consecutive metaphors mining the same semantic field. Baudelaire in Correspondances spins out the metaphor of the 'forest of symbols'. English 'extended metaphor' — but the French 'filée' (spun, as thread) carries the textile image English loses.\n\n(4) ALLÉGORIE: a narrative each element of which points, one-to-one, to a meaning fixed in advance. La Fontaine's fables.\n\n(5) SYMBOLE: an open, polysemous image, irreducible to a single meaning. Mallarmé's swan is a symbol — it signifies impotence, the ideal, the artist's exile, sterile whiteness, AND further meanings no reading exhausts.\n\nTHE DECISIVE SYMBOLE / ALLÉGORIE CUT: allegory has ONE meaning; the symbol has a PROFUSION of meanings. Conflating them = forfeiting all interpretive finesse. A reading that reduces Mallarmé's swan to 'the poet's difficulty' allegorizes it — and thereby impoverishes the text. This is the single most common anglophone error here, because English 'symbol' is used loosely for any meaningful image.\n\nFRENCH CRITICAL SCHOOLS ON THE QUESTION:\n\n(a) GASTON BACHELARD (La Poétique de l'espace, 1957; La Poétique de la rêverie, 1960): the poetic image is a mode of knowledge, NOT ornament; a phenomenological reading of material reverie (water, earth, air, fire).\n\n(b) ROLAND BARTHES (Mythologies, 1957): myth is second-order speech — a signified becomes a signifier for a new meaning. Critical application beyond strictly literary texts.\n\n(c) PAUL RICŒUR (La Métaphore vive, 1975): metaphor is NOT substitution but semantic innovation — it creates new meaning, irreducible to any paraphrase.\n\n(d) GÉRARD GENETTE (Figures, 1966): a return to the classical rhetorical distinctions with semiological rigor; the structuralist inflection.\n\nTHE ANGLOPHONE TRAP: English routinely says 'a symbol of X', or treats every meaningful image as 'symbolic'. C2 discipline demands the sharp cut. A river in a text is NOT always 'a symbol of life'; sometimes it is just a real river, sometimes a métaphore filée, sometimes a structural leitmotiv — you must prove it from the text BEFORE saying 'symbole'.\n\nONE SUPREME RULE: proving SYMBOLIC status requires (1) recurrence of the image across the work, (2) polysemy across its occurrences, (3) resistance to simple paraphrase. Lacking these three marks, you do not have a symbol — you have a purely descriptive image. An examiner will press exactly here: 'Prove it is a symbol and not a recurring motif.'",
     "tip_advice_vi": "GRILLE D'ANALYSE pour identifier et commenter une figure:\n\n(1) IDENTIFIER LE TYPE PRÉCIS:\n- Comparaison? Métaphore? Métonymie? Synecdoque? Allégorie? Symbole?\n- Si métaphore: in praesentia / in absentia / filée?\n- Champ source / champ cible (modèle Lakoff-Johnson, Les Métaphores dans la vie quotidienne, traduit en français en 1985)\n\n(2) ANALYSER LE TRAVAIL DE L'IMAGE:\n- Quel rapprochement opère la figure?\n- Quel effet produit-elle (cognitif, affectif, ironique)?\n- Où se situe-t-elle dans la phrase, dans le poème, dans l'œuvre?\n- Y a-t-il systématisation (filage), récurrence (leitmotiv), variation?\n\n(3) RELIER À UNE TRADITION:\n- L'image appartient-elle à un répertoire (la rose pétrarquiste, la mer baudelairienne)?\n- L'auteur le reprend-il, le subvertit-il, l'épuise-t-il?\n- Quelle est la singularité de SA mise en œuvre?\n\nCỤM HỮU ÍCH:\n\nĐỂ INTRODUIRE UNE ANALYSE:\n- « La métaphore qui s'élabore ici relève d'une tradition que l'on peut faire remonter à… »\n- « Cette image, en apparence convenue, prend chez l'auteur une coloration singulière. »\n- « Le réseau métaphorique de cette page se déploie selon un axe… »\n\nĐỂ DÉCRIRE UNE MÉTAPHORE:\n- « La métaphore opère un transfert du champ X vers le champ Y. »\n- « L'auteur file ici la métaphore sur l'ensemble du paragraphe — chaque image relance la précédente. »\n- « Ce qui frappe, c'est la rupture du registre métaphorique au milieu de la phrase. »\n\nĐỂ DÉCRIRE UN SYMBOLE:\n- « Le motif récurrent du X acquiert, par sa répétition, un statut symbolique. »\n- « Ce symbole résiste à toute paraphrase: il signifie à la fois l'absence, l'attente et le désir. »\n- « La polyvalence du symbole est ici le moteur même de la lecture. »\n\nĐỂ DÉCRIRE UNE ALLÉGORIE:\n- « Le récit fonctionne comme une allégorie transparente: chaque personnage renvoie à un type. »\n- « Cette transparence allégorique est précisément ce que l'auteur subvertit en seconde partie. »\n\nTRÁNH:\n- « C'est un symbole de la liberté » → réduction allégorisante d'un symbole; incompatible avec la définition de symbole\n- « L'auteur utilise une métaphore pour décorer son texte » → conception ornementale dépassée depuis Bachelard\n- Confondre « image » (terme générique) et « figure » (terme rhétorique précis)\n- Identifier toute personnification comme métaphore (ce sont deux figures distinctes)",
+    "tip_advice_en": "ANALYSIS GRID for identifying and commenting on a figure:\n\n(1) IDENTIFY THE PRECISE TYPE:\n- Comparaison? Métaphore? Métonymie? Synecdoque? Allégorie? Symbole?\n- If metaphor: in praesentia / in absentia / filée?\n- Source domain / target domain (the Lakoff-Johnson model, Les Métaphores dans la vie quotidienne, French trans. 1985)\n\n(2) ANALYZE THE WORK OF THE IMAGE:\n- What rapprochement does the figure operate (which two domains does it bring together)?\n- What effect does it produce (cognitive, affective, ironic)?\n- Where does it sit in the sentence, the poem, the work?\n- Is there systematization (filage), recurrence (leitmotiv), variation?\n\n(3) RELATE IT TO A TRADITION:\n- Does the image belong to a repertoire (the Petrarchan rose, the Baudelairean sea)?\n- Does the author take it up, subvert it, exhaust it?\n- What is the singularity of THIS author's deployment of it?\n\nUSEFUL PHRASES:\n\nTO INTRODUCE AN ANALYSIS:\n- 'La métaphore qui s'élabore ici relève d'une tradition que l'on peut faire remonter à…' (the metaphor being elaborated here belongs to a tradition traceable back to…)\n- 'Cette image, en apparence convenue, prend chez l'auteur une coloration singulière.' (this seemingly conventional image takes on a singular coloring in this author)\n- 'Le réseau métaphorique de cette page se déploie selon un axe…' (the metaphorical network of this page unfolds along an axis…)\n\nTO DESCRIBE A METAPHOR:\n- 'La métaphore opère un transfert du champ X vers le champ Y.' (the metaphor operates a transfer from field X to field Y)\n- 'L'auteur file ici la métaphore sur l'ensemble du paragraphe — chaque image relance la précédente.' (the author spins out the metaphor over the whole paragraph — each image relaunches the previous one)\n- 'Ce qui frappe, c'est la rupture du registre métaphorique au milieu de la phrase.'\n\nTO DESCRIBE A SYMBOL:\n- 'Le motif récurrent du X acquiert, par sa répétition, un statut symbolique.'\n- 'Ce symbole résiste à toute paraphrase: il signifie à la fois l'absence, l'attente et le désir.'\n- 'La polyvalence du symbole est ici le moteur même de la lecture.' (the symbol's multivalence is here the very engine of the reading)\n\nTO DESCRIBE AN ALLEGORY:\n- 'Le récit fonctionne comme une allégorie transparente: chaque personnage renvoie à un type.'\n- 'Cette transparence allégorique est précisément ce que l'auteur subvertit en seconde partie.'\n\nAVOID:\n- 'C'est un symbole de la liberté' (it's a symbol of freedom) → an allegorizing reduction of a symbol; incompatible with the very definition of symbole\n- 'L'auteur utilise une métaphore pour décorer son texte' → the ornamental conception, obsolete since Bachelard\n- Conflating 'image' (generic term) with 'figure' (precise rhetorical term)\n- Labeling every personification a metaphor (they are two distinct figures)",
     "vocabulary": [
       {
         "word": "une métaphore filée",
         "en": "an extended metaphor",
         "vi": "ẩn dụ kéo dài",
         "pos": "n.f.",
-        "pronunciation_vi": "mé-ta-for fi-lé"
+        "pronunciation_vi": "mé-ta-for fi-lé",
+        "pronunciation_en": "ewn may-tah-FOR fee-LAY — 'filée' literally 'spun' (like thread); English 'extended metaphor' loses the textile image central to French criticism's 'filer' verb"
       },
       {
         "word": "in praesentia / in absentia",
         "en": "in presence / in absence",
         "vi": "có / không cả hai termes",
         "pos": "loc. lat.",
-        "pronunciation_vi": "in pré-zãn-sia / in ab-sãn-sia"
+        "pronunciation_vi": "in pré-zãn-sia / in ab-sãn-sia",
+        "pronunciation_en": "in pray-ZAHN-syah / in ab-SAHN-syah — Latin loan, pronounced à la française; 'in praesentia' = both terms (tenor + vehicle) stated; 'in absentia' = only the vehicle stated"
       },
       {
         "word": "l'allégorie",
         "en": "allegory",
         "vi": "ngụ ngôn / phúng dụ",
         "pos": "n.f.",
-        "pronunciation_vi": "a-lé-go-ri"
+        "pronunciation_vi": "a-lé-go-ri",
+        "pronunciation_en": "lah-lay-goh-REE — double-l one 'l'; stress final syllable; the one-to-one fixed-meaning narrative — the OPPOSITE of a polysemous symbole, never use the two interchangeably"
       },
       {
         "word": "le champ sémantique",
         "en": "the semantic field",
         "vi": "trường ngữ nghĩa",
         "pos": "n.m.",
-        "pronunciation_vi": "shã sé-mãn-tik"
+        "pronunciation_vi": "shã sé-mãn-tik",
+        "pronunciation_en": "luh SHAHN say-mahn-TEEK — 'champ' = 'shahn' (nasal, final -p silent); 'sémantique' final -que 'teek'; the lexical-semantic field a metaphor draws on (= Lakoff's 'source domain')"
       },
       {
         "word": "un réseau métaphorique",
         "en": "a metaphorical network",
         "vi": "một mạng lưới ẩn dụ",
         "pos": "n.m.",
-        "pronunciation_vi": "ré-zô mé-ta-fo-rik"
+        "pronunciation_vi": "ré-zô mé-ta-fo-rik",
+        "pronunciation_en": "uhn ray-ZOH may-tah-foh-REEK — 'réseau' = 'ray-ZOH' (final -eau 'oh'); the web of interlinked images across a work — analyse it, do not just spot single metaphors"
       },
       {
         "word": "un leitmotiv",
         "en": "a leitmotiv",
         "vi": "chủ đề lặp lại",
         "pos": "n.m.",
-        "pronunciation_vi": "laït-mo-tiv"
+        "pronunciation_vi": "laït-mo-tiv",
+        "pronunciation_en": "uhn layt-moh-TEEV — German loan (Wagner), Frenchified: 'ei' = 'ay', final -v voiced; a recurring motif — necessary but NOT sufficient for symbol status (lacks polysemy)"
       },
       {
         "word": "polysémique",
         "en": "polysemous",
         "vi": "đa nghĩa",
         "pos": "adj.",
-        "pronunciation_vi": "po-li-sé-mik"
+        "pronunciation_vi": "po-li-sé-mik",
+        "pronunciation_en": "poh-lee-say-MEEK — é = 'ay'; final -que 'meek'; 'polysemous' — the defining property of a symbole (many simultaneous meanings, none exhaustive)"
       },
       {
         "word": "l'innovation sémantique",
         "en": "semantic innovation",
         "vi": "sự sáng tạo ngữ nghĩa",
         "pos": "n.f.",
-        "pronunciation_vi": "i-no-va-sion sé-mãn-tik"
+        "pronunciation_vi": "i-no-va-sion sé-mãn-tik",
+        "pronunciation_en": "lee-noh-vah-SYOHN say-mahn-TEEK — -tion 'syohn'; Ricœur's term (La Métaphore vive): metaphor CREATES meaning that did not exist before it — it is not decorative substitution"
       },
       {
         "word": "un transfert métaphorique",
         "en": "a metaphorical transfer",
         "vi": "một sự chuyển ẩn dụ",
         "pos": "n.m.",
-        "pronunciation_vi": "trãns-fèr mé-ta-fo-rik"
+        "pronunciation_vi": "trãns-fèr mé-ta-fo-rik",
+        "pronunciation_en": "uhn trahns-FEHR may-tah-foh-REEK — 'transfert' final -t silent ('trahns-FEHR'); the carrying-over of properties from source field to target field — the engine of every metaphor"
       },
       {
         "word": "épuiser un sens",
         "en": "to exhaust a meaning",
         "vi": "vắt kiệt một ý nghĩa",
         "pos": "v.",
-        "pronunciation_vi": "é-pwi-zé an sãns"
+        "pronunciation_vi": "é-pwi-zé an sãns",
+        "pronunciation_en": "ay-pwee-ZAY uhn SAHNS — 'épuiser' é = 'ay', 'ui' = 'wee'; 'sens' final -s silent ('sahns'); 'aucune lecture ne l'épuise' = 'no reading exhausts it' — the test that proves a true symbole"
       }
     ],
     "dialogue": [
       {
         "speaker": "Pr. Compagnon",
         "text": "Madame Tran, vous parlez du « cygne, symbole de la pureté ». Cette lecture est-elle suffisante ?",
-        "vi": "Cô Trần, cô nói về « con thiên nga, biểu tượng của sự thuần khiết ». Cách đọc này có đủ không?"
+        "vi": "Cô Trần, cô nói về « con thiên nga, biểu tượng của sự thuần khiết ». Cách đọc này có đủ không?",
+        "en": "Madame Tran, you speak of 'the swan, symbol of purity'. Is this reading sufficient? ['Cette lecture est-elle suffisante ?' uses the formal interrogative inversion 'est-elle' — the examiner is signaling the answer is no]"
       },
       {
         "speaker": "Linh",
         "text": "Non — la réduire à la pureté, c'est l'allégoriser. Mallarmé en fait un symbole polysémique: stérilité, exil, idéal inatteignable.",
-        "vi": "Không — quy giảm thành sự thuần khiết là biến nó thành ngụ ngôn. Mallarmé biến nó thành biểu tượng đa nghĩa: vô sinh, lưu vong, lý tưởng không thể đạt."
+        "vi": "Không — quy giảm thành sự thuần khiết là biến nó thành ngụ ngôn. Mallarmé biến nó thành biểu tượng đa nghĩa: vô sinh, lưu vong, lý tưởng không thể đạt.",
+        "en": "No — to reduce it to purity is to allegorize it. Mallarmé makes of it a polysemous symbol: sterility, exile, the unattainable ideal. ['allégoriser' = to wrongly turn a symbol into a one-meaning allegory — a technical verb of reproach; 'en fait un symbole' = 'makes of it a symbol', the 'en … fait' construction]"
       },
       {
         "speaker": "Pr. Compagnon",
         "text": "Voilà — un symbole résiste à la paraphrase unique. C'est ce qui le distingue de l'allégorie.",
-        "vi": "Đó — một biểu tượng kháng cự lại paraphrase duy nhất. Chính điều này phân biệt nó với ngụ ngôn."
+        "vi": "Đó — một biểu tượng kháng cự lại paraphrase duy nhất. Chính điều này phân biệt nó với ngụ ngôn.",
+        "en": "Exactly — a symbol resists any single paraphrase. That is what distinguishes it from allegory. ['résister à la paraphrase' = the operative test for symbol status; 'c'est ce qui …' = a cleft isolating the defining criterion]"
       },
       {
         "speaker": "Linh",
         "text": "Et c'est en quoi le sonnet mallarméen demeure ouvert: aucune lecture ne l'épuise.",
-        "vi": "Và vì thế bài sonnet của Mallarmé vẫn mở: không cách đọc nào vắt kiệt nó."
+        "vi": "Và vì thế bài sonnet của Mallarmé vẫn mở: không cách đọc nào vắt kiệt nó.",
+        "en": "And it is in this respect that the Mallarméan sonnet remains open: no reading exhausts it. ['c'est en quoi' = 'it is in this respect that' — subtler than 'this is why'; 'demeure' = literary 'remains', higher register than 'reste']"
       }
     ],
     "dialogue_long": [
       {
         "speaker": "Pr. Compagnon (séminaire de poésie moderne)",
         "text": "Madame Tran, expliquez-nous comment fonctionne le célèbre sonnet « Le vierge, le vivace et le bel aujourd'hui » de Mallarmé. Vingt minutes.",
-        "vi": "Cô Trần, cô giải thích cho chúng tôi cách hoạt động của bài sonnet nổi tiếng « Le vierge, le vivace et le bel aujourd'hui » của Mallarmé. 20 phút."
+        "vi": "Cô Trần, cô giải thích cho chúng tôi cách hoạt động của bài sonnet nổi tiếng « Le vierge, le vivace et le bel aujourd'hui » của Mallarmé. 20 phút.",
+        "en": "Madame Tran, explain to us how Mallarmé's famous sonnet 'Le vierge, le vivace et le bel aujourd'hui' works. Twenty minutes. [the title is the poem's first line — French sonnets without titles are cited by their incipit; left untranslated as a fixed reference]"
       },
       {
         "speaker": "Linh",
         "text": "Le sonnet, paru en 1885 puis recueilli dans les Poésies de 1899, met en scène la figure d'un cygne prisonnier d'un lac gelé. Mais le poème ne raconte pas — il configure une situation symbolique dont la richesse résiste à toute paraphrase. C'est précisément cette résistance qui fait du cygne, ici, un symbole et non une allégorie.",
-        "vi": "Bài sonnet, xuất bản 1885 rồi tập hợp trong Poésies 1899, dàn dựng hình ảnh con thiên nga bị giam trong hồ băng. Nhưng bài thơ không kể — nó cấu hình một tình huống biểu tượng mà sự phong phú kháng cự lại mọi paraphrase. Chính sự kháng cự này biến con thiên nga, ở đây, thành biểu tượng chứ không phải ngụ ngôn."
+        "vi": "Bài sonnet, xuất bản 1885 rồi tập hợp trong Poésies 1899, dàn dựng hình ảnh con thiên nga bị giam trong hồ băng. Nhưng bài thơ không kể — nó cấu hình một tình huống biểu tượng mà sự phong phú kháng cự lại mọi paraphrase. Chính sự kháng cự này biến con thiên nga, ở đây, thành biểu tượng chứ không phải ngụ ngôn.",
+        "en": "The sonnet, published in 1885 then collected in the Poésies of 1899, stages the figure of a swan imprisoned in a frozen lake. But the poem does not narrate — it configures a symbolic situation whose richness resists all paraphrase. It is precisely this resistance that makes the swan, here, a symbol and not an allegory. ['configurer' (vs 'raconter') = to set up a structured situation rather than tell a story; 'la richesse' here = interpretive abundance, not material wealth]"
       },
       {
         "speaker": "Linh",
         "text": "Premier point: le réseau lexical du gel et de la stérilité. Les termes « vierge », « glacier », « gel », « blancheur » construisent un champ sémantique cohérent qui dépasse la simple description: la blancheur n'est pas seulement couleur, elle est virginité non-fécondée, possibilité jamais réalisée. Bachelard, dans L'Eau et les rêves (1942), aurait parlé d'une « rêverie de l'eau dure » — l'eau qui ne coule plus, qui retient au lieu de porter.",
-        "vi": "Điểm thứ nhất: mạng lưới từ vựng của băng giá và vô sinh. Các từ « vierge », « glacier », « gel », « blancheur » xây dựng một trường ngữ nghĩa nhất quán vượt qua mô tả thuần túy: trắng không chỉ là màu, mà là sự đồng trinh chưa thụ tinh, khả năng chưa bao giờ thực hiện. Bachelard, trong L'Eau et les rêves (1942), sẽ gọi đó là « mộng tưởng nước cứng » — nước không còn chảy, giữ lại thay vì mang đi."
+        "vi": "Điểm thứ nhất: mạng lưới từ vựng của băng giá và vô sinh. Các từ « vierge », « glacier », « gel », « blancheur » xây dựng một trường ngữ nghĩa nhất quán vượt qua mô tả thuần túy: trắng không chỉ là màu, mà là sự đồng trinh chưa thụ tinh, khả năng chưa bao giờ thực hiện. Bachelard, trong L'Eau et les rêves (1942), sẽ gọi đó là « mộng tưởng nước cứng » — nước không còn chảy, giữ lại thay vì mang đi.",
+        "en": "First point: the lexical network of frost and sterility. The terms 'vierge', 'glacier', 'gel', 'blancheur' build a coherent semantic field that exceeds mere description: whiteness is not only a color, it is unfecundated virginity, a possibility never realized. Bachelard, in L'Eau et les rêves (1942), would have spoken of a 'rêverie de l'eau dure' — water that no longer flows, that retains instead of carrying. ['la rêverie de l'eau dure' = 'the reverie of hard water', a Bachelardian coinage, untranslatable as a fixed phrase; 'aurait parlé' = conditional perfect, the courteous 'would have spoken of' attribution]"
       },
       {
         "speaker": "Linh",
         "text": "Second point: la position physique du cygne, prisonnier dans la glace. Cette image fonctionne sur deux niveaux. Au niveau littéral, c'est une scène hivernale plausible. Au niveau symbolique, c'est une image de l'artiste mallarméen lui-même: figé dans la matière, incapable de prendre son envol vers l'idéal qu'il entrevoit. Mallarmé, dans ses lettres et notamment dans les fragments du Livre, a explicitement thématisé cette impuissance créatrice.",
-        "vi": "Điểm thứ hai: vị trí thân thể của con thiên nga, tù nhân trong băng. Hình ảnh này hoạt động trên hai cấp. Cấp nghĩa đen, đó là cảnh mùa đông khả tín. Cấp biểu tượng, đó là hình ảnh nghệ sĩ Mallarmé: kẹt trong vật chất, không thể cất cánh lên lý tưởng mà ông thấy thoáng qua. Mallarmé, trong thư từ và đặc biệt trong các đoạn của Le Livre, đã chủ đề hóa rõ sự bất lực sáng tạo này."
+        "vi": "Điểm thứ hai: vị trí thân thể của con thiên nga, tù nhân trong băng. Hình ảnh này hoạt động trên hai cấp. Cấp nghĩa đen, đó là cảnh mùa đông khả tín. Cấp biểu tượng, đó là hình ảnh nghệ sĩ Mallarmé: kẹt trong vật chất, không thể cất cánh lên lý tưởng mà ông thấy thoáng qua. Mallarmé, trong thư từ và đặc biệt trong các đoạn của Le Livre, đã chủ đề hóa rõ sự bất lực sáng tạo này.",
+        "en": "Second point: the physical position of the swan, prisoner in the ice. This image works on two levels. At the literal level, it is a plausible winter scene. At the symbolic level, it is an image of the Mallarméan artist himself: frozen in matter, unable to take flight toward the ideal he glimpses. Mallarmé, in his letters and notably in the fragments of Le Livre, explicitly thematized this creative impotence. ['thématiser' = to make X an explicit theme — a precise critical verb, not just 'to discuss'; 'entrevoir' = to glimpse fleetingly, stronger than 'see']"
       },
       {
         "speaker": "Linh",
         "text": "Troisième point — le plus délicat. Si l'on s'arrêtait à ces deux lectures, on aurait fait du cygne une allégorie. Or, le poème résiste: il y a une troisième dimension, plus opaque, où le cygne devient une figure de l'écriture poétique elle-même comme tentative toujours rejouée et toujours échouée. Cette dimension est insaisissable précisément parce que le poème refuse de la fixer. Comme l'écrivait Ricœur dans La Métaphore vive, la grande métaphore est innovation sémantique — elle crée un sens qui n'existait pas avant elle et que nulle paraphrase ne peut restituer.",
-        "vi": "Điểm ba — tinh tế nhất. Nếu dừng ở hai cách đọc đó, ta đã biến con thiên nga thành ngụ ngôn. Tuy nhiên, bài thơ kháng cự: có một chiều thứ ba, mờ hơn, nơi con thiên nga trở thành hình ảnh của chính việc viết thơ như nỗ lực luôn được chơi lại và luôn thất bại. Chiều này không nắm bắt được chính vì bài thơ từ chối cố định nó. Như Ricœur viết trong La Métaphore vive, ẩn dụ lớn là sự sáng tạo ngữ nghĩa — nó tạo ra một nghĩa chưa tồn tại trước nó và không paraphrase nào có thể khôi phục."
+        "vi": "Điểm ba — tinh tế nhất. Nếu dừng ở hai cách đọc đó, ta đã biến con thiên nga thành ngụ ngôn. Tuy nhiên, bài thơ kháng cự: có một chiều thứ ba, mờ hơn, nơi con thiên nga trở thành hình ảnh của chính việc viết thơ như nỗ lực luôn được chơi lại và luôn thất bại. Chiều này không nắm bắt được chính vì bài thơ từ chối cố định nó. Như Ricœur viết trong La Métaphore vive, ẩn dụ lớn là sự sáng tạo ngữ nghĩa — nó tạo ra một nghĩa chưa tồn tại trước nó và không paraphrase nào có thể khôi phục.",
+        "en": "Third point — the most delicate. Were one to stop at these two readings, one would have made the swan an allegory. Yet the poem resists: there is a third dimension, more opaque, in which the swan becomes a figure of poetic writing itself, as an attempt forever replayed and forever failed. This dimension is ungraspable precisely because the poem refuses to fix it. As Ricœur wrote in La Métaphore vive, the great metaphor is semantic innovation — it creates a meaning that did not exist before it and that no paraphrase can restore. ['Si l'on s'arrêtait …, on aurait fait …' = a literary irrealis: imperfect + conditional perfect, 'were one to stop…, one would have made…'; 'insaisissable' = that cannot be seized/pinned down]"
       },
       {
         "speaker": "Pr. Compagnon",
         "text": "Bien. Question méthodologique: comment distingueriez-vous, dans la pratique d'analyse, ce qui relève du symbole de ce qui relève d'un simple motif récurrent ?",
-        "vi": "Tốt. Câu hỏi phương pháp luận: trong thực hành phân tích, cô phân biệt thế nào điều thuộc về biểu tượng và điều thuộc về một motif lặp lại đơn thuần?"
+        "vi": "Tốt. Câu hỏi phương pháp luận: trong thực hành phân tích, cô phân biệt thế nào điều thuộc về biểu tượng và điều thuộc về một motif lặp lại đơn thuần?",
+        "en": "Good. A methodological question: how, in analytic practice, would you distinguish what belongs to the symbol from what belongs to a mere recurring motif? ['ce qui relève de X' = 'what falls under / belongs to the category of X' — a high-frequency academic frame, not 'what reveals X'; 'comment distingueriez-vous' = polite conditional, 'how would you distinguish']"
       },
       {
         "speaker": "Linh",
         "text": "Trois critères convergents, à mon sens. Premièrement, la récurrence — le motif doit revenir, non par hasard, mais avec une systématicité qui le marque. Deuxièmement, la polyvalence — chaque occurrence doit ouvrir des sens partiellement différents, sans qu'aucun n'épuise le motif. Troisièmement, la résistance à la paraphrase — si l'on peut dire « ce symbole signifie X » en une phrase, ce n'est pas un symbole, c'est une allégorie. Le cygne mallarméen passe les trois épreuves; le glacier d'un roman réaliste, généralement, ne passe que la première.",
-        "vi": "Ba tiêu chí hội tụ, theo tôi. Thứ nhất, sự lặp lại — motif phải trở lại, không ngẫu nhiên, mà với một tính hệ thống đánh dấu nó. Thứ hai, tính đa giá — mỗi xuất hiện phải mở ra nghĩa hơi khác, mà không nghĩa nào vắt kiệt motif. Thứ ba, sự kháng cự với paraphrase — nếu có thể nói « biểu tượng này nghĩa là X » trong một câu, đó không phải biểu tượng, đó là ngụ ngôn. Con thiên nga của Mallarmé qua được cả ba thử nghiệm; sông băng trong một tiểu thuyết hiện thực, thường, chỉ qua được tiêu chí đầu."
+        "vi": "Ba tiêu chí hội tụ, theo tôi. Thứ nhất, sự lặp lại — motif phải trở lại, không ngẫu nhiên, mà với một tính hệ thống đánh dấu nó. Thứ hai, tính đa giá — mỗi xuất hiện phải mở ra nghĩa hơi khác, mà không nghĩa nào vắt kiệt motif. Thứ ba, sự kháng cự với paraphrase — nếu có thể nói « biểu tượng này nghĩa là X » trong một câu, đó không phải biểu tượng, đó là ngụ ngôn. Con thiên nga của Mallarmé qua được cả ba thử nghiệm; sông băng trong một tiểu thuyết hiện thực, thường, chỉ qua được tiêu chí đầu.",
+        "en": "Three converging criteria, to my mind. First, recurrence — the motif must return, not by chance, but with a systematicity that marks it. Second, polyvalence — each occurrence must open partially different meanings, none of which exhausts the motif. Third, resistance to paraphrase — if one can say 'this symbol means X' in a single sentence, it is not a symbol, it is an allegory. Mallarmé's swan passes all three tests; the glacier in a realist novel, generally, passes only the first. ['trois critères convergents' = three criteria that converge (must hold jointly); 'la polyvalence' = multivalence; 'les trois épreuves' = the three tests/trials it must withstand]"
       },
       {
         "speaker": "Pr. Compagnon",
         "text": "Réponse précise. Voilà ce qu'on attend à votre niveau: la critique méthodique, l'application stricte des distinctions, et l'humilité face à ce qui résiste à la paraphrase. C'est tout l'enjeu d'une lecture symbolique réussie.",
-        "vi": "Câu trả lời chính xác. Đây là điều mong đợi ở cấp độ của cô: phê bình có phương pháp, áp dụng nghiêm ngặt các phân biệt, và sự khiêm tốn trước điều kháng cự với paraphrase. Đó là toàn bộ vấn đề của một cách đọc biểu tượng thành công."
+        "vi": "Câu trả lời chính xác. Đây là điều mong đợi ở cấp độ của cô: phê bình có phương pháp, áp dụng nghiêm ngặt các phân biệt, và sự khiêm tốn trước điều kháng cự với paraphrase. Đó là toàn bộ vấn đề của một cách đọc biểu tượng thành công.",
+        "en": "A precise answer. This is what is expected at your level: methodical criticism, the strict application of the distinctions, and humility before what resists paraphrase. That is the whole stake of a successful symbolic reading. ['à votre niveau' = 'at your level' (sc. agrégation); 'tout l'enjeu de' = 'the entire stake of' — what is fundamentally at issue, a recurring C2 framing noun]"
       }
     ],
     "roleplay_prompts": [
@@ -892,30 +946,44 @@ export const lessons: FrenchLesson[] = [
       "Trong séminaire, một collègue affirme « tous les images dans la poésie sont des symboles ». Phản hồi avec rigueur — distinguer image, comparaison, métaphore, allégorie, symbole.",
       "Soạn 5 câu pour analyser un motif récurrent (la mer chez Duras, le café chez Houellebecq, la rue chez Modiano) — vérifier les trois critères du symbole avant de l'appeler tel."
     ],
+    "roleplay_prompts_en": [
+      "You are assigned an explication of a Baudelaire sonnet (Correspondances). Identify the central métaphore filée, situate it in the tradition (the link to Swedenborg, mysticism), and distinguish it from mere decorative ornament. Open with: 'La métaphore qui s'élabore ici relève d'une tradition que l'on peut faire remonter à…'",
+      "In a seminar, a colleague asserts 'all images in poetry are symbols'. Respond with rigor — distinguish image, comparaison, métaphore, allégorie, symbole. Use the corrective register, not blunt contradiction: 'Il conviendrait ici de distinguer…'",
+      "Compose 5 sentences to analyze a recurring motif (the sea in Duras, the café in Houellebecq, the street in Modiano) — apply the three criteria (recurrence, polyvalence, resistance to paraphrase) BEFORE calling it a symbol. State explicitly which criteria it meets and which it does not."
+    ],
     "register_notes": "VOCABULAIRE RHÉTORIQUE TRADITIONNEL (à connaître au mot près):\n\nFIGURES D'ANALOGIE:\n- comparaison (avec mot-outil)\n- métaphore (sans mot-outil)\n- métaphore filée (chaîne)\n- allégorie (récit à sens fixe)\n- symbole (image polysémique ouverte)\n- personnification (attribution d'humanité à non-humain)\n- prosopopée (faire parler un non-humain ou un mort)\n\nFIGURES DE SUBSTITUTION:\n- métonymie (cause pour effet, contenant pour contenu, etc.)\n- synecdoque (partie pour le tout, ou inverse)\n- antonomase (nom propre pour commun ou inverse)\n\nFIGURES D'OPPOSITION:\n- antithèse\n- oxymore\n- chiasme\n\nFIGURES DE RÉPÉTITION:\n- anaphore (en début)\n- épiphore (en fin)\n- épanaphore / épanalepse\n- polyptote (répétition d'un mot avec variations morphologiques)\n\nFIGURES DE CONSTRUCTION:\n- hyperbate (rejet d'un élément hors de sa place attendue)\n- inversion\n- ellipse\n- zeugma\n\nUSAGE C2: nommer la figure CORRECTEMENT est non-négociable. Confondre métaphore et métonymie = perdre toute crédibilité. Une lecture C2 utilise au moins 5-6 termes rhétoriques précis par page d'analyse.\n\nÉCOLES DE LECTURE — connaître les références:\n- BACHELARD: lecture phénoménologique de l'image matérielle (eau, terre, air, feu)\n- BARTHES: sémiotique du mythe (Mythologies, 1957)\n- RICŒUR: la métaphore comme innovation sémantique (La Métaphore vive, 1975)\n- GENETTE: rhétorique structuraliste (Figures, 1966-72)\n- LAKOFF & JOHNSON: linguistique cognitive (Les Métaphores dans la vie quotidienne, 1980 / trad. fr. 1985)\n\nIDIOMS LITTÉRAIRES SUR LA FIGURE:\n- « filer la métaphore » (kéo dài ẩn dụ — courant en critique)\n- « épuiser un sens » (vắt kiệt — soutenu)\n- « le grain de l'image » (hạt của hình ảnh — littéraire bachelardien)\n- « tisser un réseau d'images » (dệt mạng lưới — littéraire)\n\nMỘT TINH TẾ ĐẶC THÙ C2: critique Pháp évite le terme « beau » au sujet d'une figure. On ne dit pas « cette métaphore est belle » — on dit « cette métaphore opère un déplacement signifiant », « ce symbole est efficace », « cette image est dense ». Le « beau » comme jugement esthétique appartient au discours d'amateur, non au discours critique.",
+    "register_notes_en": "TRADITIONAL RHETORICAL VOCABULARY (to be known to the exact word — English usage blurs most of these):\n\nFIGURES OF ANALOGY:\n- comparaison (with a comparison word) = simile\n- métaphore (without a comparison word)\n- métaphore filée (a chain) = extended metaphor\n- allégorie (a narrative with fixed meaning)\n- symbole (an open, polysemous image)\n- personnification (attributing humanity to the non-human)\n- prosopopée (making a non-human or a dead person speak)\n\nFIGURES OF SUBSTITUTION:\n- métonymie (cause for effect, container for content, etc.)\n- synecdoque (part for whole, or whole for part)\n- antonomase (proper noun for common, or the reverse)\n\nFIGURES OF OPPOSITION:\n- antithèse\n- oxymore (oxymoron)\n- chiasme (chiasmus)\n\nFIGURES OF REPETITION:\n- anaphore (repetition at the start)\n- épiphore (repetition at the end)\n- épanaphore / épanalepse\n- polyptote (repetition of a word with morphological variation)\n\nFIGURES OF CONSTRUCTION:\n- hyperbate (an element thrown outside its expected place)\n- inversion\n- ellipse\n- zeugma\n\nC2 USAGE: naming the figure CORRECTLY is non-negotiable. Conflating métaphore and métonymie = forfeiting all credibility. A C2 reading uses at least 5-6 precise rhetorical terms per page of analysis. (English-language criticism tolerates 'imagery' as a catch-all; French does not.)\n\nSCHOOLS OF READING — know the references:\n- BACHELARD: phenomenological reading of the material image (water, earth, air, fire)\n- BARTHES: semiotics of myth (Mythologies, 1957)\n- RICŒUR: metaphor as semantic innovation (La Métaphore vive, 1975)\n- GENETTE: structuralist rhetoric (Figures, 1966-72)\n- LAKOFF & JOHNSON: cognitive linguistics (Metaphors We Live By, 1980 / French trans. 1985)\n\nLITERARY IDIOMS ON THE FIGURE:\n- 'filer la métaphore' (to spin out the metaphor — common in criticism)\n- 'épuiser un sens' (to exhaust a meaning — elevated)\n- 'le grain de l'image' (the grain of the image — Bachelardian literary)\n- 'tisser un réseau d'images' (to weave a network of images — literary)\n\nONE CRUCIAL C2 SUBTLETY: French criticism AVOIDS the word 'beau' (beautiful) about a figure. One does not say 'cette métaphore est belle' — one says 'cette métaphore opère un déplacement signifiant' (this metaphor operates a meaningful displacement), 'ce symbole est efficace' (this symbol is effective), 'cette image est dense' (this image is dense). 'Beau' as an aesthetic verdict belongs to the amateur's discourse, not to critical discourse. This is the inverse of casual English praise ('what a beautiful image') — at C2 it signals an untrained reader.",
     "idiom_glosses": [
       {
         "idiom": "Filer la métaphore (courant critique)",
         "literal": "Kéo dài ẩn dụ",
+        "literal_en": "To spin the metaphor (as one spins thread)",
         "meaning": "Triển khai một ẩn dụ qua nhiều câu liên tiếp.",
+        "meaning_en": "To sustain one metaphor across several consecutive sentences, each image relaunching the last. English 'to extend a metaphor' captures the effect but loses the spinning-thread image ('filer' = to spin). Standard critical register — the precise verb examiners expect, not 'use a long metaphor'.",
         "example": "Baudelaire, dans Correspondances, file la métaphore de la forêt de symboles tout au long du sonnet."
       },
       {
         "idiom": "Le grain de l'image (littéraire bachelardien)",
         "literal": "Hạt của hình ảnh",
+        "literal_en": "The grain of the image",
         "meaning": "Tính cụ thể vật chất của một hình ảnh thi ca.",
+        "meaning_en": "The material, textural concreteness of a poetic image — what you feel before you interpret. A Bachelardian coinage (cf. Barthes's 'le grain de la voix'). NO English idiom; 'texture' or 'materiality of the image' is the closest gloss. Literary register, signals familiarity with Bachelard.",
         "example": "Bachelard nous invite à ressentir le grain de l'image avant de chercher son sens."
       },
       {
         "idiom": "Tisser un réseau (littéraire)",
         "literal": "Dệt một mạng lưới",
+        "literal_en": "To weave a network",
         "meaning": "Tạo một mạng lưới các hình ảnh liên kết qua tác phẩm.",
+        "meaning_en": "To build an interlinked web of images structuring a whole work. English 'to weave a web/network of images' is a near-equivalent (the textile metaphor survives) — but in French criticism it is a near-fixed analytic phrase, not a free flourish. Literary register.",
         "example": "Le poète tisse un réseau d'images aquatiques qui structure tout le recueil."
       },
       {
         "idiom": "Crever l'écran (familier appliqué littéraire)",
         "literal": "Châm vỡ màn ảnh",
+        "literal_en": "To burst through the screen",
         "meaning": "Một hình ảnh / nhân vật vượt qua khung văn bản — utilisé pour des figures inoubliables.",
+        "meaning_en": "Originally cinema slang: an actor so magnetic they 'come through the screen'. Borrowed into literary talk for an unforgettable image/figure that overflows its textual frame. English 'to leap off the page' is the nearest equivalent. Note the register-shift effect: a colloquial idiom used in critical discourse for deliberate emphasis.",
         "example": "Le cygne mallarméen, à force de densité symbolique, crève l'écran du sonnet."
       }
     ],
@@ -923,30 +991,34 @@ export const lessons: FrenchLesson[] = [
       {
         "type": "fill-blank",
         "question": "Encore conviendrait-il que l'analyse ___ rigoureusement comparaison et métaphore.",
-        "answer": "distinguât"
+        "answer": "distinguât",
+        "hint_vi": "« conviendrait-il que » kéo theo subjonctif. Vì register C2 littéraire, dùng subjonctif IMPARFAIT của « distinguer » (gốc « distingu- » + đuôi -ât), ngôi thứ ba số ít. Có dấu circonflexe trên -â-.",
+        "hint_en": "'Encore conviendrait-il que' (it would still be fitting that) takes the subjunctive. Because of the elevated C2 literary register, use the IMPERFECT subjunctive of 'distinguer', 3rd person singular: stem 'distingu-' + ending '-ât' (circumflex on the -â-). The present subjunctive 'distingue' would be grammatically valid but would clash with the conditional 'conviendrait' and break the register."
       },
       {
         "type": "matching",
         "pairs": [
           [
-            "métaphore filée",
+            "métaphore filée (extended/spun-out metaphor)",
             "ẩn dụ kéo dài"
           ],
           [
-            "polysémique",
+            "polysémique (polysemous — many meanings at once)",
             "đa nghĩa"
           ],
           [
-            "réseau métaphorique",
+            "réseau métaphorique (metaphorical network across a work)",
             "mạng lưới ẩn dụ"
           ]
         ],
-        "instruction": "Nối thuật ngữ với nghĩa Việt"
+        "instruction": "Nối thuật ngữ với nghĩa Việt",
+        "instruction_en": "Match each rhetorical term with its Vietnamese meaning. (English glosses are given in parentheses for reference.)"
       },
       {
         "type": "translation",
         "vietnamese": "Biểu tượng, khác với ngụ ngôn, không quy về một nghĩa duy nhất mà mở ra một trường ý nghĩa.",
-        "french": "Le symbole, à la différence de l'allégorie, ne renvoie pas à un sens unique mais ouvre un champ de significations."
+        "french": "Le symbole, à la différence de l'allégorie, ne renvoie pas à un sens unique mais ouvre un champ de significations.",
+        "english": "The symbol, unlike allegory, does not refer to a single meaning but opens a field of significations. ['à la différence de' = 'unlike / as opposed to', a formal contrastive (NOT 'with the difference of'); 'ne renvoie pas à … mais ouvre' = the 'ne … pas … mais' balanced negation-then-affirmation, the very symbole/allégorie distinction in miniature]"
       }
     ]
   },
@@ -965,6 +1037,12 @@ export const lessons: FrenchLesson[] = [
           "aboli → a-bo-li",
           "conventions → kõn-vãn-sion",
           "exposées → èk-spo-zé"
+        ],
+        "pronunciation_focus_en": [
+          "Robbe-Grillet → 'rob-gree-YEH' — proper name (Alain Robbe-Grillet, Nouveau Roman); final -et = 'eh', the -ll- is 'y'",
+          "aboli → 'ah-boh-LEE' — final -i clear 'ee'; 'n'a pas tant aboli … qu'il ne les a déplacées' = the 'ne … pas tant X que Y' construction = 'not so much abolished as displaced'",
+          "conventions → 'kohn-vahn-SYOHN' — two nasals; -tion 'syohn'; the keyword of this lesson — genre rules, not 'conventions' in the social sense",
+          "exposées → 'eks-poh-ZAY' — feminine plural past participle; final -ées = 'ay'; here 'exposées comme conventions' = 'exposed AS conventions', i.e. shown to be arbitrary"
         ]
       },
       {
@@ -975,6 +1053,12 @@ export const lessons: FrenchLesson[] = [
           "Godot → go-do",
           "subvertit → sub-vèr-ti",
           "évacuant → é-va-ku-ã"
+        ],
+        "pronunciation_focus_en": [
+          "attendant → 'ah-tahn-DAHN' — two nasals; 'En attendant Godot' = 'Waiting for Godot' (the title is gerundive: 'while waiting for'), left untranslated as the canonical reference",
+          "Godot → 'goh-DOH' — final -t silent; stress final; the absent figure whose non-arrival IS the play's subversion of dramatic resolution",
+          "subvertit → 'sewb-vehr-TEE' — 'u' rounded 'ew'; final -t silent ('-TEE'); 'subvertir' = to subvert (the lesson's core verb), NOT to destroy",
+          "évacuant → 'ay-vah-kew-AHN' — present participle; 'u' rounded 'kew'; final nasal -ant; 'en évacuant X' = 'by evacuating/voiding X' (plot, dénouement, psychology)"
         ]
       },
       {
@@ -985,6 +1069,12 @@ export const lessons: FrenchLesson[] = [
           "héritier → é-ri-tié",
           "paradoxal → pa-ra-dok-sal",
           "épuisement → é-pwi-zơ-mã"
+        ],
+        "pronunciation_focus_en": [
+          "Houellebecq → 'wel-BEK' — the trickiest French name here: 'Hou-' = 'w', the -cq = hard 'k'; almost 'WELL-beck'; Michel Houellebecq, contemporary novelist",
+          "héritier → 'ay-ree-TYAY' — silent h, é = 'ay'; final -ier 'tyay'; 'héritier paradoxal du roman naturaliste' = 'a paradoxical heir of the naturalist novel'",
+          "paradoxal → 'pah-rah-dok-SAL' — final -al 'sal'; the adjective; the heir is paradoxical because he extends the convention to break it",
+          "épuisement → 'ay-pwee-zuh-MAHN' — 'ui' = 'wee', schwa before final nasal -ment 'MAHN'; 'l'épuisement du modèle' = the model's exhaustion/used-up state, the key thesis word"
         ]
       },
       {
@@ -995,6 +1085,12 @@ export const lessons: FrenchLesson[] = [
           "subversion → sub-vèr-sion",
           "signifiât → sig-ni-fia",
           "intimité → an-ti-mi-té"
+        ],
+        "pronunciation_focus_en": [
+          "paresseux → 'pah-reh-SUH' — final -eux rounded 'uh', the -x silent; 'Il eût été paresseux de penser que…' = 'It would have been lazy to think that…' (literary irrealis with imperfect subjunctive 'eût')",
+          "subversion → 'sewb-vehr-SYOHN' — 'u' rounded 'ew'; -sion 'syohn'; the noun of the lesson",
+          "signifiât → 'see-nyee-FYAH' — imperfect subjunctive of 'signifier'; -gn- = 'ny'; final -ât silent -t ('-FYAH'); triggered by the irrealis main clause; pure C2",
+          "intimité → 'an-tee-mee-TAY' — nasal 'in'; final -té 'tay'; 'une intimité profonde avec ses codes' = a deep intimacy with its codes (you must KNOW a genre to subvert it)"
         ]
       },
       {
@@ -1005,150 +1101,181 @@ export const lessons: FrenchLesson[] = [
           "posséderait → po-sé-dơ-rè",
           "grammaire → gra-mèr",
           "secrète → sơ-krèt"
+        ],
+        "pronunciation_focus_en": [
+          "saurait → 'soh-REH' — conditional of 'savoir'; 'On ne saurait + infinitive' = a literary softened impossibility, 'one could not / cannot possibly' — NOT a real conditional",
+          "posséderait → 'poh-say-duh-REH' — conditional of 'posséder'; the accent shifts (posséd-/possèd-); 'dont on ne posséderait pas la grammaire' = the relative 'dont' = 'whose (grammar)'",
+          "grammaire → 'grah-MEHR' — double-m one 'm'; final -aire 'ehr'; 'la grammaire secrète d'un genre' = the genre's hidden grammar/inner rules (metaphor: genre as language)",
+          "secrète → 'suh-KRET' — feminine of 'secret', the -t now pronounced (masc. 'secret' = 'suh-KREH', -t silent); 'la grammaire la plus secrète' = the most hidden grammar"
         ]
       }
     ],
     "cultural_notes_vi": "« GENRE » trong critique littéraire Pháp là một khái niệm vừa cũ kỹ vừa luôn mới. Aristote (Poétique) phân biệt épopée, tragédie, comédie; Pháp cổ điển tuân thủ « les trois unités » của tragédie. Mỗi thể loại có CONVENTIONS định nghĩa nó:\n\n(1) ROMAN RÉALISTE thế kỷ XIX (Balzac, Flaubert, Zola): narrateur omniscient discret, cadre socio-historique précis, personnages psychologiquement épais, intrigue causale, finale qui résout (mariage, mort, succès, ruine).\n\n(2) TRAGÉDIE CLASSIQUE: trois unités (action, temps, lieu), héros noble, dénouement fatal, alexandrins, bienséance.\n\n(3) POÉSIE LYRIQUE: « je » expressif, sujets de l'intériorité, formes fixes (sonnet, ode), musicalité.\n\nSUBVERSION = (1) connaissance approfondie des conventions + (2) déplacement / inversion / exposition de ces conventions, KHÔNG phải simple négation.\n\nQUATRE GRANDES SUBVERSIONS du XXe siècle français:\n\n(a) NOUVEAU ROMAN (1950-70): Robbe-Grillet (Les Gommes, 1953; La Jalousie, 1957), Sarraute (Tropismes, 1939; L'Ère du soupçon, 1956), Butor (La Modification, 1957), Simon (La Route des Flandres, 1960). Évacuation du personnage psychologique, descripcion obsessionnelle, défaite de l'intrigue causale. KHÔNG nihiliste — cherche à RÉINVENTER le roman après la perte de crédibilité du modèle balzacien.\n\n(b) THÉÂTRE DE L'ABSURDE: Beckett (En attendant Godot, 1952; Fin de partie, 1957), Ionesco (La Cantatrice chauve, 1950; Les Chaises, 1952), Adamov. Théâtre vidé d'intrigue, langage qui tourne à vide, personnages sans psychologie épaisse. Subvertit les conventions classiques hérité de Racine puis du drame bourgeois du XIXe.\n\n(c) AUTOFICTION (depuis 1977): Doubrovsky (Fils, 1977) invente le terme; Ernaux le porte au plus haut (Les Années, 2008). Hybridation roman/autobiographie qui subvertit la prétention de vérité de l'autobiographie ET la prétention de fiction du roman.\n\n(d) MICHEL HOUELLEBECQ (Les Particules élémentaires, 1998; La Carte et le territoire, prix Goncourt 2010): subversion paradoxale du naturalisme zolien — Houellebecq EN APPLIQUE les conventions (dépouille le narrateur de tout lyrisme, écrit la société comme un sociologue, construit des personnages comme symptômes d'époque) mais les pousse à un degré qui révèle leur insuffisance. Subversion par excès, non par négation.\n\nUNE TENTATION À ÉVITER: opposer schématiquement « roman traditionnel = mauvais » / « roman subversif = bon ». La critique C2 refuse ce manichéisme. Le grand roman du XXe siècle est SOIT une subversion réussie (Beckett, Sarraute), SOIT un classicisme assumé (Modiano, dont la fidélité à des conventions narratives héritées du XIXe est précisément l'enjeu). Ni l'un ni l'autre n'est intrinsèquement supérieur.\n\nBẪY NGƯỜI VIỆT: souvent assimiler « subversion » à « modernité » et « modernité » à « valeur ». La critique C2 distingue sévèrement: une subversion bâclée (qui n'a pas maîtrisé les conventions qu'elle prétend renverser) est moins forte qu'un classicisme assumé.",
+    "cultural_notes_en": "'GENRE' in French literary criticism is a concept at once ancient and perpetually renewed. Aristotle (Poetics) distinguished epic, tragedy, comedy; French classicism obeyed the 'three unities' of tragedy. Each genre has CONVENTIONS that define it:\n\n(1) 19TH-CENTURY REALIST NOVEL (Balzac, Flaubert, Zola): a discreet omniscient narrator, a precise socio-historical setting, psychologically thick characters, a causal plot, an ending that resolves (marriage, death, success, ruin).\n\n(2) CLASSICAL TRAGEDY: the three unities (action, time, place), a noble hero, a fatal dénouement, alexandrines, bienséance (decorum).\n\n(3) LYRIC POETRY: an expressive 'je', subjects of inwardness, fixed forms (sonnet, ode), musicality.\n\nSUBVERSION = (1) deep knowledge of the conventions + (2) displacement / inversion / exposure of those conventions — NOT mere negation. This is the single point anglophone students most often miss: in English usage 'subversive' often just means 'rebellious/rule-breaking'; in French criticism it presupposes mastery of the rule being bent.\n\nFOUR GREAT 20TH-CENTURY FRENCH SUBVERSIONS:\n\n(a) NOUVEAU ROMAN (1950-70): Robbe-Grillet (Les Gommes, 1953; La Jalousie, 1957), Sarraute (Tropismes, 1939; L'Ère du soupçon, 1956), Butor (La Modification, 1957), Simon (La Route des Flandres, 1960). The evacuation of the psychological character, obsessive description, the defeat of causal plot. NOT nihilist — it seeks to REINVENT the novel after the Balzacian model lost its credibility.\n\n(b) THEATRE OF THE ABSURD: Beckett (En attendant Godot, 1952; Fin de partie, 1957), Ionesco (La Cantatrice chauve, 1950; Les Chaises, 1952), Adamov. Theatre voided of plot, language idling in neutral, characters with no psychological thickness. Subverts the classical conventions inherited from Racine and then the 19th-century bourgeois drama.\n\n(c) AUTOFICTION (since 1977): Doubrovsky (Fils, 1977) coins the term; Ernaux raises it to its highest pitch (Les Années, 2008). A novel/autobiography hybrid that subverts BOTH autobiography's claim to truth AND the novel's claim to fiction.\n\n(d) MICHEL HOUELLEBECQ (Les Particules élémentaires, 1998; La Carte et le territoire, prix Goncourt 2010): a paradoxical subversion of Zolaesque naturalism — Houellebecq APPLIES its conventions (strips the narrator of all lyricism, writes society like a sociologist, builds characters as symptoms of an era) but pushes them to a degree that reveals their inadequacy. Subversion by EXCESS, not by negation.\n\nA TEMPTATION TO AVOID: schematically opposing 'traditional novel = bad' / 'subversive novel = good'. C2 criticism refuses this Manichaeism. The great 20th-century novel is EITHER a successful subversion (Beckett, Sarraute) OR an assumed classicism (Modiano, whose fidelity to narrative conventions inherited from the 19th century is precisely the point). Neither is intrinsically superior.\n\nTHE ANGLOPHONE TRAP: assimilating 'subversion' to 'modernity' and 'modernity' to 'value'. C2 criticism distinguishes severely: a botched subversion (one that has not mastered the conventions it claims to overturn) is weaker than an assumed classicism. 'Experimental' is not, by itself, praise.",
     "tip_advice_vi": "GRILLE D'ANALYSE pour identifier une subversion de genre:\n\n(1) IDENTIFIER LE GENRE PRÉSUMÉ — quel modèle l'œuvre semble-t-elle convoquer?\n(2) LISTER LES CONVENTIONS DE CE GENRE — narratives, formelles, thématiques.\n(3) RELEVER LES DÉPLACEMENTS — convention par convention, qu'est-ce qui est respecté, déplacé, inversé, exposé?\n(4) INTERPRÉTER L'ENJEU DU DÉPLACEMENT — pourquoi l'auteur opère-t-il ce travail? Quel effet en résulte?\n(5) SITUER DANS UNE TRADITION DE SUBVERSION — l'œuvre est-elle isolée ou s'inscrit-elle dans un mouvement?\n\nCỤM HỮU ÍCH:\n\nPOUR IDENTIFIER LE GENRE:\n- « L'œuvre se réclame, sur le mode parodique, du roman X. »\n- « Les conventions du genre Y sont ici à la fois convoquées et déjouées. »\n- « Sur le plan formel, le texte épouse l'apparence de Z, mais en travaille la substance. »\n\nPOUR ANALYSER LA SUBVERSION:\n- « Le roman conserve l'apparence de l'intrigue tout en lui retirant son moteur causal. »\n- « Le narrateur omniscient est ici maintenu, mais privé de la maîtrise qui le caractérisait chez Balzac. »\n- « Cette subversion n'est pas négation: elle suppose au contraire une intimité avec les codes qu'elle déplace. »\n\nPOUR INTERPRÉTER L'ENJEU:\n- « En subvertissant le genre romanesque, l'auteur interroge la possibilité même du roman après [événement historique / esthétique]. »\n- « Cette mise en crise des conventions répond à une perte de crédibilité du modèle hérité. »\n- « Le travail de subversion est inséparable, ici, d'une réflexion sur les conditions de possibilité de la littérature contemporaine. »\n\nPOUR DISTINGUER SUBVERSION ET ÉCHEC:\n- « Cette tentative de subversion échoue précisément parce qu'elle n'a pas maîtrisé les conventions qu'elle prétend renverser. »\n- « Le geste de rupture demeure superficiel: les codes profonds du genre restent intacts. »\n- « Pour subvertir, encore faut-il connaître. »\n\nTRÁNH:\n- « C'est moderne donc c'est bien. » → jugement non-critique\n- « Beckett a inventé un théâtre nouveau. » → trop vague; préciser EN QUOI il subvertit\n- Confondre subversion et nouveauté absolue (toute subversion suppose un connu)\n- Identifier toute innovation formelle comme subversion (l'innovation peut être un perfectionnement, pas une rupture)",
+    "tip_advice_en": "ANALYSIS GRID for identifying a genre subversion:\n\n(1) IDENTIFY THE PRESUMED GENRE — which model does the work seem to summon?\n(2) LIST THAT GENRE'S CONVENTIONS — narrative, formal, thematic.\n(3) NOTE THE DISPLACEMENTS — convention by convention, what is respected, displaced, inverted, exposed?\n(4) INTERPRET THE STAKE OF THE DISPLACEMENT — why does the author do this work? What effect results?\n(5) SITUATE IT IN A TRADITION OF SUBVERSION — is the work isolated, or part of a movement?\n\nUSEFUL PHRASES:\n\nTO IDENTIFY THE GENRE:\n- 'L'œuvre se réclame, sur le mode parodique, du roman X.' (the work lays claim, in a parodic mode, to the X novel)\n- 'Les conventions du genre Y sont ici à la fois convoquées et déjouées.' (summoned and thwarted at once)\n- 'Sur le plan formel, le texte épouse l'apparence de Z, mais en travaille la substance.'\n\nTO ANALYZE THE SUBVERSION:\n- 'Le roman conserve l'apparence de l'intrigue tout en lui retirant son moteur causal.' (keeps the appearance of plot while removing its causal engine)\n- 'Le narrateur omniscient est ici maintenu, mais privé de la maîtrise qui le caractérisait chez Balzac.'\n- 'Cette subversion n'est pas négation: elle suppose au contraire une intimité avec les codes qu'elle déplace.'\n\nTO INTERPRET THE STAKE:\n- 'En subvertissant le genre romanesque, l'auteur interroge la possibilité même du roman après [historical / aesthetic event].'\n- 'Cette mise en crise des conventions répond à une perte de crédibilité du modèle hérité.'\n- 'Le travail de subversion est inséparable, ici, d'une réflexion sur les conditions de possibilité de la littérature contemporaine.'\n\nTO DISTINGUISH SUBVERSION FROM FAILURE:\n- 'Cette tentative de subversion échoue précisément parce qu'elle n'a pas maîtrisé les conventions qu'elle prétend renverser.'\n- 'Le geste de rupture demeure superficiel: les codes profonds du genre restent intacts.'\n- 'Pour subvertir, encore faut-il connaître.' (to subvert, one must first know — note the obligatory inversion after 'encore')\n\nAVOID:\n- 'C'est moderne donc c'est bien.' (it's modern so it's good) → a non-critical judgment\n- 'Beckett a inventé un théâtre nouveau.' → too vague; specify IN WHAT RESPECT he subverts\n- Conflating subversion and absolute novelty (all subversion presupposes something known)\n- Labeling every formal innovation a subversion (innovation can be a perfecting, not a rupture)",
     "vocabulary": [
       {
         "word": "subvertir un genre",
         "en": "to subvert a genre",
         "vi": "lật đổ một thể loại",
         "pos": "v.",
-        "pronunciation_vi": "sub-vèr-tir an jãn-rơ"
+        "pronunciation_vi": "sub-vèr-tir an jãn-rơ",
+        "pronunciation_en": "sewb-vehr-TEER uhn ZHAHN-ruh — 'u' rounded 'ew'; 'genre' = 'ZHAHN-ruh' (nasal, soft initial 'zh'); NOT to destroy a genre — to bend it from inside while knowing it intimately"
       },
       {
         "word": "les conventions narratives",
         "en": "narrative conventions",
         "vi": "các quy ước trần thuật",
         "pos": "n.f. pl.",
-        "pronunciation_vi": "kõn-vãn-sion na-ra-tiv"
+        "pronunciation_vi": "kõn-vãn-sion na-ra-tiv",
+        "pronunciation_en": "lay kohn-vahn-SYOHN nah-rah-TEEV — two nasals; -tion 'syohn'; the implicit rules a genre's readers expect — you must NAME them before you can show a subversion"
       },
       {
         "word": "un héritage paradoxal",
         "en": "a paradoxical heritage",
         "vi": "di sản nghịch lý",
         "pos": "n.m.",
-        "pronunciation_vi": "é-ri-taj pa-ra-dok-sal"
+        "pronunciation_vi": "é-ri-taj pa-ra-dok-sal",
+        "pronunciation_en": "uhn ay-ree-TAZH pah-rah-dok-SAL — silent h; 'héritage' final -age soft 'azh'; 'paradoxal' from 'paradoxe' — to inherit a tradition by overturning it"
       },
       {
         "word": "l'épuisement d'un modèle",
         "en": "the exhaustion of a model",
         "vi": "sự cạn kiệt của một mô hình",
         "pos": "n.m.",
-        "pronunciation_vi": "é-pwi-zơ-mã dan mo-dèl"
+        "pronunciation_vi": "é-pwi-zơ-mã dan mo-dèl",
+        "pronunciation_en": "lay-pwee-zuh-MAHN duhn moh-DEL — 'ui' = 'wee', final -ment nasal 'MAHN'; 'modèle' final -e silent ('moh-DEL'); a literary model used up, no longer credible — Houellebecq's thesis-word"
       },
       {
         "word": "déjouer les attentes",
         "en": "to thwart expectations",
         "vi": "phá các mong đợi",
         "pos": "v.",
-        "pronunciation_vi": "dé-ju-é lé za-tãnt"
+        "pronunciation_vi": "dé-ju-é lé za-tãnt",
+        "pronunciation_en": "day-zhoo-AY lay zah-TAHNT — 'déjouer' é = 'ay', -j- soft 'zh'; liaison 'les_attentes' = 'lay zah-TAHNT' (final -es silent); to foil/thwart the expectations a genre creates"
       },
       {
         "word": "le Nouveau Roman",
         "en": "the Nouveau Roman movement",
         "vi": "phong trào Tiểu thuyết Mới",
         "pos": "n.m.",
-        "pronunciation_vi": "nu-vô ro-mã"
+        "pronunciation_vi": "nu-vô ro-mã",
+        "pronunciation_en": "luh noo-VOH roh-MAHN — 'nouveau' = 'noo-VOH' (-eau 'oh'); 'roman' final -an nasal 'MAHN'; the 1950s-70s movement (Robbe-Grillet, Sarraute) — a proper noun, capitalized, not 'new novel'"
       },
       {
         "word": "le théâtre de l'absurde",
         "en": "theatre of the absurd",
         "vi": "kịch phi lý",
         "pos": "n.m.",
-        "pronunciation_vi": "té-a-trơ dơ lab-surd"
+        "pronunciation_vi": "té-a-trơ dơ lab-surd",
+        "pronunciation_en": "luh tay-AH-truh duh lab-SEWRD — 'théâtre' final -tre quick 'truh'; 'absurde' 'u' rounded 'ew', final -e silent; the Beckett/Ionesco current — fixed label, capital-free in French"
       },
       {
         "word": "l'autofiction",
         "en": "autofiction",
         "vi": "tự hư cấu",
         "pos": "n.f.",
-        "pronunciation_vi": "ô-to-fik-sion"
+        "pronunciation_vi": "ô-to-fik-sion",
+        "pronunciation_en": "loh-toh-feek-SYOHN — 'auto-' = 'oh-toh'; -tion 'syohn'; Doubrovsky's 1977 coinage, kept in French in English criticism too ('autofiction'), not 'autobiographical novel'"
       },
       {
         "word": "la mise en crise",
         "en": "the putting-into-crisis",
         "vi": "sự đặt vào khủng hoảng",
         "pos": "n.f.",
-        "pronunciation_vi": "miz ã kriz"
+        "pronunciation_vi": "miz ã kriz",
+        "pronunciation_en": "lah meez ahn KREEZ — 'mise' = 'meez' (final -e silent); 'en' nasal 'ahn'; 'crise' = 'KREEZ'; the act of throwing a convention into crisis — a French critical idiom, no neat English noun"
       },
       {
         "word": "un déplacement formel",
         "en": "a formal displacement",
         "vi": "một sự dịch chuyển hình thức",
         "pos": "n.m.",
-        "pronunciation_vi": "dé-plas-mã for-mèl"
+        "pronunciation_vi": "dé-plas-mã for-mèl",
+        "pronunciation_en": "uhn day-plahs-MAHN for-MEL — 'déplacement' final -ment nasal 'MAHN'; 'formel' final -l pronounced ('for-MEL'); shifting a structural element of a genre (vs. abolishing it) — the Nouveau Roman's core gesture"
       }
     ],
     "dialogue": [
       {
         "speaker": "Pr. Compagnon",
         "text": "Madame Tran, vous écrivez que Beckett « a détruit le théâtre ». Reformulez.",
-        "vi": "Cô Trần, cô viết rằng Beckett « đã phá hủy kịch ». Cô diễn đạt lại."
+        "vi": "Cô Trần, cô viết rằng Beckett « đã phá hủy kịch ». Cô diễn đạt lại.",
+        "en": "Madame Tran, you write that Beckett 'destroyed the theatre'. Rephrase that. ['Reformulez' = imperative 'reword it' — the examiner is flagging 'détruit' as too crude a verb; the whole lesson turns on this correction]"
       },
       {
         "speaker": "Linh",
         "text": "Bien sûr — formulation excessive. Je devrais dire qu'il en a subverti les conventions héritées du drame bourgeois, sans abolir le théâtre comme genre.",
-        "vi": "Vâng — diễn đạt quá đáng. Tôi nên nói ông lật đổ các quy ước thừa hưởng từ kịch tư sản, mà không xóa bỏ kịch như thể loại."
+        "vi": "Vâng — diễn đạt quá đáng. Tôi nên nói ông lật đổ các quy ước thừa hưởng từ kịch tư sản, mà không xóa bỏ kịch như thể loại.",
+        "en": "Of course — an excessive formulation. I should say that he subverted its conventions inherited from bourgeois drama, without abolishing the theatre as a genre. ['formulation excessive' = an overstated wording; the self-correction 'Je devrais dire que…' models the conceding-and-refining register]"
       },
       {
         "speaker": "Pr. Compagnon",
         "text": "Et il faut ajouter: pour subvertir, il faut connaître. Beckett était un lecteur attentif de Racine.",
-        "vi": "Và phải thêm: để lật đổ, phải biết. Beckett là người đọc chú ý Racine."
+        "vi": "Và phải thêm: để lật đổ, phải biết. Beckett là người đọc chú ý Racine.",
+        "en": "And one must add: to subvert, one must know. Beckett was an attentive reader of Racine. ['pour subvertir, il faut connaître' = the lesson's thesis in aphoristic form; the Racine point proves subversion requires deep mastery of the tradition]"
       },
       {
         "speaker": "Linh",
         "text": "Précisément — la subversion suppose une intimité avec les codes.",
-        "vi": "Chính xác — lật đổ đòi hỏi sự thân thuộc với các mã."
+        "vi": "Chính xác — lật đổ đòi hỏi sự thân thuộc với các mã.",
+        "en": "Precisely — subversion presupposes an intimacy with the codes. ['supposer' here = 'to presuppose / entail as a condition', NOT 'to suppose/guess' — false friend; 'les codes' = a genre's conventions]"
       }
     ],
     "dialogue_long": [
       {
         "speaker": "Pr. Compagnon (séminaire de M2 sur le roman au XXe siècle)",
         "text": "Madame Tran, votre exposé porte sur Houellebecq — auteur dont l'évaluation académique reste polémique. Vingt minutes pour défendre une lecture précise.",
-        "vi": "Cô Trần, bài cô về Houellebecq — tác giả mà đánh giá học thuật còn gây tranh cãi. 20 phút để bảo vệ một cách đọc chính xác."
+        "vi": "Cô Trần, bài cô về Houellebecq — tác giả mà đánh giá học thuật còn gây tranh cãi. 20 phút để bảo vệ một cách đọc chính xác.",
+        "en": "Madame Tran, your presentation is on Houellebecq — an author whose academic evaluation remains polemical. Twenty minutes to defend a precise reading. ['votre exposé porte sur' = 'your presentation deals with / bears on' — the fixed academic frame; 'polémique' as adjective = contested/controversial, not a 'polemic']"
       },
       {
         "speaker": "Linh",
         "text": "Houellebecq pose un problème critique singulier: il semble écrire dans la langue la plus plate, celle d'un sociologue mécontent, sans aucune des marques distinctives qu'on attend d'une œuvre littéraire ambitieuse — pas de poésie, pas d'ironie sophistiquée, pas de jeu narratif spectaculaire. Et pourtant, il est lu, traduit, primé. Comment expliquer ce paradoxe ?",
-        "vi": "Houellebecq đặt một vấn đề critique độc đáo: ông có vẻ viết bằng ngôn ngữ phẳng nhất, của một nhà xã hội học bất mãn, không có bất kỳ dấu hiệu phân biệt nào mong đợi từ một tác phẩm văn học tham vọng — không thi ca, không châm biếm tinh vi, không trò chơi trần thuật ngoạn mục. Tuy vậy, ông được đọc, dịch, trao giải. Giải thích nghịch lý này thế nào?"
+        "vi": "Houellebecq đặt một vấn đề critique độc đáo: ông có vẻ viết bằng ngôn ngữ phẳng nhất, của một nhà xã hội học bất mãn, không có bất kỳ dấu hiệu phân biệt nào mong đợi từ một tác phẩm văn học tham vọng — không thi ca, không châm biếm tinh vi, không trò chơi trần thuật ngoạn mục. Tuy vậy, ông được đọc, dịch, trao giải. Giải thích nghịch lý này thế nào?",
+        "en": "Houellebecq poses a singular critical problem: he seems to write in the flattest language, that of a disgruntled sociologist, without any of the distinctive marks one expects of an ambitious literary work — no poetry, no sophisticated irony, no spectacular narrative play. And yet he is read, translated, awarded prizes. How is this paradox to be explained? ['poser un problème critique' = 'to pose a critical problem', the standard frame for opening a problématique; 'primé' = prize-winning (past part. of 'primer'), 'awarded'; rhetorical question seeds the demonstration]"
       },
       {
         "speaker": "Linh",
         "text": "Mon hypothèse — qu'il faut, je le concède, défendre point par point: Houellebecq n'écrit pas hors de la tradition romanesque française; il en subvertit les conventions par UN EXCÈS. Plus précisément, il pousse les conventions du naturalisme zolien jusqu'au point où elles révèlent leur propre épuisement. C'est une subversion paradoxale — non par déplacement, comme le Nouveau Roman, mais par hyperfidélité.",
-        "vi": "Giả thuyết của tôi — tôi thừa nhận phải bảo vệ từng điểm: Houellebecq không viết ngoài truyền thống tiểu thuyết Pháp; ông lật đổ các quy ước của nó qua MỘT SỰ THÁI QUÁ. Cụ thể hơn, ông đẩy các quy ước của naturalisme Zola đến điểm chúng để lộ sự cạn kiệt của chính mình. Đó là một lật đổ nghịch lý — không phải qua di dời, như Nouveau Roman, mà qua hyperfidélité."
+        "vi": "Giả thuyết của tôi — tôi thừa nhận phải bảo vệ từng điểm: Houellebecq không viết ngoài truyền thống tiểu thuyết Pháp; ông lật đổ các quy ước của nó qua MỘT SỰ THÁI QUÁ. Cụ thể hơn, ông đẩy các quy ước của naturalisme Zola đến điểm chúng để lộ sự cạn kiệt của chính mình. Đó là một lật đổ nghịch lý — không phải qua di dời, như Nouveau Roman, mà qua hyperfidélité.",
+        "en": "My hypothesis — which, I concede, must be defended point by point: Houellebecq does not write outside the French novelistic tradition; he subverts its conventions through AN EXCESS. More precisely, he pushes the conventions of Zolaesque naturalism to the point where they reveal their own exhaustion. It is a paradoxical subversion — not by displacement, as in the Nouveau Roman, but by hyperfidelity. ['je le concède' = 'I concede it', the scholarly gesture of pre-empting an objection; 'hyperfidélité' = a coined term, excess of fidelity — note French freely coins 'hyper-' nouns in critical prose]"
       },
       {
         "speaker": "Linh",
         "text": "Premier indice: le narrateur. Comme Zola, Houellebecq adopte un narrateur quasi sociologue, qui décrit ses personnages comme des cas, qui les situe dans des conditions socio-économiques précises, qui interprète leurs comportements à l'aune de déterminismes (génétiques, sexuels, économiques). Cela, c'est du pur Zola. Mais là où Zola maintenait, sous le déterminisme, une compassion humaniste — la pitié pour Gervaise dans L'Assommoir — Houellebecq retire la compassion. Le narrateur regarde ses personnages avec une froideur qui est, précisément, l'épuisement de l'humanisme zolien.",
-        "vi": "Dấu hiệu đầu: người trần thuật. Như Zola, Houellebecq dùng một người trần thuật gần như nhà xã hội học, mô tả nhân vật như các ca, đặt họ trong điều kiện kinh tế-xã hội cụ thể, diễn giải hành vi qua các định mệnh (di truyền, tình dục, kinh tế). Đó là Zola thuần túy. Nhưng nơi Zola duy trì, dưới định mệnh, một lòng trắc ẩn nhân văn — niềm thương cho Gervaise trong L'Assommoir — Houellebecq rút bỏ lòng trắc ẩn. Người trần thuật nhìn nhân vật với một sự lạnh lùng, chính là, sự cạn kiệt của humanisme Zola."
+        "vi": "Dấu hiệu đầu: người trần thuật. Như Zola, Houellebecq dùng một người trần thuật gần như nhà xã hội học, mô tả nhân vật như các ca, đặt họ trong điều kiện kinh tế-xã hội cụ thể, diễn giải hành vi qua các định mệnh (di truyền, tình dục, kinh tế). Đó là Zola thuần túy. Nhưng nơi Zola duy trì, dưới định mệnh, một lòng trắc ẩn nhân văn — niềm thương cho Gervaise trong L'Assommoir — Houellebecq rút bỏ lòng trắc ẩn. Người trần thuật nhìn nhân vật với một sự lạnh lùng, chính là, sự cạn kiệt của humanisme Zola.",
+        "en": "First clue: the narrator. Like Zola, Houellebecq adopts a quasi-sociologist narrator who describes his characters as cases, situates them within precise socio-economic conditions, interprets their behavior by the yardstick of determinisms (genetic, sexual, economic). That is pure Zola. But where Zola maintained, beneath the determinism, a humanist compassion — pity for Gervaise in L'Assommoir — Houellebecq withdraws the compassion. The narrator regards his characters with a coldness that is, precisely, the exhaustion of Zolaesque humanism. ['à l'aune de' = 'by the measure/yardstick of', a literary idiom (the 'aune' was an old measuring unit); 'décrire comme des cas' = clinical 'as cases', the naturalist stance]"
       },
       {
         "speaker": "Linh",
         "text": "Deuxième indice: la description. Houellebecq décrit longuement, à la manière naturaliste, les espaces de la société contemporaine — supermarchés, hôtels, plages touristiques, locaux d'entreprise. Ces descriptions ont la précision objective qu'on trouve chez Zola décrivant les Halles dans Le Ventre de Paris. Mais là où Zola découvrait, sous l'objectivité, une vitalité presque épique, Houellebecq découvre, sous l'objectivité, le vide. Même méthode, effet inversé. C'est cela, la subversion par excès.",
-        "vi": "Dấu hiệu hai: mô tả. Houellebecq mô tả dài, theo cách naturaliste, các không gian xã hội đương đại — siêu thị, khách sạn, bãi biển du lịch, văn phòng công ty. Các mô tả này có sự chính xác khách quan tìm thấy ở Zola mô tả Les Halles trong Le Ventre de Paris. Nhưng nơi Zola phát hiện, dưới khách quan, một sức sống gần như sử thi, Houellebecq phát hiện, dưới khách quan, sự rỗng. Cùng phương pháp, hiệu ứng đảo. Đó chính là lật đổ qua thái quá."
+        "vi": "Dấu hiệu hai: mô tả. Houellebecq mô tả dài, theo cách naturaliste, các không gian xã hội đương đại — siêu thị, khách sạn, bãi biển du lịch, văn phòng công ty. Các mô tả này có sự chính xác khách quan tìm thấy ở Zola mô tả Les Halles trong Le Ventre de Paris. Nhưng nơi Zola phát hiện, dưới khách quan, một sức sống gần như sử thi, Houellebecq phát hiện, dưới khách quan, sự rỗng. Cùng phương pháp, hiệu ứng đảo. Đó chính là lật đổ qua thái quá.",
+        "en": "Second clue: description. Houellebecq describes at length, in the naturalist manner, the spaces of contemporary society — supermarkets, hotels, tourist beaches, corporate offices. These descriptions have the objective precision one finds in Zola describing Les Halles in Le Ventre de Paris. But where Zola discovered, beneath the objectivity, an almost epic vitality, Houellebecq discovers, beneath the objectivity, the void. Same method, inverted effect. That is subversion by excess. ['Même méthode, effet inversé' = a clipped antithetical formula (no verb) — the rhythmic punch French critical prose prizes; 'le vide' = the void/emptiness, here the thematic payload]"
       },
       {
         "speaker": "Linh",
         "text": "Troisième indice: la prétention scientifique. Zola se réclamait du « roman expérimental » (préface au Roman expérimental, 1880) — il voulait appliquer la méthode de Claude Bernard à la littérature. Houellebecq, dans Les Particules élémentaires (1998), pousse cette prétention jusqu'à inclure des passages de pseudo-scientifique sur la biologie quantique — passages que la critique a souvent jugés ratés, mais qui sont précisément à interpréter comme un geste critique: voilà ce que devient le « roman expérimental » zolien aujourd'hui — du pseudo-discours scientifique au sein du roman, qui ne convainc plus personne.",
-        "vi": "Dấu hiệu ba: tham vọng khoa học. Zola tự nhận « tiểu thuyết thực nghiệm » (lời tựa Le Roman expérimental, 1880) — ông muốn áp dụng phương pháp của Claude Bernard vào văn chương. Houellebecq, trong Les Particules élémentaires (1998), đẩy tham vọng này đến mức bao gồm các đoạn giả khoa học về sinh học lượng tử — các đoạn critique thường đánh giá là hỏng, nhưng chính cần diễn giải như một động tác critique: đó là điều « tiểu thuyết thực nghiệm » Zola trở thành hôm nay — diễn ngôn giả khoa học trong tiểu thuyết, không còn thuyết phục ai."
+        "vi": "Dấu hiệu ba: tham vọng khoa học. Zola tự nhận « tiểu thuyết thực nghiệm » (lời tựa Le Roman expérimental, 1880) — ông muốn áp dụng phương pháp của Claude Bernard vào văn chương. Houellebecq, trong Les Particules élémentaires (1998), đẩy tham vọng này đến mức bao gồm các đoạn giả khoa học về sinh học lượng tử — các đoạn critique thường đánh giá là hỏng, nhưng chính cần diễn giải như một động tác critique: đó là điều « tiểu thuyết thực nghiệm » Zola trở thành hôm nay — diễn ngôn giả khoa học trong tiểu thuyết, không còn thuyết phục ai.",
+        "en": "Third clue: the scientific pretension. Zola laid claim to the 'roman expérimental' (preface to Le Roman expérimental, 1880) — he wanted to apply Claude Bernard's method to literature. Houellebecq, in Les Particules élémentaires (1998), pushes this pretension to the point of including passages of pseudo-science on quantum biology — passages critics have often judged failures, but which are precisely to be read as a critical gesture: this is what Zola's 'experimental novel' becomes today — pseudo-scientific discourse within the novel, that no longer convinces anyone. ['se réclamer de' = 'to lay claim to / invoke as authority' (a reflexive verb, no English single-verb match); 'la prétention' here = the (over-reaching) claim/ambition, not English 'pretension' in the snobbery sense]"
       },
       {
         "speaker": "Pr. Compagnon",
         "text": "Lecture forte. Mais une objection: ne risquez-vous pas de surinterpréter ? Comment savez-vous que Houellebecq est conscient de cette dialectique avec Zola ? Il pourrait simplement écrire mal.",
-        "vi": "Cách đọc mạnh. Nhưng một phản biện: cô không có nguy cơ diễn giải quá không? Cô làm sao biết Houellebecq ý thức về biện chứng này với Zola? Ông có thể đơn giản viết tệ."
+        "vi": "Cách đọc mạnh. Nhưng một phản biện: cô không có nguy cơ diễn giải quá không? Cô làm sao biết Houellebecq ý thức về biện chứng này với Zola? Ông có thể đơn giản viết tệ.",
+        "en": "A strong reading. But an objection: are you not at risk of over-interpreting? How do you know Houellebecq is conscious of this dialectic with Zola? He might simply be writing badly. ['ne risquez-vous pas de surinterpréter ?' = the formal-inversion question raising the classic objection; 'surinterpréter' = to over-read (Eco's 'overinterpretation') — a precise critical term, not just 'read too much into']"
       },
       {
         "speaker": "Linh",
         "text": "Objection légitime. Deux éléments la désamorcent. Premièrement, les écrits paratextuels de Houellebecq — interviews, articles dans Lire et Le Figaro littéraire — montrent qu'il connaît Zola en profondeur et le revendique. Deuxièmement, et plus important: la conscience de l'auteur n'est pas le critère de validité d'une lecture. Comme l'a montré Compagnon — pardon, comme vous l'avez vous-même montré dans Le Démon de la théorie (1998) — l'intention de l'auteur est une donnée parmi d'autres, jamais l'arbitre ultime. Si la structure textuelle soutient ma lecture indépendamment, l'objection de la conscience tombe.",
-        "vi": "Phản biện hợp pháp. Hai yếu tố vô hiệu hóa nó. Thứ nhất, các văn bản paratextuels của Houellebecq — phỏng vấn, bài trên Lire và Le Figaro littéraire — cho thấy ông biết Zola sâu sắc và yêu sách nó. Thứ hai, quan trọng hơn: ý thức của tác giả không phải tiêu chí hiệu lực của một cách đọc. Như Compagnon đã chứng minh — xin lỗi, như chính thầy đã chứng minh trong Le Démon de la théorie (1998) — ý đồ của tác giả là một dữ liệu trong số khác, không bao giờ là trọng tài cuối. Nếu cấu trúc văn bản ủng hộ cách đọc của tôi độc lập, phản biện về ý thức rơi."
+        "vi": "Phản biện hợp pháp. Hai yếu tố vô hiệu hóa nó. Thứ nhất, các văn bản paratextuels của Houellebecq — phỏng vấn, bài trên Lire và Le Figaro littéraire — cho thấy ông biết Zola sâu sắc và yêu sách nó. Thứ hai, quan trọng hơn: ý thức của tác giả không phải tiêu chí hiệu lực của một cách đọc. Như Compagnon đã chứng minh — xin lỗi, như chính thầy đã chứng minh trong Le Démon de la théorie (1998) — ý đồ của tác giả là một dữ liệu trong số khác, không bao giờ là trọng tài cuối. Nếu cấu trúc văn bản ủng hộ cách đọc của tôi độc lập, phản biện về ý thức rơi.",
+        "en": "A legitimate objection. Two elements defuse it. First, Houellebecq's paratextual writings — interviews, articles in Lire and Le Figaro littéraire — show that he knows Zola in depth and lays claim to him. Second, and more important: the author's consciousness is not the criterion of a reading's validity. As Compagnon showed — forgive me, as you yourself showed in Le Démon de la théorie (1998) — authorial intention is one datum among others, never the ultimate arbiter. If the textual structure supports my reading independently, the consciousness objection falls. ['désamorcer' = to defuse (a bomb, an objection) — vivid, precise; the witty self-correction addressing the examiner as the very theorist cited is a high-register rhetorical move]"
       },
       {
         "speaker": "Pr. Compagnon",
         "text": "Réponse parfaite — vous mobilisez ma propre position contre ma propre objection. C'est exactement le genre d'agilité critique qu'on attend en agrégation.",
-        "vi": "Câu trả lời hoàn hảo — cô huy động chính lập trường của tôi chống lại phản biện của chính tôi. Chính là loại linh hoạt critique mong đợi ở agrégation."
+        "vi": "Câu trả lời hoàn hảo — cô huy động chính lập trường của tôi chống lại phản biện của chính tôi. Chính là loại linh hoạt critique mong đợi ở agrégation.",
+        "en": "A perfect answer — you mobilize my own position against my own objection. That is exactly the kind of critical agility expected at the agrégation. ['l'agilité critique' = nimbleness in argument, the prized examination quality; 'mobiliser X contre Y' = to deploy X against Y, the same academic 'mobiliser' as in lesson 2]"
       }
     ],
     "roleplay_prompts": [
@@ -1156,30 +1283,44 @@ export const lessons: FrenchLesson[] = [
       "Trong séminaire, một collègue affirme que « le Nouveau Roman a échoué parce qu'il est illisible ». Phản hồi en distinguant lisibilité immédiate et richesse littéraire — défendre Sarraute ou Robbe-Grillet sans tomber dans l'apologie.",
       "Soạn 5 câu pour analyser comment Annie Ernaux, dans Les Années (2008), subvertit les conventions de l'autobiographie classique en y intégrant la voix collective d'une génération."
     ],
+    "roleplay_prompts_en": [
+      "You are assigned an analysis of the first page of Beckett's En attendant Godot. Identify what subverts the conventions of classical drama (the unities, plot, psychological characters) — do NOT say 'Beckett broke everything'. Name each convention, then state precisely how it is voided or displaced.",
+      "In a seminar, a colleague asserts that 'the Nouveau Roman failed because it is unreadable'. Respond by distinguishing immediate readability from literary richness — defend Sarraute or Robbe-Grillet without lapsing into apologia. Use: 'Il convient de distinguer lisibilité immédiate et richesse littéraire…'",
+      "Compose 5 sentences analyzing how Annie Ernaux, in Les Années (2008), subverts the conventions of classical autobiography by integrating the collective voice of a generation (the 'je' that becomes a 'nous'/'on'). Name the convention subverted and the effect produced."
+    ],
     "register_notes": "NOMENCLATURE DES GRANDS GENRES (à connaître):\n\nROMAN — sous-genres:\n- roman réaliste / naturaliste (Balzac, Flaubert, Zola)\n- roman psychologique (La Princesse de Clèves, Constant Adolphe, Proust)\n- roman expérimental (Nouveau Roman: Robbe-Grillet, Sarraute)\n- roman policier (Simenon, Vargas)\n- roman d'apprentissage / Bildungsroman (Stendhal Le Rouge et le Noir, Flaubert L'Éducation sentimentale)\n- autofiction (Doubrovsky, Ernaux, Carrère)\n\nTHÉÂTRE — sous-genres:\n- tragédie classique (Corneille, Racine)\n- comédie (Molière, Marivaux)\n- drame romantique (Hugo Hernani)\n- drame bourgeois (XIXe)\n- théâtre de l'absurde (Beckett, Ionesco, Adamov)\n- théâtre de la cruauté (Artaud)\n\nPOÉSIE — formes et écoles:\n- forme fixe: sonnet, ode, ballade, rondeau\n- vers libre (depuis Rimbaud)\n- prose poétique (Baudelaire, Spleen de Paris)\n- école parnassienne (Leconte de Lisle, Heredia)\n- école symboliste (Verlaine, Rimbaud, Mallarmé)\n- surréalisme (Breton, Éluard, Aragon)\n- OuLiPo (Queneau, Perec)\n\nUSAGE C2: connaître ces classifications n'est pas du formalisme — chaque genre a ses CONVENTIONS qu'il faut nommer pour analyser une subversion. Dire « Beckett subvertit le théâtre » est trop vague; dire « Beckett subvertit le drame bourgeois post-naturaliste en évacuant l'intrigue causale » est précis.\n\nMODES DE SUBVERSION:\n- PARODIE (imitation moqueuse, ex. Don Quichotte parodiant les romans de chevalerie)\n- PASTICHE (imitation sérieuse du style)\n- DÉTOURNEMENT (récupération avec changement de sens)\n- DÉPLACEMENT (modification d'un élément structural)\n- HYPERFIDÉLITÉ (excès de respect des conventions, qui révèle leur épuisement) — Houellebecq\n\nIDIOMS LITTÉRAIRES SUR LA SUBVERSION:\n- « jouer avec les codes » (chơi với các mã — courant)\n- « pousser une logique à son terme » (đẩy logic đến cùng — soutenu)\n- « tordre une convention » (bẻ cong quy ước — courant)\n- « miner de l'intérieur » (làm sụp từ bên trong — soutenu)\n\nMỘT TINH TẾ ĐẶC THÙ: critique Pháp évite les métaphores guerrières (« Beckett attaque le théâtre », « Houellebecq démolit le roman »). Ces formules sont jugées vulgaires. Préférer: « subvertit », « déplace », « interroge », « met à l'épreuve », « pousse à sa limite ». Le travail littéraire est dialectique, non belliqueux.",
+    "register_notes_en": "NOMENCLATURE OF THE MAJOR GENRES (to be known):\n\nNOVEL — sub-genres:\n- realist / naturalist novel (Balzac, Flaubert, Zola)\n- psychological novel (La Princesse de Clèves, Constant's Adolphe, Proust)\n- experimental novel (Nouveau Roman: Robbe-Grillet, Sarraute)\n- detective novel (Simenon, Vargas)\n- novel of formation / Bildungsroman (Stendhal's Le Rouge et le Noir, Flaubert's L'Éducation sentimentale)\n- autofiction (Doubrovsky, Ernaux, Carrère)\n\nTHEATRE — sub-genres:\n- classical tragedy (Corneille, Racine)\n- comedy (Molière, Marivaux)\n- Romantic drama (Hugo's Hernani)\n- bourgeois drama (19th c.)\n- theatre of the absurd (Beckett, Ionesco, Adamov)\n- theatre of cruelty (Artaud)\n\nPOETRY — forms and schools:\n- fixed form: sonnet, ode, ballade, rondeau\n- free verse (since Rimbaud)\n- poetic prose (Baudelaire, Le Spleen de Paris)\n- the Parnassian school (Leconte de Lisle, Heredia)\n- the Symbolist school (Verlaine, Rimbaud, Mallarmé)\n- Surrealism (Breton, Éluard, Aragon)\n- OuLiPo (Queneau, Perec)\n\nC2 USAGE: knowing these classifications is not formalism — each genre has CONVENTIONS that must be named to analyze a subversion. Saying 'Beckett subverts the theatre' is too vague; saying 'Beckett subverts post-naturalist bourgeois drama by evacuating the causal plot' is precise. (English literary essays tolerate 'the play challenges theatrical norms'; a French examiner will demand the exact sub-genre.)\n\nMODES OF SUBVERSION:\n- PARODIE (mocking imitation, e.g. Don Quixote parodying chivalric romance)\n- PASTICHE (serious imitation of a style)\n- DÉTOURNEMENT (appropriation with a change of meaning — the Situationist term)\n- DÉPLACEMENT (modification of a structural element)\n- HYPERFIDÉLITÉ (excess of fidelity to the conventions, which reveals their exhaustion) — Houellebecq\n\nLITERARY IDIOMS ON SUBVERSION:\n- 'jouer avec les codes' (to play with the codes — common)\n- 'pousser une logique à son terme' (to push a logic to its limit — elevated)\n- 'tordre une convention' (to bend/twist a convention — common)\n- 'miner de l'intérieur' (to undermine from within — elevated)\n\nONE CRUCIAL SUBTLETY: French criticism AVOIDS warlike metaphors ('Beckett attacks the theatre', 'Houellebecq demolishes the novel'). Such formulas are judged vulgar. Prefer: 'subvertit', 'déplace', 'interroge', 'met à l'épreuve' (puts to the test), 'pousse à sa limite'. Literary work is dialectical, not belligerent. This is the inverse of casual English criticism, which freely says a writer 'attacks' or 'demolishes' a form — at C2 such verbs mark an untrained register.",
     "idiom_glosses": [
       {
         "idiom": "Pousser une logique à son terme (soutenu)",
         "literal": "Đẩy một logic đến cuối",
+        "literal_en": "To push a logic to its end-point",
         "meaning": "Đưa một quy ước đến cực để bộc lộ giới hạn — Houellebecquian.",
+        "meaning_en": "To carry a principle/convention to its extreme until it self-destructs or reveals its limit — the very mechanism of subversion-by-excess. English 'to take a logic to its (bitter) end / its logical conclusion' is close. 'Son terme' = its term/end-point, not 'its term' (word). Elevated register.",
         "example": "Houellebecq pousse la logique du naturalisme zolien à son terme — et révèle son épuisement."
       },
       {
         "idiom": "Miner de l'intérieur (soutenu)",
         "literal": "Đào ngầm từ bên trong",
+        "literal_en": "To mine/sap from the inside",
         "meaning": "Phá từ bên trong bằng cách giả vờ tôn trọng — subversion subtile.",
+        "meaning_en": "To undermine something from within while outwardly observing it — the military 'mine' (sapping a wall) applied to conventions. English 'to undermine from within' is a near-equivalent (same sapping image). Preferred over warlike 'attack/destroy'; describes subtle, non-frontal subversion. Elevated register.",
         "example": "Beckett mine de l'intérieur les conventions du théâtre classique sans jamais les rejeter ouvertement."
       },
       {
         "idiom": "Faire école (courant littéraire)",
         "literal": "Tạo trường phái",
+        "literal_en": "To make a school",
         "meaning": "Trở thành mô hình cho thế hệ sau.",
+        "meaning_en": "To found a following / become a model others imitate. English 'to found a school (of thought)' / 'to set a trend' is close but wordier. 'Faire école' is a compact fixed phrase — note no article ('faire école', not 'faire une école'). Common literary-critical register.",
         "example": "Le Nouveau Roman a fait école auprès des écrivains des années 1960."
       },
       {
         "idiom": "Tirer son épingle du jeu (courant)",
         "literal": "Rút kim ra khỏi trò chơi",
+        "literal_en": "To pull one's pin out of the game",
         "meaning": "Thoát khỏi một tình thế khó — analyse de Modiano qui maintient un classicisme dans une époque expérimentale.",
+        "meaning_en": "To extricate oneself well from a tricky situation, come out ahead. The image (a children's pin-game) is wholly opaque to English; no equivalent idiom — explain it, never translate literally. English 'to come out of it unscathed / play one's cards right' approximates the sense. Common register; applied here to Modiano holding an assumed classicism amid an experimental age.",
         "example": "Modiano tire son épingle du jeu en maintenant un classicisme assumé là où ses contemporains expérimentent."
       }
     ],
@@ -1187,30 +1328,34 @@ export const lessons: FrenchLesson[] = [
       {
         "type": "fill-blank",
         "question": "Il eût été paresseux de penser que la subversion d'un genre ___ son simple rejet.",
-        "answer": "signifiât"
+        "answer": "signifiât",
+        "hint_vi": "Mệnh đề chính « Il eût été… » dùng subjonctif IMPARFAIT (« eût été »), nên mệnh đề phụ « que… » phải concordance: cũng subjonctif imparfait của « signifier », ngôi thứ ba số ít (« signifi- » + « -ât », có circonflexe).",
+        "hint_en": "The main clause 'Il eût été…' (it would have been…) is itself in the imperfect subjunctive ('eût été'), so by the sequence of tenses (concordance des temps) the subordinate 'que…' clause must agree: also imperfect subjunctive of 'signifier', 3rd person singular ('signifi-' + '-ât', circumflex on -â-). 'Signifie' (present subjunctive) would break the concordance and the C2 register."
       },
       {
         "type": "matching",
         "pairs": [
           [
-            "subvertir un genre",
+            "subvertir un genre (to subvert a genre — bend from inside, knowing it)",
             "lật đổ một thể loại"
           ],
           [
-            "déjouer les attentes",
+            "déjouer les attentes (to thwart/foil expectations)",
             "phá các mong đợi"
           ],
           [
-            "la mise en crise",
+            "la mise en crise (the throwing-into-crisis of a convention)",
             "sự đặt vào khủng hoảng"
           ]
         ],
-        "instruction": "Nối thuật ngữ critique với nghĩa Việt"
+        "instruction": "Nối thuật ngữ critique với nghĩa Việt",
+        "instruction_en": "Match each critical term with its Vietnamese meaning. (English glosses are given in parentheses for reference.)"
       },
       {
         "type": "translation",
         "vietnamese": "Ta không thể lật đổ một thể loại mà ta không nắm được, từ trước, ngữ pháp ẩn kín nhất của nó.",
-        "french": "On ne saurait subvertir un genre dont on ne posséderait pas, au préalable, la grammaire la plus secrète."
+        "french": "On ne saurait subvertir un genre dont on ne posséderait pas, au préalable, la grammaire la plus secrète.",
+        "english": "One cannot subvert a genre whose most secret grammar one does not, beforehand, possess. ['On ne saurait + inf.' = literary softened impossibility ('one cannot possibly'), NOT a real conditional 'would not know'; 'dont' = 'whose' (relative on 'posséder … de'); 'au préalable' = 'beforehand/as a prerequisite' — the lesson's thesis condensed]"
       }
     ]
   },
