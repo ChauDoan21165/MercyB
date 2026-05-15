@@ -4,3240 +4,4980 @@
 
 import type { FrenchLesson } from "./lessons";
 
-export const lessons: FrenchLesson[] = [
-  {
-    "id": "lclose_reading",
-    "level": "C2",
-    "category": "fluency",
-    "title_vi": "Bình giảng văn bản chi tiết (explication de texte)",
-    "title_en": "Close reading of a literary passage",
-    "sentences": [
-      {
-        "en": "L'explication de texte, telle que l'enseigne la tradition française depuis Lanson, exige qu'on lise la lettre avant que d'interroger le sens.",
-        "vi": "Bình giảng văn bản, như truyền thống Pháp dạy từ Lanson, đòi hỏi đọc văn tự trước khi tra hỏi ý nghĩa.",
-        "pronunciation_focus": [
-          "explication → èk-spli-ka-sion",
-          "Lanson → lãn-sõn",
-          "exige → èg-zij",
-          "interroger → an-tè-ro-jé"
-        ]
-      },
-      {
-        "en": "Encore faut-il que le commentateur ait l'oreille assez fine pour entendre ce que le texte ne dit qu'à demi.",
-        "vi": "Vẫn cần người bình giảng có đôi tai đủ tinh để nghe điều văn bản chỉ nói nửa chừng.",
-        "pronunciation_focus": [
-          "encore → ãn-kor",
-          "commentateur → ko-mãn-ta-tơr",
-          "oreille → o-rèy",
-          "demi → dơ-mi"
-        ]
-      },
-      {
-        "en": "Cette page, d'apparence anodine, recèle un travail rythmique que seule une lecture lente permet de saisir.",
-        "vi": "Trang này, vẻ ngoài bình thường, ẩn chứa công sức nhịp điệu mà chỉ một cách đọc chậm mới nắm bắt được.",
-        "pronunciation_focus": [
-          "apparence → a-pa-rãns",
-          "anodine → a-no-din",
-          "recèle → rơ-sèl",
-          "rythmique → rit-mik"
-        ]
-      },
-      {
-        "en": "Il eût été préférable, à mon sens, que l'analyse procédât du détail vers le système, et non l'inverse.",
-        "vi": "Theo tôi, lẽ ra phân tích nên đi từ chi tiết đến hệ thống, không phải ngược lại.",
-        "pronunciation_focus": [
-          "eût → u",
-          "préférable → pré-fé-ra-blơ",
-          "procédât → pro-sé-da",
-          "inverse → an-vèrs"
-        ]
-      },
-      {
-        "en": "Loin de réduire le texte à ses thèmes, l'explication doit en restituer la singularité formelle.",
-        "vi": "Khác hẳn quy giảm văn bản về các chủ đề, sự bình giảng phải khôi phục tính độc đáo của hình thức.",
-        "pronunciation_focus": [
-          "réduire → ré-du-i-rơ",
-          "thèmes → tèm",
-          "restituer → rès-ti-tu-é",
-          "singularité → san-gu-la-ri-té"
-        ]
-      }
-    ],
-    "cultural_notes_vi": "« EXPLICATION DE TEXTE » là một thực hành đặc thù của giáo dục Pháp — không có tương đương trực tiếp ở Việt Nam và khác cả « close reading » của Anh-Mỹ. Đây là hạt nhân của khoa văn học Pháp từ Lanson cuối thế kỷ XIX, được củng cố bởi Compagnon (Le Démon de la théorie, 1998) và Riffaterre.\n\nQUY ƯỚC CƠ BẢN: bạn được giao một đoạn văn (10-30 dòng) và bạn phải nói liền 30 phút (oral d'agrégation), hoặc viết 3-5 trang (devoir surveillé). Nguyên tắc tối thượng: BẠN BÌNH GIẢNG ĐOẠN ĐÓ, KHÔNG TÁC PHẨM. Sa vào tóm tắt cốt truyện = mất điểm ngay.\n\nCẤU TRÚC CHUẨN ba phần (jamais quatre):\n\n(1) INTRODUCTION (10%):\n- Situer (tác giả, tác phẩm, vị trí của đoạn trong tác phẩm)\n- Caractériser (thể loại con của đoạn — diễn biến, hồi ký, tả cảnh, monologue intérieur)\n- Annoncer une problématique (câu hỏi văn học mà đoạn này đặt ra)\n- Annoncer le plan (3 axes de lecture)\n\n(2) ANALYSE (80%):\n- Mỗi axe = một góc đọc cho phép kéo dài cả đoạn\n- KHÔNG đọc tuần tự « câu một…, câu hai… »\n- Chứng cứ luôn TRÍCH NGUYÊN VĂN, đặt trong dấu « guillemets français »\n- Mỗi citation kèm bình luận tu từ (« cette anaphore en début de phrase souligne… »)\n\n(3) CONCLUSION (10%):\n- Bilan (tổng hợp 3 axes)\n- Ouverture (kết nối với toàn tác phẩm, hoặc một văn bản khác)\n\nKHÁC BIỆT GIỮA EXPLICATION ET COMMENTAIRE COMPOSÉ:\n- Explication: tuần tự văn bản, oral, agrégation\n- Commentaire composé: phi-tuần tự, viết, bac et licence\n\nĐIỂM TỐI QUAN TRỌNG: tradition Pháp đặt giá trị TỐI CAO vào lecture LITTÉRALE — bạn KHÔNG được phóng chiếu lý thuyết lên văn bản. KHÔNG « ce passage est une critique du capitalisme » trừ khi văn bản bản thân chứa các éléments cụ thể cho phép nói vậy. Một phê bình thường gặp dành cho thí sinh người Việt: « plaquage théorique » (dán lý thuyết lên văn bản từ ngoài). Tránh: bắt đầu với Bourdieu / Foucault rồi tìm chứng cứ — bạn ngược lại, bắt đầu với chứng cứ rồi mới đến lý thuyết.\n\nBẪY ĐẶC THÙ NGƯỜI VIỆT: hệ thống giáo dục Việt dạy phân tích văn theo cách giảng « ý nghĩa nội dung » + « biểu hiện nghệ thuật ». Pháp KHÔNG tách như vậy — phân tích Pháp cho rằng FORME LÀ CHỨA NGHĨA. Một phép ẩn dụ KHÔNG « biểu hiện nghệ thuật » của một « ý nghĩa »; nó SẢN SINH ý nghĩa qua chính hình thức của nó.",
-    "tip_advice_vi": "QUY TRÌNH 6 BƯỚC để chuẩn bị một explication de texte (cho oral 30 phút, chuẩn bị 1 giờ):\n\nBƯỚC 1 (5 phút) — ĐỌC YÊN LẶNG hai lần. Lần đầu cho ấn tượng tổng quát; lần hai chú ý các chi tiết bất thường.\n\nBƯỚC 2 (10 phút) — ANNOTATION DENSE: gạch dưới mọi figure de style (anaphore, métaphore, antithèse, hyperbate), mọi từ « marqué » (lexique chuyên môn, archaïsme, néologisme), mọi rupture (changement de temps, changement de focalisation, hapax dans l'œuvre).\n\nBƯỚC 3 (10 phút) — IDENTIFIER 3 AXES DE LECTURE: ba câu hỏi văn học cho phép kéo dài cả đoạn. Ví dụ: (a) cấu trúc nhịp điệu, (b) jeu sur les voix narratives, (c) charge ironique. KHÔNG « les personnages », « le décor », « l'action » — đây là phân loại nội dung, không phải axes de lecture.\n\nBƯỚC 4 (10 phút) — DISTRIBUER LES CITATIONS theo 3 axes. Mỗi axe có 3-4 citations với bình luận tu từ.\n\nBƯỚC 5 (10 phút) — RÉDIGER L'INTRODUCTION đầy đủ (3-5 câu) và CONCLUSION (3-5 câu). Phần analyse có thể nói tự do từ notes.\n\nBƯỚC 6 (5 phút) — RELIRE LE TEXTE LENTEMENT một lần nữa. Souvent một détail bị bỏ sót sẽ xuất hiện ở lần đọc cuối.\n\nCỤM HỮU ÍCH:\n\nĐỂ MỞ ĐẦU EXPLICATION:\n- « Le passage que nous allons commenter est extrait de [tác phẩm], paru en [năm]. »\n- « Cet extrait se situe à un moment-clé du récit — [bối cảnh ngắn]. »\n- « Nous nous demanderons en quoi cette page constitue [problématique]. »\n- « Notre analyse se déploiera selon trois axes: [axe 1]; [axe 2]; [axe 3]. »\n\nĐỂ CITER ET COMMENTER:\n- « L'auteur écrit, à la ligne X: « [citation] ». Cette formulation appelle plusieurs remarques. »\n- « On notera, dans cette même phrase, le glissement de l'imparfait au passé simple — glissement chargé de sens. »\n- « Cette anaphore — répétition de X en début de trois phrases consécutives — confère au passage une cadence presque incantatoire. »\n\nĐỂ ANALYSER LA STYLISTIQUE:\n- « L'écart stylistique est ici manifeste: [observation]. »\n- « Le travail rythmique repose sur une opposition entre phrases longues et phrases brèves. »\n- « Ce choix énonciatif n'est pas anodin: il [effet produit]. »\n\nĐỂ CONCLURE:\n- « Cette page, à première vue descriptive, recèle en réalité [synthèse]. »\n- « Loin d'être un simple ornement narratif, ce passage constitue [enjeu]. »\n- « Cette analyse pourrait être prolongée par la lecture de [autre texte], qui présente une mise en œuvre comparable. »\n\nTRÁNH:\n- « Dans ce passage, l'auteur veut nous faire comprendre que… » → intentionnalisme naïf\n- « C'est très beau » / « c'est intéressant » → jugement non analytique\n- Tóm tắt cốt truyện thay vì bình giảng\n- Plaquage theórique — bắt đầu từ Bourdieu rồi mới đọc văn bản",
-    "vocabulary": [
-      {
-        "word": "l'explication de texte",
-        "en": "close reading (French tradition)",
-        "vi": "bình giảng văn bản chi tiết",
-        "pos": "n.f.",
-        "pronunciation_vi": "èk-spli-ka-sion dơ tèkst"
-      },
-      {
-        "word": "un commentaire composé",
-        "en": "a structured commentary",
-        "vi": "bình luận có cấu trúc",
-        "pos": "n.m.",
-        "pronunciation_vi": "ko-mãn-tèr kõm-po-zé"
-      },
-      {
-        "word": "un axe de lecture",
-        "en": "a line of interpretation",
-        "vi": "một trục đọc",
-        "pos": "n.m.",
-        "pronunciation_vi": "aks dơ lèk-tur"
-      },
-      {
-        "word": "l'écart stylistique",
-        "en": "stylistic divergence",
-        "vi": "sự lệch về phong cách",
-        "pos": "n.m.",
-        "pronunciation_vi": "é-kar sti-lis-tik"
-      },
-      {
-        "word": "un choix énonciatif",
-        "en": "an enunciative choice",
-        "vi": "một lựa chọn phát ngôn",
-        "pos": "n.m.",
-        "pronunciation_vi": "shoa é-nõn-sia-tif"
-      },
-      {
-        "word": "recéler un sens",
-        "en": "to harbor a meaning",
-        "vi": "ẩn chứa một ý nghĩa",
-        "pos": "v.",
-        "pronunciation_vi": "rơ-sé-lé an sãns"
-      },
-      {
-        "word": "en filigrane",
-        "en": "as a watermark / implicitly",
-        "vi": "ngầm ẩn (littéraire)",
-        "pos": "loc.",
-        "pronunciation_vi": "ã fi-li-gran"
-      },
-      {
-        "word": "une anaphore",
-        "en": "an anaphora",
-        "vi": "phép điệp ngữ đầu câu",
-        "pos": "n.f.",
-        "pronunciation_vi": "a-na-for"
-      },
-      {
-        "word": "une hyperbate",
-        "en": "a hyperbaton",
-        "vi": "phép đảo ngữ tu từ",
-        "pos": "n.f.",
-        "pronunciation_vi": "i-pèr-bat"
-      },
-      {
-        "word": "un hapax",
-        "en": "a hapax (single occurrence)",
-        "vi": "hapax — từ xuất hiện duy nhất một lần",
-        "pos": "n.m.",
-        "pronunciation_vi": "a-paks"
-      }
-    ],
-    "dialogue": [
-      {
-        "speaker": "Pr. Compagnon",
-        "text": "Madame Tran, vous tirez le texte vers une lecture politique avant d'avoir épuisé sa lettre. Reprenez par le rythme.",
-        "vi": "Cô Trần, cô kéo văn bản về một cách đọc chính trị trước khi vắt kiệt văn tự. Cô bắt đầu lại bằng nhịp điệu."
-      },
-      {
-        "speaker": "Linh",
-        "text": "Vous avez raison — j'ai plaqué une grille avant d'écouter la phrase.",
-        "vi": "Thầy đúng — tôi đã dán một lưới trước khi lắng nghe câu văn."
-      },
-      {
-        "speaker": "Pr. Compagnon",
-        "text": "Lisez à voix haute la première phrase, lentement. Qu'est-ce qui frappe l'oreille ?",
-        "vi": "Cô đọc to câu đầu, chậm. Điều gì đập vào tai?"
-      },
-      {
-        "speaker": "Linh",
-        "text": "L'alternance entre une protase courte et une apodose étirée — la phrase se déséquilibre vers la fin.",
-        "vi": "Sự xen kẽ giữa một protase ngắn và một apodose kéo dài — câu mất cân bằng về cuối."
-      }
-    ],
-    "dialogue_long": [
-      {
-        "speaker": "Pr. Compagnon (séminaire d'agrégation, Sorbonne)",
-        "text": "Madame Tran, vous avez vingt minutes pour expliquer cet extrait des Comices agricoles, dans Madame Bovary. Allez-y.",
-        "vi": "Cô Trần, cô có 20 phút để bình giảng đoạn Comices agricoles trong Madame Bovary. Cô bắt đầu."
-      },
-      {
-        "speaker": "Linh",
-        "text": "Le passage proposé se situe au cœur du chapitre VIII de la deuxième partie, dans cette scène fameuse où Flaubert fait alterner le discours du conseiller et les paroles d'amour de Rodolphe à Emma. C'est, selon le mot de Thibaudet, l'un des sommets de l'écriture flaubertienne.",
-        "vi": "Đoạn được giao nằm ở giữa chương VIII phần hai, trong cảnh nổi tiếng Flaubert xen kẽ diễn văn của ủy viên và lời tỏ tình của Rodolphe với Emma. Đó, theo Thibaudet, là một trong các đỉnh cao của lối viết Flaubert."
-      },
-      {
-        "speaker": "Linh",
-        "text": "Notre problématique sera la suivante: comment ce contrepoint, en apparence simple procédé de juxtaposition, parvient-il à produire l'ironie la plus radicale du roman, sans jamais que le narrateur n'intervienne en son nom propre ?",
-        "vi": "Vấn đề nghiên cứu của chúng tôi: làm sao đối điểm này, thoạt trông là thủ pháp đơn giản đặt cạnh nhau, có thể sản sinh ra sự châm biếm triệt để nhất của tiểu thuyết, mà người trần thuật không bao giờ xen vào nhân danh mình?"
-      },
-      {
-        "speaker": "Linh",
-        "text": "Trois axes structureront l'analyse: d'abord, la mécanique du contrepoint — comment Flaubert orchestre l'alternance; ensuite, le travail du discours indirect libre — qui rend l'ironie indécidable; enfin, la thématique sous-jacente du langage dévoyé, où la rhétorique politique et la rhétorique amoureuse se révèlent symétriques dans leur creux.",
-        "vi": "Ba trục cấu trúc phân tích: trước tiên, cơ chế đối điểm — Flaubert dàn dựng sự xen kẽ thế nào; tiếp đến, công việc của discours indirect libre — làm châm biếm trở nên không quyết định được; cuối, chủ đề ngôn ngữ bị lệch, nơi tu từ chính trị và tu từ tình yêu lộ ra đối xứng trong sự rỗng."
-      },
-      {
-        "speaker": "Linh",
-        "text": "Premier axe — la mécanique du contrepoint. Flaubert ne sépare pas les deux discours par un signe typographique fort: pas de chapitre nouveau, pas même de retour à la ligne systématique. Les répliques s'enchâssent les unes dans les autres, parfois au sein d'une même phrase. Cette continuité formelle produit un effet précis: le lecteur est forcé d'entendre les deux voix simultanément, comme un orchestre dont chaque instrument exposerait la même mélodie en clé différente.",
-        "vi": "Trục thứ nhất — cơ chế đối điểm. Flaubert không tách hai diễn ngôn bằng dấu typographique mạnh: không chương mới, không cả xuống dòng hệ thống. Các lời thoại lồng vào nhau, đôi khi trong cùng một câu. Sự liên tục hình thức này sản sinh hiệu ứng cụ thể: độc giả buộc phải nghe đồng thời hai giọng, như một dàn nhạc trong đó mỗi nhạc cụ trình bày cùng giai điệu nhưng khác giọng điệu."
-      },
-      {
-        "speaker": "Linh",
-        "text": "Second axe — le travail du discours indirect libre, qui constitue à mon sens la signature flaubertienne par excellence. Lorsque Rodolphe murmure ses banalités amoureuses, le narrateur les rapporte sans guillemets, sans verbe introducteur, en sorte qu'on ne sait jamais s'il les valide ou s'il les démolit. Cette indécision n'est pas une faiblesse: elle est le ressort même de l'ironie. Comme l'a montré Genette dans Figures III, le discours indirect libre suspend le contrat de véracité — et c'est précisément ce que Flaubert exploite ici.",
-        "vi": "Trục hai — công việc của discours indirect libre, theo tôi là chữ ký Flaubert tuyệt đối. Khi Rodolphe thì thầm các câu sáo rỗng yêu đương, người trần thuật thuật lại không guillemets, không động từ giới thiệu, sao cho ta không bao giờ biết ông xác nhận hay phá hủy chúng. Sự không quyết định này không phải yếu: nó là chính lò xo của châm biếm. Như Genette đã chứng minh trong Figures III, discours indirect libre treo lại hợp đồng chân thực — và chính đó là điều Flaubert khai thác."
-      },
-      {
-        "speaker": "Linh",
-        "text": "Troisième axe — la thématique sous-jacente du langage dévoyé. Si l'on prête l'oreille aux deux discours, on observe qu'ils partagent une même structure: une rhétorique creuse, des formules toutes faites, une absence radicale de référent réel. Le conseiller exalte des abstractions agricoles sans jamais nommer un cultivateur précis; Rodolphe parle de passion sans aucune émotion réelle. Le contrepoint révèle, sans dire, que les deux registres sont également dévoyés. C'est, je crois, la pointe critique du chapitre.",
-        "vi": "Trục ba — chủ đề ngôn ngữ bị lệch. Nếu lắng tai hai diễn ngôn, ta quan sát chúng chia sẻ cùng cấu trúc: một tu từ rỗng, các công thức làm sẵn, sự vắng mặt triệt để của référent thật. Ủy viên ca ngợi các trừu tượng nông nghiệp mà không bao giờ gọi tên một người cấy cụ thể; Rodolphe nói về đam mê mà không có cảm xúc thật. Đối điểm để lộ, không nói, rằng hai cấp độ đều bị lệch như nhau. Đó, tôi tin, là mũi nhọn phê phán của chương."
-      },
-      {
-        "speaker": "Linh",
-        "text": "En conclusion: cette page exemplifie ce que Roland Barthes, dans Le Degré zéro de l'écriture (1953), appelait l'écriture comme valeur en soi. L'ironie n'est pas, ici, un procédé ajouté à un contenu: elle est consubstantielle au geste d'écrire. C'est en quoi Madame Bovary marque, dans l'histoire du roman, un tournant — celui d'une littérature qui ne croit plus en sa propre rhétorique tout en continuant d'écrire.",
-        "vi": "Kết luận: trang này thể hiện điều Roland Barthes, trong Le Degré zéro de l'écriture (1953), gọi là lối viết như giá trị tự thân. Châm biếm không phải, ở đây, thủ pháp thêm vào nội dung: nó cùng thực với động tác viết. Vì thế Madame Bovary đánh dấu, trong lịch sử tiểu thuyết, một bước ngoặt — bước ngoặt của một văn chương không còn tin vào tu từ của chính mình mà vẫn tiếp tục viết."
-      },
-      {
-        "speaker": "Pr. Compagnon",
-        "text": "Bien — explication solide, problématique tenue, lecture de Genette intégrée sans plaquage. Une réserve cependant: la référence à Barthes gagnerait à être précisée par un numéro de page dans la version écrite.",
-        "vi": "Tốt — bình giảng vững, vấn đề được giữ, đọc Genette tích hợp không plaquage. Một dè dặt: tham chiếu Barthes sẽ tốt hơn nếu kèm số trang trong bản viết."
-      },
-      {
-        "speaker": "Linh",
-        "text": "Vous avez raison — la précision bibliographique fait partie de la rigueur littéraire à ce niveau. Je l'intègre.",
-        "vi": "Thầy đúng — chính xác thư mục là một phần của nghiêm cẩn văn học ở cấp độ này. Tôi đưa vào."
-      },
-      {
-        "speaker": "Pr. Compagnon",
-        "text": "Voilà. Reprenez, on passe au texte suivant.",
-        "vi": "Đó. Cô tiếp tục, mình sang văn bản tiếp."
-      }
-    ],
-    "roleplay_prompts": [
-      "Bạn được giao oral d'agrégation 30 phút trên đoạn incipit của L'Étranger. Soạn introduction (1 phút) + annonce de plan (3 axes) — không sa vào tóm tắt cốt truyện.",
-      "Trong séminaire, bạn bị professeur trách « plaquage théorique » (đã đem Foucault vào trước khi đọc văn bản). Phản hồi: thừa nhận, đề xuất reprendre par la lettre du texte — démarche concrète.",
-      "Một élève de licence hỏi bạn cách phân biệt explication de texte với commentaire composé. Soạn câu trả lời 4 câu — chính xác, không « bằng nhau »."
-    ],
-    "register_notes": "L'EXPLICATION DE TEXTE đòi hỏi register littéraire trong từng câu. Phân biệt với register học thuật chung (C1):\n\nC1 (général): « L'auteur montre que… »\nC2 (littéraire): « L'auteur, par ce détour stylistique, donne à entendre que… »\n\nC1: « Cette phrase est ironique. »\nC2: « Cette phrase relève de l'ironie indirecte, qui suspend le contrat de véracité du narrateur. »\n\nĐỘNG TỪ ĐẶC TRƯNG D'EXPLICATION DE TEXTE:\n- « donner à entendre » (cho nghe ngầm)\n- « se déployer » (triển khai)\n- « recéler » (ẩn chứa)\n- « se dérober » (lánh đi)\n- « en filigrane » (ngầm ẩn)\n- « culminer » (đạt đỉnh)\n- « suspendre le sens » (treo lại nghĩa)\n\nCỤM TRANSITION C2 ĐẶC THÙ:\n- « Encore faut-il que… » (vẫn cần)\n- « Force est de constater que… » (phải thừa nhận)\n- « Il n'en demeure pas moins que… » (dù sao)\n- « C'est en quoi… » (vì thế)\n- « Pour ainsi dire » (có thể nói như vậy)\n\nSUBJONCTIF IMPARFAIT — dấu hiệu phân biệt C2 với C1:\n- « Il eût été préférable que l'analyse procédât du détail vers le système. »\n- « On l'eût souhaitée plus nuancée. »\n- « Bien que le texte fût bref, il offrait matière à un long commentaire. »\n\nKHÔNG sử dụng subjonctif imparfait dans contextes informels — bị đọc là pédantesque. CHỈ trong séminaire littéraire, agrégation, écriture critique soutenue.\n\nINVERSION DANS LES PROPOSITIONS DÉPENDANTES:\n- « Peut-être l'auteur a-t-il voulu… »\n- « Aussi le narrateur évoque-t-il… »\n- « Sans doute la phrase finale fait-elle écho à… »\n\nIDIOMS ĐẶC TRƯNG TRADITION CRITIQUE:\n- « lire entre les lignes » (đọc giữa các dòng — courant)\n- « la lettre du texte » (văn tự — soutenu)\n- « le grain du style » (hạt của phong cách — littéraire)\n- « tirer le texte de son côté » (kéo văn bản về phía mình — critique)\n\nMỘT TINH TẾ ĐẶC THÙ: không bao giờ nói « l'auteur veut dire que… » — intentionnalisme naïf bị tránh. Thay bằng « le texte donne à entendre… », « la phrase produit l'effet de… ». Pháp critique từ Barthes (La Mort de l'auteur, 1968) phân biệt l'auteur empirique (con người sống) với l'instance énonciative du texte (tiếng nói trong văn bản). Hai thực thể khác nhau.",
-    "idiom_glosses": [
-      {
-        "idiom": "Lire entre les lignes (courant)",
-        "literal": "Đọc giữa các dòng",
-        "meaning": "Hiểu điều ngầm — không công thức học thuật cao.",
-        "example": "Madame Bovary se lit aussi entre les lignes — l'ironie y est rarement explicite."
-      },
-      {
-        "idiom": "En filigrane (littéraire)",
-        "literal": "Như hình ngầm trên giấy",
-        "meaning": "Ẩn ngầm dưới bề mặt — formel littéraire.",
-        "example": "En filigrane de cette page descriptive, on lit déjà le drame qui s'annonce."
-      },
-      {
-        "idiom": "Faire entendre (littéraire)",
-        "literal": "Làm cho nghe",
-        "meaning": "Để lộ ngầm — sản sinh ý nghĩa qua hình thức.",
-        "example": "Le narrateur fait entendre, sans jamais le dire, son désaccord avec son personnage."
-      },
-      {
-        "idiom": "Tirer le texte de son côté (soutenu critique)",
-        "literal": "Kéo văn bản về phía mình",
-        "meaning": "Áp đặt cách đọc lên văn bản — phê bình một thực hành sai.",
-        "example": "Cette lecture sociologique tire le texte de son côté — Flaubert n'est pas un sociologue."
-      }
-    ],
-    "exercises": [
-      {
-        "type": "fill-blank",
-        "question": "Encore faut-il que le commentateur ___ l'oreille assez fine pour entendre ce que le texte ne dit qu'à demi.",
-        "answer": "ait"
-      },
-      {
-        "type": "matching",
-        "pairs": [
-          [
-            "en filigrane",
-            "ngầm ẩn"
-          ],
-          [
-            "l'écart stylistique",
-            "sự lệch về phong cách"
-          ],
-          [
-            "recéler un sens",
-            "ẩn chứa một ý nghĩa"
+export const lessons: FrenchLesson[] =   [
+    {
+      "id": "lclose_reading",
+      "level": "C2",
+      "category": "fluency",
+      "title_vi": "Bình giảng văn bản chi tiết (explication de texte)",
+      "title_en": "Close reading of a literary passage",
+      "sentences": [
+        {
+          "en": "L'explication de texte, telle que l'enseigne la tradition française depuis Lanson, exige qu'on lise la lettre avant que d'interroger le sens.",
+          "vi": "Bình giảng văn bản, như truyền thống Pháp dạy từ Lanson, đòi hỏi đọc văn tự trước khi tra hỏi ý nghĩa.",
+          "pronunciation_focus": [
+            "explication → èk-spli-ka-sion",
+            "Lanson → lãn-sõn",
+            "exige → èg-zij",
+            "interroger → an-tè-ro-jé"
           ]
-        ],
-        "instruction": "Nối thuật ngữ critique với nghĩa Việt"
-      },
-      {
-        "type": "translation",
-        "vietnamese": "Khác hẳn quy giảm văn bản về các chủ đề, sự bình giảng phải khôi phục tính độc đáo của hình thức.",
-        "french": "Loin de réduire le texte à ses thèmes, l'explication doit en restituer la singularité formelle."
-      }
-    ]
-  },
-  {
-    "id": "lnarrative_voice",
-    "level": "C2",
-    "category": "fluency",
-    "title_vi": "Phân tích giọng kể và điểm nhìn (narrateur, focalisation)",
-    "title_en": "Analyzing narrative voice and point of view",
-    "sentences": [
-      {
-        "en": "Distinguer la voix narrative de la focalisation constitue, depuis Figures III de Genette, le préalable de toute analyse rigoureuse du récit.",
-        "vi": "Phân biệt giọng trần thuật khỏi điểm nhìn cấu thành, từ Figures III của Genette, tiền đề cho mọi phân tích nghiêm cẩn về tự sự.",
-        "pronunciation_focus": [
-          "voix → voa",
-          "narrative → na-ra-tiv",
-          "focalisation → fo-ka-li-za-sion",
-          "préalable → pré-a-la-blơ"
-        ]
-      },
-      {
-        "en": "Le narrateur de L'Étranger demeure intradiégétique sans qu'on puisse pour autant le confondre avec Camus lui-même.",
-        "vi": "Người trần thuật trong L'Étranger ở bên trong câu chuyện mà ta không thể đồng nhất ông với chính Camus.",
-        "pronunciation_focus": [
-          "intradiégétique → an-tra-dié-jé-tik",
-          "sans → sã",
-          "autant → ô-tã",
-          "confondre → kõn-fõn-drơ"
-        ]
-      },
-      {
-        "en": "Peut-être l'auteur a-t-il voulu, par cette focalisation strictement interne, suspendre tout jugement éthique au profit d'une perception nue.",
-        "vi": "Có lẽ tác giả đã muốn, qua cách focalisation interne nghiêm ngặt, treo lại mọi phán xét đạo đức để dành chỗ cho một tri giác trần trụi.",
-        "pronunciation_focus": [
-          "peut-être → pơ-tè-trơ",
-          "focalisation → fo-ka-li-za-sion",
-          "éthique → é-tik",
-          "perception → pèr-sèp-sion"
-        ]
-      },
-      {
-        "en": "Que le narrateur fût parfois omniscient, parfois borné à un personnage, n'est pas, chez Flaubert, le fruit du hasard.",
-        "vi": "Việc người trần thuật khi thì toàn tri, khi thì giới hạn vào một nhân vật, không phải, ở Flaubert, là kết quả của ngẫu nhiên.",
-        "pronunciation_focus": [
-          "fût → fu",
-          "omniscient → om-ni-siã",
-          "borné → bor-né",
-          "hasard → a-zar"
-        ]
-      },
-      {
-        "en": "Cette polyphonie narrative, dont Bakhtine a décrit la structure, fait du roman moderne un espace où plusieurs consciences se disputent la parole.",
-        "vi": "Sự đa âm trần thuật này, mà Bakhtine đã mô tả cấu trúc, biến tiểu thuyết hiện đại thành một không gian nơi nhiều ý thức tranh giành lời.",
-        "pronunciation_focus": [
-          "polyphonie → po-li-fo-ni",
-          "Bakhtine → bak-tin",
-          "disputent → dis-put",
-          "parole → pa-rol"
-        ]
-      }
-    ],
-    "cultural_notes_vi": "NARRATOLOGIE PHÁP — chủ yếu là di sản của Gérard Genette (Figures III, 1972; Nouveau discours du récit, 1983) — đã PHÂN BIỆT một cách triệt để hai khái niệm vốn bị nhầm lẫn:\n\n(1) VOIX (giọng): AI nói? Người trần thuật có ở trong câu chuyện không?\n- Hétérodiégétique: ở ngoài (« il alla, elle dit »)\n- Homodiégétique: ở trong, làm nhân vật phụ\n- Autodiégétique: ở trong, làm nhân vật chính (kể đời mình)\n\n(2) FOCALISATION (điểm nhìn): qua MẮT AI người đọc tiếp cận thế giới?\n- Focalisation zéro: không qua ai cụ thể — narrateur omniscient classique (Balzac, Tolstoï)\n- Focalisation interne: qua mắt một nhân vật cụ thể — accès limité (Camus L'Étranger, James)\n- Focalisation externe: behaviorist — không qua mắt ai, chỉ thấy hành động bên ngoài (Hemingway, Robbe-Grillet)\n\nTẠI SAO PHÂN BIỆT NÀY QUAN TRỌNG: trước Genette, critique nói chuyện về « narrateur omniscient » một cách lẫn lộn — thực ra omniscience là về focalisation, không phải về voix. Một narrateur autodiégétique (« je ») có thể vẫn omniscient (Proust kể đời mình với khoảng cách hậu nghiệm cho phép biết tất); một narrateur hétérodiégétique (« il/elle ») có thể bị giới hạn vào focalisation interne (Madame Bovary, où narrateur ngoài câu chuyện nhưng nhìn qua mắt Emma trong nhiều đoạn).\n\nÁP DỤNG VÀO BA TÁC PHẨM CANONICAL:\n\nL'ÉTRANGER (Camus, 1942): voix homodiégétique (Meursault kể), focalisation interne stricte. Hệ quả: ta không bao giờ ra khỏi tri giác Meursault. Famous incipit (« Aujourd'hui, maman est morte. Ou peut-être hier, je ne sais pas. ») là minh chứng cho tri giác giới hạn — không có omniscience nào sẽ nói « je ne sais pas ».\n\nÀ LA RECHERCHE (Proust, 1913-1927): voix autodiégétique (« Marcel »), focalisation kép — focalisation interne au moment du récit (Marcel-narrateur kể) ET focalisation interne au moment de la diégèse (Marcel-personnage trải nghiệm). Cấu trúc kép này là cốt lõi của « décalage temporel » Proustien.\n\nMADAME BOVARY (Flaubert, 1857): voix hétérodiégétique (narrateur ngoài), focalisation BIẾN ĐỔI — đôi khi externe, đôi khi interne (Emma, Charles, Homais), đôi khi zéro. Sự biến đổi này, kết hợp với discours indirect libre, tạo nên ironie flaubertienne.\n\nBẪY PHỔ BIẾN: Việt Nam thường nói « người kể chuyện ngôi thứ ba » — nhưng « ngôi thứ ba » KHÔNG cho biết focalisation. Một narrateur ngôi ba có thể omniscient (Balzac) hoặc giới hạn (Flaubert tại các đoạn focalisation interne sur Emma). Khi viết phân tích bằng tiếng Pháp ở C2, KHÔNG dùng « narrateur à la troisième personne » — dùng « narrateur hétérodiégétique » + nói rõ focalisation.",
-    "tip_advice_vi": "GRILLE D'ANALYSE Genettien complète pour un texte donné:\n\n(1) VOIX:\n- Personne grammaticale (je / il-elle / nous — rare)\n- Position du narrateur (homo / hétéro / auto-diégétique)\n- Niveau narratif (extra / intra / méta-diégétique)\n- Temps du récit (passé simple = distance; présent = immédiateté; passé composé = familier)\n\n(2) FOCALISATION:\n- Type (zéro / interne / externe)\n- Constance ou variations\n- Si interne: identification du focalisateur (qui voit ?)\n- Cohérence avec la voix\n\n(3) MODE:\n- Discours rapporté (direct / indirect / indirect libre)\n- Sommaire vs scène (vitesse narrative)\n- Récit itératif vs singulatif (fréquence)\n\nCỤM HỮU ÍCH:\n\nPOUR DÉCRIRE LA VOIX:\n- « Le narrateur, ici autodiégétique, raconte une expérience dont il fut le protagoniste. »\n- « Le récit s'organise depuis une instance hétérodiégétique qui ne se met jamais en scène. »\n- « La voix narrative oscille entre l'omniscience apparente et la limitation à la conscience d'Emma. »\n\nPOUR DÉCRIRE LA FOCALISATION:\n- « La focalisation, strictement interne, restreint la perception au point de vue de Meursault. »\n- « On observe ici un changement de focalisation: le narrateur abandonne le regard d'Emma pour adopter celui de Charles. »\n- « La focalisation externe — ou, pour reprendre Genette, behavioriste — interdit tout accès aux pensées des personnages. »\n\nPOUR ANALYSER LE DISCOURS INDIRECT LIBRE:\n- « Le passage glisse insensiblement du discours du narrateur au discours du personnage, sans verbe introducteur. »\n- « Cette indistinction énonciative est la signature flaubertienne par excellence. »\n- « L'ironie naît précisément de l'indécision: parle-t-il en son nom ou rapporte-t-il celui d'Emma ? »\n\nPOUR LA POLYPHONIE BAKHTINIENNE:\n- « Le roman, comme l'a montré Bakhtine, est un espace polyphonique où plusieurs consciences se font entendre. »\n- « Cette pluralité de voix, irréductible à un seul point de vue, constitue le dialogisme du genre romanesque. »\n\nTRÁNH:\n- « Le narrateur sait tout. » → flou; précisez focalisation zéro\n- « Le personnage pense que… » → vérifier si c'est focalisation interne ou monologue rapporté\n- « L'auteur dit que… » → confusion auteur empirique / narrateur\n- « Ce texte est subjectif. » → terme non technique; dire « focalisation interne »",
-    "vocabulary": [
-      {
-        "word": "un narrateur autodiégétique",
-        "en": "an autodiegetic narrator",
-        "vi": "người trần thuật tự kể đời mình",
-        "pos": "n.m.",
-        "pronunciation_vi": "na-ra-tơr ô-to-dié-jé-tik"
-      },
-      {
-        "word": "un narrateur hétérodiégétique",
-        "en": "a heterodiegetic narrator",
-        "vi": "người trần thuật ngoài câu chuyện",
-        "pos": "n.m.",
-        "pronunciation_vi": "é-té-ro-dié-jé-tik"
-      },
-      {
-        "word": "la focalisation interne",
-        "en": "internal focalization",
-        "vi": "điểm nhìn nội tại",
-        "pos": "n.f.",
-        "pronunciation_vi": "fo-ka-li-za-sion an-tèrn"
-      },
-      {
-        "word": "la focalisation zéro",
-        "en": "zero focalization (omniscient)",
-        "vi": "điểm nhìn zéro / toàn tri",
-        "pos": "n.f.",
-        "pronunciation_vi": "fo-ka-li-za-sion zé-ro"
-      },
-      {
-        "word": "le discours indirect libre",
-        "en": "free indirect discourse",
-        "vi": "discours indirect libre / lời nửa trực tiếp",
-        "pos": "n.m.",
-        "pronunciation_vi": "dis-kur an-di-rèkt li-brơ"
-      },
-      {
-        "word": "la diégèse",
-        "en": "the diegesis",
-        "vi": "thế giới câu chuyện",
-        "pos": "n.f.",
-        "pronunciation_vi": "dié-jèz"
-      },
-      {
-        "word": "la polyphonie narrative",
-        "en": "narrative polyphony",
-        "vi": "sự đa âm trần thuật",
-        "pos": "n.f.",
-        "pronunciation_vi": "po-li-fo-ni na-ra-tiv"
-      },
-      {
-        "word": "l'instance énonciative",
-        "en": "the enunciating instance",
-        "vi": "thực thể phát ngôn",
-        "pos": "n.f.",
-        "pronunciation_vi": "an-stãns é-nõn-sia-tiv"
-      },
-      {
-        "word": "un récit itératif",
-        "en": "an iterative narrative",
-        "vi": "tự sự lặp lại",
-        "pos": "n.m.",
-        "pronunciation_vi": "ré-si i-té-ra-tif"
-      },
-      {
-        "word": "la vitesse narrative",
-        "en": "narrative pace",
-        "vi": "vận tốc trần thuật",
-        "pos": "n.f.",
-        "pronunciation_vi": "vi-tès na-ra-tiv"
-      }
-    ],
-    "dialogue": [
-      {
-        "speaker": "Pr. Compagnon",
-        "text": "Madame Tran, vous parlez de « narrateur omniscient » à propos de Madame Bovary. Précisez.",
-        "vi": "Cô Trần, cô nói về « narrateur omniscient » liên quan Madame Bovary. Cô làm rõ."
-      },
-      {
-        "speaker": "Linh",
-        "text": "En réalité, l'omniscience flaubertienne est intermittente — par moments le narrateur sait tout, à d'autres il se restreint à la conscience d'Emma.",
-        "vi": "Thực ra, omniscience của Flaubert là gián đoạn — có lúc người trần thuật biết tất, có lúc giới hạn vào ý thức Emma."
-      },
-      {
-        "speaker": "Pr. Compagnon",
-        "text": "Voilà — c'est précisément cette modulation qui est intéressante, pas l'omniscience pleine.",
-        "vi": "Đó — chính sự modulation này thú vị, không phải omniscience đầy."
-      },
-      {
-        "speaker": "Linh",
-        "text": "Genette parlerait d'une focalisation variable, ce qui est plus juste.",
-        "vi": "Genette sẽ gọi đó là focalisation variable, chính xác hơn."
-      }
-    ],
-    "dialogue_long": [
-      {
-        "speaker": "Pr. Compagnon (cours d'agrégation)",
-        "text": "Aujourd'hui: Genette, Figures III, l'opposition voix / focalisation. Madame Tran, vous nous présentez le concept appliqué à L'Étranger ?",
-        "vi": "Hôm nay: Genette, Figures III, đối lập voix / focalisation. Cô Trần, cô trình bày khái niệm áp dụng vào L'Étranger?"
-      },
-      {
-        "speaker": "Linh",
-        "text": "L'Étranger constitue, à mon sens, le cas d'école pour comprendre l'enjeu de la distinction. La voix est homodiégétique — Meursault parle en son nom, à la première personne. La focalisation est strictement interne — nous n'accédons jamais qu'à ce que perçoit Meursault. Et cette double restriction produit l'effet le plus singulier du roman.",
-        "vi": "L'Étranger là, theo tôi, trường hợp mẫu để hiểu vấn đề của sự phân biệt. Voix là homodiégétique — Meursault nói nhân danh mình, ngôi thứ nhất. Focalisation nghiêm ngặt interne — chúng ta không bao giờ tiếp cận hơn điều Meursault tri giác. Và sự giới hạn kép này sản sinh hiệu ứng độc đáo nhất của tiểu thuyết."
-      },
-      {
-        "speaker": "Linh",
-        "text": "L'incipit en témoigne: « Aujourd'hui, maman est morte. Ou peut-être hier, je ne sais pas. » Aucun narrateur omniscient ne pourrait dire « je ne sais pas » — l'incertitude prouve que nous sommes enfermés dans une conscience particulière, finie, qui ne maîtrise pas même la chronologie de sa propre histoire.",
-        "vi": "Incipit chứng minh: « Hôm nay, mẹ tôi đã chết. Hay có lẽ hôm qua, tôi không biết. » Không người trần thuật toàn tri nào có thể nói « tôi không biết » — sự không chắc chứng minh chúng ta bị giam trong một ý thức riêng biệt, hữu hạn, không làm chủ được cả niên đại của câu chuyện của mình."
-      },
-      {
-        "speaker": "Linh",
-        "text": "Cette focalisation interne stricte produit, on le sait, le célèbre « ton blanc » du roman. Sartre, dès 1943, l'analysait dans « Explication de L'Étranger »: la phrase courte, l'absence de subordination, le passé composé au lieu du passé simple, tout converge vers une perception non-organisée du monde. Ce n'est pas un choix esthétique gratuit — c'est la traduction stylistique d'une position philosophique sur l'absurde.",
-        "vi": "Focalisation interne nghiêm ngặt này sản sinh, ta biết rõ, « giọng trắng » nổi tiếng của tiểu thuyết. Sartre, ngay từ 1943, đã phân tích trong « Explication de L'Étranger »: câu ngắn, vắng subordination, passé composé thay passé simple, tất cả hội tụ về một tri giác không tổ chức về thế giới. Không phải lựa chọn thẩm mỹ vô cớ — là dịch chuyển phong cách của một lập trường triết học về absurde."
-      },
-      {
-        "speaker": "Pr. Compagnon",
-        "text": "Bien. Mais une difficulté surgit en seconde partie du roman, lorsque Meursault, en prison, repense à sa vie. Comment articulez-vous cela avec la focalisation interne stricte ?",
-        "vi": "Tốt. Nhưng một khó khăn xuất hiện ở phần hai tiểu thuyết, khi Meursault, trong tù, nghĩ lại đời mình. Cô khớp nối điều đó với focalisation interne nghiêm ngặt thế nào?"
-      },
-      {
-        "speaker": "Linh",
-        "text": "Question juste. En seconde partie, on observe un léger glissement: Meursault commence à réfléchir, à conceptualiser, à formuler ce qui restait jusque-là pure perception. La focalisation reste interne — nous restons dans sa tête — mais le mode change: nous passons d'une perception immédiate à une réflexion. C'est précisément ce changement, à mes yeux, qui produit l'épiphanie finale, dans la cellule, sur « la tendre indifférence du monde ».",
-        "vi": "Câu hỏi đúng. Ở phần hai, ta quan sát một sự trượt nhẹ: Meursault bắt đầu suy ngẫm, khái niệm hóa, phát biểu điều cho đến giờ vẫn là tri giác thuần túy. Focalisation vẫn interne — ta vẫn trong đầu ông — nhưng mode thay đổi: ta chuyển từ tri giác trực tiếp sang suy ngẫm. Chính sự thay đổi này, theo tôi, sản sinh epiphany cuối, trong xà lim, về « sự lạnh lùng dịu dàng của thế giới »."
-      },
-      {
-        "speaker": "Pr. Compagnon",
-        "text": "Excellent — vous mobilisez non seulement le couple voix / focalisation, mais aussi la troisième catégorie genettienne, celle du mode. C'est exactement ce que demande Figures III. Une dernière question: peut-on appliquer la même grille à À la recherche du temps perdu ?",
-        "vi": "Xuất sắc — cô huy động không chỉ cặp voix / focalisation, mà cả phạm trù thứ ba của Genette, mode. Đó chính là điều Figures III đòi hỏi. Một câu hỏi cuối: có thể áp dụng cùng lưới này vào À la recherche du temps perdu không?"
-      },
-      {
-        "speaker": "Linh",
-        "text": "Oui, mais avec une complication décisive. Proust met en scène un narrateur autodiégétique — Marcel — qui raconte sa propre vie avec un décalage temporel énorme. Cela produit une focalisation kép, ou plutôt feuilletée: focalisation interne du Marcel-personnage au moment où il vit l'épisode, et focalisation interne du Marcel-narrateur qui, depuis le présent du récit, comprend ce que le personnage ne comprenait pas. Ces deux instances se distinguent par le célèbre « décalage » que Genette nomme « focalisation interne fixe avec paralipse ».",
-        "vi": "Có, nhưng với một phức tạp quyết định. Proust dàn dựng một người trần thuật autodiégétique — Marcel — kể đời mình với khoảng cách thời gian khổng lồ. Điều đó sản sinh một focalisation kép, hay đúng hơn lớp lớp: focalisation interne của Marcel-nhân vật ở thời điểm sống đoạn ấy, và focalisation interne của Marcel-người trần thuật, từ hiện tại trần thuật, hiểu điều nhân vật không hiểu. Hai thực thể này phân biệt bằng « décalage » nổi tiếng mà Genette gọi là « focalisation interne fixe avec paralipse »."
-      },
-      {
-        "speaker": "Pr. Compagnon",
-        "text": "Excellent — vous touchez là à l'apport le plus subtil de Genette. La paralipse, c'est le moment où le narrateur omet sciemment ce qu'il sait, pour préserver l'expérience du personnage en train de vivre. Concept rare et puissant.",
-        "vi": "Xuất sắc — cô chạm đến đóng góp tinh tế nhất của Genette. Paralipse, đó là khoảnh khắc người trần thuật bỏ đi cố ý điều mình biết, để giữ trải nghiệm của nhân vật đang sống. Khái niệm hiếm và mạnh."
-      }
-    ],
-    "roleplay_prompts": [
-      "Bạn được giao explication de la première page de L'Étranger. Identifiez voix + focalisation + mode + un effet stylistique majeur — en 5 minutes.",
-      "Trong séminaire, một collègue affirme « Madame Bovary, c'est un roman écrit du point de vue d'Emma ». Phản hồi avec précision genettienne — distinguer voix hétérodiégétique de la focalisation interne intermittente.",
-      "Soạn 5 câu pour expliquer la « paralipse » à un étudiant de M1 qui n'a pas encore lu Genette — citer un exemple chez Proust ou un autre auteur."
-    ],
-    "register_notes": "NARRATOLOGIE GENETTIENNE — vocabulaire à maîtriser AU MOT PRÈS:\n\nKHÔNG CONFONDRE:\n- Voix ≠ focalisation (Genette dixit)\n- Narrateur ≠ auteur (Barthes, La Mort de l'auteur)\n- Discours indirect libre ≠ discours indirect (un guillemet de différence change tout)\n- Diégèse ≠ histoire (la diégèse est l'univers; l'histoire est la suite des événements)\n- Récit ≠ narration (le récit est le texte; la narration est l'acte de raconter)\n\nQUATRE CATÉGORIES GENETTIENNES:\n\n(1) ORDRE: chronologie diégétique vs ordre narratif (analepse, prolepse)\n(2) DURÉE: rapport temps narré / temps de narration (sommaire, scène, ellipse, pause)\n(3) FRÉQUENCE: récit singulatif / itératif / répétitif\n(4) MODE: distance (sommaire vs scène), perspective (focalisation)\n+ VOIX (instance narrative, niveau, temps)\n\nCONJUGAISON DES TEMPS — analyse C2 doit identifier:\n- Passé simple = distance, écriture classique\n- Imparfait = arrière-plan, durée, descriptif\n- Passé composé = présent du locuteur, oral, Camus\n- Présent intemporel = vérité générale, narration moderne (Duras, Modiano)\n- Conditionnel = futur dans le passé, modalisation\n\nLEXIQUE TECHNIQUE C2 (à utiliser sans hésitation):\n- une analepse / une prolepse (flashback / flashforward)\n- un sommaire (résumé narratif rapide)\n- une scène (récit en temps réel)\n- une ellipse (saut temporel non raconté)\n- une pause descriptive (interruption du récit pour décrire)\n- une paralipse (omission volontaire d'un fait connu du narrateur)\n- une métalepse (transgression de niveau narratif)\n- un récit enchâssé (récit dans le récit)\n\nINVERSION ET SUBJONCTIF IMPARFAIT — marqueurs C2 dans l'analyse narratologique:\n- « Que le narrateur fût parfois omniscient n'est pas le fruit du hasard. »\n- « Peut-être l'auteur a-t-il voulu, par cette focalisation, suspendre tout jugement. »\n- « Encore conviendrait-il que la focalisation reçût une analyse séparée. »\n\nMỘT TINH TẾ ĐẶC THÙ: viết « narrateur » au masculin par convention narratologique, même si l'auteur est une femme. Ce n'est pas un sexisme implicite — c'est l'usage technique. « La narratrice » s'utilise seulement pour distinguer un narrateur féminin diégétiquement marqué (Marguerite Duras dans L'Amant, où la narratrice est explicitement femme).",
-    "idiom_glosses": [
-      {
-        "idiom": "Tirer les ficelles (courant)",
-        "literal": "Kéo các sợi dây",
-        "meaning": "Điều khiển từ hậu trường — utilisé pour le narrateur omniscient.",
-        "example": "Le narrateur balzacien tire les ficelles de tous les destins du roman."
-      },
-      {
-        "idiom": "Donner la parole à (soutenu)",
-        "literal": "Cho lời",
-        "meaning": "Cấp giọng nói cho — analyse de la polyphonie.",
-        "example": "Flaubert donne la parole à ses personnages tout en s'en distanciant."
-      },
-      {
-        "idiom": "Effacer les traces de l'énonciation (littéraire)",
-        "literal": "Xóa dấu vết của phát ngôn",
-        "meaning": "Làm tan biến sự hiện diện của người trần thuật — idéal réaliste.",
-        "example": "L'écriture flaubertienne s'efforce d'effacer les traces de l'énonciation."
-      },
-      {
-        "idiom": "Tenir la dragée haute à (soutenu rare)",
-        "literal": "Giữ viên kẹo cao",
-        "meaning": "Giữ khoảng cách — narrateur ironique avec ses personnages.",
-        "example": "Voltaire tient la dragée haute à Candide, ce qui produit l'ironie philosophique du conte."
-      }
-    ],
-    "exercises": [
-      {
-        "type": "fill-blank",
-        "question": "Que le narrateur ___ parfois omniscient, parfois borné à un personnage, n'est pas, chez Flaubert, le fruit du hasard.",
-        "answer": "fût"
-      },
-      {
-        "type": "matching",
-        "pairs": [
-          [
-            "focalisation interne",
-            "điểm nhìn nội tại"
-          ],
-          [
-            "narrateur autodiégétique",
-            "người trần thuật tự kể đời mình"
-          ],
-          [
-            "paralipse",
-            "omission volontaire du narrateur"
+        },
+        {
+          "en": "Encore faut-il que le commentateur ait l'oreille assez fine pour entendre ce que le texte ne dit qu'à demi.",
+          "vi": "Vẫn cần người bình giảng có đôi tai đủ tinh để nghe điều văn bản chỉ nói nửa chừng.",
+          "pronunciation_focus": [
+            "encore → ãn-kor",
+            "commentateur → ko-mãn-ta-tơr",
+            "oreille → o-rèy",
+            "demi → dơ-mi"
           ]
-        ],
-        "instruction": "Nối thuật ngữ narratologie với nghĩa Việt"
-      },
-      {
-        "type": "translation",
-        "vietnamese": "Phân biệt giọng trần thuật khỏi điểm nhìn cấu thành tiền đề cho mọi phân tích nghiêm cẩn về tự sự.",
-        "french": "Distinguer la voix narrative de la focalisation constitue le préalable de toute analyse rigoureuse du récit."
-      }
-    ]
-  },
-  {
-    "id": "lsymbol_metaphor",
-    "level": "C2",
-    "category": "fluency",
-    "title_vi": "Phân tích biểu tượng và ẩn dụ trong văn chương",
-    "title_en": "Symbol and metaphor analysis",
-    "sentences": [
-      {
-        "en": "Le symbole, à la différence de l'allégorie, ne renvoie pas à un sens unique mais ouvre un champ de significations qu'aucun lexique ne saurait épuiser.",
-        "vi": "Biểu tượng, khác với ngụ ngôn, không quy về một nghĩa duy nhất mà mở ra một trường ý nghĩa mà không từ điển nào có thể vắt kiệt.",
-        "pronunciation_focus": [
-          "symbole → san-bol",
-          "allégorie → a-lé-go-ri",
-          "renvoie → rãn-voa",
-          "épuiser → é-pwi-zé"
-        ]
-      },
-      {
-        "en": "La métaphore filée, telle que Baudelaire la déploie dans Correspondances, fonde une vision analogique du monde.",
-        "vi": "Ẩn dụ kéo dài, như Baudelaire triển khai trong Correspondances, lập nên một tầm nhìn loại suy về thế giới.",
-        "pronunciation_focus": [
-          "métaphore → mé-ta-for",
-          "filée → fi-lé",
-          "déploie → dé-ploa",
-          "analogique → a-na-lo-jik"
-        ]
-      },
-      {
-        "en": "Le cygne mallarméen, prisonnier du lac gelé, condense en une image l'impuissance même du poète à atteindre l'idéal.",
-        "vi": "Con thiên nga của Mallarmé, bị giam trong hồ băng, ngưng tụ trong một hình ảnh chính sự bất lực của nhà thơ vươn tới lý tưởng.",
-        "pronunciation_focus": [
-          "cygne → si-nyơ",
-          "mallarméen → ma-lar-mé-an",
-          "prisonnier → pri-zo-nié",
-          "impuissance → an-pwi-sãns"
-        ]
-      },
-      {
-        "en": "Encore conviendrait-il que l'analyse distinguât rigoureusement comparaison et métaphore, deux figures qu'on confond souvent.",
-        "vi": "Vẫn cần phân tích phân biệt rạch ròi giữa so sánh và ẩn dụ, hai biện pháp tu từ thường bị nhầm lẫn.",
-        "pronunciation_focus": [
-          "conviendrait → kõn-vian-drè",
-          "distinguât → dis-tan-ga",
-          "comparaison → kõm-pa-rè-zõn",
-          "métaphore → mé-ta-for"
-        ]
-      },
-      {
-        "en": "Bachelard nous a appris à lire l'image poétique non comme ornement, mais comme un mode irréductible de connaissance.",
-        "vi": "Bachelard đã dạy chúng ta đọc hình ảnh thi ca không như trang trí, mà như một phương thức nhận thức không thể quy giảm.",
-        "pronunciation_focus": [
-          "Bachelard → ba-shơ-lar",
-          "appris → a-pri",
-          "ornement → or-nơ-mã",
-          "irréductible → i-ré-duk-ti-blơ"
-        ]
-      }
-    ],
-    "cultural_notes_vi": "PHÂN BIỆT BIỂU TƯỢNG / ẨN DỤ / NGỤ NGÔN trong tradition critique Pháp đòi hỏi một độ chính xác mà sinh viên Việt thường bỏ qua:\n\n(1) COMPARAISON: A est comme B (kèm từ so sánh: comme, tel, semblable à). « Elle est belle comme le jour. »\n\n(2) MÉTAPHORE: A est B (không kèm từ so sánh; substitution). « Elle est le jour. » Métaphore IN PRÆSENTIA giữ cả hai termes (« cette femme-soleil »); métaphore IN ABSENTIA chỉ giữ vehicle (« le soleil entra dans la pièce » để chỉ người yêu).\n\n(3) MÉTAPHORE FILÉE: chuỗi ẩn dụ liên tiếp khai thác cùng champ sémantique. Baudelaire trong Correspondances filer la métaphore de la « forêt de symboles ».\n\n(4) ALLÉGORIE: récit dont chaque élément renvoie point à point à un sens fixé d'avance. La Fontaine.\n\n(5) SYMBOLE: image ouverte, polysémique, irréductible à un sens unique. Le cygne mallarméen est un symbole — il signifie l'impuissance, l'idéal, l'exil de l'artiste, la blancheur stérile, ET d'autres significations qu'aucune lecture n'épuise.\n\nPHÂN BIỆT QUYẾT ĐỊNH SYMBOLE / ALLÉGORIE: l'allégorie a UN sens; le symbole a une PROFUSION de sens. Confondre les deux = perdre toute finesse interprétative. Une lecture qui réduit Le Cygne de Mallarmé à « la difficulté du poète » l'allégorise — ce qui appauvrit le texte.\n\nÉCOLES CRITIQUES PHÁP SUR LA QUESTION:\n\n(a) GASTON BACHELARD (La Poétique de l'espace, 1957; La Poétique de la rêverie, 1960): l'image poétique est mode de connaissance, non ornement; lecture phénoménologique de la rêverie matérielle (eau, terre, air, feu).\n\n(b) ROLAND BARTHES (Mythologies, 1957): le mythe est une parole second-degré — un signifié devient signifiant pour un nouveau sens. Application critique au-delà de la littérature stricte.\n\n(c) PAUL RICŒUR (La Métaphore vive, 1975): la métaphore n'est pas substitution mais innovation sémantique — elle crée du sens nouveau, irréductible à une paraphrase.\n\n(d) GÉRARD GENETTE (Figures, 1966): retour aux distinctions rhétoriques classiques avec rigueur sémiologique; influence du structuralisme.\n\nBẪY NGƯỜI VIỆT: thường lẫn lộn « biểu tượng » và « ẩn dụ », hoặc dùng « biểu tượng » cho mọi hình ảnh có ý nghĩa. Discipline C2 đòi hỏi phân biệt rạch ròi. Một con sông trong văn bản KHÔNG phải toujours « biểu tượng cho cuộc đời »; có khi đó chỉ là một sông thật, có khi là métaphore filée, có khi là leitmotiv structural — phải chứng minh từ văn bản trước khi nói « biểu tượng ».\n\nMỘT QUY TẮC TỐI THƯỢNG: chứng minh tính BIỂU TƯỢNG đòi hỏi (1) sự lặp lại của hình ảnh trong tác phẩm, (2) sự đa nghĩa qua các xuất hiện, (3) sự kháng cự đối với một paraphrase đơn giản. Thiếu ba dấu hiệu này, bạn không có biểu tượng — bạn có một hình ảnh thuần túy mô tả.",
-    "tip_advice_vi": "GRILLE D'ANALYSE pour identifier et commenter une figure:\n\n(1) IDENTIFIER LE TYPE PRÉCIS:\n- Comparaison? Métaphore? Métonymie? Synecdoque? Allégorie? Symbole?\n- Si métaphore: in praesentia / in absentia / filée?\n- Champ source / champ cible (modèle Lakoff-Johnson, Les Métaphores dans la vie quotidienne, traduit en français en 1985)\n\n(2) ANALYSER LE TRAVAIL DE L'IMAGE:\n- Quel rapprochement opère la figure?\n- Quel effet produit-elle (cognitif, affectif, ironique)?\n- Où se situe-t-elle dans la phrase, dans le poème, dans l'œuvre?\n- Y a-t-il systématisation (filage), récurrence (leitmotiv), variation?\n\n(3) RELIER À UNE TRADITION:\n- L'image appartient-elle à un répertoire (la rose pétrarquiste, la mer baudelairienne)?\n- L'auteur le reprend-il, le subvertit-il, l'épuise-t-il?\n- Quelle est la singularité de SA mise en œuvre?\n\nCỤM HỮU ÍCH:\n\nĐỂ INTRODUIRE UNE ANALYSE:\n- « La métaphore qui s'élabore ici relève d'une tradition que l'on peut faire remonter à… »\n- « Cette image, en apparence convenue, prend chez l'auteur une coloration singulière. »\n- « Le réseau métaphorique de cette page se déploie selon un axe… »\n\nĐỂ DÉCRIRE UNE MÉTAPHORE:\n- « La métaphore opère un transfert du champ X vers le champ Y. »\n- « L'auteur file ici la métaphore sur l'ensemble du paragraphe — chaque image relance la précédente. »\n- « Ce qui frappe, c'est la rupture du registre métaphorique au milieu de la phrase. »\n\nĐỂ DÉCRIRE UN SYMBOLE:\n- « Le motif récurrent du X acquiert, par sa répétition, un statut symbolique. »\n- « Ce symbole résiste à toute paraphrase: il signifie à la fois l'absence, l'attente et le désir. »\n- « La polyvalence du symbole est ici le moteur même de la lecture. »\n\nĐỂ DÉCRIRE UNE ALLÉGORIE:\n- « Le récit fonctionne comme une allégorie transparente: chaque personnage renvoie à un type. »\n- « Cette transparence allégorique est précisément ce que l'auteur subvertit en seconde partie. »\n\nTRÁNH:\n- « C'est un symbole de la liberté » → réduction allégorisante d'un symbole; incompatible avec la définition de symbole\n- « L'auteur utilise une métaphore pour décorer son texte » → conception ornementale dépassée depuis Bachelard\n- Confondre « image » (terme générique) et « figure » (terme rhétorique précis)\n- Identifier toute personnification comme métaphore (ce sont deux figures distinctes)",
-    "vocabulary": [
-      {
-        "word": "une métaphore filée",
-        "en": "an extended metaphor",
-        "vi": "ẩn dụ kéo dài",
-        "pos": "n.f.",
-        "pronunciation_vi": "mé-ta-for fi-lé"
-      },
-      {
-        "word": "in praesentia / in absentia",
-        "en": "in presence / in absence",
-        "vi": "có / không cả hai termes",
-        "pos": "loc. lat.",
-        "pronunciation_vi": "in pré-zãn-sia / in ab-sãn-sia"
-      },
-      {
-        "word": "l'allégorie",
-        "en": "allegory",
-        "vi": "ngụ ngôn / phúng dụ",
-        "pos": "n.f.",
-        "pronunciation_vi": "a-lé-go-ri"
-      },
-      {
-        "word": "le champ sémantique",
-        "en": "the semantic field",
-        "vi": "trường ngữ nghĩa",
-        "pos": "n.m.",
-        "pronunciation_vi": "shã sé-mãn-tik"
-      },
-      {
-        "word": "un réseau métaphorique",
-        "en": "a metaphorical network",
-        "vi": "một mạng lưới ẩn dụ",
-        "pos": "n.m.",
-        "pronunciation_vi": "ré-zô mé-ta-fo-rik"
-      },
-      {
-        "word": "un leitmotiv",
-        "en": "a leitmotiv",
-        "vi": "chủ đề lặp lại",
-        "pos": "n.m.",
-        "pronunciation_vi": "laït-mo-tiv"
-      },
-      {
-        "word": "polysémique",
-        "en": "polysemous",
-        "vi": "đa nghĩa",
-        "pos": "adj.",
-        "pronunciation_vi": "po-li-sé-mik"
-      },
-      {
-        "word": "l'innovation sémantique",
-        "en": "semantic innovation",
-        "vi": "sự sáng tạo ngữ nghĩa",
-        "pos": "n.f.",
-        "pronunciation_vi": "i-no-va-sion sé-mãn-tik"
-      },
-      {
-        "word": "un transfert métaphorique",
-        "en": "a metaphorical transfer",
-        "vi": "một sự chuyển ẩn dụ",
-        "pos": "n.m.",
-        "pronunciation_vi": "trãns-fèr mé-ta-fo-rik"
-      },
-      {
-        "word": "épuiser un sens",
-        "en": "to exhaust a meaning",
-        "vi": "vắt kiệt một ý nghĩa",
-        "pos": "v.",
-        "pronunciation_vi": "é-pwi-zé an sãns"
-      }
-    ],
-    "dialogue": [
-      {
-        "speaker": "Pr. Compagnon",
-        "text": "Madame Tran, vous parlez du « cygne, symbole de la pureté ». Cette lecture est-elle suffisante ?",
-        "vi": "Cô Trần, cô nói về « con thiên nga, biểu tượng của sự thuần khiết ». Cách đọc này có đủ không?"
-      },
-      {
-        "speaker": "Linh",
-        "text": "Non — la réduire à la pureté, c'est l'allégoriser. Mallarmé en fait un symbole polysémique: stérilité, exil, idéal inatteignable.",
-        "vi": "Không — quy giảm thành sự thuần khiết là biến nó thành ngụ ngôn. Mallarmé biến nó thành biểu tượng đa nghĩa: vô sinh, lưu vong, lý tưởng không thể đạt."
-      },
-      {
-        "speaker": "Pr. Compagnon",
-        "text": "Voilà — un symbole résiste à la paraphrase unique. C'est ce qui le distingue de l'allégorie.",
-        "vi": "Đó — một biểu tượng kháng cự lại paraphrase duy nhất. Chính điều này phân biệt nó với ngụ ngôn."
-      },
-      {
-        "speaker": "Linh",
-        "text": "Et c'est en quoi le sonnet mallarméen demeure ouvert: aucune lecture ne l'épuise.",
-        "vi": "Và vì thế bài sonnet của Mallarmé vẫn mở: không cách đọc nào vắt kiệt nó."
-      }
-    ],
-    "dialogue_long": [
-      {
-        "speaker": "Pr. Compagnon (séminaire de poésie moderne)",
-        "text": "Madame Tran, expliquez-nous comment fonctionne le célèbre sonnet « Le vierge, le vivace et le bel aujourd'hui » de Mallarmé. Vingt minutes.",
-        "vi": "Cô Trần, cô giải thích cho chúng tôi cách hoạt động của bài sonnet nổi tiếng « Le vierge, le vivace et le bel aujourd'hui » của Mallarmé. 20 phút."
-      },
-      {
-        "speaker": "Linh",
-        "text": "Le sonnet, paru en 1885 puis recueilli dans les Poésies de 1899, met en scène la figure d'un cygne prisonnier d'un lac gelé. Mais le poème ne raconte pas — il configure une situation symbolique dont la richesse résiste à toute paraphrase. C'est précisément cette résistance qui fait du cygne, ici, un symbole et non une allégorie.",
-        "vi": "Bài sonnet, xuất bản 1885 rồi tập hợp trong Poésies 1899, dàn dựng hình ảnh con thiên nga bị giam trong hồ băng. Nhưng bài thơ không kể — nó cấu hình một tình huống biểu tượng mà sự phong phú kháng cự lại mọi paraphrase. Chính sự kháng cự này biến con thiên nga, ở đây, thành biểu tượng chứ không phải ngụ ngôn."
-      },
-      {
-        "speaker": "Linh",
-        "text": "Premier point: le réseau lexical du gel et de la stérilité. Les termes « vierge », « glacier », « gel », « blancheur » construisent un champ sémantique cohérent qui dépasse la simple description: la blancheur n'est pas seulement couleur, elle est virginité non-fécondée, possibilité jamais réalisée. Bachelard, dans L'Eau et les rêves (1942), aurait parlé d'une « rêverie de l'eau dure » — l'eau qui ne coule plus, qui retient au lieu de porter.",
-        "vi": "Điểm thứ nhất: mạng lưới từ vựng của băng giá và vô sinh. Các từ « vierge », « glacier », « gel », « blancheur » xây dựng một trường ngữ nghĩa nhất quán vượt qua mô tả thuần túy: trắng không chỉ là màu, mà là sự đồng trinh chưa thụ tinh, khả năng chưa bao giờ thực hiện. Bachelard, trong L'Eau et les rêves (1942), sẽ gọi đó là « mộng tưởng nước cứng » — nước không còn chảy, giữ lại thay vì mang đi."
-      },
-      {
-        "speaker": "Linh",
-        "text": "Second point: la position physique du cygne, prisonnier dans la glace. Cette image fonctionne sur deux niveaux. Au niveau littéral, c'est une scène hivernale plausible. Au niveau symbolique, c'est une image de l'artiste mallarméen lui-même: figé dans la matière, incapable de prendre son envol vers l'idéal qu'il entrevoit. Mallarmé, dans ses lettres et notamment dans les fragments du Livre, a explicitement thématisé cette impuissance créatrice.",
-        "vi": "Điểm thứ hai: vị trí thân thể của con thiên nga, tù nhân trong băng. Hình ảnh này hoạt động trên hai cấp. Cấp nghĩa đen, đó là cảnh mùa đông khả tín. Cấp biểu tượng, đó là hình ảnh nghệ sĩ Mallarmé: kẹt trong vật chất, không thể cất cánh lên lý tưởng mà ông thấy thoáng qua. Mallarmé, trong thư từ và đặc biệt trong các đoạn của Le Livre, đã chủ đề hóa rõ sự bất lực sáng tạo này."
-      },
-      {
-        "speaker": "Linh",
-        "text": "Troisième point — le plus délicat. Si l'on s'arrêtait à ces deux lectures, on aurait fait du cygne une allégorie. Or, le poème résiste: il y a une troisième dimension, plus opaque, où le cygne devient une figure de l'écriture poétique elle-même comme tentative toujours rejouée et toujours échouée. Cette dimension est insaisissable précisément parce que le poème refuse de la fixer. Comme l'écrivait Ricœur dans La Métaphore vive, la grande métaphore est innovation sémantique — elle crée un sens qui n'existait pas avant elle et que nulle paraphrase ne peut restituer.",
-        "vi": "Điểm ba — tinh tế nhất. Nếu dừng ở hai cách đọc đó, ta đã biến con thiên nga thành ngụ ngôn. Tuy nhiên, bài thơ kháng cự: có một chiều thứ ba, mờ hơn, nơi con thiên nga trở thành hình ảnh của chính việc viết thơ như nỗ lực luôn được chơi lại và luôn thất bại. Chiều này không nắm bắt được chính vì bài thơ từ chối cố định nó. Như Ricœur viết trong La Métaphore vive, ẩn dụ lớn là sự sáng tạo ngữ nghĩa — nó tạo ra một nghĩa chưa tồn tại trước nó và không paraphrase nào có thể khôi phục."
-      },
-      {
-        "speaker": "Pr. Compagnon",
-        "text": "Bien. Question méthodologique: comment distingueriez-vous, dans la pratique d'analyse, ce qui relève du symbole de ce qui relève d'un simple motif récurrent ?",
-        "vi": "Tốt. Câu hỏi phương pháp luận: trong thực hành phân tích, cô phân biệt thế nào điều thuộc về biểu tượng và điều thuộc về một motif lặp lại đơn thuần?"
-      },
-      {
-        "speaker": "Linh",
-        "text": "Trois critères convergents, à mon sens. Premièrement, la récurrence — le motif doit revenir, non par hasard, mais avec une systématicité qui le marque. Deuxièmement, la polyvalence — chaque occurrence doit ouvrir des sens partiellement différents, sans qu'aucun n'épuise le motif. Troisièmement, la résistance à la paraphrase — si l'on peut dire « ce symbole signifie X » en une phrase, ce n'est pas un symbole, c'est une allégorie. Le cygne mallarméen passe les trois épreuves; le glacier d'un roman réaliste, généralement, ne passe que la première.",
-        "vi": "Ba tiêu chí hội tụ, theo tôi. Thứ nhất, sự lặp lại — motif phải trở lại, không ngẫu nhiên, mà với một tính hệ thống đánh dấu nó. Thứ hai, tính đa giá — mỗi xuất hiện phải mở ra nghĩa hơi khác, mà không nghĩa nào vắt kiệt motif. Thứ ba, sự kháng cự với paraphrase — nếu có thể nói « biểu tượng này nghĩa là X » trong một câu, đó không phải biểu tượng, đó là ngụ ngôn. Con thiên nga của Mallarmé qua được cả ba thử nghiệm; sông băng trong một tiểu thuyết hiện thực, thường, chỉ qua được tiêu chí đầu."
-      },
-      {
-        "speaker": "Pr. Compagnon",
-        "text": "Réponse précise. Voilà ce qu'on attend à votre niveau: la critique méthodique, l'application stricte des distinctions, et l'humilité face à ce qui résiste à la paraphrase. C'est tout l'enjeu d'une lecture symbolique réussie.",
-        "vi": "Câu trả lời chính xác. Đây là điều mong đợi ở cấp độ của cô: phê bình có phương pháp, áp dụng nghiêm ngặt các phân biệt, và sự khiêm tốn trước điều kháng cự với paraphrase. Đó là toàn bộ vấn đề của một cách đọc biểu tượng thành công."
-      }
-    ],
-    "roleplay_prompts": [
-      "Bạn được giao explication d'un sonnet de Baudelaire (Correspondances). Identifier la métaphore filée centrale, situer dans la tradition (lien avec Swedenborg, mysticisme), distinguer du simple ornement décoratif.",
-      "Trong séminaire, một collègue affirme « tous les images dans la poésie sont des symboles ». Phản hồi avec rigueur — distinguer image, comparaison, métaphore, allégorie, symbole.",
-      "Soạn 5 câu pour analyser un motif récurrent (la mer chez Duras, le café chez Houellebecq, la rue chez Modiano) — vérifier les trois critères du symbole avant de l'appeler tel."
-    ],
-    "register_notes": "VOCABULAIRE RHÉTORIQUE TRADITIONNEL (à connaître au mot près):\n\nFIGURES D'ANALOGIE:\n- comparaison (avec mot-outil)\n- métaphore (sans mot-outil)\n- métaphore filée (chaîne)\n- allégorie (récit à sens fixe)\n- symbole (image polysémique ouverte)\n- personnification (attribution d'humanité à non-humain)\n- prosopopée (faire parler un non-humain ou un mort)\n\nFIGURES DE SUBSTITUTION:\n- métonymie (cause pour effet, contenant pour contenu, etc.)\n- synecdoque (partie pour le tout, ou inverse)\n- antonomase (nom propre pour commun ou inverse)\n\nFIGURES D'OPPOSITION:\n- antithèse\n- oxymore\n- chiasme\n\nFIGURES DE RÉPÉTITION:\n- anaphore (en début)\n- épiphore (en fin)\n- épanaphore / épanalepse\n- polyptote (répétition d'un mot avec variations morphologiques)\n\nFIGURES DE CONSTRUCTION:\n- hyperbate (rejet d'un élément hors de sa place attendue)\n- inversion\n- ellipse\n- zeugma\n\nUSAGE C2: nommer la figure CORRECTEMENT est non-négociable. Confondre métaphore et métonymie = perdre toute crédibilité. Une lecture C2 utilise au moins 5-6 termes rhétoriques précis par page d'analyse.\n\nÉCOLES DE LECTURE — connaître les références:\n- BACHELARD: lecture phénoménologique de l'image matérielle (eau, terre, air, feu)\n- BARTHES: sémiotique du mythe (Mythologies, 1957)\n- RICŒUR: la métaphore comme innovation sémantique (La Métaphore vive, 1975)\n- GENETTE: rhétorique structuraliste (Figures, 1966-72)\n- LAKOFF & JOHNSON: linguistique cognitive (Les Métaphores dans la vie quotidienne, 1980 / trad. fr. 1985)\n\nIDIOMS LITTÉRAIRES SUR LA FIGURE:\n- « filer la métaphore » (kéo dài ẩn dụ — courant en critique)\n- « épuiser un sens » (vắt kiệt — soutenu)\n- « le grain de l'image » (hạt của hình ảnh — littéraire bachelardien)\n- « tisser un réseau d'images » (dệt mạng lưới — littéraire)\n\nMỘT TINH TẾ ĐẶC THÙ C2: critique Pháp évite le terme « beau » au sujet d'une figure. On ne dit pas « cette métaphore est belle » — on dit « cette métaphore opère un déplacement signifiant », « ce symbole est efficace », « cette image est dense ». Le « beau » comme jugement esthétique appartient au discours d'amateur, non au discours critique.",
-    "idiom_glosses": [
-      {
-        "idiom": "Filer la métaphore (courant critique)",
-        "literal": "Kéo dài ẩn dụ",
-        "meaning": "Triển khai một ẩn dụ qua nhiều câu liên tiếp.",
-        "example": "Baudelaire, dans Correspondances, file la métaphore de la forêt de symboles tout au long du sonnet."
-      },
-      {
-        "idiom": "Le grain de l'image (littéraire bachelardien)",
-        "literal": "Hạt của hình ảnh",
-        "meaning": "Tính cụ thể vật chất của một hình ảnh thi ca.",
-        "example": "Bachelard nous invite à ressentir le grain de l'image avant de chercher son sens."
-      },
-      {
-        "idiom": "Tisser un réseau (littéraire)",
-        "literal": "Dệt một mạng lưới",
-        "meaning": "Tạo một mạng lưới các hình ảnh liên kết qua tác phẩm.",
-        "example": "Le poète tisse un réseau d'images aquatiques qui structure tout le recueil."
-      },
-      {
-        "idiom": "Crever l'écran (familier appliqué littéraire)",
-        "literal": "Châm vỡ màn ảnh",
-        "meaning": "Một hình ảnh / nhân vật vượt qua khung văn bản — utilisé pour des figures inoubliables.",
-        "example": "Le cygne mallarméen, à force de densité symbolique, crève l'écran du sonnet."
-      }
-    ],
-    "exercises": [
-      {
-        "type": "fill-blank",
-        "question": "Encore conviendrait-il que l'analyse ___ rigoureusement comparaison et métaphore.",
-        "answer": "distinguât"
-      },
-      {
-        "type": "matching",
-        "pairs": [
-          [
-            "métaphore filée",
-            "ẩn dụ kéo dài"
-          ],
-          [
-            "polysémique",
-            "đa nghĩa"
-          ],
-          [
-            "réseau métaphorique",
-            "mạng lưới ẩn dụ"
+        },
+        {
+          "en": "Cette page, d'apparence anodine, recèle un travail rythmique que seule une lecture lente permet de saisir.",
+          "vi": "Trang này, vẻ ngoài bình thường, ẩn chứa công sức nhịp điệu mà chỉ một cách đọc chậm mới nắm bắt được.",
+          "pronunciation_focus": [
+            "apparence → a-pa-rãns",
+            "anodine → a-no-din",
+            "recèle → rơ-sèl",
+            "rythmique → rit-mik"
           ]
-        ],
-        "instruction": "Nối thuật ngữ với nghĩa Việt"
-      },
-      {
-        "type": "translation",
-        "vietnamese": "Biểu tượng, khác với ngụ ngôn, không quy về một nghĩa duy nhất mà mở ra một trường ý nghĩa.",
-        "french": "Le symbole, à la différence de l'allégorie, ne renvoie pas à un sens unique mais ouvre un champ de significations."
-      }
-    ]
-  },
-  {
-    "id": "lgenre_subversion",
-    "level": "C2",
-    "category": "fluency",
-    "title_vi": "Quy ước thể loại và sự lật đổ chúng",
-    "title_en": "Genre conventions and their subversion",
-    "sentences": [
-      {
-        "en": "Le Nouveau Roman, par la voix de Robbe-Grillet, n'a pas tant aboli les conventions du roman réaliste qu'il ne les a déplacées et exposées comme conventions.",
-        "vi": "Tiểu thuyết Mới, qua tiếng nói của Robbe-Grillet, không hẳn xóa bỏ các quy ước của tiểu thuyết hiện thực mà di dời chúng và phơi bày chúng như là quy ước.",
-        "pronunciation_focus": [
-          "Robbe-Grillet → rob-gri-yè",
-          "aboli → a-bo-li",
-          "conventions → kõn-vãn-sion",
-          "exposées → èk-spo-zé"
-        ]
-      },
-      {
-        "en": "En attendant Godot subvertit les attentes du genre dramatique en évacuant intrigue, dénouement et progression psychologique.",
-        "vi": "En attendant Godot lật đổ mong đợi của thể loại kịch bằng cách trục xuất cốt truyện, kết cấu và tiến trình tâm lý.",
-        "pronunciation_focus": [
-          "attendant → a-tãn-dã",
-          "Godot → go-do",
-          "subvertit → sub-vèr-ti",
-          "évacuant → é-va-ku-ã"
-        ]
-      },
-      {
-        "en": "Houellebecq, héritier paradoxal du roman naturaliste, en pousse les conventions jusqu'à l'absurde pour mieux en révéler l'épuisement.",
-        "vi": "Houellebecq, người kế thừa nghịch lý của tiểu thuyết tự nhiên, đẩy các quy ước của nó đến phi lý để bộc lộ rõ hơn sự cạn kiệt.",
-        "pronunciation_focus": [
-          "Houellebecq → wèl-bèk",
-          "héritier → é-ri-tié",
-          "paradoxal → pa-ra-dok-sal",
-          "épuisement → é-pwi-zơ-mã"
-        ]
-      },
-      {
-        "en": "Il eût été paresseux de penser que la subversion d'un genre signifiât son simple rejet — elle suppose au contraire une intimité profonde avec ses codes.",
-        "vi": "Sẽ là lười biếng nếu nghĩ rằng lật đổ một thể loại có nghĩa là chỉ vứt bỏ — ngược lại, nó đòi hỏi một sự thân thuộc sâu sắc với các mã của thể loại ấy.",
-        "pronunciation_focus": [
-          "paresseux → pa-rè-sơ",
-          "subversion → sub-vèr-sion",
-          "signifiât → sig-ni-fia",
-          "intimité → an-ti-mi-té"
-        ]
-      },
-      {
-        "en": "On ne saurait subvertir un genre dont on ne posséderait pas, au préalable, la grammaire la plus secrète.",
-        "vi": "Ta không thể lật đổ một thể loại mà ta không nắm được, từ trước, ngữ pháp ẩn kín nhất của nó.",
-        "pronunciation_focus": [
-          "saurait → sô-rè",
-          "posséderait → po-sé-dơ-rè",
-          "grammaire → gra-mèr",
-          "secrète → sơ-krèt"
-        ]
-      }
-    ],
-    "cultural_notes_vi": "« GENRE » trong critique littéraire Pháp là một khái niệm vừa cũ kỹ vừa luôn mới. Aristote (Poétique) phân biệt épopée, tragédie, comédie; Pháp cổ điển tuân thủ « les trois unités » của tragédie. Mỗi thể loại có CONVENTIONS định nghĩa nó:\n\n(1) ROMAN RÉALISTE thế kỷ XIX (Balzac, Flaubert, Zola): narrateur omniscient discret, cadre socio-historique précis, personnages psychologiquement épais, intrigue causale, finale qui résout (mariage, mort, succès, ruine).\n\n(2) TRAGÉDIE CLASSIQUE: trois unités (action, temps, lieu), héros noble, dénouement fatal, alexandrins, bienséance.\n\n(3) POÉSIE LYRIQUE: « je » expressif, sujets de l'intériorité, formes fixes (sonnet, ode), musicalité.\n\nSUBVERSION = (1) connaissance approfondie des conventions + (2) déplacement / inversion / exposition de ces conventions, KHÔNG phải simple négation.\n\nQUATRE GRANDES SUBVERSIONS du XXe siècle français:\n\n(a) NOUVEAU ROMAN (1950-70): Robbe-Grillet (Les Gommes, 1953; La Jalousie, 1957), Sarraute (Tropismes, 1939; L'Ère du soupçon, 1956), Butor (La Modification, 1957), Simon (La Route des Flandres, 1960). Évacuation du personnage psychologique, descripcion obsessionnelle, défaite de l'intrigue causale. KHÔNG nihiliste — cherche à RÉINVENTER le roman après la perte de crédibilité du modèle balzacien.\n\n(b) THÉÂTRE DE L'ABSURDE: Beckett (En attendant Godot, 1952; Fin de partie, 1957), Ionesco (La Cantatrice chauve, 1950; Les Chaises, 1952), Adamov. Théâtre vidé d'intrigue, langage qui tourne à vide, personnages sans psychologie épaisse. Subvertit les conventions classiques hérité de Racine puis du drame bourgeois du XIXe.\n\n(c) AUTOFICTION (depuis 1977): Doubrovsky (Fils, 1977) invente le terme; Ernaux le porte au plus haut (Les Années, 2008). Hybridation roman/autobiographie qui subvertit la prétention de vérité de l'autobiographie ET la prétention de fiction du roman.\n\n(d) MICHEL HOUELLEBECQ (Les Particules élémentaires, 1998; La Carte et le territoire, prix Goncourt 2010): subversion paradoxale du naturalisme zolien — Houellebecq EN APPLIQUE les conventions (dépouille le narrateur de tout lyrisme, écrit la société comme un sociologue, construit des personnages comme symptômes d'époque) mais les pousse à un degré qui révèle leur insuffisance. Subversion par excès, non par négation.\n\nUNE TENTATION À ÉVITER: opposer schématiquement « roman traditionnel = mauvais » / « roman subversif = bon ». La critique C2 refuse ce manichéisme. Le grand roman du XXe siècle est SOIT une subversion réussie (Beckett, Sarraute), SOIT un classicisme assumé (Modiano, dont la fidélité à des conventions narratives héritées du XIXe est précisément l'enjeu). Ni l'un ni l'autre n'est intrinsèquement supérieur.\n\nBẪY NGƯỜI VIỆT: souvent assimiler « subversion » à « modernité » et « modernité » à « valeur ». La critique C2 distingue sévèrement: une subversion bâclée (qui n'a pas maîtrisé les conventions qu'elle prétend renverser) est moins forte qu'un classicisme assumé.",
-    "tip_advice_vi": "GRILLE D'ANALYSE pour identifier une subversion de genre:\n\n(1) IDENTIFIER LE GENRE PRÉSUMÉ — quel modèle l'œuvre semble-t-elle convoquer?\n(2) LISTER LES CONVENTIONS DE CE GENRE — narratives, formelles, thématiques.\n(3) RELEVER LES DÉPLACEMENTS — convention par convention, qu'est-ce qui est respecté, déplacé, inversé, exposé?\n(4) INTERPRÉTER L'ENJEU DU DÉPLACEMENT — pourquoi l'auteur opère-t-il ce travail? Quel effet en résulte?\n(5) SITUER DANS UNE TRADITION DE SUBVERSION — l'œuvre est-elle isolée ou s'inscrit-elle dans un mouvement?\n\nCỤM HỮU ÍCH:\n\nPOUR IDENTIFIER LE GENRE:\n- « L'œuvre se réclame, sur le mode parodique, du roman X. »\n- « Les conventions du genre Y sont ici à la fois convoquées et déjouées. »\n- « Sur le plan formel, le texte épouse l'apparence de Z, mais en travaille la substance. »\n\nPOUR ANALYSER LA SUBVERSION:\n- « Le roman conserve l'apparence de l'intrigue tout en lui retirant son moteur causal. »\n- « Le narrateur omniscient est ici maintenu, mais privé de la maîtrise qui le caractérisait chez Balzac. »\n- « Cette subversion n'est pas négation: elle suppose au contraire une intimité avec les codes qu'elle déplace. »\n\nPOUR INTERPRÉTER L'ENJEU:\n- « En subvertissant le genre romanesque, l'auteur interroge la possibilité même du roman après [événement historique / esthétique]. »\n- « Cette mise en crise des conventions répond à une perte de crédibilité du modèle hérité. »\n- « Le travail de subversion est inséparable, ici, d'une réflexion sur les conditions de possibilité de la littérature contemporaine. »\n\nPOUR DISTINGUER SUBVERSION ET ÉCHEC:\n- « Cette tentative de subversion échoue précisément parce qu'elle n'a pas maîtrisé les conventions qu'elle prétend renverser. »\n- « Le geste de rupture demeure superficiel: les codes profonds du genre restent intacts. »\n- « Pour subvertir, encore faut-il connaître. »\n\nTRÁNH:\n- « C'est moderne donc c'est bien. » → jugement non-critique\n- « Beckett a inventé un théâtre nouveau. » → trop vague; préciser EN QUOI il subvertit\n- Confondre subversion et nouveauté absolue (toute subversion suppose un connu)\n- Identifier toute innovation formelle comme subversion (l'innovation peut être un perfectionnement, pas une rupture)",
-    "vocabulary": [
-      {
-        "word": "subvertir un genre",
-        "en": "to subvert a genre",
-        "vi": "lật đổ một thể loại",
-        "pos": "v.",
-        "pronunciation_vi": "sub-vèr-tir an jãn-rơ"
-      },
-      {
-        "word": "les conventions narratives",
-        "en": "narrative conventions",
-        "vi": "các quy ước trần thuật",
-        "pos": "n.f. pl.",
-        "pronunciation_vi": "kõn-vãn-sion na-ra-tiv"
-      },
-      {
-        "word": "un héritage paradoxal",
-        "en": "a paradoxical heritage",
-        "vi": "di sản nghịch lý",
-        "pos": "n.m.",
-        "pronunciation_vi": "é-ri-taj pa-ra-dok-sal"
-      },
-      {
-        "word": "l'épuisement d'un modèle",
-        "en": "the exhaustion of a model",
-        "vi": "sự cạn kiệt của một mô hình",
-        "pos": "n.m.",
-        "pronunciation_vi": "é-pwi-zơ-mã dan mo-dèl"
-      },
-      {
-        "word": "déjouer les attentes",
-        "en": "to thwart expectations",
-        "vi": "phá các mong đợi",
-        "pos": "v.",
-        "pronunciation_vi": "dé-ju-é lé za-tãnt"
-      },
-      {
-        "word": "le Nouveau Roman",
-        "en": "the Nouveau Roman movement",
-        "vi": "phong trào Tiểu thuyết Mới",
-        "pos": "n.m.",
-        "pronunciation_vi": "nu-vô ro-mã"
-      },
-      {
-        "word": "le théâtre de l'absurde",
-        "en": "theatre of the absurd",
-        "vi": "kịch phi lý",
-        "pos": "n.m.",
-        "pronunciation_vi": "té-a-trơ dơ lab-surd"
-      },
-      {
-        "word": "l'autofiction",
-        "en": "autofiction",
-        "vi": "tự hư cấu",
-        "pos": "n.f.",
-        "pronunciation_vi": "ô-to-fik-sion"
-      },
-      {
-        "word": "la mise en crise",
-        "en": "the putting-into-crisis",
-        "vi": "sự đặt vào khủng hoảng",
-        "pos": "n.f.",
-        "pronunciation_vi": "miz ã kriz"
-      },
-      {
-        "word": "un déplacement formel",
-        "en": "a formal displacement",
-        "vi": "một sự dịch chuyển hình thức",
-        "pos": "n.m.",
-        "pronunciation_vi": "dé-plas-mã for-mèl"
-      }
-    ],
-    "dialogue": [
-      {
-        "speaker": "Pr. Compagnon",
-        "text": "Madame Tran, vous écrivez que Beckett « a détruit le théâtre ». Reformulez.",
-        "vi": "Cô Trần, cô viết rằng Beckett « đã phá hủy kịch ». Cô diễn đạt lại."
-      },
-      {
-        "speaker": "Linh",
-        "text": "Bien sûr — formulation excessive. Je devrais dire qu'il en a subverti les conventions héritées du drame bourgeois, sans abolir le théâtre comme genre.",
-        "vi": "Vâng — diễn đạt quá đáng. Tôi nên nói ông lật đổ các quy ước thừa hưởng từ kịch tư sản, mà không xóa bỏ kịch như thể loại."
-      },
-      {
-        "speaker": "Pr. Compagnon",
-        "text": "Et il faut ajouter: pour subvertir, il faut connaître. Beckett était un lecteur attentif de Racine.",
-        "vi": "Và phải thêm: để lật đổ, phải biết. Beckett là người đọc chú ý Racine."
-      },
-      {
-        "speaker": "Linh",
-        "text": "Précisément — la subversion suppose une intimité avec les codes.",
-        "vi": "Chính xác — lật đổ đòi hỏi sự thân thuộc với các mã."
-      }
-    ],
-    "dialogue_long": [
-      {
-        "speaker": "Pr. Compagnon (séminaire de M2 sur le roman au XXe siècle)",
-        "text": "Madame Tran, votre exposé porte sur Houellebecq — auteur dont l'évaluation académique reste polémique. Vingt minutes pour défendre une lecture précise.",
-        "vi": "Cô Trần, bài cô về Houellebecq — tác giả mà đánh giá học thuật còn gây tranh cãi. 20 phút để bảo vệ một cách đọc chính xác."
-      },
-      {
-        "speaker": "Linh",
-        "text": "Houellebecq pose un problème critique singulier: il semble écrire dans la langue la plus plate, celle d'un sociologue mécontent, sans aucune des marques distinctives qu'on attend d'une œuvre littéraire ambitieuse — pas de poésie, pas d'ironie sophistiquée, pas de jeu narratif spectaculaire. Et pourtant, il est lu, traduit, primé. Comment expliquer ce paradoxe ?",
-        "vi": "Houellebecq đặt một vấn đề critique độc đáo: ông có vẻ viết bằng ngôn ngữ phẳng nhất, của một nhà xã hội học bất mãn, không có bất kỳ dấu hiệu phân biệt nào mong đợi từ một tác phẩm văn học tham vọng — không thi ca, không châm biếm tinh vi, không trò chơi trần thuật ngoạn mục. Tuy vậy, ông được đọc, dịch, trao giải. Giải thích nghịch lý này thế nào?"
-      },
-      {
-        "speaker": "Linh",
-        "text": "Mon hypothèse — qu'il faut, je le concède, défendre point par point: Houellebecq n'écrit pas hors de la tradition romanesque française; il en subvertit les conventions par UN EXCÈS. Plus précisément, il pousse les conventions du naturalisme zolien jusqu'au point où elles révèlent leur propre épuisement. C'est une subversion paradoxale — non par déplacement, comme le Nouveau Roman, mais par hyperfidélité.",
-        "vi": "Giả thuyết của tôi — tôi thừa nhận phải bảo vệ từng điểm: Houellebecq không viết ngoài truyền thống tiểu thuyết Pháp; ông lật đổ các quy ước của nó qua MỘT SỰ THÁI QUÁ. Cụ thể hơn, ông đẩy các quy ước của naturalisme Zola đến điểm chúng để lộ sự cạn kiệt của chính mình. Đó là một lật đổ nghịch lý — không phải qua di dời, như Nouveau Roman, mà qua hyperfidélité."
-      },
-      {
-        "speaker": "Linh",
-        "text": "Premier indice: le narrateur. Comme Zola, Houellebecq adopte un narrateur quasi sociologue, qui décrit ses personnages comme des cas, qui les situe dans des conditions socio-économiques précises, qui interprète leurs comportements à l'aune de déterminismes (génétiques, sexuels, économiques). Cela, c'est du pur Zola. Mais là où Zola maintenait, sous le déterminisme, une compassion humaniste — la pitié pour Gervaise dans L'Assommoir — Houellebecq retire la compassion. Le narrateur regarde ses personnages avec une froideur qui est, précisément, l'épuisement de l'humanisme zolien.",
-        "vi": "Dấu hiệu đầu: người trần thuật. Như Zola, Houellebecq dùng một người trần thuật gần như nhà xã hội học, mô tả nhân vật như các ca, đặt họ trong điều kiện kinh tế-xã hội cụ thể, diễn giải hành vi qua các định mệnh (di truyền, tình dục, kinh tế). Đó là Zola thuần túy. Nhưng nơi Zola duy trì, dưới định mệnh, một lòng trắc ẩn nhân văn — niềm thương cho Gervaise trong L'Assommoir — Houellebecq rút bỏ lòng trắc ẩn. Người trần thuật nhìn nhân vật với một sự lạnh lùng, chính là, sự cạn kiệt của humanisme Zola."
-      },
-      {
-        "speaker": "Linh",
-        "text": "Deuxième indice: la description. Houellebecq décrit longuement, à la manière naturaliste, les espaces de la société contemporaine — supermarchés, hôtels, plages touristiques, locaux d'entreprise. Ces descriptions ont la précision objective qu'on trouve chez Zola décrivant les Halles dans Le Ventre de Paris. Mais là où Zola découvrait, sous l'objectivité, une vitalité presque épique, Houellebecq découvre, sous l'objectivité, le vide. Même méthode, effet inversé. C'est cela, la subversion par excès.",
-        "vi": "Dấu hiệu hai: mô tả. Houellebecq mô tả dài, theo cách naturaliste, các không gian xã hội đương đại — siêu thị, khách sạn, bãi biển du lịch, văn phòng công ty. Các mô tả này có sự chính xác khách quan tìm thấy ở Zola mô tả Les Halles trong Le Ventre de Paris. Nhưng nơi Zola phát hiện, dưới khách quan, một sức sống gần như sử thi, Houellebecq phát hiện, dưới khách quan, sự rỗng. Cùng phương pháp, hiệu ứng đảo. Đó chính là lật đổ qua thái quá."
-      },
-      {
-        "speaker": "Linh",
-        "text": "Troisième indice: la prétention scientifique. Zola se réclamait du « roman expérimental » (préface au Roman expérimental, 1880) — il voulait appliquer la méthode de Claude Bernard à la littérature. Houellebecq, dans Les Particules élémentaires (1998), pousse cette prétention jusqu'à inclure des passages de pseudo-scientifique sur la biologie quantique — passages que la critique a souvent jugés ratés, mais qui sont précisément à interpréter comme un geste critique: voilà ce que devient le « roman expérimental » zolien aujourd'hui — du pseudo-discours scientifique au sein du roman, qui ne convainc plus personne.",
-        "vi": "Dấu hiệu ba: tham vọng khoa học. Zola tự nhận « tiểu thuyết thực nghiệm » (lời tựa Le Roman expérimental, 1880) — ông muốn áp dụng phương pháp của Claude Bernard vào văn chương. Houellebecq, trong Les Particules élémentaires (1998), đẩy tham vọng này đến mức bao gồm các đoạn giả khoa học về sinh học lượng tử — các đoạn critique thường đánh giá là hỏng, nhưng chính cần diễn giải như một động tác critique: đó là điều « tiểu thuyết thực nghiệm » Zola trở thành hôm nay — diễn ngôn giả khoa học trong tiểu thuyết, không còn thuyết phục ai."
-      },
-      {
-        "speaker": "Pr. Compagnon",
-        "text": "Lecture forte. Mais une objection: ne risquez-vous pas de surinterpréter ? Comment savez-vous que Houellebecq est conscient de cette dialectique avec Zola ? Il pourrait simplement écrire mal.",
-        "vi": "Cách đọc mạnh. Nhưng một phản biện: cô không có nguy cơ diễn giải quá không? Cô làm sao biết Houellebecq ý thức về biện chứng này với Zola? Ông có thể đơn giản viết tệ."
-      },
-      {
-        "speaker": "Linh",
-        "text": "Objection légitime. Deux éléments la désamorcent. Premièrement, les écrits paratextuels de Houellebecq — interviews, articles dans Lire et Le Figaro littéraire — montrent qu'il connaît Zola en profondeur et le revendique. Deuxièmement, et plus important: la conscience de l'auteur n'est pas le critère de validité d'une lecture. Comme l'a montré Compagnon — pardon, comme vous l'avez vous-même montré dans Le Démon de la théorie (1998) — l'intention de l'auteur est une donnée parmi d'autres, jamais l'arbitre ultime. Si la structure textuelle soutient ma lecture indépendamment, l'objection de la conscience tombe.",
-        "vi": "Phản biện hợp pháp. Hai yếu tố vô hiệu hóa nó. Thứ nhất, các văn bản paratextuels của Houellebecq — phỏng vấn, bài trên Lire và Le Figaro littéraire — cho thấy ông biết Zola sâu sắc và yêu sách nó. Thứ hai, quan trọng hơn: ý thức của tác giả không phải tiêu chí hiệu lực của một cách đọc. Như Compagnon đã chứng minh — xin lỗi, như chính thầy đã chứng minh trong Le Démon de la théorie (1998) — ý đồ của tác giả là một dữ liệu trong số khác, không bao giờ là trọng tài cuối. Nếu cấu trúc văn bản ủng hộ cách đọc của tôi độc lập, phản biện về ý thức rơi."
-      },
-      {
-        "speaker": "Pr. Compagnon",
-        "text": "Réponse parfaite — vous mobilisez ma propre position contre ma propre objection. C'est exactement le genre d'agilité critique qu'on attend en agrégation.",
-        "vi": "Câu trả lời hoàn hảo — cô huy động chính lập trường của tôi chống lại phản biện của chính tôi. Chính là loại linh hoạt critique mong đợi ở agrégation."
-      }
-    ],
-    "roleplay_prompts": [
-      "Bạn được giao analyse de la première page d'En attendant Godot de Beckett. Identifier ce qui subvertit les conventions du drame classique (unités, intrigue, personnages psychologiques) — KHÔNG dire « Beckett a tout cassé ».",
-      "Trong séminaire, một collègue affirme que « le Nouveau Roman a échoué parce qu'il est illisible ». Phản hồi en distinguant lisibilité immédiate et richesse littéraire — défendre Sarraute ou Robbe-Grillet sans tomber dans l'apologie.",
-      "Soạn 5 câu pour analyser comment Annie Ernaux, dans Les Années (2008), subvertit les conventions de l'autobiographie classique en y intégrant la voix collective d'une génération."
-    ],
-    "register_notes": "NOMENCLATURE DES GRANDS GENRES (à connaître):\n\nROMAN — sous-genres:\n- roman réaliste / naturaliste (Balzac, Flaubert, Zola)\n- roman psychologique (La Princesse de Clèves, Constant Adolphe, Proust)\n- roman expérimental (Nouveau Roman: Robbe-Grillet, Sarraute)\n- roman policier (Simenon, Vargas)\n- roman d'apprentissage / Bildungsroman (Stendhal Le Rouge et le Noir, Flaubert L'Éducation sentimentale)\n- autofiction (Doubrovsky, Ernaux, Carrère)\n\nTHÉÂTRE — sous-genres:\n- tragédie classique (Corneille, Racine)\n- comédie (Molière, Marivaux)\n- drame romantique (Hugo Hernani)\n- drame bourgeois (XIXe)\n- théâtre de l'absurde (Beckett, Ionesco, Adamov)\n- théâtre de la cruauté (Artaud)\n\nPOÉSIE — formes et écoles:\n- forme fixe: sonnet, ode, ballade, rondeau\n- vers libre (depuis Rimbaud)\n- prose poétique (Baudelaire, Spleen de Paris)\n- école parnassienne (Leconte de Lisle, Heredia)\n- école symboliste (Verlaine, Rimbaud, Mallarmé)\n- surréalisme (Breton, Éluard, Aragon)\n- OuLiPo (Queneau, Perec)\n\nUSAGE C2: connaître ces classifications n'est pas du formalisme — chaque genre a ses CONVENTIONS qu'il faut nommer pour analyser une subversion. Dire « Beckett subvertit le théâtre » est trop vague; dire « Beckett subvertit le drame bourgeois post-naturaliste en évacuant l'intrigue causale » est précis.\n\nMODES DE SUBVERSION:\n- PARODIE (imitation moqueuse, ex. Don Quichotte parodiant les romans de chevalerie)\n- PASTICHE (imitation sérieuse du style)\n- DÉTOURNEMENT (récupération avec changement de sens)\n- DÉPLACEMENT (modification d'un élément structural)\n- HYPERFIDÉLITÉ (excès de respect des conventions, qui révèle leur épuisement) — Houellebecq\n\nIDIOMS LITTÉRAIRES SUR LA SUBVERSION:\n- « jouer avec les codes » (chơi với các mã — courant)\n- « pousser une logique à son terme » (đẩy logic đến cùng — soutenu)\n- « tordre une convention » (bẻ cong quy ước — courant)\n- « miner de l'intérieur » (làm sụp từ bên trong — soutenu)\n\nMỘT TINH TẾ ĐẶC THÙ: critique Pháp évite les métaphores guerrières (« Beckett attaque le théâtre », « Houellebecq démolit le roman »). Ces formules sont jugées vulgaires. Préférer: « subvertit », « déplace », « interroge », « met à l'épreuve », « pousse à sa limite ». Le travail littéraire est dialectique, non belliqueux.",
-    "idiom_glosses": [
-      {
-        "idiom": "Pousser une logique à son terme (soutenu)",
-        "literal": "Đẩy một logic đến cuối",
-        "meaning": "Đưa một quy ước đến cực để bộc lộ giới hạn — Houellebecquian.",
-        "example": "Houellebecq pousse la logique du naturalisme zolien à son terme — et révèle son épuisement."
-      },
-      {
-        "idiom": "Miner de l'intérieur (soutenu)",
-        "literal": "Đào ngầm từ bên trong",
-        "meaning": "Phá từ bên trong bằng cách giả vờ tôn trọng — subversion subtile.",
-        "example": "Beckett mine de l'intérieur les conventions du théâtre classique sans jamais les rejeter ouvertement."
-      },
-      {
-        "idiom": "Faire école (courant littéraire)",
-        "literal": "Tạo trường phái",
-        "meaning": "Trở thành mô hình cho thế hệ sau.",
-        "example": "Le Nouveau Roman a fait école auprès des écrivains des années 1960."
-      },
-      {
-        "idiom": "Tirer son épingle du jeu (courant)",
-        "literal": "Rút kim ra khỏi trò chơi",
-        "meaning": "Thoát khỏi một tình thế khó — analyse de Modiano qui maintient un classicisme dans une époque expérimentale.",
-        "example": "Modiano tire son épingle du jeu en maintenant un classicisme assumé là où ses contemporains expérimentent."
-      }
-    ],
-    "exercises": [
-      {
-        "type": "fill-blank",
-        "question": "Il eût été paresseux de penser que la subversion d'un genre ___ son simple rejet.",
-        "answer": "signifiât"
-      },
-      {
-        "type": "matching",
-        "pairs": [
-          [
-            "subvertir un genre",
-            "lật đổ một thể loại"
-          ],
-          [
-            "déjouer les attentes",
-            "phá các mong đợi"
-          ],
-          [
-            "la mise en crise",
-            "sự đặt vào khủng hoảng"
+        },
+        {
+          "en": "Il eût été préférable, à mon sens, que l'analyse procédât du détail vers le système, et non l'inverse.",
+          "vi": "Theo tôi, lẽ ra phân tích nên đi từ chi tiết đến hệ thống, không phải ngược lại.",
+          "pronunciation_focus": [
+            "eût → u",
+            "préférable → pré-fé-ra-blơ",
+            "procédât → pro-sé-da",
+            "inverse → an-vèrs"
           ]
-        ],
-        "instruction": "Nối thuật ngữ critique với nghĩa Việt"
-      },
-      {
-        "type": "translation",
-        "vietnamese": "Ta không thể lật đổ một thể loại mà ta không nắm được, từ trước, ngữ pháp ẩn kín nhất của nó.",
-        "french": "On ne saurait subvertir un genre dont on ne posséderait pas, au préalable, la grammaire la plus secrète."
-      }
-    ]
-  },
-  {
-    "id": "lcomparing_translations",
-    "level": "C2",
-    "category": "fluency",
-    "title_vi": "So sánh các bản dịch — phê bình dịch thuật văn học",
-    "title_en": "Comparing literary translations",
-    "sentences": [
-      {
-        "en": "Toute traduction, comme l'a écrit Berman, opère un déplacement irrécupérable que la critique se doit d'analyser, non de déplorer.",
-        "vi": "Mọi bản dịch, như Berman viết, thực hiện một sự dịch chuyển không thể khôi phục mà phê bình phải phân tích, chứ không than vãn.",
-        "pronunciation_focus": [
-          "traduction → tra-duk-sion",
-          "Berman → bèr-man",
-          "irrécupérable → i-ré-ku-pé-ra-blơ",
-          "déplorer → dé-plo-ré"
-        ]
-      },
-      {
-        "en": "Comparer deux versions françaises d'un même texte étranger révèle moins l'infidélité de l'une que les choix esthétiques de chaque traducteur.",
-        "vi": "So sánh hai bản tiếng Pháp của cùng một văn bản nước ngoài cho thấy ít sự bất trung của một bản hơn là các lựa chọn thẩm mỹ của mỗi người dịch.",
-        "pronunciation_focus": [
-          "versions → vèr-sion",
-          "révèle → ré-vèl",
-          "infidélité → an-fi-dé-li-té",
-          "esthétiques → ès-té-tik"
-        ]
-      },
-      {
-        "en": "Le rythme proustien, dont la phrase peut courir sur une page entière, met la traduction vietnamienne devant un défi structurel.",
-        "vi": "Nhịp điệu của Proust, mà một câu có thể trải dài cả trang, đặt bản dịch tiếng Việt trước một thách thức cấu trúc.",
-        "pronunciation_focus": [
-          "rythme → ritm",
-          "proustien → prus-tian",
-          "entière → ãn-tièr",
-          "défi → dé-fi"
-        ]
-      },
-      {
-        "en": "Encore faudrait-il que le traducteur eût mesuré, avant de commencer, l'écart entre les économies syntaxiques des deux langues.",
-        "vi": "Vẫn cần người dịch đã đo, trước khi bắt đầu, khoảng cách giữa các kinh tế cú pháp của hai ngôn ngữ.",
-        "pronunciation_focus": [
-          "faudrait → fô-drè",
-          "mesuré → mơ-zu-ré",
-          "écart → é-kar",
-          "économies → é-ko-no-mi"
-        ]
-      },
-      {
-        "en": "Meschonnic nous a appris à juger une traduction non sur sa fidélité au sens, mais sur sa restitution du rythme — qui est, lui, le sens même.",
-        "vi": "Meschonnic đã dạy chúng ta đánh giá một bản dịch không trên sự trung thành với nghĩa, mà trên sự khôi phục nhịp điệu — vốn dĩ chính là ý nghĩa.",
-        "pronunciation_focus": [
-          "Meschonnic → mè-sho-nik",
-          "appris → a-pri",
-          "fidélité → fi-dé-li-té",
-          "restitution → rès-ti-tu-sion"
-        ]
-      }
-    ],
-    "cultural_notes_vi": "PHÊ BÌNH DỊCH THUẬT trong tradition Pháp est un champ riche, structuré par trois grands théoriciens contemporains:\n\n(1) ANTOINE BERMAN (1942-1991): L'Épreuve de l'étranger (1984), La Traduction et la lettre (1985), Pour une critique des traductions: John Donne (1995). Berman défend la traduction « éthique » qui respecte l'étrangeté du texte source au lieu de la naturaliser. Il identifie 13 « tendances déformantes » que les traducteurs subissent (rationalisation, clarification, allongement, ennoblissement, appauvrissement qualitatif, appauvrissement quantitatif, homogénéisation, etc.). Lecture obligatoire en master de traduction.\n\n(2) HENRI MESCHONNIC (1932-2009): Pour la poétique I-V (1970-78), Critique du rythme (1982), Poétique du traduire (1999). Meschonnic centralise le RYTHME comme catégorie centrale: traduire, c'est rendre le rythme du texte source, non son sens. Sa formule fameuse: « le rythme est l'organisation du sens dans le discours, donc le sens même ». Critique sévère de la traduction « belle infidèle » classique.\n\n(3) BARBARA CASSIN (née 1947): Vocabulaire européen des philosophies. Dictionnaire des intraduisibles (2004). Pose la question des INTRADUISIBLES — concepts qui résistent au transfert d'une langue à l'autre (« mind » en anglais, « Geist » en allemand, « esprit » en français — pas synonymes).\n\nQUATRE TYPES DE COMPARAISONS courantes en M2 / agrégation de lettres modernes:\n\n(a) DEUX TRADUCTIONS FRANÇAISES D'UN MÊME TEXTE ÉTRANGER. Ex: comparer la traduction de Madame Bovary en anglais par Lydia Davis (2010) avec celle de Geoffrey Wall (1992) — ou plus pertinent pour un public vietnamien: comparer plusieurs traductions vietnamiennes de Madame Bovary (Bùi Hữu Tải, Trần Phong Giao, etc.).\n\n(b) UNE TRADUCTION COMPARÉE AU TEXTE SOURCE. Ex: examiner comment la traduction française de Beloved de Toni Morrison (par Hortense Chabrier et Sylviane Rué, 1989) rend le vernaculaire afro-américain.\n\n(c) DEUX TRADUCTIONS DU MÊME TEXTE PAR UN MÊME TRADUCTEUR à des époques différentes. Ex: les deux versions de Don Quichotte par Aline Schulman.\n\n(d) AUTO-TRADUCTION ET RÉ-ÉCRITURE. Ex: Beckett, qui s'auto-traduisait du français à l'anglais, n'a jamais produit deux versions identiques — la « traduction » devient ré-écriture.\n\nENJEU SPÉCIFIQUE POUR PUBLIC VIETNAMIEN-FRANÇAIS:\n\n(1) RYTHME PROUSTIEN. La phrase de Proust, qui peut courir sur une page entière, déborde les capacités syntaxiques du vietnamien moderne — qui privilégie les phrases courtes et la coordination. Les traductions vietnamiennes existantes (notamment celle de Dương Tường, partielle) ont dû INVENTER une syntaxe vietnamienne nouvelle pour rendre le souffle proustien. Comparer deux solutions vietnamiennes pour le célèbre incipit de la Recherche est un exercice d'agrégation classique.\n\n(2) DENSITÉ POÉTIQUE. La poésie française du XIXe-XXe (Baudelaire, Mallarmé, Apollinaire, Char) repose sur une densité lexicale et rythmique que le vietnamien — langue à tons, à monosyllabes — restitue de manière toujours partielle. Les traductions vietnamiennes de Baudelaire (par Vũ Đình Liên, par Tế Hanh) sont devenues, par leur singularité, des œuvres en soi.\n\n(3) NIVEAUX DE LANGUE. Le français littéraire utilise des registres soutenus (passé simple, subjonctif imparfait) qui n'ont aucun équivalent grammatical en vietnamien. Le traducteur doit COMPENSER par d'autres marques (lexique soutenu, archaïsmes, structure rare). C'est précisément cette compensation qu'analyse une critique de traduction.",
-    "tip_advice_vi": "GRILLE D'ANALYSE pour comparer deux traductions:\n\n(1) CHOISIR UN PASSAGE COURT — 5 à 15 phrases, dense, représentatif du texte source. Travail détaillé impossible sur plus.\n\n(2) ÉTABLIR LE TEXTE SOURCE EN COLONNE CENTRALE, les deux traductions de part et d'autre. Numéroter chaque ligne pour faciliter la référence.\n\n(3) ANALYSER POINT PAR POINT:\n- Lexique: chaque mot du source rendu comment?\n- Syntaxe: phrase coupée, fusionnée, restructurée?\n- Temps verbaux: respect ou modulation?\n- Rythme: cadence préservée?\n- Connotations: registre maintenu?\n- Effets sonores: allitérations, assonances, rimes internes?\n- Niveaux de langue: soutenu / courant / familier?\n\n(4) IDENTIFIER UN CHOIX TRADUCTOLOGIQUE GLOBAL chez chaque traducteur — souvent une grille fait apparaître une cohérence: l'un naturalise (cible), l'autre étrangéise (source).\n\n(5) ÉVALUER NON L'ERREUR mais LA STRATÉGIE — chaque choix a un coût et un bénéfice. Une critique C2 ne dit pas « cette traduction est mauvaise »; elle dit « cette traduction privilégie X au détriment de Y ».\n\nCỤM HỮU ÍCH:\n\nPOUR INTRODUIRE LA COMPARAISON:\n- « La confrontation des deux versions fait apparaître non tant un meilleur et un moins bon que deux stratégies divergentes. »\n- « Chaque traducteur opère, face au même original, un arbitrage différent entre les exigences contradictoires de la fidélité. »\n\nPOUR DÉCRIRE UN ÉCART:\n- « Là où l'original use d'un imparfait à valeur durative, la traduction X opte pour un présent qui en accélère le tempo. »\n- « Le rythme ternaire de l'original est rendu, dans la version Y, par une cadence binaire — choix qui appauvrit la dimension lyrique. »\n- « L'allitération en [s] de la phrase source disparaît purement et simplement dans la traduction Z. »\n\nPOUR ÉVALUER UNE STRATÉGIE:\n- « La stratégie de naturalisation est ici poussée à un point qui efface la singularité de la voix originale. »\n- « À l'inverse, la stratégie étrangéisante préserve la défamiliarisation — au prix d'une lecture plus exigeante. »\n- « Aucune des deux versions ne saurait prétendre à l'exhaustivité; chacune éclaire un aspect que l'autre laisse dans l'ombre. »\n\nPOUR CONCLURE:\n- « Cette comparaison illustre le théorème bermanien selon lequel toute traduction est nécessairement déplacement. »\n- « C'est précisément ce que Meschonnic appelait l'épreuve du rythme: ce qui résiste, dans la traduction, à la pure équivalence sémantique. »\n\nTRÁNH:\n- « Cette traduction est meilleure que celle-là. » → jugement non analytique\n- « Le traducteur a fait une erreur. » → distinguer erreur (lapsus) et choix (stratégie)\n- « Le vietnamien ne peut rendre cela. » → toujours faux; nuancer en disant « le vietnamien rend cela par d'autres moyens »\n- Comparer sans citer ligne par ligne — vague et invérifiable",
-    "vocabulary": [
-      {
-        "word": "la traductologie",
-        "en": "translation studies",
-        "vi": "dịch học",
-        "pos": "n.f.",
-        "pronunciation_vi": "tra-duk-to-lo-ji"
-      },
-      {
-        "word": "un déplacement traductologique",
-        "en": "a translative displacement",
-        "vi": "một sự dịch chuyển dịch thuật",
-        "pos": "n.m.",
-        "pronunciation_vi": "dé-plas-mã tra-duk-to-lo-jik"
-      },
-      {
-        "word": "la naturalisation",
-        "en": "domestication",
-        "vi": "sự nội địa hóa (dịch)",
-        "pos": "n.f.",
-        "pronunciation_vi": "na-tu-ra-li-za-sion"
-      },
-      {
-        "word": "l'étrangéisation",
-        "en": "foreignization",
-        "vi": "sự giữ tính lạ",
-        "pos": "n.f.",
-        "pronunciation_vi": "é-trãn-jé-i-za-sion"
-      },
-      {
-        "word": "une tendance déformante",
-        "en": "a deforming tendency (Berman)",
-        "vi": "một khuynh hướng làm méo (Berman)",
-        "pos": "n.f.",
-        "pronunciation_vi": "tãn-dãns dé-for-mãnt"
-      },
-      {
-        "word": "la fidélité au sens",
-        "en": "fidelity to meaning",
-        "vi": "sự trung thành với nghĩa",
-        "pos": "n.f.",
-        "pronunciation_vi": "fi-dé-li-té ô sãns"
-      },
-      {
-        "word": "la restitution du rythme",
-        "en": "the restitution of rhythm",
-        "vi": "sự khôi phục nhịp điệu",
-        "pos": "n.f.",
-        "pronunciation_vi": "rès-ti-tu-sion du ritm"
-      },
-      {
-        "word": "un intraduisible",
-        "en": "an untranslatable",
-        "vi": "một khái niệm không dịch được",
-        "pos": "n.m.",
-        "pronunciation_vi": "an-tra-du-i-zi-blơ"
-      },
-      {
-        "word": "une auto-traduction",
-        "en": "a self-translation",
-        "vi": "sự tự dịch",
-        "pos": "n.f.",
-        "pronunciation_vi": "ô-to tra-duk-sion"
-      },
-      {
-        "word": "un calque",
-        "en": "a calque (loan translation)",
-        "vi": "sự dịch sao (calque)",
-        "pos": "n.m.",
-        "pronunciation_vi": "kalk"
-      }
-    ],
-    "dialogue": [
-      {
-        "speaker": "Pr. Compagnon",
-        "text": "Madame Tran, vous comparez deux traductions vietnamiennes de Madame Bovary. Sur quelle phrase précise ?",
-        "vi": "Cô Trần, cô so sánh hai bản dịch tiếng Việt của Madame Bovary. Trên câu cụ thể nào?"
-      },
-      {
-        "speaker": "Linh",
-        "text": "Sur l'incipit du chapitre VI, partie I — le passage sur les lectures romantiques d'Emma adolescente.",
-        "vi": "Trên incipit của chương VI, phần I — đoạn về các cuốn tiểu thuyết lãng mạn Emma đọc tuổi thiếu nữ."
-      },
-      {
-        "speaker": "Pr. Compagnon",
-        "text": "Bon choix — passage à discours indirect libre intense. Comment chacune rend-elle l'ironie flaubertienne ?",
-        "vi": "Lựa chọn tốt — đoạn discours indirect libre mạnh. Mỗi bản rendre châm biếm Flaubert thế nào?"
-      },
-      {
-        "speaker": "Linh",
-        "text": "L'une l'efface en choisissant un présent narratif neutre; l'autre la préserve en restituant l'imparfait à valeur ironique.",
-        "vi": "Một bản xóa nó bằng cách chọn một présent narratif trung lập; bản kia giữ bằng cách khôi phục imparfait có giá trị châm biếm."
-      }
-    ],
-    "dialogue_long": [
-      {
-        "speaker": "Pr. Compagnon (séminaire de traductologie)",
-        "text": "Madame Tran, vous nous présentez aujourd'hui une comparaison de deux traductions vietnamiennes du célèbre incipit de la Recherche du temps perdu — la phrase qui ouvre Du côté de chez Swann (1913).",
-        "vi": "Cô Trần, cô trình bày hôm nay so sánh hai bản dịch tiếng Việt của incipit nổi tiếng Recherche du temps perdu — câu mở đầu Du côté de chez Swann (1913)."
-      },
-      {
-        "speaker": "Linh",
-        "text": "L'incipit proustien — « Longtemps, je me suis couché de bonne heure » — pose au traducteur vietnamien un défi triple. D'abord, le rythme: la phrase, brève en apparence, se prolonge dans tout le paragraphe par une syntaxe à embranchements. Ensuite, le passé composé: « je me suis couché » a une valeur stylistique très spécifique en français — pas un présent, pas un passé simple, mais ce passé composé qui installe le souvenir dans une présence persistante. Enfin, le « longtemps » initial: adverbe placé en hyperbate, qui charge dès le premier mot le tempo de toute la Recherche.",
-        "vi": "Incipit Proust — « Longtemps, je me suis couché de bonne heure » — đặt cho người dịch tiếng Việt một thách thức ba. Trước tiên, nhịp điệu: câu, ngắn thoạt nhìn, kéo dài cả đoạn qua một cú pháp phân nhánh. Tiếp đến, passé composé: « je me suis couché » có giá trị phong cách rất cụ thể trong tiếng Pháp — không phải présent, không passé simple, mà passé composé này đặt hồi ức trong một sự hiện diện kéo dài. Cuối, « longtemps » đầu tiên: adverbe đặt en hyperbate, từ chữ đầu đã nạp tempo cho toàn Recherche."
-      },
-      {
-        "speaker": "Linh",
-        "text": "Première version vietnamienne — celle d'un traducteur des années 1990, dont je tairai le nom car il est encore vivant — choisit une formule qu'on peut rétro-traduire en français comme: « pendant longtemps j'ai eu l'habitude d'aller au lit tôt ». Cette traduction RÉSOUT chacun des trois défis par une voie de naturalisation maximale: « j'ai eu l'habitude » lisse l'aspect verbal du français en concept lexical; « pendant » substitue à l'hyperbate proustien une formule canonique vietnamienne; « tôt » rend « de bonne heure » sans en restituer la légère préciosité. Le résultat est lisible, fluide — et perd, à mon sens, ce qui faisait Proust.",
-        "vi": "Bản đầu tiếng Việt — của một người dịch những năm 1990, tôi sẽ giấu tên vì ông còn sống — chọn một công thức có thể dịch ngược sang tiếng Pháp là: « trong thời gian dài tôi có thói quen đi ngủ sớm ». Bản dịch này GIẢI QUYẾT từng thách thức bằng đường nội địa hóa tối đa: « có thói quen » làm phẳng aspect verbal của tiếng Pháp thành khái niệm từ vựng; « trong » thay hyperbate Proust bằng một công thức chuẩn tiếng Việt; « sớm » rendre « de bonne heure » không khôi phục tính cầu kỳ nhẹ. Kết quả dễ đọc, mượt — và mất, theo tôi, điều làm nên Proust."
-      },
-      {
-        "speaker": "Linh",
-        "text": "Seconde version — plus récente, celle d'un universitaire formé en France, parue dans la revue Văn học (avec autorisation) — opte pour la voie inverse, étrangéisante. La phrase commence directement par « Đã từ rất lâu » — équivalent du « longtemps » placé en tête, créant le même déséquilibre rythmique que l'original. Le « je me suis couché » est rendu non par « j'ai eu l'habitude » mais par une formule qui préserve l'aspect résultatif — quelque chose comme « tôi vẫn lên giường ». Le « de bonne heure » devient « lúc giờ còn sớm » — formule légèrement archaïque, qui restitue la préciosité.",
-        "vi": "Bản thứ hai — mới hơn, của một nhà đại học đào tạo ở Pháp, đăng trên tạp chí Văn học (với phép) — chọn đường ngược, étrangéisante. Câu bắt đầu trực tiếp bằng « Đã từ rất lâu » — tương đương « longtemps » đặt đầu, tạo sự mất cân bằng nhịp điệu giống nguyên bản. « Je me suis couché » được rendre không bằng « có thói quen » mà bằng công thức giữ aspect résultatif — gì đó như « tôi vẫn lên giường ». « De bonne heure » thành « lúc giờ còn sớm » — công thức hơi cổ, khôi phục cầu kỳ."
-      },
-      {
-        "speaker": "Pr. Compagnon",
-        "text": "Très bien. Verdict ?",
-        "vi": "Rất tốt. Phán quyết?"
-      },
-      {
-        "speaker": "Linh",
-        "text": "Pas de verdict simple. La première version privilégie l'ACCESSIBILITÉ au lecteur vietnamien moyen — elle remplit la fonction de présentation, à laquelle Proust a longtemps résisté en français même. La seconde version privilégie la RESTITUTION DU GESTE PROUSTIEN — elle exige davantage du lecteur mais préserve la singularité formelle. Berman aurait soutenu la seconde au nom de l'éthique de la traduction; Meschonnic l'aurait soutenue au nom du rythme. Mais on aurait tort de juger la première « ratée »: elle relève d'une autre conception de la traduction — celle de l'introduction d'un auteur dans une langue qui ne le connaît pas encore. Les deux gestes sont légitimes; ils répondent à des moments différents de l'histoire de la traduction.",
-        "vi": "Không có phán quyết đơn giản. Bản đầu ưu tiên TIẾP CẬN với độc giả Việt trung bình — nó làm chức năng giới thiệu, điều Proust đã kháng cự lâu trong chính tiếng Pháp. Bản hai ưu tiên KHÔI PHỤC ĐỘNG TÁC PROUSTIEN — đòi hỏi nhiều hơn từ độc giả nhưng giữ được tính độc đáo hình thức. Berman sẽ ủng hộ bản hai nhân danh đạo đức dịch thuật; Meschonnic sẽ ủng hộ nhân danh nhịp điệu. Nhưng sẽ sai khi phán bản đầu « hỏng »: nó thuộc về một quan niệm khác về dịch thuật — quan niệm giới thiệu một tác giả vào một ngôn ngữ chưa biết ông. Hai động tác đều hợp pháp; chúng đáp ứng các thời khắc khác nhau của lịch sử dịch thuật."
-      },
-      {
-        "speaker": "Pr. Compagnon",
-        "text": "Réponse mature. Vous évitez à la fois le purisme bermanien (qui condamnerait toute naturalisation) et le pragmatisme paresseux (qui validerait n'importe quelle traduction sous prétexte d'accessibilité). C'est exactement la position de Cassin dans le Vocabulaire européen des philosophies — l'intraduisible est ce qu'on n'arrête jamais de traduire.",
-        "vi": "Câu trả lời trưởng thành. Cô tránh được cả purisme Berman (sẽ kết án mọi nội địa hóa) và pragmatisme lười (sẽ chấp nhận bất cứ bản dịch nào với lý do tiếp cận). Chính là lập trường của Cassin trong Vocabulaire européen des philosophies — intraduisible là điều ta không bao giờ ngừng dịch."
-      }
-    ],
-    "roleplay_prompts": [
-      "Bạn được giao soạn une critique de traduction (compte rendu de 1500 mots) pour la revue Translittérature. Sujet: deux traductions françaises d'un même poème de Pessoa. Soạn introduction (200 mots) — situer + problématique + plan.",
-      "Trong séminaire, một collègue affirme « la traduction est toujours une trahison ». Phản hồi avec rigueur — distinguer la trahison comme cliché et le déplacement comme objet d'analyse, mobiliser Berman.",
-      "Soạn 5 câu pour un commentaire publié dans une postface — comparer deux traductions vietnamiennes d'un poème de Baudelaire. Nommer chaque traducteur, dater chaque version, préciser une stratégie."
-    ],
-    "register_notes": "VOCABULAIRE TRADUCTOLOGIQUE — termes techniques à connaître:\n\nDIRECTIONS:\n- texte source / texte cible (TS / TC)\n- langue source / langue cible (LS / LC)\n- public source / public cible\n\nSTRATÉGIES (Venuti, terminologie reprise par Berman):\n- naturalisation / domestication: rapprocher du lecteur cible\n- étrangéisation / foreignization: rapprocher du texte source\n- équivalence dynamique (Nida) vs équivalence formelle\n\nPROCÉDÉS (Vinay & Darbelnet, Stylistique comparée du français et de l'anglais, 1958):\n- emprunt (garder le mot étranger: « le sushi »)\n- calque (copier la structure: « gratte-ciel » de skyscraper)\n- traduction littérale\n- transposition (changement de classe grammaticale)\n- modulation (changement de point de vue)\n- équivalence (idiome rendu par idiome équivalent)\n- adaptation (changement de référent culturel)\n\nTENDANCES DÉFORMANTES (Berman, La Traduction et la lettre, 1985):\n- rationalisation\n- clarification\n- allongement\n- ennoblissement / vulgarisation\n- appauvrissement qualitatif / quantitatif\n- homogénéisation\n- destruction des rythmes\n- destruction des réseaux signifiants sous-jacents\n- destruction des systématismes textuels\n- destruction (ou exotisation) des réseaux langagiers vernaculaires\n- destruction des locutions et idiotismes\n- effacement des superpositions de langues\n- destruction des systématismes\n\nCRITIQUES MAJEURS DE LA TRADUCTION:\n- Antoine Berman: éthique de la traduction\n- Henri Meschonnic: rythme comme catégorie centrale\n- Barbara Cassin: intraduisibles\n- Lawrence Venuti (anglais, traduit): visibilité du traducteur\n- George Steiner (anglais, traduit): Après Babel (1975)\n\nIDIOMS LITTÉRAIRES SUR LA TRADUCTION:\n- « les belles infidèles » (cụm cổ về dịch tự do — courant)\n- « passer la main » (chuyển bản — courant)\n- « rendre à César » (trả về — soutenu critique)\n- « sourcier vs cibliste » (hai trường phái — jargon)\n\nMỘT TINH TẾ ĐẶC THÙ: dans la critique de traduction française, on évite « interprétation » comme synonyme de « traduction ». L'interprétation est l'oral (interprétariat); la traduction est l'écrit. Confondre = mark amateur.",
-    "idiom_glosses": [
-      {
-        "idiom": "Les belles infidèles (courant historique)",
-        "literal": "Những cô gái đẹp bất trung",
-        "meaning": "Truyền thống dịch tự do thế kỷ XVII-XVIII — đẹp văn nhưng không trung thành.",
-        "example": "Les belles infidèles, comme la traduction de Lucain par Brébeuf, ont été critiquées dès le XIXe siècle."
-      },
-      {
-        "idiom": "Sourcier vs cibliste (jargon traductologique)",
-        "literal": "Người tìm nguồn vs người bám đích",
-        "meaning": "Hai trường phái dịch — gần văn nguồn vs gần văn đích.",
-        "example": "Berman était ouvertement sourcier — il défendait la priorité du texte source contre les ciblistes."
-      },
-      {
-        "idiom": "Faire passer en français (courant)",
-        "literal": "Làm cho qua trong tiếng Pháp",
-        "meaning": "Dịch sang tiếng Pháp — dùng cho dịch văn học.",
-        "example": "Faire passer Mallarmé en vietnamien sans en perdre la densité tient du défi structurel."
-      },
-      {
-        "idiom": "Rendre la lettre et l'esprit (soutenu)",
-        "literal": "Trả văn tự và tinh thần",
-        "meaning": "Khôi phục cả hình thức và ý nghĩa — yêu cầu tối đa.",
-        "example": "Une grande traduction rend la lettre et l'esprit — la plupart se contentent de l'esprit."
-      }
-    ],
-    "exercises": [
-      {
-        "type": "fill-blank",
-        "question": "Encore faudrait-il que le traducteur ___ mesuré, avant de commencer, l'écart entre les économies syntaxiques des deux langues.",
-        "answer": "eût"
-      },
-      {
-        "type": "matching",
-        "pairs": [
-          [
-            "la naturalisation",
-            "sự nội địa hóa"
-          ],
-          [
-            "l'étrangéisation",
-            "sự giữ tính lạ"
-          ],
-          [
-            "un intraduisible",
-            "khái niệm không dịch được"
+        },
+        {
+          "en": "Loin de réduire le texte à ses thèmes, l'explication doit en restituer la singularité formelle.",
+          "vi": "Khác hẳn quy giảm văn bản về các chủ đề, sự bình giảng phải khôi phục tính độc đáo của hình thức.",
+          "pronunciation_focus": [
+            "réduire → ré-du-i-rơ",
+            "thèmes → tèm",
+            "restituer → rès-ti-tu-é",
+            "singularité → san-gu-la-ri-té"
           ]
-        ],
-        "instruction": "Nối thuật ngữ traductologique với nghĩa Việt"
-      },
-      {
-        "type": "translation",
-        "vietnamese": "Mọi bản dịch thực hiện một sự dịch chuyển không thể khôi phục mà phê bình phải phân tích, chứ không than vãn.",
-        "french": "Toute traduction opère un déplacement irrécupérable que la critique se doit d'analyser, non de déplorer."
-      }
-    ]
-  },
-  {
-    "id": "lbiographical_context",
-    "level": "C2",
-    "category": "fluency",
-    "title_vi": "Tiểu sử tác giả và văn bản — tranh luận Sainte-Beuve / Proust",
-    "title_en": "Author's biographical context vs the text",
-    "sentences": [
-      {
-        "en": "Proust, dans Contre Sainte-Beuve, a démonté avec une force durable l'illusion qui consiste à expliquer l'œuvre par la vie de l'auteur.",
-        "vi": "Proust, trong Contre Sainte-Beuve, đã tháo dỡ với một sức mạnh bền vững ảo tưởng giải thích tác phẩm bằng cuộc đời tác giả.",
-        "pronunciation_focus": [
-          "démonté → dé-mõn-té",
-          "force → fors",
-          "durable → du-ra-blơ",
-          "illusion → i-lu-zion"
-        ]
-      },
-      {
-        "en": "Le moi qui écrit, soutenait-il, n'est pas le moi qui dîne en ville — distinction qui fonde toute la critique moderne.",
-        "vi": "Cái tôi viết, ông bảo vệ, không phải cái tôi ăn tối ngoài thành phố — phân biệt làm nền cho toàn bộ phê bình hiện đại.",
-        "pronunciation_focus": [
-          "soutenait → su-tơ-nè",
-          "ville → vil",
-          "distinction → dis-tank-sion",
-          "critique → kri-tik"
-        ]
-      },
-      {
-        "en": "Cela étant, refuser toute pertinence à la donnée biographique reviendrait à ignorer ce que l'œuvre doit aux conditions concrètes de son surgissement.",
-        "vi": "Dù vậy, từ chối mọi tính liên quan của dữ liệu tiểu sử sẽ là bỏ qua điều tác phẩm nợ các điều kiện cụ thể của sự xuất hiện.",
-        "pronunciation_focus": [
-          "pertinence → pèr-ti-nãns",
-          "donnée → do-né",
-          "reviendrait → rơ-vian-drè",
-          "surgissement → sur-jis-mã"
-        ]
-      },
-      {
-        "en": "L'autofiction contemporaine — d'Annie Ernaux à Emmanuel Carrère — a brouillé sciemment les frontières que Proust avait travaillé à établir.",
-        "vi": "Tự hư cấu đương đại — từ Annie Ernaux đến Emmanuel Carrère — đã làm mờ cố ý các biên giới mà Proust đã làm việc để thiết lập.",
-        "pronunciation_focus": [
-          "autofiction → ô-to-fik-sion",
-          "Carrère → ka-rèr",
-          "brouillé → bru-yé",
-          "sciemment → sia-mã"
-        ]
-      },
-      {
-        "en": "Encore faut-il, lorsqu'on lit Ernaux, distinguer le pacte référentiel qu'elle propose du pacte fictionnel qui régit le roman classique.",
-        "vi": "Vẫn cần, khi đọc Ernaux, phân biệt hợp đồng tham chiếu cô đề xuất với hợp đồng hư cấu chi phối tiểu thuyết cổ điển.",
-        "pronunciation_focus": [
-          "lorsqu'on → lors-kõn",
-          "Ernaux → èr-nô",
-          "pacte → pakt",
-          "fictionnel → fik-sio-nèl"
-        ]
-      }
-    ],
-    "cultural_notes_vi": "TRANH LUẬN SAINTE-BEUVE / PROUST est un débat foundationnel de la critique moderne française. Une compréhension précise est attendue à C2.\n\n(1) CHARLES-AUGUSTIN SAINTE-BEUVE (1804-1869): critique dominant du XIXe siècle, auteur des Causeries du lundi (1851-62). Sa méthode, dite « biographique », consiste à expliquer l'œuvre par la VIE et le CARACTÈRE de l'auteur. Pour Sainte-Beuve, comprendre Racine, c'est connaître les amitiés de Racine, sa formation à Port-Royal, son tempérament. La critique devient une espèce de portrait moral.\n\n(2) MARCEL PROUST (1871-1922): réplique avec Contre Sainte-Beuve, écrit vers 1908-09 mais publié posthumément en 1954. Proust soutient que « un livre est le produit d'un autre moi que celui que nous manifestons dans nos habitudes, dans la société, dans nos vices ». Il sépare radicalement le MOI SOCIAL (qui dîne, qui converse, qui souffre) du MOI CRÉATEUR (qui écrit). La biographie ne donne accès qu'au premier; l'œuvre seule donne accès au second.\n\n(3) HÉRITAGE: la critique du XXe siècle (Russe formaliste, New Criticism, structuralisme) a globalement suivi Proust. Roland Barthes radicalise dans « La Mort de l'auteur » (1968): le texte est un tissu de citations, l'auteur empirique n'a aucune autorité sur son sens. Foucault, dans « Qu'est-ce qu'un auteur ? » (1969), nuance: il faut analyser la « fonction-auteur », c'est-à-dire le rôle institutionnel et discursif du nom d'auteur, sans pour autant restaurer le moi biographique.\n\n(4) RETOUR DE LA BIOGRAPHIE: depuis les années 1990, retour partiel — non au biographisme naïf de Sainte-Beuve, mais à une « histoire littéraire » qui réintègre les conditions de production. Antoine Compagnon (Le Démon de la théorie, 1998) plaide pour un équilibre: ni biographisme exclusif, ni purisme textuel anti-biographique.\n\n(5) AUTOFICTION CONTEMPORAINE: complique la donne. Si Annie Ernaux écrit Les Années (2008) en disant explicitement « ces souvenirs sont les miens », elle propose un PACTE RÉFÉRENTIEL au lecteur. Refuser de lire la biographie d'Ernaux serait absurde — l'auteure elle-même y renvoie. Mais réduire l'œuvre à la biographie serait également naïf — elle est aussi élaboration, sélection, mise en forme. Philippe Lejeune (Le Pacte autobiographique, 1975) avait posé les termes; Doubrovsky (Fils, 1977) a inventé le néologisme « autofiction ».\n\nQUATRE POSITIONS C2 LÉGITIMES sur la question:\n\n(a) PURISME TEXTUEL post-Barthes: l'œuvre se suffit à elle-même; toute biographie est anecdote. Position cohérente mais qui appauvrit la lecture de Proust, Céline, Ernaux, Houellebecq — auteurs dont la biographie est indissociable du texte.\n\n(b) BIOGRAPHISME RAFFINÉ post-Compagnon: la biographie éclaire l'œuvre dans des cas précis (lettres, journaux, contexte historique), sans en dériver le sens.\n\n(c) GÉNÉTIQUE TEXTUELLE (école de l'ITEM, Pierre-Marc de Biasi): étudier les manuscrits et brouillons pour reconstituer le travail de la création. Réhabilite l'auteur comme artisan, non comme source de signification.\n\n(d) SOCIOLOGIE DE LA LITTÉRATURE post-Bourdieu (Les Règles de l'art, 1992): l'œuvre est produite dans un CHAMP LITTÉRAIRE — biographie, capital culturel, position dans le champ. Sans tomber dans le biographisme naïf.\n\nBẪY NGƯỜI VIỆT: souvent confondre « contexte historique » (acceptable) avec « biographie de l'auteur » (problématique post-Proust). « Madame Bovary fut écrit en 1857, sous le Second Empire » est une donnée HISTORIQUE pertinente. « Flaubert a connu une rupture amoureuse en 1842 qui explique son pessimisme » est un BIOGRAPHISME de type Sainte-Beuve, à éviter.",
-    "tip_advice_vi": "GRILLE D'ANALYSE pour articuler biographie et œuvre sans tomber dans le biographisme:\n\n(1) IDENTIFIER LE PACTE PROPOSÉ:\n- Pacte fictionnel (roman classique): « ce livre est inventé »\n- Pacte autobiographique (Lejeune): « ce livre dit la vérité de ma vie »\n- Pacte autofictionnel (Doubrovsky): « ce livre joue avec les frontières — vérité et invention sont indistinctes »\n\n(2) CHOISIR LES DONNÉES BIOGRAPHIQUES PERTINENTES — celles que le texte SOLLICITE explicitement:\n- Période historique de l'écriture (souvent pertinente)\n- Position de l'auteur dans le champ littéraire (souvent pertinente)\n- Lectures avérées de l'auteur (parfois pertinentes pour intertextualité)\n- Détails intimes de la vie privée (rarement pertinents)\n\n(3) DISTINGUER TROIS NIVEAUX:\n- AUTEUR EMPIRIQUE: la personne historique, qui mange, dort, signe ses contrats\n- AUTEUR IMPLIQUÉ (Booth, Wayne): l'image que le texte construit de son auteur\n- NARRATEUR: la voix du texte, distincte des deux précédents\n\n(4) ANALYSER LES PARATEXTES (Genette, Seuils, 1987):\n- Préface, dédicace, épigraphe, notes\n- Bandeaux éditoriaux, jaquette, prière d'insérer\n- Interviews, articles autour de la sortie\nCes paratextes orientent la lecture, qu'on l'accepte ou la résiste.\n\nCỤM HỮU ÍCH:\n\nPOUR INVOQUER LA BIOGRAPHIE LÉGITIMEMENT:\n- « Le contexte de la rédaction — [période, événement] — éclaire ce passage. »\n- « Sans tomber dans le biographisme, on peut noter que l'auteur a explicitement revendiqué cette filiation avec X. »\n- « Le texte sollicite lui-même la donnée biographique en intégrant des références datables. »\n\nPOUR ÉVITER LE BIOGRAPHISME NAÏF:\n- « Il convient de distinguer ce que le texte donne à lire de ce que la biographie de l'auteur permettrait de supposer. »\n- « Le moi qui écrit, comme le rappelle Proust, n'est pas le moi qui vit. »\n- « L'instance énonciative ne se confond pas avec l'auteur empirique. »\n\nPOUR ANALYSER L'AUTOFICTION:\n- « Annie Ernaux propose un pacte référentiel explicite, qu'on ne peut ignorer sans contresens. »\n- « L'autofiction brouille sciemment la frontière, mais ne l'abolit pas. »\n- « La référentialité du texte est une donnée du texte, non une indiscrétion sur l'auteur. »\n\nTRÁNH:\n- « L'auteur a écrit cela parce qu'il a vécu telle expérience. » → biographisme strict\n- « La biographie n'a aucune importance. » → purisme excessif, naïf\n- Confondre auteur empirique et narrateur (« Marcel Proust dit dans la Recherche que… »)\n- Sourcer un trait de personnage par un trait psychologique de l'auteur",
-    "vocabulary": [
-      {
-        "word": "le pacte autobiographique",
-        "en": "the autobiographical pact",
-        "vi": "hợp đồng tự thuật",
-        "pos": "n.m.",
-        "pronunciation_vi": "pakt ô-to-bio-gra-fik"
-      },
-      {
-        "word": "le pacte référentiel",
-        "en": "the referential pact",
-        "vi": "hợp đồng tham chiếu",
-        "pos": "n.m.",
-        "pronunciation_vi": "pakt ré-fé-rãn-siel"
-      },
-      {
-        "word": "le pacte fictionnel",
-        "en": "the fictional pact",
-        "vi": "hợp đồng hư cấu",
-        "pos": "n.m.",
-        "pronunciation_vi": "pakt fik-sio-nèl"
-      },
-      {
-        "word": "l'autofiction",
-        "en": "autofiction",
-        "vi": "tự hư cấu",
-        "pos": "n.f.",
-        "pronunciation_vi": "ô-to-fik-sion"
-      },
-      {
-        "word": "le moi créateur",
-        "en": "the creating self",
-        "vi": "cái tôi sáng tạo",
-        "pos": "n.m.",
-        "pronunciation_vi": "moa kré-a-tơr"
-      },
-      {
-        "word": "le moi social",
-        "en": "the social self",
-        "vi": "cái tôi xã hội",
-        "pos": "n.m.",
-        "pronunciation_vi": "moa so-sial"
-      },
-      {
-        "word": "l'auteur empirique",
-        "en": "the empirical author",
-        "vi": "tác giả thực nghiệm",
-        "pos": "n.m.",
-        "pronunciation_vi": "ô-tơr ãn-pi-rik"
-      },
-      {
-        "word": "l'auteur impliqué",
-        "en": "the implied author",
-        "vi": "tác giả ngụ ý",
-        "pos": "n.m.",
-        "pronunciation_vi": "ô-tơr an-pli-ké"
-      },
-      {
-        "word": "le biographisme",
-        "en": "biographism",
-        "vi": "thuyết tiểu sử",
-        "pos": "n.m.",
-        "pronunciation_vi": "bio-gra-fism"
-      },
-      {
-        "word": "un paratexte",
-        "en": "a paratext",
-        "vi": "một văn bản phụ",
-        "pos": "n.m.",
-        "pronunciation_vi": "pa-ra-tèkst"
-      }
-    ],
-    "dialogue": [
-      {
-        "speaker": "Pr. Compagnon",
-        "text": "Madame Tran, vous expliquez Madame Bovary par les déceptions amoureuses de Flaubert. C'est typiquement Sainte-Beuve.",
-        "vi": "Cô Trần, cô giải thích Madame Bovary bằng các thất vọng tình yêu của Flaubert. Đó là Sainte-Beuve điển hình."
-      },
-      {
-        "speaker": "Linh",
-        "text": "Vous avez raison — j'ai glissé vers le biographisme. Le texte n'a pas besoin de cette explication.",
-        "vi": "Thầy đúng — tôi đã trượt vào biographisme. Văn bản không cần giải thích đó."
-      },
-      {
-        "speaker": "Pr. Compagnon",
-        "text": "Et la fameuse formule « Madame Bovary, c'est moi » est probablement apocryphe — Flaubert ne l'a sans doute jamais dite.",
-        "vi": "Và cụm nổi tiếng « Madame Bovary, c'est moi » có lẽ apocryphe — Flaubert có thể chưa bao giờ nói."
-      },
-      {
-        "speaker": "Linh",
-        "text": "Encore une raison de ne pas la mobiliser. Je reformule en restant dans le texte.",
-        "vi": "Thêm một lý do để không huy động. Tôi diễn đạt lại bằng cách ở lại trong văn bản."
-      }
-    ],
-    "dialogue_long": [
-      {
-        "speaker": "Pr. Compagnon (séminaire de M2 sur l'autofiction)",
-        "text": "Madame Tran, votre exposé porte sur Annie Ernaux — autrice désormais Nobel. La question centrale: comment lire l'autofiction sans tomber dans deux écueils symétriques — le biographisme naïf et le purisme textuel anti-biographique ?",
-        "vi": "Cô Trần, bài cô về Annie Ernaux — tác giả giờ Nobel. Câu hỏi trung tâm: đọc autofiction thế nào mà không rơi vào hai bẫy đối xứng — biographisme ngây thơ và purisme văn bản chống tiểu sử?"
-      },
-      {
-        "speaker": "Linh",
-        "text": "La position que je défendrai est la suivante: l'autofiction d'Ernaux exige une lecture qui prenne au sérieux le pacte référentiel qu'elle propose, sans pour autant abolir la distinction entre le moi écrivant et le moi vécu. Cette position s'oppose à la fois au biographisme — qui rabattrait l'œuvre sur la vie — et au purisme barthésien — qui nierait la spécificité du pacte autofictionnel.",
-        "vi": "Lập trường tôi sẽ bảo vệ: autofiction Ernaux đòi hỏi cách đọc xem xét nghiêm túc hợp đồng tham chiếu cô đề xuất, mà không xóa bỏ phân biệt giữa cái tôi viết và cái tôi sống. Lập trường này đối lập cùng lúc với biographisme — sẽ đánh đồng tác phẩm với cuộc đời — và purisme barthésien — sẽ phủ nhận tính đặc thù của hợp đồng autofictionnel."
-      },
-      {
-        "speaker": "Linh",
-        "text": "Le cas des Années (2008) est particulièrement éclairant. Ernaux y écrit l'histoire d'une génération à travers son propre parcours, mais elle adopte un dispositif narratif inattendu: elle parle d'elle-même à la troisième personne — « elle » — et non à la première. Pourquoi ? Précisément, je crois, pour signaler que le moi qui écrit n'est pas exactement le moi qui a vécu. La troisième personne crée la distance qui permet le travail littéraire — sans pour autant abolir le pacte référentiel, puisque le « elle » désigne bien Annie Ernaux historique.",
-        "vi": "Trường hợp Les Années (2008) đặc biệt rõ. Ernaux viết lịch sử một thế hệ qua hành trình của chính mình, nhưng cô dùng một thiết kế trần thuật bất ngờ: cô nói về mình ở ngôi thứ ba — « elle » — không phải ngôi thứ nhất. Tại sao? Chính, tôi nghĩ, để báo hiệu cái tôi viết không hẳn cái tôi đã sống. Ngôi thứ ba tạo khoảng cách cho phép công việc văn học — mà không xóa bỏ hợp đồng tham chiếu, vì « elle » thật sự chỉ Annie Ernaux lịch sử."
-      },
-      {
-        "speaker": "Linh",
-        "text": "Cette stratégie répond, à mon sens, exactement à la question proustienne. Proust soutenait dans Contre Sainte-Beuve que le moi créateur n'est pas le moi social. Ernaux, soixante-dix ans après, intègre cette leçon DANS la forme même de son texte: la troisième personne est la trace formelle de la distinction proustienne. Elle écrit son histoire sans confondre le sujet d'écriture et le sujet d'écrit.",
-        "vi": "Chiến lược này đáp, theo tôi, chính xác câu hỏi Proust. Proust bảo vệ trong Contre Sainte-Beuve rằng cái tôi sáng tạo không phải cái tôi xã hội. Ernaux, 70 năm sau, tích hợp bài học này VÀO chính hình thức văn bản: ngôi thứ ba là dấu vết hình thức của phân biệt Proust. Cô viết lịch sử mình mà không lẫn lộn chủ thể viết và chủ thể được viết."
-      },
-      {
-        "speaker": "Pr. Compagnon",
-        "text": "Lecture forte. Mais une objection: ne risquez-vous pas de surinterpréter ? Ernaux a dit dans plusieurs interviews qu'elle utilise la troisième personne pour des raisons d'efficacité narrative — pour gagner en généralité, pas pour faire écho à Proust.",
-        "vi": "Cách đọc mạnh. Nhưng một phản biện: cô không có nguy cơ diễn giải quá không? Ernaux đã nói trong nhiều phỏng vấn rằng cô dùng ngôi thứ ba vì lý do hiệu quả trần thuật — để có tính tổng quát, không phải vọng lại Proust."
-      },
-      {
-        "speaker": "Linh",
-        "text": "Réponse classique post-Barthes: l'intention déclarée de l'auteur n'est pas l'arbitre du sens du texte. Si la structure formelle du texte produit un effet — ici, la séparation moi-écrivant / moi-vécu — cet effet existe indépendamment de la conscience de l'auteur. Ernaux peut très bien avoir voulu seulement « gagner en généralité » et avoir produit, par surcroît, une trace formelle de la leçon proustienne. La critique n'est pas tenue de se limiter aux intentions; elle est tenue de rester dans le texte.",
-        "vi": "Câu trả lời cổ điển post-Barthes: ý đồ tuyên bố của tác giả không phải trọng tài của nghĩa văn bản. Nếu cấu trúc hình thức văn bản sản sinh một hiệu ứng — ở đây, sự tách moi-écrivant / moi-vécu — hiệu ứng này tồn tại độc lập với ý thức tác giả. Ernaux có thể chỉ muốn « có tính tổng quát » và đã sản sinh, thêm vào, một dấu vết hình thức của bài học Proust. Phê bình không bị buộc giới hạn vào ý đồ; nó bị buộc ở lại trong văn bản."
-      },
-      {
-        "speaker": "Pr. Compagnon",
-        "text": "Réponse parfaite. Vous avez intégré la leçon de mon Démon de la théorie sans la citer servilement. Une dernière question: quelle position défendriez-vous face à un texte de Houellebecq, où l'auteur empirique est explicitement convoqué dans la fiction (Houellebecq apparaît comme personnage dans La Carte et le territoire) ?",
-        "vi": "Câu trả lời hoàn hảo. Cô đã tích hợp bài học của Le Démon de la théorie của tôi mà không trích nô bộc. Một câu hỏi cuối: cô bảo vệ lập trường nào trước một văn bản Houellebecq, nơi tác giả empirique được triệu tập rõ ràng trong fiction (Houellebecq xuất hiện như nhân vật trong La Carte et le territoire)?"
-      },
-      {
-        "speaker": "Linh",
-        "text": "Cas exemplaire de la métalepse — au sens genettien — où l'auteur empirique franchit la frontière diégétique pour devenir personnage. Houellebecq joue avec la confusion sans la résoudre. La position critique correcte, à mon sens: lire la métalepse comme une stratégie textuelle, et non comme une indiscrétion biographique. Le « Houellebecq personnage » n'est pas Michel Houellebecq citoyen — il est une fiction qui mobilise le nom propre comme effet de réel. C'est, paradoxalement, une lecture proustienne du dispositif: le moi qui écrit reste distinct du moi qui figure dans le texte, même quand ils portent le même nom.",
-        "vi": "Trường hợp mẫu của métalepse — theo nghĩa Genette — nơi tác giả empirique vượt qua biên giới diegetic để trở thành nhân vật. Houellebecq chơi với sự nhầm lẫn mà không giải quyết. Lập trường critique đúng, theo tôi: đọc métalepse như một chiến lược văn bản, không phải indiscrétion biographique. « Houellebecq nhân vật » không phải Michel Houellebecq công dân — là một fiction huy động danh từ riêng như effet de réel. Đó, nghịch lý, là một cách đọc Proustian về thiết kế: cái tôi viết vẫn phân biệt với cái tôi xuất hiện trong văn bản, ngay cả khi mang cùng tên."
-      }
-    ],
-    "roleplay_prompts": [
-      "Bạn được giao explication d'un passage de La Place (Ernaux, 1983). Identifier le pacte proposé, situer dans la tradition autobiographique post-Lejeune, éviter le biographisme naïf.",
-      "Trong séminaire, một collègue affirme « pour comprendre Céline, il faut connaître ses prises de position antisémites pendant la guerre ». Phản hồi avec rigueur — distinguer ce qui relève du contexte historique, du biographisme, de la lecture textuelle.",
-      "Soạn 5 câu pour analyser le titre Contre Sainte-Beuve de Proust — pourquoi « contre » et non « après » ou « sur » ? Quel enjeu polémique est inscrit dans le titre lui-même ?"
-    ],
-    "register_notes": "VOCABULAIRE PRÉCIS sur la question auteur / texte:\n\nINSTANCES À DISTINGUER (Booth, The Rhetoric of Fiction, 1961, traduit en français en 1977):\n- Auteur empirique: la personne historique\n- Auteur impliqué: l'image construite par le texte\n- Narrateur: la voix qui dit « je » (s'il y en a une)\n- Personnage: les figures de la diégèse\n\nNE JAMAIS CONFONDRE ces 4 instances. Une critique C2 utilise les distinctions au mot près.\n\nPACTES DE LECTURE (Lejeune):\n- Pacte fictionnel: « ce livre est invention »\n- Pacte autobiographique: « auteur = narrateur = personnage »\n- Pacte référentiel partiel (autofiction): jeu sur les frontières\n\nÉCOLES CRITIQUES SUR LA QUESTION:\n- Lansonisme (XIXe-début XXe): biographisme dominant\n- Critique psychanalytique (Mauron, Bachelard, Doubrovsky): la psyché de l'auteur dans l'œuvre\n- Critique sociologique (Bourdieu Les Règles de l'art, 1992): l'auteur dans le champ\n- Génétique textuelle (de Biasi, ITEM): l'auteur comme artisan\n- Sémiotique post-Barthes: l'auteur comme effet de texte\n\nFORMULES À ÉVITER (toutes biographistes):\n- « Madame Bovary, c'est moi » (formule probablement apocryphe attribuée à Flaubert)\n- « L'auteur a écrit cela parce qu'il a vécu… »\n- « On comprend mieux ce passage en sachant que… »\n\nFORMULES C2 ACCEPTABLES:\n- « Le contexte de production éclaire… » (historique, non biographique)\n- « Le pacte que propose le texte… »\n- « L'auteur impliqué se distingue ici de l'auteur empirique en ce que… »\n- « La donnée biographique éclaire ce passage à condition de ne pas y être réduite. »\n\nIDIOMS LITTÉRAIRES:\n- « ramener un texte à son auteur » (quy giảm văn bản về tác giả — courant critique)\n- « la mort de l'auteur » (cái chết của tác giả — formule barthésienne devenue courante)\n- « tirer un texte vers la biographie » (kéo văn bản về tiểu sử — soutenu)\n- « lire avec ou contre l'auteur » (đọc cùng hoặc chống tác giả — courant)\n\nMỘT TINH TẾ ĐẶC THÙ: l'expression « selon Marcel Proust » s'utilise pour Proust auteur empirique (interviews, lettres). Pour le narrateur de la Recherche, on dit « selon le narrateur proustien » ou « selon le Marcel narrateur ». Confondre = manque de finesse critique.",
-    "idiom_glosses": [
-      {
-        "idiom": "Ramener un texte à son auteur (courant critique)",
-        "literal": "Quy giảm văn bản về tác giả",
-        "meaning": "Giải thích văn bản chỉ qua tiểu sử tác giả — biographisme bị phê phán.",
-        "example": "Sainte-Beuve avait tendance à ramener tout texte à son auteur — Proust a démonté ce réflexe."
-      },
-      {
-        "idiom": "La mort de l'auteur (formule consacrée)",
-        "literal": "Cái chết của tác giả",
-        "meaning": "Cụm Barthes 1968 — văn bản tự lập, tách khỏi tác giả empirique.",
-        "example": "Depuis « la mort de l'auteur » de Barthes, la critique a appris à se méfier de l'argument biographique."
-      },
-      {
-        "idiom": "Lire au plus près (soutenu)",
-        "literal": "Đọc gần nhất",
-        "meaning": "Đọc bám sát văn bản, tránh phóng chiếu — close reading rigoureux.",
-        "example": "Lire Ernaux au plus près suppose qu'on prenne au sérieux son pacte référentiel."
-      },
-      {
-        "idiom": "Tirer une œuvre vers la confidence (littéraire)",
-        "literal": "Kéo tác phẩm về phía tâm sự",
-        "meaning": "Đọc văn bản như tâm sự cá nhân — réducteur.",
-        "example": "Tirer La Place d'Ernaux vers la confidence, c'est ignorer son ambition sociologique."
-      }
-    ],
-    "exercises": [
-      {
-        "type": "fill-blank",
-        "question": "Le moi qui écrit, ___-il, n'est pas le moi qui dîne en ville.",
-        "answer": "soutenait"
-      },
-      {
-        "type": "matching",
-        "pairs": [
-          [
-            "le pacte référentiel",
-            "hợp đồng tham chiếu"
+        }
+      ],
+      "cultural_notes_vi": "« EXPLICATION DE TEXTE » là một thực hành đặc thù của giáo dục Pháp — không có tương đương trực tiếp ở Việt Nam và khác cả « close reading » của Anh-Mỹ. Đây là hạt nhân của khoa văn học Pháp từ Lanson cuối thế kỷ XIX, được củng cố bởi Compagnon (Le Démon de la théorie, 1998) và Riffaterre.\n\nQUY ƯỚC CƠ BẢN: bạn được giao một đoạn văn (10-30 dòng) và bạn phải nói liền 30 phút (oral d'agrégation), hoặc viết 3-5 trang (devoir surveillé). Nguyên tắc tối thượng: BẠN BÌNH GIẢNG ĐOẠN ĐÓ, KHÔNG TÁC PHẨM. Sa vào tóm tắt cốt truyện = mất điểm ngay.\n\nCẤU TRÚC CHUẨN ba phần (jamais quatre):\n\n(1) INTRODUCTION (10%):\n- Situer (tác giả, tác phẩm, vị trí của đoạn trong tác phẩm)\n- Caractériser (thể loại con của đoạn — diễn biến, hồi ký, tả cảnh, monologue intérieur)\n- Annoncer une problématique (câu hỏi văn học mà đoạn này đặt ra)\n- Annoncer le plan (3 axes de lecture)\n\n(2) ANALYSE (80%):\n- Mỗi axe = một góc đọc cho phép kéo dài cả đoạn\n- KHÔNG đọc tuần tự « câu một…, câu hai… »\n- Chứng cứ luôn TRÍCH NGUYÊN VĂN, đặt trong dấu « guillemets français »\n- Mỗi citation kèm bình luận tu từ (« cette anaphore en début de phrase souligne… »)\n\n(3) CONCLUSION (10%):\n- Bilan (tổng hợp 3 axes)\n- Ouverture (kết nối với toàn tác phẩm, hoặc một văn bản khác)\n\nKHÁC BIỆT GIỮA EXPLICATION ET COMMENTAIRE COMPOSÉ:\n- Explication: tuần tự văn bản, oral, agrégation\n- Commentaire composé: phi-tuần tự, viết, bac et licence\n\nĐIỂM TỐI QUAN TRỌNG: tradition Pháp đặt giá trị TỐI CAO vào lecture LITTÉRALE — bạn KHÔNG được phóng chiếu lý thuyết lên văn bản. KHÔNG « ce passage est une critique du capitalisme » trừ khi văn bản bản thân chứa các éléments cụ thể cho phép nói vậy. Một phê bình thường gặp dành cho thí sinh người Việt: « plaquage théorique » (dán lý thuyết lên văn bản từ ngoài). Tránh: bắt đầu với Bourdieu / Foucault rồi tìm chứng cứ — bạn ngược lại, bắt đầu với chứng cứ rồi mới đến lý thuyết.\n\nBẪY ĐẶC THÙ NGƯỜI VIỆT: hệ thống giáo dục Việt dạy phân tích văn theo cách giảng « ý nghĩa nội dung » + « biểu hiện nghệ thuật ». Pháp KHÔNG tách như vậy — phân tích Pháp cho rằng FORME LÀ CHỨA NGHĨA. Một phép ẩn dụ KHÔNG « biểu hiện nghệ thuật » của một « ý nghĩa »; nó SẢN SINH ý nghĩa qua chính hình thức của nó.",
+      "tip_advice_vi": "QUY TRÌNH 6 BƯỚC để chuẩn bị một explication de texte (cho oral 30 phút, chuẩn bị 1 giờ):\n\nBƯỚC 1 (5 phút) — ĐỌC YÊN LẶNG hai lần. Lần đầu cho ấn tượng tổng quát; lần hai chú ý các chi tiết bất thường.\n\nBƯỚC 2 (10 phút) — ANNOTATION DENSE: gạch dưới mọi figure de style (anaphore, métaphore, antithèse, hyperbate), mọi từ « marqué » (lexique chuyên môn, archaïsme, néologisme), mọi rupture (changement de temps, changement de focalisation, hapax dans l'œuvre).\n\nBƯỚC 3 (10 phút) — IDENTIFIER 3 AXES DE LECTURE: ba câu hỏi văn học cho phép kéo dài cả đoạn. Ví dụ: (a) cấu trúc nhịp điệu, (b) jeu sur les voix narratives, (c) charge ironique. KHÔNG « les personnages », « le décor », « l'action » — đây là phân loại nội dung, không phải axes de lecture.\n\nBƯỚC 4 (10 phút) — DISTRIBUER LES CITATIONS theo 3 axes. Mỗi axe có 3-4 citations với bình luận tu từ.\n\nBƯỚC 5 (10 phút) — RÉDIGER L'INTRODUCTION đầy đủ (3-5 câu) và CONCLUSION (3-5 câu). Phần analyse có thể nói tự do từ notes.\n\nBƯỚC 6 (5 phút) — RELIRE LE TEXTE LENTEMENT một lần nữa. Souvent một détail bị bỏ sót sẽ xuất hiện ở lần đọc cuối.\n\nCỤM HỮU ÍCH:\n\nĐỂ MỞ ĐẦU EXPLICATION:\n- « Le passage que nous allons commenter est extrait de [tác phẩm], paru en [năm]. »\n- « Cet extrait se situe à un moment-clé du récit — [bối cảnh ngắn]. »\n- « Nous nous demanderons en quoi cette page constitue [problématique]. »\n- « Notre analyse se déploiera selon trois axes: [axe 1]; [axe 2]; [axe 3]. »\n\nĐỂ CITER ET COMMENTER:\n- « L'auteur écrit, à la ligne X: « [citation] ». Cette formulation appelle plusieurs remarques. »\n- « On notera, dans cette même phrase, le glissement de l'imparfait au passé simple — glissement chargé de sens. »\n- « Cette anaphore — répétition de X en début de trois phrases consécutives — confère au passage une cadence presque incantatoire. »\n\nĐỂ ANALYSER LA STYLISTIQUE:\n- « L'écart stylistique est ici manifeste: [observation]. »\n- « Le travail rythmique repose sur une opposition entre phrases longues et phrases brèves. »\n- « Ce choix énonciatif n'est pas anodin: il [effet produit]. »\n\nĐỂ CONCLURE:\n- « Cette page, à première vue descriptive, recèle en réalité [synthèse]. »\n- « Loin d'être un simple ornement narratif, ce passage constitue [enjeu]. »\n- « Cette analyse pourrait être prolongée par la lecture de [autre texte], qui présente une mise en œuvre comparable. »\n\nTRÁNH:\n- « Dans ce passage, l'auteur veut nous faire comprendre que… » → intentionnalisme naïf\n- « C'est très beau » / « c'est intéressant » → jugement non analytique\n- Tóm tắt cốt truyện thay vì bình giảng\n- Plaquage theórique — bắt đầu từ Bourdieu rồi mới đọc văn bản",
+      "vocabulary": [
+        {
+          "word": "l'explication de texte",
+          "en": "close reading (French tradition)",
+          "vi": "bình giảng văn bản chi tiết",
+          "pos": "n.f.",
+          "pronunciation_vi": "èk-spli-ka-sion dơ tèkst"
+        },
+        {
+          "word": "un commentaire composé",
+          "en": "a structured commentary",
+          "vi": "bình luận có cấu trúc",
+          "pos": "n.m.",
+          "pronunciation_vi": "ko-mãn-tèr kõm-po-zé"
+        },
+        {
+          "word": "un axe de lecture",
+          "en": "a line of interpretation",
+          "vi": "một trục đọc",
+          "pos": "n.m.",
+          "pronunciation_vi": "aks dơ lèk-tur"
+        },
+        {
+          "word": "l'écart stylistique",
+          "en": "stylistic divergence",
+          "vi": "sự lệch về phong cách",
+          "pos": "n.m.",
+          "pronunciation_vi": "é-kar sti-lis-tik"
+        },
+        {
+          "word": "un choix énonciatif",
+          "en": "an enunciative choice",
+          "vi": "một lựa chọn phát ngôn",
+          "pos": "n.m.",
+          "pronunciation_vi": "shoa é-nõn-sia-tif"
+        },
+        {
+          "word": "recéler un sens",
+          "en": "to harbor a meaning",
+          "vi": "ẩn chứa một ý nghĩa",
+          "pos": "v.",
+          "pronunciation_vi": "rơ-sé-lé an sãns"
+        },
+        {
+          "word": "en filigrane",
+          "en": "as a watermark / implicitly",
+          "vi": "ngầm ẩn (littéraire)",
+          "pos": "loc.",
+          "pronunciation_vi": "ã fi-li-gran"
+        },
+        {
+          "word": "une anaphore",
+          "en": "an anaphora",
+          "vi": "phép điệp ngữ đầu câu",
+          "pos": "n.f.",
+          "pronunciation_vi": "a-na-for"
+        },
+        {
+          "word": "une hyperbate",
+          "en": "a hyperbaton",
+          "vi": "phép đảo ngữ tu từ",
+          "pos": "n.f.",
+          "pronunciation_vi": "i-pèr-bat"
+        },
+        {
+          "word": "un hapax",
+          "en": "a hapax (single occurrence)",
+          "vi": "hapax — từ xuất hiện duy nhất một lần",
+          "pos": "n.m.",
+          "pronunciation_vi": "a-paks"
+        }
+      ],
+      "dialogue": [
+        {
+          "speaker": "Pr. Compagnon",
+          "text": "Madame Tran, vous tirez le texte vers une lecture politique avant d'avoir épuisé sa lettre. Reprenez par le rythme.",
+          "vi": "Cô Trần, cô kéo văn bản về một cách đọc chính trị trước khi vắt kiệt văn tự. Cô bắt đầu lại bằng nhịp điệu."
+        },
+        {
+          "speaker": "Linh",
+          "text": "Vous avez raison — j'ai plaqué une grille avant d'écouter la phrase.",
+          "vi": "Thầy đúng — tôi đã dán một lưới trước khi lắng nghe câu văn."
+        },
+        {
+          "speaker": "Pr. Compagnon",
+          "text": "Lisez à voix haute la première phrase, lentement. Qu'est-ce qui frappe l'oreille ?",
+          "vi": "Cô đọc to câu đầu, chậm. Điều gì đập vào tai?"
+        },
+        {
+          "speaker": "Linh",
+          "text": "L'alternance entre une protase courte et une apodose étirée — la phrase se déséquilibre vers la fin.",
+          "vi": "Sự xen kẽ giữa một protase ngắn và một apodose kéo dài — câu mất cân bằng về cuối."
+        }
+      ],
+      "dialogue_long": [
+        {
+          "speaker": "Pr. Compagnon (séminaire d'agrégation, Sorbonne)",
+          "text": "Madame Tran, vous avez vingt minutes pour expliquer cet extrait des Comices agricoles, dans Madame Bovary. Allez-y.",
+          "vi": "Cô Trần, cô có 20 phút để bình giảng đoạn Comices agricoles trong Madame Bovary. Cô bắt đầu."
+        },
+        {
+          "speaker": "Linh",
+          "text": "Le passage proposé se situe au cœur du chapitre VIII de la deuxième partie, dans cette scène fameuse où Flaubert fait alterner le discours du conseiller et les paroles d'amour de Rodolphe à Emma. C'est, selon le mot de Thibaudet, l'un des sommets de l'écriture flaubertienne.",
+          "vi": "Đoạn được giao nằm ở giữa chương VIII phần hai, trong cảnh nổi tiếng Flaubert xen kẽ diễn văn của ủy viên và lời tỏ tình của Rodolphe với Emma. Đó, theo Thibaudet, là một trong các đỉnh cao của lối viết Flaubert."
+        },
+        {
+          "speaker": "Linh",
+          "text": "Notre problématique sera la suivante: comment ce contrepoint, en apparence simple procédé de juxtaposition, parvient-il à produire l'ironie la plus radicale du roman, sans jamais que le narrateur n'intervienne en son nom propre ?",
+          "vi": "Vấn đề nghiên cứu của chúng tôi: làm sao đối điểm này, thoạt trông là thủ pháp đơn giản đặt cạnh nhau, có thể sản sinh ra sự châm biếm triệt để nhất của tiểu thuyết, mà người trần thuật không bao giờ xen vào nhân danh mình?"
+        },
+        {
+          "speaker": "Linh",
+          "text": "Trois axes structureront l'analyse: d'abord, la mécanique du contrepoint — comment Flaubert orchestre l'alternance; ensuite, le travail du discours indirect libre — qui rend l'ironie indécidable; enfin, la thématique sous-jacente du langage dévoyé, où la rhétorique politique et la rhétorique amoureuse se révèlent symétriques dans leur creux.",
+          "vi": "Ba trục cấu trúc phân tích: trước tiên, cơ chế đối điểm — Flaubert dàn dựng sự xen kẽ thế nào; tiếp đến, công việc của discours indirect libre — làm châm biếm trở nên không quyết định được; cuối, chủ đề ngôn ngữ bị lệch, nơi tu từ chính trị và tu từ tình yêu lộ ra đối xứng trong sự rỗng."
+        },
+        {
+          "speaker": "Linh",
+          "text": "Premier axe — la mécanique du contrepoint. Flaubert ne sépare pas les deux discours par un signe typographique fort: pas de chapitre nouveau, pas même de retour à la ligne systématique. Les répliques s'enchâssent les unes dans les autres, parfois au sein d'une même phrase. Cette continuité formelle produit un effet précis: le lecteur est forcé d'entendre les deux voix simultanément, comme un orchestre dont chaque instrument exposerait la même mélodie en clé différente.",
+          "vi": "Trục thứ nhất — cơ chế đối điểm. Flaubert không tách hai diễn ngôn bằng dấu typographique mạnh: không chương mới, không cả xuống dòng hệ thống. Các lời thoại lồng vào nhau, đôi khi trong cùng một câu. Sự liên tục hình thức này sản sinh hiệu ứng cụ thể: độc giả buộc phải nghe đồng thời hai giọng, như một dàn nhạc trong đó mỗi nhạc cụ trình bày cùng giai điệu nhưng khác giọng điệu."
+        },
+        {
+          "speaker": "Linh",
+          "text": "Second axe — le travail du discours indirect libre, qui constitue à mon sens la signature flaubertienne par excellence. Lorsque Rodolphe murmure ses banalités amoureuses, le narrateur les rapporte sans guillemets, sans verbe introducteur, en sorte qu'on ne sait jamais s'il les valide ou s'il les démolit. Cette indécision n'est pas une faiblesse: elle est le ressort même de l'ironie. Comme l'a montré Genette dans Figures III, le discours indirect libre suspend le contrat de véracité — et c'est précisément ce que Flaubert exploite ici.",
+          "vi": "Trục hai — công việc của discours indirect libre, theo tôi là chữ ký Flaubert tuyệt đối. Khi Rodolphe thì thầm các câu sáo rỗng yêu đương, người trần thuật thuật lại không guillemets, không động từ giới thiệu, sao cho ta không bao giờ biết ông xác nhận hay phá hủy chúng. Sự không quyết định này không phải yếu: nó là chính lò xo của châm biếm. Như Genette đã chứng minh trong Figures III, discours indirect libre treo lại hợp đồng chân thực — và chính đó là điều Flaubert khai thác."
+        },
+        {
+          "speaker": "Linh",
+          "text": "Troisième axe — la thématique sous-jacente du langage dévoyé. Si l'on prête l'oreille aux deux discours, on observe qu'ils partagent une même structure: une rhétorique creuse, des formules toutes faites, une absence radicale de référent réel. Le conseiller exalte des abstractions agricoles sans jamais nommer un cultivateur précis; Rodolphe parle de passion sans aucune émotion réelle. Le contrepoint révèle, sans dire, que les deux registres sont également dévoyés. C'est, je crois, la pointe critique du chapitre.",
+          "vi": "Trục ba — chủ đề ngôn ngữ bị lệch. Nếu lắng tai hai diễn ngôn, ta quan sát chúng chia sẻ cùng cấu trúc: một tu từ rỗng, các công thức làm sẵn, sự vắng mặt triệt để của référent thật. Ủy viên ca ngợi các trừu tượng nông nghiệp mà không bao giờ gọi tên một người cấy cụ thể; Rodolphe nói về đam mê mà không có cảm xúc thật. Đối điểm để lộ, không nói, rằng hai cấp độ đều bị lệch như nhau. Đó, tôi tin, là mũi nhọn phê phán của chương."
+        },
+        {
+          "speaker": "Linh",
+          "text": "En conclusion: cette page exemplifie ce que Roland Barthes, dans Le Degré zéro de l'écriture (1953), appelait l'écriture comme valeur en soi. L'ironie n'est pas, ici, un procédé ajouté à un contenu: elle est consubstantielle au geste d'écrire. C'est en quoi Madame Bovary marque, dans l'histoire du roman, un tournant — celui d'une littérature qui ne croit plus en sa propre rhétorique tout en continuant d'écrire.",
+          "vi": "Kết luận: trang này thể hiện điều Roland Barthes, trong Le Degré zéro de l'écriture (1953), gọi là lối viết như giá trị tự thân. Châm biếm không phải, ở đây, thủ pháp thêm vào nội dung: nó cùng thực với động tác viết. Vì thế Madame Bovary đánh dấu, trong lịch sử tiểu thuyết, một bước ngoặt — bước ngoặt của một văn chương không còn tin vào tu từ của chính mình mà vẫn tiếp tục viết."
+        },
+        {
+          "speaker": "Pr. Compagnon",
+          "text": "Bien — explication solide, problématique tenue, lecture de Genette intégrée sans plaquage. Une réserve cependant: la référence à Barthes gagnerait à être précisée par un numéro de page dans la version écrite.",
+          "vi": "Tốt — bình giảng vững, vấn đề được giữ, đọc Genette tích hợp không plaquage. Một dè dặt: tham chiếu Barthes sẽ tốt hơn nếu kèm số trang trong bản viết."
+        },
+        {
+          "speaker": "Linh",
+          "text": "Vous avez raison — la précision bibliographique fait partie de la rigueur littéraire à ce niveau. Je l'intègre.",
+          "vi": "Thầy đúng — chính xác thư mục là một phần của nghiêm cẩn văn học ở cấp độ này. Tôi đưa vào."
+        },
+        {
+          "speaker": "Pr. Compagnon",
+          "text": "Voilà. Reprenez, on passe au texte suivant.",
+          "vi": "Đó. Cô tiếp tục, mình sang văn bản tiếp."
+        }
+      ],
+      "roleplay_prompts": [
+        "Bạn được giao oral d'agrégation 30 phút trên đoạn incipit của L'Étranger. Soạn introduction (1 phút) + annonce de plan (3 axes) — không sa vào tóm tắt cốt truyện.",
+        "Trong séminaire, bạn bị professeur trách « plaquage théorique » (đã đem Foucault vào trước khi đọc văn bản). Phản hồi: thừa nhận, đề xuất reprendre par la lettre du texte — démarche concrète.",
+        "Một élève de licence hỏi bạn cách phân biệt explication de texte với commentaire composé. Soạn câu trả lời 4 câu — chính xác, không « bằng nhau »."
+      ],
+      "register_notes": "L'EXPLICATION DE TEXTE đòi hỏi register littéraire trong từng câu. Phân biệt với register học thuật chung (C1):\n\nC1 (général): « L'auteur montre que… »\nC2 (littéraire): « L'auteur, par ce détour stylistique, donne à entendre que… »\n\nC1: « Cette phrase est ironique. »\nC2: « Cette phrase relève de l'ironie indirecte, qui suspend le contrat de véracité du narrateur. »\n\nĐỘNG TỪ ĐẶC TRƯNG D'EXPLICATION DE TEXTE:\n- « donner à entendre » (cho nghe ngầm)\n- « se déployer » (triển khai)\n- « recéler » (ẩn chứa)\n- « se dérober » (lánh đi)\n- « en filigrane » (ngầm ẩn)\n- « culminer » (đạt đỉnh)\n- « suspendre le sens » (treo lại nghĩa)\n\nCỤM TRANSITION C2 ĐẶC THÙ:\n- « Encore faut-il que… » (vẫn cần)\n- « Force est de constater que… » (phải thừa nhận)\n- « Il n'en demeure pas moins que… » (dù sao)\n- « C'est en quoi… » (vì thế)\n- « Pour ainsi dire » (có thể nói như vậy)\n\nSUBJONCTIF IMPARFAIT — dấu hiệu phân biệt C2 với C1:\n- « Il eût été préférable que l'analyse procédât du détail vers le système. »\n- « On l'eût souhaitée plus nuancée. »\n- « Bien que le texte fût bref, il offrait matière à un long commentaire. »\n\nKHÔNG sử dụng subjonctif imparfait dans contextes informels — bị đọc là pédantesque. CHỈ trong séminaire littéraire, agrégation, écriture critique soutenue.\n\nINVERSION DANS LES PROPOSITIONS DÉPENDANTES:\n- « Peut-être l'auteur a-t-il voulu… »\n- « Aussi le narrateur évoque-t-il… »\n- « Sans doute la phrase finale fait-elle écho à… »\n\nIDIOMS ĐẶC TRƯNG TRADITION CRITIQUE:\n- « lire entre les lignes » (đọc giữa các dòng — courant)\n- « la lettre du texte » (văn tự — soutenu)\n- « le grain du style » (hạt của phong cách — littéraire)\n- « tirer le texte de son côté » (kéo văn bản về phía mình — critique)\n\nMỘT TINH TẾ ĐẶC THÙ: không bao giờ nói « l'auteur veut dire que… » — intentionnalisme naïf bị tránh. Thay bằng « le texte donne à entendre… », « la phrase produit l'effet de… ». Pháp critique từ Barthes (La Mort de l'auteur, 1968) phân biệt l'auteur empirique (con người sống) với l'instance énonciative du texte (tiếng nói trong văn bản). Hai thực thể khác nhau.",
+      "idiom_glosses": [
+        {
+          "idiom": "Lire entre les lignes (courant)",
+          "literal": "Đọc giữa các dòng",
+          "meaning": "Hiểu điều ngầm — không công thức học thuật cao.",
+          "example": "Madame Bovary se lit aussi entre les lignes — l'ironie y est rarement explicite."
+        },
+        {
+          "idiom": "En filigrane (littéraire)",
+          "literal": "Như hình ngầm trên giấy",
+          "meaning": "Ẩn ngầm dưới bề mặt — formel littéraire.",
+          "example": "En filigrane de cette page descriptive, on lit déjà le drame qui s'annonce."
+        },
+        {
+          "idiom": "Faire entendre (littéraire)",
+          "literal": "Làm cho nghe",
+          "meaning": "Để lộ ngầm — sản sinh ý nghĩa qua hình thức.",
+          "example": "Le narrateur fait entendre, sans jamais le dire, son désaccord avec son personnage."
+        },
+        {
+          "idiom": "Tirer le texte de son côté (soutenu critique)",
+          "literal": "Kéo văn bản về phía mình",
+          "meaning": "Áp đặt cách đọc lên văn bản — phê bình một thực hành sai.",
+          "example": "Cette lecture sociologique tire le texte de son côté — Flaubert n'est pas un sociologue."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "fill-blank",
+          "question": "Encore faut-il que le commentateur ___ l'oreille assez fine pour entendre ce que le texte ne dit qu'à demi.",
+          "answer": "ait"
+        },
+        {
+          "type": "matching",
+          "pairs": [
+            [
+              "en filigrane",
+              "ngầm ẩn"
+            ],
+            [
+              "l'écart stylistique",
+              "sự lệch về phong cách"
+            ],
+            [
+              "recéler un sens",
+              "ẩn chứa một ý nghĩa"
+            ]
           ],
-          [
-            "l'autofiction",
-            "tự hư cấu"
-          ],
-          [
-            "le biographisme",
-            "thuyết tiểu sử"
+          "instruction": "Nối thuật ngữ critique với nghĩa Việt"
+        },
+        {
+          "type": "translation",
+          "vietnamese": "Khác hẳn quy giảm văn bản về các chủ đề, sự bình giảng phải khôi phục tính độc đáo của hình thức.",
+          "french": "Loin de réduire le texte à ses thèmes, l'explication doit en restituer la singularité formelle."
+        }
+      ]
+    },
+    {
+      "id": "lnarrative_voice",
+      "level": "C2",
+      "category": "fluency",
+      "title_vi": "Phân tích giọng kể và điểm nhìn (narrateur, focalisation)",
+      "title_en": "Analyzing narrative voice and point of view",
+      "sentences": [
+        {
+          "en": "Distinguer la voix narrative de la focalisation constitue, depuis Figures III de Genette, le préalable de toute analyse rigoureuse du récit.",
+          "vi": "Phân biệt giọng trần thuật khỏi điểm nhìn cấu thành, từ Figures III của Genette, tiền đề cho mọi phân tích nghiêm cẩn về tự sự.",
+          "pronunciation_focus": [
+            "voix → voa",
+            "narrative → na-ra-tiv",
+            "focalisation → fo-ka-li-za-sion",
+            "préalable → pré-a-la-blơ"
           ]
-        ],
-        "instruction": "Nối thuật ngữ với nghĩa Việt"
-      },
-      {
-        "type": "translation",
-        "vietnamese": "Vẫn cần, khi đọc Ernaux, phân biệt hợp đồng tham chiếu cô đề xuất với hợp đồng hư cấu chi phối tiểu thuyết cổ điển.",
-        "french": "Encore faut-il, lorsqu'on lit Ernaux, distinguer le pacte référentiel qu'elle propose du pacte fictionnel qui régit le roman classique."
-      }
-    ]
-  },
-  {
-    "id": "lreception_canon",
-    "level": "C2",
-    "category": "fluency",
-    "title_vi": "Lịch sử tiếp nhận và tranh luận về kinh điển",
-    "title_en": "Reception history and canon debates",
-    "sentences": [
-      {
-        "en": "L'histoire de la réception, depuis Jauss et l'École de Constance, a déplacé le centre de gravité de la critique: ce n'est plus l'œuvre seule qui compte, mais la trajectoire de ses lectures successives.",
-        "vi": "Lịch sử tiếp nhận, từ Jauss và Trường Constance, đã dời trọng tâm phê bình: không phải tác phẩm đơn lẻ là điều quan trọng, mà quỹ đạo các cách đọc liên tiếp.",
-        "pronunciation_focus": [
-          "réception → ré-sèp-sion",
-          "Jauss → jôs",
-          "gravité → gra-vi-té",
-          "trajectoire → tra-jèk-toar"
-        ]
-      },
-      {
-        "en": "Le canon littéraire français, longtemps stabilisé autour d'une trentaine d'auteurs masculins blancs, fait depuis trente ans l'objet d'une révision dont nul ne saurait sous-estimer la portée.",
-        "vi": "Kinh điển văn học Pháp, lâu nay ổn định quanh khoảng 30 tác giả nam da trắng, từ 30 năm nay là đối tượng của một sự xem xét lại mà không ai có thể đánh giá thấp tầm vóc.",
-        "pronunciation_focus": [
-          "canon → ka-nõn",
-          "stabilisé → sta-bi-li-zé",
-          "révision → ré-vi-zion",
-          "sous-estimer → su-zès-ti-mé"
-        ]
-      },
-      {
-        "en": "L'entrée tardive d'Ernaux dans les programmes universitaires illustre exemplairement la dynamique des reconnaissances institutionnelles.",
-        "vi": "Sự gia nhập muộn của Ernaux vào các chương trình đại học minh họa mẫu mực động lực của các sự công nhận thể chế.",
-        "pronunciation_focus": [
-          "entrée → ãn-tré",
-          "tardive → tar-div",
-          "exemplairement → èg-zãn-plè-rơ-mã",
-          "reconnaissances → rơ-ko-nè-sãns"
-        ]
-      },
-      {
-        "en": "Encore faudrait-il que le critique se gardât de confondre la valeur littéraire d'une œuvre avec son taux de citation académique.",
-        "vi": "Vẫn cần người phê bình tránh nhầm lẫn giá trị văn học của một tác phẩm với tỷ lệ trích dẫn học thuật.",
-        "pronunciation_focus": [
-          "faudrait → fô-drè",
-          "gardât → gar-da",
-          "valeur → va-lơr",
-          "citation → si-ta-sion"
-        ]
-      },
-      {
-        "en": "Le champ littéraire, comme l'a montré Bourdieu, opère selon des logiques de reconnaissance qui ne se confondent ni avec le marché ni avec le mérite intrinsèque.",
-        "vi": "Trường văn học, như Bourdieu đã chứng minh, hoạt động theo các logic công nhận không lẫn lộn với thị trường cũng không với công trạng nội tại.",
-        "pronunciation_focus": [
-          "champ → shã",
-          "logiques → lo-jik",
-          "reconnaissance → rơ-ko-nè-sãns",
-          "mérite → mé-rit"
-        ]
-      }
-    ],
-    "cultural_notes_vi": "LA RÉCEPTION et le CANON sont deux concepts critiques distincts mais imbriqués que l'on doit savoir manier au C2:\n\n(1) RÉCEPTION (au singulier): l'histoire des lectures successives d'une œuvre. Théorie issue de l'École de Constance — Hans Robert Jauss, Pour une esthétique de la réception (Pour une esthétique de la réception, 1972; trad. fr. 1978), Wolfgang Iser. Idée centrale: une œuvre n'a pas un sens fixe; elle déploie son sens à travers les lectures qui en sont faites, lectures elles-mêmes conditionnées par l'« horizon d'attente » de chaque époque.\n\n(2) CANON: l'ensemble des œuvres considérées comme indispensables — celles qu'on enseigne à l'université, qu'on inclut dans les anthologies, dont les éditions de référence sont publiées chez Gallimard (Pléiade) ou Garnier-Flammarion. Le canon n'est pas naturel — il est construit, hiérarchisé, contesté.\n\nQUATRE GRANDES TRANSFORMATIONS du canon français depuis 1980:\n\n(a) ENTRÉE DES FEMMES. Long absentes (à part Mme de La Fayette, Mme de Sévigné), les autrices entrent: Marguerite Duras (entrée canonique dans les années 1980 grâce à L'Amant, prix Goncourt 1984), Simone de Beauvoir (réévaluation philosophique post-2000), Annie Ernaux (entrée plus tardive — Nobel 2022 a accéléré la canonisation, déjà amorcée par les programmes universitaires des années 2010).\n\n(b) ENTRÉE DES FRANCOPHONIES. Le canon longtemps français-de-France s'ouvre aux écritures francophones extérieures: Aimé Césaire (Cahier d'un retour au pays natal, 1939), Édouard Glissant (Le Discours antillais, 1981), Patrick Chamoiseau (Texaco, prix Goncourt 1992), Maryse Condé (Nobel alternatif 2018), Léonora Miano, Alain Mabanckou, Dany Laferrière (Académie française 2013).\n\n(c) RECONNAISSANCE DES GENRES POPULAIRES. Le polar (Manchette, Vargas), la science-fiction (Damasio, Bordage), la bande dessinée (Maus, Persepolis) entrent dans le champ critique. Combat encore inachevé — les départements de lettres résistent.\n\n(d) RÉ-ÉVALUATION D'AUTEURS LONGTEMPS MARGINAUX. Céline, dont l'antisémitisme et la collaboration avaient relégué l'œuvre, est réintégré (au prix de débats vifs — Pléiade 2017 retardé, etc.). Beckett, considéré naguère comme expérimental marginal, est aujourd'hui canonique.\n\nQUI DÉCIDE DU CANON ?\n\n- Académie française: prestige symbolique, faible influence sur le canon scolaire\n- Pléiade (Gallimard): canonisation par l'édition de référence\n- Programmes du baccalauréat et de l'agrégation: forte influence sur les générations\n- Universités (Sorbonne, ENS, EHESS): forte influence sur la critique académique\n- Prix littéraires (Goncourt, Renaudot, Femina, Médicis): influence variable\n- Critiques médiatiques (Le Monde des livres, La Quinzaine littéraire): rôle de filtre\n- Réseaux sociaux et booktok depuis 2020: influence en croissance, encore marginale dans le canon académique\n\nDÉBATS ACTUELS:\n\n(1) FAUT-IL DÉCOLONISER LE CANON ? Question portée par les études postcoloniales depuis Glissant. Position modérée (Mbembe, Bessière): élargir sans abolir. Position radicale: déconstruire le concept même de canon.\n\n(2) FAUT-IL CONTINUER À ENSEIGNER LES AUTEURS PROBLÉMATIQUES (Céline, Houellebecq) ? Débat vif. Position académique majoritaire: oui, mais avec contextualisation critique.\n\n(3) LE CANON EST-IL UNE FORME DE VIOLENCE SYMBOLIQUE (Bourdieu) ? La sélection canonique reproduit les hiérarchies sociales — qui décide est lui-même issu d'une élite. Mais sans canon, comment transmettre ?\n\nUNE POSITION C2 LÉGITIME: tenir ensemble (a) la critique sociologique du canon comme construction historique non neutre, (b) la nécessité pratique d'un canon transmis pour l'enseignement, (c) la révision continue mais non chaotique.\n\nBẪY NGƯỜI VIỆT: tendance à accepter le canon français comme « la littérature française » sans interrogation. La critique C2 le voit comme construction historique — qui inclut, exclut, et change.",
-    "tip_advice_vi": "GRILLE D'ANALYSE pour étudier la réception d'une œuvre:\n\n(1) RECONSTITUER L'HORIZON D'ATTENTE de l'époque de publication:\n- Quel public? Quelle critique?\n- Quelles autres œuvres concurrentes?\n- Quelles attentes esthétiques dominantes?\n\n(2) IDENTIFIER LES PREMIERS LECTEURS et LEURS RÉACTIONS:\n- Compte rendus de presse à la sortie\n- Lettres et correspondance\n- Réactions publiques (succès ou scandale)\n\n(3) SUIVRE L'ÉVOLUTION DE LA RÉCEPTION sur la durée:\n- Périodes d'oubli ou de marginalisation\n- Périodes de redécouverte\n- Variations selon les écoles critiques (sainte-beuviste, formaliste, structuraliste, postcoloniale)\n\n(4) ANALYSER LES CRITÈRES DE CANONISATION:\n- Édition critique (Pléiade, Garnier)\n- Inscription au programme du baccalauréat ou de l'agrégation\n- Citations académiques\n- Adaptations (théâtre, cinéma)\n- Prix posthumes ou hommages\n\n(5) INTERROGER LA POSITION DE L'ŒUVRE DANS LE CANON ACTUEL:\n- Centrale, périphérique, marginale, exclue?\n- Pour quelles raisons (esthétiques, sociales, politiques)?\n- Le statut est-il stable ou contesté?\n\nCỤM HỮU ÍCH:\n\nPOUR INTRODUIRE UNE ANALYSE DE RÉCEPTION:\n- « La réception de l'œuvre, à sa parution, fut [scandalisée / discrète / triomphale]. »\n- « Trois moments distincts marquent la trajectoire critique de l'œuvre: [période 1], [période 2], [période 3]. »\n- « L'horizon d'attente de [année] explique la défaveur initiale dont l'œuvre fit l'objet. »\n\nPOUR ANALYSER UNE CANONISATION:\n- « L'entrée d'Ernaux dans la Pléiade en [année] consacre une reconnaissance institutionnelle préparée par deux décennies de travaux universitaires. »\n- « Ce n'est qu'à partir des années 1990 que Beckett quitte la marge expérimentale pour intégrer le canon. »\n- « La canonisation tardive de Duras s'explique moins par la qualité de l'œuvre, jamais discutée, que par les transformations du champ critique. »\n\nPOUR INTERROGER LE CANON:\n- « Le canon, comme construction historique, ne se confond pas avec la valeur littéraire intrinsèque — à supposer qu'une telle valeur existe. »\n- « Élargir le canon n'est pas le diluer — c'est en restaurer la richesse. »\n- « Encore faut-il distinguer la critique légitime du canon de son rejet idéologique. »\n\nTRÁNH:\n- « C'est un classique parce que c'est bon. » → tautologie sans contenu critique\n- « Le canon est arbitraire. » → trop fort; nuancer en disant « historiquement construit »\n- « Toutes les œuvres se valent. » → relativisme stérile, qui rend impossible toute hiérarchisation\n- Confondre canon scolaire (programmes) et canon académique (recherche)",
-    "vocabulary": [
-      {
-        "word": "l'esthétique de la réception",
-        "en": "reception aesthetics",
-        "vi": "thẩm mỹ tiếp nhận",
-        "pos": "n.f.",
-        "pronunciation_vi": "ès-té-tik dơ la ré-sèp-sion"
-      },
-      {
-        "word": "l'horizon d'attente",
-        "en": "horizon of expectation (Jauss)",
-        "vi": "chân trời mong đợi (Jauss)",
-        "pos": "n.m.",
-        "pronunciation_vi": "o-ri-zõn da-tãnt"
-      },
-      {
-        "word": "le canon littéraire",
-        "en": "the literary canon",
-        "vi": "kinh điển văn học",
-        "pos": "n.m.",
-        "pronunciation_vi": "ka-nõn li-té-rèr"
-      },
-      {
-        "word": "la canonisation",
-        "en": "canonization",
-        "vi": "sự kinh điển hóa",
-        "pos": "n.f.",
-        "pronunciation_vi": "ka-no-ni-za-sion"
-      },
-      {
-        "word": "le champ littéraire",
-        "en": "the literary field (Bourdieu)",
-        "vi": "trường văn học (Bourdieu)",
-        "pos": "n.m.",
-        "pronunciation_vi": "shã li-té-rèr"
-      },
-      {
-        "word": "la reconnaissance institutionnelle",
-        "en": "institutional recognition",
-        "vi": "sự công nhận thể chế",
-        "pos": "n.f.",
-        "pronunciation_vi": "rơ-ko-nè-sãns an-sti-tu-sio-nèl"
-      },
-      {
-        "word": "la consécration",
-        "en": "consecration / official recognition",
-        "vi": "sự thánh hóa / công nhận chính thức",
-        "pos": "n.f.",
-        "pronunciation_vi": "kõn-sé-kra-sion"
-      },
-      {
-        "word": "un auteur marginal",
-        "en": "a marginal author",
-        "vi": "một tác giả ngoại biên",
-        "pos": "n.m.",
-        "pronunciation_vi": "ô-tơr mar-ji-nal"
-      },
-      {
-        "word": "l'effacement du canon",
-        "en": "the erosion of the canon",
-        "vi": "sự xói mòn của kinh điển",
-        "pos": "n.m.",
-        "pronunciation_vi": "é-fas-mã du ka-nõn"
-      },
-      {
-        "word": "la francophonie littéraire",
-        "en": "literary francophony",
-        "vi": "văn học Pháp ngữ",
-        "pos": "n.f.",
-        "pronunciation_vi": "frãn-ko-fo-ni li-té-rèr"
-      }
-    ],
-    "dialogue": [
-      {
-        "speaker": "Pr. Compagnon",
-        "text": "Madame Tran, vous parlez de Beckett comme d'un classique. Il l'est aujourd'hui, mais quand l'est-il devenu ?",
-        "vi": "Cô Trần, cô nói về Beckett như một kinh điển. Hôm nay đúng, nhưng khi nào ông trở thành kinh điển?"
-      },
-      {
-        "speaker": "Linh",
-        "text": "Pas avant les années 1990, à mon sens. Avant cela, il restait classé « expérimental », hors du canon scolaire.",
-        "vi": "Không trước thập niên 1990, theo tôi. Trước đó, ông vẫn xếp loại « thực nghiệm », ngoài kinh điển học đường."
-      },
-      {
-        "speaker": "Pr. Compagnon",
-        "text": "Et le tournant ?",
-        "vi": "Và bước ngoặt?"
-      },
-      {
-        "speaker": "Linh",
-        "text": "L'entrée à la Pléiade en 2006, après le centenaire de sa naissance, scelle la canonisation officielle.",
-        "vi": "Sự gia nhập Pléiade năm 2006, sau dịp 100 năm sinh, niêm phong sự kinh điển hóa chính thức."
-      }
-    ],
-    "dialogue_long": [
-      {
-        "speaker": "Pr. Compagnon (séminaire de M2 sur les transformations du canon)",
-        "text": "Madame Tran, votre exposé porte sur la canonisation d'Annie Ernaux — phénomène contemporain qu'on peut suivre presque en temps réel. Quelle thèse défendez-vous ?",
-        "vi": "Cô Trần, bài cô về sự kinh điển hóa của Annie Ernaux — hiện tượng đương đại có thể theo dõi gần như thời gian thực. Cô bảo vệ luận điểm gì?"
-      },
-      {
-        "speaker": "Linh",
-        "text": "Ma thèse: la canonisation d'Ernaux n'est pas une simple récompense d'une œuvre dont la valeur aurait été constante depuis La Place (1983); elle est l'aboutissement d'un travail collectif — universitaire, critique, militant — qui a transformé l'horizon d'attente du champ littéraire entre 1990 et 2020. Sans cette transformation, le Nobel 2022 eût été impensable.",
-        "vi": "Luận điểm tôi: sự kinh điển hóa Ernaux không phải đơn giản phần thưởng cho một tác phẩm có giá trị lẽ ra hằng định từ La Place (1983); nó là kết quả của một công việc tập thể — đại học, phê bình, vận động — đã biến đổi chân trời mong đợi của trường văn học giữa 1990 và 2020. Không có sự biến đổi này, Nobel 2022 lẽ ra không thể nghĩ tới."
-      },
-      {
-        "speaker": "Linh",
-        "text": "Reconstituons l'horizon de la réception initiale. La Place paraît en 1983 — au sein du courant du roman minimaliste, mais l'œuvre se distingue par une ambition sociologique explicite. La critique de l'époque — Le Monde, Le Figaro littéraire, La Quinzaine — la salue, mais sans en faire un événement majeur. Pierre Bourdieu, dans La Distinction (1979) puis Les Règles de l'art (1992), avait pourtant donné les outils théoriques pour la lire — mais le pont entre ses outils et la critique littéraire courante n'était pas encore établi.",
-        "vi": "Tái dựng chân trời tiếp nhận ban đầu. La Place ra năm 1983 — trong dòng tiểu thuyết tối giản, nhưng tác phẩm phân biệt bằng một tham vọng xã hội học rõ rệt. Phê bình thời ấy — Le Monde, Le Figaro littéraire, La Quinzaine — chào đón, nhưng không biến thành sự kiện lớn. Pierre Bourdieu, trong La Distinction (1979) rồi Les Règles de l'art (1992), đã cho công cụ lý thuyết để đọc — nhưng cầu nối giữa công cụ ông và phê bình văn học thông thường chưa được thiết lập."
-      },
-      {
-        "speaker": "Linh",
-        "text": "Trois transformations entre 1990 et 2010 changent la donne. Premièrement, l'institutionnalisation des études de genre dans les universités françaises (création des centres d'études féministes à Paris-VIII, Lyon-II, dès les années 1990). Ces équipes redécouvrent les autrices longtemps ignorées et constituent Ernaux en référence. Deuxièmement, l'essor de la sociologie critique de la culture (Pinto, Sapiro, Bessière) qui mobilise Ernaux comme cas d'école. Troisièmement, l'inscription progressive d'Ernaux aux programmes du baccalauréat et de l'agrégation — qui produit, en une génération, des dizaines de milliers de lecteurs formés à la prendre au sérieux.",
-        "vi": "Ba biến đổi giữa 1990 và 2010 thay đổi tình thế. Thứ nhất, thể chế hóa nghiên cứu giới trong các đại học Pháp (thành lập các trung tâm nghiên cứu nữ quyền tại Paris-VIII, Lyon-II, từ thập niên 1990). Các nhóm này tái khám phá các tác giả nữ bị bỏ qua lâu và đặt Ernaux thành quy chiếu. Thứ hai, sự bùng nổ xã hội học phê phán văn hóa (Pinto, Sapiro, Bessière) huy động Ernaux như một trường hợp mẫu. Thứ ba, sự ghi danh dần Ernaux vào chương trình tú tài và agrégation — sản sinh, trong một thế hệ, hàng chục ngàn độc giả đào tạo để xem cô nghiêm túc."
-      },
-      {
-        "speaker": "Linh",
-        "text": "Quatrième moment, plus récent: les transformations idéologiques des années 2010-2020. Mouvement #MeToo, retour de la question des classes sociales dans le débat public, redécouverte critique du « transfuge de classe » comme figure intellectuelle (avec Didier Eribon, dont Retour à Reims, 2009, dialogue explicitement avec Ernaux). Ces transformations n'ajoutent rien à l'œuvre d'Ernaux — elles modifient l'horizon d'attente qui rend cette œuvre lisible comme « majeure ».",
-        "vi": "Khoảnh khắc thứ tư, gần đây hơn: các biến đổi tư tưởng những năm 2010-2020. Phong trào #MeToo, sự trở lại câu hỏi giai cấp xã hội trong tranh luận công, sự tái khám phá phê bình « transfuge de classe » như hình ảnh trí thức (với Didier Eribon, mà Retour à Reims, 2009, đối thoại rõ với Ernaux). Các biến đổi này không thêm gì cho tác phẩm Ernaux — chúng thay đổi chân trời mong đợi làm tác phẩm này có thể đọc như « lớn »."
-      },
-      {
-        "speaker": "Linh",
-        "text": "D'où ma thèse sur la canonisation: ce n'est pas l'œuvre qui change — c'est le champ littéraire qui se transforme jusqu'à pouvoir la reconnaître. Cela ne diminue en rien la valeur d'Ernaux; cela précise simplement le mécanisme par lequel cette valeur devient lisible et reconnue. Bourdieu avait raison: la canonisation est un fait du champ, non une révélation de la qualité.",
-        "vi": "Từ đó luận điểm tôi về kinh điển hóa: không phải tác phẩm thay đổi — mà trường văn học biến đổi đến mức có thể nhận ra. Điều đó không hề giảm giá trị Ernaux; chỉ làm rõ cơ chế giá trị này trở nên đọc được và được công nhận. Bourdieu đúng: kinh điển hóa là sự kiện của trường, không phải mạc khải về phẩm chất."
-      },
-      {
-        "speaker": "Pr. Compagnon",
-        "text": "Réponse solide. Une objection cependant: votre lecture sociologique pourrait sembler relativiser la valeur littéraire d'Ernaux. Si la canonisation est seulement un effet du champ, comment distinguer une grande œuvre canonisée d'une œuvre médiocre canonisée par hasard ?",
-        "vi": "Câu trả lời vững. Tuy nhiên một phản biện: cách đọc xã hội học của cô có thể có vẻ tương đối hóa giá trị văn học Ernaux. Nếu kinh điển hóa chỉ là hiệu ứng của trường, làm sao phân biệt một tác phẩm lớn được kinh điển hóa với một tác phẩm trung bình được kinh điển hóa do may?"
-      },
-      {
-        "speaker": "Linh",
-        "text": "Question juste — c'est la limite classique de l'approche bourdieusienne. Ma réponse: l'analyse du champ explique le MÉCANISME de la canonisation, pas sa LÉGITIMITÉ. Pour évaluer si une canonisation est légitime, il faut un autre type d'argument — analyse interne de l'œuvre, comparaison avec ses contemporains, mesure de son rendement heuristique. La sociologie du champ ne dispense pas de la lecture; elle l'éclaire d'une autre lumière. Dans le cas d'Ernaux, je crois que les deux approches convergent: l'œuvre soutient l'analyse interne, ET le champ permet sa reconnaissance. Quand seule l'une des deux conditions est remplie — œuvre solide mais champ qui ne reconnaît pas — on a un classique méconnu (cas de Mallarmé pendant longtemps). Quand seul le champ canonise une œuvre faible, on obtient un classique qui s'érode rapidement (nombreux prix Goncourt oubliés).",
-        "vi": "Câu hỏi đúng — đó là giới hạn cổ điển của cách tiếp cận bourdieusien. Câu trả lời của tôi: phân tích trường giải thích CƠ CHẾ kinh điển hóa, không phải HỢP PHÁP. Để đánh giá một kinh điển hóa có hợp pháp, cần một loại lập luận khác — phân tích nội bộ tác phẩm, so sánh với các đương thời, đo lượng năng suất heuristic. Xã hội học trường không miễn việc đọc; nó soi sáng bằng ánh sáng khác. Trong trường hợp Ernaux, tôi tin hai cách tiếp cận hội tụ: tác phẩm chịu được phân tích nội bộ, VÀ trường cho phép sự công nhận. Khi chỉ một trong hai điều kiện được đáp ứng — tác phẩm vững nhưng trường không công nhận — ta có một kinh điển ít biết (trường hợp Mallarmé thời gian dài). Khi chỉ trường kinh điển hóa một tác phẩm yếu, ta có một kinh điển sớm xói (nhiều prix Goncourt quên)."
-      },
-      {
-        "speaker": "Pr. Compagnon",
-        "text": "Excellente articulation des deux niveaux. C'est exactement la position que je défends dans Le Démon de la théorie. L'erreur serait de choisir entre approche interne et approche sociologique — il faut tenir les deux ensemble.",
-        "vi": "Khớp nối xuất sắc hai cấp. Chính là lập trường tôi bảo vệ trong Le Démon de la théorie. Sai sẽ là chọn giữa cách tiếp cận nội bộ và xã hội học — phải giữ cả hai cùng lúc."
-      }
-    ],
-    "roleplay_prompts": [
-      "Bạn được giao soạn une recension pour Le Monde des livres sur un essai récent qui prétend « décoloniser le canon littéraire français ». Position critique nuancée — accepter l'élargissement, refuser la déconstruction nihiliste.",
-      "Trong séminaire, một collègue affirme que « le canon est une violence symbolique pure ». Phản hồi en mobilisant Bourdieu sans le simplifier — le canon est aussi un mode de transmission qui rend possible la lecture experte.",
-      "Soạn 5 câu pour analyser pourquoi Maryse Condé, Nobel alternatif 2018, n'est pas encore au programme de l'agrégation — quels mécanismes du champ retardent la canonisation ?"
-    ],
-    "register_notes": "VOCABULAIRE PRÉCIS sur le canon et la réception:\n\nINSTANCES DE CANONISATION (à connaître):\n- la Pléiade (Gallimard) — édition de référence ultime\n- la Bibliothèque de la Pléiade des sciences humaines (depuis 1984) — pour la critique\n- les programmes du baccalauréat (révisés tous les 5-7 ans)\n- les programmes de l'agrégation des lettres modernes (annuels)\n- les manuels universitaires (Lagarde et Michard, longtemps; aujourd'hui plus diversifiés)\n- les anthologies des XIXe, XXe, XXIe siècles\n- les Nobel français: Sully Prudhomme (1901), Mistral (1904), Anatole France (1921), Bergson (1927), Mauriac (1952), Camus (1957), Saint-John Perse (1960), Sartre (1964 — refusé), Beckett (1969), Le Clézio (2008), Modiano (2014), Ernaux (2022)\n\nÉCOLES DE LECTURE DU CANON:\n- Critique formaliste (jakobsonienne): canon des œuvres formellement riches\n- Critique sociologique (bourdieusienne): canon comme construction du champ\n- Critique féministe: critique du canon masculin, redécouverte des autrices\n- Critique postcoloniale: ouverture aux francophonies, déconstruction de l'européocentrisme\n\nTERMES TECHNIQUES SUR LA RÉCEPTION:\n- l'horizon d'attente (Jauss): le système d'attentes du public d'une époque\n- l'écart esthétique (Jauss): la distance entre l'œuvre et l'horizon\n- la rupture de l'horizon (Jauss): œuvre qui transforme l'horizon\n- la consécration (Bourdieu): reconnaissance institutionnelle\n- le capital symbolique (Bourdieu): prestige cumulé\n- le champ littéraire (Bourdieu): espace structuré des positions littéraires\n- la position dominante / dominée (Bourdieu): hiérarchie au sein du champ\n\nIDIOMS LITTÉRAIRES SUR LA RÉCEPTION:\n- « entrer dans la postérité » (đi vào hậu thế — soutenu)\n- « passer à la postérité » (truyền cho hậu thế — courant)\n- « tomber dans l'oubli » (rơi vào quên lãng — courant)\n- « refaire surface » (nổi lên lại — courant)\n- « être consacré » (được thánh hóa — soutenu)\n- « faire l'objet d'une redécouverte » (được tái khám phá — soutenu)\n\nMỘT TINH TẾ ĐẶC THÙ: la critique C2 évite « grand auteur », « chef-d'œuvre », « génie » comme jugements évaluatifs non justifiés. Préférer: « auteur canonique », « œuvre devenue référence », « écrivain dont l'apport est reconnu ». Le « génie » comme catégorie critique est suspect depuis Bourdieu (qui en a montré la fonction sociale plus que la pertinence analytique).",
-    "idiom_glosses": [
-      {
-        "idiom": "Faire l'objet d'une redécouverte (soutenu)",
-        "literal": "Là đối tượng của một sự tái khám phá",
-        "meaning": "Được giới critique chú ý lại sau thời gian quên — pattern de réception.",
-        "example": "Roussel a fait l'objet d'une redécouverte spectaculaire dans les années 1960, par les surréalistes et l'Oulipo."
-      },
-      {
-        "idiom": "Sortir du purgatoire (littéraire)",
-        "literal": "Ra khỏi luyện ngục",
-        "meaning": "Thoát khỏi giai đoạn ít được đọc — réhabilitation critique.",
-        "example": "Céline est sorti du purgatoire dans les années 1980, au prix de débats vifs."
-      },
-      {
-        "idiom": "Faire école (courant littéraire)",
-        "literal": "Tạo trường phái",
-        "meaning": "Trở thành mô hình cho thế hệ sau.",
-        "example": "Le Nouveau Roman a fait école — mais brièvement; les années 1980 marquent un reflux."
-      },
-      {
-        "idiom": "Être inscrit au panthéon (soutenu)",
-        "literal": "Được ghi vào điện thờ",
-        "meaning": "Vào kinh điển chính thức — métaphore du Panthéon parisien.",
-        "example": "Avec son Nobel, Ernaux est désormais inscrite au panthéon littéraire français contemporain."
-      }
-    ],
-    "exercises": [
-      {
-        "type": "fill-blank",
-        "question": "Encore faudrait-il que le critique se ___ de confondre la valeur littéraire d'une œuvre avec son taux de citation académique.",
-        "answer": "gardât"
-      },
-      {
-        "type": "matching",
-        "pairs": [
-          [
-            "l'horizon d'attente",
-            "chân trời mong đợi"
-          ],
-          [
-            "la consécration",
-            "sự thánh hóa"
-          ],
-          [
-            "le champ littéraire",
-            "trường văn học"
+        },
+        {
+          "en": "Le narrateur de L'Étranger demeure intradiégétique sans qu'on puisse pour autant le confondre avec Camus lui-même.",
+          "vi": "Người trần thuật trong L'Étranger ở bên trong câu chuyện mà ta không thể đồng nhất ông với chính Camus.",
+          "pronunciation_focus": [
+            "intradiégétique → an-tra-dié-jé-tik",
+            "sans → sã",
+            "autant → ô-tã",
+            "confondre → kõn-fõn-drơ"
           ]
-        ],
-        "instruction": "Nối thuật ngữ với nghĩa Việt"
-      },
-      {
-        "type": "translation",
-        "vietnamese": "Trường văn học, như Bourdieu đã chứng minh, hoạt động theo các logic công nhận không lẫn lộn với thị trường cũng không với công trạng nội tại.",
-        "french": "Le champ littéraire, comme l'a montré Bourdieu, opère selon des logiques de reconnaissance qui ne se confondent ni avec le marché ni avec le mérite intrinsèque."
-      }
-    ]
-  },
-  {
-    "id": "ltheoretical_lenses",
-    "level": "C2",
-    "category": "fluency",
-    "title_vi": "Các lăng kính lý thuyết — formaliste, féministe, postcoloniale",
-    "title_en": "Theoretical lenses — formalist, feminist, postcolonial",
-    "sentences": [
-      {
-        "en": "Une même œuvre peut être lue selon plusieurs grilles théoriques sans qu'aucune n'épuise sa richesse.",
-        "vi": "Một tác phẩm có thể được đọc theo nhiều lưới lý thuyết mà không lưới nào vắt kiệt sự phong phú của nó.",
-        "pronunciation_focus": [
-          "œuvre → ơ-vrơ",
-          "grilles → griy",
-          "théoriques → té-o-rik",
-          "richesse → ri-shès"
-        ]
-      },
-      {
-        "en": "La lecture formaliste, héritée de Jakobson et de l'École russe, met l'accent sur les procédés stylistiques au détriment du contenu thématique.",
-        "vi": "Cách đọc hình thức luận, kế thừa từ Jakobson và Trường phái Nga, nhấn mạnh các thủ pháp phong cách hơn nội dung chủ đề.",
-        "pronunciation_focus": [
-          "formaliste → for-ma-list",
-          "Jakobson → ya-kob-son",
-          "accent → ak-sãn",
-          "stylistiques → sti-lis-tik"
-        ]
-      },
-      {
-        "en": "La lecture féministe, depuis Le Deuxième Sexe de Beauvoir et Le Rire de la Méduse de Cixous, interroge les rapports de genre inscrits dans le texte.",
-        "vi": "Cách đọc nữ quyền, từ Le Deuxième Sexe của Beauvoir và Le Rire de la Méduse của Cixous, tra hỏi các quan hệ giới ghi trong văn bản.",
-        "pronunciation_focus": [
-          "féministe → fé-mi-nist",
-          "Beauvoir → bô-voar",
-          "Cixous → si-ksu",
-          "interroge → an-tè-roj"
-        ]
-      },
-      {
-        "en": "La lecture postcoloniale, dans la lignée de Glissant et de Mbembe, déplace le regard depuis le centre métropolitain vers les périphéries longtemps muettes.",
-        "vi": "Cách đọc hậu thuộc địa, trong mạch nối tiếp Glissant và Mbembe, dịch chuyển ánh nhìn từ trung tâm thủ đô sang các ngoại biên lâu nay câm lặng.",
-        "pronunciation_focus": [
-          "postcoloniale → pos-ko-lo-nial",
-          "Glissant → gli-sã",
-          "Mbembe → ãn-bèm-bé",
-          "périphéries → pé-ri-fé-ri"
-        ]
-      },
-      {
-        "en": "Encore faut-il que ces grilles soient mobilisées avec discernement, et non plaquées sans distinction sur tout texte qui s'y prêterait fortuitement.",
-        "vi": "Vẫn cần các lưới này được huy động với sự sáng suốt, và không bị dán không phân biệt lên mọi văn bản tình cờ phù hợp.",
-        "pronunciation_focus": [
-          "mobilisées → mo-bi-li-zé",
-          "discernement → di-sèr-nơ-mã",
-          "plaquées → pla-ké",
-          "fortuitement → for-tu-it-mã"
-        ]
-      }
-    ],
-    "cultural_notes_vi": "LES « LECTURES THÉORIQUES » de la critique française contemporaine forment un éventail dont la maîtrise est attendue à C2. Trois grandes traditions méritent une compréhension détaillée:\n\n(1) LECTURE FORMALISTE / STRUCTURALISTE\n\nORIGINE: Roman Jakobson, Vladimir Propp, l'École russe des années 1920. Reprise française par Tzvetan Todorov (qui traduit les formalistes russes en 1965), Roland Barthes, Gérard Genette, Algirdas Julien Greimas (sémiotique du récit).\n\nPRINCIPE CENTRAL: l'œuvre est un système de signes; le sens naît de l'organisation interne, non d'une référence extérieure. Le critique étudie les structures (oppositions binaires, fonctions narratives, isotopies) avant tout référent.\n\nAPPLICATION TYPE: l'analyse structurale du conte (Propp identifie 31 fonctions narratives universelles); l'analyse poétique de Jakobson sur Les Chats de Baudelaire (avec Lévi-Strauss, 1962); les Figures de Genette.\n\nLIMITES: tend à négliger l'historicité, l'idéologie, la subjectivité de l'auteur. Domination du formalisme dans les années 1960-70 a suscité un retour de balancier.\n\n(2) LECTURE FÉMINISTE\n\nORIGINE EN FRANCE: Simone de Beauvoir, Le Deuxième Sexe (1949) — fonde la critique du « féminin » comme construction culturelle (« On ne naît pas femme: on le devient »). Hélène Cixous, Le Rire de la Méduse (1975) — concept d'« écriture féminine ». Luce Irigaray, Speculum (1974) — critique du logos masculin. Julia Kristeva, La Révolution du langage poétique (1974) — sémiotique et féminin.\n\nPRINCIPES CENTRAUX: (a) le canon a longtemps marginalisé les femmes, qu'il faut redécouvrir; (b) les œuvres masculines portent des représentations de la féminité qu'il faut analyser comme construction; (c) il existe peut-être (débat) une « écriture féminine » distincte (Cixous), ou peut-être non (Beauvoir, plus universaliste).\n\nDÉBATS INTERNES: féminisme universaliste (Beauvoir) vs féminisme de la différence (Cixous, Irigaray); féminisme matérialiste (Delphy, Wittig) vs féminisme psychanalytique. Vifs débats encore aujourd'hui.\n\nLIMITES: risque de monomanie thématique (lire toute œuvre sous le seul angle du genre); risque de plaquage anachronique (lire des textes anciens avec des catégories contemporaines).\n\n(3) LECTURE POSTCOLONIALE\n\nORIGINE: Frantz Fanon (Les Damnés de la terre, 1961), Aimé Césaire (Discours sur le colonialisme, 1955), puis Édouard Glissant (Le Discours antillais, 1981; Poétique de la Relation, 1990). En anglais, Edward Said (Orientalism, 1978; trad. fr. 1980), Gayatri Spivak, Homi Bhabha.\n\nDÉVELOPPEMENT FRANÇAIS RÉCENT: Achille Mbembe (De la postcolonie, 2000; Politiques de l'inimitié, 2016), Léonora Miano, Alain Mabanckou, Patrick Chamoiseau. Création de centres universitaires (Paris-VIII, EHESS) sur les études postcoloniales depuis les années 2000.\n\nPRINCIPES CENTRAUX: (a) la littérature française a longtemps occulté ou caricaturé les colonisés; (b) les écritures francophones extérieures à la France métropolitaine méritent une lecture spécifique; (c) le concept même de « littérature française » mérite d'être interrogé — pourquoi pas « littérature francophone »?\n\nDÉBATS: tension entre « francophonie » comme catégorie utile et « francophonie » comme catégorie qui maintient une hiérarchie (« centre français » et « périphéries »); débat sur la « décolonisation » du canon — élargissement ou déconstruction?\n\nLIMITES: risque de plaquage idéologique sur des textes qui n'engagent pas la question coloniale; risque de réduire un auteur francophone à sa condition postcoloniale (limiter Glissant à « écrivain antillais », par exemple).\n\nUNE POSITION C2 LÉGITIME: les trois grilles sont OUTILS, non DOGMES. Sur un texte donné, telle grille éclaire mieux que telle autre. Sur Madame Bovary, la lecture féministe est puissante (Emma comme victime des représentations romanesques imposées aux femmes); la lecture formaliste est puissante (discours indirect libre, structure ironique); la lecture postcoloniale est moins pertinente (le roman engage peu la question coloniale, malgré quelques scènes en Égypte). Choisir la grille en fonction du texte — non l'inverse.\n\nBẪY NGƯỜI VIỆT: tendance à choisir une grille a priori (parce qu'on l'a lue récemment) puis à chercher des éléments du texte qui la valident. C'est ce que Compagnon appelle « plaquage théorique ». L'attitude C2: lire d'abord le texte, identifier ce qu'il sollicite, choisir ENSUITE la ou les grilles appropriées.",
-    "tip_advice_vi": "GRILLE D'ANALYSE pour mobiliser une lecture théorique:\n\n(1) IDENTIFIER CE QUE LE TEXTE SOLLICITE — les thématiques, les structures, les positions énonciatives qui rendent telle ou telle grille pertinente.\n\n(2) CHOISIR UNE GRILLE — ou deux, si le texte le supporte. Trois grilles plaquées sur le même texte = surcharge théorique.\n\n(3) LIRE LA GRILLE AU PLUS PRÈS — citer les théoriciens précisément, pas en bloc:\n- « Comme l'a montré Bourdieu dans Les Règles de l'art (1992)… »\n- « En reprenant le concept d'écriture féminine forgé par Cixous dans Le Rire de la Méduse (1975)… »\n- « Mbembe, dans De la postcolonie (2000), propose une analyse… »\n\n(4) APPLIQUER LA GRILLE AU TEXTE — chercher dans le texte les éléments qui valident l'application. Citation par citation.\n\n(5) ÉVALUER LES LIMITES de la grille pour ce texte — quels aspects elle éclaire, quels aspects elle laisse dans l'ombre.\n\nCỤM HỮU ÍCH:\n\nPOUR INTRODUIRE UNE LECTURE THÉORIQUE:\n- « Cette page peut être lue à la lumière de [théorie]. »\n- « La grille [théorique] que je mobilise ici n'épuise pas le texte, mais elle en éclaire un aspect particulier. »\n- « Sans prétendre à l'exhaustivité, une lecture [féministe / formaliste / postcoloniale] permet de faire apparaître [élément spécifique]. »\n\nPOUR ANALYSER FORMALLEMENT:\n- « L'isotopie dominante — le champ lexical de [X] — structure l'ensemble du paragraphe. »\n- « Le récit déploie ici une opposition binaire entre [pôle 1] et [pôle 2], opposition que la fin viendra subvertir. »\n- « La fonction cardinale de cet épisode, au sens proppien, consiste à [fonction]. »\n\nPOUR ANALYSER FÉMINISTEMENT:\n- « Le personnage féminin est ici construit selon les codes de la féminité du XIXe siècle — fragilité, intériorité, pâmoison — codes que le texte reprend [ou subvertit]. »\n- « L'écriture féminine, telle que la pense Cixous, se manifeste dans ce texte par [traits spécifiques]. »\n- « Le rapport de genre inscrit dans cette scène mérite d'être analysé sans anachronisme. »\n\nPOUR ANALYSER POSTCOLONIALEMENT:\n- « Le roman engage la question coloniale par [élément spécifique], que la lecture longtemps dominante avait laissé dans l'ombre. »\n- « En reprenant la grille de Glissant, on peut analyser ce passage comme une mise en relation des cultures. »\n- « Cette représentation de l'autre relève de ce que Said nommait l'« orientalisme » — construction occidentale projetée. »\n\nTRÁNH:\n- Plaquer une grille sans justification du texte\n- Empiler trois grilles sur le même paragraphe\n- Citer un théoricien sans nommer l'œuvre et l'année\n- Réduire un texte à un seul aspect (« Madame Bovary, c'est juste une critique du patriarcat »)",
-    "vocabulary": [
-      {
-        "word": "une grille de lecture",
-        "en": "an interpretive grid",
-        "vi": "một lưới đọc",
-        "pos": "n.f.",
-        "pronunciation_vi": "griy dơ lèk-tur"
-      },
-      {
-        "word": "la lecture formaliste",
-        "en": "formalist reading",
-        "vi": "cách đọc hình thức luận",
-        "pos": "n.f.",
-        "pronunciation_vi": "lèk-tur for-ma-list"
-      },
-      {
-        "word": "la lecture féministe",
-        "en": "feminist reading",
-        "vi": "cách đọc nữ quyền",
-        "pos": "n.f.",
-        "pronunciation_vi": "lèk-tur fé-mi-nist"
-      },
-      {
-        "word": "la lecture postcoloniale",
-        "en": "postcolonial reading",
-        "vi": "cách đọc hậu thuộc địa",
-        "pos": "n.f.",
-        "pronunciation_vi": "lèk-tur pos-ko-lo-nial"
-      },
-      {
-        "word": "l'écriture féminine",
-        "en": "feminine writing (Cixous)",
-        "vi": "lối viết nữ tính (Cixous)",
-        "pos": "n.f.",
-        "pronunciation_vi": "é-kri-tur fé-mi-nin"
-      },
-      {
-        "word": "un rapport de genre",
-        "en": "a gender relation",
-        "vi": "một quan hệ giới",
-        "pos": "n.m.",
-        "pronunciation_vi": "ra-por dơ jãn-rơ"
-      },
-      {
-        "word": "une isotopie",
-        "en": "an isotopy (Greimas)",
-        "vi": "một đẳng cấu (Greimas)",
-        "pos": "n.f.",
-        "pronunciation_vi": "i-zo-to-pi"
-      },
-      {
-        "word": "un plaquage théorique",
-        "en": "theoretical imposition",
-        "vi": "sự dán lý thuyết",
-        "pos": "n.m.",
-        "pronunciation_vi": "pla-kaj té-o-rik"
-      },
-      {
-        "word": "l'orientalisme",
-        "en": "Orientalism (Said)",
-        "vi": "chủ nghĩa Đông phương (Said)",
-        "pos": "n.m.",
-        "pronunciation_vi": "o-riãn-ta-lism"
-      },
-      {
-        "word": "la mise en relation",
-        "en": "putting-into-relation (Glissant)",
-        "vi": "sự đặt vào quan hệ (Glissant)",
-        "pos": "n.f.",
-        "pronunciation_vi": "miz ã rơ-la-sion"
-      }
-    ],
-    "dialogue": [
-      {
-        "speaker": "Pr. Compagnon",
-        "text": "Madame Tran, vous lisez Madame Bovary uniquement avec la grille féministe. C'est trop étroit.",
-        "vi": "Cô Trần, cô đọc Madame Bovary chỉ với lưới nữ quyền. Quá hẹp."
-      },
-      {
-        "speaker": "Linh",
-        "text": "Vous avez raison — la grille est puissante mais ne saurait épuiser le roman. Je devrais l'articuler avec la lecture formaliste.",
-        "vi": "Thầy đúng — lưới này mạnh nhưng không thể vắt kiệt tiểu thuyết. Tôi nên khớp với cách đọc hình thức luận."
-      },
-      {
-        "speaker": "Pr. Compagnon",
-        "text": "Voilà — chez Flaubert, la critique des illusions romanesques s'opère par la forme même, pas seulement par le contenu thématique.",
-        "vi": "Đó — ở Flaubert, phê bình các ảo tưởng tiểu thuyết hoạt động qua chính hình thức, không chỉ qua nội dung chủ đề."
-      },
-      {
-        "speaker": "Linh",
-        "text": "D'où l'intérêt de croiser les deux grilles — féministe sur le contenu, formaliste sur le dispositif énonciatif.",
-        "vi": "Vì thế lợi ích chéo hai lưới — nữ quyền trên nội dung, hình thức luận trên thiết kế phát ngôn."
-      }
-    ],
-    "dialogue_long": [
-      {
-        "speaker": "Pr. Compagnon (séminaire de méthodologie critique)",
-        "text": "Madame Tran, votre exposé porte sur la question méthodologique fondamentale: comment articuler plusieurs grilles théoriques sans tomber dans le syncrétisme superficiel ? Vingt minutes.",
-        "vi": "Cô Trần, bài cô về câu hỏi phương pháp luận cơ bản: làm sao khớp nối nhiều lưới lý thuyết mà không rơi vào syncrétisme bề mặt? 20 phút."
-      },
-      {
-        "speaker": "Linh",
-        "text": "Ma proposition: il existe trois positions méthodologiques légitimes face à la pluralité des grilles. La première — moniste — choisit une grille et l'applique systématiquement. La deuxième — éclectique — utilise la grille la plus pertinente pour chaque texte. La troisième — dialogique — fait travailler plusieurs grilles ensemble sur un même texte. Ces trois positions ne sont pas équivalentes; chacune a ses bénéfices et ses risques propres.",
-        "vi": "Đề xuất tôi: có ba lập trường phương pháp luận hợp pháp trước sự đa dạng của các lưới. Lập trường thứ nhất — monist — chọn một lưới và áp dụng hệ thống. Thứ hai — éclectique — dùng lưới phù hợp nhất cho mỗi văn bản. Thứ ba — dialogique — cho nhiều lưới làm việc cùng nhau trên một văn bản. Ba lập trường này không tương đương; mỗi cái có lợi ích và rủi ro riêng."
-      },
-      {
-        "speaker": "Linh",
-        "text": "Position moniste — exemple: un critique exclusivement bourdieusien lit toute œuvre comme position dans le champ. Avantage: cohérence, profondeur. Inconvénient: risque de monomanie, plaquage théorique sur des textes qui n'appellent pas cette grille. Le bourdieusisme strict produit d'excellentes analyses sur Flaubert (qui s'y prête) et de mauvaises sur Mallarmé (qui résiste).",
-        "vi": "Lập trường moniste — ví dụ: một critique chỉ dùng Bourdieu đọc mọi tác phẩm như vị trí trong trường. Lợi: nhất quán, sâu. Hại: rủi ro monomanie, plaquage lý thuyết trên các văn bản không cần lưới này. Bourdieusisme nghiêm sản sinh phân tích xuất sắc về Flaubert (phù hợp) và tệ về Mallarmé (kháng cự)."
-      },
-      {
-        "speaker": "Linh",
-        "text": "Position éclectique — exemple: utiliser la grille formaliste sur les sonnets de Mallarmé, la grille sociologique sur Zola, la grille postcoloniale sur Césaire, la grille féministe sur Beauvoir. Avantage: souplesse, pertinence textuelle. Inconvénient: risque d'incohérence — comment articuler des présupposés théoriques parfois contradictoires? Si la grille formaliste suppose que le texte est autonome, et la grille sociologique qu'il est déterminé par le champ, comment passer de l'une à l'autre sans naïveté ?",
-        "vi": "Lập trường éclectique — ví dụ: dùng lưới hình thức luận trên sonnet Mallarmé, lưới xã hội học trên Zola, lưới hậu thuộc địa trên Césaire, lưới nữ quyền trên Beauvoir. Lợi: linh hoạt, phù hợp văn bản. Hại: rủi ro không nhất quán — làm sao khớp các tiền đề lý thuyết đôi khi mâu thuẫn? Nếu lưới hình thức luận giả định văn bản tự lập, và lưới xã hội học giả định nó bị trường định mệnh, làm sao chuyển từ cái này sang cái kia mà không ngây thơ?"
-      },
-      {
-        "speaker": "Linh",
-        "text": "Position dialogique — la plus exigeante. Exemple: lire Madame Bovary avec à la fois la grille féministe (Emma comme victime des représentations imposées aux femmes du XIXe) ET la grille formaliste (le discours indirect libre comme dispositif central de l'ironie flaubertienne). Avantage: épaisseur d'analyse — chaque grille révèle ce que l'autre laisse dans l'ombre. Inconvénient: difficulté méthodologique réelle — il faut articuler explicitement les deux grilles, montrer où elles convergent et où elles divergent.",
-        "vi": "Lập trường dialogique — đòi hỏi nhất. Ví dụ: đọc Madame Bovary cùng lúc với lưới nữ quyền (Emma như nạn nhân của các biểu tượng áp lên phụ nữ thế kỷ XIX) VÀ lưới hình thức luận (discours indirect libre như thiết kế trung tâm của châm biếm Flaubert). Lợi: dày dặn phân tích — mỗi lưới để lộ điều cái kia bỏ trong bóng. Hại: khó khăn phương pháp luận thật — phải khớp rõ hai lưới, cho thấy nơi chúng hội tụ và phân kỳ."
-      },
-      {
-        "speaker": "Linh",
-        "text": "Sur Madame Bovary, l'articulation peut s'opérer ainsi: la lecture féministe identifie le contenu — Emma est une femme dont la conscience a été formatée par les romans sentimentaux qui lui ont été destinés en tant que femme. La lecture formaliste identifie le dispositif — Flaubert, par le discours indirect libre, fait exister cette conscience formée tout en s'en distanciant ironiquement. Les deux grilles se rejoignent sur l'analyse: la critique flaubertienne du formatage féminin opère par la forme, non malgré elle. C'est précisément cette articulation que ni la grille formaliste seule, ni la grille féministe seule ne pouvait produire.",
-        "vi": "Trên Madame Bovary, khớp nối có thể vận hành thế này: cách đọc nữ quyền nhận dạng nội dung — Emma là một phụ nữ mà ý thức bị định dạng bởi các tiểu thuyết tình cảm dành cho cô với tư cách phụ nữ. Cách đọc hình thức luận nhận dạng thiết kế — Flaubert, qua discours indirect libre, làm tồn tại ý thức được định dạng này đồng thời tách khỏi nó với châm biếm. Hai lưới gặp nhau trên phân tích: phê bình Flaubert về định dạng nữ tính hoạt động qua hình thức, không phải bất chấp. Chính khớp nối này mà cả lưới hình thức luận một mình, lẫn lưới nữ quyền một mình, không thể sản sinh."
-      },
-      {
-        "speaker": "Pr. Compagnon",
-        "text": "Position défendue avec rigueur. Une dernière question: dans cette position dialogique, comment décidez-vous quelles grilles articuler ? Le risque, sinon, est l'arbitraire — on prend les grilles qu'on connaît bien et on évite les autres.",
-        "vi": "Lập trường được bảo vệ nghiêm cẩn. Câu hỏi cuối: trong lập trường dialogique này, cô quyết định khớp những lưới nào thế nào? Rủi ro, nếu không, là tùy ý — ta lấy các lưới ta biết rõ và tránh các cái khác."
-      },
-      {
-        "speaker": "Linh",
-        "text": "Critère textuel: les grilles s'imposent quand le texte les SOLLICITE. Madame Bovary sollicite la grille féministe (un personnage féminin central, des codes de genre thématisés) et la grille formaliste (un dispositif énonciatif spectaculaire). Il sollicite moins la grille postcoloniale, malgré la scène égyptienne — qui reste épisodique et n'engage pas vraiment la question. Le critique honnête reconnaît qu'il a manqué une grille pertinente plutôt que de plaquer une grille non sollicitée. Et il accepte qu'aucune lecture, même dialogique, ne saurait épuiser un texte canonique. C'est précisément ce qui fait que le canon reste à lire — chaque génération apporte ses grilles, et le texte garde de quoi répondre.",
-        "vi": "Tiêu chí văn bản: các lưới áp đặt khi văn bản TRIỆU GỌI chúng. Madame Bovary triệu gọi lưới nữ quyền (một nhân vật nữ trung tâm, các mã giới được chủ đề hóa) và lưới hình thức luận (một thiết kế phát ngôn ngoạn mục). Nó ít triệu gọi lưới hậu thuộc địa, dù có cảnh Ai Cập — vẫn là phụ và không thực sự dấn vào câu hỏi. Người critique trung thực thừa nhận đã bỏ một lưới phù hợp hơn là dán một lưới không được triệu. Và chấp nhận rằng không cách đọc nào, kể cả dialogique, có thể vắt kiệt một văn bản kinh điển. Chính điều này làm kinh điển vẫn còn để đọc — mỗi thế hệ mang lưới của nó, và văn bản giữ chỗ để đáp."
-      },
-      {
-        "speaker": "Pr. Compagnon",
-        "text": "Réponse qui clôt le séminaire. Vous avez exposé la position dialogique avec ses raisons — c'est ce qu'on attend en agrégation. La pluralité méthodologique est un acquis, à condition d'être articulée, non juxtaposée.",
-        "vi": "Câu trả lời đóng séminaire. Cô đã trình bày lập trường dialogique với các lý do — đó là điều mong đợi ở agrégation. Sự đa dạng phương pháp luận là một thành tựu, với điều kiện được khớp nối, không juxtaposée."
-      }
-    ],
-    "roleplay_prompts": [
-      "Bạn được giao soạn une analyse de Tropismes de Sarraute (1939) en mobilisant deux grilles convergentes — formaliste (le travail sur la perception infraverbale) et féministe (la critique des micro-violences ordinaires de la sociabilité bourgeoise).",
-      "Trong séminaire, một collègue affirme que « la lecture postcoloniale n'a rien à dire sur Mallarmé ». Phản hồi avec nuance — accepter que la grille n'est pas centrale sur Mallarmé, sans pour autant exclure qu'elle puisse éclairer certains aspects (la position de Mallarmé dans une économie globale du XIXe).",
-      "Soạn 5 câu pour expliquer pourquoi la grille bourdieusienne et la grille formaliste, théoriquement opposées, peuvent se compléter dans la pratique critique."
-    ],
-    "register_notes": "VOCABULAIRE PRÉCIS sur les théories critiques:\n\nÉCOLES À CONNAÎTRE (références françaises):\n- Formalisme russe (Jakobson, Propp, Chklovski) — médiation française par Todorov\n- Structuralisme (Lévi-Strauss, Barthes Mythologies, Greimas)\n- Sémiotique (Greimas, Eco)\n- Sociocritique (Goldmann, Lukács, plus tard Pinto, Sapiro)\n- Psychanalyse littéraire (Mauron, Bellemin-Noël)\n- Génétique textuelle (de Biasi, ITEM)\n- Études de genre (Beauvoir, Cixous, Wittig, Butler traduit)\n- Études postcoloniales (Glissant, Mbembe, Said traduit, Spivak)\n- Études queer (Eribon, Bourcier)\n- Écocritique (récente, Garrard, Schoentjes)\n\nCONCEPTS THÉORIQUES INDISPENSABLES:\n- diégèse, focalisation, voix (Genette)\n- horizon d'attente, écart esthétique (Jauss)\n- intertextualité (Kristeva)\n- pacte autobiographique (Lejeune)\n- champ littéraire, capital symbolique (Bourdieu)\n- écriture féminine (Cixous)\n- subalterne, voix subalterne (Spivak)\n- mise en relation, créolisation (Glissant)\n- lieu commun, doxa (Barthes)\n- isotopie, fonction narrative (Greimas, Propp)\n- mythe au second degré (Barthes Mythologies)\n\nMOTS-OUTILS THÉORIQUES À UTILISER PRÉCISÉMENT:\n- une « lecture » (interprétation cohérente d'un texte selon une grille)\n- une « problématique » (question qui structure une analyse)\n- une « hypothèse de lecture » (proposition à vérifier)\n- une « grille » (cadre conceptuel)\n- un « dispositif » (organisation matérielle d'un texte)\n- un « régime » (mode de fonctionnement — ex. le régime de l'ironie)\n- une « inflexion » (modification subtile)\n- un « déplacement » (changement de position théorique)\n\nIDIOMS LITTÉRAIRES SUR LA THÉORIE:\n- « plaquer une grille » (dán một lưới — courant critique)\n- « solliciter une lecture » (triệu một cách đọc — soutenu)\n- « croiser les approches » (chéo các cách tiếp cận — courant)\n- « faire dialoguer les grilles » (làm các lưới đối thoại — soutenu)\n- « pousser une grille à son terme » (đẩy lưới đến cuối — soutenu)\n\nMỘT TINH TẾ ĐẶC THÙ: critique C2 évite « lecture marxiste », « lecture freudienne » sans précisions. Préférer: « lecture sociologique d'inspiration marxienne » (parce que « marxiste » est ambigu — Goldmann, Althusser, Macherey ont des positions différentes); « lecture psychanalytique d'inspiration freudienne » (pour distinguer de Lacan, Klein, Winnicott). La précision théorique est un marqueur de niveau C2.",
-    "idiom_glosses": [
-      {
-        "idiom": "Plaquer une grille (courant critique)",
-        "literal": "Dán một lưới",
-        "meaning": "Áp dụng cứng nhắc một lý thuyết bất chấp văn bản — péjoratif.",
-        "example": "Plaquer la grille bourdieusienne sur Mallarmé manque de pertinence textuelle."
-      },
-      {
-        "idiom": "Croiser les approches (courant)",
-        "literal": "Chéo các cách tiếp cận",
-        "meaning": "Khớp nhiều lý thuyết để làm phong phú phân tích.",
-        "example": "Croiser l'approche formaliste et l'approche féministe sur Madame Bovary fait apparaître la critique flaubertienne du formatage."
-      },
-      {
-        "idiom": "Pousser une grille à son terme (soutenu)",
-        "literal": "Đẩy lưới đến cuối",
-        "meaning": "Khai thác đầy đủ một lý thuyết để xem nó dẫn đến đâu.",
-        "example": "Pousser la grille postcoloniale à son terme sur Glissant suppose qu'on accepte la créolisation comme catégorie centrale."
-      },
-      {
-        "idiom": "Faire flèche de tout bois (soutenu)",
-        "literal": "Làm mũi tên từ mọi cây gỗ",
-        "meaning": "Sử dụng mọi nguồn / lý thuyết — éclectisme assumé.",
-        "example": "En sciences humaines, on fait flèche de tout bois — l'éclectisme est une vertu épistémologique."
-      }
-    ],
-    "exercises": [
-      {
-        "type": "fill-blank",
-        "question": "Encore faut-il que ces grilles ___ mobilisées avec discernement, et non plaquées sans distinction sur tout texte qui s'y prêterait fortuitement.",
-        "answer": "soient"
-      },
-      {
-        "type": "matching",
-        "pairs": [
-          [
-            "la grille formaliste",
-            "lưới hình thức luận"
-          ],
-          [
-            "l'écriture féminine",
-            "lối viết nữ tính"
-          ],
-          [
-            "le plaquage théorique",
-            "sự dán lý thuyết"
+        },
+        {
+          "en": "Peut-être l'auteur a-t-il voulu, par cette focalisation strictement interne, suspendre tout jugement éthique au profit d'une perception nue.",
+          "vi": "Có lẽ tác giả đã muốn, qua cách focalisation interne nghiêm ngặt, treo lại mọi phán xét đạo đức để dành chỗ cho một tri giác trần trụi.",
+          "pronunciation_focus": [
+            "peut-être → pơ-tè-trơ",
+            "focalisation → fo-ka-li-za-sion",
+            "éthique → é-tik",
+            "perception → pèr-sèp-sion"
           ]
-        ],
-        "instruction": "Nối thuật ngữ critique với nghĩa Việt"
-      },
-      {
-        "type": "translation",
-        "vietnamese": "Một tác phẩm có thể được đọc theo nhiều lưới lý thuyết mà không lưới nào vắt kiệt sự phong phú của nó.",
-        "french": "Une même œuvre peut être lue selon plusieurs grilles théoriques sans qu'aucune n'épuise sa richesse."
-      }
-    ]
-  },
-  {
-    "id": "lessay_opening",
-    "level": "C2",
-    "category": "fluency",
-    "title_vi": "Viết phần mở của một dissertation phê bình",
-    "title_en": "Writing a critical essay opening",
-    "sentences": [
-      {
-        "en": "L'amorce, dans la dissertation française, n'est pas un préambule décoratif mais l'acte d'ouverture qui engage tout le devoir.",
-        "vi": "Amorce, trong dissertation Pháp, không phải lời mở đầu trang trí mà là động tác mở khởi xướng toàn bộ bài.",
-        "pronunciation_focus": [
-          "amorce → a-mors",
-          "dissertation → di-sèr-ta-sion",
-          "préambule → pré-ãn-bul",
-          "engage → ãn-gaj"
-        ]
-      },
-      {
-        "en": "Une amorce réussie part d'un fait précis — historique, esthétique, biographique — pour conduire avec naturel à la problématique posée par le sujet.",
-        "vi": "Một amorce thành công xuất phát từ một sự kiện cụ thể — lịch sử, thẩm mỹ, tiểu sử — để dẫn tự nhiên đến vấn đề do đề bài đặt ra.",
-        "pronunciation_focus": [
-          "réussie → ré-u-si",
-          "précis → pré-si",
-          "conduire → kõn-dui-rơ",
-          "problématique → pro-blé-ma-tik"
-        ]
-      },
-      {
-        "en": "La problématique, à proprement parler, n'est ni le sujet ni la question rhétorique: elle reformule l'enjeu en termes critiques, en faisant apparaître la tension qui le rend digne d'être discuté.",
-        "vi": "Problématique, đúng nghĩa, không phải đề bài cũng không phải câu hỏi tu từ: nó diễn đạt lại vấn đề bằng thuật ngữ critique, làm xuất hiện sự căng thẳng khiến nó đáng được thảo luận.",
-        "pronunciation_focus": [
-          "proprement → pro-prơ-mã",
-          "reformule → rơ-for-mul",
-          "enjeu → ãn-jơ",
-          "tension → tãn-sion"
-        ]
-      },
-      {
-        "en": "Encore conviendrait-il que l'introduction annonçât son plan sans se réduire à une succession d'intitulés sans relief.",
-        "vi": "Vẫn cần phần dẫn nhập công bố kế hoạch của nó mà không thu giảm thành một chuỗi tiêu đề không nổi bật.",
-        "pronunciation_focus": [
-          "conviendrait → kõn-vian-drè",
-          "annonçât → a-nõn-sa",
-          "intitulés → an-ti-tu-lé",
-          "relief → rơ-lièf"
-        ]
-      },
-      {
-        "en": "On l'aura compris: la qualité d'une dissertation se joue, pour une grande part, dans les vingt premières lignes.",
-        "vi": "Ta đã hiểu: chất lượng của một dissertation, phần lớn, được chơi trong 20 dòng đầu tiên.",
-        "pronunciation_focus": [
-          "compris → kõm-pri",
-          "qualité → ka-li-té",
-          "joue → ju",
-          "lignes → li-nhơ"
-        ]
-      }
-    ],
-    "cultural_notes_vi": "LA DISSERTATION FRANÇAISE est l'exercice écrit canonique de l'enseignement supérieur de lettres — du baccalauréat à l'agrégation. Sa structure, héritée du XIXe siècle et codifiée par Lanson, n'a guère changé:\n\n(1) INTRODUCTION (10-15% du devoir): amorce → analyse du sujet → problématique → annonce de plan\n(2) DÉVELOPPEMENT (75-80%): trois parties dialectiques (thèse → antithèse → synthèse) ou trois axes thématiques\n(3) CONCLUSION (10%): bilan → ouverture\n\nLA DISSERTATION RENFERME UN PARI: que la pensée gagne en rigueur à se plier à une forme stricte. Les contestations existent (le « plan progressif » remplace parfois le « plan dialectique » strict), mais la matrice tripartite reste hégémonique en France — et différencie radicalement la culture intellectuelle française du modèle anglo-américain (essai à structure libre, paragraphes argumentatifs autonomes).\n\nL'INTRODUCTION — pierre angulaire de la dissertation:\n\nA. AMORCE (3-5 lignes):\nFonction: situer le sujet dans un contexte plus large, qui rend pertinent qu'on s'y arrête.\nTYPES D'AMORCE:\n- AMORCE HISTORIQUE: « En 1857, Madame Bovary fait l'objet d'un procès retentissant… »\n- AMORCE ESTHÉTIQUE: « La conception romantique du génie place l'inspiration au cœur de la création… »\n- AMORCE BIOGRAPHIQUE (avec prudence post-Sainte-Beuve): « Lorsque Beckett s'installe à Paris en 1937… »\n- AMORCE THÉORIQUE: « Roland Barthes, dans La Mort de l'auteur (1968), bouleversait… »\n\nÀ ÉVITER:\n- Amorce trop large (« Depuis l'Antiquité, l'humanité s'interroge sur l'amour… »)\n- Amorce sans rapport avec le sujet (placée pour faire savant)\n- Amorce qui plagie le manuel (« Comme tout le monde sait… »)\n\nB. ANALYSE DU SUJET (5-7 lignes):\nReformuler le sujet en explicitant les concepts qui l'engagent. « Lorsque l'on demande si la fiction peut dire le vrai, encore faut-il préciser ce qu'on entend par « vrai » — vérité empirique ? vérité psychologique ? vérité philosophique ? »\n\nC. PROBLÉMATIQUE (1-2 phrases):\nLe cœur de l'introduction. La problématique transforme le sujet en QUESTION CRITIQUE. Elle fait apparaître la tension qui justifie qu'on développe.\nFORMULATION TYPE: « En quoi… ? » / « Comment… peut-il à la fois… et… ? » / « Faut-il dès lors considérer que… ou plutôt… ? »\nÀ ÉVITER:\n- Problématique = sujet répété (« La question est de savoir si Madame Bovary est un grand roman »)\n- Problématique double ou triple (impossible à traiter en un devoir)\n- Problématique sans tension (« Nous étudierons l'écriture de Flaubert » — ce n'est pas une problématique, c'est une annonce)\n\nD. ANNONCE DE PLAN (3-5 lignes):\nNommer les trois parties de manière à faire SENTIR la dynamique dialectique. Pas une simple liste; une progression.\nFORMULATION TYPE: « Nous examinerons d'abord [partie 1]; nous verrons ensuite que [partie 2 — qui complique]; cette tension nous conduira enfin à [partie 3 — qui dépasse]. »\nÀ ÉVITER:\n- Annonce sèche (« I. … II. … III. … »)\n- Annonce sans logique de transition\n- Annonce qui se confond avec le développement (trop détaillée)\n\nERREURS FRÉQUENTES POUR PUBLIC VIETNAMIEN:\n\n(1) AMORCE TROP LARGE. Le réflexe vietnamien (et plus largement asiatique) est de partir « de loin », de poser un cadre général. Le réflexe français est inverse: partir d'un POINT PRÉCIS qui pique l'intérêt. Une amorce qui commence par « Depuis toujours… » ou « Dans l'histoire de la littérature… » est suspecte.\n\n(2) PROBLÉMATIQUE COMME QUESTION DE COURS. Une problématique scolaire ne fait pas surgir de tension réelle. Une problématique critique pose un PROBLÈME — quelque chose dont la réponse n'est pas évidente, sur quoi des positions divergentes existent.\n\n(3) ANNONCE SOUS FORME DE LISTE. La culture critique française attend une annonce qui DÉPLOIE une logique, non qui énumère des sujets. La transition entre les parties doit déjà être suggérée dans l'annonce.",
-    "tip_advice_vi": "PROCESSUS EN 6 ÉTAPES pour rédiger une introduction de dissertation:\n\nÉTAPE 1 — ANALYSE DU SUJET (15 min sur 4h de devoir):\n- Quels sont les mots-clés du sujet ?\n- Quels sont leurs sens possibles ?\n- Quelle tension secrète recèle le sujet ?\n\nÉTAPE 2 — RECHERCHE D'EXEMPLES (30 min):\n- 5-8 œuvres mobilisables\n- 2-3 références théoriques mobilisables\n- 1-2 amorces possibles\n\nÉTAPE 3 — FORMULATION DE LA PROBLÉMATIQUE (15 min):\n- Brouillon de 3-4 problématiques alternatives\n- Choix de la plus tenue (qui ouvre 3 parties claires)\n- Reformulation rigoureuse\n\nÉTAPE 4 — CONSTRUCTION DU PLAN (30 min):\n- Identification des 3 parties qui répondent à la problématique\n- Vérification: chaque partie est nécessaire ET suffisante\n- Test: peut-on permuter les parties ? Si oui, le plan est mauvais (pas de progression)\n\nÉTAPE 5 — RÉDACTION DE L'INTRODUCTION (30 min):\n- Amorce, analyse, problématique, annonce — dans cet ordre\n- 25-35 lignes, pas plus, pas moins\n- Style soutenu, sans pédanterie\n\nÉTAPE 6 — RELECTURE (10 min):\n- L'amorce conduit-elle naturellement à la problématique ?\n- La problématique est-elle une vraie question ?\n- L'annonce fait-elle apparaître une logique ?\n\nMODÈLES D'AMORCES RÉUSSIES — adaptables:\n\nA. AMORCE HISTORIQUE PRÉCISE:\n« En 1857, deux procès secouent la littérature française: celui de Madame Bovary, et celui des Fleurs du mal. Cette concomitance ne doit rien au hasard. Elle signale qu'une époque cherche, par la voie judiciaire, à délimiter ce qu'il est encore permis de dire en littérature… »\n\nB. AMORCE ESTHÉTIQUE:\n« Le sonnet, depuis Pétrarque, repose sur une économie strictement codifiée: quatorze vers, deux quatrains, deux tercets, schéma rimique fixe. Cette contrainte, loin d'épuiser la forme, l'a rendue capable d'accueillir Mallarmé, Rimbaud, Yves Bonnefoy… »\n\nC. AMORCE THÉORIQUE:\n« Lorsque Roland Barthes, en 1968, annonçait « la mort de l'auteur », il ne célébrait pas une disparition, mais inaugurait un déplacement: la critique devait désormais lire les textes sans l'autorité d'une intention auctoriale… »\n\nD. AMORCE PAR LA RÉCEPTION:\n« Les Particules élémentaires, à sa parution en 1998, suscite un débat d'une violence rare: les uns y voient le grand roman du désenchantement contemporain, les autres une simple provocation cynique. Cette polarisation appelle l'analyse… »\n\nFORMULATIONS DE PROBLÉMATIQUE TESTÉES:\n\n- « En quoi cette tension permet-elle à l'œuvre de [faire X] tout en [faisant Y, qui semble s'y opposer] ? »\n- « Faut-il dès lors considérer [position A] comme la seule légitime, ou plutôt admettre que [position B] reste défendable ? »\n- « Comment articuler [enjeu 1] et [enjeu 2] sans sacrifier ni l'un ni l'autre ? »\n- « Si [thèse dominante], alors comment expliquer que [contre-exemple précis] ? »\n\nMODÈLES D'ANNONCES DE PLAN:\n\n- « Nous montrerons d'abord que [partie 1, position thèse]. Cependant, cette première lecture appelle aussitôt une nuance [partie 2, antithèse ou complication]. Cette tension ne saurait être résolue qu'en envisageant [partie 3, synthèse]. »\n- « Une première analyse mettra en évidence [partie 1]. À cette analyse s'opposera, dans un second temps, [partie 2]. Le dépassement de cette opposition exigera enfin [partie 3]. »",
-    "vocabulary": [
-      {
-        "word": "une dissertation",
-        "en": "a dissertation (essay)",
-        "vi": "một bài dissertation",
-        "pos": "n.f.",
-        "pronunciation_vi": "di-sèr-ta-sion"
-      },
-      {
-        "word": "une amorce",
-        "en": "an opening hook",
-        "vi": "phần mở đầu / amorce",
-        "pos": "n.f.",
-        "pronunciation_vi": "a-mors"
-      },
-      {
-        "word": "la problématique",
-        "en": "the problematic / central question",
-        "vi": "vấn đề trung tâm",
-        "pos": "n.f.",
-        "pronunciation_vi": "pro-blé-ma-tik"
-      },
-      {
-        "word": "l'annonce de plan",
-        "en": "the announcement of plan",
-        "vi": "sự công bố kế hoạch",
-        "pos": "n.f.",
-        "pronunciation_vi": "a-nõns dơ plã"
-      },
-      {
-        "word": "un plan dialectique",
-        "en": "a dialectical plan",
-        "vi": "một kế hoạch biện chứng",
-        "pos": "n.m.",
-        "pronunciation_vi": "plã dia-lèk-tik"
-      },
-      {
-        "word": "thèse / antithèse / synthèse",
-        "en": "thesis / antithesis / synthesis",
-        "vi": "luận điểm / phản đề / tổng hợp",
-        "pos": "n.f.",
-        "pronunciation_vi": "tèz / ãn-ti-tèz / san-tèz"
-      },
-      {
-        "word": "un enjeu critique",
-        "en": "a critical stake",
-        "vi": "một vấn đề critique",
-        "pos": "n.m.",
-        "pronunciation_vi": "ãn-jơ kri-tik"
-      },
-      {
-        "word": "une tension dialectique",
-        "en": "a dialectical tension",
-        "vi": "một sự căng thẳng biện chứng",
-        "pos": "n.f.",
-        "pronunciation_vi": "tãn-sion dia-lèk-tik"
-      },
-      {
-        "word": "intitulé",
-        "en": "a heading / title",
-        "vi": "tiêu đề",
-        "pos": "n.m.",
-        "pronunciation_vi": "an-ti-tu-lé"
-      },
-      {
-        "word": "un préambule",
-        "en": "a preamble",
-        "vi": "phần mở đầu / lời nói đầu",
-        "pos": "n.m.",
-        "pronunciation_vi": "pré-ãn-bul"
-      }
-    ],
-    "dialogue": [
-      {
-        "speaker": "Pr. Compagnon",
-        "text": "Madame Tran, votre amorce part de « Depuis l'Antiquité, l'homme s'interroge sur l'art… ». C'est trop large.",
-        "vi": "Cô Trần, amorce của cô bắt đầu bằng « Từ thời cổ đại, con người tra hỏi nghệ thuật… ». Quá rộng."
-      },
-      {
-        "speaker": "Linh",
-        "text": "Vous avez raison. Je devrais partir d'un fait précis qui rende le sujet pertinent.",
-        "vi": "Thầy đúng. Tôi nên bắt đầu từ một sự kiện cụ thể làm đề bài liên quan."
-      },
-      {
-        "speaker": "Pr. Compagnon",
-        "text": "Pour un sujet sur le réalisme flaubertien, partez du procès de 1857. Concret, daté, pertinent.",
-        "vi": "Cho đề về hiện thực Flaubert, bắt đầu từ vụ án 1857. Cụ thể, có ngày, liên quan."
-      },
-      {
-        "speaker": "Linh",
-        "text": "Et je conduis vers la problématique en montrant ce que ce procès révèle de la conception du réel à l'époque.",
-        "vi": "Và tôi dẫn đến problématique bằng cách cho thấy điều vụ án này tiết lộ về quan niệm hiện thực thời ấy."
-      }
-    ],
-    "dialogue_long": [
-      {
-        "speaker": "Pr. Compagnon (atelier d'écriture, agrégation)",
-        "text": "Madame Tran, vous allez aujourd'hui rédiger l'introduction d'une dissertation sur le sujet suivant: « Le réalisme romanesque vise-t-il à représenter le réel ou à en manifester l'illusion ? » Vous avez quarante minutes pour produire trente lignes.",
-        "vi": "Cô Trần, hôm nay cô sẽ viết phần dẫn nhập của một dissertation về đề: « Hiện thực tiểu thuyết nhằm biểu diễn hiện thực hay phơi bày ảo tưởng của nó? » Cô có 40 phút để sản xuất 30 dòng."
-      },
-      {
-        "speaker": "Linh",
-        "text": "Bien. Je commence par l'analyse du sujet. Le mot-clé est « représenter » — qui suppose une mimésis stable — face à « manifester l'illusion » — qui suppose au contraire un dévoilement de la convention. Le sujet pose donc le problème de la conscience qu'a le réalisme de ses propres conventions: le réalisme est-il naïf ou réflexif ?",
-        "vi": "Tốt. Tôi bắt đầu từ phân tích đề. Từ khóa là « representer » — giả định một mimesis ổn định — đối diện « phơi bày ảo tưởng » — giả định ngược lại sự bóc trần quy ước. Đề đặt vấn đề về ý thức mà hiện thực có về các quy ước của chính mình: hiện thực là ngây thơ hay phản tỉnh?"
-      },
-      {
-        "speaker": "Linh",
-        "text": "Je rédige maintenant l'amorce. Je choisis l'amorce historique sur le procès de 1857 — daté, précis, et qui engage immédiatement la question de ce que le réalisme peut représenter. Voici: « En 1857, deux procès secouent la littérature française: celui de Madame Bovary et celui des Fleurs du mal. Cette concomitance n'est pas fortuite — elle signale une époque qui cherche, par la voie judiciaire, à délimiter ce que la littérature peut représenter du réel sans encourir l'accusation d'outrage à la morale publique. Or, cette accusation supposait acquise une chose qui ne l'était précisément pas: que le réalisme romanesque représente effectivement le réel. »",
-        "vi": "Bây giờ tôi viết amorce. Tôi chọn amorce historique về vụ án 1857 — có ngày, cụ thể, và dấn ngay câu hỏi điều hiện thực có thể biểu diễn. Đây: « Năm 1857, hai vụ án rúng động văn học Pháp: vụ Madame Bovary và vụ Les Fleurs du mal. Sự đồng thời này không tình cờ — nó báo hiệu một thời kỳ tìm kiếm, qua đường tư pháp, giới hạn điều văn chương có thể biểu diễn từ hiện thực mà không bị buộc tội xúc phạm đạo đức công. Tuy nhiên, lời buộc tội này giả định đã có một điều chính ra chưa được thiết lập: rằng hiện thực tiểu thuyết thực sự biểu diễn hiện thực. »"
-      },
-      {
-        "speaker": "Linh",
-        "text": "Maintenant l'analyse du sujet, en transition naturelle: « Cette ambiguïté traverse en réalité toute la conception du réalisme au XIXe siècle. D'un côté, l'ambition mimétique, héritée de Balzac et théorisée par Champfleury, prétend offrir une fenêtre transparente sur le monde social. De l'autre, dès Flaubert, et plus radicalement chez Maupassant, une conscience nouvelle apparaît: le roman ne représente pas le réel, il en construit une représentation soumise à des conventions formelles dont l'auteur peut, ou non, démontrer la conscience. »",
-        "vi": "Bây giờ phân tích đề, chuyển tự nhiên: « Sự mơ hồ này thực sự xuyên suốt cả quan niệm hiện thực thế kỷ XIX. Một mặt, tham vọng mimétique, kế thừa từ Balzac và được Champfleury lý thuyết hóa, tham vọng cung cấp một cửa sổ trong suốt vào thế giới xã hội. Mặt khác, ngay từ Flaubert, và triệt để hơn ở Maupassant, một ý thức mới xuất hiện: tiểu thuyết không biểu diễn hiện thực, nó xây dựng một biểu diễn của nó tuân theo các quy ước hình thức mà tác giả có thể, hoặc không, chứng minh ý thức về. »"
-      },
-      {
-        "speaker": "Linh",
-        "text": "La problématique, maintenant, qui transforme l'analyse en question critique: « Le réalisme est-il dès lors un art naïf, qui croit représenter le réel sans le savoir construit, ou un art réflexif, qui manifeste précisément l'illusion de toute représentation ? Et faut-il, en ce cas, choisir entre deux conceptions du réalisme, ou admettre que les grands romans du genre — Madame Bovary au premier chef — exercent simultanément les deux opérations ? »",
-        "vi": "Problématique, bây giờ, biến phân tích thành câu hỏi critique: « Hiện thực do đó là một nghệ thuật ngây thơ, tin rằng mình biểu diễn hiện thực mà không biết đang xây dựng, hay một nghệ thuật phản tỉnh, phơi bày chính ảo tưởng của mọi biểu diễn? Và phải, trong trường hợp đó, chọn giữa hai quan niệm hiện thực, hay thừa nhận rằng các tiểu thuyết lớn của thể loại — Madame Bovary trước hết — thực hiện đồng thời cả hai động tác? »"
-      },
-      {
-        "speaker": "Linh",
-        "text": "Enfin, l'annonce de plan, qui fait sentir la dialectique: « Nous examinerons d'abord la prétention mimétique du réalisme, telle qu'elle s'élabore de Balzac à Champfleury, en montrant ce qu'elle suppose de confiance dans le langage et dans l'observation. Cette confiance, cependant, ne résiste pas à la pratique flaubertienne: nous verrons dans un deuxième temps comment Madame Bovary, par son dispositif énonciatif même, manifeste l'illusion qu'elle prétendait représenter. Cette tension entre représenter et manifester l'illusion ne saurait être résolue par le seul abandon du réalisme: nous montrerons enfin, en nous appuyant sur le naturalisme zolien et ses héritages contemporains — jusqu'à Houellebecq — que le réalisme demeure un dispositif vivant précisément parce qu'il a intégré sa propre réflexivité. »",
-        "vi": "Cuối cùng, công bố kế hoạch, làm cảm nhận biện chứng: « Chúng tôi sẽ xem xét trước tiên tham vọng mimétique của hiện thực, như nó được hình thành từ Balzac đến Champfleury, cho thấy nó giả định gì về niềm tin vào ngôn ngữ và quan sát. Niềm tin này, tuy nhiên, không kháng cự được thực hành Flaubert: chúng tôi sẽ thấy trong pha thứ hai làm sao Madame Bovary, qua chính thiết kế phát ngôn, phơi bày ảo tưởng nó tham vọng biểu diễn. Sự căng thẳng giữa biểu diễn và phơi bày ảo tưởng không thể giải quyết chỉ bằng cách từ bỏ hiện thực: chúng tôi sẽ chứng minh cuối cùng, dựa trên naturalisme Zola và các kế thừa đương đại — đến Houellebecq — rằng hiện thực vẫn là một thiết kế sống chính vì nó đã tích hợp sự phản tỉnh của chính mình. »"
-      },
-      {
-        "speaker": "Pr. Compagnon",
-        "text": "Bien. Trente lignes exactement. Examinons les forces et les faiblesses.",
-        "vi": "Tốt. Đúng 30 dòng. Hãy xem các điểm mạnh và yếu."
-      },
-      {
-        "speaker": "Pr. Compagnon",
-        "text": "Forces: l'amorce historique, datée et pertinente, ne ressemble en rien à un cliché. La transition vers l'analyse du sujet est naturelle. La problématique est une vraie question — pas un sujet répété. L'annonce de plan fait apparaître une logique de progression, non une simple liste. Faiblesses: la phrase finale de l'annonce est trop longue (six lignes), elle aurait gagné à être segmentée. Et la mention de Houellebecq dans l'annonce annonce trop précisément le contenu de la troisième partie — laissez au correcteur le plaisir de la découvrir.",
-        "vi": "Điểm mạnh: amorce historique, có ngày và phù hợp, không hề giống cliché. Chuyển sang phân tích đề tự nhiên. Problématique là câu hỏi thực — không phải đề lặp. Công bố kế hoạch làm xuất hiện logic tiến hành, không liệt kê. Điểm yếu: câu cuối công bố quá dài (6 dòng), sẽ tốt hơn nếu chia. Và việc nhắc Houellebecq trong công bố báo trước quá chính xác nội dung phần ba — để cho người chấm niềm vui khám phá."
-      },
-      {
-        "speaker": "Linh",
-        "text": "Je note. Reformulation: dans la dernière partie, je suggérerai « les héritages contemporains » sans nommer Houellebecq, qui apparaîtra en développement.",
-        "vi": "Tôi ghi. Diễn đạt lại: ở phần cuối, tôi sẽ gợi ý « các kế thừa đương đại » mà không gọi tên Houellebecq, người sẽ xuất hiện trong triển khai."
-      },
-      {
-        "speaker": "Pr. Compagnon",
-        "text": "Voilà. Une introduction réussie ouvre des promesses sans les épuiser. Le développement doit avoir matière à dépasser ce que l'annonce a laissé entrevoir.",
-        "vi": "Đó. Một dẫn nhập thành công mở các hứa hẹn mà không vắt kiệt. Phần triển khai phải có chất liệu vượt qua điều công bố đã để hé."
-      }
-    ],
-    "roleplay_prompts": [
-      "Bạn được giao soạn introduction (30 lignes) pour un sujet de dissertation: « La poésie moderne, de Baudelaire à Char, a-t-elle aboli le sujet lyrique ? ». Suivre le schéma amorce / analyse / problématique / annonce.",
-      "Trong séminaire, một collègue présente une introduction où l'amorce occupe quinze lignes. Phản hồi avec tact — diagnostiquer le déséquilibre, suggérer reformulation.",
-      "Soạn 5 amorces alternatives — historique, esthétique, biographique (avec prudence), théorique, par la réception — pour le même sujet hypothétique sur Mallarmé. Comparer leurs forces et leurs limites."
-    ],
-    "register_notes": "VOCABULAIRE PRÉCIS pour la dissertation:\n\nMOTS QUI ENGAGENT UN GENRE D'INTRODUCTION:\n- amorce (entrée en matière)\n- accroche (synonyme courant, légèrement moins formel)\n- entrée en matière (synonyme académique)\n- préambule (introduction longue, plutôt pour essai que pour dissertation)\n\nMOTS POUR LA PROBLÉMATIQUE:\n- la problématique (cadre de questionnement)\n- l'enjeu (ce qui est en jeu)\n- la question directrice (parfois utilisé)\n- la tension critique (formulation soutenue)\n\nMOTS POUR LE PLAN:\n- le plan dialectique (thèse-antithèse-synthèse)\n- le plan progressif (du moins au plus complexe)\n- le plan analytique (cause-aspect-conséquence)\n- le plan thématique (rare en lettres, plutôt en histoire)\n\nFORMULES D'INTRODUCTION SOUTENUES:\n- « Nous nous demanderons en quoi… » (problématique)\n- « Notre analyse se déploiera en trois temps. » (annonce)\n- « Il conviendra de [vérifier / examiner / interroger]… » (annonce hedge)\n- « Cette tension nous conduira à [partie 3] » (transition synthèse)\n\nFORMULES À ÉVITER (trop scolaires ou trop oraux):\n- « Nous allons étudier… » (trop sec)\n- « Dans une première partie, je verrai… » (« je » exclu, futur trop direct)\n- « Tout d'abord… ensuite… enfin… » (trop élève de seconde)\n- « Pour conclure… » (en introduction — incohérence)\n\nINVERSION ET SUBJONCTIF C2 dans l'introduction:\n- « Encore convient-il de préciser ce qu'on entend par X. » (inversion)\n- « Sans doute peut-on lire le sujet de plusieurs façons. » (inversion)\n- « Peut-être faut-il considérer que… » (inversion + subjonctif obligatoire)\n- « Que la question fût ainsi posée révèle déjà un parti pris. » (subjonctif imparfait)\n\nIDIOMS LITTÉRAIRES SUR LA DISSERTATION:\n- « entrer en matière » (vào bài — courant)\n- « poser le décor » (đặt trang trí — courant)\n- « ouvrir le débat » (mở tranh luận — courant)\n- « creuser la question » (đào câu hỏi — soutenu)\n- « passer en revue » (rà soát — courant)\n\nMỘT TINH TẾ ĐẶC THÙ: l'introduction française utilise massivement le « nous de modestie » (« nous montrerons », « nous verrons »). Ce « nous » n'est ni un pluriel collectif ni un majestueux — c'est une convention de la dissertation. L'utiliser correctement est un marqueur de niveau. Le « je » est admis depuis quelques années (recommandation officielle de l'agrégation), mais demeure minoritaire.",
-    "idiom_glosses": [
-      {
-        "idiom": "Entrer en matière (courant académique)",
-        "literal": "Vào nội dung",
-        "meaning": "Bắt đầu nội dung sau phần dẫn nhập — formel.",
-        "example": "Une bonne amorce permet d'entrer en matière sans rupture brutale."
-      },
-      {
-        "idiom": "Poser le décor (courant)",
-        "literal": "Đặt trang trí",
-        "meaning": "Thiết lập bối cảnh trước khi đi vào trọng tâm.",
-        "example": "L'amorce historique pose le décor avant que ne soit posée la problématique."
-      },
-      {
-        "idiom": "Creuser la question (soutenu)",
-        "literal": "Đào câu hỏi",
-        "meaning": "Đào sâu vấn đề — analyse en profondeur.",
-        "example": "Une bonne dissertation creuse la question, plutôt que d'en rester à la surface."
-      },
-      {
-        "idiom": "Tirer son fil (littéraire)",
-        "literal": "Kéo sợi chỉ của nó",
-        "meaning": "Theo dõi một logic — méthode de la dissertation.",
-        "example": "La problématique tire son fil tout au long du devoir, sans rupture."
-      }
-    ],
-    "exercises": [
-      {
-        "type": "fill-blank",
-        "question": "Encore conviendrait-il que l'introduction ___ son plan sans se réduire à une succession d'intitulés sans relief.",
-        "answer": "annonçât"
-      },
-      {
-        "type": "matching",
-        "pairs": [
-          [
-            "l'amorce",
-            "phần mở đầu"
-          ],
-          [
-            "la problématique",
-            "vấn đề trung tâm"
-          ],
-          [
-            "le plan dialectique",
-            "kế hoạch biện chứng"
+        },
+        {
+          "en": "Que le narrateur fût parfois omniscient, parfois borné à un personnage, n'est pas, chez Flaubert, le fruit du hasard.",
+          "vi": "Việc người trần thuật khi thì toàn tri, khi thì giới hạn vào một nhân vật, không phải, ở Flaubert, là kết quả của ngẫu nhiên.",
+          "pronunciation_focus": [
+            "fût → fu",
+            "omniscient → om-ni-siã",
+            "borné → bor-né",
+            "hasard → a-zar"
           ]
-        ],
-        "instruction": "Nối thuật ngữ dissertation với nghĩa Việt"
-      },
-      {
-        "type": "translation",
-        "vietnamese": "Một amorce thành công xuất phát từ một sự kiện cụ thể để dẫn tự nhiên đến vấn đề do đề bài đặt ra.",
-        "french": "Une amorce réussie part d'un fait précis pour conduire avec naturel à la problématique posée par le sujet."
-      }
-    ]
-  },
-  {
-    "id": "lcontroversial_reading",
-    "level": "C2",
-    "category": "fluency",
-    "title_vi": "Bảo vệ một cách đọc gây tranh cãi",
-    "title_en": "Defending a controversial reading",
-    "sentences": [
-      {
-        "en": "Toute lecture neuve d'un texte canonique paraît, dans un premier temps, hérétique — c'est la rançon de l'innovation interprétative.",
-        "vi": "Mọi cách đọc mới của một văn bản kinh điển thoạt đầu có vẻ tà giáo — đó là cái giá của sự sáng tạo diễn giải.",
-        "pronunciation_focus": [
-          "lecture → lèk-tur",
-          "canonique → ka-no-nik",
-          "hérétique → é-ré-tik",
-          "rançon → rãn-sõn"
-        ]
-      },
-      {
-        "en": "Encore faut-il que le critique distinguât la provocation gratuite de la lecture exigeante, qui dérange précisément parce qu'elle voit ce que la tradition avait laissé dans l'ombre.",
-        "vi": "Vẫn cần người critique phân biệt khiêu khích vô cớ với cách đọc đòi hỏi, gây bất an chính vì nó thấy điều truyền thống đã để trong bóng.",
-        "pronunciation_focus": [
-          "distinguât → dis-tan-ga",
-          "provocation → pro-vo-ka-sion",
-          "exigeante → èg-zi-jãnt",
-          "tradition → tra-di-sion"
-        ]
-      },
-      {
-        "en": "Défendre une interprétation contestée suppose qu'on en assume publiquement les conséquences, y compris la possibilité d'avoir tort.",
-        "vi": "Bảo vệ một diễn giải bị tranh cãi đòi hỏi gánh chịu công khai các hệ quả, kể cả khả năng sai.",
-        "pronunciation_focus": [
-          "défendre → dé-fãn-drơ",
-          "interprétation → an-tèr-pré-ta-sion",
-          "conséquences → kõn-sé-kãns",
-          "possibilité → po-si-bi-li-té"
-        ]
-      },
-      {
-        "en": "On l'aura compris: la critique littéraire n'est pas une science déductive, mais un art du jugement éclairé qui réclame du courage autant que de la rigueur.",
-        "vi": "Ta đã hiểu: phê bình văn học không phải khoa học diễn dịch, mà là nghệ thuật phán đoán sáng suốt đòi hỏi can đảm cũng như nghiêm cẩn.",
-        "pronunciation_focus": [
-          "compris → kõm-pri",
-          "déductive → dé-duk-tiv",
-          "jugement → ju-jơ-mã",
-          "courage → ku-raj"
-        ]
-      },
-      {
-        "en": "Que la lecture proposée ici fût en rupture avec la tradition exégétique ne saurait constituer, à soi seul, un argument contre elle.",
-        "vi": "Việc cách đọc đề xuất ở đây phá vỡ truyền thống chú giải không thể tự nó cấu thành lý lẽ chống lại nó.",
-        "pronunciation_focus": [
-          "fût → fu",
-          "rupture → rup-tur",
-          "exégétique → èg-zé-jé-tik",
-          "argument → ar-gu-mã"
-        ]
-      }
-    ],
-    "cultural_notes_vi": "DÉFENDRE UNE LECTURE CONTROVERSÉE est l'épreuve ultime du critique formé. Cela suppose:\n\n(1) MAÎTRISE COMPLÈTE des lectures dominantes — on ne défend pas une lecture nouvelle sans connaître les anciennes.\n(2) JUSTIFICATIONS TEXTUELLES SOLIDES — chaque appui dans le texte, paginé, cité.\n(3) ARGUMENTATION ANTICIPÉE — savoir d'avance les objections probables et préparer les réponses.\n(4) HUMILITÉ ÉPISTÉMIQUE — accepter qu'on puisse avoir tort, sans abandonner la position pour autant.\n\nQUATRE GRANDES LECTURES CONTROVERSÉES qui ont marqué la critique française:\n\n(a) PROUST PAR JEAN-YVES TADIÉ (Marcel Proust. Biographie, 1996, et plusieurs essais antérieurs). Tadié a défendu, contre une tradition longtemps psychanalytique (Bardèche, Bersani), une lecture de la Recherche centrée sur l'esthétique et la mémoire involontaire — non sur l'homosexualité refoulée. Position aujourd'hui dominante; mais à sa publication, fut contestée.\n\n(b) FLAUBERT PAR PIERRE BOURDIEU (Les Règles de l'art, 1992). Bourdieu lit Madame Bovary comme document sociologique sur le champ littéraire au XIXe siècle — lecture jugée réductrice par les puristes formalistes (Genette, Compagnon). Le débat a opposé pendant dix ans deux écoles entières.\n\n(c) RIMBAUD PAR YVES BONNEFOY (Rimbaud par lui-même, 1961, puis Notre besoin de Rimbaud, 2009). Bonnefoy défend une lecture mystique-spirituelle de Rimbaud, contre la lecture surréaliste-révoltée dominante depuis Breton. Position contestée par Steve Murphy, Jean-Luc Steinmetz, mais toujours puissante.\n\n(d) HOUELLEBECQ PAR DOMINIQUE NOGUEZ (Houellebecq en fait, 2003). Noguez défend Houellebecq comme grand écrivain face à une critique majoritairement hostile à l'époque — position aujourd'hui dominante mais à l'époque presque solitaire.\n\nMODÈLE BERMANIEN POUR DÉFENDRE UNE LECTURE NEUVE — adapté à la critique littéraire:\n\n(1) RECONNAÎTRE LA TRADITION INTERPRÉTATIVE — sans la caricaturer.\n(2) IDENTIFIER LE POINT AVEUGLE de la tradition — ce qu'elle ne voit pas, ou refuse de voir.\n(3) PROPOSER UNE LECTURE qui prend en compte ce point aveugle — fondée textuellement.\n(4) ANTICIPER LES OBJECTIONS et y répondre PAR AVANCE.\n(5) DÉFINIR LES LIMITES de sa propre lecture — qu'on ne prétende pas tout expliquer.\n\nUNE QUESTION ÉTHIQUE: faut-il défendre une lecture par seule provocation ? Position majoritaire en France: NON. Une lecture neuve doit être SOUTENABLE, pas seulement spectaculaire. Le « contrarianisme » pour le contrarianisme appartient au journalisme culturel, non à la critique académique.\n\nUNE TENSION SPÉCIFIQUE POUR LA CRITIQUE FÉMINISTE / POSTCOLONIALE: ces grilles, dans les années 1980-90, ont produit des lectures jugées « controversées » par la tradition académique. Aujourd'hui partiellement absorbées, elles continuent à produire des lectures qui dérangent — sur Sartre (lecture féministe de Beauvoir comme co-auteure invisibilisée), sur Camus (lecture postcoloniale de L'Étranger qui dénonce l'absence de nom de l'Arabe tué). La position critique correcte: prendre ces lectures au sérieux, les évaluer sur leur rigueur textuelle, sans les rejeter par anti-modernisme ni les accepter par conformisme idéologique.\n\nBẪY POUR LE CRITIQUE EN FORMATION: deux extrêmes à éviter:\n(1) CONFORMISME: répéter la tradition critique sans la questionner. Sécurité scolaire, mais pauvreté intellectuelle.\n(2) HÉRÉTISME GRATUIT: provoquer pour se faire remarquer. Visibilité de courte durée, perte de crédibilité longue.\nLA POSITION C2: défendre des lectures originales QUAND ON A DES RAISONS, et les abandonner quand l'argumentation contraire est plus forte. C'est l'éthique critique.",
-    "tip_advice_vi": "PROCESSUS EN 7 ÉTAPES pour défendre une lecture controversée:\n\nÉTAPE 1 — IDENTIFIER LA TRADITION DOMINANTE sur le texte. Lire au moins 3-5 lectures canoniques avant de proposer la sienne. On ne se démarque pas de ce qu'on ignore.\n\nÉTAPE 2 — IDENTIFIER LE POINT AVEUGLE de la tradition. Quoi, dans le texte, est passé sous silence ? Quel élément textuel n'est jamais commenté ? Quelle question n'est jamais posée ?\n\nÉTAPE 3 — VÉRIFIER QUE LE POINT AVEUGLE EST RÉEL — pas un fantasme, pas un détail anecdotique. Citer trois passages au moins où il se manifeste.\n\nÉTAPE 4 — FORMULER LA LECTURE NEUVE en prenant le point aveugle comme entrée. Ne pas démolir la tradition — la complexifier.\n\nÉTAPE 5 — ANTICIPER LES TROIS OBJECTIONS LES PLUS PROBABLES. Préparer une réponse à chacune, fondée textuellement.\n\nÉTAPE 6 — RÉDIGER L'ARGUMENT en respectant la structure: tradition → point aveugle → lecture neuve → objections anticipées → limites de la position.\n\nÉTAPE 7 — TESTER LA LECTURE auprès d'un ou deux pairs avant publication. Si elle ne tient pas devant un critique de bonne foi, la retravailler ou l'abandonner.\n\nCỤM HỮU ÍCH:\n\nPOUR INTRODUIRE UNE LECTURE NEUVE:\n- « Je voudrais proposer ici une lecture qui s'écarte délibérément de la tradition exégétique dominante. »\n- « Il existe, sur ce texte, une lecture désormais canonique que je ne contesterai pas en bloc, mais que je voudrais nuancer sur un point précis. »\n- « Sans renoncer aux acquis de la critique antérieure, je propose un déplacement d'angle qui fait apparaître [aspect négligé]. »\n\nPOUR IDENTIFIER LE POINT AVEUGLE:\n- « Or, un élément demeure curieusement absent des commentaires courants: [élément précis, paginé]. »\n- « La tradition critique a longtemps passé sous silence [aspect], pour des raisons sur lesquelles il faut s'interroger. »\n- « Ce silence n'est pas neutre — il dit quelque chose de la position adoptée par les générations précédentes face au texte. »\n\nPOUR DÉFENDRE LA LECTURE:\n- « Trois passages au moins viennent étayer cette interprétation: [page X, page Y, page Z]. »\n- « Cette lecture ne contredit pas la tradition; elle l'enrichit en intégrant un aspect qu'elle laissait dans l'ombre. »\n- « Je ne prétends pas avoir le dernier mot — je propose un nouveau point d'entrée dans le texte. »\n\nPOUR ANTICIPER LES OBJECTIONS:\n- « On objectera, à juste titre, que [objection probable]. À cela je répondrais que [réponse fondée]. »\n- « La principale difficulté de cette lecture tient à [point faible]. Je ne la sous-estime pas, et propose [stratégie de gestion]. »\n- « Reste l'objection la plus sérieuse: [objection]. Je l'admets en partie, en limitant la portée de ma thèse à [périmètre restreint]. »\n\nPOUR DÉFINIR LES LIMITES:\n- « Cette lecture ne saurait être généralisée à l'ensemble de l'œuvre; elle vaut pour [sous-corpus précis]. »\n- « Je n'avance pas une interprétation totale — je propose un éclairage partiel qui appelle à être complété par d'autres approches. »\n- « Les limites de cette lecture sont aussi son honnêteté: elle ne prétend pas remplacer la tradition, mais l'enrichir. »\n\nTRÁNH:\n- « Tous les autres critiques se sont trompés. » → arrogance, isolement\n- « Cette lecture est évidente. » → si elle l'était, elle ne serait pas neuve\n- « Personne n'a vu ce que je vois. » → souvent faux, et toujours mal venu\n- Provocation gratuite (« Madame Bovary est en réalité un roman féministe » sans argumentation textuelle)",
-    "vocabulary": [
-      {
-        "word": "une lecture controversée",
-        "en": "a controversial reading",
-        "vi": "một cách đọc gây tranh cãi",
-        "pos": "n.f.",
-        "pronunciation_vi": "lèk-tur kõn-tro-vèr-sé"
-      },
-      {
-        "word": "une lecture exigeante",
-        "en": "a demanding reading",
-        "vi": "một cách đọc đòi hỏi",
-        "pos": "n.f.",
-        "pronunciation_vi": "lèk-tur èg-zi-jãnt"
-      },
-      {
-        "word": "la tradition exégétique",
-        "en": "the exegetical tradition",
-        "vi": "truyền thống chú giải",
-        "pos": "n.f.",
-        "pronunciation_vi": "tra-di-sion èg-zé-jé-tik"
-      },
-      {
-        "word": "un point aveugle",
-        "en": "a blind spot",
-        "vi": "một điểm mù",
-        "pos": "n.m.",
-        "pronunciation_vi": "poan a-vơ-glơ"
-      },
-      {
-        "word": "un déplacement d'angle",
-        "en": "a shift of angle",
-        "vi": "một sự dịch chuyển góc nhìn",
-        "pos": "n.m.",
-        "pronunciation_vi": "dé-plas-mã dãn-glơ"
-      },
-      {
-        "word": "une provocation gratuite",
-        "en": "a gratuitous provocation",
-        "vi": "một khiêu khích vô cớ",
-        "pos": "n.f.",
-        "pronunciation_vi": "pro-vo-ka-sion gra-tu-it"
-      },
-      {
-        "word": "l'humilité épistémique",
-        "en": "epistemic humility",
-        "vi": "sự khiêm tốn nhận thức luận",
-        "pos": "n.f.",
-        "pronunciation_vi": "u-mi-li-té é-pis-té-mik"
-      },
-      {
-        "word": "contrarianisme",
-        "en": "contrarianism",
-        "vi": "chủ nghĩa phản đối",
-        "pos": "n.m.",
-        "pronunciation_vi": "kõn-tra-ria-nism"
-      },
-      {
-        "word": "un éclairage partiel",
-        "en": "a partial illumination",
-        "vi": "một sự soi sáng cục bộ",
-        "pos": "n.m.",
-        "pronunciation_vi": "é-klè-raj par-siel"
-      },
-      {
-        "word": "étayer une lecture",
-        "en": "to support a reading",
-        "vi": "củng cố một cách đọc",
-        "pos": "v.",
-        "pronunciation_vi": "é-tè-yé un lèk-tur"
-      }
-    ],
-    "dialogue": [
-      {
-        "speaker": "Pr. Compagnon",
-        "text": "Madame Tran, vous proposez une lecture postcoloniale de L'Étranger. Beaucoup la jugent anachronique. Comment la défendez-vous ?",
-        "vi": "Cô Trần, cô đề xuất một cách đọc hậu thuộc địa cho L'Étranger. Nhiều người cho là lỗi thời. Cô bảo vệ thế nào?"
-      },
-      {
-        "speaker": "Linh",
-        "text": "Je m'appuie sur un point textuel précis: l'Arabe que Meursault tue n'a jamais de nom dans le roman. Cette absence n'est pas neutre.",
-        "vi": "Tôi dựa trên một điểm văn bản cụ thể: người Arab Meursault giết không bao giờ có tên trong tiểu thuyết. Sự vắng mặt này không trung lập."
-      },
-      {
-        "speaker": "Pr. Compagnon",
-        "text": "Argument solide. Et vous anticipez l'objection que ce silence est précisément le sujet du roman ?",
-        "vi": "Lập luận vững. Và cô lường trước phản biện rằng sự im lặng đó chính là đề tài của tiểu thuyết?"
-      },
-      {
-        "speaker": "Linh",
-        "text": "Oui — je distingue le silence comme procédé voulu et le silence comme symptôme. La distinction est subtile mais textuellement défendable.",
-        "vi": "Có — tôi phân biệt sự im lặng như thủ pháp cố ý và sự im lặng như triệu chứng. Phân biệt tinh tế nhưng có thể bảo vệ về mặt văn bản."
-      }
-    ],
-    "dialogue_long": [
-      {
-        "speaker": "Pr. Compagnon (séminaire de critique avancée)",
-        "text": "Madame Tran, vous nous présentez aujourd'hui une lecture qui fait l'objet de débats vifs depuis Kamel Daoud, Meursault, contre-enquête (2013): la lecture postcoloniale de L'Étranger de Camus. Comment la défendez-vous sans tomber dans le procès anachronique ?",
-        "vi": "Cô Trần, cô trình bày hôm nay một cách đọc đang gây tranh luận sôi nổi từ Kamel Daoud, Meursault, contre-enquête (2013): cách đọc hậu thuộc địa của L'Étranger của Camus. Cô bảo vệ thế nào mà không rơi vào vụ án lỗi thời?"
-      },
-      {
-        "speaker": "Linh",
-        "text": "Ma stratégie de défense suit le modèle bermanien: je commence par reconnaître la tradition exégétique majoritaire — Sartre dès 1943 lit le roman comme tragédie de l'absurde, Barthes l'inscrit dans le degré zéro de l'écriture, Pierre-Louis Rey en fait une étude classique en 1970. Aucune de ces lectures n'est fausse; toutes éclairent un aspect du roman. Mais toutes partagent un point aveugle: aucune ne s'interroge longuement sur la dimension coloniale du cadre algérien — alors même que cette dimension est, factuellement, présente dans chaque page du livre.",
-        "vi": "Chiến lược bảo vệ của tôi theo mô hình Berman: tôi bắt đầu bằng cách thừa nhận truyền thống chú giải đa số — Sartre từ 1943 đọc tiểu thuyết như bi kịch absurde, Barthes ghi vào degré zéro de l'écriture, Pierre-Louis Rey làm nghiên cứu cổ điển 1970. Không cách đọc nào sai; tất cả soi sáng một khía cạnh của tiểu thuyết. Nhưng tất cả chia sẻ một điểm mù: không cách đọc nào tra hỏi lâu chiều kích thuộc địa của khung Algérie — mặc dù chiều kích đó, thực tế, hiện diện trong mỗi trang sách."
-      },
-      {
-        "speaker": "Linh",
-        "text": "Le point aveugle que je propose de prendre comme entrée: l'Arabe que Meursault tue, sur la plage, n'a jamais de nom dans le roman. Aucun nom, aucune famille, aucune biographie — il est désigné comme « l'Arabe » d'un bout à l'autre. Cette absence d'identité n'est pas neutre. Elle est cohérente avec le statut juridique et symbolique des Arabes dans l'Algérie française des années 1940 — citoyens de seconde zone, comptés mais non nommés.",
-        "vi": "Điểm mù tôi đề xuất lấy làm điểm vào: người Arab Meursault giết, trên bãi biển, không bao giờ có tên trong tiểu thuyết. Không tên, không gia đình, không tiểu sử — anh được gọi là « l'Arabe » từ đầu đến cuối. Sự vắng mặt danh tính này không trung lập. Nó nhất quán với địa vị pháp lý và biểu tượng của người Arab ở Algérie Pháp thập niên 1940 — công dân hạng hai, được đếm nhưng không được gọi tên."
-      },
-      {
-        "speaker": "Linh",
-        "text": "Cela posé, je dois immédiatement anticiper l'objection majeure que ne manqueront pas de soulever les défenseurs de la tradition exégétique. Ils diront: « ce silence est précisément le sujet du roman — Camus dénonce, par cette absence même, l'absence d'humanité que son personnage Meursault, et la société qui le juge, accordent à l'Arabe ». Cette objection est sérieuse. Camus était lui-même un intellectuel qui a écrit, en parallèle, sur les inégalités algériennes (Misère de la Kabylie, 1939). Refuser cette objection serait naïf.",
-        "vi": "Đặt vậy, tôi phải lường trước ngay phản biện chính mà những người bảo vệ truyền thống chú giải chắc chắn sẽ nêu. Họ sẽ nói: « sự im lặng đó chính là đề tài của tiểu thuyết — Camus tố cáo, qua chính sự vắng mặt đó, sự vắng nhân tính mà nhân vật Meursault, và xã hội xét xử anh, dành cho người Arab ». Phản biện này nghiêm. Camus tự mình là một trí thức đã viết, song song, về bất bình đẳng Algérie (Misère de la Kabylie, 1939). Từ chối phản biện sẽ ngây thơ."
-      },
-      {
-        "speaker": "Linh",
-        "text": "Je propose de répondre par une distinction subtile mais textuellement défendable: il faut distinguer le SILENCE COMME PROCÉDÉ VOULU et le SILENCE COMME SYMPTÔME INVOLONTAIRE. Si Camus avait voulu, par le silence, dénoncer l'invisibilisation de l'Arabe, il aurait pu — comme l'a fait Daoud soixante ans après — écrire un dispositif qui RENDE VISIBLE cette invisibilisation, par exemple en faisant intervenir une voix arabe quelque part. Or, le roman ne fait jamais entendre cette voix. L'Arabe reste pure surface — proximité physique sans intériorité, présence sans nom. Cette absence de mécanisme révélateur du silence suggère que le silence n'est pas seulement procédé voulu mais aussi symptôme de la position depuis laquelle Camus écrit — celle d'un colonial européen qui, malgré sa lucidité réformatrice, ne peut accéder à la subjectivité du colonisé.",
-        "vi": "Tôi đề xuất đáp bằng một phân biệt tinh tế nhưng có thể bảo vệ về văn bản: phải phân biệt SỰ IM LẶNG NHƯ THỦ PHÁP CỐ Ý và SỰ IM LẶNG NHƯ TRIỆU CHỨNG KHÔNG CỐ Ý. Nếu Camus muốn, qua sự im lặng, tố cáo sự vô hình hóa người Arab, ông có thể — như Daoud đã làm 60 năm sau — viết một thiết kế LÀM HIỆN sự vô hình hóa, ví dụ cho một giọng Arab can thiệp ở đâu đó. Tuy nhiên, tiểu thuyết không bao giờ cho nghe giọng đó. Người Arab vẫn là bề mặt thuần — sự gần gũi vật lý không nội tâm, hiện diện không tên. Sự vắng mặt cơ chế tiết lộ sự im lặng này gợi ý rằng sự im lặng không chỉ là thủ pháp cố ý mà cũng là triệu chứng của vị trí từ đó Camus viết — vị trí của một người thuộc địa Âu, dù sáng suốt cải cách, không thể tiếp cận chủ tính của người bị thuộc địa hóa."
-      },
-      {
-        "speaker": "Linh",
-        "text": "Je définis maintenant les limites de ma propre lecture. Cette lecture postcoloniale n'efface ni n'épuise les lectures antérieures: l'Étranger reste une grande tragédie de l'absurde au sens où Sartre l'entendait, et un sommet du dépouillement stylistique au sens où Barthes l'entendait. La lecture postcoloniale AJOUTE une couche qui, longtemps, a été manquée — non par malveillance, mais par effet d'horizon. La critique des années 1940-70 ne pouvait pas voir ce que la critique post-1980, formée dans le sillage de Said et de Glissant, voit aujourd'hui. C'est précisément l'enjeu jaussien de l'horizon d'attente: chaque génération apporte des grilles que les précédentes n'avaient pas.",
-        "vi": "Tôi giờ định nghĩa giới hạn của cách đọc của chính mình. Cách đọc hậu thuộc địa này không xóa cũng không vắt kiệt các cách đọc trước: L'Étranger vẫn là một bi kịch absurde lớn theo nghĩa Sartre, và một đỉnh cao của lối viết tước trần theo nghĩa Barthes. Cách đọc hậu thuộc địa THÊM một lớp mà, lâu nay, đã bị bỏ — không ác ý, mà do hiệu ứng chân trời. Phê bình thập niên 1940-70 không thể thấy điều phê bình post-1980, đào tạo trong mạch nối tiếp Said và Glissant, thấy hôm nay. Chính là vấn đề Jaussian của chân trời mong đợi: mỗi thế hệ mang lưới mà các thế hệ trước không có."
-      },
-      {
-        "speaker": "Pr. Compagnon",
-        "text": "Réponse exemplaire. Vous tenez la position controversée, mais sans arrogance — vous reconnaissez la valeur des lectures antérieures, vous identifiez précisément le point aveugle, vous anticipez les objections, et vous délimitez ce que votre lecture peut et ne peut pas faire. C'est exactement la position du Berman qu'on cite pour la traduction, transposée à la critique littéraire.",
-        "vi": "Câu trả lời mẫu mực. Cô giữ lập trường gây tranh cãi, nhưng không kiêu ngạo — cô công nhận giá trị các cách đọc trước, nhận dạng chính xác điểm mù, lường phản biện, và giới hạn điều cách đọc của cô có thể và không thể làm. Chính là lập trường của Berman trích cho dịch thuật, chuyển sang phê bình văn học."
-      },
-      {
-        "speaker": "Pr. Compagnon",
-        "text": "Une dernière question — la plus difficile. Le risque d'une telle lecture est qu'elle soit récupérée par une critique militante qui voudrait condamner Camus politiquement. Comment vous prémunissez-vous ?",
-        "vi": "Câu hỏi cuối — khó nhất. Rủi ro của cách đọc như vậy là bị một phê bình militant muốn lên án Camus chính trị thu hồi. Cô đề phòng thế nào?"
-      },
-      {
-        "speaker": "Linh",
-        "text": "Par la distinction explicite entre lecture critique et procès politique. Je ne « condamne » pas Camus — je propose une lecture du roman qui complexifie le canon. Camus, comme tout auteur, est saisissable à travers ses contradictions; ce n'est pas une faiblesse mais une richesse. La lecture postcoloniale ne demande pas de retirer L'Étranger du canon — elle demande de le lire avec une lucidité que la critique traditionnelle n'avait pas. C'est précisément cela, l'éthique critique: tenir la complexité plutôt que choisir entre apologie et anathème.",
-        "vi": "Bằng phân biệt rõ giữa cách đọc critique và vụ án chính trị. Tôi không « lên án » Camus — tôi đề xuất một cách đọc tiểu thuyết phức tạp hóa kinh điển. Camus, như mọi tác giả, có thể nắm bắt qua các mâu thuẫn của ông; đó không phải yếu mà là phong phú. Cách đọc hậu thuộc địa không đòi rút L'Étranger khỏi kinh điển — nó đòi đọc với một sự sáng suốt mà phê bình truyền thống không có. Chính là, đạo đức critique: giữ sự phức tạp hơn là chọn giữa apologie và anathème."
-      }
-    ],
-    "roleplay_prompts": [
-      "Bạn được giao soạn une intervention de séminaire (10 minutes) defending une lecture féministe de Sartre — non pas Beauvoir comme « femme de Sartre », mais Sartre dont l'œuvre n'aurait pas été pensable sans le dialogue intellectuel constant avec Beauvoir. Anticiper les objections.",
-      "Trong un débat publié dans Critique, un collègue rejette en bloc votre lecture controversée. Soạn une réponse écrite (1500 mots) — courtoise, ferme, qui maintienne la position sans arrogance.",
-      "Soạn 5 câu pour expliquer la différence entre « lecture controversée » (légitime) et « provocation gratuite » (illégitime) — en mobilisant l'éthique critique post-Compagnon."
-    ],
-    "register_notes": "VOCABULAIRE PRÉCIS pour défendre une position critique:\n\nFORMULES DE PROPOSITION:\n- « Je propose une lecture qui s'écarte de la tradition. » (formule neutre)\n- « Je voudrais avancer une interprétation qui complexifie la lecture canonique. » (formule modérée)\n- « Je défends ici une thèse minoritaire qui appelle à la discussion. » (formule assumée)\n\nFORMULES POUR ANTICIPER L'OBJECTION:\n- « On objectera, à juste titre… »\n- « La principale difficulté tient à… »\n- « Reste l'objection la plus sérieuse: … »\n- « Je ne sous-estime pas l'argument selon lequel… »\n- « Ma position appelle au moins une mise en garde: … »\n\nFORMULES POUR RÉPONDRE À L'OBJECTION:\n- « À cela je répondrais que… »\n- « Cette objection peut être levée si l'on distingue… »\n- « L'objection est partiellement valide, mais elle suppose acquis ce qui est précisément en débat: … »\n- « Je l'admets en partie, en limitant la portée de ma thèse à… »\n\nFORMULES POUR DÉLIMITER:\n- « Cette lecture ne saurait être généralisée… »\n- « Je n'avance pas une interprétation totale — je propose un éclairage partiel. »\n- « Les limites de cette lecture sont aussi son honnêteté. »\n- « Je ne prétends pas avoir le dernier mot — je propose un nouveau point d'entrée. »\n\nFORMULES POUR RÉFUTER UNE LECTURE ADVERSE:\n- « Cette lecture présuppose un postulat — celui de [X] — qui mérite d'être interrogé. »\n- « Sans contester la valeur de cette interprétation, je voudrais en signaler les angles morts. »\n- « Je me sépare ici, respectueusement, de la position majoritaire. »\n\nINVERSION ET SUBJONCTIF C2 dans la défense:\n- « Que la lecture proposée fût en rupture avec la tradition ne saurait constituer un argument contre elle. »\n- « Encore conviendrait-il que le critique distinguât la provocation gratuite de la lecture exigeante. »\n- « Sans doute peut-on y voir une faiblesse — mais peut-être y faut-il voir aussi une chance. »\n\nIDIOMS LITTÉRAIRES SUR LE DÉBAT CRITIQUE:\n- « tenir une position » (giữ lập trường — courant)\n- « battre en retraite » (rút lui — courant — péjoratif si fait sans raison)\n- « rester sur ses positions » (kiên định — neutre)\n- « se ranger à l'avis de » (theo ý kiến của — soutenu)\n- « mettre cartes sur table » (đặt thẻ lên bàn — courant — pour transparence argumentative)\n- « croiser le fer » (chéo gươm — soutenu — pour débat soutenu)\n\nMỘT TINH TẾ ĐẶC THÙ: défendre une lecture controversée n'est pas la défendre AGRESSIVEMENT. Le ton doit rester COURTOIS — c'est précisément la courtoisie qui rend la position défendable. Une lecture neuve présentée avec arrogance discrédite l'argument indépendamment de sa valeur. Régle pratique: si la lecture est solide, elle se passe d'arrogance pour s'imposer. Si elle a besoin d'arrogance, elle est probablement faible.",
-    "idiom_glosses": [
-      {
-        "idiom": "Tenir une position (courant)",
-        "literal": "Giữ một lập trường",
-        "meaning": "Bảo vệ quan điểm dưới phản biện — không lùi vì áp lực.",
-        "example": "Bonnefoy a tenu sa position sur Rimbaud pendant cinquante ans, malgré les contestations."
-      },
-      {
-        "idiom": "Mettre cartes sur table (courant)",
-        "literal": "Đặt thẻ lên bàn",
-        "meaning": "Trình bày minh bạch các giả định và lý lẽ.",
-        "example": "Mettre cartes sur table dès l'introduction permet au lecteur d'évaluer la position en connaissance de cause."
-      },
-      {
-        "idiom": "Croiser le fer (soutenu littéraire)",
-        "literal": "Chéo lưỡi gươm",
-        "meaning": "Tranh luận sâu, không né tránh — débat de haut niveau.",
-        "example": "Bourdieu et Compagnon ont croisé le fer sur l'autonomie du champ littéraire pendant deux décennies."
-      },
-      {
-        "idiom": "Rester sur ses positions (courant)",
-        "literal": "Ở lại trên các lập trường",
-        "meaning": "Không thay đổi quan điểm — neutre.",
-        "example": "Tadié est resté sur ses positions concernant l'esthétique proustienne, malgré le retour des lectures psychanalytiques."
-      }
-    ],
-    "exercises": [
-      {
-        "type": "fill-blank",
-        "question": "Que la lecture proposée ici ___ en rupture avec la tradition exégétique ne saurait constituer, à soi seul, un argument contre elle.",
-        "answer": "fût"
-      },
-      {
-        "type": "matching",
-        "pairs": [
-          [
-            "une lecture controversée",
-            "cách đọc gây tranh cãi"
-          ],
-          [
-            "un point aveugle",
-            "điểm mù"
-          ],
-          [
-            "la tradition exégétique",
-            "truyền thống chú giải"
+        },
+        {
+          "en": "Cette polyphonie narrative, dont Bakhtine a décrit la structure, fait du roman moderne un espace où plusieurs consciences se disputent la parole.",
+          "vi": "Sự đa âm trần thuật này, mà Bakhtine đã mô tả cấu trúc, biến tiểu thuyết hiện đại thành một không gian nơi nhiều ý thức tranh giành lời.",
+          "pronunciation_focus": [
+            "polyphonie → po-li-fo-ni",
+            "Bakhtine → bak-tin",
+            "disputent → dis-put",
+            "parole → pa-rol"
           ]
-        ],
-        "instruction": "Nối thuật ngữ critique với nghĩa Việt"
-      },
-      {
-        "type": "translation",
-        "vietnamese": "Bảo vệ một diễn giải bị tranh cãi đòi hỏi gánh chịu công khai các hệ quả, kể cả khả năng sai.",
-        "french": "Défendre une interprétation contestée suppose qu'on en assume publiquement les conséquences, y compris la possibilité d'avoir tort."
-      }
-    ]
-  }  ,
-  {
-    "id": "larts_critique_dart",
-    "level": "C2",
-    "category": "arts_criticism",
-    "title_vi": "Phê bình nghệ thuật tạo hình — critique d'art",
-    "title_en": "Art criticism — analyzing visual art in French",
-    "sentences": [
-      {
-        "en": "Loin de se réduire à un exercice d'admiration, la critique d'art se doit d'articuler un jugement esthétique étayé sur des critères explicites et, si possible, falsifiables.",
-        "vi": "Khác hẳn việc quy giảm thành một bài tập chiêm ngưỡng, phê bình nghệ thuật phải khớp nối một phán đoán thẩm mỹ có cơ sở trên các tiêu chí hiển ngôn và, nếu có thể, khả bác.",
-        "pronunciation_focus": [
-          "exercice → èg-zèr-sis",
-          "jugement → ju-jơ-mãn",
-          "étayé → é-tè-ié",
-          "falsifiable → fal-si-fi-ablơ"
-        ]
-      },
-      {
-        "en": "La toile de Soulages, qu'on taxe volontiers de monochrome, mobilise en réalité un travail de la lumière que seule une fréquentation prolongée de l'œuvre donne à voir.",
-        "vi": "Bức toan của Soulages, vốn dễ bị quy là đơn sắc, thực ra huy động một công việc của ánh sáng mà chỉ sự gần gũi kéo dài với tác phẩm mới cho thấy.",
-        "pronunciation_focus": [
-          "Soulages → su-laj",
-          "monochrome → mo-no-krôm",
-          "fréquentation → fré-kãn-ta-sion",
-          "prolongée → pro-lõn-jé"
-        ]
-      },
-      {
-        "en": "Il eût été vain de juger cette installation à l'aune des catégories traditionnelles de la beauté; c'est précisément la destitution du beau que l'artiste met en scène.",
-        "vi": "Sẽ vô ích nếu phán xét sắp đặt này theo tiêu chí các phạm trù truyền thống của cái đẹp; chính sự truất bỏ cái đẹp là điều nghệ sĩ dàn dựng.",
-        "pronunciation_focus": [
-          "eût → u",
-          "aune → ôn",
-          "destitution → dès-ti-tu-sion",
-          "beau → bô"
-        ]
-      },
-      {
-        "en": "La critique d'art, telle que Diderot l'a inaugurée dans ses Salons, n'a jamais été une paraphrase de l'image; elle en est la traduction dans un autre médium, qui est la langue.",
-        "vi": "Phê bình nghệ thuật, như Diderot đã khai mở trong các Salon của ông, chưa bao giờ là sự paraphrase hình ảnh; đó là sự dịch chuyển nó sang một chất liệu khác, là ngôn ngữ.",
-        "pronunciation_focus": [
-          "Diderot → di-dơ-rô",
-          "Salons → sa-lõn",
-          "paraphrase → pa-ra-fraz",
-          "médium → mé-di-om"
-        ]
-      },
-      {
-        "en": "Force est de constater que le discours sur l'art contemporain oscille, en France, entre un hermétisme théorique et un lyrisme publicitaire, sans que l'un ni l'autre ne serve la compréhension du public.",
-        "vi": "Phải thừa nhận rằng diễn ngôn về nghệ thuật đương đại dao động, ở Pháp, giữa một sự bí ẩn lý thuyết và một chất trữ tình quảng cáo, mà không cái nào phục vụ sự hiểu của công chúng.",
-        "pronunciation_focus": [
-          "constater → kõns-ta-té",
-          "hermétisme → èr-mé-tismơ",
-          "lyrisme → li-rismơ",
-          "oscille → o-siy"
-        ]
-      }
-    ],
-    "cultural_notes_vi": "PHÊ BÌNH NGHỆ THUẬT PHÁP (critique d'art) có lịch sử đặc thù:\n\n(1) DIDEROT (1713-1784) — người sáng lập thể loại. Các Salon (1759-1781) của ông là những văn bản nền tảng: mô tả tranh cho độc giả không xem được tranh (công chúng ở tỉnh xa). Phương pháp: description vive + jugement esthétique + anecdote philosophique. Đến nay, mọi critique d'art Pháp vẫn thừa kế Diderot ở hai điểm: (a) 'peindre avec des mots' — không tả kỹ thuật khô mà render cảm giác, (b) 'philosopher à partir de l'image' — lấy tranh làm điểm xuất phát suy tư.\n\n(2) BAUDELAIRE — Salons (1845, 1846, 1859) nâng critique lên thành 'partiale, passionnée, politique'. Le Peintre de la vie moderne (1863) giới thiệu khái niệm 'modernité': cái đẹp gồm một phần vĩnh cửu và một phần tạm thời.\n\n(3) TRUYỀN THỐNG SALON: Académie des Beaux-Arts tổ chức Salon hàng năm từ 1667. Đến thế kỷ 19, Salon là sự kiện trung tâm của đời sống nghệ thuật Paris. Critic viết compte rendu de Salon là thể loại chính đến tận 1880s.\n\n(4) THẾ KỶ 20: Malraux (Les Voix du silence, 1951) — musée imaginaire. Merleau-Ponty (L'Œil et l'Esprit, 1960) — phénoménologie de la perception visuelle. Didi-Huberman (Devant l'image, 1990) — critique de l'iconologie panofskienne. Bourdieu (Les Règles de l'art, 1992) — sociologie du champ artistique.\n\n(5) CẢNH BÁO: critique contemporain Pháp chia làm hai phe: (a) 'journalistique' — viết cho Le Monde, Libération, Les Inrocks: accessible, storyteller, opinion; (b) 'universitaire' — viết cho revues savantes: théorique, jargon, dense. C2 critique phải biết cả hai register và chọn theo contexte.\n\n(6) ĐẶC THÙ CHO NGƯỜI VIỆT: nghệ thuật đương đại VN (từ Đổi Mới 1986) có truyền thống riêng — Nguyễn Quân, Trần Lương, Đinh Q. Lê... Khi viết critique d'art bằng tiếng Pháp về nghệ thuật VN, cần dịch các khái niệm thẩm mỹ Việt (hồn, duyên, thần thái) mà không biến chúng thành folklore.",
-    "tip_advice_vi": "CẤU TRÚC CRITIQUE D'ART CHUẨN (1500-3000 mots, báo hoặc revue):\n\n1. ACCROCHE (1-2 câu) — bắt đầu bằng một chi tiết cụ thể của tác phẩm, không bằng généralité: 'À l'entrée de la salle, un immense panneau noir vous arrête net.'\n\n2. DESCRIPTION (20%) — tả tác phẩm minh bạch, như thể độc giả không thấy nó. Dùng présent de l'indicatif. Éviter vocabulaire technique quá dày — 'couleur froide' thay vì 'palette restreinte aux tons azuréens'.\n\n3. CONTEXTUALISATION (20%) — đặt tác phẩm trong œuvre của nghệ sĩ, trong mouvement, trong époque. Không cần dài — 2-3 câu gọn.\n\n4. ANALYSE (40%) — phát triển 2-3 'axes de lecture' giống explication de texte:\n- Axe 1: matière / technique (chất liệu, cử chỉ)\n- Axe 2: dispositif spatial (không gian, người xem)\n- Axe 3: charge symbolique (symbolique, politique)\nMỗi axe cần citations visuelles — 'le rouge, posé à la jonction des deux plans, fait basculer la composition.'\n\n5. JUGEMENT (20%) — đưa ra đánh giá, có lập luận. KHÔNG 'c'est beau' / 'c'est laid'. Dùng: 'réussi' / 'moins convaincant' + lý do. Formule: 'Si la première salle emporte l'adhésion par son audace formelle, la seconde déçoit par son académisme revenu.'\n\nCỤM HỮU ÍCH:\n- 'L'œuvre donne à voir...' (tác phẩm cho thấy...)\n- 'Le parti pris de l'artiste consiste à...' (chủ trương của nghệ sĩ là...)\n- 'On peut lire cette installation comme...' (có thể đọc sắp đặt này như...)\n- 'Le spectateur se trouve convoqué à...' (người xem bị triệu tập vào...)\n- 'La réussite tient à...' (sự thành công nằm ở...)\n- 'En revanche, tel aspect laisse perplexe.' (ngược lại, khía cạnh này gây bối rối.)\n\nSAI LẦM PHỔ BIẾN:\n- Dùng nhiều adjectif rỗng ('magnifique', 'sublime', 'saisissant')\n- Biographie de l'artiste quá dài — critique không phải notice Wikipedia\n- Éviter le name-dropping théorique — một référence à Deleuze / Rancière / Didi-Huberman đủ, không cần parade érudite\n- Không bao giờ kết luận 'À vous de juger' — critique assume son jugement",
-    "vocabulary": [
-      {"word": "un compte rendu d'exposition", "en": "exhibition review", "vi": "bài điểm triển lãm", "pos": "n.m.", "pronunciation_vi": "kõnt rãn-du dèk-spo-zi-sion"},
-      {"word": "le parti pris", "en": "the chosen approach / bias", "vi": "chủ trương / thiên kiến", "pos": "n.m.", "pronunciation_vi": "par-ti pri"},
-      {"word": "la matière picturale", "en": "the painterly material", "vi": "chất liệu hội họa", "pos": "n.f.", "pronunciation_vi": "ma-tièr pik-tu-ral"},
-      {"word": "le dispositif", "en": "the apparatus / setup", "vi": "thiết đặt (không gian)", "pos": "n.m.", "pronunciation_vi": "dis-po-zi-tif"},
-      {"word": "la touche", "en": "the brushstroke", "vi": "nét cọ", "pos": "n.f.", "pronunciation_vi": "tush"},
-      {"word": "la toile", "en": "the canvas", "vi": "bức toan / vải vẽ", "pos": "n.f.", "pronunciation_vi": "toal"},
-      {"word": "un accrochage", "en": "the hanging (of works)", "vi": "cách treo / bố trí tranh", "pos": "n.m.", "pronunciation_vi": "a-kro-shaj"},
-      {"word": "le regardeur", "en": "the viewer / beholder", "vi": "người xem (Duchamp)", "pos": "n.m.", "pronunciation_vi": "rơ-gar-dơr"},
-      {"word": "une installation", "en": "an installation (art)", "vi": "một sắp đặt", "pos": "n.f.", "pronunciation_vi": "an-sta-la-sion"},
-      {"word": "plastique", "en": "plastic / formal (adj.)", "vi": "tạo hình (tính từ)", "pos": "adj.", "pronunciation_vi": "plas-tik"}
-    ],
-    "dialogue": [
-      {"speaker": "Commissaire", "text": "Quelle lecture faites-vous de cette série de Soulages ?", "vi": "Chị đọc loạt tranh Soulages này thế nào?"},
-      {"speaker": "Linh", "text": "J'y vois moins une exploration du noir qu'une archéologie de la lumière — le tableau fonctionne comme un piège à photons.", "vi": "Tôi thấy ở đó ít là một khảo sát về màu đen hơn là một khảo cổ học về ánh sáng — bức tranh vận hành như một cái bẫy photon."},
-      {"speaker": "Commissaire", "text": "Intéressant. Mais ne surinterprétez-vous pas ? Soulages lui-même récuse toute métaphysique.", "vi": "Thú vị. Nhưng có phải chị diễn giải thái quá? Soulages tự bác bỏ mọi siêu hình."},
-      {"speaker": "Linh", "text": "L'artiste n'est pas le propriétaire du sens — une fois l'œuvre livrée au public, la lecture lui échappe.", "vi": "Nghệ sĩ không phải chủ sở hữu của nghĩa — một khi tác phẩm được trao cho công chúng, cách đọc thoát khỏi ông."}
-    ],
-    "dialogue_long": [
-      {"speaker": "Rédactrice en chef (Magazine Art Press)", "text": "Linh, vous couvrez la rétrospective Boltanski au Centre Pompidou. Huit cents mots, angle personnel exigé. Pas un catalogue déguisé.", "vi": "Linh, chị phụ trách hồi cố Boltanski ở Centre Pompidou. Tám trăm chữ, góc cá nhân bắt buộc. Không phải catalogue cải trang."},
-      {"speaker": "Linh", "text": "J'entre par l'installation des vêtements — la 'Réserve'. Le visiteur est enveloppé dans des habits d'absents. C'est une thanatographie textile.", "vi": "Tôi vào bằng sắp đặt quần áo — 'Réserve'. Người xem bị bao bọc trong áo quần của những người vắng mặt. Đó là một ký sự tử vong bằng vải."},
-      {"speaker": "Rédactrice", "text": "Bien — angle concret, pas de généralité. Mais évitez 'thanatographie' — trop universitaire pour nos lecteurs. Dites 'un mémorial de l'absence'.", "vi": "Tốt — góc cụ thể, không chung chung. Nhưng tránh 'thanatographie' — quá đại học cho độc giả ta. Nói 'một đài tưởng niệm sự vắng mặt'."},
-      {"speaker": "Linh", "text": "Entendu. Second mouvement: le son. Boltanski fait entendre des battements de cœur dans l'obscurité. L'œuvre devient un corps sans organes — le public circule dans un espace cardiaque.", "vi": "Đồng ý. Chuyển động hai: âm thanh. Boltanski cho nghe nhịp tim trong bóng tối. Tác phẩm trở thành một thân thể không cơ quan — công chúng lưu chuyển trong một không gian tim."},
-      {"speaker": "Rédactrice", "text": "'Corps sans organes' — Deleuze, donc. Trop de théorie d'un coup. Remplacez par 'l'exposition bat au rythme d'un cœur collectif'. Plus charnel.", "vi": "'Thân thể không cơ quan' — Deleuze. Quá nhiều lý thuyết một lúc. Thay bằng 'triển lãm đập theo nhịp một trái tim tập thể'. Thịt da hơn."},
-      {"speaker": "Linh", "text": "Vous avez raison. L'art critique journalistique exige de faire sentir avant de faire penser.", "vi": "Chị đúng. Phê bình nghệ thuật báo chí đòi hỏi làm cho cảm trước khi làm cho nghĩ."},
-      {"speaker": "Rédactrice", "text": "Exactement. Troisième mouvement: la chute. Quelques phrases sur la sortie — que reste-t-il au visiteur en quittant ?", "vi": "Chính xác. Chuyển động ba: cú rơi. Vài câu về lối ra — còn lại gì cho người xem khi rời khỏi?"},
-      {"speaker": "Linh", "text": "On sort de Boltanski moins triste qu'allégé — le deuil collectif a paradoxalement quelque chose de réconfortant. C'est cela, l'angle final.", "vi": "Ra khỏi Boltanski ít buồn hơn là nhẹ nhõm — tang chung tập thể mâu thuẫn có gì đó an ủi. Đó là góc cuối."},
-      {"speaker": "Rédactrice", "text": "Parfait. Bouclez sur cette note d'ambivalence. Ni pathos, ni cynisme. Rendez-moi le papier demain midi.", "vi": "Hoàn hảo. Đóng lại trên nốt lưỡng trị này. Không pathos, không cynisme. Gửi tôi bài trưa mai."}
-    ],
-    "roleplay_prompts": [
-      "Bạn viết critique 500 mots về một triển lãm tranh sơn mài Việt Nam tại Paris. Dùng cấu trúc: (1) entrée par une œuvre précise, (2) 2 axes d'analyse (matière + mémoire), (3) jugement nuancé. Phrase clé: 'Loin de se réduire à un artisanat décoratif, la laque vietnamienne...'",
-      "Trong buổi soutenance mémoire về mỹ thuật, jury hỏi bạn: 'Votre critique n'est-elle qu'une description lyrique?' Phản biện: định nghĩa critique d'art comme 'traduction dans un autre médium', dẫn Diderot, phân biệt description và analyse.",
-      "Bạn được giao viết catalogue essay 1500 mots cho triển lãm cá nhân. Hãy phác thảo structure: éviter biographie linéaire, partir d'un concept (le vide / la trace / la répétition), analyser 3 œuvres clés, conclure sur une question ouverte sans answer definitive."
-    ],
-    "register_notes": "CRITIQUE D'ART C2 — ba register tùy contexte:\n\nREGISTRE JOURNALISTIQUE (presse grand public):\n- Vocabulaire accessible, phrases courtes (15-25 mots)\n- Présent de l'indicatif dominant\n- Éviter passé simple, subjonctif imparfait\n- 'On est saisi par...', 'L'effet est immédiat:', 'Ce qui frappe d'abord, c'est...'\n\nREGISTRE UNIVERSITAIRE (revue savante):\n- Lexique spécialisé: 'chromatisme', 'scénographie', 'dispositif scopique'\n- Citations théoriques intégrées: 'Comme l'écrit Rancière dans Le Partage du sensible (2000)...'\n- Subjonctif: 'Il est regrettable que l'accrochage n'ait pas tenu compte...'\n- Questions rhétoriques: 'Faut-il voir dans ce choix de monter l'exposition à l'envers une intention déconstructrice?'\n\nREGISTRE CATALOGUE (essay pour livre d'artiste):\n- Ton plus personnel, essai littéraire\n- Je permis (rare ailleurs): 'Je me souviens de ma première rencontre avec cette toile...'\n- Métaphores filées: 'L'œuvre se déploie comme une partition dont chaque salle serait un mouvement.'\n- Ni trop technique, ni trop journalistique\n\nĐỘNG TỪ CLÉ:\n- 'donner à voir' (cho thấy) — neutre\n- 'mettre en scène' (dàn dựng) — neutre\n- 'convoquer' (triệu tập) — soutenu: 'l'artiste convoque le spectateur à...'\n- 'tramer' (dệt nên) — littéraire\n- 'sourdre' (rỉ ra) — rất littéraire\n\nTRÁNH:\n- 'Cette œuvre est magnifique' → không phân tích\n- 'L'artiste exprime sa souffrance' → biographisme naïf\n- 'C'est intéressant' → mot vide\n- Trop de technique sans jugement → catalogue de vente",
-    "idiom_glosses": [
-      {"idiom": "Accrocher l'œil", "literal": "Móc vào mắt", "meaning": "Thu hút thị giác — critique d'art pour décrire ce qui saisit d'abord le regard.", "example": "Ce qui accroche l'œil dans cette toile, c'est moins la composition d'ensemble que ce minuscule détail rouge au bord droit."},
-      {"idiom": "Donner à voir", "literal": "Cho thấy", "meaning": "Rendre visible — verbe central de la critique d'art française, issu de Paul Éluard (Donner à voir, 1939).", "example": "Cette installation donne à voir l'invisible — le passage du temps rendu sensible par l'accumulation d'objets quotidiens."},
-      {"idiom": "Faire date", "literal": "Làm nên ngày tháng", "meaning": "Marquer l'histoire — pour désigner une œuvre / exposition qui fait époque.", "example": "L'exposition 'Magiciens de la terre' (1989) a fait date en mettant fin à l'hégémonie occidentale dans l'art contemporain."},
-      {"idiom": "Prendre le parti de", "literal": "Lấy phía của", "meaning": "Chọn cách tiếp cận — 'le parti pris esthétique de l'artiste'.", "example": "L'artiste prend le parti du vide contre le plein, du silence contre le bruit — un ascétisme formel radical."}
-    ],
-    "exercises": [
-      {"type": "fill-blank", "question": "La critique d'art, telle que ___ l'a inaugurée dans ses Salons, n'a jamais été une paraphrase de l'image.", "answer": "Diderot"},
-      {"type": "matching", "pairs": [["le parti pris", "chủ trương / thiên kiến"], ["la touche", "nét cọ"], ["le regardeur", "người xem (Duchamp)"], ["un accrochage", "cách treo tranh"]], "instruction": "Nối thuật ngữ critique d'art với nghĩa Việt"},
-      {"type": "translation", "vietnamese": "Khác hẳn việc quy giảm thành bài tập chiêm ngưỡng, phê bình nghệ thuật phải khớp nối một phán đoán thẩm mỹ có cơ sở.", "french": "Loin de se réduire à un exercice d'admiration, la critique d'art se doit d'articuler un jugement esthétique étayé sur des critères explicites."}
-    ]
-  },
-  {
-    "id": "larts_critique_cinema",
-    "level": "C2",
-    "category": "arts_criticism",
-    "title_vi": "Phê bình điện ảnh — critique de cinéma",
-    "title_en": "Film criticism — writing a French film review",
-    "sentences": [
-      {
-        "en": "La critique de cinéma, en France, ne saurait être un simple verdict d'humeur: elle engage une analyse de la mise en scène comme pensée à l'œuvre.",
-        "vi": "Phê bình điện ảnh, ở Pháp, không thể là một phán quyết tùy hứng đơn giản: nó dấn thân vào một phân tích mise en scène như tư duy đang vận hành.",
-        "pronunciation_focus": [
-          "saurait → sô-rè",
-          "verdict → vèr-dik",
-          "mise en scène → mi-zãn-sèn",
-          "pensée → pãn-sé"
-        ]
-      },
-      {
-        "en": "Bazin l'avait bien vu: le plan-séquence n'est pas un simple procédé technique — il est un choix éthique qui restitue au spectateur sa liberté de regard.",
-        "vi": "Bazin đã thấy rõ: plan-séquence không phải một thủ pháp kỹ thuật đơn giản — đó là một lựa chọn đạo đức trả lại cho khán giả sự tự do của cái nhìn.",
-        "pronunciation_focus": [
-          "Bazin → ba-zan",
-          "plan-séquence → plãn-sé-kãns",
-          "éthique → é-tik",
-          "spectateur → spèk-ta-tơr"
-        ]
-      },
-      {
-        "en": "La politique des auteurs, telle que les Cahiers du Cinéma l'ont formulée dans les années 1950, postule que le metteur en scène est le véritable auteur du film, contre la tradition du scénariste-roi.",
-        "vi": "Chính sách tác giả, như Cahiers du Cinéma đã hình thành trong những năm 1950, định đề rằng đạo diễn mới là tác giả đích thực của phim, chống lại truyền thống biên kịch-làm-vua.",
-        "pronunciation_focus": [
-          "Cahiers → ka-ié",
-          "postule → pos-tul",
-          "metteur en scène → mè-tơr-ãn-sèn",
-          "scénariste → sé-na-rist"
-        ]
-      },
-      {
-        "en": "Il eût été plus fructueux d'analyser la lumière crépusculaire qui baigne tout le troisième acte — elle n'est pas décorative, elle est le sens même du film.",
-        "vi": "Sẽ có kết quả hơn nếu phân tích ánh sáng hoàng hôn tắm cả hồi ba — nó không có tính trang trí, nó là chính nghĩa của phim.",
-        "pronunciation_focus": [
-          "eût → u",
-          "crépusculaire → kré-pus-ku-lèr",
-          "décorative → dé-ko-ra-tiv",
-          "baigne → bèny"
-        ]
-      },
-      {
-        "en": "En dernière analyse, ce qui distingue la critique française de l'anglo-saxonne, c'est le primat accordé à la mise en scène sur le scénario — une idée que même les détracteurs de la 'politique des auteurs' ont dû intégrer.",
-        "vi": "Sau cùng, điều phân biệt phê bình Pháp với Anh-Mỹ là sự ưu tiên dành cho mise en scène hơn kịch bản — một ý tưởng mà ngay cả những người phản đối 'chính sách tác giả' cũng đã phải tích hợp.",
-        "pronunciation_focus": [
-          "dernière → dèr-nièr",
-          "anglo-saxonne → ãn-glô-sak-son",
-          "détracteurs → dé-trak-tơr",
-          "intégrer → an-té-gré"
-        ]
-      }
-    ],
-    "cultural_notes_vi": "PHÊ BÌNH ĐIỆN ẢNH PHÁP — di sản riêng từ Cahiers du Cinéma (1951):\n\n(1) BAZIN (1918-1958) — cofondateur des Cahiers. Ontologie de l'image photographique (Qu'est-ce que le cinéma ?, 1958): le cinéma accomplit le 'complexe de la momie' — sauver l'être par l'apparence. Phân biệt: metteurs en scène qui 'croient à l'image' vs ceux qui 'croient à la réalité'. Plan-séquence và profondeur de champ = choix éthiques, không chỉ esthétiques.\n\n(2) POLITIQUE DES AUTEURS — Truffaut (1954, 'Une certaine tendance du cinéma français') lance thuật ngữ. Nguyên lý: le metteur en scène (thường là scénariste de ses films) est le véritable auteur. Điều này cho phép valoriser Hollywood (Hitchcock, Hawks, Ford) mà critique Pháp trước đó coi thường.\n\n(3) CAHIERS CRITICS DEVENUS CINÉASTES — Godard, Truffaut, Rohmer, Rivette, Chabrol — tất cả khởi nghiệp viết critique cho Cahiers rồi chuyển sang làm phim (Nouvelle Vague). Truyền thống: critiquer comme manière d'apprendre à faire. Điều này rất Pháp.\n\n(4) DANEY (1944-1992) — kế thừa Bazin ở Cahiers, sau sang Libération. Lý thuyết về 'cinéma comme art du passage': de la salle obscure au monde, de l'image au réel. Citation célèbre: 'Le cinéma, c'est l'art de montrer.'\n\n(5) DEBAT ĐƯƠNG ĐẠI: Les Cahiers vẫn tồn tại (mensuel). Đối thủ: Positif (1952), plus 'contre-Cahiers'. Cả hai lập trường khác nhau về cùng một film — đọc cả hai khi muốn viết critique sérieuse.\n\n(6) ĐẶC THÙ VIỆT NAM: phê bình điện ảnh VN phát triển khác — nhiều influence từ critique văn học (Lê Hồng Lâm, Ngô Phương Lan). Khi viết bằng tiếng Pháp về cinéma VN (Trần Anh Hùng, Phan Đăng Di), tích hợp khái niệm Pháp (mise en scène, plan-séquence) vào ngữ cảnh VN mà không ép buộc.",
-    "tip_advice_vi": "STRUCTURE D'UNE CRITIQUE DE FILM C2 (1500-2000 mots):\n\n1. ENTRÉE EN MATIÈRE (2 phrases max): bắt đầu bằng một plan cụ thể, một scène, một geste — không 'Ce film raconte l'histoire de...'\n- 'Dès le premier plan — un travelling latéral sur un mur de brique —, le film impose son rythme.'\n\n2. RÉSUMÉ MINIMAL (10% max): résumer tối thiểu, đủ để comprendre contexte. Jamais spoiler fin. Formule: 'Le film suit X qui... jusqu'à ce que...'\n\n3. ANALYSE DE LA MISE EN SCÈNE (60%) — các axes:\n- Axe espace: cadrage / profondeur de champ / décor / hors-champ\n- Axe temps: montage / ellipse / plan-séquence / ralenti\n- Axe son: voix / musique / bruits / silence\n- Axe acteur: direction d'acteurs / corps / voix\n- Axe lumière: source / couleur / ombre\nKHÔNG cần tất cả — chọn 2-3 axes phù hợp với film.\n\n4. MISE EN PERSPECTIVE (20%): situer trong filmographie du cinéaste, trong courant esthétique. Citation critique: 'Comme l'écrit Daney...' / 'Bazin aurait vu dans ce plan...'\n\n5. JUGEMENT (10%): đưa verdict có lập luận. Có thể aimer ET critiquer ('réussi formellement mais politiquement naïf').\n\nCỤM HỮU ÍCH:\n- 'La mise en scène consiste ici à...' (mise en scène ở đây là...)\n- 'Ce plan, qui dure plus de trois minutes, oblige le spectateur à...'\n- 'La lumière, dans ce film, n'éclaire pas — elle signifie.'\n- 'Le choix du hors-champ est ici plus éloquent que ce qui est montré.'\n- 'Le montage, heurté, refuse toute psychologie — il impose une lecture politique.'\n\nTRÁNH:\n- Juger le scénario seulement: 'L'histoire est invraisemblable' → pas pertinent en critique française.\n- Note sur 5 étoiles sans texte: rédactionnel attendu.\n- Parler des acteurs en people: critique, pas Voici.\n- 'Ce film est un chef-d'œuvre' sans argument: affirmation vide.",
-    "vocabulary": [
-      {"word": "la mise en scène", "en": "direction / staging", "vi": "dàn dựng / mise en scène", "pos": "n.f.", "pronunciation_vi": "mi-zãn-sèn"},
-      {"word": "un travelling", "en": "a tracking shot", "vi": "cú travelling", "pos": "n.m.", "pronunciation_vi": "trav-ling"},
-      {"word": "le hors-champ", "en": "off-screen space", "vi": "ngoại cảnh / không gian ngoài khung", "pos": "n.m.", "pronunciation_vi": "or-shãn"},
-      {"word": "la profondeur de champ", "en": "depth of field", "vi": "độ sâu trường ảnh", "pos": "n.f.", "pronunciation_vi": "pro-fõn-dơr dơ shãn"},
-      {"word": "le montage", "en": "editing", "vi": "dựng phim", "pos": "n.m.", "pronunciation_vi": "mõn-taj"},
-      {"word": "un plan-séquence", "en": "a long take / sequence shot", "vi": "cú máy liên tục không cắt", "pos": "n.m.", "pronunciation_vi": "plãn-sé-kãns"},
-      {"word": "la politique des auteurs", "en": "auteur theory", "vi": "chính sách tác giả", "pos": "n.f.", "pronunciation_vi": "po-li-tik dé-zô-tơr"},
-      {"word": "diégétique", "en": "diegetic (within the story world)", "vi": "thuộc về thế giới truyện", "pos": "adj.", "pronunciation_vi": "dié-jé-tik"},
-      {"word": "un panoramique", "en": "a pan shot", "vi": "cú lia máy", "pos": "n.m.", "pronunciation_vi": "pa-no-ra-mik"},
-      {"word": "le cadre", "en": "the frame", "vi": "khuôn hình", "pos": "n.m.", "pronunciation_vi": "kadr"}
-    ],
-    "dialogue": [
-      {"speaker": "Rédacteur", "text": "Votre critique du dernier Desplechin est trop descriptive. Où est l'analyse de la mise en scène ?", "vi": "Bài phê bình Desplechin mới nhất của bạn quá mô tả. Phân tích mise en scène đâu?"},
-      {"speaker": "Linh", "text": "J'ai décrit la séquence d'ouverture, mais vous avez raison — je n'ai pas dit pourquoi la caméra quitte le personnage pour s'attarder sur la fenêtre.", "vi": "Tôi đã mô tả cảnh mở đầu, nhưng anh đúng — tôi chưa nói tại sao máy quay rời nhân vật để nấn ná ở cửa sổ."},
-      {"speaker": "Rédacteur", "text": "Exactement. Ce mouvement n'est pas anodin: il dit le point de vue du cinéaste sur son personnage.", "vi": "Chính xác. Chuyển động đó không vô cớ: nó nói lên điểm nhìn của đạo diễn về nhân vật của ông."},
-      {"speaker": "Linh", "text": "Je reprends — je pars de ce décadrage pour montrer comment Desplechin construit un regard ironique sur son protagoniste.", "vi": "Tôi làm lại — tôi xuất phát từ sự lệch khung này để chỉ ra cách Desplechin xây dựng cái nhìn mỉa mai về nhân vật chính."}
-    ],
-    "dialogue_long": [
-      {"speaker": "Prof. Daney (séminaire de critique, Fémis)", "text": "Mademoiselle Tran, vous venez de voir le dernier film de Claire Denis. En deux phrases: quel est le geste de mise en scène qui le définit ?", "vi": "Cô Trần, cô vừa xem phim mới nhất của Claire Denis. Trong hai câu: cử chỉ mise en scène nào định nghĩa nó?"},
-      {"speaker": "Linh", "text": "Le geste, c'est la peau. Denis filme les corps à une distance qui annule toute pudeur sans jamais devenir obscène. La caméra est un épiderme.", "vi": "Cử chỉ, đó là da. Denis quay các thân thể ở một khoảng cách hủy bỏ mọi e dè mà không bao giờ trở nên tục tằn. Máy quay là một lớp biểu bì."},
-      {"speaker": "Prof. Daney", "text": "'La caméra est un épiderme' — c'est une formule. Développez: quel plan précis vous fait dire cela ?", "vi": "'Máy quay là một lớp biểu bì' — đó là một công thức. Triển khai: cảnh chính xác nào khiến cô nói vậy?"},
-      {"speaker": "Linh", "text": "La scène de la douche, au tiers du film. La caméra est si proche de la nuque de l'actrice qu'on perçoit le duvet. Ce n'est plus un cadrage — c'est une caresse optique.", "vi": "Cảnh tắm vòi sen, ở một phần ba phim. Máy quay gần gáy diễn viên đến mức ta thấy lông tơ. Đó không còn là cadrage — đó là một vuốt ve quang học."},
-      {"speaker": "Prof. Daney", "text": "Très bien. Maintenant, le revers: cette proximité a-t-elle un coût ? Que sacrifie le film ?", "vi": "Rất tốt. Giờ mặt trái: sự cận kề này có cái giá không? Phim hy sinh gì?"},
-      {"speaker": "Linh", "text": "Il sacrifie la narration classique. On ne sait jamais vraiment ce qui se passe au niveau de l'intrigue. Mais c'est un choix cohérent: le film ne raconte pas, il éprouve.", "vi": "Nó hy sinh tự sự cổ điển. Không bao giờ thực sự biết cái gì xảy ra ở cấp độ cốt truyện. Nhưng đó là lựa chọn nhất quán: phim không kể, nó thể nghiệm."},
-      {"speaker": "Prof. Daney", "text": "Vous défendez un cinéma de la sensation contre un cinéma du récit. Thèse classique des Cahiers. Mais attention au dogmatisme: certains films font les deux.", "vi": "Cô bảo vệ một điện ảnh của cảm giác chống lại điện ảnh của tự sự. Luận đề Cahiers cổ điển. Nhưng coi chừng chủ nghĩa: một số phim làm cả hai."},
-      {"speaker": "Linh", "text": "Je nuance: Denis fait les deux, mais la sensation prime. Le récit est le prétexte; la chair, le texte.", "vi": "Tôi sắc thái hóa: Denis làm cả hai, nhưng cảm giác chiếm ưu tiên. Tự sự là cái cớ; da thịt, là văn bản."},
-      {"speaker": "Prof. Daney", "text": "'La chair, le texte' — bon mot. Pour la semaine prochaine, vous m'écrivez 1500 mots sur ce film en partant de cette idée. Et surtout: pas une seule référence à Deleuze.", "vi": "'Da thịt, là văn bản' — chữ hay. Tuần sau, cô viết cho tôi 1500 chữ về phim này xuất phát từ ý này. Và nhất là: không một tham chiếu nào đến Deleuze."}
-    ],
-    "roleplay_prompts": [
-      "Bạn critique một bộ phim cho tạp chí bài trí thức. Tập trung vào MỘT séquence — phân tích mise en scène, lumière, son. Áp dụng Bazin: 'le plan-séquence restitue au spectateur sa liberté de regard'. Không tóm tắt toàn bộ phim.",
-      "Trong séminaire cinéma, bạn défend quan điểm 'ce blockbuster est plus intéressant que ce film d'auteur'. Dùng politique des auteurs argument: mise en scène > scénario. Phrase clé: 'On juge un cinéaste à sa mise en scène, non à son sujet.'",
-      "Bạn compare deux critiques du même film (Cahiers vs Positif). Phân tích divergence: l'un voit 'formalisme creux', l'autre 'économie de moyens'. Dùng analyse contrastive cho thấy mỗi critique part d'un présupposé khác nhau về ce que le cinéma doit être."
-    ],
-    "register_notes": "CRITIQUE DE CINÉMA C2 — đặc thù française:\n\nLEXIQUE TECHNIQUE INTÉGRÉ (không glossaire séparé):\n- Không nói 'le réalisateur utilise un travelling' + giải thích travelling là gì\n- Nói 'le travelling latéral du deuxième acte épouse le mouvement de l'actrice'\n- Lexique supposé connu: travelling, panoramique, plan fixe, plan-séquence, hors-champ, profondeur de champ, amorce, raccord, champ-contrechamp\n\nVERBES DE MISE EN SCÈNE:\n- 'cadrer' (đóng khung) — 'Le cinéaste cadre le visage au plus près'\n- 'monter' (dựng) — 'Le film est monté sec, sans transitions'\n- 'éclairer' — 'La scène est éclairée à la bougie'\n- 'filmer' — 'Godard filme la nuque d'Anna Karina comme un paysage'\n\nTEMP VERBAL dans critique de film:\n- PRÉSENT dominant: 'Le film s'ouvre sur...', 'La caméra suit...'\n- PASSÉ COMPOSÉ cho judgement synthétique: 'Le cinéaste a choisi de...'\n- IMPARFAIT pour habitude / arrière-plan: 'À l'époque, Truffaut écrivait...'\n- SUBJONCTIF cho critique: 'Il est dommage que le montage n'ait pas été plus serré.'\n\nCITATION CRITIQUE:\n- Dẫn critique khác: 'Comme l'écrit Daney dans Libération (12 mars 1985)...'\n- Dẫn cinéaste interviewé: 'Dans un entretien aux Inrockuptibles, Desplechin déclare...'\n- KHÔNG citer Wikipedia: 'Selon Wikipédia...' → disqualifiant\n\nTON:\n- Assertif mais pas arrogant: 'On peut voir dans ce choix...' > 'Il est évident que...'\n- Nuancier: 'Si la première partie emporte l'adhésion, la seconde laisse plus circonspect.'\n- Jamais jargonnant pour le plaisir — chaque terme technique doit servir l'analyse",
-    "idiom_glosses": [
-      {"idiom": "Faire école", "literal": "Làm nên trường phái", "meaning": "Tạo ảnh hưởng đến thế hệ sau — critique khen cinéaste có descendance.", "example": "Bresson a fait école — sans lui, ni Rohmer, ni Dumont, ni Kaurismäki ne filmeraient comme ils le font."},
-      {"idiom": "Film d'auteur", "literal": "Phim tác giả", "meaning": "Phim trong đó cinéaste là auteur véritable, không simple exécutant — terme central politique des auteurs.", "example": "Malgré son budget confortable, ce blockbuster reste un film d'auteur — on reconnaît la patte de Nolan à chaque plan."},
-      {"idiom": "Mettre en scène", "literal": "Đặt lên sân khấu / dàn dựng", "meaning": "Không chỉ 'réaliser', mà penser le cinéma par l'espace, le temps, les corps — verbe sacré critique française.", "example": "Ce n'est pas l'histoire qui compte, c'est comment le cinéaste la met en scène."},
-      {"idiom": "Tenir le plan", "literal": "Giữ cú máy", "meaning": "Garder le plan sans couper — qualité: résister à la tentation du montage rapide. 'Tenir un plan-séquence de 8 minutes.'", "example": "Peu de cinéastes osent encore tenir le plan — la mode est au montage clip. Ce film, lui, prend le temps de regarder."}
-    ],
-    "exercises": [
-      {"type": "fill-blank", "question": "La politique des auteurs, telle que les ___ l'ont formulée dans les années 1950, postule que le metteur en scène est le véritable auteur du film.", "answer": "Cahiers du Cinéma"},
-      {"type": "matching", "pairs": [["la mise en scène", "dàn dựng"], ["le hors-champ", "không gian ngoài khung"], ["le plan-séquence", "cú máy liên tục không cắt"], ["le travelling", "cú máy di chuyển"]], "instruction": "Nối thuật ngữ critique cinéma với nghĩa Việt"},
-      {"type": "translation", "vietnamese": "Bazin đã thấy rõ: plan-séquence không phải một thủ pháp kỹ thuật đơn giản — đó là một lựa chọn đạo đức trả lại cho khán giả sự tự do của cái nhìn.", "french": "Bazin l'avait bien vu: le plan-séquence n'est pas un simple procédé technique — il est un choix éthique qui restitue au spectateur sa liberté de regard."}
-    ]
-  }  ,
-  {
-    "id": "lcivic_debat_laicite",
-    "level": "C2",
-    "category": "civic_discourse",
-    "title_vi": "Tranh luận về laïcité — nguyên lý và tranh cãi",
-    "title_en": "Debating laïcité — principles and controversies",
-    "sentences": [
-      {"en": "La laïcité, telle que la loi de 1905 l'a instituée, ne saurait être confondue avec une hostilité envers le fait religieux; elle garantit la liberté de conscience tout en préservant la neutralité de l'État.", "vi": "Laïcité, như luật 1905 đã thiết lập, không thể bị nhầm lẫn với sự thù địch đối với thực tại tôn giáo; nó bảo đảm tự do lương tâm trong khi vẫn duy trì tính trung lập của Nhà nước.", "pronunciation_focus": ["laïcité → la-i-si-té", "instituée → an-sti-tu-é", "conscience → kõn-siãns", "neutralité → nơ-tra-li-té"]},
-      {"en": "Il eût été plus sage, dans ce débat, de distinguer la laïcité juridique — qui relève du droit — de la laïcité identitaire — qui relève, elle, du registre passionnel.", "vi": "Sẽ khôn ngoan hơn, trong tranh luận này, nếu phân biệt laïcité pháp lý — thuộc về luật pháp — với laïcité bản sắc — vốn thuộc về bình diện cảm xúc.", "pronunciation_focus": ["eût → u", "juridique → ju-ri-dik", "identitaire → i-dãn-ti-tèr", "passionnel → pa-sio-nèl"]},
-      {"en": "Force est de constater que le terme même de 'laïcité' est devenu, dans le discours public contemporain, un signifiant flottant que chaque camp politique investit d'un sens différent.", "vi": "Phải thừa nhận rằng chính thuật ngữ 'laïcité' đã trở thành, trong diễn ngôn công cộng đương đại, một cái biểu đạt trôi nổi mà mỗi phe chính trị rót vào một nghĩa khác nhau.", "pronunciation_focus": ["constater → kõns-ta-té", "signifiant → si-ni-fiãn", "flottant → flo-tãn", "investit → an-vès-ti"]},
-      {"en": "La question du voile à l'école, pour ne prendre qu'un exemple, cristallise des tensions qui excèdent largement le cadre scolaire — elle mobilise des conceptions antagonistes de la République, de la liberté et de l'égalité des sexes.", "vi": "Câu hỏi về khăn trùm đầu ở trường học, chỉ lấy một ví dụ, kết tinh những căng thẳng vượt xa khung học đường — nó huy động các quan niệm đối kháng về Cộng hòa, về tự do và về bình đẳng giới.", "pronunciation_focus": ["cristallise → kris-ta-liz", "excèdent → èk-sèd", "antagonistes → ãn-ta-go-nist", "égalité → é-ga-li-té"]},
-      {"en": "Un débat digne de ce nom exige que l'on sache écouter la position adverse sans la caricaturer — condition plus facile à énoncer qu'à respecter dans l'arène médiatique.", "vi": "Một cuộc tranh luận xứng đáng với tên gọi đòi hỏi ta biết lắng nghe lập trường đối phương mà không biếm họa nó — điều kiện dễ phát biểu hơn là tuân thủ trên vũ đài truyền thông.", "pronunciation_focus": ["adverse → ad-vèrs", "caricaturer → ka-ri-ka-tu-ré", "énoncer → é-nõn-sé", "arène → a-rèn"]}
-    ],
-    "cultural_notes_vi": "LAÏCITÉ — KHÁI NIỆM PHÁP KHÔNG CÓ TƯƠNG ĐƯƠNG TRỰC TIẾP:\n\n(1) LUẬT 1905 (Loi de séparation des Églises et de l'État): Article 1 — 'La République assure la liberté de conscience. Elle garantit le libre exercice des cultes.' Article 2 — 'La République ne reconnaît, ne salarie ni ne subventionne aucun culte.' Đây là văn bản nền tảng.\n\n(2) HAI TRUYỀN THỐNG LAÏCITÉ: (a) laïcité 'ouverte' (Jaurès, Briand) — tôn trọng tự do tôn giáo, Nhà nước trung lập nhưng không thù địch; (b) laïcité 'de combat' (Combes, début 1900s) — tích cực đẩy lùi ảnh hưởng tôn giáo khỏi không gian công.\n\n(3) KHÁC BIỆT VỚI SECULARISM ANH-MỸ: secularism Anh-Mỹ là 'nhà nước không can thiệp vào tôn giáo' (negative liberty). Laïcité Pháp là 'nhà nước bảo vệ cá nhân khỏi áp lực tôn giáo' (positive liberty through state).\n\n(4) LUẬT 2004: cấm 'signes religieux ostensibles' trong trường công. 2010: cấm che mặt nơi công cộng (burqa). Hai luật gây tranh cãi quốc tế.\n\n(5) DEBAT ĐƯƠNG ĐẠI: chia làm ba phe: (a) 'laïcité historique' (trung thành 1905), (b) 'laïcité identitaire' (coi laïcité là 'bản sắc Pháp' chống Hồi giáo — thường bị cáo buộc là islamophobie déguisée), (c) 'laïcité inclusive' (đòi điều chỉnh 1905 cho xã hội đa dạng tôn giáo ngày nay).\n\n(6) ĐIỀU TỐI QUAN TRỌNG CHO NGƯỜI VIỆT: Việt Nam có truyền thống 'tam giáo đồng nguyên' + chính sách tôn giáo riêng của nhà nước xã hội chủ nghĩa. KHÔNG áp đặt khuôn laïcité Pháp lên thực tại Việt Nam. Nhưng khi tham gia tranh luận bằng tiếng Pháp, phải nắm vững ba phân biệt: laïcité juridique vs politique vs identitaire.",
-    "tip_advice_vi": "TRANH LUẬN LAÏCITÉ C2 — CẤU TRÚC PHÁT BIỂU:\n\n1. POSITIONNER SON CAMP immédiatement: 'Je parle depuis une position laïque ouverte...' / 'Je me réclame de la laïcité historique de 1905...'\n\n2. DISTINGUER LES NIVEAUX:\n- Le plan juridique (que dit la loi?)\n- Le plan politique (que devrait dire la loi?)\n- Le plan sociologique (quelles sont les pratiques réelles?)\n\n3. CITER LA LOI, PAS L'OPINION: 'L'article 1 de la loi de 1905 dispose que...' > 'À mon avis...'\n\n4. RECONNAÎTRE LA COMPLEXITÉ: 'La question est complexe et ne saurait se réduire à...'\n\n5. CONCÉDER UN POINT avant de marquer le sien: 'Je concède que... Cependant...'\n\nCỤM HỮU ÍCH:\n- 'Il importe de distinguer...' (cần phân biệt)\n- 'La laïcité n'est pas... elle est...' (laïcité không phải là... mà là...)\n- 'On aurait tort de confondre...' (sẽ sai nếu nhầm lẫn...)\n- 'Le principe de laïcité exige que...' (nguyên lý laïcité đòi hỏi...)\n- 'C'est là une dérive sémantique qu'il faut dénoncer.' (đó là một sự trượt nghĩa cần vạch trần.)\n\nTRÁNH:\n- 'La laïcité, c'est l'interdiction de...' → simplification abusive\n- 'Tous les croyants pensent que...' → généralisation\n- Ton passionnel: 'C'est scandaleux!' → disqualifiant en débat républicain",
-    "vocabulary": [
-      {"word": "la laïcité", "en": "secularism (French model)", "vi": "chủ nghĩa thế tục kiểu Pháp", "pos": "n.f.", "pronunciation_vi": "la-i-si-té"},
-      {"word": "la liberté de conscience", "en": "freedom of conscience", "vi": "tự do lương tâm", "pos": "n.f.", "pronunciation_vi": "li-bèr-té dơ kõn-siãns"},
-      {"word": "la neutralité de l'État", "en": "state neutrality", "vi": "tính trung lập của Nhà nước", "pos": "n.f.", "pronunciation_vi": "nơ-tra-li-té dơ lé-ta"},
-      {"word": "un signe religieux ostensible", "en": "conspicuous religious symbol", "vi": "biểu tượng tôn giáo lộ liễu", "pos": "n.m.", "pronunciation_vi": "si-niơ rơ-li-ji-ơ os-tãn-si-blơ"},
-      {"word": "le prosélytisme", "en": "proselytism", "vi": "sự truyền giáo tích cực", "pos": "n.m.", "pronunciation_vi": "pro-zé-li-tismơ"},
-      {"word": "le vivre-ensemble", "en": "living together / social cohesion", "vi": "sống chung / cộng đồng", "pos": "n.m.", "pronunciation_vi": "vivr-ãn-sãn-blơ"},
-      {"word": "le communautarisme", "en": "communitarianism (pejorative)", "vi": "chủ nghĩa cộng đồng khép kín", "pos": "n.m.", "pronunciation_vi": "ko-mu-nô-ta-rismơ"},
-      {"word": "un signifiant flottant", "en": "a floating signifier", "vi": "cái biểu đạt trôi nổi", "pos": "n.m.", "pronunciation_vi": "si-ni-fiãn flo-tãn"},
-      {"word": "la sphère publique", "en": "the public sphere", "vi": "không gian công cộng", "pos": "n.f.", "pronunciation_vi": "sfèr pu-blik"},
-      {"word": "séculier / séculière", "en": "secular (adj.)", "vi": "thế tục (tính từ)", "pos": "adj.", "pronunciation_vi": "sé-ku-lié"}
-    ],
-    "dialogue": [
-      {"speaker": "Interlocuteur", "text": "La laïcité, pour vous, est-ce d'abord un principe juridique ou une valeur identitaire?", "vi": "Laïcité, với bạn, trước hết là nguyên lý pháp lý hay giá trị bản sắc?"},
-      {"speaker": "Linh", "text": "Juridique, sans hésitation. La loi de 1905 a tranché: l'État ne connaît pas les cultes, il les ignore institutionnellement, mais il les protège tous également.", "vi": "Pháp lý, không do dự. Luật 1905 đã phân xử: Nhà nước không biết đến các tín ngưỡng, bỏ qua chúng về mặt thể chế, nhưng bảo vệ tất cả như nhau."},
-      {"speaker": "Interlocuteur", "text": "Mais cette neutralité n'est-elle pas, en pratique, une fiction? L'État finance l'entretien des églises d'avant 1905.", "vi": "Nhưng tính trung lập đó trong thực tế không phải là hư cấu sao? Nhà nước tài trợ bảo trì nhà thờ xây trước 1905."},
-      {"speaker": "Linh", "text": "Vous touchez juste — c'est le paradoxe concordataire qui subsiste en Alsace-Moselle. Mais l'exception confirme la règle, elle ne l'invalide pas.", "vi": "Bạn chạm đúng — đó là nghịch lý concordat còn tồn tại ở Alsace-Moselle. Nhưng ngoại lệ xác nhận quy tắc, không phủ nhận nó."}
-    ],
-    "dialogue_long": [
-      {"speaker": "Modérateur (émission 'Du grain à moudre', France Culture)", "text": "Nous recevons ce soir trois invités pour débattre de la laïcité à l'école. Madame Tran, vous êtes doctorante en droit public. Votre position?", "vi": "Tối nay chúng tôi tiếp ba khách mời tranh luận về laïcité ở trường học. Bà Trần, bà là nghiên cứu sinh công pháp. Lập trường của bà?"},
-      {"speaker": "Linh", "text": "Je pars du texte de 1905, qui me semble trop souvent invoqué sans être lu. L'article premier garantit la liberté de conscience — c'est le principe. La neutralité de l'État en découle, elle n'est pas le principe premier.", "vi": "Tôi xuất phát từ văn bản 1905, vốn theo tôi quá thường được viện dẫn mà không được đọc. Điều một bảo đảm tự do lương tâm — đó là nguyên lý. Tính trung lập của Nhà nước hệ quả từ đó, không phải nguyên lý hàng đầu."},
-      {"speaker": "Invité 2 (essayiste)", "text": "Vous faites du droit sans voir la réalité sociologique: la laïcité est aujourd'hui menacée par l'entrisme communautariste dans les écoles.", "vi": "Bà làm luật mà không thấy thực tại xã hội học: laïcité ngày nay bị đe dọa bởi sự xâm nhập của chủ nghĩa cộng đồng vào các trường học."},
-      {"speaker": "Linh", "text": "Votre terme 'entrisme' mérite d'être interrogé. De quel entrisme parlez-vous exactement? Avez-vous des données chiffrées, ou s'agit-il d'une impression?", "vi": "Thuật ngữ 'xâm nhập' của ông xứng đáng bị chất vấn. Chính xác ông nói về sự xâm nhập nào? Ông có dữ liệu định lượng không, hay đây là một ấn tượng?"},
-      {"speaker": "Invité 2", "text": "Je parle de faits — des jeunes filles qui arrivent voilées en cours d'EPS, des menus hallal imposés...", "vi": "Tôi nói về các sự kiện — các cô gái trẻ đến giờ thể dục với khăn trùm đầu, thực đơn halal bị áp đặt..."},
-      {"speaker": "Linh", "text": "Vous mélangez trois registres: le voile à l'école (tranché par la loi de 2004), la restauration scolaire (qui relève du pouvoir discrétionnaire des collectivités), et un sentiment d'insécurité culturelle. Mélanger ces registres, c'est précisément ce qui empêche un débat rationnel.", "vi": "Ông trộn ba bình diện: khăn trùm ở trường (đã được luật 2004 phân xử), phục vụ ăn uống trường học (thuộc quyền tùy nghi của chính quyền địa phương), và một cảm giác bất an văn hóa. Trộn các bình diện này, chính là điều ngăn cản tranh luận lý tính."},
-      {"speaker": "Modérateur", "text": "Madame Tran, on vous sent attachée au droit. Mais le droit n'est-il pas toujours en retard sur le réel?", "vi": "Bà Trần, chúng tôi thấy bà gắn bó với luật. Nhưng luật không phải luôn chậm hơn thực tại sao?"},
-      {"speaker": "Linh", "text": "Le droit est en retard, c'est entendu. Mais c'est précisément parce qu'il est en retard qu'il nous oblige à la lenteur du raisonnement — et c'est cette lenteur qui protège du jugement hâtif.", "vi": "Luật chậm hơn, đã rõ. Nhưng chính vì nó chậm hơn mà nó buộc ta vào sự chậm rãi của suy lý — và chính sự chậm rãi đó bảo vệ khỏi phán xét vội vàng."}
-    ],
-    "roleplay_prompts": [
-      "Bạn tham gia débat télévisé về laïcité. Đối thủ nói: 'La laïcité, c'est l'interdiction du religieux dans l'espace public.' Phản bác: phân biệt 'interdiction du religieux' và 'neutralité de l'État', dẫn luật 1905. Cấu trúc: concession ('Je comprends votre préoccupation') + correction juridique + exemple concret.",
-      "Trong séminaire, bạn défend luận điểm: 'La loi de 2004 sur les signes religieux à l'école était nécessaire mais insuffisante.' Giải thích pourquoi nécessaire + pourquoi insuffisante + đề xuất giải pháp bổ sung. Dùng registre universitaire."
-    ],
-    "register_notes": "DÉBAT LAÏCITÉ C2 — REGISTRE:\n\nTon: calme, analytique, không passionnel. Người Pháp đánh giá cao 'la raison' trong tranh luận laïcité.\n\nLexique obligatoire:\n- 'distinguer' / 'il importe de distinguer' (cần phân biệt)\n- 'sur le plan juridique / politique / sociologique'\n- 'la loi dispose que...' (luật quy định rằng...)\n- 'le législateur a voulu...' (nhà lập pháp đã muốn...)\n\nHEDGING:\n- 'Il me semble que...' (tôi thấy rằng...)\n- 'On peut soutenir que...' (có thể chủ trương rằng...)\n- 'La question mérite d'être posée autrement.' (câu hỏi xứng đáng được đặt khác đi.)\n\nTRÁNH:\n- Ton indigné: 'C'est une honte!' / 'C'est scandaleux!'\n- Amalgame: 'Les musulmans pensent que...' — toujours distinguer 'certains musulmans'\n- Anachronisme: projeter des catégories contemporaines sur 1905",
-    "idiom_glosses": [
-      {"idiom": "Un signifiant flottant", "literal": "Cái biểu đạt trôi nổi", "meaning": "Thuật ngữ mượn từ Lacan / Lévi-Strauss: một từ mà nghĩa trở nên bất định vì mỗi phe gán cho nó một nội dung khác. Trong tranh luận laïcité, 'laïcité' chính là signifiant flottant.", "example": "Le mot 'laïcité' est devenu un signifiant flottant — chacun y met ce qu'il veut, et c'est précisément ce qui rend le débat si difficile."},
-      {"idiom": "La loi dispose que...", "literal": "Luật quy định rằng...", "meaning": "Công thức pháp lý chuẩn để trích dẫn luật — tín hiệu cho thấy bạn nói từ văn bản, không từ ý kiến cá nhân.", "example": "La loi de 1905 dispose que la République ne reconnaît aucun culte — cela ne signifie pas qu'elle les ignore, mais qu'elle ne les institutionnalise pas."}
-    ],
-    "exercises": [
-      {"type": "fill-blank", "question": "La laïcité, telle que la loi de 1905 l'a ___, ne saurait être confondue avec une hostilité envers le fait religieux.", "answer": "instituée"},
-      {"type": "matching", "pairs": [["la loi de 1905", "luật tách Giáo hội khỏi Nhà nước"], ["la liberté de conscience", "tự do lương tâm"], ["le communautarisme", "chủ nghĩa cộng đồng khép kín"], ["un signifiant flottant", "cái biểu đạt trôi nổi"]], "instruction": "Nối thuật ngữ tranh luận laïcité với nghĩa Việt"},
-      {"type": "translation", "vietnamese": "Một cuộc tranh luận xứng đáng với tên gọi đòi hỏi ta biết lắng nghe lập trường đối phương mà không biếm họa nó.", "french": "Un débat digne de ce nom exige que l'on sache écouter la position adverse sans la caricaturer."}
-    ]
-  },
-  {
-    "id": "lcivic_discours_politique",
-    "level": "C2",
-    "category": "civic_discourse",
-    "title_vi": "Phân tích diễn văn chính trị — rhétorique présidentielle",
-    "title_en": "Analyzing political speech — French presidential rhetoric",
-    "sentences": [
-      {"en": "Le discours politique, dans la tradition républicaine française, ne se réduit pas à la transmission d'un message: il est un acte performatif qui institue le locuteur en représentant de la nation.", "vi": "Diễn văn chính trị, trong truyền thống cộng hòa Pháp, không quy giảm thành việc truyền tải thông điệp: đó là một hành vi ngôn hành thiết lập người nói thành đại diện của quốc gia.", "pronunciation_focus": ["discours → dis-kur", "performatif → pèr-for-ma-tif", "institue → an-sti-tu", "locuteur → lo-ku-tơr"]},
-      {"en": "L'analyse du discours politique exige qu'on prête attention moins au contenu explicite — les promesses, les bilans — qu'aux marqueurs formels: les pronoms, les temps verbaux, les figures de rhétorique par lesquelles l'orateur construit sa légitimité.", "vi": "Phân tích diễn ngôn chính trị đòi hỏi chú ý ít hơn đến nội dung hiển ngôn — các lời hứa, các bản tổng kết — mà nhiều hơn đến các dấu hiệu hình thức: đại từ, thì động từ, các hình thái tu từ qua đó nhà hùng biện kiến tạo tính chính danh của mình.", "pronunciation_focus": ["explicite → èk-spli-sit", "pronoms → pro-nõn", "rhétorique → ré-to-rik", "légitimité → lé-ji-ti-mi-té"]},
-      {"en": "Le 'nous' présidentiel, chez de Gaulle, englobe la France entière dans une transcendance historique; chez Mitterrand, il dessine un camp politique; chez Macron, il se veut rassembleur tout en restant singulier — trois usages d'un même pronom, trois conceptions du pouvoir.", "vi": "Cái 'chúng ta' tổng thống, ở de Gaulle, bao trùm toàn nước Pháp trong một sự siêu việt lịch sử; ở Mitterrand, nó phác họa một phe chính trị; ở Macron, nó muốn tập hợp mà vẫn giữ tính đơn nhất — ba cách dùng cùng một đại từ, ba quan niệm về quyền lực.", "pronunciation_focus": ["de Gaulle → dơ Gôl", "Mitterrand → Mi-tê-rãn", "Macron → Ma-krõn", "englobe → ãn-glob"]},
-      {"en": "Il eût été instructif de comparer la syntaxe de Jaurès — ample, hypotaxique, chargée de subordonnées — à celle de Clémenceau — brève, parataxique, faite de phrases qui claquent comme des couperets.", "vi": "Sẽ bổ ích nếu so sánh cú pháp của Jaurès — rộng, giàu mệnh đề phụ, đầy các câu lệ thuộc — với cú pháp của Clémenceau — ngắn, đặt cạnh, toàn những câu vang lên như lưỡi máy chém.", "pronunciation_focus": ["Jaurès → Jo-rès", "hypotaxique → i-po-tak-sik", "Clémenceau → Klé-mãn-sô", "parataxique → pa-ra-tak-sik"]},
-      {"en": "Tout discours présidentiel est, en dernière analyse, un exercice d'équilibriste entre la nécessité de rassurer et l'obligation de mobiliser — équilibre dont la rupture se lit, souvent, dans le choix des adjectifs.", "vi": "Mọi diễn văn tổng thống, xét đến cùng, là một bài tập giữ thăng bằng giữa nhu cầu trấn an và nghĩa vụ huy động — sự thăng bằng mà sự đổ vỡ thường đọc được trong cách chọn tính từ.", "pronunciation_focus": ["équilibriste → é-ki-li-brist", "rassurer → ra-su-ré", "mobiliser → mo-bi-li-zé", "adjectifs → ad-jèk-tif"]}
-    ],
-    "cultural_notes_vi": "PHÂN TÍCH DIỄN VĂN CHÍNH TRỊ PHÁP — DI SẢN:\n\n(1) JAURÈS (1859-1914): bậc thầy hùng biện — câu dài, hypotaxe, nhịp điệu oratoire. 'Le courage, c'est de chercher la vérité et de la dire.'\n\n(2) DE GAULLE (1890-1970): phong cách 'monarque républicain'. 'Nous' bao trùm toàn dân tộc. Câu ngắn gọn, tính từ thiêng: 'la France éternelle'. Conférence de presse comme genre.\n\n(3) MITTERRAND (1916-1996): 'rhétorique de la gauche'. 'Nous' chỉ phe tả. Phong cách văn chương — citation Lamartine, Hugo. 'Les forces de l'esprit' (1985, discours au Congrès).\n\n(4) MACRON (2017-): phong cách 'en même temps' — juxtapose hai vế tương phản trong cùng câu. 'Je veux être le président qui réconcilie les deux France.'\n\n(5) CÔNG CỤ PHÂN TÍCH: analyse du discours 'à la française' (Pêcheux, Maingueneau) khác critical discourse analysis Anh-Mỹ (Fairclough, van Dijk) ở chỗ chú trọng énonciation (ai nói với ai, từ vị trí nào) hơn là ideology critique.\n\n(6) THỂ LOẠI: discours d'investiture, vœux du 31 décembre, allocution en temps de crise, débat télévisé d'entre-deux-tours — mỗi thể loại có règles rhétoriques riêng.",
-    "tip_advice_vi": "GRILLE PHÂN TÍCH DIỄN VĂN CHÍNH TRỊ C2 (7 axes):\n\n1. ÉNONCIATION: Qui parle? D'où? À qui? (Président / candidat / ministre)\n2. PRONOMS: Je / Nous / On / Ils — mỗi đại từ vẽ một bản đồ chính trị\n3. TEMPS VERBAUX: Présent (vérité générale), Futur (promesse), Passé composé (bilan), Imparfait (nostalgie)\n4. FIGURES: Anaphore, métaphore, antithèse, question rhétorique\n5. CHAMP LEXICAL: abstrait (République, Nation, Peuple) vs concret (salaire, hôpital)\n6. SYNTAXE: Phrase longue hypotaxique (Jaurès) vs phrase courte parataxique (Clémenceau)\n7. SILENCES / HÉSITATIONS: Ce qui n'est pas dit, les thèmes évités\n\nCỤM HỮU ÍCH:\n- 'Le locuteur se construit ici comme...' (người nói tự kiến tạo ở đây như...)\n- 'L'usage du pronom X révèle...' (cách dùng đại từ X tiết lộ...)\n- 'Le choix du passé composé n'est pas anodin: il...' (chọn passé composé không vô cớ: nó...)\n- 'Cette anaphore en début de paragraphe scande...' (phép điệp ngữ đầu đoạn này gõ nhịp...)",
-    "vocabulary": [
-      {"word": "un discours-programme", "en": "a platform speech", "vi": "diễn văn cương lĩnh", "pos": "n.m.", "pronunciation_vi": "dis-kur pro-gram"},
-      {"word": "le pronom 'nous'", "en": "the pronoun 'we'", "vi": "đại từ 'chúng ta'", "pos": "n.m.", "pronunciation_vi": "pro-nõn nu"},
-      {"word": "une anaphore", "en": "anaphora (rhetorical)", "vi": "phép điệp ngữ đầu câu", "pos": "n.f.", "pronunciation_vi": "a-na-for"},
-      {"word": "l'allocution", "en": "formal address / speech", "vi": "bài phát biểu chính thức", "pos": "n.f.", "pronunciation_vi": "a-lo-ku-sion"},
-      {"word": "la performativité", "en": "performativity (Austin)", "vi": "tính ngôn hành", "pos": "n.f.", "pronunciation_vi": "pèr-for-ma-ti-vi-té"},
-      {"word": "l'éloquence", "en": "eloquence", "vi": "tài hùng biện", "pos": "n.f.", "pronunciation_vi": "é-lo-kãns"},
-      {"word": "la tribune", "en": "the rostrum / platform", "vi": "bục diễn đàn", "pos": "n.f.", "pronunciation_vi": "tri-bun"},
-      {"word": "le clivage", "en": "cleavage / divide", "vi": "sự chia rẽ / phân tuyến", "pos": "n.m.", "pronunciation_vi": "kli-vaj"},
-      {"word": "rassembleur / rassembleuse", "en": "unifying (adj.)", "vi": "tập hợp / đoàn kết", "pos": "adj.", "pronunciation_vi": "ra-sãn-blơr"},
-      {"word": "un slogan", "en": "a slogan", "vi": "khẩu hiệu", "pos": "n.m.", "pronunciation_vi": "slo-gãn"}
-    ],
-    "dialogue": [
-      {"speaker": "Étudiant", "text": "Comment analyser le 'nous' dans un discours de Macron?", "vi": "Phân tích chữ 'nous' trong diễn văn Macron thế nào?"},
-      {"speaker": "Prof. Maingueneau", "text": "Demandez-vous: ce 'nous' inclut-il l'auditoire présent? Le pays entier? L'humanité? La réponse change selon le paragraphe — et c'est cette variation qu'il faut cartographier.", "vi": "Hãy tự hỏi: 'nous' này có bao gồm cử tọa hiện diện? Toàn đất nước? Nhân loại? Câu trả lời thay đổi theo từng đoạn — và chính sự biến đổi đó cần được vẽ bản đồ."},
-      {"speaker": "Étudiant", "text": "Et si 'nous' est ambigu?", "vi": "Nếu 'nous' mơ hồ thì sao?"},
-      {"speaker": "Prof. Maingueneau", "text": "L'ambiguïté n'est pas un défaut — c'est une ressource rhétorique. Un 'nous' qui peut être lu comme 'les Français' OU 'mon gouvernement' permet de parler à deux publics en même temps.", "vi": "Sự mơ hồ không phải là khiếm khuyết — đó là tài nguyên tu từ. Một 'nous' có thể được đọc là 'người Pháp' HOẶC 'chính phủ của tôi' cho phép nói với hai công chúng cùng một lúc."}
-    ],
-    "dialogue_long": [
-      {"speaker": "Prof. Maingueneau (séminaire d'analyse du discours, Paris 3)", "text": "Mademoiselle Tran, vous avez choisi d'analyser le discours d'investiture de François Mitterrand, 21 mai 1981. Pourquoi ce discours?", "vi": "Cô Trần, cô đã chọn phân tích diễn văn nhậm chức của François Mitterrand, 21 tháng 5 năm 1981. Vì sao diễn văn này?"},
-      {"speaker": "Linh", "text": "Parce que c'est un discours de basculement — la gauche arrive au pouvoir pour la première fois sous la Ve République. La rhétorique doit accomplir une double tâche: rassurer ceux qui ont peur, et mobiliser ceux qui espèrent.", "vi": "Vì đó là một diễn văn bước ngoặt — phe tả lên nắm quyền lần đầu dưới nền Đệ Ngũ Cộng hòa. Tu từ phải hoàn thành nhiệm vụ kép: trấn an những người sợ, và huy động những người hy vọng."},
-      {"speaker": "Prof. Maingueneau", "text": "Bien. Commencez par les pronoms — que trouvez-vous?", "vi": "Tốt. Bắt đầu bằng các đại từ — cô thấy gì?"},
-      {"speaker": "Linh", "text": "Le 'je' domine le premier tiers — Mitterrand s'institue comme sujet de l'action. Puis le 'nous' prend le relais, mais un 'nous' qui exclut la droite: 'nous, la gauche', 'nous, le peuple de gauche'. Ce n'est pas le 'nous' gaullien qui englobe la France entière.", "vi": "Cái 'je' chi phối một phần ba đầu — Mitterrand thiết lập mình như chủ thể hành động. Rồi 'nous' tiếp quản, nhưng là 'nous' loại trừ phe hữu: 'chúng ta, phe tả', 'chúng ta, nhân dân cánh tả'. Đó không phải là 'nous' của de Gaulle bao trùm toàn nước Pháp."},
-      {"speaker": "Prof. Maingueneau", "text": "Très juste. Et les temps verbaux?", "vi": "Rất đúng. Còn thì động từ?"},
-      {"speaker": "Linh", "text": "Alternance entre futur ('je proposerai', 'nous construirons') et présent de vérité générale ('la justice est la condition de la paix'). Le passé est presque absent — aucune nostalgie, aucune référence à Giscard. L'ennemi n'est pas nommé, il est effacé.", "vi": "Xen kẽ giữa futur ('tôi sẽ đề xuất', 'chúng ta sẽ xây dựng') và présent chân lý tổng quát ('công lý là điều kiện của hòa bình'). Quá khứ hầu như vắng mặt — không hoài niệm, không tham chiếu đến Giscard. Kẻ thù không được gọi tên, nó bị xóa đi."},
-      {"speaker": "Prof. Maingueneau", "text": "L'effacement de l'adversaire — c'est une trouvaille. Développez pour la semaine prochaine.", "vi": "Sự xóa bỏ đối thủ — đó là một phát hiện. Triển khai cho tuần sau."}
-    ],
-    "roleplay_prompts": [
-      "Bạn phân tích một discours politique Pháp đương đại (chọn một bài cụ thể). Dùng grille 7 axes (énonciation, pronoms, temps, figures, lexique, syntaxe, silences). Kết luận: 'Ce discours révèle une conception du pouvoir qui...'",
-      "Trong séminaire, bạn bị critique: 'Votre analyse est trop formaliste, vous ignorez le contexte politique.' Phản hồi: concéder, puis montrer comment l'analyse formelle ÉCLAIRE le contexte politique ('c'est précisément par l'analyse des pronoms que l'on voit comment le locuteur construit son adversaire')."
-    ],
-    "register_notes": "ANALYSE DU DISCOURS POLITIQUE C2:\n- Métalangage obligatoire: 'énonciation', 'locuteur', 'allocutaire', 'pronom', 'marqueur', 'modalité', 'ethos discursif'.\n- Khi trích dẫn discours: toujours donner date + contexte + paragraphe.\n- Khi phân tích: 'Le choix de X plutôt que Y révèle...' > 'X veut dire...'\n- Khi kết luận: 'Ce discours construit un ethos de...' (diễn văn này kiến tạo một diện mạo đạo đức của...)\n- TRÁNH: jugement politique ('ce discours est démagogique') — rester dans l'analyse formelle.",
-    "idiom_glosses": [
-      {"idiom": "Un morceau d'anthologie", "literal": "Một đoạn hợp tuyển", "meaning": "Một đoạn văn / diễn văn xuất sắc đến mức xứng đáng được đưa vào sách giáo khoa — khen discours politique.", "example": "Le 'Je vous ai compris' du général de Gaulle à Alger, en 1958, est un morceau d'anthologie de l'ambiguïté politique assumée."}
-    ],
-    "exercises": [
-      {"type": "fill-blank", "question": "Le discours politique est un acte ___ qui institue le locuteur en représentant de la nation.", "answer": "performatif"},
-      {"type": "matching", "pairs": [["une anaphore", "phép điệp ngữ đầu câu"], ["l'allocution", "bài phát biểu chính thức"], ["le clivage", "sự chia rẽ / phân tuyến"], ["l'éloquence", "tài hùng biện"]], "instruction": "Nối thuật ngữ phân tích diễn ngôn với nghĩa Việt"},
-      {"type": "translation", "vietnamese": "Phân tích diễn ngôn chính trị đòi hỏi chú ý ít hơn đến nội dung hiển ngôn mà nhiều hơn đến các dấu hiệu hình thức: đại từ, thì động từ, các hình thái tu từ.", "french": "L'analyse du discours politique exige qu'on prête attention moins au contenu explicite qu'aux marqueurs formels: les pronoms, les temps verbaux, les figures de rhétorique."}
-    ]
-  }  ,
-  {
-    "id": "lrhet_dissertation_philo",
-    "level": "C2", "category": "rhetoric_capstone",
-    "title_vi": "Dissertation philosophique — viết luận triết học",
-    "title_en": "Philosophical dissertation — writing the French dissertation",
-    "sentences": [
-      {"en": "La dissertation philosophique, telle que l'épreuve du baccalauréat puis celle de l'agrégation l'ont consacrée, n'est pas un exercice d'opinion — elle est l'art de construire un problème et d'en déployer les implications selon une architecture argumentative rigoureuse.", "vi": "Dissertation triết học, như kỳ thi tú tài rồi agrégation đã thánh hóa, không phải là bài tập nêu ý kiến — đó là nghệ thuật kiến tạo một vấn đề và triển khai các hệ quả của nó theo một kiến trúc lập luận nghiêm ngặt.", "pronunciation_focus": ["dissertation → di-sèr-ta-sion", "baccalauréat → ba-ka-lo-ré-a", "agrégation → a-gré-ga-sion", "argumentative → ar-gu-mãn-ta-tiv"]},
-      {"en": "Loin de se réduire à la formule scolaire 'thèse-antithèse-synthèse', la dissertation digne de ce nom exige qu'on problématise — c'est-à-dire qu'on transforme une question apparente en un problème conceptuel dont les termes mêmes sont à interroger.", "vi": "Khác hẳn việc quy giảm thành công thức học đường 'chính đề - phản đề - hợp đề', dissertation xứng đáng với tên gọi đòi hỏi phải đặt vấn đề hóa — nghĩa là biến một câu hỏi bề ngoài thành một vấn đề khái niệm mà chính các thuật ngữ của nó cũng phải được chất vấn.", "pronunciation_focus": ["thèse → tèz", "antithèse → ãn-ti-tèz", "problématiser → pro-blé-ma-ti-zé", "conceptuel → kõn-sèp-tu-èl"]},
-      {"en": "Il eût été préférable que le candidat commençât par définir les termes du sujet — car c'est dans l'écart entre le sens commun et le sens philosophique d'un mot que le problème prend naissance.", "vi": "Sẽ tốt hơn nếu thí sinh bắt đầu bằng cách định nghĩa các thuật ngữ của đề bài — vì chính trong khoảng cách giữa nghĩa thông thường và nghĩa triết học của một từ mà vấn đề nảy sinh.", "pronunciation_focus": ["eût → u", "commençât → ko-mãn-sa", "écart → é-kar", "naissance → nè-sãns"]},
-      {"en": "Une transition digne de ce nom ne se contente pas d'annoncer la partie suivante — elle montre en quoi la partie qu'on achève rend nécessaire la partie qui vient.", "vi": "Một chuyển đoạn xứng đáng với tên gọi không bằng lòng với việc thông báo phần tiếp theo — nó chỉ ra vì sao phần ta vừa kết thúc khiến cho phần sắp tới trở nên tất yếu.", "pronunciation_focus": ["transition → trãn-zi-sion", "annoncer → a-nõn-sé", "achève → a-shèv", "nécessaire → né-sé-sèr"]},
-      {"en": "Conclure, ce n'est pas répéter ce qu'on a dit; c'est montrer le chemin parcouru et indiquer, fût-ce d'un mot, ce que ce chemin ouvre comme question nouvelle.", "vi": "Kết luận, không phải là lặp lại điều đã nói; mà là chỉ ra con đường đã đi và cho thấy, dù chỉ một từ, con đường đó mở ra câu hỏi mới nào.", "pronunciation_focus": ["conclure → kõn-klur", "parcouru → par-ku-ru", "fût-ce → fus", "ouvre → u-vrơ"]}
-    ],
-    "cultural_notes_vi": "DISSERTATION PHILOSOPHIQUE — THỂ LOẠI PHÁP ĐỘC ĐÁO:\n\n(1) Đây là bài tập trung tâm của giáo dục Pháp từ lớp 12 (Terminale) đến agrégation. Không nước nào khác có thể loại tương đương — essay Anh-Mỹ tự do hơn, Aufsatz Đức ít structure hơn.\n\n(2) CẤU TRÚC CHUẨN:\n- Introduction (3 parties): (a) accroche, (b) problématisation, (c) annonce du plan\n- Développement (2-3 parties), mỗi partie có 2-3 sous-parties\n- Conclusion (2 parties): (a) bilan, (b) ouverture\n\n(3) 'THÈSE-ANTITHÈSE-SYNTHÈSE' LÀ HIỂU LẦM: Công thức này là simplification pédagogique. Dissertation triết học thực sự có thể có 2, 3 hoặc 4 parties — điều quan trọng là progression argumentative, không phải dialectique mécanique.\n\n(4) PROBLÉMATISER: Động từ quan trọng nhất. Biến 'La liberté existe-t-elle?' thành 'À quelles conditions un acte peut-il être dit libre?' — đó là problématiser.\n\n(5) TIÊU CHÍ CHẤM:\n- Compréhension du sujet (không hors-sujet)\n- Cohérence argumentative (các phần liên kết)\n- Mobilisation philosophique (références, concepts)\n- Qualité de l'écriture (clarté, précision, élégance)\n\n(6) LƯU Ý CHO NGƯỜI VIỆT: VN có truyền thống 'nghị luận' nhưng dissertation Pháp khác ở chỗ: (a) không dùng 'tôi', (b) không kể chuyện cá nhân, (c) phải có problématique explicite, (d) conclusion không 'rút ra bài học đạo đức'.",
-    "tip_advice_vi": "MÉTHODE EN 6 ÉTAPES (cho dissertation 4 giờ):\n\n1. ANALYSE DU SUJET (30 min): Définir chaque terme. Repérer les présupposés. 'La liberté consiste-t-elle à faire ce qu'il nous plaît?' — le mot 'consiste' est crucial: il demande une définition de l'essence.\n\n2. PROBLÉMATISER (30 min): Transformer la question en problème. 'Cette question suppose que la liberté se définit par son objet (ce qu'on fait). Mais la liberté n'est-elle pas plutôt dans l'origine de l'acte que dans son contenu?'\n\n3. ÉLABORER LE PLAN (20 min): 2-3 parties. Chaque partie = une réponse possible à la problématique. Ordre: du plus évident (qu'il faut dépasser) au plus élaboré.\n\n4. RÉDIGER L'INTRODUCTION AU BROUILLON (20 min): Soigner l'accroche (une citation, un exemple, un paradoxe). La problématique tient en 2-3 phrases. L'annonce du plan doit être explicite: 'Nous verrons d'abord..., puis..., enfin...'\n\n5. RÉDIGER LE DÉVELOPPEMENT (120 min): Chaque partie = 1 argument principal + 1-2 arguments secondaires + 1 exemple philosophique + 1 transition. Toujours lier à la problématique.\n\n6. RÉDIGER LA CONCLUSION ET RELIRE (40 min): Conclusion: synthèse + ouverture. Relire: orthographe, cohérence des transitions, hors-sujet?",
-    "vocabulary": [
-      {"word": "problématiser", "en": "to problematize", "vi": "đặt vấn đề hóa", "pos": "v.", "pronunciation_vi": "pro-blé-ma-ti-zé"},
-      {"word": "une accroche", "en": "a hook / opening sentence", "vi": "câu móc / câu vào bài", "pos": "n.f.", "pronunciation_vi": "a-krosh"},
-      {"word": "une transition", "en": "a transition between parts", "vi": "chuyển đoạn", "pos": "n.f.", "pronunciation_vi": "trãn-zi-sion"},
-      {"word": "un présupposé", "en": "a presupposition", "vi": "tiền giả định", "pos": "n.m.", "pronunciation_vi": "pré-su-po-zé"},
-      {"word": "la progression argumentative", "en": "argumentative progression", "vi": "tiến trình lập luận", "pos": "n.f.", "pronunciation_vi": "pro-grè-sion ar-gu-mãn-ta-tiv"},
-      {"word": "une objection", "en": "an objection", "vi": "phản bác / bác luận", "pos": "n.f.", "pronunciation_vi": "ob-jèk-sion"},
-      {"word": "une réfutation", "en": "a refutation", "vi": "sự bác bỏ", "pos": "n.f.", "pronunciation_vi": "ré-fu-ta-sion"},
-      {"word": "un concept", "en": "a concept", "vi": "khái niệm", "pos": "n.m.", "pronunciation_vi": "kõn-sèp"},
-      {"word": "une ouverture", "en": "an opening / concluding opening", "vi": "phần mở ra cuối bài", "pos": "n.f.", "pronunciation_vi": "u-vèr-tur"},
-      {"word": "le hors-sujet", "en": "off-topic (cardinal sin)", "vi": "lạc đề", "pos": "n.m.", "pronunciation_vi": "or-su-jè"}
-    ],
-    "dialogue": [
-      {"speaker": "Professeur", "text": "Votre dissertation sur la liberté est bien écrite, mais où est la problématique?", "vi": "Bài dissertation về tự do của em viết tốt, nhưng problématique đâu?"},
-      {"speaker": "Linh", "text": "J'ai pensé que la question 'La liberté consiste-t-elle à faire ce qu'il nous plaît?' était déjà une problématique.", "vi": "Em tưởng câu hỏi 'Tự do có phải là làm điều ta thích không?' đã là một problématique."},
-      {"speaker": "Professeur", "text": "Non — une question n'est pas une problématique. La problématique, c'est le conflit des réponses possibles à cette question. Reformulez.", "vi": "Không — câu hỏi không phải là problématique. Problématique là sự xung đột giữa các câu trả lời khả dĩ cho câu hỏi đó. Làm lại."},
-      {"speaker": "Linh", "text": "Donc: 'Si la liberté se définit par l'absence de contrainte, faire ce qu'il nous plaît serait libre. Mais si la liberté suppose la maîtrise rationnelle de soi, alors céder à ses plaisirs pourrait être une forme d'esclavage.' Est-ce une problématique?", "vi": "Vậy: 'Nếu tự do được định nghĩa bằng sự vắng mặt của cưỡng chế, thì làm điều ta thích sẽ là tự do. Nhưng nếu tự do giả định sự làm chủ lý tính đối với bản thân, thì chiều theo khoái lạc có thể là một dạng nô lệ.' Đây có phải là problématique không?"}
-    ],
-    "dialogue_long": [
-      {"speaker": "Jury d'agrégation", "text": "Mademoiselle Tran, vous avez quatre heures pour traiter le sujet suivant: 'Peut-on penser sans préjugés?'", "vi": "Cô Trần, cô có bốn giờ để xử lý đề bài sau: 'Có thể suy nghĩ mà không có định kiến không?'"}
-    ],
-    "roleplay_prompts": [
-      "Bạn viết introduction cho dissertation với đề: 'La technique libère-t-elle l'homme ou l'asservit-elle?' Cấu trúc: accroche (1 citation), problématisation (conflit), annonce du plan (3 parties). KHÔNG répondre à la question dans l'introduction.",
-      "Trong khóa préparation agrégation, bạn bị critique: 'Votre plan est trop descriptif, pas assez dialectique.' Sửa plan: biến mỗi partie thành một réponse argumentée, pas một thème."
-    ],
-    "register_notes": "DISSERTATION PHILOSOPHIQUE C2:\n- 'Nous' (pas 'je'): 'Nous nous demanderons si...', 'Nous analyserons...'\n- Présent de vérité générale: 'La liberté se définit comme...'\n- Conditionnel cho giả thuyết: 'On pourrait objecter que...'\n- Connecteurs logiques obligatoires: 'cependant', 'néanmoins', 'toutefois', 'en revanche', 'par conséquent', 'dès lors'\n- Citation intégrée: 'Comme l'écrit Kant dans les Fondements de la métaphysique des mœurs...'\n- Pas de 'je', pas d'anecdote personnelle, pas de 'de nos jours...'",
-    "idiom_glosses": [],
-    "exercises": [
-      {"type": "fill-blank", "question": "Problématiser, c'est transformer une question apparente en un ___ conceptuel.", "answer": "problème"},
-      {"type": "matching", "pairs": [["problématiser", "đặt vấn đề hóa"], ["une accroche", "câu mở đầu"], ["le hors-sujet", "lạc đề"], ["une transition", "chuyển đoạn"]], "instruction": "Nối thuật ngữ dissertation với nghĩa"},
-      {"type": "translation", "vietnamese": "Kết luận không phải là lặp lại điều đã nói, mà là chỉ ra con đường đã đi và cho thấy con đường đó mở ra câu hỏi mới nào.", "french": "Conclure, ce n'est pas répéter ce qu'on a dit; c'est montrer le chemin parcouru et indiquer ce que ce chemin ouvre comme question nouvelle."}
-    ]
-  },
-  {
-    "id": "lrhet_grand_oral",
-    "level": "C2", "category": "rhetoric_capstone",
-    "title_vi": "Grand oral — soutenance và hùng biện học thuật",
-    "title_en": "Grand oral — academic defense and oral rhetoric",
-    "sentences": [
-      {"en": "La soutenance de thèse, moment culminant du parcours doctoral, n'est pas un simple compte rendu de recherche — c'est une performance rhétorique où le candidat doit à la fois exposer, défendre et incarner son travail devant un jury qui en connaît parfois mieux les faiblesses que lui-même.", "vi": "Buổi bảo vệ luận án, khoảnh khắc đỉnh cao của hành trình tiến sĩ, không phải là bản tường trình nghiên cứu đơn giản — đó là một trình diễn tu từ nơi nghiên cứu sinh phải đồng thời trình bày, bảo vệ và hiện thân cho công trình của mình trước hội đồng đôi khi biết rõ điểm yếu của nó hơn chính mình.", "pronunciation_focus": ["soutenance → su-tơ-nãns", "culminant → kul-mi-nãn", "incarner → an-kar-né", "faiblesses → fè-bles"]},
-      {"en": "L'art du grand oral ne consiste pas à nier les objections, mais à les intégrer dans une perspective plus large qui en montre à la fois la pertinence et les limites.", "vi": "Nghệ thuật grand oral không nằm ở việc phủ nhận các phản bác, mà ở việc tích hợp chúng vào một viễn tượng rộng hơn, cho thấy đồng thời tính thích đáng và giới hạn của chúng.", "pronunciation_focus": ["objections → ob-jèk-sion", "intégrer → an-té-gré", "perspective → pèr-spèk-tiv", "pertinence → pèr-ti-nãns"]},
-      {"en": "Force est de constater que la qualité d'une soutenance se joue souvent moins dans les réponses que dans la manière de recevoir les questions: une écoute attentive, une reformulation fidèle, puis une réponse argumentée — cette séquence vaut tous les effets de manche.", "vi": "Phải thừa nhận rằng chất lượng của một buổi bảo vệ thường được quyết định ít ở các câu trả lời hơn là ở cách tiếp nhận câu hỏi: một sự lắng nghe chăm chú, một sự diễn đạt lại trung thành, rồi một câu trả lời có lập luận — chuỗi này đáng giá hơn mọi hiệu ứng khoa trương.", "pronunciation_focus": ["soutenance → su-tơ-nãns", "écoute → é-kut", "reformulation → rơ-for-mu-la-sion", "fidèle → fi-dèl"]}
-    ],
-    "cultural_notes_vi": "LA SOUTENANCE FRANÇAISE:\n\n(1) Khác với defense Anh-Mỹ (thường ngắn, 1-2 giờ, ít formel), soutenance Pháp là nghi lễ học thuật — có thể kéo dài 3-5 giờ, mở cửa cho công chúng, kết thúc bằng mention (très honorable, très honorable avec félicitations).\n\n(2) CẤU TRÚC: (a) Exposé du candidat (20-30 min), (b) Questions du jury (mỗi thành viên 15-30 min), (c) Délibération, (d) Proclamation.\n\n(3) MENTIONS: 'Honorable' (đỗ tối thiểu), 'Très honorable' (tốt), 'Très honorable avec félicitations' (xuất sắc — hiếm).\n\n(4) GRAND ORAL D'AGRÉGATION: Bài thi miệng 1 giờ (30 phút exposé + 30 phút questions). Khác soutenance ở chỗ: sujet inconnu à l'avance, préparation en loge (bibliothèque).\n\n(5) CHIẾN LƯỢC: Người Pháp đánh giá cao 'l'honnêteté intellectuelle' — nếu không biết, nói 'Je ne sais pas' tốt hơn là bluffer. Bluffer bị phát hiện = mất tất cả.",
-    "tip_advice_vi": "PRÉPARER UN GRAND ORAL (10 CONSEILS):\n\n1. CONNAÎTRE SES LIMITES: Biết điểm yếu của mình trước khi jury tìm ra.\n2. STRUCTURER L'EXPOSÉ: Introduction (pourquoi ce sujet, quelle thèse, quel plan), développement (3 points max), conclusion (ouverture).\n3. PARLER LENTEMENT: 120 mots / minute tối đa.\n4. REGARDER LE JURY: Pas lire ses notes.\n5. REFORMULER LA QUESTION avant de répondre — montre qu'on a compris, gagne du temps.\n6. AVOUER L'IGNORANCE: 'Je n'ai pas exploré cet aspect, mais...'\n7. MONTRER LE CHEMINEMENT: 'Au début de ma thèse, je pensais X; maintenant, je pense Y.'\n8. CITER LE JURY: 'Comme l'a montré le Professeur X, membre de ce jury...' — déférence stratégique.\n9. GÉRER LE TRAC: Respirer avant chaque réponse.\n10. CONCLURE AVEC DIGNITÉ: Remercier le jury, reconnaître ce qu'on a appris.",
-    "vocabulary": [
-      {"word": "la soutenance", "en": "thesis defense", "vi": "buổi bảo vệ luận án", "pos": "n.f.", "pronunciation_vi": "su-tơ-nãns"},
-      {"word": "le jury", "en": "the examining committee", "vi": "hội đồng chấm thi", "pos": "n.m.", "pronunciation_vi": "ju-ri"},
-      {"word": "un exposé", "en": "an oral presentation", "vi": "bài trình bày miệng", "pos": "n.m.", "pronunciation_vi": "èk-spo-zé"},
-      {"word": "la délibération", "en": "the deliberation (of the jury)", "vi": "sự nghị bàn của hội đồng", "pos": "n.f.", "pronunciation_vi": "dé-li-bé-ra-sion"},
-      {"word": "une mention", "en": "a grade / distinction", "vi": "xếp hạng / danh dự", "pos": "n.f.", "pronunciation_vi": "mãn-sion"},
-      {"word": "une objection", "en": "an objection", "vi": "phản bác", "pos": "n.f.", "pronunciation_vi": "ob-jèk-sion"},
-      {"word": "un rapporteur", "en": "a reviewer / rapporteur", "vi": "người phản biện / báo cáo viên", "pos": "n.m.", "pronunciation_vi": "ra-por-tơr"},
-      {"word": "le directeur de thèse", "en": "thesis advisor", "vi": "người hướng dẫn luận án", "pos": "n.m.", "pronunciation_vi": "di-rèk-tơr dơ tèz"},
-      {"word": "la loge", "en": "the preparation room (agrégation)", "vi": "phòng chuẩn bị thi", "pos": "n.f.", "pronunciation_vi": "loj"},
-      {"word": "les félicitations", "en": "congratulations (highest distinction)", "vi": "lời khen tặng (danh dự cao nhất)", "pos": "n.f. pl.", "pronunciation_vi": "fé-li-si-ta-sion"}
-    ],
-    "dialogue": [
-      {"speaker": "Jury", "text": "Vous affirmez que votre thèse comble une lacune. Mais l'ouvrage de Martin (2019), que vous ne citez pas, traite exactement de cette question. Que répondez-vous?", "vi": "Bà khẳng định luận án của bà lấp một khoảng trống. Nhưng công trình của Martin (2019), mà bà không trích dẫn, bàn chính xác về câu hỏi này. Bà trả lời sao?"},
-      {"speaker": "Linh", "text": "Je vous remercie de cette référence que je ne connaissais pas. Si vous me le permettez, je répondrai en deux temps: d'abord, je reconnais cette lacune bibliographique — c'est une faiblesse de mon travail. Ensuite, je précise que ma thèse aborde la question sous un angle différent, celui de..., qui me semble complémentaire plutôt que redondant.", "vi": "Tôi cảm ơn thầy về tham khảo mà tôi chưa biết. Nếu thầy cho phép, tôi xin trả lời hai bước: trước, tôi thừa nhận khoảng trống thư mục này — đó là điểm yếu của công trình tôi. Sau, tôi xin nói rõ luận án tôi tiếp cận câu hỏi từ một góc khác, góc của..., mà tôi thấy là bổ sung chứ không trùng lặp."}
-    ],
-    "dialogue_long": [
-      {"speaker": "Président du jury", "text": "Madame Tran, vous avez quarante-cinq minutes pour présenter votre thèse. Nous vous écoutons.", "vi": "Bà Trần, bà có bốn mươi lăm phút để trình bày luận án. Chúng tôi lắng nghe bà."}
-    ],
-    "roleplay_prompts": [
-      "Bạn đang soutenance. Jury hỏi: 'Quelle est la principale limite de votre travail?' Trả lời: nêu 1 giới hạn thực, giải thích tại sao bạn chấp nhận nó, và cho thấy bạn đã làm gì để giảm thiểu. Cấu trúc: 'La principale limite... J'en suis conscient(e)... Pour y remédier, j'ai...'",
-      "Préparer exposé 20 phút cho soutenance de thèse (sujet tự chọn). Cấu trúc: (1) Pourquoi ce sujet, (2) Thèse principale, (3) Trois résultats clés, (4) Limites et perspectives. Pas de détails — synthèse."
-    ],
-    "register_notes": "GRAND ORAL C2: Tutoiement = jamais. Vouvoyer chaque membre du jury. Formules: 'Monsieur le Président, Mesdames et Messieurs les membres du jury'. Khi ne sait pas: 'Cette question touche à une limite de mon travail que je n'ai pas encore explorée'. Khi remercie: 'Je tiens à remercier mon directeur de thèse, le Professeur X, sans qui...' TON: humble mais pas servile. Compétent mais pas arrogant.",
-    "idiom_glosses": [],
-    "exercises": [
-      {"type": "fill-blank", "question": "L'art du grand oral ne consiste pas à nier les ___, mais à les intégrer dans une perspective plus large.", "answer": "objections"},
-      {"type": "matching", "pairs": [["la soutenance", "buổi bảo vệ luận án"], ["le jury", "hội đồng chấm thi"], ["un exposé", "bài trình bày miệng"], ["les félicitations", "danh dự cao nhất"]], "instruction": "Nối thuật ngữ grand oral với nghĩa Việt"},
-      {"type": "translation", "vietnamese": "Chất lượng của một buổi bảo vệ thường được quyết định ít ở các câu trả lời hơn là ở cách tiếp nhận câu hỏi.", "french": "La qualité d'une soutenance se joue souvent moins dans les réponses que dans la manière de recevoir les questions."}
-    ]
-  },
-  {
-    "id": "lrhet_philosophie_abstraite",
-    "level": "C2",
-    "category": "rhetoric_capstone",
-    "title_vi": "Lập luận triết học và tư duy trừu tượng",
-    "title_en": "Philosophical reasoning and abstract thought",
-    "sentences": [
-      {"en": "La philosophie, entendue non comme doctrine mais comme activité de clarification conceptuelle, exige qu'on distingue les plans du discours — logique, épistémologique, ontologique — sous peine de confondre une question de fait avec une question de droit.", "vi": "Triết học, được hiểu không như học thuyết mà như hoạt động làm sáng tỏ khái niệm, đòi hỏi phân biệt các bình diện diễn ngôn — logic, nhận thức luận, bản thể luận — nếu không sẽ nhầm lẫn câu hỏi thực tế với câu hỏi về quyền.", "pronunciation_focus": ["épistémologique → é-pis-té-mo-lo-jik", "ontologique → õn-to-lo-jik", "discours → dis-kur", "confondre → kõn-fõn-drơ"]},
-      {"en": "Un argument transcendantal, au sens kantien, ne démontre pas que X existe, mais que X est la condition de possibilité de Y — et puisque Y est donné, X doit être tenu pour vrai.", "vi": "Một lập luận siêu nghiệm, theo nghĩa Kant, không chứng minh rằng X tồn tại, mà rằng X là điều kiện khả thể của Y — và vì Y đã được cho, X phải được coi là đúng.", "pronunciation_focus": ["transcendantal → trãn-sãn-dãn-tal", "kantien → kãn-siãn", "condition → kõn-di-sion", "possibilité → po-si-bi-li-té"]},
-      {"en": "Il eût été plus rigoureux de reformuler l'objection sous forme de dilemme: soit le concept de liberté est vide, soit il est contradictoire — dans les deux cas, la thèse adverse s'effondre.", "vi": "Sẽ chặt chẽ hơn nếu tái lập công thức phản bác dưới dạng song đề: hoặc khái niệm tự do là trống rỗng, hoặc nó mâu thuẫn — trong cả hai trường hợp, luận đề đối phương sụp đổ.", "pronunciation_focus": ["rigoureux → ri-gu-rơ", "dilemme → di-lèm", "contradictoire → kõn-tra-dik-toar", "s'effondre → sé-fõn-drơ"]},
-      {"en": "L'abstraction n'est pas une fuite hors du réel — elle est la condition même de l'intelligence du réel, car c'est en s'élevant au concept que l'on saisit ce que les cas particuliers ont en commun.", "vi": "Sự trừu tượng không phải là sự trốn chạy khỏi thực tại — nó là chính điều kiện của sự thông hiểu thực tại, vì chính khi nâng lên khái niệm ta mới nắm bắt được điều các trường hợp cá biệt có chung.", "pronunciation_focus": ["abstraction → abs-trak-sion", "intelligence → an-tè-li-jãns", "concept → kõn-sèp", "particuliers → par-ti-ku-lié"]},
-      {"en": "Un séminaire de philosophie digne de ce nom n'attend pas qu'on répète les auteurs — il attend qu'on pense avec eux, c'est-à-dire qu'on prolonge leur geste au-delà du texte qu'ils ont laissé.", "vi": "Một séminaire triết học xứng đáng với tên gọi không chờ đợi ta lặp lại các tác giả — nó chờ đợi ta suy nghĩ cùng với họ, nghĩa là kéo dài cử chỉ của họ vượt ra ngoài văn bản họ đã để lại.", "pronunciation_focus": ["séminaire → sé-mi-nèr", "répète → ré-pèt", "prolonge → pro-lõnj", "geste → jest"]}
-    ],
-    "cultural_notes_vi": "LẬP LUẬN TRIẾT HỌC TRONG TRUYỀN THỐNG PHÁP:\n\n(1) ARGUMENT TRANSCENDANTAL: Kant, dans la Critique de la raison pure (1781), inaugure cette forme de raisonnement: partir d'un fait donné (la science, la morale) et remonter à ses conditions de possibilité. En France, cette méthode est reprise et transformée par Deleuze (Différence et répétition, 1968) et Foucault (Les Mots et les Choses, 1966).\n\n(2) DISTINCTION DES PLANS: Une erreur classique de l'étudiant est de confondre le plan logique (la cohérence interne d'un argument), le plan épistémologique (la validité de la connaissance), et le plan ontologique (ce qui existe réellement). Exemple: 'Dieu existe parce que l'idée de Dieu est claire et distincte' confond ontologie et épistémologie.\n\n(3) DILEMME COMME OUTIL: Le dilemme est une figure de réfutation puissante: on montre que l'adversaire est pris entre deux possibilités, toutes deux fatales à sa thèse. Exemple classique: le dilemme de l'Euthyphron (Platon) — 'Ce qui est pieux est-il aimé des dieux parce qu'il est pieux, ou est-il pieux parce qu'il est aimé des dieux?'\n\n(4) ABSTRACTION VS GÉNÉRALISATION: L'abstraction philosophique n'est pas la généralisation empirique ('tous les cygnes sont blancs'). L'abstraction conceptuelle saisit l'essence: 'Qu'est-ce qu'un cygne?' La première est inductive et faillible; la seconde est eidétique et nécessaire.\n\n(5) PHILOSOPHER EN FRANÇAIS: La tradition française valorise la clarté conceptuelle (Descartes, 'les idées claires et distinctes') et la distinction des ordres (Pascal, 'distinguer les ordres'). Un philosophe français qui écrit de façon obscure sera critiqué non pour sa profondeur mais pour son manque de rigueur.\n\n(6) BERGSON (1859-1941): Prix Nobel de littérature 1927. Sa méthode: partir de l'intuition concrète (la durée, le rire, le souvenir) pour construire des concepts qui épousent le réel au lieu de le découper artificiellement. Modèle de philosophie écrite en français littéraire.",
-    "tip_advice_vi": "MÉTHODE POUR UNE DISSERTATION DE PHILOSOPHIE ABSTRAITE (4 heures):\n\n1. ANALYSE CONCEPTUELLE (45 min): Définir chaque terme du sujet. Distinguer les sens (sens commun, sens technique, sens philosophique). Identifier les présupposés cachés.\n\n2. CONSTRUCTION DU PROBLÈME (30 min): Ne pas chercher une 'réponse' mais formuler le problème de façon à montrer pourquoi il est insoluble dans les termes où il est posé. Un bon problème philosophique est un problème dont la formulation même est l'enjeu.\n\n3. ARGUMENTATION (120 min):\n- Arguments directs: déduction, modus ponens, modus tollens\n- Arguments indirects: dilemme, réduction à l'absurde, argument transcendantal\n- Contre-arguments: objections qu'on se fait à soi-même avant de les réfuter\n- Exemples: un exemple philosophique n'est pas une anecdote, c'est une expérience de pensée (le voile d'ignorance de Rawls, la chambre chinoise de Searle)\n\n4. RÉDACTION (45 min):\n- Clarté cartésienne: chaque paragraphe = une idée\n- Connecteurs logiques: 'or', 'donc', 'cependant', 'néanmoins', 'en effet'\n- Citations intégrées, pas plaquées: 'Comme l'écrit Kant...' et non 'Kant a dit que...'\n\nCỤM HỮU ÍCH:\n- 'Il importe de distinguer...' (cần phân biệt)\n- 'Ce n'est pas une question de fait, mais une question de droit.'\n- 'La thèse adverse se heurte au dilemme suivant: soit..., soit...'\n- 'Cette objection, pour sérieuse qu'elle soit, ne résiste pas à l'examen.'\n- 'L'argument transcendantal consiste à montrer que...'\n\nTRÁNH:\n- 'À mon avis...' → la philosophie n'est pas une affaire d'opinion\n- 'De tout temps, les hommes...' → généralité vide\n- 'Comme le dit le dictionnaire...' → la définition lexicographique n'est pas l'analyse conceptuelle\n- Citer sans expliquer: une citation n'est pas un argument",
-    "vocabulary": [
-      {"word": "un argument transcendantal", "en": "a transcendental argument", "vi": "lập luận siêu nghiệm", "pos": "n.m.", "pronunciation_vi": "ar-gu-mãn trãn-sãn-dãn-tal"},
-      {"word": "un dilemme", "en": "a dilemma", "vi": "song đề / thế lưỡng nan", "pos": "n.m.", "pronunciation_vi": "di-lèm"},
-      {"word": "le plan épistémologique", "en": "the epistemological level", "vi": "bình diện nhận thức luận", "pos": "n.m.", "pronunciation_vi": "plãn é-pis-té-mo-lo-jik"},
-      {"word": "le plan ontologique", "en": "the ontological level", "vi": "bình diện bản thể luận", "pos": "n.m.", "pronunciation_vi": "plãn õn-to-lo-jik"},
-      {"word": "une question de droit", "en": "a question of right / principle", "vi": "câu hỏi về nguyên lý (≠ thực tế)", "pos": "n.f.", "pronunciation_vi": "kès-tion dơ droa"},
-      {"word": "la clarification conceptuelle", "en": "conceptual clarification", "vi": "sự làm sáng tỏ khái niệm", "pos": "n.f.", "pronunciation_vi": "kla-ri-fi-ka-sion kõn-sèp-tu-èl"},
-      {"word": "un présupposé", "en": "a presupposition", "vi": "tiền giả định", "pos": "n.m.", "pronunciation_vi": "pré-su-po-zé"},
-      {"word": "une expérience de pensée", "en": "a thought experiment", "vi": "thí nghiệm tư duy", "pos": "n.f.", "pronunciation_vi": "èk-spé-ri-ãns dơ pãn-sé"},
-      {"word": "la réduction à l'absurde", "en": "reductio ad absurdum", "vi": "phép quy giản về phi lý", "pos": "n.f.", "pronunciation_vi": "ré-duk-sion a lap-surd"},
-      {"word": "eidétique", "en": "eidetic (pertaining to essence)", "vi": "thuộc về bản chất (Husserl)", "pos": "adj.", "pronunciation_vi": "é-i-dé-tik"}
-    ],
-    "dialogue": [
-      {"speaker": "Étudiant", "text": "Comment distinguer un argument transcendantal d'un argument logique ordinaire?", "vi": "Làm sao phân biệt lập luận siêu nghiệm với lập luận logic thông thường?"},
-      {"speaker": "Professeur", "text": "L'argument logique ordinaire déduit une conclusion de prémisses. L'argument transcendantal remonte de la conclusion — qui est un fait indubitable — à ses conditions de possibilité. Le mouvement est inverse.", "vi": "Lập luận logic thông thường suy diễn kết luận từ tiền đề. Lập luận siêu nghiệm đi ngược từ kết luận — là một sự kiện không thể nghi ngờ — đến các điều kiện khả thể của nó. Chuyển động là ngược lại."},
-      {"speaker": "Étudiant", "text": "Pouvez-vous donner un exemple concret?", "vi": "Thầy có thể cho một ví dụ cụ thể không?"},
-      {"speaker": "Professeur", "text": "Kant: la science newtonienne existe — c'est un fait. Comment est-elle possible? Réponse: parce que l'entendement humain impose ses catégories a priori à l'expérience. L'argument ne prouve pas que les catégories existent; il montre qu'elles sont requises pour que la science soit possible.", "vi": "Kant: khoa học Newton tồn tại — đó là một sự kiện. Làm sao nó khả thể? Trả lời: vì giác tính con người áp đặt các phạm trù tiên nghiệm lên kinh nghiệm. Lập luận không chứng minh các phạm trù tồn tại; nó cho thấy chúng được đòi hỏi để khoa học khả thể."}
-    ],
-    "dialogue_long": [
-      {"speaker": "Prof. Renault (séminaire de philosophie, ENS)", "text": "Mademoiselle Tran, vous avez choisi de travailler sur le concept de croyance chez Wittgenstein. Quelle est votre thèse?", "vi": "Cô Trần, cô đã chọn làm việc về khái niệm niềm tin ở Wittgenstein. Luận đề của cô là gì?"},
-      {"speaker": "Linh", "text": "Je soutiens que Wittgenstein, dans De la certitude, opère un déplacement du problème de la croyance: il ne s'agit plus de justifier nos croyances une par une, mais de décrire le système de croyances qui rend possible toute justification.", "vi": "Tôi chủ trương rằng Wittgenstein, trong De la certitude, thực hiện một sự dịch chuyển vấn đề niềm tin: không còn là biện minh từng niềm tin một, mà là mô tả hệ thống niềm tin khiến mọi sự biện minh trở nên khả thể."},
-      {"speaker": "Prof. Renault", "text": "C'est une lecture transcendantale de Wittgenstein. Assumez-vous ce terme?", "vi": "Đó là một cách đọc siêu nghiệm Wittgenstein. Cô có nhận thuật ngữ đó không?"},
-      {"speaker": "Linh", "text": "Je l'assume, mais avec une nuance: là où Kant cherche les conditions de possibilité de l'expérience, Wittgenstein cherche les conditions de possibilité du doute. On ne peut douter de tout à la fois — certaines certitudes doivent rester en place pour que le doute ait un sens. C'est ce sol que j'appelle 'le transcendantal wittgensteinien'.", "vi": "Tôi nhận, nhưng với một sắc thái: chỗ Kant tìm các điều kiện khả thể của kinh nghiệm, Wittgenstein tìm các điều kiện khả thể của sự nghi ngờ. Ta không thể nghi ngờ mọi thứ cùng một lúc — một số xác tín phải ở nguyên chỗ để sự nghi ngờ có nghĩa. Chính nền đất đó tôi gọi là 'cái siêu nghiệm Wittgenstein'."}
-    ],
-    "roleplay_prompts": [
-      "Bạn defend luận điểm: 'L'abstraction n'est pas une fuite hors du réel — elle en est la condition d'intelligibilité.' Dùng ít nhất un exemple concret (mathématiques, physique, droit) và contrer l'objection 'l'abstraction est déconnectée de la vie'. Cấu trúc: concession + réfutation + exemple.",
-      "Trong séminaire, un étudiant affirme: 'La philosophie ne sert à rien.' Construisez une réponse en deux temps: (1) distinguer 'servir à' (utilitaire) et 'donner sens à' (existentiel); (2) montrer que la question 'à quoi sert X?' présuppose un cadre utilitariste qui n'est pas le seul possible."
-    ],
-    "register_notes": "PHILOSOPHIE ABSTRAITE C2: 'Nous' académique obligatoire. Présent de vérité générale. Conditionnel pour hypothèses. Connecteurs: 'or', 'donc', 'cependant', 'néanmoins', 'en effet', 'dès lors', 'par conséquent'. Citations intégrées avec 'comme l'écrit X...'. Distinguer les plans explicitement: 'sur le plan logique...', 'd'un point de vue épistémologique...'. Pas de 'je', pas d'anecdote personnelle. Éviter 'à mon avis', 'je pense que'.",
-    "idiom_glosses": [
-      {"idiom": "Faire droit à", "literal": "Làm cho đúng / trao quyền cho", "meaning": "Reconnaître la légitimité de — en philo: 'faire droit à l'objection', 'faire droit à la complexité du réel'.", "example": "Une philosophie rigoureuse fait droit aux objections les plus fortes — elle ne les esquive pas, elle les affronte."}
-    ],
-    "exercises": [
-      {"type": "fill-blank", "question": "Un argument transcendantal ne démontre pas que X ___, mais que X est la condition de possibilité de Y.", "answer": "existe"},
-      {"type": "matching", "pairs": [["un dilemme", "song đề / thế lưỡng nan"], ["épistémologique", "thuộc nhận thức luận"], ["ontologique", "thuộc bản thể luận"], ["une question de droit", "câu hỏi về nguyên lý"]], "instruction": "Nối thuật ngữ triết học với nghĩa Việt"},
-      {"type": "translation", "vietnamese": "Sự trừu tượng không phải là trốn chạy khỏi thực tại — nó là chính điều kiện của sự thông hiểu thực tại.", "french": "L'abstraction n'est pas une fuite hors du réel — elle est la condition même de l'intelligence du réel."}
-    ]
-  },
-  {
-    "id": "lrhet_persuasion_rhetorique",
-    "level": "C2",
-    "category": "rhetoric_capstone",
-    "title_vi": "Lý thuyết thuyết phục và tu từ học cổ điển",
-    "title_en": "Persuasion theory and classical rhetoric",
-    "sentences": [
-      {"en": "La rhétorique, loin d'être un simple ornement du discours, constitue, depuis Aristote, une technique de la persuasion qui articule trois registres: le logos (l'argument), l'ethos (le caractère de l'orateur) et le pathos (l'émotion de l'auditoire).", "vi": "Tu từ học, khác hẳn một sự trang trí đơn giản của diễn ngôn, cấu thành, từ Aristote, một kỹ thuật thuyết phục khớp nối ba bình diện: logos (lập luận), ethos (tư cách người nói) và pathos (cảm xúc của cử tọa).", "pronunciation_focus": ["rhétorique → ré-to-rik", "Aristote → a-ris-tot", "logos → lo-gos", "pathos → pa-tos"]},
-      {"en": "Perelman, dans son Traité de l'argumentation (1958), a renouvelé la rhétorique en montrant que l'argumentation ne vise pas la vérité démonstrative mais l'adhésion des esprits — et que cette adhésion obéit à des règles qu'on peut analyser rationnellement.", "vi": "Perelman, trong Traité de l'argumentation (1958), đã đổi mới tu từ học bằng cách cho thấy lập luận không nhắm đến chân lý chứng minh mà nhắm đến sự tán thành của tinh thần — và sự tán thành này tuân theo các quy tắc có thể phân tích một cách lý tính.", "pronunciation_focus": ["Perelman → pơ-rel-man", "argumentation → ar-gu-mãn-ta-sion", "démonstrative → dé-mõns-tra-tiv", "adhésion → a-dé-zion"]},
-      {"en": "L'ethos n'est pas une qualité morale préexistante que l'orateur posséderait — il se construit dans le discours même, par les choix lexicaux, le ton, la capacité à anticiper les objections.", "vi": "Ethos không phải là một phẩm chất đạo đức có sẵn mà nhà hùng biện sở hữu — nó được kiến tạo trong chính diễn ngôn, qua các lựa chọn từ vựng, giọng điệu, khả năng tiên liệu các phản bác.", "pronunciation_focus": ["ethos → é-tos", "préexistante → pré-èg-zis-tãnt", "lexicaux → lèk-si-kô", "anticiper → ãn-ti-si-pé"]},
-      {"en": "Il eût été plus habile, dans cette plaidoirie, de concéder un point faible avant d'asséner l'argument principal — car une concession calculée désarme l'auditoire et renforce la crédibilité de ce qui suit.", "vi": "Sẽ khéo léo hơn, trong bài biện hộ này, nếu nhượng bộ một điểm yếu trước khi giáng lập luận chính — vì một sự nhượng bộ có tính toán tước vũ khí của cử tọa và củng cố độ tin cậy của điều tiếp theo.", "pronunciation_focus": ["plaidoirie → plè-do-a-ri", "concéder → kõn-sé-dé", "asséner → a-sé-né", "crédibilité → kré-di-bi-li-té"]},
-      {"en": "La Nouvelle Rhétorique de Perelman rompt avec la tradition cartésienne de l'évidence: elle rappelle que la plupart des décisions humaines — en droit, en politique, en morale — se prennent dans le domaine du vraisemblable, non du certain.", "vi": "Tân Tu từ học của Perelman đoạn tuyệt với truyền thống Cartesian về hiển nhiên: nó nhắc lại rằng hầu hết các quyết định của con người — trong luật, trong chính trị, trong đạo đức — được đưa ra trong lĩnh vực của cái có vẻ đúng, không phải của cái chắc chắn.", "pronunciation_focus": ["cartésienne → kar-té-zièn", "vraisemblable → vrè-sãn-blablơ", "domaine → do-mèn", "certain → sèr-tan"]}
-    ],
-    "cultural_notes_vi": "PERSUASION ET RHÉTORIQUE — TRUYỀN THỐNG PHÁP:\n\n(1) ARISTOTE (384-322 ACN): Rhétorique — le livre fondateur. Distinction célèbre: logos (l'argument lui-même), ethos (le caractère que l'orateur projette), pathos (l'émotion suscitée chez l'auditoire). Ces trois piliers restent valables aujourd'hui.\n\n(2) PERELMAN (1912-1984): philosophe belge d'expression française. Avec Lucie Olbrechts-Tyteca, il publie le Traité de l'argumentation (1958) qui réhabilite la rhétorique après des siècles de discrédit cartésien. Thèse centrale: l'argumentation vise l'adhésion, non la démonstration; elle s'adresse à un auditoire particulier, non à une raison universelle.\n\n(3) DISCARTES VS RHÉTORIQUE: Descartes (Discours de la méthode, 1637) a voulu fonder la connaissance sur l'évidence rationnelle, rejetant le vraisemblable comme insuffisant. La rhétorique, art du vraisemblable, a été marginalisée dans la tradition française jusqu'à Perelman.\n\n(4) BARTHES (1915-1980): 'L'ancienne rhétorique' (1970) — séminaire qui retrace l'histoire de la rhétorique de l'Antiquité au XIXe siècle. Utile pour comprendre pourquoi la rhétorique a disparu de l'enseignement français.\n\n(5) APPLICATIONS CONTEMPORAINES: La Nouvelle Rhétorique est utilisée en droit (argumentation juridique), en communication politique, en marketing éthique. Le point commun: il s'agit de convaincre un auditoire dans des situations où la preuve absolue est impossible.\n\n(6) TROIS ERREURS VIETNAMIENNES COURANTES:\n- Confondre 'convaincre' (logos) et 'persuader' (logos + ethos + pathos). En français, la distinction est importante.\n- Négliger l'ethos: un étudiant vietnamien qui écrit 'je pense que' sans construire sa crédibilité affaiblit son argument.\n- Abuser du pathos: l'émotion sans logos est de la manipulation, pas de la persuasion.",
-    "tip_advice_vi": "GRILLE D'ANALYSE D'UN DISCOURS PERSUASIF (inspirée de Perelman):\n\n1. LOGOS — l'argument:\n- Quels sont les arguments explicites?\n- Y a-t-il des arguments implicites (enthymèmes)?\n- L'argumentation est-elle déductive, inductive, ou par analogie?\n\n2. ETHOS — l'orateur:\n- Comment l'orateur construit-il sa crédibilité?\n- Quels pronoms utilise-t-il (je/nous/on)?\n- Comment anticipe-t-il les objections?\n\n3. PATHOS — l'auditoire:\n- Quelles émotions sont mobilisées (peur, espoir, indignation, fierté)?\n- L'auditoire est-il traité comme universel ou particulier?\n- Quelles valeurs sont présupposées partagées?\n\n4. STRUCTURE:\n- Exorde (captatio benevolentiae)\n- Narration (exposé des faits)\n- Argumentation (preuves + réfutation)\n- Péroraison (appel final)\n\nCỤM HỮU ÍCH POUR ANALYSER:\n- 'L'orateur construit son ethos en...'\n- 'Cet argument relève du logos, mais il est renforcé par un appel au pathos qui...'\n- 'La concession au début du paragraphe est une figure de l'ethos: elle montre que l'orateur est raisonnable.'\n- 'L'auditoire visé n'est pas universel — Perelman dirait qu'il s'agit d'un auditoire particulier.'",
-    "vocabulary": [
-      {"word": "le logos", "en": "logos — logical argument", "vi": "logos — lập luận logic", "pos": "n.m.", "pronunciation_vi": "lo-gos"},
-      {"word": "l'ethos", "en": "ethos — speaker's character", "vi": "ethos — tư cách người nói", "pos": "n.m.", "pronunciation_vi": "é-tos"},
-      {"word": "le pathos", "en": "pathos — emotional appeal", "vi": "pathos — kêu gọi cảm xúc", "pos": "n.m.", "pronunciation_vi": "pa-tos"},
-      {"word": "l'adhésion des esprits", "en": "the adherence of minds", "vi": "sự tán thành của tinh thần", "pos": "n.f.", "pronunciation_vi": "a-dé-zion dé-zè-spri"},
-      {"word": "un enthymème", "en": "an enthymeme (rhetorical syllogism)", "vi": "enthymème — tam đoạn luận tu từ", "pos": "n.m.", "pronunciation_vi": "ãn-ti-mèm"},
-      {"word": "la captatio benevolentiae", "en": "the capturing of goodwill", "vi": "chiếm lấy thiện cảm (mở đầu)", "pos": "n.f.", "pronunciation_vi": "kap-ta-sio bé-né-vo-lãn-si-é"},
-      {"word": "la péroraison", "en": "the peroration (closing appeal)", "vi": "lời kết thúc hùng biện", "pos": "n.f.", "pronunciation_vi": "pé-ro-rè-zon"},
-      {"word": "l'auditoire universel", "en": "the universal audience (Perelman)", "vi": "cử tọa phổ quát", "pos": "n.m.", "pronunciation_vi": "ô-di-toar u-ni-vèr-sèl"},
-      {"word": "le vraisemblable", "en": "the plausible / probable", "vi": "cái có vẻ đúng / khả tín", "pos": "n.m.", "pronunciation_vi": "vrè-sãn-blablơ"},
-      {"word": "une concession calculée", "en": "a calculated concession", "vi": "sự nhượng bộ có tính toán", "pos": "n.f.", "pronunciation_vi": "kõn-sè-sion kal-ku-lé"}
-    ],
-    "dialogue": [
-      {"speaker": "Étudiant", "text": "Quelle est la différence entre convaincre et persuader?", "vi": "Khác biệt giữa 'convaincre' và 'persuader' là gì?"},
-      {"speaker": "Professeur", "text": "Convaincre s'adresse à la raison seule — c'est le domaine du logos. Persuader mobilise la raison, mais aussi l'émotion et la confiance — c'est le domaine des trois piliers: logos, ethos, pathos. On peut être convaincu sans être persuadé, et inversement.", "vi": "'Convaincre' hướng đến lý tính đơn thuần — đó là lĩnh vực của logos. 'Persuader' huy động lý tính, nhưng cả cảm xúc và lòng tin — đó là lĩnh vực của ba trụ cột: logos, ethos, pathos. Có thể bị thuyết phục lý trí mà không bị thuyết phục toàn diện, và ngược lại."},
-      {"speaker": "Étudiant", "text": "Donc un bon avocat doit maîtriser les trois?", "vi": "Vậy một luật sư giỏi phải làm chủ cả ba?"},
-      {"speaker": "Professeur", "text": "Exactement. Le logos construit le dossier. L'ethos fait que le jury lui fait confiance. Le pathos fait que le jury se soucie de l'issue. Sans logos, c'est de la manipulation; sans ethos, c'est du sophisme; sans pathos, c'est un cours magistral — pas une plaidoirie.", "vi": "Chính xác. Logos xây dựng hồ sơ. Ethos khiến bồi thẩm đoàn tin tưởng anh ta. Pathos khiến bồi thẩm đoàn quan tâm đến kết quả. Không có logos, đó là thao túng; không có ethos, đó là ngụy biện; không có pathos, đó là bài giảng — không phải biện hộ."}
-    ],
-    "dialogue_long": [
-      {"speaker": "Maître Dupuis (avocat à la Cour)", "text": "Mademoiselle Tran, vous assistez à une plaidoirie pour la première fois. Qu'avez-vous observé?", "vi": "Cô Trần, cô dự một phiên biện hộ lần đầu. Cô đã quan sát được gì?"},
-      {"speaker": "Linh", "text": "J'ai été frappée par un moment précis. L'avocat de la défense a concédé que son client avait menti sur un point secondaire — puis il a immédiatement recentré le débat sur la question centrale. Cette concession, loin de l'affaiblir, a renforcé sa crédibilité.", "vi": "Tôi bị ấn tượng bởi một khoảnh khắc. Luật sư bào chữa đã nhượng bộ rằng thân chủ ông đã nói dối về một điểm phụ — rồi ngay lập tức tập trung lại tranh luận vào câu hỏi trung tâm. Sự nhượng bộ này, khác hẳn làm ông yếu đi, đã củng cố độ tin cậy của ông."},
-      {"speaker": "Maître Dupuis", "text": "Vous avez identifié un principe fondamental de la rhétorique: la concession calculée. Pourquoi est-elle si puissante?", "vi": "Cô đã nhận diện một nguyên lý nền tảng của tu từ học: sự nhượng bộ có tính toán. Vì sao nó mạnh đến vậy?"},
-      {"speaker": "Linh", "text": "Parce qu'elle construit l'ethos. En reconnaissant une faiblesse, l'orateur se présente comme raisonnable, honnête, digne de confiance. Et cette honnêteté sur un point secondaire rend son argument principal plus crédible.", "vi": "Vì nó kiến tạo ethos. Bằng cách thừa nhận một điểm yếu, người nói trình hiện mình như có lý, trung thực, đáng tin. Và sự trung thực này trên một điểm phụ khiến lập luận chính của ông đáng tin hơn."},
-      {"speaker": "Maître Dupuis", "text": "Perelman aurait été fier de vous. Maintenant, dites-moi: à quel moment l'avocat a-t-il fait appel au pathos?", "vi": "Perelman hẳn sẽ tự hào về cô. Giờ, nói tôi nghe: luật sư đã kêu gọi pathos ở khoảnh khắc nào?"},
-      {"speaker": "Linh", "text": "Dans la péroraison. Il a quitté le ton technique pour évoquer ce qui arriverait à la famille du prévenu s'il était condamné. Mais — et c'est ce qui m'a frappée — il n'a pas remplacé l'argument par l'émotion; il a fait en sorte que l'émotion donne du poids à l'argument.", "vi": "Trong phần kết. Ông đã rời giọng kỹ thuật để gợi lên điều sẽ xảy ra với gia đình bị cáo nếu ông ta bị kết án. Nhưng — và đây là điều gây ấn tượng với tôi — ông không thay thế lập luận bằng cảm xúc; ông làm cho cảm xúc trao trọng lượng cho lập luận."}
-    ],
-    "roleplay_prompts": [
-      "Bạn phân tích một discours politique hoặc plaidoirie nổi tiếng. Dùng grille 3 piliers (logos/ethos/pathos). Chỉ ra: (1) argument central (logos), (2) comment l'orateur construit sa crédibilité (ethos), (3) quelles émotions sont mobilisées et à quel moment (pathos). Kết luận: 'Ce discours est un exemple de...'",
-      "Bạn viết un paragraphe persuasif sur un sujet controversé (chọn). Cấu trúc: (1) concession initiale, (2) argument principal avec donnée, (3) appel au pathos en péroraison. Auto-analysez ensuite: où est le logos, l'ethos, le pathos?"
-    ],
-    "register_notes": "ANALYSE DE LA PERSUASION C2: 'Nous' académique. Présent pour l'analyse. Quand on cite Perelman: 'Perelman montre que...', 'selon la Nouvelle Rhétorique...'. Distinguer convaincre (raison seule) et persuader (raison + émotion + confiance). Analyser, ne pas juger: 'ce discours est manipulateur' → 'ce discours mobilise le pathos de façon prédominante, au détriment du logos'. Vocabulaire technique: 'enthymème', 'auditoire universel', 'captatio benevolentiae'.",
-    "idiom_glosses": [
-      {"idiom": "Faire mouche", "literal": "Trúng đích (bắn cung)", "meaning": "Atteindre exactement son but persuasif — un argument qui 'fait mouche' touche l'auditoire exactement là où il fallait.", "example": "Sa concession sur le point secondaire a fait mouche: le jury, qui était hostile, a soudainement prêté l'oreille."}
-    ],
-    "exercises": [
-      {"type": "fill-blank", "question": "La rhétorique articule trois registres: le logos, l'ethos et le ___.", "answer": "pathos"},
-      {"type": "matching", "pairs": [["logos", "lập luận logic"], ["ethos", "tư cách người nói"], ["pathos", "kêu gọi cảm xúc"], ["enthymème", "tam đoạn luận tu từ"]], "instruction": "Nối thuật ngữ tu từ học với nghĩa Việt"},
-      {"type": "translation", "vietnamese": "Perelman đã đổi mới tu từ học bằng cách cho thấy lập luận không nhắm đến chân lý chứng minh mà nhắm đến sự tán thành của tinh thần.", "french": "Perelman a renouvelé la rhétorique en montrant que l'argumentation ne vise pas la vérité démonstrative mais l'adhésion des esprits."}
-    ]
-  },
-  {
-    "id": "larts_medias",
-    "level": "C2",
-    "category": "arts_criticism",
-    "title_vi": "Phê bình truyền thông và phân tích ngôn ngữ báo chí",
-    "title_en": "Media criticism and journalistic language analysis",
-    "sentences": [
-      {"en": "L'analyse du discours médiatique ne consiste pas à dénoncer des 'fake news', mais à mettre au jour les choix éditoriaux — le cadrage, la titraille, la sélection des sources — qui orientent silencieusement l'interprétation du lecteur.", "vi": "Phân tích diễn ngôn truyền thông không nhằm tố cáo 'tin giả', mà nhằm phơi bày các lựa chọn biên tập — cách đóng khung, cách đặt tít, cách chọn nguồn — vốn âm thầm định hướng diễn giải của độc giả.", "pronunciation_focus": ["médiatique → mé-dia-tik", "cadrage → ka-draj", "titraille → ti-tray", "silencieusement → si-lãn-si-ơz-mãn"]},
-      {"en": "Le choix d'un verbe introducteur — 'affirmer', 'prétendre', 'reconnaître', 'admettre' — n'est jamais neutre: il encode le degré d'adhésion que le journaliste accorde au propos rapporté.", "vi": "Việc chọn một động từ giới thiệu — 'khẳng định', 'tự nhận', 'thừa nhận', 'công nhận' — không bao giờ trung tính: nó mã hóa mức độ tán thành mà nhà báo dành cho lời được thuật lại.", "pronunciation_focus": ["introducteur → an-tro-duk-tơr", "prétendre → pré-tãn-drơ", "encode → ãn-kod", "adhésion → a-dé-zion"]},
-      {"en": "Un lecteur averti ne lit pas seulement ce que le journal dit; il lit aussi ce que le journal ne dit pas — les absences, les silences, les sources non citées sont souvent plus éloquents que le texte imprimé.", "vi": "Một độc giả tinh tường không chỉ đọc điều tờ báo nói; anh ta còn đọc điều tờ báo không nói — những vắng mặt, những im lặng, những nguồn không được trích dẫn thường hùng hồn hơn văn bản được in.", "pronunciation_focus": ["averti → a-vèr-ti", "absences → ap-sãns", "éloquents → é-lo-kãn", "imprimé → an-pri-mé"]},
-      {"en": "La distinction entre 'fait' et 'commentaire' — pierre angulaire du journalisme — est moins une frontière étanche qu'un continuum, et c'est précisément sur ce continuum que se joue l'éthique journalistique.", "vi": "Sự phân biệt giữa 'sự kiện' và 'bình luận' — đá tảng của báo chí — ít là một biên giới kín nước hơn là một dải liên tục, và chính trên dải liên tục này mà đạo đức báo chí được quyết định.", "pronunciation_focus": ["commentaire → ko-mãn-tèr", "étanche → é-tãnsh", "continuum → kõn-ti-nu-om", "éthique → é-tik"]},
-      {"en": "Les médias français ne se distinguent pas tant par leur ligne éditoriale déclarée que par leurs routines de cadrage: ce qu'ils jugent digne d'être rapporté, et la place qu'ils lui accordent.", "vi": "Truyền thông Pháp phân biệt nhau ít bởi đường lối biên tập tuyên bố hơn là bởi các thói quen đóng khung: điều họ coi là đáng được tường thuật, và vị trí họ dành cho nó.", "pronunciation_focus": ["déclarée → dé-kla-ré", "routines → ru-tin", "jugent → juj", "accordent → a-kord"]}
-    ],
-    "cultural_notes_vi": "PHÊ BÌNH TRUYỀN THÔNG PHÁP: (1) BOURDIEU: 'Sur la télévision' (1996) — analyse critique du champ journalistique et ses contraintes invisibles. (2) ALBERT LONDRES: père du grand reportage. Prix le plus prestigieux du journalisme francophone. (3) LE MONDE (1944-): sérieux, indépendance, style soutenu. LIBÉRATION (1973-): gauche, direct, jeux de mots. LE FIGARO (1826-): droite, sobre, classique. (4) ANALYSE DU DISCOURS MÉDIATIQUE: Charaudeau, Maingueneau. Concepts clés: 'formule', 'cadrage', 'nomination'.",
-    "tip_advice_vi": "GRILLE D'ANALYSE D'UN ARTICLE C2: (1) CADRAGE: Quel angle? (2) TITRAILLE: titre, chapeau — fidèles au contenu? (3) SOURCES: Qui est cité? Verbes introducteurs neutres ou orientés? (4) LEXIQUE: neutre ou connoté? (5) SILENCES: De quoi ne parle-t-on pas? CỤM: 'Le cadrage consiste à...', 'Le choix du verbe X suggère...', 'L'absence de citation de Y est significative.'",
-    "vocabulary": [
-      {"word": "le cadrage", "en": "framing (media analysis)", "vi": "sự đóng khung / cadrage", "pos": "n.m.", "pronunciation_vi": "ka-draj"},
-      {"word": "la titraille", "en": "headlines / titling system", "vi": "hệ thống tít báo", "pos": "n.f.", "pronunciation_vi": "ti-tray"},
-      {"word": "un verbe introducteur", "en": "a reporting verb", "vi": "động từ giới thiệu lời dẫn", "pos": "n.m.", "pronunciation_vi": "vèrb an-tro-duk-tơr"},
-      {"word": "la ligne éditoriale", "en": "editorial line", "vi": "đường lối biên tập", "pos": "n.f.", "pronunciation_vi": "li-niơ é-di-to-rial"},
-      {"word": "une source anonyme", "en": "an anonymous source", "vi": "nguồn ẩn danh", "pos": "n.f.", "pronunciation_vi": "surs a-no-nim"},
-      {"word": "le fait divers", "en": "short news item", "vi": "tin vắn", "pos": "n.m.", "pronunciation_vi": "fè di-vèr"},
-      {"word": "la dépêche", "en": "news wire / dispatch", "vi": "điện tin / bản tin hãng", "pos": "n.f.", "pronunciation_vi": "dé-pèsh"},
-      {"word": "le pluralisme", "en": "pluralism", "vi": "tính đa nguyên", "pos": "n.m.", "pronunciation_vi": "plu-ra-lismơ"}
-    ],
-    "dialogue": [
-      {"speaker": "Étudiant", "text": "Comment distinguer un article de fait d'un article d'opinion?", "vi": "Làm sao phân biệt bài báo sự kiện với bài báo ý kiến?"},
-      {"speaker": "Professeur", "text": "Regardez les verbes introducteurs. 'A déclaré' = fait. 'Prétend' = opinion. La frontière est dans la grammaire.", "vi": "Nhìn các động từ giới thiệu. 'Đã tuyên bố' = sự kiện. 'Tự nhận' = ý kiến. Biên giới nằm trong ngữ pháp."},
-      {"speaker": "Étudiant", "text": "Et si l'article mélange les deux?", "vi": "Nếu bài báo trộn lẫn cả hai?"},
-      {"speaker": "Professeur", "text": "C'est le cas le plus fréquent — et le plus dangereux. Votre travail est de séparer ce que le journaliste a mélangé.", "vi": "Đó là trường hợp phổ biến nhất — và nguy hiểm nhất. Việc của bạn là tách điều nhà báo đã trộn."}
-    ],
-    "exercises": [
-      {"type": "fill-blank", "question": "Le choix d'un ___ introducteur — 'affirmer', 'prétendre' — n'est jamais neutre.", "answer": "verbe"},
-      {"type": "matching", "pairs": [["le cadrage", "sự đóng khung"], ["la titraille", "hệ thống tít báo"], ["la ligne éditoriale", "đường lối biên tập"], ["un verbe introducteur", "động từ giới thiệu lời dẫn"]], "instruction": "Nối thuật ngữ"},
-      {"type": "translation", "vietnamese": "Một độc giả tinh tường không chỉ đọc điều tờ báo nói; anh ta còn đọc điều tờ báo không nói.", "french": "Un lecteur averti ne lit pas seulement ce que le journal dit; il lit aussi ce que le journal ne dit pas."}
-    ]
-  },
-  {
-    "id": "lcivic_diplomatie",
-    "level": "C2",
-    "category": "civic_discourse",
-    "title_vi": "Ngôn ngữ ngoại giao và diễn ngôn quốc tế",
-    "title_en": "Diplomatic language and international discourse",
-    "sentences": [
-      {"en": "Le langage diplomatique est l'art de dire assez pour engager sans dire assez pour contraindre — chaque communiqué est un équilibre calculé entre la précision et l'ambiguïté stratégique.", "vi": "Ngôn ngữ ngoại giao là nghệ thuật nói đủ để cam kết mà không nói đủ để ràng buộc — mỗi thông cáo là một sự cân bằng có tính toán giữa sự chính xác và sự mơ hồ chiến lược.", "pronunciation_focus": ["diplomatique → di-plo-ma-tik", "communiqué → ko-mu-ni-ké", "ambiguïté → ãn-bi-gu-i-té"]},
-      {"en": "La formule 'les discussions se sont déroulées dans un climat franc et constructif' signifie, en langage diplomatique, que les deux parties sont en désaccord profond mais ne souhaitent pas l'annoncer publiquement.", "vi": "Công thức 'các cuộc thảo luận đã diễn ra trong bầu không khí thẳng thắn và xây dựng' có nghĩa, trong ngôn ngữ ngoại giao, rằng hai bên bất đồng sâu sắc nhưng không muốn công bố.", "pronunciation_focus": ["franc → frãn", "constructif → kõns-truk-tif", "désaccord → dé-za-kor"]},
-      {"en": "La différence entre 'condamner' et 'déplorer', entre 'exiger' et 'appeler à', fait toute la diplomatie — ces nuances verbales sont la grammaire même des relations internationales.", "vi": "Sự khác biệt giữa 'lên án' và 'lấy làm tiếc', giữa 'yêu cầu' và 'kêu gọi', làm nên toàn bộ ngoại giao — những sắc thái động từ này chính là ngữ pháp của quan hệ quốc tế.", "pronunciation_focus": ["condamner → kõn-da-né", "déplorer → dé-plo-ré", "exiger → èg-zi-jé"]},
-      {"en": "Un traité international n'est pas un texte comme un autre: chaque virgule a été négociée, chaque adjectif pesé, chaque silence délibéré — et c'est dans ces interstices que se loge la marge de manœuvre des États.", "vi": "Một hiệp ước quốc tế không phải là một văn bản thông thường: mỗi dấu phẩy đã được đàm phán, mỗi tính từ đã được cân nhắc, mỗi sự im lặng đã được chủ ý.", "pronunciation_focus": ["traité → trè-té", "négociée → né-go-si-é", "interstices → an-tèr-stis"]},
-      {"en": "La 'langue de bois' diplomatique n'est pas un défaut de communication — c'est une technologie qui permet de maintenir le dialogue dans des situations où la vérité littérale détruirait toute possibilité de négociation.", "vi": "'Langue de bois' ngoại giao không phải là khiếm khuyết — đó là công nghệ cho phép duy trì đối thoại khi sự thật theo nghĩa đen sẽ phá hủy mọi khả năng đàm phán.", "pronunciation_focus": ["langue de bois → lãng dơ boa", "technologie → tèk-no-lo-ji", "littérale → li-té-ral"]}
-    ],
-    "cultural_notes_vi": "LANGAGE DIPLOMATIQUE FRANCOPHONE: (1) Jusqu'en 1919, le français était la langue exclusive de la diplomatie. Aujourd'hui langue de travail de l'ONU. Vocabulaire international: 'attaché', 'communiqué', 'démarche', 'détente', 'rapprochement'. (2) ÉCHELLE DIPLOMATIQUE: condamner fermement > condamner > déplorer > regretter > prendre note de > ne pas commenter. (3) FORMULES CODÉES: 'échange franc et constructif' = désaccord. 'Les discussions se poursuivent' = pas d'accord. 'Un certain nombre de questions restent à régler' = blocage. (4) Le Vietnam est membre de la Francophonie — maîtriser le registre diplomatique français est un atout professionnel.",
-    "tip_advice_vi": "VERBES DIPLOMATIQUES (fort→faible): DÉSACCORD: condamner > déplorer > regretter > s'inquiéter de > prendre note de. DEMANDE: exiger > demander instamment > appeler à > inviter à > encourager. ACCORD: se féliciter de > saluer > accueillir favorablement > prendre acte de. CỤM: 'Les parties ont convenu de...', 'Dans un esprit de...', 'Sans préjudice de...', 'Sous réserve de...'",
-    "vocabulary": [
-      {"word": "un communiqué", "en": "communiqué", "vi": "thông cáo", "pos": "n.m.", "pronunciation_vi": "ko-mu-ni-ké"},
-      {"word": "une démarche", "en": "diplomatic démarche", "vi": "bước đi ngoại giao", "pos": "n.f.", "pronunciation_vi": "dé-marsh"},
-      {"word": "la langue de bois", "en": "diplomatic jargon", "vi": "sáo ngữ ngoại giao", "pos": "n.f.", "pronunciation_vi": "lãng dơ boa"},
-      {"word": "une résolution", "en": "UN resolution", "vi": "nghị quyết", "pos": "n.f.", "pronunciation_vi": "ré-zo-lu-sion"},
-      {"word": "condamner", "en": "to condemn", "vi": "lên án", "pos": "v.", "pronunciation_vi": "kõn-da-né"},
-      {"word": "déplorer", "en": "to deplore", "vi": "lấy làm tiếc", "pos": "v.", "pronunciation_vi": "dé-plo-ré"},
-      {"word": "un traité", "en": "treaty", "vi": "hiệp ước", "pos": "n.m.", "pronunciation_vi": "trè-té"},
-      {"word": "sans préjudice de", "en": "without prejudice to", "vi": "không phương hại đến", "pos": "loc.", "pronunciation_vi": "sãn pré-ju-dis dơ"}
-    ],
-    "dialogue": [
-      {"speaker": "Diplomate", "text": "Dans le communiqué final, 'condamner' ou 'déplorer'?", "vi": "Trong thông cáo cuối, 'lên án' hay 'lấy làm tiếc'?"},
-      {"speaker": "Linh", "text": "'Déplorer'. 'Condamner' fermerait la porte. 'Déplorer' exprime le désaccord tout en laissant une issue.", "vi": "'Lấy làm tiếc'. 'Lên án' đóng cửa. 'Lấy làm tiếc' biểu đạt bất đồng mà vẫn để ngỏ lối ra."}
-    ],
-    "exercises": [
-      {"type": "fill-blank", "question": "'Les discussions se sont déroulées dans un climat franc et constructif' signifie que les deux parties sont en ___.", "answer": "désaccord"},
-      {"type": "matching", "pairs": [["condamner", "lên án (mạnh nhất)"], ["déplorer", "lấy làm tiếc"], ["prendre note de", "ghi nhận"], ["ne pas commenter", "không bình luận"]], "instruction": "Nối động từ ngoại giao theo cường độ"},
-      {"type": "translation", "vietnamese": "Ngôn ngữ ngoại giao là nghệ thuật nói đủ để cam kết mà không nói đủ để ràng buộc.", "french": "Le langage diplomatique est l'art de dire assez pour engager sans dire assez pour contraindre."}
-    ]
-  }
-];
+        }
+      ],
+      "cultural_notes_vi": "NARRATOLOGIE PHÁP — chủ yếu là di sản của Gérard Genette (Figures III, 1972; Nouveau discours du récit, 1983) — đã PHÂN BIỆT một cách triệt để hai khái niệm vốn bị nhầm lẫn:\n\n(1) VOIX (giọng): AI nói? Người trần thuật có ở trong câu chuyện không?\n- Hétérodiégétique: ở ngoài (« il alla, elle dit »)\n- Homodiégétique: ở trong, làm nhân vật phụ\n- Autodiégétique: ở trong, làm nhân vật chính (kể đời mình)\n\n(2) FOCALISATION (điểm nhìn): qua MẮT AI người đọc tiếp cận thế giới?\n- Focalisation zéro: không qua ai cụ thể — narrateur omniscient classique (Balzac, Tolstoï)\n- Focalisation interne: qua mắt một nhân vật cụ thể — accès limité (Camus L'Étranger, James)\n- Focalisation externe: behaviorist — không qua mắt ai, chỉ thấy hành động bên ngoài (Hemingway, Robbe-Grillet)\n\nTẠI SAO PHÂN BIỆT NÀY QUAN TRỌNG: trước Genette, critique nói chuyện về « narrateur omniscient » một cách lẫn lộn — thực ra omniscience là về focalisation, không phải về voix. Một narrateur autodiégétique (« je ») có thể vẫn omniscient (Proust kể đời mình với khoảng cách hậu nghiệm cho phép biết tất); một narrateur hétérodiégétique (« il/elle ») có thể bị giới hạn vào focalisation interne (Madame Bovary, où narrateur ngoài câu chuyện nhưng nhìn qua mắt Emma trong nhiều đoạn).\n\nÁP DỤNG VÀO BA TÁC PHẨM CANONICAL:\n\nL'ÉTRANGER (Camus, 1942): voix homodiégétique (Meursault kể), focalisation interne stricte. Hệ quả: ta không bao giờ ra khỏi tri giác Meursault. Famous incipit (« Aujourd'hui, maman est morte. Ou peut-être hier, je ne sais pas. ») là minh chứng cho tri giác giới hạn — không có omniscience nào sẽ nói « je ne sais pas ».\n\nÀ LA RECHERCHE (Proust, 1913-1927): voix autodiégétique (« Marcel »), focalisation kép — focalisation interne au moment du récit (Marcel-narrateur kể) ET focalisation interne au moment de la diégèse (Marcel-personnage trải nghiệm). Cấu trúc kép này là cốt lõi của « décalage temporel » Proustien.\n\nMADAME BOVARY (Flaubert, 1857): voix hétérodiégétique (narrateur ngoài), focalisation BIẾN ĐỔI — đôi khi externe, đôi khi interne (Emma, Charles, Homais), đôi khi zéro. Sự biến đổi này, kết hợp với discours indirect libre, tạo nên ironie flaubertienne.\n\nBẪY PHỔ BIẾN: Việt Nam thường nói « người kể chuyện ngôi thứ ba » — nhưng « ngôi thứ ba » KHÔNG cho biết focalisation. Một narrateur ngôi ba có thể omniscient (Balzac) hoặc giới hạn (Flaubert tại các đoạn focalisation interne sur Emma). Khi viết phân tích bằng tiếng Pháp ở C2, KHÔNG dùng « narrateur à la troisième personne » — dùng « narrateur hétérodiégétique » + nói rõ focalisation.",
+      "tip_advice_vi": "GRILLE D'ANALYSE Genettien complète pour un texte donné:\n\n(1) VOIX:\n- Personne grammaticale (je / il-elle / nous — rare)\n- Position du narrateur (homo / hétéro / auto-diégétique)\n- Niveau narratif (extra / intra / méta-diégétique)\n- Temps du récit (passé simple = distance; présent = immédiateté; passé composé = familier)\n\n(2) FOCALISATION:\n- Type (zéro / interne / externe)\n- Constance ou variations\n- Si interne: identification du focalisateur (qui voit ?)\n- Cohérence avec la voix\n\n(3) MODE:\n- Discours rapporté (direct / indirect / indirect libre)\n- Sommaire vs scène (vitesse narrative)\n- Récit itératif vs singulatif (fréquence)\n\nCỤM HỮU ÍCH:\n\nPOUR DÉCRIRE LA VOIX:\n- « Le narrateur, ici autodiégétique, raconte une expérience dont il fut le protagoniste. »\n- « Le récit s'organise depuis une instance hétérodiégétique qui ne se met jamais en scène. »\n- « La voix narrative oscille entre l'omniscience apparente et la limitation à la conscience d'Emma. »\n\nPOUR DÉCRIRE LA FOCALISATION:\n- « La focalisation, strictement interne, restreint la perception au point de vue de Meursault. »\n- « On observe ici un changement de focalisation: le narrateur abandonne le regard d'Emma pour adopter celui de Charles. »\n- « La focalisation externe — ou, pour reprendre Genette, behavioriste — interdit tout accès aux pensées des personnages. »\n\nPOUR ANALYSER LE DISCOURS INDIRECT LIBRE:\n- « Le passage glisse insensiblement du discours du narrateur au discours du personnage, sans verbe introducteur. »\n- « Cette indistinction énonciative est la signature flaubertienne par excellence. »\n- « L'ironie naît précisément de l'indécision: parle-t-il en son nom ou rapporte-t-il celui d'Emma ? »\n\nPOUR LA POLYPHONIE BAKHTINIENNE:\n- « Le roman, comme l'a montré Bakhtine, est un espace polyphonique où plusieurs consciences se font entendre. »\n- « Cette pluralité de voix, irréductible à un seul point de vue, constitue le dialogisme du genre romanesque. »\n\nTRÁNH:\n- « Le narrateur sait tout. » → flou; précisez focalisation zéro\n- « Le personnage pense que… » → vérifier si c'est focalisation interne ou monologue rapporté\n- « L'auteur dit que… » → confusion auteur empirique / narrateur\n- « Ce texte est subjectif. » → terme non technique; dire « focalisation interne »",
+      "vocabulary": [
+        {
+          "word": "un narrateur autodiégétique",
+          "en": "an autodiegetic narrator",
+          "vi": "người trần thuật tự kể đời mình",
+          "pos": "n.m.",
+          "pronunciation_vi": "na-ra-tơr ô-to-dié-jé-tik"
+        },
+        {
+          "word": "un narrateur hétérodiégétique",
+          "en": "a heterodiegetic narrator",
+          "vi": "người trần thuật ngoài câu chuyện",
+          "pos": "n.m.",
+          "pronunciation_vi": "é-té-ro-dié-jé-tik"
+        },
+        {
+          "word": "la focalisation interne",
+          "en": "internal focalization",
+          "vi": "điểm nhìn nội tại",
+          "pos": "n.f.",
+          "pronunciation_vi": "fo-ka-li-za-sion an-tèrn"
+        },
+        {
+          "word": "la focalisation zéro",
+          "en": "zero focalization (omniscient)",
+          "vi": "điểm nhìn zéro / toàn tri",
+          "pos": "n.f.",
+          "pronunciation_vi": "fo-ka-li-za-sion zé-ro"
+        },
+        {
+          "word": "le discours indirect libre",
+          "en": "free indirect discourse",
+          "vi": "discours indirect libre / lời nửa trực tiếp",
+          "pos": "n.m.",
+          "pronunciation_vi": "dis-kur an-di-rèkt li-brơ"
+        },
+        {
+          "word": "la diégèse",
+          "en": "the diegesis",
+          "vi": "thế giới câu chuyện",
+          "pos": "n.f.",
+          "pronunciation_vi": "dié-jèz"
+        },
+        {
+          "word": "la polyphonie narrative",
+          "en": "narrative polyphony",
+          "vi": "sự đa âm trần thuật",
+          "pos": "n.f.",
+          "pronunciation_vi": "po-li-fo-ni na-ra-tiv"
+        },
+        {
+          "word": "l'instance énonciative",
+          "en": "the enunciating instance",
+          "vi": "thực thể phát ngôn",
+          "pos": "n.f.",
+          "pronunciation_vi": "an-stãns é-nõn-sia-tiv"
+        },
+        {
+          "word": "un récit itératif",
+          "en": "an iterative narrative",
+          "vi": "tự sự lặp lại",
+          "pos": "n.m.",
+          "pronunciation_vi": "ré-si i-té-ra-tif"
+        },
+        {
+          "word": "la vitesse narrative",
+          "en": "narrative pace",
+          "vi": "vận tốc trần thuật",
+          "pos": "n.f.",
+          "pronunciation_vi": "vi-tès na-ra-tiv"
+        }
+      ],
+      "dialogue": [
+        {
+          "speaker": "Pr. Compagnon",
+          "text": "Madame Tran, vous parlez de « narrateur omniscient » à propos de Madame Bovary. Précisez.",
+          "vi": "Cô Trần, cô nói về « narrateur omniscient » liên quan Madame Bovary. Cô làm rõ."
+        },
+        {
+          "speaker": "Linh",
+          "text": "En réalité, l'omniscience flaubertienne est intermittente — par moments le narrateur sait tout, à d'autres il se restreint à la conscience d'Emma.",
+          "vi": "Thực ra, omniscience của Flaubert là gián đoạn — có lúc người trần thuật biết tất, có lúc giới hạn vào ý thức Emma."
+        },
+        {
+          "speaker": "Pr. Compagnon",
+          "text": "Voilà — c'est précisément cette modulation qui est intéressante, pas l'omniscience pleine.",
+          "vi": "Đó — chính sự modulation này thú vị, không phải omniscience đầy."
+        },
+        {
+          "speaker": "Linh",
+          "text": "Genette parlerait d'une focalisation variable, ce qui est plus juste.",
+          "vi": "Genette sẽ gọi đó là focalisation variable, chính xác hơn."
+        }
+      ],
+      "dialogue_long": [
+        {
+          "speaker": "Pr. Compagnon (cours d'agrégation)",
+          "text": "Aujourd'hui: Genette, Figures III, l'opposition voix / focalisation. Madame Tran, vous nous présentez le concept appliqué à L'Étranger ?",
+          "vi": "Hôm nay: Genette, Figures III, đối lập voix / focalisation. Cô Trần, cô trình bày khái niệm áp dụng vào L'Étranger?"
+        },
+        {
+          "speaker": "Linh",
+          "text": "L'Étranger constitue, à mon sens, le cas d'école pour comprendre l'enjeu de la distinction. La voix est homodiégétique — Meursault parle en son nom, à la première personne. La focalisation est strictement interne — nous n'accédons jamais qu'à ce que perçoit Meursault. Et cette double restriction produit l'effet le plus singulier du roman.",
+          "vi": "L'Étranger là, theo tôi, trường hợp mẫu để hiểu vấn đề của sự phân biệt. Voix là homodiégétique — Meursault nói nhân danh mình, ngôi thứ nhất. Focalisation nghiêm ngặt interne — chúng ta không bao giờ tiếp cận hơn điều Meursault tri giác. Và sự giới hạn kép này sản sinh hiệu ứng độc đáo nhất của tiểu thuyết."
+        },
+        {
+          "speaker": "Linh",
+          "text": "L'incipit en témoigne: « Aujourd'hui, maman est morte. Ou peut-être hier, je ne sais pas. » Aucun narrateur omniscient ne pourrait dire « je ne sais pas » — l'incertitude prouve que nous sommes enfermés dans une conscience particulière, finie, qui ne maîtrise pas même la chronologie de sa propre histoire.",
+          "vi": "Incipit chứng minh: « Hôm nay, mẹ tôi đã chết. Hay có lẽ hôm qua, tôi không biết. » Không người trần thuật toàn tri nào có thể nói « tôi không biết » — sự không chắc chứng minh chúng ta bị giam trong một ý thức riêng biệt, hữu hạn, không làm chủ được cả niên đại của câu chuyện của mình."
+        },
+        {
+          "speaker": "Linh",
+          "text": "Cette focalisation interne stricte produit, on le sait, le célèbre « ton blanc » du roman. Sartre, dès 1943, l'analysait dans « Explication de L'Étranger »: la phrase courte, l'absence de subordination, le passé composé au lieu du passé simple, tout converge vers une perception non-organisée du monde. Ce n'est pas un choix esthétique gratuit — c'est la traduction stylistique d'une position philosophique sur l'absurde.",
+          "vi": "Focalisation interne nghiêm ngặt này sản sinh, ta biết rõ, « giọng trắng » nổi tiếng của tiểu thuyết. Sartre, ngay từ 1943, đã phân tích trong « Explication de L'Étranger »: câu ngắn, vắng subordination, passé composé thay passé simple, tất cả hội tụ về một tri giác không tổ chức về thế giới. Không phải lựa chọn thẩm mỹ vô cớ — là dịch chuyển phong cách của một lập trường triết học về absurde."
+        },
+        {
+          "speaker": "Pr. Compagnon",
+          "text": "Bien. Mais une difficulté surgit en seconde partie du roman, lorsque Meursault, en prison, repense à sa vie. Comment articulez-vous cela avec la focalisation interne stricte ?",
+          "vi": "Tốt. Nhưng một khó khăn xuất hiện ở phần hai tiểu thuyết, khi Meursault, trong tù, nghĩ lại đời mình. Cô khớp nối điều đó với focalisation interne nghiêm ngặt thế nào?"
+        },
+        {
+          "speaker": "Linh",
+          "text": "Question juste. En seconde partie, on observe un léger glissement: Meursault commence à réfléchir, à conceptualiser, à formuler ce qui restait jusque-là pure perception. La focalisation reste interne — nous restons dans sa tête — mais le mode change: nous passons d'une perception immédiate à une réflexion. C'est précisément ce changement, à mes yeux, qui produit l'épiphanie finale, dans la cellule, sur « la tendre indifférence du monde ».",
+          "vi": "Câu hỏi đúng. Ở phần hai, ta quan sát một sự trượt nhẹ: Meursault bắt đầu suy ngẫm, khái niệm hóa, phát biểu điều cho đến giờ vẫn là tri giác thuần túy. Focalisation vẫn interne — ta vẫn trong đầu ông — nhưng mode thay đổi: ta chuyển từ tri giác trực tiếp sang suy ngẫm. Chính sự thay đổi này, theo tôi, sản sinh epiphany cuối, trong xà lim, về « sự lạnh lùng dịu dàng của thế giới »."
+        },
+        {
+          "speaker": "Pr. Compagnon",
+          "text": "Excellent — vous mobilisez non seulement le couple voix / focalisation, mais aussi la troisième catégorie genettienne, celle du mode. C'est exactement ce que demande Figures III. Une dernière question: peut-on appliquer la même grille à À la recherche du temps perdu ?",
+          "vi": "Xuất sắc — cô huy động không chỉ cặp voix / focalisation, mà cả phạm trù thứ ba của Genette, mode. Đó chính là điều Figures III đòi hỏi. Một câu hỏi cuối: có thể áp dụng cùng lưới này vào À la recherche du temps perdu không?"
+        },
+        {
+          "speaker": "Linh",
+          "text": "Oui, mais avec une complication décisive. Proust met en scène un narrateur autodiégétique — Marcel — qui raconte sa propre vie avec un décalage temporel énorme. Cela produit une focalisation kép, ou plutôt feuilletée: focalisation interne du Marcel-personnage au moment où il vit l'épisode, et focalisation interne du Marcel-narrateur qui, depuis le présent du récit, comprend ce que le personnage ne comprenait pas. Ces deux instances se distinguent par le célèbre « décalage » que Genette nomme « focalisation interne fixe avec paralipse ».",
+          "vi": "Có, nhưng với một phức tạp quyết định. Proust dàn dựng một người trần thuật autodiégétique — Marcel — kể đời mình với khoảng cách thời gian khổng lồ. Điều đó sản sinh một focalisation kép, hay đúng hơn lớp lớp: focalisation interne của Marcel-nhân vật ở thời điểm sống đoạn ấy, và focalisation interne của Marcel-người trần thuật, từ hiện tại trần thuật, hiểu điều nhân vật không hiểu. Hai thực thể này phân biệt bằng « décalage » nổi tiếng mà Genette gọi là « focalisation interne fixe avec paralipse »."
+        },
+        {
+          "speaker": "Pr. Compagnon",
+          "text": "Excellent — vous touchez là à l'apport le plus subtil de Genette. La paralipse, c'est le moment où le narrateur omet sciemment ce qu'il sait, pour préserver l'expérience du personnage en train de vivre. Concept rare et puissant.",
+          "vi": "Xuất sắc — cô chạm đến đóng góp tinh tế nhất của Genette. Paralipse, đó là khoảnh khắc người trần thuật bỏ đi cố ý điều mình biết, để giữ trải nghiệm của nhân vật đang sống. Khái niệm hiếm và mạnh."
+        }
+      ],
+      "roleplay_prompts": [
+        "Bạn được giao explication de la première page de L'Étranger. Identifiez voix + focalisation + mode + un effet stylistique majeur — en 5 minutes.",
+        "Trong séminaire, một collègue affirme « Madame Bovary, c'est un roman écrit du point de vue d'Emma ». Phản hồi avec précision genettienne — distinguer voix hétérodiégétique de la focalisation interne intermittente.",
+        "Soạn 5 câu pour expliquer la « paralipse » à un étudiant de M1 qui n'a pas encore lu Genette — citer un exemple chez Proust ou un autre auteur."
+      ],
+      "register_notes": "NARRATOLOGIE GENETTIENNE — vocabulaire à maîtriser AU MOT PRÈS:\n\nKHÔNG CONFONDRE:\n- Voix ≠ focalisation (Genette dixit)\n- Narrateur ≠ auteur (Barthes, La Mort de l'auteur)\n- Discours indirect libre ≠ discours indirect (un guillemet de différence change tout)\n- Diégèse ≠ histoire (la diégèse est l'univers; l'histoire est la suite des événements)\n- Récit ≠ narration (le récit est le texte; la narration est l'acte de raconter)\n\nQUATRE CATÉGORIES GENETTIENNES:\n\n(1) ORDRE: chronologie diégétique vs ordre narratif (analepse, prolepse)\n(2) DURÉE: rapport temps narré / temps de narration (sommaire, scène, ellipse, pause)\n(3) FRÉQUENCE: récit singulatif / itératif / répétitif\n(4) MODE: distance (sommaire vs scène), perspective (focalisation)\n+ VOIX (instance narrative, niveau, temps)\n\nCONJUGAISON DES TEMPS — analyse C2 doit identifier:\n- Passé simple = distance, écriture classique\n- Imparfait = arrière-plan, durée, descriptif\n- Passé composé = présent du locuteur, oral, Camus\n- Présent intemporel = vérité générale, narration moderne (Duras, Modiano)\n- Conditionnel = futur dans le passé, modalisation\n\nLEXIQUE TECHNIQUE C2 (à utiliser sans hésitation):\n- une analepse / une prolepse (flashback / flashforward)\n- un sommaire (résumé narratif rapide)\n- une scène (récit en temps réel)\n- une ellipse (saut temporel non raconté)\n- une pause descriptive (interruption du récit pour décrire)\n- une paralipse (omission volontaire d'un fait connu du narrateur)\n- une métalepse (transgression de niveau narratif)\n- un récit enchâssé (récit dans le récit)\n\nINVERSION ET SUBJONCTIF IMPARFAIT — marqueurs C2 dans l'analyse narratologique:\n- « Que le narrateur fût parfois omniscient n'est pas le fruit du hasard. »\n- « Peut-être l'auteur a-t-il voulu, par cette focalisation, suspendre tout jugement. »\n- « Encore conviendrait-il que la focalisation reçût une analyse séparée. »\n\nMỘT TINH TẾ ĐẶC THÙ: viết « narrateur » au masculin par convention narratologique, même si l'auteur est une femme. Ce n'est pas un sexisme implicite — c'est l'usage technique. « La narratrice » s'utilise seulement pour distinguer un narrateur féminin diégétiquement marqué (Marguerite Duras dans L'Amant, où la narratrice est explicitement femme).",
+      "idiom_glosses": [
+        {
+          "idiom": "Tirer les ficelles (courant)",
+          "literal": "Kéo các sợi dây",
+          "meaning": "Điều khiển từ hậu trường — utilisé pour le narrateur omniscient.",
+          "example": "Le narrateur balzacien tire les ficelles de tous les destins du roman."
+        },
+        {
+          "idiom": "Donner la parole à (soutenu)",
+          "literal": "Cho lời",
+          "meaning": "Cấp giọng nói cho — analyse de la polyphonie.",
+          "example": "Flaubert donne la parole à ses personnages tout en s'en distanciant."
+        },
+        {
+          "idiom": "Effacer les traces de l'énonciation (littéraire)",
+          "literal": "Xóa dấu vết của phát ngôn",
+          "meaning": "Làm tan biến sự hiện diện của người trần thuật — idéal réaliste.",
+          "example": "L'écriture flaubertienne s'efforce d'effacer les traces de l'énonciation."
+        },
+        {
+          "idiom": "Tenir la dragée haute à (soutenu rare)",
+          "literal": "Giữ viên kẹo cao",
+          "meaning": "Giữ khoảng cách — narrateur ironique avec ses personnages.",
+          "example": "Voltaire tient la dragée haute à Candide, ce qui produit l'ironie philosophique du conte."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "fill-blank",
+          "question": "Que le narrateur ___ parfois omniscient, parfois borné à un personnage, n'est pas, chez Flaubert, le fruit du hasard.",
+          "answer": "fût"
+        },
+        {
+          "type": "matching",
+          "pairs": [
+            [
+              "focalisation interne",
+              "điểm nhìn nội tại"
+            ],
+            [
+              "narrateur autodiégétique",
+              "người trần thuật tự kể đời mình"
+            ],
+            [
+              "paralipse",
+              "omission volontaire du narrateur"
+            ]
+          ],
+          "instruction": "Nối thuật ngữ narratologie với nghĩa Việt"
+        },
+        {
+          "type": "translation",
+          "vietnamese": "Phân biệt giọng trần thuật khỏi điểm nhìn cấu thành tiền đề cho mọi phân tích nghiêm cẩn về tự sự.",
+          "french": "Distinguer la voix narrative de la focalisation constitue le préalable de toute analyse rigoureuse du récit."
+        }
+      ]
+    },
+    {
+      "id": "lsymbol_metaphor",
+      "level": "C2",
+      "category": "fluency",
+      "title_vi": "Phân tích biểu tượng và ẩn dụ trong văn chương",
+      "title_en": "Symbol and metaphor analysis",
+      "sentences": [
+        {
+          "en": "Le symbole, à la différence de l'allégorie, ne renvoie pas à un sens unique mais ouvre un champ de significations qu'aucun lexique ne saurait épuiser.",
+          "vi": "Biểu tượng, khác với ngụ ngôn, không quy về một nghĩa duy nhất mà mở ra một trường ý nghĩa mà không từ điển nào có thể vắt kiệt.",
+          "pronunciation_focus": [
+            "symbole → san-bol",
+            "allégorie → a-lé-go-ri",
+            "renvoie → rãn-voa",
+            "épuiser → é-pwi-zé"
+          ]
+        },
+        {
+          "en": "La métaphore filée, telle que Baudelaire la déploie dans Correspondances, fonde une vision analogique du monde.",
+          "vi": "Ẩn dụ kéo dài, như Baudelaire triển khai trong Correspondances, lập nên một tầm nhìn loại suy về thế giới.",
+          "pronunciation_focus": [
+            "métaphore → mé-ta-for",
+            "filée → fi-lé",
+            "déploie → dé-ploa",
+            "analogique → a-na-lo-jik"
+          ]
+        },
+        {
+          "en": "Le cygne mallarméen, prisonnier du lac gelé, condense en une image l'impuissance même du poète à atteindre l'idéal.",
+          "vi": "Con thiên nga của Mallarmé, bị giam trong hồ băng, ngưng tụ trong một hình ảnh chính sự bất lực của nhà thơ vươn tới lý tưởng.",
+          "pronunciation_focus": [
+            "cygne → si-nyơ",
+            "mallarméen → ma-lar-mé-an",
+            "prisonnier → pri-zo-nié",
+            "impuissance → an-pwi-sãns"
+          ]
+        },
+        {
+          "en": "Encore conviendrait-il que l'analyse distinguât rigoureusement comparaison et métaphore, deux figures qu'on confond souvent.",
+          "vi": "Vẫn cần phân tích phân biệt rạch ròi giữa so sánh và ẩn dụ, hai biện pháp tu từ thường bị nhầm lẫn.",
+          "pronunciation_focus": [
+            "conviendrait → kõn-vian-drè",
+            "distinguât → dis-tan-ga",
+            "comparaison → kõm-pa-rè-zõn",
+            "métaphore → mé-ta-for"
+          ]
+        },
+        {
+          "en": "Bachelard nous a appris à lire l'image poétique non comme ornement, mais comme un mode irréductible de connaissance.",
+          "vi": "Bachelard đã dạy chúng ta đọc hình ảnh thi ca không như trang trí, mà như một phương thức nhận thức không thể quy giảm.",
+          "pronunciation_focus": [
+            "Bachelard → ba-shơ-lar",
+            "appris → a-pri",
+            "ornement → or-nơ-mã",
+            "irréductible → i-ré-duk-ti-blơ"
+          ]
+        }
+      ],
+      "cultural_notes_vi": "PHÂN BIỆT BIỂU TƯỢNG / ẨN DỤ / NGỤ NGÔN trong tradition critique Pháp đòi hỏi một độ chính xác mà sinh viên Việt thường bỏ qua:\n\n(1) COMPARAISON: A est comme B (kèm từ so sánh: comme, tel, semblable à). « Elle est belle comme le jour. »\n\n(2) MÉTAPHORE: A est B (không kèm từ so sánh; substitution). « Elle est le jour. » Métaphore IN PRÆSENTIA giữ cả hai termes (« cette femme-soleil »); métaphore IN ABSENTIA chỉ giữ vehicle (« le soleil entra dans la pièce » để chỉ người yêu).\n\n(3) MÉTAPHORE FILÉE: chuỗi ẩn dụ liên tiếp khai thác cùng champ sémantique. Baudelaire trong Correspondances filer la métaphore de la « forêt de symboles ».\n\n(4) ALLÉGORIE: récit dont chaque élément renvoie point à point à un sens fixé d'avance. La Fontaine.\n\n(5) SYMBOLE: image ouverte, polysémique, irréductible à un sens unique. Le cygne mallarméen est un symbole — il signifie l'impuissance, l'idéal, l'exil de l'artiste, la blancheur stérile, ET d'autres significations qu'aucune lecture n'épuise.\n\nPHÂN BIỆT QUYẾT ĐỊNH SYMBOLE / ALLÉGORIE: l'allégorie a UN sens; le symbole a une PROFUSION de sens. Confondre les deux = perdre toute finesse interprétative. Une lecture qui réduit Le Cygne de Mallarmé à « la difficulté du poète » l'allégorise — ce qui appauvrit le texte.\n\nÉCOLES CRITIQUES PHÁP SUR LA QUESTION:\n\n(a) GASTON BACHELARD (La Poétique de l'espace, 1957; La Poétique de la rêverie, 1960): l'image poétique est mode de connaissance, non ornement; lecture phénoménologique de la rêverie matérielle (eau, terre, air, feu).\n\n(b) ROLAND BARTHES (Mythologies, 1957): le mythe est une parole second-degré — un signifié devient signifiant pour un nouveau sens. Application critique au-delà de la littérature stricte.\n\n(c) PAUL RICŒUR (La Métaphore vive, 1975): la métaphore n'est pas substitution mais innovation sémantique — elle crée du sens nouveau, irréductible à une paraphrase.\n\n(d) GÉRARD GENETTE (Figures, 1966): retour aux distinctions rhétoriques classiques avec rigueur sémiologique; influence du structuralisme.\n\nBẪY NGƯỜI VIỆT: thường lẫn lộn « biểu tượng » và « ẩn dụ », hoặc dùng « biểu tượng » cho mọi hình ảnh có ý nghĩa. Discipline C2 đòi hỏi phân biệt rạch ròi. Một con sông trong văn bản KHÔNG phải toujours « biểu tượng cho cuộc đời »; có khi đó chỉ là một sông thật, có khi là métaphore filée, có khi là leitmotiv structural — phải chứng minh từ văn bản trước khi nói « biểu tượng ».\n\nMỘT QUY TẮC TỐI THƯỢNG: chứng minh tính BIỂU TƯỢNG đòi hỏi (1) sự lặp lại của hình ảnh trong tác phẩm, (2) sự đa nghĩa qua các xuất hiện, (3) sự kháng cự đối với một paraphrase đơn giản. Thiếu ba dấu hiệu này, bạn không có biểu tượng — bạn có một hình ảnh thuần túy mô tả.",
+      "tip_advice_vi": "GRILLE D'ANALYSE pour identifier et commenter une figure:\n\n(1) IDENTIFIER LE TYPE PRÉCIS:\n- Comparaison? Métaphore? Métonymie? Synecdoque? Allégorie? Symbole?\n- Si métaphore: in praesentia / in absentia / filée?\n- Champ source / champ cible (modèle Lakoff-Johnson, Les Métaphores dans la vie quotidienne, traduit en français en 1985)\n\n(2) ANALYSER LE TRAVAIL DE L'IMAGE:\n- Quel rapprochement opère la figure?\n- Quel effet produit-elle (cognitif, affectif, ironique)?\n- Où se situe-t-elle dans la phrase, dans le poème, dans l'œuvre?\n- Y a-t-il systématisation (filage), récurrence (leitmotiv), variation?\n\n(3) RELIER À UNE TRADITION:\n- L'image appartient-elle à un répertoire (la rose pétrarquiste, la mer baudelairienne)?\n- L'auteur le reprend-il, le subvertit-il, l'épuise-t-il?\n- Quelle est la singularité de SA mise en œuvre?\n\nCỤM HỮU ÍCH:\n\nĐỂ INTRODUIRE UNE ANALYSE:\n- « La métaphore qui s'élabore ici relève d'une tradition que l'on peut faire remonter à… »\n- « Cette image, en apparence convenue, prend chez l'auteur une coloration singulière. »\n- « Le réseau métaphorique de cette page se déploie selon un axe… »\n\nĐỂ DÉCRIRE UNE MÉTAPHORE:\n- « La métaphore opère un transfert du champ X vers le champ Y. »\n- « L'auteur file ici la métaphore sur l'ensemble du paragraphe — chaque image relance la précédente. »\n- « Ce qui frappe, c'est la rupture du registre métaphorique au milieu de la phrase. »\n\nĐỂ DÉCRIRE UN SYMBOLE:\n- « Le motif récurrent du X acquiert, par sa répétition, un statut symbolique. »\n- « Ce symbole résiste à toute paraphrase: il signifie à la fois l'absence, l'attente et le désir. »\n- « La polyvalence du symbole est ici le moteur même de la lecture. »\n\nĐỂ DÉCRIRE UNE ALLÉGORIE:\n- « Le récit fonctionne comme une allégorie transparente: chaque personnage renvoie à un type. »\n- « Cette transparence allégorique est précisément ce que l'auteur subvertit en seconde partie. »\n\nTRÁNH:\n- « C'est un symbole de la liberté » → réduction allégorisante d'un symbole; incompatible avec la définition de symbole\n- « L'auteur utilise une métaphore pour décorer son texte » → conception ornementale dépassée depuis Bachelard\n- Confondre « image » (terme générique) et « figure » (terme rhétorique précis)\n- Identifier toute personnification comme métaphore (ce sont deux figures distinctes)",
+      "vocabulary": [
+        {
+          "word": "une métaphore filée",
+          "en": "an extended metaphor",
+          "vi": "ẩn dụ kéo dài",
+          "pos": "n.f.",
+          "pronunciation_vi": "mé-ta-for fi-lé"
+        },
+        {
+          "word": "in praesentia / in absentia",
+          "en": "in presence / in absence",
+          "vi": "có / không cả hai termes",
+          "pos": "loc. lat.",
+          "pronunciation_vi": "in pré-zãn-sia / in ab-sãn-sia"
+        },
+        {
+          "word": "l'allégorie",
+          "en": "allegory",
+          "vi": "ngụ ngôn / phúng dụ",
+          "pos": "n.f.",
+          "pronunciation_vi": "a-lé-go-ri"
+        },
+        {
+          "word": "le champ sémantique",
+          "en": "the semantic field",
+          "vi": "trường ngữ nghĩa",
+          "pos": "n.m.",
+          "pronunciation_vi": "shã sé-mãn-tik"
+        },
+        {
+          "word": "un réseau métaphorique",
+          "en": "a metaphorical network",
+          "vi": "một mạng lưới ẩn dụ",
+          "pos": "n.m.",
+          "pronunciation_vi": "ré-zô mé-ta-fo-rik"
+        },
+        {
+          "word": "un leitmotiv",
+          "en": "a leitmotiv",
+          "vi": "chủ đề lặp lại",
+          "pos": "n.m.",
+          "pronunciation_vi": "laït-mo-tiv"
+        },
+        {
+          "word": "polysémique",
+          "en": "polysemous",
+          "vi": "đa nghĩa",
+          "pos": "adj.",
+          "pronunciation_vi": "po-li-sé-mik"
+        },
+        {
+          "word": "l'innovation sémantique",
+          "en": "semantic innovation",
+          "vi": "sự sáng tạo ngữ nghĩa",
+          "pos": "n.f.",
+          "pronunciation_vi": "i-no-va-sion sé-mãn-tik"
+        },
+        {
+          "word": "un transfert métaphorique",
+          "en": "a metaphorical transfer",
+          "vi": "một sự chuyển ẩn dụ",
+          "pos": "n.m.",
+          "pronunciation_vi": "trãns-fèr mé-ta-fo-rik"
+        },
+        {
+          "word": "épuiser un sens",
+          "en": "to exhaust a meaning",
+          "vi": "vắt kiệt một ý nghĩa",
+          "pos": "v.",
+          "pronunciation_vi": "é-pwi-zé an sãns"
+        }
+      ],
+      "dialogue": [
+        {
+          "speaker": "Pr. Compagnon",
+          "text": "Madame Tran, vous parlez du « cygne, symbole de la pureté ». Cette lecture est-elle suffisante ?",
+          "vi": "Cô Trần, cô nói về « con thiên nga, biểu tượng của sự thuần khiết ». Cách đọc này có đủ không?"
+        },
+        {
+          "speaker": "Linh",
+          "text": "Non — la réduire à la pureté, c'est l'allégoriser. Mallarmé en fait un symbole polysémique: stérilité, exil, idéal inatteignable.",
+          "vi": "Không — quy giảm thành sự thuần khiết là biến nó thành ngụ ngôn. Mallarmé biến nó thành biểu tượng đa nghĩa: vô sinh, lưu vong, lý tưởng không thể đạt."
+        },
+        {
+          "speaker": "Pr. Compagnon",
+          "text": "Voilà — un symbole résiste à la paraphrase unique. C'est ce qui le distingue de l'allégorie.",
+          "vi": "Đó — một biểu tượng kháng cự lại paraphrase duy nhất. Chính điều này phân biệt nó với ngụ ngôn."
+        },
+        {
+          "speaker": "Linh",
+          "text": "Et c'est en quoi le sonnet mallarméen demeure ouvert: aucune lecture ne l'épuise.",
+          "vi": "Và vì thế bài sonnet của Mallarmé vẫn mở: không cách đọc nào vắt kiệt nó."
+        }
+      ],
+      "dialogue_long": [
+        {
+          "speaker": "Pr. Compagnon (séminaire de poésie moderne)",
+          "text": "Madame Tran, expliquez-nous comment fonctionne le célèbre sonnet « Le vierge, le vivace et le bel aujourd'hui » de Mallarmé. Vingt minutes.",
+          "vi": "Cô Trần, cô giải thích cho chúng tôi cách hoạt động của bài sonnet nổi tiếng « Le vierge, le vivace et le bel aujourd'hui » của Mallarmé. 20 phút."
+        },
+        {
+          "speaker": "Linh",
+          "text": "Le sonnet, paru en 1885 puis recueilli dans les Poésies de 1899, met en scène la figure d'un cygne prisonnier d'un lac gelé. Mais le poème ne raconte pas — il configure une situation symbolique dont la richesse résiste à toute paraphrase. C'est précisément cette résistance qui fait du cygne, ici, un symbole et non une allégorie.",
+          "vi": "Bài sonnet, xuất bản 1885 rồi tập hợp trong Poésies 1899, dàn dựng hình ảnh con thiên nga bị giam trong hồ băng. Nhưng bài thơ không kể — nó cấu hình một tình huống biểu tượng mà sự phong phú kháng cự lại mọi paraphrase. Chính sự kháng cự này biến con thiên nga, ở đây, thành biểu tượng chứ không phải ngụ ngôn."
+        },
+        {
+          "speaker": "Linh",
+          "text": "Premier point: le réseau lexical du gel et de la stérilité. Les termes « vierge », « glacier », « gel », « blancheur » construisent un champ sémantique cohérent qui dépasse la simple description: la blancheur n'est pas seulement couleur, elle est virginité non-fécondée, possibilité jamais réalisée. Bachelard, dans L'Eau et les rêves (1942), aurait parlé d'une « rêverie de l'eau dure » — l'eau qui ne coule plus, qui retient au lieu de porter.",
+          "vi": "Điểm thứ nhất: mạng lưới từ vựng của băng giá và vô sinh. Các từ « vierge », « glacier », « gel », « blancheur » xây dựng một trường ngữ nghĩa nhất quán vượt qua mô tả thuần túy: trắng không chỉ là màu, mà là sự đồng trinh chưa thụ tinh, khả năng chưa bao giờ thực hiện. Bachelard, trong L'Eau et les rêves (1942), sẽ gọi đó là « mộng tưởng nước cứng » — nước không còn chảy, giữ lại thay vì mang đi."
+        },
+        {
+          "speaker": "Linh",
+          "text": "Second point: la position physique du cygne, prisonnier dans la glace. Cette image fonctionne sur deux niveaux. Au niveau littéral, c'est une scène hivernale plausible. Au niveau symbolique, c'est une image de l'artiste mallarméen lui-même: figé dans la matière, incapable de prendre son envol vers l'idéal qu'il entrevoit. Mallarmé, dans ses lettres et notamment dans les fragments du Livre, a explicitement thématisé cette impuissance créatrice.",
+          "vi": "Điểm thứ hai: vị trí thân thể của con thiên nga, tù nhân trong băng. Hình ảnh này hoạt động trên hai cấp. Cấp nghĩa đen, đó là cảnh mùa đông khả tín. Cấp biểu tượng, đó là hình ảnh nghệ sĩ Mallarmé: kẹt trong vật chất, không thể cất cánh lên lý tưởng mà ông thấy thoáng qua. Mallarmé, trong thư từ và đặc biệt trong các đoạn của Le Livre, đã chủ đề hóa rõ sự bất lực sáng tạo này."
+        },
+        {
+          "speaker": "Linh",
+          "text": "Troisième point — le plus délicat. Si l'on s'arrêtait à ces deux lectures, on aurait fait du cygne une allégorie. Or, le poème résiste: il y a une troisième dimension, plus opaque, où le cygne devient une figure de l'écriture poétique elle-même comme tentative toujours rejouée et toujours échouée. Cette dimension est insaisissable précisément parce que le poème refuse de la fixer. Comme l'écrivait Ricœur dans La Métaphore vive, la grande métaphore est innovation sémantique — elle crée un sens qui n'existait pas avant elle et que nulle paraphrase ne peut restituer.",
+          "vi": "Điểm ba — tinh tế nhất. Nếu dừng ở hai cách đọc đó, ta đã biến con thiên nga thành ngụ ngôn. Tuy nhiên, bài thơ kháng cự: có một chiều thứ ba, mờ hơn, nơi con thiên nga trở thành hình ảnh của chính việc viết thơ như nỗ lực luôn được chơi lại và luôn thất bại. Chiều này không nắm bắt được chính vì bài thơ từ chối cố định nó. Như Ricœur viết trong La Métaphore vive, ẩn dụ lớn là sự sáng tạo ngữ nghĩa — nó tạo ra một nghĩa chưa tồn tại trước nó và không paraphrase nào có thể khôi phục."
+        },
+        {
+          "speaker": "Pr. Compagnon",
+          "text": "Bien. Question méthodologique: comment distingueriez-vous, dans la pratique d'analyse, ce qui relève du symbole de ce qui relève d'un simple motif récurrent ?",
+          "vi": "Tốt. Câu hỏi phương pháp luận: trong thực hành phân tích, cô phân biệt thế nào điều thuộc về biểu tượng và điều thuộc về một motif lặp lại đơn thuần?"
+        },
+        {
+          "speaker": "Linh",
+          "text": "Trois critères convergents, à mon sens. Premièrement, la récurrence — le motif doit revenir, non par hasard, mais avec une systématicité qui le marque. Deuxièmement, la polyvalence — chaque occurrence doit ouvrir des sens partiellement différents, sans qu'aucun n'épuise le motif. Troisièmement, la résistance à la paraphrase — si l'on peut dire « ce symbole signifie X » en une phrase, ce n'est pas un symbole, c'est une allégorie. Le cygne mallarméen passe les trois épreuves; le glacier d'un roman réaliste, généralement, ne passe que la première.",
+          "vi": "Ba tiêu chí hội tụ, theo tôi. Thứ nhất, sự lặp lại — motif phải trở lại, không ngẫu nhiên, mà với một tính hệ thống đánh dấu nó. Thứ hai, tính đa giá — mỗi xuất hiện phải mở ra nghĩa hơi khác, mà không nghĩa nào vắt kiệt motif. Thứ ba, sự kháng cự với paraphrase — nếu có thể nói « biểu tượng này nghĩa là X » trong một câu, đó không phải biểu tượng, đó là ngụ ngôn. Con thiên nga của Mallarmé qua được cả ba thử nghiệm; sông băng trong một tiểu thuyết hiện thực, thường, chỉ qua được tiêu chí đầu."
+        },
+        {
+          "speaker": "Pr. Compagnon",
+          "text": "Réponse précise. Voilà ce qu'on attend à votre niveau: la critique méthodique, l'application stricte des distinctions, et l'humilité face à ce qui résiste à la paraphrase. C'est tout l'enjeu d'une lecture symbolique réussie.",
+          "vi": "Câu trả lời chính xác. Đây là điều mong đợi ở cấp độ của cô: phê bình có phương pháp, áp dụng nghiêm ngặt các phân biệt, và sự khiêm tốn trước điều kháng cự với paraphrase. Đó là toàn bộ vấn đề của một cách đọc biểu tượng thành công."
+        }
+      ],
+      "roleplay_prompts": [
+        "Bạn được giao explication d'un sonnet de Baudelaire (Correspondances). Identifier la métaphore filée centrale, situer dans la tradition (lien avec Swedenborg, mysticisme), distinguer du simple ornement décoratif.",
+        "Trong séminaire, một collègue affirme « tous les images dans la poésie sont des symboles ». Phản hồi avec rigueur — distinguer image, comparaison, métaphore, allégorie, symbole.",
+        "Soạn 5 câu pour analyser un motif récurrent (la mer chez Duras, le café chez Houellebecq, la rue chez Modiano) — vérifier les trois critères du symbole avant de l'appeler tel."
+      ],
+      "register_notes": "VOCABULAIRE RHÉTORIQUE TRADITIONNEL (à connaître au mot près):\n\nFIGURES D'ANALOGIE:\n- comparaison (avec mot-outil)\n- métaphore (sans mot-outil)\n- métaphore filée (chaîne)\n- allégorie (récit à sens fixe)\n- symbole (image polysémique ouverte)\n- personnification (attribution d'humanité à non-humain)\n- prosopopée (faire parler un non-humain ou un mort)\n\nFIGURES DE SUBSTITUTION:\n- métonymie (cause pour effet, contenant pour contenu, etc.)\n- synecdoque (partie pour le tout, ou inverse)\n- antonomase (nom propre pour commun ou inverse)\n\nFIGURES D'OPPOSITION:\n- antithèse\n- oxymore\n- chiasme\n\nFIGURES DE RÉPÉTITION:\n- anaphore (en début)\n- épiphore (en fin)\n- épanaphore / épanalepse\n- polyptote (répétition d'un mot avec variations morphologiques)\n\nFIGURES DE CONSTRUCTION:\n- hyperbate (rejet d'un élément hors de sa place attendue)\n- inversion\n- ellipse\n- zeugma\n\nUSAGE C2: nommer la figure CORRECTEMENT est non-négociable. Confondre métaphore et métonymie = perdre toute crédibilité. Une lecture C2 utilise au moins 5-6 termes rhétoriques précis par page d'analyse.\n\nÉCOLES DE LECTURE — connaître les références:\n- BACHELARD: lecture phénoménologique de l'image matérielle (eau, terre, air, feu)\n- BARTHES: sémiotique du mythe (Mythologies, 1957)\n- RICŒUR: la métaphore comme innovation sémantique (La Métaphore vive, 1975)\n- GENETTE: rhétorique structuraliste (Figures, 1966-72)\n- LAKOFF & JOHNSON: linguistique cognitive (Les Métaphores dans la vie quotidienne, 1980 / trad. fr. 1985)\n\nIDIOMS LITTÉRAIRES SUR LA FIGURE:\n- « filer la métaphore » (kéo dài ẩn dụ — courant en critique)\n- « épuiser un sens » (vắt kiệt — soutenu)\n- « le grain de l'image » (hạt của hình ảnh — littéraire bachelardien)\n- « tisser un réseau d'images » (dệt mạng lưới — littéraire)\n\nMỘT TINH TẾ ĐẶC THÙ C2: critique Pháp évite le terme « beau » au sujet d'une figure. On ne dit pas « cette métaphore est belle » — on dit « cette métaphore opère un déplacement signifiant », « ce symbole est efficace », « cette image est dense ». Le « beau » comme jugement esthétique appartient au discours d'amateur, non au discours critique.",
+      "idiom_glosses": [
+        {
+          "idiom": "Filer la métaphore (courant critique)",
+          "literal": "Kéo dài ẩn dụ",
+          "meaning": "Triển khai một ẩn dụ qua nhiều câu liên tiếp.",
+          "example": "Baudelaire, dans Correspondances, file la métaphore de la forêt de symboles tout au long du sonnet."
+        },
+        {
+          "idiom": "Le grain de l'image (littéraire bachelardien)",
+          "literal": "Hạt của hình ảnh",
+          "meaning": "Tính cụ thể vật chất của một hình ảnh thi ca.",
+          "example": "Bachelard nous invite à ressentir le grain de l'image avant de chercher son sens."
+        },
+        {
+          "idiom": "Tisser un réseau (littéraire)",
+          "literal": "Dệt một mạng lưới",
+          "meaning": "Tạo một mạng lưới các hình ảnh liên kết qua tác phẩm.",
+          "example": "Le poète tisse un réseau d'images aquatiques qui structure tout le recueil."
+        },
+        {
+          "idiom": "Crever l'écran (familier appliqué littéraire)",
+          "literal": "Châm vỡ màn ảnh",
+          "meaning": "Một hình ảnh / nhân vật vượt qua khung văn bản — utilisé pour des figures inoubliables.",
+          "example": "Le cygne mallarméen, à force de densité symbolique, crève l'écran du sonnet."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "fill-blank",
+          "question": "Encore conviendrait-il que l'analyse ___ rigoureusement comparaison et métaphore.",
+          "answer": "distinguât"
+        },
+        {
+          "type": "matching",
+          "pairs": [
+            [
+              "métaphore filée",
+              "ẩn dụ kéo dài"
+            ],
+            [
+              "polysémique",
+              "đa nghĩa"
+            ],
+            [
+              "réseau métaphorique",
+              "mạng lưới ẩn dụ"
+            ]
+          ],
+          "instruction": "Nối thuật ngữ với nghĩa Việt"
+        },
+        {
+          "type": "translation",
+          "vietnamese": "Biểu tượng, khác với ngụ ngôn, không quy về một nghĩa duy nhất mà mở ra một trường ý nghĩa.",
+          "french": "Le symbole, à la différence de l'allégorie, ne renvoie pas à un sens unique mais ouvre un champ de significations."
+        }
+      ]
+    },
+    {
+      "id": "lgenre_subversion",
+      "level": "C2",
+      "category": "fluency",
+      "title_vi": "Quy ước thể loại và sự lật đổ chúng",
+      "title_en": "Genre conventions and their subversion",
+      "sentences": [
+        {
+          "en": "Le Nouveau Roman, par la voix de Robbe-Grillet, n'a pas tant aboli les conventions du roman réaliste qu'il ne les a déplacées et exposées comme conventions.",
+          "vi": "Tiểu thuyết Mới, qua tiếng nói của Robbe-Grillet, không hẳn xóa bỏ các quy ước của tiểu thuyết hiện thực mà di dời chúng và phơi bày chúng như là quy ước.",
+          "pronunciation_focus": [
+            "Robbe-Grillet → rob-gri-yè",
+            "aboli → a-bo-li",
+            "conventions → kõn-vãn-sion",
+            "exposées → èk-spo-zé"
+          ]
+        },
+        {
+          "en": "En attendant Godot subvertit les attentes du genre dramatique en évacuant intrigue, dénouement et progression psychologique.",
+          "vi": "En attendant Godot lật đổ mong đợi của thể loại kịch bằng cách trục xuất cốt truyện, kết cấu và tiến trình tâm lý.",
+          "pronunciation_focus": [
+            "attendant → a-tãn-dã",
+            "Godot → go-do",
+            "subvertit → sub-vèr-ti",
+            "évacuant → é-va-ku-ã"
+          ]
+        },
+        {
+          "en": "Houellebecq, héritier paradoxal du roman naturaliste, en pousse les conventions jusqu'à l'absurde pour mieux en révéler l'épuisement.",
+          "vi": "Houellebecq, người kế thừa nghịch lý của tiểu thuyết tự nhiên, đẩy các quy ước của nó đến phi lý để bộc lộ rõ hơn sự cạn kiệt.",
+          "pronunciation_focus": [
+            "Houellebecq → wèl-bèk",
+            "héritier → é-ri-tié",
+            "paradoxal → pa-ra-dok-sal",
+            "épuisement → é-pwi-zơ-mã"
+          ]
+        },
+        {
+          "en": "Il eût été paresseux de penser que la subversion d'un genre signifiât son simple rejet — elle suppose au contraire une intimité profonde avec ses codes.",
+          "vi": "Sẽ là lười biếng nếu nghĩ rằng lật đổ một thể loại có nghĩa là chỉ vứt bỏ — ngược lại, nó đòi hỏi một sự thân thuộc sâu sắc với các mã của thể loại ấy.",
+          "pronunciation_focus": [
+            "paresseux → pa-rè-sơ",
+            "subversion → sub-vèr-sion",
+            "signifiât → sig-ni-fia",
+            "intimité → an-ti-mi-té"
+          ]
+        },
+        {
+          "en": "On ne saurait subvertir un genre dont on ne posséderait pas, au préalable, la grammaire la plus secrète.",
+          "vi": "Ta không thể lật đổ một thể loại mà ta không nắm được, từ trước, ngữ pháp ẩn kín nhất của nó.",
+          "pronunciation_focus": [
+            "saurait → sô-rè",
+            "posséderait → po-sé-dơ-rè",
+            "grammaire → gra-mèr",
+            "secrète → sơ-krèt"
+          ]
+        }
+      ],
+      "cultural_notes_vi": "« GENRE » trong critique littéraire Pháp là một khái niệm vừa cũ kỹ vừa luôn mới. Aristote (Poétique) phân biệt épopée, tragédie, comédie; Pháp cổ điển tuân thủ « les trois unités » của tragédie. Mỗi thể loại có CONVENTIONS định nghĩa nó:\n\n(1) ROMAN RÉALISTE thế kỷ XIX (Balzac, Flaubert, Zola): narrateur omniscient discret, cadre socio-historique précis, personnages psychologiquement épais, intrigue causale, finale qui résout (mariage, mort, succès, ruine).\n\n(2) TRAGÉDIE CLASSIQUE: trois unités (action, temps, lieu), héros noble, dénouement fatal, alexandrins, bienséance.\n\n(3) POÉSIE LYRIQUE: « je » expressif, sujets de l'intériorité, formes fixes (sonnet, ode), musicalité.\n\nSUBVERSION = (1) connaissance approfondie des conventions + (2) déplacement / inversion / exposition de ces conventions, KHÔNG phải simple négation.\n\nQUATRE GRANDES SUBVERSIONS du XXe siècle français:\n\n(a) NOUVEAU ROMAN (1950-70): Robbe-Grillet (Les Gommes, 1953; La Jalousie, 1957), Sarraute (Tropismes, 1939; L'Ère du soupçon, 1956), Butor (La Modification, 1957), Simon (La Route des Flandres, 1960). Évacuation du personnage psychologique, descripcion obsessionnelle, défaite de l'intrigue causale. KHÔNG nihiliste — cherche à RÉINVENTER le roman après la perte de crédibilité du modèle balzacien.\n\n(b) THÉÂTRE DE L'ABSURDE: Beckett (En attendant Godot, 1952; Fin de partie, 1957), Ionesco (La Cantatrice chauve, 1950; Les Chaises, 1952), Adamov. Théâtre vidé d'intrigue, langage qui tourne à vide, personnages sans psychologie épaisse. Subvertit les conventions classiques hérité de Racine puis du drame bourgeois du XIXe.\n\n(c) AUTOFICTION (depuis 1977): Doubrovsky (Fils, 1977) invente le terme; Ernaux le porte au plus haut (Les Années, 2008). Hybridation roman/autobiographie qui subvertit la prétention de vérité de l'autobiographie ET la prétention de fiction du roman.\n\n(d) MICHEL HOUELLEBECQ (Les Particules élémentaires, 1998; La Carte et le territoire, prix Goncourt 2010): subversion paradoxale du naturalisme zolien — Houellebecq EN APPLIQUE les conventions (dépouille le narrateur de tout lyrisme, écrit la société comme un sociologue, construit des personnages comme symptômes d'époque) mais les pousse à un degré qui révèle leur insuffisance. Subversion par excès, non par négation.\n\nUNE TENTATION À ÉVITER: opposer schématiquement « roman traditionnel = mauvais » / « roman subversif = bon ». La critique C2 refuse ce manichéisme. Le grand roman du XXe siècle est SOIT une subversion réussie (Beckett, Sarraute), SOIT un classicisme assumé (Modiano, dont la fidélité à des conventions narratives héritées du XIXe est précisément l'enjeu). Ni l'un ni l'autre n'est intrinsèquement supérieur.\n\nBẪY NGƯỜI VIỆT: souvent assimiler « subversion » à « modernité » et « modernité » à « valeur ». La critique C2 distingue sévèrement: une subversion bâclée (qui n'a pas maîtrisé les conventions qu'elle prétend renverser) est moins forte qu'un classicisme assumé.",
+      "tip_advice_vi": "GRILLE D'ANALYSE pour identifier une subversion de genre:\n\n(1) IDENTIFIER LE GENRE PRÉSUMÉ — quel modèle l'œuvre semble-t-elle convoquer?\n(2) LISTER LES CONVENTIONS DE CE GENRE — narratives, formelles, thématiques.\n(3) RELEVER LES DÉPLACEMENTS — convention par convention, qu'est-ce qui est respecté, déplacé, inversé, exposé?\n(4) INTERPRÉTER L'ENJEU DU DÉPLACEMENT — pourquoi l'auteur opère-t-il ce travail? Quel effet en résulte?\n(5) SITUER DANS UNE TRADITION DE SUBVERSION — l'œuvre est-elle isolée ou s'inscrit-elle dans un mouvement?\n\nCỤM HỮU ÍCH:\n\nPOUR IDENTIFIER LE GENRE:\n- « L'œuvre se réclame, sur le mode parodique, du roman X. »\n- « Les conventions du genre Y sont ici à la fois convoquées et déjouées. »\n- « Sur le plan formel, le texte épouse l'apparence de Z, mais en travaille la substance. »\n\nPOUR ANALYSER LA SUBVERSION:\n- « Le roman conserve l'apparence de l'intrigue tout en lui retirant son moteur causal. »\n- « Le narrateur omniscient est ici maintenu, mais privé de la maîtrise qui le caractérisait chez Balzac. »\n- « Cette subversion n'est pas négation: elle suppose au contraire une intimité avec les codes qu'elle déplace. »\n\nPOUR INTERPRÉTER L'ENJEU:\n- « En subvertissant le genre romanesque, l'auteur interroge la possibilité même du roman après [événement historique / esthétique]. »\n- « Cette mise en crise des conventions répond à une perte de crédibilité du modèle hérité. »\n- « Le travail de subversion est inséparable, ici, d'une réflexion sur les conditions de possibilité de la littérature contemporaine. »\n\nPOUR DISTINGUER SUBVERSION ET ÉCHEC:\n- « Cette tentative de subversion échoue précisément parce qu'elle n'a pas maîtrisé les conventions qu'elle prétend renverser. »\n- « Le geste de rupture demeure superficiel: les codes profonds du genre restent intacts. »\n- « Pour subvertir, encore faut-il connaître. »\n\nTRÁNH:\n- « C'est moderne donc c'est bien. » → jugement non-critique\n- « Beckett a inventé un théâtre nouveau. » → trop vague; préciser EN QUOI il subvertit\n- Confondre subversion et nouveauté absolue (toute subversion suppose un connu)\n- Identifier toute innovation formelle comme subversion (l'innovation peut être un perfectionnement, pas une rupture)",
+      "vocabulary": [
+        {
+          "word": "subvertir un genre",
+          "en": "to subvert a genre",
+          "vi": "lật đổ một thể loại",
+          "pos": "v.",
+          "pronunciation_vi": "sub-vèr-tir an jãn-rơ"
+        },
+        {
+          "word": "les conventions narratives",
+          "en": "narrative conventions",
+          "vi": "các quy ước trần thuật",
+          "pos": "n.f. pl.",
+          "pronunciation_vi": "kõn-vãn-sion na-ra-tiv"
+        },
+        {
+          "word": "un héritage paradoxal",
+          "en": "a paradoxical heritage",
+          "vi": "di sản nghịch lý",
+          "pos": "n.m.",
+          "pronunciation_vi": "é-ri-taj pa-ra-dok-sal"
+        },
+        {
+          "word": "l'épuisement d'un modèle",
+          "en": "the exhaustion of a model",
+          "vi": "sự cạn kiệt của một mô hình",
+          "pos": "n.m.",
+          "pronunciation_vi": "é-pwi-zơ-mã dan mo-dèl"
+        },
+        {
+          "word": "déjouer les attentes",
+          "en": "to thwart expectations",
+          "vi": "phá các mong đợi",
+          "pos": "v.",
+          "pronunciation_vi": "dé-ju-é lé za-tãnt"
+        },
+        {
+          "word": "le Nouveau Roman",
+          "en": "the Nouveau Roman movement",
+          "vi": "phong trào Tiểu thuyết Mới",
+          "pos": "n.m.",
+          "pronunciation_vi": "nu-vô ro-mã"
+        },
+        {
+          "word": "le théâtre de l'absurde",
+          "en": "theatre of the absurd",
+          "vi": "kịch phi lý",
+          "pos": "n.m.",
+          "pronunciation_vi": "té-a-trơ dơ lab-surd"
+        },
+        {
+          "word": "l'autofiction",
+          "en": "autofiction",
+          "vi": "tự hư cấu",
+          "pos": "n.f.",
+          "pronunciation_vi": "ô-to-fik-sion"
+        },
+        {
+          "word": "la mise en crise",
+          "en": "the putting-into-crisis",
+          "vi": "sự đặt vào khủng hoảng",
+          "pos": "n.f.",
+          "pronunciation_vi": "miz ã kriz"
+        },
+        {
+          "word": "un déplacement formel",
+          "en": "a formal displacement",
+          "vi": "một sự dịch chuyển hình thức",
+          "pos": "n.m.",
+          "pronunciation_vi": "dé-plas-mã for-mèl"
+        }
+      ],
+      "dialogue": [
+        {
+          "speaker": "Pr. Compagnon",
+          "text": "Madame Tran, vous écrivez que Beckett « a détruit le théâtre ». Reformulez.",
+          "vi": "Cô Trần, cô viết rằng Beckett « đã phá hủy kịch ». Cô diễn đạt lại."
+        },
+        {
+          "speaker": "Linh",
+          "text": "Bien sûr — formulation excessive. Je devrais dire qu'il en a subverti les conventions héritées du drame bourgeois, sans abolir le théâtre comme genre.",
+          "vi": "Vâng — diễn đạt quá đáng. Tôi nên nói ông lật đổ các quy ước thừa hưởng từ kịch tư sản, mà không xóa bỏ kịch như thể loại."
+        },
+        {
+          "speaker": "Pr. Compagnon",
+          "text": "Et il faut ajouter: pour subvertir, il faut connaître. Beckett était un lecteur attentif de Racine.",
+          "vi": "Và phải thêm: để lật đổ, phải biết. Beckett là người đọc chú ý Racine."
+        },
+        {
+          "speaker": "Linh",
+          "text": "Précisément — la subversion suppose une intimité avec les codes.",
+          "vi": "Chính xác — lật đổ đòi hỏi sự thân thuộc với các mã."
+        }
+      ],
+      "dialogue_long": [
+        {
+          "speaker": "Pr. Compagnon (séminaire de M2 sur le roman au XXe siècle)",
+          "text": "Madame Tran, votre exposé porte sur Houellebecq — auteur dont l'évaluation académique reste polémique. Vingt minutes pour défendre une lecture précise.",
+          "vi": "Cô Trần, bài cô về Houellebecq — tác giả mà đánh giá học thuật còn gây tranh cãi. 20 phút để bảo vệ một cách đọc chính xác."
+        },
+        {
+          "speaker": "Linh",
+          "text": "Houellebecq pose un problème critique singulier: il semble écrire dans la langue la plus plate, celle d'un sociologue mécontent, sans aucune des marques distinctives qu'on attend d'une œuvre littéraire ambitieuse — pas de poésie, pas d'ironie sophistiquée, pas de jeu narratif spectaculaire. Et pourtant, il est lu, traduit, primé. Comment expliquer ce paradoxe ?",
+          "vi": "Houellebecq đặt một vấn đề critique độc đáo: ông có vẻ viết bằng ngôn ngữ phẳng nhất, của một nhà xã hội học bất mãn, không có bất kỳ dấu hiệu phân biệt nào mong đợi từ một tác phẩm văn học tham vọng — không thi ca, không châm biếm tinh vi, không trò chơi trần thuật ngoạn mục. Tuy vậy, ông được đọc, dịch, trao giải. Giải thích nghịch lý này thế nào?"
+        },
+        {
+          "speaker": "Linh",
+          "text": "Mon hypothèse — qu'il faut, je le concède, défendre point par point: Houellebecq n'écrit pas hors de la tradition romanesque française; il en subvertit les conventions par UN EXCÈS. Plus précisément, il pousse les conventions du naturalisme zolien jusqu'au point où elles révèlent leur propre épuisement. C'est une subversion paradoxale — non par déplacement, comme le Nouveau Roman, mais par hyperfidélité.",
+          "vi": "Giả thuyết của tôi — tôi thừa nhận phải bảo vệ từng điểm: Houellebecq không viết ngoài truyền thống tiểu thuyết Pháp; ông lật đổ các quy ước của nó qua MỘT SỰ THÁI QUÁ. Cụ thể hơn, ông đẩy các quy ước của naturalisme Zola đến điểm chúng để lộ sự cạn kiệt của chính mình. Đó là một lật đổ nghịch lý — không phải qua di dời, như Nouveau Roman, mà qua hyperfidélité."
+        },
+        {
+          "speaker": "Linh",
+          "text": "Premier indice: le narrateur. Comme Zola, Houellebecq adopte un narrateur quasi sociologue, qui décrit ses personnages comme des cas, qui les situe dans des conditions socio-économiques précises, qui interprète leurs comportements à l'aune de déterminismes (génétiques, sexuels, économiques). Cela, c'est du pur Zola. Mais là où Zola maintenait, sous le déterminisme, une compassion humaniste — la pitié pour Gervaise dans L'Assommoir — Houellebecq retire la compassion. Le narrateur regarde ses personnages avec une froideur qui est, précisément, l'épuisement de l'humanisme zolien.",
+          "vi": "Dấu hiệu đầu: người trần thuật. Như Zola, Houellebecq dùng một người trần thuật gần như nhà xã hội học, mô tả nhân vật như các ca, đặt họ trong điều kiện kinh tế-xã hội cụ thể, diễn giải hành vi qua các định mệnh (di truyền, tình dục, kinh tế). Đó là Zola thuần túy. Nhưng nơi Zola duy trì, dưới định mệnh, một lòng trắc ẩn nhân văn — niềm thương cho Gervaise trong L'Assommoir — Houellebecq rút bỏ lòng trắc ẩn. Người trần thuật nhìn nhân vật với một sự lạnh lùng, chính là, sự cạn kiệt của humanisme Zola."
+        },
+        {
+          "speaker": "Linh",
+          "text": "Deuxième indice: la description. Houellebecq décrit longuement, à la manière naturaliste, les espaces de la société contemporaine — supermarchés, hôtels, plages touristiques, locaux d'entreprise. Ces descriptions ont la précision objective qu'on trouve chez Zola décrivant les Halles dans Le Ventre de Paris. Mais là où Zola découvrait, sous l'objectivité, une vitalité presque épique, Houellebecq découvre, sous l'objectivité, le vide. Même méthode, effet inversé. C'est cela, la subversion par excès.",
+          "vi": "Dấu hiệu hai: mô tả. Houellebecq mô tả dài, theo cách naturaliste, các không gian xã hội đương đại — siêu thị, khách sạn, bãi biển du lịch, văn phòng công ty. Các mô tả này có sự chính xác khách quan tìm thấy ở Zola mô tả Les Halles trong Le Ventre de Paris. Nhưng nơi Zola phát hiện, dưới khách quan, một sức sống gần như sử thi, Houellebecq phát hiện, dưới khách quan, sự rỗng. Cùng phương pháp, hiệu ứng đảo. Đó chính là lật đổ qua thái quá."
+        },
+        {
+          "speaker": "Linh",
+          "text": "Troisième indice: la prétention scientifique. Zola se réclamait du « roman expérimental » (préface au Roman expérimental, 1880) — il voulait appliquer la méthode de Claude Bernard à la littérature. Houellebecq, dans Les Particules élémentaires (1998), pousse cette prétention jusqu'à inclure des passages de pseudo-scientifique sur la biologie quantique — passages que la critique a souvent jugés ratés, mais qui sont précisément à interpréter comme un geste critique: voilà ce que devient le « roman expérimental » zolien aujourd'hui — du pseudo-discours scientifique au sein du roman, qui ne convainc plus personne.",
+          "vi": "Dấu hiệu ba: tham vọng khoa học. Zola tự nhận « tiểu thuyết thực nghiệm » (lời tựa Le Roman expérimental, 1880) — ông muốn áp dụng phương pháp của Claude Bernard vào văn chương. Houellebecq, trong Les Particules élémentaires (1998), đẩy tham vọng này đến mức bao gồm các đoạn giả khoa học về sinh học lượng tử — các đoạn critique thường đánh giá là hỏng, nhưng chính cần diễn giải như một động tác critique: đó là điều « tiểu thuyết thực nghiệm » Zola trở thành hôm nay — diễn ngôn giả khoa học trong tiểu thuyết, không còn thuyết phục ai."
+        },
+        {
+          "speaker": "Pr. Compagnon",
+          "text": "Lecture forte. Mais une objection: ne risquez-vous pas de surinterpréter ? Comment savez-vous que Houellebecq est conscient de cette dialectique avec Zola ? Il pourrait simplement écrire mal.",
+          "vi": "Cách đọc mạnh. Nhưng một phản biện: cô không có nguy cơ diễn giải quá không? Cô làm sao biết Houellebecq ý thức về biện chứng này với Zola? Ông có thể đơn giản viết tệ."
+        },
+        {
+          "speaker": "Linh",
+          "text": "Objection légitime. Deux éléments la désamorcent. Premièrement, les écrits paratextuels de Houellebecq — interviews, articles dans Lire et Le Figaro littéraire — montrent qu'il connaît Zola en profondeur et le revendique. Deuxièmement, et plus important: la conscience de l'auteur n'est pas le critère de validité d'une lecture. Comme l'a montré Compagnon — pardon, comme vous l'avez vous-même montré dans Le Démon de la théorie (1998) — l'intention de l'auteur est une donnée parmi d'autres, jamais l'arbitre ultime. Si la structure textuelle soutient ma lecture indépendamment, l'objection de la conscience tombe.",
+          "vi": "Phản biện hợp pháp. Hai yếu tố vô hiệu hóa nó. Thứ nhất, các văn bản paratextuels của Houellebecq — phỏng vấn, bài trên Lire và Le Figaro littéraire — cho thấy ông biết Zola sâu sắc và yêu sách nó. Thứ hai, quan trọng hơn: ý thức của tác giả không phải tiêu chí hiệu lực của một cách đọc. Như Compagnon đã chứng minh — xin lỗi, như chính thầy đã chứng minh trong Le Démon de la théorie (1998) — ý đồ của tác giả là một dữ liệu trong số khác, không bao giờ là trọng tài cuối. Nếu cấu trúc văn bản ủng hộ cách đọc của tôi độc lập, phản biện về ý thức rơi."
+        },
+        {
+          "speaker": "Pr. Compagnon",
+          "text": "Réponse parfaite — vous mobilisez ma propre position contre ma propre objection. C'est exactement le genre d'agilité critique qu'on attend en agrégation.",
+          "vi": "Câu trả lời hoàn hảo — cô huy động chính lập trường của tôi chống lại phản biện của chính tôi. Chính là loại linh hoạt critique mong đợi ở agrégation."
+        }
+      ],
+      "roleplay_prompts": [
+        "Bạn được giao analyse de la première page d'En attendant Godot de Beckett. Identifier ce qui subvertit les conventions du drame classique (unités, intrigue, personnages psychologiques) — KHÔNG dire « Beckett a tout cassé ».",
+        "Trong séminaire, một collègue affirme que « le Nouveau Roman a échoué parce qu'il est illisible ». Phản hồi en distinguant lisibilité immédiate et richesse littéraire — défendre Sarraute ou Robbe-Grillet sans tomber dans l'apologie.",
+        "Soạn 5 câu pour analyser comment Annie Ernaux, dans Les Années (2008), subvertit les conventions de l'autobiographie classique en y intégrant la voix collective d'une génération."
+      ],
+      "register_notes": "NOMENCLATURE DES GRANDS GENRES (à connaître):\n\nROMAN — sous-genres:\n- roman réaliste / naturaliste (Balzac, Flaubert, Zola)\n- roman psychologique (La Princesse de Clèves, Constant Adolphe, Proust)\n- roman expérimental (Nouveau Roman: Robbe-Grillet, Sarraute)\n- roman policier (Simenon, Vargas)\n- roman d'apprentissage / Bildungsroman (Stendhal Le Rouge et le Noir, Flaubert L'Éducation sentimentale)\n- autofiction (Doubrovsky, Ernaux, Carrère)\n\nTHÉÂTRE — sous-genres:\n- tragédie classique (Corneille, Racine)\n- comédie (Molière, Marivaux)\n- drame romantique (Hugo Hernani)\n- drame bourgeois (XIXe)\n- théâtre de l'absurde (Beckett, Ionesco, Adamov)\n- théâtre de la cruauté (Artaud)\n\nPOÉSIE — formes et écoles:\n- forme fixe: sonnet, ode, ballade, rondeau\n- vers libre (depuis Rimbaud)\n- prose poétique (Baudelaire, Spleen de Paris)\n- école parnassienne (Leconte de Lisle, Heredia)\n- école symboliste (Verlaine, Rimbaud, Mallarmé)\n- surréalisme (Breton, Éluard, Aragon)\n- OuLiPo (Queneau, Perec)\n\nUSAGE C2: connaître ces classifications n'est pas du formalisme — chaque genre a ses CONVENTIONS qu'il faut nommer pour analyser une subversion. Dire « Beckett subvertit le théâtre » est trop vague; dire « Beckett subvertit le drame bourgeois post-naturaliste en évacuant l'intrigue causale » est précis.\n\nMODES DE SUBVERSION:\n- PARODIE (imitation moqueuse, ex. Don Quichotte parodiant les romans de chevalerie)\n- PASTICHE (imitation sérieuse du style)\n- DÉTOURNEMENT (récupération avec changement de sens)\n- DÉPLACEMENT (modification d'un élément structural)\n- HYPERFIDÉLITÉ (excès de respect des conventions, qui révèle leur épuisement) — Houellebecq\n\nIDIOMS LITTÉRAIRES SUR LA SUBVERSION:\n- « jouer avec les codes » (chơi với các mã — courant)\n- « pousser une logique à son terme » (đẩy logic đến cùng — soutenu)\n- « tordre une convention » (bẻ cong quy ước — courant)\n- « miner de l'intérieur » (làm sụp từ bên trong — soutenu)\n\nMỘT TINH TẾ ĐẶC THÙ: critique Pháp évite les métaphores guerrières (« Beckett attaque le théâtre », « Houellebecq démolit le roman »). Ces formules sont jugées vulgaires. Préférer: « subvertit », « déplace », « interroge », « met à l'épreuve », « pousse à sa limite ». Le travail littéraire est dialectique, non belliqueux.",
+      "idiom_glosses": [
+        {
+          "idiom": "Pousser une logique à son terme (soutenu)",
+          "literal": "Đẩy một logic đến cuối",
+          "meaning": "Đưa một quy ước đến cực để bộc lộ giới hạn — Houellebecquian.",
+          "example": "Houellebecq pousse la logique du naturalisme zolien à son terme — et révèle son épuisement."
+        },
+        {
+          "idiom": "Miner de l'intérieur (soutenu)",
+          "literal": "Đào ngầm từ bên trong",
+          "meaning": "Phá từ bên trong bằng cách giả vờ tôn trọng — subversion subtile.",
+          "example": "Beckett mine de l'intérieur les conventions du théâtre classique sans jamais les rejeter ouvertement."
+        },
+        {
+          "idiom": "Faire école (courant littéraire)",
+          "literal": "Tạo trường phái",
+          "meaning": "Trở thành mô hình cho thế hệ sau.",
+          "example": "Le Nouveau Roman a fait école auprès des écrivains des années 1960."
+        },
+        {
+          "idiom": "Tirer son épingle du jeu (courant)",
+          "literal": "Rút kim ra khỏi trò chơi",
+          "meaning": "Thoát khỏi một tình thế khó — analyse de Modiano qui maintient un classicisme dans une époque expérimentale.",
+          "example": "Modiano tire son épingle du jeu en maintenant un classicisme assumé là où ses contemporains expérimentent."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "fill-blank",
+          "question": "Il eût été paresseux de penser que la subversion d'un genre ___ son simple rejet.",
+          "answer": "signifiât"
+        },
+        {
+          "type": "matching",
+          "pairs": [
+            [
+              "subvertir un genre",
+              "lật đổ một thể loại"
+            ],
+            [
+              "déjouer les attentes",
+              "phá các mong đợi"
+            ],
+            [
+              "la mise en crise",
+              "sự đặt vào khủng hoảng"
+            ]
+          ],
+          "instruction": "Nối thuật ngữ critique với nghĩa Việt"
+        },
+        {
+          "type": "translation",
+          "vietnamese": "Ta không thể lật đổ một thể loại mà ta không nắm được, từ trước, ngữ pháp ẩn kín nhất của nó.",
+          "french": "On ne saurait subvertir un genre dont on ne posséderait pas, au préalable, la grammaire la plus secrète."
+        }
+      ]
+    },
+    {
+      "id": "lcomparing_translations",
+      "level": "C2",
+      "category": "fluency",
+      "title_vi": "So sánh các bản dịch — phê bình dịch thuật văn học",
+      "title_en": "Comparing literary translations",
+      "sentences": [
+        {
+          "en": "Toute traduction, comme l'a écrit Berman, opère un déplacement irrécupérable que la critique se doit d'analyser, non de déplorer.",
+          "vi": "Mọi bản dịch, như Berman viết, thực hiện một sự dịch chuyển không thể khôi phục mà phê bình phải phân tích, chứ không than vãn.",
+          "pronunciation_focus": [
+            "traduction → tra-duk-sion",
+            "Berman → bèr-man",
+            "irrécupérable → i-ré-ku-pé-ra-blơ",
+            "déplorer → dé-plo-ré"
+          ]
+        },
+        {
+          "en": "Comparer deux versions françaises d'un même texte étranger révèle moins l'infidélité de l'une que les choix esthétiques de chaque traducteur.",
+          "vi": "So sánh hai bản tiếng Pháp của cùng một văn bản nước ngoài cho thấy ít sự bất trung của một bản hơn là các lựa chọn thẩm mỹ của mỗi người dịch.",
+          "pronunciation_focus": [
+            "versions → vèr-sion",
+            "révèle → ré-vèl",
+            "infidélité → an-fi-dé-li-té",
+            "esthétiques → ès-té-tik"
+          ]
+        },
+        {
+          "en": "Le rythme proustien, dont la phrase peut courir sur une page entière, met la traduction vietnamienne devant un défi structurel.",
+          "vi": "Nhịp điệu của Proust, mà một câu có thể trải dài cả trang, đặt bản dịch tiếng Việt trước một thách thức cấu trúc.",
+          "pronunciation_focus": [
+            "rythme → ritm",
+            "proustien → prus-tian",
+            "entière → ãn-tièr",
+            "défi → dé-fi"
+          ]
+        },
+        {
+          "en": "Encore faudrait-il que le traducteur eût mesuré, avant de commencer, l'écart entre les économies syntaxiques des deux langues.",
+          "vi": "Vẫn cần người dịch đã đo, trước khi bắt đầu, khoảng cách giữa các kinh tế cú pháp của hai ngôn ngữ.",
+          "pronunciation_focus": [
+            "faudrait → fô-drè",
+            "mesuré → mơ-zu-ré",
+            "écart → é-kar",
+            "économies → é-ko-no-mi"
+          ]
+        },
+        {
+          "en": "Meschonnic nous a appris à juger une traduction non sur sa fidélité au sens, mais sur sa restitution du rythme — qui est, lui, le sens même.",
+          "vi": "Meschonnic đã dạy chúng ta đánh giá một bản dịch không trên sự trung thành với nghĩa, mà trên sự khôi phục nhịp điệu — vốn dĩ chính là ý nghĩa.",
+          "pronunciation_focus": [
+            "Meschonnic → mè-sho-nik",
+            "appris → a-pri",
+            "fidélité → fi-dé-li-té",
+            "restitution → rès-ti-tu-sion"
+          ]
+        }
+      ],
+      "cultural_notes_vi": "PHÊ BÌNH DỊCH THUẬT trong tradition Pháp est un champ riche, structuré par trois grands théoriciens contemporains:\n\n(1) ANTOINE BERMAN (1942-1991): L'Épreuve de l'étranger (1984), La Traduction et la lettre (1985), Pour une critique des traductions: John Donne (1995). Berman défend la traduction « éthique » qui respecte l'étrangeté du texte source au lieu de la naturaliser. Il identifie 13 « tendances déformantes » que les traducteurs subissent (rationalisation, clarification, allongement, ennoblissement, appauvrissement qualitatif, appauvrissement quantitatif, homogénéisation, etc.). Lecture obligatoire en master de traduction.\n\n(2) HENRI MESCHONNIC (1932-2009): Pour la poétique I-V (1970-78), Critique du rythme (1982), Poétique du traduire (1999). Meschonnic centralise le RYTHME comme catégorie centrale: traduire, c'est rendre le rythme du texte source, non son sens. Sa formule fameuse: « le rythme est l'organisation du sens dans le discours, donc le sens même ». Critique sévère de la traduction « belle infidèle » classique.\n\n(3) BARBARA CASSIN (née 1947): Vocabulaire européen des philosophies. Dictionnaire des intraduisibles (2004). Pose la question des INTRADUISIBLES — concepts qui résistent au transfert d'une langue à l'autre (« mind » en anglais, « Geist » en allemand, « esprit » en français — pas synonymes).\n\nQUATRE TYPES DE COMPARAISONS courantes en M2 / agrégation de lettres modernes:\n\n(a) DEUX TRADUCTIONS FRANÇAISES D'UN MÊME TEXTE ÉTRANGER. Ex: comparer la traduction de Madame Bovary en anglais par Lydia Davis (2010) avec celle de Geoffrey Wall (1992) — ou plus pertinent pour un public vietnamien: comparer plusieurs traductions vietnamiennes de Madame Bovary (Bùi Hữu Tải, Trần Phong Giao, etc.).\n\n(b) UNE TRADUCTION COMPARÉE AU TEXTE SOURCE. Ex: examiner comment la traduction française de Beloved de Toni Morrison (par Hortense Chabrier et Sylviane Rué, 1989) rend le vernaculaire afro-américain.\n\n(c) DEUX TRADUCTIONS DU MÊME TEXTE PAR UN MÊME TRADUCTEUR à des époques différentes. Ex: les deux versions de Don Quichotte par Aline Schulman.\n\n(d) AUTO-TRADUCTION ET RÉ-ÉCRITURE. Ex: Beckett, qui s'auto-traduisait du français à l'anglais, n'a jamais produit deux versions identiques — la « traduction » devient ré-écriture.\n\nENJEU SPÉCIFIQUE POUR PUBLIC VIETNAMIEN-FRANÇAIS:\n\n(1) RYTHME PROUSTIEN. La phrase de Proust, qui peut courir sur une page entière, déborde les capacités syntaxiques du vietnamien moderne — qui privilégie les phrases courtes et la coordination. Les traductions vietnamiennes existantes (notamment celle de Dương Tường, partielle) ont dû INVENTER une syntaxe vietnamienne nouvelle pour rendre le souffle proustien. Comparer deux solutions vietnamiennes pour le célèbre incipit de la Recherche est un exercice d'agrégation classique.\n\n(2) DENSITÉ POÉTIQUE. La poésie française du XIXe-XXe (Baudelaire, Mallarmé, Apollinaire, Char) repose sur une densité lexicale et rythmique que le vietnamien — langue à tons, à monosyllabes — restitue de manière toujours partielle. Les traductions vietnamiennes de Baudelaire (par Vũ Đình Liên, par Tế Hanh) sont devenues, par leur singularité, des œuvres en soi.\n\n(3) NIVEAUX DE LANGUE. Le français littéraire utilise des registres soutenus (passé simple, subjonctif imparfait) qui n'ont aucun équivalent grammatical en vietnamien. Le traducteur doit COMPENSER par d'autres marques (lexique soutenu, archaïsmes, structure rare). C'est précisément cette compensation qu'analyse une critique de traduction.",
+      "tip_advice_vi": "GRILLE D'ANALYSE pour comparer deux traductions:\n\n(1) CHOISIR UN PASSAGE COURT — 5 à 15 phrases, dense, représentatif du texte source. Travail détaillé impossible sur plus.\n\n(2) ÉTABLIR LE TEXTE SOURCE EN COLONNE CENTRALE, les deux traductions de part et d'autre. Numéroter chaque ligne pour faciliter la référence.\n\n(3) ANALYSER POINT PAR POINT:\n- Lexique: chaque mot du source rendu comment?\n- Syntaxe: phrase coupée, fusionnée, restructurée?\n- Temps verbaux: respect ou modulation?\n- Rythme: cadence préservée?\n- Connotations: registre maintenu?\n- Effets sonores: allitérations, assonances, rimes internes?\n- Niveaux de langue: soutenu / courant / familier?\n\n(4) IDENTIFIER UN CHOIX TRADUCTOLOGIQUE GLOBAL chez chaque traducteur — souvent une grille fait apparaître une cohérence: l'un naturalise (cible), l'autre étrangéise (source).\n\n(5) ÉVALUER NON L'ERREUR mais LA STRATÉGIE — chaque choix a un coût et un bénéfice. Une critique C2 ne dit pas « cette traduction est mauvaise »; elle dit « cette traduction privilégie X au détriment de Y ».\n\nCỤM HỮU ÍCH:\n\nPOUR INTRODUIRE LA COMPARAISON:\n- « La confrontation des deux versions fait apparaître non tant un meilleur et un moins bon que deux stratégies divergentes. »\n- « Chaque traducteur opère, face au même original, un arbitrage différent entre les exigences contradictoires de la fidélité. »\n\nPOUR DÉCRIRE UN ÉCART:\n- « Là où l'original use d'un imparfait à valeur durative, la traduction X opte pour un présent qui en accélère le tempo. »\n- « Le rythme ternaire de l'original est rendu, dans la version Y, par une cadence binaire — choix qui appauvrit la dimension lyrique. »\n- « L'allitération en [s] de la phrase source disparaît purement et simplement dans la traduction Z. »\n\nPOUR ÉVALUER UNE STRATÉGIE:\n- « La stratégie de naturalisation est ici poussée à un point qui efface la singularité de la voix originale. »\n- « À l'inverse, la stratégie étrangéisante préserve la défamiliarisation — au prix d'une lecture plus exigeante. »\n- « Aucune des deux versions ne saurait prétendre à l'exhaustivité; chacune éclaire un aspect que l'autre laisse dans l'ombre. »\n\nPOUR CONCLURE:\n- « Cette comparaison illustre le théorème bermanien selon lequel toute traduction est nécessairement déplacement. »\n- « C'est précisément ce que Meschonnic appelait l'épreuve du rythme: ce qui résiste, dans la traduction, à la pure équivalence sémantique. »\n\nTRÁNH:\n- « Cette traduction est meilleure que celle-là. » → jugement non analytique\n- « Le traducteur a fait une erreur. » → distinguer erreur (lapsus) et choix (stratégie)\n- « Le vietnamien ne peut rendre cela. » → toujours faux; nuancer en disant « le vietnamien rend cela par d'autres moyens »\n- Comparer sans citer ligne par ligne — vague et invérifiable",
+      "vocabulary": [
+        {
+          "word": "la traductologie",
+          "en": "translation studies",
+          "vi": "dịch học",
+          "pos": "n.f.",
+          "pronunciation_vi": "tra-duk-to-lo-ji"
+        },
+        {
+          "word": "un déplacement traductologique",
+          "en": "a translative displacement",
+          "vi": "một sự dịch chuyển dịch thuật",
+          "pos": "n.m.",
+          "pronunciation_vi": "dé-plas-mã tra-duk-to-lo-jik"
+        },
+        {
+          "word": "la naturalisation",
+          "en": "domestication",
+          "vi": "sự nội địa hóa (dịch)",
+          "pos": "n.f.",
+          "pronunciation_vi": "na-tu-ra-li-za-sion"
+        },
+        {
+          "word": "l'étrangéisation",
+          "en": "foreignization",
+          "vi": "sự giữ tính lạ",
+          "pos": "n.f.",
+          "pronunciation_vi": "é-trãn-jé-i-za-sion"
+        },
+        {
+          "word": "une tendance déformante",
+          "en": "a deforming tendency (Berman)",
+          "vi": "một khuynh hướng làm méo (Berman)",
+          "pos": "n.f.",
+          "pronunciation_vi": "tãn-dãns dé-for-mãnt"
+        },
+        {
+          "word": "la fidélité au sens",
+          "en": "fidelity to meaning",
+          "vi": "sự trung thành với nghĩa",
+          "pos": "n.f.",
+          "pronunciation_vi": "fi-dé-li-té ô sãns"
+        },
+        {
+          "word": "la restitution du rythme",
+          "en": "the restitution of rhythm",
+          "vi": "sự khôi phục nhịp điệu",
+          "pos": "n.f.",
+          "pronunciation_vi": "rès-ti-tu-sion du ritm"
+        },
+        {
+          "word": "un intraduisible",
+          "en": "an untranslatable",
+          "vi": "một khái niệm không dịch được",
+          "pos": "n.m.",
+          "pronunciation_vi": "an-tra-du-i-zi-blơ"
+        },
+        {
+          "word": "une auto-traduction",
+          "en": "a self-translation",
+          "vi": "sự tự dịch",
+          "pos": "n.f.",
+          "pronunciation_vi": "ô-to tra-duk-sion"
+        },
+        {
+          "word": "un calque",
+          "en": "a calque (loan translation)",
+          "vi": "sự dịch sao (calque)",
+          "pos": "n.m.",
+          "pronunciation_vi": "kalk"
+        }
+      ],
+      "dialogue": [
+        {
+          "speaker": "Pr. Compagnon",
+          "text": "Madame Tran, vous comparez deux traductions vietnamiennes de Madame Bovary. Sur quelle phrase précise ?",
+          "vi": "Cô Trần, cô so sánh hai bản dịch tiếng Việt của Madame Bovary. Trên câu cụ thể nào?"
+        },
+        {
+          "speaker": "Linh",
+          "text": "Sur l'incipit du chapitre VI, partie I — le passage sur les lectures romantiques d'Emma adolescente.",
+          "vi": "Trên incipit của chương VI, phần I — đoạn về các cuốn tiểu thuyết lãng mạn Emma đọc tuổi thiếu nữ."
+        },
+        {
+          "speaker": "Pr. Compagnon",
+          "text": "Bon choix — passage à discours indirect libre intense. Comment chacune rend-elle l'ironie flaubertienne ?",
+          "vi": "Lựa chọn tốt — đoạn discours indirect libre mạnh. Mỗi bản rendre châm biếm Flaubert thế nào?"
+        },
+        {
+          "speaker": "Linh",
+          "text": "L'une l'efface en choisissant un présent narratif neutre; l'autre la préserve en restituant l'imparfait à valeur ironique.",
+          "vi": "Một bản xóa nó bằng cách chọn một présent narratif trung lập; bản kia giữ bằng cách khôi phục imparfait có giá trị châm biếm."
+        }
+      ],
+      "dialogue_long": [
+        {
+          "speaker": "Pr. Compagnon (séminaire de traductologie)",
+          "text": "Madame Tran, vous nous présentez aujourd'hui une comparaison de deux traductions vietnamiennes du célèbre incipit de la Recherche du temps perdu — la phrase qui ouvre Du côté de chez Swann (1913).",
+          "vi": "Cô Trần, cô trình bày hôm nay so sánh hai bản dịch tiếng Việt của incipit nổi tiếng Recherche du temps perdu — câu mở đầu Du côté de chez Swann (1913)."
+        },
+        {
+          "speaker": "Linh",
+          "text": "L'incipit proustien — « Longtemps, je me suis couché de bonne heure » — pose au traducteur vietnamien un défi triple. D'abord, le rythme: la phrase, brève en apparence, se prolonge dans tout le paragraphe par une syntaxe à embranchements. Ensuite, le passé composé: « je me suis couché » a une valeur stylistique très spécifique en français — pas un présent, pas un passé simple, mais ce passé composé qui installe le souvenir dans une présence persistante. Enfin, le « longtemps » initial: adverbe placé en hyperbate, qui charge dès le premier mot le tempo de toute la Recherche.",
+          "vi": "Incipit Proust — « Longtemps, je me suis couché de bonne heure » — đặt cho người dịch tiếng Việt một thách thức ba. Trước tiên, nhịp điệu: câu, ngắn thoạt nhìn, kéo dài cả đoạn qua một cú pháp phân nhánh. Tiếp đến, passé composé: « je me suis couché » có giá trị phong cách rất cụ thể trong tiếng Pháp — không phải présent, không passé simple, mà passé composé này đặt hồi ức trong một sự hiện diện kéo dài. Cuối, « longtemps » đầu tiên: adverbe đặt en hyperbate, từ chữ đầu đã nạp tempo cho toàn Recherche."
+        },
+        {
+          "speaker": "Linh",
+          "text": "Première version vietnamienne — celle d'un traducteur des années 1990, dont je tairai le nom car il est encore vivant — choisit une formule qu'on peut rétro-traduire en français comme: « pendant longtemps j'ai eu l'habitude d'aller au lit tôt ». Cette traduction RÉSOUT chacun des trois défis par une voie de naturalisation maximale: « j'ai eu l'habitude » lisse l'aspect verbal du français en concept lexical; « pendant » substitue à l'hyperbate proustien une formule canonique vietnamienne; « tôt » rend « de bonne heure » sans en restituer la légère préciosité. Le résultat est lisible, fluide — et perd, à mon sens, ce qui faisait Proust.",
+          "vi": "Bản đầu tiếng Việt — của một người dịch những năm 1990, tôi sẽ giấu tên vì ông còn sống — chọn một công thức có thể dịch ngược sang tiếng Pháp là: « trong thời gian dài tôi có thói quen đi ngủ sớm ». Bản dịch này GIẢI QUYẾT từng thách thức bằng đường nội địa hóa tối đa: « có thói quen » làm phẳng aspect verbal của tiếng Pháp thành khái niệm từ vựng; « trong » thay hyperbate Proust bằng một công thức chuẩn tiếng Việt; « sớm » rendre « de bonne heure » không khôi phục tính cầu kỳ nhẹ. Kết quả dễ đọc, mượt — và mất, theo tôi, điều làm nên Proust."
+        },
+        {
+          "speaker": "Linh",
+          "text": "Seconde version — plus récente, celle d'un universitaire formé en France, parue dans la revue Văn học (avec autorisation) — opte pour la voie inverse, étrangéisante. La phrase commence directement par « Đã từ rất lâu » — équivalent du « longtemps » placé en tête, créant le même déséquilibre rythmique que l'original. Le « je me suis couché » est rendu non par « j'ai eu l'habitude » mais par une formule qui préserve l'aspect résultatif — quelque chose comme « tôi vẫn lên giường ». Le « de bonne heure » devient « lúc giờ còn sớm » — formule légèrement archaïque, qui restitue la préciosité.",
+          "vi": "Bản thứ hai — mới hơn, của một nhà đại học đào tạo ở Pháp, đăng trên tạp chí Văn học (với phép) — chọn đường ngược, étrangéisante. Câu bắt đầu trực tiếp bằng « Đã từ rất lâu » — tương đương « longtemps » đặt đầu, tạo sự mất cân bằng nhịp điệu giống nguyên bản. « Je me suis couché » được rendre không bằng « có thói quen » mà bằng công thức giữ aspect résultatif — gì đó như « tôi vẫn lên giường ». « De bonne heure » thành « lúc giờ còn sớm » — công thức hơi cổ, khôi phục cầu kỳ."
+        },
+        {
+          "speaker": "Pr. Compagnon",
+          "text": "Très bien. Verdict ?",
+          "vi": "Rất tốt. Phán quyết?"
+        },
+        {
+          "speaker": "Linh",
+          "text": "Pas de verdict simple. La première version privilégie l'ACCESSIBILITÉ au lecteur vietnamien moyen — elle remplit la fonction de présentation, à laquelle Proust a longtemps résisté en français même. La seconde version privilégie la RESTITUTION DU GESTE PROUSTIEN — elle exige davantage du lecteur mais préserve la singularité formelle. Berman aurait soutenu la seconde au nom de l'éthique de la traduction; Meschonnic l'aurait soutenue au nom du rythme. Mais on aurait tort de juger la première « ratée »: elle relève d'une autre conception de la traduction — celle de l'introduction d'un auteur dans une langue qui ne le connaît pas encore. Les deux gestes sont légitimes; ils répondent à des moments différents de l'histoire de la traduction.",
+          "vi": "Không có phán quyết đơn giản. Bản đầu ưu tiên TIẾP CẬN với độc giả Việt trung bình — nó làm chức năng giới thiệu, điều Proust đã kháng cự lâu trong chính tiếng Pháp. Bản hai ưu tiên KHÔI PHỤC ĐỘNG TÁC PROUSTIEN — đòi hỏi nhiều hơn từ độc giả nhưng giữ được tính độc đáo hình thức. Berman sẽ ủng hộ bản hai nhân danh đạo đức dịch thuật; Meschonnic sẽ ủng hộ nhân danh nhịp điệu. Nhưng sẽ sai khi phán bản đầu « hỏng »: nó thuộc về một quan niệm khác về dịch thuật — quan niệm giới thiệu một tác giả vào một ngôn ngữ chưa biết ông. Hai động tác đều hợp pháp; chúng đáp ứng các thời khắc khác nhau của lịch sử dịch thuật."
+        },
+        {
+          "speaker": "Pr. Compagnon",
+          "text": "Réponse mature. Vous évitez à la fois le purisme bermanien (qui condamnerait toute naturalisation) et le pragmatisme paresseux (qui validerait n'importe quelle traduction sous prétexte d'accessibilité). C'est exactement la position de Cassin dans le Vocabulaire européen des philosophies — l'intraduisible est ce qu'on n'arrête jamais de traduire.",
+          "vi": "Câu trả lời trưởng thành. Cô tránh được cả purisme Berman (sẽ kết án mọi nội địa hóa) và pragmatisme lười (sẽ chấp nhận bất cứ bản dịch nào với lý do tiếp cận). Chính là lập trường của Cassin trong Vocabulaire européen des philosophies — intraduisible là điều ta không bao giờ ngừng dịch."
+        }
+      ],
+      "roleplay_prompts": [
+        "Bạn được giao soạn une critique de traduction (compte rendu de 1500 mots) pour la revue Translittérature. Sujet: deux traductions françaises d'un même poème de Pessoa. Soạn introduction (200 mots) — situer + problématique + plan.",
+        "Trong séminaire, một collègue affirme « la traduction est toujours une trahison ». Phản hồi avec rigueur — distinguer la trahison comme cliché et le déplacement comme objet d'analyse, mobiliser Berman.",
+        "Soạn 5 câu pour un commentaire publié dans une postface — comparer deux traductions vietnamiennes d'un poème de Baudelaire. Nommer chaque traducteur, dater chaque version, préciser une stratégie."
+      ],
+      "register_notes": "VOCABULAIRE TRADUCTOLOGIQUE — termes techniques à connaître:\n\nDIRECTIONS:\n- texte source / texte cible (TS / TC)\n- langue source / langue cible (LS / LC)\n- public source / public cible\n\nSTRATÉGIES (Venuti, terminologie reprise par Berman):\n- naturalisation / domestication: rapprocher du lecteur cible\n- étrangéisation / foreignization: rapprocher du texte source\n- équivalence dynamique (Nida) vs équivalence formelle\n\nPROCÉDÉS (Vinay & Darbelnet, Stylistique comparée du français et de l'anglais, 1958):\n- emprunt (garder le mot étranger: « le sushi »)\n- calque (copier la structure: « gratte-ciel » de skyscraper)\n- traduction littérale\n- transposition (changement de classe grammaticale)\n- modulation (changement de point de vue)\n- équivalence (idiome rendu par idiome équivalent)\n- adaptation (changement de référent culturel)\n\nTENDANCES DÉFORMANTES (Berman, La Traduction et la lettre, 1985):\n- rationalisation\n- clarification\n- allongement\n- ennoblissement / vulgarisation\n- appauvrissement qualitatif / quantitatif\n- homogénéisation\n- destruction des rythmes\n- destruction des réseaux signifiants sous-jacents\n- destruction des systématismes textuels\n- destruction (ou exotisation) des réseaux langagiers vernaculaires\n- destruction des locutions et idiotismes\n- effacement des superpositions de langues\n- destruction des systématismes\n\nCRITIQUES MAJEURS DE LA TRADUCTION:\n- Antoine Berman: éthique de la traduction\n- Henri Meschonnic: rythme comme catégorie centrale\n- Barbara Cassin: intraduisibles\n- Lawrence Venuti (anglais, traduit): visibilité du traducteur\n- George Steiner (anglais, traduit): Après Babel (1975)\n\nIDIOMS LITTÉRAIRES SUR LA TRADUCTION:\n- « les belles infidèles » (cụm cổ về dịch tự do — courant)\n- « passer la main » (chuyển bản — courant)\n- « rendre à César » (trả về — soutenu critique)\n- « sourcier vs cibliste » (hai trường phái — jargon)\n\nMỘT TINH TẾ ĐẶC THÙ: dans la critique de traduction française, on évite « interprétation » comme synonyme de « traduction ». L'interprétation est l'oral (interprétariat); la traduction est l'écrit. Confondre = mark amateur.",
+      "idiom_glosses": [
+        {
+          "idiom": "Les belles infidèles (courant historique)",
+          "literal": "Những cô gái đẹp bất trung",
+          "meaning": "Truyền thống dịch tự do thế kỷ XVII-XVIII — đẹp văn nhưng không trung thành.",
+          "example": "Les belles infidèles, comme la traduction de Lucain par Brébeuf, ont été critiquées dès le XIXe siècle."
+        },
+        {
+          "idiom": "Sourcier vs cibliste (jargon traductologique)",
+          "literal": "Người tìm nguồn vs người bám đích",
+          "meaning": "Hai trường phái dịch — gần văn nguồn vs gần văn đích.",
+          "example": "Berman était ouvertement sourcier — il défendait la priorité du texte source contre les ciblistes."
+        },
+        {
+          "idiom": "Faire passer en français (courant)",
+          "literal": "Làm cho qua trong tiếng Pháp",
+          "meaning": "Dịch sang tiếng Pháp — dùng cho dịch văn học.",
+          "example": "Faire passer Mallarmé en vietnamien sans en perdre la densité tient du défi structurel."
+        },
+        {
+          "idiom": "Rendre la lettre et l'esprit (soutenu)",
+          "literal": "Trả văn tự và tinh thần",
+          "meaning": "Khôi phục cả hình thức và ý nghĩa — yêu cầu tối đa.",
+          "example": "Une grande traduction rend la lettre et l'esprit — la plupart se contentent de l'esprit."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "fill-blank",
+          "question": "Encore faudrait-il que le traducteur ___ mesuré, avant de commencer, l'écart entre les économies syntaxiques des deux langues.",
+          "answer": "eût"
+        },
+        {
+          "type": "matching",
+          "pairs": [
+            [
+              "la naturalisation",
+              "sự nội địa hóa"
+            ],
+            [
+              "l'étrangéisation",
+              "sự giữ tính lạ"
+            ],
+            [
+              "un intraduisible",
+              "khái niệm không dịch được"
+            ]
+          ],
+          "instruction": "Nối thuật ngữ traductologique với nghĩa Việt"
+        },
+        {
+          "type": "translation",
+          "vietnamese": "Mọi bản dịch thực hiện một sự dịch chuyển không thể khôi phục mà phê bình phải phân tích, chứ không than vãn.",
+          "french": "Toute traduction opère un déplacement irrécupérable que la critique se doit d'analyser, non de déplorer."
+        }
+      ]
+    },
+    {
+      "id": "lbiographical_context",
+      "level": "C2",
+      "category": "fluency",
+      "title_vi": "Tiểu sử tác giả và văn bản — tranh luận Sainte-Beuve / Proust",
+      "title_en": "Author's biographical context vs the text",
+      "sentences": [
+        {
+          "en": "Proust, dans Contre Sainte-Beuve, a démonté avec une force durable l'illusion qui consiste à expliquer l'œuvre par la vie de l'auteur.",
+          "vi": "Proust, trong Contre Sainte-Beuve, đã tháo dỡ với một sức mạnh bền vững ảo tưởng giải thích tác phẩm bằng cuộc đời tác giả.",
+          "pronunciation_focus": [
+            "démonté → dé-mõn-té",
+            "force → fors",
+            "durable → du-ra-blơ",
+            "illusion → i-lu-zion"
+          ]
+        },
+        {
+          "en": "Le moi qui écrit, soutenait-il, n'est pas le moi qui dîne en ville — distinction qui fonde toute la critique moderne.",
+          "vi": "Cái tôi viết, ông bảo vệ, không phải cái tôi ăn tối ngoài thành phố — phân biệt làm nền cho toàn bộ phê bình hiện đại.",
+          "pronunciation_focus": [
+            "soutenait → su-tơ-nè",
+            "ville → vil",
+            "distinction → dis-tank-sion",
+            "critique → kri-tik"
+          ]
+        },
+        {
+          "en": "Cela étant, refuser toute pertinence à la donnée biographique reviendrait à ignorer ce que l'œuvre doit aux conditions concrètes de son surgissement.",
+          "vi": "Dù vậy, từ chối mọi tính liên quan của dữ liệu tiểu sử sẽ là bỏ qua điều tác phẩm nợ các điều kiện cụ thể của sự xuất hiện.",
+          "pronunciation_focus": [
+            "pertinence → pèr-ti-nãns",
+            "donnée → do-né",
+            "reviendrait → rơ-vian-drè",
+            "surgissement → sur-jis-mã"
+          ]
+        },
+        {
+          "en": "L'autofiction contemporaine — d'Annie Ernaux à Emmanuel Carrère — a brouillé sciemment les frontières que Proust avait travaillé à établir.",
+          "vi": "Tự hư cấu đương đại — từ Annie Ernaux đến Emmanuel Carrère — đã làm mờ cố ý các biên giới mà Proust đã làm việc để thiết lập.",
+          "pronunciation_focus": [
+            "autofiction → ô-to-fik-sion",
+            "Carrère → ka-rèr",
+            "brouillé → bru-yé",
+            "sciemment → sia-mã"
+          ]
+        },
+        {
+          "en": "Encore faut-il, lorsqu'on lit Ernaux, distinguer le pacte référentiel qu'elle propose du pacte fictionnel qui régit le roman classique.",
+          "vi": "Vẫn cần, khi đọc Ernaux, phân biệt hợp đồng tham chiếu cô đề xuất với hợp đồng hư cấu chi phối tiểu thuyết cổ điển.",
+          "pronunciation_focus": [
+            "lorsqu'on → lors-kõn",
+            "Ernaux → èr-nô",
+            "pacte → pakt",
+            "fictionnel → fik-sio-nèl"
+          ]
+        }
+      ],
+      "cultural_notes_vi": "TRANH LUẬN SAINTE-BEUVE / PROUST est un débat foundationnel de la critique moderne française. Une compréhension précise est attendue à C2.\n\n(1) CHARLES-AUGUSTIN SAINTE-BEUVE (1804-1869): critique dominant du XIXe siècle, auteur des Causeries du lundi (1851-62). Sa méthode, dite « biographique », consiste à expliquer l'œuvre par la VIE et le CARACTÈRE de l'auteur. Pour Sainte-Beuve, comprendre Racine, c'est connaître les amitiés de Racine, sa formation à Port-Royal, son tempérament. La critique devient une espèce de portrait moral.\n\n(2) MARCEL PROUST (1871-1922): réplique avec Contre Sainte-Beuve, écrit vers 1908-09 mais publié posthumément en 1954. Proust soutient que « un livre est le produit d'un autre moi que celui que nous manifestons dans nos habitudes, dans la société, dans nos vices ». Il sépare radicalement le MOI SOCIAL (qui dîne, qui converse, qui souffre) du MOI CRÉATEUR (qui écrit). La biographie ne donne accès qu'au premier; l'œuvre seule donne accès au second.\n\n(3) HÉRITAGE: la critique du XXe siècle (Russe formaliste, New Criticism, structuralisme) a globalement suivi Proust. Roland Barthes radicalise dans « La Mort de l'auteur » (1968): le texte est un tissu de citations, l'auteur empirique n'a aucune autorité sur son sens. Foucault, dans « Qu'est-ce qu'un auteur ? » (1969), nuance: il faut analyser la « fonction-auteur », c'est-à-dire le rôle institutionnel et discursif du nom d'auteur, sans pour autant restaurer le moi biographique.\n\n(4) RETOUR DE LA BIOGRAPHIE: depuis les années 1990, retour partiel — non au biographisme naïf de Sainte-Beuve, mais à une « histoire littéraire » qui réintègre les conditions de production. Antoine Compagnon (Le Démon de la théorie, 1998) plaide pour un équilibre: ni biographisme exclusif, ni purisme textuel anti-biographique.\n\n(5) AUTOFICTION CONTEMPORAINE: complique la donne. Si Annie Ernaux écrit Les Années (2008) en disant explicitement « ces souvenirs sont les miens », elle propose un PACTE RÉFÉRENTIEL au lecteur. Refuser de lire la biographie d'Ernaux serait absurde — l'auteure elle-même y renvoie. Mais réduire l'œuvre à la biographie serait également naïf — elle est aussi élaboration, sélection, mise en forme. Philippe Lejeune (Le Pacte autobiographique, 1975) avait posé les termes; Doubrovsky (Fils, 1977) a inventé le néologisme « autofiction ».\n\nQUATRE POSITIONS C2 LÉGITIMES sur la question:\n\n(a) PURISME TEXTUEL post-Barthes: l'œuvre se suffit à elle-même; toute biographie est anecdote. Position cohérente mais qui appauvrit la lecture de Proust, Céline, Ernaux, Houellebecq — auteurs dont la biographie est indissociable du texte.\n\n(b) BIOGRAPHISME RAFFINÉ post-Compagnon: la biographie éclaire l'œuvre dans des cas précis (lettres, journaux, contexte historique), sans en dériver le sens.\n\n(c) GÉNÉTIQUE TEXTUELLE (école de l'ITEM, Pierre-Marc de Biasi): étudier les manuscrits et brouillons pour reconstituer le travail de la création. Réhabilite l'auteur comme artisan, non comme source de signification.\n\n(d) SOCIOLOGIE DE LA LITTÉRATURE post-Bourdieu (Les Règles de l'art, 1992): l'œuvre est produite dans un CHAMP LITTÉRAIRE — biographie, capital culturel, position dans le champ. Sans tomber dans le biographisme naïf.\n\nBẪY NGƯỜI VIỆT: souvent confondre « contexte historique » (acceptable) avec « biographie de l'auteur » (problématique post-Proust). « Madame Bovary fut écrit en 1857, sous le Second Empire » est une donnée HISTORIQUE pertinente. « Flaubert a connu une rupture amoureuse en 1842 qui explique son pessimisme » est un BIOGRAPHISME de type Sainte-Beuve, à éviter.",
+      "tip_advice_vi": "GRILLE D'ANALYSE pour articuler biographie et œuvre sans tomber dans le biographisme:\n\n(1) IDENTIFIER LE PACTE PROPOSÉ:\n- Pacte fictionnel (roman classique): « ce livre est inventé »\n- Pacte autobiographique (Lejeune): « ce livre dit la vérité de ma vie »\n- Pacte autofictionnel (Doubrovsky): « ce livre joue avec les frontières — vérité et invention sont indistinctes »\n\n(2) CHOISIR LES DONNÉES BIOGRAPHIQUES PERTINENTES — celles que le texte SOLLICITE explicitement:\n- Période historique de l'écriture (souvent pertinente)\n- Position de l'auteur dans le champ littéraire (souvent pertinente)\n- Lectures avérées de l'auteur (parfois pertinentes pour intertextualité)\n- Détails intimes de la vie privée (rarement pertinents)\n\n(3) DISTINGUER TROIS NIVEAUX:\n- AUTEUR EMPIRIQUE: la personne historique, qui mange, dort, signe ses contrats\n- AUTEUR IMPLIQUÉ (Booth, Wayne): l'image que le texte construit de son auteur\n- NARRATEUR: la voix du texte, distincte des deux précédents\n\n(4) ANALYSER LES PARATEXTES (Genette, Seuils, 1987):\n- Préface, dédicace, épigraphe, notes\n- Bandeaux éditoriaux, jaquette, prière d'insérer\n- Interviews, articles autour de la sortie\nCes paratextes orientent la lecture, qu'on l'accepte ou la résiste.\n\nCỤM HỮU ÍCH:\n\nPOUR INVOQUER LA BIOGRAPHIE LÉGITIMEMENT:\n- « Le contexte de la rédaction — [période, événement] — éclaire ce passage. »\n- « Sans tomber dans le biographisme, on peut noter que l'auteur a explicitement revendiqué cette filiation avec X. »\n- « Le texte sollicite lui-même la donnée biographique en intégrant des références datables. »\n\nPOUR ÉVITER LE BIOGRAPHISME NAÏF:\n- « Il convient de distinguer ce que le texte donne à lire de ce que la biographie de l'auteur permettrait de supposer. »\n- « Le moi qui écrit, comme le rappelle Proust, n'est pas le moi qui vit. »\n- « L'instance énonciative ne se confond pas avec l'auteur empirique. »\n\nPOUR ANALYSER L'AUTOFICTION:\n- « Annie Ernaux propose un pacte référentiel explicite, qu'on ne peut ignorer sans contresens. »\n- « L'autofiction brouille sciemment la frontière, mais ne l'abolit pas. »\n- « La référentialité du texte est une donnée du texte, non une indiscrétion sur l'auteur. »\n\nTRÁNH:\n- « L'auteur a écrit cela parce qu'il a vécu telle expérience. » → biographisme strict\n- « La biographie n'a aucune importance. » → purisme excessif, naïf\n- Confondre auteur empirique et narrateur (« Marcel Proust dit dans la Recherche que… »)\n- Sourcer un trait de personnage par un trait psychologique de l'auteur",
+      "vocabulary": [
+        {
+          "word": "le pacte autobiographique",
+          "en": "the autobiographical pact",
+          "vi": "hợp đồng tự thuật",
+          "pos": "n.m.",
+          "pronunciation_vi": "pakt ô-to-bio-gra-fik"
+        },
+        {
+          "word": "le pacte référentiel",
+          "en": "the referential pact",
+          "vi": "hợp đồng tham chiếu",
+          "pos": "n.m.",
+          "pronunciation_vi": "pakt ré-fé-rãn-siel"
+        },
+        {
+          "word": "le pacte fictionnel",
+          "en": "the fictional pact",
+          "vi": "hợp đồng hư cấu",
+          "pos": "n.m.",
+          "pronunciation_vi": "pakt fik-sio-nèl"
+        },
+        {
+          "word": "l'autofiction",
+          "en": "autofiction",
+          "vi": "tự hư cấu",
+          "pos": "n.f.",
+          "pronunciation_vi": "ô-to-fik-sion"
+        },
+        {
+          "word": "le moi créateur",
+          "en": "the creating self",
+          "vi": "cái tôi sáng tạo",
+          "pos": "n.m.",
+          "pronunciation_vi": "moa kré-a-tơr"
+        },
+        {
+          "word": "le moi social",
+          "en": "the social self",
+          "vi": "cái tôi xã hội",
+          "pos": "n.m.",
+          "pronunciation_vi": "moa so-sial"
+        },
+        {
+          "word": "l'auteur empirique",
+          "en": "the empirical author",
+          "vi": "tác giả thực nghiệm",
+          "pos": "n.m.",
+          "pronunciation_vi": "ô-tơr ãn-pi-rik"
+        },
+        {
+          "word": "l'auteur impliqué",
+          "en": "the implied author",
+          "vi": "tác giả ngụ ý",
+          "pos": "n.m.",
+          "pronunciation_vi": "ô-tơr an-pli-ké"
+        },
+        {
+          "word": "le biographisme",
+          "en": "biographism",
+          "vi": "thuyết tiểu sử",
+          "pos": "n.m.",
+          "pronunciation_vi": "bio-gra-fism"
+        },
+        {
+          "word": "un paratexte",
+          "en": "a paratext",
+          "vi": "một văn bản phụ",
+          "pos": "n.m.",
+          "pronunciation_vi": "pa-ra-tèkst"
+        }
+      ],
+      "dialogue": [
+        {
+          "speaker": "Pr. Compagnon",
+          "text": "Madame Tran, vous expliquez Madame Bovary par les déceptions amoureuses de Flaubert. C'est typiquement Sainte-Beuve.",
+          "vi": "Cô Trần, cô giải thích Madame Bovary bằng các thất vọng tình yêu của Flaubert. Đó là Sainte-Beuve điển hình."
+        },
+        {
+          "speaker": "Linh",
+          "text": "Vous avez raison — j'ai glissé vers le biographisme. Le texte n'a pas besoin de cette explication.",
+          "vi": "Thầy đúng — tôi đã trượt vào biographisme. Văn bản không cần giải thích đó."
+        },
+        {
+          "speaker": "Pr. Compagnon",
+          "text": "Et la fameuse formule « Madame Bovary, c'est moi » est probablement apocryphe — Flaubert ne l'a sans doute jamais dite.",
+          "vi": "Và cụm nổi tiếng « Madame Bovary, c'est moi » có lẽ apocryphe — Flaubert có thể chưa bao giờ nói."
+        },
+        {
+          "speaker": "Linh",
+          "text": "Encore une raison de ne pas la mobiliser. Je reformule en restant dans le texte.",
+          "vi": "Thêm một lý do để không huy động. Tôi diễn đạt lại bằng cách ở lại trong văn bản."
+        }
+      ],
+      "dialogue_long": [
+        {
+          "speaker": "Pr. Compagnon (séminaire de M2 sur l'autofiction)",
+          "text": "Madame Tran, votre exposé porte sur Annie Ernaux — autrice désormais Nobel. La question centrale: comment lire l'autofiction sans tomber dans deux écueils symétriques — le biographisme naïf et le purisme textuel anti-biographique ?",
+          "vi": "Cô Trần, bài cô về Annie Ernaux — tác giả giờ Nobel. Câu hỏi trung tâm: đọc autofiction thế nào mà không rơi vào hai bẫy đối xứng — biographisme ngây thơ và purisme văn bản chống tiểu sử?"
+        },
+        {
+          "speaker": "Linh",
+          "text": "La position que je défendrai est la suivante: l'autofiction d'Ernaux exige une lecture qui prenne au sérieux le pacte référentiel qu'elle propose, sans pour autant abolir la distinction entre le moi écrivant et le moi vécu. Cette position s'oppose à la fois au biographisme — qui rabattrait l'œuvre sur la vie — et au purisme barthésien — qui nierait la spécificité du pacte autofictionnel.",
+          "vi": "Lập trường tôi sẽ bảo vệ: autofiction Ernaux đòi hỏi cách đọc xem xét nghiêm túc hợp đồng tham chiếu cô đề xuất, mà không xóa bỏ phân biệt giữa cái tôi viết và cái tôi sống. Lập trường này đối lập cùng lúc với biographisme — sẽ đánh đồng tác phẩm với cuộc đời — và purisme barthésien — sẽ phủ nhận tính đặc thù của hợp đồng autofictionnel."
+        },
+        {
+          "speaker": "Linh",
+          "text": "Le cas des Années (2008) est particulièrement éclairant. Ernaux y écrit l'histoire d'une génération à travers son propre parcours, mais elle adopte un dispositif narratif inattendu: elle parle d'elle-même à la troisième personne — « elle » — et non à la première. Pourquoi ? Précisément, je crois, pour signaler que le moi qui écrit n'est pas exactement le moi qui a vécu. La troisième personne crée la distance qui permet le travail littéraire — sans pour autant abolir le pacte référentiel, puisque le « elle » désigne bien Annie Ernaux historique.",
+          "vi": "Trường hợp Les Années (2008) đặc biệt rõ. Ernaux viết lịch sử một thế hệ qua hành trình của chính mình, nhưng cô dùng một thiết kế trần thuật bất ngờ: cô nói về mình ở ngôi thứ ba — « elle » — không phải ngôi thứ nhất. Tại sao? Chính, tôi nghĩ, để báo hiệu cái tôi viết không hẳn cái tôi đã sống. Ngôi thứ ba tạo khoảng cách cho phép công việc văn học — mà không xóa bỏ hợp đồng tham chiếu, vì « elle » thật sự chỉ Annie Ernaux lịch sử."
+        },
+        {
+          "speaker": "Linh",
+          "text": "Cette stratégie répond, à mon sens, exactement à la question proustienne. Proust soutenait dans Contre Sainte-Beuve que le moi créateur n'est pas le moi social. Ernaux, soixante-dix ans après, intègre cette leçon DANS la forme même de son texte: la troisième personne est la trace formelle de la distinction proustienne. Elle écrit son histoire sans confondre le sujet d'écriture et le sujet d'écrit.",
+          "vi": "Chiến lược này đáp, theo tôi, chính xác câu hỏi Proust. Proust bảo vệ trong Contre Sainte-Beuve rằng cái tôi sáng tạo không phải cái tôi xã hội. Ernaux, 70 năm sau, tích hợp bài học này VÀO chính hình thức văn bản: ngôi thứ ba là dấu vết hình thức của phân biệt Proust. Cô viết lịch sử mình mà không lẫn lộn chủ thể viết và chủ thể được viết."
+        },
+        {
+          "speaker": "Pr. Compagnon",
+          "text": "Lecture forte. Mais une objection: ne risquez-vous pas de surinterpréter ? Ernaux a dit dans plusieurs interviews qu'elle utilise la troisième personne pour des raisons d'efficacité narrative — pour gagner en généralité, pas pour faire écho à Proust.",
+          "vi": "Cách đọc mạnh. Nhưng một phản biện: cô không có nguy cơ diễn giải quá không? Ernaux đã nói trong nhiều phỏng vấn rằng cô dùng ngôi thứ ba vì lý do hiệu quả trần thuật — để có tính tổng quát, không phải vọng lại Proust."
+        },
+        {
+          "speaker": "Linh",
+          "text": "Réponse classique post-Barthes: l'intention déclarée de l'auteur n'est pas l'arbitre du sens du texte. Si la structure formelle du texte produit un effet — ici, la séparation moi-écrivant / moi-vécu — cet effet existe indépendamment de la conscience de l'auteur. Ernaux peut très bien avoir voulu seulement « gagner en généralité » et avoir produit, par surcroît, une trace formelle de la leçon proustienne. La critique n'est pas tenue de se limiter aux intentions; elle est tenue de rester dans le texte.",
+          "vi": "Câu trả lời cổ điển post-Barthes: ý đồ tuyên bố của tác giả không phải trọng tài của nghĩa văn bản. Nếu cấu trúc hình thức văn bản sản sinh một hiệu ứng — ở đây, sự tách moi-écrivant / moi-vécu — hiệu ứng này tồn tại độc lập với ý thức tác giả. Ernaux có thể chỉ muốn « có tính tổng quát » và đã sản sinh, thêm vào, một dấu vết hình thức của bài học Proust. Phê bình không bị buộc giới hạn vào ý đồ; nó bị buộc ở lại trong văn bản."
+        },
+        {
+          "speaker": "Pr. Compagnon",
+          "text": "Réponse parfaite. Vous avez intégré la leçon de mon Démon de la théorie sans la citer servilement. Une dernière question: quelle position défendriez-vous face à un texte de Houellebecq, où l'auteur empirique est explicitement convoqué dans la fiction (Houellebecq apparaît comme personnage dans La Carte et le territoire) ?",
+          "vi": "Câu trả lời hoàn hảo. Cô đã tích hợp bài học của Le Démon de la théorie của tôi mà không trích nô bộc. Một câu hỏi cuối: cô bảo vệ lập trường nào trước một văn bản Houellebecq, nơi tác giả empirique được triệu tập rõ ràng trong fiction (Houellebecq xuất hiện như nhân vật trong La Carte et le territoire)?"
+        },
+        {
+          "speaker": "Linh",
+          "text": "Cas exemplaire de la métalepse — au sens genettien — où l'auteur empirique franchit la frontière diégétique pour devenir personnage. Houellebecq joue avec la confusion sans la résoudre. La position critique correcte, à mon sens: lire la métalepse comme une stratégie textuelle, et non comme une indiscrétion biographique. Le « Houellebecq personnage » n'est pas Michel Houellebecq citoyen — il est une fiction qui mobilise le nom propre comme effet de réel. C'est, paradoxalement, une lecture proustienne du dispositif: le moi qui écrit reste distinct du moi qui figure dans le texte, même quand ils portent le même nom.",
+          "vi": "Trường hợp mẫu của métalepse — theo nghĩa Genette — nơi tác giả empirique vượt qua biên giới diegetic để trở thành nhân vật. Houellebecq chơi với sự nhầm lẫn mà không giải quyết. Lập trường critique đúng, theo tôi: đọc métalepse như một chiến lược văn bản, không phải indiscrétion biographique. « Houellebecq nhân vật » không phải Michel Houellebecq công dân — là một fiction huy động danh từ riêng như effet de réel. Đó, nghịch lý, là một cách đọc Proustian về thiết kế: cái tôi viết vẫn phân biệt với cái tôi xuất hiện trong văn bản, ngay cả khi mang cùng tên."
+        }
+      ],
+      "roleplay_prompts": [
+        "Bạn được giao explication d'un passage de La Place (Ernaux, 1983). Identifier le pacte proposé, situer dans la tradition autobiographique post-Lejeune, éviter le biographisme naïf.",
+        "Trong séminaire, một collègue affirme « pour comprendre Céline, il faut connaître ses prises de position antisémites pendant la guerre ». Phản hồi avec rigueur — distinguer ce qui relève du contexte historique, du biographisme, de la lecture textuelle.",
+        "Soạn 5 câu pour analyser le titre Contre Sainte-Beuve de Proust — pourquoi « contre » et non « après » ou « sur » ? Quel enjeu polémique est inscrit dans le titre lui-même ?"
+      ],
+      "register_notes": "VOCABULAIRE PRÉCIS sur la question auteur / texte:\n\nINSTANCES À DISTINGUER (Booth, The Rhetoric of Fiction, 1961, traduit en français en 1977):\n- Auteur empirique: la personne historique\n- Auteur impliqué: l'image construite par le texte\n- Narrateur: la voix qui dit « je » (s'il y en a une)\n- Personnage: les figures de la diégèse\n\nNE JAMAIS CONFONDRE ces 4 instances. Une critique C2 utilise les distinctions au mot près.\n\nPACTES DE LECTURE (Lejeune):\n- Pacte fictionnel: « ce livre est invention »\n- Pacte autobiographique: « auteur = narrateur = personnage »\n- Pacte référentiel partiel (autofiction): jeu sur les frontières\n\nÉCOLES CRITIQUES SUR LA QUESTION:\n- Lansonisme (XIXe-début XXe): biographisme dominant\n- Critique psychanalytique (Mauron, Bachelard, Doubrovsky): la psyché de l'auteur dans l'œuvre\n- Critique sociologique (Bourdieu Les Règles de l'art, 1992): l'auteur dans le champ\n- Génétique textuelle (de Biasi, ITEM): l'auteur comme artisan\n- Sémiotique post-Barthes: l'auteur comme effet de texte\n\nFORMULES À ÉVITER (toutes biographistes):\n- « Madame Bovary, c'est moi » (formule probablement apocryphe attribuée à Flaubert)\n- « L'auteur a écrit cela parce qu'il a vécu… »\n- « On comprend mieux ce passage en sachant que… »\n\nFORMULES C2 ACCEPTABLES:\n- « Le contexte de production éclaire… » (historique, non biographique)\n- « Le pacte que propose le texte… »\n- « L'auteur impliqué se distingue ici de l'auteur empirique en ce que… »\n- « La donnée biographique éclaire ce passage à condition de ne pas y être réduite. »\n\nIDIOMS LITTÉRAIRES:\n- « ramener un texte à son auteur » (quy giảm văn bản về tác giả — courant critique)\n- « la mort de l'auteur » (cái chết của tác giả — formule barthésienne devenue courante)\n- « tirer un texte vers la biographie » (kéo văn bản về tiểu sử — soutenu)\n- « lire avec ou contre l'auteur » (đọc cùng hoặc chống tác giả — courant)\n\nMỘT TINH TẾ ĐẶC THÙ: l'expression « selon Marcel Proust » s'utilise pour Proust auteur empirique (interviews, lettres). Pour le narrateur de la Recherche, on dit « selon le narrateur proustien » ou « selon le Marcel narrateur ». Confondre = manque de finesse critique.",
+      "idiom_glosses": [
+        {
+          "idiom": "Ramener un texte à son auteur (courant critique)",
+          "literal": "Quy giảm văn bản về tác giả",
+          "meaning": "Giải thích văn bản chỉ qua tiểu sử tác giả — biographisme bị phê phán.",
+          "example": "Sainte-Beuve avait tendance à ramener tout texte à son auteur — Proust a démonté ce réflexe."
+        },
+        {
+          "idiom": "La mort de l'auteur (formule consacrée)",
+          "literal": "Cái chết của tác giả",
+          "meaning": "Cụm Barthes 1968 — văn bản tự lập, tách khỏi tác giả empirique.",
+          "example": "Depuis « la mort de l'auteur » de Barthes, la critique a appris à se méfier de l'argument biographique."
+        },
+        {
+          "idiom": "Lire au plus près (soutenu)",
+          "literal": "Đọc gần nhất",
+          "meaning": "Đọc bám sát văn bản, tránh phóng chiếu — close reading rigoureux.",
+          "example": "Lire Ernaux au plus près suppose qu'on prenne au sérieux son pacte référentiel."
+        },
+        {
+          "idiom": "Tirer une œuvre vers la confidence (littéraire)",
+          "literal": "Kéo tác phẩm về phía tâm sự",
+          "meaning": "Đọc văn bản như tâm sự cá nhân — réducteur.",
+          "example": "Tirer La Place d'Ernaux vers la confidence, c'est ignorer son ambition sociologique."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "fill-blank",
+          "question": "Le moi qui écrit, ___-il, n'est pas le moi qui dîne en ville.",
+          "answer": "soutenait"
+        },
+        {
+          "type": "matching",
+          "pairs": [
+            [
+              "le pacte référentiel",
+              "hợp đồng tham chiếu"
+            ],
+            [
+              "l'autofiction",
+              "tự hư cấu"
+            ],
+            [
+              "le biographisme",
+              "thuyết tiểu sử"
+            ]
+          ],
+          "instruction": "Nối thuật ngữ với nghĩa Việt"
+        },
+        {
+          "type": "translation",
+          "vietnamese": "Vẫn cần, khi đọc Ernaux, phân biệt hợp đồng tham chiếu cô đề xuất với hợp đồng hư cấu chi phối tiểu thuyết cổ điển.",
+          "french": "Encore faut-il, lorsqu'on lit Ernaux, distinguer le pacte référentiel qu'elle propose du pacte fictionnel qui régit le roman classique."
+        }
+      ]
+    },
+    {
+      "id": "lreception_canon",
+      "level": "C2",
+      "category": "fluency",
+      "title_vi": "Lịch sử tiếp nhận và tranh luận về kinh điển",
+      "title_en": "Reception history and canon debates",
+      "sentences": [
+        {
+          "en": "L'histoire de la réception, depuis Jauss et l'École de Constance, a déplacé le centre de gravité de la critique: ce n'est plus l'œuvre seule qui compte, mais la trajectoire de ses lectures successives.",
+          "vi": "Lịch sử tiếp nhận, từ Jauss và Trường Constance, đã dời trọng tâm phê bình: không phải tác phẩm đơn lẻ là điều quan trọng, mà quỹ đạo các cách đọc liên tiếp.",
+          "pronunciation_focus": [
+            "réception → ré-sèp-sion",
+            "Jauss → jôs",
+            "gravité → gra-vi-té",
+            "trajectoire → tra-jèk-toar"
+          ]
+        },
+        {
+          "en": "Le canon littéraire français, longtemps stabilisé autour d'une trentaine d'auteurs masculins blancs, fait depuis trente ans l'objet d'une révision dont nul ne saurait sous-estimer la portée.",
+          "vi": "Kinh điển văn học Pháp, lâu nay ổn định quanh khoảng 30 tác giả nam da trắng, từ 30 năm nay là đối tượng của một sự xem xét lại mà không ai có thể đánh giá thấp tầm vóc.",
+          "pronunciation_focus": [
+            "canon → ka-nõn",
+            "stabilisé → sta-bi-li-zé",
+            "révision → ré-vi-zion",
+            "sous-estimer → su-zès-ti-mé"
+          ]
+        },
+        {
+          "en": "L'entrée tardive d'Ernaux dans les programmes universitaires illustre exemplairement la dynamique des reconnaissances institutionnelles.",
+          "vi": "Sự gia nhập muộn của Ernaux vào các chương trình đại học minh họa mẫu mực động lực của các sự công nhận thể chế.",
+          "pronunciation_focus": [
+            "entrée → ãn-tré",
+            "tardive → tar-div",
+            "exemplairement → èg-zãn-plè-rơ-mã",
+            "reconnaissances → rơ-ko-nè-sãns"
+          ]
+        },
+        {
+          "en": "Encore faudrait-il que le critique se gardât de confondre la valeur littéraire d'une œuvre avec son taux de citation académique.",
+          "vi": "Vẫn cần người phê bình tránh nhầm lẫn giá trị văn học của một tác phẩm với tỷ lệ trích dẫn học thuật.",
+          "pronunciation_focus": [
+            "faudrait → fô-drè",
+            "gardât → gar-da",
+            "valeur → va-lơr",
+            "citation → si-ta-sion"
+          ]
+        },
+        {
+          "en": "Le champ littéraire, comme l'a montré Bourdieu, opère selon des logiques de reconnaissance qui ne se confondent ni avec le marché ni avec le mérite intrinsèque.",
+          "vi": "Trường văn học, như Bourdieu đã chứng minh, hoạt động theo các logic công nhận không lẫn lộn với thị trường cũng không với công trạng nội tại.",
+          "pronunciation_focus": [
+            "champ → shã",
+            "logiques → lo-jik",
+            "reconnaissance → rơ-ko-nè-sãns",
+            "mérite → mé-rit"
+          ]
+        }
+      ],
+      "cultural_notes_vi": "LA RÉCEPTION et le CANON sont deux concepts critiques distincts mais imbriqués que l'on doit savoir manier au C2:\n\n(1) RÉCEPTION (au singulier): l'histoire des lectures successives d'une œuvre. Théorie issue de l'École de Constance — Hans Robert Jauss, Pour une esthétique de la réception (Pour une esthétique de la réception, 1972; trad. fr. 1978), Wolfgang Iser. Idée centrale: une œuvre n'a pas un sens fixe; elle déploie son sens à travers les lectures qui en sont faites, lectures elles-mêmes conditionnées par l'« horizon d'attente » de chaque époque.\n\n(2) CANON: l'ensemble des œuvres considérées comme indispensables — celles qu'on enseigne à l'université, qu'on inclut dans les anthologies, dont les éditions de référence sont publiées chez Gallimard (Pléiade) ou Garnier-Flammarion. Le canon n'est pas naturel — il est construit, hiérarchisé, contesté.\n\nQUATRE GRANDES TRANSFORMATIONS du canon français depuis 1980:\n\n(a) ENTRÉE DES FEMMES. Long absentes (à part Mme de La Fayette, Mme de Sévigné), les autrices entrent: Marguerite Duras (entrée canonique dans les années 1980 grâce à L'Amant, prix Goncourt 1984), Simone de Beauvoir (réévaluation philosophique post-2000), Annie Ernaux (entrée plus tardive — Nobel 2022 a accéléré la canonisation, déjà amorcée par les programmes universitaires des années 2010).\n\n(b) ENTRÉE DES FRANCOPHONIES. Le canon longtemps français-de-France s'ouvre aux écritures francophones extérieures: Aimé Césaire (Cahier d'un retour au pays natal, 1939), Édouard Glissant (Le Discours antillais, 1981), Patrick Chamoiseau (Texaco, prix Goncourt 1992), Maryse Condé (Nobel alternatif 2018), Léonora Miano, Alain Mabanckou, Dany Laferrière (Académie française 2013).\n\n(c) RECONNAISSANCE DES GENRES POPULAIRES. Le polar (Manchette, Vargas), la science-fiction (Damasio, Bordage), la bande dessinée (Maus, Persepolis) entrent dans le champ critique. Combat encore inachevé — les départements de lettres résistent.\n\n(d) RÉ-ÉVALUATION D'AUTEURS LONGTEMPS MARGINAUX. Céline, dont l'antisémitisme et la collaboration avaient relégué l'œuvre, est réintégré (au prix de débats vifs — Pléiade 2017 retardé, etc.). Beckett, considéré naguère comme expérimental marginal, est aujourd'hui canonique.\n\nQUI DÉCIDE DU CANON ?\n\n- Académie française: prestige symbolique, faible influence sur le canon scolaire\n- Pléiade (Gallimard): canonisation par l'édition de référence\n- Programmes du baccalauréat et de l'agrégation: forte influence sur les générations\n- Universités (Sorbonne, ENS, EHESS): forte influence sur la critique académique\n- Prix littéraires (Goncourt, Renaudot, Femina, Médicis): influence variable\n- Critiques médiatiques (Le Monde des livres, La Quinzaine littéraire): rôle de filtre\n- Réseaux sociaux et booktok depuis 2020: influence en croissance, encore marginale dans le canon académique\n\nDÉBATS ACTUELS:\n\n(1) FAUT-IL DÉCOLONISER LE CANON ? Question portée par les études postcoloniales depuis Glissant. Position modérée (Mbembe, Bessière): élargir sans abolir. Position radicale: déconstruire le concept même de canon.\n\n(2) FAUT-IL CONTINUER À ENSEIGNER LES AUTEURS PROBLÉMATIQUES (Céline, Houellebecq) ? Débat vif. Position académique majoritaire: oui, mais avec contextualisation critique.\n\n(3) LE CANON EST-IL UNE FORME DE VIOLENCE SYMBOLIQUE (Bourdieu) ? La sélection canonique reproduit les hiérarchies sociales — qui décide est lui-même issu d'une élite. Mais sans canon, comment transmettre ?\n\nUNE POSITION C2 LÉGITIME: tenir ensemble (a) la critique sociologique du canon comme construction historique non neutre, (b) la nécessité pratique d'un canon transmis pour l'enseignement, (c) la révision continue mais non chaotique.\n\nBẪY NGƯỜI VIỆT: tendance à accepter le canon français comme « la littérature française » sans interrogation. La critique C2 le voit comme construction historique — qui inclut, exclut, et change.",
+      "tip_advice_vi": "GRILLE D'ANALYSE pour étudier la réception d'une œuvre:\n\n(1) RECONSTITUER L'HORIZON D'ATTENTE de l'époque de publication:\n- Quel public? Quelle critique?\n- Quelles autres œuvres concurrentes?\n- Quelles attentes esthétiques dominantes?\n\n(2) IDENTIFIER LES PREMIERS LECTEURS et LEURS RÉACTIONS:\n- Compte rendus de presse à la sortie\n- Lettres et correspondance\n- Réactions publiques (succès ou scandale)\n\n(3) SUIVRE L'ÉVOLUTION DE LA RÉCEPTION sur la durée:\n- Périodes d'oubli ou de marginalisation\n- Périodes de redécouverte\n- Variations selon les écoles critiques (sainte-beuviste, formaliste, structuraliste, postcoloniale)\n\n(4) ANALYSER LES CRITÈRES DE CANONISATION:\n- Édition critique (Pléiade, Garnier)\n- Inscription au programme du baccalauréat ou de l'agrégation\n- Citations académiques\n- Adaptations (théâtre, cinéma)\n- Prix posthumes ou hommages\n\n(5) INTERROGER LA POSITION DE L'ŒUVRE DANS LE CANON ACTUEL:\n- Centrale, périphérique, marginale, exclue?\n- Pour quelles raisons (esthétiques, sociales, politiques)?\n- Le statut est-il stable ou contesté?\n\nCỤM HỮU ÍCH:\n\nPOUR INTRODUIRE UNE ANALYSE DE RÉCEPTION:\n- « La réception de l'œuvre, à sa parution, fut [scandalisée / discrète / triomphale]. »\n- « Trois moments distincts marquent la trajectoire critique de l'œuvre: [période 1], [période 2], [période 3]. »\n- « L'horizon d'attente de [année] explique la défaveur initiale dont l'œuvre fit l'objet. »\n\nPOUR ANALYSER UNE CANONISATION:\n- « L'entrée d'Ernaux dans la Pléiade en [année] consacre une reconnaissance institutionnelle préparée par deux décennies de travaux universitaires. »\n- « Ce n'est qu'à partir des années 1990 que Beckett quitte la marge expérimentale pour intégrer le canon. »\n- « La canonisation tardive de Duras s'explique moins par la qualité de l'œuvre, jamais discutée, que par les transformations du champ critique. »\n\nPOUR INTERROGER LE CANON:\n- « Le canon, comme construction historique, ne se confond pas avec la valeur littéraire intrinsèque — à supposer qu'une telle valeur existe. »\n- « Élargir le canon n'est pas le diluer — c'est en restaurer la richesse. »\n- « Encore faut-il distinguer la critique légitime du canon de son rejet idéologique. »\n\nTRÁNH:\n- « C'est un classique parce que c'est bon. » → tautologie sans contenu critique\n- « Le canon est arbitraire. » → trop fort; nuancer en disant « historiquement construit »\n- « Toutes les œuvres se valent. » → relativisme stérile, qui rend impossible toute hiérarchisation\n- Confondre canon scolaire (programmes) et canon académique (recherche)",
+      "vocabulary": [
+        {
+          "word": "l'esthétique de la réception",
+          "en": "reception aesthetics",
+          "vi": "thẩm mỹ tiếp nhận",
+          "pos": "n.f.",
+          "pronunciation_vi": "ès-té-tik dơ la ré-sèp-sion"
+        },
+        {
+          "word": "l'horizon d'attente",
+          "en": "horizon of expectation (Jauss)",
+          "vi": "chân trời mong đợi (Jauss)",
+          "pos": "n.m.",
+          "pronunciation_vi": "o-ri-zõn da-tãnt"
+        },
+        {
+          "word": "le canon littéraire",
+          "en": "the literary canon",
+          "vi": "kinh điển văn học",
+          "pos": "n.m.",
+          "pronunciation_vi": "ka-nõn li-té-rèr"
+        },
+        {
+          "word": "la canonisation",
+          "en": "canonization",
+          "vi": "sự kinh điển hóa",
+          "pos": "n.f.",
+          "pronunciation_vi": "ka-no-ni-za-sion"
+        },
+        {
+          "word": "le champ littéraire",
+          "en": "the literary field (Bourdieu)",
+          "vi": "trường văn học (Bourdieu)",
+          "pos": "n.m.",
+          "pronunciation_vi": "shã li-té-rèr"
+        },
+        {
+          "word": "la reconnaissance institutionnelle",
+          "en": "institutional recognition",
+          "vi": "sự công nhận thể chế",
+          "pos": "n.f.",
+          "pronunciation_vi": "rơ-ko-nè-sãns an-sti-tu-sio-nèl"
+        },
+        {
+          "word": "la consécration",
+          "en": "consecration / official recognition",
+          "vi": "sự thánh hóa / công nhận chính thức",
+          "pos": "n.f.",
+          "pronunciation_vi": "kõn-sé-kra-sion"
+        },
+        {
+          "word": "un auteur marginal",
+          "en": "a marginal author",
+          "vi": "một tác giả ngoại biên",
+          "pos": "n.m.",
+          "pronunciation_vi": "ô-tơr mar-ji-nal"
+        },
+        {
+          "word": "l'effacement du canon",
+          "en": "the erosion of the canon",
+          "vi": "sự xói mòn của kinh điển",
+          "pos": "n.m.",
+          "pronunciation_vi": "é-fas-mã du ka-nõn"
+        },
+        {
+          "word": "la francophonie littéraire",
+          "en": "literary francophony",
+          "vi": "văn học Pháp ngữ",
+          "pos": "n.f.",
+          "pronunciation_vi": "frãn-ko-fo-ni li-té-rèr"
+        }
+      ],
+      "dialogue": [
+        {
+          "speaker": "Pr. Compagnon",
+          "text": "Madame Tran, vous parlez de Beckett comme d'un classique. Il l'est aujourd'hui, mais quand l'est-il devenu ?",
+          "vi": "Cô Trần, cô nói về Beckett như một kinh điển. Hôm nay đúng, nhưng khi nào ông trở thành kinh điển?"
+        },
+        {
+          "speaker": "Linh",
+          "text": "Pas avant les années 1990, à mon sens. Avant cela, il restait classé « expérimental », hors du canon scolaire.",
+          "vi": "Không trước thập niên 1990, theo tôi. Trước đó, ông vẫn xếp loại « thực nghiệm », ngoài kinh điển học đường."
+        },
+        {
+          "speaker": "Pr. Compagnon",
+          "text": "Et le tournant ?",
+          "vi": "Và bước ngoặt?"
+        },
+        {
+          "speaker": "Linh",
+          "text": "L'entrée à la Pléiade en 2006, après le centenaire de sa naissance, scelle la canonisation officielle.",
+          "vi": "Sự gia nhập Pléiade năm 2006, sau dịp 100 năm sinh, niêm phong sự kinh điển hóa chính thức."
+        }
+      ],
+      "dialogue_long": [
+        {
+          "speaker": "Pr. Compagnon (séminaire de M2 sur les transformations du canon)",
+          "text": "Madame Tran, votre exposé porte sur la canonisation d'Annie Ernaux — phénomène contemporain qu'on peut suivre presque en temps réel. Quelle thèse défendez-vous ?",
+          "vi": "Cô Trần, bài cô về sự kinh điển hóa của Annie Ernaux — hiện tượng đương đại có thể theo dõi gần như thời gian thực. Cô bảo vệ luận điểm gì?"
+        },
+        {
+          "speaker": "Linh",
+          "text": "Ma thèse: la canonisation d'Ernaux n'est pas une simple récompense d'une œuvre dont la valeur aurait été constante depuis La Place (1983); elle est l'aboutissement d'un travail collectif — universitaire, critique, militant — qui a transformé l'horizon d'attente du champ littéraire entre 1990 et 2020. Sans cette transformation, le Nobel 2022 eût été impensable.",
+          "vi": "Luận điểm tôi: sự kinh điển hóa Ernaux không phải đơn giản phần thưởng cho một tác phẩm có giá trị lẽ ra hằng định từ La Place (1983); nó là kết quả của một công việc tập thể — đại học, phê bình, vận động — đã biến đổi chân trời mong đợi của trường văn học giữa 1990 và 2020. Không có sự biến đổi này, Nobel 2022 lẽ ra không thể nghĩ tới."
+        },
+        {
+          "speaker": "Linh",
+          "text": "Reconstituons l'horizon de la réception initiale. La Place paraît en 1983 — au sein du courant du roman minimaliste, mais l'œuvre se distingue par une ambition sociologique explicite. La critique de l'époque — Le Monde, Le Figaro littéraire, La Quinzaine — la salue, mais sans en faire un événement majeur. Pierre Bourdieu, dans La Distinction (1979) puis Les Règles de l'art (1992), avait pourtant donné les outils théoriques pour la lire — mais le pont entre ses outils et la critique littéraire courante n'était pas encore établi.",
+          "vi": "Tái dựng chân trời tiếp nhận ban đầu. La Place ra năm 1983 — trong dòng tiểu thuyết tối giản, nhưng tác phẩm phân biệt bằng một tham vọng xã hội học rõ rệt. Phê bình thời ấy — Le Monde, Le Figaro littéraire, La Quinzaine — chào đón, nhưng không biến thành sự kiện lớn. Pierre Bourdieu, trong La Distinction (1979) rồi Les Règles de l'art (1992), đã cho công cụ lý thuyết để đọc — nhưng cầu nối giữa công cụ ông và phê bình văn học thông thường chưa được thiết lập."
+        },
+        {
+          "speaker": "Linh",
+          "text": "Trois transformations entre 1990 et 2010 changent la donne. Premièrement, l'institutionnalisation des études de genre dans les universités françaises (création des centres d'études féministes à Paris-VIII, Lyon-II, dès les années 1990). Ces équipes redécouvrent les autrices longtemps ignorées et constituent Ernaux en référence. Deuxièmement, l'essor de la sociologie critique de la culture (Pinto, Sapiro, Bessière) qui mobilise Ernaux comme cas d'école. Troisièmement, l'inscription progressive d'Ernaux aux programmes du baccalauréat et de l'agrégation — qui produit, en une génération, des dizaines de milliers de lecteurs formés à la prendre au sérieux.",
+          "vi": "Ba biến đổi giữa 1990 và 2010 thay đổi tình thế. Thứ nhất, thể chế hóa nghiên cứu giới trong các đại học Pháp (thành lập các trung tâm nghiên cứu nữ quyền tại Paris-VIII, Lyon-II, từ thập niên 1990). Các nhóm này tái khám phá các tác giả nữ bị bỏ qua lâu và đặt Ernaux thành quy chiếu. Thứ hai, sự bùng nổ xã hội học phê phán văn hóa (Pinto, Sapiro, Bessière) huy động Ernaux như một trường hợp mẫu. Thứ ba, sự ghi danh dần Ernaux vào chương trình tú tài và agrégation — sản sinh, trong một thế hệ, hàng chục ngàn độc giả đào tạo để xem cô nghiêm túc."
+        },
+        {
+          "speaker": "Linh",
+          "text": "Quatrième moment, plus récent: les transformations idéologiques des années 2010-2020. Mouvement #MeToo, retour de la question des classes sociales dans le débat public, redécouverte critique du « transfuge de classe » comme figure intellectuelle (avec Didier Eribon, dont Retour à Reims, 2009, dialogue explicitement avec Ernaux). Ces transformations n'ajoutent rien à l'œuvre d'Ernaux — elles modifient l'horizon d'attente qui rend cette œuvre lisible comme « majeure ».",
+          "vi": "Khoảnh khắc thứ tư, gần đây hơn: các biến đổi tư tưởng những năm 2010-2020. Phong trào #MeToo, sự trở lại câu hỏi giai cấp xã hội trong tranh luận công, sự tái khám phá phê bình « transfuge de classe » như hình ảnh trí thức (với Didier Eribon, mà Retour à Reims, 2009, đối thoại rõ với Ernaux). Các biến đổi này không thêm gì cho tác phẩm Ernaux — chúng thay đổi chân trời mong đợi làm tác phẩm này có thể đọc như « lớn »."
+        },
+        {
+          "speaker": "Linh",
+          "text": "D'où ma thèse sur la canonisation: ce n'est pas l'œuvre qui change — c'est le champ littéraire qui se transforme jusqu'à pouvoir la reconnaître. Cela ne diminue en rien la valeur d'Ernaux; cela précise simplement le mécanisme par lequel cette valeur devient lisible et reconnue. Bourdieu avait raison: la canonisation est un fait du champ, non une révélation de la qualité.",
+          "vi": "Từ đó luận điểm tôi về kinh điển hóa: không phải tác phẩm thay đổi — mà trường văn học biến đổi đến mức có thể nhận ra. Điều đó không hề giảm giá trị Ernaux; chỉ làm rõ cơ chế giá trị này trở nên đọc được và được công nhận. Bourdieu đúng: kinh điển hóa là sự kiện của trường, không phải mạc khải về phẩm chất."
+        },
+        {
+          "speaker": "Pr. Compagnon",
+          "text": "Réponse solide. Une objection cependant: votre lecture sociologique pourrait sembler relativiser la valeur littéraire d'Ernaux. Si la canonisation est seulement un effet du champ, comment distinguer une grande œuvre canonisée d'une œuvre médiocre canonisée par hasard ?",
+          "vi": "Câu trả lời vững. Tuy nhiên một phản biện: cách đọc xã hội học của cô có thể có vẻ tương đối hóa giá trị văn học Ernaux. Nếu kinh điển hóa chỉ là hiệu ứng của trường, làm sao phân biệt một tác phẩm lớn được kinh điển hóa với một tác phẩm trung bình được kinh điển hóa do may?"
+        },
+        {
+          "speaker": "Linh",
+          "text": "Question juste — c'est la limite classique de l'approche bourdieusienne. Ma réponse: l'analyse du champ explique le MÉCANISME de la canonisation, pas sa LÉGITIMITÉ. Pour évaluer si une canonisation est légitime, il faut un autre type d'argument — analyse interne de l'œuvre, comparaison avec ses contemporains, mesure de son rendement heuristique. La sociologie du champ ne dispense pas de la lecture; elle l'éclaire d'une autre lumière. Dans le cas d'Ernaux, je crois que les deux approches convergent: l'œuvre soutient l'analyse interne, ET le champ permet sa reconnaissance. Quand seule l'une des deux conditions est remplie — œuvre solide mais champ qui ne reconnaît pas — on a un classique méconnu (cas de Mallarmé pendant longtemps). Quand seul le champ canonise une œuvre faible, on obtient un classique qui s'érode rapidement (nombreux prix Goncourt oubliés).",
+          "vi": "Câu hỏi đúng — đó là giới hạn cổ điển của cách tiếp cận bourdieusien. Câu trả lời của tôi: phân tích trường giải thích CƠ CHẾ kinh điển hóa, không phải HỢP PHÁP. Để đánh giá một kinh điển hóa có hợp pháp, cần một loại lập luận khác — phân tích nội bộ tác phẩm, so sánh với các đương thời, đo lượng năng suất heuristic. Xã hội học trường không miễn việc đọc; nó soi sáng bằng ánh sáng khác. Trong trường hợp Ernaux, tôi tin hai cách tiếp cận hội tụ: tác phẩm chịu được phân tích nội bộ, VÀ trường cho phép sự công nhận. Khi chỉ một trong hai điều kiện được đáp ứng — tác phẩm vững nhưng trường không công nhận — ta có một kinh điển ít biết (trường hợp Mallarmé thời gian dài). Khi chỉ trường kinh điển hóa một tác phẩm yếu, ta có một kinh điển sớm xói (nhiều prix Goncourt quên)."
+        },
+        {
+          "speaker": "Pr. Compagnon",
+          "text": "Excellente articulation des deux niveaux. C'est exactement la position que je défends dans Le Démon de la théorie. L'erreur serait de choisir entre approche interne et approche sociologique — il faut tenir les deux ensemble.",
+          "vi": "Khớp nối xuất sắc hai cấp. Chính là lập trường tôi bảo vệ trong Le Démon de la théorie. Sai sẽ là chọn giữa cách tiếp cận nội bộ và xã hội học — phải giữ cả hai cùng lúc."
+        }
+      ],
+      "roleplay_prompts": [
+        "Bạn được giao soạn une recension pour Le Monde des livres sur un essai récent qui prétend « décoloniser le canon littéraire français ». Position critique nuancée — accepter l'élargissement, refuser la déconstruction nihiliste.",
+        "Trong séminaire, một collègue affirme que « le canon est une violence symbolique pure ». Phản hồi en mobilisant Bourdieu sans le simplifier — le canon est aussi un mode de transmission qui rend possible la lecture experte.",
+        "Soạn 5 câu pour analyser pourquoi Maryse Condé, Nobel alternatif 2018, n'est pas encore au programme de l'agrégation — quels mécanismes du champ retardent la canonisation ?"
+      ],
+      "register_notes": "VOCABULAIRE PRÉCIS sur le canon et la réception:\n\nINSTANCES DE CANONISATION (à connaître):\n- la Pléiade (Gallimard) — édition de référence ultime\n- la Bibliothèque de la Pléiade des sciences humaines (depuis 1984) — pour la critique\n- les programmes du baccalauréat (révisés tous les 5-7 ans)\n- les programmes de l'agrégation des lettres modernes (annuels)\n- les manuels universitaires (Lagarde et Michard, longtemps; aujourd'hui plus diversifiés)\n- les anthologies des XIXe, XXe, XXIe siècles\n- les Nobel français: Sully Prudhomme (1901), Mistral (1904), Anatole France (1921), Bergson (1927), Mauriac (1952), Camus (1957), Saint-John Perse (1960), Sartre (1964 — refusé), Beckett (1969), Le Clézio (2008), Modiano (2014), Ernaux (2022)\n\nÉCOLES DE LECTURE DU CANON:\n- Critique formaliste (jakobsonienne): canon des œuvres formellement riches\n- Critique sociologique (bourdieusienne): canon comme construction du champ\n- Critique féministe: critique du canon masculin, redécouverte des autrices\n- Critique postcoloniale: ouverture aux francophonies, déconstruction de l'européocentrisme\n\nTERMES TECHNIQUES SUR LA RÉCEPTION:\n- l'horizon d'attente (Jauss): le système d'attentes du public d'une époque\n- l'écart esthétique (Jauss): la distance entre l'œuvre et l'horizon\n- la rupture de l'horizon (Jauss): œuvre qui transforme l'horizon\n- la consécration (Bourdieu): reconnaissance institutionnelle\n- le capital symbolique (Bourdieu): prestige cumulé\n- le champ littéraire (Bourdieu): espace structuré des positions littéraires\n- la position dominante / dominée (Bourdieu): hiérarchie au sein du champ\n\nIDIOMS LITTÉRAIRES SUR LA RÉCEPTION:\n- « entrer dans la postérité » (đi vào hậu thế — soutenu)\n- « passer à la postérité » (truyền cho hậu thế — courant)\n- « tomber dans l'oubli » (rơi vào quên lãng — courant)\n- « refaire surface » (nổi lên lại — courant)\n- « être consacré » (được thánh hóa — soutenu)\n- « faire l'objet d'une redécouverte » (được tái khám phá — soutenu)\n\nMỘT TINH TẾ ĐẶC THÙ: la critique C2 évite « grand auteur », « chef-d'œuvre », « génie » comme jugements évaluatifs non justifiés. Préférer: « auteur canonique », « œuvre devenue référence », « écrivain dont l'apport est reconnu ». Le « génie » comme catégorie critique est suspect depuis Bourdieu (qui en a montré la fonction sociale plus que la pertinence analytique).",
+      "idiom_glosses": [
+        {
+          "idiom": "Faire l'objet d'une redécouverte (soutenu)",
+          "literal": "Là đối tượng của một sự tái khám phá",
+          "meaning": "Được giới critique chú ý lại sau thời gian quên — pattern de réception.",
+          "example": "Roussel a fait l'objet d'une redécouverte spectaculaire dans les années 1960, par les surréalistes et l'Oulipo."
+        },
+        {
+          "idiom": "Sortir du purgatoire (littéraire)",
+          "literal": "Ra khỏi luyện ngục",
+          "meaning": "Thoát khỏi giai đoạn ít được đọc — réhabilitation critique.",
+          "example": "Céline est sorti du purgatoire dans les années 1980, au prix de débats vifs."
+        },
+        {
+          "idiom": "Faire école (courant littéraire)",
+          "literal": "Tạo trường phái",
+          "meaning": "Trở thành mô hình cho thế hệ sau.",
+          "example": "Le Nouveau Roman a fait école — mais brièvement; les années 1980 marquent un reflux."
+        },
+        {
+          "idiom": "Être inscrit au panthéon (soutenu)",
+          "literal": "Được ghi vào điện thờ",
+          "meaning": "Vào kinh điển chính thức — métaphore du Panthéon parisien.",
+          "example": "Avec son Nobel, Ernaux est désormais inscrite au panthéon littéraire français contemporain."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "fill-blank",
+          "question": "Encore faudrait-il que le critique se ___ de confondre la valeur littéraire d'une œuvre avec son taux de citation académique.",
+          "answer": "gardât"
+        },
+        {
+          "type": "matching",
+          "pairs": [
+            [
+              "l'horizon d'attente",
+              "chân trời mong đợi"
+            ],
+            [
+              "la consécration",
+              "sự thánh hóa"
+            ],
+            [
+              "le champ littéraire",
+              "trường văn học"
+            ]
+          ],
+          "instruction": "Nối thuật ngữ với nghĩa Việt"
+        },
+        {
+          "type": "translation",
+          "vietnamese": "Trường văn học, như Bourdieu đã chứng minh, hoạt động theo các logic công nhận không lẫn lộn với thị trường cũng không với công trạng nội tại.",
+          "french": "Le champ littéraire, comme l'a montré Bourdieu, opère selon des logiques de reconnaissance qui ne se confondent ni avec le marché ni avec le mérite intrinsèque."
+        }
+      ]
+    },
+    {
+      "id": "ltheoretical_lenses",
+      "level": "C2",
+      "category": "fluency",
+      "title_vi": "Các lăng kính lý thuyết — formaliste, féministe, postcoloniale",
+      "title_en": "Theoretical lenses — formalist, feminist, postcolonial",
+      "sentences": [
+        {
+          "en": "Une même œuvre peut être lue selon plusieurs grilles théoriques sans qu'aucune n'épuise sa richesse.",
+          "vi": "Một tác phẩm có thể được đọc theo nhiều lưới lý thuyết mà không lưới nào vắt kiệt sự phong phú của nó.",
+          "pronunciation_focus": [
+            "œuvre → ơ-vrơ",
+            "grilles → griy",
+            "théoriques → té-o-rik",
+            "richesse → ri-shès"
+          ]
+        },
+        {
+          "en": "La lecture formaliste, héritée de Jakobson et de l'École russe, met l'accent sur les procédés stylistiques au détriment du contenu thématique.",
+          "vi": "Cách đọc hình thức luận, kế thừa từ Jakobson và Trường phái Nga, nhấn mạnh các thủ pháp phong cách hơn nội dung chủ đề.",
+          "pronunciation_focus": [
+            "formaliste → for-ma-list",
+            "Jakobson → ya-kob-son",
+            "accent → ak-sãn",
+            "stylistiques → sti-lis-tik"
+          ]
+        },
+        {
+          "en": "La lecture féministe, depuis Le Deuxième Sexe de Beauvoir et Le Rire de la Méduse de Cixous, interroge les rapports de genre inscrits dans le texte.",
+          "vi": "Cách đọc nữ quyền, từ Le Deuxième Sexe của Beauvoir và Le Rire de la Méduse của Cixous, tra hỏi các quan hệ giới ghi trong văn bản.",
+          "pronunciation_focus": [
+            "féministe → fé-mi-nist",
+            "Beauvoir → bô-voar",
+            "Cixous → si-ksu",
+            "interroge → an-tè-roj"
+          ]
+        },
+        {
+          "en": "La lecture postcoloniale, dans la lignée de Glissant et de Mbembe, déplace le regard depuis le centre métropolitain vers les périphéries longtemps muettes.",
+          "vi": "Cách đọc hậu thuộc địa, trong mạch nối tiếp Glissant và Mbembe, dịch chuyển ánh nhìn từ trung tâm thủ đô sang các ngoại biên lâu nay câm lặng.",
+          "pronunciation_focus": [
+            "postcoloniale → pos-ko-lo-nial",
+            "Glissant → gli-sã",
+            "Mbembe → ãn-bèm-bé",
+            "périphéries → pé-ri-fé-ri"
+          ]
+        },
+        {
+          "en": "Encore faut-il que ces grilles soient mobilisées avec discernement, et non plaquées sans distinction sur tout texte qui s'y prêterait fortuitement.",
+          "vi": "Vẫn cần các lưới này được huy động với sự sáng suốt, và không bị dán không phân biệt lên mọi văn bản tình cờ phù hợp.",
+          "pronunciation_focus": [
+            "mobilisées → mo-bi-li-zé",
+            "discernement → di-sèr-nơ-mã",
+            "plaquées → pla-ké",
+            "fortuitement → for-tu-it-mã"
+          ]
+        }
+      ],
+      "cultural_notes_vi": "LES « LECTURES THÉORIQUES » de la critique française contemporaine forment un éventail dont la maîtrise est attendue à C2. Trois grandes traditions méritent une compréhension détaillée:\n\n(1) LECTURE FORMALISTE / STRUCTURALISTE\n\nORIGINE: Roman Jakobson, Vladimir Propp, l'École russe des années 1920. Reprise française par Tzvetan Todorov (qui traduit les formalistes russes en 1965), Roland Barthes, Gérard Genette, Algirdas Julien Greimas (sémiotique du récit).\n\nPRINCIPE CENTRAL: l'œuvre est un système de signes; le sens naît de l'organisation interne, non d'une référence extérieure. Le critique étudie les structures (oppositions binaires, fonctions narratives, isotopies) avant tout référent.\n\nAPPLICATION TYPE: l'analyse structurale du conte (Propp identifie 31 fonctions narratives universelles); l'analyse poétique de Jakobson sur Les Chats de Baudelaire (avec Lévi-Strauss, 1962); les Figures de Genette.\n\nLIMITES: tend à négliger l'historicité, l'idéologie, la subjectivité de l'auteur. Domination du formalisme dans les années 1960-70 a suscité un retour de balancier.\n\n(2) LECTURE FÉMINISTE\n\nORIGINE EN FRANCE: Simone de Beauvoir, Le Deuxième Sexe (1949) — fonde la critique du « féminin » comme construction culturelle (« On ne naît pas femme: on le devient »). Hélène Cixous, Le Rire de la Méduse (1975) — concept d'« écriture féminine ». Luce Irigaray, Speculum (1974) — critique du logos masculin. Julia Kristeva, La Révolution du langage poétique (1974) — sémiotique et féminin.\n\nPRINCIPES CENTRAUX: (a) le canon a longtemps marginalisé les femmes, qu'il faut redécouvrir; (b) les œuvres masculines portent des représentations de la féminité qu'il faut analyser comme construction; (c) il existe peut-être (débat) une « écriture féminine » distincte (Cixous), ou peut-être non (Beauvoir, plus universaliste).\n\nDÉBATS INTERNES: féminisme universaliste (Beauvoir) vs féminisme de la différence (Cixous, Irigaray); féminisme matérialiste (Delphy, Wittig) vs féminisme psychanalytique. Vifs débats encore aujourd'hui.\n\nLIMITES: risque de monomanie thématique (lire toute œuvre sous le seul angle du genre); risque de plaquage anachronique (lire des textes anciens avec des catégories contemporaines).\n\n(3) LECTURE POSTCOLONIALE\n\nORIGINE: Frantz Fanon (Les Damnés de la terre, 1961), Aimé Césaire (Discours sur le colonialisme, 1955), puis Édouard Glissant (Le Discours antillais, 1981; Poétique de la Relation, 1990). En anglais, Edward Said (Orientalism, 1978; trad. fr. 1980), Gayatri Spivak, Homi Bhabha.\n\nDÉVELOPPEMENT FRANÇAIS RÉCENT: Achille Mbembe (De la postcolonie, 2000; Politiques de l'inimitié, 2016), Léonora Miano, Alain Mabanckou, Patrick Chamoiseau. Création de centres universitaires (Paris-VIII, EHESS) sur les études postcoloniales depuis les années 2000.\n\nPRINCIPES CENTRAUX: (a) la littérature française a longtemps occulté ou caricaturé les colonisés; (b) les écritures francophones extérieures à la France métropolitaine méritent une lecture spécifique; (c) le concept même de « littérature française » mérite d'être interrogé — pourquoi pas « littérature francophone »?\n\nDÉBATS: tension entre « francophonie » comme catégorie utile et « francophonie » comme catégorie qui maintient une hiérarchie (« centre français » et « périphéries »); débat sur la « décolonisation » du canon — élargissement ou déconstruction?\n\nLIMITES: risque de plaquage idéologique sur des textes qui n'engagent pas la question coloniale; risque de réduire un auteur francophone à sa condition postcoloniale (limiter Glissant à « écrivain antillais », par exemple).\n\nUNE POSITION C2 LÉGITIME: les trois grilles sont OUTILS, non DOGMES. Sur un texte donné, telle grille éclaire mieux que telle autre. Sur Madame Bovary, la lecture féministe est puissante (Emma comme victime des représentations romanesques imposées aux femmes); la lecture formaliste est puissante (discours indirect libre, structure ironique); la lecture postcoloniale est moins pertinente (le roman engage peu la question coloniale, malgré quelques scènes en Égypte). Choisir la grille en fonction du texte — non l'inverse.\n\nBẪY NGƯỜI VIỆT: tendance à choisir une grille a priori (parce qu'on l'a lue récemment) puis à chercher des éléments du texte qui la valident. C'est ce que Compagnon appelle « plaquage théorique ». L'attitude C2: lire d'abord le texte, identifier ce qu'il sollicite, choisir ENSUITE la ou les grilles appropriées.",
+      "tip_advice_vi": "GRILLE D'ANALYSE pour mobiliser une lecture théorique:\n\n(1) IDENTIFIER CE QUE LE TEXTE SOLLICITE — les thématiques, les structures, les positions énonciatives qui rendent telle ou telle grille pertinente.\n\n(2) CHOISIR UNE GRILLE — ou deux, si le texte le supporte. Trois grilles plaquées sur le même texte = surcharge théorique.\n\n(3) LIRE LA GRILLE AU PLUS PRÈS — citer les théoriciens précisément, pas en bloc:\n- « Comme l'a montré Bourdieu dans Les Règles de l'art (1992)… »\n- « En reprenant le concept d'écriture féminine forgé par Cixous dans Le Rire de la Méduse (1975)… »\n- « Mbembe, dans De la postcolonie (2000), propose une analyse… »\n\n(4) APPLIQUER LA GRILLE AU TEXTE — chercher dans le texte les éléments qui valident l'application. Citation par citation.\n\n(5) ÉVALUER LES LIMITES de la grille pour ce texte — quels aspects elle éclaire, quels aspects elle laisse dans l'ombre.\n\nCỤM HỮU ÍCH:\n\nPOUR INTRODUIRE UNE LECTURE THÉORIQUE:\n- « Cette page peut être lue à la lumière de [théorie]. »\n- « La grille [théorique] que je mobilise ici n'épuise pas le texte, mais elle en éclaire un aspect particulier. »\n- « Sans prétendre à l'exhaustivité, une lecture [féministe / formaliste / postcoloniale] permet de faire apparaître [élément spécifique]. »\n\nPOUR ANALYSER FORMALLEMENT:\n- « L'isotopie dominante — le champ lexical de [X] — structure l'ensemble du paragraphe. »\n- « Le récit déploie ici une opposition binaire entre [pôle 1] et [pôle 2], opposition que la fin viendra subvertir. »\n- « La fonction cardinale de cet épisode, au sens proppien, consiste à [fonction]. »\n\nPOUR ANALYSER FÉMINISTEMENT:\n- « Le personnage féminin est ici construit selon les codes de la féminité du XIXe siècle — fragilité, intériorité, pâmoison — codes que le texte reprend [ou subvertit]. »\n- « L'écriture féminine, telle que la pense Cixous, se manifeste dans ce texte par [traits spécifiques]. »\n- « Le rapport de genre inscrit dans cette scène mérite d'être analysé sans anachronisme. »\n\nPOUR ANALYSER POSTCOLONIALEMENT:\n- « Le roman engage la question coloniale par [élément spécifique], que la lecture longtemps dominante avait laissé dans l'ombre. »\n- « En reprenant la grille de Glissant, on peut analyser ce passage comme une mise en relation des cultures. »\n- « Cette représentation de l'autre relève de ce que Said nommait l'« orientalisme » — construction occidentale projetée. »\n\nTRÁNH:\n- Plaquer une grille sans justification du texte\n- Empiler trois grilles sur le même paragraphe\n- Citer un théoricien sans nommer l'œuvre et l'année\n- Réduire un texte à un seul aspect (« Madame Bovary, c'est juste une critique du patriarcat »)",
+      "vocabulary": [
+        {
+          "word": "une grille de lecture",
+          "en": "an interpretive grid",
+          "vi": "một lưới đọc",
+          "pos": "n.f.",
+          "pronunciation_vi": "griy dơ lèk-tur"
+        },
+        {
+          "word": "la lecture formaliste",
+          "en": "formalist reading",
+          "vi": "cách đọc hình thức luận",
+          "pos": "n.f.",
+          "pronunciation_vi": "lèk-tur for-ma-list"
+        },
+        {
+          "word": "la lecture féministe",
+          "en": "feminist reading",
+          "vi": "cách đọc nữ quyền",
+          "pos": "n.f.",
+          "pronunciation_vi": "lèk-tur fé-mi-nist"
+        },
+        {
+          "word": "la lecture postcoloniale",
+          "en": "postcolonial reading",
+          "vi": "cách đọc hậu thuộc địa",
+          "pos": "n.f.",
+          "pronunciation_vi": "lèk-tur pos-ko-lo-nial"
+        },
+        {
+          "word": "l'écriture féminine",
+          "en": "feminine writing (Cixous)",
+          "vi": "lối viết nữ tính (Cixous)",
+          "pos": "n.f.",
+          "pronunciation_vi": "é-kri-tur fé-mi-nin"
+        },
+        {
+          "word": "un rapport de genre",
+          "en": "a gender relation",
+          "vi": "một quan hệ giới",
+          "pos": "n.m.",
+          "pronunciation_vi": "ra-por dơ jãn-rơ"
+        },
+        {
+          "word": "une isotopie",
+          "en": "an isotopy (Greimas)",
+          "vi": "một đẳng cấu (Greimas)",
+          "pos": "n.f.",
+          "pronunciation_vi": "i-zo-to-pi"
+        },
+        {
+          "word": "un plaquage théorique",
+          "en": "theoretical imposition",
+          "vi": "sự dán lý thuyết",
+          "pos": "n.m.",
+          "pronunciation_vi": "pla-kaj té-o-rik"
+        },
+        {
+          "word": "l'orientalisme",
+          "en": "Orientalism (Said)",
+          "vi": "chủ nghĩa Đông phương (Said)",
+          "pos": "n.m.",
+          "pronunciation_vi": "o-riãn-ta-lism"
+        },
+        {
+          "word": "la mise en relation",
+          "en": "putting-into-relation (Glissant)",
+          "vi": "sự đặt vào quan hệ (Glissant)",
+          "pos": "n.f.",
+          "pronunciation_vi": "miz ã rơ-la-sion"
+        }
+      ],
+      "dialogue": [
+        {
+          "speaker": "Pr. Compagnon",
+          "text": "Madame Tran, vous lisez Madame Bovary uniquement avec la grille féministe. C'est trop étroit.",
+          "vi": "Cô Trần, cô đọc Madame Bovary chỉ với lưới nữ quyền. Quá hẹp."
+        },
+        {
+          "speaker": "Linh",
+          "text": "Vous avez raison — la grille est puissante mais ne saurait épuiser le roman. Je devrais l'articuler avec la lecture formaliste.",
+          "vi": "Thầy đúng — lưới này mạnh nhưng không thể vắt kiệt tiểu thuyết. Tôi nên khớp với cách đọc hình thức luận."
+        },
+        {
+          "speaker": "Pr. Compagnon",
+          "text": "Voilà — chez Flaubert, la critique des illusions romanesques s'opère par la forme même, pas seulement par le contenu thématique.",
+          "vi": "Đó — ở Flaubert, phê bình các ảo tưởng tiểu thuyết hoạt động qua chính hình thức, không chỉ qua nội dung chủ đề."
+        },
+        {
+          "speaker": "Linh",
+          "text": "D'où l'intérêt de croiser les deux grilles — féministe sur le contenu, formaliste sur le dispositif énonciatif.",
+          "vi": "Vì thế lợi ích chéo hai lưới — nữ quyền trên nội dung, hình thức luận trên thiết kế phát ngôn."
+        }
+      ],
+      "dialogue_long": [
+        {
+          "speaker": "Pr. Compagnon (séminaire de méthodologie critique)",
+          "text": "Madame Tran, votre exposé porte sur la question méthodologique fondamentale: comment articuler plusieurs grilles théoriques sans tomber dans le syncrétisme superficiel ? Vingt minutes.",
+          "vi": "Cô Trần, bài cô về câu hỏi phương pháp luận cơ bản: làm sao khớp nối nhiều lưới lý thuyết mà không rơi vào syncrétisme bề mặt? 20 phút."
+        },
+        {
+          "speaker": "Linh",
+          "text": "Ma proposition: il existe trois positions méthodologiques légitimes face à la pluralité des grilles. La première — moniste — choisit une grille et l'applique systématiquement. La deuxième — éclectique — utilise la grille la plus pertinente pour chaque texte. La troisième — dialogique — fait travailler plusieurs grilles ensemble sur un même texte. Ces trois positions ne sont pas équivalentes; chacune a ses bénéfices et ses risques propres.",
+          "vi": "Đề xuất tôi: có ba lập trường phương pháp luận hợp pháp trước sự đa dạng của các lưới. Lập trường thứ nhất — monist — chọn một lưới và áp dụng hệ thống. Thứ hai — éclectique — dùng lưới phù hợp nhất cho mỗi văn bản. Thứ ba — dialogique — cho nhiều lưới làm việc cùng nhau trên một văn bản. Ba lập trường này không tương đương; mỗi cái có lợi ích và rủi ro riêng."
+        },
+        {
+          "speaker": "Linh",
+          "text": "Position moniste — exemple: un critique exclusivement bourdieusien lit toute œuvre comme position dans le champ. Avantage: cohérence, profondeur. Inconvénient: risque de monomanie, plaquage théorique sur des textes qui n'appellent pas cette grille. Le bourdieusisme strict produit d'excellentes analyses sur Flaubert (qui s'y prête) et de mauvaises sur Mallarmé (qui résiste).",
+          "vi": "Lập trường moniste — ví dụ: một critique chỉ dùng Bourdieu đọc mọi tác phẩm như vị trí trong trường. Lợi: nhất quán, sâu. Hại: rủi ro monomanie, plaquage lý thuyết trên các văn bản không cần lưới này. Bourdieusisme nghiêm sản sinh phân tích xuất sắc về Flaubert (phù hợp) và tệ về Mallarmé (kháng cự)."
+        },
+        {
+          "speaker": "Linh",
+          "text": "Position éclectique — exemple: utiliser la grille formaliste sur les sonnets de Mallarmé, la grille sociologique sur Zola, la grille postcoloniale sur Césaire, la grille féministe sur Beauvoir. Avantage: souplesse, pertinence textuelle. Inconvénient: risque d'incohérence — comment articuler des présupposés théoriques parfois contradictoires? Si la grille formaliste suppose que le texte est autonome, et la grille sociologique qu'il est déterminé par le champ, comment passer de l'une à l'autre sans naïveté ?",
+          "vi": "Lập trường éclectique — ví dụ: dùng lưới hình thức luận trên sonnet Mallarmé, lưới xã hội học trên Zola, lưới hậu thuộc địa trên Césaire, lưới nữ quyền trên Beauvoir. Lợi: linh hoạt, phù hợp văn bản. Hại: rủi ro không nhất quán — làm sao khớp các tiền đề lý thuyết đôi khi mâu thuẫn? Nếu lưới hình thức luận giả định văn bản tự lập, và lưới xã hội học giả định nó bị trường định mệnh, làm sao chuyển từ cái này sang cái kia mà không ngây thơ?"
+        },
+        {
+          "speaker": "Linh",
+          "text": "Position dialogique — la plus exigeante. Exemple: lire Madame Bovary avec à la fois la grille féministe (Emma comme victime des représentations imposées aux femmes du XIXe) ET la grille formaliste (le discours indirect libre comme dispositif central de l'ironie flaubertienne). Avantage: épaisseur d'analyse — chaque grille révèle ce que l'autre laisse dans l'ombre. Inconvénient: difficulté méthodologique réelle — il faut articuler explicitement les deux grilles, montrer où elles convergent et où elles divergent.",
+          "vi": "Lập trường dialogique — đòi hỏi nhất. Ví dụ: đọc Madame Bovary cùng lúc với lưới nữ quyền (Emma như nạn nhân của các biểu tượng áp lên phụ nữ thế kỷ XIX) VÀ lưới hình thức luận (discours indirect libre như thiết kế trung tâm của châm biếm Flaubert). Lợi: dày dặn phân tích — mỗi lưới để lộ điều cái kia bỏ trong bóng. Hại: khó khăn phương pháp luận thật — phải khớp rõ hai lưới, cho thấy nơi chúng hội tụ và phân kỳ."
+        },
+        {
+          "speaker": "Linh",
+          "text": "Sur Madame Bovary, l'articulation peut s'opérer ainsi: la lecture féministe identifie le contenu — Emma est une femme dont la conscience a été formatée par les romans sentimentaux qui lui ont été destinés en tant que femme. La lecture formaliste identifie le dispositif — Flaubert, par le discours indirect libre, fait exister cette conscience formée tout en s'en distanciant ironiquement. Les deux grilles se rejoignent sur l'analyse: la critique flaubertienne du formatage féminin opère par la forme, non malgré elle. C'est précisément cette articulation que ni la grille formaliste seule, ni la grille féministe seule ne pouvait produire.",
+          "vi": "Trên Madame Bovary, khớp nối có thể vận hành thế này: cách đọc nữ quyền nhận dạng nội dung — Emma là một phụ nữ mà ý thức bị định dạng bởi các tiểu thuyết tình cảm dành cho cô với tư cách phụ nữ. Cách đọc hình thức luận nhận dạng thiết kế — Flaubert, qua discours indirect libre, làm tồn tại ý thức được định dạng này đồng thời tách khỏi nó với châm biếm. Hai lưới gặp nhau trên phân tích: phê bình Flaubert về định dạng nữ tính hoạt động qua hình thức, không phải bất chấp. Chính khớp nối này mà cả lưới hình thức luận một mình, lẫn lưới nữ quyền một mình, không thể sản sinh."
+        },
+        {
+          "speaker": "Pr. Compagnon",
+          "text": "Position défendue avec rigueur. Une dernière question: dans cette position dialogique, comment décidez-vous quelles grilles articuler ? Le risque, sinon, est l'arbitraire — on prend les grilles qu'on connaît bien et on évite les autres.",
+          "vi": "Lập trường được bảo vệ nghiêm cẩn. Câu hỏi cuối: trong lập trường dialogique này, cô quyết định khớp những lưới nào thế nào? Rủi ro, nếu không, là tùy ý — ta lấy các lưới ta biết rõ và tránh các cái khác."
+        },
+        {
+          "speaker": "Linh",
+          "text": "Critère textuel: les grilles s'imposent quand le texte les SOLLICITE. Madame Bovary sollicite la grille féministe (un personnage féminin central, des codes de genre thématisés) et la grille formaliste (un dispositif énonciatif spectaculaire). Il sollicite moins la grille postcoloniale, malgré la scène égyptienne — qui reste épisodique et n'engage pas vraiment la question. Le critique honnête reconnaît qu'il a manqué une grille pertinente plutôt que de plaquer une grille non sollicitée. Et il accepte qu'aucune lecture, même dialogique, ne saurait épuiser un texte canonique. C'est précisément ce qui fait que le canon reste à lire — chaque génération apporte ses grilles, et le texte garde de quoi répondre.",
+          "vi": "Tiêu chí văn bản: các lưới áp đặt khi văn bản TRIỆU GỌI chúng. Madame Bovary triệu gọi lưới nữ quyền (một nhân vật nữ trung tâm, các mã giới được chủ đề hóa) và lưới hình thức luận (một thiết kế phát ngôn ngoạn mục). Nó ít triệu gọi lưới hậu thuộc địa, dù có cảnh Ai Cập — vẫn là phụ và không thực sự dấn vào câu hỏi. Người critique trung thực thừa nhận đã bỏ một lưới phù hợp hơn là dán một lưới không được triệu. Và chấp nhận rằng không cách đọc nào, kể cả dialogique, có thể vắt kiệt một văn bản kinh điển. Chính điều này làm kinh điển vẫn còn để đọc — mỗi thế hệ mang lưới của nó, và văn bản giữ chỗ để đáp."
+        },
+        {
+          "speaker": "Pr. Compagnon",
+          "text": "Réponse qui clôt le séminaire. Vous avez exposé la position dialogique avec ses raisons — c'est ce qu'on attend en agrégation. La pluralité méthodologique est un acquis, à condition d'être articulée, non juxtaposée.",
+          "vi": "Câu trả lời đóng séminaire. Cô đã trình bày lập trường dialogique với các lý do — đó là điều mong đợi ở agrégation. Sự đa dạng phương pháp luận là một thành tựu, với điều kiện được khớp nối, không juxtaposée."
+        }
+      ],
+      "roleplay_prompts": [
+        "Bạn được giao soạn une analyse de Tropismes de Sarraute (1939) en mobilisant deux grilles convergentes — formaliste (le travail sur la perception infraverbale) et féministe (la critique des micro-violences ordinaires de la sociabilité bourgeoise).",
+        "Trong séminaire, một collègue affirme que « la lecture postcoloniale n'a rien à dire sur Mallarmé ». Phản hồi avec nuance — accepter que la grille n'est pas centrale sur Mallarmé, sans pour autant exclure qu'elle puisse éclairer certains aspects (la position de Mallarmé dans une économie globale du XIXe).",
+        "Soạn 5 câu pour expliquer pourquoi la grille bourdieusienne et la grille formaliste, théoriquement opposées, peuvent se compléter dans la pratique critique."
+      ],
+      "register_notes": "VOCABULAIRE PRÉCIS sur les théories critiques:\n\nÉCOLES À CONNAÎTRE (références françaises):\n- Formalisme russe (Jakobson, Propp, Chklovski) — médiation française par Todorov\n- Structuralisme (Lévi-Strauss, Barthes Mythologies, Greimas)\n- Sémiotique (Greimas, Eco)\n- Sociocritique (Goldmann, Lukács, plus tard Pinto, Sapiro)\n- Psychanalyse littéraire (Mauron, Bellemin-Noël)\n- Génétique textuelle (de Biasi, ITEM)\n- Études de genre (Beauvoir, Cixous, Wittig, Butler traduit)\n- Études postcoloniales (Glissant, Mbembe, Said traduit, Spivak)\n- Études queer (Eribon, Bourcier)\n- Écocritique (récente, Garrard, Schoentjes)\n\nCONCEPTS THÉORIQUES INDISPENSABLES:\n- diégèse, focalisation, voix (Genette)\n- horizon d'attente, écart esthétique (Jauss)\n- intertextualité (Kristeva)\n- pacte autobiographique (Lejeune)\n- champ littéraire, capital symbolique (Bourdieu)\n- écriture féminine (Cixous)\n- subalterne, voix subalterne (Spivak)\n- mise en relation, créolisation (Glissant)\n- lieu commun, doxa (Barthes)\n- isotopie, fonction narrative (Greimas, Propp)\n- mythe au second degré (Barthes Mythologies)\n\nMOTS-OUTILS THÉORIQUES À UTILISER PRÉCISÉMENT:\n- une « lecture » (interprétation cohérente d'un texte selon une grille)\n- une « problématique » (question qui structure une analyse)\n- une « hypothèse de lecture » (proposition à vérifier)\n- une « grille » (cadre conceptuel)\n- un « dispositif » (organisation matérielle d'un texte)\n- un « régime » (mode de fonctionnement — ex. le régime de l'ironie)\n- une « inflexion » (modification subtile)\n- un « déplacement » (changement de position théorique)\n\nIDIOMS LITTÉRAIRES SUR LA THÉORIE:\n- « plaquer une grille » (dán một lưới — courant critique)\n- « solliciter une lecture » (triệu một cách đọc — soutenu)\n- « croiser les approches » (chéo các cách tiếp cận — courant)\n- « faire dialoguer les grilles » (làm các lưới đối thoại — soutenu)\n- « pousser une grille à son terme » (đẩy lưới đến cuối — soutenu)\n\nMỘT TINH TẾ ĐẶC THÙ: critique C2 évite « lecture marxiste », « lecture freudienne » sans précisions. Préférer: « lecture sociologique d'inspiration marxienne » (parce que « marxiste » est ambigu — Goldmann, Althusser, Macherey ont des positions différentes); « lecture psychanalytique d'inspiration freudienne » (pour distinguer de Lacan, Klein, Winnicott). La précision théorique est un marqueur de niveau C2.",
+      "idiom_glosses": [
+        {
+          "idiom": "Plaquer une grille (courant critique)",
+          "literal": "Dán một lưới",
+          "meaning": "Áp dụng cứng nhắc một lý thuyết bất chấp văn bản — péjoratif.",
+          "example": "Plaquer la grille bourdieusienne sur Mallarmé manque de pertinence textuelle."
+        },
+        {
+          "idiom": "Croiser les approches (courant)",
+          "literal": "Chéo các cách tiếp cận",
+          "meaning": "Khớp nhiều lý thuyết để làm phong phú phân tích.",
+          "example": "Croiser l'approche formaliste et l'approche féministe sur Madame Bovary fait apparaître la critique flaubertienne du formatage."
+        },
+        {
+          "idiom": "Pousser une grille à son terme (soutenu)",
+          "literal": "Đẩy lưới đến cuối",
+          "meaning": "Khai thác đầy đủ một lý thuyết để xem nó dẫn đến đâu.",
+          "example": "Pousser la grille postcoloniale à son terme sur Glissant suppose qu'on accepte la créolisation comme catégorie centrale."
+        },
+        {
+          "idiom": "Faire flèche de tout bois (soutenu)",
+          "literal": "Làm mũi tên từ mọi cây gỗ",
+          "meaning": "Sử dụng mọi nguồn / lý thuyết — éclectisme assumé.",
+          "example": "En sciences humaines, on fait flèche de tout bois — l'éclectisme est une vertu épistémologique."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "fill-blank",
+          "question": "Encore faut-il que ces grilles ___ mobilisées avec discernement, et non plaquées sans distinction sur tout texte qui s'y prêterait fortuitement.",
+          "answer": "soient"
+        },
+        {
+          "type": "matching",
+          "pairs": [
+            [
+              "la grille formaliste",
+              "lưới hình thức luận"
+            ],
+            [
+              "l'écriture féminine",
+              "lối viết nữ tính"
+            ],
+            [
+              "le plaquage théorique",
+              "sự dán lý thuyết"
+            ]
+          ],
+          "instruction": "Nối thuật ngữ critique với nghĩa Việt"
+        },
+        {
+          "type": "translation",
+          "vietnamese": "Một tác phẩm có thể được đọc theo nhiều lưới lý thuyết mà không lưới nào vắt kiệt sự phong phú của nó.",
+          "french": "Une même œuvre peut être lue selon plusieurs grilles théoriques sans qu'aucune n'épuise sa richesse."
+        }
+      ]
+    },
+    {
+      "id": "lessay_opening",
+      "level": "C2",
+      "category": "fluency",
+      "title_vi": "Viết phần mở của một dissertation phê bình",
+      "title_en": "Writing a critical essay opening",
+      "sentences": [
+        {
+          "en": "L'amorce, dans la dissertation française, n'est pas un préambule décoratif mais l'acte d'ouverture qui engage tout le devoir.",
+          "vi": "Amorce, trong dissertation Pháp, không phải lời mở đầu trang trí mà là động tác mở khởi xướng toàn bộ bài.",
+          "pronunciation_focus": [
+            "amorce → a-mors",
+            "dissertation → di-sèr-ta-sion",
+            "préambule → pré-ãn-bul",
+            "engage → ãn-gaj"
+          ]
+        },
+        {
+          "en": "Une amorce réussie part d'un fait précis — historique, esthétique, biographique — pour conduire avec naturel à la problématique posée par le sujet.",
+          "vi": "Một amorce thành công xuất phát từ một sự kiện cụ thể — lịch sử, thẩm mỹ, tiểu sử — để dẫn tự nhiên đến vấn đề do đề bài đặt ra.",
+          "pronunciation_focus": [
+            "réussie → ré-u-si",
+            "précis → pré-si",
+            "conduire → kõn-dui-rơ",
+            "problématique → pro-blé-ma-tik"
+          ]
+        },
+        {
+          "en": "La problématique, à proprement parler, n'est ni le sujet ni la question rhétorique: elle reformule l'enjeu en termes critiques, en faisant apparaître la tension qui le rend digne d'être discuté.",
+          "vi": "Problématique, đúng nghĩa, không phải đề bài cũng không phải câu hỏi tu từ: nó diễn đạt lại vấn đề bằng thuật ngữ critique, làm xuất hiện sự căng thẳng khiến nó đáng được thảo luận.",
+          "pronunciation_focus": [
+            "proprement → pro-prơ-mã",
+            "reformule → rơ-for-mul",
+            "enjeu → ãn-jơ",
+            "tension → tãn-sion"
+          ]
+        },
+        {
+          "en": "Encore conviendrait-il que l'introduction annonçât son plan sans se réduire à une succession d'intitulés sans relief.",
+          "vi": "Vẫn cần phần dẫn nhập công bố kế hoạch của nó mà không thu giảm thành một chuỗi tiêu đề không nổi bật.",
+          "pronunciation_focus": [
+            "conviendrait → kõn-vian-drè",
+            "annonçât → a-nõn-sa",
+            "intitulés → an-ti-tu-lé",
+            "relief → rơ-lièf"
+          ]
+        },
+        {
+          "en": "On l'aura compris: la qualité d'une dissertation se joue, pour une grande part, dans les vingt premières lignes.",
+          "vi": "Ta đã hiểu: chất lượng của một dissertation, phần lớn, được chơi trong 20 dòng đầu tiên.",
+          "pronunciation_focus": [
+            "compris → kõm-pri",
+            "qualité → ka-li-té",
+            "joue → ju",
+            "lignes → li-nhơ"
+          ]
+        }
+      ],
+      "cultural_notes_vi": "LA DISSERTATION FRANÇAISE est l'exercice écrit canonique de l'enseignement supérieur de lettres — du baccalauréat à l'agrégation. Sa structure, héritée du XIXe siècle et codifiée par Lanson, n'a guère changé:\n\n(1) INTRODUCTION (10-15% du devoir): amorce → analyse du sujet → problématique → annonce de plan\n(2) DÉVELOPPEMENT (75-80%): trois parties dialectiques (thèse → antithèse → synthèse) ou trois axes thématiques\n(3) CONCLUSION (10%): bilan → ouverture\n\nLA DISSERTATION RENFERME UN PARI: que la pensée gagne en rigueur à se plier à une forme stricte. Les contestations existent (le « plan progressif » remplace parfois le « plan dialectique » strict), mais la matrice tripartite reste hégémonique en France — et différencie radicalement la culture intellectuelle française du modèle anglo-américain (essai à structure libre, paragraphes argumentatifs autonomes).\n\nL'INTRODUCTION — pierre angulaire de la dissertation:\n\nA. AMORCE (3-5 lignes):\nFonction: situer le sujet dans un contexte plus large, qui rend pertinent qu'on s'y arrête.\nTYPES D'AMORCE:\n- AMORCE HISTORIQUE: « En 1857, Madame Bovary fait l'objet d'un procès retentissant… »\n- AMORCE ESTHÉTIQUE: « La conception romantique du génie place l'inspiration au cœur de la création… »\n- AMORCE BIOGRAPHIQUE (avec prudence post-Sainte-Beuve): « Lorsque Beckett s'installe à Paris en 1937… »\n- AMORCE THÉORIQUE: « Roland Barthes, dans La Mort de l'auteur (1968), bouleversait… »\n\nÀ ÉVITER:\n- Amorce trop large (« Depuis l'Antiquité, l'humanité s'interroge sur l'amour… »)\n- Amorce sans rapport avec le sujet (placée pour faire savant)\n- Amorce qui plagie le manuel (« Comme tout le monde sait… »)\n\nB. ANALYSE DU SUJET (5-7 lignes):\nReformuler le sujet en explicitant les concepts qui l'engagent. « Lorsque l'on demande si la fiction peut dire le vrai, encore faut-il préciser ce qu'on entend par « vrai » — vérité empirique ? vérité psychologique ? vérité philosophique ? »\n\nC. PROBLÉMATIQUE (1-2 phrases):\nLe cœur de l'introduction. La problématique transforme le sujet en QUESTION CRITIQUE. Elle fait apparaître la tension qui justifie qu'on développe.\nFORMULATION TYPE: « En quoi… ? » / « Comment… peut-il à la fois… et… ? » / « Faut-il dès lors considérer que… ou plutôt… ? »\nÀ ÉVITER:\n- Problématique = sujet répété (« La question est de savoir si Madame Bovary est un grand roman »)\n- Problématique double ou triple (impossible à traiter en un devoir)\n- Problématique sans tension (« Nous étudierons l'écriture de Flaubert » — ce n'est pas une problématique, c'est une annonce)\n\nD. ANNONCE DE PLAN (3-5 lignes):\nNommer les trois parties de manière à faire SENTIR la dynamique dialectique. Pas une simple liste; une progression.\nFORMULATION TYPE: « Nous examinerons d'abord [partie 1]; nous verrons ensuite que [partie 2 — qui complique]; cette tension nous conduira enfin à [partie 3 — qui dépasse]. »\nÀ ÉVITER:\n- Annonce sèche (« I. … II. … III. … »)\n- Annonce sans logique de transition\n- Annonce qui se confond avec le développement (trop détaillée)\n\nERREURS FRÉQUENTES POUR PUBLIC VIETNAMIEN:\n\n(1) AMORCE TROP LARGE. Le réflexe vietnamien (et plus largement asiatique) est de partir « de loin », de poser un cadre général. Le réflexe français est inverse: partir d'un POINT PRÉCIS qui pique l'intérêt. Une amorce qui commence par « Depuis toujours… » ou « Dans l'histoire de la littérature… » est suspecte.\n\n(2) PROBLÉMATIQUE COMME QUESTION DE COURS. Une problématique scolaire ne fait pas surgir de tension réelle. Une problématique critique pose un PROBLÈME — quelque chose dont la réponse n'est pas évidente, sur quoi des positions divergentes existent.\n\n(3) ANNONCE SOUS FORME DE LISTE. La culture critique française attend une annonce qui DÉPLOIE une logique, non qui énumère des sujets. La transition entre les parties doit déjà être suggérée dans l'annonce.",
+      "tip_advice_vi": "PROCESSUS EN 6 ÉTAPES pour rédiger une introduction de dissertation:\n\nÉTAPE 1 — ANALYSE DU SUJET (15 min sur 4h de devoir):\n- Quels sont les mots-clés du sujet ?\n- Quels sont leurs sens possibles ?\n- Quelle tension secrète recèle le sujet ?\n\nÉTAPE 2 — RECHERCHE D'EXEMPLES (30 min):\n- 5-8 œuvres mobilisables\n- 2-3 références théoriques mobilisables\n- 1-2 amorces possibles\n\nÉTAPE 3 — FORMULATION DE LA PROBLÉMATIQUE (15 min):\n- Brouillon de 3-4 problématiques alternatives\n- Choix de la plus tenue (qui ouvre 3 parties claires)\n- Reformulation rigoureuse\n\nÉTAPE 4 — CONSTRUCTION DU PLAN (30 min):\n- Identification des 3 parties qui répondent à la problématique\n- Vérification: chaque partie est nécessaire ET suffisante\n- Test: peut-on permuter les parties ? Si oui, le plan est mauvais (pas de progression)\n\nÉTAPE 5 — RÉDACTION DE L'INTRODUCTION (30 min):\n- Amorce, analyse, problématique, annonce — dans cet ordre\n- 25-35 lignes, pas plus, pas moins\n- Style soutenu, sans pédanterie\n\nÉTAPE 6 — RELECTURE (10 min):\n- L'amorce conduit-elle naturellement à la problématique ?\n- La problématique est-elle une vraie question ?\n- L'annonce fait-elle apparaître une logique ?\n\nMODÈLES D'AMORCES RÉUSSIES — adaptables:\n\nA. AMORCE HISTORIQUE PRÉCISE:\n« En 1857, deux procès secouent la littérature française: celui de Madame Bovary, et celui des Fleurs du mal. Cette concomitance ne doit rien au hasard. Elle signale qu'une époque cherche, par la voie judiciaire, à délimiter ce qu'il est encore permis de dire en littérature… »\n\nB. AMORCE ESTHÉTIQUE:\n« Le sonnet, depuis Pétrarque, repose sur une économie strictement codifiée: quatorze vers, deux quatrains, deux tercets, schéma rimique fixe. Cette contrainte, loin d'épuiser la forme, l'a rendue capable d'accueillir Mallarmé, Rimbaud, Yves Bonnefoy… »\n\nC. AMORCE THÉORIQUE:\n« Lorsque Roland Barthes, en 1968, annonçait « la mort de l'auteur », il ne célébrait pas une disparition, mais inaugurait un déplacement: la critique devait désormais lire les textes sans l'autorité d'une intention auctoriale… »\n\nD. AMORCE PAR LA RÉCEPTION:\n« Les Particules élémentaires, à sa parution en 1998, suscite un débat d'une violence rare: les uns y voient le grand roman du désenchantement contemporain, les autres une simple provocation cynique. Cette polarisation appelle l'analyse… »\n\nFORMULATIONS DE PROBLÉMATIQUE TESTÉES:\n\n- « En quoi cette tension permet-elle à l'œuvre de [faire X] tout en [faisant Y, qui semble s'y opposer] ? »\n- « Faut-il dès lors considérer [position A] comme la seule légitime, ou plutôt admettre que [position B] reste défendable ? »\n- « Comment articuler [enjeu 1] et [enjeu 2] sans sacrifier ni l'un ni l'autre ? »\n- « Si [thèse dominante], alors comment expliquer que [contre-exemple précis] ? »\n\nMODÈLES D'ANNONCES DE PLAN:\n\n- « Nous montrerons d'abord que [partie 1, position thèse]. Cependant, cette première lecture appelle aussitôt une nuance [partie 2, antithèse ou complication]. Cette tension ne saurait être résolue qu'en envisageant [partie 3, synthèse]. »\n- « Une première analyse mettra en évidence [partie 1]. À cette analyse s'opposera, dans un second temps, [partie 2]. Le dépassement de cette opposition exigera enfin [partie 3]. »",
+      "vocabulary": [
+        {
+          "word": "une dissertation",
+          "en": "a dissertation (essay)",
+          "vi": "một bài dissertation",
+          "pos": "n.f.",
+          "pronunciation_vi": "di-sèr-ta-sion"
+        },
+        {
+          "word": "une amorce",
+          "en": "an opening hook",
+          "vi": "phần mở đầu / amorce",
+          "pos": "n.f.",
+          "pronunciation_vi": "a-mors"
+        },
+        {
+          "word": "la problématique",
+          "en": "the problematic / central question",
+          "vi": "vấn đề trung tâm",
+          "pos": "n.f.",
+          "pronunciation_vi": "pro-blé-ma-tik"
+        },
+        {
+          "word": "l'annonce de plan",
+          "en": "the announcement of plan",
+          "vi": "sự công bố kế hoạch",
+          "pos": "n.f.",
+          "pronunciation_vi": "a-nõns dơ plã"
+        },
+        {
+          "word": "un plan dialectique",
+          "en": "a dialectical plan",
+          "vi": "một kế hoạch biện chứng",
+          "pos": "n.m.",
+          "pronunciation_vi": "plã dia-lèk-tik"
+        },
+        {
+          "word": "thèse / antithèse / synthèse",
+          "en": "thesis / antithesis / synthesis",
+          "vi": "luận điểm / phản đề / tổng hợp",
+          "pos": "n.f.",
+          "pronunciation_vi": "tèz / ãn-ti-tèz / san-tèz"
+        },
+        {
+          "word": "un enjeu critique",
+          "en": "a critical stake",
+          "vi": "một vấn đề critique",
+          "pos": "n.m.",
+          "pronunciation_vi": "ãn-jơ kri-tik"
+        },
+        {
+          "word": "une tension dialectique",
+          "en": "a dialectical tension",
+          "vi": "một sự căng thẳng biện chứng",
+          "pos": "n.f.",
+          "pronunciation_vi": "tãn-sion dia-lèk-tik"
+        },
+        {
+          "word": "intitulé",
+          "en": "a heading / title",
+          "vi": "tiêu đề",
+          "pos": "n.m.",
+          "pronunciation_vi": "an-ti-tu-lé"
+        },
+        {
+          "word": "un préambule",
+          "en": "a preamble",
+          "vi": "phần mở đầu / lời nói đầu",
+          "pos": "n.m.",
+          "pronunciation_vi": "pré-ãn-bul"
+        }
+      ],
+      "dialogue": [
+        {
+          "speaker": "Pr. Compagnon",
+          "text": "Madame Tran, votre amorce part de « Depuis l'Antiquité, l'homme s'interroge sur l'art… ». C'est trop large.",
+          "vi": "Cô Trần, amorce của cô bắt đầu bằng « Từ thời cổ đại, con người tra hỏi nghệ thuật… ». Quá rộng."
+        },
+        {
+          "speaker": "Linh",
+          "text": "Vous avez raison. Je devrais partir d'un fait précis qui rende le sujet pertinent.",
+          "vi": "Thầy đúng. Tôi nên bắt đầu từ một sự kiện cụ thể làm đề bài liên quan."
+        },
+        {
+          "speaker": "Pr. Compagnon",
+          "text": "Pour un sujet sur le réalisme flaubertien, partez du procès de 1857. Concret, daté, pertinent.",
+          "vi": "Cho đề về hiện thực Flaubert, bắt đầu từ vụ án 1857. Cụ thể, có ngày, liên quan."
+        },
+        {
+          "speaker": "Linh",
+          "text": "Et je conduis vers la problématique en montrant ce que ce procès révèle de la conception du réel à l'époque.",
+          "vi": "Và tôi dẫn đến problématique bằng cách cho thấy điều vụ án này tiết lộ về quan niệm hiện thực thời ấy."
+        }
+      ],
+      "dialogue_long": [
+        {
+          "speaker": "Pr. Compagnon (atelier d'écriture, agrégation)",
+          "text": "Madame Tran, vous allez aujourd'hui rédiger l'introduction d'une dissertation sur le sujet suivant: « Le réalisme romanesque vise-t-il à représenter le réel ou à en manifester l'illusion ? » Vous avez quarante minutes pour produire trente lignes.",
+          "vi": "Cô Trần, hôm nay cô sẽ viết phần dẫn nhập của một dissertation về đề: « Hiện thực tiểu thuyết nhằm biểu diễn hiện thực hay phơi bày ảo tưởng của nó? » Cô có 40 phút để sản xuất 30 dòng."
+        },
+        {
+          "speaker": "Linh",
+          "text": "Bien. Je commence par l'analyse du sujet. Le mot-clé est « représenter » — qui suppose une mimésis stable — face à « manifester l'illusion » — qui suppose au contraire un dévoilement de la convention. Le sujet pose donc le problème de la conscience qu'a le réalisme de ses propres conventions: le réalisme est-il naïf ou réflexif ?",
+          "vi": "Tốt. Tôi bắt đầu từ phân tích đề. Từ khóa là « representer » — giả định một mimesis ổn định — đối diện « phơi bày ảo tưởng » — giả định ngược lại sự bóc trần quy ước. Đề đặt vấn đề về ý thức mà hiện thực có về các quy ước của chính mình: hiện thực là ngây thơ hay phản tỉnh?"
+        },
+        {
+          "speaker": "Linh",
+          "text": "Je rédige maintenant l'amorce. Je choisis l'amorce historique sur le procès de 1857 — daté, précis, et qui engage immédiatement la question de ce que le réalisme peut représenter. Voici: « En 1857, deux procès secouent la littérature française: celui de Madame Bovary et celui des Fleurs du mal. Cette concomitance n'est pas fortuite — elle signale une époque qui cherche, par la voie judiciaire, à délimiter ce que la littérature peut représenter du réel sans encourir l'accusation d'outrage à la morale publique. Or, cette accusation supposait acquise une chose qui ne l'était précisément pas: que le réalisme romanesque représente effectivement le réel. »",
+          "vi": "Bây giờ tôi viết amorce. Tôi chọn amorce historique về vụ án 1857 — có ngày, cụ thể, và dấn ngay câu hỏi điều hiện thực có thể biểu diễn. Đây: « Năm 1857, hai vụ án rúng động văn học Pháp: vụ Madame Bovary và vụ Les Fleurs du mal. Sự đồng thời này không tình cờ — nó báo hiệu một thời kỳ tìm kiếm, qua đường tư pháp, giới hạn điều văn chương có thể biểu diễn từ hiện thực mà không bị buộc tội xúc phạm đạo đức công. Tuy nhiên, lời buộc tội này giả định đã có một điều chính ra chưa được thiết lập: rằng hiện thực tiểu thuyết thực sự biểu diễn hiện thực. »"
+        },
+        {
+          "speaker": "Linh",
+          "text": "Maintenant l'analyse du sujet, en transition naturelle: « Cette ambiguïté traverse en réalité toute la conception du réalisme au XIXe siècle. D'un côté, l'ambition mimétique, héritée de Balzac et théorisée par Champfleury, prétend offrir une fenêtre transparente sur le monde social. De l'autre, dès Flaubert, et plus radicalement chez Maupassant, une conscience nouvelle apparaît: le roman ne représente pas le réel, il en construit une représentation soumise à des conventions formelles dont l'auteur peut, ou non, démontrer la conscience. »",
+          "vi": "Bây giờ phân tích đề, chuyển tự nhiên: « Sự mơ hồ này thực sự xuyên suốt cả quan niệm hiện thực thế kỷ XIX. Một mặt, tham vọng mimétique, kế thừa từ Balzac và được Champfleury lý thuyết hóa, tham vọng cung cấp một cửa sổ trong suốt vào thế giới xã hội. Mặt khác, ngay từ Flaubert, và triệt để hơn ở Maupassant, một ý thức mới xuất hiện: tiểu thuyết không biểu diễn hiện thực, nó xây dựng một biểu diễn của nó tuân theo các quy ước hình thức mà tác giả có thể, hoặc không, chứng minh ý thức về. »"
+        },
+        {
+          "speaker": "Linh",
+          "text": "La problématique, maintenant, qui transforme l'analyse en question critique: « Le réalisme est-il dès lors un art naïf, qui croit représenter le réel sans le savoir construit, ou un art réflexif, qui manifeste précisément l'illusion de toute représentation ? Et faut-il, en ce cas, choisir entre deux conceptions du réalisme, ou admettre que les grands romans du genre — Madame Bovary au premier chef — exercent simultanément les deux opérations ? »",
+          "vi": "Problématique, bây giờ, biến phân tích thành câu hỏi critique: « Hiện thực do đó là một nghệ thuật ngây thơ, tin rằng mình biểu diễn hiện thực mà không biết đang xây dựng, hay một nghệ thuật phản tỉnh, phơi bày chính ảo tưởng của mọi biểu diễn? Và phải, trong trường hợp đó, chọn giữa hai quan niệm hiện thực, hay thừa nhận rằng các tiểu thuyết lớn của thể loại — Madame Bovary trước hết — thực hiện đồng thời cả hai động tác? »"
+        },
+        {
+          "speaker": "Linh",
+          "text": "Enfin, l'annonce de plan, qui fait sentir la dialectique: « Nous examinerons d'abord la prétention mimétique du réalisme, telle qu'elle s'élabore de Balzac à Champfleury, en montrant ce qu'elle suppose de confiance dans le langage et dans l'observation. Cette confiance, cependant, ne résiste pas à la pratique flaubertienne: nous verrons dans un deuxième temps comment Madame Bovary, par son dispositif énonciatif même, manifeste l'illusion qu'elle prétendait représenter. Cette tension entre représenter et manifester l'illusion ne saurait être résolue par le seul abandon du réalisme: nous montrerons enfin, en nous appuyant sur le naturalisme zolien et ses héritages contemporains — jusqu'à Houellebecq — que le réalisme demeure un dispositif vivant précisément parce qu'il a intégré sa propre réflexivité. »",
+          "vi": "Cuối cùng, công bố kế hoạch, làm cảm nhận biện chứng: « Chúng tôi sẽ xem xét trước tiên tham vọng mimétique của hiện thực, như nó được hình thành từ Balzac đến Champfleury, cho thấy nó giả định gì về niềm tin vào ngôn ngữ và quan sát. Niềm tin này, tuy nhiên, không kháng cự được thực hành Flaubert: chúng tôi sẽ thấy trong pha thứ hai làm sao Madame Bovary, qua chính thiết kế phát ngôn, phơi bày ảo tưởng nó tham vọng biểu diễn. Sự căng thẳng giữa biểu diễn và phơi bày ảo tưởng không thể giải quyết chỉ bằng cách từ bỏ hiện thực: chúng tôi sẽ chứng minh cuối cùng, dựa trên naturalisme Zola và các kế thừa đương đại — đến Houellebecq — rằng hiện thực vẫn là một thiết kế sống chính vì nó đã tích hợp sự phản tỉnh của chính mình. »"
+        },
+        {
+          "speaker": "Pr. Compagnon",
+          "text": "Bien. Trente lignes exactement. Examinons les forces et les faiblesses.",
+          "vi": "Tốt. Đúng 30 dòng. Hãy xem các điểm mạnh và yếu."
+        },
+        {
+          "speaker": "Pr. Compagnon",
+          "text": "Forces: l'amorce historique, datée et pertinente, ne ressemble en rien à un cliché. La transition vers l'analyse du sujet est naturelle. La problématique est une vraie question — pas un sujet répété. L'annonce de plan fait apparaître une logique de progression, non une simple liste. Faiblesses: la phrase finale de l'annonce est trop longue (six lignes), elle aurait gagné à être segmentée. Et la mention de Houellebecq dans l'annonce annonce trop précisément le contenu de la troisième partie — laissez au correcteur le plaisir de la découvrir.",
+          "vi": "Điểm mạnh: amorce historique, có ngày và phù hợp, không hề giống cliché. Chuyển sang phân tích đề tự nhiên. Problématique là câu hỏi thực — không phải đề lặp. Công bố kế hoạch làm xuất hiện logic tiến hành, không liệt kê. Điểm yếu: câu cuối công bố quá dài (6 dòng), sẽ tốt hơn nếu chia. Và việc nhắc Houellebecq trong công bố báo trước quá chính xác nội dung phần ba — để cho người chấm niềm vui khám phá."
+        },
+        {
+          "speaker": "Linh",
+          "text": "Je note. Reformulation: dans la dernière partie, je suggérerai « les héritages contemporains » sans nommer Houellebecq, qui apparaîtra en développement.",
+          "vi": "Tôi ghi. Diễn đạt lại: ở phần cuối, tôi sẽ gợi ý « các kế thừa đương đại » mà không gọi tên Houellebecq, người sẽ xuất hiện trong triển khai."
+        },
+        {
+          "speaker": "Pr. Compagnon",
+          "text": "Voilà. Une introduction réussie ouvre des promesses sans les épuiser. Le développement doit avoir matière à dépasser ce que l'annonce a laissé entrevoir.",
+          "vi": "Đó. Một dẫn nhập thành công mở các hứa hẹn mà không vắt kiệt. Phần triển khai phải có chất liệu vượt qua điều công bố đã để hé."
+        }
+      ],
+      "roleplay_prompts": [
+        "Bạn được giao soạn introduction (30 lignes) pour un sujet de dissertation: « La poésie moderne, de Baudelaire à Char, a-t-elle aboli le sujet lyrique ? ». Suivre le schéma amorce / analyse / problématique / annonce.",
+        "Trong séminaire, một collègue présente une introduction où l'amorce occupe quinze lignes. Phản hồi avec tact — diagnostiquer le déséquilibre, suggérer reformulation.",
+        "Soạn 5 amorces alternatives — historique, esthétique, biographique (avec prudence), théorique, par la réception — pour le même sujet hypothétique sur Mallarmé. Comparer leurs forces et leurs limites."
+      ],
+      "register_notes": "VOCABULAIRE PRÉCIS pour la dissertation:\n\nMOTS QUI ENGAGENT UN GENRE D'INTRODUCTION:\n- amorce (entrée en matière)\n- accroche (synonyme courant, légèrement moins formel)\n- entrée en matière (synonyme académique)\n- préambule (introduction longue, plutôt pour essai que pour dissertation)\n\nMOTS POUR LA PROBLÉMATIQUE:\n- la problématique (cadre de questionnement)\n- l'enjeu (ce qui est en jeu)\n- la question directrice (parfois utilisé)\n- la tension critique (formulation soutenue)\n\nMOTS POUR LE PLAN:\n- le plan dialectique (thèse-antithèse-synthèse)\n- le plan progressif (du moins au plus complexe)\n- le plan analytique (cause-aspect-conséquence)\n- le plan thématique (rare en lettres, plutôt en histoire)\n\nFORMULES D'INTRODUCTION SOUTENUES:\n- « Nous nous demanderons en quoi… » (problématique)\n- « Notre analyse se déploiera en trois temps. » (annonce)\n- « Il conviendra de [vérifier / examiner / interroger]… » (annonce hedge)\n- « Cette tension nous conduira à [partie 3] » (transition synthèse)\n\nFORMULES À ÉVITER (trop scolaires ou trop oraux):\n- « Nous allons étudier… » (trop sec)\n- « Dans une première partie, je verrai… » (« je » exclu, futur trop direct)\n- « Tout d'abord… ensuite… enfin… » (trop élève de seconde)\n- « Pour conclure… » (en introduction — incohérence)\n\nINVERSION ET SUBJONCTIF C2 dans l'introduction:\n- « Encore convient-il de préciser ce qu'on entend par X. » (inversion)\n- « Sans doute peut-on lire le sujet de plusieurs façons. » (inversion)\n- « Peut-être faut-il considérer que… » (inversion + subjonctif obligatoire)\n- « Que la question fût ainsi posée révèle déjà un parti pris. » (subjonctif imparfait)\n\nIDIOMS LITTÉRAIRES SUR LA DISSERTATION:\n- « entrer en matière » (vào bài — courant)\n- « poser le décor » (đặt trang trí — courant)\n- « ouvrir le débat » (mở tranh luận — courant)\n- « creuser la question » (đào câu hỏi — soutenu)\n- « passer en revue » (rà soát — courant)\n\nMỘT TINH TẾ ĐẶC THÙ: l'introduction française utilise massivement le « nous de modestie » (« nous montrerons », « nous verrons »). Ce « nous » n'est ni un pluriel collectif ni un majestueux — c'est une convention de la dissertation. L'utiliser correctement est un marqueur de niveau. Le « je » est admis depuis quelques années (recommandation officielle de l'agrégation), mais demeure minoritaire.",
+      "idiom_glosses": [
+        {
+          "idiom": "Entrer en matière (courant académique)",
+          "literal": "Vào nội dung",
+          "meaning": "Bắt đầu nội dung sau phần dẫn nhập — formel.",
+          "example": "Une bonne amorce permet d'entrer en matière sans rupture brutale."
+        },
+        {
+          "idiom": "Poser le décor (courant)",
+          "literal": "Đặt trang trí",
+          "meaning": "Thiết lập bối cảnh trước khi đi vào trọng tâm.",
+          "example": "L'amorce historique pose le décor avant que ne soit posée la problématique."
+        },
+        {
+          "idiom": "Creuser la question (soutenu)",
+          "literal": "Đào câu hỏi",
+          "meaning": "Đào sâu vấn đề — analyse en profondeur.",
+          "example": "Une bonne dissertation creuse la question, plutôt que d'en rester à la surface."
+        },
+        {
+          "idiom": "Tirer son fil (littéraire)",
+          "literal": "Kéo sợi chỉ của nó",
+          "meaning": "Theo dõi một logic — méthode de la dissertation.",
+          "example": "La problématique tire son fil tout au long du devoir, sans rupture."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "fill-blank",
+          "question": "Encore conviendrait-il que l'introduction ___ son plan sans se réduire à une succession d'intitulés sans relief.",
+          "answer": "annonçât"
+        },
+        {
+          "type": "matching",
+          "pairs": [
+            [
+              "l'amorce",
+              "phần mở đầu"
+            ],
+            [
+              "la problématique",
+              "vấn đề trung tâm"
+            ],
+            [
+              "le plan dialectique",
+              "kế hoạch biện chứng"
+            ]
+          ],
+          "instruction": "Nối thuật ngữ dissertation với nghĩa Việt"
+        },
+        {
+          "type": "translation",
+          "vietnamese": "Một amorce thành công xuất phát từ một sự kiện cụ thể để dẫn tự nhiên đến vấn đề do đề bài đặt ra.",
+          "french": "Une amorce réussie part d'un fait précis pour conduire avec naturel à la problématique posée par le sujet."
+        }
+      ]
+    },
+    {
+      "id": "lcontroversial_reading",
+      "level": "C2",
+      "category": "fluency",
+      "title_vi": "Bảo vệ một cách đọc gây tranh cãi",
+      "title_en": "Defending a controversial reading",
+      "sentences": [
+        {
+          "en": "Toute lecture neuve d'un texte canonique paraît, dans un premier temps, hérétique — c'est la rançon de l'innovation interprétative.",
+          "vi": "Mọi cách đọc mới của một văn bản kinh điển thoạt đầu có vẻ tà giáo — đó là cái giá của sự sáng tạo diễn giải.",
+          "pronunciation_focus": [
+            "lecture → lèk-tur",
+            "canonique → ka-no-nik",
+            "hérétique → é-ré-tik",
+            "rançon → rãn-sõn"
+          ]
+        },
+        {
+          "en": "Encore faut-il que le critique distinguât la provocation gratuite de la lecture exigeante, qui dérange précisément parce qu'elle voit ce que la tradition avait laissé dans l'ombre.",
+          "vi": "Vẫn cần người critique phân biệt khiêu khích vô cớ với cách đọc đòi hỏi, gây bất an chính vì nó thấy điều truyền thống đã để trong bóng.",
+          "pronunciation_focus": [
+            "distinguât → dis-tan-ga",
+            "provocation → pro-vo-ka-sion",
+            "exigeante → èg-zi-jãnt",
+            "tradition → tra-di-sion"
+          ]
+        },
+        {
+          "en": "Défendre une interprétation contestée suppose qu'on en assume publiquement les conséquences, y compris la possibilité d'avoir tort.",
+          "vi": "Bảo vệ một diễn giải bị tranh cãi đòi hỏi gánh chịu công khai các hệ quả, kể cả khả năng sai.",
+          "pronunciation_focus": [
+            "défendre → dé-fãn-drơ",
+            "interprétation → an-tèr-pré-ta-sion",
+            "conséquences → kõn-sé-kãns",
+            "possibilité → po-si-bi-li-té"
+          ]
+        },
+        {
+          "en": "On l'aura compris: la critique littéraire n'est pas une science déductive, mais un art du jugement éclairé qui réclame du courage autant que de la rigueur.",
+          "vi": "Ta đã hiểu: phê bình văn học không phải khoa học diễn dịch, mà là nghệ thuật phán đoán sáng suốt đòi hỏi can đảm cũng như nghiêm cẩn.",
+          "pronunciation_focus": [
+            "compris → kõm-pri",
+            "déductive → dé-duk-tiv",
+            "jugement → ju-jơ-mã",
+            "courage → ku-raj"
+          ]
+        },
+        {
+          "en": "Que la lecture proposée ici fût en rupture avec la tradition exégétique ne saurait constituer, à soi seul, un argument contre elle.",
+          "vi": "Việc cách đọc đề xuất ở đây phá vỡ truyền thống chú giải không thể tự nó cấu thành lý lẽ chống lại nó.",
+          "pronunciation_focus": [
+            "fût → fu",
+            "rupture → rup-tur",
+            "exégétique → èg-zé-jé-tik",
+            "argument → ar-gu-mã"
+          ]
+        }
+      ],
+      "cultural_notes_vi": "DÉFENDRE UNE LECTURE CONTROVERSÉE est l'épreuve ultime du critique formé. Cela suppose:\n\n(1) MAÎTRISE COMPLÈTE des lectures dominantes — on ne défend pas une lecture nouvelle sans connaître les anciennes.\n(2) JUSTIFICATIONS TEXTUELLES SOLIDES — chaque appui dans le texte, paginé, cité.\n(3) ARGUMENTATION ANTICIPÉE — savoir d'avance les objections probables et préparer les réponses.\n(4) HUMILITÉ ÉPISTÉMIQUE — accepter qu'on puisse avoir tort, sans abandonner la position pour autant.\n\nQUATRE GRANDES LECTURES CONTROVERSÉES qui ont marqué la critique française:\n\n(a) PROUST PAR JEAN-YVES TADIÉ (Marcel Proust. Biographie, 1996, et plusieurs essais antérieurs). Tadié a défendu, contre une tradition longtemps psychanalytique (Bardèche, Bersani), une lecture de la Recherche centrée sur l'esthétique et la mémoire involontaire — non sur l'homosexualité refoulée. Position aujourd'hui dominante; mais à sa publication, fut contestée.\n\n(b) FLAUBERT PAR PIERRE BOURDIEU (Les Règles de l'art, 1992). Bourdieu lit Madame Bovary comme document sociologique sur le champ littéraire au XIXe siècle — lecture jugée réductrice par les puristes formalistes (Genette, Compagnon). Le débat a opposé pendant dix ans deux écoles entières.\n\n(c) RIMBAUD PAR YVES BONNEFOY (Rimbaud par lui-même, 1961, puis Notre besoin de Rimbaud, 2009). Bonnefoy défend une lecture mystique-spirituelle de Rimbaud, contre la lecture surréaliste-révoltée dominante depuis Breton. Position contestée par Steve Murphy, Jean-Luc Steinmetz, mais toujours puissante.\n\n(d) HOUELLEBECQ PAR DOMINIQUE NOGUEZ (Houellebecq en fait, 2003). Noguez défend Houellebecq comme grand écrivain face à une critique majoritairement hostile à l'époque — position aujourd'hui dominante mais à l'époque presque solitaire.\n\nMODÈLE BERMANIEN POUR DÉFENDRE UNE LECTURE NEUVE — adapté à la critique littéraire:\n\n(1) RECONNAÎTRE LA TRADITION INTERPRÉTATIVE — sans la caricaturer.\n(2) IDENTIFIER LE POINT AVEUGLE de la tradition — ce qu'elle ne voit pas, ou refuse de voir.\n(3) PROPOSER UNE LECTURE qui prend en compte ce point aveugle — fondée textuellement.\n(4) ANTICIPER LES OBJECTIONS et y répondre PAR AVANCE.\n(5) DÉFINIR LES LIMITES de sa propre lecture — qu'on ne prétende pas tout expliquer.\n\nUNE QUESTION ÉTHIQUE: faut-il défendre une lecture par seule provocation ? Position majoritaire en France: NON. Une lecture neuve doit être SOUTENABLE, pas seulement spectaculaire. Le « contrarianisme » pour le contrarianisme appartient au journalisme culturel, non à la critique académique.\n\nUNE TENSION SPÉCIFIQUE POUR LA CRITIQUE FÉMINISTE / POSTCOLONIALE: ces grilles, dans les années 1980-90, ont produit des lectures jugées « controversées » par la tradition académique. Aujourd'hui partiellement absorbées, elles continuent à produire des lectures qui dérangent — sur Sartre (lecture féministe de Beauvoir comme co-auteure invisibilisée), sur Camus (lecture postcoloniale de L'Étranger qui dénonce l'absence de nom de l'Arabe tué). La position critique correcte: prendre ces lectures au sérieux, les évaluer sur leur rigueur textuelle, sans les rejeter par anti-modernisme ni les accepter par conformisme idéologique.\n\nBẪY POUR LE CRITIQUE EN FORMATION: deux extrêmes à éviter:\n(1) CONFORMISME: répéter la tradition critique sans la questionner. Sécurité scolaire, mais pauvreté intellectuelle.\n(2) HÉRÉTISME GRATUIT: provoquer pour se faire remarquer. Visibilité de courte durée, perte de crédibilité longue.\nLA POSITION C2: défendre des lectures originales QUAND ON A DES RAISONS, et les abandonner quand l'argumentation contraire est plus forte. C'est l'éthique critique.",
+      "tip_advice_vi": "PROCESSUS EN 7 ÉTAPES pour défendre une lecture controversée:\n\nÉTAPE 1 — IDENTIFIER LA TRADITION DOMINANTE sur le texte. Lire au moins 3-5 lectures canoniques avant de proposer la sienne. On ne se démarque pas de ce qu'on ignore.\n\nÉTAPE 2 — IDENTIFIER LE POINT AVEUGLE de la tradition. Quoi, dans le texte, est passé sous silence ? Quel élément textuel n'est jamais commenté ? Quelle question n'est jamais posée ?\n\nÉTAPE 3 — VÉRIFIER QUE LE POINT AVEUGLE EST RÉEL — pas un fantasme, pas un détail anecdotique. Citer trois passages au moins où il se manifeste.\n\nÉTAPE 4 — FORMULER LA LECTURE NEUVE en prenant le point aveugle comme entrée. Ne pas démolir la tradition — la complexifier.\n\nÉTAPE 5 — ANTICIPER LES TROIS OBJECTIONS LES PLUS PROBABLES. Préparer une réponse à chacune, fondée textuellement.\n\nÉTAPE 6 — RÉDIGER L'ARGUMENT en respectant la structure: tradition → point aveugle → lecture neuve → objections anticipées → limites de la position.\n\nÉTAPE 7 — TESTER LA LECTURE auprès d'un ou deux pairs avant publication. Si elle ne tient pas devant un critique de bonne foi, la retravailler ou l'abandonner.\n\nCỤM HỮU ÍCH:\n\nPOUR INTRODUIRE UNE LECTURE NEUVE:\n- « Je voudrais proposer ici une lecture qui s'écarte délibérément de la tradition exégétique dominante. »\n- « Il existe, sur ce texte, une lecture désormais canonique que je ne contesterai pas en bloc, mais que je voudrais nuancer sur un point précis. »\n- « Sans renoncer aux acquis de la critique antérieure, je propose un déplacement d'angle qui fait apparaître [aspect négligé]. »\n\nPOUR IDENTIFIER LE POINT AVEUGLE:\n- « Or, un élément demeure curieusement absent des commentaires courants: [élément précis, paginé]. »\n- « La tradition critique a longtemps passé sous silence [aspect], pour des raisons sur lesquelles il faut s'interroger. »\n- « Ce silence n'est pas neutre — il dit quelque chose de la position adoptée par les générations précédentes face au texte. »\n\nPOUR DÉFENDRE LA LECTURE:\n- « Trois passages au moins viennent étayer cette interprétation: [page X, page Y, page Z]. »\n- « Cette lecture ne contredit pas la tradition; elle l'enrichit en intégrant un aspect qu'elle laissait dans l'ombre. »\n- « Je ne prétends pas avoir le dernier mot — je propose un nouveau point d'entrée dans le texte. »\n\nPOUR ANTICIPER LES OBJECTIONS:\n- « On objectera, à juste titre, que [objection probable]. À cela je répondrais que [réponse fondée]. »\n- « La principale difficulté de cette lecture tient à [point faible]. Je ne la sous-estime pas, et propose [stratégie de gestion]. »\n- « Reste l'objection la plus sérieuse: [objection]. Je l'admets en partie, en limitant la portée de ma thèse à [périmètre restreint]. »\n\nPOUR DÉFINIR LES LIMITES:\n- « Cette lecture ne saurait être généralisée à l'ensemble de l'œuvre; elle vaut pour [sous-corpus précis]. »\n- « Je n'avance pas une interprétation totale — je propose un éclairage partiel qui appelle à être complété par d'autres approches. »\n- « Les limites de cette lecture sont aussi son honnêteté: elle ne prétend pas remplacer la tradition, mais l'enrichir. »\n\nTRÁNH:\n- « Tous les autres critiques se sont trompés. » → arrogance, isolement\n- « Cette lecture est évidente. » → si elle l'était, elle ne serait pas neuve\n- « Personne n'a vu ce que je vois. » → souvent faux, et toujours mal venu\n- Provocation gratuite (« Madame Bovary est en réalité un roman féministe » sans argumentation textuelle)",
+      "vocabulary": [
+        {
+          "word": "une lecture controversée",
+          "en": "a controversial reading",
+          "vi": "một cách đọc gây tranh cãi",
+          "pos": "n.f.",
+          "pronunciation_vi": "lèk-tur kõn-tro-vèr-sé"
+        },
+        {
+          "word": "une lecture exigeante",
+          "en": "a demanding reading",
+          "vi": "một cách đọc đòi hỏi",
+          "pos": "n.f.",
+          "pronunciation_vi": "lèk-tur èg-zi-jãnt"
+        },
+        {
+          "word": "la tradition exégétique",
+          "en": "the exegetical tradition",
+          "vi": "truyền thống chú giải",
+          "pos": "n.f.",
+          "pronunciation_vi": "tra-di-sion èg-zé-jé-tik"
+        },
+        {
+          "word": "un point aveugle",
+          "en": "a blind spot",
+          "vi": "một điểm mù",
+          "pos": "n.m.",
+          "pronunciation_vi": "poan a-vơ-glơ"
+        },
+        {
+          "word": "un déplacement d'angle",
+          "en": "a shift of angle",
+          "vi": "một sự dịch chuyển góc nhìn",
+          "pos": "n.m.",
+          "pronunciation_vi": "dé-plas-mã dãn-glơ"
+        },
+        {
+          "word": "une provocation gratuite",
+          "en": "a gratuitous provocation",
+          "vi": "một khiêu khích vô cớ",
+          "pos": "n.f.",
+          "pronunciation_vi": "pro-vo-ka-sion gra-tu-it"
+        },
+        {
+          "word": "l'humilité épistémique",
+          "en": "epistemic humility",
+          "vi": "sự khiêm tốn nhận thức luận",
+          "pos": "n.f.",
+          "pronunciation_vi": "u-mi-li-té é-pis-té-mik"
+        },
+        {
+          "word": "contrarianisme",
+          "en": "contrarianism",
+          "vi": "chủ nghĩa phản đối",
+          "pos": "n.m.",
+          "pronunciation_vi": "kõn-tra-ria-nism"
+        },
+        {
+          "word": "un éclairage partiel",
+          "en": "a partial illumination",
+          "vi": "một sự soi sáng cục bộ",
+          "pos": "n.m.",
+          "pronunciation_vi": "é-klè-raj par-siel"
+        },
+        {
+          "word": "étayer une lecture",
+          "en": "to support a reading",
+          "vi": "củng cố một cách đọc",
+          "pos": "v.",
+          "pronunciation_vi": "é-tè-yé un lèk-tur"
+        }
+      ],
+      "dialogue": [
+        {
+          "speaker": "Pr. Compagnon",
+          "text": "Madame Tran, vous proposez une lecture postcoloniale de L'Étranger. Beaucoup la jugent anachronique. Comment la défendez-vous ?",
+          "vi": "Cô Trần, cô đề xuất một cách đọc hậu thuộc địa cho L'Étranger. Nhiều người cho là lỗi thời. Cô bảo vệ thế nào?"
+        },
+        {
+          "speaker": "Linh",
+          "text": "Je m'appuie sur un point textuel précis: l'Arabe que Meursault tue n'a jamais de nom dans le roman. Cette absence n'est pas neutre.",
+          "vi": "Tôi dựa trên một điểm văn bản cụ thể: người Arab Meursault giết không bao giờ có tên trong tiểu thuyết. Sự vắng mặt này không trung lập."
+        },
+        {
+          "speaker": "Pr. Compagnon",
+          "text": "Argument solide. Et vous anticipez l'objection que ce silence est précisément le sujet du roman ?",
+          "vi": "Lập luận vững. Và cô lường trước phản biện rằng sự im lặng đó chính là đề tài của tiểu thuyết?"
+        },
+        {
+          "speaker": "Linh",
+          "text": "Oui — je distingue le silence comme procédé voulu et le silence comme symptôme. La distinction est subtile mais textuellement défendable.",
+          "vi": "Có — tôi phân biệt sự im lặng như thủ pháp cố ý và sự im lặng như triệu chứng. Phân biệt tinh tế nhưng có thể bảo vệ về mặt văn bản."
+        }
+      ],
+      "dialogue_long": [
+        {
+          "speaker": "Pr. Compagnon (séminaire de critique avancée)",
+          "text": "Madame Tran, vous nous présentez aujourd'hui une lecture qui fait l'objet de débats vifs depuis Kamel Daoud, Meursault, contre-enquête (2013): la lecture postcoloniale de L'Étranger de Camus. Comment la défendez-vous sans tomber dans le procès anachronique ?",
+          "vi": "Cô Trần, cô trình bày hôm nay một cách đọc đang gây tranh luận sôi nổi từ Kamel Daoud, Meursault, contre-enquête (2013): cách đọc hậu thuộc địa của L'Étranger của Camus. Cô bảo vệ thế nào mà không rơi vào vụ án lỗi thời?"
+        },
+        {
+          "speaker": "Linh",
+          "text": "Ma stratégie de défense suit le modèle bermanien: je commence par reconnaître la tradition exégétique majoritaire — Sartre dès 1943 lit le roman comme tragédie de l'absurde, Barthes l'inscrit dans le degré zéro de l'écriture, Pierre-Louis Rey en fait une étude classique en 1970. Aucune de ces lectures n'est fausse; toutes éclairent un aspect du roman. Mais toutes partagent un point aveugle: aucune ne s'interroge longuement sur la dimension coloniale du cadre algérien — alors même que cette dimension est, factuellement, présente dans chaque page du livre.",
+          "vi": "Chiến lược bảo vệ của tôi theo mô hình Berman: tôi bắt đầu bằng cách thừa nhận truyền thống chú giải đa số — Sartre từ 1943 đọc tiểu thuyết như bi kịch absurde, Barthes ghi vào degré zéro de l'écriture, Pierre-Louis Rey làm nghiên cứu cổ điển 1970. Không cách đọc nào sai; tất cả soi sáng một khía cạnh của tiểu thuyết. Nhưng tất cả chia sẻ một điểm mù: không cách đọc nào tra hỏi lâu chiều kích thuộc địa của khung Algérie — mặc dù chiều kích đó, thực tế, hiện diện trong mỗi trang sách."
+        },
+        {
+          "speaker": "Linh",
+          "text": "Le point aveugle que je propose de prendre comme entrée: l'Arabe que Meursault tue, sur la plage, n'a jamais de nom dans le roman. Aucun nom, aucune famille, aucune biographie — il est désigné comme « l'Arabe » d'un bout à l'autre. Cette absence d'identité n'est pas neutre. Elle est cohérente avec le statut juridique et symbolique des Arabes dans l'Algérie française des années 1940 — citoyens de seconde zone, comptés mais non nommés.",
+          "vi": "Điểm mù tôi đề xuất lấy làm điểm vào: người Arab Meursault giết, trên bãi biển, không bao giờ có tên trong tiểu thuyết. Không tên, không gia đình, không tiểu sử — anh được gọi là « l'Arabe » từ đầu đến cuối. Sự vắng mặt danh tính này không trung lập. Nó nhất quán với địa vị pháp lý và biểu tượng của người Arab ở Algérie Pháp thập niên 1940 — công dân hạng hai, được đếm nhưng không được gọi tên."
+        },
+        {
+          "speaker": "Linh",
+          "text": "Cela posé, je dois immédiatement anticiper l'objection majeure que ne manqueront pas de soulever les défenseurs de la tradition exégétique. Ils diront: « ce silence est précisément le sujet du roman — Camus dénonce, par cette absence même, l'absence d'humanité que son personnage Meursault, et la société qui le juge, accordent à l'Arabe ». Cette objection est sérieuse. Camus était lui-même un intellectuel qui a écrit, en parallèle, sur les inégalités algériennes (Misère de la Kabylie, 1939). Refuser cette objection serait naïf.",
+          "vi": "Đặt vậy, tôi phải lường trước ngay phản biện chính mà những người bảo vệ truyền thống chú giải chắc chắn sẽ nêu. Họ sẽ nói: « sự im lặng đó chính là đề tài của tiểu thuyết — Camus tố cáo, qua chính sự vắng mặt đó, sự vắng nhân tính mà nhân vật Meursault, và xã hội xét xử anh, dành cho người Arab ». Phản biện này nghiêm. Camus tự mình là một trí thức đã viết, song song, về bất bình đẳng Algérie (Misère de la Kabylie, 1939). Từ chối phản biện sẽ ngây thơ."
+        },
+        {
+          "speaker": "Linh",
+          "text": "Je propose de répondre par une distinction subtile mais textuellement défendable: il faut distinguer le SILENCE COMME PROCÉDÉ VOULU et le SILENCE COMME SYMPTÔME INVOLONTAIRE. Si Camus avait voulu, par le silence, dénoncer l'invisibilisation de l'Arabe, il aurait pu — comme l'a fait Daoud soixante ans après — écrire un dispositif qui RENDE VISIBLE cette invisibilisation, par exemple en faisant intervenir une voix arabe quelque part. Or, le roman ne fait jamais entendre cette voix. L'Arabe reste pure surface — proximité physique sans intériorité, présence sans nom. Cette absence de mécanisme révélateur du silence suggère que le silence n'est pas seulement procédé voulu mais aussi symptôme de la position depuis laquelle Camus écrit — celle d'un colonial européen qui, malgré sa lucidité réformatrice, ne peut accéder à la subjectivité du colonisé.",
+          "vi": "Tôi đề xuất đáp bằng một phân biệt tinh tế nhưng có thể bảo vệ về văn bản: phải phân biệt SỰ IM LẶNG NHƯ THỦ PHÁP CỐ Ý và SỰ IM LẶNG NHƯ TRIỆU CHỨNG KHÔNG CỐ Ý. Nếu Camus muốn, qua sự im lặng, tố cáo sự vô hình hóa người Arab, ông có thể — như Daoud đã làm 60 năm sau — viết một thiết kế LÀM HIỆN sự vô hình hóa, ví dụ cho một giọng Arab can thiệp ở đâu đó. Tuy nhiên, tiểu thuyết không bao giờ cho nghe giọng đó. Người Arab vẫn là bề mặt thuần — sự gần gũi vật lý không nội tâm, hiện diện không tên. Sự vắng mặt cơ chế tiết lộ sự im lặng này gợi ý rằng sự im lặng không chỉ là thủ pháp cố ý mà cũng là triệu chứng của vị trí từ đó Camus viết — vị trí của một người thuộc địa Âu, dù sáng suốt cải cách, không thể tiếp cận chủ tính của người bị thuộc địa hóa."
+        },
+        {
+          "speaker": "Linh",
+          "text": "Je définis maintenant les limites de ma propre lecture. Cette lecture postcoloniale n'efface ni n'épuise les lectures antérieures: l'Étranger reste une grande tragédie de l'absurde au sens où Sartre l'entendait, et un sommet du dépouillement stylistique au sens où Barthes l'entendait. La lecture postcoloniale AJOUTE une couche qui, longtemps, a été manquée — non par malveillance, mais par effet d'horizon. La critique des années 1940-70 ne pouvait pas voir ce que la critique post-1980, formée dans le sillage de Said et de Glissant, voit aujourd'hui. C'est précisément l'enjeu jaussien de l'horizon d'attente: chaque génération apporte des grilles que les précédentes n'avaient pas.",
+          "vi": "Tôi giờ định nghĩa giới hạn của cách đọc của chính mình. Cách đọc hậu thuộc địa này không xóa cũng không vắt kiệt các cách đọc trước: L'Étranger vẫn là một bi kịch absurde lớn theo nghĩa Sartre, và một đỉnh cao của lối viết tước trần theo nghĩa Barthes. Cách đọc hậu thuộc địa THÊM một lớp mà, lâu nay, đã bị bỏ — không ác ý, mà do hiệu ứng chân trời. Phê bình thập niên 1940-70 không thể thấy điều phê bình post-1980, đào tạo trong mạch nối tiếp Said và Glissant, thấy hôm nay. Chính là vấn đề Jaussian của chân trời mong đợi: mỗi thế hệ mang lưới mà các thế hệ trước không có."
+        },
+        {
+          "speaker": "Pr. Compagnon",
+          "text": "Réponse exemplaire. Vous tenez la position controversée, mais sans arrogance — vous reconnaissez la valeur des lectures antérieures, vous identifiez précisément le point aveugle, vous anticipez les objections, et vous délimitez ce que votre lecture peut et ne peut pas faire. C'est exactement la position du Berman qu'on cite pour la traduction, transposée à la critique littéraire.",
+          "vi": "Câu trả lời mẫu mực. Cô giữ lập trường gây tranh cãi, nhưng không kiêu ngạo — cô công nhận giá trị các cách đọc trước, nhận dạng chính xác điểm mù, lường phản biện, và giới hạn điều cách đọc của cô có thể và không thể làm. Chính là lập trường của Berman trích cho dịch thuật, chuyển sang phê bình văn học."
+        },
+        {
+          "speaker": "Pr. Compagnon",
+          "text": "Une dernière question — la plus difficile. Le risque d'une telle lecture est qu'elle soit récupérée par une critique militante qui voudrait condamner Camus politiquement. Comment vous prémunissez-vous ?",
+          "vi": "Câu hỏi cuối — khó nhất. Rủi ro của cách đọc như vậy là bị một phê bình militant muốn lên án Camus chính trị thu hồi. Cô đề phòng thế nào?"
+        },
+        {
+          "speaker": "Linh",
+          "text": "Par la distinction explicite entre lecture critique et procès politique. Je ne « condamne » pas Camus — je propose une lecture du roman qui complexifie le canon. Camus, comme tout auteur, est saisissable à travers ses contradictions; ce n'est pas une faiblesse mais une richesse. La lecture postcoloniale ne demande pas de retirer L'Étranger du canon — elle demande de le lire avec une lucidité que la critique traditionnelle n'avait pas. C'est précisément cela, l'éthique critique: tenir la complexité plutôt que choisir entre apologie et anathème.",
+          "vi": "Bằng phân biệt rõ giữa cách đọc critique và vụ án chính trị. Tôi không « lên án » Camus — tôi đề xuất một cách đọc tiểu thuyết phức tạp hóa kinh điển. Camus, như mọi tác giả, có thể nắm bắt qua các mâu thuẫn của ông; đó không phải yếu mà là phong phú. Cách đọc hậu thuộc địa không đòi rút L'Étranger khỏi kinh điển — nó đòi đọc với một sự sáng suốt mà phê bình truyền thống không có. Chính là, đạo đức critique: giữ sự phức tạp hơn là chọn giữa apologie và anathème."
+        }
+      ],
+      "roleplay_prompts": [
+        "Bạn được giao soạn une intervention de séminaire (10 minutes) defending une lecture féministe de Sartre — non pas Beauvoir comme « femme de Sartre », mais Sartre dont l'œuvre n'aurait pas été pensable sans le dialogue intellectuel constant avec Beauvoir. Anticiper les objections.",
+        "Trong un débat publié dans Critique, un collègue rejette en bloc votre lecture controversée. Soạn une réponse écrite (1500 mots) — courtoise, ferme, qui maintienne la position sans arrogance.",
+        "Soạn 5 câu pour expliquer la différence entre « lecture controversée » (légitime) et « provocation gratuite » (illégitime) — en mobilisant l'éthique critique post-Compagnon."
+      ],
+      "register_notes": "VOCABULAIRE PRÉCIS pour défendre une position critique:\n\nFORMULES DE PROPOSITION:\n- « Je propose une lecture qui s'écarte de la tradition. » (formule neutre)\n- « Je voudrais avancer une interprétation qui complexifie la lecture canonique. » (formule modérée)\n- « Je défends ici une thèse minoritaire qui appelle à la discussion. » (formule assumée)\n\nFORMULES POUR ANTICIPER L'OBJECTION:\n- « On objectera, à juste titre… »\n- « La principale difficulté tient à… »\n- « Reste l'objection la plus sérieuse: … »\n- « Je ne sous-estime pas l'argument selon lequel… »\n- « Ma position appelle au moins une mise en garde: … »\n\nFORMULES POUR RÉPONDRE À L'OBJECTION:\n- « À cela je répondrais que… »\n- « Cette objection peut être levée si l'on distingue… »\n- « L'objection est partiellement valide, mais elle suppose acquis ce qui est précisément en débat: … »\n- « Je l'admets en partie, en limitant la portée de ma thèse à… »\n\nFORMULES POUR DÉLIMITER:\n- « Cette lecture ne saurait être généralisée… »\n- « Je n'avance pas une interprétation totale — je propose un éclairage partiel. »\n- « Les limites de cette lecture sont aussi son honnêteté. »\n- « Je ne prétends pas avoir le dernier mot — je propose un nouveau point d'entrée. »\n\nFORMULES POUR RÉFUTER UNE LECTURE ADVERSE:\n- « Cette lecture présuppose un postulat — celui de [X] — qui mérite d'être interrogé. »\n- « Sans contester la valeur de cette interprétation, je voudrais en signaler les angles morts. »\n- « Je me sépare ici, respectueusement, de la position majoritaire. »\n\nINVERSION ET SUBJONCTIF C2 dans la défense:\n- « Que la lecture proposée fût en rupture avec la tradition ne saurait constituer un argument contre elle. »\n- « Encore conviendrait-il que le critique distinguât la provocation gratuite de la lecture exigeante. »\n- « Sans doute peut-on y voir une faiblesse — mais peut-être y faut-il voir aussi une chance. »\n\nIDIOMS LITTÉRAIRES SUR LE DÉBAT CRITIQUE:\n- « tenir une position » (giữ lập trường — courant)\n- « battre en retraite » (rút lui — courant — péjoratif si fait sans raison)\n- « rester sur ses positions » (kiên định — neutre)\n- « se ranger à l'avis de » (theo ý kiến của — soutenu)\n- « mettre cartes sur table » (đặt thẻ lên bàn — courant — pour transparence argumentative)\n- « croiser le fer » (chéo gươm — soutenu — pour débat soutenu)\n\nMỘT TINH TẾ ĐẶC THÙ: défendre une lecture controversée n'est pas la défendre AGRESSIVEMENT. Le ton doit rester COURTOIS — c'est précisément la courtoisie qui rend la position défendable. Une lecture neuve présentée avec arrogance discrédite l'argument indépendamment de sa valeur. Régle pratique: si la lecture est solide, elle se passe d'arrogance pour s'imposer. Si elle a besoin d'arrogance, elle est probablement faible.",
+      "idiom_glosses": [
+        {
+          "idiom": "Tenir une position (courant)",
+          "literal": "Giữ một lập trường",
+          "meaning": "Bảo vệ quan điểm dưới phản biện — không lùi vì áp lực.",
+          "example": "Bonnefoy a tenu sa position sur Rimbaud pendant cinquante ans, malgré les contestations."
+        },
+        {
+          "idiom": "Mettre cartes sur table (courant)",
+          "literal": "Đặt thẻ lên bàn",
+          "meaning": "Trình bày minh bạch các giả định và lý lẽ.",
+          "example": "Mettre cartes sur table dès l'introduction permet au lecteur d'évaluer la position en connaissance de cause."
+        },
+        {
+          "idiom": "Croiser le fer (soutenu littéraire)",
+          "literal": "Chéo lưỡi gươm",
+          "meaning": "Tranh luận sâu, không né tránh — débat de haut niveau.",
+          "example": "Bourdieu et Compagnon ont croisé le fer sur l'autonomie du champ littéraire pendant deux décennies."
+        },
+        {
+          "idiom": "Rester sur ses positions (courant)",
+          "literal": "Ở lại trên các lập trường",
+          "meaning": "Không thay đổi quan điểm — neutre.",
+          "example": "Tadié est resté sur ses positions concernant l'esthétique proustienne, malgré le retour des lectures psychanalytiques."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "fill-blank",
+          "question": "Que la lecture proposée ici ___ en rupture avec la tradition exégétique ne saurait constituer, à soi seul, un argument contre elle.",
+          "answer": "fût"
+        },
+        {
+          "type": "matching",
+          "pairs": [
+            [
+              "une lecture controversée",
+              "cách đọc gây tranh cãi"
+            ],
+            [
+              "un point aveugle",
+              "điểm mù"
+            ],
+            [
+              "la tradition exégétique",
+              "truyền thống chú giải"
+            ]
+          ],
+          "instruction": "Nối thuật ngữ critique với nghĩa Việt"
+        },
+        {
+          "type": "translation",
+          "vietnamese": "Bảo vệ một diễn giải bị tranh cãi đòi hỏi gánh chịu công khai các hệ quả, kể cả khả năng sai.",
+          "french": "Défendre une interprétation contestée suppose qu'on en assume publiquement les conséquences, y compris la possibilité d'avoir tort."
+        }
+      ]
+    },
+    {
+      "id": "larts_critique_dart",
+      "level": "C2",
+      "category": "arts_criticism",
+      "title_vi": "Phê bình nghệ thuật tạo hình — critique d'art",
+      "title_en": "Art criticism — analyzing visual art in French",
+      "sentences": [
+        {
+          "en": "Loin de se réduire à un exercice d'admiration, la critique d'art se doit d'articuler un jugement esthétique étayé sur des critères explicites et, si possible, falsifiables.",
+          "vi": "Khác hẳn việc quy giảm thành một bài tập chiêm ngưỡng, phê bình nghệ thuật phải khớp nối một phán đoán thẩm mỹ có cơ sở trên các tiêu chí hiển ngôn và, nếu có thể, khả bác.",
+          "pronunciation_focus": [
+            "exercice → èg-zèr-sis",
+            "jugement → ju-jơ-mãn",
+            "étayé → é-tè-ié",
+            "falsifiable → fal-si-fi-ablơ"
+          ],
+          "pronunciation_focus_en": [
+            "exercice → 'eg-zehr-SEESS' — 'x' = 'gz' between vowels; final '-e' silent",
+            "jugement → 'zhoozh-MAHN' — 'j'/'g' = 'zh'; '-ment' nasal",
+            "étayé → 'ay-tay-YAY' — '-ayé' has a glide; underpinned/supported",
+            "falsifiable → 'fal-see-FYAH-bluh' — academic term; final '-le' barely voiced"
+          ]
+        },
+        {
+          "en": "La toile de Soulages, qu'on taxe volontiers de monochrome, mobilise en réalité un travail de la lumière que seule une fréquentation prolongée de l'œuvre donne à voir.",
+          "vi": "Bức toan của Soulages, vốn dễ bị quy là đơn sắc, thực ra huy động một công việc của ánh sáng mà chỉ sự gần gũi kéo dài với tác phẩm mới cho thấy.",
+          "pronunciation_focus": [
+            "Soulages → su-laj",
+            "monochrome → mo-no-krôm",
+            "fréquentation → fré-kãn-ta-sion",
+            "prolongée → pro-lõn-jé"
+          ],
+          "pronunciation_focus_en": [
+            "Soulages → 'soo-LAHZH' — painter's name; 'g' = 'zh'",
+            "monochrome → 'moh-noh-KROHM' — 'ch' = 'k' here (Greek root)",
+            "fréquentation → 'fray-kahn-tah-SYON' — nasal 'en'; '-tion' = 'syon'",
+            "prolongée → 'pro-lohn-ZHAY' — feminine past participle; nasal 'on'"
+          ]
+        },
+        {
+          "en": "Il eût été vain de juger cette installation à l'aune des catégories traditionnelles de la beauté; c'est précisément la destitution du beau que l'artiste met en scène.",
+          "vi": "Sẽ vô ích nếu phán xét sắp đặt này theo tiêu chí các phạm trù truyền thống của cái đẹp; chính sự truất bỏ cái đẹp là điều nghệ sĩ dàn dựng.",
+          "pronunciation_focus": [
+            "eût → u",
+            "aune → ôn",
+            "destitution → dès-ti-tu-sion",
+            "beau → bô"
+          ],
+          "pronunciation_focus_en": [
+            "eût → 'U' — imperfect subjunctive of avoir; rounded French 'u', literary",
+            "aune → 'OHN' — 'à l'aune de' = 'by the yardstick of'; 'au' = 'oh'",
+            "destitution → 'des-tee-too-SYON' — 'destitution of the beautiful'; '-tion' = 'syon'",
+            "beau → 'BOH' — 'eau' = 'oh'; nominalized 'le beau' = the beautiful"
+          ]
+        },
+        {
+          "en": "La critique d'art, telle que Diderot l'a inaugurée dans ses Salons, n'a jamais été une paraphrase de l'image; elle en est la traduction dans un autre médium, qui est la langue.",
+          "vi": "Phê bình nghệ thuật, như Diderot đã khai mở trong các Salon của ông, chưa bao giờ là sự paraphrase hình ảnh; đó là sự dịch chuyển nó sang một chất liệu khác, là ngôn ngữ.",
+          "pronunciation_focus": [
+            "Diderot → di-dơ-rô",
+            "Salons → sa-lõn",
+            "paraphrase → pa-ra-fraz",
+            "médium → mé-di-om"
+          ],
+          "pronunciation_focus_en": [
+            "Diderot → 'dee-duh-ROH' — final 't' silent; founder of the genre",
+            "Salons → 'sah-LON' — nasal '-on'; Diderot's exhibition reviews",
+            "paraphrase → 'pah-rah-FRAHZ' — final '-e' silent",
+            "médium → 'may-DYOM' — Latinism; final 'm' pronounced"
+          ]
+        },
+        {
+          "en": "Force est de constater que le discours sur l'art contemporain oscille, en France, entre un hermétisme théorique et un lyrisme publicitaire, sans que l'un ni l'autre ne serve la compréhension du public.",
+          "vi": "Phải thừa nhận rằng diễn ngôn về nghệ thuật đương đại dao động, ở Pháp, giữa một sự bí ẩn lý thuyết và một chất trữ tình quảng cáo, mà không cái nào phục vụ sự hiểu của công chúng.",
+          "pronunciation_focus": [
+            "constater → kõns-ta-té",
+            "hermétisme → èr-mé-tismơ",
+            "lyrisme → li-rismơ",
+            "oscille → o-siy"
+          ],
+          "pronunciation_focus_en": [
+            "constater → 'kohn-stah-TAY' — 'force est de constater' = 'one must note'",
+            "hermétisme → 'ehr-may-TEEZM' — 'h' silent; final cluster voiced",
+            "lyrisme → 'lee-REEZM' — 'y' = 'ee'; final '-isme' = 'eezm'",
+            "oscille → 'oh-SEEL' — 'sc' = 's'; '-ille' = 'eel' here"
+          ]
+        }
+      ],
+      "cultural_notes_vi": "PHÊ BÌNH NGHỆ THUẬT PHÁP (critique d'art) có lịch sử đặc thù:\n\n(1) DIDEROT (1713-1784) — người sáng lập thể loại. Các Salon (1759-1781) của ông là những văn bản nền tảng: mô tả tranh cho độc giả không xem được tranh (công chúng ở tỉnh xa). Phương pháp: description vive + jugement esthétique + anecdote philosophique. Đến nay, mọi critique d'art Pháp vẫn thừa kế Diderot ở hai điểm: (a) 'peindre avec des mots' — không tả kỹ thuật khô mà render cảm giác, (b) 'philosopher à partir de l'image' — lấy tranh làm điểm xuất phát suy tư.\n\n(2) BAUDELAIRE — Salons (1845, 1846, 1859) nâng critique lên thành 'partiale, passionnée, politique'. Le Peintre de la vie moderne (1863) giới thiệu khái niệm 'modernité': cái đẹp gồm một phần vĩnh cửu và một phần tạm thời.\n\n(3) TRUYỀN THỐNG SALON: Académie des Beaux-Arts tổ chức Salon hàng năm từ 1667. Đến thế kỷ 19, Salon là sự kiện trung tâm của đời sống nghệ thuật Paris. Critic viết compte rendu de Salon là thể loại chính đến tận 1880s.\n\n(4) THẾ KỶ 20: Malraux (Les Voix du silence, 1951) — musée imaginaire. Merleau-Ponty (L'Œil et l'Esprit, 1960) — phénoménologie de la perception visuelle. Didi-Huberman (Devant l'image, 1990) — critique de l'iconologie panofskienne. Bourdieu (Les Règles de l'art, 1992) — sociologie du champ artistique.\n\n(5) CẢNH BÁO: critique contemporain Pháp chia làm hai phe: (a) 'journalistique' — viết cho Le Monde, Libération, Les Inrocks: accessible, storyteller, opinion; (b) 'universitaire' — viết cho revues savantes: théorique, jargon, dense. C2 critique phải biết cả hai register và chọn theo contexte.\n\n(6) ĐẶC THÙ CHO NGƯỜI VIỆT: nghệ thuật đương đại VN (từ Đổi Mới 1986) có truyền thống riêng — Nguyễn Quân, Trần Lương, Đinh Q. Lê... Khi viết critique d'art bằng tiếng Pháp về nghệ thuật VN, cần dịch các khái niệm thẩm mỹ Việt (hồn, duyên, thần thái) mà không biến chúng thành folklore.",
+      "tip_advice_vi": "CẤU TRÚC CRITIQUE D'ART CHUẨN (1500-3000 mots, báo hoặc revue):\n\n1. ACCROCHE (1-2 câu) — bắt đầu bằng một chi tiết cụ thể của tác phẩm, không bằng généralité: 'À l'entrée de la salle, un immense panneau noir vous arrête net.'\n\n2. DESCRIPTION (20%) — tả tác phẩm minh bạch, như thể độc giả không thấy nó. Dùng présent de l'indicatif. Éviter vocabulaire technique quá dày — 'couleur froide' thay vì 'palette restreinte aux tons azuréens'.\n\n3. CONTEXTUALISATION (20%) — đặt tác phẩm trong œuvre của nghệ sĩ, trong mouvement, trong époque. Không cần dài — 2-3 câu gọn.\n\n4. ANALYSE (40%) — phát triển 2-3 'axes de lecture' giống explication de texte:\n- Axe 1: matière / technique (chất liệu, cử chỉ)\n- Axe 2: dispositif spatial (không gian, người xem)\n- Axe 3: charge symbolique (symbolique, politique)\nMỗi axe cần citations visuelles — 'le rouge, posé à la jonction des deux plans, fait basculer la composition.'\n\n5. JUGEMENT (20%) — đưa ra đánh giá, có lập luận. KHÔNG 'c'est beau' / 'c'est laid'. Dùng: 'réussi' / 'moins convaincant' + lý do. Formule: 'Si la première salle emporte l'adhésion par son audace formelle, la seconde déçoit par son académisme revenu.'\n\nCỤM HỮU ÍCH:\n- 'L'œuvre donne à voir...' (tác phẩm cho thấy...)\n- 'Le parti pris de l'artiste consiste à...' (chủ trương của nghệ sĩ là...)\n- 'On peut lire cette installation comme...' (có thể đọc sắp đặt này như...)\n- 'Le spectateur se trouve convoqué à...' (người xem bị triệu tập vào...)\n- 'La réussite tient à...' (sự thành công nằm ở...)\n- 'En revanche, tel aspect laisse perplexe.' (ngược lại, khía cạnh này gây bối rối.)\n\nSAI LẦM PHỔ BIẾN:\n- Dùng nhiều adjectif rỗng ('magnifique', 'sublime', 'saisissant')\n- Biographie de l'artiste quá dài — critique không phải notice Wikipedia\n- Éviter le name-dropping théorique — một référence à Deleuze / Rancière / Didi-Huberman đủ, không cần parade érudite\n- Không bao giờ kết luận 'À vous de juger' — critique assume son jugement",
+      "vocabulary": [
+        {
+          "word": "un compte rendu d'exposition",
+          "en": "exhibition review",
+          "vi": "bài điểm triển lãm",
+          "pos": "n.m.",
+          "pronunciation_vi": "kõnt rãn-du dèk-spo-zi-sion",
+          "pronunciation_en": "UN kohnt rahn-DOO deks-poh-zee-SYON — 'compte rendu d'exposition'"
+        },
+        {
+          "word": "le parti pris",
+          "en": "the chosen approach / bias",
+          "vi": "chủ trương / thiên kiến",
+          "pos": "n.m.",
+          "pronunciation_vi": "par-ti pri",
+          "pronunciation_en": "luh par-TEE PREE — 'parti pris'; both final consonants silent"
+        },
+        {
+          "word": "la matière picturale",
+          "en": "the painterly material",
+          "vi": "chất liệu hội họa",
+          "pos": "n.f.",
+          "pronunciation_vi": "ma-tièr pik-tu-ral",
+          "pronunciation_en": "lah mah-TYEHR peek-tu-RAL — 'matière picturale'"
+        },
+        {
+          "word": "le dispositif",
+          "en": "the apparatus / setup",
+          "vi": "thiết đặt (không gian)",
+          "pos": "n.m.",
+          "pronunciation_vi": "dis-po-zi-tif",
+          "pronunciation_en": "luh dees-poh-zee-TEEF — final 'f' pronounced; the apparatus/setup"
+        },
+        {
+          "word": "la touche",
+          "en": "the brushstroke",
+          "vi": "nét cọ",
+          "pos": "n.f.",
+          "pronunciation_vi": "tush",
+          "pronunciation_en": "lah TOOSH — 'touche' = brushstroke; final '-e' silent"
+        },
+        {
+          "word": "la toile",
+          "en": "the canvas",
+          "vi": "bức toan / vải vẽ",
+          "pos": "n.f.",
+          "pronunciation_vi": "toal",
+          "pronunciation_en": "lah TWAL — 'toile' = canvas; 'oi' = 'wah'"
+        },
+        {
+          "word": "un accrochage",
+          "en": "the hanging (of works)",
+          "vi": "cách treo / bố trí tranh",
+          "pos": "n.m.",
+          "pronunciation_vi": "a-kro-shaj",
+          "pronunciation_en": "UN ah-kroh-SHAZH — 'accrochage' = the hang; final '-age' = 'ahzh'"
+        },
+        {
+          "word": "le regardeur",
+          "en": "the viewer / beholder",
+          "vi": "người xem (Duchamp)",
+          "pos": "n.m.",
+          "pronunciation_vi": "rơ-gar-dơr",
+          "pronunciation_en": "luh ruh-gar-DUR — 'regardeur' (Duchamp's term for the beholder); '-eur' rounded"
+        },
+        {
+          "word": "une installation",
+          "en": "an installation (art)",
+          "vi": "một sắp đặt",
+          "pos": "n.f.",
+          "pronunciation_vi": "an-sta-la-sion",
+          "pronunciation_en": "ün an-stah-lah-SYON — 'installation'; nasal 'in' + '-tion'"
+        },
+        {
+          "word": "plastique",
+          "en": "plastic / formal (adj.)",
+          "vi": "tạo hình (tính từ)",
+          "pos": "adj.",
+          "pronunciation_vi": "plas-tik",
+          "pronunciation_en": "plas-TEEK — 'plastique' as adj. = formal/visual, NOT 'plastic material' (false friend)"
+        }
+      ],
+      "dialogue": [
+        {
+          "speaker": "Commissaire",
+          "text": "Quelle lecture faites-vous de cette série de Soulages ?",
+          "en": "What reading do you give of this Soulages series?",
+          "vi": "Chị đọc loạt tranh Soulages này thế nào?"
+        },
+        {
+          "speaker": "Linh",
+          "text": "J'y vois moins une exploration du noir qu'une archéologie de la lumière — le tableau fonctionne comme un piège à photons.",
+          "en": "I see in it less an exploration of black than an archaeology of light — the painting works like a photon trap.",
+          "vi": "Tôi thấy ở đó ít là một khảo sát về màu đen hơn là một khảo cổ học về ánh sáng — bức tranh vận hành như một cái bẫy photon."
+        },
+        {
+          "speaker": "Commissaire",
+          "text": "Intéressant. Mais ne surinterprétez-vous pas ? Soulages lui-même récuse toute métaphysique.",
+          "en": "Interesting. But aren't you over-interpreting? Soulages himself rejects any metaphysics.",
+          "vi": "Thú vị. Nhưng có phải chị diễn giải thái quá? Soulages tự bác bỏ mọi siêu hình."
+        },
+        {
+          "speaker": "Linh",
+          "text": "L'artiste n'est pas le propriétaire du sens — une fois l'œuvre livrée au public, la lecture lui échappe.",
+          "en": "The artist isn't the owner of meaning — once the work is delivered to the public, the reading escapes him.",
+          "vi": "Nghệ sĩ không phải chủ sở hữu của nghĩa — một khi tác phẩm được trao cho công chúng, cách đọc thoát khỏi ông."
+        }
+      ],
+      "dialogue_long": [
+        {
+          "speaker": "Rédactrice en chef (Magazine Art Press)",
+          "text": "Linh, vous couvrez la rétrospective Boltanski au Centre Pompidou. Huit cents mots, angle personnel exigé. Pas un catalogue déguisé.",
+          "en": "Linh, you're covering the Boltanski retrospective at the Centre Pompidou. Eight hundred words, a personal angle required. Not a disguised catalogue.",
+          "vi": "Linh, chị phụ trách hồi cố Boltanski ở Centre Pompidou. Tám trăm chữ, góc cá nhân bắt buộc. Không phải catalogue cải trang."
+        },
+        {
+          "speaker": "Linh",
+          "text": "J'entre par l'installation des vêtements — la 'Réserve'. Le visiteur est enveloppé dans des habits d'absents. C'est une thanatographie textile.",
+          "en": "I'll enter through the clothing installation — the 'Réserve'. The visitor is wrapped in the garments of the absent. It's a textile thanatography.",
+          "vi": "Tôi vào bằng sắp đặt quần áo — 'Réserve'. Người xem bị bao bọc trong áo quần của những người vắng mặt. Đó là một ký sự tử vong bằng vải."
+        },
+        {
+          "speaker": "Rédactrice",
+          "text": "Bien — angle concret, pas de généralité. Mais évitez 'thanatographie' — trop universitaire pour nos lecteurs. Dites 'un mémorial de l'absence'.",
+          "en": "Good — concrete angle, no generality. But avoid 'thanatography' — too academic for our readers. Say 'a memorial of absence'.",
+          "vi": "Tốt — góc cụ thể, không chung chung. Nhưng tránh 'thanatographie' — quá đại học cho độc giả ta. Nói 'một đài tưởng niệm sự vắng mặt'."
+        },
+        {
+          "speaker": "Linh",
+          "text": "Entendu. Second mouvement: le son. Boltanski fait entendre des battements de cœur dans l'obscurité. L'œuvre devient un corps sans organes — le public circule dans un espace cardiaque.",
+          "en": "Understood. Second movement: the sound. Boltanski makes you hear heartbeats in the dark. The work becomes a body without organs — the public moves through a cardiac space.",
+          "vi": "Đồng ý. Chuyển động hai: âm thanh. Boltanski cho nghe nhịp tim trong bóng tối. Tác phẩm trở thành một thân thể không cơ quan — công chúng lưu chuyển trong một không gian tim."
+        },
+        {
+          "speaker": "Rédactrice",
+          "text": "'Corps sans organes' — Deleuze, donc. Trop de théorie d'un coup. Remplacez par 'l'exposition bat au rythme d'un cœur collectif'. Plus charnel.",
+          "en": "'Body without organs' — Deleuze, then. Too much theory at once. Replace it with 'the exhibition beats to the rhythm of a collective heart'. More visceral.",
+          "vi": "'Thân thể không cơ quan' — Deleuze. Quá nhiều lý thuyết một lúc. Thay bằng 'triển lãm đập theo nhịp một trái tim tập thể'. Thịt da hơn."
+        },
+        {
+          "speaker": "Linh",
+          "text": "Vous avez raison. L'art critique journalistique exige de faire sentir avant de faire penser.",
+          "en": "You're right. Journalistic art criticism requires making the reader feel before making them think.",
+          "vi": "Chị đúng. Phê bình nghệ thuật báo chí đòi hỏi làm cho cảm trước khi làm cho nghĩ."
+        },
+        {
+          "speaker": "Rédactrice",
+          "text": "Exactement. Troisième mouvement: la chute. Quelques phrases sur la sortie — que reste-t-il au visiteur en quittant ?",
+          "en": "Exactly. Third movement: the ending. A few sentences on the exit — what remains with the visitor as they leave?",
+          "vi": "Chính xác. Chuyển động ba: cú rơi. Vài câu về lối ra — còn lại gì cho người xem khi rời khỏi?"
+        },
+        {
+          "speaker": "Linh",
+          "text": "On sort de Boltanski moins triste qu'allégé — le deuil collectif a paradoxalement quelque chose de réconfortant. C'est cela, l'angle final.",
+          "en": "You leave Boltanski less sad than lightened — collective mourning paradoxically has something comforting in it. That's the closing angle.",
+          "vi": "Ra khỏi Boltanski ít buồn hơn là nhẹ nhõm — tang chung tập thể mâu thuẫn có gì đó an ủi. Đó là góc cuối."
+        },
+        {
+          "speaker": "Rédactrice",
+          "text": "Parfait. Bouclez sur cette note d'ambivalence. Ni pathos, ni cynisme. Rendez-moi le papier demain midi.",
+          "en": "Perfect. Close on that note of ambivalence. No pathos, no cynicism. Get me the piece by noon tomorrow.",
+          "vi": "Hoàn hảo. Đóng lại trên nốt lưỡng trị này. Không pathos, không cynisme. Gửi tôi bài trưa mai."
+        }
+      ],
+      "roleplay_prompts": [
+        "Bạn viết critique 500 mots về một triển lãm tranh sơn mài Việt Nam tại Paris. Dùng cấu trúc: (1) entrée par une œuvre précise, (2) 2 axes d'analyse (matière + mémoire), (3) jugement nuancé. Phrase clé: 'Loin de se réduire à un artisanat décoratif, la laque vietnamienne...'",
+        "Trong buổi soutenance mémoire về mỹ thuật, jury hỏi bạn: 'Votre critique n'est-elle qu'une description lyrique?' Phản biện: định nghĩa critique d'art comme 'traduction dans un autre médium', dẫn Diderot, phân biệt description và analyse.",
+        "Bạn được giao viết catalogue essay 1500 mots cho triển lãm cá nhân. Hãy phác thảo structure: éviter biographie linéaire, partir d'un concept (le vide / la trace / la répétition), analyser 3 œuvres clés, conclure sur une question ouverte sans answer definitive."
+      ],
+      "register_notes": "CRITIQUE D'ART C2 — ba register tùy contexte:\n\nREGISTRE JOURNALISTIQUE (presse grand public):\n- Vocabulaire accessible, phrases courtes (15-25 mots)\n- Présent de l'indicatif dominant\n- Éviter passé simple, subjonctif imparfait\n- 'On est saisi par...', 'L'effet est immédiat:', 'Ce qui frappe d'abord, c'est...'\n\nREGISTRE UNIVERSITAIRE (revue savante):\n- Lexique spécialisé: 'chromatisme', 'scénographie', 'dispositif scopique'\n- Citations théoriques intégrées: 'Comme l'écrit Rancière dans Le Partage du sensible (2000)...'\n- Subjonctif: 'Il est regrettable que l'accrochage n'ait pas tenu compte...'\n- Questions rhétoriques: 'Faut-il voir dans ce choix de monter l'exposition à l'envers une intention déconstructrice?'\n\nREGISTRE CATALOGUE (essay pour livre d'artiste):\n- Ton plus personnel, essai littéraire\n- Je permis (rare ailleurs): 'Je me souviens de ma première rencontre avec cette toile...'\n- Métaphores filées: 'L'œuvre se déploie comme une partition dont chaque salle serait un mouvement.'\n- Ni trop technique, ni trop journalistique\n\nĐỘNG TỪ CLÉ:\n- 'donner à voir' (cho thấy) — neutre\n- 'mettre en scène' (dàn dựng) — neutre\n- 'convoquer' (triệu tập) — soutenu: 'l'artiste convoque le spectateur à...'\n- 'tramer' (dệt nên) — littéraire\n- 'sourdre' (rỉ ra) — rất littéraire\n\nTRÁNH:\n- 'Cette œuvre est magnifique' → không phân tích\n- 'L'artiste exprime sa souffrance' → biographisme naïf\n- 'C'est intéressant' → mot vide\n- Trop de technique sans jugement → catalogue de vente",
+      "idiom_glosses": [
+        {
+          "idiom": "Accrocher l'œil",
+          "literal": "Móc vào mắt",
+          "literal_en": "to hook the eye",
+          "meaning": "Thu hút thị giác — critique d'art pour décrire ce qui saisit d'abord le regard.",
+          "meaning_en": "to catch the eye — what first seizes the gaze (a critic's term for visual arrest)",
+          "example": "Ce qui accroche l'œil dans cette toile, c'est moins la composition d'ensemble que ce minuscule détail rouge au bord droit."
+        },
+        {
+          "idiom": "Donner à voir",
+          "literal": "Cho thấy",
+          "literal_en": "to give to see",
+          "meaning": "Rendre visible — verbe central de la critique d'art française, issu de Paul Éluard (Donner à voir, 1939).",
+          "meaning_en": "to make visible — a central verb of French art criticism, from Paul Éluard's 'Donner à voir' (1939)",
+          "example": "Cette installation donne à voir l'invisible — le passage du temps rendu sensible par l'accumulation d'objets quotidiens."
+        },
+        {
+          "idiom": "Faire date",
+          "literal": "Làm nên ngày tháng",
+          "literal_en": "to make a date",
+          "meaning": "Marquer l'histoire — pour désigner une œuvre / exposition qui fait époque.",
+          "meaning_en": "to be epoch-making — said of a work or exhibition that marks art history",
+          "example": "L'exposition 'Magiciens de la terre' (1989) a fait date en mettant fin à l'hégémonie occidentale dans l'art contemporain."
+        },
+        {
+          "idiom": "Prendre le parti de",
+          "literal": "Lấy phía của",
+          "literal_en": "to take the side of",
+          "meaning": "Chọn cách tiếp cận — 'le parti pris esthétique de l'artiste'.",
+          "meaning_en": "to choose an aesthetic approach — 'le parti pris esthétique de l'artiste'",
+          "example": "L'artiste prend le parti du vide contre le plein, du silence contre le bruit — un ascétisme formel radical."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "fill-blank",
+          "question": "La critique d'art, telle que ___ l'a inaugurée dans ses Salons, n'a jamais été une paraphrase de l'image.",
+          "answer": "Diderot",
+          "hint_vi": "tên người sáng lập thể loại critique d'art (thế kỷ 18)",
+          "hint_en": "the 18th-century founder of the critique d'art genre (his Salons)"
+        },
+        {
+          "type": "matching",
+          "pairs": [
+            [
+              "le parti pris",
+              "chủ trương / thiên kiến (the chosen approach / bias)"
+            ],
+            [
+              "la touche",
+              "nét cọ (the brushstroke)"
+            ],
+            [
+              "le regardeur",
+              "người xem (the beholder — Duchamp's term)"
+            ],
+            [
+              "un accrochage",
+              "cách treo tranh (the hanging of works)"
+            ]
+          ],
+          "instruction": "Nối thuật ngữ critique d'art với nghĩa Việt",
+          "instruction_en": "Match each art-criticism term with its Vietnamese meaning"
+        },
+        {
+          "type": "translation",
+          "vietnamese": "Khác hẳn việc quy giảm thành bài tập chiêm ngưỡng, phê bình nghệ thuật phải khớp nối một phán đoán thẩm mỹ có cơ sở.",
+          "english": "Far from reducing itself to an exercise in admiration, art criticism must articulate an aesthetic judgment grounded in explicit criteria.",
+          "french": "Loin de se réduire à un exercice d'admiration, la critique d'art se doit d'articuler un jugement esthétique étayé sur des critères explicites."
+        }
+      ],
+      "cultural_notes_en": "French art criticism (la critique d'art) has a distinctive lineage. (1) DIDEROT (1713-1784) founded the genre: his Salons (1759-1781) described paintings for readers who couldn't see them (provincial audiences). His method — vivid description + aesthetic judgment + philosophical aside — is still inherited today: 'peindre avec des mots' (paint with words) and 'philosopher à partir de l'image' (philosophize from the image). (2) BAUDELAIRE's Salons (1845, 1846, 1859) made criticism 'partiale, passionnée, politique'; Le Peintre de la vie moderne (1863) introduced 'modernité' — beauty as part eternal, part transient. (3) THE SALON TRADITION: the Académie des Beaux-Arts ran an annual Salon from 1667; into the 19th century it was the center of Parisian art life. (4) 20TH CENTURY: Malraux's 'musée imaginaire', Merleau-Ponty's phenomenology of perception, Didi-Huberman's critique of Panofskian iconology, Bourdieu's sociology of the artistic field. (5) Contemporary French criticism splits into 'journalistique' (accessible, opinionated — Le Monde, Libération) and 'universitaire' (theoretical, dense). A C2 critic must command both registers and pick by context. (6) FOR VIETNAMESE WRITERS: when writing in French about Vietnamese contemporary art (post-Đổi Mới 1986 — Nguyễn Quân, Trần Lương, Đinh Q. Lê), translate Vietnamese aesthetic concepts (hồn, duyên, thần thái) without turning them into folklore.",
+      "tip_advice_en": "Standard critique d'art structure (1500-3000 words): (1) ACCROCHE — open on a concrete detail of the work, not a generality. (2) DESCRIPTION (20%) — describe clearly, as if the reader can't see it; present tense; avoid an overly dense technical vocabulary. (3) CONTEXTUALISATION (20%) — situate the work in the artist's oeuvre, the movement, the era; 2-3 sentences. (4) ANALYSE (40%) — develop 2-3 'axes de lecture' like a literary explication: material/technique, spatial apparatus, symbolic charge — each with visual citations. (5) JUGEMENT (20%) — deliver an argued verdict; never 'c'est beau / c'est laid' but 'réussi' / 'moins convaincant' + reasons. Common mistakes: empty adjectives ('magnifique', 'sublime'), an over-long artist biography, theoretical name-dropping, and the cop-out conclusion 'À vous de juger' — a critique owns its judgment.",
+      "register_notes_en": "C2 critique d'art has three registers, chosen by context. JOURNALISTIC (mainstream press): accessible vocabulary, short sentences (15-25 words), dominant present tense, no passé simple or imperfect subjunctive — 'On est saisi par...', 'Ce qui frappe d'abord, c'est...'. ACADEMIC (scholarly journal): specialized lexicon ('chromatisme', 'dispositif scopique'), integrated theoretical citations ('Comme l'écrit Rancière...'), subjunctive of regret ('Il est regrettable que l'accrochage n'ait pas tenu compte...'), rhetorical questions. CATALOGUE (artist's book essay): more personal, literary-essay tone, the rare permitted 'je', extended metaphors. Key verbs: 'donner à voir' (neutral), 'mettre en scène' (neutral), 'convoquer' (elevated), 'tramer' (literary), 'sourdre' (very literary). Avoid: 'cette œuvre est magnifique' (no analysis), 'l'artiste exprime sa souffrance' (naive biographism), 'c'est intéressant' (empty word).",
+      "roleplay_prompts_en": [
+        "Write a 500-word critique of a Vietnamese lacquer-painting exhibition in Paris. Use the structure: (1) entry through one precise work, (2) two analytical axes (material + memory), (3) a nuanced judgment. Key phrase: 'Loin de se réduire à un artisanat décoratif, la laque vietnamienne...'",
+        "In a fine-arts thesis defense, the jury asks: 'Votre critique n'est-elle qu'une description lyrique?' (Is your criticism just lyrical description?). Rebut: define art criticism as 'translation into another medium', cite Diderot, distinguish description from analysis.",
+        "You're commissioned to write a 1500-word catalogue essay for a solo show. Sketch the structure: avoid a linear biography, start from a concept (the void / the trace / repetition), analyze three key works, conclude on an open question with no definitive answer."
+      ]
+    },
+    {
+      "id": "larts_critique_cinema",
+      "level": "C2",
+      "category": "arts_criticism",
+      "title_vi": "Phê bình điện ảnh — critique de cinéma",
+      "title_en": "Film criticism — writing a French film review",
+      "sentences": [
+        {
+          "en": "La critique de cinéma, en France, ne saurait être un simple verdict d'humeur: elle engage une analyse de la mise en scène comme pensée à l'œuvre.",
+          "vi": "Phê bình điện ảnh, ở Pháp, không thể là một phán quyết tùy hứng đơn giản: nó dấn thân vào một phân tích mise en scène như tư duy đang vận hành.",
+          "pronunciation_focus": [
+            "saurait → sô-rè",
+            "verdict → vèr-dik",
+            "mise en scène → mi-zãn-sèn",
+            "pensée → pãn-sé"
+          ],
+          "pronunciation_focus_en": [
+            "saurait → 'soh-REH' — conditional of savoir; 'ne saurait' = literary 'cannot'",
+            "verdict → 'vehr-DEEKT' — final 'ct' pronounced; Latinism",
+            "mise en scène → 'mee-zahn-SEN' — liaison 'se en'; the central French concept",
+            "pensée → 'pahn-SAY' — nasal 'en'; '-ée' = 'ay'; 'thought'"
+          ]
+        },
+        {
+          "en": "Bazin l'avait bien vu: le plan-séquence n'est pas un simple procédé technique — il est un choix éthique qui restitue au spectateur sa liberté de regard.",
+          "vi": "Bazin đã thấy rõ: plan-séquence không phải một thủ pháp kỹ thuật đơn giản — đó là một lựa chọn đạo đức trả lại cho khán giả sự tự do của cái nhìn.",
+          "pronunciation_focus": [
+            "Bazin → ba-zan",
+            "plan-séquence → plãn-sé-kãns",
+            "éthique → é-tik",
+            "spectateur → spèk-ta-tơr"
+          ],
+          "pronunciation_focus_en": [
+            "Bazin → 'bah-ZAN' — critic's name; nasal final 'in'",
+            "plan-séquence → 'plahn-say-KAHNSS' — nasal 'an'; 'long take'",
+            "éthique → 'ay-TEEK' — 'th' = 't'; final '-que' = 'k'",
+            "spectateur → 'spek-tah-TUR' — '-eur' rounded; 'viewer'"
+          ]
+        },
+        {
+          "en": "La politique des auteurs, telle que les Cahiers du Cinéma l'ont formulée dans les années 1950, postule que le metteur en scène est le véritable auteur du film, contre la tradition du scénariste-roi.",
+          "vi": "Chính sách tác giả, như Cahiers du Cinéma đã hình thành trong những năm 1950, định đề rằng đạo diễn mới là tác giả đích thực của phim, chống lại truyền thống biên kịch-làm-vua.",
+          "pronunciation_focus": [
+            "Cahiers → ka-ié",
+            "postule → pos-tul",
+            "metteur en scène → mè-tơr-ãn-sèn",
+            "scénariste → sé-na-rist"
+          ],
+          "pronunciation_focus_en": [
+            "Cahiers → 'kah-YAY' — 'Cahiers du Cinéma'; 'h' silent, 'iers' = 'yay'",
+            "postule → 'pos-TUL' — 'postuler' = to posit; rounded 'u'",
+            "metteur en scène → 'meh-tur-ahn-SEN' — liaison; 'director'",
+            "scénariste → 'say-nah-REEST' — 'screenwriter'; final '-e' silent"
+          ]
+        },
+        {
+          "en": "Il eût été plus fructueux d'analyser la lumière crépusculaire qui baigne tout le troisième acte — elle n'est pas décorative, elle est le sens même du film.",
+          "vi": "Sẽ có kết quả hơn nếu phân tích ánh sáng hoàng hôn tắm cả hồi ba — nó không có tính trang trí, nó là chính nghĩa của phim.",
+          "pronunciation_focus": [
+            "eût → u",
+            "crépusculaire → kré-pus-ku-lèr",
+            "décorative → dé-ko-ra-tiv",
+            "baigne → bèny"
+          ],
+          "pronunciation_focus_en": [
+            "eût → 'U' — imperfect subjunctive of avoir; literary; rounded 'u'",
+            "crépusculaire → 'kray-pus-ku-LEHR' — 'twilight' (adj.); '-aire' = 'air'",
+            "décorative → 'day-koh-rah-TEEV' — feminine; final '-e' silent",
+            "baigne → 'BEN-yuh' — 'gn' = 'ny'; 'baigner' = to bathe/suffuse"
+          ]
+        },
+        {
+          "en": "En dernière analyse, ce qui distingue la critique française de l'anglo-saxonne, c'est le primat accordé à la mise en scène sur le scénario — une idée que même les détracteurs de la 'politique des auteurs' ont dû intégrer.",
+          "vi": "Sau cùng, điều phân biệt phê bình Pháp với Anh-Mỹ là sự ưu tiên dành cho mise en scène hơn kịch bản — một ý tưởng mà ngay cả những người phản đối 'chính sách tác giả' cũng đã phải tích hợp.",
+          "pronunciation_focus": [
+            "dernière → dèr-nièr",
+            "anglo-saxonne → ãn-glô-sak-son",
+            "détracteurs → dé-trak-tơr",
+            "intégrer → an-té-gré"
+          ],
+          "pronunciation_focus_en": [
+            "dernière → 'dehr-NYEHR' — 'en dernière analyse' = 'in the final analysis'",
+            "anglo-saxonne → 'ahn-gloh-sak-SUN' — feminine; nasal 'an'",
+            "détracteurs → 'day-trak-TUR' — '-eurs' rounded; 'detractors'",
+            "intégrer → 'an-tay-GRAY' — nasal 'in'; '-er' = 'ay'"
+          ]
+        }
+      ],
+      "cultural_notes_vi": "PHÊ BÌNH ĐIỆN ẢNH PHÁP — di sản riêng từ Cahiers du Cinéma (1951):\n\n(1) BAZIN (1918-1958) — cofondateur des Cahiers. Ontologie de l'image photographique (Qu'est-ce que le cinéma ?, 1958): le cinéma accomplit le 'complexe de la momie' — sauver l'être par l'apparence. Phân biệt: metteurs en scène qui 'croient à l'image' vs ceux qui 'croient à la réalité'. Plan-séquence và profondeur de champ = choix éthiques, không chỉ esthétiques.\n\n(2) POLITIQUE DES AUTEURS — Truffaut (1954, 'Une certaine tendance du cinéma français') lance thuật ngữ. Nguyên lý: le metteur en scène (thường là scénariste de ses films) est le véritable auteur. Điều này cho phép valoriser Hollywood (Hitchcock, Hawks, Ford) mà critique Pháp trước đó coi thường.\n\n(3) CAHIERS CRITICS DEVENUS CINÉASTES — Godard, Truffaut, Rohmer, Rivette, Chabrol — tất cả khởi nghiệp viết critique cho Cahiers rồi chuyển sang làm phim (Nouvelle Vague). Truyền thống: critiquer comme manière d'apprendre à faire. Điều này rất Pháp.\n\n(4) DANEY (1944-1992) — kế thừa Bazin ở Cahiers, sau sang Libération. Lý thuyết về 'cinéma comme art du passage': de la salle obscure au monde, de l'image au réel. Citation célèbre: 'Le cinéma, c'est l'art de montrer.'\n\n(5) DEBAT ĐƯƠNG ĐẠI: Les Cahiers vẫn tồn tại (mensuel). Đối thủ: Positif (1952), plus 'contre-Cahiers'. Cả hai lập trường khác nhau về cùng một film — đọc cả hai khi muốn viết critique sérieuse.\n\n(6) ĐẶC THÙ VIỆT NAM: phê bình điện ảnh VN phát triển khác — nhiều influence từ critique văn học (Lê Hồng Lâm, Ngô Phương Lan). Khi viết bằng tiếng Pháp về cinéma VN (Trần Anh Hùng, Phan Đăng Di), tích hợp khái niệm Pháp (mise en scène, plan-séquence) vào ngữ cảnh VN mà không ép buộc.",
+      "tip_advice_vi": "STRUCTURE D'UNE CRITIQUE DE FILM C2 (1500-2000 mots):\n\n1. ENTRÉE EN MATIÈRE (2 phrases max): bắt đầu bằng một plan cụ thể, một scène, một geste — không 'Ce film raconte l'histoire de...'\n- 'Dès le premier plan — un travelling latéral sur un mur de brique —, le film impose son rythme.'\n\n2. RÉSUMÉ MINIMAL (10% max): résumer tối thiểu, đủ để comprendre contexte. Jamais spoiler fin. Formule: 'Le film suit X qui... jusqu'à ce que...'\n\n3. ANALYSE DE LA MISE EN SCÈNE (60%) — các axes:\n- Axe espace: cadrage / profondeur de champ / décor / hors-champ\n- Axe temps: montage / ellipse / plan-séquence / ralenti\n- Axe son: voix / musique / bruits / silence\n- Axe acteur: direction d'acteurs / corps / voix\n- Axe lumière: source / couleur / ombre\nKHÔNG cần tất cả — chọn 2-3 axes phù hợp với film.\n\n4. MISE EN PERSPECTIVE (20%): situer trong filmographie du cinéaste, trong courant esthétique. Citation critique: 'Comme l'écrit Daney...' / 'Bazin aurait vu dans ce plan...'\n\n5. JUGEMENT (10%): đưa verdict có lập luận. Có thể aimer ET critiquer ('réussi formellement mais politiquement naïf').\n\nCỤM HỮU ÍCH:\n- 'La mise en scène consiste ici à...' (mise en scène ở đây là...)\n- 'Ce plan, qui dure plus de trois minutes, oblige le spectateur à...'\n- 'La lumière, dans ce film, n'éclaire pas — elle signifie.'\n- 'Le choix du hors-champ est ici plus éloquent que ce qui est montré.'\n- 'Le montage, heurté, refuse toute psychologie — il impose une lecture politique.'\n\nTRÁNH:\n- Juger le scénario seulement: 'L'histoire est invraisemblable' → pas pertinent en critique française.\n- Note sur 5 étoiles sans texte: rédactionnel attendu.\n- Parler des acteurs en people: critique, pas Voici.\n- 'Ce film est un chef-d'œuvre' sans argument: affirmation vide.",
+      "vocabulary": [
+        {
+          "word": "la mise en scène",
+          "en": "direction / staging",
+          "vi": "dàn dựng / mise en scène",
+          "pos": "n.f.",
+          "pronunciation_vi": "mi-zãn-sèn",
+          "pronunciation_en": "lah mee-zahn-SEN — 'mise en scène'; not just 'directing' — staging as thought"
+        },
+        {
+          "word": "un travelling",
+          "en": "a tracking shot",
+          "vi": "cú travelling",
+          "pos": "n.m.",
+          "pronunciation_vi": "trav-ling",
+          "pronunciation_en": "UN trav-LEENG — anglicism; 'travelling' = tracking shot"
+        },
+        {
+          "word": "le hors-champ",
+          "en": "off-screen space",
+          "vi": "ngoại cảnh / không gian ngoài khung",
+          "pos": "n.m.",
+          "pronunciation_vi": "or-shãn",
+          "pronunciation_en": "luh or-SHAHN — 'hors-champ'; 'h' silent; off-screen space"
+        },
+        {
+          "word": "la profondeur de champ",
+          "en": "depth of field",
+          "vi": "độ sâu trường ảnh",
+          "pos": "n.f.",
+          "pronunciation_vi": "pro-fõn-dơr dơ shãn",
+          "pronunciation_en": "lah pro-fohn-DUR duh SHAHN — 'profondeur de champ' = depth of field"
+        },
+        {
+          "word": "le montage",
+          "en": "editing",
+          "vi": "dựng phim",
+          "pos": "n.m.",
+          "pronunciation_vi": "mõn-taj",
+          "pronunciation_en": "luh mohn-TAHZH — 'montage' = editing; final '-age' = 'ahzh'"
+        },
+        {
+          "word": "un plan-séquence",
+          "en": "a long take / sequence shot",
+          "vi": "cú máy liên tục không cắt",
+          "pos": "n.m.",
+          "pronunciation_vi": "plãn-sé-kãns",
+          "pronunciation_en": "UN plahn-say-KAHNSS — 'plan-séquence' = a long take / sequence shot"
+        },
+        {
+          "word": "la politique des auteurs",
+          "en": "auteur theory",
+          "vi": "chính sách tác giả",
+          "pos": "n.f.",
+          "pronunciation_vi": "po-li-tik dé-zô-tơr",
+          "pronunciation_en": "lah po-lee-TEEK day-zoh-TUR — 'la politique des auteurs'; liaison 'des auteurs'"
+        },
+        {
+          "word": "diégétique",
+          "en": "diegetic (within the story world)",
+          "vi": "thuộc về thế giới truyện",
+          "pos": "adj.",
+          "pronunciation_vi": "dié-jé-tik",
+          "pronunciation_en": "dyay-zhay-TEEK — 'diégétique' = within the story world (false friend: NOT 'diegetic' casual)"
+        },
+        {
+          "word": "un panoramique",
+          "en": "a pan shot",
+          "vi": "cú lia máy",
+          "pos": "n.m.",
+          "pronunciation_vi": "pa-no-ra-mik",
+          "pronunciation_en": "UN pah-noh-rah-MEEK — 'panoramique' = a pan shot"
+        },
+        {
+          "word": "le cadre",
+          "en": "the frame",
+          "vi": "khuôn hình",
+          "pos": "n.m.",
+          "pronunciation_vi": "kadr",
+          "pronunciation_en": "luh KAHDR — 'le cadre' = the frame; final '-re' barely voiced"
+        }
+      ],
+      "dialogue": [
+        {
+          "speaker": "Rédacteur",
+          "text": "Votre critique du dernier Desplechin est trop descriptive. Où est l'analyse de la mise en scène ?",
+          "en": "Your review of the latest Desplechin is too descriptive. Where's the analysis of the mise en scène?",
+          "vi": "Bài phê bình Desplechin mới nhất của bạn quá mô tả. Phân tích mise en scène đâu?"
+        },
+        {
+          "speaker": "Linh",
+          "text": "J'ai décrit la séquence d'ouverture, mais vous avez raison — je n'ai pas dit pourquoi la caméra quitte le personnage pour s'attarder sur la fenêtre.",
+          "en": "I described the opening sequence, but you're right — I didn't say why the camera leaves the character to linger on the window.",
+          "vi": "Tôi đã mô tả cảnh mở đầu, nhưng anh đúng — tôi chưa nói tại sao máy quay rời nhân vật để nấn ná ở cửa sổ."
+        },
+        {
+          "speaker": "Rédacteur",
+          "text": "Exactement. Ce mouvement n'est pas anodin: il dit le point de vue du cinéaste sur son personnage.",
+          "en": "Exactly. That movement isn't trivial: it states the filmmaker's point of view on his character.",
+          "vi": "Chính xác. Chuyển động đó không vô cớ: nó nói lên điểm nhìn của đạo diễn về nhân vật của ông."
+        },
+        {
+          "speaker": "Linh",
+          "text": "Je reprends — je pars de ce décadrage pour montrer comment Desplechin construit un regard ironique sur son protagoniste.",
+          "en": "I'll redo it — I'll start from that decentered framing to show how Desplechin builds an ironic gaze on his protagonist.",
+          "vi": "Tôi làm lại — tôi xuất phát từ sự lệch khung này để chỉ ra cách Desplechin xây dựng cái nhìn mỉa mai về nhân vật chính."
+        }
+      ],
+      "dialogue_long": [
+        {
+          "speaker": "Prof. Daney (séminaire de critique, Fémis)",
+          "text": "Mademoiselle Tran, vous venez de voir le dernier film de Claire Denis. En deux phrases: quel est le geste de mise en scène qui le définit ?",
+          "en": "Ms. Tran, you've just seen Claire Denis's latest film. In two sentences: what is the mise-en-scène gesture that defines it?",
+          "vi": "Cô Trần, cô vừa xem phim mới nhất của Claire Denis. Trong hai câu: cử chỉ mise en scène nào định nghĩa nó?"
+        },
+        {
+          "speaker": "Linh",
+          "text": "Le geste, c'est la peau. Denis filme les corps à une distance qui annule toute pudeur sans jamais devenir obscène. La caméra est un épiderme.",
+          "en": "The gesture is skin. Denis films bodies at a distance that cancels all modesty without ever becoming obscene. The camera is an epidermis.",
+          "vi": "Cử chỉ, đó là da. Denis quay các thân thể ở một khoảng cách hủy bỏ mọi e dè mà không bao giờ trở nên tục tằn. Máy quay là một lớp biểu bì."
+        },
+        {
+          "speaker": "Prof. Daney",
+          "text": "'La caméra est un épiderme' — c'est une formule. Développez: quel plan précis vous fait dire cela ?",
+          "en": "'The camera is an epidermis' — that's a formula. Develop it: which precise shot makes you say that?",
+          "vi": "'Máy quay là một lớp biểu bì' — đó là một công thức. Triển khai: cảnh chính xác nào khiến cô nói vậy?"
+        },
+        {
+          "speaker": "Linh",
+          "text": "La scène de la douche, au tiers du film. La caméra est si proche de la nuque de l'actrice qu'on perçoit le duvet. Ce n'est plus un cadrage — c'est une caresse optique.",
+          "en": "The shower scene, a third of the way in. The camera is so close to the actress's nape you can perceive the down. It's no longer a framing — it's an optical caress.",
+          "vi": "Cảnh tắm vòi sen, ở một phần ba phim. Máy quay gần gáy diễn viên đến mức ta thấy lông tơ. Đó không còn là cadrage — đó là một vuốt ve quang học."
+        },
+        {
+          "speaker": "Prof. Daney",
+          "text": "Très bien. Maintenant, le revers: cette proximité a-t-elle un coût ? Que sacrifie le film ?",
+          "en": "Very good. Now the flip side: does this proximity have a cost? What does the film sacrifice?",
+          "vi": "Rất tốt. Giờ mặt trái: sự cận kề này có cái giá không? Phim hy sinh gì?"
+        },
+        {
+          "speaker": "Linh",
+          "text": "Il sacrifie la narration classique. On ne sait jamais vraiment ce qui se passe au niveau de l'intrigue. Mais c'est un choix cohérent: le film ne raconte pas, il éprouve.",
+          "en": "It sacrifices classical narration. You never really know what's happening at the plot level. But it's a coherent choice: the film doesn't narrate, it experiences.",
+          "vi": "Nó hy sinh tự sự cổ điển. Không bao giờ thực sự biết cái gì xảy ra ở cấp độ cốt truyện. Nhưng đó là lựa chọn nhất quán: phim không kể, nó thể nghiệm."
+        },
+        {
+          "speaker": "Prof. Daney",
+          "text": "Vous défendez un cinéma de la sensation contre un cinéma du récit. Thèse classique des Cahiers. Mais attention au dogmatisme: certains films font les deux.",
+          "en": "You're defending a cinema of sensation against a cinema of narrative. A classic Cahiers thesis. But beware of dogmatism: some films do both.",
+          "vi": "Cô bảo vệ một điện ảnh của cảm giác chống lại điện ảnh của tự sự. Luận đề Cahiers cổ điển. Nhưng coi chừng chủ nghĩa: một số phim làm cả hai."
+        },
+        {
+          "speaker": "Linh",
+          "text": "Je nuance: Denis fait les deux, mais la sensation prime. Le récit est le prétexte; la chair, le texte.",
+          "en": "I'll nuance it: Denis does both, but sensation prevails. The narrative is the pretext; the flesh, the text.",
+          "vi": "Tôi sắc thái hóa: Denis làm cả hai, nhưng cảm giác chiếm ưu tiên. Tự sự là cái cớ; da thịt, là văn bản."
+        },
+        {
+          "speaker": "Prof. Daney",
+          "text": "'La chair, le texte' — bon mot. Pour la semaine prochaine, vous m'écrivez 1500 mots sur ce film en partant de cette idée. Et surtout: pas une seule référence à Deleuze.",
+          "en": "'The flesh, the text' — nice phrase. For next week, write me 1500 words on this film starting from that idea. And above all: not a single reference to Deleuze.",
+          "vi": "'Da thịt, là văn bản' — chữ hay. Tuần sau, cô viết cho tôi 1500 chữ về phim này xuất phát từ ý này. Và nhất là: không một tham chiếu nào đến Deleuze."
+        }
+      ],
+      "roleplay_prompts": [
+        "Bạn critique một bộ phim cho tạp chí bài trí thức. Tập trung vào MỘT séquence — phân tích mise en scène, lumière, son. Áp dụng Bazin: 'le plan-séquence restitue au spectateur sa liberté de regard'. Không tóm tắt toàn bộ phim.",
+        "Trong séminaire cinéma, bạn défend quan điểm 'ce blockbuster est plus intéressant que ce film d'auteur'. Dùng politique des auteurs argument: mise en scène > scénario. Phrase clé: 'On juge un cinéaste à sa mise en scène, non à son sujet.'",
+        "Bạn compare deux critiques du même film (Cahiers vs Positif). Phân tích divergence: l'un voit 'formalisme creux', l'autre 'économie de moyens'. Dùng analyse contrastive cho thấy mỗi critique part d'un présupposé khác nhau về ce que le cinéma doit être."
+      ],
+      "register_notes": "CRITIQUE DE CINÉMA C2 — đặc thù française:\n\nLEXIQUE TECHNIQUE INTÉGRÉ (không glossaire séparé):\n- Không nói 'le réalisateur utilise un travelling' + giải thích travelling là gì\n- Nói 'le travelling latéral du deuxième acte épouse le mouvement de l'actrice'\n- Lexique supposé connu: travelling, panoramique, plan fixe, plan-séquence, hors-champ, profondeur de champ, amorce, raccord, champ-contrechamp\n\nVERBES DE MISE EN SCÈNE:\n- 'cadrer' (đóng khung) — 'Le cinéaste cadre le visage au plus près'\n- 'monter' (dựng) — 'Le film est monté sec, sans transitions'\n- 'éclairer' — 'La scène est éclairée à la bougie'\n- 'filmer' — 'Godard filme la nuque d'Anna Karina comme un paysage'\n\nTEMP VERBAL dans critique de film:\n- PRÉSENT dominant: 'Le film s'ouvre sur...', 'La caméra suit...'\n- PASSÉ COMPOSÉ cho judgement synthétique: 'Le cinéaste a choisi de...'\n- IMPARFAIT pour habitude / arrière-plan: 'À l'époque, Truffaut écrivait...'\n- SUBJONCTIF cho critique: 'Il est dommage que le montage n'ait pas été plus serré.'\n\nCITATION CRITIQUE:\n- Dẫn critique khác: 'Comme l'écrit Daney dans Libération (12 mars 1985)...'\n- Dẫn cinéaste interviewé: 'Dans un entretien aux Inrockuptibles, Desplechin déclare...'\n- KHÔNG citer Wikipedia: 'Selon Wikipédia...' → disqualifiant\n\nTON:\n- Assertif mais pas arrogant: 'On peut voir dans ce choix...' > 'Il est évident que...'\n- Nuancier: 'Si la première partie emporte l'adhésion, la seconde laisse plus circonspect.'\n- Jamais jargonnant pour le plaisir — chaque terme technique doit servir l'analyse",
+      "idiom_glosses": [
+        {
+          "idiom": "Faire école",
+          "literal": "Làm nên trường phái",
+          "literal_en": "to make a school",
+          "meaning": "Tạo ảnh hưởng đến thế hệ sau — critique khen cinéaste có descendance.",
+          "meaning_en": "to be foundational — to influence later generations (a critic's praise: the filmmaker has 'descendants')",
+          "example": "Bresson a fait école — sans lui, ni Rohmer, ni Dumont, ni Kaurismäki ne filmeraient comme ils le font."
+        },
+        {
+          "idiom": "Film d'auteur",
+          "literal": "Phim tác giả",
+          "literal_en": "auteur film",
+          "meaning": "Phim trong đó cinéaste là auteur véritable, không simple exécutant — terme central politique des auteurs.",
+          "meaning_en": "a film where the director is the true author, not a mere executant — the central term of auteur theory",
+          "example": "Malgré son budget confortable, ce blockbuster reste un film d'auteur — on reconnaît la patte de Nolan à chaque plan."
+        },
+        {
+          "idiom": "Mettre en scène",
+          "literal": "Đặt lên sân khấu / dàn dựng",
+          "literal_en": "to put on stage",
+          "meaning": "Không chỉ 'réaliser', mà penser le cinéma par l'espace, le temps, les corps — verbe sacré critique française.",
+          "meaning_en": "not merely 'to direct' but to think cinema through space, time, bodies — the sacred verb of French criticism",
+          "example": "Ce n'est pas l'histoire qui compte, c'est comment le cinéaste la met en scène."
+        },
+        {
+          "idiom": "Tenir le plan",
+          "literal": "Giữ cú máy",
+          "literal_en": "to hold the shot",
+          "meaning": "Garder le plan sans couper — qualité: résister à la tentation du montage rapide. 'Tenir un plan-séquence de 8 minutes.'",
+          "meaning_en": "to keep the shot running without cutting — a quality: resisting the temptation of rapid editing",
+          "example": "Peu de cinéastes osent encore tenir le plan — la mode est au montage clip. Ce film, lui, prend le temps de regarder."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "fill-blank",
+          "question": "La politique des auteurs, telle que les ___ l'ont formulée dans les années 1950, postule que le metteur en scène est le véritable auteur du film.",
+          "answer": "Cahiers du Cinéma",
+          "hint_vi": "tên tạp chí phê bình điện ảnh Pháp sáng lập 1951 (chính sách tác giả)",
+          "hint_en": "the French film-criticism journal founded in 1951 that formulated the politique des auteurs"
+        },
+        {
+          "type": "matching",
+          "pairs": [
+            [
+              "la mise en scène",
+              "dàn dựng (direction / staging — as thought)"
+            ],
+            [
+              "le hors-champ",
+              "không gian ngoài khung (off-screen space)"
+            ],
+            [
+              "le plan-séquence",
+              "cú máy liên tục không cắt (a long take)"
+            ],
+            [
+              "le travelling",
+              "cú máy di chuyển (a tracking shot)"
+            ]
+          ],
+          "instruction": "Nối thuật ngữ critique cinéma với nghĩa Việt",
+          "instruction_en": "Match each film-criticism term with its Vietnamese meaning"
+        },
+        {
+          "type": "translation",
+          "vietnamese": "Bazin đã thấy rõ: plan-séquence không phải một thủ pháp kỹ thuật đơn giản — đó là một lựa chọn đạo đức trả lại cho khán giả sự tự do của cái nhìn.",
+          "english": "Bazin had seen it clearly: the long take is not a simple technical device — it is an ethical choice that restores to the viewer the freedom of their gaze.",
+          "french": "Bazin l'avait bien vu: le plan-séquence n'est pas un simple procédé technique — il est un choix éthique qui restitue au spectateur sa liberté de regard."
+        }
+      ],
+      "cultural_notes_en": "French film criticism has its own lineage from Cahiers du Cinéma (1951). (1) BAZIN (1918-1958), Cahiers co-founder: an ontology of the photographic image (Qu'est-ce que le cinéma?, 1958) — cinema fulfills the 'mummy complex', saving being through appearance. He distinguished directors who 'believe in the image' from those who 'believe in reality'; the long take and depth of field are ethical choices, not just aesthetic ones. (2) THE 'POLITIQUE DES AUTEURS' — Truffaut (1954) launched the term: the director (often writer of their own films) is the true author. This let French critics value Hollywood (Hitchcock, Hawks, Ford) they had previously dismissed. (3) Cahiers critics who became filmmakers — Godard, Truffaut, Rohmer, Rivette, Chabrol — all started by writing criticism, then made films (Nouvelle Vague). Criticism as a way of learning to make: very French. (4) DANEY (1944-1992) inherited Bazin, then moved to Libération; theory of 'cinema as the art of passage'. (5) Les Cahiers still exists (monthly); its rival Positif (1952) takes opposing positions on the same films — read both for a serious review. (6) FOR VIETNAMESE WRITERS: Vietnamese film criticism developed differently (more from literary criticism). When writing in French about Vietnamese cinema (Trần Anh Hùng, Phan Đăng Di), integrate French concepts (mise en scène, plan-séquence) without forcing them.",
+      "tip_advice_en": "Structure of a C2 film review (1500-2000 words): (1) ENTRY — open on a concrete shot, a scene, a gesture; never 'this film tells the story of...'. (2) MINIMAL SYNOPSIS (10% max) — just enough to understand context; never spoil the ending. (3) ANALYSIS OF MISE EN SCÈNE (60%) — axes: space (framing/depth of field/off-screen), time (editing/ellipsis/long take), sound (voice/music/silence), actor (direction/body), light (source/color/shadow); pick 2-3, not all. (4) PERSPECTIVE (20%) — situate within the filmmaker's body of work, the aesthetic current; cite a critic ('Comme l'écrit Daney...'). (5) JUDGMENT (10%) — an argued verdict; you may admire AND criticize ('formally successful but politically naive'). Avoid: judging only the screenplay (not pertinent in French criticism), a star-rating with no text, people-magazine treatment of actors, 'this film is a masterpiece' with no argument.",
+      "register_notes_en": "C2 film criticism integrates technical lexicon (no separate glossary): not 'the director uses a tracking shot' + explanation, but 'the lateral tracking shot of the second act marries the actress's movement'. Assumed-known terms: travelling, panoramique, plan fixe, plan-séquence, hors-champ, profondeur de champ, raccord, champ-contrechamp. Mise-en-scène verbs: 'cadrer' (to frame), 'monter' (to edit), 'éclairer' (to light), 'filmer'. Verb tenses: dominant present ('Le film s'ouvre sur...'), passé composé for synthetic judgment ('Le cinéaste a choisi de...'), imperfect for habit/background, subjunctive for critique ('Il est dommage que le montage n'ait pas été plus serré'). Cite other critics with date + context; never cite Wikipedia (disqualifying). Tone: assertive but not arrogant ('On peut voir dans ce choix...' over 'Il est évident que...'), nuanced, never jargon for its own sake.",
+      "roleplay_prompts_en": [
+        "Critique a film for an intellectual magazine. Focus on ONE sequence — analyze mise en scène, light, sound. Apply Bazin: 'le plan-séquence restitue au spectateur sa liberté de regard'. Don't summarize the whole film.",
+        "In a cinema seminar, defend the view that 'this blockbuster is more interesting than this art film'. Use the auteur-theory argument: mise en scène > screenplay. Key phrase: 'On juge un cinéaste à sa mise en scène, non à son sujet.'",
+        "Compare two reviews of the same film (Cahiers vs Positif). Analyze the divergence: one sees 'hollow formalism', the other 'economy of means'. Use a contrastive analysis to show each critic starts from a different assumption about what cinema should be."
+      ]
+    },
+    {
+      "id": "lcivic_debat_laicite",
+      "level": "C2",
+      "category": "civic_discourse",
+      "title_vi": "Tranh luận về laïcité — nguyên lý và tranh cãi",
+      "title_en": "Debating laïcité — principles and controversies",
+      "sentences": [
+        {
+          "en": "La laïcité, telle que la loi de 1905 l'a instituée, ne saurait être confondue avec une hostilité envers le fait religieux; elle garantit la liberté de conscience tout en préservant la neutralité de l'État.",
+          "vi": "Laïcité, như luật 1905 đã thiết lập, không thể bị nhầm lẫn với sự thù địch đối với thực tại tôn giáo; nó bảo đảm tự do lương tâm trong khi vẫn duy trì tính trung lập của Nhà nước.",
+          "pronunciation_focus": [
+            "laïcité → la-i-si-té",
+            "instituée → an-sti-tu-é",
+            "conscience → kõn-siãns",
+            "neutralité → nơ-tra-li-té"
+          ]
+        },
+        {
+          "en": "Il eût été plus sage, dans ce débat, de distinguer la laïcité juridique — qui relève du droit — de la laïcité identitaire — qui relève, elle, du registre passionnel.",
+          "vi": "Sẽ khôn ngoan hơn, trong tranh luận này, nếu phân biệt laïcité pháp lý — thuộc về luật pháp — với laïcité bản sắc — vốn thuộc về bình diện cảm xúc.",
+          "pronunciation_focus": [
+            "eût → u",
+            "juridique → ju-ri-dik",
+            "identitaire → i-dãn-ti-tèr",
+            "passionnel → pa-sio-nèl"
+          ]
+        },
+        {
+          "en": "Force est de constater que le terme même de 'laïcité' est devenu, dans le discours public contemporain, un signifiant flottant que chaque camp politique investit d'un sens différent.",
+          "vi": "Phải thừa nhận rằng chính thuật ngữ 'laïcité' đã trở thành, trong diễn ngôn công cộng đương đại, một cái biểu đạt trôi nổi mà mỗi phe chính trị rót vào một nghĩa khác nhau.",
+          "pronunciation_focus": [
+            "constater → kõns-ta-té",
+            "signifiant → si-ni-fiãn",
+            "flottant → flo-tãn",
+            "investit → an-vès-ti"
+          ]
+        },
+        {
+          "en": "La question du voile à l'école, pour ne prendre qu'un exemple, cristallise des tensions qui excèdent largement le cadre scolaire — elle mobilise des conceptions antagonistes de la République, de la liberté et de l'égalité des sexes.",
+          "vi": "Câu hỏi về khăn trùm đầu ở trường học, chỉ lấy một ví dụ, kết tinh những căng thẳng vượt xa khung học đường — nó huy động các quan niệm đối kháng về Cộng hòa, về tự do và về bình đẳng giới.",
+          "pronunciation_focus": [
+            "cristallise → kris-ta-liz",
+            "excèdent → èk-sèd",
+            "antagonistes → ãn-ta-go-nist",
+            "égalité → é-ga-li-té"
+          ]
+        },
+        {
+          "en": "Un débat digne de ce nom exige que l'on sache écouter la position adverse sans la caricaturer — condition plus facile à énoncer qu'à respecter dans l'arène médiatique.",
+          "vi": "Một cuộc tranh luận xứng đáng với tên gọi đòi hỏi ta biết lắng nghe lập trường đối phương mà không biếm họa nó — điều kiện dễ phát biểu hơn là tuân thủ trên vũ đài truyền thông.",
+          "pronunciation_focus": [
+            "adverse → ad-vèrs",
+            "caricaturer → ka-ri-ka-tu-ré",
+            "énoncer → é-nõn-sé",
+            "arène → a-rèn"
+          ]
+        }
+      ],
+      "cultural_notes_vi": "LAÏCITÉ — KHÁI NIỆM PHÁP KHÔNG CÓ TƯƠNG ĐƯƠNG TRỰC TIẾP:\n\n(1) LUẬT 1905 (Loi de séparation des Églises et de l'État): Article 1 — 'La République assure la liberté de conscience. Elle garantit le libre exercice des cultes.' Article 2 — 'La République ne reconnaît, ne salarie ni ne subventionne aucun culte.' Đây là văn bản nền tảng.\n\n(2) HAI TRUYỀN THỐNG LAÏCITÉ: (a) laïcité 'ouverte' (Jaurès, Briand) — tôn trọng tự do tôn giáo, Nhà nước trung lập nhưng không thù địch; (b) laïcité 'de combat' (Combes, début 1900s) — tích cực đẩy lùi ảnh hưởng tôn giáo khỏi không gian công.\n\n(3) KHÁC BIỆT VỚI SECULARISM ANH-MỸ: secularism Anh-Mỹ là 'nhà nước không can thiệp vào tôn giáo' (negative liberty). Laïcité Pháp là 'nhà nước bảo vệ cá nhân khỏi áp lực tôn giáo' (positive liberty through state).\n\n(4) LUẬT 2004: cấm 'signes religieux ostensibles' trong trường công. 2010: cấm che mặt nơi công cộng (burqa). Hai luật gây tranh cãi quốc tế.\n\n(5) DEBAT ĐƯƠNG ĐẠI: chia làm ba phe: (a) 'laïcité historique' (trung thành 1905), (b) 'laïcité identitaire' (coi laïcité là 'bản sắc Pháp' chống Hồi giáo — thường bị cáo buộc là islamophobie déguisée), (c) 'laïcité inclusive' (đòi điều chỉnh 1905 cho xã hội đa dạng tôn giáo ngày nay).\n\n(6) ĐIỀU TỐI QUAN TRỌNG CHO NGƯỜI VIỆT: Việt Nam có truyền thống 'tam giáo đồng nguyên' + chính sách tôn giáo riêng của nhà nước xã hội chủ nghĩa. KHÔNG áp đặt khuôn laïcité Pháp lên thực tại Việt Nam. Nhưng khi tham gia tranh luận bằng tiếng Pháp, phải nắm vững ba phân biệt: laïcité juridique vs politique vs identitaire.",
+      "tip_advice_vi": "TRANH LUẬN LAÏCITÉ C2 — CẤU TRÚC PHÁT BIỂU:\n\n1. POSITIONNER SON CAMP immédiatement: 'Je parle depuis une position laïque ouverte...' / 'Je me réclame de la laïcité historique de 1905...'\n\n2. DISTINGUER LES NIVEAUX:\n- Le plan juridique (que dit la loi?)\n- Le plan politique (que devrait dire la loi?)\n- Le plan sociologique (quelles sont les pratiques réelles?)\n\n3. CITER LA LOI, PAS L'OPINION: 'L'article 1 de la loi de 1905 dispose que...' > 'À mon avis...'\n\n4. RECONNAÎTRE LA COMPLEXITÉ: 'La question est complexe et ne saurait se réduire à...'\n\n5. CONCÉDER UN POINT avant de marquer le sien: 'Je concède que... Cependant...'\n\nCỤM HỮU ÍCH:\n- 'Il importe de distinguer...' (cần phân biệt)\n- 'La laïcité n'est pas... elle est...' (laïcité không phải là... mà là...)\n- 'On aurait tort de confondre...' (sẽ sai nếu nhầm lẫn...)\n- 'Le principe de laïcité exige que...' (nguyên lý laïcité đòi hỏi...)\n- 'C'est là une dérive sémantique qu'il faut dénoncer.' (đó là một sự trượt nghĩa cần vạch trần.)\n\nTRÁNH:\n- 'La laïcité, c'est l'interdiction de...' → simplification abusive\n- 'Tous les croyants pensent que...' → généralisation\n- Ton passionnel: 'C'est scandaleux!' → disqualifiant en débat républicain",
+      "vocabulary": [
+        {
+          "word": "la laïcité",
+          "en": "secularism (French model)",
+          "vi": "chủ nghĩa thế tục kiểu Pháp",
+          "pos": "n.f.",
+          "pronunciation_vi": "la-i-si-té"
+        },
+        {
+          "word": "la liberté de conscience",
+          "en": "freedom of conscience",
+          "vi": "tự do lương tâm",
+          "pos": "n.f.",
+          "pronunciation_vi": "li-bèr-té dơ kõn-siãns"
+        },
+        {
+          "word": "la neutralité de l'État",
+          "en": "state neutrality",
+          "vi": "tính trung lập của Nhà nước",
+          "pos": "n.f.",
+          "pronunciation_vi": "nơ-tra-li-té dơ lé-ta"
+        },
+        {
+          "word": "un signe religieux ostensible",
+          "en": "conspicuous religious symbol",
+          "vi": "biểu tượng tôn giáo lộ liễu",
+          "pos": "n.m.",
+          "pronunciation_vi": "si-niơ rơ-li-ji-ơ os-tãn-si-blơ"
+        },
+        {
+          "word": "le prosélytisme",
+          "en": "proselytism",
+          "vi": "sự truyền giáo tích cực",
+          "pos": "n.m.",
+          "pronunciation_vi": "pro-zé-li-tismơ"
+        },
+        {
+          "word": "le vivre-ensemble",
+          "en": "living together / social cohesion",
+          "vi": "sống chung / cộng đồng",
+          "pos": "n.m.",
+          "pronunciation_vi": "vivr-ãn-sãn-blơ"
+        },
+        {
+          "word": "le communautarisme",
+          "en": "communitarianism (pejorative)",
+          "vi": "chủ nghĩa cộng đồng khép kín",
+          "pos": "n.m.",
+          "pronunciation_vi": "ko-mu-nô-ta-rismơ"
+        },
+        {
+          "word": "un signifiant flottant",
+          "en": "a floating signifier",
+          "vi": "cái biểu đạt trôi nổi",
+          "pos": "n.m.",
+          "pronunciation_vi": "si-ni-fiãn flo-tãn"
+        },
+        {
+          "word": "la sphère publique",
+          "en": "the public sphere",
+          "vi": "không gian công cộng",
+          "pos": "n.f.",
+          "pronunciation_vi": "sfèr pu-blik"
+        },
+        {
+          "word": "séculier / séculière",
+          "en": "secular (adj.)",
+          "vi": "thế tục (tính từ)",
+          "pos": "adj.",
+          "pronunciation_vi": "sé-ku-lié"
+        }
+      ],
+      "dialogue": [
+        {
+          "speaker": "Interlocuteur",
+          "text": "La laïcité, pour vous, est-ce d'abord un principe juridique ou une valeur identitaire?",
+          "vi": "Laïcité, với bạn, trước hết là nguyên lý pháp lý hay giá trị bản sắc?"
+        },
+        {
+          "speaker": "Linh",
+          "text": "Juridique, sans hésitation. La loi de 1905 a tranché: l'État ne connaît pas les cultes, il les ignore institutionnellement, mais il les protège tous également.",
+          "vi": "Pháp lý, không do dự. Luật 1905 đã phân xử: Nhà nước không biết đến các tín ngưỡng, bỏ qua chúng về mặt thể chế, nhưng bảo vệ tất cả như nhau."
+        },
+        {
+          "speaker": "Interlocuteur",
+          "text": "Mais cette neutralité n'est-elle pas, en pratique, une fiction? L'État finance l'entretien des églises d'avant 1905.",
+          "vi": "Nhưng tính trung lập đó trong thực tế không phải là hư cấu sao? Nhà nước tài trợ bảo trì nhà thờ xây trước 1905."
+        },
+        {
+          "speaker": "Linh",
+          "text": "Vous touchez juste — c'est le paradoxe concordataire qui subsiste en Alsace-Moselle. Mais l'exception confirme la règle, elle ne l'invalide pas.",
+          "vi": "Bạn chạm đúng — đó là nghịch lý concordat còn tồn tại ở Alsace-Moselle. Nhưng ngoại lệ xác nhận quy tắc, không phủ nhận nó."
+        }
+      ],
+      "dialogue_long": [
+        {
+          "speaker": "Modérateur (émission 'Du grain à moudre', France Culture)",
+          "text": "Nous recevons ce soir trois invités pour débattre de la laïcité à l'école. Madame Tran, vous êtes doctorante en droit public. Votre position?",
+          "vi": "Tối nay chúng tôi tiếp ba khách mời tranh luận về laïcité ở trường học. Bà Trần, bà là nghiên cứu sinh công pháp. Lập trường của bà?"
+        },
+        {
+          "speaker": "Linh",
+          "text": "Je pars du texte de 1905, qui me semble trop souvent invoqué sans être lu. L'article premier garantit la liberté de conscience — c'est le principe. La neutralité de l'État en découle, elle n'est pas le principe premier.",
+          "vi": "Tôi xuất phát từ văn bản 1905, vốn theo tôi quá thường được viện dẫn mà không được đọc. Điều một bảo đảm tự do lương tâm — đó là nguyên lý. Tính trung lập của Nhà nước hệ quả từ đó, không phải nguyên lý hàng đầu."
+        },
+        {
+          "speaker": "Invité 2 (essayiste)",
+          "text": "Vous faites du droit sans voir la réalité sociologique: la laïcité est aujourd'hui menacée par l'entrisme communautariste dans les écoles.",
+          "vi": "Bà làm luật mà không thấy thực tại xã hội học: laïcité ngày nay bị đe dọa bởi sự xâm nhập của chủ nghĩa cộng đồng vào các trường học."
+        },
+        {
+          "speaker": "Linh",
+          "text": "Votre terme 'entrisme' mérite d'être interrogé. De quel entrisme parlez-vous exactement? Avez-vous des données chiffrées, ou s'agit-il d'une impression?",
+          "vi": "Thuật ngữ 'xâm nhập' của ông xứng đáng bị chất vấn. Chính xác ông nói về sự xâm nhập nào? Ông có dữ liệu định lượng không, hay đây là một ấn tượng?"
+        },
+        {
+          "speaker": "Invité 2",
+          "text": "Je parle de faits — des jeunes filles qui arrivent voilées en cours d'EPS, des menus hallal imposés...",
+          "vi": "Tôi nói về các sự kiện — các cô gái trẻ đến giờ thể dục với khăn trùm đầu, thực đơn halal bị áp đặt..."
+        },
+        {
+          "speaker": "Linh",
+          "text": "Vous mélangez trois registres: le voile à l'école (tranché par la loi de 2004), la restauration scolaire (qui relève du pouvoir discrétionnaire des collectivités), et un sentiment d'insécurité culturelle. Mélanger ces registres, c'est précisément ce qui empêche un débat rationnel.",
+          "vi": "Ông trộn ba bình diện: khăn trùm ở trường (đã được luật 2004 phân xử), phục vụ ăn uống trường học (thuộc quyền tùy nghi của chính quyền địa phương), và một cảm giác bất an văn hóa. Trộn các bình diện này, chính là điều ngăn cản tranh luận lý tính."
+        },
+        {
+          "speaker": "Modérateur",
+          "text": "Madame Tran, on vous sent attachée au droit. Mais le droit n'est-il pas toujours en retard sur le réel?",
+          "vi": "Bà Trần, chúng tôi thấy bà gắn bó với luật. Nhưng luật không phải luôn chậm hơn thực tại sao?"
+        },
+        {
+          "speaker": "Linh",
+          "text": "Le droit est en retard, c'est entendu. Mais c'est précisément parce qu'il est en retard qu'il nous oblige à la lenteur du raisonnement — et c'est cette lenteur qui protège du jugement hâtif.",
+          "vi": "Luật chậm hơn, đã rõ. Nhưng chính vì nó chậm hơn mà nó buộc ta vào sự chậm rãi của suy lý — và chính sự chậm rãi đó bảo vệ khỏi phán xét vội vàng."
+        }
+      ],
+      "roleplay_prompts": [
+        "Bạn tham gia débat télévisé về laïcité. Đối thủ nói: 'La laïcité, c'est l'interdiction du religieux dans l'espace public.' Phản bác: phân biệt 'interdiction du religieux' và 'neutralité de l'État', dẫn luật 1905. Cấu trúc: concession ('Je comprends votre préoccupation') + correction juridique + exemple concret.",
+        "Trong séminaire, bạn défend luận điểm: 'La loi de 2004 sur les signes religieux à l'école était nécessaire mais insuffisante.' Giải thích pourquoi nécessaire + pourquoi insuffisante + đề xuất giải pháp bổ sung. Dùng registre universitaire."
+      ],
+      "register_notes": "DÉBAT LAÏCITÉ C2 — REGISTRE:\n\nTon: calme, analytique, không passionnel. Người Pháp đánh giá cao 'la raison' trong tranh luận laïcité.\n\nLexique obligatoire:\n- 'distinguer' / 'il importe de distinguer' (cần phân biệt)\n- 'sur le plan juridique / politique / sociologique'\n- 'la loi dispose que...' (luật quy định rằng...)\n- 'le législateur a voulu...' (nhà lập pháp đã muốn...)\n\nHEDGING:\n- 'Il me semble que...' (tôi thấy rằng...)\n- 'On peut soutenir que...' (có thể chủ trương rằng...)\n- 'La question mérite d'être posée autrement.' (câu hỏi xứng đáng được đặt khác đi.)\n\nTRÁNH:\n- Ton indigné: 'C'est une honte!' / 'C'est scandaleux!'\n- Amalgame: 'Les musulmans pensent que...' — toujours distinguer 'certains musulmans'\n- Anachronisme: projeter des catégories contemporaines sur 1905",
+      "idiom_glosses": [
+        {
+          "idiom": "Un signifiant flottant",
+          "literal": "Cái biểu đạt trôi nổi",
+          "meaning": "Thuật ngữ mượn từ Lacan / Lévi-Strauss: một từ mà nghĩa trở nên bất định vì mỗi phe gán cho nó một nội dung khác. Trong tranh luận laïcité, 'laïcité' chính là signifiant flottant.",
+          "example": "Le mot 'laïcité' est devenu un signifiant flottant — chacun y met ce qu'il veut, et c'est précisément ce qui rend le débat si difficile."
+        },
+        {
+          "idiom": "La loi dispose que...",
+          "literal": "Luật quy định rằng...",
+          "meaning": "Công thức pháp lý chuẩn để trích dẫn luật — tín hiệu cho thấy bạn nói từ văn bản, không từ ý kiến cá nhân.",
+          "example": "La loi de 1905 dispose que la République ne reconnaît aucun culte — cela ne signifie pas qu'elle les ignore, mais qu'elle ne les institutionnalise pas."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "fill-blank",
+          "question": "La laïcité, telle que la loi de 1905 l'a ___, ne saurait être confondue avec une hostilité envers le fait religieux.",
+          "answer": "instituée"
+        },
+        {
+          "type": "matching",
+          "pairs": [
+            [
+              "la loi de 1905",
+              "luật tách Giáo hội khỏi Nhà nước"
+            ],
+            [
+              "la liberté de conscience",
+              "tự do lương tâm"
+            ],
+            [
+              "le communautarisme",
+              "chủ nghĩa cộng đồng khép kín"
+            ],
+            [
+              "un signifiant flottant",
+              "cái biểu đạt trôi nổi"
+            ]
+          ],
+          "instruction": "Nối thuật ngữ tranh luận laïcité với nghĩa Việt"
+        },
+        {
+          "type": "translation",
+          "vietnamese": "Một cuộc tranh luận xứng đáng với tên gọi đòi hỏi ta biết lắng nghe lập trường đối phương mà không biếm họa nó.",
+          "french": "Un débat digne de ce nom exige que l'on sache écouter la position adverse sans la caricaturer."
+        }
+      ]
+    },
+    {
+      "id": "lcivic_discours_politique",
+      "level": "C2",
+      "category": "civic_discourse",
+      "title_vi": "Phân tích diễn văn chính trị — rhétorique présidentielle",
+      "title_en": "Analyzing political speech — French presidential rhetoric",
+      "sentences": [
+        {
+          "en": "Le discours politique, dans la tradition républicaine française, ne se réduit pas à la transmission d'un message: il est un acte performatif qui institue le locuteur en représentant de la nation.",
+          "vi": "Diễn văn chính trị, trong truyền thống cộng hòa Pháp, không quy giảm thành việc truyền tải thông điệp: đó là một hành vi ngôn hành thiết lập người nói thành đại diện của quốc gia.",
+          "pronunciation_focus": [
+            "discours → dis-kur",
+            "performatif → pèr-for-ma-tif",
+            "institue → an-sti-tu",
+            "locuteur → lo-ku-tơr"
+          ]
+        },
+        {
+          "en": "L'analyse du discours politique exige qu'on prête attention moins au contenu explicite — les promesses, les bilans — qu'aux marqueurs formels: les pronoms, les temps verbaux, les figures de rhétorique par lesquelles l'orateur construit sa légitimité.",
+          "vi": "Phân tích diễn ngôn chính trị đòi hỏi chú ý ít hơn đến nội dung hiển ngôn — các lời hứa, các bản tổng kết — mà nhiều hơn đến các dấu hiệu hình thức: đại từ, thì động từ, các hình thái tu từ qua đó nhà hùng biện kiến tạo tính chính danh của mình.",
+          "pronunciation_focus": [
+            "explicite → èk-spli-sit",
+            "pronoms → pro-nõn",
+            "rhétorique → ré-to-rik",
+            "légitimité → lé-ji-ti-mi-té"
+          ]
+        },
+        {
+          "en": "Le 'nous' présidentiel, chez de Gaulle, englobe la France entière dans une transcendance historique; chez Mitterrand, il dessine un camp politique; chez Macron, il se veut rassembleur tout en restant singulier — trois usages d'un même pronom, trois conceptions du pouvoir.",
+          "vi": "Cái 'chúng ta' tổng thống, ở de Gaulle, bao trùm toàn nước Pháp trong một sự siêu việt lịch sử; ở Mitterrand, nó phác họa một phe chính trị; ở Macron, nó muốn tập hợp mà vẫn giữ tính đơn nhất — ba cách dùng cùng một đại từ, ba quan niệm về quyền lực.",
+          "pronunciation_focus": [
+            "de Gaulle → dơ Gôl",
+            "Mitterrand → Mi-tê-rãn",
+            "Macron → Ma-krõn",
+            "englobe → ãn-glob"
+          ]
+        },
+        {
+          "en": "Il eût été instructif de comparer la syntaxe de Jaurès — ample, hypotaxique, chargée de subordonnées — à celle de Clémenceau — brève, parataxique, faite de phrases qui claquent comme des couperets.",
+          "vi": "Sẽ bổ ích nếu so sánh cú pháp của Jaurès — rộng, giàu mệnh đề phụ, đầy các câu lệ thuộc — với cú pháp của Clémenceau — ngắn, đặt cạnh, toàn những câu vang lên như lưỡi máy chém.",
+          "pronunciation_focus": [
+            "Jaurès → Jo-rès",
+            "hypotaxique → i-po-tak-sik",
+            "Clémenceau → Klé-mãn-sô",
+            "parataxique → pa-ra-tak-sik"
+          ]
+        },
+        {
+          "en": "Tout discours présidentiel est, en dernière analyse, un exercice d'équilibriste entre la nécessité de rassurer et l'obligation de mobiliser — équilibre dont la rupture se lit, souvent, dans le choix des adjectifs.",
+          "vi": "Mọi diễn văn tổng thống, xét đến cùng, là một bài tập giữ thăng bằng giữa nhu cầu trấn an và nghĩa vụ huy động — sự thăng bằng mà sự đổ vỡ thường đọc được trong cách chọn tính từ.",
+          "pronunciation_focus": [
+            "équilibriste → é-ki-li-brist",
+            "rassurer → ra-su-ré",
+            "mobiliser → mo-bi-li-zé",
+            "adjectifs → ad-jèk-tif"
+          ]
+        }
+      ],
+      "cultural_notes_vi": "PHÂN TÍCH DIỄN VĂN CHÍNH TRỊ PHÁP — DI SẢN:\n\n(1) JAURÈS (1859-1914): bậc thầy hùng biện — câu dài, hypotaxe, nhịp điệu oratoire. 'Le courage, c'est de chercher la vérité et de la dire.'\n\n(2) DE GAULLE (1890-1970): phong cách 'monarque républicain'. 'Nous' bao trùm toàn dân tộc. Câu ngắn gọn, tính từ thiêng: 'la France éternelle'. Conférence de presse comme genre.\n\n(3) MITTERRAND (1916-1996): 'rhétorique de la gauche'. 'Nous' chỉ phe tả. Phong cách văn chương — citation Lamartine, Hugo. 'Les forces de l'esprit' (1985, discours au Congrès).\n\n(4) MACRON (2017-): phong cách 'en même temps' — juxtapose hai vế tương phản trong cùng câu. 'Je veux être le président qui réconcilie les deux France.'\n\n(5) CÔNG CỤ PHÂN TÍCH: analyse du discours 'à la française' (Pêcheux, Maingueneau) khác critical discourse analysis Anh-Mỹ (Fairclough, van Dijk) ở chỗ chú trọng énonciation (ai nói với ai, từ vị trí nào) hơn là ideology critique.\n\n(6) THỂ LOẠI: discours d'investiture, vœux du 31 décembre, allocution en temps de crise, débat télévisé d'entre-deux-tours — mỗi thể loại có règles rhétoriques riêng.",
+      "tip_advice_vi": "GRILLE PHÂN TÍCH DIỄN VĂN CHÍNH TRỊ C2 (7 axes):\n\n1. ÉNONCIATION: Qui parle? D'où? À qui? (Président / candidat / ministre)\n2. PRONOMS: Je / Nous / On / Ils — mỗi đại từ vẽ một bản đồ chính trị\n3. TEMPS VERBAUX: Présent (vérité générale), Futur (promesse), Passé composé (bilan), Imparfait (nostalgie)\n4. FIGURES: Anaphore, métaphore, antithèse, question rhétorique\n5. CHAMP LEXICAL: abstrait (République, Nation, Peuple) vs concret (salaire, hôpital)\n6. SYNTAXE: Phrase longue hypotaxique (Jaurès) vs phrase courte parataxique (Clémenceau)\n7. SILENCES / HÉSITATIONS: Ce qui n'est pas dit, les thèmes évités\n\nCỤM HỮU ÍCH:\n- 'Le locuteur se construit ici comme...' (người nói tự kiến tạo ở đây như...)\n- 'L'usage du pronom X révèle...' (cách dùng đại từ X tiết lộ...)\n- 'Le choix du passé composé n'est pas anodin: il...' (chọn passé composé không vô cớ: nó...)\n- 'Cette anaphore en début de paragraphe scande...' (phép điệp ngữ đầu đoạn này gõ nhịp...)",
+      "vocabulary": [
+        {
+          "word": "un discours-programme",
+          "en": "a platform speech",
+          "vi": "diễn văn cương lĩnh",
+          "pos": "n.m.",
+          "pronunciation_vi": "dis-kur pro-gram"
+        },
+        {
+          "word": "le pronom 'nous'",
+          "en": "the pronoun 'we'",
+          "vi": "đại từ 'chúng ta'",
+          "pos": "n.m.",
+          "pronunciation_vi": "pro-nõn nu"
+        },
+        {
+          "word": "une anaphore",
+          "en": "anaphora (rhetorical)",
+          "vi": "phép điệp ngữ đầu câu",
+          "pos": "n.f.",
+          "pronunciation_vi": "a-na-for"
+        },
+        {
+          "word": "l'allocution",
+          "en": "formal address / speech",
+          "vi": "bài phát biểu chính thức",
+          "pos": "n.f.",
+          "pronunciation_vi": "a-lo-ku-sion"
+        },
+        {
+          "word": "la performativité",
+          "en": "performativity (Austin)",
+          "vi": "tính ngôn hành",
+          "pos": "n.f.",
+          "pronunciation_vi": "pèr-for-ma-ti-vi-té"
+        },
+        {
+          "word": "l'éloquence",
+          "en": "eloquence",
+          "vi": "tài hùng biện",
+          "pos": "n.f.",
+          "pronunciation_vi": "é-lo-kãns"
+        },
+        {
+          "word": "la tribune",
+          "en": "the rostrum / platform",
+          "vi": "bục diễn đàn",
+          "pos": "n.f.",
+          "pronunciation_vi": "tri-bun"
+        },
+        {
+          "word": "le clivage",
+          "en": "cleavage / divide",
+          "vi": "sự chia rẽ / phân tuyến",
+          "pos": "n.m.",
+          "pronunciation_vi": "kli-vaj"
+        },
+        {
+          "word": "rassembleur / rassembleuse",
+          "en": "unifying (adj.)",
+          "vi": "tập hợp / đoàn kết",
+          "pos": "adj.",
+          "pronunciation_vi": "ra-sãn-blơr"
+        },
+        {
+          "word": "un slogan",
+          "en": "a slogan",
+          "vi": "khẩu hiệu",
+          "pos": "n.m.",
+          "pronunciation_vi": "slo-gãn"
+        }
+      ],
+      "dialogue": [
+        {
+          "speaker": "Étudiant",
+          "text": "Comment analyser le 'nous' dans un discours de Macron?",
+          "vi": "Phân tích chữ 'nous' trong diễn văn Macron thế nào?"
+        },
+        {
+          "speaker": "Prof. Maingueneau",
+          "text": "Demandez-vous: ce 'nous' inclut-il l'auditoire présent? Le pays entier? L'humanité? La réponse change selon le paragraphe — et c'est cette variation qu'il faut cartographier.",
+          "vi": "Hãy tự hỏi: 'nous' này có bao gồm cử tọa hiện diện? Toàn đất nước? Nhân loại? Câu trả lời thay đổi theo từng đoạn — và chính sự biến đổi đó cần được vẽ bản đồ."
+        },
+        {
+          "speaker": "Étudiant",
+          "text": "Et si 'nous' est ambigu?",
+          "vi": "Nếu 'nous' mơ hồ thì sao?"
+        },
+        {
+          "speaker": "Prof. Maingueneau",
+          "text": "L'ambiguïté n'est pas un défaut — c'est une ressource rhétorique. Un 'nous' qui peut être lu comme 'les Français' OU 'mon gouvernement' permet de parler à deux publics en même temps.",
+          "vi": "Sự mơ hồ không phải là khiếm khuyết — đó là tài nguyên tu từ. Một 'nous' có thể được đọc là 'người Pháp' HOẶC 'chính phủ của tôi' cho phép nói với hai công chúng cùng một lúc."
+        }
+      ],
+      "dialogue_long": [
+        {
+          "speaker": "Prof. Maingueneau (séminaire d'analyse du discours, Paris 3)",
+          "text": "Mademoiselle Tran, vous avez choisi d'analyser le discours d'investiture de François Mitterrand, 21 mai 1981. Pourquoi ce discours?",
+          "vi": "Cô Trần, cô đã chọn phân tích diễn văn nhậm chức của François Mitterrand, 21 tháng 5 năm 1981. Vì sao diễn văn này?"
+        },
+        {
+          "speaker": "Linh",
+          "text": "Parce que c'est un discours de basculement — la gauche arrive au pouvoir pour la première fois sous la Ve République. La rhétorique doit accomplir une double tâche: rassurer ceux qui ont peur, et mobiliser ceux qui espèrent.",
+          "vi": "Vì đó là một diễn văn bước ngoặt — phe tả lên nắm quyền lần đầu dưới nền Đệ Ngũ Cộng hòa. Tu từ phải hoàn thành nhiệm vụ kép: trấn an những người sợ, và huy động những người hy vọng."
+        },
+        {
+          "speaker": "Prof. Maingueneau",
+          "text": "Bien. Commencez par les pronoms — que trouvez-vous?",
+          "vi": "Tốt. Bắt đầu bằng các đại từ — cô thấy gì?"
+        },
+        {
+          "speaker": "Linh",
+          "text": "Le 'je' domine le premier tiers — Mitterrand s'institue comme sujet de l'action. Puis le 'nous' prend le relais, mais un 'nous' qui exclut la droite: 'nous, la gauche', 'nous, le peuple de gauche'. Ce n'est pas le 'nous' gaullien qui englobe la France entière.",
+          "vi": "Cái 'je' chi phối một phần ba đầu — Mitterrand thiết lập mình như chủ thể hành động. Rồi 'nous' tiếp quản, nhưng là 'nous' loại trừ phe hữu: 'chúng ta, phe tả', 'chúng ta, nhân dân cánh tả'. Đó không phải là 'nous' của de Gaulle bao trùm toàn nước Pháp."
+        },
+        {
+          "speaker": "Prof. Maingueneau",
+          "text": "Très juste. Et les temps verbaux?",
+          "vi": "Rất đúng. Còn thì động từ?"
+        },
+        {
+          "speaker": "Linh",
+          "text": "Alternance entre futur ('je proposerai', 'nous construirons') et présent de vérité générale ('la justice est la condition de la paix'). Le passé est presque absent — aucune nostalgie, aucune référence à Giscard. L'ennemi n'est pas nommé, il est effacé.",
+          "vi": "Xen kẽ giữa futur ('tôi sẽ đề xuất', 'chúng ta sẽ xây dựng') và présent chân lý tổng quát ('công lý là điều kiện của hòa bình'). Quá khứ hầu như vắng mặt — không hoài niệm, không tham chiếu đến Giscard. Kẻ thù không được gọi tên, nó bị xóa đi."
+        },
+        {
+          "speaker": "Prof. Maingueneau",
+          "text": "L'effacement de l'adversaire — c'est une trouvaille. Développez pour la semaine prochaine.",
+          "vi": "Sự xóa bỏ đối thủ — đó là một phát hiện. Triển khai cho tuần sau."
+        }
+      ],
+      "roleplay_prompts": [
+        "Bạn phân tích một discours politique Pháp đương đại (chọn một bài cụ thể). Dùng grille 7 axes (énonciation, pronoms, temps, figures, lexique, syntaxe, silences). Kết luận: 'Ce discours révèle une conception du pouvoir qui...'",
+        "Trong séminaire, bạn bị critique: 'Votre analyse est trop formaliste, vous ignorez le contexte politique.' Phản hồi: concéder, puis montrer comment l'analyse formelle ÉCLAIRE le contexte politique ('c'est précisément par l'analyse des pronoms que l'on voit comment le locuteur construit son adversaire')."
+      ],
+      "register_notes": "ANALYSE DU DISCOURS POLITIQUE C2:\n- Métalangage obligatoire: 'énonciation', 'locuteur', 'allocutaire', 'pronom', 'marqueur', 'modalité', 'ethos discursif'.\n- Khi trích dẫn discours: toujours donner date + contexte + paragraphe.\n- Khi phân tích: 'Le choix de X plutôt que Y révèle...' > 'X veut dire...'\n- Khi kết luận: 'Ce discours construit un ethos de...' (diễn văn này kiến tạo một diện mạo đạo đức của...)\n- TRÁNH: jugement politique ('ce discours est démagogique') — rester dans l'analyse formelle.",
+      "idiom_glosses": [
+        {
+          "idiom": "Un morceau d'anthologie",
+          "literal": "Một đoạn hợp tuyển",
+          "meaning": "Một đoạn văn / diễn văn xuất sắc đến mức xứng đáng được đưa vào sách giáo khoa — khen discours politique.",
+          "example": "Le 'Je vous ai compris' du général de Gaulle à Alger, en 1958, est un morceau d'anthologie de l'ambiguïté politique assumée."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "fill-blank",
+          "question": "Le discours politique est un acte ___ qui institue le locuteur en représentant de la nation.",
+          "answer": "performatif"
+        },
+        {
+          "type": "matching",
+          "pairs": [
+            [
+              "une anaphore",
+              "phép điệp ngữ đầu câu"
+            ],
+            [
+              "l'allocution",
+              "bài phát biểu chính thức"
+            ],
+            [
+              "le clivage",
+              "sự chia rẽ / phân tuyến"
+            ],
+            [
+              "l'éloquence",
+              "tài hùng biện"
+            ]
+          ],
+          "instruction": "Nối thuật ngữ phân tích diễn ngôn với nghĩa Việt"
+        },
+        {
+          "type": "translation",
+          "vietnamese": "Phân tích diễn ngôn chính trị đòi hỏi chú ý ít hơn đến nội dung hiển ngôn mà nhiều hơn đến các dấu hiệu hình thức: đại từ, thì động từ, các hình thái tu từ.",
+          "french": "L'analyse du discours politique exige qu'on prête attention moins au contenu explicite qu'aux marqueurs formels: les pronoms, les temps verbaux, les figures de rhétorique."
+        }
+      ]
+    },
+    {
+      "id": "lrhet_dissertation_philo",
+      "level": "C2",
+      "category": "rhetoric_capstone",
+      "title_vi": "Dissertation philosophique — viết luận triết học",
+      "title_en": "Philosophical dissertation — writing the French dissertation",
+      "sentences": [
+        {
+          "en": "La dissertation philosophique, telle que l'épreuve du baccalauréat puis celle de l'agrégation l'ont consacrée, n'est pas un exercice d'opinion — elle est l'art de construire un problème et d'en déployer les implications selon une architecture argumentative rigoureuse.",
+          "vi": "Dissertation triết học, như kỳ thi tú tài rồi agrégation đã thánh hóa, không phải là bài tập nêu ý kiến — đó là nghệ thuật kiến tạo một vấn đề và triển khai các hệ quả của nó theo một kiến trúc lập luận nghiêm ngặt.",
+          "pronunciation_focus": [
+            "dissertation → di-sèr-ta-sion",
+            "baccalauréat → ba-ka-lo-ré-a",
+            "agrégation → a-gré-ga-sion",
+            "argumentative → ar-gu-mãn-ta-tiv"
+          ]
+        },
+        {
+          "en": "Loin de se réduire à la formule scolaire 'thèse-antithèse-synthèse', la dissertation digne de ce nom exige qu'on problématise — c'est-à-dire qu'on transforme une question apparente en un problème conceptuel dont les termes mêmes sont à interroger.",
+          "vi": "Khác hẳn việc quy giảm thành công thức học đường 'chính đề - phản đề - hợp đề', dissertation xứng đáng với tên gọi đòi hỏi phải đặt vấn đề hóa — nghĩa là biến một câu hỏi bề ngoài thành một vấn đề khái niệm mà chính các thuật ngữ của nó cũng phải được chất vấn.",
+          "pronunciation_focus": [
+            "thèse → tèz",
+            "antithèse → ãn-ti-tèz",
+            "problématiser → pro-blé-ma-ti-zé",
+            "conceptuel → kõn-sèp-tu-èl"
+          ]
+        },
+        {
+          "en": "Il eût été préférable que le candidat commençât par définir les termes du sujet — car c'est dans l'écart entre le sens commun et le sens philosophique d'un mot que le problème prend naissance.",
+          "vi": "Sẽ tốt hơn nếu thí sinh bắt đầu bằng cách định nghĩa các thuật ngữ của đề bài — vì chính trong khoảng cách giữa nghĩa thông thường và nghĩa triết học của một từ mà vấn đề nảy sinh.",
+          "pronunciation_focus": [
+            "eût → u",
+            "commençât → ko-mãn-sa",
+            "écart → é-kar",
+            "naissance → nè-sãns"
+          ]
+        },
+        {
+          "en": "Une transition digne de ce nom ne se contente pas d'annoncer la partie suivante — elle montre en quoi la partie qu'on achève rend nécessaire la partie qui vient.",
+          "vi": "Một chuyển đoạn xứng đáng với tên gọi không bằng lòng với việc thông báo phần tiếp theo — nó chỉ ra vì sao phần ta vừa kết thúc khiến cho phần sắp tới trở nên tất yếu.",
+          "pronunciation_focus": [
+            "transition → trãn-zi-sion",
+            "annoncer → a-nõn-sé",
+            "achève → a-shèv",
+            "nécessaire → né-sé-sèr"
+          ]
+        },
+        {
+          "en": "Conclure, ce n'est pas répéter ce qu'on a dit; c'est montrer le chemin parcouru et indiquer, fût-ce d'un mot, ce que ce chemin ouvre comme question nouvelle.",
+          "vi": "Kết luận, không phải là lặp lại điều đã nói; mà là chỉ ra con đường đã đi và cho thấy, dù chỉ một từ, con đường đó mở ra câu hỏi mới nào.",
+          "pronunciation_focus": [
+            "conclure → kõn-klur",
+            "parcouru → par-ku-ru",
+            "fût-ce → fus",
+            "ouvre → u-vrơ"
+          ]
+        }
+      ],
+      "cultural_notes_vi": "DISSERTATION PHILOSOPHIQUE — THỂ LOẠI PHÁP ĐỘC ĐÁO:\n\n(1) Đây là bài tập trung tâm của giáo dục Pháp từ lớp 12 (Terminale) đến agrégation. Không nước nào khác có thể loại tương đương — essay Anh-Mỹ tự do hơn, Aufsatz Đức ít structure hơn.\n\n(2) CẤU TRÚC CHUẨN:\n- Introduction (3 parties): (a) accroche, (b) problématisation, (c) annonce du plan\n- Développement (2-3 parties), mỗi partie có 2-3 sous-parties\n- Conclusion (2 parties): (a) bilan, (b) ouverture\n\n(3) 'THÈSE-ANTITHÈSE-SYNTHÈSE' LÀ HIỂU LẦM: Công thức này là simplification pédagogique. Dissertation triết học thực sự có thể có 2, 3 hoặc 4 parties — điều quan trọng là progression argumentative, không phải dialectique mécanique.\n\n(4) PROBLÉMATISER: Động từ quan trọng nhất. Biến 'La liberté existe-t-elle?' thành 'À quelles conditions un acte peut-il être dit libre?' — đó là problématiser.\n\n(5) TIÊU CHÍ CHẤM:\n- Compréhension du sujet (không hors-sujet)\n- Cohérence argumentative (các phần liên kết)\n- Mobilisation philosophique (références, concepts)\n- Qualité de l'écriture (clarté, précision, élégance)\n\n(6) LƯU Ý CHO NGƯỜI VIỆT: VN có truyền thống 'nghị luận' nhưng dissertation Pháp khác ở chỗ: (a) không dùng 'tôi', (b) không kể chuyện cá nhân, (c) phải có problématique explicite, (d) conclusion không 'rút ra bài học đạo đức'.",
+      "tip_advice_vi": "MÉTHODE EN 6 ÉTAPES (cho dissertation 4 giờ):\n\n1. ANALYSE DU SUJET (30 min): Définir chaque terme. Repérer les présupposés. 'La liberté consiste-t-elle à faire ce qu'il nous plaît?' — le mot 'consiste' est crucial: il demande une définition de l'essence.\n\n2. PROBLÉMATISER (30 min): Transformer la question en problème. 'Cette question suppose que la liberté se définit par son objet (ce qu'on fait). Mais la liberté n'est-elle pas plutôt dans l'origine de l'acte que dans son contenu?'\n\n3. ÉLABORER LE PLAN (20 min): 2-3 parties. Chaque partie = une réponse possible à la problématique. Ordre: du plus évident (qu'il faut dépasser) au plus élaboré.\n\n4. RÉDIGER L'INTRODUCTION AU BROUILLON (20 min): Soigner l'accroche (une citation, un exemple, un paradoxe). La problématique tient en 2-3 phrases. L'annonce du plan doit être explicite: 'Nous verrons d'abord..., puis..., enfin...'\n\n5. RÉDIGER LE DÉVELOPPEMENT (120 min): Chaque partie = 1 argument principal + 1-2 arguments secondaires + 1 exemple philosophique + 1 transition. Toujours lier à la problématique.\n\n6. RÉDIGER LA CONCLUSION ET RELIRE (40 min): Conclusion: synthèse + ouverture. Relire: orthographe, cohérence des transitions, hors-sujet?",
+      "vocabulary": [
+        {
+          "word": "problématiser",
+          "en": "to problematize",
+          "vi": "đặt vấn đề hóa",
+          "pos": "v.",
+          "pronunciation_vi": "pro-blé-ma-ti-zé"
+        },
+        {
+          "word": "une accroche",
+          "en": "a hook / opening sentence",
+          "vi": "câu móc / câu vào bài",
+          "pos": "n.f.",
+          "pronunciation_vi": "a-krosh"
+        },
+        {
+          "word": "une transition",
+          "en": "a transition between parts",
+          "vi": "chuyển đoạn",
+          "pos": "n.f.",
+          "pronunciation_vi": "trãn-zi-sion"
+        },
+        {
+          "word": "un présupposé",
+          "en": "a presupposition",
+          "vi": "tiền giả định",
+          "pos": "n.m.",
+          "pronunciation_vi": "pré-su-po-zé"
+        },
+        {
+          "word": "la progression argumentative",
+          "en": "argumentative progression",
+          "vi": "tiến trình lập luận",
+          "pos": "n.f.",
+          "pronunciation_vi": "pro-grè-sion ar-gu-mãn-ta-tiv"
+        },
+        {
+          "word": "une objection",
+          "en": "an objection",
+          "vi": "phản bác / bác luận",
+          "pos": "n.f.",
+          "pronunciation_vi": "ob-jèk-sion"
+        },
+        {
+          "word": "une réfutation",
+          "en": "a refutation",
+          "vi": "sự bác bỏ",
+          "pos": "n.f.",
+          "pronunciation_vi": "ré-fu-ta-sion"
+        },
+        {
+          "word": "un concept",
+          "en": "a concept",
+          "vi": "khái niệm",
+          "pos": "n.m.",
+          "pronunciation_vi": "kõn-sèp"
+        },
+        {
+          "word": "une ouverture",
+          "en": "an opening / concluding opening",
+          "vi": "phần mở ra cuối bài",
+          "pos": "n.f.",
+          "pronunciation_vi": "u-vèr-tur"
+        },
+        {
+          "word": "le hors-sujet",
+          "en": "off-topic (cardinal sin)",
+          "vi": "lạc đề",
+          "pos": "n.m.",
+          "pronunciation_vi": "or-su-jè"
+        }
+      ],
+      "dialogue": [
+        {
+          "speaker": "Professeur",
+          "text": "Votre dissertation sur la liberté est bien écrite, mais où est la problématique?",
+          "vi": "Bài dissertation về tự do của em viết tốt, nhưng problématique đâu?"
+        },
+        {
+          "speaker": "Linh",
+          "text": "J'ai pensé que la question 'La liberté consiste-t-elle à faire ce qu'il nous plaît?' était déjà une problématique.",
+          "vi": "Em tưởng câu hỏi 'Tự do có phải là làm điều ta thích không?' đã là một problématique."
+        },
+        {
+          "speaker": "Professeur",
+          "text": "Non — une question n'est pas une problématique. La problématique, c'est le conflit des réponses possibles à cette question. Reformulez.",
+          "vi": "Không — câu hỏi không phải là problématique. Problématique là sự xung đột giữa các câu trả lời khả dĩ cho câu hỏi đó. Làm lại."
+        },
+        {
+          "speaker": "Linh",
+          "text": "Donc: 'Si la liberté se définit par l'absence de contrainte, faire ce qu'il nous plaît serait libre. Mais si la liberté suppose la maîtrise rationnelle de soi, alors céder à ses plaisirs pourrait être une forme d'esclavage.' Est-ce une problématique?",
+          "vi": "Vậy: 'Nếu tự do được định nghĩa bằng sự vắng mặt của cưỡng chế, thì làm điều ta thích sẽ là tự do. Nhưng nếu tự do giả định sự làm chủ lý tính đối với bản thân, thì chiều theo khoái lạc có thể là một dạng nô lệ.' Đây có phải là problématique không?"
+        }
+      ],
+      "dialogue_long": [
+        {
+          "speaker": "Jury d'agrégation",
+          "text": "Mademoiselle Tran, vous avez quatre heures pour traiter le sujet suivant: 'Peut-on penser sans préjugés?'",
+          "vi": "Cô Trần, cô có bốn giờ để xử lý đề bài sau: 'Có thể suy nghĩ mà không có định kiến không?'"
+        }
+      ],
+      "roleplay_prompts": [
+        "Bạn viết introduction cho dissertation với đề: 'La technique libère-t-elle l'homme ou l'asservit-elle?' Cấu trúc: accroche (1 citation), problématisation (conflit), annonce du plan (3 parties). KHÔNG répondre à la question dans l'introduction.",
+        "Trong khóa préparation agrégation, bạn bị critique: 'Votre plan est trop descriptif, pas assez dialectique.' Sửa plan: biến mỗi partie thành một réponse argumentée, pas một thème."
+      ],
+      "register_notes": "DISSERTATION PHILOSOPHIQUE C2:\n- 'Nous' (pas 'je'): 'Nous nous demanderons si...', 'Nous analyserons...'\n- Présent de vérité générale: 'La liberté se définit comme...'\n- Conditionnel cho giả thuyết: 'On pourrait objecter que...'\n- Connecteurs logiques obligatoires: 'cependant', 'néanmoins', 'toutefois', 'en revanche', 'par conséquent', 'dès lors'\n- Citation intégrée: 'Comme l'écrit Kant dans les Fondements de la métaphysique des mœurs...'\n- Pas de 'je', pas d'anecdote personnelle, pas de 'de nos jours...'",
+      "idiom_glosses": [],
+      "exercises": [
+        {
+          "type": "fill-blank",
+          "question": "Problématiser, c'est transformer une question apparente en un ___ conceptuel.",
+          "answer": "problème"
+        },
+        {
+          "type": "matching",
+          "pairs": [
+            [
+              "problématiser",
+              "đặt vấn đề hóa"
+            ],
+            [
+              "une accroche",
+              "câu mở đầu"
+            ],
+            [
+              "le hors-sujet",
+              "lạc đề"
+            ],
+            [
+              "une transition",
+              "chuyển đoạn"
+            ]
+          ],
+          "instruction": "Nối thuật ngữ dissertation với nghĩa"
+        },
+        {
+          "type": "translation",
+          "vietnamese": "Kết luận không phải là lặp lại điều đã nói, mà là chỉ ra con đường đã đi và cho thấy con đường đó mở ra câu hỏi mới nào.",
+          "french": "Conclure, ce n'est pas répéter ce qu'on a dit; c'est montrer le chemin parcouru et indiquer ce que ce chemin ouvre comme question nouvelle."
+        }
+      ]
+    },
+    {
+      "id": "lrhet_grand_oral",
+      "level": "C2",
+      "category": "rhetoric_capstone",
+      "title_vi": "Grand oral — soutenance và hùng biện học thuật",
+      "title_en": "Grand oral — academic defense and oral rhetoric",
+      "sentences": [
+        {
+          "en": "La soutenance de thèse, moment culminant du parcours doctoral, n'est pas un simple compte rendu de recherche — c'est une performance rhétorique où le candidat doit à la fois exposer, défendre et incarner son travail devant un jury qui en connaît parfois mieux les faiblesses que lui-même.",
+          "vi": "Buổi bảo vệ luận án, khoảnh khắc đỉnh cao của hành trình tiến sĩ, không phải là bản tường trình nghiên cứu đơn giản — đó là một trình diễn tu từ nơi nghiên cứu sinh phải đồng thời trình bày, bảo vệ và hiện thân cho công trình của mình trước hội đồng đôi khi biết rõ điểm yếu của nó hơn chính mình.",
+          "pronunciation_focus": [
+            "soutenance → su-tơ-nãns",
+            "culminant → kul-mi-nãn",
+            "incarner → an-kar-né",
+            "faiblesses → fè-bles"
+          ]
+        },
+        {
+          "en": "L'art du grand oral ne consiste pas à nier les objections, mais à les intégrer dans une perspective plus large qui en montre à la fois la pertinence et les limites.",
+          "vi": "Nghệ thuật grand oral không nằm ở việc phủ nhận các phản bác, mà ở việc tích hợp chúng vào một viễn tượng rộng hơn, cho thấy đồng thời tính thích đáng và giới hạn của chúng.",
+          "pronunciation_focus": [
+            "objections → ob-jèk-sion",
+            "intégrer → an-té-gré",
+            "perspective → pèr-spèk-tiv",
+            "pertinence → pèr-ti-nãns"
+          ]
+        },
+        {
+          "en": "Force est de constater que la qualité d'une soutenance se joue souvent moins dans les réponses que dans la manière de recevoir les questions: une écoute attentive, une reformulation fidèle, puis une réponse argumentée — cette séquence vaut tous les effets de manche.",
+          "vi": "Phải thừa nhận rằng chất lượng của một buổi bảo vệ thường được quyết định ít ở các câu trả lời hơn là ở cách tiếp nhận câu hỏi: một sự lắng nghe chăm chú, một sự diễn đạt lại trung thành, rồi một câu trả lời có lập luận — chuỗi này đáng giá hơn mọi hiệu ứng khoa trương.",
+          "pronunciation_focus": [
+            "soutenance → su-tơ-nãns",
+            "écoute → é-kut",
+            "reformulation → rơ-for-mu-la-sion",
+            "fidèle → fi-dèl"
+          ]
+        }
+      ],
+      "cultural_notes_vi": "LA SOUTENANCE FRANÇAISE:\n\n(1) Khác với defense Anh-Mỹ (thường ngắn, 1-2 giờ, ít formel), soutenance Pháp là nghi lễ học thuật — có thể kéo dài 3-5 giờ, mở cửa cho công chúng, kết thúc bằng mention (très honorable, très honorable avec félicitations).\n\n(2) CẤU TRÚC: (a) Exposé du candidat (20-30 min), (b) Questions du jury (mỗi thành viên 15-30 min), (c) Délibération, (d) Proclamation.\n\n(3) MENTIONS: 'Honorable' (đỗ tối thiểu), 'Très honorable' (tốt), 'Très honorable avec félicitations' (xuất sắc — hiếm).\n\n(4) GRAND ORAL D'AGRÉGATION: Bài thi miệng 1 giờ (30 phút exposé + 30 phút questions). Khác soutenance ở chỗ: sujet inconnu à l'avance, préparation en loge (bibliothèque).\n\n(5) CHIẾN LƯỢC: Người Pháp đánh giá cao 'l'honnêteté intellectuelle' — nếu không biết, nói 'Je ne sais pas' tốt hơn là bluffer. Bluffer bị phát hiện = mất tất cả.",
+      "tip_advice_vi": "PRÉPARER UN GRAND ORAL (10 CONSEILS):\n\n1. CONNAÎTRE SES LIMITES: Biết điểm yếu của mình trước khi jury tìm ra.\n2. STRUCTURER L'EXPOSÉ: Introduction (pourquoi ce sujet, quelle thèse, quel plan), développement (3 points max), conclusion (ouverture).\n3. PARLER LENTEMENT: 120 mots / minute tối đa.\n4. REGARDER LE JURY: Pas lire ses notes.\n5. REFORMULER LA QUESTION avant de répondre — montre qu'on a compris, gagne du temps.\n6. AVOUER L'IGNORANCE: 'Je n'ai pas exploré cet aspect, mais...'\n7. MONTRER LE CHEMINEMENT: 'Au début de ma thèse, je pensais X; maintenant, je pense Y.'\n8. CITER LE JURY: 'Comme l'a montré le Professeur X, membre de ce jury...' — déférence stratégique.\n9. GÉRER LE TRAC: Respirer avant chaque réponse.\n10. CONCLURE AVEC DIGNITÉ: Remercier le jury, reconnaître ce qu'on a appris.",
+      "vocabulary": [
+        {
+          "word": "la soutenance",
+          "en": "thesis defense",
+          "vi": "buổi bảo vệ luận án",
+          "pos": "n.f.",
+          "pronunciation_vi": "su-tơ-nãns"
+        },
+        {
+          "word": "le jury",
+          "en": "the examining committee",
+          "vi": "hội đồng chấm thi",
+          "pos": "n.m.",
+          "pronunciation_vi": "ju-ri"
+        },
+        {
+          "word": "un exposé",
+          "en": "an oral presentation",
+          "vi": "bài trình bày miệng",
+          "pos": "n.m.",
+          "pronunciation_vi": "èk-spo-zé"
+        },
+        {
+          "word": "la délibération",
+          "en": "the deliberation (of the jury)",
+          "vi": "sự nghị bàn của hội đồng",
+          "pos": "n.f.",
+          "pronunciation_vi": "dé-li-bé-ra-sion"
+        },
+        {
+          "word": "une mention",
+          "en": "a grade / distinction",
+          "vi": "xếp hạng / danh dự",
+          "pos": "n.f.",
+          "pronunciation_vi": "mãn-sion"
+        },
+        {
+          "word": "une objection",
+          "en": "an objection",
+          "vi": "phản bác",
+          "pos": "n.f.",
+          "pronunciation_vi": "ob-jèk-sion"
+        },
+        {
+          "word": "un rapporteur",
+          "en": "a reviewer / rapporteur",
+          "vi": "người phản biện / báo cáo viên",
+          "pos": "n.m.",
+          "pronunciation_vi": "ra-por-tơr"
+        },
+        {
+          "word": "le directeur de thèse",
+          "en": "thesis advisor",
+          "vi": "người hướng dẫn luận án",
+          "pos": "n.m.",
+          "pronunciation_vi": "di-rèk-tơr dơ tèz"
+        },
+        {
+          "word": "la loge",
+          "en": "the preparation room (agrégation)",
+          "vi": "phòng chuẩn bị thi",
+          "pos": "n.f.",
+          "pronunciation_vi": "loj"
+        },
+        {
+          "word": "les félicitations",
+          "en": "congratulations (highest distinction)",
+          "vi": "lời khen tặng (danh dự cao nhất)",
+          "pos": "n.f. pl.",
+          "pronunciation_vi": "fé-li-si-ta-sion"
+        }
+      ],
+      "dialogue": [
+        {
+          "speaker": "Jury",
+          "text": "Vous affirmez que votre thèse comble une lacune. Mais l'ouvrage de Martin (2019), que vous ne citez pas, traite exactement de cette question. Que répondez-vous?",
+          "vi": "Bà khẳng định luận án của bà lấp một khoảng trống. Nhưng công trình của Martin (2019), mà bà không trích dẫn, bàn chính xác về câu hỏi này. Bà trả lời sao?"
+        },
+        {
+          "speaker": "Linh",
+          "text": "Je vous remercie de cette référence que je ne connaissais pas. Si vous me le permettez, je répondrai en deux temps: d'abord, je reconnais cette lacune bibliographique — c'est une faiblesse de mon travail. Ensuite, je précise que ma thèse aborde la question sous un angle différent, celui de..., qui me semble complémentaire plutôt que redondant.",
+          "vi": "Tôi cảm ơn thầy về tham khảo mà tôi chưa biết. Nếu thầy cho phép, tôi xin trả lời hai bước: trước, tôi thừa nhận khoảng trống thư mục này — đó là điểm yếu của công trình tôi. Sau, tôi xin nói rõ luận án tôi tiếp cận câu hỏi từ một góc khác, góc của..., mà tôi thấy là bổ sung chứ không trùng lặp."
+        }
+      ],
+      "dialogue_long": [
+        {
+          "speaker": "Président du jury",
+          "text": "Madame Tran, vous avez quarante-cinq minutes pour présenter votre thèse. Nous vous écoutons.",
+          "vi": "Bà Trần, bà có bốn mươi lăm phút để trình bày luận án. Chúng tôi lắng nghe bà."
+        }
+      ],
+      "roleplay_prompts": [
+        "Bạn đang soutenance. Jury hỏi: 'Quelle est la principale limite de votre travail?' Trả lời: nêu 1 giới hạn thực, giải thích tại sao bạn chấp nhận nó, và cho thấy bạn đã làm gì để giảm thiểu. Cấu trúc: 'La principale limite... J'en suis conscient(e)... Pour y remédier, j'ai...'",
+        "Préparer exposé 20 phút cho soutenance de thèse (sujet tự chọn). Cấu trúc: (1) Pourquoi ce sujet, (2) Thèse principale, (3) Trois résultats clés, (4) Limites et perspectives. Pas de détails — synthèse."
+      ],
+      "register_notes": "GRAND ORAL C2: Tutoiement = jamais. Vouvoyer chaque membre du jury. Formules: 'Monsieur le Président, Mesdames et Messieurs les membres du jury'. Khi ne sait pas: 'Cette question touche à une limite de mon travail que je n'ai pas encore explorée'. Khi remercie: 'Je tiens à remercier mon directeur de thèse, le Professeur X, sans qui...' TON: humble mais pas servile. Compétent mais pas arrogant.",
+      "idiom_glosses": [],
+      "exercises": [
+        {
+          "type": "fill-blank",
+          "question": "L'art du grand oral ne consiste pas à nier les ___, mais à les intégrer dans une perspective plus large.",
+          "answer": "objections"
+        },
+        {
+          "type": "matching",
+          "pairs": [
+            [
+              "la soutenance",
+              "buổi bảo vệ luận án"
+            ],
+            [
+              "le jury",
+              "hội đồng chấm thi"
+            ],
+            [
+              "un exposé",
+              "bài trình bày miệng"
+            ],
+            [
+              "les félicitations",
+              "danh dự cao nhất"
+            ]
+          ],
+          "instruction": "Nối thuật ngữ grand oral với nghĩa Việt"
+        },
+        {
+          "type": "translation",
+          "vietnamese": "Chất lượng của một buổi bảo vệ thường được quyết định ít ở các câu trả lời hơn là ở cách tiếp nhận câu hỏi.",
+          "french": "La qualité d'une soutenance se joue souvent moins dans les réponses que dans la manière de recevoir les questions."
+        }
+      ]
+    },
+    {
+      "id": "lrhet_philosophie_abstraite",
+      "level": "C2",
+      "category": "rhetoric_capstone",
+      "title_vi": "Lập luận triết học và tư duy trừu tượng",
+      "title_en": "Philosophical reasoning and abstract thought",
+      "sentences": [
+        {
+          "en": "La philosophie, entendue non comme doctrine mais comme activité de clarification conceptuelle, exige qu'on distingue les plans du discours — logique, épistémologique, ontologique — sous peine de confondre une question de fait avec une question de droit.",
+          "vi": "Triết học, được hiểu không như học thuyết mà như hoạt động làm sáng tỏ khái niệm, đòi hỏi phân biệt các bình diện diễn ngôn — logic, nhận thức luận, bản thể luận — nếu không sẽ nhầm lẫn câu hỏi thực tế với câu hỏi về quyền.",
+          "pronunciation_focus": [
+            "épistémologique → é-pis-té-mo-lo-jik",
+            "ontologique → õn-to-lo-jik",
+            "discours → dis-kur",
+            "confondre → kõn-fõn-drơ"
+          ]
+        },
+        {
+          "en": "Un argument transcendantal, au sens kantien, ne démontre pas que X existe, mais que X est la condition de possibilité de Y — et puisque Y est donné, X doit être tenu pour vrai.",
+          "vi": "Một lập luận siêu nghiệm, theo nghĩa Kant, không chứng minh rằng X tồn tại, mà rằng X là điều kiện khả thể của Y — và vì Y đã được cho, X phải được coi là đúng.",
+          "pronunciation_focus": [
+            "transcendantal → trãn-sãn-dãn-tal",
+            "kantien → kãn-siãn",
+            "condition → kõn-di-sion",
+            "possibilité → po-si-bi-li-té"
+          ]
+        },
+        {
+          "en": "Il eût été plus rigoureux de reformuler l'objection sous forme de dilemme: soit le concept de liberté est vide, soit il est contradictoire — dans les deux cas, la thèse adverse s'effondre.",
+          "vi": "Sẽ chặt chẽ hơn nếu tái lập công thức phản bác dưới dạng song đề: hoặc khái niệm tự do là trống rỗng, hoặc nó mâu thuẫn — trong cả hai trường hợp, luận đề đối phương sụp đổ.",
+          "pronunciation_focus": [
+            "rigoureux → ri-gu-rơ",
+            "dilemme → di-lèm",
+            "contradictoire → kõn-tra-dik-toar",
+            "s'effondre → sé-fõn-drơ"
+          ]
+        },
+        {
+          "en": "L'abstraction n'est pas une fuite hors du réel — elle est la condition même de l'intelligence du réel, car c'est en s'élevant au concept que l'on saisit ce que les cas particuliers ont en commun.",
+          "vi": "Sự trừu tượng không phải là sự trốn chạy khỏi thực tại — nó là chính điều kiện của sự thông hiểu thực tại, vì chính khi nâng lên khái niệm ta mới nắm bắt được điều các trường hợp cá biệt có chung.",
+          "pronunciation_focus": [
+            "abstraction → abs-trak-sion",
+            "intelligence → an-tè-li-jãns",
+            "concept → kõn-sèp",
+            "particuliers → par-ti-ku-lié"
+          ]
+        },
+        {
+          "en": "Un séminaire de philosophie digne de ce nom n'attend pas qu'on répète les auteurs — il attend qu'on pense avec eux, c'est-à-dire qu'on prolonge leur geste au-delà du texte qu'ils ont laissé.",
+          "vi": "Một séminaire triết học xứng đáng với tên gọi không chờ đợi ta lặp lại các tác giả — nó chờ đợi ta suy nghĩ cùng với họ, nghĩa là kéo dài cử chỉ của họ vượt ra ngoài văn bản họ đã để lại.",
+          "pronunciation_focus": [
+            "séminaire → sé-mi-nèr",
+            "répète → ré-pèt",
+            "prolonge → pro-lõnj",
+            "geste → jest"
+          ]
+        }
+      ],
+      "cultural_notes_vi": "LẬP LUẬN TRIẾT HỌC TRONG TRUYỀN THỐNG PHÁP:\n\n(1) ARGUMENT TRANSCENDANTAL: Kant, dans la Critique de la raison pure (1781), inaugure cette forme de raisonnement: partir d'un fait donné (la science, la morale) et remonter à ses conditions de possibilité. En France, cette méthode est reprise et transformée par Deleuze (Différence et répétition, 1968) et Foucault (Les Mots et les Choses, 1966).\n\n(2) DISTINCTION DES PLANS: Une erreur classique de l'étudiant est de confondre le plan logique (la cohérence interne d'un argument), le plan épistémologique (la validité de la connaissance), et le plan ontologique (ce qui existe réellement). Exemple: 'Dieu existe parce que l'idée de Dieu est claire et distincte' confond ontologie et épistémologie.\n\n(3) DILEMME COMME OUTIL: Le dilemme est une figure de réfutation puissante: on montre que l'adversaire est pris entre deux possibilités, toutes deux fatales à sa thèse. Exemple classique: le dilemme de l'Euthyphron (Platon) — 'Ce qui est pieux est-il aimé des dieux parce qu'il est pieux, ou est-il pieux parce qu'il est aimé des dieux?'\n\n(4) ABSTRACTION VS GÉNÉRALISATION: L'abstraction philosophique n'est pas la généralisation empirique ('tous les cygnes sont blancs'). L'abstraction conceptuelle saisit l'essence: 'Qu'est-ce qu'un cygne?' La première est inductive et faillible; la seconde est eidétique et nécessaire.\n\n(5) PHILOSOPHER EN FRANÇAIS: La tradition française valorise la clarté conceptuelle (Descartes, 'les idées claires et distinctes') et la distinction des ordres (Pascal, 'distinguer les ordres'). Un philosophe français qui écrit de façon obscure sera critiqué non pour sa profondeur mais pour son manque de rigueur.\n\n(6) BERGSON (1859-1941): Prix Nobel de littérature 1927. Sa méthode: partir de l'intuition concrète (la durée, le rire, le souvenir) pour construire des concepts qui épousent le réel au lieu de le découper artificiellement. Modèle de philosophie écrite en français littéraire.",
+      "tip_advice_vi": "MÉTHODE POUR UNE DISSERTATION DE PHILOSOPHIE ABSTRAITE (4 heures):\n\n1. ANALYSE CONCEPTUELLE (45 min): Définir chaque terme du sujet. Distinguer les sens (sens commun, sens technique, sens philosophique). Identifier les présupposés cachés.\n\n2. CONSTRUCTION DU PROBLÈME (30 min): Ne pas chercher une 'réponse' mais formuler le problème de façon à montrer pourquoi il est insoluble dans les termes où il est posé. Un bon problème philosophique est un problème dont la formulation même est l'enjeu.\n\n3. ARGUMENTATION (120 min):\n- Arguments directs: déduction, modus ponens, modus tollens\n- Arguments indirects: dilemme, réduction à l'absurde, argument transcendantal\n- Contre-arguments: objections qu'on se fait à soi-même avant de les réfuter\n- Exemples: un exemple philosophique n'est pas une anecdote, c'est une expérience de pensée (le voile d'ignorance de Rawls, la chambre chinoise de Searle)\n\n4. RÉDACTION (45 min):\n- Clarté cartésienne: chaque paragraphe = une idée\n- Connecteurs logiques: 'or', 'donc', 'cependant', 'néanmoins', 'en effet'\n- Citations intégrées, pas plaquées: 'Comme l'écrit Kant...' et non 'Kant a dit que...'\n\nCỤM HỮU ÍCH:\n- 'Il importe de distinguer...' (cần phân biệt)\n- 'Ce n'est pas une question de fait, mais une question de droit.'\n- 'La thèse adverse se heurte au dilemme suivant: soit..., soit...'\n- 'Cette objection, pour sérieuse qu'elle soit, ne résiste pas à l'examen.'\n- 'L'argument transcendantal consiste à montrer que...'\n\nTRÁNH:\n- 'À mon avis...' → la philosophie n'est pas une affaire d'opinion\n- 'De tout temps, les hommes...' → généralité vide\n- 'Comme le dit le dictionnaire...' → la définition lexicographique n'est pas l'analyse conceptuelle\n- Citer sans expliquer: une citation n'est pas un argument",
+      "vocabulary": [
+        {
+          "word": "un argument transcendantal",
+          "en": "a transcendental argument",
+          "vi": "lập luận siêu nghiệm",
+          "pos": "n.m.",
+          "pronunciation_vi": "ar-gu-mãn trãn-sãn-dãn-tal"
+        },
+        {
+          "word": "un dilemme",
+          "en": "a dilemma",
+          "vi": "song đề / thế lưỡng nan",
+          "pos": "n.m.",
+          "pronunciation_vi": "di-lèm"
+        },
+        {
+          "word": "le plan épistémologique",
+          "en": "the epistemological level",
+          "vi": "bình diện nhận thức luận",
+          "pos": "n.m.",
+          "pronunciation_vi": "plãn é-pis-té-mo-lo-jik"
+        },
+        {
+          "word": "le plan ontologique",
+          "en": "the ontological level",
+          "vi": "bình diện bản thể luận",
+          "pos": "n.m.",
+          "pronunciation_vi": "plãn õn-to-lo-jik"
+        },
+        {
+          "word": "une question de droit",
+          "en": "a question of right / principle",
+          "vi": "câu hỏi về nguyên lý (≠ thực tế)",
+          "pos": "n.f.",
+          "pronunciation_vi": "kès-tion dơ droa"
+        },
+        {
+          "word": "la clarification conceptuelle",
+          "en": "conceptual clarification",
+          "vi": "sự làm sáng tỏ khái niệm",
+          "pos": "n.f.",
+          "pronunciation_vi": "kla-ri-fi-ka-sion kõn-sèp-tu-èl"
+        },
+        {
+          "word": "un présupposé",
+          "en": "a presupposition",
+          "vi": "tiền giả định",
+          "pos": "n.m.",
+          "pronunciation_vi": "pré-su-po-zé"
+        },
+        {
+          "word": "une expérience de pensée",
+          "en": "a thought experiment",
+          "vi": "thí nghiệm tư duy",
+          "pos": "n.f.",
+          "pronunciation_vi": "èk-spé-ri-ãns dơ pãn-sé"
+        },
+        {
+          "word": "la réduction à l'absurde",
+          "en": "reductio ad absurdum",
+          "vi": "phép quy giản về phi lý",
+          "pos": "n.f.",
+          "pronunciation_vi": "ré-duk-sion a lap-surd"
+        },
+        {
+          "word": "eidétique",
+          "en": "eidetic (pertaining to essence)",
+          "vi": "thuộc về bản chất (Husserl)",
+          "pos": "adj.",
+          "pronunciation_vi": "é-i-dé-tik"
+        }
+      ],
+      "dialogue": [
+        {
+          "speaker": "Étudiant",
+          "text": "Comment distinguer un argument transcendantal d'un argument logique ordinaire?",
+          "vi": "Làm sao phân biệt lập luận siêu nghiệm với lập luận logic thông thường?"
+        },
+        {
+          "speaker": "Professeur",
+          "text": "L'argument logique ordinaire déduit une conclusion de prémisses. L'argument transcendantal remonte de la conclusion — qui est un fait indubitable — à ses conditions de possibilité. Le mouvement est inverse.",
+          "vi": "Lập luận logic thông thường suy diễn kết luận từ tiền đề. Lập luận siêu nghiệm đi ngược từ kết luận — là một sự kiện không thể nghi ngờ — đến các điều kiện khả thể của nó. Chuyển động là ngược lại."
+        },
+        {
+          "speaker": "Étudiant",
+          "text": "Pouvez-vous donner un exemple concret?",
+          "vi": "Thầy có thể cho một ví dụ cụ thể không?"
+        },
+        {
+          "speaker": "Professeur",
+          "text": "Kant: la science newtonienne existe — c'est un fait. Comment est-elle possible? Réponse: parce que l'entendement humain impose ses catégories a priori à l'expérience. L'argument ne prouve pas que les catégories existent; il montre qu'elles sont requises pour que la science soit possible.",
+          "vi": "Kant: khoa học Newton tồn tại — đó là một sự kiện. Làm sao nó khả thể? Trả lời: vì giác tính con người áp đặt các phạm trù tiên nghiệm lên kinh nghiệm. Lập luận không chứng minh các phạm trù tồn tại; nó cho thấy chúng được đòi hỏi để khoa học khả thể."
+        }
+      ],
+      "dialogue_long": [
+        {
+          "speaker": "Prof. Renault (séminaire de philosophie, ENS)",
+          "text": "Mademoiselle Tran, vous avez choisi de travailler sur le concept de croyance chez Wittgenstein. Quelle est votre thèse?",
+          "vi": "Cô Trần, cô đã chọn làm việc về khái niệm niềm tin ở Wittgenstein. Luận đề của cô là gì?"
+        },
+        {
+          "speaker": "Linh",
+          "text": "Je soutiens que Wittgenstein, dans De la certitude, opère un déplacement du problème de la croyance: il ne s'agit plus de justifier nos croyances une par une, mais de décrire le système de croyances qui rend possible toute justification.",
+          "vi": "Tôi chủ trương rằng Wittgenstein, trong De la certitude, thực hiện một sự dịch chuyển vấn đề niềm tin: không còn là biện minh từng niềm tin một, mà là mô tả hệ thống niềm tin khiến mọi sự biện minh trở nên khả thể."
+        },
+        {
+          "speaker": "Prof. Renault",
+          "text": "C'est une lecture transcendantale de Wittgenstein. Assumez-vous ce terme?",
+          "vi": "Đó là một cách đọc siêu nghiệm Wittgenstein. Cô có nhận thuật ngữ đó không?"
+        },
+        {
+          "speaker": "Linh",
+          "text": "Je l'assume, mais avec une nuance: là où Kant cherche les conditions de possibilité de l'expérience, Wittgenstein cherche les conditions de possibilité du doute. On ne peut douter de tout à la fois — certaines certitudes doivent rester en place pour que le doute ait un sens. C'est ce sol que j'appelle 'le transcendantal wittgensteinien'.",
+          "vi": "Tôi nhận, nhưng với một sắc thái: chỗ Kant tìm các điều kiện khả thể của kinh nghiệm, Wittgenstein tìm các điều kiện khả thể của sự nghi ngờ. Ta không thể nghi ngờ mọi thứ cùng một lúc — một số xác tín phải ở nguyên chỗ để sự nghi ngờ có nghĩa. Chính nền đất đó tôi gọi là 'cái siêu nghiệm Wittgenstein'."
+        }
+      ],
+      "roleplay_prompts": [
+        "Bạn defend luận điểm: 'L'abstraction n'est pas une fuite hors du réel — elle en est la condition d'intelligibilité.' Dùng ít nhất un exemple concret (mathématiques, physique, droit) và contrer l'objection 'l'abstraction est déconnectée de la vie'. Cấu trúc: concession + réfutation + exemple.",
+        "Trong séminaire, un étudiant affirme: 'La philosophie ne sert à rien.' Construisez une réponse en deux temps: (1) distinguer 'servir à' (utilitaire) et 'donner sens à' (existentiel); (2) montrer que la question 'à quoi sert X?' présuppose un cadre utilitariste qui n'est pas le seul possible."
+      ],
+      "register_notes": "PHILOSOPHIE ABSTRAITE C2: 'Nous' académique obligatoire. Présent de vérité générale. Conditionnel pour hypothèses. Connecteurs: 'or', 'donc', 'cependant', 'néanmoins', 'en effet', 'dès lors', 'par conséquent'. Citations intégrées avec 'comme l'écrit X...'. Distinguer les plans explicitement: 'sur le plan logique...', 'd'un point de vue épistémologique...'. Pas de 'je', pas d'anecdote personnelle. Éviter 'à mon avis', 'je pense que'.",
+      "idiom_glosses": [
+        {
+          "idiom": "Faire droit à",
+          "literal": "Làm cho đúng / trao quyền cho",
+          "meaning": "Reconnaître la légitimité de — en philo: 'faire droit à l'objection', 'faire droit à la complexité du réel'.",
+          "example": "Une philosophie rigoureuse fait droit aux objections les plus fortes — elle ne les esquive pas, elle les affronte."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "fill-blank",
+          "question": "Un argument transcendantal ne démontre pas que X ___, mais que X est la condition de possibilité de Y.",
+          "answer": "existe"
+        },
+        {
+          "type": "matching",
+          "pairs": [
+            [
+              "un dilemme",
+              "song đề / thế lưỡng nan"
+            ],
+            [
+              "épistémologique",
+              "thuộc nhận thức luận"
+            ],
+            [
+              "ontologique",
+              "thuộc bản thể luận"
+            ],
+            [
+              "une question de droit",
+              "câu hỏi về nguyên lý"
+            ]
+          ],
+          "instruction": "Nối thuật ngữ triết học với nghĩa Việt"
+        },
+        {
+          "type": "translation",
+          "vietnamese": "Sự trừu tượng không phải là trốn chạy khỏi thực tại — nó là chính điều kiện của sự thông hiểu thực tại.",
+          "french": "L'abstraction n'est pas une fuite hors du réel — elle est la condition même de l'intelligence du réel."
+        }
+      ]
+    },
+    {
+      "id": "lrhet_persuasion_rhetorique",
+      "level": "C2",
+      "category": "rhetoric_capstone",
+      "title_vi": "Lý thuyết thuyết phục và tu từ học cổ điển",
+      "title_en": "Persuasion theory and classical rhetoric",
+      "sentences": [
+        {
+          "en": "La rhétorique, loin d'être un simple ornement du discours, constitue, depuis Aristote, une technique de la persuasion qui articule trois registres: le logos (l'argument), l'ethos (le caractère de l'orateur) et le pathos (l'émotion de l'auditoire).",
+          "vi": "Tu từ học, khác hẳn một sự trang trí đơn giản của diễn ngôn, cấu thành, từ Aristote, một kỹ thuật thuyết phục khớp nối ba bình diện: logos (lập luận), ethos (tư cách người nói) và pathos (cảm xúc của cử tọa).",
+          "pronunciation_focus": [
+            "rhétorique → ré-to-rik",
+            "Aristote → a-ris-tot",
+            "logos → lo-gos",
+            "pathos → pa-tos"
+          ]
+        },
+        {
+          "en": "Perelman, dans son Traité de l'argumentation (1958), a renouvelé la rhétorique en montrant que l'argumentation ne vise pas la vérité démonstrative mais l'adhésion des esprits — et que cette adhésion obéit à des règles qu'on peut analyser rationnellement.",
+          "vi": "Perelman, trong Traité de l'argumentation (1958), đã đổi mới tu từ học bằng cách cho thấy lập luận không nhắm đến chân lý chứng minh mà nhắm đến sự tán thành của tinh thần — và sự tán thành này tuân theo các quy tắc có thể phân tích một cách lý tính.",
+          "pronunciation_focus": [
+            "Perelman → pơ-rel-man",
+            "argumentation → ar-gu-mãn-ta-sion",
+            "démonstrative → dé-mõns-tra-tiv",
+            "adhésion → a-dé-zion"
+          ]
+        },
+        {
+          "en": "L'ethos n'est pas une qualité morale préexistante que l'orateur posséderait — il se construit dans le discours même, par les choix lexicaux, le ton, la capacité à anticiper les objections.",
+          "vi": "Ethos không phải là một phẩm chất đạo đức có sẵn mà nhà hùng biện sở hữu — nó được kiến tạo trong chính diễn ngôn, qua các lựa chọn từ vựng, giọng điệu, khả năng tiên liệu các phản bác.",
+          "pronunciation_focus": [
+            "ethos → é-tos",
+            "préexistante → pré-èg-zis-tãnt",
+            "lexicaux → lèk-si-kô",
+            "anticiper → ãn-ti-si-pé"
+          ]
+        },
+        {
+          "en": "Il eût été plus habile, dans cette plaidoirie, de concéder un point faible avant d'asséner l'argument principal — car une concession calculée désarme l'auditoire et renforce la crédibilité de ce qui suit.",
+          "vi": "Sẽ khéo léo hơn, trong bài biện hộ này, nếu nhượng bộ một điểm yếu trước khi giáng lập luận chính — vì một sự nhượng bộ có tính toán tước vũ khí của cử tọa và củng cố độ tin cậy của điều tiếp theo.",
+          "pronunciation_focus": [
+            "plaidoirie → plè-do-a-ri",
+            "concéder → kõn-sé-dé",
+            "asséner → a-sé-né",
+            "crédibilité → kré-di-bi-li-té"
+          ]
+        },
+        {
+          "en": "La Nouvelle Rhétorique de Perelman rompt avec la tradition cartésienne de l'évidence: elle rappelle que la plupart des décisions humaines — en droit, en politique, en morale — se prennent dans le domaine du vraisemblable, non du certain.",
+          "vi": "Tân Tu từ học của Perelman đoạn tuyệt với truyền thống Cartesian về hiển nhiên: nó nhắc lại rằng hầu hết các quyết định của con người — trong luật, trong chính trị, trong đạo đức — được đưa ra trong lĩnh vực của cái có vẻ đúng, không phải của cái chắc chắn.",
+          "pronunciation_focus": [
+            "cartésienne → kar-té-zièn",
+            "vraisemblable → vrè-sãn-blablơ",
+            "domaine → do-mèn",
+            "certain → sèr-tan"
+          ]
+        }
+      ],
+      "cultural_notes_vi": "PERSUASION ET RHÉTORIQUE — TRUYỀN THỐNG PHÁP:\n\n(1) ARISTOTE (384-322 ACN): Rhétorique — le livre fondateur. Distinction célèbre: logos (l'argument lui-même), ethos (le caractère que l'orateur projette), pathos (l'émotion suscitée chez l'auditoire). Ces trois piliers restent valables aujourd'hui.\n\n(2) PERELMAN (1912-1984): philosophe belge d'expression française. Avec Lucie Olbrechts-Tyteca, il publie le Traité de l'argumentation (1958) qui réhabilite la rhétorique après des siècles de discrédit cartésien. Thèse centrale: l'argumentation vise l'adhésion, non la démonstration; elle s'adresse à un auditoire particulier, non à une raison universelle.\n\n(3) DISCARTES VS RHÉTORIQUE: Descartes (Discours de la méthode, 1637) a voulu fonder la connaissance sur l'évidence rationnelle, rejetant le vraisemblable comme insuffisant. La rhétorique, art du vraisemblable, a été marginalisée dans la tradition française jusqu'à Perelman.\n\n(4) BARTHES (1915-1980): 'L'ancienne rhétorique' (1970) — séminaire qui retrace l'histoire de la rhétorique de l'Antiquité au XIXe siècle. Utile pour comprendre pourquoi la rhétorique a disparu de l'enseignement français.\n\n(5) APPLICATIONS CONTEMPORAINES: La Nouvelle Rhétorique est utilisée en droit (argumentation juridique), en communication politique, en marketing éthique. Le point commun: il s'agit de convaincre un auditoire dans des situations où la preuve absolue est impossible.\n\n(6) TROIS ERREURS VIETNAMIENNES COURANTES:\n- Confondre 'convaincre' (logos) et 'persuader' (logos + ethos + pathos). En français, la distinction est importante.\n- Négliger l'ethos: un étudiant vietnamien qui écrit 'je pense que' sans construire sa crédibilité affaiblit son argument.\n- Abuser du pathos: l'émotion sans logos est de la manipulation, pas de la persuasion.",
+      "tip_advice_vi": "GRILLE D'ANALYSE D'UN DISCOURS PERSUASIF (inspirée de Perelman):\n\n1. LOGOS — l'argument:\n- Quels sont les arguments explicites?\n- Y a-t-il des arguments implicites (enthymèmes)?\n- L'argumentation est-elle déductive, inductive, ou par analogie?\n\n2. ETHOS — l'orateur:\n- Comment l'orateur construit-il sa crédibilité?\n- Quels pronoms utilise-t-il (je/nous/on)?\n- Comment anticipe-t-il les objections?\n\n3. PATHOS — l'auditoire:\n- Quelles émotions sont mobilisées (peur, espoir, indignation, fierté)?\n- L'auditoire est-il traité comme universel ou particulier?\n- Quelles valeurs sont présupposées partagées?\n\n4. STRUCTURE:\n- Exorde (captatio benevolentiae)\n- Narration (exposé des faits)\n- Argumentation (preuves + réfutation)\n- Péroraison (appel final)\n\nCỤM HỮU ÍCH POUR ANALYSER:\n- 'L'orateur construit son ethos en...'\n- 'Cet argument relève du logos, mais il est renforcé par un appel au pathos qui...'\n- 'La concession au début du paragraphe est une figure de l'ethos: elle montre que l'orateur est raisonnable.'\n- 'L'auditoire visé n'est pas universel — Perelman dirait qu'il s'agit d'un auditoire particulier.'",
+      "vocabulary": [
+        {
+          "word": "le logos",
+          "en": "logos — logical argument",
+          "vi": "logos — lập luận logic",
+          "pos": "n.m.",
+          "pronunciation_vi": "lo-gos"
+        },
+        {
+          "word": "l'ethos",
+          "en": "ethos — speaker's character",
+          "vi": "ethos — tư cách người nói",
+          "pos": "n.m.",
+          "pronunciation_vi": "é-tos"
+        },
+        {
+          "word": "le pathos",
+          "en": "pathos — emotional appeal",
+          "vi": "pathos — kêu gọi cảm xúc",
+          "pos": "n.m.",
+          "pronunciation_vi": "pa-tos"
+        },
+        {
+          "word": "l'adhésion des esprits",
+          "en": "the adherence of minds",
+          "vi": "sự tán thành của tinh thần",
+          "pos": "n.f.",
+          "pronunciation_vi": "a-dé-zion dé-zè-spri"
+        },
+        {
+          "word": "un enthymème",
+          "en": "an enthymeme (rhetorical syllogism)",
+          "vi": "enthymème — tam đoạn luận tu từ",
+          "pos": "n.m.",
+          "pronunciation_vi": "ãn-ti-mèm"
+        },
+        {
+          "word": "la captatio benevolentiae",
+          "en": "the capturing of goodwill",
+          "vi": "chiếm lấy thiện cảm (mở đầu)",
+          "pos": "n.f.",
+          "pronunciation_vi": "kap-ta-sio bé-né-vo-lãn-si-é"
+        },
+        {
+          "word": "la péroraison",
+          "en": "the peroration (closing appeal)",
+          "vi": "lời kết thúc hùng biện",
+          "pos": "n.f.",
+          "pronunciation_vi": "pé-ro-rè-zon"
+        },
+        {
+          "word": "l'auditoire universel",
+          "en": "the universal audience (Perelman)",
+          "vi": "cử tọa phổ quát",
+          "pos": "n.m.",
+          "pronunciation_vi": "ô-di-toar u-ni-vèr-sèl"
+        },
+        {
+          "word": "le vraisemblable",
+          "en": "the plausible / probable",
+          "vi": "cái có vẻ đúng / khả tín",
+          "pos": "n.m.",
+          "pronunciation_vi": "vrè-sãn-blablơ"
+        },
+        {
+          "word": "une concession calculée",
+          "en": "a calculated concession",
+          "vi": "sự nhượng bộ có tính toán",
+          "pos": "n.f.",
+          "pronunciation_vi": "kõn-sè-sion kal-ku-lé"
+        }
+      ],
+      "dialogue": [
+        {
+          "speaker": "Étudiant",
+          "text": "Quelle est la différence entre convaincre et persuader?",
+          "vi": "Khác biệt giữa 'convaincre' và 'persuader' là gì?"
+        },
+        {
+          "speaker": "Professeur",
+          "text": "Convaincre s'adresse à la raison seule — c'est le domaine du logos. Persuader mobilise la raison, mais aussi l'émotion et la confiance — c'est le domaine des trois piliers: logos, ethos, pathos. On peut être convaincu sans être persuadé, et inversement.",
+          "vi": "'Convaincre' hướng đến lý tính đơn thuần — đó là lĩnh vực của logos. 'Persuader' huy động lý tính, nhưng cả cảm xúc và lòng tin — đó là lĩnh vực của ba trụ cột: logos, ethos, pathos. Có thể bị thuyết phục lý trí mà không bị thuyết phục toàn diện, và ngược lại."
+        },
+        {
+          "speaker": "Étudiant",
+          "text": "Donc un bon avocat doit maîtriser les trois?",
+          "vi": "Vậy một luật sư giỏi phải làm chủ cả ba?"
+        },
+        {
+          "speaker": "Professeur",
+          "text": "Exactement. Le logos construit le dossier. L'ethos fait que le jury lui fait confiance. Le pathos fait que le jury se soucie de l'issue. Sans logos, c'est de la manipulation; sans ethos, c'est du sophisme; sans pathos, c'est un cours magistral — pas une plaidoirie.",
+          "vi": "Chính xác. Logos xây dựng hồ sơ. Ethos khiến bồi thẩm đoàn tin tưởng anh ta. Pathos khiến bồi thẩm đoàn quan tâm đến kết quả. Không có logos, đó là thao túng; không có ethos, đó là ngụy biện; không có pathos, đó là bài giảng — không phải biện hộ."
+        }
+      ],
+      "dialogue_long": [
+        {
+          "speaker": "Maître Dupuis (avocat à la Cour)",
+          "text": "Mademoiselle Tran, vous assistez à une plaidoirie pour la première fois. Qu'avez-vous observé?",
+          "vi": "Cô Trần, cô dự một phiên biện hộ lần đầu. Cô đã quan sát được gì?"
+        },
+        {
+          "speaker": "Linh",
+          "text": "J'ai été frappée par un moment précis. L'avocat de la défense a concédé que son client avait menti sur un point secondaire — puis il a immédiatement recentré le débat sur la question centrale. Cette concession, loin de l'affaiblir, a renforcé sa crédibilité.",
+          "vi": "Tôi bị ấn tượng bởi một khoảnh khắc. Luật sư bào chữa đã nhượng bộ rằng thân chủ ông đã nói dối về một điểm phụ — rồi ngay lập tức tập trung lại tranh luận vào câu hỏi trung tâm. Sự nhượng bộ này, khác hẳn làm ông yếu đi, đã củng cố độ tin cậy của ông."
+        },
+        {
+          "speaker": "Maître Dupuis",
+          "text": "Vous avez identifié un principe fondamental de la rhétorique: la concession calculée. Pourquoi est-elle si puissante?",
+          "vi": "Cô đã nhận diện một nguyên lý nền tảng của tu từ học: sự nhượng bộ có tính toán. Vì sao nó mạnh đến vậy?"
+        },
+        {
+          "speaker": "Linh",
+          "text": "Parce qu'elle construit l'ethos. En reconnaissant une faiblesse, l'orateur se présente comme raisonnable, honnête, digne de confiance. Et cette honnêteté sur un point secondaire rend son argument principal plus crédible.",
+          "vi": "Vì nó kiến tạo ethos. Bằng cách thừa nhận một điểm yếu, người nói trình hiện mình như có lý, trung thực, đáng tin. Và sự trung thực này trên một điểm phụ khiến lập luận chính của ông đáng tin hơn."
+        },
+        {
+          "speaker": "Maître Dupuis",
+          "text": "Perelman aurait été fier de vous. Maintenant, dites-moi: à quel moment l'avocat a-t-il fait appel au pathos?",
+          "vi": "Perelman hẳn sẽ tự hào về cô. Giờ, nói tôi nghe: luật sư đã kêu gọi pathos ở khoảnh khắc nào?"
+        },
+        {
+          "speaker": "Linh",
+          "text": "Dans la péroraison. Il a quitté le ton technique pour évoquer ce qui arriverait à la famille du prévenu s'il était condamné. Mais — et c'est ce qui m'a frappée — il n'a pas remplacé l'argument par l'émotion; il a fait en sorte que l'émotion donne du poids à l'argument.",
+          "vi": "Trong phần kết. Ông đã rời giọng kỹ thuật để gợi lên điều sẽ xảy ra với gia đình bị cáo nếu ông ta bị kết án. Nhưng — và đây là điều gây ấn tượng với tôi — ông không thay thế lập luận bằng cảm xúc; ông làm cho cảm xúc trao trọng lượng cho lập luận."
+        }
+      ],
+      "roleplay_prompts": [
+        "Bạn phân tích một discours politique hoặc plaidoirie nổi tiếng. Dùng grille 3 piliers (logos/ethos/pathos). Chỉ ra: (1) argument central (logos), (2) comment l'orateur construit sa crédibilité (ethos), (3) quelles émotions sont mobilisées et à quel moment (pathos). Kết luận: 'Ce discours est un exemple de...'",
+        "Bạn viết un paragraphe persuasif sur un sujet controversé (chọn). Cấu trúc: (1) concession initiale, (2) argument principal avec donnée, (3) appel au pathos en péroraison. Auto-analysez ensuite: où est le logos, l'ethos, le pathos?"
+      ],
+      "register_notes": "ANALYSE DE LA PERSUASION C2: 'Nous' académique. Présent pour l'analyse. Quand on cite Perelman: 'Perelman montre que...', 'selon la Nouvelle Rhétorique...'. Distinguer convaincre (raison seule) et persuader (raison + émotion + confiance). Analyser, ne pas juger: 'ce discours est manipulateur' → 'ce discours mobilise le pathos de façon prédominante, au détriment du logos'. Vocabulaire technique: 'enthymème', 'auditoire universel', 'captatio benevolentiae'.",
+      "idiom_glosses": [
+        {
+          "idiom": "Faire mouche",
+          "literal": "Trúng đích (bắn cung)",
+          "meaning": "Atteindre exactement son but persuasif — un argument qui 'fait mouche' touche l'auditoire exactement là où il fallait.",
+          "example": "Sa concession sur le point secondaire a fait mouche: le jury, qui était hostile, a soudainement prêté l'oreille."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "fill-blank",
+          "question": "La rhétorique articule trois registres: le logos, l'ethos et le ___.",
+          "answer": "pathos"
+        },
+        {
+          "type": "matching",
+          "pairs": [
+            [
+              "logos",
+              "lập luận logic"
+            ],
+            [
+              "ethos",
+              "tư cách người nói"
+            ],
+            [
+              "pathos",
+              "kêu gọi cảm xúc"
+            ],
+            [
+              "enthymème",
+              "tam đoạn luận tu từ"
+            ]
+          ],
+          "instruction": "Nối thuật ngữ tu từ học với nghĩa Việt"
+        },
+        {
+          "type": "translation",
+          "vietnamese": "Perelman đã đổi mới tu từ học bằng cách cho thấy lập luận không nhắm đến chân lý chứng minh mà nhắm đến sự tán thành của tinh thần.",
+          "french": "Perelman a renouvelé la rhétorique en montrant que l'argumentation ne vise pas la vérité démonstrative mais l'adhésion des esprits."
+        }
+      ]
+    },
+    {
+      "id": "larts_medias",
+      "level": "C2",
+      "category": "arts_criticism",
+      "title_vi": "Phê bình truyền thông và phân tích ngôn ngữ báo chí",
+      "title_en": "Media criticism and journalistic language analysis",
+      "sentences": [
+        {
+          "en": "L'analyse du discours médiatique ne consiste pas à dénoncer des 'fake news', mais à mettre au jour les choix éditoriaux — le cadrage, la titraille, la sélection des sources — qui orientent silencieusement l'interprétation du lecteur.",
+          "vi": "Phân tích diễn ngôn truyền thông không nhằm tố cáo 'tin giả', mà nhằm phơi bày các lựa chọn biên tập — cách đóng khung, cách đặt tít, cách chọn nguồn — vốn âm thầm định hướng diễn giải của độc giả.",
+          "pronunciation_focus": [
+            "médiatique → mé-dia-tik",
+            "cadrage → ka-draj",
+            "titraille → ti-tray",
+            "silencieusement → si-lãn-si-ơz-mãn"
+          ]
+        },
+        {
+          "en": "Le choix d'un verbe introducteur — 'affirmer', 'prétendre', 'reconnaître', 'admettre' — n'est jamais neutre: il encode le degré d'adhésion que le journaliste accorde au propos rapporté.",
+          "vi": "Việc chọn một động từ giới thiệu — 'khẳng định', 'tự nhận', 'thừa nhận', 'công nhận' — không bao giờ trung tính: nó mã hóa mức độ tán thành mà nhà báo dành cho lời được thuật lại.",
+          "pronunciation_focus": [
+            "introducteur → an-tro-duk-tơr",
+            "prétendre → pré-tãn-drơ",
+            "encode → ãn-kod",
+            "adhésion → a-dé-zion"
+          ]
+        },
+        {
+          "en": "Un lecteur averti ne lit pas seulement ce que le journal dit; il lit aussi ce que le journal ne dit pas — les absences, les silences, les sources non citées sont souvent plus éloquents que le texte imprimé.",
+          "vi": "Một độc giả tinh tường không chỉ đọc điều tờ báo nói; anh ta còn đọc điều tờ báo không nói — những vắng mặt, những im lặng, những nguồn không được trích dẫn thường hùng hồn hơn văn bản được in.",
+          "pronunciation_focus": [
+            "averti → a-vèr-ti",
+            "absences → ap-sãns",
+            "éloquents → é-lo-kãn",
+            "imprimé → an-pri-mé"
+          ]
+        },
+        {
+          "en": "La distinction entre 'fait' et 'commentaire' — pierre angulaire du journalisme — est moins une frontière étanche qu'un continuum, et c'est précisément sur ce continuum que se joue l'éthique journalistique.",
+          "vi": "Sự phân biệt giữa 'sự kiện' và 'bình luận' — đá tảng của báo chí — ít là một biên giới kín nước hơn là một dải liên tục, và chính trên dải liên tục này mà đạo đức báo chí được quyết định.",
+          "pronunciation_focus": [
+            "commentaire → ko-mãn-tèr",
+            "étanche → é-tãnsh",
+            "continuum → kõn-ti-nu-om",
+            "éthique → é-tik"
+          ]
+        },
+        {
+          "en": "Les médias français ne se distinguent pas tant par leur ligne éditoriale déclarée que par leurs routines de cadrage: ce qu'ils jugent digne d'être rapporté, et la place qu'ils lui accordent.",
+          "vi": "Truyền thông Pháp phân biệt nhau ít bởi đường lối biên tập tuyên bố hơn là bởi các thói quen đóng khung: điều họ coi là đáng được tường thuật, và vị trí họ dành cho nó.",
+          "pronunciation_focus": [
+            "déclarée → dé-kla-ré",
+            "routines → ru-tin",
+            "jugent → juj",
+            "accordent → a-kord"
+          ]
+        }
+      ],
+      "cultural_notes_vi": "PHÊ BÌNH TRUYỀN THÔNG PHÁP: (1) BOURDIEU: 'Sur la télévision' (1996) — analyse critique du champ journalistique et ses contraintes invisibles. (2) ALBERT LONDRES: père du grand reportage. Prix le plus prestigieux du journalisme francophone. (3) LE MONDE (1944-): sérieux, indépendance, style soutenu. LIBÉRATION (1973-): gauche, direct, jeux de mots. LE FIGARO (1826-): droite, sobre, classique. (4) ANALYSE DU DISCOURS MÉDIATIQUE: Charaudeau, Maingueneau. Concepts clés: 'formule', 'cadrage', 'nomination'.",
+      "tip_advice_vi": "GRILLE D'ANALYSE D'UN ARTICLE C2: (1) CADRAGE: Quel angle? (2) TITRAILLE: titre, chapeau — fidèles au contenu? (3) SOURCES: Qui est cité? Verbes introducteurs neutres ou orientés? (4) LEXIQUE: neutre ou connoté? (5) SILENCES: De quoi ne parle-t-on pas? CỤM: 'Le cadrage consiste à...', 'Le choix du verbe X suggère...', 'L'absence de citation de Y est significative.'",
+      "vocabulary": [
+        {
+          "word": "le cadrage",
+          "en": "framing (media analysis)",
+          "vi": "sự đóng khung / cadrage",
+          "pos": "n.m.",
+          "pronunciation_vi": "ka-draj"
+        },
+        {
+          "word": "la titraille",
+          "en": "headlines / titling system",
+          "vi": "hệ thống tít báo",
+          "pos": "n.f.",
+          "pronunciation_vi": "ti-tray"
+        },
+        {
+          "word": "un verbe introducteur",
+          "en": "a reporting verb",
+          "vi": "động từ giới thiệu lời dẫn",
+          "pos": "n.m.",
+          "pronunciation_vi": "vèrb an-tro-duk-tơr"
+        },
+        {
+          "word": "la ligne éditoriale",
+          "en": "editorial line",
+          "vi": "đường lối biên tập",
+          "pos": "n.f.",
+          "pronunciation_vi": "li-niơ é-di-to-rial"
+        },
+        {
+          "word": "une source anonyme",
+          "en": "an anonymous source",
+          "vi": "nguồn ẩn danh",
+          "pos": "n.f.",
+          "pronunciation_vi": "surs a-no-nim"
+        },
+        {
+          "word": "le fait divers",
+          "en": "short news item",
+          "vi": "tin vắn",
+          "pos": "n.m.",
+          "pronunciation_vi": "fè di-vèr"
+        },
+        {
+          "word": "la dépêche",
+          "en": "news wire / dispatch",
+          "vi": "điện tin / bản tin hãng",
+          "pos": "n.f.",
+          "pronunciation_vi": "dé-pèsh"
+        },
+        {
+          "word": "le pluralisme",
+          "en": "pluralism",
+          "vi": "tính đa nguyên",
+          "pos": "n.m.",
+          "pronunciation_vi": "plu-ra-lismơ"
+        }
+      ],
+      "dialogue": [
+        {
+          "speaker": "Étudiant",
+          "text": "Comment distinguer un article de fait d'un article d'opinion?",
+          "vi": "Làm sao phân biệt bài báo sự kiện với bài báo ý kiến?"
+        },
+        {
+          "speaker": "Professeur",
+          "text": "Regardez les verbes introducteurs. 'A déclaré' = fait. 'Prétend' = opinion. La frontière est dans la grammaire.",
+          "vi": "Nhìn các động từ giới thiệu. 'Đã tuyên bố' = sự kiện. 'Tự nhận' = ý kiến. Biên giới nằm trong ngữ pháp."
+        },
+        {
+          "speaker": "Étudiant",
+          "text": "Et si l'article mélange les deux?",
+          "vi": "Nếu bài báo trộn lẫn cả hai?"
+        },
+        {
+          "speaker": "Professeur",
+          "text": "C'est le cas le plus fréquent — et le plus dangereux. Votre travail est de séparer ce que le journaliste a mélangé.",
+          "vi": "Đó là trường hợp phổ biến nhất — và nguy hiểm nhất. Việc của bạn là tách điều nhà báo đã trộn."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "fill-blank",
+          "question": "Le choix d'un ___ introducteur — 'affirmer', 'prétendre' — n'est jamais neutre.",
+          "answer": "verbe"
+        },
+        {
+          "type": "matching",
+          "pairs": [
+            [
+              "le cadrage",
+              "sự đóng khung"
+            ],
+            [
+              "la titraille",
+              "hệ thống tít báo"
+            ],
+            [
+              "la ligne éditoriale",
+              "đường lối biên tập"
+            ],
+            [
+              "un verbe introducteur",
+              "động từ giới thiệu lời dẫn"
+            ]
+          ],
+          "instruction": "Nối thuật ngữ"
+        },
+        {
+          "type": "translation",
+          "vietnamese": "Một độc giả tinh tường không chỉ đọc điều tờ báo nói; anh ta còn đọc điều tờ báo không nói.",
+          "french": "Un lecteur averti ne lit pas seulement ce que le journal dit; il lit aussi ce que le journal ne dit pas."
+        }
+      ]
+    },
+    {
+      "id": "lcivic_diplomatie",
+      "level": "C2",
+      "category": "civic_discourse",
+      "title_vi": "Ngôn ngữ ngoại giao và diễn ngôn quốc tế",
+      "title_en": "Diplomatic language and international discourse",
+      "sentences": [
+        {
+          "en": "Le langage diplomatique est l'art de dire assez pour engager sans dire assez pour contraindre — chaque communiqué est un équilibre calculé entre la précision et l'ambiguïté stratégique.",
+          "vi": "Ngôn ngữ ngoại giao là nghệ thuật nói đủ để cam kết mà không nói đủ để ràng buộc — mỗi thông cáo là một sự cân bằng có tính toán giữa sự chính xác và sự mơ hồ chiến lược.",
+          "pronunciation_focus": [
+            "diplomatique → di-plo-ma-tik",
+            "communiqué → ko-mu-ni-ké",
+            "ambiguïté → ãn-bi-gu-i-té"
+          ]
+        },
+        {
+          "en": "La formule 'les discussions se sont déroulées dans un climat franc et constructif' signifie, en langage diplomatique, que les deux parties sont en désaccord profond mais ne souhaitent pas l'annoncer publiquement.",
+          "vi": "Công thức 'các cuộc thảo luận đã diễn ra trong bầu không khí thẳng thắn và xây dựng' có nghĩa, trong ngôn ngữ ngoại giao, rằng hai bên bất đồng sâu sắc nhưng không muốn công bố.",
+          "pronunciation_focus": [
+            "franc → frãn",
+            "constructif → kõns-truk-tif",
+            "désaccord → dé-za-kor"
+          ]
+        },
+        {
+          "en": "La différence entre 'condamner' et 'déplorer', entre 'exiger' et 'appeler à', fait toute la diplomatie — ces nuances verbales sont la grammaire même des relations internationales.",
+          "vi": "Sự khác biệt giữa 'lên án' và 'lấy làm tiếc', giữa 'yêu cầu' và 'kêu gọi', làm nên toàn bộ ngoại giao — những sắc thái động từ này chính là ngữ pháp của quan hệ quốc tế.",
+          "pronunciation_focus": [
+            "condamner → kõn-da-né",
+            "déplorer → dé-plo-ré",
+            "exiger → èg-zi-jé"
+          ]
+        },
+        {
+          "en": "Un traité international n'est pas un texte comme un autre: chaque virgule a été négociée, chaque adjectif pesé, chaque silence délibéré — et c'est dans ces interstices que se loge la marge de manœuvre des États.",
+          "vi": "Một hiệp ước quốc tế không phải là một văn bản thông thường: mỗi dấu phẩy đã được đàm phán, mỗi tính từ đã được cân nhắc, mỗi sự im lặng đã được chủ ý.",
+          "pronunciation_focus": [
+            "traité → trè-té",
+            "négociée → né-go-si-é",
+            "interstices → an-tèr-stis"
+          ]
+        },
+        {
+          "en": "La 'langue de bois' diplomatique n'est pas un défaut de communication — c'est une technologie qui permet de maintenir le dialogue dans des situations où la vérité littérale détruirait toute possibilité de négociation.",
+          "vi": "'Langue de bois' ngoại giao không phải là khiếm khuyết — đó là công nghệ cho phép duy trì đối thoại khi sự thật theo nghĩa đen sẽ phá hủy mọi khả năng đàm phán.",
+          "pronunciation_focus": [
+            "langue de bois → lãng dơ boa",
+            "technologie → tèk-no-lo-ji",
+            "littérale → li-té-ral"
+          ]
+        }
+      ],
+      "cultural_notes_vi": "LANGAGE DIPLOMATIQUE FRANCOPHONE: (1) Jusqu'en 1919, le français était la langue exclusive de la diplomatie. Aujourd'hui langue de travail de l'ONU. Vocabulaire international: 'attaché', 'communiqué', 'démarche', 'détente', 'rapprochement'. (2) ÉCHELLE DIPLOMATIQUE: condamner fermement > condamner > déplorer > regretter > prendre note de > ne pas commenter. (3) FORMULES CODÉES: 'échange franc et constructif' = désaccord. 'Les discussions se poursuivent' = pas d'accord. 'Un certain nombre de questions restent à régler' = blocage. (4) Le Vietnam est membre de la Francophonie — maîtriser le registre diplomatique français est un atout professionnel.",
+      "tip_advice_vi": "VERBES DIPLOMATIQUES (fort→faible): DÉSACCORD: condamner > déplorer > regretter > s'inquiéter de > prendre note de. DEMANDE: exiger > demander instamment > appeler à > inviter à > encourager. ACCORD: se féliciter de > saluer > accueillir favorablement > prendre acte de. CỤM: 'Les parties ont convenu de...', 'Dans un esprit de...', 'Sans préjudice de...', 'Sous réserve de...'",
+      "vocabulary": [
+        {
+          "word": "un communiqué",
+          "en": "communiqué",
+          "vi": "thông cáo",
+          "pos": "n.m.",
+          "pronunciation_vi": "ko-mu-ni-ké"
+        },
+        {
+          "word": "une démarche",
+          "en": "diplomatic démarche",
+          "vi": "bước đi ngoại giao",
+          "pos": "n.f.",
+          "pronunciation_vi": "dé-marsh"
+        },
+        {
+          "word": "la langue de bois",
+          "en": "diplomatic jargon",
+          "vi": "sáo ngữ ngoại giao",
+          "pos": "n.f.",
+          "pronunciation_vi": "lãng dơ boa"
+        },
+        {
+          "word": "une résolution",
+          "en": "UN resolution",
+          "vi": "nghị quyết",
+          "pos": "n.f.",
+          "pronunciation_vi": "ré-zo-lu-sion"
+        },
+        {
+          "word": "condamner",
+          "en": "to condemn",
+          "vi": "lên án",
+          "pos": "v.",
+          "pronunciation_vi": "kõn-da-né"
+        },
+        {
+          "word": "déplorer",
+          "en": "to deplore",
+          "vi": "lấy làm tiếc",
+          "pos": "v.",
+          "pronunciation_vi": "dé-plo-ré"
+        },
+        {
+          "word": "un traité",
+          "en": "treaty",
+          "vi": "hiệp ước",
+          "pos": "n.m.",
+          "pronunciation_vi": "trè-té"
+        },
+        {
+          "word": "sans préjudice de",
+          "en": "without prejudice to",
+          "vi": "không phương hại đến",
+          "pos": "loc.",
+          "pronunciation_vi": "sãn pré-ju-dis dơ"
+        }
+      ],
+      "dialogue": [
+        {
+          "speaker": "Diplomate",
+          "text": "Dans le communiqué final, 'condamner' ou 'déplorer'?",
+          "vi": "Trong thông cáo cuối, 'lên án' hay 'lấy làm tiếc'?"
+        },
+        {
+          "speaker": "Linh",
+          "text": "'Déplorer'. 'Condamner' fermerait la porte. 'Déplorer' exprime le désaccord tout en laissant une issue.",
+          "vi": "'Lấy làm tiếc'. 'Lên án' đóng cửa. 'Lấy làm tiếc' biểu đạt bất đồng mà vẫn để ngỏ lối ra."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "fill-blank",
+          "question": "'Les discussions se sont déroulées dans un climat franc et constructif' signifie que les deux parties sont en ___.",
+          "answer": "désaccord"
+        },
+        {
+          "type": "matching",
+          "pairs": [
+            [
+              "condamner",
+              "lên án (mạnh nhất)"
+            ],
+            [
+              "déplorer",
+              "lấy làm tiếc"
+            ],
+            [
+              "prendre note de",
+              "ghi nhận"
+            ],
+            [
+              "ne pas commenter",
+              "không bình luận"
+            ]
+          ],
+          "instruction": "Nối động từ ngoại giao theo cường độ"
+        },
+        {
+          "type": "translation",
+          "vietnamese": "Ngôn ngữ ngoại giao là nghệ thuật nói đủ để cam kết mà không nói đủ để ràng buộc.",
+          "french": "Le langage diplomatique est l'art de dire assez pour engager sans dire assez pour contraindre."
+        }
+      ]
+    }
+  ];
 
 export default lessons;
