@@ -11488,6 +11488,11 @@ export const lessons: FrenchLesson[] =           [
             "déposer plainte → dé-po-zé plant",
             "portefeuille → por-tơ-fơy",
             "métro → mé-tro"
+          ],
+          "pronunciation_focus_en": [
+            "déposer plainte → day-poh-ZAY PLA(n)T ('plainte' is nasal, final 'te' silent — the fixed phrase 'to file a complaint')",
+            "portefeuille → por-tuh-FUH-yuh (the 'euille' = 'uh-yuh', one of the hardest French endings; means 'wallet')",
+            "métro → may-TROH (the Paris subway; stress on the last syllable, unlike English 'METro')"
           ]
         },
         {
@@ -11497,6 +11502,11 @@ export const lessons: FrenchLesson[] =           [
             "a eu lieu → a ơ liơ",
             "ligne → li-niơ",
             "Strasbourg-Saint-Denis → straz-bur san dơ-ni"
+          ],
+          "pronunciation_focus_en": [
+            "a eu lieu → ah uh LYUH ('eu' has no English equivalent — round lips and say 'uh'; the phrase = 'took place')",
+            "ligne → LEEN-yuh ('gn' = 'ny' like Spanish ñ; means metro 'line')",
+            "Strasbourg-Saint-Denis → strahz-BOOR sa(n) duh-NEE (a metro station; 'Saint' is nasal 'sa(n)', not English 'saint')"
           ]
         },
         {
@@ -11506,6 +11516,11 @@ export const lessons: FrenchLesson[] =           [
             "contenait → kõn-tơ-nè",
             "carte de séjour → kart dơ sé-jur",
             "quatre-vingts → ka-trơ-van"
+          ],
+          "pronunciation_focus_en": [
+            "contenait → ko(n)-tuh-NEH (nasal first; imperfect tense 'contained'; final 't' silent)",
+            "carte de séjour → KART duh say-ZHOOR ('séjour' = 'stay/residence'; the residence permit card)",
+            "quatre-vingts → KAT-ruh-va(n) (French for 80 is literally 'four-twenties'; final 's' and 'g' silent)"
           ]
         },
         {
@@ -11515,6 +11530,11 @@ export const lessons: FrenchLesson[] =           [
             "fait opposition → fè o-po-zi-sion",
             "carte bancaire → kart bãn-kèr",
             "ce matin → sơ ma-tan"
+          ],
+          "pronunciation_focus_en": [
+            "fait opposition → feh oh-poh-zee-SYO(n) ('faire opposition' = the fixed banking phrase 'to block/stop a card')",
+            "carte bancaire → KART bah(n)-KAIR (nasal middle in 'bancaire'; the bank/debit card)",
+            "ce matin → suh mah-TA(n) (final '-tin' is nasal 'TA(n)', no real 'n')"
           ]
         },
         {
@@ -11524,102 +11544,123 @@ export const lessons: FrenchLesson[] =           [
             "pourriez → pu-rié",
             "récépissé → ré-sé-pi-sé",
             "dépôt de plainte → dé-po dơ plant"
+          ],
+          "pronunciation_focus_en": [
+            "pourriez → poor-YAY (conditional 'could you?' — the polite formal request form)",
+            "récépissé → ray-say-pee-SAY (four syllables; the official acknowledgement receipt — insurance requires it)",
+            "dépôt de plainte → day-POH duh PLA(n)T ('dépôt' final 't' silent; 'plainte' nasal — 'the filing of a complaint')"
           ]
         }
       ],
       "cultural_notes_vi": "Khai báo cảnh sát ở Pháp khác Việt Nam căn bản. Ở Pháp, mỗi vụ phải lập hồ sơ chính thức với « procès-verbal » (PV) — biên bản ghi lời khai có chữ ký bạn. Cảnh sát ghi lời bạn nói, đọc lại cho bạn xác nhận, và bạn ký vào cuối — đó là tài liệu pháp lý. Nói sai hoặc thay đổi giữa chừng làm hỏng cả hồ sơ. Bạn có quyền: (1) khiếu nại bằng tiếng Anh nếu sĩ quan đồng ý — Paris có sĩ quan biết tiếng Anh tại các quận trung tâm; (2) yêu cầu thông dịch (« interprète assermenté ») — miễn phí cho nạn nhân, mất 1-2 ngày sắp xếp; (3) « plainte simple » (chỉ ghi nhận, không điều tra tích cực) hoặc « plainte avec constitution de partie civile » (kích hoạt điều tra) — với vụ trộm vặt thường là plainte simple; (4) một bản sao biên bản và một « récépissé » (biên nhận) miễn phí. Vé claim bảo hiểm bắt buộc cần récépissé này. Sai lầm phổ biến của người Việt: (a) phóng đại số tiền mất để hy vọng cảnh sát điều tra mạnh hơn — không hiệu quả, và nếu bị phát hiện sẽ bị tố giả mạo; (b) đến đồn cảnh sát quận khác với nơi vụ xảy ra — họ sẽ chuyển lại đúng quận, mất thời gian; (c) không mang giấy tờ tùy thân (passeport hoặc carte de séjour) — không lập được biên bản. Đến đúng quận, mang giấy tờ, kể trung thực.",
+      "cultural_notes_en": "Filing a police report in France is procedurally different from both Vietnam and the US/UK, and the difference matters. In France, every report becomes a formal 'procès-verbal' (PV) — a signed witness statement. The officer transcribes what you say, reads it back to you for confirmation, and you sign at the end; it is then a legal document. This means changing your story partway through, or signing without listening, corrupts the whole report — quite unlike a casual US police 'incident report' you might give over the phone for an insurance number. Treat the PV like a deposition, because legally it is one.\n\nYour rights, which Vietnamese and anglophone victims alike often don't know to invoke: (1) You may give the report in English if the officer agrees — central Paris arrondissements usually have English-speaking officers. (2) You can request a free sworn interpreter ('interprète assermenté') as a victim — it takes 1–2 days to arrange. (3) You choose between a 'plainte simple' (recorded, shelved if no lead) and a 'plainte avec constitution de partie civile' (triggers active investigation and lets you claim damages) — for petty theft, plainte simple is normal and sufficient. (4) You are entitled, free, to a copy of the PV and a 'récépissé' (receipt) — your insurance claim and any document-replacement at the préfecture require this récépissé.\n\nThree cross-cultural traps: (a) Inflating the cash amount lost to make the police 'try harder' — this does not change anything, and if caught is itself a fraud offense (this temptation exists in many cultures, including the US 'round it up for insurance' instinct — resist it; the récépissé is what you need, not a bigger number). (b) Going to the wrong arrondissement's commissariat — they'll redirect you to the one covering where the theft happened, costing you hours. (c) Arriving without ID (passport or carte de séjour) — no ID, no PV. Go to the right station, bring ID, tell it straight and chronologically.",
       "tip_advice_vi": "Trước khi đến commissariat: làm trước qua mạng « pré-plainte en ligne » trên service-public.fr — bạn nhập thông tin online và đến đồn chỉ ký tên + nhận giấy, tiết kiệm 1-2 giờ chờ. Tại commissariat: mang theo passport, carte de séjour (nếu có), số điện thoại Pháp (hoặc Việt Nam roaming), số seri đồ bị trộm (IMEI điện thoại — tìm trên hộp gốc hoặc gọi *#06# trước khi mất), số tài khoản đã bị chặn. Nếu bạn không có địa chỉ tại Pháp ổn định: dùng địa chỉ khách sạn + cho biết ngày check-out để cảnh sát có cách liên hệ. Khi kể lại vụ: chronological, cụ thể, không kể chuyện không liên quan. Cảnh sát sẽ hỏi: nơi chính xác, thời gian, mô tả thủ phạm (nếu thấy), nội dung mất và giá trị ước tính. Đừng phóng đại — kê chính xác. Sau khi ký biên bản: đọc lại 2-3 lần trước khi ký — nếu phát hiện sai, yêu cầu sửa NGAY (sau khi ký rất khó). Nhận récépissé là giấy claim bảo hiểm, photo + lưu cloud ngay tại chỗ. Nếu mất hộ chiếu: đi đại sứ quán Việt Nam ngay sau khi có récépissé này.",
+      "tip_advice_en": "Before going to the commissariat: do the 'pré-plainte en ligne' (online pre-complaint) on service-public.fr — you enter the details online and then only sign and collect the paper at the station, saving 1–2 hours of queueing. This online step has no US/UK equivalent and is genuinely worth doing. At the commissariat, bring: passport, carte de séjour (if you have one), a French phone number (or Vietnamese on roaming), the serial numbers of stolen items (a phone's IMEI — find it on the original box, or dial *#06# before it's lost and save it somewhere), and the account number you already blocked. If you have no stable French address, use your hotel address and tell them your checkout date so they have a way to reach you. When recounting the incident: chronological, specific, no irrelevant backstory. The officer will ask: exact location, time, description of the thief (if seen), what was lost, and estimated value. Don't inflate — report exactly. After the PV is drafted: read it (or have it read to you) two or three times before signing — if you spot an error, ask for it to be corrected IMMEDIATELY, because after signing it is very hard to change. The récépissé is your insurance-claim document — photograph it and save to cloud on the spot, before you even leave the station. If your passport was stolen, go to the Vietnamese embassy as soon as you have this récépissé (the embassy requires it). Anglophone calibration: a US/UK citizen follows the identical path — same pré-plainte option, same récépissé, then your own embassy — so the procedure transfers directly.",
       "vocabulary": [
         {
           "word": "déposer plainte",
           "en": "to file a complaint",
           "vi": "trình báo / nộp đơn tố giác",
           "pos": "v.",
-          "pronunciation_vi": "dé-po-zé plant"
+          "pronunciation_vi": "dé-po-zé plant",
+          "pronunciation_en": "day-poh-ZAY PLA(n)T (the fixed phrase for formally filing a criminal complaint — note: no article, 'déposer plainte' not 'déposer une plainte' in this set form)"
         },
         {
           "word": "un commissariat",
           "en": "police station",
           "vi": "đồn cảnh sát",
           "pos": "n.m.",
-          "pronunciation_vi": "ko-mi-sa-ria"
+          "pronunciation_vi": "ko-mi-sa-ria",
+          "pronunciation_en": "koh-mee-sah-RYAH (final 't' silent; the urban police station — go to the one covering where the crime happened)"
         },
         {
           "word": "un procès-verbal (PV)",
           "en": "police report",
           "vi": "biên bản ghi lời khai",
           "pos": "n.m.",
-          "pronunciation_vi": "pro-sè vèr-bal"
+          "pronunciation_vi": "pro-sè vèr-bal",
+          "pronunciation_en": "proh-SEH vair-BAL (often just 'le PV', say 'luh pay-VAY'; legally a signed statement, like a deposition — not a casual incident note)"
         },
         {
           "word": "un récépissé",
           "en": "receipt of complaint",
           "vi": "biên nhận trình báo",
           "pos": "n.m.",
-          "pronunciation_vi": "ré-sé-pi-sé"
+          "pronunciation_vi": "ré-sé-pi-sé",
+          "pronunciation_en": "ray-say-pee-SAY (the free official receipt — your insurance and the préfecture both require this exact document)"
         },
         {
           "word": "faire opposition",
           "en": "to block (a card)",
           "vi": "chặn thẻ",
           "pos": "v.",
-          "pronunciation_vi": "fèr o-po-zi-sion"
+          "pronunciation_vi": "fèr o-po-zi-sion",
+          "pronunciation_en": "FAIR oh-poh-zee-SYO(n) (the fixed banking term for stopping a stolen card — say 'j'ai fait opposition', not 'j'ai bloqué')"
         },
         {
           "word": "un vol à la tire",
           "en": "pickpocketing",
           "vi": "móc túi",
           "pos": "n.m.",
-          "pronunciation_vi": "vol a la tir"
+          "pronunciation_vi": "vol a la tir",
+          "pronunciation_en": "VOL ah lah TEER (specifically pickpocketing — quiet theft from a pocket/bag, no force; the metro classic)"
         },
         {
           "word": "un vol à l'arraché",
           "en": "snatch theft",
           "vi": "giật đồ",
           "pos": "n.m.",
-          "pronunciation_vi": "vol a la-ra-shé"
+          "pronunciation_vi": "vol a la-ra-shé",
+          "pronunciation_en": "VOL ah lah-rah-SHAY (theft WITH a snatch/grab — phone or bag yanked from your hand; legally more serious than 'à la tire')"
         },
         {
           "word": "une carte de séjour",
           "en": "residence permit",
           "vi": "thẻ cư trú",
           "pos": "n.f.",
-          "pronunciation_vi": "kart dơ sé-jur"
+          "pronunciation_vi": "kart dơ sé-jur",
+          "pronunciation_en": "KART duh say-ZHOOR (the residence permit; if stolen, you must report it separately and re-apply at the préfecture)"
         },
         {
           "word": "un interprète assermenté",
           "en": "sworn interpreter",
           "vi": "thông dịch tuyên thệ",
           "pos": "n.m.",
-          "pronunciation_vi": "an-tèr-prèt a-sèr-mãn-té"
+          "pronunciation_vi": "an-tèr-prèt a-sèr-mãn-té",
+          "pronunciation_en": "a(n)-tair-PRET ah-sair-mah(n)-TAY (a court-sworn interpreter — free for crime victims; ask for one rather than struggling in French)"
         },
         {
           "word": "signaler à l'assurance",
           "en": "to report to insurance",
           "vi": "báo bảo hiểm",
           "pos": "v.",
-          "pronunciation_vi": "si-nia-lé a la-sy-rãns"
+          "pronunciation_vi": "si-nia-lé a la-sy-rãns",
+          "pronunciation_en": "see-nyah-LAY ah lah-soo-RAH(n)SS ('gn' = 'ny'; the follow-up step after you have the récépissé)"
         }
       ],
       "dialogue": [
         {
           "speaker": "Linh",
           "text": "Bonjour, je viens déposer plainte pour vol.",
+          "en": "Hello, I'm here to file a complaint for theft.",
           "vi": "Chào, em đến trình báo vụ trộm."
         },
         {
           "speaker": "Officier",
           "text": "Bonjour. Vol de quoi exactement, et où ?",
+          "en": "Hello. Theft of what exactly, and where?",
           "vi": "Chào. Trộm gì cụ thể, và ở đâu?"
         },
         {
           "speaker": "Linh",
           "text": "Mon portefeuille, hier soir dans le métro ligne 4.",
+          "en": "My wallet, last night on metro line 4.",
           "vi": "Ví của em, tối qua trong métro tuyến 4."
         },
         {
           "speaker": "Officier",
           "text": "Avez-vous fait opposition à votre carte bancaire ?",
+          "en": "Have you blocked your bank card?",
           "vi": "Cô đã chặn thẻ ngân hàng chưa?"
         }
       ],
@@ -11627,111 +11668,133 @@ export const lessons: FrenchLesson[] =           [
         {
           "speaker": "Linh (au commissariat)",
           "text": "Bonjour. Je viens déposer plainte pour un vol de portefeuille dans le métro hier soir.",
+          "en": "Hello. I'm here to file a complaint for a wallet theft on the metro last night.",
           "vi": "Chào. Em đến trình báo vụ trộm ví trong métro tối qua."
         },
         {
           "speaker": "Officier",
           "text": "Bonjour Madame. Asseyez-vous. Je vais prendre votre déposition. Votre passeport ou votre carte de séjour, s'il vous plaît.",
+          "en": "Hello, ma'am. Have a seat. I'll take your statement. Your passport or residence permit, please.",
           "vi": "Chào cô. Mời cô ngồi. Tôi sẽ ghi lời khai. Hộ chiếu hoặc thẻ cư trú của cô."
         },
         {
           "speaker": "Linh",
           "text": "Voici mon passeport. Je n'ai plus ma carte de séjour — elle était dans le portefeuille volé.",
+          "en": "Here's my passport. I no longer have my residence permit — it was in the stolen wallet.",
           "vi": "Đây là hộ chiếu. Em không còn thẻ cư trú — nó trong ví bị trộm."
         },
         {
           "speaker": "Officier",
           "text": "Compris. On notera le vol de la carte de séjour aussi. D'abord, racontez-moi ce qui s'est passé, dans l'ordre chronologique.",
+          "en": "Understood. We'll note the theft of the residence permit too. First, tell me what happened, in chronological order.",
           "vi": "Hiểu rồi. Tôi cũng ghi mất thẻ cư trú. Đầu tiên, kể tôi nghe chuyện gì xảy ra theo thứ tự thời gian."
         },
         {
           "speaker": "Linh",
           "text": "Hier soir, vers 22 heures, je suis montée dans le métro à la station Châtelet, ligne 4 direction Porte de Clignancourt. La rame était bondée. Entre Châtelet et Strasbourg-Saint-Denis, j'ai senti quelqu'un me bousculer fortement par derrière.",
+          "en": "Last night, around 10 PM, I got on the metro at Châtelet station, line 4 toward Porte de Clignancourt. The car was packed. Between Châtelet and Strasbourg-Saint-Denis, I felt someone shove me hard from behind.",
           "vi": "Tối qua, khoảng 22 giờ, em lên métro ở ga Châtelet, tuyến 4 hướng Porte de Clignancourt. Toa rất đông. Giữa Châtelet và Strasbourg-Saint-Denis, em cảm thấy ai đó xô em mạnh từ phía sau."
         },
         {
           "speaker": "Officier",
           "text": "Vous avez vu cette personne ?",
+          "en": "Did you see this person?",
           "vi": "Cô có thấy người đó không?"
         },
         {
           "speaker": "Linh",
           "text": "Je l'ai aperçue rapidement en me retournant — un homme jeune, environ 25 ans, taille moyenne, casquette noire, sweat à capuche gris. Il est sorti à Strasbourg-Saint-Denis dès l'ouverture des portes.",
+          "en": "I glimpsed him quickly when I turned around — a young man, about 25, medium height, black cap, grey hoodie. He got off at Strasbourg-Saint-Denis the moment the doors opened.",
           "vi": "Em thoáng thấy khi quay lại — một thanh niên, khoảng 25 tuổi, chiều cao trung bình, mũ lưỡi trai đen, áo nỉ trùm đầu xám. Anh ấy ra ở ga Strasbourg-Saint-Denis ngay khi cửa mở."
         },
         {
           "speaker": "Officier",
           "text": "Quand avez-vous remarqué que votre portefeuille manquait ?",
+          "en": "When did you notice your wallet was missing?",
           "vi": "Khi nào cô phát hiện ví bị mất?"
         },
         {
           "speaker": "Linh",
           "text": "Vers 22h15, en arrivant à ma station de descente, Gare de l'Est. J'ai cherché dans mon sac à main pour payer un café et j'ai vu que le portefeuille n'était plus dans la poche intérieure.",
+          "en": "Around 10:15 PM, when I reached my stop, Gare de l'Est. I reached into my handbag to pay for a coffee and saw the wallet was no longer in the inner pocket.",
           "vi": "Khoảng 22h15, khi đến ga em xuống là Gare de l'Est. Em tìm trong túi xách để trả tiền cà phê và thấy ví không còn trong ngăn bên trong."
         },
         {
           "speaker": "Officier",
           "text": "Quel est le contenu exact du portefeuille ?",
+          "en": "What were the exact contents of the wallet?",
           "vi": "Nội dung chính xác trong ví là gì?"
         },
         {
           "speaker": "Linh",
           "text": "Une carte bancaire BNP Paribas — déjà bloquée ce matin. Ma carte de séjour étudiante. Mon permis de conduire vietnamien. Environ 80 euros en espèces. Une carte Navigo mensuelle. Et deux photos personnelles.",
+          "en": "A BNP Paribas bank card — already blocked this morning. My student residence permit. My Vietnamese driver's license. About 80 euros in cash. A monthly Navigo transit pass. And two personal photos.",
           "vi": "Một thẻ BNP Paribas — đã chặn sáng nay. Thẻ cư trú sinh viên. Bằng lái Việt Nam. Khoảng 80 euro tiền mặt. Một thẻ Navigo tháng. Và hai ảnh cá nhân."
         },
         {
           "speaker": "Officier",
           "text": "Vous avez fait opposition à la carte bancaire — c'est très bien. Je note. Le numéro de la carte de séjour ?",
+          "en": "You've blocked the bank card — that's good. I'm noting it. The residence permit number?",
           "vi": "Cô đã chặn thẻ — rất tốt. Tôi note. Số thẻ cư trú?"
         },
         {
           "speaker": "Linh",
           "text": "VLS-TS-FR-2024-385619. J'ai une photo de la carte sur mon téléphone, je peux vous la montrer.",
+          "en": "VLS-TS-FR-2024-385619. I have a photo of the card on my phone, I can show you.",
           "vi": "VLS-TS-FR-2024-385619. Em có ảnh thẻ trên điện thoại, em cho anh xem."
         },
         {
           "speaker": "Officier",
           "text": "Très bien préparée. Pour le permis vietnamien, vous avez le numéro ?",
+          "en": "Very well prepared. For the Vietnamese license, do you have the number?",
           "vi": "Chuẩn bị rất tốt. Bằng lái Việt Nam, cô có số không?"
         },
         {
           "speaker": "Linh",
           "text": "Pas en mémoire, mais j'ai aussi une photo de mon permis. Je peux vous le transmettre par email après la déposition si nécessaire.",
+          "en": "Not memorized, but I also have a photo of my license. I can send it to you by email after the statement if needed.",
           "vi": "Không thuộc, nhưng em cũng có ảnh bằng lái. Em có thể gửi qua email sau khi ghi lời khai nếu cần."
         },
         {
           "speaker": "Officier",
           "text": "D'accord. Maintenant, est-ce que vous voulez déposer une plainte simple, ou avec constitution de partie civile ?",
+          "en": "OK. Now, do you want to file a simple complaint, or one with civil-party status?",
           "vi": "Vâng. Giờ, cô muốn trình báo đơn giản, hay kèm khởi tố dân sự?"
         },
         {
           "speaker": "Linh",
           "text": "Quelle est la différence concrète ?",
+          "en": "What's the concrete difference?",
           "vi": "Khác biệt cụ thể là gì?"
         },
         {
           "speaker": "Officier",
           "text": "Plainte simple : on enregistre, on classe sans suite si pas de piste — vous gardez la trace pour l'assurance et pour faire refaire la carte de séjour. Avec constitution de partie civile : si l'enquête aboutit et le voleur est identifié, vous pouvez réclamer des dommages — mais pour 80 euros et un portefeuille, c'est rare.",
+          "en": "Simple complaint: we record it, shelve it if there's no lead — you keep the record for insurance and to have the residence permit reissued. With civil-party status: if the investigation succeeds and the thief is identified, you can claim damages — but for 80 euros and a wallet, that's rare.",
           "vi": "Trình báo đơn giản: ghi nhận, lưu trữ nếu không có manh mối — cô giữ hồ sơ cho bảo hiểm và để làm lại thẻ cư trú. Khởi tố dân sự: nếu điều tra ra kẻ trộm, cô có thể đòi bồi thường — nhưng với 80 euro và một cái ví, hiếm khi đáng."
         },
         {
           "speaker": "Linh",
           "text": "Plainte simple suffit. Je veux surtout le récépissé pour mon assurance et pour la préfecture.",
+          "en": "A simple complaint is enough. Mainly I need the receipt for my insurance and for the préfecture.",
           "vi": "Trình báo đơn giản là đủ. Em chủ yếu cần biên nhận cho bảo hiểm và cho préfecture."
         },
         {
           "speaker": "Officier",
           "text": "Très bien. Je rédige le PV maintenant — ça prend 15 minutes. Je vous le lirai à voix haute pour validation, puis vous signez. Vous recevez immédiatement votre récépissé et une copie du PV.",
+          "en": "Very good. I'll draft the PV now — it takes 15 minutes. I'll read it aloud to you for validation, then you sign. You'll immediately receive your receipt and a copy of the PV.",
           "vi": "Tốt. Tôi soạn PV bây giờ — mất 15 phút. Tôi đọc to cô nghe để xác nhận, rồi cô ký. Cô nhận ngay biên nhận và một bản sao PV."
         },
         {
           "speaker": "Linh",
           "text": "Parfait. Pendant que vous rédigez, je peux préparer les photos sur mon téléphone à vous transférer ensuite ?",
+          "en": "Perfect. While you draft it, can I get the photos ready on my phone to send you afterward?",
           "vi": "Hoàn hảo. Trong khi anh soạn, em có thể chuẩn bị ảnh trên điện thoại để chuyển sau không?"
         },
         {
           "speaker": "Officier",
           "text": "Oui, faites-le. Je vous donne mon adresse de service à la fin pour l'envoi.",
+          "en": "Yes, do that. I'll give you my official service email at the end for sending them.",
           "vi": "Có, cô làm đi. Tôi sẽ cho địa chỉ email công vụ để gửi cuối buổi."
         }
       ],
@@ -11740,30 +11803,44 @@ export const lessons: FrenchLesson[] =           [
         "Cảnh sát đề xuất bạn « plainte avec X cellulaire » nhưng thuật ngữ này bạn không biết. Hỏi rõ: nó nghĩa là gì, có làm thay đổi quyền lợi của bạn không, có cần chờ thêm thời gian không.",
         "Sau khi ký PV, bạn về khách sạn và phát hiện đã quên đề cập 1 món bị trộm (ảnh thẻ giấy phép quan trọng). Quay lại commissariat ngày sau — hỏi cách bổ sung « complément de plainte » mà không phải làm lại từ đầu."
       ],
+      "roleplay_prompts_en": [
+        "Your phone is snatched on the street by a thief who escapes on a motorbike. File a report at the commissariat — give detailed information about the perpetrator (height, clothing, helmet, license plate if you saw it), the phone's IMEI number, and any tracker app you had enabled. This is a 'vol à l'arraché' (snatch theft) — say so; it's legally more serious than pickpocketing and the officer needs the right category.",
+        "The officer proposes a 'plainte avec [a legal term]' you don't know. Ask clearly: what it means, whether it changes your rights, and whether it requires extra waiting time. Use 'Pourriez-vous m'expliquer ce que ça implique concrètement?' — never nod along to a term you don't understand on a document you're about to sign. (Anglophone calibration: same rule as signing any US/UK legal document — clarify before you sign, not after.)",
+        "After signing the PV, you get back to the hotel and realize you forgot to mention one stolen item (an important license card photo). Return to the commissariat the next day — ask how to add a 'complément de plainte' (supplementary statement) without redoing the whole report from scratch."
+      ],
       "register_notes": "Tại commissariat: vouvoiement tuyệt đối với cả sĩ quan trẻ. Khi kể lại vụ: chronological và cụ thể — sĩ quan đang ghi từng câu vào PV. Tránh các cụm cảm xúc « c'est horrible! », « j'ai eu si peur! » — nó chậm lại quy trình; thay bằng fact: « j'ai senti quelqu'un me bousculer », « j'ai vu un homme sortir rapidement ». Khi không nhớ chính xác: « Je ne suis pas sûre, mais il me semble que… » — tốt hơn là nói chắc chắn rồi sau phát hiện sai (làm hỏng PV). Khi sĩ quan đọc lại PV: nghe kỹ từng câu — nếu có điểm sai, cắt lời lịch sự « Excusez-moi, sur ce point précis, ce n'était pas exactement ça — c'était… ». Sau khi đã ký: rất khó sửa — đó là lý do nghe kỹ trước. Khi kết thúc: yêu cầu rõ « Pourriez-vous me délivrer le récépissé et une copie du PV ? » — cả hai đều miễn phí và là quyền của bạn. Tránh: dùng « monsieur le policier » (cứng và cũ) — chỉ « Monsieur » hoặc « Madame » đủ; cảm ơn quá đậm cuối buổi (« merci infiniment merci merci ») — một « Merci, bonne journée » đủ.",
+      "register_notes_en": "At the commissariat: absolute vouvoiement, including with young officers. When recounting the incident: chronological and specific — the officer is transcribing your words into the PV verbatim, so this is not a moment to ramble. Avoid emotional phrases ('c'est horrible!', 'j'ai eu si peur!' — it's awful, I was so scared) — they slow the process and add nothing to a legal document. Replace with facts: 'j'ai senti quelqu'un me bousculer' (I felt someone shove me), 'j'ai vu un homme sortir rapidement' (I saw a man leave quickly). This is the opposite of the US instinct to express how the experience felt — here, feelings don't go in the PV; observable facts do. When you're unsure, say 'Je ne suis pas sûre, mais il me semble que…' (I'm not certain, but it seems to me that…) — this is far better than stating something confidently and discovering later it was wrong, which damages the PV's reliability.\n\nWhen the officer reads the PV back: listen carefully to every sentence. If something is wrong, interrupt politely: 'Excusez-moi, sur ce point précis, ce n'était pas exactement ça — c'était…' (Excuse me, on this specific point, it wasn't exactly that — it was…). After you sign, it is very hard to amend — which is exactly why you listen hard first. At the end, ask explicitly: 'Pourriez-vous me délivrer le récépissé et une copie du PV?' — both are free and are your right; don't leave without them. Two address-form notes: don't say 'monsieur le policier' (stilted and dated) — plain 'Monsieur' or 'Madame' is correct; and don't over-thank at the end ('merci infiniment, merci, merci') — one 'Merci, bonne journée' is the right register. Over-thanking in a French official context reads as nervous or obsequious, not polite.",
       "idiom_glosses": [
         {
           "idiom": "Tomber sur un os",
           "literal": "Rơi trúng cục xương",
+          "literal_en": "To fall onto a bone",
           "meaning": "Gặp trở ngại không lường trước.",
+          "meaning_en": "To hit an unexpected snag / run into a complication. Anglophone equivalent: 'to hit a snag' or 'to run into a hitch'.",
           "example": "Avec ma carte de séjour dans le portefeuille, je suis tombée sur un os — il faut tout refaire."
         },
         {
           "idiom": "Faire les démarches",
           "literal": "Làm các bước",
+          "literal_en": "To do the steps/procedures",
           "meaning": "Hoàn thành các thủ tục hành chính.",
-          "example": "Après le PV, je dois faire les démarches à la préfecture pour la nouvelle carte."
+          "example": "Après le PV, je dois faire les démarches à la préfecture pour la nouvelle carte.",
+          "meaning_en": "To go through the (bureaucratic) procedures — the set of administrative steps required to sort something out. A very high-frequency French phrase; English has no single equivalent ('to do the paperwork / jump through the hoops' is close)."
         },
         {
           "idiom": "Avoir l'œil",
           "literal": "Có con mắt",
+          "literal_en": "To have the eye",
           "meaning": "Quan sát tốt / nhận ra chi tiết.",
+          "meaning_en": "To be observant / have a sharp eye for detail. Anglophone equivalent: 'to have a good eye' or 'to be sharp-eyed'.",
           "example": "Avec votre description précise, vous avez vraiment eu l'œil — ça aide l'enquête."
         },
         {
           "idiom": "Ne pas en faire un drame",
           "literal": "Không biến thành kịch",
+          "literal_en": "Not to make a drama of it",
           "meaning": "Không phóng đại tình huống.",
+          "meaning_en": "Not to overdramatize / not to blow it out of proportion. Almost identical to English 'don't make a drama out of it'.",
           "example": "On va pas en faire un drame — c'est un vol classique du métro parisien."
         }
       ],
@@ -11771,7 +11848,10 @@ export const lessons: FrenchLesson[] =           [
         {
           "type": "fill-blank",
           "question": "Je viens ___ plainte pour un vol de portefeuille.",
-          "answer": "déposer"
+          "question_en": "I'm here to ___ a complaint for a wallet theft.",
+          "answer": "déposer",
+          "hint_vi": "động từ trong cụm cố định « ___ plainte »",
+          "hint_en": "the verb in the fixed phrase 'to file a complaint' — note: no article in this set form"
         },
         {
           "type": "matching",
@@ -11789,12 +11869,30 @@ export const lessons: FrenchLesson[] =           [
               "chặn thẻ"
             ]
           ],
-          "instruction": "Nối thuật ngữ với nghĩa"
+          "pairs_en": [
+            [
+              "un commissariat",
+              "a police station (urban) — go to the one covering where the crime occurred"
+            ],
+            [
+              "un procès-verbal",
+              "a formal signed witness statement (the 'PV') — legally a deposition, read back before you sign"
+            ],
+            [
+              "faire opposition",
+              "to block/stop a stolen bank card — the fixed banking term, do this first before the police report"
+            ]
+          ],
+          "instruction": "Nối thuật ngữ với nghĩa",
+          "instruction_en": "Match each French police-report term with its English explanation."
         },
         {
           "type": "translation",
           "vietnamese": "Anh có thể cấp em biên nhận trình báo không?",
-          "french": "Pourriez-vous me délivrer un récépissé de dépôt de plainte ?"
+          "french": "Pourriez-vous me délivrer un récépissé de dépôt de plainte ?",
+          "english": "Could you issue me a receipt for filing the complaint?",
+          "hint_vi": "« pourriez-vous me délivrer » + « récépissé de dépôt de plainte »",
+          "hint_en": "'pourriez-vous me délivrer' = could you issue me (formal); 'récépissé de dépôt de plainte' = the complaint-filing receipt your insurance needs"
         }
       ]
     },
@@ -11813,6 +11911,12 @@ export const lessons: FrenchLesson[] =           [
             "Madame → ma-dam",
             "indiquer → an-di-ké",
             "métro → mé-tro"
+          ],
+          "pronunciation_focus_en": [
+            "excusez-moi → ek-skoo-zay-MWAH (the 'u' is rounded; 'moi' = 'mwah' — the standard polite opener)",
+            "Madame → mah-DAM (stress on 2nd syllable, unlike English 'MA-dam'; never skip it when addressing a stranger)",
+            "indiquer → a(n)-dee-KAY (nasal first; means 'to point out / show the way' — more precise than 'montrer')",
+            "métro → may-TROH (stress on the last syllable)"
           ]
         },
         {
@@ -11823,6 +11927,12 @@ export const lessons: FrenchLesson[] =           [
             "peux → pơ",
             "aider → è-dé",
             "cherche → shèrsh"
+          ],
+          "pronunciation_focus_en": [
+            "salut → sah-LU (the 'u' is rounded French 'u'; the informal 'hi' — tutoiement signal, NEVER to a stranger over 30)",
+            "peux → PUH (the 'eu' has no English equivalent — round lips and say 'uh'; 'tu peux' = informal 'can you')",
+            "aider → eh-DAY (final '-er' = 'DAY'; the 'ai' = open 'eh')",
+            "cherche → SHAIRSH (final 'e' silent; 'je cherche' = 'I'm looking for' — no preposition, unlike English 'looking FOR')"
           ]
         },
         {
@@ -11833,6 +11943,12 @@ export const lessons: FrenchLesson[] =           [
             "Rivoli → ri-vo-li",
             "loin → loan",
             "à pied → a pié"
+          ],
+          "pronunciation_focus_en": [
+            "cherche → SHAIRSH ('je cherche' = I'm looking for; takes a direct object, no 'for')",
+            "Rivoli → ree-voh-LEE (the famous Paris street; stress on the last syllable)",
+            "loin → LWA(n) (one nasal syllable; 'loin' = 'far' — no real 'n' sound, just nasalized)",
+            "à pied → ah PYAY ('pied' final 'd' silent; the set phrase for 'on foot / walking')"
           ]
         },
         {
@@ -11843,6 +11959,12 @@ export const lessons: FrenchLesson[] =           [
             "à droite → a drwat",
             "traversez → tra-ver-sé",
             "pont → põ"
+          ],
+          "pronunciation_focus_en": [
+            "deuxième → duh-ZYEM (the 'eu' is rounded; means 'second' — 'la deuxième [rue]' = the second street)",
+            "à droite → ah DRWAT (final 'e' silent; 'droite' = right — standard directions vocabulary)",
+            "traversez → trah-vair-SAY (final '-ez' = 'SAY'; vous-form of 'to cross')",
+            "pont → PO(n) (one nasal syllable; 'pont' = bridge — no real 't' or 'n' sound)"
           ]
         },
         {
@@ -11853,102 +11975,124 @@ export const lessons: FrenchLesson[] =           [
             "beaucoup → bo-ku",
             "clair → klèr",
             "journée → jur-né"
+          ],
+          "pronunciation_focus_en": [
+            "merci → mair-SEE (stress on the last syllable, unlike English 'MER-cy')",
+            "beaucoup → boh-KOO (the final 'p' is silent — never say 'boh-KOOP')",
+            "clair → KLAIR (rhymes with English 'clair' as in éclair; means 'clear')",
+            "journée → zhoor-NAY ('j' = 'zh'; 'bonne journée' = the standard polite sign-off — always close with it)"
           ]
         }
       ],
       "cultural_notes_vi": "Hỏi đường ở Pháp là một bài kiểm tra register tinh tế mà người Việt thường mắc lỗi. Hai sai lầm phổ biến: (1) tutoiement với người lạ lớn tuổi — gây khó chịu nhưng người Pháp lịch sự không sửa; (2) over-formal với bạn cùng tuổi (« Excusez-moi, Monsieur, auriez-vous l'amabilité de m'indiquer… ») — nghe gượng và quá đà. Nguyên tắc đơn giản: với người lạ lớn hơn 30 tuổi hoặc nhân viên (cảnh sát, công nhân) → vouvoiement. Với người cùng tuổi trẻ trong bối cảnh thoải mái (quán cà phê, công viên, sự kiện sinh viên) → tutoiement có thể chấp nhận. Vùng làm khó: 25-35 tuổi không quen biết — vouvoiement an toàn hơn nhưng có thể chuyển nhanh sang tutoiement nếu họ chủ động (« Tu peux me dire… ? »).\n\nKhác giữa Pháp và Quebec: ở Quebec, tutoiement phổ biến hơn nhiều — người lạ trên đường có thể « tu » với bạn ngay từ đầu, đặc biệt ở Montréal. Đừng bị sốc và đáp lại bằng vouvoiement cứng — sẽ tạo cảm giác xa cách. Đáp tutoiement nhẹ là OK. Ở Bỉ và Thụy Sĩ: trung dung — gần Pháp hơn Quebec.\n\nNgôn ngữ chỉ đường Pháp khá chuẩn hóa: « tout droit » (đi thẳng), « à droite/gauche » (phải/trái), « première/deuxième rue » (đường thứ 1/2), « au feu » (ở đèn giao thông), « après le rond-point » (sau bùng binh). Nếu khoảng cách: « à 5 minutes à pied », « à 200 mètres ». Đừng dịch « turn right » thành « tournez à la droite » — chuẩn là « prenez à droite » hoặc đơn giản « à droite ».",
+      "cultural_notes_en": "Asking directions in France is a subtle register test, and it's one anglophones fail in a specific way: English has no tu/vous distinction, so native English speakers tend to default to one undifferentiated friendly tone with everyone — which reads as either too familiar with an older stranger or weirdly stilted with a peer. The two classic errors: (1) tutoiement with an older stranger — it grates, but polite French people won't correct you, so you never learn you did it; (2) over-formal with a same-age peer ('Excusez-moi, Monsieur, auriez-vous l'amabilité de m'indiquer…') — this sounds absurdly courtly, like addressing a fellow student as 'kind sir'. The simple rule: a stranger over ~30, or anyone in a uniform/work role (police, shop staff) → vouvoiement. A clearly same-age young person in a relaxed setting (café, park, student event) → tutoiement is acceptable. The genuinely hard zone is unknown 25–35-year-olds: default to vouvoiement, but switch quickly to tu if they open with 'tu' first.\n\nThe France-vs-Quebec difference is the big cross-cultural trap for North America-bound learners: in Quebec, especially Montreal, tutoiement is far more widespread — a stranger on the street may 'tu' you from the first word. Do NOT recoil and answer with stiff vouvoiement; that creates exactly the cold distance you're trying to avoid. Mirror their register. Belgium and Switzerland sit in between, closer to France than Quebec.\n\nFrench directions vocabulary is highly standardized and worth memorizing as fixed chunks: 'tout droit' (straight ahead — note: NOT 'à droit', which would be a mistake), 'à droite/à gauche' (right/left), 'la première/deuxième rue' (the 1st/2nd street), 'au feu' (at the traffic light), 'après le rond-point' (after the roundabout). For distance: 'à 5 minutes à pied' (5 min on foot), 'à 200 mètres'. A frequent anglophone error: translating 'turn right' literally as 'tournez à la droite' — the natural French is 'prenez à droite' or simply 'à droite'. Say it the French way and you sound fluent; say it the calque way and you sound like a tourist with a phrasebook.",
       "tip_advice_vi": "Khi tiếp cận người lạ: « Excusez-moi, Madame/Monsieur » + một khoảng dừng cho họ phản ứng (gật đầu, nhìn lên) trước khi vào câu hỏi. Tiếp cận khi họ đang đi nhanh = bị bỏ qua; tiếp cận khi họ đang đứng/ngồi = phản hồi tốt hơn. Tránh: chạy theo người vừa từ chối; nhờ người đeo tai nghe (vô lễ); hỏi người đứng ngoài cửa hàng/khách sạn (họ là khách như bạn — vào trong hỏi nhân viên hiệu quả hơn). Đối tượng tốt nhất để hỏi: nhân viên cửa hàng (boulangerie, tabac), nhân viên gare/métro (mặc đồng phục), người Pháp đang đứng ăn baguette (relax, không vội). Khi đang được chỉ đường: ghi note hoặc lặp lại để xác nhận — « Donc, deuxième à droite, puis pont, c'est ça ? ». Khi không hiểu: « Pourriez-vous parler un peu plus lentement ? » — không xấu hổ. Cuối cùng: cảm ơn và chào tạm biệt — « Merci beaucoup, bonne journée! » — đó là chuẩn lịch sự Pháp, kết thúc tốt cuộc trò chuyện. Sau khi rẽ trái, nếu lạc tiếp: hỏi người mới chứ không quay lại người cũ.",
+      "tip_advice_en": "When approaching a stranger: open with 'Excusez-moi, Madame/Monsieur' + a short pause to let them respond (a nod, looking up) BEFORE launching the question. Skipping the opener and diving straight into 'where is the metro?' reads as rude in France in a way it might not in a fast US city. Approach someone walking fast = ignored; approach someone standing or sitting = much better response. Avoid: chasing someone who already declined; asking someone wearing earbuds (disrespectful — they have to remove them); asking someone standing outside a shop or hotel (they're a customer like you — go inside and ask staff, far more reliable). Best people to ask: shop staff (boulangerie, tabac), uniformed station/metro staff, or a relaxed local eating a baguette on a bench (not rushing). While being given directions, take notes or repeat back to confirm: 'Donc, deuxième à droite, puis le pont, c'est ça?' (So, second right, then the bridge, is that it?) — the read-back is good practice in any language and the French appreciate the precision. If you didn't understand: 'Pourriez-vous parler un peu plus lentement?' (Could you speak a little more slowly?) — no shame in this; it's a normal request, not an admission of failure. Always close with thanks AND a sign-off: 'Merci beaucoup, bonne journée!' — the 'bonne journée' is not optional politeness padding in France, it's the structural close of the interaction; omitting it leaves the exchange feeling abruptly cut. If you get lost again after their directions, ask a NEW person rather than going back to the first — returning makes them feel their directions failed, which is socially awkward for both of you.",
       "vocabulary": [
         {
           "word": "indiquer",
           "en": "to point out / show",
           "vi": "chỉ",
           "pos": "v.",
-          "pronunciation_vi": "an-di-ké"
+          "pronunciation_vi": "an-di-ké",
+          "pronunciation_en": "a(n)-dee-KAY (nasal first; 'm'indiquer le chemin' = show me the way — more precise than 'montrer')"
         },
         {
           "word": "tout droit",
           "en": "straight ahead",
           "vi": "đi thẳng",
           "pos": "adv.",
-          "pronunciation_vi": "tu drwa"
+          "pronunciation_vi": "tu drwa",
+          "pronunciation_en": "TOO DRWAH (the 't' of 'droit' is silent; CAUTION: 'tout droit' = straight ahead, 'à droite' = to the right — easy to confuse)"
         },
         {
           "word": "à droite / à gauche",
           "en": "to the right / left",
           "vi": "bên phải / trái",
           "pos": "adv.",
-          "pronunciation_vi": "a drwat / a gosh"
+          "pronunciation_vi": "a drwat / a gosh",
+          "pronunciation_en": "ah DRWAT / ah GOHSH ('droite' rhymes with 'wat'; 'gauche' = 'gohsh' with the 'measure' sh)"
         },
         {
           "word": "un rond-point",
           "en": "a roundabout",
           "vi": "bùng binh",
           "pos": "n.m.",
-          "pronunciation_vi": "rõ pwã"
+          "pronunciation_vi": "rõ pwã",
+          "pronunciation_en": "RO(n) PWA(n) (both syllables nasal; US English equivalent: 'traffic circle' / 'rotary')"
         },
         {
           "word": "un feu (de circulation)",
           "en": "a traffic light",
           "vi": "đèn giao thông",
           "pos": "n.m.",
-          "pronunciation_vi": "fơ"
+          "pronunciation_vi": "fơ",
+          "pronunciation_en": "FUH (the 'eu' has no English equivalent — round lips, say 'uh'; 'au feu' = at the traffic light)"
         },
         {
           "word": "un pont",
           "en": "a bridge",
           "vi": "cây cầu",
           "pos": "n.m.",
-          "pronunciation_vi": "põ"
+          "pronunciation_vi": "põ",
+          "pronunciation_en": "PO(n) (one nasal syllable; no 't' or 'n' sound — just a nasalized 'oh')"
         },
         {
           "word": "un carrefour",
           "en": "a crossroads / intersection",
           "vi": "ngã tư",
           "pos": "n.m.",
-          "pronunciation_vi": "kar-fur"
+          "pronunciation_vi": "kar-fur",
+          "pronunciation_en": "kar-FOOR (rolled 'r's; a crossroads/intersection — also the name of a supermarket chain, context disambiguates)"
         },
         {
           "word": "être perdu(e)",
           "en": "to be lost",
           "vi": "bị lạc",
           "pos": "v.",
-          "pronunciation_vi": "é-trơ pèr-du"
+          "pronunciation_vi": "é-trơ pèr-du",
+          "pronunciation_en": "ETR pair-DOO (the 'u' is rounded; add a silent 'e' for a female speaker: 'je suis perdue')"
         },
         {
           "word": "se repérer",
           "en": "to find one's bearings",
           "vi": "định hướng",
           "pos": "v.",
-          "pronunciation_vi": "sơ rơ-pé-ré"
+          "pronunciation_vi": "sơ rơ-pé-ré",
+          "pronunciation_en": "suh ruh-pay-RAY (reflexive; 'j'ai du mal à me repérer' = I'm having trouble getting my bearings)"
         },
         {
           "word": "un quartier",
           "en": "a neighborhood",
           "vi": "khu phố",
           "pos": "n.m.",
-          "pronunciation_vi": "kar-tié"
+          "pronunciation_vi": "kar-tié",
+          "pronunciation_en": "kar-TYAY (final '-tier' = 'TYAY'; a neighborhood/district — culturally weightier in France than US 'block')"
         }
       ],
       "dialogue": [
         {
           "speaker": "Linh (à une dame de 60 ans)",
           "text": "Excusez-moi, Madame, je cherche la rue de Rivoli.",
+          "en": "Excuse me, ma'am, I'm looking for Rue de Rivoli. [vouvoiement — older stranger]",
           "vi": "Xin lỗi bà, em tìm đường Rivoli."
         },
         {
           "speaker": "Dame",
           "text": "C'est tout proche — vous prenez à gauche au feu, puis tout droit.",
+          "en": "It's very close — take a left at the traffic light, then straight ahead.",
           "vi": "Rất gần — cô rẽ trái ở đèn, rồi đi thẳng."
         },
         {
           "speaker": "Linh (à un étudiant de son âge)",
           "text": "Salut, tu sais où est le café Le Procope ?",
+          "en": "Hi, do you know where the Café Le Procope is? [tutoiement — same-age peer, relaxed setting]",
           "vi": "Chào, bạn biết quán Le Procope ở đâu không?"
         },
         {
           "speaker": "Étudiant",
           "text": "Ouais, c'est rue de l'Ancienne-Comédie, à 5 minutes — je te montre, je vais dans la même direction.",
+          "en": "Yeah, it's on Rue de l'Ancienne-Comédie, 5 minutes away — I'll show you, I'm going the same way.",
           "vi": "Có, đường Ancienne-Comédie, cách 5 phút — mình chỉ luôn, mình cũng đi cùng hướng."
         }
       ],
@@ -11956,91 +12100,109 @@ export const lessons: FrenchLesson[] =           [
         {
           "speaker": "Linh (à une dame âgée devant une boulangerie)",
           "text": "Excusez-moi, Madame, pourriez-vous m'aider ? Je cherche la station de métro la plus proche.",
+          "en": "Excuse me, ma'am, could you help me? I'm looking for the nearest metro station. [vouvoiement throughout — older stranger]",
           "vi": "Xin lỗi bà, bà có thể giúp em không? Em tìm ga métro gần nhất."
         },
         {
           "speaker": "Dame",
           "text": "Bonjour. Vous êtes à pied de la station Saint-Paul, c'est à environ 7 minutes. Vous prenez la rue de Rivoli — celle-ci, juste là — vous allez tout droit pendant 400 mètres, puis vous tournez à droite à la rue de Sévigné. La station est au coin, vous ne pouvez pas la rater.",
+          "en": "Hello. You're a walk from Saint-Paul station, about 7 minutes. You take Rue de Rivoli — this one, right there — go straight for 400 meters, then turn right onto Rue de Sévigné. The station is on the corner, you can't miss it.",
           "vi": "Chào cô. Cô cách ga Saint-Paul đi bộ khoảng 7 phút. Cô đi theo đường Rivoli — chính cái này, ở đó — đi thẳng 400 mét, sau đó rẽ phải vào đường de Sévigné. Ga ở góc, cô không thể bỏ lỡ."
         },
         {
           "speaker": "Linh",
           "text": "D'accord. Donc rue de Rivoli, 400 mètres tout droit, puis à droite à Sévigné. C'est bien ça ?",
+          "en": "OK. So Rue de Rivoli, 400 meters straight, then right at Sévigné. Is that right? [read-back to confirm]",
           "vi": "Vâng. Vậy đường Rivoli, 400 mét đi thẳng, rồi rẽ phải vào Sévigné. Đúng vậy không?"
         },
         {
           "speaker": "Dame",
           "text": "Exactement. Et vous descendez à quelle station ?",
+          "en": "Exactly. And which station are you getting off at?",
           "vi": "Đúng vậy. Và cô xuống ga nào?"
         },
         {
           "speaker": "Linh",
           "text": "Châtelet — pour aller au Louvre.",
+          "en": "Châtelet — to go to the Louvre.",
           "vi": "Châtelet — để đến Louvre."
         },
         {
           "speaker": "Dame",
           "text": "Ah, dans ce cas, c'est encore plus simple. Vous prenez le bus 69 juste devant la station Saint-Paul — il vous emmène directement au Louvre, ligne plus rapide qu'avec le métro et changement à Châtelet.",
+          "en": "Ah, in that case it's even simpler. Take the number 69 bus right in front of Saint-Paul station — it takes you directly to the Louvre, faster than the metro with a change at Châtelet.",
           "vi": "À, vậy thì đơn giản hơn. Cô bắt xe buýt 69 ngay trước ga Saint-Paul — đi thẳng đến Louvre, tuyến nhanh hơn métro và phải đổi tàu ở Châtelet."
         },
         {
           "speaker": "Linh",
           "text": "Le 69 ? Merci pour le conseil — je n'aurais pas pensé au bus.",
+          "en": "The 69? Thanks for the tip — I wouldn't have thought of the bus.",
           "vi": "Số 69? Cảm ơn lời khuyên — em không nghĩ đến xe buýt."
         },
         {
           "speaker": "Dame",
           "text": "Les Parisiens prennent souvent le bus pour les trajets courts — c'est plus joli, on voit la ville.",
+          "en": "Parisians often take the bus for short trips — it's prettier, you get to see the city.",
           "vi": "Người Paris thường đi xe buýt cho lộ trình ngắn — đẹp hơn, mình thấy thành phố."
         },
         {
           "speaker": "Linh",
           "text": "Très bon conseil. Merci beaucoup, Madame, bonne journée !",
+          "en": "Very good advice. Thank you very much, ma'am, have a good day!",
           "vi": "Lời khuyên rất hay. Cảm ơn bà rất nhiều, chúc bà ngày tốt lành!"
         },
         {
           "speaker": "Dame",
           "text": "De rien, bonne visite du Louvre.",
+          "en": "You're welcome, enjoy your visit to the Louvre.",
           "vi": "Không có gì, chúc cô tham quan Louvre vui."
         },
         {
           "speaker": "Linh (à un étudiant assis sur un banc, vers son âge)",
           "text": "Salut, désolée de te déranger — tu sais où est le café Le Procope ?",
+          "en": "Hi, sorry to bother you — do you know where the Café Le Procope is? [switches to tutoiement — same-age peer, casual setting]",
           "vi": "Chào, xin lỗi làm phiền bạn — bạn biết quán Le Procope ở đâu không?"
         },
         {
           "speaker": "Étudiant",
           "text": "Le Procope ? Ouais, c'est rue de l'Ancienne-Comédie, dans le 6ème. Tu es loin — il faut traverser la Seine.",
+          "en": "Le Procope? Yeah, it's on Rue de l'Ancienne-Comédie, in the 6th. You're far — you have to cross the Seine.",
           "vi": "Le Procope? Có, đường Ancienne-Comédie, quận 6. Bạn xa rồi — phải qua sông Seine."
         },
         {
           "speaker": "Linh",
           "text": "Aïe. C'est combien à pied ?",
+          "en": "Ouch. How far on foot?",
           "vi": "Ôi. Đi bộ bao xa?"
         },
         {
           "speaker": "Étudiant",
           "text": "Une bonne demi-heure. Mieux vaut prendre le métro : ligne 4, descente Odéon, puis 5 minutes à pied. Tu as une carte ?",
+          "en": "A good half hour. Better to take the metro: line 4, get off at Odéon, then 5 minutes on foot. Do you have a map?",
           "vi": "Khoảng nửa tiếng. Tốt hơn đi métro: tuyến 4, xuống Odéon, rồi 5 phút đi bộ. Bạn có bản đồ không?"
         },
         {
           "speaker": "Linh",
           "text": "Sur le téléphone, oui. Tu peux me montrer la sortie d'Odéon à prendre ?",
+          "en": "On my phone, yes. Can you show me which Odéon exit to take?",
           "vi": "Trên điện thoại, có. Bạn chỉ cho mình lối ra Odéon nào không?"
         },
         {
           "speaker": "Étudiant",
           "text": "Sortie « Place de l'Odéon ». Tu sors, tu vois la statue de Danton, tu prends la rue Saint-André-des-Arts, et la 3ème à gauche c'est l'Ancienne-Comédie. Le Procope est au numéro 13, c'est marqué.",
+          "en": "The 'Place de l'Odéon' exit. You come out, you see the Danton statue, take Rue Saint-André-des-Arts, and the 3rd left is Ancienne-Comédie. Le Procope is at number 13, it's signposted.",
           "vi": "Lối ra « Place de l'Odéon ». Ra, thấy tượng Danton, đi đường Saint-André-des-Arts, lần thứ 3 rẽ trái là Ancienne-Comédie. Le Procope số 13, có biển."
         },
         {
           "speaker": "Linh",
           "text": "Cool, je note ! Merci beaucoup, t'es trop sympa.",
+          "en": "Cool, I'm noting it! Thanks a lot, you're really kind. [informal close — 't'es trop sympa' matches the tu register]",
           "vi": "Hay, mình note! Cảm ơn nhiều, bạn dễ thương quá."
         },
         {
           "speaker": "Étudiant",
           "text": "De rien, bonne soirée !",
+          "en": "You're welcome, have a good evening!",
           "vi": "Không có gì, chúc tối vui vẻ!"
         }
       ],
@@ -12049,30 +12211,44 @@ export const lessons: FrenchLesson[] =           [
         "Bạn vô tình tutoyer một sĩ quan cảnh sát đang trực gác tại quảng trường khi hỏi đường. Sĩ quan đáp vouvoiement lạnh. Sửa register lại bằng « Excusez-moi, Monsieur, je voulais dire vous » — không over-apologize, tiếp tục câu hỏi.",
         "Bạn ở Montréal lần đầu, một người trẻ Quebec tutoyer bạn ngay khi tiếp cận. Đáp lại tự nhiên bằng tutoiement (đừng cứng vouvoiement) — và để ý cách họ nói (« attache ta tuque » nghĩa là chuẩn bị, không phải cài mũ thật)."
       ],
+      "roleplay_prompts_en": [
+        "You stop an elderly woman on the street to ask directions but she doesn't hear you clearly. Repeat the question more clearly and more slowly — do NOT raise your voice (insulting, implies she's stupid not hard-of-hearing) and do NOT walk off (rude); if needed, write the street name on paper. Anglophone calibration: the instinct to speak LOUDER to someone who didn't understand is universal and universally wrong — slower and clearer, not louder.",
+        "You accidentally use tu with a police officer on duty in a square while asking directions. The officer replies with cold vouvoiement (a quiet correction). Fix the register with 'Excusez-moi, Monsieur, je voulais dire vous' — do NOT over-apologize (a 30-second grovel makes it worse); a one-line correction, then continue your question normally. This is the single most common register slip for English speakers, who have no tu/vous instinct to catch it.",
+        "It's your first time in Montreal and a young Quebecker uses tu with you from the first word. Respond naturally in tu (do NOT stiffen into vouvoiement — that reads as cold and standoffish in Quebec) — and note their expressions ('attache ta tuque' means 'brace yourself / get ready', not literally 'fasten your hat'). Mirroring the register is the whole skill here."
+      ],
       "register_notes": "Cách phân biệt vouvoiement vs tutoiement với người lạ: VOUVOIEMENT mặc định an toàn cho mọi tình huống ở Pháp metropolitaine. TUTOIEMENT chỉ với: bạn cùng tuổi rõ ràng (cùng dáng vẻ sinh viên/độ tuổi), trong bối cảnh thoải mái (quán café trẻ, công viên, festival), và khi đối phương tutoyer trước. Đừng tutoyer với: nhân viên (kể cả trẻ), người mặc đồ công sở, người đứng tuổi, ở vùng nông thôn/quận lịch sự (16ème Paris). Câu mở khác nhau:\n- Vouvoiement: « Excusez-moi, Madame/Monsieur, pourriez-vous m'indiquer… »\n- Tutoiement: « Salut, tu sais où… ? » hoặc « Excuse-moi, tu peux m'aider à trouver… ? »\n\nKhi không chắc: vouvoiement. Đối phương sẽ chuyển sang tutoiement nếu thoải mái — đó là tín hiệu bạn theo. Câu chuyển: « On peut se tutoyer ? » — sau đó cả hai chuyển. Đừng đổi lại vouvoiement nửa cuộc trò chuyện.\n\nKhi cảm ơn: vouvoiement → « Merci beaucoup, bonne journée! »; tutoiement → « Merci, à plus! » hoặc « Merci, t'es sympa! ». Khi rời: chào tạm biệt, không quay lưng đi luôn.\n\nQuebec đặc biệt: tutoiement dễ hơn nhiều — kể cả người lạ trên phố có thể « tu » bạn. Đừng cứng vouvoiement nếu họ đã tu — sẽ tạo khoảng cách lạnh.",
+      "register_notes_en": "This is the lesson where the tu/vous distinction matters most for anglophones, because English collapses both into 'you' and gives you no instinct for it. The decision rule: VOUVOIEMENT is the safe default for every stranger interaction in metropolitan France — you are never wrong starting with vous. Use TUTOIEMENT only when ALL of these hold: clearly same-age peer (similar student/young vibe), relaxed setting (young café, park, festival), AND they used tu first. Do NOT tutoyer: any staff member (even a young one), anyone in business dress, anyone middle-aged or older, or anywhere in rural areas or posh districts (e.g. the 16th in Paris). The openers are structurally different and worth memorizing as two fixed scripts:\n- Vouvoiement: 'Excusez-moi, Madame/Monsieur, pourriez-vous m'indiquer…'\n- Tutoiement: 'Salut, tu sais où…?' or 'Excuse-moi, tu peux m'aider à trouver…?'\n\nWhen unsure: vouvoiement. The other person will switch to tu if they're comfortable — that's your signal to follow, not lead. The explicit switch phrase is 'On peut se tutoyer?' (shall we use tu?); once said, both switch and stay there. Critically: do NOT switch back to vouvoiement halfway through — to a French ear that signals you've suddenly become cold or formal, like an English speaker abruptly switching to 'sir' mid-conversation with a friend. The closing also differs by register: vouvoiement → 'Merci beaucoup, bonne journée!'; tutoiement → 'Merci, à plus!' or 'Merci, t'es sympa!'. Always close before walking away; turning your back without a sign-off reads as rude in both registers.\n\nQuebec is the big exception and the main cross-cultural trap for North-America-bound learners: tutoiement is far more widespread — even a street stranger may 'tu' you immediately. Do NOT respond with stiff vouvoiement; mirror their tu, or you create exactly the cold distance you were trying to avoid.",
       "idiom_glosses": [
         {
           "idiom": "Être à deux pas",
           "literal": "Cách hai bước chân",
+          "literal_en": "To be two steps away",
           "meaning": "Rất gần.",
+          "meaning_en": "To be very close / just around the corner. Anglophone equivalent: 'a stone's throw away' or 'right around the corner'.",
           "example": "Le métro est à deux pas — vraiment 200 mètres."
         },
         {
           "idiom": "Ne pas pouvoir le rater",
           "literal": "Không thể bỏ lỡ",
+          "literal_en": "To not be able to miss it",
           "meaning": "Rất dễ thấy / không thể nhầm.",
+          "meaning_en": "It's so obvious you can't miss it. Identical to English 'you can't miss it' — the universal direction-giver's reassurance.",
           "example": "La station est au coin, vous ne pouvez pas la rater."
         },
         {
           "idiom": "Se perdre dans le quartier",
           "literal": "Lạc trong khu phố",
+          "literal_en": "To lose oneself in the neighborhood",
           "meaning": "Bị lạc đường.",
+          "meaning_en": "To get lost in the area / wander off-track. Anglophone equivalent: 'to get turned around' or 'to lose your way'.",
           "example": "Le quartier latin est plein de petites rues — facile de se perdre."
         },
         {
           "idiom": "Y aller à l'instinct",
           "literal": "Đi theo bản năng",
+          "literal_en": "To go at it by instinct",
           "meaning": "Đi mà không cần bản đồ.",
+          "meaning_en": "To navigate by feel / without a map — trust your gut. Anglophone equivalent: 'to wing it' or 'to go by feel'.",
           "example": "Ne suis pas trop ton GPS à Paris — vas-y à l'instinct, c'est plus joli."
         }
       ],
@@ -12080,7 +12256,10 @@ export const lessons: FrenchLesson[] =           [
         {
           "type": "fill-blank",
           "question": "Excusez-moi, Madame, ___ m'indiquer la station de métro ?",
-          "answer": "pourriez-vous"
+          "question_en": "Excuse me, ma'am, ___ point me to the metro station?",
+          "answer": "pourriez-vous",
+          "hint_vi": "thể điều kiện lịch sự của « pouvoir » (vous-form)",
+          "hint_en": "the polite conditional of 'pouvoir' in vous-form ('could you…?') — the vouvoiement opener for a stranger"
         },
         {
           "type": "matching",
@@ -12098,12 +12277,30 @@ export const lessons: FrenchLesson[] =           [
               "định hướng"
             ]
           ],
-          "instruction": "Nối từ tiếng Pháp với nghĩa Việt"
+          "pairs_en": [
+            [
+              "tout droit",
+              "straight ahead (caution: NOT 'à droite' which means 'to the right')"
+            ],
+            [
+              "un rond-point",
+              "a roundabout / traffic circle (US: 'rotary')"
+            ],
+            [
+              "se repérer",
+              "to find one's bearings / orient oneself"
+            ]
+          ],
+          "instruction": "Nối từ tiếng Pháp với nghĩa Việt",
+          "instruction_en": "Match each French directions term with its English meaning."
         },
         {
           "type": "translation",
           "vietnamese": "Bà rẽ phải lần thứ hai, rồi qua cầu.",
-          "french": "Vous prenez la deuxième à droite, puis vous traversez le pont."
+          "french": "Vous prenez la deuxième à droite, puis vous traversez le pont.",
+          "english": "You take the second right, then you cross the bridge.",
+          "hint_vi": "« prendre la deuxième à droite » + « traverser le pont »",
+          "hint_en": "'prendre la deuxième à droite' = take the second right (note: 'prendre', not 'tourner'); 'traverser le pont' = cross the bridge"
         }
       ]
     },
