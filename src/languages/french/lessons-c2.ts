@@ -4,7 +4,7 @@
 
 import type { FrenchLesson } from "./lessons";
 
-export const lessons: FrenchLesson[] =         [
+export const lessons: FrenchLesson[] =           [
     {
       "id": "lclose_reading",
       "level": "C2",
@@ -5011,6 +5011,12 @@ export const lessons: FrenchLesson[] =         [
             "cadrage → ka-draj",
             "titraille → ti-tray",
             "silencieusement → si-lãn-si-ơz-mãn"
+          ],
+          "pronunciation_focus_en": [
+            "médiatique → 'may-dyah-TEEK' — 'le discours médiatique' = media discourse",
+            "cadrage → 'kah-DRAHZH' — 'framing'; final '-age' = 'ahzh'",
+            "titraille → 'tee-TRAH-yuh' — 'the headline system'; '-aille' = 'ah-yuh'",
+            "silencieusement → 'see-lahn-syuh-zuh-MAHN' — long adverb; '-ment' nasal"
           ]
         },
         {
@@ -5021,6 +5027,12 @@ export const lessons: FrenchLesson[] =         [
             "prétendre → pré-tãn-drơ",
             "encode → ãn-kod",
             "adhésion → a-dé-zion"
+          ],
+          "pronunciation_focus_en": [
+            "introducteur → 'an-troh-duk-TUR' — 'verbe introducteur' = reporting verb; '-eur' rounded",
+            "prétendre → 'pray-TAHN-druh' — 'to claim' (slanted reporting verb); nasal 'en'",
+            "encode → 'ahn-KOD' — anglicism-shaped; nasal 'en'; final '-e' silent",
+            "adhésion → 'ad-ay-ZYON' — 's' = 'z'; 'degree of adherence/endorsement'"
           ]
         },
         {
@@ -5031,6 +5043,12 @@ export const lessons: FrenchLesson[] =         [
             "absences → ap-sãns",
             "éloquents → é-lo-kãn",
             "imprimé → an-pri-mé"
+          ],
+          "pronunciation_focus_en": [
+            "averti → 'ah-vehr-TEE' — 'un lecteur averti' = a discerning reader; final 'i' = 'ee'",
+            "absences → 'ab-SAHNSS' — nasal '-ence'; final '-es' silent; 'the absences'",
+            "éloquents → 'ay-loh-KAHN' — nasal '-ent'; final 's' silent; 'eloquent'",
+            "imprimé → 'an-pree-MAY' — nasal 'im'; 'le texte imprimé' = the printed text"
           ]
         },
         {
@@ -5041,6 +5059,12 @@ export const lessons: FrenchLesson[] =         [
             "étanche → é-tãnsh",
             "continuum → kõn-ti-nu-om",
             "éthique → é-tik"
+          ],
+          "pronunciation_focus_en": [
+            "commentaire → 'koh-mahn-TEHR' — 'fait vs commentaire'; '-aire' = 'air'",
+            "étanche → 'ay-TAHNSH' — 'frontière étanche' = watertight boundary; 'ch' = 'sh'",
+            "continuum → 'kohn-tee-noo-OM' — Latinism; final 'm' pronounced",
+            "éthique → 'ay-TEEK' — 'th' = 't'; final '-que' = 'k'"
           ]
         },
         {
@@ -5051,6 +5075,12 @@ export const lessons: FrenchLesson[] =         [
             "routines → ru-tin",
             "jugent → juj",
             "accordent → a-kord"
+          ],
+          "pronunciation_focus_en": [
+            "déclarée → 'day-klah-RAY' — feminine past participle; '-ée' = 'ay'",
+            "routines → 'roo-TEEN' — anglicism-shaped; final '-es' silent",
+            "jugent → 'ZHUZH' — 'juger' 3rd plural; 'g'/'j' = 'zh'; final '-ent' silent",
+            "accordent → 'ah-KORD' — 'accorder' 3rd plural; final '-ent' silent"
           ]
         }
       ],
@@ -5062,77 +5092,89 @@ export const lessons: FrenchLesson[] =         [
           "en": "framing (media analysis)",
           "vi": "sự đóng khung / cadrage",
           "pos": "n.m.",
-          "pronunciation_vi": "ka-draj"
+          "pronunciation_vi": "ka-draj",
+          "pronunciation_en": "luh kah-DRAHZH — 'le cadrage' = framing (media-analysis term)"
         },
         {
           "word": "la titraille",
           "en": "headlines / titling system",
           "vi": "hệ thống tít báo",
           "pos": "n.f.",
-          "pronunciation_vi": "ti-tray"
+          "pronunciation_vi": "ti-tray",
+          "pronunciation_en": "lah tee-TRAH-yuh — 'la titraille' = the headline/titling system"
         },
         {
           "word": "un verbe introducteur",
           "en": "a reporting verb",
           "vi": "động từ giới thiệu lời dẫn",
           "pos": "n.m.",
-          "pronunciation_vi": "vèrb an-tro-duk-tơr"
+          "pronunciation_vi": "vèrb an-tro-duk-tơr",
+          "pronunciation_en": "UN VEHRB an-troh-duk-TUR — 'verbe introducteur' = a reporting verb"
         },
         {
           "word": "la ligne éditoriale",
           "en": "editorial line",
           "vi": "đường lối biên tập",
           "pos": "n.f.",
-          "pronunciation_vi": "li-niơ é-di-to-rial"
+          "pronunciation_vi": "li-niơ é-di-to-rial",
+          "pronunciation_en": "lah LEEN-yuh ay-dee-toh-RYAL — 'la ligne éditoriale' = editorial line"
         },
         {
           "word": "une source anonyme",
           "en": "an anonymous source",
           "vi": "nguồn ẩn danh",
           "pos": "n.f.",
-          "pronunciation_vi": "surs a-no-nim"
+          "pronunciation_vi": "surs a-no-nim",
+          "pronunciation_en": "ün SOORSS ah-noh-NEEM — 'une source anonyme' = an anonymous source"
         },
         {
           "word": "le fait divers",
           "en": "short news item",
           "vi": "tin vắn",
           "pos": "n.m.",
-          "pronunciation_vi": "fè di-vèr"
+          "pronunciation_vi": "fè di-vèr",
+          "pronunciation_en": "luh FEH dee-VEHR — 'le fait divers' = a short human-interest news item"
         },
         {
           "word": "la dépêche",
           "en": "news wire / dispatch",
           "vi": "điện tin / bản tin hãng",
           "pos": "n.f.",
-          "pronunciation_vi": "dé-pèsh"
+          "pronunciation_vi": "dé-pèsh",
+          "pronunciation_en": "lah day-PESH — 'la dépêche' = a news-wire dispatch; final '-e' silent"
         },
         {
           "word": "le pluralisme",
           "en": "pluralism",
           "vi": "tính đa nguyên",
           "pos": "n.m.",
-          "pronunciation_vi": "plu-ra-lismơ"
+          "pronunciation_vi": "plu-ra-lismơ",
+          "pronunciation_en": "luh plu-rah-LEEZM — 'le pluralisme' = pluralism; final '-isme' = 'eezm'"
         }
       ],
       "dialogue": [
         {
           "speaker": "Étudiant",
           "text": "Comment distinguer un article de fait d'un article d'opinion?",
+          "en": "How do you distinguish a fact-based article from an opinion article?",
           "vi": "Làm sao phân biệt bài báo sự kiện với bài báo ý kiến?"
         },
         {
           "speaker": "Professeur",
           "text": "Regardez les verbes introducteurs. 'A déclaré' = fait. 'Prétend' = opinion. La frontière est dans la grammaire.",
+          "en": "Look at the reporting verbs. 'A déclaré' = fact. 'Prétend' = opinion. The boundary is in the grammar.",
           "vi": "Nhìn các động từ giới thiệu. 'Đã tuyên bố' = sự kiện. 'Tự nhận' = ý kiến. Biên giới nằm trong ngữ pháp."
         },
         {
           "speaker": "Étudiant",
           "text": "Et si l'article mélange les deux?",
+          "en": "And if the article mixes the two?",
           "vi": "Nếu bài báo trộn lẫn cả hai?"
         },
         {
           "speaker": "Professeur",
           "text": "C'est le cas le plus fréquent — et le plus dangereux. Votre travail est de séparer ce que le journaliste a mélangé.",
+          "en": "That's the most frequent case — and the most dangerous. Your job is to separate what the journalist has mixed.",
           "vi": "Đó là trường hợp phổ biến nhất — và nguy hiểm nhất. Việc của bạn là tách điều nhà báo đã trộn."
         }
       ],
@@ -5140,36 +5182,42 @@ export const lessons: FrenchLesson[] =         [
         {
           "type": "fill-blank",
           "question": "Le choix d'un ___ introducteur — 'affirmer', 'prétendre' — n'est jamais neutre.",
-          "answer": "verbe"
+          "answer": "verbe",
+          "hint_vi": "danh từ — 'động từ' (giới thiệu lời dẫn, không bao giờ trung tính)",
+          "hint_en": "noun — 'verb'; the choice of a reporting ___ ('affirmer', 'prétendre') is never neutral"
         },
         {
           "type": "matching",
           "pairs": [
             [
               "le cadrage",
-              "sự đóng khung"
+              "sự đóng khung (framing)"
             ],
             [
               "la titraille",
-              "hệ thống tít báo"
+              "hệ thống tít báo (the headline system)"
             ],
             [
               "la ligne éditoriale",
-              "đường lối biên tập"
+              "đường lối biên tập (editorial line)"
             ],
             [
               "un verbe introducteur",
-              "động từ giới thiệu lời dẫn"
+              "động từ giới thiệu lời dẫn (a reporting verb)"
             ]
           ],
-          "instruction": "Nối thuật ngữ"
+          "instruction": "Nối thuật ngữ",
+          "instruction_en": "Match each media-analysis term with its Vietnamese meaning"
         },
         {
           "type": "translation",
           "vietnamese": "Một độc giả tinh tường không chỉ đọc điều tờ báo nói; anh ta còn đọc điều tờ báo không nói.",
+          "english": "A discerning reader does not only read what the newspaper says; he also reads what the newspaper does not say.",
           "french": "Un lecteur averti ne lit pas seulement ce que le journal dit; il lit aussi ce que le journal ne dit pas."
         }
-      ]
+      ],
+      "cultural_notes_en": "French media criticism. (1) BOURDIEU: 'Sur la télévision' (1996) — a critical analysis of the journalistic field and its invisible constraints. (2) ALBERT LONDRES: father of the 'grand reportage'; the most prestigious prize in Francophone journalism bears his name. (3) The press landscape: LE MONDE (1944-) — serious, independent, an elevated style; LIBÉRATION (1973-) — left, direct, fond of wordplay; LE FIGARO (1826-) — right, sober, classical. (4) MEDIA DISCOURSE ANALYSIS: Charaudeau, Maingueneau — key concepts 'formule', 'cadrage' (framing), 'nomination' (the act of naming). Note the false friend: 'actualité' means current events/news, not 'actuality'; and a French 'éditorial' is an opinion column, not just any leading article.",
+      "tip_advice_en": "C2 grid for analyzing an article: (1) FRAMING — what angle? (2) HEADLINES — title and standfirst: faithful to the content? (3) SOURCES — who is quoted? are the reporting verbs neutral or slanted? (4) LEXICON — neutral or connoted? (5) SILENCES — what is not discussed? Useful phrases: 'Le cadrage consiste à...', 'Le choix du verbe X suggère...', 'L'absence de citation de Y est significative.'"
     },
     {
       "id": "lcivic_diplomatie",
@@ -5185,6 +5233,11 @@ export const lessons: FrenchLesson[] =         [
             "diplomatique → di-plo-ma-tik",
             "communiqué → ko-mu-ni-ké",
             "ambiguïté → ãn-bi-gu-i-té"
+          ],
+          "pronunciation_focus_en": [
+            "diplomatique → 'dee-ploh-mah-TEEK' — final '-que' = 'k'",
+            "communiqué → 'koh-mu-nee-KAY' — the official statement; '-é' = 'ay'",
+            "ambiguïté → 'ahn-bee-gu-ee-TAY' — diaeresis on 'ï' splits the vowels"
           ]
         },
         {
@@ -5194,6 +5247,11 @@ export const lessons: FrenchLesson[] =         [
             "franc → frãn",
             "constructif → kõns-truk-tif",
             "désaccord → dé-za-kor"
+          ],
+          "pronunciation_focus_en": [
+            "franc → 'FRAHN' — nasal '-an'; final 'c' silent in this adj. (m.)",
+            "constructif → 'kohn-struk-TEEF' — nasal 'on'; final 'f' pronounced",
+            "désaccord → 'day-zah-KOR' — 's' = 'z'; final 'd' silent"
           ]
         },
         {
@@ -5203,6 +5261,11 @@ export const lessons: FrenchLesson[] =         [
             "condamner → kõn-da-né",
             "déplorer → dé-plo-ré",
             "exiger → èg-zi-jé"
+          ],
+          "pronunciation_focus_en": [
+            "condamner → 'kohn-dah-NAY' — 'm' silent before 'n'; the strongest scale verb",
+            "déplorer → 'day-ploh-RAY' — one step weaker than 'condamner'",
+            "exiger → 'eg-zee-ZHAY' — 'x' = 'gz'; 'g' = 'zh'; 'to demand' (the strong-request verb)"
           ]
         },
         {
@@ -5212,6 +5275,11 @@ export const lessons: FrenchLesson[] =         [
             "traité → trè-té",
             "négociée → né-go-si-é",
             "interstices → an-tèr-stis"
+          ],
+          "pronunciation_focus_en": [
+            "traité → 'treh-TAY' — 'a treaty'; '-é' = 'ay'",
+            "négociée → 'nay-goh-syay-AY' — feminine past participle; 'g' = soft before 'i'",
+            "interstices → 'an-tehr-STEESS' — nasal 'in'; final '-es' silent"
           ]
         },
         {
@@ -5221,6 +5289,11 @@ export const lessons: FrenchLesson[] =         [
             "langue de bois → lãng dơ boa",
             "technologie → tèk-no-lo-ji",
             "littérale → li-té-ral"
+          ],
+          "pronunciation_focus_en": [
+            "langue de bois → 'lahng duh BWAH' — 'oi' = 'wah'; 'wooden tongue' = diplomatic jargon",
+            "technologie → 'tek-noh-loh-ZHEE' — 'ch' = 'k'; final '-gie' = 'zhee'",
+            "littérale → 'lee-tay-RAL' — 'la vérité littérale' = the literal truth"
           ]
         }
       ],
@@ -5232,67 +5305,77 @@ export const lessons: FrenchLesson[] =         [
           "en": "communiqué",
           "vi": "thông cáo",
           "pos": "n.m.",
-          "pronunciation_vi": "ko-mu-ni-ké"
+          "pronunciation_vi": "ko-mu-ni-ké",
+          "pronunciation_en": "UN koh-mu-nee-KAY — 'un communiqué' = an official statement"
         },
         {
           "word": "une démarche",
           "en": "diplomatic démarche",
           "vi": "bước đi ngoại giao",
           "pos": "n.f.",
-          "pronunciation_vi": "dé-marsh"
+          "pronunciation_vi": "dé-marsh",
+          "pronunciation_en": "ün day-MARSH — 'une démarche' = a diplomatic approach/step; final '-e' silent"
         },
         {
           "word": "la langue de bois",
           "en": "diplomatic jargon",
           "vi": "sáo ngữ ngoại giao",
           "pos": "n.f.",
-          "pronunciation_vi": "lãng dơ boa"
+          "pronunciation_vi": "lãng dơ boa",
+          "pronunciation_en": "lah LAHNG duh BWAH — 'la langue de bois' = wooden, evasive jargon"
         },
         {
           "word": "une résolution",
           "en": "UN resolution",
           "vi": "nghị quyết",
           "pos": "n.f.",
-          "pronunciation_vi": "ré-zo-lu-sion"
+          "pronunciation_vi": "ré-zo-lu-sion",
+          "pronunciation_en": "ün ray-zoh-lu-SYON — 'une résolution' = a UN resolution"
         },
         {
           "word": "condamner",
           "en": "to condemn",
           "vi": "lên án",
           "pos": "v.",
-          "pronunciation_vi": "kõn-da-né"
+          "pronunciation_vi": "kõn-da-né",
+          "pronunciation_en": "kohn-dah-NAY — 'condamner' = to condemn; 'm' silent before 'n'"
         },
         {
           "word": "déplorer",
           "en": "to deplore",
           "vi": "lấy làm tiếc",
           "pos": "v.",
-          "pronunciation_vi": "dé-plo-ré"
+          "pronunciation_vi": "dé-plo-ré",
+          "pronunciation_en": "day-ploh-RAY — 'déplorer' = to deplore (weaker than English on the scale)"
         },
         {
           "word": "un traité",
           "en": "treaty",
           "vi": "hiệp ước",
           "pos": "n.m.",
-          "pronunciation_vi": "trè-té"
+          "pronunciation_vi": "trè-té",
+          "pronunciation_en": "UN treh-TAY — 'un traité' = a treaty; '-é' = 'ay'"
         },
         {
           "word": "sans préjudice de",
           "en": "without prejudice to",
           "vi": "không phương hại đến",
           "pos": "loc.",
-          "pronunciation_vi": "sãn pré-ju-dis dơ"
+          "pronunciation_vi": "sãn pré-ju-dis dơ",
+          "pronunciation_en": "sahn pray-zhu-DEESS duh — 'sans préjudice de' = without prejudice to (legal locution)"
         }
       ],
       "dialogue": [
         {
           "speaker": "Diplomate",
           "text": "Dans le communiqué final, 'condamner' ou 'déplorer'?",
+          "en": "In the final communiqué — 'condamner' or 'déplorer'?",
           "vi": "Trong thông cáo cuối, 'lên án' hay 'lấy làm tiếc'?"
         },
         {
           "speaker": "Linh",
           "text": "'Déplorer'. 'Condamner' fermerait la porte. 'Déplorer' exprime le désaccord tout en laissant une issue.",
+          "en": "'Déplorer'. 'Condamner' would shut the door. 'Déplorer' expresses disagreement while leaving a way out.",
           "vi": "'Lấy làm tiếc'. 'Lên án' đóng cửa. 'Lấy làm tiếc' biểu đạt bất đồng mà vẫn để ngỏ lối ra."
         }
       ],
@@ -5300,36 +5383,42 @@ export const lessons: FrenchLesson[] =         [
         {
           "type": "fill-blank",
           "question": "'Les discussions se sont déroulées dans un climat franc et constructif' signifie que les deux parties sont en ___.",
-          "answer": "désaccord"
+          "answer": "désaccord",
+          "hint_vi": "danh từ — 'bất đồng' (công thức ngoại giao che giấu sự ___)",
+          "hint_en": "noun — 'disagreement'; 'un climat franc et constructif' is the diplomatic code for deep ___"
         },
         {
           "type": "matching",
           "pairs": [
             [
               "condamner",
-              "lên án (mạnh nhất)"
+              "lên án (to condemn — strongest)"
             ],
             [
               "déplorer",
-              "lấy làm tiếc"
+              "lấy làm tiếc (to deplore — one step weaker)"
             ],
             [
               "prendre note de",
-              "ghi nhận"
+              "ghi nhận (to take note of — neutral, non-committal)"
             ],
             [
               "ne pas commenter",
-              "không bình luận"
+              "không bình luận (no comment — weakest)"
             ]
           ],
-          "instruction": "Nối động từ ngoại giao theo cường độ"
+          "instruction": "Nối động từ ngoại giao theo cường độ",
+          "instruction_en": "Match each diplomatic verb to its intensity / Vietnamese meaning"
         },
         {
           "type": "translation",
           "vietnamese": "Ngôn ngữ ngoại giao là nghệ thuật nói đủ để cam kết mà không nói đủ để ràng buộc.",
+          "english": "Diplomatic language is the art of saying enough to commit without saying enough to constrain.",
           "french": "Le langage diplomatique est l'art de dire assez pour engager sans dire assez pour contraindre."
         }
-      ]
+      ],
+      "cultural_notes_en": "Francophone diplomatic language. (1) Until 1919, French was the exclusive language of diplomacy; today it remains a UN working language. International vocabulary: 'attaché', 'communiqué', 'démarche', 'détente', 'rapprochement' — all entered English from French diplomacy. (2) THE DIPLOMATIC SCALE OF DISAGREEMENT: condamner fermement > condamner > déplorer > regretter > prendre note de > ne pas commenter. (3) CODED FORMULAE: 'échange franc et constructif' = disagreement; 'les discussions se poursuivent' = no agreement; 'un certain nombre de questions restent à régler' = deadlock. (4) Vietnam is a member of La Francophonie — mastering the French diplomatic register is a professional asset. False-friend caution: 'déplorer' is weaker than English 'to deplore' on this scale, and 'demander' here means 'to request', not 'to demand' (that's 'exiger').",
+      "tip_advice_en": "Diplomatic verbs by intensity (strong→weak). DISAGREEMENT: condamner > déplorer > regretter > s'inquiéter de > prendre note de. REQUEST: exiger > demander instamment > appeler à > inviter à > encourager. AGREEMENT: se féliciter de > saluer > accueillir favorablement > prendre acte de. Useful phrases: 'Les parties ont convenu de...', 'Dans un esprit de...', 'Sans préjudice de...', 'Sous réserve de...'"
     }
   ];
 
