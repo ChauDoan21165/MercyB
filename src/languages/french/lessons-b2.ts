@@ -9052,6 +9052,11 @@ export const lessons: FrenchLesson[] =           [
             "bonjour → bõ-jur",
             "passeport → pas-por",
             "étudiant → é-tu-diãn"
+          ],
+          "pronunciation_focus_en": [
+            "bonjour → bo(n)-ZHOOR (nasal first syllable; final 'r' is throat-rolled — but soft here)",
+            "passeport → pahs-POR (final 't' silent; rhymes with English 'pore')",
+            "étudiant → ay-too-DYAH(n) (the 'u' is rounded French 'u'; final '-ant' is nasal 'YAH(n)' — no real 't')"
           ]
         },
         {
@@ -9061,6 +9066,11 @@ export const lessons: FrenchLesson[] =           [
             "étudier → é-tu-dié",
             "Paris-Saclay → pa-ri sa-klè",
             "deux ans → dơ-z-ã"
+          ],
+          "pronunciation_focus_en": [
+            "étudier → ay-too-DYAY (final '-ier' = 'DYAY', rhymes with English 'pay')",
+            "Paris-Saclay → pah-REE sah-KLEH ('Saclay' has the open final 'è' = English 'eh' as in 'meh')",
+            "deux ans → DUH-zah(n) (liaison! 'deux ans' = 'duh-zah(n)' — the 'x' becomes 'z' before vowel)"
           ]
         },
         {
@@ -9071,6 +9081,12 @@ export const lessons: FrenchLesson[] =           [
             "inscription → an-skri-psion",
             "justificatif → jys-ti-fi-ka-tif",
             "logement → loj-mã"
+          ],
+          "pronunciation_focus_en": [
+            "attestation → ah-tes-tah-SYO(n) (four syllables, nasal final '-tion')",
+            "inscription → a(n)-skreep-SYO(n) (two nasals; means 'enrolment / registration')",
+            "justificatif → zhoos-tee-fee-kah-TEEF ('j' = 'zh' like 's' in 'measure'; 'u' rounded)",
+            "logement → lozh-MAH(n) (final '-ment' nasal; means 'housing / accommodation')"
           ]
         },
         {
@@ -9081,6 +9097,12 @@ export const lessons: FrenchLesson[] =           [
             "retour → rơ-tur",
             "prévu → pré-vu",
             "juillet → jwi-yè"
+          ],
+          "pronunciation_focus_en": [
+            "billet → bee-YEH (final 't' silent; 'illet' is a 'ee-yeh' double-y sound)",
+            "retour → ruh-TOOR (rolled 'r' on 'tour'; final silent 'r' fully pronounced here)",
+            "prévu → pray-VYOO (the 'u' is rounded French 'u' — purse lips, say 'ee'; not English 'view')",
+            "juillet → zhwee-YEH ('j' = 'zh'; the '-llet' is 'yeh' like 'billet')"
           ]
         },
         {
@@ -9090,102 +9112,123 @@ export const lessons: FrenchLesson[] =           [
             "justifier → jys-ti-fié",
             "ressources → rơ-surs",
             "financières → fi-nãn-sièr"
+          ],
+          "pronunciation_focus_en": [
+            "justifier → zhoos-tee-FYAY (the 'u' is rounded; final '-fier' = 'FYAY')",
+            "ressources → ruh-SOORS (rolled 'r'; final 's' on 'sources' silent)",
+            "financières → fee-nah(n)-SYAIR (nasal middle; final 'r' rolled in throat; means 'financial')"
           ]
         }
       ],
       "cultural_notes_vi": "Phỏng vấn nhập cảnh ở Pháp/Bỉ/Quebec không phải thủ tục hời hợt — nhân viên (« douanier » ở Pháp, « PAF » ở sân bay Charles-de-Gaulle, « ASFC » ở Quebec) có quyền từ chối nhập cảnh nếu nghi ngờ. Hai sai lầm chí mạng của người Việt: (1) trả lời mơ hồ « Em đi du lịch một thời gian » khi visa là visa du học/làm việc — đáp án phải khớp chính xác loại visa; (2) lấp khoảng im lặng bằng kể lể quá nhiều thông tin không được hỏi — gây nghi ngờ. Nguyên tắc: trả lời ngắn, đúng câu hỏi, kèm dẫn chứng giấy tờ khi có thể. Không nói đùa về nội dung hành lý hoặc lý do đi (« je vais chercher du travail au noir » dù đùa cũng có thể bị giam và trả về). Quebec đặc biệt nghiêm với câu hỏi « avez-vous l'intention de rester au Canada après vos études ? » — đáp đúng là « Mon projet est d'acquérir des compétences puis d'évaluer les options légales à la fin du diplôme » chứ không phải « peut-être » hay « non non non ».",
+      "cultural_notes_en": "Border interviews in France, Belgium, and Quebec are not casual paperwork — the officer (called 'douanier' or 'PAF' / Police aux Frontières in France, 'ASFC' agent in Quebec) has the authority to refuse you entry on the spot if your story doesn't hold together. The two fatal mistakes anglophones and Vietnamese travelers share at French/Quebec borders: (1) answering vaguely ('I'm here for a bit of travel') when your visa is actually a student or work visa — your answer MUST match your visa type exactly; (2) filling silences with extra information you weren't asked for, which sounds rehearsed and raises suspicion. The rule is the same one US/UK travelers know from US Customs: answer the question asked, in the shortest accurate form, and produce the document if you have one.\n\nDo not joke about luggage contents or your reason for travel. The line 'je vais chercher du travail au noir' (I'm going to look for under-the-table work) — even as a joke — can get you detained and returned, just like the equivalent joke at a US border ('I'm here to overstay my visa'). The French and Quebecois sense of humor at the border is exactly zero.\n\nQuebec deserves a specific warning: ASFC officers are unusually rigorous on the question 'avez-vous l'intention de rester au Canada après vos études?' (do you intend to stay in Canada after your studies?). The wrong answers are 'peut-être' (which signals you're already planning it) and a defensive triple 'non, non, non' (which sounds like a coached denial). The right answer is the diplomatic 'Mon projet est d'acquérir des compétences puis d'évaluer les options légales à la fin du diplôme' (my plan is to acquire skills then evaluate the legal options at the end of the program). This is a known Quebec-specific phrasing — memorize it if you're going through Montreal or Quebec City.",
       "tip_advice_vi": "Trước khi xuống máy bay: in giấy tờ ra giấy thật (đừng chỉ trông cậy vào điện thoại — pin có thể hết, mạng sân bay không ổn). Cầm sẵn trong tay: hộ chiếu, visa, attestation d'inscription/contrat de travail, justificatif de logement (réservation hôtel hoặc giấy của trường), billet retour, sao kê tài khoản hoặc giấy bảo lãnh. Khi đến quầy: chào « Bonjour », đặt giấy tờ lên bàn không chen vào tay nhân viên, trả lời từng câu hỏi một. Nếu không nghe rõ: « Pourriez-vous répéter ? ». Nếu không biết tiếng Pháp đủ: nói thẳng « Mon français est limité, pourrions-nous parler en anglais ? » — họ thường chấp nhận. Tránh: cười khúm núm, đưa giấy tờ bằng hai tay (kiểu Á), nói « yes yes » liên tục.",
+      "tip_advice_en": "Before you land: print your documents on actual paper. Don't rely on your phone alone — batteries die, airport WiFi is inconsistent, and PDFs on a phone screen are harder for the officer to flick through. Have ready in your hand: passport, visa, attestation d'inscription or work contract, proof of accommodation (hotel booking or university housing letter), return ticket, bank statements or a sponsorship letter (lettre de prise en charge). When you reach the booth: greet 'Bonjour' (this matters — skipping the greeting is rude in French culture and registers immediately), place your documents on the counter rather than pushing them into the officer's hand, and answer one question at a time. If you didn't hear: 'Pourriez-vous répéter, s'il vous plaît?' If your French is too thin: state it cleanly: 'Mon français est limité, pourrions-nous parler en anglais?' — they almost always accept.\n\nAnglophone-specific calibration: don't smile nervously and don't extend your hand for a handshake — neither is expected at a French border. The Asian instinct to bow slightly or hand over documents with two hands also reads as odd in French/Quebec context; one hand placing on the counter is the norm. Don't say 'yes yes' repeatedly — it sounds anxious; 'oui' once is sufficient. Don't apologize for the questions ('I'm sorry, of course') — the officer is doing their job, no apology required. If they ask a question you can answer crisply, answer crisply and stop — silence is fine while they read your documents. Treat it like a US CBP interview: polite, brief, accurate, and no improvisation.",
       "vocabulary": [
         {
           "word": "un douanier",
           "en": "customs officer",
           "vi": "nhân viên hải quan",
           "pos": "n.m.",
-          "pronunciation_vi": "du-a-nié"
+          "pronunciation_vi": "du-a-nié",
+          "pronunciation_en": "doo-ah-NYAY (final '-ier' = 'NYAY'; the customs officer at a French port of entry)"
         },
         {
           "word": "la PAF (Police aux Frontières)",
           "en": "border police",
           "vi": "cảnh sát biên giới (Pháp)",
           "pos": "n.f.",
-          "pronunciation_vi": "paf"
+          "pronunciation_vi": "paf",
+          "pronunciation_en": "PAHF (acronym, pronounced as one syllable; the French border police — equivalent to US CBP)"
         },
         {
           "word": "un visa long séjour",
           "en": "long-stay visa",
           "vi": "visa dài hạn",
           "pos": "n.m.",
-          "pronunciation_vi": "vi-za lõ sé-jur"
+          "pronunciation_vi": "vi-za lõ sé-jur",
+          "pronunciation_en": "vee-ZAH LO(n) say-ZHOOR ('long séjour' = stays over 90 days; the visa type for student or work residence)"
         },
         {
           "word": "une attestation d'inscription",
           "en": "enrolment certificate",
           "vi": "giấy xác nhận nhập học",
           "pos": "n.f.",
-          "pronunciation_vi": "a-tès-ta-sion dan-skri-psion"
+          "pronunciation_vi": "a-tès-ta-sion dan-skri-psion",
+          "pronunciation_en": "ah-tes-tah-SYO(n) da(n)-skreep-SYO(n) (the official enrolment certificate from your French university — keep a printed copy)"
         },
         {
           "word": "un justificatif de logement",
           "en": "proof of accommodation",
           "vi": "giấy chứng minh chỗ ở",
           "pos": "n.m.",
-          "pronunciation_vi": "jys-ti-fi-ka-tif dơ loj-mã"
+          "pronunciation_vi": "jys-ti-fi-ka-tif dơ loj-mã",
+          "pronunciation_en": "zhoos-tee-fee-kah-TEEF duh lozh-MAH(n) (proof of where you'll be living — university residence, signed lease, or hotel booking)"
         },
         {
           "word": "un billet retour",
           "en": "return ticket",
           "vi": "vé khứ hồi",
           "pos": "n.m.",
-          "pronunciation_vi": "bi-yè rơ-tur"
+          "pronunciation_vi": "bi-yè rơ-tur",
+          "pronunciation_en": "bee-YEH ruh-TOOR (the 'billet' has the silent final 't'; the return ticket proves you intend to leave)"
         },
         {
           "word": "justifier ses ressources",
           "en": "to prove one's resources",
           "vi": "chứng minh tài chính",
           "pos": "v.",
-          "pronunciation_vi": "jys-ti-fié sé rơ-surs"
+          "pronunciation_vi": "jys-ti-fié sé rơ-surs",
+          "pronunciation_en": "zhoos-tee-FYAY say ruh-SOORS (the standard phrase officers use to ask for financial proof)"
         },
         {
           "word": "un séjour de courte/longue durée",
           "en": "short/long stay",
           "vi": "lưu trú ngắn/dài hạn",
           "pos": "n.m.",
-          "pronunciation_vi": "sé-jur dơ kurt/lõg du-ré"
+          "pronunciation_vi": "sé-jur dơ kurt/lõg du-ré",
+          "pronunciation_en": "say-ZHOOR duh KORT / LO(n)G doo-RAY ('court' final 't' silent; 'longue' has nasal 'o(n)g'; key visa distinction)"
         },
         {
           "word": "être refoulé",
           "en": "to be denied entry",
           "vi": "bị từ chối nhập cảnh",
           "pos": "v.",
-          "pronunciation_vi": "é-trơ rơ-fu-lé"
+          "pronunciation_vi": "é-trơ rơ-fu-lé",
+          "pronunciation_en": "ETR ruh-foo-LAY (the 'u' is rounded French 'u'; literally 'to be pushed back' — denied entry and sent home)"
         },
         {
           "word": "présenter ses papiers",
           "en": "to show one's papers",
           "vi": "trình giấy tờ",
           "pos": "v.",
-          "pronunciation_vi": "pré-zãn-té sé pa-pié"
+          "pronunciation_vi": "pré-zãn-té sé pa-pié",
+          "pronunciation_en": "pray-zah(n)-TAY say pah-PYAY (the standard officer command 'présentez vos papiers' = 'show your documents')"
         }
       ],
       "dialogue": [
         {
           "speaker": "Douanier",
           "text": "Bonjour, le motif de votre séjour ?",
+          "en": "Hello — the purpose of your stay?",
           "vi": "Chào, mục đích lưu trú của anh/chị?"
         },
         {
           "speaker": "Linh",
           "text": "Bonjour, je viens étudier — master à Paris-Saclay.",
+          "en": "Hello — I'm here to study. A master's program at Paris-Saclay.",
           "vi": "Chào ông, em đến học — master ở Paris-Saclay."
         },
         {
           "speaker": "Douanier",
           "text": "Combien de temps ?",
+          "en": "For how long?",
           "vi": "Bao lâu?"
         },
         {
           "speaker": "Linh",
           "text": "Deux ans. Voici mon attestation et mon visa long séjour.",
+          "en": "Two years. Here's my enrolment certificate and my long-stay visa.",
           "vi": "Hai năm. Đây là giấy xác nhận và visa dài hạn của em."
         }
       ],
@@ -9193,91 +9236,109 @@ export const lessons: FrenchLesson[] =           [
         {
           "speaker": "Douanier",
           "text": "Bonjour, votre passeport et votre carte d'embarquement, s'il vous plaît.",
+          "en": "Hello — your passport and boarding pass, please.",
           "vi": "Chào, hộ chiếu và thẻ lên máy bay của anh/chị."
         },
         {
           "speaker": "Linh",
           "text": "Bonjour Monsieur. Voici, et voici aussi mon visa long séjour.",
+          "en": "Hello, sir. Here you go, and here's my long-stay visa as well.",
           "vi": "Chào ông. Đây ạ, và đây cũng là visa dài hạn của em."
         },
         {
           "speaker": "Douanier",
           "text": "Quel est le motif principal de votre séjour en France ?",
+          "en": "What is the main purpose of your stay in France?",
           "vi": "Mục đích chính chuyến đi của anh/chị tại Pháp là gì?"
         },
         {
           "speaker": "Linh",
           "text": "Études. Je viens commencer un master en intelligence artificielle à l'Université Paris-Saclay.",
+          "en": "Studies. I'm here to start a master's in artificial intelligence at Paris-Saclay University.",
           "vi": "Học. Em đến bắt đầu master về trí tuệ nhân tạo tại Đại học Paris-Saclay."
         },
         {
           "speaker": "Douanier",
           "text": "Vous avez l'attestation d'inscription ?",
+          "en": "Do you have the enrolment certificate?",
           "vi": "Anh/chị có giấy xác nhận nhập học không?"
         },
         {
           "speaker": "Linh",
           "text": "Oui, la voici. C'est l'attestation officielle de Paris-Saclay datée du 15 juin.",
+          "en": "Yes, here it is. The official Paris-Saclay enrolment certificate dated June 15.",
           "vi": "Có, đây ạ. Là giấy xác nhận chính thức của Paris-Saclay, ngày 15 tháng 6."
         },
         {
           "speaker": "Douanier",
           "text": "Et où allez-vous loger en arrivant ?",
+          "en": "And where will you be staying when you arrive?",
           "vi": "Và anh/chị sẽ ở đâu khi đến?"
         },
         {
           "speaker": "Linh",
           "text": "Au CROUS — résidence universitaire à Gif-sur-Yvette. J'ai mon contrat de location ici.",
+          "en": "At a CROUS residence — student housing in Gif-sur-Yvette. I have my lease contract right here.",
           "vi": "Tại CROUS — ký túc xá đại học ở Gif-sur-Yvette. Em có hợp đồng thuê đây."
         },
         {
           "speaker": "Douanier",
           "text": "Combien de temps comptez-vous rester au total ?",
+          "en": "How long do you plan to stay in total?",
           "vi": "Anh/chị dự kiến ở tổng cộng bao lâu?"
         },
         {
           "speaker": "Linh",
           "text": "Deux années universitaires, jusqu'en juillet 2028. Mon billet retour est déjà émis pour cette date.",
+          "en": "Two academic years, until July 2028. My return ticket has already been issued for that date.",
           "vi": "Hai năm học, đến tháng 7 năm 2028. Vé về của em đã xuất cho ngày đó."
         },
         {
           "speaker": "Douanier",
           "text": "Et pour vos ressources financières — vous êtes boursière ou financée par votre famille ?",
+          "en": "And as for your financial resources — are you on a scholarship or funded by your family?",
           "vi": "Còn nguồn tài chính — anh/chị có học bổng hay gia đình tài trợ?"
         },
         {
           "speaker": "Linh",
           "text": "Bourse partielle de Campus France, complétée par un soutien familial. J'ai les attestations bancaires des deux côtés.",
+          "en": "A partial Campus France scholarship, supplemented by family support. I have bank certificates from both sides.",
           "vi": "Học bổng một phần của Campus France, kèm hỗ trợ gia đình. Em có giấy xác nhận ngân hàng cả hai bên."
         },
         {
           "speaker": "Douanier",
           "text": "Vous prévoyez de travailler en France pendant vos études ?",
+          "en": "Do you plan to work in France during your studies?",
           "vi": "Anh/chị có dự định đi làm tại Pháp trong thời gian học không?"
         },
         {
           "speaker": "Linh",
           "text": "Au maximum 964 heures par an, comme le permet le statut étudiant — pour acquérir une expérience, pas pour subvenir entièrement à mes besoins.",
+          "en": "Up to 964 hours per year, as permitted by the student visa — for work experience, not to fully support myself.",
           "vi": "Tối đa 964 giờ một năm như visa du học cho phép — để có kinh nghiệm, không phải để tự lo toàn bộ chi phí."
         },
         {
           "speaker": "Douanier",
           "text": "Très bien préparée. Une dernière question : avez-vous quelque chose à déclarer aux douanes ?",
+          "en": "Very well prepared. One last question: do you have anything to declare to customs?",
           "vi": "Chuẩn bị rất tốt. Câu cuối: anh/chị có gì phải khai báo hải quan không?"
         },
         {
           "speaker": "Linh",
           "text": "Non, juste mes affaires personnelles et un peu de thé vert vietnamien pour ma future colocataire — environ 200 grammes.",
+          "en": "No — just my personal belongings and a bit of Vietnamese green tea for my future roommate — about 200 grams.",
           "vi": "Không, chỉ đồ cá nhân và chút trà xanh Việt Nam cho bạn cùng phòng tương lai — khoảng 200 gram."
         },
         {
           "speaker": "Douanier",
           "text": "Pas de problème. Bienvenue en France et bonne chance pour vos études.",
+          "en": "No problem. Welcome to France, and good luck with your studies.",
           "vi": "Không vấn đề. Chào mừng đến Pháp và chúc anh/chị học tốt."
         },
         {
           "speaker": "Linh",
           "text": "Merci beaucoup, Monsieur. Bonne journée.",
+          "en": "Thank you very much, sir. Have a good day.",
           "vi": "Cảm ơn ông rất nhiều. Chúc ông một ngày tốt lành."
         }
       ],
@@ -9286,30 +9347,44 @@ export const lessons: FrenchLesson[] =           [
         "Bạn xuống sân bay Charles-de-Gaulle, sĩ quan yêu cầu mở vali kiểm tra. Hợp tác lịch sự — không cuống, không tự thanh minh quá đà; trả lời câu hỏi cụ thể về từng món có vẻ đáng ngờ (thuốc lá lá Việt Nam, đồ ăn khô, mỹ phẩm).",
         "Sĩ quan biên giới Bỉ nghi ngờ visa Schengen của bạn vì điểm đến cuối là Pháp nhưng nhập cảnh ở Bruxelles. Giải thích lộ trình rõ ràng — visa Schengen cho phép nhập bất kỳ nước Schengen nào, và bạn có vé tàu Bruxelles-Paris cùng ngày để chứng minh."
       ],
+      "roleplay_prompts_en": [
+        "A French border officer asks: 'Do you intend to stay in France after your studies?' Answer honestly without sabotaging your visa — avoid both the awkward 'peut-être' (which signals you're already planning to overstay) and the over-defensive 'non absolument pas' (which sounds coached). The diplomatic answer: 'Mon projet est de terminer mon master, ensuite j'évaluerai les options professionnelles disponibles légalement.' (US border parallel: 'do you plan to stay in the US after your studies?' — same calibration applies to F-1 visa interviews.)",
+        "You land at Charles-de-Gaulle and the officer asks you to open your suitcase for inspection. Cooperate politely — don't panic, don't over-explain, and answer specific questions about each item that looks unusual (Vietnamese loose tea, dried foods like nem, cosmetics). Stay matter-of-fact: 'Du thé vert, environ 200g, pour usage personnel' is enough; don't volunteer a story about your grandmother packing it.",
+        "A Belgian border officer is suspicious because your Schengen visa shows your final destination as France, but you're entering at Brussels. Explain your itinerary clearly: a Schengen visa allows entry through any Schengen member state, and you have a Brussels–Paris train ticket for the same day as proof. Keep it brief, factual, and produce the train ticket immediately rather than reaching for it after a long explanation."
+      ],
       "register_notes": "Phỏng vấn nhập cảnh dùng vouvoiement tuyệt đối — sĩ quan dùng « vous » với bạn; bạn cũng « vous ». Kể cả ở Quebec nơi tutoiement phổ biến hơn, biên giới vẫn vouvoiement. Tránh: gọi sĩ quan « anh/chị » dịch sang tiếng Pháp — phải là « Monsieur/Madame »; cười sau câu trả lời (đọc là lo lắng); xưng hô bằng tên (sĩ quan không nói tên mình). Nếu nghe không rõ: « Pourriez-vous répéter, s'il vous plaît ? » — không « pardon? » một mình (quá ngắn cho ngữ cảnh chính thức). Khi đưa giấy tờ: một tay đặt lên bàn, không đẩy mạnh, không kèm cảm ơn quá đậm. Nếu sĩ quan từ chối thông tin bạn cung cấp (« cette attestation est insuffisante »), không tranh cãi — hỏi « Quel document supplémentaire vous faut-il ? » và làm theo. Một câu chốt khi xong: « Merci, bonne journée » — không kéo dài.",
+      "register_notes_en": "Border interviews use absolute vouvoiement on both sides — the officer addresses you as 'vous'; you address them as 'vous'. Even in Quebec, where tu is more widespread than in metropolitan France, the border is strictly vous. Avoid: addressing the officer as 'anh/chị' (Vietnamese kin terms) in French — use 'Monsieur/Madame'; smiling nervously after each answer (reads as anxious in a French context, where smiling typically signals warmth or amusement, not deference); using their first name (you don't have it, and you shouldn't ask). If you don't hear: say 'Pourriez-vous répéter, s'il vous plaît?' (could you repeat, please?) — don't say just 'pardon?' (too short for a formal context). When handing over documents: place them on the counter with one hand, don't push them forward, and don't add an effusive 'merci beaucoup beaucoup' (over-thanking sounds nervous and slightly suspect).\n\nIf the officer rejects your document ('cette attestation est insuffisante' — this certificate is insufficient), do not argue. Ask 'Quel document supplémentaire vous faut-il?' (what additional document do you need?) and produce it. Closing phrase when done: 'Merci, bonne journée' (thank you, have a good day) — don't extend it. Anglophone calibration: this is the same register you'd use at a US CBP secondary inspection or a UK Border Force interview — formal, brief, fact-based, no embellishment. Treating it like a casual American 'hey, how are ya' interaction reads as either disrespectful or distracted to French/Quebec officers. Treating it like an Asian deeply-deferential interaction (bowing slightly, two-handed document presentation, repeated thanking) reads as oddly formal and slightly off-script.",
       "idiom_glosses": [
         {
           "idiom": "Avoir ses papiers en règle",
           "literal": "Có giấy tờ đúng quy định",
+          "literal_en": "To have one's papers in order",
           "meaning": "Hồ sơ giấy tờ đầy đủ và hợp lệ.",
+          "meaning_en": "To have complete and valid documents — same idiom in English; the standard self-check before any border or official interaction.",
           "example": "Tant que vous avez vos papiers en règle, le passage à la frontière sera rapide."
         },
         {
           "idiom": "Couper court",
           "literal": "Cắt ngắn",
+          "literal_en": "To cut short",
           "meaning": "Kết thúc cuộc trò chuyện hoặc giải thích nhanh, không kéo dài.",
+          "meaning_en": "To cut a conversation or explanation short — end it quickly without dragging on. Anglophone equivalent: 'to cut it short / cut to the chase'.",
           "example": "Le douanier a coupé court à mes explications dès qu'il a vu le visa."
         },
         {
           "idiom": "Mettre les choses au point",
           "literal": "Đặt mọi thứ vào điểm",
+          "literal_en": "To put things at the point",
           "meaning": "Làm rõ tình huống / xóa nghi ngờ.",
+          "meaning_en": "To clarify a situation / clear up doubts in one focused exchange. Anglophone equivalent: 'to set the record straight'.",
           "example": "J'ai mis les choses au point sur mon plan d'études en deux phrases."
         },
         {
           "idiom": "Ne pas faire de zèle",
           "literal": "Không làm quá mức nhiệt tình",
+          "literal_en": "Not to do zeal / over-eagerness",
           "meaning": "Không cố gắng quá đà / không cung cấp thông tin chưa được hỏi.",
+          "meaning_en": "Not to overdo it — don't volunteer information beyond what's asked. A key border-crossing principle in French (and US/UK) culture: extra zeal reads as suspicious, not helpful.",
           "example": "À la frontière, ne fais pas de zèle — réponds aux questions, n'en rajoute pas."
         }
       ],
@@ -9317,7 +9392,10 @@ export const lessons: FrenchLesson[] =           [
         {
           "type": "fill-blank",
           "question": "Voici mon passeport et mon ___ étudiant.",
-          "answer": "visa"
+          "question_en": "Here is my passport and my student ___.",
+          "answer": "visa",
+          "hint_vi": "danh từ « visa »",
+          "hint_en": "noun 'visa' — the document that authorizes your stay"
         },
         {
           "type": "matching",
@@ -9335,12 +9413,30 @@ export const lessons: FrenchLesson[] =           [
               "bị từ chối nhập cảnh"
             ]
           ],
-          "instruction": "Nối từ Pháp với nghĩa Việt"
+          "pairs_en": [
+            [
+              "un douanier",
+              "a customs officer"
+            ],
+            [
+              "un justificatif de logement",
+              "proof of accommodation (lease, hotel booking, or university housing letter)"
+            ],
+            [
+              "être refoulé",
+              "to be denied entry / turned back at the border"
+            ]
+          ],
+          "instruction": "Nối từ Pháp với nghĩa Việt",
+          "instruction_en": "Match each French border-crossing term with its English meaning."
         },
         {
           "type": "translation",
           "vietnamese": "Em có thể chứng minh nguồn tài chính nếu cần.",
-          "french": "Je peux justifier mes ressources financières si nécessaire."
+          "french": "Je peux justifier mes ressources financières si nécessaire.",
+          "english": "I can prove my financial resources if necessary.",
+          "hint_vi": "« justifier » + « si nécessaire »",
+          "hint_en": "'justifier' (to prove / substantiate) + 'si nécessaire' (if necessary) — formal border-interview register"
         }
       ]
     },
@@ -9359,6 +9455,12 @@ export const lessons: FrenchLesson[] =           [
             "perte → pèrt",
             "passeport → pas-por",
             "vietnamien → vi-èt-na-miain"
+          ],
+          "pronunciation_focus_en": [
+            "déclarer → day-klah-RAY (final '-er' = 'RAY'; the official verb 'to declare / report')",
+            "perte → PAIRT (one syllable, final 'e' silent; rhymes with English 'pert')",
+            "passeport → pahs-POR (final 't' silent; rhymes with English 'pore')",
+            "vietnamien → vyet-nah-MYA(n) (nasal final '-en' = 'MYA(n)'; adjective form, masculine)"
           ]
         },
         {
@@ -9368,6 +9470,11 @@ export const lessons: FrenchLesson[] =           [
             "déclaration → dé-kla-ra-sion",
             "commissariat → ko-mi-sa-ria",
             "ce matin → sơ ma-tan"
+          ],
+          "pronunciation_focus_en": [
+            "déclaration → day-klah-rah-SYO(n) (four syllables, nasal '-tion' final)",
+            "commissariat → koh-mee-sah-RYAH (final 't' silent; the French police station — fancier word than 'poste de police')",
+            "ce matin → suh mah-TA(n) (final '-tin' is nasal 'TA(n)', no real 'n' sound)"
           ]
         },
         {
@@ -9378,6 +9485,12 @@ export const lessons: FrenchLesson[] =           [
             "cinq jours → sank jur",
             "absolument → ab-so-lu-mã",
             "laissez-passer → lè-sé-pa-sé"
+          ],
+          "pronunciation_focus_en": [
+            "vol → VOL (one syllable; rhymes with English 'doll'; means 'flight' OR 'theft' — context disambiguates)",
+            "cinq jours → SA(n)K ZHOOR (the 'q' of 'cinq' is silent before consonant; final 's' on 'jours' silent)",
+            "absolument → ab-soh-loo-MAH(n) (final '-ment' nasal; key emphasis word — 'absolutely')",
+            "laissez-passer → leh-say-pah-SAY (four syllables; literally 'let-pass'; means emergency travel document)"
           ]
         },
         {
@@ -9387,6 +9500,11 @@ export const lessons: FrenchLesson[] =           [
             "récépissé → ré-sé-pi-sé",
             "copie → ko-pi",
             "ancien → ãn-siain"
+          ],
+          "pronunciation_focus_en": [
+            "récépissé → ray-say-pee-SAY (four syllables; the official acknowledgment receipt — useful word to know)",
+            "copie → koh-PEE (two syllables; final 'e' silent in fast speech; rhymes with English 'epoxy' without the 'e')",
+            "ancien → ah(n)-SYA(n) (two nasals; means 'former / old'; here describes the lost (old) passport)"
           ]
         },
         {
@@ -9396,102 +9514,123 @@ export const lessons: FrenchLesson[] =           [
             "supplémentaires → sy-plé-mãn-tèr",
             "fournir → fur-nir",
             "délai → dé-lè"
+          ],
+          "pronunciation_focus_en": [
+            "supplémentaires → soo-play-mah(n)-TAIR (the 'u' is rounded; nasal middle '-men-'; final 's' silent)",
+            "fournir → foor-NEER (two syllables; final 'r' rolled in the throat)",
+            "délai → day-LEH (final 'ai' = open 'eh' like English 'air' without 'r'; means 'deadline / processing time')"
           ]
         }
       ],
       "cultural_notes_vi": "Mất hộ chiếu ở nước ngoài là một trong những tình huống hành chính căng nhất một người Việt có thể đối mặt. Trình tự đúng: (1) ngay khi phát hiện mất, đến đồn cảnh sát địa phương (« commissariat de police » ở Pháp, « poste de police » ở Bỉ, « SPVM » ở Montréal) khai báo mất — họ cấp « récépissé » (biên nhận); (2) liên hệ Đại sứ quán/Tổng lãnh sự Việt Nam (Paris, Genève, Ottawa) — không phải lãnh sự Pháp; (3) nộp hồ sơ xin « giấy thông hành » (laissez-passer) hoặc cấp lại hộ chiếu nếu thời gian cho phép. Đại sứ quán Việt Nam tại Paris ở 62 rue Boileau, 75016 — có lịch tiếp công dân nhưng trường hợp khẩn cấp thường được xếp riêng. Khác văn hóa Việt: ở đây không « phong bì » — đó là tham nhũng theo luật Pháp/Bỉ/Canada và sẽ làm hồ sơ bị đình chỉ. Phí cấp lại đúng theo biểu giá niêm yết, đóng tại quầy hoặc qua chuyển khoản. Thời gian cấp laissez-passer khẩn: 24-72 giờ trong giờ làm việc. Cấp lại hộ chiếu: 6-8 tuần — không kịp cho chuyến bay sắp đến.",
+      "cultural_notes_en": "Losing your passport abroad is one of the most stressful bureaucratic situations a traveler can face, and the procedure differs in important ways from what US/UK travelers might expect. The correct sequence: (1) the moment you realize it's lost, go to the local police station (called 'commissariat de police' in France, 'poste de police' in Belgium, 'SPVM' in Montreal) to file a loss declaration — they issue a 'récépissé' (official receipt), which is the gating document for everything that follows. Without it, the consulate can't process you. (2) Contact your Vietnamese Embassy or Consulate — the Vietnamese Embassy in Paris is at 62 rue Boileau, 75016. Do NOT go to the French consulate or the local mairie — they don't issue Vietnamese travel documents. (3) Submit the file for either a laissez-passer (emergency travel document) or a full passport replacement if time permits.\n\nKey cultural calibration: in France, Belgium, and Canada, there are NO envelopes. Offering money to speed up your file is corruption under local law, will get your application suspended, and in serious cases triggers an investigation. This is a hard-coded difference from the way some bureaucratic interactions work in Vietnam — set the expectation aside completely before you walk in. The official fee is whatever's posted on the embassy website, paid at the counter by card or exact cash. No exceptions, no shortcuts, no introductions from a friend-of-a-friend.\n\nTiming: a laissez-passer can be issued in 24–72 working hours in true emergencies (proven by a flight ticket within the week). A full passport replacement takes 6–8 weeks — not viable if your flight is in five days. So if your flight is soon, you specifically want a laissez-passer, and you need to be ready to fly back to Vietnam on it and renew your real passport at home. The same fundamental structure exists for US and UK citizens (your respective embassy issues 'emergency travel documents'), so anglophone learners can apply the same script to their own embassies in Paris.",
       "tip_advice_vi": "Phòng ngừa: scan/chụp ảnh hộ chiếu trước khi đi và lưu trên Google Drive/email — sẽ giúp ích cực kỳ khi mất bản gốc. Cũng để lại bản photo ở nhà trọ tách riêng với hộ chiếu thật (không cùng ví). Khi đã mất: bình tĩnh, đừng hoảng loạn quay lại tìm kiếm vô vọng — ưu tiên ra commissariat ngay vì biên nhận là điều kiện đầu tiên cho lãnh sự. Tại lãnh sự: ăn mặc lịch sự (không quần shorts), mang theo CMND/CCCD bản photo, hộ chiếu hết hạn cũ nếu có, vé máy bay (chứng minh cấp bách), 2-3 ảnh thẻ chuẩn 4x6 nền trắng (chụp tại tiệm Photomaton trong métro Paris được). Phí: tham khảo trang web đại sứ quán — thường 50-100 EUR cho laissez-passer khẩn. Đóng phí qua thẻ hoặc tiền mặt euro chính xác. Tránh: gọi điện cho đại sứ quán nhiều lần (làm tắc đường dây người khác), khóc lóc tại quầy (không thay đổi quy trình), nhờ ai đó « có người quen » can thiệp (lạm dụng).",
+      "tip_advice_en": "Prevention (do this before you travel): scan or photograph your passport's main page and store it in Google Drive plus email it to yourself. This is enormously valuable when the original is gone. Also leave a physical photocopy at your apartment, separate from your wallet — never carry both originals together. When you discover the loss: stay calm. Don't waste time retracing your steps in hopeless searches at the métro lost-and-found while the clock ticks down. Prioritize the police station immediately, because the police receipt is the gating document for everything else.\n\nAt the consulate: dress neatly (no shorts, no flip-flops — French and Vietnamese diplomatic offices both expect business-casual minimum). Bring: a photocopy of your Vietnamese national ID (CMND/CCCD), your expired passport if you happen to have it, your flight ticket (which proves urgency), and 2–3 ID photos to Schengen standard (4x6cm, white background — Photomaton machines in any Paris métro station produce these for €5). Fees: check the embassy website — typically €50–100 for an emergency laissez-passer. Pay by card or exact-cash euros at the counter. Avoid: calling the embassy multiple times (it clogs the line for someone else with a worse emergency); crying at the counter (it does not change the procedure, and makes the staff uncomfortable); asking someone with 'a connection inside' to intervene (this is abuse of process and the staff will recognize it instantly). Treat the staff with the same respect you'd want as a public servant yourself — they're solving real problems for real people, and a calm, prepared applicant is the easiest case of their day. Anglophone calibration: the same rules apply at the US or UK embassy in Paris if you're traveling on those passports — bring documents, dress neatly, no envelopes, no friends-of-friends.",
       "vocabulary": [
         {
           "word": "déclarer la perte",
           "en": "to report a loss",
           "vi": "khai báo mất",
           "pos": "v.",
-          "pronunciation_vi": "dé-kla-ré la pèrt"
+          "pronunciation_vi": "dé-kla-ré la pèrt",
+          "pronunciation_en": "day-klah-RAY lah PAIRT (the formal verb for filing a loss report at a police station)"
         },
         {
           "word": "un récépissé",
           "en": "a receipt / official acknowledgement",
           "vi": "biên nhận chính thức",
           "pos": "n.m.",
-          "pronunciation_vi": "ré-sé-pi-sé"
+          "pronunciation_vi": "ré-sé-pi-sé",
+          "pronunciation_en": "ray-say-pee-SAY (the official acknowledgement document issued by police — keep it carefully, it's the gating proof for the consulate)"
         },
         {
           "word": "un laissez-passer",
           "en": "emergency travel document",
           "vi": "giấy thông hành khẩn",
           "pos": "n.m.",
-          "pronunciation_vi": "lè-sé-pa-sé"
+          "pronunciation_vi": "lè-sé-pa-sé",
+          "pronunciation_en": "leh-say-pah-SAY (literally 'let-pass'; an emergency travel document used in place of a passport for a single return trip — the US/UK equivalent is an 'Emergency Travel Document')"
         },
         {
           "word": "le commissariat",
           "en": "police station",
           "vi": "đồn cảnh sát",
           "pos": "n.m.",
-          "pronunciation_vi": "ko-mi-sa-ria"
+          "pronunciation_vi": "ko-mi-sa-ria",
+          "pronunciation_en": "koh-mee-sah-RYAH (the French police station; final 't' silent — different from English 'commissariat')"
         },
         {
           "word": "l'ambassade",
           "en": "embassy",
           "vi": "đại sứ quán",
           "pos": "n.f.",
-          "pronunciation_vi": "lãm-ba-sad"
+          "pronunciation_vi": "lãm-ba-sad",
+          "pronunciation_en": "lah(n)-bah-SAHD (nasal first syllable; final 'e' silent; rhymes with English 'sad')"
         },
         {
           "word": "le consulat",
           "en": "consulate",
           "vi": "lãnh sự",
           "pos": "n.m.",
-          "pronunciation_vi": "kõn-su-la"
+          "pronunciation_vi": "kõn-su-la",
+          "pronunciation_en": "ko(n)-soo-LAH (final 't' silent; the smaller administrative office distinct from the embassy)"
         },
         {
           "word": "un dossier complet",
           "en": "a complete file",
           "vi": "hồ sơ đầy đủ",
           "pos": "n.m.",
-          "pronunciation_vi": "do-sié kom-plè"
+          "pronunciation_vi": "do-sié kom-plè",
+          "pronunciation_en": "doh-SYAY ko(n)-PLEH (a 'complete file' — all required documents; the bureaucratic standard you must hit)"
         },
         {
           "word": "un délai d'urgence",
           "en": "emergency processing time",
           "vi": "thời hạn khẩn cấp",
           "pos": "n.m.",
-          "pronunciation_vi": "dé-lè dur-jãns"
+          "pronunciation_vi": "dé-lè dur-jãns",
+          "pronunciation_en": "day-LEH duhr-ZHAH(n)SS (final '-ence' has nasal middle + hissed final 's'; means 'emergency turnaround')"
         },
         {
           "word": "un justificatif de voyage",
           "en": "travel proof",
           "vi": "chứng từ chuyến đi",
           "pos": "n.m.",
-          "pronunciation_vi": "jys-ti-fi-ka-tif dơ vwa-yaj"
+          "pronunciation_vi": "jys-ti-fi-ka-tif dơ vwa-yaj",
+          "pronunciation_en": "zhoos-tee-fee-kah-TEEF duh vwah-YAHZH (proof of travel — flight ticket, train booking, etc.)"
         },
         {
           "word": "se faire voler",
           "en": "to be robbed",
           "vi": "bị trộm",
           "pos": "v.",
-          "pronunciation_vi": "sơ fèr vo-lé"
+          "pronunciation_vi": "sơ fèr vo-lé",
+          "pronunciation_en": "suh FAIR voh-LAY (reflexive 'se faire' = passive construction; 'voler' = to steal; together = 'to get robbed / pickpocketed')"
         }
       ],
       "dialogue": [
         {
           "speaker": "Linh",
           "text": "Bonjour, je viens déclarer la perte de mon passeport.",
+          "en": "Hello, I'm here to report the loss of my passport.",
           "vi": "Chào, em đến khai báo mất hộ chiếu."
         },
         {
           "speaker": "Agent",
           "text": "Vous avez fait une déclaration au commissariat ?",
+          "en": "Have you filed a report at the police station?",
           "vi": "Anh/chị đã khai báo tại đồn cảnh sát chưa?"
         },
         {
           "speaker": "Linh",
           "text": "Oui, voici le récépissé. Mon vol est dans cinq jours.",
+          "en": "Yes — here's the receipt. My flight is in five days.",
           "vi": "Rồi, đây là biên nhận. Chuyến bay của em sau 5 ngày."
         },
         {
           "speaker": "Agent",
           "text": "Dans ce cas, on traite en urgence — laissez-passer dans 48 heures.",
+          "en": "In that case we process it as an emergency — emergency travel document in 48 hours.",
           "vi": "Vậy, mình xử lý khẩn — giấy thông hành trong 48 giờ."
         }
       ],
@@ -9499,86 +9638,103 @@ export const lessons: FrenchLesson[] =           [
         {
           "speaker": "Agent (à l'accueil)",
           "text": "Bonjour, vous avez rendez-vous ?",
+          "en": "Hello, do you have an appointment?",
           "vi": "Chào, anh/chị có hẹn không?"
         },
         {
           "speaker": "Linh",
           "text": "Bonjour, non — c'est une urgence. J'ai perdu mon passeport hier soir et mon vol est dans cinq jours.",
+          "en": "Hello — no, this is an emergency. I lost my passport last night and my flight is in five days.",
           "vi": "Chào, không — em khẩn cấp. Em mất hộ chiếu tối qua và chuyến bay sau 5 ngày."
         },
         {
           "speaker": "Agent",
           "text": "Compris. Avez-vous fait une déclaration de perte à la police ?",
+          "en": "Understood. Have you filed a loss report with the police?",
           "vi": "Hiểu rồi. Anh/chị đã khai báo mất với cảnh sát chưa?"
         },
         {
           "speaker": "Linh",
           "text": "Oui, ce matin au commissariat du 15ème. Voici le récépissé.",
+          "en": "Yes, this morning at the 15th-arrondissement police station. Here's the receipt.",
           "vi": "Rồi, sáng nay tại đồn quận 15. Đây là biên nhận."
         },
         {
           "speaker": "Agent",
           "text": "Très bien. Vous êtes inscrite au registre consulaire ?",
+          "en": "Very good. Are you registered on the consular register?",
           "vi": "Tốt. Anh/chị đã đăng ký hộ tịch lãnh sự chưa?"
         },
         {
           "speaker": "Linh",
           "text": "Oui, depuis l'an dernier — je suis étudiante en master à Paris-Saclay. Mon numéro consulaire est sur ce papier.",
+          "en": "Yes, since last year — I'm a master's student at Paris-Saclay. My consular number is on this paper.",
           "vi": "Rồi, từ năm ngoái — em là sinh viên master ở Paris-Saclay. Số hộ tịch của em trên giấy này."
         },
         {
           "speaker": "Agent",
           "text": "Je vois. Pour un retour au Vietnam dans cinq jours, on peut vous délivrer un laissez-passer en 48 à 72 heures. Pour un nouveau passeport, ce serait 6 à 8 semaines — trop long pour votre vol.",
+          "en": "I see. For a return to Vietnam in five days, we can issue an emergency travel document in 48–72 hours. For a new passport it would be 6–8 weeks — too long for your flight.",
           "vi": "Tôi thấy rồi. Để về Việt Nam trong 5 ngày, mình có thể cấp giấy thông hành trong 48-72 giờ. Hộ chiếu mới sẽ mất 6-8 tuần — không kịp chuyến bay."
         },
         {
           "speaker": "Linh",
           "text": "Le laissez-passer me convient. Quels documents dois-je fournir ?",
+          "en": "The emergency travel document works for me. What documents do I need to provide?",
           "vi": "Giấy thông hành phù hợp với em. Em cần cung cấp giấy tờ gì?"
         },
         {
           "speaker": "Agent",
           "text": "Le récépissé de police — vous l'avez. Une photocopie de votre passeport perdu si vous l'avez. Trois photos d'identité format Schengen, fond blanc, prises il y a moins de six mois. Une copie de votre billet d'avion. Et un formulaire de demande que je vais vous remettre.",
+          "en": "The police receipt — you have it. A photocopy of your lost passport if you have one. Three Schengen-format ID photos, white background, taken in the last six months. A copy of your flight ticket. And an application form I'll give you.",
           "vi": "Biên nhận cảnh sát — anh/chị có rồi. Một bản photo hộ chiếu mất nếu anh/chị có. Ba ảnh chân dung khổ Schengen, nền trắng, chụp dưới 6 tháng. Một bản photo vé máy bay. Và một mẫu đơn tôi sẽ đưa anh/chị."
         },
         {
           "speaker": "Linh",
           "text": "J'ai une copie scannée de mon ancien passeport sur mon téléphone. Et le billet d'avion électronique. Pour les photos — je peux les faire au Photomaton de la station Boileau ?",
+          "en": "I have a scanned copy of my old passport on my phone. And the electronic flight ticket. For the photos — can I take them at the Photomaton at Boileau métro station?",
           "vi": "Em có bản scan hộ chiếu cũ trên điện thoại. Và vé máy bay điện tử. Còn ảnh — em có thể chụp tại máy Photomaton ga Boileau không?"
         },
         {
           "speaker": "Agent",
           "text": "Tout à fait. Pour la copie scannée, imprimez-la — il nous faut du papier. Le Photomaton de Boileau convient. Le formulaire est ici, à remplir maintenant si vous voulez.",
+          "en": "Absolutely. For the scanned copy, print it out — we need paper. The Boileau Photomaton works. The form is here, you can fill it out now if you'd like.",
           "vi": "Hoàn toàn được. Bản scan thì in ra — chúng tôi cần giấy. Photomaton Boileau phù hợp. Mẫu đơn đây, anh/chị điền ngay nếu muốn."
         },
         {
           "speaker": "Linh",
           "text": "Merci. Et les frais ?",
+          "en": "Thank you. And the fees?",
           "vi": "Cảm ơn. Còn lệ phí?"
         },
         {
           "speaker": "Agent",
           "text": "Soixante-cinq euros pour un laissez-passer en procédure d'urgence. Carte bancaire ou espèces.",
+          "en": "Sixty-five euros for an emergency-procedure travel document. Card or cash.",
           "vi": "65 euro cho giấy thông hành theo thủ tục khẩn. Thẻ ngân hàng hoặc tiền mặt."
         },
         {
           "speaker": "Linh",
           "text": "D'accord. Si je reviens demain matin avec les photos, le formulaire rempli, et l'impression du passeport scanné — vous pouvez lancer la procédure ?",
+          "en": "OK. If I come back tomorrow morning with the photos, the completed form, and the printout of the scanned passport — can you launch the procedure?",
           "vi": "Vâng. Nếu em quay lại sáng mai với ảnh, mẫu đơn đã điền, và bản in hộ chiếu scan — anh có thể bắt đầu thủ tục không?"
         },
         {
           "speaker": "Agent",
           "text": "Oui, je vous bloque un créneau à 9 heures. Demandez-moi à l'accueil — Madame Trần.",
+          "en": "Yes, I'm blocking a 9 AM slot for you. Ask for me at reception — Mrs. Trần.",
           "vi": "Có, tôi giữ giờ cho anh/chị 9 giờ sáng. Hỏi tôi tại quầy — bà Trần."
         },
         {
           "speaker": "Linh",
           "text": "Madame Trần, à demain 9 heures. Merci infiniment pour votre aide.",
+          "en": "Mrs. Trần — see you tomorrow at 9. Thank you so very much for your help.",
           "vi": "Bà Trần, hẹn 9 giờ mai. Em vô cùng cảm ơn bà đã giúp."
         },
         {
           "speaker": "Agent",
           "text": "Je vous en prie. Ne vous inquiétez pas — vous avez le temps. À demain.",
+          "en": "You're welcome. Don't worry — you have time. See you tomorrow.",
           "vi": "Không có gì. Anh/chị đừng lo — vẫn còn thời gian. Hẹn mai gặp."
         }
       ],
@@ -9587,30 +9743,44 @@ export const lessons: FrenchLesson[] =           [
         "Tại lãnh sự, nhân viên nói thiếu một giấy tờ bạn không mang theo (vé máy bay in giấy — bạn chỉ có vé điện tử). Thương lượng: đề xuất alternative (in tại quán photocopy gần đó, gửi email cho nhân viên, hẹn lại 1 giờ sau).",
         "Đường bay khẩn: chuyến bay bạn đặt là sau 36 giờ, nhưng giấy thông hành nhanh nhất 48 giờ. Hẹn riêng nhân viên đại sứ quán xin ưu tiên — không nài nỉ, không khóc; nêu fact (vé không hoàn được, ngày làm việc tại Việt Nam đã thông báo cho công ty), đề xuất giải pháp (trả thêm phí, đến nhận tận tay)."
       ],
+      "roleplay_prompts_en": [
+        "You've just realized your passport is gone — somewhere in the Paris métro, you think — and you have an important appointment in an hour. Decide your priority: go back into the métro to retrace your steps, file the police report first, or call the embassy to book a slot? Explain your reasoning in short B2 French. (Right answer: police report first — the receipt is the gating document and you can't do anything else without it.)",
+        "At the embassy, the agent says you're missing a paper printout of your flight ticket — you only have the electronic version on your phone. Negotiate: propose alternatives (print at a copy shop down the street, email the file to the agent, come back in an hour with the printout). Stay calm and solution-oriented — don't argue with the requirement, just propose ways to meet it. Anglophone parallel: works the same at a US embassy abroad — they want paper, you find paper.",
+        "Tight timing: your booked flight is in 36 hours, but the standard emergency travel document takes 48 hours. Speak privately with an embassy agent to request priority — without begging, without crying. Lay out the facts (the flight is non-refundable, your start date at a Vietnamese job is already communicated to the employer) and propose solutions (pay an additional rush fee, pick up in person at any hour). The French/Vietnamese consular context responds well to calm fact + concrete proposal, badly to emotional pressure."
+      ],
       "register_notes": "Tại đại sứ quán Việt Nam ở nước ngoài: nhân viên nói tiếng Việt và tiếng Pháp. Khi xếp hàng và làm việc với nhân viên Việt Nam, dùng tiếng Việt — nhưng vẫn giữ register lịch sự (« thưa cô/chú » thay vì « anh/chị » nếu nhân viên hơn tuổi). Khi làm việc với cảnh sát Pháp tại commissariat: vouvoiement tuyệt đối, không cười khúm núm, không lặp « excusez-moi » nhiều lần. Khi đến lãnh sự khẩn cấp, mở câu bằng « Bonjour, c'est une urgence » — câu này hợp lệ và làm nhân viên đánh giá đúng mức cấp bách. Tránh: nói « help me please » bằng tiếng Anh — nhân viên Pháp có thể chuyển sang tiếng Anh nhưng câu mở phải bằng tiếng Pháp; gọi đại sứ quán « la maison du Vietnam » — đó là tên một tòa nhà khác (Cité U); cám ơn quá đậm với câu « merci merci merci » — một « Merci infiniment » + cái nhìn thật là đủ. Khi nhân viên hỏi câu khó (« vous avez d'autres documents ? »), không lúng túng — nói rõ « Je peux les apporter demain » với deadline cụ thể.",
+      "register_notes_en": "At the Vietnamese embassy abroad, staff speak both Vietnamese and French. With Vietnamese staff, switch to Vietnamese — but keep the polite register ('thưa cô/chú' instead of 'anh/chị' if the staff member is older than you). At the French police station, vouvoiement is absolute. Don't smile nervously, don't repeat 'excusez-moi' multiple times (once is enough; more sounds anxious). At the consulate in an emergency, open with 'Bonjour, c'est une urgence' — this is the recognized signal phrase that gets your case evaluated as urgent rather than routine.\n\nThings to avoid: opening in English with 'help me please' — French staff may switch to English to help you, but the opening sentence should be French as a sign of effort and respect. Don't call the embassy 'la Maison du Vietnam' — that's the name of a different building at Cité Universitaire, not the embassy. Don't over-thank with 'merci merci merci' — one 'Merci infiniment' (thanks immensely) plus eye contact is enough. When the agent asks a hard question ('vous avez d'autres documents?' — do you have other documents?), don't freeze. State clearly 'Je peux les apporter demain à 9h' (I can bring them tomorrow at 9) with a concrete deadline. The combination of calm + specific deadline + courtesy works in both French and Vietnamese consular contexts, and also at US/UK embassies — it's a universal bureaucratic register.",
       "idiom_glosses": [
         {
           "idiom": "Faire le nécessaire",
           "literal": "Làm điều cần thiết",
+          "literal_en": "To do the necessary",
           "meaning": "Hoàn thành các bước thủ tục bắt buộc.",
+          "meaning_en": "To do what's required — complete the mandatory procedural steps. Same image as English 'do the needful' (Indian-English) or 'take care of what's needed'.",
           "example": "Je vais faire le nécessaire à la police, puis je reviens à l'ambassade."
         },
         {
           "idiom": "Avoir le couteau sous la gorge",
           "literal": "Có dao kề cổ",
+          "literal_en": "To have the knife under the throat",
           "meaning": "Bị áp lực thời gian / không có lựa chọn khác.",
+          "meaning_en": "To be up against the wall — under intense time pressure with no other option. The image is vivid and a touch dramatic; use it when the deadline genuinely is non-negotiable.",
           "example": "Avec mon vol dans cinq jours, j'ai vraiment le couteau sous la gorge."
         },
         {
           "idiom": "Mettre les bouchées doubles",
           "literal": "Cắn miếng đôi",
+          "literal_en": "To put the mouthfuls double",
           "meaning": "Tăng tốc, làm gấp đôi nỗ lực.",
+          "meaning_en": "To double down on effort — speed up, work twice as hard. Anglophone equivalent: 'to kick it into high gear' or 'to put the pedal to the metal'.",
           "example": "L'agent a mis les bouchées doubles pour traiter mon dossier en 48 heures."
         },
         {
           "idiom": "En dernier ressort",
           "literal": "Trong phương án cuối cùng",
+          "literal_en": "In last resort",
           "meaning": "Như giải pháp cuối khi mọi cách khác thất bại.",
+          "meaning_en": "As a last resort — the fallback option when all other approaches have failed. Same phrase in English.",
           "example": "En dernier ressort, je peux reporter mon vol — mais ça coûte cher."
         }
       ],
@@ -9618,7 +9788,10 @@ export const lessons: FrenchLesson[] =           [
         {
           "type": "fill-blank",
           "question": "Je viens ___ la perte de mon passeport.",
-          "answer": "déclarer"
+          "question_en": "I'm here to ___ the loss of my passport.",
+          "answer": "déclarer",
+          "hint_vi": "động từ « khai báo »",
+          "hint_en": "verb 'to declare / report' — the formal verb for filing a loss at a police station or consulate"
         },
         {
           "type": "matching",
@@ -9636,12 +9809,30 @@ export const lessons: FrenchLesson[] =           [
               "đồn cảnh sát"
             ]
           ],
-          "instruction": "Nối thuật ngữ với nghĩa tiếng Việt"
+          "pairs_en": [
+            [
+              "un laissez-passer",
+              "an emergency travel document — issued by your embassy when you've lost your passport"
+            ],
+            [
+              "un récépissé",
+              "an official acknowledgement receipt — the police-issued document that proves you reported the loss"
+            ],
+            [
+              "le commissariat",
+              "police station — specifically the French one where you file the loss declaration"
+            ]
+          ],
+          "instruction": "Nối thuật ngữ với nghĩa tiếng Việt",
+          "instruction_en": "Match each French administrative term with its English explanation."
         },
         {
           "type": "translation",
           "vietnamese": "Em cần cung cấp giấy tờ gì thêm và trong bao lâu?",
-          "french": "Quels documents supplémentaires dois-je vous fournir et sous quel délai ?"
+          "french": "Quels documents supplémentaires dois-je vous fournir et sous quel délai ?",
+          "english": "What additional documents do I need to provide, and within what deadline?",
+          "hint_vi": "« quels documents supplémentaires » + « sous quel délai »",
+          "hint_en": "'quels documents supplémentaires' (what additional documents) + 'sous quel délai' (within what deadline) — bureaucratic-formal phrasing"
         }
       ]
     },
