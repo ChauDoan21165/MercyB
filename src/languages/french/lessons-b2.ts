@@ -6449,6 +6449,12 @@ export const lessons: FrenchLesson[] =           [
             "revenir → rơ-vơ-nir",
             "invitation → an-vi-ta-sion",
             "interprétée → an-tèr-pré-té"
+          ],
+          "pronunciation_focus_en": [
+            "voudrais → voo-DRAY (ends like English 'tray')",
+            "revenir → ruh-vuh-NEER (three short 'uh' syllables, like 'rev-uh-near')",
+            "invitation → ah(n)-vee-tah-SYO(n) (two nasals — no full 'n' sound, just nasalized vowel)",
+            "interprétée → ah(n)-tair-pray-TAY (final 'tée' rhymes with English 'pay')"
           ]
         },
         {
@@ -6459,6 +6465,12 @@ export const lessons: FrenchLesson[] =           [
             "s'agissait → sa-ji-sè",
             "politesse → po-li-tès",
             "vraie → vrè"
+          ],
+          "pronunciation_focus_en": [
+            "pensé → pah(n)-SAY (nasal first syllable, no English equivalent — try saying 'pa' through your nose)",
+            "s'agissait → sah-zhee-SAY ('zh' = the 's' in English 'measure')",
+            "politesse → poh-lee-TESS (final 'tesse' rhymes with English 'less')",
+            "vraie → VREH (one syllable, short open 'e' — like English 'air' without the 'r')"
           ]
         },
         {
@@ -6469,6 +6481,12 @@ export const lessons: FrenchLesson[] =           [
             "maladresse → ma-la-drès",
             "absolument → ab-so-lu-mã",
             "manque → mãnk"
+          ],
+          "pronunciation_focus_en": [
+            "m'excuse → mek-SKEWZ (the 'u' is the French 'u', like pursing lips to say 'ee')",
+            "maladresse → ma-la-DRESS (final 'esse' = English 'dress' without the 'd')",
+            "absolument → ab-so-loo-MAH(n) (nasal final, no real 'n' — air through nose)",
+            "manque → MAH(n)K (one syllable, nasal — like 'mock' said through the nose)"
           ]
         },
         {
@@ -6479,6 +6497,12 @@ export const lessons: FrenchLesson[] =           [
             "tient → tiain",
             "heureuse → ơ-rơz",
             "prochain → pro-shain"
+          ],
+          "pronunciation_focus_en": [
+            "proposition → proh-poh-zee-SYO(n) (nasal final, rhymes with 'on' said through nose)",
+            "tient → TYA(n) (one syllable, nasal — like English 'tian' without the 'n')",
+            "heureuse → uh-RUHZ (the 'eu' has no English equivalent — round lips as if to say 'oo' then say 'eh')",
+            "prochain → proh-SHA(n) (nasal final — like 'shan' through the nose, no full 'n')"
           ]
         },
         {
@@ -6488,102 +6512,123 @@ export const lessons: FrenchLesson[] =           [
             "apprendre → a-prãn-drơ",
             "codes → kod",
             "patience → pa-siãns"
+          ],
+          "pronunciation_focus_en": [
+            "apprendre → ah-PRAH(n)-druh (middle syllable nasal, final 'dre' = soft 'druh')",
+            "codes → KOHD (one syllable, the final 's' is silent — rhymes with English 'mode')",
+            "patience → pah-SYAH(n)SS (nasal middle, hissed final 's' — different from English 'patience')"
           ]
         }
       ],
       "cultural_notes_vi": "Hiểu lầm văn hóa giữa người Việt và người Pháp xảy ra hai chiều, và xin lỗi sau hiểu lầm là một kỹ năng B2 quan trọng. Hai loại hiểu lầm phổ biến: (1) lời mời « giả » của người Việt bị người Pháp hiểu thật — « hôm nào ghé nhà em chơi nhé! » (xã giao) bị bạn Pháp ghi vào lịch và xuất hiện chủ nhật; (2) lời mời « thật » của người Pháp bị người Việt hiểu xã giao — « venez dîner samedi à 20h » (mời thật, đặt nhà hàng) bị từ chối nhẹ vì người Việt nghĩ đó là phép lịch sự thông thường.\n\nKhi xin lỗi, tránh hai sai lầm: (1) « over-apologize » kiểu Việt — « em rất rất rất xin lỗi, em sai hoàn toàn, em không xứng đáng… » — quá đậm sẽ làm người Pháp lúng túng; (2) « under-apologize » kiểu Pháp lý lẽ — « ce n'était qu'un quiproquo culturel » — quá nhẹ sẽ bị xem là không nhận trách nhiệm. Giọng đúng: thừa nhận lỗi cụ thể, không kéo dài, đề xuất giải pháp (lời mời lại, một bữa ăn bù), và nhân tiện học một « code » mới.\n\nQuan trọng: không đổ lỗi cho « sự khác biệt văn hóa » một cách thụ động (« c'est ma culture, on ne peut rien y faire »). Người Pháp coi đó là cách trốn tránh trách nhiệm cá nhân. Tốt hơn: « Je connais cette différence, j'aurais dû la mobiliser, je ne l'ai pas fait — je m'en excuse ».",
+      "cultural_notes_en": "French apology calibration is a minefield for anglophones — particularly Americans, whose default 'I'm so so sorry, this is totally my fault' reads to French ears as either insincere or oddly theatrical. Conversely, British understatement ('terribly sorry about all that') can read as too breezy when something concrete (a booked dinner, a real plan) actually went wrong. The French middle ground: name the specific mistake, take ownership in one clean sentence, propose a concrete repair gesture, then stop. No spiraling, no self-flagellation, no gift-buying — a wrapped present after a small social blunder reads to French people as a transactional move, almost like trying to buy forgiveness.\n\nThe specific scenario in this lesson — declining a 'real' French dinner invitation because you read it as polite filler — happens constantly with Vietnamese, British, and East-Asian-American learners. The cross-cultural trap: in many cultures, 'come over sometime' is a warmth signal, not a calendar entry. In France, when there's a time, a menu, and another guest mentioned, it's a hard commitment with groceries already bought. The repair is to acknowledge the misread explicitly ('j'ai pris ça pour une formule de politesse'), not to invent a vague excuse. French interlocutors strongly prefer 'I misread your code' over 'I was busy' — the honesty resets the relationship, the dodge erodes it.\n\nOne thing to avoid in any French apology: outsourcing blame to 'cultural difference' as a closed loop ('c'est ma culture'). It reads exactly like 'sorry not sorry' does in English — a refusal to own the act. The B2-level move is to acknowledge the cultural gap and your own failure to bridge it: 'I know this difference exists; I didn't apply it in time; that's on me.' That sentence buys you enormous goodwill in any French professional or social setting.",
       "tip_advice_vi": "Khung 4 câu cho lời xin lỗi: (1) Tên cụ thể của lỗi (« j'ai mal interprété l'invitation »); (2) Nguyên nhân ngắn (« j'ai pensé qu'il s'agissait d'une formule de politesse ») — không kéo dài thành tự thanh minh; (3) Trách nhiệm cá nhân (« j'aurais dû demander, je ne l'ai pas fait »); (4) Đề xuất hành động (« si la proposition tient toujours, je suis libre samedi prochain »). Tránh: viết tin nhắn dài 3 đoạn xin lỗi, gửi thư xin lỗi viết tay (Pháp coi quá đậm cho lỗi nhỏ), tặng quà bù (có thể bị hiểu là « brebery »). Một tin nhắn 4 dòng hoặc một cuộc gọi 2 phút là đủ. Sau khi xin lỗi xong, đừng quay lại chủ đề trong các cuộc gặp sau — kéo dài là tự kéo dài cảm giác lúng túng.",
+      "tip_advice_en": "Use the four-line French apology frame: (1) Name the specific mistake — 'I misread the invitation', not 'I was a mess yesterday'. (2) Give the cause in one short clause — 'I took it for a polite formula' — and stop; don't keep explaining, because that reads as self-justification, not contrition. (3) Take personal ownership — 'I should have asked, and I didn't' — without melodrama. (4) Propose a concrete next step — 'if the offer still stands, I'm free next Saturday' — which signals you actually want to repair, not just close the topic. Avoid three-paragraph apology texts (reads as performative), handwritten apology notes for minor blunders (French people reserve those for serious events like funerals or weddings — overkill here), and 'sorry gifts' (in French professional life, a bottle of wine after a no-show can look like a small bribe). One four-line message or one two-minute phone call clears it. Critically: after the apology lands, do not bring it up again in subsequent meetings — looping back to it forces your French interlocutor to keep reassuring you, and the awkwardness compounds. One clean acknowledgment, one proposed fix, then move on as if it never happened.",
       "vocabulary": [
         {
           "word": "un quiproquo",
           "en": "a misunderstanding (humorous)",
           "vi": "hiểu lầm (nhẹ, có thể buồn cười)",
           "pos": "n.m.",
-          "pronunciation_vi": "ki-pro-ko"
+          "pronunciation_vi": "ki-pro-ko",
+          "pronunciation_en": "kee-proh-KOH (three short syllables, final 'o' like English 'go')"
         },
         {
           "word": "un malentendu",
           "en": "a misunderstanding (serious)",
           "vi": "hiểu lầm (nghiêm trọng)",
           "pos": "n.m.",
-          "pronunciation_vi": "ma-lãn-tãn-du"
+          "pronunciation_vi": "ma-lãn-tãn-du",
+          "pronunciation_en": "ma-lah(n)-tah(n)-DOO (two nasal middle syllables; final 'du' = English 'doo' but with pursed lips)"
         },
         {
           "word": "une formule de politesse",
           "en": "a polite formula",
           "vi": "câu xã giao",
           "pos": "n.f.",
-          "pronunciation_vi": "for-mul dơ po-li-tès"
+          "pronunciation_vi": "for-mul dơ po-li-tès",
+          "pronunciation_en": "for-MEWL duh poh-lee-TESS (final 'esse' = English 'tess'; 'mule' has the rounded French 'u')"
         },
         {
           "word": "une maladresse",
           "en": "a clumsy mistake",
           "vi": "sự vụng về",
           "pos": "n.f.",
-          "pronunciation_vi": "ma-la-drès"
+          "pronunciation_vi": "ma-la-drès",
+          "pronunciation_en": "ma-la-DRESS (three syllables, final 'esse' rhymes with English 'dress')"
         },
         {
           "word": "présenter ses excuses",
           "en": "to offer an apology",
           "vi": "đưa lời xin lỗi",
           "pos": "v.",
-          "pronunciation_vi": "pré-zãn-té sé-z-èk-sykuz"
+          "pronunciation_vi": "pré-zãn-té sé-z-èk-sykuz",
+          "pronunciation_en": "pray-zah(n)-TAY say-zek-SKEWZ (note the liaison 'sé-z-èk' — the 's' attaches to the next vowel)"
         },
         {
           "word": "reconnaître ses torts",
           "en": "to admit fault",
           "vi": "thừa nhận sai",
           "pos": "v.",
-          "pronunciation_vi": "rơ-ko-nè-trơ sé tor"
+          "pronunciation_vi": "rơ-ko-nè-trơ sé tor",
+          "pronunciation_en": "ruh-koh-NEH-truh say TOR (final 's' on 'torts' is silent — rhymes with English 'tore')"
         },
         {
           "word": "un faux pas",
           "en": "a social blunder",
           "vi": "sai sót xã giao",
           "pos": "n.m.",
-          "pronunciation_vi": "fô pa"
+          "pronunciation_vi": "fô pa",
+          "pronunciation_en": "FOH PAH (same as the English borrowing — final 'x' and 's' are silent)"
         },
         {
           "word": "se rattraper",
           "en": "to make amends / catch up",
           "vi": "sửa lỗi / bù",
           "pos": "v.",
-          "pronunciation_vi": "sơ ra-tra-pé"
+          "pronunciation_vi": "sơ ra-tra-pé",
+          "pronunciation_en": "suh ra-tra-PAY (final '-er' ending rhymes with English 'pay')"
         },
         {
           "word": "un geste réparateur",
           "en": "a repair gesture",
           "vi": "hành động sửa lỗi",
           "pos": "n.m.",
-          "pronunciation_vi": "jèst ré-pa-ra-tơr"
+          "pronunciation_vi": "jèst ré-pa-ra-tơr",
+          "pronunciation_en": "ZHEST ray-pa-ra-TUHR ('zh' = the 's' in 'measure'; final 'eur' = uh+r, lips rounded)"
         },
         {
           "word": "sans arrière-pensée",
           "en": "without hidden motive",
           "vi": "không có ý đồ ẩn",
           "pos": "expr.",
-          "pronunciation_vi": "sãn a-riè-rơ pãn-sé"
+          "pronunciation_vi": "sãn a-riè-rơ pãn-sé",
+          "pronunciation_en": "sah(n)-zah-RYAIR pah(n)-SAY (liaison 'sans arrière' = sah(n)-zah; final 'pensée' = pah(n)-SAY)"
         }
       ],
       "dialogue": [
         {
           "speaker": "Linh (au téléphone)",
           "text": "Salut Camille, je voulais revenir sur l'invitation de samedi — j'ai compris trop tard que c'était sérieux.",
+          "en": "Hi Camille — I wanted to circle back about Saturday's invitation. I realized too late that you actually meant it.",
           "vi": "Chào Camille, em muốn nói lại về lời mời thứ bảy — em hiểu quá muộn rằng đó là thật."
         },
         {
           "speaker": "Camille",
           "text": "Ah ! J'ai cru que tu avais simplement oublié.",
+          "en": "Oh! I assumed you'd just forgotten.",
           "vi": "À! Anh tưởng em chỉ quên thôi."
         },
         {
           "speaker": "Linh",
           "text": "Non, j'ai pris ça pour une formule de politesse, à la vietnamienne. Je m'en excuse.",
+          "en": "No — I took it as a polite formula, the Vietnamese way. I'm sorry about that.",
           "vi": "Không, em nghĩ là câu xã giao kiểu Việt. Em xin lỗi."
         },
         {
           "speaker": "Camille",
           "text": "Pas de souci, maintenant je comprends. Samedi prochain, ça marche pour toi ?",
+          "en": "No worries — I get it now. Does next Saturday work for you?",
           "vi": "Không sao, giờ anh hiểu rồi. Thứ bảy tới em rảnh không?"
         }
       ],
@@ -6591,76 +6636,91 @@ export const lessons: FrenchLesson[] =           [
         {
           "speaker": "Linh (texto envoyé lundi matin)",
           "text": "Bonjour Camille, j'aimerais te parler quelques minutes ce midi si tu as un moment — c'est au sujet de samedi.",
+          "en": "Hi Camille — could we talk for a few minutes at lunch today if you have a moment? It's about Saturday.",
           "vi": "Chào Camille, em muốn nói chuyện với anh vài phút trưa nay nếu anh có thời gian — về thứ bảy."
         },
         {
           "speaker": "Camille (réponse 30 minutes plus tard)",
           "text": "Salut Linh, oui aucun problème. 12h30 au café d'en bas ?",
+          "en": "Hi Linh — sure, no problem. 12:30 at the café downstairs?",
           "vi": "Chào Linh, không vấn đề. 12h30 ở quán cà phê dưới nhà nhé?"
         },
         {
           "speaker": "Linh (au café)",
           "text": "Camille, merci de te déplacer. Je voulais revenir directement sur samedi.",
+          "en": "Camille, thanks for coming over. I wanted to address Saturday head-on.",
           "vi": "Camille, cảm ơn anh đến. Em muốn nói thẳng về thứ bảy."
         },
         {
           "speaker": "Camille",
           "text": "Vas-y, je t'écoute.",
+          "en": "Go ahead — I'm listening.",
           "vi": "Em nói đi, anh nghe."
         },
         {
           "speaker": "Linh",
           "text": "Quand tu m'as dit jeudi « passe à la maison samedi vers 19 heures pour dîner avec Marc et moi », je l'ai pris pour une formule sympa, comme on dit chez nous « ghé nhà em chơi nhé ». Chez nous, c'est gentil mais ce n'est pas un vrai rendez-vous — c'est une marque d'affection.",
+          "en": "When you told me Thursday 'come by Saturday around 7 to have dinner with Marc and me,' I read it as a friendly formula — the way we say back home 'ghé nhà em chơi nhé.' In Vietnam, it's affectionate but it's not a real appointment — it's a marker of warmth.",
           "vi": "Khi anh nói thứ năm « ghé nhà thứ bảy 19h ăn tối với Marc và anh nhé », em hiểu đó là câu thân thiện, kiểu Việt « ghé nhà em chơi nhé ». Bên em, là dễ thương nhưng không phải hẹn thật — là dấu của tình cảm."
         },
         {
           "speaker": "Camille",
           "text": "Ah ! Je comprends mieux maintenant. Et donc samedi, tu n'es pas venue parce que tu pensais que c'était purement symbolique.",
+          "en": "Ah — that makes more sense now. So on Saturday you didn't come because you thought it was purely symbolic.",
           "vi": "À! Giờ anh hiểu rõ hơn. Vậy thứ bảy em không đến vì em nghĩ đó chỉ là tượng trưng."
         },
         {
           "speaker": "Linh",
           "text": "Exactement. Et c'est seulement dimanche, quand tu as posté la photo de la table avec quatre couverts dont un vide, que j'ai compris ce qui s'était passé. Je m'en excuse — c'était une vraie maladresse.",
+          "en": "Exactly. And it was only on Sunday, when you posted that photo of the table with four place settings — one of them empty — that I understood what had happened. I'm sorry — it was a genuine blunder on my part.",
           "vi": "Chính xác. Và chỉ chủ nhật, khi anh đăng ảnh bàn ăn 4 bộ đồ ăn trong đó một bộ trống, em mới hiểu chuyện gì xảy ra. Em xin lỗi — là sự vụng về thật."
         },
         {
           "speaker": "Camille",
           "text": "Sur le moment, on a été un peu vexés — Marc surtout, parce qu'il avait préparé du bún chả que sa mère lui avait appris. Mais maintenant que tu m'expliques, je vois ça comme un quiproquo culturel, pas comme un rejet.",
+          "en": "At the time we were a bit hurt — Marc especially, because he'd made bún chả the way his mother taught him. But now that you've explained, I see it as a cultural mix-up, not a rejection.",
           "vi": "Lúc đó tụi anh hơi tổn thương — đặc biệt là Marc, vì anh ấy nấu bún chả mà mẹ anh ấy dạy. Nhưng giờ em giải thích, anh xem là hiểu lầm văn hóa, không phải từ chối."
         },
         {
           "speaker": "Linh",
           "text": "Marc avait fait du bún chả ? Maintenant je suis vraiment désolée. La prochaine fois que vous m'invitez, je viendrai même si je ne suis pas sûre que c'est sérieux — quitte à arriver et découvrir qu'il n'y a rien.",
+          "en": "Marc made bún chả? Now I really feel awful. Next time you invite me, I'll come even if I'm not sure it's serious — I'd rather show up and find out there's nothing planned.",
           "vi": "Marc đã nấu bún chả? Giờ em thực sự xin lỗi. Lần sau anh chị mời, em sẽ đến kể cả không chắc là thật — sẵn sàng đến và phát hiện không có gì."
         },
         {
           "speaker": "Camille",
           "text": "Ne sois pas trop dure avec toi-même. Mais oui, en France, quand on dit une heure et un menu, c'est en général qu'on a déjà fait les courses.",
+          "en": "Don't be too hard on yourself. But yes — in France, if someone gives you a time and a menu, it usually means they've already done the grocery shopping.",
           "vi": "Đừng khắt khe với bản thân quá. Nhưng đúng, ở Pháp khi nói một giờ và một menu, thường là đã đi chợ rồi."
         },
         {
           "speaker": "Linh",
           "text": "Je note. Question pratique : est-ce qu'il y a une formule en français qui veut dire « ghé nhà em chơi nhé » sans être un vrai rendez-vous ?",
+          "en": "Noted. Practical question — is there a French expression that means 'drop by sometime' without being an actual plan?",
           "vi": "Em ghi. Câu thực tế: có công thức nào tiếng Pháp nghĩa « ghé nhà em chơi nhé » mà không phải hẹn thật?"
         },
         {
           "speaker": "Camille",
           "text": "« Faut qu'on se voie un de ces quatre » est l'équivalent. C'est volontairement vague — pas de date, pas d'heure. Si on dit « samedi à 19h », c'est une vraie invitation.",
+          "en": "'Faut qu'on se voie un de ces quatre' (we should meet up one of these days) is the equivalent. It's deliberately vague — no date, no time. If someone says 'Saturday at 7,' that's a real invitation.",
           "vi": "« Faut qu'on se voie un de ces quatre » là tương đương. Cố ý mơ hồ — không ngày, không giờ. Nếu nói « samedi à 19h », là mời thật."
         },
         {
           "speaker": "Linh",
           "text": "Très clair. Je m'achète cette grille mentale : avec date et heure = vrai ; sans date = formule. Et pour me rattraper : je vous invite, Marc et toi, à manger samedi prochain. Bún bò Huế cette fois — je te promets que je serai présente.",
+          "en": "Crystal clear. I'm buying the mental shortcut: date and time = real, no date = formula. And to make it up to you — I'm inviting you and Marc over for dinner next Saturday. Bún bò Huế this time, and I promise I'll be there.",
           "vi": "Rất rõ. Em mua cách phân biệt: có ngày giờ = thật; không ngày = xã giao. Và để bù: em mời anh và Marc ăn thứ bảy tới. Bún bò Huế lần này — em hứa em sẽ có mặt."
         },
         {
           "speaker": "Camille",
           "text": "Avec plaisir. Et merci d'être venue m'en parler en face — beaucoup de gens auraient juste laissé passer.",
+          "en": "With pleasure. And thanks for coming to talk to me in person — a lot of people would have just let it slide.",
           "vi": "Sẵn lòng. Và cảm ơn em đã đến nói trực diện — nhiều người chỉ để trôi qua."
         },
         {
           "speaker": "Linh",
           "text": "Chez nous, ne pas en reparler aurait été perçu comme pire. C'est aussi un code à apprendre dans l'autre sens.",
+          "en": "Back home, not bringing it up would have been seen as worse. That's another code to learn — going the other direction.",
           "vi": "Bên em, không nhắc lại bị xem là tệ hơn. Đây cũng là một code phải học theo chiều ngược."
         }
       ],
@@ -6669,30 +6729,44 @@ export const lessons: FrenchLesson[] =           [
         "Đồng nghiệp Pháp đến nhà bạn ăn cơm và thấy bạn lấy đôi đũa cắm thẳng vào bát cơm để đi lấy món khác. Sau bữa, đồng nghiệp im lặng. Bạn đoán có sai sót — hỏi thẳng và nếu cần, giải thích/xin lỗi.",
         "Bạn nói đùa về vợ một đồng nghiệp Pháp trong cuộc nhậu công ty, kiểu hài Việt; họ phản ứng lạnh. Sau cuộc nhậu, gọi xin lỗi mà không over-apologize — thừa nhận đùa quá đà, học được gì."
       ],
+      "roleplay_prompts_en": [
+        "You declined a French coworker's dinner invitation thinking it was just polite filler. Two days later you find out they'd booked a restaurant and invited four other friends specifically to meet you. Call to apologize — keep it short, no spiraling, and propose a concrete way to make it up to them. (US/UK office equivalent: think of the time a manager set up a 'casual coffee' that turned out to be a small surprise team welcome — same calibration, same recovery.)",
+        "A French coworker came over for dinner at your place. They saw you stick your chopsticks straight up in the rice bowl while you went to grab another dish (a serious taboo in Vietnamese culture but invisible to the French). After the meal, your coworker is unusually quiet. You suspect something off — ask directly whether anything bothered them, and if it was something they did, explain and apologize without over-explaining.",
+        "You made a joke about a French coworker's wife at an after-work drinks event, in the Vietnamese teasing style ('cô ấy vẫn chịu nổi anh, ghê thật'). They went visibly cold. Call them after the event to apologize — without over-apologizing — name the specific overstep, what you've learned, and move on. (Anglophone parallel: making a 'roast' joke in a US/UK office context where the person clearly didn't sign up for it.)"
+      ],
       "register_notes": "Lời xin lỗi sau hiểu lầm văn hóa với người Pháp đã thân: tutoiement đúng. Tránh « je suis vraiment vraiment désolée » lặp ba lần — quá đậm; một « je m'en excuse » + tên lỗi cụ thể là đủ. Cụm hữu ích: « j'ai mal interprété » (em hiểu sai), « j'aurais dû demander » (đáng lẽ phải hỏi), « si la proposition tient toujours » (nếu lời mời còn). Tránh đổ lỗi văn hóa thụ động (« c'est culturel »); thay bằng « Je connais cette différence mais je n'ai pas su la mobiliser à temps ». Khi đối phương chấp nhận xin lỗi (« pas de souci », « ne sois pas trop dure avec toi-même »), không tiếp tục xin lỗi — chuyển sang chủ đề khác hoặc đề xuất hành động bù. Trong môi trường công ty (sếp/khách Pháp), giữ vouvoiement và ngắn hơn — một câu thừa nhận, một câu đề xuất giải pháp.",
+      "register_notes_en": "Apologizing to a French friend you're already on tu terms with: stay on tu (tutoiement). Switching to vous mid-apology would actually feel cold and performative, like an English speaker suddenly saying 'sir' to a longtime friend. Avoid stacking intensifiers — 'je suis vraiment vraiment désolée' three times reads as theatrical (over-apologizing as performance) and makes a French listener uncomfortable. One 'je m'en excuse' plus the specific name of the mistake is enough. Useful phrases: 'j'ai mal interprété' (I misread), 'j'aurais dû demander' (I should have asked), 'si la proposition tient toujours' (if the offer still stands). Reject the passive cultural alibi ('c'est culturel') — it reads as 'sorry not sorry'; replace with 'Je connais cette différence mais je n'ai pas su la mobiliser à temps' (I know this difference, I just didn't apply it in time), which keeps ownership intact. The single biggest register failure mode for anglophones is not knowing when to stop: when the other person says 'pas de souci' or 'ne sois pas trop dure avec toi-même,' that's the close — don't keep apologizing. Continuing past that point is what makes the awkwardness compound and forces them to keep reassuring you, which over time damages the relationship more than the original misstep did. In a workplace (French boss or external client), switch to vouvoiement and make it even shorter — one sentence acknowledging the error, one sentence proposing the fix. Long apologies in a professional French setting read as unprofessional, not respectful.",
       "idiom_glosses": [
         {
           "idiom": "Faire amende honorable",
           "literal": "Làm sự đền bù danh dự",
+          "literal_en": "To make honorable amends",
           "meaning": "Công khai thừa nhận sai và sửa.",
+          "meaning_en": "To publicly acknowledge a mistake and take visible steps to make it right — formal and a touch ceremonial.",
           "example": "J'ai fait amende honorable auprès de Camille en lui réinvitant chez moi."
         },
         {
           "idiom": "Tourner la page",
           "literal": "Lật trang",
+          "literal_en": "To turn the page",
           "meaning": "Bỏ qua, không quay lại chủ đề nữa.",
+          "meaning_en": "To move on — close a difficult chapter and not bring it up again (same image as English 'turn the page,' but in French it specifically signals the conversation is now closed).",
           "example": "Maintenant qu'on s'est expliqués, on peut tourner la page."
         },
         {
           "idiom": "Mettre les choses au clair",
           "literal": "Đặt mọi việc cho rõ",
+          "literal_en": "To put things in the clear",
           "meaning": "Giải thích để xóa hiểu lầm.",
+          "meaning_en": "To clear the air — sit down and explicitly explain what happened to dispel a misunderstanding.",
           "example": "J'ai préféré mettre les choses au clair plutôt que laisser le malaise."
         },
         {
           "idiom": "Un de ces quatre",
           "literal": "Một trong những bốn này",
+          "literal_en": "One of these four",
           "meaning": "Một ngày nào đó (cố ý mơ hồ — câu xã giao Pháp).",
+          "meaning_en": "'One of these days' — a deliberately vague French social formula used to express vague warmth without committing to a real date. The French equivalent of English 'we should grab a coffee sometime' or Vietnamese 'ghé nhà em chơi nhé'.",
           "example": "Faut qu'on se voie un de ces quatre — c'est l'équivalent du « ghé nhà em chơi nhé »."
         }
       ],
@@ -6700,62 +6774,86 @@ export const lessons: FrenchLesson[] =           [
         {
           "type": "fill-blank",
           "instruction_vi": "Điền cụm vào lời xin lỗi.",
+          "instruction_en": "Fill in each blank with the missing word from an apology.",
           "items": [
             {
               "prompt": "Je voudrais ___ sur l'invitation de samedi.",
-              "answer": "revenir"
+              "answer": "revenir",
+              "hint_vi": "động từ « quay lại / nói lại về »",
+              "hint_en": "verb meaning 'to come back to / revisit (a topic)'"
             },
             {
               "prompt": "J'ai pensé qu'il s'___ d'une formule de politesse.",
-              "answer": "agissait"
+              "answer": "agissait",
+              "hint_vi": "imparfait của « il s'agit de »",
+              "hint_en": "imparfait of the impersonal 'il s'agit de' (it was a matter of)"
             },
             {
               "prompt": "Je m'excuse pour la ___.",
-              "answer": "maladresse"
+              "answer": "maladresse",
+              "hint_vi": "danh từ « sự vụng về »",
+              "hint_en": "noun meaning 'clumsy mistake / social blunder'"
             },
             {
               "prompt": "Si la proposition tient toujours, je serais ___ de venir.",
-              "answer": "heureuse"
+              "answer": "heureuse",
+              "hint_vi": "tính từ « vui / hạnh phúc » (giống cái)",
+              "hint_en": "feminine adjective for 'happy / glad' (the speaker is female)"
             }
           ]
         },
         {
           "type": "matching",
           "instruction_vi": "Nối thành ngữ với chiến lược sửa lỗi.",
+          "instruction_en": "Match each idiom with the repair strategy it represents.",
           "items": [
             {
               "prompt": "Faire amende honorable",
-              "answer": "công khai thừa nhận và sửa (publicly acknowledge and make amends)"
+              "answer": "công khai thừa nhận và sửa (publicly acknowledge and make amends)",
+              "english": "Faire amende honorable → to publicly acknowledge a mistake and make formal amends"
             },
             {
               "prompt": "Tourner la page",
-              "answer": "không quay lại chủ đề nữa (turn the page, move on)"
+              "answer": "không quay lại chủ đề nữa (turn the page, move on)",
+              "english": "Tourner la page → to move on / close the chapter / not bring it up again"
             },
             {
               "prompt": "Mettre les choses au clair",
-              "answer": "giải thích để xóa hiểu lầm (clear things up to dispel a misunderstanding)"
+              "answer": "giải thích để xóa hiểu lầm (clear things up to dispel a misunderstanding)",
+              "english": "Mettre les choses au clair → to clear the air by explaining what happened"
             },
             {
               "prompt": "Un de ces quatre",
-              "answer": "câu xã giao mơ hồ Pháp (a vague French social formula (\"one of these days\"))"
+              "answer": "câu xã giao mơ hồ Pháp (a vague French social formula (\"one of these days\"))",
+              "english": "Un de ces quatre → 'one of these days' — a deliberately vague French social formula"
             }
           ]
         },
         {
           "type": "translation",
           "instruction_vi": "Dịch sang tiếng Pháp lịch sự B2.",
+          "instruction_en": "Translate each Vietnamese sentence into B2-level polite French.",
           "items": [
             {
               "prompt": "Em đã hiểu sai lời mời — hoàn toàn không phải thiếu tôn trọng.",
-              "answer": "J'ai mal interprété l'invitation — ce n'était absolument pas un manque de respect."
+              "answer": "J'ai mal interprété l'invitation — ce n'était absolument pas un manque de respect.",
+              "english": "I misread the invitation — it absolutely wasn't a lack of respect.",
+              "hint_vi": "dùng « mal interprété » + « absolument pas »",
+              "hint_en": "use 'mal interprété' (misread) and 'absolument pas' (absolutely not) for emphasis"
             },
             {
               "prompt": "Nếu lời mời vẫn còn, em rất vui được đến thứ bảy tới.",
-              "answer": "Si la proposition tient toujours, je serais heureuse de venir samedi prochain."
+              "answer": "Si la proposition tient toujours, je serais heureuse de venir samedi prochain.",
+              "english": "If the offer still stands, I'd be happy to come next Saturday.",
+              "hint_vi": "« la proposition tient toujours » = lời mời vẫn còn; conditional « je serais »",
+              "hint_en": "'la proposition tient toujours' = the offer still stands; use the conditional 'je serais'"
             },
             {
               "prompt": "Em vẫn đang học các luật ngầm của các anh — cảm ơn vì sự kiên nhẫn.",
-              "answer": "Je suis encore en train d'apprendre vos codes — merci de votre patience."
+              "answer": "Je suis encore en train d'apprendre vos codes — merci de votre patience.",
+              "english": "I'm still learning your unwritten rules — thank you for your patience.",
+              "hint_vi": "« en train de » = đang; « vos codes » = các luật ngầm",
+              "hint_en": "'en train de' = in the middle of (an ongoing action); 'vos codes' = your unspoken rules"
             }
           ]
         }
@@ -6776,6 +6874,12 @@ export const lessons: FrenchLesson[] =           [
             "ministère → mi-nis-tèr",
             "charge → sharj",
             "francophones → frãn-ko-fon"
+          ],
+          "pronunciation_focus_en": [
+            "représente → ruh-pray-ZAH(n)T (nasal third syllable; final 'te' is silent — air through nose for 'ãn')",
+            "ministère → mee-nees-TAIR (final 'tère' rhymes with English 'tear' as in 'rip')",
+            "charge → SHARZH (final 'ge' = 'zh' like the 's' in 'measure'; rhymes with English 'large' but with the 'zh' sound)",
+            "francophones → frah(n)-ko-FONE (final 'phones' = English 'phone' + s, but the 's' is silent)"
           ]
         },
         {
@@ -6786,6 +6890,12 @@ export const lessons: FrenchLesson[] =           [
             "attention → a-tãn-sion",
             "travaux → tra-vo",
             "transition → trãn-zi-sion"
+          ],
+          "pronunciation_focus_en": [
+            "délégation → day-lay-gah-SYO(n) (nasal final, rhymes with 'on' said through the nose)",
+            "attention → ah-tah(n)-SYO(n) (two nasals — middle and final; very different from English 'a-TEN-shun')",
+            "travaux → trah-VOH (one-syllable feel; final 'x' silent — rhymes with English 'show')",
+            "transition → trah(n)-zee-SYO(n) (note the 's' becomes 'z' between vowels — 'trah(n)-ZEE' not 'trah(n)-SEE')"
           ]
         },
         {
@@ -6796,6 +6906,12 @@ export const lessons: FrenchLesson[] =           [
             "personnel → pèr-so-nèl",
             "intervention → an-tèr-vãn-sion",
             "éclairante → é-klè-rãnt"
+          ],
+          "pronunciation_focus_en": [
+            "titre → TEE-truh (the final 'tre' is a soft 'truh' — barely there)",
+            "personnel → pair-so-NEL (stress on the last syllable, unlike English 'PER-suh-nul')",
+            "intervention → ah(n)-tair-vah(n)-SYO(n) (three nasals — counts as a 'big French word' that needs slow articulation)",
+            "éclairante → ay-kleh-RAH(n)T (final 'ante' is nasal, 'te' silent — air through nose, mouth open)"
           ]
         },
         {
@@ -6806,6 +6922,12 @@ export const lessons: FrenchLesson[] =           [
             "relation → rơ-la-sion",
             "attaché → a-ta-shé",
             "commercial → ko-mer-si-al"
+          ],
+          "pronunciation_focus_en": [
+            "pourriez → poor-YAY (two syllables, the 'r' is the rolled French 'r' from the back of the throat)",
+            "relation → ruh-lah-SYO(n) (nasal final; very different from English 'reLAYshun')",
+            "attaché → ah-tah-SHAY (same as English borrowing 'attaché' — stress on the final syllable)",
+            "commercial → koh-mair-SYAL (no 'sh' sound — it's 'syal' not 'shul' as in English)"
           ]
         },
         {
@@ -6816,102 +6938,124 @@ export const lessons: FrenchLesson[] =           [
             "prolonger → pro-lõn-jé",
             "échange → é-shãnj",
             "session → sè-sion"
+          ],
+          "pronunciation_focus_en": [
+            "propose → proh-POHZ (final 's' becomes 'z' — rhymes with English 'rose')",
+            "prolonger → proh-loh(n)-ZHAY (nasal middle; final 'ger' = 'zhay' with the 'measure' s-sound)",
+            "échange → ay-SHAH(n)ZH (nasal middle; final 'ge' = 'zh')",
+            "session → seh-SYO(n) (nasal final; different from English 'SEH-shun')"
           ]
         }
       ],
       "cultural_notes_vi": "Tại hội nghị quốc tế, đại biểu Việt Nam thường đối mặt với hai thách thức về register: (1) bên cạnh người Pháp/Bỉ/Thụy Sĩ — phải dùng tiếng Pháp B2-C1 chính xác, không dùng các cấu trúc ngày thường; (2) bên cạnh đại biểu nước châu Phi/Maghreb — họ thường nói tiếng Pháp lưu loát hơn nhưng register khác (giọng nói có thể trực tiếp hơn, có khi ít diplomatic hơn). Là người Việt, bạn nằm ở vị trí trung gian — cần diplomatic nhất, vì truyền thống ngoại giao Việt và phong cách Pháp chính thức trùng nhau ở điểm này.\n\nLỗi phổ biến: (1) « over-formal » đến cứng nhắc — đọc thuộc bài phát biểu, không tự nhiên trong Q&A; (2) « name-dropping » sai cách — kể tên các quan chức Việt Nam mà không ai biết, làm mất thời gian; (3) « apologize » khi nói tiếng Pháp — « excusez mon français » trước khi nói; người Pháp thấy gượng và không cần thiết khi tiếng Pháp của bạn đã B2.\n\nMột nguyên tắc: cá nhân hóa khi có thể. Khi giới thiệu, đừng chỉ nói « le ministère du Plan » — thêm một câu cụ thể về mảng bạn phụ trách (« en charge des partenariats francophones »). Khi nhận xét về panel, đừng dùng các cụm chung chung (« très intéressant ») — nêu một điểm cụ thể đã chạm đến bạn. Sự cụ thể là cách bạn được nhớ và tạo cơ hội networking sau hội nghị.",
+      "cultural_notes_en": "International conferences in French (UN agencies, OECD, OIF, AFD-hosted events) have a register that anglophones often misread in either direction. The American-business default — friendly, first-name, 'so what brings you here?' — feels presumptuous and slightly disrespectful at a Francophone conference, even at the coffee breaks. The British-academic default — dry, ironic, low-key — comes across as standoffish to West African and Maghrebi delegates, who often have a warmer professional register than the French themselves. The B2 sweet spot: formal vouvoiement, a personal-but-specific opener ('I noted your point on X — applicable to my country because Y'), and one concrete proposal for follow-up.\n\nVietnamese delegates have a structural advantage here: the Vietnamese diplomatic tradition (formal, respectful, indirect at first then concrete) maps remarkably well onto French conference protocol. The cross-cultural trap to avoid is over-correcting — sometimes Vietnamese delegates over-formalize ('Excellency, with the utmost humility, may I respectfully suggest…') because they're mapping onto Vietnamese senior-government register. In French, that level reads as either sarcasm or insecurity. Stick to clean B2 forms: 'Monsieur', 'à titre personnel', 'pourriez-vous', 'je vous propose'.\n\nThree mistakes that flag you as inexperienced: (1) Apologizing for your French ('excusez mon français') — once you're at B2 it's unnecessary and reads as fishing for reassurance; just speak. (2) Name-dropping Vietnamese officials nobody knows — wastes airtime and signals you're more concerned with hierarchy than substance. (3) Reading from a printed speech during Q&A — French conference culture treats Q&A as a real conversation; reading instead of speaking marks you as someone who isn't comfortable improvising. Coming from a US/UK academic background you may be used to reading papers verbatim — leave that habit at the door for French Q&A.",
       "tip_advice_vi": "Trước hội nghị: đọc trước chương trình, đánh dấu 5-7 người bạn muốn gặp; chuẩn bị 3 câu giới thiệu (15s, 60s, 3 phút) tùy ngữ cảnh. Trong hội nghị: đến trước khai mạc 15 phút — đó là « golden window » để bắt chuyện không gượng. Mang theo name card (in cả hai mặt: Pháp + Anh, không cần Việt cho audience quốc tế). Ghi note nhanh sau mỗi cuộc gặp — không phải nhớ tất cả, chỉ 2 từ khóa giúp follow-up. Sau hội nghị 24-48 giờ: gửi email cá nhân cho 5-7 người đã trao đổi sâu — không phải spam, chỉ những người có nội dung cụ thể để gửi (tài liệu nhắc đến, lời mời café khi họ qua Hà Nội, một báo cáo bạn đã hứa). Trong các phiên Q&A, nếu phát biểu, mở đầu bằng « Au nom de la délégation vietnamienne… » để khẳng định chính danh.",
+      "tip_advice_en": "Before the conference: read the full program, flag 5–7 people you specifically want to meet, and prepare three versions of your self-introduction (15-second elevator, 60-second standard, 3-minute deep-dive). At the event: arrive 15 minutes before the opening — that's the golden window for unforced introductions before sessions begin. Bring physical business cards printed in French and English (skip Vietnamese for an international audience — it makes the card feel inward-facing). Take quick post-conversation notes — not full notes, just two keywords per person that will help you write a useful follow-up email later. Within 24–48 hours of the conference, send personalized emails to the 5–7 contacts you had real exchanges with — not a bulk newsletter, only people for whom you have something specific to send (a document you mentioned, an offer of coffee when they next pass through Hanoi, a report you promised). In Q&A sessions, if you take the floor on behalf of your delegation, open with 'Au nom de la délégation vietnamienne…' (on behalf of the Vietnamese delegation) — this establishes standing immediately. One US/UK-specific calibration note: in French conference culture, asking a panelist a precise critical question is a sign of respect, not a challenge — anglophones used to gentler 'thank-you-for-your-talk' questions can lean in here.",
       "vocabulary": [
         {
           "word": "une délégation",
           "en": "a delegation",
           "vi": "đoàn đại biểu",
           "pos": "n.f.",
-          "pronunciation_vi": "dé-lé-ga-sion"
+          "pronunciation_vi": "dé-lé-ga-sion",
+          "pronunciation_en": "day-lay-gah-SYO(n) (four syllables, nasal final; rhymes with 'on' said through the nose)"
         },
         {
           "word": "un attaché commercial",
           "en": "trade attaché",
           "vi": "tham tán thương mại",
           "pos": "n.m.",
-          "pronunciation_vi": "a-ta-shé ko-mer-si-al"
+          "pronunciation_vi": "a-ta-shé ko-mer-si-al",
+          "pronunciation_en": "ah-tah-SHAY koh-mair-SYAL (the 'attaché' is the same as the English borrowing — final syllables stressed)"
         },
         {
           "word": "une intervention",
           "en": "a (panel) intervention",
           "vi": "bài phát biểu",
           "pos": "n.f.",
-          "pronunciation_vi": "an-tèr-vãn-sion"
+          "pronunciation_vi": "an-tèr-vãn-sion",
+          "pronunciation_en": "ah(n)-tair-vah(n)-SYO(n) (three nasal vowels; in French conference context this means a panel contribution, not an interruption)"
         },
         {
           "word": "un panel d'experts",
           "en": "expert panel",
           "vi": "phiên chuyên gia",
           "pos": "n.m.",
-          "pronunciation_vi": "pa-nèl dèk-sper"
+          "pronunciation_vi": "pa-nèl dèk-sper",
+          "pronunciation_en": "pah-NEL dek-SPAIR (final 's' on 'experts' silent; 'expert' rhymes with English 'air')"
         },
         {
           "word": "prendre la parole",
           "en": "to take the floor",
           "vi": "phát biểu",
           "pos": "v.",
-          "pronunciation_vi": "prãndr la pa-rol"
+          "pronunciation_vi": "prãndr la pa-rol",
+          "pronunciation_en": "PRAH(n)-druh lah pah-ROHL (nasal first syllable; final 'le' silent on 'parole')"
         },
         {
           "word": "la francophonie",
           "en": "the French-speaking world",
           "vi": "khối Pháp ngữ",
           "pos": "n.f.",
-          "pronunciation_vi": "frãn-ko-fo-ni"
+          "pronunciation_vi": "frãn-ko-fo-ni",
+          "pronunciation_en": "frah(n)-koh-foh-NEE (four syllables; ends with stressed 'NEE' like English 'knee')"
         },
         {
           "word": "un partenariat bilatéral",
           "en": "bilateral partnership",
           "vi": "quan hệ đối tác song phương",
           "pos": "n.m.",
-          "pronunciation_vi": "par-tơ-na-ria bi-la-té-ral"
+          "pronunciation_vi": "par-tơ-na-ria bi-la-té-ral",
+          "pronunciation_en": "par-tuh-nah-RYAH bee-lah-tay-RAL (formal diplomatic register; 'partenariat' is a heavy word — slow it down)"
         },
         {
           "word": "à titre personnel",
           "en": "in a personal capacity",
           "vi": "với tư cách cá nhân",
           "pos": "expr.",
-          "pronunciation_vi": "a ti-trơ pèr-so-nèl"
+          "pronunciation_vi": "a ti-trơ pèr-so-nèl",
+          "pronunciation_en": "ah TEE-truh pair-so-NEL (signal phrase: switches you from official-position mode to personal-opinion mode — a key B2 register move)"
         },
         {
           "word": "une note diplomatique",
           "en": "a diplomatic note",
           "vi": "công hàm",
           "pos": "n.f.",
-          "pronunciation_vi": "not di-plo-ma-tik"
+          "pronunciation_vi": "not di-plo-ma-tik",
+          "pronunciation_en": "NOHT dee-ploh-mah-TEEK (formal written diplomatic communication between governments — heavier than 'a letter')"
         },
         {
           "word": "une feuille de route",
           "en": "a roadmap",
           "vi": "lộ trình hành động",
           "pos": "n.f.",
-          "pronunciation_vi": "fơy dơ rut"
+          "pronunciation_vi": "fơy dơ rut",
+          "pronunciation_en": "FUH-yuh duh ROOT (the 'feuille' = 'fuh-yuh' is one of the hardest French sounds for English speakers — try 'foo-ee' said fast)"
         }
       ],
       "dialogue": [
         {
           "speaker": "M. Diop",
           "text": "Vous représentez quel pays exactement ?",
+          "en": "Which country do you represent, exactly?",
           "vi": "Anh đại diện nước nào cụ thể?"
         },
         {
           "speaker": "Quân",
           "text": "Le Vietnam — délégation du ministère du Plan. Votre intervention de ce matin m'a beaucoup intéressé.",
+          "en": "Vietnam — Ministry of Planning delegation. I found your panel contribution this morning very interesting.",
           "vi": "Việt Nam — đoàn Bộ Kế hoạch. Bài phát biểu sáng nay của ngài rất khiến em quan tâm."
         },
         {
           "speaker": "M. Diop",
           "text": "Merci. Quel point en particulier ?",
+          "en": "Thank you. Which point in particular?",
           "vi": "Cảm ơn. Điểm cụ thể nào?"
         },
         {
           "speaker": "Quân",
           "text": "Votre lecture du financement vert pour les pays à revenu intermédiaire — applicable au Vietnam.",
+          "en": "Your reading of green financing for middle-income countries — directly applicable to Vietnam.",
           "vi": "Cách ngài đọc tài chính xanh cho các nước thu nhập trung bình — áp dụng được cho Việt Nam."
         }
       ],
@@ -6919,66 +7063,79 @@ export const lessons: FrenchLesson[] =           [
         {
           "speaker": "Quân (entre deux sessions, cocktail)",
           "text": "Bonjour, je crois que je vous ai croisé pendant le panel de ce matin — Quân Trần, délégation vietnamienne.",
+          "en": "Hello — I believe I crossed paths with you during this morning's panel. Quân Trần, Vietnamese delegation.",
           "vi": "Chào ngài, em nghĩ mình đã gặp ngài trong panel sáng nay — Quân Trần, đoàn Việt Nam."
         },
         {
           "speaker": "M. Diop",
           "text": "Bonjour Monsieur Trần. Mamadou Diop, ministère sénégalais des Finances. Vous avez posé la question sur la traçabilité des fonds verts, c'est ça ?",
+          "en": "Hello, Mr. Trần. Mamadou Diop, Senegalese Ministry of Finance. You asked the question about traceability of green funds, didn't you?",
           "vi": "Chào anh Trần. Mamadou Diop, Bộ Tài chính Senegal. Anh đã đặt câu hỏi về truy xuất nguồn gốc quỹ xanh, đúng không?"
         },
         {
           "speaker": "Quân",
           "text": "C'est moi. Vous m'avez répondu avec des chiffres précis sur le cas sénégalais — j'ai pris des notes. Pourrions-nous prolonger l'échange quelques minutes ?",
+          "en": "That was me. You answered with specific figures on the Senegalese case — I took notes. Could we extend the exchange for a few minutes?",
           "vi": "Là em. Ngài đã trả lời em với số liệu cụ thể về trường hợp Senegal — em đã ghi chú. Mình có thể kéo dài trao đổi vài phút không?"
         },
         {
           "speaker": "M. Diop",
           "text": "Bien sûr. Quel angle vous intéresse ?",
+          "en": "Of course. Which angle interests you?",
           "vi": "Tất nhiên. Góc nào anh quan tâm?"
         },
         {
           "speaker": "Quân",
           "text": "Au Vietnam, nous avons un dispositif similaire en construction — l'AFD nous accompagne depuis 2023. Mais nous butons sur la même question que celle que vous avez résolue : comment vérifier que les fonds arrivent bien aux PME et pas dans les administrations intermédiaires.",
+          "en": "In Vietnam we have a similar mechanism being built — the AFD has been supporting us since 2023. But we're stuck on the same question you solved: how to verify that the funds actually reach SMEs and not the intermediate administrations.",
           "vi": "Ở Việt Nam, chúng em đang xây dựng cơ chế tương tự — AFD đồng hành từ 2023. Nhưng chúng em vướng cùng câu hỏi mà ngài đã giải quyết: làm sao kiểm tra quỹ thực sự đến DNVVN chứ không phải đọng ở cấp trung gian."
         },
         {
           "speaker": "M. Diop",
           "text": "Question classique. Notre solution a été de passer par une structure tierce — un cabinet d'audit privé qui valide chaque décaissement avant qu'il quitte le compte central. Coût supplémentaire, mais ça a divisé par cinq les irrégularités.",
+          "en": "Classic question. Our solution was to route through a third party — a private audit firm that validates each disbursement before it leaves the central account. There's an extra cost, but it cut irregularities by a factor of five.",
           "vi": "Câu hỏi cổ điển. Giải pháp của chúng tôi là đi qua bên thứ ba — một công ty kiểm toán tư nhân xác nhận mỗi lần giải ngân trước khi rời tài khoản trung tâm. Chi phí thêm, nhưng giảm bất thường xuống 5 lần."
         },
         {
           "speaker": "Quân",
           "text": "Très intéressant. Je peux me permettre une question franche — comment l'audit privé a-t-il été accepté politiquement, sachant que ça touche à des zones sensibles ?",
+          "en": "Very interesting. If I may ask a frank question — how was the private audit accepted politically, given it touches sensitive areas?",
           "vi": "Rất thú vị. Em xin phép hỏi một câu thẳng — kiểm toán tư nhân đã được chấp nhận về chính trị thế nào, biết rằng nó chạm vùng nhạy cảm?"
         },
         {
           "speaker": "M. Diop",
           "text": "Franc, j'apprécie. La clé : faire venir l'idée de l'extérieur. C'est l'AFD qui l'a posée comme condition — donc personne en interne n'a porté politiquement la décision. Si c'était venu d'un ministre sénégalais, ça aurait coincé.",
+          "en": "Frank — I appreciate it. The key: have the idea come from outside. The AFD set it as a condition — so no one internally had to carry the political weight of the decision. If it had come from a Senegalese minister, it would have stalled.",
           "vi": "Anh thẳng, tôi quý. Chìa khóa: để ý tưởng đến từ bên ngoài. AFD đã đặt làm điều kiện — vậy không ai trong nước phải gánh chính trị quyết định. Nếu đến từ một bộ trưởng Senegal, đã kẹt."
         },
         {
           "speaker": "Quân",
           "text": "C'est exactement le mécanisme dont nous avons besoin. Pourriez-vous nous mettre en relation avec votre cabinet d'audit ? Au minimum, qu'on apprenne de leur expérience ?",
+          "en": "That's exactly the mechanism we need. Could you put us in touch with your audit firm? At minimum so we can learn from their experience?",
           "vi": "Đó đúng là cơ chế chúng em cần. Ngài có thể giúp giới thiệu chúng em với công ty kiểm toán không? Ít nhất để học từ kinh nghiệm của họ?"
         },
         {
           "speaker": "M. Diop",
           "text": "Avec plaisir. Donnez-moi votre carte, je vous fais l'introduction par mail demain matin. Et si vous montez un projet pilote au Vietnam, je serais curieux d'avoir un retour dans six mois.",
+          "en": "With pleasure. Give me your card, I'll make the introduction by email tomorrow morning. And if you set up a pilot project in Vietnam, I'd be curious to hear feedback in six months.",
           "vi": "Sẵn lòng. Anh đưa name card, tôi giới thiệu qua email sáng mai. Và nếu anh xây dự án thí điểm ở Việt Nam, tôi muốn nghe phản hồi sau 6 tháng."
         },
         {
           "speaker": "Quân",
           "text": "C'est noté — je vous tiendrai informé. Voici ma carte. À titre personnel, j'aimerais aussi vous proposer un café si vous passez à Hanoï — il y a une délégation sénégalaise attendue en novembre, je crois.",
+          "en": "Noted — I'll keep you informed. Here's my card. On a personal note, I'd also like to invite you for coffee if you pass through Hanoi — I believe a Senegalese delegation is expected in November.",
           "vi": "Em ghi — em sẽ giữ liên lạc. Đây là name card của em. Cá nhân em cũng muốn mời ngài cà phê nếu ngài qua Hà Nội — em nghe có đoàn Senegal sắp đến tháng 11."
         },
         {
           "speaker": "M. Diop",
           "text": "Effectivement, je serai du voyage. Je vous contacte une dizaine de jours avant. Bonne suite de conférence, Monsieur Trần.",
+          "en": "Indeed, I'll be on that trip. I'll contact you about ten days beforehand. Enjoy the rest of the conference, Mr. Trần.",
           "vi": "Đúng vậy, tôi sẽ đi. Tôi liên hệ anh khoảng 10 ngày trước. Chúc anh phần còn lại hội nghị tốt đẹp, anh Trần."
         },
         {
           "speaker": "Quân",
           "text": "Merci, Monsieur Diop. À très bientôt.",
+          "en": "Thank you, Mr. Diop. See you very soon.",
           "vi": "Cảm ơn ngài Diop. Hẹn sớm gặp lại."
         }
       ],
@@ -6987,30 +7144,44 @@ export const lessons: FrenchLesson[] =           [
         "Trong tiệc cocktail, một đại biểu châu Phi nói tiếng Pháp lưu loát kể chuyện đùa về « les Asiatiques qui parlent peu en réunion ». Phản hồi vừa giữ tinh thần vui, vừa đính chính nhẹ — không phòng thủ nhưng không nhân nhượng cliché.",
         "Bạn được mời lên phát biểu thay người dẫn đoàn bị ốm — chỉ có 2 phút chuẩn bị. Cấu trúc phát biểu 90 giây: chào, chính danh, một điểm cụ thể về Việt Nam, một câu hỏi mở cho hội thảo."
       ],
+      "roleplay_prompts_en": [
+        "The French ambassador at the conference walks up and asks: 'Why isn't your country more active in Francophone programs?' Respond diplomatically — acknowledge the fair part of the question, name initiatives that are underway but not yet visible internationally, propose a concrete follow-up. (US/UK office equivalent: a director asking 'why isn't your team showing up at the cross-functional reviews?' — same shape, same calibration: don't deflect, name what's already moving, propose a next step.)",
+        "At a cocktail reception, a fluent French-speaking African delegate tells a joke about 'Asians who barely speak in meetings.' Respond in a way that holds the friendly tone but gently corrects the stereotype — not defensive, but not letting the cliché stand either. (Anglophone parallel: a US colleague making a 'quiet Asian' joke at a work happy hour — same recovery move: light, factual, redirects without escalating.)",
+        "You're asked to take the floor on behalf of your delegation because the head delegate is sick — you have 2 minutes to prepare. Structure a 90-second statement: greeting + identification, one concrete point about Vietnam relevant to the panel topic, one open question for the floor. Keep it tight: at French conferences, 90 seconds well-used is remembered; 4 minutes meandering is forgotten."
+      ],
       "register_notes": "Hội nghị quốc tế dùng vouvoiement tuyệt đối — kể cả với đại biểu cùng tuổi từ nước khác. Khác phỏng vấn việc làm: register hội nghị có thể « warmer » một chút — cho phép câu chuyện cá nhân ngắn (một quote, một ví dụ từ Việt Nam), miễn là dẫn về nội dung. Tránh ba lỗi: (1) đọc thuộc bài phát biểu trong Q&A — bị xem là không tự tin tiếng Pháp; (2) « Excusez mon français » trước khi nói — gượng và không cần; (3) gọi đồng nghiệp Việt cùng đoàn bằng « anh/chị » trong câu tiếng Pháp — phải là « Monsieur/Madame + tên họ ». Khi đề cập Việt Nam, dùng « le Vietnam » (le, không là), « les Vietnamiens » (chữ V hoa). Khi nhắc đến đoàn của mình, ưu tiên « notre délégation », « ma délégation » thay vì « nous » đơn giản — tăng tính trang trọng.",
+      "register_notes_en": "International conferences use vouvoiement absolutely — including with delegates your own age from other countries. Even after a long conversation where things have warmed up, do not switch to tu unless they propose it explicitly ('on peut se tutoyer?'). The conference register is slightly warmer than a French job interview — a brief personal anecdote, a quote, or a specific example from Vietnam is welcome as long as it serves the substance. Three failure modes to avoid: (1) Reading a memorized statement during Q&A — French audiences read this as a sign you're not comfortable in French, which is exactly what you don't want at B2. (2) Opening with 'Excusez mon français' — at B2 it's unnecessary and reads as fishing for reassurance; just begin. (3) Referring to a Vietnamese colleague in your delegation by 'anh/chị' or first name in a French sentence — switch to 'Monsieur/Madame [Family Name]' in French; the Vietnamese forms feel jarring and informal in French context.\n\nWhen referring to Vietnam: 'le Vietnam' (with the article, capital V) and 'les Vietnamiens' (capital V). When referring to your own delegation: prefer 'notre délégation' or 'ma délégation' over a plain 'nous' — it adds the formality the setting expects. A note for anglophones who lean conversational by default: even close colleagues use 'Monsieur Trần' and vouvoiement publicly at a conference, then switch to first names and tu privately at dinner. The two registers coexist; don't try to flatten them.",
       "idiom_glosses": [
         {
           "idiom": "Faire bonne figure",
           "literal": "Tỏ vẻ tốt",
+          "literal_en": "To make a good face",
           "meaning": "Giữ phong độ tốt trong tình huống công khai.",
+          "meaning_en": "To put on a good front / show well in a public situation — implies poise under pressure, not pretense.",
           "example": "Malgré le décalage horaire, notre délégation a fait bonne figure."
         },
         {
           "idiom": "Mettre en relation",
           "literal": "Đặt vào quan hệ",
+          "literal_en": "To put into relation",
           "meaning": "Giới thiệu hai bên với nhau.",
+          "meaning_en": "To introduce two parties to each other (typically professional contacts). The French equivalent of English 'to connect (someone) with (someone)' — a key diplomatic and business networking phrase.",
           "example": "M. Diop va nous mettre en relation avec son cabinet d'audit."
         },
         {
           "idiom": "Ouvrir des portes",
           "literal": "Mở các cánh cửa",
+          "literal_en": "To open doors",
           "meaning": "Tạo cơ hội mới.",
+          "meaning_en": "To open doors / create new opportunities — same image as English; used heavily in French professional and diplomatic contexts.",
           "example": "Cette conférence m'a ouvert des portes en Afrique francophone."
         },
         {
           "idiom": "Prendre langue avec",
           "literal": "Cầm lưỡi với",
+          "literal_en": "To take tongue with",
           "meaning": "Liên hệ chính thức để bắt đầu thảo luận.",
+          "meaning_en": "To formally make contact with (someone) to begin discussions — a slightly elevated diplomatic register, more formal than 'prendre contact'. Anglophone equivalent: 'to open a line of communication with'.",
           "example": "Nous prendrons langue avec leur ministère dès la rentrée."
         }
       ],
@@ -7018,62 +7189,86 @@ export const lessons: FrenchLesson[] =           [
         {
           "type": "fill-blank",
           "instruction_vi": "Điền cụm vào câu hội nghị.",
+          "instruction_en": "Fill in each blank with the missing word from a conference-register sentence.",
           "items": [
             {
               "prompt": "Je ___ le ministère vietnamien du Plan.",
-              "answer": "représente"
+              "answer": "représente",
+              "hint_vi": "động từ « đại diện »",
+              "hint_en": "verb 'to represent' (1st-person singular, present tense)"
             },
             {
               "prompt": "À ___ personnel, j'ai trouvé l'intervention éclairante.",
-              "answer": "titre"
+              "answer": "titre",
+              "hint_vi": "danh từ trong cụm « à ___ personnel » = với tư cách cá nhân",
+              "hint_en": "noun in the phrase 'à ___ personnel' meaning 'in a personal capacity'"
             },
             {
               "prompt": "Pourriez-vous nous mettre en ___ avec votre attaché commercial ?",
-              "answer": "relation"
+              "answer": "relation",
+              "hint_vi": "danh từ trong cụm « mettre en ___ » = giới thiệu",
+              "hint_en": "noun in the phrase 'mettre en ___' meaning 'to put into [X]' / to introduce"
             },
             {
               "prompt": "Notre délégation suit avec ___ les travaux du panel.",
-              "answer": "attention"
+              "answer": "attention",
+              "hint_vi": "danh từ « sự chú ý »",
+              "hint_en": "noun 'attention / close interest'"
             }
           ]
         },
         {
           "type": "matching",
           "instruction_vi": "Nối thành ngữ với chiến lược ngoại giao.",
+          "instruction_en": "Match each idiom with the diplomatic strategy it expresses.",
           "items": [
             {
               "prompt": "Faire bonne figure",
-              "answer": "giữ phong độ trong công khai (put on a good front in public)"
+              "answer": "giữ phong độ trong công khai (put on a good front in public)",
+              "english": "Faire bonne figure → put on a good front / show well in public"
             },
             {
               "prompt": "Mettre en relation",
-              "answer": "giới thiệu hai bên với nhau (introduce two parties to each other)"
+              "answer": "giới thiệu hai bên với nhau (introduce two parties to each other)",
+              "english": "Mettre en relation → introduce two parties to each other professionally"
             },
             {
               "prompt": "Ouvrir des portes",
-              "answer": "tạo cơ hội mới (open new doors / opportunities)"
+              "answer": "tạo cơ hội mới (open new doors / opportunities)",
+              "english": "Ouvrir des portes → open doors / create new opportunities"
             },
             {
               "prompt": "Prendre langue avec",
-              "answer": "liên hệ chính thức bắt đầu thảo luận (formally make contact to start discussions)"
+              "answer": "liên hệ chính thức bắt đầu thảo luận (formally make contact to start discussions)",
+              "english": "Prendre langue avec → formally open a line of communication / begin official discussions"
             }
           ]
         },
         {
           "type": "translation",
           "instruction_vi": "Dịch sang tiếng Pháp B2 ngoại giao.",
+          "instruction_en": "Translate each Vietnamese sentence into B2 diplomatic French.",
           "items": [
             {
               "prompt": "Em đại diện đoàn Việt Nam, phụ trách Pháp ngữ.",
-              "answer": "Je représente la délégation vietnamienne, en charge des affaires francophones."
+              "answer": "Je représente la délégation vietnamienne, en charge des affaires francophones.",
+              "english": "I represent the Vietnamese delegation, in charge of Francophone affairs.",
+              "hint_vi": "« en charge de » = phụ trách",
+              "hint_en": "'en charge de' = in charge of / responsible for"
             },
             {
               "prompt": "Em xin phép hỏi một câu thẳng.",
-              "answer": "Je peux me permettre une question franche."
+              "answer": "Je peux me permettre une question franche.",
+              "english": "May I take the liberty of asking a frank question.",
+              "hint_vi": "« je peux me permettre » = em xin phép",
+              "hint_en": "'je peux me permettre' = may I take the liberty / if I may"
             },
             {
               "prompt": "Em sẽ giữ liên lạc và báo tin trong sáu tháng.",
-              "answer": "Je vous tiendrai informé d'ici six mois."
+              "answer": "Je vous tiendrai informé d'ici six mois.",
+              "english": "I'll keep you informed within six months.",
+              "hint_vi": "futur simple « tiendrai » + « d'ici »",
+              "hint_en": "use futur simple 'tiendrai' + 'd'ici' (within / by)"
             }
           ]
         }
@@ -7094,6 +7289,12 @@ export const lessons: FrenchLesson[] =           [
             "asseyez → a-sè-yé",
             "servir → ser-vir",
             "traditionnelle → tra-di-sio-nèl"
+          ],
+          "pronunciation_focus_en": [
+            "bienvenue → byah(n)-vuh-NEW (nasal first syllable; final 'nue' has the French 'u' — purse lips, say 'ee')",
+            "asseyez → ah-say-YAY (three syllables, final 'ez' rhymes with English 'pay')",
+            "servir → sair-VEER (final 'r' rolled in the throat, not English-r)",
+            "traditionnelle → trah-dee-syo-NEL (final 'nelle' rhymes with English 'bell')"
           ]
         },
         {
@@ -7104,6 +7305,12 @@ export const lessons: FrenchLesson[] =           [
             "plats → pla",
             "centre → sãn-trơ",
             "individuel → an-di-vi-du-èl"
+          ],
+          "pronunciation_focus_en": [
+            "partage → par-TAHZH (final 'ge' = 'zh' like the 's' in 'measure')",
+            "plats → PLAH (final 'ts' silent — rhymes with English 'pah')",
+            "centre → SAH(n)-truh (nasal first syllable; final 'tre' is a barely-there 'truh')",
+            "individuel → ah(n)-dee-vee-doo-EL (five syllables; the 'u' is rounded French 'u')"
           ]
         },
         {
@@ -7114,6 +7321,12 @@ export const lessons: FrenchLesson[] =           [
             "sans → sãn",
             "ensuite → ãn-swit",
             "expliquerai → èk-spli-kơ-ré"
+          ],
+          "pronunciation_focus_en": [
+            "goûtez → goo-TAY (the 'û' is a long 'oo' — like English 'goo')",
+            "sans → SAH(n) (one nasal syllable; no real 's' or 'n' sound — just a nasalized vowel)",
+            "ensuite → ah(n)-SWEET (nasal first; final 'suite' rhymes with English 'sweet')",
+            "expliquerai → eks-plee-kuh-RAY (futur simple ending '-rai' = 'RAY', like English 'pay')"
           ]
         },
         {
@@ -7124,6 +7337,12 @@ export const lessons: FrenchLesson[] =           [
             "obligés → o-bli-jé",
             "laisser → lè-sé",
             "signifie → si-gni-fi"
+          ],
+          "pronunciation_focus_en": [
+            "sentez → sah(n)-TAY (nasal first; rhymes with English 'pay')",
+            "obligés → oh-blee-ZHAY ('zh' = the 's' in 'measure'; final 'gés' = 'zhay')",
+            "laisser → leh-SAY (the 'ai' = open 'e' like English 'air' without 'r')",
+            "signifie → see-nyee-FEE ('gn' = 'ny' like the Spanish ñ; three syllables)"
           ]
         },
         {
@@ -7134,102 +7353,124 @@ export const lessons: FrenchLesson[] =           [
             "piment → pi-mã",
             "adapte → a-dapt",
             "facilement → fa-sil-mã"
+          ],
+          "pronunciation_focus_en": [
+            "supportez → soo-por-TAY (initial 'su' has the rounded French 'u'; not English 'soup')",
+            "piment → pee-MAH(n) (nasal final; no 't' — air through nose; very different from English 'pigment')",
+            "adapte → ah-DAHPT (one syllable feel; final 'pte' is a hard 'pt')",
+            "facilement → fah-seel-MAH(n) (adverb ending '-ment' = nasal 'MAH(n)', not English 'ment')"
           ]
         }
       ],
       "cultural_notes_vi": "Ăn tối với khách Pháp ở Việt Nam khác hẳn với khách Việt vì hai lý do: (1) cấu trúc bữa ăn — Pháp quen 3 phần (entrée-plat-dessert) ăn tuần tự, Việt là « mâm » với mọi món lên cùng lúc và chia sẻ; (2) protocol gắp — Pháp mỗi người dao nĩa và đĩa riêng, không lấy từ đĩa chung; Việt mọi người đều gắp từ tô/đĩa chung, dùng đôi đũa của mình. Nhiều khách Pháp lúng túng ở phút đầu vì không biết gắp từ giữa bàn có lịch sự không, và họ ngầm muốn đợi chủ nhà gắp cho họ.\n\nVai trò của bạn: dẫn dắt rõ ràng. Đừng để khách tự đoán — gắp một ít vào bát của họ ngay phút đầu để họ biết « yes, c'est OK de prendre au centre ». Giải thích vai trò của nước chấm (mắm, tương ớt, chanh, rau sống) — người Pháp coi gia vị là « topping tự chọn » nên có thể bỏ qua nếu không được hướng dẫn. Tránh thúc ép ăn nhiều (« ăn đi ăn đi! ») — Pháp coi ép ăn là vi phạm autonomie cá nhân. Chỉ cần đặt món gần khách và nói « c'est à votre disposition ».\n\nMột chú ý quan trọng: Pháp KHÔNG « cạn ly » — họ uống chậm, một ly có thể kéo dài cả tối. Việc liên tục đề xuất uống cạn ly sẽ khiến khách phòng thủ hoặc đáp lễ vài lần rồi xin nghỉ. Một « santé » ở đầu bữa và một lần giữa bữa là đủ. Karaoke sau bữa thường KHÔNG được khách Pháp đánh giá cao trong lần gặp đầu — đợi mối quan hệ đã thân.",
+      "cultural_notes_en": "Hosting a French guest at a Vietnamese table is a different proposition from hosting them at a US/UK table, and the differences are bigger than most anglophone learners expect. Two structural mismatches drive the awkwardness in the first 10 minutes: (1) French meals are sequenced (entrée → plat → dessert), Vietnamese meals are simultaneous (everything lands at once on a shared table); (2) French place settings give each person an individual plate with no expectation of taking from a central dish, while Vietnamese practice is for everyone to pick from shared bowls and plates with their own chopsticks. French guests new to Vietnam often freeze briefly at the start, unsure whether reaching into the middle of the table is polite. They are not being rude — they are waiting for permission.\n\nYour job as host is to give that permission immediately and concretely. Don't make them guess. Within the first minute, place a small portion on their bowl yourself ('je vous mets un peu de chả giò pour commencer') — this single gesture tells them 'yes, taking from the center is normal here.' Then explain the role of nuoc-cham, herbs, and chili condiments in 1–2 sentences each. French guests often treat condiments as optional toppings (the way you'd treat ketchup or HP sauce in the US/UK) and skip them entirely if you don't make it clear they're integral. The result is they eat the food in a flat, unconfigured form and politely report 'c'était bon' — having missed half the dish.\n\nThree calibration warnings: (1) Do not push food. The Vietnamese 'ăn đi ăn đi!' has no good French equivalent — pushing reads as a violation of personal autonomy. Place dishes within reach and say 'c'est à votre disposition'. (2) French guests do NOT cạn ly. They sip slowly; one glass can last an entire meal. Repeated 'cạn ly!' calls will make them defensive or force them to comply a few times then quietly switch to water. One 'santé' at the start and one mid-meal is the ceiling. (3) Skip the post-dinner karaoke on a first visit. It works with French guests who already know Vietnam well; it overwhelms a first-time guest. Save it for visit #3.",
       "tip_advice_vi": "Trước bữa: hỏi khách về dị ứng, sở thích chay/mặn, mức độ chịu cay (vai « Phở Hà Nội ngọt » vs « bún bò Huế cay nồng »). Đề xuất 4-6 món đa dạng (canh, mặn, xào, gỏi, tráng miệng) thay vì 10-12 món gây áp lực ăn. Sắp xếp chỗ ngồi: khách Pháp ngồi đối diện hoặc bên cạnh chủ nhà, không ở « ghế cuối » nơi khó tham gia trò chuyện. Trong bữa: gắp một miếng cho khách phút đầu để mở (« je vous mets un peu de chả giò pour commencer »); giải thích từng món bằng 1-2 câu (« le bún chả est un plat hanoïen — viande grillée trempée dans un bouillon de poisson sucré-salé »); hỏi feedback giữa bữa (« vous aimez ? trop épicé ? »). Sau bữa: không nhồi tráng miệng — chè Việt có thể quá ngọt với khẩu vị Pháp; trái cây tươi (xoài, vải) là lựa chọn an toàn. Không tặng quà mang về (món còn) trong lần đầu — Pháp coi là « doggy bag », không thoải mái.",
+      "tip_advice_en": "Before the meal: ask about allergies, vegetarian preferences, and spice tolerance ('Hanoi pho mild' vs 'Hue beef noodle fiery'). Plan 4–6 varied dishes (soup, savory main, stir-fry, salad, dessert) instead of 10–12, which pressure-eats your guest. Seating: place the French guest opposite or adjacent to the main host — not at the 'end seat' where they can't follow conversation. During the meal: serve a small portion onto their plate in the first minute to break the 'is it OK to take from the middle?' freeze ('je vous mets un peu de chả giò pour commencer'); explain each dish in 1–2 sentences ('le bún chả est un plat hanoïen — grilled pork in a sweet-savory fish broth'); check in mid-meal ('vous aimez ? trop épicé ?'). After the meal: don't push dessert — Vietnamese chè can be too sweet for French palates; fresh fruit (mango, lychee, longan) is the safe call. Don't send leftovers home on a first visit — the French read this as a 'doggy bag' and it makes a formal first dinner feel like a casual restaurant. A US/UK calibration note: in Vietnamese homes, refilling a guest's bowl is a constant expression of warmth; for French guests, ask once before refilling ('je vous en remets?') and respect 'non merci, ça va bien' the first time — don't repeat the offer three times the way you might with Vietnamese family.",
       "vocabulary": [
         {
           "word": "un repas vietnamien",
           "en": "a Vietnamese meal",
           "vi": "bữa cơm Việt",
           "pos": "n.m.",
-          "pronunciation_vi": "rơ-pa vi-èt-na-miain"
+          "pronunciation_vi": "rơ-pa vi-èt-na-miain",
+          "pronunciation_en": "ruh-PAH vyet-nah-MYA(n) (the 'mien' suffix is nasal — like English 'myan' through the nose)"
         },
         {
           "word": "un plat à partager",
           "en": "a shared dish",
           "vi": "món ăn chung",
           "pos": "n.m.",
-          "pronunciation_vi": "pla a par-ta-jé"
+          "pronunciation_vi": "pla a par-ta-jé",
+          "pronunciation_en": "PLAH ah par-tah-ZHAY ('plat' = 'PLAH', final 't' silent; final 'ger' = 'zhay')"
         },
         {
           "word": "la sauce nuoc-cham",
           "en": "nuoc-cham sauce",
           "vi": "nước chấm",
           "pos": "n.f.",
-          "pronunciation_vi": "sos nuok-shãm"
+          "pronunciation_vi": "sos nuok-shãm",
+          "pronunciation_en": "SOHS nwok-SHAH(m) (French speakers approximate Vietnamese 'nước chấm' as 'nwok-shahm' — final nasal)"
         },
         {
           "word": "le piment",
           "en": "chili",
           "vi": "ớt",
           "pos": "n.m.",
-          "pronunciation_vi": "pi-mã"
+          "pronunciation_vi": "pi-mã",
+          "pronunciation_en": "pee-MAH(n) (nasal final, no 't' sound; very different from English 'pigment')"
         },
         {
           "word": "des herbes fraîches",
           "en": "fresh herbs",
           "vi": "rau thơm",
           "pos": "n.f. pl.",
-          "pronunciation_vi": "erb frè-shơ"
+          "pronunciation_vi": "erb frè-shơ",
+          "pronunciation_en": "DEZ-airb FRESH (liaison: 'des' becomes 'dez' before vowel; 'h' of 'herbes' is silent)"
         },
         {
           "word": "la convivialité",
           "en": "conviviality / shared joy",
           "vi": "không khí ấm cúng",
           "pos": "n.f.",
-          "pronunciation_vi": "kon-vi-vi-a-li-té"
+          "pronunciation_vi": "kon-vi-vi-a-li-té",
+          "pronunciation_en": "ko(n)-vee-vyah-lee-TAY (a culturally weighted French word: the warmth of sharing a meal, not just 'conviviality')"
         },
         {
           "word": "trinquer",
           "en": "to clink glasses",
           "vi": "chạm ly",
           "pos": "v.",
-          "pronunciation_vi": "train-ké"
+          "pronunciation_vi": "train-ké",
+          "pronunciation_en": "tra(n)-KAY (nasal first syllable; specifically the gesture of clinking glasses with eye contact — important French custom)"
         },
         {
           "word": "se resservir",
           "en": "to help oneself again",
           "vi": "lấy thêm",
           "pos": "v.",
-          "pronunciation_vi": "sơ rơ-ser-vir"
+          "pronunciation_vi": "sơ rơ-ser-vir",
+          "pronunciation_en": "suh ruh-sair-VEER (reflexive 'se' = 'suh'; rolled 'r' on '-vir')"
         },
         {
           "word": "un dessert traditionnel",
           "en": "traditional dessert",
           "vi": "tráng miệng truyền thống",
           "pos": "n.m.",
-          "pronunciation_vi": "dè-ser tra-di-sio-nèl"
+          "pronunciation_vi": "dè-ser tra-di-sio-nèl",
+          "pronunciation_en": "deh-SAIR trah-dee-syo-NEL (note: 'dessert' has stress on 2nd syllable in French, unlike English 'DESSert')"
         },
         {
           "word": "l'art de recevoir",
           "en": "the art of hosting",
           "vi": "nghệ thuật đón tiếp",
           "pos": "n.m.",
-          "pronunciation_vi": "lar dơ rơ-sơ-vwar"
+          "pronunciation_vi": "lar dơ rơ-sơ-vwar",
+          "pronunciation_en": "LAR duh ruh-suh-VWAR (a French cultural concept: the 'art' of receiving guests — closer to 'hospitality as craft' than to English 'hosting')"
         }
       ],
       "dialogue": [
         {
           "speaker": "M. Bertrand",
           "text": "Tout sent merveilleusement bon ! Comment je commence ?",
+          "en": "Everything smells wonderful! How do I start?",
           "vi": "Mọi thứ thơm tuyệt vời! Em bắt đầu thế nào?"
         },
         {
           "speaker": "Linh",
           "text": "On commence par la soupe. Ensuite, prenez ce que vous voulez au centre — c'est à partager.",
+          "en": "We start with the soup. After that, take whatever you'd like from the center — it's all to share.",
           "vi": "Bắt đầu bằng canh. Sau đó, anh lấy gì tùy ý ở giữa — là để chia sẻ."
         },
         {
           "speaker": "M. Bertrand",
           "text": "Je peux servir directement avec mes baguettes ?",
+          "en": "Can I serve myself directly with my chopsticks?",
           "vi": "Anh có thể gắp trực tiếp bằng đũa của mình không?"
         },
         {
           "speaker": "Linh",
           "text": "Oui, c'est tout à fait normal chez nous. Je vous mets un peu de chả giò pour commencer.",
+          "en": "Yes — completely normal here. Let me put a bit of chả giò on your plate to get you started.",
           "vi": "Vâng, hoàn toàn bình thường bên em. Em gắp anh ít chả giò để bắt đầu."
         }
       ],
@@ -7237,91 +7478,109 @@ export const lessons: FrenchLesson[] =           [
         {
           "speaker": "Linh",
           "text": "Bonsoir Monsieur Bertrand, bienvenue chez nous. Marc et moi sommes ravis de vous recevoir ce soir.",
+          "en": "Good evening Mr. Bertrand, welcome to our home. Marc and I are delighted to have you tonight.",
           "vi": "Chào tối anh Bertrand, chào mừng anh đến nhà em. Marc và em rất vui được tiếp anh tối nay."
         },
         {
           "speaker": "M. Bertrand",
           "text": "Bonsoir Linh, bonsoir Marc. Merci pour l'invitation. J'avoue que je suis curieux — c'est mon premier vrai dîner vietnamien chez l'habitant.",
+          "en": "Good evening Linh, good evening Marc. Thank you for having me. I admit I'm curious — this is my first real Vietnamese home dinner.",
           "vi": "Chào tối Linh, chào tối Marc. Cảm ơn vì lời mời. Em thừa nhận em tò mò — đây là bữa ăn Việt thật đầu tiên ở nhà dân."
         },
         {
           "speaker": "Linh",
           "text": "On a préparé un repas du Nord, pas trop pimenté. Je vais expliquer chaque plat au fur et à mesure pour que vous sachiez quoi faire avec quoi.",
+          "en": "We've prepared a northern-style meal, not too spicy. I'll explain each dish as we go so you know what pairs with what.",
           "vi": "Em chuẩn bị bữa ăn miền Bắc, không quá cay. Em sẽ giải thích từng món để anh biết dùng gì với gì."
         },
         {
           "speaker": "M. Bertrand",
           "text": "Excellent — j'aurais pu être perdu sans guide. À Paris, dans les restaurants vietnamiens, on me sert tout d'un coup et je ne sais jamais l'ordre.",
+          "en": "Excellent — I could've been lost without a guide. In Paris, at Vietnamese restaurants they serve everything at once and I never know the order.",
           "vi": "Tuyệt — không có người dẫn em sẽ lạc. Ở Paris, trong nhà hàng Việt, người ta dọn tất cả cùng lúc và em không biết thứ tự."
         },
         {
           "speaker": "Linh",
           "text": "C'est typique. Chez nous c'est un peu pareil — tout arrive ensemble, mais avec une logique : on commence souvent par la soupe, puis on alterne entre un plat sec et un plat plus humide. Voici la canh chua — soupe aigre-douce du Sud.",
+          "en": "That's typical. Here it's similar — everything arrives together, but with a logic: usually start with soup, then alternate between a dry dish and a wetter one. Here's canh chua — sweet-and-sour soup from the South.",
           "vi": "Là điển hình. Bên em cũng vậy — tất cả lên cùng, nhưng có logic: thường bắt đầu bằng canh, sau đó luân phiên giữa món khô và món có nước. Đây là canh chua — canh chua-ngọt miền Nam."
         },
         {
           "speaker": "M. Bertrand (après une cuillère)",
           "text": "C'est extraordinaire. Je sens l'ananas, la tomate… qu'est-ce qui donne cette acidité ?",
+          "en": "This is extraordinary. I can taste pineapple, tomato… what gives it that tang?",
           "vi": "Tuyệt vời. Em cảm thấy có dứa, cà chua… gì tạo ra vị chua này?"
         },
         {
           "speaker": "Marc",
           "text": "Le tamarin — me bạc hà. C'est ce qui distingue la canh chua sud d'autres soupes asiatiques. Allez-y, n'hésitez pas à vous resservir.",
+          "en": "Tamarind — 'me bạc hà'. That's what sets southern canh chua apart from other Asian soups. Go ahead, don't hesitate to help yourself to more.",
           "vi": "Me — me bạc hà. Đó là điểm phân biệt canh chua miền Nam với các canh châu Á khác. Anh cứ tự nhiên, đừng ngần ngại lấy thêm."
         },
         {
           "speaker": "Linh",
           "text": "Maintenant, voici les rouleaux de printemps — gỏi cuốn. Vous trempez dans cette sauce, le nuoc-cham. Goûtez d'abord sans, vous verrez la différence.",
+          "en": "Now, here are the fresh spring rolls — gỏi cuốn. Dip them in this sauce, the nuoc-cham. Try them plain first — you'll see the difference.",
           "vi": "Giờ đây là gỏi cuốn. Anh chấm vào nước này, nuoc-cham. Thử trước không chấm, anh sẽ thấy khác biệt."
         },
         {
           "speaker": "M. Bertrand",
           "text": "Sans la sauce, c'est frais et léger. Avec… ah, c'est complètement différent. C'est ça la magie ?",
+          "en": "Without the sauce it's fresh and light. With it… ah, completely different. Is that the magic?",
           "vi": "Không nước chấm, tươi và nhẹ. Có nước chấm… à, hoàn toàn khác. Đó là điều kỳ diệu à?"
         },
         {
           "speaker": "Linh",
           "text": "Voilà. La sauce n'est pas un accompagnement, c'est un partenaire. Au Vietnam, on dit qu'un plat sans sa bonne sauce est comme un poème sans rime.",
+          "en": "Exactly. The sauce isn't a condiment, it's a partner. In Vietnam, we say a dish without its proper sauce is like a poem without rhyme.",
           "vi": "Đúng. Nước chấm không phải đồ ăn kèm, mà là đối tác. Ở Việt Nam, người ta nói một món không có nước chấm phù hợp giống bài thơ không vần."
         },
         {
           "speaker": "M. Bertrand",
           "text": "Joli. Et cette herbe-là, c'est de la coriandre ?",
+          "en": "Beautiful. And that herb — is that coriander?",
           "vi": "Hay. Còn rau này là rau mùi à?"
         },
         {
           "speaker": "Marc",
           "text": "Du périlla — tía tô. Ça va avec presque tout. Goûtez avec le bún chả qui arrive maintenant.",
+          "en": "Perilla — tía tô. It goes with almost everything. Try it with the bún chả that's coming up.",
           "vi": "Tía tô. Hợp với gần như tất cả. Anh thử với bún chả đang lên đây."
         },
         {
           "speaker": "Linh",
           "text": "Le bún chả est un plat hanoïen emblématique. Viande de porc grillée, vermicelles de riz, herbes, et bouillon sucré-salé. Vous mélangez tout dans le bol.",
+          "en": "Bún chả is a signature Hanoi dish. Grilled pork, rice vermicelli, herbs, and a sweet-savory broth. You mix everything together in the bowl.",
           "vi": "Bún chả là món biểu tượng Hà Nội. Thịt heo nướng, bún, rau, nước dùng ngọt-mặn. Anh trộn tất cả trong bát."
         },
         {
           "speaker": "M. Bertrand",
           "text": "C'est complet — viande, féculent, légumes, bouillon. En France on apprend qu'un repas équilibré a tout ça séparé. Là c'est tout dans un bol et c'est plus harmonieux.",
+          "en": "It's complete — meat, starch, vegetables, broth. In France we're taught a balanced meal keeps them separate. Here it's all in one bowl, and it's more harmonious.",
           "vi": "Đầy đủ — thịt, bột, rau, nước. Ở Pháp dạy bữa cân bằng phải có riêng. Đây tất cả trong một bát và hài hòa hơn."
         },
         {
           "speaker": "Linh",
           "text": "Notre nutritionniste dirait pareil — mais à la française. Une dernière chose : ne vous sentez pas obligé de tout finir. Chez nous, laisser un peu signifie qu'on a bien mangé.",
+          "en": "Our nutritionist would say the same — just in a French way. One last thing: don't feel obliged to finish everything. Here, leaving a little means you've eaten well.",
           "vi": "Chuyên gia dinh dưỡng bên em sẽ nói giống — nhưng theo kiểu Pháp. Một điều cuối: anh không cần ăn hết. Bên em, để lại một ít nghĩa là đã ăn đủ."
         },
         {
           "speaker": "M. Bertrand",
           "text": "Inverse de la France où finir l'assiette est poli ! Je note. Et pour le dessert, qu'est-ce qui m'attend ?",
+          "en": "The opposite of France, where cleaning your plate is polite! Noted. And for dessert — what's waiting for me?",
           "vi": "Ngược với Pháp ở đó ăn hết là lịch sự! Em ghi. Còn tráng miệng, gì đang chờ em?"
         },
         {
           "speaker": "Linh",
           "text": "Des fruits frais — mangue mûre du Sud, et longanes. Pas trop sucré, pour ne pas couper la digestion.",
+          "en": "Fresh fruit — ripe southern mango and longan. Not too sweet, so it doesn't disrupt your digestion.",
           "vi": "Trái cây tươi — xoài chín miền Nam và nhãn. Không quá ngọt, để không cắt tiêu hóa."
         },
         {
           "speaker": "M. Bertrand",
           "text": "Parfait. Merci à vous deux — c'est la meilleure introduction culinaire que j'aurais pu rêver.",
+          "en": "Perfect. Thank you both — this is the best culinary introduction I could have hoped for.",
           "vi": "Hoàn hảo. Cảm ơn cả hai em — là intro ẩm thực tuyệt nhất em có thể mơ."
         }
       ],
@@ -7330,30 +7589,44 @@ export const lessons: FrenchLesson[] =           [
         "Trong bữa, một thành viên gia đình bạn (cô/dì) liên tục đề xuất khách « cạn ly! cạn ly! » và khách bắt đầu phòng thủ. Khéo léo can thiệp — đổi sang nước hoặc trà, không làm cô/dì mất mặt.",
         "Khách Pháp khen một món rất nhiều và hỏi công thức. Quyết định: cho công thức ngay, hứa gửi sau, hay chỉ chia sẻ « trick » chính? Trả lời theo cách giữ relationship và không « gatekeep » văn hóa Việt một cách kỳ thị."
       ],
+      "roleplay_prompts_en": [
+        "A French guest comes to your home for dinner for the first time and freezes — they're not sure if it's polite to reach into the shared dishes. Guide them naturally without saying 'in Vietnam everyone takes from the middle' (which feels lecturing); instead, proactively place a portion on their plate to set the tone. (US/UK parallel: hosting someone unfamiliar with potluck-style eating — same move, less talking, more leading by example.)",
+        "Mid-meal, a family member of yours (an aunt or older relative) keeps urging the French guest 'cạn ly! cạn ly!' (bottoms up!) and you can see the guest getting defensive. Step in tactfully — redirect to water or tea, don't make your aunt lose face, and signal to the guest that they're free to pace themselves. (Anglophone parallel: a relative pushing alcohol on a guest who's politely declining — same recovery skill.)",
+        "A French guest praises a dish lavishly and asks for the recipe. Decide: give it on the spot, promise to send it later, or share only the key 'trick'? Answer in a way that preserves the relationship and doesn't 'gatekeep' Vietnamese culture — the French value of cuisine-as-shared-craft works for you here."
+      ],
       "register_notes": "Bữa tối với khách Pháp ở nhà cá nhân: tutoiement nếu đã thân, vouvoiement nếu mới quen. Trong gia đình mở rộng (có ông bà, cô dì), chuyển sang vouvoiement với khách dù trước đó tutoiement — vì các thế hệ trên expect formality khi có khách. Tránh: nói « ngon không? » bằng tiếng Việt rồi dịch — gây cảm giác không tự nhiên; thay bằng « vous aimez ? » trực tiếp tiếng Pháp. Khi khách khen, đáp « Merci, ça me fait plaisir » + một câu chuyển sang nội dung — đừng « ah ce n'est rien » (tự hạ thấp Việt) hoặc kéo dài cảm ơn. Khi khách từ chối thêm món, chấp nhận ngay không ép — « Pas de souci, vous me direz si vous voulez plus tard ». Cụm hữu ích: « Je vous mets un peu pour commencer » (gắp cho khách); « Vous trempez dans cette sauce » (hướng dẫn dùng nước chấm); « Ne vous sentez pas obligé » (giảm áp lực ăn hết).",
+      "register_notes_en": "Hosting a French guest at your home: use tu (tutoiement) if you're already close, vous (vouvoiement) if you've just met. Watch the multi-generational dynamic: if grandparents, aunts, or uncles are at the table, switch to vouvoiement with the guest even if you'd normally use tu — the older generation expects formality when there's an outside guest, and your switch signals respect to both sides. One register failure mode for anglophones: don't translate Vietnamese hospitality phrases word-for-word into French ('ngon không?' rendered as 'is it tasty?' feels childish); use the natural French equivalent 'vous aimez?' directly. When the guest praises your cooking, respond with 'Merci, ça me fait plaisir' + a sentence about the dish — don't say 'ah ce n'est rien' (which sounds like you're disparaging Vietnamese cuisine) and don't milk the thanks with three rounds of 'oh really, you think so?'.\n\nThe single biggest register failure: pushing food after a 'non merci'. Anglophones — especially Americans — sometimes mirror the Vietnamese 'ăn đi ăn đi!' insistence, thinking it's hospitable. In French, one 'non merci' is final. Accept it immediately ('pas de souci, vous me direz si vous voulez plus tard'). If you push past it, the guest will eat a few forced bites and quietly decide your hospitality is more about you than about them. Useful phrases worth memorizing: 'Je vous mets un peu pour commencer' (let me serve you a bit to start), 'Vous trempez dans cette sauce' (you dip in this sauce), 'Ne vous sentez pas obligé' (don't feel obligated).",
       "idiom_glosses": [
         {
           "idiom": "Mettre les petits plats dans les grands",
           "literal": "Đặt đĩa nhỏ trong đĩa lớn",
+          "literal_en": "To put the small dishes inside the big ones",
           "meaning": "Chuẩn bị tiếp đón long trọng.",
+          "meaning_en": "To pull out all the stops / go all-out when welcoming a guest. The image is of nested serving dishes — bringing out the full formal table service rather than everyday plates. English equivalent: 'to roll out the red carpet'.",
           "example": "Linh a vraiment mis les petits plats dans les grands pour ce dîner."
         },
         {
           "idiom": "À la fortune du pot",
           "literal": "Theo may rủi của nồi",
+          "literal_en": "At the fortune of the pot",
           "meaning": "Ăn gì có nấy, không cầu kỳ.",
+          "meaning_en": "An invitation to share whatever happens to be in the pot — casual, no special preparation, 'come as you are'. Anglophone equivalent: 'pot luck' (in its original sense, not the bring-a-dish version).",
           "example": "On vous invite à la fortune du pot — pas de cérémonie."
         },
         {
           "idiom": "Avoir l'eau à la bouche",
           "literal": "Có nước trong miệng",
+          "literal_en": "To have water in the mouth",
           "meaning": "Thèm chảy nước miếng.",
+          "meaning_en": "To have one's mouth water (same image as English) — to anticipate something so strongly your mouth literally waters.",
           "example": "Rien que de sentir le bún chả, j'ai déjà l'eau à la bouche."
         },
         {
           "idiom": "Manger à sa faim",
           "literal": "Ăn đến no",
+          "literal_en": "To eat to one's hunger",
           "meaning": "Ăn đủ, đến mức thoải mái.",
+          "meaning_en": "To eat one's fill — to eat enough to be comfortably satisfied. Different from 'eating until stuffed'; signals satiation, not excess.",
           "example": "Servez-vous, l'important c'est que vous mangiez à votre faim."
         }
       ],
@@ -7361,62 +7634,86 @@ export const lessons: FrenchLesson[] =           [
         {
           "type": "fill-blank",
           "instruction_vi": "Điền cụm vào câu mời ăn.",
+          "instruction_en": "Fill in each blank with the missing word from a hosting phrase.",
           "items": [
             {
               "prompt": "Au Vietnam, on ___ tous les plats au centre.",
-              "answer": "partage"
+              "answer": "partage",
+              "hint_vi": "động từ « chia sẻ »",
+              "hint_en": "verb 'to share' (3rd-person singular, present tense)"
             },
             {
               "prompt": "___ d'abord sans nuoc-cham.",
-              "answer": "Goûtez"
+              "answer": "Goûtez",
+              "hint_vi": "động từ mệnh lệnh « thử »",
+              "hint_en": "imperative form of 'to taste' (vous-form, 'taste it' as an instruction)"
             },
             {
               "prompt": "Ne vous sentez pas ___ de tout finir.",
-              "answer": "obligés"
+              "answer": "obligés",
+              "hint_vi": "tính từ « bị ép buộc » (số nhiều)",
+              "hint_en": "past participle of 'obliger' used as adjective — plural agreement with multiple guests"
             },
             {
               "prompt": "Si vous ne ___ pas le piment, dites-le sans hésiter.",
-              "answer": "supportez"
+              "answer": "supportez",
+              "hint_vi": "động từ « chịu được » (vous-form)",
+              "hint_en": "verb 'to tolerate / handle' in vous-form, present tense"
             }
           ]
         },
         {
           "type": "matching",
           "instruction_vi": "Nối thành ngữ với chiến lược tiếp đãi.",
+          "instruction_en": "Match each idiom with the hosting strategy it captures.",
           "items": [
             {
               "prompt": "Mettre les petits plats dans les grands",
-              "answer": "chuẩn bị tiếp đón long trọng (pull out all the stops in welcoming someone)"
+              "answer": "chuẩn bị tiếp đón long trọng (pull out all the stops in welcoming someone)",
+              "english": "Mettre les petits plats dans les grands → pull out all the stops / roll out the red carpet for a guest"
             },
             {
               "prompt": "À la fortune du pot",
-              "answer": "ăn gì có nấy, không cầu kỳ (whatever the pot offers, no fuss)"
+              "answer": "ăn gì có nấy, không cầu kỳ (whatever the pot offers, no fuss)",
+              "english": "À la fortune du pot → 'pot luck' — share whatever is in the pot, no special preparation"
             },
             {
               "prompt": "Avoir l'eau à la bouche",
-              "answer": "thèm chảy nước miếng (make one's mouth water)"
+              "answer": "thèm chảy nước miếng (make one's mouth water)",
+              "english": "Avoir l'eau à la bouche → to have one's mouth water (in anticipation)"
             },
             {
               "prompt": "Manger à sa faim",
-              "answer": "ăn đến no thoải mái (eat one’s fill comfortably)"
+              "answer": "ăn đến no thoải mái (eat one's fill comfortably)",
+              "english": "Manger à sa faim → eat one's fill — comfortably satisfied, not stuffed"
             }
           ]
         },
         {
           "type": "translation",
           "instruction_vi": "Dịch sang tiếng Pháp B2 — vai chủ nhà ấm áp.",
+          "instruction_en": "Translate each Vietnamese sentence into B2-level French in the voice of a warm host.",
           "items": [
             {
               "prompt": "Em gắp anh một ít chả giò để bắt đầu.",
-              "answer": "Je vous mets un peu de chả giò pour commencer."
+              "answer": "Je vous mets un peu de chả giò pour commencer.",
+              "english": "Let me put a bit of chả giò on your plate to get you started.",
+              "hint_vi": "« je vous mets » = em gắp cho anh; vouvoiement",
+              "hint_en": "'je vous mets' literally 'I put for you' = the natural French way to serve a guest"
             },
             {
               "prompt": "Để lại một ít nghĩa là mình đã ăn đủ.",
-              "answer": "Laisser un peu signifie qu'on a bien mangé."
+              "answer": "Laisser un peu signifie qu'on a bien mangé.",
+              "english": "Leaving a little means we've eaten well.",
+              "hint_vi": "động từ « signifie » (3rd singular) + « qu'on a »",
+              "hint_en": "'signifie que' (means that) + 'on a' (one has)"
             },
             {
               "prompt": "Một món không có nước chấm phù hợp giống bài thơ không vần.",
-              "answer": "Un plat sans sa bonne sauce est comme un poème sans rime."
+              "answer": "Un plat sans sa bonne sauce est comme un poème sans rime.",
+              "english": "A dish without its proper sauce is like a poem without rhyme.",
+              "hint_vi": "« sans » + « est comme »",
+              "hint_en": "'sans' (without) + 'est comme' (is like) — classic French analogy structure"
             }
           ]
         }
@@ -7437,6 +7734,12 @@ export const lessons: FrenchLesson[] =           [
             "nouvel → nu-vèl",
             "lunaire → lu-nèr",
             "importante → an-por-tãnt"
+          ],
+          "pronunciation_focus_en": [
+            "Tết → TET (Vietnamese loan in French — most French speakers say it with a short flat 'e', rhymes with English 'pet')",
+            "nouvel → noo-VEL (final 'el' rhymes with English 'bell')",
+            "lunaire → lyu-NAIR (the 'u' is the French rounded 'u' — purse lips, say 'ee'; ends with rolled 'r')",
+            "importante → ah(n)-por-TAH(n)T (two nasals; final 'te' silent — air through nose)"
           ]
         },
         {
@@ -7447,6 +7750,12 @@ export const lessons: FrenchLesson[] =           [
             "Noël → no-èl",
             "étalés → é-ta-lé",
             "sept → sèt"
+          ],
+          "pronunciation_focus_en": [
+            "imaginez → ee-mah-zhee-NAY ('zh' = the 's' in 'measure'; final 'ez' rhymes with English 'pay')",
+            "Noël → noh-EL (two distinct syllables because of the diaeresis on 'ë' — NOT one syllable like English 'Noel')",
+            "étalés → ay-tah-LAY (final 'lés' = 'lay', rhymes with English 'pay')",
+            "sept → SET (the 'p' is silent — rhymes with English 'set')"
           ]
         },
         {
@@ -7457,6 +7766,12 @@ export const lessons: FrenchLesson[] =           [
             "village → vi-laj",
             "natal → na-tal",
             "kilomètres → ki-lo-mè-trơ"
+          ],
+          "pronunciation_focus_en": [
+            "rentre → RAH(n)-truh (nasal first syllable; final 'tre' is a soft, half-swallowed 'truh')",
+            "village → vee-LAHZH (final 'ge' = 'zh' like 's' in 'measure', different from English 'village')",
+            "natal → nah-TAL (final 'l' pronounced — rhymes with English 'pal')",
+            "kilomètres → kee-loh-MEH-truh (final 'tres' = soft 'truh'; stress on 3rd syllable, not the English 'kil-LOM-eter')"
           ]
         },
         {
@@ -7467,6 +7782,12 @@ export const lessons: FrenchLesson[] =           [
             "fermé → fer-mé",
             "sacré → sa-kré",
             "dérange → dé-rãnj"
+          ],
+          "pronunciation_focus_en": [
+            "pendant → pah(n)-DAH(n) (two nasals back-to-back — air through nose for both syllables)",
+            "fermé → fair-MAY (final 'é' = 'ay', rhymes with English 'pay')",
+            "sacré → sah-KRAY (rolled 'r'; final 'cré' = 'kray', stress on 2nd syllable)",
+            "dérange → day-RAH(n)ZH (nasal third syllable; final 'ge' = 'zh')"
           ]
         },
         {
@@ -7477,102 +7798,124 @@ export const lessons: FrenchLesson[] =           [
             "reçoivent → rơ-swav",
             "enveloppe → ãn-vlop",
             "codifié → ko-di-fié"
+          ],
+          "pronunciation_focus_en": [
+            "enfants → ah(n)-FAH(n) (two nasals; very different from English 'infants')",
+            "reçoivent → ruh-SWAHV (the 'oi' diphthong = 'wah'; final '-vent' is just 'v' — the '-ent' is silent in 3rd-plural)",
+            "enveloppe → ah(n)v-LOHP (nasal first; final 'pe' silent — rhymes with English 'lope')",
+            "codifié → ko-dee-FYAY (four syllables; 'ifié' = 'ee-fyay'; final syllable rhymes with 'pay')"
           ]
         }
       ],
       "cultural_notes_vi": "Giải thích Tết cho người Pháp khó vì Tết KHÔNG có equivalent trong văn hóa Pháp. Mistakes phổ biến: (1) gọi Tết là « nouvel an chinois » — sai, gây offense vì gộp Tết Việt với Tết Trung; (2) mô tả Tết như « festival » (lễ hội) — sai, vì Tết không phải để xem mà để sống; (3) nhấn mạnh phần « mê tín » (xông đất, tránh quét nhà) làm nó trở thành « exotique » thay vì là cấu trúc xã hội nghiêm túc. Cách hiệu quả: cho mental model bằng cách kết hợp các yếu tố Pháp đã biết (« Noël + 14 juillet + Toussaint pour les ancêtres »), sau đó thêm sự khác biệt cụ thể.\n\nGia đình Việt cũng cần giải thích cẩn thận. Cấu trúc gia đình Việt KHÔNG phải « famille élargie » của Pháp — nó là một đơn vị sinh hoạt, kinh tế, đạo đức tích hợp vào nhau theo cách Pháp đã từng có (trước thế kỷ 20) nhưng đã rời. Người Pháp có thể « romanticize » cấu trúc này (« ah, vous êtes plus chaleureux que nous ») hoặc « critique » nó (« vous n'avez pas d'autonomie individuelle »). Cả hai phản ứng đều miss the point. Cách đúng: trình bày nó như một hệ thống có lợi và có giá phải trả — nhiều người Việt trẻ giờ đang điều chỉnh nó, không phải bỏ nó.\n\nKhi giải thích phong tục cụ thể (lì xì, xông đất, kiêng quét nhà), cho lý do văn hóa-tâm lý ngắn — không kéo dài thành lecture. Người Pháp thích biết « pourquoi » nhưng không muốn lecture 10 phút. Format hiệu quả: « Le rituel X consiste à Y. La logique culturelle : Z ».",
+      "cultural_notes_en": "Explaining Tết to a French (or US/UK) interlocutor is difficult precisely because there's no clean equivalent in Western calendars. Three traps anglophones often fall into when they try to explain it to other anglophones, and that show up in French too: (1) calling Tết the 'Chinese New Year' — this is wrong and faintly offensive, because it collapses Vietnamese, Korean, and Singaporean Lunar New Year traditions into the Chinese one. Tết is the Vietnamese Lunar New Year, with its own foods (bánh chưng, mứt), its own rituals (xông đất, lì xì), and its own cultural weight. (2) Calling it a 'festival' — Western 'festival' suggests something you go to and watch; Tết is something you go home to and live. (3) Leading with the 'superstitious' parts (avoid sweeping the floor on day one, who steps into the house first) — that frames Tết as exotic folklore rather than a serious social structure on par with US Thanksgiving or UK Christmas in significance, but bigger in scale.\n\nThe effective frame for an anglophone or French audience: give a mental model by stacking familiar reference points ('imagine Christmas + Fourth of July + All Saints' Day for the ancestors, all in one week, with the whole country shut down'), then list 2–3 concrete differences. This works far better than starting from zero. It also defuses the romanticization reflex — Western listeners sometimes react with 'wow, you're so much warmer than us' (idealizing) or 'wow, you don't have individual autonomy' (critiquing) — both miss the point.\n\nOn Vietnamese family structure: present it as a system with benefits AND costs that many young Vietnamese are now actively recalibrating, not abandoning. The 1950s-era American 'extended family' image (Sunday dinners, three generations under one roof) is the closest analogue but it understates the economic and moral integration of the Vietnamese unit. For specific customs (lì xì, xông đất, the no-sweeping rule), give the cultural-psychological reason in one short clause and stop. The format 'Le rituel X consiste à Y. La logique culturelle : Z' (the X ritual consists of Y; the cultural logic is Z) works repeatedly without ever sounding like a lecture.",
       "tip_advice_vi": "Format giải thích Tết trong 3 phút: (1) Equivalent Pháp gần nhất (« Noël + 14 juillet + Toussaint »); (2) Một sự khác biệt then chốt (« mais on fait ça ensemble en famille élargie, pas chacun chez soi »); (3) Một câu chuyện cá nhân (« quand j'avais 7 ans, ma grand-mère m'a expliqué que… »); (4) Một invitation cụ thể nếu có (« si tu es à Hanoï en février, viens chez nous »). Tránh: liệt kê 10 phong tục một lần — quá tải; nói « c'est notre culture » để chốt thảo luận — gượng. Khi người Pháp hỏi câu hơi gây hấn (« vous donnez vraiment de l'argent aux enfants ? c'est étrange »), không phòng thủ — hỏi lại « qu'est-ce qui te paraît étrange ? » rồi mới giải thích. Cấu trúc gia đình: dùng « beaucoup de Vietnamiens » thay « les Vietnamiens » để tránh generalize.",
+      "tip_advice_en": "The 3-minute Tết explanation format that works on both French and anglophone audiences: (1) Nearest Western equivalent ('Christmas + Independence Day + All Saints' Day' for French; 'Christmas + Thanksgiving + Memorial Day' for US listeners — adjust the mental anchor to the listener's calendar). (2) One key difference ('but we do it together as an extended family, not each at our own house'). (3) One personal anecdote ('when I was 7, my grandmother explained that…') — anecdotes carry more weight than generalizations. (4) A specific invitation if appropriate ('if you're in Hanoi in February, come over on day two or three').\n\nWhat to avoid: dumping 10 customs at once (overwhelms the listener and they remember none), and using 'c'est notre culture' or 'it's our culture' to end a discussion (sounds defensive, reads as 'don't ask further'). When a French or anglophone interlocutor asks a slightly aggressive question ('do you really give kids money? isn't that weird?'), don't get defensive — ask back 'qu'est-ce qui te paraît étrange?' (what strikes you as strange about it?) before answering. This shifts you from 'cultural ambassador on defense' to 'two adults comparing notes'.\n\nOn family structure: use 'many Vietnamese' ('beaucoup de Vietnamiens') instead of 'the Vietnamese' ('les Vietnamiens') to avoid generalizing — this is also good practice when talking about anglophone cultures back the other way. A US/UK-specific calibration: anglophones often expect a 'colorful traditions' tone when asking about Asian holidays; resist matching it. The right register is matter-of-fact, the way a Frenchman explains Christmas to a Vietnamese friend — without exoticism in either direction.",
       "vocabulary": [
         {
           "word": "le Tết (nouvel an lunaire)",
           "en": "Tết (Lunar New Year)",
           "vi": "Tết Nguyên Đán",
           "pos": "n.m.",
-          "pronunciation_vi": "tét"
+          "pronunciation_vi": "tét",
+          "pronunciation_en": "TET (Vietnamese loanword; short flat 'e', rhymes with English 'pet')"
         },
         {
           "word": "un village natal",
           "en": "hometown",
           "vi": "quê",
           "pos": "n.m.",
-          "pronunciation_vi": "vi-laj na-tal"
+          "pronunciation_vi": "vi-laj na-tal",
+          "pronunciation_en": "vee-LAHZH nah-TAL ('the village where one was born' — closer to English 'hometown' than 'birthplace'; carries weight in both French and Vietnamese culture)"
         },
         {
           "word": "l'enveloppe rouge / lì xì",
           "en": "red envelope (lucky money)",
           "vi": "lì xì",
           "pos": "n.f.",
-          "pronunciation_vi": "ãn-vlop ruj"
+          "pronunciation_vi": "ãn-vlop ruj",
+          "pronunciation_en": "lah(n)v-LOHP ROOZH (nasal first; final 'rouge' = 'roozh' with the 'measure' s-sound)"
         },
         {
           "word": "le culte des ancêtres",
           "en": "ancestor veneration",
           "vi": "thờ cúng tổ tiên",
           "pos": "n.m.",
-          "pronunciation_vi": "kult dé-z-ãn-sè-trơ"
+          "pronunciation_vi": "kult dé-z-ãn-sè-trơ",
+          "pronunciation_en": "luh KULT day-zah(n)-SEH-truh (liaison 'des ancêtres' = 'day-zah(n)'; final '-tre' = soft 'truh')"
         },
         {
           "word": "la famille élargie",
           "en": "extended family",
           "vi": "đại gia đình",
           "pos": "n.f.",
-          "pronunciation_vi": "fa-miy é-lar-ji"
+          "pronunciation_vi": "fa-miy é-lar-ji",
+          "pronunciation_en": "fah-MEE-yuh ay-lar-ZHEE (final '-mille' = 'mee-yuh', a key tricky French ending; 'élargie' ends with 'zhee')"
         },
         {
           "word": "un repas réunion",
           "en": "a reunion meal",
           "vi": "bữa cơm sum họp",
           "pos": "n.m.",
-          "pronunciation_vi": "rơ-pa ré-u-nion"
+          "pronunciation_vi": "rơ-pa ré-u-nion",
+          "pronunciation_en": "ruh-PAH ray-yoo-NYO(n) (final '-nion' = 'nyo(n)' with nasal; weighty word, used for the central Tết family meal)"
         },
         {
           "word": "un rituel",
           "en": "a ritual",
           "vi": "nghi thức",
           "pos": "n.m.",
-          "pronunciation_vi": "ri-tu-èl"
+          "pronunciation_vi": "ri-tu-èl",
+          "pronunciation_en": "ree-too-EL (three syllables; the 'u' is the French rounded 'u'; rhymes with English 'ell')"
         },
         {
           "word": "la piété filiale",
           "en": "filial piety",
           "vi": "chữ hiếu",
           "pos": "n.f.",
-          "pronunciation_vi": "pi-é-té fi-li-al"
+          "pronunciation_vi": "pi-é-té fi-li-al",
+          "pronunciation_en": "pyay-TAY fee-LYAL (the Confucian concept of filial piety — central to Vietnamese family structure; French has the term but it's used much less in everyday French than Vietnamese 'chữ hiếu')"
         },
         {
           "word": "la cohésion familiale",
           "en": "family cohesion",
           "vi": "sự gắn kết gia đình",
           "pos": "n.f.",
-          "pronunciation_vi": "ko-é-zion fa-mi-li-al"
+          "pronunciation_vi": "ko-é-zion fa-mi-li-al",
+          "pronunciation_en": "koh-ay-ZYO(n) fah-mee-LYAL (nasal '-sion'; useful neutral phrasing when discussing Vietnamese family structure with French speakers — less loaded than 'piété filiale')"
         },
         {
           "word": "la fête traditionnelle",
           "en": "traditional holiday",
           "vi": "lễ truyền thống",
           "pos": "n.f.",
-          "pronunciation_vi": "fèt tra-di-sio-nèl"
+          "pronunciation_vi": "fèt tra-di-sio-nèl",
+          "pronunciation_en": "FET trah-dee-syo-NEL ('fête' rhymes with English 'fete' but shorter and crisper; final 'nelle' = 'nel')"
         }
       ],
       "dialogue": [
         {
           "speaker": "Julien",
           "text": "Le Tết, c'est comme le nouvel an chinois, c'est ça ?",
+          "en": "Tết — that's like Chinese New Year, right?",
           "vi": "Tết giống Tết Trung Quốc đúng không?"
         },
         {
           "speaker": "Mai",
           "text": "Pas tout à fait — même calendrier lunaire, mais traditions et plats différents.",
+          "en": "Not quite — same lunar calendar, but different traditions and foods.",
           "vi": "Không hẳn — cùng âm lịch, nhưng truyền thống và món khác."
         },
         {
           "speaker": "Julien",
           "text": "Ah, désolé, je faisais le raccourci. Qu'est-ce qui distingue le Tết ?",
+          "en": "Ah, sorry — I was taking a shortcut. What makes Tết distinct?",
           "vi": "À, xin lỗi, anh nói tắt. Điều gì làm Tết khác biệt?"
         },
         {
           "speaker": "Mai",
           "text": "Le bánh chưng — un gâteau de riz carré qui symbolise la terre. Très vietnamien.",
+          "en": "Bánh chưng — a square sticky-rice cake that symbolizes the earth. Very Vietnamese.",
           "vi": "Bánh chưng — bánh gạo hình vuông tượng trưng cho đất. Rất Việt Nam."
         }
       ],
@@ -7580,91 +7923,109 @@ export const lessons: FrenchLesson[] =           [
         {
           "speaker": "Julien",
           "text": "Mai, j'ai vu que tu prends une semaine de congés en février. C'est pour le Tết ?",
+          "en": "Mai, I noticed you're taking a week off in February. Is that for Tết?",
           "vi": "Mai, anh thấy em nghỉ một tuần tháng hai. Vì Tết à?"
         },
         {
           "speaker": "Mai",
           "text": "Oui — neuf jours en fait. Pour beaucoup de Vietnamiens, c'est le seul moment de l'année où on rentre vraiment chez les parents.",
+          "en": "Yes — nine days actually. For many Vietnamese, it's the only time of year we really go back home to our parents.",
           "vi": "Vâng — thật ra chín ngày. Với nhiều người Việt, đó là dịp duy nhất trong năm thực sự về với bố mẹ."
         },
         {
           "speaker": "Julien",
           "text": "Neuf jours ! En France, on a juste le 1er janvier. Explique-moi vraiment ce que c'est, parce que je connais juste « nouvel an chinois ».",
+          "en": "Nine days! In France we just get January 1st. Really explain it to me — all I know is 'Chinese New Year'.",
           "vi": "Chín ngày! Ở Pháp chỉ có ngày 1/1. Giải thích cho anh thật kỹ là gì, vì anh chỉ biết « Tết Trung Quốc »."
         },
         {
           "speaker": "Mai",
           "text": "D'abord, ce n'est pas le nouvel an chinois — beaucoup d'Occidentaux font cette confusion. C'est le nouvel an lunaire, célébré dans plusieurs pays asiatiques avec des traditions très différentes. Au Vietnam, on l'appelle « Tết Nguyên Đán », ou simplement Tết.",
+          "en": "First of all, it's not Chinese New Year — many Westerners make that mix-up. It's the Lunar New Year, celebrated across several Asian countries with very different traditions. In Vietnam we call it 'Tết Nguyên Đán', or simply Tết.",
           "vi": "Đầu tiên, không phải Tết Trung Quốc — nhiều người phương Tây nhầm. Là Tết âm lịch, các nước châu Á đều ăn nhưng truyền thống rất khác. Ở Việt Nam, gọi là « Tết Nguyên Đán », hay đơn giản là Tết."
         },
         {
           "speaker": "Julien",
           "text": "OK, je note. Et qu'est-ce qui se passe pendant ces neuf jours ?",
+          "en": "OK, noted. So what actually happens over those nine days?",
           "vi": "OK, anh ghi. Và chín ngày này diễn ra gì?"
         },
         {
           "speaker": "Mai",
           "text": "Si tu veux un repère français : imagine Noël, le 14 juillet, et la Toussaint pour les ancêtres, tous étalés sur une semaine, et tout le pays s'arrête en même temps.",
+          "en": "If you want a French reference point: imagine Christmas, Bastille Day, and All Saints' Day for the ancestors, all stretched across one week — and the whole country shuts down at the same time.",
           "vi": "Nếu anh muốn điểm neo Pháp: tưởng tượng Giáng sinh, 14/7, và Toussaint cho tổ tiên, tất cả trong một tuần, và cả nước đồng loạt dừng."
         },
         {
           "speaker": "Julien",
           "text": "Tout le pays s'arrête, vraiment ?",
+          "en": "The whole country shuts down, really?",
           "vi": "Cả nước dừng, thật sao?"
         },
         {
           "speaker": "Mai",
           "text": "Vraiment. Les usines ferment, les écoles ferment, beaucoup de restaurants ferment. Si tu es touriste à Hanoï pendant le Tết, c'est vide. Les Vietnamiens rentrent dans leur village natal — même si on travaille à 1500 km à Hô-Chi-Minh-Ville, on prend le train ou l'avion pour rentrer.",
+          "en": "Really. Factories close, schools close, many restaurants close. If you're a tourist in Hanoi during Tết, it's empty. Vietnamese people go back to their hometown — even if you work 1500 km away in Ho Chi Minh City, you take the train or fly home.",
           "vi": "Thật. Nhà máy đóng, trường đóng, nhiều nhà hàng đóng. Nếu anh là du khách ở Hà Nội dịp Tết, vắng tanh. Người Việt về quê — kể cả làm cách 1500 km ở TP.HCM, mình bay hoặc đi tàu để về."
         },
         {
           "speaker": "Julien",
           "text": "C'est massif. Et quand vous rentrez, qu'est-ce que vous faites concrètement ?",
+          "en": "That's massive. And once you're home, what do you actually do?",
           "vi": "Quy mô lớn. Và khi về, các em làm gì cụ thể?"
         },
         {
           "speaker": "Mai",
           "text": "La veille du Tết, on prépare l'autel des ancêtres avec des plats — il faut qu'ils « rentrent fêter avec nous ». Le matin du Tết, premier visiteur dans la maison est très important — c'est le « xông đất », il porte chance pour l'année. Ensuite, on rend visite aux aînés de la famille, dans l'ordre — d'abord les grands-parents, puis les oncles aînés, puis les autres.",
+          "en": "The night before Tết, we set up the ancestor altar with dishes — they need to 'come back and celebrate with us'. On Tết morning, the first visitor into the house is extremely important — that's the 'xông đất', who brings luck for the year. Then we visit family elders in order — first the grandparents, then the senior uncles, then the rest.",
           "vi": "Đêm giao thừa, chuẩn bị bàn thờ tổ tiên với các món — họ « về ăn Tết với mình ». Sáng mùng một, người đầu tiên đến nhà rất quan trọng — gọi là « xông đất », mang vận may cho cả năm. Sau đó, đi thăm các cụ trong họ, theo thứ tự — đầu tiên ông bà, rồi bác lớn, rồi các bác khác."
         },
         {
           "speaker": "Julien",
           "text": "L'ordre est précis. Et l'enveloppe rouge dont j'ai entendu parler ?",
+          "en": "The order is strict. And what about the red envelope I've heard about?",
           "vi": "Thứ tự chính xác. Còn phong bì đỏ anh nghe nói?"
         },
         {
           "speaker": "Mai",
           "text": "Lì xì. Les aînés donnent une enveloppe rouge avec de l'argent aux enfants et aux jeunes célibataires. C'est très codifié — on ne donne pas n'importe quel montant, et on dit toujours une formule : « je te souhaite la santé et la réussite cette année ». L'argent compte moins que la formule.",
+          "en": "Lì xì. Elders give a red envelope with money to children and unmarried young adults. It's tightly codified — you don't give just any amount, and you always say a set phrase: 'I wish you health and success this year'. The money matters less than the words.",
           "vi": "Lì xì. Các cụ cho phong bì đỏ có tiền cho trẻ con và người chưa lập gia đình. Rất quy tắc — không cho bừa số nào, và luôn nói câu chúc: « chúc cháu mạnh khỏe và thành công năm nay ». Tiền ít quan trọng hơn câu chúc."
         },
         {
           "speaker": "Julien",
           "text": "Et la famille au sens large ? Tu m'as déjà dit que tes oncles, tantes, cousins vivent tous proches.",
+          "en": "And the extended family? You once told me your uncles, aunts, and cousins all live close together.",
           "vi": "Và gia đình rộng? Em đã nói các chú, cô, anh em họ sống gần nhau."
         },
         {
           "speaker": "Mai",
           "text": "Oui. Pendant le Tết, on voit jusqu'à 30-40 personnes de la famille élargie en trois jours. C'est intense, parfois fatigant honnêtement. Mais c'est aussi le seul moment où ma cousine de Saigon, ma tante de Đà Nẵng, et mon oncle de Hanoï sont au même endroit.",
+          "en": "Yes. During Tết, we see up to 30-40 extended-family members in three days. It's intense — honestly, sometimes exhausting. But it's also the only moment when my cousin from Saigon, my aunt from Đà Nẵng, and my uncle from Hanoi are all in the same place.",
           "vi": "Đúng. Trong Tết, mình gặp 30-40 người đại gia đình trong ba ngày. Cường độ cao, đôi khi mệt thật lòng. Nhưng cũng là dịp duy nhất chị họ em ở Sài Gòn, dì em ở Đà Nẵng, và chú em ở Hà Nội cùng một chỗ."
         },
         {
           "speaker": "Julien",
           "text": "En France, on perd ces moments-là. Beaucoup de mes cousins, je ne les vois qu'aux enterrements maintenant.",
+          "en": "In France, we've lost moments like that. Many of my cousins, I only see them at funerals now.",
           "vi": "Ở Pháp, mình mất những khoảnh khắc đó. Nhiều anh em họ anh, anh chỉ gặp ở đám tang giờ."
         },
         {
           "speaker": "Mai",
           "text": "Tu touches un point réel. Les jeunes Vietnamiens commencent à le perdre aussi — surtout ceux qui partent à l'étranger. Le Tết tient encore, mais pour combien de temps, on ne sait pas.",
+          "en": "You're touching on something real. Young Vietnamese are starting to lose it too — especially those who move abroad. Tết still holds, but for how long, nobody knows.",
           "vi": "Anh chạm điểm thật. Người Việt trẻ cũng bắt đầu mất — đặc biệt những người ra nước ngoài. Tết còn giữ được, nhưng đến bao giờ thì không biết."
         },
         {
           "speaker": "Julien",
           "text": "Si je suis à Hanoï pendant le Tết l'année prochaine, est-ce que je peux venir, en touriste curieux et respectueux ?",
+          "en": "If I'm in Hanoi during Tết next year, could I come over — as a curious, respectful guest?",
           "vi": "Nếu năm sau anh ở Hà Nội dịp Tết, anh có thể đến, kiểu du khách tò mò và tôn trọng được không?"
         },
         {
           "speaker": "Mai",
           "text": "Bien sûr. Mais pas le matin du premier jour — c'est strictement réservé à la famille proche et au xông đất. Le deuxième ou troisième jour, viens, je te ferai visiter le cycle des visites familiales.",
+          "en": "Of course. But not the morning of day one — that's strictly reserved for close family and the xông đất. Day two or three, come over — I'll walk you through the cycle of family visits.",
           "vi": "Tất nhiên. Nhưng không phải sáng mùng một — dành riêng gia đình gần và người xông đất. Mùng hai hoặc ba, anh đến, em sẽ dẫn anh đi chu trình thăm họ."
         }
       ],
@@ -7673,30 +8034,44 @@ export const lessons: FrenchLesson[] =           [
         "Bạn Pháp đến Hà Nội đúng dịp Tết và phàn nàn « tout est fermé, c'est ennuyeux ». Phản hồi vừa thừa nhận khó cho du khách, vừa giúp họ thấy đẹp khác (đường phố vắng, không khí khác hẳn) — đề xuất hoạt động phù hợp.",
         "Người Pháp hỏi: « C'est quoi un xông đất ? Vous choisissez vraiment qui entre dans votre maison en premier ? ». Giải thích phong tục mà không làm nó nghe « mê tín lạc hậu » — nêu lý do tâm lý-xã hội đằng sau."
       ],
+      "roleplay_prompts_en": [
+        "A French colleague asks: 'Why do you give kids money? Here it's frowned on — it creates materialism.' Explain lì xì without getting defensive: acknowledge the fair point in the French view, then add the cultural nuance (it's about the spoken blessing, not the bill). Anglophone parallel: a US/UK colleague asking 'isn't that just bribing children?' — same recovery move applies.",
+        "A French friend arrives in Hanoi right at Tết and complains 'everything is closed, this is boring.' Acknowledge that it's genuinely hard for a tourist, then help them see what's beautifully different (empty streets, altered atmosphere, family-only intimacy) — and propose Tết-compatible activities (a quiet walk by Hoàn Kiếm Lake, a visit on day 3 to a family that's open). (US/UK parallel: explaining to a tourist why most US cities are dead on Christmas Day morning.)",
+        "A French acquaintance asks: 'What's xông đất? Do you really choose who comes into your house first?' Explain the custom without making it sound like 'backward superstition' — give the social-psychological logic (the first person sets the emotional tone for the year, so the family invests deliberately in that choice). Anglophone parallel: explaining 'first-footing' in Scotland, which has nearly the same logic."
+      ],
       "register_notes": "Khi giải thích Tết cho người Pháp, dùng tutoiement với bạn thân, vouvoiement với cấp trên/khách. Tránh hai sai lầm: (1) translit Việt-Pháp literal — « la cérémonie de l'esprit de la terre » (cho « xông đất ») gượng và sai; cứ giữ tên Việt « le xông đất » + giải thích; (2) « gatekeep » văn hóa — không phải mọi phong tục đều phải giữ bí mật. Khi đối phương quan tâm thật, chia sẻ — bao gồm cả những phần đang biến đổi (« beaucoup de jeunes Vietnamiens ne font plus le xông đất aussi strictement »). Cụm hữu ích: « Si tu veux un repère français… » (cho mental model); « C'est très codifié » (báo có quy tắc); « Tu touches un point réel » (thừa nhận critique). Khi mời đến nhà ăn Tết, nói rõ ngày cụ thể (« mùng hai mùng ba », không phải « pendant le Tết » mơ hồ) và format (gia đình quây quần, không phải tiệc).",
+      "register_notes_en": "When explaining Tết to a French speaker, use tu with friends, vous with seniors or unknown guests. Two register failures to avoid: (1) Don't literally translate Vietnamese custom names into French — 'la cérémonie de l'esprit de la terre' for 'xông đất' sounds awkward and is also wrong (the term means 'breaking the ground', not 'spirit of the earth'). Keep the Vietnamese name and add an explanation: 'le xông đất, c'est-à-dire le premier visiteur du matin'. This is the same register move anglophone speakers should use in English: say 'xông đất' or 'lì xì' and explain — don't translate them into pseudo-English phrases like 'first-foot ceremony' or 'red lucky money'. (2) Don't 'gatekeep' culture. You're not betraying Vietnam by sharing customs in detail, including the parts that are changing ('beaucoup de jeunes Vietnamiens ne font plus le xông đất aussi strictement'). Showing evolution rather than a frozen 'authentic' version is more credible and more respectful to your own generation.\n\nUseful framing phrases: 'Si tu veux un repère français…' (if you want a French reference point — gives a mental anchor); 'C'est très codifié' (signals there are rules without lecturing); 'Tu touches un point réel' (acknowledges a fair critique without conceding the whole argument). When inviting someone to your family's Tết, be specific about the day ('day 2 or 3', not vaguely 'during Tết') and the format (family gathering, not a party). A US/UK calibration tip: anglophones often expect 'come over anytime during Tết' to be a real open-ended invitation. Be more directive than you'd be with Vietnamese family — give an exact day and time, or they'll show up on day one and embarrass everyone.",
       "idiom_glosses": [
         {
           "idiom": "Faire le tour de la famille",
           "literal": "Đi vòng gia đình",
+          "literal_en": "To do the round of the family",
           "meaning": "Đi thăm hết người thân theo chu trình.",
+          "meaning_en": "To make the family rounds — visit every relative in sequence over a holiday. The image is literally going from house to house in a loop.",
           "example": "Au Tết, on fait le tour de la famille en trois jours."
         },
         {
           "idiom": "Tomber à pic",
           "literal": "Rơi đúng đỉnh",
+          "literal_en": "To fall on the peak",
           "meaning": "Đến đúng lúc, hợp thời.",
+          "meaning_en": "To arrive at exactly the right moment — perfect timing. Anglophone equivalent: 'right on cue' or 'just in time'.",
           "example": "Ton invitation tombe à pic — je suis à Hanoï pour le Tết."
         },
         {
           "idiom": "Garder les coutumes",
           "literal": "Giữ các phong tục",
+          "literal_en": "To keep the customs",
           "meaning": "Duy trì truyền thống.",
+          "meaning_en": "To preserve / keep up traditions, often despite generational or geographic pressure to drop them. Used in diaspora contexts a lot.",
           "example": "Ma génération essaie de garder les coutumes du Tết, même à l'étranger."
         },
         {
           "idiom": "Renouer avec ses racines",
           "literal": "Nối lại với gốc rễ của mình",
+          "literal_en": "To retie with one's roots",
           "meaning": "Kết nối lại với nguồn gốc.",
+          "meaning_en": "To reconnect with one's roots — reestablish a tie with one's origin culture, family, or hometown. Anglophone equivalent: 'to reconnect with one's roots' (same image).",
           "example": "Le Tết, c'est l'occasion de renouer avec ses racines."
         }
       ],
@@ -7704,62 +8079,86 @@ export const lessons: FrenchLesson[] =           [
         {
           "type": "fill-blank",
           "instruction_vi": "Điền cụm vào câu giải thích Tết.",
+          "instruction_en": "Fill in each blank with the missing word in a sentence explaining Tết.",
           "items": [
             {
               "prompt": "Le Tết, c'est notre nouvel an ___.",
-              "answer": "lunaire"
+              "answer": "lunaire",
+              "hint_vi": "tính từ « âm lịch »",
+              "hint_en": "adjective 'lunar' — relating to the lunar calendar"
             },
             {
               "prompt": "On rentre dans son village ___.",
-              "answer": "natal"
+              "answer": "natal",
+              "hint_vi": "tính từ « nơi sinh ra »",
+              "hint_en": "adjective meaning 'native / where one was born' — describes a hometown"
             },
             {
               "prompt": "C'est sacré, on ne ___ personne.",
-              "answer": "dérange"
+              "answer": "dérange",
+              "hint_vi": "động từ « làm phiền »",
+              "hint_en": "verb 'to bother / disturb' (3rd-person singular, present)"
             },
             {
               "prompt": "Les enfants reçoivent une ___ rouge avec de l'argent.",
-              "answer": "enveloppe"
+              "answer": "enveloppe",
+              "hint_vi": "danh từ « phong bì »",
+              "hint_en": "noun 'envelope' — what holds the lucky money (lì xì)"
             }
           ]
         },
         {
           "type": "matching",
           "instruction_vi": "Nối thuật ngữ Tết với định nghĩa.",
+          "instruction_en": "Match each Tết term with its definition.",
           "items": [
             {
               "prompt": "le xông đất",
-              "answer": "người đầu tiên đến nhà sáng mùng một (first-foot visitor on Lunar New Year morning)"
+              "answer": "người đầu tiên đến nhà sáng mùng một (first-foot visitor on Lunar New Year morning)",
+              "english": "le xông đất → the first visitor to enter the house on the morning of Lunar New Year — believed to set the family's luck for the year"
             },
             {
               "prompt": "lì xì",
-              "answer": "phong bì đỏ chúc Tết có tiền (red envelope with money for Lunar New Year)"
+              "answer": "phong bì đỏ chúc Tết có tiền (red envelope with money for Lunar New Year)",
+              "english": "lì xì → red envelope with money, given by elders to children and unmarried young adults during Tết, accompanied by a spoken blessing"
             },
             {
               "prompt": "le bánh chưng",
-              "answer": "bánh gạo vuông biểu tượng đất (square sticky-rice cake symbolising the earth)"
+              "answer": "bánh gạo vuông biểu tượng đất (square sticky-rice cake symbolising the earth)",
+              "english": "le bánh chưng → square sticky-rice cake symbolizing the earth — the signature Tết food, requires hours of cooking"
             },
             {
               "prompt": "l'autel des ancêtres",
-              "answer": "bàn thờ tổ tiên (ancestor altar)"
+              "answer": "bàn thờ tổ tiên (ancestor altar)",
+              "english": "l'autel des ancêtres → ancestor altar — a household shrine where offerings are made to deceased family members, central to Vietnamese family religion"
             }
           ]
         },
         {
           "type": "translation",
           "instruction_vi": "Dịch sang tiếng Pháp B2 — giọng kể chuyện.",
+          "instruction_en": "Translate each Vietnamese sentence into B2 narrative French.",
           "items": [
             {
               "prompt": "Người Việt về quê kể cả nếu làm cách 1500 km.",
-              "answer": "Les Vietnamiens rentrent dans leur village natal, même s'ils travaillent à 1500 km."
+              "answer": "Les Vietnamiens rentrent dans leur village natal, même s'ils travaillent à 1500 km.",
+              "english": "Vietnamese people go back to their hometown even if they work 1500 km away.",
+              "hint_vi": "« rentrer dans » + « même si » (kể cả nếu)",
+              "hint_en": "use 'rentrer dans' (to return to) + 'même si' (even if)"
             },
             {
               "prompt": "Tiền ít quan trọng hơn câu chúc.",
-              "answer": "L'argent compte moins que la formule."
+              "answer": "L'argent compte moins que la formule.",
+              "english": "The money matters less than the formula (the spoken blessing).",
+              "hint_vi": "« compter moins que » = ít quan trọng hơn",
+              "hint_en": "'compter moins que' = to count for less than / matter less than"
             },
             {
               "prompt": "Đó cũng là dịp duy nhất chị họ em ở Sài Gòn cùng nhà với chú em ở Hà Nội.",
-              "answer": "C'est aussi le seul moment où ma cousine de Saigon est au même endroit que mon oncle de Hanoï."
+              "answer": "C'est aussi le seul moment où ma cousine de Saigon est au même endroit que mon oncle de Hanoï.",
+              "english": "It's also the only time my cousin from Saigon is in the same place as my uncle from Hanoi.",
+              "hint_vi": "« le seul moment où » + « au même endroit que »",
+              "hint_en": "'le seul moment où' (the only time when) + 'au même endroit que' (in the same place as)"
             }
           ]
         }
@@ -7780,6 +8179,12 @@ export const lessons: FrenchLesson[] =           [
             "franchement → frãn-shơ-mã",
             "gêne → jèn",
             "depuis → dơ-pwi"
+          ],
+          "pronunciation_focus_en": [
+            "voudrais → voo-DRAY (conditional 'I would like' — softer than 'je veux'; ends like English 'tray')",
+            "franchement → frah(n)-shuh-MAH(n) (adverb '-ment' ending = nasal 'mah(n)'; signal word for difficult conversations)",
+            "gêne → ZHEN (one syllable; 'zh' = the 's' in 'measure'; final 'e' silent; rhymes with English 'jen')",
+            "depuis → duh-PWEE ('puis' has the rounded 'u' — purse lips, say 'wee'; means 'since' for a duration)"
           ]
         },
         {
@@ -7790,6 +8195,12 @@ export const lessons: FrenchLesson[] =           [
             "quelqu'un → kèl-kun",
             "réunion → ré-u-nion",
             "problème → pro-blèm"
+          ],
+          "pronunciation_focus_en": [
+            "critiquez → kree-tee-KAY (final '-ez' = 'kay', rhymes with English 'pay'; vous-form)",
+            "quelqu'un → kel-KUH(n) (one nasal final; 'someone' — different from English 'kel-kun')",
+            "réunion → ray-yoo-NYO(n) (three syllables; nasal final '-nion' = 'nyo(n)')",
+            "problème → proh-BLEM (final 'me' silent; rhymes with English 'phlegm' without the 'phl')"
           ]
         },
         {
@@ -7801,6 +8212,13 @@ export const lessons: FrenchLesson[] =           [
             "fond → fõn",
             "forme → form",
             "porter → por-té"
+          ],
+          "pronunciation_focus_en": [
+            "dis → DEE (one syllable; final 's' silent; same vowel as English 'see' but shorter)",
+            "tort → TOR (final 't' silent; rhymes with English 'tore'; means 'wrong / fault')",
+            "fond → FO(n) (nasal final, no 'd' sound; means 'substance / the underlying issue')",
+            "forme → FORM (final 'e' silent; means 'form / manner of delivery' — opposed to 'fond')",
+            "porter → por-TAY (final '-er' rhymes with English 'pay'; 'à porter' = 'to bear / take in')"
           ]
         },
         {
@@ -7811,6 +8229,12 @@ export const lessons: FrenchLesson[] =           [
             "marche → marsh",
             "façon → fa-sõn",
             "communiquer → ko-mu-ni-ké"
+          ],
+          "pronunciation_focus_en": [
+            "côté → koh-TAY ('côté' with circumflex = 'side', different from 'coté' (rated/quoted)')",
+            "marche → MARSH (final 'e' silent; rhymes with English 'marsh'; 'ne marche pas' = 'doesn't work')",
+            "façon → fah-SO(n) (the 'ç' = 's' sound; nasal final; means 'way / manner')",
+            "communiquer → koh-myoo-nee-KAY (the 'u' is rounded French 'u'; final '-er' = 'kay')"
           ]
         },
         {
@@ -7821,102 +8245,124 @@ export const lessons: FrenchLesson[] =           [
             "résoudre → ré-zu-drơ",
             "parler → par-lé",
             "début → dé-bu"
+          ],
+          "pronunciation_focus_en": [
+            "va → VAH (one syllable; goes-form of 'aller' for 'on')",
+            "résoudre → ray-ZOO-druh (the 'oud' has the rounded 'u'; final 'dre' is a soft 'druh')",
+            "parler → par-LAY (final '-er' = 'lay'; rolled 'r' on 'par')",
+            "début → day-BYOO (the 'u' is rounded; means 'beginning / a start')"
           ]
         }
       ],
       "cultural_notes_vi": "Cuộc trò chuyện khó (« conversation difficile ») là kỹ năng B2-C1 quan trọng và cũng là nơi người Việt-Pháp dễ trật khớp nhất. Khác biệt cốt lõi: người Pháp coi « conversation difficile » là cách giải quyết vấn đề (« on en parle, on tranche, on avance »), người Việt thường coi đó là cách phá vỡ hoà khí (« nói ra rồi xấu mặt cả hai »). Sai lầm thường gặp của người Việt: né tránh cuộc trò chuyện khó cho đến khi nó nổ ra dưới dạng phẫn uất hoặc nghỉ việc; sai lầm của người Pháp: lao vào cuộc trò chuyện khó quá nhanh, không cho đối phương thời gian chuẩn bị tâm lý.\n\nKỹ năng giao thoa: biết cách MỞ một cuộc trò chuyện khó với một người Pháp đã được luyện sẵn cho format này, mà không « unleash » nó theo cách gây sốc cho phía Việt nếu có người Việt khác trong phòng. Một quy tắc cốt lõi: cuộc trò chuyện khó nên là 1-on-1, không bao giờ trong họp lớn với cả hai phía. Đây là một quy tắc người Việt cần dạy người Pháp khi làm việc tại Việt Nam, và là quy tắc người Việt phải tự áp dụng khi làm việc với sếp Pháp.\n\nMột chú ý quan trọng: « cultural clash » không phải lỗi của một bên — đa số là cấu trúc khác nhau. Khi bạn muốn nêu một vấn đề, hãy bắt đầu bằng « je voudrais qu'on parle franchement » (hai bên cùng nói thẳng), không phải « tu as fait quelque chose de mal » (đổ lỗi). Mở đầu mời gọi sự tham gia hai chiều thay vì lên án một chiều — đó là cốt lõi.",
+      "cultural_notes_en": "The 'difficult conversation' is a real, named workplace genre in France — and the place where French-Vietnamese (and French-Anglophone) collaboration most often misfires. The core cultural mismatch: French professional culture treats a difficult conversation as the standard mechanism for resolving a problem ('on en parle, on tranche, on avance' — we talk, we decide, we move on). Vietnamese and many East Asian cultures treat the same conversation as a rupture of social harmony ('once it's said aloud, both sides lose face'). Anglophones sit somewhere in the middle: Americans lean French (HBR loves a 'tough conversation'), British lean Vietnamese (we'd really rather not, sorry). All three groups misfire differently against the French model.\n\nFor a Vietnamese learner, the typical failure is avoiding the conversation until it explodes — as resentment, as a quiet resignation, or as a passive-aggressive Slack message. For a US/UK reader, the typical failure is the opposite: ambushing your French colleague at the coffee machine with 'hey can we talk about something?' and then unloading immediately. The French expect a scheduled, deliberate 30-minute slot with a stated topic — not a hallway intercept, not a meeting agenda surprise. Anglophone 'just being open' reads as poor self-management to a French colleague; Vietnamese 'just letting it go' reads as a relationship over.\n\nThe cross-cultural skill at B2 is knowing how to OPEN a difficult conversation with a French interlocutor who's been trained in this format for years, without 'unleashing' it in a way that would shock a Vietnamese colleague in the room. The cardinal rule: difficult conversations are 1-on-1, never in a big meeting with both sides watching. This is a rule Vietnamese learners must teach French colleagues working in Vietnam, and a rule Vietnamese learners must apply to themselves when working under a French manager. The opening move is invitational, not accusatory: 'je voudrais qu'on parle franchement' (let's talk frankly, both of us) rather than 'tu as fait quelque chose de mal' (you did something wrong). That single shift changes the conversation from confrontation to joint problem-solving.",
       "tip_advice_vi": "Khung 5 bước cho cuộc trò chuyện khó: (1) Yêu cầu thời gian riêng — không nói chuyện ở hành lang, đặt 30 phút trong phòng họp; (2) Mở đầu bằng intent (« Je voudrais qu'on parle franchement de X. Mon objectif n'est pas de te culpabiliser, mais de trouver une façon de travailler ensemble qui marche pour les deux »); (3) Nêu fact + impact (« Quand tu fais X, ça crée Y pour mon équipe ») — không suy diễn ý đồ; (4) Mời phản hồi (« Comment tu vois ça, toi ? ») — không monologue; (5) Đề xuất thử nghiệm cụ thể (« Pour les deux prochaines semaines, on pourrait essayer Z »). Tránh: nói « tu » giận dữ, lôi quá khứ (« et il y a six mois aussi… »), generalize (« les Français font toujours… »), khóc (làm phía Pháp hoảng và mất năng lực giải quyết). Sau cuộc trò chuyện: gửi tin nhắn « Merci pour cet échange — on revoit dans deux semaines ? ». Không nhắc lại trong các tương tác bình thường — đã giải quyết.",
+      "tip_advice_en": "The five-step frame for a French difficult conversation: (1) Book a private slot — never the hallway, never Slack. Schedule 30 minutes in a real room, stated topic. (2) Open with stated intent: 'Je voudrais qu'on parle franchement de X. Mon objectif n'est pas de te culpabiliser, mais de trouver une façon de travailler ensemble qui marche pour les deux.' This is the single most important sentence in your kit — it defines the conversation as joint problem-solving, not blame. (3) State fact + impact: 'When you do X, it creates Y for my team.' Don't impute motive ('you did this because you don't respect us'); stay on observable behavior and concrete impact. The French 'fait/impact' frame maps directly onto US/UK 'SBI' (Situation/Behavior/Impact) — same skill, slightly different vocabulary. (4) Invite response: 'Comment tu vois ça, toi?' Never monologue past three sentences before pausing. (5) Propose a concrete experiment: 'For the next two weeks, what if we tried Z?' Time-boxed experiments work because they reduce the perceived stakes of any individual change.\n\nThings to avoid: angry 'tu' (you sound out of control), dragging up the past ('and six months ago you also…' — irrelevant and weakens your current point), generalizations ('les Français always…' / 'in France you people…'), and tears (genuinely a problem in French professional contexts — they freeze the other person and stall the conversation rather than evoking sympathy). After the meeting: send a short note 'Merci pour cet échange — on refait un point dans deux semaines?' Then drop the topic in everyday interactions. Looping back to it forces the other person to keep defending themselves, which erases the goodwill the conversation built.",
       "vocabulary": [
         {
           "word": "un malentendu culturel",
           "en": "cultural misunderstanding",
           "vi": "hiểu lầm văn hóa",
           "pos": "n.m.",
-          "pronunciation_vi": "ma-lãn-tãn-du kul-tu-rèl"
+          "pronunciation_vi": "ma-lãn-tãn-du kul-tu-rèl",
+          "pronunciation_en": "ma-lah(n)-tah(n)-DOO kuhl-too-REL (the 'u' in 'culturel' is rounded French 'u'; weighty diplomatic term)"
         },
         {
           "word": "un choc culturel",
           "en": "culture shock",
           "vi": "sốc văn hóa",
           "pos": "n.m.",
-          "pronunciation_vi": "shok kul-tu-rèl"
+          "pronunciation_vi": "shok kul-tu-rèl",
+          "pronunciation_en": "SHOK kuhl-too-REL ('choc' = SHOK, one syllable, like English 'shock')"
         },
         {
           "word": "une critique frontale",
           "en": "direct criticism",
           "vi": "phê bình trực diện",
           "pos": "n.f.",
-          "pronunciation_vi": "kri-tik fron-tal"
+          "pronunciation_vi": "kri-tik fron-tal",
+          "pronunciation_en": "kree-TEEK fro(n)-TAL (direct, head-on criticism — the French default in professional settings)"
         },
         {
           "word": "un cadre hiérarchique",
           "en": "hierarchical framework",
           "vi": "khung cấp bậc",
           "pos": "n.m.",
-          "pronunciation_vi": "ka-drơ i-é-rar-shik"
+          "pronunciation_vi": "ka-drơ i-é-rar-shik",
+          "pronunciation_en": "KAH-druh yay-rar-SHEEK ('cadre' = soft 'kah-druh'; the 'h' in 'hiérarchique' is silent)"
         },
         {
           "word": "un équilibre vie pro / vie perso",
           "en": "work-life balance",
           "vi": "cân bằng công việc-đời sống",
           "pos": "n.m.",
-          "pronunciation_vi": "é-ki-li-brơ vi pro vi pèr-so"
+          "pronunciation_vi": "é-ki-li-brơ vi pro vi pèr-so",
+          "pronunciation_en": "ay-kee-LEE-bruh vee proh vee pair-SOH (very common French workplace term; 'pro' and 'perso' are casual shortenings of 'professionnelle' and 'personnelle')"
         },
         {
           "word": "poser un cadre",
           "en": "to set boundaries",
           "vi": "đặt khung / ranh giới",
           "pos": "v.",
-          "pronunciation_vi": "po-zé an ka-drơ"
+          "pronunciation_vi": "po-zé an ka-drơ",
+          "pronunciation_en": "poh-ZAY uh(n) KAH-druh (literally 'to lay down a frame'; French equivalent of US/UK 'to set boundaries')"
         },
         {
           "word": "désamorcer",
           "en": "to defuse",
           "vi": "hạ nhiệt",
           "pos": "v.",
-          "pronunciation_vi": "dé-za-mor-sé"
+          "pronunciation_vi": "dé-za-mor-sé",
+          "pronunciation_en": "day-zah-mor-SAY (literally 'to remove the primer from (a bomb)'; used for defusing tense situations)"
         },
         {
           "word": "un point de friction",
           "en": "point of friction",
           "vi": "điểm va chạm",
           "pos": "n.m.",
-          "pronunciation_vi": "pwã dơ frik-sion"
+          "pronunciation_vi": "pwã dơ frik-sion",
+          "pronunciation_en": "PWA(n) duh freek-SYO(n) ('point' = nasal 'PWA(n)'; useful neutral term for naming a conflict without escalating)"
         },
         {
           "word": "être sur la même longueur d'onde",
           "en": "to be on the same wavelength",
           "vi": "cùng tần số",
           "pos": "expr.",
-          "pronunciation_vi": "é-trơ syur la mèm lon-gơr dond"
+          "pronunciation_vi": "é-trơ syur la mèm lon-gơr dond",
+          "pronunciation_en": "ETR sur lah MEM lo(n)-GUHR DOH(n)D (same metaphor as English 'on the same wavelength' — radio reference)"
         },
         {
           "word": "trouver un terrain d'entente",
           "en": "to find common ground",
           "vi": "tìm điểm chung",
           "pos": "expr.",
-          "pronunciation_vi": "tru-vé an tè-rãn dãn-tãnt"
+          "pronunciation_vi": "tru-vé an tè-rãn dãn-tãnt",
+          "pronunciation_en": "troo-VAY uh(n) teh-RA(n) dah(n)-TAH(n)T (literally 'a terrain of agreement'; standard French closing phrase for negotiations)"
         }
       ],
       "dialogue": [
         {
           "speaker": "Tâm",
           "text": "Sophie, je peux te demander 30 minutes en aparté cet après-midi ?",
+          "en": "Sophie, can I ask for 30 minutes in private this afternoon?",
           "vi": "Sophie, em có thể xin chị 30 phút nói riêng chiều nay không?"
         },
         {
           "speaker": "Sophie",
           "text": "Bien sûr. Quel est le sujet ?",
+          "en": "Of course. What's the topic?",
           "vi": "Tất nhiên. Chủ đề gì?"
         },
         {
           "speaker": "Tâm",
           "text": "Quelque chose qui me gêne dans nos réunions — je veux qu'on en parle franchement.",
+          "en": "Something that's been bothering me in our meetings — I'd like us to talk about it frankly.",
           "vi": "Một điều khiến em không thoải mái trong các cuộc họp — em muốn mình nói thẳng."
         },
         {
           "speaker": "Sophie",
           "text": "D'accord. 15h30 dans la salle Versailles ?",
+          "en": "Got it. 3:30 PM in the Versailles room?",
           "vi": "Được. 15h30 phòng Versailles?"
         }
       ],
@@ -7924,86 +8370,103 @@ export const lessons: FrenchLesson[] =           [
         {
           "speaker": "Tâm (15h30, salle Versailles)",
           "text": "Merci d'avoir bloqué le créneau. Je voudrais qu'on parle franchement d'un point qui me gêne depuis deux semaines.",
+          "en": "Thanks for blocking off the time. I'd like us to talk frankly about something that's been bothering me for the past two weeks.",
           "vi": "Cảm ơn chị đã chặn khung giờ. Em muốn mình nói thẳng về một điểm khiến em không thoải mái từ hai tuần nay."
         },
         {
           "speaker": "Sophie",
           "text": "Vas-y, je t'écoute. Tu sais que tu peux être direct avec moi.",
+          "en": "Go ahead, I'm listening. You know you can be direct with me.",
           "vi": "Em nói đi, chị nghe. Em biết em có thể thẳng với chị."
         },
         {
           "speaker": "Tâm",
           "text": "Mon objectif n'est pas de te culpabiliser. Je veux juste qu'on trouve une façon de travailler qui marche pour ton style et pour le mien. Voilà le fait : depuis ton arrivée, en réunion d'équipe, tu critiques publiquement le travail des juniors quand tu n'es pas d'accord.",
+          "en": "My goal isn't to make you feel guilty. I just want us to find a way of working that fits both your style and mine. Here's the fact: since you arrived, in team meetings, you publicly critique the junior team members' work when you disagree.",
           "vi": "Mục tiêu em không phải làm chị thấy có lỗi. Em chỉ muốn mình tìm cách làm việc phù hợp với phong cách của chị và của em. Đây là sự thật: từ khi chị đến, trong các cuộc họp đội, chị phê bình công việc các bạn junior công khai khi chị không đồng ý."
         },
         {
           "speaker": "Sophie",
           "text": "Oui — c'est ma façon de fonctionner. En France, je fais ça depuis quinze ans. Personne ne se vexe.",
+          "en": "Yes — that's how I operate. In France, I've been doing this for fifteen years. No one takes offense.",
           "vi": "Đúng — đó là cách chị làm. Ở Pháp chị làm vậy 15 năm rồi. Không ai phật lòng."
         },
         {
           "speaker": "Tâm",
           "text": "Je l'entends. Et je ne dis pas que tu as tort sur le fond — souvent, ce que tu critiques est juste. Je dis que la forme crée un problème ici. Concrètement : trois juniors m'ont parlé en privé en disant qu'ils ont peur de proposer des idées en réunion maintenant.",
+          "en": "I hear you. And I'm not saying you're wrong on the substance — often what you critique is fair. I'm saying the form is creating a problem here. Concretely: three juniors have come to me privately saying they're now afraid to propose ideas in meetings.",
           "vi": "Em hiểu. Và em không nói chị sai về bản chất — thường, điều chị phê bình là đúng. Em nói hình thức tạo vấn đề ở đây. Cụ thể: ba bạn junior nói riêng với em rằng họ sợ đề xuất ý tưởng trong họp giờ."
         },
         {
           "speaker": "Sophie",
           "text": "Trois ? Lesquels ? Pourquoi ils ne me parlent pas directement ?",
+          "en": "Three? Which ones? Why aren't they speaking to me directly?",
           "vi": "Ba người? Ai? Sao họ không nói thẳng với chị?"
         },
         {
           "speaker": "Tâm",
           "text": "Je ne te donne pas les noms — c'était en confidence. Et la raison qu'ils ne te parlent pas directement, c'est précisément ce dont on parle : ils ne se sentent pas en sécurité pour le faire. Pour eux, te dire « je n'aime pas comment tu m'as parlé » serait deux fois plus risqué.",
+          "en": "I won't give you the names — it was told to me in confidence. And the reason they aren't telling you directly is precisely what we're talking about: they don't feel safe to. For them, telling you 'I didn't like how you spoke to me' would be twice as risky.",
           "vi": "Em không đưa tên — là trong sự tin cậy. Và lý do họ không nói thẳng với chị, chính là điều mình đang nói: họ không cảm thấy an toàn để làm vậy. Với họ, nói « tôi không thích cách chị nói với tôi » sẽ rủi ro gấp đôi."
         },
         {
           "speaker": "Sophie",
           "text": "Ça me met dans une position impossible — tu me dis qu'il y a un problème mais je ne peux pas en parler avec eux directement.",
+          "en": "That puts me in an impossible position — you tell me there's a problem but I can't address it with them directly.",
           "vi": "Đặt chị vào thế bí — em nói có vấn đề nhưng chị không nói thẳng với họ được."
         },
         {
           "speaker": "Tâm",
           "text": "Tu as raison que c'est inconfortable. Mais c'est aussi pour ça que je viens te voir — pour qu'on change le système, pas pour gérer chaque cas individuellement. Si on change la dynamique de réunion, le problème disparaît à la racine.",
+          "en": "You're right that it's uncomfortable. But that's also why I'm coming to you — so we change the system rather than handle each case individually. If we change the meeting dynamic, the problem disappears at the root.",
           "vi": "Chị đúng là không thoải mái. Nhưng cũng vì vậy em đến gặp chị — để mình đổi hệ thống, không phải xử lý từng trường hợp. Nếu mình đổi động lực cuộc họp, vấn đề biến mất từ gốc."
         },
         {
           "speaker": "Sophie",
           "text": "Tu as une proposition concrète ?",
+          "en": "Do you have a concrete proposal?",
           "vi": "Em có đề xuất cụ thể không?"
         },
         {
           "speaker": "Tâm",
           "text": "Trois choses. Premièrement : pour les critiques individuelles, on les passe en 1-on-1 — pas en réunion publique. Deuxièmement : en réunion, tu peux critiquer les idées (« cette approche ne va pas marcher parce que… ») sans nommer la personne qui l'a proposée. Troisièmement : à la fin de chaque réunion, je propose qu'on demande à un junior de donner son avis — ça les force à parler dans un cadre safe.",
+          "en": "Three things. First: individual critiques happen in 1-on-1s, not public meetings. Second: in meetings, you can critique ideas ('this approach won't work because…') without naming the person who proposed it. Third: at the end of each meeting, I suggest we ask one junior for their view — it forces them to speak in a safe frame.",
           "vi": "Ba điều. Thứ nhất: phê bình cá nhân chuyển sang 1-on-1 — không trong họp công khai. Thứ hai: trong họp, chị có thể phê bình ý tưởng (« cách này không thành công vì… ») mà không gọi tên người đề xuất. Thứ ba: cuối mỗi cuộc họp, em đề xuất hỏi một bạn junior cho ý kiến — buộc họ phát biểu trong khung an toàn."
         },
         {
           "speaker": "Sophie",
           "text": "Le premier point, je peux faire. Le deuxième, c'est plus dur — la séparation idée/personne est artificielle pour moi. Le troisième, j'aime — donne-moi la liste des juniors et je les solliciterai par rotation.",
+          "en": "The first point, I can do. The second is harder — separating the idea from the person feels artificial to me. The third I like — give me the junior list and I'll rotate through asking them.",
           "vi": "Điểm một, chị làm được. Điểm hai, khó hơn — tách ý tưởng/người là nhân tạo với chị. Điểm ba, chị thích — đưa chị danh sách junior và chị sẽ luân phiên hỏi."
         },
         {
           "speaker": "Tâm",
           "text": "Sur le deuxième point — ça vaut peut-être un essai de deux semaines, et on en reparle. Si ça ne marche pas pour toi, on cherche autre chose.",
+          "en": "On point two — maybe it's worth a two-week trial, and we revisit. If it doesn't work for you, we look for something else.",
           "vi": "Về điểm hai — có lẽ thử hai tuần và mình nói lại. Nếu không hợp với chị, mình tìm cách khác."
         },
         {
           "speaker": "Sophie",
           "text": "D'accord. Et de mon côté — pour qu'on soit honnêtes — qu'est-ce qui ne marche pas dans la façon dont l'équipe vietnamienne communique avec moi ?",
+          "en": "Agreed. And on my side — to be honest both ways — what isn't working in how the Vietnamese team communicates with me?",
           "vi": "Đồng ý. Và phía chị — để mình thành thật — điều gì không ổn trong cách đội Việt giao tiếp với chị?"
         },
         {
           "speaker": "Tâm",
           "text": "Question franche, je vais répondre. Trois choses. Quand tu poses une question fermée (« vous êtes d'accord ? »), on dit oui par habitude — il faut poser des questions ouvertes (« qu'est-ce que vous en pensez ? »). Quand tu envoies un mail à 22h, on se sent obligés de répondre — précise « pas urgent ». Et quand tu nous félicites en réunion, c'est gênant culturellement — fais-le en privé, par mail.",
+          "en": "Frank question, frank answer. Three things. When you ask a closed question ('do you agree?'), we say yes out of habit — ask open questions instead ('what do you think?'). When you send an email at 10 PM, we feel obliged to reply — note 'not urgent' explicitly. And when you praise us in a meeting, it's culturally awkward — do it privately, by email.",
           "vi": "Câu thẳng, em trả lời. Ba điều. Khi chị đặt câu hỏi đóng (« vous êtes d'accord ? »), tụi em nói có theo thói quen — phải đặt câu hỏi mở (« qu'est-ce que vous en pensez ? »). Khi chị gửi mail lúc 22h, tụi em thấy bắt buộc trả lời — ghi rõ « pas urgent ». Và khi chị khen trong họp, gượng về văn hóa — khen riêng, qua email."
         },
         {
           "speaker": "Sophie",
           "text": "Trois points concrets et exécutables. Merci. On se redonne deux semaines et on refait un point ?",
+          "en": "Three concrete, actionable points. Thank you. Shall we give it two weeks and check in again?",
           "vi": "Ba điểm cụ thể và làm được. Cảm ơn. Mình cho hai tuần và họp lại?"
         },
         {
           "speaker": "Tâm",
           "text": "Avec plaisir. Et merci d'avoir reçu cette conversation sans te défendre.",
+          "en": "With pleasure. And thank you for taking this conversation without getting defensive.",
           "vi": "Sẵn lòng. Và cảm ơn chị đã nhận cuộc trò chuyện này mà không phòng thủ."
         }
       ],
@@ -8012,30 +8475,44 @@ export const lessons: FrenchLesson[] =           [
         "Đồng nghiệp Pháp công khai phê bình ý tưởng của bạn trong họp lớn. Sau họp, đặt cuộc trò chuyện riêng — nêu cảm xúc + tác động, không tấn công, đề xuất cách đưa phê bình lần sau.",
         "Sếp Việt yêu cầu bạn làm thêm cuối tuần thường xuyên, sếp Pháp ở chi nhánh quốc tế thúc đẩy work-life balance. Bạn ở giữa. Hẹn nói chuyện riêng với sếp Việt — nêu vấn đề respectful, không đem sếp Pháp ra làm bia, đề xuất giải pháp."
       ],
+      "roleplay_prompts_en": [
+        "Your French manager sends work emails at 11 PM and you feel compelled to reply. Schedule a 1-on-1 — name the issue, propose two concrete protocols (e.g. 'pas urgent' in the subject line, or no work emails after 9 PM except for true emergencies). Stay on the system, not on her character. (Anglophone parallel: same skill works against the 'always-on' US email culture — make it about the protocol, not the person.)",
+        "A French colleague publicly criticizes your idea in a large meeting. After the meeting, book a private conversation — name the impact (not your feelings as the headline; lead with effect on team and on your ability to contribute), don't attack, and propose how feedback should be delivered next time. (US/UK parallel: classic 'praise in public, critique in private' principle — but in France you have to ask for it explicitly, it's not the default.)",
+        "Your Vietnamese boss expects regular weekend work, while your French manager at the international office pushes work-life balance. You're caught in the middle. Book a private conversation with your Vietnamese boss — raise it respectfully, do NOT use the French manager as a stick to beat them with (that escalates), and propose a workable arrangement that respects both sides."
+      ],
       "register_notes": "Cuộc trò chuyện khó luôn dùng « tu » nếu hai bên đã « tu » trước đó — chuyển sang « vous » ở giữa cuộc trò chuyện sẽ tạo cảm giác « phán xét chính thức » và làm đối phương phòng thủ. Tránh các cụm tăng nhiệt: « tu fais toujours… » (generalize), « ça me blesse » (cảm xúc đậm — Pháp coi unprofessional), « les Français… » (generalize văn hóa). Thay bằng các cụm giảm nhiệt: « depuis deux semaines, j'observe que… » (cụ thể, có giới hạn thời gian), « ça crée un problème pour mon équipe » (impact, không cảm xúc), « comment tu vois ça, toi ? » (mời tham gia). Khi đối phương phòng thủ (« je fais ça depuis quinze ans »), không leo thang — thừa nhận (« je l'entends ») rồi quay lại fact + impact. Một câu hữu ích để mở: « Mon objectif n'est pas de te culpabiliser — mon objectif est qu'on trouve un fonctionnement qui marche pour les deux » — câu này định khung là « problem-solving », không phải « blame ».",
+      "register_notes_en": "A difficult conversation always stays on tu if you were on tu before — switching to vous mid-conversation reads as 'formal judgment mode' and makes the other person defensive. This is one of the most surprising register rules for anglophones, because the English instinct is to switch to more formal language when things get serious. In French, the opposite move applies: stay close, stay informal, signal that this is between two humans not a disciplinary procedure.\n\nAvoid escalators: 'tu fais toujours…' (generalizes — never works), 'ça me blesse' (too emotional — reads as unprofessional in French, even though it might be appropriate in a US therapeutic-vocabulary workplace), 'les Français…' (cultural generalization — same as 'all Americans' in reverse). Replace them with de-escalators: 'depuis deux semaines, j'observe que…' (specific and time-bounded, which keeps the conversation tractable), 'ça crée un problème pour mon équipe' (impact-focused, not emotion-focused — works for both French and US managers), 'comment tu vois ça, toi?' (invites participation).\n\nWhen the other person gets defensive ('je fais ça depuis quinze ans' — 'I've been doing this for fifteen years'), don't escalate — acknowledge ('je l'entends' — 'I hear you') and then return to fact + impact. This is the same de-escalation move taught in US 'crucial conversations' training, just phrased differently. The single most useful opening sentence: 'Mon objectif n'est pas de te culpabiliser — mon objectif est qu'on trouve un fonctionnement qui marche pour les deux.' It frames the conversation as problem-solving, not blame, and gives the other person psychological permission to stay engaged rather than defending. For anglophones used to the US 'feedback sandwich' (praise-critique-praise), drop it for French conversations — the French read sandwich praise as insincere; stay with intent + fact + impact + invitation + experiment.",
       "idiom_glosses": [
         {
           "idiom": "Crever l'abcès",
           "literal": "Châm vỡ ổ áp xe",
+          "literal_en": "To lance the abscess",
           "meaning": "Giải quyết vấn đề khó bằng cuộc nói chuyện thẳng.",
+          "meaning_en": "To address a festering problem head-on with a frank conversation — the image is medical: lance the boil so the infection can drain rather than spread.",
           "example": "Il fallait crever l'abcès — on ne pouvait pas continuer à éviter le sujet."
         },
         {
           "idiom": "Mettre les choses au clair",
           "literal": "Đặt mọi việc cho rõ",
+          "literal_en": "To put things in the clear",
           "meaning": "Làm rõ ranh giới và kỳ vọng.",
+          "meaning_en": "To clarify expectations and boundaries between two parties — same image as English 'to clear the air' but more action-oriented.",
           "example": "Cette conversation a permis de mettre les choses au clair entre nous."
         },
         {
           "idiom": "Désamorcer une situation",
           "literal": "Hạ nhiệt một tình huống",
+          "literal_en": "To defuse a situation",
           "meaning": "Giảm căng thẳng trước khi nó nổ.",
+          "meaning_en": "To defuse a tense situation before it escalates — same bomb-disposal image as in English.",
           "example": "En proposant un essai de deux semaines, j'ai désamorcé la situation."
         },
         {
           "idiom": "Trouver un terrain d'entente",
           "literal": "Tìm mảnh đất đồng thuận",
+          "literal_en": "To find a terrain of agreement",
           "meaning": "Đạt một thỏa thuận khả thi cho cả hai.",
+          "meaning_en": "To find common ground / reach a workable agreement that both sides can live with. The standard French closing move for any difficult negotiation.",
           "example": "On n'est pas obligés d'être d'accord sur tout — il faut juste trouver un terrain d'entente."
         }
       ],
@@ -8043,62 +8520,86 @@ export const lessons: FrenchLesson[] =           [
         {
           "type": "fill-blank",
           "instruction_vi": "Điền cụm vào câu mở cuộc trò chuyện khó.",
+          "instruction_en": "Fill in each blank with the missing word in an opening line for a difficult conversation.",
           "items": [
             {
               "prompt": "Je voudrais qu'on parle ___ de quelque chose qui me gêne.",
-              "answer": "franchement"
+              "answer": "franchement",
+              "hint_vi": "trạng từ « thẳng thắn »",
+              "hint_en": "adverb 'frankly / openly'"
             },
             {
               "prompt": "Mon objectif n'est pas de te ___.",
-              "answer": "culpabiliser"
+              "answer": "culpabiliser",
+              "hint_vi": "động từ « làm thấy có lỗi »",
+              "hint_en": "verb 'to make (someone) feel guilty' — the signal that this is NOT a blame conversation"
             },
             {
               "prompt": "Ça crée un ___ pour mon équipe.",
-              "answer": "problème"
+              "answer": "problème",
+              "hint_vi": "danh từ « vấn đề »",
+              "hint_en": "noun 'problem' — neutral, impact-focused framing"
             },
             {
               "prompt": "Comment tu ___ ça, toi ?",
-              "answer": "vois"
+              "answer": "vois",
+              "hint_vi": "động từ « nhìn / thấy » (tu-form)",
+              "hint_en": "verb 'to see' in tu-form, present tense — used to invite the other person's perspective"
             }
           ]
         },
         {
           "type": "matching",
           "instruction_vi": "Nối thành ngữ với chiến lược trò chuyện khó.",
+          "instruction_en": "Match each idiom with the difficult-conversation strategy it represents.",
           "items": [
             {
               "prompt": "Crever l'abcès",
-              "answer": "giải quyết bằng nói thẳng (lance the boil, address it directly)"
+              "answer": "giải quyết bằng nói thẳng (lance the boil, address it directly)",
+              "english": "Crever l'abcès → lance the boil — address a festering problem head-on with a frank conversation"
             },
             {
               "prompt": "Mettre les choses au clair",
-              "answer": "làm rõ ranh giới (set boundaries clearly)"
+              "answer": "làm rõ ranh giới (set boundaries clearly)",
+              "english": "Mettre les choses au clair → clarify expectations and boundaries between parties"
             },
             {
               "prompt": "Désamorcer une situation",
-              "answer": "hạ nhiệt trước khi nổ (defuse a situation before it explodes)"
+              "answer": "hạ nhiệt trước khi nổ (defuse a situation before it explodes)",
+              "english": "Désamorcer une situation → defuse a tense situation before it escalates"
             },
             {
               "prompt": "Trouver un terrain d'entente",
-              "answer": "đạt thỏa thuận khả thi (find common ground / a workable agreement)"
+              "answer": "đạt thỏa thuận khả thi (find common ground / a workable agreement)",
+              "english": "Trouver un terrain d'entente → find common ground — reach a workable agreement both sides can live with"
             }
           ]
         },
         {
           "type": "translation",
           "instruction_vi": "Dịch sang tiếng Pháp B2 — giọng problem-solving, không blame.",
+          "instruction_en": "Translate each Vietnamese sentence into B2 French in a problem-solving (not blame-oriented) voice.",
           "items": [
             {
               "prompt": "Em không nói chị sai về bản chất — em nói hình thức khó chấp nhận ở đây.",
-              "answer": "Je ne dis pas que tu as tort sur le fond — je dis que la forme est difficile à porter ici."
+              "answer": "Je ne dis pas que tu as tort sur le fond — je dis que la forme est difficile à porter ici.",
+              "english": "I'm not saying you're wrong on the substance — I'm saying the form is hard to handle here.",
+              "hint_vi": "« sur le fond » vs « la forme »",
+              "hint_en": "use 'sur le fond' (on the substance) vs 'la forme' (the form / manner of delivery) — a key French distinction"
             },
             {
               "prompt": "Mục tiêu em là tìm cách làm việc phù hợp cho cả hai phong cách.",
-              "answer": "Mon objectif est de trouver une façon de travailler qui marche pour les deux styles."
+              "answer": "Mon objectif est de trouver une façon de travailler qui marche pour les deux styles.",
+              "english": "My goal is to find a way of working that fits both styles.",
+              "hint_vi": "« mon objectif est de » + « qui marche pour »",
+              "hint_en": "'mon objectif est de' (my goal is to) + 'qui marche pour' (that works for)"
             },
             {
               "prompt": "Cảm ơn chị đã nhận cuộc trò chuyện này mà không phòng thủ.",
-              "answer": "Merci d'avoir reçu cette conversation sans te défendre."
+              "answer": "Merci d'avoir reçu cette conversation sans te défendre.",
+              "english": "Thank you for taking this conversation without getting defensive.",
+              "hint_vi": "« merci d'avoir » + infinitive « reçu »",
+              "hint_en": "'merci d'avoir + past participle' = 'thank you for having…'; 'sans te défendre' = 'without defending yourself'"
             }
           ]
         }
@@ -8119,6 +8620,12 @@ export const lessons: FrenchLesson[] =           [
             "depuis → dơ-pwi",
             "combien → kõm-biain",
             "maintenant → main-tơ-nã"
+          ],
+          "pronunciation_focus_en": [
+            "Hanoï → ah-noh-EE (three syllables; the 'ï' with the diaeresis is its own syllable — different from English 'Ha-noi' said in two)",
+            "depuis → duh-PWEE (the 'puis' = 'pwee' with the rounded 'u'; means 'since' for a duration)",
+            "combien → kom-BYA(n) (nasal final; means 'how much / how long' for duration questions)",
+            "maintenant → ma(n)-tuh-NAH(n) (two nasals; 'now / at the moment')"
           ]
         },
         {
@@ -8130,6 +8637,13 @@ export const lessons: FrenchLesson[] =           [
             "montrer → mon-tré",
             "touristes → tu-rist",
             "connaissent → ko-nès"
+          ],
+          "pronunciation_focus_en": [
+            "si → SEE (one syllable; means 'if'; identical to English 'see' but shorter)",
+            "peux → PUH (one syllable; the 'eu' has no English equivalent — round lips as if to say 'oo' then say 'eh')",
+            "montrer → mo(n)-TRAY (nasal first; final '-er' = 'tray', rhymes with English 'tray')",
+            "touristes → too-REEST (the 'u' is rounded French 'u'; final 's' silent on 'touristes')",
+            "connaissent → koh-NESS (the '-ent' on 3rd-plural verbs is silent; sounds like 'connais')"
           ]
         },
         {
@@ -8140,6 +8654,12 @@ export const lessons: FrenchLesson[] =           [
             "prévoie → pré-vwa",
             "s'envoie → sãn-vwa",
             "feeling → fi-ling (anglicisme)"
+          ],
+          "pronunciation_focus_en": [
+            "voit → VWAH (one syllable; the 'oi' = 'wah'; means 'sees')",
+            "prévoie → pray-VWAH (subjunctive of 'prévoir' / to plan; same 'oi' sound)",
+            "s'envoie → sah(n)-VWAH (nasal first syllable; means 'send each other')",
+            "feeling → FEE-ling (English loanword, pronounced almost as in English; 'au feeling' = 'play it by ear' — borrowed from English)"
           ]
         },
         {
@@ -8150,6 +8670,12 @@ export const lessons: FrenchLesson[] =           [
             "poses → poz",
             "questions → kès-tion",
             "hésite → é-zit"
+          ],
+          "pronunciation_focus_en": [
+            "remarqué → ruh-mar-KAY (final '-qué' = 'kay', rhymes with English 'pay')",
+            "poses → POHZ (final 's' becomes 'z' between vowels; rhymes with English 'rose')",
+            "questions → KES-tyo(n) (nasal final '-tions' = 'tyo(n)'; different from English 'KWES-chunz')",
+            "hésite → ay-ZEET (the 'h' is silent; final 'e' silent)"
           ]
         },
         {
@@ -8159,102 +8685,123 @@ export const lessons: FrenchLesson[] =           [
             "amitié → a-mi-tié",
             "lent → lã",
             "solide → so-lid"
+          ],
+          "pronunciation_focus_en": [
+            "amitié → ah-mee-TYAY (four syllables; final 'tié' = 'tyay', rhymes with English 'pay')",
+            "lent → LAH(n) (one nasal syllable; means 'slow'; final 't' silent)",
+            "solide → soh-LEED (final 'e' silent; rhymes with English 'lead' as in the metal)"
           ]
         }
       ],
       "cultural_notes_vi": "Xây dựng tình bạn với người Pháp sống ở Việt Nam (« expat ») khác hẳn với bạn Việt và cũng khác với bạn Pháp ở Pháp. Expat Pháp ở Việt Nam thường ở vị trí transitional — họ ở 2-5 năm rồi về nước hoặc đi nước khác — nên họ có hai mode: (1) « expat bubble » — chỉ chơi với expat khác, hành xử như đang trong một club kín; (2) « immersion » — chủ động kết bạn với người Việt nhưng thường mong tốc độ nhanh kiểu Tây. Cả hai mode đều có thách thức cho người Việt muốn kết bạn thật.\n\nKhác biệt cốt lõi về tình bạn: ở Pháp, bạn có thể « tu » và đi uống bia với một người sau hai lần gặp. Ở Việt Nam, « bạn thân » thường mất 6-12 tháng và bao gồm cả gia đình hai bên. Khi bạn người Pháp expect mức độ thân nhanh (« on est potes maintenant ! »), nhiều người Việt thấy gượng và rút lui. Ngược lại, khi người Việt giữ khoảng cách lịch sự lâu (vẫn còn vouvoiement sau 2 tháng), người Pháp tưởng bạn không quan tâm và rút lui.\n\nCách đúng: nói rõ kỳ vọng và protocol. Người Pháp đánh giá cao sự minh bạch (« chez nous, l'amitié est lente — pas que je ne t'apprécie pas, c'est juste le rythme »). Người Pháp cũng thích invitation cụ thể hơn câu chung chung — « tu veux venir manger samedi à 19h ? » mạnh hơn « on devrait se voir un jour ». Một bài học cho người Việt: nếu muốn kết bạn thật với expat Pháp, phải chủ động hơn bình thường, vì họ không quen đợi 6 tháng.",
+      "cultural_notes_en": "Building real friendship with a French person living in Vietnam (or, with adjustments, an anglophone expat) sits at the intersection of two very different friendship economies. French friendship tempo is fast at the surface (tu after two meetings, beers in the same week) but the depth tier requires real time and shared crisis to unlock. Vietnamese friendship tempo is slow at the surface (formal address for months) but once 'in', it includes family, money, and lifelong loyalty. Anglophones — especially Americans — are often even faster than the French at surface intimacy ('OMG we're best friends now!' after one brunch) but much shallower at the depth tier than Vietnamese friendships ever are. So a Vietnamese learner trying to befriend a French expat is actually solving a three-way calibration problem, not two.\n\nThe French expat population in Vietnam tends to operate in one of two modes: (1) the 'expat bubble' — a small French-speaking social circle of other expats with shared apéros, shared visa anxieties, shared complaints about Vietnamese bureaucracy; relationships are easy but stay surface-level. (2) the 'immersion' mode — actively trying to make Vietnamese friends, but often expecting Western-tempo intimacy, which can feel pushy. Both modes create friction for a Vietnamese person looking for genuine friendship. The cross-cultural skill: recognize which mode your expat friend is in, and meet them where they are while gently moving the tempo.\n\nThe single most useful frame is transparency. French people (and most Western anglophones) genuinely appreciate being told the rules of the game directly. Saying explicitly 'chez nous, l'amitié est lente — c'est pas que je ne t'apprécie pas, c'est juste le rythme' (in Vietnam friendship is slow — it's not that I don't like you, it's just the tempo) removes the worst misreading: that polite Vietnamese distance equals disinterest. Conversely, French expats tend to prefer concrete invitations over open-ended ones — 'tu veux venir manger samedi à 19h?' lands much harder than 'we should hang out sometime'. A US/UK calibration note: 'we should grab a coffee sometime' is even more meaningless in French than it is in English. Replace it with a specific day and time, every time.",
       "tip_advice_vi": "Năm điều giúp xây tình bạn với expat Pháp ở Việt Nam: (1) Đề xuất gặp lần 2 trong vòng 2 tuần sau lần 1 — kéo dài hơn họ tưởng bạn không quan tâm; (2) Mời đến nhà sớm hơn bình thường (sau 3-4 lần gặp ngoài) — Pháp coi mời đến nhà là dấu friendship đáng kể, và họ cũng sẽ mời lại; (3) Chủ động hỏi về cuộc sống cá nhân (gia đình, lý do đến Việt Nam, dự định tương lai) — đừng chờ họ mở; (4) Chấp nhận họ sẽ đi sau 2-5 năm — đừng investment quá nặng nếu họ là transient; tốt hơn xem là cây cầu mở ra mạng lưới dài hạn ở Pháp; (5) Giới thiệu họ vào mạng lưới bạn Việt của bạn — họ rất biết ơn vì khó vào mạng Việt một mình. Tránh: kỳ vọng họ sẽ thay đổi mọi thói quen Pháp khi ở Việt Nam; đối xử với họ như « informant văn hóa » để học tiếng Pháp; đợi họ chủ động (Pháp expect bạn pro-active).",
+      "tip_advice_en": "Five practical moves to build real friendship with a French expat in Vietnam: (1) Propose the second meeting within two weeks of the first — wait longer and they read it as polite disinterest. The French (and US/UK) tempo expects regular recontact; long silences signal 'we're not really doing this'. (2) Invite them to your home sooner than you'd invite a Vietnamese friend — after 3–4 outside meetings is fine. In French culture, a home invitation is a significant friendship marker, and they will reciprocate. Anglophone parallel: same calibration works for British and American expats — the home invite is the inflection point. (3) Proactively ask about personal life — family, the reason they came to Vietnam, what comes next. Don't wait for them to open; French and anglophone expats often appreciate the curiosity. Don't make it an interview, though; share equivalently about yourself. (4) Accept that they will leave in 2–5 years and right-size your investment accordingly. Don't see them as a permanent local friend; see them as a bridge to a long-term Paris/London/Brussels network. Real friendships survive the move home if you build them properly before they go. (5) Bring them into your Vietnamese friend network — it's hard for an expat to enter Vietnamese social circles alone, and they'll be enormously grateful.\n\nThings to avoid: expecting them to drop every French habit upon arriving in Vietnam (they won't, and asking them to is condescending); treating them as your 'cultural informant' to practice your French (you'll feel like a teacher to them, which kills equality); waiting for them to make every move (the French expect you to be proactive — they'll read passivity as disinterest). The single biggest mismatch I see: Vietnamese learners assume the slow-tempo move is more respectful, but to a French or anglophone friend it can read as 'you're not really into this' — counter it by initiating more often than your Vietnamese instincts suggest.",
       "vocabulary": [
         {
           "word": "un expatrié",
           "en": "an expat",
           "vi": "người nước ngoài sinh sống lâu dài",
           "pos": "n.m.",
-          "pronunciation_vi": "èk-spa-tri-é"
+          "pronunciation_vi": "èk-spa-tri-é",
+          "pronunciation_en": "ek-spah-tree-AY (final '-é' = 'ay'; specifically a long-term foreign resident, not a tourist)"
         },
         {
           "word": "l'amitié",
           "en": "friendship",
           "vi": "tình bạn",
           "pos": "n.f.",
-          "pronunciation_vi": "a-mi-tié"
+          "pronunciation_vi": "a-mi-tié",
+          "pronunciation_en": "lah-mee-TYAY (the 'l' attaches; final 'tié' = 'tyay'; rhymes with English 'pay')"
         },
         {
           "word": "un cercle d'amis",
           "en": "a circle of friends",
           "vi": "vòng bạn bè",
           "pos": "n.m.",
-          "pronunciation_vi": "sèr-klơ da-mi"
+          "pronunciation_vi": "sèr-klơ da-mi",
+          "pronunciation_en": "SAIR-kluh dah-MEE (final 'cle' = soft 'kluh'; closer to English 'social circle' than 'friend group')"
         },
         {
           "word": "se voir régulièrement",
           "en": "to meet regularly",
           "vi": "gặp đều đặn",
           "pos": "v.",
-          "pronunciation_vi": "sơ vwar ré-gu-lièr-mã"
+          "pronunciation_vi": "sơ vwar ré-gu-lièr-mã",
+          "pronunciation_en": "suh VWAR ray-gyoo-LYAIR-mah(n) (the '-ment' adverb ending is nasal 'mah(n)'; 'régulièrement' is a long word — slow it down)"
         },
         {
           "word": "un cadre informel",
           "en": "an informal setting",
           "vi": "khung không chính thức",
           "pos": "n.m.",
-          "pronunciation_vi": "ka-drơ an-for-mèl"
+          "pronunciation_vi": "ka-drơ an-for-mèl",
+          "pronunciation_en": "KAH-druh a(n)-for-MEL (nasal middle on 'informel'; useful for proposing low-stakes hangouts)"
         },
         {
           "word": "être au feeling",
           "en": "to play it by ear (anglicism)",
           "vi": "theo cảm xúc / tự nhiên",
           "pos": "expr.",
-          "pronunciation_vi": "é-trơ o fi-ling"
+          "pronunciation_vi": "é-trơ o fi-ling",
+          "pronunciation_en": "ETR oh FEE-ling (English loanword 'feeling' kept; means 'play it by ear / go with the vibe' — very common in casual French)"
         },
         {
           "word": "un coup de cœur",
           "en": "a sudden affinity",
           "vi": "cảm tình tự phát",
           "pos": "n.m.",
-          "pronunciation_vi": "ku dơ kơr"
+          "pronunciation_vi": "ku dơ kơr",
+          "pronunciation_en": "KOO duh KUHR (final 'cœur' has the 'eu' sound — no English equivalent, round lips and say 'er'; means a spontaneous emotional pull)"
         },
         {
           "word": "un point d'ancrage",
           "en": "an anchor point",
           "vi": "điểm neo",
           "pos": "n.m.",
-          "pronunciation_vi": "pwã dãn-kraj"
+          "pronunciation_vi": "pwã dãn-kraj",
+          "pronunciation_en": "PWA(n) dah(n)-KRAHZH (two nasals; 'ancrage' literally an anchor — used metaphorically for a stable person/place in your life)"
         },
         {
           "word": "avoir des affinités",
           "en": "to have things in common",
           "vi": "có điểm chung",
           "pos": "v.",
-          "pronunciation_vi": "a-vwar dé-z-a-fi-ni-té"
+          "pronunciation_vi": "a-vwar dé-z-a-fi-ni-té",
+          "pronunciation_en": "ah-VWAR day-zah-fee-nee-TAY (liaison 'des affinités' = 'day-zah'; means clicking on shared interests/values)"
         },
         {
           "word": "tutoyer / vouvoyer",
           "en": "to use tu / vous",
           "vi": "dùng tu / vous",
           "pos": "v.",
-          "pronunciation_vi": "tu-twa-yé / vu-vwa-yé"
+          "pronunciation_vi": "tu-twa-yé / vu-vwa-yé",
+          "pronunciation_en": "too-twah-YAY / voo-vwah-YAY (verbs for 'to address someone as tu' or 'as vous' — there's no clean English equivalent because English has no T-V distinction)"
         }
       ],
       "dialogue": [
         {
           "speaker": "Antoine",
           "text": "Mai, ça fait trois fois qu'on se voit en café — on passe au tu ?",
+          "en": "Mai, this is the third time we've met for coffee — should we switch to tu?",
           "vi": "Mai, mình gặp ba lần ở quán — chuyển sang « tu » nhé?"
         },
         {
           "speaker": "Mai",
           "text": "Volontiers. Au Vietnam aussi on tutoie les amis, mais souvent plus tard que vous.",
+          "en": "Gladly. In Vietnam we also use tu with friends, but usually later than you do.",
           "vi": "Sẵn lòng. Ở Việt Nam mình cũng « tu » với bạn, nhưng thường muộn hơn các anh."
         },
         {
           "speaker": "Antoine",
           "text": "Ah, intéressant. Du coup, je n'ai pas trop précipité ?",
+          "en": "Ah, interesting. So I haven't rushed it too much?",
           "vi": "À, thú vị. Vậy anh không vội quá chứ?"
         },
         {
           "speaker": "Mai",
           "text": "Non, pas du tout. C'est même plus simple comme ça pour la suite.",
+          "en": "No, not at all. It's actually simpler this way going forward.",
           "vi": "Không, không hề. Thậm chí đơn giản hơn cho sau này."
         }
       ],
@@ -8262,81 +8809,97 @@ export const lessons: FrenchLesson[] =           [
         {
           "speaker": "Antoine",
           "text": "Mai, je voulais te dire — ça fait six mois que je suis à Hanoï, et tu es la seule personne avec qui j'ai vraiment construit un lien.",
+          "en": "Mai, I wanted to tell you — I've been in Hanoi for six months, and you're the only person I've really built a real connection with.",
           "vi": "Mai, anh muốn nói với em — anh ở Hà Nội đã sáu tháng, và em là người duy nhất anh thực sự xây được liên kết."
         },
         {
           "speaker": "Mai",
           "text": "Merci, ça me touche. C'est si difficile à Hanoï pour toi ?",
+          "en": "Thank you, that touches me. Is it really that hard for you in Hanoi?",
           "vi": "Cảm ơn, điều đó cảm động em. Khó vậy ở Hà Nội cho anh?"
         },
         {
           "speaker": "Antoine",
           "text": "Plus que je pensais. Avec les autres expats français, c'est facile mais superficiel — on parle d'apéro et de problèmes de visa. Avec les Vietnamiens au bureau, c'est cordial mais ça ne va jamais au-delà du collègue. Je ne comprends pas ce que je rate.",
+          "en": "More than I expected. With other French expats it's easy but superficial — we just talk about apéros and visa headaches. With Vietnamese colleagues at the office it's cordial but it never goes beyond the colleague level. I don't understand what I'm missing.",
           "vi": "Hơn anh nghĩ. Với các expat Pháp khác, dễ nhưng hời hợt — nói về aperitif và vấn đề visa. Với đồng nghiệp Việt ở văn phòng, lịch sự nhưng không qua mức đồng nghiệp. Anh không hiểu mình bỏ lỡ gì."
         },
         {
           "speaker": "Mai",
           "text": "Je peux être franche avec toi ? L'amitié au Vietnam est lente. Six mois, c'est encore tôt — beaucoup de mes amitiés vraies se sont construites en deux ou trois ans.",
+          "en": "Can I be frank with you? Friendship in Vietnam is slow. Six months is still early — many of my real friendships took two or three years to build.",
           "vi": "Em nói thẳng được không? Tình bạn ở Việt Nam chậm. Sáu tháng vẫn sớm — nhiều tình bạn thật của em xây trong hai-ba năm."
         },
         {
           "speaker": "Antoine",
           "text": "Deux ou trois ans ?! Mais je serai parti dans deux ans !",
+          "en": "Two or three years?! But I'll be gone in two years!",
           "vi": "Hai-ba năm?! Nhưng anh sẽ đi sau hai năm!"
         },
         {
           "speaker": "Mai",
           "text": "C'est exactement le problème. Beaucoup de Vietnamiens sentent que les expats partent — donc ils ne « investissent » pas trop dans la relation. C'est protecteur, pas méchant. Et de votre côté, vous voulez la version 6 mois de l'amitié vietnamienne, qui n'existe pas vraiment.",
+          "en": "That's exactly the problem. Many Vietnamese sense that expats leave — so they don't 'invest' much in the relationship. It's protective, not unkind. And on your side, you want the 6-month version of Vietnamese friendship, which doesn't really exist.",
           "vi": "Đó chính là vấn đề. Nhiều người Việt cảm thấy expat sẽ đi — nên họ không « đầu tư » nhiều vào quan hệ. Là tự bảo vệ, không phải xấu. Và phía các anh, các anh muốn phiên bản 6 tháng của tình bạn Việt, vốn không thực sự tồn tại."
         },
         {
           "speaker": "Antoine",
           "text": "Donc je dois renoncer à avoir de vrais amis vietnamiens ?",
+          "en": "So I should give up on having real Vietnamese friends?",
           "vi": "Vậy anh phải bỏ ý định có bạn Việt thật?"
         },
         {
           "speaker": "Mai",
           "text": "Non — il faut juste recalibrer. Trois conseils. Premièrement : sois explicite sur tes intentions. Dis « j'aimerais qu'on devienne amis » — chez nous, c'est rare et précieux. Deuxièmement : invite chez toi, pas seulement au café. Le seuil de la maison, c'est un seuil émotionnel. Troisièmement : intègre-toi à un groupe stable — équipe de foot, classe de cuisine, association — pas juste rencontres 1-on-1.",
+          "en": "No — just recalibrate. Three pieces of advice. First: be explicit about your intentions. Say 'I'd like us to become friends' — here that's rare and meaningful. Second: invite people to your home, not just to cafés. The threshold of the home is an emotional threshold. Third: join a stable group — soccer team, cooking class, club — not just 1-on-1 meetings.",
           "vi": "Không — chỉ cần điều chỉnh lại. Ba lời khuyên. Thứ nhất: nói rõ ý định. Nói « anh muốn mình trở thành bạn » — bên em, hiếm và quý. Thứ hai: mời về nhà, không chỉ ra quán. Ngưỡng cửa nhà là ngưỡng cảm xúc. Thứ ba: hòa nhập vào một nhóm ổn định — đội bóng, lớp nấu ăn, hội đoàn — không chỉ gặp 1-on-1."
         },
         {
           "speaker": "Antoine",
           "text": "Le premier conseil — dire explicitement « je veux qu'on soit amis » — en France ça serait bizarre. On ne dit jamais ça.",
+          "en": "The first piece of advice — explicitly saying 'I want us to be friends' — in France that would be weird. Nobody says that.",
           "vi": "Lời khuyên đầu — nói rõ « tôi muốn mình là bạn » — ở Pháp gượng. Không ai nói vậy."
         },
         {
           "speaker": "Mai",
           "text": "Au Vietnam non plus dans la première rencontre — mais après quelques mois, ça marque l'engagement. Ça dit « je ne te traite pas comme une connaissance passagère ». Pour les expats, c'est encore plus important parce que par défaut on vous voit comme passagers.",
+          "en": "Not in Vietnam either at first meeting — but after a few months, it marks commitment. It says 'I'm not treating you like a passing acquaintance'. For expats it matters even more, because the default is to see you as passing through.",
           "vi": "Ở Việt Nam cũng không trong lần đầu — nhưng sau vài tháng, nó đánh dấu cam kết. Nói « tôi không đối xử với bạn như người quen vãng lai ». Với expat, càng quan trọng vì mặc định mọi người xem các anh là vãng lai."
         },
         {
           "speaker": "Antoine",
           "text": "Je note. Et si je rentre en France dans deux ans ?",
+          "en": "Noted. And if I go back to France in two years?",
           "vi": "Em ghi. Và nếu anh về Pháp sau hai năm?"
         },
         {
           "speaker": "Mai",
           "text": "Ça ne change rien à la qualité de l'amitié — beaucoup de mes amis vivent à Saigon ou à l'étranger maintenant. Une vraie amitié vietnamienne survit la distance, à condition qu'elle ait été construite solide. Si tu pars sans l'avoir construite, oui ça meurt en six mois.",
+          "en": "It doesn't change the quality of the friendship — many of my friends now live in Saigon or abroad. A real Vietnamese friendship survives distance, provided it was built solid. If you leave without having built it, yes — it dies in six months.",
           "vi": "Không thay đổi chất lượng tình bạn — nhiều bạn em giờ sống ở Sài Gòn hoặc nước ngoài. Tình bạn Việt thật sống sót khoảng cách, với điều kiện đã xây vững. Nếu anh đi mà chưa xây, thì sẽ chết trong sáu tháng."
         },
         {
           "speaker": "Antoine",
           "text": "OK. Concrètement, samedi prochain je t'invite chez moi — je cuisine français, tu verras mon vrai espace. C'est un premier pas ?",
+          "en": "OK. Concretely, next Saturday I'll invite you to my place — I'll cook French, you'll see my real space. Is that a first step?",
           "vi": "OK. Cụ thể, thứ bảy tới anh mời em đến nhà anh — anh nấu Pháp, em sẽ thấy không gian thật của anh. Là bước đầu?"
         },
         {
           "speaker": "Mai",
           "text": "Avec plaisir. Et je viens avec ma sœur cadette si ça ne te dérange pas — chez nous, présenter sa famille est aussi un seuil. Je te fais entrer dans mon cercle vietnamien.",
+          "en": "With pleasure. And I'll bring my younger sister if you don't mind — in Vietnamese culture, introducing family is also a threshold. I'm bringing you into my Vietnamese circle.",
           "vi": "Sẵn lòng. Và em đem em gái em đi cùng nếu không phiền anh — bên em, giới thiệu gia đình cũng là ngưỡng. Em đưa anh vào vòng Việt của em."
         },
         {
           "speaker": "Antoine",
           "text": "Au contraire — c'est exactement ce que je voulais. À samedi.",
+          "en": "On the contrary — that's exactly what I wanted. See you Saturday.",
           "vi": "Ngược lại — chính là điều anh muốn. Hẹn thứ bảy."
         },
         {
           "speaker": "Mai",
           "text": "À samedi, Antoine.",
+          "en": "See you Saturday, Antoine.",
           "vi": "Hẹn thứ bảy, Antoine."
         }
       ],
@@ -8345,30 +8908,44 @@ export const lessons: FrenchLesson[] =           [
         "Bạn Pháp đến Hà Nội 1 năm và đang cân nhắc về sớm vì « cô đơn ». Lắng nghe + đề xuất một bước cụ thể (mời đến nhà, giới thiệu vào nhóm bạn Việt) — không nói thẳng « anh chưa đủ cố gắng ».",
         "Một expat Pháp đề xuất chuyển sang « tu » sau lần gặp thứ hai. Bạn cảm thấy hơi sớm theo nhịp Việt. Phản hồi vừa giữ relationship, vừa nêu nhịp điệu khác — không từ chối thẳng, không nhân nhượng giả vờ."
       ],
+      "roleplay_prompts_en": [
+        "A French colleague has been in Vietnam for 4 months and complains they have no real friends. Suggest 3 concrete actions for them — don't lecture about Vietnamese culture, just give practical, actionable moves (e.g. join a sports team, host one dinner a month, schedule recurring meetings with one person you actually click with). Anglophone parallel: same script works for a US or UK expat saying the same thing.",
+        "A French friend has been in Hanoi for 1 year and is considering leaving early because of 'loneliness'. Listen, then propose a single concrete step — invite them to your home, introduce them to your Vietnamese friend group — without saying 'you haven't tried hard enough', which would shut down the conversation. Anglophone parallel: a US friend on assignment abroad reaching a low point — same listening-first move.",
+        "A French expat proposes switching to 'tu' after the second meeting. You feel it's a bit early by Vietnamese tempo. Respond in a way that preserves the relationship and explains the different rhythm — don't refuse bluntly, don't fake-agree. Useful frame: 'Au Vietnam aussi on tutoie les amis, mais souvent plus tard.' (US/UK parallel: a foreigner using your first name immediately when you'd normally expect Mr/Ms first — same calibration.)"
+      ],
       "register_notes": "Tình bạn với expat Pháp: tutoiement chuyển sang sớm hơn với người Việt khác (sau 2-3 lần gặp thay vì 6 tháng), nhưng nhịp tình cảm vẫn theo Việt. Tránh: gọi expat « foreigner » hoặc « người Tây » trong câu tiếng Pháp — gượng và phân biệt; gọi tên + « expatrié » nếu cần phân biệt context. Khi mời về nhà, nói rõ thời gian + có ai khác hay không (« tu viens manger samedi à 19h, ma sœur sera là » thay vì « passe quand tu veux » mơ hồ). Khi expat hỏi về văn hóa Việt, không lecture — chia sẻ ngắn + một câu chuyện cá nhân. Khi expat đề xuất kế hoạch không phù hợp văn hóa Việt (đến muộn 1 tiếng, đem chai rượu vang đến nhà người không uống), không sửa thẳng — đề xuất alternative gentle. Cụm hữu ích: « Chez nous, l'amitié est lente — c'est juste un autre rythme »; « Le seuil de la maison est un seuil émotionnel »; « Je te fais entrer dans mon cercle ».",
+      "register_notes_en": "Friendship with a French expat moves to tu earlier than with other Vietnamese (after 2–3 meetings instead of 6 months), but the emotional tempo still follows Vietnamese norms. The tu switch is a politeness checkpoint, not a depth milestone — don't read it as 'we're best friends now'. Two register failures to avoid: (1) Don't refer to your expat friend as 'le foreigner' or 'le Tây' in French — both sound dismissive and slightly othering, even if intended affectionately. Use their name, or 'l'expatrié français' only when the context truly requires the distinction. (2) When inviting to your home, be specific about the time AND who else will be there: 'tu viens manger samedi à 19h, ma sœur sera là' (come for dinner Saturday at 7, my sister will be there) lands much better than the vague 'passe quand tu veux' (drop by whenever) — vagueness reads as half-hearted to a French ear.\n\nWhen an expat asks about Vietnamese culture, do not lecture — share a short answer plus one personal anecdote. Anglophones often want a 5-minute essay; resist providing one. Two sentences and a story is the right dose. When an expat proposes a plan that's mildly off — arriving an hour late to a Vietnamese family dinner, bringing wine to a non-drinking household — don't correct head-on. Propose an alternative gently: 'On va plutôt commencer à 19h pile, mes parents sont à la vietnamienne sur ce point' (let's start at 7 sharp instead, my parents are Vietnamese-strict on that point). Useful framing phrases: 'Chez nous, l'amitié est lente — c'est juste un autre rythme' (here friendship is slow — it's just a different pace), 'Le seuil de la maison est un seuil émotionnel' (the home threshold is an emotional threshold), 'Je te fais entrer dans mon cercle' (I'm bringing you into my circle — a meaningful gesture you should only make sincerely).",
       "idiom_glosses": [
         {
           "idiom": "Avoir un atome crochu",
           "literal": "Có một nguyên tử móc câu",
+          "literal_en": "To have a hooked atom (with someone)",
           "meaning": "Có cảm tình tự phát với ai đó.",
+          "meaning_en": "To click with someone — feel an instinctive rapport. The chemistry image is the same as English 'we have chemistry', but more about latching than sparking.",
           "example": "Antoine et moi, on a eu un atome crochu dès la première rencontre."
         },
         {
           "idiom": "Faire le premier pas",
           "literal": "Đi bước đầu",
+          "literal_en": "To take the first step",
           "meaning": "Chủ động khởi đầu mối quan hệ.",
+          "meaning_en": "To make the first move — initiate the relationship rather than wait. Same image as English 'take the first step'.",
           "example": "Au Vietnam, c'est rare que l'expat fasse le premier pas — alors fais-le."
         },
         {
           "idiom": "Tisser des liens",
           "literal": "Dệt các liên kết",
+          "literal_en": "To weave bonds / ties",
           "meaning": "Xây dựng quan hệ chậm rãi và sâu.",
+          "meaning_en": "To build deep, lasting bonds slowly — the weaving image evokes patience and craft, very Vietnamese-compatible. Anglophone equivalent: 'to build bonds' but with a slower, more deliberate connotation.",
           "example": "L'amitié vietnamienne se tisse en années, pas en mois."
         },
         {
           "idiom": "Garder le contact",
           "literal": "Giữ liên lạc",
+          "literal_en": "To keep contact",
           "meaning": "Duy trì liên hệ qua thời gian / khoảng cách.",
+          "meaning_en": "To stay in touch — preserve a relationship across distance and time. Same image as English 'keep in touch'.",
           "example": "Quand tu rentreras à Paris, on gardera le contact — c'est sûr."
         }
       ],
@@ -8376,62 +8953,86 @@ export const lessons: FrenchLesson[] =           [
         {
           "type": "fill-blank",
           "instruction_vi": "Điền cụm vào câu xây tình bạn.",
+          "instruction_en": "Fill in each blank with the missing word in a friendship-building sentence.",
           "items": [
             {
               "prompt": "Tu es à Hanoï ___ combien de temps maintenant ?",
-              "answer": "depuis"
+              "answer": "depuis",
+              "hint_vi": "giới từ « từ / từ khi »",
+              "hint_en": "preposition 'since / for' — used with durations in 'depuis combien de temps' (for how long)"
             },
             {
               "prompt": "Si tu veux, je peux te ___ un café que peu de touristes connaissent.",
-              "answer": "montrer"
+              "answer": "montrer",
+              "hint_vi": "động từ « chỉ / cho xem »",
+              "hint_en": "verb 'to show'; infinitive form after 'je peux te'"
             },
             {
               "prompt": "Tu préfères qu'on ___ ou qu'on s'envoie un message au feeling ?",
-              "answer": "prévoie"
+              "answer": "prévoie",
+              "hint_vi": "subjunctive của « prévoir » (lên kế hoạch)",
+              "hint_en": "subjunctive of 'prévoir' (to plan ahead) — triggered by 'tu préfères que'"
             },
             {
               "prompt": "L'amitié au Vietnam, c'est ___ à construire mais c'est solide.",
-              "answer": "lent"
+              "answer": "lent",
+              "hint_vi": "tính từ « chậm »",
+              "hint_en": "adjective 'slow' — masculine singular, agreeing with 'c'est'"
             }
           ]
         },
         {
           "type": "matching",
           "instruction_vi": "Nối thành ngữ với chiến lược kết bạn.",
+          "instruction_en": "Match each idiom with the friendship-building strategy it describes.",
           "items": [
             {
               "prompt": "Avoir un atome crochu",
-              "answer": "có cảm tình tự phát (have an instinctive rapport)"
+              "answer": "có cảm tình tự phát (have an instinctive rapport)",
+              "english": "Avoir un atome crochu → to click instinctively with someone — chemistry, instant rapport"
             },
             {
               "prompt": "Faire le premier pas",
-              "answer": "chủ động khởi đầu (take the first step)"
+              "answer": "chủ động khởi đầu (take the first step)",
+              "english": "Faire le premier pas → take the first step — initiate the relationship rather than wait"
             },
             {
               "prompt": "Tisser des liens",
-              "answer": "xây quan hệ sâu rãi (build deep, lasting relationships)"
+              "answer": "xây quan hệ sâu rãi (build deep, lasting relationships)",
+              "english": "Tisser des liens → weave bonds / build deep lasting relationships slowly and deliberately"
             },
             {
               "prompt": "Garder le contact",
-              "answer": "giữ liên lạc qua thời gian (stay in touch over time)"
+              "answer": "giữ liên lạc qua thời gian (stay in touch over time)",
+              "english": "Garder le contact → stay in touch — keep the connection alive across distance and time"
             }
           ]
         },
         {
           "type": "translation",
           "instruction_vi": "Dịch sang tiếng Pháp B2 — giọng bạn bè ấm áp.",
+          "instruction_en": "Translate each Vietnamese sentence into warm B2 friendship-tone French.",
           "items": [
             {
               "prompt": "Em đem em gái em đi cùng nếu không phiền anh.",
-              "answer": "Je viens avec ma sœur cadette si ça ne te dérange pas."
+              "answer": "Je viens avec ma sœur cadette si ça ne te dérange pas.",
+              "english": "I'll come with my younger sister, if you don't mind.",
+              "hint_vi": "« ma sœur cadette » + « si ça ne te dérange pas »",
+              "hint_en": "'ma sœur cadette' = my younger sister; 'si ça ne te dérange pas' = if it doesn't bother you"
             },
             {
               "prompt": "Tình bạn ở Việt Nam xây chậm nhưng khi đã có thì rất bền.",
-              "answer": "L'amitié au Vietnam est lente à construire mais une fois en place, c'est solide."
+              "answer": "L'amitié au Vietnam est lente à construire mais une fois en place, c'est solide.",
+              "english": "Friendship in Vietnam is slow to build but once in place, it's solid.",
+              "hint_vi": "« lente à construire » + « une fois en place »",
+              "hint_en": "'lente à construire' = slow to build; 'une fois en place' = once in place"
             },
             {
               "prompt": "Em đưa anh vào vòng Việt của em.",
-              "answer": "Je te fais entrer dans mon cercle vietnamien."
+              "answer": "Je te fais entrer dans mon cercle vietnamien.",
+              "english": "I'm bringing you into my Vietnamese circle.",
+              "hint_vi": "« faire entrer » = đưa vào",
+              "hint_en": "'faire entrer' (causative) = literally 'to make enter' / to bring in"
             }
           ]
         }
@@ -8451,6 +9052,11 @@ export const lessons: FrenchLesson[] =           [
             "bonjour → bõ-jur",
             "passeport → pas-por",
             "étudiant → é-tu-diãn"
+          ],
+          "pronunciation_focus_en": [
+            "bonjour → bo(n)-ZHOOR (nasal first syllable; final 'r' is throat-rolled — but soft here)",
+            "passeport → pahs-POR (final 't' silent; rhymes with English 'pore')",
+            "étudiant → ay-too-DYAH(n) (the 'u' is rounded French 'u'; final '-ant' is nasal 'YAH(n)' — no real 't')"
           ]
         },
         {
@@ -8460,6 +9066,11 @@ export const lessons: FrenchLesson[] =           [
             "étudier → é-tu-dié",
             "Paris-Saclay → pa-ri sa-klè",
             "deux ans → dơ-z-ã"
+          ],
+          "pronunciation_focus_en": [
+            "étudier → ay-too-DYAY (final '-ier' = 'DYAY', rhymes with English 'pay')",
+            "Paris-Saclay → pah-REE sah-KLEH ('Saclay' has the open final 'è' = English 'eh' as in 'meh')",
+            "deux ans → DUH-zah(n) (liaison! 'deux ans' = 'duh-zah(n)' — the 'x' becomes 'z' before vowel)"
           ]
         },
         {
@@ -8470,6 +9081,12 @@ export const lessons: FrenchLesson[] =           [
             "inscription → an-skri-psion",
             "justificatif → jys-ti-fi-ka-tif",
             "logement → loj-mã"
+          ],
+          "pronunciation_focus_en": [
+            "attestation → ah-tes-tah-SYO(n) (four syllables, nasal final '-tion')",
+            "inscription → a(n)-skreep-SYO(n) (two nasals; means 'enrolment / registration')",
+            "justificatif → zhoos-tee-fee-kah-TEEF ('j' = 'zh' like 's' in 'measure'; 'u' rounded)",
+            "logement → lozh-MAH(n) (final '-ment' nasal; means 'housing / accommodation')"
           ]
         },
         {
@@ -8480,6 +9097,12 @@ export const lessons: FrenchLesson[] =           [
             "retour → rơ-tur",
             "prévu → pré-vu",
             "juillet → jwi-yè"
+          ],
+          "pronunciation_focus_en": [
+            "billet → bee-YEH (final 't' silent; 'illet' is a 'ee-yeh' double-y sound)",
+            "retour → ruh-TOOR (rolled 'r' on 'tour'; final silent 'r' fully pronounced here)",
+            "prévu → pray-VYOO (the 'u' is rounded French 'u' — purse lips, say 'ee'; not English 'view')",
+            "juillet → zhwee-YEH ('j' = 'zh'; the '-llet' is 'yeh' like 'billet')"
           ]
         },
         {
@@ -8489,102 +9112,123 @@ export const lessons: FrenchLesson[] =           [
             "justifier → jys-ti-fié",
             "ressources → rơ-surs",
             "financières → fi-nãn-sièr"
+          ],
+          "pronunciation_focus_en": [
+            "justifier → zhoos-tee-FYAY (the 'u' is rounded; final '-fier' = 'FYAY')",
+            "ressources → ruh-SOORS (rolled 'r'; final 's' on 'sources' silent)",
+            "financières → fee-nah(n)-SYAIR (nasal middle; final 'r' rolled in throat; means 'financial')"
           ]
         }
       ],
       "cultural_notes_vi": "Phỏng vấn nhập cảnh ở Pháp/Bỉ/Quebec không phải thủ tục hời hợt — nhân viên (« douanier » ở Pháp, « PAF » ở sân bay Charles-de-Gaulle, « ASFC » ở Quebec) có quyền từ chối nhập cảnh nếu nghi ngờ. Hai sai lầm chí mạng của người Việt: (1) trả lời mơ hồ « Em đi du lịch một thời gian » khi visa là visa du học/làm việc — đáp án phải khớp chính xác loại visa; (2) lấp khoảng im lặng bằng kể lể quá nhiều thông tin không được hỏi — gây nghi ngờ. Nguyên tắc: trả lời ngắn, đúng câu hỏi, kèm dẫn chứng giấy tờ khi có thể. Không nói đùa về nội dung hành lý hoặc lý do đi (« je vais chercher du travail au noir » dù đùa cũng có thể bị giam và trả về). Quebec đặc biệt nghiêm với câu hỏi « avez-vous l'intention de rester au Canada après vos études ? » — đáp đúng là « Mon projet est d'acquérir des compétences puis d'évaluer les options légales à la fin du diplôme » chứ không phải « peut-être » hay « non non non ».",
+      "cultural_notes_en": "Border interviews in France, Belgium, and Quebec are not casual paperwork — the officer (called 'douanier' or 'PAF' / Police aux Frontières in France, 'ASFC' agent in Quebec) has the authority to refuse you entry on the spot if your story doesn't hold together. The two fatal mistakes anglophones and Vietnamese travelers share at French/Quebec borders: (1) answering vaguely ('I'm here for a bit of travel') when your visa is actually a student or work visa — your answer MUST match your visa type exactly; (2) filling silences with extra information you weren't asked for, which sounds rehearsed and raises suspicion. The rule is the same one US/UK travelers know from US Customs: answer the question asked, in the shortest accurate form, and produce the document if you have one.\n\nDo not joke about luggage contents or your reason for travel. The line 'je vais chercher du travail au noir' (I'm going to look for under-the-table work) — even as a joke — can get you detained and returned, just like the equivalent joke at a US border ('I'm here to overstay my visa'). The French and Quebecois sense of humor at the border is exactly zero.\n\nQuebec deserves a specific warning: ASFC officers are unusually rigorous on the question 'avez-vous l'intention de rester au Canada après vos études?' (do you intend to stay in Canada after your studies?). The wrong answers are 'peut-être' (which signals you're already planning it) and a defensive triple 'non, non, non' (which sounds like a coached denial). The right answer is the diplomatic 'Mon projet est d'acquérir des compétences puis d'évaluer les options légales à la fin du diplôme' (my plan is to acquire skills then evaluate the legal options at the end of the program). This is a known Quebec-specific phrasing — memorize it if you're going through Montreal or Quebec City.",
       "tip_advice_vi": "Trước khi xuống máy bay: in giấy tờ ra giấy thật (đừng chỉ trông cậy vào điện thoại — pin có thể hết, mạng sân bay không ổn). Cầm sẵn trong tay: hộ chiếu, visa, attestation d'inscription/contrat de travail, justificatif de logement (réservation hôtel hoặc giấy của trường), billet retour, sao kê tài khoản hoặc giấy bảo lãnh. Khi đến quầy: chào « Bonjour », đặt giấy tờ lên bàn không chen vào tay nhân viên, trả lời từng câu hỏi một. Nếu không nghe rõ: « Pourriez-vous répéter ? ». Nếu không biết tiếng Pháp đủ: nói thẳng « Mon français est limité, pourrions-nous parler en anglais ? » — họ thường chấp nhận. Tránh: cười khúm núm, đưa giấy tờ bằng hai tay (kiểu Á), nói « yes yes » liên tục.",
+      "tip_advice_en": "Before you land: print your documents on actual paper. Don't rely on your phone alone — batteries die, airport WiFi is inconsistent, and PDFs on a phone screen are harder for the officer to flick through. Have ready in your hand: passport, visa, attestation d'inscription or work contract, proof of accommodation (hotel booking or university housing letter), return ticket, bank statements or a sponsorship letter (lettre de prise en charge). When you reach the booth: greet 'Bonjour' (this matters — skipping the greeting is rude in French culture and registers immediately), place your documents on the counter rather than pushing them into the officer's hand, and answer one question at a time. If you didn't hear: 'Pourriez-vous répéter, s'il vous plaît?' If your French is too thin: state it cleanly: 'Mon français est limité, pourrions-nous parler en anglais?' — they almost always accept.\n\nAnglophone-specific calibration: don't smile nervously and don't extend your hand for a handshake — neither is expected at a French border. The Asian instinct to bow slightly or hand over documents with two hands also reads as odd in French/Quebec context; one hand placing on the counter is the norm. Don't say 'yes yes' repeatedly — it sounds anxious; 'oui' once is sufficient. Don't apologize for the questions ('I'm sorry, of course') — the officer is doing their job, no apology required. If they ask a question you can answer crisply, answer crisply and stop — silence is fine while they read your documents. Treat it like a US CBP interview: polite, brief, accurate, and no improvisation.",
       "vocabulary": [
         {
           "word": "un douanier",
           "en": "customs officer",
           "vi": "nhân viên hải quan",
           "pos": "n.m.",
-          "pronunciation_vi": "du-a-nié"
+          "pronunciation_vi": "du-a-nié",
+          "pronunciation_en": "doo-ah-NYAY (final '-ier' = 'NYAY'; the customs officer at a French port of entry)"
         },
         {
           "word": "la PAF (Police aux Frontières)",
           "en": "border police",
           "vi": "cảnh sát biên giới (Pháp)",
           "pos": "n.f.",
-          "pronunciation_vi": "paf"
+          "pronunciation_vi": "paf",
+          "pronunciation_en": "PAHF (acronym, pronounced as one syllable; the French border police — equivalent to US CBP)"
         },
         {
           "word": "un visa long séjour",
           "en": "long-stay visa",
           "vi": "visa dài hạn",
           "pos": "n.m.",
-          "pronunciation_vi": "vi-za lõ sé-jur"
+          "pronunciation_vi": "vi-za lõ sé-jur",
+          "pronunciation_en": "vee-ZAH LO(n) say-ZHOOR ('long séjour' = stays over 90 days; the visa type for student or work residence)"
         },
         {
           "word": "une attestation d'inscription",
           "en": "enrolment certificate",
           "vi": "giấy xác nhận nhập học",
           "pos": "n.f.",
-          "pronunciation_vi": "a-tès-ta-sion dan-skri-psion"
+          "pronunciation_vi": "a-tès-ta-sion dan-skri-psion",
+          "pronunciation_en": "ah-tes-tah-SYO(n) da(n)-skreep-SYO(n) (the official enrolment certificate from your French university — keep a printed copy)"
         },
         {
           "word": "un justificatif de logement",
           "en": "proof of accommodation",
           "vi": "giấy chứng minh chỗ ở",
           "pos": "n.m.",
-          "pronunciation_vi": "jys-ti-fi-ka-tif dơ loj-mã"
+          "pronunciation_vi": "jys-ti-fi-ka-tif dơ loj-mã",
+          "pronunciation_en": "zhoos-tee-fee-kah-TEEF duh lozh-MAH(n) (proof of where you'll be living — university residence, signed lease, or hotel booking)"
         },
         {
           "word": "un billet retour",
           "en": "return ticket",
           "vi": "vé khứ hồi",
           "pos": "n.m.",
-          "pronunciation_vi": "bi-yè rơ-tur"
+          "pronunciation_vi": "bi-yè rơ-tur",
+          "pronunciation_en": "bee-YEH ruh-TOOR (the 'billet' has the silent final 't'; the return ticket proves you intend to leave)"
         },
         {
           "word": "justifier ses ressources",
           "en": "to prove one's resources",
           "vi": "chứng minh tài chính",
           "pos": "v.",
-          "pronunciation_vi": "jys-ti-fié sé rơ-surs"
+          "pronunciation_vi": "jys-ti-fié sé rơ-surs",
+          "pronunciation_en": "zhoos-tee-FYAY say ruh-SOORS (the standard phrase officers use to ask for financial proof)"
         },
         {
           "word": "un séjour de courte/longue durée",
           "en": "short/long stay",
           "vi": "lưu trú ngắn/dài hạn",
           "pos": "n.m.",
-          "pronunciation_vi": "sé-jur dơ kurt/lõg du-ré"
+          "pronunciation_vi": "sé-jur dơ kurt/lõg du-ré",
+          "pronunciation_en": "say-ZHOOR duh KORT / LO(n)G doo-RAY ('court' final 't' silent; 'longue' has nasal 'o(n)g'; key visa distinction)"
         },
         {
           "word": "être refoulé",
           "en": "to be denied entry",
           "vi": "bị từ chối nhập cảnh",
           "pos": "v.",
-          "pronunciation_vi": "é-trơ rơ-fu-lé"
+          "pronunciation_vi": "é-trơ rơ-fu-lé",
+          "pronunciation_en": "ETR ruh-foo-LAY (the 'u' is rounded French 'u'; literally 'to be pushed back' — denied entry and sent home)"
         },
         {
           "word": "présenter ses papiers",
           "en": "to show one's papers",
           "vi": "trình giấy tờ",
           "pos": "v.",
-          "pronunciation_vi": "pré-zãn-té sé pa-pié"
+          "pronunciation_vi": "pré-zãn-té sé pa-pié",
+          "pronunciation_en": "pray-zah(n)-TAY say pah-PYAY (the standard officer command 'présentez vos papiers' = 'show your documents')"
         }
       ],
       "dialogue": [
         {
           "speaker": "Douanier",
           "text": "Bonjour, le motif de votre séjour ?",
+          "en": "Hello — the purpose of your stay?",
           "vi": "Chào, mục đích lưu trú của anh/chị?"
         },
         {
           "speaker": "Linh",
           "text": "Bonjour, je viens étudier — master à Paris-Saclay.",
+          "en": "Hello — I'm here to study. A master's program at Paris-Saclay.",
           "vi": "Chào ông, em đến học — master ở Paris-Saclay."
         },
         {
           "speaker": "Douanier",
           "text": "Combien de temps ?",
+          "en": "For how long?",
           "vi": "Bao lâu?"
         },
         {
           "speaker": "Linh",
           "text": "Deux ans. Voici mon attestation et mon visa long séjour.",
+          "en": "Two years. Here's my enrolment certificate and my long-stay visa.",
           "vi": "Hai năm. Đây là giấy xác nhận và visa dài hạn của em."
         }
       ],
@@ -8592,91 +9236,109 @@ export const lessons: FrenchLesson[] =           [
         {
           "speaker": "Douanier",
           "text": "Bonjour, votre passeport et votre carte d'embarquement, s'il vous plaît.",
+          "en": "Hello — your passport and boarding pass, please.",
           "vi": "Chào, hộ chiếu và thẻ lên máy bay của anh/chị."
         },
         {
           "speaker": "Linh",
           "text": "Bonjour Monsieur. Voici, et voici aussi mon visa long séjour.",
+          "en": "Hello, sir. Here you go, and here's my long-stay visa as well.",
           "vi": "Chào ông. Đây ạ, và đây cũng là visa dài hạn của em."
         },
         {
           "speaker": "Douanier",
           "text": "Quel est le motif principal de votre séjour en France ?",
+          "en": "What is the main purpose of your stay in France?",
           "vi": "Mục đích chính chuyến đi của anh/chị tại Pháp là gì?"
         },
         {
           "speaker": "Linh",
           "text": "Études. Je viens commencer un master en intelligence artificielle à l'Université Paris-Saclay.",
+          "en": "Studies. I'm here to start a master's in artificial intelligence at Paris-Saclay University.",
           "vi": "Học. Em đến bắt đầu master về trí tuệ nhân tạo tại Đại học Paris-Saclay."
         },
         {
           "speaker": "Douanier",
           "text": "Vous avez l'attestation d'inscription ?",
+          "en": "Do you have the enrolment certificate?",
           "vi": "Anh/chị có giấy xác nhận nhập học không?"
         },
         {
           "speaker": "Linh",
           "text": "Oui, la voici. C'est l'attestation officielle de Paris-Saclay datée du 15 juin.",
+          "en": "Yes, here it is. The official Paris-Saclay enrolment certificate dated June 15.",
           "vi": "Có, đây ạ. Là giấy xác nhận chính thức của Paris-Saclay, ngày 15 tháng 6."
         },
         {
           "speaker": "Douanier",
           "text": "Et où allez-vous loger en arrivant ?",
+          "en": "And where will you be staying when you arrive?",
           "vi": "Và anh/chị sẽ ở đâu khi đến?"
         },
         {
           "speaker": "Linh",
           "text": "Au CROUS — résidence universitaire à Gif-sur-Yvette. J'ai mon contrat de location ici.",
+          "en": "At a CROUS residence — student housing in Gif-sur-Yvette. I have my lease contract right here.",
           "vi": "Tại CROUS — ký túc xá đại học ở Gif-sur-Yvette. Em có hợp đồng thuê đây."
         },
         {
           "speaker": "Douanier",
           "text": "Combien de temps comptez-vous rester au total ?",
+          "en": "How long do you plan to stay in total?",
           "vi": "Anh/chị dự kiến ở tổng cộng bao lâu?"
         },
         {
           "speaker": "Linh",
           "text": "Deux années universitaires, jusqu'en juillet 2028. Mon billet retour est déjà émis pour cette date.",
+          "en": "Two academic years, until July 2028. My return ticket has already been issued for that date.",
           "vi": "Hai năm học, đến tháng 7 năm 2028. Vé về của em đã xuất cho ngày đó."
         },
         {
           "speaker": "Douanier",
           "text": "Et pour vos ressources financières — vous êtes boursière ou financée par votre famille ?",
+          "en": "And as for your financial resources — are you on a scholarship or funded by your family?",
           "vi": "Còn nguồn tài chính — anh/chị có học bổng hay gia đình tài trợ?"
         },
         {
           "speaker": "Linh",
           "text": "Bourse partielle de Campus France, complétée par un soutien familial. J'ai les attestations bancaires des deux côtés.",
+          "en": "A partial Campus France scholarship, supplemented by family support. I have bank certificates from both sides.",
           "vi": "Học bổng một phần của Campus France, kèm hỗ trợ gia đình. Em có giấy xác nhận ngân hàng cả hai bên."
         },
         {
           "speaker": "Douanier",
           "text": "Vous prévoyez de travailler en France pendant vos études ?",
+          "en": "Do you plan to work in France during your studies?",
           "vi": "Anh/chị có dự định đi làm tại Pháp trong thời gian học không?"
         },
         {
           "speaker": "Linh",
           "text": "Au maximum 964 heures par an, comme le permet le statut étudiant — pour acquérir une expérience, pas pour subvenir entièrement à mes besoins.",
+          "en": "Up to 964 hours per year, as permitted by the student visa — for work experience, not to fully support myself.",
           "vi": "Tối đa 964 giờ một năm như visa du học cho phép — để có kinh nghiệm, không phải để tự lo toàn bộ chi phí."
         },
         {
           "speaker": "Douanier",
           "text": "Très bien préparée. Une dernière question : avez-vous quelque chose à déclarer aux douanes ?",
+          "en": "Very well prepared. One last question: do you have anything to declare to customs?",
           "vi": "Chuẩn bị rất tốt. Câu cuối: anh/chị có gì phải khai báo hải quan không?"
         },
         {
           "speaker": "Linh",
           "text": "Non, juste mes affaires personnelles et un peu de thé vert vietnamien pour ma future colocataire — environ 200 grammes.",
+          "en": "No — just my personal belongings and a bit of Vietnamese green tea for my future roommate — about 200 grams.",
           "vi": "Không, chỉ đồ cá nhân và chút trà xanh Việt Nam cho bạn cùng phòng tương lai — khoảng 200 gram."
         },
         {
           "speaker": "Douanier",
           "text": "Pas de problème. Bienvenue en France et bonne chance pour vos études.",
+          "en": "No problem. Welcome to France, and good luck with your studies.",
           "vi": "Không vấn đề. Chào mừng đến Pháp và chúc anh/chị học tốt."
         },
         {
           "speaker": "Linh",
           "text": "Merci beaucoup, Monsieur. Bonne journée.",
+          "en": "Thank you very much, sir. Have a good day.",
           "vi": "Cảm ơn ông rất nhiều. Chúc ông một ngày tốt lành."
         }
       ],
@@ -8685,30 +9347,44 @@ export const lessons: FrenchLesson[] =           [
         "Bạn xuống sân bay Charles-de-Gaulle, sĩ quan yêu cầu mở vali kiểm tra. Hợp tác lịch sự — không cuống, không tự thanh minh quá đà; trả lời câu hỏi cụ thể về từng món có vẻ đáng ngờ (thuốc lá lá Việt Nam, đồ ăn khô, mỹ phẩm).",
         "Sĩ quan biên giới Bỉ nghi ngờ visa Schengen của bạn vì điểm đến cuối là Pháp nhưng nhập cảnh ở Bruxelles. Giải thích lộ trình rõ ràng — visa Schengen cho phép nhập bất kỳ nước Schengen nào, và bạn có vé tàu Bruxelles-Paris cùng ngày để chứng minh."
       ],
+      "roleplay_prompts_en": [
+        "A French border officer asks: 'Do you intend to stay in France after your studies?' Answer honestly without sabotaging your visa — avoid both the awkward 'peut-être' (which signals you're already planning to overstay) and the over-defensive 'non absolument pas' (which sounds coached). The diplomatic answer: 'Mon projet est de terminer mon master, ensuite j'évaluerai les options professionnelles disponibles légalement.' (US border parallel: 'do you plan to stay in the US after your studies?' — same calibration applies to F-1 visa interviews.)",
+        "You land at Charles-de-Gaulle and the officer asks you to open your suitcase for inspection. Cooperate politely — don't panic, don't over-explain, and answer specific questions about each item that looks unusual (Vietnamese loose tea, dried foods like nem, cosmetics). Stay matter-of-fact: 'Du thé vert, environ 200g, pour usage personnel' is enough; don't volunteer a story about your grandmother packing it.",
+        "A Belgian border officer is suspicious because your Schengen visa shows your final destination as France, but you're entering at Brussels. Explain your itinerary clearly: a Schengen visa allows entry through any Schengen member state, and you have a Brussels–Paris train ticket for the same day as proof. Keep it brief, factual, and produce the train ticket immediately rather than reaching for it after a long explanation."
+      ],
       "register_notes": "Phỏng vấn nhập cảnh dùng vouvoiement tuyệt đối — sĩ quan dùng « vous » với bạn; bạn cũng « vous ». Kể cả ở Quebec nơi tutoiement phổ biến hơn, biên giới vẫn vouvoiement. Tránh: gọi sĩ quan « anh/chị » dịch sang tiếng Pháp — phải là « Monsieur/Madame »; cười sau câu trả lời (đọc là lo lắng); xưng hô bằng tên (sĩ quan không nói tên mình). Nếu nghe không rõ: « Pourriez-vous répéter, s'il vous plaît ? » — không « pardon? » một mình (quá ngắn cho ngữ cảnh chính thức). Khi đưa giấy tờ: một tay đặt lên bàn, không đẩy mạnh, không kèm cảm ơn quá đậm. Nếu sĩ quan từ chối thông tin bạn cung cấp (« cette attestation est insuffisante »), không tranh cãi — hỏi « Quel document supplémentaire vous faut-il ? » và làm theo. Một câu chốt khi xong: « Merci, bonne journée » — không kéo dài.",
+      "register_notes_en": "Border interviews use absolute vouvoiement on both sides — the officer addresses you as 'vous'; you address them as 'vous'. Even in Quebec, where tu is more widespread than in metropolitan France, the border is strictly vous. Avoid: addressing the officer as 'anh/chị' (Vietnamese kin terms) in French — use 'Monsieur/Madame'; smiling nervously after each answer (reads as anxious in a French context, where smiling typically signals warmth or amusement, not deference); using their first name (you don't have it, and you shouldn't ask). If you don't hear: say 'Pourriez-vous répéter, s'il vous plaît?' (could you repeat, please?) — don't say just 'pardon?' (too short for a formal context). When handing over documents: place them on the counter with one hand, don't push them forward, and don't add an effusive 'merci beaucoup beaucoup' (over-thanking sounds nervous and slightly suspect).\n\nIf the officer rejects your document ('cette attestation est insuffisante' — this certificate is insufficient), do not argue. Ask 'Quel document supplémentaire vous faut-il?' (what additional document do you need?) and produce it. Closing phrase when done: 'Merci, bonne journée' (thank you, have a good day) — don't extend it. Anglophone calibration: this is the same register you'd use at a US CBP secondary inspection or a UK Border Force interview — formal, brief, fact-based, no embellishment. Treating it like a casual American 'hey, how are ya' interaction reads as either disrespectful or distracted to French/Quebec officers. Treating it like an Asian deeply-deferential interaction (bowing slightly, two-handed document presentation, repeated thanking) reads as oddly formal and slightly off-script.",
       "idiom_glosses": [
         {
           "idiom": "Avoir ses papiers en règle",
           "literal": "Có giấy tờ đúng quy định",
+          "literal_en": "To have one's papers in order",
           "meaning": "Hồ sơ giấy tờ đầy đủ và hợp lệ.",
+          "meaning_en": "To have complete and valid documents — same idiom in English; the standard self-check before any border or official interaction.",
           "example": "Tant que vous avez vos papiers en règle, le passage à la frontière sera rapide."
         },
         {
           "idiom": "Couper court",
           "literal": "Cắt ngắn",
+          "literal_en": "To cut short",
           "meaning": "Kết thúc cuộc trò chuyện hoặc giải thích nhanh, không kéo dài.",
+          "meaning_en": "To cut a conversation or explanation short — end it quickly without dragging on. Anglophone equivalent: 'to cut it short / cut to the chase'.",
           "example": "Le douanier a coupé court à mes explications dès qu'il a vu le visa."
         },
         {
           "idiom": "Mettre les choses au point",
           "literal": "Đặt mọi thứ vào điểm",
+          "literal_en": "To put things at the point",
           "meaning": "Làm rõ tình huống / xóa nghi ngờ.",
+          "meaning_en": "To clarify a situation / clear up doubts in one focused exchange. Anglophone equivalent: 'to set the record straight'.",
           "example": "J'ai mis les choses au point sur mon plan d'études en deux phrases."
         },
         {
           "idiom": "Ne pas faire de zèle",
           "literal": "Không làm quá mức nhiệt tình",
+          "literal_en": "Not to do zeal / over-eagerness",
           "meaning": "Không cố gắng quá đà / không cung cấp thông tin chưa được hỏi.",
+          "meaning_en": "Not to overdo it — don't volunteer information beyond what's asked. A key border-crossing principle in French (and US/UK) culture: extra zeal reads as suspicious, not helpful.",
           "example": "À la frontière, ne fais pas de zèle — réponds aux questions, n'en rajoute pas."
         }
       ],
@@ -8716,7 +9392,10 @@ export const lessons: FrenchLesson[] =           [
         {
           "type": "fill-blank",
           "question": "Voici mon passeport et mon ___ étudiant.",
-          "answer": "visa"
+          "question_en": "Here is my passport and my student ___.",
+          "answer": "visa",
+          "hint_vi": "danh từ « visa »",
+          "hint_en": "noun 'visa' — the document that authorizes your stay"
         },
         {
           "type": "matching",
@@ -8734,12 +9413,30 @@ export const lessons: FrenchLesson[] =           [
               "bị từ chối nhập cảnh"
             ]
           ],
-          "instruction": "Nối từ Pháp với nghĩa Việt"
+          "pairs_en": [
+            [
+              "un douanier",
+              "a customs officer"
+            ],
+            [
+              "un justificatif de logement",
+              "proof of accommodation (lease, hotel booking, or university housing letter)"
+            ],
+            [
+              "être refoulé",
+              "to be denied entry / turned back at the border"
+            ]
+          ],
+          "instruction": "Nối từ Pháp với nghĩa Việt",
+          "instruction_en": "Match each French border-crossing term with its English meaning."
         },
         {
           "type": "translation",
           "vietnamese": "Em có thể chứng minh nguồn tài chính nếu cần.",
-          "french": "Je peux justifier mes ressources financières si nécessaire."
+          "french": "Je peux justifier mes ressources financières si nécessaire.",
+          "english": "I can prove my financial resources if necessary.",
+          "hint_vi": "« justifier » + « si nécessaire »",
+          "hint_en": "'justifier' (to prove / substantiate) + 'si nécessaire' (if necessary) — formal border-interview register"
         }
       ]
     },
@@ -8758,6 +9455,12 @@ export const lessons: FrenchLesson[] =           [
             "perte → pèrt",
             "passeport → pas-por",
             "vietnamien → vi-èt-na-miain"
+          ],
+          "pronunciation_focus_en": [
+            "déclarer → day-klah-RAY (final '-er' = 'RAY'; the official verb 'to declare / report')",
+            "perte → PAIRT (one syllable, final 'e' silent; rhymes with English 'pert')",
+            "passeport → pahs-POR (final 't' silent; rhymes with English 'pore')",
+            "vietnamien → vyet-nah-MYA(n) (nasal final '-en' = 'MYA(n)'; adjective form, masculine)"
           ]
         },
         {
@@ -8767,6 +9470,11 @@ export const lessons: FrenchLesson[] =           [
             "déclaration → dé-kla-ra-sion",
             "commissariat → ko-mi-sa-ria",
             "ce matin → sơ ma-tan"
+          ],
+          "pronunciation_focus_en": [
+            "déclaration → day-klah-rah-SYO(n) (four syllables, nasal '-tion' final)",
+            "commissariat → koh-mee-sah-RYAH (final 't' silent; the French police station — fancier word than 'poste de police')",
+            "ce matin → suh mah-TA(n) (final '-tin' is nasal 'TA(n)', no real 'n' sound)"
           ]
         },
         {
@@ -8777,6 +9485,12 @@ export const lessons: FrenchLesson[] =           [
             "cinq jours → sank jur",
             "absolument → ab-so-lu-mã",
             "laissez-passer → lè-sé-pa-sé"
+          ],
+          "pronunciation_focus_en": [
+            "vol → VOL (one syllable; rhymes with English 'doll'; means 'flight' OR 'theft' — context disambiguates)",
+            "cinq jours → SA(n)K ZHOOR (the 'q' of 'cinq' is silent before consonant; final 's' on 'jours' silent)",
+            "absolument → ab-soh-loo-MAH(n) (final '-ment' nasal; key emphasis word — 'absolutely')",
+            "laissez-passer → leh-say-pah-SAY (four syllables; literally 'let-pass'; means emergency travel document)"
           ]
         },
         {
@@ -8786,6 +9500,11 @@ export const lessons: FrenchLesson[] =           [
             "récépissé → ré-sé-pi-sé",
             "copie → ko-pi",
             "ancien → ãn-siain"
+          ],
+          "pronunciation_focus_en": [
+            "récépissé → ray-say-pee-SAY (four syllables; the official acknowledgment receipt — useful word to know)",
+            "copie → koh-PEE (two syllables; final 'e' silent in fast speech; rhymes with English 'epoxy' without the 'e')",
+            "ancien → ah(n)-SYA(n) (two nasals; means 'former / old'; here describes the lost (old) passport)"
           ]
         },
         {
@@ -8795,102 +9514,123 @@ export const lessons: FrenchLesson[] =           [
             "supplémentaires → sy-plé-mãn-tèr",
             "fournir → fur-nir",
             "délai → dé-lè"
+          ],
+          "pronunciation_focus_en": [
+            "supplémentaires → soo-play-mah(n)-TAIR (the 'u' is rounded; nasal middle '-men-'; final 's' silent)",
+            "fournir → foor-NEER (two syllables; final 'r' rolled in the throat)",
+            "délai → day-LEH (final 'ai' = open 'eh' like English 'air' without 'r'; means 'deadline / processing time')"
           ]
         }
       ],
       "cultural_notes_vi": "Mất hộ chiếu ở nước ngoài là một trong những tình huống hành chính căng nhất một người Việt có thể đối mặt. Trình tự đúng: (1) ngay khi phát hiện mất, đến đồn cảnh sát địa phương (« commissariat de police » ở Pháp, « poste de police » ở Bỉ, « SPVM » ở Montréal) khai báo mất — họ cấp « récépissé » (biên nhận); (2) liên hệ Đại sứ quán/Tổng lãnh sự Việt Nam (Paris, Genève, Ottawa) — không phải lãnh sự Pháp; (3) nộp hồ sơ xin « giấy thông hành » (laissez-passer) hoặc cấp lại hộ chiếu nếu thời gian cho phép. Đại sứ quán Việt Nam tại Paris ở 62 rue Boileau, 75016 — có lịch tiếp công dân nhưng trường hợp khẩn cấp thường được xếp riêng. Khác văn hóa Việt: ở đây không « phong bì » — đó là tham nhũng theo luật Pháp/Bỉ/Canada và sẽ làm hồ sơ bị đình chỉ. Phí cấp lại đúng theo biểu giá niêm yết, đóng tại quầy hoặc qua chuyển khoản. Thời gian cấp laissez-passer khẩn: 24-72 giờ trong giờ làm việc. Cấp lại hộ chiếu: 6-8 tuần — không kịp cho chuyến bay sắp đến.",
+      "cultural_notes_en": "Losing your passport abroad is one of the most stressful bureaucratic situations a traveler can face, and the procedure differs in important ways from what US/UK travelers might expect. The correct sequence: (1) the moment you realize it's lost, go to the local police station (called 'commissariat de police' in France, 'poste de police' in Belgium, 'SPVM' in Montreal) to file a loss declaration — they issue a 'récépissé' (official receipt), which is the gating document for everything that follows. Without it, the consulate can't process you. (2) Contact your Vietnamese Embassy or Consulate — the Vietnamese Embassy in Paris is at 62 rue Boileau, 75016. Do NOT go to the French consulate or the local mairie — they don't issue Vietnamese travel documents. (3) Submit the file for either a laissez-passer (emergency travel document) or a full passport replacement if time permits.\n\nKey cultural calibration: in France, Belgium, and Canada, there are NO envelopes. Offering money to speed up your file is corruption under local law, will get your application suspended, and in serious cases triggers an investigation. This is a hard-coded difference from the way some bureaucratic interactions work in Vietnam — set the expectation aside completely before you walk in. The official fee is whatever's posted on the embassy website, paid at the counter by card or exact cash. No exceptions, no shortcuts, no introductions from a friend-of-a-friend.\n\nTiming: a laissez-passer can be issued in 24–72 working hours in true emergencies (proven by a flight ticket within the week). A full passport replacement takes 6–8 weeks — not viable if your flight is in five days. So if your flight is soon, you specifically want a laissez-passer, and you need to be ready to fly back to Vietnam on it and renew your real passport at home. The same fundamental structure exists for US and UK citizens (your respective embassy issues 'emergency travel documents'), so anglophone learners can apply the same script to their own embassies in Paris.",
       "tip_advice_vi": "Phòng ngừa: scan/chụp ảnh hộ chiếu trước khi đi và lưu trên Google Drive/email — sẽ giúp ích cực kỳ khi mất bản gốc. Cũng để lại bản photo ở nhà trọ tách riêng với hộ chiếu thật (không cùng ví). Khi đã mất: bình tĩnh, đừng hoảng loạn quay lại tìm kiếm vô vọng — ưu tiên ra commissariat ngay vì biên nhận là điều kiện đầu tiên cho lãnh sự. Tại lãnh sự: ăn mặc lịch sự (không quần shorts), mang theo CMND/CCCD bản photo, hộ chiếu hết hạn cũ nếu có, vé máy bay (chứng minh cấp bách), 2-3 ảnh thẻ chuẩn 4x6 nền trắng (chụp tại tiệm Photomaton trong métro Paris được). Phí: tham khảo trang web đại sứ quán — thường 50-100 EUR cho laissez-passer khẩn. Đóng phí qua thẻ hoặc tiền mặt euro chính xác. Tránh: gọi điện cho đại sứ quán nhiều lần (làm tắc đường dây người khác), khóc lóc tại quầy (không thay đổi quy trình), nhờ ai đó « có người quen » can thiệp (lạm dụng).",
+      "tip_advice_en": "Prevention (do this before you travel): scan or photograph your passport's main page and store it in Google Drive plus email it to yourself. This is enormously valuable when the original is gone. Also leave a physical photocopy at your apartment, separate from your wallet — never carry both originals together. When you discover the loss: stay calm. Don't waste time retracing your steps in hopeless searches at the métro lost-and-found while the clock ticks down. Prioritize the police station immediately, because the police receipt is the gating document for everything else.\n\nAt the consulate: dress neatly (no shorts, no flip-flops — French and Vietnamese diplomatic offices both expect business-casual minimum). Bring: a photocopy of your Vietnamese national ID (CMND/CCCD), your expired passport if you happen to have it, your flight ticket (which proves urgency), and 2–3 ID photos to Schengen standard (4x6cm, white background — Photomaton machines in any Paris métro station produce these for €5). Fees: check the embassy website — typically €50–100 for an emergency laissez-passer. Pay by card or exact-cash euros at the counter. Avoid: calling the embassy multiple times (it clogs the line for someone else with a worse emergency); crying at the counter (it does not change the procedure, and makes the staff uncomfortable); asking someone with 'a connection inside' to intervene (this is abuse of process and the staff will recognize it instantly). Treat the staff with the same respect you'd want as a public servant yourself — they're solving real problems for real people, and a calm, prepared applicant is the easiest case of their day. Anglophone calibration: the same rules apply at the US or UK embassy in Paris if you're traveling on those passports — bring documents, dress neatly, no envelopes, no friends-of-friends.",
       "vocabulary": [
         {
           "word": "déclarer la perte",
           "en": "to report a loss",
           "vi": "khai báo mất",
           "pos": "v.",
-          "pronunciation_vi": "dé-kla-ré la pèrt"
+          "pronunciation_vi": "dé-kla-ré la pèrt",
+          "pronunciation_en": "day-klah-RAY lah PAIRT (the formal verb for filing a loss report at a police station)"
         },
         {
           "word": "un récépissé",
           "en": "a receipt / official acknowledgement",
           "vi": "biên nhận chính thức",
           "pos": "n.m.",
-          "pronunciation_vi": "ré-sé-pi-sé"
+          "pronunciation_vi": "ré-sé-pi-sé",
+          "pronunciation_en": "ray-say-pee-SAY (the official acknowledgement document issued by police — keep it carefully, it's the gating proof for the consulate)"
         },
         {
           "word": "un laissez-passer",
           "en": "emergency travel document",
           "vi": "giấy thông hành khẩn",
           "pos": "n.m.",
-          "pronunciation_vi": "lè-sé-pa-sé"
+          "pronunciation_vi": "lè-sé-pa-sé",
+          "pronunciation_en": "leh-say-pah-SAY (literally 'let-pass'; an emergency travel document used in place of a passport for a single return trip — the US/UK equivalent is an 'Emergency Travel Document')"
         },
         {
           "word": "le commissariat",
           "en": "police station",
           "vi": "đồn cảnh sát",
           "pos": "n.m.",
-          "pronunciation_vi": "ko-mi-sa-ria"
+          "pronunciation_vi": "ko-mi-sa-ria",
+          "pronunciation_en": "koh-mee-sah-RYAH (the French police station; final 't' silent — different from English 'commissariat')"
         },
         {
           "word": "l'ambassade",
           "en": "embassy",
           "vi": "đại sứ quán",
           "pos": "n.f.",
-          "pronunciation_vi": "lãm-ba-sad"
+          "pronunciation_vi": "lãm-ba-sad",
+          "pronunciation_en": "lah(n)-bah-SAHD (nasal first syllable; final 'e' silent; rhymes with English 'sad')"
         },
         {
           "word": "le consulat",
           "en": "consulate",
           "vi": "lãnh sự",
           "pos": "n.m.",
-          "pronunciation_vi": "kõn-su-la"
+          "pronunciation_vi": "kõn-su-la",
+          "pronunciation_en": "ko(n)-soo-LAH (final 't' silent; the smaller administrative office distinct from the embassy)"
         },
         {
           "word": "un dossier complet",
           "en": "a complete file",
           "vi": "hồ sơ đầy đủ",
           "pos": "n.m.",
-          "pronunciation_vi": "do-sié kom-plè"
+          "pronunciation_vi": "do-sié kom-plè",
+          "pronunciation_en": "doh-SYAY ko(n)-PLEH (a 'complete file' — all required documents; the bureaucratic standard you must hit)"
         },
         {
           "word": "un délai d'urgence",
           "en": "emergency processing time",
           "vi": "thời hạn khẩn cấp",
           "pos": "n.m.",
-          "pronunciation_vi": "dé-lè dur-jãns"
+          "pronunciation_vi": "dé-lè dur-jãns",
+          "pronunciation_en": "day-LEH duhr-ZHAH(n)SS (final '-ence' has nasal middle + hissed final 's'; means 'emergency turnaround')"
         },
         {
           "word": "un justificatif de voyage",
           "en": "travel proof",
           "vi": "chứng từ chuyến đi",
           "pos": "n.m.",
-          "pronunciation_vi": "jys-ti-fi-ka-tif dơ vwa-yaj"
+          "pronunciation_vi": "jys-ti-fi-ka-tif dơ vwa-yaj",
+          "pronunciation_en": "zhoos-tee-fee-kah-TEEF duh vwah-YAHZH (proof of travel — flight ticket, train booking, etc.)"
         },
         {
           "word": "se faire voler",
           "en": "to be robbed",
           "vi": "bị trộm",
           "pos": "v.",
-          "pronunciation_vi": "sơ fèr vo-lé"
+          "pronunciation_vi": "sơ fèr vo-lé",
+          "pronunciation_en": "suh FAIR voh-LAY (reflexive 'se faire' = passive construction; 'voler' = to steal; together = 'to get robbed / pickpocketed')"
         }
       ],
       "dialogue": [
         {
           "speaker": "Linh",
           "text": "Bonjour, je viens déclarer la perte de mon passeport.",
+          "en": "Hello, I'm here to report the loss of my passport.",
           "vi": "Chào, em đến khai báo mất hộ chiếu."
         },
         {
           "speaker": "Agent",
           "text": "Vous avez fait une déclaration au commissariat ?",
+          "en": "Have you filed a report at the police station?",
           "vi": "Anh/chị đã khai báo tại đồn cảnh sát chưa?"
         },
         {
           "speaker": "Linh",
           "text": "Oui, voici le récépissé. Mon vol est dans cinq jours.",
+          "en": "Yes — here's the receipt. My flight is in five days.",
           "vi": "Rồi, đây là biên nhận. Chuyến bay của em sau 5 ngày."
         },
         {
           "speaker": "Agent",
           "text": "Dans ce cas, on traite en urgence — laissez-passer dans 48 heures.",
+          "en": "In that case we process it as an emergency — emergency travel document in 48 hours.",
           "vi": "Vậy, mình xử lý khẩn — giấy thông hành trong 48 giờ."
         }
       ],
@@ -8898,86 +9638,103 @@ export const lessons: FrenchLesson[] =           [
         {
           "speaker": "Agent (à l'accueil)",
           "text": "Bonjour, vous avez rendez-vous ?",
+          "en": "Hello, do you have an appointment?",
           "vi": "Chào, anh/chị có hẹn không?"
         },
         {
           "speaker": "Linh",
           "text": "Bonjour, non — c'est une urgence. J'ai perdu mon passeport hier soir et mon vol est dans cinq jours.",
+          "en": "Hello — no, this is an emergency. I lost my passport last night and my flight is in five days.",
           "vi": "Chào, không — em khẩn cấp. Em mất hộ chiếu tối qua và chuyến bay sau 5 ngày."
         },
         {
           "speaker": "Agent",
           "text": "Compris. Avez-vous fait une déclaration de perte à la police ?",
+          "en": "Understood. Have you filed a loss report with the police?",
           "vi": "Hiểu rồi. Anh/chị đã khai báo mất với cảnh sát chưa?"
         },
         {
           "speaker": "Linh",
           "text": "Oui, ce matin au commissariat du 15ème. Voici le récépissé.",
+          "en": "Yes, this morning at the 15th-arrondissement police station. Here's the receipt.",
           "vi": "Rồi, sáng nay tại đồn quận 15. Đây là biên nhận."
         },
         {
           "speaker": "Agent",
           "text": "Très bien. Vous êtes inscrite au registre consulaire ?",
+          "en": "Very good. Are you registered on the consular register?",
           "vi": "Tốt. Anh/chị đã đăng ký hộ tịch lãnh sự chưa?"
         },
         {
           "speaker": "Linh",
           "text": "Oui, depuis l'an dernier — je suis étudiante en master à Paris-Saclay. Mon numéro consulaire est sur ce papier.",
+          "en": "Yes, since last year — I'm a master's student at Paris-Saclay. My consular number is on this paper.",
           "vi": "Rồi, từ năm ngoái — em là sinh viên master ở Paris-Saclay. Số hộ tịch của em trên giấy này."
         },
         {
           "speaker": "Agent",
           "text": "Je vois. Pour un retour au Vietnam dans cinq jours, on peut vous délivrer un laissez-passer en 48 à 72 heures. Pour un nouveau passeport, ce serait 6 à 8 semaines — trop long pour votre vol.",
+          "en": "I see. For a return to Vietnam in five days, we can issue an emergency travel document in 48–72 hours. For a new passport it would be 6–8 weeks — too long for your flight.",
           "vi": "Tôi thấy rồi. Để về Việt Nam trong 5 ngày, mình có thể cấp giấy thông hành trong 48-72 giờ. Hộ chiếu mới sẽ mất 6-8 tuần — không kịp chuyến bay."
         },
         {
           "speaker": "Linh",
           "text": "Le laissez-passer me convient. Quels documents dois-je fournir ?",
+          "en": "The emergency travel document works for me. What documents do I need to provide?",
           "vi": "Giấy thông hành phù hợp với em. Em cần cung cấp giấy tờ gì?"
         },
         {
           "speaker": "Agent",
           "text": "Le récépissé de police — vous l'avez. Une photocopie de votre passeport perdu si vous l'avez. Trois photos d'identité format Schengen, fond blanc, prises il y a moins de six mois. Une copie de votre billet d'avion. Et un formulaire de demande que je vais vous remettre.",
+          "en": "The police receipt — you have it. A photocopy of your lost passport if you have one. Three Schengen-format ID photos, white background, taken in the last six months. A copy of your flight ticket. And an application form I'll give you.",
           "vi": "Biên nhận cảnh sát — anh/chị có rồi. Một bản photo hộ chiếu mất nếu anh/chị có. Ba ảnh chân dung khổ Schengen, nền trắng, chụp dưới 6 tháng. Một bản photo vé máy bay. Và một mẫu đơn tôi sẽ đưa anh/chị."
         },
         {
           "speaker": "Linh",
           "text": "J'ai une copie scannée de mon ancien passeport sur mon téléphone. Et le billet d'avion électronique. Pour les photos — je peux les faire au Photomaton de la station Boileau ?",
+          "en": "I have a scanned copy of my old passport on my phone. And the electronic flight ticket. For the photos — can I take them at the Photomaton at Boileau métro station?",
           "vi": "Em có bản scan hộ chiếu cũ trên điện thoại. Và vé máy bay điện tử. Còn ảnh — em có thể chụp tại máy Photomaton ga Boileau không?"
         },
         {
           "speaker": "Agent",
           "text": "Tout à fait. Pour la copie scannée, imprimez-la — il nous faut du papier. Le Photomaton de Boileau convient. Le formulaire est ici, à remplir maintenant si vous voulez.",
+          "en": "Absolutely. For the scanned copy, print it out — we need paper. The Boileau Photomaton works. The form is here, you can fill it out now if you'd like.",
           "vi": "Hoàn toàn được. Bản scan thì in ra — chúng tôi cần giấy. Photomaton Boileau phù hợp. Mẫu đơn đây, anh/chị điền ngay nếu muốn."
         },
         {
           "speaker": "Linh",
           "text": "Merci. Et les frais ?",
+          "en": "Thank you. And the fees?",
           "vi": "Cảm ơn. Còn lệ phí?"
         },
         {
           "speaker": "Agent",
           "text": "Soixante-cinq euros pour un laissez-passer en procédure d'urgence. Carte bancaire ou espèces.",
+          "en": "Sixty-five euros for an emergency-procedure travel document. Card or cash.",
           "vi": "65 euro cho giấy thông hành theo thủ tục khẩn. Thẻ ngân hàng hoặc tiền mặt."
         },
         {
           "speaker": "Linh",
           "text": "D'accord. Si je reviens demain matin avec les photos, le formulaire rempli, et l'impression du passeport scanné — vous pouvez lancer la procédure ?",
+          "en": "OK. If I come back tomorrow morning with the photos, the completed form, and the printout of the scanned passport — can you launch the procedure?",
           "vi": "Vâng. Nếu em quay lại sáng mai với ảnh, mẫu đơn đã điền, và bản in hộ chiếu scan — anh có thể bắt đầu thủ tục không?"
         },
         {
           "speaker": "Agent",
           "text": "Oui, je vous bloque un créneau à 9 heures. Demandez-moi à l'accueil — Madame Trần.",
+          "en": "Yes, I'm blocking a 9 AM slot for you. Ask for me at reception — Mrs. Trần.",
           "vi": "Có, tôi giữ giờ cho anh/chị 9 giờ sáng. Hỏi tôi tại quầy — bà Trần."
         },
         {
           "speaker": "Linh",
           "text": "Madame Trần, à demain 9 heures. Merci infiniment pour votre aide.",
+          "en": "Mrs. Trần — see you tomorrow at 9. Thank you so very much for your help.",
           "vi": "Bà Trần, hẹn 9 giờ mai. Em vô cùng cảm ơn bà đã giúp."
         },
         {
           "speaker": "Agent",
           "text": "Je vous en prie. Ne vous inquiétez pas — vous avez le temps. À demain.",
+          "en": "You're welcome. Don't worry — you have time. See you tomorrow.",
           "vi": "Không có gì. Anh/chị đừng lo — vẫn còn thời gian. Hẹn mai gặp."
         }
       ],
@@ -8986,30 +9743,44 @@ export const lessons: FrenchLesson[] =           [
         "Tại lãnh sự, nhân viên nói thiếu một giấy tờ bạn không mang theo (vé máy bay in giấy — bạn chỉ có vé điện tử). Thương lượng: đề xuất alternative (in tại quán photocopy gần đó, gửi email cho nhân viên, hẹn lại 1 giờ sau).",
         "Đường bay khẩn: chuyến bay bạn đặt là sau 36 giờ, nhưng giấy thông hành nhanh nhất 48 giờ. Hẹn riêng nhân viên đại sứ quán xin ưu tiên — không nài nỉ, không khóc; nêu fact (vé không hoàn được, ngày làm việc tại Việt Nam đã thông báo cho công ty), đề xuất giải pháp (trả thêm phí, đến nhận tận tay)."
       ],
+      "roleplay_prompts_en": [
+        "You've just realized your passport is gone — somewhere in the Paris métro, you think — and you have an important appointment in an hour. Decide your priority: go back into the métro to retrace your steps, file the police report first, or call the embassy to book a slot? Explain your reasoning in short B2 French. (Right answer: police report first — the receipt is the gating document and you can't do anything else without it.)",
+        "At the embassy, the agent says you're missing a paper printout of your flight ticket — you only have the electronic version on your phone. Negotiate: propose alternatives (print at a copy shop down the street, email the file to the agent, come back in an hour with the printout). Stay calm and solution-oriented — don't argue with the requirement, just propose ways to meet it. Anglophone parallel: works the same at a US embassy abroad — they want paper, you find paper.",
+        "Tight timing: your booked flight is in 36 hours, but the standard emergency travel document takes 48 hours. Speak privately with an embassy agent to request priority — without begging, without crying. Lay out the facts (the flight is non-refundable, your start date at a Vietnamese job is already communicated to the employer) and propose solutions (pay an additional rush fee, pick up in person at any hour). The French/Vietnamese consular context responds well to calm fact + concrete proposal, badly to emotional pressure."
+      ],
       "register_notes": "Tại đại sứ quán Việt Nam ở nước ngoài: nhân viên nói tiếng Việt và tiếng Pháp. Khi xếp hàng và làm việc với nhân viên Việt Nam, dùng tiếng Việt — nhưng vẫn giữ register lịch sự (« thưa cô/chú » thay vì « anh/chị » nếu nhân viên hơn tuổi). Khi làm việc với cảnh sát Pháp tại commissariat: vouvoiement tuyệt đối, không cười khúm núm, không lặp « excusez-moi » nhiều lần. Khi đến lãnh sự khẩn cấp, mở câu bằng « Bonjour, c'est une urgence » — câu này hợp lệ và làm nhân viên đánh giá đúng mức cấp bách. Tránh: nói « help me please » bằng tiếng Anh — nhân viên Pháp có thể chuyển sang tiếng Anh nhưng câu mở phải bằng tiếng Pháp; gọi đại sứ quán « la maison du Vietnam » — đó là tên một tòa nhà khác (Cité U); cám ơn quá đậm với câu « merci merci merci » — một « Merci infiniment » + cái nhìn thật là đủ. Khi nhân viên hỏi câu khó (« vous avez d'autres documents ? »), không lúng túng — nói rõ « Je peux les apporter demain » với deadline cụ thể.",
+      "register_notes_en": "At the Vietnamese embassy abroad, staff speak both Vietnamese and French. With Vietnamese staff, switch to Vietnamese — but keep the polite register ('thưa cô/chú' instead of 'anh/chị' if the staff member is older than you). At the French police station, vouvoiement is absolute. Don't smile nervously, don't repeat 'excusez-moi' multiple times (once is enough; more sounds anxious). At the consulate in an emergency, open with 'Bonjour, c'est une urgence' — this is the recognized signal phrase that gets your case evaluated as urgent rather than routine.\n\nThings to avoid: opening in English with 'help me please' — French staff may switch to English to help you, but the opening sentence should be French as a sign of effort and respect. Don't call the embassy 'la Maison du Vietnam' — that's the name of a different building at Cité Universitaire, not the embassy. Don't over-thank with 'merci merci merci' — one 'Merci infiniment' (thanks immensely) plus eye contact is enough. When the agent asks a hard question ('vous avez d'autres documents?' — do you have other documents?), don't freeze. State clearly 'Je peux les apporter demain à 9h' (I can bring them tomorrow at 9) with a concrete deadline. The combination of calm + specific deadline + courtesy works in both French and Vietnamese consular contexts, and also at US/UK embassies — it's a universal bureaucratic register.",
       "idiom_glosses": [
         {
           "idiom": "Faire le nécessaire",
           "literal": "Làm điều cần thiết",
+          "literal_en": "To do the necessary",
           "meaning": "Hoàn thành các bước thủ tục bắt buộc.",
+          "meaning_en": "To do what's required — complete the mandatory procedural steps. Same image as English 'do the needful' (Indian-English) or 'take care of what's needed'.",
           "example": "Je vais faire le nécessaire à la police, puis je reviens à l'ambassade."
         },
         {
           "idiom": "Avoir le couteau sous la gorge",
           "literal": "Có dao kề cổ",
+          "literal_en": "To have the knife under the throat",
           "meaning": "Bị áp lực thời gian / không có lựa chọn khác.",
+          "meaning_en": "To be up against the wall — under intense time pressure with no other option. The image is vivid and a touch dramatic; use it when the deadline genuinely is non-negotiable.",
           "example": "Avec mon vol dans cinq jours, j'ai vraiment le couteau sous la gorge."
         },
         {
           "idiom": "Mettre les bouchées doubles",
           "literal": "Cắn miếng đôi",
+          "literal_en": "To put the mouthfuls double",
           "meaning": "Tăng tốc, làm gấp đôi nỗ lực.",
+          "meaning_en": "To double down on effort — speed up, work twice as hard. Anglophone equivalent: 'to kick it into high gear' or 'to put the pedal to the metal'.",
           "example": "L'agent a mis les bouchées doubles pour traiter mon dossier en 48 heures."
         },
         {
           "idiom": "En dernier ressort",
           "literal": "Trong phương án cuối cùng",
+          "literal_en": "In last resort",
           "meaning": "Như giải pháp cuối khi mọi cách khác thất bại.",
+          "meaning_en": "As a last resort — the fallback option when all other approaches have failed. Same phrase in English.",
           "example": "En dernier ressort, je peux reporter mon vol — mais ça coûte cher."
         }
       ],
@@ -9017,7 +9788,10 @@ export const lessons: FrenchLesson[] =           [
         {
           "type": "fill-blank",
           "question": "Je viens ___ la perte de mon passeport.",
-          "answer": "déclarer"
+          "question_en": "I'm here to ___ the loss of my passport.",
+          "answer": "déclarer",
+          "hint_vi": "động từ « khai báo »",
+          "hint_en": "verb 'to declare / report' — the formal verb for filing a loss at a police station or consulate"
         },
         {
           "type": "matching",
@@ -9035,12 +9809,30 @@ export const lessons: FrenchLesson[] =           [
               "đồn cảnh sát"
             ]
           ],
-          "instruction": "Nối thuật ngữ với nghĩa tiếng Việt"
+          "pairs_en": [
+            [
+              "un laissez-passer",
+              "an emergency travel document — issued by your embassy when you've lost your passport"
+            ],
+            [
+              "un récépissé",
+              "an official acknowledgement receipt — the police-issued document that proves you reported the loss"
+            ],
+            [
+              "le commissariat",
+              "police station — specifically the French one where you file the loss declaration"
+            ]
+          ],
+          "instruction": "Nối thuật ngữ với nghĩa tiếng Việt",
+          "instruction_en": "Match each French administrative term with its English explanation."
         },
         {
           "type": "translation",
           "vietnamese": "Em cần cung cấp giấy tờ gì thêm và trong bao lâu?",
-          "french": "Quels documents supplémentaires dois-je vous fournir et sous quel délai ?"
+          "french": "Quels documents supplémentaires dois-je vous fournir et sous quel délai ?",
+          "english": "What additional documents do I need to provide, and within what deadline?",
+          "hint_vi": "« quels documents supplémentaires » + « sous quel délai »",
+          "hint_en": "'quels documents supplémentaires' (what additional documents) + 'sous quel délai' (within what deadline) — bureaucratic-formal phrasing"
         }
       ]
     },
@@ -9058,6 +9850,11 @@ export const lessons: FrenchLesson[] =           [
             "modifier → mo-di-fié",
             "imprévu → an-pré-vu",
             "professionnel → pro-fè-sio-nèl"
+          ],
+          "pronunciation_focus_en": [
+            "modifier → moh-dee-FYAY (final '-ier' = 'FYAY', rhymes with English 'pay'; the formal verb 'to modify')",
+            "imprévu → a(n)-pray-VYOO (nasal first syllable; the 'u' is rounded French 'u'; means 'an unforeseen event')",
+            "professionnel → proh-feh-syo-NEL (four syllables; stress on the last; final 'nelle' = English 'nell')"
           ]
         },
         {
@@ -9067,6 +9864,11 @@ export const lessons: FrenchLesson[] =           [
             "billet → bi-yè",
             "origine → o-ri-jin",
             "échangeable → é-shãn-jabl"
+          ],
+          "pronunciation_focus_en": [
+            "billet → bee-YEH (final 't' silent; 'illet' = 'ee-yeh' diphthong)",
+            "origine → oh-ree-ZHEEN ('zh' = 's' in 'measure'; final 'e' silent in fast speech)",
+            "échangeable → ay-shah(n)-ZHAH-bluh (nasal middle; final 'ble' soft 'bluh' — means 'exchangeable')"
           ]
         },
         {
@@ -9076,6 +9878,11 @@ export const lessons: FrenchLesson[] =           [
             "frais → frè",
             "changement → shãn-jơ-mã",
             "excessif → èk-sè-sif"
+          ],
+          "pronunciation_focus_en": [
+            "frais → FREH (one syllable; open 'eh' like English 'air' without 'r'; means 'fees / expenses')",
+            "changement → shah(n)-zhuh-MAH(n) (two nasals; '-ment' adverb ending; means 'change / modification')",
+            "excessif → ek-seh-SEEF (three syllables; final 'sif' = English 'seef'; means 'excessive')"
           ]
         },
         {
@@ -9085,6 +9892,11 @@ export const lessons: FrenchLesson[] =           [
             "pourriez → pu-rié",
             "vérifier → vé-ri-fié",
             "coûteuse → ku-tơz"
+          ],
+          "pronunciation_focus_en": [
+            "pourriez → poor-YAY (conditional 'could you?'; the polite formal phrasing for any service request)",
+            "vérifier → vay-ree-FYAY (final '-ier' = 'FYAY'; means 'to check / verify')",
+            "coûteuse → koo-TUHZ (the 'û' is long 'oo'; final 'euse' has the 'eu' sound — round lips and say 'uhz')"
           ]
         },
         {
@@ -9094,102 +9906,123 @@ export const lessons: FrenchLesson[] =           [
             "côté → kô-té",
             "tarif → ta-rif",
             "politique → po-li-tik"
+          ],
+          "pronunciation_focus_en": [
+            "côté → koh-TAY ('côté' with circumflex = 'side / aspect')",
+            "tarif → tah-REEF (final 'f' pronounced; means 'rate / fare')",
+            "politique → poh-lee-TEEK (final 'que' silent on 'e'; means both 'policy' and 'politics' — context disambiguates)"
           ]
         }
       ],
       "cultural_notes_vi": "Đổi vé tại Pháp thường khó khăn hơn các nước Bắc Mỹ vì hệ thống tarif phức tạp: SNCF có 5-6 loại vé (Prem's, Loisir, Pro, Liberté, OuiGo) với điều kiện đổi/hoàn khác nhau. Vé Prem's là rẻ nhất nhưng « non échangeable, non remboursable » — về mặt lý thuyết. Trong thực tế, có « gestes commerciaux » (cử chỉ thương mại) khi khách hàng có lý do hợp lý: tang lễ, bệnh nặng, công việc đổi đột ngột. Sai lầm phổ biến của người Việt: (1) chấp nhận giá đổi vô lý vì nghĩ « luật là luật » — thực ra có thương lượng được; (2) cãi ngay rằng « tôi đã bay với hãng này nhiều năm » — không có ý nghĩa với agent ở quầy; (3) đe dọa kiện cáo — phản tác dụng. Cách hiệu quả: giải thích lý do đổi cụ thể và ngắn, hỏi rõ « est-ce qu'un geste commercial est possible vu ma situation ? » — đó là cụm từ mở khóa potentiellement giảm hoặc miễn phí. Air France/SNCF đặc biệt nhạy với khách hàng « élite » (Frequence Plus, Voyageur Pro) — nếu bạn ở chương trình loyalty, nhắc đến số thẻ ngay từ đầu.",
+      "cultural_notes_en": "Changing a ticket in France is structurally harder than in the US or UK because the SNCF (and Air France) tariff system is genuinely complex: 5–6 ticket tiers (Prem's, Loisir, Pro, Liberté, OuiGo) each with different change/refund conditions. Prem's is the cheapest tier and is labeled 'non échangeable, non remboursable' — but only theoretically. In practice, the French commercial culture has a recognized concept: the 'geste commercial' (commercial gesture / goodwill gesture). When a customer has a legitimate reason — funeral, serious illness, sudden work change — agents have discretion to reduce or waive fees, even on Prem's tickets. This is a feature of the system, not an exception, and US/UK travelers often miss it because they treat the printed terms as absolute.\n\nThree mistakes to avoid: (1) Accepting an unreasonable change fee because you assume 'the rules are the rules' — actually they're negotiable when you have cause. This is the most common Vietnamese/East Asian error. (2) Arguing 'I've flown with this airline for years' — this works at US carriers (which weight loyalty status heavily) but does almost nothing at the SNCF counter. The French equivalent of loyalty leverage is your membership card number, mentioned at the start, not 'I'm a loyal customer'. (3) Threatening to sue or post on social media — counter-productive in France. The French commercial culture interprets escalation threats as weakness, not strength.\n\nThe magic phrase: 'est-ce qu'un geste commercial est possible vu ma situation?' (is a goodwill gesture possible given my situation?) — this is the recognized opener that signals you know the system and you're asking politely. It often unlocks 50–80% fee reduction when you have a real reason. Air France and SNCF are especially responsive to elite-tier customers (Flying Blue / Voyageur Pro members) — if you're in a loyalty program, lead with the membership number, not the appeal. Anglophone calibration: this is broadly similar to how UK rail or US airline gate agents have discretion, but the formality of the French phrasing matters more.",
       "tip_advice_vi": "Trước khi gọi/đến quầy: kiểm tra tarif vé gốc trên email xác nhận đặt vé — biết loại vé giúp đàm phán đúng. In hoặc lưu sẵn: số đặt vé (PNR), email xác nhận, lý do đổi (giấy bệnh viện nếu lý do y tế, email công ty nếu lý do công việc). Trong cuộc trò chuyện: mở bằng câu lịch sự « Bonjour, je voudrais modifier mon billet — j'ai un imprévu » trước khi vào chi tiết. Tránh: nói « je veux changer » (cứng), « c'est trop cher » (cảm xúc), « ce n'est pas juste » (đạo đức). Thay bằng: « pourriez-vous vérifier… », « est-ce qu'un geste commercial est possible vu… ». Nếu agent từ chối: hỏi tên agent (« puis-je avoir votre nom, s'il vous plaît ? ») và mã claim — không để hù dọa, để có dấu vết nếu sau bạn gọi tổng đài. Sau khi đổi xong: yêu cầu xác nhận bằng email tại chỗ — không tin lời nói. Nếu vé đắt (Pro/Liberté), bạn có quyền hoàn tiền hoặc đổi miễn phí — không bị thương lượng. Đừng lẫn lộn loại vé.",
+      "tip_advice_en": "Before you contact the counter or call center: check your original booking confirmation email to identify the exact tariff tier (Prem's, Loisir, Pro, Liberté, OuiGo). Knowing your ticket class lets you negotiate from the right starting point — and prevents agents from claiming restrictions that don't apply to your tier. Have ready: booking reference (PNR), confirmation email, and proof of reason for changing — hospital letter if medical, work email if professional. The phrasing you use matters enormously in French customer service: open politely with 'Bonjour, je voudrais modifier mon billet — j'ai un imprévu' before any details. The 'Bonjour' is not optional; skipping it marks you as rude immediately, and Vietnamese learners especially miss this because in Vietnamese customer-service interactions you often jump straight to the request.\n\nAvoid these phrasings: 'je veux changer' (sounds demanding, 'I want to change'), 'c'est trop cher' (emotional, 'it's too expensive'), 'ce n'est pas juste' (moral framing, 'it's not fair' — never works in French commercial contexts, despite working sometimes in US contexts). Replace with: 'pourriez-vous vérifier…' (could you check…), 'est-ce qu'un geste commercial est possible vu…' (is a goodwill gesture possible given…). If the agent refuses: ask for the agent's name ('puis-je avoir votre nom, s'il vous plaît?') and the claim reference. Don't say this as a threat — say it because you may need to call back later, and the record matters. After the change is made: ask for email confirmation on the spot — don't trust verbal agreement. If your ticket was a higher tier (Pro or Liberté), you have a legal right to a refund or free change — don't accept being negotiated. Don't confuse ticket tiers; the SNCF mobile app shows your exact one.",
       "vocabulary": [
         {
           "word": "un billet non échangeable",
           "en": "a non-changeable ticket",
           "vi": "vé không đổi được",
           "pos": "n.m.",
-          "pronunciation_vi": "bi-yè nõ é-shãn-jabl"
+          "pronunciation_vi": "bi-yè nõ é-shãn-jabl",
+          "pronunciation_en": "bee-YEH no(n) ay-shah(n)-ZHAH-bluh (the 'non' is nasal; literally 'non-exchangeable' — but a 'geste commercial' is often still possible)"
         },
         {
           "word": "des frais de modification",
           "en": "change fees",
           "vi": "phí đổi vé",
           "pos": "n.m.",
-          "pronunciation_vi": "frè dơ mo-di-fi-ka-sion"
+          "pronunciation_vi": "frè dơ mo-di-fi-ka-sion",
+          "pronunciation_en": "FREH duh moh-dee-fee-kah-SYO(n) (the headline cost when you change a booking)"
         },
         {
           "word": "un avoir",
           "en": "a credit voucher",
           "vi": "phiếu tín dụng",
           "pos": "n.m.",
-          "pronunciation_vi": "a-vwar"
+          "pronunciation_vi": "a-vwar",
+          "pronunciation_en": "ah-VWAR (a store credit / voucher; useful when refund isn't possible but you'll travel again — common French/Vietnamese consumer term)"
         },
         {
           "word": "un geste commercial",
           "en": "a goodwill gesture",
           "vi": "cử chỉ thương mại / ưu đãi đặc biệt",
           "pos": "n.m.",
-          "pronunciation_vi": "jèst ko-mer-sial"
+          "pronunciation_vi": "jèst ko-mer-sial",
+          "pronunciation_en": "ZHEST koh-mair-SYAL (THE key phrase for negotiating fee reductions in French customer service — closer to 'discretionary goodwill' than 'gesture')"
         },
         {
           "word": "une politique tarifaire",
           "en": "pricing policy",
           "vi": "chính sách giá",
           "pos": "n.f.",
-          "pronunciation_vi": "po-li-tik ta-ri-fèr"
+          "pronunciation_vi": "po-li-tik ta-ri-fèr",
+          "pronunciation_en": "poh-lee-TEEK tah-ree-FAIR (the company's pricing policy — useful when asking for the rule in writing)"
         },
         {
           "word": "un imprévu",
           "en": "an unforeseen event",
           "vi": "việc đột xuất",
           "pos": "n.m.",
-          "pronunciation_vi": "an-pré-vu"
+          "pronunciation_vi": "an-pré-vu",
+          "pronunciation_en": "a(n)-pray-VYOO (an unforeseen event; the standard reason given for needing a change)"
         },
         {
           "word": "un justificatif",
           "en": "a supporting document",
           "vi": "giấy chứng minh",
           "pos": "n.m.",
-          "pronunciation_vi": "jys-ti-fi-ka-tif"
+          "pronunciation_vi": "jys-ti-fi-ka-tif",
+          "pronunciation_en": "zhoos-tee-fee-kah-TEEF (any supporting document — letter, email, certificate — that backs up your reason)"
         },
         {
           "word": "contester une facture",
           "en": "to contest a bill",
           "vi": "phản đối hóa đơn",
           "pos": "v.",
-          "pronunciation_vi": "kõn-tès-té yun fak-tur"
+          "pronunciation_vi": "kõn-tès-té yun fak-tur",
+          "pronunciation_en": "ko(n)-tes-TAY oon fak-TOOR (formal verb 'to dispute / contest' — used in writing more than in person)"
         },
         {
           "word": "un dédommagement",
           "en": "compensation",
           "vi": "đền bù",
           "pos": "n.m.",
-          "pronunciation_vi": "dé-do-maj-mã"
+          "pronunciation_vi": "dé-do-maj-mã",
+          "pronunciation_en": "day-doh-mahzh-MAH(n) (final '-ment' nasal; formal compensation, often used in legal/insurance contexts)"
         },
         {
           "word": "escalader la demande",
           "en": "to escalate the request",
           "vi": "chuyển yêu cầu lên cấp cao hơn",
           "pos": "v.",
-          "pronunciation_vi": "ès-ka-la-dé la dơ-mãnd"
+          "pronunciation_vi": "ès-ka-la-dé la dơ-mãnd",
+          "pronunciation_en": "es-kah-lah-DAY lah duh-MAH(n)D (to escalate to a supervisor; politer French version: 'parler à un superviseur')"
         }
       ],
       "dialogue": [
         {
           "speaker": "Linh",
           "text": "Bonjour, je voudrais modifier mon billet TGV.",
+          "en": "Hello, I'd like to modify my TGV ticket.",
           "vi": "Chào, em muốn đổi vé TGV."
         },
         {
           "speaker": "Agent",
           "text": "C'est un Prem's — non échangeable. Frais de 110 euros minimum.",
+          "en": "It's a Prem's — non-exchangeable. Minimum 110-euro fee.",
           "vi": "Vé Prem's — không đổi được. Phí tối thiểu 110 euro."
         },
         {
           "speaker": "Linh",
           "text": "J'ai un imprévu professionnel — un geste commercial est-il possible ?",
+          "en": "I have an unforeseen work conflict — would a goodwill gesture be possible?",
           "vi": "Em có việc đột xuất — có thể có ưu đãi không?"
         },
         {
           "speaker": "Agent",
           "text": "Avec un justificatif employeur, je peux ramener à 30 euros.",
+          "en": "With an employer letter, I can bring it down to 30 euros.",
           "vi": "Có giấy của công ty, tôi có thể giảm còn 30 euro."
         }
       ],
@@ -9197,91 +10030,109 @@ export const lessons: FrenchLesson[] =           [
         {
           "speaker": "Linh (au guichet SNCF)",
           "text": "Bonjour, je voudrais modifier mon billet pour Lyon — j'ai un imprévu professionnel.",
+          "en": "Hello, I'd like to modify my ticket to Lyon — I have an unforeseen work conflict.",
           "vi": "Chào, em muốn đổi vé đi Lyon — em có việc đột xuất công việc."
         },
         {
           "speaker": "Agent",
           "text": "Bonjour. Donnez-moi votre numéro de réservation, s'il vous plaît.",
+          "en": "Hello. Could I have your booking reference, please?",
           "vi": "Chào. Cho tôi mã đặt vé."
         },
         {
           "speaker": "Linh",
           "text": "PNR : VRTM-748921. Le billet est pour vendredi prochain à 8h12.",
+          "en": "PNR: VRTM-748921. The ticket is for next Friday at 8:12 AM.",
           "vi": "PNR: VRTM-748921. Vé thứ sáu tới lúc 8h12."
         },
         {
           "speaker": "Agent",
           "text": "Je vois. C'est un Prem's à 49 euros — théoriquement non échangeable, non remboursable.",
+          "en": "I see. It's a Prem's at 49 euros — theoretically non-exchangeable, non-refundable.",
           "vi": "Tôi thấy rồi. Là Prem's giá 49 euro — về nguyên tắc không đổi, không hoàn."
         },
         {
           "speaker": "Linh",
           "text": "Je comprends. Mais je dois absolument être à Lyon mardi au lieu de vendredi — réunion client déplacée. Quelles sont mes options ?",
+          "en": "I understand. But I absolutely need to be in Lyon on Tuesday instead of Friday — a client meeting was rescheduled. What are my options?",
           "vi": "Em hiểu. Nhưng em bắt buộc phải có mặt ở Lyon thứ ba thay vì thứ sáu — họp khách hàng bị dời. Em có lựa chọn gì?"
         },
         {
           "speaker": "Agent",
           "text": "Trois options. Première : annuler et racheter — vous perdez les 49 euros et payez le nouveau billet, environ 95 euros pour mardi prochain. Deuxième : changement avec frais — 110 euros plus la différence tarifaire, soit environ 156 euros au total. Troisième : geste commercial sous condition.",
+          "en": "Three options. First: cancel and rebook — you lose the 49 euros and pay the new ticket, about 95 euros for next Tuesday. Second: change with fee — 110 euros plus the fare difference, about 156 euros total. Third: a conditional goodwill gesture.",
           "vi": "Ba lựa chọn. Một: hủy và mua lại — anh/chị mất 49 euro và trả vé mới, khoảng 95 euro cho thứ ba tới. Hai: đổi với phí — 110 euro cộng chênh lệch giá, tổng khoảng 156 euro. Ba: ưu đãi đặc biệt với điều kiện."
         },
         {
           "speaker": "Linh",
           "text": "Le geste commercial — quelle condition ?",
+          "en": "The goodwill gesture — under what condition?",
           "vi": "Ưu đãi đặc biệt — điều kiện gì?"
         },
         {
           "speaker": "Agent",
           "text": "Si vous me présentez un justificatif de votre employeur attestant le déplacement de la réunion, je peux ramener les frais de modification à 30 euros, et la différence tarifaire reste à votre charge — donc 76 euros au total au lieu de 156.",
+          "en": "If you show me an employer document attesting to the meeting being rescheduled, I can bring the change fee down to 30 euros, and you cover the fare difference — so 76 euros total instead of 156.",
           "vi": "Nếu anh/chị đưa giấy của công ty xác nhận họp bị dời, tôi có thể giảm phí đổi xuống 30 euro, chênh lệch giá vẫn anh/chị chịu — vậy 76 euro tổng thay vì 156."
         },
         {
           "speaker": "Linh",
           "text": "Le justificatif employeur, c'est un email de mon manager qui suffit, ou il faut une lettre signée ?",
+          "en": "The employer document — is an email from my manager enough, or does it need to be a signed letter?",
           "vi": "Giấy xác nhận của công ty là email của sếp đủ không, hay phải thư có ký?"
         },
         {
           "speaker": "Agent",
           "text": "Un email avec en-tête de l'entreprise et signature en pied de page suffit. Vous pouvez me le montrer sur téléphone ou imprimé.",
+          "en": "An email with the company header and a signature block at the bottom is enough. You can show it to me on your phone or printed.",
           "vi": "Email có tiêu đề công ty và chữ ký cuối là đủ. Anh/chị có thể cho tôi xem trên điện thoại hoặc in."
         },
         {
           "speaker": "Linh",
           "text": "Je l'ai sur mon téléphone — voici. C'est mon manager Pierre Dubois, daté de ce matin.",
+          "en": "I have it on my phone — here. It's from my manager Pierre Dubois, dated this morning.",
           "vi": "Em có trên điện thoại — đây ạ. Là sếp em Pierre Dubois, ngày sáng nay."
         },
         {
           "speaker": "Agent",
           "text": "Parfait, c'est conforme. Je traite la modification : annulation Prem's vendredi 8h12, nouveau billet mardi à 7h45 — ça vous va comme horaire ?",
+          "en": "Perfect, that's compliant. I'm processing the change: cancel the Prem's for Friday 8:12, new ticket Tuesday 7:45 — does that time work for you?",
           "vi": "Hoàn hảo, hợp lệ. Tôi xử lý: hủy Prem's thứ sáu 8h12, vé mới thứ ba 7h45 — giờ này được không?"
         },
         {
           "speaker": "Linh",
           "text": "7h45 me convient. Et le coût final ?",
+          "en": "7:45 works for me. And the final cost?",
           "vi": "7h45 phù hợp với em. Còn chi phí cuối?"
         },
         {
           "speaker": "Agent",
           "text": "30 euros de frais réduits + 46 euros de différence tarifaire = 76 euros. Carte bancaire ?",
+          "en": "30 euros reduced fee + 46 euros fare difference = 76 euros. Card?",
           "vi": "30 euro phí giảm + 46 euro chênh lệch = 76 euro. Thẻ ngân hàng?"
         },
         {
           "speaker": "Linh",
           "text": "Oui, carte. Pourriez-vous m'envoyer la confirmation par email tout de suite ?",
+          "en": "Yes, card. Could you send me the confirmation by email right now?",
           "vi": "Vâng, thẻ. Anh có thể gửi xác nhận qua email ngay không?"
         },
         {
           "speaker": "Agent",
           "text": "Bien sûr — je l'envoie à l'adresse de votre compte SNCF Connect.",
+          "en": "Of course — I'm sending it to the email on your SNCF Connect account.",
           "vi": "Tất nhiên — tôi gửi đến địa chỉ tài khoản SNCF Connect."
         },
         {
           "speaker": "Linh",
           "text": "Parfait. Merci beaucoup pour le geste commercial.",
+          "en": "Perfect. Thank you very much for the goodwill gesture.",
           "vi": "Hoàn hảo. Cảm ơn anh rất nhiều về ưu đãi."
         },
         {
           "speaker": "Agent",
           "text": "De rien. Bon voyage mardi.",
+          "en": "You're welcome. Have a good trip Tuesday.",
           "vi": "Không có gì. Chúc anh/chị chuyến đi tốt thứ ba."
         }
       ],
@@ -9290,30 +10141,44 @@ export const lessons: FrenchLesson[] =           [
         "Bạn đến quầy 30 phút trước giờ tàu chạy và phát hiện đặt nhầm ngày (chọn nhầm 12 thay vì 13). Khẩn cấp đổi cùng ngày — đề xuất giải pháp tại chỗ (mua vé mới chuyến sau, tự cancel vé cũ qua app, gọi tổng đài).",
         "Hãng từ chối geste commercial dù bạn có justificatif chính đáng. Lịch sự xin tên agent + mã claim, đề xuất escalate lên supérieur — không to tiếng, không đe dọa kiện."
       ],
+      "roleplay_prompts_en": [
+        "Your Prem's ticket is non-exchangeable, but you've been seriously ill (hospitalized). Request a goodwill gesture — no tears, just produce the hospital certificate and make a specific ask (50% refund OR a credit voucher you can use within 12 months). The hospital paper does most of the work for you. Anglophone parallel: this is exactly how to handle the same situation with a US airline or UK rail company.",
+        "You arrive at the counter 30 minutes before train departure and realize you booked the wrong date (selected the 12th instead of the 13th). Urgent same-day change — propose on-the-spot solutions: buy a new ticket on the next train, self-cancel the old one via the app, or call the central line. Don't melt down; the SNCF clerk has seen this twenty times today and respects calm competence.",
+        "The company refuses your goodwill gesture despite a legitimate justificatif. Politely ask for the agent's name and claim reference, and propose escalating to a supervisor — no raised voice, no lawsuit threats. The phrasing matters: 'Pourriez-vous me mettre en contact avec un superviseur?' lands much better than 'I want to speak to your manager'. (US parallel: 'I want to speak to your manager' is a meme for a reason — the French equivalent done badly is just as off-putting.)"
+      ],
       "register_notes": "Đổi vé tại quầy SNCF/Air France: vouvoiement tuyệt đối. Tránh « je veux » — luôn « je voudrais » hoặc « j'aimerais ». Khi không đồng ý với giá: không nói « c'est trop cher » (cảm xúc) hay « c'est arnaque » (đối đầu); thay bằng « ça me semble élevé pour un changement de date — y a-t-il une option moins coûteuse ? ». Khi cần escalate: « Pourriez-vous me mettre en contact avec un superviseur ? » — câu này politely chuyển vấn đề lên cấp trên mà không làm agent hiện tại mất mặt. Nếu agent đã hết kiên nhẫn, không leo thang — kết thúc « Merci pour votre temps, je vais réfléchir » và gọi tổng đài 36 35 (SNCF) sau khi tạo distance. Khi nhận được geste commercial, không over-cảm ơn (« merci merci merci ») — một « Merci beaucoup » + xác nhận lại giá mới đủ. Khi viết khiếu nại sau (qua trang web): vẫn vouvoiement, nêu fact + ngày + tên agent + yêu cầu cụ thể.",
+      "register_notes_en": "Counter negotiation at SNCF or Air France uses absolute vouvoiement. The single biggest verbal upgrade: replace 'je veux' (I want) with 'je voudrais' (I would like) or 'j'aimerais' (I'd like). 'Je veux' sounds demanding and infantile in French commercial contexts; 'je voudrais' is the formal-polite standard. When you disagree with a price, don't say 'c'est trop cher' (sounds emotional) or 'c'est arnaque' (sounds confrontational — and 'arnaque' means scam, which is escalation). Replace with: 'ça me semble élevé pour un changement de date — y a-t-il une option moins coûteuse?' (that seems high for a date change — is there a less expensive option?). This phrasing keeps you in problem-solving mode and gives the agent room to look.\n\nWhen you need to escalate: 'Pourriez-vous me mettre en contact avec un superviseur?' (could you put me in touch with a supervisor?). This is the polite escalation phrasing that doesn't make the current agent lose face — important, because if you embarrass them, they shut down. If the current agent has clearly run out of patience, do NOT escalate in person — close politely with 'Merci pour votre temps, je vais réfléchir' (thanks for your time, I'll think it over) and call the SNCF central line at 36 35 once you're away from the counter. Distance is a tool.\n\nWhen you receive a 'geste commercial', don't over-thank ('merci merci merci' reads as anxious and embarrassed for the agent). One 'Merci beaucoup' + a confirmation of the new price is enough. When writing a complaint afterward through the website: stay on vouvoiement, lead with the facts + date + agent name + specific requested remedy — emotional letters get filed under 'general complaints' and rarely answered, fact-letters with a specific ask get answered.",
       "idiom_glosses": [
         {
           "idiom": "Geste commercial",
           "literal": "Cử chỉ thương mại",
+          "literal_en": "Commercial gesture",
           "meaning": "Ưu đãi đặc biệt từ hãng cho lý do hợp tình.",
+          "meaning_en": "A discretionary goodwill gesture from a company — a fee reduction or waiver granted because the customer has a legitimate reason. The phrase has no clean English equivalent; closest is 'as a goodwill gesture' or 'a one-time courtesy'.",
           "example": "Le geste commercial m'a sauvé 80 euros sur le changement de billet."
         },
         {
           "idiom": "Faire valoir ses droits",
           "literal": "Làm có giá trị quyền của mình",
+          "literal_en": "To make one's rights count",
           "meaning": "Đòi quyền lợi chính đáng.",
+          "meaning_en": "To assert your rights / claim what you're legally entitled to. Used when you have a clear legal claim, not when you're asking for a goodwill gesture.",
           "example": "Avec un billet Pro, vous pouvez faire valoir vos droits — c'est échangeable sans frais."
         },
         {
           "idiom": "Couper la poire en deux",
           "literal": "Cắt quả lê làm đôi",
+          "literal_en": "To cut the pear in two",
           "meaning": "Thỏa hiệp, mỗi bên nhường một phần.",
+          "meaning_en": "To compromise — split the difference, each side gives a little. Anglophone equivalent: 'meet in the middle'.",
           "example": "On a coupé la poire en deux : 30 euros au lieu de 110, c'est correct."
         },
         {
           "idiom": "Tirer un trait sur",
           "literal": "Vẽ một đường lên",
+          "literal_en": "To draw a line over (something)",
           "meaning": "Bỏ qua / chấp nhận mất.",
+          "meaning_en": "To draw a line under something / write it off — accept the loss and move on. Anglophone equivalent: 'to write it off' or 'to chalk it up'.",
           "example": "Si rien n'est possible, je tire un trait sur les 49 euros et je rachète."
         }
       ],
@@ -9321,7 +10186,10 @@ export const lessons: FrenchLesson[] =           [
         {
           "type": "fill-blank",
           "question": "Pourriez-vous ___ s'il existe une option moins coûteuse ?",
-          "answer": "vérifier"
+          "question_en": "Could you ___ whether a less expensive option exists?",
+          "answer": "vérifier",
+          "hint_vi": "động từ « kiểm tra »",
+          "hint_en": "verb 'to check / verify' — the polite request verb after 'pourriez-vous'"
         },
         {
           "type": "matching",
@@ -9339,12 +10207,30 @@ export const lessons: FrenchLesson[] =           [
               "việc đột xuất"
             ]
           ],
-          "instruction": "Nối thuật ngữ với nghĩa"
+          "pairs_en": [
+            [
+              "un avoir",
+              "a credit voucher / store credit — useful when refund isn't possible"
+            ],
+            [
+              "un geste commercial",
+              "a discretionary goodwill gesture — the key negotiation lever in French customer service"
+            ],
+            [
+              "un imprévu",
+              "an unforeseen event — the standard reason for needing a booking change"
+            ]
+          ],
+          "instruction": "Nối thuật ngữ với nghĩa",
+          "instruction_en": "Match each French commercial term with its English explanation."
         },
         {
           "type": "translation",
           "vietnamese": "Em có việc đột xuất công việc, có thể có ưu đãi không?",
-          "french": "J'ai un imprévu professionnel — un geste commercial est-il possible ?"
+          "french": "J'ai un imprévu professionnel — un geste commercial est-il possible ?",
+          "english": "I have an unforeseen professional conflict — would a goodwill gesture be possible?",
+          "hint_vi": "« j'ai un imprévu » + « un geste commercial est-il possible »",
+          "hint_en": "'j'ai un imprévu' (I have an unforeseen event) + 'un geste commercial est-il possible' (is a goodwill gesture possible) — THE magic negotiation phrase in French customer service"
         }
       ]
     },
@@ -9362,6 +10248,11 @@ export const lessons: FrenchLesson[] =           [
             "mal au ventre → mal o vãn-trơ",
             "fièvre → fièvr",
             "hier soir → ièr swar"
+          ],
+          "pronunciation_focus_en": [
+            "mal au ventre → MAHL oh VAH(n)-truh ('ventre' has the nasal 'an' + soft 'truh' ending)",
+            "fièvre → FYEH-vruh (one syllable feel; final 'vre' = soft 'vruh'; means 'fever')",
+            "hier soir → YAIR SWAR ('hier' = 'yair', rhymes with English 'air'; 'soir' = 'swar', means 'last night')"
           ]
         },
         {
@@ -9371,6 +10262,11 @@ export const lessons: FrenchLesson[] =           [
             "assurance → a-sy-rãns",
             "voyage → vwa-yaj",
             "touriste → tu-rist"
+          ],
+          "pronunciation_focus_en": [
+            "assurance → ah-soo-RAH(n)SS (the 'u' is rounded; final '-ance' has nasal middle + hissed 's')",
+            "voyage → vwah-YAHZH (final 'ge' = 'zh' like 's' in 'measure'; very different from English 'voyage')",
+            "touriste → too-REEST (the 'u' is rounded; final 'e' silent; gendered word: 'touriste' is the same for both masculine/feminine)"
           ]
         },
         {
@@ -9380,6 +10276,11 @@ export const lessons: FrenchLesson[] =           [
             "allergique → a-lèr-jik",
             "pénicilline → pé-ni-si-lin",
             "important → an-por-tã"
+          ],
+          "pronunciation_focus_en": [
+            "allergique → ah-lair-ZHEEK ('zh' = 's' in 'measure'; the 'g' before 'i' is always 'zh' in French)",
+            "pénicilline → pay-nee-see-LEEN (four syllables; final '-line' = 'LEEN' with rolled French 'l')",
+            "important → a(n)-por-TAH(n) (two nasals; final 't' silent — critical safety information; say it slowly and clearly)"
           ]
         },
         {
@@ -9390,6 +10291,12 @@ export const lessons: FrenchLesson[] =           [
             "prescrit → près-kri",
             "antibiotiques → ãn-ti-bio-tik",
             "anti-inflammatoire → ãn-ti-an-fla-ma-twar"
+          ],
+          "pronunciation_focus_en": [
+            "urgentiste → oor-zhah(n)-TEEST (the emergency-medicine doctor; final 'e' silent)",
+            "prescrit → preh-SKREE (final 't' silent; the past participle of 'prescrire')",
+            "antibiotiques → ah(n)-tee-byoh-TEEK (final 's' silent in plural; four syllables)",
+            "anti-inflammatoire → ah(n)-tee-a(n)-flah-mah-TWAR (six syllables; long pharmaceutical word — slow it down)"
           ]
         },
         {
@@ -9399,102 +10306,123 @@ export const lessons: FrenchLesson[] =           [
             "remboursement → rãm-burs-mã",
             "conserver → kõn-ser-vé",
             "justificatifs → jys-ti-fi-ka-tif"
+          ],
+          "pronunciation_focus_en": [
+            "remboursement → rah(n)-boors-MAH(n) (two nasals; final '-ment' nasal; means 'reimbursement')",
+            "conserver → ko(n)-sair-VAY (nasal first; final '-er' = 'VAY', rhymes with English 'pay')",
+            "justificatifs → zhoos-tee-fee-kah-TEEF (final 's' silent; the supporting documents you keep for insurance)"
           ]
         }
       ],
       "cultural_notes_vi": "Hệ thống y tế Pháp khác Việt Nam ở vài điểm quan trọng. (1) « Urgences » (cấp cứu) ở bệnh viện công luôn tiếp nhận tất cả mọi người, kể cả không có bảo hiểm — bạn sẽ được khám trước, hóa đơn gửi sau. Đừng ngại đến vì sợ chi phí — sợ chi phí đến mức không khám là cách chết người. (2) Thanh toán: bệnh viện công thu trước hoặc gửi hóa đơn về địa chỉ; bảo hiểm du lịch (Allianz, AXA, MutuAide) hoàn tiền sau khi bạn nộp hóa đơn + bệnh án. Phải giữ TẤT CẢ giấy tờ gốc — bản sao không được chấp nhận. (3) « Pharmacie de garde » mở 24/24 — gần như mọi quận đều có. (4) Đơn thuốc Pháp có thể không khớp với thuốc Việt Nam — paracétamol = panadol, doliprane = paracétamol; ibuprofène thường được kê thay aspirin cho người trẻ. (5) Kháng sinh ở Pháp KHÔNG bán không đơn — đừng thử yêu cầu pharmacie cấp không có ordonnance. Khác văn hóa Việt: ở Pháp bác sĩ KHÔNG nhận phong bì — vi phạm pháp luật. Đừng làm.",
+      "cultural_notes_en": "The French healthcare system differs from the US in several ways that matter for a traveler from any country. (1) 'Urgences' (emergency rooms) at public hospitals will treat anyone, with or without insurance — you're seen first, billed later. The fee structure is also dramatically lower than US emergency rooms ($145 for a full visit + tests + prescription is typical, not thousands). DO NOT skip the ER because you're worried about cost — that calculation, which is rational in a US context, is dangerous in France. The cost gap between 'go to the ER' and 'don't go' is much smaller here. (2) Payment: public hospitals either charge at the counter or mail you a bill at your address. Travel insurance (Allianz, AXA, MutuAide, World Nomads) reimburses you AFTER you submit the bill plus the medical certificate. You must keep ALL original documents — photocopies are not accepted by most travel insurers. Photograph everything to Google Drive on the spot, then keep the paper too.\n\n(3) 'Pharmacie de garde' (on-call pharmacy) — open 24/7, available in almost every district of any French city. The address is posted on every closed pharmacy's door. (4) French prescriptions may not map 1-to-1 to medications you know: paracétamol = US/UK paracetamol (Tylenol/Panadol), doliprane = the most common paracétamol brand in France, ibuprofène is typically prescribed instead of aspirin for younger patients. Bring the original packaging or English name of any medication you take regularly. (5) Antibiotics in France require a prescription — full stop. Do not try to ask a pharmacist for antibiotics without an ordonnance; it won't work, and you'll mark yourself as a problem customer.\n\nOne cultural difference from Vietnam: in France, doctors do NOT accept envelopes. It's a criminal offense, and any doctor will refuse on the spot and the incident may be reported. Don't try, even as a thank-you. A handwritten card a week later, or a small gift like flowers if it was a long stay, is the right level of appreciation. Anglophone calibration: same applies to the UK NHS and Canadian system — no envelopes, ever.",
       "tip_advice_vi": "Trước chuyến đi: mua bảo hiểm du lịch (Mondial Assistance, Allianz Travel) bao gồm urgences médicales — không phụ thuộc vào hợp đồng tín dụng visa (mức bao thấp). Lưu số khẩn cấp: 15 (SAMU — y tế), 17 (police), 112 (Châu Âu, mọi loại khẩn). Cài đặt tiếng Pháp các từ cơ bản về triệu chứng: « j'ai mal à… » (em đau ở…), « j'ai de la fièvre » (em sốt), « j'ai vomi/des nausées » (em nôn/buồn nôn), « j'ai une éruption cutanée » (em nổi mẩn). Khi đến bệnh viện: cầm sẵn passport + thẻ bảo hiểm + danh sách thuốc đang dùng + dị ứng đã biết (viết trên giấy nhỏ tiếng Pháp). Sau khám: yêu cầu « un certificat médical » + « ordonnance imprimée » + « facture détaillée » — ba thứ này bắt buộc cho hoàn tiền. Lưu ảnh tất cả vào Google Drive ngay tại chỗ — đừng đợi về khách sạn. Nếu bệnh nặng và visa hết hạn sắp tới: liên hệ đại sứ quán + bảo hiểm để xin gia hạn lưu trú vì lý do y tế.",
+      "tip_advice_en": "Before your trip: buy real travel insurance (Mondial Assistance, Allianz Travel, World Nomads) that includes medical emergencies — don't rely on credit-card visa coverage, which usually caps at low amounts and excludes anything 'serious'. Save the emergency numbers: 15 (SAMU — medical emergency in France), 17 (police), 112 (Europe-wide, any emergency type — also works on a phone with no SIM). Memorize the symptom phrases in French ahead of time: 'j'ai mal à…' (I have pain in…), 'j'ai de la fièvre' (I have a fever), 'j'ai vomi / j'ai des nausées' (I vomited / I'm nauseous), 'j'ai une éruption cutanée' (I have a rash). Pain location vocabulary: ventre (belly), tête (head), poitrine (chest), dos (back), gorge (throat).\n\nWhen you arrive at the hospital, have ready: passport + insurance card + a list of medications you currently take + a list of known allergies (write these on a small piece of paper in French — much easier than improvising in French while in pain). After the consultation, ASK for three things explicitly: 'un certificat médical' (medical certificate), 'ordonnance imprimée' (printed prescription), 'facture détaillée' (itemized bill). All three are required for insurance reimbursement; if you walk out without them, you'll spend weeks getting them mailed. Photograph everything to Google Drive before leaving — don't wait until you get back to the hotel. If you're seriously ill and your visa is about to expire, contact both your embassy AND your insurance to extend your stay on medical grounds — this is a recognized process, not a favor.\n\nAnglophone-specific note: in the US, you'd often skip the ER over cost concerns. In France, the cost calculation is very different and skipping the ER is the wrong call. The French ER is closer in cost to a UK NHS A&E (free for residents, modest for tourists) than to a US emergency room. If something feels seriously wrong, GO.",
       "vocabulary": [
         {
           "word": "les urgences",
           "en": "emergency room",
           "vi": "khoa cấp cứu",
           "pos": "n.f. pl.",
-          "pronunciation_vi": "ur-jãns"
+          "pronunciation_vi": "ur-jãns",
+          "pronunciation_en": "lay-zoor-ZHAH(n)SS (liaison 'les urgences' = 'lay-zoor'; the French ER — always plural in French)"
         },
         {
           "word": "un urgentiste",
           "en": "emergency doctor",
           "vi": "bác sĩ cấp cứu",
           "pos": "n.m.",
-          "pronunciation_vi": "ur-jãn-tist"
+          "pronunciation_vi": "ur-jãn-tist",
+          "pronunciation_en": "oor-zhah(n)-TEEST (the ER doctor; specialized title, different from 'généraliste' / GP)"
         },
         {
           "word": "une assurance voyage",
           "en": "travel insurance",
           "vi": "bảo hiểm du lịch",
           "pos": "n.f.",
-          "pronunciation_vi": "a-sy-rãns vwa-yaj"
+          "pronunciation_vi": "a-sy-rãns vwa-yaj",
+          "pronunciation_en": "ah-soo-RAH(n)SS vwah-YAHZH (the document you produce at the ER counter — buy it before traveling)"
         },
         {
           "word": "être allergique à",
           "en": "to be allergic to",
           "vi": "dị ứng với",
           "pos": "v.",
-          "pronunciation_vi": "é-trơ a-lèr-jik a"
+          "pronunciation_vi": "é-trơ a-lèr-jik a",
+          "pronunciation_en": "ETR ah-lair-ZHEEK ah (note the preposition 'à' (to) — not the English 'of'; the key safety phrase before any prescription)"
         },
         {
           "word": "une ordonnance",
           "en": "a prescription",
           "vi": "đơn thuốc",
           "pos": "n.f.",
-          "pronunciation_vi": "or-do-nãns"
+          "pronunciation_vi": "or-do-nãns",
+          "pronunciation_en": "oor-doh-NAH(n)SS (final '-ance' has nasal middle + hissed 's'; the formal French word for prescription)"
         },
         {
           "word": "un certificat médical",
           "en": "medical certificate",
           "vi": "giấy chứng nhận y tế",
           "pos": "n.m.",
-          "pronunciation_vi": "sèr-ti-fi-ka mé-di-kal"
+          "pronunciation_vi": "sèr-ti-fi-ka mé-di-kal",
+          "pronunciation_en": "sair-tee-fee-KAH may-dee-KAL (the doctor's signed letter — required for insurance and for sick leave from work/school)"
         },
         {
           "word": "une facture détaillée",
           "en": "itemized bill",
           "vi": "hóa đơn chi tiết",
           "pos": "n.f.",
-          "pronunciation_vi": "fak-tur dé-ta-yé"
+          "pronunciation_vi": "fak-tur dé-ta-yé",
+          "pronunciation_en": "fak-TOOR day-tah-YAY (itemized invoice — required for insurance reimbursement; not a simple receipt)"
         },
         {
           "word": "le remboursement",
           "en": "reimbursement",
           "vi": "hoàn tiền",
           "pos": "n.m.",
-          "pronunciation_vi": "rãm-burs-mã"
+          "pronunciation_vi": "rãm-burs-mã",
+          "pronunciation_en": "rah(n)-boors-MAH(n) (two nasals; reimbursement of out-of-pocket medical costs by your insurance)"
         },
         {
           "word": "la carte vitale",
           "en": "French health card",
           "vi": "thẻ y tế Pháp",
           "pos": "n.f.",
-          "pronunciation_vi": "kart vi-tal"
+          "pronunciation_vi": "kart vi-tal",
+          "pronunciation_en": "KART vee-TAL (the French national health card — residents only; if you're a tourist, you use travel insurance instead)"
         },
         {
           "word": "se faire ausculter",
           "en": "to be examined",
           "vi": "được khám",
           "pos": "v.",
-          "pronunciation_vi": "sơ fèr os-kul-té"
+          "pronunciation_vi": "sơ fèr os-kul-té",
+          "pronunciation_en": "suh FAIR ohs-kuhl-TAY (reflexive causative; 'ausculter' = to examine medically — listen to chest, palpate, etc.)"
         }
       ],
       "dialogue": [
         {
           "speaker": "Linh",
           "text": "Bonjour, j'ai très mal au ventre depuis hier soir.",
+          "en": "Hello — I've had bad abdominal pain since last night.",
           "vi": "Chào, em đau bụng nhiều từ tối qua."
         },
         {
           "speaker": "Infirmier",
           "text": "Vous avez de la fièvre ? Avez-vous une assurance ?",
+          "en": "Do you have a fever? Do you have insurance?",
           "vi": "Anh/chị có sốt không? Có bảo hiểm không?"
         },
         {
           "speaker": "Linh",
           "text": "39°C ce matin. Voici ma carte d'assurance voyage.",
+          "en": "39°C (102°F) this morning. Here's my travel insurance card.",
           "vi": "39°C sáng nay. Đây là thẻ bảo hiểm du lịch của em."
         },
         {
           "speaker": "Infirmier",
           "text": "Je vous installe en salle d'attente — l'urgentiste vous voit dans 20 minutes.",
+          "en": "I'll put you in the waiting room — the ER doctor will see you in 20 minutes.",
           "vi": "Tôi đưa anh/chị vào phòng chờ — bác sĩ cấp cứu khám trong 20 phút."
         }
       ],
@@ -9502,111 +10430,133 @@ export const lessons: FrenchLesson[] =           [
         {
           "speaker": "Linh (à l'accueil des urgences)",
           "text": "Bonjour, je suis touriste vietnamienne et j'ai très mal au ventre depuis hier soir. J'ai aussi de la fièvre.",
+          "en": "Hello, I'm a Vietnamese tourist and I've had bad stomach pain since last night. I also have a fever.",
           "vi": "Chào, em là khách du lịch Việt Nam và em đau bụng nhiều từ tối qua. Em cũng sốt."
         },
         {
           "speaker": "Infirmier d'accueil",
           "text": "Bonjour Madame. Votre passeport et votre assurance, s'il vous plaît.",
+          "en": "Hello, ma'am. Your passport and insurance, please.",
           "vi": "Chào cô. Hộ chiếu và bảo hiểm của cô."
         },
         {
           "speaker": "Linh",
           "text": "Voici mon passeport et la carte d'assurance Allianz Travel — c'est une assurance vietnamienne valable en France.",
+          "en": "Here's my passport and the Allianz Travel insurance card — it's a Vietnamese insurance valid in France.",
           "vi": "Đây là hộ chiếu và thẻ bảo hiểm Allianz Travel — bảo hiểm Việt Nam hiệu lực tại Pháp."
         },
         {
           "speaker": "Infirmier",
           "text": "Très bien. Vous prenez des médicaments en ce moment ? Avez-vous des allergies connues ?",
+          "en": "Good. Are you currently taking any medications? Do you have any known allergies?",
           "vi": "Tốt. Cô đang uống thuốc gì không? Cô có dị ứng đã biết không?"
         },
         {
           "speaker": "Linh",
           "text": "Pas de médicaments réguliers. Mais je suis allergique à la pénicilline — c'est important.",
+          "en": "No regular medications. But I'm allergic to penicillin — that's important.",
           "vi": "Không có thuốc thường xuyên. Nhưng em dị ứng penicillin — điều này quan trọng."
         },
         {
           "speaker": "Infirmier",
           "text": "Je le note dans votre dossier. Sur une échelle de 1 à 10, à quel niveau évaluez-vous votre douleur ?",
+          "en": "I'm noting it in your file. On a scale of 1 to 10, how would you rate your pain?",
           "vi": "Tôi note vào hồ sơ. Trên thang 1-10, cô đánh giá đau ở mức nào?"
         },
         {
           "speaker": "Linh",
           "text": "À 7 sur 10. C'est dans la partie basse droite du ventre, ça me lance par moments.",
+          "en": "Seven out of ten. It's in the lower right part of my abdomen, with stabbing flashes.",
           "vi": "7 trên 10. Đau phần dưới bên phải bụng, có lúc đau nhói."
         },
         {
           "speaker": "Infirmier",
           "text": "Compris. Je vous mets en triage prioritaire — l'urgentiste vous verra dans environ 30 minutes. Asseyez-vous en salle 2.",
+          "en": "Got it. I'm putting you in priority triage — the ER doctor will see you in about 30 minutes. Please sit in Room 2.",
           "vi": "Hiểu rồi. Tôi xếp ưu tiên — bác sĩ cấp cứu khám cô trong khoảng 30 phút. Cô ngồi phòng 2."
         },
         {
           "speaker": "Dr Lemaire (40 minutes plus tard)",
           "text": "Madame Trần ? Je suis le Dr Lemaire. Racontez-moi ce qui s'est passé.",
+          "en": "Mrs. Trần? I'm Dr. Lemaire. Tell me what happened.",
           "vi": "(40 phút sau) Cô Trần? Tôi là bác sĩ Lemaire. Cô kể tôi nghe chuyện gì xảy ra."
         },
         {
           "speaker": "Linh",
           "text": "Hier soir, après le dîner, j'ai eu une douleur soudaine au ventre. Cette nuit, j'ai vomi deux fois et la douleur s'est intensifiée vers le côté droit.",
+          "en": "Last night, after dinner, I had a sudden pain in my abdomen. Overnight I vomited twice and the pain intensified toward the right side.",
           "vi": "Tối qua, sau bữa ăn, em đau bụng đột ngột. Đêm em nôn hai lần và đau tăng lên phía bên phải."
         },
         {
           "speaker": "Dr Lemaire",
           "text": "Vous avez mangé quelque chose d'inhabituel hier ? Fruits de mer, viande crue ?",
+          "en": "Did you eat anything unusual yesterday? Shellfish, raw meat?",
           "vi": "Cô có ăn gì khác thường hôm qua không? Hải sản, thịt sống?"
         },
         {
           "speaker": "Linh",
           "text": "Des huîtres dans un bistrot près de la place de la République. C'était la première fois.",
+          "en": "Oysters at a bistro near Place de la République. It was my first time.",
           "vi": "Hàu ở một bistrot gần quảng trường République. Đó là lần đầu của em."
         },
         {
           "speaker": "Dr Lemaire",
           "text": "Cela peut être une intoxication alimentaire, mais je veux écarter une appendicite. Je vais palper, puis demander une prise de sang et une échographie.",
+          "en": "This could be food poisoning, but I want to rule out appendicitis. I'll palpate, then order bloodwork and an ultrasound.",
           "vi": "Có thể là ngộ độc thực phẩm, nhưng tôi muốn loại trừ viêm ruột thừa. Tôi sẽ ấn bụng, sau đó yêu cầu xét nghiệm máu và siêu âm."
         },
         {
           "speaker": "Linh",
           "text": "D'accord. Combien de temps ça va prendre, et est-ce que mon assurance couvre ?",
+          "en": "OK. How long will it take, and does my insurance cover it?",
           "vi": "Vâng. Mất bao lâu, và bảo hiểm em có bao không?"
         },
         {
           "speaker": "Dr Lemaire",
           "text": "Comptez deux à trois heures pour les examens et les résultats. Pour l'assurance, gardez tous les documents originaux — facture détaillée, ordonnance, certificat médical. Allianz Travel rembourse en général sous deux à trois semaines.",
+          "en": "Plan on two to three hours for tests and results. For insurance, keep all original documents — itemized bill, prescription, medical certificate. Allianz Travel typically reimburses within two to three weeks.",
           "vi": "Khoảng 2-3 giờ cho xét nghiệm và kết quả. Về bảo hiểm, giữ tất cả giấy tờ gốc — hóa đơn chi tiết, đơn thuốc, giấy chứng nhận y tế. Allianz Travel thường hoàn tiền trong 2-3 tuần."
         },
         {
           "speaker": "Linh (après les examens)",
           "text": "Docteur, les résultats ?",
+          "en": "(After the exams) Doctor, the results?",
           "vi": "(sau khi xét nghiệm) Bác sĩ, kết quả ra sao?"
         },
         {
           "speaker": "Dr Lemaire",
           "text": "Bonne nouvelle : pas d'appendicite. C'est une intoxication alimentaire confirmée par la prise de sang. Je vous prescris des antibiotiques (azithromycine, pas de pénicilline donc pour vous), un anti-spasmodique pour la douleur, et un anti-vomitif.",
+          "en": "Good news: no appendicitis. It's food poisoning, confirmed by bloodwork. I'm prescribing antibiotics (azithromycin — not penicillin, given your allergy), an antispasmodic for the pain, and an anti-emetic.",
           "vi": "Tin tốt: không phải viêm ruột thừa. Là ngộ độc thực phẩm xác nhận qua xét nghiệm máu. Tôi kê cô kháng sinh (azithromycin, không phải penicillin), thuốc giảm co thắt cho đau, và thuốc chống nôn."
         },
         {
           "speaker": "Linh",
           "text": "Parfait — pas de pénicilline, c'est rassurant. Je peux récupérer ces médicaments où ?",
+          "en": "Perfect — no penicillin, that's reassuring. Where can I pick up these medications?",
           "vi": "Tốt — không có penicillin, em yên tâm. Em có thể lấy thuốc ở đâu?"
         },
         {
           "speaker": "Dr Lemaire",
           "text": "Pharmacie de garde, ouverte 24h/24. Il y en a une rue de Bretagne, à dix minutes à pied. Voici l'ordonnance, le certificat médical pour votre assurance, et la facture détaillée.",
+          "en": "The on-call pharmacy, open 24/7. There's one on Rue de Bretagne, ten minutes on foot. Here's the prescription, the medical certificate for your insurance, and the itemized bill.",
           "vi": "Nhà thuốc trực 24/24. Có một quán ở phố Bretagne, đi bộ 10 phút. Đây là đơn thuốc, giấy chứng nhận y tế cho bảo hiểm, và hóa đơn chi tiết."
         },
         {
           "speaker": "Linh",
           "text": "Merci infiniment, Docteur. Combien je dois régler maintenant ?",
+          "en": "Thank you so much, Doctor. How much do I need to pay now?",
           "vi": "Em vô cùng cảm ơn bác sĩ. Em phải trả bao nhiêu bây giờ?"
         },
         {
           "speaker": "Dr Lemaire",
           "text": "Le règlement se fait à l'accueil — 145 euros au total. Gardez le reçu pour Allianz.",
+          "en": "Payment is at reception — 145 euros total. Keep the receipt for Allianz.",
           "vi": "Thanh toán tại quầy — tổng 145 euro. Giữ hóa đơn cho Allianz."
         },
         {
           "speaker": "Linh",
           "text": "Compris. Bonne journée et merci encore.",
+          "en": "Understood. Have a good day and thanks again.",
           "vi": "Hiểu rồi. Chúc bác sĩ ngày tốt lành và cảm ơn lần nữa."
         }
       ],
@@ -9615,30 +10565,44 @@ export const lessons: FrenchLesson[] =           [
         "Bác sĩ kê đơn thuốc có một tên thuốc bạn không biết. Hỏi rõ: tác dụng phụ, có nên uống cùng đồ ăn không, có lái xe được không, có tương tác với thuốc khác bạn đang uống không.",
         "Tại quầy thanh toán, bạn phát hiện hóa đơn có một mục 80 EUR cho « consultation spécialiste » mà bạn không gặp ai chuyên khoa. Lịch sự yêu cầu kiểm tra lại — không cáo buộc nhân viên gian lận, nêu fact và xin giải thích."
       ],
+      "roleplay_prompts_en": [
+        "You arrive at urgences with severe chest pain — possible cardiac event. Describe the symptoms precisely in French: intensity (sur une échelle de 1 à 10), location, time of onset, whether it radiates to your arm. Don't ramble; this is the moment when concise, clinical French saves you minutes. Anglophone calibration: the structure is identical to what US/UK ER nurses ask for — pain scale, location, onset, radiation — just learn the French vocabulary.",
+        "The doctor prescribes a medication name you don't recognize. Ask clearly: side effects ('effets secondaires?'), whether to take with food ('à prendre avec ou sans nourriture?'), driving permitted ('puis-je conduire?'), drug interactions with what you currently take. French doctors expect specific questions and respect informed patients — don't be afraid to ask.",
+        "At the payment counter, you see an 80-euro line item for 'consultation spécialiste' — but you didn't see any specialist. Politely ask for a recheck — don't accuse anyone of fraud, just state the fact ('je ne pense pas avoir vu de spécialiste — pourriez-vous vérifier?') and ask for clarification. Hospital billing errors are common everywhere; calm fact-finding works in France, the US, and the UK alike."
+      ],
       "register_notes": "Tại bệnh viện Pháp: vouvoiement với mọi nhân viên, kể cả y tá trẻ. Bác sĩ thường gọi bệnh nhân « Madame/Monsieur + tên họ » — đáp lại bằng « Docteur » (không gọi tên). Khi mô tả triệu chứng: dùng cấu trúc « j'ai mal à + bộ phận » (em đau ở…), không « ma… fait mal » (cấu trúc Việt). Diễn đạt cường độ: « ça me lance », « c'est lancinant » (đau nhói), « c'est sourd » (đau âm ỉ), « c'est brûlant » (đau rát). Không nói đùa với bác sĩ về triệu chứng — họ ghi vào hồ sơ và có thể ảnh hưởng chẩn đoán. Khi không hiểu thuật ngữ y khoa: « Pourriez-vous m'expliquer en termes simples ? » — bác sĩ Pháp có thói quen dùng từ chuyên môn nhưng sẽ chuyển ngôn ngữ khi yêu cầu. Tránh: cảm ơn bác sĩ bằng quà cáp (vi phạm luật), gọi điện trực tiếp số riêng bác sĩ ngoài giờ (xâm phạm), so sánh « ở Việt Nam bác sĩ khác lắm » (gây khó chịu). Khi xuất viện: « Merci docteur, bonne journée » + lịch sự rời.",
+      "register_notes_en": "At a French hospital: vouvoiement with everyone, including young nurses. The doctor will call you 'Madame/Monsieur + family name' — respond with 'Docteur' (don't use their first name). For symptom description, use 'j'ai mal à + body part' (I have pain in…), not 'mon X fait mal' (Vietnamese/English structure 'my X hurts'). Useful intensity vocabulary: 'ça me lance' / 'c'est lancinant' (stabbing pain), 'c'est sourd' (dull ache), 'c'est brûlant' (burning), 'ça pulse' (throbbing). Never joke with a doctor about symptoms — they're noting it in your file and a misread joke can affect the diagnosis. The American/British tendency to deflect serious symptoms with humor ('I'm probably overreacting, ha ha') doesn't translate; deliver symptoms straight.\n\nIf you don't understand a medical term: 'Pourriez-vous m'expliquer en termes simples?' (could you explain that in simple terms?). French doctors lean technical by habit but will switch register when asked. Things to avoid: thanking the doctor with a gift (it's a criminal offense in France — true even for small gifts; a thank-you card a few days later is fine); calling a doctor's personal number outside hours (intrusive — use SOS Médecins or 15 instead); making 'in Vietnam doctors do X differently' comparisons (lands as criticism even if not intended). When leaving: 'Merci docteur, bonne journée' + a polite exit is the standard. Anglophone calibration: this is closer to how a UK NHS consultant expects to be addressed than how a US doctor does — slightly more formal, slightly less first-name.",
       "idiom_glosses": [
         {
           "idiom": "Avoir une santé de fer",
           "literal": "Có sức khỏe sắt thép",
+          "literal_en": "To have a health of iron",
           "meaning": "Khỏe mạnh, ít ốm.",
+          "meaning_en": "To have robust health — rarely gets sick. Anglophone equivalent: 'to be as fit as a fiddle' or 'to have an iron constitution'.",
           "example": "Avant ce voyage j'avais une santé de fer — ces huîtres ont tout cassé."
         },
         {
           "idiom": "Tomber malade",
           "literal": "Ngã bệnh",
+          "literal_en": "To fall sick",
           "meaning": "Bị bệnh.",
+          "meaning_en": "To get sick / fall ill. Same 'fall' image as in English 'fall ill'.",
           "example": "Je suis tombée malade le deuxième jour de mes vacances."
         },
         {
           "idiom": "Mettre les bouchées doubles",
           "literal": "Cắn miếng đôi",
+          "literal_en": "To put the mouthfuls double",
           "meaning": "Tăng tốc xử lý / chăm sóc gấp đôi.",
+          "meaning_en": "To double the effort — speed up care, redouble the pace. Anglophone equivalent: 'to kick into high gear'.",
           "example": "L'équipe des urgences a mis les bouchées doubles ce soir-là."
         },
         {
           "idiom": "Reprendre du poil de la bête",
           "literal": "Lấy lại lông thú",
+          "literal_en": "To take back hair of the beast",
           "meaning": "Hồi phục sức khỏe sau bệnh.",
+          "meaning_en": "To get back on your feet after illness — recover your strength. Anglophone equivalent: 'to bounce back' or 'to be back on form'. (Despite surface similarity, this is NOT 'hair of the dog' / hangover cure — the meanings have diverged.)",
           "example": "Avec les antibiotiques, j'ai vite repris du poil de la bête."
         }
       ],
@@ -9646,7 +10610,10 @@ export const lessons: FrenchLesson[] =           [
         {
           "type": "fill-blank",
           "question": "Je suis ___ à la pénicilline — c'est important.",
-          "answer": "allergique"
+          "question_en": "I'm ___ to penicillin — that's important.",
+          "answer": "allergique",
+          "hint_vi": "tính từ « dị ứng »",
+          "hint_en": "adjective 'allergic' — the safety word to declare before any prescription"
         },
         {
           "type": "matching",
@@ -9664,12 +10631,30 @@ export const lessons: FrenchLesson[] =           [
               "hoàn tiền"
             ]
           ],
-          "instruction": "Nối thuật ngữ y tế với nghĩa tiếng Việt"
+          "pairs_en": [
+            [
+              "les urgences",
+              "emergency room / ER — always plural in French"
+            ],
+            [
+              "une ordonnance",
+              "a prescription — required for antibiotics and most non-trivial medications in France"
+            ],
+            [
+              "le remboursement",
+              "reimbursement of out-of-pocket medical costs by your travel insurance, after you submit the bill"
+            ]
+          ],
+          "instruction": "Nối thuật ngữ y tế với nghĩa tiếng Việt",
+          "instruction_en": "Match each French medical term with its English explanation."
         },
         {
           "type": "translation",
           "vietnamese": "Để được hoàn tiền, em phải giữ tất cả giấy tờ gốc.",
-          "french": "Pour le remboursement, je dois conserver tous les justificatifs originaux."
+          "french": "Pour le remboursement, je dois conserver tous les justificatifs originaux.",
+          "english": "For the reimbursement, I have to keep all the original supporting documents.",
+          "hint_vi": "« conserver » + « les justificatifs originaux »",
+          "hint_en": "'conserver' (to keep / preserve) + 'les justificatifs originaux' (original supporting documents — never photocopies)"
         }
       ]
     },
