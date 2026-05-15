@@ -4,7 +4,7 @@
 
 import type { FrenchLesson } from "./lessons";
 
-export const lessons: FrenchLesson[] =         [
+export const lessons: FrenchLesson[] =           [
     {
       "id": "french_fluency_conditional",
       "level": "B2",
@@ -5642,6 +5642,13 @@ export const lessons: FrenchLesson[] =         [
             "ancêtres → ãn-sè-trơ",
             "religieux → rơ-li-jiơ",
             "entendez → ãn-tãn-dé"
+          ],
+          "pronunciation_focus_en": [
+            "chez → 'SHAY' — final 'z' silent",
+            "autel → 'oh-TEL' — final 'l' pronounced",
+            "ancêtres → 'ahn-SET-truh' — nasal 'an'; final '-re' barely voiced",
+            "religieux → 'ruh-lee-ZHYUH' — 'g' before 'i' = 'zh'; '-eux' rounded",
+            "entendez → 'ahn-tahn-DAY' — two nasal 'en'"
           ]
         },
         {
@@ -5652,6 +5659,12 @@ export const lessons: FrenchLesson[] =         [
             "quotidien → ko-ti-diain",
             "mémoire → mé-mwar",
             "cheminée → shơ-mi-né"
+          ],
+          "pronunciation_focus_en": [
+            "plutôt → 'ploo-TOH' — 'u' rounded; circumflex 'ô' = 'oh'",
+            "quotidien → 'koh-tee-DYAN' — nasal '-ien' at end",
+            "mémoire → 'may-MWAR' — 'oi' = 'wah'",
+            "cheminée → 'shuh-mee-NAY' — '-ée' = 'ay'"
           ]
         },
         {
@@ -5662,6 +5675,12 @@ export const lessons: FrenchLesson[] =         [
             "générations → jé-né-ra-sion",
             "toit → twa",
             "choix → shwa"
+          ],
+          "pronunciation_focus_en": [
+            "trois → 'TWAH' — 'oi' = 'wah'; final 's' silent",
+            "générations → 'zhay-nay-rah-SYON' — 'g' before 'é' = 'zh'",
+            "toit → 'TWAH' — same as 'trois'; final 't' silent",
+            "choix → 'SHWAH' — 'oi' = 'wah'; final 'x' silent"
           ]
         },
         {
@@ -5672,6 +5691,12 @@ export const lessons: FrenchLesson[] =         [
             "central → sãn-tral",
             "règle → rè-glơ",
             "tensions → tãn-sion"
+          ],
+          "pronunciation_focus_en": [
+            "repas → 'ruh-PAH' — final 's' silent",
+            "central → 'sahn-TRAL' — nasal 'an'; final 'l' pronounced",
+            "règle → 'REH-gluh' — 'è' opens; final '-le' barely voiced",
+            "tensions → 'tahn-SYON' — nasal 'en'; '-tion' = 'syon'"
           ]
         },
         {
@@ -5682,6 +5707,12 @@ export const lessons: FrenchLesson[] =         [
             "traduit → tra-dwi",
             "exactement → ég-zak-tơ-mã",
             "appelons → a-plõ"
+          ],
+          "pronunciation_focus_en": [
+            "famille → 'fah-MEE-yuh' — '-ille' = 'ee-yuh'; final '-e' silent",
+            "traduit → 'trah-DWEE' — 'ui' = 'wee'; final 't' silent",
+            "exactement → 'eg-zakt-MAHN' — 'x' = 'gz' between vowels here; '-ment' nasal",
+            "appelons → 'ah-puh-LON' — schwa in middle; nasal '-on'"
           ]
         }
       ],
@@ -5693,91 +5724,105 @@ export const lessons: FrenchLesson[] =         [
           "en": "ancestor altar",
           "vi": "bàn thờ tổ tiên",
           "pos": "n.m.",
-          "pronunciation_vi": "o-tèl dé-z-ãn-sè-trơ"
+          "pronunciation_vi": "o-tèl dé-z-ãn-sè-trơ",
+          "pronunciation_en": "loh-TEL day-zahn-SET-truh — 'l'autel des ancêtres'; 'des' liaison"
         },
         {
           "word": "la mémoire familiale",
           "en": "family memory",
           "vi": "ký ức gia đình",
           "pos": "n.f.",
-          "pronunciation_vi": "mé-mwar fa-mi-li-al"
+          "pronunciation_vi": "mé-mwar fa-mi-li-al",
+          "pronunciation_en": "lah may-MWAR fah-mee-LYAL — 'familiale' = adj. form; 'oi' = 'wah'"
         },
         {
           "word": "un repère identitaire",
           "en": "an identity anchor",
           "vi": "điểm neo bản sắc",
           "pos": "n.m.",
-          "pronunciation_vi": "rơ-pèr i-dãn-ti-tèr"
+          "pronunciation_vi": "rơ-pèr i-dãn-ti-tèr",
+          "pronunciation_en": "UN ruh-PEHR ee-dahn-tee-TEHR — 'identitaire' = identity-related"
         },
         {
           "word": "la cohabitation intergénérationnelle",
           "en": "multigenerational living",
           "vi": "sống chung nhiều thế hệ",
           "pos": "n.f.",
-          "pronunciation_vi": "ko-a-bi-ta-sion an-tèr-jé-né-ra-sio-nèl"
+          "pronunciation_vi": "ko-a-bi-ta-sion an-tèr-jé-né-ra-sio-nèl",
+          "pronunciation_en": "lah koh-ah-bee-tah-SYON an-tehr-zhay-nay-rah-syo-NEL — very long; 'co-' = 'koh'"
         },
         {
           "word": "un repas partagé",
           "en": "a shared meal",
           "vi": "bữa ăn chung",
           "pos": "n.m.",
-          "pronunciation_vi": "rơ-pa par-ta-jé"
+          "pronunciation_vi": "rơ-pa par-ta-jé",
+          "pronunciation_en": "UN ruh-PAH par-tah-ZHAY — 'shared meal'"
         },
         {
           "word": "la piété filiale",
           "en": "filial piety",
           "vi": "chữ hiếu",
           "pos": "n.f.",
-          "pronunciation_vi": "pi-é-té fi-li-al"
+          "pronunciation_vi": "pi-é-té fi-li-al",
+          "pronunciation_en": "lah pyay-TAY fee-LYAL — 'piété filiale' = filial piety"
         },
         {
           "word": "un repère",
           "en": "a reference point",
           "vi": "điểm tựa / mốc",
           "pos": "n.m.",
-          "pronunciation_vi": "rơ-pèr"
+          "pronunciation_vi": "rơ-pèr",
+          "pronunciation_en": "UN ruh-PEHR — masc.; 'reference point'"
         },
         {
           "word": "un malentendu culturel",
           "en": "cultural misunderstanding",
           "vi": "hiểu lầm văn hóa",
           "pos": "n.m.",
-          "pronunciation_vi": "ma-lãn-tãn-du kul-tu-rèl"
+          "pronunciation_vi": "ma-lãn-tãn-du kul-tu-rèl",
+          "pronunciation_en": "UN mah-lahn-tahn-DOO kool-too-REL — 'cultural misunderstanding'"
         },
         {
           "word": "être enraciné dans",
           "en": "to be rooted in",
           "vi": "bắt nguồn từ",
           "pos": "expr.",
-          "pronunciation_vi": "é-trơ ãn-ra-si-né dãn"
+          "pronunciation_vi": "é-trơ ãn-ra-si-né dãn",
+          "pronunciation_en": "EH-truh ahn-rah-see-NAY dahn — 'to be rooted in'"
         },
         {
           "word": "transmettre",
           "en": "to pass down",
           "vi": "truyền lại",
           "pos": "v.",
-          "pronunciation_vi": "trãns-mè-trơ"
+          "pronunciation_vi": "trãns-mè-trơ",
+          "pronunciation_en": "trahns-MET-truh — final '-re' barely voiced; 'to pass down'"
         }
       ],
       "dialogue": [
         {
           "speaker": "Camille",
           "text": "J'ai vu un autel chez tes parents — c'est religieux, donc ?",
+          "en": "I saw an altar at your parents' place — so it's religious, then?",
           "vi": "Anh thấy bàn thờ ở nhà bố mẹ em — vậy đó là tôn giáo à?"
         },
         {
           "speaker": "Hà",
           "text": "Pas exactement. C'est plus un lien quotidien avec la mémoire familiale.",
+          "en": "Not exactly. It's more a daily link with family memory.",
           "vi": "Không hẳn. Đúng hơn là sự gắn kết hàng ngày với ký ức gia đình."
         },
         {
           "speaker": "Camille",
           "text": "Comme une photo sur la cheminée chez nous, alors ?",
+          "en": "Like a photo on the mantelpiece at our place, then?",
           "vi": "Vậy giống bức ảnh trên lò sưởi nhà các anh à?"
         },
         {
           "speaker": "Hà",
           "text": "Oui, sauf qu'on y parle, on y allume de l'encens. C'est une présence active.",
+          "en": "Yes, except we talk to them, we light incense. It's an active presence.",
           "vi": "Đúng, khác là mình nói chuyện với họ, thắp hương. Đó là sự hiện diện chủ động."
         }
       ],
@@ -5785,76 +5830,91 @@ export const lessons: FrenchLesson[] =         [
         {
           "speaker": "Camille",
           "text": "Hà, je suis allée chez tes parents dimanche, et il y avait un autel avec des photos et de l'encens. Excuse-moi si la question est naïve, mais c'est quoi exactement ?",
+          "en": "Hà, I went to your parents' place on Sunday, and there was an altar with photos and incense. Sorry if the question is naive, but what exactly is it?",
           "vi": "Hà, chủ nhật anh đến nhà bố mẹ em, và có bàn thờ với ảnh và hương. Xin lỗi nếu câu hỏi ngây thơ, nhưng cụ thể đó là gì?"
         },
         {
           "speaker": "Hà",
           "text": "Pas naïve du tout, c'est une bonne question. C'est l'autel des ancêtres. Mais le mot « religieux » que tu utiliserais probablement ne marche pas vraiment ici.",
+          "en": "Not naive at all, it's a good question. It's the ancestor altar. But the word « religious » you'd probably use doesn't really work here.",
           "vi": "Không ngây thơ chút nào, câu hỏi hay. Đó là bàn thờ tổ tiên. Nhưng từ « religieux » mà có lẽ anh sẽ dùng không thực sự khớp."
         },
         {
           "speaker": "Camille",
           "text": "Pourquoi pas ? Photos, encens, geste de prière — pour moi ça ressemble à un mini-temple à la maison.",
+          "en": "Why not? Photos, incense, a praying gesture — to me that looks like a mini-temple at home.",
           "vi": "Tại sao không? Ảnh, hương, cử chỉ cầu nguyện — với anh nó giống một đền thờ mini tại nhà."
         },
         {
           "speaker": "Hà",
           "text": "Je vois pourquoi tu le perçois comme ça. Mais regarde la différence : il n'y a pas de prêtre, pas de doctrine écrite, pas de jour fixe pour prier. Ma grand-mère parle à mon grand-père comme si elle lui racontait sa journée.",
+          "en": "I see why you read it that way. But look at the difference: there's no priest, no written doctrine, no fixed day for prayer. My grandmother talks to my grandfather like she's telling him about her day.",
           "vi": "Em hiểu vì sao anh nhìn vậy. Nhưng nhìn khác biệt: không có linh mục, không có giáo lý viết, không có ngày cố định cầu nguyện. Bà nội em nói chuyện với ông như đang kể chuyện trong ngày."
         },
         {
           "speaker": "Camille",
           "text": "Ah. Donc c'est plus comme parler à quelqu'un de mort qu'on aime, pas comme prier un dieu.",
+          "en": "Ah. So it's more like talking to a loved one who's passed away than praying to a god.",
           "vi": "À. Vậy nó giống nói chuyện với người đã mất mà mình yêu, không phải cầu nguyện với thần."
         },
         {
           "speaker": "Hà",
           "text": "Exactement. Si je dois te donner un repère français : c'est un peu comme garder la photo de tes parents disparus et leur dire bonjour le matin — mais en plus quotidien et plus structuré.",
+          "en": "Exactly. If I have to give you a French reference point: it's a bit like keeping a photo of your deceased parents and saying hello to them in the morning — but more daily and more structured.",
           "vi": "Chính xác. Nếu phải cho anh điểm neo Pháp: nó hơi giống giữ ảnh bố mẹ đã mất và nói chào họ buổi sáng — nhưng hàng ngày hơn và có cấu trúc hơn."
         },
         {
           "speaker": "Camille",
           "text": "D'accord. Et pourquoi tes parents, tes grands-parents, et ton oncle vivent tous dans la même maison ? Honnêtement, en France ça serait vu comme un manque d'autonomie.",
+          "en": "Got it. And why do your parents, your grandparents, and your uncle all live in the same house? Honestly, in France that would be seen as a lack of independence.",
           "vi": "Hiểu rồi. Còn vì sao bố mẹ em, ông bà em, và chú em đều sống cùng một nhà? Thật lòng, ở Pháp nhìn vậy là thiếu tự lập."
         },
         {
           "speaker": "Hà",
           "text": "Tu touches un point important. Ce n'est pas un manque d'autonomie — c'est un choix qui combine économie, soin des âgés, et lien affectif. Ma mère choisit de vivre avec ma grand-mère parce que ma grand-mère a 84 ans, pas parce qu'elle ne peut pas se payer un appartement séparé.",
+          "en": "You're touching on an important point. It's not a lack of independence — it's a choice that combines economy, eldercare, and emotional bond. My mother chose to live with my grandmother because my grandmother is 84, not because she can't afford a separate apartment.",
           "vi": "Anh chạm điểm quan trọng. Không phải thiếu tự lập — đó là lựa chọn kết hợp kinh tế, chăm người già, và tình cảm. Mẹ em chọn sống với bà em vì bà 84 tuổi, không phải vì mẹ em không có tiền thuê nhà riêng."
         },
         {
           "speaker": "Camille",
           "text": "En France on aurait mis ta grand-mère dans une maison de retraite — ce qui n'est pas méchant, mais c'est différent.",
+          "en": "In France we'd have put your grandmother in a nursing home — which isn't mean, but it's different.",
           "vi": "Ở Pháp người ta sẽ đưa bà em vào viện dưỡng lão — không phải xấu, nhưng khác."
         },
         {
           "speaker": "Hà",
           "text": "Voilà. Et la maison de retraite serait perçue chez nous comme un signe que la famille a échoué. Pas par méchanceté envers les Français — c'est juste un autre angle. Quand ma grand-mère parle à mes neveux le soir, elle leur transmet des choses qu'on ne transmet pas dans une maison de retraite.",
+          "en": "Right. And in our context, a nursing home is seen as a sign that the family has failed. Not as a judgment of French people — just a different angle. When my grandmother talks to my nephews in the evening, she passes down things you can't pass down in a nursing home.",
           "vi": "Đúng. Và viện dưỡng lão ở Việt Nam bị xem là dấu hiệu gia đình thất bại. Không phải xấu với người Pháp — chỉ là góc khác. Khi bà em nói chuyện với các cháu tối, bà truyền những điều không truyền được trong viện dưỡng lão."
         },
         {
           "speaker": "Camille",
           "text": "C'est bien que tu le dises sans le défendre comme une vérité absolue. Tu reconnais que c'est aussi compliqué pour les femmes — souvent c'est elles qui s'occupent de tout.",
+          "en": "I appreciate that you're saying this without defending it as absolute truth. You acknowledge it's also complicated for the women — they're often the ones taking care of everything.",
           "vi": "Em nói mà không bảo vệ như chân lý tuyệt đối, hay đấy. Em thừa nhận nó cũng phức tạp với phụ nữ — thường họ là người chăm sóc mọi thứ."
         },
         {
           "speaker": "Hà",
           "text": "Tout à fait. Beaucoup de femmes vietnamiennes de la génération de ma mère paient un prix invisible pour ce système. Mes amies de 30 ans, dont moi, repensent ça — on ne fera pas pareil. Mais on n'abandonnera pas l'autel non plus.",
+          "en": "Absolutely. Many Vietnamese women of my mother's generation pay an invisible price for this system. My thirty-something friends, me included, are rethinking this — we won't do it the same way. But we won't abandon the altar either.",
           "vi": "Đúng. Nhiều phụ nữ Việt thế hệ mẹ em trả một cái giá vô hình cho hệ thống này. Bạn em 30 tuổi, gồm cả em, nghĩ lại điều đó — chúng em sẽ không làm giống vậy. Nhưng cũng không bỏ bàn thờ."
         },
         {
           "speaker": "Camille",
           "text": "Tu transmets une partie sans transmettre l'autre. C'est intéressant — c'est ce que ma génération fait avec le catholicisme en France, en quelque sorte.",
+          "en": "You're passing down part without passing down the rest. Interesting — that's what my generation is doing with Catholicism in France, in a way.",
           "vi": "Em truyền lại phần này mà không truyền phần kia. Thú vị — đó là cách thế hệ anh làm với Công giáo ở Pháp, theo cách nào đó."
         },
         {
           "speaker": "Hà",
           "text": "Je n'avais pas vu le parallèle, mais oui. On est plus proches qu'on ne le pense, juste sur des objets différents.",
+          "en": "I hadn't seen the parallel, but yes. We're closer than we think, just on different objects.",
           "vi": "Em chưa thấy sự song song đó, nhưng đúng. Mình gần nhau hơn mình nghĩ, chỉ trên các đối tượng khác nhau."
         },
         {
           "speaker": "Camille",
           "text": "Merci pour cette conversation. Je comprends mieux que dans n'importe quel livre.",
+          "en": "Thank you for this conversation. I understand better than from any book.",
           "vi": "Cảm ơn em vì cuộc trò chuyện. Anh hiểu rõ hơn bất cứ cuốn sách nào."
         }
       ],
@@ -5868,25 +5928,33 @@ export const lessons: FrenchLesson[] =         [
         {
           "idiom": "Lá lành đùm lá rách (VN, expliquer en français)",
           "literal": "Le bon feuille enveloppe la déchirée",
+          "literal_en": "the good leaf wraps the torn one",
           "meaning": "Solidarité familiale/sociale envers les plus démunis — au-delà de la charité, c'est une responsabilité.",
+          "meaning_en": "family/social solidarity toward those in need — beyond charity, this is treated as a responsibility (« lá lành đùm lá rách »)",
           "example": "« Lá lành đùm lá rách » — c'est l'idée que celui qui a un peu protège celui qui n'a rien, comme une feuille intacte enveloppe une feuille déchirée."
         },
         {
           "idiom": "Ăn quả nhớ kẻ trồng cây (VN, expliquer en français)",
           "literal": "Manger le fruit, se souvenir de qui a planté l'arbre",
+          "literal_en": "eating the fruit, remembering who planted the tree",
           "meaning": "Reconnaissance envers ceux qui ont rendu possible ce qu'on a — gratitude vers les générations précédentes.",
+          "meaning_en": "gratitude toward those who made what we have possible — recognition of the previous generations (« ăn quả nhớ kẻ trồng cây »)",
           "example": "« Ăn quả nhớ kẻ trồng cây » — quand je remercie mes parents de leurs sacrifices, c'est ça que j'exprime."
         },
         {
           "idiom": "Mettre les choses en perspective",
           "literal": "Đặt sự vật trong góc nhìn",
+          "literal_en": "to put things in perspective",
           "meaning": "Trình bày điều gì đó với bối cảnh / so sánh để dễ hiểu.",
+          "meaning_en": "to present something with context or comparison to make it understandable",
           "example": "Pour expliquer la cohabitation à trois générations, je dois mettre les choses en perspective avec ton histoire familiale."
         },
         {
           "idiom": "Sortir de son cadre",
           "literal": "Bước ra khỏi khung của mình",
+          "literal_en": "to step outside one's frame",
           "meaning": "Tạm bỏ góc nhìn quen thuộc để hiểu một góc nhìn khác.",
+          "meaning_en": "to temporarily set aside your usual viewpoint in order to understand another",
           "example": "Pour comprendre l'autel des ancêtres, il faut sortir un peu de ton cadre catholique habituel."
         }
       ],
@@ -5894,6 +5962,7 @@ export const lessons: FrenchLesson[] =         [
         {
           "type": "fill-blank",
           "instruction_vi": "Điền cụm vào câu giải thích văn hóa.",
+          "instruction_en": "Fill in the missing phrase in the culture-explaining sentence.",
           "items": [
             {
               "prompt": "Chez nous, l'autel des ancêtres n'est pas religieux au ___ où vous l'entendez.",
@@ -5916,6 +5985,7 @@ export const lessons: FrenchLesson[] =         [
         {
           "type": "matching",
           "instruction_vi": "Nối thành ngữ với chiến lược giải thích.",
+          "instruction_en": "Match each idiom or expression with its explaining strategy.",
           "items": [
             {
               "prompt": "Mettre les choses en perspective",
@@ -5938,6 +6008,7 @@ export const lessons: FrenchLesson[] =         [
         {
           "type": "translation",
           "instruction_vi": "Dịch sang tiếng Pháp B2 — giọng kể chuyện cá nhân.",
+          "instruction_en": "Translate into B2 French — the personal-storytelling voice.",
           "items": [
             {
               "prompt": "Bà nội em nói chuyện với ông em như đang kể lại ngày của bà.",
@@ -5953,7 +6024,15 @@ export const lessons: FrenchLesson[] =         [
             }
           ]
         }
-      ]
+      ],
+      "cultural_notes_en": "When explaining Vietnamese culture to a French listener, the common trap is literal translation or falling into two extremes: (1) « exoticize » — turning Vietnamese culture into a strange spectacle (« we're very different from you ») — which leaves the French listener unable to 'grasp' it; (2) « flatten » — equating (« we're the same as you ») — which loses the actual nuance. The effective move: give the French listener a 'mental model' they can latch onto, plus the specific differences.\n\nTake « bàn thờ tổ tiên » (ancestor altar): saying « ancestor worship » triggers associations with primitive religion — wrong. The right framing: « un lien quotidien avec la mémoire familiale » (a daily link with family memory) — now the French listener has an anchor, then you can add the differences: it's daily, no priest, no central temple. Same for three-generation households: don't explain via « Confucian tradition » (the French don't have that frame) — say it's a socio-economic-affective choice, not compulsory and not a sign of poverty. Many French speakers automatically assume co-residence is because of money — correct it gently.\n\nOne key principle: don't 'defend' Vietnamese culture as a textbook object. Share as an insider telling a story — with small personal anecdotes. French listeners especially love specific stories (« quand ma grand-mère m'a expliqué que… ») more than theoretical explanations.",
+      "tip_advice_en": "Four principles when explaining: (1) Give the mental model before the details — always open with « C'est un peu comme… mais… » (it's a bit like… but…); (2) Use specific stories, not dictionary definitions — « ma grand-mère me racontait que… » beats « le confucianisme dit que… »; (3) Don't get defensive — if the French listener says « ah, c'est étrange / dépassé / contradictoire », don't defend immediately; ask « qu'est-ce qui vous paraît étrange ? » (what seems strange to you?) to understand where they're looking from, then respond; (4) Allow for complexity — not all Vietnamese people do things the same way; many younger Vietnamese don't light incense daily either. Being honest about internal diversity makes the French listener trust you more than hearing « all of Vietnam does X ».",
+      "roleplay_prompts_en": [
+        "A French colleague asks: « Why do Vietnamese people insist on inviting clients to elaborate meals? In France, working lunches are fine without booking an expensive restaurant. » Explain the Vietnamese hospitality culture without getting defensive, and acknowledge the waste that can happen.",
+        "A French friend asks: « Lá lành đùm lá rách — c'est intraduisible. Tu peux m'expliquer ? » (it's untranslatable. Can you explain?). Explain this idiom in French without translating literally — give the mental model + a concrete example from Vietnamese life.",
+        "A French colleague says: « Honnêtement, le respect des aînés en Asie me semble parfois empêcher les jeunes de progresser » (honestly, respect for elders in Asia sometimes seems to hold young people back). Respond while preserving the cultural nuance AND acknowledging the legitimate point — don't defend absolutely, don't concede everything."
+      ],
+      "register_notes_en": "Explaining Vietnamese culture to a close French friend or colleague usually allows tutoiement — but stay on « vous » with superiors or new acquaintances. Avoid two mistakes: (1) « tour de force » — turning yourself into a Vietnamese-culture academic, using terms like « le confucianisme », « l'animisme » that the French listener doesn't have a frame for; (2) « auto-flagellation » — agreeing with every critique to please the listener. The right tone: share in the personal « je » (« chez nous », « ma famille », « ma grand-mère »), acknowledge internal diversity (« beaucoup, mais pas tous » — many, but not all), and stay open to legitimate critique (« certaines femmes paient un prix » — some women pay a price). Useful phrases: « C'est un peu comme… mais… » (gives the mental model + the difference), « Si je dois te donner un repère français… » (translating into a French reference point)."
     },
     {
       "id": "french_b2_business_etiquette_difference",
@@ -5970,6 +6049,12 @@ export const lessons: FrenchLesson[] =         [
             "non → nõ",
             "directement → di-rek-tơ-mã",
             "impoli → an-po-li"
+          ],
+          "pronunciation_focus_en": [
+            "dire → 'DEER' — final '-re' barely voiced",
+            "non → 'NON' — nasal '-on'; very common word",
+            "directement → 'dee-rekt-MAHN' — '-ment' nasal at end",
+            "impoli → 'an-poh-LEE' — nasal 'im' = 'an'"
           ]
         },
         {
@@ -5980,6 +6065,12 @@ export const lessons: FrenchLesson[] =         [
             "reformuler → rơ-for-mu-lé",
             "différer → di-fé-ré",
             "frontalement → frõn-ta-lơ-mã"
+          ],
+          "pronunciation_focus_en": [
+            "préfère → 'pray-FEHR' — 'è' opens; final '-e' silent",
+            "reformuler → 'ruh-for-myoo-LAY' — 'u' rounded; '-er' = 'ay'",
+            "différer → 'dee-fay-RAY' — '-er' = 'ay'",
+            "frontalement → 'frohn-tal-MAHN' — nasal 'on'; '-ment' nasal"
           ]
         },
         {
@@ -5990,6 +6081,12 @@ export const lessons: FrenchLesson[] =         [
             "évitent → é-vit",
             "conflit → kon-fli",
             "outils → u-ti"
+          ],
+          "pronunciation_focus_en": [
+            "cultures → 'kool-TOOR' — 'u' rounded; final '-e' silent",
+            "évitent → 'ay-VEET' — 3rd-person plural; final '-ent' silent",
+            "conflit → 'kohn-FLEE' — nasal 'on'; final 't' silent",
+            "outils → 'oo-TEE' — 'ou' = 'oo'; final 's' silent"
           ]
         },
         {
@@ -6000,6 +6097,12 @@ export const lessons: FrenchLesson[] =         [
             "dure → dur",
             "souvent → su-vã",
             "parler → par-lé"
+          ],
+          "pronunciation_focus_en": [
+            "réunion → 'ray-oo-NYON' — '-ion' nasal at end",
+            "dure → 'DOOR' — 'u' rounded; final '-e' silent",
+            "souvent → 'soo-VAHN' — 'ou' = 'oo'; nasal '-ent'",
+            "parler → 'par-LAY' — '-er' = 'ay'"
           ]
         },
         {
@@ -6010,6 +6113,12 @@ export const lessons: FrenchLesson[] =         [
             "optionnel → op-sio-nèl",
             "confiance → kon-fi-ãns",
             "professionnelle → pro-fè-sio-nèl"
+          ],
+          "pronunciation_focus_en": [
+            "apéritif → 'ah-pay-ree-TEEF' — final 'f' pronounced",
+            "optionnel → 'op-syo-NEL' — double 'nn' = 'n'; final 'l' pronounced",
+            "confiance → 'kohn-FYAHNSS' — nasal 'on'; '-ance' nasal",
+            "professionnelle → 'pro-feh-syo-NEL' — feminine; final 'l' pronounced"
           ]
         }
       ],
@@ -6021,91 +6130,105 @@ export const lessons: FrenchLesson[] =         [
           "en": "business etiquette",
           "vi": "phép xã giao công sở",
           "pos": "n.f.",
-          "pronunciation_vi": "é-ti-kèt pro-fè-sio-nèl"
+          "pronunciation_vi": "é-ti-kèt pro-fè-sio-nèl",
+          "pronunciation_en": "lay-tee-KET pro-feh-syo-NEL — 'l'étiquette professionnelle'"
         },
         {
           "word": "le franc-parler",
           "en": "directness in speech",
           "vi": "phong cách nói thẳng",
           "pos": "n.m.",
-          "pronunciation_vi": "frãn par-lé"
+          "pronunciation_vi": "frãn par-lé",
+          "pronunciation_en": "luh frahn par-LAY — masc.; nasal 'an'; 'directness in speech'"
         },
         {
           "word": "la culture du consensus",
           "en": "consensus culture",
           "vi": "văn hóa đồng thuận",
           "pos": "n.f.",
-          "pronunciation_vi": "kul-tur du kon-sãn-syus"
+          "pronunciation_vi": "kul-tur du kon-sãn-syus",
+          "pronunciation_en": "lah kool-TOOR doo kohn-sahn-SYUS — 'consensus' kept close to source"
         },
         {
           "word": "le rapport hiérarchique",
           "en": "hierarchical relation",
           "vi": "quan hệ cấp bậc",
           "pos": "n.m.",
-          "pronunciation_vi": "ra-por i-é-rar-shik"
+          "pronunciation_vi": "ra-por i-é-rar-shik",
+          "pronunciation_en": "luh rah-POR ee-ay-rar-SHEEK — masc.; 'hiérarchique' silent 'h'"
         },
         {
           "word": "un aparté",
           "en": "a private aside",
           "vi": "trao đổi riêng",
           "pos": "n.m.",
-          "pronunciation_vi": "a-par-té"
+          "pronunciation_vi": "a-par-té",
+          "pronunciation_en": "UN ah-par-TAY — 'aparté' = a private aside"
         },
         {
           "word": "sauver la face",
           "en": "to save face",
           "vi": "giữ thể diện",
           "pos": "expr.",
-          "pronunciation_vi": "sô-vé la fas"
+          "pronunciation_vi": "sô-vé la fas",
+          "pronunciation_en": "soh-VAY lah FAHSS — 'sauver la face' = save face"
         },
         {
           "word": "un débat contradictoire",
           "en": "adversarial debate",
           "vi": "tranh luận trái chiều",
           "pos": "n.m.",
-          "pronunciation_vi": "dé-ba kon-tra-dik-twar"
+          "pronunciation_vi": "dé-ba kon-tra-dik-twar",
+          "pronunciation_en": "UN day-BAH kohn-trah-deek-TWAR — 'adversarial debate'"
         },
         {
           "word": "une harmonie de groupe",
           "en": "group harmony",
           "vi": "hoà khí tập thể",
           "pos": "n.f.",
-          "pronunciation_vi": "ar-mo-ni dơ grup"
+          "pronunciation_vi": "ar-mo-ni dơ grup",
+          "pronunciation_en": "ün ar-mo-NEE duh GROOP — 'harmonie de groupe'"
         },
         {
           "word": "prendre la parole",
           "en": "to speak up",
           "vi": "phát biểu",
           "pos": "v.",
-          "pronunciation_vi": "prãndr la pa-rol"
+          "pronunciation_vi": "prãndr la pa-rol",
+          "pronunciation_en": "PRAHN-druh lah pah-ROL — 'prendre la parole' = to take the floor"
         },
         {
           "word": "un code implicite",
           "en": "implicit code",
           "vi": "luật ngầm",
           "pos": "n.m.",
-          "pronunciation_vi": "kod an-pli-sit"
+          "pronunciation_vi": "kod an-pli-sit",
+          "pronunciation_en": "UN KOHD an-plee-SEET — 'code implicite' = implicit code; '-icite' = 'ee-seet'"
         }
       ],
       "dialogue": [
         {
           "speaker": "Sophie",
           "text": "En réunion ce matin, personne n'a contredit le directeur. C'était volontaire ?",
+          "en": "Nobody contradicted the director in this morning's meeting. Was that intentional?",
           "vi": "Họp sáng nay không ai phản biện sếp. Đó là chủ ý à?"
         },
         {
           "speaker": "Tâm",
           "text": "Pas vraiment. Au Vietnam, on préfère un aparté après la réunion.",
+          "en": "Not exactly. In Vietnam, we prefer a private chat after the meeting.",
           "vi": "Không hẳn. Ở Việt Nam, mình thích trao đổi riêng sau họp."
         },
         {
           "speaker": "Sophie",
           "text": "Donc le silence ne veut pas dire accord ?",
+          "en": "So silence doesn't mean agreement?",
           "vi": "Vậy im lặng không có nghĩa đồng ý?"
         },
         {
           "speaker": "Tâm",
           "text": "Exactement. C'est un code implicite que beaucoup de Français mettent du temps à lire.",
+          "en": "Exactly. It's an implicit code that many French speakers take time to read.",
           "vi": "Chính xác. Đó là luật ngầm mà nhiều người Pháp mất thời gian để đọc."
         }
       ],
@@ -6113,71 +6236,85 @@ export const lessons: FrenchLesson[] =         [
         {
           "speaker": "Sophie",
           "text": "Tâm, j'ai besoin de ton avis honnête. En réunion ce matin, j'ai exprimé un désaccord clair avec Monsieur Phạm sur le calendrier — et après la réunion, deux collègues vietnamiens m'ont dit que j'avais été « brutale ». Je suis surprise.",
+          "en": "Tâm, I need your honest take. In the meeting this morning, I expressed a clear disagreement with Mr. Phạm on the timeline — and after the meeting, two Vietnamese colleagues told me I'd been « brutale ». I'm surprised.",
           "vi": "Tâm, tôi cần ý kiến thật của em. Họp sáng nay, tôi đã thể hiện bất đồng rõ với anh Phạm về lịch trình — và sau họp, hai đồng nghiệp Việt nói tôi « brutale ». Tôi ngạc nhiên."
         },
         {
           "speaker": "Tâm",
           "text": "Sophie, je peux être franche ? Pour le contenu, tu n'as rien dit de méchant. Pour la forme, tu l'as dit en réunion devant six personnes, dont deux subordonnés de M. Phạm. Au Vietnam, ça crée un problème de face pour lui.",
+          "en": "Sophie, can I be frank? On substance, you didn't say anything harsh. On form, you said it in a meeting in front of six people, including two of Mr. Phạm's subordinates. In Vietnam, that creates a face problem for him.",
           "vi": "Sophie, em nói thẳng nhé? Về nội dung, chị không nói gì xấu. Về hình thức, chị nói trong họp trước 6 người, trong đó có 2 cấp dưới của anh Phạm. Ở Việt Nam, điều đó tạo vấn đề thể diện cho anh ấy."
         },
         {
           "speaker": "Sophie",
           "text": "Mais on est en France ! Ou plutôt dans une filiale française. Le franc-parler fait partie de notre culture pro.",
+          "en": "But we're in France! Or rather, in a French subsidiary. Directness is part of our professional culture.",
           "vi": "Nhưng mình đang ở Pháp! Hay đúng hơn, chi nhánh Pháp. Phong cách nói thẳng là một phần văn hóa nghề nghiệp."
         },
         {
           "speaker": "Tâm",
           "text": "Oui, et tu as raison de le dire. Mais l'équipe est à 80 pour cent vietnamienne, dans un bureau au Vietnam. La règle informelle ici, c'est : désaccord en aparté, validation publique en réunion.",
+          "en": "Yes, and you're right to say it. But the team is 80 percent Vietnamese, in an office in Vietnam. The informal rule here is: disagreement in private, validation in public.",
           "vi": "Vâng, và chị đúng khi nói vậy. Nhưng đội 80% người Việt, trong văn phòng ở Việt Nam. Quy tắc ngầm ở đây: bất đồng nói riêng, đồng thuận công khai trong họp."
         },
         {
           "speaker": "Sophie",
           "text": "Mais alors, comment je sais que les gens sont vraiment d'accord ? Si tout le monde acquiesce en réunion, on ne sait jamais.",
+          "en": "But then how do I know people actually agree? If everyone nods in the meeting, you never know.",
           "vi": "Nhưng làm sao tôi biết mọi người thực sự đồng ý? Nếu ai cũng gật trong họp, không biết được."
         },
         {
           "speaker": "Tâm",
           "text": "Tu as touché un vrai problème — c'est aussi une faiblesse de notre culture, je le reconnais. La technique : après la réunion, prendre cinq minutes individuelles avec deux ou trois personnes clés, et leur demander : « Honnêtement, qu'est-ce qu'on n'a pas dit en réunion ? ». Tu seras surprise de ce que tu entendras.",
+          "en": "You've touched on a real problem — that's also a weakness of our culture, I acknowledge it. The technique: after the meeting, take five minutes one-on-one with two or three key people and ask them: « Honnêtement, qu'est-ce qu'on n'a pas dit en réunion ? » (honestly, what wasn't said in the meeting?). You'll be surprised by what you hear.",
           "vi": "Chị chạm vấn đề thật — đó cũng là điểm yếu của văn hóa Việt, em thừa nhận. Kỹ thuật: sau họp, dành 5 phút riêng với 2-3 người chủ chốt, hỏi: « Honnêtement, qu'est-ce qu'on n'a pas dit en réunion ? ». Chị sẽ ngạc nhiên với những gì nghe được."
         },
         {
           "speaker": "Sophie",
           "text": "Donc le travail réel se fait en aparté, et la réunion est un théâtre ?",
+          "en": "So the real work happens in side conversations, and the meeting is a stage play?",
           "vi": "Vậy công việc thật làm riêng, và cuộc họp là rạp hát?"
         },
         {
           "speaker": "Tâm",
           "text": "Pas un théâtre — disons que la réunion est l'étape de validation, et l'aparté est l'étape de décision. Inversé par rapport à la France. Aucune des deux cultures n'est meilleure ; elles ont juste choisi un ordre différent.",
+          "en": "Not a stage play — let's say the meeting is the validation step, and the aside is the decision step. Inverted compared to France. Neither culture is better; they just chose a different order.",
           "vi": "Không phải rạp hát — gọi là họp là bước xác nhận, trao đổi riêng là bước quyết định. Đảo ngược so với Pháp. Không văn hóa nào tốt hơn; chúng chỉ chọn một trật tự khác."
         },
         {
           "speaker": "Sophie",
           "text": "Ça me coûte quand même. J'ai l'impression d'être hypocrite si j'acquiesce en réunion sachant que je n'aimerai pas la décision.",
+          "en": "It still costs me. I feel hypocritical nodding in a meeting knowing I won't like the decision.",
           "vi": "Nó vẫn khó với tôi. Tôi cảm thấy đạo đức giả khi gật trong họp biết rằng mình không thích quyết định."
         },
         {
           "speaker": "Tâm",
           "text": "Je comprends. Une voie médiane : tu peux dire en réunion « j'ai quelques points à creuser, je propose qu'on en reparle bilatéralement, M. Phạm » — c'est honnête, ça ne crée pas de face problem, et tout le monde sait que tu as un désaccord à porter en privé.",
+          "en": "I understand. A middle path: in the meeting you can say « j'ai quelques points à creuser, je propose qu'on en reparle bilatéralement, M. Phạm » (I have some points I'd like to dig into, I propose we discuss it bilaterally, Mr. Phạm) — it's honest, it doesn't create a face problem, and everyone knows you have a disagreement to handle privately.",
           "vi": "Em hiểu. Lối trung dung: chị có thể nói trong họp « tôi có vài điểm cần đào sâu, tôi đề xuất mình trao đổi song phương, anh Phạm » — thẳng thắn, không tạo vấn đề thể diện, và ai cũng biết chị có bất đồng cần xử lý riêng."
         },
         {
           "speaker": "Sophie",
           "text": "C'est intéressant. Une formule comme ça, c'est un pont entre les deux cultures.",
+          "en": "That's interesting. A formula like that is a bridge between the two cultures.",
           "vi": "Hay đấy. Một công thức như vậy là cây cầu giữa hai văn hóa."
         },
         {
           "speaker": "Tâm",
           "text": "Voilà. Et au passage : pour M. Phạm, va lui parler en aparté demain. Pas pour t'excuser de ton fond, qui était valable, mais pour reconnaître que la forme a été inhabituelle. Il appréciera l'effort.",
+          "en": "Right. By the way: with Mr. Phạm, go talk to him in private tomorrow. Not to apologize for the substance, which was valid, but to acknowledge the form was unusual. He'll appreciate the effort.",
           "vi": "Đúng. Tiện thể: với anh Phạm, đi nói riêng với anh ấy mai. Không phải xin lỗi nội dung, vốn hợp lý, mà ghi nhận rằng hình thức không bình thường. Anh ấy sẽ trân trọng nỗ lực."
         },
         {
           "speaker": "Sophie",
           "text": "OK. Tu m'aides énormément. Ce sont les invisibles qu'on n'apprend dans aucun livre d'expat.",
+          "en": "OK. You're helping me enormously. These are the invisible things you don't learn in any expat book.",
           "vi": "OK. Em giúp tôi rất nhiều. Đây là những điều vô hình không sách expat nào dạy."
         },
         {
           "speaker": "Tâm",
           "text": "De rien. Et n'oublie pas : tu peux aussi me dire quand mon code vietnamien semble passif-agressif côté français. C'est un échange.",
+          "en": "You're welcome. And don't forget: you can also tell me when my Vietnamese code feels passive-aggressive from the French side. This is a two-way exchange.",
           "vi": "Không có gì. Và đừng quên: chị cũng có thể nói khi mã Việt của em có vẻ passif-agressif theo cách Pháp. Đây là sự trao đổi hai chiều."
         }
       ],
@@ -6191,25 +6328,33 @@ export const lessons: FrenchLesson[] =         [
         {
           "idiom": "Sauver la face",
           "literal": "Cứu thể diện",
+          "literal_en": "to save face",
           "meaning": "Tránh làm ai đó mất danh dự công khai.",
+          "meaning_en": "to avoid causing someone public humiliation",
           "example": "En réunion, j'ai reformulé pour sauver la face de mon supérieur."
         },
         {
           "idiom": "Mettre les pieds dans le plat",
           "literal": "Đặt chân vào đĩa",
+          "literal_en": "to put one's feet in the dish",
           "meaning": "Nói thẳng vào chủ đề tế nhị.",
+          "meaning_en": "to address a sensitive topic head-on without dancing around it",
           "example": "Sophie a mis les pieds dans le plat en contestant publiquement le calendrier."
         },
         {
           "idiom": "Ne pas mâcher ses mots",
           "literal": "Không nhai lời của mình",
+          "literal_en": "not to chew one's words",
           "meaning": "Nói thẳng, không vòng vo (giọng Pháp đặc trưng).",
+          "meaning_en": "to speak plainly and directly (characteristic French tone)",
           "example": "Les Français ne mâchent pas leurs mots — au début, ça surprend."
         },
         {
           "idiom": "Lire entre les lignes",
           "literal": "Đọc giữa các dòng",
+          "literal_en": "to read between the lines",
           "meaning": "Hiểu ý ngầm không nói ra.",
+          "meaning_en": "to understand implicit meaning that isn't stated openly",
           "example": "Au Vietnam, il faut savoir lire entre les lignes en réunion."
         }
       ],
@@ -6217,6 +6362,7 @@ export const lessons: FrenchLesson[] =         [
         {
           "type": "fill-blank",
           "instruction_vi": "Điền cụm vào câu so sánh etiquette.",
+          "instruction_en": "Fill in the missing phrase in the etiquette-comparison sentence.",
           "items": [
             {
               "prompt": "En France, dire « non » directement n'est pas considéré comme ___.",
@@ -6239,6 +6385,7 @@ export const lessons: FrenchLesson[] =         [
         {
           "type": "matching",
           "instruction_vi": "Nối thành ngữ với chiến lược giao tiếp.",
+          "instruction_en": "Match each idiom with its communication-strategy meaning.",
           "items": [
             {
               "prompt": "Sauver la face",
@@ -6261,6 +6408,7 @@ export const lessons: FrenchLesson[] =         [
         {
           "type": "translation",
           "instruction_vi": "Dịch sang tiếng Pháp B2 — giọng trung lập, không ranking văn hóa.",
+          "instruction_en": "Translate into B2 French — a neutral voice that doesn't rank cultures.",
           "items": [
             {
               "prompt": "Cả hai văn hóa đều tránh xung đột, nhưng bằng công cụ rất khác.",
@@ -6276,7 +6424,15 @@ export const lessons: FrenchLesson[] =         [
             }
           ]
         }
-      ]
+      ],
+      "cultural_notes_en": "Discussing French-Vietnamese business etiquette differences is a sensitive topic that Vietnamese speakers often get wrong in two directions. Direction (1): treat French etiquette as 'correct' and Vietnamese as 'old-fashioned' — wrong morally, wrong factually. Direction (2): defend Vietnamese etiquette as truth and dismiss French as 'cold' — wrong in the opposite direction. Both miss the point: each culture optimized for a different kind of social organization, and each has its costs.\n\nExample: in France, voicing disagreement with your boss in a meeting reads as professional maturity — the French boss wants to hear dissent. In Vietnam, publicly disagreeing with the boss in a large meeting causes the boss to lose face — not because the boss is thin-skinned, but because Vietnamese social structure asks you to preserve « hoà khí » (group harmony). Vietnamese employees handle disagreement through private post-meeting conversations — that's not avoidance, that's a different protocol.\n\nWhen you work at a French company in Vietnam (or vice versa), employees often get stuck in the seam between the two systems. The French boss wonders « pourquoi tu n'as rien dit en réunion ? » (why didn't you say anything in the meeting?), the Vietnamese boss wonders why you publicly contradicted them. A mature professional knows when to switch register, and how to explain each side to the other.",
+      "tip_advice_en": "When describing etiquette differences to a French colleague, avoid three traps: (1) « ranking » the cultures (which is 'right') — there's no answer; (2) generalizing for an entire nation (« tous les Vietnamiens sont… ») — always say « beaucoup », « souvent », « la plupart »; (3) « apologizing » for your own culture — unnecessary. A useful technique: give parallel examples — « When a French boss says X, they mean Y; when a Vietnamese boss says X, they might mean Z or W depending on context. » In hybrid environments, ask the French boss/colleague directly: « Comment tu préfères qu'on te dise quand on n'est pas d'accord — en réunion publique ou en aparté ? » (how do you prefer disagreement to be raised — publicly in the meeting or privately afterwards?) — this gets both sides to co-design the communication protocol instead of assuming.",
+      "roleplay_prompts_en": [
+        "Your French boss complains: « Personne dans l'équipe vietnamienne ne me dit jamais quand je me trompe » (no one on the Vietnamese team ever tells me when I'm wrong). Explain the cultural structure without getting defensive — propose two concrete protocols (weekly 1-on-1s, an anonymous feedback form).",
+        "A French colleague has just made the Vietnamese boss lose face in a meeting. After the meeting, pull them aside privately — don't lecture; suggest a concrete 'repair move' they can do with the Vietnamese boss the next day.",
+        "At lunch, a French colleague says: « Le respect des aînés en Asie ralentit l'innovation » (respect for elders in Asia slows innovation). Respond acknowledging the legitimate point AND adding nuance: sometimes it does slow things; sometimes it prevents the mistakes the French make by going too fast."
+      ],
+      "register_notes_en": "When discussing Franco-Vietnamese etiquette with a close French colleague, tutoiement is common. But there are two zones where you switch back to vouvoiement: (1) when the conversation turns to critique of a superior — vouvoiement softens it; (2) when discussing a specific mistake the French colleague made — vouvoiement keeps it analytical, not personal. Avoid academic-heavy vocabulary (« le hofstede dit que… ») — it turns the conversation into a lecture. The right tone: share personally, open with « Chez nous… mais je connais aussi des Vietnamiens qui ne fonctionnent pas comme ça » (in our culture… but I also know Vietnamese people who don't operate this way). A particularly useful sentence: « Aucune des deux cultures n'est meilleure ; elles ont juste choisi un ordre différent » (neither culture is better; they just chose a different order) — it avoids ranking and preserves respect for both sides."
     },
     {
       "id": "french_b2_apologizing_cultural_misunderstanding",
