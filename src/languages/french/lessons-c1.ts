@@ -3287,6 +3287,12 @@ export const lessons: FrenchLesson[] = [
           "intérêt → an-té-rè",
           "indéniable → an-dé-nia-blơ",
           "substantielles → sub-stãn-siel"
+        ],
+        "pronunciation_focus_en": [
+          "aborde → 'ah-BORD' — one syllable; final -e silent; verb 'to address / tackle'",
+          "intérêt → 'an-tay-RAY' — nasal -in; final -t silent; circumflex ê opens to 'eh'",
+          "indéniable → 'an-day-NYAH-bluh' — nasal -in; -ia glides to 'yah'; final -ble is a quick 'bluh'",
+          "substantielles → 'sewb-stahn-SYEL' — 'u' rounded; nasal -an; -tielles is 'syel'; plural -s silent"
         ]
       },
       {
@@ -3297,6 +3303,12 @@ export const lessons: FrenchLesson[] = [
           "gagnerait → ga-nơ-rè",
           "davantage → da-vãn-taj",
           "introduction → an-tro-duk-sion"
+        ],
+        "pronunciation_focus_en": [
+          "problématique → 'proh-blay-mah-TEEK' — four syllables; final -ique is 'eek'; the French academic term for 'the question being addressed'",
+          "gagnerait → 'gah-nyuh-RAY' — conditional ending '-rait' is 'ray'; -gn- is 'ny' as in 'canyon'",
+          "davantage → 'dah-vahn-TAHZH' — nasal -en; final -age is 'ahzh' (soft 'zh')",
+          "introduction → 'an-troh-dewk-SYOHN' — nasal -in; 'u' rounded; -tion is 'syohn'"
         ]
       },
       {
@@ -3307,6 +3319,12 @@ export const lessons: FrenchLesson[] = [
           "intégrer → an-té-gré",
           "approfondie → a-pro-fõn-di",
           "panorama → pa-no-ra-ma"
+        ],
+        "pronunciation_focus_en": [
+          "recommande → 'ruh-koh-MAHND' — schwa 're'; double-m one clean 'm'; nasal -an; final -d sounded",
+          "intégrer → 'an-tay-GRAY' — nasal -in; final -er is 'ay'",
+          "approfondie → 'ah-proh-fohn-DEE' — double-p one clean 'p'; nasal 'on'; feminine past participle -ie is 'ee'",
+          "panorama → 'pah-noh-rah-MAH' — final -a fully voiced (no schwa); Greek borrowing kept as-is"
         ]
       },
       {
@@ -3317,6 +3335,12 @@ export const lessons: FrenchLesson[] = [
           "susceptible → sus-sèp-ti-blơ",
           "constituer → kõn-sti-tu-é",
           "débat → dé-ba"
+        ],
+        "pronunciation_focus_en": [
+          "réserve → 'ray-ZERV' — 's' between vowels sounds like 'z'; final -e silent",
+          "susceptible → 'sews-sep-TEE-bluh' — 'u' rounded; final -ble is a quick 'bluh'",
+          "constituer → 'kohn-stee-tew-AY' — nasal 'on'; 'u' rounded; final -er is 'ay'",
+          "débat → 'day-BAH' — final -t silent (a French trap — never finish the t at word-end)"
         ]
       },
       {
@@ -3327,165 +3351,199 @@ export const lessons: FrenchLesson[] = [
           "révisions → ré-vi-zion",
           "majeures → ma-jơr",
           "délai → dé-lè"
+        ],
+        "pronunciation_focus_en": [
+          "avis → 'ah-VEE' — final -s silent",
+          "révisions → 'ray-vee-ZYOHN' — 's' between vowels sounds like 'z'; nasal -on; plural -s silent",
+          "majeures → 'mah-ZHUR' — 'j' is soft 'zh'; final -eures is 'ur' with rounded lips",
+          "délai → 'day-LAY' — final -ai is 'ay' (without grave accent); the French term for the deadline"
         ]
       }
     ],
     "cultural_notes_vi": "PEER REVIEW (« évaluation par les pairs ») là một thực hành chính trị-tu-từ tinh tế của học thuật Pháp. Khác Anh-Mỹ — nơi review tương đối direct, sometimes brutal — Pháp đặt giá trị vào MASKING tu từ tế nhị: ngay cả khi bạn đề nghị TỪ CHỐI bài (rejection), cú pháp phải tôn trọng tác giả.\n\nBỐN AVIS CHUẨN của review:\n\n(1) ACCEPT (chấp nhận không sửa đổi) — gần như không bao giờ xảy ra trong lần đầu nộp; nếu xảy ra, vẫn nên đề xuất 1-2 micro-corrections để tỏ ra đã đọc kỹ.\n\n(2) MINOR REVISIONS (sửa đổi nhỏ) — bài tốt, một vài điểm cần làm rõ. Tu từ Pháp: « Cet article, dans l'ensemble très solide, gagnerait à intégrer quelques précisions… »\n\n(3) MAJOR REVISIONS (sửa đổi lớn) — phổ biến nhất; bài có potential nhưng cần làm việc đáng kể. Tu từ: « L'article aborde une question d'un intérêt réel, mais sa publication en l'état suppose plusieurs révisions substantielles… »\n\n(4) REJECT (từ chối) — bài không phù hợp với revue, hoặc lỗi quá lớn. Tu từ Pháp PHẢI tế nhị: « Malgré ses qualités évidentes, l'article ne me paraît pas, en l'état, correspondre aux exigences scientifiques de la revue… ». KHÔNG « ce travail est mauvais » — quá thẳng cho mã văn hóa Pháp.\n\nMỘT QUY ƯỚC ĐẠO ĐỨC TỐI QUAN TRỌNG: review Pháp đặt giá trị vào RAISONS pour décision. Một « reject » không kèm 5-10 lý do cụ thể = mất uy tín reviewer. Bạn được đánh giá bởi quality của report bạn, không chỉ accuracy của verdict.\n\nNGUYÊN TẮC HƯỚNG ĐÍCH: review tốt là review giúp tác giả CẢI THIỆN bài, kể cả khi bạn rejette. Bạn KHÔNG là kẻ phán xét — bạn là một colleague trong cùng cộng đồng học thuật. Cú pháp Pháp phản ánh điều này: « je recommande à l'auteur de… » thay « l'auteur doit… ».\n\nVỀ « RECOMMANDATIONS » (đề xuất sửa):\n\nCẤU TRÚC chuẩn của report Pháp:\n(a) ÉVALUATION GÉNÉRALE — 1 đoạn, 5-7 dòng, định vị bài trong tranh luận.\n(b) APPRÉCIATION POSITIVE — 1 đoạn, nêu đóng góp.\n(c) RÉSERVES — đoạn dài nhất, phân theo 3 cấp (théorique / méthodologique / textuel).\n(d) RECOMMANDATIONS CONCRÈTES — đánh số từng điểm, mỗi điểm 1 câu.\n(e) AVIS FINAL — câu cuối với verdict (minor / major / reject) + délai.\n\nVỀ TONE: Pháp expect FERMETÉ (vững) + COURTOISIE (lịch thiệp). KHÔNG passive-aggressive (« on aurait pu attendre que… »); KHÔNG sarcasme (« l'auteur, dans son grand savoir, … »). Tone phải DIRECT trên nội dung, INDIRECT trên hình thức.\n\nMỘT GHI CHÚ ĐẶC BIỆT: nếu bạn nhận ra TÁC GIẢ qua văn phong (revue blind nhưng bạn đoán được), KHÔNG cố « bằng lòng » hay « trừng phạt » dựa trên identity. Đánh giá bài như thể bạn không biết. Conflict of interest — báo editor nếu bạn biết chắc.",
+    "cultural_notes_en": "PEER REVIEW ('évaluation par les pairs') is a delicate rhetorical-political practice in French academia. Unlike anglophone reviewing — which tends to be relatively direct, sometimes brutal — French reviewing places value on REFINED TACT: even when you recommend rejection, the syntax must respect the author.\n\nFOUR STANDARD VERDICTS:\n\n(1) ACCEPT (no revisions) — almost never given on first submission; if you do give it, propose 1-2 micro-corrections anyway to show you read carefully.\n\n(2) MINOR REVISIONS — the paper is solid, a few points need clarification. French phrasing: 'Cet article, dans l'ensemble très solide, gagnerait à intégrer quelques précisions…'\n\n(3) MAJOR REVISIONS — the most common verdict; the paper has potential but needs significant work. French phrasing: 'L'article aborde une question d'un intérêt réel, mais sa publication en l'état suppose plusieurs révisions substantielles…'\n\n(4) REJECT — the paper isn't suited to the journal, or has fatal flaws. French rejection MUST be tactful: 'Malgré ses qualités évidentes, l'article ne me paraît pas, en l'état, correspondre aux exigences scientifiques de la revue…' NEVER 'ce travail est mauvais' — too blunt for the French cultural code.\n\nA CRITICAL ETHICAL CONVENTION: French reviews value REASONS for the decision. A 'reject' without 5-10 concrete reasons = the reviewer loses credibility. You are evaluated by the quality of your report, not just the accuracy of the verdict.\n\nGUIDING PRINCIPLE: a good review helps the author IMPROVE the paper, even when you recommend rejection. You are NOT a judge — you are a colleague in the same scholarly community. French syntax reflects this: 'je recommande à l'auteur de…' instead of 'l'auteur doit…'.\n\nABOUT 'RECOMMANDATIONS' (revision suggestions):\n\nSTANDARD REPORT STRUCTURE:\n(a) GENERAL EVALUATION — 1 paragraph, 5-7 lines, positioning the paper in the field.\n(b) POSITIVE APPRECIATION — 1 paragraph, naming the contribution.\n(c) RESERVATIONS — the longest paragraph, organized in 3 tiers (theoretical / methodological / textual).\n(d) CONCRETE RECOMMENDATIONS — numbered, one sentence per point.\n(e) FINAL VERDICT — closing sentence with the verdict (minor / major / reject) + deadline.\n\nON TONE: French expects FERMETÉ (firmness) + COURTOISIE (courtesy). NO passive-aggressive ('on aurait pu attendre que…'); NO sarcasm ('l'auteur, dans son grand savoir, …'). Tone should be DIRECT on content, INDIRECT on form. Anglophone reviewers often default to direct on form too; the French read that as crude.\n\nA SPECIFIC NOTE: if you recognize the AUTHOR through writing style (blind review but you guess), do NOT 'reward' or 'punish' based on identity. Evaluate the paper as if you didn't know. Conflict of interest — notify the editor if you're certain.",
     "tip_advice_vi": "QUY TRÌNH 5 BƯỚC để viết một report peer review chất lượng:\n\nBƯỚC 1 — ĐỌC LẦN ĐẦU CHO ẤN TƯỢNG TỔNG QUÁT. Không ghi chú; chỉ đọc. Đặt câu hỏi cuối: « Nếu tôi là độc giả không quen lĩnh vực, tôi có hiểu vấn đề không? Có thấy contribution không? » Trả lời 2 câu này định khung review.\n\nBƯỚC 2 — ĐỌC LẦN HAI VỚI ANNOTATION CHI TIẾT. Đánh dấu mọi điểm cần làm rõ (« précision? »), mọi présupposé chưa lập luận (« justifier »), mọi câu chưa đủ chứng cứ (« source? »). Đừng phán quyết — chỉ ghi.\n\nBƯỚC 3 — TỔ CHỨC NOTES theo 3 cấp:\n- THÉORIQUE: vấn đề lớn của khung lý thuyết, lập luận trung tâm\n- MÉTHODOLOGIQUE: vấn đề về dispositif, corpus, analyse\n- TEXTUEL: clarté, organisation, références — chi tiết\n\nBƯỚC 4 — VIẾT REPORT trong 3 lần:\n- Bản 1: đầy đủ, có thể lan man\n- Bản 2: cô đọng, tổ chức theo cấu trúc 5 phần\n- Bản 3: kiểm tra tone — mọi câu nên là feedback constructif, KHÔNG attaque\n\nBƯỚC 5 — ĐỌC LẠI report như thể bạn là tác giả nhận nó. Nếu bạn cảm thấy bị tấn công cá nhân, sửa tone. Nếu bạn cảm thấy không có hướng dẫn cụ thể, thêm exemples.\n\nCỤM HỮU ÍCH:\n\nĐỂ MỞ ĐẦU REPORT:\n- « L'article aborde une question d'un intérêt indéniable. » (bài đề cập câu hỏi có lợi ích không thể phủ nhận)\n- « Le présent travail s'inscrit dans un débat actuellement vif sur… » (công trình nằm trong tranh luận đang sôi)\n- « L'auteur propose une lecture stimulante de… » (tác giả đề xuất một cách đọc kích thích)\n\nĐỂ NÊU ĐIỂM TÍCH CỰC:\n- « Le dispositif empirique est solide. »\n- « L'argumentation théorique est dans l'ensemble convaincante. »\n- « La maîtrise de la littérature secondaire est manifeste. »\n\nĐỂ NÊU SỬA ĐỔI NHẸ:\n- « Quelques précisions terminologiques amélioreraient la clarté. »\n- « Un développement supplémentaire sur X serait bienvenu. »\n- « La conclusion gagnerait à être resserrée. »\n\nĐỂ NÊU SỬA ĐỔI LỚN:\n- « Le cadre théorique mérite d'être repensé en intégrant… »\n- « Le dispositif méthodologique demande à être précisé sur les points suivants… »\n- « L'argumentation centrale ne convainc pas en l'état; je suggère à l'auteur de… »\n- « L'absence de discussion des travaux de X (année) constitue, à mon sens, une lacune significative. »\n\nĐỂ NÊU REJECT:\n- « Malgré ses qualités, l'article ne me paraît pas, en l'état, correspondre aux exigences de la revue. »\n- « La problématique, telle qu'elle est posée, ne permet pas une avancée significative dans le champ. »\n- « Je recommande à l'auteur, plutôt que de réviser, de repenser fondamentalement le cadrage de son travail. »\n\nĐỂ ĐÓNG REPORT:\n- « Sous réserve des révisions ci-dessus, l'article me paraît susceptible de constituer une contribution substantielle. »\n- « Mon avis: révisions majeures, avec re-soumission attendue dans un délai de trois mois. »\n- « Mon avis: rejet, sans préjudice pour une soumission ultérieure d'une version profondément remaniée. »",
+    "tip_advice_en": "5-STEP PROCESS for a quality peer-review report:\n\nSTEP 1 — FIRST READ FOR OVERALL IMPRESSION. No notes; just read. Ask at the end: 'If I were a reader unfamiliar with the field, would I understand the question? Would I see the contribution?' The answers to these two questions frame the review.\n\nSTEP 2 — SECOND READ WITH DETAILED ANNOTATION. Mark every point that needs clarification ('précision?'), every unjustified assumption ('justifier'), every claim without evidence ('source?'). Don't judge yet — just note.\n\nSTEP 3 — ORGANIZE NOTES into 3 tiers:\n- THEORETICAL: framework problems, central argument\n- METHODOLOGICAL: design, corpus, analysis\n- TEXTUAL: clarity, organization, references — details\n\nSTEP 4 — WRITE THE REPORT in 3 passes:\n- Pass 1: full, possibly verbose\n- Pass 2: compress, organize into 5 parts\n- Pass 3: tone check — every sentence should be constructive feedback, NOT attack\n\nSTEP 5 — REREAD as if you were the author receiving it. If you'd feel personally attacked, fix the tone. If you'd feel no clear direction, add examples.\n\nUSEFUL PHRASES:\n\nTO OPEN A REPORT:\n- 'L'article aborde une question d'un intérêt indéniable.' (The article addresses a question of undeniable interest)\n- 'Le présent travail s'inscrit dans un débat actuellement vif sur…' (This work joins a currently lively debate on…)\n- 'L'auteur propose une lecture stimulante de…' (The author offers a stimulating reading of…)\n\nTO NAME POSITIVES:\n- 'Le dispositif empirique est solide.' (The empirical design is solid)\n- 'L'argumentation théorique est dans l'ensemble convaincante.' (The theoretical argument is, on the whole, convincing)\n- 'La maîtrise de la littérature secondaire est manifeste.' (Mastery of the secondary literature is evident)\n\nTO REQUEST MINOR REVISIONS:\n- 'Quelques précisions terminologiques amélioreraient la clarté.' (Some terminological clarifications would improve clarity)\n- 'Un développement supplémentaire sur X serait bienvenu.' (Further development on X would be welcome)\n- 'La conclusion gagnerait à être resserrée.' (The conclusion would benefit from being tightened)\n\nTO REQUEST MAJOR REVISIONS:\n- 'Le cadre théorique mérite d'être repensé en intégrant…' (The theoretical frame warrants rethinking with…)\n- 'Le dispositif méthodologique demande à être précisé sur les points suivants…' (The methodological design needs to be specified on the following points…)\n- 'L'argumentation centrale ne convainc pas en l'état; je suggère à l'auteur de…' (The central argument doesn't convince as is; I suggest the author…)\n- 'L'absence de discussion des travaux de X (année) constitue, à mon sens, une lacune significative.' (The absence of discussion of X's work (year) constitutes, in my view, a significant gap)\n\nTO RECOMMEND REJECTION:\n- 'Malgré ses qualités, l'article ne me paraît pas, en l'état, correspondre aux exigences de la revue.' (Despite its strengths, the paper does not seem to me, as it stands, to meet the journal's standards)\n- 'La problématique, telle qu'elle est posée, ne permet pas une avancée significative dans le champ.' (The problem, as posed, does not permit significant advance in the field)\n- 'Je recommande à l'auteur, plutôt que de réviser, de repenser fondamentalement le cadrage de son travail.' (I recommend the author, rather than revising, fundamentally rethink the framing of the work)\n\nTO CLOSE THE REPORT:\n- 'Sous réserve des révisions ci-dessus, l'article me paraît susceptible de constituer une contribution substantielle.' (Subject to the revisions above, the paper appears likely to constitute a substantive contribution)\n- 'Mon avis: révisions majeures, avec re-soumission attendue dans un délai de trois mois.' (My verdict: major revisions, with re-submission expected within three months)\n- 'Mon avis: rejet, sans préjudice pour une soumission ultérieure d'une version profondément remaniée.' (My verdict: reject, without prejudice for a later submission of a deeply revised version)",
     "vocabulary": [
       {
         "word": "l'évaluation par les pairs",
         "en": "peer review",
         "vi": "đánh giá đồng nghiệp",
         "pos": "n.f.",
-        "pronunciation_vi": "é-va-lu-a-sion par lé pèr"
+        "pronunciation_vi": "é-va-lu-a-sion par lé pèr",
+        "pronunciation_en": "lay-vah-lew-ah-SYOHN par lay PAIR — 'u' rounded; -tion is 'syohn'; 'pair' literally 'peer'"
       },
       {
         "word": "un rapport d'évaluation",
         "en": "a review report",
         "vi": "một báo cáo đánh giá",
         "pos": "n.m.",
-        "pronunciation_vi": "ra-por dé-va-lu-a-sion"
+        "pronunciation_vi": "ra-por dé-va-lu-a-sion",
+        "pronunciation_en": "ehn rah-POR day-vah-lew-ah-SYOHN — final -t of 'rapport' silent; the standard term for the written review"
       },
       {
         "word": "des révisions substantielles",
         "en": "substantial revisions",
         "vi": "các sửa đổi thực chất",
         "pos": "n.f. pl.",
-        "pronunciation_vi": "ré-vi-zion sub-stãn-siel"
+        "pronunciation_vi": "ré-vi-zion sub-stãn-siel",
+        "pronunciation_en": "day ray-vee-ZYOHN sewb-stahn-SYEL — 'u' rounded; -tielles is 'syel'; the canonical verdict for major revisions"
       },
       {
         "word": "susceptible de constituer",
         "en": "likely to constitute",
         "vi": "có khả năng tạo thành",
         "pos": "adj.",
-        "pronunciation_vi": "sus-sèp-ti-blơ dơ kõn-sti-tu-é"
+        "pronunciation_vi": "sus-sèp-ti-blơ dơ kõn-sti-tu-é",
+        "pronunciation_en": "sews-sep-TEE-bluh duh kohn-stee-tew-AY — 'u' rounded throughout; the hedged endorsement formula"
       },
       {
         "word": "une lacune significative",
         "en": "a significant gap",
         "vi": "một khoảng trống đáng kể",
         "pos": "n.f.",
-        "pronunciation_vi": "la-kun sig-ni-fi-ka-tiv"
+        "pronunciation_vi": "la-kun sig-ni-fi-ka-tiv",
+        "pronunciation_en": "ewn lah-KEWN see-nyee-fee-kah-TEEV — 'u' rounded in 'lacune'; -gn- is 'ny'; the polite term for a substantive omission"
       },
       {
         "word": "resserrer une argumentation",
         "en": "to tighten an argument",
         "vi": "siết chặt một lập luận",
         "pos": "v.",
-        "pronunciation_vi": "rơ-sè-ré un ar-gu-mãn-ta-sion"
+        "pronunciation_vi": "rơ-sè-ré un ar-gu-mãn-ta-sion",
+        "pronunciation_en": "ruh-seh-RAY ewn ar-gew-mahn-tah-SYOHN — schwa 're'; 'u' rounded; double-r is one clean 'r'"
       },
       {
         "word": "sans préjudice pour",
         "en": "without prejudice to",
         "vi": "không phương hại đến",
         "pos": "loc.",
-        "pronunciation_vi": "sã pré-ju-dis pur"
+        "pronunciation_vi": "sã pré-ju-dis pur",
+        "pronunciation_en": "sahn pray-zhew-DEES poor — 'j' is soft 'zh'; 'u' rounded; legal-style formula softening a rejection"
       },
       {
         "word": "une re-soumission",
         "en": "a re-submission",
         "vi": "một lần nộp lại",
         "pos": "n.f.",
-        "pronunciation_vi": "rơ-su-mi-sion"
+        "pronunciation_vi": "rơ-su-mi-sion",
+        "pronunciation_en": "ewn ruh-soo-mee-SYOHN — schwa 're'; 'ou' is 'oo'; -mission is 'mee-syohn'"
       },
       {
         "word": "un cadrage théorique",
         "en": "a theoretical framing",
         "vi": "một cách định khung lý thuyết",
         "pos": "n.m.",
-        "pronunciation_vi": "ka-draj té-o-rik"
+        "pronunciation_vi": "ka-draj té-o-rik",
+        "pronunciation_en": "ehn kah-DRAHZH tay-oh-REEK — final -age is 'ahzh'; how the author has framed the question"
       },
       {
         "word": "un panorama théorique",
         "en": "a theoretical overview",
         "vi": "toàn cảnh lý thuyết",
         "pos": "n.m.",
-        "pronunciation_vi": "pa-no-ra-ma té-o-rik"
+        "pronunciation_vi": "pa-no-ra-ma té-o-rik",
+        "pronunciation_en": "ehn pah-noh-rah-MAH tay-oh-REEK — the literature review's scope; flagging gaps here is a key critique vector"
       }
     ],
     "dialogue": [
       {
         "speaker": "Rédacteur en chef",
         "text": "Madame Tran, vous acceptez d'évaluer cet article pour la revue ? Délai trois semaines.",
-        "vi": "Cô Trần, cô đồng ý đánh giá bài này cho tạp chí chứ? Hạn 3 tuần."
+        "vi": "Cô Trần, cô đồng ý đánh giá bài này cho tạp chí chứ? Hạn 3 tuần.",
+        "en": "Ms. Tran, do you accept reviewing this article for the journal? Deadline three weeks."
       },
       {
         "speaker": "Linh",
         "text": "Oui, je connais bien la littérature concernée. Je tiens le délai.",
-        "vi": "Vâng, tôi quen với tài liệu liên quan. Tôi giữ hạn."
+        "vi": "Vâng, tôi quen với tài liệu liên quan. Tôi giữ hạn.",
+        "en": "Yes, I know the relevant literature well. I'll meet the deadline."
       },
       {
         "speaker": "Rédacteur",
         "text": "Le rapport doit être en français, structure standard, avec un avis explicite à la fin.",
-        "vi": "Báo cáo phải bằng tiếng Pháp, cấu trúc chuẩn, kết luận rõ ràng cuối bài."
+        "vi": "Báo cáo phải bằng tiếng Pháp, cấu trúc chuẩn, kết luận rõ ràng cuối bài.",
+        "en": "The report should be in French, standard structure, with an explicit verdict at the end."
       },
       {
         "speaker": "Linh",
         "text": "Compris. Je vous envoie le rapport sous trois semaines.",
-        "vi": "Hiểu. Tôi gửi báo cáo trong 3 tuần."
+        "vi": "Hiểu. Tôi gửi báo cáo trong 3 tuần.",
+        "en": "Understood. I'll send you the report within three weeks."
       }
     ],
     "dialogue_long": [
       {
         "speaker": "Linh (réunion comité éditorial, revue de sociologie)",
         "text": "Merci de m'avoir confié ce manuscrit. Je vous présente mon évaluation.",
-        "vi": "Cảm ơn đã giao bản thảo này cho tôi. Tôi trình bày đánh giá."
+        "vi": "Cảm ơn đã giao bản thảo này cho tôi. Tôi trình bày đánh giá.",
+        "en": "Thank you for entrusting me with this manuscript. I'll present my evaluation."
       },
       {
         "speaker": "Rédactrice en chef",
         "text": "Allez-y. Cinq minutes pour la synthèse, puis on discute.",
-        "vi": "Cô nói đi. 5 phút cho tóm tắt, rồi mình thảo luận."
+        "vi": "Cô nói đi. 5 phút cho tóm tắt, rồi mình thảo luận.",
+        "en": "Go ahead. Five minutes for the summary, then we'll discuss."
       },
       {
         "speaker": "Linh",
         "text": "L'article aborde la question — d'un intérêt indéniable — de la transmission intergénérationnelle des trajectoires de précarité dans les milieux populaires immigrés. La problématique est pertinente, le terrain — quarante familles suivies sur dix ans — est solide.",
-        "vi": "Bài báo đề cập câu hỏi — có lợi ích không thể phủ nhận — về truyền tải xuyên thế hệ của các quỹ đạo bấp bênh trong môi trường dân di cư. Vấn đề nghiên cứu phù hợp, thực địa — 40 gia đình theo dõi 10 năm — vững."
+        "vi": "Bài báo đề cập câu hỏi — có lợi ích không thể phủ nhận — về truyền tải xuyên thế hệ của các quỹ đạo bấp bênh trong môi trường dân di cư. Vấn đề nghiên cứu phù hợp, thực địa — 40 gia đình theo dõi 10 năm — vững.",
+        "en": "The article addresses the question — of undeniable interest — of the intergenerational transmission of precarity trajectories in immigrant working-class settings. The research question is relevant; the field — forty families tracked over ten years — is solid."
       },
       {
         "speaker": "Linh",
         "text": "Côté positif: la maîtrise de la littérature secondaire est manifeste, particulièrement sur Beaud, Sayad et Schnapper. La méthodologie qualitative est rigoureuse, les vignettes ethnographiques sont fines. L'auteur sait écrire — l'article est agréable à lire, ce qui n'est pas si fréquent.",
-        "vi": "Điểm tích cực: làm chủ tài liệu thứ cấp rõ ràng, đặc biệt với Beaud, Sayad và Schnapper. Phương pháp định tính nghiêm cẩn, các đoạn ethnographique tinh tế. Tác giả biết viết — bài đọc dễ chịu, điều không phải thường gặp."
+        "vi": "Điểm tích cực: làm chủ tài liệu thứ cấp rõ ràng, đặc biệt với Beaud, Sayad và Schnapper. Phương pháp định tính nghiêm cẩn, các đoạn ethnographique tinh tế. Tác giả biết viết — bài đọc dễ chịu, điều không phải thường gặp.",
+        "en": "On the positive side: command of the secondary literature is evident, particularly on Beaud, Sayad, and Schnapper. The qualitative methodology is rigorous, the ethnographic vignettes are finely drawn. The author can write — the article is pleasant to read, which is no small thing."
       },
       {
         "speaker": "Linh",
         "text": "Côté réserves, j'en ai trois. Première — théorique. L'auteur opère avec un cadre néo-bourdieusien classique sans interroger ce que ce cadre lui ferme à voir. Les bifurcations biographiques de Bessin (2019), centrales sur cette question, sont absentes du panorama. C'est, à mon sens, une lacune significative.",
-        "vi": "Điểm dè dặt, tôi có ba. Đầu tiên — lý thuyết. Tác giả hoạt động với một khung tân-Bourdieu cổ điển mà không tra hỏi điều khung này đóng họ không thấy. Các « bifurcations biographiques » của Bessin (2019), trung tâm cho câu hỏi này, vắng mặt khỏi toàn cảnh. Đó, theo tôi, là một khoảng trống đáng kể."
+        "vi": "Điểm dè dặt, tôi có ba. Đầu tiên — lý thuyết. Tác giả hoạt động với một khung tân-Bourdieu cổ điển mà không tra hỏi điều khung này đóng họ không thấy. Các « bifurcations biographiques » của Bessin (2019), trung tâm cho câu hỏi này, vắng mặt khỏi toàn cảnh. Đó, theo tôi, là một khoảng trống đáng kể.",
+        "en": "On reservations, I have three. First — theoretical. The author operates with a classical neo-Bourdieusian frame without interrogating what this frame closes them off from seeing. Bessin's 'biographical bifurcations' (2019), central to this question, are absent from the overview. That is, in my view, a significant gap."
       },
       {
         "speaker": "Linh",
         "text": "Deuxième — méthodologique. L'attrition entre les vagues n'est pas traitée. Sur dix ans, perdre des familles est inévitable; ne pas en discuter ouvre l'article à une critique facile. Je recommande un paragraphe explicite, idéalement avec un chiffre d'attrition et la méthode de pondération choisie.",
-        "vi": "Thứ hai — phương pháp luận. Sự rớt khỏi mẫu giữa các đợt không được xử lý. Trong 10 năm, mất gia đình là tất yếu; không thảo luận sẽ mở bài cho một phê bình dễ. Tôi đề nghị một đoạn rõ ràng, lý tưởng kèm con số attrition và phương pháp trọng số đã chọn."
+        "vi": "Thứ hai — phương pháp luận. Sự rớt khỏi mẫu giữa các đợt không được xử lý. Trong 10 năm, mất gia đình là tất yếu; không thảo luận sẽ mở bài cho một phê bình dễ. Tôi đề nghị một đoạn rõ ràng, lý tưởng kèm con số attrition và phương pháp trọng số đã chọn.",
+        "en": "Second — methodological. Attrition between waves is not addressed. Over ten years, losing families is inevitable; not discussing it opens the article to an easy critique. I recommend an explicit paragraph, ideally with an attrition figure and the weighting method chosen."
       },
       {
         "speaker": "Linh",
         "text": "Troisième — textuel, plus mineur. L'article fait 14 000 mots; la revue accepte 10 000. Il faudra resserrer. Plusieurs longues citations en bloc pourraient être réduites à des extraits, et la conclusion — actuellement trois pages — pourrait passer à une.",
-        "vi": "Thứ ba — văn bản, nhẹ hơn. Bài 14 000 từ; tạp chí chấp nhận 10 000. Phải siết chặt. Nhiều trích nguyên văn dài có thể rút thành đoạn ngắn, và kết luận — hiện 3 trang — có thể xuống 1."
+        "vi": "Thứ ba — văn bản, nhẹ hơn. Bài 14 000 từ; tạp chí chấp nhận 10 000. Phải siết chặt. Nhiều trích nguyên văn dài có thể rút thành đoạn ngắn, và kết luận — hiện 3 trang — có thể xuống 1.",
+        "en": "Third — textual, more minor. The article is 14,000 words; the journal accepts 10,000. It will need to be tightened. Several long block quotations could be reduced to excerpts, and the conclusion — currently three pages — could be cut to one."
       },
       {
         "speaker": "Rédactrice",
         "text": "Verdict ?",
-        "vi": "Quyết định?"
+        "vi": "Quyết định?",
+        "en": "Verdict?"
       },
       {
         "speaker": "Linh",
         "text": "Révisions majeures, avec re-soumission attendue dans un délai de trois mois. L'article a un potentiel substantiel, mais en l'état, il n'est pas prêt. Sous réserve des trois points soulevés, je recommanderais l'acceptation.",
-        "vi": "Sửa đổi lớn, nộp lại dự kiến trong 3 tháng. Bài có potential thực chất, nhưng tình trạng hiện tại chưa sẵn sàng. Với điều kiện ba điểm đã nêu, tôi đề nghị chấp nhận."
+        "vi": "Sửa đổi lớn, nộp lại dự kiến trong 3 tháng. Bài có potential thực chất, nhưng tình trạng hiện tại chưa sẵn sàng. Với điều kiện ba điểm đã nêu, tôi đề nghị chấp nhận.",
+        "en": "Major revisions, with re-submission expected within three months. The article has substantial potential, but as it stands, it isn't ready. Subject to the three points raised, I would recommend acceptance."
       },
       {
         "speaker": "Rédactrice",
         "text": "Je suis d'accord. Le second évaluateur — vous le savez — a recommandé un rejet. Votre rapport, plus nuancé, va peser dans la décision finale du comité.",
-        "vi": "Tôi đồng ý. Người đánh giá thứ hai — cô biết — đã đề nghị từ chối. Báo cáo của cô, sắc thái hơn, sẽ có trọng lượng trong quyết định cuối của hội đồng."
+        "vi": "Tôi đồng ý. Người đánh giá thứ hai — cô biết — đã đề nghị từ chối. Báo cáo của cô, sắc thái hơn, sẽ có trọng lượng trong quyết định cuối của hội đồng.",
+        "en": "I agree. The second reviewer — as you know — recommended rejection. Your report, more nuanced, will weigh in the committee's final decision."
       },
       {
         "speaker": "Linh",
         "text": "Si je peux me permettre — j'ai vu le rapport de l'autre évaluateur. Sa critique sur le cadrage théorique recoupe la mienne, mais il en tire un rejet là où je vois une révision possible. La différence tient peut-être à ce que je connais l'auteur — ses travaux antérieurs montrent qu'il SAIT intégrer un cadre alternatif quand on le lui demande explicitement.",
-        "vi": "Cho phép tôi — tôi đã xem báo cáo của người đánh giá kia. Phê bình của ông về định khung lý thuyết trùng với của tôi, nhưng ông từ chối nơi tôi thấy có thể sửa. Khác biệt có thể vì tôi biết tác giả — các công trình trước cho thấy ông BIẾT tích hợp khung khác khi được yêu cầu rõ."
+        "vi": "Cho phép tôi — tôi đã xem báo cáo của người đánh giá kia. Phê bình của ông về định khung lý thuyết trùng với của tôi, nhưng ông từ chối nơi tôi thấy có thể sửa. Khác biệt có thể vì tôi biết tác giả — các công trình trước cho thấy ông BIẾT tích hợp khung khác khi được yêu cầu rõ.",
+        "en": "If I may — I saw the other reviewer's report. His critique on the theoretical framing overlaps with mine, but he draws a rejection where I see a possible revision. The difference may stem from the fact that I know the author — their prior work shows they CAN integrate an alternative frame when explicitly asked."
       },
       {
         "speaker": "Rédactrice",
         "text": "C'est un argument que je peux présenter au comité. Merci pour cette évaluation rigoureuse — c'est exactement ce qu'on attend d'un bon rapporteur.",
-        "vi": "Đó là lập luận tôi có thể trình hội đồng. Cảm ơn đánh giá nghiêm cẩn này — chính là điều mong đợi từ một rapporteur tốt."
+        "vi": "Đó là lập luận tôi có thể trình hội đồng. Cảm ơn đánh giá nghiêm cẩn này — chính là điều mong đợi từ một rapporteur tốt.",
+        "en": "That's an argument I can present to the committee. Thank you for this rigorous evaluation — it's exactly what one expects from a good reviewer."
       }
     ],
     "roleplay_prompts": [
@@ -3493,30 +3551,44 @@ export const lessons: FrenchLesson[] = [
       "Một colleague hỏi bạn pre-review bản thảo trước khi nộp. Bạn thấy có lỗi méthodologique. Soạn email 3 đoạn — nêu vấn đề tế nhị, đề xuất giải pháp, không hạ thấp công trình.",
       "Bạn nhận report của reviewer 2 cho bài của mình — phê bình bạn coi là không công bằng. Soạn « réponse aux relecteurs » 5 đoạn: 3 điểm bạn ĐỒNG Ý sửa, 2 điểm bạn KHÔNG ĐỒNG Ý — defendre sans arrogance."
     ],
+    "roleplay_prompts_en": [
+      "You've been asked to review an article on migration. You think it's good but needs significant revision. Draft a 500-word report following the 5-part structure (evaluation / appreciation / reservations / recommendations / final verdict). Verdict: major revisions. Make every critique constructive — name a remedy alongside each problem.",
+      "A colleague asks you for a pre-review of a manuscript before submission. You find a methodological flaw. Draft a 3-paragraph email — name the issue tactfully, propose a remedy, don't diminish the work overall. Anglophone instinct here is to soften critique to the point of uselessness; resist that — pre-review is most valuable when honest.",
+      "You receive Reviewer 2's report on your own paper — a critique you find unfair. Draft a 'response to reviewers' in 5 paragraphs: 3 points you AGREE to revise, 2 points where you DISAGREE — defend without arrogance. Use 'nous remercions le rapporteur pour cette suggestion' before each contested point; this French formula keeps the tone collegial even when you push back."
+    ],
     "register_notes": "BA NHÓM CỤM REVIEW theo cấp formal:\n\nFORMEL (revue à comité international, double-blind):\n- « L'article gagnerait à intégrer une discussion plus approfondie de… »\n- « Je recommande à l'auteur d'envisager… »\n- « Sous réserve des révisions ci-dessus… »\n\nSEMI-FORMEL (revue francophone, single-blind):\n- « L'article serait considérablement renforcé par… »\n- « Je suggère à l'auteur de… »\n- « Avec les révisions proposées, l'article… »\n\nINFORMEL (pre-review entre collègues):\n- « Tu pourrais peut-être renforcer X… »\n- « Je te conseillerais de revoir Y… »\n\nKHÔNG TRỘN. Pre-review « tu » dùng « vous » ở report officiel = lạnh và không phù hợp.\n\nVỀ MODE — CONDITIONNEL DOMINANT:\n\nReview Pháp dùng MASSIVELY conditionnel để hedge:\n- « L'article gagnerait à… » (l'article a gagner — nhưng conditionnel = không trực tiếp ép)\n- « Je suggérerais à l'auteur… » (tôi sẽ gợi ý — conditionnel = không command)\n- « Une discussion supplémentaire serait bienvenue. » (sẽ được hoan nghênh — không « est nécessaire »)\n\nLý do: review = recommendation, không phải command. Tác giả có quyền không theo. Conditionnel ghi nhận điều đó.\n\nKHI NÊN DÙNG INDICATIF: cho fact, không opinion:\n- « L'article fait 14 000 mots; la revue accepte 10 000. » (fact)\n- « L'auteur ne discute pas les travaux de X. » (fact)\n- « Le terrain s'étend sur dix ans. » (fact)\n\nKHI BẮT BUỘC INDICATIF: pour les exigences éthiques:\n- « L'auteur DOIT déclarer ses conflits d'intérêts. »\n- « Les références non publiques ne PEUVENT être citées sans accord. »\n\nMỘT QUY ƯỚC TINH TẾ ĐẶC BIỆT C1: « Je me permets de signaler… ». Cú pháp này dùng trước phê bình mạnh — bạn chuẩn bị tác giả tâm lý cho điều khó nuốt sau. « Je me permets de signaler une lacune théorique significative: l'absence des travaux de Bessin… »\n\nVỀ TENSION CRITIQUE-COURTOISIE: review tốt phải duy trì cả hai. Nếu chỉ critique = báo cáo tệ. Nếu chỉ courtoisie = báo cáo vô dụng. Mỗi câu critique nên đi cùng một câu định hướng (« je suggère à l'auteur de remédier à cette lacune en intégrant… »); mỗi câu courtoisie nên có nội dung cụ thể (« la vignette de Marseille, page 67, est particulièrement réussie » KHÔNG « l'écriture est belle »).",
+    "register_notes_en": "THREE REGISTERS OF REVIEW PHRASING:\n\nFORMAL (international peer-reviewed journal, double-blind):\n- 'L'article gagnerait à intégrer une discussion plus approfondie de…' (The article would benefit from incorporating a more in-depth discussion of…)\n- 'Je recommande à l'auteur d'envisager…' (I recommend the author consider…)\n- 'Sous réserve des révisions ci-dessus…' (Subject to the revisions above…)\n\nSEMI-FORMAL (francophone journal, single-blind):\n- 'L'article serait considérablement renforcé par…' (The article would be considerably strengthened by…)\n- 'Je suggère à l'auteur de…' (I suggest the author…)\n- 'Avec les révisions proposées, l'article…' (With the proposed revisions, the article…)\n\nINFORMAL (pre-review between colleagues):\n- 'Tu pourrais peut-être renforcer X…' (You might be able to reinforce X…)\n- 'Je te conseillerais de revoir Y…' (I'd advise you to revisit Y…)\n\nDO NOT MIX. Pre-review 'tu' in an official report reads as inappropriate.\n\nON MOOD — CONDITIONAL DOMINANT:\n\nFrench reviews use the conditional MASSIVELY to hedge:\n- 'L'article gagnerait à…' (gagner in conditional = no direct imperative)\n- 'Je suggérerais à l'auteur…' (I would suggest — conditional = not a command)\n- 'Une discussion supplémentaire serait bienvenue.' (would be welcome — not 'is necessary')\n\nReason: a review = recommendation, not command. The author has the right not to follow. The conditional records that.\n\nWHEN TO USE INDICATIVE: for facts, not opinions:\n- 'L'article fait 14 000 mots; la revue accepte 10 000.' (fact)\n- 'L'auteur ne discute pas les travaux de X.' (fact)\n- 'Le terrain s'étend sur dix ans.' (fact)\n\nWHEN INDICATIVE IS MANDATORY: for ethical requirements:\n- 'L'auteur DOIT déclarer ses conflits d'intérêts.' (The author MUST declare conflicts of interest.)\n- 'Les références non publiques ne PEUVENT être citées sans accord.' (Non-public references CANNOT be cited without consent.)\n\nA REFINED C1 CONVENTION: 'Je me permets de signaler…' (Allow me to flag…). This syntax is used before firm critique — you psychologically prepare the author for something hard to swallow. 'Je me permets de signaler une lacune théorique significative: l'absence des travaux de Bessin…'\n\nON THE CRITIQUE-COURTESY TENSION: a good review maintains both. Only critique = bad report. Only courtesy = useless report. Every critique sentence should be paired with a directional one ('je suggère à l'auteur de remédier à cette lacune en intégrant…'); every courtesy sentence should have specific content ('la vignette de Marseille, page 67, est particulièrement réussie' NOT 'l'écriture est belle'). Anglophone reviewers often default to vague praise + sharp critique; the French standard inverts: specific praise + cushioned critique.",
     "idiom_glosses": [
       {
         "idiom": "Sous réserve de (formel)",
         "literal": "Dưới sự dè dặt của",
+        "literal_en": "Under reservation of",
         "meaning": "Với điều kiện — câu kết verdict tiêu chuẩn.",
+        "meaning_en": "Subject to the condition that — the standard closing for a 'major revisions' verdict. English equivalent: 'subject to' or 'pending'. The hedge that lets you conditionally endorse a paper.",
         "example": "Sous réserve des révisions ci-dessus, l'article me paraît publiable."
       },
       {
         "idiom": "Sans préjudice pour (formel)",
         "literal": "Không phương hại cho",
+        "literal_en": "Without prejudice to",
         "meaning": "Không ảnh hưởng đến — utilisé pour reject ouvert à re-soumission.",
+        "meaning_en": "Without prejudice to — used for a rejection that leaves the door open for resubmission. English equivalent identical: 'without prejudice to'. A legal-register hedge softening the blow of rejection.",
         "example": "Je recommande un rejet, sans préjudice pour une soumission ultérieure d'une version profondément remaniée."
       },
       {
         "idiom": "Tirer la sonnette d'alarme (courant)",
         "literal": "Kéo chuông báo động",
+        "literal_en": "To pull the alarm bell",
         "meaning": "Cảnh báo về một vấn đề lớn — utile dans review pour signaler une faiblesse structurelle.",
+        "meaning_en": "To sound the alarm — flag a major problem. English equivalent: 'to ring the alarm' or 'to raise a red flag'. Used in reviews to signal a structural weakness the author cannot ignore.",
         "example": "Je tire la sonnette d'alarme sur la dimension méthodologique — sans révision, l'article reste vulnérable."
       },
       {
         "idiom": "Mettre la barre haut (courant)",
         "literal": "Đặt thanh xà cao",
+        "literal_en": "To set the bar high",
         "meaning": "Đặt tiêu chuẩn cao — utile pour justifier un avis exigeant.",
+        "meaning_en": "To set the bar high — useful to justify a demanding verdict. English equivalent identical: 'to set the bar high'. Frames a strict review as a positional choice of the journal, not personal harshness of the reviewer.",
         "example": "La revue met la barre haut sur la rigueur méthodologique — c'est ce qui justifie cet avis exigeant."
       }
     ],
@@ -3524,29 +3596,33 @@ export const lessons: FrenchLesson[] = [
       {
         "type": "fill-blank",
         "question": "Sous ___ des révisions ci-dessus, l'article me paraît susceptible de constituer une contribution substantielle.",
-        "answer": "réserve"
+        "answer": "réserve",
+        "hint_vi": "danh từ giống cái nghĩa 'sự dè dặt / điều kiện' — cụm cố định 'sous ___ de' nghĩa 'với điều kiện'",
+        "hint_en": "feminine noun for 'reservation / condition' — part of the fixed expression 'sous ___ de' (subject to / pending), the standard closing for a major-revisions verdict"
       },
       {
         "type": "matching",
         "pairs": [
           [
             "des révisions substantielles",
-            "các sửa đổi thực chất"
+            "các sửa đổi thực chất (substantial revisions — major verdict)"
           ],
           [
             "une lacune significative",
-            "một khoảng trống đáng kể"
+            "một khoảng trống đáng kể (a significant gap — polite term for missing literature)"
           ],
           [
             "sans préjudice pour",
-            "không phương hại đến"
+            "không phương hại đến (without prejudice to — softens rejection)"
           ]
         ],
-        "instruction": "Nối thuật ngữ peer review với nghĩa Việt"
+        "instruction": "Nối thuật ngữ peer review với nghĩa Việt",
+        "instruction_en": "Match the peer-review term with its meaning"
       },
       {
         "type": "translation",
         "vietnamese": "Tôi đề nghị tác giả tích hợp một thảo luận sâu hơn về các công trình gần đây của Bessy (2019) và Lemieux (2021).",
+        "english": "I recommend the author integrate a more in-depth discussion of the recent work of Bessy (2019) and Lemieux (2021).",
         "french": "Je recommande à l'auteur d'intégrer une discussion plus approfondie des travaux récents de Bessy (2019) et Lemieux (2021)."
       }
     ]
