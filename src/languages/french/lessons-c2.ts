@@ -4,7 +4,7 @@
 
 import type { FrenchLesson } from "./lessons";
 
-export const lessons: FrenchLesson[] =     [
+export const lessons: FrenchLesson[] =       [
     {
       "id": "lclose_reading",
       "level": "C2",
@@ -3957,6 +3957,12 @@ export const lessons: FrenchLesson[] =     [
             "baccalauréat → ba-ka-lo-ré-a",
             "agrégation → a-gré-ga-sion",
             "argumentative → ar-gu-mãn-ta-tiv"
+          ],
+          "pronunciation_focus_en": [
+            "dissertation → 'dee-sehr-tah-SYON' — the genre name; '-tion' = 'syon'",
+            "baccalauréat → 'bah-kah-loh-ray-AH' — the lycée exit exam; final 't' silent",
+            "agrégation → 'ah-gray-gah-SYON' — the elite teaching competition",
+            "argumentative → 'ar-gu-mahn-tah-TEEV' — feminine; final '-e' silent"
           ]
         },
         {
@@ -3967,6 +3973,12 @@ export const lessons: FrenchLesson[] =     [
             "antithèse → ãn-ti-tèz",
             "problématiser → pro-blé-ma-ti-zé",
             "conceptuel → kõn-sèp-tu-èl"
+          ],
+          "pronunciation_focus_en": [
+            "thèse → 'TEZ' — 'è' opens; final '-e' silent",
+            "antithèse → 'ahn-tee-TEZ' — nasal 'an'; the pedagogical (mis)formula's middle term",
+            "problématiser → 'pro-blay-mah-tee-ZAY' — the key verb; '-er' = 'ay'",
+            "conceptuel → 'kohn-sep-tu-EL' — 'conceptual'; final 'l' pronounced"
           ]
         },
         {
@@ -3977,6 +3989,12 @@ export const lessons: FrenchLesson[] =     [
             "commençât → ko-mãn-sa",
             "écart → é-kar",
             "naissance → nè-sãns"
+          ],
+          "pronunciation_focus_en": [
+            "eût → 'U' — imperfect subjunctive of avoir; literary",
+            "commençât → 'koh-mahn-SAH' — imperfect subjunctive of commencer; very literary",
+            "écart → 'ay-KAR' — 'l'écart entre' = the gap between; final 't' silent",
+            "naissance → 'neh-SAHNSS' — 'prendre naissance' = to originate; nasal '-ance'"
           ]
         },
         {
@@ -3987,6 +4005,12 @@ export const lessons: FrenchLesson[] =     [
             "annoncer → a-nõn-sé",
             "achève → a-shèv",
             "nécessaire → né-sé-sèr"
+          ],
+          "pronunciation_focus_en": [
+            "transition → 'trahn-zee-SYON' — 's' between vowels = 'z'; '-tion' = 'syon'",
+            "annoncer → 'ah-nohn-SAY' — double 'nn' = 'n'; nasal 'on'",
+            "achève → 'ah-SHEV' — 'achever' = to complete; 'ch' = 'sh'",
+            "nécessaire → 'nay-seh-SEHR' — '-aire' = 'air'"
           ]
         },
         {
@@ -3997,6 +4021,12 @@ export const lessons: FrenchLesson[] =     [
             "parcouru → par-ku-ru",
             "fût-ce → fus",
             "ouvre → u-vrơ"
+          ],
+          "pronunciation_focus_en": [
+            "conclure → 'kohn-KLUR' — 'to conclude'; rounded final 'u'",
+            "parcouru → 'par-koo-RU' — past participle of parcourir; 'le chemin parcouru'",
+            "fût-ce → 'FU-suh' — 'fût-ce d'un mot' = 'even if only in a word'; very literary",
+            "ouvre → 'OO-vruh' — 'ouvrir' = to open; final '-re' barely voiced"
           ]
         }
       ],
@@ -4008,91 +4038,105 @@ export const lessons: FrenchLesson[] =     [
           "en": "to problematize",
           "vi": "đặt vấn đề hóa",
           "pos": "v.",
-          "pronunciation_vi": "pro-blé-ma-ti-zé"
+          "pronunciation_vi": "pro-blé-ma-ti-zé",
+          "pronunciation_en": "pro-blay-mah-tee-ZAY — 'problématiser'; the defining verb of the genre"
         },
         {
           "word": "une accroche",
           "en": "a hook / opening sentence",
           "vi": "câu móc / câu vào bài",
           "pos": "n.f.",
-          "pronunciation_vi": "a-krosh"
+          "pronunciation_vi": "a-krosh",
+          "pronunciation_en": "ün ah-KROSH — 'une accroche' = the hook / opening sentence"
         },
         {
           "word": "une transition",
           "en": "a transition between parts",
           "vi": "chuyển đoạn",
           "pos": "n.f.",
-          "pronunciation_vi": "trãn-zi-sion"
+          "pronunciation_vi": "trãn-zi-sion",
+          "pronunciation_en": "ün trahn-zee-SYON — 'une transition' between parts"
         },
         {
           "word": "un présupposé",
           "en": "a presupposition",
           "vi": "tiền giả định",
           "pos": "n.m.",
-          "pronunciation_vi": "pré-su-po-zé"
+          "pronunciation_vi": "pré-su-po-zé",
+          "pronunciation_en": "UN pray-su-poh-ZAY — 'un présupposé' = a presupposition"
         },
         {
           "word": "la progression argumentative",
           "en": "argumentative progression",
           "vi": "tiến trình lập luận",
           "pos": "n.f.",
-          "pronunciation_vi": "pro-grè-sion ar-gu-mãn-ta-tiv"
+          "pronunciation_vi": "pro-grè-sion ar-gu-mãn-ta-tiv",
+          "pronunciation_en": "lah pro-greh-SYON ar-gu-mahn-tah-TEEV — 'progression argumentative'"
         },
         {
           "word": "une objection",
           "en": "an objection",
           "vi": "phản bác / bác luận",
           "pos": "n.f.",
-          "pronunciation_vi": "ob-jèk-sion"
+          "pronunciation_vi": "ob-jèk-sion",
+          "pronunciation_en": "ün ob-zhek-SYON — 'une objection'; 'j' = 'zh'; '-tion' = 'syon'"
         },
         {
           "word": "une réfutation",
           "en": "a refutation",
           "vi": "sự bác bỏ",
           "pos": "n.f.",
-          "pronunciation_vi": "ré-fu-ta-sion"
+          "pronunciation_vi": "ré-fu-ta-sion",
+          "pronunciation_en": "ün ray-fu-tah-SYON — 'une réfutation' = a refutation"
         },
         {
           "word": "un concept",
           "en": "a concept",
           "vi": "khái niệm",
           "pos": "n.m.",
-          "pronunciation_vi": "kõn-sèp"
+          "pronunciation_vi": "kõn-sèp",
+          "pronunciation_en": "UN kohn-SEP — 'un concept'; final 'pt' → only 'p' lightly; '-cept' = 'sep'"
         },
         {
           "word": "une ouverture",
           "en": "an opening / concluding opening",
           "vi": "phần mở ra cuối bài",
           "pos": "n.f.",
-          "pronunciation_vi": "u-vèr-tur"
+          "pronunciation_vi": "u-vèr-tur",
+          "pronunciation_en": "ün oo-vehr-TUR — 'une ouverture' = the concluding opening"
         },
         {
           "word": "le hors-sujet",
           "en": "off-topic (cardinal sin)",
           "vi": "lạc đề",
           "pos": "n.m.",
-          "pronunciation_vi": "or-su-jè"
+          "pronunciation_vi": "or-su-jè",
+          "pronunciation_en": "luh or-su-ZHEH — 'le hors-sujet' (off-topic) — the cardinal sin; 'h' silent"
         }
       ],
       "dialogue": [
         {
           "speaker": "Professeur",
           "text": "Votre dissertation sur la liberté est bien écrite, mais où est la problématique?",
+          "en": "Your dissertation on freedom is well written, but where is the problématique?",
           "vi": "Bài dissertation về tự do của em viết tốt, nhưng problématique đâu?"
         },
         {
           "speaker": "Linh",
           "text": "J'ai pensé que la question 'La liberté consiste-t-elle à faire ce qu'il nous plaît?' était déjà une problématique.",
+          "en": "I thought the question 'Does freedom consist in doing what we please?' was already a problématique.",
           "vi": "Em tưởng câu hỏi 'Tự do có phải là làm điều ta thích không?' đã là một problématique."
         },
         {
           "speaker": "Professeur",
           "text": "Non — une question n'est pas une problématique. La problématique, c'est le conflit des réponses possibles à cette question. Reformulez.",
+          "en": "No — a question is not a problématique. The problématique is the conflict of possible answers to that question. Reformulate.",
           "vi": "Không — câu hỏi không phải là problématique. Problématique là sự xung đột giữa các câu trả lời khả dĩ cho câu hỏi đó. Làm lại."
         },
         {
           "speaker": "Linh",
           "text": "Donc: 'Si la liberté se définit par l'absence de contrainte, faire ce qu'il nous plaît serait libre. Mais si la liberté suppose la maîtrise rationnelle de soi, alors céder à ses plaisirs pourrait être une forme d'esclavage.' Est-ce une problématique?",
+          "en": "So: 'If freedom is defined as the absence of constraint, doing what we please would be free. But if freedom presupposes rational self-mastery, then yielding to one's pleasures could be a form of slavery.' Is that a problématique?",
           "vi": "Vậy: 'Nếu tự do được định nghĩa bằng sự vắng mặt của cưỡng chế, thì làm điều ta thích sẽ là tự do. Nhưng nếu tự do giả định sự làm chủ lý tính đối với bản thân, thì chiều theo khoái lạc có thể là một dạng nô lệ.' Đây có phải là problématique không?"
         }
       ],
@@ -4100,6 +4144,7 @@ export const lessons: FrenchLesson[] =     [
         {
           "speaker": "Jury d'agrégation",
           "text": "Mademoiselle Tran, vous avez quatre heures pour traiter le sujet suivant: 'Peut-on penser sans préjugés?'",
+          "en": "Ms. Tran, you have four hours to treat the following subject: 'Can one think without prejudices?'",
           "vi": "Cô Trần, cô có bốn giờ để xử lý đề bài sau: 'Có thể suy nghĩ mà không có định kiến không?'"
         }
       ],
@@ -4113,35 +4158,46 @@ export const lessons: FrenchLesson[] =     [
         {
           "type": "fill-blank",
           "question": "Problématiser, c'est transformer une question apparente en un ___ conceptuel.",
-          "answer": "problème"
+          "answer": "problème",
+          "hint_vi": "danh từ — 'vấn đề' (vs câu hỏi đơn thuần)",
+          "hint_en": "noun — 'problem'; to problematize is to turn a question into a conceptual ___"
         },
         {
           "type": "matching",
           "pairs": [
             [
               "problématiser",
-              "đặt vấn đề hóa"
+              "đặt vấn đề hóa (to problematize)"
             ],
             [
               "une accroche",
-              "câu mở đầu"
+              "câu mở đầu (the hook / opening sentence)"
             ],
             [
               "le hors-sujet",
-              "lạc đề"
+              "lạc đề (off-topic — the cardinal sin)"
             ],
             [
               "une transition",
-              "chuyển đoạn"
+              "chuyển đoạn (a transition between parts)"
             ]
           ],
-          "instruction": "Nối thuật ngữ dissertation với nghĩa"
+          "instruction": "Nối thuật ngữ dissertation với nghĩa",
+          "instruction_en": "Match each dissertation term with its Vietnamese meaning"
         },
         {
           "type": "translation",
           "vietnamese": "Kết luận không phải là lặp lại điều đã nói, mà là chỉ ra con đường đã đi và cho thấy con đường đó mở ra câu hỏi mới nào.",
+          "english": "To conclude is not to repeat what one has said; it is to show the path traveled and to indicate what new question that path opens.",
           "french": "Conclure, ce n'est pas répéter ce qu'on a dit; c'est montrer le chemin parcouru et indiquer ce que ce chemin ouvre comme question nouvelle."
         }
+      ],
+      "cultural_notes_en": "The philosophical dissertation is a uniquely French genre. (1) It is the central exercise of French education from Terminale (final year of lycée) to the agrégation. No other country has an equivalent — the Anglo essay is freer, the German Aufsatz less structured. (2) STANDARD STRUCTURE: introduction in three parts (accroche, problématisation, plan announcement), development in 2-3 parts each with 2-3 sub-parts, conclusion in two parts (synthesis, opening). (3) 'THESIS-ANTITHESIS-SYNTHESIS' IS A MISUNDERSTANDING — that formula is a pedagogical simplification; a real philosophical dissertation may have 2, 3 or 4 parts; what matters is argumentative progression, not mechanical dialectic. (4) TO PROBLEMATIZE is the most important verb: turning 'Does freedom exist?' into 'Under what conditions can an act be called free?'. (5) GRADING CRITERIA: understanding of the subject (no off-topic), argumentative coherence, philosophical mobilization (references, concepts), quality of writing. (6) FOR VIETNAMESE SPEAKERS: Vietnam has a 'nghị luận' essay tradition, but the French dissertation differs: (a) no 'I', (b) no personal anecdote, (c) an explicit problématique is required, (d) the conclusion doesn't 'draw a moral lesson'.",
+      "tip_advice_en": "Six-step method (for a 4-hour dissertation): (1) ANALYZE THE SUBJECT (30 min) — define each term, spot the presuppositions; the verb in the prompt is often crucial. (2) PROBLEMATIZE (30 min) — turn the question into a problem; reveal a hidden conflict between possible answers. (3) BUILD THE PLAN (20 min) — 2-3 parts, each a possible answer to the problématique, ordered from the most obvious (to be surpassed) to the most elaborate. (4) DRAFT THE INTRODUCTION (20 min) — polish the accroche; the problématique in 2-3 sentences; an explicit plan announcement. (5) WRITE THE DEVELOPMENT (120 min) — each part = one main argument + 1-2 secondary + one philosophical example + one transition; always tie back to the problématique. (6) CONCLUSION + PROOFREAD (40 min) — synthesis + opening; check spelling, transition coherence, off-topic.",
+      "register_notes_en": "C2 philosophical dissertation: 'nous' not 'je' ('Nous nous demanderons si...'). Present of general truth ('La liberté se définit comme...'). Conditional for hypotheses ('On pourrait objecter que...'). Obligatory logical connectors: 'cependant', 'néanmoins', 'toutefois', 'en revanche', 'par conséquent', 'dès lors'. Integrated citation ('Comme l'écrit Kant dans les Fondements de la métaphysique des mœurs...'). No 'je', no personal anecdote, no 'de nos jours...'.",
+      "roleplay_prompts_en": [
+        "Write an introduction for the dissertation prompt: 'Does technology liberate man or enslave him?' Structure: accroche (one citation), problematization (the conflict), plan announcement (three parts). Do NOT answer the question in the introduction.",
+        "In an agrégation prep course, you're criticized: 'Votre plan est trop descriptif, pas assez dialectique.' Fix the plan: turn each part into an argued answer, not a theme."
       ]
     },
     {
@@ -4159,6 +4215,12 @@ export const lessons: FrenchLesson[] =     [
             "culminant → kul-mi-nãn",
             "incarner → an-kar-né",
             "faiblesses → fè-bles"
+          ],
+          "pronunciation_focus_en": [
+            "soutenance → 'soo-tuh-NAHNSS' — the thesis defense; nasal '-ance'",
+            "culminant → 'kul-mee-NAHN' — 'culminating'; nasal '-ant'; final 't' silent",
+            "incarner → 'an-kar-NAY' — 'to embody'; nasal 'in'; '-er' = 'ay'",
+            "faiblesses → 'feh-BLESS' — 'weaknesses'; 'ai' = 'eh'; final '-es' silent"
           ]
         },
         {
@@ -4169,6 +4231,12 @@ export const lessons: FrenchLesson[] =     [
             "intégrer → an-té-gré",
             "perspective → pèr-spèk-tiv",
             "pertinence → pèr-ti-nãns"
+          ],
+          "pronunciation_focus_en": [
+            "objections → 'ob-zhek-SYON' — 'j' = 'zh'; '-tions' = 'syon'; final 's' silent",
+            "intégrer → 'an-tay-GRAY' — 'to integrate'; nasal 'in'",
+            "perspective → 'pehr-spek-TEEV' — final '-e' silent",
+            "pertinence → 'pehr-tee-NAHNSS' — 'relevance'; nasal '-ence'"
           ]
         },
         {
@@ -4179,6 +4247,12 @@ export const lessons: FrenchLesson[] =     [
             "écoute → é-kut",
             "reformulation → rơ-for-mu-la-sion",
             "fidèle → fi-dèl"
+          ],
+          "pronunciation_focus_en": [
+            "soutenance → 'soo-tuh-NAHNSS' — repeated key term; nasal '-ance'",
+            "écoute → 'ay-KOOT' — 'une écoute attentive' = attentive listening",
+            "reformulation → 'ruh-for-mu-lah-SYON' — '-tion' = 'syon'",
+            "fidèle → 'fee-DEL' — 'une reformulation fidèle' = a faithful restatement"
           ]
         }
       ],
@@ -4190,81 +4264,93 @@ export const lessons: FrenchLesson[] =     [
           "en": "thesis defense",
           "vi": "buổi bảo vệ luận án",
           "pos": "n.f.",
-          "pronunciation_vi": "su-tơ-nãns"
+          "pronunciation_vi": "su-tơ-nãns",
+          "pronunciation_en": "lah soo-tuh-NAHNSS — 'la soutenance' = the thesis defense"
         },
         {
           "word": "le jury",
           "en": "the examining committee",
           "vi": "hội đồng chấm thi",
           "pos": "n.m.",
-          "pronunciation_vi": "ju-ri"
+          "pronunciation_vi": "ju-ri",
+          "pronunciation_en": "luh zhu-REE — 'le jury' = the examining committee; 'j' = 'zh'"
         },
         {
           "word": "un exposé",
           "en": "an oral presentation",
           "vi": "bài trình bày miệng",
           "pos": "n.m.",
-          "pronunciation_vi": "èk-spo-zé"
+          "pronunciation_vi": "èk-spo-zé",
+          "pronunciation_en": "UN eks-poh-ZAY — 'un exposé' = an oral presentation"
         },
         {
           "word": "la délibération",
           "en": "the deliberation (of the jury)",
           "vi": "sự nghị bàn của hội đồng",
           "pos": "n.f.",
-          "pronunciation_vi": "dé-li-bé-ra-sion"
+          "pronunciation_vi": "dé-li-bé-ra-sion",
+          "pronunciation_en": "lah day-lee-bay-rah-SYON — 'la délibération' of the jury"
         },
         {
           "word": "une mention",
           "en": "a grade / distinction",
           "vi": "xếp hạng / danh dự",
           "pos": "n.f.",
-          "pronunciation_vi": "mãn-sion"
+          "pronunciation_vi": "mãn-sion",
+          "pronunciation_en": "ün mahn-SYON — 'une mention' = a distinction/grade; nasal 'en' + '-tion'"
         },
         {
           "word": "une objection",
           "en": "an objection",
           "vi": "phản bác",
           "pos": "n.f.",
-          "pronunciation_vi": "ob-jèk-sion"
+          "pronunciation_vi": "ob-jèk-sion",
+          "pronunciation_en": "ün ob-zhek-SYON — 'une objection'; 'j' = 'zh'"
         },
         {
           "word": "un rapporteur",
           "en": "a reviewer / rapporteur",
           "vi": "người phản biện / báo cáo viên",
           "pos": "n.m.",
-          "pronunciation_vi": "ra-por-tơr"
+          "pronunciation_vi": "ra-por-tơr",
+          "pronunciation_en": "UN rah-por-TUR — 'un rapporteur' = a reviewer; '-eur' rounded"
         },
         {
           "word": "le directeur de thèse",
           "en": "thesis advisor",
           "vi": "người hướng dẫn luận án",
           "pos": "n.m.",
-          "pronunciation_vi": "di-rèk-tơr dơ tèz"
+          "pronunciation_vi": "di-rèk-tơr dơ tèz",
+          "pronunciation_en": "luh dee-rek-TUR duh TEZ — 'le directeur de thèse' = the thesis advisor"
         },
         {
           "word": "la loge",
           "en": "the preparation room (agrégation)",
           "vi": "phòng chuẩn bị thi",
           "pos": "n.f.",
-          "pronunciation_vi": "loj"
+          "pronunciation_vi": "loj",
+          "pronunciation_en": "lah LOZH — 'la loge' = the preparation room (agrégation); 'g' = 'zh'"
         },
         {
           "word": "les félicitations",
           "en": "congratulations (highest distinction)",
           "vi": "lời khen tặng (danh dự cao nhất)",
           "pos": "n.f. pl.",
-          "pronunciation_vi": "fé-li-si-ta-sion"
+          "pronunciation_vi": "fé-li-si-ta-sion",
+          "pronunciation_en": "lay fay-lee-see-tah-SYON — 'les félicitations' = the highest distinction"
         }
       ],
       "dialogue": [
         {
           "speaker": "Jury",
           "text": "Vous affirmez que votre thèse comble une lacune. Mais l'ouvrage de Martin (2019), que vous ne citez pas, traite exactement de cette question. Que répondez-vous?",
+          "en": "You claim your thesis fills a gap. But Martin's work (2019), which you don't cite, deals with exactly this question. How do you respond?",
           "vi": "Bà khẳng định luận án của bà lấp một khoảng trống. Nhưng công trình của Martin (2019), mà bà không trích dẫn, bàn chính xác về câu hỏi này. Bà trả lời sao?"
         },
         {
           "speaker": "Linh",
           "text": "Je vous remercie de cette référence que je ne connaissais pas. Si vous me le permettez, je répondrai en deux temps: d'abord, je reconnais cette lacune bibliographique — c'est une faiblesse de mon travail. Ensuite, je précise que ma thèse aborde la question sous un angle différent, celui de..., qui me semble complémentaire plutôt que redondant.",
+          "en": "Thank you for this reference, which I didn't know. If I may, I'll answer in two stages: first, I acknowledge this bibliographic gap — it's a weakness of my work. Second, I'll specify that my thesis approaches the question from a different angle, that of..., which seems to me complementary rather than redundant.",
           "vi": "Tôi cảm ơn thầy về tham khảo mà tôi chưa biết. Nếu thầy cho phép, tôi xin trả lời hai bước: trước, tôi thừa nhận khoảng trống thư mục này — đó là điểm yếu của công trình tôi. Sau, tôi xin nói rõ luận án tôi tiếp cận câu hỏi từ một góc khác, góc của..., mà tôi thấy là bổ sung chứ không trùng lặp."
         }
       ],
@@ -4272,6 +4358,7 @@ export const lessons: FrenchLesson[] =     [
         {
           "speaker": "Président du jury",
           "text": "Madame Tran, vous avez quarante-cinq minutes pour présenter votre thèse. Nous vous écoutons.",
+          "en": "Ms. Tran, you have forty-five minutes to present your thesis. We are listening.",
           "vi": "Bà Trần, bà có bốn mươi lăm phút để trình bày luận án. Chúng tôi lắng nghe bà."
         }
       ],
@@ -4285,35 +4372,46 @@ export const lessons: FrenchLesson[] =     [
         {
           "type": "fill-blank",
           "question": "L'art du grand oral ne consiste pas à nier les ___, mais à les intégrer dans une perspective plus large.",
-          "answer": "objections"
+          "answer": "objections",
+          "hint_vi": "danh từ số nhiều — các phản bác (của hội đồng)",
+          "hint_en": "plural noun — objections; the art of the grand oral isn't to deny the ___ but to integrate them"
         },
         {
           "type": "matching",
           "pairs": [
             [
               "la soutenance",
-              "buổi bảo vệ luận án"
+              "buổi bảo vệ luận án (the thesis defense)"
             ],
             [
               "le jury",
-              "hội đồng chấm thi"
+              "hội đồng chấm thi (the examining committee)"
             ],
             [
               "un exposé",
-              "bài trình bày miệng"
+              "bài trình bày miệng (an oral presentation)"
             ],
             [
               "les félicitations",
-              "danh dự cao nhất"
+              "danh dự cao nhất (the highest distinction)"
             ]
           ],
-          "instruction": "Nối thuật ngữ grand oral với nghĩa Việt"
+          "instruction": "Nối thuật ngữ grand oral với nghĩa Việt",
+          "instruction_en": "Match each grand-oral term with its Vietnamese meaning"
         },
         {
           "type": "translation",
           "vietnamese": "Chất lượng của một buổi bảo vệ thường được quyết định ít ở các câu trả lời hơn là ở cách tiếp nhận câu hỏi.",
+          "english": "The quality of a defense is often decided less in the answers than in the way one receives the questions.",
           "french": "La qualité d'une soutenance se joue souvent moins dans les réponses que dans la manière de recevoir les questions."
         }
+      ],
+      "cultural_notes_en": "The French soutenance. (1) Unlike the Anglo-American defense (often short, 1-2 hours, informal), the French soutenance is an academic ritual — it can run 3-5 hours, is open to the public, and ends with a 'mention'. (2) STRUCTURE: candidate's exposé (20-30 min), jury questions (each member 15-30 min), deliberation, proclamation. (3) MENTIONS: 'Honorable' (minimal pass), 'Très honorable' (good), 'Très honorable avec félicitations' (excellent — rare). (4) THE GRAND ORAL OF THE AGRÉGATION: a one-hour oral (30 min exposé + 30 min questions) with the subject unknown beforehand, prepared 'en loge' (in a library room). (5) STRATEGY: the French prize 'intellectual honesty' — if you don't know, saying 'Je ne sais pas' is better than bluffing; bluffing detected = you lose everything.",
+      "tip_advice_en": "Ten tips for a grand oral: (1) Know your limits before the jury finds them. (2) Structure the exposé (intro: why this subject, what thesis, what plan; development: 3 points max; conclusion: opening). (3) Speak slowly — 120 words/min max. (4) Look at the jury, don't read your notes. (5) Reformulate the question before answering — shows comprehension, buys time. (6) Admit ignorance: 'Je n'ai pas exploré cet aspect, mais...'. (7) Show the path: 'Au début de ma thèse, je pensais X; maintenant, je pense Y.' (8) Cite the jury: 'Comme l'a montré le Professeur X, membre de ce jury...' — strategic deference. (9) Manage the nerves: breathe before each answer. (10) Conclude with dignity — thank the jury, acknowledge what you learned.",
+      "register_notes_en": "C2 grand oral: tutoiement = never. Vouvoyer every jury member. Formulae: 'Monsieur le Président, Mesdames et Messieurs les membres du jury'. When you don't know: 'Cette question touche à une limite de mon travail que je n'ai pas encore explorée'. When thanking: 'Je tiens à remercier mon directeur de thèse, le Professeur X, sans qui...'. Tone: humble but not servile, competent but not arrogant.",
+      "roleplay_prompts_en": [
+        "You're in a soutenance. The jury asks: 'Quelle est la principale limite de votre travail?' (What is the main limitation of your work?). Answer: name one real limit, explain why you accepted it, show what you did to mitigate it. Structure: 'La principale limite... J'en suis conscient(e)... Pour y remédier, j'ai...'",
+        "Prepare a 20-minute exposé for a thesis defense (subject of your choice). Structure: (1) why this subject, (2) main thesis, (3) three key results, (4) limits and perspectives. No details — synthesis."
       ]
     },
     {
