@@ -4,2635 +4,3238 @@
 
 import type { FrenchLesson } from "./lessons";
 
-export const lessons: FrenchLesson[] = [
-  {
-    "id": "french_society_news",
-    "level": "B1",
-    "category": "society",
-    "title_vi": "Thảo luận tin tức",
-    "title_en": "Discussing current events",
-    "sentences": [
-      {
-        "en": "As-tu lu l'article sur la politique ?",
-        "vi": "Bạn đọc bài báo về chính trị chưa?",
-        "pronunciation_focus": [
-          "article→a-tíc",
-          "nasal in"
-        ]
-      },
-      {
-        "en": "Que penses-tu de cette nouvelle loi ?",
-        "vi": "Bạn nghĩ gì về luật mới?",
-        "pronunciation_focus": [
-          "penses→păng",
-          "nouvelle→nu-ven"
-        ]
-      },
-      {
-        "en": "Il faut vérifier les sources avant de partager.",
-        "vi": "Phải kiểm tra nguồn trước khi chia sẻ.",
-        "pronunciation_focus": [
-          "vérifier→vê-ri-fi-ê",
-          "sources→xua"
-        ]
-      },
-      {
-        "en": "Je lis Le Monde tous les matins.",
-        "vi": "Tôi đọc Le Monde mỗi sáng.",
-        "pronunciation_focus": [
-          "lis→li",
-          "matins→ma-tanh"
-        ]
-      },
-      {
-        "en": "Les informations disent que la situation s'améliore.",
-        "vi": "Tin tức nói tình hình đang cải thiện.",
-        "pronunciation_focus": [
-          "informations→anh-fo-ma-xi-on",
-          "s'améliore→xa-mê-li-o"
-        ]
-      }
-    ],
-    "cultural_notes_vi": "Người Pháp đọc báo nhiều. Le Monde (trung lập), Le Figaro (hữu), Libération (tả). Tranh luận chính trị là môn thể thao quốc dân.",
-    "tip_advice_vi": "Dùng 'À mon avis…', 'Je pense que…', 'Il me semble que…'. Tránh nói 'c'est nul'.",
-    "vocabulary": [
-      {
-        "word": "l'actualité",
-        "en": "current events",
-        "vi": "thời sự",
-        "pos": "n.f.",
-        "pronunciation_vi": "lắc-tu-a-li-tê"
-      },
-      {
-        "word": "le journal",
-        "en": "newspaper",
-        "vi": "báo",
-        "pos": "n.m.",
-        "pronunciation_vi": "giua-nan"
-      },
-      {
-        "word": "l'article",
-        "en": "article",
-        "vi": "bài báo",
-        "pos": "n.m.",
-        "pronunciation_vi": "la-tíc"
-      },
-      {
-        "word": "partager",
-        "en": "to share",
-        "vi": "chia sẻ",
-        "pos": "v.",
-        "pronunciation_vi": "pa-ta-giê"
-      },
-      {
-        "word": "débattre",
-        "en": "to debate",
-        "vi": "tranh luận",
-        "pos": "v.",
-        "pronunciation_vi": "đê-bát"
-      },
-      {
-        "word": "la source",
-        "en": "source",
-        "vi": "nguồn",
-        "pos": "n.f.",
-        "pronunciation_vi": "xua-xơ"
-      },
-      {
-        "word": "vérifier",
-        "en": "to verify",
-        "vi": "kiểm tra",
-        "pos": "v.",
-        "pronunciation_vi": "vê-ri-fi-ê"
-      },
-      {
-        "word": "l'opinion",
-        "en": "opinion",
-        "vi": "ý kiến",
-        "pos": "n.f.",
-        "pronunciation_vi": "lô-pi-ni-on"
-      },
-      {
-        "word": "la Une",
-        "en": "front page",
-        "vi": "trang nhất",
-        "pos": "n.f.",
-        "pronunciation_vi": "la Un"
-      },
-      {
-        "word": "fiable",
-        "en": "reliable",
-        "vi": "đáng tin",
-        "pos": "adj.",
-        "pronunciation_vi": "fi-a-blơ"
-      }
-    ],
-    "dialogue": [
-      {
-        "speaker": "A",
-        "text": "Tu as vu les infos ce matin ?",
-        "en": "Did you see the news this morning?"
-      },
-      {
-        "speaker": "B",
-        "text": "Oui, il y a une manifestation à Paris.",
-        "en": "Yes, there's a protest in Paris."
-      },
-      {
-        "speaker": "A",
-        "text": "C'est à propos de la réforme des retraites ?",
-        "en": "Is it about the pension reform?"
-      },
-      {
-        "speaker": "B",
-        "text": "Exactement. Qu'est-ce que tu en penses ?",
-        "en": "Exactly. What do you think?"
-      }
-    ],
-    "exercises": [
-      {
-        "type": "fill-blank",
-        "question": "As-tu lu l'___ sur les élections ?",
-        "answer": "article"
-      },
-      {
-        "type": "matching",
-        "pairs": [
-          [
-            "l'actualité",
-            "thời sự"
+export const lessons: FrenchLesson[] =   [
+    {
+      "id": "french_society_news",
+      "level": "B1",
+      "category": "society",
+      "title_vi": "Thảo luận tin tức",
+      "title_en": "Discussing current events",
+      "sentences": [
+        {
+          "en": "As-tu lu l'article sur la politique ?",
+          "vi": "Bạn đọc bài báo về chính trị chưa?",
+          "pronunciation_focus": [
+            "article→a-tíc",
+            "nasal in"
           ],
-          [
-            "partager",
-            "chia sẻ"
-          ],
-          [
-            "fiable",
-            "đáng tin"
+          "pronunciation_focus_en": [
+            "article 'ar-TEEKL' — final '-e' silent; stress lands on the last syllable, unlike English 'AR-ti-kul'",
+            "nasal 'in' — held through the nose with no consonant release; no English equivalent (practice on words like 'pain', 'matin')"
           ]
-        ],
-        "instruction": "Nối từ Pháp với nghĩa Việt"
-      },
-      {
-        "type": "translation",
-        "vietnamese": "Theo tôi, tình hình sẽ cải thiện năm tới.",
-        "french": "À mon avis, la situation s'améliorera l'année prochaine."
-      }
-    ]
-  },
-  {
-    "id": "french_society_culture",
-    "level": "B1",
-    "category": "society",
-    "title_vi": "Khác biệt văn hóa Pháp-Việt",
-    "title_en": "French-Vietnamese cultural differences",
-    "sentences": [
-      {
-        "en": "En France, on fait la bise pour se saluer.",
-        "vi": "Ở Pháp, hôn má để chào.",
-        "pronunciation_focus": [
-          "bise→bi-dơ",
-          "saluer→xa-lu-ê"
-        ]
-      },
-      {
-        "en": "Les Français sont plus directs dans la conversation.",
-        "vi": "Người Pháp nói chuyện trực tiếp hơn.",
-        "pronunciation_focus": [
-          "Français→frăng-xe",
-          "directs→đi-réc"
-        ]
-      },
-      {
-        "en": "Au Vietnam, éviter le conflit est important.",
-        "vi": "Ở VN, tránh xung đột quan trọng.",
-        "pronunciation_focus": [
-          "Vietnam→Vi-ét-nam",
-          "conflit→côn-fli"
-        ]
-      },
-      {
-        "en": "Il faut comprendre les différences pour bien communiquer.",
-        "vi": "Cần hiểu khác biệt để giao tiếp.",
-        "pronunciation_focus": [
-          "comprendre→côm-prăng",
-          "différences→đi-fê-răng"
-        ]
-      },
-      {
-        "en": "On doit s'adapter aux coutumes locales.",
-        "vi": "Phải thích nghi với phong tục địa phương.",
-        "pronunciation_focus": [
-          "s'adapter→xa-đáp-tê",
-          "coutumes→cu-tuym"
-        ]
-      }
-    ],
-    "cultural_notes_vi": "Bise thay đổi theo vùng: Paris 2, miền Nam 3, có nơi 4 lần. Bắt tay công việc mỗi sáng. Người Pháp nói 'non' trực tiếp — đừng hiểu là bất lịch sự. Giờ ăn trưa thiêng liêng.",
-    "tip_advice_vi": "Khi được mời ăn tối, mang rượu hoặc hoa (tránh cúc). Đến đúng giờ hoặc trễ 15 phút. Khen món ăn là bắt buộc.",
-    "vocabulary": [
-      {
-        "word": "la bise",
-        "en": "cheek kiss",
-        "vi": "hôn má",
-        "pos": "n.f.",
-        "pronunciation_vi": "bi-dơ"
-      },
-      {
-        "word": "serrer la main",
-        "en": "to shake hands",
-        "vi": "bắt tay",
-        "pos": "v.",
-        "pronunciation_vi": "xe-rê la manh"
-      },
-      {
-        "word": "le tutoiement",
-        "en": "using tu",
-        "vi": "xưng hô thân mật",
-        "pos": "n.m.",
-        "pronunciation_vi": "tu-toa-măng"
-      },
-      {
-        "word": "le vouvoiement",
-        "en": "using vous",
-        "vi": "xưng hô lịch sự",
-        "pos": "n.m.",
-        "pronunciation_vi": "vu-voa-măng"
-      },
-      {
-        "word": "direct",
-        "en": "direct",
-        "vi": "trực tiếp",
-        "pos": "adj.",
-        "pronunciation_vi": "đi-réc"
-      },
-      {
-        "word": "le compromis",
-        "en": "compromise",
-        "vi": "thỏa hiệp",
-        "pos": "n.m.",
-        "pronunciation_vi": "côm-prô-mi"
-      },
-      {
-        "word": "l'étiquette",
-        "en": "etiquette",
-        "vi": "phép tắc",
-        "pos": "n.f.",
-        "pronunciation_vi": "lê-ti-két"
-      },
-      {
-        "word": "s'adapter",
-        "en": "to adapt",
-        "vi": "thích nghi",
-        "pos": "v.",
-        "pronunciation_vi": "xa-đáp-tê"
-      },
-      {
-        "word": "le décalage",
-        "en": "gap",
-        "vi": "khác biệt",
-        "pos": "n.m.",
-        "pronunciation_vi": "đê-ca-la-giơ"
-      },
-      {
-        "word": "la coutume",
-        "en": "custom",
-        "vi": "phong tục",
-        "pos": "n.f.",
-        "pronunciation_vi": "cu-tuym"
-      }
-    ],
-    "dialogue": [
-      {
-        "speaker": "A",
-        "text": "Pourquoi mon collègue dit toujours non directement ?",
-        "en": "Why does my colleague always say no directly?"
-      },
-      {
-        "speaker": "B",
-        "text": "Ce n'est pas impoli, c'est leur façon de communiquer.",
-        "en": "It's not rude, it's their way of communicating."
-      },
-      {
-        "speaker": "A",
-        "text": "Au Vietnam, on dirait 'peut-être' pour être poli.",
-        "en": "In Vietnam, we'd say 'maybe' to be polite."
-      },
-      {
-        "speaker": "B",
-        "text": "Oui, c'est une grande différence culturelle !",
-        "en": "Yes, that's a big cultural difference!"
-      }
-    ],
-    "exercises": [
-      {
-        "type": "fill-blank",
-        "question": "En France, on fait la ___ pour se saluer.",
-        "answer": "bise"
-      },
-      {
-        "type": "matching",
-        "pairs": [
-          [
-            "le tutoiement",
-            "xưng hô thân mật"
+        },
+        {
+          "en": "Que penses-tu de cette nouvelle loi ?",
+          "vi": "Bạn nghĩ gì về luật mới?",
+          "pronunciation_focus": [
+            "penses→păng",
+            "nouvelle→nu-ven"
           ],
-          [
-            "s'adapter",
-            "thích nghi"
-          ],
-          [
-            "la coutume",
-            "phong tục"
+          "pronunciation_focus_en": [
+            "penses 'PAHNSS' — nasal 'en' held in the nose; final '-s' silent before consonant",
+            "nouvelle 'noo-VEL' — silent final '-e'; double 'll' is one 'l' sound (English 'l')"
           ]
-        ],
-        "instruction": "Nối từ với nghĩa"
-      },
-      {
-        "type": "translation",
-        "vietnamese": "Cần hiểu khác biệt văn hóa để giao tiếp tốt hơn.",
-        "french": "Il faut comprendre les différences culturelles pour mieux communiquer."
-      }
-    ]
-  },
-  {
-    "id": "french_society_social",
-    "level": "B1",
-    "category": "society",
-    "title_vi": "Mạng xã hội",
-    "title_en": "Social media",
-    "sentences": [
-      {
-        "en": "Je passe trop de temps sur les réseaux sociaux.",
-        "vi": "Tôi dành quá nhiều thời gian trên MXH.",
-        "pronunciation_focus": [
-          "passe→pát",
-          "réseaux→rê-dô",
-          "sociaux→xô-xi-ô"
-        ]
-      },
-      {
-        "en": "As-tu vu ma dernière publication ?",
-        "vi": "Bạn xem bài đăng mới của tôi chưa?",
-        "pronunciation_focus": [
-          "publication→pu-bli-ca-xi-on",
-          "dernière→đe-ni-e"
-        ]
-      },
-      {
-        "en": "Je partage beaucoup de photos de mes voyages.",
-        "vi": "Tôi chia sẻ nhiều ảnh du lịch.",
-        "pronunciation_focus": [
-          "partage→pa-ta-giơ",
-          "voyages→voa-ia-giơ"
-        ]
-      },
-      {
-        "en": "Attention aux fausses informations sur internet.",
-        "vi": "Coi chừng tin giả trên mạng.",
-        "pronunciation_focus": [
-          "attention→a-tăng-xi-on",
-          "fausses→phô"
-        ]
-      },
-      {
-        "en": "Les influenceurs ont beaucoup d'abonnés.",
-        "vi": "Người ảnh hưởng có nhiều người theo dõi.",
-        "pronunciation_focus": [
-          "influenceurs→anh-flu-ăng-xơ",
-          "abonnés→a-bô-nê"
-        ]
-      }
-    ],
-    "cultural_notes_vi": "Người Pháp dùng Facebook, Instagram, LinkedIn, Twitter/X. WhatsApp phổ biến hơn Messenger. GDPR bảo vệ dữ liệu nghiêm ngặt.",
-    "tip_advice_vi": "Học động từ: publier (đăng), partager (chia sẻ), commenter (bình luận), aimer (thích), s'abonner (theo dõi).",
-    "vocabulary": [
-      {
-        "word": "les réseaux sociaux",
-        "en": "social media",
-        "vi": "mạng xã hội",
-        "pos": "n.m.pl.",
-        "pronunciation_vi": "rê-dô xô-xi-ô"
-      },
-      {
-        "word": "publier",
-        "en": "to post",
-        "vi": "đăng",
-        "pos": "v.",
-        "pronunciation_vi": "pu-bli-ê"
-      },
-      {
-        "word": "partager",
-        "en": "to share",
-        "vi": "chia sẻ",
-        "pos": "v.",
-        "pronunciation_vi": "pa-ta-giê"
-      },
-      {
-        "word": "le commentaire",
-        "en": "comment",
-        "vi": "bình luận",
-        "pos": "n.m.",
-        "pronunciation_vi": "cô-măng-te"
-      },
-      {
-        "word": "s'abonner",
-        "en": "to subscribe",
-        "vi": "theo dõi",
-        "pos": "v.",
-        "pronunciation_vi": "xa-bô-nê"
-      },
-      {
-        "word": "l'abonné",
-        "en": "follower",
-        "vi": "người theo dõi",
-        "pos": "n.m.",
-        "pronunciation_vi": "la-bô-nê"
-      },
-      {
-        "word": "le like",
-        "en": "like",
-        "vi": "lượt thích",
-        "pos": "n.m.",
-        "pronunciation_vi": "la-íc"
-      },
-      {
-        "word": "le mot-clé",
-        "en": "hashtag",
-        "vi": "thẻ",
-        "pos": "n.m.",
-        "pronunciation_vi": "mô-clê"
-      },
-      {
-        "word": "la story",
-        "en": "story",
-        "vi": "tin",
-        "pos": "n.f.",
-        "pronunciation_vi": "xtô-ri"
-      },
-      {
-        "word": "l'influenceur",
-        "en": "influencer",
-        "vi": "người ảnh hưởng",
-        "pos": "n.m.",
-        "pronunciation_vi": "lanh-flu-ăng-xơ"
-      }
-    ],
-    "dialogue": [
-      {
-        "speaker": "A",
-        "text": "Tu as combien d'abonnés sur Instagram ?",
-        "en": "How many followers on Instagram?"
-      },
-      {
-        "speaker": "B",
-        "text": "Environ 2000. Et toi ?",
-        "en": "About 2000. You?"
-      },
-      {
-        "speaker": "A",
-        "text": "Seulement 500, mais je préfère la qualité !",
-        "en": "Only 500, but I prefer quality!"
-      },
-      {
-        "speaker": "B",
-        "text": "Bien dit ! As-tu vu ma nouvelle publication ?",
-        "en": "Well said! Did you see my new post?"
-      }
-    ],
-    "exercises": [
-      {
-        "type": "fill-blank",
-        "question": "Je passe trop de temps sur les ___ sociaux.",
-        "answer": "réseaux"
-      },
-      {
-        "type": "matching",
-        "pairs": [
-          [
-            "publier",
-            "đăng"
+        },
+        {
+          "en": "Il faut vérifier les sources avant de partager.",
+          "vi": "Phải kiểm tra nguồn trước khi chia sẻ.",
+          "pronunciation_focus": [
+            "vérifier→vê-ri-fi-ê",
+            "sources→xua"
           ],
-          [
-            "s'abonner",
-            "theo dõi"
-          ],
-          [
-            "le commentaire",
-            "bình luận"
+          "pronunciation_focus_en": [
+            "vérifier 'vay-ree-fee-AY' — '-er' verb ending sounds like English 'ay' in 'day'",
+            "sources 'SOORSS' — 'ou' = English 'oo' in 'boot' (NOT 'ow' as in 'house'); final '-s' silent in singular but the plural here keeps cluster"
           ]
-        ],
-        "instruction": "Nối từ với nghĩa"
-      },
-      {
-        "type": "translation",
-        "vietnamese": "Đừng chia sẻ thông tin cá nhân trên mạng xã hội.",
-        "french": "Ne partagez pas d'informations personnelles sur les réseaux sociaux."
-      }
-    ]
-  },
-  {
-    "id": "french_society_environment",
-    "level": "B1",
-    "category": "society",
-    "title_vi": "Môi trường và sinh thái",
-    "title_en": "Environment and ecology",
-    "sentences": [
-      {
-        "en": "Il faut protéger la planète.",
-        "vi": "Cần bảo vệ hành tinh.",
-        "pronunciation_focus": [
-          "protéger→prô-tê-giê",
-          "planète→pla-nét"
-        ]
-      },
-      {
-        "en": "Le recyclage est très important en France.",
-        "vi": "Tái chế rất quan trọng ở Pháp.",
-        "pronunciation_focus": [
-          "recyclage→rơ-xi-cla-giơ",
-          "important→anh-po-tăng"
-        ]
-      },
-      {
-        "en": "Je trie mes déchets tous les jours.",
-        "vi": "Tôi phân loại rác mỗi ngày.",
-        "pronunciation_focus": [
-          "trie→tri",
-          "déchets→đê-chê"
-        ]
-      },
-      {
-        "en": "Nous devons réduire notre consommation d'énergie.",
-        "vi": "Chúng ta phải giảm tiêu thụ năng lượng.",
-        "pronunciation_focus": [
-          "réduire→rê-đuiya",
-          "consommation→côn-xô-ma-xi-on"
-        ]
-      },
-      {
-        "en": "Le changement climatique est un problème urgent.",
-        "vi": "Biến đổi khí hậu cấp bách.",
-        "pronunciation_focus": [
-          "changement→săng-giơ-măng",
-          "climatique→cli-ma-tíc"
-        ]
-      }
-    ],
-    "cultural_notes_vi": "Pháp đi đầu bảo vệ môi trường. Phân loại rác: vàng (bao bì), xanh (thủy tinh), trắng (giấy), nâu (hữu cơ). Cấm túi nhựa một lần.",
-    "tip_advice_vi": "Dùng 'Il faut' + động từ: Il faut recycler, Il faut économiser l'eau. Đây là chủ đề yêu thích của người Pháp.",
-    "vocabulary": [
-      {
-        "word": "l'environnement",
-        "en": "environment",
-        "vi": "môi trường",
-        "pos": "n.m.",
-        "pronunciation_vi": "lăng-vi-rôn-măng"
-      },
-      {
-        "word": "recycler",
-        "en": "to recycle",
-        "vi": "tái chế",
-        "pos": "v.",
-        "pronunciation_vi": "rơ-xi-clê"
-      },
-      {
-        "word": "le déchet",
-        "en": "waste",
-        "vi": "rác",
-        "pos": "n.m.",
-        "pronunciation_vi": "đê-chê"
-      },
-      {
-        "word": "le réchauffement",
-        "en": "global warming",
-        "vi": "nóng lên toàn cầu",
-        "pos": "n.m.",
-        "pronunciation_vi": "rê-chô-phơ-măng"
-      },
-      {
-        "word": "la pollution",
-        "en": "pollution",
-        "vi": "ô nhiễm",
-        "pos": "n.f.",
-        "pronunciation_vi": "pô-lu-xi-on"
-      },
-      {
-        "word": "protéger",
-        "en": "to protect",
-        "vi": "bảo vệ",
-        "pos": "v.",
-        "pronunciation_vi": "prô-tê-giê"
-      },
-      {
-        "word": "l'énergie",
-        "en": "energy",
-        "vi": "năng lượng",
-        "pos": "n.f.",
-        "pronunciation_vi": "lê-ne-gi"
-      },
-      {
-        "word": "renouvelable",
-        "en": "renewable",
-        "vi": "tái tạo",
-        "pos": "adj.",
-        "pronunciation_vi": "rơ-nu-vơ-la-blơ"
-      },
-      {
-        "word": "économiser",
-        "en": "to save",
-        "vi": "tiết kiệm",
-        "pos": "v.",
-        "pronunciation_vi": "ê-cô-nô-mi-dê"
-      },
-      {
-        "word": "le climat",
-        "en": "climate",
-        "vi": "khí hậu",
-        "pos": "n.m.",
-        "pronunciation_vi": "cli-ma"
-      }
-    ],
-    "dialogue": [
-      {
-        "speaker": "A",
-        "text": "Est-ce que tu tries tes déchets chez toi ?",
-        "en": "Do you sort your waste at home?"
-      },
-      {
-        "speaker": "B",
-        "text": "Oui, bien sûr. J'ai trois poubelles différentes.",
-        "en": "Yes, of course. I have three different bins."
-      },
-      {
-        "speaker": "A",
-        "text": "C'est bien. Moi aussi, j'essaie de réduire le plastique.",
-        "en": "Good. I try to reduce plastic too."
-      },
-      {
-        "speaker": "B",
-        "text": "Chaque petit geste compte pour la planète !",
-        "en": "Every small gesture counts for the planet!"
-      }
-    ],
-    "exercises": [
-      {
-        "type": "fill-blank",
-        "question": "Il faut ___ la planète.",
-        "answer": "protéger"
-      },
-      {
-        "type": "matching",
-        "pairs": [
-          [
-            "recycler",
-            "tái chế"
+        },
+        {
+          "en": "Je lis Le Monde tous les matins.",
+          "vi": "Tôi đọc Le Monde mỗi sáng.",
+          "pronunciation_focus": [
+            "lis→li",
+            "matins→ma-tanh"
           ],
-          [
-            "économiser",
-            "tiết kiệm"
-          ],
-          [
-            "la pollution",
-            "ô nhiễm"
+          "pronunciation_focus_en": [
+            "lis 'LEE' — 1st-person of lire; final 's' silent",
+            "matins 'mah-TAN' — nasal 'in' (held in the nose, no 'n' release); final '-s' silent"
           ]
-        ],
-        "instruction": "Nối từ với nghĩa"
-      },
-      {
-        "type": "translation",
-        "vietnamese": "Biến đổi khí hậu là vấn đề nghiêm trọng nhất.",
-        "french": "Le changement climatique est le problème le plus grave."
-      }
-    ]
-  },
-  {
-    "id": "french_society_interview",
-    "level": "B1",
-    "category": "society",
-    "title_vi": "Phỏng vấn xin việc",
-    "title_en": "Job interviews",
-    "sentences": [
-      {
-        "en": "Pouvez-vous vous présenter brièvement ?",
-        "vi": "Hãy tự giới thiệu ngắn gọn.",
-        "pronunciation_focus": [
-          "présenter→prê-dăng-tê",
-          "brièvement→bri-è-vơ-măng"
-        ]
-      },
-      {
-        "en": "Quelles sont vos motivations ?",
-        "vi": "Động lực của bạn là gì?",
-        "pronunciation_focus": [
-          "motivations→mô-ti-va-xi-on",
-          "nasal on"
-        ]
-      },
-      {
-        "en": "J'ai cinq ans d'expérience dans ce domaine.",
-        "vi": "Tôi có 5 năm kinh nghiệm.",
-        "pronunciation_focus": [
-          "expérience→éc-xpê-ri-ăng",
-          "domaine→đô-men"
-        ]
-      },
-      {
-        "en": "Quel est votre niveau de français ?",
-        "vi": "Trình độ tiếng Pháp thế nào?",
-        "pronunciation_focus": [
-          "niveau→ni-vô",
-          "français→frăng-xe"
-        ]
-      },
-      {
-        "en": "Pourquoi voulez-vous travailler chez nous ?",
-        "vi": "Tại sao muốn làm ở công ty tôi?",
-        "pronunciation_focus": [
-          "pourquoi→pua-qua",
-          "travailler→tra-va-iê"
-        ]
-      }
-    ],
-    "cultural_notes_vi": "CV Pháp có ảnh. Thư xin việc viết tay được đánh giá cao. Hỏi lương bình thường ở vòng 2. Nhà tuyển dụng chú trọng bằng cấp và trường học.",
-    "tip_advice_vi": "Chuẩn bị 3 câu: 'Parlez-moi de vous', 'Vos qualités et défauts', 'Où vous voyez-vous dans 5 ans ?'. Kết thúc 'Je vous remercie pour cet entretien'.",
-    "vocabulary": [
-      {
-        "word": "l'entretien",
-        "en": "interview",
-        "vi": "phỏng vấn",
-        "pos": "n.m.",
-        "pronunciation_vi": "lăng-trơ-tianh"
-      },
-      {
-        "word": "le CV",
-        "en": "resume",
-        "vi": "sơ yếu lý lịch",
-        "pos": "n.m.",
-        "pronunciation_vi": "xê-vê"
-      },
-      {
-        "word": "la candidature",
-        "en": "application",
-        "vi": "hồ sơ ứng tuyển",
-        "pos": "n.f.",
-        "pronunciation_vi": "căng-đi-đa-tuya"
-      },
-      {
-        "word": "l'expérience",
-        "en": "experience",
-        "vi": "kinh nghiệm",
-        "pos": "n.f.",
-        "pronunciation_vi": "léc-xpê-ri-ăng"
-      },
-      {
-        "word": "la compétence",
-        "en": "skill",
-        "vi": "kỹ năng",
-        "pos": "n.f.",
-        "pronunciation_vi": "côm-pê-tăng"
-      },
-      {
-        "word": "postuler",
-        "en": "to apply",
-        "vi": "ứng tuyển",
-        "pos": "v.",
-        "pronunciation_vi": "pô-xtu-lê"
-      },
-      {
-        "word": "le recruteur",
-        "en": "recruiter",
-        "vi": "nhà tuyển dụng",
-        "pos": "n.m.",
-        "pronunciation_vi": "rơ-cru-tơ"
-      },
-      {
-        "word": "la formation",
-        "en": "training",
-        "vi": "đào tạo",
-        "pos": "n.f.",
-        "pronunciation_vi": "fo-ma-xi-on"
-      },
-      {
-        "word": "le salaire",
-        "en": "salary",
-        "vi": "lương",
-        "pos": "n.m.",
-        "pronunciation_vi": "xa-le"
-      },
-      {
-        "word": "le stage",
-        "en": "internship",
-        "vi": "thực tập",
-        "pos": "n.m.",
-        "pronunciation_vi": "xta-giơ"
-      }
-    ],
-    "dialogue": [
-      {
-        "speaker": "A",
-        "text": "Bonjour, merci de me recevoir.",
-        "en": "Hello, thank you for receiving me."
-      },
-      {
-        "speaker": "B",
-        "text": "Parlez-moi de votre parcours.",
-        "en": "Tell me about your background."
-      },
-      {
-        "speaker": "A",
-        "text": "J'ai travaillé cinq ans en marketing digital.",
-        "en": "I worked five years in digital marketing."
-      },
-      {
-        "speaker": "B",
-        "text": "Pourquoi notre entreprise vous intéresse ?",
-        "en": "Why are you interested in our company?"
-      }
-    ],
-    "exercises": [
-      {
-        "type": "fill-blank",
-        "question": "J'ai trois ans d'___ dans ce domaine.",
-        "answer": "expérience"
-      },
-      {
-        "type": "matching",
-        "pairs": [
-          [
-            "l'entretien",
-            "phỏng vấn"
+        },
+        {
+          "en": "Les informations disent que la situation s'améliore.",
+          "vi": "Tin tức nói tình hình đang cải thiện.",
+          "pronunciation_focus": [
+            "informations→anh-fo-ma-xi-on",
+            "s'améliore→xa-mê-li-o"
           ],
-          [
-            "postuler",
-            "ứng tuyển"
-          ],
-          [
-            "le recruteur",
-            "nhà tuyển dụng"
+          "pronunciation_focus_en": [
+            "informations 'an-for-mah-SYON' — nasal 'in' start, nasal 'on' end; '-tion' = 'syon'",
+            "s'améliore 'sah-may-LYOR' — reflexive 's''; '-iore' = 'yor'"
           ]
-        ],
-        "instruction": "Nối từ với nghĩa"
-      },
-      {
-        "type": "translation",
-        "vietnamese": "Tôi muốn làm ở công ty này vì tôi ngưỡng mộ giá trị của nó.",
-        "french": "Je veux travailler ici parce que j'admire ses valeurs."
-      }
-    ]
-  },
-  {
-    "id": "french_expr_opinions",
-    "level": "B1",
-    "category": "expressions",
-    "title_vi": "Bày tỏ ý kiến",
-    "title_en": "Expressing opinions",
-    "sentences": [
-      {
-        "en": "À mon avis, ce projet a du potentiel.",
-        "vi": "Theo tôi, dự án có tiềm năng.",
-        "pronunciation_focus": [
-          "avis→a-vi",
-          "projet→prô-giê",
-          "potentiel→pô-tăng-xi-en"
-        ]
-      },
-      {
-        "en": "Je pense que c'est une excellente idée.",
-        "vi": "Tôi nghĩ đó là ý tưởng xuất sắc.",
-        "pronunciation_focus": [
-          "pense→păng",
-          "excellente→éc-xe-lăng"
-        ]
-      },
-      {
-        "en": "Personnellement, je ne suis pas convaincu.",
-        "vi": "Cá nhân tôi chưa bị thuyết phục.",
-        "pronunciation_focus": [
-          "personnellement→pe-xô-nen-măng",
-          "convaincu→côn-vanh-cu"
-        ]
-      },
-      {
-        "en": "Il me semble que nous devrions attendre.",
-        "vi": "Tôi thấy chúng ta nên chờ.",
-        "pronunciation_focus": [
-          "semble→xăm",
-          "devrions→đơ-vri-on"
-        ]
-      },
-      {
-        "en": "D'un côté je comprends, de l'autre…",
-        "vi": "Một mặt tôi hiểu, mặt khác…",
-        "pronunciation_focus": [
-          "côté→cô-tê",
-          "comprends→côm-prăng"
-        ]
-      }
-    ],
-    "cultural_notes_vi": "Người Pháp thích tranh luận. Cách lịch sự: 'À mon avis', 'Je pense que', 'Il me semble que'. Phản biện: 'Je ne suis pas d'accord'. Tránh 'Tu as tort'.",
-    "tip_advice_vi": "Khi ngắt lời lịch sự: 'Excusez-moi de vous interrompre'. Quay lại chủ đề: 'Pour en revenir à notre sujet…'",
-    "vocabulary": [
-      {
-        "word": "l'avis",
-        "en": "opinion",
-        "vi": "ý kiến",
-        "pos": "n.m.",
-        "pronunciation_vi": "la-vi"
-      },
-      {
-        "word": "selon",
-        "en": "according to",
-        "vi": "theo",
-        "pos": "prép.",
-        "pronunciation_vi": "xơ-lon"
-      },
-      {
-        "word": "convaincre",
-        "en": "to convince",
-        "vi": "thuyết phục",
-        "pos": "v.",
-        "pronunciation_vi": "côn-vanh-crơ"
-      },
-      {
-        "word": "douter",
-        "en": "to doubt",
-        "vi": "nghi ngờ",
-        "pos": "v.",
-        "pronunciation_vi": "đu-tê"
-      },
-      {
-        "word": "approuver",
-        "en": "to approve",
-        "vi": "tán thành",
-        "pos": "v.",
-        "pronunciation_vi": "a-pru-vê"
-      },
-      {
-        "word": "contester",
-        "en": "to contest",
-        "vi": "phản đối",
-        "pos": "v.",
-        "pronunciation_vi": "côn-tét-tê"
-      },
-      {
-        "word": "l'argument",
-        "en": "argument",
-        "vi": "lập luận",
-        "pos": "n.m.",
-        "pronunciation_vi": "la-ghu-măng"
-      },
-      {
-        "word": "nuancer",
-        "en": "to qualify",
-        "vi": "nói giảm nhẹ",
-        "pos": "v.",
-        "pronunciation_vi": "nu-ăng-xê"
-      },
-      {
-        "word": "franchement",
-        "en": "frankly",
-        "vi": "thẳng thắn",
-        "pos": "adv.",
-        "pronunciation_vi": "frăng-sơ-măng"
-      },
-      {
-        "word": "partager",
-        "en": "to share",
-        "vi": "chia sẻ",
-        "pos": "v.",
-        "pronunciation_vi": "pa-ta-giê"
-      }
-    ],
-    "dialogue": [
-      {
-        "speaker": "A",
-        "text": "Que penses-tu du nouveau logo ?",
-        "en": "What do you think of the new logo?"
-      },
-      {
-        "speaker": "B",
-        "text": "Franchement, je ne suis pas convaincu.",
-        "en": "Frankly, I'm not convinced."
-      },
-      {
-        "speaker": "A",
-        "text": "Je comprends, mais je le trouve plus moderne.",
-        "en": "I understand, but I find it more modern."
-      },
-      {
-        "speaker": "B",
-        "text": "C'est vrai, mais il manque d'identité.",
-        "en": "True, but it lacks identity."
-      }
-    ],
-    "exercises": [
-      {
-        "type": "fill-blank",
-        "question": "___ mon avis, c'est une bonne idée.",
-        "answer": "À"
-      },
-      {
-        "type": "matching",
-        "pairs": [
-          [
-            "l'avis",
-            "ý kiến"
+        }
+      ],
+      "cultural_notes_vi": "Người Pháp đọc báo nhiều. Le Monde (trung lập), Le Figaro (hữu), Libération (tả). Tranh luận chính trị là môn thể thao quốc dân.",
+      "tip_advice_vi": "Dùng 'À mon avis…', 'Je pense que…', 'Il me semble que…'. Tránh nói 'c'est nul'.",
+      "vocabulary": [
+        {
+          "word": "l'actualité",
+          "en": "current events",
+          "vi": "thời sự",
+          "pos": "n.f.",
+          "pronunciation_vi": "lắc-tu-a-li-tê",
+          "pronunciation_en": "lak-twa-lee-TAY — elided 'l''; '-té' = 'tay'; stress on last syllable"
+        },
+        {
+          "word": "le journal",
+          "en": "newspaper",
+          "vi": "báo",
+          "pos": "n.m.",
+          "pronunciation_vi": "giua-nan",
+          "pronunciation_en": "luh zhoor-NAL — 'j' = 'zh' as in 'measure'; final 'l' pronounced"
+        },
+        {
+          "word": "l'article",
+          "en": "article",
+          "vi": "bài báo",
+          "pos": "n.m.",
+          "pronunciation_vi": "la-tíc",
+          "pronunciation_en": "lar-TEEKL — silent final '-e'; final 'kl' cluster pronounced"
+        },
+        {
+          "word": "partager",
+          "en": "to share",
+          "vi": "chia sẻ",
+          "pos": "v.",
+          "pronunciation_vi": "pa-ta-giê",
+          "pronunciation_en": "par-tah-ZHAY — 'g' before 'e' = 'zh'; '-er' = 'ay'"
+        },
+        {
+          "word": "débattre",
+          "en": "to debate",
+          "vi": "tranh luận",
+          "pos": "v.",
+          "pronunciation_vi": "đê-bát",
+          "pronunciation_en": "day-BAT-truh — double 't' is one 't' sound; final '-re' barely voiced"
+        },
+        {
+          "word": "la source",
+          "en": "source",
+          "vi": "nguồn",
+          "pos": "n.f.",
+          "pronunciation_vi": "xua-xơ",
+          "pronunciation_en": "lah SOORSS — 'ou' = 'oo'; final '-e' silent"
+        },
+        {
+          "word": "vérifier",
+          "en": "to verify",
+          "vi": "kiểm tra",
+          "pos": "v.",
+          "pronunciation_vi": "vê-ri-fi-ê",
+          "pronunciation_en": "vay-ree-fee-AY — '-er' = 'ay'; stress on last syllable"
+        },
+        {
+          "word": "l'opinion",
+          "en": "opinion",
+          "vi": "ý kiến",
+          "pos": "n.f.",
+          "pronunciation_vi": "lô-pi-ni-on",
+          "pronunciation_en": "loh-pee-NYOHN — '-ion' = 'yohn'; final '-on' nasal"
+        },
+        {
+          "word": "la Une",
+          "en": "front page",
+          "vi": "trang nhất",
+          "pos": "n.f.",
+          "pronunciation_vi": "la Un",
+          "pronunciation_en": "lah OON — 'la Une' (front page, lit. 'the one'); 'u' is rounded French 'u' (no English equivalent — say 'ee' with rounded lips)"
+        },
+        {
+          "word": "fiable",
+          "en": "reliable",
+          "vi": "đáng tin",
+          "pos": "adj.",
+          "pronunciation_vi": "fi-a-blơ",
+          "pronunciation_en": "FYAH-bluh — final '-le' barely voiced; 'i' = 'ee'"
+        }
+      ],
+      "dialogue": [
+        {
+          "speaker": "A",
+          "text": "Tu as vu les infos ce matin ?",
+          "en": "Did you see the news this morning?",
+          "vi": "Bạn xem tin sáng nay chưa?"
+        },
+        {
+          "speaker": "B",
+          "text": "Oui, il y a une manifestation à Paris.",
+          "en": "Yes, there's a protest in Paris.",
+          "vi": "Có rồi, có biểu tình ở Paris đó."
+        },
+        {
+          "speaker": "A",
+          "text": "C'est à propos de la réforme des retraites ?",
+          "en": "Is it about the pension reform?",
+          "vi": "Vụ cải cách hưu trí phải không?"
+        },
+        {
+          "speaker": "B",
+          "text": "Exactement. Qu'est-ce que tu en penses ?",
+          "en": "Exactly. What do you think?",
+          "vi": "Đúng rồi. Bạn nghĩ sao về vụ này?"
+        }
+      ],
+      "exercises": [
+        {
+          "type": "fill-blank",
+          "question": "As-tu lu l'___ sur les élections ?",
+          "answer": "article",
+          "hint_vi": "danh từ giống đực — bài báo",
+          "hint_en": "masculine noun — newspaper article (l'article)"
+        },
+        {
+          "type": "matching",
+          "pairs": [
+            [
+              "l'actualité",
+              "thời sự (current events)"
+            ],
+            [
+              "partager",
+              "chia sẻ (to share)"
+            ],
+            [
+              "fiable",
+              "đáng tin (reliable)"
+            ]
           ],
-          [
-            "approuver",
-            "tán thành"
+          "instruction": "Nối từ Pháp với nghĩa Việt",
+          "instruction_en": "Match the French word with its Vietnamese meaning"
+        },
+        {
+          "type": "translation",
+          "vietnamese": "Theo tôi, tình hình sẽ cải thiện năm tới.",
+          "english": "In my opinion, the situation will improve next year.",
+          "french": "À mon avis, la situation s'améliorera l'année prochaine."
+        }
+      ],
+      "cultural_notes_en": "French daily news consumption is high — most adults follow at least one paper or radio program. The political leanings of the major papers are well-known and openly acknowledged: Le Monde (center-left, paper of record), Le Figaro (center-right), Libération (left). Discussing politics over coffee is national sport — it is not a private topic the way it often is in US workplaces. Expected register is debate, not consensus: disagreeing energetically is participation, not rudeness.",
+      "tip_advice_en": "Open opinions with hedges: 'À mon avis…' (in my opinion), 'Je pense que…' (I think that), 'Il me semble que…' (it seems to me). Avoid the absolute 'c'est nul' (it's rubbish) unless you can defend it — it lands as a conversation-stopper rather than a position. The conditional 'je dirais que…' (I'd say that…) is the safest way to introduce a strong opinion."
+    },
+    {
+      "id": "french_society_culture",
+      "level": "B1",
+      "category": "society",
+      "title_vi": "Khác biệt văn hóa Pháp-Việt",
+      "title_en": "French-Vietnamese cultural differences",
+      "sentences": [
+        {
+          "en": "En France, on fait la bise pour se saluer.",
+          "vi": "Ở Pháp, hôn má để chào.",
+          "pronunciation_focus": [
+            "bise→bi-dơ",
+            "saluer→xa-lu-ê"
           ],
-          [
-            "franchement",
-            "thẳng thắn"
+          "pronunciation_focus_en": [
+            "bise 'BEEZ' — 's' between vowels = 'z'; final '-e' silent",
+            "saluer 'sah-loo-AY' — 'u' is rounded French 'u'; '-er' = 'ay'"
           ]
-        ],
-        "instruction": "Nối từ với nghĩa"
-      },
-      {
-        "type": "translation",
-        "vietnamese": "Theo tôi, nên chờ thêm thông tin.",
-        "french": "À mon avis, nous devrions attendre plus d'informations."
-      }
-    ]
-  },
-  {
-    "id": "french_expr_suggestions",
-    "level": "B1",
-    "category": "expressions",
-    "title_vi": "Đề xuất và gợi ý",
-    "title_en": "Making suggestions",
-    "sentences": [
-      {
-        "en": "Et si on allait au restaurant ce soir ?",
-        "vi": "Hay tối nay đi nhà hàng?",
-        "pronunciation_focus": [
-          "allait→a-le",
-          "restaurant→rét-x-tô-răng"
-        ]
-      },
-      {
-        "en": "Je te propose de commencer par le plus simple.",
-        "vi": "Tôi đề nghị bắt đầu từ đơn giản nhất.",
-        "pronunciation_focus": [
-          "propose→prô-pô-dơ",
-          "commencer→cô-măng-xê"
-        ]
-      },
-      {
-        "en": "Pourquoi ne pas essayer une autre méthode ?",
-        "vi": "Sao không thử cách khác?",
-        "pronunciation_focus": [
-          "pourquoi→pua-qua",
-          "essayer→ê-xe-iê"
-        ]
-      },
-      {
-        "en": "Nous pourrions reporter la réunion.",
-        "vi": "Chúng ta có thể hoãn cuộc họp.",
-        "pronunciation_focus": [
-          "pourrions→pu-ri-on",
-          "reporter→rơ-po-tê"
-        ]
-      },
-      {
-        "en": "Ça te dirait de partir en week-end ?",
-        "vi": "Bạn muốn đi chơi cuối tuần không?",
-        "pronunciation_focus": [
-          "dirait→đi-re",
-          "partir→pa-tia"
-        ]
-      }
-    ],
-    "cultural_notes_vi": "Người Pháp dùng nhiều cách đề xuất: câu hỏi (Et si on…?), điều kiện (On pourrait…), gợi ý nhẹ (Je te propose…). 'Pourquoi ne pas…' là cách rất Pháp.",
-    "tip_advice_vi": "Công việc: 'Je suggère que…'. Đồng ý: 'Bonne idée !'. Từ chối nhẹ: 'C'est une bonne idée, mais…'",
-    "vocabulary": [
-      {
-        "word": "proposer",
-        "en": "to suggest",
-        "vi": "đề xuất",
-        "pos": "v.",
-        "pronunciation_vi": "prô-pô-dê"
-      },
-      {
-        "word": "suggérer",
-        "en": "to suggest",
-        "vi": "gợi ý",
-        "pos": "v.",
-        "pronunciation_vi": "xu-giê-rê"
-      },
-      {
-        "word": "si on…",
-        "en": "what if we…",
-        "vi": "nếu chúng ta…",
-        "pos": "expr.",
-        "pronunciation_vi": "xi on"
-      },
-      {
-        "word": "pourquoi pas",
-        "en": "why not",
-        "vi": "tại sao không",
-        "pos": "expr.",
-        "pronunciation_vi": "pua-qua pa"
-      },
-      {
-        "word": "ça te dit",
-        "en": "are you up for",
-        "vi": "bạn muốn",
-        "pos": "expr.",
-        "pronunciation_vi": "xa tơ đi"
-      },
-      {
-        "word": "l'alternative",
-        "en": "alternative",
-        "vi": "lựa chọn khác",
-        "pos": "n.f.",
-        "pronunciation_vi": "lan-te-na-tiv"
-      },
-      {
-        "word": "la solution",
-        "en": "solution",
-        "vi": "giải pháp",
-        "pos": "n.f.",
-        "pronunciation_vi": "xô-lu-xi-on"
-      },
-      {
-        "word": "envisager",
-        "en": "to consider",
-        "vi": "dự tính",
-        "pos": "v.",
-        "pronunciation_vi": "ăng-vi-da-giê"
-      },
-      {
-        "word": "tenter",
-        "en": "to try",
-        "vi": "thử",
-        "pos": "v.",
-        "pronunciation_vi": "tăng-tê"
-      },
-      {
-        "word": "recommander",
-        "en": "to recommend",
-        "vi": "khuyến nghị",
-        "pos": "v.",
-        "pronunciation_vi": "rơ-cô-măng-đê"
-      }
-    ],
-    "dialogue": [
-      {
-        "speaker": "A",
-        "text": "Je ne sais pas quoi faire ce week-end.",
-        "en": "I don't know what to do this weekend."
-      },
-      {
-        "speaker": "B",
-        "text": "Et si on visitait le Louvre ? C'est gratuit dimanche.",
-        "en": "What if we visited the Louvre? It's free Sunday."
-      },
-      {
-        "speaker": "A",
-        "text": "Bonne idée ! Ça fait longtemps.",
-        "en": "Good idea! It's been a while."
-      },
-      {
-        "speaker": "B",
-        "text": "Super, on se retrouve à 10h ?",
-        "en": "Great, meet at 10am?"
-      }
-    ],
-    "exercises": [
-      {
-        "type": "fill-blank",
-        "question": "Et ___ on allait au cinéma ?",
-        "answer": "si"
-      },
-      {
-        "type": "matching",
-        "pairs": [
-          [
-            "proposer",
-            "đề xuất"
+        },
+        {
+          "en": "Les Français sont plus directs dans la conversation.",
+          "vi": "Người Pháp nói chuyện trực tiếp hơn.",
+          "pronunciation_focus": [
+            "Français→frăng-xe",
+            "directs→đi-réc"
           ],
-          [
-            "envisager",
-            "dự tính"
-          ],
-          [
-            "tenter",
-            "thử"
+          "pronunciation_focus_en": [
+            "Français 'frahn-SEH' — nasal 'an'; final '-s' silent in singular (but liaison can voice it before vowels)",
+            "directs 'dee-REKT' — when adjective is plural in writing the final 's' stays silent; final 't' silent unless followed by vowel"
           ]
-        ],
-        "instruction": "Nối từ với nghĩa"
-      },
-      {
-        "type": "translation",
-        "vietnamese": "Tôi đề nghị bắt đầu họp sớm 15 phút.",
-        "french": "Je propose de commencer la réunion 15 minutes plus tôt."
-      }
-    ]
-  },
-  {
-    "id": "french_expr_apologies",
-    "level": "B1",
-    "category": "expressions",
-    "title_vi": "Xin lỗi và biện hộ",
-    "title_en": "Apologizing and giving excuses",
-    "sentences": [
-      {
-        "en": "Je suis vraiment désolé pour le retard.",
-        "vi": "Tôi rất xin lỗi vì đến muộn.",
-        "pronunciation_focus": [
-          "désolé→đê-dô-lê",
-          "retard→rơ-ta"
-        ]
-      },
-      {
-        "en": "Excusez-moi, je ne l'ai pas fait exprès.",
-        "vi": "Xin lỗi, tôi không cố ý.",
-        "pronunciation_focus": [
-          "excusez→éc-xcu-dê",
-          "exprès→éc-xprê"
-        ]
-      },
-      {
-        "en": "C'est de ma faute, je prends la responsabilité.",
-        "vi": "Lỗi tôi, tôi chịu trách nhiệm.",
-        "pronunciation_focus": [
-          "faute→phô-tơ",
-          "responsabilité→rét-xpon-xa-bi-li-tê"
-        ]
-      },
-      {
-        "en": "Je te prie de m'excuser.",
-        "vi": "Tôi xin bạn thứ lỗi.",
-        "pronunciation_focus": [
-          "prie→pri",
-          "m'excuser→méc-xcu-dê"
-        ]
-      },
-      {
-        "en": "Malheureusement, je ne pourrai pas venir.",
-        "vi": "Tiếc quá, tôi không đến được.",
-        "pronunciation_focus": [
-          "malheureusement→ma-lơ-rơ-dơ-măng",
-          "pourrai→pu-re"
-        ]
-      }
-    ],
-    "cultural_notes_vi": "Lời xin lỗi nhiều cấp: Pardon (nhẹ), Désolé (trung bình), Excusez-moi (lịch sự), Je vous prie de m'excuser (trang trọng). Tránh 'C'est pas grave' khi nhận lời xin lỗi.",
-    "tip_advice_vi": "Đi muộn: gọi điện báo. Không đến được: báo 24h trước. 'Je suis navré' mạnh hơn 'désolé'.",
-    "vocabulary": [
-      {
-        "word": "désolé",
-        "en": "sorry",
-        "vi": "xin lỗi",
-        "pos": "adj.",
-        "pronunciation_vi": "đê-dô-lê"
-      },
-      {
-        "word": "s'excuser",
-        "en": "to apologize",
-        "vi": "xin lỗi",
-        "pos": "v.",
-        "pronunciation_vi": "xéc-xcu-dê"
-      },
-      {
-        "word": "le regret",
-        "en": "regret",
-        "vi": "hối tiếc",
-        "pos": "n.m.",
-        "pronunciation_vi": "rơ-gre"
-      },
-      {
-        "word": "la faute",
-        "en": "fault",
-        "vi": "lỗi",
-        "pos": "n.f.",
-        "pronunciation_vi": "phô-tơ"
-      },
-      {
-        "word": "pardonner",
-        "en": "to forgive",
-        "vi": "tha thứ",
-        "pos": "v.",
-        "pronunciation_vi": "pa-đô-nê"
-      },
-      {
-        "word": "navré",
-        "en": "very sorry",
-        "vi": "rất tiếc",
-        "pos": "adj.",
-        "pronunciation_vi": "na-vrê"
-      },
-      {
-        "word": "le malentendu",
-        "en": "misunderstanding",
-        "vi": "hiểu lầm",
-        "pos": "n.m.",
-        "pronunciation_vi": "ma-lăng-tăng-đu"
-      },
-      {
-        "word": "rattraper",
-        "en": "to make up for",
-        "vi": "bù đắp",
-        "pos": "v.",
-        "pronunciation_vi": "ra-tra-pê"
-      },
-      {
-        "word": "involontairement",
-        "en": "unintentionally",
-        "vi": "vô ý",
-        "pos": "adv.",
-        "pronunciation_vi": "anh-vô-lon-te-măng"
-      },
-      {
-        "word": "regrettable",
-        "en": "regrettable",
-        "vi": "đáng tiếc",
-        "pos": "adj.",
-        "pronunciation_vi": "rơ-gre-ta-blơ"
-      }
-    ],
-    "dialogue": [
-      {
-        "speaker": "A",
-        "text": "Désolé d'être en retard, le métro était bloqué.",
-        "en": "Sorry I'm late, metro was blocked."
-      },
-      {
-        "speaker": "B",
-        "text": "Ce n'est pas grave, ça arrive.",
-        "en": "It's okay, it happens."
-      },
-      {
-        "speaker": "A",
-        "text": "Je te dois un café pour me faire pardonner !",
-        "en": "I owe you a coffee to make up!"
-      },
-      {
-        "speaker": "B",
-        "text": "Avec plaisir, mais envoie un message la prochaine fois !",
-        "en": "With pleasure, but send a message next time!"
-      }
-    ],
-    "exercises": [
-      {
-        "type": "fill-blank",
-        "question": "Je suis ___ pour le retard.",
-        "answer": "désolé"
-      },
-      {
-        "type": "matching",
-        "pairs": [
-          [
-            "s'excuser",
-            "xin lỗi"
+        },
+        {
+          "en": "Au Vietnam, éviter le conflit est important.",
+          "vi": "Ở VN, tránh xung đột quan trọng.",
+          "pronunciation_focus": [
+            "Vietnam→Vi-ét-nam",
+            "conflit→côn-fli"
           ],
-          [
-            "la faute",
-            "lỗi"
-          ],
-          [
-            "pardonner",
-            "tha thứ"
+          "pronunciation_focus_en": [
+            "Vietnam 'vyet-NAHM' — anglicized in French speech; final 'm' lightly pronounced",
+            "conflit 'kohn-FLEE' — nasal 'on'; final 't' silent"
           ]
-        ],
-        "instruction": "Nối từ với nghĩa"
-      },
-      {
-        "type": "translation",
-        "vietnamese": "Xin lỗi, tôi không cố ý làm phiền.",
-        "french": "Excusez-moi, je n'ai pas fait exprès de vous déranger."
-      }
-    ]
-  },
-  {
-    "id": "french_expr_advice",
-    "level": "B1",
-    "category": "expressions",
-    "title_vi": "Cho lời khuyên",
-    "title_en": "Giving advice",
-    "sentences": [
-      {
-        "en": "Si j'étais toi, je commencerais par l'urgent.",
-        "vi": "Nếu tôi là bạn, tôi bắt đầu việc gấp.",
-        "pronunciation_focus": [
-          "étais→ê-te",
-          "commencerais→cô-măng-xơ-re"
-        ]
-      },
-      {
-        "en": "À ta place, je ne dirais rien.",
-        "vi": "Ở vị trí bạn, tôi sẽ không nói gì.",
-        "pronunciation_focus": [
-          "place→plát",
-          "dirais→đi-re"
-        ]
-      },
-      {
-        "en": "Mon conseil serait d'en parler directement.",
-        "vi": "Lời khuyên là nói chuyện trực tiếp.",
-        "pronunciation_focus": [
-          "conseil→côn-xây",
-          "directement→đi-réc-tơ-măng"
-        ]
-      },
-      {
-        "en": "Tu devrais prendre des vacances.",
-        "vi": "Bạn nên đi nghỉ đi.",
-        "pronunciation_focus": [
-          "devrais→đơ-vre",
-          "vacances→va-căng"
-        ]
-      },
-      {
-        "en": "Le mieux serait de consulter un spécialiste.",
-        "vi": "Tốt nhất là tham khảo chuyên gia.",
-        "pronunciation_focus": [
-          "mieux→mi-ơ",
-          "consulter→côn-xun-tê"
-        ]
-      }
-    ],
-    "cultural_notes_vi": "Khuyên tế nhị: 'Si j'étais toi…' (nhẹ nhất), 'Tu devrais…' (mạnh hơn). Tránh mệnh lệnh. Không khuyên chủ đề nhạy cảm trừ khi được hỏi.",
-    "tip_advice_vi": "Công việc: 'Je vous recommande de…'. Cá nhân: 'À ta place…' thân mật hơn.",
-    "vocabulary": [
-      {
-        "word": "le conseil",
-        "en": "advice",
-        "vi": "lời khuyên",
-        "pos": "n.m.",
-        "pronunciation_vi": "côn-xây"
-      },
-      {
-        "word": "conseiller",
-        "en": "to advise",
-        "vi": "khuyên",
-        "pos": "v.",
-        "pronunciation_vi": "côn-xê-iê"
-      },
-      {
-        "word": "recommander",
-        "en": "to recommend",
-        "vi": "khuyến nghị",
-        "pos": "v.",
-        "pronunciation_vi": "rơ-cô-măng-đê"
-      },
-      {
-        "word": "si j'étais toi",
-        "en": "if I were you",
-        "vi": "nếu là bạn",
-        "pos": "expr.",
-        "pronunciation_vi": "xi giê-tê toa"
-      },
-      {
-        "word": "à ta place",
-        "en": "in your shoes",
-        "vi": "ở vị trí bạn",
-        "pos": "expr.",
-        "pronunciation_vi": "a ta plát"
-      },
-      {
-        "word": "tu devrais",
-        "en": "you should",
-        "vi": "bạn nên",
-        "pos": "expr.",
-        "pronunciation_vi": "tu đơ-vre"
-      },
-      {
-        "word": "la suggestion",
-        "en": "suggestion",
-        "vi": "gợi ý",
-        "pos": "n.f.",
-        "pronunciation_vi": "xu-giét-xi-on"
-      },
-      {
-        "word": "prévenir",
-        "en": "to warn",
-        "vi": "cảnh báo",
-        "pos": "v.",
-        "pronunciation_vi": "prê-vơ-nia"
-      },
-      {
-        "word": "aider",
-        "en": "to help",
-        "vi": "giúp đỡ",
-        "pos": "v.",
-        "pronunciation_vi": "ê-đê"
-      },
-      {
-        "word": "soutenir",
-        "en": "to support",
-        "vi": "ủng hộ",
-        "pos": "v.",
-        "pronunciation_vi": "xu-tơ-nia"
-      }
-    ],
-    "dialogue": [
-      {
-        "speaker": "A",
-        "text": "Je ne sais pas si je dois accepter ce poste.",
-        "en": "I don't know if I should accept this job."
-      },
-      {
-        "speaker": "B",
-        "text": "Si j'étais toi, je prendrais le temps de réfléchir.",
-        "en": "If I were you, I'd take time to think."
-      },
-      {
-        "speaker": "A",
-        "text": "Mais j'ai peur qu'ils choisissent quelqu'un d'autre.",
-        "en": "But I'm afraid they'll pick someone else."
-      },
-      {
-        "speaker": "B",
-        "text": "Si c'est le bon poste, ils attendront.",
-        "en": "If it's right, they'll wait."
-      }
-    ],
-    "exercises": [
-      {
-        "type": "fill-blank",
-        "question": "___ j'étais toi, j'accepterais.",
-        "answer": "Si"
-      },
-      {
-        "type": "matching",
-        "pairs": [
-          [
-            "le conseil",
-            "lời khuyên"
+        },
+        {
+          "en": "Il faut comprendre les différences pour bien communiquer.",
+          "vi": "Cần hiểu khác biệt để giao tiếp.",
+          "pronunciation_focus": [
+            "comprendre→côm-prăng",
+            "différences→đi-fê-răng"
           ],
-          [
-            "recommander",
-            "khuyến nghị"
-          ],
-          [
-            "soutenir",
-            "ủng hộ"
+          "pronunciation_focus_en": [
+            "comprendre 'kohm-PRAHN-druh' — nasal 'om' + nasal 'en'; final '-re' barely voiced",
+            "différences 'dee-fay-RAHNSS' — nasal 'en'; final '-es' silent"
           ]
-        ],
-        "instruction": "Nối từ với nghĩa"
-      },
-      {
-        "type": "translation",
-        "vietnamese": "Tôi khuyên bạn học 30 phút mỗi ngày.",
-        "french": "Je te conseille d'étudier 30 minutes par jour."
-      }
-    ]
-  },
-  {
-    "id": "french_expr_experiences",
-    "level": "B1",
-    "category": "expressions",
-    "title_vi": "Kể về trải nghiệm",
-    "title_en": "Describing experiences",
-    "sentences": [
-      {
-        "en": "J'ai passé un an à l'étranger, c'était incroyable.",
-        "vi": "Tôi sống 1 năm ở nước ngoài, tuyệt vời.",
-        "pronunciation_focus": [
-          "passé→pa-xê",
-          "étranger→ê-trăng-giê",
-          "incroyable→anh-croa-ia-blơ"
-        ]
-      },
-      {
-        "en": "C'est la meilleure expérience de ma vie.",
-        "vi": "Trải nghiệm tuyệt nhất đời tôi.",
-        "pronunciation_focus": [
-          "meilleure→mê-iơ",
-          "expérience→éc-xpê-ri-ăng"
-        ]
-      },
-      {
-        "en": "Je n'oublierai jamais ce voyage au Vietnam.",
-        "vi": "Tôi không quên chuyến đi VN.",
-        "pronunciation_focus": [
-          "oublierai→u-bli-ơ-re",
-          "voyage→voa-ia-giơ"
-        ]
-      },
-      {
-        "en": "Quand j'étais petit, j'habitais à la campagne.",
-        "vi": "Hồi nhỏ tôi sống ở nông thôn.",
-        "pronunciation_focus": [
-          "étais→ê-te",
-          "habitais→a-bi-te",
-          "campagne→căm-pa-nhơ"
-        ]
-      },
-      {
-        "en": "Cette rencontre a changé ma vision des choses.",
-        "vi": "Cuộc gặp này thay đổi cách nhìn của tôi.",
-        "pronunciation_focus": [
-          "rencontre→răng-côn-trơ",
-          "changé→săng-giê"
-        ]
-      }
-    ],
-    "cultural_notes_vi": "Người Pháp thích kể chuyện. Dùng passé composé cho sự kiện, imparfait cho bối cảnh. Thêm cảm xúc: 'C'était magnifique !', 'Quelle surprise !'",
-    "tip_advice_vi": "Mở đầu: 'Laisse-moi te raconter…'. Dùng cử chỉ tay khi kể — người Pháp diễn tả rất nhiều.",
-    "vocabulary": [
-      {
-        "word": "raconter",
-        "en": "to tell",
-        "vi": "kể",
-        "pos": "v.",
-        "pronunciation_vi": "ra-côn-tê"
-      },
-      {
-        "word": "l'expérience",
-        "en": "experience",
-        "vi": "trải nghiệm",
-        "pos": "n.f.",
-        "pronunciation_vi": "léc-xpê-ri-ăng"
-      },
-      {
-        "word": "le souvenir",
-        "en": "memory",
-        "vi": "kỷ niệm",
-        "pos": "n.m.",
-        "pronunciation_vi": "xu-vơ-nia"
-      },
-      {
-        "word": "inoubliable",
-        "en": "unforgettable",
-        "vi": "khó quên",
-        "pos": "adj.",
-        "pronunciation_vi": "i-nu-bli-a-blơ"
-      },
-      {
-        "word": "voyager",
-        "en": "to travel",
-        "vi": "du lịch",
-        "pos": "v.",
-        "pronunciation_vi": "voa-ia-giê"
-      },
-      {
-        "word": "découvrir",
-        "en": "to discover",
-        "vi": "khám phá",
-        "pos": "v.",
-        "pronunciation_vi": "đê-cu-vria"
-      },
-      {
-        "word": "l'aventure",
-        "en": "adventure",
-        "vi": "phiêu lưu",
-        "pos": "n.f.",
-        "pronunciation_vi": "la-văng-tuya"
-      },
-      {
-        "word": "l'émotion",
-        "en": "emotion",
-        "vi": "cảm xúc",
-        "pos": "n.f.",
-        "pronunciation_vi": "lê-mô-xi-on"
-      },
-      {
-        "word": "marquant",
-        "en": "memorable",
-        "vi": "đáng nhớ",
-        "pos": "adj.",
-        "pronunciation_vi": "ma-căng"
-      },
-      {
-        "word": "partager",
-        "en": "to share",
-        "vi": "chia sẻ",
-        "pos": "v.",
-        "pronunciation_vi": "pa-ta-giê"
-      }
-    ],
-    "dialogue": [
-      {
-        "speaker": "A",
-        "text": "Raconte-moi ton voyage au Vietnam !",
-        "en": "Tell me about your Vietnam trip!"
-      },
-      {
-        "speaker": "B",
-        "text": "C'était incroyable ! Hanoï, Hoi An, HCM-Ville.",
-        "en": "Incredible! Hanoi, Hoi An, HCMC."
-      },
-      {
-        "speaker": "A",
-        "text": "Qu'est-ce qui t'a le plus marqué ?",
-        "en": "What impressed you most?"
-      },
-      {
-        "speaker": "B",
-        "text": "La nourriture ! Le phở est inoubliable.",
-        "en": "The food! Pho is unforgettable."
-      }
-    ],
-    "exercises": [
-      {
-        "type": "fill-blank",
-        "question": "J'ai passé un mois ___ Vietnam.",
-        "answer": "au"
-      },
-      {
-        "type": "matching",
-        "pairs": [
-          [
-            "raconter",
-            "kể"
+        },
+        {
+          "en": "On doit s'adapter aux coutumes locales.",
+          "vi": "Phải thích nghi với phong tục địa phương.",
+          "pronunciation_focus": [
+            "s'adapter→xa-đáp-tê",
+            "coutumes→cu-tuym"
           ],
-          [
-            "inoubliable",
-            "khó quên"
-          ],
-          [
-            "découvrir",
-            "khám phá"
+          "pronunciation_focus_en": [
+            "s'adapter 'sah-dap-TAY' — reflexive 's''; '-er' = 'ay'",
+            "coutumes 'koo-TOOM' — 'ou' = 'oo'; final 'u' is rounded French 'u'; final '-es' silent"
           ]
-        ],
-        "instruction": "Nối từ với nghĩa"
-      },
-      {
-        "type": "translation",
-        "vietnamese": "Tôi không quên lần đầu đến Paris.",
-        "french": "Je n'oublierai jamais la première fois à Paris."
-      }
-    ]
-  },
-  {
-    "id": "french_grammar_compare",
-    "level": "B1",
-    "category": "advanced_grammar",
-    "title_vi": "So sánh trong tiếng Pháp",
-    "title_en": "Comparisons in French",
-    "sentences": [
-      {
-        "en": "Paris est plus grand que Lyon.",
-        "vi": "Paris lớn hơn Lyon.",
-        "pronunciation_focus": [
-          "plus→plu",
-          "grand→grăng"
-        ]
-      },
-      {
-        "en": "Ce restaurant est moins cher.",
-        "vi": "Nhà hàng này rẻ hơn.",
-        "pronunciation_focus": [
-          "moins→moanh",
-          "cher→se"
-        ]
-      },
-      {
-        "en": "Marie est aussi intelligente que Paul.",
-        "vi": "Marie thông minh ngang Paul.",
-        "pronunciation_focus": [
-          "aussi→ô-xi",
-          "intelligente→anh-te-li-giăng"
-        ]
-      },
-      {
-        "en": "C'est le meilleur film que j'aie vu.",
-        "vi": "Đây là phim hay nhất tôi xem.",
-        "pronunciation_focus": [
-          "meilleur→mê-iơ",
-          "film→fìlm"
-        ]
-      },
-      {
-        "en": "Cette solution est la pire.",
-        "vi": "Giải pháp này tệ nhất.",
-        "pronunciation_focus": [
-          "pire→pia",
-          "solution→xô-lu-xi-on"
-        ]
-      }
-    ],
-    "cultural_notes_vi": "So sánh: plus... que (hơn), moins... que (kém), aussi... que (bằng). Bất quy tắc: bon→meilleur, bien→mieux, mauvais→pire.",
-    "tip_advice_vi": "'Meilleur' là tính từ, 'mieux' là trạng từ. Lỗi phổ biến nhất: 'Ce gâteau est meilleur' vs 'Elle chante mieux'.",
-    "vocabulary": [
-      {
-        "word": "plus...que",
-        "en": "more...than",
-        "vi": "hơn",
-        "pos": "expr.",
-        "pronunciation_vi": "plu…cơ"
-      },
-      {
-        "word": "moins...que",
-        "en": "less...than",
-        "vi": "kém hơn",
-        "pos": "expr.",
-        "pronunciation_vi": "moanh…cơ"
-      },
-      {
-        "word": "aussi...que",
-        "en": "as...as",
-        "vi": "bằng",
-        "pos": "expr.",
-        "pronunciation_vi": "ô-xi…cơ"
-      },
-      {
-        "word": "meilleur",
-        "en": "better",
-        "vi": "tốt hơn",
-        "pos": "adj.",
-        "pronunciation_vi": "mê-iơ"
-      },
-      {
-        "word": "pire",
-        "en": "worse",
-        "vi": "tệ hơn",
-        "pos": "adj.",
-        "pronunciation_vi": "pia"
-      },
-      {
-        "word": "mieux",
-        "en": "better (adv)",
-        "vi": "tốt hơn",
-        "pos": "adv.",
-        "pronunciation_vi": "mi-ơ"
-      },
-      {
-        "word": "le meilleur",
-        "en": "the best",
-        "vi": "tốt nhất",
-        "pos": "adj.",
-        "pronunciation_vi": "mê-iơ"
-      },
-      {
-        "word": "le pire",
-        "en": "the worst",
-        "vi": "tệ nhất",
-        "pos": "adj.",
-        "pronunciation_vi": "pia"
-      },
-      {
-        "word": "comparer",
-        "en": "to compare",
-        "vi": "so sánh",
-        "pos": "v.",
-        "pronunciation_vi": "côn-pa-rê"
-      },
-      {
-        "word": "égal",
-        "en": "equal",
-        "vi": "bằng nhau",
-        "pos": "adj.",
-        "pronunciation_vi": "ê-gan"
-      }
-    ],
-    "dialogue": [
-      {
-        "speaker": "A",
-        "text": "Lyon ou Marseille, tu préfères ?",
-        "en": "Lyon or Marseille, which do you prefer?"
-      },
-      {
-        "speaker": "B",
-        "text": "Lyon est plus élégante, Marseille plus vivante.",
-        "en": "Lyon is more elegant, Marseille livelier."
-      },
-      {
-        "speaker": "A",
-        "text": "Et pour la nourriture ?",
-        "en": "And for food?"
-      },
-      {
-        "speaker": "B",
-        "text": "Lyon est la meilleure pour la gastronomie !",
-        "en": "Lyon is best for gastronomy!"
-      }
-    ],
-    "exercises": [
-      {
-        "type": "fill-blank",
-        "question": "Paris est ___ grand que Marseille.",
-        "answer": "plus"
-      },
-      {
-        "type": "matching",
-        "pairs": [
-          [
-            "plus...que",
-            "hơn"
+        }
+      ],
+      "cultural_notes_vi": "Bise thay đổi theo vùng: Paris 2, miền Nam 3, có nơi 4 lần. Bắt tay công việc mỗi sáng. Người Pháp nói 'non' trực tiếp — đừng hiểu là bất lịch sự. Giờ ăn trưa thiêng liêng.",
+      "tip_advice_vi": "Khi được mời ăn tối, mang rượu hoặc hoa (tránh cúc). Đến đúng giờ hoặc trễ 15 phút. Khen món ăn là bắt buộc.",
+      "vocabulary": [
+        {
+          "word": "la bise",
+          "en": "cheek kiss",
+          "vi": "hôn má",
+          "pos": "n.f.",
+          "pronunciation_vi": "bi-dơ",
+          "pronunciation_en": "lah BEEZ — 's' between vowels = 'z'; final '-e' silent"
+        },
+        {
+          "word": "serrer la main",
+          "en": "to shake hands",
+          "vi": "bắt tay",
+          "pos": "v.",
+          "pronunciation_vi": "xe-rê la manh",
+          "pronunciation_en": "seh-RAY lah MAN — 'serrer' '-er' = 'ay'; 'main' has nasal 'in' at end"
+        },
+        {
+          "word": "le tutoiement",
+          "en": "using tu",
+          "vi": "xưng hô thân mật",
+          "pos": "n.m.",
+          "pronunciation_vi": "tu-toa-măng",
+          "pronunciation_en": "luh too-twah-MAHN — informal-'you' usage; nasal '-ment' at end"
+        },
+        {
+          "word": "le vouvoiement",
+          "en": "using vous",
+          "vi": "xưng hô lịch sự",
+          "pos": "n.m.",
+          "pronunciation_vi": "vu-voa-măng",
+          "pronunciation_en": "luh voo-vwah-MAHN — formal-'you' usage; 'ou' = 'oo'; nasal '-ment'"
+        },
+        {
+          "word": "direct",
+          "en": "direct",
+          "vi": "trực tiếp",
+          "pos": "adj.",
+          "pronunciation_vi": "đi-réc",
+          "pronunciation_en": "dee-REKT — final 't' usually pronounced before vowel, silent before consonant"
+        },
+        {
+          "word": "le compromis",
+          "en": "compromise",
+          "vi": "thỏa hiệp",
+          "pos": "n.m.",
+          "pronunciation_vi": "côm-prô-mi",
+          "pronunciation_en": "luh kohm-pro-MEE — nasal 'om'; final 's' silent"
+        },
+        {
+          "word": "l'étiquette",
+          "en": "etiquette",
+          "vi": "phép tắc",
+          "pos": "n.f.",
+          "pronunciation_vi": "lê-ti-két",
+          "pronunciation_en": "lay-tee-KET — silent final '-e'; 'qu' = 'k'"
+        },
+        {
+          "word": "s'adapter",
+          "en": "to adapt",
+          "vi": "thích nghi",
+          "pos": "v.",
+          "pronunciation_vi": "xa-đáp-tê",
+          "pronunciation_en": "sah-dap-TAY — reflexive 's''; '-er' = 'ay'"
+        },
+        {
+          "word": "le décalage",
+          "en": "gap",
+          "vi": "khác biệt",
+          "pos": "n.m.",
+          "pronunciation_vi": "đê-ca-la-giơ",
+          "pronunciation_en": "luh day-kah-LAHZH — 'é' = 'ay'; final '-age' = 'ahzh'"
+        },
+        {
+          "word": "la coutume",
+          "en": "custom",
+          "vi": "phong tục",
+          "pos": "n.f.",
+          "pronunciation_vi": "cu-tuym",
+          "pronunciation_en": "lah koo-TOOM — 'ou' = 'oo'; final '-e' silent; rounded final 'u'"
+        }
+      ],
+      "dialogue": [
+        {
+          "speaker": "A",
+          "text": "Pourquoi mon collègue dit toujours non directement ?",
+          "en": "Why does my colleague always say no directly?",
+          "vi": "Em mới sang Pháp, đôi khi vẫn cảm thấy lạc lõng."
+        },
+        {
+          "speaker": "B",
+          "text": "Ce n'est pas impoli, c'est leur façon de communiquer.",
+          "en": "It's not rude, it's their way of communicating.",
+          "vi": "Hồi mới sang mình cũng vậy. Khác biệt văn hóa rõ rệt thật."
+        },
+        {
+          "speaker": "A",
+          "text": "Au Vietnam, on dirait 'peut-être' pour être poli.",
+          "en": "In Vietnam, we'd say 'maybe' to be polite.",
+          "vi": "Cái gì làm em khó thích nghi nhất?"
+        },
+        {
+          "speaker": "B",
+          "text": "Oui, c'est une grande différence culturelle !",
+          "en": "Yes, that's a big cultural difference!",
+          "vi": "Cách giao tiếp trực tiếp — lúc đầu cứ tưởng họ thô lỗ."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "fill-blank",
+          "question": "En France, on fait la ___ pour se saluer.",
+          "answer": "bise",
+          "hint_vi": "danh từ giống cái — kiểu chào hôn má",
+          "hint_en": "feminine noun — the cheek-kiss greeting (la bise)"
+        },
+        {
+          "type": "matching",
+          "pairs": [
+            [
+              "le tutoiement",
+              "xưng hô thân mật (informal address)"
+            ],
+            [
+              "s'adapter",
+              "thích nghi (to adapt)"
+            ],
+            [
+              "la coutume",
+              "phong tục (custom)"
+            ]
           ],
-          [
-            "meilleur",
-            "tốt hơn"
+          "instruction": "Nối từ với nghĩa",
+          "instruction_en": "Match the French word with its Vietnamese meaning"
+        },
+        {
+          "type": "translation",
+          "vietnamese": "Cần hiểu khác biệt văn hóa để giao tiếp tốt hơn.",
+          "english": "You have to understand cultural differences to communicate better.",
+          "french": "Il faut comprendre les différences culturelles pour mieux communiquer."
+        }
+      ],
+      "cultural_notes_en": "The number of cheek-kisses ('faire la bise') varies regionally: 2 in Paris, 3 in southern France, 4 in some areas. It defaults to one kiss with people you don't know in Belgium/Switzerland — check before initiating. Handshakes at work happen every morning, not just on first meeting. French speakers say 'non' directly: it is a clear answer, not the conflict-avoidance signal it can be in Vietnamese or many Anglo cultures. Reading a French 'non' as harsh causes misunderstandings — they're simply being clear, not cold.",
+      "tip_advice_en": "Dinner-invitation etiquette: bring wine or flowers (avoid chrysanthemums — funerals only). Arrive on time or up to 15 minutes late ('le quart d'heure de politesse'); 30 minutes late needs a phone call. Praising the host's cooking is required, not optional. 'C'était délicieux' or 'Vous avez fait des merveilles' lands well; silence after a meal reads as displeased."
+    },
+    {
+      "id": "french_society_social",
+      "level": "B1",
+      "category": "society",
+      "title_vi": "Mạng xã hội",
+      "title_en": "Social media",
+      "sentences": [
+        {
+          "en": "Je passe trop de temps sur les réseaux sociaux.",
+          "vi": "Tôi dành quá nhiều thời gian trên MXH.",
+          "pronunciation_focus": [
+            "passe→pát",
+            "réseaux→rê-dô",
+            "sociaux→xô-xi-ô"
           ],
-          [
-            "le pire",
-            "tệ nhất"
+          "pronunciation_focus_en": [
+            "passe 'PAHSS' — final '-e' silent; 'a' = 'ah'",
+            "réseaux 'ray-ZOH' — 's' between vowels = 'z'; '-eaux' = 'oh'",
+            "sociaux 'so-SYOH' — masculine plural; '-aux' = 'oh'"
           ]
-        ],
-        "instruction": "Nối từ với nghĩa"
-      },
-      {
-        "type": "translation",
-        "vietnamese": "Phim này hay hơn phim tuần trước.",
-        "french": "Ce film est meilleur que celui de la semaine dernière."
-      }
-    ]
-  },
-  {
-    "id": "french_grammar_hypothetical",
-    "level": "B1",
-    "category": "advanced_grammar",
-    "title_vi": "Tình huống giả định",
-    "title_en": "Hypothetical situations",
-    "sentences": [
-      {
-        "en": "Si j'avais plus d'argent, je voyagerais.",
-        "vi": "Nếu có tiền, tôi sẽ du lịch.",
-        "pronunciation_focus": [
-          "avais→a-ve",
-          "voyagerais→voa-ia-giơ-re"
-        ]
-      },
-      {
-        "en": "Si tu étudiais plus, tu réussirais.",
-        "vi": "Nếu học nhiều hơn, bạn sẽ đỗ.",
-        "pronunciation_focus": [
-          "étudiais→ê-tu-đi-e",
-          "réussirais→rê-u-xi-re"
-        ]
-      },
-      {
-        "en": "J'aimerais habiter à la montagne.",
-        "vi": "Tôi muốn sống trên núi.",
-        "pronunciation_focus": [
-          "aimerais→ê-mơ-re",
-          "montagne→môn-ta-nhơ"
-        ]
-      },
-      {
-        "en": "Il faudrait qu'on se voie plus souvent.",
-        "vi": "Chúng ta nên gặp thường xuyên hơn.",
-        "pronunciation_focus": [
-          "faudrait→phô-đre",
-          "souvent→xu-văng"
-        ]
-      },
-      {
-        "en": "À ta place, je n'accepterais pas.",
-        "vi": "Ở vị trí bạn, tôi không nhận.",
-        "pronunciation_focus": [
-          "accepterais→ác-xép-tơ-re"
-        ]
-      }
-    ],
-    "cultural_notes_vi": "Si + imparfait → conditionnel présent (giả định). Conditionnel dùng: đề nghị lịch sự (Je voudrais), ước muốn (J'aimerais), lời khuyên (Tu devrais).",
-    "tip_advice_vi": "Phân biệt: 'Si j'avais' (giả định) vs 'Quand j'avais' (thực tế). Conditionnel đuôi -ais, -ais, -ait, -ions, -iez, -aient.",
-    "vocabulary": [
-      {
-        "word": "si",
-        "en": "if",
-        "vi": "nếu",
-        "pos": "conj.",
-        "pronunciation_vi": "xi"
-      },
-      {
-        "word": "le conditionnel",
-        "en": "conditional",
-        "vi": "thể điều kiện",
-        "pos": "n.m.",
-        "pronunciation_vi": "côn-đi-xi-ô-nen"
-      },
-      {
-        "word": "j'aimerais",
-        "en": "I would like",
-        "vi": "tôi muốn",
-        "pos": "expr.",
-        "pronunciation_vi": "giê-mơ-re"
-      },
-      {
-        "word": "je voudrais",
-        "en": "I would like",
-        "vi": "tôi muốn",
-        "pos": "expr.",
-        "pronunciation_vi": "giơ vu-đre"
-      },
-      {
-        "word": "je devrais",
-        "en": "I should",
-        "vi": "tôi nên",
-        "pos": "expr.",
-        "pronunciation_vi": "giơ đơ-vre"
-      },
-      {
-        "word": "imaginer",
-        "en": "to imagine",
-        "vi": "tưởng tượng",
-        "pos": "v.",
-        "pronunciation_vi": "i-ma-gi-nê"
-      },
-      {
-        "word": "l'hypothèse",
-        "en": "hypothesis",
-        "vi": "giả thuyết",
-        "pos": "n.f.",
-        "pronunciation_vi": "li-pô-te-dơ"
-      },
-      {
-        "word": "irréel",
-        "en": "unreal",
-        "vi": "không thật",
-        "pos": "adj.",
-        "pronunciation_vi": "i-rê-en"
-      },
-      {
-        "word": "le rêve",
-        "en": "dream",
-        "vi": "giấc mơ",
-        "pos": "n.m.",
-        "pronunciation_vi": "rê-vơ"
-      },
-      {
-        "word": "supposer",
-        "en": "to suppose",
-        "vi": "giả sử",
-        "pos": "v.",
-        "pronunciation_vi": "xu-pô-dê"
-      }
-    ],
-    "dialogue": [
-      {
-        "speaker": "A",
-        "text": "Si tu gagnais au loto, tu ferais quoi ?",
-        "en": "If you won the lotto, what would you do?"
-      },
-      {
-        "speaker": "B",
-        "text": "Je voyagerais partout, j'achèterais une maison.",
-        "en": "I'd travel everywhere, buy a house."
-      },
-      {
-        "speaker": "A",
-        "text": "Tu ne travaillerais plus ?",
-        "en": "You wouldn't work anymore?"
-      },
-      {
-        "speaker": "B",
-        "text": "Je travaillerais moins, j'ouvrirais un café.",
-        "en": "I'd work less, open a café."
-      }
-    ],
-    "exercises": [
-      {
-        "type": "fill-blank",
-        "question": "Si j'___ riche, j'achèterais une maison.",
-        "answer": "étais"
-      },
-      {
-        "type": "matching",
-        "pairs": [
-          [
-            "j'aimerais",
-            "tôi muốn"
+        },
+        {
+          "en": "As-tu vu ma dernière publication ?",
+          "vi": "Bạn xem bài đăng mới của tôi chưa?",
+          "pronunciation_focus": [
+            "publication→pu-bli-ca-xi-on",
+            "dernière→đe-ni-e"
           ],
-          [
-            "le conditionnel",
-            "thể điều kiện"
-          ],
-          [
-            "le rêve",
-            "giấc mơ"
+          "pronunciation_focus_en": [
+            "publication 'poo-blee-kah-SYON' — '-tion' = 'syon'; nasal '-on' at end",
+            "dernière 'dehr-NYEHR' — 'è' opens; final '-e' silent"
           ]
-        ],
-        "instruction": "Nối từ với nghĩa"
-      },
-      {
-        "type": "translation",
-        "vietnamese": "Nếu có thời gian, tôi học thêm ngôn ngữ.",
-        "french": "Si j'avais le temps, j'apprendrais une autre langue."
-      }
-    ]
-  },
-  {
-    "id": "french_grammar_reported",
-    "level": "B1",
-    "category": "advanced_grammar",
-    "title_vi": "Câu tường thuật",
-    "title_en": "Reported speech",
-    "sentences": [
-      {
-        "en": "Il a dit qu'il viendrait demain.",
-        "vi": "Anh ấy nói sẽ đến mai.",
-        "pronunciation_focus": [
-          "dit→đi",
-          "viendrait→vi-anh-đre"
-        ]
-      },
-      {
-        "en": "Elle m'a demandé si je parlais français.",
-        "vi": "Cô ấy hỏi tôi có nói tiếng Pháp không.",
-        "pronunciation_focus": [
-          "demandé→đơ-măng-đê",
-          "parlais→pa-lê"
-        ]
-      },
-      {
-        "en": "Il a expliqué que la Terre est ronde.",
-        "vi": "Anh ấy giải thích Trái Đất tròn.",
-        "pronunciation_focus": [
-          "expliqué→éc-xpli-kê",
-          "Terre→te"
-        ]
-      },
-      {
-        "en": "Il voulait savoir où j'habitais.",
-        "vi": "Anh ấy muốn biết tôi ở đâu.",
-        "pronunciation_focus": [
-          "voulait→vu-le",
-          "j'habitais→gia-bi-te"
-        ]
-      },
-      {
-        "en": "Elle m'a dit de ne pas m'inquiéter.",
-        "vi": "Cô ấy bảo đừng lo.",
-        "pronunciation_focus": [
-          "dit→đi",
-          "m'inquiéter→manh-ki-ê-tê"
-        ]
-      }
-    ],
-    "cultural_notes_vi": "Lùi thì: Présent→Imparfait, Futur→Conditionnel. Câu hỏi Yes/No dùng 'si'. Mệnh lệnh→de+infinitif. Sự thật hiển nhiên không lùi thì.",
-    "tip_advice_vi": "3 động từ chính: dire que, demander si, vouloir savoir. 'Il m'a dit que', 'Il lui a dit que', 'Il a dit à Marie que'.",
-    "vocabulary": [
-      {
-        "word": "dire",
-        "en": "to say",
-        "vi": "nói",
-        "pos": "v.",
-        "pronunciation_vi": "đia"
-      },
-      {
-        "word": "demander",
-        "en": "to ask",
-        "vi": "hỏi",
-        "pos": "v.",
-        "pronunciation_vi": "đơ-măng-đê"
-      },
-      {
-        "word": "répondre",
-        "en": "to answer",
-        "vi": "trả lời",
-        "pos": "v.",
-        "pronunciation_vi": "rê-pôn-đrơ"
-      },
-      {
-        "word": "expliquer",
-        "en": "to explain",
-        "vi": "giải thích",
-        "pos": "v.",
-        "pronunciation_vi": "éc-xpli-kê"
-      },
-      {
-        "word": "raconter",
-        "en": "to tell",
-        "vi": "kể",
-        "pos": "v.",
-        "pronunciation_vi": "ra-côn-tê"
-      },
-      {
-        "word": "affirmer",
-        "en": "to state",
-        "vi": "khẳng định",
-        "pos": "v.",
-        "pronunciation_vi": "a-fia-mê"
-      },
-      {
-        "word": "le discours",
-        "en": "speech",
-        "vi": "lời nói",
-        "pos": "n.m.",
-        "pronunciation_vi": "đi-xcua"
-      },
-      {
-        "word": "rapporter",
-        "en": "to report",
-        "vi": "thuật lại",
-        "pos": "v.",
-        "pronunciation_vi": "ra-po-tê"
-      },
-      {
-        "word": "prétendre",
-        "en": "to claim",
-        "vi": "cho rằng",
-        "pos": "v.",
-        "pronunciation_vi": "prê-tăng-đrơ"
-      },
-      {
-        "word": "la concordance",
-        "en": "agreement",
-        "vi": "phù hợp thì",
-        "pos": "n.f.",
-        "pronunciation_vi": "côn-co-đăng-xơ"
-      }
-    ],
-    "dialogue": [
-      {
-        "speaker": "A",
-        "text": "Qu'a dit le directeur ?",
-        "en": "What did the director say?"
-      },
-      {
-        "speaker": "B",
-        "text": "Il a annoncé qu'on ouvrirait un bureau à Lyon.",
-        "en": "He announced we'd open an office in Lyon."
-      },
-      {
-        "speaker": "A",
-        "text": "Il a dit quand ?",
-        "en": "Did he say when?"
-      },
-      {
-        "speaker": "B",
-        "text": "Il a expliqué que ce serait en septembre.",
-        "en": "He explained it would be in September."
-      }
-    ],
-    "exercises": [
-      {
-        "type": "fill-blank",
-        "question": "Il a dit qu'il ___ demain.",
-        "answer": "viendrait"
-      },
-      {
-        "type": "matching",
-        "pairs": [
-          [
-            "dire",
-            "nói"
+        },
+        {
+          "en": "Je partage beaucoup de photos de mes voyages.",
+          "vi": "Tôi chia sẻ nhiều ảnh du lịch.",
+          "pronunciation_focus": [
+            "partage→pa-ta-giơ",
+            "voyages→voa-ia-giơ"
           ],
-          [
-            "rapporter",
-            "thuật lại"
-          ],
-          [
-            "affirmer",
-            "khẳng định"
+          "pronunciation_focus_en": [
+            "partage 'par-TAHZH' — 'g' before silent '-e' = 'zh'",
+            "voyages 'vwah-YAHZH' — 'oy' = 'wah-y'; final '-es' silent"
           ]
-        ],
-        "instruction": "Nối từ với nghĩa"
-      },
-      {
-        "type": "translation",
-        "vietnamese": "Cô ấy nói sẽ gọi lại mai.",
-        "french": "Elle a dit qu'elle rappellerait demain."
-      }
-    ]
-  },
-  {
-    "id": "french_grammar_passive",
-    "level": "B1",
-    "category": "advanced_grammar",
-    "title_vi": "Thể bị động",
-    "title_en": "Passive voice",
-    "sentences": [
-      {
-        "en": "Ce bâtiment a été construit en 1920.",
-        "vi": "Tòa nhà xây năm 1920.",
-        "pronunciation_focus": [
-          "bâtiment→ba-ti-măng",
-          "construit→côn-xtruy"
-        ]
-      },
-      {
-        "en": "Le français est parlé dans 30 pays.",
-        "vi": "Tiếng Pháp được nói ở 30 nước.",
-        "pronunciation_focus": [
-          "parlé→pa-lê",
-          "pays→pê-i"
-        ]
-      },
-      {
-        "en": "La décision sera annoncée demain.",
-        "vi": "Quyết định được thông báo mai.",
-        "pronunciation_focus": [
-          "décision→đê-xi-zi-on",
-          "annoncée→a-non-xê"
-        ]
-      },
-      {
-        "en": "Les lettres sont distribuées le matin.",
-        "vi": "Thư được phát buổi sáng.",
-        "pronunciation_focus": [
-          "distribuées→đi-xtri-bu-ê",
-          "matin→ma-tanh"
-        ]
-      },
-      {
-        "en": "Ce vin est produit à Bordeaux.",
-        "vi": "Rượu này sản xuất ở Bordeaux.",
-        "pronunciation_focus": [
-          "produit→prô-đuy",
-          "Bordeaux→Bo-đô"
-        ]
-      }
-    ],
-    "cultural_notes_vi": "Bị động: être + participe passé. Participle hợp giống số. Người Pháp tránh bị động bằng 'on': 'On parle français'.",
-    "tip_advice_vi": "Dùng bị động khi chủ thể không rõ/quan trọng. 'Par' cho tác nhân cụ thể, 'de' cho trạng thái.",
-    "vocabulary": [
-      {
-        "word": "être + participe",
-        "en": "to be + pp",
-        "vi": "được/bị",
-        "pos": "expr.",
-        "pronunciation_vi": "ê-trơ"
-      },
-      {
-        "word": "construit",
-        "en": "built",
-        "vi": "được xây",
-        "pos": "adj.",
-        "pronunciation_vi": "côn-xtruy"
-      },
-      {
-        "word": "écrit",
-        "en": "written",
-        "vi": "được viết",
-        "pos": "adj.",
-        "pronunciation_vi": "ê-cri"
-      },
-      {
-        "word": "par",
-        "en": "by (agent)",
-        "vi": "bởi",
-        "pos": "prép.",
-        "pronunciation_vi": "pa"
-      },
-      {
-        "word": "la voix passive",
-        "en": "passive voice",
-        "vi": "thể bị động",
-        "pos": "n.f.",
-        "pronunciation_vi": "voa pa-xiv"
-      },
-      {
-        "word": "actif",
-        "en": "active",
-        "vi": "chủ động",
-        "pos": "adj.",
-        "pronunciation_vi": "ắc-tif"
-      },
-      {
-        "word": "subir",
-        "en": "to undergo",
-        "vi": "chịu đựng",
-        "pos": "v.",
-        "pronunciation_vi": "xu-bia"
-      },
-      {
-        "word": "provoquer",
-        "en": "to cause",
-        "vi": "gây ra",
-        "pos": "v.",
-        "pronunciation_vi": "prô-vô-kê"
-      },
-      {
-        "word": "transformer",
-        "en": "to transform",
-        "vi": "biến đổi",
-        "pos": "v.",
-        "pronunciation_vi": "trăng-xfo-mê"
-      },
-      {
-        "word": "le résultat",
-        "en": "result",
-        "vi": "kết quả",
-        "pos": "n.m.",
-        "pronunciation_vi": "rê-dun-ta"
-      }
-    ],
-    "dialogue": [
-      {
-        "speaker": "A",
-        "text": "Quand la Tour Eiffel a été construite ?",
-        "en": "When was the Eiffel Tower built?"
-      },
-      {
-        "speaker": "B",
-        "text": "Elle a été construite en 1889.",
-        "en": "It was built in 1889."
-      },
-      {
-        "speaker": "A",
-        "text": "Combien de visiteurs par an ?",
-        "en": "How many visitors per year?"
-      },
-      {
-        "speaker": "B",
-        "text": "Environ 7 millions. C'est le plus visité au monde !",
-        "en": "About 7 million. Most visited in the world!"
-      }
-    ],
-    "exercises": [
-      {
-        "type": "fill-blank",
-        "question": "La Tour Eiffel a ___ construite en 1889.",
-        "answer": "été"
-      },
-      {
-        "type": "matching",
-        "pairs": [
-          [
-            "construit",
-            "được xây"
+        },
+        {
+          "en": "Attention aux fausses informations sur internet.",
+          "vi": "Coi chừng tin giả trên mạng.",
+          "pronunciation_focus": [
+            "attention→a-tăng-xi-on",
+            "fausses→phô"
           ],
-          [
-            "subir",
-            "chịu đựng"
-          ],
-          [
-            "la voix passive",
-            "thể bị động"
+          "pronunciation_focus_en": [
+            "attention 'ah-tahn-SYON' — '-tion' = 'syon'; nasal 'an' + nasal 'on'",
+            "fausses 'FOHSS' — feminine plural of 'faux'; 'au' = 'oh'; final '-es' silent"
           ]
-        ],
-        "instruction": "Nối từ với nghĩa"
-      },
-      {
-        "type": "translation",
-        "vietnamese": "Quyết định được ban giám đốc đưa ra.",
-        "french": "La décision a été prise par la direction."
-      }
-    ]
-  },
-  {
-    "id": "french_grammar_relative",
-    "level": "B1",
-    "category": "advanced_grammar",
-    "title_vi": "Mệnh đề quan hệ",
-    "title_en": "Relative clauses",
-    "sentences": [
-      {
-        "en": "La personne qui parle est ma prof.",
-        "vi": "Người đang nói là cô giáo tôi.",
-        "pronunciation_focus": [
-          "personne→pe-xôn",
-          "parle→pa-lơ"
-        ]
-      },
-      {
-        "en": "Le livre que je lis est passionnant.",
-        "vi": "Cuốn sách tôi đọc rất hay.",
-        "pronunciation_focus": [
-          "livre→li-vrơ",
-          "lis→li"
-        ]
-      },
-      {
-        "en": "La ville où je suis né est belle.",
-        "vi": "Thành phố tôi sinh ra đẹp.",
-        "pronunciation_focus": [
-          "ville→vil",
-          "né→nê"
-        ]
-      },
-      {
-        "en": "C'est la raison pour laquelle je suis parti.",
-        "vi": "Đó là lý do tôi rời đi.",
-        "pronunciation_focus": [
-          "raison→re-don",
-          "laquelle→la-kén"
-        ]
-      },
-      {
-        "en": "Le film dont je t'ai parlé sort demain.",
-        "vi": "Phim tôi nói với bạn ra mắt mai.",
-        "pronunciation_focus": [
-          "dont→đon",
-          "sort→xo"
-        ]
-      }
-    ],
-    "cultural_notes_vi": "QUI (chủ ngữ), QUE (tân ngữ), OÙ (nơi/thời gian), DONT (bổ ngữ 'de'). Lequel/laquelle sau giới từ.",
-    "tip_advice_vi": "QUI+động từ, QUE+chủ ngữ+động từ. DONT thay cho 'de+qqch': 'le livre dont j'ai besoin'.",
-    "vocabulary": [
-      {
-        "word": "qui",
-        "en": "who (subject)",
-        "vi": "mà-chủ ngữ",
-        "pos": "pron.",
-        "pronunciation_vi": "ki"
-      },
-      {
-        "word": "que",
-        "en": "whom (object)",
-        "vi": "mà-tân ngữ",
-        "pos": "pron.",
-        "pronunciation_vi": "cơ"
-      },
-      {
-        "word": "où",
-        "en": "where/when",
-        "vi": "nơi/khi",
-        "pos": "pron.",
-        "pronunciation_vi": "u"
-      },
-      {
-        "word": "dont",
-        "en": "of which",
-        "vi": "mà-của",
-        "pos": "pron.",
-        "pronunciation_vi": "đon"
-      },
-      {
-        "word": "lequel",
-        "en": "which (prep)",
-        "vi": "cái mà",
-        "pos": "pron.",
-        "pronunciation_vi": "lơ-kén"
-      },
-      {
-        "word": "la proposition",
-        "en": "clause",
-        "vi": "mệnh đề",
-        "pos": "n.f.",
-        "pronunciation_vi": "prô-pô-zi-xi-on"
-      },
-      {
-        "word": "relative",
-        "en": "relative",
-        "vi": "quan hệ",
-        "pos": "adj.",
-        "pronunciation_vi": "rơ-la-tiv"
-      },
-      {
-        "word": "l'antécédent",
-        "en": "antecedent",
-        "vi": "tiền tố",
-        "pos": "n.m.",
-        "pronunciation_vi": "lăng-tê-xê-đăng"
-      },
-      {
-        "word": "remplacer",
-        "en": "to replace",
-        "vi": "thay thế",
-        "pos": "v.",
-        "pronunciation_vi": "răm-pla-xê"
-      },
-      {
-        "word": "préciser",
-        "en": "to specify",
-        "vi": "làm rõ",
-        "pos": "v.",
-        "pronunciation_vi": "prê-xi-dê"
-      }
-    ],
-    "dialogue": [
-      {
-        "speaker": "A",
-        "text": "Tu te souviens du resto dont j'ai parlé ?",
-        "en": "Remember the restaurant I mentioned?"
-      },
-      {
-        "speaker": "B",
-        "text": "Celui qui fait les meilleures crêpes ?",
-        "en": "The one that makes the best crêpes?"
-      },
-      {
-        "speaker": "A",
-        "text": "Oui ! J'y vais ce soir.",
-        "en": "Yes! I'm going tonight."
-      },
-      {
-        "speaker": "B",
-        "text": "Super ! Dis-moi ce que tu en penses.",
-        "en": "Great! Tell me what you think."
-      }
-    ],
-    "exercises": [
-      {
-        "type": "fill-blank",
-        "question": "Le film ___ je t'ai parlé sort demain.",
-        "answer": "dont"
-      },
-      {
-        "type": "matching",
-        "pairs": [
-          [
-            "qui",
-            "mà-chủ ngữ"
+        },
+        {
+          "en": "Les influenceurs ont beaucoup d'abonnés.",
+          "vi": "Người ảnh hưởng có nhiều người theo dõi.",
+          "pronunciation_focus": [
+            "influenceurs→anh-flu-ăng-xơ",
+            "abonnés→a-bô-nê"
           ],
-          [
-            "dont",
-            "mà-của"
-          ],
-          [
-            "où",
-            "nơi/khi"
+          "pronunciation_focus_en": [
+            "influenceurs 'an-floo-ahn-SUR' — borrowed from English; nasal 'in' start, nasal 'an' middle; '-eur' rounded",
+            "abonnés 'ah-boh-NAY' — '-és' = 'ay'; double 'nn' is one 'n' sound"
           ]
-        ],
-        "instruction": "Nối từ với nghĩa"
-      },
-      {
-        "type": "translation",
-        "vietnamese": "Người phụ nữ bạn gặp hôm qua là sếp tôi.",
-        "french": "La femme que tu as rencontrée hier est ma patronne."
-      }
-    ]
-  }
-];
+        }
+      ],
+      "cultural_notes_vi": "Người Pháp dùng Facebook, Instagram, LinkedIn, Twitter/X. WhatsApp phổ biến hơn Messenger. GDPR bảo vệ dữ liệu nghiêm ngặt.",
+      "tip_advice_vi": "Học động từ: publier (đăng), partager (chia sẻ), commenter (bình luận), aimer (thích), s'abonner (theo dõi).",
+      "vocabulary": [
+        {
+          "word": "les réseaux sociaux",
+          "en": "social media",
+          "vi": "mạng xã hội",
+          "pos": "n.m.pl.",
+          "pronunciation_vi": "rê-dô xô-xi-ô",
+          "pronunciation_en": "lay ray-ZOH so-SYOH — masc. plural; '-eaux' / '-aux' = 'oh'"
+        },
+        {
+          "word": "publier",
+          "en": "to post",
+          "vi": "đăng",
+          "pos": "v.",
+          "pronunciation_vi": "pu-bli-ê",
+          "pronunciation_en": "poo-blee-AY — 'pu-' = rounded French 'u'; '-ier' = 'ee-AY'"
+        },
+        {
+          "word": "partager",
+          "en": "to share",
+          "vi": "chia sẻ",
+          "pos": "v.",
+          "pronunciation_vi": "pa-ta-giê",
+          "pronunciation_en": "par-tah-ZHAY — 'g' before 'e' = 'zh'; '-er' = 'ay'"
+        },
+        {
+          "word": "le commentaire",
+          "en": "comment",
+          "vi": "bình luận",
+          "pos": "n.m.",
+          "pronunciation_vi": "cô-măng-te",
+          "pronunciation_en": "luh ko-mahn-TAIR — nasal 'en' (spelled 'en' or 'em' commonly); '-aire' = 'air'"
+        },
+        {
+          "word": "s'abonner",
+          "en": "to subscribe",
+          "vi": "theo dõi",
+          "pos": "v.",
+          "pronunciation_vi": "xa-bô-nê",
+          "pronunciation_en": "sah-bo-NAY — reflexive 's''; '-er' = 'ay'; double 'nn' is one 'n'"
+        },
+        {
+          "word": "l'abonné",
+          "en": "follower",
+          "vi": "người theo dõi",
+          "pos": "n.m.",
+          "pronunciation_vi": "la-bô-nê",
+          "pronunciation_en": "lah-bo-NAY — subscriber; '-é' = 'ay'"
+        },
+        {
+          "word": "le like",
+          "en": "like",
+          "vi": "lượt thích",
+          "pos": "n.m.",
+          "pronunciation_vi": "la-íc",
+          "pronunciation_en": "luh LAHYK — borrowed; pronounced close to English 'like'"
+        },
+        {
+          "word": "le mot-clé",
+          "en": "hashtag",
+          "vi": "thẻ",
+          "pos": "n.m.",
+          "pronunciation_vi": "mô-clê",
+          "pronunciation_en": "luh moh-KLAY — 'mot' final 't' silent; 'clé' '-é' = 'ay'"
+        },
+        {
+          "word": "la story",
+          "en": "story",
+          "vi": "tin",
+          "pos": "n.f.",
+          "pronunciation_vi": "xtô-ri",
+          "pronunciation_en": "lah stoh-REE — borrowed from English Instagram terminology"
+        },
+        {
+          "word": "l'influenceur",
+          "en": "influencer",
+          "vi": "người ảnh hưởng",
+          "pos": "n.m.",
+          "pronunciation_vi": "lanh-flu-ăng-xơ",
+          "pronunciation_en": "lan-floo-AHN-sur — nasal 'in' start, nasal 'an' middle; '-eur' rounded"
+        }
+      ],
+      "dialogue": [
+        {
+          "speaker": "A",
+          "text": "Tu as combien d'abonnés sur Instagram ?",
+          "en": "How many followers on Instagram?",
+          "vi": "Bạn có dùng Instagram không?"
+        },
+        {
+          "speaker": "B",
+          "text": "Environ 2000. Et toi ?",
+          "en": "About 2000. You?",
+          "vi": "Có chứ. Nhưng ngày nào mình cũng cố giảm bớt thời gian."
+        },
+        {
+          "speaker": "A",
+          "text": "Seulement 500, mais je préfère la qualité !",
+          "en": "Only 500, but I prefer quality!",
+          "vi": "Đúng đó, mình cũng vậy. Lướt mãi không dừng được."
+        },
+        {
+          "speaker": "B",
+          "text": "Bien dit ! As-tu vu ma nouvelle publication ?",
+          "en": "Well said! Did you see my new post?",
+          "vi": "Tuần này thử ngưng 24 tiếng đi — vừa rồi mình làm thấy đỡ căng thẳng hẳn."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "fill-blank",
+          "question": "Je passe trop de temps sur les ___ sociaux.",
+          "answer": "réseaux",
+          "hint_vi": "danh từ số nhiều — mạng (xã hội)",
+          "hint_en": "plural noun — networks; les réseaux sociaux = social networks/media"
+        },
+        {
+          "type": "matching",
+          "pairs": [
+            [
+              "publier",
+              "đăng (to post)"
+            ],
+            [
+              "s'abonner",
+              "theo dõi (to subscribe / follow)"
+            ],
+            [
+              "le commentaire",
+              "bình luận (comment)"
+            ]
+          ],
+          "instruction": "Nối từ với nghĩa",
+          "instruction_en": "Match the French word with its Vietnamese meaning"
+        },
+        {
+          "type": "translation",
+          "vietnamese": "Đừng chia sẻ thông tin cá nhân trên mạng xã hội.",
+          "english": "Don't share personal information on social media.",
+          "french": "Ne partagez pas d'informations personnelles sur les réseaux sociaux."
+        }
+      ],
+      "cultural_notes_en": "Platform mix in France: Facebook (older users + family groups), Instagram (under-35s + visual content), LinkedIn (professional, taken seriously — French recruiters check it), Twitter/X (journalists + politics). WhatsApp is more popular than Facebook Messenger by a wide margin. GDPR — the EU's data-protection law — is strict here: 'cookie consent' banners are everywhere and companies that misuse personal data face large fines. Saying 'I don't want to be on Facebook' is a normal stance, not antisocial.",
+      "tip_advice_en": "Useful verbs to memorize as a set: publier (to post), partager (to share), commenter (to comment), aimer (to like — same verb as 'to love'), s'abonner (to follow / subscribe). Note that 'aimer' in this context means 'like' the post, not 'love' it — context disambiguates."
+    },
+    {
+      "id": "french_society_environment",
+      "level": "B1",
+      "category": "society",
+      "title_vi": "Môi trường và sinh thái",
+      "title_en": "Environment and ecology",
+      "sentences": [
+        {
+          "en": "Il faut protéger la planète.",
+          "vi": "Cần bảo vệ hành tinh.",
+          "pronunciation_focus": [
+            "protéger→prô-tê-giê",
+            "planète→pla-nét"
+          ],
+          "pronunciation_focus_en": [
+            "protéger 'pro-tay-ZHAY' — 'g' before 'e' = 'zh'; '-er' = 'ay'",
+            "planète 'plah-NET' — 'è' opens like 'pet'; final '-e' silent"
+          ]
+        },
+        {
+          "en": "Le recyclage est très important en France.",
+          "vi": "Tái chế rất quan trọng ở Pháp.",
+          "pronunciation_focus": [
+            "recyclage→rơ-xi-cla-giơ",
+            "important→anh-po-tăng"
+          ],
+          "pronunciation_focus_en": [
+            "recyclage 'ruh-see-KLAHZH' — 'y' = 'ee'; final '-age' = 'ahzh'",
+            "important 'an-por-TAHN' — nasal 'in' start, nasal 'an' end; final 't' silent"
+          ]
+        },
+        {
+          "en": "Je trie mes déchets tous les jours.",
+          "vi": "Tôi phân loại rác mỗi ngày.",
+          "pronunciation_focus": [
+            "trie→tri",
+            "déchets→đê-chê"
+          ],
+          "pronunciation_focus_en": [
+            "trie 'TREE' — 1st-person of trier; final '-e' silent",
+            "déchets 'day-SHAY' — 'ch' = 'sh'; final 's' silent"
+          ]
+        },
+        {
+          "en": "Nous devons réduire notre consommation d'énergie.",
+          "vi": "Chúng ta phải giảm tiêu thụ năng lượng.",
+          "pronunciation_focus": [
+            "réduire→rê-đuiya",
+            "consommation→côn-xô-ma-xi-on"
+          ],
+          "pronunciation_focus_en": [
+            "réduire 'ray-DWEER' — 'ui' = 'wee'; final 'r' lightly rolled",
+            "consommation 'kohn-soh-mah-SYON' — nasal 'on'; double 'mm' is one 'm'; '-tion' = 'syon'"
+          ]
+        },
+        {
+          "en": "Le changement climatique est un problème urgent.",
+          "vi": "Biến đổi khí hậu cấp bách.",
+          "pronunciation_focus": [
+            "changement→săng-giơ-măng",
+            "climatique→cli-ma-tíc"
+          ],
+          "pronunciation_focus_en": [
+            "changement 'shahn-zhuh-MAHN' — 'ch' = 'sh'; nasal 'an' + nasal 'ment'",
+            "climatique 'klee-mah-TEEK' — final '-que' = 'k'; final '-e' silent"
+          ]
+        }
+      ],
+      "cultural_notes_vi": "Pháp đi đầu bảo vệ môi trường. Phân loại rác: vàng (bao bì), xanh (thủy tinh), trắng (giấy), nâu (hữu cơ). Cấm túi nhựa một lần.",
+      "tip_advice_vi": "Dùng 'Il faut' + động từ: Il faut recycler, Il faut économiser l'eau. Đây là chủ đề yêu thích của người Pháp.",
+      "vocabulary": [
+        {
+          "word": "l'environnement",
+          "en": "environment",
+          "vi": "môi trường",
+          "pos": "n.m.",
+          "pronunciation_vi": "lăng-vi-rôn-măng",
+          "pronunciation_en": "lahn-vee-rohn-MAHN — long word; nasal 'en' + 'on' + final 'ment'"
+        },
+        {
+          "word": "recycler",
+          "en": "to recycle",
+          "vi": "tái chế",
+          "pos": "v.",
+          "pronunciation_vi": "rơ-xi-clê",
+          "pronunciation_en": "ruh-see-KLAY — 'y' = 'ee'; '-er' = 'ay'"
+        },
+        {
+          "word": "le déchet",
+          "en": "waste",
+          "vi": "rác",
+          "pos": "n.m.",
+          "pronunciation_vi": "đê-chê",
+          "pronunciation_en": "luh day-SHAY — 'ch' = 'sh'; final 't' silent"
+        },
+        {
+          "word": "le réchauffement",
+          "en": "global warming",
+          "vi": "nóng lên toàn cầu",
+          "pos": "n.m.",
+          "pronunciation_vi": "rê-chô-phơ-măng",
+          "pronunciation_en": "luh ray-shof-MAHN — global warming; nasal '-ment' at end"
+        },
+        {
+          "word": "la pollution",
+          "en": "pollution",
+          "vi": "ô nhiễm",
+          "pos": "n.f.",
+          "pronunciation_vi": "pô-lu-xi-on",
+          "pronunciation_en": "lah po-loo-SYON — double 'll' is one 'l'; '-tion' = 'syon'"
+        },
+        {
+          "word": "protéger",
+          "en": "to protect",
+          "vi": "bảo vệ",
+          "pos": "v.",
+          "pronunciation_vi": "prô-tê-giê",
+          "pronunciation_en": "pro-tay-ZHAY — 'g' before 'é' = 'zh'; '-er' = 'ay'"
+        },
+        {
+          "word": "l'énergie",
+          "en": "energy",
+          "vi": "năng lượng",
+          "pos": "n.f.",
+          "pronunciation_vi": "lê-ne-gi",
+          "pronunciation_en": "lay-nehr-ZHEE — '-gie' = 'zhee'"
+        },
+        {
+          "word": "renouvelable",
+          "en": "renewable",
+          "vi": "tái tạo",
+          "pos": "adj.",
+          "pronunciation_vi": "rơ-nu-vơ-la-blơ",
+          "pronunciation_en": "ruh-noo-vuh-LAH-bluh — long adj; final '-le' barely voiced"
+        },
+        {
+          "word": "économiser",
+          "en": "to save",
+          "vi": "tiết kiệm",
+          "pos": "v.",
+          "pronunciation_vi": "ê-cô-nô-mi-dê",
+          "pronunciation_en": "ay-ko-no-mee-ZAY — long verb; '-iser' = 'ee-ZAY'"
+        },
+        {
+          "word": "le climat",
+          "en": "climate",
+          "vi": "khí hậu",
+          "pos": "n.m.",
+          "pronunciation_vi": "cli-ma",
+          "pronunciation_en": "luh klee-MAH — final 't' silent"
+        }
+      ],
+      "dialogue": [
+        {
+          "speaker": "A",
+          "text": "Est-ce que tu tries tes déchets chez toi ?",
+          "en": "Do you sort your waste at home?",
+          "vi": "Bạn có lo về biến đổi khí hậu không?"
+        },
+        {
+          "speaker": "B",
+          "text": "Oui, bien sûr. J'ai trois poubelles différentes.",
+          "en": "Yes, of course. I have three different bins.",
+          "vi": "Có chứ. Mình tái chế và đi xe đạp đi làm."
+        },
+        {
+          "speaker": "A",
+          "text": "C'est bien. Moi aussi, j'essaie de réduire le plastique.",
+          "en": "Good. I try to reduce plastic too.",
+          "vi": "Pháp đang nỗ lực giảm khí thải."
+        },
+        {
+          "speaker": "B",
+          "text": "Chaque petit geste compte pour la planète !",
+          "en": "Every small gesture counts for the planet!",
+          "vi": "Đúng, nhưng phải đẩy nhanh hơn nữa."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "fill-blank",
+          "question": "Il faut ___ la planète.",
+          "answer": "protéger",
+          "hint_vi": "động từ nguyên thể — bảo vệ",
+          "hint_en": "infinitive — to protect; required after 'Il faut' (one must)"
+        },
+        {
+          "type": "matching",
+          "pairs": [
+            [
+              "recycler",
+              "tái chế (to recycle)"
+            ],
+            [
+              "économiser",
+              "tiết kiệm (to save / economize)"
+            ],
+            [
+              "la pollution",
+              "ô nhiễm (pollution)"
+            ]
+          ],
+          "instruction": "Nối từ với nghĩa",
+          "instruction_en": "Match the French word with its Vietnamese meaning"
+        },
+        {
+          "type": "translation",
+          "vietnamese": "Biến đổi khí hậu là vấn đề nghiêm trọng nhất.",
+          "english": "Climate change is the most serious problem.",
+          "french": "Le changement climatique est le problème le plus grave."
+        }
+      ],
+      "cultural_notes_en": "France leads the EU push on climate policy and the topic is mainstream rather than partisan in the US sense. Household recycling is sorted by colored bin: yellow (packaging), green (glass), white (paper), brown (organic) — getting this wrong can earn a comment from a neighbor. Single-use plastic bags are banned at supermarket checkouts. The 'gilets jaunes' (yellow vests, 2018-2019) showed how environmental policy intersects with class — a carbon tax on fuel hit rural drivers harder than urban professionals, and that tension still shapes the debate.",
+      "tip_advice_en": "Anchor environmental opinions to action with 'Il faut' + infinitive: 'Il faut recycler' (we must recycle), 'Il faut économiser l'eau' (we must save water). This is one of the French speaker's favorite topics — having a few concrete behaviors to mention ('je trie mes déchets', 'je prends le vélo') gets you taken seriously faster than abstract concern."
+    },
+    {
+      "id": "french_society_interview",
+      "level": "B1",
+      "category": "society",
+      "title_vi": "Phỏng vấn xin việc",
+      "title_en": "Job interviews",
+      "sentences": [
+        {
+          "en": "Pouvez-vous vous présenter brièvement ?",
+          "vi": "Hãy tự giới thiệu ngắn gọn.",
+          "pronunciation_focus": [
+            "présenter→prê-dăng-tê",
+            "brièvement→bri-è-vơ-măng"
+          ],
+          "pronunciation_focus_en": [
+            "présenter 'pray-zahn-TAY' — 's' between vowels = 'z'; nasal 'en'; '-er' = 'ay'",
+            "brièvement 'bree-EV-mahn' — 'è' opens; final '-ment' nasal"
+          ]
+        },
+        {
+          "en": "Quelles sont vos motivations ?",
+          "vi": "Động lực của bạn là gì?",
+          "pronunciation_focus": [
+            "motivations→mô-ti-va-xi-on",
+            "nasal on"
+          ],
+          "pronunciation_focus_en": [
+            "motivations 'moh-tee-vah-SYON' — '-tion' = 'syon'; nasal '-on' at end",
+            "nasal 'on' — held in the nose with no consonant release (motivations, formation, situation all end this way)"
+          ]
+        },
+        {
+          "en": "J'ai cinq ans d'expérience dans ce domaine.",
+          "vi": "Tôi có 5 năm kinh nghiệm.",
+          "pronunciation_focus": [
+            "expérience→éc-xpê-ri-ăng",
+            "domaine→đô-men"
+          ],
+          "pronunciation_focus_en": [
+            "expérience 'eks-pay-RYAHNSS' — 'x' = 'ks'; nasal '-ence'",
+            "domaine 'doh-MEN' — '-aine' = 'en' (one 'n' sound); final '-e' silent"
+          ]
+        },
+        {
+          "en": "Quel est votre niveau de français ?",
+          "vi": "Trình độ tiếng Pháp thế nào?",
+          "pronunciation_focus": [
+            "niveau→ni-vô",
+            "français→frăng-xe"
+          ],
+          "pronunciation_focus_en": [
+            "niveau 'nee-VOH' — '-eau' = 'oh'",
+            "français 'frahn-SEH' — nasal 'an'; final 's' silent in singular"
+          ]
+        },
+        {
+          "en": "Pourquoi voulez-vous travailler chez nous ?",
+          "vi": "Tại sao muốn làm ở công ty tôi?",
+          "pronunciation_focus": [
+            "pourquoi→pua-qua",
+            "travailler→tra-va-iê"
+          ],
+          "pronunciation_focus_en": [
+            "pourquoi 'poor-KWAH' — 'ou' = 'oo'; 'oi' = 'wah'",
+            "travailler 'trah-vah-YAY' — 'ail-' = 'eye'; '-er' = 'ay'"
+          ]
+        }
+      ],
+      "cultural_notes_vi": "CV Pháp có ảnh. Thư xin việc viết tay được đánh giá cao. Hỏi lương bình thường ở vòng 2. Nhà tuyển dụng chú trọng bằng cấp và trường học.",
+      "tip_advice_vi": "Chuẩn bị 3 câu: 'Parlez-moi de vous', 'Vos qualités et défauts', 'Où vous voyez-vous dans 5 ans ?'. Kết thúc 'Je vous remercie pour cet entretien'.",
+      "vocabulary": [
+        {
+          "word": "l'entretien",
+          "en": "interview",
+          "vi": "phỏng vấn",
+          "pos": "n.m.",
+          "pronunciation_vi": "lăng-trơ-tianh",
+          "pronunciation_en": "lahn-truh-TYAN — nasal 'en' + nasal 'in' at end"
+        },
+        {
+          "word": "le CV",
+          "en": "resume",
+          "vi": "sơ yếu lý lịch",
+          "pos": "n.m.",
+          "pronunciation_vi": "xê-vê",
+          "pronunciation_en": "luh say-VAY — letters spelled out: 'C' = 'say', 'V' = 'vay'"
+        },
+        {
+          "word": "la candidature",
+          "en": "application",
+          "vi": "hồ sơ ứng tuyển",
+          "pos": "n.f.",
+          "pronunciation_vi": "căng-đi-đa-tuya",
+          "pronunciation_en": "lah kahn-dee-dah-TOOR — nasal 'an'; '-ure' = 'oor' with rounded French 'u'"
+        },
+        {
+          "word": "l'expérience",
+          "en": "experience",
+          "vi": "kinh nghiệm",
+          "pos": "n.f.",
+          "pronunciation_vi": "léc-xpê-ri-ăng",
+          "pronunciation_en": "leks-pay-RYAHNSS — 'x' = 'ks'; nasal '-ence'"
+        },
+        {
+          "word": "la compétence",
+          "en": "skill",
+          "vi": "kỹ năng",
+          "pos": "n.f.",
+          "pronunciation_vi": "côm-pê-tăng",
+          "pronunciation_en": "lah kohm-pay-TAHNSS — nasal 'om' + nasal 'ence'; final '-e' silent"
+        },
+        {
+          "word": "postuler",
+          "en": "to apply",
+          "vi": "ứng tuyển",
+          "pos": "v.",
+          "pronunciation_vi": "pô-xtu-lê",
+          "pronunciation_en": "pos-too-LAY — 'u' rounded French 'u'; '-er' = 'ay'"
+        },
+        {
+          "word": "le recruteur",
+          "en": "recruiter",
+          "vi": "nhà tuyển dụng",
+          "pos": "n.m.",
+          "pronunciation_vi": "rơ-cru-tơ",
+          "pronunciation_en": "luh ruh-kroo-TUR — 'ou' = 'oo'; '-eur' rounded"
+        },
+        {
+          "word": "la formation",
+          "en": "training",
+          "vi": "đào tạo",
+          "pos": "n.f.",
+          "pronunciation_vi": "fo-ma-xi-on",
+          "pronunciation_en": "lah for-mah-SYON — '-tion' = 'syon'; nasal '-on'"
+        },
+        {
+          "word": "le salaire",
+          "en": "salary",
+          "vi": "lương",
+          "pos": "n.m.",
+          "pronunciation_vi": "xa-le",
+          "pronunciation_en": "luh sah-LAIR — '-aire' = 'air'; soft French 'r'"
+        },
+        {
+          "word": "le stage",
+          "en": "internship",
+          "vi": "thực tập",
+          "pos": "n.m.",
+          "pronunciation_vi": "xta-giơ",
+          "pronunciation_en": "luh STAHZH — final '-age' = 'ahzh'"
+        }
+      ],
+      "dialogue": [
+        {
+          "speaker": "A",
+          "text": "Bonjour, merci de me recevoir.",
+          "en": "Hello, thank you for receiving me.",
+          "vi": "Bạn có kinh nghiệm trong lĩnh vực này không?"
+        },
+        {
+          "speaker": "B",
+          "text": "Parlez-moi de votre parcours.",
+          "en": "Tell me about your background.",
+          "vi": "Dạ có, em làm 3 năm ở Công ty X."
+        },
+        {
+          "speaker": "A",
+          "text": "J'ai travaillé cinq ans en marketing digital.",
+          "en": "I worked five years in digital marketing.",
+          "vi": "Vì sao em muốn vào công ty mình?"
+        },
+        {
+          "speaker": "B",
+          "text": "Pourquoi notre entreprise vous intéresse ?",
+          "en": "Why are you interested in our company?",
+          "vi": "Em ngưỡng mộ tầm nhìn và giá trị của bên mình."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "fill-blank",
+          "question": "J'ai trois ans d'___ dans ce domaine.",
+          "answer": "expérience",
+          "hint_vi": "danh từ giống cái — kinh nghiệm",
+          "hint_en": "feminine noun — experience (l'expérience); takes 'd'' (de) before it"
+        },
+        {
+          "type": "matching",
+          "pairs": [
+            [
+              "l'entretien",
+              "phỏng vấn (interview)"
+            ],
+            [
+              "postuler",
+              "ứng tuyển (to apply)"
+            ],
+            [
+              "le recruteur",
+              "nhà tuyển dụng (recruiter)"
+            ]
+          ],
+          "instruction": "Nối từ với nghĩa",
+          "instruction_en": "Match the French word with its Vietnamese meaning"
+        },
+        {
+          "type": "translation",
+          "vietnamese": "Tôi muốn làm ở công ty này vì tôi ngưỡng mộ giá trị của nó.",
+          "english": "I want to work here because I admire your company's values.",
+          "french": "Je veux travailler ici parce que j'admire ses valeurs."
+        }
+      ],
+      "cultural_notes_en": "French CVs traditionally include a photo (this is changing — many modern guides now recommend dropping it). Handwritten cover letters are still appreciated, especially for traditional firms; typed is acceptable but follow up with a hand-signed printout. Salary negotiation typically comes up at round 2, not round 1 — leading with 'what's the pay?' reads as inexperienced. French recruiters weight academic credentials more heavily than US ones do; the school you attended matters for years into your career, not just at first hire.",
+      "tip_advice_en": "Prepare three set-piece answers: 'Parlez-moi de vous' (tell me about yourself), 'Vos qualités et défauts' (your strengths and weaknesses), 'Où vous voyez-vous dans 5 ans ?' (where do you see yourself in 5 years?). Close formally with 'Je vous remercie de votre temps' (thank you for your time). Bring a printed CV even if you applied online — pulling it out reads as prepared, not redundant."
+    },
+    {
+      "id": "french_expr_opinions",
+      "level": "B1",
+      "category": "expressions",
+      "title_vi": "Bày tỏ ý kiến",
+      "title_en": "Expressing opinions",
+      "sentences": [
+        {
+          "en": "À mon avis, ce projet a du potentiel.",
+          "vi": "Theo tôi, dự án có tiềm năng.",
+          "pronunciation_focus": [
+            "avis→a-vi",
+            "projet→prô-giê",
+            "potentiel→pô-tăng-xi-en"
+          ],
+          "pronunciation_focus_en": [
+            "avis 'ah-VEE' — final '-s' silent",
+            "projet 'pro-ZHAY' — 'j' = 'zh'; final '-t' silent",
+            "potentiel 'po-tahn-SYEL' — nasal 'en'; '-iel' = 'yel'"
+          ]
+        },
+        {
+          "en": "Je pense que c'est une excellente idée.",
+          "vi": "Tôi nghĩ đó là ý tưởng xuất sắc.",
+          "pronunciation_focus": [
+            "pense→păng",
+            "excellente→éc-xe-lăng"
+          ],
+          "pronunciation_focus_en": [
+            "pense 'PAHNSS' — nasal 'en'; final '-e' silent",
+            "excellente 'ek-seh-LAHNT' — 'x' = 'ks'; nasal 'en'; feminine ending"
+          ]
+        },
+        {
+          "en": "Personnellement, je ne suis pas convaincu.",
+          "vi": "Cá nhân tôi chưa bị thuyết phục.",
+          "pronunciation_focus": [
+            "personnellement→pe-xô-nen-măng",
+            "convaincu→côn-vanh-cu"
+          ],
+          "pronunciation_focus_en": [
+            "personnellement 'pehr-soh-NEL-mahn' — double 'nn' is one 'n'; '-ment' nasal at end",
+            "convaincu 'kohn-van-KOO' — nasal 'on' + nasal 'in'; final 'u' rounded"
+          ]
+        },
+        {
+          "en": "Il me semble que nous devrions attendre.",
+          "vi": "Tôi thấy chúng ta nên chờ.",
+          "pronunciation_focus": [
+            "semble→xăm",
+            "devrions→đơ-vri-on"
+          ],
+          "pronunciation_focus_en": [
+            "semble 'SAHM-bluh' — nasal 'em'; final '-le' barely voiced",
+            "devrions 'duh-VREE-yohn' — conditional of devoir; nasal '-ions'"
+          ]
+        },
+        {
+          "en": "D'un côté je comprends, de l'autre…",
+          "vi": "Một mặt tôi hiểu, mặt khác…",
+          "pronunciation_focus": [
+            "côté→cô-tê",
+            "comprends→côm-prăng"
+          ],
+          "pronunciation_focus_en": [
+            "côté 'koh-TAY' — circumflex 'ô' lengthens the vowel slightly; '-é' = 'ay'",
+            "comprends 'kohm-PRAHN' — nasal 'om' + nasal 'en'; final '-s' silent"
+          ]
+        }
+      ],
+      "cultural_notes_vi": "Người Pháp thích tranh luận. Cách lịch sự: 'À mon avis', 'Je pense que', 'Il me semble que'. Phản biện: 'Je ne suis pas d'accord'. Tránh 'Tu as tort'.",
+      "tip_advice_vi": "Khi ngắt lời lịch sự: 'Excusez-moi de vous interrompre'. Quay lại chủ đề: 'Pour en revenir à notre sujet…'",
+      "vocabulary": [
+        {
+          "word": "l'avis",
+          "en": "opinion",
+          "vi": "ý kiến",
+          "pos": "n.m.",
+          "pronunciation_vi": "la-vi",
+          "pronunciation_en": "lah-VEE — final 's' silent"
+        },
+        {
+          "word": "selon",
+          "en": "according to",
+          "vi": "theo",
+          "pos": "prép.",
+          "pronunciation_vi": "xơ-lon",
+          "pronunciation_en": "suh-LON — nasal '-on'; means 'according to'"
+        },
+        {
+          "word": "convaincre",
+          "en": "to convince",
+          "vi": "thuyết phục",
+          "pos": "v.",
+          "pronunciation_vi": "côn-vanh-crơ",
+          "pronunciation_en": "kohn-VANKR — nasal 'on' + nasal 'in'; final 're' barely voiced"
+        },
+        {
+          "word": "douter",
+          "en": "to doubt",
+          "vi": "nghi ngờ",
+          "pos": "v.",
+          "pronunciation_vi": "đu-tê",
+          "pronunciation_en": "doo-TAY — 'ou' = 'oo'; '-er' = 'ay'"
+        },
+        {
+          "word": "approuver",
+          "en": "to approve",
+          "vi": "tán thành",
+          "pos": "v.",
+          "pronunciation_vi": "a-pru-vê",
+          "pronunciation_en": "ah-proo-VAY — 'ou' = 'oo'; double 'pp' is one 'p'; '-er' = 'ay'"
+        },
+        {
+          "word": "contester",
+          "en": "to contest",
+          "vi": "phản đối",
+          "pos": "v.",
+          "pronunciation_vi": "côn-tét-tê",
+          "pronunciation_en": "kohn-tes-TAY — nasal 'on'; '-er' = 'ay'"
+        },
+        {
+          "word": "l'argument",
+          "en": "argument",
+          "vi": "lập luận",
+          "pos": "n.m.",
+          "pronunciation_vi": "la-ghu-măng",
+          "pronunciation_en": "lar-goo-MAHN — 'ou' = 'oo'; nasal '-ment'"
+        },
+        {
+          "word": "nuancer",
+          "en": "to qualify",
+          "vi": "nói giảm nhẹ",
+          "pos": "v.",
+          "pronunciation_vi": "nu-ăng-xê",
+          "pronunciation_en": "noo-ahn-SAY — 'nu-' = rounded French 'u'; nasal 'an'; '-er' = 'ay'"
+        },
+        {
+          "word": "franchement",
+          "en": "frankly",
+          "vi": "thẳng thắn",
+          "pos": "adv.",
+          "pronunciation_vi": "frăng-sơ-măng",
+          "pronunciation_en": "frahnsh-MAHN — 'ch' = 'sh'; nasal 'an' + nasal 'ment'"
+        },
+        {
+          "word": "partager",
+          "en": "to share",
+          "vi": "chia sẻ",
+          "pos": "v.",
+          "pronunciation_vi": "pa-ta-giê",
+          "pronunciation_en": "par-tah-ZHAY — same as L1/L3; '-er' = 'ay'"
+        }
+      ],
+      "dialogue": [
+        {
+          "speaker": "A",
+          "text": "Que penses-tu du nouveau logo ?",
+          "en": "What do you think of the new logo?",
+          "vi": "Bạn nghĩ sao về phim này?"
+        },
+        {
+          "speaker": "B",
+          "text": "Franchement, je ne suis pas convaincu.",
+          "en": "Frankly, I'm not convinced.",
+          "vi": "Theo mình thì hay, nhưng hơi dài."
+        },
+        {
+          "speaker": "A",
+          "text": "Je comprends, mais je le trouve plus moderne.",
+          "en": "I understand, but I find it more modern.",
+          "vi": "Mình thấy diễn xuất ổn."
+        },
+        {
+          "speaker": "B",
+          "text": "C'est vrai, mais il manque d'identité.",
+          "en": "True, but it lacks identity.",
+          "vi": "Đồng ý — nữ diễn viên chính diễn cực hay."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "fill-blank",
+          "question": "___ mon avis, c'est une bonne idée.",
+          "answer": "À",
+          "hint_vi": "giới từ 'theo' — đứng trước 'mon avis'",
+          "hint_en": "preposition — 'at/to'; the fixed phrase is 'à mon avis' (in my opinion); À carries the accent"
+        },
+        {
+          "type": "matching",
+          "pairs": [
+            [
+              "l'avis",
+              "ý kiến (opinion)"
+            ],
+            [
+              "approuver",
+              "tán thành (to approve)"
+            ],
+            [
+              "franchement",
+              "thẳng thắn (frankly)"
+            ]
+          ],
+          "instruction": "Nối từ với nghĩa",
+          "instruction_en": "Match the French word with its Vietnamese meaning"
+        },
+        {
+          "type": "translation",
+          "vietnamese": "Theo tôi, nên chờ thêm thông tin.",
+          "english": "In my opinion, we should wait for more information.",
+          "french": "À mon avis, nous devrions attendre plus d'informations."
+        }
+      ],
+      "cultural_notes_en": "Strong opinions are welcome in French conversation as long as they're argued. 'Je trouve que…' (I find that…) is the everyday opener; 'À mon avis…' (in my opinion) is more formal. Hedging with 'peut-être' too often reads as not having an opinion at all. Counter-position politely with 'Je ne suis pas d'accord' (I disagree) — directness here isn't rude. The classic French rhetorical move is: state the position → give a reason → concede a counter-point → restate. Skipping the concession step sounds dogmatic; including it shows you've actually thought.",
+      "tip_advice_en": "Watch the subjunctive trigger: 'Je pense que' takes the indicative ('je pense qu'il vient'); 'Je ne pense pas que' flips to subjunctive ('je ne pense pas qu'il vienne'). The negative + 'que' is one of the most reliable subjunctive triggers in spoken French — getting this right makes you sound notably more native. Polite interruption: 'Excusez-moi de vous interrompre…'. Returning to the topic: 'Pour en revenir à notre sujet…'"
+    },
+    {
+      "id": "french_expr_suggestions",
+      "level": "B1",
+      "category": "expressions",
+      "title_vi": "Đề xuất và gợi ý",
+      "title_en": "Making suggestions",
+      "sentences": [
+        {
+          "en": "Et si on allait au restaurant ce soir ?",
+          "vi": "Hay tối nay đi nhà hàng?",
+          "pronunciation_focus": [
+            "allait→a-le",
+            "restaurant→rét-x-tô-răng"
+          ],
+          "pronunciation_focus_en": [
+            "allait 'ah-LEH' — imperfect of aller; '-ait' = 'eh'",
+            "restaurant 'res-toh-RAHN' — '-au-' = 'oh'; nasal '-an'; final 't' silent"
+          ]
+        },
+        {
+          "en": "Je te propose de commencer par le plus simple.",
+          "vi": "Tôi đề nghị bắt đầu từ đơn giản nhất.",
+          "pronunciation_focus": [
+            "propose→prô-pô-dơ",
+            "commencer→cô-măng-xê"
+          ],
+          "pronunciation_focus_en": [
+            "propose 'pro-POHZ' — 's' between vowels = 'z'; final '-e' silent",
+            "commencer 'koh-mahn-SAY' — double 'mm' is one 'm'; nasal 'en'; '-er' = 'ay'"
+          ]
+        },
+        {
+          "en": "Pourquoi ne pas essayer une autre méthode ?",
+          "vi": "Sao không thử cách khác?",
+          "pronunciation_focus": [
+            "pourquoi→pua-qua",
+            "essayer→ê-xe-iê"
+          ],
+          "pronunciation_focus_en": [
+            "pourquoi 'poor-KWAH' — 'ou' = 'oo'; 'oi' = 'wah'",
+            "essayer 'eh-say-YAY' — double 'ss' is one 's'; '-yer' = 'YAY'"
+          ]
+        },
+        {
+          "en": "Nous pourrions reporter la réunion.",
+          "vi": "Chúng ta có thể hoãn cuộc họp.",
+          "pronunciation_focus": [
+            "pourrions→pu-ri-on",
+            "reporter→rơ-po-tê"
+          ],
+          "pronunciation_focus_en": [
+            "pourrions 'poo-RYOHN' — conditional; '-rions' = 'ryohn' with nasal '-on'",
+            "reporter 'ruh-por-TAY' — '-er' = 'ay'; soft French 'r'"
+          ]
+        },
+        {
+          "en": "Ça te dirait de partir en week-end ?",
+          "vi": "Bạn muốn đi chơi cuối tuần không?",
+          "pronunciation_focus": [
+            "dirait→đi-re",
+            "partir→pa-tia"
+          ],
+          "pronunciation_focus_en": [
+            "dirait 'dee-REH' — conditional of dire; '-rait' = 'reh'",
+            "partir 'par-TEER' — '-ir' verb ending; soft French 'r'"
+          ]
+        }
+      ],
+      "cultural_notes_vi": "Người Pháp dùng nhiều cách đề xuất: câu hỏi (Et si on…?), điều kiện (On pourrait…), gợi ý nhẹ (Je te propose…). 'Pourquoi ne pas…' là cách rất Pháp.",
+      "tip_advice_vi": "Công việc: 'Je suggère que…'. Đồng ý: 'Bonne idée !'. Từ chối nhẹ: 'C'est une bonne idée, mais…'",
+      "vocabulary": [
+        {
+          "word": "proposer",
+          "en": "to suggest",
+          "vi": "đề xuất",
+          "pos": "v.",
+          "pronunciation_vi": "prô-pô-dê",
+          "pronunciation_en": "pro-poh-ZAY — 's' between vowels = 'z' but here doubled before -er, so 's' = 's'; '-er' = 'ay'"
+        },
+        {
+          "word": "suggérer",
+          "en": "to suggest",
+          "vi": "gợi ý",
+          "pos": "v.",
+          "pronunciation_vi": "xu-giê-rê",
+          "pronunciation_en": "soog-zhay-RAY — 'gg' before 'é' = 'gzh'; '-er' = 'ay'"
+        },
+        {
+          "word": "si on…",
+          "en": "what if we…",
+          "vi": "nếu chúng ta…",
+          "pos": "expr.",
+          "pronunciation_vi": "xi on",
+          "pronunciation_en": "see ON — 'si on' = 'what if we'; nasal '-on'"
+        },
+        {
+          "word": "pourquoi pas",
+          "en": "why not",
+          "vi": "tại sao không",
+          "pos": "expr.",
+          "pronunciation_vi": "pua-qua pa",
+          "pronunciation_en": "poor-KWAH PAH — 'ou' = 'oo'; 'oi' = 'wah'; 'pas' final 's' silent"
+        },
+        {
+          "word": "ça te dit",
+          "en": "are you up for",
+          "vi": "bạn muốn",
+          "pos": "expr.",
+          "pronunciation_vi": "xa tơ đi",
+          "pronunciation_en": "sah tuh DEE — idiom 'do you fancy / how about'"
+        },
+        {
+          "word": "l'alternative",
+          "en": "alternative",
+          "vi": "lựa chọn khác",
+          "pos": "n.f.",
+          "pronunciation_vi": "lan-te-na-tiv",
+          "pronunciation_en": "lal-tehr-nah-TEEV — 'l'' elided; final '-e' silent"
+        },
+        {
+          "word": "la solution",
+          "en": "solution",
+          "vi": "giải pháp",
+          "pos": "n.f.",
+          "pronunciation_vi": "xô-lu-xi-on",
+          "pronunciation_en": "lah so-loo-SYON — '-tion' = 'syon'"
+        },
+        {
+          "word": "envisager",
+          "en": "to consider",
+          "vi": "dự tính",
+          "pos": "v.",
+          "pronunciation_vi": "ăng-vi-da-giê",
+          "pronunciation_en": "ahn-vee-zah-ZHAY — nasal 'en'; 'g' before 'a' is hard but before 'er' = 'zh'... here ge=zh; '-er' = 'ay'"
+        },
+        {
+          "word": "tenter",
+          "en": "to try",
+          "vi": "thử",
+          "pos": "v.",
+          "pronunciation_vi": "tăng-tê",
+          "pronunciation_en": "tahn-TAY — nasal 'en'; '-er' = 'ay'"
+        },
+        {
+          "word": "recommander",
+          "en": "to recommend",
+          "vi": "khuyến nghị",
+          "pos": "v.",
+          "pronunciation_vi": "rơ-cô-măng-đê",
+          "pronunciation_en": "ruh-koh-mahn-DAY — nasal 'an'; '-er' = 'ay'"
+        }
+      ],
+      "dialogue": [
+        {
+          "speaker": "A",
+          "text": "Je ne sais pas quoi faire ce week-end.",
+          "en": "I don't know what to do this weekend.",
+          "vi": "Cuối tuần mình đi đâu đó nha?"
+        },
+        {
+          "speaker": "B",
+          "text": "Et si on visitait le Louvre ? C'est gratuit dimanche.",
+          "en": "What if we visited the Louvre? It's free Sunday.",
+          "vi": "Ừ, hay đó! Bạn muốn đi đâu?"
+        },
+        {
+          "speaker": "A",
+          "text": "Bonne idée ! Ça fait longtemps.",
+          "en": "Good idea! It's been a while.",
+          "vi": "Mình đề xuất Versailles. Bạn thấy sao?"
+        },
+        {
+          "speaker": "B",
+          "text": "Super, on se retrouve à 10h ?",
+          "en": "Great, meet at 10am?",
+          "vi": "Tuyệt vời! Mình chưa đi đó bao giờ."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "fill-blank",
+          "question": "Et ___ on allait au cinéma ?",
+          "answer": "si",
+          "hint_vi": "liên từ điều kiện — 'nếu/giả sử'",
+          "hint_en": "conditional conjunction — 'if'; 'Et si on…?' is the standard 'what if we…?' invitation"
+        },
+        {
+          "type": "matching",
+          "pairs": [
+            [
+              "proposer",
+              "đề xuất (to propose)"
+            ],
+            [
+              "envisager",
+              "dự tính (to consider / envisage)"
+            ],
+            [
+              "tenter",
+              "thử (to try / attempt)"
+            ]
+          ],
+          "instruction": "Nối từ với nghĩa",
+          "instruction_en": "Match the French word with its Vietnamese meaning"
+        },
+        {
+          "type": "translation",
+          "vietnamese": "Tôi đề nghị bắt đầu họp sớm 15 phút.",
+          "english": "I suggest starting the meeting 15 minutes earlier.",
+          "french": "Je propose de commencer la réunion 15 minutes plus tôt."
+        }
+      ],
+      "cultural_notes_en": "French suggesting language defaults to the conditional or 'on' (we, impersonal). 'On pourrait…' (we could…) is the standard friendly suggestion; softer than 'we should' but firmer than 'maybe we could'. The infinitive question 'Et si on allait…?' (what if we went…?) is the warmest invitational form. Avoid the bare imperative ('Allons-y!') as a suggestion — it reads as a decision already made. 'Pourquoi pas…?' (why not…?) is a useful low-commitment opener.",
+      "tip_advice_en": "Work register: 'Je suggère que…' (I suggest that…) takes the subjunctive ('je suggère qu'on parte tôt'). Accepting: 'Bonne idée !' (good idea). Soft refusal: 'C'est une bonne idée, mais…' (good idea, but…) — open with the validation before the objection; flipping the order reads as dismissive."
+    },
+    {
+      "id": "french_expr_apologies",
+      "level": "B1",
+      "category": "expressions",
+      "title_vi": "Xin lỗi và biện hộ",
+      "title_en": "Apologizing and giving excuses",
+      "sentences": [
+        {
+          "en": "Je suis vraiment désolé pour le retard.",
+          "vi": "Tôi rất xin lỗi vì đến muộn.",
+          "pronunciation_focus": [
+            "désolé→đê-dô-lê",
+            "retard→rơ-ta"
+          ],
+          "pronunciation_focus_en": [
+            "désolé 'day-zoh-LAY' — single 's' between vowels = 'z'; final '-é' = 'ay'",
+            "retard 'ruh-TAR' — final 'd' silent; soft French 'r'"
+          ]
+        },
+        {
+          "en": "Excusez-moi, je ne l'ai pas fait exprès.",
+          "vi": "Xin lỗi, tôi không cố ý.",
+          "pronunciation_focus": [
+            "excusez→éc-xcu-dê",
+            "exprès→éc-xprê"
+          ],
+          "pronunciation_focus_en": [
+            "excusez 'ek-skoo-ZAY' — 'x' = 'ks'; French 'u' rounded; '-ez' = 'ay'",
+            "exprès 'ek-SPREH' — final 's' silent; 'è' opens like 'pet'"
+          ]
+        },
+        {
+          "en": "C'est de ma faute, je prends la responsabilité.",
+          "vi": "Lỗi tôi, tôi chịu trách nhiệm.",
+          "pronunciation_focus": [
+            "faute→phô-tơ",
+            "responsabilité→rét-xpon-xa-bi-li-tê"
+          ],
+          "pronunciation_focus_en": [
+            "faute 'FOHT' — 'au' = 'oh'; final '-e' silent",
+            "responsabilité 'res-pohn-sah-bee-lee-TAY' — nasal 'on' in the middle; stress on the last syllable"
+          ]
+        },
+        {
+          "en": "Je te prie de m'excuser.",
+          "vi": "Tôi xin bạn thứ lỗi.",
+          "pronunciation_focus": [
+            "prie→pri",
+            "m'excuser→méc-xcu-dê"
+          ],
+          "pronunciation_focus_en": [
+            "prie 'PREE' — 1st-person of prier; final 'e' silent",
+            "m'excuser 'mek-skoo-ZAY' — 'me' contracts to 'm''; 'x' = 'ks'"
+          ]
+        },
+        {
+          "en": "Malheureusement, je ne pourrai pas venir.",
+          "vi": "Tiếc quá, tôi không đến được.",
+          "pronunciation_focus": [
+            "malheureusement→ma-lơ-rơ-dơ-măng",
+            "pourrai→pu-re"
+          ],
+          "pronunciation_focus_en": [
+            "malheureusement 'mal-uh-ruh-zuh-MAHN' — long adverb with the '-ment' suffix nasal at end",
+            "pourrai 'poo-RAY' — future tense of pouvoir; '-ai' = 'ay' (close to 'eh')"
+          ]
+        }
+      ],
+      "cultural_notes_vi": "Lời xin lỗi nhiều cấp: Pardon (nhẹ), Désolé (trung bình), Excusez-moi (lịch sự), Je vous prie de m'excuser (trang trọng). Tránh 'C'est pas grave' khi nhận lời xin lỗi.",
+      "tip_advice_vi": "Đi muộn: gọi điện báo. Không đến được: báo 24h trước. 'Je suis navré' mạnh hơn 'désolé'.",
+      "vocabulary": [
+        {
+          "word": "désolé",
+          "en": "sorry",
+          "vi": "xin lỗi",
+          "pos": "adj.",
+          "pronunciation_vi": "đê-dô-lê",
+          "pronunciation_en": "day-zoh-LAY — single 's' between vowels = 'z'"
+        },
+        {
+          "word": "s'excuser",
+          "en": "to apologize",
+          "vi": "xin lỗi",
+          "pos": "v.",
+          "pronunciation_vi": "xéc-xcu-dê",
+          "pronunciation_en": "sek-skoo-ZAY — reflexive 's''; 'x' = 'ks'; rounded French 'u'"
+        },
+        {
+          "word": "le regret",
+          "en": "regret",
+          "vi": "hối tiếc",
+          "pos": "n.m.",
+          "pronunciation_vi": "rơ-gre",
+          "pronunciation_en": "luh ruh-GREH — final 't' silent; 'eh' opens like 'pet'"
+        },
+        {
+          "word": "la faute",
+          "en": "fault",
+          "vi": "lỗi",
+          "pos": "n.f.",
+          "pronunciation_vi": "phô-tơ",
+          "pronunciation_en": "lah FOHT — 'au' = 'oh'; final '-e' silent"
+        },
+        {
+          "word": "pardonner",
+          "en": "to forgive",
+          "vi": "tha thứ",
+          "pos": "v.",
+          "pronunciation_vi": "pa-đô-nê",
+          "pronunciation_en": "par-doh-NAY — '-er' = 'ay'; soft French 'r' twice"
+        },
+        {
+          "word": "navré",
+          "en": "very sorry",
+          "vi": "rất tiếc",
+          "pos": "adj.",
+          "pronunciation_vi": "na-vrê",
+          "pronunciation_en": "nah-VRAY — stronger than 'désolé'; final '-é' = 'ay'"
+        },
+        {
+          "word": "le malentendu",
+          "en": "misunderstanding",
+          "vi": "hiểu lầm",
+          "pos": "n.m.",
+          "pronunciation_vi": "ma-lăng-tăng-đu",
+          "pronunciation_en": "luh mal-ahn-tahn-DOO — two nasal 'en's; final 'u' rounded French 'u'"
+        },
+        {
+          "word": "rattraper",
+          "en": "to make up for",
+          "vi": "bù đắp",
+          "pos": "v.",
+          "pronunciation_vi": "ra-tra-pê",
+          "pronunciation_en": "rah-trah-PAY — double 'tt' is one 't' sound; '-er' = 'ay'"
+        },
+        {
+          "word": "involontairement",
+          "en": "unintentionally",
+          "vi": "vô ý",
+          "pos": "adv.",
+          "pronunciation_vi": "anh-vô-lon-te-măng",
+          "pronunciation_en": "an-voh-lohn-tair-MAHN — nasal 'in' start, nasal 'on' middle, nasal 'ment' end"
+        },
+        {
+          "word": "regrettable",
+          "en": "regrettable",
+          "vi": "đáng tiếc",
+          "pos": "adj.",
+          "pronunciation_vi": "rơ-gre-ta-blơ",
+          "pronunciation_en": "ruh-greh-TAH-bluh — final '-le' barely voiced"
+        }
+      ],
+      "dialogue": [
+        {
+          "speaker": "A",
+          "text": "Désolé d'être en retard, le métro était bloqué.",
+          "en": "Sorry I'm late, metro was blocked.",
+          "vi": "Xin lỗi vì đến muộn, tàu điện ngầm bị tắc."
+        },
+        {
+          "speaker": "B",
+          "text": "Ce n'est pas grave, ça arrive.",
+          "en": "It's okay, it happens.",
+          "vi": "Không sao đâu, chuyện thường mà."
+        },
+        {
+          "speaker": "A",
+          "text": "Je te dois un café pour me faire pardonner !",
+          "en": "I owe you a coffee to make up!",
+          "vi": "Mình nợ bạn một ly cà phê để chuộc tội nha!"
+        },
+        {
+          "speaker": "B",
+          "text": "Avec plaisir, mais envoie un message la prochaine fois !",
+          "en": "With pleasure, but send a message next time!",
+          "vi": "Vui lòng nhận, nhưng lần sau nhắn tin báo trước nhé!"
+        }
+      ],
+      "exercises": [
+        {
+          "type": "fill-blank",
+          "question": "Je suis ___ pour le retard.",
+          "answer": "désolé",
+          "hint_vi": "tính từ — xin lỗi (mức trung bình)",
+          "hint_en": "adjective — sorry (medium tier of apology); the heavier tier is 'navré'"
+        },
+        {
+          "type": "matching",
+          "pairs": [
+            [
+              "s'excuser",
+              "xin lỗi (to apologize)"
+            ],
+            [
+              "la faute",
+              "lỗi (fault)"
+            ],
+            [
+              "pardonner",
+              "tha thứ (to forgive)"
+            ]
+          ],
+          "instruction": "Nối từ với nghĩa",
+          "instruction_en": "Match the French word with its Vietnamese meaning"
+        },
+        {
+          "type": "translation",
+          "vietnamese": "Xin lỗi, tôi không cố ý làm phiền.",
+          "english": "Sorry, I didn't mean to bother you.",
+          "french": "Excusez-moi, je n'ai pas fait exprès de vous déranger."
+        }
+      ],
+      "cultural_notes_en": "French apologies come in calibrated tiers: 'Pardon' (light — bumping into someone on the métro), 'Désolé' (medium — running late), 'Excusez-moi' (polite — interrupting), 'Je vous prie de m'excuser' (formal — written or to a superior). Using the wrong tier feels off — 'Pardon' for a missed deadline reads dismissive. On the receiving end, 'C'est pas grave' (no big deal) sounds polite to learners but can come across as brushing off the apology; 'Je vous en prie' is the safer formal acknowledgment.",
+      "tip_advice_en": "Running late? Call ahead, don't text. Can't make it at all? Give 24-hour notice — French social calendars are scheduled tighter than in many US cultures, and last-minute cancellation reads as inconsiderate. 'Je suis navré(e)' is a tier heavier than 'désolé' — use it when you genuinely caused harm or major inconvenience."
+    },
+    {
+      "id": "french_expr_advice",
+      "level": "B1",
+      "category": "expressions",
+      "title_vi": "Cho lời khuyên",
+      "title_en": "Giving advice",
+      "sentences": [
+        {
+          "en": "Si j'étais toi, je commencerais par l'urgent.",
+          "vi": "Nếu tôi là bạn, tôi bắt đầu việc gấp.",
+          "pronunciation_focus": [
+            "étais→ê-te",
+            "commencerais→cô-măng-xơ-re"
+          ],
+          "pronunciation_focus_en": [
+            "étais 'ay-TEH' — imperfect of être; '-ais' = 'eh'",
+            "commencerais 'koh-mahn-suh-REH' — conditional ending '-erais' = 'uh-REH'"
+          ]
+        },
+        {
+          "en": "À ta place, je ne dirais rien.",
+          "vi": "Ở vị trí bạn, tôi sẽ không nói gì.",
+          "pronunciation_focus": [
+            "place→plát",
+            "dirais→đi-re"
+          ],
+          "pronunciation_focus_en": [
+            "place 'PLAHSS' — final '-e' silent; 'a' = 'ah'",
+            "dirais 'dee-REH' — conditional of dire; '-ais' = 'eh'"
+          ]
+        },
+        {
+          "en": "Mon conseil serait d'en parler directement.",
+          "vi": "Lời khuyên là nói chuyện trực tiếp.",
+          "pronunciation_focus": [
+            "conseil→côn-xây",
+            "directement→đi-réc-tơ-măng"
+          ],
+          "pronunciation_focus_en": [
+            "conseil 'kohn-SAY' — nasal 'on'; '-eil' = 'ay' as in 'day'",
+            "directement 'dee-rekt-MAHN' — adverb '-ment' = nasal 'MAHN'"
+          ]
+        },
+        {
+          "en": "Tu devrais prendre des vacances.",
+          "vi": "Bạn nên đi nghỉ đi.",
+          "pronunciation_focus": [
+            "devrais→đơ-vre",
+            "vacances→va-căng"
+          ],
+          "pronunciation_focus_en": [
+            "devrais 'duh-VREH' — conditional of devoir; '-ais' = 'eh'",
+            "vacances 'vah-KAHNSS' — nasal 'an' in the middle; final '-es' silent"
+          ]
+        },
+        {
+          "en": "Le mieux serait de consulter un spécialiste.",
+          "vi": "Tốt nhất là tham khảo chuyên gia.",
+          "pronunciation_focus": [
+            "mieux→mi-ơ",
+            "consulter→côn-xun-tê"
+          ],
+          "pronunciation_focus_en": [
+            "mieux 'MYUH' — 'ieu' is one sound, like 'yuh' but rounded",
+            "consulter 'kohn-sool-TAY' — nasal 'on'; '-er' = 'ay'"
+          ]
+        }
+      ],
+      "cultural_notes_vi": "Khuyên tế nhị: 'Si j'étais toi…' (nhẹ nhất), 'Tu devrais…' (mạnh hơn). Tránh mệnh lệnh. Không khuyên chủ đề nhạy cảm trừ khi được hỏi.",
+      "tip_advice_vi": "Công việc: 'Je vous recommande de…'. Cá nhân: 'À ta place…' thân mật hơn.",
+      "vocabulary": [
+        {
+          "word": "le conseil",
+          "en": "advice",
+          "vi": "lời khuyên",
+          "pos": "n.m.",
+          "pronunciation_vi": "côn-xây",
+          "pronunciation_en": "luh kohn-SAY — nasal 'on'; '-eil' = 'ay' like 'day'"
+        },
+        {
+          "word": "conseiller",
+          "en": "to advise",
+          "vi": "khuyên",
+          "pos": "v.",
+          "pronunciation_vi": "côn-xê-iê",
+          "pronunciation_en": "kohn-say-YAY — '-iller' = 'ee-AY'; soft palatal sound"
+        },
+        {
+          "word": "recommander",
+          "en": "to recommend",
+          "vi": "khuyến nghị",
+          "pos": "v.",
+          "pronunciation_vi": "rơ-cô-măng-đê",
+          "pronunciation_en": "ruh-koh-mahn-DAY — nasal 'an' before the 'd'; '-er' = 'ay'"
+        },
+        {
+          "word": "si j'étais toi",
+          "en": "if I were you",
+          "vi": "nếu là bạn",
+          "pos": "expr.",
+          "pronunciation_vi": "xi giê-tê toa",
+          "pronunciation_en": "see zhay-TEH twah — 'j'étais' contracts; 'oi' = 'wah'"
+        },
+        {
+          "word": "à ta place",
+          "en": "in your shoes",
+          "vi": "ở vị trí bạn",
+          "pos": "expr.",
+          "pronunciation_vi": "a ta plát",
+          "pronunciation_en": "ah tah PLAHSS — final '-e' silent; 'a' = 'ah' (like 'father')"
+        },
+        {
+          "word": "tu devrais",
+          "en": "you should",
+          "vi": "bạn nên",
+          "pos": "expr.",
+          "pronunciation_vi": "tu đơ-vre",
+          "pronunciation_en": "too duh-VREH — French 'u' is rounded (no English equivalent — say 'ee' with lips pursed); '-ais' = 'eh'"
+        },
+        {
+          "word": "la suggestion",
+          "en": "suggestion",
+          "vi": "gợi ý",
+          "pos": "n.f.",
+          "pronunciation_vi": "xu-giét-xi-on",
+          "pronunciation_en": "lah soog-zhes-TYON — 'gg' before 'e' = 'gzh'; '-tion' = 'tyon' here (special case for this word)"
+        },
+        {
+          "word": "prévenir",
+          "en": "to warn",
+          "vi": "cảnh báo",
+          "pos": "v.",
+          "pronunciation_vi": "prê-vơ-nia",
+          "pronunciation_en": "pray-vuh-NEER — '-ir' verb ending; final 'r' lightly rolled"
+        },
+        {
+          "word": "aider",
+          "en": "to help",
+          "vi": "giúp đỡ",
+          "pos": "v.",
+          "pronunciation_vi": "ê-đê",
+          "pronunciation_en": "ay-DAY — 'ai' = 'eh/ay'; '-er' = 'ay'"
+        },
+        {
+          "word": "soutenir",
+          "en": "to support",
+          "vi": "ủng hộ",
+          "pos": "v.",
+          "pronunciation_vi": "xu-tơ-nia",
+          "pronunciation_en": "soo-tuh-NEER — 'ou' = 'oo' as in 'boot' (NOT 'ow'); final 'r' lightly rolled"
+        }
+      ],
+      "dialogue": [
+        {
+          "speaker": "A",
+          "text": "Je ne sais pas si je dois accepter ce poste.",
+          "en": "I don't know if I should accept this job.",
+          "vi": "Mình không biết có nên nhận việc này không."
+        },
+        {
+          "speaker": "B",
+          "text": "Si j'étais toi, je prendrais le temps de réfléchir.",
+          "en": "If I were you, I'd take time to think.",
+          "vi": "Nếu là bạn, mình sẽ dành thời gian suy nghĩ thêm."
+        },
+        {
+          "speaker": "A",
+          "text": "Mais j'ai peur qu'ils choisissent quelqu'un d'autre.",
+          "en": "But I'm afraid they'll pick someone else.",
+          "vi": "Nhưng mình sợ họ chọn người khác mất."
+        },
+        {
+          "speaker": "B",
+          "text": "Si c'est le bon poste, ils attendront.",
+          "en": "If it's right, they'll wait.",
+          "vi": "Nếu đúng là chỗ phù hợp, họ sẽ đợi thôi."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "fill-blank",
+          "question": "___ j'étais toi, j'accepterais.",
+          "answer": "Si",
+          "hint_vi": "liên từ điều kiện — 'nếu'",
+          "hint_en": "conditional conjunction — 'if'; pairs with imperfect tense for hypotheticals"
+        },
+        {
+          "type": "matching",
+          "pairs": [
+            [
+              "le conseil",
+              "lời khuyên (advice)"
+            ],
+            [
+              "recommander",
+              "khuyến nghị (to recommend)"
+            ],
+            [
+              "soutenir",
+              "ủng hộ (to support)"
+            ]
+          ],
+          "instruction": "Nối từ với nghĩa",
+          "instruction_en": "Match the word with its meaning"
+        },
+        {
+          "type": "translation",
+          "vietnamese": "Tôi khuyên bạn học 30 phút mỗi ngày.",
+          "english": "I advise you to study 30 minutes a day.",
+          "french": "Je te conseille d'étudier 30 minutes par jour."
+        }
+      ],
+      "cultural_notes_en": "Advice in French is graded by directness: 'Si j'étais toi…' (if I were you — softest), 'À ta place…' (in your shoes — neutral), 'Tu devrais…' (you should — firmer). Skip imperatives ('Fais ça !') unless you're a parent or boss. On sensitive subjects — money, relationships, parenting — French speakers wait to be asked. Volunteered advice on those topics reads as overstepping in a way it might not in Anglo cultures where 'I just thought I'd mention…' is more accepted.",
+      "tip_advice_en": "Work register: 'Je vous recommande de…' + infinitive is the safe formal recommendation. Personal register with friends: 'À ta place…' is warmer than 'Tu devrais…'. The conditional in 'serait', 'pourrait', 'devrait' softens the advice — French uses the conditional where English uses 'I'd suggest' / 'you might want to'."
+    },
+    {
+      "id": "french_expr_experiences",
+      "level": "B1",
+      "category": "expressions",
+      "title_vi": "Kể về trải nghiệm",
+      "title_en": "Describing experiences",
+      "sentences": [
+        {
+          "en": "J'ai passé un an à l'étranger, c'était incroyable.",
+          "vi": "Tôi sống 1 năm ở nước ngoài, tuyệt vời.",
+          "pronunciation_focus": [
+            "passé→pa-xê",
+            "étranger→ê-trăng-giê",
+            "incroyable→anh-croa-ia-blơ"
+          ],
+          "pronunciation_focus_en": [
+            "passé 'pah-SAY' — past participle; '-é' = 'ay'",
+            "étranger 'ay-trahn-ZHAY' — nasal 'an'; 'g' before 'e' = 'zh'",
+            "incroyable 'an-krwah-YAH-bluh' — nasal 'in' start; 'oy' = 'wah-y'"
+          ]
+        },
+        {
+          "en": "C'est la meilleure expérience de ma vie.",
+          "vi": "Trải nghiệm tuyệt nhất đời tôi.",
+          "pronunciation_focus": [
+            "meilleure→mê-iơ",
+            "expérience→éc-xpê-ri-ăng"
+          ],
+          "pronunciation_focus_en": [
+            "meilleure 'meh-YUR' — '-eill' = 'ay-y'; '-eure' = 'ur'",
+            "expérience 'eks-pay-RYAHNSS' — 'x' = 'ks'; nasal 'ence'"
+          ]
+        },
+        {
+          "en": "Je n'oublierai jamais ce voyage au Vietnam.",
+          "vi": "Tôi không quên chuyến đi VN.",
+          "pronunciation_focus": [
+            "oublierai→u-bli-ơ-re",
+            "voyage→voa-ia-giơ"
+          ],
+          "pronunciation_focus_en": [
+            "oublierai 'oo-blee-yuh-RAY' — future of oublier; '-erai' = 'uh-RAY'",
+            "voyage 'vwah-YAHZH' — 'oy' = 'wah-y'; 'g' before silent 'e' = 'zh'"
+          ]
+        },
+        {
+          "en": "Quand j'étais petit, j'habitais à la campagne.",
+          "vi": "Hồi nhỏ tôi sống ở nông thôn.",
+          "pronunciation_focus": [
+            "étais→ê-te",
+            "habitais→a-bi-te",
+            "campagne→căm-pa-nhơ"
+          ],
+          "pronunciation_focus_en": [
+            "étais 'ay-TEH' — imperfect of être; '-ais' = 'eh'",
+            "habitais 'ah-bee-TEH' — silent 'h'; imperfect '-ais' = 'eh'",
+            "campagne 'kahn-PAH-nyuh' — nasal 'an'; 'gn' = Spanish 'ñ' / English 'ny'"
+          ]
+        },
+        {
+          "en": "Cette rencontre a changé ma vision des choses.",
+          "vi": "Cuộc gặp này thay đổi cách nhìn của tôi.",
+          "pronunciation_focus": [
+            "rencontre→răng-côn-trơ",
+            "changé→săng-giê"
+          ],
+          "pronunciation_focus_en": [
+            "rencontre 'rahn-KOHN-truh' — nasal 'en' + nasal 'on'",
+            "changé 'shahn-ZHAY' — 'ch' = 'sh'; 'g' before 'é' = 'zh'"
+          ]
+        }
+      ],
+      "cultural_notes_vi": "Người Pháp thích kể chuyện. Dùng passé composé cho sự kiện, imparfait cho bối cảnh. Thêm cảm xúc: 'C'était magnifique !', 'Quelle surprise !'",
+      "tip_advice_vi": "Mở đầu: 'Laisse-moi te raconter…'. Dùng cử chỉ tay khi kể — người Pháp diễn tả rất nhiều.",
+      "vocabulary": [
+        {
+          "word": "raconter",
+          "en": "to tell",
+          "vi": "kể",
+          "pos": "v.",
+          "pronunciation_vi": "ra-côn-tê",
+          "pronunciation_en": "rah-kohn-TAY — nasal 'on'; '-er' = 'ay'"
+        },
+        {
+          "word": "l'expérience",
+          "en": "experience",
+          "vi": "trải nghiệm",
+          "pos": "n.f.",
+          "pronunciation_vi": "léc-xpê-ri-ăng",
+          "pronunciation_en": "leks-pay-RYAHNSS — 'x' = 'ks'; nasal 'ence'"
+        },
+        {
+          "word": "le souvenir",
+          "en": "memory",
+          "vi": "kỷ niệm",
+          "pos": "n.m.",
+          "pronunciation_vi": "xu-vơ-nia",
+          "pronunciation_en": "luh soo-vuh-NEER — 'ou' = 'oo'; soft French 'r'"
+        },
+        {
+          "word": "inoubliable",
+          "en": "unforgettable",
+          "vi": "khó quên",
+          "pos": "adj.",
+          "pronunciation_vi": "i-nu-bli-a-blơ",
+          "pronunciation_en": "ee-noo-blee-YAH-bluh — 'ou' = 'oo'; final '-le' barely voiced"
+        },
+        {
+          "word": "voyager",
+          "en": "to travel",
+          "vi": "du lịch",
+          "pos": "v.",
+          "pronunciation_vi": "voa-ia-giê",
+          "pronunciation_en": "vwah-yah-ZHAY — 'oy' = 'wah-y'; '-er' = 'ay'"
+        },
+        {
+          "word": "découvrir",
+          "en": "to discover",
+          "vi": "khám phá",
+          "pos": "v.",
+          "pronunciation_vi": "đê-cu-vria",
+          "pronunciation_en": "day-koo-VREER — 'ou' = 'oo'; soft French 'r'"
+        },
+        {
+          "word": "l'aventure",
+          "en": "adventure",
+          "vi": "phiêu lưu",
+          "pos": "n.f.",
+          "pronunciation_vi": "la-văng-tuya",
+          "pronunciation_en": "lah-vahn-TOOR — nasal 'an' middle; '-ure' = 'oor' with rounded French 'u'"
+        },
+        {
+          "word": "l'émotion",
+          "en": "emotion",
+          "vi": "cảm xúc",
+          "pos": "n.f.",
+          "pronunciation_vi": "lê-mô-xi-on",
+          "pronunciation_en": "lay-moh-SYON — '-tion' = 'syon'; 'l'' contracts"
+        },
+        {
+          "word": "marquant",
+          "en": "memorable",
+          "vi": "đáng nhớ",
+          "pos": "adj.",
+          "pronunciation_vi": "ma-căng",
+          "pronunciation_en": "mar-KAHN — nasal 'an' at end; final 't' silent"
+        },
+        {
+          "word": "partager",
+          "en": "to share",
+          "vi": "chia sẻ",
+          "pos": "v.",
+          "pronunciation_vi": "pa-ta-giê",
+          "pronunciation_en": "par-tah-ZHAY — 'g' before 'e' = 'zh'; '-er' = 'ay'"
+        }
+      ],
+      "dialogue": [
+        {
+          "speaker": "A",
+          "text": "Raconte-moi ton voyage au Vietnam !",
+          "en": "Tell me about your Vietnam trip!",
+          "vi": "Kể mình nghe chuyến đi Việt Nam đi!"
+        },
+        {
+          "speaker": "B",
+          "text": "C'était incroyable ! Hanoï, Hoi An, HCM-Ville.",
+          "en": "Incredible! Hanoi, Hoi An, HCMC.",
+          "vi": "Tuyệt vời lắm! Hà Nội, Hội An, TP.HCM."
+        },
+        {
+          "speaker": "A",
+          "text": "Qu'est-ce qui t'a le plus marqué ?",
+          "en": "What impressed you most?",
+          "vi": "Điều gì gây ấn tượng nhất với bạn?"
+        },
+        {
+          "speaker": "B",
+          "text": "La nourriture ! Le phở est inoubliable.",
+          "en": "The food! Pho is unforgettable.",
+          "vi": "Ẩm thực! Phở thì khó quên lắm."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "fill-blank",
+          "question": "J'ai passé un mois ___ Vietnam.",
+          "answer": "au",
+          "hint_vi": "giới từ co — 'à' + 'le' (cho nước giống đực)",
+          "hint_en": "contraction — 'à' + 'le' = 'au' (for masculine countries: au Vietnam, au Japon)"
+        },
+        {
+          "type": "matching",
+          "pairs": [
+            [
+              "raconter",
+              "kể (to tell)"
+            ],
+            [
+              "inoubliable",
+              "khó quên (unforgettable)"
+            ],
+            [
+              "découvrir",
+              "khám phá (to discover)"
+            ]
+          ],
+          "instruction": "Nối từ với nghĩa",
+          "instruction_en": "Match the word with its meaning"
+        },
+        {
+          "type": "translation",
+          "vietnamese": "Tôi không quên lần đầu đến Paris.",
+          "english": "I'll never forget my first time in Paris.",
+          "french": "Je n'oublierai jamais la première fois à Paris."
+        }
+      ],
+      "cultural_notes_en": "French is good at storytelling and the grammar supports it: passé composé (j'ai fait, je suis allé) for the event, imparfait (j'étais, j'habitais) for the background. English collapses these two tenses into 'I did' / 'I was doing'; in French the choice carries meaning. Add emotional punctuation freely: 'C'était magnifique !', 'Quelle surprise !', 'Je n'en revenais pas'. Story-telling with no emotional color reads flat in French — closer to a report than a story.",
+      "tip_advice_en": "Open with 'Laisse-moi te raconter…' (let me tell you about…) or 'Tu vas pas le croire mais…' (you won't believe this but…). Use your hands — French storytelling is gestural in a way that even British storytelling isn't. Don't apologize for taking the floor; if you've been invited to share an experience, taking 2-3 minutes is normal, not bragging."
+    },
+    {
+      "id": "french_grammar_compare",
+      "level": "B1",
+      "category": "advanced_grammar",
+      "title_vi": "So sánh trong tiếng Pháp",
+      "title_en": "Comparisons in French",
+      "sentences": [
+        {
+          "en": "Paris est plus grand que Lyon.",
+          "vi": "Paris lớn hơn Lyon.",
+          "pronunciation_focus": [
+            "plus→plu",
+            "grand→grăng"
+          ],
+          "pronunciation_focus_en": [
+            "plus 'PLOO' — final 's' silent in this comparative form; 'u' rounded French 'u'",
+            "grand 'GRAHN' — nasal 'an'; final 'd' silent"
+          ]
+        },
+        {
+          "en": "Ce restaurant est moins cher.",
+          "vi": "Nhà hàng này rẻ hơn.",
+          "pronunciation_focus": [
+            "moins→moanh",
+            "cher→se"
+          ],
+          "pronunciation_focus_en": [
+            "moins 'MWAN' — nasal 'oin'; final '-s' silent",
+            "cher 'SHEHR' — 'ch' = 'sh'; soft French 'r'"
+          ]
+        },
+        {
+          "en": "Marie est aussi intelligente que Paul.",
+          "vi": "Marie thông minh ngang Paul.",
+          "pronunciation_focus": [
+            "aussi→ô-xi",
+            "intelligente→anh-te-li-giăng"
+          ],
+          "pronunciation_focus_en": [
+            "aussi 'oh-SEE' — 'au' = 'oh'; final 'i' = 'ee'",
+            "intelligente 'an-teh-lee-ZHANT' — nasal 'in' start; 'g' before 'e' = 'zh'; final 't' pronounced (feminine)"
+          ]
+        },
+        {
+          "en": "C'est le meilleur film que j'aie vu.",
+          "vi": "Đây là phim hay nhất tôi xem.",
+          "pronunciation_focus": [
+            "meilleur→mê-iơ",
+            "film→fìlm"
+          ],
+          "pronunciation_focus_en": [
+            "meilleur 'meh-YUR' — '-eill' = 'ay-y'; '-eur' rounded",
+            "film 'FEELM' — short, clipped final 'l'"
+          ]
+        },
+        {
+          "en": "Cette solution est la pire.",
+          "vi": "Giải pháp này tệ nhất.",
+          "pronunciation_focus": [
+            "pire→pia",
+            "solution→xô-lu-xi-on"
+          ],
+          "pronunciation_focus_en": [
+            "pire 'PEER' — final '-e' silent; soft French 'r'",
+            "solution 'so-loo-SYON' — '-tion' = 'syon'; nasal '-on' at end"
+          ]
+        }
+      ],
+      "cultural_notes_vi": "So sánh: plus... que (hơn), moins... que (kém), aussi... que (bằng). Bất quy tắc: bon→meilleur, bien→mieux, mauvais→pire.",
+      "tip_advice_vi": "'Meilleur' là tính từ, 'mieux' là trạng từ. Lỗi phổ biến nhất: 'Ce gâteau est meilleur' vs 'Elle chante mieux'.",
+      "vocabulary": [
+        {
+          "word": "plus...que",
+          "en": "more...than",
+          "vi": "hơn",
+          "pos": "expr.",
+          "pronunciation_vi": "plu…cơ",
+          "pronunciation_en": "PLOO kuh — 'plus que' in comparatives; final 's' of 'plus' silent here"
+        },
+        {
+          "word": "moins...que",
+          "en": "less...than",
+          "vi": "kém hơn",
+          "pos": "expr.",
+          "pronunciation_vi": "moanh…cơ",
+          "pronunciation_en": "MWAN kuh — 'moins que'; nasal 'oin'"
+        },
+        {
+          "word": "aussi...que",
+          "en": "as...as",
+          "vi": "bằng",
+          "pos": "expr.",
+          "pronunciation_vi": "ô-xi…cơ",
+          "pronunciation_en": "oh-SEE kuh — 'aussi que'; 'au' = 'oh'"
+        },
+        {
+          "word": "meilleur",
+          "en": "better",
+          "vi": "tốt hơn",
+          "pos": "adj.",
+          "pronunciation_vi": "mê-iơ",
+          "pronunciation_en": "meh-YUR — irregular 'better' (adj); '-eur' rounded"
+        },
+        {
+          "word": "pire",
+          "en": "worse",
+          "vi": "tệ hơn",
+          "pos": "adj.",
+          "pronunciation_vi": "pia",
+          "pronunciation_en": "PEER — irregular 'worse'; final '-e' silent; soft 'r'"
+        },
+        {
+          "word": "mieux",
+          "en": "better (adv)",
+          "vi": "tốt hơn",
+          "pos": "adv.",
+          "pronunciation_vi": "mi-ơ",
+          "pronunciation_en": "MYUH — adverbial 'better'; 'ieu' = 'yuh' rounded"
+        },
+        {
+          "word": "le meilleur",
+          "en": "the best",
+          "vi": "tốt nhất",
+          "pos": "adj.",
+          "pronunciation_vi": "mê-iơ",
+          "pronunciation_en": "luh meh-YUR — 'the best'; same pron as meilleur"
+        },
+        {
+          "word": "le pire",
+          "en": "the worst",
+          "vi": "tệ nhất",
+          "pos": "adj.",
+          "pronunciation_vi": "pia",
+          "pronunciation_en": "luh PEER — 'the worst'"
+        },
+        {
+          "word": "comparer",
+          "en": "to compare",
+          "vi": "so sánh",
+          "pos": "v.",
+          "pronunciation_vi": "côn-pa-rê",
+          "pronunciation_en": "kohm-pah-RAY — '-er' = 'ay'"
+        },
+        {
+          "word": "égal",
+          "en": "equal",
+          "vi": "bằng nhau",
+          "pos": "adj.",
+          "pronunciation_vi": "ê-gan",
+          "pronunciation_en": "ay-GAL — 'é' = 'ay'; final 'l' pronounced"
+        }
+      ],
+      "dialogue": [
+        {
+          "speaker": "A",
+          "text": "Lyon ou Marseille, tu préfères ?",
+          "en": "Lyon or Marseille, which do you prefer?",
+          "vi": "Lyon hay Marseille, bạn thích thành phố nào hơn?"
+        },
+        {
+          "speaker": "B",
+          "text": "Lyon est plus élégante, Marseille plus vivante.",
+          "en": "Lyon is more elegant, Marseille livelier.",
+          "vi": "Lyon thanh lịch hơn, Marseille thì sôi động hơn."
+        },
+        {
+          "speaker": "A",
+          "text": "Et pour la nourriture ?",
+          "en": "And for food?",
+          "vi": "Còn về ẩm thực thì sao?"
+        },
+        {
+          "speaker": "B",
+          "text": "Lyon est la meilleure pour la gastronomie !",
+          "en": "Lyon is best for gastronomy!",
+          "vi": "Lyon là số một về ẩm thực!"
+        }
+      ],
+      "exercises": [
+        {
+          "type": "fill-blank",
+          "question": "Paris est ___ grand que Marseille.",
+          "answer": "plus",
+          "hint_vi": "trạng từ so sánh — 'hơn'",
+          "hint_en": "comparative — 'more'; 'plus grand que' = 'bigger than'"
+        },
+        {
+          "type": "matching",
+          "pairs": [
+            [
+              "plus...que",
+              "hơn (more...than)"
+            ],
+            [
+              "meilleur",
+              "tốt hơn (better, adj)"
+            ],
+            [
+              "le pire",
+              "tệ nhất (the worst)"
+            ]
+          ],
+          "instruction": "Nối từ với nghĩa",
+          "instruction_en": "Match the French expression with its Vietnamese meaning"
+        },
+        {
+          "type": "translation",
+          "vietnamese": "Phim này hay hơn phim tuần trước.",
+          "english": "This film is better than last week's.",
+          "french": "Ce film est meilleur que celui de la semaine dernière."
+        }
+      ],
+      "cultural_notes_en": "French comparisons use plus / moins / aussi + adjective + que. Adjectives agree with the noun (plus grande, plus grands), unlike English. Three irregulars must be memorized: 'bon' (good) → 'meilleur' (better); 'bien' (well, adverb) → 'mieux'; 'mauvais' (bad) → 'pire' (regular 'plus mauvais' is also acceptable). Confusing meilleur (adj) and mieux (adv) is the single most common B1 mistake — 'elle chante mieux' (she sings better, adv) vs 'ce gâteau est meilleur' (this cake is better, adj).",
+      "tip_advice_en": "Mnemonic for the irregulars: bon→meilleur parallels English 'good→better' so it's easy to remember. The trap is wanting to say '*plus bon' — French won't allow it. Same with '*plus mauvais que ça' (grammatically possible, but 'pire' sounds more native). For superlatives, add 'le/la/les' to meilleur or pire: 'le meilleur film', 'la pire idée'."
+    },
+    {
+      "id": "french_grammar_hypothetical",
+      "level": "B1",
+      "category": "advanced_grammar",
+      "title_vi": "Tình huống giả định",
+      "title_en": "Hypothetical situations",
+      "sentences": [
+        {
+          "en": "Si j'avais plus d'argent, je voyagerais.",
+          "vi": "Nếu có tiền, tôi sẽ du lịch.",
+          "pronunciation_focus": [
+            "avais→a-ve",
+            "voyagerais→voa-ia-giơ-re"
+          ],
+          "pronunciation_focus_en": [
+            "avais 'ah-VEH' — imperfect 'avoir'; '-ais' = 'eh'",
+            "voyagerais 'vwah-yah-zhuh-REH' — conditional; '-erais' = 'uh-REH'"
+          ]
+        },
+        {
+          "en": "Si tu étudiais plus, tu réussirais.",
+          "vi": "Nếu học nhiều hơn, bạn sẽ đỗ.",
+          "pronunciation_focus": [
+            "étudiais→ê-tu-đi-e",
+            "réussirais→rê-u-xi-re"
+          ],
+          "pronunciation_focus_en": [
+            "étudiais 'ay-too-DYEH' — imperfect 'étudier'; '-iais' = 'yeh'",
+            "réussirais 'ray-oo-see-REH' — conditional; '-irais' = 'ee-REH'"
+          ]
+        },
+        {
+          "en": "J'aimerais habiter à la montagne.",
+          "vi": "Tôi muốn sống trên núi.",
+          "pronunciation_focus": [
+            "aimerais→ê-mơ-re",
+            "montagne→môn-ta-nhơ"
+          ],
+          "pronunciation_focus_en": [
+            "aimerais 'eh-muh-REH' — conditional 'aimer'; '-erais' = 'uh-REH'",
+            "montagne 'mohn-TAH-nyuh' — nasal 'on'; 'gn' = 'ny'"
+          ]
+        },
+        {
+          "en": "Il faudrait qu'on se voie plus souvent.",
+          "vi": "Chúng ta nên gặp thường xuyên hơn.",
+          "pronunciation_focus": [
+            "faudrait→phô-đre",
+            "souvent→xu-văng"
+          ],
+          "pronunciation_focus_en": [
+            "faudrait 'foh-DREH' — conditional 'falloir'; '-drait' = 'dreh'",
+            "souvent 'soo-VAHN' — 'ou' = 'oo'; nasal '-ent'"
+          ]
+        },
+        {
+          "en": "À ta place, je n'accepterais pas.",
+          "vi": "Ở vị trí bạn, tôi không nhận.",
+          "pronunciation_focus": [
+            "accepterais→ác-xép-tơ-re"
+          ],
+          "pronunciation_focus_en": [
+            "accepterais 'ahk-sep-tuh-REH' — conditional 'accepter'; '-erais' = 'uh-REH'"
+          ]
+        }
+      ],
+      "cultural_notes_vi": "Si + imparfait → conditionnel présent (giả định). Conditionnel dùng: đề nghị lịch sự (Je voudrais), ước muốn (J'aimerais), lời khuyên (Tu devrais).",
+      "tip_advice_vi": "Phân biệt: 'Si j'avais' (giả định) vs 'Quand j'avais' (thực tế). Conditionnel đuôi -ais, -ais, -ait, -ions, -iez, -aient.",
+      "vocabulary": [
+        {
+          "word": "si",
+          "en": "if",
+          "vi": "nếu",
+          "pos": "conj.",
+          "pronunciation_vi": "xi",
+          "pronunciation_en": "SEE — short 'ee'; conditional conjunction"
+        },
+        {
+          "word": "le conditionnel",
+          "en": "conditional",
+          "vi": "thể điều kiện",
+          "pos": "n.m.",
+          "pronunciation_vi": "côn-đi-xi-ô-nen",
+          "pronunciation_en": "luh kohn-dee-syo-NEL — '-onnel' = 'oh-nel'; double 'nn' is one 'n'"
+        },
+        {
+          "word": "j'aimerais",
+          "en": "I would like",
+          "vi": "tôi muốn",
+          "pos": "expr.",
+          "pronunciation_vi": "giê-mơ-re",
+          "pronunciation_en": "zheh-muh-REH — 'j'aimerais' contracts; conditional politeness"
+        },
+        {
+          "word": "je voudrais",
+          "en": "I would like",
+          "vi": "tôi muốn",
+          "pos": "expr.",
+          "pronunciation_vi": "giơ vu-đre",
+          "pronunciation_en": "zhuh voo-DREH — 'je voudrais' = 'I would like'"
+        },
+        {
+          "word": "je devrais",
+          "en": "I should",
+          "vi": "tôi nên",
+          "pos": "expr.",
+          "pronunciation_vi": "giơ đơ-vre",
+          "pronunciation_en": "zhuh duh-VREH — 'je devrais' = 'I should'"
+        },
+        {
+          "word": "imaginer",
+          "en": "to imagine",
+          "vi": "tưởng tượng",
+          "pos": "v.",
+          "pronunciation_vi": "i-ma-gi-nê",
+          "pronunciation_en": "ee-mah-zhee-NAY — 'g' before 'i' = 'zh'; '-er' = 'ay'"
+        },
+        {
+          "word": "l'hypothèse",
+          "en": "hypothesis",
+          "vi": "giả thuyết",
+          "pos": "n.f.",
+          "pronunciation_vi": "li-pô-te-dơ",
+          "pronunciation_en": "lee-poh-TEZ — silent 'h'; final '-e' silent"
+        },
+        {
+          "word": "irréel",
+          "en": "unreal",
+          "vi": "không thật",
+          "pos": "adj.",
+          "pronunciation_vi": "i-rê-en",
+          "pronunciation_en": "ee-ray-EL — 'irr-' = 'eer'; '-éel' = 'ay-el'"
+        },
+        {
+          "word": "le rêve",
+          "en": "dream",
+          "vi": "giấc mơ",
+          "pos": "n.m.",
+          "pronunciation_vi": "rê-vơ",
+          "pronunciation_en": "luh REV — final '-e' silent; 'ê' = 'eh'"
+        },
+        {
+          "word": "supposer",
+          "en": "to suppose",
+          "vi": "giả sử",
+          "pos": "v.",
+          "pronunciation_vi": "xu-pô-dê",
+          "pronunciation_en": "soo-poh-ZAY — 'ou' = 'oo'; '-er' = 'ay'"
+        }
+      ],
+      "dialogue": [
+        {
+          "speaker": "A",
+          "text": "Si tu gagnais au loto, tu ferais quoi ?",
+          "en": "If you won the lotto, what would you do?",
+          "vi": "Nếu trúng số, bạn sẽ làm gì?"
+        },
+        {
+          "speaker": "B",
+          "text": "Je voyagerais partout, j'achèterais une maison.",
+          "en": "I'd travel everywhere, buy a house.",
+          "vi": "Mình sẽ đi du lịch khắp nơi, mua một căn nhà."
+        },
+        {
+          "speaker": "A",
+          "text": "Tu ne travaillerais plus ?",
+          "en": "You wouldn't work anymore?",
+          "vi": "Bạn sẽ không đi làm nữa à?"
+        },
+        {
+          "speaker": "B",
+          "text": "Je travaillerais moins, j'ouvrirais un café.",
+          "en": "I'd work less, open a café.",
+          "vi": "Mình sẽ làm ít lại, mở một quán cà phê."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "fill-blank",
+          "question": "Si j'___ riche, j'achèterais une maison.",
+          "answer": "étais",
+          "hint_vi": "thì imparfait của être — 'tôi đã/sẽ là'",
+          "hint_en": "imperfect of être — 'were'; required after 'si' for hypothetical situations"
+        },
+        {
+          "type": "matching",
+          "pairs": [
+            [
+              "j'aimerais",
+              "tôi muốn (I would like)"
+            ],
+            [
+              "le conditionnel",
+              "thể điều kiện (conditional mood)"
+            ],
+            [
+              "le rêve",
+              "giấc mơ (dream)"
+            ]
+          ],
+          "instruction": "Nối từ với nghĩa",
+          "instruction_en": "Match the French expression with its Vietnamese meaning"
+        },
+        {
+          "type": "translation",
+          "vietnamese": "Nếu có thời gian, tôi học thêm ngôn ngữ.",
+          "english": "If I had time, I would learn another language.",
+          "french": "Si j'avais le temps, j'apprendrais une autre langue."
+        }
+      ],
+      "cultural_notes_en": "Hypotheticals in French follow tight rules: 'Si' + imperfect → conditional present (Si j'avais le temps, je voyagerais). For unreal past, 'Si' + plus-que-parfait → conditional past (Si j'avais eu le temps, j'aurais voyagé). The conditional carries the social weight — 'Je voudrais un café' (I'd like a coffee) is polite where 'Je veux un café' (I want a coffee) is curt. French treats the conditional as a politeness register, not just a grammatical mood.",
+      "tip_advice_en": "Distinguish 'Si j'avais…' (hypothetical: if I had…) from 'Quand j'avais…' (real past: when I had…). They look alike but trigger different tenses in the main clause. Conditional endings to memorize: -ais, -ais, -ait, -ions, -iez, -aient (same as the imperfect endings). Stem comes from the infinitive: aimer → j'aimerais, finir → je finirais, dormir → je dormirais."
+    },
+    {
+      "id": "french_grammar_reported",
+      "level": "B1",
+      "category": "advanced_grammar",
+      "title_vi": "Câu tường thuật",
+      "title_en": "Reported speech",
+      "sentences": [
+        {
+          "en": "Il a dit qu'il viendrait demain.",
+          "vi": "Anh ấy nói sẽ đến mai.",
+          "pronunciation_focus": [
+            "dit→đi",
+            "viendrait→vi-anh-đre"
+          ],
+          "pronunciation_focus_en": [
+            "dit 'DEE' — past participle of dire; final 't' silent",
+            "viendrait 'vyan-DREH' — conditional of venir; '-drait' = 'dreh'"
+          ]
+        },
+        {
+          "en": "Elle m'a demandé si je parlais français.",
+          "vi": "Cô ấy hỏi tôi có nói tiếng Pháp không.",
+          "pronunciation_focus": [
+            "demandé→đơ-măng-đê",
+            "parlais→pa-lê"
+          ],
+          "pronunciation_focus_en": [
+            "demandé 'duh-mahn-DAY' — nasal 'an'; '-é' = 'ay'",
+            "parlais 'par-LEH' — imperfect of parler; '-ais' = 'eh'"
+          ]
+        },
+        {
+          "en": "Il a expliqué que la Terre est ronde.",
+          "vi": "Anh ấy giải thích Trái Đất tròn.",
+          "pronunciation_focus": [
+            "expliqué→éc-xpli-kê",
+            "Terre→te"
+          ],
+          "pronunciation_focus_en": [
+            "expliqué 'eks-plee-KAY' — 'x' = 'ks'; '-é' = 'ay'",
+            "Terre 'TEHR' — final '-e' silent; soft French 'r'"
+          ]
+        },
+        {
+          "en": "Il voulait savoir où j'habitais.",
+          "vi": "Anh ấy muốn biết tôi ở đâu.",
+          "pronunciation_focus": [
+            "voulait→vu-le",
+            "j'habitais→gia-bi-te"
+          ],
+          "pronunciation_focus_en": [
+            "voulait 'voo-LEH' — imperfect of vouloir; '-ait' = 'eh'",
+            "j'habitais 'zhah-bee-TEH' — silent 'h'; '-ais' = 'eh'"
+          ]
+        },
+        {
+          "en": "Elle m'a dit de ne pas m'inquiéter.",
+          "vi": "Cô ấy bảo đừng lo.",
+          "pronunciation_focus": [
+            "dit→đi",
+            "m'inquiéter→manh-ki-ê-tê"
+          ],
+          "pronunciation_focus_en": [
+            "dit 'DEE' — same as above",
+            "m'inquiéter 'man-kyay-TAY' — nasal 'in'; '-er' = 'ay'"
+          ]
+        }
+      ],
+      "cultural_notes_vi": "Lùi thì: Présent→Imparfait, Futur→Conditionnel. Câu hỏi Yes/No dùng 'si'. Mệnh lệnh→de+infinitif. Sự thật hiển nhiên không lùi thì.",
+      "tip_advice_vi": "3 động từ chính: dire que, demander si, vouloir savoir. 'Il m'a dit que', 'Il lui a dit que', 'Il a dit à Marie que'.",
+      "vocabulary": [
+        {
+          "word": "dire",
+          "en": "to say",
+          "vi": "nói",
+          "pos": "v.",
+          "pronunciation_vi": "đia",
+          "pronunciation_en": "DEER — final '-re' barely voiced; soft 'r'"
+        },
+        {
+          "word": "demander",
+          "en": "to ask",
+          "vi": "hỏi",
+          "pos": "v.",
+          "pronunciation_vi": "đơ-măng-đê",
+          "pronunciation_en": "duh-mahn-DAY — nasal 'an'; '-er' = 'ay'"
+        },
+        {
+          "word": "répondre",
+          "en": "to answer",
+          "vi": "trả lời",
+          "pos": "v.",
+          "pronunciation_vi": "rê-pôn-đrơ",
+          "pronunciation_en": "ray-POHN-druh — nasal 'on'; final '-re' barely voiced"
+        },
+        {
+          "word": "expliquer",
+          "en": "to explain",
+          "vi": "giải thích",
+          "pos": "v.",
+          "pronunciation_vi": "éc-xpli-kê",
+          "pronunciation_en": "eks-plee-KAY — 'x' = 'ks'; '-er' = 'ay'"
+        },
+        {
+          "word": "raconter",
+          "en": "to tell",
+          "vi": "kể",
+          "pos": "v.",
+          "pronunciation_vi": "ra-côn-tê",
+          "pronunciation_en": "rah-kohn-TAY — nasal 'on'; '-er' = 'ay'"
+        },
+        {
+          "word": "affirmer",
+          "en": "to state",
+          "vi": "khẳng định",
+          "pos": "v.",
+          "pronunciation_vi": "a-fia-mê",
+          "pronunciation_en": "ah-feer-MAY — 'ff' is one 'f'; '-er' = 'ay'"
+        },
+        {
+          "word": "le discours",
+          "en": "speech",
+          "vi": "lời nói",
+          "pos": "n.m.",
+          "pronunciation_vi": "đi-xcua",
+          "pronunciation_en": "luh dees-KOOR — 'ou' = 'oo'; final 's' silent"
+        },
+        {
+          "word": "rapporter",
+          "en": "to report",
+          "vi": "thuật lại",
+          "pos": "v.",
+          "pronunciation_vi": "ra-po-tê",
+          "pronunciation_en": "rah-por-TAY — '-er' = 'ay'; soft French 'r'"
+        },
+        {
+          "word": "prétendre",
+          "en": "to claim",
+          "vi": "cho rằng",
+          "pos": "v.",
+          "pronunciation_vi": "prê-tăng-đrơ",
+          "pronunciation_en": "pray-TAHN-druh — nasal 'en'; final '-re' barely voiced"
+        },
+        {
+          "word": "la concordance",
+          "en": "agreement",
+          "vi": "phù hợp thì",
+          "pos": "n.f.",
+          "pronunciation_vi": "côn-co-đăng-xơ",
+          "pronunciation_en": "lah kohn-kor-DAHNSS — nasal 'on' twice; final '-e' silent"
+        }
+      ],
+      "dialogue": [
+        {
+          "speaker": "A",
+          "text": "Qu'a dit le directeur ?",
+          "en": "What did the director say?",
+          "vi": "Sếp nói gì vậy?"
+        },
+        {
+          "speaker": "B",
+          "text": "Il a annoncé qu'on ouvrirait un bureau à Lyon.",
+          "en": "He announced we'd open an office in Lyon.",
+          "vi": "Sếp thông báo sắp mở chi nhánh ở Lyon."
+        },
+        {
+          "speaker": "A",
+          "text": "Il a dit quand ?",
+          "en": "Did he say when?",
+          "vi": "Có nói khi nào không?"
+        },
+        {
+          "speaker": "B",
+          "text": "Il a expliqué que ce serait en septembre.",
+          "en": "He explained it would be in September.",
+          "vi": "Sếp giải thích là vào tháng 9."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "fill-blank",
+          "question": "Il a dit qu'il ___ demain.",
+          "answer": "viendrait",
+          "hint_vi": "thì điều kiện hiện tại của 'venir' — sẽ đến",
+          "hint_en": "conditional of 'venir' (to come) — backshifted from future 'viendra' (will come) because the reporting verb is past"
+        },
+        {
+          "type": "matching",
+          "pairs": [
+            [
+              "dire",
+              "nói (to say)"
+            ],
+            [
+              "rapporter",
+              "thuật lại (to report)"
+            ],
+            [
+              "affirmer",
+              "khẳng định (to state)"
+            ]
+          ],
+          "instruction": "Nối từ với nghĩa",
+          "instruction_en": "Match the French word with its Vietnamese meaning"
+        },
+        {
+          "type": "translation",
+          "vietnamese": "Cô ấy nói sẽ gọi lại mai.",
+          "english": "She said she would call back tomorrow.",
+          "french": "Elle a dit qu'elle rappellerait demain."
+        }
+      ],
+      "cultural_notes_en": "Reported speech in French shifts tenses one step back when the reporting verb is in the past — same logic as English 'he says he will come' → 'he said he would come'. Yes/no questions use 'si' (Il m'a demandé si je venais — He asked me if I was coming). WH-questions keep the question word (où, quand, pourquoi). Commands become 'de' + infinitive (Il m'a dit de partir — He told me to leave). One useful exception: universal truths don't backshift ('Galilée a dit que la Terre est ronde').",
+      "tip_advice_en": "Three high-frequency reporting verbs: dire que (to say that), demander si (to ask if/whether), vouloir savoir (to want to know). Watch the indirect-object construction: 'Il m'a dit que…' (he told me), 'Il lui a dit que…' (he told him/her), 'Il a dit à Marie que…' (he told Marie). The 'me / te / lui / nous / vous / leur' pronoun goes BEFORE the verb, not after as in English."
+    },
+    {
+      "id": "french_grammar_passive",
+      "level": "B1",
+      "category": "advanced_grammar",
+      "title_vi": "Thể bị động",
+      "title_en": "Passive voice",
+      "sentences": [
+        {
+          "en": "Ce bâtiment a été construit en 1920.",
+          "vi": "Tòa nhà xây năm 1920.",
+          "pronunciation_focus": [
+            "bâtiment→ba-ti-măng",
+            "construit→côn-xtruy"
+          ],
+          "pronunciation_focus_en": [
+            "bâtiment 'bah-tee-MAHN' — '-iment' = nasal 'MAHN'; circumflex 'â' = 'ah'",
+            "construit 'kohn-STRWEE' — nasal 'on'; 'ui' = 'wee'; final 't' silent"
+          ]
+        },
+        {
+          "en": "Le français est parlé dans 30 pays.",
+          "vi": "Tiếng Pháp được nói ở 30 nước.",
+          "pronunciation_focus": [
+            "parlé→pa-lê",
+            "pays→pê-i"
+          ],
+          "pronunciation_focus_en": [
+            "parlé 'par-LAY' — past participle; '-é' = 'ay'",
+            "pays 'pay-EE' — silent middle 'y' shapes the diphthong; final '-s' silent in singular"
+          ]
+        },
+        {
+          "en": "La décision sera annoncée demain.",
+          "vi": "Quyết định được thông báo mai.",
+          "pronunciation_focus": [
+            "décision→đê-xi-zi-on",
+            "annoncée→a-non-xê"
+          ],
+          "pronunciation_focus_en": [
+            "décision 'day-see-ZYON' — '-sion' = 'zyon'; nasal '-on'",
+            "annoncée 'ah-nohn-SAY' — nasal 'on'; '-ée' = 'ay'"
+          ]
+        },
+        {
+          "en": "Les lettres sont distribuées le matin.",
+          "vi": "Thư được phát buổi sáng.",
+          "pronunciation_focus": [
+            "distribuées→đi-xtri-bu-ê",
+            "matin→ma-tanh"
+          ],
+          "pronunciation_focus_en": [
+            "distribuées 'dees-tree-BWAY' — '-uées' = 'way'; rounded French 'u'",
+            "matin 'mah-TAN' — nasal '-in'"
+          ]
+        },
+        {
+          "en": "Ce vin est produit à Bordeaux.",
+          "vi": "Rượu này sản xuất ở Bordeaux.",
+          "pronunciation_focus": [
+            "produit→prô-đuy",
+            "Bordeaux→Bo-đô"
+          ],
+          "pronunciation_focus_en": [
+            "produit 'pro-DWEE' — 'ui' = 'wee'; final 't' silent",
+            "Bordeaux 'bor-DOH' — '-eaux' = 'oh'; final 'x' silent"
+          ]
+        }
+      ],
+      "cultural_notes_vi": "Bị động: être + participe passé. Participle hợp giống số. Người Pháp tránh bị động bằng 'on': 'On parle français'.",
+      "tip_advice_vi": "Dùng bị động khi chủ thể không rõ/quan trọng. 'Par' cho tác nhân cụ thể, 'de' cho trạng thái.",
+      "vocabulary": [
+        {
+          "word": "être + participe",
+          "en": "to be + pp",
+          "vi": "được/bị",
+          "pos": "expr.",
+          "pronunciation_vi": "ê-trơ",
+          "pronunciation_en": "EH-truh + par-tee-SEEP — 'être' + past participle; circumflex 'ê' = 'eh'"
+        },
+        {
+          "word": "construit",
+          "en": "built",
+          "vi": "được xây",
+          "pos": "adj.",
+          "pronunciation_vi": "côn-xtruy",
+          "pronunciation_en": "kohn-STRWEE — nasal 'on'; 'ui' = 'wee'"
+        },
+        {
+          "word": "écrit",
+          "en": "written",
+          "vi": "được viết",
+          "pos": "adj.",
+          "pronunciation_vi": "ê-cri",
+          "pronunciation_en": "ay-KREE — 'é' = 'ay'; final 't' silent (past participle of écrire)"
+        },
+        {
+          "word": "par",
+          "en": "by (agent)",
+          "vi": "bởi",
+          "pos": "prép.",
+          "pronunciation_vi": "pa",
+          "pronunciation_en": "PAR — short, clipped; soft French 'r'"
+        },
+        {
+          "word": "la voix passive",
+          "en": "passive voice",
+          "vi": "thể bị động",
+          "pos": "n.f.",
+          "pronunciation_vi": "voa pa-xiv",
+          "pronunciation_en": "lah vwah pah-SEEV — 'oi' = 'wah'; '-ssive' = 'seev'"
+        },
+        {
+          "word": "actif",
+          "en": "active",
+          "vi": "chủ động",
+          "pos": "adj.",
+          "pronunciation_vi": "ắc-tif",
+          "pronunciation_en": "ahk-TEEF — 'c' = 'k'; final 'f' pronounced"
+        },
+        {
+          "word": "subir",
+          "en": "to undergo",
+          "vi": "chịu đựng",
+          "pos": "v.",
+          "pronunciation_vi": "xu-bia",
+          "pronunciation_en": "soo-BEER — 'ou' = 'oo'; soft French 'r'"
+        },
+        {
+          "word": "provoquer",
+          "en": "to cause",
+          "vi": "gây ra",
+          "pos": "v.",
+          "pronunciation_vi": "prô-vô-kê",
+          "pronunciation_en": "pro-voh-KAY — 'qu' = 'k'; '-er' = 'ay'"
+        },
+        {
+          "word": "transformer",
+          "en": "to transform",
+          "vi": "biến đổi",
+          "pos": "v.",
+          "pronunciation_vi": "trăng-xfo-mê",
+          "pronunciation_en": "trahnz-for-MAY — nasal 'an'; '-er' = 'ay'"
+        },
+        {
+          "word": "le résultat",
+          "en": "result",
+          "vi": "kết quả",
+          "pos": "n.m.",
+          "pronunciation_vi": "rê-dun-ta",
+          "pronunciation_en": "luh ray-zool-TAH — '-ult-' = 'oolt'; final 't' silent"
+        }
+      ],
+      "dialogue": [
+        {
+          "speaker": "A",
+          "text": "Quand la Tour Eiffel a été construite ?",
+          "en": "When was the Eiffel Tower built?",
+          "vi": "Tháp Eiffel được xây năm nào?"
+        },
+        {
+          "speaker": "B",
+          "text": "Elle a été construite en 1889.",
+          "en": "It was built in 1889.",
+          "vi": "Tháp được xây năm 1889."
+        },
+        {
+          "speaker": "A",
+          "text": "Combien de visiteurs par an ?",
+          "en": "How many visitors per year?",
+          "vi": "Mỗi năm bao nhiêu khách?"
+        },
+        {
+          "speaker": "B",
+          "text": "Environ 7 millions. C'est le plus visité au monde !",
+          "en": "About 7 million. Most visited in the world!",
+          "vi": "Khoảng 7 triệu. Là công trình được tham quan nhiều nhất thế giới!"
+        }
+      ],
+      "exercises": [
+        {
+          "type": "fill-blank",
+          "question": "La Tour Eiffel a ___ construite en 1889.",
+          "answer": "été",
+          "hint_vi": "quá khứ phân từ của 'être' — 'đã được'",
+          "hint_en": "past participle of être — 'been'; required to form the passive (a été construite)"
+        },
+        {
+          "type": "matching",
+          "pairs": [
+            [
+              "construit",
+              "được xây (built)"
+            ],
+            [
+              "subir",
+              "chịu đựng (to undergo)"
+            ],
+            [
+              "la voix passive",
+              "thể bị động (passive voice)"
+            ]
+          ],
+          "instruction": "Nối từ với nghĩa",
+          "instruction_en": "Match the French word with its Vietnamese meaning"
+        },
+        {
+          "type": "translation",
+          "vietnamese": "Quyết định được ban giám đốc đưa ra.",
+          "english": "The decision was made by management.",
+          "french": "La décision a été prise par la direction."
+        }
+      ],
+      "cultural_notes_en": "French passive voice uses 'être' + past participle, with the participle agreeing in gender and number with the subject (la maison a été construite, les lettres ont été distribuées). The agent is introduced by 'par' for action ('construit par Eiffel') or 'de' for state/emotion ('aimé de tous'). Spoken French often avoids the passive by using 'on' as an impersonal subject — 'On parle français ici' (French is spoken here) sounds more natural than 'Le français est parlé ici'.",
+      "tip_advice_en": "Use the passive when the agent is unknown, irrelevant, or you want to foreground the action. 'La voiture a été volée' (the car was stolen) — we don't care who. Use the active 'on' when there's no specific agent but the passive construction would feel stilted: 'On a volé la voiture' is more common in speech. 'Par' for the doer of an action; 'de' for an emotional or abstract relationship."
+    },
+    {
+      "id": "french_grammar_relative",
+      "level": "B1",
+      "category": "advanced_grammar",
+      "title_vi": "Mệnh đề quan hệ",
+      "title_en": "Relative clauses",
+      "sentences": [
+        {
+          "en": "La personne qui parle est ma prof.",
+          "vi": "Người đang nói là cô giáo tôi.",
+          "pronunciation_focus": [
+            "personne→pe-xôn",
+            "parle→pa-lơ"
+          ],
+          "pronunciation_focus_en": [
+            "personne 'pehr-SUN' — 'er' = 'ehr'; double 'nn' is one full 'n' sound",
+            "parle 'PARL' — final '-e' silent; soft French 'r'"
+          ]
+        },
+        {
+          "en": "Le livre que je lis est passionnant.",
+          "vi": "Cuốn sách tôi đọc rất hay.",
+          "pronunciation_focus": [
+            "livre→li-vrơ",
+            "lis→li"
+          ],
+          "pronunciation_focus_en": [
+            "livre 'LEEV-ruh' — final '-re' barely voiced; soft 'r'",
+            "lis 'LEE' — final 's' silent (1st-person of lire)"
+          ]
+        },
+        {
+          "en": "La ville où je suis né est belle.",
+          "vi": "Thành phố tôi sinh ra đẹp.",
+          "pronunciation_focus": [
+            "ville→vil",
+            "né→nê"
+          ],
+          "pronunciation_focus_en": [
+            "ville 'VEEL' — double 'll' = single 'l'; final '-e' silent",
+            "né 'NAY' — '-é' = 'ay'; past participle of naître"
+          ]
+        },
+        {
+          "en": "C'est la raison pour laquelle je suis parti.",
+          "vi": "Đó là lý do tôi rời đi.",
+          "pronunciation_focus": [
+            "raison→re-don",
+            "laquelle→la-kén"
+          ],
+          "pronunciation_focus_en": [
+            "raison 'reh-ZON' — '-aison' = 'eh-zon'; nasal '-on'",
+            "laquelle 'lah-KEL' — '-quelle' = 'kel'; silent final '-e'"
+          ]
+        },
+        {
+          "en": "Le film dont je t'ai parlé sort demain.",
+          "vi": "Phim tôi nói với bạn ra mắt mai.",
+          "pronunciation_focus": [
+            "dont→đon",
+            "sort→xo"
+          ],
+          "pronunciation_focus_en": [
+            "dont 'DOHN' — nasal '-ont'; final 't' silent",
+            "sort 'SOR' — final 't' silent; soft French 'r'"
+          ]
+        }
+      ],
+      "cultural_notes_vi": "QUI (chủ ngữ), QUE (tân ngữ), OÙ (nơi/thời gian), DONT (bổ ngữ 'de'). Lequel/laquelle sau giới từ.",
+      "tip_advice_vi": "QUI+động từ, QUE+chủ ngữ+động từ. DONT thay cho 'de+qqch': 'le livre dont j'ai besoin'.",
+      "vocabulary": [
+        {
+          "word": "qui",
+          "en": "who (subject)",
+          "vi": "mà-chủ ngữ",
+          "pos": "pron.",
+          "pronunciation_vi": "ki",
+          "pronunciation_en": "KEE — relative pronoun (subject role); short 'ee'"
+        },
+        {
+          "word": "que",
+          "en": "whom (object)",
+          "vi": "mà-tân ngữ",
+          "pos": "pron.",
+          "pronunciation_vi": "cơ",
+          "pronunciation_en": "KUH — relative pronoun (object role); short rounded 'uh'"
+        },
+        {
+          "word": "où",
+          "en": "where/when",
+          "vi": "nơi/khi",
+          "pos": "pron.",
+          "pronunciation_vi": "u",
+          "pronunciation_en": "OO — relative pronoun (place / time); long 'oo'"
+        },
+        {
+          "word": "dont",
+          "en": "of which",
+          "vi": "mà-của",
+          "pos": "pron.",
+          "pronunciation_vi": "đon",
+          "pronunciation_en": "DOHN — replaces 'de + thing'; nasal '-ont'; final 't' silent"
+        },
+        {
+          "word": "lequel",
+          "en": "which (prep)",
+          "vi": "cái mà",
+          "pos": "pron.",
+          "pronunciation_vi": "lơ-kén",
+          "pronunciation_en": "luh-KEL — masculine form; '-quel' = 'kel'"
+        },
+        {
+          "word": "la proposition",
+          "en": "clause",
+          "vi": "mệnh đề",
+          "pos": "n.f.",
+          "pronunciation_vi": "prô-pô-zi-xi-on",
+          "pronunciation_en": "lah pro-poh-zee-SYON — '-tion' = 'syon'; nasal '-on'"
+        },
+        {
+          "word": "relative",
+          "en": "relative",
+          "vi": "quan hệ",
+          "pos": "adj.",
+          "pronunciation_vi": "rơ-la-tiv",
+          "pronunciation_en": "ruh-lah-TEEV — '-ive' = 'eev'; final '-e' silent"
+        },
+        {
+          "word": "l'antécédent",
+          "en": "antecedent",
+          "vi": "tiền tố",
+          "pos": "n.m.",
+          "pronunciation_vi": "lăng-tê-xê-đăng",
+          "pronunciation_en": "lahn-tay-say-DAHN — long noun; nasal 'an' twice (start and end)"
+        },
+        {
+          "word": "remplacer",
+          "en": "to replace",
+          "vi": "thay thế",
+          "pos": "v.",
+          "pronunciation_vi": "răm-pla-xê",
+          "pronunciation_en": "rahm-plah-SAY — nasal 'em'; '-er' = 'ay'"
+        },
+        {
+          "word": "préciser",
+          "en": "to specify",
+          "vi": "làm rõ",
+          "pos": "v.",
+          "pronunciation_vi": "prê-xi-dê",
+          "pronunciation_en": "pray-see-ZAY — '-er' = 'ay'; 's' between vowels = 'z'"
+        }
+      ],
+      "dialogue": [
+        {
+          "speaker": "A",
+          "text": "Tu te souviens du resto dont j'ai parlé ?",
+          "en": "Remember the restaurant I mentioned?",
+          "vi": "Bạn nhớ cái nhà hàng mình kể không?"
+        },
+        {
+          "speaker": "B",
+          "text": "Celui qui fait les meilleures crêpes ?",
+          "en": "The one that makes the best crêpes?",
+          "vi": "Cái chỗ làm bánh crêpe ngon nhất phải không?"
+        },
+        {
+          "speaker": "A",
+          "text": "Oui ! J'y vais ce soir.",
+          "en": "Yes! I'm going tonight.",
+          "vi": "Đúng đó! Tối nay mình đi."
+        },
+        {
+          "speaker": "B",
+          "text": "Super ! Dis-moi ce que tu en penses.",
+          "en": "Great! Tell me what you think.",
+          "vi": "Tuyệt! Đi về kể mình nghe cảm nhận nha."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "fill-blank",
+          "question": "Le film ___ je t'ai parlé sort demain.",
+          "answer": "dont",
+          "hint_vi": "đại từ quan hệ thay cho 'de' — 'mà của'",
+          "hint_en": "relative pronoun replacing 'de + thing' — 'of which / about which' (le film DONT je t'ai parlé = the film I told you ABOUT)"
+        },
+        {
+          "type": "matching",
+          "pairs": [
+            [
+              "qui",
+              "mà-chủ ngữ (who, subject)"
+            ],
+            [
+              "dont",
+              "mà-của (of which / about which)"
+            ],
+            [
+              "où",
+              "nơi/khi (where / when)"
+            ]
+          ],
+          "instruction": "Nối từ với nghĩa",
+          "instruction_en": "Match the French relative pronoun with its Vietnamese meaning"
+        },
+        {
+          "type": "translation",
+          "vietnamese": "Người phụ nữ bạn gặp hôm qua là sếp tôi.",
+          "english": "The woman you met yesterday is my boss.",
+          "french": "La femme que tu as rencontrée hier est ma patronne."
+        }
+      ],
+      "cultural_notes_en": "Relative pronouns in French depend on the grammatical role: 'qui' replaces a subject (la personne qui parle — the person who speaks); 'que' replaces a direct object (le livre que je lis — the book that I read); 'où' covers place AND time (la ville où je suis né, le jour où il est arrivé); 'dont' replaces 'de + something' (le livre dont j'ai besoin — the book I have need of). After other prepositions, use 'lequel / laquelle / lesquels / lesquelles' agreeing with the antecedent.",
+      "tip_advice_en": "Two patterns that disambiguate qui vs que: 'qui' is followed by a verb directly (qui parle, qui chante); 'que' is followed by a subject + verb (que je vois, que tu lis). 'Dont' replaces any 'de' phrase — 'j'ai besoin DE ce livre' → 'le livre DONT j'ai besoin'. Many learners over-use 'qui'; check whether the relative word stands in for the subject or the object before choosing."
+    }
+  ];
 
 export default lessons;
