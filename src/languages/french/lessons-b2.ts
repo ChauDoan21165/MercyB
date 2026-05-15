@@ -3672,6 +3672,11 @@ export const lessons: FrenchLesson[] = [
           "remercie → rơ-mer-si",
           "retour → rơ-tur",
           "négatif → né-ga-tif"
+        ],
+        "pronunciation_focus_en": [
+          "remercie → 'ruh-mair-SEE' — soft uvular 'r' at start",
+          "retour → 'ruh-TOOR' — 'ou' = 'oo'; final 'r' soft French",
+          "négatif → 'nay-gah-TEEF' — final 'f' sounded clean"
         ]
       },
       {
@@ -3681,6 +3686,11 @@ export const lessons: FrenchLesson[] = [
           "auriez → o-rié",
           "indiquer → an-di-ké",
           "amélioration → a-mé-lio-ra-sion"
+        ],
+        "pronunciation_focus_en": [
+          "auriez → 'oh-RYAY' — conditional '-iez' = 'yay'; 'au' = 'oh'",
+          "indiquer → 'an-dee-KAY' — nasal 'in'; 'qu' = 'k'; '-er' = 'ay'",
+          "amélioration → 'ah-may-lyoh-rah-SYON' — '-tion' = 'syon' (NOT 'shun')"
         ]
       },
       {
@@ -3690,6 +3700,11 @@ export const lessons: FrenchLesson[] = [
           "intéressée → an-té-rè-sé",
           "cabinet → ka-bi-nè",
           "éventuelles → é-vãn-tu-èl"
+        ],
+        "pronunciation_focus_en": [
+          "intéressée → 'an-tay-reh-SAY' — nasal 'in'; double 'ss' = clean 's'",
+          "cabinet → 'kah-bee-NEH' — final 't' silent; means 'firm/practice', not 'cabinet' as in furniture",
+          "éventuelles → 'ay-vahn-too-EL' — nasal 'en'; 'éventuel' = 'possible / potential', NOT English 'eventual'"
         ]
       },
       {
@@ -3699,6 +3714,11 @@ export const lessons: FrenchLesson[] = [
           "similaire → si-mi-lèr",
           "s'ouvrait → su-vrè",
           "considérée → kon-si-dé-ré"
+        ],
+        "pronunciation_focus_en": [
+          "similaire → 'see-mee-LAIR' — final '-aire' = 'air'",
+          "s'ouvrait → 'soo-VREH' — reflexive 's''; imperfect '-ait' = 'eh'",
+          "considérée → 'kohn-see-day-RAY' — feminine past participle; '-ée' = 'ay'"
         ]
       },
       {
@@ -3709,102 +3729,124 @@ export const lessons: FrenchLesson[] = [
           "plein → plã",
           "succès → syuk-sè",
           "choix → shwa"
+        ],
+        "pronunciation_focus_en": [
+          "souhaite → 'SWET' — silent 'h'; 'ai' = 'eh'",
+          "plein → 'PLAN' — nasal 'ein' = 'an' held through nose",
+          "succès → 'sook-SEH' — French 'u' rounded; final 's' silent",
+          "choix → 'SHWAH' — 'ch' = 'sh'; 'oi' = 'wah'; final 'x' silent"
         ]
       }
     ],
     "cultural_notes_vi": "Email follow-up sau khi bị từ chối là kỹ năng B2 mà rất ít người Việt làm tốt — vì văn hóa Việt Nam không quen với việc « chấp nhận từ chối một cách chuyên nghiệp ». Ở Pháp, gửi một email lịch sự sau khi bị từ chối là dấu hiệu của ứng viên trưởng thành — nhà tuyển dụng nhớ bạn cho lần tuyển sau. Một câu chuyện thường gặp: người Pháp tuyển 3 lần trong 18 tháng cho cùng một vị trí (do nghỉ việc, mở rộng đội), và ứng viên thứ tư của lần đầu được tuyển ở lần thứ ba. Email follow-up giúp bạn nằm trong vòng đầu của « pipeline ngầm ». Ngược lại, không phản hồi gì sau khi bị từ chối là tín hiệu non nớt — nhà tuyển dụng nghĩ « cô/cậu này không tha thiết thật ». Đừng nhầm: follow-up không phải van xin xem lại quyết định — đó là giữ cánh cửa mở. Đặc biệt với vị trí ở công ty Pháp tại Việt Nam: thị trường nhỏ, tin đồn lan nhanh, một email lịch sự sẽ được nhớ trong nhiều năm.",
+    "cultural_notes_en": "The post-rejection follow-up email is a B2-level skill that most non-Western candidates skip — Vietnamese (and many Asian) job-search cultures don't have a strong norm for 'accepting a no professionally'. In France, sending a poised email after a rejection signals you're a mature candidate, and the recruiter mentally files you for the next opening. Recurring pattern: French firms hire for the same role three times in 18 months (turnover, team growth), and the runner-up from round one often lands the spot at round three. The follow-up email puts you in the informal pipeline. Silence after a rejection sends the opposite signal — recruiters read it as 'this candidate wasn't really invested'. Important: follow-up is NOT begging for a reconsidered decision — that almost always backfires. It's about keeping the door open. Especially for French firms operating in Vietnam: the market is small, gossip travels fast, a polished email gets remembered for years.",
     "tip_advice_vi": "Cấu trúc email 4 dòng ngắn: (1) Cảm ơn — không cay đắng, không van xin; (2) Đề nghị feedback — một câu hỏi mở; (3) Khẳng định quan tâm dài hạn — gợi ý cơ hội tương lai; (4) Câu chốt lịch sự. Tránh: nói lý do từ chối là « unfair », so sánh với người được chọn, ám chỉ họ « bỏ lỡ talent », emoji, dấu chấm than. Gửi email trong 24-48 giờ sau khi nhận tin từ chối — không quá lâu (họ quên), không quá nhanh (cảm xúc còn nóng). Nếu họ trả lời với feedback — cảm ơn ngay, ghi nhận, không tranh luận. Nếu không trả lời — không gửi tiếp; chấp nhận im lặng là câu trả lời. Lưu trữ contact và follow-up một lần nữa sau 6 tháng nếu thấy có cơ hội tương tự xuất hiện.",
+    "tip_advice_en": "Four-line email skeleton: (1) Thank — no bitterness, no begging; (2) Ask for feedback — one open question; (3) Re-state long-term interest — hint at future openings; (4) A polite close. Avoid: calling the rejection « unfair », comparing yourself to whoever got picked, implying they « missed out on talent », emoji, exclamation marks. Send 24-48 hours after the rejection — not too late (they've moved on), not too fast (emotion still hot). If they reply with feedback — thank them on receipt, accept it, do NOT argue. If they don't reply — don't chase; treat silence as the answer. Archive the contact and follow up once more after about six months when a comparable role opens. The 'play the long game' move is the differentiator.",
     "vocabulary": [
       {
         "word": "un retour (négatif)",
         "en": "a (negative) reply",
         "vi": "phản hồi (không mong đợi)",
         "pos": "n.m.",
-        "pronunciation_vi": "rơ-tur né-ga-tif"
+        "pronunciation_vi": "rơ-tur né-ga-tif",
+        "pronunciation_en": "uhn ruh-TOOR nay-gah-TEEF — 'retour' = 'reply/feedback'; 'ou' = 'oo'"
       },
       {
         "word": "des points d'amélioration",
         "en": "areas for improvement",
         "vi": "điểm cần cải thiện",
         "pos": "n.m. pl.",
-        "pronunciation_vi": "pwã da-mé-lio-ra-sion"
+        "pronunciation_vi": "pwã da-mé-lio-ra-sion",
+        "pronunciation_en": "PWAN dah-may-lyoh-rah-SYON — 'point' nasal 'oin' = 'wan'; '-tion' = 'syon'"
       },
       {
         "word": "une candidature",
         "en": "an application",
         "vi": "hồ sơ ứng tuyển",
         "pos": "n.f.",
-        "pronunciation_vi": "kãn-di-da-tur"
+        "pronunciation_vi": "kãn-di-da-tur",
+        "pronunciation_en": "kahn-dee-dah-TOOR — nasal 'an' start; '-ure' = 'oor' with rounded French 'u'"
       },
       {
         "word": "un poste similaire",
         "en": "a similar position",
         "vi": "vị trí tương tự",
         "pos": "n.m.",
-        "pronunciation_vi": "post si-mi-lèr"
+        "pronunciation_vi": "post si-mi-lèr",
+        "pronunciation_en": "POST see-mee-LAIR — 'poste' final '-e' silent; '-aire' = 'air'"
       },
       {
         "word": "être considérée à nouveau",
         "en": "to be reconsidered",
         "vi": "được xét duyệt lại",
         "pos": "expr.",
-        "pronunciation_vi": "é-trơ kon-si-dé-ré a nu-vô"
+        "pronunciation_vi": "é-trơ kon-si-dé-ré a nu-vô",
+        "pronunciation_en": "EH-truh kohn-see-day-RAY ah noo-VOH — passive infinitive; common in candidate-replies"
       },
       {
         "word": "garder la porte ouverte",
         "en": "to keep the door open",
         "vi": "giữ cửa mở (cho cơ hội sau)",
         "pos": "expr.",
-        "pronunciation_vi": "gar-dé la port u-vert"
+        "pronunciation_vi": "gar-dé la port u-vert",
+        "pronunciation_en": "gar-DAY lah PORT oo-VAIRT — same idiom as English; the keystone of post-rejection follow-up"
       },
       {
         "word": "un retour constructif",
         "en": "constructive feedback",
         "vi": "phản hồi xây dựng",
         "pos": "n.m.",
-        "pronunciation_vi": "rơ-tur kon-stryuk-tif"
+        "pronunciation_vi": "rơ-tur kon-stryuk-tif",
+        "pronunciation_en": "uhn ruh-TOOR kohn-strook-TEEF — French 'u' rounded; final 'f' sounded"
       },
       {
         "word": "sans rancune",
         "en": "no hard feelings",
         "vi": "không thù hằn",
         "pos": "expr.",
-        "pronunciation_vi": "sãn rãn-kyun"
+        "pronunciation_vi": "sãn rãn-kyun",
+        "pronunciation_en": "sahn rahn-KOON — two nasal 'an' sounds; rounded French 'u' at end"
       },
       {
         "word": "rebondir",
         "en": "to bounce back",
         "vi": "vực dậy",
         "pos": "v.",
-        "pronunciation_vi": "rơ-bõn-dir"
+        "pronunciation_vi": "rơ-bõn-dir",
+        "pronunciation_en": "ruh-bohn-DEER — nasal 'on'; final 'r' soft French uvular"
       },
       {
         "word": "l'humilité professionnelle",
         "en": "professional humility",
         "vi": "sự khiêm tốn chuyên nghiệp",
         "pos": "n.f.",
-        "pronunciation_vi": "u-mi-li-té pro-fè-sio-nèl"
+        "pronunciation_vi": "u-mi-li-té pro-fè-sio-nèl",
+        "pronunciation_en": "loo-mee-lee-TAY pro-feh-syoh-NEL — silent 'h'; double 'nn' = single 'n'"
       }
     ],
     "dialogue": [
       {
         "speaker": "Linh (email envoyé)",
         "text": "Madame Roy, je vous remercie pour votre retour, même s'il n'a pas été en ma faveur.",
+        "en": "Ms Roy, thank you for your reply, even though it wasn't in my favor.",
         "vi": "Chị Roy, em cảm ơn về phản hồi, dù không theo hướng có lợi cho em."
       },
       {
         "speaker": "Mme Roy (réponse)",
         "text": "Bonjour Linh, votre démarche est appréciée. Avez-vous quinze minutes mardi pour un debrief ?",
+        "en": "Hi Linh, your approach is appreciated. Do you have 15 minutes Tuesday for a debrief?",
         "vi": "Chào Linh, cách em làm rất đáng quý. Em có 15 phút thứ ba để debrief không?"
       },
       {
         "speaker": "Linh",
         "text": "Avec grand plaisir. Mardi 15h heure de Paris ?",
+        "en": "Happy to. Tuesday 3 p.m. Paris time?",
         "vi": "Rất sẵn lòng. Thứ ba 15h giờ Paris được không?"
       },
       {
         "speaker": "Mme Roy",
         "text": "C'est noté. Je vous envoie l'invitation.",
+        "en": "Noted. I'll send you the calendar invite.",
         "vi": "Đã note. Tôi sẽ gửi lời mời."
       }
     ],
@@ -3812,61 +3854,73 @@ export const lessons: FrenchLesson[] = [
       {
         "speaker": "Linh (email J+1)",
         "text": "Objet : Suite à votre réponse — Linh Trần (consultant junior, mars 2026)",
+        "en": "Subject: Following your reply — Linh Trần (junior consultant role, March 2026)",
         "vi": "Tiêu đề: Tiếp theo phản hồi của chị — Linh Trần (consultant junior, tháng 3/2026)"
       },
       {
         "speaker": "Linh",
         "text": "Bonjour Madame Roy,",
+        "en": "Hello Ms Roy,",
         "vi": "Chào chị Roy,"
       },
       {
         "speaker": "Linh",
         "text": "Je vous remercie pour votre retour reçu hier, même s'il n'a pas été en ma faveur. Je comprends que le choix s'est porté sur un profil avec davantage d'expérience en conseil pur, et c'est un critère parfaitement légitime.",
+        "en": "Thank you for the reply I received yesterday, even though it wasn't in my favor. I understand the choice went to a profile with more pure-consulting experience, and that's a perfectly legitimate criterion.",
         "vi": "Em cảm ơn về phản hồi nhận hôm qua, dù không theo hướng có lợi cho em. Em hiểu lựa chọn nghiêng về hồ sơ có nhiều kinh nghiệm tư vấn thuần túy hơn, và đó là tiêu chí hoàn toàn hợp lý."
       },
       {
         "speaker": "Linh",
         "text": "Si vous disposez de quelques minutes dans les prochaines semaines, j'apprécierais grandement un retour plus précis sur les points sur lesquels je peux progresser. Cela me serait utile pour mes prochaines candidatures.",
+        "en": "If you have a few minutes in the coming weeks, I would very much appreciate more specific feedback on the points I can work on. It would help me for future applications.",
         "vi": "Nếu chị có vài phút trong những tuần tới, em sẽ rất cảm kích nếu được nghe phản hồi cụ thể về các điểm em có thể cải thiện. Điều đó sẽ giúp em cho các đợt ứng tuyển tới."
       },
       {
         "speaker": "Linh",
         "text": "Par ailleurs, je reste très intéressée par votre cabinet, et notamment par votre activité Asie du Sud-Est. Si un poste similaire s'ouvrait dans les douze prochains mois, je serais ravie d'être considérée à nouveau.",
+        "en": "Separately, I remain very interested in your firm, especially your Southeast Asia practice. If a similar role opens in the next twelve months, I would be glad to be considered again.",
         "vi": "Bên cạnh đó, em vẫn rất quan tâm đến công ty, đặc biệt mảng Đông Nam Á. Nếu có vị trí tương tự mở ra trong 12 tháng tới, em rất vui được xét duyệt lại."
       },
       {
         "speaker": "Linh",
         "text": "Je vous souhaite plein succès dans la prise de poste de la candidate retenue.",
+        "en": "I wish you every success in onboarding the selected candidate.",
         "vi": "Em chúc chị nhiều thành công với việc tiếp nhận ứng viên được chọn."
       },
       {
         "speaker": "Linh",
         "text": "Cordialement, Trần Linh",
+        "en": "Kind regards, Trần Linh",
         "vi": "Cordialement, Trần Linh"
       },
       {
         "speaker": "(Mme Roy répond le lendemain)",
         "text": "Bonjour Linh, je tiens à vous remercier pour ce message, qui dénote une vraie maturité professionnelle. Très peu de candidats prennent le temps de revenir vers nous après un refus.",
+        "en": "(Ms Roy replies the next day) Hello Linh, I want to thank you for this message — it shows real professional maturity. Very few candidates take the time to come back to us after a rejection.",
         "vi": "(Chị Roy trả lời hôm sau) Chào Linh, tôi muốn cảm ơn em về tin nhắn này, thể hiện sự trưởng thành nghề nghiệp thực sự. Rất ít ứng viên dành thời gian quay lại sau khi bị từ chối."
       },
       {
         "speaker": "Mme Roy",
         "text": "Pour répondre franchement, votre dossier était très solide ; ce qui a fait la différence, c'est qu'au cas pratique l'autre candidate a quantifié l'impact en euros, là où vous êtes restée en pourcentages. C'est un détail, mais ça a pesé.",
+        "en": "To answer frankly, your file was very strong; what made the difference is that in the case study the other candidate quantified the impact in euros, whereas you stayed in percentages. It's a detail, but it weighed.",
         "vi": "Trả lời thẳng, hồ sơ của em rất vững; điều tạo khác biệt là trong case thực hành, ứng viên kia đã đo tác động bằng euro, trong khi em dùng phần trăm. Là chi tiết nhỏ, nhưng có tác động."
       },
       {
         "speaker": "Mme Roy",
         "text": "Pour le reste : votre profil franco-vietnamien est rare et précieux. Nous avons un projet de bureau à Hanoï prévu pour fin 2026 — j'ai noté votre nom dans nos contacts prioritaires. Je vous recontacterai dès que ce sera concret.",
+        "en": "For the rest: your Franco-Vietnamese profile is rare and valuable. We have a Hanoi office planned for end-2026 — I've added your name to our priority contacts. I'll reach back out as soon as it firms up.",
         "vi": "Còn lại: hồ sơ Pháp-Việt của em hiếm và quý. Chúng tôi có kế hoạch mở văn phòng Hà Nội cuối 2026 — tôi đã ghi tên em vào danh sách ưu tiên. Tôi sẽ liên lạc lại khi cụ thể."
       },
       {
         "speaker": "Mme Roy",
         "text": "Cordialement, Élise Roy",
+        "en": "Kind regards, Élise Roy",
         "vi": "Cordialement, Élise Roy"
       },
       {
         "speaker": "Linh (réponse même jour)",
         "text": "Madame Roy, ce retour est extrêmement précieux — chiffrer en euros plutôt qu'en pourcentages est un point que je vais immédiatement intégrer. Je note avec attention l'ouverture de votre bureau à Hanoï. Bien à vous, Linh.",
+        "en": "Ms Roy, this feedback is extremely valuable — quantifying in euros rather than percentages is a point I'll integrate immediately. I'll be watching for your Hanoi office opening. Best, Linh.",
         "vi": "Chị Roy, phản hồi này quý vô cùng — định lượng bằng euro thay vì phần trăm là điểm em sẽ ghi nhận ngay. Em chú ý theo dõi việc mở văn phòng Hà Nội. Bien à vous, Linh."
       }
     ],
@@ -3875,30 +3929,44 @@ export const lessons: FrenchLesson[] = [
       "Nhà tuyển dụng phản hồi với feedback cụ thể (« votre français à l'écrit est encore perfectible »). Cảm ơn và đề xuất một hành động cụ thể (khóa học, chứng chỉ, plan tự cải thiện).",
       "Sáu tháng sau, bạn thấy công ty đó tuyển vị trí tương tự lần nữa. Viết email tái ứng tuyển — nhắc khéo lần trước, không nhắc cay đắng, đưa ra điều mới mà bạn đã cải thiện."
     ],
+    "roleplay_prompts_en": [
+      "You just received a rejection email from a firm you really wanted to join. Write a follow-up email within 24 hours — four lines, professional, no begging to reconsider.",
+      "The recruiter replies with specific feedback (« votre français à l'écrit est encore perfectible » — your written French still has room to improve). Thank them and propose a concrete action (a course, a certification, a self-improvement plan).",
+      "Six months later you see the same firm reopened the role. Write the re-application email — reference the prior round lightly, no bitterness, lead with something concrete you've improved."
+    ],
     "register_notes": "Email follow-up sau từ chối phải nhẹ nhàng và ngắn — dài quá nghe như van xin. Vouvoiement bắt buộc. Tránh: « je suis très déçue », « je ne comprends pas », « je pense que vous vous trompez ». Thay bằng giọng acceptance + curiosity: « j'apprécierais un retour », « je reste très intéressée ». Một sai lầm phổ biến của người Việt: dùng giọng quá khiêm tốn (« em chắc chưa đủ khả năng ») — người Pháp thấy đó là tự hạ thấp và làm họ cảm thấy gượng. Giọng đúng: bình thản, ghi nhận quyết định, mở cửa cho tương lai. Cụm chốt « Je vous souhaite plein succès dans votre choix final » là vàng — nó cho thấy bạn không cay đắng, không ghen tị với người được chọn.",
+    "register_notes_en": "A post-rejection follow-up email needs to be light and short — too long reads as begging. Vouvoiement is non-negotiable. Avoid: « je suis très déçue » (I'm very disappointed), « je ne comprends pas » (I don't understand), « je pense que vous vous trompez » (I think you're mistaken). Replace those impulses with an acceptance-plus-curiosity tone: « j'apprécierais un retour » (I'd appreciate feedback), « je reste très intéressée » (I remain very interested). A common Vietnamese trap is over-humility (« em chắc chưa đủ khả năng » — I'm probably not capable enough) — to French recruiters this reads as self-deprecation and makes them uncomfortable rather than sympathetic. The right tone is calm, acknowledging the decision, keeping the door open for the future. The closing « Je vous souhaite plein succès dans votre choix final » is gold — it shows you're neither bitter nor envious of whoever got picked.",
     "idiom_glosses": [
       {
         "idiom": "Garder la porte ouverte",
         "literal": "Giữ cửa mở",
+        "literal_en": "to keep the door open",
         "meaning": "Để khả năng quay lại trong tương lai.",
+        "meaning_en": "to keep the possibility of a future return — same metaphor as English",
         "example": "Mon email a permis de garder la porte ouverte pour 2027."
       },
       {
         "idiom": "Tirer les leçons",
         "literal": "Rút các bài học",
+        "literal_en": "to draw the lessons",
         "meaning": "Học từ thất bại để cải thiện.",
+        "meaning_en": "to extract lessons from a setback and apply them — the French equivalent of 'learn from this'",
         "example": "J'ai tiré les leçons de ce refus — je quantifie en euros maintenant."
       },
       {
         "idiom": "Sans rancune",
         "literal": "Không thù hằn",
+        "literal_en": "without resentment",
         "meaning": "Không giữ ác cảm sau khi bị từ chối.",
+        "meaning_en": "no hard feelings — used after disagreements or rejections to mark goodwill",
         "example": "Sans rancune — je vous souhaite plein succès."
       },
       {
         "idiom": "Rebondir",
         "literal": "Nảy lại",
+        "literal_en": "to bounce",
         "meaning": "Vực dậy sau cú ngã / thất bại.",
+        "meaning_en": "to bounce back from a setback — recover and move forward",
         "example": "Ce refus m'a appris à rebondir plus vite."
       }
     ],
@@ -3906,6 +3974,7 @@ export const lessons: FrenchLesson[] = [
       {
         "type": "fill-blank",
         "instruction_vi": "Điền cụm vào email follow-up.",
+        "instruction_en": "Fill in the missing phrase in the follow-up email.",
         "items": [
           {
             "prompt": "Je vous ___ pour votre retour, même s'il est négatif.",
@@ -3928,6 +3997,7 @@ export const lessons: FrenchLesson[] = [
       {
         "type": "matching",
         "instruction_vi": "Nối thành ngữ với nghĩa khi đối mặt với thất bại.",
+        "instruction_en": "Match each idiom with its meaning in the context of professional setbacks.",
         "items": [
           {
             "prompt": "Garder la porte ouverte",
@@ -3950,6 +4020,7 @@ export const lessons: FrenchLesson[] = [
       {
         "type": "translation",
         "instruction_vi": "Dịch sang tiếng Pháp lịch sự B2.",
+        "instruction_en": "Translate into polite B2 French.",
         "items": [
           {
             "prompt": "Em vẫn rất quan tâm đến công ty cho các cơ hội tương lai.",
